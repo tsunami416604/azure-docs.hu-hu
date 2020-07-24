@@ -9,11 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: 5613453667e3bb278f4da22ebed4502def70235b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b4bb17fce7be7aeff2a6978177106201e4c80aee
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83675900"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087271"
 ---
 # <a name="azure-storage-analytics-metrics-classic"></a>Azure Storage Analytics metrikák (klasszikus)
 
@@ -73,7 +74,7 @@ Az alábbi lépéseket követve engedélyezheti a metrikákat a [Azure Portalban
 1. Győződjön **meg**arról, hogy az **állapot** beállítása be értékre van állítva.
 1. Válassza ki a figyelni kívánt szolgáltatások mérőszámait.
 1. Adja meg az adatmegőrzési szabályzatot, amely azt jelzi, hogy meddig kell megőrizni a metrikákat és a naplózási adatokat.
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 A [Azure Portal](https://portal.azure.com) jelenleg nem teszi lehetővé perc típusú metrikák konfigurálását a Storage-fiókban. A perc típusú metrikákat a PowerShell vagy programozott módon kell engedélyeznie.
 
@@ -145,18 +146,16 @@ A Storage-fiókja Azure Portal menüjének **figyelés (klasszikus)** szakaszáb
 
 Ha le szeretné tölteni a mérőszámokat a hosszú távú tároláshoz, vagy helyileg kívánja elemezni őket, egy eszközt kell használnia, vagy írnia kell egy kódot a táblák olvasásához. Az elemzéshez le kell töltenie a perc mérőszámait. A táblák nem jelennek meg, ha a Storage-fiókban lévő összes táblát listázza, de közvetlenül a név alapján érheti el őket. Számos Storage-szemöldök eszköz ismeri ezeket a táblázatokat, és lehetővé teszi, hogy közvetlenül megtekintse őket. Az elérhető eszközök listáját az [Azure Storage-ügyféleszközök](/azure/storage/storage-explorers)című témakörben tekintheti meg.
 
-||||  
+|Mérőszámok|Táblák nevei|Jegyzetek| 
 |-|-|-|  
-|**Metrikák**|**Táblák nevei**|**Megjegyzések**|  
 |Óránkénti mérőszámok|$MetricsHourPrimaryTransactionsBlob<br /><br /> $MetricsHourPrimaryTransactionsTable<br /><br /> $MetricsHourPrimaryTransactionsQueue<br /><br /> $MetricsHourPrimaryTransactionsFile|A 2013. augusztus 15. előtti verziókban ezek a táblázatok a következőképpen ismertek:<br /><br /> $MetricsTransactionsBlob<br /><br /> $MetricsTransactionsTable<br /><br /> $MetricsTransactionsQueue<br /><br /> A file Service metrikái a 2015-as verziótól kezdődően érhetők el.|  
 |Perc mérőszámok|$MetricsMinutePrimaryTransactionsBlob<br /><br /> $MetricsMinutePrimaryTransactionsTable<br /><br /> $MetricsMinutePrimaryTransactionsQueue<br /><br /> $MetricsMinutePrimaryTransactionsFile|Csak PowerShell használatával vagy programozott módon engedélyezhető.<br /><br /> A file Service metrikái a 2015-as verziótól kezdődően érhetők el.|  
 |Kapacitás|$MetricsCapacityBlob|Csak Blob service.|  
 
 A táblázatok sémáinak részletes ismertetését lásd: [Storage Analytics mérőszámok tábla sémája](/rest/api/storageservices/storage-analytics-metrics-table-schema). A következő minta sorok csak az elérhető oszlopok egy részhalmazát jelenítik meg, de a tárolási metrikák egyes fontos funkcióit illusztrálják a metrikák mentéséhez:  
 
-||||||||||||  
+|PartitionKey|RowKey|Timestamp|TotalRequests|TotalBillableRequests|TotalIngress|TotalEgress|Rendelkezésre állás|AverageE2ELatency|AverageServerLatency|PercentSuccess| 
 |-|-|-|-|-|-|-|-|-|-|-|  
-|**PartitionKey**|**RowKey**|**Időbélyeg**|**TotalRequests**|**TotalBillableRequests**|**TotalIngress**|**TotalEgress**|**Rendelkezésre állás**|**AverageE2ELatency**|**AverageServerLatency**|**PercentSuccess**|  
 |20140522T1100|felhasználói Összes|2014-05-22T11:01:16.7650250 Z|7|7|4003|46801|100|104,4286|6,857143|100|  
 |20140522T1100|felhasználói QueryEntities|2014-05-22T11:01:16.7640250 Z|5|5|2694|45951|100|143,8|7.8|100|  
 |20140522T1100|felhasználói QueryEntity|2014-05-22T11:01:16.7650250 Z|1|1|538|633|100|3|3|100|  

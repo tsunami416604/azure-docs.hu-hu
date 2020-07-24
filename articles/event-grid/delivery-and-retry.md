@@ -3,12 +3,12 @@ title: Azure Event Grid kézbesítés és újrapróbálkozás
 description: Leírja, hogy Azure Event Grid hogyan kézbesíti az eseményeket, és hogyan kezeli a kézbesítetlen üzeneteket.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: e565bbc8592dc2818e3573672e6e3035c3c8983a
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: fe7574d7e17b1763afb2292c15007dd87b056ef1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86113836"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087611"
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>Event Grid üzenet kézbesítése és újrapróbálkozás
 
@@ -78,8 +78,12 @@ A végpontok kézbesítési meghibásodások esetén a Event Grid megkezdi a ké
 A késleltetett kézbesítés funkcionális célja a nem megfelelő állapotú végpontok, valamint a Event Grid rendszer megóvása. A nem kifogástalan állapotú végpontokra történő kézbesítés nélkül, Event Grid az újrapróbálkozási szabályzat és a mennyiségi képességek könnyedén elérhetik a rendszereket.
 
 ## <a name="dead-letter-events"></a>Kézbesítetlen levelek eseményei
+Ha Event Grid egy adott időszakon belül nem tud eseményt kézbesíteni, vagy ha az eseményt bizonyos számú alkalommal próbálta kézbesíteni, akkor a kézbesítetlen eseményt egy Storage-fiókba küldheti. Ezt a folyamatot **Kézbesítetlen levélnek**nevezzük. **A következő feltételek valamelyikének** teljesülése esetén Event Grid a kézbesítetlen leveleket. 
 
-Ha Event Grid nem tud eseményt kézbesíteni, akkor a kézbesítetlen eseményt elküldheti egy Storage-fiókba. Ezt a folyamatot kézbesítetlen levélnek nevezzük. Alapértelmezés szerint a Event Grid nem kapcsolja be a kézbesítetlen betűket. Az engedélyezéshez meg kell adnia egy Storage-fiókot, amely az esemény-előfizetés létrehozásakor nem kézbesítési eseményeket tart fenn. A kézbesítések feloldásához le kell kérnie az eseményeket ebből a Storage-fiókból.
+- Az esemény nem az adott időszakon belül érkezik
+- Az esemény kézbesítésére tett kísérletek száma túllépte a korlátot
+
+Ha a feltételek bármelyike teljesül, az esemény eldobása vagy elutasítása nem történik meg.  Alapértelmezés szerint a Event Grid nem kapcsolja be a kézbesítetlen betűket. Az engedélyezéshez meg kell adnia egy Storage-fiókot, amely az esemény-előfizetés létrehozásakor nem kézbesítési eseményeket tart fenn. A kézbesítések feloldásához le kell kérnie az eseményeket ebből a Storage-fiókból.
 
 Event Grid küld egy eseményt a kézbesítetlen levelek helyére, amikor megpróbálta az összes újrapróbálkozási kísérletet. Ha a Event Grid 400 (hibás kérés) vagy 413 (kérelem entitás túl nagy) választ kap, az azonnal elküldi az eseményt a kézbesítetlen levelek végpontjának. Ezek a hibakódok jelzik, hogy az esemény kézbesítése soha nem fog sikerülni.
 
@@ -111,8 +115,8 @@ Az összes többi, a fenti készletben nem szereplő kód (200-204) hibáknak mi
 
 | Állapotkód | Újrapróbálkozási viselkedés |
 | ------------|----------------|
-| 400 hibás kérelem | Újrapróbálkozás 5 perc vagy több után (kézbesítetlen levelek azonnal, ha a kézbesítetlen levelek telepítője) |
-| 401 jogosulatlan | Újrapróbálkozás 5 perc vagy több idő után |
+| 400 Hibás kérés | Újrapróbálkozás 5 perc vagy több után (kézbesítetlen levelek azonnal, ha a kézbesítetlen levelek telepítője) |
+| 401 Nem engedélyezett | Újrapróbálkozás 5 perc vagy több idő után |
 | 403 – Tiltott | Újrapróbálkozás 5 perc vagy több idő után |
 | 404 Nem található | Újrapróbálkozás 5 perc vagy több idő után |
 | 408 Kérés időtúllépése | Próbálkozzon újra 2 perc múlva |
@@ -121,7 +125,7 @@ Az összes többi, a fenti készletben nem szereplő kód (200-204) hibáknak mi
 | Minden más | Újrapróbálkozás 10 másodperc vagy több után |
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Az események kézbesítési állapotának megtekintéséhez lásd: [Event Grid üzenet kézbesítésének figyelése](monitor-event-delivery.md).
 * Az esemény-kézbesítési beállítások testreszabásával kapcsolatban lásd: [kézbesítetlen levelek és újrapróbálkozási szabályzatok](manage-event-delivery.md).

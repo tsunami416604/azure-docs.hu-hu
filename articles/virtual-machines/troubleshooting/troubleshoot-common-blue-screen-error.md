@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 09/28/2018
 ms.author: genli
-ms.openlocfilehash: 30b4386c223240217096550330c0920ad9ab6871
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: b382efc4d283d64ce0f833bde9104fa2e3bc973a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86132920"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088545"
 ---
 # <a name="windows-shows-blue-screen-error-when-booting-an-azure-vm"></a>A Windows egy Azure-beli virtuális gép indításakor kék képernyős hibát jelez
 Ez a cikk a Windows rendszerű virtuális gépek (VM-EK) Microsoft Azure-ben való indításakor felmerülő kék képernyős hibákat ismerteti. Ez a témakör segítséget nyújt a támogatási jegy adatainak gyűjtéséhez. 
@@ -47,7 +47,7 @@ A probléma megoldásához először össze kell gyűjtenie az összeomláshoz t
 ### <a name="attach-the-os-disk-to-a-recovery-vm"></a>Az operációsrendszer-lemez csatlakoztatása egy helyreállítási virtuális géphez
 
 1. Készítsen pillanatképet az érintett virtuális gép operációsrendszer-lemezéről biztonsági másolatként. További információ: [lemez pillanatképe](../windows/snapshot-copy-managed-disk.md).
-2. [Csatlakoztassa az operációsrendszer-lemezt egy helyreállítási virtuális géphez](../windows/troubleshoot-recovery-disks-portal.md). 
+2. [Csatlakoztassa az operációsrendszer-lemezt egy helyreállítási virtuális géphez](./troubleshoot-recovery-disks-portal-windows.md). 
 3. Távoli asztalról a helyreállítási virtuális gépre.
 
 ### <a name="locate-dump-file-and-submit-a-support-ticket"></a>Memóriaképfájl megkeresése és támogatási jegy beküldése
@@ -100,9 +100,6 @@ A memóriakép és a soros konzol engedélyezéséhez futtassa az alábbi szkrip
     reg unload HKLM\BROKENSYSTEM
     ```
 
-3. [Válassza le az operációsrendszer-lemezt, majd csatlakoztassa újra az operációsrendszer-lemezt az érintett virtuális géphez](../windows/troubleshoot-recovery-disks-portal.md).
+3. [Válassza le az operációsrendszer-lemezt, majd csatlakoztassa újra az operációsrendszer-lemezt az érintett virtuális géphez](./troubleshoot-recovery-disks-portal-windows.md).
 4. Indítsa el a virtuális gépet a probléma újbóli előállításához, majd hozzon létre egy memóriaképfájl-fájlt.
 5. Csatolja az operációsrendszer-lemezt egy helyreállítási virtuális géphez, gyűjtsön egy memóriakép-fájlt, majd [küldjön be egy támogatási jegyet](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a memóriakép fájljába.
-
-
-

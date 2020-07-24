@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: v-miegge
-ms.openlocfilehash: 817f9e362e639cbb8f0cc79607c376c0e8216ec7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3677d67f55cfccdc80245b2ec870ffa76b0a1940
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83664990"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088665"
 ---
 # <a name="troubleshoot-windows-boot-manager-error----0xc0000225-status-not-found"></a>A Windows rendszerindítási kezelőjével kapcsolatos hiba – 0xC0000225 "állapot nem található"
  
@@ -26,7 +27,7 @@ Ez a cikk a hibák megoldásának lépéseit ismerteti, amikor egy Azure-beli vi
 
 ## <a name="symptoms"></a>Probléma
 
-Amikor [rendszerindítási diagnosztika](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) használatával tekinti meg a virtuális gép képernyőképét, látni fogja, hogy a képernyőképen a Windows nem tudott elindítani hibát az állapotkód *0xc0000225*.
+Amikor [rendszerindítási diagnosztika](./boot-diagnostics.md) használatával tekinti meg a virtuális gép képernyőképét, látni fogja, hogy a képernyőképen a Windows nem tudott elindítani hibát az állapotkód *0xc0000225*.
 
 A hibakódhoz társított fájl tájékoztatja, hogy milyen lépéseket kell tennie a probléma megoldásához. Keresse meg a **fájl:** szakasz szövegét, és határozza meg a megfelelő műveletet.
 
@@ -89,7 +90,7 @@ A beállításjegyzék-struktúra sérülésének oka a következő lehet:
 
 ### <a name="create-and-access-a-repair-vm"></a>Javítási virtuális gép létrehozása és elérése
 
-1. A virtuálisgép- [javítási parancsok](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) 1-3-es lépéseit használva készítse elő a javítási virtuális gépet.
+1. A virtuálisgép- [javítási parancsok](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) 1-3-es lépéseit használva készítse elő a javítási virtuális gépet.
 1. A Távoli asztali kapcsolat használatával kapcsolódjon a javítási virtuális géphez.
 
 ### <a name="select-a-solution"></a>Megoldás kiválasztása
@@ -177,7 +178,7 @@ Ha ez az adatgyűjtés hibát jelez, amikor nincs **\boot\bcd** -fájl, akkor ha
          sel disk <DISK #>
          ```
 
-         Az alábbi képen egy lemez listázásának és kiválasztásának eredményei láthatók. 0. lemez (127 GB | Online), 1. lemez (32 GB | Online) és 2. lemez (127 GB | Online) a lista a (2. lemez) paranccsal van kiválasztva a parancs használatával `sel disk 2` .
+         Az alábbi képen egy lemez listázásának és kiválasztásának eredményei láthatók. A 0. lemez (127 GB/online), az 1. lemez (32 GB/online) és a 2. lemez (127 GB/online) szerepel a felsorolásban, a 2. lemez kiválasztásával a parancs használatával `sel disk 2` .
 
          ![A lista eredményei és a lemez kiválasztása. 0. lemez (127 GB | Online), 1. lemez (32 GB | Online) és 2. lemez (127 GB | Online) a felsorolásban a 2. lemez van kiválasztva.](./media/troubleshoot-boot-error-status-not-found/9.png)
 
@@ -188,7 +189,7 @@ Ha ez az adatgyűjtés hibát jelez, amikor nincs **\boot\bcd** -fájl, akkor ha
          sel partition <PARTITION #>
          ```
 
-         Az alábbi képen a partíciók listázásának és kiválasztásának eredményei láthatók. Az 1. partíció (foglalt | 16 MB), a 2. partíció (System | 100MB) és a 3. partíció (elsődleges | 126 GB) szerepel a felsorolásban, a 2. partíciót pedig a parancs használatával válassza ki `sel part 2` .
+         Az alábbi képen a partíciók listázásának és kiválasztásának eredményei láthatók. Az 1. partíció (fenntartott/16 MB), a 2. partíció (System/100MB) és a 3. partíció (elsődleges/126 GB) szerepel a felsorolásban, a 2. partíció a parancs használatával van kiválasztva `sel part 2` .
 
          ![A listaelemek és a partíciók kiválasztásának eredménye. Az 1. partíció (foglalt | 16 MB), a 2. partíció (System | 100MB) és a 3. partíció (elsődleges | 126 GB) szerepel a felsorolásban, a 2. partíció kiválasztásával.](./media/troubleshoot-boot-error-status-not-found/10.png)
 
@@ -302,4 +303,4 @@ A **beállításjegyzék-fájl** hibája megoldással rendelkezik, de további s
    
 ### <a name="rebuild-the-vm"></a>A virtuális gép újraépítése
 
-A virtuális gép újraépítéséhez használja [a virtuális gép javítási parancsainak 5. lépését](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) .
+A virtuális gép újraépítéséhez használja [a virtuális gép javítási parancsainak 5. lépését](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) .

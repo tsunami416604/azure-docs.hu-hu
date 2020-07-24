@@ -1,5 +1,5 @@
 ---
-title: A felügyelt identitás engedélyeinek megadása az Azure szinapszis munkaterületen
+title: Engedélyek megadása a felügyelt identitásnak a szinapszis munkaterületen
 description: Ez a cikk bemutatja, hogyan konfigurálhatja a felügyelt identitás engedélyeit az Azure szinapszis munkaterületen.
 author: RonyMSFT
 ms.service: synapse-analytics
@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 8e33bd127fca9ddce7b15d144fd287ec4a6bf0e2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9cb1ddceff30b247caf3ecd9ee3bc21d5addb519
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85193464"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089447"
 ---
 # <a name="grant-permissions-to-workspace-managed-identity-preview"></a>Engedélyek megadása a munkaterület által felügyelt identitásnak (előzetes verzió)
 

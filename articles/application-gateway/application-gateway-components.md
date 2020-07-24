@@ -5,14 +5,14 @@ services: application-gateway
 author: abshamsft
 ms.service: application-gateway
 ms.topic: conceptual
-ms.date: 02/20/2019
+ms.date: 07/20/2020
 ms.author: absha
-ms.openlocfilehash: 798137a74f22824dbfec9653bff327d3a0a1f3b4
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 20d43666919f8528c25735592c2727601af10bbb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186758"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088087"
 ---
 # <a name="application-gateway-components"></a>Az Application Gateway összetevői
 
@@ -69,13 +69,13 @@ Kétféle figyelő létezik:
 
 - **Alapszintű**. Ez a típusú figyelő egyetlen tartományi helyet figyel, ahol egyetlen DNS-hozzárendelés van az Application Gateway IP-címéhez. Ez a figyelő-konfiguráció akkor szükséges, ha egyetlen helyet üzemeltet az Application Gateway mögött.
 
-- **Több hely**. Ez a figyelő-konfiguráció akkor szükséges, ha egynél több webalkalmazást konfigurál ugyanazon az Application Gateway-példányon. Lehetővé teszi, hogy hatékonyabb topológiát konfiguráljon az üzemelő példányokhoz, ha akár 100 webhelyet ad hozzá egy Application gatewayhez. Mindegyik webhelyet a saját háttérkészletéhez lehet irányítani. Például három altartomány, abc.contoso.com, xyz.contoso.com és pqr.contoso.com, az Application Gateway IP-címére mutat. Hozzon létre három többhelyes figyelőt, és konfigurálja az egyes figyelőket a megfelelő port és protokoll beállításhoz.
+- **Több hely**. Ezt a figyelő konfigurációt akkor kell megadni, ha az adott alkalmazás-átjárón egynél több webalkalmazáshoz tartozó állomásnév vagy tartománynév alapján szeretné konfigurálni az útválasztást. Lehetővé teszi, hogy hatékonyabb topológiát konfiguráljon az üzemelő példányokhoz, ha akár 100 + webhelyet ad hozzá egy Application gatewayhez. Mindegyik webhelyet a saját háttérkészletéhez lehet irányítani. A három tartomány, a contoso.com, a fabrikam.com és a adatum.com például az Application Gateway IP-címére mutatnak. Hozzon létre három [többhelyes figyelőt](multiple-site-overview.md) , és konfigurálja az egyes figyelőket a megfelelő port és protokoll beállításhoz. 
 
-    További információ: [több hely üzemeltetése](application-gateway-web-app-overview.md).
+    A helyettesítő karakterek nevét többhelyes figyelőben és legfeljebb 5 állomásnévvel is meghatározhatja figyelőként. További információ: [helyettesítő karakterek nevei a figyelőben (előzetes verzió)](multiple-site-overview.md#wildcard-host-names-in-listener-preview).
 
-A figyelő létrehozása után társítsa azt egy kérelem-útválasztási szabállyal. Ez a szabály határozza meg, hogy a figyelőre érkező kérés hogyan legyen átirányítva a háttérbe.
+    A többhelyes figyelő konfigurálásával kapcsolatos további információkért lásd: [többhelyes üzemeltetés Application Gateway a Azure Portal használatával](create-multiple-sites-portal.md).
 
-Application Gateway a figyelőket a [megjelenő sorrendben](configuration-overview.md#order-of-processing-listeners)dolgozza fel.
+A figyelő létrehozása után társítsa azt egy kérelem-útválasztási szabállyal. Ez a szabály határozza meg, hogy a figyelőre érkező kérés hogyan legyen átirányítva a háttérbe. A kérelem útválasztási szabálya tartalmazza az átirányítani kívánt háttér-készletet is, valamint azt a HTTP-beállítást, amelyben a háttér-port, a protokoll stb. szerepel.
 
 ## <a name="request-routing-rules"></a>Kérelmek útválasztási szabályai
 
@@ -99,13 +99,13 @@ Kiválaszthatja, hogy az átirányítási cél egy másik figyelő legyen (amely
 
 További információ: [forgalom átirányítása az Application Gateway](redirect-overview.md)-ben.
 
-### <a name="rewrite-http-headers"></a>HTTP-fejlécek átírása
+### <a name="rewrite-http-headers-and-url"></a>HTTP-fejlécek és URL-cím újraírása
 
-A kérelmek útválasztási szabályainak használatával hozzáadhat, eltávolíthat vagy frissíthet HTTP (S) kéréseket és válasz fejléceket, mivel a kérelmek és válaszok csomagjai az Application Gateway segítségével az ügyfél és a háttérbeli készletek között mozognak.
+Az Újraírási szabályok használatával a HTTP (S) kérések és válaszok fejléceit, valamint az URL-cím és a lekérdezési karakterlánc paramétereit is hozzáadhatja, eltávolíthatja vagy frissítheti, mivel a kérelmek és válaszok csomagjai az Application Gateway segítségével az ügyfél és a háttérbeli készletek között mozognak.
 
-A fejlécek statikus értékekre vagy más fejlécekre és kiszolgálói változókra is állíthatók. Ez segíti a fontos használati eseteket, például az ügyfél IP-címeinek kinyerését, a háttér bizalmas adatainak eltávolítását, a nagyobb biztonság hozzáadását stb.
+A fejlécek és URL-paraméterek statikus értékekre vagy más fejlécekre és kiszolgálói változókra állíthatók be. Ez segíti a fontos használati eseteket, például az ügyfél IP-címeinek kinyerését, a háttér bizalmas adatainak eltávolítását, a nagyobb biztonság hozzáadását stb.
 
-További információt a HTTP- [fejlécek újraírása az Application Gateway](rewrite-http-headers.md)-ben című témakörben talál.
+További információ: HTTP- [fejlécek és URL-cím átírása az Application Gateway-](rewrite-http-headers-url.md)ben.
 
 ## <a name="http-settings"></a>HTTP-beállítások
 

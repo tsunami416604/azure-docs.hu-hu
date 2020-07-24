@@ -1,5 +1,5 @@
 ---
-title: Szinapszis Analytics SQL-erőforrás-felhasználás
+title: Szinapszis SQL-erőforrások felhasználása
 description: Ismerkedjen meg a szinapszis SQL-felhasználási modelljeivel az Azure szinapszis Analytics szolgáltatásban.
 services: synapse analytics
 author: vvasic-msft
@@ -8,14 +8,14 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: b81f1e49b2209d0a236f1fb453bb7fe679bb3608
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 364f1676740106d57e61f94beaec53682656ef40
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84112757"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089192"
 ---
-# <a name="azure-synapse-analytics-sql-resource-consumption"></a>Azure szinapszis Analytics SQL-erőforrások felhasználása
+# <a name="synapse-sql-resource-consumption"></a>Szinapszis SQL-erőforrások felhasználása
 
 Ez a cikk a szinapszis SQL (előzetes verzió) erőforrás-felhasználási modelljeit ismerteti.
 
@@ -107,7 +107,7 @@ Az aktuális DWU-beállítás megtekintése:
 
 1. Nyissa meg SQL Server Object Explorer a Visual Studióban.
 2. Kapcsolódjon a logikai SQL-kiszolgálóhoz társított Master adatbázishoz.
-3. Válasszon a sys. database_service_objectives dinamikus felügyeleti nézetből. Például:
+3. Válasszon a sys. database_service_objectives dinamikus felügyeleti nézetből. Alább bemutatunk egy példát:
 
 ```sql
 SELECT  db.name [Database]
@@ -128,7 +128,7 @@ DWU módosítása:
 
 2. A **skála**alatt mozgassa a csúszkát balra vagy jobbra a DWU beállítás módosításához.
 
-3. Kattintson a **Save** (Mentés) gombra. Ekkor megjelenik egy megerősítő üzenet. Kattintson az **igen** gombra a megerősítéshez vagy a **nem** gombra az elvetéshez.
+3. Kattintson a **Mentés** gombra. Ekkor megjelenik egy megerősítő üzenet. Kattintson az **igen** gombra a megerősítéshez vagy a **nem** gombra az elvetéshez.
 
 #### <a name="powershell"></a>PowerShell
 

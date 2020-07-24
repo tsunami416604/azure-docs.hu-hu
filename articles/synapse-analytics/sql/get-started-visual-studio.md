@@ -1,5 +1,5 @@
 ---
-title: Kapcsolódás és lekérdezés a szinapszis SQL-hez a Visual Studióval és a SSDT
+title: A szinapszis SQL összekötése és lekérdezése a Visual Studióval és a SSDT
 description: Az SQL-készlet lekérdezése az Azure szinapszis Analytics használatával a Visual Studióval.
 services: synapse analytics
 author: azaricstefan
@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3f98a9d6dd79ba1da1a3be1e9e187ed4e8eca8ee
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 93c975bbbc69a43f1bd47bd4b1e7b857338ac1c0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85962986"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089243"
 ---
 # <a name="connect-to-synapse-sql-with-visual-studio-and-ssdt"></a>Kapcsolódás a szinapszis SQLhoz a Visual Studióval és a SSDT
 > [!div class="op_single_selector"]
@@ -62,7 +62,7 @@ Az oktatóanyag használatához a következő összetevőket kell használnia:
 Most, hogy létrejött egy kapcsolódás az adatbázishoz, meg kell írnia egy lekérdezést.
 
 1. Kattintson a jobb gombbal az adatbázisára az SQL Server Object Explorer alatt.
-2. Válassza a **New Query** (Új lekérdezés) lehetőséget. Megnyílik egy új lekérdezési ablak.
+2. Válassza az **Új lekérdezés** lehetőséget. Megnyílik egy új lekérdezési ablak.
    
     ![Új lekérdezés](./media/get-started-visual-studio/new-query2.png)
 3. Másolja a következő T-SQL-lekérdezést a lekérdezési ablakba:

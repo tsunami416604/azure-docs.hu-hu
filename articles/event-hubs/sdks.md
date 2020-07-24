@@ -3,12 +3,12 @@ title: Azure Event Hubs – ügyféloldali SDK-k | Microsoft Docs
 description: Ez a cikk az Azure Event Hubs-hez készült ügyféloldali SDK-k adatait ismerteti.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 4c3557556500f2a536e20331bd3d05d84f608f0b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2b75a66197b152425198b94a68ac77e392cb4c0e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85312548"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087560"
 ---
 # <a name="azure-event-hubs---client-sdks"></a>Azure Event Hubs – ügyfél SDK-k
 Ez a cikk az Azure Event Hubs által támogatott SDK-k alábbi információit tartalmazza: 
@@ -33,8 +33,8 @@ Az alábbi táblázat az összes jelenleg elérhető Azure Event Hubs Runtime-ü
 |        | [Azure-eventhub-checkpointstoreblob-AIO](https://pypi.org/project/azure-eventhub-checkpointstoreblob-aio/) | <ul><li>[GitHub helye](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/eventhub/azure-eventhub-checkpointstoreblob-aio)</li><li>[Oktatóanyag](get-started-python-send-v2.md)</li></ul> |
 | JavaScript | [Azure/Event – hubok](https://www.npmjs.com/package/@azure/event-hubs) | <ul><li>[GitHub helye](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs)</li><li>[Oktatóanyag](get-started-node-send-v2.md)</li></ul> |
 |            | [Azure/eventhubs – checkpointstore – blob](https://www.npmjs.com/package/@azure/eventhubs-checkpointstore-blob) | <ul><li>[GitHub helye](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/eventhubs-checkpointstore-blob)</li><li>[Oktatóanyag](get-started-node-send-v2.md)</li></ul> |
-| Indítás | [Azure-Event-hubok – ugrás](https://github.com/Azure/azure-event-hubs-go) | <ul><li>[GitHub helye](https://github.com/Azure/azure-event-hubs-go)</li><li>[Oktatóanyag](event-hubs-go-get-started-send.md)</li></ul> |
-| C# | [Azure-Event-hubok-c](https://github.com/Azure/azure-event-hubs-c) | <ul><li>[GitHub helye](https://github.com/Azure/azure-event-hubs-c)</li><li>[Oktatóanyag](event-hubs-c-getstarted-send.md)</li></ul> |
+| Go | [Azure-Event-hubok – ugrás](https://github.com/Azure/azure-event-hubs-go) | <ul><li>[GitHub helye](https://github.com/Azure/azure-event-hubs-go)</li><li>[Oktatóanyag](event-hubs-go-get-started-send.md)</li></ul> |
+| C | [Azure-Event-hubok-c](https://github.com/Azure/azure-event-hubs-c) | <ul><li>[GitHub helye](https://github.com/Azure/azure-event-hubs-c)</li><li>[Oktatóanyag](event-hubs-c-getstarted-send.md)</li></ul> |
 
 ## <a name="management-sdks"></a>Felügyeleti SDK-k
 A következő táblázat felsorolja az aktuálisan elérhető felügyeleti könyvtárakat. Ezen függvénytárak egyike sem tartalmaz futtatókörnyezeti műveleteket, és kizárólag **Event Hubs entitások kezelésének**céljára szolgál.
@@ -48,6 +48,6 @@ A következő táblázat felsorolja az aktuálisan elérhető felügyeleti köny
 
 Az alábbi webhelyeken további információt talál az Event Hubsról:
 
-* [Event Hubs áttekintése](event-hubs-what-is-event-hubs.md)
-* [Event hub létrehozása](event-hubs-create.md)
+* [Event Hubs áttekintése](./event-hubs-about.md)
+* [Eseményközpont létrehozása](event-hubs-create.md)
 * [Event Hubs – gyakori kérdések](event-hubs-faq.md)

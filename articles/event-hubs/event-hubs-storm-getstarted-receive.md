@@ -3,12 +3,12 @@ title: 'Gyors útmutató: események fogadása Apache Storm használatával – 
 description: 'Gyors útmutató: ebben a cikkben arról olvashat, hogyan fogadhat eseményeket az Azure Event Hubs a Apache Storm használatával.'
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: 05973a9a930cd7b42a5a00554c48832065c794ec
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 099a3ff1ad57616de0d7929d787b82e9d55c9e00
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85315363"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087577"
 ---
 # <a name="quickstart-receive-events-from-event-hubs-using-apache-storm"></a>Gyors útmutató: események fogadása Event Hubs használatával Apache Storm
 
@@ -234,11 +234,11 @@ Ez az oktatóanyag egy [HDInsight Storm][HDInsight Storm] -telepítést használ
 Az alábbi webhelyeken további információt talál az Event Hubsról:
 
 * [Event Hubs áttekintése][Event Hubs overview]
-* [Eseményközpont létrehozása](event-hubs-create.md)
+* [Event hub létrehozása](event-hubs-create.md)
 * [Event Hubs – gyakori kérdések](event-hubs-faq.md)
 
 <!-- Links -->
-[Event Hubs overview]: event-hubs-what-is-event-hubs.md
+[Event Hubs overview]: ./event-hubs-about.md
 [HDInsight Storm]: ../hdinsight/storm/apache-storm-overview.md
 [HDInsight Storm az Event hub példával]: https://github.com/Azure-Samples/hdinsight-java-storm-eventhub
 

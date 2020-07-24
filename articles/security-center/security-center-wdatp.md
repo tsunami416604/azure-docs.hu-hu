@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2020
 ms.author: memildin
-ms.openlocfilehash: d394f0bb72f353e65c48a564fa7187364eae8121
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: f8ed7dc2caf3ad471ea7d4bb2fc8213114aad109
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970807"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089702"
 ---
 # <a name="microsoft-defender-advanced-threat-protection-with-azure-security-center"></a>A Microsoft Defender komplex veszélyforrások elleni védelem Azure Security Center
 
@@ -59,8 +59,9 @@ A konfigurálást követően nem módosíthatja azt a helyet, ahol az adatait t�
 
 A kiszolgálók Security Centerbe való bevezetéséhez kattintson az **Azure Security Center ugrás** gombra a Microsoft Defender ATP-kiszolgáló bevezetési kiszolgálóinak bevezetéséhez.
 
-1. A bevezetési **területen válasszon** ki vagy hozzon létre egy munkaterületet az adattároláshoz. <br>
-2. Ha nem látja az összes munkaterületet, akkor az engedélyek hiánya miatt előfordulhat, hogy a munkaterület az Azure Security Standard csomagra van beállítva. További információ: a [frissítés a Security Center Standard szintjére a fokozott biztonság érdekében](security-center-pricing.md).
+1. A bevezetési **területen válasszon** ki vagy hozzon létre egy munkaterületet az adattároláshoz.
+
+2. Ha nem látja az összes munkaterületet, előfordulhat, hogy az engedélyek hiánya miatt a munkaterület az Azure Security Standard díjszabási szintjére van beállítva. További információ: a [frissítés a Security Center Standard szintjére a fokozott biztonság érdekében](security-center-pricing.md).
     
 3. Válassza a **kiszolgálók hozzáadása** lehetőséget a log Analytics ügynök telepítésére vonatkozó utasítások megtekintéséhez. 
 

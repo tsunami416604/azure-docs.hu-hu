@@ -1,19 +1,20 @@
 ---
-title: A szinapszis Analytics biztonsági alapterve az Azure biztonsági teljesítményteszthez
+title: Az Azure biztonsági alapterve a szinapszis Analyticshez
 description: A szinapszis Analytics biztonsági alapterve eljárási útmutatást és erőforrásokat biztosít az Azure biztonsági Teljesítménytesztben meghatározott biztonsági javaslatok megvalósításához.
 author: msmbaldwin
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.date: 07/02/2020
+ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 4b40bdeb6f60aafea760c6c6e3e0b0f99b419614
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 34453dacd763b8b6a2bff3d977a7bc9b2ab78ca9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86040656"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089328"
 ---
-# <a name="synapse-analytics-security-baseline-for-azure-security-benchmark"></a>A szinapszis Analytics biztonsági alapterve az Azure biztonsági teljesítményteszthez
+# <a name="azure-security-baseline-for-synapse-analytics"></a>Az Azure biztonsági alapterve a szinapszis Analyticshez
 
 A szinapszis Analytics Azure biztonsági alapterve olyan javaslatokat tartalmaz, amelyek segítségével javíthatja az üzemelő példány biztonsági állapotát.
 
@@ -27,9 +28,9 @@ További információ: [Azure Security](https://docs.microsoft.com/azure/securit
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1,1: Azure-erőforrások biztosítása virtuális hálózatokon belül
 
-**Útmutató**: biztonságos Azure SQL Database a virtuális hálózathoz privát kapcsolaton keresztül. Az Azure Private link lehetővé teszi, hogy a virtuális hálózat privát végpontján keresztül hozzáférjen az Azure Pásti-szolgáltatásokhoz. A virtuális hálózat és a szolgáltatás közötti forgalom a Microsoft gerinc hálózatán halad át.
+**Útmutató**: az Azure-SQL Server védelme privát kapcsolaton keresztül virtuális hálózatra. Az Azure Private link lehetővé teszi, hogy a virtuális hálózat privát végpontján keresztül hozzáférjen az Azure Pásti-szolgáltatásokhoz. A virtuális hálózat és a szolgáltatás közötti forgalom a Microsoft gerinc hálózatán halad át.
 
-Azt is megteheti, hogy a szinapszis SQL-készlethez való csatlakozáskor leszűkíti a kimenő kapcsolat hatókörét SQL Database egy hálózati biztonsági csoport használatával. Tiltsa le a nyilvános végponton keresztül SQL Database összes Azure-szolgáltatás forgalmát az Azure-szolgáltatások kikapcsolásának engedélyezése beállítással. Győződjön meg arról, hogy a tűzfalszabályok nem engedélyezik nyilvános IP-címek beírását.
+Azt is megteheti, hogy a szinapszis SQL-készlethez való csatlakozáskor leszűkíti a kimenő kapcsolat hatókörét az SQL-adatbázishoz egy hálózati biztonsági csoport használatával. Az Azure-szolgáltatások kikapcsolásának engedélyezése beállítás megadásával tiltsa le az összes Azure-szolgáltatás forgalmát az SQL-adatbázishoz a nyilvános végponton keresztül. Győződjön meg arról, hogy a tűzfalszabályok nem engedélyezik nyilvános IP-címek beírását.
 
 * [Az Azure privát hivatkozásának megismerése](https://docs.microsoft.com/azure/private-link/private-link-overview)
 
@@ -43,7 +44,7 @@ Azt is megteheti, hogy a szinapszis SQL-készlethez való csatlakozáskor leszű
 
 **Felelősség**: ügyfél
 
-### <a name="12-monitor-and-log-the-configuration-and-traffic-of-virtual-networks-subnets-and-nics"></a>1,2: a virtuális hálózatok, alhálózatok és hálózati adapterek konfigurációjának és forgalmának figyelése és naplózása
+### <a name="12-monitor-and-log-the-configuration-and-traffic-of-virtual-networks-subnets-and-network-interfaces"></a>1,2: a virtuális hálózatok, alhálózatok és hálózati adapterek konfigurációjának és forgalmának figyelése és naplózása
 
 **Útmutató**: Ha az Azure szinapszis SQL-készlethez csatlakozik, és engedélyezte a hálózati biztonsági csoport (NSG) folyamatának naplóit, naplókat küldhet egy Azure Storage-fiókba a forgalom naplózásához.
 
@@ -69,7 +70,7 @@ NSG-naplókat is küldhet egy Log Analytics munkaterületre, és a Traffic Analy
 
 **Felelősség**: nem alkalmazható
 
-### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1,4: az ismert kártékony IP-címekkel folytatott kommunikáció megtagadása
+### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1,4: az ismert kártevő IP-címekkel folytatott kommunikáció megtagadása
 
 **Útmutató**: az Azure szinapszis SQL fejlett veszélyforrások elleni védelme (ATP) használata. Az ATP olyan rendellenes tevékenységeket észlel, amelyek szokatlan és potenciálisan ártalmas kísérleteket mutatnak az adatbázisok elérésére vagy kiaknázására, és különböző riasztásokat indíthatnak, például a "lehetséges SQL-injektálást" és "a szokatlan helyről való hozzáférést". Az ATP a speciális adatbiztonsági (ADS) ajánlat része, és a központi SQL ADS portálon keresztül érhető el és kezelhető.
 
@@ -123,7 +124,7 @@ Az elosztott szolgáltatásmegtagadási támadások elleni védelem érdekében 
 
 **Útmutató**: hálózati biztonsági csoportok vagy Azure Firewall hálózati hozzáférés-vezérlésének definiálásához használja a virtuális hálózati szolgáltatás címkéit. Biztonsági szabályok létrehozása során szolgáltatáscímkéket használhat bizonyos IP-címek helyett. Ha egy szabály megfelelő forrás vagy cél mezőjében megadja a szolgáltatási címke nevét (például ApiManagement), akkor engedélyezheti vagy megtagadhatja a megfelelő szolgáltatás forgalmát. A Microsoft kezeli a szolgáltatási címke által felölelt címek előtagjait, és automatikusan frissíti a szolgáltatási címkét a címek változásával.
 
-Ha az Azure szinapszis SQL-készlethez szolgáltatási végpontot használ, akkor a Azure SQL Database nyilvános IP-címekre való kimenő forgalom megadása kötelező: hálózati biztonsági csoportokat (NSG) kell megnyitni ahhoz, hogy a kapcsolat engedélyezze a Azure SQL Database IP-címeket. Ezt a Azure SQL Database NSG-szolgáltatásának címkéi segítségével teheti meg.
+Ha az Azure szinapszis SQL-készlethez szolgáltatási végpontot használ, az Azure SQL Database nyilvános IP-címeire való kimenő forgalomra van szükség: hálózati biztonsági csoportok (NSG) megnyitásához meg kell nyitni Azure SQL Database IP-címeket a kapcsolat engedélyezéséhez. Ezt a Azure SQL Database NSG-szolgáltatásának címkéi segítségével teheti meg.
 
 * [A szolgáltatás-címkék ismertetése a Azure SQL Database szolgáltatás-végpontokkal](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview#limitations)
 
@@ -135,7 +136,7 @@ Ha az Azure szinapszis SQL-készlethez szolgáltatási végpontot használ, akko
 
 ### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1,9: a hálózati eszközök szabványos biztonsági konfigurációinak fenntartása
 
-**Útmutató**: hálózati biztonsági konfigurációk definiálása és implementálása az SQL-készlethez kapcsolódó erőforrások Azure Policy használatával. A "Microsoft. SQL" névtér használatával egyéni házirend-definíciókat határozhat meg, vagy felhasználhatja a Azure SQL Database/Server Network Protection szolgáltatáshoz tervezett beépített szabályzat-definíciókat is. A Azure SQL Database-kiszolgáló megfelelő beépített hálózati biztonsági házirendjének példája a következő: "SQL Server virtuális hálózati szolgáltatás-végpontot használjon".
+**Útmutató**: hálózati biztonsági konfigurációk definiálása és implementálása az SQL-készlethez kapcsolódó erőforrások Azure Policy használatával. A "Microsoft. SQL" névtér használatával egyéni szabályzat-definíciókat határozhat meg, illetve az Azure SQL Database/Server Network Protection szolgáltatáshoz tervezett beépített szabályzat-definíciókat is használhatja. A Azure SQL Database-kiszolgáló megfelelő beépített hálózati biztonsági házirendjének példája a következő: "SQL Server virtuális hálózati szolgáltatás-végpontot használjon".
 
 Az Azure-tervezetek segítségével leegyszerűsítheti a nagyméretű Azure-környezetek nagy léptékű üzembe helyezését a főbb környezeti összetevők, például az Azure Resource Management-sablonok, a szerepköralapú hozzáférés-vezérlés (RBAC) és a házirendek egyetlen tervezet-definícióban való kicsomagolásával. Egyszerűen alkalmazhatja a tervrajzot új előfizetésekre és környezetekre, és részletesen beállíthatja a vezérlést és a felügyeletet a verziószámozással.
 
@@ -359,7 +360,7 @@ Az adatbázishoz tartozó rendszergazdai fiókok azonosításához nyissa meg a 
 
 **Felelősség**: ügyfél
 
-### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3,4: egyszeri bejelentkezés (SSO) használata Azure Active Directory
+### <a name="34-use-azure-active-directory-single-sign-on-sso"></a>3,4: Azure Active Directory egyszeri bejelentkezés (SSO) használata
 
 **Útmutató**: az Azure-alkalmazás regisztrálása (egyszerű szolgáltatásnév) használatával lekérheti az adattárházat a vezérlési síkon (Azure Portal) API-hívásokon keresztül felhasználható jogkivonatot.
 
@@ -387,7 +388,7 @@ Az adatbázishoz tartozó rendszergazdai fiókok azonosításához nyissa meg a 
 
 **Felelősség**: ügyfél
 
-### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3,6: dedikált gépek (privilegizált hozzáférési munkaállomások) használata az összes felügyeleti feladathoz
+### <a name="36-use-secure-azure-managed-workstations-for-administrative-tasks"></a>3,6: biztonságos, Azure által felügyelt munkaállomások használata felügyeleti feladatokhoz
 
 **Útmutató**: az Azure-erőforrások bevezetésére és konfigurálására konfigurált multi-Factor Authentication (MFA) rendelkező, rendszerjogosultságú hozzáférési munkaállomás (Paw) használata.
 
@@ -475,7 +476,7 @@ SQL-hitelesítés használatakor hozzon létre tárolt adatbázis-felhasználók
 
 **Felelősség**: ügyfél
 
-### <a name="312-alert-on-account-login-behavior-deviation"></a>3,12: riasztás a fiók bejelentkezési viselkedésének eltérése esetén
+### <a name="312-alert-on-account-sign-in-behavior-deviation"></a>3,12: riasztás a fiók bejelentkezési viselkedésének eltérése esetén
 
 **Útmutató**: az Azure Active Directory (Azure ad) Identity Protection és a kockázati észlelési funkciók használatával konfigurálhatja a felhasználói identitásokkal kapcsolatos gyanús műveletekre vonatkozó automatizált válaszokat. Emellett további vizsgálat céljából az Azure Sentinelbe is betöltheti a táblát, és beolvashatja azokat.
 
@@ -583,7 +584,7 @@ Emellett beállíthat egy dinamikus adatmaszkolási (DDM-) szabályzatot is a Az
 
 ### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: szerepköralapú hozzáférés-vezérlés használata az erőforrásokhoz való hozzáférés szabályozásához
 
-**Útmutató**: az Azure szerepköralapú hozzáférés-vezérlés (RBAC) használata a szinapszis SQL-készletben lévő Azure SQL Database elérésének kezeléséhez.
+**Útmutató**: az Azure szerepköralapú hozzáférés-vezérlés (RBAC) használatával kezelheti az Azure SQL-adatbázisokhoz való hozzáférést a szinapszis SQL-készletében.
 
 Az engedélyezést a felhasználói fiók adatbázis-szerepköri tagsága és az objektum szintű engedélyek vezérlik. Ajánlott eljárásként csak a minimálisan szükséges engedélyeket adja meg a felhasználóknak.
 
@@ -641,9 +642,9 @@ Emellett az SQL szinapszis-készletben lévő adatbázisokhoz is beállíthat ri
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5,1: automatikus biztonsági rések vizsgálatára szolgáló eszközök futtatása
 
-**Útmutató**: engedélyezze a speciális adatbiztonságot, és kövesse Azure Security Center a sebezhetőségi felmérések SQL Databasen való végrehajtásáról szóló ajánlásokat.
+**Útmutató**: engedélyezze a speciális adatbiztonságot, és kövesse az Azure Security Center a sebezhetőségi felmérések Azure SQL-adatbázisokon való végrehajtásáról szóló ajánlásokat.
 
-* [Sebezhetőségi felmérések futtatása a Azure SQL Databaseon](https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment)
+* [Sebezhetőségi felmérések futtatása Azure SQL-adatbázisokon](https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment)
 
 * [A speciális adatbiztonság engedélyezése](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security)
 
@@ -737,7 +738,7 @@ Bár a klasszikus Azure-erőforrások felderíthető az Azure Resource Graph has
 
 **Felelősség**: ügyfél
 
-### <a name="64-define-and-maintain-an-inventory-of-approved-azure-resources"></a>6,4: jóváhagyott Azure-erőforrások leltárának meghatározása és karbantartása
+### <a name="64-define-and-maintain-inventory-of-approved-azure-resources"></a>6,4: a jóváhagyott Azure-erőforrások leltárának meghatározása és karbantartása
 
 **Útmutató**: a szinapszis SQL-készlethez kapcsolódó jóváhagyott Azure-erőforrások listájának meghatározása.
 
@@ -845,8 +846,7 @@ Az Azure Resource Graph használatával lekérdezheti vagy felderítheti az elő
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7,1: biztonságos konfigurációk létrehozása az összes Azure-erőforráshoz
 
-**Útmutató**: Azure Policy aliasok használata a "Microsoft. SQL" névtérben egyéni szabályzatok létrehozásához a szinapszis SQL-készlethez kapcsolódó erőforrások konfigurációjának naplózásához vagy érvényesítéséhez. Az Azure-adatbázisokhoz beépített szabályzat-definíciókat is használhat, például:
-
+**Útmutató**: Azure Policy aliasok használata a "Microsoft. SQL" névtérben egyéni szabályzatok létrehozásához a szinapszis SQL-készlethez kapcsolódó erőforrások konfigurációjának naplózásához vagy érvényesítéséhez. Az Azure Database/Server beépített szabályzat-definícióit is használhatja, például:
 - Veszélyforrások észlelésének üzembe helyezése SQL-kiszolgálókon
 - SQL Server virtuális hálózati szolgáltatás végpontját kell használnia
 

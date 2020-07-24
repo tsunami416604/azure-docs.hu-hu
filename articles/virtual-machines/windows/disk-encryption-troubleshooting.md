@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 11c1e0bf10725173a2a341addf4c3f845bbb7fba
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a4d16edae3b41bc9c3b4a849935fe8c6f94504ae
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82085688"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088427"
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Azure Disk Encryption hibaelhárítási útmutató
 
@@ -31,12 +31,12 @@ Az alábbi lépések bármelyikének megkezdése előtt győződjön meg arról,
 
 Ha a kapcsolatot tűzfal, proxy vagy hálózati biztonsági csoport (NSG) beállításai korlátozzák, előfordulhat, hogy a bővítménynek a szükséges feladatok elvégzésére való képessége megszakad. Ez a megszakítás olyan állapotüzenetek elvégzését eredményezheti, mint például a "bővítmény állapota nem érhető el a virtuális gépen". A várt helyzetekben a titkosítás nem fejeződik be. Az alábbi szakaszokban néhány gyakori tűzfallal kapcsolatos probléma merülhet fel.
 
-### <a name="network-security-groups"></a>Network security groups (Hálózati biztonsági csoportok)
+### <a name="network-security-groups"></a>Hálózati biztonsági csoportok
 Az alkalmazott hálózati biztonsági csoportok beállításai továbbra is lehetővé teszik, hogy a végpont megfeleljen a lemez titkosításának dokumentált hálózati konfigurációs [előfeltételeinek](disk-encryption-overview.md#networking-requirements) .
 
 ### <a name="azure-key-vault-behind-a-firewall"></a>Azure Key Vault tűzfal mögött
 
-Ha engedélyezve van a titkosítás az [Azure ad hitelesítő adataival](disk-encryption-windows-aad.md#), a CÉLKÉNT megadott virtuális gépnek Azure Active Directory végpontokhoz és Key Vault végpontokhoz is engedélyeznie kell a kapcsolatot. Az aktuális Azure Active Directory hitelesítési végpontok az [Office 365 URL-címeinek és IP-címtartományok](https://docs.microsoft.com/office365/enterprise/urls-and-ip-address-ranges) dokumentációjának 56-es és 59-es szakaszában maradnak. Key Vault útmutatást a [tűzfal mögötti Azure Key Vault elérésének](../../key-vault/general/access-behind-firewall.md)dokumentációjában talál.
+Ha engedélyezve van a titkosítás az [Azure ad hitelesítő adataival](disk-encryption-windows-aad.md#), a CÉLKÉNT megadott virtuális gépnek Azure Active Directory végpontokhoz és Key Vault végpontokhoz is engedélyeznie kell a kapcsolatot. Az aktuális Azure Active Directory hitelesítési végpontok az [Office 365 URL-címeinek és IP-címtartományok](/office365/enterprise/urls-and-ip-address-ranges) dokumentációjának 56-es és 59-es szakaszában maradnak. Key Vault útmutatást a [tűzfal mögötti Azure Key Vault elérésének](../../key-vault/general/access-behind-firewall.md)dokumentációjában talál.
 
 ### <a name="azure-instance-metadata-service"></a>Azure Instance Metadata szolgáltatás 
 A virtuális gépnek képesnek kell lennie elérni az [Azure-példány metaadatainak szolgáltatási](../windows/instance-metadata-service.md) végpontját, amely egy jól ismert, nem irányítható IP-címet ( `169.254.169.254` ) használ, amely csak a virtuális gépről érhető el.  A helyi HTTP-forgalmat az erre a címmé megváltoztató proxy-konfigurációk nem támogatottak.
@@ -88,5 +88,5 @@ A CLI-vel való Azure Disk Encryption letiltásához használja [az az VM encryp
 
 Ebben a dokumentumban többet is megtudhat a Azure Disk Encryption és a problémák elhárításával kapcsolatos gyakori problémákról. A szolgáltatással és képességeivel kapcsolatos további információkért tekintse meg a következő cikkeket:
 
-- [Lemez titkosításának alkalmazása Azure Security Center](../../security-center/security-center-apply-disk-encryption.md)
-- [Az Azure-beli adattitkosítás inaktív állapotban](../../security/fundamentals/encryption-atrest.md)
+- [Lemez titkosításának alkalmazása Azure Security Center](../../security-center/security-center-virtual-machine-protection.md)
+- [Inaktív adatok titkosítása az Azure-ban](../../security/fundamentals/encryption-atrest.md)

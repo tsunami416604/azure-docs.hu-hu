@@ -15,11 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 4/26/2019
 ms.author: steveesp
 ms.reviewer: kumud, mareat
-ms.openlocfilehash: 47f58b25b082784177910d14ab95d8d242fda71a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1cbec961f6249ebd59324dca1745bfd9e77f5388
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84696000"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088172"
 ---
 # <a name="virtual-machine-network-bandwidth"></a>Virtuális gép hálózati sávszélessége
 
@@ -55,8 +56,8 @@ A végpontok közötti adatátvitel több folyamat létrehozását igényli az a
 
 Napjainkban az Azure hálózati verem támogatja a 250K teljes hálózati folyamatait, és jó teljesítményt nyújt a több mint 8 CPU-magot tartalmazó virtuális gépekhez, és a teljes körű teljesítmény a 8 CPU-nál kevesebb processzorral rendelkező virtuális gépek esetében. Ez a korlátozás a hálózati teljesítményre vonatkozóan zökkenőmentesen csökkenti a további folyamatokat, amelyeknek a terhelése 500 000 000 teljes folyamat, a 250K bejövő és a 250K kimenő, a további folyamatok eldobása után.
 
-||Virtuális gépek <8 CPU-maggal|Virtuális gépek 8 és CPU maggal|
-|---|---|---|
+| Teljesítményszint | Virtuális gépek <8 CPU-maggal | Virtuális gépek 8 és CPU maggal |
+| ----------------- | --------------------- | --------------------- |
 |<b>Jó teljesítmény</b>|100 000 folyamat |250K-folyamatok|
 |<b>Csökkentett teljesítmény</b>|Több mint 100 000 folyamat|250K-folyamatok felett|
 |<b>Folyamat korlátja</b>|500K-folyamatok|500K-folyamatok|

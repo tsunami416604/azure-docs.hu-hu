@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: delhan
-ms.openlocfilehash: d569bf454a62272a5c60cc92abc0f24715218894
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 507cd6cfe9f251dbc304b579d634ff986b001264
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85958395"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088597"
 ---
 # <a name="troubleshoot-azure-vm-rdp-connection-issues-by-event-id"></a>Az Azure-beli virtuális gépek kapcsolati hibáinak elhárítása eseményazonosító alapján 
 
@@ -112,7 +113,7 @@ Ez a probléma azért fordul elő, mert a virtuális gép következő mappájáb
 
 2. Sérült vagy hiányzó RSA-kulcs.
 
-### <a name="resolution"></a>Megoldás:
+### <a name="resolution"></a>Feloldás
 
 A probléma elhárításához az alábbi lépéseket követve be kell állítania az RDP-tanúsítvány megfelelő engedélyeit.
 
@@ -230,7 +231,7 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Schannel'] and 
 
 Ezt a problémát a biztonsági házirendek okozzák. Ha a TLS régebbi verziói (például 1,0) le vannak tiltva, az RDP-hozzáférés meghiúsul.
 
-### <a name="resolution"></a>Megoldás:
+### <a name="resolution"></a>Feloldás
 
 Az RDP a TLS 1,0 protokollt használja alapértelmezett protokollként. Előfordulhat azonban, hogy a protokoll a TLS 1,1-re módosul, amely az új standard.
 
@@ -283,19 +284,18 @@ Ez a probléma azért fordul elő, mert a Távoli asztali kapcsolatszervező-kis
 
 Az állomásnév a belső Windows-adatbázis bejegyzéseivel és függőségeivel rendelkezik, amelyekre szükség van a Távoli asztal Service Farm számára ahhoz, hogy működni tudjon. Ha úgy módosítja a gazdagépet, hogy a farm már készen áll, számos hibát okoz, és a közvetítő kiszolgáló leállhat.
 
-### <a name="resolution"></a>Megoldás: 
+### <a name="resolution"></a>Feloldás 
 
 A probléma megoldásához újra kell telepíteni a Távoli asztali kapcsolatszervező szerepkört és a belső Windows-adatbázist.
 
 ## <a name="next-steps"></a>Következő lépések
 
-[Schannel-események](https://technet.microsoft.com/library/dn786445(v=ws.11).aspx)
+[Schannel-események](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn786445(v=ws.11))
 
-[Schannel SSP Technical Overview (A Schannel SSP műszaki áttekintése)](https://technet.microsoft.com/library/dn786429(v=ws.11).aspx)
+[Schannel SSP Technical Overview (A Schannel SSP műszaki áttekintése)](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn786429(v=ws.11))
 
-[Az RDP sikertelen az 1058-es azonosítójú esemény & a 36870-es azonosítójú esemény Távoli asztal a munkamenet-gazdagép tanúsítványával & SSL-kommunikáció](https://blogs.technet.microsoft.com/askperf/2014/10/22/rdp-fails-with-event-id-1058-event-36870-with-remote-desktop-session-host-certificate-ssl-communication/)
+[Az RDP sikertelen az 1058-es azonosítójú esemény & a 36870-es azonosítójú esemény Távoli asztal a munkamenet-gazdagép tanúsítványával & SSL-kommunikáció](https://techcommunity.microsoft.com/t5/ask-the-performance-team/bg-p/AskPerf)
 
-[Schannel 36872 vagy Schannel 36870 egy tartományvezérlőn](https://blogs.technet.microsoft.com/instan/2009/01/05/schannel-36872-or-schannel-36870-on-a-domain-controller/)
+[Schannel 36872 vagy Schannel 36870 egy tartományvezérlőn](/archive/blogs/instan/schannel-36872-or-schannel-36870-on-a-domain-controller)
 
-[1058-es AZONOSÍTÓJÚ esemény – hitelesítés és titkosítás Távoli asztali szolgáltatások](https://technet.microsoft.com/library/ee890862(v=ws.10).aspx)
-
+[1058-es AZONOSÍTÓJÚ esemény – hitelesítés és titkosítás Távoli asztali szolgáltatások](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/ee890862(v=ws.10))

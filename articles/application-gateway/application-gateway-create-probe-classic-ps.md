@@ -1,5 +1,5 @@
 ---
-title: Egyéni mintavétel létrehozása a PowerShell használatával – Azure Application Gateway
+title: Egyéni mintavétel létrehozása a klasszikus üzembe helyezési modell használatával – Azure Application Gateway
 description: Ismerje meg, hogyan hozhat létre egyéni mintavételt a Application Gatewayhoz a PowerShell használatával a klasszikus üzemi modellben
 services: application-gateway
 author: vhorne
@@ -7,17 +7,17 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: 3a555fff758fdd1f4ddff60c7828a3e44af008ce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1445d1418bde6d5d15e365c59ceb56e7661faccb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84807288"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088070"
 ---
 # <a name="create-a-custom-probe-for-azure-application-gateway-classic-by-using-powershell"></a>Egyéni mintavétel létrehozása az Azure Application Gateway (klasszikus) szolgáltatáshoz a PowerShell használatával
 
 > [!div class="op_single_selector"]
-> * [Azure Portalra](application-gateway-create-probe-portal.md)
+> * [Azure Portal](application-gateway-create-probe-portal.md)
 > * [Azure Resource Manager PowerShell](application-gateway-create-probe-ps.md)
 > * [Klasszikus Azure PowerShell](application-gateway-create-probe-classic-ps.md)
 
@@ -142,10 +142,10 @@ A konfigurációs paraméterek a következők:
 
 |Paraméter|Leírás|
 |---|---|
-|**Name (Név)** |Az egyéni mintavétel hivatkozási neve. |
+|**Név** |Az egyéni mintavétel hivatkozási neve. |
 | **Protokoll** | Használt protokoll (a lehetséges értékek HTTP vagy HTTPS).|
 | **Gazdagép** és **elérési út** | Teljes URL-cím elérési útja, amelyet az Application Gateway hív meg a példány állapotának meghatározásához. Ha például van egy webhely http: \/ /contoso.com/, akkor az egyéni mintavétel konfigurálható a "http: \/ /contoso.com/Path/custompath.htm" értékre a mintavételi ellenőrzésekhez, hogy sikeres legyen a http-válasz.|
-| **Időköz** | A mintavételi időköz ellenőrzésének beállítása másodpercben.|
+| **Intervallum** | A mintavételi időköz ellenőrzésének beállítása másodpercben.|
 | **Időtúllépés** | Meghatározza a mintavétel időtúllépését a HTTP-válaszok esetében.|
 | **UnhealthyThreshold** | A háttérbeli példány *sérültként*való megjelöléséhez szükséges sikertelen http-válaszok száma.|
 

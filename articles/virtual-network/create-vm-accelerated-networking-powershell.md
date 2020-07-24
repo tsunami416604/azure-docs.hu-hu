@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 04/15/2020
 ms.author: gsilva
-ms.openlocfilehash: 2dc7b0447a97cdafc88d2cee4612aba22c1e0eea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 582553675284e88e4707812b1f6b459a4e67f14a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84975792"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088189"
 ---
 # <a name="create-a-windows-vm-with-accelerated-networking-using-azure-powershell"></a>Gyorsított hálózatkezeléssel rendelkező Windows rendszerű virtuális gép létrehozása Azure PowerShell használatával
 
@@ -63,7 +63,7 @@ Az alábbi disztribúciók közvetlenül az Azure-katalógusból támogatottak:
 
 A gyorsított hálózatkezelést a legtöbb általános célú és a számítási optimalizált példány mérete támogatja két vagy több virtuális processzorral (vCPU).  A támogatott adatsorozatok a következők: Dv2/DSv2 és F/FS.
 
-Az feleznie-t támogató példányokon a gyorsított hálózatkezelést a négy vagy több vCPU rendelkező virtuálisgép-példányok támogatják. Támogatott adatsorozatok: D/Dsv3, D/Dsv4, E/Esv3, EA/Easv4, Fsv2, Lsv2, MS/MMS és MS/Mmsv2.
+Az feleznie-t támogató példányokon a gyorsított hálózatkezelést a négy vagy több vCPU rendelkező virtuálisgép-példányok támogatják. A támogatott adatsorozatok: D/Dsv3, D/Dsv4, da/Dasv4, E/Esv3, EA/Easv4, Fsv2, Lsv2, MS/MMS és MS/Mmsv2.
 
 A virtuálisgép-példányokkal kapcsolatos további információkért lásd: [a Windows rendszerű virtuális gépek méretei az Azure-ban](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 

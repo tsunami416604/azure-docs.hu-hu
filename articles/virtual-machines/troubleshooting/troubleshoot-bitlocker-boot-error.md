@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 08/23/2019
 ms.author: genli
 ms.custom: has-adal-ref
-ms.openlocfilehash: e0e0d9bfe46a473210b89701b5a8c56e999771d3
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 23523a3618ad31e34a81152e48d4ee0f606e5aac
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86132947"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088530"
 ---
 # <a name="bitlocker-boot-errors-on-an-azure-vm"></a>BitLocker rendszerindítási hibák egy Azure-beli virtuális gépen
 
@@ -28,7 +28,7 @@ ms.locfileid: "86132947"
 
 ## <a name="symptom"></a>Hibajelenség
 
- Egy Windows rendszerű virtuális gép nem indul el. Amikor bejelöli a képernyőképeket a [rendszerindítási diagnosztika](../windows/boot-diagnostics.md) ablakban, a következő hibaüzenetek egyike jelenik meg:
+ Egy Windows rendszerű virtuális gép nem indul el. Amikor bejelöli a képernyőképeket a [rendszerindítási diagnosztika](./boot-diagnostics.md) ablakban, a következő hibaüzenetek egyike jelenik meg:
 
 - Csatlakoztassa a BitLocker-kulcsot tartalmazó USB-illesztőprogramot
 
@@ -48,7 +48,7 @@ A probléma megoldásához állítsa le és szabadítsa fel a virtuális gépet,
 Ha ez a módszer nem oldja meg a problémát, kövesse az alábbi lépéseket a BEK-fájl manuális visszaállításához:
 
 1. Készítsen pillanatképet az érintett virtuális gép rendszerlemezéről biztonsági másolatként. További információ: [lemez pillanatképe](../windows/snapshot-copy-managed-disk.md).
-2. [Csatlakoztassa a rendszerlemezt egy helyreállítási virtuális géphez](troubleshoot-recovery-disks-portal-windows.md). A 7. lépésben a [manage-bde](https://docs.microsoft.com/windows-server/administration/windows-commands/manage-bde) parancs futtatásához a **BitLocker meghajtótitkosítás** funkciót engedélyeznie kell a helyreállítási virtuális gépen.
+2. [Csatlakoztassa a rendszerlemezt egy helyreállítási virtuális géphez](troubleshoot-recovery-disks-portal-windows.md). A 7. lépésben a [manage-bde](/windows-server/administration/windows-commands/manage-bde) parancs futtatásához a **BitLocker meghajtótitkosítás** funkciót engedélyeznie kell a helyreállítási virtuális gépen.
 
     Felügyelt lemez csatlakoztatásakor előfordulhat, hogy a "titkosítási beállításokat tartalmaz, ezért nem használható adatlemezként" hibaüzenet jelenik meg. Ebben az esetben futtassa a következő parancsfájlt a lemez csatlakoztatásához:
 
@@ -70,7 +70,7 @@ Ha ez a módszer nem oldja meg a problémát, kövesse az alábbi lépéseket a 
     ```
      Nem csatolhat felügyelt lemezt egy blob-lemezképből visszaállított virtuális géphez.
 
-3. Ha a lemez csatlakoztatva van, hozzon egy távoli asztali kapcsolattal a helyreállítási virtuális gépet, hogy néhány Azure PowerShell szkriptet futtasson. Győződjön meg arról, hogy a helyreállítási virtuális gépen a [Azure PowerShell legújabb verziója](https://docs.microsoft.com/powershell/azure/overview) van telepítve.
+3. Ha a lemez csatlakoztatva van, hozzon egy távoli asztali kapcsolattal a helyreállítási virtuális gépet, hogy néhány Azure PowerShell szkriptet futtasson. Győződjön meg arról, hogy a helyreállítási virtuális gépen a [Azure PowerShell legújabb verziója](/powershell/azure/) van telepítve.
 
 4. Nyisson meg egy emelt szintű Azure PowerShell-munkamenetet (Futtatás rendszergazdaként). A következő parancsok futtatásával jelentkezzen be az Azure-előfizetésbe:
 

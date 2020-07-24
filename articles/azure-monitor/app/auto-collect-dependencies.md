@@ -5,15 +5,16 @@ ms.topic: reference
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/06/2020
-ms.openlocfilehash: 21e98ee9dc59e7520fb715f1146e492b9198f883
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ba7830cc1c0a3e6a563b4343b37ec07f7d508af4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82891601"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087985"
 ---
 # <a name="dependency-auto-collection"></a>Függőségek automatikus összegyűjtése
 
-Az alábbiakban látható a függőségi hívások jelenleg támogatott listája, amelyeket az alkalmazás kódjának további módosítása nélkül észlel a rendszer. Ezek a függőségek a Application Insights [Application Map](https://docs.microsoft.com/azure/application-insights/app-insights-app-map) és a [Transaction Diagnostics](https://docs.microsoft.com/azure/application-insights/app-insights-transaction-diagnostics) nézeteiben láthatók. Ha a függőség nem szerepel az alábbi listán, akkor is manuálisan nyomon követheti a [függőségi hívással](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackdependency).
+Az alábbiakban látható a függőségi hívások jelenleg támogatott listája, amelyeket az alkalmazás kódjának további módosítása nélkül észlel a rendszer. Ezek a függőségek a Application Insights [Application Map](./app-map.md) és a [Transaction Diagnostics](./transaction-diagnostics.md) nézeteiben láthatók. Ha a függőség nem szerepel az alábbi listán, akkor is manuálisan nyomon követheti a [függőségi hívással](./api-custom-events-metrics.md#trackdependency).
 
 ## <a name="net"></a>.NET
 
@@ -22,7 +23,7 @@ Az alábbiakban látható a függőségi hívások jelenleg támogatott listája
 | ASP.NET webűrlapok | 4.5 + |
 | ASP.NET, MVC | 4 + |
 | ASP.NET WebAPI | 4.5 + |
-| ASP.NET-mag | 1.1 + |
+| ASP.NET Core | 1.1 + |
 | <b>Kommunikációs kódtárak</b> |
 | [HttpClient](https://www.microsoft.com/net/) | 4.5 +, .NET Core 1.1 + |
 | [SqlClient](https://www.nuget.org/packages/System.Data.SqlClient) | .NET Core 1.0 +, NuGet 4.3.0 |
@@ -43,7 +44,7 @@ Az alábbiakban látható a függőségi hívások jelenleg támogatott listája
 | [JBoss EAP](https://developers.redhat.com/products/eap/download/) | 6, 7 |
 | [Jetty](https://www.eclipse.org/jetty/) | 9 |
 | <b>Alkalmazás-keretrendszerek</b> |  |
-| [Spring](https://spring.io/) | 3.0 |
+| [Spring](https://spring.io/) | 3,0 |
 | [Spring Boot](https://spring.io/projects/spring-boot) | 1.5.9 +<sup>*</sup> |
 | Java servlet | 3.1 + |
 | <b>Kommunikációs kódtárak</b> |  |
@@ -61,7 +62,7 @@ Az alábbiakban látható a függőségi hívások jelenleg támogatott listája
 
 > [!NOTE]
 > * Az újraaktív program támogatásának kivételével.
-> <br>† A JVM- [ügynök](https://docs.microsoft.com/azure/application-insights/app-insights-java-agent#install-the-application-insights-agent-for-java)telepítését igényli.
+> <br>† A JVM- [ügynök](./java-agent.md#install-the-application-insights-agent-for-java)telepítését igényli.
 
 ## <a name="nodejs"></a>Node.js
 

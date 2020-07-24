@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: how-to
-ms.date: 06/19/2020
+ms.date: 07/20/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: c666a11f8d5e13d022309eddab16edb6aab76381
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5fb992edea38c3dff9beffab1f131d3e7a6fdbf6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86527761"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087220"
 ---
 # <a name="customize-remote-desktop-protocol-rdp-properties-for-a-host-pool"></a>A gazdagépek RDP protokoll (RDP) tulajdonságainak testreszabása
 
@@ -30,18 +30,6 @@ A támogatott tulajdonságok és az alapértelmezett értékek teljes listájá�
 ## <a name="prerequisites"></a>Előfeltételek
 
 Mielőtt elkezdené, kövesse a [Windows rendszerű virtuális asztali PowerShell-modul beállítása](powershell-module.md) című témakör útmutatását a PowerShell-modul beállításához és az Azure-ba való bejelentkezéshez.
-
-## <a name="default-rdp-properties"></a>Alapértelmezett RDP-tulajdonságok
-
-Alapértelmezés szerint a közzétett RDP-fájlok a következő tulajdonságokat tartalmazzák:
-
-|RDP-tulajdonságok | Asztali számítógépek | RemoteApp-alkalmazások |
-|---|---| --- |
-| Többszörös figyelési mód | Engedélyezve | n.a. |
-| Meghajtó-átirányítások engedélyezve | Meghajtók, vágólap, nyomtatók, COM-portok, USB-eszközök és intelligens kártyák| Meghajtók, vágólap és nyomtatók |
-| Távoli hang mód | Helyi lejátszás | Helyi lejátszás |
-
-A gazdagép-készlethez definiált egyéni tulajdonságok felülbírálják ezeket az alapértelmezett értékeket.
 
 ## <a name="configure-rdp-properties-in-the-azure-portal"></a>RDP-tulajdonságok konfigurálása a Azure Portalban
 
@@ -128,7 +116,7 @@ Name              : <hostpoolname>
 CustomRdpProperty : <CustomRDPpropertystring>
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy testreszabta az adott címkészlet RDP-tulajdonságait, bejelentkezhet egy Windows rendszerű virtuális asztali ügyfélbe, hogy egy felhasználói munkamenet részeként tesztelje őket. A következő útmutatókból megtudhatja, hogyan csatlakozhat egy munkamenethez az Ön által választott ügyfél használatával:
 

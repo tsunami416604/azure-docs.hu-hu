@@ -7,16 +7,16 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 72a76fb513dc6eb008fcf1d1e19ffc33e713cfdc
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: 6738f598275e91ce8a811c3ef6bcc6d5dc84e0bd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84259252"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089498"
 ---
 # <a name="quickstart-building-your-first-static-web-app"></a>Rövid útmutató: az első statikus webalkalmazás felépítése
 
-Az Azure statikus Web Apps egy GitHub-tárházból származó alkalmazások létrehozásával tesz közzé webhelyeket az éles környezetben. Ebben a rövid útmutatóban egy GitHub-tárházból egy webalkalmazást hoz létre az előnyben részesített kezelőfelületi keretrendszer használatával.
+Az Azure Static Web Apps egy GitHub-adattárból származó alkalmazások létrehozásával tesz közzé webhelyeket egy éles környezetben. Ebben a rövid útmutatóban egy GitHub-tárházból egy webalkalmazást hoz létre az előnyben részesített kezelőfelületi keretrendszer használatával.
 
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes próbaverziós fiókot](https://azure.microsoft.com/free).
 
@@ -35,7 +35,7 @@ Ez a cikk a GitHub-sablonok tárházait használja, így egyszerűen létrehozha
   - https://github.com/staticwebdev/angular-basic/generate
 - Nevezze el az adattárat **az első-statikus-Web-App**
 
-# <a name="react"></a>[Reagálni](#tab/react)
+# <a name="react"></a>[React](#tab/react)
 
 - Győződjön meg arról, hogy be van jelentkezve a GitHubba, és a következő helyre navigálva hozzon létre egy új tárházat
   - https://github.com/staticwebdev/react-basic/generate
@@ -54,7 +54,7 @@ Ez a cikk a GitHub-sablonok tárházait használja, így egyszerűen létrehozha
 - Nevezze el az adattárat **az első-statikus-Web-App**
 
 > [!NOTE]
-> Az Azure statikus Web Apps egy webalkalmazás létrehozásához legalább egy HTML-fájl szükséges. Az ebben a lépésben létrehozott tárház egyetlen _index. html_ fájlt tartalmaz.
+> Az Azure statikus Web Apps egy webalkalmazás létrehozásához legalább egy HTML-fájl szükséges. Az ebben a lépésben létrehozott tárház egyetlen _index.html_ fájlt tartalmaz.
 
 ---
 
@@ -66,13 +66,13 @@ Kattintson a **Tárház létrehozása sablonból** gombra.
 
 Most, hogy létrejött az adattár, létrehozhat egy statikus webalkalmazást a Azure Portal.
 
-- Lépjen az [Azure Portalra](https://portal.azure.com)
-- Kattintson **az erőforrás létrehozása** elemre.
-- **Statikus Web Apps** keresése
-- Kattintson a **statikus Web Apps (előzetes verzió)** elemre.
+- Navigáljon a [Azure Portal](https://portal.azure.com)
+- Kattintson az **Erőforrás létrehozása** gombra
+- Keressen rá a **Static Web Apps** kifejezésre
+- Kattintson a **Static Web Apps (előzetes verzió)** lehetőségre
 - Kattintson a **Létrehozás** gombra
 
-### <a name="basics"></a>Alapvető beállítások
+### <a name="basics"></a>Alapbeállítások
 
 Először konfigurálja az új alkalmazást, és csatolja azt egy GitHub-tárházhoz.
 
@@ -81,10 +81,10 @@ Először konfigurálja az új alkalmazást, és csatolja azt egy GitHub-tárhá
 - Azure- _előfizetés_ kiválasztása
 - Válasszon ki vagy hozzon létre egy új _erőforráscsoportot_
 - Nevezze el az alkalmazás **az első-statikus-Web-App**nevet.
-  - Érvényes karakterek `a-z` (kis-és nagybetűk megkülönböztetése), `0-9` és `-` .
+  - Az érvényes karakterek az `a-z` (kis- és nagybetűk megkülönböztetése nélkül) `0-9`és az `-`.
 - Válasszon egy Önhöz legközelebb eső _régiót_
 - Válassza ki az **ingyenes** _SKU_ -t
-- Kattintson a **Bejelentkezés a GitHub** használatával gombra, és hitelesítés a GitHub használatával
+- Kattintson a **Bejelentkezés GitHub-fiókkal** gombra, majd végezzen hitelesítést a GitHub-fiókkal
 
 Miután bejelentkezett a GitHubba, adja meg a tárház adatait.
 
@@ -93,13 +93,16 @@ Miután bejelentkezett a GitHubba, adja meg a tárház adatait.
 - Válassza ki az előnyben részesített _szervezetet_
 - Válassza a **saját-első-web-static-app** elemet az _adattár_ legördülő menüből.
 - Válassza ki a **főkiszolgálót** az _ág_ legördülő menüből
-- Kattintson a **következőre: build >** gombra a Build konfigurációjának szerkesztéséhez
+- Kattintson a **Tovább: Létrehozás >** gombra a létrehozási konfiguráció szerkesztéséhez
 
 :::image type="content" source="media/getting-started/next-build-button.png" alt-text="Következő Build gomb":::
 
-### <a name="build"></a>Felépítés
+> [!NOTE]
+>  Ha nem lát tárházat, lehetséges, hogy engedélyeznie kell az Azure statikus Web Apps a GitHubon. Keresse meg a GitHub-tárházat, és lépjen a **beállítások > alkalmazások > a OAuth-alkalmazások engedélyezve**lehetőségre, válassza az **Azure statikus Web Apps**lehetőséget, majd válassza a **támogatás**lehetőséget. A szervezeti adattárak esetében a szervezet tulajdonosának kell lennie az engedélyek megadásához.
 
-Ezután adja hozzá az előnyben részesített kezelőfelületi keretrendszerhez tartozó konfigurációs adatokat.
+### <a name="build"></a>Létrehozás
+
+Ezután adja meg az Ön által választott előtér-keretrendszerhez tartozó konfigurációs adatokat.
 
 # <a name="angular"></a>[Angular](#tab/angular)
 
@@ -107,7 +110,7 @@ Ezután adja hozzá az előnyben részesített kezelőfelületi keretrendszerhez
 - Az alapértelmezett érték törlése az _API helye_ mezőben
 - Az alkalmazás-összetevő _helye_ mezőben adja meg a **dist/szögletes – Basic** értéket.
 
-# <a name="react"></a>[Reagálni](#tab/react)
+# <a name="react"></a>[React](#tab/react)
 
 - Adja meg **/** az _alkalmazás helye_ mezőt
 - Az alapértelmezett érték törlése az _API helye_ mezőben
@@ -127,13 +130,13 @@ Ezután adja hozzá az előnyben részesített kezelőfelületi keretrendszerhez
 
 ---
 
-Kattintson az **Áttekintés + létrehozás** gombra.
+Kattintson az **Ellenőrzés és létrehozás** gombra.
 
 :::image type="content" source="media/getting-started/review-create.png" alt-text="A létrehozás gomb áttekintése":::
 
 Ha módosítani szeretné ezeket az értékeket az alkalmazás létrehozása után, akkor szerkesztheti a [munkafolyamat-fájlt](github-actions-workflow.md).
 
-### <a name="review--create"></a>Felülvizsgálat + létrehozás
+### <a name="review--create"></a>Ellenőrzés és létrehozás
 
 A kérés érvényesítése után továbbra is létrehozhatja az alkalmazást.
 
@@ -143,11 +146,11 @@ Kattintson a **Létrehozás** gombra
 
 Az erőforrás létrehozása után kattintson az **Ugrás erőforrásra** gombra.
 
-:::image type="content" source="media/getting-started/resource-button.png" alt-text="Ugrás az erőforrás gombra":::
+:::image type="content" source="media/getting-started/resource-button.png" alt-text="Erőforrás megnyitása gomb":::
 
 ## <a name="view-the-website"></a>Webhely megtekintése
 
-A statikus alkalmazások üzembe helyezésének két aspektusa van. Az első a mögöttes Azure-erőforrásokat hozza létre az alkalmazásból. A második egy GitHub-műveletek munkafolyamata, amely felépíti és közzéteszi az alkalmazást.
+A statikus alkalmazások üzembe helyezésének két aspektusa van. Az első azokat a mögöttes Azure-erőforrásokat építi ki, amelyekből az alkalmazás áll. A második egy GitHub Actions-munkafolyamat, amely létrehozza és közzéteszi az alkalmazást.
 
 Az új statikus helyhez való csatlakozás előtt az üzembe helyezési buildnek először futnia kell.
 
@@ -159,11 +162,11 @@ A statikus Web Apps áttekintése ablak a webalkalmazással való interakciót s
 
 2. Miután befejeződött a GitHub-műveletek munkafolyamata, az _URL_ hivatkozásra kattintva megnyithatja a webhelyet az új lapon.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha nem folytatja az alkalmazás használatát, az alábbi lépésekkel törölheti az Azure statikus Web Apps példányát:
 
-1. A [Azure Portal](https://portal.azure.com) megnyitása
+1. Nyissa meg az [Azure Portalt](https://portal.azure.com)
 1. Keresés az **én-első-web-static-app** a felső keresési sávon
 1. Kattintson az alkalmazás nevére
 1. Kattintson a **Törlés** gombra

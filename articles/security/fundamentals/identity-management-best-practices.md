@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: aa662dfbd98be5ec16a30e690f28196ca3868390
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 35fd95272530ed31f8ee197679e9368ca74ebef1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85855899"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089668"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Az Azure Identity Management és a hozzáférés-vezérlés biztonsága – ajánlott eljárások
 
@@ -216,7 +216,7 @@ A [RBAC](/azure/role-based-access-control/overview) segítségével engedélyeke
 * **Szegmens felügyeleti csoport** korlátozott hatókörű csapatok esetében (általában szabályozási vagy egyéb szervezeti határok miatt)
 
 **Ajánlott eljárás**: adja meg a megfelelő engedélyeket a közvetlen működési feladatokkal rendelkező biztonsági csapatoknak.
-**Részletek**: Tekintse át a RBAC beépített szerepköreit a megfelelő szerepkör-hozzárendeléshez. Ha a beépített szerepkörök nem felelnek meg a szervezet konkrét igényeinek, [Egyéni szerepköröket hozhat létre az Azure-erőforrásokhoz](/azure/role-based-access-control/custom-roles). A beépített szerepkörökhöz hasonlóan egyéni szerepköröket rendelhet hozzá a felhasználókhoz, csoportokhoz és egyszerű szolgáltatásokhoz az előfizetés, az erőforráscsoport és az erőforrás-hatókörök alapján.
+**Részletek**: Tekintse át a RBAC beépített szerepköreit a megfelelő szerepkör-hozzárendeléshez. Ha a beépített szerepkörök nem felelnek meg a szervezet konkrét igényeinek, létrehozhat [Egyéni Azure-szerepköröket](/azure/role-based-access-control/custom-roles)is. A beépített szerepkörökhöz hasonlóan egyéni szerepköröket rendelhet hozzá a felhasználókhoz, csoportokhoz és egyszerű szolgáltatásokhoz az előfizetés, az erőforráscsoport és az erőforrás-hatókörök alapján.
 
 **Ajánlott eljárások**: biztosítson Azure Security Center hozzáférést a szükséges biztonsági szerepkörökhöz. Security Center lehetővé teszi a biztonsági csapatok számára a kockázatok gyors azonosítását és szervizelését.
 **Részletek**: vegyen fel biztonsági csoportokat ezekkel a RBAC [biztonsági rendszergazdai](/azure/role-based-access-control/built-in-roles#security-admin) szerepkörrel, hogy megtekintsék a biztonsági házirendeket, megtekintsék a biztonsági állapotokat, a biztonsági szabályzatokat, a riasztásokat és a javaslatokat, valamint a riasztásokat és a javaslatokat. Ezt a felügyeleti csoport vagy a szegmens felügyeleti csoport használatával végezheti el a felelősségi köröktől függően.

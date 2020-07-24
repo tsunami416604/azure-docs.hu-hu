@@ -3,8 +3,8 @@ title: 'Oktatóanyag: SQL Server online migrálása a felügyelt SQL-példányra
 titleSuffix: Azure Database Migration Service
 description: Megtudhatja, hogyan végezheti el a SQL Server online áttelepítését egy felügyelt Azure SQL-példányra Azure Database Migration Service használatával.
 services: dms
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/10/2020
-ms.openlocfilehash: 3d462fa0fa2afe5937c60985938c8268991dfa41
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 4bd6c3dc1f3cd1ef553efc6ac3cd3c4e558afc97
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86084222"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087662"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-managed-instance-online-using-dms"></a>Oktatóanyag: SQL Server migrálása Azure SQL felügyelt példányra online a DMS használatával
 
@@ -30,7 +30,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 >
 > * Hozzon létre egy Azure Database Migration Service-példányt.
 > * Hozzon létre egy áttelepítési projektet, és indítsa el az online áttelepítést Azure Database Migration Service használatával.
-> * A migrálás monitorozása.
+> * Az áttelepítés monitorozása.
 > * Ha elkészült, hajtsa végre az áttelepítési átváltás.
 
 > [!IMPORTANT]
@@ -89,6 +89,9 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
 * Hozzon létre vagy jegyezzen fel egy **standard teljesítményszintű** Azure Storage-fiókot, amelybe a DMS-szolgáltatás feltöltheti az adatbázis biztonsági mentési fájljait, majd felhasználhatja azokat az adatbázisok migrálásakor.  Győződjön meg arról, hogy az Azure Storage-fiókot abban a régióban hozza létre, ahol a Azure Database Migration Service példányt létrehozták.
 
+  > [!NOTE]
+  > Ha [transzparens adattitkosítás](https://docs.microsoft.com/azure/azure-sql/database/transparent-data-encryption-tde-overview) által védett adatbázist telepít át egy felügyelt példányra az online áttelepítés használatával, a helyszíni vagy az Azure-beli virtuális gép SQL Server példányának megfelelő tanúsítványát át kell telepíteni az adatbázis-visszaállítás előtt. A részletes lépésekért lásd: [TDE-tanúsítvány áttelepítése felügyelt példányra](https://docs.microsoft.com/azure/azure-sql/database/transparent-data-encryption-tde-overview).
+
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>A Microsoft.DataMigration erőforrás-szolgáltató regisztrálása
 
 1. Jelentkezzen be az Azure Portalra, és válassza a **Minden szolgáltatás**, majd az **Előfizetések** elemet.
@@ -107,7 +110,7 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
 1. A Azure Portal válassza az + **erőforrás létrehozása**lehetőséget, keresse meg a **Azure Database Migration Service**, majd válassza a **Azure Database Migration Service** elemet a legördülő listából.
 
-     ![Azure Piactér](media/tutorial-sql-server-to-managed-instance-online/portal-marketplace.png)
+     ![Azure Marketplace](media/tutorial-sql-server-to-managed-instance-online/portal-marketplace.png)
 
 2. Az **Azure Database Migration Service** képernyőn válassza a **Létrehozás** lehetőséget.
 
@@ -167,7 +170,7 @@ Keresse meg a létrehozott szolgáltatáspéldányt az Azure Portalon, nyissa me
 
    ![Forrás részletei](media/tutorial-sql-server-to-managed-instance-online/dms-source-details2.png)
 
-3. Kattintson a **Mentés** gombra.
+3. Válassza a **Mentés** lehetőséget.
 
 4. A **Forrásadatbázisok kiválasztása** képernyőn válassza ki az **Adventureworks2012** adatbázist a migráláshoz.
 
@@ -176,7 +179,7 @@ Keresse meg a létrehozott szolgáltatáspéldányt az Azure Portalon, nyissa me
     > [!IMPORTANT]
     > Ha SQL Server Integration Servicest (SSIS) használ, a DMS jelenleg nem támogatja a katalógus-adatbázis áttelepítését a SSIS-projektekhez/-csomagokhoz (SSISDB) a SQL Server és az SQL felügyelt példánya között. A SSIS azonban Azure Data Factory (ADF) is kiépítheti, és újból üzembe helyezheti a SSIS-projekteket/csomagokat a felügyelt SQL-példány által üzemeltetett SSISDB. A SSIS-csomagok áttelepítésével kapcsolatos további információkért tekintse [meg SQL Server Integration Services csomagok migrálása az Azure-ba](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages)című cikket.
 
-5. Kattintson a **Mentés** gombra.
+5. Válassza a **Mentés** lehetőséget.
 
 ## <a name="specify-target-details"></a>Cél adatainak megadása
 
@@ -192,7 +195,7 @@ Keresse meg a létrehozott szolgáltatáspéldányt az Azure Portalon, nyissa me
 
     ![Cél kiválasztása](media/tutorial-sql-server-to-managed-instance-online/dms-target-details3.png)
 
-4. Kattintson a **Mentés** gombra.
+4. Válassza a **Mentés** lehetőséget.
 
 ## <a name="select-source-databases"></a>Forrásadatbázisok kiválasztása
 
@@ -200,7 +203,7 @@ Keresse meg a létrehozott szolgáltatáspéldányt az Azure Portalon, nyissa me
 
     ![Forrásadatbázisok kiválasztása](media/tutorial-sql-server-to-managed-instance-online/dms-select-source-databases2.png)
 
-2. Kattintson a **Mentés** gombra.
+2. Válassza a **Mentés** lehetőséget.
 
 ## <a name="configure-migration-settings"></a>Migrálási beállítások konfigurálása
 
@@ -222,7 +225,7 @@ Keresse meg a létrehozott szolgáltatáspéldányt az Azure Portalon, nyissa me
     > [!IMPORTANT]
     > Ha a visszacsatolási ellenőrzési funkció engedélyezve van, és a forrás SQL Server és a fájlmegosztás ugyanazon a számítógépen található, akkor a forrás nem fogja tudni elérni a fájlokat a teljes tartománynév használatával. A probléma megoldásához tiltsa le a visszacsatolási ellenőrzés funkcióit az [itt](https://support.microsoft.com/help/926642/error-message-when-you-try-to-access-a-server-locally-by-using-its-fqd)leírt utasítások alapján.
 
-2. Kattintson a **Mentés** gombra.
+2. Válassza a **Mentés** lehetőséget.
 
 ## <a name="review-the-migration-summary"></a>A migrálás összefoglalásának áttekintése
 

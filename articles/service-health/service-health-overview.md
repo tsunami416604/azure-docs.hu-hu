@@ -3,12 +3,12 @@ title: Service Health áttekintése | Microsoft Docs
 description: Személyre szabott információk arról, hogy az Azure-alkalmazások milyen hatással vannak a jelenlegi és jövőbeli Azure-szolgáltatásokkal kapcsolatos problémákra és karbantartásra.
 ms.topic: conceptual
 ms.date: 05/10/2019
-ms.openlocfilehash: bc1d07fdbba6da3540336438973fb1cfbb0c356b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2f2f0c8bf2cf4fe5beae7d48b198a23edba4e9ae
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85563378"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089600"
 ---
 # <a name="service-health-overview"></a>Service Health áttekintése
 
@@ -68,7 +68,7 @@ Az üzleti szempontból kritikus előfizetések, régiók és erőforrástípuso
 
 ## <a name="configure-service-health-alerts"></a>A szolgáltatás állapotára vonatkozó riasztások konfigurálása
 
-A Service Health integrálható Azure Monitorekkel, hogy e-mailben, szöveges üzenetben és webhook-értesítésekben figyelmeztessen az üzleti szempontból kritikus fontosságú erőforrások hatására. Hozzon létre egy műveletnapló riasztást a megfelelő szolgáltatási állapot eseményéhez. Irányítsa a riasztást a szervezet megfelelő tagjaira a műveleti csoportok használatával. További információ: [riasztások konfigurálása Service Healthhoz](../azure-monitor/platform/alerts-activity-log-service-notifications.md)
+A Service Health integrálható Azure Monitorekkel, hogy e-mailben, szöveges üzenetben és webhook-értesítésekben figyelmeztessen az üzleti szempontból kritikus fontosságú erőforrások hatására. Hozzon létre egy műveletnapló riasztást a megfelelő szolgáltatási állapot eseményéhez. Irányítsa a riasztást a szervezet megfelelő tagjaira a műveleti csoportok használatával. További információ: [riasztások konfigurálása Service Healthhoz](./alerts-activity-log-service-notifications-portal.md)
 
 >[!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2OaXt]
 

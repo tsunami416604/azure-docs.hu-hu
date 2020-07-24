@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 601af3a5e642b4bbda54f461b3139e72b01b21d6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f119acc06883dc077218c56accd31c805092db85
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85193498"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088291"
 ---
 # <a name="sap-business-one-on-azure-virtual-machines"></a>SAP Business One az Azure Virtual Machinesban
 Ez a dokumentum útmutatást nyújt az SAP Business One Azure Virtual Machines üzembe helyezéséhez. A dokumentáció nem helyettesíti a Business One for SAP szolgáltatás telepítési dokumentációját. A dokumentációnak az Azure-infrastruktúrára vonatkozó alapszintű tervezési és üzembe helyezési útmutatókat kell kiterjednie, amelyekkel az üzleti alkalmazások futtatása elérhető
@@ -29,18 +29,18 @@ A Business One két különböző adatbázist támogat:
 - SQL Server – lásd: [SAP-megjegyzés #928839 – kiadás tervezése Microsoft SQL Server](https://launchpad.support.sap.com/#/notes/928839)
 - SAP HANA – a SAP Business One támogatási mátrixának kifizetése SAP HANA esetében, az [SAP-termék rendelkezésre állási mátrixának](https://support.sap.com/pam) kifizetése
 
-SQL Server kapcsolatban az [Azure Virtual Machines adatbázis-kezelő rendszerbe állítás az SAP NetWeaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms-guide) -ben című dokumentumban ismertetett alapszintű telepítési szempontok érvényesek. SAP HANA esetében a jelen dokumentum a következő szempontokat említi.
+SQL Server kapcsolatban az [Azure Virtual Machines adatbázis-kezelő rendszerbe állítás az SAP NetWeaver](./dbms_guide_general.md) -ben című dokumentumban ismertetett alapszintű telepítési szempontok érvényesek. SAP HANA esetében a jelen dokumentum a következő szempontokat említi.
 
 ## <a name="prerequisites"></a>Előfeltételek
 Az útmutató használatához a következő Azure-összetevők alapszintű ismerete szükséges:
 
-- [Azure-beli virtuális gépek Windows rendszeren](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-manage-vm)
-- [Azure-beli virtuális gépek Linuxon](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm)
-- [Azure Hálózatkezelés és virtuális hálózatok kezelése a PowerShell-lel](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-virtual-network)
-- [Azure-Hálózatkezelés és virtuális hálózatok parancssori felülettel](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-virtual-network)
-- [Azure-lemezek kezelése az Azure CLI használatával](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-disks)
+- [Azure-beli virtuális gépek Windows rendszeren](../../windows/tutorial-manage-vm.md)
+- [Azure-beli virtuális gépek Linuxon](../../linux/tutorial-manage-vm.md)
+- [Azure Hálózatkezelés és virtuális hálózatok kezelése a PowerShell-lel](../../windows/tutorial-virtual-network.md)
+- [Azure-Hálózatkezelés és virtuális hálózatok parancssori felülettel](../../linux/tutorial-virtual-network.md)
+- [Azure-lemezek kezelése az Azure CLI használatával](../../linux/tutorial-manage-disks.md)
 
-Még ha csak a vállalat érdekli, az [Azure Virtual Machines az SAP NetWeaver megtervezése és megvalósítása](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide) hasznos információforrás lehet.
+Még ha csak a vállalat érdekli, az [Azure Virtual Machines az SAP NetWeaver megtervezése és megvalósítása](./planning-guide.md) hasznos információforrás lehet.
 
 Feltételezi, hogy az SAP Business egyik példánya az alábbiakat telepíti:
 
@@ -88,30 +88,30 @@ Elvileg mindig a legjobb, ha a legújabb operációsrendszer-kiadásokat haszná
 A következő néhány fejezetben az SAP üzembe helyezéséhez fontos infrastruktúra-darabok.
 
 ### <a name="azure-network-infrastructure"></a>Azure hálózati infrastruktúra
-Az Azure-ban üzembe helyezni kívánt hálózati infrastruktúra attól függ, hogy egyetlen üzleti rendszerbe helyezi a telepítést. Vagy akár egy olyan szolgáltató, aki több tucat üzleti tevékenységet üzemeltet az ügyfeleknek. Előfordulhat, hogy az Azure-hoz való kapcsolódás módjában is kisebb változások vannak a tervben. Az Azure-ba való VPN-kapcsolattal és a Active Directory a [VPN-en](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-plan-design) vagy a [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) keresztül az Azure-ba való kiterjesztésével különböző lehetőségekkel haladhat át.
+Az Azure-ban üzembe helyezni kívánt hálózati infrastruktúra attól függ, hogy egyetlen üzleti rendszerbe helyezi a telepítést. Vagy akár egy olyan szolgáltató, aki több tucat üzleti tevékenységet üzemeltet az ügyfeleknek. Előfordulhat, hogy az Azure-hoz való kapcsolódás módjában is kisebb változások vannak a tervben. Az Azure-ba való VPN-kapcsolattal és a Active Directory a [VPN-en](../../../vpn-gateway/vpn-gateway-about-vpngateways.md) vagy a [ExpressRoute](../../../expressroute/expressroute-introduction.md) keresztül az Azure-ba való kiterjesztésével különböző lehetőségekkel haladhat át.
 
 ![Egyszerű hálózati konfiguráció a Business One-ban](./media/business-one-azure/simple-network-with-VPN.PNG)
 
 A bemutatott egyszerűsített konfiguráció számos olyan biztonsági példányt vezet be, amelyek lehetővé teszik az Útválasztás szabályozását és korlátozását. A 
 
 - Az útválasztó/tűzfal a helyszíni ügyfélen.
-- A következő példány az Azure-beli [hálózati biztonsági csoport](https://docs.microsoft.com/azure/virtual-network/security-overview) , amelynek segítségével bevezetheti az SAP Business One konfigurációját futtató Azure-VNet útválasztási és biztonsági szabályait.
+- A következő példány az Azure-beli [hálózati biztonsági csoport](../../../virtual-network/security-overview.md) , amelynek segítségével bevezetheti az SAP Business One konfigurációját futtató Azure-VNet útválasztási és biztonsági szabályait.
 - Annak elkerülése érdekében, hogy a felhasználók az egyik ügyfelet is lássák, az adatbázist futtató kiszolgálót is láthatják, külön kell választania az üzleti kiszolgálót üzemeltető virtuális gépet és az üzleti kiszolgálót, amely a VNet belül két különböző alhálózaton található.
 - Az Azure NSG-t a két különböző alhálózathoz rendeli hozzá, hogy korlátozza a hozzáférést az üzleti egy kiszolgálóhoz.
 
-Az Azure hálózati konfiguráció kifinomultabb verziója az Azure [-beli központi és küllős architektúrával kapcsolatos ajánlott eljárások](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)alapján érhető el. A hub és a küllő architektúra mintázata a következőhöz hasonló módon változtatja meg az első egyszerűsített konfigurációt:
+Az Azure hálózati konfiguráció kifinomultabb verziója az Azure [-beli központi és küllős architektúrával kapcsolatos ajánlott eljárások](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)alapján érhető el. A hub és a küllő architektúra mintázata a következőhöz hasonló módon változtatja meg az első egyszerűsített konfigurációt:
 
 
 ![Hub és küllős konfiguráció a Business One-vel](./media/business-one-azure/hub-spoke-network-with-VPN.PNG)
 
-Azokban az esetekben, amikor a felhasználók az Azure-ba való magánhálózati kapcsolat nélkül csatlakoznak az interneten keresztül, az Azure-beli hálózat kialakításának összhangban kell lennie az Azure [és az internet között a DMZ](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/secure-vnet-dmz)-hez készült Azure-hivatkozási architektúrában dokumentált elvekkel.
+Azokban az esetekben, amikor a felhasználók az Azure-ba való magánhálózati kapcsolat nélkül csatlakoznak az interneten keresztül, az Azure-beli hálózat kialakításának összhangban kell lennie az Azure [és az internet között a DMZ](/azure/architecture/reference-architectures/dmz/secure-vnet-dmz)-hez készült Azure-hivatkozási architektúrában dokumentált elvekkel.
 
 ### <a name="business-one-database-server"></a>Üzleti egy adatbázis-kiszolgáló
-Az adatbázis típusához SQL Server és SAP HANA érhető el. Az adatbázis-kezelőtől függetlenül olvassa el az [azure Virtual Machines adatbázis-kezelő üzembe helyezése az SAP-munkaterheléshez](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general) című dokumentumot, amely általános ismereteket nyújt az adatbázis-kezelők üzembe helyezéséről az Azure-beli virtuális gépeken és a kapcsolódó hálózati és tárolási témakörökben
+Az adatbázis típusához SQL Server és SAP HANA érhető el. Az adatbázis-kezelőtől függetlenül olvassa el az [azure Virtual Machines adatbázis-kezelő üzembe helyezése az SAP-munkaterheléshez](./dbms_guide_general.md) című dokumentumot, amely általános ismereteket nyújt az adatbázis-kezelők üzembe helyezéséről az Azure-beli virtuális gépeken és a kapcsolódó hálózati és tárolási témakörökben
 
 Bár az adott és általános adatbázis-dokumentumokban már szerepelnek, a következőket kell megismernie:
 
-- [Kezelheti a Windows rendszerű virtuális gépek rendelkezésre állását az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability) , és [kezelheti az Azure-beli linuxos virtuális gépek rendelkezésre állását](https://docs.microsoft.com/azure/virtual-machines/linux/manage-availability)
+- [Kezelheti a Windows rendszerű virtuális gépek rendelkezésre állását az Azure-ban](../../windows/manage-availability.md) , és [kezelheti az Azure-beli linuxos virtuális gépek rendelkezésre állását](../../linux/manage-availability.md)
 - [A virtuális gépekre vonatkozó SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/)
 
 Ezek a dokumentumok segítenek dönteni a tárolási típusok és a magas rendelkezésre állási konfiguráció kiválasztásáról.
@@ -125,11 +125,11 @@ Elvileg a következőket kell tennie:
 
 
 #### <a name="sql-server-as-dbms"></a>SQL Server adatbázis-kezelő rendszerként
-SQL Server a vállalati adatbázis-kezelő rendszerként való üzembe helyezéséhez látogasson el a dokumentumra [SQL Server Azure Virtual Machines adatbázis-kezelő rendszerbe állítása az SAP NetWeaver szolgáltatáshoz](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_sqlserver). 
+SQL Server a vállalati adatbázis-kezelő rendszerként való üzembe helyezéséhez látogasson el a dokumentumra [SQL Server Azure Virtual Machines adatbázis-kezelő rendszerbe állítása az SAP NetWeaver szolgáltatáshoz](./dbms_guide_sqlserver.md). 
 
 A SQL Server adatbázis-kezelői oldalának durva méretezési becslései a következők:
 
-| Felhasználók száma | vCPU-k | Memory (Memória) | Példa a virtuális gépek típusaira |
+| Felhasználók száma | vCPU-k | Memória | Példa a virtuális gépek típusaira |
 | --- | --- | --- | --- |
 | legfeljebb 20 | 4 | 16 GB | D4s_v3, E4s_v3 |
 | akár 40 | 8 | 32 GB | D8s_v3, E8s_v3 |
@@ -139,25 +139,17 @@ A SQL Server adatbázis-kezelői oldalának durva méretezési becslései a köv
 A fent felsorolt méretezésnek egy ötletet kell megadnia, hogy hol kezdjen hozzá. Előfordulhat, hogy kevesebb vagy több erőforrásra van szüksége, ebben az esetben az Azure-ra való alkalmazkodás egyszerű. A virtuálisgép-típusok változása csak a virtuális gép újraindításával lehetséges.
 
 #### <a name="sap-hana-as-dbms"></a>SAP HANA adatbázis-kezelő rendszerként
-A SAP HANA használata a következő szakaszokban a dokumentum [SAP HANA az Azure üzemeltetési útmutatójának](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations)szempontjait követve.
+A SAP HANA használata a következő szakaszokban a dokumentum [SAP HANA az Azure üzemeltetési útmutatójának](./hana-vm-operations.md)szempontjait követve.
 
-A magas rendelkezésre állást és a vész-helyreállítási konfigurációk SAP HANA az Azure-beli üzleti adatbázisként való használata esetén olvassa el a dokumentációt, SAP HANA az Azure-beli [virtuális gépek magas rendelkezésre állását](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-overview) , valamint a dokumentumból kimutatott dokumentációt.
+A magas rendelkezésre állást és a vész-helyreállítási konfigurációk SAP HANA az Azure-beli üzleti adatbázisként való használata esetén olvassa el a dokumentációt, SAP HANA az Azure-beli [virtuális gépek magas rendelkezésre állását](./sap-hana-availability-overview.md) , valamint a dokumentumból kimutatott dokumentációt.
 
-A biztonsági mentési és visszaállítási stratégiák SAP HANA olvassa el az [Virtual Machines Azure-beli SAP HANA dokumentum biztonsági mentési útmutatóját](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-guide) , valamint a dokumentumból kimutatott dokumentációt.
+A biztonsági mentési és visszaállítási stratégiák SAP HANA olvassa el az [Virtual Machines Azure-beli SAP HANA dokumentum biztonsági mentési útmutatóját](./sap-hana-backup-guide.md) , valamint a dokumentumból kimutatott dokumentációt.
 
  
 ### <a name="business-one-client-server"></a>Üzleti egy ügyfél-kiszolgáló
 Ezeknek az összetevőknek a tárolási szempontjai nem az elsődleges szempont. azonban megbízható platformot szeretne használni. Ezért az Azure Premium Storaget kell használnia ehhez a virtuális géphez, még az alap VHD-hez is. A virtuális gép méretezése az [SAP Business One Hardware követelmények útmutatójában](https://help.sap.com/http.svc/rc/011000358700000244612011e/9.3/en-US/B1_Hardware_Requirements_Guide.pdf)megadott adattal. Az Azure-ban a dokumentum 2,4-es fejezetében ismertetett követelményekkel kell összpontosítania és kiszámítani. A követelmények kiszámítása során össze kell hasonlítani azokat a következő dokumentumokkal, hogy megtalálják az ideális virtuális gépet:
 
-- [A Windows rendszerű virtuális gépek méretei az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)
+- [A Windows rendszerű virtuális gépek méretei az Azure-ban](../../windows/sizes.md)
 - [SAP-Megjegyzés #1928533](https://launchpad.support.sap.com/#/notes/1928533)
 
 A Microsoft által dokumentált processzorok és memória számának összevetése. A virtuális gépek kiválasztásakor tartsa szem előtt a hálózat átviteli sebességét is.
-
-
-
-
-
-
-
-

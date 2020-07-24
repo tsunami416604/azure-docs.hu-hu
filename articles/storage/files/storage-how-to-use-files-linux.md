@@ -7,19 +7,19 @@ ms.topic: how-to
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 8f668844951a2416b25d1649721fc005a0d70b75
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0270cebec21ca10327a86ea5efebef9a52455930
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85509846"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089345"
 ---
 # <a name="use-azure-files-with-linux"></a>Az Azure Files használata Linux rendszerrel
 Az [Azure Files](storage-files-introduction.md) a Microsoft könnyen használható felhőalapú fájlrendszere. Az Azure-fájlmegosztás az [SMB kernel-ügyféllel](https://wiki.samba.org/index.php/LinuxCIFS)is csatlakoztatható Linux-disztribúciókban. Ebből a cikkből megtudhatja, hogyan csatlakoztathat egy Azure-fájlmegosztást: igény szerint a `mount` paranccsal és a rendszerindítással, ha létrehoz egy bejegyzést a alkalmazásban `/etc/fstab` .
 
 Az Azure-fájlmegosztás Linux rendszeren való csatlakoztatásának ajánlott módja az SMB 3,0 használata. Alapértelmezés szerint a Azure Files az átvitel során titkosítást igényel, amelyet csak az SMB 3,0 támogat. A Azure Files támogatja az SMB 2,1-et is, amely nem támogatja az átvitel közbeni titkosítást, de biztonsági okokból nem csatlakoztathatja az Azure-fájlmegosztást egy másik Azure-régióból vagy helyszíni SMB 2,1-ből. Ha az alkalmazása kifejezetten az SMB 2,1-t igényli, kevés az oka annak, hogy a legnépszerűbb, legutóbb kiadott Linux-disztribúciók az SMB 3,0 támogatását használják:  
 
-| | SMB 2.1 <br>(Ugyanazon az Azure-régióban lévő virtuális gépekre csatlakoztatások) | SMB 3.0 <br>(A helyszíni és a régiók közötti) |
+| Linux-disztribúció | SMB 2.1 <br>(Ugyanazon az Azure-régióban lévő virtuális gépekre csatlakoztatások) | SMB 3.0 <br>(A helyszíni és a régiók közötti) |
 | --- | :---: | :---: |
 | Ubuntu | 14.04 + | 16.04 + |
 | Red Hat Enterprise Linux (RHEL) | 7 + | 7.5 + |
@@ -323,6 +323,6 @@ cat /sys/module/cifs/parameters/disable_legacy_dialects
 ## <a name="next-steps"></a>További lépések
 Az alábbi hivatkozások további információkat tartalmaznak az Azure Filesról:
 
-* [Az Azure Files üzembe helyezésének megtervezése](storage-files-planning.md)
+* [Azure Files üzembe helyezésének tervezése](storage-files-planning.md)
 * [Gyakori kérdések](../storage-files-faq.md)
 * [Hibaelhárítás](storage-troubleshoot-linux-file-connection-problems.md)

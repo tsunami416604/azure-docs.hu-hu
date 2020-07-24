@@ -6,12 +6,12 @@ ms.assetid: e60226e5-2630-41d7-9e5b-9f9e5acc8e50
 ms.topic: conceptual
 ms.date: 10/09/2018
 ms.author: syclebsc
-ms.openlocfilehash: 005cb0044cb4d225c8b94602fb907fee09fb00b2
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: f9b7b92fd21e12f1d86c5d5878e48c6ec6b0e748
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86249189"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088019"
 ---
 # <a name="azure-functions-f-developer-reference"></a>Azure Functions F # fejlesztői segédlet
 
@@ -90,7 +90,7 @@ let Run(input: string, item: byref<Item>) =
 ```
 
 ## <a name="logging"></a>Naplózás
-Ha a kimenetet F # formátumban szeretné naplózni a [folyamatos átviteli naplókba](../app-service/troubleshoot-diagnostic-logs.md) , a függvénynek [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger)típusú argumentumot kell használnia. A konzisztencia érdekében javasoljuk, hogy az argumentum neve legyen `log` . Például:
+Ha a kimenetet F # formátumban szeretné naplózni a [folyamatos átviteli naplókba](../app-service/troubleshoot-diagnostic-logs.md) , a függvénynek [ILogger](/dotnet/api/microsoft.extensions.logging.ilogger)típusú argumentumot kell használnia. A konzisztencia érdekében javasoljuk, hogy az argumentum neve legyen `log` . Például:
 
 ```fsharp
 let Run(blob: string, output: byref<string>, log: ILogger) =
@@ -284,7 +284,7 @@ Az elérési utak az `#load` irányelvhez képest a fájl helyéhez viszonyítva
 
 Az `#load` irányelv csak az `.fsx` (F # script) fájlokkal működik, és nem `.fs` fájlokkal.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információkat találhat az alábbi forrásokban:
 
 * [F # útmutató](/dotnet/articles/fsharp/index)
@@ -293,4 +293,3 @@ További információkat találhat az alábbi forrásokban:
 * [Eseményindítók és kötések Azure Functions](functions-triggers-bindings.md)
 * [Tesztelés Azure Functions](functions-test-a-function.md)
 * [Azure Functions skálázás](functions-scale.md)
-

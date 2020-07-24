@@ -4,19 +4,20 @@ description: API a megadott ajánlat lekéréséhez a közzétevő névterén be
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-ms.date: 06/19/2020
-ms.openlocfilehash: a4bbe133d8b223bf717597467336eb486f432380
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: dsindona
+ms.author: dsindona
+ms.date: 07/14/2020
+ms.openlocfilehash: bf64645f672e54849064d86f9250a62efeac8d66
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86115536"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087407"
 ---
-<a name="retrieve-a-specific-offer"></a>Adott ajánlat beolvasása
-=========================
+# <a name="retrieve-a-specific-offer"></a>Adott ajánlat beolvasása
 
 > [!NOTE]
-> A Cloud Partner Portal API-k integrálva vannak a partneri központtal, és továbbra is működni fognak, miután az ajánlatokat áttelepítik a partner központba. Az integráció kis változásokat vezet be. Tekintse át a [Cloud Partner Portal API-hivatkozásban](./cloud-partner-portal-api-overview.md) felsorolt módosításokat, hogy a kód továbbra is működni fog a partneri központba való Migrálás után.
+> A Cloud Partner Portal API-k integrálva vannak a-vel, és továbbra is működnek a partner Centerben. Az áttérés kis változásokat mutat be. Tekintse át a [Cloud Partner Portal API-hivatkozásban](./cloud-partner-portal-api-overview.md) felsorolt módosításokat, hogy a kód továbbra is működőképes legyen a partneri központba való áttérés után. A CPP API-kat csak olyan meglévő termékekhez szabad használni, amelyek már integrálva lettek a partneri központba való áttérés előtt. az új termékeknek a partner Center beküldési API-kat kell használniuk.
 
 Lekéri a megadott ajánlatot a közzétevő névterén belül.  
 
@@ -34,12 +35,9 @@ Lekérheti az ajánlat egy adott verzióját is, vagy lekérheti az ajánlatot P
 
 ```
 
+## <a name="uri-parameters"></a>URI-paraméterek
 
-<a name="uri-parameters"></a>URI-paraméterek
---------------
-
-
-| **Name (Név)**    | **Leírás**                                                                          | **Adattípus** |
+| **Név**    | **Leírás**                                                                          | **Adattípus** |
 |-------------|------------------------------------------------------------------------------------------|---------------|
 | publisherId | publisherId. Például: contoso                                                        | Sztring        |
 | offerId     | Az ajánlatot egyedileg azonosító GUID.                                                 | Sztring        |
@@ -48,21 +46,17 @@ Lekérheti az ajánlat egy adott verzióját is, vagy lekérheti az ajánlatot P
 | api-verzió | Az API legújabb verziója                                                                    | Dátum          |
 |  |  |  |
 
+## <a name="header"></a>Fejléc
 
-<a name="header"></a>Fejléc
-------
-
-|  **Name (Név)**          |   **Érték**            |
+|  **Név**          |   **Érték**            |
 |  ---------------   |  --------------        |
 |  Content-Type      | `application/json`     |
 |  Engedélyezés     | `Bearer YOUR_TOKEN`    |
 |  |  |
 
+## <a name="body-example"></a>Példa szövegtörzsre
 
-<a name="body-example"></a>Példa szövegtörzsre
-------------
-
-### <a name="response"></a>Válasz
+### <a name="response"></a>Reagálás
 
 ``` json
 {
@@ -175,24 +169,22 @@ Lekérheti az ajánlat egy adott verzióját is, vagy lekérheti az ajánlatot P
 }
 ```
 
-
 ### <a name="response-body-properties"></a>Válasz törzsének tulajdonságai
 
-|  **Name (Név)**       |   **Leírás**                                                                                                               |
+|  **Név**       |   **Leírás**                                                                                                               |
 |  -------------  |   -----------------------------------------------------------------------------------------------------                         |
 |  offerTypeId    | Az ajánlat típusát azonosítja.                                                                                                    |
 |  publisherId    | A közzétevő egyedi azonosítója                                                                                              |
 |  status         | Az ajánlat állapota. A lehetséges értékek listájáért lásd az [ajánlat állapota](#offer-status) alább.                                  |
-|  Azonosító             | Az ajánlatot egyedileg azonosító GUID                                                                                         |
+|  Id             | Az ajánlatot egyedileg azonosító GUID                                                                                         |
 |  version        | Az ajánlat aktuális verziója. Az ügyfél nem tudja módosítani a Version tulajdonságot. Minden közzététel után növekszik.    |
 |  definíció     | A munkaterhelés tényleges definíciója                                                                                               |
 |  changedTime    | Az ajánlat utolsó módosításának UTC szerinti dátuma                                                                                   |
 |  |  |
 
-
 ### <a name="response-status-codes"></a>Válasz-állapotkódok
 
-| **Code**  | **Leírás**                                                                                                                 |
+| **Kód**  | **Leírás**                                                                                                                 |
 |  ------   | ------------------------------------------------------------------------------------------------------------------------------- |
 |  200      | `OK`– A kérés feldolgozása sikeres volt, és a közzétevő alatt lévő összes ajánlat vissza lett küldve az ügyfélnek.               |
 |  400      | `Bad/Malformed request`– A hiba-válasz törzse több információt is tartalmazhat.                                                 |
@@ -200,10 +192,9 @@ Lekérheti az ajánlat egy adott verzióját is, vagy lekérheti az ajánlatot P
 |  404      | `Not found`– A megadott entitás nem létezik. Az ügyfélnek ellenőriznie kell a publisherId, a offerId és a verziót (ha meg van adva).      |
 |  |  |
 
-
 ### <a name="offer-status"></a>Ajánlat állapota
 
-|  **Name (Név)**                   |   **Leírás**                             |
+|  **Név**                   |   **Leírás**                             |
 | --------------------------- |  -------------------------------------------- |
 |  NeverPublished             | Az ajánlatot még soha nem tették közzé.               |
 |  NotStarted                 | Az ajánlat új, de nem indult el.              |

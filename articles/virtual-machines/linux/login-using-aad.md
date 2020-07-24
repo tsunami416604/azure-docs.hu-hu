@@ -1,18 +1,18 @@
 ---
 title: Bejelentkezés Azure Active Directory hitelesítő adatokkal rendelkező linuxos virtuális gépre
 description: Megtudhatja, hogyan hozhat létre és konfigurálhat Linux rendszerű virtuális gépeket Azure Active Directory hitelesítéssel való bejelentkezéshez.
-author: iainfoulds
+author: SanDeo-MSFT
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.workload: infrastructure
 ms.date: 08/29/2019
-ms.author: iainfou
-ms.openlocfilehash: c5275a979cbffe7fb6600978487454ac11cd2002
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.author: sandeo
+ms.openlocfilehash: 89b89d30de46727f4d5b52a236a4b0133e663bb9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86510429"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088767"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>Előzetes verzió: bejelentkezés az Azure-beli linuxos virtuális gépre Azure Active Directory hitelesítéssel
 
@@ -113,7 +113,7 @@ A *sikeres* *provisioningState* akkor jelenik meg, ha a bővítmény telepítés
 
 ## <a name="configure-role-assignments-for-the-vm"></a>Szerepkör-hozzárendelések konfigurálása a virtuális géphez
 
-Az Azure szerepköralapú Access Control (RBAC) szabályzata meghatározza, hogy ki jelentkezhet be a virtuális gépre. Két RBAC-szerepkört használ a virtuális gép bejelentkezésének engedélyezéséhez:
+Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) házirend határozza meg, hogy ki jelentkezhet be a virtuális gépre. Két RBAC-szerepkört használ a virtuális gép bejelentkezésének engedélyezéséhez:
 
 - **Virtuális gép rendszergazdai bejelentkezése**: az ehhez a szerepkörhöz hozzárendelt felhasználók bejelentkezhetnek egy Azure-beli virtuális gépre a Windows rendszergazdai vagy a Linux root felhasználói jogosultságokkal.
 - **Virtuális gép felhasználói bejelentkezése**: az ehhez a szerepkörhöz hozzárendelt felhasználók rendszeres felhasználói jogosultságokkal jelentkezhetnek be egy Azure-beli virtuális gépre.
@@ -212,6 +212,6 @@ Azok a felhasználók, akik beágyazott csoportokon vagy szerepkör-hozzárendel
 
 Ossza meg visszajelzését erről az előzetes verziójú szolgáltatásról, vagy jelentse az [Azure ad visszajelzési fórumát](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032) használó problémákat
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a Azure Active Directoryről: [Mi az Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md)

@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 07/10/2019
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: da50fb9f331e91089bb6bf0fb373cab8045639f0
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 934b679813323fe144f935811eb613ab68b561db
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260513"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089617"
 ---
 # <a name="quickstart-deploy-windows-containers-to-service-fabric"></a>Rövid útmutató: Windows-tárolók üzembe helyezése a Service Fabricben
 
@@ -86,7 +86,7 @@ A *ApplicationManifest.xml* fájlban is módosítsa a **PasswordEncrypted** **ha
 
 Az alábbi parancsfájl egy öt csomópontos Service Fabric fürtöt hoz létre, amely egy X. 509 tanúsítvánnyal védett. A parancs létrehoz egy önaláírt tanúsítványt, és feltölti azt egy új kulcstartóba. A rendszer emellett a tanúsítványt egy helyi könyvtárba is átmásolja. További információ a fürtök létrehozásáról a parancsfájl használatával a Service Fabric- [fürt létrehozása](scripts/service-fabric-powershell-create-secure-cluster-cert.md)című témakörben olvasható.
 
-Ha szükséges, telepítse a Azure PowerShellt a [Azure PowerShell útmutatóban](/powershell/azure/overview)található utasítások alapján.
+Ha szükséges, telepítse a Azure PowerShellt a [Azure PowerShell útmutatóban](/powershell/azure/)található utasítások alapján.
 
 A következő szkript futtatása előtt a PowerShell futtatásával `Connect-AzAccount` hozzon létre egy, az Azure-hoz való kapcsolódást.
 
@@ -138,7 +138,7 @@ Kattintson az **Advanced Connection Parameters** (Speciális kapcsolati paramét
 
 ![Publish (Közzététel) párbeszédpanel](./media/service-fabric-quickstart-containers/publish-app.png)
 
-Kattintson a **Publish** (Közzététel) gombra.
+Kattintson a **Közzététel** gombra.
 
 A fürtben szereplő minden alkalmazásnak egyedi névvel kell rendelkeznie. Ha névütközés van, nevezze át a Visual Studio-projektet, és telepítse újra.
 
@@ -146,11 +146,11 @@ Nyisson meg egy böngészőt, és navigáljon az előző lépésben a **kapcsol�
 
  Ekkor az IIS alapértelmezett webhelyének kell megjelennie: ![Az IIS alapértelmezett webhelye][iis-default]
 
-## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
+## <a name="clean-up"></a>A feleslegessé vált elemek eltávolítása
 
 A fürt futása során továbbra is felmerülnek a költségek. Érdemes lehet [törölni a fürtöt](./service-fabric-tutorial-delete-cluster.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ennek a rövid útmutatónak a segítségével megtanulta a következőket:
 

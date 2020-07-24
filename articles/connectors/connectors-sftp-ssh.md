@@ -6,14 +6,14 @@ ms.suite: integration
 author: divyaswarnkar
 ms.reviewer: estfan, logicappspm
 ms.topic: article
-ms.date: 06/17/2020
+ms.date: 07/20/2020
 tags: connectors
-ms.openlocfilehash: c2f3af4b0e2fafdd95798b412f37ed20204cd42f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a277c6205dfb9dfa04565fb3ebcb3da589669764
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84807748"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087883"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>SFTP-fájlok monitorozása, létrehozása és kezelése SSH és az Azure Logic Apps használatával
 
@@ -23,6 +23,7 @@ A [Secure Shell (SSH)](https://www.ssh.com/ssh/protocol/) protokoll használatá
 > Az SFTP-SSH-összekötő jelenleg nem támogatja ezeket az SFTP-kiszolgálókat:
 > 
 > * IBM DataPower
+> * MessageWay
 > * OpenText Secure MFT
 > * OpenText GXS
 
@@ -51,18 +52,18 @@ Az SFTP-SSH-összekötő és az SFTP-összekötő közötti különbségekért t
 
   | Műveletek | Adatdarabolás támogatása | Adatméret-méretezési támogatás felülbírálása |
   |--------|------------------|-----------------------------|
-  | **Fájl másolása** | No | Nem értelmezhető |
+  | **Fájl másolása** | No | Nem alkalmazható |
   | **Fájl létrehozása** | Igen | Igen |
-  | **Mappa létrehozása** | Nem értelmezhető | Nem értelmezhető |
-  | **Fájl törlése** | Nem értelmezhető | Nem értelmezhető |
-  | **Archív fájl kibontása a mappába** | Nem értelmezhető | Nem értelmezhető |
+  | **Mappa létrehozása** | Nem alkalmazható | Nem alkalmazható |
+  | **Fájl törlése** | Nem alkalmazható | Nem alkalmazható |
+  | **Archív fájl kibontása a mappába** | Nem alkalmazható | Nem alkalmazható |
   | **Fájl tartalmának beolvasása** | Igen | Igen |
   | **Fájl tartalmának beolvasása elérési út alapján** | Igen | Igen |
-  | **Fájl metaadatainak beolvasása** | Nem értelmezhető | Nem értelmezhető |
-  | **Fájl metaadatainak beolvasása elérési út használatával** | Nem értelmezhető | Nem értelmezhető |
-  | **Mappában található fájlok listázása** | Nem értelmezhető | Nem értelmezhető |
-  | **Fájl átnevezése** | Nem értelmezhető | Nem értelmezhető |
-  | **Fájl frissítése** | No | Nem értelmezhető |
+  | **Fájl metaadatainak beolvasása** | Nem alkalmazható | Nem alkalmazható |
+  | **Fájl metaadatainak beolvasása elérési út használatával** | Nem alkalmazható | Nem alkalmazható |
+  | **Mappában található fájlok listázása** | Nem alkalmazható | Nem alkalmazható |
+  | **Fájl átnevezése** | Nem alkalmazható | Nem alkalmazható |
+  | **Fájl frissítése** | No | Nem alkalmazható |
   ||||
 
 * SFTP – az SSH-eseményindítók nem támogatják az üzenetek darabolását. Fájl tartalmának kérésekor az eseményindítók csak a 15 MB vagy annál kisebb fájlokat jelölik ki. A 15 MB-nál nagyobb fájlok lekéréséhez kövesse az alábbi mintát:

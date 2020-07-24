@@ -9,12 +9,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 1a8023a700e83892fae9a16bb2bfbe2a2eb0b307
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e66af8e55f7b60347d9577c64b7183c6ef8b44f4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85193413"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089311"
 ---
 # <a name="secure-your-synapse-workspace-preview"></a>A szinapszis munkaterület biztonságossá tétele (előzetes verzió)
 
@@ -112,7 +112,7 @@ Bár a felhasználók manuálisan is hozzárendelhetők a szinapszis-szerepkör�
 
 Az egyes szerepkörökben lévő felhasználóknak a következő lépéseket kell végrehajtaniuk:
 
-|   | Lépés | Munkaterület-rendszergazdák | Spark-rendszergazdák | SQL-rendszergazdák |
+| Szám | Lépés | Munkaterület-rendszergazdák | Spark-rendszergazdák | SQL-rendszergazdák |
 | --- | --- | --- | --- | --- |
 | 1 | Parquet-fájl feltöltése a CNT1-be | IGEN | IGEN | IGEN |
 | 2 | A Parquet-fájl beolvasása az SQL igény szerinti használatával | IGEN | NO | IGEN |
@@ -140,7 +140,7 @@ A munkaterület mostantól teljesen konfigurálva van és biztonságos.
 
 A szinapszis Studio a felhasználói szerepkörök alapján eltérően fog működni. Előfordulhat, hogy egyes elemek el lesznek rejtve vagy le vannak tiltva, ha a felhasználó nincs olyan szerepkörhöz rendelve, amely megfelelő hozzáférést biztosít. A következő táblázat összefoglalja a szinapszis Studióra gyakorolt hatást.
 
-| Tevékenység | Munkaterület-rendszergazdák | Spark-rendszergazdák | SQL-rendszergazdák |
+| Feladat | Munkaterület-rendszergazdák | Spark-rendszergazdák | SQL-rendszergazdák |
 | --- | --- | --- | --- |
 | A szinapszis Studio megnyitása | IGEN | IGEN | IGEN |
 | Kezdőlap hub megtekintése | IGEN | IGEN | IGEN |

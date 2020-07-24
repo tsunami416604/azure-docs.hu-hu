@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 7e59ee029b1705f6f789812b870de96bbb74a6e5
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 23556d6c0d64c6b6351d09ac1a658da0e5a4dd68
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223550"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088835"
 ---
 # <a name="migrate-from-a-managed-image-to-a-shared-image-gallery-image"></a>Migrálás felügyelt rendszerképből megosztott képgyűjteményi rendszerképre
 
@@ -54,9 +54,9 @@ A rendszerkép-definíciók logikai csoportosítást hoznak létre a képekhez. 
 
 A rendszerkép meghatározásakor győződjön meg arról, hogy a megfelelő információval rendelkezik. Mivel a felügyelt lemezképek mindig általánosítva vannak, be kell állítani `-OsState generalized` . 
 
-További információ a képdefiníciók által megadható értékekről: [képdefiníciók](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#image-definitions).
+További információ a képdefiníciók által megadható értékekről: [képdefiníciók](./windows/shared-image-galleries.md#image-definitions).
 
-Hozza létre a rendszerkép definícióját a [New-AzGalleryImageDefinition](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion)használatával. Ebben a példában a rendszerkép definíciójának neve *myImageDefinition*, és egy általánosított Windows operációs rendszerre van. A rendszerképek definíciójának létrehozásához használja a következőt: `-OsType Linux` . 
+Hozza létre a rendszerkép definícióját a [New-AzGalleryImageDefinition](/powershell/module/az.compute/new-azgalleryimageversion)használatával. Ebben a példában a rendszerkép definíciójának neve *myImageDefinition*, és egy általánosított Windows operációs rendszerre van. A rendszerképek definíciójának létrehozásához használja a következőt: `-OsType Linux` . 
 
 ```azurepowershell-interactive
 $imageDefinition = New-AzGalleryImageDefinition `
@@ -73,7 +73,7 @@ $imageDefinition = New-AzGalleryImageDefinition `
 
 ## <a name="get-the-managed-image"></a>A felügyelt rendszerkép beolvasása
 
-A [Get-AzImage](https://docs.microsoft.com/powershell/module/az.compute/get-azimage)használatával megtekintheti az erőforráscsoporthoz elérhető rendszerképek listáját. Ha ismeri a rendszerkép nevét és a benne található erőforráscsoportot, akkor `Get-AzImage` ismét használhatja a rendszerkép-objektum beolvasásához és egy változóban való tárolásához. Ez a példa egy *myImage* nevű rendszerképet kap a "myResourceGroup" erőforráscsoporthoz, és hozzárendeli azt a (z) *$managedImage*változóhoz. 
+A [Get-AzImage](/powershell/module/az.compute/get-azimage)használatával megtekintheti az erőforráscsoporthoz elérhető rendszerképek listáját. Ha ismeri a rendszerkép nevét és a benne található erőforráscsoportot, akkor `Get-AzImage` ismét használhatja a rendszerkép-objektum beolvasásához és egy változóban való tárolásához. Ez a példa egy *myImage* nevű rendszerképet kap a "myResourceGroup" erőforráscsoporthoz, és hozzárendeli azt a (z) *$managedImage*változóhoz. 
 
 ```azurepowershell-interactive
 $managedImage = Get-AzImage `
@@ -84,7 +84,7 @@ $managedImage = Get-AzImage `
 
 ## <a name="create-an-image-version"></a>Rendszerképverzió létrehozása
 
-Hozzon létre egy rendszerkép-verziót a felügyelt rendszerképből a [New-AzGalleryImageVersion](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion)használatával. 
+Hozzon létre egy rendszerkép-verziót a felügyelt rendszerképből a [New-AzGalleryImageVersion](/powershell/module/az.compute/new-azgalleryimageversion)használatával. 
 
 A képverzió megengedett karaktereinek száma számok és időszakok. A számoknak egy 32 bites egész számon belüli tartományba kell esniük. Formátum: *MajorVersion*. *MinorVersion*. *Javítás*.
 
@@ -117,7 +117,7 @@ $job.State
 > [!NOTE]
 > Meg kell várnia, amíg a rendszerkép verziója teljesen elkészült és replikálva lett ahhoz, hogy ugyanazt a felügyelt képet használhassa egy másik rendszerkép-verzió létrehozásához. 
 >
-> A rendszerképet a prémium tárolóban is tárolhatja egy hozzáadási `-StorageAccountType Premium_LRS` vagy a [zóna redundáns tárterületével](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) , `-StorageAccountType Standard_ZRS` Ha létrehozza a rendszerkép verzióját.
+> A rendszerképet a prémium tárolóban is tárolhatja egy hozzáadási `-StorageAccountType Premium_LRS` vagy a [zóna redundáns tárterületével](../storage/common/storage-redundancy.md) , `-StorageAccountType Standard_ZRS` Ha létrehozza a rendszerkép verzióját.
 >
 
 ## <a name="delete-the-managed-image"></a>A felügyelt rendszerkép törlése

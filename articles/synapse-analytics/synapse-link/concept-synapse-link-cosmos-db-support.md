@@ -4,17 +4,17 @@ description: Az Azure szinapszis-hivatkozás által támogatott műveletek aktu�
 services: synapse-analytics
 author: ArnoMicrosoft
 ms.service: synapse-analytics
-ms.topic: quickstart
+ms.topic: conceptual
 ms.subservice: synapse-link
 ms.date: 04/21/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: c9f6a61dfa688980fa6400a2fa93ab8862798750
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.openlocfilehash: 7fbc7b1cb8119a6ee9403bf0139380aa5dcd0613
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85194773"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089124"
 ---
 # <a name="azure-synapse-link-preview-for-azure-cosmos-db-supported-features"></a>Azure szinapszis-hivatkozás (előzetes verzió) Azure Cosmos DB támogatott funkciókhoz
 
@@ -44,7 +44,7 @@ A szinapszis-hivatkozás engedélyezése nélkül csatlakozhat egy Azure Cosmos 
 
 ## <a name="supported-code-generated-actions-for-spark"></a>Támogatott, kód által generált műveletek a Sparkhoz
 
-| Kézmozdulat              | Leírás |OLTP |HTAP  |
+| Kézmozdulat              | Description |OLTP |HTAP  |
 | -------------------- | ----------------------------------------------------------- |----------------------------------------------------------- |----------------------------------------------------------- |
 | **Betöltés a DataFrame** |Betöltés és beolvasás egy Spark-DataFrame |X| ✓ |
 | **Spark-tábla létrehozása** |Azure Cosmos DB tárolóra mutató tábla létrehozása|X| ✓ |
@@ -56,7 +56,7 @@ A szinapszis-hivatkozás engedélyezése nélkül csatlakozhat egy Azure Cosmos 
 
 ## <a name="supported-code-generated-actions-for-sql-serverless"></a>Támogatott programkód által generált műveletek az SQL Server nélküli rendszerhez
 
-| Kézmozdulat              | Leírás |OLTP |HTAP |
+| Kézmozdulat              | Description |OLTP |HTAP |
 | -------------------- | ----------------------------------------------------------- |----------------------------------------------------------- |----------------------------------------------------------- |
 | **Válassza ki a Top 100** |Első 100-elem előnézete egy tárolóból|X| ✓ |
 | **Nézet létrehozása** |Hozzon létre egy nézetet, amely közvetlenül rendelkezik BI-hozzáféréssel egy tárolóban a szinapszis SQL használatával|X| ✓ |

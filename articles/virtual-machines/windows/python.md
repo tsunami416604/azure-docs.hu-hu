@@ -8,11 +8,12 @@ ms.topic: article
 ms.date: 06/22/2017
 ms.author: cynthn
 ms.custom: tracking-python
-ms.openlocfilehash: b5f8b0e8f22a476ad379b55275d79c2874966852
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 92b6d8c6cd59f82439beec24c003aac6673014e7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84551975"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088325"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-python"></a>Windows rendszerű virtuális gépek létrehozása és kezelése az Azure-ban a Python használatával
 
@@ -22,16 +23,16 @@ Egy [Azure-beli virtuális gépnek](overview.md?toc=%2fazure%2fvirtual-machines%
 > * Visual Studio-projekt létrehozása
 > * Csomagok telepítése
 > * Hitelesítő adatok létrehozása
-> * Erőforrások létrehozása
+> * Az erőforrások létrehozása
 > * Felügyeleti feladatok végrehajtása
 > * Erőforrások törlése
-> * Alkalmazás futtatása
+> * Az alkalmazás futtatása
 
 Ezek a lépések körülbelül 20 percet vesznek igénybe.
 
 ## <a name="create-a-visual-studio-project"></a>Visual Studio-projekt létrehozása
 
-1. Ha még nem tette meg, telepítse a [Visual studiót](https://docs.microsoft.com/visualstudio/install/install-visual-studio). Válassza a **Python-fejlesztés** elemet a munkaterhelések lapon, majd kattintson a **telepítés**gombra. Az összegzésben láthatja, hogy a **Python 3 64-bit (3.6.0)** automatikusan ki van választva. Ha már telepítette a Visual studiót, a Python munkaterhelést a Visual Studio Launcher használatával adhatja hozzá.
+1. Ha még nem tette meg, telepítse a [Visual studiót](/visualstudio/install/install-visual-studio). Válassza a **Python-fejlesztés** elemet a munkaterhelések lapon, majd kattintson a **telepítés**gombra. Az összegzésben láthatja, hogy a **Python 3 64-bit (3.6.0)** automatikusan ki van választva. Ha már telepítette a Visual studiót, a Python munkaterhelést a Visual Studio Launcher használatával adhatja hozzá.
 2. A Visual Studio telepítése és elindítása után kattintson a **fájl**  >  **új**  >  **projekt**elemre.
 3. Kattintson a **sablonok**  >  **Python**  >  **Python-alkalmazás**elemre, írja be a *myPythonProject* nevet a projekt neveként, válassza ki a projekt helyét, majd kattintson **az OK**gombra.
 
@@ -95,7 +96,7 @@ A lépés elkezdése előtt győződjön meg arról, hogy rendelkezik [Active Di
     credentials = get_credentials()
     ```
 
-## <a name="create-resources"></a>Erőforrások létrehozása
+## <a name="create-resources"></a>Az erőforrások létrehozása
  
 ### <a name="initialize-management-clients"></a>Felügyeleti ügyfelek inicializálása
 
@@ -554,7 +555,7 @@ Mivel az Azure-ban használt erőforrásokért kell fizetnie, mindig érdemes t�
 
 3. Mentse a *myPythonProject.py*.
 
-## <a name="run-the-application"></a>Alkalmazás futtatása
+## <a name="run-the-application"></a>Az alkalmazás futtatása
 
 1. A konzol alkalmazás futtatásához kattintson a **Start** gombra a Visual Studióban.
 
@@ -565,6 +566,5 @@ Mivel az Azure-ban használt erőforrásokért kell fizetnie, mindig érdemes t�
 
 ## <a name="next-steps"></a>További lépések
 
-- Ha problémák merültek fel az üzembe helyezés során, a következő lépésről lásd: [Troubleshooting resource group deployments with Azure Portal](../../resource-manager-troubleshoot-deployments-portal.md) (Erőforráscsoportok üzemelő példányainak hibaelhárítása az Azure Portalon)
-- További információ az [Azure Python-könyvtárról](https://docs.microsoft.com/python/api/overview/azure/?view=azure-python)
-
+- Ha problémák merültek fel az üzembe helyezés során, a következő lépésről lásd: [Troubleshooting resource group deployments with Azure Portal](../../azure-resource-manager/templates/deployment-history.md) (Erőforráscsoportok üzemelő példányainak hibaelhárítása az Azure Portalon)
+- További információ az [Azure Python-könyvtárról](/python/api/overview/azure/?view=azure-python)

@@ -9,13 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 03/25/2020
+ms.date: 07/15/2020
 ms.author: jingwang
-ms.openlocfilehash: 74210864332319dabb16eda865da9dc9793e3dbd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a6092395929f4990010e2212f28a5962cfe1c7e7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84187673"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087840"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Másolási tevékenység Azure Data Factory
 
@@ -185,7 +186,7 @@ Tekintse meg a [séma-és adattípusok leképezése](copy-activity-schema-and-ty
 Az adatoknak a forrás adattárból a fogadóba való másolása mellett úgy is beállíthatja, hogy további adatoszlopokat is adjon hozzá a fogadóhoz való másoláshoz. Például:
 
 - Fájl alapú forrásból történő másoláskor a relatív fájl elérési útját egy további oszlopként tárolja, amelyből az adatokból származó fájl származik.
-- Adjon hozzá egy olyan oszlopot, amely ADF-kifejezéssel van ellátva, hogy csatolja az ADF rendszerváltozóit, például a folyamat nevét vagy a folyamat azonosítóját, vagy más dinamikus értéket a felsőbb rétegbeli tevékenység kimenet
+- Adjon hozzá egy olyan oszlopot, amely ADF-kifejezéssel van ellátva, hogy csatolja az ADF rendszerváltozóit, például a folyamat nevét vagy a folyamat AZONOSÍTÓját, vagy más dinamikus értéket a felsőbb rétegbeli tevékenység kimenet
 - Adjon hozzá egy statikus értéket tartalmazó oszlopot az alsóbb rétegbeli fogyasztási igények kielégítéséhez.
 
 A másolási tevékenység forrása lapon a következő konfiguráció található: 
@@ -201,7 +202,7 @@ Programozott módon történő konfigurálásához adja hozzá a `additionalColu
 | --- | --- | --- |
 | additionalColumns | További adatoszlopokat adhat hozzá a fogadóba való másoláshoz.<br><br>A tömb alá tartozó minden objektum `additionalColumns` egy további oszlopot jelöl. A `name` meghatározza az oszlop nevét, a pedig `value` jelzi az oszlop adatértékét.<br><br>Az engedélyezett adatértékek a következők:<br>- **`$$FILEPATH`**– a fenntartott változó azt jelzi, hogy a forrásfájlok relatív elérési útját az adatkészletben megadott mappa elérési útjára tárolja. Alkalmazás fájl alapú forrásra.<br>- **Kifejezés**<br>- **Statikus érték** | No |
 
-**Példa:**
+**Például**
 
 ```json
 "activities":[
@@ -239,6 +240,22 @@ Programozott módon történő konfigurálásához adja hozzá a `additionalColu
     }
 ]
 ```
+
+## <a name="auto-create-sink-tables"></a>Fogadó táblák automatikus létrehozása
+
+Ha az adatok másolása az SQL Database-be/Azure szinapszis Analyticsbe történik, ha a céltábla nem létezik, a másolási tevékenység a forrásadatok alapján automatikusan létrehozza azt. Ennek célja, hogy segítsen gyorsan megkezdeni az adatgyűjtés betöltését és az SQL Database/Azure szinapszis Analytics kiértékelését. Az adatfeldolgozás után áttekintheti és módosíthatja a fogadó tábla sémáját az igényeinek megfelelően.
+
+Ez a funkció akkor támogatott, ha bármely forrásból másol adatokból a következő fogadó adattárakba. Megtalálhatja a lehetőséget az *ADF authoring UI* – > *másolási tevékenység* fogadó – > *tábla lehetőség* – > *automatikus létrehozási tábla*vagy `tableOption` a tulajdonság a másolási tevékenység fogadója adattartalomban.
+
+- [Azure SQL Database](connector-azure-sql-database.md)
+- [Felügyelt példány Azure SQL Database](connector-azure-sql-managed-instance.md)
+- [Azure szinapszis Analytics (korábban Azure SQL Data Warehouse)](connector-azure-sql-data-warehouse.md)
+- [SQL Server](connector-sql-server.md)
+
+![Fogadó táblák létrehozása](media/copy-activity-overview/create-sink-table.png)
+
+> [!NOTE]
+> A rendszer jelenleg nem támogatja az automatikus tábla létrehozását, ha a [szakaszos másolás](copy-activity-performance-features.md#staged-copy) engedélyezve van.
 
 ## <a name="fault-tolerance"></a>Hibatűrés
 

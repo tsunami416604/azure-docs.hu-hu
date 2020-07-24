@@ -7,13 +7,14 @@ ms.service: firewall
 ms.topic: article
 ms.date: 04/10/2020
 ms.author: victorh
-ms.openlocfilehash: 93677b3e473ab825665fed5590ac345a8cfcc300
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 84110e749dac9267e994385aa5f6d05e3ba224a6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81113435"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087543"
 ---
-# <a name="azure-firewall-rule-processing-logic"></a>Az Azure Firewall szabályfeldolgozási logikája
+# <a name="configure-azure-firewall-rules"></a>Azure Firewall szabályok konfigurálása
 Megadhatja a NAT-szabályokat, a hálózati szabályokat és az alkalmazásokra vonatkozó szabályokat a Azure Firewall. A szabályok gyűjteményeit a rendszer a szabály típusa szerint dolgozza fel a prioritási sorrendben, a számok számát pedig a 100 – 65 000 értéknél nagyobb számra csökkenti. A szabálygyűjtemény neve csak betűket, számokat, aláhúzásokat, pontokat és kötőjeleket tartalmazhat. Betűvel vagy számmal kell kezdődnie, és betűvel, számmal vagy aláhúzással kell végződnie. A név maximális hossza 80 karakter.
 
 Először a szabályok gyűjtésének prioritási számát 100-os (100, 200, 300 stb.) értékre kell felvennie, így szükség esetén további szabálygyűjtemény hozzáadására van lehetőség.
@@ -54,7 +55,7 @@ A google.com való kapcsolódás a megfelelő hálózati szabály miatt engedél
 
 **Alkalmazási szabály**
 
-- Művelet: megtagadás
+- Művelet: Megtagadás
 
 |name  |Forrás típusa  |Forrás  |Protokoll: Port|Cél teljes tartománynevek|
 |---------|---------|---------|---------|----------|----------|
@@ -82,7 +83,7 @@ Az SSH-forgalmat a rendszer megtagadja, mert egy magasabb prioritású hálózat
 
 - Név: megtagadás – gyűjtemény
 - Prioritás: 100
-- Művelet: megtagadás
+- Művelet: Megtagadás
 
 |name  |Protokoll  |Forrás típusa  |Forrás  |Cél típusa  |Cél címe  |Célportok|
 |---------|---------|---------|---------|----------|----------|--------|

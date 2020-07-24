@@ -14,14 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: ed4f2d769dbda3dec7b353fddfd1e5e0f3d00f9b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c8af1c32607e5fc7bf548b40069e18923c666303
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531637"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089651"
 ---
 # <a name="connect-your-infoblox-nios-to-azure-sentinel"></a>A Infoblox-NIOS összekötése az Azure Sentinel használatával
+
+> [!IMPORTANT]
+> Az Azure Sentinel Infoblox NIOS-adatösszekötője jelenleg nyilvános előzetes verzióban érhető el.
+> Ez a szolgáltatás szolgáltatói szerződés nélkül érhető el, és éles számítási feladatokhoz nem ajánlott. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Ez a cikk azt ismerteti, hogyan csatlakoztatható a [Infoblox Network Identity Operating System (NIOS) készülék](https://www.infoblox.com/glossary/network-identity-operating-system-nios/) az Azure sentinelhez. A Infoblox NIOS-adatösszekötővel könnyedén csatlakoztathatja a Infoblox-naplókat az Azure Sentinel segítségével, megtekintheti az irányítópultokat, egyéni riasztásokat hozhat létre, és javíthatja a vizsgálatot. A Infoblox NIOS és az Azure Sentinel közötti integráció a syslog használatát teszi lehetővé.
 
@@ -46,7 +50,7 @@ A sikeres kapcsolatok létrejötte után az adat Log Analytics a syslog alatt je
 
 Akár 20 percet is igénybe vehet, amíg a naplók meg nem kezdődnek a Log Analytics. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebből a dokumentumból megtudhatta, hogyan csatlakoztatható a Infoblox NIOS az Azure Sentinelhez. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 

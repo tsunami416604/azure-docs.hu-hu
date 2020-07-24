@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogardle
-ms.openlocfilehash: 60d06fa4cf6d116f9c802cda544a356e469755b5
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 5ed99fd6a16743846033313fcf13702f69f3e728
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223074"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088359"
 ---
 # <a name="implement-oracle-golden-gate-on-an-azure-linux-vm"></a>Az Oracle Golden Gate megvalósítása Azure Linux rendszerű virtuális gépen 
 
@@ -27,7 +27,7 @@ Az Azure CLI az Azure-erőforrások parancssorból vagy szkriptekkel történő 
 
 Ez a dokumentum részletesen ismerteti, hogyan hozhat létre, telepíthet és konfigurálhat Oracle Golden Gate-t egy Azure-beli virtuális gépen. Ebben az oktatóanyagban két virtuális gép van beállítva egy rendelkezésre állási csoportba egyetlen régióban. Ugyanez az oktatóanyag használható a OracleGolden-kapuk beállítására a különböző Availability Zones lévő virtuális gépekhez egyetlen Azure-régióban, illetve két különböző régióban lévő virtuális gépek beállításához is.
 
-A kezdés előtt győződjön meg arról, hogy az Azure CLI telepítve van. További információért lásd az [Azure CLI telepítési útmutatóját](https://docs.microsoft.com/cli/azure/install-azure-cli).
+A kezdés előtt győződjön meg arról, hogy az Azure CLI telepítve van. További információért lásd az [Azure CLI telepítési útmutatóját](/cli/azure/install-azure-cli).
 
 ## <a name="prepare-the-environment"></a>A környezet előkészítése
 
@@ -56,7 +56,7 @@ Jelentkezzen be az Azure-előfizetésbe az az [login](/cli/azure/reference-index
 az login
 ```
 
-### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi az Azure-erőforrásokat, és amelyekről felügyelhető. 
 
@@ -68,7 +68,7 @@ az group create --name myResourceGroup --location westus
 
 ### <a name="create-an-availability-set"></a>Rendelkezésre állási csoport létrehozása
 
-A következő lépés nem kötelező, de ajánlott. További információ: [Azure rendelkezésre állási készletek útmutatója](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines).
+A következő lépés nem kötelező, de ajánlott. További információ: [Azure rendelkezésre állási készletek útmutatója](../../windows/infrastructure-example.md).
 
 ```azurecli
 az vm availability-set create \

@@ -6,14 +6,14 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: reference
 ms.date: 04/20/2020
-ms.openlocfilehash: ca4dc888af414ede270118eff72652f098d3306c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8a459d1fba4353b4b3e092e83a759314cc455ead
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82779042"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087288"
 ---
-# <a name="localization"></a>Honosítás #
+# <a name="azure-media-player-localization"></a>Honosítás Azure Media Player #
 
 A többnyelvű támogatás lehetővé teszi, hogy a nem angol nyelvű felhasználók natív módon használhassák a lejátszót. A Azure Media Player a nyelvek globális szótárát fogja létrehozni, amely az oldal nyelvén alapuló hibaüzeneteket fogja honosítani. Egy fejlesztő létrehozhat egy kényszerített beállított nyelvet tartalmazó Player-példányt is. Az alapértelmezett nyelv az angol (en).
 
@@ -31,7 +31,7 @@ A Azure Media Player jelenleg a következő nyelveket támogatja a megfelelő ny
 | Angol {default}   | hu   | Horvát                | ó     | Román                | ro           |
 | Arab              | AR   | Magyar               | hu     | Szlovák                  | sk           |
 | Bolgár           | BG   | Indonéz              | id     | Szlovén                 | SL           |
-| Katalán             | CA   | Izlandi               | egyenlő     | Szerb – cirillbetűs      | SR-Cyrl-cs   |
+| Katalán             | CA   | Izlandi               | is     | Szerb – cirillbetűs      | SR-Cyrl-cs   |
 | Cseh               | CS   | Olasz                 | Ez     | Szerb – latinbetűs         | sr-latn-rs   |
 | Dán              | da   | Japán                | Japán     | Orosz                 | ru           |
 | Német              | de   | Kazak                  | KK     | Svéd                 | Sv           |

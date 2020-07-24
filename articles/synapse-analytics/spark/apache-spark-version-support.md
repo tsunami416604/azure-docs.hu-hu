@@ -1,5 +1,5 @@
 ---
-title: Apache Spark az Azure szinapszis Analytics verziójának támogatásához
+title: Apache Spark verzió támogatása
 description: A Spark, a Scala, a Python támogatott verziói
 services: synapse-analytics
 author: euangMS
@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: 8914f081196c41dccf3acbed9cf87bd63df8b92c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eda93f64b503a1894f306be75dd5a3321d428eb9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85193957"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089226"
 ---
 # <a name="supported-language-and-runtime-versions-for-apache-spark-and-dependent-components"></a>A Apache Spark és a függő összetevők támogatott nyelvi és futtatókörnyezeti verziói  
 

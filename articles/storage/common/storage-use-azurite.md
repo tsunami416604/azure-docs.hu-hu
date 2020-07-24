@@ -1,22 +1,22 @@
 ---
 title: A Azurite Emulator használata a helyi Azure Storage-fejlesztéshez
-description: A nyílt forráskódú Azurite-emulátor (előzetes verzió) ingyenes helyi környezetet biztosít az Azure Storage-alkalmazások teszteléséhez.
+description: A Azurite nyílt forráskódú emulátora ingyenes helyi környezetet biztosít az Azure Storage-alkalmazások teszteléséhez.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 05/01/2020
+ms.date: 07/15/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: how-to
-ms.openlocfilehash: af846b0c203934468b7f6282234819142093286f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c850fccf5a86df4c35ce4db53b5b40d5e8588210
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85512136"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089413"
 ---
-# <a name="use-the-azurite-emulator-for-local-azure-storage-development-and-testing-preview"></a>A Azurite Emulator használata helyi Azure Storage-fejlesztéshez és-teszteléshez (előzetes verzió)
+# <a name="use-the-azurite-emulator-for-local-azure-storage-development"></a>A Azurite Emulator használata a helyi Azure Storage-fejlesztéshez
 
-A Azurite 3,2-es verziójának nyílt forráskódú emulátora (előzetes verzió) ingyenes helyi környezetet biztosít az Azure Blob-és üzenetsor-tárolási alkalmazások teszteléséhez. Ha elégedett az alkalmazás helyi működésével, váltson egy Azure Storage-fiók használatára a felhőben. Az emulátor platformfüggetlen támogatást biztosít Windows, Linux és macOS platformokon. A Azurite v3 támogatja az Azure Blob service által megvalósított API-kat.
+A Azurite nyílt forráskódú emulátora ingyenes helyi környezetet biztosít az Azure Blob-és üzenetsor-tárolási alkalmazások teszteléséhez. Ha elégedett az alkalmazás helyi működésével, váltson egy Azure Storage-fiók használatára a felhőben. Az emulátor platformfüggetlen támogatást biztosít Windows, Linux és macOS platformokon.
 
 A Azurite a jövőbeli Storage Emulator platform. A Azurite felülírja az [Azure Storage-emulátort](storage-use-emulator.md). A Azurite továbbra is frissülni fog az Azure Storage API-k legújabb verzióinak támogatásához.
 
@@ -34,8 +34,6 @@ A Visual Studio Code-ban válassza a **bővítmények** ablaktáblát, és keres
 ![Visual Studio Code Extensions piactér](media/storage-use-azurite/azurite-vs-code-extension.png)
 
 A böngészőben a [Visual Studio Code-bővítmény piaca](https://marketplace.visualstudio.com/items?itemName=Azurite.azurite) is elérhető. A **telepítés** gombra kattintva nyissa meg a Visual Studio Code-ot, és lépjen közvetlenül a Azurite bővítmény oldalára.
-
-A Azurite gyorsan elindíthatja vagy lezárhatja a Visual Studio Code állapotjelző sávján. Kattintson a **[Azurite blob Service]** vagy a **[Azurite üzenetsor-szolgáltatás]** elemre.
 
 A bővítmény a Visual Studio Code következő parancsait támogatja. A parancs paletta megnyitásához nyomja le az F1 billentyűt a Visual Studio Code-ban. 
 
@@ -67,6 +65,7 @@ A következő beállítások támogatottak:
    - **Azurite: várólista-állomás** – a Queue szolgáltatás figyelő végpontja. Az alapértelmezett beállítás a 127.0.0.1.
    - **Azurite: várólista portja** – a Queue szolgáltatás figyelési port. Az alapértelmezett port a 10001.
    - **Azurite: csendes** -csendes üzemmód letiltja a hozzáférési naplót. Az alapértelmezett érték: **hamis**.
+   - **Azurite: az API-verzió ellenőrzésének kihagyása** – a kérelem API-verziójának ellenőrzésének kihagyása. Az alapértelmezett érték: **hamis**.
 
 ## <a name="install-and-run-azurite-by-using-npm"></a>A Azurite telepítése és futtatása a NPM használatával
 
@@ -310,6 +309,15 @@ azurite --oauth basic --cert path/server.pem --key path/key.pem
 > A OAuth HTTPS-végpontot igényel. Győződjön meg arról, hogy engedélyezve van-e a HTTPS a kapcsolóval `--cert` együtt `--oauth` .
 
 A Azurite az alapszintű hitelesítést támogatja a `basic` kapcsoló paraméterének megadásával `--oauth` . A Azurite alapszintű hitelesítést végez, például érvényesíti a bejövő tulajdonosi jogkivonatot, ellenőrzi a kiállítót, a célközönséget és a lejáratot. A Azurite nem fogja ellenőriznie a jogkivonat aláírását vagy engedélyeit.
+
+### <a name="skip-api-version-check"></a>API-verzió ellenőrzésének kihagyása
+
+**Opcionális** – a indításakor a Azurite ellenőrzi, hogy érvényes-e a kért API-verzió. A következő parancs kihagyja az API-verzió ellenőrzését:
+
+```console
+azurite --skipApiVersionCheck
+```
+
 
 ## <a name="authorization-for-tools-and-sdks"></a>Eszközök és SDK-k engedélyezése
 

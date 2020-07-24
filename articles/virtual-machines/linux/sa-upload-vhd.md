@@ -8,11 +8,12 @@ ms.topic: article
 ms.date: 07/10/2017
 ms.author: cynthn
 ms.custom: storage accounts
-ms.openlocfilehash: 7ec9b670f8b2eb1731511deb1d01cfc7db55054f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dcc7c69809ae623606bd091821c5f2fc661f6c8b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81758572"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088750"
 ---
 # <a name="upload-and-create-a-linux-vm-from-custom-disk-with-the-azure-cli"></a>Linuxos virtuális gép feltöltése és létrehozása egyéni lemezről az Azure CLI-vel
 
@@ -78,10 +79,10 @@ A következő lépések elvégzéséhez a következőkre lesz szüksége:
 
 * **Linux operációs rendszer. vhd-fájlba telepítve** – [Azure által támogatott Linux-disztribúció](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) telepítése (vagy a [nem támogatott disztribúciók információinak](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)megjelenítése) virtuális lemezre VHD formátumban. Több eszköz létezik a virtuális gép és a virtuális merevlemez létrehozásához:
   * Telepítse és konfigurálja a [QEMU](https://en.wikibooks.org/wiki/QEMU/Installing_QEMU) -t vagy a [KVM](https://www.linux-kvm.org/page/RunningKVM)-t, ügyelve arra, hogy a VHD-t használja képformátumként. Ha szükséges, [konvertálhat egy képet](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats) a használatával `qemu-img convert` .
-  * A Hyper-V-t [Windows 10](https://msdn.microsoft.com/virtualization/hyperv_on_windows/quick_start/walkthrough_install) vagy [Windows Server 2012/2012 R2](https://technet.microsoft.com/library/hh846766.aspx)rendszeren is használhatja.
+  * A Hyper-V-t [Windows 10](/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v) vagy [Windows Server 2012/2012 R2](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh846766(v=ws.11))rendszeren is használhatja.
 
 > [!NOTE]
-> Az újabb VHDX formátum nem támogatott az Azure-ban. Amikor létrehoz egy virtuális gépet, a VHD formátumot kell megadnia formátumként. Szükség esetén a VHDX-lemezeket [`qemu-img convert`](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats) a vagy a PowerShell-parancsmag használatával is konvertálhatja VHD-re [`Convert-VHD`](https://technet.microsoft.com/library/hh848454.aspx) . Emellett az Azure nem támogatja a dinamikus virtuális merevlemezek feltöltését, ezért a feltöltés előtt át kell alakítania a lemezeket a statikus VHD-k között. Az Azure-ba való feltöltés folyamata során olyan eszközöket használhat, mint például az [Azure VHD-segédprogramok](https://github.com/Microsoft/azure-vhd-utils-for-go) , amelyek a dinamikus lemezek átalakítására szolgálnak.
+> Az újabb VHDX formátum nem támogatott az Azure-ban. Amikor létrehoz egy virtuális gépet, a VHD formátumot kell megadnia formátumként. Szükség esetén a VHDX-lemezeket [`qemu-img convert`](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats) a vagy a PowerShell-parancsmag használatával is konvertálhatja VHD-re [`Convert-VHD`](/powershell/module/hyper-v/convert-vhd?view=win10-ps) . Emellett az Azure nem támogatja a dinamikus virtuális merevlemezek feltöltését, ezért a feltöltés előtt át kell alakítania a lemezeket a statikus VHD-k között. Az Azure-ba való feltöltés folyamata során olyan eszközöket használhat, mint például az [Azure VHD-segédprogramok](https://github.com/Microsoft/azure-vhd-utils-for-go) , amelyek a dinamikus lemezek átalakítására szolgálnak.
 > 
 > 
 
@@ -113,7 +114,7 @@ Tekintse meg a **[Linux telepítési megjegyzéseit](create-upload-generic.md#ge
 > 
 > 
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 Az erőforráscsoportok logikailag egyesítik az összes Azure-erőforrást a virtuális gépek támogatásához, például a virtuális hálózatkezeléshez és a tárhelyhez. További információforrások az erőforráscsoportok [áttekintése](../../azure-resource-manager/management/overview.md)című témakörben találhatók. Az egyéni lemez feltöltése és a virtuális gépek létrehozása előtt először létre kell hoznia egy erőforráscsoportot az [az Group Create](/cli/azure/group)paranccsal.
 
 A következő példában létrehozunk egy `westus` nevű erőforráscsoportot a `myResourceGroup` helyen:
@@ -156,7 +157,7 @@ info:    storage account keys list command OK
 
 Jegyezze fel, hogy a `key1` következő lépésekben azt fogja használni, hogy együttműködjön a Storage-fiókkal.
 
-## <a name="create-a-storage-container"></a>Storage-tároló létrehozása
+## <a name="create-a-storage-container"></a>Tároló létrehozása
 Ugyanúgy, ahogy különböző címtárakat hoz létre a helyi fájlrendszer logikus rendszerezéséhez, a lemezeket a Storage-fiókon belül hozhatja létre. A Storage-fiók tetszőleges számú tárolót tartalmazhat. Hozzon létre egy tárolót az [az Storage Container Create](/cli/azure/storage/container)paranccsal.
 
 A következő példában létrehozunk egy nevű tárolót `mydisks` :
@@ -178,7 +179,7 @@ az storage blob upload --account-name mystorageaccount \
     --file /path/to/disk/mydisk.vhd --name myDisk.vhd
 ```
 
-## <a name="create-the-vm"></a>Virtuális gép létrehozása
+## <a name="create-the-vm"></a>A virtuális gép létrehozása
 A nem felügyelt lemezekkel rendelkező virtuális gépek létrehozásához adja meg a lemez () URI-JÁT az `--image` [az VM Create](/cli/azure/vm)paranccsal. Az alábbi példa egy nevű virtuális GÉPET hoz létre `myVM` a korábban feltöltött virtuális lemez használatával:
 
 A `--image` paramétert az [az VM Create](/cli/azure/vm) paranccsal adhatja meg, hogy az egyéni lemezre mutasson. Győződjön meg arról, hogy `--storage-account` az megfelel az egyéni lemez tárolására használt Storage-fióknak. Nem kell ugyanazt a tárolót használnia, mint a virtuális gépek tárolására szolgáló egyéni lemezt. Ügyeljen arra, hogy a további tárolókat ugyanúgy hozza létre, mint a korábbi lépéseket az egyéni lemez feltöltése előtt.
@@ -236,4 +237,3 @@ az group deployment create --resource-group myNewResourceGroup \
 
 ## <a name="next-steps"></a>További lépések
 Miután felkészítette és feltöltötte az egyéni virtuális lemezt, további információt olvashat a [Resource Manager és a sablonok használatáról](../../azure-resource-manager/management/overview.md). Előfordulhat, hogy [adatlemezt](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) is szeretne hozzáadni az új virtuális gépekhez. Ha olyan alkalmazások futnak a virtuális gépeken, amelyekhez hozzá kell férnie, ne felejtse el [megnyitni a portokat és a végpontokat](nsg-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-

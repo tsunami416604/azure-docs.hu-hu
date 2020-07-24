@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: delhan
-ms.openlocfilehash: 03356c0b4a93f4befdbc529523e58642137a8887
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cc1ad3104596cc7ad4bb48f88e4c8312bc833371
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80420812"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088563"
 ---
 # <a name="troubleshoot-authentication-errors-when-you-use-rdp-to-connect-to-azure-vm"></a>Azure-beli virtuális géphez RDP használatával való csatlakozáskor jelentkező hitelesítési hibák elhárítása
 
@@ -276,8 +276,8 @@ Indítsa újra a virtuális gépet, hogy a beállításjegyzék módosításai �
 
 ## <a name="next-steps"></a>További lépések
 
-[A Win32_TSGeneralSetting osztály SetEncryptionLevel metódusa](https://docs.microsoft.com/windows/desktop/TermServ/win32-tsgeneralsetting-setencryptionlevel)
+[A Win32_TSGeneralSetting osztály SetEncryptionLevel metódusa](/windows/desktop/termserv/win32-tsgeneralsetting-setencryptionlevel)
 
-[Kiszolgáló hitelesítési és titkosítási szintjeinek konfigurálása](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc770833(v=ws.11))
+[Kiszolgáló hitelesítési és titkosítási szintjeinek konfigurálása](/previous-versions/windows/it-pro/windows-server-2008-r2-and-2008/cc770833(v=ws.11))
 
-[Win32_TSGeneralSetting osztály](https://docs.microsoft.com/windows/desktop/TermServ/win32-tsgeneralsetting)
+[Win32_TSGeneralSetting osztály](/windows/desktop/termserv/win32-tsgeneralsetting)

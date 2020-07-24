@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 04/12/2020
-ms.openlocfilehash: f09f5010c18f5ea064b02f0fbbae107bf473e1f8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a3382f93990612b0ab34eb0848cbf3d6577c44ff
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81313669"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087934"
 ---
 # <a name="how-to-manually-fix-servicenow-sync-problems"></a>ServiceNow-szinkronizálási problémák manuális javítása
 
@@ -38,7 +38,7 @@ A következő szinkronizálási folyamat használatával aktiválja újra a kapc
     1. A konfigurálásához kattintson az összekötő nevére
     1. A már nem használt összekötők törlése
 
-    1. A mezők frissítése a partner típusa alapján a [következő definíciók](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-connections) szerint
+    1. A mezők frissítése a partner típusa alapján a [következő definíciók](./itsmc-connections.md) szerint
 
     1. Kattintson a szinkronizálás elemre
 

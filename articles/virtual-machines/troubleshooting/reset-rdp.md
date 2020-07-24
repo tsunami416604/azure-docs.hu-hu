@@ -14,16 +14,16 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 03/25/2019
 ms.author: genli
-ms.openlocfilehash: 580ec443dc087f270e30856c336a5699bbf1ae71
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 03c1d8e6d6b5b1d55fee964b509c1bc08537cf6b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "71058445"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088580"
 ---
 # <a name="reset-remote-desktop-services-or-its-administrator-password-in-a-windows-vm"></a>Távoli asztali szolgáltatások vagy rendszergazdai jelszavának alaphelyzetbe állítása Windows rendszerű virtuális gépen
 Ha nem tud csatlakozni egy Windows rendszerű virtuális géphez (VM), alaphelyzetbe állíthatja a helyi rendszergazda jelszavát, vagy alaphelyzetbe állíthatja a Távoli asztali szolgáltatások konfigurációt (Windows-tartományvezérlőkön nem támogatott). Új jelszó kéréséhez használja az Azure Portalt vagy az Azure PowerShell virtuálisgép-hozzáférési bővítményét. Miután bejelentkezett a virtuális gépre, kérjen új jelszót a helyi rendszergazda számára.  
-Ha a PowerShellt használja, győződjön meg arról, hogy [telepítve van és konfigurálva van a legújabb PowerShell-modul](/powershell/azure/overview) , és be van jelentkezve az Azure-előfizetésbe. Ezeket a [lépéseket a klasszikus üzemi modellel létrehozott virtuális gépeknél is elvégezheti](https://docs.microsoft.com/azure/virtual-machines/windows/classic/reset-rdp).
+Ha a PowerShellt használja, győződjön meg arról, hogy [telepítve van és konfigurálva van a legújabb PowerShell-modul](/powershell/azure/) , és be van jelentkezve az Azure-előfizetésbe. Ezeket a [lépéseket a klasszikus üzemi modellel létrehozott virtuális gépeknél is elvégezheti](/azure/virtual-machines/windows/classic/reset-rdp).
 
 A távoli asztali szolgáltatásokat és a hitelesítő adatokat a következő módon állíthatja vissza:
 
@@ -55,11 +55,11 @@ Ez a folyamat engedélyezi Távoli asztal szolgáltatást a virtuális gépen, �
 
 ## <a name="reset-by-using-the-vmaccess-extension-and-powershell"></a>Alaphelyzetbe állítás a VMAccess-bővítmény és a PowerShell használatával
 
-Először is győződjön meg arról, hogy a [legújabb PowerShell-modul telepítve és konfigurálva](/powershell/azure/overview) van, és be van jelentkezve az Azure-előfizetésbe a [AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) parancsmag használatával.
+Először is győződjön meg arról, hogy a [legújabb PowerShell-modul telepítve és konfigurálva](/powershell/azure/) van, és be van jelentkezve az Azure-előfizetésbe a [AzAccount](/powershell/module/az.accounts/connect-azaccount) parancsmag használatával.
 
 ### <a name="reset-the-local-administrator-account-password"></a>**A helyi rendszergazdai fiók jelszavának alaphelyzetbe állítása**
 
-- Állítsa vissza a rendszergazdai jelszót vagy a felhasználónevet a [set-AzVMAccessExtension PowerShell-](https://docs.microsoft.com/powershell/module/az.compute/set-azvmaccessextension) parancsmaggal. A `typeHandlerVersion` beállításnak 2,0 vagy nagyobbnak kell lennie, mivel az 1. verzió elavult. 
+- Állítsa vissza a rendszergazdai jelszót vagy a felhasználónevet a [set-AzVMAccessExtension PowerShell-](/powershell/module/az.compute/set-azvmaccessextension) parancsmaggal. A `typeHandlerVersion` beállításnak 2,0 vagy nagyobbnak kell lennie, mivel az 1. verzió elavult. 
 
     ```powershell
     $SubID = "<SUBSCRIPTION ID>" 
@@ -77,7 +77,7 @@ Először is győződjön meg arról, hogy a [legújabb PowerShell-modul telepí
 
 ### <a name="reset-the-remote-desktop-services-configuration"></a>**A Távoli asztali szolgáltatások konfigurációjának alaphelyzetbe állítása**
 
-1. Állítsa vissza a virtuális gép távoli elérését a [set-AzVMAccessExtension PowerShell-](https://docs.microsoft.com/powershell/module/az.compute/set-azvmaccessextension) parancsmaggal. A következő példa alaphelyzetbe állítja a nevű hozzáférési bővítményt az `myVMAccess` erőforráscsoport nevű virtuális gépen `myVM` `myResourceGroup` :
+1. Állítsa vissza a virtuális gép távoli elérését a [set-AzVMAccessExtension PowerShell-](/powershell/module/az.compute/set-azvmaccessextension) parancsmaggal. A következő példa alaphelyzetbe állítja a nevű hozzáférési bővítményt az `myVMAccess` erőforráscsoport nevű virtuális gépen `myVM` `myResourceGroup` :
 
     ```powershell
     Set-AzVMAccessExtension -ResourceGroupName "myResoureGroup" -VMName "myVM" -Name "myVMAccess" -Location WestUS -typeHandlerVersion "2.0" -ForceRerun
@@ -94,7 +94,6 @@ Először is győződjön meg arról, hogy a [legújabb PowerShell-modul telepí
 
 - [Ismerje meg az Azure-beli virtuálisgép-bővítményeket és-funkciókat](../extensions/features-windows.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-- [Kapcsolódás Azure-beli virtuális GÉPHEZ RDP vagy SSH használatával](https://msdn.microsoft.com/library/azure/dn535788.aspx).
+- [Kapcsolódás Azure-beli virtuális GÉPHEZ RDP vagy SSH használatával](/previous-versions/azure/dn535788(v=azure.100)).
 
 - [Windows-alapú Azure-beli virtuális gépekkel létesített távoli asztal-kapcsolatok hibáinak megoldása](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-

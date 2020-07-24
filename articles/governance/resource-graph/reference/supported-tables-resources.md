@@ -1,15 +1,15 @@
 ---
 title: Támogatott Azure Resource Manager erőforrástípusok
 description: Adja meg az Azure Resource Graph és a Change History által támogatott Azure Resource Manager-erőforrástípusok listáját.
-ms.date: 06/04/2020
+ms.date: 07/16/2020
 ms.topic: reference
 ms.custom: generated
-ms.openlocfilehash: 7a1890c8decb6f918ecacee99764e45817e3d38a
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 8ea8dff157437dd37ad178b1580eddb9d218559d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970569"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087526"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Az Azure Resource Graph táblázat-és erőforrástípus-referenciája
 
@@ -19,6 +19,7 @@ Az Azure Resource Graph a [Azure Resource Manager](../../../azure-resource-manag
 
 - Microsoft. Advisor/konfigurációk
 - Microsoft. Advisor/javaslatok
+- Microsoft. Advisor/javaslatok/tiltások
 - Microsoft. Advisor/tiltások
 
 ## <a name="alertsmanagementresources"></a>alertsmanagementresources

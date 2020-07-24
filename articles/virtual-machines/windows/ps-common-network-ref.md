@@ -7,18 +7,18 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 07/17/2017
 ms.author: cynthn
-ms.openlocfilehash: 5d1787b5bfc2939dca23c6898d89130aa3fcb170
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b4d6b20e63c42616aad0f8776fae159a0f2aa455
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525755"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088376"
 ---
 # <a name="common-powershell-commands-for-azure-virtual-networks"></a>Azure-beli virtuális hálózatok általános PowerShell-parancsai
 
 Ha virtuális gépet szeretne létrehozni, létre kell hoznia egy [virtuális hálózatot](../../virtual-network/virtual-networks-overview.md) , vagy tudnia kell egy olyan meglévő virtuális hálózatról, amelybe a virtuális gép hozzá tud adni. A virtuális gépek létrehozásakor általában meg kell fontolnia a cikkben ismertetett erőforrások létrehozását is.
 
-Az Azure PowerShell legfrissebb verziójának telepítésével, a kívánt előfizetés kiválasztásával és a fiókjába való bejelentkezéssel kapcsolatos információkért lásd: [How to install and configure Azure PowerShell](/powershell/azure/overview) (Az Azure PowerShell telepítése és konfigurálása).
+Az Azure PowerShell legfrissebb verziójának telepítésével, a kívánt előfizetés kiválasztásával és a fiókjába való bejelentkezéssel kapcsolatos információkért lásd: [How to install and configure Azure PowerShell](/powershell/azure/) (Az Azure PowerShell telepítése és konfigurálása).
 
 Bizonyos változók hasznosak lehetnek, ha a cikkben szereplő parancsok közül többet futtat:
 

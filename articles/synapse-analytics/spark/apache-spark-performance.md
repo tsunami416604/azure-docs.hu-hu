@@ -1,5 +1,5 @@
 ---
-title: A Spark-feladatok optimalizálása a teljesítményhez az Azure szinapszis Analyticsben
+title: A Spark-feladatok optimalizálása a teljesítmény érdekében
 description: Ez a cikk az Azure szinapszis Analytics és a különböző fogalmak Apache Sparkának bevezetését ismerteti.
 services: synapse-analytics
 author: euangMS
@@ -9,16 +9,16 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: a4d95e57e3b72f8338da5c88f4ddfd57f66014cb
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.openlocfilehash: 89040057798ec4c909cac584ed96c187e79b5581
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85194858"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089260"
 ---
 # <a name="optimize-apache-spark-jobs-preview-in-azure-synapse-analytics"></a>Apache Spark feladatok (előzetes verzió) optimalizálása az Azure szinapszis Analytics szolgáltatásban
 
-Megtudhatja, hogyan optimalizálhatja [Apache Spark](https://spark.apache.org/) -fürt konfigurációját az adott számítási feladathoz.  A leggyakoribb kihívás a memória nyomása, a nem megfelelő konfigurációk (különösen a nem megfelelő méretű végrehajtók), a hosszan futó műveletek, valamint a Descartes műveletet eredményező feladatok miatt. Felgyorsíthatja a feladatokat a megfelelő gyorsítótárazással, és engedélyezheti az [adatok eldöntését](#optimize-joins-and-shuffles). A legjobb teljesítmény érdekében figyelje és tekintse át a hosszú ideig futó és az erőforrás-igényes Spark-feladatok végrehajtását.
+Megtudhatja, hogyan optimalizálhatja [Apache Spark](https://spark.apache.org/) -fürt konfigurációját az adott számítási feladathoz.  A leggyakoribb kihívás a memória leterheltsége, amelynek okai lehetnek a nem megfelelő konfigurációk (különösen a nem megfelelő méretű végrehajtók), a hosszan futó műveletek, valamint a Descartes-műveleteket eredményező feladatok. Felgyorsíthatja a feladatokat a megfelelő gyorsítótárazással, és engedélyezheti az [adatok eldöntését](#optimize-joins-and-shuffles). A legjobb teljesítmény érdekében figyelje és tekintse át a hosszú ideig futó és az erőforrás-igényes Spark-feladatok végrehajtását.
 
 A következő szakaszok ismertetik a Spark-feladatok gyakori optimalizálásait és javaslatait.
 
@@ -41,7 +41,7 @@ A korábbi Spark-verziók a RDD és az absztrakt adatokat, a Spark 1,3-es és a 
   * Szerializálási/deszerializálási terhelés hozzáadására szolgál.
   * Magas GC-terhelés.
   * A teljes fázisú programkódok létrehozásának megszakítása.
-* **RDD**
+* **RDD-k**
   * Nem kell RDD használnia, hacsak nem kell új egyéni RDD létrehoznia.
   * Nincs lekérdezés optimalizálása a katalizátoron keresztül.
   * Nincs egész fázist generáló kód.
@@ -54,11 +54,11 @@ A Spark számos formátumot támogat, például a CSV-t, a JSON-t, az XML-t, a p
 
 A teljesítmény legjobb formátuma a Parquet és a *Snappy Compression*, amely az alapértelmezett a Spark 2. x verzióban. A Parquet oszlopos formátumban tárolja az adatok, és a Spark-ban is nagyon optimalizált. Emellett a *lendületes tömörítés* is nagyobb fájlokat eredményezhet, mint a gzip-tömörítést. Ezeknek a fájloknak a felosztható jellegéből adódóan gyorsabban kitömöríthető lesz]
 
-## <a name="use-the-cache"></a>A gyorsítótár használata
+## <a name="use-the-cache"></a>Gyorsítótár használata
 
 A Spark saját natív gyorsítótárazási mechanizmusokat biztosít, amelyek különböző módszerekkel használhatók, például:, `.persist()` `.cache()` és `CACHE TABLE` . Ez a natív gyorsítótárazás a kis adatkészletek és az ETL-folyamatok esetében érvényes, ahol a közbenső eredmények gyorsítótárazására van szükség. A Spark natív gyorsítótárazás azonban jelenleg nem működik megfelelően a particionálással, mivel a gyorsítótárazott táblák nem őrzik meg a particionálási adatmennyiséget.
 
-## <a name="use-memory-efficiently"></a>Hatékony memória használata
+## <a name="use-memory-efficiently"></a>A memória hatékony használata
 
 A Spark úgy működik, hogy a memóriába helyezi az adatok mennyiségét, így a memória erőforrásainak kezelése kulcsfontosságú szempont a Spark-feladatok végrehajtásának optimalizálásához.  Több módszer is alkalmazható a fürt memóriájának hatékony használatára.
 
@@ -89,7 +89,7 @@ A Spark-feladatok terjesztése megtörténik, ezért a megfelelő adatszerializ�
 * A Java-szerializálás az alapértelmezett.
 * A Kryo szerializálása egy újabb formátum, amely gyorsabb és kompakt szerializálást eredményezhet a Javánál.  A Kryo használatához regisztrálnia kell az osztályokat a programban, és még nem támogatja az összes szerializálható típust.
 
-## <a name="use-bucketing"></a>A gyűjtő használata
+## <a name="use-bucketing"></a>Gyűjtés használata
 
 A gyűjtő az adatparticionáláshoz hasonló, de az egyes gyűjtők nem csupán egy oszlop értékét tárolhatják. A gyűjtő nagy mennyiségű (több millió vagy több) értékben, például termékazonosítóban is működik. A gyűjtőt a sor gyűjtő kulcsának kivonatolásával határozzuk meg. A gyűjtő táblák egyedi optimalizációkat biztosítanak, mert metaadatokat tárolnak a gyűjtők és a rendezésük módjával kapcsolatban.
 
@@ -101,7 +101,7 @@ Bizonyos speciális gyűjtő funkciók a következők:
 
 Egyszerre használhatja a particionálást és a gyűjtőt.
 
-## <a name="optimize-joins-and-shuffles"></a>Az illesztések és a shufflek optimalizálása
+## <a name="optimize-joins-and-shuffles"></a>A csatlakozás és a véletlen sorrend optimalizálása
 
 Ha lassú feladatokkal van összekapcsolva vagy shuffle, az OK valószínűleg az *adatok eldöntése*, ami a feladat adataiban található aszimmetria. A térképes feladatok például 20 másodpercet is igénybe vehetnek, de egy olyan feladatot futtatnak, ahol az adatok csatlakoztatva vannak, vagy a csoszogott órákat vesz igénybe. Az adatdöntés kijavításához a teljes kulcsot kell megállapítania, vagy egy *elkülönített sót* kell használnia a kulcsok csak néhány részhalmaza számára. Ha izolált sót használ, érdemes tovább szűrnie, hogy elkülönítse a sós kulcsok részhalmazát a térképi illesztésekben. Egy másik lehetőség egy gyűjtő oszlop bevezetése és a gyűjtők előzetes összesítése.
 
@@ -162,7 +162,7 @@ A lekérdezés teljesítményének figyelése kiugró vagy egyéb teljesítménn
 
 Például legalább kétszer annyi feladatnak kell lennie, mint a végrehajtó magok száma az alkalmazásban. A feladatokhoz tartozó spekulatív végrehajtást is engedélyezheti `conf: spark.speculation = true` .
 
-## <a name="optimize-job-execution"></a>Feladatok végrehajtásának optimalizálása
+## <a name="optimize-job-execution"></a>A feladat-végrehajtás optimalizálása
 
 * Szükség szerint gyorsítótárazza, például ha kétszer használja az adatkészletet, majd gyorsítótárazza.
 * Szórási változók az összes végrehajtóra. A változók csak egyszer szerializáltak, ami gyorsabb keresést eredményez.

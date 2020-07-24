@@ -70,6 +70,8 @@
           href: diagnostics-log-analytics-2019.md
     - name: Beépített alkalmazások közzététele
       href: publish-apps-2019.md
+    - name: Az Azure Multi-Factor Authentication beállítása
+      href: ../set-up-mfa.md
 - name: Alapelvek
   items:
     - name: A Windows Virtual Desktop környezete

@@ -6,12 +6,13 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: brendm
-ms.openlocfilehash: dc4426fc08efff44bc46ba37eb6fbc6fe31f356b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-java
+ms.openlocfilehash: cda22c63a70c5121e6a6972c66bdc0a4bb5158fc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84735438"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089464"
 ---
 # <a name="quotas-and-service-plans-for-azure-spring-cloud"></a>Kvóták és szolgáltatási csomagok az Azure Spring Cloud-hoz
 
@@ -22,7 +23,7 @@ Az összes Azure-szolgáltatás alapértelmezett korlátokat és kvótákat áll
 | Erőforrás | Alapszintű | Standard
 ------- | ------- | -------
 vCPU | 1/szolgáltatási példány | 4/szolgáltatási példány
-Memory (Memória) | 2 GB/szolgáltatási példány | 8 GB/szolgáltatási példány
+Memória | 2 GB/szolgáltatási példány | 8 GB/szolgáltatási példány
 Azure Spring Cloud Service instances régiónként/előfizetés | 10 | 10
 Alkalmazás-példányok teljes száma Azure Spring Cloud Service-példányon | 25 | 500
 Tartós kötetek | 1 GB/app x 10 alkalmazás | 50 GB/app x 10 alkalmazás

@@ -11,13 +11,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: quickstart
-ms.date: 01/08/2020
-ms.openlocfilehash: 7d27d67cfa46eb4554f6ca3d66df76e393b18da0
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.date: 07/21/2020
+ms.openlocfilehash: 0dd150909a56aafdd2005f2d68a12d32a1e8fae4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84187544"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087781"
 ---
 # <a name="quickstart-create-an-instance-of-the-azure-database-migration-service-by-using-the-azure-portal"></a>Rövid útmutató: Azure Database Migration Service-példány létrehozása az Azure Portalon
 
@@ -30,6 +30,9 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
 Nyissa meg a webböngészőjét, keresse fel a [Microsoft Azure Portalt](https://portal.azure.com/), majd adja meg a hitelesítő adatait a Portalra való bejelentkezéshez.
 
 Az alapértelmezett nézet a szolgáltatási irányítópult.
+
+> [!NOTE]
+> Egy előfizetéshez legfeljebb 10 példányt hozhat létre. Ha több példányra van szüksége, hozzon létre egy támogatási jegyet.
 
 ## <a name="register-the-resource-provider"></a>Az erőforrás-szolgáltató regisztrálása
 
@@ -53,7 +56,7 @@ A Database Migration Service első példányának létrehozása előtt regisztr�
 
     - Válasszon egy emlékezetes és egyedi **szolgáltatásnevet** a Azure Database Migration Service példányának azonosításához.
     - Válassza ki azt az **Azure-előfizetést**, amelyben a példányt létre szeretné hozni.
-    - Válasszon ki egy meglévő **erőforráscsoportot**, vagy hozzon létre egy újat.
+    - Válasszon ki egy meglévő **erőforráscsoportot** , vagy hozzon létre egy újat.
     - Válassza ki a forráshoz vagy a célkiszolgálóhoz legközelebb eső **Helyet**.
     - Válasszon ki egy meglévő **virtuális hálózatot** , vagy hozzon létre egyet.
 
@@ -71,7 +74,7 @@ A Database Migration Service első példányának létrehozása előtt regisztr�
 
     ![Létrehozott migrálási szolgáltatás](media/quickstart-create-data-migration-service-portal/dms-service-created.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 A rövid útmutató során létrehozott erőforrásokat az [Azure-erőforráscsoport](../azure-resource-manager/management/overview.md) törlésével távolíthatja el. Az erőforráscsoport törléséhez keresse meg a létrehozott Azure Database Migration Service-példányt. Válassza ki az **Erőforráscsoport** nevét, majd válassza az **Erőforráscsoport törlése** elemet. A művelettel az erőforráscsoport összes elemét és magát a csoportot is törli.
 

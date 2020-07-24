@@ -3,8 +3,8 @@ title: 'Oktatóanyag: SQL Server offline migrálása egyetlen SQL-adatbázisba'
 titleSuffix: Azure Database Migration Service
 description: Ismerkedjen meg az SQL Serverról Azure SQL Database offline állapotba Azure Database Migration Service használatával.
 services: dms
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/08/2020
-ms.openlocfilehash: 45a343fdbd41abf1388556131f1f53a675d8ab49
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a0d2353364767dfb1fd73d517926d0fa63c11a1d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85316232"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087713"
 ---
 # <a name="tutorial-migrate-sql-server-to-azure-sql-database-offline-using-dms"></a>Oktatóanyag: SQL Server migrálása Azure SQL Database-példányra kapcsolat nélküli üzemmódban, a DMS használatával
 
@@ -31,7 +31,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > - Hozzon létre egy Azure Database Migration Service-példányt.
 > - Hozzon létre egy áttelepítési projektet Azure Database Migration Service használatával.
 > - A migrálás futtatása.
-> - A migrálás monitorozása.
+> - Az áttelepítés monitorozása.
 > - Migrálási jelentés letöltése.
 
 [!INCLUDE [online-offline](../../includes/database-migration-service-offline-online.md)]
@@ -149,7 +149,7 @@ A **AdventureWorks2012** -séma egyetlen adatbázisba vagy készletezett adatbá
 
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>A Microsoft.DataMigration erőforrás-szolgáltató regisztrálása
 
-1. Jelentkezzen be az Azure portálra. Keresse meg és válassza ki az **előfizetéseket**.
+1. Jelentkezzen be az Azure Portalra. Keresse meg és válassza ki az **előfizetéseket**.
 
    ![Portál-előfizetések megtekintése](media/tutorial-sql-server-to-azure-sql/portal-select-subscription1.png)
 
@@ -165,7 +165,7 @@ A **AdventureWorks2012** -séma egyetlen adatbázisba vagy készletezett adatbá
 
 1. A Azure Portal menüben vagy a **kezdőlapon** válassza az **erőforrás létrehozása**lehetőséget. Keresse meg és válassza ki a **Azure Database Migration Service**.
 
-    ![Azure Piactér](media/tutorial-sql-server-to-azure-sql/portal-marketplace.png)
+    ![Azure Marketplace](media/tutorial-sql-server-to-azure-sql/portal-marketplace.png)
 
 2. Az **Azure Database Migration Service** képernyőn válassza a **Létrehozás** lehetőséget.
 

@@ -7,15 +7,15 @@ ms.topic: article
 ms.author: brbell
 ms.reviewer: mimckitt
 ms.date: 06/15/2020
-ms.openlocfilehash: 7ce816aba6bee36cd20eed6d31b0642dc8931e0b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 502883a0c4eb36be9e89ba8693f4d32ba7f16ebd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86503030"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088869"
 ---
 # <a name="azure-vm-sizes-with-no-local-temporary-disk"></a>Azure-beli virtuálisgép-méretek helyi ideiglenes lemezzel nem 
-Ez a cikk olyan Azure-beli virtuálisgép-méretekkel kapcsolatos gyakori kérdéseket (GYIK) tartalmaz, amelyek nem rendelkeznek helyi ideiglenes lemezzel (azaz nincs helyi Temp Desk). A virtuálisgép-méretekkel kapcsolatos további információkért tekintse meg a [DV4 és Dsv4-sorozat (általános célú munkaterhelések)](dv4-dsv4-series.md) , illetve [a Ev4 és a Esv4-sorozat (memória-optimalizált számítási feladatok)](ev4-esv4-series.md)specifikációit ismertető témakört.
+Ez a cikk olyan Azure-beli virtuálisgép-méretekkel kapcsolatos gyakori kérdésekre adott válaszokat tartalmaz, amelyek nem rendelkeznek helyi ideiglenes lemezzel (azaz nincs helyi Temp lemez). A virtuálisgép-méretekkel kapcsolatos további információkért tekintse meg a [DV4 és Dsv4-sorozat (általános célú munkaterhelések)](dv4-dsv4-series.md) , illetve [a Ev4 és a Esv4-sorozat (memória-optimalizált számítási feladatok)](ev4-esv4-series.md)specifikációit ismertető témakört.
 
 > [!IMPORTANT]
 > A DV4, a Dsv4, a Ev4 és a Esv4 sorozatú VM-méretek már nyilvános előzetes verzióban érhetők el. A nyilvános előzetes verzióra való feliratkozáshoz töltse ki ezt az [űrlapot](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR_Y3toRKxchLjARedqtguBRURE1ZSkdDUzg1VzJDN0cwWUlKTkcyUlo5Mi4u). 
@@ -55,7 +55,7 @@ Ha az egyéni operációsrendszer-lemezkép a helyi ideiglenes lemezre mutat, le
 ## <a name="have-questions-or-feedback"></a>Kérdése van, vagy visszajelzést küldene?
 Töltse ki a [visszajelzési űrlapot]( https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR_Y3toRKxchLjARedqtguBRUMzdCQkw0OVVRTldFUUtXSTlLQVBPUkVHSy4u). 
 
-## <a name="next-steps"></a>Következő lépések 
+## <a name="next-steps"></a>További lépések 
 Ebben a dokumentumban többet tudhat meg az Azure-beli virtuális gépekkel kapcsolatos leggyakoribb kérdésekről a helyi ideiglenes lemezzel. További információt ezekről a virtuálisgép-méretekről a következő cikkekben talál:
 
 - [A DV4 és a Dsv4 sorozat specifikációi (általános célú munkaterhelés)](dv4-dsv4-series.md)

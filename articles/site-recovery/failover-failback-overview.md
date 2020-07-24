@@ -4,10 +4,11 @@ description: Tudnivalók a feladatátvételről és a Azure Site Recovery sikert
 ms.topic: conceptual
 ms.date: 12/24/2019
 ms.openlocfilehash: d9b54f3c452212e12419a5ffd67b116c8660308d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79281807"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089532"
 ---
 # <a name="about-on-premises-disaster-recovery-failoverfailback"></a>A helyszíni vész-helyreállítási feladatátvétel/feladat-visszavétel
 
@@ -44,7 +45,7 @@ Ha az RDP/SSH használatával a feladatátvételt követően létrehozott Azure-
 
 **Feladatátvétel** | **Hely** | **Műveletek**
 --- | --- | ---
-**Azure VM (Windows (** | A helyszíni gépen a feladatátvétel előtt | **Hozzáférés az interneten keresztül**: engedélyezze az RDP-t. Győződjön meg arról, hogy a TCP-és UDP-szabályok **nyilvánosak**, és az RDP engedélyezve van a **Windows tűzfal**  >  **engedélyezett alkalmazásaiban**található összes profilhoz.<br/><br/> **Hozzáférés helyek közötti VPN-hez**: engedélyezze az RDP-t a gépen. Győződjön meg arról, hogy az RDP engedélyezve van a **Windows tűzfal**  ->  **engedélyezett alkalmazásaiban és szolgáltatásaiban** **tartomány-és magánhálózatok** esetén.<br/><br/>  Győződjön meg arról, hogy az operációs rendszer SAN-szabályzata **OnlineAll**értékre van állítva. [További információk](https://support.microsoft.com/kb/3031135).<br/><br/> Győződjön meg arról, hogy a virtuális gépen nincsenek függőben lévő Windows-frissítések a feladatátvétel elindításakor. Előfordulhat, hogy a Windows Update a feladatátvétel során indul el, és a frissítések elvégzése előtt nem tud majd bejelentkezni a virtuális gépre.
+**Azure VM (Windows (** | A helyszíni gépen a feladatátvétel előtt | **Hozzáférés az interneten keresztül**: engedélyezze az RDP-t. Győződjön meg arról, hogy a TCP-és UDP-szabályok **nyilvánosak**, és az RDP engedélyezve van a **Windows tűzfal**  >  **engedélyezett alkalmazásaiban**található összes profilhoz.<br/><br/> **Hozzáférés helyek közötti VPN-hez**: engedélyezze az RDP-t a gépen. Győződjön meg arról, hogy az RDP engedélyezve van a **Windows tűzfal**  ->  **engedélyezett alkalmazásaiban és szolgáltatásaiban** **tartomány-és magánhálózatok** esetén.<br/><br/>  Győződjön meg arról, hogy az operációs rendszer SAN-szabályzata **OnlineAll**értékre van állítva. [További információ](https://support.microsoft.com/kb/3031135).<br/><br/> Győződjön meg arról, hogy a virtuális gépen nincsenek függőben lévő Windows-frissítések a feladatátvétel elindításakor. Előfordulhat, hogy a Windows Update a feladatátvétel során indul el, és a frissítések elvégzése előtt nem tud majd bejelentkezni a virtuális gépre.
 **Windows rendszerű Azure-beli virtuális gép** | Az Azure virtuális gépen feladatátvétel után |  [Nyilvános IP-cím hozzáadása](https://aka.ms/addpublicip) a virtuális gép számára.<br/><br/> A sikertelenül átadott virtuális gépen (és az Azure-alhálózaton, amelyhez csatlakozik) a hálózati biztonsági csoport szabályainak engedélyezniük kell a bejövő kapcsolatokat az RDP-porton.<br/><br/> A **rendszerindítási diagnosztika** ellenőrzésével ellenőrizheti a virtuális gép képernyőképét. Ha nem tud kapcsolatot létesíteni, ellenőrizze, hogy fut-e a virtuális gép, és tekintse át a [hibaelhárítási tippeket](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx).
 **Linux rendszerű Azure-beli virtuális gép** | A helyszíni gépen a feladatátvétel előtt | Győződjön meg arról, hogy a virtuális gépen a Secure Shell szolgáltatás automatikusan elindul a rendszerindításkor.<br/><br/> Ellenőrizze, hogy a tűzfalszabályok engedélyezik-e az SSH-kapcsolatot.
 **Linux rendszerű Azure-beli virtuális gép** | Az Azure virtuális gépen feladatátvétel után | Az átadott virtuális gép (és az ahhoz csatlakozó Azure-alhálózat) hálózati biztonsági csoportra vonatkozó szabályainak engedélyeznie kell a bejövő kapcsolatokat az SSH-porton.<br/><br/> [Nyilvános IP-cím hozzáadása](https://aka.ms/addpublicip) a virtuális gép számára.<br/><br/> A virtuális gép képernyőképének megtekintése a **rendszerindítási diagnosztika** szolgáltatásban.<br/><br/>
@@ -53,7 +54,7 @@ Ha az RDP/SSH használatával a feladatátvételt követően létrehozott Azure-
 
 Site Recovery különböző feladatátvételi lehetőségeket biztosít.
 
-**Feladatátvétel** | **Részletek** | **Helyreállítás** | **Munkafolyamat**
+**Feladatátvétel** | **Részletek** | **Helyreállítási** | **Munkafolyamat**
 --- | --- | --- | ---
 **Feladatátvételi teszt** | Egy olyan részletezés futtatására szolgál, amely a BCDR stratégiát ellenőrzi, adatvesztés vagy állásidő nélkül.| Másolatot készít a virtuális gépről az Azure-ban, és nincs hatással a folyamatban lévő replikációra vagy az éles környezetre. | 1. futtasson feladatátvételi tesztet egyetlen virtuális gépen vagy egy helyreállítási terv több virtuális gépén.<br/><br/> 2. Válassza ki a feladatátvételi teszthez használni kívánt helyreállítási pontot.<br/><br/> 3. Válasszon ki egy Azure-hálózatot, amelyben az Azure-beli virtuális gép a feladatátvételt követően jön létre. A hálózat csak a feladatátvételi teszthez használatos.<br/><br/> 4. Ellenőrizze, hogy a részletezés a várt módon működik-e. Site Recovery automatikusan törli az Azure-ban létrehozott virtuális gépeket a részletezés során.
 **Tervezett feladatátvétel – Hyper-V**  | Általában a tervezett állásidőhez használatos.<br/><br/> A forrás virtuális gépek le vannak állítva. A rendszer a legutóbbi adatokat szinkronizálja a feladatátvétel kezdeményezése előtt. | Nulla adatvesztés a tervezett munkafolyamatban. | 1. tervezze meg a leállás-karbantartási időszakot, és értesítse a felhasználókat.<br/><br/> 2. a felhasználók felé irányuló alkalmazások offline állapotba helyezése.<br/><br/> 3. indítson el egy tervezett feladatátvételt a legújabb helyreállítási ponttal. A feladatátvétel nem fut le, ha a gép nem áll le, vagy ha hiba történt.<br/><br/> 4. a feladatátvételt követően győződjön meg arról, hogy az Azure-beli virtuális gép aktív az Azure-ban.<br/><br/> 5. véglegesítse a feladatátvételt a befejezésig. A commit művelet törli az összes helyreállítási pontot.
