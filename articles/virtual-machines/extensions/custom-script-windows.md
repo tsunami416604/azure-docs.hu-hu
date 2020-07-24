@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/02/2019
 ms.author: robreed
-ms.openlocfilehash: b85aab2491f4186cf4d6ee73144bc235a40cdeac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5ab8d45c12d7b2c408328e306b1a6961cbe5272a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85478484"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87010937"
 ---
 # <a name="custom-script-extension-for-windows"></a>Egyéniszkript-bővítmény Windows rendszerre
 
@@ -127,7 +127,7 @@ Ezeket az elemeket bizalmas adatokként kell kezelni, és meg kell adni a bőví
 | közzétevő | Microsoft.Compute | sztring |
 | típus | CustomScriptExtension | sztring |
 | typeHandlerVersion | 1.10 | int |
-| fileUris (például) | https://raw.githubusercontent.com/Microsoft/dotnet-core-sample-templates/master/dotnet-core-music-windows/scripts/configure-music-app.ps1 | tömb |
+| fileUris (például) | https://raw.githubusercontent.com/Microsoft/dotnet-core-sample-templates/master/dotnet-core-music-windows/scripts/configure-music-app.ps1 | array |
 | időbélyeg (például) | 123456789 | 32 bites egész szám |
 | commandToExecute (például) | PowerShell – ExecutionPolicy korlátozás nélküli fájl configure-music-app.ps1 | sztring |
 | storageAccountName (például) | examplestorageacct | sztring |
@@ -144,7 +144,7 @@ Ezeket az elemeket bizalmas adatokként kell kezelni, és meg kell adni a bőví
 * `timestamp`(opcionális, 32 bites egész szám) Ez a mező csak a parancsfájl újrafuttatásának indítására használható a mező értékének módosításával.  Bármely egész érték elfogadható; csak az előző értéktől eltérő lehet.
 * `storageAccountName`: (nem kötelező, karakterlánc) a Storage-fiók neve. Ha tárolási hitelesítő adatokat ad meg, az összes `fileUris` URL-címet az Azure-Blobok számára kell megadni.
 * `storageAccountKey`: (nem kötelező, karakterlánc) a Storage-fiók elérési kulcsa
-* `managedIdentity`: (nem kötelező, JSON-objektum) a fájl (ok) letöltésének [felügyelt identitása](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
+* `managedIdentity`: (nem kötelező, JSON-objektum) a fájl (ok) letöltésének [felügyelt identitása](../../active-directory/managed-identities-azure-resources/overview.md)
   * `clientId`: (nem kötelező, karakterlánc) a felügyelt identitás ügyfél-azonosítója
   * `objectId`: (nem kötelező, karakterlánc) a felügyelt identitás objektum-azonosítója
 
@@ -160,9 +160,9 @@ A nyilvános beállításokat a rendszer tiszta szövegként küldi el arra a vi
 > [!NOTE]
 > Ezt a **tulajdonságot** csak a védett beállításokban kell megadni.
 
-A CustomScript (1,10-es verzió) támogatja a [felügyelt identitást](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) a fájl (ok) letöltéséhez a "fileUris" beállításban megadott URL-címekről. Lehetővé teszi a CustomScript számára az Azure Storage privát Blobok vagy tárolók elérését anélkül, hogy a felhasználónak olyan titkokat kellene átadnia, mint például az SAS-tokenek vagy a Storage
+A CustomScript (1,10-es verzió) támogatja a [felügyelt identitást](../../active-directory/managed-identities-azure-resources/overview.md) a fájl (ok) letöltéséhez a "fileUris" beállításban megadott URL-címekről. Lehetővé teszi a CustomScript számára az Azure Storage privát Blobok vagy tárolók elérését anélkül, hogy a felhasználónak olyan titkokat kellene átadnia, mint például az SAS-tokenek vagy a Storage
 
-Ennek a funkciónak a használatához a felhasználónak hozzá kell adnia egy [rendszerhez rendelt](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#add-a-system-assigned-identity) vagy [felhasználó által hozzárendelt](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#add-a-user-assigned-identity) identitást a virtuális géphez vagy VMSS, ahol a CustomScript várhatóan fut, és [biztosítania kell a felügyelt identitás elérését az Azure Storage-tárolóhoz vagy-blobhoz](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/tutorial-vm-windows-access-storage#grant-access).
+Ennek a funkciónak a használatához a felhasználónak hozzá kell adnia egy [rendszerhez rendelt](../../app-service/overview-managed-identity.md?tabs=dotnet#add-a-system-assigned-identity) vagy [felhasználó által hozzárendelt](../../app-service/overview-managed-identity.md?tabs=dotnet#add-a-user-assigned-identity) identitást a virtuális géphez vagy VMSS, ahol a CustomScript várhatóan fut, és [biztosítania kell a felügyelt identitás elérését az Azure Storage-tárolóhoz vagy-blobhoz](../../active-directory/managed-identities-azure-resources/tutorial-vm-windows-access-storage.md#grant-access).
 
 Ha a rendszer által hozzárendelt identitást szeretné használni a cél virtuális gépen/VMSS, állítsa a "managedidentity" mezőt egy üres JSON-objektumra. 
 
@@ -283,7 +283,7 @@ The response content cannot be parsed because the Internet Explorer engine is no
 ```
 ## <a name="virtual-machine-scale-sets"></a>Virtual Machine Scale Sets
 
-A méretezési csoport egyéni parancsfájl-bővítményének üzembe helyezéséhez lásd: [Add-AzVmssExtension](https://docs.microsoft.com/powershell/module/az.compute/add-azvmssextension?view=azps-3.3.0)
+A méretezési csoport egyéni parancsfájl-bővítményének üzembe helyezéséhez lásd: [Add-AzVmssExtension](/powershell/module/az.compute/add-azvmssextension?view=azps-3.3.0)
 
 ## <a name="classic-vms"></a>A klasszikus virtuális gépeket
 
@@ -301,7 +301,7 @@ A **bővítmény telepítése** lapon válassza ki a helyi PowerShell-fájlt, é
 
 ### <a name="powershell"></a>PowerShell
 
-Használja a [set-AzureVMCustomScriptExtension](/powershell/module/servicemanagement/azure/set-azurevmcustomscriptextension) parancsmagot, amellyel hozzáadhatja az egyéni szkriptek bővítményét egy meglévő virtuális géphez.
+Használja a [set-AzureVMCustomScriptExtension](/powershell/module/servicemanagement/azure.service/set-azurevmcustomscriptextension) parancsmagot, amellyel hozzáadhatja az egyéni szkriptek bővítményét egy meglévő virtuális géphez.
 
 ```powershell
 # define your file URI

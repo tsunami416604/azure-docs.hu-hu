@@ -6,11 +6,12 @@ ms.topic: reference
 author: bwren
 ms.author: bwren
 ms.date: 01/29/2020
-ms.openlocfilehash: 4dd91363cdebf18e6303238816e8269065a6a317
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 42924b4ac5493fc910079ca1f89a6195ccba55e1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77672242"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87007911"
 ---
 # <a name="windows-azure-diagnostics-extension-wad-configuration-schema-versions-and-history"></a>Windows Azure Diagnostics-bővítmény (WAD) konfigurációs sémájának verziói és előzményei
 Ez a cikk a [Windows (wad)](diagnostics-extension-overview.md) sémájának a Microsoft Azure SDK részeként szállított verziójának Azure Diagnostics korábbi verzióit tartalmazza.  
@@ -18,10 +19,10 @@ Ez a cikk a [Windows (wad)](diagnostics-extension-overview.md) sémájának a Mi
 
 ## <a name="azure-sdk-and-diagnostics-versions-shipping-chart"></a>Az Azure SDK és a diagnosztikai verziók szállítási diagramja  
 
-|Azure SDK-verzió | Diagnosztikai bővítmény verziója | Modell|  
+|Azure SDK-verzió | Diagnosztikai bővítmény verziója | Modellezés|  
 |------------------|-------------------------------|------|  
-|1. x               |1.0                            |beépülő modul|  
-|2,0 – 2,4         |1.0                            |beépülő modul|  
+|1. x               |1,0                            |beépülő modul|  
+|2,0 – 2,4         |1,0                            |beépülő modul|  
 |2.5               |1.2                            |kiterjesztés|  
 |2,6               |1.3                            |"|  
 |2.7               |1.4                            |"|  
@@ -41,11 +42,11 @@ Ez a cikk a [Windows (wad)](diagnostics-extension-overview.md) sémájának a Mi
 ## <a name="schemas-index"></a>Sémák indexe  
 Az Azure Diagnostics különböző verziói eltérő konfigurációs sémákat használnak. A 1,0-es és a 1,2-es séma elavult. További információ a 1,3-es és újabb verziókról: [diagnosztika 1,3 és újabb konfigurációs séma](diagnostics-extension-schema-windows.md)  
 
-## <a name="version-history"></a>Verzióelőzmények
+## <a name="version-history"></a>Korábbi verziók
 
 ### <a name="diagnostics-extension-111"></a>Diagnosztikai bővítmény 1,11
 A Azure Monitor-fogadó támogatása. Ez a fogadó csak a teljesítményszámlálók esetében alkalmazható. Lehetővé teszi a virtuális gépen, VMSS vagy Cloud Service-ben gyűjtött teljesítményszámlálók küldését egyéni metrikák Azure Monitor. A Azure Monitor fogadó a következőket támogatja:
-* A Azure Monitor eljuttatott teljesítményszámlálók beolvasása a [Azure monitor metrikák API](https://docs.microsoft.com/rest/api/monitor/metrics/list) -kon keresztül.
+* A Azure Monitor eljuttatott teljesítményszámlálók beolvasása a [Azure monitor metrikák API](/rest/api/monitor/metrics/list) -kon keresztül.
 * Riasztás a Azure Monitor elküldhető összes teljesítményszámlálók számára az új, [egyesített riasztások](../../azure-monitor/platform/alerts-overview.md) használatával Azure monitor
 * A helyettesítő karakterek kezelése a teljesítményszámlálók esetében a mérőszámban a "példány" dimenzió. Ha például összegyűjtötte a "LogicalDisk ( \* )/DiskWrites/sec" számlálót, akkor az egyes logikai lemezek (C:, D: stb.) esetében a "példány" dimenzióra bontva vagy a riasztást is fel lehet osztani a lemezre, illetve a riasztásra.
 
@@ -189,4 +190,3 @@ Ha az Azure SDK 2,4-ból az Azure SDK 2,5-es vagy újabb verziójára frissíti 
 * **A Cloud Service-alkalmazások diagnosztikát csak a szerepkör szintjén lehet konfigurálni, nem pedig a példány szintjén.**
 * **Minden alkalommal, amikor telepíti az alkalmazást, a rendszer frissíti a diagnosztika konfigurációját** – ez paritásos problémákat okozhat, ha módosítja a diagnosztika konfigurációját a Server Explorerben, majd újból üzembe helyezi az alkalmazást.
 * **Az Azure sdk 2,5-as és újabb verzióiban az összeomlási memóriaképek a diagnosztika konfigurációs fájljában vannak konfigurálva, nem pedig a kódban** – ha a kódban beállított összeomlási memóriaképek vannak, akkor manuálisan kell átvinnie a konfigurációt a kódból a konfigurációs fájlba, mivel az összeomlási memóriaképek nem kerülnek át az Azure SDK 2,6-es verzióra való Migrálás során.
-

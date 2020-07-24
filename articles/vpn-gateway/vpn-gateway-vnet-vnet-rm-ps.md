@@ -7,11 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 02/15/2019
 ms.author: cherylmc
-ms.openlocfilehash: 5477eea12ee41bae42365555e38aa95ca0faeb3a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 318656a779aa5ba2279f075fcc44589fe2039682
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84987093"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87009492"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-powershell"></a>Virtuális hálózatok közötti VPN Gateway-kapcsolat konfigurálása a PowerShell használatával
 
@@ -20,7 +21,7 @@ Ez a cikk bemutatja, hogyan lehet virtuális hálózatokat csatlakoztatni virtu�
 A cikkben ismertetett lépések a Resource Manager-alapú üzemi modellre vonatkoznak és a PowerShellt használják. Ezt a konfigurációt más üzembehelyezési eszközzel vagy üzemi modellel is létrehozhatja, ha egy másik lehetőséget választ az alábbi listáról:
 
 > [!div class="op_single_selector"]
-> * [Azure Portalra](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
+> * [Azure Portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
 > * [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
 > * [Azure CLI](vpn-gateway-howto-vnet-vnet-cli.md)
 > * [(Klasszikus) Azure Portal](vpn-gateway-howto-vnet-vnet-portal-classic.md)
@@ -80,7 +81,7 @@ Ebben a gyakorlatban igény szerint kombinálhatja a konfigurációkat, vagy csa
 
 * Mivel az átjáró létrehozása akár 45 percet is igénybe vehet, Azure Cloud Shell a gyakorlat során időnként időtúllépést okoz. Cloud Shell újraindításához kattintson a terminál bal felső részén található gombra. A terminál újraindításakor mindenképpen minden változót újra deklaráljon.
 
-* Ha a Azure PowerShell modul legújabb verzióját szeretné helyileg telepíteni, tekintse meg a [Azure PowerShell telepítése és konfigurálása](/powershell/azure/overview)című témakört.
+* Ha a Azure PowerShell modul legújabb verzióját szeretné helyileg telepíteni, tekintse meg a [Azure PowerShell telepítése és konfigurálása](/powershell/azure/)című témakört.
 
 ### <a name="step-1---plan-your-ip-address-ranges"></a><a name="Step1"></a>1. lépés – Az IP-címtartományok megtervezése
 
@@ -363,7 +364,7 @@ Ezt a lépést az új előfizetés környezetében kell elvégezni. Ezt a részt
    ```azurepowershell-interactive
    Select-AzSubscription -SubscriptionName $Sub5
    ```
-3. Hozzon létre egy új erőforráscsoportot.
+3. Új erőforráscsoport létrehozása.
 
    ```azurepowershell-interactive
    New-AzResourceGroup -Name $RG5 -Location $Location5

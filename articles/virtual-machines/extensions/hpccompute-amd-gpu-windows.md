@@ -11,18 +11,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/10/2020
 ms.author: vikancha
-ms.openlocfilehash: cbba0401815f6754939cdaeb6e7343cf085dff68
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bc7bfecbcb387fa0da0809a9a2287b243e861c49
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84736968"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87010869"
 ---
 # <a name="amd-gpu-driver-extension-for-windows"></a>AMD GPU illesztőprogram-bővítmény Windows rendszerhez
 
-Ez a cikk áttekintést nyújt az AMD GPU-illesztőprogramok Windows [NVv4-sorozatú](https://docs.microsoft.com/azure/virtual-machines/nvv4-series) virtuális gépeken való üzembe helyezéséhez szükséges virtuálisgép-bővítményről. Ha ezt a bővítményt használó AMD-illesztőprogramokat telepít, elfogadja és elfogadja az [AMD végfelhasználói licencszerződés](https://amd.com/radeonsoftwarems)feltételeit. A telepítési folyamat során a virtuális gép újraindulhat az illesztőprogram telepítésének befejezéséhez.
+Ez a cikk áttekintést nyújt az AMD GPU-illesztőprogramok Windows [NVv4-sorozatú](../nvv4-series.md) virtuális gépeken való üzembe helyezéséhez szükséges virtuálisgép-bővítményről. Ha ezt a bővítményt használó AMD-illesztőprogramokat telepít, elfogadja és elfogadja az [AMD végfelhasználói licencszerződés](https://amd.com/radeonsoftwarems)feltételeit. A telepítési folyamat során a virtuális gép újraindulhat az illesztőprogram telepítésének befejezéséhez.
 
-Az illesztőprogramok manuális telepítésére és az aktuálisan támogatott verziókra vonatkozó utasítások [itt](https://docs.microsoft.com/azure/virtual-machines/windows/n-series-amd-driver-setup)érhetők el.
+Az illesztőprogramok manuális telepítésére és az aktuálisan támogatott verziókra vonatkozó utasítások [itt](../windows/n-series-amd-driver-setup.md)érhetők el.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -72,7 +72,7 @@ A következő JSON a bővítmény sémáját jeleníti meg.
 | apiVersion | 2015-06-15 | dátum |
 | közzétevő | Microsoft. HpcCompute | sztring |
 | típus | AmdGpuDriverWindows | sztring |
-| typeHandlerVersion | 1.0 | int |
+| typeHandlerVersion | 1,0 | int |
 
 
 ## <a name="deployment"></a>Üzembe helyezés
@@ -81,7 +81,7 @@ A következő JSON a bővítmény sémáját jeleníti meg.
 
 Az Azure virtuálisgép-bővítmények Azure Resource Manager-sablonokkal is üzembe helyezhetők. A sablonok ideálisak egy vagy több olyan virtuális gép üzembe helyezéséhez, amelyek a telepítés utáni konfigurációt igénylik.
 
-A virtuálisgép-bővítmény JSON-konfigurációja beágyazható a virtuális gép erőforrásaiba, vagy egy Resource Manager JSON-sablon legfelső szintű vagy legfelső szintjén helyezhető el. A JSON-konfiguráció elhelyezése hatással van az erőforrás nevének és típusának értékére. További információ: [a gyermek erőforrások nevének és típusának beállítása](../../azure-resource-manager/resource-manager-template-child-resource.md). 
+A virtuálisgép-bővítmény JSON-konfigurációja beágyazható a virtuális gép erőforrásaiba, vagy egy Resource Manager JSON-sablon legfelső szintű vagy legfelső szintjén helyezhető el. A JSON-konfiguráció elhelyezése hatással van az erőforrás nevének és típusának értékére. További információ: [a gyermek erőforrások nevének és típusának beállítása](../../azure-resource-manager/templates/child-resource-name-type.md). 
 
 Az alábbi példa azt feltételezi, hogy a bővítmény a virtuális gép erőforrásán belül van beágyazva. A bővítmény erőforrásának beágyazásakor a JSON a `"resources": []` virtuális gép objektumára kerül.
 
@@ -172,4 +172,4 @@ Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a ka
 ## <a name="next-steps"></a>További lépések
 További információ a bővítményekről: [virtuálisgép-bővítmények és-szolgáltatások a Windows rendszerhez](features-windows.md).
 
-Az N sorozatú virtuális gépekkel kapcsolatos további információkért lásd: GPU-ra [optimalizált virtuálisgép-méretek](../windows/sizes-gpu.md).
+Az N sorozatú virtuális gépekkel kapcsolatos további információkért lásd: GPU-ra [optimalizált virtuálisgép-méretek](../sizes-gpu.md).

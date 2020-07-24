@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 07/01/2019
 ms.author: v-miegge
 ms.custom: mvc
-ms.openlocfilehash: a45f0a882c58c7035badcc1270c66bd9c6fb252a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 6b48334f1e7f2032216e1b058950c7ffc3cef70b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86526911"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87010155"
 ---
 # <a name="collect-details-about-all-vms-in-a-subscription-with-powershell"></a>Az előfizetésben található összes virtuális gép adatainak összegyűjtése a PowerShell használatával
 
@@ -80,8 +80,8 @@ Ez a szkript a következő parancsokat használja az előfizetésben található
 |[Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress)|Egy nyilvános IP-címet kap.|
 |[Get-AzNetworkInterface](/powershell/module/az.network/get-aznetworkinterface)|Hálózati adapter beolvasása.|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Az Azure PowerShell modullal kapcsolatos további információért lásd az [Azure PowerShell dokumentációját](/powershell/azure/overview).
+Az Azure PowerShell modullal kapcsolatos további információért lásd az [Azure PowerShell dokumentációját](/powershell/azure/).
 
 A virtuális gépekhez kapcsolódó további PowerShell-példaszkripteket az [Azure Windows rendszerű virtuális gépekre vonatkozó dokumentációjában](../windows/powershell-samples.md?toc=/azure/virtual-machines/windows/toc.json) találhat.

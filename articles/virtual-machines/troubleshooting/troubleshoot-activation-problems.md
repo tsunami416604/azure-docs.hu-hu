@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 11/15/2018
 ms.author: genli
-ms.openlocfilehash: 44c86dae3c7df8293404c253b94164c37d574158
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c89fcf22f669c97f2b17acce57c293eabcf96de
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84736934"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87009696"
 ---
 # <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>Windows rendszerű virtuális gépek Azure-ban való aktiválási problémáinak hibaelhárítása
 
@@ -46,9 +46,9 @@ Az Azure-beli virtuális gépek aktiválási problémái akkor jelentkeznek, ha 
 ## <a name="solution"></a>Megoldás
 
 >[!NOTE]
->Ha helyek közötti VPN-t és kényszerített bújtatást használ, tekintse meg az [Egyéni Azure-útvonalak használata a KMS-Aktiválás kényszerített bújtatással való engedélyezését](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-forced-tunneling)ismertető témakört. 
+>Ha helyek közötti VPN-t és kényszerített bújtatást használ, tekintse meg az [Egyéni Azure-útvonalak használata a KMS-Aktiválás kényszerített bújtatással való engedélyezését](../../vpn-gateway/vpn-gateway-about-forced-tunneling.md)ismertető témakört. 
 >
->Ha a ExpressRoute-t használja, és rendelkezik a közzétett alapértelmezett útvonallal, tekintse meg a [ExpressRoute-áramkörökhöz csatlakozó virtuális hálózatok internetkapcsolatának blokkolása](https://docs.microsoft.com/azure/expressroute/expressroute-faqs)című témakört.
+>Ha a ExpressRoute-t használja, és rendelkezik a közzétett alapértelmezett útvonallal, tekintse meg a [ExpressRoute-áramkörökhöz csatlakozó virtuális hálózatok internetkapcsolatának blokkolása](../../expressroute/expressroute-faqs.md)című témakört.
 
 ### <a name="step-1-configure-the-appropriate-kms-client-setup-key"></a>1. lépés a megfelelő KMS-ügyfél telepítési kulcsának konfigurálása
 
@@ -61,7 +61,7 @@ Az egyéni rendszerképből létrehozott virtuális gép esetében konfigurálni
     cscript c:\windows\system32\slmgr.vbs /dlv
     ```
 
-2. Ha az **slmgr.vbs /dlv** a KISKERESKEDELMI csatornát jeleníti meg, futtassa az alábbi parancsokat a [KMS-ügyféltelepítési kulcs](https://technet.microsoft.com/library/jj612867%28v=ws.11%29.aspx?f=255&MSPPError=-2147217396) a használt Windows Server-verzióhoz való beállításához, majd kényszerítse az újbóli aktiválást: 
+2. Ha az **slmgr.vbs /dlv** a KISKERESKEDELMI csatornát jeleníti meg, futtassa az alábbi parancsokat a [KMS-ügyféltelepítési kulcs](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj612867(v=ws.11)?f=255&MSPPError=-2147217396) a használt Windows Server-verzióhoz való beállításához, majd kényszerítse az újbóli aktiválást: 
 
     ```
     cscript c:\windows\system32\slmgr.vbs /ipk <KMS client setup key>
@@ -77,7 +77,7 @@ Az egyéni rendszerképből létrehozott virtuális gép esetében konfigurálni
 
 ### <a name="step-2-verify-the-connectivity-between-the-vm-and-azure-kms-service"></a>2. lépés a virtuális gép és az Azure KMS szolgáltatás közötti kapcsolat ellenőrzése
 
-1. Töltse le és csomagolja ki a [PSping](https://docs.microsoft.com/sysinternals/downloads/psping) eszközt a virtuális gép egy olyan helyi mappájába, amely nem aktiválódik. 
+1. Töltse le és csomagolja ki a [PSping](/sysinternals/downloads/psping) eszközt a virtuális gép egy olyan helyi mappájába, amely nem aktiválódik. 
 
 2. Lépjen a Start menüre, keresse meg a Windows PowerShellt, kattintson a jobb gombbal a Windows PowerShell elemre, majd válassza a Futtatás rendszergazdaként parancsot.
 
@@ -102,7 +102,7 @@ Az egyéni rendszerképből létrehozott virtuális gép esetében konfigurálni
   
     Győződjön meg arról is, hogy a virtuális gépen a tűzfal nem blokkolja a kimenő hálózati forgalmat a KMS-végpontra, a 1688-as portot.
 
-5. Ellenőrizze, hogy a következő [ugrást Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-next-hop-overview) használja-e, hogy az adott virtuális gépről jövő ugrás típusa a KMS.Core.Windows.net cél IP-23.102.135.246 (a esetében) vagy a megfelelő KMS-végpont IP-címére vonatkozik-e az **Internet**.  Ha az eredmény VirtualAppliance vagy VirtualNetworkGateway, akkor valószínű, hogy egy alapértelmezett útvonal létezik.  Forduljon a hálózati rendszergazdához, és működjön együtt velük a megfelelő műveletek meghatározásához.  Ez lehet egy [Egyéni útvonal](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/custom-routes-enable-kms-activation) , ha a megoldás konzisztens a szervezet házirendjeivel.
+5. Ellenőrizze, hogy a következő [ugrást Network Watcher](../../network-watcher/network-watcher-next-hop-overview.md) használja-e, hogy az adott virtuális gépről jövő ugrás típusa a KMS.Core.Windows.net cél IP-23.102.135.246 (a esetében) vagy a megfelelő KMS-végpont IP-címére vonatkozik-e az **Internet**.  Ha az eredmény VirtualAppliance vagy VirtualNetworkGateway, akkor valószínű, hogy egy alapértelmezett útvonal létezik.  Forduljon a hálózati rendszergazdához, és működjön együtt velük a megfelelő műveletek meghatározásához.  Ez lehet egy [Egyéni útvonal](./custom-routes-enable-kms-activation.md) , ha a megoldás konzisztens a szervezet házirendjeivel.
 
 6. Miután ellenőrizte, hogy sikeresen csatlakozik a kms.core.windows.net helyhez, futtassa a következő parancsot a rendszergazda jogú Windows PowerShell-parancssorban. Ez a parancs több alkalommal megpróbálja elvégezni az aktiválást.
 
@@ -130,7 +130,7 @@ Igen.
 ### <a name="what-happens-if-windows-activation-period-expires"></a>Mi történik, ha a Windows-aktiválási időszak lejár? 
 
  
-Ha a türelmi időszak lejárt, és a Windows még nem aktiválódik, a Windows Server 2008 R2 és a Windows újabb verziói további értesítéseket jelenítenek meg az aktiválással kapcsolatban. Az asztali háttérkép feketén marad, és a Windows Update csak a biztonsági és kritikus frissítéseket telepíti, de nem kötelező frissítéseket is. Tekintse meg az értesítések szakaszt a [licencelési feltételek](https://technet.microsoft.com/library/ff793403.aspx) lap alján.   
+Ha a türelmi időszak lejárt, és a Windows még nem aktiválódik, a Windows Server 2008 R2 és a Windows újabb verziói további értesítéseket jelenítenek meg az aktiválással kapcsolatban. Az asztali háttérkép feketén marad, és a Windows Update csak a biztonsági és kritikus frissítéseket telepíti, de nem kötelező frissítéseket is. Tekintse meg az értesítések szakaszt a [licencelési feltételek](/previous-versions/tn-archive/ff793403(v=technet.10)) lap alján.   
 
 ## <a name="need-help-contact-support"></a>Segítségre van szüksége? Vegye fel a kapcsolatot az ügyfélszolgálattal.
 

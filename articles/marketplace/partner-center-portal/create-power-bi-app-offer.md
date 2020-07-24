@@ -1,20 +1,20 @@
 ---
-title: Power BI app-ajánlat létrehozása a Microsoft kereskedelmi piactéren
+title: Power BI alkalmazás-ajánlat létrehozása Microsoft AppSource
 description: Megtudhatja, hogyan hozhat létre és tehet közzé Power BI alkalmazás-ajánlatokat a Microsoft AppSourcehoz.
 author: anbene
 ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 06/17/2020
-ms.openlocfilehash: 8a4ff5c5bce7774f805130f68d7418a73cb751f8
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.date: 07/22/2020
+ms.openlocfilehash: fa8c08f5d6f49b12306ea1f4bb82c07747622f48
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85980347"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011940"
 ---
-# <a name="create-a-power-bi-app-for-microsoft-appsource"></a>Power BI-alkalmazás létrehozása Microsoft AppSourcehoz
+# <a name="create-a-power-bi-app-offer"></a>Power BI alkalmazás-ajánlat létrehozása
 
 Ez a cikk bemutatja, hogyan hozhat létre és tehet közzé Power BI alkalmazás-ajánlatokat a Microsoft [AppSource](https://appsource.microsoft.com/).
 
@@ -137,12 +137,12 @@ Adja meg a piactér adatait (például az ajánlat nevét, leírását és lemez
 1. Embléma
 2. Termékek
 3. Kategóriák
-4. Ágazatok
+4. Iparágak
 5. Támogatási címe (hivatkozás)
 6. Használati feltételek
 7. Adatvédelmi irányelvek
 8. Ajánlat neve
-9. Összefoglalás
+9. Összegzés
 10. Description
 11. Képernyőképek/videók
 
@@ -237,7 +237,7 @@ Adja meg az ajánlatával kapcsolatos további információkat, hogy segítsen a
 
 Opcionálisan hozzáadhat utasításokat (legfeljebb 3 000 karakter) a Microsoft ellenőrzési csapatának az alkalmazás konfigurálásához, összekapcsolásához és teszteléséhez. Az adatok összekapcsolásának tesztelésére szolgáló jellemző konfigurációs beállításokat, fiókokat, paramétereket és egyéb információkat is megadhat. Ezek az információk csak az ellenőrzési csapat számára láthatók, és csak ellenőrzési célokra használhatók.
 
-## <a name="review-and-publish"></a>Áttekintés és közzététel
+## <a name="review-and-publish"></a>Felülvizsgálat és közzététel
 
 Miután elvégezte az ajánlat összes szükséges részét, elküldheti ajánlatát az áttekintéshez és a közzétételhez.
 

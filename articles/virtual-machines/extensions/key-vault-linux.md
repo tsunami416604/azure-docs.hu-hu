@@ -8,12 +8,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: f209a8b1d7ba5ab4fc213e43d56c04aebc3bd410
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: d2deb59b5a10177b1a6e57046c013ec9dac0fb06
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224264"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87010801"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>A Linux rendszerhez készült virtuálisgép-bővítmény Key Vault
 
@@ -35,7 +35,7 @@ A Key Vault virtuálisgép-bővítmény támogatja ezeket a Linux-disztribúció
 
 ## <a name="extension-schema"></a>Bővítményséma
 
-A következő JSON a Key Vault virtuálisgép-bővítmény sémáját jeleníti meg. A kiterjesztéshez nincs szükség védett beállításokra – az összes beállítás biztonsági hatás nélkül tekinthető információnak. A bővítményhez meg kell adni a figyelt titkok listáját, a lekérdezés gyakoriságát és a célhely tanúsítványtárolóját. Ezek a következők:  
+A következő JSON a Key Vault virtuálisgép-bővítmény sémáját jeleníti meg. A kiterjesztéshez nincs szükség védett beállításokra – az összes beállítás biztonsági hatás nélkül tekinthető információnak. A bővítményhez meg kell adni a figyelt titkok listáját, a lekérdezés gyakoriságát és a célhely tanúsítványtárolóját. Ezek konkrétan a következők:  
 ```json
     {
       "type": "Microsoft.Compute/virtualMachines/extensions",
@@ -71,7 +71,7 @@ A következő JSON a Key Vault virtuálisgép-bővítmény sémáját jeleníti 
 > [!NOTE]
 > A megfigyelt tanúsítványok URL-címeinek űrlapnak kell lenniük `https://myVaultName.vault.azure.net/secrets/myCertName` .
 > 
-> Ennek az az oka, hogy az `/secrets` elérési út a teljes tanúsítványt adja vissza, beleértve a titkos kulcsot is, míg az `/certificates` elérési út nem. A tanúsítványokkal kapcsolatos további információkért tekintse meg a következőt: [Key Vault tanúsítványok](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-certificates)
+> Ennek az az oka, hogy az `/secrets` elérési út a teljes tanúsítványt adja vissza, beleértve a titkos kulcsot is, míg az `/certificates` elérési út nem. A tanúsítványokkal kapcsolatos további információkért tekintse meg a következőt: [Key Vault tanúsítványok](../../key-vault/general/about-keys-secrets-certificates.md)
 
 > [!NOTE]
 > A "authenticationSettings" tulajdonság nem kötelező olyan helyzetekben, amikor a virtuális gépnek több hozzárendelt identitása van.
@@ -80,17 +80,17 @@ A következő JSON a Key Vault virtuálisgép-bővítmény sémáját jeleníti 
 
 ### <a name="property-values"></a>Tulajdonságértékek
 
-| Név | Érték/példa | Adattípus |
+| Name | Érték/példa | Adattípus |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | dátum |
 | közzétevő | Microsoft.Azure.KeyVault | sztring |
 | típus | KeyVaultForLinux | sztring |
-| typeHandlerVersion | 1.0 | int |
+| typeHandlerVersion | 1,0 | int |
 | pollingIntervalInS | 3600 | sztring |
 | certificateStoreName | A Linuxon figyelmen kívül lesz hagyva | sztring |
-| linkOnRenewal | hamis | logikai |
+| linkOnRenewal | hamis | boolean |
 | certificateStoreLocation  | /var/lib/waagent/Microsoft.Azure.KeyVault | sztring |
-| requiredInitialSync | true | logikai |
+| requiredInitialSync | true | boolean |
 | observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate"] | karakterlánc-tömb
 | msiEndpoint | http://169.254.169.254/metadata/identity | sztring |
 | msiClientId | c7373ae5-91c2-4165-8ab6-7381d6e75619 | sztring |
@@ -204,7 +204,7 @@ Az Azure CLI használatával telepítheti a Key Vault virtuálisgép-bővítmén
 Vegye figyelembe a következő korlátozásokat/követelményeket:
 - Key Vault korlátozások:
   - A telepítés időpontjában léteznie kell 
-  - A Key Vault hozzáférési szabályzat a virtuális gép/VMSS identitásának mustbe van beállítva felügyelt identitás használatával. Lásd: [Key Vault hitelesítés megadása felügyelt identitással](../../key-vault/managed-identity.md)
+  - A Key Vault hozzáférési szabályzat a virtuális gép/VMSS identitásának mustbe van beállítva felügyelt identitás használatával. Lásd: [Key Vault hitelesítés megadása felügyelt identitással](../../key-vault/general/managed-identity.md)
 
 
 ## <a name="troubleshoot-and-support"></a>Hibakeresés és támogatás

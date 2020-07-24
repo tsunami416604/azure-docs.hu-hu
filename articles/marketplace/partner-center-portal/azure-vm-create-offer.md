@@ -1,18 +1,18 @@
 ---
 title: Azure-beli virtuális gépek ajánlatának létrehozása az Azure Marketplace-en
-description: Megtudhatja, hogyan hozhat létre virtuálisgép-ajánlatot az Azure Marketplace-en a szükséges SKU-val.
+description: Megtudhatja, hogyan hozhat létre virtuálisgép-ajánlatot az Azure Marketplace-en a szükséges csomaggal.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: article
 author: emuench
 ms.author: mingshen
-ms.date: 06/17/2020
-ms.openlocfilehash: fe53de2c81f9e9df5fd9270951f943b0b3505f1e
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/17/2020
+ms.openlocfilehash: 6df1620f2d1097ac23e5dfa3903fefc74d13fa65
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110980"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012025"
 ---
 # <a name="create-an-azure-virtual-machine-offer-on-azure-marketplace"></a>Azure-beli virtuális gépek ajánlatának létrehozása az Azure Marketplace-en
 
@@ -20,7 +20,7 @@ Ez a cikk bemutatja, hogyan hozhat létre és tehet közzé Azure-beli virtuáli
 
 Mielőtt elkezdené, [hozzon létre egy kereskedelmi piactér-fiókot a partner Centerben](create-account.md). Győződjön meg arról, hogy a fiók regisztrálva van a kereskedelmi piactér programban.
 
-## <a name="introduction"></a>Introduction (Bevezetés)
+## <a name="introduction"></a>Bevezetés
 
 ### <a name="the-benefits-of-publishing-to-azure-marketplace"></a>Az Azure Marketplace-en való közzététel előnyei
 
@@ -196,7 +196,7 @@ Adja meg az ajánlat rövid leírását, amely az Azure Marketplace keresési er
 
 Adja meg az ajánlatát, hogy megjelenjen az Azure Marketplace keresési eredményei között. Akár 256 karaktert is tartalmazhat.
 
-#### <a name="description"></a>Leírás
+#### <a name="description"></a>Description
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -286,7 +286,7 @@ A következő szakasz folytatásához válassza a **Piszkozat mentése** elemet.
 
 ## <a name="plan-overview"></a>A terv áttekintése
 
-A partner centeren belül a különböző csomagokra vonatkozó lehetőségek is megadhatók. Ezeket a csomagokat korábban SKU-ként emlegetik. Az ajánlathoz legalább egy csomag szükséges, amely a bevételi közönség, az Azure-régió, a funkciók vagy a virtuálisgép-rendszerképektől függően változhat.
+A partner centeren belül a különböző csomagokra vonatkozó lehetőségek is megadhatók. Az ajánlathoz legalább egy csomagra (korábbi nevén SKU) van szükség, amely a bevételi közönség, az Azure-régió, a funkciók vagy a virtuálisgép-lemezképek esetében változhat.
 
 A csomagok létrehozása után válassza a **terv áttekintés** fület a megjelenítéshez:
 
@@ -312,7 +312,7 @@ A **terv azonosítója** mezőben hozzon létre egy egyedi díjcsomag-azonosít�
 
 A **terv neve** mezőbe írja be a csomag nevét. Az ügyfelek akkor látják ezt a nevet, amikor döntik el, hogy melyik tervet kívánják kiválasztani az ajánlaton belül. Hozzon létre egy egyedi nevet, amely egyértelműen rámutat a csomagok közötti különbségekre. Például megadhatja a **Windows Servert** utólagos *Pay-as-you-go*elszámolású, *BYOL*, *speciális*és *vállalati* csomagokkal.
 
-Válassza a **Létrehozás** lehetőséget.
+Kattintson a **Létrehozás** gombra.
 
 ### <a name="plan-setup"></a>Csomag beállítása
 
@@ -393,7 +393,7 @@ A használati alapú havi számlás csomag esetében a következő három díjsz
 > [!NOTE]
 > Mentse a díjszabási változásokat, hogy engedélyezze a díjszabási adatexportálást. Miután közzétette a csomag egy piacának árát, később nem módosítható. Annak érdekében, hogy a közzététel előtt a díjak megfelelőek legyenek, exportálja a díjszabási táblázatot, és tekintse át az árakat az egyes piacokon.
 
-#### <a name="free-trial"></a>Ingyenes próbaverzió
+#### <a name="free-trial"></a>Ingyenes próba
 
 Az ügyfeleknek egy-vagy három hónapos *ingyenes próbaverziót* is kínálunk.
 
@@ -412,7 +412,6 @@ Megtervezheti, hogy az egyes tervek mindenki számára láthatók legyenek, vagy
 
 >[!Note]
 >A privát ajánlatok nem támogatottak a Cloud Solution Provider program (CSP) viszonteladóján keresztül létesített Azure-előfizetések esetében.
-
 
 #### <a name="hide-a-plan"></a>Csomag elrejtése
 
@@ -487,7 +486,7 @@ További tesztelési meghajtó erőforrásai:
 
 A folytatás előtt válassza a **Piszkozat mentése** lehetőséget.
 
-## <a name="review-and-publish"></a>Áttekintés és közzététel
+## <a name="review-and-publish"></a>Felülvizsgálat és közzététel
 
 Miután elvégezte az ajánlat összes szükséges részét, elküldheti azt véleményezésre és közzétételre.
 
@@ -516,9 +515,9 @@ Az **ajánlat áttekintése** lapon láthatók azok a lépések, amelyek az ajá
 
 Ez az oldal olyan hivatkozásokat is tartalmaz, amelyek segítenek az ajánlattal való együttműködésben az állapottól függően:
 
-- Ha az ajánlat egy Piszkozat: [törlési ajánlat törlése](update-existing-offer.md#delete-a-draft-offer))
+- Ha az ajánlat egy Piszkozat: a [Piszkozat törlése ajánlat](update-existing-offer.md#delete-a-draft-offer)
 - Ha az ajánlat élő: [az ajánlat eladásának leállítása](update-existing-offer.md#stop-selling-an-offer-or-plan)
-- Ha az ajánlat előzetes verzióban érhető el: [Go-Live](publishing-status.md#publisher-approval))
+- Ha az ajánlat előzetes verzióban érhető el: [Go-Live](publishing-status.md#publisher-approval)
 - Ha még nem fejezte be a közzétevő kijelentkezését: [Közzététel megszakítása](update-existing-offer.md#cancel-publishing)
 
 ## <a name="marketplace-examples"></a>Marketplace-példák
@@ -530,12 +529,12 @@ Az alábbi példa bemutatja, hogyan jelennek meg az ajánlati információk az A
 #### <a name="call-out-descriptions"></a>Lehívási leírások
 
 1. Nagyméretű embléma
-2. Price
+2. Ár
 3. Kategóriák
 4. használati feltételei
 5. Adatvédelmi szabályzat címe (hivatkozás)
 6. Ajánlat neve
-7. Leírás
+7. Description
 8. Hasznos hivatkozások
 9. Képernyőképek/videók
 
@@ -566,7 +565,7 @@ Az alábbi példa bemutatja, hogyan jelennek meg az ajánlati információk az A
 
 #### <a name="call-out-descriptions"></a>Lehívási leírások
 
-1. Name
+1. Név
 2. Leírás
 3. Hasznos hivatkozások
 4. Képernyőképek/videók

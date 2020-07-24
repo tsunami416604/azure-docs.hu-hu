@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: 5d8aa456a6454dd511b7dcda5d3f74a739033356
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c0426c5359e4d82d0316613586b9298596d82605
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83774338"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87009764"
 ---
 # <a name="disable-the-guest-os-firewall-in-azure-vm"></a>A vendég operációs rendszer tűzfalának letiltása az Azure-beli virtuális gépen
 
@@ -73,7 +74,7 @@ Ha rendelkezik működő Azure-ügynökkel, használhatja az [Egyéni szkriptek 
 
 #### <a name="mitigation-3-pstools-commands"></a>3. enyhítés: PSTools parancsok
 
-1.  A hibaelhárítási virtuális gépen töltse le a [PsTools](https://docs.microsoft.com/sysinternals/downloads/pstools).
+1.  A hibaelhárítási virtuális gépen töltse le a [PsTools](/sysinternals/downloads/pstools).
 
 2.  Nyisson meg egy CMD-példányt, majd a DIP használatával férhet hozzá a virtuális géphez.
 

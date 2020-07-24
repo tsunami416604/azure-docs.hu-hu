@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
-ms.openlocfilehash: 5dcdfba6e8dd00c8ba09e5e98293a30d19e51c99
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6201a4e0551f0f75dde65b2bc4b8b560a0f5ea20
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83635954"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87007996"
 ---
 # <a name="azure-diagnostics-extension-overview"></a>Azure Diagnostics bővítmény áttekintése
 A Azure Diagnostics Extension olyan [Azure monitor ügynöke](agents-overview.md) , amely az Azure számítási erőforrások, például a virtuális gépek vendég operációs rendszerének figyelési adatait gyűjti. Ez a cikk áttekintést nyújt Azure Diagnostics bővítményről, beleértve az általa támogatott speciális funkciókat, valamint a telepítés és a konfigurálás lehetőségeit. 
@@ -33,7 +34,7 @@ A figyelembe venni kívánt fő különbségek a következők:
 
 - Azure Diagnostics bővítmény csak az Azure Virtual Machines használatával használható. Az Log Analytics-ügynök használható az Azure-ban, a többi felhőkben és a helyszínen lévő virtuális gépekkel.
 - Azure Diagnostics a bővítmény adatokat küld az Azure Storage-ba, [Azure monitor metrikákat](data-platform-metrics.md) (csak Windows) és Event Hubs. A Log Analytics ügynök adatokat gyűjt [Azure monitor naplókhoz](data-platform-logs.md).
-- A Log Analytics ügynök szükséges a [megoldások](../monitor-reference.md#insights-and-core-solutions), [Azure monitor for VMS](../insights/vminsights-overview.md)és egyéb szolgáltatások, például a [Azure Security Center](/azure/security-center/)esetében.
+- A Log Analytics ügynök szükséges a [megoldások](../monitor-reference.md#insights-and-core-solutions), [Azure monitor for VMS](../insights/vminsights-overview.md)és egyéb szolgáltatások, például a [Azure Security Center](../../security-center/index.yml)esetében.
 
 ## <a name="costs"></a>Költségek
 Az Azure diagnosztikai bővítmény használatáért nem számítunk fel díjat, de díjkötelesek lehetnek a betöltött adatokért járó díjak. Tekintse meg [Azure monitor díjszabását](https://azure.microsoft.com/pricing/details/monitor/) azon a célhelyen, amelyben az adatok gyűjtése folyamatban van.
@@ -49,8 +50,8 @@ Az alábbi táblázatok felsorolják azokat az adatokat, amelyeket a Windows és
 | Teljesítményszámlálók | Az operációs rendszer és a számítási feladatok különböző szempontjainak teljesítményét mérő numerikus értékek. |
 | IIS-naplók             | A vendég operációs rendszeren futó IIS-webhelyek használati adatai. |
 | Alkalmazás-naplók     | Az alkalmazás által írt nyomkövetési üzenetek. |
-| .NET EventSource-naplók |Események írása a .NET [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) osztály használatával |
-| [Jegyzékfájl-alapú ETW-naplók](https://docs.microsoft.com/windows/desktop/etw/about-event-tracing) |Windows esemény-nyomkövetés egy folyamat által generált eseményeket. |
+| .NET EventSource-naplók |Események írása a .NET [EventSource](/dotnet/api/system.diagnostics.tracing.eventsource?view=netcore-3.1) osztály használatával |
+| [Jegyzékfájl-alapú ETW-naplók](/windows/desktop/etw/about-event-tracing) |Windows esemény-nyomkövetés egy folyamat által generált eseményeket. |
 | Összeomlási memóriaképek (naplók)   | Információ a folyamat állapotáról, ha egy alkalmazás összeomlik. |
 | Fájl alapú naplók    | Az alkalmazás vagy szolgáltatás által létrehozott naplók. |
 | Ügynök diagnosztikai naplói | Információk a Azure Diagnosticsról. |
@@ -116,4 +117,3 @@ A Windows és a Linux rendszerhez készült diagnosztikai bővítmény telepít�
 
 * Ismerkedjen meg a [Azure Diagnostics teljesítményszámlálók használatával](../../cloud-services/diagnostics-performance-counters.md).
 * Ha problémája van az Azure Storage-táblákban megjelenő vagy az adatait megtaláló diagnosztika szolgáltatással, olvassa el a [hibaelhárítási Azure Diagnostics](diagnostics-extension-troubleshooting.md)
-

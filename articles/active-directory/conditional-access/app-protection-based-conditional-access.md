@@ -5,17 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 05/08/2020
+ms.date: 07/20/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol, rosssmi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dae584bdfa97b2c30cab5f15881323c26366592c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c5326fd6adf12d53d836594c8e53bda14e0871e5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253358"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87009118"
 ---
 # <a name="how-to-require-app-protection-policy-and-an-approved-client-app-for-cloud-app-access-with-conditional-access"></a>Útmutató: az alkalmazás védelmi szabályzatának és a felhőalapú alkalmazások hozzáférésének megkövetelése feltételes hozzáféréssel
 
@@ -29,10 +30,11 @@ Ez a cikk három forgatókönyvet mutat be a feltételes hozzáférési háziren
 
 A feltételes hozzáférésben ezek az ügyfélalkalmazások ismertek, hogy védelmet kapnak az alkalmazás védelmi házirendjével. Az alkalmazás-védelmi szabályzatokkal kapcsolatos további információkért tekintse meg az [app Protection-házirendek áttekintése](/intune/apps/app-protection-policy) című cikket.
 
-A jogosult ügyfélalkalmazások listáját a következő témakörben tekintheti meg: az [alkalmazás védelmére vonatkozó követelmény](concept-conditional-access-grant.md).
+> [!WARNING]
+> Nem minden alkalmazás támogatott, és nem támogatja az alkalmazás-védelmi szabályzatokat. A jogosult ügyfélalkalmazások listáját a következő témakörben tekintheti meg: az [alkalmazás védelmére vonatkozó követelmény](concept-conditional-access-grant.md#require-app-protection-policy).
 
 > [!NOTE]
->    A (vagy) záradék a szabályzaton belül használatos ahhoz, hogy a felhasználók olyan alkalmazásokat használjanak, amelyek támogatják az **alkalmazás-védelmi házirend megkövetelését** vagy a **jóváhagyott ügyfélalkalmazás** -engedélyezési vezérlőket. További információ arról, hogy mely alkalmazások támogatják az **alkalmazás-védelmi házirend megkövetelése** vezérlő használatát: az [alkalmazás védelmére vonatkozó követelmény](concept-conditional-access-grant.md).
+> "A kijelölt vezérlők egyikének megkövetelése" az engedélyezési vezérlők területen, például egy vagy záradék. Ez a házirend lehetővé teszi a felhasználók számára, hogy olyan alkalmazásokat használjanak, amelyek támogatják az **alkalmazás-védelmi házirend megkövetelését** vagy a **jóváhagyott ügyfélalkalmazás** -engedélyezési vezérlőket. Az **alkalmazás védelmi szabályzatának megkövetelése** akkor lép érvénybe, ha az alkalmazást mindkét házirend támogatja. További információ arról, hogy mely alkalmazások támogatják az **alkalmazás-védelmi házirend megkövetelése** vezérlő használatát: az [alkalmazás védelmére vonatkozó követelmény](concept-conditional-access-grant.md#require-app-protection-policy).
 
 ## <a name="scenario-1-office-365-apps-require-approved-apps-with-app-protection-policies"></a>1. forgatókönyv: az Office 365-alkalmazásokban jóváhagyott alkalmazások szükségesek az alkalmazás-védelmi házirendekkel
 
@@ -48,7 +50,7 @@ A szervezeteknek a következő lépéseket kell végrehajtaniuk ahhoz, hogy a j�
 1. Adjon nevet a szabályzatnak. Javasoljuk, hogy a szervezetek értelmes szabványt hozzanak létre a szabályzatok nevében.
 1. A **hozzárendelések**alatt válassza a **felhasználók és csoportok** lehetőséget.
    1. A **Belefoglalás**területen válassza ki az **összes felhasználó** elemet, illetve azokat a **felhasználókat és csoportokat** , amelyekre alkalmazni szeretné a szabályzatot. 
-   1. Válassza a **Done** (Kész) lehetőséget.
+   1. Válassza a **Kész** lehetőséget.
 1. A **Cloud apps vagy a műveletek**területen  >  **Include**válassza az **Office 365 (előzetes verzió)** lehetőséget.
 1. A **feltételek**területen válassza az **eszközök platformok**elemet.
    1. Állítsa **az** **Igen**értékre.
@@ -72,7 +74,7 @@ Az ebben a lépésben megadott feltételes hozzáférési szabályzat esetében 
 1. Adjon nevet a szabályzatnak. Javasoljuk, hogy a szervezetek értelmes szabványt hozzanak létre a szabályzatok nevében.
 1. A **hozzárendelések**alatt válassza a **felhasználók és csoportok** lehetőséget.
    1. A **Belefoglalás**területen válassza ki az **összes felhasználó** elemet, illetve azokat a **felhasználókat és csoportokat** , amelyekre alkalmazni szeretné a szabályzatot. 
-   1. Válassza a **Done** (Kész) lehetőséget.
+   1. Válassza a **Kész** lehetőséget.
 1. A **Cloud apps vagy a műveletek**területen  >  **Include**válassza az **Office 365 Exchange Online**lehetőséget.
 1. **Feltételek**:
    1. **Ügyfélalkalmazások (előzetes verzió)**:
@@ -100,7 +102,7 @@ A szervezeteknek a következő lépéseket kell végrehajtaniuk ahhoz, hogy a j�
 1. Adjon nevet a szabályzatnak. Javasoljuk, hogy a szervezetek értelmes szabványt hozzanak létre a szabályzatok nevében.
 1. A **hozzárendelések**alatt válassza a **felhasználók és csoportok** lehetőséget.
    1. A **Belefoglalás**területen válassza ki az **összes felhasználó** elemet, illetve azokat a **felhasználókat és csoportokat** , amelyekre alkalmazni szeretné a szabályzatot. 
-   1. Válassza a **Done** (Kész) lehetőséget.
+   1. Válassza a **Kész** lehetőséget.
 1. A **Cloud apps vagy a műveletek**területen  >  **Include**válassza az **Office 365 (előzetes verzió)** lehetőséget.
 1. A **feltételek**területen válassza az **eszközök platformok**elemet.
    1. Állítsa **az** **Igen**értékre.
@@ -133,7 +135,7 @@ A szervezeteknek a következő három lépést kell végrehajtaniuk ahhoz, hogy 
 1. Adjon nevet a szabályzatnak. Javasoljuk, hogy a szervezetek értelmes szabványt hozzanak létre a szabályzatok nevében.
 1. A **hozzárendelések**alatt válassza a **felhasználók és csoportok** lehetőséget.
    1. A **Belefoglalás**területen válassza ki az **összes felhasználó** elemet, illetve azokat a **felhasználókat és csoportokat** , amelyekre alkalmazni szeretné a szabályzatot. 
-   1. Válassza a **Done** (Kész) lehetőséget.
+   1. Válassza a **Kész** lehetőséget.
 1. A **Cloud apps vagy a műveletek**területen  >  **Include**válassza az **Office 365 Exchange Online** és az **Office 365 SharePoint Online**lehetőséget.
 1. A **feltételek**területen válassza az **eszközök platformok**elemet.
    1. Állítsa **az** **Igen**értékre.
@@ -155,7 +157,7 @@ A szervezeteknek a következő három lépést kell végrehajtaniuk ahhoz, hogy 
 1. Adjon nevet a szabályzatnak. Javasoljuk, hogy a szervezetek értelmes szabványt hozzanak létre a szabályzatok nevében.
 1. A **hozzárendelések**alatt válassza a **felhasználók és csoportok** lehetőséget.
    1. A **Belefoglalás**területen válassza ki az **összes felhasználó** elemet, illetve azokat a **felhasználókat és csoportokat** , amelyekre alkalmazni szeretné a szabályzatot. 
-   1. Válassza a **Done** (Kész) lehetőséget.
+   1. Válassza a **Kész** lehetőséget.
 1. A **Cloud apps vagy a műveletek**területen  >  **Include**válassza az **Office 365 Exchange Online**lehetőséget.
 1. **Feltételek**:
    1. **Ügyfélalkalmazások (előzetes verzió)**:
@@ -171,9 +173,9 @@ Tekintse át az alkalmazás-védelmi szabályzatok létrehozását [és hozzáre
 
 ## <a name="next-steps"></a>További lépések
 
-[Mi az a feltételes hozzáférés?](overview.md)
+[Mit jelent a feltételes hozzáférés?](overview.md)
 
 [Feltételes hozzáférési összetevők](concept-conditional-access-policies.md)
 
-[Általános feltételes hozzáférési szabályzatok](concept-conditional-access-policy-common.md)
+[Gyakori feltételes hozzáférési szabályzatok](concept-conditional-access-policy-common.md)
 

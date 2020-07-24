@@ -15,11 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: ea448b87f9e6954abecead2934bfb7f4ed04a9c5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 91f15e32866cca008553286f7585247909d9a4ba
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77920144"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87009866"
 ---
 # <a name="detailed-troubleshooting-steps-for-remote-desktop-connection-issues-to-windows-vms-in-azure"></a>A Windows rendszerű virtuális gépekkel létesített távoli asztali kapcsolatok problémáinak részletes hibaelhárítási útmutatója
 Ez a cikk részletes hibaelhárítási lépéseket tartalmaz a Windows-alapú Azure-beli virtuális gépek összetett Távoli asztal hibáinak diagnosztizálásához és javításához.
@@ -35,7 +36,7 @@ Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a ka
 ## <a name="components-of-a-remote-desktop-connection"></a>Távoli asztal-kapcsolatok összetevői
 Az RDP-kapcsolatok a következő összetevőket érintik:
 
-![](./media/detailed-troubleshoot-rdp/tshootrdp_0.png)
+![Egy Távoli asztal (RDP) kapcsolatban részt vevő összetevőket bemutató diagram.](./media/detailed-troubleshoot-rdp/tshootrdp_0.png)
 
 A továbblépés előtt hasznos lehet a virtuális géphez való legutóbbi sikeres Távoli asztal-kapcsolódás óta megváltozott változások mentális áttekintése. Például:
 
@@ -58,13 +59,13 @@ Előfordulhat, hogy az Távoli asztal ügyfél nem tudja elérni a Távoli aszta
 * [Ügyfélszámítógép Távoli asztal](#source-1-remote-desktop-client-computer)
 * [Szervezeti intranet Edge-eszköz](#source-2-organization-intranet-edge-device)
 * [Cloud Service-végpont és hozzáférés-vezérlési lista (ACL)](#source-3-cloud-service-endpoint-and-acl)
-* [Network security groups (Hálózati biztonsági csoportok)](#source-4-network-security-groups)
+* [Hálózati biztonsági csoportok](#source-4-network-security-groups)
 * [Windows-alapú Azure-beli virtuális gép](#source-5-windows-based-azure-vm)
 
 ## <a name="source-1-remote-desktop-client-computer"></a>1. Forrás: Távoli asztal ügyfélszámítógép
 Ellenőrizze, hogy a számítógép tud-e Távoli asztal kapcsolatot létesíteni egy másik helyszíni, Windows-alapú számítógéppel.
 
-![](./media/detailed-troubleshoot-rdp/tshootrdp_1.png)
+![Egy Távoli asztal (RDP) kapcsolaton belüli, a Kiemelt RDP-ügyféllel és egy, a kapcsolattal rendelkező, másik helyszíni számítógépre mutató nyíl diagramja.](./media/detailed-troubleshoot-rdp/tshootrdp_1.png)
 
 Ha nem, keresse meg a következő beállításokat a számítógépen:
 
@@ -78,9 +79,9 @@ Ezekben az esetekben átmenetileg tiltsa le a szoftvert, és próbáljon meg Tá
 ## <a name="source-2-organization-intranet-edge-device"></a>2. Forrás: szervezeti intranet Edge-eszköz
 Győződjön meg arról, hogy az internethez közvetlenül csatlakozó számítógép Távoli asztal kapcsolatot tud létesíteni az Azure-beli virtuális géppel.
 
-![](./media/detailed-troubleshoot-rdp/tshootrdp_2.png)
+![Egy Távoli asztal (RDP) kapcsolat egy diagramja egy olyan RDP-ügyféllel, amely csatlakozik az internethez, és egy, a kapcsolatot jelző Azure-beli virtuális gépre mutató nyíl.](./media/detailed-troubleshoot-rdp/tshootrdp_2.png)
 
-Ha nincs olyan számítógépe, amely közvetlenül csatlakozik az internethez, hozzon létre és végezzen el egy új Azure-beli virtuális gépet egy erőforráscsoport vagy egy felhőalapú szolgáltatásban. További információkért lásd: [Windows rendszerű virtuális gép létrehozása az Azure-ban](../virtual-machines-windows-hero-tutorial.md). A teszt után törölheti a virtuális gépet és az erőforráscsoportot, vagy a Cloud Service-t.
+Ha nincs olyan számítógépe, amely közvetlenül csatlakozik az internethez, hozzon létre és végezzen el egy új Azure-beli virtuális gépet egy erőforráscsoport vagy egy felhőalapú szolgáltatásban. További információkért lásd: [Windows rendszerű virtuális gép létrehozása az Azure-ban](../windows/quick-create-portal.md). A teszt után törölheti a virtuális gépet és az erőforráscsoportot, vagy a Cloud Service-t.
 
 Ha Távoli asztal kapcsolatot hozhat létre közvetlenül az internethez csatlakozó számítógéppel, ellenőrizze a szervezet intranetes peremhálózati eszközét a következőhöz:
 
@@ -96,29 +97,29 @@ A hálózati rendszergazdával együttműködve javítsa ki a szervezet intranet
 
 A klasszikus üzemi modellel létrehozott virtuális gépek esetében ellenőrizze, hogy egy másik Azure-beli virtuális gép, amely ugyanabban a felhőalapú szolgáltatásban vagy virtuális hálózaton található, Távoli asztal-e kapcsolatot az Azure-beli virtuális géppel.
 
-![](./media/detailed-troubleshoot-rdp/tshootrdp_3.png)
+![Egy Távoli asztal (RDP) kapcsolat ábrája egy kiemelt Azure-beli virtuális géppel, és egy másik Azure-beli virtuális gépre mutató nyíl, amely egy kapcsolatra utal.](./media/detailed-troubleshoot-rdp/tshootrdp_3.png)
 
 > [!NOTE]
 > A Resource Managerben létrehozott virtuális gépek esetében ugorjon a [forrás 4: hálózati biztonsági csoportok](#source-4-network-security-groups)elemre.
 
-Ha nem rendelkezik másik virtuális géppel ugyanabban a felhőalapú szolgáltatásban vagy virtuális hálózaton, hozzon létre egyet. Kövesse a [Windows rendszerű virtuális gép létrehozása az Azure-ban](../virtual-machines-windows-hero-tutorial.md)című témakör lépéseit. A teszt befejezése után törölje a teszt virtuális gépet.
+Ha nem rendelkezik másik virtuális géppel ugyanabban a felhőalapú szolgáltatásban vagy virtuális hálózaton, hozzon létre egyet. Kövesse a [Windows rendszerű virtuális gép létrehozása az Azure-ban](../windows/quick-create-portal.md)című témakör lépéseit. A teszt befejezése után törölje a teszt virtuális gépet.
 
 Ha Távoli asztalon keresztül tud csatlakozni egy felhőalapú szolgáltatásban vagy virtuális hálózaton lévő virtuális géphez, ellenőrizze a következő beállításokat:
 
 * A cél virtuális gépen Távoli asztal forgalom végpont-konfigurációja: a végpont magánhálózati TCP-portjának meg kell egyeznie azzal a TCP-porttal, amelyen a virtuális gép Távoli asztal szolgáltatását figyeli (az alapértelmezett érték 3389).
-* A cél virtuális gépen a Távoli asztal forgalmi végpont ACL-je: az ACL-ek lehetővé teszik a bejövő forgalom engedélyezett vagy megtagadását az internetről a forrás IP-címe alapján. A helytelenül konfigurált ACL-ek megakadályozhatják a bejövő Távoli asztal forgalmat a végpontra. Ellenőrizze az ACL-eket, hogy a proxy vagy más peremhálózati kiszolgáló nyilvános IP-címeiről érkező bejövő forgalom engedélyezett-e. További információ: [Mi az a Network Access Control List (ACL)?](../../virtual-network/virtual-networks-acl.md)
+* A cél virtuális gépen a Távoli asztal forgalmi végpont ACL-je: az ACL-ek lehetővé teszik a bejövő forgalom engedélyezett vagy megtagadását az internetről a forrás IP-címe alapján. A helytelenül konfigurált ACL-ek megakadályozhatják a bejövő Távoli asztal forgalmat a végpontra. Ellenőrizze az ACL-eket, hogy a proxy vagy más peremhálózati kiszolgáló nyilvános IP-címeiről érkező bejövő forgalom engedélyezett-e. További információ: [Mi az a Network Access Control List (ACL)?](/previous-versions/azure/virtual-network/virtual-networks-acl)
 
-Annak vizsgálatához, hogy a végpont a probléma forrása-e, távolítsa el az aktuális végpontot, és hozzon létre egy újat, és válasszon egy véletlenszerű portot a 49152 – 65535 tartományból a külső portszámhoz. További információ: [végpontok beállítása virtuális géphez](../windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
+Annak vizsgálatához, hogy a végpont a probléma forrása-e, távolítsa el az aktuális végpontot, és hozzon létre egy újat, és válasszon egy véletlenszerű portot a 49152 – 65535 tartományból a külső portszámhoz. További információ: [végpontok beállítása virtuális géphez](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints?toc=/azure/virtual-machines/windows/classic/toc.json).
 
 ## <a name="source-4-network-security-groups"></a>4. Forrás: hálózati biztonsági csoportok
 A hálózati biztonsági csoportok lehetővé teszik a bejövő és kimenő forgalom részletesebb szabályozását. Az alhálózatokat és a Cloud Servicest egy Azure-beli virtuális hálózaton átívelő szabályok hozhatók létre.
 
-Az [IP-folyamat ellenőrzésével](../../network-watcher/network-watcher-check-ip-flow-verify-portal.md) ellenőrizze, hogy egy hálózati biztonsági csoportban lévő szabály blokkolja-e a virtuális gép felé irányuló vagy onnan érkező forgalmat. A hatályos biztonsági csoportok szabályait is áttekintheti, így biztosítva, hogy a bejövő "engedélyezés" NSG szabály létezik, és az RDP-portra van rangsorolva (alapértelmezett 3389). További információ: [hatékony biztonsági szabályok használata a virtuális gépek forgalmának hibakereséséhez](../../virtual-network/diagnose-network-traffic-filter-problem.md).
+Az [IP-folyamat ellenőrzésével](../../network-watcher/diagnose-vm-network-traffic-filtering-problem.md) ellenőrizze, hogy egy hálózati biztonsági csoportban lévő szabály blokkolja-e a virtuális gép felé irányuló vagy onnan érkező forgalmat. A hatályos biztonsági csoportok szabályait is áttekintheti, így biztosítva, hogy a bejövő "engedélyezés" NSG szabály létezik, és az RDP-portra van rangsorolva (alapértelmezett 3389). További információ: [hatékony biztonsági szabályok használata a virtuális gépek forgalmának hibakereséséhez](../../virtual-network/diagnose-network-traffic-filter-problem.md).
 
 ## <a name="source-5-windows-based-azure-vm"></a>5. Forrás: Windows-alapú Azure-beli virtuális gép
-![](./media/detailed-troubleshoot-rdp/tshootrdp_5.png)
+![Egy felhőalapú szolgáltatásban Kiemelt Azure-beli virtuális géppel Távoli asztal (RDP) kapcsolat összetevőinek ábrája, valamint egy üzenet arról, hogy a probléma lehetséges forrása lehet. A kék vonal azt jelzi, hogy a hálózati biztonsági csoport szabályai blokkolják az Azure-beli virtuális gépről érkező vagy onnan érkező forgalmat.](./media/detailed-troubleshoot-rdp/tshootrdp_5.png)
 
-Kövesse a [cikk](../windows/reset-rdp.md)utasításait. Ez a cikk alaphelyzetbe állítja a Távoli asztal szolgáltatást a virtuális gépen:
+Kövesse a [cikk](./reset-rdp.md)utasításait. Ez a cikk alaphelyzetbe állítja a Távoli asztal szolgáltatást a virtuális gépen:
 
 * Engedélyezze a "Távoli asztal" Windows tűzfal alapértelmezett szabályát (3389-as TCP-port).
 * Távoli asztal kapcsolatok engedélyezéséhez állítsa a HKLM\System\CurrentControlSet\Control\Terminal Server\fDenyTSConnections beállításazonosító értékét 0-ra.
@@ -132,9 +133,9 @@ Próbálja megismételni a kapcsolatokat a számítógépről. Ha továbbra sem 
 
 A klasszikus üzemi modellel létrehozott virtuális gépek esetében távoli Azure PowerShell munkamenetet használhat az Azure-beli virtuális géphez. Először telepítenie kell egy tanúsítványt a virtuális gép üzemeltetési felhőalapú szolgáltatásához. Lépjen a [biztonságos távoli PowerShell-hozzáférés konfigurálása az Azure Virtual Machineshoz](https://gallery.technet.microsoft.com/scriptcenter/Configures-Secure-Remote-b137f2fe) , és töltse le a **InstallWinRMCertAzureVM.ps1** parancsfájlt a helyi számítógépre.
 
-Ezután telepítse Azure PowerShell, ha még nem tette meg. Lásd: [How to install and configure Azure PowerShell](/powershell/azure/overview) (Az Azure PowerShell telepítése és konfigurálása).
+Ezután telepítse Azure PowerShell, ha még nem tette meg. Lásd: [How to install and configure Azure PowerShell](/powershell/azure/) (Az Azure PowerShell telepítése és konfigurálása).
 
-Ezután nyisson meg egy Azure PowerShell parancssort, és módosítsa az aktuális mappát a **InstallWinRMCertAzureVM.ps1** parancsfájl helyére. Azure PowerShell szkript futtatásához be kell állítania a megfelelő végrehajtási házirendet. Futtassa a **Get-ExecutionPolicy** parancsot az aktuális házirend szintjének meghatározásához. A megfelelő szint beállításával kapcsolatos információkért lásd: [Set-ExecutionPolicy](https://technet.microsoft.com/library/hh849812.aspx).
+Ezután nyisson meg egy Azure PowerShell parancssort, és módosítsa az aktuális mappát a **InstallWinRMCertAzureVM.ps1** parancsfájl helyére. Azure PowerShell szkript futtatásához be kell állítania a megfelelő végrehajtási házirendet. Futtassa a **Get-ExecutionPolicy** parancsot az aktuális házirend szintjének meghatározásához. A megfelelő szint beállításával kapcsolatos információkért lásd: [Set-ExecutionPolicy](/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-5.1).
 
 Ezután töltse ki az Azure-előfizetés nevét, a Cloud Service-nevet és a virtuális gép nevét (a < és > karaktereket), majd futtassa ezeket a parancsokat.
 
@@ -193,11 +194,10 @@ Exit-PSSession
 Győződjön meg arról, hogy az Azure-beli virtuális gép Távoli asztal végpontja a 3398-as TCP-portot is használja belső portként. Indítsa újra az Azure-beli virtuális gépet, majd próbálja megismételni a Távoli asztal-kapcsolatokat.
 
 ## <a name="additional-resources"></a>További források
-[Jelszó alaphelyzetbe állítása vagy a Távoli asztal szolgáltatás használata Windows rendszerű virtuális gépekhez](../windows/reset-rdp.md)
+[Jelszó alaphelyzetbe állítása vagy a Távoli asztal szolgáltatás használata Windows rendszerű virtuális gépekhez](./reset-rdp.md)
 
-[How to install and configure Azure PowerShell (Az Azure PowerShell telepítése és konfigurálása)](/powershell/azure/overview)
+[How to install and configure Azure PowerShell (Az Azure PowerShell telepítése és konfigurálása)](/powershell/azure/)
 
-[A Secure Shell-(SSH-) kapcsolatok hibakeresése Linux-alapú Azure-beli virtuális gépeken](../linux/troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+[A Secure Shell-(SSH-) kapcsolatok hibakeresése Linux-alapú Azure-beli virtuális gépeken](./troubleshoot-ssh-connection.md?toc=/azure/virtual-machines/linux/toc.json)
 
-[Azure-beli virtuális gépen futó alkalmazásokhoz való hozzáférés hibaelhárítása](../linux/troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-
+[Azure-beli virtuális gépen futó alkalmazásokhoz való hozzáférés hibaelhárítása](./troubleshoot-app-connection.md?toc=/azure/virtual-machines/linux/toc.json)

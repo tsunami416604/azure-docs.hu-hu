@@ -3,19 +3,21 @@ title: Cloud Partner Portal API-hivatkozás – Microsoft kereskedelmi piactér
 description: A, a használatának előfeltételei és a piactér API-műveleteinek listája.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-ms.date: 04/08/2020
-ms.openlocfilehash: 56594b41bd0b771d0cb9a2f49611d9b6c6d393db
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.topic: reference
+author: dsindona
+ms.author: dsindona
+ms.date: 07/14/2020
+ms.openlocfilehash: 51c8b91ccf85087f965d632dee9296076aba0d86
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86113581"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011958"
 ---
 # <a name="cloud-partner-portal-api-reference"></a>Cloud Partner Portal API-referencia
 
 > [!NOTE]
-> A Cloud Partner Portal API-k integrálva vannak a partneri központtal, és továbbra is működni fognak, miután az ajánlatokat áttelepítik a partner központba. Az integráció kis változásokat vezet be. Tekintse át a jelen dokumentumban felsorolt [CPP API-k módosításait](#changes-to-cpp-apis-after-the-migration-to-partner-center) annak biztosítására, hogy a kód továbbra is működjön a partneri központba való Migrálás után.
+> A Cloud Partner Portal API-k integrálva vannak a-vel, és továbbra is működnek a partner Centerben. Az áttérés kis változásokat mutat be. Tekintse át a jelen dokumentumban felsorolt [CPP API-k módosításait](#changes-to-cpp-apis-after-the-migration-to-partner-center) , hogy a kód továbbra is működőképes legyen a partneri központba való áttérés után. A CPP API-kat csak olyan meglévő termékekhez szabad használni, amelyek már integrálva lettek a partneri központba való áttérés előtt. az új termékeknek a partner Center beküldési API-kat kell használniuk.
 
 A Cloud Partner Portal REST API-k lehetővé teszik a számítási feladatok, ajánlatok és kiadói profilok programozott lekérését és kezelését. Az API-k szerepköralapú hozzáférés-vezérlés (RBAC) használatával kényszerítik ki a megfelelő engedélyeket a feldolgozási idő során.
 
@@ -48,7 +50,7 @@ Ez a hivatkozás a következő gyakori feladatok végrehajtására szolgáló AP
 - [Ajánlat létrehozása](./cloud-partner-portal-api-creating-offer.md)
 - [Ajánlat közzététele](./cloud-partner-portal-api-publish-offer.md)
 
-### <a name="operations"></a>Műveletek
+### <a name="operations"></a>Üzemeltetés
 
 - [Műveletek lekérése](./cloud-partner-portal-api-retrieve-operations.md)
 - [Műveletek megszakítása](./cloud-partner-portal-api-cancel-operations.md)

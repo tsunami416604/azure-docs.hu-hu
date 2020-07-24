@@ -7,11 +7,12 @@ ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: a2569ca3f998030680bd7dbd872d71ccd372a25d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 73f2b3ea90cc94fa3411552c7b812fe53eb4dbbb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77672429"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87008098"
 ---
 # <a name="create-diagnostic-setting-in-azure-using-a-resource-manager-template"></a>Diagnosztikai beállítás létrehozása az Azure-ban Resource Manager-sablon használatával
 A Azure Monitor [diagnosztikai beállításai](diagnostic-settings.md) határozzák meg, hogy hová kell elküldeni az Azure-erőforrások által gyűjtött [platform-naplókat](platform-logs-overview.md) , valamint az Azure-platformtól függenek. Ez a cikk azokat a részleteket és példákat ismerteti, amelyekkel [Azure Resource Manager sablon](../../azure-resource-manager/templates/template-syntax.md) használatával hozhat létre és konfigurálhat diagnosztikai beállításokat a különböző célhelyekre gyűjtött platform-naplók összegyűjtéséhez.
@@ -29,7 +30,7 @@ További részletekért lásd: [erőforrások üzembe helyezése Resource Manage
 
 
 ## <a name="resource-logs"></a>Erőforrásnaplók
-Erőforrás-naplók esetén adjon hozzá egy típusú erőforrást `<resource namespace>/providers/diagnosticSettings` a sablonhoz. A Properties (Tulajdonságok) szakasz a [diagnosztikai beállítások – létrehozás vagy frissítés](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings/createorupdate)című részben ismertetett formátumot követi. Adja meg a (z) `category` `logs` szakaszt a gyűjteni kívánt erőforráshoz tartozó egyes kategóriákhoz. Adja hozzá a `metrics` tulajdonságot az erőforrás-metrikák ugyanarra a célhelyre való összegyűjtéséhez, ha az [erőforrás támogatja a metrikákat](metrics-supported.md).
+Erőforrás-naplók esetén adjon hozzá egy típusú erőforrást `<resource namespace>/providers/diagnosticSettings` a sablonhoz. A Properties (Tulajdonságok) szakasz a [diagnosztikai beállítások – létrehozás vagy frissítés](/rest/api/monitor/diagnosticsettings/createorupdate)című részben ismertetett formátumot követi. Adja meg a (z) `category` `logs` szakaszt a gyűjteni kívánt erőforráshoz tartozó egyes kategóriákhoz. Adja hozzá a `metrics` tulajdonságot az erőforrás-metrikák ugyanarra a célhelyre való összegyűjtéséhez, ha az [erőforrás támogatja a metrikákat](metrics-supported.md).
 
 A következő egy olyan sablon, amely egy adott erőforráshoz tartozó erőforrás-napló kategóriát gyűjt egy Log Analytics munkaterületre, a Storage-fiókra és az Event hub-ra.
 
@@ -143,7 +144,7 @@ Az alábbi példa egy olyan diagnosztikai beállítást hoz létre, amely lehet�
 ```
 
 ## <a name="activity-log"></a>Tevékenységnapló
-Az Azure-tevékenység naplójában adjon hozzá egy típusú erőforrást `Microsoft.Insights/diagnosticSettings` . A rendelkezésre álló kategóriák a [tevékenység naplójának kategóriák részében](activity-log-view.md#categories-in-the-activity-log)vannak felsorolva. A következő egy olyan sablon, amely az összes műveletnapló-kategóriát összegyűjti egy Log Analytics munkaterületre, egy Storage-fiókra és az Event hub-ra.
+Az Azure-tevékenység naplójában adjon hozzá egy típusú erőforrást `Microsoft.Insights/diagnosticSettings` . A rendelkezésre álló kategóriák a [tevékenység naplójának kategóriák részében](./activity-log.md#view-the-activity-log)vannak felsorolva. A következő egy olyan sablon, amely az összes műveletnapló-kategóriát összegyűjti egy Log Analytics munkaterületre, egy Storage-fiókra és az Event hub-ra.
 
 
 ```json

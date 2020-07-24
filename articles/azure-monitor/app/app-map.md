@@ -4,15 +4,16 @@ description: Összetett alkalmazás-topológiák figyelése az alkalmazás-hozz�
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 7c5c9173704535b1e34ffde5867bd512e3e02ed8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1f9f19ea9370b9da3e69d871e8b53ccf7f64a6a5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80989527"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87008506"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Alkalmazás-hozzárendelés: elosztott alkalmazások osztályozása
 
-Az alkalmazás-hozzárendeléssel a teljesítmény szűk keresztmetszetek vagy meghibásodási pontok fordulnak elő az elosztott alkalmazás összes összetevőjénél. A Térkép minden csomópontja egy alkalmazás-összetevőt vagy annak függőségeit jelöli. és az állapot KPI és a riasztások állapota. A bármely összetevőtől kezdve a részletesebb diagnosztika, például a Application Insights események elemre kattintva végezhető el. Ha az alkalmazás az Azure-szolgáltatásokat használja, akkor az Azure Diagnostics szolgáltatásra is kattinthat, például SQL Database Advisor javaslatokat.
+Az Alkalmazástérkép segítségével felderítheti a teljesítményt rontó szűk keresztmetszeteket és gyakran meghibásodó helyeket az elosztott alkalmazás összetevőinek mindegyikében. A Térkép minden csomópontja egy alkalmazás-összetevőt vagy annak függőségeit jelöli. és az állapot KPI és a riasztások állapota. A bármely összetevőtől kezdve a részletesebb diagnosztika, például a Application Insights események elemre kattintva végezhető el. Ha az alkalmazás az Azure-szolgáltatásokat használja, akkor az Azure Diagnostics szolgáltatásra is kattinthat, például SQL Database Advisor javaslatokat.
 
 ## <a name="what-is-a-component"></a>Mi az összetevő?
 
@@ -156,7 +157,7 @@ A webalkalmazások ASP.NET alternatív módszere az inicializáló létrehozása
 
 **Java-ügynök**
 
-A [Java-ügynök 3,0](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent) a Felhőbeli szerepkör neve a következőképpen van beállítva:
+A [Java-ügynök 3,0](./java-in-process-agent.md) a Felhőbeli szerepkör neve a következőképpen van beállítva:
 
 ```json
 {
@@ -258,15 +259,15 @@ Ha nem tudja, hogy az alkalmazás-hozzárendelés a várt módon működjön, pr
 
 1. Győződjön meg róla, hogy hivatalosan támogatott SDK-t használ. Előfordulhat, hogy a nem támogatott/közösségi SDK-k nem támogatják a korrelációt.
 
-    A támogatott SDK-k listáját ebben a [cikkben](https://docs.microsoft.com/azure/application-insights/app-insights-platforms) találja.
+    A támogatott SDK-k listáját ebben a [cikkben](./platforms.md) találja.
 
 2. Frissítse az összes összetevőt a legújabb SDK-verzióra.
 
-3. Ha a C# használatával Azure Functionst használ, frissítsen a [functions v2](https://docs.microsoft.com/azure/azure-functions/functions-versions)-re.
+3. Ha a C# használatával Azure Functionst használ, frissítsen a [functions v2](../../azure-functions/functions-versions.md)-re.
 
 4. Ellenőrizze, hogy a [Felhőbeli szerepkör neve](#set-cloud-role-name) helyesen van-e konfigurálva.
 
-5. Ha valamelyik függőség hiányzik, ellenőrizze, hogy az [automatikusan gyűjtött függőségek](https://docs.microsoft.com/azure/application-insights/auto-collect-dependencies) listájában szerepel-e. Ha nem, manuálisan úgy is nyomon követheti egy [függőségek nyomon követése hívással](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackdependency).
+5. Ha valamelyik függőség hiányzik, ellenőrizze, hogy az [automatikusan gyűjtött függőségek](./auto-collect-dependencies.md) listájában szerepel-e. Ha nem, manuálisan úgy is nyomon követheti egy [függőségek nyomon követése hívással](./api-custom-events-metrics.md#trackdependency).
 
 ### <a name="too-many-nodes-on-the-map"></a>Túl sok csomópont van a térképen
 
@@ -280,7 +281,7 @@ A probléma megoldásához módosítania kell a kialakítást, hogy megfelelően
 
 * A függőségi típusnak a függőség logikai típusát kell képviselnie. Például a HTTP, az SQL vagy az Azure Blob jellemző függőségi típusok. Nem tartalmazhat egyedi azonosítókat.
 
-* A Felhőbeli szerepkör nevét a [fenti szakasz](https://docs.microsoft.com/azure/azure-monitor/app/app-map#set-cloud-role-name)ismerteti.
+* A Felhőbeli szerepkör nevét a [fenti szakasz](#set-cloud-role-name)ismerteti.
 
 ## <a name="portal-feedback"></a>Portál visszajelzése
 

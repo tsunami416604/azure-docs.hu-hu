@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
-ms.openlocfilehash: 44368ab90abd189c6a8a0792494828c87142eb20
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a367e819ab9f12d9adcb448848c80eaeea73d113
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77672395"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87008030"
 ---
 # <a name="collect-data-from-azure-diagnostics-extension-to-azure-monitor-logs"></a>Adatok gyűjtése az Azure Diagnostics bővítményből Azure Monitor naplókba
 Az Azure Diagnostics bővítmény olyan [Azure monitor ügynöke](agents-overview.md) , amely az Azure-beli számítási erőforrások, például a virtuális gépek vendég operációs rendszerének figyelési adatait gyűjti. Ez a cikk azt ismerteti, hogyan gyűjtheti össze a diagnosztikai bővítmény által gyűjtött adatokat az Azure Storage-ból Azure Monitor naplókba.
@@ -62,6 +63,6 @@ Körülbelül 30 percen belül megtekintheti a Storage-fiók adatait a Log Analy
 
 ## <a name="next-steps"></a>További lépések
 
-* [Naplók és mérőszámok gyűjtése az Azure-szolgáltatásokhoz](collect-azure-metrics-logs.md) a támogatott Azure-szolgáltatásokhoz.
+* [Naplók és mérőszámok gyűjtése az Azure-szolgáltatásokhoz](./resource-logs.md#send-to-log-analytics-workspace) a támogatott Azure-szolgáltatásokhoz.
 * [Lehetővé teszi](../../azure-monitor/insights/solutions.md) , hogy a megoldások betekintést nyújtsanak az adataiba.
 * Az adatelemzéshez [használjon keresési lekérdezéseket](../../azure-monitor/log-query/log-query-overview.md) .

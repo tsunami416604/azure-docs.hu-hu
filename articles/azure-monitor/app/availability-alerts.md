@@ -6,12 +6,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 06/19/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 5af6aec2267384c37f664522d075bf26c632e7e9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 19a0e94206691dc741020374bf5c827ba423515d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81382887"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87008353"
 ---
 # <a name="availability-alerts"></a>Rendelkezésre állási riasztások
 
@@ -24,7 +24,7 @@ Alapértelmezés szerint automatikusan engedélyezve vannak a riasztások, de a 
 ![Élmény létrehozása](./media/availability-alerts/create-test.png)
 
 > [!NOTE]
->  Az [új egyesített riasztásokkal](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)a riasztási szabály súlyosságát és az értesítési beállításokat [műveleti csoportokkal](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups) **kell konfigurálni a** riasztások terén. A következő lépések nélkül csak a portálon belüli értesítéseket fogja kapni.
+>  Az [új egyesített riasztásokkal](../platform/alerts-overview.md)a riasztási szabály súlyosságát és az értesítési beállításokat [műveleti csoportokkal](../platform/action-groups.md) **kell konfigurálni a** riasztások terén. A következő lépések nélkül csak a portálon belüli értesítéseket fogja kapni.
 
 1. A rendelkezésre állási teszt mentése után a Részletek lapon kattintson a három pontra az imént létrehozott teszt alapján. Kattintson a "riasztás szerkesztése" elemre.
 
@@ -39,7 +39,7 @@ Alapértelmezés szerint automatikusan engedélyezve vannak a riasztások, de a 
 
 ### <a name="alert-on-x-out-of-y-locations-reporting-failures"></a>Riasztás X-ből az Y-ben nem jelentett hibák
 
-Az X/Y helyek riasztási szabálya alapértelmezés szerint engedélyezve van az [új, egyesített riasztások felületén](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts), amikor új rendelkezésre állási tesztet hoz létre. A "klasszikus" lehetőség kiválasztásával vagy a riasztási szabály letiltásával választhat.
+Az X/Y helyek riasztási szabálya alapértelmezés szerint engedélyezve van az [új, egyesített riasztások felületén](../platform/alerts-overview.md), amikor új rendelkezésre állási tesztet hoz létre. A "klasszikus" lehetőség kiválasztásával vagy a riasztási szabály letiltásával választhat.
 
 > [!NOTE]
 > Konfigurálja úgy a műveleti csoportokat, hogy értesítéseket kapjanak, amikor a riasztást a fenti lépések követésével indítja el. Ennek a lépésnek a megkezdése nélkül csak a portálon belüli értesítéseket fogja kapni a szabály indításakor.
@@ -47,7 +47,7 @@ Az X/Y helyek riasztási szabálya alapértelmezés szerint engedélyezve van az
 
 ### <a name="alert-on-availability-metrics"></a>Riasztás a rendelkezésre állási metrikákkal kapcsolatban
 
-Az [új egyesített riasztások](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)használatával riasztást kaphat a szegmentált összesített rendelkezésre állási és tesztelési időtartam mérőszámokról is:
+Az [új egyesített riasztások](../platform/alerts-overview.md)használatával riasztást kaphat a szegmentált összesített rendelkezésre állási és tesztelési időtartam mérőszámokról is:
 
 1. Válasszon ki egy Application Insights erőforrást a mérőszámok felületén, és válasszon ki egy rendelkezésre állási mérőszámot:
 
@@ -57,7 +57,7 @@ Az [új egyesített riasztások](https://docs.microsoft.com/azure/monitoring-and
 
 ### <a name="alert-on-custom-analytics-queries"></a>Riasztás egyéni elemzési lekérdezéseken
 
-Az [új egyesített riasztások](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)használatával riasztást készíthet az [egyéni naplók lekérdezéséről](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-log). Az egyéni lekérdezésekkel bármilyen tetszőleges feltételt megadhat, amely segít a legmegbízhatóbb rendelkezésre állási problémák megszerzésében. Ez akkor is alkalmazható, ha egyéni rendelkezésre állási eredményeket küld a TrackAvailability SDK használatával.
+Az [új egyesített riasztások](../platform/alerts-overview.md)használatával riasztást készíthet az [egyéni naplók lekérdezéséről](../platform/alerts-unified-log.md). Az egyéni lekérdezésekkel bármilyen tetszőleges feltételt megadhat, amely segít a legmegbízhatóbb rendelkezésre állási problémák megszerzésében. Ez akkor is alkalmazható, ha egyéni rendelkezésre állási eredményeket küld a TrackAvailability SDK használatával.
 
 > [!Tip]
 > A rendelkezésre állási adatok metrikái tartalmazzák az egyéni rendelkezésre állási eredményeket, amelyeket az TrackAvailability SDK meghívásával lehet elküldeni. A metrikai riasztások támogatásával riasztást kaphat az egyéni rendelkezésre állási eredményekről.

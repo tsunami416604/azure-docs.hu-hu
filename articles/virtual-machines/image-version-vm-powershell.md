@@ -9,18 +9,18 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: caa8e928a10deb3d6d97e601c607074c09e0572e
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 681bd0aff909552531d682186d5b22dce5ef33f9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223516"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87010767"
 ---
 # <a name="preview-create-an-image-from-a-vm"></a>Előzetes verzió: rendszerkép létrehozása virtuális gépről
 
 Ha rendelkezik egy meglévő virtuális géppel, amelyet több, azonos virtuális gép létrehozásához kíván használni, akkor a virtuális gép használatával létrehozhat egy rendszerképet egy megosztott rendszerkép-katalógusban Azure PowerShell segítségével. Az [Azure CLI](image-version-vm-cli.md)használatával is létrehozhat egy rendszerképet egy virtuális gépről.
 
-A rendszerképeket a Azure PowerShell használatával is rögzítheti a [speciális és az általánosított](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#generalized-and-specialized-images) virtuális gépekről. 
+A rendszerképeket a Azure PowerShell használatával is rögzítheti a [speciális és az általánosított](./windows/shared-image-galleries.md#generalized-and-specialized-images) virtuális gépekről. 
 
 A képkatalógusban található lemezképek két összetevővel rendelkeznek, amelyeket a következő példában hozunk létre:
 - A **rendszerkép definíciója** információt nyújt a rendszerképekről és az azok használatára vonatkozó követelményekről. Ez magában foglalja azt is, hogy a rendszerkép Windows vagy Linux, specializált vagy általánosított, kibocsátási megjegyzések, valamint minimális és maximális memória-követelmény. Ez egy adott típusú rendszerkép definíciója. 
@@ -54,7 +54,7 @@ $gallery = Get-AzGallery `
 
 ## <a name="get-the-vm"></a>A virtuális gép beszerzése
 
-A [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm)használatával megtekintheti az erőforráscsoporthoz elérhető virtuális gépek listáját. Miután megismerte a virtuális gép nevét és a hozzá tartozó erőforráscsoportot, újra használhatja a virtuálisgép- `Get-AzVM` objektum beolvasását és egy változóban történő tárolását. Ez a példa egy *sourceVM* nevű virtuális gépet kap a "myResourceGroup" erőforráscsoporthoz, és hozzárendeli azt a (z) *$sourceVm*változóhoz. 
+A [Get-AzVM](/powershell/module/az.compute/get-azvm)használatával megtekintheti az erőforráscsoporthoz elérhető virtuális gépek listáját. Miután megismerte a virtuális gép nevét és a hozzá tartozó erőforráscsoportot, újra használhatja a virtuálisgép- `Get-AzVM` objektum beolvasását és egy változóban történő tárolását. Ez a példa egy *sourceVM* nevű virtuális gépet kap a "myResourceGroup" erőforráscsoporthoz, és hozzárendeli azt a (z) *$sourceVm*változóhoz. 
 
 ```azurepowershell-interactive
 $sourceVm = Get-AzVM `
@@ -62,7 +62,7 @@ $sourceVm = Get-AzVM `
    -ResourceGroupName myResourceGroup
 ```
 
-Ajánlott eljárás a virtuális gép stop\deallocate, mielőtt a [stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm)használatával létrehoz egy rendszerképet.
+Ajánlott eljárás a virtuális gép stop\deallocate, mielőtt a [stop-AzVM](/powershell/module/az.compute/stop-azvm)használatával létrehoz egy rendszerképet.
 
 ```azurepowershell-interactive
 Stop-AzVM `
@@ -77,9 +77,9 @@ A rendszerkép-definíciók logikai csoportosítást hoznak létre a képekhez. 
 
 A rendszerkép meghatározásakor győződjön meg arról, hogy a megfelelő információval rendelkezik. Ha általánosítja a virtuális gépet (a Windows Sysprep használatával vagy a Linux waagent), akkor létre kell hoznia egy rendszerkép-definíciót a használatával `-OsState generalized` . Ha nem általánosítta a virtuális gépet, hozzon létre egy rendszerkép-definíciót a használatával `-OsState specialized` .
 
-További információ a képdefiníciók által megadható értékekről: [képdefiníciók](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#image-definitions).
+További információ a képdefiníciók által megadható értékekről: [képdefiníciók](./windows/shared-image-galleries.md#image-definitions).
 
-Hozza létre a rendszerkép definícióját a [New-AzGalleryImageDefinition](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion)használatával. 
+Hozza létre a rendszerkép definícióját a [New-AzGalleryImageDefinition](/powershell/module/az.compute/new-azgalleryimageversion)használatával. 
 
 Ebben a példában a képdefiníció neve *myImageDefinition*, és egy speciális, Windows rendszerű virtuális géphez van. A Linux rendszerű képek definíciójának létrehozásához használja a következőt: `-OsType Linux` . 
 
@@ -99,7 +99,7 @@ $imageDefinition = New-AzGalleryImageDefinition `
 
 ## <a name="create-an-image-version"></a>Rendszerképverzió létrehozása
 
-Hozzon létre egy rendszerkép [-verziót a New-AzGalleryImageVersion](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion)használatával. 
+Hozzon létre egy rendszerkép [-verziót a New-AzGalleryImageVersion](/powershell/module/az.compute/new-azgalleryimageversion)használatával. 
 
 A képverzió megengedett karaktereinek száma számok és időszakok. A számoknak egy 32 bites egész számon belüli tartományba kell esniük. Formátum: *MajorVersion*. *MinorVersion*. *Javítás*.
 
@@ -133,7 +133,7 @@ $job.State
 > [!NOTE]
 > Meg kell várnia, amíg a rendszerkép verziója teljesen elkészült és replikálva lett ahhoz, hogy ugyanazt a felügyelt képet használhassa egy másik rendszerkép-verzió létrehozásához.
 >
-> A rendszerképet a prémium tárolóban is tárolhatja egy hozzáadási `-StorageAccountType Premium_LRS` vagy a [zóna redundáns tárterületével](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) , `-StorageAccountType Standard_ZRS` Ha létrehozza a rendszerkép verzióját.
+> A rendszerképet a prémium tárolóban is tárolhatja egy hozzáadási `-StorageAccountType Premium_LRS` vagy a [zóna redundáns tárterületével](../storage/common/storage-redundancy.md) , `-StorageAccountType Standard_ZRS` Ha létrehozza a rendszerkép verzióját.
 >
 
 ## <a name="next-steps"></a>További lépések

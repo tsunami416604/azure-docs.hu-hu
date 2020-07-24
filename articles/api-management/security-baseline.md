@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: b5640a42c0fdcb0bd958011db28c19854b16a547
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 4e951b7eb2d3d5e49ab80af2604d5b44565dd25e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86252759"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87008540"
 ---
 # <a name="azure-security-baseline-for-api-management"></a>API Management Azure biztonsági alapterve
 
@@ -640,7 +640,7 @@ A Microsoft által felügyelt mögöttes platform esetében a Microsoft az össz
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: az erőforrásokhoz való hozzáférés szabályozása az Azure RBAC
 
-**Útmutató**: szerepköralapú hozzáférés-vezérlés használata az Azure API Managementhoz való hozzáférés szabályozásához. Az Azure API Management az Azure szerepköralapú Access Control (RBAC) szolgáltatásra támaszkodik, amely lehetővé teszi az API Management-szolgáltatások és-entitások (például API-k és házirendek) részletes hozzáférés-kezelését.
+**Útmutató**: szerepköralapú hozzáférés-vezérlés használata az Azure API Managementhoz való hozzáférés szabályozásához. Az Azure API Management az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) segítségével lehetővé teszi a részletes hozzáférés-kezelést a API Management-szolgáltatásokhoz és-entitásokhoz (például API-k és házirendek).
 
 * [Szerepköralapú hozzáférés-vezérlés használata az Azure API Managementben](./api-management-role-based-access-control.md)
 
@@ -1120,7 +1120,7 @@ A kulcsok véletlen vagy rosszindulatú törléssel szembeni védelemének enged
 
 **Felelősség**: ügyfél
 
-## <a name="incident-response"></a>Incidenskezelés
+## <a name="incident-response"></a>Incidensmegoldás
 
 *További információ [: Security Control: incidens válasza](../security/benchmarks/security-control-incident-response.md).*
 
@@ -1208,7 +1208,7 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 **Felelősség**: megosztott
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Lásd az [Azure biztonsági teljesítménytesztét](../security/benchmarks/overview.md)
 - További információ az [Azure biztonsági alaptervekről](../security/benchmarks/security-baselines-overview.md)

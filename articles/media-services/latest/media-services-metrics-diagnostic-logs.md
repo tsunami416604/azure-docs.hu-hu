@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2019
 ms.author: juliako
-ms.openlocfilehash: f051d02ac06163cf1861ab6bfc6afd0dcbb0ad8a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7058160819c9b6ccc3f63511f86e930fcbfc413b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82559525"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011651"
 ---
 # <a name="monitor-media-services-metrics-and-diagnostic-logs-via-azure-monitor"></a>Media Services metrikák és diagnosztikai naplók figyelése Azure Monitor használatával
 
@@ -42,7 +42,7 @@ Media Services támogatja a következő erőforrások figyelési metrikáit:
 
 A következő fiók metrikáit figyelheti.
 
-|Metrika neve|Megjelenített név|Leírás|
+|Metrika neve|Megjelenített név|Description|
 |---|---|---|
 |AssetCount|Eszközök száma|A fiókban lévő eszközök.|
 |AssetQuota|Eszköz kvótája|A fiókban lévő eszköz kvótája.|
@@ -58,9 +58,9 @@ Tekintse át [a fiók kvótáit és korlátozásait](limits-quotas-constraints.m
 
 ### <a name="streaming-endpoint"></a>Streamvégpont
 
-A következő Media Services [folyamatos átviteli végpontok](https://docs.microsoft.com/rest/api/media/streamingendpoints) metrikáit támogatja:
+A következő Media Services [folyamatos átviteli végpontok](/rest/api/media/streamingendpoints) metrikáit támogatja:
 
-|Metrika neve|Megjelenített név|Leírás|
+|Metrika neve|Megjelenített név|Description|
 |---|---|---|
 |Kérelmek|Kérelmek|A folyamatos átviteli végpont által kiszolgált HTTP-kérelmek teljes számát adja meg.|
 |Kimenő forgalom|Kimenő forgalom|Kimenő átviteli végpontok percenkénti bájtjainak száma.|
@@ -92,7 +92,7 @@ A Media Services a következő diagnosztikai naplókat támogatja:
 
 ### <a name="key-delivery"></a>Kulcs kézbesítése
 
-|Name|Leírás|
+|Név|Leírás|
 |---|---|
 |Kulcs kézbesítési szolgáltatásának kérése|A kulcs kézbesítési szolgáltatására vonatkozó adatokat megjelenítő naplók. További információ: [sémák](media-services-diagnostic-logs-schema.md).|
 

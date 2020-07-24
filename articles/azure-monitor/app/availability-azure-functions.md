@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/04/2020
-ms.openlocfilehash: 81040adf6cfbb8820ec7f306c7d614830e3a2613
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1808623821d71169ec35beab1d33d4eb2c32c189
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82791109"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87008404"
 ---
 # <a name="create-and-run-custom-availability-tests-using-azure-functions"></a>Egyéni rendelkezésre állási tesztek létrehozása és futtatása Azure Functions használatával
 
@@ -23,7 +23,7 @@ Ez a cikk bemutatja, hogyan hozhat létre egy Azure-függvényt a TrackAvailabil
 
 - Ha Application Insights erőforrással rendelkezik:
     - Alapértelmezés szerint a Azure Functions egy Application Insights-erőforrást hoz létre, de ha a már létrehozott erőforrások valamelyikét szeretné használni, akkor a létrehozás során meg kell adnia.
-    - Kövesse az [Azure functions erőforrás és időzítő által aktivált függvény létrehozásához](https://docs.microsoft.com/azure/azure-functions/functions-create-scheduled-function) szükséges lépéseket (leállítás a tisztítás előtt) a következő lehetőségekkel.
+    - Kövesse az [Azure functions erőforrás és időzítő által aktivált függvény létrehozásához](../../azure-functions/functions-create-scheduled-function.md) szükséges lépéseket (leállítás a tisztítás előtt) a következő lehetőségekkel.
         -  Kattintson a felül található **figyelés** fülre.
 
             ![ Hozzon létre egy Azure Functions alkalmazást a saját alkalmazás-keresési erőforrással](media/availability-azure-functions/create-function-app.png)
@@ -35,7 +35,7 @@ Ez a cikk bemutatja, hogyan hozhat létre egy Azure-függvényt a TrackAvailabil
         - Válassza a **felülvizsgálat + létrehozás** lehetőséget
 - Ha még nem rendelkezik olyan Application Insights erőforrással, amelyet az időzítő által aktivált függvényhez még nem hozott létre:
     - Alapértelmezés szerint a Azure Functions-alkalmazás létrehozásakor létrejön egy Application Insights erőforrás.
-    - Kövesse az [Azure functions erőforrás és időzítő által aktivált függvény létrehozásával](https://docs.microsoft.com/azure/azure-functions/functions-create-scheduled-function) kapcsolatos utasításokat (leállítás a tisztítás előtt).
+    - Kövesse az [Azure functions erőforrás és időzítő által aktivált függvény létrehozásával](../../azure-functions/functions-create-scheduled-function.md) kapcsolatos utasításokat (leállítás a tisztítás előtt).
 
 ## <a name="sample-code"></a>Mintakód
 
@@ -45,7 +45,7 @@ Másolja az alábbi kódot a Run. CSX fájlba (Ezzel felülírja a már meglév�
 >![Az Azure-függvény Run. CSX Azure Portal](media/availability-azure-functions/runcsx.png)
 
 > [!NOTE]
-> A használni kívánt végpont címe: `EndpointAddress= https://dc.services.visualstudio.com/v2/track` . Kivéve, ha az erőforrás olyan régióban található, mint Azure Government vagy az Azure China, ahol ebben az esetben az [alapértelmezett végpontok felülbírálásával](https://docs.microsoft.com/azure/azure-monitor/app/custom-endpoints#regions-that-require-endpoint-modification) és a régió megfelelő telemetria-csatornájának végpontjának megadásával foglalkozó cikkben tájékozódhat.
+> A használni kívánt végpont címe: `EndpointAddress= https://dc.services.visualstudio.com/v2/track` . Kivéve, ha az erőforrás olyan régióban található, mint Azure Government vagy az Azure China, ahol ebben az esetben az [alapértelmezett végpontok felülbírálásával](./custom-endpoints.md#regions-that-require-endpoint-modification) és a régió megfelelő telemetria-csatornájának végpontjának megadásával foglalkozó cikkben tájékozódhat.
 
 ```C#
 #load "runAvailabilityTest.csx"

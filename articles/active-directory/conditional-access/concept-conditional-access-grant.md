@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d1d30a32a58dd2385a214d813307c645c56afdc8
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 85beb04e39c5c47b9ee71ee96c2dff8910766ea3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86024452"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87009051"
 ---
 # <a name="conditional-access-grant"></a>Feltételes hozzáférés: Engedélyezés
 
@@ -81,7 +81,6 @@ Ez a beállítás a következő iOS-és Android-alkalmazásokra vonatkozik:
 - Microsoft Edge
 - Microsoft Excel
 - Microsoft Flow
-- Microsoft Intune Managed Browser
 - Microsoft-számlázás
 - Microsoft Kaizala
 - Microsoft Launcher
@@ -123,9 +122,22 @@ Ennek a támogatásnak a kihasználása érdekében a feltételes hozzáférés 
 Ez a beállítás a következő ügyfélalkalmazások esetében érvényes:
 
 - Microsoft-Cortana
+- Microsoft Edge
+- Microsoft Excel
+- Microsoft Office
 - Microsoft OneDrive
+- Microsoft OneNote
 - Microsoft Outlook
 - Microsoft Planner
+- Microsoft Power BI
+- Microsoft PowerPoint
+- Microsoft SharePoint
+- Microsoft Word
+- Többsoros az Intune-hoz
+- Kilenc e-mail-E-mail & naptár
+
+> [!NOTE]
+> A Microsoft Kaizala, a Microsoft Skype vállalati verzió és a Microsoft Visio nem támogatja az **alkalmazás-védelmi házirend megkövetelését** . Ha az alkalmazások működéséhez szükség van, használja a kizárólag **jóváhagyott alkalmazások** engedélyezése lehetőséget. A két támogatás között a vagy záradék használata nem fog működni ehhez a három alkalmazáshoz.
 
 **Megjegyzések**
 

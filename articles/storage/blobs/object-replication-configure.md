@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 06/16/2020
+ms.date: 07/16/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 9cb9f1a33c37487f4bfb1419d45d4e42a862d815
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ddf9a1309cb4f9156cec3aeb5d2ddd9d22cde485
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84888119"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011448"
 ---
 # <a name="configure-object-replication-for-block-blobs-preview"></a>Objektumok replikálásának konfigurálása a blokk Blobok számára (előzetes verzió)
 
@@ -36,7 +36,7 @@ Mielőtt elkezdené, győződjön meg arról, hogy regisztrált a következő sz
 - [BLOB verziószámozása (előzetes verzió)](versioning-overview.md)
 - [A hírcsatorna-támogatás módosítása az Azure Blob Storage (előzetes verzió)](storage-blob-change-feed.md)
 
-# <a name="azure-portal"></a>[Azure Portalra](#tab/portal)
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
 Mielőtt az objektum-replikálást konfigurálja a Azure Portalban, hozza létre a forrás-és a cél tárolókat a megfelelő Storage-fiókjaiban, ha még nem léteznek. Emellett engedélyezte a blob verziószámozását, és megváltoztathatja a forrás fiókon a hírcsatornát, és engedélyezheti a blob verziószámozását a célhelyen.
 
@@ -52,7 +52,7 @@ Ha a Azure Portal replikációs szabályzatot szeretne létrehozni, kövesse az 
 
     :::image type="content" source="media/object-replication-configure/configure-replication-policy.png" alt-text="A Azure Portal replikációs szabályait ábrázoló képernyőkép":::
 
-1. Ha kívánja, egy vagy több szűrőt is megtalálhat, hogy csak az előtag mintájának megfelelő blobokat másolja. Ha például egy előtagot ad meg `b` , csak azok a Blobok replikálódnak, amelyek neve ezzel a betűvel kezdődik. A virtuális könyvtárat az előtag részeként is megadhatja.
+1. Ha kívánja, egy vagy több szűrőt is megtalálhat, hogy csak az előtag mintájának megfelelő blobokat másolja. Ha például egy előtagot ad meg `b` , csak azok a Blobok replikálódnak, amelyek neve ezzel a betűvel kezdődik. A virtuális könyvtárat az előtag részeként is megadhatja. Az előtag-karakterlánc nem támogatja a helyettesítő karaktereket.
 
     Az alábbi képen olyan szűrők láthatók, amelyek korlátozzák, hogy mely Blobok legyenek átmásolva egy replikációs szabály részeként.
 
@@ -68,7 +68,7 @@ Ha a Azure Portal replikációs szabályzatot szeretne létrehozni, kövesse az 
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-A PowerShell használatával történő replikációs házirend létrehozásához először telepítse a [2.0.1-](https://www.powershellgallery.com/packages/Az.Storage/2.0.1-preview) es verziójának az az. Storage PowerShell-modul előzetes verzióját. Az előzetes verziójú modul telepítéséhez kövesse az alábbi lépéseket:
+A PowerShell használatával létrehozott replikációs házirend létrehozásához először telepítse az az. Storage PowerShell [-modul 2.0.1 – Preview](https://www.powershellgallery.com/packages/Az.Storage/2.0.1-preview) vagy újabb verzióját. Az előzetes verziójú modul telepítéséhez kövesse az alábbi lépéseket:
 
 1. Távolítsa el a Azure PowerShell korábbi telepítését a Windows rendszerből a **Beállítások**területen található **alkalmazások & szolgáltatások** beállítással.
 
@@ -234,7 +234,7 @@ az storage account or-policy show --resource-group <resource-group> \
 
 A replikációs házirend és a hozzá tartozó szabályok eltávolításához használja a Azure Portal, a PowerShell vagy a parancssori felületet.
 
-# <a name="azure-portal"></a>[Azure Portalra](#tab/portal)
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
 Ha el szeretné távolítani egy replikációs házirendet a Azure Portalban, kövesse az alábbi lépéseket:
 

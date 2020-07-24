@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: virtual-machines
 author: roygara
 ms.service: virtual-machines
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/11/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: e5148ff9e92a2e550a3117356a4e77cbac8fc6f4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: da5811abec889bcc47d08878a0950df7f0983663
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67673366"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87010825"
 ---
 *A gyorsítótár bemelegítése*  
 A írásvédett gazdagép gyorsítótárazásával rendelkező lemez magasabb IOPS tud adni, mint a lemez korlátja. A maximális olvasási teljesítmény eléréséhez a gazdagép-gyorsítótárból először be kell melegíteni a lemez gyorsítótárát. Ezzel biztosíthatja, hogy a teljesítményértékelési eszköz által a CacheReads-köteten lévő olvasási IOs legyen, valójában a gyorsítótárba kerül, nem pedig közvetlenül a lemezre. A gyorsítótárbeli találatok további IOPS eredményeznek az egyetlen gyorsítótárral kompatibilis lemezről.
@@ -153,7 +153,7 @@ sudo fio --runtime 30 fiowrite.ini
 ```
 
 A teszt futtatása közben megtekintheti a virtuális gép és a prémium szintű lemezek írási IOPS számát. Ahogy az alábbi példában is látható, a DS14 virtuális gép a maximális írási IOPS korlátját adja meg 50 000 IOPS.  
-    ![Az írási IOPS virtuális gép és a prémium szintű lemezek száma](../articles/virtual-machines/linux/media/premium-storage-performance/image11.png)
+    ![Az írási IOPS virtuális gép és a prémium szintű lemezek száma.](../articles/virtual-machines/linux/media/premium-storage-performance/image11.png)
 
 #### <a name="maximum-read-iops"></a>Olvasási IOPS maximális száma
 
@@ -194,7 +194,7 @@ sudo fio --runtime 30 fioread.ini
 ```
 
 A teszt futtatása közben megtekintheti a virtuális gép és a prémium szintű lemezek olvasási IOPS számát. Ahogy az alábbi példában is látható, a DS14 virtuális gép több mint 64 000 olvasási IOPS. Ez a lemez és a gyorsítótár teljesítményének kombinációja.  
-    ![](../articles/virtual-machines/linux/media/premium-storage-performance/image12.png)
+    ![Képernyőkép az írási IOPS virtuális gép és a prémium szintű lemezek számáról.](../articles/virtual-machines/linux/media/premium-storage-performance/image12.png)
 
 #### <a name="maximum-read-and-write-iops"></a>Olvasási és írási IOPS maximális száma
 

@@ -3,11 +3,12 @@ title: Élő videó-elemzés IoT Edge GYIK-ban – Azure
 description: Ez a témakör válaszokat ad az élő videók elemzésére IoT Edge GYIK-ben.
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 0a6c1c0f26116227454fa0968264644ea7a43178
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 705c74b1ba6d3a28911185b82a558099e87dc18d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84261323"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011515"
 ---
 # <a name="frequently-asked-questions-faqs"></a>Gyakori kérdések (GYIK)
 
@@ -17,16 +18,16 @@ Ez a témakör válaszokat ad az élő videók elemzésére IoT Edge GYIK-ben.
 
 Mik azok a rendszerváltozók, amelyek használhatók a Graph topológia definíciójában?
 
-|Változó   |Description|
+|Változó   |Leírás|
 |---|---|
-|[System. DateTime](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/linq/system-datetime-methods)|Egy azonnali időpontot jelöl, amely általában dátum és napszak szerint van megadva.|
+|[System. DateTime](/dotnet/framework/data/adonet/sql/linq/system-datetime-methods)|Egy azonnali időpontot jelöl, amely általában dátum és napszak szerint van megadva.|
 |System. GraphTopologyName   |Egy Graph-topológiát jelöl, amely egy gráf tervrajzát tartalmazza.|
 |System. GraphInstanceName|  Egy Media Graph-példányt jelöl, a paraméter értékeit tartalmazza, és a topológiára hivatkozik.|
 
 ## <a name="configuration-and-deployment"></a>Konfigurálás és üzembe helyezés
 
 Telepíthetem a Media Edge-modult egy Windows 10-es eszközre?
-    * Igen. Tekintse meg a [Linux-tárolók a Windows 10 rendszerben](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/linux-containers)című cikket.
+    * Igen. Tekintse meg a [Linux-tárolók a Windows 10 rendszerben](/virtualization/windowscontainers/deploy-containers/linux-containers)című cikket.
 
 ## <a name="capture-from-ip-camera-and-rtsp-settings"></a>Rögzítés az IP-kamera és az RTSP-beállítások alapján
 

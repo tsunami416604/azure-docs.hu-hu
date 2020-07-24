@@ -7,12 +7,12 @@ ms.subservice: diagnostic-extension
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: bwren
-ms.openlocfilehash: 10d4c2d6650502510bd160cc452ac2289130263b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a3e9a14edf9235baff2955c9f8419dc78e45755c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85549497"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87007979"
 ---
 # <a name="install-and-configure-windows-azure-diagnostics-extension-wad"></a>A Windows Azure Diagnostics bővítmény (WAD) telepítése és konfigurálása
 Az [Azure Diagnostics bővítmény](diagnostics-extension-overview.md) olyan Azure monitor ügynöke, amely a vendég operációs rendszerből és az Azure-beli virtuális gépek és egyéb számítási erőforrások munkaterhelésével kapcsolatos figyelési adatokat gyűjt. Ez a cikk részletesen ismerteti a Windows diagnosztikai bővítmény telepítését és konfigurálását, valamint az adatok tárolásának és az Azure Storage-fiókban tárolt információk leírásának ismertetését.
@@ -54,7 +54,7 @@ A diagnosztikai bővítményt telepítheti és konfigurálhatja egy különáll�
 
 7. Az **Összeomlási memóriaképek** lapon adja meg azokat a folyamatokat, amelyekkel egy összeomlás után gyűjtheti a memóriaképeket. A rendszer a diagnosztikai beállításhoz a Storage-fiókba írja az adatbevitelt, és megadhat egy BLOB-tárolót is.
 
-   ![összeomlási memóriaképek,](media/diagnostics-extension-windows-install/crash-dumps.png)
+   ![Összeomlási memóriaképek](media/diagnostics-extension-windows-install/crash-dumps.png)
 
 8. A **mosogatók** lapon megadhatja, hogy az Azure Storage-tól eltérő helyen kívánja-e elküldeni az adatküldést. Ha **Azure monitor**választja, a vendég teljesítményadatokat a rendszer a Azure monitor metrikák számára küldi el. Az Event hub-fogadó nem konfigurálható a Azure Portal használatával.
 
@@ -77,7 +77,7 @@ A diagnosztikai bővítményt telepítheti és konfigurálhatja egy különáll�
 Lásd: [figyelés és diagnosztika használata Windows rendszerű virtuális gépekkel és Azure Resource Manager sablonok](../../virtual-machines/extensions/diagnostics-template.md) a diagnosztikai bővítmény üzembe helyezéséhez Azure Resource Manager-sablonokkal. 
 
 ## <a name="azure-cli-deployment"></a>Azure CLI üzembe helyezése
-Az Azure CLI használatával a Azure Diagnostics-bővítményt telepítheti egy meglévő virtuális gépre az az [VM Extension set](https://docs.microsoft.com/cli/azure/vm/extension?view=azure-cli-latest#az-vm-extension-set) paranccsal az alábbi példában látható módon. 
+Az Azure CLI használatával a Azure Diagnostics-bővítményt telepítheti egy meglévő virtuális gépre az az [VM Extension set](/cli/azure/vm/extension?view=azure-cli-latest#az-vm-extension-set) paranccsal az alábbi példában látható módon. 
 
 ```azurecli
 az vm extension set \
@@ -133,7 +133,7 @@ A nyilvános beállítások a konfigurációs séma [nyilvános elemében](diagn
 
 
 ## <a name="powershell-deployment"></a>PowerShell-telepítés
-A PowerShell segítségével az alábbi példában látható módon telepítheti az Azure Diagnostics-bővítményt egy meglévő virtuális gépre a [set-AzVMDiagnosticsExtension](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azurevmdiagnosticsextension) használatával. 
+A PowerShell segítségével az alábbi példában látható módon telepítheti az Azure Diagnostics-bővítményt egy meglévő virtuális gépre a [set-AzVMDiagnosticsExtension](/powershell/module/servicemanagement/azure.service/set-azurevmdiagnosticsextension) használatával. 
 
 ```powershell
 Set-AzVMDiagnosticsExtension -ResourceGroupName "myvmresourcegroup" `

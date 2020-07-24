@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 10/23/2019
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 54515b347a95b9315ca9ba87568fb2104c3b2b45
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eb7d4d8a6f1c1ee55601cdd839e330147e60bcc7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84737002"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011073"
 ---
 # <a name="orchestration-modes-preview"></a>Előkészítési módok (előzetes verzió)
 
@@ -42,9 +42,9 @@ A virtuálisgép-méretezési csoportok két különböző előkészítési mód
 
 ## <a name="orchestration-modes"></a>Vezénylési módok
 
-|                             | "orchestrationMode": "VM" (VirtualMachine) | "orchestrationMode": "ScaleSetVM" (VirtualMachineScaleSetVM) |
+| Funkció                     | "orchestrationMode": "VM" (VirtualMachine) | "orchestrationMode": "ScaleSetVM" (VirtualMachineScaleSetVM) |
 |-----------------------------|--------------------------------------------|--------------------------------------------------------------|
-| Virtuális gép konfigurációs modellje      | None                                       | Kötelező |
+| Virtuális gép konfigurációs modellje      | Nincs                                       | Kötelező |
 | Új virtuális gép felvétele a méretezési csoportba  | A virtuális gép létrehozásakor a rendszer explicit módon hozzáadja a virtuális gépeket a méretezési csoporthoz. | A virtuális gépek implicit módon jönnek létre és a méretezési csoportba kerülnek a virtuálisgép-konfigurációs modell, a példányszám és az automatikus skálázási szabályok alapján. | |
 | Virtuális gép törlése                   | A virtuális gépeket külön kell törölni, a méretezési csoport nem lesz törölve, ha rendelkezik virtuális gépekkel. | A virtuális gépek egyenként törölhetők, a méretezési csoport törlése pedig törli az összes virtuálisgép-példányt.  |
 | Virtuális gépek csatlakoztatása/leválasztása           | Nem támogatott                              | Nem támogatott |
@@ -64,4 +64,4 @@ A virtuálisgép-méretezési csoportok két különböző előkészítési mód
 
 ## <a name="next-steps"></a>További lépések
 
-További információkért tekintse meg a [rendelkezésre állási lehetőségek áttekintését](availability.md).
+További információkért tekintse meg a [rendelkezésre állási lehetőségek áttekintését](../virtual-machines/availability.md?toc=%2fazure%2fvirtual-machine-scale-sets%2ftoc.json).

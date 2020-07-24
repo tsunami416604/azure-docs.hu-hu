@@ -3,12 +3,12 @@ title: Élő videó-elemzések a IoT EDG-terminológiában – Azure
 description: Ez a cikk áttekintést nyújt az élő videók elemzéséről IoT Edge terminológiában.
 ms.topic: conceptual
 ms.date: 05/30/2020
-ms.openlocfilehash: 58f3d7b54fd0bd19e6bc0a057ef053bb2c74cd97
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5d4eff506b2a6f51b9803f827379b9ba0c2b2ff6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84816519"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011498"
 ---
 # <a name="terminology"></a>Terminológia
 
@@ -26,7 +26,7 @@ A IoT Edge élő videó-elemzések létrehozhatnak eszközöket és/vagy hozzáa
 
 ## <a name="streaming"></a>Streamelés
 
-Ha olyan szolgáltatásokból nézte meg a videót, mint a Netflix, a YouTube és más szolgáltatások, akkor tapasztalt videóval is rendelkezik. A lejátszás a "Play" (ha elegendő sávszélességgel rendelkezik) után azonnal megkezdődik, és a videó idővonalán vissza is kérheti. A streaming esetében az a gondolat, hogy csak az éppen figyelt videó részét adja meg, és lehetővé teszi, hogy a megjelenítő elkezdje lejátszani a videót, miközben az adatok átvitele egy kiszolgálóról a lejátszási ügyfélre történik. A Azure Media Services kontextusában a [streaming](https://en.wikipedia.org/wiki/Streaming_media) arra a folyamatra utal, amely az adathordozók [Azure Media Servicesról](https://docs.microsoft.com/azure/media-services/azure-media-player/azure-media-player-overview) egy streaming-ügyfélre való továbbítását jelenti (például Azure Media Player). A Azure Media Services segítségével az iparági szabványnak megfelelő HTTP-alapú médiaadatfolyam-továbbítási protokollok [(például http Live Streaming (HLS)](https://developer.apple.com/streaming/) és [MPEG-Dash](https://dashif.org/about/)) használatával továbbíthatja a videókat az ügyfeleknek. A HLS-t a Azure Media Player, valamint a webkiszolgálók, például a [JW Player](https://www.jwplayer.com/), a [hls.js](https://github.com/video-dev/hls.js/), a [VideoJS](https://videojs.com/), a [Google](https://github.com/google/shaka-player), a Exoplayer, illetve a Mobile apps natív módon is elvégezheti az Android [Exoplayer](https://github.com/google/ExoPlayer) és az iOS [AV Foundation](https://developer.apple.com/av-foundation/)használatával. Az Azure Media Player támogatja az MPEG-DASH-t, és [megkeresi az ezen a lapon található ügyfelek listáját](https://dashif.org/clients/). 
+Ha olyan szolgáltatásokból nézte meg a videót, mint a Netflix, a YouTube és más szolgáltatások, akkor tapasztalt videóval is rendelkezik. A lejátszás a "Play" (ha elegendő sávszélességgel rendelkezik) után azonnal megkezdődik, és a videó idővonalán vissza is kérheti. A streaming esetében az a gondolat, hogy csak az éppen figyelt videó részét adja meg, és lehetővé teszi, hogy a megjelenítő elkezdje lejátszani a videót, miközben az adatok átvitele egy kiszolgálóról a lejátszási ügyfélre történik. A Azure Media Services kontextusában a [streaming](https://en.wikipedia.org/wiki/Streaming_media) arra a folyamatra utal, amely az adathordozók [Azure Media Servicesról](../azure-media-player/azure-media-player-overview.md) egy streaming-ügyfélre való továbbítását jelenti (például Azure Media Player). A Azure Media Services segítségével az iparági szabványnak megfelelő HTTP-alapú médiaadatfolyam-továbbítási protokollok [(például http Live Streaming (HLS)](https://developer.apple.com/streaming/) és [MPEG-Dash](https://dashif.org/about/)) használatával továbbíthatja a videókat az ügyfeleknek. A HLS-t a Azure Media Player, valamint a webkiszolgálók, például a [JW Player](https://www.jwplayer.com/), a [hls.js](https://github.com/video-dev/hls.js/), a [VideoJS](https://videojs.com/), a [Google](https://github.com/google/shaka-player), a Exoplayer, illetve a Mobile apps natív módon is elvégezheti az Android [Exoplayer](https://github.com/google/ExoPlayer) és az iOS [AV Foundation](https://developer.apple.com/av-foundation/)használatával. Az Azure Media Player támogatja az MPEG-DASH-t, és [megkeresi az ezen a lapon található ügyfelek listáját](https://dashif.org/clients/). 
 
 Ha a [Media Graph](#media-graph)s használatával videót szeretne felvenni a Azure Media Servicesban lévő egyik eszközre, Media Services streaming-képességgel is elvégezheti a videó streamek továbbítását a HLS és a Dash-ben. Erről további információt [a videolejátszás című cikkben talál](video-playback-concept.md) .
 

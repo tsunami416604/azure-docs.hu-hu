@@ -3,12 +3,12 @@ title: Egyéni Linux-tároló konfigurálása
 description: Megtudhatja, hogyan konfigurálhat egyéni Linux-tárolókat a Azure App Serviceban. Ez a cikk a leggyakoribb konfigurációs feladatokat ismerteti.
 ms.topic: article
 ms.date: 03/28/2019
-ms.openlocfilehash: 57281bedb34078dff6878d69be1bfe7f7300f545
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: df766c289ac9ece4c1dc1fbdc65d49ae1306a592
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84905799"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87008591"
 ---
 # <a name="configure-a-custom-linux-container-for-azure-app-service"></a>Egyéni Linux-tároló konfigurálása Azure App Servicehoz
 
@@ -18,7 +18,7 @@ Ez az útmutató a Linux-alkalmazások App Service-ben történő tárolókra bo
 
 ## <a name="configure-port-number"></a>Portszám konfigurálása
 
-Az egyéni rendszerképben található webkiszolgáló a 80-től eltérő portot is használhat. Tájékoztassa az Azure-t arról, hogy az egyéni tároló milyen portot használ az Alkalmazásbeállítások használatával `WEBSITES_PORT` . A [jelen oktatóanyagban lévő Python-mintához](https://github.com/Azure-Samples/docker-django-webapp-linux) tartozó GitHub-oldalon az látható, hogy a `WEBSITES_PORT` értékét _8000_-re kell állítani. Megadhatja [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) a parancs futtatásával a Cloud shell. Például:
+Alapértelmezés szerint a App Service feltételezi, hogy az egyéni tároló figyeli a 80-es portot. Az egyéni rendszerképben található webkiszolgáló a 80-től eltérő portot is használhat. Tájékoztassa az Azure-t arról, hogy az egyéni tároló milyen portot használ az Alkalmazásbeállítások használatával `WEBSITES_PORT` . A [jelen oktatóanyagban lévő Python-mintához](https://github.com/Azure-Samples/docker-django-webapp-linux) tartozó GitHub-oldalon az látható, hogy a `WEBSITES_PORT` értékét _8000_-re kell állítani. Megadhatja [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) a parancs futtatásával a Cloud shell. Például:
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <resource-group-name> --name <app-name> --settings WEBSITES_PORT=8000
@@ -138,7 +138,7 @@ Az alábbi listában a támogatott és nem támogatott Docker-összeállítási 
 
 - command
 - entrypoint
-- environment
+- környezet
 - image
 - ports
 - restart

@@ -4,19 +4,21 @@ description: API új meglévő ajánlat létrehozásához vagy frissítéséhez.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-ms.date: 06/19/2020
-ms.openlocfilehash: 5104d11c1eaf9641f1d631db97dcca036308cd45
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: dsindona
+ms.author: dsindona
+ms.date: 07/14/2020
+ms.openlocfilehash: 249eb982ee701ea0a442121c02e55ad98e1f6fb9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86115723"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011991"
 ---
 <a name="create-or-modify-an-offer"></a>Ajánlat létrehozása vagy módosítása
 =========================
 
 > [!NOTE]
-> A Cloud Partner Portal API-k integrálva vannak a partneri központtal, és továbbra is működni fognak, miután az ajánlatokat áttelepítik a partner központba. Az integráció kis változásokat vezet be. Tekintse át a [Cloud Partner Portal API-hivatkozásban](./cloud-partner-portal-api-overview.md) felsorolt módosításokat, hogy a kód továbbra is működni fog a partneri központba való Migrálás után.
+> A Cloud Partner Portal API-k integrálva vannak a-vel, és továbbra is működnek a partner Centerben. Az áttérés kis változásokat mutat be. Tekintse át a [Cloud Partner Portal API-hivatkozásban](./cloud-partner-portal-api-overview.md) felsorolt módosításokat, hogy a kód továbbra is működőképes legyen a partneri központba való áttérés után. A CPP API-kat csak olyan meglévő termékekhez szabad használni, amelyek már integrálva lettek a partneri központba való áttérés előtt. az új termékeknek a partner Center beküldési API-kat kell használniuk.
 
 Ez a hívás egy adott ajánlatot frissít a közzétevő névterén belül, vagy új ajánlatot hoz létre.
 
@@ -26,7 +28,7 @@ Ez a hívás egy adott ajánlatot frissít a közzétevő névterén belül, vag
 <a name="uri-parameters"></a>URI-paraméterek
 --------------
 
-|  **Name (Név)**         |  **Leírás**                      |  **Adattípus**  |
+|  **Név**         |  **Leírás**                      |  **Adattípus**  |
 |  --------         |  ----------------                     |  -------------  |
 | publisherId       |  Közzétevő azonosítója, például:`contoso` |   Sztring |
 | offerId           |  Ajánlat azonosítója                     |   Sztring        |
@@ -36,7 +38,7 @@ Ez a hívás egy adott ajánlatot frissít a közzétevő névterén belül, vag
 <a name="header"></a>Fejléc
 ------
 
-|  **Name (Név)**        |  **Érték**               |
+|  **Név**        |  **Érték**               |
 |  ---------       |  ----------              | 
 | Content-Type     | `application/json`       |
 | Engedélyezés    | `Bearer YOUR_TOKEN`      |
@@ -48,7 +50,7 @@ Ez a hívás egy adott ajánlatot frissít a közzétevő névterén belül, vag
 
 A következő példa egy ajánlatot hoz létre a offerID `contosovirtualmachine` .
 
-### <a name="request"></a>Kérés
+### <a name="request"></a>Kérelem
 
 ``` json
   {
@@ -143,7 +145,7 @@ A következő példa egy ajánlatot hoz létre a offerID `contosovirtualmachine`
 ```
 
 
-### <a name="response"></a>Válasz
+### <a name="response"></a>Reagálás
 
 ``` json
  {
@@ -269,7 +271,7 @@ A következő példa egy ajánlatot hoz létre a offerID `contosovirtualmachine`
 
 ### <a name="response-status-codes"></a>Válasz-állapotkódok
 
-| **Code**  |  **Leírás**                                                                            |
+| **Kód**  |  **Leírás**                                                                            |
 | --------  |  ---------------                                                                            |
 |  200      | `OK`. A kérés feldolgozása sikeres volt, és az ajánlat sikeresen módosítva lett.           |
 |  201      | `Created`. A kérés feldolgozása sikeres volt, és az ajánlat sikeresen létrejött.   |

@@ -9,11 +9,12 @@ ms.subservice: availability
 ms.date: 07/01/2019
 ms.reviewer: zivr
 ms.custom: mimckitt
-ms.openlocfilehash: 8e455d4d016f97a466838c07fc7af2422f72cc00
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1525ef7c1e19aa9821df3f111fdce3518d37afd5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83727097"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011056"
 ---
 # <a name="preview-creating-and-using-proximity-placement-groups-using-powershell"></a>Előzetes verzió: közelítő elhelyezési csoportok létrehozása és használata a PowerShell-lel
 
@@ -29,7 +30,7 @@ A közelségi elhelyezési csoport olyan logikai csoport, amely biztosítja, hog
 
 
 ## <a name="create-a-proximity-placement-group"></a>Közelségi elhelyezési csoport létrehozása
-Hozzon létre egy közelségi elhelyezési csoportot a [New-AzProximityPlacementGroup](https://docs.microsoft.com/powershell/module/az.compute/new-azproximityplacementgroup) parancsmag használatával. 
+Hozzon létre egy közelségi elhelyezési csoportot a [New-AzProximityPlacementGroup](/powershell/module/az.compute/new-azproximityplacementgroup) parancsmag használatával. 
 
 ```azurepowershell-interactive
 $resourceGroup = "myPPGResourceGroup"
@@ -54,7 +55,7 @@ Get-AzProximityPlacementGroup
 
 ## <a name="create-a-scale-set"></a>Méretezési csoport létrehozása
 
-Hozzon létre egy méretezést a közelségi elhelyezési csoportban `-ProximityPlacementGroup $ppg.Id` , hogy a méretezési csoport létrehozásához a [New-AzVMSS](https://docs.microsoft.com/powershell/module/az.compute/new-azvmss) használatával tekintse meg a KÖZELSÉGi csoportok azonosítóját.
+Hozzon létre egy méretezést a közelségi elhelyezési csoportban `-ProximityPlacementGroup $ppg.Id` , hogy a méretezési csoport létrehozásához a [New-AzVMSS](/powershell/module/az.compute/new-azvmss) használatával tekintse meg a KÖZELSÉGi csoportok azonosítóját.
 
 ```azurepowershell-interactive
 $scalesetName = "myVM"

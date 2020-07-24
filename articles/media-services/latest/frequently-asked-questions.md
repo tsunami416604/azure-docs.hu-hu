@@ -11,11 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 04/07/2020
 ms.author: juliako
-ms.openlocfilehash: e54944c0c10fb773a4a3141c0d3fb6524f288ae2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 70499ad354e2fafaac99fe46c1838a0be2813943
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84987241"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011685"
 ---
 # <a name="media-services-v3-frequently-asked-questions"></a>Media Services v3 – gyakori kérdések
 
@@ -45,7 +46,7 @@ Részletekért lásd: a [médiafájlok feldolgozásának skálázása](media-res
 
 ### <a name="what-is-the-recommended-method-to-process-videos"></a>Mi az ajánlott módszer a videók feldolgozására?
 
-Az [átalakítások](https://docs.microsoft.com/rest/api/media/transforms) használatával konfigurálhatja a videók kódolására vagy elemzésére szolgáló gyakori feladatokat. Mindegyik transzformáció egy receptet vagy egy munkafolyamatot ír le, amely a videó-vagy hangfájlok feldolgozására használható. A [feladatnak](https://docs.microsoft.com/rest/api/media/jobs) az a tényleges kérése, hogy az átalakítást egy bemeneti videóra vagy hangtartalomra alkalmazza Media Services. Az átalakítás létrehozása után Media Services API-kkal vagy a közzétett SDK-kkal is elküldheti a feladatokat. További információt az [átalakításokkal és feladatokkal](transforms-jobs-concept.md) kapcsolatos cikkben olvashat.
+Az [átalakítások](/rest/api/media/transforms) használatával konfigurálhatja a videók kódolására vagy elemzésére szolgáló gyakori feladatokat. Mindegyik transzformáció egy receptet vagy egy munkafolyamatot ír le, amely a videó-vagy hangfájlok feldolgozására használható. A [feladatnak](/rest/api/media/jobs) az a tényleges kérése, hogy az átalakítást egy bemeneti videóra vagy hangtartalomra alkalmazza Media Services. Az átalakítás létrehozása után Media Services API-kkal vagy a közzétett SDK-kkal is elküldheti a feladatokat. További információt az [átalakításokkal és feladatokkal](transforms-jobs-concept.md) kapcsolatos cikkben olvashat.
 
 ### <a name="i-uploaded-encoded-and-published-a-video-why-wont-the-video-play-when-i-try-to-stream-it"></a>Feltöltöttem, kódoltam és közzétettem egy videót. Miért nem játssza le a videót, amikor megpróbálok adatfolyamot továbbítani?
 
@@ -118,7 +119,7 @@ A helyes módszer a biztonságos jogkivonat-szolgáltatás használata. Az STS-b
 
 Azure Media Services API-k használatával konfigurálhatja a licencek/kulcsok küldését és titkosíthatja az adategységeket (ahogy az [ebben a mintában](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES/Program.cs)is látható).
 
-További információkért lásd:
+További információ:
 
 - [Tartalomvédelem – áttekintés](content-protection-overview.md)
 - [Hozzáférés-vezérléssel ellátott Multi-DRM-rendszerek tervezése](design-multi-drm-system-with-access-control.md)
@@ -158,9 +159,9 @@ Jelenleg a [Azure Portal](https://portal.azure.com/) a következőket használha
 
 * [Élő események](live-events-outputs-concept.md) kezelése Media Services v3-ban. 
 * V3- [eszközök](assets-concept.md)megtekintése (nem felügyelt). 
-* [Az API-k elérésére vonatkozó információk beolvasása](access-api-portal.md). 
+* [Az API-k elérésére vonatkozó információk beolvasása](./access-api-howto.md). 
 
-Az összes többi felügyeleti feladathoz (például [átalakításokhoz, feladatokhoz](transforms-jobs-concept.md) és [tartalmak védelméhez](content-protection-overview.md)) használja a [REST API](https://docs.microsoft.com/rest/api/media/), az [Azure CLI](https://aka.ms/ams-v3-cli-ref)vagy az egyik támogatott [SDK](media-services-apis-overview.md#sdks)-t.
+Az összes többi felügyeleti feladathoz (például [átalakításokhoz, feladatokhoz](transforms-jobs-concept.md) és [tartalmak védelméhez](content-protection-overview.md)) használja a [REST API](/rest/api/media/), az [Azure CLI](https://aka.ms/ams-v3-cli-ref)vagy az egyik támogatott [SDK](media-services-apis-overview.md#sdks)-t.
 
 ### <a name="is-there-an-assetfile-concept-in-v3"></a>Létezik AssetFile-koncepció a v3-as verzióban?
 
@@ -170,7 +171,7 @@ További információ: [migrálás Media Services v3](media-services-v2-vs-v3.md
 
 ### <a name="where-did-client-side-storage-encryption-go"></a>Hol található az ügyféloldali tároló-titkosítás?
 
-Javasoljuk, hogy kiszolgálóoldali tároló-titkosítást használjon (amely alapértelmezés szerint be van kapcsolva). További információ: [Azure Storage Service encryption for](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)inaktív adatok.
+Javasoljuk, hogy kiszolgálóoldali tároló-titkosítást használjon (amely alapértelmezés szerint be van kapcsolva). További információ: [Azure Storage Service encryption for](../../storage/common/storage-service-encryption.md)inaktív adatok.
 
 ## <a name="offline-streaming"></a>Offline adatfolyam
 

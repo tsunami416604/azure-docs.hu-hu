@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 01/31/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 23f12278d02715bd94f1ea26abf2bd4b2b03caf1
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 6b95eeaf7dd72c85c3940e3cdc2a71c193c35ff5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187404"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87008608"
 ---
 # <a name="manage-credentials-in-azure-automation"></a>Hitelesítő adatok kezelése Azure Automationban
 
@@ -44,7 +44,7 @@ A következő táblázatban található parancsmagok a runbookok és a DSC-konfi
 |:--- |:--- |
 | `Get-AutomationPSCredential` |Lekéri egy `PSCredential` runbook vagy DSC-konfigurációban használandó objektumot. Leggyakrabban a parancsmag helyett ezt a [belső parancsmagot](modules.md#internal-cmdlets) kell használnia, `Get-AzAutomationCredential` mivel az utóbbi csak a hitelesítő adatokat kéri le. Ezek az információk általában nem hasznosak egy másik parancsmagnak való továbbításra. |
 | [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-7) |Hitelesítő adat beolvasása a Felhasználónév és a jelszó megadásával. Ez a parancsmag az alapértelmezett Microsoft. PowerShell. Security modul része. Lásd: [alapértelmezett modulok](modules.md#default-modules).|
-| [New-AzureAutomationCredential](/powershell/module/servicemanagement/azure/new-azureautomationcredential?view=azuresmps-4.0.0) | Egy hitelesítőadat-eszköz létrehozása. Ez a parancsmag az alapértelmezett Azure-modul része. Lásd: [alapértelmezett modulok](modules.md#default-modules).|
+| [New-AzureAutomationCredential](/powershell/module/servicemanagement/azure.service/new-azureautomationcredential?view=azuresmps-4.0.0) | Egy hitelesítőadat-eszköz létrehozása. Ez a parancsmag az alapértelmezett Azure-modul része. Lásd: [alapértelmezett modulok](modules.md#default-modules).|
 
 Ha objektumokat szeretne beolvasni `PSCredential` a kódban, importálnia kell a `Orchestrator.AssetManagement.Cmdlets` modult. További információkért lásd: [modulok kezelése Azure Automationban](modules.md).
 
@@ -59,7 +59,7 @@ Import-Module Orchestrator.AssetManagement.Cmdlets -ErrorAction SilentlyContinue
 
 A következő táblázatban szereplő függvény a hitelesítő adatoknak a Python 2 runbook való elérésére szolgál.
 
-| Függvény | Leírás |
+| Függvény | Description |
 |:---|:---|
 | `automationassets.get_automation_credential` | A hitelesítő adatokkal kapcsolatos adatok beolvasása. |
 

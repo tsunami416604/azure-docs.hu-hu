@@ -3,8 +3,8 @@ title: A kívánt állapot konfigurálása az Azure-hoz – áttekintés
 description: Megtudhatja, hogyan használhatja a Microsoft Azure bővítmény kezelőjét a PowerShell kívánt állapotának konfigurálásához (DSC). A cikk az előfeltételeket, az architektúrát és a parancsmagokat tartalmazza.
 services: virtual-machines-windows
 documentationcenter: ''
-author: bobbytreed
-manager: carmonm
+author: mgoedtel
+manager: evansma
 editor: ''
 tags: azure-resource-manager
 keywords: DSC
@@ -13,14 +13,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: na
-ms.date: 05/02/2018
-ms.author: robreed
-ms.openlocfilehash: 82d268eedd73b8de670da93ad3a601b5e75e6444
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/13/2020
+ms.author: magoedte
+ms.openlocfilehash: edf1fce488bf3bb8aa107a295cf3488243775192
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82188535"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87010920"
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Az Azure Desired State Configuration-bővítménykezelő bemutatása
 
@@ -59,7 +59,7 @@ Ha a bővítményt első alkalommal hívja meg, a a következő logika használa
 - Ha a **wmfVersion** tulajdonság meg van adva, a WMF verziója telepítve van, kivéve, ha ez a verzió nem kompatibilis a virtuális gép operációs rendszerével.
 - Ha nem ad meg **wmfVersion** -tulajdonságot, a rendszer a WMF legújabb verzióját telepíti.
 
-A WMF telepítéséhez újraindítás szükséges. Az újraindítás után a bővítmény letölti a **modulesUrl** tulajdonságban megadott. zip fájlt, ha meg van adva. Ha ez a hely az Azure Blob Storage-ban található, megadhat egy SAS-tokent a **sasToken** tulajdonságban a fájl eléréséhez. Miután letöltötte és kicsomagolta a. zip fájlt, a **configurationFunction** -ben definiált konfigurációs függvény egy. mof ([Managed Object Format](https://docs.microsoft.com/windows/win32/wmisdk/managed-object-format--mof-)) fájl létrehozásához fut. A bővítmény Ezután `Start-DscConfiguration -Force` a generált. MOF fájllal fut. A bővítmény rögzíti a kimenetet, és az Azure status channelbe írja azt.
+A WMF telepítéséhez újraindítás szükséges. Az újraindítás után a bővítmény letölti a **modulesUrl** tulajdonságban megadott. zip fájlt, ha meg van adva. Ha ez a hely az Azure Blob Storage-ban található, megadhat egy SAS-tokent a **sasToken** tulajdonságban a fájl eléréséhez. Miután letöltötte és kicsomagolta a. zip fájlt, a **configurationFunction** -ben definiált konfigurációs függvény egy. mof ([Managed Object Format](/windows/win32/wmisdk/managed-object-format--mof-)) fájl létrehozásához fut. A bővítmény Ezután `Start-DscConfiguration -Force` a generált. MOF fájllal fut. A bővítmény rögzíti a kimenetet, és az Azure status channelbe írja azt.
 
 ### <a name="default-configuration-script"></a>Alapértelmezett konfigurációs parancsfájl
 
@@ -81,7 +81,7 @@ Ezek az információk megtekinthetők a Azure Portalban, vagy használhatja a Po
 ```
 
 A csomópont-konfiguráció neveként ellenőrizze, hogy a csomópont konfigurációja létezik-e az Azure-beli állapot konfigurációjában.  Ha nem, akkor a bővítmény üzembe helyezése hibát ad vissza.  Győződjön meg arról is, hogy a *csomópont-konfiguráció* nevét használja, és nem a konfigurációt.
-A konfiguráció egy olyan parancsfájlban van definiálva, amely [a csomópont-konfiguráció (MOF-fájl) fordítására](https://docs.microsoft.com/azure/automation/automation-dsc-compile)szolgál.
+A konfiguráció egy olyan parancsfájlban van definiálva, amely [a csomópont-konfiguráció (MOF-fájl) fordítására](../../automation/automation-dsc-compile.md)szolgál.
 A név mindig a konfiguráció, majd egy `.` `localhost` adott számítógépnév és egy adott számítógép neve lesz.
 
 ## <a name="dsc-extension-in-resource-manager-templates"></a>DSC-bővítmény Resource Manager-sablonokban
@@ -188,11 +188,11 @@ A portál a következő adatokat gyűjti össze:
 
 - **Konfigurációs argumentumok**: Ha a konfigurációs függvény argumentumokat fogad, adja meg őket a következő formátumban: **argumentName1 = érték1, argumentName2 = érték2**. Ez a formátum a PowerShell-parancsmagok vagy a Resource Manager-sablonok által elfogadott konfigurációs argumentumok eltérő formátuma.
 
-- **Konfigurációs adatok PSD1 fájlja**: a konfigurációban konfigurációs adatfájlra van szükség a. PSD1 fájlban, ezzel a mezővel kiválaszthatja az adatfájlt, és feltöltheti a felhasználói blob Storage-ba. A konfigurációs adatfájlt egy SAS-jogkivonat védi a blob Storage-ban.
+- **Konfigurációs adatok PSD1 fájlja**: Ha a konfigurációban konfigurációs adatfájlra van szükség a alkalmazásban `.psd1` , ezzel a mezővel kiválaszthatja az adatfájlt, és feltöltheti a felhasználói blob-tárolóba. A konfigurációs adatfájlt egy SAS-jogkivonat védi a blob Storage-ban.
 
 - **WMF-verzió**: a Windows Management FRAMEWORK (WMF) azon verzióját adja meg, amelyet telepíteni kell a virtuális gépre. Ha ezt a tulajdonságot a legújabbra állítja, a a WMF legújabb verzióját telepíti. Jelenleg a tulajdonság egyetlen lehetséges értéke 4,0, 5,0, 5,1 és Latest. Ezek a lehetséges értékek a frissítések tárgya. Az alapértelmezett érték a **legújabb**.
 
-- **Adatgyűjtés**: meghatározza, hogy a bővítmény gyűjti-e a telemetria. További információ: az [Azure DSC bővítmény adatgyűjtése](https://blogs.msdn.microsoft.com/powershell/2016/02/02/azure-dsc-extension-data-collection-2/).
+- **Adatgyűjtés**: meghatározza, hogy a bővítmény gyűjti-e a telemetria. További információ: az [Azure DSC bővítmény adatgyűjtése](https://devblogs.microsoft.com/powershell/azure-dsc-extension-data-collection-2/).
 
 - **Verzió**: a telepítendő DSC-bővítmény verzióját adja meg. További információ a verziókról: a [DSC bővítmény korábbi verziói](/powershell/scripting/dsc/getting-started/azuredscexthistory).
 
