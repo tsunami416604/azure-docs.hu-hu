@@ -3,32 +3,35 @@ title: CreateUiDefinition.jsa fájl a portálon panel
 description: Útmutatás a Azure Portal felhasználói felületi definícióinak létrehozásához. Azure Managed Applications definiálásakor használatos.
 author: tfitzmac
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 07/14/2020
 ms.author: tomfitz
-ms.openlocfilehash: 2956c76f5bec353639b39228b982db21b6932deb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4ee489e8b596adf0767856e3358c9bdcb17fbb6a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80294892"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87004365"
 ---
 # <a name="createuidefinitionjson-for-azure-managed-applications-create-experience"></a>CreateUiDefinition.json az Azure-beli felügyelt példány létrehozási felületéhez
 
-Ez a dokumentum bemutatja a **createUiDefinition.jsazon** alapvető fogalmait, amelyeket a Azure Portal a felhasználói felület definiálására használ a felügyelt alkalmazások létrehozásakor.
+Ez a dokumentum ismerteti a fájl **createUiDefinition.jsének** alapvető fogalmait. A Azure Portal ezt a fájlt használja a felhasználói felület definiálásához a felügyelt alkalmazások létrehozásakor.
 
 A sablon a következő
 
 ```json
 {
-   "$schema": "https://schema.management.azure.com/schemas/0.1.2-preview/CreateUIDefinition.MultiVm.json#",
-   "handler": "Microsoft.Azure.CreateUIDef",
-   "version": "0.1.2-preview",
-   "parameters": {
-      "basics": [ ],
-      "steps": [ ],
-      "outputs": { },
-      "resourceTypes": [ ]
-   }
+    "$schema": "https://schema.management.azure.com/schemas/0.1.2-preview/CreateUIDefinition.MultiVm.json#",
+    "handler": "Microsoft.Azure.CreateUIDef",
+    "version": "0.1.2-preview",
+    "parameters": {
+        "config": {
+            "basics": { }
+        },
+        "basics": [ ],
+        "steps": [ ],
+        "outputs": { },
+        "resourceTypes": [ ]
+    }
 }
 ```
 
@@ -36,23 +39,109 @@ A CreateUiDefinition mindig három tulajdonságot tartalmaz:
 
 * kezelő
 * version
-* paraméterek
+* parameters
 
 A kezelőnek mindig a-nek kell lennie `Microsoft.Azure.CreateUIDef` , és a legújabb támogatott verzió a `0.1.2-preview` .
 
-A Parameters tulajdonság sémája a megadott kezelő és verzió kombinációjából függ. A felügyelt alkalmazások esetében a támogatott tulajdonságok a következők:, `basics` `steps` és `outputs` . Az alapértékek és a lépések tulajdonságai a Azure Portal megjeleníteni kívánt [elemeket](create-uidefinition-elements.md) , például a szövegmezőket és a legördülő listákat tartalmazzák. A kimenet tulajdonság a megadott elemek kimeneti értékének leképezésére szolgál a Azure Resource Manager telepítési sablon paramétereinek.
+A Parameters tulajdonság sémája a megadott kezelő és verzió kombinációjából függ. A felügyelt alkalmazások esetében a támogatott tulajdonságok a következők:,, `basics` `steps` `outputs` és `config` . Az alapértékek és a lépések tulajdonságai a Azure Portal megjeleníteni kívánt [elemeket](create-uidefinition-elements.md) , például a szövegmezőket és a legördülő listákat tartalmazzák. A kimenet tulajdonság a megadott elemek kimeneti értékének leképezésére szolgál a Azure Resource Manager sablon paramétereinek. Csak akkor használja, `config` Ha felül kell bírálnia a lépés alapértelmezett viselkedését `basics` .
 
 Beleértve `$schema` a javasolt, de nem kötelező. Ha meg van adva, a értékének `version` meg kell egyeznie az URI-n belüli verzióval `$schema` .
 
 A createUiDefinition létrehozásához JSON-szerkesztőt használhat, majd a [createUiDefinition-homokozóban](https://portal.azure.com/?feature.customPortal=false&#blade/Microsoft_Azure_CreateUIDef/SandboxBlade) tesztelheti azt. A homokozóval kapcsolatos további információkért lásd: [Azure Managed Applications-portál felületének tesztelése](test-createuidefinition.md).
 
-## <a name="basics"></a>Alapvető beállítások
+## <a name="basics"></a>Alapbeállítások
 
-Az alapismeretek az első lépés, amikor a Azure Portal elemzi a fájlt. A-ben megadott elemek megjelenítésén kívül `basics` a portál befecskendezi az elemeket a felhasználók számára az előfizetés, az erőforráscsoport és a telepítés helyének kiválasztásához. Ha lehetséges, a központi telepítésre vonatkozó paramétereket lekérdező elemek, például a fürt vagy a rendszergazdai hitelesítő adatok neve, ebben a lépésben kell megjelenniük.
+Az **alapismeretek** lépés az első lépés, amikor a Azure Portal elemzi a fájlt. Alapértelmezés szerint az alapvető lépések lépés lehetővé teszi a felhasználók számára az előfizetés, az erőforráscsoport és a telepítés helyének kiválasztását.
+
+:::image type="content" source="./media/create-uidefinition-overview/basics.png" alt-text="Alapértelmezett alapbeállítások":::
+
+Ebben a szakaszban további elemeket is hozzáadhat. Ha lehetséges, adjon hozzá olyan elemeket, amelyek a központi telepítési szintű paramétereket kérdezik le, például egy fürt vagy egy rendszergazdai hitelesítő adatok nevét.
+
+Az alábbi példa egy olyan szövegmezőt mutat be, amely az alapértelmezett elemekhez lett hozzáadva.
+
+```json
+"basics": [
+    {
+        "name": "textBox1",
+        "type": "Microsoft.Common.TextBox",
+        "label": "Textbox on basics",
+        "defaultValue": "my text value",
+        "toolTip": "",
+        "visible": true
+    }
+]
+```
+
+## <a name="config"></a>Konfigurálás
+
+A konfigurációs elemet akkor kell megadnia, ha felül kell bírálnia az alapvető beállítások alapértelmezett viselkedését. A következő példában az elérhető tulajdonságok láthatók.
+
+```json
+"config": {  
+    "basics": {  
+        "description": "Customized description with **markdown**, see [more](https://www.microsoft.com).",
+        "subscription": {
+            "constraints": {
+                "validations": [
+                    {
+                        "isValid": "[expression for checking]",
+                        "message": "Please select a valid subscription."
+                    },
+                    {
+                        "permission": "<Resource Provider>/<Action>",
+                        "message": "Must have correct permission to complete this step."
+                    }
+                ]
+            },
+            "resourceProviders": [ "<Resource Provider>" ]
+        },
+        "resourceGroup": {
+            "constraints": {
+                "validations": [
+                    {
+                        "isValid": "[expression for checking]",
+                        "message": "Please select a valid resource group."
+                    }
+                ]
+            },
+            "allowExisting": true
+        },
+        "location": {  
+            "label": "Custom label for location",  
+            "toolTip": "provide a useful tooltip",  
+            "resourceTypes": [ "Microsoft.Compute/virtualMachines" ],
+            "allowedValues": [ "eastus", "westus2" ],  
+            "visible": true  
+        }  
+    }  
+},  
+```
+
+A (z) esetében `description` adjon meg egy Markdown-kompatibilis karakterláncot, amely leírja az erőforrást. A többsoros formátum és hivatkozások támogatottak.
+
+A esetében válassza ki a `location` felülbírálni kívánt hely vezérlőelem tulajdonságait. A nem felülbírált tulajdonságok az alapértelmezett értékre vannak beállítva. `resourceTypes`a teljesen minősített erőforrástípusok nevét tartalmazó karakterláncok tömbjét fogadja el. A hely beállításai csak olyan régiókra korlátozódnak, amelyek támogatják az erőforrás-típusokat.  `allowedValues`   régióbeli karakterláncok tömbjét fogadja el. Csak ezek a régiók jelennek meg a legördülő listában.`allowedValues`   A és a is beállítható  `resourceTypes` . Ennek eredménye mindkét listának metszéspontja. Végül a `visible` tulajdonság felhasználható a hely legördülő menüjének feltételes vagy teljes letiltására is.  
+
+A `subscription` és `resourceGroup` elemek lehetővé teszik további érvényesítések megadását. Az érvényesítések megadásának szintaxisa megegyezik a [szövegmező](microsoft-common-textbox.md)egyéni ellenőrzésével. `permission`Az előfizetés vagy az erőforráscsoport érvényességét is megadhatja.  
+
+Az előfizetés vezérlőelem elfogadja az erőforrás-szolgáltatói névterek listáját. Megadhatja például a **Microsoft. számítást**. Hibaüzenet jelenik meg, amikor a felhasználó olyan előfizetést választ ki, amely nem támogatja az erőforrás-szolgáltatót. A hiba akkor fordul elő, ha az erőforrás-szolgáltató nincs regisztrálva az adott előfizetésen, és a felhasználónak nincs engedélye az erőforrás-szolgáltató regisztrálására.  
+
+Az erőforráscsoport-vezérlőhöz lehetőség van `allowExisting` . Amikor `true` a felhasználók olyan erőforráscsoportokat választhatnak, amelyek már rendelkeznek erőforrásokkal. Ez a jelző a legtöbb esetben a megoldási sablonokra vonatkozik, ahol az alapértelmezett viselkedési feladatnak a felhasználóknak új vagy üres erőforráscsoportot kell kiválasztaniuk. A legtöbb esetben ezt a tulajdonságot nem kell megadnia.  
 
 ## <a name="steps"></a>Lépések
 
-A Steps (lépések) tulajdonsága nulla vagy több további lépést is tartalmazhat az alapértékek után, amelyek mindegyike egy vagy több elemet tartalmaz. Vegye fontolóra az üzembe helyezett alkalmazás szerepköreinek vagy szintjeinek hozzáadását. Adjon meg például egy lépést a főcsomópont bemenetei számára, valamint egy lépést a fürt munkavégző csomópontjaihoz.
+A Steps tulajdonság nulla vagy több további lépést tartalmaz az alapvető beállítások megjelenítéséhez. Minden lépés egy vagy több elemet tartalmaz. Vegye fontolóra az üzembe helyezett alkalmazás szerepköreinek vagy szintjeinek hozzáadását. Adjon meg például egy lépést a főcsomópont bemenetei számára, valamint egy lépést a fürt munkavégző csomópontjaihoz.
+
+```json
+"steps": [
+    {
+        "name": "demoConfig",
+        "label": "Configuration settings",
+        "elements": [
+          ui-elements-needed-to-create-the-instance
+        ]
+    }
+]
+```
 
 ## <a name="outputs"></a>Kimenetek
 
@@ -80,9 +169,9 @@ Ha csak azokra a helyszínekre szeretné szűrni a rendelkezésre álló helyet,
     "handler": "Microsoft.Azure.CreateUIDef",
     "version": "0.1.2-preview",
     "parameters": {
-      "resourceTypes": ["Microsoft.Compute/disks"],
-      "basics": [
-        ...
+        "resourceTypes": ["Microsoft.Compute/disks"],
+        "basics": [
+          ...
 ```  
 
 ## <a name="functions"></a>Functions

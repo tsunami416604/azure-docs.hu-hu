@@ -13,12 +13,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 04/28/2020
 tags: azure-synapse
-ms.openlocfilehash: 8e04cb87895f00e1ee992745c43a884596bd8398
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 3f1f284255d1c0e77779c175951eaf33d3e56067
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85987265"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87004103"
 ---
 # <a name="data-discovery--classification"></a>Adatfelderítés és besorolás
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -77,7 +77,7 @@ Az egész szervezetre kiterjedő házirend meghatározása után folytathatja az
 > [!NOTE]
 > Az alábbi példa a Azure SQL Databaset használja, de ki kell választania a megfelelő terméket, amelynek az adatfelderítési & besorolását konfigurálni kívánja.
 
-1. Lépjen a [Azure Portal](https://portal.azure.com).
+1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
 
 2. A Azure SQL Database panel **biztonsági** fejléce alatt lépjen a **speciális adatbiztonság** elemre. Válassza a **speciális adatbiztonság**lehetőséget, majd válassza ki az **adatfelderítési & besorolási** kártyát.
 
@@ -117,9 +117,9 @@ Az egész szervezetre kiterjedő házirend meghatározása után folytathatja az
 
 ## <a name="audit-access-to-sensitive-data"></a><a id="audit-sensitive-data"></a>Bizalmas adatokhoz való hozzáférés naplózása
 
-Az Information-Protection paradigma fontos aspektusa a bizalmas adatokhoz való hozzáférés figyelése. Az [Azure SQL audit](../../azure-sql/database/auditing-overview.md) továbbfejlesztett funkciója, hogy egy új mezőt tartalmazzon a naplóban `data_sensitivity_information` . Ez a mező a lekérdezés által visszaadott adatérzékeny besorolásokat (címkéket) naplózza. Íme egy példa:
+Az Information-Protection paradigma fontos aspektusa a bizalmas adatokhoz való hozzáférés figyelése. Az [Azure SQL audit](../../azure-sql/database/auditing-overview.md) továbbfejlesztett funkciója, hogy egy új mezőt tartalmazzon a naplóban `data_sensitivity_information` . Ez a mező a lekérdezés által visszaadott adatérzékeny besorolásokat (címkéket) naplózza. Bemutatunk egy példát:
 
-![Napló](./media/data-discovery-and-classification-overview/11_data_classification_audit_log.png)
+![Az auditnaplóban](./media/data-discovery-and-classification-overview/11_data_classification_audit_log.png)
 
 ## <a name="permissions"></a><a id="permissions"></a>Engedélyek
 
@@ -137,7 +137,7 @@ Ezek a beépített szerepkörök módosíthatják egy adatbázis adatbesorolás�
 - Közreműködő
 - SQL Security Manager
 
-További információ a [RBAC Azure-erőforrások](https://docs.microsoft.com/azure/role-based-access-control/overview)szerepkör-alapú engedélyeiről.
+További információ az [Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)szerepköralapú engedélyeiről.
 
 ## <a name="manage-classifications"></a><a id="manage-classification"></a>Besorolások kezelése
 

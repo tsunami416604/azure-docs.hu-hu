@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 05/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0c8863615446f8b14043cd7bd13e529b7efa1e46
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 2fe6cbdbcb0cf5b5c28d34f2059a2b070b059566
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186197"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87004749"
 ---
 # <a name="forward-azure-automation-job-data-to-azure-monitor-logs"></a>Azure Automation-feladat adatainak továbbítása az Azure Monitor-naplói felé
 
@@ -28,7 +28,7 @@ A Azure Automation a runbook feladatok állapotát és a feladatok streamjét a 
 
 Az Automation-naplók Azure Monitor naplókba való küldésének megkezdéséhez a következőkre lesz szüksége:
 
-* [Azure PowerShell](/powershell/azureps-cmdlets-docs/)legújabb kiadása.
+* [Azure PowerShell](/powershell/azure/)legújabb kiadása.
 * Egy Log Analytics-munkaterület. További információ: Ismerkedés [a Azure monitor-naplókkal](../azure-monitor/overview.md).
 * A Azure Automation-fiók erőforrás-azonosítója.
 

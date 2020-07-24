@@ -3,12 +3,12 @@ title: Partíciók dinamikus hozzáadása az Azure-beli Event hub-Event Hubs
 description: Ebből a cikkből megtudhatja, hogyan adhat hozzá dinamikusan partíciókat az Azure Event Hubs egy Event hub-hoz.
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: ea0477dcc695c7a2fb936daadc3679c94bfac12f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4a729147eaa11497c66f82a9764dfee9492786b9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85317950"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87002539"
 ---
 # <a name="dynamically-add-partitions-to-an-event-hub-apache-kafka-topic-in-azure-event-hubs"></a>Partíciók dinamikus hozzáadása egy Event hub-hoz (Apache Kafka témakörhöz) az Azure-ban Event Hubs
 Az Event Hubs üzenetstreamelést biztosít egy particionált felhasználói mintán keresztül, amelyben mindegyik felhasználó az üzenetstream csak egy adott részét, vagyis partícióját olvassa. Ez a minta biztosítja a horizontális skálázhatóságot az eseményfeldolgozáshoz, és egyéb, streamközpontú szolgáltatásokat is nyújt, amelyek az üzenetsorokban vagy témakörökben nem érhetők el. A partíció események egy rendezett sorozata az eseményközpontban. Ahogy újabb események érkeznek, a rendszer hozzáadja a sorozatot a végéhez. A partíciókkal kapcsolatos további információkért lásd: [partíciók](event-hubs-scalability.md#partitions)
@@ -33,7 +33,7 @@ Set-AzureRmEventHub -ResourceGroupName MyResourceGroupName -Namespace MyNamespac
 ```
 
 ### <a name="cli"></a>parancssori felület
-Az az [eventhubs eventhub Update](/cli/azure/eventhubs/eventhub?view=azure-cli-latest#az-eventhubs-eventhub-update) CLI paranccsal frissítheti az Event hub partícióit. 
+Az [`az eventhubs eventhub update`](/cli/azure/eventhubs/eventhub?view=azure-cli-latest#az-eventhubs-eventhub-update) Event hub partícióinak frissítéséhez használja a CLI-parancsot. 
 
 ```azurecli-interactive
 az eventhubs eventhub update --resource-group MyResourceGroupName --namespace-name MyNamespaceName --name MyEventHubName --partition-count 12
@@ -64,13 +64,13 @@ A `AlterTopics` partíciók számának növeléséhez használja az API-t (péld
 ## <a name="event-hubs-clients"></a>Ügyfelek Event Hubs
 Nézzük meg, hogyan viselkedjenek Event Hubs-ügyfelek, amikor a partíciók száma frissül az Event hub-ban. 
 
-Ha meglévő páros hubhoz ad hozzá partíciót, az Event hub-ügyfél "MessagingException" kap a szolgáltatástól, amely tájékoztatja az entitások metaadatait (az entitás az Event hub, a metaadatok pedig a partíció adatait). Az ügyfelek automatikusan újra megnyitják a AMQP-hivatkozásokat, amelyek ezután felveszik a módosított metaadat-információkat. Az ügyfelek ezután rendesen működnek.
+Ha meglévő páros hubhoz ad hozzá partíciót, az Event hub-ügyfél megkapja a szolgáltatást, `MessagingException` amely tájékoztatja az entitások metaadatait (az entitás az Event hub és a metaadatok a partíciós adatok). Az ügyfelek automatikusan újra megnyitják a AMQP-hivatkozásokat, amelyek ezután felveszik a módosított metaadat-információkat. Az ügyfelek ezután rendesen működnek.
 
 ### <a name="senderproducer-clients"></a>Küldő/gyártói ügyfelek
 A Event Hubs három feladói lehetőséget biztosít:
 
 - **Partíció küldője** – ebben az esetben az ügyfelek közvetlenül egy partícióba küldik az eseményeket. Bár a partíciók azonosíthatók, és az események közvetlenül is elküldhetők számukra, nem ajánlott ezt a mintát. A partíciók hozzáadása nem befolyásolja ezt a forgatókönyvet. Javasoljuk, hogy indítsa újra az alkalmazásokat, hogy azok képesek legyenek az újonnan hozzáadott partíciók észlelésére. 
-- **Partíciós kulcs küldője** – ebben a forgatókönyvben az ügyfelek az eseményeket egy kulccsal küldi el, hogy az adott kulcshoz tartozó összes esemény ugyanabban a partícióban legyen. Ebben az esetben a szolgáltatás a kulcsot és az útvonalakat a megfelelő partícióra írja. A partíciók számának frissítése a kivonatoló változás miatt nem lehet megrendelési problémákat okozhat. Tehát, ha érdekel a rendezés, győződjön meg arról, hogy az alkalmazás a partíciók számának megnövekedése előtt felhasználja a meglévő partíciók összes eseményét.
+- **Partíciós kulcs küldője** – ebben a forgatókönyvben az ügyfelek az eseményeket egy kulccsal küldi el, hogy az adott kulcshoz tartozó összes esemény ugyanabban a partícióban legyen. Ebben az esetben a szolgáltatás a kulcsot és az útvonalakat a megfelelő partícióra írja. A partíciók számának frissítése a kivonatoló változás miatt nem okozhatja a megrendelési problémákat. Tehát, ha érdekel a rendezés, győződjön meg arról, hogy az alkalmazás a partíciók számának megnövekedése előtt felhasználja a meglévő partíciók összes eseményét.
 - **Ciklikus multiplexelés-küldő (alapértelmezett)** – ebben a forgatókönyvben a Event Hubs szolgáltatás az eseményeket a partíciók között kerekíti. Event Hubs szolgáltatás tisztában van a partíciók számának változásaival, és a partíciók számának megváltoztatását másodpercek alatt elküldi az új partícióknak.
 
 ### <a name="receiverconsumer-clients"></a>Fogadó/fogyasztói ügyfelek
@@ -84,7 +84,7 @@ A Event Hubs közvetlen fogadókat és egyszerű fogyasztói kódtárat biztosí
 ## <a name="apache-kafka-clients"></a>Ügyfelek Apache Kafka
 Ez a szakasz azt ismerteti, hogy az Event Hubs Azure-beli Kafka-végpontot használó Apache Kafka ügyfelek hogyan viselkedjenek a partíciók számának frissítésekor az Event hub esetében. 
 
-A Apache Kafka protokollal Event Hubst használó Kafka-ügyfelek az AMQP protokollt használó Event hub-ügyfelektől eltérően viselkednek. A Kafka-ügyfelek minden ezredmásodperc után frissítik a metaadatokat `metadata.max.age.ms` . Ezt az értéket kell megadnia az ügyfél konfigurációjában. A `librdkafka` kódtárak is ugyanazt a konfigurációt használják. A metaadatok frissítései tájékoztatják az ügyfeleket a szolgáltatás változásairól, beleértve a partíciók számát. A konfigurációk listáját itt tekintheti meg: [Apache Kafka konfigurációk Event Hubs](https://github.com/Azure/azure-event-hubs-for-kafka/blob/master/CONFIGURATION.md)
+A Apache Kafka protokollal Event Hubst használó Kafka-ügyfelek az AMQP protokollt használó Event hub-ügyfelektől eltérően viselkednek. A Kafka-ügyfelek minden ezredmásodperc után frissítik a metaadatokat `metadata.max.age.ms` . Ezt az értéket kell megadnia az ügyfél konfigurációjában. A `librdkafka` kódtárak is ugyanazt a konfigurációt használják. A metaadatok frissítései tájékoztatják az ügyfeleket a szolgáltatás változásairól, beleértve a partíciók számát. A konfigurációk listáját itt tekintheti meg: [Apache Kafka konfigurációk Event Hubshoz](apache-kafka-configurations.md).
 
 ### <a name="senderproducer-clients"></a>Küldő/gyártói ügyfelek
 A termelők mindig azt diktálják, hogy a küldési kérelmek tartalmazzák a létrehozott rekordok partíciójának célhelyét. Így az összes termék particionálása az ügyfélen történik, és a gyártó a bróker metaadatait tekinti át. Miután hozzáadta az új partíciókat a gyártó metaadat-nézetéhez, elérhetővé válnak a termelői kérelmek esetében.
@@ -100,7 +100,7 @@ Amikor egy fogyasztói csoport tagja elvégez egy metaadat-frissítést, és fel
     > Míg a meglévő adatok megőrzik a sorrendet, a partíciók kivonatolása megszakad, ha a partíciók hozzáadását követően a partíciók száma megváltozik.
 - A következő esetekben javasolt a partíció hozzáadása meglévő témakörhöz vagy Event hub-példányhoz:
     - Ha az események küldésének ciklikus multiplexelés (alapértelmezett) módszerét használja
-     - Kafka alapértelmezett particionálási stratégiák, példa – StickyAssignor stratégia
+     - Kafka alapértelmezett particionálási stratégiák, példa – Sticky Assigner stratégia
 
 
 ## <a name="next-steps"></a>További lépések

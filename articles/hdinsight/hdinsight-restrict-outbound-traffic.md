@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/17/2020
-ms.openlocfilehash: 37e6b2986f76529b5f3b2edc69f50259485df0b4
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: f87c3665f558b3185e95b0ad0aa18a883439a221
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087010"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87006517"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall"></a>Az Azure HDInsight-fürtök kimenő hálózati forgalmának konfigurálása tűzfal használatával
 
@@ -63,9 +63,9 @@ Hozzon létre egy alkalmazás-szabálygyűjtemény, amely lehetővé teszi a fü
 
     | Tulajdonság|  Érték|
     |---|---|
-    |Name (Név)| FwAppRule|
+    |Név| FwAppRule|
     |Prioritás|200|
-    |Műveletek|Engedélyezés|
+    |Művelet|Engedélyezés|
 
     **FQDN-címkék szakasz**
 
@@ -75,7 +75,7 @@ Hozzon létre egy alkalmazás-szabálygyűjtemény, amely lehetővé teszi a fü
 
     **Cél teljes tartománynevek szakasz**
 
-    | Name | Forrásoldali címek | `Protocol:Port` | Cél teljes tartománynevek | Jegyzetek |
+    | Name | Forrásoldali címek | Protokoll: Port | Cél teljes tartománynevek | Jegyzetek |
     | --- | --- | --- | --- | --- |
     | Rule_2 | * | https: 443 | login.windows.net | Engedélyezi a Windows-bejelentkezési tevékenységet |
     | Rule_3 | * | https: 443 | login.microsoftonline.com | Engedélyezi a Windows-bejelentkezési tevékenységet |
@@ -97,16 +97,16 @@ Hozza létre a hálózati szabályokat a HDInsight-fürt megfelelő konfigurál�
 
     | Tulajdonság|  Érték|
     |---|---|
-    |Name (Név)| FwNetRule|
+    |Név| FwNetRule|
     |Prioritás|200|
-    |Műveletek|Engedélyezés|
+    |Művelet|Engedélyezés|
 
     **IP-címek szakasz**
 
     | Name | Protokoll | Forrásoldali címek | Cél címei | Célportok | Jegyzetek |
     | --- | --- | --- | --- | --- | --- |
     | Rule_1 | UDP | * | * | 123 | Időszolgáltatás |
-    | Rule_2 | Bármelyik | * | DC_IP_Address_1, DC_IP_Address_2 | * | Ha Enterprise Security Package-t (ESP) használ, adjon hozzá egy hálózati szabályt az IP-címek szakaszban, amely lehetővé teszi a HRE-DS-vel való kommunikációt az ESP-fürtök esetében. A tartományvezérlők IP-címeit a HRE-DS szakaszban találja a portálon. |
+    | Rule_2 | Bármely | * | DC_IP_Address_1, DC_IP_Address_2 | * | Ha Enterprise Security Package-t (ESP) használ, adjon hozzá egy hálózati szabályt az IP-címek szakaszban, amely lehetővé teszi a HRE-DS-vel való kommunikációt az ESP-fürtök esetében. A tartományvezérlők IP-címeit a HRE-DS szakaszban találja a portálon. |
     | Rule_3 | TCP | * | A Data Lake Storage fiókjának IP-címe | * | Ha Azure Data Lake Storage használ, akkor az IP-címek szakaszban hozzáadhat egy hálózati szabályt, amely ADLS Gen1 és a Gen2 SNI probléma megoldásához használható. Ezzel a beállítással a rendszer átirányítja a forgalmat a tűzfalra. Ami magasabb költségekkel járhat a nagyméretű adatterhelések esetében, a forgalom pedig naplózható és naplózható a tűzfal naplófájljaiban. Határozza meg a Data Lake Storage fiókjának IP-címét. Használhat egy PowerShell-parancsot, például a `[System.Net.DNS]::GetHostAddresses("STORAGEACCOUNTNAME.blob.core.windows.net")` teljes tartománynevet az IP-címek feloldásához.|
     | Rule_4 | TCP | * | * | 12000 | Választható Ha Log Analytics használ, hozzon létre egy hálózati szabályt az IP-címek szakaszban, hogy engedélyezze a kommunikációt a Log Analytics munkaterülettel. |
 
@@ -157,7 +157,7 @@ Fejezze be az útválasztási táblázat konfigurációját:
 
 1. Az **alhálózat hozzárendelése** képernyőn válassza ki azt a virtuális hálózatot, amelyre a fürtöt létrehozta. És a HDInsight-fürthöz használt **alhálózat** .
 
-1. Válassza az **OK** lehetőséget.
+1. Kattintson az **OK** gombra.
 
 ## <a name="edge-node-or-custom-application-traffic"></a>Edge-Node vagy egyéni alkalmazás forgalma
 

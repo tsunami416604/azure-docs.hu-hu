@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/08/2020
-ms.openlocfilehash: bd6d02ce1cd60a6d54047139f06fa59f359f9da9
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: ff0c7001184af58432a7915b3a7df29f900bedec
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86202412"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87006602"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-powershell"></a>MapReduce-feladatok futtatása a HDInsight Apache Hadoop a PowerShell használatával
 
@@ -25,7 +25,7 @@ Ez a dokumentum egy példát mutat be a Azure PowerShell használatára egy MapR
 
 * Egy Apache Hadoop-fürt a HDInsight-on. Lásd: [Apache Hadoop-fürtök létrehozása a Azure Portal használatával](../hdinsight-hadoop-create-linux-clusters-portal.md).
 
-* A PowerShell az [modul](https://docs.microsoft.com/powershell/azure/overview) telepítve van.
+* A PowerShell az [modul](https://docs.microsoft.com/powershell/azure/) telepítve van.
 
 ## <a name="run-a-mapreduce-job"></a>MapReduce-feladatok futtatása
 

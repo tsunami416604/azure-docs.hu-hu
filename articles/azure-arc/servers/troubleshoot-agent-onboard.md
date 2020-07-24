@@ -6,14 +6,14 @@ ms.service: azure-arc
 ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
-ms.date: 07/10/2020
+ms.date: 07/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 37f99ade366a73cb96caf55a562a92476223eb6b
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 46096e1f3f4266e9c070bd1d67f328241163126b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86262023"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87004545"
 ---
 # <a name="troubleshoot-the-connected-machine-agent-connection-issues"></a>A csatlakoztatott gépi ügynök kapcsolódási problémáinak elhárítása
 
@@ -48,6 +48,9 @@ A következő példa arra a parancsra mutat példát, amely lehetővé teszi a r
 
 A következő példa arra a parancsra mutat példát, amely lehetővé teszi a részletes naplózást a Linux rendszerhez csatlakoztatott gépi ügynökkel, ha interaktív telepítést végez.
 
+>[!NOTE]
+>A **azcmagent**futtatásához *rendszergazdai* jogosultságokkal kell rendelkeznie a Linux rendszerű gépeken.
+
 ```
 azcmagent connect --resource-group "resourceGroupName" --tenant-id "tenantID" --location "regionName" --subscription-id "subscriptionID" --verbose
 ```
@@ -73,6 +76,7 @@ A következő táblázat a hibák elhárításával és megoldásával kapcsolat
 |--------|------|---------------|---------|
 |Nem sikerült beszerezni az engedélyezési jogkivonat eszközének folyamatát |`Error occurred while sending request for Device Authorization Code: Post https://login.windows.net/fb84ce97-b875-4d12-b031-ef5e7edf9c8e/oauth2/devicecode?api-version=1.0:  dial tcp 40.126.9.7:443: connect: network is unreachable.` |A végpont nem érhető el `login.windows.net` | Ellenőrizze, hogy van-e kapcsolat a végponttal. |
 |Nem sikerült beszerezni az engedélyezési jogkivonat eszközének folyamatát |`Error occurred while sending request for Device Authorization Code: Post https://login.windows.net/fb84ce97-b875-4d12-b031-ef5e7edf9c8e/oauth2/devicecode?api-version=1.0:  dial tcp 40.126.9.7:443: connect: network is Forbidden`. |A proxy vagy a tűzfal blokkolja a `login.windows.net` végponthoz való hozzáférést. | Ellenőrizze, hogy csatlakozik-e a végponthoz, és hogy nem blokkolja-e tűzfal vagy proxykiszolgáló. |
+|Nem sikerült beszerezni az engedélyezési jogkivonat eszközének folyamatát  |`Error occurred while sending request for Device Authorization Code: Post https://login.windows.net/fb84ce97-b875-4d12-b031-ef5e7edf9c8e/oauth2/devicecode?api-version=1.0:  dial tcp lookup login.windows.net: no such host`. | Csoportházirend objektum *Számítógép konfigurációja \ felügyeleti sablonok \ rendszer \ felhasználói profilok \ a rendszer újraindításakor a megadott számú napnál régebbi felhasználói profilok törlése* engedélyezett. | Győződjön meg arról, hogy a csoportházirend-objektum engedélyezve van, és az érintett gépet célozza meg. További részletekért lásd az <sup>[1](#footnote1)</sup> . lábjegyzetet. |
 |Nem sikerült beszerezni az engedélyezési jogkivonatot az SPN-ből |`Failed to execute the refresh request. Error = 'Post https://login.windows.net/fb84ce97-b875-4d12-b031-ef5e7edf9c8e/oauth2/token?api-version=1.0: Forbidden'` |A proxy vagy a tűzfal blokkolja a `login.windows.net` végponthoz való hozzáférést. |Ellenőrizze, hogy csatlakozik-e a végponthoz, és hogy nem blokkolja-e tűzfal vagy proxykiszolgáló. |
 |Nem sikerült beszerezni az engedélyezési jogkivonatot az SPN-ből |`Invalid client secret is provided` |Helytelen vagy érvénytelen a szolgáltatás egyszerű titka. |Ellenőrizze az egyszerű szolgáltatás titkos kulcsát. |
 | Nem sikerült beszerezni az engedélyezési jogkivonatot az SPN-ből |`Application with identifier 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' was not found in the directory 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'. This can happen if the application has not been installed by the administrator of the tenant or consented to by any user in the tenant` |Az egyszerű szolgáltatásnév és/vagy a bérlő azonosítója helytelen. |Ellenőrizze a szolgáltatásnevet és/vagy a bérlő AZONOSÍTÓját.|
@@ -80,7 +84,9 @@ A következő táblázat a hibák elhárításával és megoldásával kapcsolat
 |Nem sikerült AzcmagentConnect a ARM-erőforrást |`The subscription is not registered to use namespace 'Microsoft.HybridCompute'` |Az Azure-erőforrás-szolgáltatók nincsenek regisztrálva. |Regisztrálja az [erőforrás-szolgáltatókat](./agent-overview.md#register-azure-resource-providers). |
 |Nem sikerült AzcmagentConnect a ARM-erőforrást |`Get https://management.azure.com/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/myResourceGroup/providers/Microsoft.HybridCompute/machines/MSJC01?api-version=2019-03-18-preview:  Forbidden` |A proxykiszolgáló vagy a tűzfal blokkolja a hozzáférést a `management.azure.com` végponthoz. |Ellenőrizze, hogy csatlakozik-e a végponthoz, és hogy nem blokkolja-e tűzfal vagy proxykiszolgáló. |
 
-## <a name="next-steps"></a>Következő lépések
+<a name="footnote1"></a><sup>1</sup> Ha ez a csoportházirend-objektum engedélyezve van, és a csatlakoztatott gépi ügynökkel rendelkező gépekre vonatkozik, a törli a *himds* szolgáltatáshoz megadott beépített fiókhoz társított felhasználói profilt. Ennek eredményeképpen a a szolgáltatással való kommunikációhoz használt hitelesítési tanúsítványt is törli a helyi tanúsítványtárolóban, 30 napig. A 30 napos korlát előtt kísérlet történt a tanúsítvány megújítására. A probléma megoldásához kövesse a [számítógép regisztrációjának](manage-agent.md#unregister-machine) megszüntetéséhez szükséges lépéseket, majd regisztrálja újra a szolgáltatást futtató szolgáltatással `azcmagent connect` .
+
+## <a name="next-steps"></a>További lépések
 
 Ha itt nem találja a problémát, vagy nem tudja elhárítani a problémát, próbálja ki a következő csatornák egyikét a további támogatáshoz:
 

@@ -8,13 +8,14 @@ ms.topic: conceptual
 ms.date: 03/10/2020
 ms.author: victorh
 ms.reviewer: tyao
-ms.openlocfilehash: f620ced1bc859e5c824b45839a21ab21d0244d89
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fcd7a0fe60639bbb17661a906d15136996b325e4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83747786"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87005446"
 ---
-# <a name="what-is-geo-filtering-on-a-domain-for-azure-front-door"></a>Mit jelent az Azure Front Door egyik tartományán végzett geoszűrés?
+# <a name="what-is-geo-filtering-on-a-domain-for-azure-front-door-service"></a>Mi a Geo-szűrés az Azure bejárati ajtó szolgáltatásának tartományán?
 
 Alapértelmezés szerint az Azure Front Door Service a kérelmet küldő felhasználó a tartózkodási helytől függetlenül válaszol a felhasználói kérelmekre. Bizonyos esetekben azonban előfordulhat, hogy az ország/régió alapján korlátozni szeretné a webalkalmazásokhoz való hozzáférést. A webalkalmazási tűzfal (WAF) a bejárati ajtón lehetővé teszi, hogy egyéni hozzáférési szabályokkal Definiáljon egy házirendet a végpont megadott elérési útjához, hogy engedélyezze vagy tiltsa le a hozzáférést a megadott országokból/régiókból. 
 
@@ -170,7 +171,7 @@ A Geo-szűrési házirendet az előtérben is konfigurálhatja [Azure PowerShell
 | RU | Orosz Föderáció|
 | RW | Ruanda|
 | SA | Szaúd-Arábia|
-| SD | Szudán|
+| Szórás | Szudán|
 | SE | Svédország|
 | SG | Szingapúr|
 | SI | Szlovénia|

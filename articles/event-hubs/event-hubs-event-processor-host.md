@@ -3,12 +3,12 @@ title: Események fogadása az Event Processor Host használatával – Azure Ev
 description: Ez a cikk az Azure Event Hubs Event Processor Hostját ismerteti, amely leegyszerűsíti az ellenőrzőpontok, a bérletek és az olvasási események ion párhuzamos kezelését.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 338b4e890d61aca0d48287db6f042f9dc088754b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dd11e3ef77ff665a0207a2cf7e63b1b9f2df0e08
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85320638"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87002522"
 ---
 # <a name="event-processor-host"></a>Event Processor Host
 > [!NOTE]
@@ -22,7 +22,7 @@ ms.locfileid: "85320638"
 
 Az Azure Event Hubs egy hatékony telemetria-betöltési szolgáltatás, amellyel akár több millió eseményt is továbbíthat alacsony áron. Ez a cikk azt ismerteti, hogyan lehet a betöltött eseményeket az *Event Processor Host* (EF) használatával használni. intelligens fogyasztói ügynök, amely leegyszerűsíti az ellenőrzőpontok, a lízingek és a párhuzamos események kezelését.  
 
-A Event Hubs méretezésének kulcsa a particionált fogyasztók ötlete. A [versengő fogyasztók](https://msdn.microsoft.com/library/dn568101.aspx) mintával ellentétben a particionált fogyasztói minta nagy méretekben teszi lehetővé a szűk keresztmetszetet, és megkönnyíti a végpontok közötti párhuzamosságot.
+A Event Hubs méretezésének kulcsa a particionált fogyasztók ötlete. A [versengő fogyasztók](/previous-versions/msp-n-p/dn568101(v=pandp.10)) mintával ellentétben a particionált fogyasztói minta nagy méretekben teszi lehetővé a szűk keresztmetszetet, és megkönnyíti a végpontok közötti párhuzamosságot.
 
 ## <a name="home-security-scenario"></a>Otthoni biztonsági forgatókönyv
 
@@ -126,7 +126,7 @@ Azt javasoljuk, hogy viszonylag gyorsan hajtsa végre a dolgokat; Ez a lehető l
 
 Előfordulhat, hogy a feldolgozás során egy ponton nyomon szeretné követni az elolvasott és befejezett tartalmakat. A nyomon követés kritikus fontosságú, ha újra kell indítani az olvasást, így nem térhet vissza az adatfolyam elejéhez. A [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) *ellenőrzőpontok*használatával egyszerűsíti ezt a nyomkövetést. Az ellenőrzőpont egy adott partíció helye vagy eltolása egy adott felhasználói csoporton belül, amikor meggyőződött arról, hogy feldolgozta az üzeneteket. Az ellenőrzőpontok **EventProcessorHost** való megjelölése a [PartitionContext](/dotnet/api/microsoft.azure.eventhubs.processor.partitioncontext) objektum [CheckpointAsync](/dotnet/api/microsoft.azure.eventhubs.processor.partitioncontext.checkpointasync) metódusának meghívásával valósítható meg. Ez a művelet a [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync) metóduson belül történik, de a [CloseAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.closeasync)is végezhető el.
 
-## <a name="checkpointing"></a>Ellenőrzőpontok használata
+## <a name="checkpointing"></a>Ellenőrző pontok használata
 
 A [CheckpointAsync](/dotnet/api/microsoft.azure.eventhubs.processor.partitioncontext.checkpointasync) metódus két túlterheléssel rendelkezik: az első, paraméterek nélkül, a [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync)által visszaadott gyűjtemény legmagasabb eseményének eltolására vonatkozó ellenőrzőpontok. Ez az eltolás egy "magas víz" jelölés; feltételezi, hogy az összes legutóbbi eseményt feldolgozta a hívásakor. Ha ezt a módszert használja, vegye figyelembe, hogy a másik esemény-feldolgozási kód visszaadását követően meg kell hívnia azt. A második túlterhelés lehetővé teszi egy [EventData](/dotnet/api/microsoft.azure.eventhubs.eventdata) -példány megadását az ellenőrzőponthoz. Ez a módszer lehetővé teszi, hogy más típusú vízjel használatával ellenőrzőpontot használjon. Ezzel a vízjelekkel a "kis víz" jelölést lehet megvalósítani: az Ön által meghatározott legalacsonyabb sorszámú eseményt feldolgozták. Ez a túlterhelés biztosítja a rugalmasságot az eltolási felügyeletben.
 
@@ -162,7 +162,7 @@ Emellett a [RegisterEventProcessorAsync](/dotnet/api/microsoft.azure.eventhubs.p
 A fogadási korszak működése:
 
 ### <a name="with-epoch"></a>EPOCH
-A EPOCH a szolgáltatás által használt egyedi azonosító (EPOCH érték) a partíció/bérlet tulajdonjogának érvényesítéséhez. Létre kell hoznia egy EPOCH-alapú fogadót a [CreateEpochReceiver](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createepochreceiver?view=azure-dotnet) metódus használatával. Ez a metódus egy EPOCH-alapú fogadót hoz létre. A fogadó egy adott Event hub-partícióhoz jön létre a megadott fogyasztói csoportból.
+A EPOCH a szolgáltatás által használt egyedi azonosító (EPOCH érték) a partíció/bérlet tulajdonjogának érvényesítéséhez. Létre kell hoznia egy EPOCH-alapú fogadót a [CreateEpochReceiver](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createepochreceiver?view=azure-dotnet) metódus használatával. Ez a metódus egy EPOCH-alapú fogadót hoz létre. A fogadó egy adott Event hub-partícióhoz jön létre a megadott fogyasztói csoportból.
 
 A EPOCH szolgáltatás lehetővé teszi a felhasználók számára, hogy egy adott időpontban csak egy fogadót biztosítson a fogyasztói csoport számára a következő szabályokkal:
 
@@ -171,7 +171,7 @@ A EPOCH szolgáltatás lehetővé teszi a felhasználók számára, hogy egy ado
 - Ha van egy olyan fogadó, amely az E1 értékkel rendelkezik, és az új fogadó egy olyan EPOCH-értékkel jön létre, ahol az E1 > E2, majd az E2 létrehozása a következő hibával meghiúsult: egy olyan fogadó, amelynél a EPOCH E1 már létezik.
 
 ### <a name="no-epoch"></a>Nincs EPOCH
-Nem EPOCH-alapú fogadót hoz létre a [CreateReceiver](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createreceiver?view=azure-dotnet) metódus használatával. 
+Nem EPOCH-alapú fogadót hoz létre a [CreateReceiver](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createreceiver?view=azure-dotnet) metódus használatával. 
 
 Az adatfolyam-feldolgozás bizonyos forgatókönyveket mutat be, ahol a felhasználók több fogadót szeretnének létrehozni egyetlen felhasználói csoporton. Az ilyen forgatókönyvek támogatása érdekében lehetőség van arra, hogy EPOCH nélkül hozzon létre egy fogadót, ebben az esetben pedig legfeljebb 5 egyidejű fogadót engedélyezünk a fogyasztói csoportban.
 

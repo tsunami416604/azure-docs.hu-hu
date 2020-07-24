@@ -8,18 +8,18 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/29/2020
-ms.openlocfilehash: fc14c3bd069162c390c09fddbfe9169b90bf66ce
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: a9d419052f000b220c993109e45d371398607275
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086007"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87006450"
 ---
 # <a name="scale-azure-hdinsight-clusters"></a>Azure HDInsight-fürtök méretezése
 
 A HDInsight rugalmasságot biztosít a fürtökben lévő munkavégző csomópontok számának vertikális felskálázásához és méretezéséhez. Ez a rugalmasság lehetővé teszi, hogy a fürtöket órák vagy hétvégék után is lekicsinyítse. És kiterjesztheti az üzleti igényeknek megfelelően.
 
-A fürt vertikális felskálázása az időszakos kötegelt feldolgozás előtt, hogy a fürt rendelkezik a megfelelő erőforrásokkal. A feldolgozás befejezése után a használat leáll, a HDInsight-fürt méretét pedig kevesebb munkavégző csomópontra.
+A fürt vertikális felskálázása az időszakos kötegelt feldolgozás előtt, hogy a fürt rendelkezik a megfelelő erőforrásokkal.  A feldolgozás befejezése után a használat leáll, a HDInsight-fürt méretét pedig kevesebb munkavégző csomópontra.
 
 Manuálisan is méretezheti a fürtöt az alább vázolt módszerek egyikének használatával. Az automatikus [méretezési](hdinsight-autoscale-clusters.md) beállítások használatával az egyes mérőszámokra adott válasz alapján automatikusan fel-és leskálázást is használhat.
 
@@ -30,13 +30,13 @@ Manuálisan is méretezheti a fürtöt az alább vázolt módszerek egyikének h
 
 A Microsoft a következő segédprogramokat biztosítja a fürtök méretezéséhez:
 
-|Segédprogram | Description|
+|Segédprogram | Leírás|
 |---|---|
 |[PowerShell Az](https://docs.microsoft.com/powershell/azure)|[`Set-AzHDInsightClusterSize`](https://docs.microsoft.com/powershell/module/az.hdinsight/set-azhdinsightclustersize) `-ClusterName CLUSTERNAME -TargetInstanceCount NEWSIZE`|
 |[PowerShell AzureRM](https://docs.microsoft.com/powershell/azure/azurerm) |[`Set-AzureRmHDInsightClusterSize`](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/set-azurermhdinsightclustersize) `-ClusterName CLUSTERNAME -TargetInstanceCount NEWSIZE`|
 |[Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) | [`az hdinsight resize`](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-resize) `--resource-group RESOURCEGROUP --name CLUSTERNAME --workernode-count NEWSIZE`|
 |[Azure klasszikus parancssori felület](hdinsight-administer-use-command-line.md)|`azure hdinsight cluster resize CLUSTERNAME NEWSIZE` |
-|[Azure Portalra](https://portal.azure.com)|Nyissa meg a HDInsight-fürt panelt, válassza ki a **fürt méretét** a bal oldali menüben, majd a fürt mérete panelen írja be a munkavégző csomópontok számát, majd kattintson a Mentés gombra.|  
+|[Azure Portal](https://portal.azure.com)|Nyissa meg a HDInsight-fürt panelt, válassza ki a **fürt méretét** a bal oldali menüben, majd a fürt mérete panelen írja be a munkavégző csomópontok számát, majd kattintson a Mentés gombra.|  
 
 ![Azure Portal méretezési fürt beállítása](./media/hdinsight-scaling-best-practices/azure-portal-settings-nodes.png)
 
@@ -106,6 +106,14 @@ Az adatcsomópontok számának módosításának következményei a HDInsight á
 * Kafka
 
     A skálázási műveletek után újra kell osztania a partíciós replikákat. További információ: az [adatok magas rendelkezésre állása Apache Kafka HDInsight](./kafka/apache-kafka-high-availability.md) -dokumentummal.
+
+* Apache Hive LLAP
+
+    A `N` munkavégző csomópontokra való skálázás után a HDInsight automatikusan beállítja a következő konfigurációkat, majd újraindítja a struktúrát.
+
+  * Egyidejű lekérdezések maximális száma:`hive.server2.tez.sessions.per.default.queue = min(N, 32)`
+  * A kaptár LLAP által használt csomópontok száma:`num_llap_nodes  = N`
+  * A kaptár LLAP démon futtatásához használt csomópont (ok) száma:`num_llap_nodes_for_llap_daemons = N`
 
 ## <a name="how-to-safely-scale-down-a-cluster"></a>Fürt biztonságos méretezése
 

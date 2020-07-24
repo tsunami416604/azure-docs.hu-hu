@@ -7,18 +7,18 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 06/01/2018
 ms.author: cynthn
-ms.openlocfilehash: 59d1bf08c0680d222710b55c6d6bdb4d5745da56
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 843a51ca04ae4256ed21912268443595a5f36083
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82084515"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87005718"
 ---
 # <a name="move-a-windows-vm-from-amazon-web-services-aws-to-an-azure-virtual-machine"></a>Windows rendszerű virtuális gép áthelyezése Amazon Web Services (AWS) rendszerből egy Azure-beli virtuális gépre
 
 Ha Azure-beli virtuális gépeket értékel ki a számítási feladatok üzemeltetéséhez, exportálhat egy meglévő Amazon Web Services (AWS) EC2 Windows VM-példányba, majd feltöltheti a virtuális merevlemezt (VHD) az Azure-ba. A virtuális merevlemez feltöltése után létrehozhat egy új virtuális gépet az Azure-ban a VHD-ből. 
 
-Ez a cikk az AWS-ből az Azure-ba irányuló egyetlen virtuális gép áthelyezését ismerteti. Ha az AWS-ből az Azure-ba szeretné áthelyezni a virtuális gépeket, tekintse meg a következőt: [Virtual Machines in Amazon Web Services (AWS) az Azure-ba Azure site Recoveryokkal](../../site-recovery/site-recovery-migrate-aws-to-azure.md).
+Ez a cikk az AWS-ből az Azure-ba irányuló egyetlen virtuális gép áthelyezését ismerteti. Ha az AWS-ből az Azure-ba szeretné áthelyezni a virtuális gépeket, tekintse meg a következőt: [Virtual Machines in Amazon Web Services (AWS) az Azure-ba Azure site Recoveryokkal](../../site-recovery/migrate-tutorial-aws-azure.md).
 
 ## <a name="prepare-the-vm"></a>A virtuális gép előkészítése 
  

@@ -14,11 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/10/2017
 ms.author: timlt
-ms.openlocfilehash: 2a6650cac975c575415a329361da00d4fbfcaa9d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 64f91263154f7e65238acdcef9d97e5f2d09aad5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "68965117"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87006024"
 ---
 # <a name="storsimple-8000-series-a-hybrid-cloud-storage-solution"></a>StorSimple 8000 sorozat: hibrid felhőalapú tárolási megoldás
 
@@ -38,7 +39,7 @@ A Storage kezelése mellett a StorSimple adatvédelmi funkciói lehetővé teszi
 ## <a name="why-use-storsimple"></a>Miért érdemes használni a StorSimple?
 Az alábbi táblázat a Microsoft Azure StorSimple által biztosított főbb előnyöket ismerteti.
 
-| Szolgáltatás | Előny |
+| Funkció | Előny |
 | --- | --- |
 | Transzparens integráció |Az iSCSI protokollt használja az adattárolási létesítmények láthatatlan csatolásához. Ez biztosítja, hogy a felhőben, az adatközpontban vagy távoli kiszolgálókon tárolt adattárolók egyetlen helyen legyenek tárolva. |
 | Csökkentett tárolási költségek |Elegendő helyi vagy Felhőbeli tárterületet foglal le a jelenlegi igények kielégítéséhez, és csak szükség esetén terjeszti ki a felhőalapú tárhelyet. A szolgáltatás tovább csökkenti a tárolási követelményeket és a költségeket azáltal, hogy megszünteti az azonos adatmennyiségek redundáns verzióit (deduplikálás) és a tömörítést. |
@@ -59,7 +60,7 @@ A Microsoft Azure StorSimple megoldás a következő összetevőket tartalmazza:
 * **StorSimple Cloud Appliance** – más néven a StorSimple virtuális berendezés, ez a StorSimple-eszköz szoftveres verziója, amely a fizikai hibrid tárolóeszköz architektúráját és képességeit replikálja. A StorSimple Cloud Appliance egy Azure-beli virtuális gép egyetlen csomópontján fut. Az Azure Premium Storage előnyeit kihasználó prémium szintű virtuális eszközök a 2. frissítésben és az újabb verziókban is elérhetők.
 * **StorSimple Eszközkezelő Service** – a Azure Portal egy bővítménye, amely lehetővé teszi egy StorSimple-eszköz vagy-StorSimple Cloud Appliance kezelését egyetlen webes felületen. A StorSimple Eszközkezelő szolgáltatással szolgáltatásokat hozhat létre és kezelhet, eszközöket tekinthet meg és kezelhet, megtekintheti a riasztásokat, kezelheti a köteteket, valamint megtekintheti és kezelheti a biztonsági mentési házirendeket és a biztonsági mentési katalógust.
 * **Windows PowerShell StorSimple-bővítménye** – parancssori felület, amely a StorSimple-eszköz felügyeletére használható. Windows PowerShell StorSimple-bővítménye rendelkezik olyan funkciókkal, amelyek lehetővé teszik a StorSimple-eszköz regisztrálását, a hálózati adapter konfigurálását az eszközön, bizonyos típusú frissítések telepítését, az eszköz hibakeresését a támogatási munkamenet elérésével, és az eszköz állapotának módosítását. Windows PowerShell StorSimple-bővítménye a soros konzolhoz való csatlakozással vagy a Windows PowerShell-távelérés használatával érhető el.
-* **Azure PowerShell StorSimple-parancsmagok** – olyan Windows PowerShell-parancsmagok gyűjteménye, amelyek segítségével automatizálhatja a szolgáltatás-és áttelepítési feladatokat a parancssorból. A StorSimple Azure PowerShell-parancsmagokkal kapcsolatos további információkért nyissa meg a [parancsmag-referenciát](/powershell/module/servicemanagement/azure/?view=azuresmps-3.7.0#azure).
+* **Azure PowerShell StorSimple-parancsmagok** – olyan Windows PowerShell-parancsmagok gyűjteménye, amelyek segítségével automatizálhatja a szolgáltatás-és áttelepítési feladatokat a parancssorból. A StorSimple Azure PowerShell-parancsmagokkal kapcsolatos további információkért nyissa meg a [parancsmag-referenciát](/powershell/module/servicemanagement/azure.service/?view=azuresmps-3.7.0#azure).
 * **StorSimple Snapshot Manager** – egy MMC beépülő modul, amely mennyiségi csoportokat és a Windows Kötet árnyékmásolata szolgáltatás használ az alkalmazással konzisztens biztonsági másolatok létrehozásához. Emellett a StorSimple Snapshot Manager használatával biztonsági mentési ütemterveket hozhat létre, illetve klónozott vagy helyreállíthatja a köteteket.
 * **StorSimple-adapter a sharepointhoz** – ez egy olyan eszköz, amely transzparens módon kiterjeszti Microsoft Azure StorSimple tárolót és az adatvédelmet a SharePoint Server-farmokra, miközben a StorSimple-tárolót megtekintheti és kezelheti a SharePoint központi felügyeleti portálján.
 
@@ -128,7 +129,7 @@ A Windows PowerShell StorSimple-bővítménye egy soros konzolról (közvetlenü
 További információért látogasson el a [Windows PowerShell StorSimple-bővítménye használatára az eszköz felügyeletéhez](storsimple-8000-windows-powershell-administration.md).
 
 ## <a name="azure-powershell-storsimple-cmdlets"></a>Azure PowerShell StorSimple-parancsmagok
-A Azure PowerShell StorSimple-parancsmagok olyan Windows PowerShell-parancsmagok gyűjteményei, amelyek lehetővé teszik a parancssorból a szolgáltatás-és áttelepítési feladatok automatizálását. A StorSimple Azure PowerShell-parancsmagokkal kapcsolatos további információkért nyissa meg a [parancsmag-referenciát](/powershell/module/servicemanagement/azure/?view=azuresmps-3.7.0).
+A Azure PowerShell StorSimple-parancsmagok olyan Windows PowerShell-parancsmagok gyűjteményei, amelyek lehetővé teszik a parancssorból a szolgáltatás-és áttelepítési feladatok automatizálását. A StorSimple Azure PowerShell-parancsmagokkal kapcsolatos további információkért nyissa meg a [parancsmag-referenciát](/powershell/module/servicemanagement/azure.service/?view=azuresmps-3.7.0).
 
 ## <a name="storsimple-snapshot-manager"></a>StorSimple Snapshot Manager
 A StorSimple Snapshot Manager egy Microsoft Management Console (MMC) beépülő modul, amely a helyi és a Felhőbeli adatbiztonsági másolatok konzisztens, időponthoz kötött biztonsági másolatának létrehozásához használható. A beépülő modul egy Windows Server-alapú gazdagépen fut. A StorSimple Snapshot Manager a következőre használhatja:
@@ -225,7 +226,7 @@ A StorSimple 8000 sorozatú eszközök nem támogatják a következő munkaterhe
 
 * Orvosi képalkotás
 * Exchange
-* VDI
+* Virtuális asztali infrastruktúra (VDI)
 * Oracle
 * SAP
 * Big Data
@@ -268,7 +269,7 @@ A Microsoft Azure StorSimple-megoldás üzembe helyezése előtt javasoljuk, hog
 | biztonsági mentési szabályzat |A kötetek, a biztonsági mentés típusa, valamint egy ütemezés, amely lehetővé teszi, hogy a biztonsági mentéseket előre meghatározott ütemezés szerint hozza létre. |
 | bináris nagyméretű objektumok (Blobok) |Az adatbázis-kezelő rendszerekben egyetlen entitásként tárolt bináris adathalmaz. A Blobok jellemzően képek, hang vagy más multimédiás objektumok, bár a bináris végrehajtható kódokat a rendszer BLOBként tárolja. |
 | Challenge Handshake Authentication Protocol (CHAP) |A kapcsolat társának hitelesítésére szolgáló protokoll a jelszóval vagy titkos kulccsal megosztó társ alapján. A CHAP lehet egyirányú vagy kölcsönös. Egyirányú CHAP esetén a cél hitelesíti a kezdeményezőt. A kölcsönös CHAP megköveteli, hogy a cél hitelesítse a kezdeményezőt, és hogy a kezdeményező hitelesítse a célt. |
-| clone |Egy kötet duplikált példánya. |
+| clone (klónozás) |Egy kötet duplikált példánya. |
 | Felhő (CaaT) |A Felhőbeli tárolás a tárolási architektúrában rétegként integrált, így úgy tűnik, hogy minden tárterület egy vállalati tárolóeszközhöz tartozik. |
 | felhőalapú szolgáltató (CSP) |A felhőalapú számítástechnikai szolgáltatások szolgáltatója. |
 | Felhőbeli pillanatkép |A felhőben tárolt mennyiségi adatforgalom időpontra vonatkozó másolata. A Felhőbeli Pillanatképek egy másik, nem helyszíni tárolási rendszeren replikált pillanatképnek felelnek meg. A Felhőbeli Pillanatképek különösen hasznosak a vész-helyreállítási helyzetekben. |

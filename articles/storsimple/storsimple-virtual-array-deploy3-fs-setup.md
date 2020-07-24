@@ -15,15 +15,15 @@ ms.workload: NA
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 16a5e0bb3e50e3a90951572e8d2847d379c1b114
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4e544d135883d0c936b3f23b3e50e385268c992c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80297651"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87006296"
 ---
 # <a name="deploy-storsimple-virtual-array---set-up-as-file-server-via-azure-portal"></a>StorSimple virtuális tömb üzembe helyezése – beállítás fájlkiszolgáló használatával Azure Portal
-![](./media/storsimple-virtual-array-deploy3-fs-setup/fileserver4.png)
+![A virtuális tömb üzembe helyezéséhez szükséges lépéseket bemutató ábra. A harmadik lépés első része fájlkiszolgálóként van beállítva, és ki van emelve.](./media/storsimple-virtual-array-deploy3-fs-setup/fileserver4.png)
 
 ## <a name="introduction"></a>Bevezetés
 
@@ -51,16 +51,16 @@ A StorSimple virtuális tömb beállításához és konfigurálásához használ
    
    Használja az előző lépésben feljegyzett kapcsolatok URL-címét. Megjelenik egy hibaüzenet, amely azt jelzi, hogy probléma van a webhely biztonsági tanúsítványával. Kattintson **a folytatás erre a weblapra**gombra.
    
-   ![](./media/storsimple-virtual-array-deploy3-fs-setup/image2.png)
+   ![A biztonsági tanúsítvány problémáját jelentő böngészőablak képernyőképe. Két hivatkozás látható, egyet a webhelyhez és egyet a felhasználó kezdőlapján.](./media/storsimple-virtual-array-deploy3-fs-setup/image2.png)
 2. Jelentkezzen be a virtuális tömb webes felhasználói felületére **StorSimpleAdmin**néven. Adja meg a 3. lépésben módosított eszköz-rendszergazdai jelszót. a virtuális tömb elindítása a [StorSimple virtuális tömb kiépítése a Hyper-V-](storsimple-virtual-array-deploy2-provision-hyperv.md) ben vagy a [StorSimple virtuális tömb kiépítése a VMware](storsimple-virtual-array-deploy2-provision-vmware.md)-ben.
    
-   ![](./media/storsimple-virtual-array-deploy3-fs-setup/image3.png)
+   ![Képernyőkép a StorSimple bejelentkezési oldaláról. A StorSimpleAdmin-Felhasználónév látható, és a jelszó mező meghatározatlan karakterrel van kitöltve.](./media/storsimple-virtual-array-deploy3-fs-setup/image3.png)
 3. A **kezdőlapra** kerül. Ez a lap a virtuális tömb konfigurálásához és a StorSimple Eszközkezelő szolgáltatásban való regisztrálásához szükséges különböző beállításokat ismerteti. A **hálózati beállítások**, a **webproxy beállításai**és az **időbeállítások** megadása nem kötelező. Az egyetlen szükséges beállítás az **eszközbeállítások** és a **felhő beállításai**.
    
-   ![](./media/storsimple-virtual-array-deploy3-fs-setup/image4.png)
+   ![Képernyőkép a kezdőlapról. A szöveg azt jelzi, hogy az eszköz nincs konfigurálva. A különféle típusú beállításokra mutató hivatkozások láthatók.](./media/storsimple-virtual-array-deploy3-fs-setup/image4.png)
 4. A hálózati **adapterek** **hálózati beállítások** lapján a 0. adat automatikusan be lesz állítva. Az IP-címek automatikus beszerzéséhez minden hálózati adapter alapértelmezés szerint be van állítva. Ezért a rendszer automatikusan hozzárendel egy IP-címet, egy alhálózatot és egy átjárót (az IPv4 és az IPv6 esetében egyaránt).
    
-   ![](./media/storsimple-virtual-array-deploy3-fs-setup/image5.png)
+   ![Képernyőkép a hálózati beállítások lapról, amely a Internet Protocol különböző verzióihoz konfigurált IP-címeket tartalmazza.](./media/storsimple-virtual-array-deploy3-fs-setup/image5.png)
    
    Ha egynél több hálózati adaptert adott hozzá az eszköz kiépítés során, itt konfigurálhatja őket. Megjegyzés: a hálózati adaptert IPv4-ként vagy IPv4-ként vagy IPv6-ként is konfigurálhatja. Az IPv6-konfigurációk nem támogatottak.
 5. A DNS-kiszolgálókat azért kell használni, mert amikor az eszköz megpróbál kommunikálni a felhőalapú tárolási szolgáltatóktól, vagy ha fájlkiszolgálóként van konfigurálva, akkor az eszköz név szerinti feloldására van szükség. A **hálózati beállítások** lapon a **DNS-kiszolgálók**területen:
@@ -70,15 +70,15 @@ A StorSimple virtuális tömb beállításához és konfigurálásához használ
 6. Az **eszközbeállítások** lapon:
    
    1. Rendeljen egyedi **nevet** az eszközhöz. Ez a név 1-15 karakterből állhat, és tartalmazhat betűt, számot és kötőjelet.
-   2. Kattintson a **File server** ![](./media/storsimple-virtual-array-deploy3-fs-setup/image6.png) létrehozandó eszköz **típusának** fájlkiszolgáló ikonjára. A fájlkiszolgálók lehetővé teszik a megosztott mappák létrehozását.
+   2. Kattintson a **File server** :::image type="icon" source="./media/storsimple-virtual-array-deploy3-fs-setup/image6.png"::: létrehozandó eszköz **típusának** fájlkiszolgáló ikonjára. A fájlkiszolgálók lehetővé teszik a megosztott mappák létrehozását.
    3. Mivel az eszköz egy fájlkiszolgáló, csatlakoztatnia kell az eszközt egy tartományhoz. Adja meg a **tartománynevet**.
    4. Kattintson az **Alkalmaz** gombra.
 7. Ekkor megjelenik egy párbeszédpanel. Adja meg a tartománya hitelesítő adatait a megadott formátumban. Kattintson a pipa ikonra. A tartományi hitelesítő adatok ellenőrzése megtörtént. Hibaüzenet jelenik meg, ha a hitelesítő adatok helytelenek.
    
-   ![](./media/storsimple-virtual-array-deploy3-fs-setup/image7.png)
+   ![Képernyőfelvétel: a felhasználónévvel és a jelszóval kitöltött párbeszédpanel.](./media/storsimple-virtual-array-deploy3-fs-setup/image7.png)
 8. Kattintson az **Alkalmaz** gombra. Ez az eszköz beállításait fogja alkalmazni és érvényesíteni.
    
-   ![](./media/storsimple-virtual-array-deploy3-fs-setup/image8.png)
+   ![Képernyőkép az eszközbeállítások lapról. A rendszer kitölti az eszköz nevét és a tartománynevet.](./media/storsimple-virtual-array-deploy3-fs-setup/image8.png)
    
    > [!NOTE]
    > Győződjön meg arról, hogy a virtuális tömb a Active Directory saját szervezeti egységében van (OU), és a csoportházirend-objektumok (GPO) nem lettek alkalmazva rá vagy örökölt. A csoportházirend olyan alkalmazásokat telepíthet, mint például a víruskereső szoftver a StorSimple virtuális tömbben. A további szoftverek telepítése nem támogatott, és az adatsérüléshez vezethet. 
@@ -86,7 +86,7 @@ A StorSimple virtuális tömb beállításához és konfigurálásához használ
    > 
 9. (Opcionálisan) konfigurálja a webproxy-kiszolgálót. Bár a webproxy konfigurálása nem kötelező, vegye figyelembe, hogy ha webproxyt használ, azt csak itt tudja beállítani.
    
-   ![](./media/storsimple-virtual-array-deploy3-fs-setup/image9.png)
+   ![Képernyőfelvétel a webproxy beállításai lapról. A webproxy engedélyezése lehetőség ki van kapcsolva, és a hitelesítés nincs értékre van állítva. Nincs beállítva más érték.](./media/storsimple-virtual-array-deploy3-fs-setup/image9.png)
    
    A **webproxy** oldalon:
    
@@ -96,7 +96,7 @@ A StorSimple virtuális tömb beállításához és konfigurálásához használ
    4. Kattintson az **Alkalmaz** gombra. Ez a művelet érvényesíti és alkalmazza a konfigurált webproxy-beállításokat.
 10. (Opcionálisan) konfigurálhatja az eszköz időbeállítását, például az időzónát és az elsődleges és másodlagos NTP-kiszolgálókat. Az NTP-kiszolgálókra azért van szükség, mert az eszköznek szinkronizálnia kell az időt ahhoz, hogy hitelesíteni lehessen a felhőalapú szolgáltatóktól.
     
-    ![](./media/storsimple-virtual-array-deploy3-fs-setup/image10.png)
+    ![Képernyőkép a Time Settings lapról. A rendszer kitölti az időzónát és az elsődleges N T P-kiszolgálót. A másodlagos N T P kiszolgáló üres.](./media/storsimple-virtual-array-deploy3-fs-setup/image10.png)
     
     Az **időbeállítások** lapon:
     
@@ -112,10 +112,10 @@ A StorSimple virtuális tömb beállításához és konfigurálásához használ
        Ha nem ez az első eszköz, amelyet a szolgáltatással regisztrál, meg kell adnia a szolgáltatás adattitkosítási kulcsát. További információt a [szolgáltatás adattitkosítási kulcsának](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key) beszerzése a helyi webes felhasználói felületen című témakörben talál.
     3. Kattintson a **Regisztrálás** parancsra. Ekkor a rendszer újraindítja az eszközt. Előfordulhat, hogy várnia kell 2-3 percet, mielőtt az eszköz regisztrálása sikeresen megtörtént. Az eszköz újraindítása után megnyílik a bejelentkezési oldal.
        
-       ![](./media/storsimple-virtual-array-deploy3-fs-setup/image13.png)
+       ![Képernyőkép a Cloud Settings lapról. A regisztrációs kulcs és a titkosítási kulcs mezők ki vannak töltve, de az értékek kimaradnak.](./media/storsimple-virtual-array-deploy3-fs-setup/image13.png)
 12. Lépjen vissza az Azure Portalra. Nyissa meg az **összes erőforrást**, keresse meg a StorSimple Eszközkezelő szolgáltatását.
     
-    ![](./media/storsimple-virtual-array-deploy3-fs-setup/searchdevicemanagerservice1.png) 
+    ![Képernyőkép a Azure Portal összes erőforrás oldaláról. Egy Eszközkezelő szolgáltatás ki van emelve.](./media/storsimple-virtual-array-deploy3-fs-setup/searchdevicemanagerservice1.png) 
 13. A szűrt listában válassza ki a StorSimple Eszközkezelő szolgáltatást, majd navigáljon a **felügyeleti > eszközökhöz**. Az **eszközök** panelen ellenőrizze, hogy az eszköz sikeresen csatlakozott-e a szolgáltatáshoz, és **készen áll-** e az állapot beállítására.
     
     ![Fájlkiszolgáló konfigurálása](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs2m.png)
@@ -203,12 +203,12 @@ Megosztás létrehozásához hajtsa végre a következő lépéseket az [Azure P
 Ekkor csatlakoznia kell egy vagy több, az előző lépésben létrehozott megosztáshoz. Hajtsa végre ezeket a lépéseket a StorSimple virtuális tömbhöz csatlakoztatott Windows Server-gazdagépen.
 
 #### <a name="to-connect-to-the-share"></a>A megosztáshoz való kapcsolódáshoz
-1. Nyomja meg az ![](./media/storsimple-virtual-array-deploy3-fs-setup/image22.png) + R billentyűt. A Futtatás ablakban adja meg az elérési út *&#92;&#92;&lt; fájlkiszolgáló &gt; nevét* , és cserélje le a fájlkiszolgáló *nevét* a fájlkiszolgálón hozzárendelt eszköz nevére. Kattintson az **OK** gombra.
+1. Nyomja meg az :::image type="icon" source="./media/storsimple-virtual-array-deploy3-fs-setup/image22.png"::: + R billentyűt. A Futtatás ablakban adja meg az elérési út *&#92;&#92;&lt; fájlkiszolgáló &gt; nevét* , és cserélje le a fájlkiszolgáló *nevét* a fájlkiszolgálón hozzárendelt eszköz nevére. Kattintson az **OK** gombra.
    
-   ![](./media/storsimple-virtual-array-deploy3-fs-setup/image23.png)
+   ![Képernyőkép a Futtatás párbeszédpanelről. A megnyitási mező kitöltése a fájlkiszolgálón vezető elérési úttal történik.](./media/storsimple-virtual-array-deploy3-fs-setup/image23.png)
 2. Ekkor megnyílik a fájlkezelő. A létrehozott megosztásoknak meg kell jelenniük mappaként. Válasszon ki és duplán kattintva nyisson meg egy megosztást (mappát) a tartalma megtekintéséhez.
    
-   ![](./media/storsimple-virtual-array-deploy3-fs-setup/image24.png)
+   ![A fájlkezelő képernyőképe. Az újonnan létrehozott megosztásokat jelölő több mappa látható.](./media/storsimple-virtual-array-deploy3-fs-setup/image24.png)
 3. Mostantól hozzáadhat fájlokat a megosztásokhoz, és biztonsági mentést készíthet.
 
 ## <a name="next-steps"></a>További lépések

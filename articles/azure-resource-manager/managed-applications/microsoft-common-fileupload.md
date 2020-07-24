@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: tomfitz
-ms.openlocfilehash: 31e9e88bc37dc19d1d81dc55d52786de60706313
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: c4eb3972be85ac7e291380f64127c20424b0d0f0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134551"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87004280"
 ---
 # <a name="microsoftcommonfileupload-ui-element"></a>Microsoft. Common. FileUpload felhasználói felületi elem
 
@@ -18,7 +18,7 @@ Olyan vezérlőelem, amely lehetővé teszi, hogy a felhasználó megadhat egy v
 
 ## <a name="ui-sample"></a>Felhasználói felület mintája
 
-![Microsoft.Common.FileUpload](./media/managed-application-elements/microsoft.common.fileupload.png)
+![Microsoft.Common.FileUpload](./media/managed-application-elements/microsoft-common-fileupload.png)
 
 ## <a name="schema"></a>Séma
 
@@ -88,7 +88,7 @@ Egy CreateUiDefinition tesztelésekor egyes böngészők (például a Google Chr
 - Ha a `options.uploadMode` értéke **fájl** , és `options.openMode` **bináris**értékre van beállítva, a kimenet Base64 kódolású.
 - `options.encoding`Megadja a fájl olvasásakor használandó kódolást. Az alapértelmezett érték az **UTF-8**, és csak akkor használható, ha a értéke `options.openMode` **text (szöveg**).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A felhasználói felületi definíciók létrehozásával kapcsolatban lásd: Bevezetés [a CreateUiDefinition](create-uidefinition-overview.md)használatába.
 * A felhasználói felületi elemek általános tulajdonságainak leírását lásd: [CreateUiDefinition-elemek](create-uidefinition-elements.md).

@@ -13,13 +13,13 @@ author: swinarko
 ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
-ms.date: 07/09/2020
-ms.openlocfilehash: 172a2ae863714b54e052819df93f872385b9c77a
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.date: 07/20/2020
+ms.openlocfilehash: 2f8706fa8b272075ec64e2d36475509732914acf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86183341"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87003203"
 ---
 # <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>SSIS-csomag futtatása az SSIS-csomag végrehajtása tevékenységgel az Azure Data Factoryben
 
@@ -57,7 +57,7 @@ Ebben a lépésben a Data Factory felhasználói felületét vagy az alkalmazás
 
 Az SSIS-csomag végrehajtása tevékenység **általános** lapján hajtsa végre a következő lépéseket.
 
-   ![Tulajdonságok beállítása az Általános lapon](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-general.png)
+![Tulajdonságok beállítása az Általános lapon](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-general.png)
 
    1. A **név**mezőben adja meg a SSIS-csomag végrehajtása tevékenység nevét.
 
@@ -77,7 +77,7 @@ Az SSIS-csomag végrehajtása tevékenység **általános** lapján hajtsa végr
 
 A SSIS-csomag végrehajtása tevékenység **Beállítások** lapján hajtsa végre a következő lépéseket.
 
-   ![Tulajdonságok beállítása a beállítások lapon – automatikus](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings.png)
+![Tulajdonságok beállítása a beállítások lapon – automatikus](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings.png)
 
    1. **Azure-SSIS IR**esetén válassza ki a kijelölt Azure-SSIS IR a SSIS-csomag végrehajtása tevékenység futtatásához.
 
@@ -103,13 +103,13 @@ Ha a **SSISDB** automatikusan ki van választva, ha a Azure-SSIS IR Azure SQL Da
 
    1. Ha a Azure-SSIS IR nem fut, vagy a **manuális bejegyzések** jelölőnégyzet be van jelölve, adja meg a csomag-és környezeti elérési utakat a SSISDB közvetlenül a következő formátumokban: `<folder name>/<project name>/<package name>.dtsx` és `<folder name>/<environment name>` .
 
-   ![Tulajdonságok beállítása a beállítások lapon – manuális](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings2.png)
+      ![Tulajdonságok beállítása a beállítások lapon – manuális](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings2.png)
 
 ##### <a name="package-location-file-system-package"></a>Csomag helye: fájlrendszer (csomag)
 
 Ha a Azure-SSIS IR SSISDB nélkül lett kiépítve **, a csomag helye** automatikusan ki van választva, vagy kiválaszthatja saját maga is. Ha be van jelölve, hajtsa végre az alábbi lépéseket.
 
-   ![Tulajdonságok beállítása a beállítások lapon – fájlrendszer (csomag)](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings3.png)
+![Tulajdonságok beállítása a beállítások lapon – fájlrendszer (csomag)](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings3.png)
    
    1. Adja meg a futtatni kívánt csomagot úgy, hogy a csomag `.dtsx` **elérési útja** mezőben univerzális elnevezési konvenció (UNC) szerinti elérési utat biztosít a csomagfájl számára. A csomag tallózásával és kiválasztásával megkeresheti és kiválaszthatja a csomagot **tallózással** vagy manuálisan is megadhatja. Ha például a csomagot Azure Filesban tárolja, annak elérési útja a következő: `\\<storage account name>.file.core.windows.net\<file share name>\<package name>.dtsx` . 
    
@@ -133,13 +133,13 @@ Ha a Azure-SSIS IR SSISDB nélkül lett kiépítve **, a csomag helye** automati
    
    1. Adja meg a napló mappájának eléréséhez szükséges hitelesítő adatokat. Ha korábban már megadta a csomag-hozzáférési hitelesítő adatok értékeit (lásd fent), akkor a **csomag-hozzáférési hitelesítő adatokkal megegyező** jelölőnégyzet bejelölésével újra felhasználhatja őket. Ellenkező esetben adja meg a naplózási hozzáférési hitelesítő adatok értékeit a **tartomány**, a **Felhasználónév**és a **jelszó** mezőkben. Ha például a naplókat Azure Filesban tárolja, a tartomány `Azure` , a Felhasználónév `<storage account name>` és a jelszó `<storage account key>` . Azt is megteheti, hogy a Azure Key Vaultban tárolt titkos kulcsokat használja értékként (lásd fent).
    
-   Az összes korábban említett UNC elérési út esetében a teljes fájlnévnek 260 karakternél rövidebbnek kell lennie. A könyvtár nevének 248 karakternél rövidebbnek kell lennie.
+Az összes korábban említett UNC elérési út esetében a teljes fájlnévnek 260 karakternél rövidebbnek kell lennie. A könyvtár nevének 248 karakternél rövidebbnek kell lennie.
 
 ##### <a name="package-location-file-system-project"></a>Csomag helye: fájlrendszer (projekt)
 
 Ha a csomag helyeként kiválasztja a **fájlrendszert (projekt)** , hajtsa végre az alábbi lépéseket.
 
-   ![Tulajdonságok beállítása a beállítások lapon – fájlrendszer (projekt)](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings4.png)
+![Tulajdonságok beállítása a beállítások lapon – fájlrendszer (projekt)](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings4.png)
 
    1. Adja meg a futtatni kívánt csomagot úgy, hogy a projekt `.ispac` **elérési útja** mezőben és a projekthez tartozó csomagfájl UNC elérési útját (a csomaggal együtt) adja meg `.dtsx` . **Package name** A projekt tallózásával és kiválasztásával megkeresheti és kiválaszthatja a **Tallózás a file Storage** használatával vagy az elérési utat manuálisan. Ha például a projektet Azure Filesban tárolja, annak elérési útja a következő: `\\<storage account name>.file.core.windows.net\<file share name>\<project name>.ispac` .
 
@@ -161,19 +161,19 @@ Ha a csomag helyeként kiválasztja a **fájlrendszert (projekt)** , hajtsa vég
    
    1. Adja meg a napló mappájának eléréséhez szükséges hitelesítő adatokat. Ha korábban már megadta a csomag-hozzáférési hitelesítő adatok értékeit (lásd fent), akkor a **csomag-hozzáférési hitelesítő adatokkal megegyező** jelölőnégyzet bejelölésével újra felhasználhatja őket. Ellenkező esetben adja meg a naplózási hozzáférési hitelesítő adatok értékeit a **tartomány**, a **Felhasználónév**és a **jelszó** mezőkben. Ha például a naplókat Azure Filesban tárolja, a tartomány `Azure` , a Felhasználónév `<storage account name>` és a jelszó `<storage account key>` . Azt is megteheti, hogy a Azure Key Vaultban tárolt titkos kulcsokat használja értékként (lásd fent).
    
-   Az összes korábban említett UNC elérési út esetében a teljes fájlnévnek 260 karakternél rövidebbnek kell lennie. A könyvtár nevének 248 karakternél rövidebbnek kell lennie.
+Az összes korábban említett UNC elérési út esetében a teljes fájlnévnek 260 karakternél rövidebbnek kell lennie. A könyvtár nevének 248 karakternél rövidebbnek kell lennie.
 
 ##### <a name="package-location-embedded-package"></a>Csomag helye: beágyazott csomag
 
 Ha a csomag helyeként a **beágyazott csomagot** választja, hajtsa végre a következő lépéseket.
 
-   ![Tulajdonságok beállítása a beállítások lap beágyazott csomagjához](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings5.png)
+![Tulajdonságok beállítása a beállítások lap beágyazott csomagjához](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings5.png)
 
-   1. Húzza a csomagot a futtatásához, vagy **töltse fel** a fájlt egy fájl mappájából a megadott mezőbe. A csomag automatikusan tömörítve és beágyazva lesz a tevékenység hasznos adataiba. A beágyazás után később is **letöltheti** a csomagot szerkesztésre. A beágyazott csomagot úgy is **parametrizálja** , hogy hozzárendeli azt egy olyan folyamat-paraméterhez, amely több tevékenységben is felhasználható, így optimalizálhatja a folyamat adattartalma méretét. 
+   1. Húzza át a csomagfájl (a `.dtsx` ) mappát, vagy **töltse fel** egy fájl mappájából a megadott mezőbe. A csomag automatikusan tömörítve és beágyazva lesz a tevékenység hasznos adataiba. A beágyazás után később is **letöltheti** a csomagot szerkesztésre. A beágyazott csomagot úgy is **parametrizálja** , hogy hozzárendeli azt egy olyan folyamat-paraméterhez, amely több tevékenységben is felhasználható, így optimalizálhatja a folyamat adattartalma méretét. A projektfájlok (és) beágyazásával `.ispac` jelenleg nem támogatott, így a beágyazott csomagok nem használhatnak SSIS-paramétereket és-összekötőket a Project szintű hatókörrel.
    
-   1. Ha a beágyazott csomag nem minden titkosítva van, és a csomag végrehajtása feladatot érzékeljük, akkor a **csomag végrehajtása feladat** jelölőnégyzet automatikusan ki lesz választva, és a rendszer automatikusan hozzáadja a megfelelő, a fájlrendszerre vonatkozó hivatkozásokkal rendelkező gyermek csomagokat is. 
+   1. Ha a beágyazott csomag nem minden titkosítva van, és felderítjük, hogy az alkalmazás végrehajtja a csomag végrehajtása (EPT) feladatot, a **csomag végrehajtása** jelölőnégyzet automatikusan ki lesz választva, és a rendszer automatikusan hozzáadja a fájlrendszer elérési útján hivatkozott gyermek csomagokat, így azt is beágyazhatja.
    
-      Ha nem tudjuk felderíteni a csomag végrehajtása feladatot, manuálisan kell kijelölnie a **csomag végrehajtása feladatot** jelölőnégyzetet, és hozzá kell adnia a megfelelő gyermek csomagokat a fájlrendszer hivatkozásával, ha azt is beágyazza. Ha a gyermek csomagok SQL Server referenciákat használnak, győződjön meg arról, hogy a Azure-SSIS IR a SQL Server elérhető.  Jelenleg nem támogatott a projektre vonatkozó hivatkozások használata a gyermek csomagokhoz.
+      Ha nem tudjuk felderíteni az EPT használatát, manuálisan kell kijelölnie a **csomag végrehajtása feladatot** , és fel kell vennie azokat a gyermek csomagokat, amelyekre a fájlrendszerbeli elérési út alapján hivatkozik, így azt is beágyazhatja. Ha a gyermek csomagok tárolása SQL Server adatbázisban (MSDB) történik, akkor nem ágyazhatja be őket, ezért biztosítania kell, hogy a Azure-SSIS IR hozzáférhessenek a MSDB, hogy azok a SQL Server-referenciáik használatával hozzáférjenek. A projektfájlok (és) beágyazásával `.ispac` jelenleg nem támogatott, ezért nem használhat Project-alapú referenciákat a gyermek csomagjaihoz.
    
    1. Ha a **EncryptAllWithPassword** vagy a **EncryptSensitiveWithPassword** védelmi szintet használta a csomag SSDT-n keresztüli létrehozásakor, írja be a jelszó értékét a **titkosítási jelszó** mezőbe. 
    
@@ -189,13 +189,13 @@ Ha a csomag helyeként a **beágyazott csomagot** választja, hajtsa végre a k�
    
    1. Adja meg a naplózási mappa eléréséhez szükséges hitelesítő adatokat a **tartomány**, a **Felhasználónév**és a **jelszó** mezőkben megadott értékek megadásával. Ha például a naplókat Azure Filesban tárolja, a tartomány `Azure` , a Felhasználónév `<storage account name>` és a jelszó `<storage account key>` . Azt is megteheti, hogy a Azure Key Vaultban tárolt titkos kulcsokat használja értékként (lásd fent).
    
-   Az összes korábban említett UNC elérési út esetében a teljes fájlnévnek 260 karakternél rövidebbnek kell lennie. A könyvtár nevének 248 karakternél rövidebbnek kell lennie.
+Az összes korábban említett UNC elérési út esetében a teljes fájlnévnek 260 karakternél rövidebbnek kell lennie. A könyvtár nevének 248 karakternél rövidebbnek kell lennie.
 
 ##### <a name="package-location-package-store"></a>Csomag helye: Package Store
 
 Ha a csomag helyeként a Package **Store** lehetőséget választja, hajtsa végre a következő lépéseket.
 
-   ![Tulajdonságok beállítása a beállítások lapon – csomag tároló](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings6.png)
+![Tulajdonságok beállítása a beállítások lapon – csomag tároló](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings6.png)
    
    1. A **Package Store neve**mezőben válasszon ki egy meglévő, a Azure-SSIS IRhoz csatolt csomagot.
 
@@ -221,49 +221,73 @@ Ha a csomag helyeként a Package **Store** lehetőséget választja, hajtsa vég
    
    1. Adja meg a naplózási mappa eléréséhez szükséges hitelesítő adatokat a **tartomány**, a **Felhasználónév**és a **jelszó** mezőkben megadott értékek megadásával. Ha például a naplókat Azure Filesban tárolja, a tartomány `Azure` , a Felhasználónév `<storage account name>` és a jelszó `<storage account key>` . Azt is megteheti, hogy a Azure Key Vaultban tárolt titkos kulcsokat használja értékként (lásd fent).
    
-   Az összes korábban említett UNC elérési út esetében a teljes fájlnévnek 260 karakternél rövidebbnek kell lennie. A könyvtár nevének 248 karakternél rövidebbnek kell lennie.
+Az összes korábban említett UNC elérési út esetében a teljes fájlnévnek 260 karakternél rövidebbnek kell lennie. A könyvtár nevének 248 karakternél rövidebbnek kell lennie.
 
 #### <a name="ssis-parameters-tab"></a>SSIS paraméterek lap
 
 A SSIS-csomag végrehajtása **SSIS paraméterek** lapján hajtsa végre a következő lépéseket.
 
-   ![Tulajdonságok beállítása a SSIS Parameters lapon](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-ssis-parameters.png)
+![Tulajdonságok beállítása a SSIS Parameters lapon](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-ssis-parameters.png)
 
    1. Ha a Azure-SSIS IR fut, a **SSISDB** van kiválasztva a csomag helyeként, és a **Beállítások** lapon lévő **manuális bejegyzések** jelölőnégyzet nincs bejelölve, a kiválasztott PROJEKTben és csomagban lévő meglévő SSIS-paraméterek megjelennek a hozzájuk rendelt értékekhez. Ellenkező esetben megadhatja, hogy az egyes értékek manuálisan legyenek hozzárendelve. Győződjön meg arról, hogy léteznek, és helyesen vannak megadva a csomag végrehajtásának sikerességéhez. 
    
    1. Ha a **EncryptSensitiveWithUserKey** védelmi szintet használta a csomag SSDT és **fájlrendszerrel (csomag)** való létrehozásakor, a **fájlrendszer (projekt)**, a **beágyazott csomag**vagy a **Package Store** lehetőség van kiválasztva a csomag helyeként, a lapon lévő értékek hozzárendeléséhez újra meg kell adnia a bizalmas paramétereket is. 
    
-   Ha értékeket rendel hozzá a paraméterekhez, hozzáadhat dinamikus tartalmat kifejezések, függvények, Data Factory rendszerváltozók, valamint Data Factory folyamat paramétereinek vagy változóinak használatával.
+Ha értékeket rendel hozzá a paraméterekhez, hozzáadhat dinamikus tartalmat kifejezések, függvények, Data Factory rendszerváltozók, valamint Data Factory folyamat paramétereinek vagy változóinak használatával.
 
-   Azt is megteheti, hogy a Azure Key Vaultban tárolt titkos kulcsokat használja értékként. Ehhez jelölje be a mellette lévő **Azure Key Vault** jelölőnégyzetet. Válassza ki vagy szerkessze a meglévő Key Vault társított szolgáltatást, vagy hozzon létre egy újat. Ezután válassza ki az értékhez tartozó titkos nevet és verziót. A Key Vault társított szolgáltatás létrehozásakor vagy szerkesztésekor kiválaszthatja vagy szerkesztheti a meglévő kulcstartót, vagy létrehozhat egy újat is. Ha még nem tette meg, győződjön meg arról, hogy Data Factory felügyelt identitás-hozzáférést biztosít a kulcstartóhoz. A titkos kulcsot közvetlenül a következő formátumban is megadhatja: `<key vault linked service name>/<secret name>/<secret version>` . 
+Azt is megteheti, hogy a Azure Key Vaultban tárolt titkos kulcsokat használja értékként. Ehhez jelölje be a mellette lévő **Azure Key Vault** jelölőnégyzetet. Válassza ki vagy szerkessze a meglévő Key Vault társított szolgáltatást, vagy hozzon létre egy újat. Ezután válassza ki az értékhez tartozó titkos nevet és verziót. A Key Vault társított szolgáltatás létrehozásakor vagy szerkesztésekor kiválaszthatja vagy szerkesztheti a meglévő kulcstartót, vagy létrehozhat egy újat is. Ha még nem tette meg, győződjön meg arról, hogy Data Factory felügyelt identitás-hozzáférést biztosít a kulcstartóhoz. A titkos kulcsot közvetlenül a következő formátumban is megadhatja: `<key vault linked service name>/<secret name>/<secret version>` . 
 
 #### <a name="connection-managers-tab"></a>Csatlakozáskezelő lap
 
 Hajtsa végre a következő lépéseket a SSIS-csomag végrehajtása tevékenységben a **kapcsolatkezelő** lapon.
 
-   ![Tulajdonságok beállítása a kapcsolatkezelő lapon](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-connection-managers.png)
+![Tulajdonságok beállítása a kapcsolatkezelő lapon](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-connection-managers.png)
 
    1. Ha a Azure-SSIS IR fut, a **SSISDB** van kiválasztva a csomag helyeként, és a **Beállítások** lapon lévő **manuális bejegyzések** jelölőnégyzet nincs bejelölve, a kiválasztott projektben és csomagban lévő, a SSISDB származó meglévő kapcsolatkezelő megjelennek az értékek a tulajdonságaihoz való hozzárendeléséhez. Ellenkező esetben megadhatja, hogy egy-egy értéket rendeljen hozzá a tulajdonságaihoz manuálisan. Győződjön meg arról, hogy léteznek, és helyesen vannak megadva a csomag végrehajtásának sikerességéhez. 
    
-   1. Ha a **EncryptSensitiveWithUserKey** védelmi szintet használta a csomag SSDT és **fájlrendszerrel (csomag)** való létrehozásakor, a **fájlrendszer (projekt)**, a **beágyazott csomag**vagy a **Package Store** lehetőség van kiválasztva a csomag helyeként, a lapon lévő értékek hozzárendeléséhez újra be kell írnia a bizalmas kapcsolatkezelő tulajdonságait is. 
-   
-   Ha értékeket rendel a Csatlakozáskezelő tulajdonságaihoz, a kifejezések, függvények, Data Factory rendszerváltozók és Data Factory folyamat paramétereinek vagy változóinak használatával adhat hozzá dinamikus tartalmat. 
+      A Csatlakozáskezelő megfelelő **hatókör**-, **név**-és **tulajdonságnév** beszerzéséhez nyissa meg a csomagot, amely a SSDT-on található. A csomag megnyitása után válassza ki a megfelelő Csatlakozáskezelőt, hogy megjelenjenek a SSDT **Tulajdonságok** ablakának összes tulajdonságának neve és értéke. Ezzel az információval felülbírálhatja a Csatlakozáskezelő-tulajdonságok értékeit futásidőben. 
 
-   Azt is megteheti, hogy a Azure Key Vaultban tárolt titkos kulcsokat használja értékként. Ehhez jelölje be a mellette lévő **Azure Key Vault** jelölőnégyzetet. Válassza ki vagy szerkessze a meglévő Key Vault társított szolgáltatást, vagy hozzon létre egy újat. Ezután válassza ki az értékhez tartozó titkos nevet és verziót. A Key Vault társított szolgáltatás létrehozásakor vagy szerkesztésekor kiválaszthatja vagy szerkesztheti a meglévő kulcstartót, vagy létrehozhat egy újat is. Ha még nem tette meg, győződjön meg arról, hogy Data Factory felügyelt identitás-hozzáférést biztosít a kulcstartóhoz. A titkos kulcsot közvetlenül a következő formátumban is megadhatja: `<key vault linked service name>/<secret name>/<secret version>` . 
+      ![Csatlakozáskezelő tulajdonságainak beolvasása a SSDT](media/how-to-invoke-ssis-package-ssis-activity/ssdt-connection-manager-properties.png)
+
+      Például anélkül, hogy módosítaná az eredeti csomagot a SSDT-on, átalakíthatja a helyszíni – helyszíni adatforgalmát, amely SQL Server fut a helyszíni – Felhőbeli adatforgalomra az ADF-ben futó SSIS-integráción keresztül, ha felülbírálja a **ConnectByProxy**-, **ConnectionString**-és **ConnectUsingManagedIdentity** -tulajdonságok értékeit a meglévő Ügyfélkapcsolat-kezelők esetében.
+      
+      Ezek a futásidejű felülbírálások lehetővé tehetik a saját üzemeltetésű IR (SSIS) proxyként való használatát a helyszíni adatokhoz való hozzáférés során. lásd: a [SSIS IR proxyként való konfigurálása](https://docs.microsoft.com/azure/data-factory/self-hosted-integration-runtime-proxy-ssis), valamint Azure SQL Database/felügyelt példányok kapcsolatai a legújabb MSOLEDBSQL illesztőprogrammal, amely lehetővé teszi a Azure Active Directory (HRE) HITELESÍTÉST az ADF [-alapú felügyelt identitással.](https://docs.microsoft.com/sql/integration-services/connection-manager/ole-db-connection-manager?view=sql-server-ver15#managed-identities-for-azure-resources-authentication)
+
+      ![Tulajdonságok beállítása a SSDT a kapcsolatkezelő lapon](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-connection-managers2.png)
+   
+   1. Ha a **EncryptSensitiveWithUserKey** védelmi szintet használta a csomag SSDT és **fájlrendszerrel (csomag)** való létrehozásakor, a **fájlrendszer (projekt)**, a **beágyazott csomag**vagy a **Package Store** lehetőség van kiválasztva a csomag helyeként, a lapon lévő értékek hozzárendeléséhez újra be kell írnia a bizalmas kapcsolatkezelő tulajdonságait is. 
+
+Ha értékeket rendel a Csatlakozáskezelő tulajdonságaihoz, a kifejezések, függvények, Data Factory rendszerváltozók és Data Factory folyamat paramétereinek vagy változóinak használatával adhat hozzá dinamikus tartalmat. 
+
+Azt is megteheti, hogy a Azure Key Vaultban tárolt titkos kulcsokat használja értékként. Ehhez jelölje be a mellette lévő **Azure Key Vault** jelölőnégyzetet. Válassza ki vagy szerkessze a meglévő Key Vault társított szolgáltatást, vagy hozzon létre egy újat. Ezután válassza ki az értékhez tartozó titkos nevet és verziót. A Key Vault társított szolgáltatás létrehozásakor vagy szerkesztésekor kiválaszthatja vagy szerkesztheti a meglévő kulcstartót, vagy létrehozhat egy újat is. Ha még nem tette meg, győződjön meg arról, hogy Data Factory felügyelt identitás-hozzáférést biztosít a kulcstartóhoz. A titkos kulcsot közvetlenül a következő formátumban is megadhatja: `<key vault linked service name>/<secret name>/<secret version>` . 
 
 #### <a name="property-overrides-tab"></a>Tulajdonság-felülbírálások lap
 
 Hajtsa végre a következő lépéseket a SSIS-csomag végrehajtása tevékenységének **Tulajdonságok felülbírálása** lapján.
 
-   ![Tulajdonságok beállítása a tulajdonság-felülbírálások lapon](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-property-overrides.png)
+![Tulajdonságok beállítása a tulajdonság-felülbírálások lapon](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-property-overrides.png)
 
    1. Adja meg a kiválasztott csomagban lévő meglévő tulajdonságok elérési útját, ha manuálisan szeretné hozzárendelni az értékeket. Győződjön meg arról, hogy léteznek, és helyesen vannak megadva a csomag végrehajtásának sikerességéhez. A felhasználói változó értékének felülbírálásához például adja meg az elérési útját a következő formátumban: `\Package.Variables[User::<variable name>].Value` . 
+
+      A Package tulajdonság megfelelő **elérési útját** a SSDT-on található csomag megnyitásával szerezheti be. A csomag megnyitása után válassza ki a vezérlési folyamat és **konfigurációk** tulajdonságot a SSDT **Tulajdonságok** ablakában. Ezután a configurations ( **konfigurációk** ) tulajdonság melletti három pont (**..**.) gombra kattintva nyissa meg a csomag- **konfigurációk szervezőjét** , amelyet általában a csomag [-telepítési modellben való létrehozásához](https://docs.microsoft.com/sql/integration-services/create-package-configurations?view=sql-server-2014)használ. 
+
+      ![Csomag tulajdonságainak beolvasása az SSDT-konfigurációk tulajdonságból](media/how-to-invoke-ssis-package-ssis-activity/ssdt-package-properties.png)
+
+      A csomag- **konfigurációk szervezője**lapon jelölje be a csomag konfigurációjának **engedélyezése** jelölőnégyzetet, és a **Hozzáadás...** gombot a **csomag konfigurálása varázsló**megnyitásához. 
+      
+      A **csomag konfigurációja varázslóban**válassza ki az **XML konfigurációs fájl** elemet a **konfiguráció típusa** legördülő menüből, és a **konfigurációs beállítások megadása közvetlenül** gombra, adja meg a konfigurációs fájl nevét, majd kattintson a **Next >(tovább** ) gombra. 
+
+      ![Csomag tulajdonságainak beolvasása a SSDT-konfigurációk szervezőjének](media/how-to-invoke-ssis-package-ssis-activity/ssdt-package-properties2.png)
+
+      Végül válassza ki azt a csomag-tulajdonságokat, amelynek elérési útját és a **következő >** gombot.  Ekkor megtekintheti, másolhatja & beillesztheti a kívánt Package tulajdonság elérési útját, és mentheti azokat a konfigurációs fájlban. Ezzel az információval felülbírálhatja a csomagok tulajdonságainak értékeit futásidőben. 
+
+      ![Csomag tulajdonságainak beolvasása a SSDT-konfiguráció varázslóból](media/how-to-invoke-ssis-package-ssis-activity/ssdt-package-properties3.png)
    
    1. Ha a **EncryptSensitiveWithUserKey** védelmi szintet használta a csomag SSDT és **fájlrendszerrel (csomag)** való létrehozásakor, a **fájlrendszer (projekt)**, a **beágyazott csomag**vagy a **Package Store** lehetőség van kiválasztva a csomag helyeként, a lapon lévő értékek hozzárendeléséhez újra meg kell adnia a bizalmas csomag tulajdonságait is. 
    
-   Amikor értékeket rendel a csomag tulajdonságaihoz, hozzáadhat dinamikus tartalmat kifejezések, függvények, Data Factory rendszerváltozók, valamint Data Factory folyamat paramétereinek vagy változóinak használatával.
+Amikor értékeket rendel a csomag tulajdonságaihoz, hozzáadhat dinamikus tartalmat kifejezések, függvények, Data Factory rendszerváltozók, valamint Data Factory folyamat paramétereinek vagy változóinak használatával.
 
-   A konfigurációs fájlokban és a **SSIS paraméterek** lapon hozzárendelt értékek felülbírálása a **Csatlakozáskezelő** vagy a **tulajdonság felülbírálási** lapjaival lehetséges. A **kapcsolatkezelő** lapon megadott értékek felülbírálása a **Tulajdonságok** felülbírálásai lapon is megadható.
+A konfigurációs fájlokban és a **SSIS paraméterek** lapon hozzárendelt értékek felülbírálása a **Csatlakozáskezelő** vagy a **tulajdonság felülbírálási** lapjaival lehetséges. A **kapcsolatkezelő** lapon megadott értékek felülbírálása a **Tulajdonságok** felülbírálásai lapon is megadható.
 
 A folyamat konfigurációjának ellenőrzéséhez kattintson az **Érvényesítés** elemre az eszköztáron. A folyamat- **ellenőrzési jelentés**bezárásához válassza a elemet **>>** .
 

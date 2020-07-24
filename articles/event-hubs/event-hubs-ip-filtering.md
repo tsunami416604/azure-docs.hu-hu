@@ -2,13 +2,13 @@
 title: Azure Event Hubs tűzfalszabályok | Microsoft Docs
 description: A tűzfalszabályok használatával engedélyezheti az adott IP-címekről az Azure Event Hubs való kapcsolódást.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: fb9fa72af7127224afdcf70ecca1c851e9212c4d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/16/2020
+ms.openlocfilehash: 4c42f70a4f28c560c321f7c1e825b66514a8029e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85320422"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87002420"
 ---
 # <a name="configure-ip-firewall-rules-for-an-azure-event-hubs-namespace"></a>IP-tűzfalszabályok konfigurálása Azure Event Hubs-névtérhez
 Alapértelmezés szerint a Event Hubs névterek az internetről érhetők el, feltéve, hogy a kérés érvényes hitelesítéssel és engedélyezéssel rendelkezik. Az IP-tűzfallal továbbra is korlátozhatja, hogy csak IPv4-címek vagy IPv4-címtartományok legyenek a [CIDR (osztály nélküli tartományok közötti útválasztás)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) jelöléssel.
@@ -21,14 +21,13 @@ Ez a funkció olyan helyzetekben hasznos, amikor az Azure Event Hubs csak bizony
 > A megbízható Microsoft-szolgáltatások nem támogatottak, ha a virtuális hálózatok implementálva vannak.
 >
 > Olyan általános Azure-forgatókönyvek, amelyek nem működnek a virtuális hálózatokkal (vegye figyelembe, hogy a lista **nem** teljes) –
-> - Azure Monitor (diagnosztikai beállítás)
 > - Azure Stream Analytics
 > - Integráció a Azure Event Grid
 > - Azure IoT Hub útvonalak
 > - Azure IoT Device Explorer
 >
 > A következő Microsoft-szolgáltatások szükségesek virtuális hálózaton
-> - Azure Web Apps
+> - Azure-webalkalmazások
 > - Azure Functions
 
 
@@ -73,7 +72,7 @@ Sablon paraméterei:
 > ```json
 > "defaultAction": "Allow"
 > ```
-> erre:
+> a következőre:
 > ```json
 > "defaultAction": "Deny"
 > ```

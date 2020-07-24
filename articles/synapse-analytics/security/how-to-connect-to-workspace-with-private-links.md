@@ -1,5 +1,5 @@
 ---
-title: Csatlakozás Azure-beli szinapszis-munkaterülethez privát hivatkozások használatával
+title: Csatlakozás egy szinapszis-munkaterülethez privát hivatkozások használatával
 description: Ez a cikk bemutatja, hogyan csatlakozhat az Azure szinapszis-munkaterülethez privát hivatkozások használatával
 author: RonyMSFT
 ms.service: synapse-analytics
@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0f2e01390a1ddd179e50523a8b5748994524a52e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 17636bf993df5105093ca690e36db22493a2472e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85193872"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87005973"
 ---
 # <a name="connect-to-your-azure-synapse-workspace-using-private-links-preview"></a>Csatlakozás az Azure szinapszis-munkaterülethez privát hivatkozások használatával (előzetes verzió)
 
@@ -47,7 +47,7 @@ Válassza a Next (tovább) lehetőséget **: a konfiguráció>** a telepítés k
 
 A **konfiguráció** lapon válassza ki azt a **virtuális hálózatot** és **alhálózatot** , amelyben létre szeretné hozni a magánhálózati végpontot. Létre kell hoznia egy DNS-rekordot is, amely a privát végponthoz van leképezve.
 
-Válassza az **Igen** lehetőséget a privát **DNS-zónával való integráláshoz** , hogy a privát VÉGPONTOT egy privát DNS-zónába integrálja. Ha nem rendelkezik a VNet társított saját DNS-zónával, a rendszer létrehoz egy új privát DNS-zónát. Válassza a **felülvizsgálat + létrehozás** lehetőséget, ha elkészült.
+Válassza az **Igen** lehetőséget a privát **DNS-zónával való integráláshoz** , hogy a privát VÉGPONTOT egy privát DNS-zónába integrálja. Ha nem rendelkezik a Microsoft Azure Virtual Networkhoz tartozó saját DNS-zónával, a rendszer létrehoz egy új privát DNS-zónát. Válassza a **felülvizsgálat + létrehozás** lehetőséget, ha elkészült.
 
 ![Előfizetés és régió részleteinek kiválasztása](./media/how-to-connect-to-workspace-with-private-links/private-endpoint-4.png)
 
@@ -57,7 +57,7 @@ Ha a telepítés befejeződött, nyissa meg az Azure szinapszis munkaterületét
 
 ## <a name="next-steps"></a>További lépések
 
-További információ a [felügyelt munkaterület VNet](./synapse-workspace-managed-vnet.md)
+További információ a [felügyelt munkaterületről Virtual Network](./synapse-workspace-managed-vnet.md)
 
 További információ a [felügyelt privát végpontokról](./synapse-workspace-managed-private-endpoints.md)
 

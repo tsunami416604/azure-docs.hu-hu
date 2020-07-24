@@ -8,11 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: tagore
-ms.openlocfilehash: 80481bc11933b0404079221f23b5054024f00acb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 471aa6e5297f8b68f08567a66e3f07e9688ca57e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80811353"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87002930"
 ---
 # <a name="manage-cloud-services-in-the-azure-portal"></a>Cloud Services kezelése a Azure Portal
 A Azure Portal **Cloud Services** területén a következőket teheti:
@@ -76,7 +77,7 @@ A sikeres üzembe helyezési felcserélés két fő előfeltétele:
 
 - Ha statikus IP-címet szeretne használni az üzemi tárolóhelyhez, le kell foglalni egyet az előkészítési tárolóhelyhez is. Ellenkező esetben a swap sikertelen lesz.
 
-- A felcserélés végrehajtása előtt a szerepkörök összes példányának futnia kell. A példányok állapotát a Azure Portal **Áttekintés** paneljén tekintheti meg. Azt is megteheti, hogy a [Get-AzureRole](/powershell/module/servicemanagement/azure/get-azurerole?view=azuresmps-3.7.0) parancsot használja a Windows PowerShellben.
+- A felcserélés végrehajtása előtt a szerepkörök összes példányának futnia kell. A példányok állapotát a Azure Portal **Áttekintés** paneljén tekintheti meg. Azt is megteheti, hogy a [Get-AzureRole](/powershell/module/servicemanagement/azure.service/get-azurerole?view=azuresmps-3.7.0) parancsot használja a Windows PowerShellben.
 
 Vegye figyelembe, hogy a vendég operációs rendszer frissítései és a szolgáltatás-javító műveletek miatt a telepítési swap-feladatok sikertelenek lehetnek. További információ: a [Cloud Service üzembe helyezési problémáinak elhárítása](cloud-services-troubleshoot-deployment-problems.md).
 

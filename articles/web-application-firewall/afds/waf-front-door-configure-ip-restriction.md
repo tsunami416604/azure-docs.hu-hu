@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.topic: article
 ms.date: 03/26/2020
 ms.author: tyao
-ms.openlocfilehash: 077f127648688b25d45b433fa2bc94ee011b3f2d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f41dc688996b2431060a3cde209ca1ed4a21fe8c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80336074"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87005616"
 ---
 # <a name="configure-an-ip-restriction-rule-with-a-web-application-firewall-for-azure-front-door"></a>IP-korlátozási szabály konfigurálása az Azure-hoz készült webalkalmazási tűzfallal
 
@@ -31,7 +31,7 @@ Hozzon létre egy Azure-beli bejárati profilt a gyors üzembe helyezési útmut
 ### <a name="create-a-waf-policy"></a>WAF szabályzat létrehozása
 
 1. A Azure Portal válassza az **erőforrás létrehozása**elemet, írja be a **webalkalmazási tűzfal** kifejezést a keresőmezőbe, majd válassza a **webalkalmazási tűzfal (WAF)** lehetőséget.
-2. Válassza a **Létrehozás** lehetőséget.
+2. Kattintson a **Létrehozás** gombra.
 3. A **WAF házirend létrehozása** lapon a következő értékekkel fejezheti be az **alapok** lapot:
    
    |Beállítás  |Érték  |
@@ -53,7 +53,7 @@ Hozzon létre egy Azure-beli bejárati profilt a gyors üzembe helyezési útmut
    |Beállítás  |Érték  |
    |---------|---------|
    |Egyéni szabály neve     |FdWafCustRule|
-   |Állapot     |Engedélyezve|
+   |status     |Engedélyezve|
    |Szabály típusa     |Match|
    |Prioritás    |100|
    |Egyezés típusa     |IP-cím|
@@ -168,7 +168,7 @@ Mielőtt megkezdené az IP-korlátozási szabályzat konfigurálását, állíts
 #### <a name="set-up-your-powershell-environment"></a>A PowerShell-környezet beállítása
 Azure PowerShell olyan parancsmagokat biztosít, amelyek a [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) modellt használják az Azure-erőforrások kezeléséhez.
 
-Az [Azure PowerShellt](https://docs.microsoft.com/powershell/azure/overview) telepítheti a helyi számítógépen és bármely PowerShell-munkamenetben használhatja. Kövesse az oldalon megjelenő utasításokat, és jelentkezzen be a PowerShellbe az Azure-beli hitelesítő adataival, majd telepítse az az modult.
+Az [Azure PowerShellt](https://docs.microsoft.com/powershell/azure/) telepítheti a helyi számítógépen és bármely PowerShell-munkamenetben használhatja. Kövesse az oldalon megjelenő utasításokat, és jelentkezzen be a PowerShellbe az Azure-beli hitelesítő adataival, majd telepítse az az modult.
 
 1. Kapcsolódjon az Azure-hoz az alábbi paranccsal, majd jelentkezzen be egy interaktív párbeszédablak használatával.
     ```

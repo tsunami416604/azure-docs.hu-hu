@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 06/26/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 67064cf694445acf8472b958660133c2f2d31db9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 33b4c59e14301e496d0eddafa7bdfdf201b7aa29
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85660842"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87005905"
 ---
 # <a name="windows-stop-error---status-no-memory"></a>Windows leállási hiba – „nincs memória” állapot
 
@@ -26,7 +27,7 @@ Ez a cikk olyan problémák megoldását ismerteti, amelyekben a Windows nem ind
 
 ## <a name="symptom"></a>Hibajelenség
 
-Ha [rendszerindítási diagnosztikát](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) használ a virtuális gép (VM) képernyőképének megtekintéséhez, látni fogja, hogy a képernyőkép a következő hibakódot jeleníti meg: `0xC0000017` . A futtatott Windows-verziótól függően előfordulhat, hogy ez a kód a **Windows rendszerindítási kezelőjében** vagy a **helyreállítási képernyőn**jelenik meg.
+Ha [rendszerindítási diagnosztikát](./boot-diagnostics.md) használ a virtuális gép (VM) képernyőképének megtekintéséhez, látni fogja, hogy a képernyőkép a következő hibakódot jeleníti meg: `0xC0000017` . A futtatott Windows-verziótól függően előfordulhat, hogy ez a kód a **Windows rendszerindítási kezelőjében** vagy a **helyreállítási képernyőn**jelenik meg.
 
    **Windows rendszerindítási kezelő**
 
@@ -56,7 +57,7 @@ Az operációs rendszer lemeze teljes, túl töredezett, vagy az operációs ren
 
 ### <a name="create-and-access-a-repair-vm"></a>Javítási virtuális gép létrehozása és elérése
 
-1. A virtuálisgép- [javítási parancsok 1-3-es lépéseit](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) használva készítse elő a javítási virtuális gépet.
+1. A virtuálisgép- [javítási parancsok 1-3-es lépéseit](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) használva készítse elő a javítási virtuális gépet.
 1. A Távoli asztali kapcsolat kapcsolódása a javítási virtuális géphez.
 
 ### <a name="for-generation-2-vms-assign-a-letter-to-the-extensible-firmware-interface-efi-partition"></a>A 2. generációs virtuális gépekhez rendeljen egy betűt a Extensible Firmware Interface (EFI) partícióhoz:
@@ -93,7 +94,7 @@ Ha 2. generációs virtuális gépet használ, előfordulhat, hogy a csatlakozta
 Most, hogy a hibás lemez csatlakoztatva van a javítási virtuális géphez, ellenőrizze, hogy az adott lemezen lévő operációs rendszer elegendő lemezterülettel rendelkezik-e a megfelelő működéshez. 
 
 1. Ellenőrizze, hogy a lemez megtelt-e, és kattintson a jobb gombbal a csatlakoztatott lemez meghajtóján, majd válassza a **Tulajdonságok parancsot**.
-1. Ha a lemez **300 MB-nál kevesebb szabad területtel**rendelkezik, [bontsa ki azt legfeljebb 1 TB](https://docs.microsoft.com/azure/virtual-machines/windows/expand-os-disk)-ra a PowerShell használatával.
+1. Ha a lemez **300 MB-nál kevesebb szabad területtel**rendelkezik, [bontsa ki azt legfeljebb 1 TB](../windows/expand-os-disk.md)-ra a PowerShell használatával.
 1. Ha a lemez mérete **1 TB**, akkor el kell végeznie a lemez karbantartását. Lemezterület felszabadításához használhatja a Lemezkarbantartó [eszközt](https://support.microsoft.com/help/4026616/windows-10-disk-cleanup) .
 1. Nyisson meg egy rendszergazda jogú parancssort (Futtatás rendszergazdaként), és végezze el a detöredezettséget a meghajtón:
 
@@ -222,4 +223,4 @@ A memóriakép-gyűjtés és a soros konzol engedélyezéséhez futtassa a köve
    
 ### <a name="rebuild-the-vm"></a>A virtuális gép újraépítése
 
-A virtuális gép újraépítéséhez használja [a virtuális gép javítási parancsainak 5. lépését](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) .
+A virtuális gép újraépítéséhez használja [a virtuális gép javítási parancsainak 5. lépését](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) .

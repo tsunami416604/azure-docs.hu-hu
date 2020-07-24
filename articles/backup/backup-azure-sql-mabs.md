@@ -3,11 +3,12 @@ title: SQL Server biztonsági mentése Azure Backup Server használatával
 description: Ebből a cikkből megtudhatja, hogyan készíthet biztonsági mentést SQL Server adatbázisokról Microsoft Azure Backup Server (MABS) használatával.
 ms.topic: conceptual
 ms.date: 03/24/2017
-ms.openlocfilehash: 2bb172ca36f3f932fdaaf5b71e8fa183c04d1510
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d682e63424ca247161e9784a8a05b91186da54b7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84194184"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87003644"
 ---
 # <a name="back-up-sql-server-to-azure-by-using-azure-backup-server"></a>SQL Server biztonsági mentése az Azure-ba Azure Backup Server használatával
 
@@ -18,6 +19,34 @@ SQL Server-adatbázis biztonsági mentése és helyreállítása az Azure-ból:
 1. Hozzon létre egy biztonsági mentési szabályzatot SQL Server adatbázisok védelméhez az Azure-ban.
 1. Hozzon létre igény szerinti biztonsági másolatokat az Azure-ban.
 1. Állítsa helyre az adatbázist az Azure-ban.
+
+## <a name="prerequisites-and-limitations"></a>Előfeltételek és korlátozások
+
+* Ha olyan adatbázist használ, amelynek fájljai távoli fájlmegosztásban találhatók, a védelem sikertelen lesz, és a 104-es azonosítójú hibaüzenet jelenik meg. A MABS nem támogatja a távoli fájlmegosztás SQL Server-adatvédelmének védelmét.
+* A MABS nem tudja megóvni a távoli SMB-megosztásokon tárolt adatbázisokat.
+* Győződjön meg arról, hogy a [rendelkezésre állási csoport replikái csak olvashatóként vannak konfigurálva](/sql/database-engine/availability-groups/windows/configure-read-only-access-on-an-availability-replica-sql-server?view=sql-server-ver15).
+* Explicit módon hozzá kell adnia a rendszerfiók **NTAuthority\System** a sysadmin (rendszergazda) csoporthoz SQL Serveron.
+* Ha egy másik helyre történő helyreállítást hajt végre egy részlegesen tárolt adatbázis esetében, győződjön meg arról, hogy a célként megadott SQL-példányon engedélyezve van a [tárolt adatbázisok](/sql/relational-databases/databases/migrate-to-a-partially-contained-database?view=sql-server-ver15#enable) funkció.
+* Ha egy másik helyre történő helyreállítást hajt végre egy file stream-adatbázis esetében, akkor győződjön meg arról, hogy a cél SQL-példányon engedélyezve van a [file stream Database](/sql/relational-databases/blob/enable-and-configure-filestream?view=sql-server-ver15) szolgáltatás.
+* Az SQL Server AlwaysOn rendelkezésre állási csoportok védelme:
+  * A MABS észleli a rendelkezésre állási csoportokat, amikor lekérdezést futtat a védelmi csoport létrehozásakor.
+  * A MABS észleli a feladatátvételt, és folytatja az adatbázis védelmét.
+  * A MABS támogatja a többhelyes fürtök konfigurációját SQL Server egy példányához.
+* A AlwaysOn szolgáltatást használó adatbázisok védelméhez a MABS a következő korlátozásokkal rendelkezik:
+  * A MABS tiszteletben tartja a biztonsági mentési szabályzatot a SQL Serverban beállított rendelkezésre állási csoportok számára, a következő módon:
+    * Másodlagos előnyben részesítése – A biztonsági mentéseket egy másodlagos replikán kell végrehajtani, kivéve ha az elsődleges replika az egyetlen online replika. Ha több másodlagos replika érhető el, akkor a legmagasabb biztonsági mentési prioritású csomópont lesz kiválasztva a biztonsági mentéshez. Ha csak az elsődleges replika érhető el, akkor a biztonsági mentést az elsődleges replikán kell megtörténnie.
+    * Csak másodlagos – Az elsődleges replikán nem hajtható végre biztonsági mentés. Ha az elsődleges replika az egyetlen online replika, a biztonsági mentés nem lesz végrehajtva.
+    * Elsődleges – A biztonsági mentéseket mindig az elsődleges replikán kell végrehajtani.
+    * Bármely replika – A biztonsági mentések bármelyik rendelkezésre állási replikán végrehajthatók a rendelkezésre állási csoportban. A biztonsági mentéshez használt csomópont kiválasztása a csomópontok biztonsági mentési prioritása alapján történik.
+  * Vegye figyelembe a következőket:
+    * A biztonsági mentések bármilyen olvasható replikáról megtörténhetnek – ez az elsődleges, a szinkron másodlagos, az aszinkron másodlagos.
+    * Ha bármely replika ki van zárva a biztonsági mentésből, például a **kizárási replika** engedélyezve van, vagy nem olvashatóként van megjelölve, akkor a replika nem lesz kiválasztva a biztonsági mentéshez az egyik lehetőség közül.
+    * Ha több replika érhető el és olvasható, akkor a legmagasabb biztonsági mentési prioritású csomópont lesz kiválasztva a biztonsági mentéshez.
+    * Ha a biztonsági mentés sikertelen a kiválasztott csomóponton, a biztonsági mentési művelet meghiúsul.
+    * Az eredeti helyre történő helyreállítás nem támogatott.
+* SQL Server 2014 vagy újabb biztonsági mentési problémák:
+  * Az SQL Server 2014 új funkciót adott hozzá, amely létrehoz egy adatbázist a helyszíni SQL Server számára a [Windows Azure Blob Storage-ban](/sql/relational-databases/databases/sql-server-data-files-in-microsoft-azure?view=sql-server-ver15). A MABS nem használható ennek a konfigurációnak a megvédésére.
+  * Létezik néhány ismert probléma, amely a "másodlagos előnyben részesített" biztonsági mentést részesíti előnyben az SQL-AlwaysOn beállításnál. A MABS mindig a másodlagos biztonsági mentést végzi. Ha nem található másodlagos, akkor a biztonsági mentés sikertelen lesz.
 
 ## <a name="before-you-start"></a>Előkészületek
 
@@ -31,7 +60,7 @@ SQL Server-adatbázisok védelméhez az Azure-ban először hozzon létre egy bi
 1. A védelmi csoport létrehozásához válassza az **új** lehetőséget.
 
     ![Védelmi csoport létrehozása Azure Backup Server](./media/backup-azure-backup-sql/protection-group.png)
-1. A kezdőlapon tekintse át a védelmi csoport létrehozásával kapcsolatos útmutatást. Ezután válassza a **tovább**lehetőséget.
+1. A kezdőlapon tekintse át a védelmi csoport létrehozásával kapcsolatos útmutatást. Ezután kattintson a **Tovább** gombra.
 1. A védelmi csoport típusa beállításnál válassza a **kiszolgálók**elemet.
 
     ![A kiszolgálók védelmi csoport típusának kiválasztása](./media/backup-azure-backup-sql/pg-servers.png)
@@ -59,19 +88,19 @@ SQL Server-adatbázisok védelméhez az Azure-ban először hozzon létre egy bi
     Alapértelmezés szerint az MABS egy kötetet hoz létre adatforrásként (SQL Server adatbázis). A kötet a kezdeti biztonsági másolathoz használatos. Ebben a konfigurációban a logikai lemezkezelő (LDM) a 300 adatforrásokra (SQL Server adatbázisokra) korlátozza a MABS védelmét. Ennek a korlátozásnak a megkerüléséhez válassza az **DPM-tárolóban található adatkeresés**lehetőséget. Ha ezt a beállítást használja, a MABS egyetlen kötetet használ több adatforráshoz. Ez a beállítás lehetővé teszi, hogy a MABS akár 2 000 SQL Server-adatbázist is megvédjen.
 
     Ha a **kötetek automatikus növelését**választja, akkor a MABS képes a megnövekedett biztonsági mentési kötetre, mert az éles adatmennyiség növekszik. Ha nem választja ki **automatikusan a kötetek növekedését**, a MABS korlátozza a biztonsági mentési tárolót a védelmi csoport adatforrásaira.
-1. Ha Ön rendszergazda, dönthet úgy, hogy a kezdeti biztonsági mentést **automatikusan továbbítja a hálózaton keresztül** , és kiválasztja az átvitel időpontját. Vagy válassza a biztonsági mentés **manuális** átvitelét. Ezután válassza a **tovább**lehetőséget.
+1. Ha Ön rendszergazda, dönthet úgy, hogy a kezdeti biztonsági mentést **automatikusan továbbítja a hálózaton keresztül** , és kiválasztja az átvitel időpontját. Vagy válassza a biztonsági mentés **manuális** átvitelét. Ezután kattintson a **Tovább** gombra.
 
     ![Replika-létrehozási módszer választása a MABS-ben](./media/backup-azure-backup-sql/pg-manual.png)
 
     A kezdeti biztonsági másolat a teljes adatforrás (SQL Server adatbázis) átvitelét igényli. A biztonsági mentési adatok az üzemi kiszolgálóról (SQL Server számítógépről) a MABS-re kerülnek. Ha a biztonsági mentés nagy méretű, akkor az adatátvitelt a hálózaton keresztül okozhatja a sávszélesség zsúfoltsága. Emiatt a rendszergazdák úgy dönthetnek, hogy cserélhető adathordozót használnak a kezdeti biztonsági mentés **manuális**átviteléhez. Az adatok pedig automatikusan átvihetők **a hálózaton keresztül** egy adott időpontban.
 
     A kezdeti biztonsági mentés befejeződése után a biztonsági mentések a kezdeti biztonsági másolaton fokozatosan folytatódnak. A növekményes biztonsági mentések általában kicsik, és könnyen átvihetők a hálózaton keresztül.
-1. Válassza ki a konzisztencia-ellenőrzés futtatásának idejét. Ezután válassza a **tovább**lehetőséget.
+1. Válassza ki a konzisztencia-ellenőrzés futtatásának idejét. Ezután kattintson a **Tovább** gombra.
 
     ![A konzisztencia-ellenőrzés futtatási idejének kiválasztása](./media/backup-azure-backup-sql/pg-consistent.png)
 
     A MABS képes konzisztencia-ellenőrzés futtatására a biztonsági mentési pont integritásán. Kiszámítja a biztonságimásolat-fájl ellenőrzőösszegét az üzemi kiszolgálón (ebben a példában a SQL Server számítógép) és az adott fájl biztonsági másolatait a MABS-ben. Ha az ellenőrzési ütközést észlel, akkor a rendszer a MABS található biztonsági másolati fájlt is megsérültnek tekinti. A MABS az ellenőrzőösszeg-eltérésnek megfelelő blokkok küldésével javítja a biztonsági másolatban szereplő adatokat. Mivel a konzisztencia-ellenőrzés teljesítmény-igényes művelet, a rendszergazdák dönthetnek úgy, hogy a konzisztencia-ellenőrzés vagy a Futtatás automatikusan történik.
-1. Válassza ki az Azure-ban védetté tenni kívánt adatforrásokat. Ezután válassza a **tovább**lehetőséget.
+1. Válassza ki az Azure-ban védetté tenni kívánt adatforrásokat. Ezután kattintson a **Tovább** gombra.
 
     ![Válassza ki az Azure-ban védetté tenni kívánt adatforrásokat](./media/backup-azure-backup-sql/pg-sqldatabases.png)
 1. Ha Ön rendszergazda, kiválaszthatja a szervezeti szabályzatoknak megfelelő biztonsági mentési ütemterveket és adatmegőrzési házirendeket.
@@ -135,12 +164,12 @@ Védett entitás, például SQL Server adatbázis helyreállítása az Azure-bó
 1. Kattintson a jobb gombbal az adatbázis nevére, és válassza a **helyreállítás**lehetőséget.
 
     ![Adatbázis helyreállítása az Azure-ból](./media/backup-azure-backup-sql/sqlbackup-recover.png)
-1. A DPM a helyreállítási pont részleteit jeleníti meg. Válassza a **Tovább** lehetőséget. Az adatbázis felülírásához válassza a helyreállítás típust a **SQL Server eredeti példányára**. Ezután válassza a **tovább**lehetőséget.
+1. A DPM a helyreállítási pont részleteit jeleníti meg. Válassza a **Tovább** lehetőséget. Az adatbázis felülírásához válassza a helyreállítás típust a **SQL Server eredeti példányára**. Ezután kattintson a **Tovább** gombra.
 
     ![Adatbázis helyreállítása az eredeti helyükre](./media/backup-azure-backup-sql/sqlbackup-recoveroriginal.png)
 
     Ebben a példában a DPM lehetővé teszi az adatbázis helyreállítását egy másik SQL Server példányba vagy egy különálló hálózati mappába.
-1. A **helyreállítási beállítások megadása** lapon választhatja ki a helyreállítási beállításokat. Kiválaszthatja például a **hálózati sávszélesség használatának szabályozását** a helyreállítás által használt sávszélesség szabályozásához. Ezután válassza a **tovább**lehetőséget.
+1. A **helyreállítási beállítások megadása** lapon választhatja ki a helyreállítási beállításokat. Kiválaszthatja például a **hálózati sávszélesség használatának szabályozását** a helyreállítás által használt sávszélesség szabályozásához. Ezután kattintson a **Tovább** gombra.
 1. Az **Összefoglalás** lapon az aktuális helyreállítási konfiguráció látható. Válassza a **helyreállítás**lehetőséget.
 
     A helyreállítás állapota a helyreállított adatbázist mutatja. A **Bezárás** gombra kattintva zárhatja be a varázslót, és megtekintheti a folyamat állapotát a **figyelés** munkaterületen.

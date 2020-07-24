@@ -2,13 +2,13 @@
 title: Az Event hub használata Apache Kafka alkalmazásból – Azure Event Hubs | Microsoft Docs
 description: Ez a cikk az Azure Event Hubs Apache Kafka támogatásáról nyújt információt.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 733623895176bb3b573c2efcbda8a40b9e2d87c0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/20/2020
+ms.openlocfilehash: 6dad797f6769e9804cce7d47ed74794fdddcfb0b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85320528"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87002478"
 ---
 # <a name="use-azure-event-hubs-from-apache-kafka-applications"></a>Az Azure Event Hubs használata Apache Kafka alkalmazásokból
 A Event Hubs egy Kafka-végpontot biztosít, amelyet a meglévő Kafka-alapú alkalmazásai használhatnak a saját Kafka-fürt futtatására. Event Hubs támogatja a [1,0-es és újabb verziójú Apache Kafka protokollt](https://kafka.apache.org/documentation/), és együttműködik a meglévő Kafka-alkalmazásokkal, beleértve a MirrorMaker is.  
@@ -79,12 +79,10 @@ A Kafka funkció Event Hubs lehetővé teszi, hogy egy protokollal írjon, és b
 
 Itt látható a még nem támogatott Kafka-funkciók listája:
 
-*   Idempotens gyártó
 *   Tranzakció
 *   Tömörítés
 *   Méret-alapú megőrzés
 *   Naplózási tömörítés
-*   Partíciók hozzáadása egy meglévő témakörhöz
 *   HTTP Kafka API-támogatás
 *   Kafka streamek
 

@@ -3,21 +3,25 @@ title: OptionsGroup FELHASZNÁLÓIFELÜLET-elem
 description: A Azure Portal Microsoft. Common. OptionsGroup felhasználói felületi elemének ismertetése. Lehetővé teszi, hogy a felhasználók a felügyelt alkalmazások telepítésekor a rendelkezésre álló lehetőségek közül választhatnak.
 author: tfitzmac
 ms.topic: conceptual
-ms.date: 06/27/2018
+ms.date: 07/09/2020
 ms.author: tomfitz
-ms.openlocfilehash: c1da0b0082bfe046adf9596a10397e9063c888be
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aa73b4cbded98291a14792a7151df9fdfb885b53
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75652345"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87004190"
 ---
 # <a name="microsoftcommonoptionsgroup-ui-element"></a>Microsoft. Common. OptionsGroup felhasználói felületi elem
 
-Az elérhető lehetőségek sorát tartalmazó kiválasztási vezérlő.
+A OptionsGroup vezérlőelem lehetővé teszi, hogy a felhasználók két vagy több lehetőség közül válasszanak ki egyet. Egy felhasználó csak egy lehetőséget választhat ki.
+
+> [!NOTE]
+> A múltban ez a vezérlő vízszintesen jeleníti meg a beállításokat. A vezérlő mostantól a választógombok függőlegesen jeleníti meg a beállításokat.
 
 ## <a name="ui-sample"></a>Felhasználói felület mintája
 
-![Microsoft.Common.OptionsGroup](./media/managed-application-elements/microsoft.common.optionsgroup.png)
+:::image type="content" source="./media/managed-application-elements/microsoft-common-optionsgroup-2.png" alt-text="Microsoft.Common.OptionsGroup":::
 
 ## <a name="schema"></a>Séma
 

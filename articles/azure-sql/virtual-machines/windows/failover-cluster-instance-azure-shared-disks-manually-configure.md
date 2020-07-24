@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/26/2020
 ms.author: mathoma
-ms.openlocfilehash: 4e704a25e0c9700afbe4fa85031d7ff4d6a8d0c1
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: e1a4a366b3e4fa045df69683d6e72b157ccf0a1f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965495"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87003627"
 ---
 # <a name="create-an-fci-with-azure-shared-disks-sql-server-on-azure-vms"></a>Az Azure Shared Disks (SQL Server Azure-beli virtuális gépeken) létrehozása
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -157,7 +157,7 @@ A fürt a felhasználói felületen való ellenőrzéséhez tegye a következők
 1. A **kiszolgálók vagy fürt kijelölése**területen adja meg mindkét virtuális gép nevét.
 1. A **tesztelési beállítások**területen válassza a **csak a kiválasztott tesztek futtatása**lehetőséget. 
 1. Válassza a **Tovább** lehetőséget.
-1. A **teszt kiválasztása**területen válassza az összes teszt lehetőséget **közvetlen tárolóhelyek** *kivételével* .
+1. A **teszt kiválasztása**területen válassza az összes teszt lehetőséget a **tárolás** *kivételével*
 
 ## <a name="test-cluster-failover"></a>Fürt feladatátvételének tesztelése
 
@@ -181,9 +181,7 @@ Miután konfigurálta a feladatátvevő fürtöt és a fürt összes összetevő
 
 1. Válassza az **új SQL Server feladatátvevő fürt telepítése**lehetőséget. A varázsló utasításait követve telepítse a SQL Server-t.
 
-   A (z)-es adatkönyvtárak fürtözött tárolón kell lenniük. A Közvetlen tárolóhelyek nem egy megosztott lemez, hanem egy, az egyes kiszolgálókon lévő kötetre mutató csatlakoztatási pont. Közvetlen tárolóhelyek szinkronizálja a kötetet mindkét csomópont között. A kötet Fürt megosztott köteteként (CSV) jelenik meg a fürtben. Használja a CSV csatlakoztatási pontot az adatkönyvtárakhoz.
-
-   ![Adatkönyvtárak](./media/failover-cluster-instance-storage-spaces-direct-manually-configure/20-data-dicrectories.png)
+Az adatkönyvtáraknak az Azure-beli megosztott lemezeken kell lenniük. 
 
 1. Miután elvégezte a varázsló utasításait, a telepítő telepíti az első csomóponton egy SQL Server-t.
 

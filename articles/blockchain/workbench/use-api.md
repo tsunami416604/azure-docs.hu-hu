@@ -4,12 +4,12 @@ description: Az Azure Blockchain Workbench előzetes verziójának használatán
 ms.date: 03/05/2020
 ms.topic: how-to
 ms.reviewer: brendal
-ms.openlocfilehash: 7c96e45c8bcc9834df7ef2a0b2a59f53fd8315cf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 696f1f2f96034f7a044f6a39182774c02804518f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85210062"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87003066"
 ---
 # <a name="using-the-azure-blockchain-workbench-preview-rest-api"></a>Az Azure Blockchain Workbench előzetes verziójának használata REST API
 
@@ -32,7 +32,7 @@ Az Blockchain Workbench API-k egy végponton keresztül érhetők el az üzembe 
 
 Az Blockchain Workbench REST APIra irányuló kérelmeket Azure Active Directory (Azure AD) védi.
 
-Ahhoz, hogy a REST API-khoz hitelesített kérelmet lehessen készíteni, az ügyfél kódjának az API meghívása előtt érvényes hitelesítő adatokkal kell rendelkeznie a hitelesítéshez. A hitelesítés a különböző szereplők által az Azure AD-ben van koordinálva, és a hitelesítést igazoló [hozzáférési jogkivonattal](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#access-token) látja el az ügyfelet. Ezután a jogkivonat a REST API kérelmek HTTP-engedélyezési fejlécében lesz elküldve. Az Azure AD-hitelesítéssel kapcsolatos további tudnivalókért tekintse meg [a Azure Active Directory fejlesztők számára](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)című témakört.
+Ahhoz, hogy a REST API-khoz hitelesített kérelmet lehessen készíteni, az ügyfél kódjának az API meghívása előtt érvényes hitelesítő adatokkal kell rendelkeznie a hitelesítéshez. A hitelesítés a különböző szereplők által az Azure AD-ben van koordinálva, és a hitelesítést igazoló [hozzáférési jogkivonattal](../../active-directory/develop/developer-glossary.md#access-token) látja el az ügyfelet. Ezután a jogkivonat a REST API kérelmek HTTP-engedélyezési fejlécében lesz elküldve. Az Azure AD-hitelesítéssel kapcsolatos további tudnivalókért tekintse meg [a Azure Active Directory fejlesztők számára](../../active-directory/develop/index.yml)című témakört.
 
 A hitelesítéssel kapcsolatos példákért tekintse meg [REST API mintákat](https://github.com/Azure-Samples/blockchain/tree/master/blockchain-workbench/rest-api-samples) .
 
@@ -44,7 +44,7 @@ Ha a Workbench API-kkal szeretne tesztelni vagy kísérletezni, a [Poster](https
 
 Két API-hívást használ egy Blockchain Workbench-alkalmazás létrehozásához. Ezt a metódust csak Workbench-rendszergazda felhasználók végezhetik el.
 
-Az alkalmazások JSON-fájljának feltöltéséhez és az alkalmazás AZONOSÍTÓjának beszerzéséhez használja az API-k [közzététele](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/applicationspost) lehetőséget.
+Az alkalmazások JSON-fájljának feltöltéséhez és az alkalmazás AZONOSÍTÓjának beszerzéséhez használja az API-k [közzététele](/rest/api/azure-blockchain-workbench/applications/applicationspost) lehetőséget.
 
 ### <a name="applications-post-request"></a>Alkalmazások POST kérelem
 
@@ -70,7 +70,7 @@ Content-Type: "application/json"
 
 ### <a name="contract-code-post-request"></a>Szerződési kód POST kérelem
 
-Használja az Applications [SZERZŐDÉSSABLON post API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/contractcodepost) -ját az alkalmazás-azonosító feltöltésével az alkalmazás szilárdsági kódjának feltöltéséhez. A hasznos adatok lehetnek egyetlen szilárdtest-fájlok vagy a szilárdtest fájlokat tartalmazó tömörített fájlok.
+Használja az Applications [SZERZŐDÉSSABLON post API](/rest/api/azure-blockchain-workbench/applications/contractcodepost) -ját az alkalmazás-azonosító feltöltésével az alkalmazás szilárdsági kódjának feltöltéséhez. A hasznos adatok lehetnek egyetlen szilárdtest-fájlok vagy a szilárdtest fájlokat tartalmazó tömörített fájlok.
 
 Cserélje le a következő értékeket:
 
@@ -98,7 +98,7 @@ Content-Type: "application/json"
 
 ## <a name="assign-roles-to-users"></a>Szerepkörök hozzárendelése felhasználókhoz
 
-Az [alkalmazások szerepkör-hozzárendelések közzététele API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/roleassignmentspost) -val az alkalmazás-azonosító, a felhasználói azonosító és az alkalmazás-szerepkör azonosítója segítségével hozzon létre egy felhasználó – szerepkör leképezést a megadott blockchain alkalmazásban. Ezt a metódust csak Workbench-rendszergazda felhasználók végezhetik el.
+Az [alkalmazások szerepkör-hozzárendelések közzététele API](/rest/api/azure-blockchain-workbench/applications/roleassignmentspost) -val az alkalmazás-azonosító, a felhasználói azonosító és az alkalmazás-szerepkör azonosítója segítségével hozzon létre egy felhasználó – szerepkör leképezést a megadott blockchain alkalmazásban. Ezt a metódust csak Workbench-rendszergazda felhasználók végezhetik el.
 
 ### <a name="role-assignments-post-request"></a>Szerepkör-hozzárendelések POST kérelem
 
@@ -132,7 +132,7 @@ HTTP/1.1 200
 
 ## <a name="list-applications"></a>Alkalmazások listázása
 
-Az [alkalmazások letöltése API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/applicationsget) -val lekérheti az összes Blockchain Workbench-alkalmazást a felhasználó számára. Ebben a példában a bejelentkezett felhasználó két alkalmazáshoz fér hozzá:
+Az [alkalmazások letöltése API](/rest/api/azure-blockchain-workbench/applications/applicationsget) -val lekérheti az összes Blockchain Workbench-alkalmazást a felhasználó számára. Ebben a példában a bejelentkezett felhasználó két alkalmazáshoz fér hozzá:
 
 - [Objektumok átvitele](https://github.com/Azure-Samples/blockchain/blob/master/blockchain-workbench/application-and-smart-contract-samples/asset-transfer/readme.md)
 - [Hűtött szállítás](https://github.com/Azure-Samples/blockchain/blob/master/blockchain-workbench/application-and-smart-contract-samples/refrigerated-transportation/readme.md)
@@ -180,7 +180,7 @@ Content-type: application/json
 
 ## <a name="list-workflows-for-an-application"></a>Az egyes alkalmazások munkafolyamatainak listázása
 
-Az [alkalmazások munkafolyamatainak BEolvasása API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/workflowsget) -val egy adott blockchain-alkalmazás összes munkafolyamatát listázhatja, amelyhez a felhasználó hozzáfér a blockchain workbenchben. Minden egyes blokklánc-alkalmazás rendelkezik egy vagy több munkafolyamattal, és minden munkafolyamathoz tartozik nulla vagy több intelligensszerződés-példány. Olyan blockchain-ügyfélalkalmazás esetén, amelyeknek csak egy munkafolyamata van, javasoljuk, hogy hagyja ki a felhasználói élmény folyamatát, amely lehetővé teszi a felhasználók számára a megfelelő munkafolyamat kiválasztását.
+Az [alkalmazások munkafolyamatainak BEolvasása API](/rest/api/azure-blockchain-workbench/applications/workflowsget) -val egy adott blockchain-alkalmazás összes munkafolyamatát listázhatja, amelyhez a felhasználó hozzáfér a blockchain workbenchben. Minden egyes blokklánc-alkalmazás rendelkezik egy vagy több munkafolyamattal, és minden munkafolyamathoz tartozik nulla vagy több intelligensszerződés-példány. Olyan blockchain-ügyfélalkalmazás esetén, amelyeknek csak egy munkafolyamata van, javasoljuk, hogy hagyja ki a felhasználói élmény folyamatát, amely lehetővé teszi a felhasználók számára a megfelelő munkafolyamat kiválasztását.
 
 ### <a name="application-workflows-request"></a>Alkalmazás-munkafolyamatok kérelme
 
@@ -214,7 +214,7 @@ Content-type: application/json
 
 ## <a name="create-a-contract-instance"></a>Szerződési példány létrehozása
 
-A [szerződések v2 utáni API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/contractsv2/contractpost) -t használva hozzon létre egy új, intelligens szerződési példányt egy munkafolyamathoz. A felhasználók csak akkor hozhatnak létre új intelligens szerződési példányt, ha a felhasználó egy alkalmazás-szerepkörhöz van társítva, amely a munkafolyamathoz intelligens szerződési példányt indíthat.
+A [szerződések v2 utáni API](/rest/api/azure-blockchain-workbench/contractsv2/contractpost) -t használva hozzon létre egy új, intelligens szerződési példányt egy munkafolyamathoz. A felhasználók csak akkor hozhatnak létre új intelligens szerződési példányt, ha a felhasználó egy alkalmazás-szerepkörhöz van társítva, amely a munkafolyamathoz intelligens szerződési példányt indíthat.
 
 > [!NOTE]
 > Ebben a példában a rendszer az API 2-es verzióját használja. A 2. verziójú szerződések API-jai részletesebben biztosítják a társított ProvisioningStatus mezőket.
@@ -477,4 +477,4 @@ Content-type: application/json
 
 ## <a name="next-steps"></a>További lépések
 
-Az Blockchain Workbench API-kkal kapcsolatos tudnivalókat az [Azure Blockchain Workbench REST API dokumentációjában](https://docs.microsoft.com/rest/api/azure-blockchain-workbench)talál.
+Az Blockchain Workbench API-kkal kapcsolatos tudnivalókat az [Azure Blockchain Workbench REST API dokumentációjában](/rest/api/azure-blockchain-workbench)talál.

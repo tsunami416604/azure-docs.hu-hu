@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/27/2019
 ms.author: mlottner
-ms.openlocfilehash: fe117cf8d05ba3392b71858acf94d1fc88c1a527
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 98afd1eb1f8a73c2d6dd3f293a07cdb70780d238
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81311566"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87004766"
 ---
 # <a name="pricing-and-associated-costs"></a>Díjszabás és kapcsolódó költségek
 
@@ -54,7 +54,7 @@ Beállítások módosítása:
 
 Az alábbi táblázat az egyes lehetőségek kapcsolódó költségeinek és következményeinek összegzését tartalmazza.
 
-|     | Használat | Megjegyzés |
+| Beállítás | Használat | Megjegyzés |
 | --- | --- | --- |
 | **Log Analytics Storage** |  |
 | Eszközökre vonatkozó javaslatok és riasztások| A szolgáltatás által létrehozott biztonsági javaslatok és riasztások | Nem kötelező |
@@ -73,7 +73,7 @@ Az alábbi táblázat az egyes lehetőségek kapcsolódó költségeinek és kö
 | | A [riasztások](concept-security-alerts.md) és [javaslatok](concept-recommendations.md) vizsgálatának részletei nem érhetők el |
 |
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 - A [nyers biztonsági adataihoz](how-to-security-data-access.md) való hozzáférés
 - [Eszköz vizsgálata](how-to-investigate-device.md)

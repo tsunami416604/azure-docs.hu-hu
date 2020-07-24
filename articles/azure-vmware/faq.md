@@ -4,11 +4,12 @@ description: Az Azure VMware-megoldással (AVS) kapcsolatos gyakori kérdésekre
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: dikamath
-ms.openlocfilehash: 1649b5649bd18b7ab53f3cc0196d7dff0f6f5b2c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f160e617163f11c02e4d661cbf1c14f63a6772f8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84112684"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87003423"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution-avs-preview"></a>Gyakran ismételt kérdések az Azure VMware Solution (AVS) előzetes verziójáról
 
@@ -84,15 +85,15 @@ A kiszolgálók 576 GB RAM-mal rendelkeznek.
 
 **Mi az egyes gazdagépek tárolási kapacitása?**
 
-Az ESXi-gazdagépek két VSAN diskgroups rendelkeznek, amelyek kapacitása 15,2 TB, a 3,2 TB NVMe cache-réteg (1,6 TB az egyes diskgroup).
+Az ESXi-gazdagépek két vSAN diskgroups rendelkeznek, amelyek kapacitása 15,2 TB, a 3,2 TB NVMe cache-réteg (1,6 TB az egyes diskgroup).
 
 **Mennyi hálózati sávszélesség érhető el az egyes ESXi-gazdagépeken?**
 
 Az ESXi-gazdagépek 25 GB/s-ig támogatják a csatlakozási sávszélességet.
 
-**Titkosítva vannak-e a VSAN-adattárolókban tárolt adatok a nyugalmi állapotban?**
+**Titkosítva vannak-e a vSAN-adattárolókban tárolt adatok a nyugalmi állapotban?**
 
-Igen, a rendszer alapértelmezés szerint titkosítja az összes VSAN-adatfájlt a Azure Key Vaultban tárolt kulcsok használatával.
+Igen, a rendszer alapértelmezés szerint titkosítja az összes vSAN-adatfájlt a Azure Key Vaultban tárolt kulcsok használatával.
 
 ## <a name="hosts-clusters-and-private-clouds"></a>Gazdagépek, fürtök és privát felhők
 
@@ -136,7 +137,7 @@ Nem, nem szükséges a helyszíni NSX használata.
 
 **Mi a VMware-szoftverek frissítési és frissítési ütemterve egy privát felhőben?**
 
-A Private Cloud szoftvercsomag frissítései a szoftvernek a VMware szoftverből származó legújabb kiadásának egy-egy verzióján belül maradnak. A Private Cloud Software-verziók eltérőek lehetnek az egyes szoftver-összetevők legújabb verzióiban (ESXi, NSX-T, vCenter, VSAN).
+A Private Cloud szoftvercsomag frissítései a szoftvernek a VMware szoftverből származó legújabb kiadásának egy-egy verzióján belül maradnak. A Private Cloud Software-verziók eltérőek lehetnek az egyes szoftver-összetevők legújabb verzióiban (ESXi, NSX-T, vCenter, vSAN).
 
 **Milyen gyakran frissül a Private Cloud Software stack?**
 
@@ -215,7 +216,7 @@ Egy [támogatási kérelem elküldésével](..\azure-portal\supportability\how-t
 > ```azurecli-interactive
 > az provider register -n Microsoft.AVS --subscription <your subscription ID>
 > ```
-> Az erőforrás-szolgáltató regisztrálásának további módjaiért tekintse meg az [Azure erőforrás-szolgáltatók és-típusok](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types)című témakört.
+> Az erőforrás-szolgáltató regisztrálásának további módjaiért tekintse meg az [Azure erőforrás-szolgáltatók és-típusok](../azure-resource-manager/management/resource-providers-and-types.md)című témakört.
 
 1. A Azure Portal a Súgó és **támogatás**területen hozzon létre egy **új támogatási kérést** , és adja meg a következő információkat a jegyhez:
    - **Probléma típusa:** Technikai
