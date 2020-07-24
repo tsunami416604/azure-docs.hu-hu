@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 02/11/2020
-ms.openlocfilehash: a08b59464855b805173fa76d696107f8a7673d39
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0ce6a754ce09e227332309878bdddd3d8c1733be
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86529567"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87021902"
 ---
 # <a name="manage-your-azure-cognitive-search-service-with-powershell"></a>Azure Cognitive Search szolgáltatás kezelése a PowerShell-lel
 > [!div class="op_single_selector"]
@@ -42,7 +42,7 @@ A szolgáltatáson belül a tartalom létrehozása és kezelése [Search Service
 
 ## <a name="check-versions-and-load-modules"></a>Verziók és betöltési modulok keresése
 
-A cikkben szereplő példák interaktívak, és emelt szintű engedélyeket igényelnek. Azure PowerShell **(az az modul)** telepíteni kell. További információ: [Install Azure PowerShell](/powershell/azure/overview).
+A cikkben szereplő példák interaktívak, és emelt szintű engedélyeket igényelnek. Azure PowerShell **(az az modul)** telepíteni kell. További információ: [Install Azure PowerShell](/powershell/azure/).
 
 ### <a name="powershell-version-check-51-or-later"></a>PowerShell-verzió-ellenőrzési (5,1 vagy újabb)
 
@@ -248,7 +248,7 @@ HostingMode       : Default
 Id                : /subscriptions/65a1016d-0f67-45d2-b838-b8f373d6d52e/resourceGroups/demo-westus/providers/Microsoft.Search/searchServices/my-demo-searchapp
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Hozzon létre [egy indexet, és](search-what-is-an-index.md) [Kérdezzen le egy indexet](search-query-overview.md) a portál, a REST API-k vagy a .net SDK használatával.
 

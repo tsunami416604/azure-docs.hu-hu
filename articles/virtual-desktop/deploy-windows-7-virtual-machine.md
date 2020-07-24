@@ -1,5 +1,5 @@
 ---
-title: Windows 7 rendszerű virtuális gép üzembe helyezése – Azure
+title: Windows 7 rendszerű virtuális gép üzembe helyezése – Azure-beli Windows virtuális asztali 2020 – Azure
 description: Windows 7 rendszerű virtuális gépek konfigurálása és központi telepítése Windows rendszerű virtuális asztalon.
 services: virtual-desktop
 author: Heidilohr
@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 542d0bcea6cfae2af2918d699952d4c054bd68cb
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: b589890f7b65b41cf6b7ba4fdf53b71173ed6a38
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86277639"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87020440"
 ---
 # <a name="deploy-a-windows-7-virtual-machine-on-windows-virtual-desktop"></a>Windows 7 rendszerű virtuális gép üzembe helyezése a Windows Virtual Desktopban
 
@@ -62,7 +62,7 @@ Windows 7 rendszerű virtuális gép beállítása Windows rendszerű virtuális
 17. Ha szeretné, tiltsa le a TCP/3389 portot a virtuális géphez való közvetlen RDP protokoll-hozzáférés eltávolításához.
 18. Szükség esetén győződjön meg arról, hogy a .NET-keretrendszer legalább 4.7.2-verzióval rendelkezik. A keretrendszer frissítése különösen fontos, ha egyéni rendszerképet hoz létre.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Windows rendszerű virtuális asztal üzembe helyezése most már készen áll a használatra. A kezdéshez [töltse le a Windows rendszerű virtuális asztali ügyfél legújabb verzióját](https://aka.ms/wvd/clients/windows) .
 

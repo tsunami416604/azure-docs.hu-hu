@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 6759b2c0f679a865d0bdcf8ea8cd39f258a9cf25
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: dfbdff01064b483085233ece47d1d3b635b68743
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86132111"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87021460"
 ---
 # <a name="about-disaster-recovery-of-vmware-vms-to-azure"></a>A VMware virtuális gépek az Azure-ba való vész-helyreállításáról
 
@@ -23,6 +23,9 @@ Az üzletmenet-folytonosság és a vész-helyreállítási (BCDR) stratégia seg
 
 - [Azure Backup](../backup/backup-overview.md) biztonsági mentést készít a helyszíni és az Azure-beli virtuális gép adatairól. Biztonsági mentést készíthet egy fájlokról és mappákról, adott munkaterhelésekről vagy egy teljes virtuális gépről. 
 - A [Azure site Recovery](site-recovery-overview.md) rugalmasságot és vész-helyreállítási lehetőségeket biztosít a helyszíni gépeken vagy az Azure IaaS virtuális gépeken futó alkalmazások és munkaterhelések számára. Site Recovery összehangolja a replikációt, és leállások esetén kezeli a feladatátvételt az Azure-ban. Az Azure-ból az elsődleges helyre történő helyreállítást is kezeli. 
+
+> [!NOTE]
+> A Site Recovery nem helyezi át vagy nem tárolja az ügyféladatokat a célként megadott régióból, amely során a forrásként szolgáló gépekhez a vész-helyreállítás lett beállítva. Az ügyfelek választhatnak egy Recovery Services-tárolót egy másik régióból is. A Recovery Services-tároló metaadatokat tartalmaz, de nincsenek tényleges ügyféladatok.
 
 ## <a name="how-does-site-recovery-do-disaster-recovery"></a>Hogyan működik Site Recovery a vész-helyreállítás?
 
@@ -119,6 +122,6 @@ Az Azure és a helyszíni infrastruktúra meglétét követően beállíthatja a
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha a replikáció már megtörtént, a vész- [helyreállítási gyakorlat futtatásával](tutorial-dr-drill-azure.md) gondoskodhat arról, hogy a feladatátvétel a várt módon működjön. 

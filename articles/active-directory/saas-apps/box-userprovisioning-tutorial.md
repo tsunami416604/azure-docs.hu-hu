@@ -12,14 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/26/2017
+ms.date: 07/20/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1397b4189a9c2c15e3878687ea8c67c1da7567f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0be9298e56cf2e5c816c45fcb7e84eb20c11ef4d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77058569"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87018179"
 ---
 # <a name="tutorial-configure-box-for-automatic-user-provisioning"></a>Oktatóanyag: a felhasználók automatikus üzembe helyezésének beállítása
 
@@ -37,6 +38,9 @@ Az Azure AD-integráció a Box-nal való konfigurálásához a következő eleme
 
 > [!NOTE]
 > Ha teszteli az oktatóanyag lépéseit, javasoljuk, hogy *ne használjon éles* környezetet.
+
+> [!NOTE]
+> Először engedélyeznie kell az alkalmazásokat a Box alkalmazásban.
 
 Az oktatóanyag lépéseinek teszteléséhez kövesse az alábbi javaslatokat:
 

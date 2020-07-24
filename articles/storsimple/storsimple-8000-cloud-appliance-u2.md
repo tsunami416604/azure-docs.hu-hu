@@ -14,11 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/08/2017
 ms.author: alkohli
-ms.openlocfilehash: 01ce952ea774ba852c83d0d6aa3fe38d5dfd677e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 219e2b77a0f6f30307c43f006fcdd3828d3c8fbf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711850"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87021375"
 ---
 # <a name="deploy-and-manage-a-storsimple-cloud-appliance-in-azure-update-3-and-later"></a>A StorSimple Cloud Appliance üzembe helyezése és kezelése az Azure-ban (3. frissítés és újabb)
 
@@ -64,7 +65,7 @@ Az alábbi táblázat a StorSimple felhőalapú készülék és a StorSimple fiz
 |  | Fizikai eszköz | Felhőalapú készülék |
 | --- | --- | --- |
 | **Hely** |Az adatközpontban található. |Az Azure-ban fut. |
-| **Hálózati illesztők** |Hat hálózati adapterrel rendelkezik: DATA 0-tól DATA 5 számozásig. |Csak egy hálózati adapterrel rendelkezik: DATA 0. |
+| **Hálózati adapterek** |Hat hálózati adapterrel rendelkezik: DATA 0-tól DATA 5 számozásig. |Csak egy hálózati adapterrel rendelkezik: DATA 0. |
 | **Regisztráció** |A rendszer a kezdeti konfigurációs lépés során regisztrálja. |A regisztráció egy külön feladat. |
 | **Szolgáltatás adattitkosítási kulcsa** |Újra létrejön a fizikai eszközön, majd az új kulccsal frissíti a felhőalapú készüléket. |A felhőalapú készülékről nem tud újra létrejönni. |
 | **Támogatott kötettípusok** |A helyileg rögzített és a rétegzett köteteket is támogatja. |Csak a rétegzett köteteket támogatja. |
@@ -83,7 +84,7 @@ A felhőalapú készülék kiépítése előtt a következő előkészületekre 
 * A felhőalapú készülékhez [konfigurálnia kell egy virtuális hálózatot az Azure-on](../virtual-network/manage-virtual-network.md#create-a-virtual-network). Premium szintű Storage használata esetén a Premium szintű Storage-ot támogató Azure-régióban kell létrehoznia egy virtuális hálózatot. A prémium szintű Storage-régiók olyan régiók, amelyek a Lemezes tárolás sornak felelnek meg az [Azure-szolgáltatások régió szerint](https://azure.microsoft.com/regions/services/) című lapon található listában.
 * Saját DNS-kiszolgálónév megadása helyett az Azure által megadott alapértelmezett DNS-kiszolgáló használata javasolt. Ha a megadott DNS-kiszolgálónév nem érvényes, vagy ha a DNS-kiszolgáló nem tudja megfelelően feloldani az IP-címeket, akkor a felhőalapú készülék létrehozása sikertelen lesz.
 * A végpont és telephely közötti, valamint a telephely és telephely közötti lehetőségek választhatóak, de nem kötelezőek. Igény szerint ezeket a lehetőségeket speciális forgatókönyvekhez is konfigurálhatja.
-* Az [Azure-beli virtuális gépeket](../virtual-machines/virtual-machines-windows-quick-create-portal.md) (gazdakiszolgálókat) létrehozhatja abban a virtuális hálózatban, amely a felhőalapú készüléken elérhető köteteket használja. Ezeknek a kiszolgálóknak az alábbi követelményeknek kell megfelelniük:
+* Az [Azure-beli virtuális gépeket](../virtual-machines/windows/quick-create-portal.md) (gazdakiszolgálókat) létrehozhatja abban a virtuális hálózatban, amely a felhőalapú készüléken elérhető köteteket használja. Ezeknek a kiszolgálóknak az alábbi követelményeknek kell megfelelniük:
 
   * Windows vagy Linux rendszerű virtuális gépnek kell lenniük, amelyen telepítve van az iSCSI-kezdeményező szoftver.
   * Ugyanazon a virtuális hálózaton kell futniuk, mint a felhőalapú készüléknek.

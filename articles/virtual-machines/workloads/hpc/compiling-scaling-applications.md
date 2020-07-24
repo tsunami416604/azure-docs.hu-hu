@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: amverma
-ms.openlocfilehash: 1de7b1412a242e1b658128ba11f482a2d9dc3107
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 72178b61d7033167ed48a8ddbb661daad6081df7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82594797"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87020111"
 ---
 # <a name="scaling-hpc-applications"></a>HPC-alkalmazások méretezése
 
@@ -86,4 +86,4 @@ A következő javaslatok alkalmazhatók az alkalmazások optimális méretezés�
 
 ## <a name="next-steps"></a>További lépések
 
-További információ az Azure-beli [HPC](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/) -ről.
+További információ az Azure-beli [HPC](/azure/architecture/topics/high-performance-computing/) -ről.

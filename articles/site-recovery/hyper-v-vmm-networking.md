@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: a61f7ff69e648262eb721eb61a98b09dbbee924c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c0426872c29fa126514f22a5f4fb57f19903c967
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73961428"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87021664"
 ---
 # <a name="set-up-ip-addressing-to-connect-to-a-secondary-on-premises-site-after-failover"></a>IP-címzés beállítása másodlagos helyszíni helyhez való kapcsolódáshoz a feladatátvétel után
 
@@ -78,12 +79,12 @@ A feladatátvételt követően a Site Recovery IP-címet foglal le a virtuális 
 
 A virtuális gép védelmének engedélyezése után a következő minta parancsfájl segítségével ellenőrizheti a virtuális géphez rendelt címeket. Ez az IP-cím a feladatátvételi IP-címként van beállítva, és a virtuális géphez a feladatátvételkor van hozzárendelve:
 
-    ```
-    $vm = Get-SCVirtualMachine -Name <VM_NAME>
-    $na = $vm[0].VirtualNetworkAdapters>
-    $ip = Get-SCIPAddress -GrantToObjectID $na[0].id
-    $ip.address 
-    ```
+```powershell
+$vm = Get-SCVirtualMachine -Name <VM_NAME>
+$na = $vm[0].VirtualNetworkAdapters>
+$ip = Get-SCIPAddress -GrantToObjectID $na[0].id
+$ip.address
+```
 
 ## <a name="use-a-different-ip-address"></a>Másik IP-cím használata
 
@@ -92,7 +93,7 @@ Ebben az esetben a feladatátvétel alatt álló virtuális gépek IP-címei mó
 - Használjon kis TTL-értékeket az intranetes alkalmazásokhoz.
 - A DNS-kiszolgáló időben történő frissítéséhez használja a következő parancsfájlt egy Site Recovery helyreállítási tervben. Dinamikus DNS-regisztráció használata esetén nincs szükség a parancsfájlra.
 
-    ```
+    ```powershell
     param(
     string]$Zone,
     [string]$name,

@@ -8,11 +8,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/18/2019
-ms.openlocfilehash: 78dde3f6706ecbc54daca162ac718911752fa0ca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c79d810979641d1dc128c741c2124d9b5887aa3d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83832962"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87020746"
 ---
 # <a name="common-query-patterns-in-azure-stream-analytics"></a>Gyakori lekérdezési minták a Azure Stream Analytics
 
@@ -83,7 +84,7 @@ FROM Input
 ```
 ## <a name="data-aggregation-over-time"></a>Adatösszesítés az idő függvényében
 
-Az adatok egy adott időtartományon keresztüli kiszámításához összesítheti az adatokat. Ebben a példában a rendszer minden egyes autó esetében az elmúlt 10 percben számítja ki a darabszámot.
+Az adatok egy adott időtartományon keresztüli kiszámításához összesítheti az adatokat. Ebben a példában a rendszer minden egyes autó esetében az elmúlt 10 másodpercben számítja ki a darabszámot.
 
 **Bemenet**:
 
@@ -536,14 +537,14 @@ Az események időtartamát úgy számíthatja ki, hogy megtekinti az utolsó in
 
 **Bemenet**:  
 
-| Felhasználó | Szolgáltatás | Esemény | Idő |
+| Felhasználó | Funkció | Esemény | Idő |
 | --- | --- | --- | --- |
 | user@location.com |RightMenu |Indítás |2015-01-01T00:00:01.0000000 Z |
 | user@location.com |RightMenu |Befejezés |2015-01-01T00:00:08.0000000 Z |
 
 **Kimenet**:  
 
-| Felhasználó | Szolgáltatás | Időtartam |
+| Felhasználó | Funkció | Időtartam |
 | --- | --- | --- |
 | user@location.com |RightMenu |7 |
 

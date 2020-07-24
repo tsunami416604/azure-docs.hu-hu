@@ -1,5 +1,5 @@
 ---
-title: Statisztikák létrehozása, frissítése
+title: Statisztikák létrehozása és frissítése az Azure szinapszis SQL-erőforrásaival
 description: Javaslatok és példák a lekérdezés-optimalizálási statisztikák létrehozására és frissítésére a szinapszis SQL-ben.
 services: synapse-analytics
 author: filippopovic
@@ -11,11 +11,12 @@ ms.date: 04/19/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: 1bc5f5f5ffe44cbefe5a131aa041e5afc2e8257f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 25c92437b350d7329c340fe1ea13b3df40e231ba
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83659226"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87020599"
 ---
 # <a name="statistics-in-synapse-sql"></a>Statisztika a szinapszis SQL-ben
 

@@ -17,12 +17,12 @@ ms.date: 12/12/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 6f18c9fe43b0b714e5709b014c051520b3722138
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: d8aa6cc7894b13789fe196e32c401128572346bf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85855139"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87019063"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Az Azure-erőforrások felügyelt identitásával kapcsolatos gyakori kérdések és ismert problémák
 
@@ -55,9 +55,12 @@ A felügyelt identitások nem rendelkeznek alkalmazás-objektummal a címtárban
 
 Nem, az Azure-Cloud Services nem támogatja az Azure-erőforrások felügyelt identitásának támogatását.
 
-### <a name="does-managed-identities-for-azure-resources-work-with-the-active-directory-authentication-library-adal-or-the-microsoft-authentication-library-msal"></a>Az Azure-erőforrások felügyelt identitásai működnek a Active Directory-hitelesítési tár (ADAL) vagy a Microsoft Authentication Library (MSAL) szolgáltatással?
+### <a name="what-is-the-credential-associated-with-a-managed-identity-how-long-is-it-valid-and-how-often-is-it-rotated"></a>Mi a felügyelt identitáshoz társított hitelesítő adat? Mennyi ideig érvényes és milyen gyakran forog?
 
-Nem, az Azure-erőforrások felügyelt identitásai még nincsenek integrálva a ADAL vagy a MSAL. A REST-végponttal rendelkező Azure-erőforrások felügyelt identitásokhoz való beszerzésével kapcsolatos részletekért lásd: [Hogyan lehet felügyelt identitásokat használni az Azure-beli virtuális gépeken egy hozzáférési jogkivonat beszerzéséhez](how-to-use-vm-token.md).
+> [!NOTE]
+> A felügyelt identitások hitelesítése egy belső megvalósítási részlet, amely figyelmeztetés nélkül változhat.
+
+A felügyelt identitások tanúsítványalapú hitelesítést használnak. Az egyes felügyelt identitások hitelesítő adatai 90 napon belül lejárnak, és a rendszer 45 nap után gördült le.
 
 ### <a name="what-is-the-security-boundary-of-managed-identities-for-azure-resources"></a>Mi a felügyelt identitások biztonsági határa az Azure-erőforrásokhoz?
 
@@ -133,7 +136,7 @@ Megkerülő megoldás a felügyelt identitások számára egy másik könyvtárb
  - A rendszerhez rendelt felügyelt identitások esetében: letiltás és újbóli engedélyezés. 
  - A felhasználóhoz rendelt felügyelt identitások esetében: törölje, hozza létre újra, majd csatolja újra a szükséges erőforrásokhoz (például virtuális gépekhez)
 
-További információ: Azure- [előfizetés átvitele egy másik Azure ad-címtárba (előzetes verzió)](../../role-based-access-control/transfer-subscription.md).
+További információ: [Azure-előfizetés átadása egy másik Azure AD-címtárba (Előzetes verzió)](../../role-based-access-control/transfer-subscription.md).
 
 ### <a name="moving-a-user-assigned-managed-identity-to-a-different-resource-groupsubscription"></a>Felhasználó által hozzárendelt felügyelt identitás áthelyezése egy másik erőforráscsoporthoz vagy előfizetésbe
 

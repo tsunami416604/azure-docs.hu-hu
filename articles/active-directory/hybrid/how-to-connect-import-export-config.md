@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/25/2020
+ms.date: 07/13/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a13236294f74bbe4bdaf8c1a30408afad09d9796
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: a94d356cb3c0345f575b4b5a44aa7f228535e66d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86225225"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87019879"
 ---
 # <a name="importing-and-exporting-azure-ad-connect-configuration-settings-public-preview"></a>Azure AD Connect konfigurációs beállítások importálása és exportálása (nyilvános előzetes verzió) 
 
@@ -24,7 +24,7 @@ Azure AD Connect üzemelő példányok egyetlen erdőre kiterjedő expressz üze
 
 Minden alkalommal, amikor a konfiguráció megváltozik a Azure AD Connect varázslóból, a rendszer automatikusan exportálja az új időbélyegzővel ellátott JSON-beállítási fájlt a **%ProgramData%\AADConnect**. A beállítások fájlneve az **alkalmazott-SynchronizationPolicy-*. **Az a JSON, amelyben a fájlnév utolsó része időbélyeg. 
 
->[!IMPORTANT]
+> [!IMPORTANT]
 > A rendszer csak a Azure AD Connect által végzett módosításokat exportálja automatikusan. A PowerShell, a Synchronization Service Manager vagy a szinkronizálási szabályok szerkesztője által végrehajtott módosításokat szükség szerint exportálni kell igény szerint a naprakész másolás fenntartásához. Az igény szerinti exportálással egy biztonságos helyen helyezheti el a beállítások másolatát a vész-helyreállítási célokra. 
 
 ## <a name="exporting-azure-ad-connect-settings"></a>Azure AD Connect-Beállítások exportálása 
@@ -59,8 +59,8 @@ Itt láthatók a telepítési élményben elvégezhető változások. Az összes
 
 ![Címtárak csatlakoztatása](media/how-to-connect-import-export-config/import2.png)
 
->[!NOTE]
->Csak egy szinkronizációs kiszolgáló lehet az elsődleges szerepkörben, és aktívan exportálhatja a konfigurációs módosításokat az Azure-ba. Az összes többi kiszolgálót átmeneti módba kell helyezni. 
+> [!NOTE]
+> Csak egy szinkronizációs kiszolgáló lehet az elsődleges szerepkörben, és aktívan exportálhatja a konfigurációs módosításokat az Azure-ba. Az összes többi kiszolgálót átmeneti módba kell helyezni. 
 
 ## <a name="migrating-settings-from-an-existing-server"></a>Beállítások áttelepítése meglévő kiszolgálóról 
 
@@ -71,21 +71,21 @@ Az áttelepítéshez olyan PowerShell-parancsfájlt kell futtatni, amely kibontj
 ### <a name="migration-process"></a>Áttelepítési folyamat 
 A beállítások átadásához tegye a következőket:
 
-1. Nyissa meg rendszergazdaként a cmd parancsot az új átmeneti kiszolgálón.
-2. **AzureADConnect.msi** kinyeréséhez futtassa a következőt: `msiexec /a msifile/qb TARGETDIR=targetpath` ahol a **msifile** az MSI címe, a **TargetPath** pedig az a könyvtár, ahová ki szeretné bontani a fájlokat.
-   
-   Például`msiexec /a "C:\Holding\AzureADConnect.msi" TARGETDIR="C:\extractedfiles"`
-3. Másolja **MigrateSettings.ps1** a Microsoft Azure ad Connect\Tools könyvtárból a meglévő kiszolgáló egy helyére.  Például: C:\setup.  Ahol a telepítő egy olyan könyvtár, amely a meglévő kiszolgálón lett létrehozva. 
-![Címtárak csatlakoztatása](media/how-to-connect-import-export-config/migrate1.png)
+1. Indítsa el **AzureADConnect.msi** az új átmeneti kiszolgálón, és állítsa le Azure ad Connect üdvözlőlapját.
 
-4. Futtassa a parancsfájlt az alább látható módon, és mentse a teljes alsó szintű kiszolgáló konfigurációs könyvtárat. Másolja ezt a könyvtárat az új átmeneti kiszolgálóra. Vegye figyelembe, hogy a teljes **exportált ServerConfiguration-*** mappát át kell másolnia az új kiszolgálóra. 
- ![Címtárak csatlakoztatása](media/how-to-connect-import-export-config/migrate2.png)
+2. Másolja **MigrateSettings.ps1** a Microsoft Azure ad Connect\Tools könyvtárból a meglévő kiszolgáló egy helyére.  Például: C:\setup.  Ahol a telepítő egy olyan könyvtár, amely a meglévő kiszolgálón lett létrehozva.
 
- ![Címtárak csatlakoztatása](media/how-to-connect-import-export-config/migrate3.png)
+   ![Címtárak csatlakoztatása](media/how-to-connect-import-export-config/migrate1.png)
+
+3. Futtassa a parancsfájlt az alább látható módon, és mentse a teljes alsó szintű kiszolgáló konfigurációs könyvtárat. Másolja ezt a könyvtárat az új átmeneti kiszolgálóra. Vegye figyelembe, hogy a teljes **exportált ServerConfiguration-*** mappát át kell másolnia az új kiszolgálóra.
+
+   ![](media/how-to-connect-import-export-config/migrate2.png)
+   Könyvtárak összekapcsolási könyvtárai ![](media/how-to-connect-import-export-config/migrate3.png)
 
 5. A **Azure ad Connect** indításához kattintson duplán az ikonra az asztalon. Fogadja el a végfelhasználói licencszerződést, a következő lapon kattintson a **Testreszabás** gombra. 
 6. Jelölje be a **szinkronizálási beállítások importálása** jelölőnégyzetet, majd a **Tallózás** gombra kattintva tallózással keresse meg az exportált ServerConfiguration-* mappát, és válassza ki a MigratedPolicy.jsaz áttelepített beállítások importálásához.
- ![Címtárak csatlakoztatása](media/how-to-connect-import-export-config/migrate4.png)
+
+   ![Címtárak csatlakoztatása](media/how-to-connect-import-export-config/migrate4.png)
 
 7. Ha az áttelepített beállításokat az alkalmazott beállításokkal szeretné összehasonlítani, keresse meg a legújabb **áttelepített-SynchronizationPolicy-* t. JSON** és **alkalmazott-SynchronizationPolicy-*. A JSON** (* a Time Stamp) a **%ProgramData%\AADConnect**alatt található. A paritás összehasonlításához használja kedvenc fájl-összehasonlító eszközét. 
 
@@ -94,11 +94,13 @@ A beállítások átadásához tegye a következőket:
 Az újonnan telepített kiszolgáló exportált beállítási fájljával összehasonlítva az eredetileg importált beállítási fájl, amely a tervezett és a létrejövő üzemelő példány közötti különbségek megismerésének alapvető lépése. A kedvenc párhuzamos szöveges összehasonlító alkalmazása egy azonnali vizualizációt eredményez, amely gyorsan kiemeli a kívánt vagy véletlen változásokat. A korábban manuálisan beállított manuális konfigurációs lépések azonban már nem szükségesek, ezért a szervezet minősítési folyamatát továbbra is biztosítani kell, hogy ne legyen szükség további konfigurálásra. Ez a konfiguráció akkor fordulhat elő, ha speciális beállításokat használ, amelyek jelenleg nem rögzítettek a beállítások kezelése nyilvános előzetes kiadásában. 
 
 Az ismert korlátozások többek között a következők: 
-- **Szinkronizálási szabályok**   – az egyéni szabályok elsőbbségének a 0-99 fenntartott tartományba kell esnie, hogy elkerülje a Microsoft szokásos szabályainak ütközését. Ha az egyéni szabályt a fenntartott tartományon kívülre helyezi, az egyéni szabályt a rendszer úgy is elmozdulhat, hogy az általános szabályok bekerülnek a konfigurációba. Hasonló probléma lép fel, ha a konfiguráció módosított szabványos szabályokat tartalmaz. A standard szabályok módosítása határozottan nem megfelelő, és a szabály elhelyezése valószínűleg helytelen. Eszköz visszaírási – ezek a beállítások katalogizálva vannak, azonban a konfiguráció során jelenleg nincsenek alkalmazva. Ha az eszköz visszaírási engedélyezve lett az eredeti kiszolgálón, akkor manuálisan kell konfigurálnia a szolgáltatást az újonnan telepített kiszolgálón. 
+- **Szinkronizálási szabályok**   – az egyéni szabályok elsőbbségének a 0-99 fenntartott tartományba kell esnie, hogy elkerülje a Microsoft szokásos szabályainak ütközését. Ha az egyéni szabályt a fenntartott tartományon kívülre helyezi, az egyéni szabályt a rendszer úgy is elmozdulhat, hogy az általános szabályok bekerülnek a konfigurációba. Hasonló probléma lép fel, ha a konfiguráció módosított szabványos szabályokat tartalmaz. A standard szabályok módosítása határozottan nem megfelelő, és a szabály elhelyezése valószínűleg helytelen. 
+- **Eszköz visszaírási**   – Ezek a beállítások katalogizálva vannak, azonban a konfiguráció során jelenleg nincsenek alkalmazva. Ha az eszköz visszaírási engedélyezve lett az eredeti kiszolgálón, akkor manuálisan kell konfigurálnia a szolgáltatást az újonnan telepített kiszolgálón. 
 - **Szinkronizált objektumtípusok**   – Bár lehetséges a szinkronizált objektumtípusok (felhasználók, névjegyek, csoportok stb.) listájának korlátozása a Synchronization Service Manager használatával, ez a funkció jelenleg nem támogatott a szinkronizálási beállításokon keresztül. A telepítés befejezése után manuálisan kell újraalkalmaznia a speciális konfigurációt. 
 - **Egyéni futtatási profilok**   – Bár lehetséges a futtatási profilok alapértelmezett készletének módosítása a Synchronization Service Manager használatával, ez a funkció jelenleg nem támogatott a szinkronizálási beállításokon keresztül. A telepítés befejezése után manuálisan kell újraalkalmaznia a speciális konfigurációt. 
 - **A kiépítési hierarchia konfigurálása**   – a Synchronization Service Manager speciális funkciója nem támogatott a szinkronizálási beállításokon keresztül, és a kezdeti telepítés befejezése után manuálisan kell konfigurálni. 
 - **AD FS és PingFederate hitelesítés**   – a hitelesítési funkciókhoz társított bejelentkezési módszerek automatikusan ki lesznek választva, azonban interaktív módon meg kell adnia az összes többi szükséges konfigurációs paramétert. 
+- **A letiltott egyéni szinkronizálási szabályok engedélyezve lesznek importálva** A letiltott egyéni szinkronizálási szabályok engedélyezve lesznek importálva. Győződjön meg arról, hogy az új kiszolgálón is le van tiltva.
 
  ## <a name="next-steps"></a>Következő lépések
 

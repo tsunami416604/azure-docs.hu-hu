@@ -10,11 +10,12 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: 3abd93e1699a701140e8b3558dcdf0161110ff6f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d02800d39e918478243429971c0d48c4d0c59148
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83758129"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87020102"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Válassza ki a megfelelő hitelesítési módszert a Azure Active Directory Hybrid Identity megoldáshoz
 
@@ -29,7 +30,7 @@ A megfelelő hitelesítési módszer kiválasztásával az alkalmazásait a felh
 Az identitás az IT-biztonság új vezérlő síkja, így a hitelesítés egy szervezet hozzáférés-védelme az új felhő világába. A szervezeteknek olyan Identity Control-síkon kell rendelkezniük, amely megerősíti a biztonságot, és a támadók biztonságban tartja a Felhőbeli alkalmazásaikat.
 
 > [!NOTE]
-> A hitelesítési módszer megváltoztatásához tervezési, tesztelési és lehetséges állásidő szükséges. A [kétlépcsős](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-staged-rollout) bevezetéssel tesztelheti és fokozatosan áttelepítheti az összevonási szolgáltatásból a felhőbe történő hitelesítést.
+> A hitelesítési módszer megváltoztatásához tervezési, tesztelési és lehetséges állásidő szükséges. A [kétlépcsős](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-staged-rollout) bevezetéssel tesztelheti a felhasználókat az összevonásból a Felhőbeli hitelesítésbe való áttelepítéssel.
 
 ### <a name="out-of-scope"></a>Hatókörön kívül
 Azok a szervezetek, amelyek nem rendelkeznek meglévő helyszíni címtár-lábnyommal, nem a jelen cikk középpontjában állnak. Ezek a vállalatok jellemzően csak a felhőben hoznak létre identitásokat, ami nem igényel hibrid identitási megoldást. A csak felhőalapú identitások kizárólag a felhőben találhatók, és nem kapcsolódnak a megfelelő helyszíni identitásokhoz.
@@ -46,7 +47,7 @@ Az Azure AD a következő hitelesítési módszereket támogatja a hibrid identi
 ### <a name="cloud-authentication"></a>Felhőbeli hitelesítés
 Ha ezt a hitelesítési módszert választja, az Azure AD kezeli a felhasználók bejelentkezési folyamatát. A zökkenőmentes egyszeri bejelentkezéssel (SSO) párosulva a felhasználók a hitelesítő adataik újbóli megadása nélkül is bejelentkezhetnek a Felhőbeli alkalmazásokba. A felhőalapú hitelesítés használatával két lehetőség közül választhat:
 
-**Azure ad-jelszó kivonatának szinkronizálása**. A helyszíni címtár-objektumok hitelesítésének legegyszerűbb módja az Azure AD-ben. A felhasználók ugyanazt a felhasználónevet és jelszót használhatják, amelyet a helyszínen használnak anélkül, hogy további infrastruktúrát kellene üzembe helyeznie. Az Azure AD egyes prémium funkciói, például az Identity Protection és a [Azure ad Domain Services](../../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md), jelszó-kivonatolási szinkronizálást igényelnek, függetlenül attól, hogy melyik hitelesítési módszert választja.
+**Azure AD-jelszókivonat szinkronizálása**. A helyszíni címtár-objektumok hitelesítésének legegyszerűbb módja az Azure AD-ben. A felhasználók ugyanazt a felhasználónevet és jelszót használhatják, amelyet a helyszínen használnak anélkül, hogy további infrastruktúrát kellene üzembe helyeznie. Az Azure AD egyes prémium funkciói, például az Identity Protection és a [Azure ad Domain Services](../../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md), jelszó-kivonatolási szinkronizálást igényelnek, függetlenül attól, hogy melyik hitelesítési módszert választja.
 
 > [!NOTE]
 > A jelszavak soha nem tiszta szövegben tárolódnak, vagy az Azure AD-ben egy reverzibilis algoritmussal titkosítva vannak. A jelszó-kivonatolási szinkronizálás tényleges folyamatával kapcsolatos további információkért lásd: [jelszó-kivonatolási szinkronizálás implementálása Azure ad Connect szinkronizálással](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md).
@@ -174,10 +175,10 @@ Az alábbi ábrák az Azure AD Hybrid Identity megoldással használható, az eg
 |Megfontolandó|Jelszó-kivonat szinkronizálása + zökkenőmentes SSO|Átmenő hitelesítés + zökkenőmentes egyszeri bejelentkezés|Összevonás az AD FS rendszerrel|
 |:-----|:-----|:-----|:-----|
 |Hol történik a hitelesítés?|A felhőben|A felhőben a biztonságos jelszó-ellenőrzési csere után a helyszíni hitelesítési ügynökkel|Helyszíni|
-|A helyszíni kiszolgálóra vonatkozó követelmények a kiépítési rendszeren túl: Azure AD Connect?|None|Egy kiszolgáló minden további hitelesítési ügynökhöz|Két vagy több AD FS-kiszolgáló<br><br>Két vagy több WAP-kiszolgáló a peremhálózati/DMZ-hálózaton|
-|Milyen követelmények vonatkoznak a helyszíni internetre és a hálózatkezelésre a kiépítési rendszeren túl?|None|[Kimenő internet-hozzáférés](../../active-directory/hybrid/how-to-connect-pta-quick-start.md) a hitelesítési ügynököket futtató kiszolgálókról|[Bejövő internetes hozzáférés](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-requirements) a peremhálózati WAP-kiszolgálókhoz<br><br>Bejövő hálózati hozzáférés AD FS kiszolgálókhoz a peremhálózati WAP-kiszolgálókról<br><br>Hálózati terheléselosztás|
+|A helyszíni kiszolgálóra vonatkozó követelmények a kiépítési rendszeren túl: Azure AD Connect?|Nincs|Egy kiszolgáló minden további hitelesítési ügynökhöz|Két vagy több AD FS-kiszolgáló<br><br>Két vagy több WAP-kiszolgáló a peremhálózati/DMZ-hálózaton|
+|Milyen követelmények vonatkoznak a helyszíni internetre és a hálózatkezelésre a kiépítési rendszeren túl?|Nincs|[Kimenő internet-hozzáférés](../../active-directory/hybrid/how-to-connect-pta-quick-start.md) a hitelesítési ügynököket futtató kiszolgálókról|[Bejövő internetes hozzáférés](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-requirements) a peremhálózati WAP-kiszolgálókhoz<br><br>Bejövő hálózati hozzáférés AD FS kiszolgálókhoz a peremhálózati WAP-kiszolgálókról<br><br>Hálózati terheléselosztás|
 |Van TLS/SSL-tanúsítványra vonatkozó követelmény?|Nem|Nem|Igen|
-|Van állapot-figyelési megoldás?|Nem kötelező|A [Azure Active Directory felügyeleti központ](../../active-directory/hybrid/tshoot-connect-pass-through-authentication.md) által megadott ügynök állapota|[Azure AD Connect Health](../../active-directory/hybrid/how-to-connect-health-adfs.md)|
+|Van állapot-figyelési megoldás?|Nem szükséges|A [Azure Active Directory felügyeleti központ](../../active-directory/hybrid/tshoot-connect-pass-through-authentication.md) által megadott ügynök állapota|[Azure AD Connect Health](../../active-directory/hybrid/how-to-connect-health-adfs.md)|
 |A felhasználók egyszeri bejelentkezést kapnak a felhőalapú erőforrásokhoz a vállalati hálózaton belüli tartományhoz csatlakoztatott eszközökről?|Igen, [zökkenőmentes egyszeri bejelentkezéssel](../../active-directory/hybrid/how-to-connect-sso.md)|Igen, [zökkenőmentes egyszeri bejelentkezéssel](../../active-directory/hybrid/how-to-connect-sso.md)|Yes|
 |Milyen típusú bejelentkezési típusok támogatottak?|UserPrincipalName + jelszó<br><br>Integrált Windows-hitelesítés [zökkenőmentes SSO](../../active-directory/hybrid/how-to-connect-sso.md) használatával<br><br>[Másodlagos bejelentkezési azonosító](../../active-directory/hybrid/how-to-connect-install-custom.md)|UserPrincipalName + jelszó<br><br>Integrált Windows-hitelesítés [zökkenőmentes SSO](../../active-directory/hybrid/how-to-connect-sso.md) használatával<br><br>[Másodlagos bejelentkezési azonosító](../../active-directory/hybrid/how-to-connect-pta-faq.md)|UserPrincipalName + jelszó<br><br>sAMAccountName + jelszó<br><br>Integrált Windows-hitelesítés<br><br>[Tanúsítvány-és intelligens kártyás hitelesítés](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-user-certificate-authentication)<br><br>[Másodlagos bejelentkezési azonosító](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id)|
 |Támogatott a vállalati Windows Hello?|[Kulcs megbízhatósági modellje](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification)|[Kulcs megbízhatósági modellje](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification)<br>*A Windows Server 2016-tartomány működési szintjét igényli*|[Kulcs megbízhatósági modellje](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification)<br><br>[Tanúsítvány megbízhatósági modellje](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-key-trust-adfs)|

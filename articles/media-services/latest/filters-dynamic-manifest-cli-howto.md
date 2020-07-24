@@ -14,11 +14,12 @@ ms.topic: article
 ms.date: 06/13/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 74516aa921e45917f327a193a1c972b021c9c8ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2385171a501d00f91c58f3fde9b487505ec21c60
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74896071"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87023211"
 ---
 # <a name="creating-filters-with-cli"></a>Szűrők létrehozása a parancssori felülettel 
 
@@ -26,14 +27,14 @@ Ha az ügyfelek számára továbbít tartalmat (élő vagy igény szerinti közv
 
 A funkció részletes ismertetését és a használatban lévő forgatókönyveket lásd: [dinamikus jegyzékfájlok](filters-dynamic-manifest-overview.md) és [szűrők](filters-concept.md).
 
-Ebből a témakörből megtudhatja, hogyan konfigurálhat egy szűrőt egy igény szerinti videóhoz, és hogyan használhatja a CLI-t a Media Services v3-hoz a [fiókok szűrőinek](https://docs.microsoft.com/cli/azure/ams/account-filter?view=azure-cli-latest) és az [eszközök szűrőinek](https://docs.microsoft.com/cli/azure/ams/asset-filter?view=azure-cli-latest)létrehozásához. 
+Ebből a témakörből megtudhatja, hogyan konfigurálhat egy szűrőt egy igény szerinti videóhoz, és hogyan használhatja a CLI-t a Media Services v3-hoz a [fiókok szűrőinek](/cli/azure/ams/account-filter?view=azure-cli-latest) és az [eszközök szűrőinek](/cli/azure/ams/asset-filter?view=azure-cli-latest)létrehozásához. 
 
 > [!NOTE]
 > Ügyeljen rá, hogy ellenőrizze a [presentationTimeRange](filters-concept.md#presentationtimerange).
 
 ## <a name="prerequisites"></a>Előfeltételek 
 
-- [Hozzon létre egy Media Services fiókot](create-account-cli-how-to.md). Ügyeljen rá, hogy jegyezze fel az erőforráscsoport nevét és a Media Services fiók nevét. 
+- [Hozzon létre egy Media Services fiókot](./create-account-howto.md). Ügyeljen rá, hogy jegyezze fel az erőforráscsoport nevét és a Media Services fiók nevét. 
 
 [!INCLUDE [media-services-cli-instructions](../../../includes/media-services-cli-instructions.md)]
 
@@ -79,7 +80,7 @@ Az alábbi példa a végső jegyzékfájlhoz hozzáadott kiválasztási feltéte
 
 ## <a name="create-account-filters"></a>Fiókok szűrőinek létrehozása
 
-A következő az [AMS Account-Filter](https://docs.microsoft.com/cli/azure/ams/account-filter?view=azure-cli-latest) parancs egy olyan fiók szűrőt hoz létre, amely a [korábban definiált](#define-a-filter)szűrési nyomon követési beállításokkal rendelkezik. 
+A következő az [AMS Account-Filter](/cli/azure/ams/account-filter?view=azure-cli-latest) parancs egy olyan fiók szűrőt hoz létre, amely a [korábban definiált](#define-a-filter)szűrési nyomon követési beállításokkal rendelkezik. 
 
 A parancs lehetővé teszi, hogy egy opcionális `--tracks` paramétert adjon át, amely a követési beállításokat jelképező JSON-t tartalmazza.  A JSON fájlból való betöltéséhez használja a @ {file} fájlt. Ha helyileg használja az Azure CLI-t, a fájl teljes elérési útját kell megadnia:
 
@@ -87,17 +88,17 @@ A parancs lehetővé teszi, hogy egy opcionális `--tracks` paramétert adjon á
 az ams account-filter create -a amsAccount -g resourceGroup -n filterName --tracks @tracks.json
 ```
 
-Lásd még: [JSON-példák szűrőkhöz](https://docs.microsoft.com/rest/api/media/accountfilters/createorupdate#create-an-account-filter).
+Lásd még: [JSON-példák szűrőkhöz](/rest/api/media/accountfilters/createorupdate#create-an-account-filter).
 
 ## <a name="create-asset-filters"></a>Eszközcsoport-szűrők létrehozása
 
-A következő az [AMS Asset-Filter](https://docs.microsoft.com/cli/azure/ams/asset-filter?view=azure-cli-latest) parancs létrehoz egy objektum szűrőt a [korábban definiált](#define-a-filter)szűrő követési beállításokkal. 
+A következő az [AMS Asset-Filter](/cli/azure/ams/asset-filter?view=azure-cli-latest) parancs létrehoz egy objektum szűrőt a [korábban definiált](#define-a-filter)szűrő követési beállításokkal. 
 
 ```azurecli
 az ams asset-filter create -a amsAccount -g resourceGroup -n filterName --asset-name assetName --tracks @tracks.json
 ```
 
-Lásd még: [JSON-példák szűrőkhöz](https://docs.microsoft.com/rest/api/media/assetfilters/createorupdate#create-an-asset-filter).
+Lásd még: [JSON-példák szűrőkhöz](/rest/api/media/assetfilters/createorupdate#create-an-asset-filter).
 
 ## <a name="associate-filters-with-streaming-locator"></a>Szűrők hozzárendelése a folyamatos átviteli Lokátorhoz
 
@@ -131,4 +132,4 @@ Az alábbi táblázat néhány példát mutat be a szűrőket tartalmazó URL-c�
 
 ## <a name="see-also"></a>Lásd még
 
-[Azure CLI](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)
+[Azure CLI](/cli/azure/ams?view=azure-cli-latest)

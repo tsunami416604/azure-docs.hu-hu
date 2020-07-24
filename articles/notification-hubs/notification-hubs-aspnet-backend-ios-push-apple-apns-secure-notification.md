@@ -14,11 +14,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: aa84ad9f48f79a77bad1445dadc8c5c965b13655
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d7dc3212007e9b9ec67d0d235135d4d46f20b950
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85248700"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87022123"
 ---
 # <a name="azure-notification-hubs-secure-push"></a>Azure Notification Hubs biztonságos leküldés
 
@@ -121,7 +122,7 @@ A cél eléréséhez meg kell írni a logikát, hogy a biztonságos tartalmat le
 4. Most meg kell kezelnie a beérkező értesítést, és a fenti módszer használatával le kell kérni a megjelenítendő tartalmat. Először is engedélyezni kell, hogy az iOS-alkalmazás a háttérben fusson, amikor leküldéses értesítést kap. A **Xcode**válassza ki az alkalmazás projektjét a bal oldali panelen, majd kattintson a fő alkalmazás céljára a **célok** szakaszban a központi ablaktáblán.
 5. Ezután kattintson a **funkciók** fülre a központi ablaktábla tetején, és jelölje be a **távoli értesítések** jelölőnégyzetet.
 
-    ![][IOS1]
+    ![Képernyőkép a XCode-ról, a kiválasztott alkalmazás-projekt és a képességek lap megnyitásával. A távoli értesítések jelölőnégyzet be van jelölve.][IOS1]
 
 6. A `AppDelegate.m` következő módszer hozzáadása a leküldéses értesítések kezeléséhez:
 

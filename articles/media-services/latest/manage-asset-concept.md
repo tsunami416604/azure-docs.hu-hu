@@ -13,16 +13,16 @@ ms.topic: article
 ms.date: 03/26/2020
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 9136fd702fad5c12a8ec97a68ff8a592a203d7d2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6accd303ba11c4c1406c7a157fa8176972fc7a3a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80582202"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87022907"
 ---
 # <a name="manage-assets"></a>Eszközök kezelése
 
-A Azure Media Servicesban egy [eszköz](https://docs.microsoft.com/rest/api/media/assets) , ahol 
+A Azure Media Servicesban egy [eszköz](/rest/api/media/assets) , ahol 
 
 * médiafájlok feltöltése egy eszközre
 * élő streamek beolvasása és archiválása egy eszközbe
@@ -36,7 +36,7 @@ Ez a témakör áttekintést nyújt arról, hogyan tölthet fel fájlokat egy es
 
 A fejlesztés megkezdése előtt tekintse át a következőt:
 
-* [Alapelvek](concepts-overview.md)
+* [Fogalmak](concepts-overview.md)
 * [Fejlesztés Media Services V3 API](media-services-apis-overview.md) -kkal (beleértve az API-k elérésére, az elnevezési konvenciók stb. vonatkozó információkat) 
 
 ## <a name="upload-media-files-into-an-asset"></a>Médiafájlok feltöltése egy eszközre
@@ -54,15 +54,15 @@ Miután a digitális fájlokat feltöltötte a Storage-ba, és egy objektumhoz t
     ```azurecli
     az storage blob upload -f /path/to/file -c MyContainer -n MyBlob
     ```
-2. Használjon egy olvasási és írási engedélyekkel rendelkező SAS URL-címet a digitális fájlok adategység-tárolóba történő feltöltéséhez.
+2. Használjon egy olvasási és írási engedélyekkel rendelkező SAS URL-címet a digitális fájlok az adategység-tárolóba történő feltöltéséhez.
 
-    A Media Services API segítségével [kilistázhatja az adategység-tárolók URL-címét](https://docs.microsoft.com/rest/api/media/assets/listcontainersas).
+    A Media Services API segítségével [kilistázhatja az adategység-tárolók URL-címét](/rest/api/media/assets/listcontainersas).
 
-    A **AssetContainerSas. listContainerSas** a beállított [ListContainerSasInput](https://docs.microsoft.com/rest/api/media/assets/listcontainersas#listcontainersasinput) paramétert veszi igénybe `expiryTime` . Az időt < 24 órára kell beállítani.
+    A **AssetContainerSas. listContainerSas** a beállított [ListContainerSasInput](/rest/api/media/assets/listcontainersas#listcontainersasinput) paramétert veszi igénybe `expiryTime` . Az időt < 24 órára kell beállítani.
 
-    A [ListContainerSasInput](https://docs.microsoft.com/rest/api/media/assets/listcontainersas#listcontainersasinput) több sas URL-címet ad vissza, mivel minden egyes Storage-fiókhoz két Storage-fiók kulcsa van. A Storage-fiók két kulccsal rendelkezik, mert segít a Storage-fiókok kulcsainak feladatátvételében és zökkenőmentes elforgatásában. Az első SAS URL-cím az első Storage-fiók kulcsa, a második SAS URL-cím pedig a második kulcsot jelöli.
+    A [ListContainerSasInput](/rest/api/media/assets/listcontainersas#listcontainersasinput) több sas URL-címet ad vissza, mivel minden egyes Storage-fiókhoz két Storage-fiók kulcsa van. A Storage-fiók két kulccsal rendelkezik, mert segít a Storage-fiókok kulcsainak feladatátvételében és zökkenőmentes elforgatásában. Az első SAS URL-cím az első Storage-fiók kulcsa, a második SAS URL-cím pedig a második kulcsot jelöli.
 3. Az Azure Storage API-jait vagy SDK-kat (például a [Storage REST API](../../storage/common/storage-rest-api-auth.md) vagy a [.net SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md)-t) használva tölthet fel fájlokat az Asset tárolóba.
-4. A Media Services v3 API-k segítségével hozzon létre egy Átalakítást és egy Feladatot a „bemeneti” adategység feldolgozásához. További információt az [átalakításokkal és feladatokkal](transform-concept.md) kapcsolatos cikkben olvashat.
+4. A Media Services v3 API-k segítségével hozzon létre egy Átalakítást és egy Feladatot a „bemeneti” adategység feldolgozásához. További információt az [átalakításokkal és feladatokkal](./transforms-jobs-concept.md) kapcsolatos cikkben olvashat.
 5. Továbbítsa a tartalmat a "output" objektumból.
 
 ### <a name="create-a-new-asset"></a>Új adategység létrehozása
@@ -76,7 +76,7 @@ Miután a digitális fájlokat feltöltötte a Storage-ba, és egy objektumhoz t
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Media/mediaServices/{amsAccountName}/assets/{assetName}?api-version=2018-07-01
 ```
 
-A REST-példákat lásd: [eszköz létrehozása Rest](https://docs.microsoft.com/rest/api/media/assets/createorupdate#examples) -példával.
+A REST-példákat lásd: [eszköz létrehozása Rest](/rest/api/media/assets/createorupdate#examples) -példával.
 
 A példa bemutatja, hogyan hozhatja létre a **kérelem törzsét** , ahol megadhatja a leírást, a tároló nevét, a Storage-fiókot és más hasznos információkat.
 
@@ -100,16 +100,16 @@ curl -X PUT \
  Asset asset = await client.Assets.CreateOrUpdateAsync(resourceGroupName, accountName, assetName, new Asset());
 ```
 
-### <a name="see-also"></a>További információ
+### <a name="see-also"></a>Lásd még
 
 * [Feladathoz tartozó bevitel létrehozása helyi fájlból](job-input-from-local-file-how-to.md)
 * [Feladathoz tartozó bemenet létrehozása HTTPS URL-címről](job-input-from-http-how-to.md)
 
 ## <a name="ingest-and-archive-live-streams-into-an-asset"></a>Élő streamek beolvasása és archiválása egy eszközbe
 
-A Media Services egy [élő kimeneti](https://docs.microsoft.com/rest/api/media/liveoutputs) objektum, például egy digitális videomagnó, amely az élő streamet az Media Services-fiókban lévő adategységbe fogja fogni és rögzíteni. A rögzített tartalom az [eszköz](https://docs.microsoft.com/rest/api/media/assets) erőforrása által meghatározott tárolóban marad.
+A Media Services egy [élő kimeneti](/rest/api/media/liveoutputs) objektum, például egy digitális videomagnó, amely az élő streamet az Media Services-fiókban lévő adategységbe fogja fogni és rögzíteni. A rögzített tartalom az [eszköz](/rest/api/media/assets) erőforrása által meghatározott tárolóban marad.
 
-További információkért lásd:
+További információ:
 
 * [Egy felhőalapú DVR használata](live-event-cloud-dvr.md)
 * [Streaming Live-oktatóanyag](stream-live-tutorial-with-api.md)
@@ -118,7 +118,7 @@ További információkért lásd:
 
 Media Services a videók feldolgozásakor (például kódolás vagy elemzés) létre kell hoznia egy kimeneti [eszközt](assets-concept.md) a [feladatok](transforms-jobs-concept.md)eredményének tárolásához.
 
-További információkért lásd:
+További információ:
 
 * [Videó kódolása](encoding-concept.md)
 * [Feladathoz tartozó bevitel létrehozása helyi fájlból](job-input-from-local-file-how-to.md)
@@ -127,7 +127,7 @@ További információkért lásd:
 
 Egy eszköz a folyamatos átvitelhez való közzétételéhez létre kell hoznia egy [folyamatos átviteli lokátort](streaming-locators-concept.md). A folyamatos átviteli lokátornak ismernie kell a közzétenni kívánt eszköz nevét. 
 
-További információkért lásd:
+További információ:
 
 [Oktatóanyag: videók feltöltése, kódolása és továbbítása a Media Services v3 segítségével](stream-files-tutorial-with-api.md)
 
@@ -145,6 +145,6 @@ Lásd: [Media Services entitások szűrése, rendezése és lapozása](entities-
 
 Tekintse meg a teljes kód példáit, amelyek bemutatják, hogyan tölthet fel, kódolhat, elemezheti és közvetítheti élőben és igény szerint: 
 
-* [Java](https://docs.microsoft.com/samples/azure-samples/media-services-v3-java/azure-media-services-v3-samples-using-java/), 
-* [.Net](https://docs.microsoft.com/samples/azure-samples/media-services-v3-dotnet/azure-media-services-v3-samples-using-net/), 
-* [Rest](https://docs.microsoft.com/samples/azure-samples/media-services-v3-rest-postman/azure-media-services-postman-collection/).
+* [Java](/samples/azure-samples/media-services-v3-java/azure-media-services-v3-samples-using-java/), 
+* [.Net](/samples/azure-samples/media-services-v3-dotnet/azure-media-services-v3-samples-using-net/), 
+* [Rest](/samples/azure-samples/media-services-v3-rest-postman/azure-media-services-postman-collection/).

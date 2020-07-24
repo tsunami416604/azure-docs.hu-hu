@@ -6,11 +6,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 10/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 009e8c7e1cb59d68f3d3aa15de32ec47083095f9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3b9a7bf243931443b8273253dee7618c0e594aaf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513101"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87020865"
 ---
 # <a name="use-azure-resource-manager-sdk-based-scripts-to-manage-storsimple-devices"></a>Azure Resource Manager SDK-alapú parancsfájlok használata a StorSimple-eszközök kezeléséhez
 
@@ -53,8 +54,8 @@ Ez a szakasz egy példaként szolgáló parancsfájlt tartalmaz, és részletezi
 Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik az alábbiakkal:
 
 *   Azure PowerShell telepítve. Azure PowerShell modulok telepítése:
-    * Windows-környezetben kövesse a [Azure PowerShell telepítése és konfigurálása](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps)című témakör lépéseit. A StorSimple a Windows Server-gazdagépen is telepítheti a Azure PowerShell, ha az egyiket használja.
-    * Linux-vagy MacOS-környezetben kövesse a [Azure PowerShell telepítése és konfigurálása MacOS vagy Linux](https://docs.microsoft.com/powershell/azure/azurerm/install-azurermps-maclinux)rendszeren című témakör lépéseit.
+    * Windows-környezetben kövesse a [Azure PowerShell telepítése és konfigurálása](/powershell/azure/install-az-ps)című témakör lépéseit. A StorSimple a Windows Server-gazdagépen is telepítheti a Azure PowerShell, ha az egyiket használja.
+    * Linux-vagy MacOS-környezetben kövesse a [Azure PowerShell telepítése és konfigurálása MacOS vagy Linux](/powershell/azure/install-az-ps)rendszeren című témakör lépéseit.
 
 További információ a Azure PowerShell használatáról: Ismerkedés [a Azure PowerShell használatával](https://docs.microsoft.com/powershell/azure/get-started-azureps).
 

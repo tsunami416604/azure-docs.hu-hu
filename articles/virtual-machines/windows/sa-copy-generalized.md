@@ -9,11 +9,12 @@ ms.date: 05/23/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
 ms.custom: storage-accounts
-ms.openlocfilehash: 31b8200b63780388fb53db588c418951c500ac19
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8077689bce988124da34428842df8fd2ef757bf0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84232906"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87020185"
 ---
 # <a name="how-to-create-an-unmanaged-vm-image-from-an-azure-vm"></a>Nem felügyelt virtuálisgép-rendszerkép létrehozása Azure-beli virtuális gépről
 
@@ -24,9 +25,9 @@ Ez a cikk bemutatja, hogyan hozhat létre egy általános Azure-beli virtuális 
  
 
 ## <a name="generalize-the-vm"></a>A virtuális gép általánosítása 
-Ez a szakasz bemutatja, hogyan általánosíthatja a Windows rendszerű virtuális gépet képként való használatra. A virtuális gépek általánosítása eltávolítja az összes személyes fiók adatait, többek között, és előkészíti a gépet képként való használatra. További információ a Sysprepről: [A Sysprep használata: Bevezetés](https://technet.microsoft.com/library/bb457073.aspx).
+Ez a szakasz bemutatja, hogyan általánosíthatja a Windows rendszerű virtuális gépet képként való használatra. A virtuális gépek általánosítása eltávolítja az összes személyes fiók adatait, többek között, és előkészíti a gépet képként való használatra. További információ a Sysprepről: [A Sysprep használata: Bevezetés](/previous-versions/windows/it-pro/windows-xp/bb457073(v=technet.10)).
 
-Győződjön meg arról, hogy a Sysprep támogatja a számítógépen futó kiszolgálói szerepköröket. További információ: a [Sysprep-támogatás a kiszolgálói szerepkörökhöz](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)
+Győződjön meg arról, hogy a Sysprep támogatja a számítógépen futó kiszolgálói szerepköröket. További információ: a [Sysprep-támogatás a kiszolgálói szerepkörökhöz](/windows-hardware/manufacture/desktop/sysprep-support-for-server-roles)
 
 > [!IMPORTANT]
 > Ha első alkalommal tölti fel a VHD-t az Azure-ba, győződjön meg arról, hogy [előkészítette a virtuális gépet](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) a Sysprep futtatása előtt. 
@@ -183,7 +184,7 @@ Hozzon létre egy változót a befejezett virtuális hálózat számára.
 $vnet = Get-AzVirtualNetwork -ResourceGroupName $rgName -Name $vnetName
 ```
 
-### <a name="create-the-vm"></a>Virtuális gép létrehozása
+### <a name="create-the-vm"></a>A virtuális gép létrehozása
 A következő PowerShell befejezi a virtuálisgép-konfigurációkat, és a nem felügyelt rendszerképet használja az új telepítés forrásaként.
 
 </br>
@@ -251,5 +252,3 @@ Ha elkészült, az újonnan létrehozott virtuális gépet a virtuális gépek *
 
 ## <a name="next-steps"></a>További lépések
 Az új virtuális gép Azure PowerShellval való kezeléséhez lásd: [virtuális gépek kezelése Azure Resource Manager és PowerShell használatával](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-
-

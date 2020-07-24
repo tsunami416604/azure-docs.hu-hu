@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2019
 ms.author: juliako
-ms.openlocfilehash: c230e1e950bb924631032940642a6202acf4ade8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5df104efb65152f5bcb71a86911e694611d8a742
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80382936"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87022871"
 ---
 # <a name="monitor-media-services-metrics"></a>A Media Services metrikáinak monitorozása
 
@@ -28,7 +28,7 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- [Media Services-fiók létrehozása](create-account-cli-how-to.md)
+- [Media Services-fiók létrehozása](./create-account-howto.md)
 - [Figyelő Media Services mérőszámok és diagnosztikai naplók](media-services-metrics-diagnostic-logs.md) áttekintése
 
 ## <a name="view-metrics-in-azure-portal"></a>Metrikák megtekintése Azure Portal
@@ -67,7 +67,7 @@ az monitor metrics list --resource \
 
 Más mérőszámok beszerzéséhez helyettesítse be a "kimenő forgalom" kifejezést a metrika neve érdekli.
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 * [Azure Monitor metrikák](../../azure-monitor/platform/data-platform.md)
 * [Metrikai riasztások létrehozása, megtekintése és kezelése Azure monitor használatával](../../azure-monitor/platform/alerts-metric.md).

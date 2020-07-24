@@ -10,16 +10,16 @@ ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 52684520aed8712aed40318f32a83194f7f86683
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2f547aa900c1b8dbea27eceff7ac7ebc86a83e33
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85357851"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87019828"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>Migrálás felhőalapú hitelesítésre előkészített bevezetéssel (előzetes verzió)
 
-A szakaszos bevezetési megközelítés használatával elkerülhető a teljes tartomány átváltás.  Ez lehetővé teszi, hogy szelektíven tesztelje a felhasználók csoportjait olyan felhőalapú hitelesítési funkciókkal, mint az Azure Multi-Factor Authentication (MFA), a feltételes hozzáférés, az Identity Protection a kiszivárgott hitelesítő adatokkal, az identitások szabályozása és egyebek.  Ez a cikk bemutatja, hogyan hajthatja végre a kapcsolót. Mielőtt elkezdené a szakaszos bevezetést, érdemes figyelembe vennie a következményeket, ha az alábbi feltételek közül egy vagy több teljesül:
+A lépcsőzetes bevezetéssel szelektíven tesztelheti a felhasználók csoportjait olyan felhőalapú hitelesítési funkciókkal, mint az Azure Multi-Factor Authentication (MFA), a feltételes hozzáférés, a kiszivárgott hitelesítő adatok identitásának védelme, a személyazonosság szabályozása és mások, a tartományok kivágása előtt.  Ez a cikk bemutatja, hogyan hajthatja végre a kapcsolót. Mielőtt elkezdené a szakaszos bevezetést, érdemes figyelembe vennie a következményeket, ha az alábbi feltételek közül egy vagy több teljesül:
     
 -  Jelenleg helyszíni Multi-Factor Authentication-kiszolgálót használ. 
 -  Intelligens kártyákat használ a hitelesítéshez. 
@@ -45,7 +45,7 @@ A funkció áttekintéséhez tekintse meg ezt a "Azure Active Directory: mi a sz
 
 -   A Felhőbeli hitelesítésre áttelepített felhasználókhoz szükséges összes bérlői arculatot és feltételes hozzáférési szabályzatot konfigurálta.
 
--   Ha az Azure Multi-Factor Authentication használatát tervezi, javasoljuk, hogy az [önkiszolgáló jelszó-visszaállítás (SSPR) esetében konvergens regisztrációt használjon, és multi-Factor Authentication](../authentication/concept-registration-mfa-sspr-combined.md) , hogy a felhasználók egyszer regisztrálják a hitelesítési módszereiket.
+-   Ha az Azure Multi-Factor Authentication használatát tervezi, javasoljuk, hogy az [önkiszolgáló jelszó-visszaállítás (SSPR) együttes regisztrációját használja, és multi-Factor Authentication](../authentication/concept-registration-mfa-sspr-combined.md) , hogy a felhasználók egyszer regisztrálják a hitelesítési módszereiket.
 
 -   A szakaszos bevezetési funkció használatához globális rendszergazdának kell lennie a bérlőn.
 
@@ -81,6 +81,8 @@ A következő forgatókönyvek nem támogatottak a szakaszos bevezetésnél:
 
 
 - Amikor először ad hozzá egy biztonsági csoportot az előkészített bevezetéshez, a rendszer 200-re korlátozza a felhasználóktól, hogy elkerülje az UX időtúllépését. A csoport hozzáadása után további felhasználókat is hozzáadhat közvetlenül hozzá, ha szükséges.
+
+- Míg a felhasználók szakaszos bevezetéssel rendelkeznek, a jelszó lejárati szabályzata 90 napra van állítva, és nincs lehetőség testreszabásra. 
 
 
 ## <a name="get-started-with-staged-rollout"></a>Ismerkedés a lépcsőzetes bevezetéssel
@@ -173,6 +175,7 @@ Tegye a következőket:
 
    >[!NOTE]
    >A csoport tagjai automatikusan engedélyezve vannak az előkészített bevezetéshez. A beágyazott és a dinamikus csoportok nem támogatottak a szakaszos bevezetéshez.
+   >Új csoport hozzáadásakor a csoportba tartozó felhasználók (egy új csoport számára legfeljebb 200 felhasználó) frissülni fognak a felügyelt Auth immidiatly. A csoportok szerkesztésével (felhasználók hozzáadásával vagy eltávolításával) akár 24 óráig is eltarthat, amíg a módosítások érvénybe lépnek.
 
 ## <a name="auditing"></a>Naplózás
 
@@ -202,7 +205,7 @@ Engedélyezte a naplózási eseményeket a szakaszos bevezetéshez végrehajtott
 
   ![A "felhasználó hozzáadása a szolgáltatások bevezetéséhez" ablaktábla – cél (ok) lap](./media/how-to-connect-staged-rollout/sr12.png)
 
-## <a name="validation"></a>Ellenőrzés
+## <a name="validation"></a>Érvényesítés
 
 A *jelszó-kivonatoló szinkronizálással* vagy *átmenő hitelesítéssel* (Felhasználónév és jelszó bejelentkezéssel) való bejelentkezés teszteléséhez tegye a következőket:
 

@@ -8,12 +8,12 @@ ms.author: robreed
 ms.date: 05/02/2018
 ms.topic: how-to
 manager: carmonm
-ms.openlocfilehash: bd65f33663dea3663f14fb4167448e39b9b7d0b7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c2999d5bd6d780d5815f22d18e6e8cdd580987af
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82099767"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87020168"
 ---
 # <a name="run-scripts-in-your-windows-vm"></a>Parancsfájlok futtatása a Windows rendszerű virtuális gépen
 
@@ -34,7 +34,7 @@ Az [Egyéni szkriptek bővítménye](../extensions/custom-script-windows.md) els
 A [Futtatás parancs](run-command.md) funkció lehetővé teszi a virtuális gépek és az alkalmazások kezelését és a hibaelhárítást parancsfájlok használatával, és akkor is elérhető, ha a számítógép nem érhető el, például ha a vendég tűzfal nem rendelkezik a megnyitott RDP-vagy SSH-porttal.
 
 * Parancsfájlok futtatása az Azure Virtual Machines szolgáltatásban.
-* Futtatható [Azure Portal](run-command.md), [REST API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand), [Azure CLI](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke)vagy [PowerShell](https://docs.microsoft.com/powershell/module/az.compute/invoke-azvmruncommand) használatával
+* Futtatható [Azure Portal](run-command.md), [REST API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand), [Azure CLI](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke)vagy [PowerShell](/powershell/module/az.compute/invoke-azvmruncommand) használatával
 * Futtasson gyorsan egy parancsfájlt, és tekintse meg a kimenetet, és szükség szerint ismételje meg a Azure Portal.
 * A szkript közvetlenül is beírható, vagy futtathatja a beépített parancsfájlok egyikét.
 * PowerShell-parancsfájl futtatása Windows rendszerű gépeken és bash-parancsfájlban Linux-gépeken.
@@ -57,7 +57,7 @@ A [hibrid Runbook](../../automation/automation-hybrid-runbook-worker.md) -feldol
 
 ## <a name="serial-console"></a>Soros konzol
 
-A [Serial Console](serial-console.md) közvetlen hozzáférést biztosít egy virtuális géphez, hasonlóan ahhoz, hogy a billentyűzet csatlakoztatva legyen a virtuális géphez.
+A [Serial Console](../troubleshooting/serial-console-windows.md) közvetlen hozzáférést biztosít egy virtuális géphez, hasonlóan ahhoz, hogy a billentyűzet csatlakoztatva legyen a virtuális géphez.
 
 * Parancsok futtatása az Azure Virtual Machines szolgáltatásban.
 * Egy szöveges konzol használatával futtatható a Azure Portal számítógépén.
@@ -71,4 +71,4 @@ További információ a virtuális gépeken belüli parancsfájlok és parancsok
 * [Egyéni szkriptbővítmény](../extensions/custom-script-windows.md)
 * [Parancs futtatása](run-command.md)
 * [hibrid runbook-feldolgozó](../../automation/automation-hybrid-runbook-worker.md)
-* [Serial console](serial-console.md)
+* [Serial console](../troubleshooting/serial-console-windows.md)

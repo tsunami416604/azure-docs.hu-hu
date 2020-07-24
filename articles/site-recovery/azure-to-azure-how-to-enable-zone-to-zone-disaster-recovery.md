@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/28/2020
 ms.author: sideeksh
-ms.openlocfilehash: 723329022d748ee18a07fcaeaecc2aff0e5f707b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a1952f6dccf12de4cb1571dacabecf78c65cd01b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86528978"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87021647"
 ---
 # <a name="enable-zone-to-zone-disaster-recovery-for-azure-virtual-machines"></a>Zóna használatának engedélyezése az Azure Virtual Machines szolgáltatásbeli vész-helyreállításhoz
 
@@ -20,7 +20,6 @@ Ez a cikk az Azure-beli virtuális gépek egyik rendelkezésre állási zónáb�
 
 >[!NOTE]
 >
->- Site Recovery jelenleg nem támogatja a zónák helyreállítási terveit a-portálon keresztüli vész-helyreállításra. A PowerShell vagy a REST API használatával kihasználhatja a zóna és a zóna vész-helyreállítási helyreállítási terveit. 
 >- A zóna és a zóna közötti vész-helyreállítás támogatása jelenleg két régióra korlátozódik: Délkelet-Ázsia és Egyesült Királyság déli régiója.  
 >- A Site Recovery nem helyezi át és nem tárolja az ügyféladatokat azon a régión kívül, amelyben az ügyfél üzembe helyezése történik, amikor a felhasználó a zónát használja a zóna vész-helyreállítási feladataihoz. Az ügyfelek választhatnak egy Recovery Services-tárolót egy másik régióból is. A Recovery Services-tároló metaadatokat tartalmaz, de nincsenek tényleges ügyféladatok.
 
@@ -122,7 +121,7 @@ A zónák közötti vész-helyreállítási szolgáltatás ugyanazokat az operá
 **5. a forrás-és a célként megadott erőforráscsoportok is megegyeznek?**
 Nem, a feladatátvételt egy másik erőforráscsoporthoz kell megadnia.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A vész-helyreállítási részletezés, feladatátvétel, ismételt védelem és feladat-visszavétel futtatásához követendő lépések megegyeznek az Azure-beli vész-helyreállítási forgatókönyv lépéseivel.
 

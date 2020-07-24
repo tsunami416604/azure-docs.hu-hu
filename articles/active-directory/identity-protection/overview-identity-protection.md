@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59f83c7896ca371809d9103489b140ae73d5a42d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 80873b2e2655e7cedbafb526d0fe757eaa282312
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86256653"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87019611"
 ---
 # <a name="what-is-azure-active-directory-identity-protection"></a>Mi az az Azure Active Directory Identity Protection?
 
@@ -46,7 +46,7 @@ Az 2018 Alex Weinert [októberi blogbejegyzést](https://techcommunity.microsoft
 
 Az Identity Protection a következő besorolások kockázatait azonosítja:
 
-| Kockázat észlelésének típusa | Leírás |
+| Kockázat észlelésének típusa | Description |
 | --- | --- |
 | Szokatlan utazás | Jelentkezzen be egy atipikus helyről a felhasználó legutóbbi bejelentkezései alapján. |
 | Névtelen IP-cím | Jelentkezzen be egy névtelen IP-címről (például: Tor-böngésző, névtelenül VPN-ek). |
@@ -71,7 +71,7 @@ További információt a következő cikkben talál [: a kockázat vizsgálata](
 
 ## <a name="exporting-risk-data"></a>Kockázati adatexportálás
 
-Az Identity Protectionből származó adatok exportálhatók más eszközökre az archiváláshoz, valamint a további vizsgálatokhoz és a Corel-kezeléshez. A Microsoft Graph-alapú API-k lehetővé teszik, hogy a szervezetek további feldolgozás céljából gyűjtsék ezeket az adatokat egy olyan eszközön, mint például a SIEM. Az Identity Protection API elérésével kapcsolatos információkat a cikk [Azure Active Directory Identity Protection és Microsoft Graph első lépéseivel foglalkozó](howto-identity-protection-graph-api.md) cikkben találja.
+Az Identity Protectionből származó adatok exportálhatók más eszközökre az archiváláshoz és a további vizsgálathoz és korrelációhoz. A Microsoft Graph-alapú API-k lehetővé teszik, hogy a szervezetek további feldolgozás céljából gyűjtsék ezeket az adatokat egy olyan eszközön, mint például a SIEM. Az Identity Protection API elérésével kapcsolatos információkat a cikk [Azure Active Directory Identity Protection és Microsoft Graph első lépéseivel foglalkozó](howto-identity-protection-graph-api.md) cikkben találja.
 
 Az Identity Protection-információk Azure Sentineltel való integrálásával kapcsolatos információk a cikkben találhatók, [amelyek az adatok Azure ad Identity Protectionból való összekapcsolását](../../sentinel/connect-azure-ad-identity-protection.md)ismertetik.
 
@@ -79,7 +79,7 @@ Az Identity Protection-információk Azure Sentineltel való integrálásával k
 
 Az Identity Protection használatához a felhasználóknak biztonsági olvasónak, biztonsági kezelőnek, biztonsági rendszergazdának, globális olvasónak vagy globális rendszergazdának kell lenniük ahhoz, hogy hozzáférjenek.
 
-| Role | Elvégezhető | Nem hajtható végre |
+| Szerepkör | Elvégezhető | Nem hajtható végre |
 | --- | --- | --- |
 | Globális rendszergazda | Teljes hozzáférés az Identity Protection szolgáltatáshoz |   |
 | Biztonsági rendszergazda | Teljes hozzáférés az Identity Protection szolgáltatáshoz | Felhasználó jelszavának alaphelyzetbe állítása |
@@ -101,10 +101,10 @@ A feltételes hozzáférésű rendszergazdák olyan házirendeket is létrehozha
 | Biztonsági jelentések | Áttekintés | Igen | Nem | Nem |
 | Biztonsági jelentések | Kockázatos felhasználók | Teljes hozzáférés | Korlátozott információ | Korlátozott információ |
 | Biztonsági jelentések | Kockázatos bejelentkezések | Teljes hozzáférés | Korlátozott információ | Korlátozott információ |
-| Biztonsági jelentések | Kockázatészlelések | Teljes hozzáférés | Korlátozott információ | Nem |
-| Értesítések | Veszélyeztetett felhasználók észlelt riasztásai | Igen | Nem | Nem |
-| Értesítések | Heti kivonat | Igen | Nem | Nem |
-| | MFA-regisztrációs szabályzat | Igen | Nem | Nem |
+| Biztonsági jelentések | Kockázatészlelések | Teljes hozzáférés | Korlátozott információ | No |
+| Értesítések | Veszélyeztetett felhasználók észlelt riasztásai | Igen | No | Nem |
+| Értesítések | Heti kivonat | Igen | No | Nem |
+| | MFA-regisztrációs szabályzat | Igen | No | Nem |
 
 ## <a name="next-steps"></a>Következő lépések
 

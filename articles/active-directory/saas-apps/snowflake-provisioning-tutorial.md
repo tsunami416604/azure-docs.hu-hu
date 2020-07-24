@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 99565c8dc8b5cbaea9f449a9f6262a37ae5b66d0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 46ebb122b0165d469b1c40871d5939e50a8595c9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85367189"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87016315"
 ---
 # <a name="tutorial-configure-snowflake-for-automatic-user-provisioning"></a>Oktatóanyag: a hópehely konfigurálása a felhasználók automatikus kiépítési felállításához
 
@@ -72,7 +72,7 @@ Mielőtt a hópehely-t konfigurálja az Azure AD-vel való automatikus felhaszn�
 
 Adja hozzá a hópehely-t az Azure AD-alkalmazás-katalógusból a hópehely kiépítés kezelésének megkezdéséhez. Ha korábban már beállította a hópehely-t az SSO-hoz, használhatja ugyanazt az alkalmazást. Javasoljuk azonban, hogy hozzon létre egy külön alkalmazást, amikor először teszteli az integrációt. További információ az alkalmazások a katalógusból való hozzáadásáról [.](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app) 
 
-## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>4. lépés Annak meghatározása, hogy ki lesz a kiépítés hatóköre 
+## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>4. lépés: Annak meghatározása, hogy ki lesz a kiépítés hatóköre 
 
 Az Azure AD kiépítési szolgáltatása lehetővé teszi az alkalmazáshoz való hozzárendelés és a felhasználó/csoport attribútumai alapján kiépített hatókör kiosztását. Ha úgy dönt, hogy a hatókör ki lesz kiépítve az alkalmazáshoz a hozzárendelés alapján, a következő [lépésekkel](../manage-apps/assign-user-or-group-access-portal.md) rendelhet hozzá felhasználókat és csoportokat az alkalmazáshoz. Ha olyan hatókört választ ki, amely kizárólag a felhasználó vagy csoport attribútumai alapján lesz kiépítve, az [itt](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)leírtak szerint használhat egy hatókör-szűrőt. 
 
@@ -111,7 +111,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Értesítő E-mail](common/provisioning-notification-email.png)
 
-8. Kattintson a **Save** (Mentés) gombra.
+8. Kattintson a **Mentés** gombra.
 
 9. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a hópehely-hoz**lehetőséget.
 
@@ -119,7 +119,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
    |Attribútum|Típus|
    |---|---|
-   |Active|Logikai|
+   |Active|Logikai érték|
    |displayName|Sztring|
    |e-mailek [type EQ "work"]. Value|Sztring|
    |userName (Felhasználónév)|Sztring|
@@ -163,6 +163,10 @@ Miután konfigurálta az üzembe helyezést, a következő erőforrásokkal figy
 ## <a name="connector-limitations"></a>Összekötő korlátozásai
 
 * A hópehely által generált SCIM tokenek 6 hónapon belül lejárnak. Vegye figyelembe, hogy ezeket a lejáratuk előtt frissíteni kell, hogy a kiépítési szinkronizálások továbbra is működőképesek legyenek. 
+
+## <a name="change-log"></a>Módosítási napló
+
+* 07/21/2020 – az összes felhasználó számára engedélyezett, helyreállítható törlés (az aktív attribútumon keresztül).
 
 ## <a name="additional-resources"></a>További források
 

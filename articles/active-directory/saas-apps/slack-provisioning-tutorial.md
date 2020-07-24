@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2019
+ms.date: 05/06/2020
 ms.author: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8b7fa5aea835329be8f65a3bb1775ba5b0d97d4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5ca536ddacb0f81459625b733eb79282e145afba
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85389860"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87016318"
 ---
 # <a name="tutorial-configure-slack-for-automatic-user-provisioning"></a>Oktatóanyag: a tartalékidő konfigurálása a felhasználók automatikus kiépítési felállításához
 
@@ -62,7 +62,7 @@ Az Azure AD kiépítési szolgáltatása lehetővé teszi az alkalmazáshoz val�
 
 * Kis kezdés. Tesztelje a felhasználókat és a csoportokat egy kis készlettel, mielőtt mindenki számára elérhetővé tenné. Ha a kiépítés hatóköre a hozzárendelt felhasználókhoz és csoportokhoz van beállítva, ezt úgy szabályozhatja, hogy egy vagy két felhasználót vagy csoportot rendel az alkalmazáshoz. Ha a hatókör minden felhasználóra és csoportra van beállítva, megadhat egy [attribútum-alapú hatókör-szűrőt](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts).
 
-## <a name="step-4-configure-automatic-user-provisioning-to-slack"></a>4. lépés Az automatikus felhasználó-kiépítés beállítása a Slackre 
+## <a name="step-4-configure-automatic-user-provisioning-to-slack"></a>4. lépés: Az automatikus felhasználó-kiépítés beállítása a Slackre 
 
 Ez a szakasz végigvezeti az Azure AD-nek a Slack felhasználói fiók létesítési API-val való összekapcsolásán, valamint a kiépítési szolgáltatás konfigurálásának beállításán az Azure AD-ben a felhasználó-és csoport-hozzárendelésen alapuló elosztott felhasználói fiókok létrehozásához, frissítéséhez és letiltásához.
 
@@ -99,7 +99,7 @@ Ez a szakasz végigvezeti az Azure AD-nek a Slack felhasználói fiók létesít
 
     ![Értesítő E-mail](common/provisioning-notification-email.png)
 
-9. Kattintson a **Mentés** gombra.
+9. Válassza a **Mentés** lehetőséget.
 
 10. A leképezések szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a slackhez**lehetőséget.
 
@@ -107,7 +107,7 @@ Ez a szakasz végigvezeti az Azure AD-nek a Slack felhasználói fiók létesít
 
    |Attribútum|Típus|
    |---|---|
-   |Active|Logikai|
+   |Active|Logikai érték|
    |externalId|Sztring|
    |displayName|Sztring|
    |név. familyName|Sztring|
@@ -169,7 +169,7 @@ Miután konfigurálta az üzembe helyezést, a következő erőforrásokkal figy
 2. Ellenőrizze a [folyamatjelző sáv](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) állapotát a kiépítési ciklus állapotának megtekintéséhez és a Befejezés befejezéséhez.
 3. Ha úgy tűnik, hogy a kiépítési konfiguráció sérült állapotban van, az alkalmazás Karanténba kerül. További információ a karanténba [helyezett állapotokról](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status).
 
-## <a name="connector-limitations"></a>Összekötő korlátozásai
+## <a name="troubleshooting-tips"></a>Hibaelhárítási tippek
 
 * A Slack **DisplayName** attribútumának konfigurálásakor vegye figyelembe a következő viselkedéseket:
 
@@ -179,11 +179,15 @@ Miután konfigurálta az üzembe helyezést, a következő erőforrásokkal figy
   
   * Az engedélyezett írásjelek közé tartoznak az időszakok, az aláhúzások, a kötőjelek, az aposztrófok, a zárójelek (például **([{}])**) és az elválasztók (például: **/;**).
   
+  * a displayName tulajdonságnak nem lehet "@" karaktere. Ha a "@" szerepel, a kiépítési naplókban a "AttributeValidationFailed" leírással megtalálhatja a kihagyott eseményt.
+
   * Csak akkor frissül, ha ez a két beállítás konfigurálva van a Slack munkahelyi/szervezeti **profiljának szinkronizálásához** , és a **felhasználók nem változtathatják meg a megjelenítendő nevüket**.
-  
+
 * A Slack **username** attribútumának 21 karakternél rövidebbnek kell lennie, és egyedi értékkel kell rendelkeznie.
 
 * A Slack csak a **felhasználónévvel** és az **e-mail-címmel**való megfeleltetést engedélyezi.  
+  
+* Az általános erorr-kódokat a hivatalos Slack dokumentációjában dokumentálja –https://api.slack.com/scim#errors
 
 ## <a name="change-log"></a>Változási napló
 

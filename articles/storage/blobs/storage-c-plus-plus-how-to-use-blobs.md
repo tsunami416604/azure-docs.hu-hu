@@ -3,20 +3,20 @@ title: Az Object (blob) tároló használata a C++-ról – Azure | Microsoft Do
 description: Strukturálatlan adat tárolása a felhőben az Azure Blob (Object) tárolóval.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 03/21/2018
+ms.date: 07/16/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
-ms.openlocfilehash: 7ff23f8699ee70e83118d1d269b4536d7c3facc1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d21d37e366e0f34c896d76ee53c49c4ca30a18db
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84465525"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87021137"
 ---
 # <a name="how-to-use-blob-storage-from-c"></a>BLOB Storage használata a C++-ból
 
-Ez az útmutató bemutatja, hogyan hajthat végre gyakori forgatókönyveket az Azure Blob Storage használatával. A példák a Blobok feltöltését, listázását, letöltését és törlését mutatják be. A kódminták C++ nyelven íródtak, és az [Azure Storage C++ programnyelvhez készült ügyféloldali kódtárát](https://github.com/Azure/azure-storage-cpp/blob/master/README.md) használják.   
-
+Ez az útmutató bemutatja, hogyan hajthat végre gyakori forgatókönyveket az Azure Blob Storage használatával. A példák a Blobok feltöltését, listázását, letöltését és törlését mutatják be. A kódminták C++ nyelven íródtak, és az [Azure Storage C++ programnyelvhez készült ügyféloldali kódtárát](https://github.com/Azure/azure-storage-cpp/blob/master/README.md) használják.
 További információ a blob Storage-ról: [Az Azure Blob Storage bemutatása](storage-blobs-introduction.md).
 
 > [!NOTE]
@@ -25,14 +25,14 @@ További információ a blob Storage-ról: [Az Azure Blob Storage bemutatása](s
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
 
 ## <a name="create-a-c-application"></a>C++-alkalmazás létrehozása
-Ebben az útmutatóban a tárolási funkciókat fogja használni, amelyek egy C++-alkalmazáson belül futtathatók.  
+Ebben az útmutatóban a tárolási funkciókat fogja használni, amelyek egy C++-alkalmazáson belül futtathatók.
 
-Ehhez telepítenie kell az Azure Storage C++ programnyelvhez készült ügyféloldali kódtárát, és létre kell hoznia egy Azure Storage-fiókot az Azure-előfizetésben.   
+Ehhez telepítenie kell az Azure Storage C++ programnyelvhez készült ügyféloldali kódtárát, és létre kell hoznia egy Azure Storage-fiókot az Azure-előfizetésben.
 
 Az Azure Storage C++ programnyelvhez készült ügyféloldali kódtárát az alábbi módszerekkel telepítheti:
 
-* **Linux:** Kövesse az [Azure Storage ügyféloldali függvénytárában](https://github.com/Azure/azure-storage-cpp#getting-started-on-linux) , a következő témakörben ismertetett utasításokat: első lépések Linuxon lapon.
-* **Windows:** Windows rendszeren használja a [vcpkg](https://github.com/microsoft/vcpkg) -t a függőség-kezelőként. A vcpkg inicializálásához [kövesse az első](https://github.com/microsoft/vcpkg#quick-start) lépéseket. Ezután használja a következő parancsot a könyvtár telepítéséhez:
+- **Linux:** Kövesse az [Azure Storage ügyféloldali függvénytárában](https://github.com/Azure/azure-storage-cpp#getting-started-on-linux) , a következő témakörben ismertetett utasításokat: első lépések Linuxon lapon.
+- **Windows:** Windows rendszeren használja a [vcpkg](https://github.com/microsoft/vcpkg) -t a függőség-kezelőként. A vcpkg inicializálásához [kövesse a rövid](https://github.com/microsoft/vcpkg#quick-start) útmutatót. Ezután használja a következő parancsot a könyvtár telepítéséhez:
 
 ```powershell
 .\vcpkg.exe install azure-storage-cpp
@@ -41,7 +41,7 @@ Az Azure Storage C++ programnyelvhez készült ügyféloldali kódtárát az al�
 A következő útmutatóból megtudhatja, hogyan hozhatja létre a forráskódot, és hogyan exportálhat NuGet a [readme](https://github.com/Azure/azure-storage-cpp#download--install) fájlban.
 
 ## <a name="configure-your-application-to-access-blob-storage"></a>Az alkalmazás konfigurálása a blob Storage eléréséhez
-Adja hozzá a következő include utasításokat a C++ fájl elejéhez, ahol az Azure Storage API-kat szeretné használni a Blobok eléréséhez:  
+Adja hozzá a következő include utasításokat a C++ fájl elejéhez, ahol az Azure Storage API-kat szeretné használni a Blobok eléréséhez:
 
 ```cpp
 #include <was/storage_account.h>
@@ -51,33 +51,33 @@ Adja hozzá a következő include utasításokat a C++ fájl elejéhez, ahol az 
 ```
 
 ## <a name="setup-an-azure-storage-connection-string"></a>Azure Storage-beli kapcsolatok karakterláncának beállítása
-Az Azure Storage-ügyfél egy tárolási kapcsolati sztringet használ az adatkezelési szolgáltatások elérésére szolgáló végpontok és hitelesítő adatok tárolásához. Ügyfélalkalmazás esetén a tárolási kapcsolati karakterláncot a következő formátumban kell megadnia, a Storage-fiók nevével és az [Azure Portalon](https://portal.azure.com) az *accountname* és a *AccountKey* értékekkel megadott Storage-fiókhoz tartozó Storage-hozzáférési kulcs használatával. További információ a Storage-fiókokról és a hozzáférési kulcsokról: [Tudnivalók az Azure Storage-fiókokról](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json). Ez a példa bemutatja, hogyan deklarálhat statikus mezőt a kapcsolati sztring tárolására:  
+Az Azure Storage-ügyfél egy tárolási kapcsolati sztringet használ az adatkezelési szolgáltatások elérésére szolgáló végpontok és hitelesítő adatok tárolásához. Ha egy ügyfélalkalmazás fut, a tárolási kapcsolati karakterláncot a következő formátumban kell megadnia a Storage-fiók neve és a *accountname* és a *AccountKey* értékek [Azure Portal](https://portal.azure.com) lévő Storage-fiókhoz tartozó Storage-hozzáférési kulcs használatával. További információ a Storage-fiókokról és a hozzáférési kulcsokról: [Tudnivalók az Azure Storage-fiókokról](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json). Ez a példa bemutatja, hogyan deklarálhat statikus mezőt a kapcsolati sztring tárolására:
 
 ```cpp
 // Define the connection-string with your values.
 const utility::string_t storage_connection_string(U("DefaultEndpointsProtocol=https;AccountName=your_storage_account;AccountKey=your_storage_account_key"));
 ```
 
-Az alkalmazás helyi Windows-számítógépen való teszteléséhez használhatja az [Azure SDK](https://azure.microsoft.com/downloads/)-val telepített Microsoft Azure [Storage emulatort](../storage-use-emulator.md) . A Storage Emulator egy olyan segédprogram, amely szimulálja az Azure-ban elérhető blob, üzenetsor és Table szolgáltatásokat a helyi fejlesztési gépen. A következő példa bemutatja, hogyan deklarálhat statikus mezőt a helyi Storage Emulatorhoz használható kapcsolati sztring tárolására:
+Az alkalmazás helyi Windows-számítógépeken való teszteléséhez használhatja a [Azurite Storage emulatort](../common/storage-use-azurite.md). A Azurite egy olyan segédprogram, amely szimulálja az Azure-ban elérhető blob-és üzenetsor-szolgáltatásokat a helyi fejlesztési gépen. A következő példa bemutatja, hogyan deklarálhat statikus mezőt a helyi Storage Emulatorhoz használható kapcsolati sztring tárolására:
 
 ```cpp
-// Define the connection-string with Azure Storage Emulator.
-const utility::string_t storage_connection_string(U("UseDevelopmentStorage=true;"));  
+// Define the connection-string with Azurite.
+const utility::string_t storage_connection_string(U("UseDevelopmentStorage=true;"));
 ```
 
-Az Azure Storage Emulator elindításához kattintson a **Start** gombra, vagy nyomja le a **Windows** billentyűt. Kezdje el beírni az **Azure Storage emulatort**, és válassza a **Microsoft Azure Storage Emulator** lehetőséget az alkalmazások listájából.  
+A Azurite megkezdéséhez lásd: [a Azurite-emulátor használata a helyi Azure Storage-fejlesztéshez](../common/storage-use-azurite.md).
 
-Az alábbi minták azt feltételezik, hogy az ezen két módszer egyikével kérte le a Storage kapcsolati sztringjét.  
+Az alábbi minták azt feltételezik, hogy az ezen két módszer egyikével kérte le a Storage kapcsolati sztringjét.
 
 ## <a name="retrieve-your-storage-account"></a>A Storage-fiók beolvasása
-A Storage-fiók adatainak megjelenítéséhez használhatja a **cloud_storage_account** osztályt. A Storage-fiók információit a **parse** metódussal kérheti le a Storage kapcsolati sztringjéből.  
+A Storage-fiók adatainak megjelenítéséhez használhatja a **cloud_storage_account** osztályt. A Storage-fiók információit a **parse** metódussal kérheti le a Storage kapcsolati sztringjéből.
 
 ```cpp
 // Retrieve storage account from connection string.
 azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_connection_string);
 ```
 
-Ezután szerezzen be egy **cloud_blob_client** osztályra mutató hivatkozást, mivel lehetővé teszi a blob Storage-ban tárolt tárolókat és blobokat jelképező objektumok lekérését. A következő kód egy **cloud_blob_client** objektumot hoz létre a fent lekért Storage Account objektum használatával:  
+Ezután szerezzen be egy **cloud_blob_client** osztályra mutató hivatkozást, mivel lehetővé teszi a blob Storage-ban tárolt tárolókat és blobokat jelképező objektumok lekérését. A következő kód egy **cloud_blob_client** objektumot hoz létre a fent lekért Storage Account objektum használatával:
 
 ```cpp
 // Create the blob client.
@@ -87,7 +87,7 @@ azure::storage::cloud_blob_client blob_client = storage_account.create_cloud_blo
 ## <a name="how-to-create-a-container"></a>Útmutató: tároló létrehozása
 [!INCLUDE [storage-container-naming-rules-include](../../../includes/storage-container-naming-rules-include.md)]
 
-A példa bemutatja, hogyan hozhat létre tárolót, ha még nem rendelkezik vele:  
+A példa bemutatja, hogyan hozhat létre tárolót, ha még nem rendelkezik vele:
 
 ```cpp
 try
@@ -110,7 +110,7 @@ catch (const std::exception& e)
 }  
 ```
 
-Alapértelmezés szerint az új tároló magánjellegű, és meg kell adnia a tároló hozzáférési kulcsát a Blobok ebből a tárolóból való letöltéséhez. Ha a tárolóban lévő fájlokat (blobokat) mindenki számára elérhetővé szeretné tenni, beállíthatja, hogy a tároló nyilvános legyen a következő kód használatával:  
+Alapértelmezés szerint az új tároló magánjellegű, és meg kell adnia a tároló hozzáférési kulcsát a Blobok ebből a tárolóból való letöltéséhez. Ha a tárolóban lévő fájlokat (blobokat) mindenki számára elérhetővé szeretné tenni, beállíthatja, hogy a tároló nyilvános legyen a következő kód használatával:
 
 ```cpp
 // Make the blob container publicly accessible.
@@ -119,12 +119,12 @@ permissions.set_public_access(azure::storage::blob_container_public_access_type:
 container.upload_permissions(permissions);  
 ```
 
-Az interneten bárki láthatja a blobokat egy nyilvános tárolóban, de csak akkor módosíthatja vagy törölheti őket, ha rendelkezik a megfelelő hozzáférési kulccsal.  
+Az interneten bárki láthatja a blobokat egy nyilvános tárolóban, de csak akkor módosíthatja vagy törölheti őket, ha rendelkezik a megfelelő hozzáférési kulccsal.
 
 ## <a name="how-to-upload-a-blob-into-a-container"></a>Útmutató: blob feltöltése tárolóba
-Az Azure Blob Storage támogatja a blobok és a Blobok blokkolását. A legtöbb esetben a blokkblobok használata javasolt.  
+Az Azure Blob Storage támogatja a blobok és a Blobok blokkolását. A legtöbb esetben a blokkblobok használata javasolt.
 
-Fájlok blokkblobba való feltöltéséhez szerezze be a tároló hivatkozását, és annak segítségével kérje le a blokkblob hivatkozását. Ha már rendelkezik blob-hivatkozással, a **upload_from_stream** metódus meghívásával bármilyen adatfolyamot feltölthet rá. Ez az eljárás létrehozza a blobot, ha az még nem létezett, vagy felülírja, ha már igen. Az alábbi példák azt mutatják be, hogyan tölthetők fel blobok egy tárolóba, és feltételezik, hogy a tároló már létre lett hozva.  
+Fájlok blokkblobba való feltöltéséhez szerezze be a tároló hivatkozását, és annak segítségével kérje le a blokkblob hivatkozását. Ha már rendelkezik blob-hivatkozással, a **upload_from_stream** metódus meghívásával bármilyen adatfolyamot feltölthet rá. Ez az eljárás létrehozza a blobot, ha az még nem létezett, vagy felülírja, ha már igen. Az alábbi példák azt mutatják be, hogyan tölthetők fel blobok egy tárolóba, és feltételezik, hogy a tároló már létre lett hozva.
 
 ```cpp
 // Retrieve storage account from connection string.
@@ -187,7 +187,7 @@ for (auto it = container.list_blobs(); it != end_of_results; ++it)
 További részletek a listázási műveletekről: [Az Azure Storage-erőforrások listázása a C++-ban](../storage-c-plus-plus-enumeration.md).
 
 ## <a name="how-to-download-blobs"></a>Útmutató: Blobok letöltése
-A Blobok letöltéséhez először kérje le a blob-referenciát, majd hívja meg a **download_to_stream** metódust. Az alábbi példa a **download_to_stream** metódus használatával továbbítja a blob tartalmát egy stream-objektumba, amelyet aztán megtarthat egy helyi fájlba.  
+A Blobok letöltéséhez először kérje le a blob-referenciát, majd hívja meg a **download_to_stream** metódust. Az alábbi példa a **download_to_stream** metódus használatával továbbítja a blob tartalmát egy stream-objektumba, amelyet aztán megtarthat egy helyi fájlba.
 
 ```cpp
 // Retrieve storage account from connection string.
@@ -215,7 +215,7 @@ outfile.close();
 ```
 
 Azt is megteheti, hogy a **download_to_file** metódus használatával letölti a blob tartalmát egy fájlba.
-Emellett használhatja a **download_text** metódust is a blob tartalmának szöveges karakterláncként való letöltéséhez.  
+Emellett használhatja a **download_text** metódust is a blob tartalmának szöveges karakterláncként való letöltéséhez.
 
 ```cpp
 // Retrieve storage account from connection string.
@@ -235,7 +235,7 @@ utility::string_t text = text_blob.download_text();
 ```
 
 ## <a name="how-to-delete-blobs"></a>Útmutató: Blobok törlése
-BLOB törléséhez először szerezzen be egy blob-hivatkozást, majd hívja meg a **delete_blob** metódust.  
+BLOB törléséhez először szerezzen be egy blob-hivatkozást, majd hívja meg a **delete_blob** metódust.
 
 ```cpp
 // Retrieve storage account from connection string.
@@ -255,12 +255,12 @@ blockBlob.delete_blob();
 ```
 
 ## <a name="next-steps"></a>További lépések
-Most, hogy megismerte a blob Storage alapjait, az alábbi hivatkozásokat követve további információkat tudhat meg az Azure Storage-ról.  
+Most, hogy megismerte a blob Storage alapjait, az alábbi hivatkozásokat követve további információkat tudhat meg az Azure Storage-ról.
 
-* [A Queue Storage használata C++-szal](../storage-c-plus-plus-how-to-use-queues.md)
-* [A Table Storage használata a C++-ból](../../cosmos-db/table-storage-how-to-use-c-plus.md)
-* [Azure Storage-erőforrások listázása C++-ban](../storage-c-plus-plus-enumeration.md)
-* [Storage ügyféloldali kódtár a C++-hoz – dokumentáció](https://azure.github.io/azure-storage-cpp)
-* [Az Azure Storage dokumentációja](https://azure.microsoft.com/documentation/services/storage/)
-* [Transfer data with the AzCopy Command-Line Utility (Adatátvitel az AzCopy parancssori segédprogrammal)](../storage-use-azcopy.md)
+- [A Queue Storage használata C++-szal](../storage-c-plus-plus-how-to-use-queues.md)
+- [A Table Storage használata a C++-ból](../../cosmos-db/table-storage-how-to-use-c-plus.md)
+- [Azure Storage-erőforrások listázása C++-ban](../storage-c-plus-plus-enumeration.md)
+- [Storage ügyféloldali kódtár a C++-hoz – dokumentáció](https://azure.github.io/azure-storage-cpp)
+- [Az Azure Storage dokumentációja](https://azure.microsoft.com/documentation/services/storage/)
+- [Transfer data with the AzCopy Command-Line Utility (Adatátvitel az AzCopy parancssori segédprogrammal)](../storage-use-azcopy.md)
 

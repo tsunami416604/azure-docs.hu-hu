@@ -1,5 +1,5 @@
 ---
-title: Áttekintés – adatlekérdezés a Storage-ban az SQL on-demand használatával (előzetes verzió)
+title: Adatlekérdezés a Storage-ban az SQL on-demand (előzetes verzió) használatával
 description: Ez a cikk bemutatja, hogyan kérdezheti le az Azure Storage-t az Azure-beli SQL on-demand (előzetes verzió) erőforrás használatával az Azure szinapszis Analyticsben.
 services: synapse analytics
 author: azaricstefan
@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 4f78928c26b595caafd6709a200297d62ce1c361
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: a30874a14a1c2c44ec04b17b9ebddb52a9e9fb58
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259674"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87020542"
 ---
 # <a name="query-storage-files-using-sql-on-demand-preview-resources-within-synapse-sql"></a>Storage-fájlok lekérdezése az SQL on-demand (előzetes verzió) erőforrásain belül a szinapszis SQL-ben
 
@@ -248,7 +248,7 @@ A demo-adat a következő adatkészleteket tartalmazza:
 - Parketta-fájlok beágyazott oszlopokkal
 - Könyvek JSON formátumban
 
-| Mappa elérési útja                                                  | Leírás                                                  |
+| Mappa elérési útja                                                  | Description                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | CSV                                                        | CSV formátumú adatszülő mappa                         |
 | /csv/population/<br />/csv/population-unix/<br />/csv/population-unix-hdr/<br />/csv/population-unix-hdr-escape<br />/csv/population-unix-hdr-quoted | Különböző CSV formátumú adatfájlokkal rendelkező mappák. |
@@ -260,7 +260,7 @@ A demo-adat a következő adatkészleteket tartalmazza:
 | /json/books/                                                 | Könyvekből származó JSON-fájlok                                   |
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A különböző fájltípusok lekérdezésével, valamint a nézetek létrehozásával és használatával kapcsolatos további információkért tekintse meg a következő cikkeket:
 

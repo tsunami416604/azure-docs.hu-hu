@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b23d3d287238d2813f7381941dc279851bc3afdd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a61bd162baf6f079b625dc07d4faa397493ba618
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84728826"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015867"
 ---
 # <a name="what-is-self-service-sign-up-for-azure-active-directory"></a>Mi a Azure Active Directory önkiszolgáló regisztrációja?
 
@@ -57,7 +57,7 @@ A AllowEmailVerifiedUsers és a AllowAdHocSubscriptions olyan címtár-szintű b
 
 Ha az előző feltételek teljesülnek, akkor a rendszer létrehoz egy tagot a kezdőlapon, és létrehoz egy B2B vendég felhasználót a meghívó címtárban.
 
-A flow és a PowerApps próbaverzióját nem a **AllowAdHocSubscriptions** beállítás vezérli. További információért tekintse át a következő cikkeket:
+A flow és a PowerApps próbaverzióját nem a **AllowAdHocSubscriptions** beállítás vezérli. További információkért tekintse át a következő cikkeket:
 
 * [Hogyan gátolható meg, hogy a meglévő felhasználók elkezdjék használni a Power BI-t?](https://support.office.com/article/Power-BI-in-your-Organization-d7941332-8aec-4e5e-87e8-92073ce73dc5#bkmk_preventjoining)
 * [A Flow a munkahelyen – kérdések és válaszok](https://docs.microsoft.com/flow/organization-q-and-a)
@@ -78,8 +78,8 @@ További információt és példákat a paraméterek használatáról a [set-mso
 ## <a name="next-steps"></a>További lépések
 
 * [Egyéni tartománynév hozzáadása az Azure AD-hez](../fundamentals/add-custom-domain.md)
-* [How to install and configure Azure PowerShell (Az Azure PowerShell telepítése és konfigurálása)](/powershell/azure/overview)
-* [Azure PowerShell](/powershell/azure/overview)
+* [How to install and configure Azure PowerShell (Az Azure PowerShell telepítése és konfigurálása)](/powershell/azure/)
+* [Azure PowerShell](/powershell/azure/)
 * [Azure parancsmag-referencia](/powershell/azure/get-started-azureps)
 * [Set-MsolCompanySettings](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0)
 * [Munkahelyi vagy iskolai fiók lezárása nem felügyelt címtárban](users-close-account.md)

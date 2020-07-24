@@ -12,11 +12,12 @@ ms.date: 04/07/2020
 ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 48727e377c2b6707e570cad103e4b08bcb44a1cb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c785e2b13e7d5c57ff6d5ce9161fea1a80da77e1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84764927"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87019539"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>Meglévő helyszíni proxykiszolgálók használata
 
@@ -116,7 +117,7 @@ A következő URL-címek elérésének engedélyezése:
 | mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | Az összekötő ezeket az URL-eket használja a tanúsítványok ellenőrzéséhez |
 | login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>*. microsoftonline.com <br> *. microsoftonline-p.com<br>*. msauth.net <br> *. msauthimages.net<br>*. msecnd.net <br> *. msftauth.net<br>*. msftauthimages.net <br> *. phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net<br>ctdl.windowsupdate.com:80 | Az összekötő ezeket az URL-címeket használja a regisztrációs folyamat során. |
 
-Ha a tűzfal vagy a proxy lehetővé teszi a DNS engedélyezési listája konfigurálását, akkor engedélyezheti a \* . msappproxy.net és a \* . servicebus.Windows.net kapcsolatait. Ha nem, engedélyeznie kell az [Azure Datacenter IP-tartományokhoz](https://www.microsoft.com/download/details.aspx?id=41653)való hozzáférést. Az IP-címtartományok hetente frissülnek.
+Ha a tűzfal vagy a proxy lehetővé teszi a DNS engedélyezési listája konfigurálását, akkor engedélyezheti a \* . msappproxy.net és a \* . servicebus.Windows.net kapcsolatait. Ha nem, engedélyeznie kell az [Azure adatközpont IP-tartományokhoz](https://www.microsoft.com/download/details.aspx?id=41653)való hozzáférést. Az IP-címtartományok hetente frissülnek.
 
 Ha a teljes tartománynév nem engedélyezhető, és az IP-címtartományok megadására van szükség, használja a következő beállításokat:
 
@@ -152,6 +153,9 @@ Ennek engedélyezéséhez kövesse a következő lépéseket:
 4.  Konfigurálja a szükséges proxybeállításokat. 
 
 Ezek a beállítások teszik, hogy az összekötő ugyanazt a továbbítási proxyt használja az Azure-hoz és a háttérbeli alkalmazáshoz való kommunikációhoz. Ha az összekötő és az Azure közötti kommunikációhoz nem szükséges a továbbítási proxy vagy más továbbítási proxy, beállíthatja, hogy a fájl módosítása ApplicationProxyConnectorService.exe.config a kimenő proxyk megkerülése vagy a kimenő proxykiszolgáló használata részben leírtak szerint.
+
+> [!NOTE]
+> Az internetes proxy különböző módon konfigurálható az operációs rendszeren. A NETSH WINHTTP használatával konfigurált proxybeállítások (Futtatás `NETSH WINHTTP SHOW PROXY` az ellenőrzéshez) felülbírálják a 2. lépésben konfigurált proxybeállításokat. 
 
 Az összekötő-frissítési szolgáltatás a Machine proxyt is használja majd. Ez a viselkedés módosítható a ApplicationProxyConnectorUpdaterService.exe.config fájl módosításával.
 

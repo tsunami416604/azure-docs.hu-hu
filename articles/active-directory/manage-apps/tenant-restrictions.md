@@ -2,25 +2,22 @@
 title: A bérlői korlátozások használata az SaaS-alkalmazásokhoz való hozzáférés kezelésére – Azure AD
 description: A bérlői korlátozások használata annak kezeléséhez, hogy mely felhasználók férhetnek hozzá az alkalmazásokhoz az Azure AD-bérlőn alapuló módon.
 services: active-directory
-documentationcenter: ''
 author: kenwith
 manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: kenwith
-ms.reviewer: richagi
+ms.reviewer: hpsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd302791aa783f1a95d48f666366aa845fcaadbb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ae90a682ea2d1abb8159ec28ed02ed122494f512
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763023"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87019250"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>A bérlői korlátozások használata a SaaS-Felhőbeli alkalmazásokhoz való hozzáférés kezelésére
 
@@ -101,7 +98,7 @@ Míg a bérlői korlátozások konfigurálása a vállalati proxy infrastruktúr
 
 2. A bal oldali panelen válassza az **Azure Active Directory** lehetőséget. Megjelenik a Azure Active Directory áttekintés oldal.
 
-3. A **többi funkció** fejlécében válassza a **bérlői korlátozások**elemet.
+3. Az Áttekintés lapon válassza a **bérlői korlátozások**lehetőséget.
 
 A korlátozott hozzáférésű bérlőként megadott bérlő rendszergazdája a jelentés használatával megtekintheti a bérlői korlátozási szabályzat miatt letiltott bejelentkezéseket, beleértve a használt identitást és a cél könyvtár-azonosítót is. A bejelentkezések abban az esetben szerepelnek, ha a bérlőt a korlátozást a felhasználó bérlője vagy az erőforrás-bérlő állítja be a bejelentkezéshez.
 
@@ -120,7 +117,7 @@ A Azure Portal többi jelentéséhez hasonlóan szűrőket is használhat a jele
 - **MFA-eredmény**
 - **IP-cím**
 - **Ügyfél**
-- **Username**
+- **Felhasználónév**
 - **Hely**
 - **Cél bérlő azonosítója**
 

@@ -11,11 +11,12 @@ ms.topic: end-user-help
 ms.date: 01/24/2019
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: b6bda6d35391543e416c377557e34de317e293eb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 04076ed5b91f8e840a084b784477d07eea5adee7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83741567"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015970"
 ---
 # <a name="add-non-microsoft-accounts-to-the-microsoft-authenticator-app"></a>Nem Microsoft-fiókok hozzáadása a Microsoft Authenticator alkalmazáshoz
 
@@ -49,7 +50,7 @@ A kétfaktoros ellenőrzés bekapcsolásával adja hozzá Google-fiókját, majd
 
 ### <a name="add-your-google-account-to-the-app"></a>Google-fiók hozzáadása az alkalmazáshoz
 
-1. A számítógép Google lapján lépjen a **másodlagos második lépés beállítása** szakaszra, majd válassza a **beállítás** a **hitelesítő alkalmazásból** szakaszt.
+1. A számítógépen a Google-fiók biztonsága lapon ( https://myaccount.google.com/security) lépjen a **további második lépések hozzáadása** elemre, és ellenőrizze, hogy az Ön részéről van-e szó, majd válassza a **beállítás** a **hitelesítő alkalmazásban** szakaszt.
 
 2. A **hitelesítő alkalmazás kódjának beolvasása** lapon válassza az **Android** vagy az **iPhone** lehetőséget a telefon típusa alapján, majd kattintson a **tovább**gombra.
 

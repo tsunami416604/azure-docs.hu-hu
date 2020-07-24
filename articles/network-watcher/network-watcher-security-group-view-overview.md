@@ -1,6 +1,6 @@
 ---
-title: Bevezetés a biztonsági csoport nézetbe az Azure Network Watcherban | Microsoft Docs
-description: Ez az oldal áttekintést nyújt a Network Watcher biztonsági nézet funkcióról
+title: Az Azure Network Watcher hatékony biztonsági szabályok nézetének bemutatása | Microsoft Docs
+description: Ez az oldal áttekintést nyújt a Network Watcher-hatékony biztonsági szabályok megtekintési képességéről
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -11,11 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: damendo
-ms.openlocfilehash: 18619cc0f7a21a39d0802575c484c68c5fa1a624
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f4c601184a060c3dfc4f033bcf983bf773f7167f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76840757"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87022650"
 ---
 # <a name="introduction-to-effective-security-rules-view-in-azure-network-watcher"></a>Az Azure Network Watcher hatékony biztonsági szabályok nézetének bemutatása
 
@@ -32,6 +33,11 @@ A szabályok kiválaszthatók, és egy új panel nyílik meg a hálózati bizton
 ![részletezés][2]
 
 ### <a name="next-steps"></a>További lépések
+
+Az *érvényes biztonsági csoportok* funkciót az alább felsorolt egyéb módszerekkel is használhatja:
+* [REST API](https://docs.microsoft.com/rest/api/virtualnetwork/NetworkInterfaces/ListEffectiveNetworkSecurityGroups)
+* [PowerShell](https://docs.microsoft.com/powershell/module/az.network/get-azeffectivenetworksecuritygroup?view=azps-4.4.0)
+* [Azure CLI](https://docs.microsoft.com/cli/azure/network/nic?view=azure-cli-latest#az-network-nic-list-effective-nsg)
 
 Megtudhatja, hogyan naplózhatja a hálózati biztonsági csoport beállításait a [hálózati biztonsági csoport beállításainak naplózása a PowerShell](network-watcher-nsg-auditing-powershell.md) használatával
 

@@ -8,19 +8,17 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/09/2019
+ms.date: 07/14/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.collection: M365-identity-device-management
-ms.custom: has-adal-ref
-ms.openlocfilehash: 84cd6f9d7612cc6cf5829c03c398dd65a6eec412
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6ed9d5eb8d230b05a090424d6105865acae69e61
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85318028"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87019352"
 ---
-# <a name="remote-access-to-on-premises-applications-through-azure-active-directorys-application-proxy"></a>Távoli hozzáférés helyszíni alkalmazásokhoz Azure Active Directory alkalmazásproxy használatával
+# <a name="remote-access-to-on-premises-applications-through-azure-ad-application-proxy"></a>Távoli hozzáférés helyszíni alkalmazásokhoz az Azure AD Application Proxy
 
 Azure Active Directory alkalmazásproxy biztonságos távoli hozzáférést biztosít a helyszíni webalkalmazásokhoz. Az Azure AD-be való egyszeri bejelentkezés után a felhasználók külső URL-címen vagy egy belső alkalmazás-portálon keresztül is hozzáférhetnek a Felhőbeli és a helyszíni alkalmazásokhoz. Az alkalmazásproxy például távoli hozzáférést és egyszeri bejelentkezést biztosíthat a Távoli asztal, a SharePoint, a Teams, a tabló, a Qlik és az üzletági (LOB) alkalmazások számára.
 
@@ -60,7 +58,7 @@ Az alábbi ábra bemutatja, hogyan működik együtt az Azure AD és az alkalmaz
 5. Az összekötő elküldi a kérést a helyszíni alkalmazásnak.
 6. A választ az összekötő és az alkalmazásproxy szolgáltatás továbbítja a felhasználónak.
 
-| Összetevő | Description |
+| Összetevő | Leírás |
 | --------- | ----------- |
 | Végpont  | A végpont egy URL-cím vagy egy [végfelhasználói portál](end-user-experiences.md). A felhasználók a hálózaton kívül érhetik el az alkalmazásokat egy külső URL-cím elérésével. A hálózaton belüli felhasználók egy URL-címen vagy egy végfelhasználói portálon keresztül érhetik el az alkalmazást. Ha a felhasználók ezen végpontok egyikén jelentkeznek, a hitelesítés az Azure AD-ben történik, majd az összekötőn keresztül a helyszíni alkalmazáshoz irányítja őket.|
 | Azure AD | Az Azure AD a felhőben tárolt bérlői könyvtár használatával végzi a hitelesítést. |

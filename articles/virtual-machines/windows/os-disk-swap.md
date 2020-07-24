@@ -7,11 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 04/24/2018
 ms.author: cynthn
-ms.openlocfilehash: c96fa4c453911c4ca4b8cf6d8f74647b4532109f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2d4abd68e60201a17e56ee105777614c42691bfc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711544"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87020338"
 ---
 # <a name="change-the-os-disk-used-by-an-azure-vm-using-powershell"></a>Azure-beli virtuális gép által használt operációsrendszer-lemez módosítása a PowerShell használatával
 
@@ -24,7 +25,7 @@ A virtuális gépnek stopped\deallocated kell lennie, a felügyelt lemez erőfor
 Győződjön meg arról, hogy a virtuális gép mérete és a tároló típusa kompatibilis-e a csatolni kívánt lemezzel. Ha például a használni kívánt lemez Premium Storage, akkor a virtuális gépnek képesnek kell lennie Premium Storage (például egy DS-sorozat méretének). Mindkét lemeznek azonos méretűnek kell lennie.
 És ügyeljen arra, hogy ne keverje egy titkosított operációsrendszer-lemezzel nem titkosított virtuális gépet, ez nem támogatott. Ha a virtuális gép nem használja Azure Disk Encryption, akkor a cserébe becserélt operációsrendszer-lemez nem használható Azure Disk Encryption.
 
-Egy erőforráscsoport lemezei listájának lekérése a [Get-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/get-azdisk) használatával
+Egy erőforráscsoport lemezei listájának lekérése a [Get-AzDisk](/powershell/module/az.compute/get-azdisk) használatával
 
 ```azurepowershell-interactive
 Get-AzDisk -ResourceGroupName myResourceGroup | Format-Table -Property Name

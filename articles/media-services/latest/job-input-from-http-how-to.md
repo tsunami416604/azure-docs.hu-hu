@@ -11,11 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 02/13/2019
 ms.author: juliako
-ms.openlocfilehash: a3d4568dd237491f28ae2880bdd78dd236870c3f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1ff2bc6d4bb4f7b983787b287fbb27e1c33cc179
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74899830"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87022990"
 ---
 # <a name="create-a-job-input-from-an-https-url"></a>Feladathoz tartozó bemenet létrehozása HTTPS URL-címről
 
@@ -32,7 +33,7 @@ A következő kód bemutatja, hogyan hozhat létre egy HTTPS URL-címmel rendelk
 
 ## <a name="job-error-codes"></a>Feladathibakódok
 
-Lásd: [hibakódok](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode).
+Lásd: [hibakódok](/rest/api/media/jobs/get#joberrorcode).
 
 ## <a name="next-steps"></a>További lépések
 

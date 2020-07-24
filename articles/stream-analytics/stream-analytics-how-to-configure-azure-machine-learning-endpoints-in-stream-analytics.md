@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/11/2019
-ms.openlocfilehash: 63c54369ecda6a4f242ca76730c48a414a9d4724
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 33d1e73523ca85a21c032729b6537ee3297ea23e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86040877"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87020831"
 ---
 # <a name="azure-machine-learning-studio-classic-integration-in-stream-analytics-preview"></a>Azure Machine Learning Studio (klasszikus) integráció Stream Analytics (előzetes verzió)
 Stream Analytics támogatja a felhasználó által definiált függvényeket, amelyek Azure Machine Learning Studio (klasszikus) végpontokat hívnak meg. A szolgáltatás REST API támogatását a [Stream Analytics REST API könyvtárban](https://msdn.microsoft.com/library/azure/dn835031.aspx)részletesen ismertetjük. Ez a cikk a funkció sikeres megvalósításához szükséges kiegészítő információkat nyújt Stream Analyticsban. Egy oktatóanyag is közzé lett téve, és [itt](stream-analytics-machine-learning-integration-tutorial.md)érhető el.
@@ -28,7 +28,7 @@ A Microsoft Azure Machine Learning Studio (klasszikus) együttműködésen alapu
 Mindegyik végpont API-kat tartalmaz a kötegelt végrehajtáshoz és a szinkron végrehajtáshoz. Stream Analytics szinkron végrehajtást használ. Az adott szolgáltatás neve a [kérelem/válasz szolgáltatás](../machine-learning/studio/consume-web-services.md) Azure Machine learning Studio (klasszikus).
 
 ## <a name="machine-learning-resources-needed-for-stream-analytics-jobs"></a>Stream Analytics feladatokhoz szükséges erőforrások Machine Learning
-Stream Analytics a feladatok feldolgozását, a kérelem/válasz végpontot, egy [apikey](../machine-learning/machine-learning-connect-to-azure-machine-learning-web-service.md)és egy hencegő definíciót a sikeres végrehajtáshoz. Stream Analytics rendelkezik egy további végponttal, amely létrehozza a hencegő végpont URL-címét, megkeresi a felületet, és egy alapértelmezett UDF-definíciót ad vissza a felhasználónak.
+Stream Analytics a feladatok feldolgozását, a kérelem/válasz végpontot, egy [apikey](https://docs.microsoft.com/azure/machine-learning/studio/consume-web-services)és egy hencegő definíciót a sikeres végrehajtáshoz. Stream Analytics rendelkezik egy további végponttal, amely létrehozza a hencegő végpont URL-címét, megkeresi a felületet, és egy alapértelmezett UDF-definíciót ad vissza a felhasználónak.
 
 ## <a name="configure-a-stream-analytics-and-machine-learning-udf-via-rest-api"></a>Stream Analytics és Machine Learning UDF konfigurálása REST API használatával
 A REST API-k használatával konfigurálhatja a feladatot az Azure Machine Language functions meghívásához. Ennek lépései a következők:

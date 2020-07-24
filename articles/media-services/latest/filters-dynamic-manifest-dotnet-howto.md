@@ -13,11 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 06/03/2019
 ms.author: juliako
-ms.openlocfilehash: ef04b1b7b5030189482e89e26e4565397cbdd7c8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2226d7a769caf049af30bbca81ca3079d72970b4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75779246"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87023126"
 ---
 # <a name="create-filters-with-media-services-net-sdk"></a>Szűrők létrehozása Media Services .NET SDK-val
 
@@ -25,7 +26,7 @@ Ha a tartalmat az ügyfeleknek (élő vagy igény szerinti közvetítéssel köz
 
 A funkció részletes ismertetését és a használatban lévő forgatókönyveket lásd: [dinamikus jegyzékfájlok](filters-dynamic-manifest-overview.md) és [szűrők](filters-concept.md).
 
-Ez a témakör azt mutatja be, hogyan használható a Media Services .NET SDK egy szűrő megadására az igény szerinti videóhoz, valamint a [fiókok](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.accountfilter?view=azure-dotnet) és az adategységek [szűrők](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.assetfilter?view=azure-dotnet)létrehozásához. 
+Ez a témakör azt mutatja be, hogyan használható a Media Services .NET SDK egy szűrő megadására az igény szerinti videóhoz, valamint a [fiókok](/dotnet/api/microsoft.azure.management.media.models.accountfilter?view=azure-dotnet) és az adategységek [szűrők](/dotnet/api/microsoft.azure.management.media.models.assetfilter?view=azure-dotnet)létrehozásához. 
 
 > [!NOTE]
 > Ügyeljen rá, hogy ellenőrizze a [presentationTimeRange](filters-concept.md#presentationtimerange).
@@ -33,13 +34,13 @@ Ez a témakör azt mutatja be, hogyan használható a Media Services .NET SDK eg
 ## <a name="prerequisites"></a>Előfeltételek 
 
 - Tekintse át [a szűrőket és a dinamikus jegyzékfájlokat](filters-dynamic-manifest-overview.md).
-- [Hozzon létre egy Media Services fiókot](create-account-cli-how-to.md). Ügyeljen rá, hogy jegyezze fel az erőforráscsoport nevét és a Media Services fiók nevét. 
-- Az API-k [eléréséhez](access-api-cli-how-to.md) szükséges információk beolvasása
+- [Hozzon létre egy Media Services fiókot](./create-account-howto.md). Ügyeljen rá, hogy jegyezze fel az erőforráscsoport nevét és a Media Services fiók nevét. 
+- Az API-k [eléréséhez](./access-api-howto.md) szükséges információk beolvasása
 - Tekintse át a [feltöltést, a kódolást és a streamet a Azure Media Services használatával, és](stream-files-tutorial-with-api.md) tekintse meg a [.net SDK használatának megkezdéséhez](stream-files-tutorial-with-api.md#start_using_dotnet)
 
 ## <a name="define-a-filter"></a>Szűrő definiálása  
 
-A .NET-ben a [FilterTrackSelection](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.filtertrackselection?view=azure-dotnet) és a [FilterTrackPropertyCondition](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.filtertrackpropertycondition?view=azure-dotnet) osztályok használatával követheti nyomon a beállításokat. 
+A .NET-ben a [FilterTrackSelection](/dotnet/api/microsoft.azure.management.media.models.filtertrackselection?view=azure-dotnet) és a [FilterTrackPropertyCondition](/dotnet/api/microsoft.azure.management.media.models.filtertrackpropertycondition?view=azure-dotnet) osztályok használatával követheti nyomon a beállításokat. 
 
 A következő kód egy olyan szűrőt határoz meg, amely minden olyan hangsávot tartalmaz, amely EC-0-1000000 3.
 
@@ -118,5 +119,3 @@ Az alábbi táblázat néhány példát mutat be a szűrőket tartalmazó URL-c�
 ## <a name="next-steps"></a>További lépések
 
 [Stream-videók](stream-files-tutorial-with-api.md) 
-
-

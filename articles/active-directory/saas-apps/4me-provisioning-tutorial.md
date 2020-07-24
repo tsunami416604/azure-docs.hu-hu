@@ -15,11 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/3/2019
 ms.author: jeedes
-ms.openlocfilehash: 423ba8c7aea9659a4c91f68a01392954c2ba6db2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0c83d43fe1a2068fa4c9f24a10c0975610142a84
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77059164"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87018689"
 ---
 # <a name="tutorial-configure-4me-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés 4me konfigurálása
 
@@ -121,13 +122,13 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Értesítő E-mail](common/provisioning-notification-email.png)
 
-9. Kattintson a **Save** (Mentés) gombra.
+9. Kattintson a **Mentés** gombra.
 
 10. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a 4me**lehetőséget.
 
     ![4me felhasználói leképezések](media/4me-provisioning-tutorial/4me-user-mapping.png)
     
-11. Tekintse át az Azure AD-ből szinkronizált felhasználói attribútumokat az **attribútum-hozzárendelési** szakaszban található 4me. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a 4me felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
+11. Tekintse át az Azure AD-ből szinkronizált felhasználói attribútumokat az **attribútum-hozzárendelési** szakaszban található 4me. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a 4me felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. Győződjön meg arról, hogy a [4me támogatja a szűrést](https://developer.4me.com/v1/scim/users/) a kiválasztott egyező attribútumon. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
     ![4me felhasználói leképezések](media/4me-provisioning-tutorial/4me-user-attributes.png)
     

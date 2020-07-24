@@ -16,19 +16,19 @@ ms.date: 01/15/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 251d156afbd367e83945397760a6afe98a1cfb98
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 01e53b30a4c27296e30e031ffb771697afa8e1e9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85356933"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87019675"
 ---
 # <a name="azure-ad-connect-sync-technical-concepts"></a>Az Azure AD Connect szinkronizálása: technikai kulcsfogalmak
 Ez a cikk összefoglalja az [architektúra megismerését ismertető](how-to-connect-sync-technical-concepts.md)témakört.
 
 Azure AD Connect a szinkronizálás egy stabil Metadirectory szinkronizációs platformra épít.
 A következő fejezetekben a Metadirectory-szinkronizálással kapcsolatos fogalmakat mutatjuk be.
-A MIIS, az ILM és a FIM használatával a Azure Active Directory Sync Services a következő platformot biztosítja az adatforrásokhoz való csatlakozáshoz, az adatforrások közötti adatszinkronizáláshoz, valamint az identitások kiépítéséhez és megszüntetéséhez.
+A MIIS (Microsoft Identity Integration Server), az ILM (Identity Lifecycle Manager) és a FIM (Forefront Identity Manager) használatával a Azure Active Directory Sync Services a következő platformot biztosítja az adatforrásokhoz való csatlakozáshoz, az adatok adatforrások közötti szinkronizálásához, valamint az identitások kiépítéséhez és megszüntetéséhez.
 
 ![Műszaki fogalmak](./media/how-to-connect-sync-technical-concepts/scenario.png)
 

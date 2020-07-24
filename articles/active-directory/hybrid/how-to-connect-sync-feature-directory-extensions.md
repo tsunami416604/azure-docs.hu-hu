@@ -16,12 +16,12 @@ ms.date: 11/12/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3afec7c31488529af9ba15100c914899a0d1d808
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d64bfe66f5fb871ff9f85a5d58d128ac44643846
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85357460"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87019761"
 ---
 # <a name="azure-ad-connect-sync-directory-extensions"></a>Azure AD Connect Sync: címtárszolgáltatás-bővítmények
 A (z) Azure Active Directory (Azure AD) sémájának kiterjesztése a helyi Active Directory saját attribútumaival is elvégezhető. Ez a funkció lehetővé teszi LOB-alkalmazások készítését olyan attribútumok fogyasztásával, amelyeket továbbra is a helyszínen kezelhet. Ezek az attribútumok a [bővítményeken](https://docs.microsoft.com/graph/extensibility-overview
@@ -33,8 +33,8 @@ Jelenleg az Office 365-es munkaterhelések nem használják fel ezeket az attrib
 
 Konfigurálja, hogy mely további attribútumokat kívánja szinkronizálni a telepítővarázsló egyéni beállítások elérési útján.
 
->[!NOTE]
->Az elérhető attribútumok mező megkülönbözteti a kis-és nagybetűket.
+> [!NOTE]
+> A 1.2.65.0-nál korábbi Azure AD Connect verziók esetében az **elérhető attribútumok** keresési mezője a kis-és nagybetűk megkülönböztetésére szolgál.
 
 ![Séma-kiterjesztés varázsló](./media/how-to-connect-sync-feature-directory-extensions/extension2.png)  
 

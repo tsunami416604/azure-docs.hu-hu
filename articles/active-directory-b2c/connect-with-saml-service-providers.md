@@ -12,18 +12,18 @@ ms.date: 05/18/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: b9ea9e756587af124ca94518d9f15271310ddee3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3baa659d454a24a132eda914d50acddbd5df8a90
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85389378"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87020066"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>SAML-alkalmazás regisztrálása Azure AD B2C
 
 Ebből a cikkből megtudhatja, hogyan konfigurálhatja a Azure Active Directory B2C (Azure AD B2C), hogy Security Assertion Markup Language (SAML) identitás-szolgáltatóként (identitásszolgáltató) működjön az alkalmazásaihoz.
 
-## <a name="scenario-overview"></a>Forgatókönyv áttekintése
+## <a name="scenario-overview"></a>A forgatókönyv áttekintése
 
 Azok a szervezetek, amelyek az ügyfél identitás-és hozzáférés-kezelési megoldásként Azure AD B2C használják, interakciót igényelhetnek az SAML protokoll használatával történő hitelesítésre konfigurált identitás-szolgáltatókkal vagy alkalmazásokkal.
 
@@ -104,7 +104,7 @@ Ezután töltse fel az SAML-jogkivonatot és a válasz aláíró tanúsítvány�
 1. Írjon be egy **nevet**, például *SamlIdpCert*. Az előtag *B2C_1A_* automatikusan hozzáadódik a kulcs nevéhez.
 1. Töltse fel a tanúsítványt a fájl feltöltése vezérlőelem használatával.
 1. Adja meg a tanúsítvány jelszavát.
-1. Válassza a **Létrehozás** lehetőséget.
+1. Kattintson a **Létrehozás** gombra.
 1. Ellenőrizze, hogy a kulcs a várt módon jelenik-e meg. Például *B2C_1A_SamlIdpCert*.
 
 ## <a name="2-prepare-your-policy"></a>2. a szabályzat előkészítése
@@ -274,7 +274,7 @@ Most már készen áll az egyéni házirend-és Azure AD B2C-bérlőre. Ezután 
 1. Adja meg az alkalmazás **nevét** . Például: *SAMLApp1*.
 1. A **támogatott fióktípus**területen válassza az **ebben a szervezeti könyvtárban lévő fiókok** lehetőséget
 1. Az **átirányítási URI**területen válassza a Web lehetőséget, majd írja be a **következőt**: `https://localhost` . Ezt az értéket később módosíthatja az alkalmazás regisztrációs jegyzékfájljában.
-1. Kattintson a **Register** (Regisztrálás) elemre.
+1. Válassza a **Regisztráció** lehetőséget.
 
 ### <a name="42-update-the-app-manifest"></a>4,2 az alkalmazás jegyzékfájljának frissítése
 
@@ -353,6 +353,51 @@ Az oktatóanyag elvégzéséhez az [SAML-teszt alkalmazás][samltest]használat�
 * Adja meg a kiállító URI azonosítóját:`https://contoso.onmicrosoft.com/app-name`
 
 Válassza a **Bejelentkezés** lehetőséget, és a felhasználói bejelentkezési képernyőn kell megjelennie. Bejelentkezéskor az SAML-jogcímet vissza kell adni a minta alkalmazásnak.
+
+## <a name="enable-encypted-assertions"></a>Nevű fiók titkosítva-érvényesítések engedélyezése
+A szolgáltatónak visszaadott SAML-kijelentések titkosításához Azure AD B2C a szolgáltató nyilvánoskulcs-tanúsítványát fogja használni. A nyilvános kulcsnak léteznie kell a fenti ["samlMetadataUrl"](#samlmetadataurl) elemben leírt SAML-metaadatokban a "Encryption" használatával.
+
+A következőkben egy példa látható az SAML metaadat-leíróra, amelynek a használata titkosítást tartalmaz:
+
+```xml
+<KeyDescriptor use="encryption">
+  <KeyInfo xmlns="https://www.w3.org/2000/09/xmldsig#">
+    <X509Data>
+      <X509Certificate>valid certificate</X509Certificate>
+    </X509Data>
+  </KeyInfo>
+</KeyDescriptor>
+```
+
+Ha engedélyezni szeretné, hogy a Azure AD B2C titkosított állításokat küldjön, a **WantsEncryptedAssertion** metaadat-eleme igaz értékre van állítva a függő entitás technikai profiljában az alábbi ábrán látható módon.
+
+```xml
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<TrustFrameworkPolicy
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns="http://schemas.microsoft.com/online/cpim/schemas/2013/06"
+  PolicySchemaVersion="0.3.0.0"
+  TenantId="contoso.onmicrosoft.com"
+  PolicyId="B2C_1A_signup_signin_saml"
+  PublicPolicyUri="http://contoso.onmicrosoft.com/B2C_1A_signup_signin_saml">
+ ..
+ ..
+  <RelyingParty>
+    <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
+    <TechnicalProfile Id="PolicyProfile">
+      <DisplayName>PolicyProfile</DisplayName>
+      <Protocol Name="SAML2"/>
+      <Metadata>
+          <Item Key="WantsEncryptedAssertions">true</Item>
+      </Metadata>
+     ..
+     ..
+     ..
+    </TechnicalProfile>
+  </RelyingParty>
+</TrustFrameworkPolicy>
+```
 
 ## <a name="sample-policy"></a>Minta szabályzat
 

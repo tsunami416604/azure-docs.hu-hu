@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/19/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8679f9a03fded546db68f058bca716ba053aa0fe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5884685f12c4697558a008287f446e52e5105d3b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73161210"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87016785"
 ---
 # <a name="atlassian-jira-and-confluence-admin-guide-for-azure-active-directory"></a>Atlassian-JIRA és-összefolyásánál felügyeleti útmutató a Azure Active Directory
 
@@ -147,7 +147,7 @@ Az alábbi képen a JIRA és a torkolatánál található konfigurációs képer
 
 * **Szeretné letiltani a websudo-t (a biztonságos rendszergazdai munkamenet letiltása)**:
 
-  * A JIRA esetében a biztonságos rendszergazdai munkamenetek (azaz jelszó-megerősítés a felügyeleti funkciók elérése előtt) alapértelmezés szerint engedélyezve vannak. Ha el szeretné távolítani ezt a képességet a JIRA-példányban, adja meg a következő sort a JIRA-config. properties fájlban:`ira.websudo.is.disabled = true`
+  * A JIRA esetében a biztonságos rendszergazdai munkamenetek (azaz jelszó-megerősítés a felügyeleti funkciók elérése előtt) alapértelmezés szerint engedélyezve vannak. Ha el szeretné távolítani ezt a képességet a JIRA-példányban, adja meg a következő sort a JIRA-config. properties fájlban:`jira.websudo.is.disabled = true`
 
   * A torkolatánál való összefolyásánál kövesse az [összefolyásánál támogatási webhelyének](https://confluence.atlassian.com/doc/configuring-secure-administrator-sessions-218269595.html)lépéseit.
 

@@ -11,16 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 05/23/2019
+ms.date: 07/22/2020
 ms.author: kenwith
 ms.custom: it-pro
-ms.reviewer: harshja
+ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 34f3dcd607a7417932912528167a1120dbfd9b4f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9cba74c773e1f141db14e06cf0cda8b31d06ba4f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84764519"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87019522"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Távoli asztal közzététele az Azure-ban AD Application Proxy
 
@@ -28,7 +29,7 @@ Távoli asztal szolgáltatás és az Azure AD Application Proxy együttműködik
 
 A cikk célközönsége a következő:
 - A jelenlegi alkalmazásproxy azon ügyfelei, akik több alkalmazást szeretnének nyújtani a végfelhasználók számára a helyszíni alkalmazások Távoli asztali szolgáltatások használatával történő közzétételével.
-- A jelenlegi Távoli asztali szolgáltatások ügyfelek, akik az Azure AD Application Proxy használatával szeretnék csökkenteni az üzembe helyezés támadási felületét. Ez a forgatókönyv a kétlépéses ellenőrzés és a feltételes hozzáférés-vezérlés korlátozott készletét biztosítja az RDS-hez.
+- A jelenlegi Távoli asztali szolgáltatások ügyfelek, akik az Azure AD Application Proxy használatával szeretnék csökkenteni az üzembe helyezés támadási felületét. Ez a forgatókönyv két lépésből álló ellenőrzési és feltételes hozzáférés-vezérlést biztosít az RDS-hez.
 
 ## <a name="how-application-proxy-fits-in-the-standard-rds-deployment"></a>Hogyan illeszkedik az alkalmazásproxy a szabványos RDS-telepítéshez
 
@@ -45,17 +46,17 @@ Az RDS-alapú környezetben a távoli asztali webes szerepkör és a RD-átjár�
 
 ## <a name="requirements"></a>Követelmények
 
-- Használjon a Távoli asztal webes ügyfélprogramtól eltérő ügyfelet, mert a webes ügyfél nem támogatja az alkalmazásproxy használatát.
-
 - A távoli asztali webes és RD-átjáró végpontoknak ugyanazon a gépen és közös gyökérrel kell elhelyezkedniük. A távoli asztali webes és RD-átjáró egyetlen alkalmazásként jelennek meg az alkalmazásproxy használatával, így a két alkalmazás között egyszeri bejelentkezéses élményben lehet része.
 
 - Ha már [telepítette az RDS](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/rds-in-azure)-t, és [engedélyezte az alkalmazásproxy használatát](application-proxy-add-on-premises-application.md).
 
-- Ez a forgatókönyv azt feltételezi, hogy a végfelhasználók a távoli asztali weblapon keresztül csatlakozó Windows 7 vagy Windows 10 rendszerű asztali számítógépeken haladnak végig az Internet Explorerben. Ha más operációs rendszereket kell támogatnia, tekintse meg [a más ügyfél-konfigurációk támogatása](#support-for-other-client-configurations)című témakört.
+- A végfelhasználóknak kompatibilis böngészőt kell használniuk a távoli asztali webes vagy a távoli asztali webes ügyfélhez való kapcsolódáshoz. További részletekért lásd [az ügyfél-konfigurációk támogatását](#support-for-other-client-configurations)ismertető témakört.
 
-- A távoli asztali webes közzététel során ajánlott ugyanazt a belső és külső FQDN-t használni. Ha a belső és külső teljes tartománynevek eltérnek, akkor le kell tiltania a kérelem fejlécének fordítását, hogy az ügyfél ne kapjon érvénytelen hivatkozásokat. 
+- A távoli asztali webes közzététel során ajánlott ugyanazt a belső és külső FQDN-t használni. Ha a belső és külső teljes tartománynevek eltérnek, akkor le kell tiltania a kérelem fejlécének fordítását, hogy az ügyfél ne kapjon érvénytelen hivatkozásokat.
 
-- Az Internet Explorerben engedélyezze az RDS ActiveX-bővítményt.
+- Ha az Internet Explorerben használja a távoli asztali webes szolgáltatást, engedélyeznie kell az RDS ActiveX-bővítményt.
+
+- Ha a távoli asztali webes ügyfelet használja, akkor az alkalmazásproxy- [összekötő 1.5.1975 vagy újabb verzióját](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-release-version-history)kell használnia.
 
 - Az Azure AD előhitelesítési folyamata esetében a felhasználók csak a **RemoteApp-és asztali számítógépek** ablaktáblán a számukra közzétett erőforrásokhoz tudnak csatlakozni. A felhasználók nem tudnak csatlakozni az asztalhoz a **Kapcsolódás távoli számítógéphez** panel használatával.
 
@@ -71,7 +72,11 @@ Miután beállította az RDS-t és az Azure-AD Application Proxy a környezetéh
    - Előhitelesítési módszer: Azure Active Directory
    - URL-fejlécek fordítása: nem
 2. Felhasználók kiosztása a közzétett RD-alkalmazáshoz. Győződjön meg arról, hogy mindegyiknek van hozzáférése az RDS-hez.
-3. Hagyja letiltva az alkalmazás egyszeri bejelentkezési módszerét az **Azure ad egyszeri bejelentkezéssel**. A felhasználóknak egyszer kell hitelesíteniük magukat az Azure AD-ben és egyszer a RD Web-ben, de egyszeri bejelentkezéssel kell RD-átjáró.
+3. Hagyja letiltva az alkalmazás egyszeri bejelentkezési módszerét az **Azure ad egyszeri bejelentkezéssel**.
+
+   >[!Note]
+   >A felhasználóknak egyszer kell hitelesíteniük magukat az Azure AD-ben és egyszer a RD Web-ben, de egyszeri bejelentkezéssel RD-átjáró.
+
 4. Válassza a **Azure Active Directory**lehetőséget, majd az **alkalmazások regisztrációját**. Válassza ki az alkalmazást a listából.
 5. A **kezelés**területen válassza a **branding (védjegyezés**) lehetőséget.
 6. Frissítse a **Kezdőlap URL-címe** mezőt, hogy az a távoli asztali webes végpontra mutasson (például `https://\<rdhost\>.com/RDWeb` ).
@@ -110,6 +115,11 @@ Kapcsolódjon az RDS üzembe helyezéséhez rendszergazdaként, és módosítsa 
 
 Most, hogy konfigurálta a távoli asztal, az Azure ad Application proxy az RDS internet felé irányuló összetevője vette át. A távoli asztali web-és RD-átjáró-gépeken is eltávolíthatja a többi nyilvános internetre irányuló végpontot.
 
+### <a name="enable-the-rd-web-client"></a>A távoli asztali webes ügyfél engedélyezése
+Ha azt is szeretné, hogy a felhasználók használhatják a távoli asztali webes ügyfelet, kövesse [az távoli asztal webes ügyfélprogram beállítása a felhasználók](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-web-client-admin) számára című témakör lépéseit.
+
+A Távoli asztal webes ügyfél lehetővé teszi a felhasználók számára, hogy a Microsoft Edge, az Internet Explorer 11, a Google Chrome, a Safari vagy a Mozilla Firefox (v 55.0 és újabb verziók) használatával hozzáférjenek a szervezet Távoli asztal infrastruktúrához.
+
 ## <a name="test-the-scenario"></a>A forgatókönyv tesztelése
 
 Tesztelje a forgatókönyvet az Internet Explorerrel egy Windows 7 vagy 10 rendszerű számítógépen.
@@ -121,11 +131,12 @@ Tesztelje a forgatókönyvet az Internet Explorerrel egy Windows 7 vagy 10 rends
 
 ## <a name="support-for-other-client-configurations"></a>Más ügyfél-konfigurációk támogatása
 
-A jelen cikkben ismertetett konfiguráció a Windows 7 vagy 10 rendszerű felhasználók számára készült, az Internet Explorer és az RDS ActiveX bővítmény segítségével. Ha azonban más operációs rendszereket vagy böngészőket is támogat. A különbség a használt hitelesítési módszer.
+Az ebben a cikkben ismertetett konfiguráció az RDS-webhelyeken vagy a távoli asztali webes ügyfélen keresztüli távoli asztali kapcsolatokhoz nyújt hozzáférést. Ha azonban más operációs rendszereket vagy böngészőket is támogat. A különbség a használt hitelesítési módszer.
 
 | Hitelesítési módszer | Támogatott ügyfél-konfiguráció |
 | --------------------- | ------------------------------ |
-| Előhitelesítés    | Windows 7/10 Internet Explorer + RDS ActiveX bővítmény használatával |
+| Előhitelesítés    | RD Web-Windows 7/10 Internet Explorer + RDS ActiveX bővítmény használatával |
+| Előhitelesítés    | Távoli asztali webes ügyfél – HTML5-kompatibilis webböngésző, például a Microsoft Edge, az Internet Explorer 11, a Google Chrome, a Safari vagy a Mozilla Firefox (v 55.0 és újabb verziók) |
 | Csatlakoztatott | Minden más operációs rendszer, amely támogatja a Microsoft Távoli asztal alkalmazást |
 
 Az előhitelesítési folyamat több biztonsági előnyt kínál, mint az áteresztő folyamat. Az előzetes hitelesítéssel az Azure AD-hitelesítési funkciókat, például az egyszeri bejelentkezést, a feltételes hozzáférést, valamint a helyszíni erőforrások kétlépéses ellenőrzését is használhatja. Győződjön meg arról is, hogy csak a hitelesített forgalom éri el a hálózatot.
@@ -136,5 +147,5 @@ Az áteresztő hitelesítés használatához a cikkben felsorolt lépések csak 
 
 ## <a name="next-steps"></a>További lépések
 
-[Távoli hozzáférés engedélyezése a SharePointhoz az Azure AD-alkalmazásproxy segítségével](application-proxy-integrate-with-sharepoint-server.md)  
-[Biztonsági megfontolások az alkalmazások távoli eléréséhez az Azure AD Application Proxy használatával](application-proxy-security.md)
+[Távoli hozzáférés engedélyezése a sharepointhoz az Azure ad Application proxy](application-proxy-integrate-with-sharepoint-server.md) 
+ [Biztonsági megfontolások az alkalmazások távoli eléréséhez az Azure ad Application proxy használatával](application-proxy-security.md)

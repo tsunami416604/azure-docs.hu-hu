@@ -11,12 +11,12 @@ ms.date: 06/11/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2a41dcf9c224e9e4a9a280078432e0b57e16c2a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7992563bdfb318867e963ed4f371998bafbbbcdb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85359415"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87019913"
 ---
 # <a name="azure-ad-connect-group-writeback"></a>Azure AD Connect csoport visszaírási
 
@@ -48,7 +48,7 @@ Import-Module "C:\Program Files\Microsoft Azure Active Directory Connect\AdSyncC
 Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountDN $AzureADConnectSWritebackAccountDN
 ```
 
-Az Office 365-csoportok konfigurálásával kapcsolatos további információkért lásd: [Microsoft 365 csoportok konfigurálása helyszíni Exchange hibrid](https://docs.microsoft.com/exchange/hybrid-deployment/set-up-office-365-groups#enable-group-writeback-in-azure-ad-connect)környezettel.
+Az Office 365-csoportok konfigurálásával kapcsolatos további információkért lásd: [Microsoft 365 csoportok konfigurálása helyszíni Exchange hibrid](https://docs.microsoft.com/exchange/hybrid-deployment/set-up-microsoft-365-groups#enable-group-writeback-in-azure-ad-connect)környezettel.
 
 ## <a name="disabling-group-writeback"></a>Csoport visszaírási letiltása
 A csoport visszaírási letiltásához kövesse az alábbi lépéseket: 

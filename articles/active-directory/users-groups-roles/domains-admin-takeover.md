@@ -14,13 +14,14 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0cd2de0929b22dda6e566316c4eda966d8d62e24
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d2ccf986f81ec3abed54c85640b8afb1c5cf7172
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84732650"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015884"
 ---
-# <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Nem felügyelt címtár átvétele rendszergazdaként Azure Active Directory
+# <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Nem felügyelt címtár átvétele rendszergazdaként az Azure Active Directoryban
 
 Ez a cikk két módszert ismertet a DNS-tartománynév átvételére egy nem felügyelt címtárban Azure Active Directory (Azure AD). Amikor egy önkiszolgáló felhasználó regisztrál egy Azure AD-t használó felhőszolgáltatásra, a rendszer az e-mail-címe alapján hozzáadja egy nem felügyelt Azure AD-címtárhoz. További információ az önkiszolgáló vagy a "vírusos" szolgáltatással való regisztrációról: [Mi az a Azure Active Directory önkiszolgáló regisztrációja?](directory-self-service-signup.md)
 
@@ -170,8 +171,8 @@ A sikeres kihívás egy hiba nélkül visszaadja a kérést.
 ## <a name="next-steps"></a>További lépések
 
 * [Egyéni tartománynév hozzáadása az Azure AD-hez](../fundamentals/add-custom-domain.md)
-* [How to install and configure Azure PowerShell (Az Azure PowerShell telepítése és konfigurálása)](/powershell/azure/overview)
-* [Azure PowerShell](/powershell/azure/overview)
+* [How to install and configure Azure PowerShell (Az Azure PowerShell telepítése és konfigurálása)](/powershell/azure/)
+* [Azure PowerShell](/powershell/azure/)
 * [Azure parancsmag-referencia](/powershell/azure/get-started-azureps)
 * [Set-MsolCompanySettings](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0)
 
