@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 06/11/2020
 ms.author: banders
-ms.openlocfilehash: cd6e075448c68b6d2c65832d128e14c016c69c7c
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: 28080517a33f1bbf9bee3436493f178b60c0d161
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85601411"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523604"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-to-your-mpa-account"></a>Azure-előfizetés számlázási tulajdonjogának beszerzése az MPA-fiókjához
 
@@ -155,6 +155,12 @@ Néhány ügyfél átadási kérelme esetében a Microsoft által elvégzett tov
 Az átadott Azure-előfizetések címtárának meg kell egyeznie a CSP-kapcsolat létesítése során kiválasztott ügyfél címtárával.
 
 Ha a két címtár nem egyezik, az előfizetések átadása nem sikerült. Létesítenie kell egy új viszonteladói CSP-kapcsolatot az ügyféllel az Azure-előfizetések címtárának kiválasztásával, vagy módosítania kell az Azure-előfizetések címtárát, hogy az megfeleljen az ügyfél CSP-kapcsolati címtárának. További információ: [Meglévő előfizetés társítása az Azure AD-címtárral](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-how-subscriptions-associated-directory#to-associate-an-existing-subscription-to-your-azure-ad-directory).
+
+### <a name="ea-subscription-in-the-non-orgnization-directory"></a>EA-előfizetés a nem szervezeti címtárban
+
+A nem szervezeti címtárakból származó EA-előfizetések akkor vihetők át, ha a címtár viszonteladói kapcsolattal rendelkezik a CSP-vel. Ha a címtár nem rendelkezik viszonteladói kapcsolattal, a partnerkapcsolat elfogadására jogosult *globális rendszergazdaként* kell megadnia a szervezet felhasználóját a címtárban. A felhasználónév tartománynév részének a kezdeti alapértelmezett tartománynévnek ([tartománynév]. onmicrosoft.com), vagy egy ellenőrzött, nem összevont egyéni tartománynévnek kell lennie (pl. contoso.com).  
+
+Új felhasználó az AAD-címtárhoz hozzáadásával kapcsolatban lásd: [Rövid útmutató: Új felhasználók hozzáadása az Azure Active Directoryhoz](https://docs.microsoft.com/azure/active-directory/add-users-azure-active-directory).
 
 ## <a name="check-access-to-a-microsoft-partner-agreement"></a>Microsoft-partnerszerződéshez való hozzáférés ellenőrzése
 

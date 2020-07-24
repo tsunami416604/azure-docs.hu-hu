@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: mimckitt
-ms.openlocfilehash: 5aeae50c9cb7497c20f785f2a32c96f5a4fdec1e
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 9bb9b993b88b8f4b31bc56c6bb3fc16972bb6e41
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186979"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87069813"
 ---
 # <a name="use-powershell-to-enable-azure-diagnostics-in-a-virtual-machine-running-windows"></a>A Azure Diagnostics engedélyezése a PowerShell használatával a Windows rendszerű virtuális gépeken
 
@@ -29,7 +29,7 @@ A Azure Diagnostics az Azure-on belüli képesség, amely lehetővé teszi a dia
 ## <a name="enable-the-diagnostics-extension-if-you-use-the-resource-manager-deployment-model"></a>A diagnosztikai bővítmény engedélyezése, ha a Resource Manager-alapú üzemi modellt használja
 A diagnosztikai bővítményt engedélyezheti a Windows rendszerű virtuális gépek a Azure Resource Manager üzemi modellel való létrehozásakor, ha hozzáadja a bővítmény konfigurációját a Resource Manager-sablonhoz. Lásd: [Windows rendszerű virtuális gép létrehozása figyelési és diagnosztikai szolgáltatásokkal a Azure Resource Manager sablonnal](diagnostics-template.md).
 
-Ha engedélyezni szeretné a diagnosztikai bővítményt egy olyan meglévő virtuális gépen, amely a Resource Manager-alapú üzemi modellel lett létrehozva, használhatja a [set-AzVMDiagnosticsExtension PowerShell-](https://docs.microsoft.com/powershell/module/az.compute/set-azvmdiagnosticsextension) parancsmagot az alábbi ábrán látható módon.
+Ha engedélyezni szeretné a diagnosztikai bővítményt egy olyan meglévő virtuális gépen, amely a Resource Manager-alapú üzemi modellel lett létrehozva, használhatja a [set-AzVMDiagnosticsExtension PowerShell-](/powershell/module/az.compute/set-azvmdiagnosticsextension) parancsmagot az alábbi ábrán látható módon.
 
 ```azurepowershell
 $vm_resourcegroup = "myvmresourcegroup"
@@ -52,7 +52,7 @@ Ha a diagnosztikai Storage-fiók a virtuális gépről eltérő előfizetésben 
 Set-AzVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup -VMName $vm_name -DiagnosticsConfigurationPath $diagnosticsconfig_path -StorageAccountName $diagnosticsstorage_name -StorageAccountKey $diagnosticsstorage_key
 ```
 
-Ha a diagnosztikai bővítmény engedélyezve van egy virtuális gépen, az aktuális beállításokat a [Get-AzVmDiagnosticsExtension](https://docs.microsoft.com/powershell/module/az.compute/get-azvmdiagnosticsextension) parancsmag használatával érheti el.
+Ha a diagnosztikai bővítmény engedélyezve van egy virtuális gépen, az aktuális beállításokat a [Get-AzVmDiagnosticsExtension](/powershell/module/az.compute/get-azvmdiagnosticsextension) parancsmag használatával érheti el.
 
 ```azurepowershell
 Get-AzVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup -VMName $vm_name
@@ -67,13 +67,13 @@ $xmlconfig = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64
 Write-Host $xmlconfig
 ```
 
-A [Remove-AzVmDiagnosticsExtension](https://docs.microsoft.com/powershell/module/az.compute/remove-azvmdiagnosticsextension) parancsmag használatával eltávolíthatja a diagnosztikai bővítményt a virtuális gépről.  
+A [Remove-AzVmDiagnosticsExtension](/powershell/module/az.compute/remove-azvmdiagnosticsextension) parancsmag használatával eltávolíthatja a diagnosztikai bővítményt a virtuális gépről.  
 
 ## <a name="enable-the-diagnostics-extension-if-you-use-the-classic-deployment-model"></a>A diagnosztikai bővítmény engedélyezése, ha a klasszikus telepítési modellt használja
 
 [!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
-A [set-AzureVMDiagnosticsExtension](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azurevmdiagnosticsextension) parancsmaggal engedélyezheti a diagnosztikai bővítményt egy olyan virtuális gépen, amelyet a klasszikus üzemi modell használatával hozott létre. Az alábbi példa bemutatja, hogyan hozhat létre új virtuális gépet a klasszikus üzembe helyezési modellel a diagnosztika bővítmény engedélyezésével.
+A [set-AzureVMDiagnosticsExtension](/powershell/module/servicemanagement/azure.service/set-azurevmdiagnosticsextension) parancsmaggal engedélyezheti a diagnosztikai bővítményt egy olyan virtuális gépen, amelyet a klasszikus üzemi modell használatával hozott létre. Az alábbi példa bemutatja, hogyan hozhat létre új virtuális gépet a klasszikus üzembe helyezési modellel a diagnosztika bővítmény engedélyezésével.
 
 ```azurepowershell
 $VM = New-AzureVMConfig -Name $VM -InstanceSize Small -ImageName $VMImage
@@ -82,7 +82,7 @@ $VM = Set-AzureVMDiagnosticsExtension -DiagnosticsConfigurationPath $Config_Path
 New-AzVM -Location $Location -ServiceName $Service_Name -VM $VM
 ```
 
-Ha engedélyezni szeretné a diagnosztikai bővítményt egy olyan meglévő virtuális gépen, amely a klasszikus üzemi modellel lett létrehozva, először használja a [Get-AzureVM](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azurevm) parancsmagot a virtuális gép konfigurációjának beszerzéséhez. Ezután frissítse a virtuális gép konfigurációját, hogy tartalmazza a diagnosztikai bővítményt a [set-AzureVMDiagnosticsExtension](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azurevmdiagnosticsextension) parancsmag használatával. Végül alkalmazza a frissített konfigurációt a virtuális gépre az [Update-AzureVM](https://docs.microsoft.com/powershell/module/servicemanagement/azure/update-azurevm)használatával.
+Ha engedélyezni szeretné a diagnosztikai bővítményt egy olyan meglévő virtuális gépen, amely a klasszikus üzemi modellel lett létrehozva, először használja a [Get-AzureVM](/powershell/module/servicemanagement/azure.service/get-azurevm) parancsmagot a virtuális gép konfigurációjának beszerzéséhez. Ezután frissítse a virtuális gép konfigurációját, hogy tartalmazza a diagnosztikai bővítményt a [set-AzureVMDiagnosticsExtension](/powershell/module/servicemanagement/azure.service/set-azurevmdiagnosticsextension) parancsmag használatával. Végül alkalmazza a frissített konfigurációt a virtuális gépre az [Update-AzureVM](/powershell/module/servicemanagement/azure.service/update-azurevm)használatával.
 
 ```azurepowershell
 $VM = Get-AzureVM -ServiceName $Service_Name -Name $VM_Name
@@ -212,5 +212,4 @@ A konfigurációt frissíteni kell, hogy tartalmazza a következőket:
 
 ## <a name="next-steps"></a>További lépések
 * A Azure Diagnostics képesség és a problémák elhárítására szolgáló egyéb technikák használatával kapcsolatos további útmutatásért lásd: a [diagnosztika engedélyezése az Azure-ban Cloud Services és Virtual Machines](../../cloud-services/cloud-services-dotnet-diagnostics.md).
-* A [diagnosztikai konfigurációk sémája](https://msdn.microsoft.com/library/azure/mt634524.aspx) a diagnosztikai bővítmény különböző XML-konfigurációs beállításait ismerteti.
-
+* A [diagnosztikai konfigurációk sémája](/azure/azure-monitor/platform/diagnostics-extension-versions) a diagnosztikai bővítmény különböző XML-konfigurációs beállításait ismerteti.

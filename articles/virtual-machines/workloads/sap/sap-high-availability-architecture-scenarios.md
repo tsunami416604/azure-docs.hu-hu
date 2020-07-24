@@ -16,11 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 045c73e3efefb29aac6bb25a8661fd510e351926
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5eee96702a5efbddcc66c2a0e428640f0848442a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84021126"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87068629"
 ---
 # <a name="high-availability-architecture-and-scenarios-for-sap-netweaver"></a>Magas rendelkezésre állású architektúra és forgatókönyvek az SAP NetWeaver-hoz
 
@@ -288,12 +289,12 @@ A rendelkezésre állási csoport a magas rendelkezésre állás eléréséhez h
 
 
 ### <a name="azure-availability-zones"></a>Azure Availability Zones
-Az Azure a különböző [Azure-régiókban](https://azure.microsoft.com/global-infrastructure/regions/) [Azure Availability Zones](https://docs.microsoft.com/azure/availability-zones/az-overview) fogalmakat ismerteti. Az Azure-régiókban, ahol a Availability Zones kínálják, az Azure-régiók több adatközponttal rendelkeznek, amelyek függetlenek az áramforrás, a hűtés és a hálózat kínálatával. A különböző zónák egyetlen Azure-régión belüli felajánlásának oka az, hogy lehetővé teszi az alkalmazások üzembe helyezését két vagy három Availability Zonesban. Feltételezve, hogy az áramforrások és/vagy a hálózatok problémái csak az egyik rendelkezésre állási zóna infrastruktúráját érintik, az alkalmazások Azure-régión belüli üzembe helyezése továbbra is teljesen működőképes. Az egyes zónákban lévő virtuális gépek esetében előfordulhat, hogy a rendszer néhány kisebb kapacitással is elvész. A másik két zónában lévő virtuális gépek azonban még mindig működnek. A zónákat felkínáló Azure-régiók a [Azure Availability Zonesban](https://docs.microsoft.com/azure/availability-zones/az-overview)szerepelnek.
+Az Azure a különböző [Azure-régiókban](https://azure.microsoft.com/global-infrastructure/regions/) [Azure Availability Zones](../../../availability-zones/az-overview.md) fogalmakat ismerteti. Az Azure-régiókban, ahol a Availability Zones kínálják, az Azure-régiók több adatközponttal rendelkeznek, amelyek függetlenek az áramforrás, a hűtés és a hálózat kínálatával. A különböző zónák egyetlen Azure-régión belüli felajánlásának oka az, hogy lehetővé teszi az alkalmazások üzembe helyezését két vagy három Availability Zonesban. Feltételezve, hogy az áramforrások és/vagy a hálózatok problémái csak az egyik rendelkezésre állási zóna infrastruktúráját érintik, az alkalmazások Azure-régión belüli üzembe helyezése továbbra is teljesen működőképes. Az egyes zónákban lévő virtuális gépek esetében előfordulhat, hogy a rendszer néhány kisebb kapacitással is elvész. A másik két zónában lévő virtuális gépek azonban még mindig működnek. A zónákat felkínáló Azure-régiók a [Azure Availability Zonesban](../../../availability-zones/az-overview.md)szerepelnek.
 
 A Availability Zones használatával néhány megfontolandó szempontot figyelembe kell venni. A szempontok listája, például:
 
 - Az Azure rendelkezésre állási csoportjai nem helyezhetők üzembe egy rendelkezésre állási zónán belül. Ki kell választania egy rendelkezésre állási zónát vagy egy rendelkezésre állási készletet egy virtuális gép üzembe helyezési kerete.
-- A Windows feladatátvételi fürtszolgáltatás vagy a Linux pacemaker alapján nem használhatja az [Alapszintű Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) a feladatátvevő fürtre vonatkozó megoldások létrehozásához. Ehelyett az [Azure standard Load BALANCER SKU](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) -t kell használnia
+- A Windows feladatátvételi fürtszolgáltatás vagy a Linux pacemaker alapján nem használhatja az [Alapszintű Load Balancer](../../../load-balancer/load-balancer-overview.md) a feladatátvevő fürtre vonatkozó megoldások létrehozásához. Ehelyett az [Azure standard Load BALANCER SKU](../../../load-balancer/load-balancer-standard-availability-zones.md) -t kell használnia
 - A Azure Availability Zones nem biztosítanak bizonyos távolságot a különböző zónák között az egyik régión belül
 - A különböző Azure-régiókban lévő különböző Azure Availability Zones közötti hálózati késés eltérő lehet az Azure-régiótól a régióig. Előfordulnak olyan esetek, amikor az ügyfél a különböző zónákon üzembe helyezett SAP-alkalmazási réteget ésszerű módon futtatja, mivel az egyik zónából az aktív adatbázis-kezelő virtuális gépre irányuló hálózati késés továbbra is elfogadható az üzleti folyamatok hatására. Mivel az egyik zónában található aktív adatbázis-kezelő virtuális gép és egy másik zónában lévő virtuális gép SAP-alkalmazási példánya közötti késés túlságosan zavaró lehet, és nem fogadható el az SAP üzleti folyamatok számára. Ennek eredményeképpen az üzembe helyezési architektúrának eltérőnek kell lennie az alkalmazás aktív/aktív architektúrája vagy az aktív/passzív architektúra esetében, ha a késés túl magas.
 - Az [Azure Managed Disks](https://azure.microsoft.com/services/managed-disks/) használata kötelező a Azure Availability Zonesba való üzembe helyezéshez 
@@ -354,12 +355,12 @@ _**1. ábra:** Magas rendelkezésre állású SAP Application Server_
 
 Az SAP Application Server-példányokat futtató összes virtuális gépet ugyanabba az Azure-beli rendelkezésre állási csoportba kell helyeznie. Az Azure rendelkezésre állási készlete biztosítja a következőket:
 
-* Minden virtuális gép ugyanahhoz a frissítési tartományhoz tartozik.  
+* Az összes virtuális gép nem tartozik ugyanahhoz a frissítési tartományhoz.  
     A frissítési tartományok gondoskodnak arról, hogy a virtuális gépek ne frissüljenek egyidejűleg a tervezett karbantartási állásidő során.
 
     Az Azure skálázási egységben különböző frissítési és tartalék tartományokra épülő alapszintű funkciók már bekerültek a [frissítési tartományok][planning-guide-3.2.2] szakaszba.
 
-* Minden virtuális gép ugyanahhoz a tartalék tartományhoz tartozik.  
+* Az összes virtuális gép nem tartozik ugyanahhoz a tartalék tartományhoz.  
     A tartalék tartomány biztosítja a virtuális gépek üzembe helyezését, így egyetlen meghibásodási pont sem befolyásolja az összes virtuális gép rendelkezésre állását.
 
 Az Azure-beli rendelkezésre állási csoport által az Azure-méretezési egységben használható frissítési és tartalék tartományok száma véges. Ha továbbra is egyetlen rendelkezésre állási csoportba helyezi a virtuális gépeket, két vagy több virtuális gép végül ugyanabban a hiba-vagy frissítési tartományban lesz.
@@ -390,7 +391,7 @@ WSFC-megoldás használatával biztosíthatja az SAP ASCS/SCS-példányok elleni
 
 * **Fürt az SAP ASCS/SCS-példány a fájlmegosztás használatával**: az architektúrával kapcsolatos további információkért lásd: [SAP ASCS/SCS-példány fürthöz való használata Windows feladatátvevő fürtön a fájlmegosztás használatával][sap-high-availability-guide-wsfc-file-share].
 
-* **Az SAP ASCS/SCS-példány fürtje a ANF SMB-megosztás használatával**: az architektúrával kapcsolatos további információkért tekintse meg a fürt [SAP ASCS/SCS-példánya egy Windows FELADATÁTVEVŐ FÜRTön ANF SMB-fájlmegosztás használatával](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-windows-netapp-files-smb)című részt.
+* **Az SAP ASCS/SCS-példány fürtje a ANF SMB-megosztás használatával**: az architektúrával kapcsolatos további információkért tekintse meg a fürt [SAP ASCS/SCS-példánya egy Windows FELADATÁTVEVŐ FÜRTön ANF SMB-fájlmegosztás használatával](./high-availability-guide-windows-netapp-files-smb.md)című részt.
 
 ### <a name="high-availability-architecture-for-an-sap-ascsscs-instance-on-linux"></a>Magas rendelkezésre állású architektúra egy SAP ASCS/SCS-példányhoz Linux rendszeren
 
@@ -398,7 +399,7 @@ WSFC-megoldás használatával biztosíthatja az SAP ASCS/SCS-példányok elleni
 > 
 > Az SAP ASCS/SCS-példány SLES-keretrendszerrel való fürtözésével kapcsolatos további információkért lásd: [magas rendelkezésre állás az SAP NetWeaver Azure-beli virtuális gépeken az SAP-alkalmazások SUSE Linux Enterprise Server][sap-suse-ascs-ha]. A magas rendelkezésre állású NFS-SLES esetében, amely nem igényel magas rendelkezésre állású NFS-t, az SAP [NetWeaver SUSE Linux Enterprise Server Azure NETAPP Files SAP-alkalmazásokhoz című témakör magas rendelkezésre állású útmutatója][sap-suse-ascs-ha-anf].
 
-Az SAP ASCS/SCS-példány Red Hat cluster Framework használatával történő fürtözésével kapcsolatos további információkért lásd: [Azure Virtual Machines magas rendelkezésre állás az SAP NetWeaver számára a Red Hat Enterprise Linux](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel)
+Az SAP ASCS/SCS-példány Red Hat cluster Framework használatával történő fürtözésével kapcsolatos további információkért lásd: [Azure Virtual Machines magas rendelkezésre állás az SAP NetWeaver számára a Red Hat Enterprise Linux](./high-availability-guide-rhel.md)
 
 
 ### <a name="sap-netweaver-multi-sid-configuration-for-a-clustered-sap-ascsscs-instance"></a>SAP NetWeaver multi-SID konfiguráció egy fürtözött SAP ASCS/SCS-példányhoz
@@ -418,8 +419,8 @@ Az SAP ASCS/SCS-példány Red Hat cluster Framework használatával történő f
 > A többszörös SID-fürtszolgáltatás támogatott a Linux pacemaker-fürtökön az SAP ASCS/ERS számára, amely ugyanazon a fürtön **öt** SAP-SID-re korlátozódik.
 > A több SID magas rendelkezésre állású architektúrával kapcsolatos további információkért lásd:
 
-* [HA SAP NW Azure-beli virtuális gépeken, SLES for SAP Applications multi-SID útmutató](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-multi-sid)
-* [HA SAP NW Azure-beli virtuális gépeken, RHEL for SAP Applications multi-SID útmutató](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-multi-sid)
+* [HA SAP NW Azure-beli virtuális gépeken, SLES for SAP Applications multi-SID útmutató](./high-availability-guide-suse-multi-sid.md)
+* [HA SAP NW Azure-beli virtuális gépeken, RHEL for SAP Applications multi-SID útmutató](./high-availability-guide-rhel-multi-sid.md)
 
 ### <a name="high-availability-dbms-instance"></a>Magas rendelkezésre állású adatbázis-kezelő példány
 

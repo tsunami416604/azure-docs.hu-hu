@@ -7,11 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: victorh
-ms.openlocfilehash: f021eed959ef88a1ef3671e1d0ace8080710c92a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 560d836f99f7a1be85007bb9d488f80a68d7999b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80810232"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87067977"
 ---
 # <a name="azure-application-gateway-features"></a>Azure Application Gateway-funkciók
 
@@ -23,7 +24,7 @@ Application Gateway a következő funkciókat tartalmazza:
 
 - [SSL (SSL/TLS) megszakítása](#secure-sockets-layer-ssltls-termination)
 - [Automatikus skálázás](#autoscaling)
-- [Zóna redundancia](#zone-redundancy)
+- [Zónaredundancia](#zone-redundancy)
 - [Statikus VIP](#static-vip)
 - [Webalkalmazási tűzfal](#web-application-firewall)
 - [Bejövőforgalom-vezérlő az AKS-hez](#ingress-controller-for-aks)
@@ -34,7 +35,7 @@ Application Gateway a következő funkciókat tartalmazza:
 - [Websocket- és HTTP/2-forgalom](#websocket-and-http2-traffic)
 - [Kapcsolatkiürítés](#connection-draining)
 - [Egyéni hibalapok](#custom-error-pages)
-- [HTTP-fejlécek átírása](#rewrite-http-headers)
+- [HTTP-fejlécek és URL-cím újraírása](#rewrite-http-headers-and-url)
 - [Méretezés](#sizing)
 
 ## <a name="secure-sockets-layer-ssltls-termination"></a>SSL (SSL/TLS) megszakítása
@@ -49,7 +50,7 @@ A Application Gateway Standard_v2 támogatja az automatikus skálázást, és a 
 
 További információ a Application Gateway Standard_v2 funkcióival kapcsolatban: [autoskálázás v2 SKU](application-gateway-autoscaling-zone-redundant.md).
 
-## <a name="zone-redundancy"></a>Zóna redundancia
+## <a name="zone-redundancy"></a>Zónaredundancia
 
 A Standard_v2 Application Gateway több Availability Zonesra terjedhet ki, így jobb hibatűrést biztosít, és nem kell külön Application Gateway-átjárókat kiépíteni minden zónában.
 
@@ -82,13 +83,13 @@ További információ: az [URL-alapú útválasztás áttekintése](url-route-ov
 
 ## <a name="multiple-site-hosting"></a>Több hely üzemeltetése
 
-A többhelyes üzemeltetéssel egynél több webhelyet konfigurálhat ugyanazon az Application Gateway-példányon. Ez a funkció lehetővé teszi, hogy hatékonyabb topológiát konfiguráljon az üzemelő példányokhoz, ha akár 100 webhelyet ad hozzá egy Application Gatewayhoz (az optimális teljesítmény érdekében). Mindegyik webhelyet a saját készletéhez lehet irányítani. Az Application Gateway például a `contoso.com` és a `fabrikam.com` forgalmát is kiszolgálhatja a ContosoServerPool és a FabrikamServerPool kiszolgálókészletekből.
+A Application Gateway használatával több webalkalmazáshoz tartozó állomásnév vagy tartománynév alapján is konfigurálhatja az útválasztást ugyanazon az Application Gateway átjárón. Lehetővé teszi, hogy hatékonyabb topológiát konfiguráljon az üzemelő példányokhoz, ha akár 100 + webhelyet ad hozzá egy Application gatewayhez. Mindegyik webhelyet a saját háttérkészletéhez lehet irányítani. A három tartomány, a contoso.com, a fabrikam.com és a adatum.com például az Application Gateway IP-címére mutatnak. Hozzon létre három többhelyes figyelőt, és konfigurálja az egyes figyelőket a megfelelő port és protokoll beállításhoz. 
 
-A `http://contoso.com` iránti kérelmek a ContosoServerPoolba, míg a `http://fabrikam.com` felé irányuló kérelmek a FabrikamServerPoolba vannak továbbítva.
+A Contososerverpoolhoz felé irányuló kérelmek átirányítva a `http://contoso.com` `http://fabrikam.com` fabrikamserverpoolhoz irányítja, és így tovább.
 
-Hasonlóképpen, ugyanazon szülőtartomány két altartományát ugyanazon Application Gateway-telepítésről üzemeltetheti. Az altartományok használatának példái között lehet az egyetlen Application Gateway-telepítésen üzemeltetett `http://blog.contoso.com` és `http://app.contoso.com`.
+Hasonlóképpen, ugyanazon szülőtartomány két altartományát ugyanazon Application Gateway-telepítésről üzemeltetheti. Az altartományok használatának példái között lehet az egyetlen Application Gateway-telepítésen üzemeltetett `http://blog.contoso.com` és `http://app.contoso.com`. További információ: [Application Gateway több hely üzemeltetése](multiple-site-overview.md).
 
-További információ: [Application Gateway több hely üzemeltetése](multiple-site-overview.md).
+A helyettesítő karakterek nevét többhelyes figyelőben és legfeljebb 5 állomásnévvel is meghatározhatja figyelőként. További információ: [helyettesítő karakterek nevei a figyelőben (előzetes verzió)](multiple-site-overview.md#wildcard-host-names-in-listener-preview).
 
 ## <a name="redirection"></a>Átirányítás
 
@@ -126,11 +127,11 @@ További információ: [Application Gateway konfiguráció áttekintése](config
 
 ## <a name="custom-error-pages"></a>Egyéni hibalapok
 
-Az Application Gatewayjel testreszabhatók a hibaoldalak. Az egyéni hibaoldalakon feltüntetheti saját védjegyeit, és egyéni elrendezést használhat.
+Az Application Gatewayjel testreszabhatók a hibaoldalak. Az egyéni hibalapokon feltüntetheti saját védjegyeit, és egyéni elrendezést használhat.
 
 További információ: [Egyéni hibák](custom-error.md).
 
-## <a name="rewrite-http-headers"></a>HTTP-fejlécek átírása
+## <a name="rewrite-http-headers-and-url"></a>HTTP-fejlécek és URL-cím újraírása
 
 A HTTP-fejlécek lehetővé teszik az ügyfél és a kiszolgáló számára, hogy további információkat adjon át a kérésnek vagy a válasznak. A HTTP-fejlécek újraírásával több fontos forgatókönyvet is elvégezheti, például:
 
@@ -138,9 +139,11 @@ A HTTP-fejlécek lehetővé teszik az ügyfél és a kiszolgáló számára, hog
 - A bizalmas adatokat felderítő válasz fejléc mezőinek eltávolítása.
 - A port adatainak kibontása az X által továbbított fejlécből.
 
-Application Gateway támogatja a HTTP-kérelem és-válasz fejlécek hozzáadását, eltávolítását vagy frissítését, míg a kérelmek és válaszok csomagjai az ügyfél és a háttérbeli készletek között mozognak. Emellett lehetőséget biztosít olyan feltételek hozzáadására, amelyekkel biztosítható, hogy a megadott fejlécek csak akkor legyenek újraírva, ha bizonyos feltételek teljesülnek.
+A Application Gateway és a WAF v2 SKU támogatja a HTTP-kérelem és-válasz fejlécek hozzáadását, eltávolítását vagy frissítését, míg a kérelmek és válaszok csomagjai az ügyfél és a háttérbeli készletek között mozognak. Az URL-címeket, a lekérdezési karakterlánc paramétereit és az állomásnevet is átírhatja. Az URL-cím újraírása és az URL-cím útvonal-alapú útválasztása esetén dönthet úgy, hogy az eredeti elérési út vagy az átírásos útvonal alapján a kérelmeket átirányítja az egyik háttér-készletre az elérési út újraértékelése lehetőség használatával. 
 
-További információt a HTTP- [fejlécek újraírása](rewrite-http-headers.md)című témakörben talál.
+Emellett lehetőséget biztosít a feltételek hozzáadására annak biztosításához, hogy a megadott fejlécek vagy URL-címek csak bizonyos feltételek teljesülése esetén legyenek újraírva. Ezek a feltételek a kérelem és a válasz adatain alapulnak.
+
+További információt a [HTTP-fejlécek és URL-cím újraírása](rewrite-http-headers-url.md)című témakörben talál.
 
 ## <a name="sizing"></a>Méretezés
 
@@ -154,8 +157,8 @@ Az alábbi táblázat az egyes Application Gateway v1-példányok átlagos telje
 
 | Az átlagos háttér-oldal válaszának mérete | Kicsi | Közepes | Nagy |
 | --- | --- | --- | --- |
-| 6 KB |7,5 Mbps |13 Mbps |50 Mbps |
-| 100 KB |35 Mbps |100 Mbps |200 Mbps |
+| 6 KB |7,5 Mbps |13 Mbps |50 Mbit/s |
+| 100 KB |35 Mbps |100 Mbit/s |200 Mbit/s |
 
 > [!NOTE]
 > Ezek az értékek az alkalmazásátjáró hozzávetőleges átviteli sebességét jelzik. A tényleges átvitel számos környezeti tényezőtől függ, például az átlagos lapmérettől, a háttérpéldányok helyétől és a lapkiszolgálás feldolgozási időtartamától. A pontos teljesítményszámokhoz saját teszteket kell futtatnia. Ezek az értékek csupán útmutatóul szolgálnak a kapacitástervezéshez.

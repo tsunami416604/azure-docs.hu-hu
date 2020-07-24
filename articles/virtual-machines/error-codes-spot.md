@@ -7,11 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: troubleshooting
 ms.date: 03/25/2020
 ms.author: cynthn
-ms.openlocfilehash: 4625a0fa75f992ac18eeb91629af373a426aa955
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e5e621cc3763cfa7fe28790baf2f5d9866c8d618
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84676573"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87069787"
 ---
 # <a name="error-messages-for-spot-vms-and-scale-sets"></a>A helyszíni virtuális gépekhez és a méretezési csoportokhoz tartozó hibaüzenetek
 
@@ -34,7 +35,6 @@ ms.locfileid: "84676573"
 | MaxPriceIsSupportedOnlyForAzureSpotVirtualMachines  |  A maximális díj csak az Azure spot Virtual Machines esetén támogatott. | További információ: [Spot Virtual Machines](./linux/spot-vms.md). |
 | MoveResourcesWithAzureSpotVMNotSupported  |  Az erőforrások áthelyezése kérelem egy Azure-beli helyszíni virtuális gépet tartalmaz. Ez jelenleg nem támogatott. Tekintse meg a virtuális gépek azonosítóinak részleteit. | A Direktszínű virtuális gépek nem helyezhetők át. |
 | MoveResourcesWithAzureSpotVmssNotSupported  |  Az erőforrások áthelyezése kérelem egy Azure-beli virtuálisgép-méretezési készletet tartalmaz. Ez jelenleg nem támogatott. Tekintse meg a virtuálisgép-méretezési csoport azonosítóinak részleteit. | A direktszín-méretezési csoport példányai nem helyezhetők át. |
-| EphemeralOSDisksNotSupportedForSpotVMs | Az ideiglenes operációsrendszer-lemezek nem támogatottak a helyszíni virtuális gépek esetében. | Használjon normál operációsrendszer-lemezt a helyszíni virtuális géphez. |
 | AzureSpotVMNotSupportedInVmssWithVMOrchestrationMode | A virtuálisgép-méretezési csoport virtuálisgép-méretezési módban nem támogatja az Azure-beli helyszíni virtuális gépeket. | A hangelőkészítési módot állítsa be a virtuálisgép-méretezési csoportba a direktszínes példányok használatához. |
 
 

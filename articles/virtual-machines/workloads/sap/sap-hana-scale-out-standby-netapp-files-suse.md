@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/24/2020
 ms.author: radeltch
-ms.openlocfilehash: 549fd9851ffce4459e16b4d84f368234bfdf207d
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: adc57b213a177e227fe446a4dd24e53dea1cd2fc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86275818"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87068633"
 ---
 # <a name="deploy-a-sap-hana-scale-out-system-with-standby-node-on-azure-vms-by-using-azure-netapp-files-on-suse-linux-enterprise-server"></a>SAP HANA kibővíthető rendszer üzembe helyezése készenléti csomóponttal Azure-beli virtuális gépeken Azure NetApp Files használatával SUSE Linux Enterprise Server 
 
@@ -55,7 +55,7 @@ ms.locfileid: "86275818"
 [nfs-ha]:high-availability-guide-suse-nfs.md
 
 
-Ez a cikk azt ismerteti, hogyan helyezhető üzembe egy, az Azure Virtual Machines szolgáltatásban készenléti állapotban lévő, nagymértékben elérhető SAP HANA rendszer egy kibővíthető konfigurációban, a megosztott tároló köteteinek [Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-introduction/) használatával.  
+Ez a cikk azt ismerteti, hogyan helyezhető üzembe egy, az Azure Virtual Machines szolgáltatásban készenléti állapotban lévő, nagymértékben elérhető SAP HANA rendszer egy kibővíthető konfigurációban, a megosztott tároló köteteinek [Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-introduction.md) használatával.  
 
 A példában a konfigurációk, a telepítési parancsok és így tovább, a HANA-példány **03** , a HANA rendszer azonosítója pedig **HN1**. A példák a HANA 2,0 SP4-es és az SAP 12 SP4-es SUSE Linux Enterprise Serveron alapulnak. 
 
@@ -87,7 +87,7 @@ Mielőtt elkezdené, tekintse meg a következő SAP-megjegyzéseket és dokument
 
 ## <a name="overview"></a>Áttekintés
 
-A HANA magas rendelkezésre állásának eléréséhez az egyik módszer a gazdagép automatikus feladatátvételének konfigurálása. A gazdagép automatikus feladatátvételének konfigurálásához vegyen fel egy vagy több virtuális gépet a HANA rendszerbe, és konfigurálja készenléti csomópontként. Ha az aktív csomópont meghibásodik, a rendszer automatikusan átveszi a készenléti csomópontot. Az Azure Virtual Machines szolgáltatásban bemutatott konfigurációban az Azure NetApp Files-on található [NFS](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-introduction/)-sel automatikusan feladatátvételt érhet el.  
+A HANA magas rendelkezésre állásának eléréséhez az egyik módszer a gazdagép automatikus feladatátvételének konfigurálása. A gazdagép automatikus feladatátvételének konfigurálásához vegyen fel egy vagy több virtuális gépet a HANA rendszerbe, és konfigurálja készenléti csomópontként. Ha az aktív csomópont meghibásodik, a rendszer automatikusan átveszi a készenléti csomópontot. Az Azure Virtual Machines szolgáltatásban bemutatott konfigurációban az Azure NetApp Files-on található [NFS](../../../azure-netapp-files/azure-netapp-files-introduction.md)-sel automatikusan feladatátvételt érhet el.  
 
 > [!NOTE]
 > A készenléti csomópontnak hozzá kell férnie az összes adatbázis-kötethez. A HANA-köteteket Nfsv4 névleképezője-kötetként kell csatlakoztatni. A Nfsv4 névleképezője protokoll továbbfejlesztett file Lease-alapú zárolási mechanizmusa a `I/O` kerítéshez használatos. 
@@ -102,7 +102,7 @@ Az előző ábrán, amely SAP HANA hálózati javaslatokat követ, három alhál
 * A tárolási rendszerrel folytatott kommunikációhoz
 * A HANA csomópontok közötti kommunikációhoz
 
-Az Azure NetApp-kötetek külön alhálózatban találhatók, [Azure NetApp Files delegálva](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-delegate-subnet).  
+Az Azure NetApp-kötetek külön alhálózatban találhatók, [Azure NetApp Files delegálva](../../../azure-netapp-files/azure-netapp-files-delegate-subnet.md).  
 
 Ebben a példában az alhálózatok a következők:  
 
@@ -123,21 +123,21 @@ A Azure NetApp Files üzembe helyezése előtt kérje a bevezetést a Azure NetA
 
 ### <a name="deploy-azure-netapp-files-resources"></a>Azure NetApp Files erőforrások üzembe helyezése  
 
-Az alábbi utasítások azt feltételezik, hogy már üzembe helyezte az Azure-beli [virtuális hálózatot](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview). A Azure NetApp Files erőforrásokat és virtuális gépeket, amelyeken a Azure NetApp Files erőforrásokat csatlakoztatni kell, ugyanabban az Azure-beli virtuális hálózatban vagy az Azure-beli virtuális hálózatokban kell telepíteni.  
+Az alábbi utasítások azt feltételezik, hogy már üzembe helyezte az Azure-beli [virtuális hálózatot](../../../virtual-network/virtual-networks-overview.md). A Azure NetApp Files erőforrásokat és virtuális gépeket, amelyeken a Azure NetApp Files erőforrásokat csatlakoztatni kell, ugyanabban az Azure-beli virtuális hálózatban vagy az Azure-beli virtuális hálózatokban kell telepíteni.  
 
-1. Ha még nem telepítette az erőforrásokat, kérje a [Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register)bevezetését.  
+1. Ha még nem telepítette az erőforrásokat, kérje a [Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-register.md)bevezetését.  
 
-2. Hozzon létre egy NetApp-fiókot a kiválasztott Azure-régióban a [NetApp-fiók létrehozása](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-netapp-account)című részben található utasításokat követve.  
+2. Hozzon létre egy NetApp-fiókot a kiválasztott Azure-régióban a [NetApp-fiók létrehozása](../../../azure-netapp-files/azure-netapp-files-create-netapp-account.md)című részben található utasításokat követve.  
 
-3. Hozzon létre egy Azure NetApp Files kapacitási készletet a [Azure NetApp Files kapacitásának beállítása](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-set-up-capacity-pool)című részben leírtak szerint.  
+3. Hozzon létre egy Azure NetApp Files kapacitási készletet a [Azure NetApp Files kapacitásának beállítása](../../../azure-netapp-files/azure-netapp-files-set-up-capacity-pool.md)című részben leírtak szerint.  
 
-   A cikkben bemutatott HANA-architektúra az *Ultra Service* szintjén egyetlen Azure NetApp Files kapacitású készletet használ. Az Azure-beli HANA-alapú számítási feladatokhoz ajánlott Azure NetApp Files *Ultra* vagy *prémium* [szintű szolgáltatási szintet](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels)használni.  
+   A cikkben bemutatott HANA-architektúra az *Ultra Service* szintjén egyetlen Azure NetApp Files kapacitású készletet használ. Az Azure-beli HANA-alapú számítási feladatokhoz ajánlott Azure NetApp Files *Ultra* vagy *prémium* [szintű szolgáltatási szintet](../../../azure-netapp-files/azure-netapp-files-service-levels.md)használni.  
 
-4. Alhálózat delegálása Azure NetApp Filesre, az [alhálózat delegálása Azure NetApp Filesra](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-delegate-subnet)című részben leírtak szerint.  
+4. Alhálózat delegálása Azure NetApp Filesre, az [alhálózat delegálása Azure NetApp Filesra](../../../azure-netapp-files/azure-netapp-files-delegate-subnet.md)című részben leírtak szerint.  
 
-5. Azure NetApp Files kötetek üzembe helyezéséhez kövesse az [NFS-kötet létrehozása a Azure NetApp Files számára](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes)című témakör utasításait.  
+5. Azure NetApp Files kötetek üzembe helyezéséhez kövesse az [NFS-kötet létrehozása a Azure NetApp Files számára](../../../azure-netapp-files/azure-netapp-files-create-volumes.md)című témakör utasításait.  
 
-   A kötetek központi telepítésekor ügyeljen arra, hogy a **nfsv 4.1** verziót válassza. Jelenleg a NFSv 4.1-hez való hozzáférés szükséges egy engedélyezési listához való hozzáadáshoz. Telepítse a köteteket a kijelölt Azure NetApp Files [alhálózatban](https://docs.microsoft.com/rest/api/virtualnetwork/subnets). Az Azure NetApp-kötetek IP-címeit a rendszer automatikusan hozzárendeli. 
+   A kötetek központi telepítésekor ügyeljen arra, hogy a **nfsv 4.1** verziót válassza. Jelenleg a NFSv 4.1-hez való hozzáférés szükséges egy engedélyezési listához való hozzáadáshoz. Telepítse a köteteket a kijelölt Azure NetApp Files [alhálózatban](/rest/api/virtualnetwork/subnets). Az Azure NetApp-kötetek IP-címeit a rendszer automatikusan hozzárendeli. 
    
    Ne feledje, hogy a Azure NetApp Files erőforrásoknak és az Azure-beli virtuális gépeknek ugyanabban az Azure-beli virtuális hálózaton vagy az Azure-beli virtuális hálózatokban kell lenniük. Például a **HN1**-mnt00001, a **HN1**-log-mnt00001, és így tovább, a kötetek nevei és NFS://10.23.1.5/**HN1**-mnt00001, NFS://10.23.1.4/**HN1**-log-mnt00001 és így tovább, a fájlok elérési útja a Azure NetApp Files kötetek számára.  
 
@@ -155,10 +155,10 @@ Az SAP NetWeaver SUSE magas rendelkezésre állású architektúrán való Azure
 
 - A minimális kapacitási készlet 4 tebibájt (TiB).  
 - A minimális kötet mérete 100 gibibájtban értendők (GiB).
-- Azure NetApp Files és az összes virtuális gépet, amelybe a Azure NetApp Files köteteket csatlakoztatni kell, ugyanabban az Azure-beli virtuális hálózatban vagy azonos régióban lévő, egymással azonos [virtuális hálózatokban](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) kell lennie.  
+- Azure NetApp Files és az összes virtuális gépet, amelybe a Azure NetApp Files köteteket csatlakoztatni kell, ugyanabban az Azure-beli virtuális hálózatban vagy azonos régióban lévő, egymással azonos [virtuális hálózatokban](../../../virtual-network/virtual-network-peering-overview.md) kell lennie.  
 - A kiválasztott virtuális hálózatnak rendelkeznie kell egy Azure NetApp Files delegált alhálózattal.
-- Egy Azure NetApp Files kötet átviteli sebessége a mennyiségi kvóta és a szolgáltatási szint függvénye a [Azure NetApp Files szolgáltatási szintjén](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels)dokumentálva. A HANA Azure NetApp-kötetek méretezése során győződjön meg arról, hogy az eredményül kapott átviteli sebesség megfelel a HANA rendszerkövetelményeinek.  
-- Az Azure NetApp Files [exportálási házirend](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-configure-export-policy)segítségével szabályozhatja az engedélyezett ügyfeleket, a hozzáférési típust (írható és olvasható, csak olvasható stb.). 
+- Egy Azure NetApp Files kötet átviteli sebessége a mennyiségi kvóta és a szolgáltatási szint függvénye a [Azure NetApp Files szolgáltatási szintjén](../../../azure-netapp-files/azure-netapp-files-service-levels.md)dokumentálva. A HANA Azure NetApp-kötetek méretezése során győződjön meg arról, hogy az eredményül kapott átviteli sebesség megfelel a HANA rendszerkövetelményeinek.  
+- Az Azure NetApp Files [exportálási házirend](../../../azure-netapp-files/azure-netapp-files-configure-export-policy.md)segítségével szabályozhatja az engedélyezett ügyfeleket, a hozzáférési típust (írható és olvasható, csak olvasható stb.). 
 - A Azure NetApp Files funkció még nem tud zónával foglalkozni. Jelenleg a funkció nincs telepítve az Azure-régió összes rendelkezésre állási zónájában. Vegye figyelembe, hogy egyes Azure-régiókban lehetséges a késés következményei.  
 -  
 
@@ -167,7 +167,7 @@ Az SAP NetWeaver SUSE magas rendelkezésre állású architektúrán való Azure
 
 ### <a name="sizing-for-hana-database-on-azure-netapp-files"></a>HANA-adatbázis méretezése Azure NetApp Files
 
-Egy Azure NetApp Files kötet átviteli sebessége a kötet méretének és a szolgáltatási szintnek a függvénye, amely a [Azure NetApp Files szolgáltatási szintjén](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels)van dokumentálva. 
+Egy Azure NetApp Files kötet átviteli sebessége a kötet méretének és a szolgáltatási szintnek a függvénye, amely a [Azure NetApp Files szolgáltatási szintjén](../../../azure-netapp-files/azure-netapp-files-service-levels.md)van dokumentálva. 
 
 Az Azure-beli SAP-infrastruktúra tervezésekor vegye figyelembe az SAP által igényelt minimális tárolási követelményeket, amelyek az átviteli sebesség minimális jellemzőire fordíthatók:
 
@@ -175,7 +175,7 @@ Az Azure-beli SAP-infrastruktúra tervezésekor vegye figyelembe az SAP által i
 - Engedélyezheti legalább 400 MB/s olvasási tevékenységet a/Hana/Data 16 MB-os és 64-MB I/O-méretekhez.  
 - Engedélyezze az írási tevékenységet legalább 250 MB/s értéknél a 16 MB-os és a 64-MB I/O-méretekkel rendelkező/Hana/Data. 
 
-A [Azure NetApp Files átviteli sebességre vonatkozó határértékek](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels) 1 TiB-ra vetítve:
+A [Azure NetApp Files átviteli sebességre vonatkozó határértékek](../../../azure-netapp-files/azure-netapp-files-service-levels.md) 1 TiB-ra vetítve:
 - Premium Storage szintű 64 MiB/s  
 - Ultra Storage-réteg – 128 MiB/s  
 
@@ -206,13 +206,13 @@ A cikkben bemutatott elrendezés SAP HANA konfigurációja a Azure NetApp Files 
 ## <a name="deploy-linux-virtual-machines-via-the-azure-portal"></a>Linux rendszerű virtuális gépek üzembe helyezése a Azure Portal használatával
 
 Először létre kell hoznia a Azure NetApp Files köteteket. Ezután hajtsa végre a következő lépéseket:
-1. Hozza létre az Azure-beli [virtuális hálózati](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-subnet) alhálózatokat az [Azure Virtual Networkben](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview). 
+1. Hozza létre az Azure-beli [virtuális hálózati](../../../virtual-network/virtual-network-manage-subnet.md) alhálózatokat az [Azure Virtual Networkben](../../../virtual-network/virtual-networks-overview.md). 
 1. Telepítse a virtuális gépeket. 
 1. Hozza létre a további hálózati adaptereket, és csatolja a hálózati adaptereket a megfelelő virtuális gépekhez.  
 
    Mindegyik virtuális gépnek három hálózati adaptere van, amelyek megfelelnek a három Azure-beli virtuális hálózati alhálózatnak ( `client` `storage` és `hana` ). 
 
-   További információkért lásd: [Linux rendszerű virtuális gép létrehozása az Azure-ban több hálózati kártyával](https://docs.microsoft.com/azure/virtual-machines/linux/multiple-nics).  
+   További információkért lásd: [Linux rendszerű virtuális gép létrehozása az Azure-ban több hálózati kártyával](../../linux/multiple-nics.md).  
 
 > [!IMPORTANT]
 > SAP HANA munkaterhelések esetében a kis késleltetés kritikus fontosságú. Az alacsony késés érdekében működjön együtt a Microsoft-képviselőjével, hogy a virtuális gépek és a Azure NetApp Files kötetek központi telepítése közel legyen. Ha [új SAP HANA](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxjSlHBUxkJBjmARn57skvdUQlJaV0ZBOE1PUkhOVk40WjZZQVJXRzI2RC4u) , SAP HANA Azure NetApp filest használó rendszer bevezetését végzi, küldje el a szükséges információkat. 
@@ -230,7 +230,7 @@ A következő utasítások feltételezik, hogy már létrehozta az erőforráscs
 
    b. Válassza ki azt a rendelkezésre állási készletet, amelyet korábban a SAP HANAhoz hozott létre.  
 
-   c. Válassza ki az ügyfél Azure virtuális hálózati alhálózatát. Válassza a [gyorsított hálózat](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli)lehetőséget.  
+   c. Válassza ki az ügyfél Azure virtuális hálózati alhálózatát. Válassza a [gyorsított hálózat](../../../virtual-network/create-vm-accelerated-networking-cli.md)lehetőséget.  
 
    A virtuális gépek központi telepítésekor a rendszer automatikusan létrehozza a hálózati adapter nevét. Az egyszerűség kedvéért ebben az útmutatóban az automatikusan generált hálózati adapterekre fogunk hivatkozni, amelyek az ügyfél Azure virtuális hálózati alhálózatához vannak csatolva, mint a **hanadb1**, a **hanadb2-Client**és a **hanadb3-Client**. 
 
@@ -252,7 +252,7 @@ A következő utasítások feltételezik, hogy már létrehozta az erőforráscs
  
     f. Ismételje meg a b – e lépéseket a fennmaradó virtuális gépek esetében (példánkban a **hanadb2** és a **hanadb3**).
  
-    : A virtuális gépeket most leállított állapotban hagyja. Ezután engedélyezzük a [gyorsított hálózatkezelést](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli) az újonnan csatlakoztatott hálózati adapterek esetében.  
+    : A virtuális gépeket most leállított állapotban hagyja. Ezután engedélyezzük a [gyorsított hálózatkezelést](../../../virtual-network/create-vm-accelerated-networking-cli.md) az újonnan csatlakoztatott hálózati adapterek esetében.  
 
 6. A következő lépések végrehajtásával engedélyezheti a gyorsított hálózatkezelést az `storage` és az alhálózatok további hálózati adapterei számára `hana` :  
 
@@ -648,7 +648,7 @@ Ebben a példában a SAP HANA üzembe helyezéséhez az Azure-ban készenléti c
 7. Az Azure NetApp Files által használt tárterületnek 16 terabájt (TB) fájlméretre vonatkozó korlátozása van. A SAP HANA nem ismeri implicit módon a tárolási korlátozást, és nem hoz létre automatikusan új adatfájlt, ha eléri a 16 TB-os fájlméretet. Mivel a SAP HANA 16 TB-nál nagyobb mennyiségű fájlt próbálnak növelni, ez a kísérlet hibákat eredményez, és végül egy index-kiszolgáló összeomlik. 
 
    > [!IMPORTANT]
-   > Ha meg szeretné akadályozni, hogy SAP HANA ne növelje az adatfájlokat a tárolási alrendszer [16 TB-os korlátján](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-resource-limits) túl, állítsa be a következő paramétereket a alkalmazásban `global.ini` .  
+   > Ha meg szeretné akadályozni, hogy SAP HANA ne növelje az adatfájlokat a tárolási alrendszer [16 TB-os korlátján](../../../azure-netapp-files/azure-netapp-files-resource-limits.md) túl, állítsa be a következő paramétereket a alkalmazásban `global.ini` .  
    > - datavolume_striping = igaz
    > - datavolume_striping_size_gb = 15000 további információ: SAP Note [2400005](https://launchpad.support.sap.com/#/notes/2400005).
    > Vegye figyelembe a [2631285](https://launchpad.support.sap.com/#/notes/2631285)-es SAP-megjegyzést. 
@@ -852,7 +852,7 @@ Ebben a példában a SAP HANA üzembe helyezéséhez az Azure-ban készenléti c
     | hanadb3 | no     | ignore |          |        |         0 |         0 | default  | default  | master 3   | slave      | standby     | standby     | standby | standby | default | -       |
    </code></pre>
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Azure Virtual Machines az SAP tervezéséhez és megvalósításához][planning-guide]
 * [Azure Virtual Machines üzembe helyezés az SAP-ban][deployment-guide]

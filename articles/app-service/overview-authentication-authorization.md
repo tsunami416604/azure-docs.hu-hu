@@ -6,18 +6,14 @@ ms.topic: article
 ms.date: 07/08/2020
 ms.reviewer: mahender
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: 9588777305ca42603623075b908eee5d76164c84
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 1b537e57edd777d78ce40d0ac4c5c6a7acca7659
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206756"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87068221"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-and-azure-functions"></a>Hitelesítés és engedélyezés Azure App Service és Azure Functions
-
-> [!NOTE]
-> Ekkor a ASP.NET Core jelenleg nem támogatja az aktuális felhasználó feltöltését a hitelesítési/engedélyezési szolgáltatással.
->
 
 A Azure App Service beépített hitelesítési és engedélyezési támogatást biztosít, így a felhasználók bejelentkezhetnek és hozzáférhetnek az adatokhoz a webalkalmazásban, a REST API-ban és a mobil háttérben, valamint [Azure functions](../azure-functions/functions-overview.md)is. Ez a cikk azt ismerteti, hogyan egyszerűsíthető a App Service az alkalmazás hitelesítésének és engedélyezésének egyszerűsítése.
 
@@ -29,9 +25,12 @@ A biztonságos hitelesítés és az engedélyezés a biztonság alapos megismer�
 > A App Service által üzemeltetett ASP.NET Core 2,1-es és újabb verziók már nem javítottak ehhez a feltörési változáshoz, és a Chrome 80 és a régebbi böngészők megfelelő kezelését végzik. Továbbá ugyanez a javítás a ASP.NET-keretrendszer 4.7.2 is üzembe kerül a App Service példányokon a januári 2020-es verzióban. További információért, például arról, hogy miként fogadta el az alkalmazás a javítást, tekintse meg a [Azure app Service SameSite-cookie frissítése](https://azure.microsoft.com/updates/app-service-samesite-cookie-update/)című témakört.
 >
 
+> [!NOTE]
+> A hitelesítési/engedélyezési funkciót más néven "egyszerű hitelesítésnek" is nevezzük.
+
 A natív Mobile apps szolgáltatással kapcsolatos információkért lásd: a [felhasználói hitelesítés és a mobileszközök engedélyezése a Azure app Service](../app-service-mobile/app-service-mobile-auth.md)használatával.
 
-## <a name="how-it-works"></a>A működési elv
+## <a name="how-it-works"></a>Működés
 
 A hitelesítési és engedélyezési modul ugyanazon a Sandboxon fut, mint az alkalmazás kódja. Ha engedélyezve van, minden bejövő HTTP-kérelem áthalad az alkalmazás kódjának kezelése előtt.
 
@@ -53,6 +52,10 @@ Az összes nyelvi keretrendszer esetében a App Service a bejövő jogcímek (az
 [Azure functions](../azure-functions/functions-overview.md)esetén a `ClaimsPrincipal.Current` .net-kód nem töltődik fel, de továbbra is megkeresheti a felhasználói jogcímeket a kérések fejlécében, vagy lekérheti az `ClaimsPrincipal` objektumot a kérelem környezetében, vagy akár egy kötési paraméteren keresztül is. További információért lásd: [az ügyfél-identitások használata](../azure-functions/functions-bindings-http-webhook-trigger.md#working-with-client-identities) .
 
 További információ: hozzáférés a [felhasználói jogcímekhez](app-service-authentication-how-to.md#access-user-claims).
+
+> [!NOTE]
+> Ekkor a ASP.NET Core jelenleg nem támogatja az aktuális felhasználó feltöltését a hitelesítési/engedélyezési szolgáltatással. Azonban néhány [harmadik fél, a nyílt forráskódú middleware-összetevők léteznek,](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth) amelyek segítenek a hézag kitöltésében.
+>
 
 ### <a name="token-store"></a>Jogkivonat-tároló
 
@@ -134,10 +137,6 @@ Ezzel a beállítással nem kell bármilyen hitelesítési kódot írnia az alka
 
 > [!CAUTION]
 > A hozzáférés ezen a módon való korlátozása az alkalmazás összes hívására vonatkozik, ami nem kívánatos, ha az alkalmazások nyilvánosan elérhető kezdőlapot szeretnének, például sok egyoldalas alkalmazásban.
-
-> [!NOTE]
-> A hitelesítés/engedélyezés korábban egyszerű hitelesítésnek volt ismert.
->
 
 ## <a name="more-resources"></a>További erőforrások
 

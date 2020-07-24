@@ -6,11 +6,12 @@ ms.assetid: dea3f41e-cf35-481b-a6bc-33d7fc9d01b1
 ms.topic: article
 ms.date: 11/09/2017
 ms.custom: seodec18
-ms.openlocfilehash: b1c44fb9f44eb75e6d2a766213c5db094ebe79b1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 93f823a623145f8dd8bf5118de973dfbc095bfb4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81537644"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87068200"
 ---
 # <a name="azure-app-service-plan-overview"></a>Az Azure App Service-csomagok áttekintése
 
@@ -26,7 +27,7 @@ Ha egy App Service tervet hoz létre egy bizonyos régióban (például Nyugat-E
 Egy App Service-csomag _díjszabási szintje_ határozza meg, hogy milyen app Service funkciókat kap, és mennyit fizet a csomagért. A tarifacsomagok a következő kategóriákba sorolhatók:
 
 - **Megosztott számítás**: az **ingyenes** és a **közös**, a két alapszintű alkalmazás ugyanazon az Azure-beli virtuális gépen futtatja az alkalmazást, mint a többi app Service alkalmazást, beleértve a más ügyfelek alkalmazásait is. Ezek a csomagok CPU-kvótákat rendelnek mindegyik, a közös erőforrásokon futó alkalmazáshoz, és ezek az erőforrások nem skálázhatóak fel horizontálisan.
-- **Dedikált számítás** **: az alapszintű**, **standard**, **prémium**és **PremiumV2** szinteken a dedikált Azure-beli virtuális gépeken futó alkalmazások futnak. A számítási erőforrások csak az ugyanabban az App Service-csomagban lévő alkalmazások között kerülnek elosztásra. Minél magasabb szintű a csomag, annál több virtuálisgép-példány áll rendelkezésére a horizontális felskálázáshoz.
+- **Dedikált számítás** **: az alapszintű**, **standard**, **prémium**és **PremiumV2** szinteken a dedikált Azure-beli virtuális gépeken futó alkalmazások futnak. A számítási erőforrások elosztása csak az ugyanabban az App Service-csomagban lévő alkalmazások között történik. Minél magasabb szintű a csomag, annál több virtuálisgép-példány áll rendelkezésére a horizontális felskálázáshoz.
 - **Elkülönített**: Ez a szintű dedikált Azure-beli virtuális gépeket futtat dedikált Azure-beli virtuális hálózatokon. Hálózati elkülönítést biztosít az alkalmazások számára a számítási elkülönítésen. Ez a szint biztosítja a legnagyobb horizontális felskálázási lehetőségeket.
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
@@ -78,8 +79,10 @@ Nem számítunk fel díjat az Ön számára elérhető App Service szolgáltatá
 
 > [!NOTE]
 > Ha a App Service egy másik Azure-szolgáltatással integrálja, előfordulhat, hogy a többi szolgáltatás díjait is figyelembe kell vennie. Ha például az Azure Traffic Manager-t használja az alkalmazás földrajzilag való méretezéséhez, az Azure Traffic Manager a használat alapján is felszámítja a díjat. Az Azure-beli szolgáltatások szolgáltatásainak megbecsléséhez tekintse meg a [díjszabási számológépet](https://azure.microsoft.com/pricing/calculator/). 
->
->
+
+Szeretné optimalizálni és menteni a Felhőbeli kiadásait?
+
+[!INCLUDE [cost-management-horizontal](../../includes/cost-management-horizontal.md)]
 
 ## <a name="what-if-my-app-needs-more-capabilities-or-features"></a>Mi a teendő, ha az alkalmazásnak több funkcióra vagy szolgáltatásra van szüksége?
 
@@ -97,7 +100,7 @@ Ha az alkalmazás ugyanabban a App Service csomagban van, és más alkalmazások
 
 Mivel a számítási erőforrásokért az App Service-csomag lefoglalása után kell fizetnie (lásd: Mennyibe [kerül a app Service tervem?](#cost)), így pénzt takaríthat meg, ha több alkalmazást helyez üzembe egy app Service tervben. Az alkalmazásokat továbbra is hozzáadhatja egy meglévő csomaghoz, ha a csomag elegendő erőforrással rendelkezik a terhelés kezeléséhez. Ne feledje azonban, hogy az azonos App Service tervben szereplő alkalmazások mindegyike ugyanazokat a számítási erőforrásokat használja. Annak megállapításához, hogy az új alkalmazás rendelkezik-e majd a szükséges számítási erőforrásokkal, ismernie kell a meglévő App Service-csomag kapacitását, és a hozzáadni kívánt alkalmazás várható terheltségét. Az App Service-csomag túlterhelése üzemkimaradást okozhat az új és a meglévő alkalmazások esetében is.
 
-Alkalmazását akkor érdemes egy új önálló App Service-csomagba elkülönítenie ha:
+Az alkalmazást akkor érdemes egy új App Service-csomagba elkülönítenie, ha:
 
 - Az alkalmazás erőforrás-igényes.
 - Az alkalmazást a meglévő csomag többi alkalmazásából függetlenül szeretné méretezni.

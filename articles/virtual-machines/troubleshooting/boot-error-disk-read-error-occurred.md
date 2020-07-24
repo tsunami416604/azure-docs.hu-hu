@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 06/01/2020
 ms.author: v-miegge
-ms.openlocfilehash: dea09b1ac29db99e1c52a31a605007fa4129e8ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f59903ed111be1fe414f4b3ded250d754c91d323
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84300525"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87069142"
 ---
 # <a name="troubleshoot-boot-error---disk-read-error-occurred"></a>Rendszerindítási hiba – hiba történt a lemez olvasásakor
 
@@ -26,7 +27,7 @@ Ez a cikk olyan problémák megoldását ismerteti, amelyekben a lemez nem olvas
 
 ## <a name="symptoms"></a>Probléma
 
-Ha [rendszerindítási diagnosztikát](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) használ a virtuális gép képernyőképének megtekintéséhez, látni fogja, hogy a képernyőképen megjelenik a "lemezes olvasási hiba történt" üzenet. Az újraindításhoz nyomja le a Ctrl+Alt+Del billentyűkombinációt.”
+Ha [rendszerindítási diagnosztikát](./boot-diagnostics.md) használ a virtuális gép képernyőképének megtekintéséhez, látni fogja, hogy a képernyőképen megjelenik a "lemezes olvasási hiba történt" üzenet. Az újraindításhoz nyomja le a Ctrl+Alt+Del billentyűkombinációt.”
 
    ![Hibaüzenet: lemezes olvasási hiba történt. Indítsa újra a CTRL + ALT + DEL billentyűkombinációt.](./media/disk-read-error-occurred/1.png)
 
@@ -50,7 +51,7 @@ Ez a hibaüzenet azt jelzi, hogy a lemez szerkezete sérült, és nem olvasható
 
 ### <a name="create-and-access-a-repair-vm"></a>Javítási virtuális gép létrehozása és elérése
 
-1. A virtuálisgép- [javítási parancsok](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) 1-3-es lépéseit használva készítse elő a javítási virtuális gépet.
+1. A virtuálisgép- [javítási parancsok](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) 1-3-es lépéseit használva készítse elő a javítási virtuális gépet.
 1. A Távoli asztali kapcsolat használatával kapcsolódjon a javítási virtuális géphez.
 
 ### <a name="set-partition-status-to-active"></a>Partíció állapotának beállítása aktívra
@@ -142,4 +143,4 @@ Az 1. generációs virtuális gépeknek először ellenőriznie kell, hogy a BCD
    
 ### <a name="rebuild-the-vm"></a>A virtuális gép újraépítése
 
-A virtuális gép újraépítéséhez használja [a virtuális gép javítási parancsainak 5. lépését](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) .
+A virtuális gép újraépítéséhez használja [a virtuális gép javítási parancsainak 5. lépését](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) .

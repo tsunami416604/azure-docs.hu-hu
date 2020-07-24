@@ -16,11 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/06/2019
 ms.author: kumud
-ms.openlocfilehash: 2f71a1d26543e7436dee039592d120b52d5c9fea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7da6c0f88ae68f473e57590824e675299f7d524b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710966"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87068572"
 ---
 # <a name="create-change-or-delete-a-public-ip-address"></a>Nyilvános IP-címek létrehozása, módosítása és törlése
 
@@ -63,7 +64,7 @@ A nyilvános IP-címekhez névleges díj tartozik. A díjszabás megtekintéséh
    |Előfizetés|Yes|Ugyanabban az [előfizetésben](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) kell lennie, mint a nyilvános IP-cím hozzárendeléséhez használt erőforrásnak.|
    |Erőforráscsoport|Yes|Ugyanabban vagy más [erőforrás-csoportban](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group) létezhet, mint az erőforrás, amelyhez a nyilvános IP-címet hozzárendeli.|
    |Hely|Igen|Ugyanazon a [helyen](https://azure.microsoft.com/regions)kell lennie (más néven régió), mint az a nyilvános IP-címet hozzárendelő erőforrás.|
-   |Rendelkezésreállási zóna| No | Ez a beállítás csak akkor jelenik meg, ha egy támogatott helyet választ ki. A támogatott helyek listáját lásd: a [rendelkezésre állási zónák áttekintése](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Ha az **alapszintű** SKU lehetőséget választotta, a *nincs* beállítás automatikusan lesz kiválasztva. Ha inkább egy adott zónát szeretne garantálni, kiválaszthat egy adott zónát. Bármelyik választás nem redundáns. Ha bejelölte a **standard** SKU: Zone-redundáns beállítást, a rendszer automatikusan kijelöli az adatelérési utat a zóna meghibásodása miatt. Ha inkább egy adott zónát szeretne garantálni, amely nem rugalmas a zóna meghibásodása esetén, kiválaszthat egy adott zónát.
+   |A rendelkezésre állási zóna| No | Ez a beállítás csak akkor jelenik meg, ha egy támogatott helyet választ ki. A támogatott helyek listáját lásd: a [rendelkezésre állási zónák áttekintése](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Ha az **alapszintű** SKU lehetőséget választotta, a *nincs* beállítás automatikusan lesz kiválasztva. Ha inkább egy adott zónát szeretne garantálni, kiválaszthat egy adott zónát. Bármelyik választás nem redundáns. Ha bejelölte a **standard** SKU: Zone-redundáns beállítást, a rendszer automatikusan kijelöli az adatelérési utat a zóna meghibásodása miatt. Ha inkább egy adott zónát szeretne garantálni, amely nem rugalmas a zóna meghibásodása esetén, kiválaszthat egy adott zónát.
 
 **Parancsok**
 
@@ -97,7 +98,7 @@ Bár a portálon két nyilvános IP-cím erőforrás (egy IPv4 és egy IPv6) hoz
 
 Ismerje meg, hogyan rendeljen hozzá egy nyilvános IP-címet a következő erőforrásokhoz:
 
-- Windows vagy [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) [rendszerű](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-network%2ftoc.json) virtuális gép (létrehozásakor) vagy [meglévő virtuális géphez](virtual-network-network-interface-addresses.md#add-ip-addresses)
+- Windows vagy [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) [rendszerű](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) virtuális gép (létrehozásakor) vagy [meglévő virtuális géphez](virtual-network-network-interface-addresses.md#add-ip-addresses)
 - [Internetkapcsolattal rendelkező Load Balancer](../load-balancer/load-balancer-get-started-internet-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [Azure Application Gateway](../application-gateway/application-gateway-create-gateway-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [Helyek közötti kapcsolat Azure VPN Gateway használatával](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)

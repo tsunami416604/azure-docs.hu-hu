@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 07/20/2020
 ms.author: absha
-ms.openlocfilehash: 0245a23e46770840295904685c913826950c0642
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 892ace66c4994f4c2e263d529d69e505ed9c1c1f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86517841"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87068019"
 ---
 # <a name="application-gateway-configuration-overview"></a>Application Gateway konfiguráció áttekintése
 
@@ -286,7 +286,7 @@ Az Újraírási szabályok használatával a HTTP (S) kérések és válaszok fe
 A fejlécek és URL-paraméterek statikus értékekre vagy más fejlécekre és kiszolgálói változókra állíthatók be. Ez segíti a fontos használati eseteket, például az ügyfél IP-címeinek kinyerését, a háttér bizalmas adatainak eltávolítását, a nagyobb biztonság hozzáadását stb.
 További információ:
 
- - [HTTP-fejlécek újraírása – áttekintés](rewrite-http-headers-url.md)
+ - [HTTP-fejlécek és URL-címek átírása – áttekintés](rewrite-http-headers-url.md)
  - [HTTP-fejléc újraírásának konfigurálása](rewrite-http-headers-portal.md)
  - [URL-cím újraírásának konfigurálása](rewrite-url-portal.md)
 
@@ -395,7 +395,7 @@ Az Application Gateway alapértelmezés szerint figyeli az összes erőforrás �
 > [!NOTE]
 > Az egyéni állapotú mintavétel létrehozása után hozzá kell rendelnie azt egy háttérbeli HTTP-beállításhoz. Az egyéni mintavétel nem figyeli a háttér-készlet állapotát, kivéve, ha a megfelelő HTTP-beállítás explicit módon van társítva egy figyelővel egy szabály használatával.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy már ismeri a Application Gateway összetevőket, a következőket teheti:
 

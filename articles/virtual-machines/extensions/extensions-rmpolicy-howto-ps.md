@@ -1,5 +1,5 @@
 ---
-title: A virtuálisgép-bővítmények telepítésének korlátozása Azure Policy használatával
+title: Virtuálisgép-bővítmények telepítésének korlátozása Azure Policy használatával (Windows)
 description: A bővítmények üzembe helyezésének korlátozásához használja a Azure Policy.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 03/23/2018
 ms.author: akjosh
 ms.reviewer: cynthn
-ms.openlocfilehash: 96cd16c08421a4e365391c0db0b257f71a06551f
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: e4959c9dca909afde4bf6d351d79ecca1e4022a0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85919805"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87069756"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-windows-vms"></a>A bővítmények Windows rendszerű virtuális gépeken való telepítésének korlátozása Azure Policy használatával
 
@@ -98,7 +98,7 @@ Ha elkészült, nyomja le a **CTRL + O billentyűkombinációt** , majd a fájl 
 
 ## <a name="create-the-policy"></a>A szabályzat létrehozása
 
-A házirend-definíció a használni kívánt konfiguráció tárolására szolgáló objektum. A házirend-definíció a szabályok és paraméterek fájlok használatával határozza meg a szabályzatot. Hozzon létre egy szabályzat-definíciót a [New-AzPolicyDefinition](https://docs.microsoft.com/powershell/module/az.resources/new-azpolicydefinition) parancsmag használatával.
+A házirend-definíció a használni kívánt konfiguráció tárolására szolgáló objektum. A házirend-definíció a szabályok és paraméterek fájlok használatával határozza meg a szabályzatot. Hozzon létre egy szabályzat-definíciót a [New-AzPolicyDefinition](/powershell/module/az.resources/new-azpolicydefinition) parancsmag használatával.
 
  A házirend-szabályok és paraméterek a létrehozott és. JSON-fájlként tárolt fájlok a Cloud shellben.
 
@@ -117,9 +117,9 @@ $definition = New-AzPolicyDefinition `
 
 ## <a name="assign-the-policy"></a>A szabályzat hozzárendelése
 
-Ez a példa a szabályzatot egy erőforráscsoporthoz rendeli hozzá a [New-AzPolicyAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azpolicyassignment)használatával. A **myResourceGroup** erőforráscsoporthoz létrehozott összes virtuális gép nem tudja telepíteni a virtuálisgép-hozzáférési ügynököt vagy az egyéni parancsfájl-bővítményeket. 
+Ez a példa a szabályzatot egy erőforráscsoporthoz rendeli hozzá a [New-AzPolicyAssignment](/powershell/module/az.resources/new-azpolicyassignment)használatával. A **myResourceGroup** erőforráscsoporthoz létrehozott összes virtuális gép nem tudja telepíteni a virtuálisgép-hozzáférési ügynököt vagy az egyéni parancsfájl-bővítményeket. 
 
-A [Get-AzSubscription használata | Formázza a Table](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription) parancsmagot, hogy az előfizetés-azonosítót a példában szereplő egyik helyett használja.
+A [Get-AzSubscription használata | Formázza a Table](/powershell/module/az.accounts/get-azsubscription) parancsmagot, hogy az előfizetés-azonosítót a példában szereplő egyik helyett használja.
 
 ```azurepowershell-interactive
 $scope = "/subscriptions/<subscription id>/resourceGroups/myResourceGroup"

@@ -6,13 +6,14 @@ ms.service: storsimple
 ms.topic: conceptual
 ms.date: 08/13/2019
 ms.author: alkohli
-ms.openlocfilehash: d9a75cde58062061149fa4304eace587b1480dd1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 55cc3049e437cc18eac6dc537de3ee1c0d894c23
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76277041"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87070332"
 ---
-# <a name="storsimple-solution-support"></a>StorSimple-megoldás támogatása
+# <a name="storsimple-solution-support"></a>A StorSimple megoldás támogatása
 
 ## <a name="storsimple-support"></a>StorSimple-támogatás
 
@@ -27,8 +28,8 @@ A Microsoft rugalmas támogatási lehetőségeket kínál a StorSimple Enterpris
 
 ## <a name="storsimple-support-plans"></a>StorSimple-támogatási csomagok
 
-|                                                                                                                                                     | **Standard szintű** <sup> 1                                                 |  **Prémium** <sup> szintű 1                                                                         |
-|---------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------|--------------------------------------------------------------------------------|
+| Támogatási funkció | STANDARD <sup> 1 | 1. prémium <sup> |
+| --------------- | --------------- | -------------- |
 | Számlázás és előfizetés-kezelés                                                                     | ✓                                                                               | ✓                                                                              |
 | Azure Portal jegy beküldése                                                                          | ✓                                                                               | ✓                                                                              |
 | Online támogatási portál hozzáférése                                                                            | ✓                                                                               | ✓                                                                              |
@@ -36,7 +37,7 @@ A Microsoft rugalmas támogatási lehetőségeket kínál a StorSimple Enterpris
 | Ügyfélszolgálati kezdeti válaszidő nonstop támogatási jegy beküldése <br> Kezdeti válaszidő a 2. súlyosság alapján <sup> | A súlyossági szint: 2 órán belül <br> "B" súlyosság: 4 órán belül <br> Súlyosság C: 8 órán belül | A súlyosság: A 60 percen belül <br> "B" súlyosság: 2 órán belül <br> Súlyosság C: 4 órán belül |
 | Telefonos támogatás (visszahívás visszahívása)                                                                               | ✓                                                                               | ✓                                                                              |
 | Speciális részek cseréje (csak StorSimple 8000 sorozat) <sup>3</sup>                                              | Következő munkanap <sup> 4                                                              | 4 órán belül                                                                 |
-| Helyszíni szolgáltatások mérnöke (csak StorSimple 8000 sorozat) <sup>3</sup>                                         | Nem érhető el                                                                   | 4 órán belül                                                                 |
+| Helyszíni szolgáltatások mérnöke (csak StorSimple 8000 sorozat) <sup>3</sup>                                         | Nem elérhető                                                                   | 4 órán belül                                                                 |
 | <sup>5</sup> . StorSimple virtuális tömb                                                                              | ✓                                                                               | ✓                                                                              |
 | <sup>5</sup> . StorSimple virtuális tömb példányai                                                                 | Korlátlan                                                                        | Korlátlan                                                                       |
 
@@ -82,7 +83,7 @@ A számlázási és előfizetés-kezeléssel kapcsolatos problémák támogatás
 |----------|-----------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | A        | Kritikus üzleti hatás: <ul> <br> <li> Az ügyfelek üzleti tevékenysége jelentős veszteséget vagy romlást okoz a szolgáltatásokban. <sup>1</sup> <br> <li> Azonnali beavatkozásra van szükség.                          | Kezdeti Válasz: <sup>1</sup> <ul><br> <li>1 óra vagy kevesebb a prémium szinthez. <br> <li> 2 óra vagy kevesebb a standard szintű használatra. <br> <li> Minden nap folyamatosan, minden nap. | <ul><li> A megfelelő erőforrások kiosztása, hogy minden nap, minden nap folyamatos munkát lehessen tartani. <br> <li> Az eset tulajdonosának pontos kapcsolattartási adatai.                                                |
 | B        | Mérsékelt üzleti hatás: <ul><br> <li> Az ügyfél üzleti tevékenysége a szolgáltatások mérsékelt elvesztése vagy romlása, de a munka ésszerűen tovább csökkenthető. | Kezdeti Válasz: <sup>1</sup><ul><br> <li> 2 óra vagy kevesebb a prémium szinthez. <br> <li> 4 óra vagy kevesebb a standard szintű használatra.                                      | <ul><li> A megfelelő erőforrások kiosztása a folyamatos munkavégzés időtartama alatt a munkaidőn kívül, kivéve, ha az ügyfél a nonstop letiltását kéri. <br> <li> Az eset tulajdonosának pontos kapcsolattartási adatai. |
-| C#        | Üzleti tevékenység minimális hatása: <ul><br> <li> Az ügyfél üzleti tevékenysége jelentősen működik a kisebb vagy a szolgáltatások akadályozásával.                                 | Kezdeti Válasz: <sup>1</sup><ul> <br> <li> 4 óra vagy kevesebb a prémium szinthez. <br> <li> 8 óra vagy kevesebb a standard szintű használatra.                                      | <ul><li>Az eset tulajdonosának pontos kapcsolattartási adatai                                                                                                                                    |
+| C        | Üzleti tevékenység minimális hatása: <ul><br> <li> Az ügyfél üzleti tevékenysége jelentősen működik a kisebb vagy a szolgáltatások akadályozásával.                                 | Kezdeti Válasz: <sup>1</sup><ul> <br> <li> 4 óra vagy kevesebb a prémium szinthez. <br> <li> 8 óra vagy kevesebb a standard szintű használatra.                                      | <ul><li>Az eset tulajdonosának pontos kapcsolattartási adatai                                                                                                                                    |
  
 <sup>1</sup> a Microsoft visszaminősítheti a súlyossági szintet, ha az ügyfél nem tud elegendő erőforrást vagy választ biztosítani ahhoz, hogy a Microsoft folytassa a probléma megoldására tett erőfeszítésekkel.
 

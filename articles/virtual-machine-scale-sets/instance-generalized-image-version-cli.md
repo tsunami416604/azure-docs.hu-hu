@@ -1,5 +1,5 @@
 ---
-title: Méretezési csoport létrehozása általánosított rendszerképből
+title: Méretezési csoport létrehozása általánosított rendszerképből az Azure CLI-vel
 description: Méretezési csoport létrehozása általánosított képpel egy megosztott Képtárban.
 author: cynthn
 ms.service: virtual-machine-scale-sets
@@ -9,13 +9,14 @@ ms.topic: how-to
 ms.date: 05/01/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 59e29be2aade993c8aeae64b4aa4918b36a26b26
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3cde06b652befa8fbb655273c19f65bd2f38e850
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82797135"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87069839"
 ---
-# <a name="create-a-scale-set-from-a-generalized-image"></a>Méretezési csoport létrehozása általánosított rendszerképből
+# <a name="create-a-scale-set-from-a-generalized-image-with-azure-cli"></a>Méretezési csoport létrehozása általánosított rendszerképből az Azure CLI-vel
 
 Hozzon létre egy méretezési készletet egy [közös rendszerkép](shared-image-galleries.md) -katalógusban tárolt általánosított rendszerkép-verzióból az Azure CLI használatával. Ha a méretezési csoport speciális rendszerkép-verzió használatával szeretne létrehozni, tekintse [meg a méretezési csoport példányainak létrehozása speciális rendszerképből](instance-specialized-image-version-cli.md)című témakört.
 

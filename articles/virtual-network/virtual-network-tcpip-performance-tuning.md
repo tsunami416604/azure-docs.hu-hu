@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 04/02/2019
 ms.author: rimayber
 ms.reviewer: dgoddard, stegag, steveesp, minale, btalb, prachank
-ms.openlocfilehash: dc77f3267813bd049274f44e43c4d64b0eb3801e
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 67b635f09cb9407279e89b5f7b8526dab3c08946
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120279"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87068512"
 ---
 # <a name="tcpip-performance-tuning-for-azure-vms"></a>TCP/IP teljesítmény-hangolás Azure-beli virtuális gépekhez
 
@@ -60,7 +60,7 @@ A töredezettséget negatív műveletnek tekintheti, de a töredezettség támog
 
 Általánosságban elmondható, hogy hatékonyabb hálózatot hozhat létre az MTU növelésével. Minden továbbított csomag fejléc-információval rendelkezik, amely az eredeti csomagba kerül. Ha a töredezettség több csomagot hoz létre, annál nagyobb a fejléc feje, és ez a hálózat kevésbé hatékony lesz.
 
-Az alábbiakban erre láthat példát. Az Ethernet-fejléc mérete 14 bájt, valamint egy 4 bájtos keret-ellenőrzési sorozat a keret konzisztenciájának biztosítása érdekében. Ha a rendszer 1 2 000 bájtos csomagot kap, a hálózatban 18 bájt Ethernet-terhelést ad hozzá. Ha a csomag egy 1 500 bájtos csomagba és egy 500 bájtos csomagba van feldarabolva, minden csomag 18 bájtos Ethernet-fejlécet tartalmaz, összesen 36 bájt.
+Íme egy példa. Az Ethernet-fejléc mérete 14 bájt, valamint egy 4 bájtos keret-ellenőrzési sorozat a keret konzisztenciájának biztosítása érdekében. Ha a rendszer 1 2 000 bájtos csomagot kap, a hálózatban 18 bájt Ethernet-terhelést ad hozzá. Ha a csomag egy 1 500 bájtos csomagba és egy 500 bájtos csomagba van feldarabolva, minden csomag 18 bájtos Ethernet-fejlécet tartalmaz, összesen 36 bájt.
 
 Ne feledje, hogy az MTU növelése nem feltétlenül hoz létre hatékonyabb hálózatot. Ha egy alkalmazás csak a 500 bájtos csomagokat küldi el, ugyanaz a fejléc jelenik meg, függetlenül attól, hogy az MTU értéke 1 500 bájt vagy 9 000 bájt. A hálózat csak akkor válik hatékonyabbá, ha az MTU által érintett nagyobb méretű csomagokat használ.
 
@@ -125,9 +125,8 @@ Az Azure esetében javasoljuk, hogy állítsa be a TCP MSS 1 350 bájt és a bú
 
 A hálózati késést a száloptikai hálózatban fellépő fény sebessége szabályozza. A TCP hálózati átviteli sebességét is hatékonyan szabályozza a két hálózati eszköz közötti oda-és visszaúti idő (RTT).
 
-| | | | |
-|-|-|-|-|
-|**Útválasztás**|**Távolság**|**Egyirányú idő**|**RTT**|
+| Útvonal | Távolság | Egyirányú idő | RTT |
+| ----- | -------- | ------------ | --- |
 |New York – San Francisco|4 148 km|21 MS|42 MS|
 |New York – London|5 585 km|28 MS|56 MS|
 |New York-i Sydney|15 993 km|80 MS|160 MS|
@@ -162,9 +161,8 @@ Az alábbi képlettel egy TCP-kapcsolatok maximális átviteli sebességét szá
 
 Ez a táblázat az egyetlen TCP-kapcsolatok maximális megabájt/másodperces átviteli sebességét jeleníti meg. (Az olvashatóság érdekében a mértékegységhez megabájtot kell használni.)
 
-| | | | |
-|-|-|-|-|
-|**TCP-ablak mérete (bájt)**|**RTT késés (MS)**|**Maximális megabájt/másodperc átviteli sebesség**|**Maximális megabit/másodperc átviteli sebesség**|
+| TCP-ablak mérete (bájt) | RTT késés (MS) | Maximális megabájt/másodperc átviteli sebesség | Maximális megabit/másodperc átviteli sebesség |
+| ----------------------- | ---------------- | ---------------------------------- | --------------------------------- |
 |65 535|1|65,54|524,29|
 |65 535|30|2,18|17,48|
 |65 535|60|1.09|8,74|
@@ -179,9 +177,8 @@ A TCP-ablak skálázása olyan technika, amely dinamikusan növeli a TCP-ablakm�
 
 Ez a táblázat a következő kapcsolatokat szemlélteti:
 
-| | | | |
-|-|-|-|-|
-|**TCP-ablak mérete (bájt)**|**RTT késés (MS)**|**Maximális megabájt/másodperc átviteli sebesség**|**Maximális megabit/másodperc átviteli sebesség**|
+| TCP-ablak mérete (bájt) | RTT késés (MS) | Maximális megabájt/másodperc átviteli sebesség | Maximális megabit/másodperc átviteli sebesség |
+| ----------------------- | ---------------- | ---------------------------------- | --------------------------------- |
 |65 535|30|2,18|17,48|
 |131 070|30|4,37|34,95|
 |262 140|30|8,74|69,91|
@@ -221,10 +218,9 @@ Set-NetTCPSetting
 
 Ezek a következő érvényes TCP-beállítások `AutoTuningLevel` :
 
-| | | | |
-|-|-|-|-|
-|**AutoTuningLevel**|**Skálázási tényező**|**Skálázási szorzó**|**A <br/> Maximális ablakméret kiszámításához használandó képlet**|
-|Letiltva|None|None|Ablak mérete|
+| AutoTuningLevel | Skálázási tényező | Skálázási szorzó | Képlet –<br/>Maximális ablakméret kiszámítása |
+| --------------- | -------------- | ------------------ | -------------------------------------------- |
+|Disabled (Letiltva)|Nincs|Nincs|Ablak mérete|
 |Korlátozott hozzáférésű|4|2 ^ 4|Ablak mérete * (2 ^ 4)|
 |Szigorúan korlátozott|2|2 ^ 2|Ablak mérete * (2 ^ 2)|
 |Normál|8|2 ^ 8|Ablak mérete * (2 ^ 8)|
@@ -373,6 +369,6 @@ Azt is vegye figyelembe, hogy egyes újraküldési és ismétlődő nyugták a h
 
 Ezek a csomagok azonban arra utalnak, hogy a TCP-átviteli sebesség nem tudja elérni a maximális teljesítményt, a cikk más részeiben tárgyalt okok miatt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy megismerte az Azure-beli virtuális gépek TCP/IP-teljesítményének finomhangolását, érdemes elolvasnia a [virtuális hálózatok megtervezésével](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm) kapcsolatos egyéb szempontokat, vagy többet is [megtudhat a virtuális hálózatok csatlakoztatásáról és konfigurálásáról](https://docs.microsoft.com/azure/virtual-network/).

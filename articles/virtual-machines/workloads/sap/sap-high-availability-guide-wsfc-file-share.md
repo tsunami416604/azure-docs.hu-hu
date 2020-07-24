@@ -16,11 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 07/24/2019
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2df092d49f2dfe9153b52be677e8ee6314dd9b60
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bf9e00e8acba241f1445977dcc53724b9981039f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82982972"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87068683"
 ---
 # <a name="cluster-an-sap-ascsscs-instance-on-a-windows-failover-cluster-by-using-a-file-share-in-azure"></a>SAP ASCS-/SCS-példány fürthöz való fürtözése Windows feladatátvevő fürtön egy Azure-beli fájlmegosztás használatával
 
@@ -113,7 +114,7 @@ A Közvetlen tárolóhelyek megosztott lemezként használható a kibővített f
 Közvetlen tárolóhelyek kiválasztásakor vegye figyelembe ezeket a használati eseteket:
 
 - Az Közvetlen tárolóhelyek-fürt létrehozásához használt virtuális gépeket egy Azure-beli rendelkezésre állási csoportba kell telepíteni.
-- Közvetlen tárolóhelyek-fürt vész-helyreállításához használhatja a [Azure site Recovery szolgáltatásokat](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix#replicated-machines---storage).
+- Közvetlen tárolóhelyek-fürt vész-helyreállításához használhatja a [Azure site Recovery szolgáltatásokat](../../../site-recovery/azure-to-azure-support-matrix.md#replicated-machines---storage).
 - A közvetlen tárolóhelyek fürtjét nem lehet a különböző Azure Availability Zones között kiterjeszteni.
 
 ### <a name="sap-prerequisites-for-scale-out-file-shares-in-azure"></a>A kibővíthető fájlmegosztás SAP-előfeltételei az Azure-ban

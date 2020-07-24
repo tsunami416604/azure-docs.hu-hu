@@ -3,24 +3,27 @@ title: Az Azure költségeinek elemzése a Power BI-alkalmazással
 description: Ez a cikk ismerteti az Azure Cost Management Power BI-alkalmazás telepítését és használatát.
 author: bandersmsft
 ms.author: banders
-ms.date: 06/16/2020
+ms.date: 07/13/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: benshy
-ms.openlocfilehash: 53340c72a6456b24b52cff6d7eda9d4a34db6564
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: bd5e2c999df180c80c58711a6428678b2bb4fefa
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84888209"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537918"
 ---
 # <a name="analyze-cost-with-the-azure-cost-management-power-bi-app-for-enterprise-agreements-ea"></a>Az Azure költségeinek elemzése a Nagyvállalati Szerződésekhez (EA) készült Azure Cost Management Power BI-alkalmazással
 
 Ez a cikk ismerteti az Azure Cost Management Power BI-alkalmazás telepítését és használatát. Az alkalmazás segít az Azure-költségek a Power BI-ban való elemzésében és kezelésében. Az alkalmazással monitorozhatja a költségeket és a használati trendeket, továbbá költségoptimalizálási lehetőségeket azonosíthat a kiadások csökkentése érdekében.
 
-Az alkalmazást a Power BI Desktopba töltheti le. Az alkalmazást használhatja eredeti formájában, de az igényeinek megfelelően személyre is szabhatja az alapértelmezett szűrők, nézetek és vizualizációk kibővítésével. Ezt követően további adatokat csatlakoztathat személyre szabott jelentések létrehozásához, hogy átfogó képet kapjon a teljes üzleti költségről.
+Az alkalmazást használhatja eredeti formájában, de az igényeinek megfelelően személyre is szabhatja az alapértelmezett szűrők, nézetek és vizualizációk kibővítésével. Ezt követően további adatokat csatlakoztathat személyre szabott jelentések létrehozásához, hogy átfogó képet kapjon a teljes üzleti költségről.
 
 Az Azure Cost Management Power BI-alkalmazás jelenleg csak a [Nagyvállalati Szerződéssel](https://azure.microsoft.com/pricing/enterprise-agreement/) rendelkező ügyfeleket támogatja.
+
+> [!NOTE]
+> A Power BI-sablonalkalmazások nem támogatják a PBIX-fájl letöltését.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

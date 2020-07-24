@@ -4,21 +4,23 @@ description: Ez a cikk áttekintést nyújt az Azure Application Gateway többhe
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.date: 03/11/2020
+ms.date: 07/20/2020
 ms.author: amsriva
 ms.topic: conceptual
-ms.openlocfilehash: 4d945a255dacd35c61c3c80574b7d46b56de4aab
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b3e6bc6d2dd5568dcc11a37c6ab44bd3b4089c66
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80257410"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87067908"
 ---
 # <a name="application-gateway-multiple-site-hosting"></a>Application Gateway – több hely üzemeltetése
 
-Több hely üzemeltetése lehetővé teszi több webalkalmazás konfigurálását az Application Gateway ugyanazon portjára. Ez a funkció lehetővé teszi, hogy hatékonyabb topológiát konfiguráljon az üzemelő példányokhoz, ha akár 100 webhelyet ad hozzá egy Application gatewayhez. Mindegyik webhelyet a saját háttérkészletéhez lehet irányítani. A következő példában az Application Gateway a `contoso.com` `fabrikam.com` contososerverpoolhoz és a fabrikamserverpoolhoz irányítja nevű, két háttér-kiszolgáló készletből származó forgalmat szolgáltat.
+Több hely üzemeltetése lehetővé teszi több webalkalmazás konfigurálását az Application Gateway ugyanazon portjára. Lehetővé teszi, hogy hatékonyabb topológiát konfiguráljon az üzemelő példányokhoz, ha akár 100 + webhelyet ad hozzá egy Application gatewayhez. Mindegyik webhelyet a saját háttérkészletéhez lehet irányítani. A három tartomány, a contoso.com, a fabrikam.com és a adatum.com például az Application Gateway IP-címére mutatnak. Hozzon létre három többhelyes figyelőt, és konfigurálja az egyes figyelőket a megfelelő port és protokoll beállításhoz. 
 
-![imageURLroute](./media/multiple-site-overview/multisite.png)
+A helyettesítő karakterek nevét többhelyes figyelőben és legfeljebb 5 állomásnévvel is meghatározhatja figyelőként. További információ: [helyettesítő karakterek nevei a figyelőben](#wildcard-host-names-in-listener-preview).
+
+:::image type="content" source="./media/multiple-site-overview/multisite.png" alt-text="Többhelyes Application Gateway":::
 
 > [!IMPORTANT]
 > A szabályok feldolgozása a v1 SKU-ban található portálon megjelenő sorrendben történik. A v2 SKU esetében a pontos egyezések magasabb prioritással rendelkeznek. Alapszintű figyelő konfigurálása előtt határozottan ajánlott többhelyes figyelőket konfigurálni.  Ez biztosítja, hogy a forgalom a megfelelő háttérbe legyen irányítva. Ha előbb egy alapszintű figyelő szerepel a listában, és az megfelel egy bejövő kérésnek, a figyelő feldolgozza azt.
@@ -26,6 +28,56 @@ Több hely üzemeltetése lehetővé teszi több webalkalmazás konfigurálásá
 A `http://contoso.com` iránti kérelmek a ContosoServerPoolba, míg a `http://fabrikam.com` felé irányuló kérelmek a FabrikamServerPoolba vannak továbbítva.
 
 Hasonlóképpen ugyanazon szülőtartomány több altartományát is üzemeltetheti ugyanazon az Application Gateway-példányon. Például `http://blog.contoso.com` `http://app.contoso.com` egyetlen Application Gateway-telepítésben is üzemeltetheti a szolgáltatást.
+
+## <a name="wildcard-host-names-in-listener-preview"></a>Helyettesítő karakterek nevei a figyelőben (előzetes verzió)
+
+Application Gateway lehetővé teszi a gazdagép-alapú útválasztást a többhelyes HTTP (S) figyelő használatával. Mostantól használhat helyettesítő karaktereket, például a csillag (*) és a kérdőjel (?) karaktert a gazdagép nevében, és legfeljebb 5 állomásnévvel többhelyes HTTP (S) figyelővel. Például: `*.contoso.com`.
+
+Ha helyettesítő karaktert használ az állomásnévben, több állomásnév is megegyező egyetlen figyelőben. Megadhatja például a következőt: `*.contoso.com` `ecom.contoso.com` , `b2b.contoso.com` `customer1.b2b.contoso.com` és így tovább. Az állomásnevek tömbjét használva több állomásnevet is beállíthat egy figyelőhöz, hogy átirányítsa a kéréseket egy háttérbeli készletbe. Egy figyelő például tartalmazhat, `contoso.com, fabrikam.com` amely fogadja a kérelmeket az állomásnevek esetében is.
+
+:::image type="content" source="./media/multiple-site-overview/wildcard-listener-diag.png" alt-text="Helyettesítő karakteres figyelő":::
+
+>[!NOTE]
+> Ez a funkció előzetes verzióban érhető el, és csak a Application Gateway Standard_v2 és WAF_v2 SKU-ban érhető el. Az előzetes verziókkal kapcsolatos további tudnivalókért tekintse meg [a használati feltételeket itt](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+A [Azure Portalban](create-multiple-sites-portal.md)megadhatja azokat külön szövegmezőben, ahogy az alábbi képernyőképen is látható.
+
+:::image type="content" source="./media/multiple-site-overview/wildcard-listener-example.png" alt-text="Helyettesítő karakteres figyelő – példa konfiguráció":::
+
+>[!NOTE]
+>Ha új többhelyes figyelőt hoz létre, vagy egynél több állomásnevet ad hozzá a meglévő többhelyes figyelőhöz a Azure Portal, a rendszer alapértelmezés szerint hozzáadja a `HostNames` figyelő konfigurációjának paraméteréhez, amely további képességeket ad a `HostName` konfigurációban lévő meglévő paraméterhez.
+
+[Azure PowerShell](tutorial-multiple-sites-powershell.md)a `-HostNames` helyett a parancsot kell használnia `-HostName` . Az állomásnevek esetében legfeljebb 5 állomásnév adható meg vesszővel tagolt értékként, és helyettesítő karaktereket is használhat. Például: `-HostNames "*.contoso.com,*.fabrikam.com"`
+
+Az [Azure CLI](tutorial-multiple-sites-cli.md)-ben a helyett a-t kell használnia `--host-names` `--host-name` . A gazdagép-nevek használatával legfeljebb 5 állomásnév adható meg vesszővel tagolt értékként, és helyettesítő karaktereket is használhat. Például: `--host-names "*.contoso.com,*.fabrikam.com"`
+
+### <a name="allowed-characters-in-the-host-names-field"></a>Engedélyezett karakterek a gazdagép neve mezőben:
+
+* `(A-Z,a-z,0-9)`– alfanumerikus karakterek
+* `-`-kötőjel vagy mínusz
+* `.`– időszak elválasztóként
+*   `*`– a megengedett tartomány több karakterével is megegyező lehet
+*   `?`– az engedélyezett tartományba tartozó egyetlen karakterrel is párosítható
+
+### <a name="conditions-for-using-wildcard-characters-and-multiple-host-names-in-a-listener"></a>Helyettesítő karakterek és több állomásnév használatának feltételei egy figyelőben:
+
+*   Egyetlen figyelőben legfeljebb 5 állomásnév lehet megemlítve
+*   A csillag `*` csak egyszer szerepelhet egy tartományi stílusú név vagy állomásnév összetevőben. Például: component1 *. component2*. component3. `(*.contoso-*.com)`érvényes.
+*   A gazdagép neve legfeljebb két csillaggal rendelkezhet `*` . Például érvényes, `*.contoso.*` és `*.contoso.*.*.com` érvénytelen.
+*   Az állomásnév legfeljebb 4 helyettesítő karakterből állhat. A például `????.contoso.com` `w??.contoso*.edu.*` érvényes, de `????.contoso.*` érvénytelen.
+*   A csillag `*` és a kérdőjel `?` együttes használata az állomásnév ( `*?` vagy) egy összetevőjében `?*` `**` érvénytelen. Például a `*?.contoso.com` és `**.contoso.com` a érvénytelen.
+
+### <a name="considerations-and-limitations-of-using-wildcard-or-multiple-host-names-in-a-listener"></a>A helyettesítő karakteres vagy több állomásnév használatának szempontjai és korlátai a figyelőben:
+
+*   Az [SSL-lezárás és a végpontok közötti SSL](ssl-overview.md) használatához a protokollt HTTPS-ként kell konfigurálni, és fel kell tölteni a figyelő konfigurációjában használni kívánt tanúsítványt. Ha ez egy többhelyes figyelő, akkor az állomásnév is megadható, általában ez az SSL-tanúsítvány CN-neve. Ha több állomásnevet ad meg a figyelőben, vagy helyettesítő karaktereket használ, a következőket kell figyelembe vennie:
+    *   Ha ez egy helyettesítő karakteres állomásnév, például *. contoso.com, fel kell töltenie egy helyettesítő karaktert, a következővel: CN like *. contoso.com
+    *   Ha ugyanabban a figyelőben több állomásnév is szerepel, akkor fel kell töltenie egy SAN-tanúsítványt (a tulajdonos alternatív neveit), és meg kell adnia az említett állomásnévnek megfelelő CNs-t.
+*   Nem használhat reguláris kifejezést az állomásnév megemlítésére. Csak helyettesítő karaktereket (például csillag (*) és kérdőjel (?)) lehet használni az állomásnév-minta létrehozásához.
+*   A háttér állapotának ellenőrzését a HTTP-beállításokban nem lehet több [Egyéni](application-gateway-probe-overview.md) mintavételt rendelni. Ehelyett a háttérrendszer egyik webhelyét is kipróbálhatja, vagy a "127.0.0.1" használatával mintavételt hajthat végre a háttér-kiszolgáló localhost-ában. Ha azonban helyettesítő karaktert vagy több állomásnevet használ egy figyelőben, a rendszer a megadott tartományi mintákhoz tartozó kérelmeket a szabály típusától függően a háttér-készletre irányítja át (alap-vagy elérésiút-alapú).
+*   A "hostname" tulajdonság egy karakterláncot vesz fel bemenetként, ahol csak egy nem helyettesítő tartománynevet, a "hostnames" karakterláncot pedig bemenetként fogadja, ahol legfeljebb 5 helyettesítő tartománynevet lehet megemlíteni. De a tulajdonságok nem használhatók egyszerre.
+*   Olyan célzott figyelővel nem hozható létre [átirányítási](redirect-overview.md) szabály, amely helyettesítő karaktereket vagy több állomásnevet használ.
+
+A többhelyes figyelő helyettesítő karakteres állomásneve konfigurálásával kapcsolatos részletes útmutató a [többhelyes kiszolgálók létrehozása a Azure Portal használatával](create-multiple-sites-portal.md) vagy a [Azure PowerShell használatával](tutorial-multiple-sites-powershell.md) vagy az [Azure CLI használatával](tutorial-multiple-sites-cli.md) című témakörben található.
 
 ## <a name="host-headers-and-server-name-indication-sni"></a>Állomásfejléc és kiszolgálónév jelzése (SNI)
 
@@ -41,92 +93,8 @@ Application Gateway több, különböző portokon figyelt alkalmazást támogat,
 
 Az Application Gateway a HTTP 1.1-állomásfejlécek segítségével üzemeltet egynél több webhelyet ugyanarról a nyilvános IP-címről és portról. Az Application Gateway-ben üzemeltetett helyek támogatják a TLS-kiszervezést is Kiszolgálónév jelzése (SNI) TLS-bővítmény használatával. Ebben az esetben az RFC 6066 szabványban meghatározottak szerint az ügyfélböngészőnek és a háttérwebfarmnak támogatnia kell a HTTP/1.1-et és a TLS-bővítményt.
 
-## <a name="listener-configuration-element"></a>Figyelő konfigurációs elem
-
-A meglévő HTTPListener-konfigurációs elemek támogatják az állomásnév és a kiszolgálónév-jelző elemek támogatását. A Application Gateway használja a forgalom a megfelelő háttér-készletbe való irányításához. 
-
-A következő kódrészlet egy sablonfájl HttpListeners elemének kódrészlete:
-
-```json
-"httpListeners": [
-    {
-        "name": "appGatewayHttpsListener1",
-        "properties": {
-            "FrontendIPConfiguration": {
-                "Id": "/subscriptions/<subid>/resourceGroups/<rgName>/providers/Microsoft.Network/applicationGateways/applicationGateway1/frontendIPConfigurations/DefaultFrontendPublicIP"
-            },
-            "FrontendPort": {
-                "Id": "/subscriptions/<subid>/resourceGroups/<rgName>/providers/Microsoft.Network/applicationGateways/applicationGateway1/frontendPorts/appGatewayFrontendPort443'"
-            },
-            "Protocol": "Https",
-            "SslCertificate": {
-                "Id": "/subscriptions/<subid>/resourceGroups/<rgName>/providers/Microsoft.Network/applicationGateways/applicationGateway1/sslCertificates/appGatewaySslCert1'"
-            },
-            "HostName": "contoso.com",
-            "RequireServerNameIndication": "true"
-        }
-    },
-    {
-        "name": "appGatewayHttpListener2",
-        "properties": {
-            "FrontendIPConfiguration": {
-                "Id": "/subscriptions/<subid>/resourceGroups/<rgName>/providers/Microsoft.Network/applicationGateways/applicationGateway1/frontendIPConfigurations/appGatewayFrontendIP'"
-            },
-            "FrontendPort": {
-                "Id": "/subscriptions/<subid>/resourceGroups/<rgName>/providers/Microsoft.Network/applicationGateways/applicationGateway1/frontendPorts/appGatewayFrontendPort80'"
-            },
-            "Protocol": "Http",
-            "HostName": "fabrikam.com",
-            "RequireServerNameIndication": "false"
-        }
-    }
-],
-```
-
-A teljes körű sablonalapú telepítés leírását a [Resource Manager template using multiple site hosting](https://github.com/Azure/azure-quickstart-templates/blob/master/201-application-gateway-multihosting) (Többhelyes üzemeltetést használó Resource Manager-sablon) weboldalon találja.
-
-## <a name="routing-rule"></a>Útválasztási szabály
-
-Nincs szükség módosításra az útválasztási szabályban. Az alapszintű útválasztási szabályt kell továbbra is választani, hogy a megfelelő webhelyfigyelőt kapcsolja a megfelelő háttércímkészlethez.
-
-```json
-"requestRoutingRules": [
-{
-    "name": "<ruleName1>",
-    "properties": {
-        "RuleType": "Basic",
-        "httpListener": {
-            "id": "/subscriptions/<subid>/resourceGroups/<rgName>/providers/Microsoft.Network/applicationGateways/applicationGateway1/httpListeners/appGatewayHttpsListener1')]"
-        },
-        "backendAddressPool": {
-            "id": "/subscriptions/<subid>/resourceGroups/<rgName>/providers/Microsoft.Network/applicationGateways/applicationGateway1/backendAddressPools/ContosoServerPool')]"
-        },
-        "backendHttpSettings": {
-            "id": "/subscriptions/<subid>/resourceGroups/<rgName>/providers/Microsoft.Network/applicationGateways/applicationGateway1/backendHttpSettingsCollection/appGatewayBackendHttpSettings')]"
-        }
-    }
-
-},
-{
-    "name": "<ruleName2>",
-    "properties": {
-        "RuleType": "Basic",
-        "httpListener": {
-            "id": "/subscriptions/<subid>/resourceGroups/<rgName>/providers/Microsoft.Network/applicationGateways/applicationGateway1/httpListeners/appGatewayHttpListener2')]"
-        },
-        "backendAddressPool": {
-            "id": "/subscriptions/<subid>/resourceGroups/<rgName>/providers/Microsoft.Network/applicationGateways/applicationGateway1/backendAddressPools/FabrikamServerPool')]"
-        },
-        "backendHttpSettings": {
-            "id": "/subscriptions/<subid>/resourceGroups/<rgName>/providers/Microsoft.Network/applicationGateways/applicationGateway1/backendHttpSettingsCollection/appGatewayBackendHttpSettings')]"
-        }
-    }
-
-}
-]
-```
-
 ## <a name="next-steps"></a>További lépések
 
-Miután megismerte a többhelyes üzemeltetést, látogasson el a [Create an application gateway using multiple site hosting](tutorial-multiple-sites-powershell.md) (Alkalmazásátjáró létrehozása többhelyes üzemeltetéssel) weboldalra, ahonnan megtudhatja, hogyan hozhat létre egynél több webalkalmazást támogató alkalmazásátjárót.
+Több hely üzemeltetésének megismerése után nyissa meg a [többhelyes létrehozás a Azure Portal használatával](create-multiple-sites-portal.md) vagy a [Azure PowerShell használatával](tutorial-multiple-sites-powershell.md) vagy az [Azure CLI használatával](tutorial-multiple-sites-cli.md) című témakört a több webhely üzemeltetéséhez szükséges Application Gateway létrehozásával kapcsolatos részletes útmutatóhoz.
 
+A teljes körű sablonalapú telepítés leírását a [Resource Manager template using multiple site hosting](https://github.com/Azure/azure-quickstart-templates/blob/master/201-application-gateway-multihosting) (Többhelyes üzemeltetést használó Resource Manager-sablon) weboldalon találja.
