@@ -2,17 +2,17 @@
 title: 'Azure AD-hitelesítés konfigurálása a felhasználói VPN-kapcsolathoz: virtuális WAN'
 description: Megtudhatja, hogyan konfigurálhat Azure Active Directory hitelesítést a felhasználói VPN-hez.
 services: virtual-wan
-author: anzaman
+author: kumudD
 ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 03/17/2020
 ms.author: alzam
-ms.openlocfilehash: dd80724d62c71fdec81965fb4aa6a07a6233a288
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2028cae4908214db28de2545f02f5f2997eeb8af
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84753964"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077483"
 ---
 # <a name="configure-azure-active-directory-authentication-for-user-vpn"></a>Azure Active Directory hitelesítés konfigurálása a felhasználói VPN-hez
 
@@ -78,7 +78,7 @@ Egy böngészőből lépjen az [Azure Portalra](https://portal.azure.com), majd 
    **Hub magánhálózati címtartomány** – a központ CIDR jelölése.
 
    ![új hely](media/virtual-wan-point-to-site-azure-ad/hub2.jpg)  
-3. Kattintson az **Áttekintés + létrehozás** elemre.
+3. Kattintson a **Felülvizsgálat + létrehozás** elemre.
 4. Az **átadott érvényesítés** lapon kattintson a **Létrehozás**gombra.
 
 ## <a name="create-a-new-p2s-configuration"></a><a name="site"></a>Új P2S-konfiguráció létrehozása
@@ -158,11 +158,11 @@ Ezzel a [hivatkozással](https://www.microsoft.com/p/azure-vpn-client-preview/9n
 
 1. Válassza a törölni kívánt ügyféloldali profil melletti három pontot (...). Ezután válassza az **Eltávolítás**lehetőséget.
 
-    ![delete](./media/virtual-wan-point-to-site-azure-ad/delete/delete1.jpg)
+    ![törlés](./media/virtual-wan-point-to-site-azure-ad/delete/delete1.jpg)
 
 2. Válassza az **Eltávolítás** elemet a törléshez.
 
-    ![delete](./media/virtual-wan-point-to-site-azure-ad/delete/delete2.jpg)
+    ![törlés](./media/virtual-wan-point-to-site-azure-ad/delete/delete2.jpg)
 
 #### <a name="diagnose-connection-issues"></a><a name="diagnose"></a>Kapcsolatok problémáinak diagnosztizálása
 

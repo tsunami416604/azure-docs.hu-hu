@@ -1,39 +1,41 @@
 ---
-title: 'Rövid útmutató: Azure WAF v2 létrehozása Application Gateway – Resource Manager-sablonban'
+title: 'Rövid útmutató: Azure WAF v2 létrehozása Application Gateway-Azure Resource Manager sablonhoz'
 titleSuffix: Azure Application Gateway
-description: Ismerje meg, hogyan hozhat létre egy Resource Manager-sablont az Azure Application Gateway webalkalmazási tűzfal v2 létrehozásához.
+description: Megtudhatja, hogyan hozhat létre egy webalkalmazási tűzfal v2-t az Azure Application Gateway Azure Resource Manager sablonnal (ARM-sablon).
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: quickstart
 ms.date: 04/02/2020
 ms.author: victorh
-ms.openlocfilehash: 6759071e73adfd3af4ac780da6db3a0e6e967ea1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 081bab0cd930d90ca0d359461e4a41b15ba4911b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81617980"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075503"
 ---
-# <a name="quickstart-create-an-azure-waf-v2-on-application-gateway---resource-manager-template"></a>Rövid útmutató: Azure WAF v2 létrehozása Application Gateway – Resource Manager-sablonban
+# <a name="quickstart-create-an-azure-waf-v2-on-application-gateway-using-an-arm-template"></a>Rövid útmutató: Azure WAF v2 létrehozása Application Gateway ARM-sablon használatával
 
-Ebben a rövid útmutatóban egy Resource Manager-sablonnal hoz létre egy Azure webalkalmazási tűzfal v2-et Application Gatewayon.
+Ebben a rövid útmutatóban egy Azure Resource Manager sablon (ARM-sablon) használatával hoz létre egy Azure webalkalmazási tűzfal v2-et a Application Gateway.
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
+Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonokat, kattintson az **Üzembe helyezés az Azure-ban** gombra. A sablon az Azure Portalon fog megnyílni.
+
+[![Üzembe helyezés az Azure-ban](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fag-docs-wafv2%2Fazuredeploy.json)
+
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="create-a-web-application-firewall"></a>Webalkalmazási tűzfal létrehozása
+## <a name="review-the-template"></a>A sablon áttekintése
 
 Ez a sablon létrehoz egy egyszerű webalkalmazási tűzfal v2-et az Azure Application Gateway-on. Ez magában foglalja a nyilvános IP-cím előtérbeli IP-címét, a HTTP-beállításokat, a 80-es porton alapszintű figyelővel rendelkező szabályt, valamint egy háttér-készletet. A rendszer létrehoz egy egyéni szabállyal rendelkező WAF-házirendet, amely letiltja a háttér-készlet felé irányuló forgalmat egy IP-cím egyeztetési típusa alapján.
 
-### <a name="review-the-template"></a>A sablon áttekintése
-
-Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablonjaiból](https://github.com/Azure/azure-quickstart-templates/blob/master/ag-docs-wafv2/azuredeploy.json) származik.
+Az ebben a gyorsútmutatóban használt sablon az [Azure-gyorssablonok](https://azure.microsoft.com/resources/templates/ag-docs-wafv2/) közül származik.
 
 :::code language="json" source="~/quickstart-templates/ag-docs-wafv2/azuredeploy.json" range="001-404" highlight="314-358":::
 
@@ -48,9 +50,9 @@ Több Azure-erőforrás van definiálva a sablonban:
 - [**Microsoft. Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces) : kettő a virtuális gépekhez
 - [**Microsoft. számítás/virtualMachine/bővítmények**](/azure/templates/microsoft.compute/virtualmachines/extensions) : az IIS és a weblapok konfigurálásához
 
-### <a name="deploy-the-template"></a>A sablon üzembe helyezése
+## <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
-Resource Manager-sablon üzembe helyezése az Azure-ban:
+Az ARM-sablon üzembe helyezése az Azure-ban:
 
 1. Válassza az **üzembe helyezés az Azure** -ban lehetőséget az Azure-ba való bejelentkezéshez és a sablon megnyitásához. A sablon létrehoz egy Application Gateway-t, a hálózati infrastruktúrát és két virtuális gépet az IIS-t futtató háttér-készletben.
 
@@ -61,11 +63,11 @@ Resource Manager-sablon üzembe helyezése az Azure-ban:
 
 ## <a name="validate-the-deployment"></a>Az üzembe helyezés ellenőrzése
 
-Annak ellenére, hogy az IIS nem szükséges az Application Gateway létrehozásához, a rendszer telepíti a háttér-kiszolgálókra, hogy ellenőrizze, hogy az Azure sikeresen létrehozott-e WAF v2-et az Application Gateway-ben. 
+Annak ellenére, hogy az IIS nem szükséges az Application Gateway létrehozásához, a rendszer telepíti a háttér-kiszolgálókra, hogy ellenőrizze, hogy az Azure sikeresen létrehozott-e WAF v2-et az Application Gateway-ben.
 
 Az IIS használata az Application Gateway teszteléséhez:
 
-1. Keresse meg az Application Gateway nyilvános IP-címét az **Áttekintés** oldalon. ![Az Application Gateway nyilvános IP-](../../application-gateway/media/application-gateway-create-gateway-portal/application-gateway-record-ag-address.png) címének rögzítése vagy a **minden erőforrás**lehetőség kiválasztásával megadhatja a *myAGPublicIPAddress* kifejezést a keresőmezőbe, majd kiválaszthatja azt a keresési eredmények között. Az Azure megjeleníti a nyilvános IP-címet az **Áttekintés** oldalon.
+1. Keresse meg az Application Gateway nyilvános IP-címét az **Áttekintés** oldalon. ![ Az Application Gateway nyilvános IP-címének rögzítése ](../../application-gateway/media/application-gateway-create-gateway-portal/application-gateway-record-ag-address.png) vagy a **minden erőforrás**lehetőség kiválasztásával megadhatja a *myAGPublicIPAddress* kifejezést a keresőmezőbe, majd kiválaszthatja azt a keresési eredmények között. Az Azure megjeleníti a nyilvános IP-címet az **Áttekintés** oldalon.
 2. Másolja a nyilvános IP-címet, majd illessze be a böngésző címsorába az IP-cím megkereséséhez.
 3. Keresse meg a választ. Egy **403 Tiltott** válasz ellenőrzi, hogy a WAF létrehozása sikeres volt-e, és blokkolja-e a háttér-készlet kapcsolatait.
 4. Módosítsa az egyéni szabályt úgy, hogy **engedélyezze a forgalmat**.
@@ -83,11 +85,11 @@ Az IIS használata az Application Gateway teszteléséhez:
 
    Frissítse a böngészőt többször, és a myVM1 és a myVM2 kapcsolatait is látnia kell.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs szüksége az Application Gateway használatával létrehozott erőforrásokra, törölje az erőforráscsoportot. Ezzel eltávolítja az Application Gatewayt és az összes kapcsolódó erőforrást.
 
-Az erőforráscsoport törléséhez hívja meg a `Remove-AzResourceGroup` következő parancsmagot:
+Az erőforráscsoport törléséhez hívja meg a következő `Remove-AzResourceGroup` parancsmagot:
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name "<your resource group name>"

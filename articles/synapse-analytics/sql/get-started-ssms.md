@@ -1,5 +1,5 @@
 ---
-title: 'SSMS: kapcsolat és lekérdezés szinapszis SQL'
+title: Kapcsolódás a szinapszis SQLhoz a SQL Server Management Studio (SSMS) használatával
 description: SQL Server Management Studio (SSMS) használatával kapcsolódhat a szinapszis SQL-hez az Azure szinapszis Analytics szolgáltatásban, és lekérdezheti azokat.
 services: synapse-analytics
 author: azaricstefan
@@ -9,19 +9,19 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 72006879c7181a8cefe56248215099eeb784d816
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: dc467eebbd7346777765af7143d13c76627ab648
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83658228"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077721"
 ---
 # <a name="connect-to-synapse-sql-with-sql-server-management-studio-ssms"></a>Kapcsolódás a szinapszis SQLhoz a SQL Server Management Studio (SSMS) használatával
 > [!div class="op_single_selector"]
 > * [Azure Data Studio](get-started-azure-data-studio.md)
 > * [Power BI](get-started-power-bi-professional.md)
 > * [Visual Studio](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
-> * [sqlcmd](../sql/get-started-connect-sqlcmd.md)
+> * [Sqlcmd](../sql/get-started-connect-sqlcmd.md)
 > * [SSMS](get-started-ssms.md)
 > 
 > 
@@ -89,7 +89,7 @@ Ha az SQL on-demand használatával szeretne csatlakozni a szinapszis SQL-hez, k
 Most, hogy létrejött az adatbázis-kapcsolatok, lekérdezheti az adatforrást.
 
 1. Kattintson a jobb gombbal az adatbázisára az SQL Server Object Explorer alatt.
-2. Válassza a **New Query** (Új lekérdezés) lehetőséget. Megnyílik egy új lekérdezési ablak.
+2. Válassza az **Új lekérdezés** lehetőséget. Megnyílik egy új lekérdezési ablak.
    
     ![Új lekérdezés](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/new-query.png)
 3. Másolja ezt a T-SQL-lekérdezést a lekérdezési ablakba:
@@ -109,7 +109,7 @@ Most, hogy létrejött az adatbázis-kapcsolatok, lekérdezheti az adatforrást.
 Most, hogy létrehozta az adatbázis-kapcsolatokat, lekérdezheti az adatforrást.
 
 1. Kattintson a jobb gombbal az adatbázisára az SQL Server Object Explorer alatt.
-2. Válassza a **New Query** (Új lekérdezés) lehetőséget. Megnyílik egy új lekérdezési ablak.
+2. Válassza az **Új lekérdezés** lehetőséget. Megnyílik egy új lekérdezési ablak.
    
     ![Új lekérdezés](./media/get-started-ssms/new-query.png)
 3. Másolja a következő T-SQL-lekérdezést a lekérdezési ablakba:
@@ -124,7 +124,7 @@ Most, hogy létrehozta az adatbázis-kapcsolatokat, lekérdezheti az adatforrás
    
     ![Lekérdezés eredményei](./media/get-started-ssms/results.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Most, hogy tud-e kapcsolatot létesíteni és lekérdezni, próbálja meg [az Power bi segítségével megjeleníteni az adatmegjelenítést](get-started-power-bi-professional.md).
 
 A környezet Azure Active Directory hitelesítéshez való konfigurálásával kapcsolatban lásd: [hitelesítés a SZINAPSZIS SQL](../sql-data-warehouse/sql-data-warehouse-authentication.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)-ben.

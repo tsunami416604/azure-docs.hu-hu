@@ -3,12 +3,12 @@ title: GPU-t használó Container-példány üzembe helyezése
 description: Ismerje meg, hogyan helyezhet üzembe az Azure Container instances szolgáltatásban nagy számítási igényű tároló-alkalmazásokat GPU-erőforrásokkal.
 ms.topic: article
 ms.date: 07/02/2020
-ms.openlocfilehash: a25efc90573eb338b81f4a6532a632a140c7ab7d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 3ddeb7da2667b774724fe05227cefeec5227101a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259595"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076862"
 ---
 # <a name="deploy-container-instances-that-use-gpu-resources"></a>GPU-erőforrásokat használó tároló-példányok üzembe helyezése
 
@@ -63,7 +63,7 @@ A GPU-erőforrások üzembe helyezése során állítsa be a számítási felada
 
 * A **CUDA-illesztőprogramok** – a GPU-erőforrásokkal rendelkező tároló-példányok az NVIDIA CUDA-illesztőprogramokkal és a tároló-futtatókörnyezetekkel vannak kiépítve, így a CUDA számítási feladatokhoz kifejlesztett tároló-lemezképeket is használhat.
 
-  Ebben a szakaszban a CUDA 9,0-et támogatjuk. A Docker-fájlhoz például a következő alapképeket használhatja:
+  Ebben a szakaszban csak a CUDA 9,0-et támogatjuk. Használhatja például a következő alapképeket a Docker-fájlhoz:
   * [NVIDIA/CUDA: 9.0-Base-Ubuntu 16.04](https://hub.docker.com/r/nvidia/cuda/)
   * [tensorflow/tensorflow: 1.12.0-GPU-py3](https://hub.docker.com/r/tensorflow/tensorflow)
     
@@ -207,7 +207,7 @@ Accuracy at step 990: 0.969
 Adding run metadata for 999
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Mivel a GPU-erőforrások használata költséges lehet, gondoskodjon arról, hogy a tárolók ne fussanak váratlanul hosszú ideig. Figyelje a tárolókat a Azure Portalban, vagy ellenőrizze egy tároló csoport állapotát az az [Container show][az-container-show] paranccsal. Például:
 
@@ -222,7 +222,7 @@ az container delete --resource-group myResourceGroup --name gpucontainergroup -y
 az container delete --resource-group myResourceGroup --name gpucontainergrouprm -y
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információ a Container Group [YAML-fájl](container-instances-multi-container-yaml.md) vagy [Resource Manager-sablon](container-instances-multi-container-group.md)használatával történő üzembe helyezéséről.
 * További információ a GPU-ra optimalizált virtuálisgép- [méretekről](../virtual-machines/sizes-gpu.md) az Azure-ban.

@@ -6,81 +6,75 @@ ms.author: andrela
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: quickstart
-ms.date: 01/09/2019
+ms.date: 07/15/2020
 ms.custom: mvc
-ms.openlocfilehash: acf5f3cdf761e1773d6e9384a4ceb99a645ed7cc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 638fa5af3af1e81020e79c7c70f0c91f06676daf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74773504"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076686"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-server-using-azure-cli"></a>Rövid útmutató: Azure Database for MySQL-kiszolgáló létrehozása az Azure CLI-vel
 
 > [!TIP]
 > Érdemes lehet az egyszerűbb az [MySQL up](/cli/azure/ext/db-up/mysql#ext-db-up-az-mysql-up) Azure CLI-parancs használata (jelenleg előzetes verzióban érhető el). Próbálja [ki a rövid](./quickstart-create-server-up-azure-cli.md)útmutatót.
 
-Ez a rövid útmutató bemutatja, hogyan hozhat létre öt perc alatt egy Azure-adatbázist MySQL-kiszolgálóhoz az Azure CLI használatával az Azure-erőforráscsoportban. Az Azure CLI az Azure-erőforrások parancssorból vagy szkriptekkel történő létrehozására és kezelésére használható.
-
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
+Ez a rövid útmutató bemutatja, hogyan használható az [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) -parancsok a [Azure Cloud Shellban](https://shell.azure.com) egy Azure Database for MySQL-kiszolgáló öt perc alatt történő létrehozásához. Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 
-Ha a parancssori felület helyi telepítése és használata mellett dönt, a témakörben leírt lépésekhez az Azure CLI 2.0-s vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli). 
+> [!NOTE]
+> Ha a parancssori felület helyi telepítése és használata mellett dönt, a témakörben leírt lépésekhez az Azure CLI 2.0-s vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli). 
 
-Ha több előfizetéssel rendelkezik, válassza a megfelelő előfizetést, amelyen az erőforrás megtalálható vagy terhelve van. Válasszon ki egy megadott előfizetés-azonosítót a fiókja alatt az [az account set](/cli/azure/account#az-account-set) parancs segítségével.
+## <a name="prerequisites"></a>Előfeltételek
+Ehhez a cikkhez az Azure CLI 2,0-es vagy újabb verzióját kell futtatnia helyileg. A telepített verziók megtekintéséhez futtassa az `az --version` parancsot. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
+
+Az az [login](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-login) parancs használatával kell bejelentkeznie a fiókjába. Jegyezze fel az **ID** tulajdonságot, amely az Azure-fiók **előfizetés-azonosítójára** utal. 
+
 ```azurecli-interactive
-az account set --subscription 00000000-0000-0000-0000-000000000000
+az login
 ```
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
-Hozzon létre egy [Azure-erőforráscsoportot](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) az [az group create](/cli/azure/group#az-group-create) paranccsal. Az erőforráscsoport olyan logikai tároló, amelyben a rendszer üzembe helyezi és csoportként kezeli az Azure-erőforrásokat.
+Válassza ki az adott előfizetést a fiókja alatt az [az Account set](/cli/azure/account) parancs használatával. Jegyezze fel az **azonosító** értéket az az **login** kimenetből, amelyet a parancs **előfizetés** argumentumának értékeként kíván használni. Ha több előfizetéssel rendelkezik válassza ki a megfelelő előfizetést, amelyre az erőforrást terhelni szeretné. Az összes előfizetés beszerzéséhez használja [az az Account List](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-list)lehetőséget.
 
-A következő példában létrehozunk egy `westus` nevű erőforráscsoportot a `myresourcegroup` helyen.
+```azurecli
+az account set --subscription <subscription id>
+```
+
+## <a name="create-an-azure-database-for-mysql-server"></a>Azure-adatbázis létrehozása MySQL-kiszolgálóhoz
+Hozzon létre egy [Azure-erőforráscsoportot](../azure-resource-manager/management/overview.md) az az [Group Create](/cli/azure/group) paranccsal, majd hozzon létre egy MySQL-kiszolgálót az erőforráscsoport belsejében. Egyedi nevet adjon meg. A következő példában létrehozunk egy `westus` nevű erőforráscsoportot a `myresourcegroup` helyen.
 
 ```azurecli-interactive
 az group create --name myresourcegroup --location westus
 ```
 
-## <a name="create-an-azure-database-for-mysql-server"></a>Azure-adatbázis létrehozása MySQL-kiszolgálóhoz
-Hozzon létre egy Azure Database for MySQL-kiszolgálót az **[az mysql server create](/cli/azure/mysql/server#az-mysql-server-create)** paranccsal. Egy kiszolgáló több adatbázist is tud kezelni. Általában külön adatbázissal rendelkezik minden projekt vagy felhasználó.
+Hozzon létre egy Azure Database for MySQL-kiszolgálót az [az mysql server create](/cli/azure/mysql/server#az-mysql-server-create) paranccsal. Egy kiszolgáló több adatbázist tartalmazhat.
+
+```azurecli
+az mysql server create --resource-group myresourcegroup --name mydemoserver --location westus --admin-user myadmin --admin-password <server_admin_password> --sku-name GP_Gen5_2 
+```
+
+A fenti argumentumok részletei: 
 
 **Beállítás** | **Mintaérték** | **Leírás**
 ---|---|---
-név | mydemoserver | Válasszon egy egyedi nevet, amely azonosítja a MySQL-kiszolgálóhoz készült Azure-adatbázist. A kiszolgálónév csak kisbetűket, számokat és a kötőjel (-) karaktert tartalmazhatja. 3–63 karakter hosszúságú lehet.
+name | mydemoserver | Adjon meg egy egyedi nevet a Azure Database for MySQL-kiszolgálónak. A kiszolgálónév csak kisbetűket, számokat és a kötőjel (-) karaktert tartalmazhatja. 3–63 karakter hosszúságú lehet.
 resource-group | myResourceGroup | Adja meg az Azure-erőforráscsoport nevét.
-sku-name | GP_Gen5_2 | A termékváltozat neve. A {tarifacsomag}\_{számítási generáció}\_{virtuális magok} mintát követi rövidített módon. Az sku-name paraméterről az alábbi táblázatban talál további információt.
-backup-retention | 7 | Az az időtartam, ameddig egy biztonsági mentést meg kell őrizni. A mértékegysége a nap. A tartomány 7–35. 
-geo-redundant-backup | Letiltva | Azt adja meg, hogy a georedundáns biztonsági mentést engedélyezni kell-e ehhez a kiszolgálóhoz. Megengedett értékek: Engedélyezve, Letiltva.
 location | westus | A kiszolgáló Azure-helye.
-ssl-enforcement | Engedélyezve | Azt adja meg, hogy engedélyezni kell-e az ssl-t ehhez a kiszolgálóhoz. Megengedett értékek: Engedélyezve, Letiltva.
-storage-size | 51 200 | A kiszolgáló tárkapacitása (megabájtban megadva). Az érvényes storage-size paraméter legkisebb értéke 5120 MB, és 1024 MB-os egységekben növekszik. A tárterület korlátairól a [tarifacsomagokról szóló](./concepts-pricing-tiers.md) dokumentumban találhat további információkat. 
-version | 5.7 | A MySQL legújabb főverziója.
 admin-user | myadmin | A rendszergazda bejelentkezéshez használt felhasználóneve. Nem lehet **azure_superuser**, **admin**, **administrator**, **root**, **guest** vagy **public**.
 admin-password | *secure password* | A rendszergazda felhasználó jelszava. A jelszó 8–128 karakterből állhat. A jelszónak legalább háromféle karaktert tartalmaznia kell a következő kategóriák közül: angol nagybetűs karakterek, angol kisbetűs karakterek, számjegyek és nem alfanumerikus karakterek.
+sku-name|GP_Gen5_2|Adja meg az árképzési csomag és a számítási konfiguráció nevét. A {tarifacsomag}_{számítási generáció}_{virtuális magok} mintát követi rövidített módon. További információkért tekintse meg a [díjszabási szintet](./concepts-pricing-tiers.md) .
 
+>[!IMPORTANT] 
+>- A kiszolgálón a MySQL alapértelmezett verziója 5,7. Jelenleg a 5,6-es és a 8,0-es verzió is elérhető.
+>- Az **az MySQL Server Create** parancs összes argumentumának megtekintéséhez tekintse meg ezt a [hivatkozási dokumentumot](/cli/azure/mysql/server#az-mysql-server-create).
+>- Az SSL alapértelmezés szerint engedélyezve van a kiszolgálón. Az SSL további infroamtion lásd: [SSL-kapcsolat konfigurálása](howto-configure-ssl.md)
 
-Az sku-name paraméter értéke a {tarifacsomag}\_{számítási generáció}\_{virtuális magok} mintát követi, a következő példákban látható módon:
-+ `--sku-name B_Gen5_1`az alapszintű, a Gen 5 és az 1 virtuális mag képezi le. Ez a lehetőség az elérhető legkisebb SKU.
-+ `--sku-name GP_Gen5_32` jelentése: Általános célú, 5. generációs és 32 virtuális mag.
-+ `--sku-name MO_Gen5_2` jelentése: Memóriaoptimalizált, 5. generációs és 2 virtuális mag.
+## <a name="configure-a-server-level-firewall-rule"></a>Kiszolgálószintű tűzfalszabály konfigurálása 
+Alapértelmezés szerint a létrehozott új kiszolgáló tűzfal-szabályokkal van védve, és nem érhető el nyilvánosan. Az az [MySQL Server Firewall-Rule Create](/cli/azure/mysql/server/firewall-rule) paranccsal konfigurálhatja a tűzfal szabályát a kiszolgálón. Ez lehetővé teszi, hogy helyileg kapcsolódjon a kiszolgálóhoz.
 
-A [Tarifacsomagok](./concepts-pricing-tiers.md) dokumentumban megtekintheti az érvényes értékeket régiónként és csomagonként.
-
-A következő példában az USA nyugati régiójában létrehozunk egy `mydemoserver` nevű MySQL 5.7-kiszolgálót a `myresourcegroup` erőforráscsoportban `myadmin` kiszolgálói rendszergazdai bejelentkezéssel. Ez egy **Gen 4** **általános célú** -kiszolgáló **2 virtuális mag**. A `<server_admin_password>` helyére írja be saját értékét.
-
-```azurecli-interactive
-az mysql server create --resource-group myresourcegroup --name mydemoserver  --location westus --admin-user myadmin --admin-password <server_admin_password> --sku-name GP_Gen5_2 --version 5.7
-```
-
-> [!NOTE]
-> Érdemes lehet az alapszintű díjszabást használni, ha a számítási feladathoz elegendő a könnyű számítás és az I/O. Vegye figyelembe, hogy az alapszintű díjszabásban létrehozott kiszolgálók később nem méretezhetők át általános célú vagy a memóriára optimalizált értékre. További információért tekintse meg a [díjszabási oldalt](https://azure.microsoft.com/pricing/details/mysql/) .
-> 
-
-## <a name="configure-firewall-rule"></a>Tűzfalszabály konfigurálása
-Hozzon létre egy Azure Database for MySQL-kiszolgáló szintű tűzfalszabályt az **[az mysql server firewall-rule create](/cli/azure/mysql/server/firewall-rule#az-mysql-server-firewall-rule-create)** paranccsal. Egy kiszolgálószintű tűzfalszabály lehetővé teszi olyan külső alkalmazások használatát, mint a **mysql.exe** parancssori eszköz vagy a MySQL Workbench, amelyekkel kapcsolódhat a kiszolgálóhoz az Azure MySQL szolgáltatás tűzfalán keresztül. 
-
-A következő példában egy olyan `AllowMyIP` nevű tűzfalszabályt hozunk létre, amely a 192.168.0.1 IP-címről engedélyezi a kapcsolódást. Helyettesítse be a csatlakozási helyének megfelelő IP-címet vagy IP-címtartományt. 
+A következő példában egy olyan `AllowMyIP` nevű tűzfalszabályt hozunk létre, amely a 192.168.0.1 IP-címről engedélyezi a kapcsolódást. Cserélje le azt az IP-címet, amelyről csatlakozni fog. Szükség esetén az IP-címek tartományát is használhatja. Nem tudja, hogyan keresse meg az IP-címet, majd válassza az [https://whatismyipaddress.com/](https://whatismyipaddress.com/) IP-cím beszerzése lehetőséget.
 
 ```azurecli-interactive
 az mysql server firewall-rule create --resource-group myresourcegroup --server mydemoserver --name AllowMyIP --start-ip-address 192.168.0.1 --end-ip-address 192.168.0.1
@@ -88,17 +82,6 @@ az mysql server firewall-rule create --resource-group myresourcegroup --server m
 
 > [!NOTE]
 > A MySQL-hez készült Azure-adatbázis kapcsolatai a 3306-os porton keresztül kommunikálnak. Ha vállalati hálózaton belülről próbál csatlakozni, elképzelhető, hogy nem engedélyezett a kimenő forgalom a 3306-as porton keresztül. Ebben az esetben addig nem tud csatlakozni a kiszolgálóhoz, amíg az informatikai részleg meg nem nyitja a 3306-os portot.
-> 
-
-
-## <a name="configure-ssl-settings"></a>Az SSL-beállítások konfigurálása
-Alapértelmezés szerint a kiszolgáló és az ügyfélalkalmazások közti SSL-kapcsolatok kényszerítve vannak. Ez az alapértelmezett beállítás biztosítja a „mozgó” adatok biztonságát az adatfolyam interneten keresztüli titkosításával. A rövid útmutató egyszerűsége érdekében tiltsa le az SSL-kapcsolatokat a kiszolgálóján. Ennek az SSL-nek a letiltása éles kiszolgálók esetében nem javasolt. További információkért lásd [Az SSL-kapcsolatok a MySQL-hez készült Azure Database-hez való kapcsolódásra az alkalmazásban való konfigurálását](./howto-configure-ssl.md) bemutató cikket.
-
-A következő példában letiltjuk az SSL kényszerítését a MySQL-kiszolgálón.
- 
- ```azurecli-interactive
- az mysql server update --resource-group myresourcegroup --name mydemoserver --ssl-enforcement Disabled
- ```
 
 ## <a name="get-the-connection-information"></a>Kapcsolatadatok lekérése
 
@@ -138,92 +121,21 @@ Az eredmény JSON formátumban van. Jegyezze fel a következőket: **fullyQualif
 }
 ```
 
-## <a name="connect-to-the-server-using-the-mysqlexe-command-line-tool"></a>Csatlakozás a kiszolgálóhoz a mysql.exe parancssori eszköz használatával
-Csatlakozzon kiszolgálójához a **mysql.exe** parancssori eszközzel. A MySQL-t [innen](https://dev.mysql.com/downloads/) töltheti le és telepítheti számítógépén. 
-
-Írja be a következő parancsokat: 
-
-1. Csatlakozás a kiszolgálóhoz a **mysql** parancssori eszköz használatával:
-   ```bash
-   mysql -h mydemoserver.mysql.database.azure.com -u myadmin@mydemoserver -p
-   ```
-
-2. Kiszolgáló állapotának megtekintése:
-   ```sql
-   mysql> status
-   ```
-   Ha minden megfelelően működik, a parancssori eszköz a következő szöveget jeleníti meg:
-
-```dos
-C:\Users\>mysql -h mydemoserver.mysql.database.azure.com -u myadmin@mydemoserver -p
-Enter password: ***********
-Welcome to the MySQL monitor.  Commands end with ; or \g.
-Your MySQL connection id is 65512
-Server version: 5.6.26.0 MySQL Community Server (GPL)
-
-Copyright (c) 2000, 2016, Oracle and/or its affiliates. All rights reserved.
-
-Oracle is a registered trademark of Oracle Corporation and/or its
-affiliates. Other names may be trademarks of their respective
-owners.
-
-Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
-
-mysql> status
---------------
-mysql  Ver 14.14 Distrib 5.6.35, for Win64 (x86_64)
-
-Connection id:          65512
-Current database:
-Current user:           myadmin@116.230.243.143
-SSL:                    Not in use
-Using delimiter:        ;
-Server version:         5.6.26.0 MySQL Community Server (GPL)
-Protocol version:       10
-Connection:             mydemoserver.mysql.database.azure.com via TCP/IP
-Server characterset:    latin1
-Db     characterset:    latin1
-Client characterset:    gbk
-Conn.  characterset:    gbk
-TCP port:               3306
-Uptime:                 2 days 9 hours 47 min 20 sec
-
-Threads: 4  Questions: 34833  Slow queries: 2  Opens: 84  Flush tables: 4  Open tables: 1  Queries per second avg: 0.167
---------------
-
-mysql>
+## <a name="connect-to-azure-database-for-mysql-server-using-mysql-command-line-client"></a>Kapcsolódás Azure Database for MySQL kiszolgálóhoz a MySQL parancssori ügyfélprogram használatával
+Csatlakozhat a kiszolgálóhoz egy népszerű ügyfél-eszköz használatával, **[mysql.exe](https://dev.mysql.com/downloads/)** parancssori eszközt [Azure Cloud Shell](../cloud-shell/overview.md). Másik lehetőségként a MySQL parancssort is használhatja a helyi környezetben.
+```bash
+ mysql -h mydemoserver.mysql.database.azure.com -u myadmin@mydemoserver -p
 ```
 
-> [!TIP]
-> További parancsokról a [MySQL 5.7 referencia-kézikönyvének 4.5.1 fejezetében](https://dev.mysql.com/doc/refman/5.7/en/mysql.html) tájékozódhat.
-
-## <a name="connect-to-the-server-using-the-mysql-workbench-gui-tool"></a>Csatlakozás a kiszolgálóhoz a MySQL Workbench GUI eszköz használatával
-1. Indítsa el a MySQL Workbench alkalmazást az ügyfélszámítógépen. A MySQL Workbench-et [innen](https://dev.mysql.com/downloads/workbench/) töltheti le és telepítheti.
-
-2. Az **Új kapcsolat létrehozása** párbeszédpanelen adja meg a következő információkat a **Paraméterek** lapon:
-
-   ![új kapcsolat beállítása](./media/quickstart-create-mysql-server-database-using-azure-cli/setup-new-connection.png)
-
-| **Beállítás** | **Javasolt érték** | **Leírás** |
-|---|---|---|
-|   Kapcsolat neve | My Connection | Adjon meg egy címkét a kapcsolathoz (tetszőlegesen kiválasztható) |
-| Kapcsolati módszer | válassza a Standard (TCP/IP) lehetőséget | Csatlakozzon a MySQL-hez készült Azure Database-hez a TCP/IP protokollal> |
-| Gazdanév | mydemoserver.mysql.database.azure.com | A korábban feljegyzett kiszolgálónév. |
-| Port | 3306 | A rendszer a MySQL alapértelmezett portját használja. |
-| Felhasználónév | myadmin@mydemoserver | A korábban feljegyzett kiszolgáló-rendszergazdai bejelentkezés. |
-| Jelszó | **** | Használja a korábban beállított rendszergazdaifiók-jelszót. |
-
-Kattintson a **Kapcsolat tesztelése** lehetőségre, hogy tesztelje, minden paraméter helyesen lett-e konfigurálva.
-Ezután a kapcsolatra való kattintva sikeresen csatlakozhat a kiszolgálóhoz.
-
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 Ha ezekre az erőforrásokra már nincs szüksége más gyorsútmutatókhoz/oktatóanyagokhoz, a következő paranccsal törölheti őket: 
 
 ```azurecli-interactive
 az group delete --name myresourcegroup
 ```
 
-Ha csak az újonnan létrehozott kiszolgálót szeretné törölni, futtathatja az **[az MySQL Server delete](/cli/azure/mysql/server#az-mysql-server-delete)** parancsot.
+Ha csak az újonnan létrehozott kiszolgálót szeretné törölni, futtathatja az [az mysql server delete](/cli/azure/mysql/server#az-mysql-server-delete) parancsot.
+
 ```azurecli-interactive
 az mysql server delete --resource-group myresourcegroup --name mydemoserver
 ```
@@ -231,4 +143,6 @@ az mysql server delete --resource-group myresourcegroup --name mydemoserver
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [MySQL-adatbázis tervezése az Azure CLI-vel](./tutorial-design-database-using-cli.md)
+>[Php-alkalmazás létrehozása Windowson MySQL](../app-service/app-service-web-tutorial-php-mysql.md) 
+> -sel [Php-alkalmazás létrehozása Linuxon a MySQL](../app-service/containers/tutorial-php-mysql-app.md) 
+> -vel [Java-alapú Spring app létrehozása MySQL](https://docs.microsoft.com/azure/developer/java/spring-framework/spring-app-service-e2e?tabs=bash) -sel

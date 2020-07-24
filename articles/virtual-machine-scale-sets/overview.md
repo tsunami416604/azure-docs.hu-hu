@@ -9,13 +9,14 @@ ms.subservice: ''
 ms.date: 06/30/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: ec96cab0a147e661df48318aadb057f9f6785b1f
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 7539b951a4a138802150d9408221b6e4ad19e92b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86026525"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075544"
 ---
-# <a name="what-are-virtual-machine-scale-sets"></a>Mik a virtuálisgép-méretezési csoportok?
+# <a name="what-are-virtual-machine-scale-sets"></a>Mik azok a virtuálisgép-méretezési csoportok?
 Az Azure virtuálisgép-méretezési csoportok lehetővé teszik elosztott terhelésű virtuális gépek csoportjának létrehozását és kezelését. A virtuálisgép-példányok száma automatikusan növelhető vagy csökkenthető a pillanatnyi igényeknek megfelelően vagy egy meghatározott ütemezés szerint. A méretezési csoportok biztosítják az alkalmazások magas rendelkezésre állását, és lehetővé teszik nagy számú virtuális gép központi felügyeletét, konfigurálását és frissítését. A virtuálisgép-méretezési csoportokkal nagyobb léptékű szolgáltatások építhetők ki a nagy számítási igényű, „big data” típusú és tárolóalapú számítási feladatokhoz.
 
 
@@ -27,7 +28,7 @@ Az Azure-beli virtuálisgép-méretezési csoportok biztosítják a szükséges 
 - **Több virtuális gép egyszerű létrehozása és kezelése**
     - Ha egy alkalmazás sok virtuális gépen fut, fontos fenntartani egy állandó, a környezet egészében érvényesülő konfigurációt. Az alkalmazás megbízható teljesítménye érdekében fontos, hogy minden virtuális gépen ugyanaz legyen a gép mérete, a lemezkonfiguráció és az alkalmazás telepített verziója.
     - A méretezési csoportok használatakor a rendszer az összes virtuálisgép-példányt egyazon alapul szolgáló operációsrendszer-képből és konfigurációból hozza létre. Ez a megközelítés lehetővé teszi több száz virtuális gép egyszerű kezelését további konfigurációs feladatok és hálózatkezelés nélkül.
-    - A méretezési csoportok az [Azure Load Balancer](../load-balancer/load-balancer-overview.md) használatát támogatják az alapszintű 4. rétegbeli forgalom elosztásához, az [Azure Application Gateway](../application-gateway/application-gateway-introduction.md) pedig fejlettebb, 7. rétegbeli forgalom elosztását és TLS-lezárást biztosít.
+    - A méretezési csoportok az [Azure Load Balancer](../load-balancer/load-balancer-overview.md) használatát támogatják az alapszintű 4. rétegbeli forgalom elosztásához, az [Azure Application Gateway](../application-gateway/overview.md) pedig fejlettebb, 7. rétegbeli forgalom elosztását és TLS-lezárást biztosít.
 
 - **Magas rendelkezésre állás és rugalmas alkalmazások**
     - A méretezési csoportok segítségével az alkalmazások több példányban futtathatók. Ha valamelyik virtuálisgép-példány problémába ütközik, az ügyfelek továbbra is elérhetik az alkalmazást valamelyik másik példányon keresztül, minimális megszakítással.
@@ -60,7 +61,7 @@ Használja a [Azure monitor for VMst](../azure-monitor/insights/vminsights-overv
 
 Engedélyezheti a figyelést a [virtuálisgép-méretezési csoport alkalmazásához](../azure-monitor/app/azure-vm-vmss-apps.md) a Application Insights segítségével részletes információkat gyűjthet az alkalmazásról, többek között a lapok nézeteiről, az alkalmazások kéréseiről és a kivételekről. Ellenőrizze az alkalmazás rendelkezésre állását a [rendelkezésre állási teszt](../azure-monitor/app/monitor-web-app-availability.md) konfigurálásával a felhasználói forgalom szimulálása érdekében.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Első lépésként hozza létre első virtuálisgép-méretezési csoportját az Azure Portalon.
 
 > [!div class="nextstepaction"]

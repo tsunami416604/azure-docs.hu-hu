@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: 3565af1f3e0a002cf3852faef9c2853ff88d46e9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9ab1e2ed4aeace0ec98cb358f32a07f64c3dfea2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82691725"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075044"
 ---
 # <a name="comparing-azure-data-lake-storage-gen1-and-azure-blob-storage"></a>Azure Data Lake Storage Gen1 és az Azure Blob Storage összehasonlítása
 
@@ -19,9 +19,9 @@ ms.locfileid: "82691725"
 
 A cikkben szereplő táblázat összefoglalja a Azure Data Lake Storage Gen1 és az Azure Blob Storage közötti különbségeket big data feldolgozás néhány kulcsfontosságú aspektusa mellett. Az Azure Blob Storage egy általános célú, skálázható objektum-tároló, amelyet számos tárolási forgatókönyvhöz terveztek. A Azure Data Lake Storage Gen1 big data elemzési számítási feladatokhoz optimalizált, Hyper-Scale adattár.
 
-|  | Azure Data Lake Storage Gen1 | Azure Blob Storage |
-| --- | --- | --- |
-| Szerep |Optimalizált tároló big data elemzési számítási feladatokhoz |Általános célú objektumok tárolója számos különböző tárolási forgatókönyvhöz, beleértve a big data elemzéseket |
+| Kategória | 1. generációs Azure Data Lake Storage | Azure Blob Storage |
+| -------- | ---------------------------- | ------------------ |
+| Cél |Optimalizált tároló big data elemzési számítási feladatokhoz |Általános célú objektumok tárolója számos különböző tárolási forgatókönyvhöz, beleértve a big data elemzéseket |
 | Használati esetek |Kötegelt, interaktív, adatfolyam-elemzési és gépi tanulási adatokat, például naplófájlokat, IoT adatokat, kattintson a streamek és a nagyméretű adatkészletek elemre. |Bármilyen típusú szöveges vagy bináris adat, például alkalmazás-háttér, biztonsági mentési adat, adathordozó-tároló a folyamatos átvitelhez és az általános célú adatmennyiség. Emellett teljes körű támogatást nyújt az elemzési számítási feladatokhoz; kötegelt, interaktív, adatfolyam-elemzési és gépi tanulási adatokat, például naplófájlokat, IoT adatokat, kattintson a streamek és a nagyméretű adatkészletek elemre. |
 | Fő fogalmak |Data Lake Storage Gen1 fiók olyan mappákat tartalmaz, amelyek a fájlban tárolt adatfájlok |A Storage-fiók rendelkezik tárolókkal, amelyek viszont Blobok formájában vannak tárolva. |
 | Struktúra |Hierarchikus fájlrendszer |Objektum-tároló sík névtérrel |
@@ -40,6 +40,6 @@ A cikkben szereplő táblázat összefoglalja a Azure Data Lake Storage Gen1 és
 | Geo-redundancia |Helyileg redundáns (több példányban, egy Azure-régióban) |Helyileg redundáns (LRS), zóna redundáns (ZRS), globálisan redundáns (GRS), olvasási hozzáférés globális redundáns (RA-GRS). További [információ:](../storage/common/storage-redundancy.md) |
 | Szolgáltatás állapota |Általánosan elérhető |Általánosan elérhető |
 | Régiónkénti rendelkezésre állás |Lásd [itt](https://azure.microsoft.com/regions/#services) |Minden Azure-régióban elérhető |
-| Price |[Díjszabás](https://azure.microsoft.com/pricing/details/data-lake-store/) megtekintése |[Díjszabás](https://azure.microsoft.com/pricing/details/storage/) megtekintése |
+| Ár |[Díjszabás](https://azure.microsoft.com/pricing/details/data-lake-store/) megtekintése |[Díjszabás](https://azure.microsoft.com/pricing/details/storage/) megtekintése |
 
 

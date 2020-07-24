@@ -14,18 +14,18 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: fb2d2d33d380819a88da57a78c449e22256bf41b
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: daebf7c6a5fc9056e16b77a40ee9f90db598749f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86169527"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076623"
 ---
 # <a name="how-to-use-notification-hubs-from-php"></a>A Notification Hubs használata PHP-ból
 
 [!INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
 
-A Java/PHP/Ruby háttérrendszer összes Notification Hubs funkcióját az értesítési központ REST felületének használatával érheti el az MSDN témakör [Notification HUBS REST API](https://msdn.microsoft.com/library/dn223264.aspx)-k című részében leírtak szerint.
+A Java/PHP/Ruby háttérrendszer összes Notification Hubs funkcióját az értesítési központ REST felületének használatával érheti el az MSDN témakör [Notification HUBS REST API](/previous-versions/azure/reference/dn223264(v=azure.100))-k című részében leírtak szerint.
 
 Ebben a témakörben a következőket mutatjuk be:
 
@@ -56,7 +56,7 @@ $hub->sendNotification($notification, null);
 Ha még nem tette meg, kövesse az [első lépések oktatóanyaga] szakaszt az utolsó szakaszhoz, ahol a háttérrendszer megvalósítására van szükség.
 Azt is megteheti, hogy a [php Rest burkoló mintából] is használhatja a kódot, és közvetlenül a [teljes oktatóanyag](#complete-tutorial) szakaszra lép.
 
-A teljes REST-burkoló megvalósításának minden részletét az [MSDN webhelyén](https://msdn.microsoft.com/library/dn530746.aspx)találja. Ebben a szakaszban a Notification Hubs REST-végpontokhoz való hozzáféréshez szükséges fő lépések PHP-megvalósítását ismertetjük:
+A teljes REST-burkoló megvalósításának minden részletét az [MSDN webhelyén](/previous-versions/azure/reference/dn530746(v=azure.100))találja. Ebben a szakaszban a Notification Hubs REST-végpontokhoz való hozzáféréshez szükséges fő lépések PHP-megvalósítását ismertetjük:
 
 1. Kapcsolati sztring elemzése
 2. Az engedélyezési jogkivonat előállítása
@@ -102,7 +102,7 @@ class NotificationHub {
 
 ### <a name="create-a-security-token"></a>Biztonsági jogkivonat létrehozása
 
-Az [sas biztonsági jogkivonat létrehozásával](https://docs.microsoft.com/previous-versions/azure/reference/dn495627(v=azure.100)#create-sas-security-token)kapcsolatos információkért tekintse meg az Azure dokumentációját.
+Az [sas biztonsági jogkivonat létrehozásával](/previous-versions/azure/reference/dn495627(v=azure.100)#create-sas-security-token)kapcsolatos információkért tekintse meg az Azure dokumentációját.
 
 Adja hozzá a `generateSasToken` metódust a `NotificationHub` osztályhoz a jogkivonat létrehozásához az aktuális kérelem URI-ja és a kapcsolati karakterláncból kinyert hitelesítő adatok alapján.
 
@@ -151,7 +151,7 @@ class Notification {
 
 Ez az osztály egy natív értesítési törzs tárolója, vagy egy sablonra vonatkozó értesítés esetén a tulajdonságok halmaza, valamint egy olyan fejléc, amely formátum (natív platform vagy sablon) és platform-specifikus tulajdonságok (például Apple lejárat és WNS fejlécek) formájában szerepel.
 
-A rendelkezésre álló lehetőségekért tekintse meg a [Notification HUBS REST API-k dokumentációját](https://msdn.microsoft.com/library/dn495827.aspx) és az egyes értesítési platformok formátumait.
+A rendelkezésre álló lehetőségekért tekintse meg a [Notification HUBS REST API-k dokumentációját](/previous-versions/azure/reference/dn495827(v=azure.100)) és az egyes értesítési platformok formátumait.
 
 Ezt az osztályt felfegyverezve most már megírhatjuk a Küldés értesítési metódusait az `NotificationHub` osztályban belül:
 
@@ -290,4 +290,3 @@ További információ: a [php fejlesztői központ](https://azure.microsoft.com/
 
 [PHP REST burkoló minta]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/notificationhubs-rest-php
 [Leküldéses értesítések küldése iOS-alkalmazásokba az Azure Notification Hubs használatával](ios-sdk-get-started.md))
-

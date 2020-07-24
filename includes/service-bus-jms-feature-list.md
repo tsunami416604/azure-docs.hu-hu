@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: service-bus-messaging
 author: axisc
 ms.service: service-bus-messaging
@@ -8,17 +8,17 @@ ms.topic: include
 ms.date: 6/9/2020
 ms.author: aschhab
 ms.custom: include file
-ms.openlocfilehash: 3fd4c6416241302a4969d9b3de26fa6b8316c1f7
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: e4b9925459463ff66685c797f0edaba13883f4d5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86122335"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076217"
 ---
-Az alábbi táblázat felsorolja azokat a **Java Message Service-(JMS-)** szolgáltatásokat, amelyeket a Azure Service Bus jelenleg támogat és nem támogat.
+A következő táblázat felsorolja a Java Message Service (JMS) által jelenleg támogatott funkciókat Azure Service Bus. Emellett a nem támogatott funkciókat is megjeleníti.
 
 
-| Szolgáltatások | Állapot |
+| Funkció | status |
 |---|---|
 | Üzenetsorok   | Támogatott |
 | Témakörök   | Támogatott |
@@ -30,5 +30,5 @@ Az alábbi táblázat felsorolja azokat a **Java Message Service-(JMS-)** szolg�
 | Nem megosztott tartós előfizetések | Támogatott |
 | Megosztott nem tartós előfizetések | Támogatott |
 | Nem megosztva nem tartós előfizetések | Támogatott |
-| Elosztott tranzakciók | **Nem támogatott** |
-| Tartós Terminus | **Nem támogatott** |
+| Elosztott tranzakciók | Nem támogatott |
+| Tartós Terminus | Nem támogatott |

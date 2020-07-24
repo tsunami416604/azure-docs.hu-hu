@@ -1,6 +1,6 @@
 ---
 title: Windows rendszerű virtuális asztali személyes asztal hozzárendelésének típusa – Azure
-description: A hozzárendelés típusának konfigurálása a Windows rendszerű virtuális asztali személyes asztali készlethez.
+description: Automatikus vagy közvetlen hozzárendelés konfigurálása egy Windows rendszerű virtuális asztali személyes asztali készlethez.
 services: virtual-desktop
 author: HeidiLohr
 ms.service: virtual-desktop
@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 12caa6fce4d49e86d1ad5da16aa7abba30f26207
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 8b000e9a83e6896266f0a6fc05195fc5599bc65f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260819"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077626"
 ---
 # <a name="configure-the-personal-desktop-host-pool-assignment-type"></a>A személyes asztali címkészlet-hozzárendelés típusának konfigurálása
 
@@ -87,7 +87,7 @@ Ha közvetlenül szeretne hozzárendelni egy felhasználót egy munkamenet-gazda
 11. Válassza ki azt a felhasználót, akihez a munkamenet-gazdagépet hozzá szeretné rendelni az elérhető felhasználók listájából.
 12. Ha elkészült, válassza a **kiválasztás**lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy konfigurálta a személyes asztal hozzárendelési típusát, bejelentkezhet egy Windows rendszerű virtuális asztali ügyfélbe, és tesztelheti azt egy felhasználói munkamenet részeként. A következő két útmutató bemutatja, hogyan csatlakozhat egy munkamenethez az Ön által választott ügyfél használatával:
 

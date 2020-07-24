@@ -8,14 +8,14 @@ ms.topic: how-to
 ms.date: 01/15/2017
 ms.author: twooley
 ms.subservice: common
-ms.openlocfilehash: bd74caf391fcf1538bf920f41638b23672b47015
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ca74e3aea8a847344c75ca7167c46675e1339459
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85512231"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077828"
 ---
-# <a name="setting-up-the-azure-importexport-tool"></a>Az Azure import/export eszköz beállítása
+# <a name="setting-up-the-azure-importexport-tool-v1"></a>Az Azure import/export eszköz beállítása v1
 A Microsoft Azure Import/Export eszköz a Microsoft Azure Import/Export szolgáltatással használható meghajtó-előkészítési és-javítási eszköz. A következő függvényekhez használhatja az eszközt:  
 
 -   Importálási feladatok létrehozása előtt az eszköz használatával másolhatja az adatok a Windows Azure adatközpontba szállítandó merevlemezekre.  

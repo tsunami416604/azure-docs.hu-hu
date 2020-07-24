@@ -1,5 +1,5 @@
 ---
-title: Azure szinapszis Apache Spark példányok automatikus méretezése
+title: Apache Spark példányok automatikus méretezése
 description: Az Azure szinapszis automatikus méretezés funkciójának használata az Apache Spark-példányok automatikus méretezéséhez
 author: euangMS
 ms.author: euang
@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: spark
 ms.date: 03/31/2020
-ms.openlocfilehash: 86e9b7425c8c75495a17b66af710d2c55e6e59ca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7c6278d24e52159424c3e346b2382c93f4ab8160
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85194280"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075796"
 ---
 # <a name="automatically-scale-azure-synapse-analytics-apache-spark-pools"></a>Az Azure szinapszis Analytics Apache Spark-készletek automatikus méretezése
 
@@ -24,7 +24,7 @@ Az Azure szinapszis Analytics-készlet automatikus méretezési funkciójának A
 
 Az autoscale folyamatosan figyeli a Spark-példányt, és a következő metrikákat gyűjti:
 
-|Metric|Leírás|
+|Metrika|Leírás|
 |---|---|
 |Függőben lévő CPU összesen|Az összes függőben lévő csomópont végrehajtásának megkezdéséhez szükséges magok teljes száma.|
 |Függőben lévő memória összesen|Az összes függőben lévő csomópont végrehajtásának megkezdéséhez szükséges teljes memória (MB).|

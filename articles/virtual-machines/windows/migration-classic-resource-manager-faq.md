@@ -8,16 +8,17 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: a1cc1ab66098839bca47f5cc2ead0243a3c6058a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a69b175b03e69f0e28606370e694fdbd071a9a8e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81865991"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075580"
 ---
 # <a name="frequently-asked-questions-about-classic-to-azure-resource-manager-migration"></a>A klasszikusból Azure Resource Manager-alapú környezetbe való migrálásra vonatkozó gyakori kérdések
 
 > [!IMPORTANT]
-> Napjainkban a IaaS virtuális gépek 90%-a [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/)használ. 2020. február 28-án a klasszikus virtuális gépek elavultak, és 2023. március 1-jén teljesen megszűnnek. [További]( https://aka.ms/classicvmretirement) információ erről az elavult szolgáltatásról, valamint arról, [hogy Ön hogyan befolyásolja Önt](https://docs.microsoft.com/azure/virtual-machines/classic-vm-deprecation#how-does-this-affect-me).
+> Napjainkban a IaaS virtuális gépek 90%-a [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/)használ. 2020. február 28-án a klasszikus virtuális gépek elavultak, és 2023. március 1-jén teljesen megszűnnek. [További]( https://aka.ms/classicvmretirement) információ erről az elavult szolgáltatásról, valamint arról, [hogy Ön hogyan befolyásolja Önt](../classic-vm-deprecation.md#how-does-this-affect-me).
 
 [!INCLUDE [virtual-machines-common-migration-faq](../../../includes/virtual-machines-common-classic-resource-manager-migration-faq.md)]
 

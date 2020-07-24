@@ -1,5 +1,5 @@
 ---
-title: SQL-készlethez tartozó tranzakciók optimalizálása
+title: SQL-készlet tranzakcióinak optimalizálása
 description: Megtudhatja, hogyan optimalizálhatja a tranzakciós kód teljesítményét az SQL-készletben (az adatraktárban), miközben minimalizálja a hosszú visszaállítások kockázatát.
 services: synapse-analytics
 author: XiaoyuMSFT
@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 0c55cc6e0fc15b663667a5131e2dd333106418cd
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: ef87d5da2c2d56a4fdc3873410bb5a6e5c711d01
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85957062"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075710"
 ---
 # <a name="optimizing-transactions-in-sql-pool"></a>Tranzakciók optimalizálása az SQL-készletben
 
@@ -68,7 +68,7 @@ CTAS és Beszúrás... Válassza a tömeges betöltési műveletek lehetőséget
 
 | Elsődleges index | Betöltési forgatókönyv | Naplózási mód |
 | --- | --- | --- |
-| Halommemória |Bármelyik |**Minimális** |
+| Halommemória |Bármely |**Minimális** |
 | Fürtözött index |Üres céltábla |**Minimális** |
 | Fürtözött index |A betöltött sorok nem fedik át a cél meglévő lapjait |**Minimális** |
 | Fürtözött index |A betöltött sorok átfedésben vannak a cél meglévő lapjaival |Összes |

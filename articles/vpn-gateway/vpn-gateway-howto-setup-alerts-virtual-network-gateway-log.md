@@ -2,16 +2,17 @@
 title: 'Azure VPN Gateway: riasztások konfigurálása diagnosztikai erőforrás-naplózási eseményekhez'
 description: A riasztások VPN Gateway diagnosztikai erőforrás-naplózási eseményeken való konfigurálásának lépései
 services: vpn-gateway
-author: anzaman
+author: kumudD
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 06/12/2019
 ms.author: alzam
-ms.openlocfilehash: 3417d2b6e105626bceb992db088a4d0113aa798f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 21fcebf6667eb1bc7741dfb4ba268af42567d58e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84983087"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075598"
 ---
 # <a name="set-up-alerts-on-resource-log-events-from-vpn-gateway"></a>Riasztások beállítása az erőforrás-naplózási eseményekről VPN Gateway
 
@@ -19,7 +20,7 @@ Ebből a cikkből megtudhatja, hogyan állíthatja be a riasztásokat az Azure V
 
 A következő erőforrás-naplók érhetők el az Azure-ban:
 
-|***Name (Név)*** | ***Leírás*** |
+|***Név*** | ***Leírás*** |
 |---        | ---               |
 |GatewayDiagnosticLog | Erőforrás-naplókat tartalmaz az átjáró konfigurációs eseményeihez, az elsődleges módosításokhoz és a karbantartási eseményekhez. |
 |TunnelDiagnosticLog | Bújtatási állapot változási eseményeit tartalmazza. Az alagút kapcsolódási/leválasztási eseményeinek összefoglaló oka van az állapot változásához, ha van ilyen. |

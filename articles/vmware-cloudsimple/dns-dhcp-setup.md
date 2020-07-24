@@ -8,11 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: ef1266b783034cf18dc2b3ea4be5ebc01bc12c70
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d7531a22d5b0f44fdaae837a75d17ea18852acf0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77024687"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077295"
 ---
 # <a name="set-up-dns-and-dhcp-applications-and-workloads-in-your-cloudsimple-private-cloud"></a>DNS-és DHCP-alkalmazások és-munkaterhelések beállítása a saját CloudSimple-felhőben
 
@@ -32,5 +33,5 @@ A Linux különböző csomagokat kínál a DNS-kiszolgálók beállításához. 
 
 Ezek a Microsoft-témakörök leírják, hogyan állíthat be egy Windows-kiszolgálót DNS-kiszolgálóként és DHCP-kiszolgálóként.
 
-* [Windows Server DNS-kiszolgálóként](https://docs.microsoft.com/windows-server/networking/dns/dns-top)
-* [Windows Server DHCP-kiszolgálóként](https://docs.microsoft.com/windows-server/networking/technologies/dhcp/dhcp-top)
+* [Windows Server DNS-kiszolgálóként](/windows-server/networking/dns/dns-top)
+* [Windows Server DHCP-kiszolgálóként](/windows-server/networking/technologies/dhcp/dhcp-top)

@@ -7,12 +7,12 @@ ms.date: 03/12/2020
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.openlocfilehash: 57832060fee9010f21eeb77723cf6058f169a4ee
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
+ms.openlocfilehash: a0e27927c91c8b8ed1cfca410e08a5eb90117f58
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/21/2020
-ms.locfileid: "85125532"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076708"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-net-sdk-v4"></a>Gyors útmutató: Azure Key Vault .NET-hez készült ügyféloldali kódtár (SDK v4)
 
@@ -32,7 +32,7 @@ Az Azure Key Vault segít a felhőalapú alkalmazások és szolgáltatások ált
 
 * Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * A [.net Core 3,1 SDK vagy újabb verzió](https://dotnet.microsoft.com/download/dotnet-core/3.1).
-* [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) vagy [Azure PowerShell](/powershell/azure/overview)
+* [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) vagy [Azure PowerShell](/powershell/azure/)
 
 Ez a rövid útmutató feltételezi, hogy futtatja `dotnet` , az [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)-t és a Windows-parancsokat egy Windows-terminálon (például a [PowerShell Core](/powershell/scripting/install/installing-powershell-core-on-windows?view=powershell-6), a [Windows PowerShell](/powershell/scripting/install/installing-windows-powershell?view=powershell-6)vagy a [Azure Cloud Shell](https://shell.azure.com/)).
 
@@ -76,113 +76,19 @@ dotnet add package Azure.Identity
 
 ### <a name="create-a-resource-group-and-key-vault"></a>Erőforráscsoport és kulcstartó létrehozása
 
-Ez a rövid útmutató egy előre létrehozott Azure Key vaultot használ. Kulcstartó létrehozásához kövesse az [Azure CLI](quick-create-cli.md)gyors üzembe helyezésének lépéseit, [Azure PowerShell](quick-create-powershell.md)a gyors üzembe helyezést, vagy [Azure Portal](quick-create-portal.md)a gyors üzembe helyezést. Azt is megteheti, hogy az alábbi Azure CLI-parancsokat egyszerűen futtatja.
-
-> [!Important]
-> Minden kulcstartónak egyedi névvel kell rendelkeznie. A következő példákban cserélje le a <az egyedi-kulcstartó-Name> a Key Vault nevét.
-
-```azurecli
-az group create --name "myResourceGroup" -l "EastUS"
-
-az keyvault create --name <your-unique-keyvault-name> -g "myResourceGroup"
-```
-
-```azurepowershell
-New-AzResourceGroup -Name myResourceGroup -Location EastUS
-
-New-AzKeyVault -Name <your-unique-keyvault-name> -ResourceGroupName myResourceGroup -Location EastUS
-```
+[!INCLUDE [Create a resource group and key vault](../../../includes/key-vault-rg-kv-creation.md)]
 
 ### <a name="create-a-service-principal"></a>Egyszerű szolgáltatás létrehozása
 
-A felhőalapú .NET-alkalmazások hitelesítésének legegyszerűbb módja a felügyelt identitás; a részletekért tekintse meg a [app Service felügyelt identitás használata a Azure Key Vault eléréséhez](../general/managed-identity.md) című témakört. 
-
-Az egyszerűség kedvéért azonban ez a rövid útmutató egy .NET-konzolos alkalmazást hoz létre, amely egy egyszerű szolgáltatásnév és egy hozzáférés-vezérlési házirend használatát igényli. Az egyszerű szolgáltatásnév egyedi nevet igényel a "http:// &lt; My-Unique-Service-principal-name &gt; " formátumban.
-
-Hozzon létre egy egyszerű szolgáltatást az Azure CLI az [ad SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) parancs használatával:
-
-```azurecli
-az ad sp create-for-rbac -n "http://&lt;my-unique-service-principal-name&gt;" --sdk-auth
-```
-
-A művelet a kulcs/érték párok sorozatát fogja visszaadni. 
-
-```console
-{
-  "clientId": "7da18cae-779c-41fc-992e-0527854c6583",
-  "clientSecret": "b421b443-1669-4cd7-b5b1-394d5c945002",
-  "subscriptionId": "443e30da-feca-47c4-b68f-1636b75e16b3",
-  "tenantId": "35ad10f1-7799-4766-9acf-f2d946161b77",
-  "activeDirectoryEndpointUrl": "https://login.microsoftonline.com",
-  "resourceManagerEndpointUrl": "https://management.azure.com/",
-  "sqlManagementEndpointUrl": "https://management.core.windows.net:8443/",
-  "galleryEndpointUrl": "https://gallery.azure.com/",
-  "managementEndpointUrl": "https://management.core.windows.net/"
-}
-```
-
-Egyszerű szolgáltatásnév létrehozása a Azure PowerShell [New-AzADServicePrincipal](/powershell/module/az.resources/new-azadserviceprincipal) paranccsal:
-
-```azurepowershell
-# Create a new service principal
-$spn = New-AzADServicePrincipal -DisplayName "http://&lt;my-unique-service-principal-name&gt;"
-
-# Get the tenant ID and subscription ID of the service principal
-$tenantId = (Get-AzContext).Tenant.Id
-$subscriptionId = (Get-AzContext).Subscription.Id
-
-# Get the client ID
-$clientId = $spn.ApplicationId
-
-# Get the client Secret
-$bstr = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($spn.Secret)
-$clientSecret = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto($bstr)
-```
-
-Az Azure PowerShell szolgáltatással kapcsolatos további információkért tekintse meg az [Azure egyszerű szolgáltatás létrehozása a Azure PowerShell](/powershell/azure/create-azure-service-principal-azureps)használatával című témakört.
-
-Jegyezze fel a clientId, a clientSecret és a tenantId, ahogy azokat a következő lépésekben fogjuk használni.
-
+[!INCLUDE [Create a service principal](../../../includes/key-vault-sp-creation.md)]
 
 #### <a name="give-the-service-principal-access-to-your-key-vault"></a>A szolgáltatás egyszerű hozzáférésének biztosítása a kulcstartóhoz
 
-Hozzon létre egy olyan hozzáférési szabályzatot a kulcstartó számára, amely engedélyt ad a szolgáltatásnak a clientId az az a Key Vault [set-Policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) paranccsal. Adja meg a szolgáltatás egyszerű lekérését, listáját, és állítsa be mindkét kulcs és titok engedélyeit.
-
-```azurecli
-az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-service-principal> --secret-permissions list get set delete purge
-```
-
-```azurepowershell
-Set-AzKeyVaultAccessPolicy -VaultName <your-unique-keyvault-name> -ServicePrincipalName <clientId-of-your-service-principal> -PermissionsToSecrets list,get,set,delete,purge
-```
+[!INCLUDE [Give the service principal access to your key vault](../../../includes/key-vault-sp-kv-access.md)]
 
 #### <a name="set-environmental-variables"></a>Környezeti változók beállítása
 
-Az alkalmazás DefaultAzureCredential metódusa három környezeti változóra támaszkodik: `AZURE_CLIENT_ID` , `AZURE_CLIENT_SECRET` és `AZURE_TENANT_ID` . használja ezeket a változókat az clientId, a clientSecret és a tenantId értékre, amelyet az [egyszerű szolgáltatásnév létrehozása](#create-a-service-principal) lépésben feljegyzett.
-
-A Key Vault nevét is mentenie kell egy nevű környezeti változóként `KEY_VAULT_NAME` .
-
-```console
-setx AZURE_CLIENT_ID <your-clientID>
-
-setx AZURE_CLIENT_SECRET <your-clientSecret>
-
-setx AZURE_TENANT_ID <your-tenantId>
-
-setx KEY_VAULT_NAME <your-key-vault-name>
-````
-
-Minden alkalommal, amikor meghívja `setx` a-t, a "sikeres: megadott érték mentése" választ kell kapnia.
-
-```shell
-AZURE_CLIENT_ID=<your-clientID>
-
-AZURE_CLIENT_SECRET=<your-clientSecret>
-
-AZURE_TENANT_ID=<your-tenantId>
-
-KEY_VAULT_NAME=<your-key-vault-name>
-```
+[!INCLUDE [Set environmental variables](../../../includes/key-vault-set-environmental-variables.md)]
 
 ## <a name="object-model"></a>Objektummodell
 

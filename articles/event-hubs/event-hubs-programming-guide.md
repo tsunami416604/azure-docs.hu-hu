@@ -3,15 +3,15 @@ title: .NET programozási útmutató – Azure Event Hubs (örökölt) | Microso
 description: Ez a cikk azt ismerteti, hogyan írhat kódot az Azure Event Hubs az Azure .NET SDK használatával.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: de731d591c367e386fe8ef1eef03f1b90e0fa126
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0186357ec7f0f8541acf33c524a57cdb8e8dc55c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85314538"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074842"
 ---
 # <a name="net-programming-guide-for-azure-event-hubs-legacy-microsoftazureeventhubs-package"></a>.NET programozási útmutató az Azure Event Hubshoz (örökölt Microsoft. Azure. EventHubs csomag)
-Ez a cikk néhány gyakori forgatókönyvet ismertet a kód az Azure Event Hubs használatával történő írásához. A témakör feltételezi az Event Hubs szolgáltatással kapcsolatos előzetes ismeretek meglétét. Az Event Hubs fogalmi áttekintése: [Event Hubs – áttekintés](event-hubs-what-is-event-hubs.md).
+Ez a cikk néhány gyakori forgatókönyvet ismertet a kód az Azure Event Hubs használatával történő írásához. A témakör feltételezi az Event Hubs szolgáltatással kapcsolatos előzetes ismeretek meglétét. Az Event Hubs fogalmi áttekintése: [Event Hubs – áttekintés](./event-hubs-about.md).
 
 > [!WARNING]
 > Ez az útmutató a régi **Microsoft. Azure. EventHubs** csomaghoz készült. Javasoljuk, hogy a legújabb [Azure. Messaging. EventHubs](get-started-dotnet-standard-send-v2.md) csomag használatára [telepítse át](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md) a kódot.  
@@ -96,7 +96,7 @@ Egyetlen köteg nem lépheti túl az esemény 1 MB-os korlátját. Továbbá a k
 
 ## <a name="send-asynchronously-and-send-at-scale"></a>Aszinkron küldés és nagy léptékű küldés
 
-Az Event hub-nak aszinkron módon kell elküldeni az eseményeket. A Küldés aszinkron módon megnöveli azt a sebességet, amellyel az ügyfél képes eseményeket küldeni. A [SendAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync) egy [feladat](https://msdn.microsoft.com/library/system.threading.tasks.task.aspx) objektumot ad vissza. Az ügyfél újrapróbálkozási beállításainak vezérléséhez használhatja a [RetryPolicy](/dotnet/api/microsoft.servicebus.retrypolicy) osztályt.
+Az Event hub-nak aszinkron módon kell elküldeni az eseményeket. A Küldés aszinkron módon megnöveli azt a sebességet, amellyel az ügyfél képes eseményeket küldeni. A [SendAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync) egy [feladat](/dotnet/api/system.threading.tasks.task?view=netcore-3.1) objektumot ad vissza. Az ügyfél újrapróbálkozási beállításainak vezérléséhez használhatja a [RetryPolicy](/dotnet/api/microsoft.servicebus.retrypolicy) osztályt.
 
 ## <a name="event-consumers"></a>Eseményfelhasználók
 Az [EventProcessorHost][] osztály az eseményközpontokból származó adatokat dolgozza fel. Akkor használja ezt a megvalósítást, ha a .NET platformon hoz létre eseményolvasókat. Az [EventProcessorHost][] egy szálbiztos, több folyamatot lehetővé tevő, biztonságos futtatókörnyezetet biztosít az eseményfeldolgozói megvalósításokhoz, ami lehetővé teszi az ellenőrzőpontok használatát és a partícióbérlés-kezelést is.
@@ -149,8 +149,8 @@ A közzétevők visszavonásával és az eseményközpontokba közzétevőként 
 
 Az Event Hubs-forgatókönyvekkel kapcsolatos további információkért látogasson el a következő hivatkozásokra:
 
-* [Event Hubs API overview (Event Hubs API – áttekintés)](event-hubs-api-overview.md)
-* [Mi az Event Hubs?](event-hubs-what-is-event-hubs.md)
+* [Event Hubs API overview (Event Hubs API – áttekintés)](./event-hubs-samples.md)
+* [Mi az Event Hubs?](./event-hubs-about.md)
 * [Rendelkezésre állás és konzisztencia az Event Hubsban](event-hubs-availability-and-consistency.md)
 * [Event Processor Host API-referenciája](/dotnet/api/microsoft.servicebus.messaging.eventprocessorhost)
 

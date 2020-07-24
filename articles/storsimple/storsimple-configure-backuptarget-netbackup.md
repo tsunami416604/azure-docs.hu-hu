@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/15/2017
 ms.author: matd
-ms.openlocfilehash: 87885d9b476582fcce53b8b960d24093693af4ec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 34c66c3d5739fdc23323a302e3bedfb1b6301d86
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85509387"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077898"
 ---
 # <a name="storsimple-as-a-backup-target-with-netbackup"></a>StorSimple biztonsági mentési célként a NetBackup
 
@@ -102,7 +102,7 @@ Az alábbi táblázatok az eszköz modell-architektúra kezdeti útmutatóját m
 | Biztonsági mentési forgatókönyv  | Helyi tárolási kapacitás  | Felhőalapú tárolási kapacitás  |
 |---|---|---|
 | Elsődleges biztonsági mentés  | A helyi tárterületen tárolt legutóbbi biztonsági másolatok a helyreállítási időkorlát (RPO) kielégítése érdekében a gyors helyreállítás érdekében | A biztonsági mentési előzmények (RPO) a Felhőbeli kapacitásban is elférnek |
-| Másodlagos biztonsági mentés | A biztonsági mentési adatmennyiség másodlagos másolata a Felhőbeli kapacitásban tárolható  | N.A.  |
+| Másodlagos biztonsági mentés | A biztonsági mentési adatmennyiség másodlagos másolata a Felhőbeli kapacitásban tárolható  | n.a.  |
 
 ## <a name="storsimple-as-a-primary-backup-target"></a>StorSimple elsődleges biztonsági mentési célként
 
@@ -303,8 +303,8 @@ Az alábbi ábra egy tipikus kötet hozzárendelését mutatja be egy biztonság
 | Gyakoriság/biztonsági mentés típusa | Összes | Növekményes (nap 1-5)  |   
 |---|---|---|
 | Hetente (1-4 hét) | Szombat | Hétfő – péntek |
-| Havonta  | Szombat  |   |
-| Éves | Szombat  |   |
+| havonta  | Szombat  |   |
+| Évi | Szombat  |   |
 
 ## <a name="assigning-storsimple-volumes-to-a-netbackup-backup-job"></a>StorSimple-kötetek kiosztása egy NetBackup biztonsági mentési feladatokhoz
 
@@ -316,7 +316,7 @@ A következő folyamat azt feltételezi, hogy a NetBackup és a célként megado
 
    ![NetBackup felügyeleti konzol, új szabályzat létrehozása](./media/storsimple-configure-backup-target-using-netbackup/nbimage6.png)
 
-2. Az **új házirend hozzáadása** párbeszédpanelen adja meg a házirend nevét, majd jelölje be a **házirend konfigurálása varázsló használata** jelölőnégyzetet. Válassza az **OK** lehetőséget.
+2. Az **új házirend hozzáadása** párbeszédpanelen adja meg a házirend nevét, majd jelölje be a **házirend konfigurálása varázsló használata** jelölőnégyzetet. Kattintson az **OK** gombra.
 
    ![NetBackup felügyeleti konzol, új házirend hozzáadása párbeszédpanel](./media/storsimple-configure-backup-target-using-netbackup/nbimage7.png)
 
@@ -360,7 +360,7 @@ A következő folyamat azt feltételezi, hogy a NetBackup és a célként megado
 
     ![NetBackup felügyeleti konzol, indítási ablak módosítása](./media/storsimple-configure-backup-target-using-netbackup/nbimage16.png)
 
-14. Válassza az **OK** lehetőséget.
+14. Kattintson az **OK** gombra.
 
 15. Ismételje meg a 10-14. lépést minden növekményes biztonsági mentéshez. Válassza ki a megfelelő kötetet és ütemtervet minden létrehozott biztonsági mentéshez.
 
@@ -414,8 +414,8 @@ A következő táblázat bemutatja, hogyan állíthatja be a biztonsági mentés
 | 2. hét | StorSimple hét 2-4 |   |   |   |   |   |
 | 3. hét | StorSimple hét 2-4 |   |   |   |   |   |
 | 4. hét | StorSimple hét 2-4 |   |   |   |   |   |
-| Havonta | StorSimple havonta |   |   |   |   |   |
-| Éves | StorSimple évente  |   |   |   |   |   |
+| havonta | StorSimple havonta |   |   |   |   |   |
+| Évi | StorSimple évente  |   |   |   |   |   |
 
 
 ## <a name="assign-storsimple-volumes-to-a-netbackup-archive-and-duplication-job"></a>StorSimple-kötetek kiosztása NetBackup archiválási és ismétlődési feladatokhoz
@@ -436,7 +436,7 @@ A kezdeti lemez-készletek meghatározása után három további tárolási éle
 
 2. Adja meg a pillanatkép nevét, majd kattintson a **Hozzáadás**gombra.
 
-3. Az **új művelet** párbeszédpanel **Tulajdonságok** lapjának **művelet**területén válassza a **biztonsági mentés**lehetőséget. Válassza ki a **célhelyhez**, a **megőrzési típushoz**és a **megőrzési időszakhoz**használni kívánt értékeket. Válassza az **OK** lehetőséget.
+3. Az **új művelet** párbeszédpanel **Tulajdonságok** lapjának **művelet**területén válassza a **biztonsági mentés**lehetőséget. Válassza ki a **célhelyhez**, a **megőrzési típushoz**és a **megőrzési időszakhoz**használni kívánt értékeket. Kattintson az **OK** gombra.
 
    ![NetBackup felügyeleti konzol, új művelet párbeszédpanel](./media/storsimple-configure-backup-target-using-netbackup/nbimage22.png)
 
@@ -507,7 +507,7 @@ A következő szakasz azt ismerteti, hogyan hozhat létre egy rövid parancsfáj
 
 ### <a name="to-start-or-delete-a-cloud-snapshot"></a>Felhőbeli pillanatkép elindítása vagy törlése
 
-1. [Telepítse az Azure PowerShellt](/powershell/azure/overview).
+1. [Telepítse az Azure PowerShellt](/powershell/azure/).
 2. Töltse le és állítsa be [Manage-CloudSnapshots.ps1](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Manage-CloudSnapshots.ps1) PowerShell-szkriptet.
 3. A parancsfájlt futtató kiszolgálón futtassa a PowerShellt rendszergazdaként. Győződjön meg arról, hogy a parancsfájl futtatásával `-WhatIf $true` megtekintheti, hogy a parancsfájl milyen módosításokat hajt végre. Az ellenőrzés befejezése után adja át a t `-WhatIf $false` . Futtassa az alábbi parancsot:
    ```powershell

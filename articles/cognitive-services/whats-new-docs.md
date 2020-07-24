@@ -7,25 +7,25 @@ ms.topic: conceptual
 ms.author: erhopf
 ms.service: cognitive-services
 ms.date: 07/09/2020
-ms.openlocfilehash: da09cb8aa112cdf927c1a67401ab3f6a92e85ece
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 59d19bd2a1dca2a3bc3c6ec3aee9e63b8f12b5d3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86225208"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075189"
 ---
 # <a name="cognitive-services-docs-whats-new-for-june-1-2020---june-30-2020"></a>Cognitive Services docs: Újdonságok a 2020. június 1-től, 2020. június 30-ig
 
 Üdvözöljük a Cognitive Services docs újdonságait 2020. június 1-től 2020. június 30-ig. Ez a cikk felsorolja a docs ezen időszak alatt történt főbb változásait.
 
-## <a name="computer-vision"></a>Számítógépes látástechnológia
+## <a name="computer-vision"></a>Computer Vision
 
 ### <a name="updated-articles"></a>Frissített cikkek
 
 - [Gyors útmutató: nyomtatott és kézírásos szöveg kinyerése a Computer Vision REST API és a Java használatával](/azure/cognitive-services/computer-vision/quickstarts/java-hand-text)
 - [Gyors útmutató: nyomtatott és kézírásos szöveg kinyerése a Computer Vision REST API és a Python használatával](/azure/cognitive-services/computer-vision/quickstarts/python-hand-text)
 
-## <a name="face"></a>Arcfelismerés
+## <a name="face"></a>Face
 
 ### <a name="updated-articles"></a>Frissített cikkek
 
@@ -69,16 +69,16 @@ ms.locfileid: "86225208"
 ### <a name="new-articles"></a>Új cikkek
 
 - [A Custom Commands alapelvei](/azure/cognitive-services/speech-service/custom-commands-references)
-- [Megerősítések hozzáadása parancshoz](/azure/cognitive-services/speech-service/how-to-custom-commands-add-confirmations)
-- [A paraméter konfigurálása külső katalógus entitásként](/azure/cognitive-services/speech-service/how-to-custom-commands-add-external-catalog-string-entity)
+- [Megerősítések hozzáadása parancshoz](/azure/cognitive-services/speech-service/how-to-custom-commands-add-interaction-rules#add-confirmations-to-a-command)
+- [A paraméter konfigurálása külső katalógus entitásként](/azure/cognitive-services/speech-service/how-to-custom-commands-add-parameter-configuration#configure-parameter-as-external-catalog-entity)
 - [A beszédfelismerési válaszok nyelvi létrehozási sablonjainak használata](/azure/cognitive-services/speech-service/how-to-custom-commands-add-language-generation-templates)
-- [Javítások végrehajtása egy parancsban](/azure/cognitive-services/speech-service/how-to-custom-commands-add-one-step-correction)
+- [Javítások végrehajtása egy parancsban](/azure/cognitive-services/speech-service/how-to-custom-commands-add-parameter-configuration)
 - [Paraméterek hozzáadása parancsokhoz](/azure/cognitive-services/speech-service/how-to-custom-commands-add-parameters-to-commands)
-- [Egyszerű parancsok hozzáadása](/azure/cognitive-services/speech-service/how-to-custom-commands-add-simple-commands)
-- [Érvényesítések hozzáadása az egyéni parancs paramétereinek](/azure/cognitive-services/speech-service/how-to-custom-commands-add-validations)
-- [Egyéni parancsokat tartalmazó alkalmazás létrehozása](/azure/cognitive-services/speech-service/how-to-custom-commands-create-empty-project)
+- [Egyszerű parancsok hozzáadása](/azure/cognitive-services/speech-service/how-to-custom-commands-create-application-with-simple-commands)
+- [Érvényesítések hozzáadása az egyéni parancs paramétereinek](/azure/cognitive-services/speech-service/how-to-custom-commands-add-parameter-configuration#add-validation-to-parameters)
+- [Egyéni parancsokat tartalmazó alkalmazás létrehozása](/azure/cognitive-services/speech-service/how-to-custom-commands-create-application-with-simple-commands#create-empty-application)
 - [CI/CD a Custom Speechhez](/azure/cognitive-services/speech-service/how-to-custom-speech-continuous-integration-continuous-deployment)
-- [Végpontok közötti hangsegéd létrehozása egyéni parancsok használatával](/azure/cognitive-services/speech-service/quickstart-custom-commands-e2e-application)
+- [Végpontok közötti hangsegéd létrehozása egyéni parancsok használatával](/azure/cognitive-services/speech-service/quickstart-custom-commands-application)
 - [Gyors útmutató: modell tesztelése a Speech Studio hangfájljának használatával](/azure/cognitive-services/speech-service/quickstarts/speech-studio-test-model)
 - [Ismerkedjen meg a Speaker Recognition alapjaival](/azure/cognitive-services/speech-service/speaker-recognition-basics)
 - [Mi az Azure Speaker Recognition szolgáltatás?](/azure/cognitive-services/speech-service/speaker-recognition-overview)
@@ -89,7 +89,7 @@ ms.locfileid: "86225208"
 - [Mi a Batch-átírás?](/azure/cognitive-services/speech-service/batch-transcription)
 - [Beszédfelismerési szolgáltatás nyelvi és hangalapú támogatása](/azure/cognitive-services/speech-service/language-support)
 
-## <a name="text-analytics"></a>Szövegelemzés
+## <a name="text-analytics"></a>Text Analytics
 
 ### <a name="updated-articles"></a>Frissített cikkek
 
@@ -100,7 +100,7 @@ ms.locfileid: "86225208"
 - [Rövid útmutató: a Text Analytics kognitív szolgáltatás meghívása a Python REST API használatával](/azure/cognitive-services/text-analytics/quickstarts/python)
 - [Rövid útmutató: A Text Analytics Cognitive Services meghívása a Ruby használatával](/azure/cognitive-services/text-analytics/quickstarts/ruby)
 
-## <a name="translator"></a>Fordító
+## <a name="translator"></a>Translator
 
 ### <a name="updated-articles"></a>Frissített cikkek
 

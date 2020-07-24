@@ -4,18 +4,18 @@ description: Az Azure Blockchain szolgáltatás kezelése az Azure CLI-vel
 ms.date: 11/22/2019
 ms.topic: how-to
 ms.reviewer: janders
-ms.openlocfilehash: fc00bedee5ff55033a1d65c6d5d6bfa766f0f01e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4b41bc44c9efbf71621fcfba06e668f42caa0f8c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85208161"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076940"
 ---
 # <a name="manage-azure-blockchain-service-using-azure-cli"></a>Az Azure Blockchain szolgáltatás kezelése az Azure CLI-vel
 
 A Azure Portalon kívül az Azure CLI használatával is kezelheti az Azure Blockchain szolgáltatás blockchain-tagjait és tranzakciós csomópontjait.
 
-Győződjön meg arról, hogy telepítette a legújabb [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) -t, és bejelentkezett egy Azure-fiókba a-ben `az login` .
+Győződjön meg arról, hogy telepítette a legújabb [Azure CLI](/cli/azure/install-azure-cli) -t, és bejelentkezett egy Azure-fiókba a-ben `az login` .
 
 Az alábbi példákban cserélje le a példát a `<parameter names>` saját értékeire.
 
@@ -229,7 +229,7 @@ az role assignment create \
 | **megbízott** | Azure AD-felhasználói azonosító. Például: `user@contoso.com` |
 | **hatókör** | A szerepkör-hozzárendelés hatóköre. Blockchain-tag vagy tranzakciós csomópont lehet. |
 
-**Példa:**
+**Például**
 
 Csomópont-hozzáférés biztosítása az Azure AD-felhasználó számára a blockchain- **tag**számára:
 
@@ -240,7 +240,7 @@ az role assignment create \
                             --scope /subscriptions/mySubscriptionId/resourceGroups/contosoResourceGroup/providers/Microsoft.Blockchain/blockchainMembers/contosoMember1
 ```
 
-**Példa:**
+**Például**
 
 Csomópont-hozzáférés biztosítása az Azure AD-felhasználó számára a blockchain **tranzakciós csomópontja**számára:
 
@@ -265,7 +265,7 @@ az role assignment create \
 | **megbízott – objektum-azonosító** | Azure AD-csoport azonosítója vagy az alkalmazás azonosítója. |
 | **hatókör** | A szerepkör-hozzárendelés hatóköre. Blockchain-tag vagy tranzakciós csomópont lehet. |
 
-**Példa:**
+**Például**
 
 Csomópont-hozzáférés megadása az **alkalmazási szerepkörhöz**
 

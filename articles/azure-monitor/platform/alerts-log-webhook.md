@@ -7,13 +7,14 @@ services: monitoring
 ms.topic: conceptual
 ms.date: 06/25/2019
 ms.subservice: alerts
-ms.openlocfilehash: 6c9bacfc4354351cbbf2eb735414ff3334cd7d0a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3311819f021533a28a41daf2c2f08193218fae96
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84323671"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075273"
 ---
-# <a name="webhook-actions-for-log-alert-rules"></a>A napló riasztási szabályaihoz kapcsolódó webhook-műveletek
+# <a name="webhook-actions-for-log-alert-rules"></a>Webhook-műveletek naplóriasztási szabályokhoz
 Ha egy [naplóbeli riasztást hoz létre az Azure-ban](alerts-log.md), akkor beállíthatja, hogy a [műveleti csoportok használatával](action-groups.md) egy vagy több műveletet végezzen. Ez a cikk az elérhető különböző webhook-műveleteket ismerteti, és bemutatja, hogyan konfigurálhat egyéni JSON-alapú webhookot.
 
 > [!NOTE]
@@ -25,7 +26,7 @@ A webhook-műveletekkel egyetlen HTTP POST-kérelemmel hívhat meg egy külső f
 
 A webhook-műveletekhez a következő táblázatban szereplő tulajdonságok szükségesek.
 
-| Tulajdonság | Leírás |
+| Tulajdonság | Description |
 |:--- |:--- |
 | **Webhook URL-címe** |A webhook URL-címe. |
 | **Egyéni JSON-adattartalom** |A webhooktal küldendő egyéni adattartalom, ha ezt a beállítást a riasztás létrehozásakor választja ki a rendszer. További információ: a [naplózási riasztások kezelése](alerts-log.md).|
@@ -36,7 +37,7 @@ A webhook-műveletekhez a következő táblázatban szereplő tulajdonságok sz�
 A webhookok egy URL-címet és egy JSON-ban formázott hasznos adatot tartalmaznak, amelyet a külső szolgáltatásnak küldenek. Alapértelmezés szerint a hasznos adatok tartalmazzák az alábbi táblázatban szereplő értékeket. Dönthet úgy, hogy lecseréli ezt a hasznos adatot egy saját egyéni felhasználóval. Ebben az esetben használja az egyes paraméterekhez tartozó táblázatban szereplő változókat, hogy az egyéni adattartalomban szereplő értékeket is tartalmazzák.
 
 
-| Paraméter | Változó | Description |
+| Paraméter | Változó | Leírás |
 |:--- |:--- |:--- |
 | *AlertRuleName* |#alertrulename |A riasztási szabály neve. |
 | *Súlyosság* |#severity |A kilőtt napló riasztásának súlyossági értéke. |
@@ -264,6 +265,5 @@ A következő minta hasznos adatokat tartalmaz egy egyéni webhook-művelethez a
 - Tudnivalók a [riasztásokról az Azure-riasztásokban](alerts-unified-log.md).
 - Ismerje meg, hogyan [kezelheti a naplózási riasztásokat az Azure-ban](alerts-log.md).
 - Műveleti csoportok létrehozása és kezelése [Az Azure-ban](action-groups.md).
-- További információ a [Application Insightsról](../../azure-monitor/app/analytics.md).
+- További információ a [Application Insightsról](../log-query/log-query-overview.md).
 - További információ a [naplók lekérdezéséről](../log-query/log-query-overview.md). 
-

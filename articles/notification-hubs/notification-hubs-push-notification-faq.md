@@ -15,12 +15,12 @@ ms.date: 11/13/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 11/13/2019
-ms.openlocfilehash: 0fe4ae76645ec2a0ae8aae93b9db987ece9a45b9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 85ebb7f5ac52f4eea25f9e6f1a2b1b5ac6f4caa5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85255126"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077927"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Leküldéses értesítések az Azure Notification Hubs: gyakori kérdések
 
@@ -138,7 +138,7 @@ Az alkalmazás-háttérbeli regisztrációk akkor hasznosak, ha a regisztráció
 
 ### <a name="what-is-the-push-notification-delivery-security-model"></a>Mi a leküldéses értesítések kézbesítésének biztonsági modellje?
 
-Az Azure Notification Hubs egy [közös hozzáférésű aláírás](../storage/common/storage-dotnet-shared-access-signature-part-1.md)-alapú biztonsági modellt használ. Használhatja a közös hozzáférésű aláírási jogkivonatokat a legfelső szintű névtér szintjén vagy a részletes értesítési központ szintjén. A közös hozzáférésű aláírási jogkivonatok különböző engedélyezési szabályok követésére állíthatók be, például üzenet-engedélyek küldésére vagy értesítési engedélyek figyelésére. További információ: [Notification Hubs biztonsági modell] dokumentum.
+Az Azure Notification Hubs egy [közös hozzáférésű aláírás](../storage/common/storage-sas-overview.md)-alapú biztonsági modellt használ. Használhatja a közös hozzáférésű aláírási jogkivonatokat a legfelső szintű névtér szintjén vagy a részletes értesítési központ szintjén. A közös hozzáférésű aláírási jogkivonatok különböző engedélyezési szabályok követésére állíthatók be, például üzenet-engedélyek küldésére vagy értesítési engedélyek figyelésére. További információ: [Notification Hubs biztonsági modell] dokumentum.
 
 ### <a name="how-should-i-handle-sensitive-payload-in-push-notifications"></a>Hogyan kezelhetem a bizalmas adattartalmat a leküldéses értesítésekben?
 
@@ -151,7 +151,7 @@ Minden kapcsolat, a küldőtől az Azure Notification Hubs a PNS, használja a H
 
 Bizalmas adattartalom küldéséhez biztonságos leküldéses mintát ajánlott használni. A küldő a bizalmas adattartalom nélkül kézbesít egy, az eszközhöz tartozó üzenet-azonosítóval rendelkező ping-értesítést. Amikor az eszközön az alkalmazás megkapja a hasznos adatokat, az alkalmazás közvetlenül a biztonságos API-t hívja meg az üzenet részleteinek beolvasásához. A minta megvalósításának útmutatóját a [Notification Hubs biztonságos leküldéses oktatóanyag] oldalán találja.
 
-## <a name="operations"></a>Műveletek
+## <a name="operations"></a>Üzemeltetés
 
 ### <a name="what-support-is-provided-for-disaster-recovery"></a>Milyen támogatást biztosít a vész-helyreállítás?
 
@@ -191,7 +191,7 @@ Az Azure Notification Hubs számos funkciót kínál a hibaelhárításhoz, kül
 
 Az Azure Notification Hubs lehetővé teszi a [Azure Portal]telemetria-beli megtekintését. A metrikák részletei a [Notification Hubs metrikák] lapon érhetők el.
 
-Programozott módon is elérheti a metrikákat. További információért tekintse át a következő cikkeket:
+Programozott módon is elérheti a metrikákat. További információkért tekintse át a következő cikkeket:
 
 - [Azure monitor mérőszámok beolvasása a .net](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/)-tel. Ez a példa a felhasználónevet és a jelszót használja. Ha tanúsítványt szeretne használni, a FromServicePrincipal metódust a [jelen példában](https://github.com/Azure/azure-libraries-for-net/blob/master/src/ResourceManagement/ResourceManager/Authentication/AzureCredentialsFactory.cs)látható módon kell megadnia a tanúsítvány megadásához. 
 - [Erőforrások metrikáinak és tevékenységi naplóinak beolvasása](https://azure.microsoft.com/resources/samples/monitor-dotnet-query-metrics-activitylogs/)
@@ -200,18 +200,18 @@ Programozott módon is elérheti a metrikákat. További információért tekint
 > [!NOTE]
 > A sikeres értesítések egyszerűen leküldéses értesítéseket küldenek a külső PNS (például iOS-re, macOS-re vagy FCM-re Android-eszközök esetén). A PNS feladata az értesítések továbbítása az eszközök számára. A PNS jellemzően nem tesznek elérhetővé kézbesítési metrikákat harmadik félnek.  
 
-[Azure Portalra]: https://portal.azure.com
+[Azure Portal]: https://portal.azure.com
 [Díjszabás Notification Hubs]: https://azure.microsoft.com/pricing/details/notification-hubs/
 [Notification Hubs SLA]: https://azure.microsoft.com/support/legal/sla/
-[Notification Hubs REST API-k]: https://msdn.microsoft.com/library/azure/dn530746.aspx
+[Notification Hubs REST API-k]: /previous-versions/azure/reference/dn530746(v=azure.100)
 [Mobile Services Pricing]: https://azure.microsoft.com/pricing/details/mobile-services/
-[Háttérbeli regisztrációs útmutató]: https://msdn.microsoft.com/library/azure/dn743807.aspx
-[Háttérbeli regisztrációs útmutató 2]: https://msdn.microsoft.com/library/azure/dn530747.aspx
-[Notification Hubs biztonsági modell]: https://msdn.microsoft.com/library/azure/dn495373.aspx
-[Biztonságos leküldéses oktatóanyag Notification Hubs]: https://azure.microsoft.com/documentation/articles/notification-hubs-aspnet-backend-ios-secure-push/
-[Hibaelhárítás Notification Hubs]: https://azure.microsoft.com/documentation/articles/notification-hubs-diagnosing/
+[Háttérbeli regisztrációs útmutató]: /previous-versions/azure/azure-services/dn743807(v=azure.100)
+[Háttérbeli regisztrációs útmutató 2]: /previous-versions/azure/azure-services/dn530747(v=azure.100)
+[Notification Hubs biztonsági modell]: /previous-versions/azure/azure-services/dn495373(v=azure.100)
+[Biztonságos leküldéses oktatóanyag Notification Hubs]: ./notification-hubs-aspnet-backend-ios-push-apple-apns-secure-notification.md
+[Hibaelhárítás Notification Hubs]: ./notification-hubs-push-notification-fixer.md
 [Notification Hubs metrikák]: ../azure-monitor/platform/metrics-supported.md#microsoftnotificationhubsnamespacesnotificationhubs
-[Regisztráció Exportálás/Importálás]: https://docs.microsoft.com/azure/notification-hubs/export-modify-registrations-bulk
-[Azure Portalra]: https://portal.azure.com
+[Regisztráció Exportálás/Importálás]: ./export-modify-registrations-bulk.md
+[Azure Portal]: https://portal.azure.com
 [complete samples]: https://github.com/Azure/azure-notificationhubs-samples
 [App Service Pricing]: https://azure.microsoft.com/pricing/details/app-service/

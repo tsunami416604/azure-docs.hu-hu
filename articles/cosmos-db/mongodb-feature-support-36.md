@@ -4,15 +4,15 @@ description: Ismerkedjen meg Azure Cosmos DB API-MongoDB (3,6 verzió) támogato
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: overview
-ms.date: 01/15/2020
+ms.date: 07/15/2020
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: 92c94b08602fb32ccebf6115306a5000665affe2
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: bd59b27b5af92d7aa90851c592ba4de495e41283
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171701"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076839"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-36-version-supported-features-and-syntax"></a>MongoDB-hez készült Azure Cosmos DB API (3.6-os verzió): támogatott funkciók és szintaxis
 
@@ -36,7 +36,7 @@ Azure Cosmos DB API-MongoDB a következő adatbázis-parancsokat támogatja:
 
 |Parancs  |Támogatott |
 |---------|---------|
-|delete | Yes |
+|törlés | Yes |
 |find | Yes     |
 |findAndModify | Yes  |
 |getLastError|   Yes |
@@ -103,7 +103,7 @@ Azure Cosmos DB API-MongoDB a következő adatbázis-parancsokat támogatja:
 |Parancslista elemre     |  No       |
 |Profiler     |  No       |
 |serverStatus     |  No       |
-|felül     |    No     |
+|top     |    No     |
 |whatsmyuri     |   Yes      |
 
 <a name="aggregation-pipeline"></a>
@@ -330,7 +330,7 @@ Azure Cosmos DB API-MongoDB a következő adatbázis-parancsokat támogatja:
 
 |Parancs  |Támogatott |
 |---------|---------|
-|Double    |Yes    |
+|Dupla    |Yes    |
 |Sztring    |Yes    |
 |Objektum    |Yes    |
 |Tömb    |Yes    |
@@ -340,7 +340,7 @@ Azure Cosmos DB API-MongoDB a következő adatbázis-parancsokat támogatja:
 |Dátum    |Yes    |
 |Null    |Yes    |
 |32 bites egész szám (int)    |Yes    |
-|Időbélyeg    |Yes    |
+|Timestamp    |Yes    |
 |64 bites egész szám (hosszú)    |Yes    |
 |MinKey    |Yes    |
 |MaxKey    |Yes    |
@@ -368,7 +368,7 @@ Azure Cosmos DB API-MongoDB a következő adatbázis-parancsokat támogatja:
 
 |Parancs  |Támogatott |
 |---------|---------|
-|Élettartam|    Yes    |
+|TTL|    Yes    |
 |Egyedi    |Yes|
 |Részleges|    No|
 |Kis-és nagybetűk megkülönböztetése    |No|
@@ -504,7 +504,7 @@ $polygon |  Yes |
 
 |Parancs  |Támogatott |
 |---------|---------|
-|cursor. batchSize ()    |    Yes|
+|cursor.batchSize ()    |    Yes|
 |kurzor. Bezárás ()    |Yes|
 |cursor. isClosed ()|        Yes|
 |kurzor. rendezés ()|    No|
@@ -542,7 +542,32 @@ A művelet használatakor a `findOneAndUpdate` rendezési műveletek egyetlen me
 
 ## <a name="unique-indexes"></a>Egyedi indexek
 
-Az egyedi indexek biztosítják, hogy egy adott mező ne legyen duplikált érték a gyűjtemény összes dokumentumában, hasonlóan ahhoz, ahogyan az egyediség megmarad az alapértelmezett "_id" kulcson. A createIndex parancs használatával egyéni indexeket hozhat létre Cosmos DBban, beleértve az "egyedi" korlátozást is.
+Az [egyedi indexek](mongodb-indexing.md#unique-indexes) biztosítják, hogy egy adott mező ne legyen duplikált érték a gyűjtemény összes dokumentumában, hasonlóan ahhoz, ahogyan az egyediség megmarad az alapértelmezett "_id" kulcson. A Cosmos DBban egyedi indexeket hozhat létre a `createIndex` parancs és a `unique` megkötés paraméter használatával:
+
+```javascript
+globaldb:PRIMARY> db.coll.createIndex( { "amount" : 1 }, {unique:true} )
+{
+        "_t" : "CreateIndexesResponse",
+        "ok" : 1,
+        "createdCollectionAutomatically" : false,
+        "numIndexesBefore" : 1,
+        "numIndexesAfter" : 4
+}
+```
+
+## <a name="compound-indexes"></a>Összetett indexek
+
+Az [összetett indexek](mongodb-indexing.md#compound-indexes-mongodb-server-version-36) lehetővé teszik, hogy legfeljebb 8 mezőből álló csoportok számára hozzon létre indexet. Ez a típusú index eltér a natív MongoDB összetett indextől. Azure Cosmos DB az összetett indexek a több mezőre alkalmazott rendezési műveletekhez használatosak. Összetett index létrehozásához több tulajdonságot kell megadnia paraméterként:
+
+```javascript
+globaldb:PRIMARY> db.coll.createIndex({"amount": 1, "other":1})
+{
+        "createdCollectionAutomatically" : false, 
+        "numIndexesBefore" : 1,
+        "numIndexesAfter" : 2,
+        "ok" : 1
+}
+```
 
 ## <a name="time-to-live-ttl"></a>Élettartam (TTL)
 
@@ -568,7 +593,7 @@ Az Azure Cosmos DB támogatja az automatikus, kiszolgálóoldali horizontális s
 
 A Azure Cosmos DB még nem támogatja a kiszolgálóoldali munkamenet-parancsokat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ: [Mongo 3,6 version features](https://devblogs.microsoft.com/cosmosdb/azure-cosmos-dbs-api-for-mongodb-now-supports-server-version-3-6/)
 - Ismerje meg, hogyan [használhatja a Studio 3T](mongodb-mongochef.md) Azure Cosmos db API-ját a MongoDB.

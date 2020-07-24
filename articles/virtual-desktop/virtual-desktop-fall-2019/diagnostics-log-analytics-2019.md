@@ -1,6 +1,6 @@
 ---
-title: Windows rendszerű virtuális asztali diagnosztika log Analytics – Azure
-description: A log Analytics használata a Windows rendszerű virtuális asztali diagnosztika szolgáltatással.
+title: Windows rendszerű virtuális asztali diagnosztika log Analytics (Fall 2019) – Azure
+description: Ismerje meg, hogyan használható a log Analytics a Windows rendszerű virtuális asztali (Fall 2019 kiadás) diagnosztikai szolgáltatással.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,14 +8,14 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: beb48b90afd54b044eb6d0ceaff32b53ebfcdc34
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c4c59268f63252813c7e08608d5d8ee499b11f53
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85205968"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077619"
 ---
-# <a name="use-log-analytics-for-the-diagnostics-feature"></a>Log Analytics használata a diagnosztikai szolgáltatáshoz
+# <a name="use-log-analytics-for-the-diagnostics-feature-fall-2019-release"></a>Log Analytics használata a diagnosztikai szolgáltatáshoz (a 2019-es verzióban)
 
 >[!IMPORTANT]
 >Ez a tartalom a Fall 2019 kiadásra vonatkozik, amely nem támogatja a Windows rendszerű virtuális asztali objektumokat Azure Resource Manager. Ha a Spring 2020 Update szolgáltatásban bevezetett Azure Resource Manager Windows rendszerű virtuális asztali objektumokat szeretne felügyelni, tekintse meg [ezt a cikket](../diagnostics-log-analytics.md).

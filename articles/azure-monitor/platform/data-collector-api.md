@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 10/01/2019
-ms.openlocfilehash: bcce08285c7412644de22f19ddd9d821ad3adea7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/14/2020
+ms.openlocfilehash: 80ad9475eb9b3724e09fb450787adfa079896bed
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85124391"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075324"
 ---
 # <a name="send-log-data-to-azure-monitor-with-the-http-data-collector-api-public-preview"></a>Naplóbejegyzések küldése a Azure Monitornak a HTTP-adatgyűjtő API-val (nyilvános előzetes verzió)
 Ez a cikk azt mutatja be, hogyan lehet a HTTP-adatgyűjtő API használatával elküldeni a naplófájlokat a Azure Monitor REST API-ügyfélről.  Ismerteti, hogyan lehet a parancsfájl vagy alkalmazás által gyűjtött adatokat formázni, belefoglalni egy kérelembe, és hogy az Azure Monitor által jóváhagyott kérést.  Ilyenek például a PowerShell, a C# és a Python.
@@ -66,7 +66,7 @@ Az engedélyezési fejléc formátuma a következő:
 Authorization: SharedKey <WorkspaceID>:<Signature>
 ```
 
-A *munkaterület azonosítója* az log Analytics munkaterület egyedi azonosítója. Az *aláírás* a kérelemből létrehozott [KIVONATOLÓ üzenethitelesítő kód (HMAC)](https://msdn.microsoft.com/library/system.security.cryptography.hmacsha256.aspx) , amelyet a rendszer a [sha256 algoritmus](https://msdn.microsoft.com/library/system.security.cryptography.sha256.aspx)használatával számít ki. Ezt követően Base64 kódolással kódolja.
+A *munkaterület azonosítója* az log Analytics munkaterület egyedi azonosítója. Az *aláírás* a kérelemből létrehozott [KIVONATOLÓ üzenethitelesítő kód (HMAC)](/dotnet/api/system.security.cryptography.hmacsha256?view=netcore-3.1) , amelyet a rendszer a [sha256 algoritmus](/dotnet/api/system.security.cryptography.sha256?view=netcore-3.1)használatával számít ki. Ezt követően Base64 kódolással kódolja.
 
 Ezzel a formátummal kódolja a **SharedKey** aláírási karakterláncát:
 
@@ -135,10 +135,13 @@ A tulajdonság adattípusának azonosításához Azure Monitor hozzáadja az ut�
 | Tulajdonság adattípusa | Utótag |
 |:--- |:--- |
 | Sztring |_s |
-| Logikai |_b |
-| Double |_d |
+| Logikai érték |_b |
+| Dupla |_d |
 | Dátum/idő |_t |
 | GUID (karakterláncként tárolva) |_g |
+
+> [!NOTE]
+> A GUID azonosítóként megjelenő karakterlánc-értékek a _g utótagot kapják meg, és GUID-ként lesznek formázva, még akkor is, ha a bejövő érték kötőjeleket tartalmaz. Például a "8145d822-13a7-44ad-859c-36f31a84f6dd" és a "8145d82213a744ad859c36f31a84f6dd" is a "8145d822-13a7-44ad-859c-36f31a84f6dd" néven lesz tárolva. Az egyetlen különbség a és egy másik karakterlánc között a név és a kötőjelek beszúrásának _g, ha nincsenek megadva a bemenetben. 
 
 Az egyes tulajdonságokhoz Azure Monitor által használt adattípus attól függ, hogy az új rekord bejegyzéstípusa már létezik-e.
 
@@ -180,7 +183,7 @@ A 200-es HTTP-állapotkód azt jelenti, hogy a kérelem feldolgozásra érkezett
 
 Ez a táblázat felsorolja a szolgáltatás által visszaadott állapotkódok teljes készletét:
 
-| Code | Állapot | Hibakód | Description |
+| Code | status | Hibakód | Description |
 |:--- |:--- |:--- |:--- |
 | 200 |OK | |A kérés elfogadása sikeresen megtörtént. |
 | 400 |Hibás kérelem |InactiveCustomer |A munkaterület le lett zárva. |
@@ -464,14 +467,99 @@ def post_data(customer_id, shared_key, body, log_type):
 
 post_data(customer_id, shared_key, body, log_type)
 ```
+
+### <a name="python-3-sample"></a>Python 3 minta
+```python
+import json
+import requests
+import datetime
+import hashlib
+import hmac
+import base64
+
+# Update the customer ID to your Log Analytics workspace ID
+customer_id = 'xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
+
+# For the shared key, use either the primary or the secondary Connected Sources client authentication key   
+shared_key = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+
+# The log type is the name of the event that is being submitted
+log_type = 'WebMonitorTest'
+
+# An example JSON web monitor object
+json_data = [{
+   "slot_ID": 12345,
+    "ID": "5cdad72f-c848-4df0-8aaa-ffe033e75d57",
+    "availability_Value": 100,
+    "performance_Value": 6.954,
+    "measurement_Name": "last_one_hour",
+    "duration": 3600,
+    "warning_Threshold": 0,
+    "critical_Threshold": 0,
+    "IsActive": "true"
+},
+{   
+    "slot_ID": 67890,
+    "ID": "b6bee458-fb65-492e-996d-61c4d7fbb942",
+    "availability_Value": 100,
+    "performance_Value": 3.379,
+    "measurement_Name": "last_one_hour",
+    "duration": 3600,
+    "warning_Threshold": 0,
+    "critical_Threshold": 0,
+    "IsActive": "false"
+}]
+body = json.dumps(json_data)
+
+#####################
+######Functions######  
+#####################
+
+# Build the API signature
+def build_signature(customer_id, shared_key, date, content_length, method, content_type, resource):
+    x_headers = 'x-ms-date:' + date
+    string_to_hash = method + "\n" + str(content_length) + "\n" + content_type + "\n" + x_headers + "\n" + resource
+    bytes_to_hash = bytes(string_to_hash, encoding="utf-8")  
+    decoded_key = base64.b64decode(shared_key)
+    encoded_hash = base64.b64encode(hmac.new(decoded_key, bytes_to_hash, digestmod=hashlib.sha256).digest()).decode()
+    authorization = "SharedKey {}:{}".format(customer_id,encoded_hash)
+    return authorization
+
+# Build and send a request to the POST API
+def post_data(customer_id, shared_key, body, log_type):
+    method = 'POST'
+    content_type = 'application/json'
+    resource = '/api/logs'
+    rfc1123date = datetime.datetime.utcnow().strftime('%a, %d %b %Y %H:%M:%S GMT')
+    content_length = len(body)
+    signature = build_signature(customer_id, shared_key, rfc1123date, content_length, method, content_type, resource)
+    uri = 'https://' + customer_id + '.ods.opinsights.azure.com' + resource + '?api-version=2016-04-01'
+
+    headers = {
+        'content-type': content_type,
+        'Authorization': signature,
+        'Log-Type': log_type,
+        'x-ms-date': rfc1123date
+    }
+
+    response = requests.post(uri,data=body, headers=headers)
+    if (response.status_code >= 200 and response.status_code <= 299):
+        print('Accepted')
+    else:
+        print("Response code: {}".format(response.status_code))
+
+post_data(customer_id, shared_key, body, log_type)
+```
+
+
 ## <a name="alternatives-and-considerations"></a>Alternatívák és szempontok
 Habár az adatgyűjtő API-nak le kell fednie a legtöbb szükséges adatot a szabad formátumú adatok Azure-naplókba való gyűjtéséhez, vannak olyan példányok, amelyekben szükség lehet az API bizonyos korlátainak leküzdésére. Az összes lehetőség a következő:
 
 | Alternatív | Description | Legmegfelelőbb a következőhöz: |
 |---|---|---|
-| [Egyéni események](https://docs.microsoft.com/azure/azure-monitor/app/api-custom-events-metrics?toc=%2Fazure%2Fazure-monitor%2Ftoc.json#properties): natív SDK-alapú betöltés Application Insights | Application Insights, amely jellemzően az alkalmazáson belüli SDK-n keresztül lett kialakítva, lehetővé teszi, hogy egyéni eseményeken keresztül küldjön egyéni adatait. | <ul><li> Az alkalmazásban létrehozott, de az SDK által az alapértelmezett adattípusok (kérések, függőségek, kivételek stb.) egyikén keresztül generált adatmennyiség.</li><li> A leggyakrabban a Application Insightsban lévő egyéb alkalmazásadatok korrelációját képező adatértékek </li></ul> |
-| Adatgyűjtő API a Azure Monitor-naplókban | A Azure Monitor-naplókban található adatgyűjtő API teljesen nyitott módon tölti fel az adatmennyiséget. A JSON-objektumokban formázott összes adat itt küldhető el. Az elküldés után a rendszer feldolgozza és elérhetővé teszi a naplókban, hogy a naplókban vagy más Application Insights-adatszolgáltatásokban is korreláljon. <br/><br/> Az adatok egy Azure Blob-blobba való feltöltése viszonylag egyszerű, így a fájlok feldolgozására és a Log Analyticsba való feltöltésére is sor kerül. Tekintse meg [ezt](https://docs.microsoft.com/azure/log-analytics/log-analytics-create-pipeline-datacollector-api) a folyamatot, amely egy ilyen folyamat megvalósítását ismerteti. | <ul><li> A Application Insightson belüli alkalmazásban nem szükségszerűen generált adatértékek.</li><li> Ilyenek például a keresési és a egyedkapcsolati táblázatok, a hivatkozási adatok, az előre összevont statisztikák és így tovább. </li><li> Más Azure Monitor-adattípusokkal (Application Insights, egyéb naplók adattípusokkal, Security Centerekkel, a tárolók/virtuális gépek Azure Monitorával stb.) kapcsolatban felhasználható adatkezelési célokra szolgál. </li></ul> |
-| [Azure Data Explorer](https://docs.microsoft.com/azure/data-explorer/ingest-data-overview) | Az Azure Adatkezelő (ADX) az adatplatform, amely Application Insights elemzési és Azure Monitor naplókra épül. A már általánosan elérhető ("GA") az adatplatform nyers formájában való használata biztosítja a teljes rugalmasságot (de a felügyelet terhelését igényli) a fürtön (RBAC, megőrzési arány, séma stb.). A ADX számos betöltési [lehetőséget](https://docs.microsoft.com/azure/data-explorer/ingest-data-overview#ingestion-methods) biztosít, többek között a [CSV-, a TSV-és a JSON](https://docs.microsoft.com/azure/kusto/management/mappings?branch=master) -fájlokat. | <ul><li> Olyan adat, amely nem felel meg a Application Insights vagy a naplók alatt lévő többi adatnak. </li><li> Olyan speciális betöltési vagy feldolgozási képességeket igénylő adatfeldolgozási funkciók, amelyek jelenleg nem érhetők el Azure Monitor naplókban. </li></ul> |
+| [Egyéni események](../app/api-custom-events-metrics.md?toc=%2Fazure%2Fazure-monitor%2Ftoc.json#properties): natív SDK-alapú betöltés Application Insights | Application Insights, amely jellemzően az alkalmazáson belüli SDK-n keresztül lett kialakítva, lehetővé teszi, hogy egyéni eseményeken keresztül küldjön egyéni adatait. | <ul><li> Az alkalmazásban létrehozott, de az SDK által az alapértelmezett adattípusok (kérések, függőségek, kivételek stb.) egyikén keresztül generált adatmennyiség.</li><li> A leggyakrabban a Application Insightsban lévő egyéb alkalmazásadatok korrelációját képező adatértékek </li></ul> |
+| Adatgyűjtő API a Azure Monitor-naplókban | A Azure Monitor-naplókban található adatgyűjtő API teljesen nyitott módon tölti fel az adatmennyiséget. A JSON-objektumokban formázott összes adat itt küldhető el. Az elküldés után a rendszer feldolgozza és elérhetővé teszi a naplókban, hogy a naplókban vagy más Application Insights-adatszolgáltatásokban is korreláljon. <br/><br/> Az adatok egy Azure Blob-blobba való feltöltése viszonylag egyszerű, így a fájlok feldolgozására és a Log Analyticsba való feltöltésére is sor kerül. Tekintse meg [ezt](./create-pipeline-datacollector-api.md) a folyamatot, amely egy ilyen folyamat megvalósítását ismerteti. | <ul><li> A Application Insightson belüli alkalmazásban nem szükségszerűen generált adatértékek.</li><li> Ilyenek például a keresési és a egyedkapcsolati táblázatok, a hivatkozási adatok, az előre összevont statisztikák és így tovább. </li><li> Más Azure Monitor-adattípusokkal (Application Insights, egyéb naplók adattípusokkal, Security Centerekkel, a tárolók/virtuális gépek Azure Monitorával stb.) kapcsolatban felhasználható adatkezelési célokra szolgál. </li></ul> |
+| [Azure Data Explorer](/azure/data-explorer/ingest-data-overview) | Az Azure Adatkezelő (ADX) az adatplatform, amely Application Insights elemzési és Azure Monitor naplókra épül. A már általánosan elérhető ("GA") az adatplatform nyers formájában való használata biztosítja a teljes rugalmasságot (de a felügyelet terhelését igényli) a fürtön (RBAC, megőrzési arány, séma stb.). A ADX számos betöltési [lehetőséget](/azure/data-explorer/ingest-data-overview#ingestion-methods) biztosít, többek között a [CSV-, a TSV-és a JSON](/azure/kusto/management/mappings?branch=master) -fájlokat. | <ul><li> Olyan adat, amely nem felel meg a Application Insights vagy a naplók alatt lévő többi adatnak. </li><li> Olyan speciális betöltési vagy feldolgozási képességeket igénylő adatfeldolgozási funkciók, amelyek jelenleg nem érhetők el Azure Monitor naplókban. </li></ul> |
 
 
 ## <a name="next-steps"></a>További lépések

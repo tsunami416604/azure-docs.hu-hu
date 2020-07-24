@@ -7,20 +7,22 @@ ms.topic: overview
 ms.date: 10/1/2019
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: 5f4a90859831e6134530b94dfa80c11eb740301a
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: 8066ba5c895ec5c3fdbf06ffc0a1f30117dcd4d1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85113313"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076812"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb"></a>MongoDB-hez készült Azure Cosmos DB API
 
-Az [Azure Cosmos DB](introduction.md) a Microsoft globálisan elosztott, többmodelles adatbázis-szolgáltatása az alapvető fontosságú alkalmazásokhoz. Az Azure Cosmos DB az [iparág legjobb szolgáltatásiszint-szerződései](https://azure.microsoft.com/support/legal/sla/cosmos-db/) által biztosított [teljes körű, globális terjesztést](distribute-data-globally.md) kínál, valamint [a teljesítmény és a tárterület rugalmas méretezését](partition-data.md) világszerte, az esetek 99%-ában egyszámjegyű ezredmásodperces késéseket és garantált magas rendelkezésre állást. Az Azure Cosmos DB [automatikusan indexeli az adatokat](https://www.vldb.org/pvldb/vol8/p1668-shukla.pdf) anélkül, hogy a felhasználónak sémákat és indexeket kellene kezelnie. Egy többmodelles szolgáltatásról van szó, amely támogatja a dokumentum, a kulcs-érték, a gráf és az oszlop típusú adatmodelleket. Alapértelmezés szerint a Cosmos DB az SQL API használatával kommunikálhat. Emellett a Cosmos DB szolgáltatás a Common NoSQL API-k számára is megvalósítja a vezetékes protokollokat, beleértve a Cassandra, a MongoDB, a Gremlin és az Azure Table Storaget. Ez lehetővé teszi, hogy ismerős NoSQL-ügyfélszoftvereit és eszközeit használja a Cosmos-adatbázissal való kommunikációhoz.
+Az [Azure Cosmos DB](introduction.md) a Microsoft globálisan elosztott, többmodelles adatbázis-szolgáltatása az alapvető fontosságú alkalmazásokhoz. Az Azure Cosmos DB az [iparág legjobb szolgáltatásiszint-szerződései](https://azure.microsoft.com/support/legal/sla/cosmos-db/) által biztosított [teljes körű, globális terjesztést](distribute-data-globally.md) kínál, valamint [a teljesítmény és a tárterület rugalmas méretezését](partition-data.md) világszerte, az esetek 99%-ában egyszámjegyű ezredmásodperces késéseket és garantált magas rendelkezésre állást. Az Azure Cosmos DB [automatikusan indexeli az adatokat](https://www.vldb.org/pvldb/vol8/p1668-shukla.pdf) anélkül, hogy a felhasználónak sémákat és indexeket kellene kezelnie. Többmodelles, és támogatja a dokumentumok, a kulcs-érték, a gráf és az oszlopos adatmodelleket. Azure Cosmos DB a szolgáltatás a Common NoSQL API-k számára implementálja a hálózati protokollokat, beleértve a Cassandra, a MongoDB, a Gremlin és az Azure Table Storage. Ez lehetővé teszi, hogy ismerős NoSQL-ügyfélszoftvereit és eszközeit használja a Cosmos-adatbázissal való kommunikációhoz.
 
 ## <a name="wire-protocol-compatibility"></a>Huzal protokoll kompatibilitása
 
-Azure Cosmos DB a Common NoSQL-adatbázisok, például a Cassandra, a MongoDB, a Gremlin és az Azure Tables Storage protokollokat implementálja. Azáltal, hogy a vezetékes protokollok natív megvalósítását közvetlenül és hatékonyan biztosítja a Cosmos DB belül, lehetővé teszi a NoSQL-adatbázisok meglévő ügyféloldali SDK-k, illesztőprogramjainak és eszközeinek, hogy a Cosmos DB transzparens módon használhassák a műveleteket. A Cosmos DB nem használja az adatbázisok egyik forráskódját sem a NoSQL-adatbázisok vezeték nélküli API-jai biztosításához.
+Azure Cosmos DB megvalósítja a MongoDB átviteli protokollt. Ez a megvalósítás lehetővé teszi az átlátható kompatibilitást a natív MongoDB ügyféloldali SDK-k, illesztőprogramok és eszközök használatával. Azure Cosmos DB üzemelteti a MongoDB-adatbázis motorját. A MongoDB által támogatott szolgáltatások részletei itt találhatók: 
+- [Azure Cosmos DB API a Mongo DB Engine 3,6-es verziójához](mongodb-feature-support-36.md)
+- [Azure Cosmos DB API a Mongo DB Engine 3,2-es verziójához](mongodb-feature-support.md)
 
 Alapértelmezés szerint a Azure Cosmos DB API-MongoDB használatával létrehozott új fiókok kompatibilisek az MongoDB Wire protokoll 3,6-es verziójával. Minden olyan MongoDB-ügyfél-illesztőprogram, amely megérti ezt a protokoll-verziót, natív módon csatlakozhat Cosmos DBhoz.
 
@@ -53,5 +55,7 @@ Kövesse a gyors útmutatókat, és hozzon létre egy Azure Cosmos-fiókot, és 
 * Kövesse az [MongoDB-adatimportálás Azure Cosmos db](mongodb-migrate.md) oktatóanyagba című témakört, amely az adatait egy Cosmos-adatbázisba importálja.
 * Kapcsolódjon egy Cosmos-fiókhoz a [Robo 3T](mongodb-robomongo.md)használatával.
 * Ismerje meg, hogyan [konfigurálhatja a globálisan elosztott alkalmazások olvasási beállításait](../cosmos-db/tutorial-global-distribution-mongodb.md).
+* Keresse meg a [hibaelhárítási útmutatóban](mongodb-troubleshoot.md) gyakran előforduló hibákat a megoldásokat
+
 
 <sup>Megjegyzés: Ez a cikk az Azure Cosmos DB egy olyan szolgáltatását ismerteti, amely a MongoDB-adatbázisokkal való, vezetékes protokoll-kompatibilitást biztosít. A Microsoft nem futtat MongoDB-adatbázisokat a szolgáltatás biztosításához. Azure Cosmos DB nem kapcsolódik a MongoDB, Inc. szolgáltatáshoz.</sup>

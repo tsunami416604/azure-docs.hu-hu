@@ -6,12 +6,12 @@ author: MS-jgol
 ms.author: jgol
 ms.date: 05/31/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: 87342dcd316b0364522baa01e632b704665c998e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b9be0808d4edc9662c1d3a4144f3102242560564
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85363759"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075350"
 ---
 # <a name="what-is-auto-instrumentation-or-codeless-attach---azure-monitor-application-insights"></a>Mi az Auto-Instrumentation vagy a kód-Azure Monitor Application Insights?
 
@@ -26,11 +26,11 @@ Ahogy egyre több integrációt adunk hozzá, az automatikus rendszerállapot-ki
 |Környezet/erőforrás-szolgáltató | .NET            | .NET Core       | Java            | Node.js         |
 |------------------------------|-----------------|-----------------|-----------------|-----------------|
 |Azure App Service Windows rendszeren  | GA, OnBD *       | GA, opt-in      | Privát előzetes verzió | Privát előzetes verzió |
-|Azure App Service Linuxon    | N.A.             | Nem támogatott   | Nyilvános előzetes verzió  | Nyilvános előzetes verzió  |
-|Azure App Service AK-on      | N.A.             | A tervezésben       | A tervezésben       | A tervezésben       |
+|Azure App Service Linuxon    | n.a.             | Nem támogatott   | Nyilvános előzetes verzió  | Nyilvános előzetes verzió  |
+|Azure App Service AK-on      | n.a.             | A tervezésben       | A tervezésben       | A tervezésben       |
 |Azure Functions – alapszintű       | GA, OnBD *       | GA, OnBD *       | GA, OnBD *       | GA, OnBD *       |
 |Azure Functions – függőségek| Nem támogatott   | Nem támogatott   | Nyilvános előzetes verzió  | Nem támogatott   |
-|Azure Kubernetes Service      | N.A.             | A tervezésben       | Ügynökön keresztül   | A tervezésben       |
+|Azure Kubernetes Service      | n.a.             | A tervezésben       | Ügynökön keresztül   | A tervezésben       |
 |Azure-beli virtuális gépek Windows             | Nyilvános előzetes verzió  | Nem támogatott   | Nem támogatott   | Nem támogatott   |
 |Helyszíni virtuális gépek Windows       | GA, opt-in      | Nem támogatott   | Ügynökön keresztül   | Nem támogatott   |
 |Önálló ügynök – bármely env.   | Nem támogatott   | Nem támogatott   | Nyilvános előzetes verzió  | Nem támogatott   |
@@ -41,7 +41,7 @@ Ahogy egyre több integrációt adunk hozzá, az automatikus rendszerállapot-ki
 
 ### <a name="windows"></a>Windows
 
-Az [alkalmazások figyelése Azure app Service](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps?tabs=net) a .NET-alkalmazáshoz érhető el, és alapértelmezés szerint engedélyezve van, a .net Core egyetlen kattintással engedélyezhető, a Java és a Node.js pedig privát előzetes verzióban.
+Az [alkalmazások figyelése Azure app Service](./azure-web-apps.md?tabs=net) a .NET-alkalmazáshoz érhető el, és alapértelmezés szerint engedélyezve van, a .net Core egyetlen kattintással engedélyezhető, a Java és a Node.js pedig privát előzetes verzióban.
 
 ### <a name="linux"></a>Linux 
 
@@ -49,24 +49,24 @@ A Java-és Node.js-alkalmazásoknak a App Serviceban való figyelése nyilvános
 
 ## <a name="azure-functions"></a>Azure Functions
 
-A Azure Functions alapszintű figyelése alapértelmezés szerint engedélyezve van a naplók, a teljesítmény, a hibák és a HTTP-kérések gyűjtésére. A Java-alkalmazások esetében engedélyezheti a szélesebb körű figyelést az elosztott nyomkövetéssel, és lekérheti a végpontok közötti tranzakció részleteit. A Javához készült funkció nyilvános előzetes verzióban érhető el, és [Azure Portalban is engedélyezhető](https://docs.microsoft.com/azure/azure-monitor/app/monitor-functions).
+A Azure Functions alapszintű figyelése alapértelmezés szerint engedélyezve van a naplók, a teljesítmény, a hibák és a HTTP-kérések gyűjtésére. A Java-alkalmazások esetében engedélyezheti a szélesebb körű figyelést az elosztott nyomkövetéssel, és lekérheti a végpontok közötti tranzakció részleteit. A Javához készült funkció nyilvános előzetes verzióban érhető el, és [Azure Portalban is engedélyezhető](./monitor-functions.md).
 
 ## <a name="azure-kubernetes-service"></a>Azure Kubernetes Service
 
-Az Azure Kubernetes szolgáltatás kód nélküli üzembe helyezése jelenleg a [különálló ügynökön](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)keresztül érhető el Java-alkalmazásokhoz. 
+Az Azure Kubernetes szolgáltatás kód nélküli üzembe helyezése jelenleg a [különálló ügynökön](./java-in-process-agent.md)keresztül érhető el Java-alkalmazásokhoz. 
 
 ## <a name="azure-windows-vms-and-virtual-machine-scale-set"></a>Azure Windows-alapú virtuális gépek és virtuálisgép-méretezési csoport
 
-Az [Azure-beli virtuális gépek és a virtuálisgép-méretezési csoport automatikus kiosztása .net-](https://docs.microsoft.com/azure/azure-monitor/app/azure-vm-vmss-apps) alkalmazásokhoz érhető el 
+Az [Azure-beli virtuális gépek és a virtuálisgép-méretezési csoport automatikus kiosztása .net-](./azure-vm-vmss-apps.md) alkalmazásokhoz érhető el 
 
 ## <a name="on-premises-servers"></a>Helyszíni kiszolgálók
-Egyszerűen engedélyezheti a helyszíni Windows- [kiszolgálók .NET-alkalmazásokhoz](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-overview) és [Java](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)-alkalmazásokhoz való figyelését.
+Egyszerűen engedélyezheti a helyszíni Windows- [kiszolgálók .NET-alkalmazásokhoz](./status-monitor-v2-overview.md) és [Java](./java-in-process-agent.md)-alkalmazásokhoz való figyelését.
 
 ## <a name="other-environments"></a>Egyéb környezetek
-A sokoldalú Java önálló ügynök bármilyen környezetben működik, nincs szükség a kód megalkotására. Az [útmutatót követve](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent) engedélyezze Application Insightst, és olvassa el a Java-ügynök csodálatos képességeit. Az ügynök nyilvános előzetes verzióban érhető el, és minden régióban elérhető. 
+A sokoldalú Java önálló ügynök bármilyen környezetben működik, nincs szükség a kód megalkotására. Az [útmutatót követve](./java-in-process-agent.md) engedélyezze Application Insightst, és olvassa el a Java-ügynök csodálatos képességeit. Az ügynök nyilvános előzetes verzióban érhető el, és minden régióban elérhető. 
 
 ## <a name="next-steps"></a>További lépések
 
-* [Application Insights áttekintése](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview)
+* [Application Insights áttekintése](./app-insights-overview.md)
 * [Alkalmazás-hozzárendelés](./../../azure-monitor/app/app-map.md)
 * [Végpontok közötti teljesítmény figyelése](./../../azure-monitor/learn/tutorial-performance.md)

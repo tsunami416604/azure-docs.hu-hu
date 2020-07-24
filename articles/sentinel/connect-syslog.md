@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: 65c4e5d9e0752379541063c8a80a4316196ad7c3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 38e47469723d767561dd778b8f175780ab181fd4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85565378"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076260"
 ---
 # <a name="connect-your-external-solution-using-syslog"></a>Külső megoldás összekötése a syslog használatával
 
@@ -65,7 +65,7 @@ További információ: [syslog-adatforrások Azure monitorban](../azure-monitor/
 
 6. Ha hozzáadta az összes figyelni kívánt létesítményt, és kiigazította az egyes súlyossági beállításokat, jelölje be az **alábbi konfiguráció alkalmazása a saját gépekre**jelölőnégyzetet.
 
-7. Kattintson a **Mentés** gombra. 
+7. Válassza a **Mentés** lehetőséget. 
 
 8. Győződjön meg arról, hogy a syslog készülékén a megadott létesítményeket küldi el.
 
@@ -94,7 +94,9 @@ Az észleléshez a syslog-adatösszekötő adott konfigurációja szükséges:
 
 2. A syslog-adatok gyűjtéséhez elegendő idő szükséges. Ezután navigáljon az **Azure Sentinel-logs**elemhez, és másolja és illessze be a következő lekérdezést:
     
-        Syslog |  where Facility in ("authpriv","auth")| extend c = extract( "Accepted\\s(publickey|password|keyboard-interactive/pam)\\sfor ([^\\s]+)",1,SyslogMessage)| where isnotempty(c) | count 
+    ```console
+    Syslog |  where Facility in ("authpriv","auth")| extend c = extract( "Accepted\\s(publickey|password|keyboard-interactive/pam)\\sfor ([^\\s]+)",1,SyslogMessage)| where isnotempty(c) | count 
+    ```
     
     Szükség esetén módosítsa az **időtartományt** , majd válassza a **Futtatás**lehetőséget.
     

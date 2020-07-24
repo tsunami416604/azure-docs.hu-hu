@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/25/2019
-ms.openlocfilehash: 1a5a2682198f9ce9f5cb39f21e244c723ca513d9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/17/2020
+ms.openlocfilehash: 1f0fb1ee8580c0c7f6eb30228b65e0a3780ef0a8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81416652"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076795"
 ---
 # <a name="copy-data-from-salesforce-marketing-cloud-using-azure-data-factory"></a>Adatok másolása a Salesforce marketing-felhőből Azure Data Factory használatával
 
@@ -34,7 +34,7 @@ A Salesforce marketing Cloud Connector a következő tevékenységek esetében t
 
 A Salesforce marketing-felhőből származó adatok másolása bármely támogatott fogadó adattárba lehetséges. A másolási tevékenység által a forrásként/mosogatóként támogatott adattárak listáját a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) táblázatban tekintheti meg.
 
-A Salesforce marketing Cloud Connector támogatja a OAuth 2 hitelesítést. A [Salesforce marketing Cloud Rest APIra](https://developer.salesforce.com/docs/atlas.en-us.mc-apis.meta/mc-apis/index-api.htm)épül.
+A Salesforce marketing Cloud Connector támogatja a OAuth 2 hitelesítést, és támogatja az örökölt és a bővített csomagok típusát is. Az összekötő a [Salesforce marketing Cloud Rest APIra](https://developer.salesforce.com/docs/atlas.en-us.mc-apis.meta/mc-apis/index-api.htm)épül.
 
 >[!NOTE]
 >Ez az összekötő nem támogatja az egyéni objektumok vagy az egyéni adatbővítmények beolvasását.
@@ -51,14 +51,18 @@ A Salesforce marketing Cloud társított szolgáltatás a következő tulajdons�
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A Type tulajdonságot a következőre kell beállítani: **SalesforceMarketingCloud** | Igen |
-| ügyfél-azonosító | A Salesforce marketing Cloud-alkalmazáshoz társított ügyfél-azonosító.  | Igen |
-| clientSecret | A Salesforce marketing Cloud-alkalmazáshoz társított ügyfél-titok. Kiválaszthatja, hogy ezt a mezőt SecureString szeretné tárolni az ADF-ben való biztonságos tároláshoz, vagy a jelszó tárolásához Azure Key Vaultban, majd az ADF másolási tevékenységének lekérése az adatok másolásakor – további információ a [tárolt hitelesítő adatokról Key Vault](store-credentials-in-key-vault.md). | Igen |
-| useEncryptedEndpoints | Meghatározza, hogy az adatforrás-végpontok HTTPS protokollal legyenek titkosítva. Az alapértelmezett érték az igaz.  | Nem |
-| useHostVerification | Megadja, hogy szükséges-e az állomásnév a kiszolgáló tanúsítványában, hogy egyezzen a kiszolgáló állomásneve a TLS-kapcsolaton keresztüli csatlakozáskor. Az alapértelmezett érték az igaz.  | Nem |
-| usePeerVerification | Megadja, hogy a rendszer ellenőrizze-e a kiszolgáló identitását TLS-kapcsolaton keresztül. Az alapértelmezett érték az igaz.  | Nem |
+| típus | A Type tulajdonságot a következőre kell beállítani: **SalesforceMarketingCloud** | Yes |
+| connectionProperties | A Salesforce marketing-felhőhöz való kapcsolódást meghatározó tulajdonságok csoportja. | Yes |
+| ***Alatt `connectionProperties` :*** | | |
+| authenticationType | Megadja a használandó hitelesítési módszert. Az engedélyezett értékek a következők: `Enhanced sts OAuth 2.0` vagy `OAuth_2.0` .<br><br>A Salesforce marketing-felhő örökölt csomagja csak `OAuth_2.0` a továbbfejlesztett csomagok igényét támogatja `Enhanced sts OAuth 2.0` . <br>2019. augusztus 1-től a Salesforce marketing Cloud eltávolította a régi csomagok létrehozására való képességet. Minden új csomag továbbfejlesztett csomag. | Yes |
+| gazda | A továbbfejlesztett csomag esetében a gazdagépnek a "MC" betűvel kezdődő, 28 karakterből álló karakterláncnak kell lennie az [altartománynak](https://developer.salesforce.com/docs/atlas.en-us.mc-apis.meta/mc-apis/your-subdomain-tenant-specific-endpoints.htm) , például `mc563885gzs27c5t9-63k636ttgm` :. <br>Örökölt csomag esetén válassza a következőt: `www.exacttargetapis.com` . | Yes |
+| ügyfél-azonosító | A Salesforce marketing Cloud-alkalmazáshoz társított ügyfél-azonosító.  | Yes |
+| clientSecret | A Salesforce marketing Cloud-alkalmazáshoz társított ügyfél-titok. Kiválaszthatja, hogy ezt a mezőt SecureString szeretné-e tárolni az ADF-ben, vagy tárolja a titkot a Azure Key Vaultban, és az ADF másolási tevékenység lekérése az adatok másolásával – további információ a [tárolt hitelesítő adatokról Key Vault](store-credentials-in-key-vault.md). | Yes |
+| useEncryptedEndpoints | Meghatározza, hogy az adatforrás-végpontok HTTPS protokollal legyenek titkosítva. Az alapértelmezett érték az igaz.  | No |
+| useHostVerification | Megadja, hogy szükséges-e az állomásnév a kiszolgáló tanúsítványában, hogy egyezzen a kiszolgáló állomásneve a TLS-kapcsolaton keresztüli csatlakozáskor. Az alapértelmezett érték az igaz.  | No |
+| usePeerVerification | Megadja, hogy a rendszer ellenőrizze-e a kiszolgáló identitását TLS-kapcsolaton keresztül. Az alapértelmezett érték az igaz.  | No |
 
-**Példa:**
+**Példa: bővített STS OAuth 2 hitelesítés használata a továbbfejlesztett csomaghoz** 
 
 ```json
 {
@@ -66,14 +70,66 @@ A Salesforce marketing Cloud társított szolgáltatás a következő tulajdons�
     "properties": {
         "type": "SalesforceMarketingCloud",
         "typeProperties": {
-            "clientId" : "<clientId>",
+            "connectionProperties": {
+                "host": "<subdomain e.g. mc563885gzs27c5t9-63k636ttgm>",
+                "authenticationType": "Enhanced sts OAuth 2.0",
+                "clientId": "<clientId>",
+                "clientSecret": {
+                     "type": "SecureString",
+                     "value": "<clientSecret>"
+                },
+                "useEncryptedEndpoints": true,
+                "useHostVerification": true,
+                "usePeerVerification": true
+            }
+        }
+    }
+}
+
+```
+
+**Példa: OAuth 2 hitelesítés használata örökölt csomaghoz** 
+
+```json
+{
+    "name": "SalesforceMarketingCloudLinkedService",
+    "properties": {
+        "type": "SalesforceMarketingCloud",
+        "typeProperties": {
+            "connectionProperties": {
+                "host": "www.exacttargetapis.com",
+                "authenticationType": "OAuth_2.0",
+                "clientId": "<clientId>",
+                "clientSecret": {
+                     "type": "SecureString",
+                     "value": "<clientSecret>"
+                },
+                "useEncryptedEndpoints": true,
+                "useHostVerification": true,
+                "usePeerVerification": true
+            }
+        }
+    }
+}
+
+```
+
+Ha a Salesforce marketing Cloud társított szolgáltatást használta a következő hasznos adatokkal, akkor továbbra is támogatott, míg a rendszer azt javasolja, hogy az új továbbítási szolgáltatással bővítse a csomag támogatását.
+
+```json
+{
+    "name": "SalesforceMarketingCloudLinkedService",
+    "properties": {
+        "type": "SalesforceMarketingCloud",
+        "typeProperties": {
+            "clientId": "<clientId>",
             "clientSecret": {
                  "type": "SecureString",
                  "value": "<clientSecret>"
             },
-            "useEncryptedEndpoints" : true,
-            "useHostVerification" : true,
-            "usePeerVerification" : true
+            "useEncryptedEndpoints": true,
+            "useHostVerification": true,
+            "usePeerVerification": true
         }
     }
 }
@@ -88,7 +144,7 @@ Ha adatokat szeretne másolni a Salesforce marketing-felhőből, állítsa az ad
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **SalesforceMarketingCloudObject** | Igen |
+| típus | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **SalesforceMarketingCloudObject** | Yes |
 | tableName | A tábla neve. | Nem (ha a "lekérdezés" van megadva a tevékenység forrásában) |
 
 **Példa**
@@ -118,10 +174,10 @@ Az adatok Salesforce marketing-felhőből történő másolásához állítsa a 
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **SalesforceMarketingCloudSource** | Igen |
-| lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Példa: `"SELECT * FROM MyTable"`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
+| típus | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **SalesforceMarketingCloudSource** | Yes |
+| lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Például: `"SELECT * FROM MyTable"`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
 
-**Példa:**
+**Például**
 
 ```json
 "activities":[

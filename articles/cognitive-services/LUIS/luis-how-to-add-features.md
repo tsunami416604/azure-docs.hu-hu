@@ -1,5 +1,5 @@
 ---
-title: Funkciók – LUIS
+title: Szolgáltatások használata a LUIS-szavak listájának fejlesztéséhez
 titleSuffix: Azure Cognitive Services
 description: A Language Understanding (LUIS) használatával olyan alkalmazás-funkciókat adhat hozzá, amelyek javítják a kategóriákat és a mintákat tartalmazó szándékok és entitások észlelését vagy előrejelzését
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/17/2020
 ms.author: diberry
-ms.openlocfilehash: 7d9f1e520ab5c96b9c5288383324b165a4cd74f0
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 25698fe2b05cbfb564e441e488bfa93221a9618a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344441"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075203"
 ---
 # <a name="use-features-to-boost-signal-of-word-list"></a>Szolgáltatások használata a szólisták jelzésének növeléséhez
 
@@ -43,7 +43,7 @@ Tekintse át a [fogalmakat](luis-concept-feature.md) , hogy megértse, mikor és
 
 1. A kifejezések listája a teljes alkalmazásra vonatkozik a **globális** beállítással, vagy egy adott modellre (cél vagy entitás). Ha a kifejezés listát a szándék vagy az entitás _funkciói_ alapján hozza létre, a váltógomb nem globális értékre van állítva. Ebben az esetben a váltás jelentése az, hogy a szolgáltatás csak a modellhez van helyi, ezért _nem globális_ az alkalmazáshoz.
 
-1. Válassza a **Done** (Kész) lehetőséget. Az új funkció a **ml-szolgáltatások** lapra kerül.
+1. Válassza a **Kész** lehetőséget. Az új funkció a **ml-szolgáltatások** lapra kerül.
 
 <a name="edit-phrase-list"></a>
 <a name="delete-phrase-list"></a>
@@ -67,6 +67,6 @@ Ha egy entitást szolgáltatásként szeretne hozzáadni egy szándékhoz, vála
 
 Ha egy entitást szolgáltatásként szeretne hozzáadni egy másik entitáshoz, hozzáadhatja a szolgáltatást a leképezés részletei lapon az [Entity paletta](label-entity-example-utterance.md#adding-entity-as-a-feature-from-the-entity-palette) használatával, vagy [hozzáadhatja a szolgáltatást](luis-how-to-add-entities.md#add-a-feature-to-a-machine-learned-entity) az entitás részletei lapon.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Egy szolgáltatás hozzáadása, szerkesztése, törlése vagy inaktiválása után ismét [betaníthatja és tesztelheti az alkalmazást, és](luis-interactive-test.md) ellenőrizheti, hogy javul-e a teljesítmény.

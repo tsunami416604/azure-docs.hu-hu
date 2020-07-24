@@ -11,17 +11,18 @@ ms.date: 04/09/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 4dc054d26f0cb64a8f7faf2ffa4b2b688562f404
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 334d37ad36336d1aa737894482fd8f66e929c822
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213550"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077683"
 ---
 # <a name="monitoring-resource-utilization-and-query-activity-in-azure-synapse-analytics"></a>Erőforrás-kihasználtság és lekérdezési tevékenységek figyelése az Azure szinapszis Analyticsben
 
 Az Azure szinapszis Analytics a Azure Portalon belül gazdag monitorozási lehetőségeket biztosít az adattárház-számítási feladatokra vonatkozóan. Az Azure Portal az ajánlott eszköz az adattárház figyelésére, mivel konfigurálható megőrzési időt, riasztásokat, javaslatokat és testreszabható diagramokat és irányítópultokat biztosít a metrikák és naplók számára. A portál lehetővé teszi az integrációt más Azure monitoring-szolgáltatásokkal, például a Azure Monitor (naplókkal) a log Analytics segítségével, amely átfogó figyelési élményt nyújt a nem csupán az adattárházhoz, hanem a teljes Azure Analytics-platformot is, amely integrált figyelési élményt biztosít. Ez a dokumentáció ismerteti, hogy milyen figyelési funkciók érhetők el az elemzési platformnak a szinapszis SQL-vel való optimalizálásához és kezeléséhez.
 
-## <a name="resource-utilization"></a>Erőforrás-használat
+## <a name="resource-utilization"></a>Erőforrás-felhasználás
 
 A következő mérőszámok érhetők el a szinapszis SQL-Azure Portalban. Ezek a metrikák [Azure monitoron](../../azure-monitor/platform/data-collection.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#metrics)keresztül vannak felszínben.
 
@@ -41,9 +42,6 @@ A következő mérőszámok érhetők el a szinapszis SQL-Azure Portalban. Ezek 
 | Gyorsítótár találati százaléka    | (gyorsítótárbeli találatok/gyorsítótár-kihagyás) * 100, ahol a gyorsítótár-találatok a helyi SSD-gyorsítótár és a gyorsítótár-kihagyott oszlopcentrikus összes találatának összege az összes csomóponton összefoglalt helyi SSD-gyorsítótárban. | AVG, min, Max    |
 | Gyorsítótár használt százaléka   | (gyorsítótár-használat/gyorsítótár-kapacitás) * 100, ahol a használt gyorsítótár a helyi SSD gyorsítótárban lévő összes bájt összege az összes csomóponton és a gyorsítótár kapacitása a helyi SSD-gyorsítótár tárolási kapacitása az összes csomóponton belül | AVG, min, Max    |
 | Helyi tempdb százalékos aránya | Helyi tempdb kihasználtsága az összes számítási csomóponton – az értékek öt percenként vannak kibocsátva | AVG, min, Max    |
-| Adattárolás mérete (GB) | Az adatbázis teljes mérete. Ez magában foglalja a használt, a fenntartott és a nem lefoglalt területet. A nem lefoglalt terület a lekérdezés és a terhelés teljesítményének optimalizálása érdekében az adatbázis számára van tárolva. | Összeg |
-| Vész-helyreállítási méret (GB) | A földrajzi biztonsági mentés 24 óránként végzett teljes mérete | Összeg |
-| Pillanatkép-tároló mérete (GB) | Az adatbázis-visszaállítási pontok biztosításához készített pillanatképek teljes mérete. Ez magában foglalja az automatizált és a felhasználó által definiált pillanatképeket is. | Összeg |
 
 A metrikák megtekintésekor megfontolandó szempontok és riasztások beállítása:
 

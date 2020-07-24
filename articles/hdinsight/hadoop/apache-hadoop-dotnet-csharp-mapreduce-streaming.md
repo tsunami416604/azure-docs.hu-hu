@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
-ms.openlocfilehash: 77d8143743f899bcb9fd3927de223d84d406ed6f
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 0a20a120f72c70cb50cae37cece54d5efad31f47
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086789"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074808"
 ---
 # <a name="use-c-with-mapreduce-streaming-on-apache-hadoop-in-hdinsight"></a>A C# és a MapReduce streaming használata Apache Hadoop HDInsight
 
@@ -41,13 +41,13 @@ További információ a folyamatos átvitelről: [Hadoop streaming](https://hado
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Visual Studio.
+* A Visual Studióval.
 
 * A .NET-keretrendszer 4,5-es számú C#-kódjának írásával és létrehozásával kapcsolatos ismeretek.
 
 * Az. exe fájlok a fürtbe való feltöltésének módja. A jelen dokumentumban szereplő lépések a Visual studióhoz készült Data Lake Tools használatával töltik fel a fájlokat a fürt elsődleges tárolójába.
 
-* Ha a PowerShellt használja, szüksége lesz az az [modulra](https://docs.microsoft.com/powershell/azure/overview).
+* Ha a PowerShellt használja, szüksége lesz az az [modulra](https://docs.microsoft.com/powershell/azure/).
 
 * Egy Apache Hadoop-fürt a HDInsight-on. Lásd: Ismerkedés [a HDInsight Linux rendszeren](../hadoop/apache-hadoop-linux-tutorial-get-started.md).
 

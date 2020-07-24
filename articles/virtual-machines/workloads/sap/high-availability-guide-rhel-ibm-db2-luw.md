@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/13/2020
 ms.author: juergent
-ms.openlocfilehash: 1a00a3c1e0d34a8c7abbcd5bfc7a6771d9e2a4c3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 527d9e2e43a4003dd5300c26fc58b1e456186351
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82983040"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077399"
 ---
 # <a name="high-availability-of-ibm-db2-luw-on-azure-vms-on-red-hat-enterprise-linux-server"></a>Az IBM Db2 LUW magas rendelkezésre állása Azure-beli virtuális gépeken Red Hat Enterprise Linux Serveren
 
@@ -66,7 +67,7 @@ A telepítés megkezdése előtt tekintse meg a következő SAP-megjegyzéseket 
 
 
 ## <a name="overview"></a>Áttekintés
-A magas rendelkezésre állás elérése érdekében az IBM DB2 LUW és a HADR legalább két Azure-beli virtuális gépre van telepítve, amelyek egy Azure-beli [rendelkezésre állási csoportba](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets) vagy [Azure Availability Zonesba](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ha-availability-zones)vannak telepítve. 
+A magas rendelkezésre állás elérése érdekében az IBM DB2 LUW és a HADR legalább két Azure-beli virtuális gépre van telepítve, amelyek egy Azure-beli [rendelkezésre állási csoportba](../../windows/tutorial-availability-sets.md) vagy [Azure Availability Zonesba](./sap-ha-availability-zones.md)vannak telepítve. 
 
 Az alábbi ábrán két adatbázis-kiszolgáló Azure-beli virtuális gép telepítése látható. Az adatbázis-kiszolgáló mindkét Azure-beli virtuális gépe saját tárolóval rendelkezik, és működik. A HADR-ben az egyik Azure-beli virtuális gép egyik adatbázis-példánya rendelkezik az elsődleges példány szerepkörével. Minden ügyfél az elsődleges példányhoz csatlakozik. Az adatbázis-tranzakciókban történt összes változás helyileg, a DB2 tranzakciónaplóban marad. Mivel a tranzakciónapló-rekordok helyileg vannak tárolva, a rekordok továbbítása a TCP/IP protokollon keresztül történik a második adatbázis-kiszolgálón, a készenléti kiszolgálón vagy a készenléti példányon. A készenléti példány frissíti a helyi adatbázist az átvitt tranzakciónapló-rekordok továbbításával. Így a készenléti kiszolgáló szinkronban marad az elsődleges kiszolgálóval.
 
@@ -125,7 +126,7 @@ Az IBM DB2 LUW erőforrás-ügynöke a Red Hat Enterprise Linux Server HA addon 
 Készítsen egy listát az összes állomásnévről, beleértve a virtuális gazdagépek nevét, és frissítse a DNS-kiszolgálókat, hogy a megfelelő IP-címet engedélyezze az állomásnév feloldásához. Ha a DNS-kiszolgáló nem létezik, vagy nem frissíthető és nem hozható létre DNS-bejegyzés, akkor a forgatókönyvben részt vevő egyes virtuális gépek helyi gazdagépeit kell használnia. Ha Host Files-bejegyzéseket használ, győződjön meg arról, hogy a bejegyzéseket az SAP rendszerkörnyezetében lévő összes virtuális gépre alkalmazza a rendszer. Javasoljuk azonban, hogy használja a DNS-t, amely ideális esetben az Azure-ra is kiterjed
 
 
-### <a name="manual-deployment"></a>Kézi üzembe helyezés
+### <a name="manual-deployment"></a>Manuális üzembe helyezés
 
 Győződjön meg arról, hogy a kiválasztott operációs rendszer támogatja az IBM/SAP az IBM DB2 LUW. Az Azure-beli virtuális gépek és a DB2-kiadások támogatott operációsrendszer-verzióinak listája a [1928533]-es SAP-megjegyzésben érhető el. Az egyes DB2-kiadásokból származó operációsrendszer-kiadások listája az SAP-termékek rendelkezésre állási mátrixában érhető el. Javasoljuk, hogy az Azure-hoz kapcsolódó teljesítmény-tökéletesítések, illetve a későbbi Red Hat Enterprise Linux-verziók esetében legalább Red Hat Enterprise Linux 7,4 az SAP-hez.
 
@@ -397,10 +398,10 @@ Démon állapota: Corosync: aktív/letiltott pacemaker: aktív/letiltott pcsd: a
 
 
 ### <a name="configure-azure-load-balancer"></a>Az Azure Load Balancer konfigurálása
-Azure Load Balancer konfigurálásához javasoljuk, hogy az [Azure standard Load BALANCER SKU](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview) -t használja, majd tegye a következőket:
+Azure Load Balancer konfigurálásához javasoljuk, hogy az [Azure standard Load BALANCER SKU](../../../load-balancer/load-balancer-overview.md) -t használja, majd tegye a következőket:
 
 > [!NOTE]
-> A standard Load Balancer SKU korlátozza a nyilvános IP-címek elérését a Load Balancer alatti csomópontok között. Az [Azure standard Load Balancer az SAP magas rendelkezésre állási forgatókönyvekben való használatával történő Virtual Machines nyilvános végponti kapcsolata](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections) című cikk leírja, hogyan engedélyezheti a csomópontok számára a nyilvános IP-címek elérését.
+> A standard Load Balancer SKU korlátozza a nyilvános IP-címek elérését a Load Balancer alatti csomópontok között. Az [Azure standard Load Balancer az SAP magas rendelkezésre állási forgatókönyvekben való használatával történő Virtual Machines nyilvános végponti kapcsolata](./high-availability-guide-standard-load-balancer-outbound-connections.md) című cikk leírja, hogyan engedélyezheti a csomópontok számára a nyilvános IP-címek elérését.
 
 
 
@@ -412,7 +413,7 @@ Azure Load Balancer konfigurálásához javasoljuk, hogy az [Azure standard Load
 
    c. Állítsa a **hozzárendelést** **statikus**értékre, és adja meg az elején megadott IP **-cím virtuális IP-** címét.
 
-   d. Válassza az **OK** lehetőséget.
+   d. Kattintson az **OK** gombra.
 
    e. Az új előtér-IP-készlet létrehozása után jegyezze fel a készlet IP-címét.
 
@@ -428,7 +429,7 @@ Azure Load Balancer konfigurálásához javasoljuk, hogy az [Azure standard Load
 
    e. Válassza ki az IBM DB2-fürthöz tartozó virtuális gépeket.
 
-   f. Válassza az **OK** lehetőséget.
+   f. Kattintson az **OK** gombra.
 
 1. Állapot mintavételének létrehozása:
 
@@ -438,7 +439,7 @@ Azure Load Balancer konfigurálásához javasoljuk, hogy az [Azure standard Load
 
    c. Válassza a **TCP** lehetőséget a protokoll és a **62500**-es port közül. Tartsa meg az **intervallum** értékét **5**értékre, és tartsa meg a nem kifogástalan **állapot küszöbértékét** **2**értékre.
 
-   d. Válassza az **OK** lehetőséget.
+   d. Kattintson az **OK** gombra.
 
 1. Hozza létre a terheléselosztási szabályokat:
 
@@ -454,7 +455,7 @@ Azure Load Balancer konfigurálásához javasoljuk, hogy az [Azure standard Load
 
    f. Ügyeljen arra, hogy a **lebegő IP-címet engedélyezze**.
 
-   : Válassza az **OK** lehetőséget.
+   : Kattintson az **OK** gombra.
 
 **[A]** tűzfalszabály hozzáadása a mintavételi porthoz:
 <pre><code>sudo firewall-cmd --add-port=<b><probe-port></b>/tcp --permanent
@@ -506,11 +507,11 @@ A naplózási archiválást csak az elsődleges adatbázis hajtja végre. Ha meg
 
 Javasoljuk, hogy olyan közös NFS-megosztást vagy GlusterFS állítson be, amelyben mindkét csomópontból a naplók íródnak. Az NFS-megosztásnak vagy-GlusterFS nagyon elérhetőnek kell lennie. 
 
-Használhatja a meglévő, magasan elérhető NFS-megosztásokat vagy GlusterFS a szállításokhoz vagy a profilok címtárához. További információkért lásd:
+Használhatja a meglévő, magasan elérhető NFS-megosztásokat vagy GlusterFS a szállításokhoz vagy a profilok címtárához. További információ:
 
 - [Red Hat Enterprise Linuxon futó Azure-beli virtuális gépeken üzemelő GlusterFS SAP NetWeaverhez][glusterfs] 
 - [Magas rendelkezésre állás az Azure-beli virtuális gépeken futó SAP NetWeaver-hez Red Hat Enterprise Linuxon Azure NetApp Files SAP-alkalmazásokhoz][anf-rhel]
-- [Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-introduction) (NFS-megosztások létrehozásához)
+- [Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-introduction.md) (NFS-megosztások létrehozásához)
 
 ## <a name="test-the-cluster-setup"></a>A fürt beállításának tesztelése
 
@@ -815,7 +816,7 @@ rsc_st_azure    (stonith:fence_azure_arm):      Started az-idb02
      nc_db2id2_ID2      (ocf::heartbeat:azure-lb):      Started az-idb02</code></pre>
 
 ## <a name="next-steps"></a>További lépések
-- [Magas rendelkezésre állású architektúra és forgatókönyvek az SAP NetWeaver-hoz](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-architecture-scenarios)
+- [Magas rendelkezésre állású architektúra és forgatókönyvek az SAP NetWeaver-hoz](./sap-high-availability-architecture-scenarios.md)
 - [A pacemaker beállítása Red Hat Enterprise Linux az Azure-ban][rhel-pcs-azr]
 
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533

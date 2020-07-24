@@ -11,18 +11,18 @@ ms.date: 06/22/2020
 ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 02/14/2019
-ms.openlocfilehash: af792ccfe8e00c26abc6aab2e4a96d7ef9ff5122
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: de135b57755919a1d312783409caf3e800e03fd5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85252049"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077996"
 ---
 # <a name="quickstart-set-up-push-notifications-in-a-notification-hub"></a>Gyors útmutató: leküldéses értesítések beállítása egy értesítési központban
 
 Az Azure Notification Hubs egy könnyen használható leküldéses motort biztosít, amely kibővíthető. A Notification Hubs használatával küldhet értesítéseket bármilyen platformra (iOS, Android, Windows, Baidu) és bármilyen háttérből (Felhőbeli vagy helyszíni). További információ: [Mi az az Azure Notification Hubs?](notification-hubs-push-notification-overview.md)
 
-Ebben a rövid útmutatóban a Notification Hubs platform Notification System (PNS) beállításait fogja használni a leküldéses értesítések több platformon történő beállításához. A rövid útmutatóban a Azure Portal elvégzendő lépések láthatók.  A [Google Firebase Cloud Messaging](/azure/notification-hubs/configure-notification-hub-portal-pns-settings?tabs=azure-cli#google-firebase-cloud-messaging-fcm) az Azure CLI használatára vonatkozó utasításokat tartalmaz.
+Ebben a rövid útmutatóban a Notification Hubs platform Notification System (PNS) beállításait fogja használni a leküldéses értesítések több platformon történő beállításához. A rövid útmutatóban a Azure Portal elvégzendő lépések láthatók.  A [Google Firebase Cloud Messaging](?tabs=azure-cli#google-firebase-cloud-messaging-fcm) az Azure CLI használatára vonatkozó utasításokat tartalmaz.
 
 Ha még nem hozott létre egy értesítési központot, hozzon létre egyet most. További információ: [Azure Notification hub létrehozása a Azure Portal](create-notification-hub-portal.md) vagy Azure [Notification hub létrehozása az Azure CLI használatával](create-notification-hub-azure-cli.md)
 
@@ -58,7 +58,7 @@ Leküldéses értesítések beállítása a Google FCM-hez:
 
 1. A Azure Portal az **értesítési központ** lapon válassza a **Google (GCM/FCM)** elemet a bal oldali menüből.
 2. Illessze be a korábban mentett Google FCM-projekthez tartozó **API-kulcsot** .
-3. Kattintson a **Mentés** gombra.
+3. Válassza a **Mentés** lehetőséget.
 
    ![Képernyőkép, amely bemutatja, hogyan konfigurálható Notification Hubs a Google FCM-hez](./media/notification-hubs-android-push-notification-google-fcm-get-started/fcm-server-key.png)
 
@@ -118,7 +118,7 @@ A Windows leküldéses értesítési szolgáltatás (WNS) beállítása:
 
 1. A Azure Portal az **értesítési központ** lapon válassza a **Windows (WNS)** lehetőséget a bal oldali menüből.
 2. Adja meg a **csomag biztonsági azonosítójának** és **biztonsági kulcsának**értékeit.
-3. Kattintson a **Mentés** gombra.
+3. Válassza a **Mentés** lehetőséget.
 
    ![Képernyőfelvétel a csomag biztonsági AZONOSÍTÓjának és biztonsági kulcsának mezőiről](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-configure-wns.png)
 
@@ -139,7 +139,7 @@ A Microsoft leküldéses értesítési szolgáltatás (MPNS) beállítása a Win
       * Az eszköztáron válassza a **tanúsítvány feltöltése**lehetőséget.
       * Válassza ki a fájl ikont, majd válassza ki a tanúsítványfájl.
       * Adja meg a tanúsítványhoz tartozó jelszót.
-      * Válassza az **OK** lehetőséget.
+      * Kattintson az **OK** gombra.
       * A **Windows Phone-telefon (MPNS)** lapon válassza a **Mentés**lehetőséget.
 
 További információ: [leküldéses értesítések Windows Phone-telefon alkalmazások számára Notification Hubs használatával](notification-hubs-windows-mobile-push-notifications-mpns.md).
@@ -151,7 +151,7 @@ Leküldéses értesítések beállítása a Baidu számára:
 1. A Azure Portal az **értesítési központ** lapon válassza a **Baidu (Android China)** lehetőséget a bal oldali menüből.
 2. Adja meg a felhőalapú Baidu-értesítés projekt Baidu-konzolján beszerzett **API-kulcsot** .
 3. Adja meg a felhőalapú Baidu-értesítés projekt Baidu-konzolján beszerzett **titkos kulcsot** .
-4. Kattintson a **Mentés** gombra.
+4. Válassza a **Mentés** lehetőséget.
 
     ![A leküldéses értesítések Baidu (Android China) konfigurációját bemutató Notification Hubs képernyőképe](./media/notification-hubs-baidu-get-started/AzureNotificationServicesBaidu.png)
 

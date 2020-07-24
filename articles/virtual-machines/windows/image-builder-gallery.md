@@ -7,11 +7,12 @@ ms.date: 05/05/2020
 ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.subservice: imaging
-ms.openlocfilehash: 65e8818e19ac5ad20bb87fd8eb27a4c36c2839cf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0db618d63964c6f271f9a14b91849e704cfd7820
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83656671"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077512"
 ---
 # <a name="preview-create-a-windows-image-and-distribute-it-to-a-shared-image-gallery"></a>Előzetes verzió: Windows-rendszerkép létrehozása és terjesztése megosztott képgyűjteménybe 
 
@@ -23,7 +24,7 @@ A rendszerkép megosztott képtárba való terjesztéséhez a sablon a [sharedIm
 
 Az Azure rendszerkép-készítő automatikusan futtatja a Sysprep programot a rendszerkép általánosítása érdekében, ez egy általános Sysprep-parancs, amelyet szükség esetén [felül lehet bírálni](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#vms-created-from-aib-images-do-not-create-successfully) . 
 
-Vegye figyelembe, hogy a réteg testreszabása hányszor történik. A Sysprep parancsot akár 8 alkalommal is futtathatja egyetlen Windows-rendszerképben. A Sysprep 8 alkalommal történő futtatása után újra létre kell hoznia a Windows-rendszerképet. További információ: [korlátozások a Sysprep futtatásának](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep)hányszor. 
+Vegye figyelembe, hogy a réteg testreszabása hányszor történik. A Sysprep parancsot akár 8 alkalommal is futtathatja egyetlen Windows-rendszerképben. A Sysprep 8 alkalommal történő futtatása után újra létre kell hoznia a Windows-rendszerképet. További információ: [korlátozások a Sysprep futtatásának](/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep)hányszor. 
 
 > [!IMPORTANT]
 > Az Azure rendszerkép-szerkesztő jelenleg nyilvános előzetes verzióban érhető el.
@@ -97,7 +98,7 @@ New-AzResourceGroup `
 
 
 ## <a name="create-a-user-assigned-identity-and-set-permissions-on-the-resource-group"></a>Felhasználó által hozzárendelt identitás létrehozása és engedélyek beállítása az erőforráscsoporthoz
-A rendszerkép-szerkesztő a megadott [felhasználói identitást](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell) használja a rendszerkép az Azure Shared rendszerkép-katalógusba (SIG) való behelyezéséhez. Ebben a példában egy olyan Azure-szerepkör-definíciót hoz létre, amely részletes műveleteket hajt végre a rendszerképnek a SIG-ba való terjesztéséhez. A szerepkör-definíció ezután a felhasználó-identitáshoz lesz rendelve.
+A rendszerkép-szerkesztő a megadott [felhasználói identitást](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md) használja a rendszerkép az Azure Shared rendszerkép-katalógusba (SIG) való behelyezéséhez. Ebben a példában egy olyan Azure-szerepkör-definíciót hoz létre, amely részletes műveleteket hajt végre a rendszerképnek a SIG-ba való terjesztéséhez. A szerepkör-definíció ezután a felhasználó-identitáshoz lesz rendelve.
 
 ```powershell
 # setup role def names, these need to be unique
@@ -239,7 +240,7 @@ A rendszerkép létrehozása és replikálása mindkét régióban eltarthat egy
 A rendszerkép-Build állapotának automatizálására vonatkozó beállításokkal kapcsolatos további információkért tekintse meg a sablonhoz tartozó [Readme fájlt](https://github.com/danielsollondon/azvmimagebuilder/blob/master/quickquickstarts/1_Creating_a_Custom_Win_Shared_Image_Gallery_Image/readme.md#get-status-of-the-image-build-and-query) a githubon.
 
 
-## <a name="create-the-vm"></a>Virtuális gép létrehozása
+## <a name="create-the-vm"></a>A virtuális gép létrehozása
 
 Hozzon létre egy virtuális gépet az Azure-rendszerkép-szerkesztő által létrehozott rendszerkép-verzióból.
 

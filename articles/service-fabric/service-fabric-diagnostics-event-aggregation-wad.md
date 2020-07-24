@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 04/03/2018
 ms.author: srrengar
-ms.openlocfilehash: ff13f8301274ebfc8b31dcbe01ef2a0fe6cd6fcc
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: bcb9ca9e73c0898dc778202eca036a5ae92bebf8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86247761"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076143"
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Események összesítése és gyűjtése a Windows Azure Diagnostics használatával
 > [!div class="op_single_selector"]
@@ -30,8 +30,8 @@ A naplók feltöltésének és összegyűjtésének egyik módja a Windows Azure
 A cikk a következő eszközöket használja:
 
 * [Azure Resource Manager](../azure-resource-manager/management/overview.md)
-* [Azure PowerShell](/powershell/azure/overview)
-* [Azure Resource Manager sablon](../virtual-machines/extensions/diagnostics-template.md?toc=/azure/virtual-machines/windows/toc.json)
+* [Azure PowerShell](/powershell/azure/)
+* [Azure Resource Manager-sablon](../virtual-machines/extensions/diagnostics-template.md?toc=/azure/virtual-machines/windows/toc.json)
 
 ## <a name="service-fabric-platform-events"></a>Service Fabric platform eseményei
 Service Fabric beállítja a beépített [naplózási csatornákat](service-fabric-diagnostics-event-generation-infra.md), amelyek a következő csatornákat előre konfigurálták a bővítménnyel, hogy a figyelési és diagnosztikai adatait egy Storage-táblába vagy máshová küldje el:
@@ -351,7 +351,7 @@ Jelenleg a fürtből származó naplók **nyomkövetésként** jelennek meg Appl
 >[!NOTE]
 >Ha a portálon vagy a Resource Manager-sablonban helytelen Application Insights kulcsot használ, akkor manuálisan kell módosítania a kulcsot, és frissítenie kell a fürtöt, majd újra kell telepítenie.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure Diagnostics megfelelő konfigurálása után a ETW és a EventSource naplókból származó adatok jelennek meg a tároló tábláiban. Ha úgy dönt, hogy Azure Monitor naplókat, Kibana vagy bármely más adatelemzési és vizualizációs platformot használ, amely nem közvetlenül a Resource Manager-sablonban van konfigurálva, ügyeljen arra, hogy a kívánt platformot állítsa be a tárolási táblákból származó adatok olvasásához. Ezt Azure Monitor naplóknál viszonylag triviálisan használják, és az [esemény-és naplózási elemzésekben](service-fabric-diagnostics-event-analysis-oms.md)is ismertetjük. Application Insights ebben az értelemben egy kis különleges eset, mivel a diagnosztikai bővítmény konfigurációjának részeként konfigurálható, ezért a [megfelelő cikkben](service-fabric-diagnostics-event-analysis-appinsights.md) tájékozódhat, ha úgy dönt, hogy az AI-t használja.
 

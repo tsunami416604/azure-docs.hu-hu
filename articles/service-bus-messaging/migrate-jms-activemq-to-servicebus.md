@@ -1,6 +1,6 @@
 ---
-title: Java Message Service-(JMS-) alkalmazások migrálása a ActiveMQ-ből a Azure Service Busba | Microsoft Docs
-description: Ez a cikk bemutatja, hogyan telepíthet át olyan meglévő JMS-alkalmazásokat, amelyek együttműködnek az Active MQ-mel a Azure Service Bus való interakcióhoz.
+title: Java Message Service-(JMS-) alkalmazások migrálása az Apache ActiveMQ-ből a Azure Service Busba | Microsoft Docs
+description: Ez a cikk bemutatja, hogyan telepíthet át olyan meglévő JMS-alkalmazásokat, amelyek az Apache ActiveMQ-mel működnek együtt a Azure Service Busával.
 services: service-bus-messaging
 documentationcenter: ''
 author: axisc
@@ -13,32 +13,32 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/07/2020
 ms.author: aschhab
-ms.openlocfilehash: 3da4f693f4cfec47c5456a0c5998f58f5fe02949
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 7926e3b8aedde63c3a1a5a57c42b3d4f29cb9797
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86122340"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076233"
 ---
-# <a name="migrate-existing-java-message-service-jms-20-applications-from-active-mq-to-azure-service-bus"></a>Meglévő Java Message Service (JMS) 2,0-alkalmazások migrálása aktív MQ-ről Azure Service Bus
+# <a name="migrate-existing-java-message-service-jms-20-applications-from-apache-activemq-to-azure-service-bus"></a>Meglévő Java Message Service (JMS) 2,0-alkalmazások migrálása Apache ActiveMQ-ből Azure Service Bus
 
-A Azure Service Bus támogatja a Java/J2EE és a Spring munkaterheléseket, amelyek a Java Message Service (JMS) 2,0 API-t használják a speciális Message Queuing protokoll (AMQP) protokollon keresztül.
+Ez a cikk azt ismerteti, hogyan lehet módosítani egy meglévő Java Message Service (JMS) 2,0-alkalmazást, amely együttműködik a JMS-közvetítővel a Azure Service Bus való interakcióhoz. A cikkből megtudhatja, hogy az Apache ActiveMQ-ból vagy az Amazon MQ-ból való Migrálás.
 
-Ez az útmutató ismerteti, hogy mit kell tudnia, ha módosítani kíván egy meglévő Java Message Service-(JMS-) 2,0-alkalmazást, amely együttműködik a JMS-közvetítővel (különösen az Apache ActiveMQ vagy az Amazon MQ-val) a Azure Service Bus való interakcióhoz.
+A Azure Service Bus támogatja a Java 2 platform, a Enterprise Edition és a Spring számítási feladatokat, amelyek a JMS 2,0 API-t használják a speciális üzenetsor-kezelési protokollon (AMQP).
 
 ## <a name="before-you-start"></a>Előkészületek
 
 ### <a name="differences-between-azure-service-bus-and-apache-activemq"></a>Azure Service Bus és Apache ActiveMQ közötti különbségek
 
-A Azure Service Bus és az Apache ActiveMQ mind a JMS-szolgáltatóként működő üzenetsor-ügynökök, amelyek üzenetek küldésére és fogadására szolgálnak. Mindkettő lehetővé teszi, hogy a pont-pont típusú szemantika a **várólistákkal** és a közzétételi és előfizetési szemantikai **témákkal** és **előfizetésekkel**együtt történjen. 
+A Azure Service Bus és az Apache ActiveMQ mindkét üzenet-közvetítő, amely JMS-szolgáltatóként működik az ügyfélalkalmazások számára üzenetek küldésére és fogadására. Mindkettő lehetővé teszi a pont-pont típusú szemantika és a várólisták, valamint a közzétételi és előfizetési szemantikai témák és előfizetések együttes használatának engedélyezése. 
 
-Még így is vannak különbségek a kettőben.
+Még így is vannak különbségek a kettő között, ahogy az alábbi táblázat mutatja:
 
-| Kategória | Aktív MQ | Azure Service Bus |
+| Kategória | ActiveMQ | Azure Service Bus |
 | --- | --- | --- |
-| Alkalmazás-rétegek | Fürtözött monolit | Kétszintű <br> (Átjáró + háttér) |
+| Alkalmazás-rétegek | Fürtözött monolit | Kétszintű <br> (átjáró + háttérrendszer) |
 | Protokolltámogatás | <ul> <li>AMQP</li> <li> Trapp </li> <li> OpenWire </li> </ul> | AMQP |
-| Kiépítési mód | <ul> <li> IaaS (helyszíni) </li> <li> Amazon MQ (felügyelt Péter) </li> | Felügyelt Péter |
+| Kiépítési mód | <ul> <li> Infrastruktúra-szolgáltatás (IaaS), helyszíni </li> <li> Amazon MQ (felügyelt platform – szolgáltatás) </li> | Felügyelt platform szolgáltatásként (Péter) |
 | Üzenet mérete | Ügyfél által konfigurálható | 1 MB (prémium szint) |
 | Magas rendelkezésre állás | Ügyfél által felügyelt | Platform által felügyelt |
 | Vészhelyreállítás | Ügyfél által felügyelt | Platform által felügyelt | 
@@ -47,116 +47,102 @@ Még így is vannak különbségek a kettőben.
 
 [!INCLUDE [service-bus-jms-features-list](../../includes/service-bus-jms-feature-list.md)]
 
-### <a name="caveats"></a>Figyelmeztetések
+### <a name="considerations"></a>Megfontolandó szempontok
 
-A Azure Service Bus kétrétegű természete különböző üzletmenet-folytonossági képességeket biztosít (magas rendelkezésre állás és vész-helyreállítás). A JMS-szolgáltatások használata során azonban néhány szempontot figyelembe kell venni.
+A Azure Service Bus kétrétegű természete különböző üzletmenet-folytonossági képességeket biztosít (magas rendelkezésre állás és vész-helyreállítás). A JMS funkcióinak használatakor azonban néhány szempontot figyelembe kell venni.
 
 #### <a name="service-upgrades"></a>Szolgáltatások frissítése
 
-A Service Bus frissítései és újraindítása esetén a rendszer törli az ideiglenes várólistákat vagy témaköröket.
-
-Ha az alkalmazás érzékeny az ideiglenes várólisták vagy témakörök adatvesztésére, akkor azt javasoljuk, hogy **ne** használjon ideiglenes várólistákat vagy témaköröket, és ne használjon tartós várólistákat, témaköröket és előfizetéseket.
+A Service Bus frissítései és újraindítása esetén a rendszer törli az ideiglenes várólistákat vagy témaköröket. Ha az alkalmazás érzékeny az ideiglenes várólisták vagy témakörök adatvesztésére, ne használjon ideiglenes várólistákat vagy témaköröket. Használjon tartós várólistákat, témaköröket és előfizetéseket.
 
 #### <a name="data-migration"></a>Adatok migrálása
 
-Az ügyfélalkalmazások áttelepítésének/módosításának részeként a Azure Service Bus-mel folytatott kommunikáció során a ActiveMQ-ben tárolt adatai nem lesznek áttelepítve a Service Busra.
-
-Egyéni alkalmazásra lehet szükség a ActiveMQ-várólisták,-témakörök és-előfizetések kiürítéséhez és az üzenetek visszajátszásához Service Bus "Queues, témakörök és előfizetések.
+Az ügyfélalkalmazások áttelepítésének és módosításának részeként Azure Service Bus a ActiveMQ tárolt adatai nem települnek át Service Busba. Előfordulhat, hogy egyéni alkalmazásra van szüksége a ActiveMQ-várólisták,-témakörök és-előfizetések kiürítéséhez, majd az üzenetek visszajátszásához a várólisták, témakörök és előfizetések Service Bus.
 
 #### <a name="authentication-and-authorization"></a>Hitelesítés és engedélyezés
 
-Az Azure ActiveDirectory által támogatott szerepköralapú Access Control (RBAC) a Azure Service Bus előnyben részesített hitelesítési mechanizmusa.
+A Azure Active Directory által támogatott szerepköralapú hozzáférés-vezérlés (RBAC) a Service Bus előnyben részesített hitelesítési mechanizmusa. Mivel az Apache csontos JMS jelenleg nem támogatja az RBAC vagy a jogcím-alapú hitelesítést, az SAS-kulcsokat kell használnia a hitelesítéshez.
 
-Mivel azonban a RBAC jelenleg nem támogatott, mert az Apache csontos JMS nem támogatja a jogcím-alapú hitelesítés támogatását.
-
-Egyelőre a hitelesítés csak SAS-kulcsokkal támogatott.
-
-## <a name="pre-migration"></a>A migrálást megelőző folyamatok
+## <a name="pre-migration"></a>A migrálás előtt
 
 ### <a name="version-check"></a>Verzió-ellenőrzési
 
-Alább láthatók a JMS-alkalmazások és a támogatott verziók írása közben felhasznált összetevők. 
+A JMS-alkalmazások írásakor a következő összetevőket és verziókat használja: 
 
-| Összetevők | Verzió |
+| Összetevő | Verzió |
 |---|---|
 | Java Message Service-(JMS-) API | 1,1 vagy újabb |
-| AMQP protokoll | 1.0 |
+| AMQP protokoll | 1,0 |
 
 ### <a name="ensure-that-amqp-ports-are-open"></a>Győződjön meg arról, hogy a AMQP-portok nyitva vannak
 
-A Azure Service Bus támogatja a AMQP protokollon keresztüli kommunikációt. Erre a célra a 5671 (AMQP) és a 443 (TCP) porton keresztüli kommunikációt engedélyezni kell. Attól függően, hogy hol találhatók az ügyfélalkalmazások, szükség lehet egy támogatási jegyre, amely lehetővé teszi az ilyen portokon keresztüli kommunikációt.
+A Service Bus támogatja a AMQP protokollon keresztüli kommunikációt. Erre a célra engedélyezze a kommunikációt a 5671 (AMQP) és a 443 (TCP) porton keresztül. Attól függően, hogy hol találhatók az ügyfélalkalmazások, szükség lehet egy támogatási jegyre, amely lehetővé teszi az ilyen portokon keresztüli kommunikációt.
 
 > [!IMPORTANT]
-> A Azure Service Bus **csak** a AMQP 1,0 protokollt támogatja.
+> A Service Bus csak a AMQP 1,0 protokollt támogatja.
 
-### <a name="set-up-enterprise-configurations-vnet-firewall-private-endpoint-etc"></a>Vállalati konfigurációk beállítása (VNET, tűzfal, magánhálózati végpont stb.)
+### <a name="set-up-enterprise-configurations"></a>Vállalati konfigurációk beállítása
 
-A Azure Service Bus különböző vállalati biztonsági és magas rendelkezésre állású funkciókat tesz lehetővé. Ha többet szeretne megtudni róluk, kövesse az alábbi dokumentációs hivatkozásokat.
+A Service Bus különböző vállalati biztonsági és magas rendelkezésre állású funkciókat tesz lehetővé. További információ: 
 
-  * [Virtual Network szolgáltatási végpontok](service-bus-service-endpoints.md)
-  * [Tűzfal](service-bus-ip-filtering.md)
+  * [Virtuális hálózati szolgáltatásvégpontok](service-bus-service-endpoints.md)
+  * [Firewall](service-bus-ip-filtering.md)
   * [Szolgáltatás oldali titkosítás az ügyfél által felügyelt kulccsal (BYOK)](configure-customer-managed-key.md)
   * [Privát végpontok](private-link-service.md)
   * [Hitelesítés és engedélyezés](service-bus-authentication-and-authorization.md)
 
 ### <a name="monitoring-alerts-and-tracing"></a>Figyelés, riasztások és nyomkövetés
 
-A metrikák az egyes Service Bus Azure Monitor névterekre lesznek közzétéve, és a rendszer kihasználható a névtérhez lefoglalt erőforrások riasztására és dinamikus skálázására.
+Az egyes Service Bus névterek esetében a metrikák a Azure Monitorra tehetők közzé. Ezek a metrikák a névtérhez lefoglalt erőforrások riasztására és dinamikus skálázására használhatók.
 
-További információk a különböző mérőszámokról és a riasztások beállításáról a [Azure Monitor Service Bus metrikái](service-bus-metrics-azure-monitor.md)című témakörben.
+A különböző metrikákkal és a riasztások beállításával kapcsolatos további információkért tekintse meg a [Azure Monitor Service Bus metrikákat](service-bus-metrics-azure-monitor.md). További információ az [ügyféloldali nyomkövetésről az adatműveletek](service-bus-end-to-end-tracing.md) és az [operatív/diagnosztikai naplózás felügyeleti műveletekhez](service-bus-diagnostic-logs.md)című részében található.
 
-További információ [: ügyféloldali nyomkövetés az adatműveletekhez](service-bus-end-to-end-tracing.md) és [működési/diagnosztikai naplózás felügyeleti műveletekhez](service-bus-diagnostic-logs.md)
+### <a name="metrics---new-relic"></a>Metrikák – új ereklye
 
-### <a name="metrics---newrelic"></a>Metrikák – NewRelic
+A ActiveMQ-leképezésből származó metrikákat összekapcsolhatja, amelyek metrikái a Azure Service Bus. Tekintse meg a következőt az új ereklye webhelyről:
 
-Az alábbiakban egy olyan hasznos útmutató látható, amely alapján a ActiveMQ-leképezések mérőszámait Azure Service Bus. Az alábbi hivatkozásokat a NewRelic találja.
-
-  * [ActiveMQ/Amazon MQ NewRelic metrikák](https://docs.newrelic.com/docs/integrations/amazon-integrations/aws-integrations-list/aws-mq-integration)
-  * [Azure Service Bus NewRelic metrikák](https://docs.newrelic.com/docs/integrations/microsoft-azure-integrations/azure-integrations-list/azure-service-bus-monitoring-integration)
+  * [ActiveMQ/Amazon MQ új ereklye mérőszámok](https://docs.newrelic.com/docs/integrations/amazon-integrations/aws-integrations-list/aws-mq-integration)
+  * [Új ereklye mérőszámok Azure Service Bus](https://docs.newrelic.com/docs/integrations/microsoft-azure-integrations/azure-integrations-list/azure-service-bus-monitoring-integration)
 
 > [!NOTE]
-> Jelenleg a NewRelic nem rendelkezik zökkenőmentes integrációval közvetlenül a ActiveMQ, de az Amazon MQ-hoz elérhető metrikák is rendelkezésre állnak.
-> Mivel az Amazon MQ a ActiveMQ-ből származik, az alábbi útmutató a AmazonMQ NewRelic metrikáit képezi le a Azure Service Bus.
+> Az új ereklye jelenleg nem rendelkezik közvetlen, zökkenőmentes integrációval a ActiveMQ, de az Amazon MQ-hoz elérhető metrikák is rendelkezésre állnak. Mivel az Amazon MQ a ActiveMQ-ből származik, az alábbi táblázat az Amazon MQ új ereklye mérőszámait az Azure Service Busba képezi le.
 >
 
-|Metrika csoportosítása| AmazonMQ/aktív MQ-metrika | Azure Service Bus metrika |
+|Metrika csoportosítása| Amazon MQ/ActiveMQ metrika | Azure Service Bus metrika |
 |------------|---------------------------|--------------------------|
 |Bróker|`CpuUtilization`|`CPUXNS`|
 |Bróker|`MemoryUsage`|`WSXNS`|
 |Bróker|`CurrentConnectionsCount`|`activeConnections`|
 |Bróker|`EstablishedConnectionsCount`|`activeConnections` + `connectionsClosed`|
-|Bróker|`InactiveDurableTopicSubscribersCount`|Előfizetési mérőszámok kihasználása|
-|Bróker|`TotalMessageCount`|A várólista/témakör/előfizetés szintjének kihasználása`activeMessages`|
+|Bróker|`InactiveDurableTopicSubscribersCount`|Előfizetési metrikák használata|
+|Bróker|`TotalMessageCount`|Üzenetsor/témakör/előfizetés szintjének használata`activeMessages`|
 |Üzenetsor/témakör|`EnqueueCount`|`incomingMessages`|
 |Üzenetsor/témakör|`DequeueCount`|`outgoingMessages`|
-|Várólista|`QueueSize`|`sizeBytes`|
+|Üzenetsor|`QueueSize`|`sizeBytes`|
 
 
 
 ## <a name="migration"></a>Migrálás
 
-Ha át szeretné telepíteni a meglévő JMS 2,0-alkalmazást a Azure Service Bus való interakcióra, el kell végeznie az alábbi lépéseket.
+Ha át szeretné telepíteni a meglévő JMS 2,0 alkalmazást a Service Bus való interakcióra, kövesse a következő szakasz lépéseit.
 
-### <a name="export-topology-from-activemq-and-create-the-entities-in-azure-service-bus-optional"></a>A topológia exportálása a ActiveMQ és az entitások létrehozása Azure Service Busban (nem kötelező)
+### <a name="export-the-topology-from-activemq-and-create-the-entities-in-service-bus-optional"></a>Exportálja a topológiát a ActiveMQ-ből, és hozza létre az entitásokat a Service Busban (nem kötelező)
 
-Annak biztosítása érdekében, hogy az ügyfélalkalmazások zökkenőmentesen csatlakozhassanak Azure Service Bushoz, a topológiához, amely tartalmazza a várólistákat, témákat és előfizetéseket, át kell telepíteni az **Apache ActiveMQ** -ből a **Azure Service Busba**.
+Annak biztosítása érdekében, hogy az ügyfélalkalmazások zökkenőmentesen csatlakozhassanak a Service Bushoz, telepítse át a topológiát (beleértve a várólistákat, témaköröket és előfizetéseket) az Apache ActiveMQ-ből Service Busre.
 
 > [!NOTE]
-> A Java Message Service-(JMS-) alkalmazások esetében a várólisták, témakörök és előfizetések létrehozása egy futásidejű művelet. A legtöbb Java Message Service-(JMS-) szolgáltató (Message Broker) lehetőséget nyújt a *várólisták*, *témakörök* és *előfizetések* létrehozására futásidőben.
->
-> Ezért a fenti lépés nem kötelező.
->
-> Annak biztosítása érdekében, hogy az alkalmazás jogosult legyen a topológia létrehozásához futásidőben, győződjön meg arról, hogy a rendszer a ***sas "Manage"*** engedélyekkel rendelkező kapcsolódási karakterláncot használja.
+> JMS-alkalmazások esetén a várólisták, témakörök és előfizetések futtatókörnyezeti műveletként hozhatók létre. A legtöbb JMS-szolgáltató (üzenet-közvetítő) lehetővé teszi, hogy futásidőben hozza létre ezeket. Ezt az exportálási lépést nem kötelező figyelembe venni. Annak biztosítása érdekében, hogy az alkalmazás jogosult legyen a topológia létrehozására futásidőben, használja a kapcsolódási karakterláncot SAS- `Manage` engedélyekkel.
 
-Cél 
-  * A [ActiveMQ parancssori eszközeinek](https://activemq.apache.org/activemq-command-line-tools-reference) kihasználása a topológia exportálásához
-  * Azonos topológia újbóli létrehozása [Azure Resource Manager sablon](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md) használatával
-  * Hajtsa végre a Azure Resource Manager sablont.
+Ehhez tegye a következőket:
+
+1. A topológia exportálásához használja a [ActiveMQ parancssori eszközöket](https://activemq.apache.org/activemq-command-line-tools-reference) .
+1. Hozza létre újra ugyanazt a topológiát egy [Azure Resource Manager sablon](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)használatával.
+1. Futtassa a Azure Resource Manager sablont.
 
 
 ### <a name="import-the-maven-dependency-for-service-bus-jms-implementation"></a>A Maven-függőség importálása Service Bus JMS megvalósításához
 
-A Azure Service Busekkel való zökkenőmentes kapcsolódás biztosításához az ***Azure-servicebus-JMS*** csomagot hozzá kell adni függőségként a Maven- `pom.xml` fájlhoz az alábbiak szerint.
+A Service Bustel való zökkenőmentes kapcsolódás biztosításához adja hozzá a `azure-servicebus-jms` csomagot a Maven- `pom.xml` fájlhoz a következő módon:
 
 ```xml
 <dependencies>
@@ -171,11 +157,11 @@ A Azure Service Busekkel való zökkenőmentes kapcsolódás biztosításához a
 
 ### <a name="application-server-configuration-changes"></a>Az alkalmazáskiszolgáló konfigurációjának módosításai
 
-Ez a rész az Active MQ-hoz csatlakozó ügyfélalkalmazások üzemeltetésére szolgáló alkalmazáskiszolgáló Egyéni eleme.
+Ez a rész a ActiveMQ-hez csatlakozó ügyfélalkalmazások futtatására szolgáló alkalmazáskiszolgáló számára lett testreszabva.
 
 #### <a name="tomcat"></a>Tomcat
 
-Itt a fájlban látható módon kezdjük az aktív MQ-re jellemző konfigurációval `/META-INF/context.xml` .
+Itt a ActiveMQ-re vonatkozó konfigurációt kell kezdenie, ahogy az a `/META-INF/context.xml` fájlban látható.
 
 ```XML
 <Context antiJARLocking="true">
@@ -202,7 +188,7 @@ Itt a fájlban látható módon kezdjük az aktív MQ-re jellemző konfiguráci�
 </Context>
 ```
 
-amely az alábbiak szerint módosítható, hogy Azure Service Bus
+Ezt úgy igazíthatja, hogy Service Busre mutasson, a következőképpen:
 
 ```xml
 <Context antiJARLocking="true">
@@ -229,11 +215,9 @@ amely az alábbiak szerint módosítható, hogy Azure Service Bus
 
 #### <a name="spring-applications"></a>Rugós alkalmazások
 
-##### <a name="update-applicationproperties-file"></a>`application.properties`Fájl frissítése
+##### <a name="update-the-applicationproperties-file"></a>A `application.properties` fájl frissítése
 
-Ha Spring boot-alkalmazást használ a ActiveMQ való kapcsolódáshoz.
-
-Itt az a cél, hogy ***eltávolítsa*** a ActiveMQ-specifikus tulajdonságokat a `application.properties` fájlból.
+Ha Spring boot-alkalmazást használ a ActiveMQ-hez való kapcsolódáshoz, el szeretné távolítani a ActiveMQ jellemző tulajdonságokat a `application.properties` fájlból.
 
 ```properties
 spring.activemq.broker-url=<ACTIVEMQ BROKER URL>
@@ -241,21 +225,21 @@ spring.activemq.user=<ACTIVEMQ USERNAME>
 spring.activemq.password=<ACTIVEMQ PASSWORD>
 ```
 
-Ezután ***adja hozzá*** a Service Bus-specifikus tulajdonságokat a `application.properties` fájlhoz.
+Ezután adja hozzá a Service Bus-specifikus tulajdonságokat a `application.properties` fájlhoz.
 
 ```properties
 azure.servicebus.connection-string=Endpoint=myEndpoint;SharedAccessKeyName=mySharedAccessKeyName;SharedAccessKey=mySharedAccessKey
 ```
 
-##### <a name="replace-the-activemqconnectionfactory-with-servicebusjmsconnectionfactory"></a>A ActiveMQConnectionFactory cseréje a ServiceBusJmsConnectionFactory
+##### <a name="replace-activemqconnectionfactory-with-servicebusjmsconnectionfactory"></a>Csere `ActiveMQConnectionFactory` erre`ServiceBusJmsConnectionFactory`
 
-A következő lépés a ActiveMQConnectionFactory példányának cseréje a ServiceBusJmsConnectionFactory.
+A következő lépés a példányának cseréje a alkalmazással `ActiveMQConnectionFactory` `ServiceBusJmsConnectionFactory` .
 
 > [!NOTE] 
-> A kód tényleges módosításai az alkalmazásra és a függőségek felügyeletére vonatkoznak, de az alábbi minta útmutatást ***nyújt a*** módosításának módjáról.
+> A kód tényleges módosításai az alkalmazásra és a függőségek felügyeletére vonatkoznak, az alábbi példa pedig útmutatást nyújt a módosításra vonatkozóan.
 >
 
-Korábban előfordulhat, hogy az alábbi módon hozza létre a ActiveMQConnectionFactory egy objektumát.
+Korábban előfordulhat, hogy a következőt hozta létre egy objektum létrehozásával `ActiveMQConnectionFactory` :
 
 ```java
 
@@ -267,7 +251,7 @@ connection.start();
 
 ```
 
-Ez a ServiceBusJmsConnectionFactory objektum példányának példányára módosul.
+Most ezt a következőképpen változtathatja meg egy objektum létrehozásához `ServiceBusJmsConnectionFactory` :
 
 ```java
 
@@ -281,15 +265,15 @@ connection.start();
 
 ```
 
-## <a name="post-migration"></a>A migrálást követő folyamatok
+## <a name="post-migration"></a>A migrálás után
 
-Most, hogy módosította az alkalmazást, hogy megkezdje az üzenetek küldését és fogadását Azure Service Busről, ellenőrizze, hogy a várt módon működik-e. Ha elkészült, folytathatja az alkalmazás-verem pontosítását és korszerűsítését.
+Most, hogy módosította az alkalmazást, hogy megkezdje az üzenetek küldését és fogadását Service Busről, ellenőrizze, hogy a várt módon működik-e. Ha elkészült, folytathatja az alkalmazás-verem pontosítását és korszerűsítését.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Használja ki a [Spring boot starter Azure Service Bus JMS](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-boot-starter-java-app-with-azure-service-bus) a zökkenőmentes integrációt Azure Service Busokkal.
+A [Azure Service Bus JMS készült Spring boot Starter](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-boot-starter-java-app-with-azure-service-bus) segítségével zökkenőmentesen integrálhatja Service Bus.
 
-Ha többet szeretne megtudni a Service Bus üzenetkezelésről és a Java-üzenetküldési szolgáltatásról (JMS), tekintse meg a következő témaköröket:
+Az Service Bus üzenetkezeléssel és JMS kapcsolatos további tudnivalókért tekintse meg a következőt:
 
 * [Service Bus JMS](service-bus-java-how-to-use-jms-api-amqp.md)
 * [Service Bus queues, topics, and subscriptions (Service Bus-üzenetsorok, -témakörök és -előfizetések)](service-bus-queues-topics-subscriptions.md)

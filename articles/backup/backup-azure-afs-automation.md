@@ -3,12 +3,12 @@ title: Azure-fájlmegosztás biztonsági mentése a PowerShell használatával
 description: Ebből a cikkből megtudhatja, hogyan készíthet biztonsági mentést egy Azure Files fájlmegosztást a Azure Backup szolgáltatás és a PowerShell használatával.
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: 18c03eda9d9daca3a0fa536843e32f7fc3158287
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 948931764769bc967b88e7942b7e8384b0f93dff
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85971028"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077007"
 ---
 # <a name="back-up-an-azure-file-share-by-using-powershell"></a>Azure-fájlmegosztás biztonsági mentése a PowerShell használatával
 
@@ -89,13 +89,13 @@ A Recovery Services-tároló Resource Manager-erőforrás, ezért egy erőforrá
 
 Recovery Services-tároló létrehozásához kövesse az alábbi lépéseket:
 
-1. Ha nem rendelkezik meglévő erőforráscsoporthoz, hozzon létre egy újat a [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=azps-1.4.0) parancsmag használatával. Ebben a példában egy erőforráscsoportot hozunk létre az USA nyugati régiójában:
+1. Ha nem rendelkezik meglévő erőforráscsoporthoz, hozzon létre egy újat a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) parancsmag használatával. Ebben a példában egy erőforráscsoportot hozunk létre az USA nyugati régiójában:
 
    ```powershell
    New-AzResourceGroup -Name "test-rg" -Location "West US"
    ```
 
-1. A [New-AzRecoveryServicesVault](https://docs.microsoft.com/powershell/module/az.recoveryservices/New-AzRecoveryServicesVault?view=azps-1.4.0) parancsmag használatával hozza létre a tárolót. Azonos helyet kell megadnia az erőforráscsoport számára használt tárolóhoz.
+1. A [New-AzRecoveryServicesVault](/powershell/module/az.recoveryservices/new-azrecoveryservicesvault) parancsmag használatával hozza létre a tárolót. Azonos helyet kell megadnia az erőforráscsoport számára használt tárolóhoz.
 
     ```powershell
     New-AzRecoveryServicesVault -Name "testvault" -ResourceGroupName "test-rg" -Location "West US"
@@ -103,7 +103,7 @@ Recovery Services-tároló létrehozásához kövesse az alábbi lépéseket:
 
 ### <a name="view-the-vaults-in-a-subscription"></a>Az előfizetésben található tárolók megtekintése
 
-Az előfizetés összes tárolójának megtekintéséhez használja a [Get-AzRecoveryServicesVault](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesvault?view=azps-1.4.0):
+Az előfizetés összes tárolójának megtekintéséhez használja a [Get-AzRecoveryServicesVault](/powershell/module/az.recoveryservices/get-azrecoveryservicesvault):
 
 ```powershell
 Get-AzRecoveryServicesVault
@@ -127,7 +127,7 @@ Tárolja a tároló objektumot egy változóban, és állítsa be a tár környe
 
 Számos Azure Backup parancsmagnak bemenetként kell megkövetelni a Recovery Services-tároló objektumát, így kényelmes a tároló objektum tárolása egy változóban.
 
-A tárolási környezet a tár által védett adatok típusa. Állítsa be a [set-AzRecoveryServicesVaultContext](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultcontext?view=azps-1.4.0)használatával. A környezet beállítása után az az összes további parancsmagra vonatkozik.
+A tárolási környezet a tár által védett adatok típusa. Állítsa be a [set-AzRecoveryServicesVaultContext](/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultcontext)használatával. A környezet beállítása után az az összes további parancsmagra vonatkozik.
 
 Az alábbi példa a **testvault**tároló környezetét állítja be:
 
@@ -152,9 +152,9 @@ A biztonsági mentési szabályzat legalább egy adatmegőrzési szabályzattal 
 
 Íme néhány parancsmag a biztonsági mentési házirendekhez:
 
-* Tekintse meg az alapértelmezett biztonsági mentési szabályzatot a [Get-AzRecoveryServicesBackupRetentionPolicyObject](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupretentionpolicyobject?view=azps-1.4.0)használatával.
-* Tekintse meg az alapértelmezett biztonsági mentési házirend-ütemtervet a [Get-AzRecoveryServicesBackupSchedulePolicyObject](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupschedulepolicyobject?view=azps-1.4.0)használatával.
-* Hozzon létre egy új biztonsági mentési szabályzatot a [New-AzRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupprotectionpolicy?view=azps-1.4.0)használatával. Adja meg az ütemezett és adatmegőrzési szabályzat objektumait bemenetként.
+* Tekintse meg az alapértelmezett biztonsági mentési szabályzatot a [Get-AzRecoveryServicesBackupRetentionPolicyObject](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupretentionpolicyobject)használatával.
+* Tekintse meg az alapértelmezett biztonsági mentési házirend-ütemtervet a [Get-AzRecoveryServicesBackupSchedulePolicyObject](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupschedulepolicyobject)használatával.
+* Hozzon létre egy új biztonsági mentési szabályzatot a [New-AzRecoveryServicesBackupProtectionPolicy](/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupprotectionpolicy)használatával. Adja meg az ütemezett és adatmegőrzési szabályzat objektumait bemenetként.
 
 Alapértelmezés szerint a rendszer a kezdési időt határozza meg az ütemezett házirend objektumban. A következő példa használatával módosíthatja a kezdési időt a kívánt kezdési időpontra. A kívánt kezdési időpontnak az egyezményes világidő (UTC) szerint kell lennie. A példa feltételezi, hogy a várt kezdési idő a napi biztonsági másolatok 01:00-as UTC-értéke.
 
@@ -190,7 +190,7 @@ A biztonsági mentési szabályzat meghatározása után engedélyezheti az Azur
 
 ### <a name="retrieve-a-backup-policy"></a>Biztonsági mentési szabályzat beolvasása
 
-A megfelelő szabályzat objektum beolvasása a [Get-AzRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupprotectionpolicy?view=azps-1.4.0)használatával végezhető el. Ezzel a parancsmaggal megtekintheti a munkaterhelés-típushoz társított házirendeket, vagy egy adott szabályzatot.
+A megfelelő szabályzat objektum beolvasása a [Get-AzRecoveryServicesBackupProtectionPolicy](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupprotectionpolicy)használatával végezhető el. Ezzel a parancsmaggal megtekintheti a munkaterhelés-típushoz társított házirendeket, vagy egy adott szabályzatot.
 
 #### <a name="retrieve-a-policy-for-a-workload-type"></a>Házirend beolvasása egy munkaterhelés-típushoz
 
@@ -221,7 +221,7 @@ $afsPol =  Get-AzRecoveryServicesBackupProtectionPolicy -Name "dailyafs"
 
 ### <a name="enable-protection-and-apply-the-policy"></a>Védelem engedélyezése és a szabályzat alkalmazása
 
-Engedélyezze a védelmet az [enable-AzRecoveryServicesBackupProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection?view=azps-1.4.0)használatával. Miután a házirend társítva van a tárolóhoz, a biztonsági mentések a szabályzat ütemezésével összhangban lesznek aktiválva.
+Engedélyezze a védelmet az [enable-AzRecoveryServicesBackupProtection](/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection)használatával. Miután a házirend társítva van a tárolóhoz, a biztonsági mentések a szabályzat ütemezésével összhangban lesznek aktiválva.
 
 A következő példa lehetővé teszi az Azure fájlmegosztás **testAzureFileShare** való védelmét a Storage-fiók **testStorageAcct**, a szabályzat **dailyafs**:
 
@@ -237,7 +237,7 @@ WorkloadName       Operation            Status                 StartTime        
 testAzureFS       ConfigureBackup      Completed            11/12/2018 2:15:26 PM     11/12/2018 2:16:11 PM     ec7d4f1d-40bd-46a4-9edb-3193c41f6bf6
 ```
 
-A Storage-fiókhoz tartozó fájlmegosztás listájának beszerzésével kapcsolatos további információkért tekintse meg [ezt a cikket](https://docs.microsoft.com/powershell/module/az.storage/get-azstorageshare?view=azps-4.3.0).
+A Storage-fiókhoz tartozó fájlmegosztás listájának beszerzésével kapcsolatos további információkért tekintse meg [ezt a cikket](/powershell/module/az.storage/get-azstorageshare).
 
 ## <a name="important-notice-backup-item-identification"></a>Fontos figyelmeztetés: biztonsági másolati elem azonosítása
 
@@ -262,7 +262,7 @@ Azt javasoljuk, hogy listaelemeket adjon meg, majd a válasz név mezőjéből o
 
 ## <a name="trigger-an-on-demand-backup"></a>Igény szerinti biztonsági mentés indítása
 
-A [Backup-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/backup-azrecoveryservicesbackupitem?view=azps-1.4.0) használatával igény szerinti biztonsági mentést futtathat egy védett Azure-fájlmegosztás számára:
+A [Backup-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/backup-azrecoveryservicesbackupitem) használatával igény szerinti biztonsági mentést futtathat egy védett Azure-fájlmegosztás számára:
 
 1. Kérje le a Storage-fiókot abban a tárolóban, amely a biztonsági mentési adatait a [Get-AzRecoveryServicesBackupContainer](/powershell/module/az.recoveryservices/get-Azrecoveryservicesbackupcontainer)használatával tárolja.
 2. A biztonsági mentési feladatok elindításához szerezze be az Azure-fájlmegosztás adatait a [Get-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupItem)használatával.

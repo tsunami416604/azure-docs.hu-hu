@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 1/24/2018
 ms.author: xujing
-ms.openlocfilehash: c85eef1a5d035e23c7e63632ac92c21440b15cae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 40b5f4ee0c30e38c6cd5bd01c724ed783921670d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82101552"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077436"
 ---
 # <a name="how-to-deploy-windows-10-on-azure-with-multitenant-hosting-rights"></a>Windows 10 üzembe helyezése az Azure-ban több-bérlős üzemeltetési jogosultságokkal 
 A Windows 10 Enterprise E3/E5 felhasználónkénti vagy a Windows virtuális asztali hozzáférés felhasználónként (felhasználói előfizetési licencek vagy kiegészítő felhasználói előfizetési licencek) rendelkező ügyfelei számára a Windows 10 rendszerhez készült több-bérlős üzemeltetési jogosultság lehetővé teszi a Windows 10-es licencek felhőbe való bevezetését, valamint a Windows 10 Virtual Machines Azure-beli futtatását anélkül, hogy más licenccel kellene fizetnie. További információ: több- [bérlős üzemeltetés a Windows 10 rendszerhez](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx).
@@ -55,7 +55,7 @@ További információk:
 
 
 ## <a name="deploying-windows-10-with-multitenant-hosting-rights"></a>A Windows 10 telepítése több-bérlős üzemeltetési jogosultságokkal
-Győződjön meg arról, hogy [telepítette és konfigurálta a legújabb Azure PowerShell](/powershell/azure/overview). Miután előkészítette a VHD-t, töltse fel a virtuális merevlemezt az Azure Storage-fiókjába az `Add-AzVhd` alábbi parancsmaggal:
+Győződjön meg arról, hogy [telepítette és konfigurálta a legújabb Azure PowerShell](/powershell/azure/). Miután előkészítette a VHD-t, töltse fel a virtuális merevlemezt az Azure Storage-fiókjába az `Add-AzVhd` alábbi parancsmaggal:
 
 ```powershell
 Add-AzVhd -ResourceGroupName "myResourceGroup" -LocalFilePath "C:\Path\To\myvhd.vhd" `
@@ -63,7 +63,7 @@ Add-AzVhd -ResourceGroupName "myResourceGroup" -LocalFilePath "C:\Path\To\myvhd.
 ```
 
 
-**Üzembe helyezés Azure Resource Manager sablon használatával** A Resource Manager-sablonokon belül egy további paraméter is megadható `licenseType` . További információ a [Azure Resource Manager sablonok létrehozásáról](../../resource-group-authoring-templates.md). Miután feltöltötte a VHD-t az Azure-ba, szerkessze a Resource Manager-sablont, hogy tartalmazza a licenc típusát a számítási szolgáltató részeként, és telepítse a sablont a szokásos módon:
+**Üzembe helyezés Azure Resource Manager sablon használatával** A Resource Manager-sablonokon belül egy további paraméter is megadható `licenseType` . További információ a [Azure Resource Manager sablonok létrehozásáról](../../azure-resource-manager/templates/template-syntax.md). Miután feltöltötte a VHD-t az Azure-ba, szerkessze a Resource Manager-sablont, hogy tartalmazza a licenc típusát a számítási szolgáltató részeként, és telepítse a sablont a szokásos módon:
 ```json
 "properties": {
     "licenseType": "Windows_Client",
@@ -106,7 +106,5 @@ LicenseType              :
 >
 
 ## <a name="next-steps"></a>Következő lépések
-- További információ a [Windows 10 rendszerhez készült VDA konfigurálásáról](https://docs.microsoft.com/windows/deployment/vda-subscription-activation)
+- További információ a [Windows 10 rendszerhez készült VDA konfigurálásáról](/windows/deployment/vda-subscription-activation)
 - További információ a [Windows 10 rendszerhez készült több-bérlős üzemeltetésről](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx)
-
-

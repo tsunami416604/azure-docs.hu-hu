@@ -8,11 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: c3c34ea9e32e100d5756a3930ce9d0147363e379
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 7ea1995b6d1232b3e4c6371313e5b3d45bdbb756
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027868"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075410"
 ---
 # <a name="use-creator-to-create-indoor-maps"></a>A Creator használata beltéri térképek létrehozásához
 
@@ -31,7 +32,7 @@ Ez az oktatóanyag bemutatja, hogyan hozhat létre beltéri térképeket. Ebből
 
 Beltéri térképek létrehozása:
 
-1. [Azure Maps fiók létrehozása](quick-demo-map-app.md#create-an-account-with-azure-maps)
+1. [Azure Maps fiók létrehozása](quick-demo-map-app.md#create-an-azure-maps-account)
 2. [Szerezzen be egy elsődleges előfizetési kulcsot](quick-demo-map-app.md#get-the-primary-key-for-your-account), más néven az elsődleges kulcsot vagy az előfizetési kulcsot.
 3. [Létrehozó erőforrás létrehozása](how-to-manage-creator.md)
 4. Töltse le a [minta rajzolási csomagot](https://github.com/Azure-Samples/am-creator-indoor-data-examples).
@@ -51,7 +52,7 @@ Az adatfeltöltő API egy hosszú ideig futó tranzakció, amely megvalósítja 
 
 2. A kérelem létrehozásához válassza az **új** újra lehetőséget. Az **új létrehozása** ablakban válassza a **kérelem**lehetőséget. Adja meg a kérelem **nevét** . Válassza ki az előző lépésben létrehozott gyűjteményt, majd kattintson a **Mentés**gombra.
 
-3. Válassza a http **post** metódust a Builder (szerkesztő) lapon, és adja meg a következő URL-címet a rajzfájl a Azure Maps szolgáltatásba való feltöltéséhez. Ehhez a kérelemhez és a cikkben említett egyéb kérelmekhez cserélje le az `<Azure-Maps-Primary-Subscription-key>` elsődleges előfizetési kulcsát.
+3. Válassza a http **post** metódust a Builder (szerkesztő) lapon, és adja meg a következő URL-címet a rajzfájl a Azure Maps szolgáltatásba való feltöltéséhez. Ehhez a kérelemhez és a cikkben említett egyéb kérelmekhez cserélje le az `{Azure-Maps-Primary-Subscription-key}` elsődleges előfizetési kulcsát.
 
     ```http
     https://atlas.microsoft.com/mapData/upload?api-version=1.0&dataFormat=zip&subscription-key={Azure-Maps-Primary-Subscription-key}
@@ -63,10 +64,10 @@ Az adatfeltöltő API egy hosszú ideig futó tranzakció, amely megvalósítja 
 
 5. Kattintson a kék **Küldés** gombra, és várjon, amíg a rendszer feldolgozza a kérést. A kérés befejeződése után lépjen a válasz **fejlécek** lapjára. Másolja a **hely** kulcsának értékét, amely a `status URL` .
 
-6. Az API-hívás állapotának megtekintéséhez hozzon létre egy **Get** http-kérelmet a on `status URL` . A hitelesítéshez hozzá kell fűzni az elsődleges előfizetési kulcsot az URL-címhez. A **Get** kérelemnek a következő URL-címnek kell megjelennie:
+6. Az API-hívás állapotának megtekintéséhez hozzon létre egy **Get** http-kérelmet a on `status URL` . A hitelesítéshez hozzá kell fűzni az elsődleges előfizetési kulcsot az URL-címhez. A **Get** kérelemnek a következő URL-címhez hasonlóan kell kinéznie:
 
     ```http
-    https://atlas.microsoft.com/mapData/operations/{operationId}?api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}
+    https://atlas.microsoft.com/mapData/operations/<operationId>?api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}
     ```
 
 7. Ha a **Get** HTTP-kérelem sikeresen befejeződik, a visszaadja a-t `resourceLocation` . A `resourceLocation` tartalmazza a `udid` feltöltött tartalom egyedi tartalmát. A `resourceLocation` következő lépésben használhatja az URL-címet is az erőforrás metaadatainak lekéréséhez.
@@ -101,7 +102,7 @@ Az adatfeltöltő API egy hosszú ideig futó tranzakció, amely megvalósítja 
 
  Most, hogy a rajzfájl feltöltése megtörtént, a `udid` rendszer a feltöltött csomagra konvertálja a csomagot a leképezési adatként. Az átalakítási API egy hosszú ideig futó tranzakciót használ, amely megvalósítja az [itt](creator-long-running-operation.md)definiált mintát. Ha a művelet befejeződik, a `conversionId` segítségével elérheti a konvertált adategységeket. Az alábbi lépésekkel szerezheti be a következőt: `conversionId` .
 
-1. Válassza az **új**lehetőséget. Az **új létrehozása** ablakban válassza a **kérelem**lehetőséget. Adja meg a **kérelem nevét** , és válasszon ki egy gyűjteményt. Kattintson a **Save** (Mentés) gombra.
+1. Válassza az **Új** lehetőséget. Az **új létrehozása** ablakban válassza a **kérelem**lehetőséget. Adja meg a **kérelem nevét** , és válasszon ki egy gyűjteményt. Kattintson a **Mentés** gombra.
 
 2. Válassza a http **post** metódust a Builder (szerkesztő) lapon, és adja meg a következő URL-címet a feltöltött rajzfájl leképezési adataiba való átalakításához. Használja a `udid` csomagot a feltöltött csomaghoz.
 
@@ -169,7 +170,7 @@ Az adatkészlet térképi funkciók, például épületek, szintek és szobák g
 4. Szerezze be a **Get** -kérelmet a (z) `statusURL` beszerzéséhez `datasetId` . Fűzze hozzá Azure Maps elsődleges előfizetési kulcsát a hitelesítéshez. A kérelemnek a következő URL-címhez hasonlóan kell kinéznie:
 
     ```http
-    https://atlas.microsoft.com/dataset/operations/{operationId}?api-version=1.0&subscription-key=<Azure-Maps-Primary-Subscription-key>
+    https://atlas.microsoft.com/dataset/operations/<operationId>?api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}
     ```
 
 5. Ha a **Get** HTTP-kérelem sikeresen befejeződik, a válasz fejléce a létrehozott adatkészlet számára is tartalmazni fogja a `datasetId` következőt:. Másolja a `datasetId` . A `datasetId` tileset létrehozásához a-t kell használnia.
@@ -198,7 +199,7 @@ A tileset a térképen megjelenített vektoros csempék halmaza. A tilesets a me
 3. Hozzon igénybe egy **Get** -kérést a `statusURL` tileset. Fűzze hozzá Azure Maps elsődleges előfizetési kulcsát a hitelesítéshez. A kérelemnek a következő URL-címhez hasonlóan kell kinéznie:
 
    ```http
-    https://atlas.microsoft.com/tileset/operations/{operationId}?api-version=1.0&subscription-key=<Azure-Maps-Primary-Subscription-key>
+    https://atlas.microsoft.com/tileset/operations/<operationId>?api-version=1.0&subscription-key=<Azure-Maps-Primary-Subscription-key>
     ```
 
 4. Ha a **Get** HTTP-kérelem sikeresen befejeződik, a válasz fejléce a `tilesetId` létrehozott tileset fogja tartalmazni. Másolja a `tilesetId` .
@@ -424,7 +425,7 @@ További információ a cikkben tárgyalt különböző Azure Maps szolgáltatá
 > [Adatátalakítás](creator-indoor-maps.md#convert-a-drawing-package)
 
 > [!div class="nextstepaction"]
-> [Adatkészlet](creator-indoor-maps.md#datasets)
+> [Adathalmaz](creator-indoor-maps.md#datasets)
 
 > [!div class="nextstepaction"]
 > [Tileset](creator-indoor-maps.md#tilesets)

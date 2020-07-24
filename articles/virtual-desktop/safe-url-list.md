@@ -5,15 +5,15 @@ services: virtual-desktop
 author: heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 07/10/2020
+ms.date: 07/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 9b1bdfc326ff217e68785d823b4af046af3241b7
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 9f7a3b51afa11562123a280da8634e100a22e6b6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86225179"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075611"
 ---
 # <a name="safe-url-list"></a>Biztonságos URL-címek listája
 
@@ -30,9 +30,10 @@ A Windows rendszerű virtuális asztali környezethez létrehozott Azure-beli vi
 |*.core.windows.net|443|Ügynök forgalma|AzureCloud|
 |*.servicebus.windows.net|443|Ügynök forgalma|AzureCloud|
 |prod.warmpath.msftcloudes.com|443|Ügynök forgalma|AzureCloud|
-|catalogartifact.azureedge.net|443|Azure Piactér|AzureCloud|
+|catalogartifact.azureedge.net|443|Azure Marketplace|AzureCloud|
 |kms.core.windows.net|1688|A Windows aktiválása|Internet|
 |wvdportalstorageblob.blob.core.windows.net|443|Azure Portal támogatás|AzureCloud|
+| 169.254.169.254 | 80 | [Azure-példány metaadatainak szolgáltatási végpontja](../virtual-machines/windows/instance-metadata-service.md) | n.a. |
 
 >[!IMPORTANT]
 >A Windows virtuális asztal mostantól támogatja a FQDN címkét. További információ: [a Azure Firewall használata a Windows rendszerű virtuális asztali környezetek elleni védelemhez](../firewall/protect-windows-virtual-desktop.md).
@@ -59,8 +60,8 @@ A következő táblázat felsorolja azokat az opcionális URL-címeket, amelyekh
 >A szolgáltatás forgalmát tartalmazó URL-címekhez a helyettesítő karaktert (*) kell használnia. Ha nem kívánja használni az ügynökkel kapcsolatos forgalmat, a következő módon keresheti meg az URL-címeket helyettesítő karakterek nélkül:
 >
 >1. Regisztrálja a virtuális gépeket a Windows rendszerű virtuális asztali gazdaszámítógépen.
->2. Nyissa meg az **eseménynaplót**, majd lépjen a **Windows logs**  >  **Application**  >  **WVD-Agent** elemre, és keresse meg a 3702-es azonosítójú eseményt.
->3. Az 3702-as AZONOSÍTÓJÚ esemény alatt található URL-címek engedélyezési listája. Az 3702-es AZONOSÍTÓJÚ esemény URL-címei régiónként jellemzőek. Az összes olyan régióhoz tartozó URL-címmel meg kell ismételnie a blokkolási folyamatot, amelyre telepíteni szeretné a virtuális gépeket a alkalmazásban.
+>2. Nyissa meg az **eseménynaplót**, majd lépjen a **Windows logs**  >  **Application**  >  **WVD-Agent** elemre, és keresse meg a 3701-es azonosítójú eseményt.
+>3. Az 3701-as AZONOSÍTÓJÚ esemény alatt található URL-címek engedélyezési listája. Az 3701-es AZONOSÍTÓJÚ esemény URL-címei régiónként jellemzőek. Az összes olyan régióhoz tartozó URL-címmel meg kell ismételnie a blokkolási folyamatot, amelyre telepíteni szeretné a virtuális gépeket a alkalmazásban.
 
 ## <a name="remote-desktop-clients"></a>Távoli asztali ügyfelek
 

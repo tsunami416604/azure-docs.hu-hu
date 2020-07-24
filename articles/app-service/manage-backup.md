@@ -5,12 +5,12 @@ ms.assetid: 6223b6bd-84ec-48df-943f-461d84605694
 ms.topic: article
 ms.date: 10/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: d611be27d8d576748019dee46022ca4cb70e966a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b917ef9234ef2e0d36526bc1688dfae2020d6b51
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253443"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075481"
 ---
 # <a name="back-up-your-app-in-azure"></a>Adatok biztonsági mentése az Azure-ban
 A [Azure app Service](overview.md) biztonsági mentési és visszaállítási funkciója lehetővé teszi, hogy egyszerűen hozza létre az alkalmazások biztonsági másolatait manuálisan vagy ütemezés szerint. Beállíthatja, hogy a biztonsági másolatok határozatlan ideig maradjanak. Az alkalmazást visszaállíthatja egy korábbi állapot pillanatképére a meglévő alkalmazás felülírásával vagy egy másik alkalmazásra való visszaállítással.
@@ -159,12 +159,12 @@ Az alkalmazás adatbázisának biztonsági másolatát a. zip fájl gyökerében
 
 ## <a name="automate-with-scripts"></a>Automatizálás szkriptekkel
 
-A parancsfájlok segítségével automatizálhatja a biztonsági mentési felügyeletet az [Azure CLI](/cli/azure/install-azure-cli) vagy a [Azure PowerShell](/powershell/azure/overview)használatával.
+A parancsfájlok segítségével automatizálhatja a biztonsági mentési felügyeletet az [Azure CLI](/cli/azure/install-azure-cli) vagy a [Azure PowerShell](/powershell/azure/)használatával.
 
 Példákat a következő témakörben talál:
 
 - [Azure CLI-minták](samples-cli.md)
-- [Azure PowerShell-minták](samples-powershell.md)
+- [Azure PowerShell minták](samples-powershell.md)
 
 <a name="nextsteps"></a>
 

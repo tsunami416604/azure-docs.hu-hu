@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: ae352ead9e3ba6980c82ea48dca3db872b8d1e6d
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: de152a636d8751616744887a521b2f94bbd386a1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86043444"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077751"
 ---
 # <a name="management-net-sdk-set-up-and-run-analytics-jobs-using-the-azure-stream-analytics-api-for-net"></a>Felügyelet .NET SDK: elemzési feladatok beállítása és futtatása a .NET-hez készült Azure Stream Analytics API-val
 Ismerje meg, hogyan állíthatja be és futtathatja az elemzési feladatokat a .NET Stream Analytics API-val a felügyeleti .NET SDK használatával. Projekt beállítása, bemeneti és kimeneti források, átalakítások, valamint indítási és leállítási feladatok létrehozása. Az elemzési feladatokhoz blob Storage-ból vagy Event hub-ból továbbíthatja az adatait.
@@ -30,7 +30,7 @@ A cikk elkezdése előtt a következő követelményeknek kell megfelelnie:
 
 * Telepítse a Visual Studio 2019 vagy a 2015 programot.
 * Töltse le és telepítse az [Azure .net SDK](https://azure.microsoft.com/downloads/)-t.
-* Hozzon létre egy Azure-erőforráscsoportot az előfizetésében. A következő példa egy minta Azure PowerShell szkript. Azure PowerShell információ: [Azure PowerShell telepítése és konfigurálása](/powershell/azure/overview);  
+* Hozzon létre egy Azure-erőforráscsoportot az előfizetésében. A következő példa egy minta Azure PowerShell szkript. Azure PowerShell információ: [Azure PowerShell telepítése és konfigurálása](/powershell/azure/);  
 
    ```powershell
    # Log in to your Azure account

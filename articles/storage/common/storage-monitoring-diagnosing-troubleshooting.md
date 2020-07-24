@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: 94d952bcb0693941624199370de092a581d7479b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7af711ebe21c46663ecd8e803b0f636c34c362ee
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518589"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076048"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure Storage felügyelete, diagnosztizálása és hibaelhárítása
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -23,10 +23,6 @@ ms.locfileid: "86518589"
 A felhőalapú környezetben üzemeltetett elosztott alkalmazások hibáinak diagnosztizálása és hibaelhárítása összetettebb lehet, mint a hagyományos környezetekben. Az alkalmazások a IaaS-infrastruktúrában, a helyszínen, a mobileszközön vagy a környezetek valamilyen kombinációjában is üzembe helyezhetők. Az alkalmazás hálózati forgalma általában nyilvános és magánhálózatok bejárására is alkalmas lehet, és az alkalmazás több tárolási technológiát is használhat, például a Microsoft Azure Storage táblákat, blobokat, várólistákat vagy fájlokat, valamint más adattárakon, például a viszonyítási és dokumentum-adatbázisokon kívül.
 
 Az alkalmazások sikeres kezeléséhez proaktív módon kell figyelnie őket, és meg kell értenie, hogyan diagnosztizálhatja és elháríthatja az összes aspektusát és azok függő technológiáit. Az Azure Storage-szolgáltatások felhasználóinak folyamatosan figyelniük kell az alkalmazás által a működés közben fellépő váratlan változásokhoz (például a szokásos válaszidő-időpontnál lassabban) használt tárolási szolgáltatásokat, és a naplózás használatával részletesebb adatokat gyűjthetnek, és részletesen elemezheti a problémát. A figyelésből és a naplózásból beszerzett diagnosztikai információk segítségével meghatározható az alkalmazás által észlelt probléma kiváltó oka. Ezután elháríthatja a problémát, és meghatározhatja a megoldásához szükséges lépéseket. Az Azure Storage egy alapszintű Azure-szolgáltatás, amely az ügyfelek által az Azure-infrastruktúrára telepített megoldások többségének fontos részét képezi. Az Azure Storage olyan képességeket tartalmaz, amelyekkel egyszerűbbé válik a felhőalapú alkalmazások tárolási problémáinak figyelése, diagnosztizálása és hibaelhárítása.
-
-> [!NOTE]
-> A Azure Files jelenleg nem támogatja a naplózást.
->
 
 Az Azure Storage-alkalmazásokkal kapcsolatos teljes körű hibaelhárítást a teljes [körű hibaelhárítás az Azure Storage-metrikák és-naplózás, a AzCopy és a Message Analyzer használatával](../storage-e2e-troubleshooting.md)című részben találja.
 
@@ -810,7 +806,7 @@ A teljesítmény és a rendelkezésre állás monitorozásának részeként hasz
 
 További információ: [Mi a Application Insights](../../azure-monitor/app/app-insights-overview.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure Storage-beli elemzéssel kapcsolatos további információkért tekintse meg a következő forrásokat:
 

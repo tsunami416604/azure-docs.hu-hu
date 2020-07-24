@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: how-to
-ms.date: 03/19/2020
+ms.date: 07/16/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 73811aa58b09e394468596f42e0ff221b2bb240b
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 1f813d0ada516f6090b97e5858cefab110636f90
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86262043"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077603"
 ---
 # <a name="connect-with-the-windows-desktop-client"></a>Kapcsolódás a Windows asztali ügyféllel
 
@@ -25,7 +25,7 @@ ms.locfileid: "86262043"
 > A Windows rendszerű virtuális asztali Spring 2020 frissítése jelenleg nyilvános előzetes verzióban érhető el. Ezt az előzetes verziót szolgáltatói szerződés nélkül biztosítjuk, és nem javasoljuk, hogy éles számítási feladatokhoz használja azt. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
 > További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-A Windows rendszerű virtuális asztali erőforrásokat Windows 7, Windows 10 és Windows 10 IoT Enterprise rendszerű eszközökön érheti el a Windows asztali ügyfélprogram használatával.
+A Windows rendszerű virtuális asztali erőforrásokat Windows 7, Windows 10 és Windows 10 IoT Enterprise rendszerű eszközökön érheti el a Windows asztali ügyfélprogram használatával. Az ügyfél nem támogatja a 8. vagy a Windows 8,1 rendszert.
 
 >[!NOTE]
 >A Windows-ügyfél automatikusan alapértelmezésben a Windows rendszerű virtuális asztali verzió 2019-es kiadását adja meg. Ha azonban az ügyfél észleli, hogy a felhasználó Azure Resource Manager erőforrásokkal is rendelkezik, automatikusan hozzáadja az erőforrásokat, vagy értesíti a felhasználót, hogy elérhetők.
@@ -69,10 +69,10 @@ A munkaterületekre kétféleképpen lehet előfizetni. Az ügyfél megpróbálh
      - Windows rendszerű virtuális asztali 2019:`https://rdweb.wvd.microsoft.com/api/feeddiscovery/webfeeddiscovery.aspx`
      - Windows rendszerű virtuális asztali rugó 2020:`https://rdweb.wvd.microsoft.com/api/arm/feeddiscovery`
    - Ha ehelyett az **e-mail** mezőt használja, adja meg az e-mail-címét. Ez azt jelzi, hogy az ügyfél megkeresi az e-mail-címéhez tartozó URL-címet, ha a rendszergazda beállította az [e-mail felderítését](/windows-server/remote/remote-desktop-services/rds-email-discovery).
-3. Válassza a **Tovább** gombot.
+3. Válassza a **Tovább** lehetőséget.
 4. Ha a rendszer kéri, jelentkezzen be a felhasználói fiókjával.
 5. Az erőforrásoknak a kapcsolatok központjában kell megjelenniük, munkaterület szerint csoportosítva.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha többet szeretne megtudni a Windows asztali ügyfél használatáról, tekintse meg [a Windows asztali ügyfélprogram használatának első lépéseivel foglalkozó](/windows-server/remote/remote-desktop-services/clients/windowsdesktop/)témakört.

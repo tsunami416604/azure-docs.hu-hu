@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: 0363911574a076b13cb72591fb2564364e096c76
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0b6055cdf930c93ba096a21ebc0b74c204540a79
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710677"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076069"
 ---
 # <a name="run-a-dr-drill-for-hyper-v-vms-to-a-secondary-site"></a>A Hyper-V virtuális gépekhez tartozó DR-részletezés futtatása másodlagos helyre
 
@@ -102,17 +103,17 @@ Készítse elő a DNS-kiszolgálót a feladatátvételi teszthez a következők�
 * **DHCP**: Ha a virtuális gépek DHCP-t használnak, a teszt DNS IP-címét frissíteni kell a teszt DHCP-kiszolgálón. Ha a Windows hálózati virtualizálás hálózati típusát használja, a VMM-kiszolgáló DHCP-kiszolgálóként működik. Ezért a DNS IP-címét frissíteni kell a feladatátvételi teszt hálózaton. Ebben az esetben a virtuális gépek regisztrálják magukat a megfelelő DNS-kiszolgálón.
 * **Statikus cím**: Ha a virtuális gépek statikus IP-címet használnak, a teszt DNS-kiszolgáló IP-címét frissíteni kell a feladatátvételi teszt hálózatban. Előfordulhat, hogy frissítenie kell a DNS-t a teszt virtuális gépek IP-címével. Erre a célra a következő minta parancsfájlt használhatja:
 
-        Param(
-        [string]$Zone,
-        [string]$name,
-        [string]$IP
-        )
-        $Record = Get-DnsServerResourceRecord -ZoneName $zone -Name $name
-        $newrecord = $record.clone()
-        $newrecord.RecordData[0].IPv4Address  =  $IP
-        Set-DnsServerResourceRecord -zonename $zone -OldInputObject $record -NewInputObject $Newrecord
-
-
+  ```powershell
+  Param(
+  [string]$Zone,
+  [string]$name,
+  [string]$IP
+  )
+  $Record = Get-DnsServerResourceRecord -ZoneName $zone -Name $name
+  $newrecord = $record.clone()
+  $newrecord.RecordData[0].IPv4Address  =  $IP
+  Set-DnsServerResourceRecord -zonename $zone -OldInputObject $record -NewInputObject $Newrecord
+  ```
 
 ## <a name="run-a-test-failover"></a>Feladatátvételi teszt futtatása
 

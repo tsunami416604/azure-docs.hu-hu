@@ -1,5 +1,5 @@
 ---
-title: Orka-riasztások összekötése az Azure Sentinel szolgáltatással | Microsoft Docs
+title: Az Orka biztonsági riasztások összekötése az Azure Sentinel szolgáltatással | Microsoft Docs
 description: Ismerje meg, hogyan csatlakoztathatók az Orka biztonsági riasztások az Azure Sentinelhez, hogyan jeleníthetők meg az irányítópultok, hogyan hozhatók létre egyéni riasztások, és hogyan javítható a vizsgálat
 services: sentinel
 documentationcenter: na
@@ -14,14 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: 1f2f67281079142f0c4fe4985738dc48332a107d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 735f4b447d7258a9b444f3b75a6537dec20b1307
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531709"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076276"
 ---
-# <a name="connect-your-orca-alerts-to-azure-sentinel"></a>Az Orca-riasztások összekötése az Azure Sentinel használatával 
+# <a name="connect-your-orca-security-alerts-to-azure-sentinel"></a>Az Orka biztonsági riasztások összekötése az Azure Sentinel szolgáltatással 
+
+> [!IMPORTANT]
+> Az Orka Security riasztások összekötő az Azure Sentinel szolgáltatásban jelenleg nyilvános előzetes verzióban érhető el.
+> Ez a szolgáltatás szolgáltatói szerződés nélkül érhető el, és éles számítási feladatokhoz nem ajánlott. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Az Orka biztonsági riasztások összekötővel egyszerűen hozhatja létre az [Orka riasztások](https://orca.security/) biztonsági megoldásának riasztásait az Azure Sentinel szolgáltatásba, így megtekintheti őket a munkafüzetekben, felhasználhatja őket egyéni riasztások létrehozására, és a vizsgálat javítására is felépítheti azokat. Az Orka biztonsági riasztások és az Azure Sentinel közötti integráció a REST API használatát teszi lehetővé.
 
@@ -45,7 +49,7 @@ Ha a megfelelő sémát szeretné használni a Log Analyticsban az Orka-riasztá
 Akár 20 percet is igénybe vehet, amíg a naplók meg nem kezdődnek a Log Analytics. 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebből a dokumentumból megtudhatta, hogyan csatlakoztathatók az Orka biztonsági riasztásai az Azure Sentinelhez. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 - Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
 - Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats-built-in.md).

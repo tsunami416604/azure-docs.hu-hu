@@ -1,6 +1,6 @@
 ---
-title: JSON-összeolvasztás és-Escape-szabályok – Azure Time Series Insights | Microsoft Docs
-description: Ismerkedjen meg a JSON-összeolvasztással, a szökéssel és a tömb-kezelővel Azure Time Series Insightsban.
+title: JSON-összeolvasztás és-Escape-szabályok – Azure Time Series Insights Gen2 | Microsoft Docs
+description: Ismerkedjen meg a JSON-összeolvasztással, a szökéssel és a tömb-kezelési Azure Time Series Insights Gen2.
 author: lyrana
 ms.author: lyhughes
 manager: deepakpalled
@@ -8,19 +8,18 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 06/04/2020
-ms.custom: seodec18
-ms.openlocfilehash: 45eeebcc092513a0344acaff52c31c2cebfb377c
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.date: 07/07/2020
+ms.openlocfilehash: d33b9b4cb50c1be7b316aad2a736bfd6fb074833
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86049854"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075677"
 ---
 # <a name="ingestion-rules"></a>Betöltési szabályok
 ### <a name="json-flattening-escaping-and-array-handling"></a>JSON-Összeolvasztás, Escape-és Array-kezelő
 
-A Azure Time Series Insights-környezet dinamikusan létrehozza a meleg és a hideg tárolók oszlopait, az elnevezési konvenciók egy adott halmazát követve. Egy esemény betöltése esetén a rendszer a JSON-adattartalomra és a tulajdonságok nevére alkalmazza a szabályok halmazát. Ilyenek például bizonyos speciális karakterek elhagyása és a beágyazott JSON-objektumok összeolvasztása. Fontos tudni ezeket a szabályokat, hogy tisztában legyen azzal, hogy a JSON-alakzat milyen hatással van az események tárolására és lekérdezésére. A szabályok teljes listájáért tekintse meg az alábbi táblázatot. Példák A & B azt is bemutatják, hogyan lehet hatékonyan batch több idősorozatot felvenni egy tömbben.
+A Azure Time Series Insights Gen2-környezet dinamikusan létrehozza a meleg és a hűtőházi tárolók oszlopait, az elnevezési konvenciók egy adott halmazát követve. Egy esemény betöltése esetén a rendszer a JSON-adattartalomra és a tulajdonságok nevére alkalmazza a szabályok halmazát. Ilyenek például bizonyos speciális karakterek elhagyása és a beágyazott JSON-objektumok összeolvasztása. Fontos tudni ezeket a szabályokat, hogy tisztában legyen azzal, hogy a JSON-alakzat milyen hatással van az események tárolására és lekérdezésére. A szabályok teljes listájáért tekintse meg az alábbi táblázatot. Példák A & B azt is bemutatják, hogyan lehet hatékonyan batch több idősorozatot felvenni egy tömbben.
 
 > [!IMPORTANT]
 >
@@ -28,8 +27,8 @@ A Azure Time Series Insights-környezet dinamikusan létrehozza a meleg és a hi
 
 | Szabály | Példa JSON-ra |Oszlop neve a tárolóban |
 |---|---|---|
-| Az ÁME adattípusa az oszlopnév végéhez lesz hozzáfűzve "_" értékként. \<dataType\> | ```"type": "Accumulated Heat"``` | type_string |
-| Az eseményforrás [timestamp tulajdonsága](concepts-streaming-ingestion-event-sources.md#event-source-timestamp) az ÁME-ben lesz mentve a tárolóban, és az UTC szerint tárolt érték. Az eseményforrás (ok) timestamp tulajdonsága testreszabható úgy, hogy megfeleljen a megoldás igényeinek, de az oszlop neve a meleg és a hideg tárolóban "Timestamp". Más datetime JSON-tulajdonságok, amelyek nem az eseményforrás időbélyege, az oszlopnév "_datetime" lesz mentve, ahogy az a fenti szabályban szerepel.  | ```"ts": "2020-03-19 14:40:38.318"``` | időbélyeg |
+| A Azure Time Series Insights Gen2 adattípusa az oszlopnév végéhez lesz hozzáfűzve "_" értékként. \<dataType\> | ```"type": "Accumulated Heat"``` | type_string |
+| Az eseményforrás [timestamp tulajdonsága](concepts-streaming-ingestion-event-sources.md#event-source-timestamp) Azure Time Series Insights Gen2 lesz mentve a tárolóban, és az UTC szerint tárolt érték. Az eseményforrás (ok) timestamp tulajdonsága testreszabható úgy, hogy megfeleljen a megoldás igényeinek, de az oszlop neve a meleg és a hideg tárolóban "Timestamp". Más datetime JSON-tulajdonságok, amelyek nem az eseményforrás időbélyege, az oszlopnév "_datetime" lesz mentve, ahogy az a fenti szabályban szerepel.  | ```"ts": "2020-03-19 14:40:38.318"``` | időbélyeg |
 | A speciális karaktereket tartalmazó JSON-tulajdonságok neve. [\ és "a (z) [" és "] használatával kerül megmenekülésre  |  ```"id.wasp": "6A3090FD337DE6B"``` | [' id. WASP '] _string |
 | A (z) ["és"] keretben további Escape-értékekkel és fordított perjelekkel rendelkezik. A rendszer egy idézőjelet (\) ír, a fordított perjelet pedig\\\ | ```"Foo's Law Value": "17.139999389648"``` | ["Foo \' s Law Value"] _double |
 | A beágyazott JSON-objektumok az elválasztó ponttal vannak lelapulva. A legfeljebb 10 szint beágyazását támogatja. |  ```"series": {"value" : 316 }``` | adatsorozat. value_long |
@@ -186,4 +185,4 @@ A fenti konfiguráció és hasznos adatok három oszlopot és egy eseményt ered
 
 ## <a name="next-steps"></a>További lépések
 
-* A környezet [adatátviteli korlátainak](concepts-streaming-throughput-limitations.md) megismerése
+* A környezet [adatátviteli korlátainak](./concepts-streaming-ingress-throughput-limits.md) megismerése

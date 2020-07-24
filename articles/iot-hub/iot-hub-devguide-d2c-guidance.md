@@ -11,11 +11,12 @@ ms.date: 01/29/2018
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: b984ee7ed662bf089e7bcb6fc7e948fb61ed1209
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b86610910ed532e737720bb3b83e773596987aba
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81733216"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074681"
 ---
 # <a name="device-to-cloud-communications-guidance"></a>Az eszközről a felhőbe irányuló kommunikációs útmutató
 
@@ -31,7 +32,7 @@ Amikor adatokat küld az eszköz alkalmazásból a megoldás háttérbe, IoT Hub
 
 Itt látható az eszközről a felhőbe irányuló különböző kommunikációs lehetőségek részletes összevetése.
 
-|  | Az eszközről a felhőbe irányuló üzenetek | A Device Twin szolgáltatás jelentett tulajdonságai | Fájlfeltöltés |
+| Szempont | Az eszközről a felhőbe irányuló üzenetek | A Device Twin szolgáltatás jelentett tulajdonságai | Fájlfeltöltés |
 | ---- | ------- | ---------- | ---- |
 | Forgatókönyv | Telemetria idősorozat és riasztások. Például 256 – KB-os érzékelő adatkötegek 5 percenként elküldve. | Elérhető képességek és kikötések. Például az eszköz aktuális kapcsolati módja, például a mobil vagy a WiFi. Hosszan futó munkafolyamatok, például a konfiguráció és a szoftverfrissítések szinkronizálása. | Médiafájlok. Nagyméretű (általában tömörített) telemetria kötegek. |
 | Tárolás és lekérés | Ideiglenesen tárolta IoT Hub, legfeljebb 7 nap. Csak szekvenciális olvasás. | Az eszköz Twin IoT Hub tárolja. Beolvasható a [IoT hub lekérdezési nyelv](iot-hub-devguide-query-language.md)használatával. | A felhasználó által megadott Azure Storage-fiókban tárolva. |

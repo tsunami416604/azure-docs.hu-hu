@@ -15,11 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 03/09/2020
 ms.author: juliako
-ms.openlocfilehash: 72d413c5d8bc982d885d889da35b29a3607410cc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c9ec677e356f5d4e70a49c9de10f0fdb2039917d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79472067"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078052"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Áttelepítési útmutató Media Services v2-ről v3-re való áthelyezéshez
 
@@ -64,9 +65,9 @@ Ha az [örökölt Media Services v2 API](../previous/media-services-overview.md)
 
     * Media Services v3 [élő események](live-events-outputs-concept.md)kezelése 
     * v3- [eszközök](assets-concept.md)megtekintése (nem felügyelt) 
-    * [az API-k elérésére vonatkozó információk beolvasása](access-api-portal.md). 
+    * [az API-k elérésére vonatkozó információk beolvasása](./access-api-howto.md). 
 
-    Az összes többi felügyeleti feladathoz (például [átalakításokhoz, feladatokhoz](transforms-jobs-concept.md) és [tartalmak védelméhez](content-protection-overview.md)) használja a [REST API](https://docs.microsoft.com/rest/api/media/), a [CLI](https://aka.ms/ams-v3-cli-ref)vagy a támogatott [SDK](media-services-apis-overview.md#sdks)-k egyikét.
+    Az összes többi felügyeleti feladathoz (például [átalakításokhoz, feladatokhoz](transforms-jobs-concept.md) és [tartalmak védelméhez](content-protection-overview.md)) használja a [REST API](/rest/api/media/), a [CLI](https://aka.ms/ams-v3-cli-ref)vagy a támogatott [SDK](media-services-apis-overview.md#sdks)-k egyikét.
 * A Media szolgáltatás számára fenntartott egységeket (MRUs-ket) a fiókjában kell kiépíteni a feladatok párhuzamosságának és teljesítményének szabályozása érdekében, különösen a videó-vagy hangelemzést is beleértve. További információért lásd a [médiafeldolgozás skálázását](../previous/media-services-scale-media-processing-overview.md) ismertető cikket. A MRUs a parancssori felület 2,0-es verziójával kezelheti [Media Services v3](media-reserved-units-cli-how-to.md)esetén, a [Azure Portal](../previous/media-services-portal-scale-media-processing.md)vagy a [v2 API](../previous/media-services-dotnet-encoding-units.md)-k használatával. MRUs kell kiépíteni, függetlenül attól, hogy Media Services v2 vagy V3 API-t használ.
 * Media Services a V3 API-val létrehozott entitásokat nem lehet a v2 API-val felügyelni.  
 * A v2 API-ban lévő összes entitás automatikusan megjelenik a V3 API-ban.  A következő példa a két, nem kompatibilis verzióban található entitásokra mutat példát:  

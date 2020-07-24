@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/18/2019
+ms.date: 07/17/2020
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: common
-ms.openlocfilehash: b853817b670f59bbfeef9ecd81c70dc63cbd367b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 108dd37370290a68d620a61f84b4553ed59792ab
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84804620"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077874"
 ---
 # <a name="grant-limited-access-to-azure-storage-resources-using-shared-access-signatures-sas"></a>Korlátozott hozzáférés biztosítása az Azure Storage-erőforrásokhoz közös hozzáférésű aláírások (SAS) használatával
 
@@ -62,7 +62,7 @@ Az SAS-t kétféleképpen lehet aláírni:
 
 - A Storage-fiók kulcsaként. A Service SAS és a fiók SAS is a Storage-fiók kulcsával van aláírva. A fiók kulccsal aláírt SAS létrehozásához az alkalmazásnak hozzá kell férnie a fiók kulcsához.
 
-### <a name="sas-token"></a>SAS-token
+### <a name="sas-token"></a>SAS-jogkivonat
 
 Az SAS-jogkivonat egy olyan karakterlánc, amelyet az ügyfél oldalán állít elő, például az egyik Azure Storage ügyféloldali kódtára használatával. A SAS-tokent semmilyen módon nem követik nyomon az Azure Storage. Korlátlan számú SAS-tokent hozhat létre az ügyféloldali oldalon. Miután létrehozott egy SAS-t, terjesztheti azt olyan ügyfélalkalmazások számára, amelyek hozzáférést igényelnek a Storage-fiók erőforrásaihoz.
 
@@ -109,7 +109,7 @@ A közös hozzáférési aláírások használatára vonatkozó alábbi javaslat
 - **Definiáljon egy tárolt hozzáférési szabályzatot egy szolgáltatás SAS számára.** A tárolt hozzáférési szabályzatok lehetővé teszik a Service SAS engedélyeinek visszavonását anélkül, hogy újra kellene generálni a Storage-fiók kulcsait. Állítsa a lejáratot a jövőben (vagy a végtelenre), és győződjön meg róla, hogy rendszeresen frissült, hogy a későbbiekben áthelyezze a szolgáltatást.
 - **A közeljövőben lejárati idő használata egy ad hoc SAS-szolgáltatás SAS vagy fiók SAS esetében.** Ily módon, még akkor is, ha egy SAS biztonsága sérül, csak rövid ideig érvényes. Ez a gyakorlat különösen akkor fontos, ha nem hivatkozhat tárolt hozzáférési szabályzatra. A közeljövőben lejárati idő a blobba írt adatok mennyiségét is korlátozza a feltöltéshez rendelkezésre álló idő korlátozásával.
 - **Ha szükséges, az ügyfelek automatikusan megújítják az SAS-t.** Az ügyfeleknek a lejárat előtt is meg kell újítaniuk a SAS-t, hogy újra lehessen próbálkozni az újrapróbálkozások idejével, ha az SAS-t biztosító szolgáltatás nem érhető el. Ha a SAS-t kis számú azonnali, rövid életű művelethez kívánja használni, amelyeket a lejárati időszakon belül el kell végezni, akkor ez szükségtelen lehet, mivel a SAS-t nem kell megújítani. Ha azonban olyan ügyfele van, amely az SAS-n keresztül rutinul kéri a kérelmeket, akkor a lejárati lehetőség a lejátszásra kerül. A legfontosabb szempont, hogy az SAS-nek rövid életűnek kell lennie (ahogy azt korábban már említettük) annak biztosításához, hogy az ügyfél kellő időben megújítsa a megújítást (a sikeres megújítás előtt lejáró SAS okozta fennakadások elkerülése érdekében).
-- **Ügyeljen rá, hogy az SAS indítási ideje legyen.** Ha **most**beállítja a kezdő időpontot a sas számára, akkor az óra torzítása miatt (a különböző gépektől függően a jelenlegi idő eltérései) a hibák időnként megfigyelhetők az első néhány percben. Általában úgy állítsa be a kezdési időpontot, hogy legalább 15 perccel korábbi legyen. Vagy ne állítsa be egyáltalán, hogy minden esetben azonnal érvényes lesz. Ugyanez általában érvényes a lejárati időre is – ne feledje, hogy a kérések bármelyik irányában akár 15 percet is megfigyelheti. Az 2012-02-12-nál korábbi REST-verziót használó ügyfelek esetében a tárolt hozzáférési szabályzatra nem hivatkozó SAS maximális időtartama 1 óra, és a szabályzatok által meghiúsult hosszabb időszakot megadó házirendek.
+- **Ügyeljen rá, hogy az SAS indítási ideje legyen.** Ha a kezdő időpontot az aktuális időpontra állítja be, akkor az első pár percen belül időnként megfigyelheti a hibákat, mivel a különböző gépek az aktuális időpontnál kisebb eltéréseket (azaz az óra eldöntését). Általában úgy állítsa be a kezdési időpontot, hogy legalább 15 perccel korábbi legyen. Vagy ne állítsa be egyáltalán, hogy minden esetben azonnal érvényes lesz. Ugyanez általában érvényes a lejárati időre is – ne feledje, hogy a kérések bármelyik irányában akár 15 percet is megfigyelheti. Az 2012-02-12-nál korábbi REST-verziót használó ügyfelek esetében a tárolt hozzáférési szabályzatra nem hivatkozó SAS maximális időtartama 1 óra, és a szabályzatok által meghiúsult hosszabb időszakot megadó házirendek.
 - **Legyen óvatos az SAS datetime formátumával.** Ha egy SAS esetében beállítja a kezdési időt és/vagy a lejáratot, egyes segédprogramokban (például a parancssori segédprogram AzCopy), akkor a dátum és idő formátuma csak "+% Y-% m-% dT% H:%M:% SZ" lehet.  
 - **Legyen egyedi az elérni kívánt erőforrással.** Az ajánlott biztonsági eljárás a minimálisan szükséges jogosultságokkal rendelkező felhasználó biztosítása. Ha egy felhasználónak csak olvasási hozzáférésre van szüksége egyetlen entitáshoz, akkor olvasási hozzáféréssel kell rendelkeznie az adott entitáshoz, és nem kell olvasási/írási/törlési hozzáférést adni az összes entitáshoz. Ez segít csökkenteni a károkat, ha a SAS biztonsága sérül, mert az SAS a támadók kezében kevesebb árammal rendelkezik.
 - **Ismerje meg, hogy a fiók számlázása minden használat után történik, beleértve a SAS-n keresztül is.** Ha írási hozzáférést biztosít egy blobhoz, a felhasználó a 200 GB-os blob feltöltését is választhatja. Ha olvasási hozzáféréssel is rendelkezik, dönthetnek úgy is, hogy 10 alkalommal töltik le, ami 2 TB-ot jelent a kimenő forgalomért. A korlátozott engedélyek megadásával csökkentheti a rosszindulatú felhasználók lehetséges műveleteit. Használja a rövid élettartamú SAS-t a fenyegetés csökkentése érdekében (de legyen szem előtt tartva a Befejezés időpontját).

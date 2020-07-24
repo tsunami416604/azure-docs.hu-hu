@@ -4,11 +4,12 @@ description: Ismerje meg az Azure-erőforrás-naplók támogatott szolgáltatás
 ms.subservice: logs
 ms.topic: reference
 ms.date: 06/15/2020
-ms.openlocfilehash: 37c4093e52caf091489c60a8cdf497cffeffe9ac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7a97afa3f960393637b8af63c56fba419f853465
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85413858"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077060"
 ---
 # <a name="common-and-service-specific-schema-for-azure-resource-logs"></a>Az Azure-erőforrás naplóihoz tartozó általános és szolgáltatás-specifikus séma
 
@@ -59,7 +60,7 @@ Az erőforrás-naplók sémája az erőforrás és a napló kategóriától füg
 | Cognitive Services | [Azure-Cognitive Services naplózása](../../cognitive-services/diagnostic-logging.md) |
 | Container Registry | [Azure Container Registry naplózása](../../container-registry/container-registry-diagnostics-audit-logs.md) |
 | Content Delivery Network | [A CDN-hez készült Azure-naplók](../../cdn/cdn-azure-diagnostic-logs.md) |
-| CosmosDB | [Azure Cosmos DB naplózás](../../cosmos-db/logging.md) |
+| CosmosDB | [Azure Cosmos DB naplózás](../../cosmos-db/monitor-cosmos-db.md) |
 | Data Factory | [Az adatüzemek figyelése Azure Monitor használatával](../../data-factory/monitor-using-azure-monitor.md) |
 | Data Lake Analytics |[Naplók elérése Azure Data Lake Analyticshoz](../../data-lake-analytics/data-lake-analytics-diagnostic-logs.md) |
 | Data Lake Store |[Naplók elérése Azure Data Lake Storehoz](../../data-lake-store/data-lake-store-diagnostic-logs.md) |
@@ -73,7 +74,7 @@ Az erőforrás-naplók sémája az erőforrás és a napló kategóriától füg
 | Logic Apps |[Logic Apps B2B egyéni követési séma](../../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md) |
 | Network Security Groups (Hálózati biztonsági csoportok) |[Naplóelemzés hálózati biztonsági csoportokhoz](../../virtual-network/virtual-network-nsg-manage-log.md) |
 | Védelem DDOS-támadások ellen | [Azure DDoS Protection standard kezelése](../../virtual-network/manage-ddos-protection.md) |
-| Power BI – dedikált | [Power BI Embedded naplózása az Azure-ban](https://docs.microsoft.com/power-bi/developer/azure-pbie-diag-logs) |
+| Power BI – dedikált | [Power BI Embedded naplózása az Azure-ban](/power-bi/developer/azure-pbie-diag-logs) |
 | Recovery Services | [Azure Backup adatmodellje](../../backup/backup-azure-reports-data-model.md)|
 | Keresés |[A keresési Traffic Analytics engedélyezése és használata](../../search/search-traffic-analytics.md) |
 | Service Bus |[Naplók Azure Service Bus](../../service-bus-messaging/service-bus-diagnostic-logs.md) |
@@ -88,6 +89,6 @@ Az erőforrás-naplók sémája az erőforrás és a napló kategóriától füg
 
 * [A gyűjtött erőforrás-naplózási kategóriák megtekintése](resource-logs-categories.md)
 * [További információ az erőforrás-naplókról](../../azure-monitor/platform/platform-logs-overview.md)
-* [Stream erőforrás-erőforrás naplófájljai **Event Hubs**](../../azure-monitor/platform/resource-logs-stream-event-hubs.md)
-* [Az erőforrás-napló diagnosztikai beállításainak módosítása a Azure Monitor használatával REST API](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings)
-* [Naplók elemzése az Azure Storage-ból Log Analytics](../../azure-monitor/platform/collect-azure-metrics-logs.md)
+* [Stream erőforrás-erőforrás naplófájljai **Event Hubs**](./resource-logs.md#send-to-azure-event-hubs)
+* [Az erőforrás-napló diagnosztikai beállításainak módosítása a Azure Monitor használatával REST API](/rest/api/monitor/diagnosticsettings)
+* [Naplók elemzése az Azure Storage-ból Log Analytics](./resource-logs.md#send-to-log-analytics-workspace)

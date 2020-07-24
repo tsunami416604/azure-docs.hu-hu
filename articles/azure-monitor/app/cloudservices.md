@@ -3,14 +3,15 @@ title: Azure Cloud Services-Application Insights | Microsoft Docs
 description: Webes és feldolgozói szerepkörök hatékony figyelése az Application Insightsszal
 ms.topic: conceptual
 ms.date: 09/05/2018
-ms.openlocfilehash: 17813d17a1c40caac5587e37e279be6376992b90
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bf75bb145a3b0d7c861d3c92af972b39de11bcdf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81537593"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075428"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Azure Cloud Services-Application Insights
-A [Application Insights][start] képes figyelni az [Azure Cloud Service-alkalmazásokat](https://azure.microsoft.com/services/cloud-services/) a rendelkezésre állásra, a teljesítményre, a hibákra és a használatra, ha Application Insights SDK-ból származó adatokat egyesít a cloud servicesből származó [Azure Diagnostics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) adatokkal. A széles körben elérhető módon működő alkalmazások teljesítményével és hatékonyságával kapcsolatos visszajelzések birtokában tájékozott döntéseket hozhat a fejlesztés irányát illetően az egyes fejlesztési fázisokban.
+A [Application Insights][start] képes figyelni az [Azure Cloud Service-alkalmazásokat](https://azure.microsoft.com/services/cloud-services/) a rendelkezésre állásra, a teljesítményre, a hibákra és a használatra, ha Application Insights SDK-ból származó adatokat egyesít a cloud servicesből származó [Azure Diagnostics](../platform/diagnostics-extension-overview.md) adatokkal. A széles körben elérhető módon működő alkalmazások teljesítményével és hatékonyságával kapcsolatos visszajelzések birtokában tájékozott döntéseket hozhat a fejlesztés irányát illetően az egyes fejlesztési fázisokban.
 
 ![Áttekintő irányítópult](./media/cloudservices/overview-graphs.png)
 
@@ -30,7 +31,7 @@ Ez a beállítás lehetővé teszi az alkalmazás futását, és megadja az öss
 
 Ha erre a lehetőségre van szüksége, készen áll. 
 
-A következő lépések az [alkalmazás mérőszámait tekintik át](../../azure-monitor/platform/metrics-charts.md), és az [adatokat az elemzéssel kérdezik](../../azure-monitor/app/analytics.md)le. 
+A következő lépések az [alkalmazás mérőszámait tekintik át](../../azure-monitor/platform/metrics-charts.md), és az [adatokat az elemzéssel kérdezik](../log-query/log-query-overview.md)le. 
 
 Ha figyelni szeretné a teljesítményt a böngészőben, érdemes lehet a [rendelkezésre állási teszteket](../../azure-monitor/app/monitor-web-app-availability.md) is beállítania, és [kódokat hozzáadni a weblapokhoz](../../azure-monitor/app/javascript.md).
 
@@ -131,7 +132,7 @@ A Visual Studióban konfigurálja külön az Application Insights SDK-t az egyes
 
 Erre a lépésre csak akkor van szükség, ha a .NET-keretrendszerben teljes SQL-lekérdezéseket szeretne rögzíteni. 
 
-1. A `\*.csdef` fájlban az [indítási feladat](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks) hozzáadása a következőhöz hasonló szerepkörökhöz: 
+1. A `\*.csdef` fájlban az [indítási feladat](../../cloud-services/cloud-services-startup-tasks.md) hozzáadása a következőhöz hasonló szerepkörökhöz: 
 
     ```xml
     <Startup>
@@ -177,7 +178,7 @@ Ha nincs ilyen érték, tegye a következőket:
 További információk: [Hibaelhárítás][qna].
 
 ## <a name="view-azure-diagnostics-events"></a>Azure Diagnostics események megtekintése
-A [Azure Diagnostics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) információk a Application Insights a következő helyszíneken találhatók:
+A [Azure Diagnostics](../platform/diagnostics-extension-overview.md) információk a Application Insights a következő helyszíneken találhatók:
 
 * A teljesítményszámlálók egyéni mérőszámokként jelennek meg. 
 * A Windows eseménynaplók nyomkövetésekként és egyéni eseményekként jelennek meg.
@@ -241,7 +242,7 @@ A hatékony diagnosztikai élmény érdekében megtekintheti, hogy mi vezetett e
 
 Ha ezt a nézetet szeretné elérni a feldolgozói szerepkörökhöz, használhat egy egyéni telemetria-inicializálást az összes telemetria közös Operation.Id-környezeti attribútumának beállításához. Ezzel egy pillantással megtekintheti, hogy a késés vagy a hiba problémáját egy függőség vagy a kód okozta-e. 
 
-Ezt a következőképpen teheti meg:
+Ez a következőképpen érhető el:
 
 * Állítsa be a correlationId egy CallContext [, az ebben a példában látható módon](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L36). Ebben az esetben a kérelem AZONOSÍTÓját használjuk correlationId.
 * Vegyen fel egy egyéni TelemetryInitializer-megvalósítást, hogy a Operation.Id a korábban beállított correlationId állítsa be. Példaként tekintse meg a következőt: [ItemCorrelationTelemetryInitializer](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/Telemetry/ItemCorrelationTelemetryInitializer.cs#L13).
@@ -258,7 +259,7 @@ A rendszer átfogó képére a kulcsfontosságú figyelési diagramok is megjele
 
 Ha a rendszer más Azure-szolgáltatásokat (például Stream Analytics) használ, vegye fel a figyelési diagramokat is. 
 
-Ha rendelkezik ügyfél-mobilalkalmazással, használja az [App Centert](../../azure-monitor/learn/mobile-center-quickstart.md). [Analytics](../../azure-monitor/app/analytics.md)-lekérdezések létrehozásával megjelenítheti az események számát, és rögzítheti őket az irányítópulton.
+Ha rendelkezik ügyfél-mobilalkalmazással, használja az [App Centert](../../azure-monitor/learn/mobile-center-quickstart.md). [Analytics](../log-query/log-query-overview.md)-lekérdezések létrehozásával megjelenítheti az események számát, és rögzítheti őket az irányítópulton.
 
 ## <a name="example"></a>Példa
 [Ez a példa](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService) egy olyan szolgáltatást figyel, amely egy webes és két feldolgozói szerepkörrel rendelkezik.
@@ -283,6 +284,6 @@ A .NET 4.6-os verziójára készítette el az alkalmazást? A .NET 4,6 nem támo
 [diagnostic]: ../../azure-monitor/app/diagnostic-search.md
 [netlogs]: ../../azure-monitor/app/asp-net-trace-logs.md
 [portal]: https://portal.azure.com/
-[qna]: ../../azure-monitor/app/troubleshoot-faq.md
+[qna]: ../faq.md
 [redfield]: ../../azure-monitor/app/monitor-performance-live-website-now.md
-[start]: ../../azure-monitor/app/app-insights-overview.md 
+[start]: ../../azure-monitor/app/app-insights-overview.md

@@ -3,16 +3,16 @@ title: Azure-fájlmegosztás biztonsági mentése a Azure Portal
 description: Ismerje meg, hogyan használhatja a Azure Portal az Azure-fájlmegosztás biztonsági mentésére az Recovery Services-tárolóban
 ms.topic: conceptual
 ms.date: 01/20/2020
-ms.openlocfilehash: 76bf8e00dede5f227cb862f9c9474844e349e298
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 58bcd7ecd7c6fac80f5b78fb2c8b568b63e3e1b2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85391153"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077133"
 ---
 # <a name="back-up-azure-file-shares"></a>Azure-fájlmegosztások biztonsági mentése
 
-Ez a cikk azt ismerteti, hogyan használható a Azure Portal az [Azure-fájlmegosztás](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)biztonsági mentéséhez.
+Ez a cikk azt ismerteti, hogyan használható a Azure Portal az [Azure-fájlmegosztás](../storage/files/storage-files-introduction.md)biztonsági mentéséhez.
 
 Ebből a cikkből megtudhatja, hogyan végezheti el a következőket:
 
@@ -63,7 +63,7 @@ Ebből a cikkből megtudhatja, hogyan végezheti el a következőket:
 
 1. A jobb oldalon megnyílik a **fájlmegosztás helyi kiválasztása** panel. Az Azure olyan fájlmegosztás esetén keresi a Storage-fiókot, amelyekről biztonsági másolatot lehet készíteni. Ha nemrég adta hozzá a fájlmegosztást, és nem látja őket a listában, hagyjon némi időt a fájlmegosztás megjelenítésére.
 
-1. A **fájlmegosztás kiválasztása** listából válasszon ki egy vagy több olyan fájlmegosztást, amelyről biztonsági másolatot szeretne készíteni. Válassza az **OK** lehetőséget.
+1. A **fájlmegosztás kiválasztása** listából válasszon ki egy vagy több olyan fájlmegosztást, amelyről biztonsági másolatot szeretne készíteni. Kattintson az **OK** gombra.
 
    ![Fájlmegosztás kiválasztása](./media/backup-afs/select-file-shares.png)
 

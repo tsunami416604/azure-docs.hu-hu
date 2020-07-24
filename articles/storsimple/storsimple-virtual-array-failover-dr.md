@@ -15,11 +15,12 @@ ms.workload: NA
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b864cc8bc0e5d39967a2307bd98bda082b6cfd5e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 05f31993b7491dbfb0bff46c8fd2362b6bab0d4e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515216"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077786"
 ---
 # <a name="disaster-recovery-and-device-failover-for-your-storsimple-virtual-array-via-azure-portal"></a>Vészhelyreállítás és az eszköz feladatátvétele a StorSimple Virtual Arrayhez az Azure Portalon keresztül
 
@@ -121,12 +122,12 @@ A következő lépések végrehajtásával állíthatja vissza az eszközt egy c
 
 5. Az **inaktiválás** panelen a rendszer megerősítést kér. Az eszköz inaktiválása olyan *állandó* folyamat, amely nem vonható vissza. Azt is emlékezteti, hogy a megosztásokat/köteteket offline állapotba helyezi a gazdagépen. A megerősítéshez írja be az eszköz nevét, majd kattintson az **inaktiválás**elemre.
    
-    ![](./media/storsimple-virtual-array-failover-dr/failover1.png)
+    ![Képernyőkép az Inaktiválás panelről. Az eszköz neve mező ki van töltve, és az Inaktiválás gomb ki van emelve.](./media/storsimple-virtual-array-failover-dr/failover1.png)
 6. Az Inaktiválás elindul. Az Inaktiválás sikeres befejeződése után értesítést fog kapni.
    
-    ![](./media/storsimple-virtual-array-failover-dr/failover2.png)
+    ![Képernyőkép a folyamatjelzőről, amely azt jelzi, hogy az eszköz inaktiválva van.](./media/storsimple-virtual-array-failover-dr/failover2.png)
 7. Az eszközök lapon az eszköz állapota mostantól **inaktiváltra**vált.
-    ![](./media/storsimple-virtual-array-failover-dr/failover3.png)
+    ![Képernyőfelvétel az eszközök lapról. A deaktivált eszköz tulajdonságai megjelennek, beleértve az inaktivált állapotú állapotot is.](./media/storsimple-virtual-array-failover-dr/failover3.png)
 8. Az **eszközök** panelen válassza ki a feladatátvételhez a deaktivált forrásoldali eszközt, és kattintson rá. 
 9. Az **eszköz irányítópult** paneljén kattintson a **feladatátvétel**elemre. 
 10. A **feladatátvételi eszköz** panelen tegye a következőket:
@@ -139,22 +140,22 @@ A következő lépések végrehajtásával állíthatja vissza az eszközt egy c
 
     4. Kattintson a **feladatátvétel**elemre.
     
-        ![](./media/storsimple-virtual-array-failover-dr/failover4.png)
+        ![Képernyőfelvétel: a feladatátvételi eszköz panelje, a forrás és a cél eszköz kitöltésével, a beállítás be van jelölve, az átadott feladatátvétel gomb kiemelve.](./media/storsimple-virtual-array-failover-dr/failover4.png)
 11. A feladatátvételi feladatok elindítják és értesítést kapnak. A feladatátvétel figyeléséhez nyissa meg az **eszközök > feladatok** lehetőséget.
     
-     ![](./media/storsimple-virtual-array-failover-dr/failover5.png)
+     ![Képernyőkép – a folyamatjelző sáv, amely azt jelzi, hogy az eszköz feladatátvételt jelez.](./media/storsimple-virtual-array-failover-dr/failover5.png)
 12. A **feladatok** panelen a forrás eszközhöz létrehozott feladatátvételi feladat jelenik meg. Ez a feladat hajtja végre a DR elővizsgálatokat.
     
-    ![](./media/storsimple-virtual-array-failover-dr/failover6.png)
+    ![A feladatátvételi feladatok sikeres elindítását bemutató képernyőkép.](./media/storsimple-virtual-array-failover-dr/failover6.png)
     
      A DR-ellenőrzés sikeres befejezését követően a feladatátvételi feladat a forrásoldali eszközön található minden egyes megosztás/kötet esetében elindítja a visszaállítási feladatokat.
     
-    ![](./media/storsimple-virtual-array-failover-dr/failover7.png)
+    ![A feladatátvételi feladattal, például az állapottal, az eszközzel és az időtartammal kapcsolatos részleteket bemutató képernyőkép.](./media/storsimple-virtual-array-failover-dr/failover7.png)
 13. A feladatátvétel befejezése után lépjen az **eszközök** panelre.
     
     1. Jelölje ki, majd kattintson arra a StorSimple-eszközre, amelyet célként használt eszközként a feladatátvételi folyamathoz.
     2. Lépjen a **beállítások > felügyeleti > megosztások** (vagy a **kötetek** , ha az iSCSI-kiszolgáló). A **megosztások** panelen megtekintheti az összes megosztást (kötetet) a régi eszközről.
-        ![](./media/storsimple-virtual-array-failover-dr/failover9.png)
+        ![Képernyőkép az eszközök panelről. A célként megadott eszköz online állapotú.](./media/storsimple-virtual-array-failover-dr/failover9.png)
 14. [Létre kell hoznia egy DNS-aliast](https://support.microsoft.com/kb/168322) , hogy az összes csatlakozni próbáló alkalmazás átirányítva legyen az új eszközre.
 
 ## <a name="errors-during-dr"></a>Hibák a DR

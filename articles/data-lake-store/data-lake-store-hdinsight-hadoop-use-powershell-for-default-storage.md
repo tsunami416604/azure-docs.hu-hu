@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 053ee85318d8ac9ccd5fb8b63fb44df966d34821
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: f7c41dc11e7321d6fb9e6f8c030eb74b586a1b3e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85855042"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075035"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-as-default-storage-by-using-powershell"></a>HDInsight-fürtök létrehozása Azure Data Lake Storage Gen1 alapértelmezett tárolóként a PowerShell használatával
 
@@ -38,7 +38,7 @@ Ha úgy szeretné konfigurálni a HDInsight, hogy az Data Lake Storage Gen1 a Po
 Az oktatóanyag megkezdése előtt győződjön meg arról, hogy megfelel az alábbi követelményeknek:
 
 * **Azure-előfizetés**: Nyissa meg az [Azure ingyenes próbaverzióját](https://azure.microsoft.com/pricing/free-trial/).
-* **Azure PowerShell 1,0 vagy újabb**: lásd [a PowerShell telepítése és konfigurálása](/powershell/azure/overview)című témakört.
+* **Azure PowerShell 1,0 vagy újabb**: lásd [a PowerShell telepítése és konfigurálása](/powershell/azure/)című témakört.
 * **Windows szoftverfejlesztői készlet (SDK)**: a Windows SDK telepítéséhez nyissa meg a [Windows 10-es letöltések és eszközök eszközét](https://dev.windows.com/downloads). Az SDK biztonsági tanúsítvány létrehozásához használható.
 * **Azure Active Directory egyszerű szolgáltatás**: ez az oktatóanyag azt ismerteti, hogyan hozható létre egyszerű szolgáltatásnév a Azure Active Directory (Azure ad) szolgáltatásban. Egyszerű szolgáltatásnév létrehozásához azonban Azure AD-rendszergazdának kell lennie. Ha Ön rendszergazda, akkor kihagyhatja ezt az előfeltételt, és folytathatja az oktatóanyagot.
 

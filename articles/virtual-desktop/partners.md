@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 06/12/2020
+ms.date: 07/17/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a0853266e4fda4393ba49fb740755e6b8bd03cf5
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: d78de3d8e7fadc4b6760fef85fb4b850cc25111e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86038055"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075760"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows rendszerű virtuális asztali partner-integrációk
 
@@ -48,7 +48,22 @@ a 10ZiG technológia, amelynek élvonalbeli vékony és zéró ügyfélszoftvere
 
 a 10ZiG's globális piaci vezetése a virtuális asztalok esetében a vékony és a nulla ügyfél-végponti eszközökön és a felügyeleti szoftvereken alapul, és az ügyfelekre való munkavégzésük példája. A vékony ügyfél hardvere elgondolkodva kiépített juttatási funkciókkal és lehetőségekkel rendelkezik, amelyekkel biztosítható, hogy az ügyfelek az igényeik alapján kapják meg a megfelelő ügyféleszközök igényeit. a 10ZiG testreszabja az eszközeit úgy, hogy a Windows-alapú és Linux-alapú ügyfelekkel is illeszkedjenek az ügyfél-környezetekhez, amelyek a lehető legjobb teljesítményt biztosítják a virtuális asztalok számára a felhőn belül és kívül is.
 
-- [Lépjen a partner webhelyére](https://www.10zig.com/).
+- [Lépjen a partner webhelyére](https://www.10zig.com/about/microsoft-wvd).
+
+## <a name="automai"></a>Automai
+
+![Automai embléma](./media/partners/automai.png)
+
+A Automai robot Automation platformjának használatával tesztelheti a kulcsfontosságú üzleti folyamatokat a Windows rendszerű virtuális asztali környezetekben, mielőtt az üzembe helyezés életbe lép.
+
+A Automai ScenarioBuilder eszközzel és a GUI-alapú munkafolyamat-motorral a csapatok rögzíthetik a valós végfelhasználói munkafolyamatokat, és automatikusan parancsfájlokba lefordítják őket. A Automai ezután az egyes asztalokról származó folyamatokat futtató robotokat használ a végfelhasználói tevékenységek szimulálása érdekében, és jelentést készít az eredményekről. Ez nagymértékben leegyszerűsíti a tesztelési folyamatokat, így a rendszergazdák még a legbonyolultabb forgatókönyveket is kipróbálhatják.
+
+Ha készen áll az indításra, használhatja az összes olyan munkafolyamat-parancsfájlt, amelyet a terheléses teszteléshez hozott létre, hogy folyamatosan figyelje a termelés teljesítményét. A Automai robotok többek között a rendelkezésre állás monitorozását is elvégezhetik. A robotok a legfontosabb helyekről is kipróbálhatják a végfelhasználói munkafolyamatokat, és valós időben képernyőképeket készítenek és gyűjtenek hibajelentéseket. Ez a Windows rendszerű virtuális asztali alkalmazásokhoz tartozó hibajavítások proaktív megközelítésének növekedéséhez vezet.
+
+A Automai lehetővé teszi, hogy ugyanazokat a szkripteket használja a teljesítmény-teszteléshez, a funkcionális teszteléshez, a teljesítmény monitorozásához és a Robotos folyamatok automatizálásához, mindezt egy platformon.
+
+- [Tekintse meg röviden a közös megoldást](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4B76N).
+- [Lépjen a partner webhelyére](https://www.automai.com/wvd-testing-monitoring?hs_preview=EyZXkOWu-30742040580).
 
 ## <a name="cloudhouse"></a>Cloudhouse
 
@@ -112,6 +127,17 @@ A Ekran rendszer ügyfeleinek egyedi, lebegőpontos licencelése automatikusan t
 
 - [Tekintse meg röviden a közös megoldást](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4yqY8).
 - [Lépjen a partner oldalra](https://www.ekransystem.com/product/supported-platforms/windows-virtual-desktop-monitoring).
+
+## <a name="fabulatech"></a>FabulaTech
+
+![FabulaTech embléma](./media/partners/fabulatech.png)
+
+A FabulaTech zökkenőmentesen integrálható a Windows rendszerű virtuális asztali ügyfelekkel. A telepítés után a FabulaTech szoftver automatikusan elindul, amikor kapcsolatot létesít a Távoli asztallal.
+
+Amikor egy felhasználó bejelentkezik a virtuális asztalra, a FabulaTech szoftver létrehoz egy virtuális eszközt. Létrehozhat például egy virtuális webkamera, képolvasó vagy ujjlenyomat-olvasót. A távoli munkamenetekben futó alkalmazások a virtuális eszközt úgy érhetik el, mintha fizikai eszköz lenne. A virtuális eszközt a rendszertálca ikon menüjével konfigurálhatja a Windows rendszerű virtuális asztalon, ami azt jelenti, hogy a megoldást vékony ügyfeleken is használhatja. Ezen felül minden kommunikáció a meglévő távoli asztali kapcsolaton keresztül történik, ami azt jelenti, hogy a tűzfal be van állítva. Minden működik, rögtön a dobozból.
+
+- [Tekintse meg röviden a közös megoldást](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4B4zO).
+- [Lépjen a partner webhelyére](https://www.fabulatech.com/partners/microsoft-windows-virtual-desktop/).
 
 ## <a name="flexxible-it"></a>Flexxible
 

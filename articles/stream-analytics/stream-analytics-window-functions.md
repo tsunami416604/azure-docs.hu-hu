@@ -6,12 +6,13 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 06/11/2019
-ms.openlocfilehash: 872eec62e7a629d76533aa6c9906cbdb64c32236
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/10/2020
+ms.openlocfilehash: fd741a9401a3936ec02939562e8e85046e829d31
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80745553"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075911"
 ---
 # <a name="introduction-to-stream-analytics-windowing-functions"></a>Bevezetés az Stream Analytics Windowing functions használatába
 
@@ -34,7 +35,8 @@ Az ugróablak típusú függvények egy adott időtartamot ugranak előre az id�
 ![Stream Analytics hopping-ablak](media/stream-analytics-window-functions/stream-analytics-window-functions-hopping-intro.png)
 
 ## <a name="sliding-window"></a>Ablak csúsztatása
-A csúszó ablak függvényei, a kieséssel vagy a beugró ablakokkal ellentétben, **csak** egy esemény bekövetkezésekor hoznak létre kimenetet. Minden ablaknak legalább egy eseménye lesz, és az ablak folyamatosan halad előre egy ε (epszilon). Az ugróablakhoz hasonlóan egy esemény több csúszóablakhoz is tartozhat.
+
+A Windows csúszó ablakai, a felhúzással vagy a beugró ablakokkal ellentétben, a kimeneti események csak az adott időszakra vonatkozó tartalommal kapcsolatos időpontokban jelennek meg. Más szóval, amikor egy esemény belép vagy kilép az ablakból. Minden ablaknak van legalább egy eseménye, például a Windows-hopping esetében, az események több csúszó ablakhoz is tartozhatnak.
 
 ![Stream Analytics csúszó ablak](media/stream-analytics-window-functions/stream-analytics-window-functions-sliding-intro.png)
 
@@ -49,6 +51,11 @@ Ha az események a megadott időkorláton belül maradnak, a munkamenet ablaka t
 
 A partíciós kulcs megadásakor az eseményeket a kulcs és a munkamenet ablak együttesen csoportosítja az egyes csoportokra egymástól függetlenül. Ez a particionálás olyan esetekben hasznos, amikor különböző felhasználókhoz vagy eszközökhöz eltérő munkamenet-ablakok szükségesek.
 
+## <a name="snapshot-window"></a>Pillanatkép-ablak
+
+Pillanatkép Windows-csoportok eseményei, amelyek ugyanazzal az időbélyegzővel rendelkeznek. A más ablakos típusoktól eltérően, amelyek egy adott ablak függvényt igényelnek (például [SessionWindow ()](https://docs.microsoft.com/stream-analytics-query/session-window-azure-stream-analytics), a pillanatkép-ablakokat a System. timestamp () a Group By záradékhoz való hozzáadásával is alkalmazhatja.
+
+![Pillanatkép-ablak Stream Analytics](media/stream-analytics-window-functions/snapshot.png)
 
 ## <a name="next-steps"></a>További lépések
 * [Bevezetés a Azure Stream Analyticsba](stream-analytics-introduction.md)

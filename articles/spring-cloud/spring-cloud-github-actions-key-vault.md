@@ -6,11 +6,13 @@ ms.author: barbkess
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 01/20/2019
-ms.openlocfilehash: 4a836ae195674556c486592a421c188f7c40e3f0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-java
+ms.openlocfilehash: 433cd9e7b8cfe69ce5008366db884659cccbc149
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84484344"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076024"
 ---
 # <a name="authenticate-azure-spring-cloud-with-key-vault-in-github-actions"></a>Az Azure Spring Cloud hitelesítése Key Vaultekkel a GitHub-műveletekben
 A Key Vault biztonságos hely a kulcsok tárolásához. A vállalati felhasználóknak hitelesítő adatokat kell tárolniuk a CI/CD-környezetekhez az általuk vezérelt hatókörben. A Key vaultban a hitelesítő adatok lekéréséhez szükséges kulcsot az erőforrás hatókörére kell korlátozni.  Csak a kulcstartó hatóköréhez férhet hozzá, nem pedig a teljes Azure-hatókörhöz. Olyan kulcs, amely csak egy erős mezőt nyit meg, amely nem egy főkulcs, amely az épületben lévő összes ajtót meg tudja nyitni. Lehetőség van arra, hogy egy kulcsot egy másik kulccsal lásson el, ami hasznos lehet egy vel-munkafolyamatban. 

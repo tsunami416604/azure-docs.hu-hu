@@ -4,11 +4,12 @@ description: Az Azure Blockchain szolgáltatás monitorozása Azure Monitor
 ms.date: 01/08/2020
 ms.topic: how-to
 ms.reviewer: v-umha
-ms.openlocfilehash: 9d5b3cb02f6e4cd0804dc7fb15a4eacc8370bb99
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7300a5dcfb0150e6182636dcb71bacfa68c787db
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85214043"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076913"
 ---
 # <a name="monitor-azure-blockchain-service-through-azure-monitor"></a>Az Azure Blockchain szolgáltatás monitorozása Azure Monitor  
 
@@ -16,20 +17,20 @@ Mivel az ügyfelek üzemi szintű blockchain forgatókönyveket futtatnak az Azu
 
 ## <a name="what-is-azure-monitor"></a>Mi az Azure Monitor?
 
-Az Azure Blockchain szolgáltatás a Azure Monitor használatával hoz létre monitorozási adatait, amely az Azure-ban teljes verem-figyelési szolgáltatás, amely az Azure-erőforrások figyeléséhez biztosít teljes körű szolgáltatásokat. További információ a Azure Monitorről: az [Azure-erőforrások figyelése Azure monitorokkal](https://docs.microsoft.com/azure/azure-monitor/insights/monitor-azure-resource).
+Az Azure Blockchain szolgáltatás a Azure Monitor használatával hoz létre monitorozási adatait, amely az Azure-ban teljes verem-figyelési szolgáltatás, amely az Azure-erőforrások figyeléséhez biztosít teljes körű szolgáltatásokat. További információ a Azure Monitorről: az [Azure-erőforrások figyelése Azure monitorokkal](../../azure-monitor/insights/monitor-azure-resource.md).
  
 
 Az alábbi részekben az Azure Blockchain szolgáltatásból gyűjtött adatok leírásával, valamint az adatok gyűjtésének konfigurálására és az Azure-eszközökkel történő elemzésére vonatkozó példákat találhat.
 
 ## <a name="monitor-data-collected-from-azure-blockchain-service"></a>Az Azure Blockchain szolgáltatásból gyűjtött adatok figyelése  
 
-Az Azure Blockchain szolgáltatás ugyanolyan típusú figyelési adatokat gyűjt, mint más Azure-erőforrásokat, amelyek az Azure-erőforrások [adatainak monitorozása](https://docs.microsoft.com/azure/azure-monitor/insights/monitor-azure-resource#monitoring-data) című témakörben olvashatók. Az Azure Blockchain szolgáltatás által létrehozott naplók és mérőszámok részletes ismertetését lásd: az [Azure Blockchain Service-adatok figyelése](#monitor-azure-blockchain-service-data-reference) .
+Az Azure Blockchain szolgáltatás ugyanolyan típusú figyelési adatokat gyűjt, mint más Azure-erőforrásokat, amelyek az Azure-erőforrások [adatainak monitorozása](../../azure-monitor/insights/monitor-azure-resource.md#monitoring-data) című témakörben olvashatók. Az Azure Blockchain szolgáltatás által létrehozott naplók és mérőszámok részletes ismertetését lásd: az [Azure Blockchain Service-adatok figyelése](#monitor-azure-blockchain-service-data-reference) .
 
 Az egyes Azure Blockchain-szolgáltatások összes erőforrásának Azure Portal áttekintő lapja a tranzakciók rövid áttekintését tartalmazza, beleértve a kezelt és a feldolgozott blokkokat is. Az adatok némelyikét automatikusan gyűjti a rendszer, és elemzés céljából elérhetővé válik az Azure Blockchain szolgáltatás-tag erőforrásának létrehozása után, míg további beállításokkal is engedélyezheti a további adatgyűjtést.
 
 ## <a name="diagnostic-settings"></a>Diagnosztikai beállítások  
 
-A platform metrikáit és a tevékenység naplóját a rendszer automatikusan gyűjti, de diagnosztikai beállítást kell létrehoznia az erőforrás-naplók összegyűjtéséhez vagy a Azure Monitoron kívüli továbbításához. A diagnosztikai beállításoknak a Azure Portal, a CLI vagy a PowerShell használatával történő létrehozásával kapcsolatos részletes folyamatért lásd: [diagnosztikai beállítás létrehozása a platform-naplók és-metrikák összegyűjtéséhez az Azure-ban](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings) .
+A platform metrikáit és a tevékenység naplóját a rendszer automatikusan gyűjti, de diagnosztikai beállítást kell létrehoznia az erőforrás-naplók összegyűjtéséhez vagy a Azure Monitoron kívüli továbbításához. A diagnosztikai beállításoknak a Azure Portal, a CLI vagy a PowerShell használatával történő létrehozásával kapcsolatos részletes folyamatért lásd: [diagnosztikai beállítás létrehozása a platform-naplók és-metrikák összegyűjtéséhez az Azure-ban](../../azure-monitor/platform/diagnostic-settings.md) .
 
 Diagnosztikai beállítás létrehozásakor meg kell adnia, hogy a rendszer milyen típusú naplókat gyűjtsön. Az Azure Blockchain Service kategóriái az alábbiakban láthatók.
 
@@ -41,13 +42,13 @@ Diagnosztikai beállítás létrehozásakor meg kell adnia, hogy a rendszer mily
 
 ## <a name="analyze-metric-data"></a>Metrikai adatok elemzése  
 
-Az Azure Blockchain Service mérőszámait a metrikák Explorerrel elemezheti, ha az ABS Resource (figyelés) szakaszban a mérőszámok lapra navigál. Az eszköz használatával kapcsolatos részletekért tekintse meg az [Azure Metrikaböngésző használatának első lépéseit](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started) ismertető témakört. Az Azure Blockchain szolgáltatás teljes mérőszámai az Azure Blockchain Service standard mérőszámokban találhatók.
+Az Azure Blockchain Service mérőszámait a metrikák Explorerrel elemezheti, ha az ABS Resource (figyelés) szakaszban a mérőszámok lapra navigál. Az eszköz használatával kapcsolatos részletekért tekintse meg az [Azure Metrikaböngésző használatának első lépéseit](../../azure-monitor/platform/metrics-getting-started.md) ismertető témakört. Az Azure Blockchain szolgáltatás teljes mérőszámai az Azure Blockchain Service standard mérőszámokban találhatók.
 
 A **csomópont** -dimenziót szűrő hozzáadásakor vagy a metrikák felosztásakor is használhatja, ami alapvetően metrikus értékeket biztosít a tranzakciós csomópontok és az ABS tag Érvényesítő csomópontjai számára.
 
 ## <a name="analyze-log-data"></a>Naplóadatok elemzése
 
-Íme néhány lekérdezés, amely megadható a log keresési sávban az Azure Blockchain-szolgáltatás tagjainak figyeléséhez. Ezek a lekérdezések az [új nyelvvel](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview)működnek.
+Íme néhány lekérdezés, amely megadható a log keresési sávban az Azure Blockchain-szolgáltatás tagjainak figyeléséhez. Ezek a lekérdezések az [új nyelvvel](../../azure-monitor/log-query/log-query-overview.md)működnek.
 
 Az alábbi lekérdezéssel kérdezheti le a hibák feltételeit a Blockchain alkalmazás naplófájljaiban:
 
@@ -73,7 +74,7 @@ Ez a cikk az Azure Blockchain szolgáltatás teljesítményének és rendelkezé
 
 ### <a name="resource-logs"></a>Erőforrásnaplók
 
-Minden erőforrás-napló egy legfelső szintű közös sémát használ a blockchain szolgáltatáshoz tartozó néhány egyedi tulajdonsággal. Tekintse meg a cikk [legfelső szintű erőforrás-naplók sémáját](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-schema#top-level-resource-logs-schema), az Azure Blockchain szolgáltatásra jellemző tulajdonságok részleteit alább találja.  
+Minden erőforrás-napló egy legfelső szintű közös sémát használ a blockchain szolgáltatáshoz tartozó néhány egyedi tulajdonsággal. Tekintse meg a cikk [legfelső szintű erőforrás-naplók sémáját](../../azure-monitor/platform/resource-logs-schema.md#top-level-common-schema), az Azure Blockchain szolgáltatásra jellemző tulajdonságok részleteit alább találja.  
 
 A következő táblázat az Azure Blockchain-proxy naplófájljainak tulajdonságait sorolja fel Azure Monitor-naplókba vagy Azure Storage-ba gyűjtve.  
 
@@ -94,7 +95,7 @@ A következő táblázat az Azure Blockchain-proxy naplófájljainak tulajdonsá
 | RequestMethodName | A HTTP-metódus neve, a lehetséges értékek itt a létrehozási tag, a meglévő tag részleteinek beolvasása, törlés a tag törlésére, a frissítés a tagok frissítése érdekében.   |
 | BlockchainMemberName  | A felhasználó által megadott Azure Blockchain-szolgáltatási tag neve.  |
 | Konzorcium | A konzorcium neve, amelyet a felhasználó adott meg.   |
-| Remote  | Annak az ügyfélnek az IP-címe, amelyen a kérés érkezik.  |
+| Távoli  | Annak az ügyfélnek az IP-címe, amelyen a kérés érkezik.  |
 | RequestSize  | A kérelem mérete bájtban megadva.  |
 | RequestTime  | A kérelem időtartama ezredmásodpercben.|
 
@@ -123,14 +124,14 @@ Az alábbi táblázat az Azure Blockchain-alkalmazások naplóihoz tartozó tula
 
 Az alábbi táblázatok az Azure Blockchain szolgáltatáshoz gyűjtött platform-mérőszámokat ismertetik. Az összes mérőszámot a névtér **Azure Blockchain szolgáltatásának** standard mérőszámai tárolják.
 
-Az összes Azure Monitor támogatott mérőszám (beleértve az Azure Blockchain Service) listáját az [Azure monitor támogatott metrikák](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported)című részben tekintheti meg.
+Az összes Azure Monitor támogatott mérőszám (beleértve az Azure Blockchain Service) listáját az [Azure monitor támogatott metrikák](../../azure-monitor/platform/metrics-supported.md)című részben tekintheti meg.
 
 ### <a name="blockchain-metrics"></a>Blockchain metrikák
 
 A következő táblázat az Azure Blockchain-szolgáltatás Blockchain-erőforrásához összegyűjtött mérőszámok listáját tartalmazza.
 
 
-| Metrika neve | Unit (Egység)  |  Összesítés típusa| Description   |
+| Metrika neve | Egység  |  Összesítés típusa| Description   |
 |---|---|---|---|
 | Függőben lévő tranzakciók   | Darabszám  |  Átlag | A bányászra váró tranzakciók száma.   |
 | Feldolgozott blokkok   | Darabszám  | Összeg  |  Az egyes időintervallumokban feldolgozott blokkok száma. Jelenleg a blokk mérete 5 másodperc, ezért egy percen belül minden egyes csomópont 5 perc alatt feldolgozza 12 blokkot és 60 blokkot.   |
@@ -142,7 +143,7 @@ A következő táblázat az Azure Blockchain-szolgáltatás Blockchain-erőforr�
 A következő táblázat felsorolja az Azure Blockchain-szolgáltatási tag erőforrásához összegyűjtött különböző kapcsolatok mérőszámait. Ezek az NGINX proxy metrikái.
 
 
-| Metrika neve | Unit (Egység)  |  Összesítés típusa| Description |
+| Metrika neve | Egység  |  Összesítés típusa| Description |
 |---|---|---|---|
 | Elfogadott kapcsolatok   | Darabszám  |  Összeg | Az elfogadott ügyfélkapcsolatok teljes száma.   |
 | Aktív kapcsolatok  | Darabszám  | Átlag  |  Az aktív ügyfélkapcsolatok aktuális száma, beleértve a várakozási kapcsolatokat.    |
@@ -155,7 +156,7 @@ A következő táblázat felsorolja az Azure Blockchain-szolgáltatási tag erő
 A következő táblázat felsorolja az Azure Blockchain-tag erőforrásának egyes csomópontjain összegyűjtött teljesítménymutatókat.  
 
 
-| Metrika neve | Unit (Egység)  |  Összesítés típusa| Description   |
+| Metrika neve | Egység  |  Összesítés típusa| Description   |
 |---|---|---|---|
 | CPU-használat százaléka   | Százalék  |  Max | A CPU-használat százalékos aránya.     |
 | IO olvasási bájtok   | Kilobájtban   | Összeg  |  Az IO olvasási bájtjainak összege az blockchain-tag erőforrásának összes csomópontján.      |
@@ -168,4 +169,4 @@ A következő táblázat felsorolja az Azure Blockchain-tag erőforrásának egy
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információ a [Blockchain Data Manager](https://docs.microsoft.com/azure/blockchain/service/data-manager) a Blockchain-információk Azure Event Gridba való rögzítéséhez és átalakításához.
+További információ a [Blockchain Data Manager](./data-manager.md) a Blockchain-információk Azure Event Gridba való rögzítéséhez és átalakításához.

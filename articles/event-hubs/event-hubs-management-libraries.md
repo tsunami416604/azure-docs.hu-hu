@@ -3,12 +3,12 @@ title: Felügyeleti könyvtárak – Azure Event Hubs | Microsoft Docs
 description: Ez a cikk az Azure Event Hubs névterek és entitások .NET-beli kezeléséhez használható könyvtárról nyújt információkat.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: f3129ae5586a3096dda89eea3af21eefd1606f30
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 79656d95cf925c21b0f0c5f2b3bafe6348e0b553
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85312978"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074829"
 ---
 # <a name="event-hubs-management-libraries"></a>Event Hubs felügyeleti könyvtárak
 
@@ -26,7 +26,7 @@ A Event Hubs felügyeleti kódtárak használatának megkezdéséhez hitelesíte
 
 * [A Azure Portal használatával hozzon létre Active Directory alkalmazást és egyszerű szolgáltatást, amely hozzáférhet az erőforrásokhoz](../active-directory/develop/howto-create-service-principal-portal.md)
 * [Szolgáltatásnév létrehozása erőforrások eléréséhez az Azure PowerShell használatával](../active-directory/develop/howto-authenticate-service-principal-powershell.md)
-* [Szolgáltatásnév létrehozása erőforrások eléréséhez az Azure CLI használatával](../azure-resource-manager/resource-group-authenticate-service-principal-cli.md)
+* [Szolgáltatásnév létrehozása erőforrások eléréséhez az Azure CLI használatával](/cli/azure/create-an-azure-service-principal-azure-cli)
 
 Ezek az oktatóanyagok egy `AppId` (ügyfél-azonosító), `TenantId` és `ClientSecret` (hitelesítési kulcs) használatát teszik lehetővé, amelyek mindegyike a felügyeleti kódtárak általi hitelesítéshez használatos. A futtatni kívánt erőforráscsoport **tulajdonosi** engedélyekkel kell rendelkeznie.
 

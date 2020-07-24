@@ -7,12 +7,12 @@ ms.date: 10/20/2019
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.openlocfilehash: 21add865818d73937aec241f8f60e20158202348
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
+ms.openlocfilehash: 1157fb69704af59a75989b22338b88a8576428ce
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/21/2020
-ms.locfileid: "85125293"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076672"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-nodejs-v4"></a>Gyors útmutató: Azure Key Vault Node.jshez készült ügyféloldali kódtár (v4)
 
@@ -26,13 +26,13 @@ Az Azure Key Vault segít a felhőalapú alkalmazások és szolgáltatások ált
 - Leegyszerűsítheti és automatizálhatja a TLS/SSL-tanúsítványok feladatait.
 - Használja az FIPS 140-2 2-es szintű hitelesített HSM.
 
-[API-referenciák dokumentációja](/javascript/api/overview/azure/key-vault?view=azure-node-latest)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/keyvault)  |  [Csomag (NPM)](https://www.npmjs.com/package/@azure/keyvault-secrets)
+[API-referenciák dokumentációja](https://docs.microsoft.com/javascript/api/overview/azure/key-vault-index?view=azure-node-latest)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/keyvault)  |  [Csomag (NPM)](https://www.npmjs.com/package/@azure/keyvault-secrets)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Az operációs rendszer jelenlegi [Node.js](https://nodejs.org) .
-- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) vagy [Azure PowerShell](/powershell/azure/overview)
+- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) vagy [Azure PowerShell](/powershell/azure/)
 
 Ez a rövid útmutató azt feltételezi, hogy az [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) -t egy Linux-terminál ablakban futtatja.
 
@@ -54,70 +54,19 @@ npm install @azure/identity
 
 ### <a name="create-a-resource-group-and-key-vault"></a>Erőforráscsoport és kulcstartó létrehozása
 
-Ez a rövid útmutató egy előre létrehozott Azure Key vaultot használ. Kulcstartó létrehozásához kövesse az [Azure CLI](quick-create-cli.md)gyors üzembe helyezésének lépéseit, [Azure PowerShell](quick-create-powershell.md)a gyors üzembe helyezést, vagy [Azure Portal](quick-create-portal.md)a gyors üzembe helyezést. Azt is megteheti, hogy az alábbi Azure CLI-parancsokat egyszerűen futtatja.
-
-> [!Important]
-> Minden kulcstartónak egyedi névvel kell rendelkeznie. A következő példákban cserélje le a <az egyedi-kulcstartó-Name> a Key Vault nevét.
-
-```azurecli
-az group create --name "myResourceGroup" -l "EastUS"
-
-az keyvault create --name <your-unique-keyvault-name> -g "myResourceGroup"
-```
+[!INCLUDE [Create a resource group and key vault](../../../includes/key-vault-rg-kv-creation.md)]
 
 ### <a name="create-a-service-principal"></a>Egyszerű szolgáltatás létrehozása
 
-A felhőalapú alkalmazások hitelesítésének legegyszerűbb módja a felügyelt identitás; a részletekért tekintse meg a [app Service felügyelt identitás használata a Azure Key Vault eléréséhez](../general/managed-identity.md) című témakört.
-
-Az egyszerűség kedvéért azonban ez a rövid útmutató egy asztali alkalmazást hoz létre, amely egy egyszerű szolgáltatásnév és egy hozzáférés-vezérlési házirend használatát igényli. Az egyszerű szolgáltatásnév egyedi nevet igényel a "http:// &lt; My-Unique-Service-principal-name &gt; " formátumban.
-
-Hozzon létre egy egyszerű szolgáltatást az Azure CLI az [ad SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) parancs használatával:
-
-```azurecli
-az ad sp create-for-rbac -n "http://&lt;my-unique-service-principal-name&gt;" --sdk-auth
-```
-
-A művelet a kulcs/érték párok sorozatát fogja visszaadni. 
-
-```azurecli
-{
-  "clientId": "7da18cae-779c-41fc-992e-0527854c6583",
-  "clientSecret": "b421b443-1669-4cd7-b5b1-394d5c945002",
-  "subscriptionId": "443e30da-feca-47c4-b68f-1636b75e16b3",
-  "tenantId": "35ad10f1-7799-4766-9acf-f2d946161b77",
-  "activeDirectoryEndpointUrl": "https://login.microsoftonline.com",
-  "resourceManagerEndpointUrl": "https://management.azure.com/",
-  "sqlManagementEndpointUrl": "https://management.core.windows.net:8443/",
-  "galleryEndpointUrl": "https://gallery.azure.com/",
-  "managementEndpointUrl": "https://management.core.windows.net/"
-}
-```
-
-Jegyezze fel a clientId és a clientSecret, ahogy azokat az alábbi [környezeti változó beállítása](#set-environmental-variables) lépésben fogjuk használni.
+[!INCLUDE [Create a service principal](../../../includes/key-vault-sp-creation.md)]
 
 #### <a name="give-the-service-principal-access-to-your-key-vault"></a>A szolgáltatás egyszerű hozzáférésének biztosítása a kulcstartóhoz
 
-Hozzon létre egy olyan hozzáférési szabályzatot a kulcstartó számára, amely engedélyt ad a szolgáltatásnak a clientId az az a Key Vault [set-Policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) paranccsal. Adja meg a szolgáltatás egyszerű lekérését, listáját, és állítsa be mindkét kulcs és titok engedélyeit.
-
-```azurecli
-az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-service-principal> --secret-permissions delete get list set --key-permissions create decrypt delete encrypt get list unwrapKey wrapKey
-```
+[!INCLUDE [Give the service principal access to your key vault](../../../includes/key-vault-sp-kv-access.md)]
 
 #### <a name="set-environmental-variables"></a>Környezeti változók beállítása
 
-Az alkalmazás DefaultAzureCredential metódusa három környezeti változóra támaszkodik: `AZURE_CLIENT_ID` , `AZURE_CLIENT_SECRET` és `AZURE_TENANT_ID` . Állítsa be ezeket a változókat a clientId, a clientSecret és a tenantId értékre, amelyet az [egyszerű szolgáltatásnév létrehozása](#create-a-service-principal) lépésben jegyezte fel a `export VARNAME=VALUE` formátum használatával. (Ez a beállítás csak a rendszerhéjból létrehozott jelenlegi rendszerhéj és folyamatok változóit állítja be, hogy véglegesen hozzáadja ezeket a változókat a környezetéhez, szerkessze a `/etc/environment ` fájlt.) 
-
-A kulcstároló nevét a nevű környezeti változó néven is menteni kell `KEY_VAULT_NAME` .
-
-```console
-export AZURE_CLIENT_ID=<your-clientID>
-
-export AZURE_CLIENT_SECRET=<your-clientSecret>
-
-export AZURE_TENANT_ID=<your-tenantId>
-
-export KEY_VAULT_NAME=<your-key-vault-name>
-````
+[!INCLUDE [Set environmental variables](../../../includes/key-vault-set-environmental-variables.md)]
 
 ## <a name="object-model"></a>Objektummodell
 

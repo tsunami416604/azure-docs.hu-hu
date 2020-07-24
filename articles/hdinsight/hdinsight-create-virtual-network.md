@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 04/16/2020
-ms.openlocfilehash: e8619bd7159bbbd418548a5e014dd92f7b9c9e84
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 8e68bd2d164e3a8de60a9061363b839c4dfd4777
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086381"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074758"
 ---
 # <a name="create-virtual-networks-for-azure-hdinsight-clusters"></a>Virtuális hálózatok létrehozása az Azure HDInsight-fürtökhöz
 
@@ -27,7 +27,7 @@ A cikkben szereplő kódok végrehajtása előtt a TCP/IP hálózatkezelés megi
 
 A cikkben szereplő minták egyéb előfeltételei közé tartoznak a következő elemek:
 
-* Ha a PowerShellt használja, telepítenie kell az az [modult](https://docs.microsoft.com/powershell/azure/overview).
+* Ha a PowerShellt használja, telepítenie kell az az [modult](https://docs.microsoft.com/powershell/azure/).
 * Ha az Azure CLI-t szeretné használni, és még nem telepítette, tekintse meg [Az Azure CLI telepítését](https://docs.microsoft.com/cli/azure/install-azure-cli)ismertető témakört.
 
 > [!IMPORTANT]  

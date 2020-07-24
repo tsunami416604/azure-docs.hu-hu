@@ -11,12 +11,12 @@ ms.date: 08/29/2018
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: fab00848f6541f6f6eb386168c5bae76e822856a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f8dc7be63506e586b90d1e389d26ac591dce9c3b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85205203"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075885"
 ---
 # <a name="restore-an-existing-sql-pool"></a>Meglévő SQL-készlet visszaállítása
 
@@ -28,7 +28,7 @@ Ebből a cikkből megtudhatja, hogyan állíthatja vissza egy meglévő SQL-kés
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-1. Győződjön meg arról, hogy a [Azure PowerShell telepítését](/powershell/azure/overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)végzi.
+1. Győződjön meg arról, hogy a [Azure PowerShell telepítését](/powershell/azure/?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)végzi.
 2. Rendelkeznie kell egy meglévő visszaállítási ponttal, amelyet vissza szeretne állítani. Ha új visszaállítást szeretne létrehozni, tekintse meg [az új felhasználó által definiált visszaállítási pont létrehozását ismertető oktatóanyagot](sql-data-warehouse-restore-points.md).
 
 ## <a name="restore-an-existing-sql-pool-through-powershell"></a>Meglévő SQL-készlet visszaállítása a PowerShell használatával

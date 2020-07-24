@@ -2,19 +2,22 @@
 title: Kézbesítetlen levelek és újrapróbálkozási házirendek – Azure Event Grid
 description: Leírja, hogyan lehet testre szabni a Event Grid esemény-kézbesítési beállításait. Állítsa be a kézbesítetlen levél célját, és adja meg, hogy mennyi ideig próbálkozzon a kézbesítéssel.
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: 88e782eb7dafc10956120bdae870aa2eb58778a5
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/20/2020
+ms.openlocfilehash: 2ff1d05899fb74583489649154ffa062e857cb95
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86105506"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074873"
 ---
 # <a name="dead-letter-and-retry-policies"></a>Kézbesítetlen levelek és újrapróbálkozási szabályzatok
 
 Esemény-előfizetés létrehozásakor testreszabhatja az események kézbesítésének beállításait. Ebből a cikkből megtudhatja, hogyan állíthatja be a kézbesítetlen levelek helyét, és hogyan szabhatja testre az újrapróbálkozási beállításokat. További információ ezekről a funkciókról: [Event Grid üzenet kézbesítése és újrapróbálkozás](delivery-and-retry.md).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+> [!NOTE]
+> Az üzenetek kézbesítésével, az újrapróbálkozásokkal és a kézbesítetlen levelekkel kapcsolatos információkért tekintse meg a fogalmi cikket: [Event Grid üzenet kézbesítését, és próbálkozzon újra]().
 
 ## <a name="set-dead-letter-location"></a>Kézbesítetlen levelek helyének beállítása
 
@@ -95,7 +98,8 @@ az eventgrid event-subscription create \
   --max-delivery-attempts 18
 ```
 
-Ha a és a lehetőséget is beállítja `event-ttl` `max-deliver-attempts` , Event Grid az elsővel jár le, hogy meghatározza, mikor kell leállítani az események kézbesítését.
+> [!NOTE]
+> Ha a és a lehetőséget is beállítja `event-ttl` `max-deliver-attempts` , Event Grid az elsővel jár le, hogy meghatározza, mikor kell leállítani az események kézbesítését. Ha például 30 percet állít be az élettartam (TTL) és 10 maximális kézbesítési kísérlet esetén. Ha a rendszer 30 perc (vagy) elteltével nem küldi el az eseményt 10 próbálkozás után, attól függően, hogy az esemény megtörténik-e, a rendszer kézbesíti az eseményt.  
 
 ### <a name="powershell"></a>PowerShell
 
@@ -123,9 +127,10 @@ New-AzEventGridSubscription `
   -MaxDeliveryAttempt 18
 ```
 
-Ha a és a lehetőséget is beállítja `EventTtl` `MaxDeliveryAttempt` , Event Grid az elsővel jár le, hogy meghatározza, mikor kell leállítani az események kézbesítését.
+> [!NOTE]
+> Ha a és a lehetőséget is beállítja `event-ttl` `max-deliver-attempts` , Event Grid az elsővel jár le, hogy meghatározza, mikor kell leállítani az események kézbesítését. Ha például 30 percet állít be az élettartam (TTL) és 10 maximális kézbesítési kísérlet esetén. Ha a rendszer 30 perc (vagy) elteltével nem küldi el az eseményt 10 próbálkozás után, attól függően, hogy az esemény megtörténik-e, a rendszer kézbesíti az eseményt.  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A kézbesítetlen levelek eseményeinek feldolgozására szolgáló Azure Function alkalmazást használó minta alkalmazáshoz lásd: [Azure Event Grid a .net-hez készült kézbesítetlen levelek mintáit](https://azure.microsoft.com/resources/samples/event-grid-dotnet-handle-deadlettered-events/).
 * További információ az események kézbesítéséről és újrapróbálkozásáról, [Event Grid az üzenetek kézbesítéséről, és próbálkozzon újra](delivery-and-retry.md).

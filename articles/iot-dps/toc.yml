@@ -99,6 +99,8 @@
       href: concepts-security.md
     - name: TLS-támogatás
       href: tls-support.md
+    - name: Virtuális hálózatok támogatása
+      href: virtual-network-support.md
     - name: Szolgáltatás
       href: concepts-service.md
     - name: A DPS IP-címek ismertetése

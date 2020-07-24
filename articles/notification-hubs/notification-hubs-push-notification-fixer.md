@@ -16,11 +16,12 @@ ms.date: 02/25/2020
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 04/04/2019
-ms.openlocfilehash: 1f3c16e6fe1855cf7882d83e620c70d15ce3cb92
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3bad65dbecd6e4a7d9bcb7fbdee6faafc31ead86
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77657583"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078018"
 ---
 # <a name="diagnose-dropped-notifications-in-azure-notification-hubs"></a>Eldobott értesítések diagnosztizálása az Azure-ban Notification Hubs
 
@@ -103,7 +104,7 @@ A rendszer minden köteget elküld a leküldéses értesítési szolgáltatásna
 
 Ebben az esetben a rendszer eltávolítja a hibás regisztrációt az adatbázisból. Ezután újrapróbálkozunk az értesítés kézbesítésével a kötegben lévő többi eszközön.
 
-Ha többet szeretne megtudni a regisztráció sikertelen kézbesítési kísérletéről, használja a Notification Hubs REST API-kat [telemetria: értesítési üzenet](https://docs.microsoft.com/rest/api/notificationhubs/get-notification-message-telemetry) küldése a telemetria és a [PNS-visszajelzésről](https://msdn.microsoft.com/library/azure/mt705560.aspx). A mintakód esetében tekintse meg a [Rest-példa küldése](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/SendRestExample/)című részt.
+Ha többet szeretne megtudni a regisztráció sikertelen kézbesítési kísérletéről, használja a Notification Hubs REST API-kat [telemetria: értesítési üzenet](/rest/api/notificationhubs/get-notification-message-telemetry) küldése a telemetria és a [PNS-visszajelzésről](/previous-versions/azure/reference/mt705560(v=azure.100)). A mintakód esetében tekintse meg a [Rest-példa küldése](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/SendRestExample/)című részt.
 
 ## <a name="push-notification-service-issues"></a>Leküldéses értesítési szolgáltatással kapcsolatos problémák
 
@@ -125,7 +126,7 @@ Itt láthatók az eldobott értesítések kiváltó okának diagnosztizálásár
 
 #### <a name="push-notification-service-developer-portal"></a>Leküldéses értesítési szolgáltatás – fejlesztői portál
 
-Ellenőrizze a hitelesítő adatokat a megfelelő leküldéses értesítési szolgáltatás fejlesztői portálján (APNs, FCM, Windows Notification Service stb.). További információ: [oktatóanyag: értesítések küldése univerzális Windows-platform alkalmazásoknak az Azure Notification Hubs használatával](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification).
+Ellenőrizze a hitelesítő adatokat a megfelelő leküldéses értesítési szolgáltatás fejlesztői portálján (APNs, FCM, Windows Notification Service stb.). További információ: [oktatóanyag: értesítések küldése univerzális Windows-platform alkalmazásoknak az Azure Notification Hubs használatával](./notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md).
 
 #### <a name="azure-portal"></a>Azure Portal
 
@@ -162,7 +163,7 @@ A teszt **küldése** lapot használhatja a teszt értesítési üzenet elküld�
 ![Visual Studio: küldési teszt](./media/notification-hubs-push-notification-fixer/test-send-vs.png)
 
 > [!NOTE]
-> A Visual Studióval csak a fejlesztés/tesztelés során és korlátozott számú regisztrációval szerkesztheti a regisztrációkat. Ha tömegesen kell szerkesztenie a regisztrációkat, érdemes lehet a regisztrációk [tömeges exportálása és módosítása](https://msdn.microsoft.com/library/dn790624.aspx)című témakörben ismertetett exportálási és importálási funkciókat használni.
+> A Visual Studióval csak a fejlesztés/tesztelés során és korlátozott számú regisztrációval szerkesztheti a regisztrációkat. Ha tömegesen kell szerkesztenie a regisztrációkat, érdemes lehet a regisztrációk [tömeges exportálása és módosítása](/previous-versions/azure/azure-services/dn790624(v=azure.100))című témakörben ismertetett exportálási és importálási funkciókat használni.
 
 #### <a name="service-bus-explorer"></a>Service Bus Explorer
 
@@ -184,7 +185,7 @@ A Visual studióból is küldhet tesztelési értesítéseket.
 
 A Notification Hubs és a Visual Studio Server Explorer használatával kapcsolatos további információkért tekintse meg a következő cikkeket:
 
-* [Az értesítési központok eszköz-regisztrációjának megtekintése](https://docs.microsoft.com/previous-versions/windows/apps/dn792122(v=win.10))
+* [Az értesítési központok eszköz-regisztrációjának megtekintése](/previous-versions/windows/apps/dn792122(v=win.10))
 * [Deep Dive: Visual Studio 2013 Update 2 RC és Azure SDK 2,3]
 * [A Visual Studio 2013 Update 3 és az Azure SDK 2,4 kiadásának bejelentése]
 
@@ -265,7 +266,7 @@ A portálon gyors áttekintést kaphat az értesítési központban található 
 
 #### <a name="programmatic-access"></a>Szoftveres hozzáférés
 
-További információ a programozott hozzáférésről: [programozott hozzáférés](https://docs.microsoft.com/previous-versions/azure/azure-services/dn458823(v=azure.100)).
+További információ a programozott hozzáférésről: [programozott hozzáférés](/previous-versions/azure/azure-services/dn458823(v=azure.100)).
 
 > [!NOTE]
 > Számos telemetria kapcsolatos funkció, például a regisztrációk exportálása és importálása, valamint a telemetria API-kon keresztüli hozzáférése csak a standard szintű szolgáltatási szinten érhető el. Ha az ingyenes vagy alapszintű szolgáltatási csomagból próbálja meg használni ezeket a funkciókat, a rendszer kivételt jelző üzenetet küld, ha az SDK-t használja. Ha közvetlenül a REST API-kkal használja a szolgáltatásokat, HTTP 403 (tiltott) hibaüzenetet kap.
@@ -287,13 +288,13 @@ További információ a programozott hozzáférésről: [programozott hozzáfér
 <!-- LINKS -->
 [Notification Hubs áttekintése]: notification-hubs-push-notification-overview.md
 [Ismerkedés az Azure Notification Hubs]: notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
-[Sablonok]: https://msdn.microsoft.com/library/dn530748.aspx
+[Sablonok]: /previous-versions/azure/azure-services/dn530748(v=azure.100)
 [A APNs áttekintése]: https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html
 [Az FCM-üzenetek]: https://firebase.google.com/docs/cloud-messaging/concept-options
-[Export and modify registrations in bulk]: https://msdn.microsoft.com/library/dn790624.aspx
+[Export and modify registrations in bulk]: /previous-versions/azure/azure-services/dn790624(v=azure.100)
 [Service Bus Explorer code]: https://code.msdn.microsoft.com/windowsazure/Service-Bus-Explorer-f2abca5a
-[View device registrations for notification hubs]: https://msdn.microsoft.com/library/windows/apps/xaml/dn792122.aspx
+[View device registrations for notification hubs]: /previous-versions/windows/apps/dn792122(v=win.10)
 [Deep Dive: Visual Studio 2013 Update 2 RC és Azure SDK 2,3]: https://azure.microsoft.com/blog/2014/04/09/deep-dive-visual-studio-2013-update-2-rc-and-azure-sdk-2-3/#NotificationHubs
 [A Visual Studio 2013 Update 3 és az Azure SDK 2,4 kiadásának bejelentése]: https://azure.microsoft.com/blog/2014/08/04/announcing-release-of-visual-studio-2013-update-3-and-azure-sdk-2-4/
-[EnableTestSend]: https://docs.microsoft.com/dotnet/api/microsoft.azure.notificationhubs.notificationhubclient.enabletestsend?view=azure-dotnet
-[Programmatic telemetry access]: https://msdn.microsoft.com/library/azure/dn458823.aspx
+[EnableTestSend]: /dotnet/api/microsoft.azure.notificationhubs.notificationhubclient.enabletestsend?view=azure-dotnet
+[Programmatic telemetry access]: /previous-versions/azure/azure-services/dn458823(v=azure.100)

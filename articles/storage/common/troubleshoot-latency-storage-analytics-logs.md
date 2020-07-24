@@ -10,12 +10,12 @@ ms.service: storage
 ms.subservice: common
 services: storage
 tags: ''
-ms.openlocfilehash: 28d7f6a9fa5d128783f2eb1dfcbcb75775cc499e
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: efae9cd2a73bf6df89007ac313ca6dfe6efe6ddd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86113105"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075953"
 ---
 # <a name="troubleshoot-latency-using-storage-analytics-logs"></a>Késési problémák elhárítása Storage Analytics-naplók használatával
 
@@ -97,7 +97,7 @@ Az alábbi lépések bemutatják, hogyan azonosíthatja és elháríthatja a ké
 
    A következő táblázat a nagy késleltetésű OperationType és a RequestStatus eredményekkel kapcsolatos információkat tartalmaz:
 
-   |   |RequestStatus =<br>Sikeres|RequestStatus =<br>Sas NetworkError|Ajánlás|
+   | BLOB típusa |RequestStatus =<br>Success|RequestStatus =<br>Sas NetworkError|Javaslat|
    |---|---|---|---|
    |GetBlob|Igen|Nem|[**GetBlob művelet:** RequestStatus = sikeres](#getblob-operation-requeststatus--success)|
    |GetBlob|Nem|Igen|[**GetBlob művelet:** RequestStatus = (SAS) NetworkError](#getblob-operation-requeststatus--sasnetworkerror)|

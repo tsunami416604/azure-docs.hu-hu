@@ -9,11 +9,12 @@ ms.subservice: ''
 ms.date: 06/30/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 3a607f03bf238b1b05a91c772a7ac77a79574515
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 33f7f407c1df45131b0ebb5b14e8fcad2626bffd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027222"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077553"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-in-the-azure-portal"></a>Rövid útmutató: Virtuálisgép-méretezési csoport létrehozása az Azure Portalon
 
@@ -36,15 +37,16 @@ Először hozzon létre egy nyilvános standard Load Balancer a portál használ
 
     | Beállítás                 | Érték   |
     | ---| ---|
-    | Előfizetés  | Válassza ki az előfizetését.    |    
+    | Előfizetés  | Válassza ki előfizetését.    |    
     | Erőforráscsoport | Válassza az **új létrehozása** lehetőséget, és írja be a *myVMSSResourceGroup* szöveget a szövegmezőbe.|
     | Name           | *myLoadBalancer*         |
     | Régió         | Válassza az **USA keleti régiója** lehetőséget.       |
     | Típus          | Válassza a **Nyilvános** lehetőséget.       |
     | Termékváltozat           | Válassza a **standard**lehetőséget.       |
     | Nyilvános IP-cím | Válassza az **Új létrehozása** lehetőséget. |
-    | Nyilvános IP-cím  | *MyPip*   |
+    | Nyilvános IP-cím  | *myPip*   |
     | Hozzárendelés| Statikus |
+    | A rendelkezésre állási zóna | Válassza a **zóna – redundáns**lehetőséget. |
 
 1. Ha elkészült, válassza a **felülvizsgálat + létrehozás** elemet. 
 1. Az érvényesítést követően válassza a **Létrehozás**lehetőséget. 
@@ -54,11 +56,11 @@ Először hozzon létre egy nyilvános standard Load Balancer a portál használ
 ## <a name="create-virtual-machine-scale-set"></a>Virtuálisgép-méretezési csoport létrehozása
 Méretezési csoportokat Windows Server-rendszerképpel vagy Linux-rendszerképpel (például RHEL, CentOS, Ubuntu vagy SLES) helyezhet üzembe.
 
-1. Írja be a **méretezési csoport** kifejezést a keresőmezőbe. Az eredmények alatt, a **piactér**területen válassza a **virtuálisgép-méretezési**csoportok lehetőséget. Ekkor megnyílik a **virtuálisgép-méretezési csoport létrehozása** lap. 
+1. Írja be a **méretezési csoport** kifejezést a keresőmezőbe. Az eredmények alatt, a **piactér**területen válassza a **virtuálisgép-méretezési**csoportok lehetőséget. Válassza a **Létrehozás** lehetőséget a **virtuálisgép-méretezési** csoportok lapon, amely megnyitja a **virtuálisgép-méretezési csoport létrehozása** lapot. 
 1. Az **Alapok** fül **Projektadatok** részén győződjön meg arról, hogy a megfelelő előfizetés van kiválasztva, és válassza az **Új létrehozása** lehetőséget az Erőforráscsoport részen. Írja be a *myVMSSResourceGroup* nevet, majd kattintson az **OK gombra** . 
 1. A méretezési csoport neveként írja be a *myScaleSet* nevet.
 1. A **régió**területen válasszon ki egy régiót, amely a területhez közeledik.
-1. Hagyja meg a **méretezési csoport virtuális gépek** alapértelmezett értékét a **Orchestrator**.
+1. A **méretezési csoport virtuális gépek** alapértelmezett értékének meghagyása az előkészítési **módba**.
 1. Válassza ki a **piactér rendszerképét.** Ebben a példában az *Ubuntu Server 18,04 LTS*-et választottuk.
 1. Adja meg a kívánt felhasználónevet, és válasszon ki egy tetszőleges hitelesítési típust.
    - A **jelszónak** legalább 12 karakter hosszúnak kell lennie, és meg kell felelnie a következő négy összetettségi feltétel közül háromnak: egy kisbetű, egy nagybetű, egy szám és egy különleges karakter. További információkért lásd: [felhasználónév- és jelszókövetelmények](../virtual-machines/windows/faq.md#what-are-the-username-requirements-when-creating-a-vm).
@@ -80,7 +82,7 @@ Méretezési csoportokat Windows Server-rendszerképpel vagy Linux-rendszerképp
 Ha már nincs rá szükség, törölje az erőforráscsoportot, a méretezési csoportot és az összes kapcsolódó erőforrást. Ehhez válassza ki a méretezési csoporthoz tartozó erőforráscsoportot, majd válassza a **Törlés**lehetőséget.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben a rövid útmutatóban egy alapszintű méretezési csoportot hozott létre az Azure Portalon. Ha bővebb információra van szüksége, lépjen tovább az Azure-beli virtuálisgép-méretezési csoportok létrehozásáról és kezeléséről szóló oktatóanyagra.
 
 > [!div class="nextstepaction"]

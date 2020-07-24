@@ -4,15 +4,15 @@ description: Ismerje meg, hogyan továbbíthatja az Azure-erőforrás-naplókat 
 author: bwren
 services: azure-monitor
 ms.topic: conceptual
-ms.date: 12/18/2019
+ms.date: 07/17/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 492aae69895d62c784d15cd77405d0c52ec13e3e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6a7b24de860b543778d7e6ceabc95d10bf7c44c2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84947069"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077094"
 ---
 # <a name="azure-resource-logs"></a>Azure-erőforrás-naplók
 Az Azure-erőforrás-naplók olyan [platform-naplók](platform-logs-overview.md) , amelyek betekintést nyújtanak az Azure-erőforrásokon belül végrehajtott műveletekre. Az erőforrás-naplók tartalma az Azure-szolgáltatás és az erőforrás típusa szerint változik. A rendszer alapértelmezés szerint nem gyűjti az erőforrás-naplókat. Minden egyes Azure-erőforráshoz létre kell hoznia egy diagnosztikai beállítást, hogy az erőforrás-naplókat egy Log Analytics munkaterületre küldje el, amelyet [Azure monitor naplók](data-platform-logs.md), az Azure Event Hubs az Azure-on kívüli továbbítására, illetve az Azure Storage-ba történő archiválásra kíván használni.
@@ -85,17 +85,15 @@ A fenti példa három tábla létrehozását eredményezi:
 
 
 ### <a name="select-the-collection-mode"></a>Gyűjtési mód kiválasztása
-A legtöbb Azure-erőforrás az **Azure-diagnosztika** vagy az **erőforrás-specifikus mód** használatával fogja írni az adatok a munkaterületre való bevitelét anélkül, hogy választ kellene adni. Az [egyes szolgáltatásokhoz tartozó dokumentációban](diagnostic-logs-schema.md) megtekintheti az általa használt üzemmód részleteit. Az összes Azure-szolgáltatás végül erőforrás-specifikus módot fog használni. Az áttérés részeként egyes erőforrások lehetővé teszik a mód kiválasztását a diagnosztikai beállításokban. Adjon meg erőforrás-specifikus módot az új diagnosztikai beállításokhoz, mivel így könnyebben kezelheti az adatok kezelését, és a későbbiekben elkerülheti az összetett Migrálás elkerülését.
+A legtöbb Azure-erőforrás az **Azure-diagnosztika** vagy az **erőforrás-specifikus mód** használatával fogja írni az adatok a munkaterületre való bevitelét anélkül, hogy választ kellene adni. Az [egyes szolgáltatásokhoz tartozó dokumentációban](./resource-logs-schema.md) megtekintheti az általa használt üzemmód részleteit. Az összes Azure-szolgáltatás végül erőforrás-specifikus módot fog használni. Az áttérés részeként egyes erőforrások lehetővé teszik a mód kiválasztását a diagnosztikai beállításokban. Adjon meg erőforrás-specifikus módot az új diagnosztikai beállításokhoz, mivel így könnyebben kezelheti az adatok kezelését, és a későbbiekben elkerülheti az összetett Migrálás elkerülését.
   
    ![Diagnosztikai beállítások mód választója](media/resource-logs-collect-workspace/diagnostic-settings-mode-selector.png)
 
-
-
-
 > [!NOTE]
-> Jelenleg az **Azure Diagnostics** és az **erőforrás-specifikus** mód csak akkor választható, ha a Azure Portal a diagnosztikai beállítást konfigurálja. Ha a parancssori felület, a PowerShell vagy a REST API használatával konfigurálja a beállítást, az alapértelmezés szerint az **Azure-diagnosztika**lesz.
+> Ha például egy Resource Manager-sablonnal állítja be a gyűjtési módot, tekintse meg a [Resource Manager-sablonok mintákat a diagnosztikai beállításokhoz a Azure monitor](../samples/resource-manager-diagnostic-settings.md#diagnostic-setting-for-recovery-services-vault).
 
-Egy meglévő diagnosztikai beállítást erőforrás-specifikus módra is módosíthat. Ebben az esetben a már összegyűjtött adatok a _AzureDiagnostics_ táblában maradnak, amíg el nem távolítják a munkaterület megőrzési beállításának megfelelően. Az új adatok gyűjtése a dedikált táblában történik. A [Union](https://docs.microsoft.com/azure/kusto/query/unionoperator) operátorral több táblázaton keresztül is lekérdezheti az adatlekérdezéseket.
+
+Egy meglévő diagnosztikai beállítást erőforrás-specifikus módra is módosíthat. Ebben az esetben a már összegyűjtött adatok a _AzureDiagnostics_ táblában maradnak, amíg el nem távolítják a munkaterület megőrzési beállításának megfelelően. Az új adatok gyűjtése a dedikált táblában történik. A [Union](/azure/kusto/query/unionoperator) operátorral több táblázaton keresztül is lekérdezheti az adatlekérdezéseket.
 
 Folytassa az [Azure Updates](https://azure.microsoft.com/updates/) blogban az erőforrás-specifikus üzemmódot támogató Azure-szolgáltatásokra vonatkozó hirdetmények megtekintését.
 
@@ -191,7 +189,7 @@ insights-logs-networksecuritygrouprulecounter/resourceId=/SUBSCRIPTIONS/00000000
 
 Mindegyik PT1H.json blob tartalmazza a blob URL-jében meghatározott órában (például h=12) bekövetkezett események JSON-blobját. Az aktuális órában az események az előfordulásukkor lesznek a PT1H.json fájlhoz fűzve. A perc értéke (m = 00) mindig 00, mivel az erőforrás-naplózási események óránként egyedi blobokra vannak bontva.
 
-A PT1H.jsfájlon belül minden eseményt a következő formátumban tárol a rendszer. Ez közös legfelső szintű sémát használ, de minden egyes Azure-szolgáltatás esetében egyedinek kell lennie az [erőforrás-naplók sémájában](diagnostic-logs-schema.md)leírtak szerint.
+A PT1H.jsfájlon belül minden eseményt a következő formátumban tárol a rendszer. Ez közös legfelső szintű sémát használ, de minden egyes Azure-szolgáltatás esetében egyedinek kell lennie az [erőforrás-naplók sémájában](./resource-logs-schema.md)leírtak szerint.
 
 ``` JSON
 {"time": "2016-07-01T00:00:37.2040000Z","systemId": "46cdbb41-cb9c-4f3d-a5b4-1d458d827ff1","category": "NetworkSecurityGroupRuleCounter","resourceId": "/SUBSCRIPTIONS/s1id1234-5679-0123-4567-890123456789/RESOURCEGROUPS/TESTRESOURCEGROUP/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/TESTNSG","operationName": "NetworkSecurityGroupCounters","properties": {"vnetResourceGuid": "{12345678-9012-3456-7890-123456789012}","subnetPrefix": "10.3.0.0/24","macAddress": "000123456789","ruleName": "/subscriptions/ s1id1234-5679-0123-4567-890123456789/resourceGroups/testresourcegroup/providers/Microsoft.Network/networkSecurityGroups/testnsg/securityRules/default-allow-rdp","direction": "In","type": "allow","matchedConnections": 1988}}

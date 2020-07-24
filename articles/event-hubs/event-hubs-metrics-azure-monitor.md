@@ -3,18 +3,18 @@ title: Metrikák a Azure Monitor-ban – Azure Event Hubs | Microsoft Docs
 description: Ez a cikk tájékoztatást nyújt arról, hogyan használható az Azure monitoring az Azure-Event Hubs figyeléséhez
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 76df9920c517e8370409bca26e5a6533c7253c1e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c7841007fa1736c88c30108099f86b99d3dad0fb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85314590"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074864"
 ---
 # <a name="azure-event-hubs-metrics-in-azure-monitor"></a>Azure Event Hubs-metrikák az Azure Monitorban
 
 Event Hubs mérőszámok Event Hubs erőforrások állapotát adja meg az Azure-előfizetésében. A metrikai adatok gazdag készletével a rendszer nem csak a névtér szintjén, hanem az entitás szintjén is felméri az esemény-hubok általános állapotát. Ezek a statisztikák fontosak lehetnek, mivel segítik az Event hubok állapotának figyelését. A metrikák az Azure-támogatáshoz való kapcsolódás nélkül is segíthetnek a hibák elhárításában.
 
-A Azure Monitor egységes felhasználói felületet biztosít a különböző Azure-szolgáltatások figyelésére. További információkért lásd: [Microsoft Azure figyelése](../monitoring-and-diagnostics/monitoring-overview.md) és a [Azure monitor metrikáinak beolvasása](https://github.com/Azure-Samples/monitor-dotnet-metrics-api) a githubon .net-minta használatával.
+A Azure Monitor egységes felhasználói felületet biztosít a különböző Azure-szolgáltatások figyelésére. További információkért lásd: [Microsoft Azure figyelése](../azure-monitor/overview.md) és a [Azure monitor metrikáinak beolvasása](https://github.com/Azure-Samples/monitor-dotnet-metrics-api) a githubon .net-minta használatával.
 
 ## <a name="access-metrics"></a>Hozzáférési metrikák
 
@@ -103,7 +103,7 @@ Az Azure Event Hubs a Azure Monitor metrikáinak következő dimenzióit támoga
 A figyelési adatok (tevékenységi naplók, diagnosztikai naplók stb.) útválasztása Azure Monitor lehetővé teszi, hogy könnyen integrálható legyen a biztonsági információkkal és az Event Management (SIEM) eszközeivel. További információt a következő cikkekben/blogbejegyzésekben talál:
 
 - [Az Azure monitoring-adattovábbítása egy Event hub-ba külső eszköz általi felhasználás céljából](../azure-monitor/platform/stream-monitoring-data-event-hubs.md)
-- [Bevezetés a Azure Log Integrationba](../security/fundamentals/azure-log-integration-overview.md)
+- [Bevezetés a Azure Log Integrationba](/previous-versions/azure/security/fundamentals/azure-log-integration-overview)
 - [Integrálás a SIEM-eszközökkel az Azure Monitor használatával](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
 Abban az esetben, ha egy SIEM-eszköz egy esemény központból használ naplózási adatokat, ha nem látja a beérkező üzeneteket, vagy ha a mérőszámok gráfban nem jelenik meg kimenő üzenet, kövesse az alábbi lépéseket:
@@ -114,7 +114,7 @@ Abban az esetben, ha egy SIEM-eszköz egy esemény központból használ naplóz
 
 ## <a name="next-steps"></a>További lépések
 
-* Lásd az [Azure monitoring áttekintése](../monitoring-and-diagnostics/monitoring-overview.md)című témakört.
+* Lásd az [Azure monitoring áttekintése](../azure-monitor/overview.md)című témakört.
 * [Azure monitor mérőszámok beolvasása .net](https://github.com/Azure-Samples/monitor-dotnet-metrics-api) -minta használatával a githubon. 
 
 Ha további információkat szeretne az Event Hubsról, tekintse meg az alábbi hivatkozásokat:
@@ -129,6 +129,3 @@ Ha további információkat szeretne az Event Hubsról, tekintse meg az alábbi 
 
 [1]: ./media/event-hubs-metrics-azure-monitor/event-hubs-monitor1.png
 [2]: ./media/event-hubs-metrics-azure-monitor/event-hubs-monitor2.png
-
-
-

@@ -7,10 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
 ms.openlocfilehash: aa34196233ce4037ef6fa49b782b9aa958f7632d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79274683"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075248"
 ---
 # <a name="windows-event-log-data-sources-in-azure-monitor"></a>Windows Eseménynapló-adatforrások a Azure Monitor-ban
 A Windows-eseménynaplók a leggyakoribb [adatforrások](agent-data-sources.md) , amelyek a Windows-ügynökökkel való adatgyűjtéshez használják, mivel számos alkalmazás ír a Windows-eseménynaplóba.  Az eseményeket összegyűjtheti a szabványos naplókból, például a rendszerből és az alkalmazásból is, és megadhatja a figyelni kívánt alkalmazások által létrehozott egyéni naplókat.
@@ -54,7 +55,7 @@ A Windows-események rekordjainak típusa **esemény** , és a tulajdonságok a 
 | Forrás |Az esemény forrása. |
 | SourceSystem |Az a típusú ügynök, amelyből az eseményt gyűjtötték. <br> OpsManager – Windows-ügynök, közvetlen kapcsolat vagy Operations Manager felügyelt <br> Linux – minden Linux-ügynök  <br> AzureStorage – Azure Diagnostics |
 | TimeGenerated |Az esemény Windowsban történő létrehozásának dátuma és időpontja. |
-| UserName (Felhasználónév) |Az eseményt naplózó fiók felhasználóneve. |
+| Felhasználónév |Az eseményt naplózó fiók felhasználóneve. |
 
 ## <a name="log-queries-with-windows-events"></a>Lekérdezések naplózása Windows-eseményekkel
 Az alábbi táblázat a Windows-események rekordjait lekérő lekérdezések különböző példáit ismerteti.

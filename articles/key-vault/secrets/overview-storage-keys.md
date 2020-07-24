@@ -9,12 +9,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/18/2019
-ms.openlocfilehash: 58f41742519effc3959a3868345ed77c64db6341
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e8f8a333c880850b239fbaba1ea405b94a1460e8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85508503"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076731"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-the-azure-cli"></a>A Storage-fiók kulcsainak kezelése a Key Vault és az Azure CLI használatával
 
@@ -46,7 +46,7 @@ A Key Vault egy olyan Microsoft-alkalmazás, amely az összes Azure AD-bérlőbe
 | --- | --- | --- |
 | Azure AD | Azure Government | `7e7c393b-45d0-48b1-a35e-2905ddf8183c` |
 | Azure AD | Azure – nyilvános | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
-| Egyéb  | Bármelyik | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
+| Egyéb  | Bármely | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -90,7 +90,7 @@ az keyvault set-policy --name <YourKeyVaultName> --upn user@domain.com --storage
 Vegye figyelembe, hogy a Storage-fiókokra vonatkozó engedélyek nem érhetők el a Azure Portal "hozzáférési szabályzatok" lapján.
 ### <a name="create-a-key-vault-managed-storage-account"></a>Key Vault felügyelt Storage-fiók létrehozása
 
- Hozzon létre egy Key Vault felügyelt Storage-fiókot az Azure CLI az kulcstartó [Storage](/cli/azure/keyvault/storage?view=azure-cli-latest#az-keyvault-storage-add) paranccsal. Állítsa be a 90 napos újragenerálási időszakot. 90 nap után Key Vault újragenerálta `key1` és felcseréli az aktív kulcsot a verzióról a verzióra `key2` `key1` . `key1`Ekkor az aktív kulcsként van megjelölve. Adja meg a parancsot a következő paraméter-értékekkel:
+ Hozzon létre egy Key Vault felügyelt Storage-fiókot az Azure CLI az kulcstartó [Storage](/cli/azure/keyvault/storage?view=azure-cli-latest#az-keyvault-storage-add) paranccsal. Állítsa be a 90 napos újragenerálási időszakot. Az elforgatás ideje alatt a kulcstartó újra létrehozza a nem aktív kulcsot, majd az újonnan létrehozott kulcsot aktívként állítja be. A rendszer csak az egyik kulcsot használja az SAS-tokenek egyidejű kiküldésére, ez az aktív kulcs. Adja meg a parancsot a következő paraméter-értékekkel:
 
 - `--vault-name`: Adja át a kulcstartó nevét. A Key Vault nevének megkereséséhez használja az Azure CLI az kulcstartó [List](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-list) parancsot.
 - `-n`: Adja meg a Storage-fiók nevét. A Storage-fiók nevének megkereséséhez használja az Azure CLI az [Storage Account List](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-list) parancsot.

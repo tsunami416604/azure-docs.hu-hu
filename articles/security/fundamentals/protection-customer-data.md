@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/28/2018
+ms.date: 07/10/2020
 ms.author: terrylan
-ms.openlocfilehash: d723e60afe543808c88b1ae040e2979412ff324c
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: 4f3b4b5e26c8feab44a01d3714c194eee0fc98e9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86273472"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076289"
 ---
 # <a name="azure-customer-data-protection"></a>Azure Customer-adatvédelem   
 A Microsoft működési és támogatási személyzete alapértelmezés szerint nem férhet hozzá az ügyféladatok eléréséhez. Ha a támogatási esethez kapcsolódó adatokhoz fér hozzá, a rendszer csak egy igény szerinti (JIT) modellt kap, melyet a rendszer a megfelelőségi és adatvédelmi szabályzatok alapján auditált és ellenőrzött házirendeket használ.  A hozzáférés-vezérlésre vonatkozó követelményeket a következő Azure biztonsági szabályzat határozza meg:
@@ -70,7 +70,7 @@ Az Azure lehetővé teszi, hogy az ügyfelek exportálják az adatok és a napl�
 ## <a name="electronic-discovery-e-discovery"></a>Elektronikus felderítés (e-Discovery)
 Az Azure-ügyfelek feladata az e-felderítési követelmények teljesítése az Azure-szolgáltatások használata során. Ha az Azure-ügyfeleknek meg kell őrizniük az ügyféladatokat, akkor helyileg is exportálhatunk és menthetik az adatfájlokat. Emellett az ügyfelek az Azure ügyfélszolgálati részlegében is kérhetik az adatok exportálását. Amellett, hogy lehetővé teszi az ügyfelek számára az adatok exportálását, az Azure kiterjedt naplózást és figyelést végez belsőleg.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ha többet szeretne megtudni arról, hogy a Microsoft Hogyan védi az Azure-infrastruktúrát, olvassa el a következő témakört:
 
 - [Azure-létesítmények,-telephelyek és fizikai biztonság](physical-security.md)

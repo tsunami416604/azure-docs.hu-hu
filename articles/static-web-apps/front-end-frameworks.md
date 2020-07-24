@@ -5,14 +5,14 @@ services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: conceptual
-ms.date: 06/10/2020
+ms.date: 07/18/2020
 ms.author: cshoe
-ms.openlocfilehash: 41f0c44ad65af5fdf2560da3f977a28f135af878
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3220b9d56ff7107245a0a00aac44bb58f87099f9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84976710"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075971"
 ---
 # <a name="configure-front-end-frameworks-and-libraries-with-azure-static-web-apps-preview"></a>Előtér-keretrendszerek és-kódtárak konfigurálása az Azure statikus Web Apps előzetes verziójával
 
@@ -55,7 +55,7 @@ A táblázat oszlopainak szándékát a következő elemek magyarázzák:
 | [Karcsú](https://svelte.dev/) | `public` | n.a. |
 | [Three.js](https://threejs.org/) | `/` | n.a. |
 | [TypeScript](https://www.typescriptlang.org/) | `dist` | n.a. |
-| [Vue](http://vuejs.com/) | `dist` | n.a. |
+| [Vue.js](https://vuejs.org/) | `dist` | n.a. |
 
 <sup>1</sup> a fenti táblázat nem az Azure statikus web Appsokkal működő keretrendszerek és könyvtárak teljes listáját jelenti.
 

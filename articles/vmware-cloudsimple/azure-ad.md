@@ -8,11 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 674ca8bea110d60557d1e50e7b68c9c3f7a92bf2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f90f5f4298fcca77e293965ddd377598bcfd1930
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77564584"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077314"
 ---
 # <a name="use-azure-ad-as-an-identity-provider-for-vcenter-on-cloudsimple-private-cloud"></a>Az Azure AD használata identitás-szolgáltatóként a vCenter a CloudSimple Private Cloud szolgáltatásban
 
@@ -45,7 +46,7 @@ Az első lépések előtt globális rendszergazdai jogosultságokkal kell rendel
 > [!NOTE]
 > Ha már rendelkezik Azure AD-val, kihagyhatja ezt a szakaszt.
 
-1. Állítsa be az Azure AD-t az előfizetéséhez az [Azure ad dokumentációjában](../active-directory/fundamentals/get-started-azure-ad.md)leírtak szerint.
+1. Állítsa be az Azure AD-t az előfizetéséhez az [Azure ad dokumentációjában](../active-directory/fundamentals/active-directory-whatis.md)leírtak szerint.
 2. Engedélyezze az előfizetéshez prémium szintű Azure Active Directory a [regisztráció a prémium szintű Azure Active Directoryra](../active-directory/fundamentals/active-directory-get-started-premium.md)című témakörben leírtak szerint.
 3. Állítson be egy egyéni tartománynevet, és ellenőrizze az egyéni tartománynevet az [Egyéni tartománynév hozzáadása a Azure Active Directoryhoz](../active-directory/fundamentals/add-custom-domain.md)című témakörben leírtak szerint.
     1. Hozzon létre egy DNS-rekordot a tartományregisztrálónál az Azure-ban megadott információval.
@@ -58,17 +59,17 @@ Opcionálisan más Azure AD-funkciókat is konfigurálhat.  Ezek nem szükséges
 > [!NOTE]
 > Ez egy fontos lépés az Azure AD-nek a vCenter identitási forrásaként való engedélyezéséhez.  A problémák elkerülése érdekében győződjön meg arról, hogy az összes lépést helyesen hajtja végre.
 
-1. Engedélyezze az Azure AD tartományi szolgáltatásokat [a Azure Active Directory tartományi szolgáltatások engedélyezése a Azure Portal használatával](../active-directory-domain-services/active-directory-ds-getting-started.md)című témakörben leírtak szerint.
-2. Állítsa be azt a hálózatot, amelyet az Azure AD tartományi szolgáltatások használni fognak a [Azure Active Directory Domain Services engedélyezése a Azure Portal használatával](../active-directory-domain-services/active-directory-ds-getting-started-network.md)című témakörben leírtak szerint.
-3. Konfigurálja a felügyeleti csoportot a Azure AD Domain Services kezeléséhez az [Azure Portal használatával Azure Active Directory Domain Services engedélyezése](../active-directory-domain-services/active-directory-ds-getting-started-admingroup.md)című témakörben leírtak szerint.
-4. Frissítse a Azure AD Domain Services DNS-beállításait a [Azure Active Directory Domain Services engedélyezése](../active-directory-domain-services/active-directory-ds-getting-started-dns.md)című témakörben leírtak szerint.  Ha az interneten keresztül szeretne csatlakozni az AD-hez, állítsa be az Azure AD tartományi szolgáltatások nyilvános IP-címéhez tartozó DNS-rekordot a tartománynévre.
-5. Jelszó-kivonatolási szinkronizálás engedélyezése a felhasználók számára.  Ez a lépés lehetővé teszi az NT LAN Manager (NTLM) és a Kerberos-hitelesítéshez szükséges jelszó-kivonatok szinkronizálását Azure AD Domain Services. A jelszókivonat-adatok szinkronizálásának beállítása után a felhasználók a vállalati hitelesítő adataikkal jelentkezhetnek be a felügyelt tartományba. Lásd: [jelszó-kivonatolási szinkronizálás engedélyezése Azure Active Directory Domain Servicesra](../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md).
+1. Engedélyezze az Azure AD tartományi szolgáltatásokat [a Azure Active Directory tartományi szolgáltatások engedélyezése a Azure Portal használatával](../active-directory-domain-services/tutorial-create-instance.md)című témakörben leírtak szerint.
+2. Állítsa be azt a hálózatot, amelyet az Azure AD tartományi szolgáltatások használni fognak a [Azure Active Directory Domain Services engedélyezése a Azure Portal használatával](../active-directory-domain-services/tutorial-create-instance.md)című témakörben leírtak szerint.
+3. Konfigurálja a felügyeleti csoportot a Azure AD Domain Services kezeléséhez az [Azure Portal használatával Azure Active Directory Domain Services engedélyezése](../active-directory-domain-services/tutorial-create-instance.md)című témakörben leírtak szerint.
+4. Frissítse a Azure AD Domain Services DNS-beállításait a [Azure Active Directory Domain Services engedélyezése](../active-directory-domain-services/tutorial-create-instance.md)című témakörben leírtak szerint.  Ha az interneten keresztül szeretne csatlakozni az AD-hez, állítsa be az Azure AD tartományi szolgáltatások nyilvános IP-címéhez tartozó DNS-rekordot a tartománynévre.
+5. Jelszó-kivonatolási szinkronizálás engedélyezése a felhasználók számára.  Ez a lépés lehetővé teszi az NT LAN Manager (NTLM) és a Kerberos-hitelesítéshez szükséges jelszó-kivonatok szinkronizálását Azure AD Domain Services. A jelszókivonat-adatok szinkronizálásának beállítása után a felhasználók a vállalati hitelesítő adataikkal jelentkezhetnek be a felügyelt tartományba. Lásd: [jelszó-kivonatolási szinkronizálás engedélyezése Azure Active Directory Domain Servicesra](../active-directory-domain-services/tutorial-create-instance.md).
     1. Ha csak felhőalapú felhasználók jelennek meg, akkor az <a href="http://myapps.microsoft.com/" target="_blank">Azure ad hozzáférési paneljén</a> meg kell változtatniuk a jelszavukat, hogy a jelszó-kivonatok az NTLM vagy a Kerberos által megkövetelt formátumban legyenek tárolva.  A [csak felhőalapú felhasználói fiókok esetében kövesse a jelszó-kivonat szinkronizálásának engedélyezése a felügyelt tartományhoz](../active-directory-domain-services/tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)című témakör utasításait.  Ezt a lépést az egyéni felhasználók és az Azure AD-címtárban létrehozott új felhasználók, az Azure Portal vagy az Azure AD PowerShell-parancsmagok használatával kell elvégezni. Az Azure AD tartományi szolgáltatásokhoz hozzáférést igénylő felhasználóknak az <a href="http://myapps.microsoft.com/" target="_blank">Azure ad hozzáférési paneljén</a> kell megadniuk a profilt a jelszó módosításához.
 
         > [!NOTE]
         > Ha a szervezet rendelkezik csak felhőalapú felhasználói fiókokkal, az Active Directory Domain Servicest használó összes felhasználónak módosítania kell a jelszavát. A csak felhőalapú felhasználói fiókok olyan fiókok, amelyek az Azure AD-címtárban lettek létrehozva az Azure Portal vagy Azure AD PowerShell-parancsmagok használatával. Az ilyen felhasználói fiókok nem a helyszíni címtárból szinkronizálódnak.
 
-    2. Ha a helyszíni Active Directoryból szinkronizálja a jelszavakat, kövesse az [Active Directory dokumentációjának](../active-directory-domain-services/active-directory-ds-getting-started-password-sync-synced-tenant.md)lépéseit.
+    2. Ha a helyszíni Active Directoryból szinkronizálja a jelszavakat, kövesse az [Active Directory dokumentációjának](../active-directory-domain-services/tutorial-configure-password-hash-sync.md)lépéseit.
 
 6.  Konfigurálja a biztonságos LDAP-t a Azure Active Directory Domain Services a [biztonságos LDAP (LDAPS) konfigurálása Azure ad Domain Services felügyelt tartományhoz](../active-directory-domain-services/tutorial-configure-ldaps.md)című témakörben leírtak szerint.
     1. Töltse fel az Azure-témakörben leírtak szerint a biztonságos LDAP-hez készült tanúsítványt a Secure LDAP használatára vonatkozó tanúsítvány [beszerzése](../active-directory-domain-services/tutorial-configure-ldaps.md#create-a-certificate-for-secure-ldap)érdekében.  A CloudSimple azt javasolja, hogy a hitelesítésszolgáltató által kiadott aláírt tanúsítványt használja, hogy a vCenter megbízható legyen a tanúsítványban.
@@ -84,7 +85,7 @@ Opcionálisan más Azure AD-funkciókat is konfigurálhat.  Ezek nem szükséges
 
     | **Beállítás** | **Leírás** |
     |------------|-----------------|
-    | **Name (Név)** | Az Identity forrás neve. |
+    | **Név** | Az Identity forrás neve. |
     | **A felhasználók alapszintű megkülönböztető neve** | A felhasználók alapszintű megkülönböztető neve.  Az Azure AD esetében használja a következőt: `OU=AADDC Users,DC=<domain>,DC=<domain suffix>` példa: `OU=AADDC Users,DC=cloudsimplecustomer,DC=com` .|
     | **Tartománynév** | A tartomány teljes tartományneve, például example.com. Ne adjon meg IP-címet ebben a szövegmezőben. |
     | **Tartomány aliasa** | *(nem kötelező)* A tartomány NetBIOS-neve. Adja hozzá a Active Directory tartomány NetBIOS-nevét az Identity forrás aliasként, ha az SSPI-hitelesítést használja. |
@@ -92,7 +93,7 @@ Opcionálisan más Azure AD-funkciókat is konfigurálhat.  Ezek nem szükséges
     | **Elsődleges kiszolgáló URL-címe** | A tartomány elsődleges tartományvezérlője LDAP-kiszolgálója.<br><br>Használja a formátumot  `ldaps://hostname:port` . A port általában a 636 LDAP-kapcsolatokhoz. <br><br>Az  `ldaps://`   elsődleges vagy másodlagos LDAP URL-cím használata esetén olyan tanúsítványra van szükség, amely a Active Directory kiszolgáló LDAPS végpontjának megbízhatóságát hozza létre. |
     | **Másodlagos kiszolgáló URL-címe** | A feladatátvételhez használt másodlagos tartományvezérlői LDAP-kiszolgáló címe. |
     | **Tanúsítvány kiválasztása** | Ha LDAPs-t szeretne használni a Active Directory LDAP-kiszolgálóval vagy a OpenLDAP-kiszolgáló identitásával, akkor  `ldaps://`   az URL-cím szövegmezőbe való beírása után a tanúsítvány választása gomb jelenik meg. Másodlagos URL-cím megadása nem kötelező. |
-    | **Username** | Azon felhasználó azonosítója, aki legalább olvasási hozzáféréssel rendelkezik a felhasználók és csoportok alapszintű DN-hez. |
+    | **Felhasználónév** | Azon felhasználó azonosítója, aki legalább olvasási hozzáféréssel rendelkezik a felhasználók és csoportok alapszintű DN-hez. |
     | **Jelszó** | A Felhasználónév által megadott felhasználó jelszava. |
 
 3. A jogosultságok kiterjesztését követően jelentkezzen be a saját Felhőbeli vCenter.

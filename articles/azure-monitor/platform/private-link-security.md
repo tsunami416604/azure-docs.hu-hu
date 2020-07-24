@@ -6,12 +6,12 @@ ms.author: nikiest
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.subservice: ''
-ms.openlocfilehash: 14ecd1a35f8aae8365b7c7dc458712acdb894e62
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6045fa475b3bb112afee9ceacd8d6b136087feab
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85602584"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077180"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Hálózatok biztonságos csatlakoztatása az Azure privát hivatkozással Azure Monitor
 
@@ -70,6 +70,23 @@ Ha például a belső virtuális hálózatok VNet1 és VNet2 csatlakozniuk kell 
 
 ![B AMPLS-topológia ábrája](./media/private-link-security/ampls-topology-b-1.png)
 
+### <a name="consider-limits"></a>Határértékek megfontolása
+
+A magánhálózati kapcsolat beállításakor figyelembe kell venni néhány korlátozást:
+
+* Egy VNet csak 1 AMPLS objektumhoz tud csatlakozni. Ez azt jelenti, hogy a AMPLS objektumnak hozzáférést kell biztosítania az összes olyan Azure Monitor erőforráshoz, amelyhez a VNet hozzáféréssel kell rendelkeznie.
+* Egy Azure Monitor erőforrás (munkaterület vagy Application Insights összetevő) legfeljebb 5 AMPLSs tud csatlakozni.
+* Egy AMPLS-objektum legfeljebb 20 Azure Monitor erőforráshoz tud csatlakozni.
+* Egy AMPLS-objektum legfeljebb 10 privát végponthoz tud csatlakozni.
+
+Az alábbi topológiában:
+* Minden VNet 1 AMPLS objektumhoz csatlakozik, így nem tud csatlakozni más AMPLSs.
+* A AMPLS 2 virtuális hálózatok csatlakozik: a lehetséges privát végpontok kapcsolatainak 2/10-as használatával.
+* A AMPLS 2 munkaterülethez és 1 alkalmazás-betekintési összetevőhöz csatlakozik: a lehetséges Azure Monitor erőforrásainak 3/20-es felhasználása.
+* A 2. munkaterület az A és A AMPLS AMPLS csatlakozik: a lehetséges AMPLS-kapcsolatok 2/5-as számú használatával.
+
+![AMPLS-korlátok diagramja](./media/private-link-security/ampls-limits.png)
+
 ## <a name="example-connection"></a>Példa a kapcsolatok
 
 Első lépésként hozzon létre egy Azure Monitor privát hivatkozás hatókör-erőforrást.
@@ -81,7 +98,7 @@ Első lépésként hozzon létre egy Azure Monitor privát hivatkozás hatókör
 2. Kattintson a **Létrehozás**gombra.
 3. Válasszon egy előfizetést és egy erőforráscsoportot.
 4. Adja meg a AMPLS nevét. Érdemes olyan nevet használni, amely törli a hatókört és a biztonsági határt, hogy valaki ne szakítsa meg véletlenül a hálózati biztonsági határokat. Például: "AppServerProdTelem".
-5. Kattintson a **felülvizsgálat + létrehozás**gombra. 
+5. Kattintson a **Felülvizsgálat + létrehozás** elemre. 
 
    ![Azure Monitor privát hivatkozás hatókörének létrehozása](./media/private-link-security/ampls-create-1d.png)
 
@@ -125,7 +142,7 @@ Most, hogy rendelkezik a AMPLS kapcsolódó erőforrásokkal, hozzon létre egy 
  
    b.    Válassza az **Igen** lehetőséget a **saját DNS-zónába való integráláshoz**, és hagyja, hogy automatikusan létrehozzon egy új saját DNS zónát. Előfordulhat, hogy a tényleges DNS-zónák eltérnek az alábbi képernyőképen láthatótól. 
  
-   c.    Kattintson az **Áttekintés + létrehozás** elemre.
+   c.    Kattintson a **Felülvizsgálat + létrehozás** elemre.
  
    d.    Az érvényesítési fázis engedélyezése. 
  
@@ -137,13 +154,13 @@ Ezzel létrehozott egy új privát végpontot, amely ehhez a Azure Monitor priv�
 
 ## <a name="configure-log-analytics"></a>Log Analytics konfigurálása
 
-Nyissa meg az Azure Portalt. A Azure Monitor Log Analytics munkaterület-erőforrás a bal oldali menüpont **hálózati elkülönítése** . Ebben a menüben két különböző állapotot is megadhat. 
+Nyissa meg az Azure Portalt. A Log Analytics munkaterület-erőforrásban található a bal oldali menüpont **hálózati elkülönítése** . Ebben a menüben két különböző állapotot is megadhat. 
 
 ![LA hálózati elkülönítés](./media/private-link-security/ampls-log-analytics-lan-network-isolation-6.png)
 
 Először is csatlakoztathatja ezt a Log Analytics-erőforrást bármely olyan Azure Monitor magánhálózati kapcsolati hatókörhöz, amelyhez hozzáféréssel rendelkezik. Kattintson a **Hozzáadás** gombra, és válassza ki a Azure monitor privát hivatkozás hatókörét.  A kapcsolódáshoz kattintson az **alkalmaz** gombra. Az összes csatlakoztatott hatókör megjelenik ezen a képernyőn. Ez a kapcsolat lehetővé teszi, hogy a csatlakoztatott virtuális hálózatok hálózati forgalma elérje ezt a munkaterületet. A kapcsolat létrehozása ugyanaz, mint a [Azure monitor erőforrások csatlakoztatásakor](#connect-azure-monitor-resources)a hatókörhöz való csatlakozáskor.  
 
-Másodszor, azt is szabályozhatja, hogy ez az erőforrás Hogyan érhető el a fent felsorolt privát kapcsolati hatókörökön kívülről. Ha a **nem**értékre állítja a **nyilvános hálózati hozzáférés engedélyezése lehetőséget** , akkor a csatlakoztatott hatókörökön kívüli gépek nem tölthetnek fel adatot erre a munkaterületre. Ha a **nyilvános hálózati hozzáférés engedélyezése a** **nem**értékre van állítva, akkor a hatókörön kívüli gépek nem férhetnek hozzá a munkaterületen lévő adatforrásokhoz. Ez az adat magában foglalja a munkafüzetek, irányítópultok, a lekérdezési API-alapú ügyfél-élmények, a Azure Portali elemzések és egyéb funkciók elérését. A Log Analytics-adatfelhasználást használó Azure Portalon kívül futó tapasztalatoknak is futniuk kell a privát csatolt VNET belül.
+Másodszor, azt is szabályozhatja, hogy ez az erőforrás Hogyan érhető el a fent felsorolt privát kapcsolati hatókörökön kívülről. Ha a **nem**értékre állítja a **nyilvános hálózati hozzáférés engedélyezése lehetőséget** , akkor a csatlakoztatott hatókörökön kívüli gépek nem tölthetnek fel adatot erre a munkaterületre. Ha a **nyilvános hálózati hozzáférés engedélyezése a** **nem**értékre van állítva, akkor a hatókörön kívüli gépek nem férhetnek hozzá a munkaterületen lévő adatforrásokhoz. Ez az adat magában foglalja a munkafüzetek, irányítópultok, a lekérdezési API-alapú ügyfél-élmények, a Azure Portali elemzések és egyéb funkciók elérését. A Azure Portalon kívül futó tapasztalatok, és a lekérdezés Log Analytics az adatnak is futnia kell a privát csatolt VNET.
 
 A hozzáférés ilyen módon történő korlátozása csak a munkaterületen lévő adatértékekre vonatkozik. A konfiguráció módosításait, beleértve a hozzáférési beállítások be-és kikapcsolását is, Azure Resource Manager kezeli. A megfelelő szerepkörök, engedélyek, hálózati vezérlők és naplózás használatával korlátozhatja a hozzáférést a Resource Managerhez. További információ: [Azure monitor szerepkörök, engedélyek és biztonság](roles-permissions-security.md).
 
@@ -162,26 +179,26 @@ Másodszor, azt is szabályozhatja, hogy ez az erőforrás Hogyan érhető el a 
 
 Vegye figyelembe, hogy a portálon kívüli felhasználási élményeknek is futniuk kell a felügyelt munkaterheléseket tartalmazó privát csatolt VNET belül. 
 
-A megfigyelt számítási feladatokat üzemeltető erőforrásokat a privát hivatkozáshoz kell hozzáadnia. Az alábbi [dokumentációból](https://docs.microsoft.com/azure/app-service/networking/private-endpoint) megtudhatja, hogyan teheti meg ezt a app Services.
+A megfigyelt számítási feladatokat üzemeltető erőforrásokat a privát hivatkozáshoz kell hozzáadnia. Az alábbi [dokumentációból](../../app-service/networking/private-endpoint.md) megtudhatja, hogyan teheti meg ezt a app Services.
 
 A hozzáférés ezen a módon való korlátozása csak a Application Insights erőforrásban lévő értékekre vonatkozik. A konfiguráció módosításait, beleértve a hozzáférési beállítások be-és kikapcsolását is, Azure Resource Manager kezeli. Ehelyett a megfelelő szerepkörök, engedélyek, hálózati vezérlők és naplózás használatával korlátozza a hozzáférést a Resource Managerhez. További információ: [Azure monitor szerepkörök, engedélyek és biztonság](roles-permissions-security.md).
 
 > [!NOTE]
 > A munkaterület-alapú Application Insights teljes biztonsága érdekében le kell zárnia a Application Insights erőforráshoz és a mögöttes Log Analytics munkaterülethez való hozzáférést.
 >
-> A kód szintű diagnosztika (Profiler/Debugger) esetében meg kell adnia a saját Storage-fiókját a privát kapcsolat támogatásához. Ehhez a [dokumentációban](https://docs.microsoft.com/azure/azure-monitor/app/profiler-bring-your-own-storage) olvashat.
+> A kód szintű diagnosztika (Profiler/Debugger) esetében meg kell adnia a saját Storage-fiókját a privát kapcsolat támogatásához. Ehhez a [dokumentációban](../app/profiler-bring-your-own-storage.md) olvashat.
 
 ## <a name="use-apis-and-command-line"></a>API-k és parancssor használata
 
 A korábban ismertetett folyamatot Azure Resource Manager sablonok és parancssori felületek segítségével automatizálhatja.
 
-A privát hivatkozások hatókörének létrehozásához és kezeléséhez használja [az az monitor Private-link-scope](https://docs.microsoft.com/cli/azure/monitor/private-link-scope?view=azure-cli-latest)lehetőséget. Ezzel a paranccsal hatóköröket hozhat létre, Log Analytics munkaterületeket és Application Insights összetevőket rendelhet hozzá, és hozzáadhat/eltávolíthat/engedélyezhet privát végpontokat.
+A privát hivatkozások hatókörének létrehozásához és kezeléséhez használja [az az monitor Private-link-scope](/cli/azure/monitor/private-link-scope?view=azure-cli-latest)lehetőséget. Ezzel a paranccsal hatóköröket hozhat létre, Log Analytics munkaterületeket és Application Insights összetevőket rendelhet hozzá, és hozzáadhat/eltávolíthat/engedélyezhet privát végpontokat.
 
-A hálózati hozzáférés kezeléséhez használja a jelzőket `[--ingestion-access {Disabled, Enabled}]` és `[--query-access {Disabled, Enabled}]` [log Analytics munkaterületeket](https://docs.microsoft.com/cli/azure/monitor/log-analytics/workspace?view=azure-cli-latest) , vagy [Application Insights összetevőket](https://docs.microsoft.com/cli/azure/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest).
+A hálózati hozzáférés kezeléséhez használja a jelzőket `[--ingestion-access {Disabled, Enabled}]` és `[--query-access {Disabled, Enabled}]` [log Analytics munkaterületeket](/cli/azure/monitor/log-analytics/workspace?view=azure-cli-latest) , vagy [Application Insights összetevőket](/cli/azure/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest).
 
 ## <a name="collect-custom-logs-over-private-link"></a>Egyéni naplók gyűjtése privát kapcsolaton keresztül
 
-A Storage-fiókok az egyéni naplók betöltési folyamatában használatosak. Alapértelmezés szerint a szolgáltatás által felügyelt Storage-fiókok használatosak. Az egyéni naplók privát hivatkozásokon való betöltéséhez azonban saját Storage-fiókokat kell használnia, és hozzá kell rendelnie őket Log Analytics munkaterülethez. Az ilyen fiókok [parancssorból](https://docs.microsoft.com/cli/azure/monitor/log-analytics/workspace/linked-storage?view=azure-cli-latest)történő beállításával kapcsolatos további részletekért tekintse meg a következő témakört:.
+A Storage-fiókok az egyéni naplók betöltési folyamatában használatosak. Alapértelmezés szerint a szolgáltatás által felügyelt Storage-fiókok használatosak. Az egyéni naplók privát hivatkozásokon való betöltéséhez azonban saját Storage-fiókokat kell használnia, és hozzá kell rendelnie őket Log Analytics munkaterülethez. Az ilyen fiókok [parancssorból](/cli/azure/monitor/log-analytics/workspace/linked-storage?view=azure-cli-latest)történő beállításával kapcsolatos további részletekért tekintse meg a következő témakört:.
 
 A saját Storage-fiók létrehozásával kapcsolatos további információkért lásd: [felhasználói tulajdonú Storage-fiókok a naplók](private-storage.md) betöltéséhez
 
@@ -189,7 +206,7 @@ A saját Storage-fiók létrehozásával kapcsolatos további információkért 
 
 ### <a name="agents"></a>Ügynökök
 
-A Windows-és Linux-ügynökök legújabb verzióit magánhálózatok használatával kell használni a biztonságos telemetria betöltéséhez Log Analytics munkaterületek számára. A régebbi verziók nem tölthetik fel a belső hálózaton lévő megfigyelési adatok feltöltését.
+A Windows-és Linux-ügynökök legújabb verzióit magánhálózati hálózatokon kell használni a Log Analytics munkaterületek biztonságos betöltésének lehetővé tételéhez. A régebbi verziók nem tölthetik fel a belső hálózaton lévő megfigyelési adatok feltöltését.
 
 **Log Analytics Windows-ügynök**
 
@@ -210,7 +227,7 @@ A Azure Monitor-portál használatának, például a Application Insights és a 
 
 ### <a name="programmatic-access"></a>Szoftveres hozzáférés
 
-Ha a REST APIt, a [CLI](https://docs.microsoft.com/cli/azure/monitor?view=azure-cli-latest) -t vagy a PowerShellt a magánhálózaton lévő Azure monitor használatával szeretné használni, adja hozzá a**AzureActiveDirectory** és a **AzureResourceManager** [szolgáltatáshoz](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)a tűzfalhoz.  
+Ha a REST APIt, a [CLI](/cli/azure/monitor?view=azure-cli-latest) -t vagy a PowerShellt a magánhálózaton lévő Azure monitor használatával szeretné használni, adja hozzá a**AzureActiveDirectory** és a **AzureResourceManager** [szolgáltatáshoz](../../virtual-network/service-tags-overview.md)a tűzfalhoz.  
 
 A címkék hozzáadásával olyan műveleteket hajthat végre, mint például a naplózási adatok lekérdezése, Log Analytics munkaterületek és AI-összetevők létrehozása és kezelése.
 

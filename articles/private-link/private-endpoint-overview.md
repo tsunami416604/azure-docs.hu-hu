@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: c739c6483832c08a91f2a5318853bf48e5d41854
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d61527a7a57c82c0e1485ef249306618def9a57c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496961"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077933"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Mi az az Azure Private Endpoint?
 
@@ -78,6 +78,13 @@ A privát kapcsolati erőforrás egy adott privát végpont célját célozza me
 |**Azure Event Grid** | Microsoft. EventGrid/tartományok    | domain |
 |**Azure-WebApps** | Microsoft. Web/Sites    | helyek |
 |**Azure Machine Learning** | Microsoft. MachineLearningServices/munkaterületek    | munkaterület |
+|**SignalR** | Microsoft. SignalRService/szignáló    | signalR |
+|**Azure Monitor** | Microsoft. bepillantások/privateLinkScopes    | azuremonitor |
+|**Cognitive Services** | (Microsoft. CognitiveServices/fiókok    | account |
+|**Azure File Sync** | Microsoft. StorageSync/storageSyncServices    | AFS |
+    
+  
+
   
  
 ## <a name="network-security-of-private-endpoints"></a>Privát végpontok hálózati biztonsága 
@@ -124,7 +131,7 @@ A következő táblázat tartalmazza a privát végpontok használatakor felisme
 |A hálózati biztonsági csoport (NSG) szabályai és a felhasználó által megadott útvonalak nem vonatkoznak a privát végpontra    |A NSG nem támogatott a privát végpontokon. Míg a privát végpontot tartalmazó alhálózatokhoz NSG társítható, a szabályok nem lesznek érvényesek a privát végpont által feldolgozott forgalomra. A privát végpontok alhálózaton való üzembe helyezéséhez [le kell tiltani a hálózati házirendek kényszerítését](disable-private-endpoint-network-policy.md) . A NSG továbbra is érvényben van az ugyanazon alhálózaton futó egyéb munkaterheléseken. Az összes ügyfél-alhálózat útvonala egy/32 előtagot használ, és az alapértelmezett útválasztási viselkedés megváltoztatásához hasonló UDR van szükség.  | A forgalmat a forrás-ügyfeleken a kimenő forgalomra vonatkozó NSG szabályok használatával szabályozhatja. Egyéni útvonalak üzembe helyezése a/32 előtaggal a privát végponti útvonalak felülbírálásához. A kimenő kapcsolatok NSG és figyelési információi továbbra is támogatottak, és használhatók        |
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [Privát végpont létrehozása SQL Database a portál használatával](create-private-endpoint-portal.md)
 - [Privát végpont létrehozása SQL Databasehoz a PowerShell használatával](create-private-endpoint-powershell.md)
 - [Privát végpont létrehozása SQL Databasehoz a parancssori felület használatával](create-private-endpoint-cli.md)

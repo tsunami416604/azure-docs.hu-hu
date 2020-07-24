@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2016
 ms.author: matd
-ms.openlocfilehash: f2a514b6f44df7be15f18aa8f7c42668c872ab4a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 05ee60986703096c004c4d15764028b73d04c0bf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85509693"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077890"
 ---
 # <a name="storsimple-as-a-backup-target-with-veeam"></a>StorSimple biztonsági mentési célként a Veeam
 
@@ -104,7 +104,7 @@ Az alábbi táblázatok az eszköz modell-architektúra kezdeti útmutatóját m
 | Biztonsági mentési forgatókönyv  | Helyi tárolási kapacitás  | Felhőalapú tárolási kapacitás  |
 |---|---|---|
 | Elsődleges biztonsági mentés  | A helyi tárterületen tárolt legutóbbi biztonsági másolatok a helyreállítási időkorlát (RPO) kielégítése érdekében a gyors helyreállítás érdekében | A biztonsági mentési előzmények (RPO) a Felhőbeli kapacitásban is elférnek |
-| Másodlagos biztonsági mentés | A biztonsági mentési adatmennyiség másodlagos másolata a Felhőbeli kapacitásban tárolható  | N.A.  |
+| Másodlagos biztonsági mentés | A biztonsági mentési adatmennyiség másodlagos másolata a Felhőbeli kapacitásban tárolható  | n.a.  |
 
 ## <a name="storsimple-as-a-primary-backup-target"></a>StorSimple elsődleges biztonsági mentési célként
 
@@ -319,8 +319,8 @@ Az alábbi ábra egy tipikus kötet hozzárendelését mutatja be egy biztonság
 | Gyakoriság/biztonsági mentés típusa | Összes | Növekményes (nap 1-5)  |   
 |---|---|---|
 | Hetente (1-4 hét) | Szombat | Hétfő – péntek |
-| Havonta  | Szombat  |   |
-| Éves | Szombat  |   |
+| havonta  | Szombat  |   |
+| Évi | Szombat  |   |
 
 
 ### <a name="assign-storsimple-volumes-to-a-veeam-backup-job"></a>StorSimple-kötetek kiosztása Veeam biztonsági mentési feladatokhoz
@@ -349,7 +349,7 @@ Az elsődleges biztonsági mentési cél forgatókönyvhöz hozzon létre egy na
 
     ![Veeam felügyeleti konzol, új biztonsági mentési feladatok speciális beállítások lapja](./media/storsimple-configure-backup-target-using-veeam/veeamimage12.png)
 
-6. A **tárterület** lapon törölje a jelet a **beágyazott adattörlés engedélyezése** jelölőnégyzetből. Jelölje be a **fájlok zárolásának kihagyása** jelölőnégyzetet, majd jelölje be a **törölt blokkok kizárása** jelölőnégyzetet. A **tömörítési szint** beállítása **none**értékre A kiegyensúlyozott teljesítmény és a deduplikálás érdekében állítsa be a **tárolási optimalizálást** a **LAN-célra**. Válassza az **OK** lehetőséget.
+6. A **tárterület** lapon törölje a jelet a **beágyazott adattörlés engedélyezése** jelölőnégyzetből. Jelölje be a **fájlok zárolásának kihagyása** jelölőnégyzetet, majd jelölje be a **törölt blokkok kizárása** jelölőnégyzetet. A **tömörítési szint** beállítása **none**értékre A kiegyensúlyozott teljesítmény és a deduplikálás érdekében állítsa be a **tárolási optimalizálást** a **LAN-célra**. Kattintson az **OK** gombra.
 
     ![Veeam felügyeleti konzol, új biztonsági mentési feladatok speciális beállítások lapja](./media/storsimple-configure-backup-target-using-veeam/veeamimage13.png)
 
@@ -399,8 +399,8 @@ GFS rotációs hetente, havonta és évenkénti ütemezés szerint
 | 2. hét | StorSimple hét 2-4 |   |   |   |   |   |
 | 3. hét | StorSimple hét 2-4 |   |   |   |   |   |
 | 4. hét | StorSimple hét 2-4 |   |   |   |   |   |
-| Havonta | StorSimple havonta |   |   |   |   |   |
-| Éves | StorSimple évente  |   |   |   |   |   |
+| havonta | StorSimple havonta |   |   |   |   |   |
+| Évi | StorSimple évente  |   |   |   |   |   |
 
 ### <a name="assign-storsimple-volumes-to-a-veeam-copy-job"></a>StorSimple-kötetek kiosztása Veeam másolási feladatokhoz
 
@@ -468,7 +468,7 @@ A következő szakasz azt ismerteti, hogyan hozhat létre egy rövid parancsfáj
 
 ### <a name="to-start-or-delete-a-cloud-snapshot"></a>Felhőbeli pillanatkép elindítása vagy törlése
 
-1. [Telepítse az Azure PowerShellt](/powershell/azure/overview).
+1. [Telepítse az Azure PowerShellt](/powershell/azure/).
 2. Töltse le és állítsa be [Manage-CloudSnapshots.ps1](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Manage-CloudSnapshots.ps1) PowerShell-szkriptet.
 3. A parancsfájlt futtató kiszolgálón futtassa a PowerShellt rendszergazdaként. Győződjön meg arról, hogy a parancsfájl futtatásával `-WhatIf $true` megtekintheti, hogy a parancsfájl milyen módosításokat hajt végre. Az ellenőrzés befejezése után adja át a t `-WhatIf $false` . Futtassa az alábbi parancsot:
    ```powershell
@@ -507,7 +507,7 @@ A katasztrófák számos tényezőt okozhatnak. A következő táblázat az ált
 | A hely meghibásodása, amely a biztonsági mentési kiszolgáló és a StorSimple elvesztését eredményezi | A biztonsági mentési és visszaállítási műveletek megszakadnak. | Először állítsa vissza a StorSimple, majd állítsa vissza a Veeam. | Először állítsa vissza a StorSimple, majd állítsa vissza a Veeam. Ha az eszköz helyreállítása után visszaállítást kell végeznie, a teljes adatfeldolgozási készletek a felhőből az új eszközre lesznek beolvasva. Minden művelet Felhőbeli sebességgel történik. |
 
 
-## <a name="references"></a>Referencia
+## <a name="references"></a>Hivatkozások
 
 Ehhez a cikkhez a következő dokumentumok hivatkoznak:
 

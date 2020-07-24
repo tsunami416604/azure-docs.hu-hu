@@ -11,11 +11,12 @@ ms.date: 03/18/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: f7c7358dc405b3db2b3f014bb99a96fa56580314
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a77bb5211d13f9b0566f4226163918a5310287bd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213924"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075730"
 ---
 # <a name="partitioning-tables-in-synapse-sql-pool"></a>Táblázatok particionálása a szinapszis SQL-készletben
 
@@ -31,21 +32,33 @@ A particionálás az adatkarbantartás és a lekérdezési teljesítmény előny
 
 A szinapszis SQL-készlet particionálásának elsődleges előnye, hogy a partíciók törlésével, a váltással és az összevonással növeli az adatterhelés hatékonyságát és teljesítményét. A legtöbb esetben az adatok egy dátum oszlopra vannak particionálva, amely szorosan kötődik ahhoz a sorrendhez, amelyben az adatok betöltődik az adatbázisba. A partíciók használatának egyik legnagyobb előnye az, hogy a tranzakciók naplózásának elkerüléséhez az adatmennyiséget. Noha egyszerűen beillesztheti, frissítheti vagy törölheti az adatvesztést, némi gondolkodással és erőfeszítéssel, ami jelentősen növelheti a teljesítményt a betöltési folyamat során.
 
-A partíciós váltással gyorsan eltávolíthatja vagy lecserélheti a táblák egy szakaszát.  Előfordulhat például, hogy egy értékesítési tény táblázata csak az elmúlt 36 hónapra vonatkozó adatforgalmat tartalmaz. Minden hónap végén az értékesítési adatok legrégebbi hónapja törlődik a táblából.  Ezt az adattörlési utasítás segítségével törölheti a legrégebbi hónapra vonatkozó adatok törléséhez. Ha azonban egy Delete utasítással nagy mennyiségű adatsort töröl, akkor túl sok időt vehet igénybe, és megteremtheti a nagy tranzakciók kockázatát, amely hosszú időt vesz igénybe a visszaállítás, ha valami hiba történik. Az optimális megoldás a legrégebbi adatpartíció eldobása. Ha az egyes sorok törlése órákat is igénybe vehet, a teljes partíció törlése akár másodperceket is igénybe vehet.
+A partíciós váltással gyorsan eltávolíthatja vagy lecserélheti a táblák egy szakaszát.  Előfordulhat például, hogy egy értékesítési tény táblázata csak az elmúlt 36 hónapra vonatkozó adatforgalmat tartalmaz. Minden hónap végén az értékesítési adatok legrégebbi hónapja törlődik a táblából.  Ezt az adattörlési utasítás segítségével törölheti a legrégebbi hónapra vonatkozó adatok törléséhez. 
+
+Ha azonban egy Delete utasítással nagy mennyiségű adatsort töröl, akkor túl sok időt vehet igénybe, és megteremtheti a nagy tranzakciók kockázatát, amely hosszú időt vesz igénybe a visszaállítás, ha valami hiba történik. Az optimális megoldás a legrégebbi adatpartíció eldobása. Ha az egyes sorok törlése órákat is igénybe vehet, a teljes partíció törlése akár másodperceket is igénybe vehet.
 
 ### <a name="benefits-to-queries"></a>A lekérdezések előnyei
 
-A particionálás a lekérdezési teljesítmény javítása érdekében is felhasználható. Olyan lekérdezés, amely egy szűrőt alkalmaz a particionált adatértékekre, a vizsgálat csak a megfelelő partícióra korlátozható. Ez a szűrési módszer elkerülheti a teljes táblázatos vizsgálatot, és csak kisebb adathalmazt vizsgálhat meg. A fürtözött oszlopcentrikus indexek bevezetésével a predikátumok kiiktatásának teljesítménybeli előnyei kevésbé hasznosak, de bizonyos esetekben a lekérdezések is hasznosak lehetnek. Ha például a Sales Fact tábla 36 hónapig van particionálva az értékesítési dátum mezővel, akkor az eladási dátum alapján szűrt lekérdezések kihagyhatják a keresést a szűrővel nem egyező partíciókban.
+A particionálás a lekérdezési teljesítmény javítása érdekében is felhasználható. Olyan lekérdezés, amely egy szűrőt alkalmaz a particionált adatértékekre, a vizsgálat csak a megfelelő partícióra korlátozható. Ez a szűrési módszer elkerülheti a teljes táblázatos vizsgálatot, és csak kisebb adathalmazt vizsgálhat meg. A fürtözött oszlopcentrikus indexek bevezetésével a predikátumok kiiktatásának teljesítménybeli előnyei kevésbé hasznosak, de bizonyos esetekben a lekérdezések is hasznosak lehetnek. 
+
+Ha például a Sales Fact tábla 36 hónapig van particionálva az értékesítési dátum mezővel, akkor az eladási dátum alapján szűrt lekérdezések kihagyhatják a keresést a szűrővel nem egyező partíciókban.
 
 ## <a name="sizing-partitions"></a>Méretezési partíciók
 
-Míg a particionálás felhasználható bizonyos forgatókönyvek teljesítményének javítására, a **túl sok** partícióval rendelkező tábla létrehozása bizonyos körülmények között megsértheti a teljesítményt.  Ezek az információk különösen a fürtözött oszlopcentrikus táblák esetében érvényesek. Ahhoz, hogy a particionálás hasznos legyen, fontos megérteni, hogy mikor kell használni a particionálást és a létrehozandó partíciók számát. Nincs olyan nehéz szabály, amely szerint a partíciók száma túl sok, az adataitól függ, és hány partíciót tölt egyszerre. A sikeres particionálási séma általában több tízezer partíciót tartalmaz, és nem ezer.
+Míg a particionálás felhasználható bizonyos forgatókönyvek teljesítményének javítására, a **túl sok** partícióval rendelkező tábla létrehozása bizonyos körülmények között megsértheti a teljesítményt.  Ezek az információk különösen a fürtözött oszlopcentrikus táblák esetében érvényesek. 
 
-**Fürtözött oszlopcentrikus** táblákon a partíciók létrehozásakor fontos megfontolni, hogy hány sor tartozik az egyes partíciók közé. A fürtözött oszlopcentrikus táblák optimális tömörítéséhez és teljesítményéhez legalább 1 000 000 sort kell kiszolgálni, és partícióra van szükség. A partíciók létrehozása előtt a szinapszis SQL-készlet már felosztja az egyes táblákat a 60 elosztott adatbázisokba. A táblákhoz hozzáadott particionálások a háttérben létrehozott eloszlások mellett is megtalálhatók. Ha ezt a példát használja, ha az értékesítési tény táblázata 36 havi partíciót tartalmazott, és mivel egy szinapszis SQL-készletnek 60-eloszlása van, akkor az értékesítési tény táblázatának tartalmaznia kell az 60 000 000-as sorszámot havonta, vagy 2 100 000 000-sort, ha az összes hónap fel van töltve. Ha egy tábla kevesebb, mint az ajánlott minimális számú sor a partíción, érdemes lehet kevesebb partíciót használni a sorok partíciók számának növeléséhez. További információ: [indexelési](sql-data-warehouse-tables-index.md) cikk, amely a fürt oszlopcentrikus indexek minőségét értékelő lekérdezéseket tartalmaz.
+Ahhoz, hogy a particionálás hasznos legyen, fontos megérteni, hogy mikor kell használni a particionálást és a létrehozandó partíciók számát. Nincs olyan nehéz szabály, amely szerint a partíciók száma túl sok, az adataitól függ, és hány partíciót tölt egyszerre. A sikeres particionálási séma általában több tízezer partíciót tartalmaz, és nem ezer.
+
+**Fürtözött oszlopcentrikus** táblákon a partíciók létrehozásakor fontos megfontolni, hogy hány sor tartozik az egyes partíciók közé. A fürtözött oszlopcentrikus táblák optimális tömörítéséhez és teljesítményéhez legalább 1 000 000 sort kell kiszolgálni, és partícióra van szükség. A partíciók létrehozása előtt a szinapszis SQL-készlet már felosztja az egyes táblákat a 60 elosztott adatbázisokba. 
+
+A táblákhoz hozzáadott particionálások a háttérben létrehozott eloszlások mellett is megtalálhatók. Ha ezt a példát használja, ha az értékesítési tény táblázata 36 havi partíciót tartalmazott, és mivel egy szinapszis SQL-készletnek 60-eloszlása van, akkor az értékesítési tény táblázatának tartalmaznia kell az 60 000 000-as sorszámot havonta, vagy 2 100 000 000-sort, ha az összes hónap fel van töltve. Ha egy tábla kevesebb, mint az ajánlott minimális számú sor a partíción, érdemes lehet kevesebb partíciót használni a sorok partíciók számának növeléséhez. 
+
+További információ: [indexelési](sql-data-warehouse-tables-index.md) cikk, amely a fürt oszlopcentrikus indexek minőségét értékelő lekérdezéseket tartalmaz.
 
 ## <a name="syntax-differences-from-sql-server"></a>Szintaxisbeli különbségek SQL Server
 
-A szinapszis SQL-készlet bevezeti a SQL Servernál egyszerűbb partíciók definiálásának módját. A particionálási függvények és sémák nem használatosak a szinapszis SQL-készletben, mivel azok SQL Server vannak. Ehelyett mindössze annyit kell tennie, hogy azonosítja a particionált oszlopot és a határ pontokat. Míg a particionálás szintaxisa kis mértékben eltérhet a SQL Servertól, az alapvető fogalmak ugyanazok. A SQL Server és a szinapszis SQL-készlet támogatja a tábla egy partíciós oszlopát, amely lehet tartományhoz tartozó partíció. További információ a particionálásról: [particionált táblák és indexek](/sql/relational-databases/partitions/partitioned-tables-and-indexes?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
+A szinapszis SQL-készlet bevezeti a SQL Servernál egyszerűbb partíciók definiálásának módját. A particionálási függvények és sémák nem használatosak a szinapszis SQL-készletben, mivel azok SQL Server vannak. Ehelyett mindössze annyit kell tennie, hogy azonosítja a particionált oszlopot és a határ pontokat. 
+
+Míg a particionálás szintaxisa kis mértékben eltérhet a SQL Servertól, az alapvető fogalmak ugyanazok. A SQL Server és a szinapszis SQL-készlet támogatja a tábla egy partíciós oszlopát, amely lehet tartományhoz tartozó partíció. További információ a particionálásról: [particionált táblák és indexek](/sql/relational-databases/partitions/partitioned-tables-and-indexes?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 A következő példa a [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) utasítást használja a FactInternetSales tábla particionálásához a OrderDateKey oszlopon:
 
@@ -236,7 +249,11 @@ UPDATE STATISTICS [dbo].[FactInternetSales];
 
 ### <a name="load-new-data-into-partitions-that-contain-data-in-one-step"></a>Új adatbázis betöltése olyan partícióba, amely egyetlen lépésben tartalmaz egy adott adathalmazt.
 
-Az adatpartíciók partíciók közötti betöltése kényelmes módszer egy olyan tábla új adattípusának megadásához, amely nem látható a felhasználók számára az új adatváltásban.  Nagy kihívást jelenthet a forgalmas rendszereken a partíciós váltáshoz kapcsolódó zárolási tartalom kezeléséhez.  Egy partíció meglévő adattartalmának törléséhez az `ALTER TABLE` adatváltáshoz szükséges.  Ezután egy másikra `ALTER TABLE` volt szükség az új adatváltáshoz.  A szinapszis SQL-készletben a `TRUNCATE_TARGET` parancs támogatja a beállítást `ALTER TABLE` .  `TRUNCATE_TARGET`A `ALTER TABLE` paranccsal felülírja a partícióban lévő meglévő adatértékeket az új adattal.  Az alábbiakban egy példa látható, amely `CTAS` egy új tábla létrehozásához használja a meglévőket, beszúrja az új adatbevitelt, majd visszaváltja az összes adathalmazt a céltáblaba, felülírja a meglévőket.
+Az adatpartíciók partíciók közötti betöltésének kényelmes módja, ha olyan táblázatba helyezi az új adattípust, amely nem látható a felhasználók számára.  Nagy kihívást jelenthet a forgalmas rendszereken a partíciós váltáshoz kapcsolódó zárolási tartalom kezeléséhez.  
+
+Egy partíció meglévő adattartalmának törléséhez az `ALTER TABLE` adatváltáshoz szükséges.  Ezután egy másikra `ALTER TABLE` volt szükség az új adatváltáshoz.  
+
+A szinapszis SQL-készletben a `TRUNCATE_TARGET` parancs támogatja a beállítást `ALTER TABLE` .  `TRUNCATE_TARGET`A `ALTER TABLE` paranccsal felülírja a partícióban lévő meglévő adatértékeket az új adattal.  Az alábbi példa egy `CTAS` új tábla létrehozását mutatja be a meglévő adattal, beszúrja az új adatbevitelt, majd visszaváltja az összes adathalmazt a célként megadott táblába, felülírja a meglévőket.
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales_NewSales]
@@ -338,7 +355,7 @@ Ha el szeretné kerülni a tábla definícióját a forrás-ellenőrzési rendsz
     DROP TABLE #partitions;
     ```
 
-Ezzel a megközelítéssel a forrás vezérlőelemben lévő kód statikus marad, és a particionálási határértékek dinamikusak. az adatbázis időbeli alakulása.
+Ezzel a módszerrel a verziókövetés kódja statikus marad, és a particionálási határértékek dinamikusak. az adatbázis időbeli alakulása.
 
 ## <a name="next-steps"></a>További lépések
 

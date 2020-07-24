@@ -11,12 +11,12 @@ ms.date: 07/12/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 2b7e980f2ffd31bd10b481fe4fc8e0617c40717a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3c8d78c164cefbab03d9d3fa783c75ded9773d38
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85205084"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075809"
 ---
 # <a name="geo-restore-for-sql-pool"></a>Geo-visszaállítás az SQL-készlethez
 
@@ -36,7 +36,7 @@ A Geo biztonsági mentésből való visszaállításhoz használja a [Get-AzSqlD
 > A Gen2 a Geo-visszaállítást is elvégezheti. Ehhez meg kell adnia egy Gen2-ServiceObjectiveName (például DW1000**c**) választható paraméterként.
 >
 
-1. Mielőtt elkezdené, győződjön meg arról, hogy a [Azure PowerShell telepítését](/powershell/azure/overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)végzi.
+1. Mielőtt elkezdené, győződjön meg arról, hogy a [Azure PowerShell telepítését](/powershell/azure/?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)végzi.
 2. Nyissa meg a PowerShellt.
 3. Kapcsolódjon az Azure-fiókjához, és sorolja fel a fiókjához társított összes előfizetést.
 4. Válassza ki azt az előfizetést, amely a visszaállítani kívánt adatraktárat tartalmazza.
@@ -77,7 +77,7 @@ A helyreállított adatbázis TDE válik, ha a forrásadatbázis TDE engedélyez
 Az SQL-készletek földrajzi biztonsági mentésből történő visszaállításához kövesse az alábbi lépéseket:
 
 1. Jelentkezzen be [Azure Portal](https://portal.azure.com/) -fiókjába.
-2. Kattintson **az + erőforrás létrehozása**elemre.
+2. Kattintson az **+ Erőforrás létrehozása** gombra.
 
    ![Új DW](./media/sql-data-warehouse-restore-from-geo-backup/georestore-new.png)
 
@@ -87,9 +87,9 @@ Az SQL-készletek földrajzi biztonsági mentésből történő visszaállítás
 
 4. Adja meg az **alapok** lapon kért információkat, majd kattintson a **Tovább gombra: további beállítások**.
 
-   ![Alapvető beállítások](./media/sql-data-warehouse-restore-from-geo-backup/georestore-dw-1.png)
+   ![Alapbeállítások](./media/sql-data-warehouse-restore-from-geo-backup/georestore-dw-1.png)
 
-5. A **meglévő** Adatparaméter használata esetén válassza a **biztonsági mentés** lehetőséget, és válassza ki a megfelelő biztonsági mentést a görgetési beállítások közül. Kattintson a **felülvizsgálat + létrehozás**gombra.
+5. A **meglévő** Adatparaméter használata esetén válassza a **biztonsági mentés** lehetőséget, és válassza ki a megfelelő biztonsági mentést a görgetési beállítások közül. Kattintson a **Felülvizsgálat + létrehozás** elemre.
 
    ![biztonsági mentés](./media/sql-data-warehouse-restore-from-geo-backup/georestore-select.png)
 

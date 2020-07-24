@@ -4,11 +4,12 @@ description: Ismerkedjen meg Azure Monitor partnereivel, és hogyan férhet hozz
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 05/29/2020
-ms.openlocfilehash: be309bf6caeb716fee86e4542363f5554b4568fb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f40d38d182e1a8c233b15f711fd557a5d72e8f30
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84248971"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077333"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure Monitor partner-integrációk
 
@@ -137,7 +138,7 @@ A Focus **ArcSight** rendelkezik egy intelligens összekötővel Azure monitor E
 
 A fókusz **műveleti híd** automatikusan figyeli az összes hibrid it-erőforrást – bármilyen eszközt, operációs rendszert, adatbázist, alkalmazást vagy szolgáltatást, függetlenül attól, hogy hol fut, és alkalmazza a AIOps minden adattípusra – események, metrikák, naplók és függőségek. A szolgáltatás minőségének egyedi kombinációja, amely a részletes alkalmazás-állapot elemzésével párosul, és átfogó teljesítményt és rendelkezésre állást biztosít a Microsoft Azure-szolgáltatások számára. Az Operations Bridge lehetővé teszi, hogy az ügyfelek egyetlen panelt biztosítanak az összes böngészővel rendelkező eszközön, így mind az üzleti, mind az érintett felek megismerhetik.
 
-Tudjon meg többet
+További információ
 - [Az OB Suite áttekintése](https://www.microfocus.com/products/operations-bridge-suite/overview)
 - [Letöltés](https://marketplace.microfocus.com/itom/content/obm-management-pack-for-microsoft-azure)
 - A [SiteScope](https://docs.microfocus.com/itom/SiteScope:2019.05/MSAzureMonitor) -SiteScope az Operations Bridge Suite egyik összetevője.
@@ -269,8 +270,8 @@ A Turbonomic a teljesítmény, a költséghatékonyság és a megfelelőség val
 
 - [További információ a Azure Monitor](../../azure-monitor/overview.md)
 - [Metrikák elérése a REST API használatával](rest-api-walkthrough.md)
-- [A tevékenység naplójának továbbítása nem Microsoft-szolgáltatásba](../../azure-monitor/platform/activity-logs-stream-event-hubs.md)
-- [Erőforrás-naplók továbbítása nem Microsoft-szolgáltatásba](../../azure-monitor/platform/resource-logs-stream-event-hubs.md)
+- [A tevékenység naplójának továbbítása nem Microsoft-szolgáltatásba](./activity-log.md#legacy-collection-methods)
+- [Erőforrás-naplók továbbítása nem Microsoft-szolgáltatásba](./resource-logs.md#send-to-azure-event-hubs)
 
 
 
@@ -301,4 +302,3 @@ A Turbonomic a teljesítmény, a költséghatékonyság és a megfelelőség val
 [splunk-doc]: https://github.com/Microsoft/AzureMonitorAddonForSplunk/wiki/Azure-Monitor-Addon-For-Splunk "A splunk dokumentációja."
 [sumologic-doc]: https://www.sumologic.com/azure "A SumoLogic dokumentációja."
 [turbonomic-doc]: https://turbonomic.com/ "Turbonomic-bevezetés."
-

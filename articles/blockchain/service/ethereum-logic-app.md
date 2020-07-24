@@ -4,16 +4,16 @@ description: A Ethereum Blockchain-összekötővel a Azure Logic Apps használat
 ms.date: 10/14/2019
 ms.topic: how-to
 ms.reviewer: chrisseg
-ms.openlocfilehash: c7b45134e8b5c3e33e5d05d59c006abe103e5bda
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 61dbda7cd7f486c7a8d838084875b34803833502
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85200732"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077045"
 ---
 # <a name="use-the-ethereum-blockchain-connector-with-azure-logic-apps"></a>A Ethereum Blockchain-összekötő használata a Azure Logic Apps
 
-Az Ethereum Blockchain- [Azure Logic apps](https://docs.microsoft.com/azure/logic-apps/) [összekötővel](https://docs.microsoft.com/connectors/blockchainethereum/) intelligens szerződéses műveleteket hajthat végre, és reagálhat az intelligens szerződési eseményekre. Tegyük fel például, hogy olyan REST-alapú szolgáltatást szeretne létrehozni, amely egy blockchain-főkönyvből származó információkat ad vissza. Logikai alkalmazás használatával elfogadhatja azokat a HTTP-kérelmeket, amelyek a blockchain-főkönyvben tárolt információkat kérdezik le.
+Az Ethereum Blockchain- [Azure Logic apps](../../logic-apps/index.yml) [összekötővel](/connectors/blockchainethereum/) intelligens szerződéses műveleteket hajthat végre, és reagálhat az intelligens szerződési eseményekre. Tegyük fel például, hogy olyan REST-alapú szolgáltatást szeretne létrehozni, amely egy blockchain-főkönyvből származó információkat ad vissza. Logikai alkalmazás használatával elfogadhatja azokat a HTTP-kérelmeket, amelyek a blockchain-főkönyvben tárolt információkat kérdezik le.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -59,7 +59,7 @@ Akkor használja a Ethereum Blockchain-eseményindítókat, ha azt szeretné, ho
     | **Esemény neve** | Válasszon ki egy intelligens szerződési eseményt az ellenõrzéshez. Az esemény elindítja a logikai alkalmazást. |
     | **Intervallum** és **gyakoriság** | Válassza ki, hogy milyen gyakran szeretné megkeresni az eseményt. |
 
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 A logikai alkalmazás befejezéséhez hozzáadhat egy új lépést, amely a Ethereum Blockchain esemény eseményindítóján alapuló műveletet hajt végre. Küldjön például egy e-mailt.
 

@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 1300ef64b6081135c400baa10aa73b8139aec170
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: e8ab6e2e62bdcb08754d011a6b576cb615371a09
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86025590"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076454"
 ---
 # <a name="azure-database-for-postgresql-single-server-data-encryption-with-a-customer-managed-key"></a>Egyetlen kiszolgálóból álló adattitkosítás Azure Database for PostgreSQL ügyfél által felügyelt kulccsal
 
@@ -51,7 +51,7 @@ Ahhoz, hogy a PostgreSQL-kiszolgáló a ADATTITKOSÍTÁSI kulcsot titkosításá
 * **wrapKey**: a adattitkosítási kulcsot titkosítása.
 * **unwrapKey**: a adattitkosítási kulcsot visszafejtéséhez.
 
-A Key Vault rendszergazdája [engedélyezheti Key Vault naplózási események naplózását](../azure-monitor/insights/azure-key-vault.md)is, így később is naplózhatja őket.
+A Key Vault rendszergazdája [engedélyezheti Key Vault naplózási események naplózását](../azure-monitor/insights/key-vault-insights-overview.md)is, így később is naplózhatja őket.
 
 Ha a kiszolgáló a Key vaultban tárolt ügyfél által felügyelt kulcs használatára van konfigurálva, a kiszolgáló elküldi a ADATTITKOSÍTÁSI kulcsot a titkosításhoz a Key vaultba. Key Vault a felhasználói adatbázisban tárolt titkosított ADATTITKOSÍTÁSI kulcsot adja vissza. Hasonlóképpen, ha szükséges, a kiszolgáló a védett ADATTITKOSÍTÁSI kulcsot a Key vaultba küldi a visszafejtéshez. A könyvvizsgálók a Azure Monitor segítségével ellenőrizhetik Key Vault naplózási eseménynaplókat, ha engedélyezve van a naplózás.
 

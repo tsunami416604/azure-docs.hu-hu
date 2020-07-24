@@ -4,18 +4,19 @@ description: Ismerje meg, hogyan javíthatja Azure Time Series Insights lekérde
 services: time-series-insights
 author: deepakpalled
 ms.author: dpalled
-manager: cshankar
+manager: diviso
 ms.service: time-series-insights
 ms.topic: article
-ms.date: 04/17/2020
+ms.date: 06/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: 63a708f80ad18309269e37c354b047c304a260d3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cc24c1f49a48e81509961d5d7d01dba60dc50475
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81641296"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077657"
 ---
-# <a name="shape-json-to-maximize-query-performance"></a>A lekérdezési teljesítmény maximalizálása a JSON alakzat használatával
+# <a name="shape-json-to-maximize-query-performance-in-your-gen1-environment"></a>A JSON formázása a lekérdezési teljesítmény maximalizálása érdekében a Gen1-környezetben
 
 Ez a cikk útmutatást nyújt a JSON formázásához a Azure Time Series Insights lekérdezések hatékonyságának maximalizálása érdekében.
 
@@ -27,16 +28,13 @@ Ez a cikk útmutatást nyújt a JSON formázásához a Azure Time Series Insight
 
 ## <a name="best-practices"></a>Ajánlott eljárások
 
-Gondolja át, hogyan küldi el az eseményeket Time Series Insightsba. Tehát mindig:
+Gondolja át, hogyan küldi el az eseményeket Azure Time Series Insightsba. Tehát mindig:
 
 1. Az adatküldés a hálózaton keresztül a lehető leghatékonyabban.
 1. Győződjön meg arról, hogy az adatok tárolása oly módon történik, hogy az adott forgatókönyvnek megfelelő összesítéseket lehessen végrehajtani.
-1. Győződjön meg arról, hogy nem éri el a maximálisan megengedett Time Series Insights:
+1. Győződjön meg arról, hogy nem éri el a maximálisan megengedett Azure Time Series Insights:
    - 600 tulajdonságok (oszlopok) S1 környezetekhez.
    - 800 tulajdonságok (oszlopok) S2 környezetekhez.
-
-> [!TIP]
-> Tekintse át a [korlátozásokat és a tervezést](time-series-insights-update-plan.md) Azure Time Series Insights előzetes verzióban.
 
 A következő útmutató segítséget nyújt a lehető legjobb lekérdezési teljesítmény biztosításához:
 
@@ -44,7 +42,7 @@ A következő útmutató segítséget nyújt a lehető legjobb lekérdezési tel
 1. Ne küldjön felesleges tulajdonságokat. Ha nincs szükség lekérdezési tulajdonságra, a legjobb, ha nem szeretné elküldeni. Így elkerülhetők a tárolási korlátozások.
 1. A statikus adatok hálózaton keresztüli küldésének elkerüléséhez használjon [hivatkozási adatokat](time-series-insights-add-reference-data-set.md) .
 1. Ossza meg a dimenzió tulajdonságait több esemény között, hogy hatékonyabban küldjön adatküldést a hálózaton.
-1. Ne használjon mély tömbös beágyazást. A Time Series Insights az objektumokat tartalmazó beágyazott tömbök legfeljebb két szintjét támogatja. Time Series Insights az üzenetekben lévő tömböket több, tulajdonság érték párokkal rendelkező eseménybe.
+1. Ne használjon mély tömbös beágyazást. A Azure Time Series Insights az objektumokat tartalmazó beágyazott tömbök legfeljebb két szintjét támogatja. Azure Time Series Insights az üzenetekben lévő tömböket több, tulajdonság érték párokkal rendelkező eseménybe.
 1. Ha csak néhány mérték létezik az összes vagy a legtöbb eseménynél, érdemes elküldenie ezeket a mértékeket különálló tulajdonságokként ugyanazon az objektumon belül. A küldésük külön csökkenti az események számát, és növelheti a lekérdezési teljesítményt, mert kevesebb eseményt kell feldolgozni. Ha több mérték is van, akkor egy adott tulajdonság értékeként való küldéssel minimálisra csökkenthető a maximálisan megengedett tulajdonságértékek elérése.
 
 ## <a name="example-overview"></a>Példa – áttekintés
@@ -60,7 +58,7 @@ A példák olyan forgatókönyveken alapulnak, ahol több eszköz is küld mér�
 
 A következő példában egyetlen Azure IoT Hub üzenet jelenik meg, amelyben a külső tömb a közös dimenzió értékeinek közös szakaszát tartalmazza. A külső tömb a hivatkozási adatmennyiséget használja az üzenet hatékonyságának növelésére. A hivatkozási adatok olyan eszköz-metaadatokat tartalmaznak, amelyek nem változnak minden eseménnyel, de hasznos tulajdonságokat biztosítanak az adatok elemzéséhez. A közös dimenzióértékeket és a hivatkozásokat használó adatmennyiségeket a rendszer a huzalon küldött bájtok alapján menti, így hatékonyabbá válik az üzenet.
 
-Vegye figyelembe a következő JSON-adattartalomot, amelyet a rendszer az Azure-felhőbe való küldéskor JSON-ként szerializált [IoT-üzenetet](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.message?view=azure-dotnet) küld a Time Series Insights GA-környezetnek:
+Vegye figyelembe a következő JSON-adattartalomot, amelyet a rendszer az Azure-felhőbe való küldéskor JSON-ként szerializált [IoT-üzenetet](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.message?view=azure-dotnet) küld a Azure Time Series Insights GA-környezetnek:
 
 
 ```JSON
@@ -99,7 +97,7 @@ Vegye figyelembe a következő JSON-adattartalomot, amelyet a rendszer az Azure-
    | FXXX | LINE \_ -ADATsorok | EU |
    | FYYY | LINE \_ -ADATsorok | USA |
 
-* Time Series Insights Event Table az összeolvasztás után:
+* Azure Time Series Insights Event Table az összeolvasztás után:
 
    | deviceId | messageId | deviceLocation | időbélyeg | sorozat. Áramlási sebesség FT3/s | sorozat. Motor olajnyomás PSI |
    | --- | --- | --- | --- | --- | --- |
@@ -110,8 +108,8 @@ Vegye figyelembe a következő JSON-adattartalomot, amelyet a rendszer az Azure-
 > [!NOTE]
 > - A **deviceId** oszlop a flotta különböző eszközeinek oszlop fejlécét szolgálja. A **deviceId** értékének kiszámításához a saját tulajdonságnév korlátozza a teljes eszközt 595 (S1 környezet esetén) vagy 795 (S2 környezet esetén) a másik öt oszloppal.
 > - A felesleges tulajdonságok elkerülhetők (például a gyártmány és a modell adatai). Mivel a tulajdonságok nem lesznek lekérdezve a jövőben, így a jobb hálózati és tárolási hatékonyságot is lehetővé teszi.
-> - A hivatkozási adat a hálózaton keresztül továbbított bájtok számának csökkentésére szolgál. A **messageId** és a **deviceLocation** két attribútum a Key tulajdonság **deviceId**használatával csatlakozik. Ezek az adatforgalom a telemetria-és a bejövő adatforgalom időpontjában szerepelnek, és a lekérdezés Time Series Insights tárolja őket.
-> - Két beágyazási réteg van használatban, amely a Time Series Insights által támogatott beágyazások maximális száma. Fontos, hogy elkerülje a mélyen beágyazott tömböket.
+> - A hivatkozási adat a hálózaton keresztül továbbított bájtok számának csökkentésére szolgál. A **messageId** és a **deviceLocation** két attribútum a Key tulajdonság **deviceId**használatával csatlakozik. Ezek az adatforgalom a telemetria-és a bejövő adatforgalom időpontjában szerepelnek, és a lekérdezés Azure Time Series Insights tárolja őket.
+> - Két beágyazási réteg van használatban, amely a Azure Time Series Insights által támogatott beágyazások maximális száma. Fontos, hogy elkerülje a mélyen beágyazott tömböket.
 > - A mértékek külön tulajdonságokként lesznek elküldve ugyanazon az objektumon belül, mert kevés a mérték. Itt a **sorozat. A flow aránya PSI** és **sorozat. A motor olajnyomás FT3/s** egyedi oszlopok.
 
 ## <a name="scenario-two-several-measures-exist"></a>Második forgatókönyv: több mérték létezik
@@ -171,7 +169,7 @@ Példa JSON-adattartalomra:
    | FYYY | pumpRate | LINE \_ -ADATsorok | USA | Áramlási sebesség | FT3/s |
    | FYYY | oilPressure | LINE \_ -ADATsorok | USA | Motor olajnyomás | psi |
 
-* Time Series Insights Event Table az összeolvasztás után:
+* Azure Time Series Insights Event Table az összeolvasztás után:
 
    | deviceId | adatsorozat. tagId | messageId | deviceLocation | típus | egység | időbélyeg | adatsorozat. érték |
    | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -185,7 +183,7 @@ Példa JSON-adattartalomra:
 > [!NOTE]
 > - A **deviceId** és a **Series. tagId** oszlopok a különböző eszközök és címkék oszlopaiként szolgálnak a flottában. A saját attribútumaik használatával a lekérdezés a 594 (S1 környezetek esetén) vagy a 794 (S2 környezet esetén) értékre van korlátozva a többi hat oszloppal rendelkező összes eszköz esetében.
 > - A szükségtelen tulajdonságokat a rendszer az első példában hivatkozott okból nem tudta elkerülni.
-> - A hivatkozási adat a hálózaton keresztül továbbított bájtok számának csökkentésére szolgál a **messageId** és a **deviceLocation**egyedi párosításához használt **deviceId**bevezetésével. Az összetett Key **sorozat. tagId** a **típus** és az **egység**egyedi párosítására szolgál. Az összetett kulcs lehetővé teszi, hogy a **deviceId** és a **Series. tagId** pár négy értékre hivatkozzon: **messageId, deviceLocation, Type** és **Unit**. Ezek az adatforgalom a telemetria-adatforgalom időpontjában vannak csatlakoztatva. Ezt követően a lekérdezés Time Series Insights tárolja.
+> - A hivatkozási adat a hálózaton keresztül továbbított bájtok számának csökkentésére szolgál a **messageId** és a **deviceLocation**egyedi párosításához használt **deviceId**bevezetésével. Az összetett Key **sorozat. tagId** a **típus** és az **egység**egyedi párosítására szolgál. Az összetett kulcs lehetővé teszi, hogy a **deviceId** és a **Series. tagId** pár négy értékre hivatkozzon: **messageId, deviceLocation, Type** és **Unit**. Ezek az adatforgalom a telemetria-adatforgalom időpontjában vannak csatlakoztatva. Ezt követően a lekérdezés Azure Time Series Insights tárolja.
 > - A rendszer két beágyazási réteget használ az első példában hivatkozott okból.
 
 ### <a name="for-both-scenarios"></a>Mindkét forgatókönyv esetén
@@ -199,6 +197,6 @@ A nagy mennyiségű lehetséges értéket tartalmazó tulajdonság esetében ér
 
 - További információ [a IoT hub eszköz üzeneteinek a felhőbe való](../iot-hub/iot-hub-devguide-messages-construct.md)küldéséről.
 
-- A Time Series Insights adatelérési REST API lekérdezési szintaxisával kapcsolatos további információért olvassa el [Azure Time Series Insights lekérdezési szintaxisát](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-syntax) .
+- A Azure Time Series Insights adatelérési REST API lekérdezési szintaxisával kapcsolatos további információért olvassa el [Azure Time Series Insights lekérdezési szintaxisát](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-syntax) .
 
 - Megtudhatja [, hogyan alakíthat ki eseményeket](./time-series-insights-send-events.md).

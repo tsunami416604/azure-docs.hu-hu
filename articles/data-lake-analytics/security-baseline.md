@@ -1,20 +1,20 @@
 ---
-title: Az Azure biztonsági teljesítményteszt Data Lake Analytics biztonsági alapterve
+title: Data Lake Analytics Azure biztonsági alapterve
 description: A Data Lake Analytics biztonsági alapterve az Azure biztonsági Teljesítménytesztben meghatározott biztonsági javaslatok megvalósítására szolgáló eljárási útmutatást és erőforrásokat biztosít.
 author: msmbaldwin
 ms.service: data-lake-analytics
 ms.topic: conceptual
-ms.date: 07/13/2020
+ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 5e6d5beaad5080bf3081d5f68722623fb62d6c8a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: cb93fa266111a0f60a139d7b76a149ba81b486e9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531572"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075085"
 ---
-# <a name="data-lake-analytics-security-baseline-for-azure-security-benchmark"></a>Az Azure biztonsági teljesítményteszt Data Lake Analytics biztonsági alapterve
+# <a name="azure-security-baseline-for-data-lake-analytics"></a>Data Lake Analytics Azure biztonsági alapterve
 
 Az Data Lake Analytics Azure biztonsági alapkonfigurációja olyan javaslatokat tartalmaz, amelyek segítségével javíthatja az üzemelő példány biztonsági állapotát.
 
@@ -983,7 +983,7 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 **Felelősség**: megosztott
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Lásd az [Azure biztonsági teljesítménytesztét](/azure/security/benchmarks/overview)
 - További információ az [Azure biztonsági alaptervekről](/azure/security/benchmarks/security-baselines-overview)

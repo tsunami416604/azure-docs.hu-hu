@@ -8,13 +8,13 @@ ms.author: brjohnst
 ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 07/01/2020
-ms.openlocfilehash: 436c2620b83513a2b814e050b2ae6407930b082d
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.date: 07/08/2020
+ms.openlocfilehash: 5f6a198445f9c9bd8e02cd8b6df3405431263e0b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232049"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076405"
 ---
 # <a name="upgrading-versions-of-the-azure-search-net-management-sdk"></a>A Azure Search .NET Management SDK verzióinak frissítése
 
@@ -26,7 +26,7 @@ A felügyeleti SDK-k a felügyeleti REST API egy adott verzióját célozzák me
 
 | SDK verziója | A megfelelő REST API verziója | Szolgáltatások hozzáadásának vagy viselkedésének változása |
 |-------------|--------------------------------|-------------------------------------|
-| [3.0](https://www.nuget.org/packages/Microsoft.Azure.Management.Search/3.0.0) | API-Version = 2020 – 30 – 20 | Végpontok biztonsága (IP-tűzfalak és az [Azure Private-kapcsolat](../private-link/private-endpoint-overview.md)integrációja) |
+| [3,0](https://www.nuget.org/packages/Microsoft.Azure.Management.Search/3.0.0) | API-Version = 2020 – 30 – 20 | Végpontok biztonsága (IP-tűzfalak és az [Azure Private-kapcsolat](../private-link/private-endpoint-overview.md)integrációja) |
 | [2,0](https://www.nuget.org/packages/Microsoft.Azure.Management.Search/2.0.0) | API-Version = 2019-10-01 | Használhatóság javítása. A [lekérdezési kulcsok](https://docs.microsoft.com/rest/api/searchmanagement/querykeys/listbysearchservice) lekérésének megszakítása (a Get megszűnik). |
 | [1,0](https://www.nuget.org/packages/Microsoft.Azure.Management.Search/1.0.1) | API-Version = 2015-08-19  | Első verzió |
 

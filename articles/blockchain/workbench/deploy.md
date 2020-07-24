@@ -1,15 +1,16 @@
 ---
 title: Az Azure Blockchain Workbench előzetes verziójának üzembe helyezése
 description: Az Azure Blockchain Workbench előzetes verziójának üzembe helyezése
-ms.date: 01/08/2020
+ms.date: 07/16/2020
 ms.topic: how-to
-ms.reviewer: brendal
-ms.openlocfilehash: aaef42f715c9f4fa2550f4a2468b42c5077af14c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.reviewer: ravastra
+ms.custom: references_regions
+ms.openlocfilehash: b46a35b45a51d0cc76942c4ca142c4c7792a28b4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85210763"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077016"
 ---
 # <a name="deploy-azure-blockchain-workbench-preview"></a>Az Azure Blockchain Workbench előzetes verziójának üzembe helyezése
 
@@ -45,7 +46,7 @@ A Blockchain Workbench díja a mögöttes Azure-szolgáltatások díját összeg
 Az Azure Blockchain Workbench az Azure AD konfigurálását és az alkalmazások regisztrációját igényli. Az Azure AD- [konfigurációkat manuálisan](#azure-ad-configuration) is elvégezheti az üzembe helyezés előtt, vagy futtasson egy szkriptet az üzembe helyezés után. Ha újratelepíti a Blockchain Workbench alkalmazást, tekintse meg az Azure ad [konfigurációját](#azure-ad-configuration) az Azure ad-konfiguráció ellenőrzéséhez.
 
 > [!IMPORTANT]
-> A Workbench nem helyezhető üzembe az Azure AD-alkalmazás regisztrálásához használt bérlőben. A Workbench-t olyan bérlőn kell telepíteni, ahol rendelkezik az erőforrások üzembe helyezéséhez szükséges engedélyekkel. További információ az Azure AD-bérlők használatáról: [Active Directory-bérlő beszerzése](../../active-directory/develop/quickstart-create-new-tenant.md) és [alkalmazások integrálása Azure Active Directoryokkal](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md).
+> A Workbench nem helyezhető üzembe az Azure AD-alkalmazás regisztrálásához használt bérlőben. A Workbench-t olyan bérlőn kell telepíteni, ahol rendelkezik az erőforrások üzembe helyezéséhez szükséges engedélyekkel. További információ az Azure AD-bérlők használatáról: [Active Directory-bérlő beszerzése](../../active-directory/develop/quickstart-create-new-tenant.md) és [alkalmazások integrálása Azure Active Directoryokkal](../../active-directory/develop/quickstart-register-app.md).
 
 ## <a name="deploy-blockchain-workbench"></a>A Blockchain Workbench üzembe helyezése
 
@@ -58,15 +59,15 @@ Az előfeltételként szükséges lépések elvégzése után készen áll a Blo
 
     ![Azure Blockchain Workbench létrehozása](media/deploy/blockchain-workbench-settings-basic.png)
 
-    | Beállítás | Description  |
+    | Beállítás | Leírás  |
     |---------|--------------|
     | Erőforrás-előtag | Az üzemelő példány rövid egyedi azonosítója. Ezt az értéket használja a rendszer az erőforrások elnevezésének alapjaként. |
     | Virtuális gép felhasználóneve | A felhasználónevet a rendszer az összes virtuális gép (VM) rendszergazdájaként használja. |
-    | Hitelesítés típusa | Válassza ki, hogy szeretne-e jelszót vagy kulcsot használni a virtuális gépekhez való csatlakozáshoz. |
+    | Hitelesítéstípus | Válassza ki, hogy szeretne-e jelszót vagy kulcsot használni a virtuális gépekhez való csatlakozáshoz. |
     | Jelszó | A jelszó a virtuális gépekhez való csatlakozáshoz használatos. |
     | SSH | Használjon egy RSA nyilvános kulcsot az egysoros formátumban az **SSH-RSA-** vel, vagy használja a többsoros PEM formátumot. Az SSH-kulcsokat `ssh-keygen` Linux és OS X rendszeren is létrehozhatja, vagy a Windows PuTTYGen használatával. További információ az SSH-kulcsokról: [ssh-kulcsok használata az Azure-ban Windowson](../../virtual-machines/linux/ssh-from-windows.md). |
     | Adatbázis-és Blockchain jelszava | A telepítés részeként létrehozott adatbázishoz való hozzáféréshez használt jelszó megadása. A jelszónak meg kell felelnie a következő négy követelmény közül háromnak: a hossznak 12 & 72 karakter, 1 kisbetűs karakter, 1 nagybetű, 1 szám és 1 speciális karakter közé kell esnie, amely nem szám típusú jel (#), százalék (%), vessző (,), csillag (*), vissza idézőjel ( \` ), idézőjel ("), szimpla idézőjel ('), kötőjel (-) és semicolumn (;) |
-    | Üzembe helyezési régió | Itt adhatja meg, hogy hová szeretné telepíteni a Blockchain Workbench erőforrásait. A legjobb rendelkezésre álláshoz meg kell egyeznie a **hely** beállításával. |
+    | Üzembe helyezési régió | Itt adhatja meg, hogy hová szeretné telepíteni a Blockchain Workbench erőforrásait. A legjobb rendelkezésre állás érdekében ennek meg kell egyeznie a **régió** helyének beállításával. Nem minden régió érhető el az előzetes verzió alatt. Előfordulhat, hogy egyes régiókban nem érhetők el szolgáltatások. Az Azure Blockchain Data Manager a következő Azure-régiókban érhető el: USA keleti régiója és Nyugat-Európa.|
     | Előfizetés | Adja meg az üzemelő példányhoz használni kívánt Azure-előfizetést. |
     | Erőforráscsoportok | Hozzon létre egy új erőforráscsoportot az **új létrehozása** lehetőség kiválasztásával, és adjon meg egy egyedi erőforráscsoport-nevet. |
     | Hely | Válassza ki azt a régiót, amelyre telepíteni kívánja a keretrendszert. |
@@ -81,7 +82,7 @@ Az előfeltételként szükséges lépések elvégzése után készen áll a Blo
 
     ![Speciális beállítások az új blockchain-hálózathoz](media/deploy/advanced-blockchain-settings-new.png)
 
-    | Beállítás | Description  |
+    | Beállítás | Leírás  |
     |---------|--------------|
     | Az Azure Blockchain Service díjszabási szintje | Válassza az **alapszintű** vagy a **standard szintű** Azure Blockchain szolgáltatási szintet, amelyet a Blockchain Workbench használ |
     | Az Azure Active Directory beállításai | Válassza a **Hozzáadás később**lehetőséget.</br>Megjegyzés: Ha úgy döntött, hogy [előzetesen konfigurálja az Azure ad-](#azure-ad-configuration) t, vagy újratelepíti, válassza a *Hozzáadás*lehetőséget. |
@@ -100,17 +101,17 @@ Az előfeltételként szükséges lépések elvégzése után készen áll a Blo
 
      ![A meglévő blockchain-hálózat speciális beállításai](media/deploy/advanced-blockchain-settings-existing.png)
 
-     | Beállítás | Description  |
+     | Beállítás | Leírás  |
      |---------|--------------|
      | Ethereum RPC-végpont | Adja meg egy meglévő PoA blockchain-hálózat RPC-végpontját. A végpont https://vagy http://-val kezdődik, és portszámmal végződik. Például: `http<s>://<network-url>:<port>` |
      | Az Azure Active Directory beállításai | Válassza a **Hozzáadás később**lehetőséget.</br>Megjegyzés: Ha úgy döntött, hogy [előzetesen konfigurálja az Azure ad-](#azure-ad-configuration) t, vagy újratelepíti, válassza a *Hozzáadás*lehetőséget. |
      | Virtuális gép kiválasztása | Válassza ki az előnyben részesített tárolási teljesítményt és a virtuális gép méretét a blockchain-hálózat számára. Válasszon kisebb méretű virtuálisgép-méretet, például a *standard DS1 v2* -et, ha olyan előfizetéssel rendelkezik, amely alacsony szolgáltatási korláttal, például az Azure ingyenes szintjével rendelkezik. |
 
-1. A speciális beállítások befejezéséhez kattintson **az OK gombra** .
+1. Válassza a **felülvizsgálat + létrehozás** lehetőséget a speciális beállítások befejezéséhez.
 
 1. Tekintse át az összegzést, és ellenőrizze, hogy a paraméterek pontosak-e.
 
-    ![Összefoglalás](media/deploy/blockchain-workbench-summary.png)
+    ![Összegzés](media/deploy/blockchain-workbench-summary.png)
 
 1. Válassza a **Létrehozás** lehetőséget a feltételek elfogadásához és az Azure Blockchain Workbench üzembe helyezéséhez.
 
@@ -279,9 +280,9 @@ Miután telepítette az Azure Blockchain Workbench alkalmazást, konfigurálnia 
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Ellenőrizze, hogy a bérlőn van-e regisztrálva az Azure AD ügyfélalkalmazás.
-1. Válassza ki az **Azure Active Directory** szolgáltatást a bal oldali navigációs panelen. Válassza a **Alkalmazásregisztrációk**lehetőséget.
+1. Válassza ki az **Azure Active Directory** szolgáltatást a bal oldali navigációs panelen. Válassza az **Alkalmazásregisztrációk** lehetőséget.
 1. Válassza ki az előfeltételek szakaszban regisztrált Azure AD-ügyfélalkalmazás.
-1. Válassza a **hitelesítés**lehetőséget.
+1. Válassza a **Hitelesítés** lehetőséget.
 1. Adja meg az Azure Blockchain Workbench központi telepítésének fő webes URL-címét, amelyet a [Blockchain Workbench webes URL-címe](#blockchain-workbench-web-url) szakaszban kapott le. A válasz URL-címe előtaggal van ellátva `https://` . Például: `https://myblockchain2-7v75.azurewebsites.net`
 
     ![Hitelesítési válasz URL-címei](media/deploy/configure-reply-url.png)

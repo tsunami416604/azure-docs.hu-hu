@@ -14,11 +14,12 @@ ms.workload: identity
 ms.date: 01/22/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 298ec15700537f2368ef33ead267e85f5f22bfd7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 76b41e25a95f23b66edfbd4715037074537221f9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84791792"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076436"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Klasszikus Azure-előfizetés rendszergazdái
 
@@ -29,7 +30,7 @@ Ez a cikk a társ-rendszergazda és a szolgáltatás-rendszergazdai szerepkörö
 ## <a name="add-a-co-administrator"></a>Társadminisztrátor hozzáadása
 
 > [!TIP]
-> Csak akkor kell hozzáadnia egy társ-rendszergazdát, ha a felhasználónak az [Azure Service Management PowerShell-modul](https://docs.microsoft.com/powershell/module/servicemanagement/azure)használatával kell kezelnie a klasszikus Azure-telepítést. Ha a felhasználó csak a klasszikus erőforrások kezeléséhez használja a Azure Portal, nem kell hozzáadnia a felhasználó klasszikus rendszergazdáját.
+> Csak akkor kell hozzáadnia egy társ-rendszergazdát, ha a felhasználónak az [Azure Service Management PowerShell-modul](/powershell/module/servicemanagement/azure.service)használatával kell kezelnie a klasszikus Azure-telepítést. Ha a felhasználó csak a klasszikus erőforrások kezeléséhez használja a Azure Portal, nem kell hozzáadnia a felhasználó klasszikus rendszergazdáját.
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) szolgáltatás-rendszergazdaként vagy társ-rendszergazdaként.
 
@@ -88,7 +89,7 @@ A felhasználók és a vendég felhasználók összevetésével kapcsolatos info
 
 1. Vegyen fel egy pipát az eltávolítani kívánt társ-rendszergazda mellett.
 
-1. Kattintson az **Eltávolítás** lehetőségre.
+1. Kattintson az **Eltávolítás** elemre.
 
 1. A megjelenő üzenetablakban kattintson az **Igen**gombra.
 

@@ -3,12 +3,12 @@ title: DevTest Labs-fogalmak | Microsoft Docs
 description: Ismerje meg a DevTest Labs alapfogalmait, és hogy miként könnyítheti meg az Azure-beli virtuális gépek létrehozását, kezelését és figyelését
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: b6e845acb34a398af52392b3a90b9213a9945dd2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8f82f0484caf23d20092318b5bc2a32b0e6b1f1d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85482751"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074971"
 ---
 # <a name="devtest-labs-concepts"></a>DevTest Labs-fogalmak
 ## <a name="overview"></a>Áttekintés
@@ -56,7 +56,7 @@ A szabályzatok segítenek a költségek szabályozásában a laborban. Létreho
 A Caps egy olyan mechanizmus, amellyel a laborban csökkentheti a hulladékot. Beállíthat például egy korlátot, amely korlátozza a felhasználónként létrehozható virtuális gépek számát, vagy egy laborban.
 
 ## <a name="security-levels"></a>Biztonsági szintek
-A biztonsági hozzáférés az Azure szerepköralapú Access Control (RBAC) alapján van meghatározva. A hozzáférés működésének megismeréséhez segít megérteni az engedélyek, a szerepkörök és a RBAC által meghatározott hatókör közötti különbségeket.
+A biztonsági hozzáférés meghatározása az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) alapján történik. A hozzáférés működésének megismeréséhez segít megérteni az engedélyek, a szerepkörök és a RBAC által meghatározott hatókör közötti különbségeket.
 
 * Engedély – az engedély meghatározott hozzáférés egy adott művelethez (például olvasási hozzáférés az összes virtuális géphez).
 * Szerepkör – A szerepkör a felhasználók számára csoportosítható és hozzárendelhető engedélyek összessége. Az *előfizetés tulajdonosi* szerepköre például hozzáférhet az előfizetésen belüli összes erőforráshoz.

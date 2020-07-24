@@ -7,12 +7,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
 ms.date: 07/15/2020
-ms.openlocfilehash: 238ede3e79b7d7c5a22d24dfc52530fe391b600b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 8c6486a3a64dcbe3dd37770844296da73724f3a3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519626"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076347"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Az Azure Cognitive Search újdonságai
 
@@ -24,9 +24,9 @@ Ismerje meg a szolgáltatás újdonságait. Könyvjelző ezen az oldalon naprak�
 
 |Vonás&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Kategória | Leírás | Rendelkezésre állás  |
 |---------|------------------|-------------|---------------|
-| [**.NET-ügyfélkódtár**](https://docs.microsoft.com/dotnet/api/overview/azure/search.documents-readme?view=azure-dotnet) | Azure SDK | Az Azure SDK csapata által kiadott új ügyféloldali kódtár, amely az egyéb .NET-ügyfél-kódtárakkal való konzisztencia kialakítására szolgál. 11-es verzió. | Általánosan elérhető. </br> Telepítse a [Azure.Search.Documents csomagot](https://www.nuget.org/packages/Azure.Search.Documents/) a NuGet-ből. |
-| [**Python-ügyfélkódtár**](https://docs.microsoft.com/python/api/overview/azure/search-documents-readme?view=azure-python)  | Azure SDK | Az Azure SDK csapata által kiadott új ügyféloldali kódtár, amely más Python-ügyfél-kódtárakkal való konzisztencia kialakítására szolgál. 11-es verzió. | Általánosan elérhető. </br> Telepítse az [Azure-Search-Documents csomagot](https://pypi.org/project/azure-search-documents/) a PyPI webhelyről. |
-| [**JavaScript ügyféloldali kódtár**](https://azuresdkdocs.blob.core.windows.net/$web/javascript/azure-search-documents/11.0.0/index.html)  | Azure SDK | Az Azure SDK csapata által kiadott új ügyféloldali kódtár, amely más JavaScript-ügyfél-kódtárakkal való konzisztencia kialakítására szolgál. 11-es verzió. | Általánosan elérhető. </br> Telepítse a [ @azure/search-documents csomagot](https://www.npmjs.com/package/@azure/search-documents) a NPM-ből. |
+| [Azure.Search.Documents ügyféloldali kódtár](https://docs.microsoft.com/dotnet/api/overview/azure/search.documents-readme?view=azure-dotnet) | Azure SDK for .NET | Az Azure SDK csapata által kiadott .NET ügyféloldali kódtár, amely a többi .NET-ügyfél kódtáraval való konzisztencia kialakítására szolgál. <br/><br/>A 11-es verzió a keresési REST API-Version = 2020-06-30 verziót célozza meg, de még nem támogatja a tudásbázist, a Geo-szűrőket vagy a [FieldBuilder](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.fieldbuilder?view=azure-dotnet). | Általánosan elérhető. </br> Telepítse a [Azure.Search.Documents csomagot](https://www.nuget.org/packages/Azure.Search.Documents/) a NuGet-ből. |
+| [azure.search.documents ügyféloldali kódtár](https://docs.microsoft.com/python/api/overview/azure/search-documents-readme?view=azure-python)  | Azure SDK for Python| Az Azure SDK csapata által kiadott Python ügyféloldali kódtár, amely más Python-ügyfél-kódtárakkal való konzisztencia kialakítására szolgál. <br/><br/>A 11-es verzió célja a keresési REST API-verzió = 2020-06-30. | Általánosan elérhető. </br> Telepítse az [Azure-Search-Documents csomagot](https://pypi.org/project/azure-search-documents/) a PyPI webhelyről. |
+| [@azure/search-documentsügyféloldali kódtár](https://docs.microsoft.com/javascript/api/overview/azure/search-documents-readme?view=azure-node-latest)  | Azure SDK for JavaScript | Az Azure SDK csapata által kiadott JavaScript ügyféloldali kódtár, amely az egyéb JavaScript-ügyfél-kódtárakkal való konzisztencia biztosítására szolgál. <br/><br/>A 11-es verzió célja a keresési REST API-verzió = 2020-06-30. | Általánosan elérhető. </br> Telepítse a [ @azure/search-documents csomagot](https://www.npmjs.com/package/@azure/search-documents) a NPM-ből. |
 
 ### <a name="june-2020"></a>2020. június
 
