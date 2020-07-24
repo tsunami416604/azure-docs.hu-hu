@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 10/08/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 92957bd078c04a9bb7ac35f9d30f042a44e10764
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e5ecb99c7f64d81d57c5d6d2cb25967913a752b4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82100634"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074130"
 ---
 # <a name="create-a-snapshot"></a>Pillanatkép létrehozása
 
@@ -33,11 +33,11 @@ Pillanatkép létrehozásához hajtsa végre a következő lépéseket:
 6. Válassza ki egy Azure-adatközpont **helyét**.  
 7. A **forrásoldali lemez**lapon válassza ki a felügyelt lemezt a pillanatképhez.
 8. Válassza ki a pillanatkép tárolására használni kívánt **fiókot** . Válassza a **Standard_HDD**lehetőséget, ha a pillanatképet nagy teljesítményű lemezen kell tárolni.
-9. Válassza a **Létrehozás** lehetőséget.
+9. Kattintson a **Létrehozás** gombra.
 
 ## <a name="use-powershell"></a>A PowerShell használata
 
-A következő lépések bemutatják, hogyan másolja a VHD-lemezt, és hozza létre a pillanatkép-konfigurációt. Ezután a [New-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshot) parancsmag használatával pillanatképet készíthet a lemezről. 
+A következő lépések bemutatják, hogyan másolja a VHD-lemezt, és hozza létre a pillanatkép-konfigurációt. Ezután a [New-AzSnapshot](/powershell/module/az.compute/new-azsnapshot) parancsmag használatával pillanatképet készíthet a lemezről. 
 
  
 
@@ -53,18 +53,18 @@ A következő lépések bemutatják, hogyan másolja a VHD-lemezt, és hozza lé
 2. A virtuális gép beszerzése:
 
    ```azurepowershell-interactive
-   $vm = get-azvm `
-   -ResourceGroupName $resourceGroupName 
-   -Name $vmName
+   $vm = Get-AzVM `
+       -ResourceGroupName $resourceGroupName `
+       -Name $vmName
    ```
 
 3. Hozza létre a pillanatkép-konfigurációt. Ebben a példában a pillanatkép az operációsrendszer-lemez:
 
    ```azurepowershell-interactive
-   $snapshot =  New-AzSnapshotConfig 
-   -SourceUri $vm.StorageProfile.OsDisk.ManagedDisk.Id 
-   -Location $location 
-   -CreateOption copy
+   $snapshot =  New-AzSnapshotConfig `
+       -SourceUri $vm.StorageProfile.OsDisk.ManagedDisk.Id `
+       -Location $location `
+       -CreateOption copy
    ```
    
    > [!NOTE]
@@ -73,10 +73,10 @@ A következő lépések bemutatják, hogyan másolja a VHD-lemezt, és hozza lé
 4. Pillanatkép készítése:
 
    ```azurepowershell-interactive
-   New-AzSnapshot 
-   -Snapshot $snapshot 
-   -SnapshotName $snapshotName 
-   -ResourceGroupName $resourceGroupName 
+   New-AzSnapshot `
+       -Snapshot $snapshot `
+       -SnapshotName $snapshotName `
+       -ResourceGroupName $resourceGroupName 
    ```
 
 

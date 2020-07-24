@@ -5,15 +5,15 @@ author: cynthn
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: how-to
-ms.date: 03/25/2020
+ms.date: 07/17/2020
 ms.author: cynthn
 ms.reviewer: jagaveer
-ms.openlocfilehash: 6e7723a437e90807063e3c3b7af2bf068dca5b9f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ee2ff7119c229b8a0fd94be3b85863fcb1108f58
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82100651"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074166"
 ---
 # <a name="deploy-spot-vms-using-the-azure-portal"></a>Helyszíni virtuális gépek üzembe helyezése a Azure Portal használatával
 
@@ -23,8 +23,10 @@ A helyszíni virtuális gépek díjszabása a régió és az SKU alapján válto
 
 Lehetősége van arra, hogy a virtuális gép számára óránként fizetendő maximális árat adja meg. A helyszíni virtuális gépek maximális díja az USA dollárban (USD) állítható be, akár 5 tizedesjegyet is igénybe vehet. Az érték például a `0.05701` maximális díj $0,05701 USD/óra. Ha a maximális árat állítja be `-1` , a virtuális gép ára nem kerül kizárásra. A virtuális gép ára a jelenlegi díj vagy a standard virtuális gép díjszabása, amely soha nem kevesebb, amíg rendelkezésre áll a kapacitás és a kvóta.
 
+A virtuális gép kizárásakor lehetősége van törölni a virtuális gépet és a mögöttes lemezt, vagy felszabadítani a virtuális gépet, hogy később újra lehessen indítani.
 
-## <a name="create-the-vm"></a>Virtuális gép létrehozása
+
+## <a name="create-the-vm"></a>A virtuális gép létrehozása
 
 A helyszíni virtuális gépeket használó virtuális gépek létrehozásának folyamata [megegyezik a rövid](quick-create-portal.md)útmutatóban részletezett eljárással. A virtuális gépek üzembe helyezésekor dönthet úgy, hogy egy Azure spot-példányt használ.
 

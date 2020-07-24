@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 2b901c0d77b5bd550e7e98434cf1cba2a61e6bdb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 65679c900baaf0f98a21e4b1f6b1d350c4b945c4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83656484"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074343"
 ---
 # <a name="azure-serial-console"></a>Azure soros konzol
 
@@ -33,7 +34,7 @@ A soros konzol a virtuális gépek és a virtuálisgép-méretezési csoport pé
 A soros konzol virtuális gépen vagy virtuálisgép-méretezési csoport példányán való eléréséhez a következőkre lesz szüksége:
 
 - A virtuális géphez engedélyezni kell a rendszerindítási diagnosztikát
-- A jelszó-hitelesítést használó felhasználói fióknak léteznie kell a virtuális gépen. Létrehozhat egy jelszó-alapú felhasználót a virtuálisgép-hozzáférési bővítmény [jelszó alaphelyzetbe állítása](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password) funkciójával. Válassza a **jelszó alaphelyzetbe állítása** lehetőséget a **támogatás + hibaelhárítás** szakaszban.
+- A jelszó-hitelesítést használó felhasználói fióknak léteznie kell a virtuális gépen. Létrehozhat egy jelszó-alapú felhasználót a virtuálisgép-hozzáférési bővítmény [jelszó alaphelyzetbe állítása](../extensions/vmaccess.md#reset-password) funkciójával. Válassza a **jelszó alaphelyzetbe állítása** lehetőséget a **támogatás + hibaelhárítás** szakaszban.
 - A soros konzolhoz hozzáférő Azure-fióknak rendelkeznie kell [virtuálisgép-közreműködő szerepkörrel](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) mind a virtuális gép, mind a [rendszerindítási diagnosztika](boot-diagnostics.md) Storage-fiókhoz.
 
 > [!NOTE]
@@ -44,7 +45,7 @@ A virtuális gépek és a virtuálisgép-méretezési csoport soros konzolja csa
 
 ### <a name="serial-console-for-virtual-machines"></a>Virtual Machines soros konzolja
 A virtuális gépek soros konzolja olyan egyszerű, mint a Azure Portal **támogatás + hibaelhárítás** szakaszának **Serial consoleére** kattintva.
-  1. Nyissa meg a [Azure Portal](https://portal.azure.com).
+  1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
 
   1. Navigáljon az **összes erőforráshoz** , és válasszon ki egy virtuális gépet. Megnyílik a virtuális gép áttekintő lapja.
 
@@ -54,7 +55,7 @@ A virtuális gépek soros konzolja olyan egyszerű, mint a Azure Portal **támog
 
 ### <a name="serial-console-for-virtual-machine-scale-sets"></a>Virtual Machine Scale Sets soros konzolja
 A soros konzol a méretezési csoport minden példányán elérhető a virtuálisgép-méretezési csoportokhoz. A **Serial Console** gomb meglátása előtt navigáljon a virtuálisgép-méretezési csoport egyes példányaira. Ha a virtuálisgép-méretezési csoport nem rendelkezik engedélyezve a rendszerindítási diagnosztika szolgáltatással, frissítse a virtuálisgép-méretezési csoport modelljét a rendszerindítási diagnosztika engedélyezéséhez, majd frissítse az összes példányt az új modellre a soros konzol eléréséhez.
-  1. Nyissa meg a [Azure Portal](https://portal.azure.com).
+  1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
 
   1. Navigáljon az **összes erőforráshoz** , és válasszon ki egy virtuálisgép-méretezési készletet. Megnyílik a virtuálisgép-méretezési csoport Áttekintés lapja.
 
@@ -68,7 +69,7 @@ A soros konzol a méretezési csoport minden példányán elérhető a virtuáli
 
 
 ### <a name="tls-12-in-serial-console"></a>TLS 1,2 a soros konzolon
-A soros konzol a TLS 1,2 végpontok közötti kapcsolatot használja a szolgáltatáson belüli összes kommunikáció biztonságossá tételéhez. A soros konzol egy felhasználó által felügyelt rendszerindítási diagnosztikai fióktól függ, és a TLS 1,2-et külön kell konfigurálni a Storage-fiókhoz. Erre [itt](https://docs.microsoft.com/azure/storage/common/storage-security-tls)talál útmutatást.
+A soros konzol a TLS 1,2 végpontok közötti kapcsolatot használja a szolgáltatáson belüli összes kommunikáció biztonságossá tételéhez. A soros konzol egy felhasználó által felügyelt rendszerindítási diagnosztikai fióktól függ, és a TLS 1,2-et külön kell konfigurálni a Storage-fiókhoz. Erre [itt](../../storage/common/transport-layer-security-configure-minimum-version.md)talál útmutatást.
 
 ## <a name="advanced-uses-for-serial-console"></a>A soros konzol speciális felhasználási módjai
 A konzolhoz való hozzáféréstől eltekintve a következőhöz is használhatja az Azure soros konzolt:

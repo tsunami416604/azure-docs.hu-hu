@@ -3,12 +3,12 @@ title: Mozgás észlelése, videó rögzítése Azure Media Services
 description: Ebből a rövid útmutatóból megtudhatja, hogyan használhatja a IoT Edge élő videós elemzéseket, hogy felderítse az élő videó streamben való mozgást, és videoklipeket rögzítsen a Azure Media Services.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 0a81bebe7333266e1b70f97f8c712fccf392a464
-ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
+ms.openlocfilehash: 24bf958c7a6af25d64d8c2884b9fa259c67e39c3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84817318"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074396"
 ---
 # <a name="quickstart-detect-motion-record-video-to-media-services"></a>Gyors útmutató: mozgás észlelése, videó rögzítése Media Services
 
@@ -655,7 +655,7 @@ A fenti példában létrehozott és aktivált Graph-példány a mozgásészlelé
 
 Jegyezze fel a következő tulajdonságokat a fenti üzenetekben
 
-* Minden üzenet tartalmaz egy "Body" szakaszt és egy "applicationProperties" szakaszt. Ha szeretné megismerni, hogy mit jelentenek ezek a csoportok, olvassa el [IoT hub üzenet létrehozása és olvasása](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct)című cikket.
+* Minden üzenet tartalmaz egy "Body" szakaszt és egy "applicationProperties" szakaszt. Ha szeretné megismerni, hogy mit jelentenek ezek a csoportok, olvassa el [IoT hub üzenet létrehozása és olvasása](../../iot-hub/iot-hub-devguide-messages-construct.md)című cikket.
 * Az első üzenet egy diagnosztikai esemény, a MediaSessionEstablished, amely azt jelzi, hogy az RTSP-forrás csomópont (tárgy) képes volt kapcsolatot létesíteni az RTSP-szimulátorral, és elkezdi fogadni a (szimulált) élő hírcsatornát.
 * A "tárgy" a applicationProperties hivatkozik a Graph-topológia azon csomópontjára, amelyről az üzenet létrejött. Ebben az esetben az üzenet az RTSP forrás csomópontból származik.
 * a applicationProperties "eventType" értéke azt jelzi, hogy ez egy diagnosztikai esemény.

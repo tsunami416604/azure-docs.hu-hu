@@ -13,11 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: changov
 ms.reviewer: vashan, rajraj
-ms.openlocfilehash: f5fbd80fc9a8e519cf8f49ab16d7e747c6a8171b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b1cc8a43423ecd33218948aaa001fc34877eac60
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76045360"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074284"
 ---
 # <a name="troubleshooting-api-throttling-errors"></a>API-szabályozási hibák elhárítása 
 
@@ -25,7 +26,7 @@ Az Azure-beli számítási kérelmeket előfizetésben és régiónként is szab
 
 ## <a name="throttling-by-azure-resource-manager-vs-resource-providers"></a>Szabályozás Azure Resource Manager vs erőforrás-szolgáltatók által  
 
-Az Azure-ba való bejárati ajtó Azure Resource Manager az összes bejövő API-kérelem hitelesítését és megrendelésének ellenőrzését és szabályozását végzi. Az Azure Resource Manager hívási sebességre vonatkozó korlátozások és a kapcsolódó diagnosztikai válaszok HTTP-fejlécek [itt](https://docs.microsoft.com/azure/azure-resource-manager/management/request-limits-and-throttling)olvashatók.
+Az Azure-ba való bejárati ajtó Azure Resource Manager az összes bejövő API-kérelem hitelesítését és megrendelésének ellenőrzését és szabályozását végzi. Az Azure Resource Manager hívási sebességre vonatkozó korlátozások és a kapcsolódó diagnosztikai válaszok HTTP-fejlécek [itt](../../azure-resource-manager/management/request-limits-and-throttling.md)olvashatók.
  
 Ha egy Azure API-ügyfél szabályozási hibát észlel, akkor a HTTP-állapot 429 túl sok kérés. Ha meg szeretné tudni, hogy a kérelmek szabályozása Azure Resource Manager vagy egy mögöttes erőforrás-szolgáltató, például a CRP, vizsgálja meg a `x-ms-ratelimit-remaining-subscription-reads` Get kérések és a `x-ms-ratelimit-remaining-subscription-writes` Válasz fejléceit a nem Get kérelmek esetében. Ha a fennmaradó hívások száma eléri a 0 értéket, a rendszer elérte az előfizetés Azure Resource Manager által meghatározott általános hívási korlátját. Az összes előfizetési ügyfél által végzett tevékenységek együtt számítanak. Ellenkező esetben a szabályozás a cél erőforrás-szolgáltatótól (a `/providers/<RP>` kérelem URL-címének szegmense által tárgyalt) származik. 
 
@@ -78,8 +79,8 @@ Ahogy az a fenti ábrán látható, minden szabályozási hiba magában foglalja
 
 ## <a name="api-call-rate-and-throttling-error-analyzer"></a>API-hívások sebessége és a szabályozási hibák analizátora
 A hibaelhárítási funkció előzetes verziója érhető el a számítási erőforrás-szolgáltató API-hoz. Ezek a PowerShell-parancsmagok az API-kérelmek sebességének és a műveleti csoportonként történő szabályozásának (szabályzata) alapján adják meg a statisztikát.
--   [Exportálás – AzLogAnalyticRequestRateByInterval](https://docs.microsoft.com/powershell/module/az.compute/export-azloganalyticrequestratebyinterval)
--   [Exportálás – AzLogAnalyticThrottledRequest](https://docs.microsoft.com/powershell/module/az.compute/export-azloganalyticthrottledrequest)
+-   [Exportálás – AzLogAnalyticRequestRateByInterval](/powershell/module/az.compute/export-azloganalyticrequestratebyinterval)
+-   [Exportálás – AzLogAnalyticThrottledRequest](/powershell/module/az.compute/export-azloganalyticthrottledrequest)
 
 Az API-hívási statisztika nagyszerű betekintést nyújt az előfizetés ügyfeleinek viselkedésére, és lehetővé teszi a szabályozást okozó hívási minták egyszerű azonosítását.
 
@@ -99,4 +100,4 @@ A PowerShell-parancsmagok REST Service API-t használnak, amelyet közvetlenül 
 
 ## <a name="next-steps"></a>További lépések
 
-További információ az Azure egyéb szolgáltatásaira vonatkozó újrapróbálkozási útmutatóról: [adott szolgáltatások újrapróbálkozási útmutatója](https://docs.microsoft.com/azure/architecture/best-practices/retry-service-specific)
+További információ az Azure egyéb szolgáltatásaira vonatkozó újrapróbálkozási útmutatóról: [adott szolgáltatások újrapróbálkozási útmutatója](/azure/architecture/best-practices/retry-service-specific)

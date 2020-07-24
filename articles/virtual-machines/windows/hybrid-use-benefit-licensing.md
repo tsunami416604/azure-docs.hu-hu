@@ -7,11 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 4/22/2018
 ms.author: xujing
-ms.openlocfilehash: f84d4fcd85f1e718f414e63bbe76fd29fa32427d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1c87c517a0013fa31ba63ef1f78677fe85f5d287
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81869568"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074271"
 ---
 # <a name="azure-hybrid-benefit-for-windows-server"></a>Azure Hybrid Benefit Windows Serverhez
 A frissítési garanciával rendelkező ügyfelek számára a Windows Server Azure Hybrid Benefit lehetővé teszi a helyszíni Windows Server-licencek használatát, és a Windows rendszerű virtuális gépek futtatását az Azure-ban csökkentett költségek mellett. A Windows Server Azure Hybrid Benefit használatával telepíthet új virtuális gépeket Windows operációs rendszerre. Ez a cikk áttekinti az új virtuális gépek Windows Serverre Azure Hybrid Benefit való üzembe helyezésének lépéseit, valamint azt, hogy miként frissítheti a meglévő futó virtuális gépeket. A Windows Server licenceléssel és a költségmegtakarítással Azure Hybrid Benefitával kapcsolatos további információkért tekintse meg a [Azure Hybrid Benefit a Windows Server licencelése lapon](https://azure.microsoft.com/pricing/hybrid-use-benefit/).
@@ -65,7 +66,7 @@ az vm create \
 ```
 
 ### <a name="template"></a>Sablon
-A Resource Manager-sablonokon belül meg kell adni egy további paramétert `licenseType` . További információ a [Azure Resource Manager sablonok létrehozásáról](../../resource-group-authoring-templates.md)
+A Resource Manager-sablonokon belül meg kell adni egy további paramétert `licenseType` . További információ a [Azure Resource Manager sablonok létrehozásáról](../../azure-resource-manager/templates/template-syntax.md)
 ```json
 "properties": {
     "licenseType": "Windows_Server",
@@ -189,7 +190,7 @@ Azt is megtudhatja, hogyan [módosíthatja a virtuálisgép-méretezési csoport
 ## <a name="next-steps"></a>További lépések
 - További információ arról, [Hogyan lehet pénzt megtakarítani a Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-use-benefit/)
 - További információ a [Azure Hybrid Benefit gyakori kérdéseiről](https://azure.microsoft.com/pricing/hybrid-use-benefit/faq/)
-- További információ a [Windows Server licencelésének részletes útmutatója Azure Hybrid Benefit](https://docs.microsoft.com/windows-server/get-started/azure-hybrid-benefit)
+- További információ a [Windows Server licencelésének részletes útmutatója Azure Hybrid Benefit](/windows-server/get-started/azure-hybrid-benefit)
 - Tudjon meg többet a [Windows Server Azure Hybrid Benefitéről, és Azure site Recovery az alkalmazások áttelepítése az Azure-ba még](https://azure.microsoft.com/blog/hybrid-use-benefit-migration-with-asr/) költséghatékonyabb
-- További információ az Azure-beli Windows 10-ről a több- [bérlős üzemeltetési jogosultsággal](https://docs.microsoft.com/azure/virtual-machines/windows/windows-desktop-multitenant-hosting-deployment)
+- További információ az Azure-beli Windows 10-ről a több- [bérlős üzemeltetési jogosultsággal](./windows-desktop-multitenant-hosting-deployment.md)
 - További információ a [Resource Manager-sablonok használatáról](../../azure-resource-manager/management/overview.md)

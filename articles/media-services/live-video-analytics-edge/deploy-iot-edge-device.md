@@ -3,12 +3,12 @@ title: Élő videó-elemzés üzembe helyezése egy IoT Edge eszközön – Azur
 description: Ez a cikk azokat a lépéseket sorolja fel, amelyek segítséget nyújtanak az élő videó-elemzések IoT Edge eszközön való üzembe helyezésében. Ezt például akkor teheti meg, ha rendelkezik hozzáféréssel egy helyi linuxos számítógéphez, és/vagy korábban létrehozott egy Azure Media Services fiókot.
 ms.topic: how-to
 ms.date: 04/27/2020
-ms.openlocfilehash: 415d22a47e6563e10a1880429537ab182d1ff7a5
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ea7a1026f42cd3d8745559bc195a89b7fbcb69a0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519898"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074456"
 ---
 # <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>Élő videó-elemzés üzembe helyezése IoT Edge eszközön
 
@@ -18,10 +18,10 @@ Ez a cikk azokat a lépéseket sorolja fel, amelyek segítséget nyújtanak az �
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Egy Linux rendszerű gép, amely megfelel az élő videók elemzéséhez szükséges HW/SW megkötéseknek
-* Azure-előfizetés, amelyhez [tulajdonosi jogosultsággal](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) rendelkezik
-* [IoT Hub létrehozása és beállítása](https://docs.microsoft.com/azure/iot-hub/iot-hub-create-through-portal)
-* [IoT Edge eszköz regisztrálása](https://docs.microsoft.com/azure/iot-edge/how-to-register-device)
-* [Az Azure IoT Edge-futtatókörnyezet telepítése Debian-alapú Linux rendszereken](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux)
+* Azure-előfizetés, amelyhez [tulajdonosi jogosultsággal](../../role-based-access-control/built-in-roles.md#owner) rendelkezik
+* [IoT Hub létrehozása és beállítása](../../iot-hub/iot-hub-create-through-portal.md)
+* [IoT Edge eszköz regisztrálása](../../iot-edge/how-to-register-device.md)
+* [Az Azure IoT Edge-futtatókörnyezet telepítése Debian-alapú Linux rendszereken](../../iot-edge/how-to-install-iot-edge-linux.md)
 * [Azure Media Services-fiók létrehozása](../latest/create-account-howto.md)
     * Használja az alábbi régiók egyikét: USA 2. keleti régiója, USA középső régiója, USA északi középső régiója, Kelet-Japán, USA 2. nyugati régiója, Nyugat-Európa, Kelet-Kanada, Egyesült Királyság déli régiója, Franciaország középső régiója, Dél-Franciaország, Észak-Svájc, Nyugat-Svájc és Nyugat-Japán.
     * Az általános célú v2-(GPv2-) Storage-fiókok használata javasolt
@@ -225,7 +225,7 @@ A központi telepítés létrehozása után térjen vissza az IoT hub IoT Edge l
 2.  Az eszköz részletei között ellenőrizze, hogy a blob Storage modul a **telepítésben és az eszköz által jelentett**módon van-e felsorolva.
 
 Néhány percet is igénybe vehet, amíg a modul elindult az eszközön, majd visszaküldhető a IoT Hubra. Frissítse az oldalt, és tekintse meg a frissített állapotot.
-Állapotkód: 200 – az OK érték azt jelenti, hogy [az IoT Edge futtatókörnyezet](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime) kifogástalan, és működik.
+Állapotkód: 200 – az OK érték azt jelenti, hogy [az IoT Edge futtatókörnyezet](../../iot-edge/iot-edge-runtime.md) kifogástalan, és működik.
 
 ![status](./media/deploy-iot-edge-device/status.png)
 
@@ -257,6 +257,6 @@ A következő lépésként lehetővé teszi a minta tesztelését egy közvetlen
 
     ![Az 200-es állapotú üzenet](./media/deploy-iot-edge-device/connection-timeout.png) 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Gyors útmutató: első lépések – élő videó-elemzés IoT Edge](get-started-detect-motion-emit-events-quickstart.md)

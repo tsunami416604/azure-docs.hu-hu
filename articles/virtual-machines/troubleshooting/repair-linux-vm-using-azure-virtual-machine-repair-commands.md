@@ -14,18 +14,19 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 09/10/2019
 ms.author: v-miegge
-ms.openlocfilehash: a7357ef3b0151096746e37bddd235f0db53baed7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c7fbe46d378d45f49a8510f9fdd01a9cae665d0b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85444811"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074379"
 ---
 # <a name="repair-a-linux-vm-by-using-the-azure-virtual-machine-repair-commands"></a>Linux rendszerű virtuális gép javítása az Azure-beli virtuális gép javítási parancsaival
 
 Ha az Azure-beli linuxos virtuális gép (VM) rendszerindítási vagy lemezhiba miatt fordul elő, előfordulhat, hogy maga a lemezen is el kell végeznie a mérséklést. Gyakori példa egy sikertelen alkalmazás frissítése, amely megakadályozza, hogy a virtuális gép sikeresen elinduljon. Ez a cikk részletesen ismerteti, hogyan használható az Azure-beli virtuális gépek javítási parancsai a lemez egy másik linuxos virtuális géphez való összekapcsolásához a hibák kijavításához, majd az eredeti virtuális gép újraépítéséhez.
 
 > [!IMPORTANT]
-> * A cikkben szereplő parancsfájlok csak a [Azure Resource Managert](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)használó virtuális gépekre vonatkoznak.
+> * A cikkben szereplő parancsfájlok csak a [Azure Resource Managert](../../azure-resource-manager/management/overview.md)használó virtuális gépekre vonatkoznak.
 > * A parancsfájl futtatásához kimenő kapcsolat szükséges a virtuális gépről (443-es port).
 > * Egyszerre csak egy parancsfájl futhat.
 > * Egy futó parancsfájlt nem lehet megszakítani.
@@ -38,17 +39,17 @@ Mostantól használhatja az Azure-beli virtuális gépek javítási parancsait e
 
 A virtuálisgép-probléma megoldásához kövesse az alábbi lépéseket:
 
-1. Az Azure Cloud Shell indítása
+1. Az Azure Cloud Shell elindítása
 2. Futtatás az Extension Add/Update
 3. Futtatás az VM Repair Create
 4. Enyhítő lépések végrehajtása
 5. Futtatás az VM Repair Restore
 
-További dokumentációt és útmutatást az [az VM Repair](https://docs.microsoft.com/cli/azure/ext/vm-repair/vm/repair)című témakörben talál.
+További dokumentációt és útmutatást az [az VM Repair](/cli/azure/ext/vm-repair/vm/repair)című témakörben talál.
 
 ## <a name="repair-process-example"></a>Javítási folyamat – példa
 
-1. Az Azure Cloud Shell indítása
+1. Az Azure Cloud Shell elindítása
 
    Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat. Az előtelepített és a fiókkal való használatra konfigurált általános Azure-eszközöket tartalmaz.
 
@@ -56,9 +57,9 @@ További dokumentációt és útmutatást az [az VM Repair](https://docs.microso
 
    Válassza a **Másolás** elemet a kód blokkjának másolásához, majd illessze be a kódot a Cloud Shellba, majd a futtatásához válassza az **ENTER billentyűt** .
 
-   Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez a rövid útmutatóhoz az Azure CLI 2.0.30-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: ``az --version``. Ha telepítenie vagy frissítenie kell az Azure CLI-t, tekintse meg az [Azure CLI telepítését](https://docs.microsoft.com/cli/azure/install-azure-cli)ismertető témakört.
+   Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez a rövid útmutatóhoz az Azure CLI 2.0.30-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: ``az --version``. Ha telepítenie vagy frissítenie kell az Azure CLI-t, tekintse meg az [Azure CLI telepítését](/cli/azure/install-azure-cli)ismertető témakört.
    
-   Ha egy másik fiókkal kell bejelentkeznie Cloud Shellba, mint amellyel jelenleg bejelentkezett az Azure Portalra, használhatja az ``az login`` [az login Reference](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-login).  A fiókjához társított előfizetések közötti váltáshoz használhatja ``az account set --subscription`` [az az Account set Reference](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-set)lehetőséget.
+   Ha egy másik fiókkal kell bejelentkeznie Cloud Shellba, mint amellyel jelenleg bejelentkezett az Azure Portalra, használhatja az ``az login`` [az login Reference](/cli/azure/reference-index?view=azure-cli-latest#az-login).  A fiókjához társított előfizetések közötti váltáshoz használhatja ``az account set --subscription`` [az az Account set Reference](/cli/azure/account?view=azure-cli-latest#az-account-set)lehetőséget.
 
 2. Ha első alkalommal használja a `az vm repair` parancsokat, adja hozzá a virtuális gép javítási CLI-bővítményét.
 
@@ -98,6 +99,6 @@ az vm boot-diagnostics enable --name myVMDeployed --resource-group myResourceGro
 
 ## <a name="next-steps"></a>További lépések
 
-* Ha problémába ütközik a virtuális géphez való csatlakozással kapcsolatban, tekintse meg [Az Azure-beli virtuális gép RDP-kapcsolatainak hibaelhárítását](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-rdp-connection)ismertető témakört.
-* A virtuális GÉPEN futó alkalmazások elérésével kapcsolatos problémák: az [alkalmazások kapcsolódási problémáinak elhárítása az Azure-beli virtuális gépeken](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-app-connection).
-* További információ a Resource Manager használatáról: [Azure Resource Manager Overview (áttekintés](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)).
+* Ha problémába ütközik a virtuális géphez való csatlakozással kapcsolatban, tekintse meg [Az Azure-beli virtuális gép RDP-kapcsolatainak hibaelhárítását](./troubleshoot-rdp-connection.md)ismertető témakört.
+* A virtuális GÉPEN futó alkalmazások elérésével kapcsolatos problémák: az [alkalmazások kapcsolódási problémáinak elhárítása az Azure-beli virtuális gépeken](./troubleshoot-app-connection.md).
+* További információ a Resource Manager használatáról: [Azure Resource Manager Overview (áttekintés](../../azure-resource-manager/management/overview.md)).

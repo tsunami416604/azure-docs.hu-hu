@@ -8,11 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 05/09/2016
 ms.author: markscu
-ms.openlocfilehash: d34481587fd48e2eddfd268c39f6bc4f7c4e0c76
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a3f3dbd74ef74f091ca923f8c09680c6913ac300
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81869423"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074238"
 ---
 # <a name="create-matlab-distributed-computing-server-clusters-on-azure-vms"></a>MATLAB Distributed Computing Server-fürtök létrehozása Azure-beli virtuális gépeken
 Microsoft Azure virtuális gépek használatával hozzon létre egy vagy több MATLAB Distributed Computing Server-fürtöt a nagy számítási igényű párhuzamos MATLAB-munkaterhelések futtatásához. Telepítse a MATLAB Distributed Computing Server szoftvert egy virtuális gépre alaprendszerképként való használatra, és használjon egy Azure-beli rövid útmutató sablont vagy Azure PowerShell szkriptet (amely a [githubon](https://github.com/Azure/azure-quickstart-templates/tree/master/matlab-cluster)érhető el) a fürt üzembe helyezéséhez és kezeléséhez. Az üzembe helyezés után kapcsolódjon a fürthöz a számítási feladatok futtatásához.
@@ -24,7 +25,7 @@ Az Azure Virtual Machines használatával olyan MATLAB elosztott számítástech
 
 ## <a name="prerequisites"></a>Előfeltételek
 * **Ügyfélszámítógép** – szükség van egy Windows-alapú ügyfélszámítógépre, amely az üzembe helyezés után kommunikál az Azure-val és a MATLAB Distributed Computing Server-fürttel.
-* **Azure PowerShell** – megtudhatja, [hogyan telepítheti és konfigurálhatja az Azure PowerShell](/powershell/azure/overview) az ügyfélszámítógépen való telepítéséhez.
+* **Azure PowerShell** – megtudhatja, [hogyan telepítheti és konfigurálhatja az Azure PowerShell](/powershell/azure/) az ügyfélszámítógépen való telepítéséhez.
 * **Azure-előfizetés** – ha nem rendelkezik előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) . Nagyobb fürtök esetén vegye figyelembe az utólagos elszámolású előfizetést vagy más vásárlási lehetőségeket.
 * **vCPU kvóta** – előfordulhat, hogy a vCPU-kvótát a nagyméretű fürt vagy több MATLAB Distributed Computing Server-fürt üzembe helyezéséhez kell emelnie. A kvóta növeléséhez [Nyisson meg egy online ügyfélszolgálati kérést](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) díjmentesen.
 * **MATLAB, Parallel Computing Toolbox és MATLAB Distributed Computing Server-licencek** – a parancsfájlok feltételezik, hogy a [MathWorks üzemeltetett licenckezelő](https://www.mathworks.com/help/install/license-management.html) minden licenchez használatos.  

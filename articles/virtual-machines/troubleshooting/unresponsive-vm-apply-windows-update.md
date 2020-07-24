@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 03/31/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 16c8eed3377c2191b4345ec59ec1eba8be01369d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 76c3f729a8520c7bff7b49a1d2200d7950f8a9f4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80633956"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074294"
 ---
 # <a name="vm-is-unresponsive-with-c01a001d-error-when-applying-windows-update"></a>A virtuális gép nem válaszol "C01A001D" hibaüzenettel Windows Update alkalmazása során
 
@@ -27,7 +27,7 @@ Ez a cikk azokat a problémákat ismerteti, amelyekkel a Windows Update (KB) hib
 
 ## <a name="symptoms"></a>Probléma
 
-Ha [rendszerindítási diagnosztikát](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) használ a virtuális gép képernyőképének megtekintéséhez, a folyamatban lévő Windows Update (kb) megjelenik, de a hibakód: "C01A001D".
+Ha [rendszerindítási diagnosztikát](./boot-diagnostics.md) használ a virtuális gép képernyőképének megtekintéséhez, a folyamatban lévő Windows Update (kb) megjelenik, de a hibakód: "C01A001D".
 
 ![nem válaszol Windows Update](./media/unresponsive-vm-apply-windows-update/unresponsive-windows-update.png)
 
@@ -35,7 +35,7 @@ Ha [rendszerindítási diagnosztikát](https://docs.microsoft.com/azure/virtual-
 
 Nem hozható létre alapvető fájl a fájlrendszerben. Az operációs rendszer nem tud fájlokat írni a lemezre.
 
-## <a name="resolution"></a>Megoldás:
+## <a name="resolution"></a>Feloldás
 
 ### <a name="process-overview"></a>Folyamat áttekintése
 
@@ -49,17 +49,17 @@ Nem hozható létre alapvető fájl a fájlrendszerben. Az operációs rendszer 
 
 ### <a name="create-and-access-a-repair-vm"></a>Javítási virtuális gép létrehozása és elérése
 
-1. A javítási virtuális gép előkészítéséhez kövesse [a virtuális gép javítási parancsainak 1-3. lépéseit](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) .
+1. A javítási virtuális gép előkészítéséhez kövesse [a virtuális gép javítási parancsainak 1-3. lépéseit](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) .
 2. Kapcsolódjon a javítási virtuális géphez Távoli asztali kapcsolat használatával.
 
 ### <a name="free-up-space-on-the-hard-disk"></a>Szabadítson fel lemezterületet a merevlemezen
 
 Ha a lemez még nem 1 TB, át kell méreteznie. Ha a lemez 1 TB méretű, hajtson végre egy Lemezkarbantartó-lemezt és a meghajtó töredezettségmentesítését.
 
-1. Ellenőrizze, hogy a lemez megtelt-e. Ha a lemez 1 TB-nál kisebb, [akkor a PowerShell használatával legfeljebb 1 TB-ra bontsa ki](https://docs.microsoft.com/azure/virtual-machines/windows/expand-os-disk?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json).
+1. Ellenőrizze, hogy a lemez megtelt-e. Ha a lemez 1 TB-nál kisebb, [akkor a PowerShell használatával legfeljebb 1 TB-ra bontsa ki](../windows/expand-os-disk.md?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json).
 2. Ha a lemez 1 TB, hajtson végre egy Lemezkarbantartó-karbantartási műveletet.
-    - [Válassza le az adatlemezt a hibás virtuális](https://docs.microsoft.com/azure/virtual-machines/windows/detach-disk)gépről.
-    - [Csatlakoztassa az adatlemezt egy működő virtuális géphez](https://docs.microsoft.com/azure/virtual-machines/windows/attach-disk-ps#attach-an-existing-data-disk-to-a-vm).
+    - [Válassza le az adatlemezt a hibás virtuális](../windows/detach-disk.md)gépről.
+    - [Csatlakoztassa az adatlemezt egy működő virtuális géphez](../windows/attach-disk-ps.md#attach-an-existing-data-disk-to-a-vm).
     - Lemezterület felszabadításához használja a [lemezkarbantartó eszközt](https://support.microsoft.com/help/4026616/windows-10-disk-cleanup) .
 3. Az átméretezés és a karbantartás után a meghajtó töredezettségmentesítése:
 
@@ -115,4 +115,4 @@ Ha a lemez még nem 1 TB, át kell méreteznie. Ha a lemez 1 TB méretű, hajtso
 
 ### <a name="rebuild-the-vm"></a>A virtuális gép újraépítése
 
-A virtuális gép újraösszeállításához használja [a virtuális gép javítási parancsainak 5. lépését](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) .
+A virtuális gép újraösszeállításához használja [a virtuális gép javítási parancsainak 5. lépését](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) .

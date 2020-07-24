@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/24/2018
 ms.author: genli
-ms.openlocfilehash: eec52fb2342ee85932a6e24aa4cb292496beccad
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 60be7c234a0166331c35eb6528eae11bfbbf518f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087299"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074324"
 ---
 # <a name="remote-desktop-disconnects-frequently-in-azure-vm"></a>A távoli asztal kapcsolata gyakran megszakad az Azure-beli virtuális gépen
 
@@ -95,7 +95,7 @@ A probléma elhárításához a virtuális gép operációsrendszer-lemezét egy
 
 ### <a name="repair-the-vm-offline"></a>A virtuális gép kijavítása kapcsolat nélküli üzemmódban
 
-1. [Csatlakoztassa az operációsrendszer-lemezt egy helyreállítási virtuális géphez](../windows/troubleshoot-recovery-disks-portal.md).
+1. [Csatlakoztassa az operációsrendszer-lemezt egy helyreállítási virtuális géphez](./troubleshoot-recovery-disks-portal-windows.md).
 2. Miután az operációsrendszer-lemezt csatlakoztatta a helyreállítási virtuális géphez, ellenőrizze, hogy a lemez **online** állapotban van-e megjelölve a Lemezkezelés konzolon. Jegyezze fel a csatlakoztatott operációsrendszer-lemezhez rendelt meghajtóbetűjelet.
 3. A csatlakoztatott operációsrendszer-lemezen navigáljon a **\Windows\System32\Config** mappára. Másolja a mappában található összes fájlt biztonsági másolatként, ha visszaállításra van szükség.
 4. Indítsa el a Beállításszerkesztőt (regedit.exe).
@@ -184,8 +184,3 @@ A probléma elhárításához a virtuális gép operációsrendszer-lemezét egy
 
 ## <a name="need-help"></a>Segítségre van szüksége? 
 Vegye fel a kapcsolatot az ügyfélszolgálattal. Ha további segítségre van szüksége, [vegye fel a kapcsolatot az ügyfélszolgálattal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma gyors megoldása érdekében.
-
-
-
-
-

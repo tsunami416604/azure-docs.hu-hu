@@ -13,13 +13,14 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 3ad68438f5fc015b6a9150d67485b90a095f1a4a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 545399e1d7941351ce861ac98d995d5e57006ea1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79250087"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074376"
 ---
-# <a name="use-serial-console-for-sysrq-and-nmi-calls"></a>Serial Console használata SysRq- és NMI-hívásokhoz
+# <a name="use-the-azure-serial-console-for-sysrq-and-nmi-calls"></a>Az Azure soros konzol használata SysRq-és NMI-hívásokhoz
 
 ## <a name="system-request-sysrq"></a>Rendszerkérelem (SysRq)
 A SysRq a Linux operációs rendszer kernele által értelmezett kulcsok sorozata, amely előre definiált műveletekből álló készletet indíthat el. Ezeket a parancsokat gyakran használják, ha a virtuális gép hibaelhárítását vagy helyreállítását nem lehet a hagyományos felügyeleten keresztül végrehajtani (például ha a virtuális gép nem válaszol). Az Azure soros konzol SysRq funkciójának használatával a rendszer a SysRq kulcs és a fizikai billentyűzeten megadott karakterek lenyomását fogja utánozni.
@@ -28,11 +29,11 @@ A SysRq-sorozatot követően a kernel konfigurációja vezérli, hogy a rendszer
 
 Az Azure soros konzol használatával SysRq küldhet egy Azure-beli virtuális gépre az alább látható parancssáv billentyűzet ikonjával.
 
-![](../media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg)
+![Képernyőkép az Azure soros konzolról. A billentyűzet ikon ki van emelve, és a menü látható. Ez a menü tartalmazza a Send SysRq parancsot.](../media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg)
 
 Ha a "Send SysRq parancs" lehetőséget választja, megnyílik egy párbeszédpanel, amely általános SysRq lehetőségeket biztosít, vagy elfogadja a párbeszédpanelen megadott SysRq parancsok sorrendjét.  Ez lehetővé teszi, hogy a SysRq sorozata magas szintű műveletet végezzen, például biztonságos újraindítás a következő használatával: `REISUB` .
 
-![](../media/virtual-machines-serial-console/virtual-machine-serial-console-sysreq_UI.png)
+![Képernyőkép a SysRq küldése parancsról a vendég párbeszédpanelre. A parancsok beírásának lehetősége ki van választva, és a parancs REISUB tartalmaz.](../media/virtual-machines-serial-console/virtual-machine-serial-console-sysreq_UI.png)
 
 A SysRq parancs nem használható olyan virtuális gépeken, amelyek leállnak, vagy amelyek kernele nem válaszoló állapotban van. (például egy kernel pánik).
 
@@ -101,7 +102,7 @@ A nem maszkolt megszakítás (NMI) úgy van kialakítva, hogy egy olyan jelet ho
 
 A soros konzol segítségével NMI küldhet egy Azure-beli virtuális gépre az alább látható parancssáv billentyűzet ikonjával. A NMI elszállítása után a virtuális gép konfigurációja vezérli, hogy a rendszer hogyan reagáljon.  A Linux operációs rendszerek összeomolhatnak, és a memóriakép létrehozásával az operációs rendszer NMI kap.
 
-![](../media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg) <br>
+![Képernyőfelvétel a soros konzolról. A billentyűzet ikon ki van emelve, és a menü látható. Ez a menü tartalmaz egy nem maszkolt megszakítási elem küldését.](../media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg) <br>
 
 ### <a name="enable-nmi"></a>NMI engedélyezése
 Olyan Linux rendszerekhez, amelyek támogatják a sysctl-t a rendszermag paramétereinek konfigurálásához, a következő lépésekkel engedélyezheti a pánikot a NMI fogadásakor:

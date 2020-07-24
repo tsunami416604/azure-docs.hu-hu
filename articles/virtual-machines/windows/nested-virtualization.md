@@ -7,12 +7,12 @@ ms.date: 10/09/2017
 ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.workload: infrastructure
-ms.openlocfilehash: f448174842ffd3b7ba14104c30319933c680127d
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 03df7db13ebd3ebec407bb046cc735c835e01068
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232321"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074255"
 ---
 # <a name="how-to-enable-nested-virtualization-in-an-azure-vm"></a>Beágyazott virtualizálás engedélyezése Azure-beli virtuális gépen
 
@@ -22,7 +22,7 @@ Ez a cikk a Hyper-V Azure-beli virtuális gépen való engedélyezésének, vala
 
 ## <a name="create-a-nesting-capable-azure-vm"></a>Beágyazási képességgel rendelkező Azure-beli virtuális gép létrehozása
 
-Hozzon létre egy új Windows Server 2016 Azure-beli virtuális gépet. A beágyazást támogató virtuálisgép-méretek teljes listájáért tekintse meg az [Azure számítási egységét ismertető cikket](acu.md).
+Hozzon létre egy új Windows Server 2016 Azure-beli virtuális gépet. A beágyazást támogató virtuálisgép-méretek teljes listájáért tekintse meg az [Azure számítási egységét ismertető cikket](../acu.md).
 
 Ne feledje, hogy a virtuális gép méretét elég nagy méretűre kell kiválasztania ahhoz, hogy támogassa a vendég virtuális gépek igényeit. Ebben a példában egy D3_v3 méretű Azure-beli virtuális gépet használunk. 
 
@@ -30,7 +30,7 @@ Ne feledje, hogy a virtuális gép méretét elég nagy méretűre kell kiválas
 
 >[!NOTE]
 >
->Az új virtuális gépek létrehozásával kapcsolatos részletes utasításokért lásd: [Windows rendszerű virtuális gépek létrehozása és kezelése a Azure PowerShell modullal](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-manage-vm)
+>Az új virtuális gépek létrehozásával kapcsolatos részletes utasításokért lásd: [Windows rendszerű virtuális gépek létrehozása és kezelése a Azure PowerShell modullal](./tutorial-manage-vm.md)
     
 ## <a name="connect-to-your-azure-vm"></a>Kapcsolódás Azure-beli virtuális géphez
 
@@ -181,4 +181,4 @@ Ebben a példában egy 192.168.0.0/24 tartományban található címeket fog has
 A vendég virtuális gépen nyissa meg a böngészőt, és navigáljon egy weblapra.
     ![GuestVM](./media/virtual-machines-nested-virtualization/guest-virtual-machine.png)
 
-A vendég virtuális gépek és az Azure-beli virtuális gépek közötti transzparens kapcsolat engedélyezésével kapcsolatos utasításokért tekintse meg [ezt a dokumentumot](https://docs.microsoft.com/virtualization/hyper-v-on-windows/user-guide/nested-virtualization).
+A vendég virtuális gépek és az Azure-beli virtuális gépek közötti transzparens kapcsolat engedélyezésével kapcsolatos utasításokért tekintse meg [ezt a dokumentumot](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization).
