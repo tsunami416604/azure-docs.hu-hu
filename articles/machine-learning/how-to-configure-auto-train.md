@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: how-to
 ms.date: 05/20/2020
 ms.custom: seodec18, tracking-python
-ms.openlocfilehash: 528696daf4bddd1f448266243b511e600351606a
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 4815e51d22501d6110f3bc26a878513d6d700ce7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86202595"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87031286"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Automatizált gépi tanulási kísérletek konfigurálása Pythonban
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -46,7 +46,7 @@ Az automatizált gépi tanulás a következő algoritmusokat támogatja az autom
 > [!NOTE]
 > Ha úgy tervezi, hogy az automatikus ML által létrehozott modelleket egy [ONNX-modellbe](concept-onnx.md)exportálja, csak a * * értékkel jelzett algoritmusok alakíthatók át a ONNX formátumba. További információ a [modellek ONNX való átalakításáról](concept-automated-ml.md#use-with-onnx). <br> <br> Azt is vegye figyelembe, hogy a ONNX jelenleg csak a besorolási és a regressziós feladatokat támogatja. 
 
-Besorolás | Regresszió | Idősoros előrejelzés
+Osztályozás | Regresszió | Idősoros előrejelzés
 |-- |-- |--
 [Logisztikai regresszió](https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression)* | [Rugalmas háló](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)* | [Rugalmas háló](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)
 [Világos GBM](https://lightgbm.readthedocs.io/en/latest/index.html)* |[Világos GBM](https://lightgbm.readthedocs.io/en/latest/index.html)*|[Világos GBM](https://lightgbm.readthedocs.io/en/latest/index.html)
@@ -183,7 +183,7 @@ Ha el szeretné kerülni a kísérletek időtúllépését, az automatikus ML é
 ### <a name="primary-metric"></a>Elsődleges metrika
 Az elsődleges metrika határozza meg, hogy milyen mérőszámot kell használni az optimalizáláshoz a modell betanításakor. A kiválasztható mérőszámokat a kiválasztott feladattípus határozza meg, az alábbi táblázat pedig az egyes feladattípusok érvényes elsődleges metrikáit tartalmazza.
 
-|Besorolás | Regresszió | Idősoros előrejelzés
+|Osztályozás | Regresszió | Idősoros előrejelzés
 |-- |-- |--
 |accuracy| spearman_correlation | spearman_correlation
 |AUC_weighted | normalized_root_mean_squared_error | normalized_root_mean_squared_error
@@ -199,7 +199,7 @@ Minden automatizált gépi tanulási kísérlet során az adatok [automatikusan 
 
 A kísérletek az objektumban való konfigurálásakor `AutoMLConfig` engedélyezheti vagy letilthatja a beállítást `featurization` . A következő táblázat a featurization elfogadott beállításait mutatja be a [AutoMLConfig osztályban](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig).
 
-|Featurization-konfiguráció | Leírás |
+|Featurization-konfiguráció | Description |
 | ------------- | ------------- |
 |`"featurization": 'auto'`| Azt jelzi, hogy az előfeldolgozás részeként a rendszer automatikusan végrehajtja az [guardrails és a featurization lépéseket](how-to-configure-auto-features.md#featurization) . **Alapértelmezett beállítás**|
 |`"featurization": 'off'`| Azt jelzi, hogy a featurization lépést nem szabad automatikusan elvégezni.|
@@ -212,26 +212,26 @@ A kísérletek az objektumban való konfigurálásakor `AutoMLConfig` engedélye
 A Time Series `forecasting` feladat további paramétereket igényel a konfigurációs objektumban:
 
 1. `time_column_name`: Kötelező paraméter, amely meghatározza a betanítási adataiban szereplő, érvényes idősorozatot tartalmazó oszlop nevét.
-1. `max_horizon`: Meghatározza, hogy mennyi idő elteltével kívánja előre jelezni a betanítási adatmennyiséget. Ha például napi időkeretekkel rendelkező betanítási információkkal rendelkezik, meghatározhatja, hogy a modell milyen mértékben legyen betanítva.
-1. `grain_column_names`: Meghatározza a betanítási adataiban az egyes idősorozat-adataikat tartalmazó oszlopok nevét. Ha például egy adott márka értékesítési adatait az áruházban szeretné megtekinteni, a tároló és a márka oszlopokat a gabona oszlopaiban definiálhatja. Minden egyes gabona/csoportosítás esetében külön idősorozatok és előrejelzések jönnek létre. 
+1. `forecast_horizon`: Meghatározza, hogy hány időszakot továbbítson az előrejelzéshez. Az egész horizont a idősor gyakoriságának egységében van. Ha például napi gyakorisággal rendelkezik betanítási információkkal, meghatározhatja, hogy a modell milyen mértékben legyen betanítva.
+1. `time_series_id_column_names`: Azokat az oszlopokat határozza meg, amelyek egyedileg azonosítják az olyan adatsorozatokat, amelyeknek több sora van ugyanazzal az időbélyegzővel. Ha például egy adott márka értékesítési adatait az áruházban szeretné megtekinteni, a tárolási és a márkás oszlopokat az idősorozat-azonosítóknak megfelelően definiálhatja. Külön előrejelzések jönnek létre az egyes csoportosításokhoz. Ha az idősorozat-azonosítók nincsenek meghatározva, az adathalmazt a rendszer egy idősorozatként feltételezi.
 
 Az alább használt beállításokra vonatkozó példákért tekintse meg a [minta notebookot](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-orange-juice-sales/auto-ml-forecasting-orange-juice-sales.ipynb).
 
 ```python
-# Setting Store and Brand as grains for training.
-grain_column_names = ['Store', 'Brand']
-nseries = data.groupby(grain_column_names).ngroups
+# Setting Store and Brand as time series identifiers for training.
+time_series_id_column_names = ['Store', 'Brand']
+nseries = data.groupby(time_series_id_column_names).ngroups
 
-# View the number of time series data with defined grains
+# View the number of time series data with defined time series identifiers
 print('Data contains {0} individual time-series.'.format(nseries))
 ```
 
 ```python
 time_series_settings = {
     'time_column_name': time_column_name,
-    'grain_column_names': grain_column_names,
+    'time_series_id_column_names': time_series_id_column_names,
     'drop_column_names': ['logQuantity'],
-    'max_horizon': n_test_periods
+    'forecast_horizon': n_test_periods
 }
 
 automl_config = AutoMLConfig(task = 'forecasting',

@@ -3,11 +3,12 @@ title: A Microsoft Azure Backup Server újdonságai
 description: A Microsoft Azure Backup-kiszolgáló továbbfejlesztett biztonsági mentési lehetőségeket biztosít a virtuális gépek, fájlok és mappák, munkaterhelések és egyebek védelméhez.
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: 5f8d0aa83f6d54575b76847efa892864b32c456d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d9d04d9f763549ce15e57f768432cd933cf1414c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84629092"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87032442"
 ---
 # <a name="whats-new-in-microsoft-azure-backup-server-mabs"></a>A Microsoft Azure Backup-kiszolgáló újdonságai (MABS)
 
@@ -22,7 +23,7 @@ A Microsoft Azure Backup Server (MABS) 3. verziója UR1 a legújabb frissítés,
 
 A MABS v2 [modern biztonsági másolati tárhely](backup-mabs-add-storage.md) (MBS), ami javítja a tárterület kihasználtságát és a teljesítményt. Az MBS a ReFS használja alapul szolgáló fájlrendszerként, és úgy van kialakítva, hogy a hibrid tárolókat, például a többszintű tárolást használja.
 
-Az MB-os méretezés és teljesítmény elérése érdekében javasoljuk, hogy a Flash Storage (SSD) kis százalékát (a teljes tárterület 4%-át) használja a MABS v3 UR1, a DPM HDD-tárolóval együtt. A MABS v3 UR1 és a többplatformos tárolás 50-70%-kal gyorsabb biztonsági mentést biztosít. A többplatformos tárolás konfigurálásának lépéseiért tekintse meg a DPM ( [MB) beállítását a Tiered Storage](https://docs.microsoft.com/system-center/dpm/add-storage?view=sc-dpm-2019#set-up-mbs-with-tiered-storage) .
+Az MB-os méretezés és teljesítmény elérése érdekében javasoljuk, hogy a Flash Storage (SSD) kis százalékát (a teljes tárterület 4%-át) használja a MABS v3 UR1, a DPM HDD-tárolóval együtt. A MABS v3 UR1 és a többplatformos tárolás 50-70%-kal gyorsabb biztonsági mentést biztosít. A többplatformos tárolás konfigurálásának lépéseiért tekintse meg a DPM ( [MB) beállítását a Tiered Storage](/system-center/dpm/add-storage?view=sc-dpm-2019#set-up-mbs-with-tiered-storage) .
 
 ### <a name="support-for-refs-volumes-and-refs-volumes-with-deduplication-enabled"></a>ReFS-kötetek és ReFS-kötetek támogatása a deduplikálás engedélyezésével
 
@@ -38,7 +39,7 @@ A MABS v3 UR1 segítségével biztonsági mentést készíthet a ReFS köteten t
 
 ### <a name="azure-vmware-solution-protection-support"></a>Azure VMware-megoldás védelme – támogatás
 
-Az MABS v3 UR1 mostantól az [Azure VMware-megoldásban](https://docs.microsoft.com/azure/azure-vmware/)üzembe helyezett virtuális gépeket is védetté teheti.
+Az MABS v3 UR1 mostantól az [Azure VMware-megoldásban](../azure-vmware/index.yml)üzembe helyezett virtuális gépeket is védetté teheti.
 
 ### <a name="vmware-parallel-backups"></a>VMware párhuzamos biztonsági mentések
 
@@ -55,7 +56,7 @@ A MABS v3 UR1 további hitelesítési réteget adnak hozzá a kritikus fontossá
 
 ### <a name="offline-backup-improvements"></a>Offline biztonsági mentés fejlesztése
 
-A MABS v3 UR1 az Azure import/export szolgáltatással javítja az offline biztonsági mentés élményét. További információkért tekintse meg a frissített lépéseket [itt](https://docs.microsoft.com/azure/backup/backup-azure-backup-server-import-export).
+A MABS v3 UR1 az Azure import/export szolgáltatással javítja az offline biztonsági mentés élményét. További információkért tekintse meg a frissített lépéseket [itt](./backup-azure-backup-server-import-export.md).
 
 >[!NOTE]
 >A frissítés az offline biztonsági mentés előzetes verzióját is megjeleníti Azure Data Box használatával a MABS-ben. További információért forduljon a következőhöz: [SystemCenterFeedback@microsoft.com](mailto:SystemCenterFeedback@microsoft.com) .
@@ -69,7 +70,7 @@ A MABS v3 UR1 tartalmaz egy új paramétert **[-CheckReplicaFragmentation]**. Az
 A MABS v3 UR1 esetében a 32 bites védelmi ügynök támogatása már nem támogatott. A MABS v3-kiszolgáló UR1-re való frissítése után nem fogja tudni biztosítani a 32 bites munkaterhelések elleni védekezést. A meglévő 32 bites védelmi ügynökök letiltott állapotban lesznek, és az ütemezett biztonsági mentések sikertelenek lesznek, ha az **ügynök le van tiltva** . Ha meg szeretné őrizni az ügynökök biztonsági mentési adatait, leállíthatja a védelmet az adat megőrzése beállítással. Ellenkező esetben a védelmi ügynököt el lehet távolítani.
 
 >[!NOTE]
->Tekintse át a [frissített védelmi mátrixot](https://docs.microsoft.com/azure/backup/backup-mabs-protection-matrix) , hogy megismerje a MABS ur 1.-vel való védelemhez támogatott munkaterheléseket.
+>Tekintse át a [frissített védelmi mátrixot](./backup-mabs-protection-matrix.md) , hogy megismerje a MABS ur 1.-vel való védelemhez támogatott munkaterheléseket.
 
 ## <a name="whats-new-in-mabs-v3-rtm"></a>Az MABS v3 RTM újdonságai
 
@@ -83,7 +84,7 @@ A MABS v2 modern biztonsági másolati tárhely (MBS)-ben bejelentettük a szám
 
 ### <a name="prevent-unexpected-data-loss"></a>Váratlan adatvesztés megakadályozása
 
-A vállalatokban a MABS-t a rendszergazdák csoportja felügyeli. Noha a biztonsági mentéshez használt tárterületre vonatkozó irányelvek is megtalálhatók, a biztonsági mentési tár MABS miatt helytelen kötet a kritikus adatvesztéshez vezethet. A MABS v3 használatával megakadályozhatja, hogy ezeket a köteteket konfigurálja úgy, hogy [ezeket a PowerShell-parancsmagokat](https://docs.microsoft.com/azure/backup/backup-mabs-add-storage)használó tárolók számára ne legyenek elérhetők.
+A vállalatokban a MABS-t a rendszergazdák csoportja felügyeli. Noha a biztonsági mentéshez használt tárterületre vonatkozó irányelvek is megtalálhatók, a biztonsági mentési tár MABS miatt helytelen kötet a kritikus adatvesztéshez vezethet. A MABS v3 használatával megakadályozhatja, hogy ezeket a köteteket konfigurálja úgy, hogy [ezeket a PowerShell-parancsmagokat](./backup-mabs-add-storage.md)használó tárolók számára ne legyenek elérhetők.
 
 ### <a name="custom-size-allocation"></a>Egyéni méret kiosztása
 
@@ -114,7 +115,7 @@ A MABS v3 az SQL 2017-mel telepíthető MABS-adatbázisként. Frissítheti az SQ
 A MABS v3 telepíthető a Windows Server 2019-es verzióra. A MABS v3 és a WS2019 használatával az operációs rendszer a MABS v3 verzióra való telepítése vagy frissítése előtt, vagy a WS2016-re való frissítés után frissítheti az operációs RENDSZERét a WS2019-re.
 
 A MABS v3 egy teljes kiadás, amely közvetlenül telepíthető a Windows Server 2016, a Windows Server 2019 vagy a MABS v2 verzióról is. A Backup Server v3 verzióra való frissítés előtt olvassa el a telepítési előfeltételek című részt.
-További információ [a MABS telepítési](https://docs.microsoft.com/azure/backup/backup-azure-microsoft-azure-backup#software-package)/frissítési lépéseiről.
+További információ [a MABS telepítési](./backup-azure-microsoft-azure-backup.md#software-package)/frissítési lépéseiről.
 
 > [!NOTE]
 >

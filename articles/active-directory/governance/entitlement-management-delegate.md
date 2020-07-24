@@ -3,7 +3,7 @@ title: Delegálás és szerepkörök a jogosultságok kezelésében – Azure AD
 description: Megtudhatja, hogyan delegálhatja a rendszergazdák és a projektmenedzserek hozzáférési irányítását, hogy azok képesek legyenek a hozzáférés kezelésére.
 services: active-directory
 documentationCenter: ''
-author: msaburnley
+author: barclayn
 manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
@@ -12,15 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 10/07/2019
-ms.author: ajburnle
+ms.date: 07/22/2020
+ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 86d924860e97b15a0a4af46c5bc35b0e0050292b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aa18b55884a22f6c64f1c08bd5be8a71b265029a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84692138"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87034383"
 ---
 # <a name="delegation-and-roles-in-azure-ad-entitlement-management"></a>Delegálás és szerepkörök az Azure AD-jogosultságok kezelésében
 
@@ -90,7 +91,7 @@ Emellett a kijelölt jóváhagyó és egy hozzáférési csomag kérelmezője is
 
 A következő táblázat felsorolja azokat a feladatokat, amelyeket a jogosultsági felügyeleti szerepkörök elvégezhetnek.
 
-| Tevékenység | Rendszergazda | Katalógus létrehozója | Katalógus tulajdonosa | A Package Manager elérése |
+| Feladat | Rendszergazda | Katalógus létrehozója | Katalógus tulajdonosa | A Package Manager elérése |
 | --- | :---: | :---: | :---: | :---: |
 | [Delegálás katalógus-létrehozóra](entitlement-management-delegate-catalog.md) | :heavy_check_mark: |  |  |  |
 | [Csatlakoztatott szervezet hozzáadása](entitlement-management-organization.md) | :heavy_check_mark: |  |  |  |

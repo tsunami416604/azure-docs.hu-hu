@@ -9,23 +9,24 @@ ms.topic: how-to
 ms.date: 02/07/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 7ff7db383a74ce01f7f1a7bf49a33e41f91decf8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 219638f70797fc5ea413e4db72e528262df2fa87
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82853499"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87037049"
 ---
 # <a name="create-an-azure-storage-account"></a>Azure Storage-fiók létrehozása
 
 Egy Azure Storage-fiók tartalmazza az összes Azure Storage-adatobjektumot: blobokat, fájlokat, várólistákat, táblákat és lemezeket. A Storage-fiók egy egyedi névteret biztosít az Azure Storage-adatok számára, amely a világon bárhonnan elérhető HTTP-vagy HTTPS-kapcsolaton keresztül. Az Azure Storage-fiókban tárolt adatai tartósak, a biztonságos és a nagy mértékben méretezhetők.
 
-Ebben a útmutatóban megtudhatja, hogyan hozhat létre egy Storage-fiókot a [Azure Portal](https://portal.azure.com/), a [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview), az [Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest)vagy egy [Azure Resource Manager sablon](../../azure-resource-manager/management/overview.md)használatával.  
+Ebben a útmutatóban megtudhatja, hogyan hozhat létre egy Storage-fiókot a [Azure Portal](https://portal.azure.com/), a [Azure PowerShell](https://docs.microsoft.com/powershell/azure/), az [Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest)vagy egy [Azure Resource Manager sablon](../../azure-resource-manager/management/overview.md)használatával.  
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/).
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
@@ -96,7 +97,7 @@ az login
 
 # <a name="template"></a>[Sablon](#tab/template)
 
-N.A.
+n.a.
 
 ---
 

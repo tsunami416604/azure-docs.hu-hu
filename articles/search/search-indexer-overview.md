@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 07/12/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 253cd8174ec523f6c8a6aae2b94f7ed367701fec
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: d73782d9de7da2c5daacbff5397d9a365ff9ae03
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86146783"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87038409"
 ---
 # <a name="indexers-in-azure-cognitive-search"></a>Indexelők az Azure Cognitive Searchben
 
@@ -52,7 +52,7 @@ Az indexelő adattárakat térképez fel az Azure-ban.
 * [Azure Cosmos DB](search-howto-index-cosmosdb.md)
 * [Azure SQL Database és az SQL felügyelt példánya](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
 * [SQL Server az Azure Virtual Machines szolgáltatásban](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)
-* [Felügyelt SQL-példány](search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md)
+* [SQL Managed Instance](search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md)
 
 ## <a name="basic-configuration-steps"></a>Alapszintű konfigurációs lépések
 Az indexelők az adott adatforrások esetében egyedi funkciókat biztosítanak. Ezért az indexelő- vagy az adatforrás-konfiguráció egyes szempontjai az indexelő típusától függően változnak. Az alapvető felépítés és követelmények azonban minden indexelő esetében azonosak. Az alábbiakban az összes indexelőre érvényes lépések láthatóak.

@@ -8,13 +8,14 @@ ms.subservice: core
 ms.topic: how-to
 ms.author: laobri
 author: lobrien
-ms.date: 04/01/2020
+ms.date: 07/20/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: 54b8161634d15853719d98a52d0d17e2e55a6bb3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4c1a64b96e1548e0eeaadbccc5ff2ec3020f3ba2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84559354"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87030844"
 ---
 # <a name="moving-data-into-and-between-ml-pipeline-steps-python"></a>Adatok áthelyezése gép tanulási folyamatok lépéseibe és azok között (Python)
 
@@ -35,7 +36,7 @@ Ez a cikk bemutatja, hogyan végezheti el a következőket:
 
 A következők szükségesek:
 
-- Azure-előfizetés. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree).
+- Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot a feladatok megkezdése előtt. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree).
 
 - A [Pythonhoz készült Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py), vagy a [Azure Machine learning studióhoz](https://ml.azure.com/)való hozzáférés.
 

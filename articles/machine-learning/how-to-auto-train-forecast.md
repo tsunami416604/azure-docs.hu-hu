@@ -3,18 +3,18 @@ title: Idősorozat-előrejelzési modell automatikus betanítása
 titleSuffix: Azure Machine Learning
 description: Ismerje meg, hogyan használható a Azure Machine Learning egy idősorozat-előrejelzési regressziós modell automatikus gépi tanulással történő betanításához.
 services: machine-learning
-author: trevorbye
-ms.author: trbye
+author: nibaccam
+ms.author: nibaccam
 ms.service: machine-learning
 ms.subservice: core
-ms.reviewer: trbye
 ms.topic: how-to
 ms.date: 03/09/2020
-ms.openlocfilehash: 72b0a3074bfdfb6b6038f6c63eb01a7b33d45ea6
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: ec2ef52978a24619103d9a0a2b7fb8ed1099c40b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85959126"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87031592"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Idősorozat-előrejelzési modell automatikus betanítása
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -135,7 +135,7 @@ Az előrejelzési feladatokhoz az automatizált gépi tanulás az idősorozat-ad
 
 Az [`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py) objektum meghatározza az automatizált gépi tanulási feladatokhoz szükséges beállításokat és adatmennyiséget. A regressziós problémákhoz hasonlóan szabványos betanítási paramétereket is definiálhat, például a feladattípust, az ismétlések számát, a betanítási adatok számát és az eltérő érvényességi értéket. Az előrejelzési feladatokhoz további paramétereket kell megadni, amelyek hatással vannak a kísérletre. Az alábbi táblázat az egyes paramétereket és azok használatát ismerteti.
 
-| Paraméter &nbsp; neve | Description | Kötelező |
+| Paraméter &nbsp; neve | Leírás | Kötelező |
 |-------|-------|-------|
 |`time_column_name`|A dátum-és idősorozatok létrehozásához használt bemeneti adatok datetime oszlopának megadására szolgál.|✓|
 |`grain_column_names`|Az egyes adatsorozat-csoportokat meghatározó nevek a bemeneti adatokban. Ha a gabona nincs meghatározva, a rendszer az adathalmazt egy idősorozatra feltételezi.||

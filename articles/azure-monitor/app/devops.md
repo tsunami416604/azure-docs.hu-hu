@@ -3,11 +3,12 @@ title: Webalkalmazások teljesítményének monitorozása – Azure Application 
 description: Hogyan illeszkedik a Application Insights a devOps ciklusba
 ms.topic: conceptual
 ms.date: 12/21/2018
-ms.openlocfilehash: 24095aade80022d1e1ebb38357971512bfc873c0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fa62e8840c14e87d24db029d6bb7a215124a0511
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77669692"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87033682"
 ---
 # <a name="deep-diagnostics-for-web-apps-and-services-with-application-insights"></a>Webalkalmazások és szolgáltatások részletes diagnosztikája az Application Insights szolgáltatással
 ## <a name="why-do-i-need-application-insights"></a>Miért van szükség a Application Insightsre?
@@ -109,7 +110,7 @@ Az alkalmazás-hozzárendelés automatikusan felderíti az alkalmazás-topológi
 ![Alkalmazástérkép](./media/devops/0050.png)
 
 ## <a name="application-insights-analytics"></a>Application Insights Analitika
-Az [Analytics](../../azure-monitor/app/analytics.md)segítségével tetszőleges lekérdezéseket írhat egy hatékony SQL-szerű nyelven.  A teljes alkalmazás-verembe való Diagnosztizálás számos különböző perspektívát biztosít, és a szolgáltatás teljesítményének az üzleti metrikákkal és az ügyfelekkel való összekapcsolásával kapcsolatos kérdéseket is megteheti. 
+Az [Analytics](../log-query/log-query-overview.md)segítségével tetszőleges lekérdezéseket írhat egy hatékony SQL-szerű nyelven.  A teljes alkalmazás-verembe való Diagnosztizálás számos különböző perspektívát biztosít, és a szolgáltatás teljesítményének az üzleti metrikákkal és az ügyfelekkel való összekapcsolásával kapcsolatos kérdéseket is megteheti. 
 
 A portálon tárolt összes telemetria-példány és metrikus nyers adat lekérdezhető. A nyelv magában foglalja a szűrést, a csatlakozást, az összesítést és az egyéb műveleteket. Kiszámíthatja a mezőket és statisztikai elemzéseket végezhet. Táblázatos és grafikus megjelenítés is használható.
 
@@ -159,4 +160,3 @@ A Application Insights első lépései egyszerűek. A fő lehetőségek a követ
 * [IIS-kiszolgálók](../../azure-monitor/app/monitor-performance-live-website-now.md)és [Azure app Service](../../azure-monitor/app/app-insights-overview.md)esetén is.
 * A projekt fejlesztése a fejlesztés során. Ezt megteheti a [ASP.net](../../azure-monitor/app/asp-net.md) vagy [Java](../../azure-monitor/app/java-get-started.md) -alkalmazásokhoz, valamint a [Node.js](../../azure-monitor/app/nodejs.md) és [más típusú](../../azure-monitor/app/platforms.md)gépekhez is. 
 * [Bármely weblap](../../azure-monitor/app/javascript.md) egy rövid kódrészlet hozzáadásával.
-

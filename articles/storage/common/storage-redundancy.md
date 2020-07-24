@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 06/22/2020
+ms.date: 07/21/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 903560f5c0400a906918f0c17eafb2e1e09bdd30
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e4ec4925da40cf6051b88d77fbbc35d93ececf87
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518504"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87036726"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Storage-redundancia
 
@@ -59,11 +59,11 @@ A Microsoft a ZRS használatát javasolja az elsődleges régióban olyan forgat
 
 A következő táblázat azt mutatja be, hogy milyen típusú Storage-fiókok támogatják a ZRS, amelyekben a régiók:
 
-|    Tárfiók típusa    |    Támogatott régiók    |    Támogatott szolgáltatások    |
-|----------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|
-|    Általános célú v2<sup>1</sup>    | Délkelet-Ázsia<br /> Kelet-Ausztrália<br /> Észak-Európa<br />  Nyugat-Európa<br /> Közép-Franciaország<br /> Kelet-Japán<br /> Dél-Afrika északi régiója<br /> Az Egyesült Királyság déli régiója<br /> USA középső régiója<br /> USA keleti régiója<br /> USA 2. keleti régiója<br /> USA 2. nyugati régiója    |    Blokkblobok<br /> <sup>2</sup> . oldal Blobok<br /> Fájlmegosztás (standard)<br /> Táblák<br /> Üzenetsorok<br /> |
-|    <sup>1</sup> . BlockBlobStorage    | Délkelet-Ázsia<br /> Kelet-Ausztrália<br /> Nyugat-Európa<br /> USA keleti régiója    |    Csak Blobok letiltása    |
-|    FileStorage    | Délkelet-Ázsia<br /> Kelet-Ausztrália<br /> Nyugat-Európa<br /> USA keleti régiója    |    Csak Azure Files    |
+| Tárfiók típusa | Támogatott régiók | Támogatott szolgáltatások |
+|--|--|--|
+| Általános célú v2<sup>1</sup> | Délkelet-Ázsia<br /> Kelet-Ausztrália<br /> Észak-Európa<br />  Nyugat-Európa<br /> Közép-Franciaország<br /> Kelet-Japán<br /> Dél-Afrika északi régiója<br /> Az Egyesült Királyság déli régiója<br /> USA középső régiója<br /> USA keleti régiója<br /> USA 2. keleti régiója<br /> USA 2. nyugati régiója | Blokkblobok<br /> <sup>2</sup> . oldal Blobok<br /> Fájlmegosztás (standard)<br /> Táblák<br /> Üzenetsorok<br /> |
+| <sup>1</sup> . BlockBlobStorage | Délkelet-Ázsia<br /> Kelet-Ausztrália<br /> Nyugat-Európa<br /> USA keleti régiója | Csak Premium blokk Blobok |
+| FileStorage | Délkelet-Ázsia<br /> Kelet-Ausztrália<br /> Nyugat-Európa<br /> USA keleti régiója | Csak a prémium szintű fájlok megosztása |
 
 <sup>1</sup> az archiválási szint jelenleg nem támogatott a ZRS-fiókok esetében.<br />
 <sup>2</sup> a virtuális gépekhez készült Azure Managed Disks-t tartalmazó Storage-fiókok mindig a LRS-t használják. Az Azure Unmanaged Disks szolgáltatásnak a LRS is használnia kell. Létrehozhat egy Storage-fiókot az Azure nem felügyelt, GRS használó lemezek számára, de az aszinkron geo-replikációval kapcsolatos lehetséges problémák miatt nem ajánlott. Sem a felügyelt, sem a nem felügyelt lemezek támogatják a ZRS vagy a GZRS. A felügyelt lemezekkel kapcsolatos további információkért lásd: [Az Azure Managed Disks díjszabása](https://azure.microsoft.com/pricing/details/managed-disks/).
@@ -122,6 +122,9 @@ A díjszabással kapcsolatos információkért tekintse meg a [Blobok](https://a
 
 A Geo-redundáns tárolás (GRS vagy GZRS) replikálja az adatait a másodlagos régió egy másik fizikai helyére a regionális kimaradások elleni védelem érdekében. Ezek az adatok azonban csak olvashatók, ha az ügyfél vagy a Microsoft feladatátvételt kezdeményez az elsődlegesről a másodlagos régióba. Ha engedélyezi az olvasási hozzáférést a másodlagos régióhoz, az adatai mindig olvashatók lesznek, például olyan helyzetekben, amikor az elsődleges régió elérhetetlenné válik. Ha olvasási hozzáférést szeretne a másodlagos régióhoz, engedélyezze az olvasási hozzáférésű geo-redundáns tárolást (RA-GRS) vagy az olvasási hozzáférésű földrajzi zóna-redundáns tárolást (RA-GZRS).
 
+> [!NOTE]
+> A Azure Files nem támogatja az olvasási hozzáférésű geo-redundáns tárolást (RA-GRS) és az olvasási hozzáférésű geo-Zone-redundáns tárolást (RA-GZRS).
+
 ### <a name="design-your-applications-for-read-access-to-the-secondary"></a>Alkalmazások tervezése a másodlagoshoz való olvasási hozzáféréshez
 
 Ha a Storage-fiókja olvasási hozzáférésre van konfigurálva a másodlagos régióhoz, akkor megtervezheti, hogy az alkalmazások zökkenőmentesen átálljanak a másodlagos régió adatainak olvasására, ha az elsődleges régió bármilyen okból elérhetetlenné válik. 
@@ -146,11 +149,11 @@ A következő szakaszban található táblázatok összefoglalják az Azure Stor
 
 Az alábbi táblázat az egyes redundancia-beállítások főbb paramétereit ismerteti:
 
-| Paraméter                                                                                                 | LRS                             | ZRS                              | GRS/RA-GRS                                  | GZRS/RA-GZRS                              |
-| :------------------------------------------------------------------------------------------------------- | :------------------------------ | :------------------------------- | :----------------------------------- | :----------------------------------- |
-| Objektumok tartóssága az adott évben<sup>1</sup>                                          | legalább 99,999999999% (11 9) | legalább 99,9999999999% (12 9) | legalább 99.99999999999999% (16 9) | legalább 99.99999999999999% (16 9) |
-| Rendelkezésre állási SLA az olvasási kérelmekhez<sup>1</sup>  | Legalább 99,9% (99% a lassú elérési szinthez) | Legalább 99,9% (99% a lassú elérési szinthez) | Legalább 99,9% (99% a lassú elérési szinthez) a GRS<br /><br />Legalább 99,99% (99,9% a lassú elérési szinthez) az RA-GRS | Legalább 99,9% (99% a lassú elérési szinthez) a GZRS<br /><br />Legalább 99,99% (99,9% a lassú elérési szinthez) az RA-GZRS |
-| Az írási kérelmek rendelkezésre állási SLA-ja<sup>1</sup>  | Legalább 99,9% (99% a lassú elérési szinthez) | Legalább 99,9% (99% a lassú elérési szinthez) | Legalább 99,9% (99% a lassú elérési szinthez) | Legalább 99,9% (99% a lassú elérési szinthez) |
+| Paraméter | LRS | ZRS | GRS/RA-GRS | GZRS/RA-GZRS |
+|:-|:-|:-|:-|:-|
+| Objektumok tartóssága az adott évben<sup>1</sup> | legalább 99,999999999% (11 9) | legalább 99,9999999999% (12 9) | legalább 99.99999999999999% (16 9) | legalább 99.99999999999999% (16 9) |
+| Rendelkezésre állási SLA az olvasási kérelmekhez<sup>1</sup> | Legalább 99,9% (99% a lassú elérési szinthez) | Legalább 99,9% (99% a lassú elérési szinthez) | Legalább 99,9% (99% a lassú elérési szinthez) a GRS<br /><br />Legalább 99,99% (99,9% a lassú elérési szinthez) az RA-GRS | Legalább 99,9% (99% a lassú elérési szinthez) a GZRS<br /><br />Legalább 99,99% (99,9% a lassú elérési szinthez) az RA-GZRS |
+| Az írási kérelmek rendelkezésre állási SLA-ja<sup>1</sup> | Legalább 99,9% (99% a lassú elérési szinthez) | Legalább 99,9% (99% a lassú elérési szinthez) | Legalább 99,9% (99% a lassú elérési szinthez) | Legalább 99,9% (99% a lassú elérési szinthez) |
 
 <sup>1</sup> az Azure Storage szolgáltatás tartósságának és rendelkezésre állásának garantálása érdekében az [Azure Storage SLA](https://azure.microsoft.com/support/legal/sla/storage/)-ban talál további információt.
 
@@ -158,12 +161,12 @@ Az alábbi táblázat az egyes redundancia-beállítások főbb paramétereit is
 
 Az alábbi táblázat azt jelzi, hogy az adatai tartósak-e, és elérhetőek-e az adott forgatókönyvben, attól függően, hogy milyen típusú redundancia van érvényben a Storage-fiókhoz:
 
-| Kimaradási forgatókönyv                                                                                                 | LRS                             | ZRS                              | GRS/RA-GRS                                  | GZRS/RA-GZRS                              |
-| :------------------------------------------------------------------------------------------------------- | :------------------------------ | :------------------------------- | :----------------------------------- | :----------------------------------- |
-| Az adatközpontban lévő csomópont elérhetetlenné válik                                                                 | Igen                             | Igen                              | Igen                                  | Igen                                 |
-| Egy teljes adatközpont (Zona vagy nem zónák) elérhetetlenné válik                                           | Nem                              | Igen                              | Igen<sup>1</sup>                                  | Igen                                  |
-| Az elsődleges régióban az egész régióra kiterjedő leállás következik be                                                                                     | Nem                              | Nem                               | Igen<sup>1</sup>                                  | Igen<sup>1</sup>                                  |
-| A másodlagos régióhoz való olvasási hozzáférés akkor érhető el, ha az elsődleges régió elérhetetlenné válik | Nem                              | Nem                               | Igen (az RA-GRS-vel)                                   | Igen (az RA-GZRS-vel)                                 |
+| Kimaradási forgatókönyv | LRS | ZRS | GRS/RA-GRS | GZRS/RA-GZRS |
+|:-|:-|:-|:-|:-|
+| Az adatközpontban lévő csomópont elérhetetlenné válik | Igen | Igen | Igen | Igen |
+| Egy teljes adatközpont (Zona vagy nem zónák) elérhetetlenné válik | No | Yes | Igen<sup>1</sup> | Yes |
+| Az elsődleges régióban az egész régióra kiterjedő leállás következik be | Nem | Nem | Igen<sup>1</sup> | Igen<sup>1</sup> |
+| A másodlagos régióhoz való olvasási hozzáférés akkor érhető el, ha az elsődleges régió elérhetetlenné válik | Nem | Nem | Igen (az RA-GRS-vel) | Igen (az RA-GZRS-vel) |
 
 <sup>1</sup> a fiók feladatátvétele szükséges az írási rendelkezésre állás visszaállításához, ha az elsődleges régió elérhetetlenné válik. További információkért lásd a vész [-helyreállítási és a Storage-fiók feladatátvételét](storage-disaster-recovery-guidance.md)ismertető témakört.
 
@@ -171,9 +174,9 @@ Az alábbi táblázat azt jelzi, hogy az adatai tartósak-e, és elérhetőek-e 
 
 A következő táblázat bemutatja, hogy az egyes típusú Storage-fiókok milyen redundancia-beállításokat támogatnak. A Storage-fiókok típusairól a [Storage-fiók áttekintése](storage-account-overview.md)című témakörben olvashat bővebben.
 
-| LRS                             | ZRS                              | GRS/RA-GRS                                  | GZRS/RA-GZRS                              |
-| :------------------------------ | :------------------------------- | :----------------------------------- | :----------------------------------- |
-| Általános célú v2<br /> Általános célú v1<br /> BLOB Storage letiltása<br /> Blob Storage<br /> File Storage                | Általános célú v2<br /> BLOB Storage letiltása<br /> File Storage                             | Általános célú v2<br /> Általános célú v1<br /> Blob Storage                     | Általános célú v2                     |
+| LRS | ZRS | GRS/RA-GRS | GZRS/RA-GZRS |
+|:-|:-|:-|:-|
+| Általános célú v2<br /> Általános célú v1<br /> BLOB Storage letiltása<br /> Blob Storage<br /> File Storage | Általános célú v2<br /> BLOB Storage letiltása<br /> File Storage | Általános célú v2<br /> Általános célú v1<br /> Blob Storage | Általános célú v2 |
 
 Az összes Storage-fiókra vonatkozó összes adattal a rendszer a Storage-fiók redundancia beállításának megfelelően másolja. Az objektumok, például a Blobok, a Blobok, a Blobok, a várólisták, a táblák és a fájlok másolása történik. A rendszer átmásolja az összes szintet, beleértve az archiválási szintet is. A blob-rétegekkel kapcsolatos további információkért lásd [: Azure Blob Storage: gyors, ritka elérésű és archív hozzáférési szintek](../blobs/storage-blob-storage-tiers.md).
 

@@ -3,11 +3,12 @@ title: Keresés használata az Azure Application Insightsban | Microsoft Docs
 description: A webalkalmazás által eljuttatott nyers telemetria keresése és szűrése.
 ms.topic: conceptual
 ms.date: 07/30/2019
-ms.openlocfilehash: 8039a55784f63030f330d6c1e2061e99b8b63bbf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7a264f25f92bed1b93848c323fd59eafd7b09215
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84695657"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87033615"
 ---
 # <a name="using-search-in-application-insights"></a>Keresés használata a Application Insightsban
 
@@ -147,4 +148,4 @@ Az adatposta automatikus naplózása nem történik meg, de a [TrackTrace vagy a
 * [Összetett lekérdezések írása az elemzésekben](../../azure-monitor/log-query/get-started-portal.md)
 * [Naplók és egyéni telemetria küldése Application Insights](../../azure-monitor/app/asp-net-trace-logs.md)
 * [Rendelkezésre állási és válaszadási tesztek beállítása](../../azure-monitor/app/monitor-web-app-availability.md)
-* [Hibaelhárítás](../../azure-monitor/app/troubleshoot-faq.md)
+* [Hibaelhárítás](../faq.md)

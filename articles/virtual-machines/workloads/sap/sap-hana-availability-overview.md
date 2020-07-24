@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 03/05/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bccaf45cf617bd31a584b6c73f3dd08877bc8587
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e44edff9ac81588e4f861b7a1d1ae1a1628d5e04
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "71266058"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87035638"
 ---
 # <a name="sap-hana-high-availability-for-azure-virtual-machines"></a>SAP HANA magas rendelkezésre állás az Azure Virtual Machines szolgáltatásban
 
@@ -37,9 +37,9 @@ A cikk azt is feltételezi, hogy már ismeri a SAP HANA példányok telepítés�
 
 Ezek a cikkek jó áttekintést nyújtanak a SAP HANA Azure-beli használatáról:
 
-- [Egypéldányos SAP HANA manuális telepítése Azure-beli virtuális gépeken](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-get-started)
+- [Egypéldányos SAP HANA manuális telepítése Azure-beli virtuális gépeken](./hana-get-started.md)
 - [Rendszerreplikáció beállítása SAP HANA Azure-beli virtuális gépeken](sap-hana-high-availability.md)
-- [SAP HANA biztonsági mentése Azure-beli virtuális gépeken](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-guide)
+- [SAP HANA biztonsági mentése Azure-beli virtuális gépeken](./sap-hana-backup-guide.md)
 
 Azt is érdemes elsajátítani, hogy ismerkedjen meg ezekkel a cikkekkel SAP HANA:
 
@@ -52,7 +52,7 @@ Azt is érdemes elsajátítani, hogy ismerkedjen meg ezekkel a cikkekkel SAP HAN
 - [SAP HANA szolgáltatás automatikus újraindítása](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/cf10efba8bea4e81b1dc1907ecc652d3.html)
 - [SAP HANA rendszerreplikáció konfigurálása](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/676844172c2442f0bf6c8b080db05ae7.html)
 
-A virtuális gépek Azure-beli üzembe helyezésének megismerése előtt a rendelkezésre állási architektúra az Azure-ban való meghatározása előtt javasoljuk, hogy olvassa el [Az Azure-beli Windows rendszerű virtuális gépek rendelkezésre állásának kezelését](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability).
+A virtuális gépek Azure-beli üzembe helyezésének megismerése előtt a rendelkezésre állási architektúra az Azure-ban való meghatározása előtt javasoljuk, hogy olvassa el [Az Azure-beli Windows rendszerű virtuális gépek rendelkezésre állásának kezelését](../../windows/manage-availability.md).
 
 ## <a name="service-level-agreements-for-azure-components"></a>Azure-összetevőkre vonatkozó szolgáltatási szintű szerződések
 
@@ -60,16 +60,16 @@ Az Azure különböző rendelkezésre állási SLA-kat tartalmaz különböző �
 
 [A Virtual Machines SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/) -ja három különböző, három különböző konfigurációra vonatkozó SLA-t ismertet:
 
-- Egyetlen virtuális gép, amely az [Azure Premium SSD](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview) -ket használja az operációsrendszer-lemez és az összes adatlemez számára. Ez a beállítás havi 99,9%-os üzemidőt biztosít.
-- Több (legalább két) virtuális gép, amelyek egy Azure-beli [rendelkezésre állási csoportba](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets)vannak rendezve. Ez a beállítás havi 99,95%-os üzemidőt biztosít.
-- Több (legalább kettő) virtuális gép, amely egy availablity- [zónában](https://docs.microsoft.com/azure/availability-zones/az-overview)van rendszerezve. Ez a beállítás havi 99,99%-os üzemidőt biztosít.
+- Egyetlen virtuális gép, amely az [Azure Premium SSD](../../windows/managed-disks-overview.md) -ket használja az operációsrendszer-lemez és az összes adatlemez számára. Ez a beállítás havi 99,9%-os üzemidőt biztosít.
+- Több (legalább két) virtuális gép, amelyek egy Azure-beli [rendelkezésre állási csoportba](../../windows/tutorial-availability-sets.md)vannak rendezve. Ez a beállítás havi 99,95%-os üzemidőt biztosít.
+- Több (legalább kettő) virtuális gép, amely egy availablity- [zónában](../../../availability-zones/az-overview.md)van rendszerezve. Ez a beállítás havi 99,99%-os üzemidőt biztosít.
 
 Mérje fel a rendelkezésre állási követelményt az Azure-összetevők által biztosított SLA-kat illetően. Ezután válassza ki a forgatókönyveit SAP HANA a szükséges szintű rendelkezésre állás eléréséhez.
 
 ## <a name="next-steps"></a>További lépések
 
-- Ismerkedjen meg [SAP HANA rendelkezésre állással egy Azure-régión belül](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-one-region).
-- Ismerje meg az [Azure-régiók SAP HANA rendelkezésre állását](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-across-regions). 
+- Ismerkedjen meg [SAP HANA rendelkezésre állással egy Azure-régión belül](./sap-hana-availability-one-region.md).
+- Ismerje meg az [Azure-régiók SAP HANA rendelkezésre állását](./sap-hana-availability-across-regions.md). 
 
 
 
@@ -86,5 +86,3 @@ Mérje fel a rendelkezésre állási követelményt az Azure-összetevők által
 
 
   
-
-

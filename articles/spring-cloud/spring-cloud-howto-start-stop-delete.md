@@ -6,11 +6,13 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: brendm
-ms.openlocfilehash: daa549e248668add54530e90174134c4e0059b3a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-java
+ms.openlocfilehash: efe2a8825e1817a934db7d36edae6feaf820ab79
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76276835"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87037185"
 ---
 # <a name="start-stop-and-delete-your-azure-spring-cloud-application"></a>Azure Spring Cloud-alkalmazás elindítása, leállítása és törlése
 
@@ -25,7 +27,7 @@ Az alkalmazások központi telepítése után elindíthatja, leállíthatja és 
 1. Válassza ki azt az alkalmazást, amelynek az állapotát módosítani szeretné.
 1. Az alkalmazás **Áttekintés** lapján válassza a **Start/leállítás**, **Újraindítás**vagy **Törlés**lehetőséget.
 
-## <a name="using-the-azure-cli"></a>Az Azure parancssori felületének használata
+## <a name="using-the-azure-cli"></a>Az Azure CLI-vel
 
 > [!NOTE]
 > Az Azure CLI-vel választható paramétereket és az alapértelmezett értékeket is konfigurálhatja. További információt az Azure CLI-ről a [dokumentációban talál](spring-cloud-cli-reference.md).  

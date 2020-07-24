@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 561ec6d59349fca585beda8b1bd60073d2603077
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f09e84d20b1a3c568eea015d92b93a99b8cf024e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85552180"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87036794"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Az Azure File Sync üzembe helyezésének megtervezése
 
@@ -147,7 +147,7 @@ Csak NTFS-kötetek támogatottak; A ReFS, a FAT, a FAT32 és más fájlrendszere
 
 Az alábbi táblázat az NTFS fájlrendszer szolgáltatásainak együttműködési állapotát mutatja be: 
 
-| Szolgáltatás | Támogatás állapota | Jegyzetek |
+| Funkció | Támogatás állapota | Jegyzetek |
 |---------|----------------|-------|
 | Hozzáférés-vezérlési lista (ACL-ek) | Teljes mértékben támogatott | A Windows-stílusú tulajdonosi hozzáférés-vezérlési listát a Azure File Sync őrzi meg, és a Windows Server a kiszolgálói végpontokon kényszeríti ki. Az ACL-ek az Azure-fájlmegosztás közvetlen csatlakoztatása esetén is kikényszeríthető, azonban ez további konfigurálást igényel. További információért tekintse meg az [Identity szakaszt](#identity) . |
 | Rögzített hivatkozások | Kimarad | |
@@ -245,7 +245,7 @@ Bár a közvetlenül az Azure-fájlmegosztást érintő módosítások hosszabb 
 > [!Important]  
 > A Storage-fiók Active Directoryhoz való csatlakoztatása nem szükséges a Azure File Sync sikeres telepítéséhez. Ez egy szigorúan opcionális lépés, amely lehetővé teszi az Azure-fájlmegosztás számára a helyszíni ACL-ek kényszerítését, amikor a felhasználók közvetlenül csatlakoztatják az Azure-fájlmegosztást.
 
-## <a name="networking"></a>Hálózat
+## <a name="networking"></a>Hálózatkezelés
 A Azure File Sync ügynök kommunikál a Storage Sync szolgáltatással és az Azure-fájlmegosztás használatával a Azure File Sync REST protokoll és a legtitkosítási protokoll segítségével, amely mindkét esetben HTTPS protokollt használ a 443-as porton keresztül. Az SMB soha nem használja fel az adatok feltöltését és letöltését a Windows Server és az Azure-fájlmegosztás között. Mivel a legtöbb szervezet engedélyezi a HTTPS-forgalmat az 443-as porton keresztül, a legtöbb webhely felkeresésének követelménye, a speciális hálózati konfiguráció általában nem szükséges a Azure File Sync telepítéséhez.
 
 A szervezet házirendje vagy az egyedi szabályozási követelmények alapján több korlátozó kommunikációra lehet szükség az Azure-ban, így a Azure File Sync számos mechanizmust biztosít a hálózatkezelés konfigurálásához. A követelmények alapján a következőket teheti:
@@ -289,7 +289,7 @@ További információ az átvitel közbeni titkosításról: [biztonságos átvi
 ### <a name="azure-file-share-encryption-at-rest"></a>Azure-fájlmegosztás titkosítása nyugalmi állapotban
 [!INCLUDE [storage-files-encryption-at-rest](../../../includes/storage-files-encryption-at-rest.md)]
 
-## <a name="storage-tiers"></a>Tárolási rétegek
+## <a name="storage-tiers"></a>Tárolási szintek
 [!INCLUDE [storage-files-tiers-overview](../../../includes/storage-files-tiers-overview.md)]
 
 ### <a name="enable-standard-file-shares-to-span-up-to-100-tib"></a>A standard fájlmegosztás engedélyezése akár 100 TiB-re is terjedhet
@@ -333,7 +333,7 @@ Azure File Sync a következő régiókban érhető el:
 | Nyilvános | USA | USA déli középső régiója | `southcentralus` |
 | Nyilvános | USA | USA nyugati középső régiója | `westcentralus` |
 | Nyilvános | USA | USA nyugati régiója | `westus` |
-| Nyilvános | USA | USA nyugati régiója, 2. | `westus2` |
+| Nyilvános | USA | USA 2. nyugati régiója | `westus2` |
 | US Gov | USA | USA-beli államigazgatás – Arizona | `usgovarizona` |
 | US Gov | USA | USA-beli államigazgatás – Texas | `usgovtexas` |
 | US Gov | USA | USA-beli államigazgatás – Virginia | `usgovvirginia` |
@@ -348,7 +348,7 @@ A csillaggal jelölt régiók esetében kapcsolatba kell lépnie az Azure támog
 > [!Important]  
 > A Geo-redundáns és a Geo-zónás redundáns tárolás lehetővé tenné a tárolók manuális feladatátvételét a másodlagos régióba. Azt javasoljuk, hogy az adatvesztés nagyobb valószínűsége miatt ne hajtsa végre ezt a katasztrófán kívül, ha Azure File Sync használ. Abban az esetben, ha a tároló manuális feladatátvételét szeretné elindítani, meg kell nyitnia egy támogatási esetet a Microsofttal, hogy Azure File Sync a másodlagos végponttal való szinkronizálás folytatásához.
 
-## <a name="migration"></a>Áttelepítés
+## <a name="migration"></a>Migrálás
 Ha van meglévő Windows-fájlkiszolgáló, Azure File Sync közvetlenül is telepíthető, anélkül, hogy át kellene helyeznie az adatátvitelt egy új kiszolgálóra. Ha a Azure File Sync bevezetésének részeként új Windows-fájlkiszolgálón kíván áttelepítést végezni, több lehetséges módszer áll rendelkezésre az adatáthelyezéshez:
 
 - Hozzon létre kiszolgálói végpontokat a régi fájlmegosztás és az új fájlmegosztás számára, és hagyja, hogy Azure File Sync szinkronizálja az adatokat a kiszolgálói végpontok között. Ennek a megközelítésnek az az előnye, hogy nagyon egyszerűen előfizethet az új fájlkiszolgálón lévő tárterületre, mivel Azure File Sync a Felhőbeli rétegek számára. Ha elkészült, a végfelhasználókat átvágja az új kiszolgálón található fájlmegosztás fölé, és eltávolíthatja a régi fájlmegosztás kiszolgálói végpontját.
@@ -360,7 +360,7 @@ A Data Box segítségével áttelepítheti az adatAzure File Sync üzembe helyez
 Gyakori hiba, hogy az ügyfelek az új Azure File Sync üzembe helyezéskor az Adatmásolást közvetlenül az Azure-fájlmegosztásba másolják, nem pedig a Windows-fájlkiszolgálók. Bár a Azure File Sync azonosítja az Azure-fájlmegosztás összes új fájlját, és szinkronizálja azokat a Windows-fájlmegosztás számára, ez általában jóval lassabb, mint a Windows-fájlkiszolgálón való betöltés. Az Azure Copy-eszközök, például a AzCopy használata esetén fontos, hogy a legújabb verziót használja. Tekintse át a fájlmásolás- [eszközök táblázatát](storage-files-migration-overview.md#file-copy-tools) , és tekintse át az Azure másolási eszközeit, és győződjön meg arról, hogy a fájl összes fontos metaadatát, például az időbélyegeket és az ACL-eket is másolja.
 
 ## <a name="antivirus"></a>Vírusvédelem
-Mivel a víruskereső úgy működik, hogy a fájlokat az ismert kártékony kódok vizsgálatával végzi, a víruskereső termék a többplatformos fájlok visszahívását okozhatja. A Azure File Sync ügynök 4,0-es és újabb verzióiban a többplatformos fájlok a biztonságos Windows-attribútumot FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS beállítani. Javasoljuk, hogy a szoftver gyártójával való tanácsadással megtudja, hogyan konfigurálhatja a megoldását úgy, hogy kihagyja a fájlok olvasását ezzel az attribútummal (sok minden automatikusan). 
+Mivel a víruskereső úgy működik, hogy a fájlokat az ismert kártékony kódok vizsgálatával végzi, a víruskereső termék a rétegekből származó fájlok visszahívását okozhatja, ami magas kimenő költségekkel jár. A Azure File Sync ügynök 4,0-es és újabb verzióiban a többplatformos fájlok a biztonságos Windows-attribútumot FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS beállítani. Javasoljuk, hogy a szoftver gyártójával való tanácsadással megtudja, hogyan konfigurálhatja a megoldását úgy, hogy kihagyja a fájlok olvasását ezzel az attribútummal (sok minden automatikusan). 
 
 A Microsoft belső vírusvédelmi megoldásai, a Windows Defender és a System Center Endpoint Protection (SCEP) egyaránt automatikusan kihagyják az ezzel az attribútummal rendelkező fájlok olvasását. Teszteltük őket, és azonosított egy kisebb problémát: amikor hozzáad egy kiszolgálót egy meglévő szinkronizálási csoporthoz, a 800 bájtnál kisebb fájlokat a rendszer visszahívja (letölti) az új kiszolgálón. Ezek a fájlok az új kiszolgálón maradnak, és nem lesznek feldolgozva, mivel nem felelnek meg a rétegek méretére vonatkozó követelménynek (>64 kb).
 
@@ -368,9 +368,9 @@ A Microsoft belső vírusvédelmi megoldásai, a Windows Defender és a System C
 > A víruskereső-szállítók ellenőrizhetik a termékük és a Azure File Sync közötti kompatibilitást a [Azure file Sync Antivirus Compatibility test Suite](https://www.microsoft.com/download/details.aspx?id=58322)használatával, amely letölthető a Microsoft letöltőközpontból.
 
 ## <a name="backup"></a>Backup 
-A vírusvédelmi megoldásokhoz hasonlóan a biztonsági mentési megoldások is okozhatják a többplatformos fájlok visszahívását. Azt javasoljuk, hogy egy felhőalapú biztonsági mentési megoldás használatával készítsen biztonsági másolatot az Azure-fájlmegosztás biztonsági mentéséhez a helyszíni biztonsági mentési termék helyett.
+Ha a felhő-rétegek engedélyezve vannak, akkor a kiszolgáló-végpontról vagy a kiszolgálói végpontot tartalmazó virtuális gépről közvetlenül biztonsági mentést biztosító megoldások nem használhatók. A felhő-rétegek a kiszolgálói végponton tárolják az adatokat, és az Azure-fájlmegosztás teljes adatkészletét használják. A használt biztonsági mentési megoldástól függően a rendszer kihagyja a rétegekből származó fájlokat, és nem készít biztonsági mentést (mert a FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS attribútum van beállítva), vagy a rendszer a lemezre hívja őket, ami magas kimenő költségekkel jár. Javasoljuk, hogy a felhőalapú biztonsági mentési megoldás használatával készítsen biztonsági másolatot az Azure-fájlmegosztás közvetlen biztonsági mentéséhez. További információkért lásd: [Az Azure-fájlmegosztás biztonsági mentésének ismertetése](https://docs.microsoft.com/azure/backup/azure-file-share-backup-overview?toc=/azure/storage/files/toc.json) , vagy a biztonsági mentési szolgáltatótól kérheti, hogy támogatják-e az Azure-fájlmegosztás biztonsági mentését.
 
-Ha helyszíni biztonsági mentési megoldást használ, a biztonsági mentéseket olyan kiszolgálón kell végrehajtani a szinkronizálási csoportban, amelynél le van tiltva a Felhőbeli réteg. Ha visszaállítást végez, használja a kötet szintű vagy a fájl szintű visszaállítási lehetőségeket. A fájl szintű visszaállítási lehetőséggel visszaállított fájlok a szinkronizálási csoport összes végpontján szinkronizálva lesznek, és a meglévő fájlok a biztonsági másolatból visszaállított verzióra lesznek lecserélve.  A mennyiségi szintű visszaállítások nem cserélik le az újabb verziójú fájlokat az Azure-fájlmegosztás vagy más kiszolgálói végpontok között.
+Ha helyszíni biztonsági mentési megoldást szeretne használni, akkor a biztonsági mentéseket a szinkronizálási csoporton belül olyan kiszolgálón kell végrehajtani, amelyen le van tiltva a Felhőbeli réteg. Ha visszaállítást végez, használja a kötet szintű vagy a fájl szintű visszaállítási lehetőségeket. A fájl szintű visszaállítási lehetőséggel visszaállított fájlok a szinkronizálási csoport összes végpontján szinkronizálva lesznek, és a meglévő fájlok a biztonsági másolatból visszaállított verzióra lesznek lecserélve.  A mennyiségi szintű visszaállítások nem cserélik le az újabb verziójú fájlokat az Azure-fájlmegosztás vagy más kiszolgálói végpontok között.
 
 > [!Note]  
 > Az operációs rendszer nélküli (BMR) visszaállítás váratlan eredményekhez vezethet, és jelenleg nem támogatott.
@@ -383,7 +383,7 @@ Ha helyszíni biztonsági mentési megoldást használ, a biztonsági mentéseke
 
 ## <a name="next-steps"></a>További lépések
 * [A tűzfal és a proxy beállításainak megfontolása](storage-sync-files-firewall-and-proxy.md)
-* [Az Azure Files üzembe helyezésének megtervezése](storage-files-planning.md)
+* [Azure Files üzembe helyezésének tervezése](storage-files-planning.md)
 * [Az Azure Files üzembe helyezése](storage-files-deployment-guide.md)
-* [Az Azure File Sync üzembe helyezése](storage-sync-files-deployment-guide.md)
+* [Azure File Sync – üzembe helyezés](storage-sync-files-deployment-guide.md)
 * [Az Azure File Sync monitorozása](storage-sync-files-monitoring.md)

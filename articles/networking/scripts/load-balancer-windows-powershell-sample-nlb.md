@@ -12,17 +12,18 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 05/16/2017
 ms.author: allensu
-ms.openlocfilehash: 1f0ff6cad90a4e5578a4f0c578a7da5cbbb75457
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b8c1115d4f5c56918d7ea555b6a8a747922319a3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74067073"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87030470"
 ---
 # <a name="load-balance-traffic-to-vms-for-high-availability"></a>A virtuális gépek forgalmának elosztása magas rendelkezésre állás érdekében
 
 Ez a szkript létrehoz mindent, ami szükséges ahhoz, hogy több Windows rendszerű virtuális gépet futtasson, amelyek egy magasan elérhető és elosztott terhelésű konfigurációban vannak konfigurálva. A szkript futtatása után három virtuális géppel rendelkezik majd, amelyek egy Azure-beli rendelkezésre állási csoporthoz vannak csatlakoztatva, és egy Azure Load Balanceren keresztül érhetők el.
 
-Szükség esetén telepítse a Azure PowerShellt a [Azure PowerShell útmutatóban](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/)található utasítással, majd futtassa a parancsot az `Connect-AzAccount` Azure-hoz való kapcsolódáshoz.
+Szükség esetén telepítse a Azure PowerShellt a [Azure PowerShell útmutatóban](https://docs.microsoft.com/powershell/azure/)található utasítással, majd futtassa a parancsot az `Connect-AzAccount` Azure-hoz való kapcsolódáshoz.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -64,6 +65,6 @@ A szkript a következő parancsokat használja egy erőforráscsoport, egy virtu
 
 ## <a name="next-steps"></a>További lépések
 
-Az Azure PowerShellről további tudnivalókért tekintse meg az [Azure PowerShell dokumentációt](https://docs.microsoft.com/powershell/azure/overview).
+Az Azure PowerShellről további tudnivalókért tekintse meg az [Azure PowerShell dokumentációt](https://docs.microsoft.com/powershell/azure/).
 
 További hálózatkezelési PowerShell-példaszkripteket az [Azure-hálózatkezelés áttekintő dokumentációjában](../powershell-samples.md?toc=%2fazure%2fnetworking%2ftoc.json) találhat.

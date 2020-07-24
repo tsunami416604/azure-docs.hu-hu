@@ -3,12 +3,12 @@ title: MABS (Azure Backup Server) v3 UR1 védelmi mátrix
 description: Ez a cikk egy támogatási mátrixot tartalmaz, amely felsorolja az összes olyan munkaterhelést, adattípust és telepítést, amelyet Azure Backup Server véd.
 ms.date: 03/19/2020
 ms.topic: conceptual
-ms.openlocfilehash: cfcb8fbf9f793cfbe11d2c25b3d2caa7018d0fd4
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 974820389e84f727a9aab284716b3be9020c6dd8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538734"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87032595"
 ---
 # <a name="mabs-azure-backup-server-v3-ur1-protection-matrix"></a>MABS (Azure Backup Server) v3 UR1 védelmi mátrix
 
@@ -54,7 +54,7 @@ A következő részben a MABS védelmi támogatási mátrixát részletezjük:
 
 | **Számítási feladat** | **Verzió**                               | **Azure Backup Server telepítés**                      | **Támogatott Azure Backup Server** | **Védelem és helyreállítás**                                 |
 | ------------ | ----------------------------------------- | ------------------------------------------------------------ | ---------------------------------- | ------------------------------------------------------------ |
-| Linux        | Hyper-V vagy VMware vendégként futó Linux | Fizikai kiszolgáló, helyszíni Hyper-V virtuális gép, Windows rendszerű virtuális gép VMWare-ben | V3 UR1                             | A Hyper-V-nek Windows Server 2012 R2 vagy Windows Server 2016 rendszeren kell futnia. Védelem: teljes virtuális gép   <br><br>   Helyreállítás: az egész virtuális gép   <br><br>    Csak a fájlkonzisztens pillanatképek támogatottak.    <br><br>   A támogatott Linux-disztribúciók és-verziók teljes listájáért tekintse meg a [Linux az Azure által támogatott disztribúciókkal foglalkozó](../virtual-machines/linux/endorsed-distros.md)cikket. |
+| Linux        | Hyper-V vagy VMware vendégként futó Linux | Fizikai kiszolgáló, helyszíni Hyper-V virtuális gép, Windows rendszerű virtuális gép VMWare-ben | V3 UR1                             | A Hyper-V-nek Windows Server 2012 R2, Windows Server 2016 vagy Windows Server 2019 rendszeren kell futnia. Védelem: teljes virtuális gép   <br><br>   Helyreállítás: az egész virtuális gép   <br><br>    Csak a fájlkonzisztens pillanatképek támogatottak.    <br><br>   A támogatott Linux-disztribúciók és-verziók teljes listájáért tekintse meg a [Linux az Azure által támogatott disztribúciókkal foglalkozó](../virtual-machines/linux/endorsed-distros.md)cikket. |
 
 ## <a name="azure-expressroute-support"></a>Azure ExpressRoute-támogatás
 

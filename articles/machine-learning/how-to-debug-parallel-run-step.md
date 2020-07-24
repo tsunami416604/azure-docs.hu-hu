@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: troubleshooting
-ms.reviewer: trbye, jmartens, larryfr, vaidyas, laobri
+ms.reviewer: jmartens, larryfr, vaidyas, laobri, tracych
 ms.author: trmccorm
 author: tmccrmck
-ms.date: 07/06/2020
-ms.openlocfilehash: 870563a1a27ee00c2f14935e5200f722136011a1
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.date: 07/16/2020
+ms.openlocfilehash: a6a3e9a7a914711f6b7c923ac2249ebf3285c877
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027001"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87031014"
 ---
 # <a name="debug-and-troubleshoot-parallelrunstep"></a>ParallelRunStep hibakeresése és hibaelhárítása
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -36,7 +36,7 @@ A ParallelRunStep-feladatok elosztott jellegéből adódóan számos különböz
 
 - `~/logs/overview.txt`: Ez a fájl magas szintű információt nyújt a mini-batchs (más néven feladatoknak) számáról, amely az eddig feldolgozott mini-batchek számát tartalmazza. Ezen a helyen a feladatok eredményét jeleníti meg. Ha a feladatainak végrehajtása sikertelen volt, a hibaüzenet jelenik meg, és a hibaelhárítás elindításának helye.
 
-- `~/logs/sys/master.txt`: Ez a fájl a futó feladathoz tartozó főcsomópontot (más néven Orchestrator) jeleníti meg. Magában foglalja a feladatok létrehozását, a folyamat figyelését, a Futtatás eredményét.
+- `~/logs/sys/master.txt`: Ez a fájl a futó feladathoz tartozó fő csomópontot (más néven Orchestrator) jeleníti meg. Magában foglalja a feladatok létrehozását, a folyamat figyelését, a Futtatás eredményét.
 
 A EntryScript Helper és Print utasítások használatával generált naplók a következő fájlokban találhatók:
 
@@ -61,11 +61,11 @@ Ha teljes mértékben meg kell ismernie, hogy az egyes csomópontok hogyan hajto
 Az egyes feldolgozókhoz tartozó folyamatok erőforrás-használatáról is talál információt. Ez az információ CSV formátumú, és a következő helyen található: `~/logs/sys/perf/overview.csv` . Az egyes folyamatokra vonatkozó információk a alatt találhatók `~logs/sys/processes.csv` .
 
 ### <a name="how-do-i-log-from-my-user-script-from-a-remote-context"></a>A felhasználói szkriptből Hogyan a naplót egy távoli környezetből?
-A EntryScript az alábbi mintakód alapján is beolvashatja, hogy a naplók megjelenjenek a **naplók/felhasználói** mappában a portálon.
+A ParallelRunStep process_count_per_node alapján több folyamatot is futtathat egy csomóponton. Az egyes folyamatok naplófájljainak a csomóponton való rendszerezéséhez és a Print és a log utasítás összevonásához javasoljuk, hogy az alább látható módon használja a ParallelRunStep naplózó használatát. Egy adatgyűjtő-EntryScript kap, és a naplók megjelennek a **naplók/felhasználói** mappában a portálon.
 
 **Egy minta-bejegyzési parancsfájl a Logger használatával:**
 ```python
-from entry_script import EntryScript
+from azureml_user.parallel_run import EntryScript
 
 def init():
     """ Initialize the node."""
@@ -87,7 +87,9 @@ def run(mini_batch):
 
 ### <a name="how-could-i-pass-a-side-input-such-as-a-file-or-files-containing-a-lookup-table-to-all-my-workers"></a>Hogyan adhatok át egy olyan oldali bemenetet, mint például egy keresési táblázatot tartalmazó fájl vagy fájl (ok) az összes feldolgozónak?
 
-Szerkessze az oldal bemenetét tartalmazó [adatkészletet](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py) , és regisztrálja azt a munkaterületen. Adja át a `side_input` paraméterének `ParallelRunStep` . Emellett az elérési utat is hozzáadhatja a `arguments` szakaszhoz, hogy könnyen hozzáférhessen a csatlakoztatott elérési úthoz:
+A felhasználó a ParalleRunStep side_inputs paraméterével adhat át hivatkozási adattípust a parancsfájlnak. A side_inputsként megadott összes adatkészlet minden munkavégző csomóponthoz lesz csatlakoztatva. A felhasználó lekérheti a csatlakoztatás helyét a pass argumentum használatával.
+
+Készítse el a hivatkozási adatokat tartalmazó [adatkészletet](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py) , és regisztrálja azt a munkaterületen. Adja át a `side_inputs` paraméterének `ParallelRunStep` . Emellett az elérési útját is hozzáadhatja a `arguments` szakaszhoz, hogy könnyen hozzáférhessen a csatlakoztatott elérési úthoz:
 
 ```python
 label_config = label_ds.as_named_input("labels_input")

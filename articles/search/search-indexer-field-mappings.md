@@ -8,13 +8,13 @@ ms.author: magottei
 ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 7d853a8e935f7732a05b33d9b8581dcf753d8873
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 06/11/2020
+ms.openlocfilehash: 543644495a99bacd40edc3f2d9151e4c15808c50
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84975333"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87038426"
 ---
 # <a name="field-mappings-and-transformations-using-azure-cognitive-search-indexers"></a>Mező-hozzárendelések és átalakítások az Azure Cognitive Search indexelő használatával
 
@@ -212,7 +212,7 @@ A következő táblázat a karakterlánc különböző Base64 kódolásait hason
 | Base64 kitöltéssel | `MDA+MDA/MDA=` | URL-alapú biztonságos karakterek használata és kitöltés eltávolítása | Szabványos Base64-karakterek használata és kitöltés hozzáadása |
 | Base64 kitöltés nélkül | `MDA+MDA/MDA` | URL-alapú biztonságos karakterek használata | Szabványos Base64-karakterek használata |
 | URL – biztonságos Base64 kitöltéssel | `MDA-MDA_MDA=` | Kitöltés eltávolítása | Kitöltés hozzáadása |
-| URL – biztonságos Base64 kitöltés nélkül | `MDA-MDA_MDA` | None | None |
+| URL – biztonságos Base64 kitöltés nélkül | `MDA-MDA_MDA` | Nincs | Nincs |
 
 <a name="extractTokenAtPositionFunction"></a>
 

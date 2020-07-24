@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 50c52369a5a957a4dd6279cac5079e2dea023106
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1d264b0ae0b06079a45cd1e862144a6920133901
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "61463403"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87038442"
 ---
 # <a name="sample-presets-for-media-encoder-standard-mes"></a>Minta-előállítók a Media Encoder Standardhoz (MES)
 
@@ -29,7 +29,7 @@ ms.locfileid: "61463403"
 Media Services teljes mértékben támogatja az előre beállított összes érték testreszabását az adott kódolási igények és követelmények kielégítése érdekében. Ha testre kell szabnia egy kódolási beállításkészletet, az ebben a szakaszban ismertetett Rendszerkészletek egyikével kell kezdenie az egyéni konfiguráció sablonját. Az ezen alapbeállításokban található egyes elemek, valamint az egyes elemek érvényes értékeinek magyarázata a [Media Encoder standard séma](media-services-mes-schema.md) témakörben található.  
   
 > [!NOTE]
->  Ha 4k-kódoláshoz készletet használ, szerezze `S3` be a fenntartott egység típusát. További információ: [a kódolás skálázása](https://azure.microsoft.com/documentation/articles/media-services-portal-encoding-units).  
+>  Ha 4k-kódoláshoz készletet használ, szerezze `S3` be a fenntartott egység típusát. További információ: [a kódolás skálázása](./media-services-scale-media-processing-overview.md).  
 
 #### <a name="video-rotation-default-setting-in-presets"></a>A videó elforgatásának alapértelmezett beállítása az alapbeállításokban:
 Media Encoder Standard használatakor a videó forgatása alapértelmezés szerint engedélyezve van. Ha a videó rögzített módban van rögzítve egy mobileszközön, akkor ezek a készletek a kódolás előtt elforgatják a tájkép módba.
@@ -86,4 +86,4 @@ Media Encoder Standard használatakor a videó forgatása alapértelmezés szeri
   
  A [H264 Single bitráta alacsony minőségű SD-je androidos](media-services-mes-preset-H264-Single-Bitrate-Low-Quality-SD-for-Android.md) , 56 kbps-os és sztereó AAC-hanggal rendelkező, egyetlen MP4-fájlt hoz létre.  
   
- Media Services kódolókkal kapcsolatos további információkért lásd: [igény szerinti kódolás Azure Media Services](https://azure.microsoft.com/documentation/articles/media-services-encode-asset/).
+ Media Services kódolókkal kapcsolatos további információkért lásd: [igény szerinti kódolás Azure Media Services](./media-services-encode-asset.md).

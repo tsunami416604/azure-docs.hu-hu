@@ -3,12 +3,12 @@ title: Azure Service Bus – üzenetkezelési entitások felfüggesztése
 description: Ez a cikk azt ismerteti, hogyan lehet ideiglenesen felfüggeszteni és újraaktiválni Azure Service Bus üzenet entitásait (várólisták, témakörök és előfizetések).
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 4c4e554ada8c66b56d5d466c7becfc813701402a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: da7c25c8ef9f3daa32984ac26aa62710ab775951
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85339999"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87038137"
 ---
 # <a name="suspend-and-reactivate-messaging-entities-disable"></a>Üzenetkezelési entitások felfüggesztése és újraaktiválása (Letiltás)
 
@@ -20,7 +20,7 @@ A felfüggesztés vagy az újraaktiválás a felhasználó vagy a rendszer álta
 
 A portálon az adott entitás **Tulajdonságok** szakasza lehetővé teszi az állapot módosítását; az alábbi képernyőfelvételen egy üzenetsor váltógomb látható:
 
-![][1]
+![Képernyőkép a Service Bus funkcióról a Kiemelt tulajdonságok beállítással, a várólista-állapot beállítás pedig aktív értékre van állítva, és piros színnel jelenik meg.][1]
 
 A portál csak teljesen letiltja a várólistákat. A küldési és fogadási műveleteket külön is letilthatja a .NET-keretrendszer SDK-ban található Service Bus [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) API-kkal, vagy egy Azure Resource Manager sablonnal az Azure CLI vagy a Azure PowerShell használatával.
 

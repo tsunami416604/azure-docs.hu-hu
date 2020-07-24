@@ -1,60 +1,63 @@
 ---
 title: Támadások megelőzése az intelligens zárolás használatával – Azure Active Directory
-description: A Azure Active Directory Smart zárolásával megvédheti szervezetét a jelszavak kitalálása céljából indított támadásokkal szemben.
+description: Ismerje meg, hogy a Azure Active Directory Smart zárolásával miként biztosíthatja a szervezete számára a felhasználói jelszavakat kitaláló találgatásos támadások elleni védelmet.
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 11/21/2019
+ms.date: 07/20/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 61ae942ed189dc4245a9a0b282daf4cad5323536
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e6ffbd23dccd7bac03e849241866416ac07af4a0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80652584"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87035417"
 ---
-# <a name="azure-active-directory-smart-lockout"></a>Azure Active Directory intelligens zárolás
+# <a name="protect-user-accounts-from-attacks-with-azure-active-directory-smart-lockout"></a>Felhasználói fiókok elleni védelem Azure Active Directory intelligens zárolással
 
-Az intelligens zárolás segíti a felhasználók jelszavainak kiszűrését, illetve a találgatásos kényszerítési módszerek használatát. Felismeri az érvényes felhasználóktól érkező bejelentkezéseket, és a támadók és más ismeretlen forrásoktól eltérően kezeli őket. Az intelligens zárolás kizárja a támadókat, miközben lehetővé teszi, hogy a felhasználók továbbra is hozzáférjenek a fiókjához, és hatékonyak legyenek.
+Az intelligens zárolás segít kizárni a felhasználók jelszavait kitaláló rossz szereplőket, vagy felhasználni a találgatásos módszerekkel. Az intelligens zárolás felismeri az érvényes felhasználóktól érkező bejelentkezéseket, és a támadók és más ismeretlen forrásoktól eltérően kezeli őket. A támadók kizárják a felhasználókat, míg a felhasználók továbbra is hozzáférhetnek a fiókjához, és hatékonyak lehetnek.
+
+## <a name="how-smart-lockout-works"></a>Hogyan működik az intelligens zárolás?
 
 Alapértelmezés szerint az intelligens zárolás 10 sikertelen kísérlet után egy percen belül zárolja a fiókot a bejelentkezési kísérletekből. A fiók minden további sikertelen bejelentkezési kísérlet után ismét zárolja a műveletet, és a későbbi próbálkozások során egy percen belül megszakad.
 
 Az intelligens zárolási szolgáltatás az utolsó három rossz jelszó-kivonatot követi, így elkerülhető, hogy a zárolási számláló ugyanazon a jelszónál legyen növelve. Ha valaki többször is ugyanazt a jelszót adja meg, akkor ez a viselkedés nem eredményezi a fiók zárolását.
 
- > [!NOTE]
- > A kivonatoló követés funkció nem érhető el olyan ügyfelek esetében, amelyeknél engedélyezve van az átmenő hitelesítés, mert a hitelesítés a helyszínen nem a felhőben történik.
+> [!NOTE]
+> A kivonatoló követés funkció nem érhető el olyan ügyfelek számára, akiknek engedélyezve van az átmenő hitelesítés, mert a hitelesítés a helyszínen nem a felhőben történik.
 
-A AD FS 2016-es és AF FS 2019-et használó összevont telepítések a [AD FS extranetes zárolás és az extranetes intelligens zárolás](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection)használatával is engedélyezhetik a hasonló előnyöket.
+A AD FS 2016-es és AF FS 2019-et használó összevont központi telepítések a [AD FS extranetes zárolás és az extranetes intelligens zárolás](/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection)használatával is engedélyezhetik a hasonló előnyöket.
 
-Az intelligens zárolás mindig az összes Azure AD-ügyfélre vonatkozik, ezekkel az alapértelmezett beállításokkal a biztonság és a használhatóság megfelelő kombinációját kínálja. Az intelligens zárolási beállítások testre szabása a szervezetre jellemző értékekkel a felhasználóknak fizetett Azure AD-licenceket igényel.
+Az intelligens zárolás mindig be van kapcsolva az összes Azure AD-ügyfél esetében, ezekkel az alapértelmezett beállításokkal a biztonság és a használhatóság megfelelő kombinációját kínálja. Az intelligens zárolási beállítások testre szabása a szervezetre jellemző értékekkel prémium szintű Azure AD P1 vagy magasabb szintű licenceket igényel a felhasználók számára.
 
-Az intelligens zárolás használata nem garantálja, hogy egy valódi felhasználó soha nem lesz zárolva. Amikor az intelligens zárolás zárol egy felhasználói fiókot, igyekszünk a legjobbat választani, hogy ne zárolja a valódi felhasználót. A zárolási szolgáltatás megkísérli biztosítani, hogy a rossz szereplők ne férhessenek hozzá valódi felhasználói fiókhoz.  
+Az intelligens zárolás használata nem garantálja, hogy egy valódi felhasználót soha nem zároltak. Amikor az intelligens zárolás zárol egy felhasználói fiókot, igyekszünk a legjobbat kizárni, hogy ne zárja ki a valódi felhasználót. A zárolási szolgáltatás megkísérli biztosítani, hogy a rossz szereplők ne férhessenek hozzá valódi felhasználói fiókhoz. A következő szempontokat kell figyelembe venni:
 
-* Az egyes Azure Active Directory adatközpontok egymástól függetlenül figyelik a zárolást. A felhasználók (threshold_limit * datacenter_count) száma sikertelen lesz, ha a felhasználó eléri az egyes adatközpontokat.
-* Az intelligens zárolás ismerős helyet és ismeretlen helyet használ a rossz színész és a valódi felhasználó közötti különbségtételhez. A nem ismerős és ismerős helyszínek külön zárolási számlálókkal is rendelkeznek.
+* Az egyes Azure AD-adatközpontok egymástól függetlenül nyomon követik a zárolást. A felhasználók (*threshold_limit * datacenter_count*) a kísérletek száma, ha a felhasználó minden adatközpontot elér.
+* Az intelligens zárolás ismerős helyet és ismeretlen helyet használ a rossz színész és a valódi felhasználó közötti különbségtételhez. A nem ismerős és ismerős helyszínek külön zárolási számlálókkal rendelkeznek.
 
-Az intelligens zárolás integrálható hibrid környezetekkel, jelszó-kivonatolási szinkronizálással vagy átmenő hitelesítéssel, hogy megvédje a helyszíni Active Directory fiókokat a támadók számára. Ha intelligens zárolási szabályzatokat állít be az Azure AD-ben, akkor a támadások kiszűrhetők a helyszíni Active Directory elérése előtt.
+Az intelligens zárolás olyan hibrid környezetekben integrálható, amelyek jelszavas kivonatoló szinkronizálást vagy átmenő hitelesítést használnak a helyszíni Active Directory tartományi szolgáltatások (AD DS) fiókok a támadók általi zárolásának biztosításához. Ha intelligens zárolási szabályzatokat állít be az Azure AD-ben, akkor a támadások kiszűrhetők a helyszíni AD DS elérése előtt.
 
-[Átmenő hitelesítés](../hybrid/how-to-connect-pta.md)használatakor meg kell győződnie arról, hogy:
+[Átmenő hitelesítés](../hybrid/how-to-connect-pta.md)használatakor a következő szempontokat kell figyelembe venni:
 
-* Az Azure AD zárolási küszöbértéke **kisebb** , mint az Active Directory fiókzárolás küszöbértéke. Állítsa be úgy az értékeket, hogy a Active Directory fiókzárolás küszöbértéke legalább kettő vagy háromszor hosszabb legyen, mint az Azure AD zárolási küszöbértéke. 
-* Az Azure AD zárolási időtartamának hosszabbnak kell lennie, mint a fiókzárolás visszavonása Active Directory az időtartam után. Vegye figyelembe, hogy az Azure AD időtartama másodpercben van megadva, míg az AD időtartama percben van megadva. 
+* Az Azure AD zárolási küszöbértéke **kisebb** , mint az AD DS fiókzárolás küszöbértéke. Állítsa be úgy az értékeket, hogy a AD DS fiókzárolás küszöbértéke legalább kettő vagy háromszor hosszabb legyen, mint az Azure AD zárolási küszöbértéke.
+* Az Azure AD zárolási időtartamának hosszabbnak kell lennie, mint a fiókzárolás visszavonása AD DS az időtartam után. Az Azure AD időtartama másodpercben van megadva, míg az AD időtartama percben van megadva.
 
-Ha például azt szeretné, hogy az Azure AD-számlálója nagyobb legyen, mint az AD, akkor az Azure AD 120 másodperc (2 perc), míg a helyszíni AD 1 percre (60 másodpercre) van beállítva.
+Ha például azt szeretné, hogy az Azure AD-számlálója nagyobb legyen, mint AD DS, akkor az Azure AD 120 másodperc (2 perc), míg a helyszíni AD 1 percre (60 másodpercre) van beállítva.
 
 > [!IMPORTANT]
 > Jelenleg a rendszergazda nem tudja feloldani a felhasználók felhőalapú fiókjait, ha azokat az intelligens zárolási funkció kizárta. A rendszergazdának várnia kell, amíg lejár a zárolás időtartama. A felhasználó azonban az önkiszolgáló jelszó-visszaállítás (SSPR) használatával egy megbízható eszközről vagy helyről oldhatja fel a zárolást.
 
 ## <a name="verify-on-premises-account-lockout-policy"></a>Helyszíni fiókzárolási házirend ellenőrzése
 
-A helyszíni Active Directory fiókzárolási házirend ellenőrzéséhez kövesse az alábbi utasításokat:
+A helyszíni AD DS fiókzárolási házirend ellenőrzéséhez hajtsa végre a következő lépéseket egy tartományhoz csatlakoztatott rendszerből rendszergazdai jogosultságokkal:
 
 1. Nyissa meg a Csoportházirend felügyeleti eszközt.
-2. Szerkessze a szervezet fiókzárolási házirendjét (például az **alapértelmezett tartományi házirendet**) tartalmazó csoportházirendet.
+2. Szerkessze a szervezet fiókzárolási házirendjét, például az **alapértelmezett tartományi házirendet**tartalmazó csoportházirendet.
 3. Tallózással keresse meg a **számítógép-konfigurációs**  >  **házirendek**  >  **Windows-beállítások**  >  **biztonsági beállítások**  >  **fiók házirendek**fiókzárolási  >  **házirendet**.
 4. Ellenőrizze a fiókzárolás **küszöbértékét** , és **állítsa alaphelyzetbe a fiókzárolás számlálóját** az értékek után.
 
@@ -62,14 +65,19 @@ A helyszíni Active Directory fiókzárolási házirend ellenőrzéséhez köves
 
 ## <a name="manage-azure-ad-smart-lockout-values"></a>Azure AD intelligens zárolási értékek kezelése
 
-A szervezeti követelmények alapján előfordulhat, hogy az intelligens zárolási értékeket testre kell szabni. Az intelligens zárolási beállítások testre szabása a szervezetre jellemző értékekkel a felhasználóknak fizetett Azure AD-licenceket igényel.
+A szervezeti követelmények alapján testreszabhatja az Azure AD intelligens zárolási értékeit. Az intelligens zárolási beállítások testre szabása a szervezetre jellemző értékekkel prémium szintű Azure AD P1 vagy magasabb szintű licenceket igényel a felhasználók számára.
 
-A szervezet intelligens zárolási értékeinek vizsgálatához vagy módosításához kövesse az alábbi lépéseket:
+A szervezet intelligens zárolási értékeinek vizsgálatához vagy módosításához hajtsa végre a következő lépéseket:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. Keresse meg és válassza ki az *Azure Active Directoryt*. Válassza a **biztonsági**  >  **hitelesítési módszerek**  >  **jelszavas védelem**lehetőséget.
-1. Állítsa be a **zárolási küszöbértéket**attól függően, hogy az első zárolás előtt hány sikertelen bejelentkezés engedélyezett a fiókon. Az alapértelmezett érték 10.
-1. Állítsa a **zárolás időtartamát másodpercben**, az egyes zárolások hosszára másodpercben. Az alapértelmezett érték 60 másodperc (egy perc).
+1. Keresse meg és válassza ki *Azure Active Directory*, majd válassza a **biztonsági**  >  **hitelesítési módszerek**  >  **jelszavas védelem**lehetőséget.
+1. Állítsa be a **zárolási küszöbértéket**attól függően, hogy az első zárolás előtt hány sikertelen bejelentkezés engedélyezett a fiókon.
+
+    Az alapértelmezett érték 10.
+
+1. Állítsa a **zárolás időtartamát másodpercben**, az egyes zárolások hosszára másodpercben.
+
+    Az alapértelmezett érték 60 másodperc (egy perc).
 
 > [!NOTE]
 > Ha az első bejelentkezés a zárolás után is meghiúsul, a fiók ismét leáll. Ha egy fiók többször is zárolva van, a zárolás időtartama növekszik.
@@ -80,9 +88,10 @@ A szervezet intelligens zárolási értékeinek vizsgálatához vagy módosítá
 
 Az intelligens zárolási küszöbérték kiváltása esetén a következő üzenet jelenik meg a fiók zárolásakor:
 
-**A fiók átmenetileg zárolva van, hogy megakadályozza a jogosulatlan használatot. Próbálkozzon újra később, és ha még mindig problémája van, forduljon a rendszergazdához.**
+*A fiók átmenetileg zárolva van, hogy megakadályozza a jogosulatlan használatot. Próbálkozzon újra később, és ha még mindig problémája van, forduljon a rendszergazdához.*
 
 ## <a name="next-steps"></a>További lépések
 
-* [Ismerje meg, hogyan tilthatja be a hibás jelszavakat a szervezetben az Azure AD használatával.](howto-password-ban-bad.md)
-* [Az önkiszolgáló jelszó-visszaállítás konfigurálásával engedélyezheti a felhasználóknak a saját fiókjaik feloldását.](quickstart-sspr.md)
+Az [Azure ad jelszavas védelme érdekében egyéni tiltott jelszavakat is konfigurálhat](tutorial-configure-custom-password-protection.md)a további tapasztalatok testreszabásához.
+
+Az [Azure ad önkiszolgáló jelszó-visszaállítást konfigurálhatja](tutorial-enable-sspr.md)úgy, hogy a felhasználók egy webböngészőből visszaállítsák vagy módosítsák a jelszavukat.

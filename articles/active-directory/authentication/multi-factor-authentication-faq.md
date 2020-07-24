@@ -5,17 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 04/13/2020
+ms.date: 07/14/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa25cffd84ee9255fed8bbaa0f2fb6adf762b47e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d6f5cabace81d53edf36ac6be0a2eb8830e6cc5f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84483787"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87035077"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication – gyakran ismételt kérdések
 
@@ -55,6 +56,8 @@ A nem kötelező mezők konfigurálhatók Multi-Factor Authentication-kiszolgál
 
 Az ellenőrzés eredményét (sikeres vagy elutasítás) és a Megtagadás okát a hitelesítő adatként tárolja a rendszer. Ezek az adatok a hitelesítési és használati jelentésekben érhetők el.
 
+További információ: az [Azure multi-Factor Authentication adattárolási és vásárlói adatai](concept-mfa-data-residency.md).
+
 ### <a name="what-sms-short-codes-are-used-for-sending-sms-messages-to-my-users"></a>Milyen SMS rövid kódokat használ SMS-üzenetek küldésére a felhasználóknak?
 
 A Egyesült Államok a következő SMS rövid kódokat használjuk:
@@ -69,7 +72,9 @@ Kanadában a következő SMS rövid kódokat használjuk:
 * *759731*
 * *673801*
 
-A konzisztens SMS-és hangalapú Multi-Factor Authentication-küldési kérések nem garantálják ugyanazt a számot. A felhasználók érdekében bármikor hozzáadhatjuk vagy eltávolíthatjuk a rövid kódokat, ahogy az útvonal-kiigazításokat az SMS-kézbesítés javítására is felhasználjuk. A Egyesült Államok és Kanadában kívüli országokban és régiókban nem támogatjuk a rövid kódokat.
+A konzisztens SMS-és hangalapú Multi-Factor Authentication-küldési kérések nem garantálják ugyanazt a számot. A felhasználók érdekében bármikor hozzáadhatjuk vagy eltávolíthatjuk a rövid kódokat, ahogy az útvonal-kiigazításokat az SMS-kézbesítés javítására is felhasználjuk.
+
+A Egyesült Államok és Kanadában kívüli országokban és régiókban nem támogatjuk a rövid kódokat.
 
 ## <a name="billing"></a>Számlázás
 

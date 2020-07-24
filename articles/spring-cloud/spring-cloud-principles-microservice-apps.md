@@ -6,14 +6,15 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 05/27/2020
-ms.openlocfilehash: 1a8f48ff365ffae4a7013d2bfd537721ba2bc381
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.custom: devx-track-java
+ms.openlocfilehash: a8e1d43138e0b7481ebb89d747fa26df9470a09f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86172589"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87037135"
 ---
-# <a name="java-and-base-os-for-spring-microservice-apps"></a>Java és Base OS a Spring Service-alkalmazásokhoz
+# <a name="java-and-base-os-for-spring-microservice-apps"></a>Java és alap operációs rendszer a Spring mikroszolgáltatás-alapú alkalmazásokhoz
 Az alábbi alapelvek az egészséges Java és az alap operációs rendszer fenntartásához szükséges alapelveket a Spring Service-alkalmazásokhoz.
 ## <a name="principles-for-healthy-java-and-base-os"></a>Alapszintű Java és Base operációs rendszer alapelvei
 * Azonos alapszintű operációs rendszernek kell lennie a rétegek között – alapszintű | Standard | Prémium szintű.

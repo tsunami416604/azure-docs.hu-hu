@@ -4,12 +4,12 @@ description: A Batch támogatja az Azure AD-t a Batch szolgáltatásban történ
 ms.topic: how-to
 ms.date: 01/28/2020
 ms.custom: has-adal-ref
-ms.openlocfilehash: a8601c69c37e973118a7ec9521070864caffb101
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 7daf26d7c52e07be999bb93edd6fe694f79d1be2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170309"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87032459"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Batch szolgáltatási megoldások hitelesítése Active Directory
 
@@ -193,7 +193,7 @@ Az egyéni szerepkörök az Azure AD által hitelesített felhasználókra vonat
 }
 ```
 
-Az egyéni szerepkörök létrehozásával kapcsolatos általános információkat az Azure- [erőforrások egyéni szerepköreivel](../role-based-access-control/custom-roles.md)foglalkozó témakörben talál.
+Az egyéni szerepkörök létrehozásával kapcsolatos általános információkért lásd: [Egyéni Azure-szerepkörök](../role-based-access-control/custom-roles.md).
 
 ### <a name="get-the-tenant-id-for-your-azure-active-directory"></a>A Azure Active Directory bérlői AZONOSÍTÓjának beolvasása
 

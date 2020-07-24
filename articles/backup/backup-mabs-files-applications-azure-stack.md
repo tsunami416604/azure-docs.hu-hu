@@ -3,11 +3,12 @@ title: Azure Stack virtuális gépek fájljainak biztonsági mentése
 description: A Azure Backup használatával biztonsági mentést készíthet, valamint helyreállíthatja Azure Stack fájljait és alkalmazásait a Azure Stack-környezetében.
 ms.topic: conceptual
 ms.date: 06/05/2018
-ms.openlocfilehash: 2bcdf7f720708db1487d7d5cdaee41dc93c05728
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 07a64e5457963ea4a6d3b39b3f2326dbcfc5e63a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74172323"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87032765"
 ---
 # <a name="back-up-files-and-applications-on-azure-stack"></a>Fájlok és alkalmazások biztonsági mentése Azure Stack
 
@@ -43,7 +44,7 @@ A Azure Stack virtuális gépek fájljainak védelemmel Azure Backup Server konf
 
     ![Új védelmi csoport varázsló nyílik meg](./media/backup-mabs-files-applications-azure-stack/5-select-group-members.png)
 
-    A Microsoft azt javasolja, hogy minden olyan, a védelmi szabályzattal megosztva tárolt adattal egy védelmi csoportba helyezze. A védelmi csoportok megtervezésével és telepítésével kapcsolatos teljes információkért tekintse meg a System Center DPM című cikket, amely a [védelmi csoportok telepítését](https://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-1801)ismerteti.
+    A Microsoft azt javasolja, hogy minden olyan, a védelmi szabályzattal megosztva tárolt adattal egy védelmi csoportba helyezze. A védelmi csoportok megtervezésével és telepítésével kapcsolatos teljes információkért tekintse meg a System Center DPM című cikket, amely a [védelmi csoportok telepítését](/system-center/dpm/create-dpm-protection-groups)ismerteti.
 
 4. Az **adatvédelmi módszer kiválasztása** képernyőn adja meg a védelmi csoport nevét. Jelölje be a **rövid távú védelmet szeretnék** a következő használatával jelölőnégyzetet: és **szeretnék online védelmet**használni. Kattintson a **Tovább** gombra.
 
@@ -132,5 +133,5 @@ A Azure Portal Azure Backup Server entitások megtekintéséhez kövesse az alá
 
 További információ a Azure Backup Server használatáról más számítási feladatok ellátásához: a következő cikkek egyike:
 
-* [A SharePoint-farm biztonsági mentése](https://docs.microsoft.com/azure/backup/backup-mabs-sharepoint-azure-stack)
-* [SQL Server-kiszolgálók biztonsági mentése](https://docs.microsoft.com/azure/backup/backup-mabs-sql-azure-stack)
+* [A SharePoint-farm biztonsági mentése](./backup-mabs-sharepoint-azure-stack.md)
+* [SQL Server-kiszolgálók biztonsági mentése](./backup-mabs-sql-azure-stack.md)

@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f04fcae1ba218949019637e9a101492a487b430f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e27adde84f62f8c8d79389e1de4e867439d5a3be
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85603740"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87034737"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Archiválja a Azure Active Directory újdonságait?
 
@@ -1698,7 +1698,7 @@ A következő mezők változnak a naplózási sémában:
 |Kategória|Ez volt a **szolgáltatás neve** mező. Most már a **naplózási kategóriák** mező. A **szolgáltatás neve** átnevezve lett a **loggedByService** mezőre.|<ul><li>Fiók kiépítése</li><li>Alapvető könyvtár</li><li>Önkiszolgáló jelszó-visszaállítás</li></ul>|<ul><li>Felhasználókezelés</li><li>Csoportkezelés</li><li>Alkalmazások kezelése</li></ul>|
 |targetResources|A legfelső szinten tartalmazza a **TargetResourceType** .|&nbsp;|<ul><li>Szabályzat</li><li>Alkalmazás</li><li>Felhasználó</li><li>Csoport</li></ul>|
 |loggedByService|Annak a szolgáltatásnak a nevét adja meg, amely a naplót generálta.|Null|<ul><li>Fiók kiépítése</li><li>Alapvető könyvtár</li><li>Új jelszó önkiszolgáló kérése</li></ul>|
-|Eredmény|A naplók eredményét adja meg. Korábban ez a számbavétel megtörtént, de most már megmutatjuk a tényleges értéket.|<ul><li>0</li><li>1</li></ul>|<ul><li>Sikeres</li><li>Hiba</li></ul>|
+|Eredmény|A naplók eredményét adja meg. Korábban ez a számbavétel megtörtént, de most már megmutatjuk a tényleges értéket.|<ul><li>0</li><li>1</li></ul>|<ul><li>Success</li><li>Hiba</li></ul>|
 
 #### <a name="changed-fields-in-the-sign-in-schema"></a>Módosult mezők a bejelentkezési sémában
 A bejelentkezési sémában a következő mezők változnak:
@@ -1706,8 +1706,8 @@ A bejelentkezési sémában a következő mezők változnak:
 |Mező neve|Mi változott|Régi értékek|Új értékek|
 |----------|------------|----------|----------|
 |appliedConditionalAccessPolicies|Ez volt a **conditionalaccessPolicies** mező. Most már a **appliedConditionalAccessPolicies** mező.|Nincs változás besorolás|Nincs változás besorolás|
-|conditionalAccessStatus|A feltételes hozzáférési házirend állapotának eredményét adja meg a bejelentkezéskor. Korábban ez a számbavétel megtörtént, de most már megmutatjuk a tényleges értéket.|<ul><li>0</li><li>1</li><li>2</li><li>3</li></ul>|<ul><li>Sikeres</li><li>Hiba</li><li>Nincs alkalmazva</li><li>Letiltva</li></ul>|
-|appliedConditionalAccessPolicies: eredmény|A bejelentkezéskor az egyes feltételes hozzáférési szabályzatok állapotának eredményét adja meg. Korábban ez a számbavétel megtörtént, de most már megmutatjuk a tényleges értéket.|<ul><li>0</li><li>1</li><li>2</li><li>3</li></ul>|<ul><li>Sikeres</li><li>Hiba</li><li>Nincs alkalmazva</li><li>Letiltva</li></ul>|
+|conditionalAccessStatus|A feltételes hozzáférési házirend állapotának eredményét adja meg a bejelentkezéskor. Korábban ez a számbavétel megtörtént, de most már megmutatjuk a tényleges értéket.|<ul><li>0</li><li>1</li><li>2</li><li>3</li></ul>|<ul><li>Success</li><li>Hiba</li><li>Nincs alkalmazva</li><li>Disabled (Letiltva)</li></ul>|
+|appliedConditionalAccessPolicies: eredmény|A bejelentkezéskor az egyes feltételes hozzáférési szabályzatok állapotának eredményét adja meg. Korábban ez a számbavétel megtörtént, de most már megmutatjuk a tényleges értéket.|<ul><li>0</li><li>1</li><li>2</li><li>3</li></ul>|<ul><li>Success</li><li>Hiba</li><li>Nincs alkalmazva</li><li>Disabled (Letiltva)</li></ul>|
 
 További információ a sémáról: [Az Azure ad-naplók sémájának értelmezése Azure monitor (előzetes verzió)](https://docs.microsoft.com/azure/active-directory/reports-monitoring/reference-azure-monitor-audit-log-schema)
 
@@ -1969,7 +1969,7 @@ A következő alkalmazások szerepelnek a [jóváhagyott ügyfélalkalmazások](
 
 - Microsoft Stream
 
-További információkért lásd:
+További információ:
 
 - [Azure AD-alkalmazás-alapú feltételes hozzáférés](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)
 
@@ -2463,7 +2463,7 @@ A nyilvános előzetes verzióval kapcsolatos további információkért tekints
 
 ---
 
-## <a name="may-2018"></a>2018. máj.
+## <a name="may-2018"></a>2018. május
 
 ### <a name="expressroute-support-changes"></a>ExpressRoute-támogatás módosításai
 
@@ -2633,7 +2633,7 @@ További információt a [Azure ad B2C: hozzáférési tokenek igénylése](http
 
 Az SAML-alapú SSO-alkalmazások konfigurálásakor tesztelheti az integrációt a konfiguráció lapon. Ha a bejelentkezés során hibát észlel, megadhatja a hibát a tesztelési élményben, és az Azure AD megoldást nyújt az adott probléma megoldásához szükséges megoldási lépések elvégzésére.
 
-További információkért lásd:
+További információ:
 
 - [Egyszeri bejelentkezés konfigurálása az Azure Active Directory alkalmazáskatalógusában nem szereplő alkalmazásokhoz](https://docs.microsoft.com/azure/active-directory/active-directory-saas-custom-apps)
 - [Az SAML-alapú egyszeri bejelentkezések hibakeresése Azure Active Directory-alkalmazásokban](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-debugging)
@@ -2768,7 +2768,7 @@ Az Azure AD értesítést küld, ha egy katalógus vagy nem katalógusbeli alkal
 
 Néhány felhasználó nem kapott értesítéseket az SAML-alapú egyszeri bejelentkezéshez konfigurált nagyvállalati alkalmazásokhoz. A probléma megoldódott. Az Azure AD értesítést küld a 7, 30 és 60 nap alatt lejáró tanúsítványokról. Ezt az eseményt a naplókban láthatja.
 
-További információkért lásd:
+További információ:
 
 - [Az összevont egyszeri bejelentkezés tanúsítványainak kezelése Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-sso-certs)
 - [Naplózott tevékenységekre vonatkozó jelentések az Azure Active Directory portálon](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-activity-audit-logs)
@@ -2797,7 +2797,7 @@ További információ: [Mi az az Azure ad B2B Collaboration?](https://docs.micro
 
 Erről a [blogbejegyzésben](https://cloudblogs.microsoft.com/enterprisemobility/2018/03/15/the-intune-managed-browser-now-supports-azure-ad-sso-and-conditional-access/)olvashat bővebben.
 
-További információkért lásd:
+További információ:
 
 - [Alkalmazás-alapú feltételes hozzáférés beállítása](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)
 
@@ -3058,7 +3058,7 @@ Azure AD Connect az Azure AD és a helyszíni adatforrások közötti adatszinkr
 
 Ez a kiadás a következő frissítésekkel és módosításokkal rendelkezik:
 
-**Hibák kijavítva:**
+**Kijavított problémák**
 
 - A következő lapra váltáskor javítsa ki az időzítési időszakot a particionálási feladatok oldalának háttérben végzett feladatainál.
 
@@ -3114,7 +3114,7 @@ Február végére a következő alkalmazások lesznek hozzáadva:
 
 - Microsoft-számlázás
 
-További információkért lásd:
+További információ:
 
 - [Jóváhagyott ügyfélalkalmazás-követelmény](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#client-apps-preview)
 - [Azure AD-alkalmazás-alapú feltételes hozzáférés](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)
@@ -3211,7 +3211,7 @@ Az új Azure Active Directory felügyeleti konzol és az új API-k általánosan
 
 Az új felügyeleti konzolra való áttérés részeként 2 új API-t tettünk elérhetővé az Azure AD-tevékenységek naplófájljainak beolvasásához. Az új API-k szélesebb körű szűrési és rendezési funkciókat biztosítanak, továbbá gazdagabb naplózási és bejelentkezési tevékenységeket is biztosítanak. A biztonsági jelentésekben korábban elérhető adatok mostantól az Identity Protection kockázati észlelések API-n keresztül érhetők el Microsoft Graphban.
 
-További információkért lásd:
+További információ:
 
 - [Ismerkedés a Azure Active Directory Reporting API-val](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-getting-started-azure-portal)
 
@@ -3323,7 +3323,7 @@ További információ: [a Skype for Business-topológiák, amelyek modern hitele
 
 **Írja be a következőt:** A szolgáltatás **szolgáltatási kategóriájának módosítása:** Privileged Identity Management a **termék képességei:** Privileged Identity Management
 
-Az Azure szerepköralapú Access Control (RBAC) Azure AD Privileged Identity Management (PIM) nyilvános előzetes frissítésével mostantól a következőket teheti:
+A Azure AD Privileged Identity Management (PIM) Azure szerepköralapú hozzáférés-vezérléssel (Azure RBAC) való nyilvános előzetes frissítésével mostantól a következőket teheti:
 
 * Csak elég felügyeletet használjon.
 * Az erőforrás-szerepkörök aktiválásához jóváhagyás szükséges.
@@ -3372,7 +3372,7 @@ A következő alkalmazások szerepelnek a [jóváhagyott ügyfélalkalmazások](
 - [Microsoft Kaizala](https://www.microsoft.com/garage/profiles/kaizala/)
 - Microsoft StaffHub
 
-További információkért lásd:
+További információ:
 
 - [Jóváhagyott ügyfélalkalmazás-követelmény](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#client-apps-preview)
 - [Azure AD-alkalmazás-alapú feltételes hozzáférés](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)
@@ -3454,7 +3454,7 @@ Mostantól belefoglalhatja (vagy kizárhatja) a macOS-t az Azure AD feltételes 
 - **Győződjön meg arról, hogy a macOS-eszközök megfelelnek a szervezetnek az Intune-ban definiált megfelelőségi szabályzatoknak.** A Azure Portal Intune-ban mostantól beállíthatja a macOS-eszközökre vonatkozó megfelelőségi szabályzatokat.
 - **Az Azure AD-alkalmazásokhoz való hozzáférés korlátozása csak a megfelelő macOS-eszközökre.** A feltételes hozzáférési szabályzat létrehozásához a macOS-t külön eszköz platformként kell megválasztani. Most már készíthet macOS-specifikus feltételes hozzáférési szabályzatokat az Azure-beli megcélzott alkalmazás számára.
 
-További információkért lásd:
+További információ:
 
 - [Megfelelőségi szabályzat létrehozása MacOS-eszközökhöz az Intune-nal](https://aka.ms/macoscompliancepolicy)
 - [Feltételes hozzáférés az Azure AD-ben](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)
@@ -3501,7 +3501,7 @@ A következő alkalmazások lettek hozzáadva a [jóváhagyott ügyfélalkalmaz�
 - Microsoft Planner
 - Azure Information Protection
 
-További információkért lásd:
+További információ:
 
 - [Jóváhagyott ügyfélalkalmazás-követelmény](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#client-apps-preview)
 - [Azure AD-alkalmazás-alapú feltételes hozzáférés](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)

@@ -3,12 +3,12 @@ title: Resource Health riasztásokat létrehozó sablon
 description: Programozott módon hozhat létre riasztásokat, amelyek értesítik, ha az Azure-erőforrások elérhetetlenné válnak.
 ms.topic: conceptual
 ms.date: 9/4/2018
-ms.openlocfilehash: 18a3b2df2d159d2903c69debd79cccfc6d0af63e
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 399c37f123d06e251514d0cafc3c1c4918ce3edd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86255880"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87037933"
 ---
 # <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>Resource Health-riasztások konfigurálása Resource Manager-sablonok használatával
 
@@ -25,7 +25,7 @@ Azure Resource Health folyamatosan tájékoztat az Azure-erőforrások aktuális
 
 Az oldalon található utasítások követéséhez előre be kell állítania néhány dolgot:
 
-1. Telepítenie kell a [Azure PowerShell modult](https://docs.microsoft.com/powershell/azure/install-Az-ps)
+1. Telepítenie kell a [Azure PowerShell modult](/powershell/azure/install-az-ps)
 2. [Létre kell hoznia vagy újra kell használnia egy](../azure-monitor/platform/action-groups.md) , az értesítésre konfigurált műveleti csoportot.
 
 ## <a name="instructions"></a>Utasítások
@@ -446,7 +446,7 @@ Az előző szakaszban leírt különböző beállítások használatával itt l�
 
 Azonban tudni fogja, hogy milyen konfigurációk érvényesek az Ön számára, ezért használja a dokumentációban ismertetett eszközöket a saját testreszabásának elvégzéséhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a Resource Healthról:
 -  [Azure Resource Health áttekintése](Resource-health-overview.md)
@@ -454,5 +454,5 @@ További információ a Resource Healthról:
 
 
 Service Health riasztások létrehozása:
--  [Riasztások konfigurálása Service Healthhoz](../azure-monitor/platform/alerts-activity-log-service-notifications.md) 
+-  [Riasztások konfigurálása Service Healthhoz](./alerts-activity-log-service-notifications-portal.md) 
 -  [Azure Activity log esemény sémája](../azure-monitor/platform/activity-log-schema.md)

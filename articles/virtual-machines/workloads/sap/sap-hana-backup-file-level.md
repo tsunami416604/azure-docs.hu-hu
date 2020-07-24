@@ -12,19 +12,20 @@ ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/01/2020
 ms.author: juergent
-ms.openlocfilehash: 93b67936166eb73db5e9a15db42c2c6135794108
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b9d66dc4f0e2e637ac8512022336f257f5d585a9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78271382"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87035740"
 ---
 # <a name="sap-hana-azure-backup-on-file-level"></a>SAP HANA Azure Backup a fájl szintjén
 
-## <a name="introduction"></a>Introduction (Bevezetés)
+## <a name="introduction"></a>Bevezetés
 
-Ez a cikk az [Azure Virtual Machines SAP HANAának biztonsági mentési útmutatóját](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-guide)ismerteti, amely áttekintést nyújt az első lépésekről, valamint a Azure Backup szolgáltatás és a tárolási Pillanatképek további részleteiről. 
+Ez a cikk az [Azure Virtual Machines SAP HANAának biztonsági mentési útmutatóját](./sap-hana-backup-guide.md)ismerteti, amely áttekintést nyújt az első lépésekről, valamint a Azure Backup szolgáltatás és a tárolási Pillanatképek további részleteiről. 
 
-Az Azure-beli különböző virtuálisgép-típusok különböző számú virtuális merevlemezt tesznek lehetővé. A pontos részleteket a [Linux rendszerű virtuális gépek méreteiben dokumentáljuk az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/linux/sizes). Az ebben a dokumentációban említett tesztek esetében egy GS5 Azure-beli virtuális gépet használunk, amely lehetővé teszi a 64-hez csatlakoztatott adatlemezek használatát. Nagyobb SAP HANA rendszerek esetében előfordulhat, hogy jelentős számú lemezre van szükség az adatok és a naplófájlok esetében, valószínűleg az optimális lemezes i/o-átviteli sebességhez. Az Azure-beli virtuális gépeken SAP HANA üzemelő példányok javasolt lemez-konfigurációval kapcsolatos további részletekért olvassa el az Azure-beli [virtuális gépek tárolási konfigurációjának SAP HANAát](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)ismertető cikket. A javaslatok a helyi biztonsági mentésekre vonatkozó lemezterület-ajánlásokat is tartalmaznak.
+Az Azure-beli különböző virtuálisgép-típusok különböző számú virtuális merevlemezt tesznek lehetővé. A pontos részleteket a [Linux rendszerű virtuális gépek méreteiben dokumentáljuk az Azure-ban](../../linux/sizes.md). Az ebben a dokumentációban említett tesztek esetében egy GS5 Azure-beli virtuális gépet használunk, amely lehetővé teszi a 64-hez csatlakoztatott adatlemezek használatát. Nagyobb SAP HANA rendszerek esetében előfordulhat, hogy jelentős számú lemezre van szükség az adatok és a naplófájlok esetében, valószínűleg az optimális lemezes i/o-átviteli sebességhez. Az Azure-beli virtuális gépeken SAP HANA üzemelő példányok javasolt lemez-konfigurációval kapcsolatos további részletekért olvassa el az Azure-beli [virtuális gépek tárolási konfigurációjának SAP HANAát](./hana-vm-operations-storage.md)ismertető cikket. A javaslatok a helyi biztonsági mentésekre vonatkozó lemezterület-ajánlásokat is tartalmaznak.
 
 A Backup/Restore fájl szintjén való kezelésének szabványos módja a fájl-alapú biztonsági mentés SAP HANA studión keresztül vagy SAP HANA SQL-utasításokon keresztül. További információért olvassa el [SAP HANA SQL-és rendszernézetek referenciáját](https://help.sap.com/hana/SAP_HANA_SQL_and_System_Views_Reference_en.pdf).
 
@@ -34,15 +35,15 @@ Ez az ábra a SAP HANA Studio Backup (biztonsági mentés) menüjének párbesz�
 
 Habár ez a választás egyszerű és egyenes előre hangzik, néhány szempontot figyelembe kell venni. Az Azure-beli virtuális gépekre korlátozott számú adatlemez csatlakoztatható. Előfordulhat, hogy a virtuális gép fájlrendszerén nem lehet kapacitást tárolni SAP HANA biztonságimásolat-fájlok tárolásához, az adatbázis méretétől és a lemez átviteli sebessége követelményeitől függően, amely több adatlemezen is tartalmazhat szoftvereket. A biztonságimásolat-fájlok áthelyezésének különböző lehetőségei, valamint a fájlméretre vonatkozó korlátozások és teljesítmény kezelése a jelen cikk későbbi részében található.
 
-Egy másik lehetőség, amely a teljes kapacitással kapcsolatos nagyobb szabadságot nyújt, az Azure Blob Storage. Habár egyetlen blob is 1 TB-ra van korlátozva, egy blob-tároló teljes kapacitása jelenleg 500 TB. Emellett a felhasználók dönthetnek úgy, hogy kiválasztják az úgynevezett ritka elérésű &quot; &quot; blob Storage-t, ami költséghatékony. Tekintse meg az [Azure Blob Storage: gyakori, ritka elérésű és archív hozzáférési szinteket](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers?tabs=azure-portal) a ritka blob Storage szolgáltatással kapcsolatos részletekért.
+Egy másik lehetőség, amely a teljes kapacitással kapcsolatos nagyobb szabadságot nyújt, az Azure Blob Storage. Habár egyetlen blob is 1 TB-ra van korlátozva, egy blob-tároló teljes kapacitása jelenleg 500 TB. Emellett a felhasználók dönthetnek úgy, hogy kiválasztják az úgynevezett ritka elérésű &quot; &quot; blob Storage-t, ami költséghatékony. Tekintse meg az [Azure Blob Storage: gyakori, ritka elérésű és archív hozzáférési szinteket](../../../storage/blobs/storage-blob-storage-tiers.md?tabs=azure-portal) a ritka blob Storage szolgáltatással kapcsolatos részletekért.
 
-A további biztonság érdekében a SAP HANA biztonsági mentések tárolásához használjon földrajzilag replikált Storage-fiókot. A tárterület-redundancia és a tárolási replikáció részleteiért lásd az [Azure Storage-redundancia](https://docs.microsoft.com/azure/storage/common/storage-redundancy) című témakört.
+A további biztonság érdekében a SAP HANA biztonsági mentések tárolásához használjon földrajzilag replikált Storage-fiókot. A tárterület-redundancia és a tárolási replikáció részleteiért lásd az [Azure Storage-redundancia](../../../storage/common/storage-redundancy.md) című témakört.
 
 Az egyik dedikált virtuális merevlemezt helyezhet SAP HANA biztonsági másolatokhoz egy olyan dedikált biztonsági mentési Storage-fiókban, amely földrajzilag replikálva van. Egy másik lehetséges, hogy átmásolja a SAP HANA biztonsági másolatokat tároló virtuális merevlemezeket egy földrajzilag replikált Storage-fiókba vagy más régióban található Storage-fiókba.
 
 ## <a name="azure-blobxfer-utility-details"></a>Az Azure blobxfer segédprogram részletei
 
-Az Azure Storage-beli könyvtárak és fájlok tárolására a CLI vagy a PowerShell használatával, illetve az [Azure SDK](https://azure.microsoft.com/downloads/)-k egyikének használatával lehet létrehozni egy eszközt. Az adatok Azure Storage-ba történő másolásához használható használatra kész AzCopy is. (lásd: [adatok átvitele a AzCopy parancssori segédprogrammal](../../../storage/common/storage-use-azcopy.md)).
+Az Azure Storage-beli könyvtárak és fájlok tárolására a CLI vagy a PowerShell használatával, illetve az [Azure SDK](https://azure.microsoft.com/downloads/)-k egyikének használatával lehet létrehozni egy eszközt. Az adatok Azure Storage-ba történő másolásához használható használatra kész AzCopy is. (lásd: [adatok átvitele a AzCopy parancssori segédprogrammal](../../../storage/common/storage-use-azcopy-v10.md)).
 
 Ezért a blobxfer SAP HANA biztonságimásolat-fájlok másolására használták. Nyílt forráskód, amelyet számos ügyfél használ éles környezetben, és elérhető a [githubon](https://github.com/Azure/blobxfer). Ez az eszköz lehetővé teszi, hogy az egyiket közvetlenül az Azure Blob Storage-ba vagy az Azure-fájlmegosztásba másolja. Számos hasznos funkciót is kínál, például az MD5-kivonatot vagy az automatikus párhuzamosságot, ha több fájllal rendelkező könyvtárat másol.
 
@@ -64,7 +65,7 @@ Ugyanezt a biztonsági mentést ugyanazzal a szoftveres RAID-sel megismételve, 
 ## <a name="copy-sap-hana-backup-files-to-azure-blob-storage"></a>SAP HANA biztonságimásolat-fájlok másolása az Azure Blob Storage-ba
 Előfordulhat, hogy a megadott teljesítményi számok, a biztonsági mentés időtartamának száma és a másolási időtartam száma nem az Azure-technológia legújabb állapotát képviseli. A Microsoft folyamatosan fejleszti az Azure Storage-t, hogy nagyobb átviteli sebességet és kisebb késéseket nyújtson. Ezért a számok csak demonstrációs célokat szolgálnak. Az Ön által választott Azure-régióban kell tesztelni az egyéni igényeket, hogy a lehető leghatékonyabban tudja megítélni a módszert.
 
-Egy másik lehetőség a SAP HANA biztonsági mentési fájlok gyors tárolására az Azure Blob Storage. Egy blob-tároló legfeljebb 500 TB-os korláttal rendelkezik, amely elegendő a SAP HANA rendszerekhez, a M32ts, a M32ls, a M64ls és az Azure GS5 VM-típusaival, hogy elegendő SAP HANA biztonsági mentést lehessen tartani. Az ügyfelek választhatnak a gyakori és a ritkán &quot; &quot; &quot; &quot; használt BLOB Storage-tároló között (lásd [: Azure Blob Storage: gyakori, ritka elérésű és archív hozzáférési szintek](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers?tabs=azure-portal)).
+Egy másik lehetőség a SAP HANA biztonsági mentési fájlok gyors tárolására az Azure Blob Storage. Egy blob-tároló legfeljebb 500 TB-os korláttal rendelkezik, amely elegendő a SAP HANA rendszerekhez, a M32ts, a M32ls, a M64ls és az Azure GS5 VM-típusaival, hogy elegendő SAP HANA biztonsági mentést lehessen tartani. Az ügyfelek választhatnak a gyakori és a ritkán &quot; &quot; &quot; &quot; használt BLOB Storage-tároló között (lásd [: Azure Blob Storage: gyakori, ritka elérésű és archív hozzáférési szintek](../../../storage/blobs/storage-blob-storage-tiers.md?tabs=azure-portal)).
 
 A blobxfer eszközzel egyszerűen másolhatók a SAP HANA biztonsági másolatok fájljai közvetlenül az Azure Blob Storage-ba.
 
@@ -89,12 +90,12 @@ Mivel a helyi lemezekkel más helyekre (például az Azure Blob Storage-ba) vég
 
 ## <a name="copy-sap-hana-backup-files-to-nfs-share"></a>SAP HANA biztonságimásolat-fájlok másolása NFS-megosztásba
 
-Microsoft Azure natív NFS-megosztásokat kínál a [Azure NetApp Fileson](https://azure.microsoft.com/services/netapp/)keresztül. A biztonsági másolatok tárolásához és kezeléséhez különböző köteteket hozhat létre a kapacitásban. Ezeket a köteteket a NetApp technológiája alapján is elvégezheti. A Azure NetApp Files (ANF) három különböző szolgáltatási szinten érhető el, amelyek különböző tárolási sebességet biztosítanak. További részletekért olvassa el a [Azure NetApp Filesi szolgáltatási szintjeinek](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels)leírását. A ANF-ből létrehozhat és csatlakoztathat egy NFS-kötetet a [gyors útmutató: Azure NetApp Files beállítása és az NFS-kötet létrehozása](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-quickstart-set-up-account-create-volumes?tabs=azure-portal)című cikkben leírtak szerint.
+Microsoft Azure natív NFS-megosztásokat kínál a [Azure NetApp Fileson](https://azure.microsoft.com/services/netapp/)keresztül. A biztonsági másolatok tárolásához és kezeléséhez különböző köteteket hozhat létre a kapacitásban. Ezeket a köteteket a NetApp technológiája alapján is elvégezheti. A Azure NetApp Files (ANF) három különböző szolgáltatási szinten érhető el, amelyek különböző tárolási sebességet biztosítanak. További részletekért olvassa el a [Azure NetApp Filesi szolgáltatási szintjeinek](../../../azure-netapp-files/azure-netapp-files-service-levels.md)leírását. A ANF-ből létrehozhat és csatlakoztathat egy NFS-kötetet a [gyors útmutató: Azure NetApp Files beállítása és az NFS-kötet létrehozása](../../../azure-netapp-files/azure-netapp-files-quickstart-set-up-account-create-volumes.md?tabs=azure-portal)című cikkben leírtak szerint.
 
 Az Azure natív NFS-kötetei az ANF-n keresztül történő használata mellett számos lehetőség áll rendelkezésre a saját, az Azure-ban NFS-megosztásokat biztosító központi telepítések létrehozására. Az összes hátránya, hogy ezeket a megoldásokat saját kezűleg kell telepítenie és kezelnie. Ezek közül néhányat a következő cikkek dokumentálnak:
 
-- [Magas rendelkezésre állás az NFS-en SUSE Linux Enterprise Server Azure-beli virtuális gépeken](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs)
-- [Red Hat Enterprise Linuxon futó Azure-beli virtuális gépeken üzemelő GlusterFS SAP NetWeaverhez](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-glusterfs)
+- [Magas rendelkezésre állás az NFS-en SUSE Linux Enterprise Server Azure-beli virtuális gépeken](./high-availability-guide-suse-nfs.md)
+- [Red Hat Enterprise Linuxon futó Azure-beli virtuális gépeken üzemelő GlusterFS SAP NetWeaverhez](./high-availability-guide-rhel-glusterfs.md)
 
 A fent leírt módon létrehozott NFS-megosztások használhatók a HANA-alapú biztonsági másolatok közvetlen végrehajtásához vagy a helyi lemezeken az NFS-megosztásokon végrehajtott biztonsági másolatok másolásához.
 
@@ -103,7 +104,7 @@ A fent leírt módon létrehozott NFS-megosztások használhatók a HANA-alapú 
 
 ## <a name="copy-sap-hana-backup-files-to-azure-files"></a>SAP HANA biztonságimásolat-fájlok másolása Azure Files
 
-Egy Azure Files-megosztást egy Azure Linux rendszerű virtuális gépen lehet csatlakoztatni. Az [Azure file Storage és a Linux használatát](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-linux) ismertető cikk részletesen ismerteti a konfiguráció végrehajtásának módját. A Azure Files vagy az Azure Premium-fájlokra vonatkozó korlátozásokért olvassa el [Azure Files skálázhatósági és teljesítményi célok](https://docs.microsoft.com/azure/storage/files/storage-files-scale-targets)című cikket.
+Egy Azure Files-megosztást egy Azure Linux rendszerű virtuális gépen lehet csatlakoztatni. Az [Azure file Storage és a Linux használatát](../../../storage/files/storage-how-to-use-files-linux.md) ismertető cikk részletesen ismerteti a konfiguráció végrehajtásának módját. A Azure Files vagy az Azure Premium-fájlokra vonatkozó korlátozásokért olvassa el [Azure Files skálázhatósági és teljesítményi célok](../../../storage/files/storage-files-scale-targets.md)című cikket.
 
 > [!NOTE]
 > A SAP HANA nem támogatja az SMB és a CIFS fájlrendszer használatát a HANA-alapú biztonsági mentések írásához. Lásd még: [SAP-támogatási megjegyzés #1820529](https://launchpad.support.sap.com/#/notes/1820529). Ennek eredményeképpen ezt a megoldást csak a HANA-adatbázis biztonsági másolatának végső céljaként használhatja, amelyet közvetlenül a helyi csatlakoztatott lemezeken hajtottak végre.

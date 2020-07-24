@@ -13,11 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/06/2019
 ms.author: alsin
-ms.openlocfilehash: 06cb3fe5d551ddfc95fcbd37cd9620adebd825c5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e31a10b1086679b7c2493f5a6d6b62f75e363dd4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "70883932"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87036471"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>A soros konzol használata a GRUB és a single-user mód eléréséhez
 A virtuális gép (VM) rendszerindításakor a rendszer valószínűleg elsőként látja a GRand Unified bootloadert (GRUB). Mivel az operációs rendszer elindítása előtt megjelenik, a GRUB nem érhető el SSH-n keresztül. A GRUB-ban módosíthatja a rendszerindítási konfigurációt úgy, hogy az egyfelhasználós módba induljon, egyebek között.
@@ -36,7 +37,7 @@ Az egyfelhasználós mód megadásához írja be a GRUB-ot a virtuális gép ind
 ## <a name="general-grub-access"></a>Általános GRUB-hozzáférés
 A GRUB eléréséhez indítsa újra a virtuális gépet, amíg a soros konzol ablaktábla meg van nyitva. Egyes disztribúciók billentyűzet-bevitelt igényelnek a GRUB megjelenítéséhez, mások pedig néhány másodpercig automatikusan megmutatják a GRUB használatát, hogy a felhasználói billentyűzet bemenete megszakítsa az időkorlátot.
 
-Az egyfelhasználós üzemmód eléréséhez biztosítania kell, hogy a GRUB engedélyezve legyen a virtuális gépen. A terjesztéstől függően előfordulhat, hogy bizonyos beállítási munkák szükségesek ahhoz, hogy a GRUB engedélyezve legyen. A Distribution-specifikus információkhoz tekintse meg a következő szakaszt és a [Linux Azure-beli támogatását](https://blogs.msdn.microsoft.com/linuxonazure/2018/10/23/why-proactively-ensuring-you-have-access-to-grub-and-sysrq-in-your-linux-vm-could-save-you-lots-of-down-time/) ismertető oldalt.
+Az egyfelhasználós üzemmód eléréséhez biztosítania kell, hogy a GRUB engedélyezve legyen a virtuális gépen. A terjesztéstől függően előfordulhat, hogy bizonyos beállítási munkák szükségesek ahhoz, hogy a GRUB engedélyezve legyen. A Distribution-specifikus információk a következő szakaszban olvashatók.
 
 ### <a name="restart-your-vm-to-access-grub-in-serial-console"></a>Indítsa újra a virtuális gépet a soros konzolon a GRUB eléréséhez
 A virtuális gép újraindításához a soros konzolon vigye az egérmutatót az **Újraindítás** gombra, majd válassza a **virtuális gép újraindítása**lehetőséget. A panel alján megjelenik egy értesítés az újraindításról.
@@ -112,7 +113,7 @@ Ha a fenti utasítások alapján beállította a GRUB-és a gyökérszintű hozz
 
    Az egyfelhasználós mód megadása előtt meg kell adnia a rendszergazdai jelszót. Ez a jelszó az előző utasításokban létrehozott.
 
-    ![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-enter-emergency-shell.gif)
+    ![Egy parancssori felületet bemutató animált kép. A felhasználó kiválaszt egy kiszolgálót, megkeresi a kernel vonalának végét, majd belép a megadott szövegbe.](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-enter-emergency-shell.gif)
 
 ### <a name="enter-single-user-mode-without-root-account-enabled-in-rhel"></a>Adja meg az egyfelhasználós üzemmódot anélkül, hogy a gyökérszintű fiók engedélyezve van a RHEL
 Ha nem engedélyezte a legfelső szintű felhasználót a korábbi utasítások követésével, a következő lépésekkel továbbra is alaphelyzetbe állíthatja a legfelső szintű jelszót:
@@ -136,7 +137,7 @@ Ha nem engedélyezte a legfelső szintű felhasználót a korábbi utasítások 
 1. Most már a root-on. A legfelső szintű jelszót a következő utasítások beírásával állíthatja alaphelyzetbe `passwd` , majd megadhatja az egyfelhasználós üzemmódot. 
 1. Ha elkészült, adja meg `reboot -f` az újraindítást.
 
-![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-emergency-mount-no-root.gif)
+![Egy parancssori felületet bemutató animált kép. A felhasználó kiválaszt egy kiszolgálót, megkeresi a kernel vonalának végét, és belép a megadott parancsokra.](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-emergency-mount-no-root.gif)
 
 > [!NOTE]
 > Az előző utasításokon keresztül futtatva elkerülheti a vészhelyzeti rendszerhéjba, így olyan feladatokat is végrehajthat, mint például a Szerkesztés `fstab` . Azonban általában azt javasoljuk, hogy állítsa alaphelyzetbe a legfelső szintű jelszót, és használja azt az egyfelhasználós mód megadásához.
@@ -240,7 +241,7 @@ Az egyfelhasználós üzemmód Oracle Linuxban való engedélyezéséhez kövess
 ## <a name="next-steps"></a>További lépések
 A soros konzolról további információt a következő témakörben talál:
 * [A Linux soros konzol dokumentációja](serial-console-linux.md)
-* [A GRUB engedélyezése a soros konzol használatával különböző disztribúciókban](https://blogs.msdn.microsoft.com/linuxonazure/2018/10/23/why-proactively-ensuring-you-have-access-to-grub-and-sysrq-in-your-linux-vm-could-save-you-lots-of-down-time/)
+* [A GRUB engedélyezése a soros konzol használatával különböző disztribúciókban](/archive/blogs/linuxonazure/why-proactively-ensuring-you-have-access-to-grub-and-sysrq-in-your-linux-vm-could-save-you-lots-of-down-time)
 * [Soros konzol használata NMI-és SysRq-hívásokhoz](serial-console-nmi-sysrq.md)
 * [Soros konzol Windows rendszerű virtuális gépekhez](serial-console-windows.md)
 * [Rendszerindítási diagnosztika](boot-diagnostics.md)

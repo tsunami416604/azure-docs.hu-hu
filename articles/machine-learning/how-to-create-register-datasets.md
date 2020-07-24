@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 06/29/2020
-ms.openlocfilehash: baa238f36c41b5f494e8748cd5cd563bd212f483
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c082c74ab448fda0926b5aab52088bf00fb719bf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610710"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87031157"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Azure Machine Learning adatkészletek létrehozása
 
@@ -33,7 +33,8 @@ Azure Machine Learning adatkészletek esetében a következőket teheti:
 * Az adatmegosztás és együttműködés más felhasználókkal.
 
 ## <a name="prerequisites"></a>Előfeltételek
-"Az adatkészletek létrehozásához és működéséhez a következőkre lesz szüksége:
+
+Az adatkészletek létrehozásához és működéséhez a következőkre lesz szüksége:
 
 * Azure-előfizetés. Ha még nincs előfizetése, hozzon létre egy ingyenes fiókot, mielőtt hozzákezd. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree).
 
@@ -42,13 +43,13 @@ Azure Machine Learning adatkészletek esetében a következőket teheti:
 * A [Azure Machine learning SDK for Python telepítve](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py), amely tartalmazza a azureml-adatkészletek csomagot.
 
 > [!NOTE]
-> Egyes adatkészlet-osztályok függőségekkel rendelkeznek a [azureml-adatelőkészítés](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py) csomagon, amely csak a 64 bites Python rendszerrel kompatibilis. A Linux-felhasználók esetében ezek az osztályok csak a következő disztribúciókban támogatottak: Red Hat Enterprise Linux, Ubuntu, Fedora és CentOS.
+> Egyes adatkészlet-osztályok függőségekkel rendelkeznek a [azureml-adatelőkészítés](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py) csomagon, amely csak a 64 bites Python rendszerrel kompatibilis. A Linux-felhasználók esetében ezek az osztályok csak a következő disztribúciókban támogatottak: Red Hat Enterprise Linux (7, 8), Ubuntu (14,04, 16,04, 18,04), Fedora (27, 28), Debian (8, 9) és CentOS (7).
 
 ## <a name="compute-size-guidance"></a>Számítási méretre vonatkozó útmutató
 
 Adatkészlet létrehozásakor tekintse át a számítási feldolgozási teljesítményt és az adatok méretét a memóriában. A tárolóban tárolt adatai mérete nem egyezik meg a dataframe lévő adatmérettel. Például a CSV-fájlokban lévő adat akár 10x-re is kiterjeszthető egy dataframe, így egy 1 GB-os CSV-fájl 10 GB-nyi lehet egy dataframe. 
 
-A fő tényező, hogy mekkora az adatkészlet memóriában lévő mérete, például dataframe. Javasoljuk, hogy a számítási méret és a feldolgozási teljesítmény a RAM méretének 2x-re legyen. Tehát ha a dataframe 10 GB-nyi, a számítási célt 20 + GB RAM-mal szeretné biztosítani, hogy a dataframe kényelmesen illeszkedjen a memóriába, és feldolgozza azokat. Ha tömöríti az adatait, tovább bővíthető. a tömörített parketta-formátumban tárolt 20 GB-os viszonylag ritka adat a memóriában is kiterjeszthető ~ 800 GB-ra. Mivel a Parquet-fájlok oszlopos formátumban tárolják az adattárolást, ha csak az oszlopok felét kell megadnia, akkor a memóriában csak a ~ 400 GB-ot kell betölteni.
+A fő tényező, hogy mekkora az adatkészlet memóriában lévő mérete, például dataframe. Javasoljuk, hogy a számítási méret és a feldolgozási teljesítmény a RAM méretének 2x-re legyen. Tehát ha a dataframe 10 GB méretű, a számítási célt 20 + GB RAM-mal szeretné biztosítani, hogy a dataframe megfelelően illeszkedjen a memóriába, és feldolgozza azokat. Ha tömöríti az adatait, tovább bővíthető. a tömörített parketta-formátumban tárolt 20 GB-os viszonylag ritka adat a memóriában is kiterjeszthető ~ 800 GB-ra. Mivel a Parquet-fájlok oszlopos formátumban tárolják az adattárolást, ha csak az oszlopok felét kell megadnia, akkor a memóriában csak a ~ 400 GB-ot kell betölteni.
  
 Ha a Pandat használja, nincs ok arra, hogy több mint 1 vCPU, mivel ez minden, amit használni fog. A Modin és a Dask/Ray használatával egyszerűen integrálással számos vCPU egyetlen Azure Machine Learning számítási példányon/csomóponton keresztül, és szükség esetén nagy méretű fürtre is kibővíthető, ha egyszerűen `import pandas as pd` változik `import modin.pandas as pd` . 
  
@@ -121,11 +122,11 @@ titanic_ds = Dataset.Tabular.from_delimited_files(path=web_path, set_column_type
 titanic_ds.take(3).to_pandas_dataframe()
 ```
 
-| |PassengerId|Túlélte|Pclass|Name|szex|Kor|SibSp|Parch|Ticket|Legnagyobb légitársasága|Kabin|Megkezdte
+|Index|PassengerId|Túlélte|Pclass|Name|szex|Kor|SibSp|Parch|Ticket|Legnagyobb légitársasága|Kabin|Megkezdte
 -|-----------|--------|------|----|---|---|-----|-----|------|----|-----|--------|
-0|1|False (Hamis)|3|Braund, Mr. Owen Harris|male|22,0|1|0|A/5 21171|7,2500||S
-1|2|True (Igaz)|1|Cumings, Mrs. John Bradley (Florence Briggs th...|female|38,0|1|0|PC 17599|71,2833|C85|C#
-2|3|True (Igaz)|3|Heikkinen, Miss. Laina 's|female|26,0|0|0|STON/O2. 3101282|7,9250||S
+0|1|Hamis|3|Braund, Mr. Owen Harris|male|22,0|1|0|A/5 21171|7,2500||S
+1|2|Igaz|1|Cumings, Mrs. John Bradley (Florence Briggs th...|female|38,0|1|0|PC 17599|71,2833|C85|C
+2|3|Igaz|3|Heikkinen, Miss. Laina 's|female|26,0|0|0|STON/O2. 3101282|7,9250||S
 
 Ha adatkészletet szeretne létrehozni egy memóriából származó pandák dataframe, írja az adatokat egy helyi fájlba, például egy CSV-fájlba, és hozza létre az adatkészletet a fájlból. A következő kód mutatja be ezt a munkafolyamatot.
 
@@ -158,7 +159,7 @@ A [`from_sql_query()`](https://docs.microsoft.com/python/api/azureml-core/azurem
 
 from azureml.core import Dataset, Datastore
 
-# create tabular dataset from a SQL database in datastore
+# create tabular dataset from a SQL database in datastore. Take note of double parenthesis.
 sql_datastore = Datastore.get(workspace, 'mssql')
 sql_ds = Dataset.Tabular.from_sql_query((sql_datastore, 'SELECT * FROM my_table'))
 ```
@@ -186,7 +187,7 @@ data_slice = dataset.time_recent(timedelta(weeks=1, days=1))
 
 #### <a name="create-a-filedataset"></a>FileDataset létrehozása
 
-A [`from_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?view=azure-ml-py#from-files-path--validate-true-) osztály metódusának használatával `FileDatasetFactory` bármilyen formátumban betöltheti a fájlokat, és nem regisztrált FileDataset hozhat létre. Ha a tároló egy virtuális hálózat vagy tűzfal mögött van, állítsa be a paramétert a `validate =False` `from_files()` metódusban. Ezzel megkerüli a kezdeti ellenőrzési lépést, és gondoskodik arról, hogy az adatkészletet ezekből a biztonságos fájlokból lehessen létrehozni.
+A [`from_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?view=azure-ml-py#from-files-path--validate-true-) osztály metódusának használatával `FileDatasetFactory` bármilyen formátumban betöltheti a fájlokat, és nem regisztrált FileDataset hozhat létre. Ha a tárterület virtuális hálózat vagy tűzfal mögött van, állítsa a paramétert a `validate=False` `from_files()` metódusban. Ezzel megkerüli a kezdeti ellenőrzési lépést, és gondoskodik arról, hogy az adatkészletet ezekből a biztonságos fájlokból lehessen létrehozni.
 
 ```Python
 # create a FileDataset pointing to files in 'animals' folder and its subfolders recursively
@@ -210,6 +211,7 @@ Adatkészlet létrehozása a Studióban:
 1. Válassza az **adatkészlet létrehozása** lehetőséget az adatkészlet forrásának kiválasztásához. Ez a forrás lehet helyi fájl, adattár vagy nyilvános URL-cím.
 1. Válassza a **táblázatos** vagy a **fájl** lehetőséget az adatkészlet típusához.
 1. Kattintson a **tovább** gombra az **adattár és a fájl kiválasztása** űrlap megnyitásához. Ezen az űrlapon kiválaszthatja, hogy hol szeretné megőrizni az adatkészletet a létrehozás után, valamint kiválaszthatja az adatkészlethez használni kívánt adatfájlokat. 
+    1. Az érvényesítés kihagyásának engedélyezése, ha az adatai virtuális hálózaton vannak. További információ a [virtuális hálózatok elkülönítéséről és adatvédelméről](how-to-enable-virtual-network.md#machine-learning-studio).
 1. Válassza a **tovább** lehetőséget a **beállítások és az előnézet** és a **séma** űrlapok feltöltéséhez; ezeket a fájltípusok alapján intelligens módon töltik fel, és az űrlapokon való létrehozás előtt további beállításokkal konfigurálhatja az adatkészletet. 
 1. Kattintson a **tovább** gombra a **részletek megerősítése** űrlap áttekintéséhez. Válassza ki a beállításokat, és hozzon létre egy opcionális adatprofilt az adatkészlethez. További információ az [adatprofilkészítésről](how-to-use-automated-ml-for-ml-models.md#profile). 
 1. Válassza a **Létrehozás** lehetőséget az adatkészlet létrehozásának befejezéséhez.
@@ -262,7 +264,7 @@ Válasszon ki egy adatkészletet a csempe kiválasztásával. (A keresősáv has
 
 ![Adatkészlet kiválasztása](./media/how-to-create-register-datasets/open-datasets-2.png)
 
-Válassza ki azt a nevet, amelyben regisztrálni kívánja az adatkészletet, és opcionálisan szűrheti az adatokat az elérhető szűrők használatával. Ebben az esetben a munkaszüneti adatkészletek esetében az időszakot egy évig, az országkód pedig csak az Egyesült Államokban szűri. Válassza a **Létrehozás** lehetőséget.
+Válassza ki azt a nevet, amelyben regisztrálni kívánja az adatkészletet, és opcionálisan szűrheti az adatokat az elérhető szűrők használatával. Ebben az esetben a munkaszüneti adatkészletek esetében az időszakot egy évig, az országkód pedig csak az Egyesült Államokban szűri. Kattintson a **Létrehozás** gombra.
 
 ![Adatkészlet-paraméterek beállítása és adatkészlet létrehozása](./media/how-to-create-register-datasets/open-datasets-3.png)
 

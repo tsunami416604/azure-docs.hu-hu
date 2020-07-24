@@ -3,11 +3,12 @@ title: Biztonsági mentés engedélyezése Azure-beli virtuális gép létrehoz�
 description: Ismerteti, hogyan engedélyezhető a biztonsági mentés, ha Azure-beli virtuális gépet hoz létre Azure Backup használatával.
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: 7739109eb8bad88c9b723e67e13adc78c127499a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7fb6fd25f5031669633641ea02f34180f6f795d4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80672811"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87032850"
 ---
 # <a name="enable-backup-when-you-create-an-azure-vm"></a>Biztonsági mentés engedélyezése Azure-beli virtuális gép létrehozásakor
 
@@ -29,7 +30,7 @@ Ha még nem jelentkezett be a fiókjába, jelentkezzen be a [Azure Portalba](htt
 
 2. Az Azure Marketplace-en kattintson a **számítás**elemre, majd válasszon ki egy virtuálisgép-rendszerképet.
 
-3. Állítsa be a virtuális gépet a [Windows](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal) -vagy [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-portal) -utasításoknak megfelelően.
+3. Állítsa be a virtuális gépet a [Windows](../virtual-machines/windows/quick-create-portal.md) -vagy [Linux](../virtual-machines/linux/quick-create-portal.md) -utasításoknak megfelelően.
 
 4. A **kezelés** lap **biztonsági mentés engedélyezése**területén kattintson **a be**gombra.
 5. Azure Backup biztonsági mentéseket egy Recovery Services-tárolóba. Kattintson az **új létrehozása** lehetőségre, ha nem rendelkezik meglévő tárolóval.

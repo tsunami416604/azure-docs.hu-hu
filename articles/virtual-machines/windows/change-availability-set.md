@@ -6,19 +6,19 @@ author: cynthn
 ms.topic: article
 ms.date: 01/31/2020
 ms.author: cynthn
-ms.openlocfilehash: e014dbe440f1b7baf39c290b8b7ab8fcaea0bada
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: cf0d6639f215cd0fce8dc4bbc50b4e37f48d3f7a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86165855"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87036247"
 ---
 # <a name="change-the-availability-set-for-a-vm"></a>Virtuális gép rendelkezésre állási csoportjának módosítása
 A következő lépések azt ismertetik, hogyan módosítható a virtuális gépek rendelkezésre állási csoportja a Azure PowerShell használatával. A virtuális gépeket csak akkor lehet felvenni a rendelkezésre állási csoportba, ha az létrejött. A rendelkezésre állási csoport módosításához törölnie kell, majd újra létre kell hoznia a virtuális gépet. 
 
 Ez a cikk a Linux és a Windows rendszerű virtuális gépekre is vonatkozik.
 
-Ez a cikk [Azure Cloud Shell](https://shell.azure.com/powershell) a 2/12/2019-es és az az [PowerShell-modul](https://docs.microsoft.com/powershell/azure/install-az-ps) 1.2.0.
+Ez a cikk [Azure Cloud Shell](https://shell.azure.com/powershell) a 2/12/2019-es és az az [PowerShell-modul](/powershell/azure/install-az-ps) 1.2.0.
 
 Ez a példa nem azt vizsgálja, hogy a virtuális gép csatlakoztatva van-e egy terheléselosztó számára. Ha a virtuális gép egy terheléselosztó számára van csatlakoztatva, frissítenie kell a parancsfájlt az adott eset kezelésére. 
 
@@ -107,4 +107,3 @@ Az alábbi parancsfájl egy példát mutat be a szükséges információk össze
 ## <a name="next-steps"></a>További lépések
 
 Adjon hozzá további tárhelyet a virtuális géphez egy további [adatlemez](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)hozzáadásával.
-

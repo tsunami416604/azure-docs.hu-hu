@@ -6,12 +6,13 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 04/23/2020
-ms.openlocfilehash: 8d002fae52fec1fafb2ad8e63bd8e3b779a1537c
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.custom: devx-track-java
+ms.openlocfilehash: 2e001e5e927d9d4c5dc4c3eb74f7b5ad33617b99
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85984823"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87037576"
 ---
 # <a name="security-controls-for-azure-spring-cloud-service"></a>Az Azure Spring Cloud Service biztonsági vezérlői
 A biztonsági vezérlők az Azure Spring Cloud Service-be vannak építve.
@@ -30,4 +31,4 @@ A biztonsági ellenőrzés olyan Azure-szolgáltatás minősége vagy funkciója
 
 | Biztonsági ellenőrzés | Igen/nem | Jegyzetek | Dokumentáció |
 |:-------------|:-------|:-------------------------------|:----------------------|
-| Szolgáltatás címkéje | Yes | A **AzureSpringCloud** szolgáltatás címkével [hálózati biztonsági csoportokon](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules) vagy [Azure Firewallon](https://docs.microsoft.com/azure/firewall/service-tags)adhat meg kimenő hálózati hozzáférés-vezérlést, hogy lehetővé váljon az Azure Spring Cloud-alkalmazások forgalmának engedélyezése.<br><br>*Megjegyzés:* Jelenleg csak a 2020/07/07 után létrehozott új Azure Spring Cloud Service-példány támogatja a **AzureSpringCloud** szolgáltatás címkéjét. | [Szolgáltatáscímkék](https://docs.microsoft.com/azure/virtual-network/service-tags-overview) |
+| Szolgáltatás címkéje | Yes | A **AzureSpringCloud** szolgáltatás címkével [hálózati biztonsági csoportokon](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules) vagy [Azure Firewallon](https://docs.microsoft.com/azure/firewall/service-tags)adhat meg kimenő hálózati hozzáférés-vezérlést, hogy lehetővé váljon az Azure Spring Cloud-alkalmazások forgalmának engedélyezése.<br><br>*Megjegyzés:* Jelenleg csak a 2020/07/14 után létrehozott új Azure Spring Cloud Service-példány támogatja a **AzureSpringCloud** szolgáltatás címkéjét. | [Szolgáltatáscímkék](https://docs.microsoft.com/azure/virtual-network/service-tags-overview) |

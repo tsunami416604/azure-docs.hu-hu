@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 12/9/2019
 ms.author: tvoellm
-ms.openlocfilehash: 88899dc697839b16c2b0cd24ac9233f87da26b41
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 16452337eeda86a9b019897954179bfe6db6e1b2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85261222"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87031992"
 ---
 # <a name="restrict-user-access-to-data-operations-only"></a>Felhasználói hozzáférés korlátozása az adatműveletekre
 
@@ -35,10 +35,10 @@ A cikk következő fejezetei bemutatják, hogyan hajthatja végre ezeket a lép�
 > A következő szakaszokban szereplő parancsok végrehajtásához telepítenie kell Azure PowerShell modul 3.0.0 vagy újabb verzióját, valamint az [Azure tulajdonosi szerepkört](../role-based-access-control/built-in-roles.md#owner) a módosítani kívánt előfizetéshez.
 
 A következő szakaszban található PowerShell-parancsfájlokban cserélje le a következő helyőrzőket a környezetre jellemző értékekre:
-- `$MySubscriptionId`– Az az előfizetés-azonosító, amely tartalmazza azt az Azure Cosmos-fiókot, amelyben korlátozni szeretné az engedélyeket. Példa: `e5c8766a-eeb0-40e8-af56-0eb142ebf78e`.
-- `$MyResourceGroupName`– Az Azure Cosmos-fiókot tartalmazó erőforráscsoport. Példa: `myresourcegroup`.
-- `$MyAzureCosmosDBAccountName`– Az Azure Cosmos-fiók neve. Példa: `mycosmosdbsaccount`.
-- `$MyUserName`– Annak a felhasználónak a felhasználóneve ( username@domain ), akivel korlátozni kívánja a hozzáférést. Példa: `cosmosdbuser@contoso.com`.
+- `$MySubscriptionId`– Az az előfizetés-azonosító, amely tartalmazza azt az Azure Cosmos-fiókot, amelyben korlátozni szeretné az engedélyeket. Például: `e5c8766a-eeb0-40e8-af56-0eb142ebf78e`.
+- `$MyResourceGroupName`– Az Azure Cosmos-fiókot tartalmazó erőforráscsoport. Például: `myresourcegroup`.
+- `$MyAzureCosmosDBAccountName`– Az Azure Cosmos-fiók neve. Például: `mycosmosdbsaccount`.
+- `$MyUserName`– Annak a felhasználónak a felhasználóneve ( username@domain ), akivel korlátozni kívánja a hozzáférést. Például: `cosmosdbuser@contoso.com`.
 
 ## <a name="select-your-azure-subscription"></a>Válassza ki az Azure-előfizetését
 
@@ -51,7 +51,7 @@ Select-AzSubscription $MySubscriptionId
 
 ## <a name="create-the-custom-azure-active-directory-role"></a>Az egyéni Azure Active Directory szerepkör létrehozása
 
-Az alábbi szkript létrehoz egy Azure Active Directory szerepkör-hozzárendelést az Azure Cosmos-fiókok "kulcs csak" hozzáférésével. A szerepkör az Azure- [erőforrások egyéni szerepkörein](../role-based-access-control/custom-roles.md) és a [Azure Cosmos db részletes műveletein](../role-based-access-control/resource-provider-operations.md#microsoftdocumentdb)alapul. Ezek a szerepkörök és műveletek a Azure Active Directory névtér részét képezik `Microsoft.DocumentDB` .
+Az alábbi szkript létrehoz egy Azure Active Directory szerepkör-hozzárendelést az Azure Cosmos-fiókok "kulcs csak" hozzáférésével. A szerepkör az [Azure egyéni szerepkörein](../role-based-access-control/custom-roles.md) és a [Azure Cosmos db részletes lépésein](../role-based-access-control/resource-provider-operations.md#microsoftdocumentdb)alapul. Ezek a szerepkörök és műveletek a Azure Active Directory névtér részét képezik `Microsoft.DocumentDB` .
 
 1. Először hozzon létre egy nevű JSON-dokumentumot `AzureCosmosKeyOnlyAccess.json` a következő tartalommal:
 

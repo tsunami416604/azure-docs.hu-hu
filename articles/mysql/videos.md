@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: c18604a9f4b95f4b586efaf3201dd0a679d8d316
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9b306bc55c97b977d0f06fa3e7a56f734f2f9db9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "60342610"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87030640"
 ---
 # <a name="azure-database-for-mysql-videos"></a>Azure Database for MySQL videók
 
@@ -19,7 +19,7 @@ ms.locfileid: "60342610"
 
 >[!VIDEO https://channel9.msdn.com/Events/Connect/2017/T147/player]
 
-Azure Database for PostgreSQL és Azure Database for MySQL összekapcsolja a közösségi kiadású adatbázis-motorokat és a teljes körűen felügyelt szolgáltatás funkcióit, így az adatbázis kezelése helyett az alkalmazásokra koncentrálhat. A bekapcsolásával gyorsan áttekintheti a szolgáltatás használatának előnyeit, és megtekintheti a működés funkcióit.
+Azure Database for PostgreSQL és Azure Database for MySQL összekapcsolja a közösségi kiadású adatbázis-motorokat és a teljes körűen felügyelt szolgáltatás funkcióit, így az adatbázis kezelése helyett az alkalmazásokra koncentrálhat. A bekapcsolásával gyorsan áttekintheti a szolgáltatás használatának előnyeit, és megtekintheti a működés funkcióit. Lásd: [Azure Database for PostgreSQL](https://azure.microsoft.com/resources/videos/create-an-azure-database-for-postgresql-server-in-the-azure-portal) és [Azure Database for MySQL](https://azure.microsoft.com/resources/videos/create-an-azure-database-for-mysql-server-by-using-the-azure-portal)létrehozása.
 
 [A MySQL és a PostgreSQL felügyelt szolgáltatási képességeinek részletes bemutatása](https://channel9.msdn.com/Events/Connect/2017/T148)
 

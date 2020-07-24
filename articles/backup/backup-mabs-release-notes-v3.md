@@ -4,11 +4,12 @@ description: Ez a cikk a Microsoft Azure Backup Server (MABS) v3 ismert problém
 ms.topic: conceptual
 ms.date: 06/03/2020
 ms.asset: 0c4127f2-d936-48ef-b430-a9198e425d81
-ms.openlocfilehash: 2f67b73612bd970c903b179a4a02c787ee0320b0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1f4900bb129ee67cd75d2b793f4179e3135569a6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84629179"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87032561"
 ---
 # <a name="release-notes-for-microsoft-azure-backup-server"></a>Microsoft Azure Backup-kiszolgáló kibocsátási megjegyzései
 
@@ -53,13 +54,13 @@ Ez a cikk az Microsoft Azure Backup Server (MABS) v3 ismert problémáit és meg
 
 **Megkerülő megoldás:** Az alábbi lépéseket követve frissítsen az MABS v3-re az orosz telepítési csomag használatával:
 
-1. [Készítsen biztonsági másolatot](https://docs.microsoft.com/sql/relational-databases/backup-restore/create-a-full-database-backup-sql-server?view=sql-server-2017#SSMSProcedure) az SQL-adatbázisról, és távolítsa el a MABS v2-et (válassza a védett adat megőrzését az eltávolítás során).
+1. [Készítsen biztonsági másolatot](/sql/relational-databases/backup-restore/create-a-full-database-backup-sql-server#SSMSProcedure) az SQL-adatbázisról, és távolítsa el a MABS v2-et (válassza a védett adat megőrzését az eltávolítás során).
 2. Frissítsen az SQL 2017 (Enterprise) verzióra, és távolítsa el a jelentéskészítést a frissítés részeként.
-3. [Telepítés](https://docs.microsoft.com/sql/reporting-services/install-windows/install-reporting-services?view=sql-server-2017#install-your-report-server) SQL Server Reporting Services (SSRS).
-4. [Telepítés](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) SQL Server Management Studio (SSMS).
-5. Konfigurálja a jelentéskészítést a paraméterekkel az [SSRS-konfigurációban az SQL 2017](https://docs.microsoft.com/azure/backup/backup-azure-microsoft-azure-backup#upgrade-mabs)használatával dokumentált módon.
+3. [Telepítés](/sql/reporting-services/install-windows/install-reporting-services#install-your-report-server) SQL Server Reporting Services (SSRS).
+4. [Telepítés](/sql/ssms/download-sql-server-management-studio-ssms) SQL Server Management Studio (SSMS).
+5. Konfigurálja a jelentéskészítést a paraméterekkel az [SSRS-konfigurációban az SQL 2017](./backup-azure-microsoft-azure-backup.md#upgrade-mabs)használatával dokumentált módon.
 6. [Telepítés](backup-azure-microsoft-azure-backup.md) MABS V3.
-7. [Visszaállítás](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-a-database-backup-using-ssms?view=sql-server-2017) SQL a SSMS használatával és a DPM-Sync eszköz futtatása az [itt](https://docs.microsoft.com/system-center/dpm/back-up-the-dpm-server?view=sc-dpm-2019#using-dpmsync)leírtak szerint.
+7. [Visszaállítás](/sql/relational-databases/backup-restore/restore-a-database-backup-using-ssms) SQL a SSMS használatával és a DPM-Sync eszköz futtatása az [itt](/system-center/dpm/back-up-the-dpm-server?view=sc-dpm-2019#using-dpmsync)leírtak szerint.
 8. Frissítse a "DataBaseVersion" tulajdonságot a dbo. tbl_DLS_GlobalSetting táblában a következő parancs használatával:
 
     ```sql
@@ -96,7 +97,7 @@ Ez a cikk az Microsoft Azure Backup Server (MABS) v3 ismert problémáit és meg
 
     A legfrissebb jelentési fájlok az elérési útban találhatók`<MABS Installation Directory>\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin\DpmReports`
 
-    Például:`C:\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin\DpmReports`
+    Például: `C:\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin\DpmReports`
 
     ![Cserélje le a fájlokat a legújabb jelentési fájlokra](./media/backup-mabs-release-notes-v3/replace-files.png)
 

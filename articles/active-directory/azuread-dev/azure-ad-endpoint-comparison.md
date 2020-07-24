@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.subservice: azuread-dev
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/26/2019
+ms.date: 07/17/2020
 ms.author: ryanwi
 ms.reviewer: saeeda, hirsin, jmprieur, sureshja, jesakowi, lenalepa, kkrishna, negoe
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 67a54a2cd4fa071fd47bcebb9aa53fd11fefd61e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 001de375edab7505ed4687d848aca0ad0965dbfb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80154916"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87034907"
 ---
 # <a name="why-update-to-microsoft-identity-platform-v20"></a>Miért érdemes Microsoft Identitásplatformra (a 2.0-s verzióra) frissíteni?
 
@@ -141,34 +141,7 @@ A munkahelyi és iskolai fiókokat támogató Alkalmazásregisztrációk és a s
 
 ### <a name="restrictions-on-redirect-urls"></a>Az átirányítási URL-címekre vonatkozó korlátozások
 
-A Microsoft Identity platformhoz regisztrált alkalmazások korlátozott számú átirányítási URL-értékre korlátozódnak. A webalkalmazások és szolgáltatások átirányítási URL-címének a sémával kell kezdődnie `https` , és minden átirányítási URL-címnek egyetlen DNS-tartományhoz kell tartoznia.  A regisztrációs rendszer összehasonlítja a meglévő átirányítási URL-cím teljes DNS-nevét a hozzáadott átirányítási URL-cím DNS-nevével. `http://localhost`átirányítási URL-ként is támogatott.  
-
-A DNS-név hozzáadására irányuló kérelem sikertelen lesz, ha a következő feltételek egyikének értéke igaz:  
-
-* Az új átirányítási URL-cím teljes DNS-neve nem egyezik meg a meglévő átirányítási URL-cím DNS-nevével.
-* Az új átirányítási URL-cím teljes DNS-neve nem a meglévő átirányítási URL-cím altartománya.
-
-#### <a name="example-1"></a>1\. példa
-
-Ha az alkalmazásnak átirányítási URL-címe van `https://login.contoso.com` , akkor hozzáadhat egy átirányítási URL-címet, ahol a DNS-név pontosan megfelel az alábbi példában látható módon:
-
-`https://login.contoso.com/new`
-
-Vagy a login.contoso.com DNS-altartományára is hivatkozhat, ahogy az az alábbi példában is látható:
-
-`https://new.login.contoso.com`
-
-#### <a name="example-2"></a>2\. példa
-
-Ha olyan alkalmazást szeretne használni, amely `login-east.contoso.com` `login-west.contoso.com` átirányítási URL-címekkel rendelkezik, akkor az átirányítási URL-címeket a következő sorrendben kell felvennie:
-
-`https://contoso.com`  
-`https://login-east.contoso.com`  
-`https://login-west.contoso.com`  
-
-Az utóbbi kettőt hozzáadhatja, mert az első átirányítási URL-cím altartományai, a contoso.com.
-
-Egy adott alkalmazáshoz csak 20 Válasz URL-cím tartozhat – ez a korlát minden olyan alkalmazási típusra vonatkozik, amelyet a regisztráció támogat (egyoldalas alkalmazás (SPA), natív ügyfél, webalkalmazás és szolgáltatás).  
+A Microsoft Identity platformhoz regisztrált alkalmazások átirányítási URL-címeire vonatkozó korlátozásokkal kapcsolatos legfrissebb információkért lásd: a Microsoft Identity platform dokumentációjának [átirányítási URI/válasz URL-korlátozásai és korlátozásai](https://docs.microsoft.com/azure/active-directory/develop/reply-url) .
 
 Ha szeretné megtudni, hogyan regisztrálhat egy alkalmazást a Microsoft Identity platformmal való használatra, tekintse meg [az alkalmazás regisztrálása az új Alkalmazásregisztrációk felülettel](../develop/quickstart-register-app.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)című témakört.
 

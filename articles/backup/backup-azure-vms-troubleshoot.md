@@ -4,12 +4,12 @@ description: Ez a cikk az Azure-beli virtuális gépek biztonsági mentésével 
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: e40b74cc5bf995e943b20ddcd21127ed4f7d7ead
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 5393ba1b7c604ef49cee83f759ed798cfc473417
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86184191"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87032833"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Biztonsági mentési hibák elhárítása Azure-beli virtuális gépeken
 
@@ -21,13 +21,13 @@ Ez a szakasz az Azure-beli virtuális gép biztonsági mentési műveletének hi
 
 ### <a name="basic-troubleshooting"></a>Alapszintű hibaelhárítás
 
-* Győződjön meg arról, hogy a VM-ügynök (WA-ügynök) a [legújabb verzió](https://docs.microsoft.com/azure/backup/backup-azure-arm-vms-prepare#install-the-vm-agent).
-* Győződjön meg arról, hogy a Windows vagy Linux rendszerű virtuális gép operációsrendszer-verziója támogatott, tekintse meg a [IaaS virtuális gép biztonsági mentésének támogatási mátrixát](https://docs.microsoft.com/azure/backup/backup-support-matrix-iaas).
+* Győződjön meg arról, hogy a VM-ügynök (WA-ügynök) a [legújabb verzió](./backup-azure-arm-vms-prepare.md#install-the-vm-agent).
+* Győződjön meg arról, hogy a Windows vagy Linux rendszerű virtuális gép operációsrendszer-verziója támogatott, tekintse meg a [IaaS virtuális gép biztonsági mentésének támogatási mátrixát](./backup-support-matrix-iaas.md).
 * Ellenőrizze, hogy egy másik biztonsági mentési szolgáltatás nem fut-e.
-  * Annak érdekében, hogy a pillanatképek kiterjesztésével kapcsolatos hibák ne legyenek elérhetők, [távolítsa el a bővítményeket a kényszerített újratöltéshez](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout)
+  * Annak érdekében, hogy a pillanatképek kiterjesztésével kapcsolatos hibák ne legyenek elérhetők, [távolítsa el a bővítményeket a kényszerített újratöltéshez](./backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md)
 * Győződjön meg arról, hogy a virtuális gép rendelkezik internetkapcsolattal.
   * Győződjön meg arról, hogy egy másik biztonsági mentési szolgáltatás nem fut.
-* A verzióban `Services.msc` ellenőrizze, hogy **fut**-e a **Windows Azure Guest Agent ügynök** szolgáltatás. Ha a **Windows Azure Guest Agent ügynök** szolgáltatás hiányzik, telepítse az [Azure-beli virtuális gépek biztonsági mentése egy Recovery Services-](https://docs.microsoft.com/azure/backup/backup-azure-arm-vms-prepare#install-the-vm-agent)tárolóban.
+* A verzióban `Services.msc` ellenőrizze, hogy **fut**-e a **Windows Azure Guest Agent ügynök** szolgáltatás. Ha a **Windows Azure Guest Agent ügynök** szolgáltatás hiányzik, telepítse az [Azure-beli virtuális gépek biztonsági mentése egy Recovery Services-](./backup-azure-arm-vms-prepare.md#install-the-vm-agent)tárolóban.
 * Az **Eseménynapló** tartalmazhat olyan biztonsági mentési hibákat, amelyek más biztonsági mentési termékekből származnak, például a Windows Server biztonsági másolatból, és nem az Azure Backup miatt. A következő lépések végrehajtásával megállapíthatja, hogy a probléma Azure Backup-e:
   * Ha hiba történt egy bejegyzés **biztonsági mentésével** kapcsolatban az eseményforrás vagy az üzenet esetében, ellenőrizze, hogy az Azure IaaS virtuális gépek biztonsági másolatai sikeresek voltak-e, és hogy egy visszaállítási pont lett-e létrehozva a kívánt pillanatkép-típussal.
   * Ha Azure Backup működik, akkor a probléma valószínűleg egy másik biztonsági mentési megoldás.
@@ -133,7 +133,7 @@ Ha a **következő** címtárban az alapértelmezetttől eltérő engedélyek je
    * Olvasási engedélyek
 2. Törölje az összes olyan tanúsítványt, ahol a **kiadás** a klasszikus üzemi modell vagy a **Windows Azure-beli CRP-tanúsítvány generátora**:
 
-   * [Nyisson meg tanúsítványokat egy helyi számítógép-konzolon](https://docs.microsoft.com/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in).
+   * [Nyisson meg tanúsítványokat egy helyi számítógép-konzolon](/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in).
    * A **személyes**  >  **tanúsítványok**területen törölje az összes olyan tanúsítványt, amely **számára a kiadás** a klasszikus üzemi modell vagy a **Windows Azure CRP-tanúsítvány generátora**.
 3. Virtuális gép biztonsági mentési feladatainak elindítása.
 
@@ -237,16 +237,16 @@ Hibakód: ExtensionVCRedistInstallationFailure <br/> Hibaüzenet: a pillanatkép
 ## <a name="usererrorrequestdisallowedbypolicy---an-invalid-policy-is-configured-on-the-vm-which-is-preventing-snapshot-operation"></a>UserErrorRequestDisallowedByPolicy – érvénytelen házirend van konfigurálva a virtuális gépen, amely megakadályozza a pillanatkép-műveletet
 Hibakód: UserErrorRequestDisallowedByPolicy <BR> Hibaüzenet: érvénytelen házirend van konfigurálva a virtuális gépen, amely megakadályozza a pillanatkép-műveletet.
 
-Ha van olyan Azure Policy, amely [a környezetében található címkéket szabályozza](https://docs.microsoft.com/azure/governance/policy/tutorials/govern-tags), érdemes lehet a szabályzatot egy [megtagadási hatásról](https://docs.microsoft.com/azure/governance/policy/concepts/effects#deny) [módosítani](https://docs.microsoft.com/azure/governance/policy/concepts/effects#modify), vagy a [Azure Backup által igényelt elnevezési séma](https://docs.microsoft.com/azure/backup/backup-during-vm-creation#azure-backup-resource-group-for-virtual-machines)alapján manuálisan létrehozni az erőforráscsoportot.
+Ha van olyan Azure Policy, amely [a környezetében található címkéket szabályozza](../governance/policy/tutorials/govern-tags.md), érdemes lehet a szabályzatot egy [megtagadási hatásról](../governance/policy/concepts/effects.md#deny) [módosítani](../governance/policy/concepts/effects.md#modify), vagy a [Azure Backup által igényelt elnevezési séma](./backup-during-vm-creation.md#azure-backup-resource-group-for-virtual-machines)alapján manuálisan létrehozni az erőforráscsoportot.
 
 ## <a name="jobs"></a>Feladatok
 
 | A hiba részletei | Áthidaló megoldás |
 | --- | --- |
-| Ez a feladattípus nem támogatja a megszakítást: <br>Várjon, amíg a feladatok befejeződik. |Nincsenek |
+| Ez a feladattípus nem támogatja a megszakítást: <br>Várjon, amíg a feladatok befejeződik. |Nincs |
 | A feladat nem törölhető állapotban van: <br>Várjon, amíg a feladatok befejeződik. <br>**vagy**<br> A kijelölt feladat nem törölhető állapotban van: <br>Várjon, amíg a feladatok befejeződik. |Valószínű, hogy a feladatot majdnem befejezték. Várjon, amíg a feladatok befejeződik.|
 | A biztonsági mentés nem tudja megszakítani a feladatot, mert nincs folyamatban: <br>A megszakítás csak folyamatban lévő feladatok esetén támogatott. Próbálkozzon egy folyamatban lévő feladat megszakításával. |Ez a hiba átmeneti állapot miatt fordul elő. Várjon egy percet, és ismételje meg a megszakítási műveletet. |
-| A biztonsági mentés nem tudta megszakítani a feladatot: <br>Várjon, amíg a feladatok befejeződik. |Nincsenek |
+| A biztonsági mentés nem tudta megszakítani a feladatot: <br>Várjon, amíg a feladatok befejeződik. |Nincs |
 
 ## <a name="restore"></a>Visszaállítás
 
@@ -254,14 +254,14 @@ Ha van olyan Azure Policy, amely [a környezetében található címkéket szab�
 | --- | --- |
 | A Restore művelet belső felhőalapú hibával meghiúsult. |<ol><li>A felhőalapú szolgáltatás, amelyre a visszaállítást végzi, DNS-beállításokkal van konfigurálva. A következőket tekintheti meg: <br>**$Deployment = Get-AzureDeployment-szolgáltatásnév "szolgáltatásnév"-slot "Production" Get-AzureDns-DnsSettings $Deployment. DnsSettings**.<br>Ha a **címe** konfigurálva van, a rendszer konfigurálja a DNS-beállításokat.<br> <li>A felhőalapú szolgáltatás, amelyre a visszaállítást végzi, a **foglalt IP**-sel van konfigurálva, a felhőalapú szolgáltatásban lévő meglévő virtuális gépek pedig leállított állapotban vannak. A következő PowerShell-parancsmagok használatával megtekintheti, hogy a felhőalapú szolgáltatás fenntartott-e egy IP-címet: **$Deployment = Get-AzureDeployment-szolgáltatásnév "szolgáltatásnév"-slot "Production" $DEP. ReservedIPName**. <br><li>Egy virtuális gépet a következő speciális hálózati konfigurációkkal próbál visszaállítani ugyanazon a felhőalapú szolgáltatásban: <ul><li>Virtuális gépek a terheléselosztó konfigurációjában, belső és külső.<li>Több fenntartott IP-címmel rendelkező virtuális gépek. <li>Több hálózati adapterrel rendelkező virtuális gépek. </ul><li>Válasszon egy új felhőalapú szolgáltatást a felhasználói felületen, vagy tekintse meg a speciális hálózati konfigurációval rendelkező virtuális gépek [visszaállítási szempontjait](backup-azure-arm-restore-vms.md#restore-vms-with-special-configurations) .</ol> |
 | A kiválasztott DNS-név már használatban van: <br>Adjon meg másik DNS-nevet, és próbálkozzon újra. |Ez a DNS-név a felhőalapú szolgáltatás nevére hivatkozik, általában a **. cloudapp.net**végződéssel. A névnek egyedinek kell lennie. Ha ezt a hibaüzenetet kapja, a visszaállítás során másik virtuálisgép-nevet kell választania. <br><br> Ez a hiba csak a Azure Portal felhasználói számára jelenik meg. A PowerShell-alapú visszaállítási művelet sikeres, mert csak a lemezeket állítja vissza, és nem hozza létre a virtuális gépet. A hiba akkor jelenik meg, ha a virtuális gépet explicit módon hozza létre a lemez-visszaállítási művelet után. |
-| A virtuális hálózat megadott konfigurációja nem megfelelő: <br>Adjon meg másik virtuális hálózati konfigurációt, és próbálkozzon újra. |Nincsenek |
-| A megadott felhőalapú szolgáltatás olyan fenntartott IP-címet használ, amely nem felel meg a visszaállítani kívánt virtuális gép konfigurációjának: <br>Olyan felhőalapú szolgáltatást válasszon, amely nem használ fenntartott IP-címet. Vagy válasszon egy másik helyreállítási pontot a visszaállításhoz. |Nincsenek |
-| A felhőalapú szolgáltatás elérte a bemeneti végpontok számának korlátját: <br>Próbálja megismételni a műveletet egy másik felhőalapú szolgáltatás megadásával vagy egy meglévő végpont használatával. |Nincsenek |
-| A Recovery Services-tár és a célként megadott Storage-fiók két különböző régióban található: <br>Győződjön meg arról, hogy a visszaállítási műveletben megadott Storage-fiók ugyanabban az Azure-régióban található, mint a Recovery Services-tároló. |Nincsenek |
-| A visszaállítási művelethez megadott Storage-fiók nem támogatott: <br>Csak a helyileg redundáns vagy földrajzilag redundáns replikációs beállításokkal rendelkező alapszintű vagy standard szintű Storage-fiókok támogatottak. Válasszon egy támogatott Storage-fiókot. |Nincsenek |
+| A virtuális hálózat megadott konfigurációja nem megfelelő: <br>Adjon meg másik virtuális hálózati konfigurációt, és próbálkozzon újra. |Nincs |
+| A megadott felhőalapú szolgáltatás olyan fenntartott IP-címet használ, amely nem felel meg a visszaállítani kívánt virtuális gép konfigurációjának: <br>Olyan felhőalapú szolgáltatást válasszon, amely nem használ fenntartott IP-címet. Vagy válasszon egy másik helyreállítási pontot a visszaállításhoz. |Nincs |
+| A felhőalapú szolgáltatás elérte a bemeneti végpontok számának korlátját: <br>Próbálja megismételni a műveletet egy másik felhőalapú szolgáltatás megadásával vagy egy meglévő végpont használatával. |Nincs |
+| A Recovery Services-tár és a célként megadott Storage-fiók két különböző régióban található: <br>Győződjön meg arról, hogy a visszaállítási műveletben megadott Storage-fiók ugyanabban az Azure-régióban található, mint a Recovery Services-tároló. |Nincs |
+| A visszaállítási művelethez megadott Storage-fiók nem támogatott: <br>Csak a helyileg redundáns vagy földrajzilag redundáns replikációs beállításokkal rendelkező alapszintű vagy standard szintű Storage-fiókok támogatottak. Válasszon egy támogatott Storage-fiókot. |Nincs |
 | A visszaállítási művelethez megadott Storage-fiók típusa nincs online állapotban: <br>Győződjön meg arról, hogy a visszaállítási műveletben megadott Storage-fiók online állapotban van. |Ez a hiba az Azure Storage-ban vagy kimaradás miatti átmeneti hiba miatt fordulhat elő. Válasszon másik Storage-fiókot. |
-| Elérte az erőforráscsoport-kvótát: <br>Töröljön néhány erőforráscsoportot a Azure Portal, vagy forduljon az Azure támogatási szolgálatához, és növelje a határértékeket. |Nincsenek |
-| A kiválasztott alhálózat nem létezik: <br>Válasszon egy létező alhálózatot. |Nincsenek |
+| Elérte az erőforráscsoport-kvótát: <br>Töröljön néhány erőforráscsoportot a Azure Portal, vagy forduljon az Azure támogatási szolgálatához, és növelje a határértékeket. |Nincs |
+| A kiválasztott alhálózat nem létezik: <br>Válasszon egy létező alhálózatot. |Nincs |
 | A Backup szolgáltatásnak nincs engedélye az erőforrásokhoz való hozzáférésre az előfizetésében. |A hiba megoldásához először állítsa vissza a lemezeket a [biztonsági másolatba mentett lemezek visszaállítása](backup-azure-arm-restore-vms.md#restore-disks)című cikkben ismertetett lépések segítségével. Ezután használja a [virtuális gép létrehozása helyreállított lemezekről](backup-azure-vms-automation.md#restore-an-azure-vm)című témakör PowerShell-lépéseit. |
 
 ## <a name="backup-or-restore-takes-time"></a>A biztonsági mentés vagy a visszaállítás időt vesz igénybe
@@ -277,12 +277,12 @@ A virtuálisgép-ügynök általában már jelen van az Azure Galleryből létre
 #### <a name="windows-vms"></a>Windows rendszerű virtuális gépek
 
 * Töltse le és telepítse az [ügynök MSI-t](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). A telepítés befejezéséhez rendszergazdai jogosultságok szükségesek.
-* A klasszikus üzemi modellel létrehozott virtuális gépek esetében [frissítse a VM tulajdonságot](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/install-vm-agent-offline#use-the-provisionguestagent-property-for-classic-vms) , hogy jelezze, hogy telepítve van-e az ügynök. Ez a lépés nem szükséges Azure Resource Manager virtuális gépekhez.
+* A klasszikus üzemi modellel létrehozott virtuális gépek esetében [frissítse a VM tulajdonságot](../virtual-machines/troubleshooting/install-vm-agent-offline.md#use-the-provisionguestagent-property-for-classic-vms) , hogy jelezze, hogy telepítve van-e az ügynök. Ez a lépés nem szükséges Azure Resource Manager virtuális gépekhez.
 
 #### <a name="linux-vms"></a>Linux rendszerű virtuális gépek
 
 * Telepítse az ügynök legújabb verzióját a terjesztési tárházból. A csomag nevével kapcsolatos részletekért tekintse meg a [Linux-ügynök tárházát](https://github.com/Azure/WALinuxAgent).
-* A klasszikus üzemi modellel létrehozott virtuális gépek esetében [frissítse a VM tulajdonságot](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/install-vm-agent-offline#use-the-provisionguestagent-property-for-classic-vms) , és ellenőrizze, hogy telepítve van-e az ügynök. Ez a lépés nem szükséges a Resource Manager virtuális gépekhez.
+* A klasszikus üzemi modellel létrehozott virtuális gépek esetében [frissítse a VM tulajdonságot](../virtual-machines/troubleshooting/install-vm-agent-offline.md#use-the-provisionguestagent-property-for-classic-vms) , és ellenőrizze, hogy telepítve van-e az ügynök. Ez a lépés nem szükséges a Resource Manager virtuális gépekhez.
 
 ### <a name="update-the-vm-agent"></a>A virtuálisgép-ügynök frissítése
 
@@ -292,7 +292,7 @@ A virtuálisgép-ügynök általában már jelen van az Azure Galleryből létre
 
 #### <a name="linux-vms"></a>Linux rendszerű virtuális gépek
 
-* A Linux rendszerű virtuális gép ügynökének frissítéséhez kövesse a Linux rendszerű [virtuális gép ügynökének frissítése](../virtual-machines/linux/update-agent.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)című cikk utasításait.
+* A Linux rendszerű virtuális gép ügynökének frissítéséhez kövesse a Linux rendszerű [virtuális gép ügynökének frissítése](../virtual-machines/extensions/update-linux-agent.md?toc=/azure/virtual-machines/linux/toc.json)című cikk utasításait.
 
     > [!NOTE]
     > Mindig a terjesztési tárházat használja az ügynök frissítéséhez.
@@ -321,10 +321,10 @@ A virtuális gép biztonsági mentése a pillanatkép-parancsok alapjául szolg�
 * **Ha négynél több virtuális gép osztozik ugyanazzal a felhőalapú szolgáltatással, a virtuális gépeket több biztonsági mentési házirendben is elosztja**. A biztonsági mentés időpontjának felosztása, így a több mint négy virtuális gép biztonsági mentése egyidőben megkezdődik. Próbálja meg elkülöníteni a házirendek indítási időpontját legalább egy órával.
 * **A virtuális gép magas processzoron vagy memórián fut**. Ha a virtuális gép nagy memórián vagy CPU-használaton fut, több mint 90 százalékkal, a pillanatkép-feladat várólistára kerül és késleltetve lesz. Végül túllépi az időkorlátot. Ha ez a probléma történik, próbálkozzon egy igény szerinti biztonsági mentéssel.
 
-## <a name="networking"></a>Hálózat
+## <a name="networking"></a>Hálózatkezelés
 
 A DHCP-t engedélyezni kell a vendégen a IaaS virtuális gép biztonsági mentésének működéséhez. Ha statikus magánhálózati IP-címmel kell rendelkeznie, konfigurálja a Azure Portal vagy a PowerShell használatával. Győződjön meg arról, hogy a virtuális gépen belül a DHCP-beállítás engedélyezve van.
 További információ arról, hogyan állítható be statikus IP-cím a PowerShell használatával:
 
-* [Statikus belső IP-cím hozzáadása meglévő virtuális géphez](https://docs.microsoft.com/powershell/module/az.network/set-aznetworkinterfaceipconfig?view=azps-3.5.0#description)
+* [Statikus belső IP-cím hozzáadása meglévő virtuális géphez](/powershell/module/az.network/set-aznetworkinterfaceipconfig#description)
 * [Hálózati adapterhez rendelt magánhálózati IP-cím kiosztási módszerének módosítása](../virtual-network/virtual-networks-static-private-ip-arm-ps.md#change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface)

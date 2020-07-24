@@ -11,12 +11,12 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 07/08/2020
 ms.custom: seodec18, tracking-python
-ms.openlocfilehash: d6b1d5c66c1dd15fa12638dd451d1ce2fa8fa79f
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 194864d223d908cc2d8b1d7f14efe81e16bbd058
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86146729"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87031507"
 ---
 # <a name="connect-to-azure-storage-services"></a>Kapcsolódás az Azure Storage-szolgáltatásokhoz
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -30,7 +30,7 @@ Ha szeretné megismerni, hogy az adattárolók hogyan illeszkednek Azure Machine
 ## <a name="prerequisites"></a>Előfeltételek
 
 A következők szükségesek:
-- Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, létrehozhat egy ingyenes fiókot, mielőtt nekikezdene a feladatok elvégzésének. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree).
+- Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot a feladatok megkezdése előtt. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree).
 
 - Azure Storage-fiók [Azure Blob-tárolóval](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) vagy [Azure-fájlmegosztás](https://docs.microsoft.com/azure/storage/files/storage-files-introduction).
 
@@ -92,8 +92,9 @@ Az adattár létrehozása után ezt az ellenőrzést csak olyan metódusok hajtj
 ### <a name="python-sdk"></a>Python SDK
 
 Az összes regisztrációs metódus az osztályban van [`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py) , és rendelkezik az űrlappal `register_azure_*` .
+
 > [!IMPORTANT]
-> Ha a virtuális hálózatban lévő Storage-fiókok adattárát tervezi létrehozni, tekintse meg a virtuális hálózat hozzáférési információit ismertető szakaszt.
+> Ha a virtuális hálózatban lévő Storage-fiókok adattárát tervezi létrehozni, tekintse meg a [virtuális hálózat hozzáférési](#access-data-in-a-virtual-network) információit ismertető szakaszt.
 
 Itt megtalálhatja a `register_azure_*()` metódusnak a [Azure Portalon](https://portal.azure.com)való feltöltéséhez szükséges adatokat.
 
@@ -185,7 +186,7 @@ adlsgen2_datastore = Datastore.register_azure_data_lake_gen2(workspace=ws,
 Hozzon létre egy új adattárt néhány lépésben a Azure Machine Learning Studióban:
 
 > [!IMPORTANT]
-> Ha az adattároló-fiók egy virtuális hálózaton található, további konfigurációs lépések szükségesek ahhoz, hogy a Studio hozzáférhessen az adataihoz. A megfelelő konfigurációs lépések biztosításához tekintse meg a [hálózati elkülönítés & adatvédelem] (útmutató – virtuális hálózat. MD # Machine-learning-Studio) című témakört. 
+> Ha az adattároló-fiók egy virtuális hálózaton található, további konfigurációs lépések szükségesek ahhoz, hogy a Studio hozzáférhessen az adataihoz. A megfelelő konfigurációs lépések végrehajtásához tekintse meg a [hálózati elkülönítés & az adatvédelem](how-to-enable-virtual-network.md#machine-learning-studio) témakört. 
 
 1. Jelentkezzen be [Azure Machine learning studióba](https://ml.azure.com/).
 1. A **kezelés** **alatt kattintson a** bal oldali ablaktábla adattárolók elemére.
@@ -295,7 +296,7 @@ run_config.source_directory_data_store = "workspaceblobstore"
 
 A Azure Machine Learning számos módszert kínál a modellek pontozási célra való használatára. A módszerek némelyike nem biztosít hozzáférést az adattárolóhoz. A következő táblázat segítségével megtudhatja, hogy mely módszerek lehetővé teszik az adattárolók elérését a pontozás során:
 
-| Módszer | Adattár-hozzáférés | Leírás |
+| Metódus | Adattár-hozzáférés | Description |
 | ----- | :-----: | ----- |
 | [Kötegelt előrejelzés](how-to-use-parallel-run-step.md) | ✔ | Előrejelzések készítése aszinkron módon nagy mennyiségű adattal. |
 | [Webszolgáltatás](how-to-deploy-and-where.md) | &nbsp; | Modellek üzembe helyezése webszolgáltatásként. |

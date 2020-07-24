@@ -6,11 +6,12 @@ author: TimothyMothra
 ms.author: tilee
 ms.date: 4/23/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: cf0c97fd65f9966bf42fa22e2c8f92263952cb7a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 333bba2b1d3cd83457196e38b827daa78199f235
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77655650"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87033513"
 ---
 # <a name="application-insights-for-azure-functions-supported-features"></a>Azure Functions támogatott funkciók Application Insights
 
@@ -41,7 +42,7 @@ A Application Insights kompatibilis verzióival kapcsolatos további informáci�
 | &bull;Mintavételi                     | Igen             | Igen               | 
 | &bull;Szívdobbanás                   |                 | Yes               | 
 | | | | 
-| **Korrelációs**                       |                   |                   |               
+| **korreláció**                       |                   |                   |               
 | &bull;ServiceBus                     |                   | Yes               | 
 | &bull;EventHub                       |                   | Yes               | 
 | | | | 
@@ -56,11 +57,11 @@ A teljesítményszámlálók automatikus gyűjtése csak a Windows rendszerű g�
 
 ## <a name="live-metrics--secure-control-channel"></a>Élő metrikák & biztonságos vezérlési csatornán
 
-Az egyéni szűrők megadott feltételeit a rendszer visszaküldi a Application Insights SDK élő metrikák összetevőjére. A szűrők potenciálisan bizalmas adatokat is tartalmazhatnak, például customerIDs. A csatornát titkos API-kulccsal is biztonságossá teheti. További útmutatásért lásd [a vezérlési csatorna biztonságossá](https://docs.microsoft.com/azure/azure-monitor/app/live-stream#secure-the-control-channel) tételét ismertető témakört.
+Az egyéni szűrők megadott feltételeit a rendszer visszaküldi a Application Insights SDK élő metrikák összetevőjére. A szűrők potenciálisan bizalmas adatokat is tartalmazhatnak, például customerIDs. A csatornát titkos API-kulccsal is biztonságossá teheti. További útmutatásért lásd [a vezérlési csatorna biztonságossá](./live-stream.md#secure-the-control-channel) tételét ismertető témakört.
 
 ## <a name="sampling"></a>Mintavételezés
 
-A Azure Functions alapértelmezés szerint engedélyezi a mintavételezést a konfigurációban. További információ: a [mintavételezés konfigurálása](https://docs.microsoft.com/azure/azure-functions/functions-monitoring#configure-sampling).
+A Azure Functions alapértelmezés szerint engedélyezi a mintavételezést a konfigurációban. További információ: a [mintavételezés konfigurálása](../../azure-functions/functions-monitoring.md#configure-sampling).
 
 Ha a projektben a manuális telemetria követése függ a Application Insights SDK-tól, akkor furcsa viselkedést tapasztalhat, ha a mintavételezési konfiguráció eltér a függvények mintavételezési konfigurációjával. 
 

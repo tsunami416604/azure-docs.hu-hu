@@ -5,24 +5,24 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: overview
-ms.date: 01/17/2020
+ms.date: 07/13/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c2a6b5c22e2988ed33e6dc15a4729e7bfe938c5f
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 5e65149b2524d2785039be78caad4ce84924e7e3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82786917"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87035111"
 ---
 # <a name="what-is-azure-active-directory-authentication"></a>Mi az Azure Active Directory hitelesítés?
 
 Az Identity platform egyik fő funkciója a hitelesítő adatok ellenőrzése vagy *hitelesítése*, amikor a felhasználó bejelentkezik egy eszközre, alkalmazásba vagy szolgáltatásba. Azure Active Directory (Azure AD) esetében a hitelesítés több, mint a Felhasználónév és a jelszó ellenőrzése. Az Azure AD-hitelesítés a következő összetevőket tartalmazza, így javíthatja a biztonságot, és csökkentheti az ügyfélszolgálati segítség szükségességét:
 
-* Önkiszolgáló jelszóátállítás
+* Új jelszó önkiszolgáló kérése
 * Azure Multi-Factor Authentication
 * Hibrid integráció a jelszó-változtatások helyi környezetbe való visszaírásához
 * Hibrid integráció egy helyi környezet jelszavas védelmi házirendjeinek betartatásához
@@ -38,7 +38,7 @@ Az Azure Multi-Factor Authentication lehetővé teszi a felhasználók számára
 
 A jelszóval nem rendelkező hitelesítéssel nem szükséges, hogy a felhasználó a biztonságos jelszavakat egyáltalán ne hozzon létre és jegyezze fel. A Windows Hello for Business vagy a FIDO2 biztonsági kulcsokkal rendelkező funkciók lehetővé teszik a felhasználók számára, hogy jelszó nélkül jelentkezzenek be egy eszközre vagy alkalmazásba. Ez a képesség csökkentheti a jelszavak különböző környezetekben való kezelésének bonyolultságát.
 
-## <a name="self-service-password-reset"></a>Önkiszolgáló jelszóátállítás
+## <a name="self-service-password-reset"></a>Új jelszó önkiszolgáló kérése
 
 Az önkiszolgáló jelszó-visszaállítás lehetővé teszi a felhasználóknak a jelszavuk módosítását vagy alaphelyzetbe állítását, rendszergazdai vagy ügyfélszolgálati beavatkozás nélkül. Ha a felhasználó fiókja zárolva van, vagy elfelejti a jelszavát, akkor az utasításokat követve letilthatja önmagát, és visszatérhet a munkához. Ez a funkció csökkenti az ügyfélszolgálati hívásokat és a termelékenység elvesztését, ha a felhasználó nem tud bejelentkezni az eszközére vagy alkalmazására.
 

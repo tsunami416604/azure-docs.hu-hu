@@ -9,13 +9,14 @@ ms.topic: how-to
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 04/27/2020
+ms.date: 07/17/2020
 ms.custom: tracking-python
-ms.openlocfilehash: 31daec93352c0e142075a55c61f2b8d3a6d56fab
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 10b9e055ce5b1e2ba27d942a987bf6b38291f094
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85080230"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87031422"
 ---
 # <a name="use-workspace-behind-azure-firewall-for-azure-machine-learning"></a>Azure Firewall mögötti munkaterület használata Azure Machine Learning
 
@@ -36,7 +37,7 @@ A tűzfalon hozzon létre egy hálózati szabályt, amely engedélyezi a cikkben
 
 Az ebben a szakaszban található gazdagépek a Microsoft tulajdonában vannak, és biztosítják a munkaterület megfelelő működéséhez szükséges szolgáltatásokat.
 
-| **Állomásnév** | **Szerep** |
+| **Állomásnév** | **Cél** |
 | ---- | ---- |
 | **\*. batchai.core.windows.net** | Csoportok betanítása |
 | **ml.azure.com** | Azure Machine Learning Studio |
@@ -57,10 +58,11 @@ Az ebben a szakaszban található gazdagépek a Microsoft tulajdonában vannak, 
 
 Az ebben a szakaszban található gazdagépek a Python-csomagok telepítéséhez használatosak. A fejlesztés, a képzés és a telepítés során szükségesek. 
 
-| **Állomásnév** | **Szerep** |
+| **Állomásnév** | **Cél** |
 | ---- | ---- |
 | **anaconda.com** | Conda-csomagok telepítésekor használatos |
 | **pypi.org** | Pip-csomagok telepítésekor használatos |
+
 
 ## <a name="r-hosts"></a>R-gazdagépek
 
@@ -69,7 +71,7 @@ A jelen szakaszban található gazdagépek az R-csomagok telepítéséhez haszn�
 > [!IMPORTANT]
 > Belsőleg az R SDK for Azure Machine Learning Python-csomagokat használ. Így a Python-gazdagépeket is engedélyeznie kell a tűzfalon.
 
-| **Állomásnév** | **Szerep** |
+| **Állomásnév** | **Cél** |
 | ---- | ---- |
 | **cloud.r-project.org** | A CRAN-csomagok telepítésekor használatos. |
 

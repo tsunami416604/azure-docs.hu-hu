@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: caf73ffbc18a603ace22acfbd0da490048da698a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a2fe1b8bdc80a5265add22bd3602050034471fe2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "71058125"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87036437"
 ---
 # <a name="troubleshoot-application-connectivity-issues-on-virtual-machines-in-azure"></a>Azure-beli virtuális gépeken futó alkalmazások csatlakozási hibáinak elhárítása
 
@@ -117,7 +117,7 @@ Ha nem fér hozzá az alkalmazáshoz, ellenőrizze a következő beállításoka
   
   * Ellenőrizze, hogy a virtuális gép végpont-konfigurációja lehetővé teszi-e a bejövő forgalmat, különösen a protokollt (TCP vagy UDP), valamint a nyilvános és a privát portszámot.
   * Ellenőrizze, hogy a végponton lévő hozzáférés-vezérlési listák (ACL-ek) nem akadályozzák-e az internetről érkező bejövő forgalmat.
-  * További információ: [végpontok beállítása virtuális géphez](../windows/classic/setup-endpoints.md).
+  * További információ: [végpontok beállítása virtuális géphez](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints).
 * A Resource Manager-alapú üzemi modell használatával létrehozott virtuális gépek esetén:
   
   * Ellenőrizze, hogy a virtuális gép bejövő NAT-szabályának konfigurációja lehetővé teszi-e a bejövő forgalmat, különösen a protokollt (TCP vagy UDP), valamint a nyilvános és a privát portszámot.
@@ -138,11 +138,9 @@ Ha hozzáfér az alkalmazáshoz, győződjön meg arról, hogy az internetes per
 
 ## <a name="step-4-if-you-cannot-access-the-application-use-ip-verify-to-check-the-settings"></a>4. lépés ha nem fér hozzá az alkalmazáshoz, az IP-ellenőrzés használatával ellenőrizze a beállításokat. 
 
-További információ: az [Azure Network monitoring áttekintése](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview). 
+További információ: az [Azure Network monitoring áttekintése](../../network-watcher/network-watcher-monitoring-overview.md). 
 
 ## <a name="additional-resources"></a>További források
 [Windows-alapú Azure-beli virtuális gépekkel létesített Távoli asztal-kapcsolatok hibáinak megoldása](troubleshoot-rdp-connection.md)
 
 [A Secure Shell-(SSH-) kapcsolatok hibakeresése Linux-alapú Azure-beli virtuális gépeken](troubleshoot-ssh-connection.md)
-
-

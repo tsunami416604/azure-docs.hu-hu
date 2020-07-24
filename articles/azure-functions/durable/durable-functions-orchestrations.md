@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: overview
 ms.date: 09/08/2019
 ms.author: azfuncdf
-ms.openlocfilehash: caa62483373a240991cfec96437cea7849d9b19c
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 1b349b1e3c4a2fac4cd260dbe83469a776951ab0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84697826"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87033642"
 ---
 # <a name="durable-orchestrations"></a>Tartós összeszerelések
 
@@ -41,9 +41,9 @@ Egy előkészítési példány azonosítója egy kötelező paraméter a legtöb
 
 ## <a name="reliability"></a>Megbízhatóság
 
-Az Orchestrator függvények az [esemény-beszerzések](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing) kialakítási mintája alapján megbízhatóan karbantartják végrehajtási állapotukat. A folyamat aktuális állapotának közvetlen tárolása helyett az állandó feladathoz tartozó keretrendszer egy csak Hozzáfűzéses tárolót használ a függvények összehangolása által végrehajtott műveletek teljes sorozatának rögzítéséhez. A csak Hozzáfűzéses tároló számos előnnyel jár, mint a teljes futtatókörnyezet állapotának "kiírása". Az előnyök többek között a teljesítmény, a méretezhetőség és a rugalmasság. A tranzakciós és a teljes naplózási nyomvonalak és előzmények végleges konzisztenciáját is biztosítjuk. A naplózási nyomvonalak támogatják a megbízható kompenzáló műveleteket.
+Az Orchestrator függvények az [esemény-beszerzések](/azure/architecture/patterns/event-sourcing) kialakítási mintája alapján megbízhatóan karbantartják végrehajtási állapotukat. A folyamat aktuális állapotának közvetlen tárolása helyett az állandó feladathoz tartozó keretrendszer egy csak Hozzáfűzéses tárolót használ a függvények összehangolása által végrehajtott műveletek teljes sorozatának rögzítéséhez. A csak Hozzáfűzéses tároló számos előnnyel jár, mint a teljes futtatókörnyezet állapotának "kiírása". Az előnyök többek között a teljesítmény, a méretezhetőség és a rugalmasság. A tranzakciós és a teljes naplózási nyomvonalak és előzmények végleges konzisztenciáját is biztosítjuk. A naplózási nyomvonalak támogatják a megbízható kompenzáló műveleteket.
 
-A Durable Functions az események beszerzését transzparens módon használja. A színfalak mögött a `await` (C#) vagy a `yield` (JavaScript) operátor egy Orchestrator függvényben a Orchestrator szál vezérlését eredményezi a tartós feladatokhoz. A diszpécser ezután véglegesít minden olyan új műveletet, amelyet a Orchestrator függvény ütemez (például egy vagy több alárendelt függvény hívása vagy tartós időzítő ütemezése) a tárolóba. Az átlátszó véglegesítő művelet hozzáfűzi a rendszerelőkészítési példány végrehajtási előzményeihez. Az előzmények tárolása egy tárolási táblában történik. A commit művelet ezután üzeneteket hoz létre egy várólistához a tényleges munka időzítése érdekében. Ezen a ponton a Orchestrator függvény eltávolítható a memóriából.
+A Durable Functions az események beszerzését transzparens módon használja. A színfalak mögött a `await` Orchestrator függvényben a (C#) vagy a `yield` (JavaScript/Python) operátor a Orchestrator-szál vezérlését eredményezi a tartós feladatok keretrendszer-diszpécserének. A diszpécser ezután véglegesít minden olyan új műveletet, amelyet a Orchestrator függvény ütemez (például egy vagy több alárendelt függvény hívása vagy tartós időzítő ütemezése) a tárolóba. Az átlátszó véglegesítő művelet hozzáfűzi a rendszerelőkészítési példány végrehajtási előzményeihez. Az előzmények tárolása egy tárolási táblában történik. A commit művelet ezután üzeneteket hoz létre egy várólistához a tényleges munka időzítése érdekében. Ezen a ponton a Orchestrator függvény eltávolítható a memóriából.
 
 Ha egy összehangoló függvény több munkát tesz elérhetővé (például válaszüzenet érkezik vagy tartós időzítő lejár), a Orchestrator felébred, és újból végrehajtja a teljes függvényt az elejétől a helyi állapot újraépítéséhez. Ha a kód megpróbál meghívni egy függvényt (vagy bármilyen más aszinkron munkát hajt végre), akkor az állandó feladat-keretrendszer az aktuális előkészítés végrehajtási előzményeit kérdezi le. Ha úgy találja, hogy a [tevékenységi függvény](durable-functions-types-features-overview.md#activity-functions) már végre lett hajtva, és eredményként eredményezte, akkor az a függvény eredményét játssza le, és a Orchestrator-kód továbbra is futni fog. A visszajátszás addig folytatódik, amíg a függvény kódja be nem fejeződik, vagy amíg be nem ütemezi az új aszinkron munkát.
 
@@ -91,9 +91,23 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    result1 = yield context.call_activity('SayHello', "Tokyo")
+    result2 = yield context.call_activity('SayHello', "Seattle")
+    result3 = yield context.call_activity('SayHello', "London")
+    return [result1, result2, result3]
+
+main = df.Orchestrator.create(orchestrator_function)
+```
 ---
 
-Az állandó `await` feladat-keretrendszer minden (C#) vagy `yield` (JavaScript) utasításban lefordítja a függvény végrehajtási állapotát egy tartós tárolási háttérbe (általában az Azure Table Storage-ba). Ezt az állapotot nevezzük a megszervezési *előzményeknek*.
+Minden `await` (C#) vagy `yield` (JavaScript/Python) utasításban a tartós feladatok keretrendszere a függvény végrehajtási állapotát egy tartós tárolási háttérbe (általában az Azure Table Storage-ba) helyezi. Ezt az állapotot nevezzük a megszervezési *előzményeknek*.
 
 ### <a name="history-table"></a>Előzmények táblázat
 
@@ -110,7 +124,7 @@ Az ellenőrzőpont befejezését követően a Orchestrator függvény szabadon e
 
 Befejezésekor a korábban bemutatott függvény előzményei a következő táblázathoz hasonlóan jelennek meg az Azure Table Storage (illusztrációs célokra rövidítve):
 
-| PartitionKey (InstanceId)                     | EventType             | Időbélyeg               | Bevitel | Name             | Eredmény                                                    | status |
+| PartitionKey (InstanceId)                     | EventType             | Timestamp               | Bevitel | Name             | Eredmény                                                    | status |
 |----------------------------------|-----------------------|----------|--------------------------|-------|------------------|-----------------------------------------------------------|
 | eaee885b | ExecutionStarted      | 2017-05-05T18:45:28.852 Z | null  | E1_HelloSequence |                                                           |                     |
 | eaee885b | OrchestratorStarted   | 2017-05-05T18:45:32.362 Z |       |                  |                                                           |                     |
@@ -133,7 +147,7 @@ Néhány megjegyzés az oszlop értékeihez:
 
 * **PartitionKey**: a folyamat PÉLDÁNYának azonosítóját tartalmazza.
 * **EventType**: az esemény típusát jelöli. A következő típusok egyike lehet:
-  * **OrchestrationStarted**: a Orchestrator függvény a várttól kezdve folytatódik, vagy első alkalommal fut. Az `Timestamp` oszlop a `CurrentUtcDateTime` (.net) és `currentUtcDateTime` (JavaScript) API-k determinisztikus értékének feltöltésére szolgál.
+  * **OrchestrationStarted**: a Orchestrator függvény a várttól kezdve folytatódik, vagy első alkalommal fut. Az `Timestamp` oszlop a `CurrentUtcDateTime` (.net), `currentUtcDateTime` (JavaScript) és `current_utc_datetime` (Python) API-k determinisztikus értékének feltöltésére szolgál.
   * **ExecutionStarted**: a Orchestrator függvény első alkalommal indult el. Ez az esemény az oszlop függvény bemenetét is tartalmazza `Input` .
   * **TaskScheduled**: a tevékenységi függvény ütemezése megtörtént. A tevékenység-függvény neve az oszlopban van rögzítve `Name` .
   * **TaskCompleted**: egy tevékenység-függvény befejeződött. A függvény eredménye az `Result` oszlopban található.
@@ -151,7 +165,7 @@ Néhány megjegyzés az oszlop értékeihez:
 > [!WARNING]
 > Habár hibakeresési eszközként hasznos, ne tegyen függőséget ezen a táblán. Előfordulhat, hogy a Durable Functions bővítmény fejlődése megváltozhat.
 
-Minden alkalommal, amikor a függvény egy `await` (C#) vagy (JavaScript) állapotból indul, az állandó feladat-keretrendszer újra lefuttatja `yield` a Orchestrator függvényt. Minden újrafuttatáskor megtekinti a végrehajtás előzményeit, és megállapítja, hogy az aktuális aszinkron művelet megtörtént-e.  Ha a művelet lezajlott, a keretrendszer azonnal visszajátssza a művelet kimenetét, és továbblép a következőre `await` (C#) vagy `yield` (JavaScript). Ez a folyamat addig folytatódik, amíg a teljes előzmények újra nem lettek játszva. Az aktuális előzmények újbóli lejátszása után a helyi változók vissza lesznek állítva a korábbi értékekre.
+Minden alkalommal, amikor a függvény egy `await` (C#) vagy `yield` (JavaScript/Python) használatával folytatja a műveletet, a tartós feladat-keretrendszer újra lefuttatja a Orchestrator függvényt. Minden újrafuttatáskor megtekinti a végrehajtás előzményeit, és megállapítja, hogy az aktuális aszinkron művelet megtörtént-e.  Ha a művelet lezajlott, a keretrendszer azonnal visszajátssza a művelet kimenetét, és továbblép a következőre `await` (C#) vagy `yield` (JavaScript/Python). Ez a folyamat addig folytatódik, amíg a teljes előzmények újra nem lettek játszva. Az aktuális előzmények újbóli lejátszása után a helyi változók vissza lesznek állítva a korábbi értékekre.
 
 ## <a name="features-and-patterns"></a>Funkciók és minták
 
@@ -165,7 +179,7 @@ További információért és példákért tekintse meg az [alfolyamatok](durabl
 
 ### <a name="durable-timers"></a>Tartós időzítők
 
-A munkafolyamatok *tartós időzítőket* ütemezhetnek a késések megvalósításához, illetve az aszinkron műveletek időtúllépési kezelésére vonatkozóan. A `Thread.Sleep` `Task.Delay` (C#) és a `setTimeout()` `setInterval()` (JavaScript) helyett használjon tartós időzítőket a Orchestrator függvényekben.
+A munkafolyamatok *tartós időzítőket* ütemezhetnek a késések megvalósításához, illetve az aszinkron műveletek időtúllépési kezelésére vonatkozóan. A `Thread.Sleep` `Task.Delay` (C#) és a `setTimeout()` `setInterval()` (JavaScript) vagy a `time.sleep()` (Python) helyett használjon tartós időzítőket a Orchestrator függvényekben.
 
 További információért és példákért tekintse meg a [tartós időzítők](durable-functions-timers.md) című cikket.
 
@@ -252,6 +266,18 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    url = context.get_input()
+    res = yield context.call_http('GET', url)
+    if res.status_code >= 400:
+        # handing of error code goes here
+```
 ---
 
 Az alapszintű kérelmek/válaszok támogatása mellett a metódus támogatja a gyakori aszinkron HTTP 202 lekérdezési minták automatikus kezelését, valamint a [felügyelt identitások](../../active-directory/managed-identities-azure-resources/overview.md)használatával támogatja a külső szolgáltatásokkal való hitelesítést is.
@@ -267,7 +293,7 @@ Nem lehet átadni több paramétert egy tevékenységi függvénynek közvetlen�
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-A .NET-ben használhat [ValueTuples](https://docs.microsoft.com/dotnet/csharp/tuples) objektumokat is. A következő minta a [ValueTuples](https://docs.microsoft.com/dotnet/csharp/tuples) új funkcióit használja a [C# 7](https://docs.microsoft.com/dotnet/csharp/whats-new/csharp-7#tuples)használatával:
+A .NET-ben használhat [ValueTuples](/dotnet/csharp/tuples) objektumokat is. A következő minta a [ValueTuples](/dotnet/csharp/tuples) új funkcióit használja a [C# 7](/dotnet/csharp/whats-new/csharp-7#tuples)használatával:
 
 ```csharp
 [FunctionName("GetCourseRecommendations")]
@@ -322,7 +348,7 @@ module.exports = df.orchestrator(function*(context) {
 };
 ```
 
-#### <a name="activity"></a>Tevékenység
+#### <a name="getweather-activity"></a>`GetWeather`Tevékenység
 
 ```javascript
 module.exports = async function (context, location) {
@@ -330,6 +356,36 @@ module.exports = async function (context, location) {
 
     // ...
 };
+```
+
+# <a name="python"></a>[Python](#tab/python)
+
+#### <a name="orchestrator"></a>Orchestrator
+
+```python
+from collections import namedtuple
+import azure.functions as func
+import azure.durable_functions as df
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    Location = namedtuple('Location', ['city', 'state'])
+    location = Location(city='Seattle', state= 'WA')
+
+    weather = yield context.call_activity("GetWeather", location)
+
+    # ...
+
+```
+#### <a name="getweather-activity"></a>`GetWeather`Tevékenység
+
+```python
+from collections import namedtuple
+
+Location = namedtuple('Location', ['city', 'state'])
+
+def main(location: Location) -> str:
+    city, state = location
+    return f"Hello {city}, {state}!"
 ```
 
 ---

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 05/30/2017
 ms.author: genli
-ms.openlocfilehash: f221a0bdf579dbbf42ecf64e18803decfb718456
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c0f4e02a76044268946a4a482eaeccf5d622b8a7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80060664"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87036264"
 ---
 # <a name="troubleshoot-ssh-connections-to-an-azure-linux-vm-that-fails-errors-out-or-is-refused"></a>Egy sikertelen, hibát eredményező vagy elutasított Azure-beli Linux rendszerű virtuális gép SSH-kapcsolatainak hibaelhárítása
 Ez a cikk segít megkeresni és kijavítani a Secure Shell-(SSH-) hibák, SSH-kapcsolódási hibák vagy SSH-problémák miatti problémákat, amikor megpróbál csatlakozni egy linuxos virtuális géphez (VM). A kapcsolódási problémák elhárításához és megoldásához használhatja a Linux Azure Portal, Azure CLI vagy VM-hozzáférési bővítményét.
@@ -34,7 +34,7 @@ Az egyes hibaelhárítási lépések után próbálkozzon újra a virtuális gé
 3. Ellenőrizze, hogy a [hálózati biztonsági csoport](../../virtual-network/security-overview.md) szabályai engedélyezik-e az SSH-forgalmat.
    * Győződjön meg arról, hogy létezik egy [hálózati biztonsági csoport szabálya](#security-rules) az SSH-forgalom engedélyezéséhez (alapértelmezés szerint a 22-es TCP-port).
    * A port átirányítása/leképezése nem használható Azure Load Balancer használata nélkül.
-4. Keresse meg a [virtuális gép erőforrás-állapotát](../../resource-health/resource-health-overview.md).
+4. Keresse meg a [virtuális gép erőforrás-állapotát](../../service-health/resource-health-overview.md).
    * Győződjön meg arról, hogy a virtuális gép állapota Kifogástalan.
    * Ha engedélyezve van a [rendszerindítási diagnosztika](boot-diagnostics.md), ellenőrizze, hogy a virtuális gép nem jelent-e rendszerindítási hibákat a naplókban.
 5. [Indítsa újra a virtuális gépet](#restart-vm).
@@ -69,11 +69,11 @@ Ezen a menüben létrehozhat egy sudo jogosultságokkal rendelkező felhasznál�
 
 ### <a name="check-security-rules"></a><a id="security-rules" />Biztonsági szabályok keresése
 
-Az [IP-folyamat ellenőrzésével](../../network-watcher/network-watcher-check-ip-flow-verify-portal.md) ellenőrizze, hogy egy hálózati biztonsági csoportban lévő szabály blokkolja-e a virtuális gép felé irányuló vagy onnan érkező forgalmat. A hatályos biztonsági csoportok szabályait is áttekintheti, így biztosítva, hogy a bejövő "engedélyezés" NSG szabály létezik, és az SSH-portra van rangsorolva (alapértelmezés szerint 22). További információ: [hatékony biztonsági szabályok használata a virtuális gépek forgalmának hibakereséséhez](../../virtual-network/diagnose-network-traffic-filter-problem.md).
+Az [IP-folyamat ellenőrzésével](../../network-watcher/diagnose-vm-network-traffic-filtering-problem.md) ellenőrizze, hogy egy hálózati biztonsági csoportban lévő szabály blokkolja-e a virtuális gép felé irányuló vagy onnan érkező forgalmat. A hatályos biztonsági csoportok szabályait is áttekintheti, így biztosítva, hogy a bejövő "engedélyezés" NSG szabály létezik, és az SSH-portra van rangsorolva (alapértelmezés szerint 22). További információ: [hatékony biztonsági szabályok használata a virtuális gépek forgalmának hibakereséséhez](../../virtual-network/diagnose-network-traffic-filter-problem.md).
 
 ### <a name="check-routing"></a>Útválasztás keresése
 
-A [következő ugrási](../../network-watcher/network-watcher-check-next-hop-portal.md) lehetőséggel ellenőrizheti, hogy egy adott útvonal nem akadályozza-e a forgalmat a virtuális gépekről vagy rendszerről. Network Watcher Az érvényes útvonalakat is áttekintheti a hálózati adapterek összes érvényes útvonalának megtekintéséhez. További információ: [hatékony útvonalak használata a virtuális gépek forgalmának hibakereséséhez](../../virtual-network/diagnose-network-routing-problem.md).
+A [következő ugrási](../../network-watcher/diagnose-vm-network-routing-problem.md) lehetőséggel ellenőrizheti, hogy egy adott útvonal nem akadályozza-e a forgalmat a virtuális gépekről vagy rendszerről. Network Watcher Az érvényes útvonalakat is áttekintheti a hálózati adapterek összes érvényes útvonalának megtekintéséhez. További információ: [hatékony útvonalak használata a virtuális gépek forgalmának hibakereséséhez](../../virtual-network/diagnose-network-routing-problem.md).
 
 ## <a name="use-the-azure-vm-serial-console"></a>Az Azure-beli virtuális gép soros konzoljának használata
 Az [Azure VM soros konzol](./serial-console-linux.md) hozzáférést biztosít a Linux rendszerű virtuális gépekhez készült szöveges konzolhoz. A konzol segítségével az SSH-kapcsolatokat egy interaktív rendszerhéjban lehet elhárítani. Győződjön meg arról, hogy teljesítette a soros konzol használatának [előfeltételeit](./serial-console-linux.md#prerequisites) , és próbálja ki az alábbi PARANCSOKAT az SSH-kapcsolat további hibakereséséhez.
@@ -137,7 +137,7 @@ Hozzon létre egy nevű fájlt `settings.json` a következő tartalommal:
 
 ```json
 {
-    "reset_ssh":"True"
+    "reset_ssh":True
 }
 ```
 
@@ -173,7 +173,7 @@ az vm extension set --resource-group philmea --vm-name Ubuntu \
 ```
 
 ## <a name="use-the-azure-classic-cli"></a>A klasszikus Azure parancssori felület használata
-Ha még nem tette meg, [telepítse a klasszikus Azure CLI-t, és kapcsolódjon az Azure-előfizetéséhez](../../cli-install-nodejs.md). Győződjön meg arról, hogy Resource Manager-módot használ a következőképpen:
+Ha még nem tette meg, [telepítse a klasszikus Azure CLI-t, és kapcsolódjon az Azure-előfizetéséhez](/cli/azure/install-classic-cli). Győződjön meg arról, hogy Resource Manager-módot használ a következőképpen:
 
 ```azurecli
 azure config mode arm
@@ -232,7 +232,7 @@ azure vm restart --resource-group myResourceGroup --name myVM
 ```
 
 ## <a name="redeploy-a-vm"></a><a id="redeploy-vm" />Virtuális gép ismételt üzembe helyezése
-Az Azure-on belül újratelepítheti a virtuális gépet egy másik csomópontra, amely az összes mögöttes hálózati problémát kijavítani tudja. A virtuális gépek újratelepítésével kapcsolatos további információkért lásd: [virtuális gép újratelepítése új Azure-csomópontra](../windows/redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Az Azure-on belül újratelepítheti a virtuális gépet egy másik csomópontra, amely az összes mögöttes hálózati problémát kijavítani tudja. A virtuális gépek újratelepítésével kapcsolatos további információkért lásd: [virtuális gép újratelepítése új Azure-csomópontra](./redeploy-to-new-node-windows.md?toc=/azure/virtual-machines/windows/toc.json).
 
 > [!NOTE]
 > A művelet befejezése után a rendszer elveszíti az ideiglenes lemezeket, és frissíti a virtuális géppel társított dinamikus IP-címeket.
@@ -268,10 +268,10 @@ Próbálja ki ezeket a lépéseket a klasszikus üzemi modell használatával l�
 * A [Azure Portal](https://portal.azure.com)távoli elérésének visszaállítása. A Azure Portal válassza ki a virtuális gépet, majd válassza a **távoli alaphelyzetbe állítás...** lehetőséget.
 * Indítsa újra a virtuális gépet. A [Azure Portal](https://portal.azure.com)válassza ki a virtuális gépet, és válassza az **Újraindítás**lehetőséget.
 
-* Telepítse újra a virtuális gépet egy új Azure-csomópontra. További információ a virtuális gépek újbóli üzembe helyezéséről: [virtuális gép újratelepítése új Azure-csomópontra](../windows/redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+* Telepítse újra a virtuális gépet egy új Azure-csomópontra. További információ a virtuális gépek újbóli üzembe helyezéséről: [virtuális gép újratelepítése új Azure-csomópontra](./redeploy-to-new-node-windows.md?toc=/azure/virtual-machines/windows/toc.json).
 
     A művelet befejezése után a rendszer elveszíti az ideiglenes lemezeket, és frissíti a virtuális géppel társított dinamikus IP-címeket.
-* Kövesse a [jelszó vagy SSH Linux-alapú virtuális gépekre való alaphelyzetbe állításának](../linux/classic/reset-access-classic.md) lépéseit a következő témakörben:
+* Kövesse a [jelszó vagy SSH Linux-alapú virtuális gépekre való alaphelyzetbe állításának](/previous-versions/azure/virtual-machines/linux/classic/reset-access-classic) lépéseit a következő témakörben:
 
   * Állítsa vissza a jelszót vagy az SSH-kulcsot.
   * Hozzon létre egy *sudo* felhasználói fiókot.
@@ -281,5 +281,5 @@ Próbálja ki ezeket a lépéseket a klasszikus üzemi modell használatával l�
 
 ## <a name="additional-resources"></a>További források
 * Ha továbbra sem tud SSH-t létesíteni a virtuális géppel a következő lépések után, tekintse meg a [részletes hibaelhárítási lépéseket](detailed-troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) a probléma megoldásához szükséges további lépések áttekintéséhez.
-* Az alkalmazás-hozzáférés hibaelhárításával kapcsolatos további információkért lásd: Azure-beli [virtuális gépen futó alkalmazásokhoz való hozzáférés hibaelhárítása](../windows/troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* A klasszikus üzemi modellel létrehozott virtuális gépek hibaelhárításával kapcsolatos további információkért lásd: [jelszó vagy SSH alaphelyzetbe állítása Linux-alapú virtuális gépekhez](../linux/classic/reset-access-classic.md).
+* Az alkalmazás-hozzáférés hibaelhárításával kapcsolatos további információkért lásd: Azure-beli [virtuális gépen futó alkalmazásokhoz való hozzáférés hibaelhárítása](./troubleshoot-app-connection.md?toc=/azure/virtual-machines/linux/toc.json)
+* A klasszikus üzemi modellel létrehozott virtuális gépek hibaelhárításával kapcsolatos további információkért lásd: [jelszó vagy SSH alaphelyzetbe állítása Linux-alapú virtuális gépekhez](/previous-versions/azure/virtual-machines/linux/classic/reset-access-classic).

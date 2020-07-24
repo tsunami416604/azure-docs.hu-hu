@@ -3,7 +3,7 @@ title: Mik azok a hozzáférési felülvizsgálatok? – Azure Active Directory 
 description: A Azure Active Directory hozzáférési felülvizsgálatok segítségével szabályozhatja a csoporttagság és az alkalmazások elérését, hogy megfeleljen a szervezet irányítási, kockázatkezelési és megfelelőségi kezdeményezéseinek.
 services: active-directory
 documentationcenter: ''
-author: msaburnley
+author: barclayn
 manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.subservice: compliance
-ms.date: 06/17/2020
-ms.author: ajburnle
+ms.date: 07/22/2020
+ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 22a7cafbf8223c3d9e7641851d02f61bc2ad16ae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ec88d795d0e05c62f07ff415364ced651ad8f4bc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85078892"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87034612"
 ---
 # <a name="what-are-azure-ad-access-reviews"></a>Mik azok az Azure AD-hozzáférési felülvizsgálatok?
 
@@ -120,7 +120,7 @@ További információ a licencekről: [licencek kiosztása vagy eltávolítása 
 
 Íme néhány példa a licencekre, amelyek segítségével meghatározhatja a szükséges licencek számát.
 
-| Eset | Számítás | Licencek száma |
+| Forgatókönyv | Számítás | Licencek száma |
 | --- | --- | --- |
 | A rendszergazda létrehoz egy hozzáférési felülvizsgálatot az A csoportban a 75-felhasználók és 1 csoport tulajdonosa számára, és a csoport tulajdonosát a véleményezőként rendeli hozzá. | 1 a csoport tulajdonosának licence felülvizsgáló | 1 |
 | A rendszergazda az 500-es és 3 csoportbeli tulajdonosok hozzáférési felülvizsgálatát hozza létre a B csoport számára, és a 3 csoport tulajdonosait felülvizsgáló rendeli hozzá. | 3 licenc minden csoport tulajdonosának felülvizsgáló | 3 |

@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: b423cc4cd933f84fccae5c2116be7abbdc288c67
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: edc52198208aa86772704bde7637a2801688da59
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203665"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87036131"
 ---
 # <a name="azure-disk-encryption-scenarios-on-windows-vms"></a>Azure Disk Encryption-forgatókönyvek Windows rendszerű virtuális gépekhez
 
@@ -238,7 +238,7 @@ A Azure Disk Encryption a következő forgatókönyvek, funkciók és technológ
 - Gen2 virtuális gépek (lásd: [a 2. generációs virtuális gépek támogatása az Azure](generation-2.md#generation-1-vs-generation-2-capabilities)-ban)
 - Lsv2 sorozatú virtuális gépek (lásd: [Lsv2 sorozat](../lsv2-series.md))
 - Az M sorozatú virtuális gépek írásgyorsító lemezzel.
-- [Kiszolgálóoldali titkosítás alkalmazása az ügyfél által felügyelt kulcsokkal](disk-encryption.md) az ade által titkosított virtuális gépekre, valamint fordítva.
+- Az ADE alkalmazása olyan virtuális gépre, amely egy, az [ügyfél által felügyelt kulcsokkal](disk-encryption.md) (SSE + CMK) rendelkező, kiszolgálóoldali titkosítással titkosított adatlemezzel rendelkezik, vagy ha az az ade-vel titkosított virtuális gép adatlemezére ALKALMAZZA az SSE + CMK.
 - Az ADE-sel titkosított virtuális gépek áttelepítése az [ügyfél által felügyelt kulcsokkal rendelkező kiszolgálóoldali titkosításra](disk-encryption.md).
 
 

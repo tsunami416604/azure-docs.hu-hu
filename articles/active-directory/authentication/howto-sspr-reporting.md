@@ -11,11 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 348082ad96a5efa4d8f866c3675044edf7b6f8a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4e3425407fdb131fb1499b2cd085fbe6d427804a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80652154"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87035298"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Az Azure AD-jelszókezelés jelentéskészítési lehetőségei
 
@@ -50,9 +51,9 @@ A Azure Portal-élményben továbbfejlesztettük a jelszavak alaphelyzetbe áll�
 6. A panel tetején található **szűrő** menüben válassza ki a **szolgáltatás** legördülő listát, és módosítsa az **önkiszolgáló jelszó-kezelő** szolgáltatás típusára.
 7. Ha szeretné, a lista további szűréséhez válassza ki az Önt érdeklő **tevékenységet** .
 
-### <a name="converged-registration-preview"></a>Konvergens regisztráció (előzetes verzió)
+### <a name="combined-registration"></a>Kombinált regisztráció
 
-Ha részt vesz a konvergens regisztráció nyilvános előzetesében, a naplók felhasználói tevékenységével kapcsolatos információk a **biztonsági**  >  **hitelesítési módszerek**alatt találhatók.
+Ha engedélyezte a [kombinált regisztrációt](https://docs.microsoft.com/azure/active-directory/authentication/concept-registration-mfa-sspr-combined), a naplók felhasználói tevékenységével kapcsolatos információk a **biztonsági**  >  **hitelesítési módszerek**alatt találhatók.
 
 ## <a name="description-of-the-report-columns-in-the-azure-portal"></a>A jelentés oszlopainak leírása a Azure Portalban
 

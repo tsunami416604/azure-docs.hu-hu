@@ -5,11 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 06/28/2018
 ms.author: tomfitz
-ms.openlocfilehash: 53c9653b44a6c9d26d49d37b351cf6000676e2d4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 711f5293b205c1f500c6d9e08154342285ef959b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75651968"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87033204"
 ---
 # <a name="microsoftnetworkvirtualnetworkcombo-ui-element"></a>Microsoft. Network. VirtualNetworkCombo FELHASZNÁLÓIFELÜLET-elem
 
@@ -19,11 +20,11 @@ ms.locfileid: "75651968"
 
 Ha a felhasználó új virtuális hálózatot választ, a felhasználó testreszabhatja az egyes alhálózatok nevét és a hozzá tartozó előtagot. Az alhálózatok konfigurálása nem kötelező.
 
-![Microsoft. Network. VirtualNetworkCombo új](./media/managed-application-elements/microsoft.network.virtualnetworkcombo-new.png)
+![Microsoft. Network. VirtualNetworkCombo új](./media/managed-application-elements/microsoft-network-virtualnetworkcombo-new.png)
 
 Ha a felhasználó egy meglévő virtuális hálózatot vesz fel, a felhasználónak le kell képeznie az egyes alhálózatokat, amelyekre a központi telepítési sablonnak szüksége van egy meglévő alhálózathoz. Ebben az esetben szükség van az alhálózatok konfigurálására.
 
-![Microsoft. Network. VirtualNetworkCombo meglévő](./media/managed-application-elements/microsoft.network.virtualnetworkcombo-existing.png)
+![Microsoft. Network. VirtualNetworkCombo meglévő](./media/managed-application-elements/microsoft-network-virtualnetworkcombo-existing.png)
 
 ## <a name="schema"></a>Séma
 

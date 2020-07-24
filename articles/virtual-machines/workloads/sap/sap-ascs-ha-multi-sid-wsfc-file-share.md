@@ -16,11 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1de9c07c99666ed4011214bd9b426eac8f494991
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: acf60138aaecd914b30a020fdead292eb0ef1473
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82978178"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87035978"
 ---
 # <a name="sap-ascsscs-instance-multi-sid-high-availability-with-windows-server-failover-clustering-and-file-share-on-azure"></a>SAP ASCS/SCS instance multi-SID magas rendelkezésre állás a Windows Server feladatátvételi fürtszolgáltatással és fájlmegosztás az Azure-ban
 
@@ -41,10 +42,10 @@ Ebből a cikkből megtudhatja, hogyan helyezhet át egyetlen ASCS/SCS-telepíté
 >
 >Az egyes WSFC-fürtökben lévő SAP ASCS/SCS-példányok maximális száma megegyezik az egyes Azure-beli belső terheléselosztó számára elérhető saját előtér-IP-címek maximális számával.
 >
-> Az ebben a dokumentációban bemutatott konfiguráció még nem támogatott [Azure Availability Zones](https://docs.microsoft.com/azure/availability-zones/az-overview)
+> Az ebben a dokumentációban bemutatott konfiguráció még nem támogatott [Azure Availability Zones](../../../availability-zones/az-overview.md)
 > 
 
-A terheléselosztó korlátaival kapcsolatos további információkért tekintse meg a [hálózatkezelési korlátok: Azure Resource Manager][networking-limits-azure-resource-manager]a "privát ELŐTÉR-IP/terheléselosztó" című szakaszt. Vegye fontolóra az Azure [standard Load BALANCER SKU](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) használatát is az Azure Load Balancer alapszintű SKU-jának használata helyett.
+A terheléselosztó korlátaival kapcsolatos további információkért tekintse meg a [hálózatkezelési korlátok: Azure Resource Manager][networking-limits-azure-resource-manager]a "privát ELŐTÉR-IP/terheléselosztó" című szakaszt. Vegye fontolóra az Azure [standard Load BALANCER SKU](../../../load-balancer/load-balancer-standard-availability-zones.md) használatát is az Azure Load Balancer alapszintű SKU-jának használata helyett.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

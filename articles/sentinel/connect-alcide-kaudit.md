@@ -14,14 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/21/2020
 ms.author: yelevin
-ms.openlocfilehash: 121c9258353505b6147aa059d327bc711e9fede4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cf8da1d88529a823ff4399fb955c8a5e0abbd20e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85368445"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87038239"
 ---
 # <a name="connect-your-alcide-kaudit-to-azure-sentinel"></a>A Alcide-kAudit összekötése az Azure Sentinel használatával
+
+> [!IMPORTANT]
+> Az Azure Sentinel Alcide kAudit-adatösszekötője jelenleg nyilvános előzetes verzióban érhető el.
+> Ez a szolgáltatás szolgáltatói szerződés nélkül érhető el, és éles számítási feladatokhoz nem ajánlott. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 A [Alcide kAudit](https://www.alcide.io/kaudit-K8s-forensics/) segítségével azonosíthatja a rendellenes Kubernetes viselkedéseket, és az észlelési idő csökkentése mellett a Kubernetes és az incidensekre koncentrálhat. Ez a cikk azt ismerteti, hogyan csatlakoztatható a Alcide kAudit-megoldás az Azure Sentinelhez. A Alcide kAudit adatösszekötője lehetővé teszi a kAudit-naplózási adatai egyszerű üzembe helyezését az Azure Sentinelben, így megtekintheti a munkafüzetekbe, és egyéni riasztásokat hozhat létre, és a vizsgálat javítására is felhasználhatja azt. A Alcide kAudit és az Azure Sentinel közötti integráció a REST API használatát teszi lehetővé.
 

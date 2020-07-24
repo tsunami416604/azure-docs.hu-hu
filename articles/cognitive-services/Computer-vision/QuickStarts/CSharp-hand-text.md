@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: b47d579a8b086f86194d7129f5289f9c5c839c85
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.openlocfilehash: 70244f6709e35271f63834fd818ea7c72e52a419
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84987530"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87032068"
 ---
 # <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-30-rest-api-and-c"></a>Gyors útmutató: nyomtatott és kézírásos szöveg kinyerése a Computer Vision 3,0 REST API és C használatával #
 
@@ -44,6 +44,7 @@ A minta létrehozása a Visual Studióban:
     2. Kattintson a **Browse** (Tallózás) lapra, majd írja be a **keresőmezőbe** a „Newtonsoft.Json” kifejezést.
     3. Válassza a megjelenő **Newtonsoft.Json** lehetőséget, majd jelölje be a projektnév melletti jelölőnégyzetet, és kattintson az **Install** (Telepítés) gombra.
 3. Másolja és illessze be az alábbi kódot a megoldás Program.cs fájljába.
+1. Állítsa `imageFilePath` a saját rendszerképének elérési útjára. Letöltheti a használni kívánt [minta-rendszerképet](https://raw.githubusercontent.com/MicrosoftDocs/azure-docs/master/articles/cognitive-services/Computer-vision/Images/readsample.jpg) .
 4. Futtassa a programot.
 
 ```csharp

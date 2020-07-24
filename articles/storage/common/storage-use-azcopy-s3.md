@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: e917c261392da6044391efc98a81c8f90b619514
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ee58f21881c9799eba27dec3e71c601e94401deb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513759"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87036709"
 ---
 # <a name="copy-data-from-amazon-s3-to-azure-storage-by-using-azcopy"></a>Adatok másolása az Amazon S3-ból az Azure Storage-ba a AzCopy használatával
 
@@ -34,7 +34,7 @@ A AzCopy letöltéséhez tekintse meg az [első lépések a AzCopy](storage-use-
 >
 > Ha inkább SAS-tokent használ a blob-adathozzáférés engedélyezéséhez, akkor a tokent az erőforrás URL-címéhez is hozzáfűzheti az egyes AzCopy-parancsokban.
 >
-> Példa: `https://mystorageaccount.blob.core.windows.net/mycontainer?<SAS-token>`.
+> Például: `https://mystorageaccount.blob.core.windows.net/mycontainer?<SAS-token>`.
 
 ### <a name="authorize-with-aws-s3"></a>Engedélyezés az AWS S3-vel
 
@@ -127,7 +127,7 @@ Továbbá, mivel a AzCopy fájlokba másolja a fájlokat, ellenőrzi a névadás
 
 Az AWS S3 és az Azure különböző karakterkészleteket tesz lehetővé az objektumok kulcsainak neveiben. [Itt](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html#object-keys)olvashat azokról a karakterekről, amelyeket az AWS S3 használ. Az Azure oldalon a blob-objektumok kulcsai megfelelnek a [C# azonosítók](https://docs.microsoft.com/dotnet/csharp/language-reference/)elnevezési szabályainak.
 
-Egy AzCopy parancs részeként megadhat `copy` egy értéket a nem kötelezően megadandó `s2s-invalid-metadata-handle` jelzőhöz, amely meghatározza, hogyan szeretné kezelni azokat a fájlokat, amelyekben a fájl metaadatai a nem kompatibilis kulcsok nevét tartalmazzák. A következő táblázat ismerteti az egyes jelző értékeket.
+Egy AzCopy parancs részeként megadhat `copy` egy értéket a nem kötelezően megadandó `s2s-handle-invalid-metadata` jelzőhöz, amely meghatározza, hogyan szeretné kezelni azokat a fájlokat, amelyekben a fájl metaadatai a nem kompatibilis kulcsok nevét tartalmazzák. A következő táblázat ismerteti az egyes jelző értékeket.
 
 | Jelölő értéke | Description  |
 |--------|-----------|
@@ -159,6 +159,6 @@ További példákat a következő cikkekben talál:
 
 - [Adatok átvitele a AzCopy és a blob Storage szolgáltatással](storage-use-azcopy-blobs.md)
 
-- [Adatok átvitele a AzCopy és a file Storage szolgáltatással](storage-use-azcopy-files.md)
+- [Adatok átvitele az AzCopy használatával és fájltárolás](storage-use-azcopy-files.md)
 
 - [AzCopy konfigurálása, optimalizálása és megoldása](storage-use-azcopy-configure.md)

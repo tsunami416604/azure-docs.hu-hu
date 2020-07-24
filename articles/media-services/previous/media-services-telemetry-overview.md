@@ -14,17 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: e2cbb36158722a47518f575b391340b5e25bd908
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 52b737e88e13c59d260da73c6fa37a1088cb91d5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74895778"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87038462"
 ---
 # <a name="azure-media-services-telemetry"></a>Azure Media Services telemetria  
 
 
 > [!NOTE]
-> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Tekintse meg a legújabb, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
+> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Tekintse meg a legújabb, [Media Services v3](../latest/index.yml)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
 
 A Azure Media Services (AMS) lehetővé teszi a szolgáltatásaihoz tartozó telemetria/metrikai adatok elérését. Az AMS aktuális verziója lehetővé teszi az élő **csatorna**, a **streamvégpontok**és az élő **archív** entitások telemetria-adatainak gyűjtését. 
 
@@ -50,7 +51,7 @@ A telemetria egy Azure Storage-táblába van írva abban a Storage-fiókban, ame
 
 A telemetria-adatmennyiségeket az alábbi módokon használhatja:
 
-- Az adatok közvetlenül az Azure Table Storageból (például a Storage SDK használatával) olvashatók be. A telemetria-tárolási táblák leírását a jelen témakör **telemetria-információk** [felhasználása](https://msdn.microsoft.com/library/mt742089.aspx) című szakaszában találja.
+- Az adatok közvetlenül az Azure Table Storageból (például a Storage SDK használatával) olvashatók be. A telemetria-tárolási táblák leírását a jelen témakör **telemetria-információk** [felhasználása](/previous-versions/azure/mt742089(v=azure.100)) című szakaszában találja.
 
 Vagy
 
@@ -77,7 +78,7 @@ Tulajdonság|Érték|Példák/megjegyzések
 ---|---|---
 PartitionKey|{Account ID} _ {entitás azonosítója}|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66<br/<br/>A fiók AZONOSÍTÓját a partíciós kulcs tartalmazza, hogy leegyszerűsítse azokat a munkafolyamatokat, amelyekben több Media Services fiók is ugyanarra a Storage-fiókra ír.
 RowKey|{másodperc – éjfél} _ {véletlenszerű érték}|01688_00199<br/><br/>A sor kulcsa másodperc és éjfél közötti időt vesz igénybe, hogy az első n stílusú lekérdezéseket engedélyezzen a partíción belül. További információkért tekintse meg [ezt](../../cosmos-db/table-storage-design-guide.md#log-tail-pattern) a cikket. 
-Időbélyeg|Dátum/idő|Automatikus időbélyeg az Azure-táblázat 2016-09-09T22:43:42.241 Z
+Timestamp|Dátum/idő|Automatikus időbélyeg az Azure-táblázat 2016-09-09T22:43:42.241 Z
 Típus|A telemetria-adatmennyiséget biztosító entitás típusa|Channel/Streamvégpontok/Archive<br/><br/>Az esemény típusa csak egy karakterlánc-érték.
 Name|A telemetria esemény neve|ChannelHeartbeat/StreamingEndpointRequestLog
 ObservedTime|A telemetria esemény bekövetkezett időpontja (UTC)|2016-09-09T22:42:36.924 Z<br/><br/>A megfigyelt időt a telemetria küldő entitás (például egy csatorna) kapja meg. Az összetevők között időszinkronizálási problémák merülhetnek fel, így ez az érték körülbelül
@@ -98,7 +99,7 @@ Tulajdonság|Érték|Példák
 ---|---|---
 PartitionKey|PartitionKey|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66
 RowKey|RowKey|01688_00199
-Időbélyeg|Időbélyeg|Automatikus időbélyeg az Azure Table 2016-09-09T22:43:42.241 Z
+Timestamp|Timestamp|Automatikus időbélyeg az Azure Table 2016-09-09T22:43:42.241 Z
 Típus|Típus|Streamvégpontok
 Name|Name|StreamingEndpointRequestLog
 ObservedTime|ObservedTime|2016-09-09T22:42:36.924 Z
@@ -117,7 +118,7 @@ Tulajdonság|Érték|Példák/megjegyzések
 ---|---|---
 PartitionKey|PartitionKey|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66
 RowKey|RowKey|01688_00199
-Időbélyeg|Időbélyeg|Automatikus időbélyeg az Azure-táblázat 2016-09-09T22:43:42.241 Z
+Timestamp|Timestamp|Automatikus időbélyeg az Azure-táblázat 2016-09-09T22:43:42.241 Z
 Típus|Típus|Csatorna
 Name|Name|ChannelHeartbeat
 ObservedTime|ObservedTime|2016-09-09T22:42:36.924 Z
@@ -131,10 +132,10 @@ OverlapCount|Átfedés a betöltés során|0
 DiscontinuityCount|A nyomon követés megszakítása|0
 LastTimestamp|Utolsó betöltött adatidőbélyeg|1800488800
 NonincreasingCount|A nem növekvő timestamp miatt elvetett töredékek száma|2
-UnalignedKeyFrames|Azt jelzi, hogy a töredék (ek) (a minőségi szintek között), ahol a kulcstárolók nincsenek igazítva |True (Igaz)
-UnalignedPresentationTime|Azt jelzi, hogy a rendszer a töredék (eke) t (a minőségi szintek/sávok között) kapta-e, ahol a megjelenítési idő nincs igazítva|True (Igaz)
-UnexpectedBitrate|Igaz, ha a számított/tényleges bitráta a hang/videó nyomon követéséhez > 40 000 bps és a IncomingBitrate = = 0, illetve a IncomingBitrate és a actualBitrate eltérő a 50%-kal |True (Igaz)
-Kifogástalan|Igaz, ha <br/>overlapCount, <br/>DiscontinuityCount, <br/>NonIncreasingCount, <br/>UnalignedKeyFrames, <br/>UnalignedPresentationTime, <br/>UnexpectedBitrate<br/> mind a 0|True (Igaz)<br/><br/>Az egészséges egy összetett függvény, amely hamis értéket ad vissza, ha a következő feltételek bármelyike fennáll:<br/><br/>-OverlapCount > 0<br/>-DiscontinuityCount > 0<br/>-NonincreasingCount > 0<br/>-UnalignedKeyFrames = = True<br/>-UnalignedPresentationTime = = True<br/>-UnexpectedBitrate = = True
+UnalignedKeyFrames|Azt jelzi, hogy a töredék (ek) (a minőségi szintek között), ahol a kulcstárolók nincsenek igazítva |Igaz
+UnalignedPresentationTime|Azt jelzi, hogy a rendszer a töredék (eke) t (a minőségi szintek/sávok között) kapta-e, ahol a megjelenítési idő nincs igazítva|Igaz
+UnexpectedBitrate|Igaz, ha a számított/tényleges bitráta a hang/videó nyomon követéséhez > 40 000 bps és a IncomingBitrate = = 0, illetve a IncomingBitrate és a actualBitrate eltérő a 50%-kal |Igaz
+Kifogástalan|Igaz, ha <br/>overlapCount, <br/>DiscontinuityCount, <br/>NonIncreasingCount, <br/>UnalignedKeyFrames, <br/>UnalignedPresentationTime, <br/>UnexpectedBitrate<br/> mind a 0|Igaz<br/><br/>Az egészséges egy összetett függvény, amely hamis értéket ad vissza, ha a következő feltételek bármelyike fennáll:<br/><br/>-OverlapCount > 0<br/>-DiscontinuityCount > 0<br/>-NonincreasingCount > 0<br/>-UnalignedKeyFrames = = True<br/>-UnalignedPresentationTime = = True<br/>-UnexpectedBitrate = = True
 
 **Élő Archívum**
 
@@ -142,7 +143,7 @@ Tulajdonság|Érték|Példák/megjegyzések
 ---|---|---
 PartitionKey|PartitionKey|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66
 RowKey|RowKey|01688_00199
-Időbélyeg|Időbélyeg|Automatikus időbélyeg az Azure-táblázat 2016-09-09T22:43:42.241 Z
+Timestamp|Timestamp|Automatikus időbélyeg az Azure-táblázat 2016-09-09T22:43:42.241 Z
 Típus|Típus|Archívum
 Name|Name|ArchiveHeartbeat
 ObservedTime|ObservedTime|2016-09-09T22:42:36.924 Z

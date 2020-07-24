@@ -16,16 +16,16 @@ ms.workload: infrastructure-services
 ms.date: 04/21/2020
 ms.author: juergent
 ms.custom: ''
-ms.openlocfilehash: df80113b85153f4e52bcbefa7b33dab9da296173
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f78d5f839c5dd7816ae28eeed175503427abb43c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82084821"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87035842"
 ---
 # <a name="sap-certifications-and-configurations-running-on-microsoft-azure"></a>Microsoft Azureon futó SAP-tanúsítványok és-konfigurációk
 
-Az SAP és a Microsoft hosszú múltra tekint át egy erős partneri együttműködésben, amely kölcsönös előnyökkel jár az ügyfelek számára. A Microsoft folyamatosan frissíti a platformját, és új hitelesítési adatokat küld az SAP-nek, hogy Microsoft Azure a legjobb platform, amelyre az SAP-munkaterheléseket futtatni kívánja. Az alábbi táblázatok az Azure által támogatott konfigurációkat és a növekvő SAP-tanúsítványok listáját ismertetik. Ez a lista egy áttekintő lista, amely itt és a hivatalos SAP-listákból is eltérhet. A részletes információkkal kapcsolatos tudnivalókat az Azure-beli [üzembe helyezést támogató SAP-szoftvereket](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-supported-product-on-azure) ismertető cikkben találja.
+Az SAP és a Microsoft hosszú múltra tekint át egy erős partneri együttműködésben, amely kölcsönös előnyökkel jár az ügyfelek számára. A Microsoft folyamatosan frissíti a platformját, és új hitelesítési adatokat küld az SAP-nek, hogy Microsoft Azure a legjobb platform, amelyre az SAP-munkaterheléseket futtatni kívánja. Az alábbi táblázatok az Azure által támogatott konfigurációkat és a növekvő SAP-tanúsítványok listáját ismertetik. Ez a lista egy áttekintő lista, amely itt és a hivatalos SAP-listákból is eltérhet. A részletes információkkal kapcsolatos tudnivalókat az Azure-beli [üzembe helyezést támogató SAP-szoftvereket](./sap-supported-product-on-azure.md) ismertető cikkben találja.
 
 ## <a name="sap-hana-certifications"></a>SAP HANA minősítések
 Hivatkozik
@@ -54,7 +54,7 @@ Hivatkozik
 | --- | --- | --- | --- |
 | SAP Business Suite szoftver | Windows, SUSE Linux Enterprise, Red Hat Enterprise Linux, Oracle Linux |SQL Server, Oracle (csak Windows és Oracle Linux), DB2, SAP bemutató |A5-től A11-ig, a D14, a DS11 a DS15_v2 DS11_v2 DS14, a GS1, a GS5, a M64s, a D64s_v3 D2s_v3 a D2as_v4 D64as_v4, E2s_v3 a E64s_v3, E2as_v4 D11, M64ms, M128s, M128ms, M64ls, M32ls, M32ts,, E64as_v4, M208s_v2, M208ms_v2, M416s_v2 |
 | SAP Business all-in-One | Windows, SUSE Linux Enterprise, Red Hat Enterprise Linux, Oracle Linux |SQL Server, Oracle (csak Windows és Oracle Linux), DB2, SAP bemutató |A5-től A11-ig, a D14, a DS11 a DS15_v2 DS11_v2 DS14, a GS1, a GS5, a M64s, a D64s_v3 D2s_v3 a D2as_v4 D64as_v4, E2s_v3 a E64s_v3, E2as_v4 D11, M64ms, M128s, M128ms, M64ls, M32ls, M32ts,, E64as_v4, M208s_v2, M208ms_v2, M416s_v2 |
-| SAP BusinessObjects BI | Windows |N.A. |A5-től A11-ig, a D14, a DS11 a DS15_v2 DS11_v2 DS14, a GS1, a GS5, a M64s, a D64s_v3 D2s_v3 a D2as_v4 D64as_v4, E2s_v3 a E64s_v3, E2as_v4 D11, M64ms, M128s, M128ms, M64ls, M32ls, M32ts,, E64as_v4, M208s_v2, M208ms_v2, M416s_v2 |
+| SAP BusinessObjects BI | Windows |n.a. |A5-től A11-ig, a D14, a DS11 a DS15_v2 DS11_v2 DS14, a GS1, a GS5, a M64s, a D64s_v3 D2s_v3 a D2as_v4 D64as_v4, E2s_v3 a E64s_v3, E2as_v4 D11, M64ms, M128s, M128ms, M64ls, M32ls, M32ts,, E64as_v4, M208s_v2, M208ms_v2, M416s_v2 |
 | SAP NetWeaver | Windows, SUSE Linux Enterprise, Red Hat Enterprise Linux, Oracle Linux |SQL Server, Oracle (csak Windows és Oracle Linux), DB2, SAP bemutató |A5-től A11-ig, a D14, a DS11 a DS15_v2 DS11_v2 DS14, a GS1, a GS5, a M64s, a D64s_v3 D2s_v3 a D2as_v4 D64as_v4, E2s_v3 a E64s_v3, E2as_v4 D11, M64ms, M128s, M128ms, M64ls, M32ls, M32ts,, E64as_v4, M208s_v2, M208ms_v2, M416s_v2 |
 
 ## <a name="other-sap-workload-supported-on-azure"></a>Az Azure-ban támogatott egyéb SAP-munkaterhelések

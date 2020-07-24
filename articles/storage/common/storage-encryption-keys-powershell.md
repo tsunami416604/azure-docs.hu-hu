@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 04/02/2020
+ms.date: 07/13/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 6b2983bbaf22ae1b9e09ff3362a4bc06e6658b33
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a3fdde755a5e024efead5c8861a1d5cd769b6d23
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85506198"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87036828"
 ---
 # <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-powershell"></a>Ügyfél által felügyelt kulcsok konfigurálása Azure Key Vault a PowerShell használatával
 
@@ -39,15 +39,16 @@ A rendszerhez rendelt felügyelt identitások PowerShell-lel való konfigurálá
 
 ## <a name="create-a-new-key-vault"></a>Új kulcstartó létrehozása
 
-Ha új kulcstartót szeretne létrehozni a PowerShell használatával, hívja a [New-AzKeyVault](/powershell/module/az.keyvault/new-azkeyvault). Az Azure Storage-titkosításhoz az ügyfél által felügyelt kulcsok tárolásához használt kulcstartónak engedélyezve kell lennie két kulcsfontosságú védelmi beállítás, a helyreállítható törlés és a **nem végleges** **Törlés** .
+Új kulcstartó PowerShell használatával történő létrehozásához telepítse az az [.](https://www.powershellgallery.com/packages/Az.KeyVault/2.0.0) kulcstartó PowerShell-modul 2.0.0 vagy újabb verzióját. Ezután hívja a [New-AzKeyVault](/powershell/module/az.keyvault/new-azkeyvault) új kulcstartó létrehozásához.
 
-Ne felejtse el lecserélni a zárójelben lévő helyőrző értékeket a saját értékeire.
+Az Azure Storage-titkosításhoz az ügyfél által felügyelt kulcsok tárolásához használt kulcstartónak engedélyezve kell lennie két kulcsfontosságú védelmi beállítás, a helyreállítható törlés és a **nem végleges** **Törlés** . Az az. kulcstartó modul 2.0.0 és újabb verziójában a Soft delete alapértelmezés szerint engedélyezve van, amikor új kulcstárolót hoz létre.
+
+Az alábbi példa egy új kulcstartót hoz létre, amely a **Soft delete** és a **not unpurge** Properties engedélyezve van. Ne felejtse el lecserélni a zárójelben lévő helyőrző értékeket a saját értékeire.
 
 ```powershell
 $keyVault = New-AzKeyVault -Name <key-vault> `
     -ResourceGroupName <resource_group> `
     -Location <location> `
-    -EnableSoftDelete `
     -EnablePurgeProtection
 ```
 
@@ -78,9 +79,27 @@ Az Azure Storage encryption a 2048, 3072 és 4096 méretű RSA-és RSA-HSM-kulcs
 
 ## <a name="configure-encryption-with-customer-managed-keys"></a>Titkosítás konfigurálása az ügyfél által felügyelt kulcsokkal
 
-Alapértelmezés szerint az Azure Storage-titkosítás a Microsoft által felügyelt kulcsokat használja. Ebben a lépésben konfigurálja az Azure Storage-fiókját az ügyfél által felügyelt kulcsok használatára, és adja meg a Storage-fiókhoz társítandó kulcsot.
+Alapértelmezés szerint az Azure Storage-titkosítás a Microsoft által felügyelt kulcsokat használja. Ebben a lépésben az Azure Storage-fiókot úgy konfigurálja, hogy az ügyfél által felügyelt kulcsokat Azure Key Vault használatával használja, majd adja meg a Storage-fiókhoz társítandó kulcsot.
 
-Hívja a [set-AzStorageAccount-](/powershell/module/az.storage/set-azstorageaccount) t a Storage-fiók titkosítási beállításainak frissítéséhez, ahogy az az alábbi példában is látható. A **-KeyvaultEncryption** beállítással engedélyezheti az ügyfél által felügyelt kulcsokat a Storage-fiókhoz. Ne felejtse el lecserélni a zárójelben lévő helyőrző értékeket a saját értékeire, és az előző példákban definiált változókat használni.
+Ha az ügyfél által felügyelt kulcsokkal konfigurálja a titkosítást, dönthet úgy, hogy automatikusan elforgatja a titkosításhoz használt kulcsot, amikor a verzió módosul a társított kulcstartóban. Másik lehetőségként explicit módon megadhatja a titkosításhoz használni kívánt verziót, amíg a kulcs verzióját manuálisan nem frissíti.
+
+### <a name="configure-encryption-for-automatic-rotation-of-customer-managed-keys"></a>Titkosítás konfigurálása az ügyfél által felügyelt kulcsok automatikus elforgatásához
+
+Az ügyfél által felügyelt kulcsok automatikus elforgatásához a titkosítás konfigurálásához telepítse az az [. Storage](https://www.powershellgallery.com/packages/Az.Storage) modult, a Version 2.0.0 vagy az újabb verziót.
+
+Az ügyfél által felügyelt kulcsok automatikus elforgatásához hagyja ki a kulcs verzióját, ha az ügyfél által felügyelt kulcsokat konfigurálja a Storage-fiókhoz. A [set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount) a Storage-fiók titkosítási beállításainak frissítésére szolgál, ahogy az az alábbi példában is látható, és a **-KeyvaultEncryption** beállítással engedélyezheti az ügyfél által felügyelt kulcsokat a Storage-fiókhoz. Ne felejtse el lecserélni a zárójelben lévő helyőrző értékeket a saját értékeire, és az előző példákban definiált változókat használni.
+
+```powershell
+Set-AzStorageAccount -ResourceGroupName $storageAccount.ResourceGroupName `
+    -AccountName $storageAccount.StorageAccountName `
+    -KeyvaultEncryption `
+    -KeyName $key.Name `
+    -KeyVaultUri $keyVault.VaultUri
+```
+
+### <a name="configure-encryption-for-manual-rotation-of-key-versions"></a>Titkosítás konfigurálása a kulcsfontosságú verziók manuális elforgatásához
+
+Ha explicit módon meg szeretné adni a titkosításhoz használni kívánt verziót, adja meg a kulcs verziószámát, ha a titkosítást az ügyfél által felügyelt kulcsokkal konfigurálja a Storage-fiókhoz. A [set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount) a Storage-fiók titkosítási beállításainak frissítésére szolgál, ahogy az az alábbi példában is látható, és a **-KeyvaultEncryption** beállítással engedélyezheti az ügyfél által felügyelt kulcsokat a Storage-fiókhoz. Ne felejtse el lecserélni a zárójelben lévő helyőrző értékeket a saját értékeire, és az előző példákban definiált változókat használni.
 
 ```powershell
 Set-AzStorageAccount -ResourceGroupName $storageAccount.ResourceGroupName `
@@ -91,9 +110,7 @@ Set-AzStorageAccount -ResourceGroupName $storageAccount.ResourceGroupName `
     -KeyVaultUri $keyVault.VaultUri
 ```
 
-## <a name="update-the-key-version"></a>A kulcs verziójának frissítése
-
-A kulcsok új verziójának létrehozásakor frissítenie kell a Storage-fiókot az új verzió használatára. Először hívja meg a [Get-AzKeyVaultKey](/powershell/module/az.keyvault/get-azkeyvaultkey) a kulcs legújabb verziójának beszerzéséhez. Ezután hívja meg a [set-AzStorageAccount-](/powershell/module/az.storage/set-azstorageaccount) t, hogy frissítse a Storage-fiók titkosítási beállításait a kulcs új verziójának használatára, ahogy az az előző szakaszban is látható.
+Amikor manuálisan elforgatja a kulcs verzióját, frissítenie kell a Storage-fiók titkosítási beállításait az új verzió használatára. Először hívja meg a [Get-AzKeyVaultKey](/powershell/module/az.keyvault/get-azkeyvaultkey) a kulcs legújabb verziójának beszerzéséhez. Ezután hívja meg a [set-AzStorageAccount-](/powershell/module/az.storage/set-azstorageaccount) t, hogy frissítse a Storage-fiók titkosítási beállításait a kulcs új verziójának használatára az előző példában látható módon.
 
 ## <a name="use-a-different-key"></a>Másik kulcs használata
 
@@ -101,7 +118,7 @@ Ha módosítani szeretné az Azure Storage-titkosításhoz használt kulcsot, h�
 
 ## <a name="revoke-customer-managed-keys"></a>Ügyfél által felügyelt kulcsok visszavonása
 
-Ha úgy véli, hogy egy kulcs biztonsága sérült, visszavonhatja az ügyfél által felügyelt kulcsokat a Key Vault hozzáférési házirendjének eltávolításával. Az ügyfél által felügyelt kulcs visszavonásához hívja meg a [Remove-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/remove-azkeyvaultaccesspolicy) parancsot az alábbi példában látható módon. Ne felejtse el lecserélni a zárójelben lévő helyőrző értékeket a saját értékeire, és az előző példákban definiált változókat használni.
+Az ügyfél által felügyelt kulcsok visszavonásához távolítsa el a Key Vault hozzáférési házirendjét. Az ügyfél által felügyelt kulcs visszavonásához hívja meg a [Remove-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/remove-azkeyvaultaccesspolicy) parancsot az alábbi példában látható módon. Ne felejtse el lecserélni a zárójelben lévő helyőrző értékeket a saját értékeire, és az előző példákban definiált változókat használni.
 
 ```powershell
 Remove-AzKeyVaultAccessPolicy -VaultName $keyVault.VaultName `

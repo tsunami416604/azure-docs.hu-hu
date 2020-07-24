@@ -3,30 +3,24 @@ author: baanders
 description: fájl belefoglalása az Azure Digital Twins-hoz – a Cloud Shell és a IoT-bővítmény beállítása
 ms.service: digital-twins
 ms.topic: include
-ms.date: 5/25/2020
+ms.date: 7/17/2020
 ms.author: baanders
-ms.openlocfilehash: 6f472865c131b873f1ae0a21fa9ec55865fb2b29
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: b7c91d648c06970d53799c6ff505919dea17b3c0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86277971"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87032211"
 ---
-[!INCLUDE [cloud-shell-try-it.md](cloud-shell-try-it.md)]
-
-### <a name="set-up-cloud-shell-session"></a>Cloud Shell munkamenet beállítása
-
-Egy Cloud Shell ablak megnyitása után először jelentkezzen be, és állítsa be a rendszerhéj környezetét az előfizetéséhez ehhez a munkamenethez. Futtassa ezeket a parancsokat a Cloud Shellban:
+Az Azure Digital Twins használatának megkezdéséhez nyissa meg [Azure Cloud Shell](https://shell.azure.com) ablakban az első teendő, hogy jelentkezzen be, és állítsa be a rendszerhéj környezetét az előfizetéséhez ehhez a munkamenethez. Futtassa ezeket a parancsokat a Cloud Shellban:
 
 ```azurecli
 az login
-az account set --subscription <your-Azure-subscription-ID>
+az account set --subscription "<your-Azure-subscription-ID>"
 ```
 > [!TIP]
-> Az előfizetését az előfizetés neve alapján is beállíthatja. Használja a következő parancsot: 
-> ```azurecli
-> az account set --subscription "your-Azure-subscription-name"
-> 
+> A fenti parancsban szereplő azonosító helyett az előfizetés nevét is használhatja. 
+
 Ha első alkalommal használta ezt az előfizetést az Azure digitális Twins szolgáltatásban, futtassa ezt a parancsot az Azure Digital Twins-névtérben való regisztráláshoz. (Ha nem biztos abban, hogy a múltban is elvégezte a futtatást, akkor is.)
 
 ```azurecli
@@ -41,10 +35,10 @@ Először futtassa ezt a parancsot a már telepített bővítmények listájána
 az extension list
 ```
 
-A kimenetben keresse meg az `"name"` egyes listaelemek mezőjét, és tekintse meg a bővítmények nevét.
+A kimenet a jelenleg meglévő bővítmények tömbje. A `"name"` bővítmények neveinek megtekintéséhez keresse meg az egyes listaelemek mezőjét.
 
 A kimenet használatával határozza meg, hogy a következő parancsok melyike fusson a bővítmény telepítéséhez (több is futtatható).
-* Ha a lista a `azure-iot` következőket tartalmazza: már rendelkezik a kiterjesztéssel. A parancs futtatásával győződjön meg arról, hogy rendelkezik a legújabb frissítéssel:
+* Ha a lista a `azure-iot` következőket tartalmazza: már rendelkezik a kiterjesztéssel. A parancs futtatásával győződjön meg arról, hogy rendelkezik a legújabb frissítéssel, és nincs több elérhető frissítés:
 
    ```azurecli-interactive
    az extension update --name azure-iot

@@ -11,12 +11,12 @@ ms.author: nilsp
 author: NilsPohlmann
 ms.date: 12/05/2019
 ms.custom: seodec18, tracking-python
-ms.openlocfilehash: f5c4bfbe955c2989f420d7a6f325f8101556dddd
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 069f18d6ef94dd7570cdd506823ef22a17594795
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86201316"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87031133"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Gépi tanulási folyamatokat hozhat létre és futtathat Azure Machine Learning SDK-val
 
@@ -38,7 +38,7 @@ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot a f
 
 * Hozzon létre egy [Azure Machine learning munkaterületet](how-to-manage-workspace.md) az összes folyamat erőforrásának tárolásához.
 
-* [Konfigurálja a fejlesztési környezetet](how-to-configure-environment.md) az Azure Machine learning SDK telepítéséhez, vagy használjon egy [Azure Machine learning számítási példányt (előzetes verzió)](concept-compute-instance.md) a már telepített SDK-val.
+* [Állítsa be a fejlesztési környezetet](how-to-configure-environment.md) a Azure Machine learning SDK telepítéséhez, vagy használjon egy [Azure Machine learning számítási példányt](concept-compute-instance.md) az SDK-val, amely már telepítve van.
 
 Első lépésként csatolja a munkaterületet:
 
@@ -129,6 +129,8 @@ Az alábbi példák a számítási célok létrehozásához és csatolásához s
 * Azure Machine Learning Compute
 * Azure Databricks 
 * Azure Data Lake Analytics
+
+[!INCLUDE [low-pri-note](../../includes/machine-learning-low-pri-vm.md)]
 
 ### <a name="azure-machine-learning-compute"></a>Azure Machine Learning számítás
 

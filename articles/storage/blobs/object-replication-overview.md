@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/28/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 2d8d4c369cef8bf996628e8c89a424f04dcdbe71
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: abec9811cd407c1fab91cfb60412aabdd969690d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84888069"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87036981"
 ---
 # <a name="object-replication-for-block-blobs-preview"></a>Objektum-replikálás blokk-Blobok számára (előzetes verzió)
 
@@ -63,6 +63,8 @@ Az objektum-replikáció csak az általános célú v2-alapú Storage-fiókok es
 - Közép-Franciaország
 - Kelet-Kanada
 - Közép-Kanada
+- USA 2. keleti régiója
+- USA középső régiója
 
 Az objektum-replikáció használatához a forrás-és a cél fiókoknak is szerepelniük kell ezen régiók egyikében. A fiókok lehetnek két különböző régióban.
 

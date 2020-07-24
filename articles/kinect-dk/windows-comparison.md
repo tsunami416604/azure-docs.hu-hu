@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: article
 keywords: Kinect, Windows, v2, Azure Kinect, összehasonlítás, SDK, különbségek, hardver, szoftver
-ms.openlocfilehash: ec105cef0c52b02c763487fbe5b2d8c018315f4c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0a8d399370f354524858bdd658ffd65c0494dd4d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67452513"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87031575"
 ---
 # <a name="azure-kinect-and-kinect-windows-v2-comparison"></a>Az Azure Kinect és a Kinect Windows v2 összehasonlítása
 
@@ -22,17 +22,17 @@ Az Azure Kinect DK hardver-és szoftverfejlesztői készletei eltérnek a Window
 
 Az Azure Kinect Development Kit és a Windows v2 rendszerhez készült Kinect közötti magas szintű különbségek az alábbi táblázatban láthatók.
 
-|    |      | Azure Kinect DK |  Windows v2 Kinect |
-|----------|---------------|--------| ------------|
+| Funkció | Típus | Azure Kinect DK | Windows v2 Kinect |
+| ------- | ---- | --------------- | --------------------- |
 | **Hang** | Részletek  | 7 – MIC kör alakú tömb | 4 – MIC lineáris fázisú tömb |
 | **Mozgásérzékelő** | Részletek | 3 tengelyes gyorsulásmérő 3 tengelyes giroszkóp | 3 tengelyes gyorsulásmérő |
 | **RGB-kamera**    | Részletek | 3840 x 2160 px @30 fps | 1920 x 1080 px @30 fps |
 | **Részletes kamera**  | Metódus   | Repülési idő | Repülési idő |
-|                   | Megoldás: | 640 x 576 px @30 fps | 512 x 424 px @ 30 fps |
+|                   | Feloldás | 640 x 576 px @30 fps | 512 x 424 px @ 30 fps |
 |                   |            | 512 x 512 px @30 fps |                       |
 |                   |            | 1024x1024 px @15 fps |                       |
 | **Kapcsolódás** | Adatok | USB 3.1 Gen 1, USB-C típussal  | USB 3,1 Gen 1|
-|  | Power | Külső PSU vagy USB-C | Külső PSU |
+|  | Energiaellátás | Külső PSU vagy USB-C | Külső PSU |
 |  | Szinkronizálás | RGB & belső, külső eszköz – eszköz| RGB & csak belső mélységben |
 | **Elejét vehesse** | Dimenziók | 103 x 39 x 126 mm | 249 x 66 x 67 mm |
 |  | Háttértár | 440 g | 970 g |
@@ -48,7 +48,7 @@ Az alábbi táblázat az alacsony szintű eszköz-érzékelő hozzáférési ké
 |---------|---------|------------|---------|
 | **Mélység** | ✔️ | ✔️ |    |   |
 | **IR** | ✔️ | ✔️ |  |
-| **Szín** | ✔️ | ✔️ | A Színformátum támogatja a különbségeket, az Azure Kinect DK a következő kamera-vezérlőket támogatja: expozíció, fehéregyensúly, fényerő, kontraszt, telítettség, élesség és hozzáférés |
+| **Szín (Color)** | ✔️ | ✔️ | A Színformátum támogatja a különbségeket, az Azure Kinect DK a következő kamera-vezérlőket támogatja: expozíció, fehéregyensúly, fényerő, kontraszt, telítettség, élesség és hozzáférés |
 | **Hang** | ✔️ | ✔️ | Az Azure Kinect DK mikrofonok a Speech SDK vagy a Windows natív API használatával érhetők el |
 | **IMU** | ✔️ |  | Az Azure Kinect DK teljes 6 tengelyes IMU rendelkezik, a Windows Kinect pedig csak 1 tengelyt biztosít. |
 | **Kalibrálási adatértékek** | ✔️ | ✔️ | OpenCV-kompatibilis kamera-modell kalibrálása |
@@ -57,7 +57,7 @@ Az alábbi táblázat az alacsony szintű eszköz-érzékelő hozzáférési ké
 | **Hozzáférés megosztása több ügyféllel** | | ✔️ | Az Azure Kinect Sensor SDK az WinUSB/libUSB az eszköz elérésére támaszkodik, és nem rendelkezik olyan szolgáltatással, amely lehetővé teszi az eszközök hozzáférésének több folyamattal való megosztását. |
 | **Stream Record/lejátszás eszköz** | ✔️ | ✔️ | Az Azure Kinect DK nyílt forráskódú Matroska Container-alapú implementációt használ |
 
-## <a name="features"></a>Szolgáltatások
+## <a name="features"></a>Funkciók
 
 Az Azure Kinect SDK szolgáltatáskészlet különbözik a Kinect for Windows v2 szolgáltatástól, az alábbiakban részletezett módon:
 
@@ -71,7 +71,7 @@ Az Azure Kinect SDK szolgáltatáskészlet különbözik a Kinect for Windows v2
 | | BodyIndexFrame | Body Tracking SDK  |
 | Koordináta-leképezés|CoordinateMapper| [Sensor SDK – rendszerkép-átalakítások](use-image-transformation.md) |
 |Arcfelismerés | FaceFrame | [Cognitive Services: Face](https://azure.microsoft.com/services/cognitive-services/face/)       |
-|    Beszédfelismerés    |    N.A.                      |    [Cognitive Services: beszéd](https://azure.microsoft.com/services/cognitive-services/directory/speech/)     |
+|    Beszédfelismerés    |    n.a.                      |    [Cognitive Services: beszéd](https://azure.microsoft.com/services/cognitive-services/directory/speech/)     |
 
 ## <a name="next-steps"></a>További lépések
 

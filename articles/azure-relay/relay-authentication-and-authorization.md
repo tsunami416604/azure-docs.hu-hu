@@ -3,12 +3,12 @@ title: Hitelesítés és engedélyezés Azure Relay | Microsoft Docs
 description: Ez a cikk áttekintést nyújt a közös hozzáférésű aláírás (SAS) hitelesítéséről a Azure Relay szolgáltatással.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 63e075bc9bf75005a92866f9fa0f90ddaba2f016
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4b0a5c7a092155a006419eedd170a63abed42bb3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85316939"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87033377"
 ---
 # <a name="azure-relay-authentication-and-authorization"></a>Hitelesítés és engedélyezés Azure Relay
 
@@ -20,7 +20,7 @@ Az [sas-hitelesítés](../service-bus-messaging/service-bus-sas.md) lehetővé t
 
 Az SAS-kulcsok a Relay-névtérben konfigurálhatók. A Service Bus üzenetkezeléstől eltérően a [Relay hibrid kapcsolatok](relay-hybrid-connections-protocol.md) támogatja a jogosulatlan vagy névtelen küldőket. Az entitáshoz való névtelen hozzáférést a létrehozáskor engedélyezheti, ahogy az a portálon látható következő képernyőképen is látható:
 
-![][0]
+![A "hibrid kapcsolat létrehozása" nevű párbeszédpanel "név" szövegmezővel és az "ügyfél-hitelesítés szükséges" címkével ellátott jelölőnégyzettel rendelkezik, amely be van jelölve.][0]
 
 Az SAS használatához konfigurálhat egy [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) -objektumot egy továbbító névtéren, amely a következőkből áll:
 

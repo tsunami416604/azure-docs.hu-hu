@@ -9,16 +9,16 @@ ms.author: johndeu
 ms.date: 04/16/2020
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 53d68a18c5904b8b7e2f6145ae26221e99395a82
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 67c26cbad2a723fa21fbe1719c6e43d3d63f2547
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84749929"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87030665"
 ---
 # <a name="verified-on-premises-live-streaming-encoders"></a>Ellenőrzött helyszíni élő adatfolyam-kódolók
 
-Azure Media Services egy [élő esemény](https://docs.microsoft.com/rest/api/media/liveevents) (csatorna) az élő közvetítésre szánt tartalom feldolgozásához szükséges folyamatot jelöli. Az élő esemény két módon fogadja az élő bemeneti adatfolyamokat.
+Azure Media Services egy [élő esemény](/rest/api/media/liveevents) (csatorna) az élő közvetítésre szánt tartalom feldolgozásához szükséges folyamatot jelöli. Az élő esemény két módon fogadja az élő bemeneti adatfolyamokat.
 
 * A helyszíni élő kódoló egy többszörös sávszélességű RTMP vagy Smooth Streaming (darabolt MP4) streamet küld az élő eseményre, amely nincs engedélyezve az élő kódolás végrehajtásához Media Services. A betöltött adatfolyamok további feldolgozás nélkül haladnak át az élő eseményeken. Ezt a metódust **áteresztőnek**nevezzük. Azt javasoljuk, hogy az élő kódoló többszörös átviteli sebességű streameket küldjön egyetlen sávszélességű adatfolyamként egy átmenő élő esemény helyett, hogy az adaptív sávszélességű adatfolyamot továbbítsa az ügyfélnek. 
 

@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 06/30/2020
 ms.author: cherylmc
-ms.openlocfilehash: 3505427ab88a2241aa2781366c3d15179b03f050
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 72408b4f17aa5e8601095b27478806883739a7a8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86231160"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87031626"
 ---
-# <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute-partnerek és társviszony-létesítési helyszínek.
+# <a name="expressroute-connectivity-partners-and-peering-locations"></a>ExpressRoute-kapcsolati partnerek és társítási helyszínek
 
 > [!div class="op_single_selector"]
 > * [Telephelyek szolgáltató szerint](expressroute-locations.md)
@@ -133,6 +133,7 @@ Az alábbi táblázat a szolgáltatók szerint jeleníti meg a helyeket. Ha az e
 | **[Neutrona Networks](https://www.neutrona.com/index.php/azure-expressroute/)** |Támogatott |Támogatott |Dallas, Los Angeles, Miami, Sao Paulo, Washington, D.C. |
 | **[Következő generációs adatelemek](https://www.nextgenerationdata.co.uk/ngd-cloud-gateway/)** |Támogatott |Támogatott |Newport (Wales) |
 | **[NEXTDC](https://www.nextdc.com/services/axon-ethernet/microsoft-expressroute)** |Támogatott |Támogatott |Melbourne, Perth, Sydney, Sydney2 |
+| **[NOS](https://www.nos.pt/empresas/corporate/cloud/cloud/Pages/nos-cloud-connect.aspx)** |Támogatott |Támogatott |Amszterdam2 |
 | **[NTT Communications](https://www.ntt.com/en/services/network/virtual-private-network.html)** |Támogatott |Támogatott |Amszterdam, Hongkong (SAR), London, Los Angeles, Oszaka, Szingapúr, Sydney, Tokió, Washington, D.C. |
 | **[NTT EAST](https://business.ntt-east.co.jp/service/crossconnect/)** |Támogatott |Támogatott |Tokió |
 | **[NTT globális adatközpontok EMEA](https://www.ntt.com/en/services/data-center.html)** |Támogatott |Támogatott |Berlin |
@@ -355,7 +356,7 @@ A privát kapcsolatok igény szerinti beállítása nehéz feladat lehet, a hál
 | **[OneAs1a](https://www.oneas1a.com/connectivity.html)** | Ázsia |
 | **[Orange Networks](https://orange-networks.com/blog/88-azureexpressroute)** | Európa |
 | **[Perficient](https://www.perficient.com/Partners/Microsoft/Cloud/Azure-ExpressRoute)** | Észak-Amerika |
-| **[Presidio](https://info.presidio.com/microsoft-azure-expressroute)** | Észak-Amerika |
+| **[Presidio](https://www.presidio.com/subpage/1107/microsoft-azure)** | Észak-Amerika |
 | **[sol-tec](https://www.sol-tec.com/what-we-do/)** | Európa |
 | **[Venha Pra Nuvem](https://venhapranuvem.com.br/)** | Dél-Amerika |
 | **[Vigilant.IT](https://vigilant.it/expressroute)** | Ausztrália |

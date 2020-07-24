@@ -6,12 +6,13 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.author: brendm
-ms.openlocfilehash: 7ef7614b32dd88e804b1a74749ee87504f9cea40
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.custom: devx-track-java
+ms.openlocfilehash: 1fcec8b591192bba862bf91040e5d6ca1ef9bcd8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86205464"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87037729"
 ---
 # <a name="understand-metrics-for-azure-spring-cloud"></a>Az Azure Spring Cloud metrikáinak ismertetése
 
@@ -88,13 +89,13 @@ Az alábbi táblázatokban az elérhető metrikák és részletek láthatók.
 
 ### <a name="error"></a>Hiba
 >[!div class="mx-tdCol2BreakAll"]
->| Név | Rugós indítószerkezet metrikájának neve | Egység | Részletek |
+>| Name | Rugós indítószerkezet metrikájának neve | Egység | Részletek |
 >|----|----|----|------------|
 >| tomcat. Global. error | tomcat. Global. error | Darabszám | A feldolgozott kérelmekben előforduló hibák száma |
 
 ### <a name="performance"></a>Teljesítmény
 >[!div class="mx-tdCol2BreakAll"]
->| Név | Rugós indítószerkezet metrikájának neve | Egység | Részletek |
+>| Name | Rugós indítószerkezet metrikájának neve | Egység | Részletek |
 >|----|----|----|------------|
 >| System. CPU. használat | System. CPU. használat | Százalék | A legújabb CPU-használat a teljes rendszer számára. Ez az érték a [0.0, 1.0] intervallumban megjelenő Double. A 0,0 érték azt jelenti, hogy az összes CPU tétlen volt a legutóbbi megfigyelt időszakban, míg a 1,0 érték azt jelenti, hogy minden CPU aktívan futtatta az idő 100%-át az elmúlt időszak során.|
 >| Process. CPU. használat | Alkalmazás CPU-kihasználtságának százalékos aránya | Százalék | A Java virtuális gép folyamat legutóbbi CPU-használata. Ez az érték a [0.0, 1.0] intervallumban megjelenő Double. A 0,0 érték azt jelenti, hogy egyik processzor sem futtatott szálakat a JVM folyamat során a legutóbbi megfigyelt időszakban, míg a 1,0 érték azt jelenti, hogy minden CPU aktívan futtatta a szálakat a JVM 100%-ában az elmúlt időszak során. A JVM található szálak közé tartoznak az alkalmazási szálak, valamint a JVM belső szálak.|
@@ -108,9 +109,9 @@ Az alábbi táblázatokban az elérhető metrikák és részletek láthatók.
 >| JVM. GC. pause. Total. Count | JVM. GC. pause (összesen-Count) | Darabszám | A JMV elindítását követő összes GC-szám, beleértve a fiatal és a régi GC-t. |
 >| JVM. GC. pause. Total. Time | JVM. GC. pause (teljes idő) | Ezredmásodpercben | A JMV elindítását követően felhasznált teljes GC-idő, beleértve a fiatal és a régi GC-t. |
 
-### <a name="request"></a>Kérés
+### <a name="request"></a>Kérelem
 >[!div class="mx-tdCol2BreakAll"]
->| Név | Rugós indítószerkezet metrikájának neve | Egység | Részletek |
+>| Name | Rugós indítószerkezet metrikájának neve | Egység | Részletek |
 >|----|----|----|------------|
 >| tomcat. Global. elküldve | tomcat. Global. elküldve | Bájt | Elküldve a Tomcat-webkiszolgálók mennyisége |
 >| tomcat. Global. Received | tomcat. Global. Received | Bájt | A lekéréses tomcat-webkiszolgáló mennyisége |
@@ -119,7 +120,7 @@ Az alábbi táblázatokban az elérhető metrikák és részletek láthatók.
 
 ### <a name="session"></a>Munkamenet
 >[!div class="mx-tdCol2BreakAll"]
->| Név | Rugós indítószerkezet metrikájának neve | Egység | Részletek |
+>| Name | Rugós indítószerkezet metrikájának neve | Egység | Részletek |
 >|----|----|----|------------|
 >| tomcat. Sessions. Active. max | tomcat. Sessions. Active. max | Darabszám | Egy időben aktív munkamenetek maximális száma |
 >| tomcat. Sessions. Alive. max | tomcat. Sessions. Alive. max | Ezredmásodpercben | A lejárt munkamenet élettartamának leghosszabb ideje (másodpercben) |

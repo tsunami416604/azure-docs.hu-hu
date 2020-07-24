@@ -11,11 +11,12 @@ ms.author: clauren
 ms.reviewer: jmartens
 ms.date: 03/05/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: 13ce9204ad09d2ecb4b149cf50696aa73d927314
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 68c328bde853bbf4e48ab7ab1a6e2c7b51198f59
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85214366"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87030691"
 ---
 # <a name="troubleshoot-docker-deployment-of-models-with-azure-kubernetes-service-and-azure-container-instances"></a>Az Azure Kubernetes Service-szel és Azure Container Instances-mel kapcsolatos modellek Docker-telepítésének hibáinak megoldása 
 
@@ -53,7 +54,7 @@ Ha bármilyen problémába ütközik, az első lépés az, hogy az üzembe helye
 
 Feltételezve, hogy az új/ajánlott telepítési módszert használja a [Model. Deploy ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) API-val egy [környezeti](how-to-use-environments.md) objektummal bemeneti paraméterként, a kód három fő lépésből bontható:
 
-1. Regisztrálja a modellt. Íme néhány mintakód:
+1. A modell regisztrálása. Íme néhány mintakód:
 
     ```python
     from azureml.core.model import Model
@@ -99,6 +100,8 @@ Miután megszakította az üzembe helyezés folyamatát az egyes feladatokra, me
 ## <a name="debug-locally"></a>Helyi hibakeresés
 
 Ha olyan problémák merülnek fel, amelyek a modell ACI-vagy AK-beli üzembe helyezésével kapcsolatosak, próbálja meg helyi webszolgáltatásként telepíteni. A helyi webszolgáltatás használatával egyszerűbbé válik a problémák elhárítása. A modellt tartalmazó Docker-rendszerkép le van töltve, és elindult a helyi rendszeren.
+
+A [MachineLearningNotebooks](https://github.com/Azure/MachineLearningNotebooks) -tárházban talál egy [helyi telepítési jegyzetfüzetet](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/deploy-to-local/register-model-deploy-local.ipynb) egy futtatható-példa megismeréséhez.
 
 > [!WARNING]
 > A helyi webszolgáltatások üzembe helyezése éles környezetben nem támogatott.
@@ -181,6 +184,7 @@ print(service.get_logs())
 # if you only know the name of the service (note there might be multiple services with the same name but different version number)
 print(ws.webservices['mysvc'].get_logs())
 ```
+
 ## <a name="container-cannot-be-scheduled"></a>A tároló nem ütemezhető
 
 Egy szolgáltatás Azure Kubernetes szolgáltatásbeli számítási célra való telepítésekor a Azure Machine Learning megkísérli a szolgáltatás ütemezését a kért mennyiségű erőforrással. Ha 5 perc elteltével nem érhetők el csomópontok a fürtben a megfelelő mennyiségű erőforrással, a telepítés sikertelen lesz az üzenettel `Couldn't Schedule because the kubernetes cluster didn't have available resources after trying for 00:05:00` . Ezt a hibát a további csomópontok hozzáadásával, a csomópontok SKU-jának módosításával vagy a szolgáltatás erőforrás-követelményeinek módosításával kezelheti. 

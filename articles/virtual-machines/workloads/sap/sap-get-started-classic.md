@@ -15,17 +15,17 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: na
 ms.date: 10/04/2016
 ms.author: sedusch
-ms.openlocfilehash: 9525f339861b5de8dc22da753f7c36dcc6eede8a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3ceeb20b138307b40fcd6f8c03d614fc3e811473
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "70078985"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87035774"
 ---
 # <a name="using-sap-on-linux-virtual-machines-in-azure"></a>Az SAP használata az Azure-beli Linux rendszerű virtuális gépeken
 A felhőalapú számítástechnika széles körben használt fogalom, amely egyre fontosabbá válik az informatikai iparágban, a kisvállalatok esetében ugyanúgy, mint a nagy, nemzetközi vállalatok számára. A Microsoft Azure a Microsoft új lehetőségek széles skáláját nyújtó felhőszolgáltatás-platformja. Az ügyfelek most már gyorsan építhetnek ki és vonhatnak ki az üzemből felhőszolgáltatásként rendelkezésre bocsájtott alkalmazásokat, ami azt jelenti, hogy többé nem érvényesülnek a technikai vagy költségvetési korlátozások. A vállalatoknak nem kell időt és forrásokat befektetni a hardverinfrastruktúrába: ehelyett az alkalmazásra, az üzleti folyamatokra és az ügyfeleknek és felhasználóknak nyújtott értékre koncentrálhatnak.
 
-A Microsoft Azure Virtual Machines szolgáltatással a Microsoft átfogó infrastruktúra-szolgáltatási (IaaS) platformot kínál. Az Azure virtuális gépek támogatják az SAP NetWeaver-alapú alkalmazásokat (IaaS). Az alábbi tanulmányok azt írják le, hogyan tervezhet és implementálhat SAP NetWeaver-alapú alkalmazásokat az Azure-beli Windows rendszerű virtuális gépeken. Emellett SAP NetWeaver-alapú alkalmazásokat is alkalmazhat [Windows rendszerű virtuális gépeken](../../virtual-machines-windows-classic-sap-get-started.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
+A Microsoft Azure Virtual Machines szolgáltatással a Microsoft átfogó infrastruktúra-szolgáltatási (IaaS) platformot kínál. Az Azure virtuális gépek támogatják az SAP NetWeaver-alapú alkalmazásokat (IaaS). Az alábbi tanulmányok azt írják le, hogyan tervezhet és implementálhat SAP NetWeaver-alapú alkalmazásokat az Azure-beli Windows rendszerű virtuális gépeken. Emellett SAP NetWeaver-alapú alkalmazásokat is alkalmazhat [Windows rendszerű virtuális gépeken](./get-started.md?toc=/azure/virtual-machines/windows/classic/toc.json).
 
 [!INCLUDE [virtual-machines-common-classic-sap-get-started](../../../../includes/virtual-machines-common-classic-sap-get-started.md)]
 
@@ -36,5 +36,4 @@ Title: SAP NetWeaver tesztelése Microsoft Azure SUSE Linux rendszerű virtuáli
 
 Frissítve: december 2015
 
-[Ez a cikk itt található](suse-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-
+[Ez a cikk itt található](./sap-deployment-checklist.md?toc=/azure/virtual-machines/linux/toc.json)

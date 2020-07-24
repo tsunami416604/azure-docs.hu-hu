@@ -6,11 +6,13 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 05/29/2020
-ms.openlocfilehash: 581d77a5568b9533d85ff476b63001c8a237bc4e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-java
+ms.openlocfilehash: 1f48cd185f2aa25954627a9ff26f3e59b8e76e7a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84457201"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87037312"
 ---
 # <a name="how-to-self-diagnose-and-solve-problems-in-azure-spring-cloud"></a>Az Azure Spring Cloud szolgáltatásban felmerülő problémák önálló diagnosztizálása és megoldása
 Az Azure Spring Cloud Diagnostics egy interaktív felület, amely segítséget nyújt az alkalmazás hibakeresésében. Nem igényel konfigurálást. Ha problémákat tapasztal, az Azure Spring Cloud Diagnostics arra utal, hogy mi a probléma, és útmutatást nyújt a problémák elhárításához és megoldásához.
@@ -23,7 +25,7 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 * Legalább egy alkalmazás már létre van hozva a szolgáltatási példányban.
 
 ## <a name="navigate-to-the-diagnostics-page"></a>Navigáljon a diagnosztika lapra
-1. Jelentkezzen be az Azure portálra.
+1. Jelentkezzen be az Azure Portalra.
 2. Nyissa meg az Azure Spring Cloud **Áttekintés** oldalát.
 3. Az oldal bal oldalán található menüben nyissa meg a **problémák diagnosztizálását és megoldását** .
 

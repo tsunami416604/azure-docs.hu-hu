@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 7372f3f54e1b4d728ea065c2ada5a5b42c5f748b
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.openlocfilehash: c5cb2f7acb3f1432c2eadd769021c27ba41e9887
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84987902"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87031932"
 ---
 # <a name="quickstart-analyze-a-remote-image-using-the-computer-vision-rest-api-and-curl"></a>Rövid útmutató: távoli rendszerkép elemzése a Computer Vision REST API és a cURL használatával
 
@@ -39,13 +39,12 @@ A minta létrehozásához és futtatásához az alábbi lépéseket kell végreh
     1. Cserélje le a `<subscriptionKey>` értéket az előfizetői azonosítóra.
     1. Cserélje le a kérelem URL-címének ( `westcentralus` ) első részét a saját végpont URL-címében található szövegre.
         [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
-    1. Igény szerint változtassa meg a kérés URL-címének (`language=en`) nyelvi paraméterét egy másik támogatott nyelvre.
     1. Igény szerint cserélje a kép URL-címét a kérelem törzsében (`http://upload.wikimedia.org/wikipedia/commons/3/3c/Shaki_waterfall.jpg\`) egy másik elemzendő kép URL-címére.
 1. Nyisson meg egy parancsablakot.
 1. Illessze be a szövegszerkesztőből a parancsot, majd futtassa.
 
 ```bash
-curl -H "Ocp-Apim-Subscription-Key: <subscriptionKey>" -H "Content-Type: application/json" "https://westcentralus.api.cognitive.microsoft.com/vision/v3.0/analyze?visualFeatures=Categories,Description&details=Landmarks&language=en" -d "{\"url\":\"http://upload.wikimedia.org/wikipedia/commons/3/3c/Shaki_waterfall.jpg\"}"
+curl -H "Ocp-Apim-Subscription-Key: <subscriptionKey>" -H "Content-Type: application/json" "https://westcentralus.api.cognitive.microsoft.com/vision/v3.0/analyze?visualFeatures=Categories,Description&details=Landmarks" -d "{\"url\":\"http://upload.wikimedia.org/wikipedia/commons/3/3c/Shaki_waterfall.jpg\"}"
 ```
 
 ## <a name="examine-the-response"></a>A válasz vizsgálata

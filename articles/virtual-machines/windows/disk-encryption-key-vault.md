@@ -8,12 +8,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: ec0862a0d4de644630c972387f01feaa1a327e67
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: fa87fc874be5e60d018b5663b4655d069930ab88
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86500752"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87036148"
 ---
 # <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption"></a>Key Vault létrehozása és konfigurálása az Azure Disk Encryptionhöz
 
@@ -25,7 +25,7 @@ A Azure Disk Encryption a Azure Key Vault használatával vezérli és kezeli a 
 A Key Vault létrehozásához és konfigurálásához Azure Disk Encryption a következő három lépésből áll:
 
 > [!Note]
-> A Azure Key Vault hozzáférési házirend beállításainál válassza a beállítás lehetőséget a kötetek titkosításához Azure Disk Encryption való hozzáférés engedélyezéséhez.
+> A Azure Key Vault hozzáférési házirend beállításainál válassza a beállítás lehetőséget a kötetek titkosításához Azure Disk Encryption való hozzáférés engedélyezéséhez. Ha engedélyezte a tűzfalat a kulcstartón, lépjen a Key Vault hálózatkezelés lapjára, és engedélyezze a hozzáférést a Microsoft megbízható szolgáltatásaihoz. 
 
 1. Ha szükséges, hozzon létre egy erőforráscsoportot.
 2. Kulcstartó létrehozása. 
@@ -43,7 +43,7 @@ Ha szeretné, létrehozhat vagy importálhat egy kulcs-titkosítási kulcsot (KE
 
 ## <a name="install-tools-and-connect-to-azure"></a>Eszközök telepítése és az Azure-hoz való kapcsolódás
 
-A cikkben ismertetett lépések az [Azure CLI](/cli/azure/)-vel, az Azure PowerShell az [module](/powershell/azure/overview)vagy a [Azure Portal](https://portal.azure.com)használatával végezhetők el.
+A cikkben ismertetett lépések az [Azure CLI](/cli/azure/)-vel, az Azure PowerShell az [module](/powershell/azure/)vagy a [Azure Portal](https://portal.azure.com)használatával végezhetők el.
 
 Amíg a portál elérhető a böngészőben, az Azure CLI és a Azure PowerShell helyi telepítést igényel; a részletekért lásd [: Azure Disk Encryption a Windows rendszerhez: eszközök telepítése](disk-encryption-windows.md#install-tools-and-connect-to-azure) .
 
@@ -61,7 +61,7 @@ Connect-AzAccount
 
 [!INCLUDE [disk-encryption-key-vault](../../../includes/disk-encryption-key-vault.md)]
  
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Előfeltételként Azure Disk Encryption parancssori felület parancsfájlja](https://github.com/ejarvi/ade-cli-getting-started)
 - [Azure Disk Encryption előfeltételek PowerShell-parancsfájl](https://github.com/Azure/azure-powershell/tree/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts)

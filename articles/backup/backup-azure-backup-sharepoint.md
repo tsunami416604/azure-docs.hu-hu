@@ -3,12 +3,12 @@ title: SharePoint-farm biztonsági mentése az Azure-ba a DPM használatával
 description: Ez a cikk áttekintést nyújt a SharePoint-farmok Azure-ba való DPM/Azure Backup kiszolgáló védelméről
 ms.topic: conceptual
 ms.date: 03/09/2020
-ms.openlocfilehash: 447776af7cb021fd0c3381334bf3acf258ff22ab
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b326ce15cd605f4f768a03b95337bbc5bd6aaabc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539108"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87032884"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-dpm"></a>SharePoint-farm biztonsági mentése az Azure-ba a DPM használatával
 
@@ -32,7 +32,7 @@ További előfeltételeket és korlátozásokat a [SharePoint biztonsági menté
 
 ## <a name="configure-backup"></a>Biztonsági mentés konfigurálása
 
-A SharePoint-farm biztonsági mentéséhez konfigurálja a SharePoint-védelmet a ConfigureSharePoint.exe segítségével, majd hozzon létre egy védelmi csoportot a DPM-ben. Útmutatásért lásd: a [biztonsági mentés konfigurálása](//system-center/dpm/back-up-sharepoint?view=sc-dpm-2019#configure-backup) a DPM dokumentációjában.
+A SharePoint-farm biztonsági mentéséhez konfigurálja a SharePoint-védelmet a ConfigureSharePoint.exe segítségével, majd hozzon létre egy védelmi csoportot a DPM-ben. Útmutatásért lásd: a [biztonsági mentés konfigurálása](/system-center/dpm/back-up-sharepoint?view=sc-dpm-2019#configure-backup) a DPM dokumentációjában.
 
 ## <a name="monitoring"></a>Figyelés
 
@@ -73,7 +73,7 @@ A SharePoint-elemek DPM-alapú lemezről történő visszaállításáról a Sha
 
 Ha több előtér-webkiszolgálóval rendelkezik, és át szeretné váltani a DPM által a farm védeleméhez használt kiszolgálót, kövesse az [előtér-webkiszolgáló váltásának](/system-center/dpm/back-up-sharepoint?view=sc-dpm-2019#switching-the-front-end-web-server)utasításait.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Azure Backup Server és DPM – gyakori kérdések](backup-azure-dpm-azure-server-faq.md)
 * [A System Center Data Protection Manager hibaelhárítása](backup-azure-scdpm-troubleshooting.md)

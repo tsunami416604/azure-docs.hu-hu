@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 06/23/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f7e12b750f569a81f6931333a05f884e16ac4d9e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5cd335d34a67cc5a102bde11366813c53770266e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86508011"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87036335"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Azure Virtual Machines az SAP NetWeaver tervezése és megvalósítása
 
@@ -73,7 +73,7 @@ ms.locfileid: "86508011"
 
 [azure-cli]:../../../cli-install-nodejs.md
 [azure-portal]:https://portal.azure.com
-[azure-ps]:/powershell/azureps-cmdlets-docs
+[azure-ps]:/powershell/azure/
 [azure-quickstart-templates-github]:https://github.com/Azure/azure-quickstart-templates
 [azure-script-ps]:https://go.microsoft.com/fwlink/p/?LinkID=395017
 [azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
@@ -353,7 +353,7 @@ A dokumentum teljes egészében a következő kifejezéseket használjuk:
 
 
 
-### <a name="resources"></a><a name="e55d1e22-c2c8-460b-9897-64622a34fdff"></a>Források
+### <a name="resources"></a><a name="e55d1e22-c2c8-460b-9897-64622a34fdff"></a>További források
 [Itt](./get-started.md)található az Azure dokumentációjában az SAP-számítási feladatok belépési pontja. Ettől a belépési ponttól kezdve számos cikket talál, amelyek a következő témaköröket fedik le:
 
 - SAP NetWeaver és Business One az Azure-ban
@@ -686,7 +686,7 @@ Durva döntési fában döntse el, hogy az SAP-rendszer megfelel-e az Azure Virt
 
 ![Döntési fa az SAP Azure-beli üzembe helyezési képességének eldöntéséhez][planning-guide-figure-700]
 
-1. A legfontosabb tudnivalók az SAP-rendszerhez szükséges SAP-követelmények. Az SAP-követelményeket el kell különíteni az adatbázis-kezelő és az SAP-alkalmazás részbe, még akkor is, ha az SAP-rendszer már telepítve van a helyszínen egy kétrétegű konfigurációban. A meglévő rendszerek esetében a használatban lévő hardverhez kapcsolódó SAP-t gyakran a meglévő SAP-referenciaértékek alapján lehet meghatározni vagy megbecsülni. Az eredmények [itt](https://sap.com/about/benchmark.html)találhatók. Az újonnan telepített SAP-rendszerek esetében egy méretezési gyakorlattal kell rendelkezni, amelynek meg kell határoznia a rendszer SAP-követelményeit. Lásd még ezt a blogot és csatolt dokumentumot az [SAP méretezéséhez az Azure](https://blogs.msdn.com/b/saponsqlserver/archive/2015/12/01/new-white-paper-on-sizing-sap-solutions-on-azure-public-cloud.aspx) -ban
+1. A legfontosabb tudnivalók az SAP-rendszerhez szükséges SAP-követelmények. Az SAP-követelményeket el kell különíteni az adatbázis-kezelő és az SAP-alkalmazás részbe, még akkor is, ha az SAP-rendszer már telepítve van a helyszínen egy kétrétegű konfigurációban. A meglévő rendszerek esetében a használatban lévő hardverhez kapcsolódó SAP-t gyakran a meglévő SAP-referenciaértékek alapján lehet meghatározni vagy megbecsülni. Az eredmények [itt](https://sap.com/about/benchmark.html)találhatók. Az újonnan telepített SAP-rendszerek esetében egy méretezési gyakorlattal kell rendelkezni, amelynek meg kell határoznia a rendszer SAP-követelményeit. 
 1. A meglévő rendszerek esetében az adatbázis-kezelő kiszolgáló másodpercenkénti I/O-kötetét és I/O-műveleteit kell mérni. Az újonnan tervezett rendszerek esetében az új rendszer méretezési gyakorlatának az adatbázis-kezelői oldalon található I/O-követelményekkel kapcsolatos durva ötleteket is meg kell adni. Ha nem biztos abban, hogy végül a koncepció igazolását kell elvégeznie.
 1. Hasonlítsa össze az adatbázis-kezelő kiszolgáló SAP-követelményét az SAP-vel az Azure különböző virtuálisgép-típusai biztosíthatják. A különböző Azure-beli virtuálisgép-típusok SAP-vel kapcsolatos információit a [1928533]-es SAP-Megjegyzés dokumentálja. A fókusznak az adatbázis-kezelő virtuális gépen kell lennie, mivel az adatbázis réteg egy olyan SAP NetWeaver-rendszer rétege, amely nem az üzemelő példányok többségében kibővíthető. Ezzel szemben az SAP-alkalmazás rétegét ki lehet bővíteni. Ha a SAP által támogatott Azure-beli virtuálisgép-típusok egyike sem tudja biztosítani a szükséges SAP-t, a tervezett SAP-rendszer munkaterhelése nem futtatható az Azure-ban. Telepítenie kell a rendszer helyi telepítését, vagy módosítania kell a rendszer munkaterhelési kötetét.
 1. A jelen dokumentációban [(Linux)][virtual-machines-sizes-linux] és [itt (Windows)][virtual-machines-sizes-windows]az Azure IOPS-kvótát alkalmaz, függetlenül attól, hogy szabványos tárolót vagy Premium Storage használ-e. A virtuálisgép-típustól függően a csatlakoztatható adatlemezek száma változó lehet. Ennek eredményeképpen kiszámíthatja a maximális IOPS-számot, amely a különböző virtuálisgép-típusokkal is megvalósítható. Az adatbázis-fájl elrendezéstől függően a lemezeket a vendég operációs rendszer egyik kötetére lehet leválasztani. Ha azonban egy telepített SAP-rendszer aktuális IOPS-mennyisége meghaladja az Azure-beli legnagyobb virtuálisgép-típus számított korlátait, és ha nincs esély a további memória ellensúlyozására, akkor az SAP-rendszer terhelése jelentősen befolyásolható. Ilyen esetekben elérheti azt a pontot, ahol a rendszer nem helyezhető üzembe az Azure-ban.
@@ -734,7 +734,7 @@ Az SAP-hez készült Azure-bővítmény üzembe helyezése (lásd a jelen dokume
 
 Mivel az Azure további funkciókat biztosít, új PS-parancsmagokat kell hozzáadnia, amelyek a parancsmagok frissítését igénylik. Ezért érdemes az Azure letöltési webhelyét legalább egyszer <https://azure.microsoft.com/downloads/> megkeresni a parancsmagok új verziójához. Az új verzió a régebbi verzióra van telepítve.
 
-Az Azure-hoz kapcsolódó PowerShell-parancsok általános listáját itt tekintheti meg: <https://docs.microsoft.com/powershell/azure/overview> .
+Az Azure-hoz kapcsolódó PowerShell-parancsok általános listáját itt tekintheti meg: <https://docs.microsoft.com/powershell/azure/> .
 
 ### <a name="management-via-microsoft-azure-cli-commands"></a>Felügyelet Microsoft Azure CLI-parancsok használatával
 
@@ -2005,7 +2005,7 @@ Az Azure-beli SAP-rendszerek magas rendelkezésre állásának legfontosabb pont
 * Az SAP-párbeszédpanel példányainak biztonsági mentése kevés értelmet, mivel általában gyorsabb az egyszerű párbeszédpanel-példányok újratelepítése.
 * A virtuális gép biztonsági mentése, amely tartalmazza az SAP-rendszer globális könyvtárát, valamint a különböző példányok összes profilját, a Windows biztonsági mentésével, vagy például a Linux-alapú tar-vel kell elvégezni. Mivel a Windows Server 2008 (R2) és a Windows Server 2012 (R2) között különbségek vannak, így könnyebben készíthető biztonsági mentés a legújabb Windows Server-kiadásokkal, javasoljuk, hogy Windows Server 2012 (R2) operációs rendszert futtasson Windows vendég operációs rendszerként.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Olvassa el a cikkeket:
 
 - [Azure Virtual Machines üzembe helyezés az SAP NetWeaver-ben](./deployment-guide.md)

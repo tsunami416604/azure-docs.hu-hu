@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2019
 ms.author: terrylan
-ms.openlocfilehash: 3925e39824d1702ff43a6b981ac997ddab658b96
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6058b0d72eafe3a44ebdbabf291af05c08e772b3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80548656"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87038273"
 ---
 # <a name="security-recommendations-for-azure-marketplace-images"></a>Biztonsági javaslatok az Azure Marketplace-rendszerképekhez
 
@@ -27,9 +27,8 @@ Az elküldés előtt mindig futtasson biztonsági sebezhetőségi észlelést a 
 
 ## <a name="open-source-based-images"></a>Nyílt forráskódú lemezképek
 
-|||
-|--------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Kategória**                                                 | **Jelölőnégyzet**                                                                                                                                                                                                                                                                              |
+| Kategória | Jelölőnégyzet |
+| -------- | ----- |
 | Biztonság                                                     | Telepítse az összes legújabb biztonsági javítást a Linux-disztribúcióhoz.                                                                                                                                                                                                              |
 | Biztonság                                                     | Az iparági irányelvek követésével biztonságossá teheti a virtuálisgép-rendszerképet az adott Linux-disztribúcióhoz.                                                                                                                                                                                     |
 | Biztonság                                                     | Korlátozza a támadási felületet úgy, hogy a minimális helyigényt csak a szükséges Windows Server-szerepkörökkel, szolgáltatásokkal, szolgáltatásokkal és hálózati portokkal tartja.                                                                                                                                               |
@@ -50,9 +49,8 @@ Az elküldés előtt mindig futtasson biztonsági sebezhetőségi észlelést a 
 
 ## <a name="windows-server-based-images"></a>Windows Server-alapú rendszerképek
 
-|||
-|-------------| -------------------------|
-| **Kategória**                                                     | **Jelölőnégyzet**                                                                                                                                                                |
+| Kategória | Jelölőnégyzet |
+|--------- | ----- |
 | Biztonság                                                         | Használjon biztonságos operációsrendszer-alapképet. A Windows Serveren alapuló lemezképek forrásához használt virtuális merevlemeznek a Microsoft Azure által biztosított Windows Server operációsrendszer-lemezképből kell származnia. |
 | Biztonság                                                         | Telepítse a legújabb biztonsági frissítéseket.                                                                                                                                     |
 | Biztonság                                                         | Az alkalmazások nem lehetnek olyan korlátozott felhasználónevek, mint a rendszergazda, a gyökér vagy a rendszergazda.                                                                |

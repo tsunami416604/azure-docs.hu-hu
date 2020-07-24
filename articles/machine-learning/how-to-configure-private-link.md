@@ -9,17 +9,20 @@ ms.topic: how-to
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 03/13/2020
-ms.openlocfilehash: ed3b59b9e6aecb91f4ecb9d569b989b6b2396c48
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.date: 07/14/2020
+ms.openlocfilehash: 4e76a7adf7435cc1bdee3bb4e64f8cc699a16724
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134881"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87031218"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace-preview"></a>Azure Private-hivatkozás konfigurálása Azure Machine Learning munkaterülethez (előzetes verzió)
 
-Ebből a dokumentumból megtudhatja, hogyan használhatja az Azure Private-hivatkozást a Azure Machine Learning munkaterülettel. Ez a funkció jelenleg előzetes verzióban érhető el, és az USA keleti régiójában, az USA 2. nyugati régiójában, az USA déli középső régiójában érhető el. 
+Ebből a dokumentumból megtudhatja, hogyan használhatja az Azure Private-hivatkozást a Azure Machine Learning munkaterülettel. 
+
+> [!IMPORTANT]
+> Az Azure Private-hivatkozás használata Azure Machine Learning munkaterülettel jelenleg nyilvános előzetes verzióban érhető el. Ez a funkció csak az **USA keleti**régiójában, az USA **2. nyugati**régiójában és az **USA déli középső** régióiban érhető el. Ez az előzetes verzió szolgáltatói szerződés nélkül érhető el, és éles számítási feladatokhoz nem ajánlott. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Az Azure Private link segítségével privát végponton keresztül csatlakozhat a munkaterülethez. A magánhálózati végpont a virtuális hálózaton belüli magánhálózati IP-címek készlete. Ezután korlátozhatja a hozzáférést a munkaterülethez, hogy csak a magánhálózati IP-címeken keresztül történjen. A privát hivatkozás segít csökkenteni az adatkiszűrése kockázatát. Ha többet szeretne megtudni a privát végpontokról, tekintse meg az [Azure privát hivatkozását](/azure/private-link/private-link-overview) ismertető cikket.
 
@@ -52,7 +55,7 @@ Sablon telepítésekor a következő információkat kell megadnia:
 A sablon elküldése és a kiépítés befejezése után a munkaterületet tartalmazó erőforráscsoport három új, privát hivatkozással kapcsolatos összetevő-típust fog tartalmazni:
 
 * Privát végpont
-* Hálózati illesztő
+* Hálózati adapter
 * Privát DNS-zóna
 
 A munkaterület egy Azure-Virtual Network is tartalmaz, amely képes kommunikálni a munkaterülettel a privát végponton keresztül.
@@ -112,6 +115,9 @@ Az Azure Virtual Machinesról a [Virtual Machines dokumentációjában](/azure/v
 A munkaterület által használt Azure Storage-fiók védelméhez helyezze azt a virtuális hálózaton belül.
 
 A Storage-fiók virtuális hálózaton való elhelyezésével kapcsolatos információkért lásd: [Storage-fiók használata a munkaterülethez](how-to-enable-virtual-network.md#use-a-storage-account-for-your-workspace).
+
+> [!WARNING]
+> A Azure Machine Learning nem támogatja olyan Azure Storage-fiók használatát, amelynek engedélyezve van a magánhálózati kapcsolata.
 
 ## <a name="using-azure-key-vault"></a>Azure Key Vault használata
 
@@ -1161,6 +1167,6 @@ A virtuális hálózaton belüli Azure Container Registry biztonságossá tétel
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Azure Machine Learning munkaterület biztonságossá tételével kapcsolatos további információkért tekintse meg a [nagyvállalati biztonsági](concept-enterprise-security.md) cikket.

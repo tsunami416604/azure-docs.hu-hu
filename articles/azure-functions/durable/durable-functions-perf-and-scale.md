@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 8f8df703030220f2c5a79bdb34e3ffbac8ee84a0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 58c28160de15bc99c94c84ab23fdbb358125132d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84762122"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87033581"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Teljesítmény és méretezés a Durable Functionsben (Azure Functions)
 
@@ -22,13 +22,13 @@ A méretezési viselkedés megértéséhez ismernie kell az alapul szolgáló Az
 
 Az **Előzmények** tábla egy Azure Storage-tábla, amely a tevékenység központján belüli összes előkészítési példány előzményi eseményeit tartalmazza. Ennek a táblának a neve *TaskHubName*-előzmények formájában szerepel. A példányok futtatásakor a rendszer új sorokat ad hozzá ehhez a táblához. Ennek a táblának a partíciós kulcsát a rendszer az előkészítési példány azonosítójával származtatja. A példányok azonosítója a legtöbb esetben véletlenszerű, ami biztosítja a belső partíciók optimális elosztását az Azure Storage-ban.
 
-Ha egy előkészítési példány futtatására van szükség, az előzmények tábla megfelelő sorai betöltődik a memóriába. Ezeket az *előzményeket* a rendszer a Orchestrator függvény kódjában játssza újra, hogy visszakapja a korábban ellenőrzőpontos állapotba. A végrehajtási előzményeknek az ilyen módon történő újraépítésére való használatát az [esemény-beszerzési minta](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing)befolyásolja.
+Ha egy előkészítési példány futtatására van szükség, az előzmények tábla megfelelő sorai betöltődik a memóriába. Ezeket az *előzményeket* a rendszer a Orchestrator függvény kódjában játssza újra, hogy visszakapja a korábban ellenőrzőpontos állapotba. A végrehajtási előzményeknek az ilyen módon történő újraépítésére való használatát az [esemény-beszerzési minta](/azure/architecture/patterns/event-sourcing)befolyásolja.
 
 ## <a name="instances-table"></a>Példányok tábla
 
 A **instances** tábla egy másik Azure Storage-tábla, amely az összes előkészítési és entitási példány állapotát tartalmazza egy adott feladatsoron belül. A példányok létrehozásakor a rendszer új sorokat ad hozzá ehhez a táblához. A tábla partíciós kulcsa a megszervezési példány azonosítója vagy az entitás kulcsa, és a sor kulcsa rögzített állandó. A rendszer egy összehangoló vagy egy entitás-példányon egy sort jelöl.
 
-Ez a tábla a `GetStatusAsync` (.net) és `getStatus` a (JavaScript) API-k, valamint az [állapot-lekérdezés http API](durable-functions-http-api.md#get-instance-status)-hoz tartozó példány-lekérdezési kérelmek kielégítésére szolgál. A rendszer végül konzisztensen tartja a korábban említett **History (korábbi** ) tábla tartalmát. Egy különálló Azure Storage-tábla használata a példányok lekérdezési műveleteinek hatékony kielégítése érdekében a [lekérdezési és manipulációs szerepek szétválasztása (CQRS) minta](https://docs.microsoft.com/azure/architecture/patterns/cqrs)befolyásolja.
+Ez a tábla a `GetStatusAsync` (.net) és `getStatus` a (JavaScript) API-k, valamint az [állapot-lekérdezés http API](durable-functions-http-api.md#get-instance-status)-hoz tartozó példány-lekérdezési kérelmek kielégítésére szolgál. A rendszer végül konzisztensen tartja a korábban említett **History (korábbi** ) tábla tartalmát. Egy különálló Azure Storage-tábla használata a példányok lekérdezési műveleteinek hatékony kielégítése érdekében a [lekérdezési és manipulációs szerepek szétválasztása (CQRS) minta](/azure/architecture/patterns/cqrs)befolyásolja.
 
 ## <a name="internal-queue-triggers"></a>Belső üzenetsor-eseményindítók
 

@@ -11,11 +11,12 @@ author: vaidyas
 ms.reviewer: larryfr
 ms.date: 03/06/2020
 ms.custom: tracking-python
-ms.openlocfilehash: 3afe5d0993f7e647cbae1281cb9e7387df6e2f50
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b2f42729b97f4a02e549766dc816db8361b3b8e6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84560415"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87030929"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-preview"></a>Gépi tanulási modell üzembe helyezése Azure Functions (előzetes verzió)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -55,10 +56,11 @@ A telepítés előtt meg kell határoznia, hogy mire van szükség a modell webs
     >
     > Alapértelmezés szerint a függvények csomagolásakor a rendszer a bemenetet szövegként kezeli. Ha érdekli a bemenet (például blob-eseményindítók) nyers bájtjainak használata, a [AMLRequest használatával fogadja el a nyers adatokat](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where#binary-data).
 
+További információ a beléptetési parancsfájlról: [pontozási kód definiálása](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where#script)
 
 * **Függőségek**, például segítő parancsfájlok vagy Python/Conda csomagok, amelyek a belépési parancsfájl vagy modell futtatásához szükségesek
 
-Ezek az entitások egy __következtetési konfigurációba__vannak ágyazva. A következtetési konfiguráció a bejegyzési parancsfájlra és más függőségekre hivatkozik.
+Ezek az entitások egy __következtetési konfigurációba__vannak ágyazva. A következtetési konfiguráció a bejegyzés parancsfájljára és további függőségekre hivatkozik.
 
 > [!IMPORTANT]
 > Ha Azure Functions-vel való használatra vonatkozó következtetési konfigurációt hoz létre, [környezeti](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment%28class%29?view=azure-ml-py) objektumot kell használnia. Vegye figyelembe, hogy ha egyéni környezetet határoz meg, akkor a >= 1.0.45 verzióval rendelkező azureml kell hozzáadnia pip-függőségként. Ez a csomag tartalmazza a modell webszolgáltatásként való üzemeltetéséhez szükséges funkciókat. Az alábbi példa bemutatja, hogyan hozható létre egy környezeti objektum, és hogyan használhatja azt egy következtetési konfigurációval:

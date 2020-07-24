@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 07/09/2020
 ms.custom: seoapril2019
-ms.openlocfilehash: 4ba48e5beb8ce4b4ae126dd23acbe0dec650f655
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 49a1b190ece4ae4e937757e88af325a29f4825c5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232151"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87031116"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>Munkaterületek létrehozása Azure Machine Learninghez Azure Resource Manager sablon használatával
 
@@ -30,7 +30,7 @@ További információ: [alkalmazások központi telepítése Azure Resource Mana
 
 * Egy **Azure-előfizetés**. Ha még nem rendelkezik ilyennel, próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree).
 
-* Ha a parancssori felületről szeretne sablont használni, [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azps-1.2.0) vagy az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)-t kell használnia.
+* Ha a parancssori felületről szeretne sablont használni, [Azure PowerShell](https://docs.microsoft.com/powershell/azure/?view=azps-1.2.0) vagy az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)-t kell használnia.
 
 ## <a name="workspace-resource-manager-template"></a>Munkaterület Resource Manager-sablon
 
@@ -154,6 +154,9 @@ Az alábbi példa bemutatja, hogyan hozhat létre egy munkaterületet három be�
 * A munkaterület magas titoktartási beállításainak engedélyezése
 * A munkaterület titkosításának engedélyezése
 * Egy meglévő Azure Key Vault használ az ügyfél által felügyelt kulcsok lekéréséhez
+
+> [!IMPORTANT]
+> Miután létrehozta a munkaterületet, nem módosíthatja a bizalmas adatok, a titkosítás, a kulcstároló-azonosító vagy a kulcs-azonosítók beállításait. Az értékek módosításához új munkaterületet kell létrehoznia az új értékekkel.
 
 További információ: [titkosítás a REST](concept-enterprise-security.md#encryption-at-rest)-ben.
 
@@ -353,6 +356,9 @@ Az adatai számára további konfigurációt adhat meg, ha a **confidential_data
 * A helyi kaparós lemez tisztítása a futtatások között.
 * A Key Vault használatával biztonságosan továbbíthatja a Storage-fiók, a Container Registry és az SSH-fiók hitelesítő adatait a végrehajtási rétegből a számítási fürtökbe.
 * Engedélyezi az IP-szűrést annak érdekében, hogy a mögöttes batch-készletek ne legyenek meghívva a AzureMachineLearningService-től eltérő külső szolgáltatásokkal.
+
+    > [!IMPORTANT]
+    > Miután létrehozta a munkaterületet, nem módosíthatja a bizalmas adatok, a titkosítás, a kulcstároló-azonosító vagy a kulcs-azonosítók beállításait. Az értékek módosításához új munkaterületet kell létrehoznia az új értékekkel.
 
   További információ: [titkosítás a REST](concept-enterprise-security.md#encryption-at-rest)-ben.
 
@@ -639,7 +645,7 @@ New-AzResourceGroupDeployment `
    * Régió: válassza ki azt az Azure-régiót, ahol létre kívánja hozni az erőforrásokat.
    * Munkaterület neve: a létrehozandó Azure Machine Learning munkaterület nevét fogja használni. A munkaterület nevének 3 és 33 karakter közöttinek kell lennie. Csak alfanumerikus karaktereket és "-" karaktert tartalmazhat.
    * Hely: válassza ki azt a helyet, ahová létre kívánja hozni az erőforrásokat.
-1. Válassza az __Áttekintés és létrehozás__ lehetőséget.
+1. Válassza az __Áttekintés + létrehozás__ lehetőséget.
 1. A __felülvizsgálat + létrehozás__ képernyőn fogadja el a felsorolt feltételeket és kikötéseket, majd válassza a __Létrehozás__lehetőséget.
 
 További információ: [erőforrások központi telepítése egyéni sablonból](../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template).

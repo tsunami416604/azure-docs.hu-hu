@@ -12,12 +12,12 @@ author: sashan
 ms.author: sashan
 ms.reviewer: carlrab, sashan
 ms.date: 04/02/2020
-ms.openlocfilehash: 01906935de76b2b262f2058563a3eee0e297e8a4
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: cc0c4b6bc7dd340f17ac500c5d319a83370a2f2b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985327"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87033038"
 ---
 # <a name="high-availability-for-azure-sql-database-and-sql-managed-instance"></a>Magas rendelkezésre állás Azure SQL Database és SQL felügyelt példányhoz
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -104,7 +104,7 @@ A feladatátvételt REST API vagy PowerShell használatával lehet kezdeményezn
 
 ## <a name="conclusion"></a>Összegzés
 
-A Azure SQL Database és az Azure SQL felügyelt példánya beépített, magas rendelkezésre állású megoldást kínál, amely szorosan integrálva van az Azure platformmal. A probléma a hibák észlelése és helyreállítása Service Fabric függ, az Azure Blob Storage az adatvédelem érdekében, valamint a Availability Zones a nagyobb hibatűrés érdekében. Emellett a SQL Database és az SQL felügyelt példánya is kihasználja az Always On rendelkezésre állási csoport technológiáját a SQL Server példányból a replikáláshoz és a feladatátvételhez. Ezeknek a technológiáknak a kombinációja lehetővé teszi, hogy az alkalmazások teljes mértékben felismerje a vegyes tárolási modell előnyeit, és támogassa a legigényesebb SLA-kat.
+A Azure SQL Database és az Azure SQL felügyelt példánya beépített, magas rendelkezésre állású megoldást kínál, amely szorosan integrálva van az Azure platformmal. Service Fabrictól függ a hibák észlelése és helyreállítása, az Azure Blob Storage az adatvédelem érdekében, valamint a Availability Zones a nagyobb hibatűrés érdekében (ahogy azt korábban említettük, nem alkalmazható az Azure SQL felügyelt példánya esetében). Emellett a SQL Database és az SQL felügyelt példánya is kihasználja az Always On rendelkezésre állási csoport technológiáját a SQL Server példányból a replikáláshoz és a feladatátvételhez. Ezeknek a technológiáknak a kombinációja lehetővé teszi, hogy az alkalmazások teljes mértékben felismerje a vegyes tárolási modell előnyeit, és támogassa a legigényesebb SLA-kat.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/22/2018
 ms.author: genli
-ms.openlocfilehash: 8600971ffd23b1c253e8de807d365c46409b37bc
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 4831a084153c28576cca7c40dfefeb8c5ff3c4e6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86081451"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87036386"
 ---
 #  <a name="an-internal-error-occurs-when-you-try-to-connect-to-an-azure-vm-through-remote-desktop"></a>Belső hiba jelentkezik, ha távoli asztalon keresztül próbál csatlakozni az Azure-beli virtuális géphez
 
@@ -55,8 +55,7 @@ Kapcsolódjon a [soros konzolhoz, és nyissa meg a PowerShell-példányt](./seri
 
 #### <a name="step-1-check-the-rdp-port"></a>1. lépés: az RDP-port keresése
 
-1. Egy PowerShell-példányban a [netstat](https://docs.microsoft.com/windows-server/administration/windows-commands/netstat
-) használatával győződjön meg arról, hogy a 8080-es portot más alkalmazások használják-e:
+1. Egy PowerShell-példányban a [netstat](/windows-server/administration/windows-commands/netstat) használatával győződjön meg arról, hogy a 8080-es portot más alkalmazások használják-e:
 
     ```powershell
     Netstat -anob |more
@@ -186,7 +185,7 @@ Az RDP-ügyfél a TLS 1,0 protokollt használja alapértelmezett protokollként.
 
 #### <a name="attach-the-os-disk-to-a-recovery-vm"></a>Az operációsrendszer-lemez csatlakoztatása egy helyreállítási virtuális géphez
 
-1. [Csatlakoztassa az operációsrendszer-lemezt egy helyreállítási virtuális géphez](../windows/troubleshoot-recovery-disks-portal.md).
+1. [Csatlakoztassa az operációsrendszer-lemezt egy helyreállítási virtuális géphez](./troubleshoot-recovery-disks-portal-windows.md).
 2. Miután az operációsrendszer-lemezt csatlakoztatta a helyreállítási virtuális géphez, ellenőrizze, hogy a lemez **online** állapotban van-e megjelölve a Lemezkezelés konzolon. Jegyezze fel a csatlakoztatott operációsrendszer-lemezhez rendelt meghajtóbetűjelet.
 3. Távoli asztal-Kapcsolódás elindítása a helyreállítási virtuális géphez.
 
@@ -224,7 +223,7 @@ A memóriakép és a soros konzol engedélyezéséhez futtassa az alábbi szkrip
 #### <a name="reset-the-permission-for-machinekeys-folder"></a>A következő mappa engedélyeinek alaphelyzetbe állítása
 
 1. Nyisson meg egy rendszergazda jogú parancssor-munkamenetet (**Futtatás rendszergazdaként**).
-2. Futtassa az alábbi parancsprogramot. Ebben a parancsfájlban feltételezzük, hogy a csatlakoztatott operációsrendszer-lemezhez rendelt meghajtóbetűjel F. cserélje le a meghajtóbetűjelet a virtuális gép megfelelő értékére.
+2. Futtassa az alábbi parancsfájlt. Ebben a parancsfájlban feltételezzük, hogy a csatlakoztatott operációsrendszer-lemezhez rendelt meghajtóbetűjel F. cserélje le a meghajtóbetűjelet a virtuális gép megfelelő értékére.
 
     ```console
     Md F:\temp
@@ -299,4 +298,4 @@ A memóriakép és a soros konzol engedélyezéséhez futtassa az alábbi szkrip
     REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\Terminal Server\WinStations\RDP-Tcp" /v fAllowSecProtocolNegotiation /t REG_DWORD /d 1 /f reg unload HKLM\BROKENSYSTEM
     ```
 
-5. [Válassza le az operációsrendszer-lemezt, és hozza létre újra a virtuális gépet](../windows/troubleshoot-recovery-disks-portal.md), majd győződjön meg arról, hogy a probléma megoldódott-e.
+5. [Válassza le az operációsrendszer-lemezt, és hozza létre újra a virtuális gépet](./troubleshoot-recovery-disks-portal-windows.md), majd győződjön meg arról, hogy a probléma megoldódott-e.
