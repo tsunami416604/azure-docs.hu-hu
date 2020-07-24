@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: b54545708d21c876fb85e1795b26c34eece005dd
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 5f3b5c60907260a0e868d491a4d55ea3624c2bce
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86255710"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87046788"
 ---
 # <a name="control-storage-account-access-for-sql-on-demand-preview"></a>A Storage-fiók hozzáférésének vezérlése az SQL igény szerinti használatához (előzetes verzió)
 
@@ -87,6 +87,11 @@ Az engedélyezési és az Azure Storage-típusok következő kombinációit hasz
 | *Felügyelt identitás* | Támogatott      | Támogatott        | Támogatott     |
 | *Felhasználói identitás*    | Támogatott      | Támogatott        | Támogatott     |
 
+
+> [!IMPORTANT]
+> Ha a tűzfallal védett tárterületet fér hozzá, csak a felügyelt identitást lehet használni. Engedélyeznie kell a [megbízható Microsoft-szolgáltatásokat... ](../../storage/common/storage-network-security.md#trusted-microsoft-services) [RBAC-szerepkör](../../storage/common/storage-auth-aad.md#assign-rbac-roles-for-access-rights) beállítása és explicit módon történő hozzárendelése az adott erőforrás-példányhoz tartozó [rendszerhez rendelt felügyelt identitáshoz](../../active-directory/managed-identities-azure-resources/overview.md) . Ebben az esetben a példányhoz való hozzáférés hatóköre megfelel a felügyelt identitáshoz rendelt RBAC szerepkörnek.
+>
+
 ## <a name="credentials"></a>Hitelesítő adatok
 
 Az Azure Storage-ban található fájlok lekérdezéséhez az SQL igény szerinti végpontjának a hitelesítési adatokat tartalmazó hitelesítő adatokra van szüksége. A hitelesítő adatok két típusát használják:
@@ -109,11 +114,7 @@ A hitelesítő adatok használatához a felhasználónak engedéllyel kell rende
 GRANT REFERENCES ON CREDENTIAL::[storage_credential] TO [specific_user];
 ```
 
-A zökkenőmentes Azure AD átmenő élmény biztosítása érdekében a felhasználók alapértelmezés szerint jogosultak a `UserIdentity` hitelesítő adatok használatára. Ezt a következő utasítás automatikus végrehajtása hajtja végre az Azure szinapszis-munkaterület kiépítés után:
-
-```sql
-GRANT REFERENCES ON CREDENTIAL::[UserIdentity] TO [public];
-```
+A zökkenőmentes Azure AD átmenő élmény biztosítása érdekében a felhasználók alapértelmezés szerint jogosultak a `UserIdentity` hitelesítő adatok használatára.
 
 ## <a name="server-scoped-credential"></a>Kiszolgáló – hatókörön belüli hitelesítő adatok
 
@@ -292,7 +293,7 @@ SELECT TOP 10 * FROM OPENROWSET(BULK 'parquet/user-data/*.parquet', DATA_SOURCE 
 GO
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az alább felsorolt cikkek segítenek megismerni a különböző típusú mappák, fájltípusok és a nézetek létrehozásának és használatának a lekérdezését:
 

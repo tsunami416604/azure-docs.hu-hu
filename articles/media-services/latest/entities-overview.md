@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 01/21/2020
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 7e4f1141a9d4bd58451782e8412063a22565556d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a9f9463cd1cac49e36ea52cafaf4d07f4e709ca7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80584534"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87053245"
 ---
 # <a name="filtering-ordering-and-paging-of-media-services-entities"></a>Media Services entitások szűrése, rendezése és lapozása
 
@@ -70,7 +70,7 @@ Ezzel a paranccsal `$orderby` rendezheti a visszaadott objektumokat a megadott p
 GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mediaresources/providers/Microsoft.Media/mediaServices/amstestaccount/assets?api-version=2018-07-01$orderby=properties/created%20gt%202018-05-11T17:39:08.387Z
 ```
 
-Az eredmények növekvő vagy csökkenő sorrendbe rendezéséhez fűzze hozzá a `asc` mezőt vagy a `desc` nevet a mezőhöz szóközzel elválasztva. Példa: `$orderby properties/created desc`.
+Az eredmények növekvő vagy csökkenő sorrendbe rendezéséhez fűzze hozzá a `asc` mezőt vagy a `desc` nevet a mezőhöz szóközzel elválasztva. Például: `$orderby properties/created desc`.
 
 ## <a name="skip-token"></a>Token kihagyása
 
@@ -158,34 +158,34 @@ A következő táblázat bemutatja, hogyan alkalmazhatja a szűrési és a rende
 
 |Entitás neve|Tulajdonság neve|Szűrő|Rendelés|
 |---|---|---|---|
-|[Objektumok](https://docs.microsoft.com/rest/api/media/assets/)|name|`eq`, `gt`, `lt`, `ge`, `le`|`asc` és `desc`|
+|[Adategységek](/rest/api/media/assets/)|name|`eq`, `gt`, `lt`, `ge`, `le`|`asc` és `desc`|
 ||Properties. alternateId |`eq`||
 ||Properties. assetId |`eq`||
 ||tulajdonságok. létrehozva| `eq`, `gt`, `lt`| `asc` és `desc`|
-|[Tartalomkulcsszabályok](https://docs.microsoft.com/rest/api/media/contentkeypolicies)|name|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` és `desc`|
+|[Tartalomkulcsszabályok](/rest/api/media/contentkeypolicies)|name|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` és `desc`|
 ||tulajdonságok. létrehozva    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` és `desc`|
 ||tulajdonságok. Leírás    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`||
 ||Properties. lastModified|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` és `desc`|
 ||Properties. policyId|`eq`, `ne`||
-|[Feladatok](https://docs.microsoft.com/rest/api/media/jobs)| name  | `eq`            | `asc` és `desc`|
+|[Feladatok](/rest/api/media/jobs)| name  | `eq`            | `asc` és `desc`|
 ||tulajdonságok. állapot        | `eq`, `ne`        |                         |
 ||tulajdonságok. létrehozva      | `gt`, `ge`, `lt`, `le`| `asc` és `desc`|
 ||Properties. lastModified | `gt`, `ge`, `lt`, `le` | `asc` és `desc`| 
-|[Streameléskeresők](https://docs.microsoft.com/rest/api/media/streaminglocators)|name|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` és `desc`|
+|[Streameléskeresők](/rest/api/media/streaminglocators)|name|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` és `desc`|
 ||tulajdonságok. létrehozva    |`eq`, `ne`, `ge`, `le`,  `gt`, `lt`|`asc` és `desc`|
 ||tulajdonságok. végső Befejezés    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` és `desc`|
-|[Streamelési szabályzatok](https://docs.microsoft.com/rest/api/media/streamingpolicies)|name|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` és `desc`|
+|[Streamelési szabályzatok](/rest/api/media/streamingpolicies)|name|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` és `desc`|
 ||tulajdonságok. létrehozva    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` és `desc`|
-|[Átalakítások](https://docs.microsoft.com/rest/api/media/transforms)| name | `eq`            | `asc` és `desc`|
+|[Átalakítások](/rest/api/media/transforms)| name | `eq`            | `asc` és `desc`|
 || tulajdonságok. létrehozva      | `gt`, `ge`, `lt`, `le`| `asc` és `desc`|
 || Properties. lastModified | `gt`, `ge`, `lt`, `le`| `asc` és `desc`|
 
 ## <a name="next-steps"></a>További lépések
 
-* [Eszközök listázása](https://docs.microsoft.com/rest/api/media/assets/list)
-* [A tartalmi kulcs házirendjeinek listázása](https://docs.microsoft.com/rest/api/media/contentkeypolicies/list)
-* [Feladatok listázása](https://docs.microsoft.com/rest/api/media/jobs/list)
-* [Folyamatos átviteli szabályzatok listázása](https://docs.microsoft.com/rest/api/media/streamingpolicies/list)
-* [Streaming-lokátorok listázása](https://docs.microsoft.com/rest/api/media/streaminglocators/list)
+* [Eszközök listázása](/rest/api/media/assets/list)
+* [A tartalmi kulcs házirendjeinek listázása](/rest/api/media/contentkeypolicies/list)
+* [Feladatok listázása](/rest/api/media/jobs/list)
+* [Folyamatos átviteli szabályzatok listázása](/rest/api/media/streamingpolicies/list)
+* [Streaming-lokátorok listázása](/rest/api/media/streaminglocators/list)
 * [Fájl streamelése](stream-files-dotnet-quickstart.md)
 * [Kvóták és korlátok](limits-quotas-constraints.md)

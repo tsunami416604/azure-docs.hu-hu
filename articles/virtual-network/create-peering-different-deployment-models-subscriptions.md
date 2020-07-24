@@ -13,11 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 06/25/2020
 ms.author: kumud
 ms.reviewer: anavin
-ms.openlocfilehash: 0f2bcb78b1a998c1b335a5757b832fbb1d3fc7fb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 88e576231e0231a105cd9ec303f63307b5eaff89
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85412498"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87051618"
 ---
 # <a name="create-a-virtual-network-peering---different-deployment-models-and-subscriptions"></a>Virtuális hálózati társítás létrehozása – különböző üzembe helyezési modellek és előfizetések
 
@@ -56,7 +57,7 @@ Ez az oktatóanyag különböző fiókokat használ az egyes előfizetésekhez. 
 6. A megjelenő **myVnetA-hozzáférés-vezérlés (iam)** panelen kattintson a **+ szerepkör-hozzárendelés hozzáadása**lehetőségre.
 7. A megjelenő **szerepkör-hozzárendelés hozzáadása** panelen válassza a **hálózati közreműködő** elemet a **szerepkör** mezőben.
 8. A **kiválasztás** mezőben válassza a felhasználób lehetőséget, vagy írja be a felhasználób e-mail-címét a kereséshez. A megjelenített felhasználók listája ugyanabból a Azure Active Directory bérlőből származik, mint az a virtuális hálózat, amelyhez a társítást beállítja. Kattintson a Felhasználób elemre, amikor megjelenik a listában.
-9. Kattintson a **Save** (Mentés) gombra.
+9. Kattintson a **Mentés** gombra.
 10. Jelentkezzen ki a portálról felhasználóként, majd jelentkezzen be Felhasználób-ként.
 11. Kattintson az **+ új**elemre, írja be a *virtuális hálózat* **kifejezést a keresés a piactéren** mezőbe, majd kattintson a **virtuális hálózat** elemre a keresési eredmények között.
 12. A megjelenő **Virtual Network** panelen válassza a **klasszikus** lehetőséget a **telepítési modell kiválasztása** mezőben, majd kattintson a **Létrehozás**gombra.
@@ -182,7 +183,7 @@ Ez az oktatóanyag különböző fiókokat használ az egyes előfizetésekhez. 
 
 Ez az oktatóanyag különböző fiókokat használ az egyes előfizetésekhez. Ha olyan fiókot használ, amely mindkét előfizetéshez rendelkezik engedéllyel, használhatja ugyanazt a fiókot az összes lépéshez, ugorja át az Azure-ba való kijelentkezés lépéseit, és távolítsa el a felhasználói szerepkör-hozzárendeléseket létrehozó parancsfájl sorait. Cserélje le az UserA@azure.com és UserB@azure.com az összes következő parancsfájlt a felhasználó és a felhasználób használt felhasználónevek közül. 
 
-1. Telepítse a PowerShell [Azure](https://www.powershellgallery.com/packages/Azure) és [az modulok legújabb](https://www.powershellgallery.com/packages/Az) verzióját. Ha először használja a PowerShellt, olvassa el az [Azure PowerShell áttekintését](/powershell/azure/overview?toc=%2fazure%2fvirtual-network%2ftoc.json).
+1. Telepítse a PowerShell [Azure](https://www.powershellgallery.com/packages/Azure) és [az modulok legújabb](https://www.powershellgallery.com/packages/Az) verzióját. Ha először használja a PowerShellt, olvassa el az [Azure PowerShell áttekintését](/powershell/azure/?toc=%2fazure%2fvirtual-network%2ftoc.json).
 2. Indítsa el a PowerShell-munkamenetet.
 3. A PowerShellben jelentkezzen be a Felhasználób előfizetésére Felhasználób néven a parancs beírásával `Add-AzureAccount` . A bejelentkezett fióknak rendelkeznie kell a virtuális hálózati társítás létrehozásához szükséges engedélyekkel. Az engedélyek listáját lásd: [virtuális hálózati](virtual-network-manage-peering.md#permissions)társítási engedélyek.
 4. Virtuális hálózat (klasszikus) PowerShell-lel történő létrehozásához létre kell hoznia egy újat, vagy módosítania kell egy meglévő hálózati konfigurációs fájlt. Útmutató [hálózati konfigurációs fájlok exportálásához, frissítéséhez és importálásához](virtual-networks-using-network-configuration-file.md). A fájlnak tartalmaznia kell a következő **VirtualNetworkSite** elemet az oktatóanyagban használt virtuális hálózathoz:

@@ -15,11 +15,12 @@ ms.workload: infrastructure
 ms.date: 07/12/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5a7343bcf6ba4388beda118b242fa47d13baaa89
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 842ab7a1562c731e790ba03b2fd5acdc3987a90d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84022590"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87051956"
 ---
 # <a name="sap-maxdb-livecache-and-content-server-deployment-on-azure-vms"></a>Az SAP MaxDB, a liveCache és a Content Server üzembe helyezése Azure-beli virtuális gépeken
 
@@ -73,7 +74,7 @@ ms.locfileid: "84022590"
 
 [azure-cli]:../../../cli-install-nodejs.md
 [azure-portal]:https://portal.azure.com
-[azure-ps]:/powershell/azureps-cmdlets-docs
+[azure-ps]:/powershell/azure/
 [azure-quickstart-templates-github]:https://github.com/Azure/azure-quickstart-templates
 [azure-script-ps]:https://go.microsoft.com/fwlink/p/?LinkID=395017
 [azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
@@ -308,7 +309,7 @@ ms.locfileid: "84022590"
 
 
 
-Ez a dokumentum több különböző területet ölel fel, amelyeket figyelembe kell venni a MaxDB, a liveCache és a Content Server Azure IaaS való üzembe helyezése során. Ennek a dokumentumnak az előfeltétele, hogy olvassa el az [azure Virtual Machines adatbázis-kezelő üzembe helyezése az SAP](dbms_guide_general.md) -számítási feladatokhoz, valamint az [Azure-dokumentáció SAP-munkaterhelésének](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started)egyéb útmutatói című dokumentumait. 
+Ez a dokumentum több különböző területet ölel fel, amelyeket figyelembe kell venni a MaxDB, a liveCache és a Content Server Azure IaaS való üzembe helyezése során. Ennek a dokumentumnak az előfeltétele, hogy olvassa el az [azure Virtual Machines adatbázis-kezelő üzembe helyezése az SAP](dbms_guide_general.md) -számítási feladatokhoz, valamint az [Azure-dokumentáció SAP-munkaterhelésének](./get-started.md)egyéb útmutatói című dokumentumait. 
 
 ## <a name="specifics-for-the-sap-maxdb-deployments-on-windows"></a>A Windows rendszeren futó SAP MaxDB üzemelő példányokra vonatkozó részletek
 ### <a name="sap-maxdb-version-support-on-azure"></a>Az SAP MaxDB-verziójának támogatása az Azure-ban
@@ -328,7 +329,7 @@ Az SAP MaxDB dokumentációjának frissített listáját a következő SAP-megje
 
 ### <a name="sap-maxdb-configuration-guidelines-for-sap-installations-in-azure-vms"></a>SAP MaxDB-konfigurációs irányelvek az SAP-telepítésekhez az Azure virtuális gépeken
 #### <a name="storage-configuration"></a><a name="b48cfe3b-48e9-4f5b-a783-1d29155bd573"></a>Tárolási konfiguráció
-Az Azure Storage ajánlott eljárásai az SAP-MaxDB az RDBMS-alapú [virtuális gépek tárolási struktúrájának](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64)fejezetében említett általános ajánlásokat követve.
+Az Azure Storage ajánlott eljárásai az SAP-MaxDB az RDBMS-alapú [virtuális gépek tárolási struktúrájának](./dbms_guide_general.md#65fa79d6-a85f-47ee-890b-22e794f51a64)fejezetében említett általános ajánlásokat követve.
 
 > [!IMPORTANT]
 > A többi adatbázishoz hasonlóan az SAP-MaxDB is rendelkezik adatfájlokkal és naplófájlokkal. Az SAP MaxDB terminológiájában azonban a helyes kifejezés a "Volume" (nem "file"). Például vannak SAP MaxDB-adatkötetek és-naplózási kötetek. Ne tévesszük össze az operációsrendszer-lemez köteteit. 

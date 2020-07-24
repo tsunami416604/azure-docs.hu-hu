@@ -5,11 +5,12 @@ description: Megtudhatja, hogyan védheti meg és ki a hüvelyeken kívülre ár
 services: container-service
 ms.topic: article
 ms.date: 05/06/2019
-ms.openlocfilehash: 7e494c6ac89289a9b271d16b871b8a22e1ca9e6a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 598747c0d64db2ae62f740dca4c3e4141f2562f2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83683192"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87050479"
 ---
 # <a name="secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>Biztonságos forgalom a hüvelyek között hálózati házirendek használatával az Azure Kubernetes szolgáltatásban (ak)
 
@@ -54,7 +55,7 @@ Mindkét implementáció Linux *iptables* -t használ a megadott házirendek bet
 | Támogatott platformok                      | Linux                      | Linux                       |
 | Támogatott hálózati beállítások             | Azure-CNI                  | Azure CNI és kubenet       |
 | Megfelelőség a Kubernetes-specifikációval | Minden támogatott házirend-típus |  Minden támogatott házirend-típus |
-| További funkciók                      | None                       | Kiterjesztett házirend-modell, amely a globális hálózati házirendből, a globális hálózati készletből és a gazdagép végpontból áll. További információ a `calicoctl` parancssori felület ezen Kiterjesztett funkciók kezeléséhez való használatáról: [calicoctl felhasználói referenciája][calicoctl]. |
+| További funkciók                      | Nincs                       | Kiterjesztett házirend-modell, amely a globális hálózati házirendből, a globális hálózati készletből és a gazdagép végpontból áll. További információ a `calicoctl` parancssori felület ezen Kiterjesztett funkciók kezeléséhez való használatáról: [calicoctl felhasználói referenciája][calicoctl]. |
 | Támogatás                                  | Az Azure-támogatás és a mérnöki csapat támogatja | A tarka közösségi támogatás. A további fizetős támogatással kapcsolatos további információkért lásd a [Project tarka támogatási lehetőségeit][calico-support]. |
 | Naplózás                                  | Az iptables-ben hozzáadott vagy törölt szabályok minden gazdagépen bejelentkezve vannak a */var/log/Azure-NPM.log* alá | További információ: a [tarka összetevő naplói][calico-logs] |
 
@@ -157,13 +158,13 @@ kubectl label namespace/development purpose=development
 Hozzon létre egy példát az NGINX-t futtató háttér-Pod-ra. Ez a háttér-pod egy minta háttérbeli webes alkalmazás szimulálására használható. Hozza létre ezt a pod-t a *fejlesztői* névtérben, és nyissa meg a *80* -es portot a webes forgalom kiszolgálásához. Az *app = WebApp, role = backend* címkével megcímkézheti a pod-t, hogy a következő szakaszban egy hálózati házirenddel lehessen megcélozni:
 
 ```console
-kubectl run backend --image=nginx --labels app=webapp,role=backend --namespace development --expose --port 80 --generator=run-pod/v1
+kubectl run backend --image=nginx --labels app=webapp,role=backend --namespace development --expose --port 80
 ```
 
 Hozzon létre egy másik hüvelyt, és csatoljon egy terminál-munkamenetet annak teszteléséhez, hogy sikeresen elérheti az alapértelmezett NGINX-weblapot:
 
 ```console
-kubectl run --rm -it --image=alpine network-policy --namespace development --generator=run-pod/v1
+kubectl run --rm -it --image=alpine network-policy --namespace development
 ```
 
 A rendszerhéj parancssorában a használatával `wget` ellenőrizze, hogy elérhető-e az alapértelmezett NGINX-weblap:
@@ -219,7 +220,7 @@ kubectl apply -f backend-policy.yaml
 Nézzük meg, hogy újra használhatja-e az NGINX-weblapot a háttérben futó Pod-on. Hozzon létre egy másik teszt Pod és csatoljon egy terminál-munkamenetet:
 
 ```console
-kubectl run --rm -it --image=alpine network-policy --namespace development --generator=run-pod/v1
+kubectl run --rm -it --image=alpine network-policy --namespace development
 ```
 
 A rendszerhéj parancssorában a használatával `wget` ellenőrizze, hogy elérhető-e az alapértelmezett NGINX-weblap. Ezúttal az időtúllépési értéket állítsa *2* másodpercre. A hálózati házirend mostantól blokkolja az összes bejövő forgalmat, így a lap nem tölthető be, ahogy az alábbi példában is látható:
@@ -276,7 +277,7 @@ kubectl apply -f backend-policy.yaml
 Egy *app = WebApp, role = frontend* címkével ellátott Pod-t ütemezhet, és csatlakoztathat egy terminál-munkamenetet:
 
 ```console
-kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace development --generator=run-pod/v1
+kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace development
 ```
 
 A rendszerhéj parancssorában a használatával `wget` ellenőrizze, hogy elérhető-e az alapértelmezett NGINX-weblap:
@@ -306,7 +307,7 @@ exit
 A hálózati házirend lehetővé teszi, hogy a hüvelyek által címkézett *alkalmazás: WebApp, szerepkör: frontend*, de minden más forgalmat megtagadjon. Vizsgáljuk meg, hogy a címkék nélkül egy másik Pod hozzáfér-e a háttér NGINX Pod-hoz. Hozzon létre egy másik teszt Pod és csatoljon egy terminál-munkamenetet:
 
 ```console
-kubectl run --rm -it --image=alpine network-policy --namespace development --generator=run-pod/v1
+kubectl run --rm -it --image=alpine network-policy --namespace development
 ```
 
 A rendszerhéj parancssorában a használatával `wget` ellenőrizze, hogy elérhető-e az alapértelmezett NGINX-weblap. A hálózati házirend blokkolja a bejövő forgalmat, így a lap nem tölthető be, ahogy az alábbi példában is látható:
@@ -339,7 +340,7 @@ kubectl label namespace/production purpose=production
 Egy teszt Pod-t az *app = WebApp, role = frontend*néven jelölt *üzemi* névtérben ütemezhet. Terminál-munkamenet csatolása:
 
 ```console
-kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace production --generator=run-pod/v1
+kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace production
 ```
 
 A rendszerhéj parancssorában a használatával `wget` ellenőrizze, hogy elérhető-e az alapértelmezett NGINX-weblap:
@@ -403,7 +404,7 @@ kubectl apply -f backend-policy.yaml
 Egy másik Pod-t ütemezhet az *üzemi* névtérben, és csatlakoztathat egy terminál-munkamenetet:
 
 ```console
-kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace production --generator=run-pod/v1
+kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace production
 ```
 
 A rendszerhéj parancssorában a használatával `wget` láthatja, hogy a hálózati házirend most megtagadja a forgalmat:
@@ -425,7 +426,7 @@ exit
 Az *üzemi* névtértől megtagadott forgalom esetén a rendszer visszairányítja a tesztelési Pod-t a *fejlesztési* névtérbe, és csatolja a terminál-munkamenetet:
 
 ```console
-kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace development --generator=run-pod/v1
+kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace development
 ```
 
 A rendszerhéj parancssorában a használatával `wget` ellenőrizze, hogy a hálózati házirend engedélyezi-e a forgalmat:

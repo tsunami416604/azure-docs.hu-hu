@@ -11,12 +11,12 @@ metadata:
   author: PatAltimore
   ms.author: patricka
   ms.date: 10/23/2019
-  ms.openlocfilehash: 11c3c464de5efc9b38426fa7ea015f63b37a8b52
-  ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+  ms.openlocfilehash: 123d84cc29c1dce85cccf8c1bbb089bfbbbf7bf3
+  ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 05/31/2020
-  ms.locfileid: "84235500"
+  ms.lasthandoff: 07/23/2020
+  ms.locfileid: "87007663"
 productDirectory:
   items:
   - title: Azure Blockchain Service
@@ -93,7 +93,7 @@ additionalContent:
       url: https://marketplace.visualstudio.com/items?itemName=azblockchain.azure-blockchain
     - title: Ethereum Blockchain-összekötő
       summary: Az Azure Logic Apps, a Microsoft Flow és a Microsoft PowerApps használata intelligens szerződési műveletek végrehajtásához, például a tranzakciók indításához, a szerződések állapotának olvasásához és a szerződésfrissítési folyamatok aktiváláshoz.
-      url: https://docs.microsoft.com/connectors/blockchainethereum/
+      url: /connectors/blockchainethereum/
     - title: Kódminták
       summary: GitHub-adattár kódmintákkal a munka megkezdéséhez.
       url: https://github.com/Azure-Samples/blockchain

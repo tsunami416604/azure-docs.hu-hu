@@ -14,11 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 618acae10b874eb5ebd5b6da7fe081368528dbd8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 43e16d15c48471d75a7ab5ce23898f1161a60153
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84712496"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87052836"
 ---
 # <a name="develop-azure-functions-with-media-services"></a>Azure Functions fejlesztése Media Services
 
@@ -333,11 +334,11 @@ A függvény teszteléséhez fel kell töltenie egy MP4-fájlt a kapcsolódási 
 
 1. Válassza ki a **StorageConnection** környezeti változóban megadott Storage-fiókot.
 2. Kattintson a **Blobok**elemre.
-3. Kattintson a **+ Tároló** elemre. Nevezze el a tároló **bemenetét**.
+3. Kattintson a **+ Tároló** lehetőségre. Nevezze el a tároló **bemenetét**.
 4. Kattintson a **feltöltés** gombra, és keresse meg a feltölteni kívánt. MP4-fájlt.
 
 >[!NOTE]
-> Ha egy használati tervben blob-triggert használ, az új Blobok feldolgozására akár 10 percet is igénybe vehet, miután egy Function alkalmazás üresjáratba került. A Function app futtatása után a Blobok feldolgozása azonnal megtörténik. További információ: [blob Storage-eseményindítók és-kötések](https://docs.microsoft.com/azure/azure-functions/functions-bindings-storage-blob).
+> Ha egy használati tervben blob-triggert használ, az új Blobok feldolgozására akár 10 percet is igénybe vehet, miután egy Function alkalmazás üresjáratba került. A Function app futtatása után a Blobok feldolgozása azonnal megtörténik. További információ: [blob Storage-eseményindítók és-kötések](../../azure-functions/functions-bindings-storage-blob.md).
 
 ## <a name="next-steps"></a>További lépések
 
@@ -349,4 +350,3 @@ Lásd még: [Az Azure Webhookok használata a Media Services-feladatok értesít
 
 ## <a name="provide-feedback"></a>Visszajelzés küldése
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-

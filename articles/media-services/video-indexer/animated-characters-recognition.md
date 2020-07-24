@@ -10,13 +10,14 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: juliako
-ms.openlocfilehash: af608dcfbb5d98cf3116de4e14dc12bf6facb97b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3b449f68b25fce19dc034d2a0db0ae5ce8a28ec7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76989909"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87047496"
 ---
-# <a name="animated-character-detection-preview"></a>Animált karakterfelismerés (előzetes verzió)
+# <a name="animated-character-detection-preview"></a>Animált karakterek felismerése (előzetes verzió)
 
 A Azure Media Services Video Indexer támogatja az animált tartalomban lévő karakterek észlelését, csoportosítását és felismerését [Cognitive Services egyéni jövőképtel](https://azure.microsoft.com/services/cognitive-services/custom-vision-service/)való integráció révén. Ez a funkció a Portálon és az API-n keresztül is elérhető.
 
@@ -133,7 +134,7 @@ Az alábbi lépéseket követve összekapcsolhatja Custom Vision fiókját Video
         ![Tartalmi modell testreszabása](./media/animated-characters-recognition/content-model-customization-tab.png)
 
      1. A betanítást követően minden, a modellel indexelt vagy újraindexelt videó felismeri majd a betanított karaktereket. 
-    A Custom Vision fiókjához hozzáféréssel rendelkező fizetős fiókok a modelleket és a címkézett képeket is láthatják. További információ az [osztályozó javítása Custom Visionban](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-improving-your-classifier).
+    A Custom Vision fiókjához hozzáféréssel rendelkező fizetős fiókok a modelleket és a címkézett képeket is láthatják. További információ az [osztályozó javítása Custom Visionban](../../cognitive-services/custom-vision-service/getting-started-improving-your-classifier.md).
 
 1. Animált karakter törlése.
 
@@ -159,7 +160,7 @@ Az alábbi lépéseket követve összekapcsolhatja Custom Vision fiókját Video
 1. Custom Vision-fiók összekötése.
 
     Ha Video Indexer fizetős fiókkal rendelkezik, először egy Custom Vision-fiókot kell összekötnie. <br/>
-    Ha még nincs Custom Vision fiókja, hozzon létre egyet. További információ: [Custom Vision](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/home).
+    Ha még nincs Custom Vision fiókja, hozzon létre egyet. További információ: [Custom Vision](../../cognitive-services/custom-vision-service/home.md).
 
     [Custom Vision-fiókjának összekapcsolásához használja az API](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Connect-Custom-Vision-Account?tags=&pattern=&groupBy=tag)-t.
 1. Hozzon létre egy animált karakterekből álló modellt.

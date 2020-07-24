@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/22/2019
 tags: ''
 keywords: ''
-ms.openlocfilehash: 83f7f16d8406744a10451e8d488b7719845c525d
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: b2509539551b3991690e6d0313e069ae015eb892
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135937"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87052400"
 ---
 # <a name="set-up-an-application-developers-controlled-distribution-adcd-in-ibm-zdt-v1"></a>Alkalmazás-fejlesztőknek vezérelt terjesztés (ADCD) beállítása az IBM&T v1-ben
 
@@ -72,7 +72,7 @@ Most, hogy már rendelkezik a csomaggal, fel kell töltenie őket a virtuális g
 
 2. Válassza az **SSH** fület, majd másolja az SSH-parancsot a vágólapra.
 
-3. Jelentkezzen be a virtuális gépre a hitelesítő adatai és a választott [SSH-ügyfél](/azure/virtual-machines/linux/use-remote-desktop) használatával. Ez a bemutató a Windows 10 rendszerhez készült Linux-bővítményeket használja, amely egy bash-felületet helyez el a Windows-parancssorba. A PuTTY is ugyanúgy működik.
+3. Jelentkezzen be a virtuális gépre a hitelesítő adatai és a választott [SSH-ügyfél](../../../linux/use-remote-desktop.md) használatával. Ez a bemutató a Windows 10 rendszerhez készült Linux-bővítményeket használja, amely egy bash-felületet helyez el a Windows-parancssorba. A PuTTY is ugyanúgy működik.
 
 4. Amikor bejelentkezett, hozzon létre egy könyvtárat az IBM-csomagok feltöltéséhez. Ne feledje, hogy a Linux kis-és nagybetűket megkülönböztet. Ez a bemutató például azt feltételezi, hogy a csomagok feltöltése a következőre történik:
 
@@ -186,11 +186,11 @@ A lemezkép most már üzembe helyezhető, és készen áll arra, hogy csatlakoz
 
 Gratulálunk! Mostantól egy IBM mainframe-környezetet futtat az Azure-ban.
 
-## <a name="learn-more"></a>Tudjon meg többet
+## <a name="learn-more"></a>További információ
 
-- [Mainframe-áttelepítés: mítoszok és tények](https://docs.microsoft.com/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/myths-and-facts)
-- [IBM DB2-pureScale az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/linux/ibm-db2-purescale-azure)
-- [Hibaelhárítás](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/)
+- [Mainframe-áttelepítés: mítoszok és tények](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/myths-and-facts)
+- [IBM DB2-pureScale az Azure-ban](../../../linux/ibm-db2-purescale-azure.md)
+- [Hibaelhárítás](../../../troubleshooting/index.yml)
 - [Demystifying mainframe – Azure Migrálás](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/)
 
 <!-- INTERNAL LINKS -->

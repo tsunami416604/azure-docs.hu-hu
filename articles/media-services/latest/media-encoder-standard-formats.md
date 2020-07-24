@@ -14,15 +14,16 @@ ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
 ms.reviewer: anilmur
-ms.openlocfilehash: f1d4d4f4006702ebe0d057e56cf24a022e73b83e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dd8c38f9f08bbcaccc39d2f0d1843af720c12932
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79251361"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87053229"
 ---
 # <a name="standard-encoder-formats-and-codecs"></a>Szabványos kódoló-formátumok és-kodekek
 
-Ez a cikk a leggyakoribb importálási és exportálási fájlformátumok listáját tartalmazza, amelyeket a [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset)használhat. Az egyéni előállítók **StandardEncoderPreset**használatával történő létrehozásával kapcsolatos információkért lásd az [átalakítás egyéni beállításkészlettel történő létrehozását](customize-encoder-presets-how-to.md)ismertető témakört.
+Ez a cikk a leggyakoribb importálási és exportálási fájlformátumok listáját tartalmazza, amelyeket a [StandardEncoderPreset](/rest/api/media/transforms/createorupdate#standardencoderpreset)használhat. Az egyéni előállítók **StandardEncoderPreset**használatával történő létrehozásával kapcsolatos információkért lásd az [átalakítás egyéni beállításkészlettel történő létrehozását](customize-encoder-presets-how-to.md)ismertető témakört.
 
 ## <a name="input-containerfile-formats"></a>Bemeneti tároló/fájlformátumok
 
@@ -35,7 +36,7 @@ Ez a cikk a leggyakoribb importálási és exportálási fájlformátumok listá
 | Windows Media Video (WMV) / ASP (.wmv, .asf) |Yes |
 | AVI (8 bit-es/10 bit-es, tömörítettlen) (.avi) |Yes |
 | MP4 (.mp4, .m4a, .m4v)/ISMV (.isma, .ismv) |Yes |
-| [Microsoft Digital Video Recording(DVR-MS)](https://msdn.microsoft.com/library/windows/desktop/dd692984) (.dvr-ms) |Yes |
+| [Microsoft Digital Video Recording(DVR-MS)](/previous-versions/windows/desktop/mstv/about-the-dvr-ms-file-format) (.dvr-ms) |Yes |
 | Matroska/WebM (.mkv) |Yes |
 | WAVE/WAV (.wav) |Yes |
 | QuickTime (.mov) |Yes |

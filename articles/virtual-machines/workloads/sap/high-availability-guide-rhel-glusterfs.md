@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: radeltch
-ms.openlocfilehash: 388a2db2c888be541d89c5f4274bd38b37e4ca28
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e6b8708edeeb4b3b69dab82265d13db2a4c22e08
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77591914"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87051658"
 ---
 # <a name="glusterfs-on-azure-vms-on-red-hat-enterprise-linux-for-sap-netweaver"></a>Red Hat Enterprise Linuxon futó Azure-beli virtuális gépeken üzemelő GlusterFS SAP NetWeaverhez
 
@@ -101,7 +102,7 @@ Az összes szükséges erőforrás üzembe helyezéséhez használhatja a github
 
 ### <a name="deploy-linux-manually-via-azure-portal"></a>A Linux telepítése manuálisan Azure Portal használatával
 
-Először létre kell hoznia a fürthöz tartozó virtuális gépeket. Ezt követően hozzon létre egy terheléselosztó-t, és használja a virtuális gépeket a háttér-készletekben. A [standard Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview)használatát javasoljuk.  
+Először létre kell hoznia a fürthöz tartozó virtuális gépeket. Ezt követően hozzon létre egy terheléselosztó-t, és használja a virtuális gépeket a háttér-készletekben. A [standard Load Balancer](../../../load-balancer/load-balancer-overview.md)használatát javasoljuk.  
 
 1. Erőforráscsoport létrehozása
 1. Virtuális hálózat létrehozása

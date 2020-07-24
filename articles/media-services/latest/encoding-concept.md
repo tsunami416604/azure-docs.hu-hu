@@ -13,11 +13,12 @@ ms.topic: article
 ms.date: 04/29/2020
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 04706de4b1cc18a4f3146f75442de84340319cef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a54f86081774ffb9ac2fe23a72c8ba83e3d6845c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84220166"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87053338"
 ---
 # <a name="encoding-video-and-audio-with-media-services"></a>Videó és hang kódolása Media Services
 
@@ -28,7 +29,7 @@ A videók általában [progresszív letöltéssel](https://en.wikipedia.org/wiki
 > [!IMPORTANT]
 > A Media Services nem számláz a megszakított vagy hibás feladatokért. Például egy olyan feladat, amely elérte a 50%-os előrehaladást, és a megszakítása megszakadt, a feladat percének 50%-ában nem történik számlázás. Csak a befejezett feladatokért kell fizetnie.
 
-* A progresszív letöltéssel történő továbbításhoz a Azure Media Services segítségével konvertálhat egy digitális médiafájlt [MP4](https://en.wikipedia.org/wiki/MPEG-4_Part_14) -fájlba, amely a [H. 264](https://en.wikipedia.org/wiki/H.264/MPEG-4_AVC) kodekkel kódolt videókat és az [AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding) -kodekkel kódolt hanganyagot tartalmaz. Ez az MP4-fájl a Storage-fiókban lévő eszközre íródik. A fájl közvetlen letöltéséhez használhatja az Azure Storage API-jait vagy SDK-kat (például a [Storage REST API](../../storage/common/storage-rest-api-auth.md) vagy a [.net SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md)-t). Ha a kimeneti eszközt egy adott tároló nevével hozta létre a tárolóban, használja ezt a helyet. Ellenkező esetben a Media Services használatával [listázhatja az objektum-tároló URL-címeit](https://docs.microsoft.com/rest/api/media/assets/listcontainersas). 
+* A progresszív letöltéssel történő továbbításhoz a Azure Media Services segítségével konvertálhat egy digitális médiafájlt [MP4](https://en.wikipedia.org/wiki/MPEG-4_Part_14) -fájlba, amely a [H. 264](https://en.wikipedia.org/wiki/H.264/MPEG-4_AVC) kodekkel kódolt videókat és az [AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding) -kodekkel kódolt hanganyagot tartalmaz. Ez az MP4-fájl a Storage-fiókban lévő eszközre íródik. A fájl közvetlen letöltéséhez használhatja az Azure Storage API-jait vagy SDK-kat (például a [Storage REST API](../../storage/common/storage-rest-api-auth.md) vagy a [.net SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md)-t). Ha a kimeneti eszközt egy adott tároló nevével hozta létre a tárolóban, használja ezt a helyet. Ellenkező esetben a Media Services használatával [listázhatja az objektum-tároló URL-címeit](/rest/api/media/assets/listcontainersas). 
 * A tartalom adaptív sávszélességű adatfolyamként történő kézbesítésének előkészítéséhez a köztes fájlt több bitrátán kell kódolni (magasról alacsonyra). A minőség kecses átállásának biztosítása érdekében a videó felbontása alacsonyabb, mint a sávszélesség. Ez egy úgynevezett kódolási létrát eredményez, amely a felbontások és a bitráta (lásd: [automatikusan generált adaptív sávszélességű létrák](autogen-bitrate-ladder.md)) táblázata. Media Services használatával több bitrátán is kódolhatja a köztes fájlokat. Ennek során az MP4-fájlok és a hozzájuk tartozó, a Storage-fiókban lévő eszközre írt társított adatfolyam-konfigurációs fájlok készletét fogja kapni. Ezután a Media Services [dinamikus csomagolási](dynamic-packaging-overview.md) funkciójának használatával továbbíthatja a videót a streaming protokollok, például az [MPEG-Dash](https://en.wikipedia.org/wiki/Dynamic_Adaptive_Streaming_over_HTTP) és a [HLS](https://en.wikipedia.org/wiki/HTTP_Live_Streaming)segítségével. Ehhez létre kell hoznia egy [adatfolyam-keresőt](streaming-locators-concept.md) , és a támogatott protokolloknak megfelelő streaming URL-címeket kell létrehoznia, amelyek az eszközök és alkalmazások számára a képességeik alapján adhatók ki.
 
 Az alábbi ábrán a dinamikus csomagolással rendelkező igény szerinti kódoláshoz tartozó munkafolyamat látható.
@@ -39,7 +40,7 @@ Ez a témakör útmutatást nyújt a tartalmak Media Services v3-vel való kódo
 
 ## <a name="transforms-and-jobs"></a>Átalakítások és feladatok
 
-Media Services v3 kódoláshoz létre kell hoznia egy [átalakítót](https://docs.microsoft.com/rest/api/media/transforms) és egy [feladatot](https://docs.microsoft.com/rest/api/media/jobs). Az átalakítás egy receptet határoz meg a kódolási beállításokhoz és kimenetekhez; a feladattípus a recept egy példánya. További információt az [átalakításokkal és feladatokkal](transforms-jobs-concept.md) kapcsolatos cikkben olvashat.
+Media Services v3 kódoláshoz létre kell hoznia egy [átalakítót](/rest/api/media/transforms) és egy [feladatot](/rest/api/media/jobs). Az átalakítás egy receptet határoz meg a kódolási beállításokhoz és kimenetekhez; a feladattípus a recept egy példánya. További információt az [átalakításokkal és feladatokkal](transforms-jobs-concept.md) kapcsolatos cikkben olvashat.
 
 Ha Media Services kódolást használ, az előállítók használatával tájékoztathatja a kódolót a bemeneti médiafájlok feldolgozásáról. A Media Services v3-as verziójában szabványos kódoló használatával kódolja a fájlokat. Megadhatja például a videó felbontását és/vagy a kívánt Hangcsatornák számát a kódolt tartalomban.
 
@@ -71,9 +72,9 @@ A bemeneti videó adathordozó-szolgáltatási eszközként tárolható, ebben a
 
 ### <a name="creating-job-input-with-subclipping"></a>Feladathoz tartozó bemenet létrehozása kivágással
 
-Videó kódolásakor megadhatja, hogy a forrásfájl kivágása vagy bevágása is megtörténjen, és olyan kimenetet hozzon létre, amely csak a bemeneti videó kívánt részével rendelkezik. Ez a funkció minden olyan [átalakítással](https://docs.microsoft.com/rest/api/media/transforms) működik, amelyet a [BuiltInStandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) -előállítók vagy a [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset) -előállítók használatával készítettek.
+Videó kódolásakor megadhatja, hogy a forrásfájl kivágása vagy bevágása is megtörténjen, és olyan kimenetet hozzon létre, amely csak a bemeneti videó kívánt részével rendelkezik. Ez a funkció minden olyan [átalakítással](/rest/api/media/transforms) működik, amelyet a [BuiltInStandardEncoderPreset](/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) -előállítók vagy a [StandardEncoderPreset](/rest/api/media/transforms/createorupdate#standardencoderpreset) -előállítók használatával készítettek.
 
-Megadhatja, hogy létrehoz egy [feladatot](https://docs.microsoft.com/rest/api/media/jobs/create) egyetlen videoklipet igény szerint vagy élő archívumban (rögzített esemény). A feladathoz tartozó bemenet lehet egy eszköz vagy egy HTTPS URL-cím is.
+Megadhatja, hogy létrehoz egy [feladatot](/rest/api/media/jobs/create) egyetlen videoklipet igény szerint vagy élő archívumban (rögzített esemény). A feladathoz tartozó bemenet lehet egy eszköz vagy egy HTTPS URL-cím is.
 
 > [!TIP]
 > Ha a videó újbóli kódolása nélkül szeretné továbbítani a videó sublip, érdemes lehet a [dinamikus csomagoló használatával előszűrési jegyzékeket](filters-dynamic-manifest-overview.md)használni.
@@ -91,7 +92,7 @@ Media Services a következő beépített kódolási beállításkészleteket tá
 
 ### <a name="builtinstandardencoderpreset"></a>BuiltInStandardEncoderPreset
 
-A [BuiltInStandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) egy beépített beállításkészlet beállítására szolgál, amely a bemeneti videót a szabványos kódolóval kódolja.
+A [BuiltInStandardEncoderPreset](/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) egy beépített beállításkészlet beállítására szolgál, amely a bemeneti videót a szabványos kódolóval kódolja.
 
 A következő beállításkészletek jelenleg támogatottak:
 
@@ -108,13 +109,13 @@ A következő beállításkészletek jelenleg támogatottak:
 - **EncoderNamedPreset. H264SingleBitrate720p**: MP4-fájlt hoz létre, ahol a videó a H. 264 kodekkel van kódolva, 4500 kbps sebességgel, a kép magassága pedig 720 képpont, és a sztereó hang AAC-LC kodekkel van kódolva, 64 kbps sebességgel.
 - **EncoderNamedPreset. H264SingleBitrateSD**: MP4-fájlt hoz létre, ahol a videó a H. 264 kodekkel van kódolva, 2200 kbps sebességgel, a kép magassága pedig 480 képpont, és a sztereó hang AAC-LC kodekkel van kódolva, 64 kbps sebességgel.
 
-A legfrissebb beállításkészletek listájának megtekintéséhez tekintse meg a [videók kódolásához használható beépített beállításkészleteket](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#encodernamedpreset).
+A legfrissebb beállításkészletek listájának megtekintéséhez tekintse meg a [videók kódolásához használható beépített beállításkészleteket](/rest/api/media/transforms/createorupdate#encodernamedpreset).
 
 Az előzetes beállítások használatáról a [fájlok feltöltése, kódolása és folyamatos átvitele](stream-files-tutorial-with-api.md)című részben olvashat.
 
 ### <a name="standardencoderpreset"></a>StandardEncoderPreset
 
-A [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset) a bemeneti videó standard kódolóval való kódolásakor használandó beállításokat ismerteti. Ezt az beállításkészletet az átalakítási előkészletek testreszabásakor használhatja.
+A [StandardEncoderPreset](/rest/api/media/transforms/createorupdate#standardencoderpreset) a bemeneti videó standard kódolóval való kódolásakor használandó beállításokat ismerteti. Ezt az beállításkészletet az átalakítási előkészletek testreszabásakor használhatja.
 
 #### <a name="considerations"></a>Megfontolandó szempontok
 
@@ -135,7 +136,7 @@ Media Services teljes mértékben támogatja az előre beállított összes ért
 
 ## <a name="preset-schema"></a>Előre definiált séma
 
-A Media Services v3-as verzióban az előzetes beállítások az API-ban erősen beírt entitások. Ezekhez az objektumokhoz a "séma" definíciója [nyílt API-specifikációban (vagy hencegés)](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01)található. A [REST API](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset), a [.net SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.standardencoderpreset?view=azure-dotnet) -ban (vagy más Media Services v3 SDK-dokumentációban) is megtekintheti az előre definiált definíciókat (például **StandardEncoderPreset**).
+A Media Services v3-as verzióban az előzetes beállítások az API-ban erősen beírt entitások. Ezekhez az objektumokhoz a "séma" definíciója [nyílt API-specifikációban (vagy hencegés)](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01)található. A [REST API](/rest/api/media/transforms/createorupdate#standardencoderpreset), a [.net SDK](/dotnet/api/microsoft.azure.management.media.models.standardencoderpreset?view=azure-dotnet) -ban (vagy más Media Services v3 SDK-dokumentációban) is megtekintheti az előre definiált definíciókat (például **StandardEncoderPreset**).
 
 ## <a name="scaling-encoding-in-v3"></a>A kódolás skálázása v3-ben
 

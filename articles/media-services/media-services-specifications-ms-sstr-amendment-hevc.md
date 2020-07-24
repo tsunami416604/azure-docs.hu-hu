@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/19/2019
 ms.author: johndeu
-ms.openlocfilehash: 30ca3bb86426b144fa6cbf5c63888d9546919ebf
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 6454bc863cb5fd628d581fff380c5ab61354f762
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85954689"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87053051"
 ---
 # <a name="smooth-streaming-protocol-ms-sstr-amendment-for-hevc"></a>Smooth Streaming protokoll (MS-SSTR) HEVC vonatkozó módosítása 
 
@@ -64,7 +64,7 @@ A következő kifejezések a dokumentumra vonatkoznak:
 
 ### <a name="121-normative-references"></a>1.2.1 normatív referenciák 
 
->  [MS-SSTR] Smooth Streaming protokoll *v20140502*[https://msdn.microsoft.com/library/ff469518.aspx](https://msdn.microsoft.com/library/ff469518.aspx)
+>  [MS-SSTR] Smooth Streaming protokoll *v20140502*[https://msdn.microsoft.com/library/ff469518.aspx](/openspecs/windows_protocols/ms-sstr/8383f27f-7efe-4c60-832a-387274457251)
 > 
 >   [ISO/IEC 14496-12] Nemzetközi Szabványügyi Szervezet, "Information Technology--a hang-vizuális objektumok kódolása – 12. rész: ISO-alap médiafájl formátuma", ISO/IEC 14496-12:2014, 4. kiadás, plusz helyesbítés 1, 1 & 2. módosítás.
 >   <https://standards.iso.org/ittf/PubliclyAvailableStandards/c061988_ISO_IEC_14496-12_2012.zip>

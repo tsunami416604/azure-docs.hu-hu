@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2019
 ms.author: juliako
-ms.openlocfilehash: 872dad95fc5b536c51e251612f40439da020a059
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 16c74e10e88d3f8eacd8f59222adbdb19be813ef
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75779637"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87053210"
 ---
 # <a name="configure-postman-for-media-services-v3-rest-api-calls"></a>Poster konfigurálása Media Services v3 REST API-hívásokhoz
 
@@ -27,8 +28,8 @@ A fejlesztés megkezdése előtt tekintse át [Media Services V3 API-k fejleszt�
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- [Hozzon létre egy Media Services fiókot](create-account-cli-how-to.md). Ügyeljen rá, hogy jegyezze fel az erőforráscsoport nevét és a Media Services fiók nevét. 
-- Az API-k [eléréséhez](access-api-cli-how-to.md) szükséges információk beolvasása
+- [Hozzon létre egy Media Services fiókot](./create-account-howto.md). Ügyeljen rá, hogy jegyezze fel az erőforráscsoport nevét és a Media Services fiók nevét. 
+- Az API-k [eléréséhez](./access-api-howto.md) szükséges információk beolvasása
 - Telepítse a [Postman](https://www.getpostman.com/) REST-ügyfelet, hogy végrehajtsa az AMS REST oktatóanyagok egy részében látható REST API-kat. 
 
     A **Postmant** használjuk, de bármely egyéb REST-eszköz is megfelelő. Más alternatívák: **Visual Studio Code** a REST beépülő modullal vagy a **Telerik Hegedűs**. 
@@ -105,4 +106,4 @@ Az AMS v3-erőforrások kezelésének megkezdése előtt be kell szereznie és b
 ## <a name="next-steps"></a>További lépések
 
 - [Adatfolyam-fájlok a REST](stream-files-tutorial-with-rest.md)-tel.  
-- [Oktatóanyag: távoli fájl kódolása URL-cím alapján és stream a videó – REST](stream-files-tutorial-with-rest.md)
+- [Oktatóanyag: Távoli fájl kódolása URL-cím alapján és videó streamelése – REST](stream-files-tutorial-with-rest.md)

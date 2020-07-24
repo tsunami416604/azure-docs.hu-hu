@@ -10,11 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/12/2020
 ms.author: juliako
-ms.openlocfilehash: bb57af37308badcd3123af3348178aaac061f376
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d533735af340b23e8a79b6c5953df748a548609c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83652182"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87046967"
 ---
 # <a name="video-indexer-frequently-asked-questions"></a>Video Indexer gyakori kérdések
 
@@ -58,13 +59,13 @@ Nem, Video Indexer több gépi tanulási modell integrálását is lehetővé te
 
 ### <a name="what-media-formats-does-video-indexer-support"></a>Milyen adathordozó-formátumokat támogat Video Indexer?
 
-A Video Indexer a leggyakoribb adathordozó-formátumokat támogatja. További részletekért tekintse meg a [Azure Media Encoder standard formats (szabványos formátumok](https://docs.microsoft.com/azure/media-services/latest/media-encoder-standard-formats) ) listát.
+A Video Indexer a leggyakoribb adathordozó-formátumokat támogatja. További részletekért tekintse meg a [Azure Media Encoder standard formats (szabványos formátumok](../latest/media-encoder-standard-formats.md) ) listát.
 
 ### <a name="how-do-i-upload-a-media-file-into-video-indexer-and-what-are-the-limitations"></a>Hogyan feltölt egy médiafájlt a Video Indexerba, és mi a korlátozás?
 
 A Video Indexer webalapú portálon feltöltheti a médiafájlokat a fájlfeltöltés párbeszédpanellel, vagy egy olyan URL-re mutatva, amely közvetlenül a forrásfájlt futtatja (lásd a [példát](https://nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/Ignite-short.mp4)). Bármely olyan URL-cím, amely iFrame vagy beágyazási kód használatával futtatja az adathordozó tartalmát, nem fog működni (lásd a [példát](https://www.videoindexer.ai/accounts/7e1282e8-083c-46ab-8c20-84cae3dc289d/videos/5cfa29e152/?t=4.11)). 
 
-További információ: [útmutató](https://docs.microsoft.com/azure/media-services/video-indexer/upload-index-videos).
+További információ: [útmutató](./upload-index-videos.md).
 
 #### <a name="limitations"></a>Korlátozások
 
@@ -75,7 +76,7 @@ Az átfogó listáról lásd: [szempontok és korlátozások feltöltése](uploa
 
 ### <a name="how-long-does-it-take-video-indexer-to-extract-insights-from-media"></a>Mennyi időt vesz igénybe Video Indexer az adatok adathordozóról való kinyerése?
 
-A videó-vagy hangfájlok indexeléséhez szükséges idő, a Video Indexer API-t és a Video Indexer webes felületet is beleértve, több paramétertől függ, például a fájl hosszától és minőségétől, a fájlban talált elemzések számától, a rendelkezésre álló [fenntartott egységek](https://docs.microsoft.com/azure/media-services/previous/media-services-scale-media-processing-overview) számától, valamint attól, hogy a [folyamatos átviteli végpont](https://docs.microsoft.com/azure/media-services/previous/media-services-streaming-endpoints-overview) engedélyezve van-e. Javasoljuk, hogy futtasson néhány tesztoldalt a saját tartalmával, és készítsen egy átlagot a jobb ötlet megszerzéséhez.
+A videó-vagy hangfájlok indexeléséhez szükséges idő, a Video Indexer API-t és a Video Indexer webes felületet is beleértve, több paramétertől függ, például a fájl hosszától és minőségétől, a fájlban talált elemzések számától, a rendelkezésre álló [fenntartott egységek](../previous/media-services-scale-media-processing-overview.md) számától, valamint attól, hogy a [folyamatos átviteli végpont](../previous/media-services-streaming-endpoints-overview.md) engedélyezve van-e. Javasoljuk, hogy futtasson néhány tesztoldalt a saját tartalmával, és készítsen egy átlagot a jobb ötlet megszerzéséhez.
 
 ### <a name="can-i-create-customized-workflows-to-automate-processes-with-video-indexer"></a>Létrehozhatok testreszabott munkafolyamatokat a folyamatok automatizálásához a Video Indexer használatával?
 

@@ -3,12 +3,12 @@ title: Tartalom feltöltése, kódolása és továbbítása a portál használat
 description: Ebből a rövid útmutatóból megtudhatja, hogyan tölthet fel, kódolhat és továbbíthat tartalmakat Azure Media Services használatával a portálon.
 ms.topic: quickstart
 ms.date: 06/08/2020
-ms.openlocfilehash: 374e8a22bf8fdcb14101bffc26f9d1b27480ce88
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: bab13b7b878f8992ac5523b9902054a42a3dc769
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232474"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87053354"
 ---
 # <a name="quickstart-upload-encode-and-stream-content-with-portal"></a>Gyors útmutató: tartalom feltöltése, kódolása és továbbítása a portálon
 
@@ -35,7 +35,7 @@ Ebből a rövid útmutatóból megtudhatja, hogyan töltheti fel, kódolhatja é
 
         Jelenleg a Azure Portal használatakor a következőket teheti: létrehoz egy TTML és WebVTT zárt feliratú fájlokat. Az ezekben a formátumokban lévő fájlok használatával a fogyatékkal élők számára elérhetővé teheti a hang-és videofájlokat. A tartalomból kulcsszavakat is kinyerhet.
 
-        A videó-és hangfájlokból származó elemzések kinyerését lehetővé tevő széles körű élmény érdekében használja a Media Services v3-es előállítók használatát (lásd a következő [oktatóanyagot: videók elemzése az Media Services v3](analyze-videos-tutorial-with-api.md)használatával). <br/>Ha részletesebb információkra van szüksége, használja a [video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) közvetlenül.    
+        A videó-és hangfájlokból származó elemzések kinyerését lehetővé tevő széles körű élmény érdekében használja a Media Services v3-es előállítók használatát (lásd a következő [oktatóanyagot: videók elemzése az Media Services v3](analyze-videos-tutorial-with-api.md)használatával). <br/>Ha részletesebb információkra van szüksége, használja a [video Indexer](../video-indexer/index.yml) közvetlenül.    
 * A tartalom feldolgozása után médiatartalmakat is továbbíthat az ügyfelek számára. Ahhoz, hogy a kimeneti eszközön a videók elérhetők legyenek az ügyfelek számára a lejátszáshoz, létre kell hoznia egy **folyamatos átviteli lokátort**. A **folyamatos átviteli lokátor**létrehozásakor meg kell adnia egy **folyamatos átviteli házirendet**. A **folyamatos átviteli szabályzatok** lehetővé teszik a folyamatos átviteli protokollok és a titkosítási beállítások (ha vannak) definiálását a **streaming-lokátorok**számára.
     
     Tekintse át

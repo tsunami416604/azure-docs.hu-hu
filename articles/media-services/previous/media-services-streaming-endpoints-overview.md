@@ -14,20 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 95d8d819aa1b418b4a7ec736cef64cb989f7e37b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dbd460b584789aa7d40de9ba6430ff6202c3764b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74885636"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87052515"
 ---
 # <a name="streaming-endpoints-overview"></a>Folyamatos átviteli végpontok áttekintése  
 
 > [!NOTE]
-> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Tekintse meg a legújabb, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
+> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Tekintse meg a legújabb, [Media Services v3](../latest/index.yml)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
 
 Microsoft Azure Media Services (AMS) esetében a **folyamatos átviteli végpont** olyan adatfolyam-szolgáltatást jelöl, amely közvetlenül egy ügyfél-lejátszó alkalmazásnak, illetve egy Content DELIVERY Network (CDN) számára biztosít tartalmat a további terjesztéshez. A Media Services zökkenőmentes Azure CDN integrációt is biztosít. A Streamvégpontok szolgáltatás kimenő adatfolyama lehet élő stream, igény szerinti videó vagy a Media Services fiókjában lévő eszköz progresszív letöltése. Minden Azure Media Services fiók tartalmaz egy alapértelmezett Streamvégpontok. További StreamingEndpoints hozhatók létre a fiókban. A StreamingEndpoints két verziója létezik: 1,0 és 2,0. A 2017. januártól kezdődően minden újonnan létrehozott AMS-fiók tartalmazni fogja az 2,0-es verziójú **alapértelmezett** streamvégpontok. Az ehhez a fiókhoz hozzáadott további streaming-végpontok a 2,0-es verzióban is megjelennek. Ez a változás nem érinti a meglévő fiókokat; a meglévő StreamingEndpoints a 1,0-es verzió lesz, és frissíthető az 2,0-es verzióra. Ennek a változásnak a viselkedése, a számlázás és a szolgáltatások változásai (további információért lásd az alábbi, a **folyamatos átvitel típusai és verziói** című szakaszt).
 
-Azure Media Services a következő tulajdonságokat adta hozzá a streaming Endpoint entitáshoz: **CdnProvider**, **CdnProfile**, **StreamingEndpointVersion**. A tulajdonságok részletes áttekintését [itt](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint)tekintheti meg. 
+Azure Media Services a következő tulajdonságokat adta hozzá a streaming Endpoint entitáshoz: **CdnProvider**, **CdnProfile**, **StreamingEndpointVersion**. A tulajdonságok részletes áttekintését [itt](/rest/api/media/operations/streamingendpoint)tekintheti meg. 
 
 Azure Media Services fiók létrehozásakor a rendszer az alapértelmezett szabványos folyamatos átviteli végpontot hozza létre a **leállított** állapotban. Az alapértelmezett folyamatos átviteli végpont nem törölhető. A célként megadott régióban elérhető Azure CDN rendelkezésre állástól függően az újonnan létrehozott alapértelmezett adatfolyam-végpont az "StandardVerizon" CDN-szolgáltató integrációját is tartalmazza. 
                 
@@ -52,7 +53,7 @@ Media Services január 2017-os kiadásával kezdődően két folyamatos átvitel
 |Típus|Description|
 |--------|--------|  
 |**Standard**|Az alapértelmezett folyamatos átviteli végpont egy **szabványos** típus, amely a folyamatos átviteli egységek beállításával módosítható a prémium típusra.|
-|**Prémium** |Ez a lehetőség olyan professzionális forgatókönyvekhez alkalmas, amelyek nagyobb méretezést vagy irányítást igényelnek. A **prémium** típusra váltson a folyamatos átviteli egységek beállításával.<br/>A dedikált streaming-végpontok elszigetelt környezetben laknak, és nem versenyeznek az erőforrásokkal.|
+|**Prémium szintű** |Ez a lehetőség olyan professzionális forgatókönyvekhez alkalmas, amelyek nagyobb méretezést vagy irányítást igényelnek. A **prémium** típusra váltson a folyamatos átviteli egységek beállításával.<br/>A dedikált streaming-végpontok elszigetelt környezetben laknak, és nem versenyeznek az erőforrásokkal.|
 
 Azon ügyfelek számára, akik nagy internetes célközönségeknek szánt tartalmat szeretnének kézbesíteni, javasoljuk, hogy engedélyezze a CDN használatát a streaming végponton.
 
@@ -76,16 +77,16 @@ Ha a **"1,0"** adatfolyam-végpont >= 1 Premium streaming Units (su), akkor a pr
 
 |Típus|StreamingEndpointVersion|ScaleUnits|Tartalomkézbesítési hálózat (CDN)|Számlázás|
 |--------------|----------|-----------------|-----------------|-----------------|
-|Klasszikus|1.0|0|NA|Ingyenes|
-|Standard streaming Endpoint (előzetes verzió)|2.0|0|Yes|Fizetős|
-|prémium streamelési egység|1.0|>0|Yes|Fizetős|
-|prémium streamelési egység|2.0|>0|Yes|Fizetős|
+|Klasszikus|1,0|0|NA|Ingyenes|
+|Standard streaming Endpoint (előzetes verzió)|2,0|0|Yes|Fizetős|
+|prémium streamelési egység|1,0|>0|Yes|Fizetős|
+|prémium streamelési egység|2,0|>0|Yes|Fizetős|
 
-### <a name="features"></a>Szolgáltatások
+### <a name="features"></a>Funkciók
 
-Szolgáltatás|Standard|Prémium
+Funkció|Standard|Prémium
 ---|---|---
-Teljesítmény |Akár 600 Mbps, és a CDN használata esetén sokkal nagyobb hatékonyságot biztosít.|200 MB/s átviteli egység (SU). Sokkal nagyobb hatékonyságot biztosíthat a CDN használatakor.
+Átviteli sebesség |Akár 600 Mbps, és a CDN használata esetén sokkal nagyobb hatékonyságot biztosít.|200 MB/s átviteli egység (SU). Sokkal nagyobb hatékonyságot biztosíthat a CDN használatakor.
 Tartalomkézbesítési hálózat (CDN)|Azure CDN, harmadik féltől származó CDN vagy nincs CDN.|Azure CDN, harmadik féltől származó CDN vagy nincs CDN.
 A számlázás arányosan történik| Napi|Napi
 Dinamikus titkosítás|Igen|Igen
@@ -101,7 +102,7 @@ SLA-információ: [díjszabás és SLA](https://azure.microsoft.com/pricing/deta
 
 ## <a name="migration-between-types"></a>Áttelepítés típusok között
 
-Feladó | Művelet | Műveletek
+Forrás | Művelet | Műveletek
 ---|---|---
 Klasszikus|Standard|Be kell jelentkeznie
 Klasszikus|Prémium| Skála (további folyamatos átviteli egységek)
@@ -121,4 +122,3 @@ Tekintse át a Media Services képzési terveket.
 
 ## <a name="provide-feedback"></a>Visszajelzés küldése
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-

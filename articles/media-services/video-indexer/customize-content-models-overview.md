@@ -9,16 +9,17 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
 ms.date: 06/26/2019
-ms.author: anzaman
-ms.openlocfilehash: 09e6fd8530ddb1745a92c6f31f4d5a5843a2ac10
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: kumud
+ms.openlocfilehash: 937a73847e867e826b3a577adf0c85184d7a93d0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76513167"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87047237"
 ---
 # <a name="customizing-content-models-in-video-indexer"></a>Tartalmi modellek testreszabása Video Indexer
 
-Video Indexer segítségével testre szabhatja a modell egyes modelljeit, hogy az adott használati esethez igazodjanak. Ilyen modellek például a [márkák](customize-brands-model-overview.md), a [nyelv](customize-language-model-overview.md)és a [személy](customize-person-model-overview.md). Ezeket a modelleket egyszerűen testreszabhatja a Video Indexer webhely vagy API használatával.
+A Video Indexer lehetővé teszi, hogy egyes modelljeit az adott használati esethez igazítva testreszabhassa. Ilyen modellek például a [márkák](customize-brands-model-overview.md), a [nyelv](customize-language-model-overview.md)és a [személy](customize-person-model-overview.md). A modellek könnyedén testreszabhatók a Video Indexer webhellyel vagy API-val.
 
 Ez a cikk olyan cikkekre mutató hivatkozásokat tartalmaz, amelyek az egyes testreszabási típusok előnyeit ismertetik. A cikk olyan útmutatókra mutató hivatkozásokat is tartalmaz, amelyek bemutatják, hogyan valósítható meg az egyes modellek testreszabása.
 
@@ -26,7 +27,7 @@ Ez a cikk olyan cikkekre mutató hivatkozásokat tartalmaz, amelyek az egyes tes
 
 * [Animált karakterek észlelése](animated-characters-recognition.md)
 
-## <a name="brands-model"></a>Márkák modell
+## <a name="brands-model"></a>Márkamodell
 
 * [A márkák modell áttekintésének testreszabása](customize-brands-model-overview.md)
 * [A Brands modell testreszabása a Video Indexer webhely használatával](customize-brands-model-with-website.md)
@@ -38,7 +39,7 @@ Ez a cikk olyan cikkekre mutató hivatkozásokat tartalmaz, amelyek az egyes tes
 * [Nyelvi modellek testreszabása a Video Indexer webhely használatával](customize-language-model-with-website.md)
 * [Nyelvi modellek testreszabása a Video Indexer API használatával](customize-language-model-with-api.md)
  
-## <a name="person-model"></a>Személy modellje
+## <a name="person-model"></a>Személymodell
 
 * [Személy modellek testreszabása – áttekintés](customize-person-model-overview.md)
 * [Személy modellek testreszabása a Video Indexer webhely használatával](customize-person-model-with-website.md)

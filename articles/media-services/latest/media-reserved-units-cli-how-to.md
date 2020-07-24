@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/09/2020
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 79f2df0f94b212ea45c01c825b23f1dbb4cc40db
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6715014485b227713447ce5d552cf7ba79737845
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80582292"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87053222"
 ---
 # <a name="scaling-media-processing"></a>Médiafeldolgozás skálázása
 
@@ -31,7 +31,7 @@ A fenntartott egység típusának meghatározása mellett megadhatja, hogy a fi�
 
 A következő táblázat segít dönteni a különböző kódolási sebességek kiválasztásakor. Emellett néhány teljesítményteszt-esetet is biztosít [egy videón, amelyet](https://nimbuspmteam.blob.core.windows.net/asset-46f1f723-5d76-477e-a153-3fd0f9f90f73/SeattlePikePlaceMarket_7min.ts?sv=2015-07-08&sr=c&si=013ab6a6-5ebf-431e-8243-9983a6b5b01c&sig=YCgEB8DxYKK%2B8W9LnBykzm1ZRUTwQAAH9QFUGw%2BIWuc%3D&se=2118-09-21T19%3A28%3A57Z) a saját tesztek elvégzéséhez tölthet le:
 
-|RU-típus|Eset|Példa a [7 perces 1080p videó](https://nimbuspmteam.blob.core.windows.net/asset-46f1f723-5d76-477e-a153-3fd0f9f90f73/SeattlePikePlaceMarket_7min.ts?sv=2015-07-08&sr=c&si=013ab6a6-5ebf-431e-8243-9983a6b5b01c&sig=YCgEB8DxYKK%2B8W9LnBykzm1ZRUTwQAAH9QFUGw%2BIWuc%3D&se=2118-09-21T19%3A28%3A57Z) eredményeire|
+|RU-típus|Forgatókönyv|Példa a [7 perces 1080p videó](https://nimbuspmteam.blob.core.windows.net/asset-46f1f723-5d76-477e-a153-3fd0f9f90f73/SeattlePikePlaceMarket_7min.ts?sv=2015-07-08&sr=c&si=013ab6a6-5ebf-431e-8243-9983a6b5b01c&sig=YCgEB8DxYKK%2B8W9LnBykzm1ZRUTwQAAH9QFUGw%2BIWuc%3D&se=2118-09-21T19%3A28%3A57Z) eredményeire|
 |---|---|---|
 | **S1**|Egyetlen bitráta kódolása. <br/>A fájlok SD-vagy alacsonyabb felbontásban, nem érzékenyek, alacsonyak.|A "H264 Single bitráta SD 16x9" használatával az egyetlen sávszélességű SD-feloldási MP4-fájl kódolása körülbelül 7 percet vesz igénybe.|
 | **S2**|Egyetlen bitráta és több bitráta-kódolás.<br/>Normál használat SD és HD kódoláshoz.|A "H264 Single bitráta 720p" beállítású kódolás körülbelül 6 percet vesz igénybe.<br/><br/>A "H264 Multiple bitráta 720p" beállítású kódolás körülbelül 12 percet vesz igénybe.|
@@ -49,7 +49,7 @@ A cikk további részében bemutatjuk, hogyan méretezhető a MRUs a [Media Serv
 
 ## <a name="prerequisites"></a>Előfeltételek 
 
-[Hozzon létre egy Media Services fiókot](create-account-cli-how-to.md).
+[Hozzon létre egy Media Services fiókot](./create-account-howto.md).
 
 [!INCLUDE [media-services-cli-instructions](../../../includes/media-services-cli-instructions.md)]
 
@@ -57,7 +57,7 @@ A cikk további részében bemutatjuk, hogyan méretezhető a MRUs a [Media Serv
 
 Futtassa a következő parancsot: `mru`.
 
-A következő az [AMS Account MRU](https://docs.microsoft.com/cli/azure/ams/account/mru?view=azure-cli-latest) parancs beállítja a Media szolgáltatás számára fenntartott egységeket a "amsaccount" fiókban a **Count** és a **Type** paraméterek használatával.
+A következő az [AMS Account MRU](/cli/azure/ams/account/mru?view=azure-cli-latest) parancs beállítja a Media szolgáltatás számára fenntartott egységeket a "amsaccount" fiókban a **Count** és a **Type** paraméterek használatával.
 
 ```azurecli
 az ams account mru set -n amsaccount -g amsResourceGroup --count 10 --type S3
@@ -71,7 +71,7 @@ A számlázás a fiókban a Media szolgáltatás számára fenntartott egységek
 
 [Videók elemzése](analyze-videos-tutorial-with-api.md) 
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 * [Kvóták és korlátok](limits-quotas-constraints.md)
-* [Azure CLI](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)
+* [Azure CLI](/cli/azure/ams?view=azure-cli-latest)

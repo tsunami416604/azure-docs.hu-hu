@@ -13,16 +13,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: fa0cf5d698bc2186928e0db19be173ec725485e8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0eec42c0703e7158b478b8297848dc2ee6735cb8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80985932"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87047560"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>Forgatókönyvek és a Media Services-szolgáltatások rendelkezésre állása az egyes adatközpontokban
 
 > [!NOTE]
-> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Tekintse meg a legújabb, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
+> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Tekintse meg a legújabb, [Media Services v3](../latest/index.yml)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
 
 A Microsoft Azure Media Services (AMS) lehetővé teszi különböző videó- és hangtartalmak biztonságos feltöltését, tárolását, kódolását és becsomagolását, majd igény szerinti és élő streamként történő továbbítását különböző ügyfelek részére (például tévékészülékekre, számítógépekre és mobileszközökre).
 
@@ -158,7 +159,7 @@ Az AMS-ügyfelek méretezhetik a streamvégpontokat, a médiafeldolgozást és a
     >A Fenntartott egységek az összes médiafeldolgozás párhuzamossá tételéért felelősek, beleértve az Azure Media Indexerrel végzett indexelési feladatokat is. De a kódolással ellentétben az indexelési feladatok feldolgozása nem lesz gyorsabb a gyorsabb Fenntartott egységekkel.
 
     További információkért olvassa el a [médiafeldolgozás méretezését](media-services-portal-scale-media-processing.md) ismertető cikket.
-* A Media Services-fiókját tárfiókok hozzáadásával is méretezheti. Minden tárfiók legfeljebb 500 TB kapacitású lehet. Ha a tárolót az alapértelmezett határérték fölé szeretné bővíteni, több tárfiókot is társíthat ugyanahhoz a Media Services-fiókhoz. További információkért olvassa el a [tárfiókok kezelését](meda-services-managing-multiple-storage-accounts.md) ismertető cikket.
+* A Media Services-fiókját tárfiókok hozzáadásával is méretezheti. Minden tárfiók legfeljebb 500 TB kapacitású lehet. Ha a tárolót az alapértelmezett határérték fölé szeretné bővíteni, több tárfiókot is társíthat ugyanahhoz a Media Services-fiókhoz. További információkért olvassa el a [tárfiókok kezelését](./media-services-managing-multiple-storage-accounts.md) ismertető cikket.
 
 ## <a name="availability-of-media-services-features-across-datacenters"></a><a id="availability"></a> A Media Services-funkciók rendelkezésre állása az egyes adatközpontokban
 
@@ -176,7 +177,7 @@ A Media Services ügyfelei **standard** szintű streamvégpontot vagy **prémium
 
 #### <a name="availability"></a>Rendelkezésre állás
 
-|Name|Állapot|Adatközpontok
+|Name|status|Adatközpontok
 |---|---|---|
 |Standard|FE|Mind|
 |Prémium|FE|Mind|
@@ -193,7 +194,7 @@ Az AMS két igény szerinti kódolót nyújt: a **Media Encoder Standard** kódo
 
 #### <a name="availability"></a>Rendelkezésre állás
 
-|Médiafeldolgozó neve|Állapot|Adatközpontok
+|Médiafeldolgozó neve|status|Adatközpontok
 |---|---|---|
 |Media Encoder Standard|FE|Mind|
 |Media Encoder Premium-munkafolyamat|FE|Kína kivételével|
@@ -207,7 +208,7 @@ A Médiaelemzés beszéd- és vizuális összetevők gyűjteménye, amely egysze
 
 #### <a name="availability"></a>Rendelkezésre állás
 
-|Médiafeldolgozó neve|Állapot|Adatközpontok
+|Médiafeldolgozó neve|status|Adatközpontok
 |---|---|---|
 |Azure Media Face Detector|Előnézet|Mind|
 |Azure Media Indexer|FE|Mind|
@@ -222,9 +223,9 @@ A Microsoft Azure Media Services lehetővé teszi a médiatartalmak védelmét a
 
 #### <a name="availability"></a>Rendelkezésre állás
 
-|Titkosítás|Állapot|Adatközpontok|
+|Titkosítás|status|Adatközpontok|
 |---|---|---| 
-|Storage|FE|Mind|
+|Tárolás|FE|Mind|
 |AES-128-kulcsok|FE|Mind|
 |FairPlay|FE|Mind|
 |PlayReady|FE|Mind|
@@ -248,7 +249,7 @@ További információt a [méretezésről](#scaling) szóló szakaszban talál.
 
 #### <a name="availability"></a>Rendelkezésre állás
 
-|RU típusának neve|Állapot|Adatközpontok
+|RU típusának neve|status|Adatközpontok
 |---|---|---|
 |S1|FE|Mind|
 |S2|FE|Mindenhol, kivéve Dél-Brazíliát és Nyugat-Indiát|
@@ -266,4 +267,3 @@ Tekintse át a Media Services képzési terveket.
 
 ## <a name="provide-feedback"></a>Visszajelzés küldése
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-

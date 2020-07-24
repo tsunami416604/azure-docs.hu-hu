@@ -4,11 +4,12 @@ description: A hibakeresési Pillanatképek automatikusan bekerülnek, ha a kiv�
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.reviewer: cweining
-ms.openlocfilehash: 18f43ba90157d71ec9488b6858fa9f41b2ee42a5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c920ab019d5d802ea862ab923297670da766a456
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84692019"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87049676"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>A .NET-alkalmazások kivételeinek hibakeresési pillanatképei
 Ha kivétel történik, automatikusan gyűjthet egy hibakeresési pillanatképet az élő webalkalmazásból. A pillanatkép a forráskód és a változók állapotát mutatja a kivétel eldobásának pillanatában. Az [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) Snapshot Debugger figyeli a webalkalmazás kivétel-telemetria. Pillanatképeket gyűjt a legfelső szintű kivételekről, így az éles környezetben felmerülő problémák diagnosztizálásához szükséges információkkal rendelkezik. Adja meg a [Pillanatkép-gyűjtő NuGet csomagot](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) az alkalmazásban, és szükség esetén konfigurálja a gyűjtemény paramétereit [ApplicationInsights.configban ](../../azure-monitor/app/configuration-with-applicationinsights-config.md). A pillanatképek a Application Insights portál [kivételei](../../azure-monitor/app/asp-net-exceptions.md) között jelennek meg.
@@ -37,7 +38,7 @@ Ha engedélyezte Snapshot Debugger de nem lát pillanatképeket, tekintse meg a 
 
 ## <a name="grant-permissions"></a>Engedélyek megadása
 
-A pillanatképek elérését szerepköralapú hozzáférés-vezérlés (RBAC) védi. A pillanatképek vizsgálatához először hozzá kell adni a szükséges szerepkörhöz egy előfizetés tulajdonosa számára.
+A pillanatképekhez való hozzáférést szerepköralapú hozzáférés-vezérlés (RBAC) védi. A pillanatképek vizsgálatához egy előfizetés-tulajdonosnak először fel kell vennie Önt a szükséges szerepkörbe.
 
 > [!NOTE]
 > A tulajdonosok és a közreműködők nem rendelkeznek automatikusan ehhez a szerepkörhöz. Ha szeretné megtekinteni a pillanatképeket, fel kell venni magukat a szerepkörbe.
@@ -88,7 +89,7 @@ A Snapshot Collector [Application Insights telemetria processzorként](../../azu
 Minden alkalommal, amikor az alkalmazás meghívja a [TrackException](../../azure-monitor/app/asp-net-exceptions.md#exceptions)-t, a Snapshot Collector kiszámítja a probléma azonosítóját a dobott kivétel típusától és a throwing metódustól.
 Minden alkalommal, amikor az alkalmazás meghívja a TrackException-t, a megfelelő problémás azonosító számlálója növekszik. Ha a számláló eléri az `ThresholdForSnapshotting` értéket, a probléma azonosítója bekerül egy gyűjteményi tervbe.
 
-A Snapshot Collector a kivételeket is figyeli a [alkalmazástartomány. CurrentDomain. FirstChanceException](https://docs.microsoft.com/dotnet/api/system.appdomain.firstchanceexception) eseményre való feliratkozással. Az esemény bekövetkezésekor a rendszer kiszámítja a kivétel problémájának AZONOSÍTÓját, és összehasonlítja a gyűjtési tervben szereplő problémás azonosítókkal.
+A Snapshot Collector a kivételeket is figyeli a [alkalmazástartomány. CurrentDomain. FirstChanceException](/dotnet/api/system.appdomain.firstchanceexception) eseményre való feliratkozással. Az esemény bekövetkezésekor a rendszer kiszámítja a kivétel problémájának AZONOSÍTÓját, és összehasonlítja a gyűjtési tervben szereplő problémás azonosítókkal.
 Ha egyezés van, a rendszer létrehozza a futó folyamat pillanatképét. A pillanatképhez egyedi azonosító van rendelve, a kivétel pedig az adott azonosítóval van lepecsételve. A FirstChanceException-kezelő visszaadása után a rendszer a feldobott kivételt a szokásos módon dolgozza fel. Végül a kivétel eléri a TrackException metódust, ahol a pillanatkép-azonosítóval együtt Application Insights.
 
 A fő folyamat továbbra is fut, és a forgalmat a kis megszakítással rendelkező felhasználók számára is kiszolgálja. Eközben a pillanatkép bekerül a pillanatkép-feltöltő folyamatba. A pillanatkép-feltöltő létrehoz egy minidump, és feltölti azt Application Insights a kapcsolódó szimbólumokkal (. PDB) együtt.
@@ -116,7 +117,7 @@ A Visual Studio 2017 15,2-es vagy újabb verziója alapértelmezés szerint köz
 Az Azure-beli számítási és egyéb típusok esetében győződjön meg arról, hogy a szimbólumok a Main Application. dll (általában,) és az `wwwroot/bin` aktuális elérési úton elérhető mappában találhatók.
 
 > [!NOTE]
-> Az elérhető különböző szimbólumokkal kapcsolatos további információkért tekintse meg a [Visual Studio dokumentációját](https://docs.microsoft.com/visualstudio/ide/reference/advanced-build-settings-dialog-box-csharp?view=vs-2019#output
+> Az elérhető különböző szimbólumokkal kapcsolatos további információkért tekintse meg a [Visual Studio dokumentációját](/visualstudio/ide/reference/advanced-build-settings-dialog-box-csharp?view=vs-2019#output
 ). A legjobb eredmény érdekében javasoljuk a "teljes", a "hordozható" vagy a "Embedded" használatát.
 
 ### <a name="optimized-builds"></a>Optimalizált buildek
@@ -137,6 +138,6 @@ Application Insights Snapshot Debugger engedélyezése az alkalmazáshoz:
 
 Application Insights Snapshot Debuggeron túl:
  
-* [Állítsa be a snappoints a kódban](https://docs.microsoft.com/visualstudio/debugger/debug-live-azure-applications) a pillanatképek lekéréséhez, ha nem vár kivételt.
+* [Állítsa be a snappoints a kódban](/visualstudio/debugger/debug-live-azure-applications) a pillanatképek lekéréséhez, ha nem vár kivételt.
 * [A webalkalmazásokban a kivételek diagnosztizálásakor](../../azure-monitor/app/asp-net-exceptions.md) megtudhatja, hogyan teheti elérhetővé a Application Insights további kivételeket.
 * Az [intelligens észlelés](../../azure-monitor/app/proactive-diagnostics.md) automatikusan észleli a teljesítménnyel kapcsolatos rendellenességeket.

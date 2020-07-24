@@ -6,12 +6,12 @@ ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/19/2020
-ms.openlocfilehash: b8f8bda52be63a4176411855dd9ff9919e9e31f5
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 14ff1a00b40d956f369b1978f15f01f113c50270
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85856686"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87050135"
 ---
 # <a name="keys-and-values"></a>Kulcsok és értékek
 
@@ -77,7 +77,7 @@ A címkéken bármilyen Unicode-karaktert használhat, a, a és a kivételével 
 
 Minden egyes kulcs értékét egyedileg azonosítják a kulcsa, valamint egy címke, amely lehet `null` . A kulcsok értékeit egy minta megadásával kérdezheti le. Az alkalmazás konfigurációs tárolója visszaadja az összes olyan kulcs értéket, amely megfelel a mintának, valamint a hozzájuk tartozó értékeknek és attribútumoknak. Az alkalmazás konfigurálásához REST API hívásokban használja az alábbi főbb mintákat:
 
-| Kulcs | |
+| Kulcs | Description |
 |---|---|
 | `key`nincs megadva vagy`key=*` | Az összes kulcs egyezése |
 | `key=abc` | Pontosan megfelel az **ABC** -kulcs nevének |
@@ -86,7 +86,7 @@ Minden egyes kulcs értékét egyedileg azonosítják a kulcsa, valamint egy cí
 
 A következő címke mintákat is tartalmazhatja:
 
-| Címke | |
+| Címke | Description |
 |---|---|
 | `label`nincs megadva vagy`label=*` | Megfelel bármely címkének, amely tartalmazza a következőket`null` |
 | `label=%00` | Egyezések `null` címkéje |

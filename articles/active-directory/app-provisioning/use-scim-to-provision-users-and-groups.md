@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 03/07/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: b08509bed6b26cb56caebd4dc47fc3b7ac84ce27
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a8138f125c55e3b2d76cb680ea48366c5a3e05fd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85117318"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87051513"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>SCIM-végpont létrehozása és a felhasználók üzembe helyezésének konfigurálása az Azure AD-vel
 
@@ -55,12 +55,12 @@ Minden alkalmazáshoz különböző attribútumok szükségesek egy felhasznál�
 |loginName|userName (Felhasználónév)|userPrincipalName|
 |firstName|név. givenName|givenName|
 |lastName|név. lastName|lastName|
-|workMail|E-mailek [type EQ "work"]. Value|Levelezés|
+|workMail|E-mailek [type EQ "work"]. Value|Mail|
 |manager|manager|manager|
 |címke|urn: IETF: params: scim: sémák: bővítmény: 2.0: CustomExtension: címke|extensionAttribute1|
 |status|Active|isSoftDeleted (nem a felhasználó által tárolt számított érték)|
 
-A fent definiált séma az alábbi JSON-adattartalommal lesz ábrázolva. Vegye figyelembe, hogy az alkalmazáshoz szükséges attribútumok mellett a JSON-ábrázolás a szükséges "id", "externalId" és "meta" attribútumokat is tartalmazza.
+A fent definiált séma az alábbi JSON-adattartalommal lesz ábrázolva. Vegye figyelembe, hogy az alkalmazáshoz szükséges attribútumok mellett a JSON-ábrázolás magában foglalja a szükséges `id` , `externalId` és `meta` attribútumokat is.
 
 ```json
 {
@@ -134,7 +134,7 @@ A SCIM RFC-ben több végpont is definiálva van. Megkezdheti a/User-végpont me
 |/Group|SZIFILISZ-műveletek végrehajtása egy csoport objektumon.|
 |/ServiceProviderConfig|A SCIM szabvány által támogatott funkciók részleteit tartalmazza, például a támogatott erőforrásokat és a hitelesítési módszert.|
 |/ResourceTypes|Az egyes erőforrásokra vonatkozó metaadatok megadása|
-|/Schemas|Az egyes ügyfelek és szolgáltatók által támogatott attribútumok különbözőek lehetnek. Míg az egyik szolgáltató tartalmazhatja a "Name", a "title" és az "e-maileket", míg egy másik szolgáltató a "Name", a "title" és a "phoneNumbers" nevet használja. A sémák végpont lehetővé teszi a támogatott attribútumok felderítését.|
+|/Schemas|Az egyes ügyfelek és szolgáltatók által támogatott attribútumok különbözőek lehetnek. Az egyik szolgáltató például, `name` `title` , és `emails` , míg egy másik szolgáltató a, a és a szolgáltatást használja `name` `title` `phoneNumbers` . A sémák végpont lehetővé teszi a támogatott attribútumok felderítését.|
 |/Bulk|A tömeges műveletek lehetővé teszik, hogy az erőforrás-objektumok nagy gyűjteményében műveleteket hajtson végre egyetlen műveletben (például egy nagy csoport frissítési tagsága).|
 
 
@@ -149,7 +149,7 @@ Az [SCIM 2,0 protokoll specifikációja](http://www.simplecloud.info/#Specificat
 * Támogatja a felhasználók létrehozását és opcionálisan csoportokat is, [az scim protokoll 3,3](https://tools.ietf.org/html/rfc7644#section-3.3). szakaszának megfelelően.  
 * Támogatja a javítási kérelmekkel rendelkező felhasználók vagy csoportok módosítását [a scim protokoll 3.5.2. szakasza](https://tools.ietf.org/html/rfc7644#section-3.5.2)szerint.  
 * A támogatja a korábban létrehozott felhasználók vagy csoportok ismert erőforrásának beolvasását, [a scim protokoll 3.4.1-es szakaszának](https://tools.ietf.org/html/rfc7644#section-3.4.1)megfelelően.  
-* Támogatja a felhasználók vagy csoportok lekérdezését [a scim protokoll 3.4.2](https://tools.ietf.org/html/rfc7644#section-3.4.2). szakaszának megfelelően.  Alapértelmezés szerint a felhasználók lekérik a és a által `id` lekérdezett `username` felhasználókat `externalid` , és a csoportokat a által kérdezik le `displayName` .  
+* Támogatja a felhasználók vagy csoportok lekérdezését [a scim protokoll 3.4.2](https://tools.ietf.org/html/rfc7644#section-3.4.2). szakaszának megfelelően.  Alapértelmezés szerint a felhasználók lekérik a és a által `id` lekérdezett `username` felhasználókat `externalId` , és a csoportokat a által kérdezik le `displayName` .  
 * Támogatja a felhasználó azonosító és kezelő általi lekérdezését az SCIM protokoll 3.4.2. szakaszának megfelelően.  
 * Támogatja a csoportok lekérdezését azonosító és tag szerint, a SCIM protokoll 3.4.2. szakaszának megfelelően.  
 * Elfogad egyetlen tulajdonosi jogkivonatot az Azure AD hitelesítéséhez és engedélyezéséhez az alkalmazáshoz.
@@ -224,7 +224,7 @@ Ez a szakasz példákat tartalmaz az Azure AD SCIM-ügyfél által kibocsátott 
 
 #### <a name="create-user"></a>Felhasználó létrehozása
 
-###### <a name="request"></a>Kérés
+###### <a name="request"></a>Kérelem
 
 */Users közzététele*
 ```json
@@ -252,7 +252,7 @@ Ez a szakasz példákat tartalmaz az Azure AD SCIM-ügyfél által kibocsátott 
 }
 ```
 
-##### <a name="response"></a>Válasz
+##### <a name="response"></a>Reagálás
 
 *HTTP/1.1 201 létrehozva*
 ```json
@@ -282,7 +282,7 @@ Ez a szakasz példákat tartalmaz az Azure AD SCIM-ügyfél által kibocsátott 
 
 #### <a name="get-user"></a>Felhasználó beolvasása
 
-###### <a name="request"></a><a name="request-1"></a>Kérés
+###### <a name="request"></a><a name="request-1"></a>Kérelem
 */Users/5d48a0a8e9f04aa38008 beolvasása* 
 
 ###### <a name="response-user-found"></a><a name="response-1"></a>Válasz (felhasználó található)
@@ -312,7 +312,7 @@ Ez a szakasz példákat tartalmaz az Azure AD SCIM-ügyfél által kibocsátott 
 }
 ```
 
-###### <a name="request"></a>Kérés
+###### <a name="request"></a>Kérelem
 */Users/5171a35d82074e068ce2 beolvasása* 
 
 ###### <a name="response-user-not-found-note-that-the-detail-is-not-required-only-status"></a>Válasz (a felhasználó nem található. Vegye figyelembe, hogy a részletek nem szükségesek, csak az állapot.)
@@ -329,7 +329,7 @@ Ez a szakasz példákat tartalmaz az Azure AD SCIM-ügyfél által kibocsátott 
 
 #### <a name="get-user-by-query"></a>Felhasználó lekérése lekérdezés alapján
 
-##### <a name="request"></a><a name="request-2"></a>Kérés
+##### <a name="request"></a><a name="request-2"></a>Kérelem
 
 */Users beolvasása? Filter = userName EQ "Test_User_dfeef4c5-5681 -4387-b016-bdf221e82081"*
 
@@ -370,7 +370,7 @@ Ez a szakasz példákat tartalmaz az Azure AD SCIM-ügyfél által kibocsátott 
 
 #### <a name="get-user-by-query---zero-results"></a>Felhasználó lekérése lekérdezéssel – nulla eredmények
 
-##### <a name="request"></a><a name="request-3"></a>Kérés
+##### <a name="request"></a><a name="request-3"></a>Kérelem
 
 */Users beolvasása? Filter = userName EQ "nem létező felhasználó"*
 
@@ -390,7 +390,7 @@ Ez a szakasz példákat tartalmaz az Azure AD SCIM-ügyfél által kibocsátott 
 
 #### <a name="update-user-multi-valued-properties"></a>Felhasználó frissítése [többszörös értékű tulajdonságok]
 
-##### <a name="request"></a><a name="request-4"></a>Kérés
+##### <a name="request"></a><a name="request-4"></a>Kérelem
 
 *PATCH/Users/6764549bef60420686bc HTTP/1.1*
 ```json
@@ -441,7 +441,7 @@ Ez a szakasz példákat tartalmaz az Azure AD SCIM-ügyfél által kibocsátott 
 
 #### <a name="update-user-single-valued-properties"></a>Felhasználó frissítése [egyértékű tulajdonságok]
 
-##### <a name="request"></a><a name="request-5"></a>Kérés
+##### <a name="request"></a><a name="request-5"></a>Kérelem
 
 *PATCH/Users/5171a35d82074e068ce2 HTTP/1.1*
 ```json
@@ -486,7 +486,7 @@ Ez a szakasz példákat tartalmaz az Azure AD SCIM-ügyfél által kibocsátott 
 
 ### <a name="disable-user"></a>Felhasználó letiltása
 
-##### <a name="request"></a><a name="request-14"></a>Kérés
+##### <a name="request"></a><a name="request-14"></a>Kérelem
 
 *PATCH/Users/5171a35d82074e068ce2 HTTP/1.1*
 ```json
@@ -540,7 +540,7 @@ Ez a szakasz példákat tartalmaz az Azure AD SCIM-ügyfél által kibocsátott 
 ```
 #### <a name="delete-user"></a>Felhasználó törlése
 
-##### <a name="request"></a><a name="request-6"></a>Kérés
+##### <a name="request"></a><a name="request-6"></a>Kérelem
 
 */Users/5171a35d82074e068ce2 törlése HTTP/1.1*
 
@@ -557,7 +557,7 @@ Ez a szakasz példákat tartalmaz az Azure AD SCIM-ügyfél által kibocsátott 
 
 #### <a name="create-group"></a>Csoport létrehozása
 
-##### <a name="request"></a><a name="request-7"></a>Kérés
+##### <a name="request"></a><a name="request-7"></a>Kérelem
 
 */Groups közzététele HTTP/1.1*
 ```json
@@ -592,7 +592,7 @@ Ez a szakasz példákat tartalmaz az Azure AD SCIM-ügyfél által kibocsátott 
 
 #### <a name="get-group"></a>Csoport beolvasása
 
-##### <a name="request"></a><a name="request-8"></a>Kérés
+##### <a name="request"></a><a name="request-8"></a>Kérelem
 
 */Groups/40734ae655284ad3abcc beolvasása? excludedAttributes = tagok HTTP/1.1*
 
@@ -614,7 +614,7 @@ Ez a szakasz példákat tartalmaz az Azure AD SCIM-ügyfél által kibocsátott 
 
 #### <a name="get-group-by-displayname"></a>Csoport beolvasása displayName alapján
 
-##### <a name="request"></a><a name="request-9"></a>Kérés
+##### <a name="request"></a><a name="request-9"></a>Kérelem
 */Groups beolvasása? excludedAttributes = tagok&Filter = displayName EQ "displayName" HTTP/1.1*
 
 ##### <a name="response"></a><a name="response-9"></a>Válasz
@@ -643,7 +643,7 @@ Ez a szakasz példákat tartalmaz az Azure AD SCIM-ügyfél által kibocsátott 
 
 #### <a name="update-group-non-member-attributes"></a>Csoport frissítése [nem tag attribútumok]
 
-##### <a name="request"></a><a name="request-10"></a>Kérés
+##### <a name="request"></a><a name="request-10"></a>Kérelem
 
 *PATCH/groups/fa2ce26709934589afc5 HTTP/1.1*
 ```json
@@ -663,7 +663,7 @@ Ez a szakasz példákat tartalmaz az Azure AD SCIM-ügyfél által kibocsátott 
 
 ### <a name="update-group-add-members"></a>Csoport frissítése [Tagok hozzáadása]
 
-##### <a name="request"></a><a name="request-11"></a>Kérés
+##### <a name="request"></a><a name="request-11"></a>Kérelem
 
 *PATCH/groups/a99962b9f99d4c4fac67 HTTP/1.1*
 ```json
@@ -686,7 +686,7 @@ Ez a szakasz példákat tartalmaz az Azure AD SCIM-ügyfél által kibocsátott 
 
 #### <a name="update-group-remove-members"></a>Csoport frissítése [tagok eltávolítása]
 
-##### <a name="request"></a><a name="request-12"></a>Kérés
+##### <a name="request"></a><a name="request-12"></a>Kérelem
 
 *PATCH/groups/a99962b9f99d4c4fac67 HTTP/1.1*
 ```json
@@ -709,7 +709,7 @@ Ez a szakasz példákat tartalmaz az Azure AD SCIM-ügyfél által kibocsátott 
 
 #### <a name="delete-group"></a>Csoport törlése
 
-##### <a name="request"></a><a name="request-13"></a>Kérés
+##### <a name="request"></a><a name="request-13"></a>Kérelem
 
 */Groups/cdb1ce18f65944079d37 törlése HTTP/1.1*
 
@@ -745,7 +745,7 @@ TLS 1,2 titkosítási csomagok minimális sávja:
 - TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
 
 ### <a name="ip-ranges"></a>IP-címtartományok
-Az Azure AD-kiépítési szolgáltatás jelenleg bármely Azure-beli IP-címtartomány keretében opperate. Folyamatban van a szolgáltatás által működtetett IP-címtartományok konszolidálása. Ez a dokumentum akkor frissül, ha az IP-címtartomány listája összevonva van. 
+Az Azure AD-kiépítési szolgáltatás jelenleg bármely Azure-beli IP-címtartomány alatt működhet. Folyamatban van a szolgáltatás által működtetett IP-címtartományok konszolidálása. Ez a dokumentum akkor frissül, ha az IP-címtartomány listája összevonva van. 
 
 ## <a name="step-3-build-a-scim-endpoint"></a>3. lépés: SCIM-végpont létrehozása
 
@@ -915,10 +915,10 @@ Küldjön egy GET kérelmet a jogkivonat-vezérlőnek, hogy érvényes tulajdono
 
 ***1. példa. A szolgáltatás lekérdezése egy megfelelő felhasználó számára***
 
-Azure Active Directory lekérdezi a szolgáltatást egy olyan felhasználó számára, aki externalId attribútum értékkel rendelkezik, amely megfelel az Azure AD-beli felhasználó mailNickname attribútumának. A lekérdezés Hypertext Transfer Protocol (HTTP) kérelemként van kifejezve, mint például az a példa, amelyben a jyoung egy, a Azure Active Directory felhasználójának egy mailNickname-mintája.
+Azure Active Directory lekérdezi a szolgáltatást az `externalId` Azure ad-beli felhasználó mailNickname attribútumának megfelelő attribútumérték értékkel rendelkező felhasználó számára. A lekérdezés Hypertext Transfer Protocol (HTTP) kérelemként van kifejezve, mint például az a példa, amelyben a jyoung egy, a Azure Active Directory felhasználójának egy mailNickname-mintája.
 
 >[!NOTE]
-> Ez csak példa. Nem minden felhasználó rendelkezik mailNickname attribútummal, és a felhasználó értéke nem lehet egyedi a címtárban. Továbbá a megfeleltetéshez használt attribútum (amely ebben az esetben a externalId) az [Azure ad attribútum-hozzárendelésekben](customize-application-attributes.md)konfigurálható.
+> Ez csak példa. Nem minden felhasználó rendelkezik mailNickname attribútummal, és a felhasználó értéke nem lehet egyedi a címtárban. Emellett a megfeleltetéshez használt attribútum (amely ebben az esetben a `externalId` ) az [Azure ad attribútum-hozzárendelésekben](customize-application-attributes.md)konfigurálható.
 
 ```
 GET https://.../scim/Users?filter=externalId eq jyoung HTTP/1.1
@@ -939,7 +939,7 @@ A mintakód a kérést a szolgáltatás szolgáltatójának QueryAsync metódus�
  Task<Resource[]> QueryAsync(IRequest<IQueryParameters> request);
 ```
 
-A mintául szolgáló lekérdezésben a externalId attribútumhoz megadott értékkel rendelkező felhasználó számára a QueryAsync metódusnak átadott argumentumok értékei a következők:
+A mintául szolgáló lekérdezésben az attribútumhoz megadott értékkel rendelkező felhasználó számára a `externalId` QueryAsync metódusnak átadott argumentumok értékei a következők:
 
 * paraméterek. AlternateFilters. Count: 1
 * paraméterek. AlternateFilters. ElementAt (0). AttributePath: "externalId"
@@ -948,7 +948,7 @@ A mintául szolgáló lekérdezésben a externalId attribútumhoz megadott ért�
 
 ***2. példa. Felhasználó kiépítése***
 
-Ha egy olyan felhasználó számára, aki egy externalId attribútum értékkel egyezik, amely megfelel a felhasználó mailNickname attribútumának, nem ad vissza felhasználókat, majd Azure Active Directory kéri, hogy a szolgáltatás kiépítse a Azure Active Directoryban lévőnek megfelelő felhasználót.  Íme egy példa erre a kérelemre: 
+Ha egy olyan felhasználó számára, aki egy olyan attribútum értékkel rendelkezik `externalId` , amely megfelel a felhasználó mailNickname attribútumának, nem ad vissza felhasználót, Azure Active Directory kéri, hogy a szolgáltatás olyan felhasználót helyezzen üzembe, amely megfelel a Azure Active Directory.  Íme egy példa erre a kérelemre: 
 
 ```
  POST https://.../scim/Users HTTP/1.1
@@ -1191,7 +1191,7 @@ A SCIM spec nem határoz meg SCIM-specifikus sémát a hitelesítéshez és az e
 |--|--|--|--|
 |Felhasználónév és jelszó (az Azure AD nem javasolja vagy támogatja)|Könnyen megvalósítható|Nem biztonságos – [a PA $ $Word nem számít](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/your-pa-word-doesn-t-matter/ba-p/731984)|A Gallery-alkalmazások eseti alapon támogatottak. Nem Gallery-alkalmazások esetében nem támogatott.|
 |Hosszú élettartamú tulajdonosi jogkivonat|A hosszú élettartamú tokenek nem igénylik a felhasználó jelenlétét. A rendszergazdák egyszerűen használhatók a kiépítés beállításakor.|A hosszú élettartamú tokenek nehezen oszthatók meg rendszergazdaként anélkül, hogy nem biztonságos módszereket, például e-maileket kellene használnia. |A katalógus és a nem Gallery-alkalmazások esetében támogatott. |
-|OAuth engedélyezési kód engedélyezése|A hozzáférési tokenek sokkal rövidebbek, mint a jelszavak, és olyan automatikus frissítési mechanizmussal rendelkeznek, amelyet a hosszú élettartamú tulajdonosi jogkivonatok nem rendelkeznek.  Egy valós felhasználónak jelen kell lennie a kezdeti engedélyezés során, és hozzá kell adnia egy szintű elszámoltathatóságot. |A felhasználónak jelen kell lennie. Ha a felhasználó elhagyja a szervezetet, a jogkivonat érvénytelen, és az engedélyezést újra el kell végezni.|Gallery-alkalmazások esetén támogatott. Nem Gallery-alkalmazások támogatása folyamatban van.|
+|OAuth engedélyezési kód engedélyezése|A hozzáférési tokenek sokkal rövidebbek, mint a jelszavak, és olyan automatikus frissítési mechanizmussal rendelkeznek, amelyet a hosszú élettartamú tulajdonosi jogkivonatok nem rendelkeznek.  Egy valós felhasználónak jelen kell lennie a kezdeti engedélyezés során, és hozzá kell adnia egy szintű elszámoltathatóságot. |A felhasználónak jelen kell lennie. Ha a felhasználó elhagyja a szervezetet, a jogkivonat érvénytelen, és az engedélyezést újra el kell végezni.|A Gallery-alkalmazások esetében támogatott, de nem Gallery-alkalmazások. A nem katalógus támogatása a várakozó fájlok esetében is támogatott.|
 |OAuth-ügyfél hitelesítő adatainak megadása|A hozzáférési tokenek sokkal rövidebbek, mint a jelszavak, és olyan automatikus frissítési mechanizmussal rendelkeznek, amelyet a hosszú élettartamú tulajdonosi jogkivonatok nem rendelkeznek. Az engedélyezési kód és az ügyfél hitelesítő adatai is azonos típusú hozzáférési tokent hoznak létre, így a módszerek közötti váltás az API-ra is átlátható.  A kiépítés teljesen automatizált lehet, és az új tokenek felhasználói beavatkozás nélkül is csendesen kérhetők. ||Katalógus-és nem katalógus-alkalmazások esetén nem támogatott. A támogatás a várakozó fájlok között található.|
 
 > [!NOTE]
@@ -1209,7 +1209,7 @@ Ajánlott eljárások (javasolt, de nem kötelező):
 * Több átirányítási URL-cím támogatása. A rendszergazdák a "portal.azure.com" és a "aad.portal.azure.com" típusból is konfigurálhatják az üzembe helyezést. Több átirányítási URL-cím támogatása biztosítja, hogy a felhasználók bármelyik portálról engedélyezzék a hozzáférést.
 * Több titkot is támogat, hogy az állásidő nélkül zökkenőmentes legyen a titkos kulcs megújítása. 
 
-**Hosszú életű OAuth-tulajdonosi jogkivonatok:** Ha az alkalmazás nem támogatja a OAuth-engedélyezési kód engedélyezésének folyamatát, hosszú élettartamú OAuth tulajdonosi jogkivonatot is létrehozhat, mint amennyit a rendszergazda a kiépítési integráció beállításához használhat. A tokennek véglegesnek kell lennie, különben a kiépítési feladatot a jogkivonat lejárta után [karanténba](application-provisioning-quarantine-status.md) helyezi a rendszer. Ennek a tokennek a méretnél kisebbnek kell lennie a 1KB.  
+**Hosszú élettartamú OAuth tulajdonosi jogkivonatok:** Ha az alkalmazás nem támogatja a OAuth-engedélyezési kód engedélyezésének folyamatát, hosszú élettartamú OAuth tulajdonosi jogkivonatot is létrehozhat, mint amennyit a rendszergazda a kiépítési integráció beállításához használhat. A tokennek véglegesnek kell lennie, különben a kiépítési feladatot a jogkivonat lejárta után [karanténba](application-provisioning-quarantine-status.md) helyezi a rendszer. Ennek a tokennek a méretnél kisebbnek kell lennie a 1KB.  
 
 További hitelesítési és engedélyezési módszerek esetén tudassa velünk a [UserVoice](https://aka.ms/appprovisioningfeaturerequest).
 

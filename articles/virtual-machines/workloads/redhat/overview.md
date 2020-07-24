@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.topic: overview
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 718447e1dbf597af4349eab0be78a2bb544dec90
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7394cb50010bddddf8f8eff4b4f04eaf4d3231b6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78970170"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87052119"
 ---
 # <a name="red-hat-workloads-on-azure"></a>Red Hat számítási feladatok az Azure-ban
 
@@ -36,7 +36,7 @@ Az utólagos elszámolású képeket érdemes lehet használni, ha nem szeretné
 
 ### <a name="red-hat-gold-images"></a>Red Hat Gold-képek
 
-Az Azure Red Hat Gold images (`rhel-byos`)-t is kínál. Ezek a képek hasznosak lehetnek a már meglévő Red Hat-előfizetésekkel rendelkező ügyfelek számára, és ezeket az Azure-ban szeretné használni. Az Azure-ban való használat előtt engedélyeznie kell a Red Hat Cloud Access meglévő Red Hat-előfizetéseit. A rendszerképekhez való hozzáférés automatikusan megtörténik, ha a Red Hat-előfizetések engedélyezve vannak a Felhőbeli hozzáféréshez, és megfelelnek a jogosultsági követelményeknek. Ezeknek a lemezképeknek a használatával az ügyfél elkerülheti a kettős számlázást, amely az utólagos elszámolású képek használatából merülhet fel.
+Az Azure Red Hat Gold images ( `rhel-byos` )-t is kínál. Ezek a képek hasznosak lehetnek a már meglévő Red Hat-előfizetésekkel rendelkező ügyfelek számára, és ezeket az Azure-ban szeretné használni. Az Azure-ban való használat előtt engedélyeznie kell a Red Hat Cloud Access meglévő Red Hat-előfizetéseit. A rendszerképekhez való hozzáférés automatikusan megtörténik, ha a Red Hat-előfizetések engedélyezve vannak a Felhőbeli hozzáféréshez, és megfelelnek a jogosultsági követelményeknek. Ezeknek a lemezképeknek a használatával az ügyfél elkerülheti a kettős számlázást, amely az utólagos elszámolású képek használatából merülhet fel.
 * Megtudhatja, hogyan [engedélyezheti a Red Hat-előfizetéseket a Felhőbeli hozzáféréshez az Azure](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/con-enable-subs)-ban.
 * Megtudhatja, hogyan [keresheti meg a Red Hat Gold images-képeket a Azure Portalban, az Azure CLI-ben vagy a PowerShell-parancsmagban](./byos.md).
 
@@ -45,7 +45,7 @@ Az Azure Red Hat Gold images (`rhel-byos`)-t is kínál. Ezek a képek hasznosak
 
 ### <a name="generation-2-images"></a>2. generációs rendszerképek
 
-A 2. generációs virtuális gépek (VM-EK) újabb funkciókat biztosítanak az 1. generációs virtuális gépekhez képest. További információ: [2. generációs dokumentáció](https://docs.microsoft.com/azure/virtual-machines/linux/generation-2). A RHEL-rendszerkép szempontjából a legfontosabb különbség az, hogy a 2. generációs virtuális gépek a BIOS belső vezérlőprogram-felülete helyett UEFI-t használnak. A fő rendszerindító rekord (MBR) helyett GUID partíciós táblát (GPT) is használnak a rendszerindítási időben. A GPT használata többek között a 2 TB-nál nagyobb operációsrendszer-lemezeket is lehetővé teszi. Emellett a [Mv2 sorozatú virtuális gépek](../../mv2-series.md) csak a 2. generációs lemezképeken futnak.
+A 2. generációs virtuális gépek (VM-EK) újabb funkciókat biztosítanak az 1. generációs virtuális gépekhez képest. További információ: [2. generációs dokumentáció](../../linux/generation-2.md). A RHEL-rendszerkép szempontjából a legfontosabb különbség az, hogy a 2. generációs virtuális gépek a BIOS belső vezérlőprogram-felülete helyett UEFI-t használnak. A fő rendszerindító rekord (MBR) helyett GUID partíciós táblát (GPT) is használnak a rendszerindítási időben. A GPT használata többek között a 2 TB-nál nagyobb operációsrendszer-lemezeket is lehetővé teszi. Emellett a [Mv2 sorozatú virtuális gépek](../../mv2-series.md) csak a 2. generációs lemezképeken futnak.
 
 A 2. generációs RHEL-lemezképek az Azure piactéren érhetők el. Az Azure CLI használatakor megjelenő lemezképek listájában keresse meg a "Gen2" kifejezést a lemezkép SKU-ban. A 2. generációs virtuális gépek üzembe helyezéséhez nyissa meg a virtuális gép üzembe helyezési folyamatának **speciális** lapját.
 
@@ -55,10 +55,10 @@ Az Azure csak az utólagos elszámolású RHEL virtuális gépekhez nyújt Red H
 
 ### <a name="rhui-update-behavior"></a>RHUI-frissítési viselkedés
 
-A RHUI-frissítéshez kapcsolódó RHEL-lemezképek alapértelmezés szerint a RHEL legújabb másodlagos verziójára csatlakoznak, amikor a `yum update` fut. Ez azt jelenti, hogy egy RHEL 7,4 virtuális gép frissíthető a RHEL 7,7- `yum update` re, ha egy művelet fut rajta. Ez a viselkedés a RHUI kialakításán alapul. A frissítési viselkedés enyhítése érdekében váltson át a normál RHEL-adattárakból a [kiterjesztett frissítési támogatási tárházra](./redhat-rhui.md#rhel-eus-and-version-locking-rhel-vms).
+A RHUI-frissítéshez kapcsolódó RHEL-lemezképek alapértelmezés szerint a RHEL legújabb másodlagos verziójára csatlakoznak, amikor a `yum update` fut. Ez azt jelenti, hogy egy RHEL 7,4 virtuális gép frissíthető a RHEL 7,7-re, ha egy `yum update` művelet fut rajta. Ez a viselkedés a RHUI kialakításán alapul. A frissítési viselkedés enyhítése érdekében váltson át a normál RHEL-adattárakból a [kiterjesztett frissítési támogatási tárházra](./redhat-rhui.md#rhel-eus-and-version-locking-rhel-vms).
 
 ## <a name="next-steps"></a>További lépések
 
 * További információ az [Azure-beli RHEL-lemezképekről](./redhat-images.md).
 * További információ a [Red Hat frissítési infrastruktúráról](./redhat-rhui.md).
-* További információ a [Red Hat Gold (`rhel-byos`) ajánlatról](./byos.md).
+* További információ a [Red Hat Gold ( `rhel-byos` ) ajánlatról](./byos.md).

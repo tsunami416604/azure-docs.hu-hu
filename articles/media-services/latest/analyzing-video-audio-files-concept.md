@@ -12,17 +12,18 @@ ms.workload: ''
 ms.topic: article
 ms.date: 01/30/2020
 ms.author: juliako
-ms.openlocfilehash: 1d28fc37b98493322b9e201ac899b7911dd1d705
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4c0eb626b827656a478e02a43b98ed15e7469f92
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708960"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87053472"
 ---
 # <a name="analyze-video-and-audio-files-with-azure-media-services"></a>Videó-és hangfájlok elemzése Azure Media Services
 
 A Azure Media Services v3 lehetővé teszi a videó-és hangfájlokból származó elemzések kinyerését Video Indexer segítségével. Ez a cikk az adatok kinyeréséhez használt Media Services v3 Analyzer-előállítók leírását ismerteti. Ha részletesebb megállapításokra van szüksége, használja közvetlenül a Video Indexert. Ha szeretné megismerni, hogy mikor érdemes használni a Video Indexer vs. Media Services Analyzer-készleteket, tekintse meg az [összehasonlító dokumentumot](../video-indexer/compare-video-indexer-with-media-services-presets.md).
 
-Ha Media Services v3-es előkészletekből szeretné elemezni a tartalmakat, hozzon létre egy **átalakítót** , és küldjön el egy olyan **feladatot** , amely a következő beállításkészletek egyikét használja: [VideoAnalyzerPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#videoanalyzerpreset) vagy **AudioAnalyzerPreset**. A **VideoAnalyzerPreset**használatát bemutató oktatóanyagért lásd: [videók elemzése Azure Media Servicesokkal](analyze-videos-tutorial-with-api.md).
+Ha Media Services v3-es előkészletekből szeretné elemezni a tartalmakat, hozzon létre egy **átalakítót** , és küldjön el egy olyan **feladatot** , amely a következő beállításkészletek egyikét használja: [VideoAnalyzerPreset](/rest/api/media/transforms/createorupdate#videoanalyzerpreset) vagy **AudioAnalyzerPreset**. A **VideoAnalyzerPreset**használatát bemutató oktatóanyagért lásd: [videók elemzése Azure Media Servicesokkal](analyze-videos-tutorial-with-api.md).
 
 > [!NOTE]
 > Előzetes Video vagy Audio Analyzer-beállítások használata esetén állítsa be a fiókját 10 S3-as Media szolgáltatás számára fenntartott egységre az Azure Portalon. További információkért lásd: a [médiafájlok feldolgozásának skálázása](media-reserved-units-cli-how-to.md).
@@ -37,9 +38,9 @@ A Media Services jelenleg a következő beépített analizátor-beállításkés
 
 |**Előre definiált név**|**Forgatókönyv**|**Részletek**|
 |---|---|---|
-|[AudioAnalyzerPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#audioanalyzerpreset)|Hang elemzése|Az előre definiált AI-alapú elemzési műveletek, beleértve a beszédfelismerést, előre meghatározott készletet alkalmaznak. Jelenleg az előre definiált tartalom egyetlen hangfelvételsel támogatja a tartalmat, amely egyetlen nyelven tartalmaz beszédet. Megadhatja a bemenetben lévő hangtartalom nyelvét a "Language tag-Region" BCP-47 formátumával. A támogatott nyelvek: angol ("en-US" és "en-GB"), spanyol ("es-ES" és "es-MX"), francia ("fr-FR"), olasz ("It"), Japán ("ja-JP"), Portugál ("PT-BR"), Kínai ("zh-CN"), német ("de-DE"), Arab ("AR-EG" és "AR-SY"), Orosz ("ru-RU"), hindi ("Hi-IN") és koreai ("ko-KR").<br/><br/> Ha a nyelv nincs megadva vagy NULL értékre van állítva, az automatikus nyelvfelismerés kiválasztja az első nyelvet, és a fájl időtartamára folytatja a kiválasztott nyelvet. Az automatikus nyelvfelismerés funkció jelenleg a következőket támogatja: angol, kínai, francia, német, olasz, Japán, spanyol, orosz és portugál. Az első nyelv észlelése után nem támogatja a nyelvek közötti dinamikus váltást. Az automatikus nyelvfelismerés funkció a hangfelvételek és a jól felismerhető beszédek esetében a legjobban működik. Ha az automatikus nyelvfelismerés nem találja a nyelvet, az átirat visszatérhet az angol nyelvre.|
-|[VideoAnalyzerPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#videoanalyzerpreset)|Hang és videó elemzése|Kinyeri az elemzéseket (gazdag metaadatokat) a hang-és a videóból, és egy JSON formátumú fájlt ad kimenetként. Megadhatja, hogy a videofájl feldolgozásakor csak hangelemzéseket szeretne-e kinyerni. További információt a [videó elemzése](analyze-videos-tutorial-with-api.md)című témakörben talál.|
-|[FaceDetectorPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#facedetectorpreset)|A videóban lévő arcok észlelése|Ismerteti azokat a beállításokat, amelyeket a rendszer a videó elemzésekor használ a jelen lévő összes arc észleléséhez.|
+|[AudioAnalyzerPreset](/rest/api/media/transforms/createorupdate#audioanalyzerpreset)|Hang elemzése|Az előre definiált AI-alapú elemzési műveletek, beleértve a beszédfelismerést, előre meghatározott készletet alkalmaznak. Jelenleg az előre definiált tartalom egyetlen hangfelvételsel támogatja a tartalmat, amely egyetlen nyelven tartalmaz beszédet. Megadhatja a bemenetben lévő hangtartalom nyelvét a "Language tag-Region" BCP-47 formátumával. A támogatott nyelvek: angol ("en-US" és "en-GB"), spanyol ("es-ES" és "es-MX"), francia ("fr-FR"), olasz ("It"), Japán ("ja-JP"), Portugál ("PT-BR"), Kínai ("zh-CN"), német ("de-DE"), Arab ("AR-EG" és "AR-SY"), Orosz ("ru-RU"), hindi ("Hi-IN") és koreai ("ko-KR").<br/><br/> Ha a nyelv nincs megadva vagy NULL értékre van állítva, az automatikus nyelvfelismerés kiválasztja az első nyelvet, és a fájl időtartamára folytatja a kiválasztott nyelvet. Az automatikus nyelvfelismerés funkció jelenleg a következőket támogatja: angol, kínai, francia, német, olasz, Japán, spanyol, orosz és portugál. Az első nyelv észlelése után nem támogatja a nyelvek közötti dinamikus váltást. Az automatikus nyelvfelismerés funkció a hangfelvételek és a jól felismerhető beszédek esetében a legjobban működik. Ha az automatikus nyelvfelismerés nem találja a nyelvet, az átirat visszatérhet az angol nyelvre.|
+|[VideoAnalyzerPreset](/rest/api/media/transforms/createorupdate#videoanalyzerpreset)|Hang és videó elemzése|Kinyeri az elemzéseket (gazdag metaadatokat) a hang-és a videóból, és egy JSON formátumú fájlt ad kimenetként. Megadhatja, hogy a videofájl feldolgozásakor csak hangelemzéseket szeretne-e kinyerni. További információt a [videó elemzése](analyze-videos-tutorial-with-api.md)című témakörben talál.|
+|[FaceDetectorPreset](/rest/api/media/transforms/createorupdate#facedetectorpreset)|A videóban lévő arcok észlelése|Ismerteti azokat a beállításokat, amelyeket a rendszer a videó elemzésekor használ a jelen lévő összes arc észleléséhez.|
 
 ### <a name="audioanalyzerpreset"></a>AudioAnalyzerPreset
 
@@ -66,7 +67,7 @@ A kimenet tartalmaz egy JSON-fájlt (insights.json) a videóban vagy hangban tal
 
 ### <a name="transcript"></a>átirat
 
-|Name|Description|
+|Név|Leírás|
 |---|---|
 |id|A sor azonosítója.|
 |szöveg|Maga a átirat.|
@@ -104,7 +105,7 @@ Példa:
 
 ### <a name="ocr"></a>OCR
 
-|Name|Description|
+|Név|Leírás|
 |---|---|
 |id|Az OCR-sor azonosítója.|
 |szöveg|Az OCR szövege.|
@@ -147,7 +148,7 @@ Példa:
 
 ### <a name="faces"></a>arcok
 
-|Name|Description|
+|Név|Leírás|
 |---|---|
 |id|A Face azonosító.|
 |name|Az arc neve. Ez lehet "ismeretlen #0", egy azonosított híresség vagy egy felhasználó által betanított személy.|
@@ -192,7 +193,7 @@ Példa:
 
 ### <a name="shots"></a>lövések
 
-|Name|Description|
+|Név|Leírás|
 |---|---|
 |id|A shot azonosítója.|
 |Kulcsképek|A shot keretén belüli kulcstárolók listája (mindegyik rendelkezik egy AZONOSÍTÓval és egy példányok időtartományával). A kulcstároló-példányok egy thumbnailId-mezővel rendelkeznek, amely a kulcs miniatűrjét AZONOSÍTÓval rendelkezik.|
@@ -249,7 +250,7 @@ Példa:
 
 ### <a name="statistics"></a>statisztikák
 
-|Name|Description|
+|Név|Leírás|
 |---|---|
 |CorrespondenceCount|A videóban található Levelezések száma.|
 |WordCount|A beszélő szavak száma.|
@@ -262,7 +263,7 @@ Példa:
 
 Az érzelmeket a sentimentType mező alapján összesítjük (pozitív/semleges/negatív). Például: 0-0,1, 0,1-0.2.
 
-|Name|Description|
+|Név|Leírás|
 |---|---|
 |id|Az érzelmi azonosító.|
 |averageScore |Az adott érzelmi típus összes példányának átlaga – pozitív/semleges/negatív|
@@ -297,7 +298,7 @@ Az érzelmeket a sentimentType mező alapján összesítjük (pozitív/semleges/
 
 ### <a name="labels"></a>Címkék
 
-|Name|Description|
+|Név|Leírás|
 |---|---|
 |id|A címke azonosítója|
 |name|A címke neve (például "számítógép", "TV").|
@@ -355,7 +356,7 @@ Az érzelmeket a sentimentType mező alapján összesítjük (pozitív/semleges/
 
 ### <a name="keywords"></a>kulcsszavak
 
-|Name|Description|
+|Név|Leírás|
 |---|---|
 |id|A kulcsszó azonosítója.|
 |szöveg|A kulcsszó szövege.|
@@ -406,7 +407,7 @@ A visualContentModeration blokk olyan időtartományokat tartalmaz, amelyeknek a
 
 A felnőtt vagy zamatos tartalmat tartalmazó videók csak privát nézethez érhetők el. A felhasználók a tartalom emberi felülvizsgálatára vonatkozó kérelmet küldhetnek, amely esetben az attribútum az `IsAdult` emberi felülvizsgálat eredményét fogja tartalmazni.
 
-|Name|Description|
+|Név|Leírás|
 |---|---|
 |id|A vizuális tartalom moderálásának azonosítója.|
 |adultScore|A felnőtt pontszám (a tartalom moderátora).|
@@ -441,4 +442,4 @@ A felnőtt vagy zamatos tartalmat tartalmazó videók csak privát nézethez ér
 ```
 ## <a name="next-steps"></a>További lépések
 
-[Oktatóanyag: Videók elemzése az Azure Media Serviceszel](analyze-videos-tutorial-with-api.md)
+[Oktatóanyag: Videók elemzése az Azure Media Services segítségével](analyze-videos-tutorial-with-api.md)

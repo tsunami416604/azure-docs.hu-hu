@@ -5,17 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 05/08/2020
+ms.date: 07/14/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 642f2705f54fe8f84cfde7ff039c9a723be59595
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4c224f40996625ead4592a3bf50e02f0877c76db
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83770959"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87051319"
 ---
 # <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Milyen hitelesítési és ellenőrzési módszerek érhetők el az Azure Active Directoryban?
 
@@ -42,7 +43,7 @@ Az alábbi táblázat ismerteti, hogy milyen metódusok érhetők el az elsődle
 | [SMS](#phone-options) | Igen (előzetes verzió) | MFA és SSPR |
 | [Hanghívás](#phone-options) | No | MFA és SSPR |
 | [Biztonsági kérdések](#security-questions) | No | Csak SSPR |
-| [E-mail cím](#email-address) | No | Csak SSPR |
+| [E-mail-cím](#email-address) | No | Csak SSPR |
 | [Alkalmazásjelszavak](#app-passwords). | No | MFA csak bizonyos esetekben |
 
 Ez a cikk az Azure AD-ben elérhető különböző hitelesítési és ellenőrzési módszereket, valamint az adott korlátozásokat és korlátozásokat ismerteti.

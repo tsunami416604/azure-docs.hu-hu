@@ -6,15 +6,16 @@ ms.suite: integration
 ms.reviewer: apseth, divswa, logicappspm
 ms.topic: conceptual
 ms.date: 05/29/2020
-ms.openlocfilehash: bd6b05489d13f835de4dce2aa3d885132285efca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c00d2e4f622bcfad7b2468013336f0d936e318c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84987606"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87048656"
 ---
 # <a name="send-related-messages-in-order-by-using-a-sequential-convoy-in-azure-logic-apps-with-azure-service-bus"></a>Kapcsolódó üzenetek küldése sorrendben a Azure Logic Appsban szekvenciális konvoj használatával Azure Service Bus
 
-Ha a korrelációs üzeneteket egy adott sorrendben kell elküldenie, akkor a [Azure Logic apps](../logic-apps/logic-apps-overview.md) az [Azure Service Bus-összekötő](../connectors/connectors-create-api-servicebus.md)használatával követheti a [ *szekvenciális konvoj* mintáját](https://docs.microsoft.com/azure/architecture/patterns/sequential-convoy) . A korrelált üzenetek olyan tulajdonsággal rendelkeznek, amely meghatározza az üzenetek közötti kapcsolatot, például a [munkamenet](../service-bus-messaging/message-sessions.md) azonosítóját Service Busban.
+Ha a korrelációs üzeneteket egy adott sorrendben kell elküldenie, akkor a [Azure Logic apps](../logic-apps/logic-apps-overview.md) az [Azure Service Bus-összekötő](../connectors/connectors-create-api-servicebus.md)használatával követheti a [ *szekvenciális konvoj* mintáját](/azure/architecture/patterns/sequential-convoy) . A korrelált üzenetek olyan tulajdonsággal rendelkeznek, amely meghatározza az üzenetek közötti kapcsolatot, például a [munkamenet](../service-bus-messaging/message-sessions.md) azonosítóját Service Busban.
 
 Tegyük fel például, hogy egy "1. munkamenet" nevű munkamenethez 10 üzenet tartozik, és egy "2. munkamenet" nevű munkamenethez 5 üzenet tartozik, amelyek mindegyike ugyanahhoz a [Service Bus-várólistához](../service-bus-messaging/service-bus-queues-topics-subscriptions.md)lett küldve. Létrehozhat egy logikai alkalmazást, amely az üzeneteket a várólistából dolgozza fel, így az "1. munkamenet" összes üzenetét egyetlen trigger futtatja, és a "2. munkamenet" összes üzenetét a rendszer a következő trigger futtatásával kezeli.
 
@@ -28,7 +29,7 @@ Ez a cikk bemutatja, hogyan hozhat létre egy olyan logikai alkalmazást, amely 
 
 A sablon JSON-fájljának áttekintéséhez tekintse [meg a GitHub: service-bus-sessions.json](https://github.com/Azure/logicapps/blob/master/templates/service-bus-sessions.json)című témakört.
 
-További információ: [szekvenciális konvojos minta – Azure Architecture Cloud Design Patterns](https://docs.microsoft.com/azure/architecture/patterns/sequential-convoy).
+További információ: [szekvenciális konvojos minta – Azure Architecture Cloud Design Patterns](/azure/architecture/patterns/sequential-convoy).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -116,7 +117,7 @@ A részletek összecsukása esetén a Service Bus-munkamenetek sablonjának legf
 
 ![Sablon legfelső szintű munkafolyamata](./media/send-related-messages-sequential-convoy/template-top-level-flow.png)
 
-| Name | Description |
+| Név | Leírás |
 |------|-------------|
 | **`When a message is received in a queue (peek-lock)`** | A megadott ismétlődés alapján ez a Service Bus eseményindító minden üzenet esetében ellenőrzi a megadott Service Bus várólistát. Ha egy üzenet létezik a várólistában, az eseményindító elindít egy munkafolyamat-példányt, amely létrehoz és futtat egy munkafolyamatot. <p><p>A *betekintés – zárolás* kifejezés azt jelenti, hogy az trigger egy kérést küld egy üzenetnek a várólistából való beolvasásához. Ha egy üzenet létezik, az trigger lekéri és zárolja az üzenetet, hogy ne történjen más feldolgozás az üzeneten, amíg a zárolási időszak le nem jár. Részletekért [inicializálja a munkamenetet](#initialize-session). |
 | **`Init isDone`** | Ez az [ **inicializálási változó** művelet](../logic-apps/logic-apps-create-variables-store-values.md#initialize-variable) egy olyan logikai változót hoz létre, amely a `false` következő feltételek teljesülése esetén van beállítva és jelzi: <p><p>– A munkamenetben nem érhetők el több üzenet az olvasáshoz. <br>– A munkamenet-zárolást már nem kell megújítani, hogy az aktuális munkafolyamat-példány befejeződik. <p><p>Részletekért lásd: [a munkamenet inicializálása](#initialize-session). |
@@ -132,7 +133,7 @@ A `Try` részletek összecsukása esetén itt látható a [hatókör művelet](.
 
 !["Try" hatóköri művelet munkafolyamata](./media/send-related-messages-sequential-convoy/try-scope-action.png)
 
-| Name | Description |
+| Név | Leírás |
 |------|-------------|
 | **`Send initial message to topic`** | Ezt a műveletet bármely olyan művelettel lecserélheti, amelyet az első üzenetnek a várólistán lévő munkamenetből való kezeléséhez szeretne kezelni. A munkamenet-azonosító megadja a munkamenetet. <p><p>Ehhez a sablonhoz egy Service Bus művelet küldi el az első üzenetet egy Service Bus témakörnek. Részletekért lásd: [a kezdeti üzenet kezelése](#handle-initial-message). |
 | (párhuzamos ág) | Ez a [párhuzamos ág művelet](../logic-apps/logic-apps-control-flow-branches.md) két elérési utat hoz létre: <p><p>-Ág #1: az üzenet feldolgozásának folytatása. További információkért lásd [: ág #1: a kezdeti üzenet befejezése a várólistában](#complete-initial-message). <p><p>-Ág #2: az üzenet elhagyása, ha valami hiba lép fel, és a felvételt egy másik trigger futtatja. További információkért lásd [: ág #2: az első üzenet elhagyása a sorból](#abandon-initial-message). <p><p>Mindkét útvonal később csatlakozik a **várólista bezárási munkamenetéhez, és sikeres** műveletet végez a következő sorban leírtak szerint. |
@@ -143,7 +144,7 @@ A `Try` részletek összecsukása esetén itt látható a [hatókör művelet](.
 
 #### <a name="branch-1-complete-initial-message-in-queue"></a>Ág #1: a kezdeti üzenet befejezése a várólistában
 
-| Name | Description |
+| Név | Description |
 |------|-------------|
 | `Complete initial message in queue` | Ez a Service Bus művelet egy sikeresen lekért üzenetet jelöl meg befejezettként, és eltávolítja az üzenetet a várólistából az újrafeldolgozás megakadályozása érdekében. Részletekért lásd: [a kezdeti üzenet kezelése](#handle-initial-message). |
 | `While there are more messages for the session in the queue` | Ez [ **egészen addig, amíg** a hurok](../logic-apps/logic-apps-control-flow-loops.md#until-loop) továbbra is üzeneteket kap, vagy amíg egy óra el nem telik. Az ebben a hurokban található műveletekkel kapcsolatos további információkért lásd: a [várólistán található munkamenetek további üzenetei](#while-more-messages-for-session). |
@@ -167,7 +168,7 @@ A részletek összecsukása esetén itt látható a hatókör művelet legfelső
 
 !["Catch" hatóköri művelet munkafolyamata](./media/send-related-messages-sequential-convoy/catch-scope-action.png)
 
-| Name | Description |
+| Név | Description |
 |------|-------------|
 | **`Close a session in a queue and fail`** | Ez a Service Bus művelet lezárja a munkamenetet a várólistán, így a munkamenet-zár nem marad nyitva. Részletekért lásd: [munkamenet lezárása egy várólistában és sikertelen](#close-session-fail)művelet. |
 | **`Find failure msg from 'Try' block`** | Ez a [ **szűrő tömb** művelet](../logic-apps/logic-apps-perform-data-operations.md#filter-array-action) egy tömböt hoz létre a bemeneti adatokból és kimenetből a hatókörön belüli összes műveletből a `Try` megadott feltételek alapján. Ebben az esetben ez a művelet az állapotot eredményező műveletek kimeneteit adja vissza `Failed` . Részletekért lásd: [a "Try" blokkban található sikertelen msg keresése](#find-failure-message). |
@@ -192,16 +193,16 @@ Az alábbi lépéseket követve megadhatja az triggert és a műveleteket a **ko
   > [!NOTE]
   > Kezdetben a lekérdezési időköz három percre van beállítva, így a logikai alkalmazás nem fut gyakrabban a vártnál, és nem várt számlázási díjakat eredményez. Ideális esetben az intervallumot és a gyakoriságot állítsa 30 másodpercre, hogy a logikai alkalmazás azonnal elindítson egy üzenetet.
 
-  | Tulajdonság | Ehhez a forgatókönyvhöz szükséges | Érték | Description |
+  | Tulajdonság | Ehhez a forgatókönyvhöz szükséges | Érték | Leírás |
   |----------|----------------------------|-------|-------------|
   | **Üzenetsor neve** | Yes | <*üzenetsor – név*> | A korábban létrehozott Service Bus üzenetsor neve. Ez a példa a "Fabrikam-Service-Bus-üzenetsor" protokollt használja. |
   | **Várólista típusa** | Yes | **Fő** | Az elsődleges Service Bus üzenetsor |
   | **Munkamenet-azonosító** | Yes | **Következő elérhető** | Ez a beállítás az egyes triggerekhez tartozó munkameneteket az Service Bus üzenetsor üzenetében található munkamenet-azonosító alapján kapja meg. A munkamenet zárolása is megtörténik, így más logikai alkalmazások vagy más ügyfelek nem dolgozhatják fel az ehhez a munkamenethez kapcsolódó üzeneteket. A munkafolyamat későbbi műveletei az adott munkamenethez társított összes üzenetet feldolgozzák a jelen cikk későbbi részében leírtak szerint. <p><p>További információ a **munkamenet-azonosító** további lehetőségeiről: <p>- **Nincs**: az alapértelmezett beállítás, amely nem használ munkameneteket, és nem használható a szekvenciális konvoj mintázatának megvalósításához. <p>- **Adja meg az egyéni értéket**: akkor használja ezt a beállítást, ha ismeri a használni kívánt munkamenet-azonosítót, és mindig az adott munkamenet-azonosítóhoz tartozó triggert szeretné futtatni. <p>**Megjegyzés**: az Service Bus-összekötő egyszerre csak korlátozott számú egyedi munkamenetet tud menteni Azure Service Busról az összekötő gyorsítótárába. Ha a munkamenetek száma meghaladja ezt a korlátot, a rendszer eltávolítja a régi munkameneteket a gyorsítótárból. További információ: [Exchange-üzenetek a felhőben Azure Logic apps és Azure Service Bus](../connectors/connectors-create-api-servicebus.md#connector-reference). |
-  | **Időköz** | Yes | <*intervallumok száma*> | Az ismétlődések közötti időegységek száma az üzenet ellenőrzése előtt. |
+  | **Intervallum** | Yes | <*intervallumok száma*> | Az ismétlődések közötti időegységek száma az üzenet ellenőrzése előtt. |
   | **Gyakoriság** | Yes | **Másodperc**, **perc**, **óra**, **nap**, **hét**vagy **hónap** | Az üzenet keresésekor használandó időegység. <p>**Tipp**: **időzóna** vagy **Kezdési idő**hozzáadásához válassza ki ezeket a tulajdonságokat az **új paraméter hozzáadása** listáról. |
   |||||
 
-  További információ az aktiválásról: [Service Bus – ha üzenet érkezik egy várólistába (betekintés – zárolás)](https://docs.microsoft.com/connectors/servicebus/#when-a-message-is-received-in-a-queue-(peek-lock)). Az trigger kimenete egy [ServiceBusMessage](https://docs.microsoft.com/connectors/servicebus/#servicebusmessage).
+  További információ az aktiválásról: [Service Bus – ha üzenet érkezik egy várólistába (betekintés – zárolás)](/connectors/servicebus/#when-a-message-is-received-in-a-queue-(peek-lock)). Az trigger kimenete egy [ServiceBusMessage](/connectors/servicebus/#servicebusmessage).
 
 A munkamenet inicializálását követően a munkafolyamat az **inicializálási változót** használja egy olyan logikai változó létrehozásához, amely kezdetben be `false` van állítva, és jelzi, hogy a következő feltételek teljesülnek-e: 
 
@@ -421,4 +422,4 @@ A logikai alkalmazás teszteléséhez küldje el az üzeneteket a Service Bus-v�
 
 ## <a name="next-steps"></a>További lépések
 
-* További információ az [Service Bus-összekötő eseményindítóinak és műveleteiről](https://docs.microsoft.com/connectors/servicebus/)
+* További információ az [Service Bus-összekötő eseményindítóinak és műveleteiről](/connectors/servicebus/)

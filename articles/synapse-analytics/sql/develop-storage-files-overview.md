@@ -1,5 +1,5 @@
 ---
-title: A Storage-ban található fájlok elérése az SQL on-demand (előzetes verzió) használatával a szinapszis SQL-ben
+title: Fájlok elérése a Storage-ban az SQL on-demand (előzetes verzió)
 description: Leírja a tárolási fájlok lekérdezését az SQL on-demand (előzetes verzió) típusú, a szinapszis SQLon belüli erőforrásainak használatával.
 services: synapse-analytics
 author: azaricstefan
@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/19/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: f786e92ca99c4c1700d00adf396ba1127b66ea7c
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: d7f990b059346c4c782ca923e663997317c4df16
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86247098"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87046883"
 ---
 # <a name="accessing-external-storage-in-synapse-sql-on-demand"></a>Külső tároló elérése a szinapszis SQL-ben (igény szerint)
 
@@ -43,7 +43,7 @@ A felhasználók a következő hozzáférési szabályok használatával férhet
 - Az Azure AD User-OPENROWSET a hívó Azure AD-identitását fogja használni az Azure Storage vagy a hozzáférés-tárolók névtelen hozzáféréssel való eléréséhez.
 - SQL-felhasználó – a OPENROWSET névtelen hozzáféréssel fogja elérni a tárolót.
 
-Az SQL-rendszerbiztonsági tag a OPENROWSET használatával közvetlenül is lekérdezheti az SAS-tokenekkel vagy a munkaterület felügyelt identitásával védett fájlokat. Ha egy SQL-felhasználó végrehajtja ezt a függvényt, a HITELESÍTő adatok megváltoztatására jogosult felhasználónak létre kell hoznia egy kiszolgáló-hatókörű hitelesítő adatot, amely megfelel a függvény URL-címének (a tároló neve és tárolója alapján), és a hitelesítő adatokra vonatkozó jogosultságot kapott a OPENROWSET függvény hívója számára:
+Az SQL-rendszerbiztonsági tag a OPENROWSET használatával közvetlenül is lekérdezheti az SAS-tokenekkel vagy a munkaterület felügyelt identitásával védett fájlokat. Ha egy SQL-felhasználó végrehajtja ezt a függvényt, az engedéllyel rendelkező Kiemelt felhasználónak `ALTER ANY CREDENTIAL` létre kell hoznia egy kiszolgáló-hatókörű hitelesítő adatot, amely megfelel a függvényben lévő URL-címnek (a tároló nevét és tárolóját használva), és hivatkozásokat kapott a hitelesítő adatokhoz a OpenRowset függvény hívója számára:
 
 ```sql
 EXECUTE AS somepoweruser
@@ -87,8 +87,8 @@ Az ADATBÁZIShoz kötődő HITELESÍTő adatok a hivatkozott adatforráson (jele
 A hívónak a következő engedélyek egyikével kell rendelkeznie a OPENROWSET függvény végrehajtásához:
 
 - A OPENROWSET végrehajtásának egyik engedélye:
-  - A TÖMEGES művelet felügyelete lehetővé teszi a bejelentkezést a OPENROWSET függvény végrehajtásához.
-  - Az adatbázis TÖMEGES MŰVELETének felügyelete lehetővé teszi, hogy az adatbázis-hatókörű felhasználó végrehajtsa a OPENROWSET függvényt.
+  - `ADMINISTER BULK OPERATIONS`engedélyezi a bejelentkezést a OPENROWSET függvény végrehajtásához.
+  - `ADMINISTER DATABASE BULK OPERATIONS`lehetővé teszi, hogy az adatbázis hatókörű felhasználója OPENROWSET-függvényt hajtson végre.
 - HIVATKOZik az adatbázis HATÓKÖRön belüli HITELESÍTő ADATAIra a külső adatforrásban hivatkozott hitelesítő adathoz.
 
 #### <a name="accessing-anonymous-data-sources"></a>Névtelen adatforrások elérése
@@ -151,15 +151,15 @@ A következő táblázat a fent felsorolt műveletekhez szükséges engedélyeke
 
 | Lekérdezés | Szükséges engedélyek|
 | --- | --- |
-| OPENROWSET (BULK) adatforrás nélkül | `ADMINISTER BULK ADMIN`, `ADMINISTER DATABASE BULK ADMIN` vagy az SQL-bejelentkezéshez hivatkozásokkal rendelkező hitelesítő adatok szükségesek:: \<URL> sas által védett tároló esetén |
-| OPENROWSET (TÖMEGES) adatforrással hitelesítő adatok nélkül | `ADMINISTER BULK ADMIN`vagy `ADMINISTER DATABASE BULK ADMIN` |
-| OPENROWSET (TÖMEGES) adatforrással, hitelesítő adatokkal | `ADMINISTER BULK ADMIN`, `ADMINISTER DATABASE BULK ADMIN` , vagy`REFERENCES DATABASE SCOPED CREDENTIAL` |
+| OPENROWSET (BULK) adatforrás nélkül | `ADMINISTER BULK OPERATIONS`, `ADMINISTER DATABASE BULK OPERATIONS` vagy az SQL-bejelentkezéshez hivatkozásokkal rendelkező hitelesítő adatok szükségesek:: \<URL> sas által védett tároló esetén |
+| OPENROWSET (TÖMEGES) adatforrással hitelesítő adatok nélkül | `ADMINISTER BULK OPERATIONS`vagy `ADMINISTER DATABASE BULK OPERATIONS` |
+| OPENROWSET (TÖMEGES) adatforrással, hitelesítő adatokkal | `REFERENCES DATABASE SCOPED CREDENTIAL`és az egyik `ADMINISTER BULK OPERATIONS` vagy`ADMINISTER DATABASE BULK OPERATIONS` |
 | KÜLSŐ ADATFORRÁS LÉTREHOZÁSA | `ALTER ANY EXTERNAL DATA SOURCE` és `REFERENCES DATABASE SCOPED CREDENTIAL` |
 | KÜLSŐ TÁBLA LÉTREHOZÁSA | `CREATE TABLE`, `ALTER ANY SCHEMA` , `ALTER ANY EXTERNAL FILE FORMAT` és`ALTER ANY EXTERNAL DATA SOURCE` |
 | KIVÁLASZTÁS KÜLSŐ TÁBLÁBÓL | `SELECT TABLE` és `REFERENCES DATABASE SCOPED CREDENTIAL` |
-| CETAS | Tábla létrehozása:, `CREATE TABLE` , `ALTER ANY SCHEMA` `ALTER ANY DATA SOURCE` , és `ALTER ANY EXTERNAL FILE FORMAT` . Az adat olvasása: `ADMIN BULK OPERATIONS` vagy a `REFERENCES CREDENTIAL` `SELECT TABLE` lekérdezés + R/W engedélyének minden táblája/nézete/funkciója a Storage-ban |
+| CETAS | Tábla létrehozása:, `CREATE TABLE` , `ALTER ANY SCHEMA` `ALTER ANY DATA SOURCE` , és `ALTER ANY EXTERNAL FILE FORMAT` . Az adat olvasása: `ADMINISTER BULK OPERATIONS` vagy a `REFERENCES CREDENTIAL` `SELECT TABLE` lekérdezés + R/W engedélyének minden táblája/nézete/funkciója a Storage-ban |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most már készen áll a folytatásra a következő cikkekkel:
 

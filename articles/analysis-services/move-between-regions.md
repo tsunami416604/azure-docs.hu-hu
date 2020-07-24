@@ -7,11 +7,13 @@ ms.topic: how-to
 ms.date: 06/09/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: ff012dc78f3981b6fb5fdbd8a5bde45083dd997b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: references_regions
+ms.openlocfilehash: 4844f3e34a6b49559affbb4d4ed7bc5b5e38e538
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84699430"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87050358"
 ---
 # <a name="move-analysis-services-to-a-different-region"></a>Analysis Services áthelyezése másik régióba
 
@@ -193,7 +195,7 @@ Ha új kiszolgálói erőforrást szeretne üzembe helyezni egy másik régióba
 
 3. Válassza a **template Deployment**lehetőséget.
 
-4. Válassza a **Létrehozás** lehetőséget.
+4. Kattintson a **Létrehozás** gombra.
 
 5. Válassza **a saját sablon létrehozása lehetőséget a szerkesztőben**.
 
@@ -201,7 +203,7 @@ Ha új kiszolgálói erőforrást szeretne üzembe helyezni egy másik régióba
 
 7. Ellenőrizze, hogy a sablon-szerkesztő megjeleníti-e az új célkiszolgáló helyes tulajdonságait.
 
-8. Kattintson a **Mentés** gombra.
+8. Válassza a **Mentés** lehetőséget.
 
 9. Adja meg vagy válassza ki a tulajdonságértékek értékét:
 

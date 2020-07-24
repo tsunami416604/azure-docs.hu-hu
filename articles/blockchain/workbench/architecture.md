@@ -4,12 +4,12 @@ description: Az Azure Blockchain Workbench előzetes verziójú architektúráj�
 ms.date: 09/05/2019
 ms.topic: conceptual
 ms.reviewer: brendal
-ms.openlocfilehash: ef56d0fdac74bf447fce01e772abed8a2b07c27b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1fff70ef2eeb1dc27d33769fd48fe5923f56717b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253426"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87049168"
 ---
 # <a name="azure-blockchain-workbench-architecture"></a>Az Azure Blockchain Workbench-architektúra
 
@@ -116,4 +116,4 @@ Azure Monitor információt nyújt a blockchain-hálózat állapotáról.
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Az Azure Blockchain Workbench üzembe helyezése](../../blockchain-workbench/blockchain-workbench-deploy.md)
+> [Az Azure Blockchain Workbench üzembe helyezése](./deploy.md)

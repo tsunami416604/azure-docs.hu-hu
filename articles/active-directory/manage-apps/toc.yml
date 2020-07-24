@@ -38,48 +38,44 @@
       href: application-management-fundamentals.md
     - name: Alkalmazáskezelések gyakori forgatókönyvei
       href: common-scenarios.md
-    - name: Felhőalkalmazások és egyszeri bejelentkezés
+    - name: Felhőalkalmazás-integráció megtervezése
       items:
-        - name: Felhőalkalmazás-integráció megtervezése
-          items:
-            - name: Az alkalmazásintegráció első lépései
-              href: plan-an-application-integration.md
-            - name: Hozzáférési panel üzembe helyezésének megtervezése
-              href: access-panel-deployment-plan.md
-            - name: Útmutatás fejlesztőknek
-              href: developer-guidance-for-integrating-applications.md
-        - name: Egyszeri bejelentkezés
-          items:
-            - name: Az SSO engedélyezése több-bérlős alkalmazások esetében
-              href: isv-sso-content.md
-            - name: Azure-bérlő létrehozása több-bérlős alkalmazások esetében
-              href: isv-tenant-multi-tenant-app.md
-            - name: Több-bérlős összevonás kiválasztása
-              href: isv-choose-multi-tenant-federation.md
-            - name: Több-bérlős alkalmazás dokumentációjának létrehozása
-              href: isv-create-sso-documentation.md
-            - name: Egyszeri bejelentkezés üzembe helyezésének tervezése
-              href: plan-sso-deployment.md
-        - name: Egy kattintással indítható SSO
-          items:
-            - name: Mi az egy kattintással indítható SSO
-              href: one-click-sso-tutorial.md
-        - name: Alkalmazások biztonsága
-          items:
-            - name: Alkalmazás-hozzáférési lehetőségek
-              href: what-is-access-management.md
-            - name: Tanúsítvány-aláírási lehetőségek
-              href: certificate-signing-options.md
-            - name: Tanúsítványok kezelése
-              href: manage-certificates-for-federated-single-sign-on.md
-            - name: Bérlőkorlátozások
-              href: tenant-restrictions.md
-            - name: SAML-jogkivonat titkosításának konfigurálása
-              href: howto-saml-token-encryption.md
-            - name: Végfelhasználói portálok
-              href: end-user-experiences.md
-    - name: Felhőalkalmazások láthatósága és vezérlése
-      href: cloud-app-security.md
+        - name: Az alkalmazásintegráció első lépései
+          href: plan-an-application-integration.md
+        - name: Hozzáférési panel üzembe helyezésének megtervezése
+          href: access-panel-deployment-plan.md
+        - name: Útmutatás fejlesztőknek
+          href: developer-guidance-for-integrating-applications.md
+    - name: Egyszeri bejelentkezés
+      items:
+        - name: Az SSO engedélyezése több-bérlős alkalmazások esetében
+          href: isv-sso-content.md
+        - name: Azure-bérlő létrehozása több-bérlős alkalmazások esetében
+          href: isv-tenant-multi-tenant-app.md
+        - name: Több-bérlős összevonás kiválasztása
+          href: isv-choose-multi-tenant-federation.md
+        - name: Több-bérlős alkalmazás dokumentációjának létrehozása
+          href: isv-create-sso-documentation.md
+        - name: Egyszeri bejelentkezés üzembe helyezésének tervezése
+          href: plan-sso-deployment.md
+        - name: Egykattintásos SSO
+          href: one-click-sso-tutorial.md
+    - name: Alkalmazások biztonsága
+      items:
+        - name: Alkalmazás-hozzáférési lehetőségek
+          href: what-is-access-management.md
+        - name: Tanúsítvány-aláírási lehetőségek
+          href: certificate-signing-options.md
+        - name: Tanúsítványok kezelése
+          href: manage-certificates-for-federated-single-sign-on.md
+        - name: Bérlőkorlátozások
+          href: tenant-restrictions.md
+        - name: SAML-jogkivonat titkosításának konfigurálása
+          href: howto-saml-token-encryption.md
+        - name: Végfelhasználói portálok
+          href: end-user-experiences.md
+        - name: Felhőalkalmazások láthatósága és vezérlése
+          href: cloud-app-security.md
     - name: Alkalmazásproxy helyszíni alkalmazásokhoz
       items:
         - name: Alkalmazásproxy

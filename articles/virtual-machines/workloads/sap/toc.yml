@@ -254,11 +254,11 @@
 - name: Azure-szolgáltatások integrálása az SAP-be
   items:
     - name: Az SAP HANA használata a Power BI Desktopban
-      href: 'https://docs.microsoft.com/power-bi/desktop-sap-hana'
+      href: /power-bi/desktop-sap-hana
     - name: A DirectQuery és az SAP HANA
-      href: 'https://docs.microsoft.com/power-bi/desktop-directquery-sap-hana'
+      href: /power-bi/desktop-directquery-sap-hana
     - name: Az SAP BW Connector használata a Power BI Desktopban
-      href: 'https://docs.microsoft.com/power-bi/desktop-sap-bw-connector'
+      href: /power-bi/desktop-sap-bw-connector
     - name: Az Azure Data Factory SAP HANA- és Business Warehouse-adatok integrációját nyújtja
       href: 'https://azure.microsoft.com/blog/azure-data-factory-offer-sap-hana-and-business-warehouse-data-integration'
 - name: Azure Monitor a SAP-megoldásokhoz

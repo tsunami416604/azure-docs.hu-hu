@@ -6,12 +6,12 @@ ms.assetid: ff00902b-9858-4bee-ab95-d3406018c688
 ms.topic: article
 ms.date: 07/25/2018
 ms.custom: seodec18
-ms.openlocfilehash: 4fa64562f8d26297d2b2c8a13cd8b6a513c2c630
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: d9ef246079fc95b79a2dc7a3d33eba79da70c55a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170020"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87050377"
 ---
 # <a name="configure-premiumv2-tier-for-azure-app-service"></a>Azure App Service PremiumV2-szintjeinek konfigurálása
 
@@ -87,7 +87,7 @@ Ha az alkalmazás olyan App Service üzemelő példányban fut, ahol a **Premium
 
 ## <a name="automate-with-scripts"></a>Automatizálás szkriptekkel
 
-Az **PremiumV2** szinten automatizálhatja az alkalmazások létrehozását az [Azure CLI](/cli/azure/install-azure-cli) vagy a [Azure PowerShell](/powershell/azure/overview)használatával.
+Az **PremiumV2** szinten automatizálhatja az alkalmazások létrehozását az [Azure CLI](/cli/azure/install-azure-cli) vagy a [Azure PowerShell](/powershell/azure/)használatával.
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -115,5 +115,5 @@ New-AzAppServicePlan -ResourceGroupName <resource_group_name> `
 ```
 ## <a name="more-resources"></a>További erőforrások
 
-[Alkalmazás vertikális felméretezése az Azure-ban](manage-scale-up.md)  
+[Alkalmazás vertikális felskálázása az Azure-ban](manage-scale-up.md)  
 [Példányszám manuális vagy automatikus méretezése](../monitoring-and-diagnostics/insights-how-to-scale.md)

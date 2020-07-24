@@ -9,11 +9,12 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 08/17/2017
 ms.author: tagore
-ms.openlocfilehash: 774d2bb58fd7dd75825be8f433f078d70c13fe8c
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 25cde21d72de49c5a4f51121f2aa4295319899ac
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85919983"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87049206"
 ---
 # <a name="build-and-deploy-a-nodejs-application-to-an-azure-cloud-service"></a>Node.js-alkalmazás létrehozása és telepítése egy Azure-felhőszolgáltatásban
 
@@ -85,7 +86,7 @@ http.createServer(function (req, res) {
 
 Ez a kód lényegében megegyezik a [nodejs.org] webhelyen található „Hello World” példával, azt leszámítva, hogy a felhőkörnyezet által hozzárendelt portszámot használja.
 
-## <a name="deploy-the-application-to-azure"></a>Az alkalmazás központi telepítése az Azure-ban
+## <a name="deploy-the-application-to-azure"></a>Az alkalmazás üzembe helyezése az Azure-ban
 
 > [!NOTE]
 > Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. [Aktiválhatja MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF), vagy [regisztrálhat egy ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A85619ABF).
@@ -177,9 +178,9 @@ További információk: [Node.js fejlesztői központ].
 
 [Az Azure Websites, a Cloud Services és a Virtual Machines összevetése]: /azure/architecture/guide/technology-choices/compute-decision-tree
 [egyszerűsített webalkalmazás használatát]: ../app-service/app-service-web-get-started-nodejs.md
-[Azure PowerShell]: /powershell/azureps-cmdlets-docs
+[Azure PowerShell]: /powershell/azure/
 [Azure SDK for .NET 2.7]: https://www.microsoft.com/en-us/download/details.aspx?id=48178
-[PowerShell összekapcsolása]: /powershell/azureps-cmdlets-docs
+[PowerShell összekapcsolása]: /powershell/azure/
 [nodejs.org]: https://nodejs.org/
 [Üzemeltetett szolgáltatás létrehozása az Azure-ban – áttekintés]: https://azure.microsoft.com/documentation/services/cloud-services/
 [Node.js fejlesztői központ]: https://azure.microsoft.com/develop/nodejs/

@@ -6,11 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 11/08/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 7c5dfe6ed08df01f78346c76fd5a35e7d64ab520
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8beb1d60ca8dcc18978ffeb523a7d63f90ca6c01
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77671579"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87049794"
 ---
 # <a name="profile-web-apps-running-on-an-azure-virtual-machine-or-a-virtual-machine-scale-set-by-using-application-insights-profiler"></a>Azure-beli virtuális gépen vagy virtuálisgép-méretezési csoporton futó profil Web Apps Application Insights Profiler használatával
 
@@ -24,7 +25,7 @@ Az Azure Application Insights Profiler a következő szolgáltatásokon is üzem
 ## <a name="deploy-profiler-on-a-virtual-machine-or-a-virtual-machine-scale-set"></a>A Profiler üzembe helyezése virtuális gépen vagy virtuálisgép-méretezési csoporton
 Ez a cikk bemutatja, hogyan érheti el az Azure-beli virtuális gépen (VM) vagy az Azure virtuálisgép-méretezési csoporton futó Application Insights Profiler. A Profiler a virtuális gépek Azure Diagnostics-bővítményével együtt települ. Konfigurálja a bővítményt a Profiler futtatásához, és hozza létre az Application Insights SDK-t az alkalmazásba.
 
-1. Adja hozzá a Application Insights SDK-t a [ASP.NET-alkalmazáshoz](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net).
+1. Adja hozzá a Application Insights SDK-t a [ASP.NET-alkalmazáshoz](./asp-net.md).
 
    A kérések profiljainak megtekintéséhez el kell küldenie a kérelmek telemetria Application Insights.
 
@@ -71,7 +72,7 @@ Ez a cikk bemutatja, hogyan érheti el az Azure-beli virtuális gépen (VM) vagy
     ```powershell
     Enable-WindowsOptionalFeature -FeatureName IIS-HttpTracing -Online -All
     ```  
-   b. Ha probléma van a táveléréssel, az [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) használatával futtathatja a következő parancsot:  
+   b. Ha probléma van a táveléréssel, az [Azure CLI](/cli/azure/get-started-with-azure-cli) használatával futtathatja a következő parancsot:  
 
     ```powershell
     az vm run-command invoke -g MyResourceGroupName -n MyVirtualMachineName --command-id RunPowerShellScript --scripts "Enable-WindowsOptionalFeature -FeatureName IIS-HttpTracing -Online -All"

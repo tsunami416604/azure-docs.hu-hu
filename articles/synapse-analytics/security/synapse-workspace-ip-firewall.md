@@ -1,5 +1,5 @@
 ---
-title: Az IP-tűzfalszabályok konfigurálása az Azure szinapszis Analyticsben
+title: IP-tűzfalszabályok konfigurálása
 description: Egy cikk, amely megtanítja az IP-tűzfalszabályok konfigurálását az Azure szinapszis Analyticsben
 author: RonyMSFT
 ms.service: synapse-analytics
@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 255714fcf69a8ed72cf1f306e5aafabd49a199ca
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.openlocfilehash: a06b4e6ced437cc83fadfad000fa682264264874
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85194399"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87052422"
 ---
 # <a name="azure-synapse-analytics-ip-firewall-rules-preview"></a>Azure szinapszis Analytics IP-tűzfalszabályok (előzetes verzió)
 
@@ -49,4 +49,4 @@ Ha az alapértelmezett átirányítási házirend-beállítást használja, lehe
 
 [Azure szinapszis-munkaterület](../quickstart-create-workspace.md) létrehozása
 
-Azure-beli szinapszis-munkaterület létrehozása [felügyelt munkaterület-VNet](./synapse-workspace-managed-vnet.md)
+Azure szinapszis-munkaterület létrehozása [felügyelt munkaterülettel Virtual Network](./synapse-workspace-managed-vnet.md)

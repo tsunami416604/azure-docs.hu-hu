@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 05/19/2020
-ms.openlocfilehash: 676a0471ad4321f37cf6dd854d6d98083723f5de
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 8f827d3e983a50589975eca59808bd1471fe4810
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86116692"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87047587"
 ---
 # <a name="overview-of-the-commercial-marketplace-portal-in-partner-center"></a>A kereskedelmi piactér portál áttekintése a partner Centerben
 
@@ -28,9 +28,9 @@ A partner Center egy Microsoft-partneri élmény központja. Azoknak a szervezet
 
 ## <a name="migration-from-the-cloud-partner-portal"></a>Áttelepítés a Cloud Partner Portalról
 
-A partner Center egyre jobban integrálható a szoftveres közzétevők kapcsolatának minden aspektusával. Ennek az evolúciónak a részeként áttelepítettük az összes kereskedelmi Marketplace-ajánlat kezelését a [Cloud Partner Portalról](https://cloudpartner.azure.com/) a partneri központba.
+A partner Center egyre jobban integrálható a szoftveres közzétevők kapcsolatának minden aspektusával. Ennek az evolúciónak a részeként áttelepítettük az összes kereskedelmi Marketplace-ajánlat kezelését a Cloud Partner Portal (CPP) és a partner Center között.
 
-Azok a meglévő közzétevők, akik korábban a Cloud Partner Portal használták, jól ismert, de továbbfejlesztett és intuitív felhasználói élményt találnak a partner centerrel. A felhasználók zökkenőmentesen a megfelelő helyre lesznek irányítva. A partneri élmény frissítése nem érinti az ügyfeleket.
+A korábban a CPP-t használó meglévő közzétevők ismerős, de továbbfejlesztett és intuitív felhasználói élményt találnak a partner centerrel. A felhasználók zökkenőmentesen a megfelelő helyre lesznek irányítva. A partneri élmény frissítése nem érinti az ügyfeleket.
 
 ### <a name="improvements-on-publishing-and-offer-management-user-experience"></a>A közzétételi és az ajánlat-kezelési felhasználói élmény fejlesztése
 
@@ -52,7 +52,7 @@ A partner Center Analytics áttekintést nyújt az ajánlatok teljesítményér�
 
 További információ a legújabb és jövőbeli kiadásokról: a [Microsoft kereskedelmi Marketplace-útitervének](../marketplace-roadmap.md)meglátogatása, vagy a [Microsoft partner Közösségen](https://www.microsoftpartnercommunity.com/)belüli beszélgetés.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Az új Microsoft-partnereknek, akik érdeklődnek az ajánlat közzétételére a piactéren, tekintse meg [a kereskedelmi piactér fiók létrehozása a partner Centerben](create-account.md)című témakört.
 - Azon meglévő partnerek esetében, akik korábban közzétett ajánlatokat Cloud Partner Portalban, [a kereskedelmi Marketplace-fiókot a partner Centerben kezelheti](manage-account.md).

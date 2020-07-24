@@ -1,29 +1,29 @@
 - name: Virtual Machines-dokumentáció
   href: index.yml
 - name: Linux rendszerű virtuális gépek az Azure-ban
-  href: 'https://docs.microsoft.com/azure/virtual-machines/linux/'
+  href: ./linux/index.yml
 - name: Windows rendszerű virtuális gépek az Azure-ban
-  href: 'https://docs.microsoft.com/azure/virtual-machines/windows/'
+  href: ./windows/index.yml
 - name: Virtuálisgép-bővítmények dokumentációja
   href: ./extensions/overview.md
 - name: Számítási feladatok
   items:
     - name: Red Hat
-      href: ./workloads/redhat/redhat-overview.md
+      href: ./workloads/redhat/overview.md
     - name: Nagy teljesítményű feldolgozás
       href: ./workloads/hpc/overview.md
     - name: SAP
       href: ./workloads/sap/get-started.md
     - name: Oracle
-      href: ./workloads/oracle/oracle-considerations.md
+      href: ./workloads/oracle/oracle-overview.md
     - name: Nagyszámítógépes áthelyezés
       href: ./workloads/mainframe-rehosting/overview.md
 - name: Klasszikus üzembe helyezések
   items:
     - name: Linux rendszerű virtuális gépek klasszikus üzembe helyezéssel
-      href: 'https://docs.microsoft.com/previous-versions/azure/virtual-machines/linux/classic/'
+      href: /previous-versions/azure/virtual-machines/linux/classic/
     - name: Windows rendszerű virtuális gépek klasszikus üzembe helyezéssel
-      href: 'https://docs.microsoft.com/previous-versions/azure/virtual-machines/windows/classic/'
+      href: /previous-versions/azure/virtual-machines/windows/classic/
 - name: További források
   items:
     - name: Fejlessze a készségeit a Microsoft Learnnel

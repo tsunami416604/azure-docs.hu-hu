@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: e2802445bbb80a4412787362a3ee9aaee4adcd40
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: f77d9cd72476f9f2c30ca22bb2296efe1fd6cf9d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223499"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87051667"
 ---
 # <a name="migrate-azure-active-directory-domain-services-from-the-classic-virtual-network-model-to-resource-manager"></a>Azure Active Directory Domain Services migrálása a klasszikus virtuális hálózati modellből a Resource Managerbe
 
@@ -145,11 +145,11 @@ A Resource Manager-alapú üzemi modellre és a virtuális hálózatra történ�
 
 | Lépés    | Végrehajtás  | Becsült idő  | Állásidő  | Vissza/vissza? |
 |---------|--------------------|-----------------|-----------|-------------------|
-| [1. lépés – az új virtuális hálózat frissítése és megkeresése](#update-and-verify-virtual-network-settings) | Azure Portal | 15 perc | Nincs szükség állásidőre | N/A |
+| [1. lépés – az új virtuális hálózat frissítése és megkeresése](#update-and-verify-virtual-network-settings) | Azure Portal | 15 perc | Nincs szükség állásidőre | n.a. |
 | [2. lépés – a felügyelt tartomány előkészítése áttelepítésre](#prepare-the-managed-domain-for-migration) | PowerShell | 15 – 30 perc átlagosan | Az Azure AD DS leállása a parancs befejezése után kezdődik. | Visszaállítás és helyreállítás elérhető. |
 | [3. lépés – a felügyelt tartomány áthelyezése meglévő virtuális hálózatra](#migrate-the-managed-domain) | PowerShell | átlagosan 1 – 3 óra | A parancs befejezése után egy tartományvezérlő érhető el, a leállás véget ér. | Hiba esetén mind a visszaállítás (önkiszolgáló), mind a visszaállítás elérhető. |
 | [4. lépés – tesztelés és várakozás a replika tartományvezérlőre](#test-and-verify-connectivity-after-the-migration)| PowerShell és Azure Portal | 1 óra vagy több, a tesztek számától függően | Mindkét tartományvezérlő elérhető, és általában működnie kell. | N/A. Az első virtuális gép sikeres áttelepítése után nincs lehetőség visszaállításra vagy visszaállításra. |
-| [5. lépés – választható konfigurációs lépések](#optional-post-migration-configuration-steps) | Azure Portal és virtuális gépek | N/A | Nincs szükség állásidőre | N/A |
+| [5. lépés – választható konfigurációs lépések](#optional-post-migration-configuration-steps) | Azure Portal és virtuális gépek | n.a. | Nincs szükség állásidőre | n.a. |
 
 > [!IMPORTANT]
 > Az áttelepítési folyamat megkezdése előtt olvassa el az összes áttelepítési cikket és útmutatást a további állásidő elkerüléséhez. Az áttelepítési folyamat egy adott időszakra hatással van az Azure AD DS tartományvezérlők rendelkezésre állására. A felhasználók, szolgáltatások és alkalmazások nem tudnak hitelesíteni a felügyelt tartományon az áttelepítési folyamat során.
@@ -335,7 +335,7 @@ A felügyelt tartomány áttelepítése a Resource Manager-alapú üzemi modellr
 <!-- INTERNAL LINKS -->
 [azure-bastion]: ../bastion/bastion-overview.md
 [network-considerations]: network-considerations.md
-[azure-powershell]: /powershell/azure/overview
+[azure-powershell]: /powershell/azure/
 [network-ports]: network-considerations.md#network-security-groups-and-required-ports
 [Connect-AzAccount]: /powershell/module/az.accounts/connect-azaccount
 [Set-AzContext]: /powershell/module/az.accounts/set-azcontext

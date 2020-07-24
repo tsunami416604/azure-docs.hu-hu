@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: ca19ccb925721126f7e7d8495addd0794766f376
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 94955e27dcadb3acbea03926d6d1ed73e9c5c9ed
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86202879"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87051343"
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>A tanúsítványalapú hitelesítés első lépései az Azure Active Directoryban
 
@@ -93,7 +93,7 @@ A hitelesítésszolgáltató sémája a következőképpen néz ki:
     }
 ```
 
-A konfigurációhoz használhatja a [Azure Active Directory PowerShell 2-es verzióját](/powershell/azure/install-adv2?view=azureadps-2.0):
+A konfigurációhoz használhatja a [Azure Active Directory PowerShell 2-es verzióját](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0):
 
 1. Indítsa el a Windows PowerShellt rendszergazdai jogosultságokkal.
 2. Telepítse az Azure AD-modul [2.0.0.33](https://www.powershellgallery.com/packages/AzureAD/2.0.0.33) vagy újabb verzióját.
@@ -122,7 +122,7 @@ A címtárban definiált megbízható hitelesítésszolgáltatók beolvasásáho
 
 ### <a name="add"></a>Hozzáadás
 
-Megbízható hitelesítésszolgáltató létrehozásához használja a [New-AzureADTrustedCertificateAuthority](/azurepowershell/module/azuread/new-azureadtrustedcertificateauthority?view=azureadps-2.0) parancsmagot, és állítsa be a **vlelérésihelye** attribútumot helyes értékre:
+Megbízható hitelesítésszolgáltató létrehozásához használja a [New-AzureADTrustedCertificateAuthority](/powershell/module/azuread/new-azureadtrustedcertificateauthority?view=azureadps-2.0) parancsmagot, és állítsa be a **vlelérésihelye** attribútumot helyes értékre:
 
 ```azurepowershell
     $cert=Get-Content -Encoding byte "[LOCATION OF THE CER FILE]"

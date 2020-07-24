@@ -3,11 +3,12 @@ title: Application Insights eltávolítása a Visual Studióban – Azure Monito
 description: A ASP.NET és a ASP.NET Core Application Insights SDK eltávolítása a Visual Studióban.
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: 1c9ff8d3d305645ac7d113421e2c6c5f8451bd2b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 08a6d29e9170dde4bf3cc12015d126874006a778
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80805104"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87049775"
 ---
 # <a name="how-to-remove-application-insights-in-visual-studio"></a>Application Insights eltávolítása a Visual Studióban
 
@@ -26,7 +27,7 @@ Application Insights eltávolításához el kell távolítania az alkalmazás AP
     > [!NOTE]
     > Ha a nyomkövetési gyűjtemény engedélyezve van, először el kell távolítania a Microsoft. ApplicationInsights. TraceListener. Adja meg `Uninstall-package Microsoft.ApplicationInsights.TraceListener` az alábbi lépéseket a Microsoft. ApplicationInsights. Web eltávolításához.
 
-1. Írja be a következő parancsot: `Uninstall-Package Microsoft.ApplicationInsights.Web -RemoveDependencies`
+1. Adja meg a következő parancsot: `Uninstall-Package Microsoft.ApplicationInsights.Web -RemoveDependencies`
 
     A parancs beírása után a rendszer eltávolítja a Application Insights csomagot és annak összes függőségét a projektből.
     
@@ -38,7 +39,7 @@ Application Insights eltávolításához el kell távolítania az alkalmazás AP
 
     ![A felső menüben kattintson az eszközök > NuGet Package Manager > csomagkezelő konzol](./media/remove-application-insights/package-manager.png)
 
-1. Írja be a következő parancsot: ` Uninstall-Package Microsoft.ApplicationInsights.AspNetCore -RemoveDependencies`
+1. Adja meg a következő parancsot: ` Uninstall-Package Microsoft.ApplicationInsights.AspNetCore -RemoveDependencies`
 
     A parancs beírása után a rendszer eltávolítja a Application Insights csomagot és annak összes függőségét a projektből.
 
@@ -228,4 +229,4 @@ Ha Application Insights Telemetriat ad hozzá egy Visual Studio ASP.NET Core-sab
 
 ## <a name="next-steps"></a>További lépések
 
-- [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview)
+- [Azure Monitor](../overview.md)

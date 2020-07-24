@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 902210f0ba6fc195cd219dd5a24e7098ed484d8f
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: b1a228e9d15a349f032291fb0678bdd0ad9d95b3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85855655"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87048844"
 ---
 # <a name="use-azure-powershell-to-create-an-hdinsight-cluster-with-azure-data-lake-storage-gen1-as-additional-storage"></a>A Azure PowerShell használatával hozzon létre egy HDInsight-fürtöt Azure Data Lake Storage Gen1 (további tárterületként)
 
@@ -51,7 +51,7 @@ A Data Lake Storage Gen1 PowerShell-lel való használatához a HDInsight konfig
 Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
 
 * **Egy Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
-* Az **Azure PowerShell 1.0-s vagy újabb verziója**. Lásd: [How to install and configure Azure PowerShell](/powershell/azure/overview) (Az Azure PowerShell telepítése és konfigurálása).
+* Az **Azure PowerShell 1.0-s vagy újabb verziója**. Lásd: [How to install and configure Azure PowerShell](/powershell/azure/) (Az Azure PowerShell telepítése és konfigurálása).
 * **Windows SDK**. A készletet [innen](https://dev.windows.com/en-us/downloads) telepítheti. Ezt a biztonsági tanúsítvány létrehozásához használhatja.
 * **Azure Active Directory egyszerű szolgáltatásnév**. Az oktatóanyag lépései útmutatást nyújtanak az egyszerű szolgáltatás Azure AD-ben való létrehozásához. Az egyszerű szolgáltatásnév létrehozásához azonban Azure AD-rendszergazdának kell lennie. Ha Ön Azure AD-rendszergazda, akkor kihagyhatja ezt az előfeltételt, és folytathatja az oktatóanyagot.
 
@@ -153,7 +153,7 @@ Az ebben a szakaszban ismertetett lépések végrehajtása előtt győződjön m
     ```
 
     A rendszer kérni fogja a titkos kulcs jelszavának megadását. A parancs sikeres végrehajtása után a megadott **bizonyítványfájl. cer** és **Mykey. PVK** jelenik meg.
-2. A [Pvk2Pfx][pvk2pfx] segédprogram használatával alakítsa át a. pfx-fájlba MakeCert létrehozott. PVK és. cer fájlokat. Futtassa a következő parancsot.
+2. A [Pvk2Pfx][pvk2pfx] segédprogram használatával alakítsa át a. pfx-fájlba MakeCert létrehozott. PVK és. cer fájlokat. Futtassa az alábbi parancsot.
 
     ```azurepowershell
     pvk2pfx -pvk mykey.pvk -spc CertFile.cer -pfx CertFile.pfx -po <password>

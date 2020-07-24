@@ -5,21 +5,22 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 04/15/2020
+ms.date: 07/20/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
-ms.reviewer: sahenry
+ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7997359fb29afc876b184b811e0409cfdbeb265a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2eff16e0d1aa242ed4ca8b427c7af8e8defa7804
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83826468"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87051296"
 ---
-# <a name="password-management-frequently-asked-questions"></a>Jelszavas kezelés – gyakori kérdések
+# <a name="self-service-password-reset-frequently-asked-questions"></a>Gyakori kérdések az önkiszolgáló jelszó-visszaállítással kapcsolatban
 
-A következő gyakori kérdések (GYIK) a jelszó-visszaállítással kapcsolatos összes dologra vonatkoznak.
+A következő gyakori kérdések (GYIK) az önkiszolgáló jelszó-visszaállítással kapcsolatos összes dologra vonatkoznak.
 
 Ha az Azure Active Directory (Azure AD) és az önkiszolgáló jelszó-visszaállítási (SSPR) szolgáltatással kapcsolatos általános kérdéssel rendelkezik, akkor a Közösségtől kérhet segítséget a [Microsoft Q&a Azure Active Directory kérdéseit tartalmazó oldalon](https://docs.microsoft.com/answers/topics/azure-active-directory.html). A Közösség tagjai közé tartoznak a mérnökök, a termékmenedzsment, a MVP és az informatikai szakemberek.
 
@@ -37,7 +38,7 @@ Ez a GYIK a következő szakaszokra oszlik:
 
   > **V:** Igen. Ha a jelszó alaphelyzetbe állítása engedélyezve van, és licenccel rendelkezik, a felhasználók a jelszó-visszaállítási regisztrációs portálra léphetnek https://aka.ms/ssprsetup) be a hitelesítési adataik regisztrálásához. A felhasználók a hozzáférési panelen is regisztrálhatnak ( https://myapps.microsoft.com) . Ha regisztrálni szeretne a hozzáférési panelen, ki kell választania a profil képét, válassza a **profil**lehetőséget, majd válassza a **jelszó-visszaállítási regisztráció** lehetőséget.
   >
-  >
+  > Ha engedélyezi a [kombinált regisztrációt](concept-registration-mfa-sspr-combined.md), a felhasználók egyszerre regisztrálhatnak a SSPR és az Azure multi-Factor Authenticationra is.
 * **K: ha engedélyezem a jelszó-visszaállítást egy csoport számára, és úgy dönt, hogy mindenki számára engedélyezi azt, akkor a felhasználóknak újra regisztrálniuk kell?**
 
   > **V.:** Nem. Azok a felhasználók, akiknek nincs szükségük a feltöltött hitelesítési adatokra, nem szükségesek az újbóli regisztráláshoz.

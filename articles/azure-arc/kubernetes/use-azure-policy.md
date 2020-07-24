@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: A Azure Policy használata a fürt konfigurációjának méretekben történő alkalmazásához
 keywords: Kubernetes, arc, Azure, K8s, tárolók
-ms.openlocfilehash: 26b291e2a957047361d4f52eeff58cbe8aa8c633
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: e4279f3d89376320116067bf191e3196271918ce
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86111269"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87050046"
 ---
 # <a name="use-azure-policy-to-apply-cluster-configurations-at-scale-preview"></a>A Azure Policy használata a fürtök konfigurációjának alkalmazásához (előzetes verzió)
 
@@ -22,6 +22,10 @@ ms.locfileid: "86111269"
 A Azure Policy használatával kényszerítheti ki, hogy minden `Microsoft.Kubernetes/connectedclusters` erőforrás vagy git-Ops által engedélyezett `Microsoft.ContainerService/managedClusters` erőforrás külön `Microsoft.KubernetesConfiguration/sourceControlConfigurations` legyen alkalmazva. A Azure Policy használatához válasszon ki egy meglévő szabályzat-definíciót, és hozzon létre egy szabályzat-hozzárendelést. A szabályzat-hozzárendelés létrehozásakor meg kell adni a hozzárendelés hatókörét: ez egy Azure-erőforráscsoport vagy-előfizetés lesz. A létrehozandó paramétereket is megadja `sourceControlConfiguration` . A hozzárendelés létrehozása után a házirend-kezelő a `connectedCluster` `managedCluster` hatókörön belül található összes vagy erőforrást azonosítja, és alkalmazza a `sourceControlConfiguration` -t mindegyikre.
 
 Ha több git-adattárakat használ az igazság forrásaként az egyes fürtökhöz (például egy központi IT-/fürt-kezelő és az alkalmazás-munkacsoportokhoz tartozó más adattárakhoz), akkor ezt több házirend-hozzárendelés használatával is engedélyezheti, és minden egyes házirend-hozzárendelés más git-tárház használatára van konfigurálva.
+
+## <a name="prerequisite"></a>Előfeltétel
+
+Győződjön meg arról, hogy rendelkezik `Microsoft.Authorization/policyAssignments/write` a szabályzat-hozzárendelés létrehozásához szükséges hatókörrel (előfizetés vagy erőforráscsoport).
 
 ## <a name="create-a-policy-assignment"></a>Szabályzat-hozzárendelés létrehozása
 
@@ -42,13 +46,13 @@ A szabályzat-hozzárendelés létrehozása után minden olyan új `connectedClu
 
 ## <a name="verify-a-policy-assignment"></a>Szabályzat-hozzárendelés ellenőrzése
 
-1. A Azure Portal navigáljon az egyik `connectedCluster` erőforráshoz, és az oldalsáv **Beállítások** szakaszában válassza a **házirendek**elemet. (Az AK által felügyelt fürthöz tartozó UX még nincs implementálva, de hamarosan elérhető.)
+1. A Azure Portal navigáljon az egyik `connectedCluster` erőforráshoz, és az oldalsáv **Beállítások** szakaszában válassza a **házirendek**elemet. (Az AK-hoz készült UX-fürthöz még nincs implementálva, de a rendszer már nem érhető el.)
 2. A listában meg kell jelennie a fent létrehozott szabályzat-hozzárendelésnek, és a **megfelelőségi állapotnak** *megfelelőnek*kell lennie.
 3. Az oldalsáv **Beállítások** szakaszában válassza a **konfigurációk**lehetőséget.
 4. A listában látnia kell, `sourceControlConfiguration` hogy a szabályzat-hozzárendelés létrejött.
 5. A **kubectl** használata a fürt lekérdezéséhez: a által létrehozott névtereket és összetevőket kell látnia `sourceControlConfiguration` .
 6. 5 percen belül látnia kell a fürtben a beállított git-tárház jegyzékfájljában leírt összetevőket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Azure Monitor beállítása az arc-kompatibilis Kubernetes-fürtökkel rendelkező tárolók számára](../../azure-monitor/insights/container-insights-enable-arc-enabled-clusters.md)

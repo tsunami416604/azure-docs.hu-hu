@@ -1,5 +1,5 @@
 ---
-title: Az Azure arc-kompatibilis fürtkonfiguráció GitOps használata (előzetes verzió)
+title: Konfigurációk üzembe helyezése a GitOps használatával az arc-kompatibilis Kubernetes-fürtön (előzetes verzió)
 services: azure-arc
 ms.service: azure-arc
 ms.date: 05/19/2020
@@ -8,24 +8,24 @@ author: mlearned
 ms.author: mlearned
 description: Az Azure arc-kompatibilis fürtkonfiguráció GitOps használata (előzetes verzió)
 keywords: GitOps, Kubernetes, K8s, Azure, arc, Azure Kubernetes szolgáltatás, tárolók
-ms.openlocfilehash: 890b35aac33a6fa207a71d76143997a1b93116bf
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: e25fdf3a51b3e9264c85707df31d3a4d107b25ea
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85856983"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87049978"
 ---
-# <a name="use-gitops-for-an-azure-arc-enabled--configuration-preview"></a>GitOps használata Azure-beli arc-kompatibilis konfigurációhoz (előzetes verzió)
+# <a name="deploy-configurations-using-gitops-on-arc-enabled-kubernetes-cluster-preview"></a>Konfigurációk üzembe helyezése a GitOps használatával az arc-kompatibilis Kubernetes-fürtön (előzetes verzió)
 
-Ez az architektúra egy GitOps munkafolyamat használatával konfigurálja a fürtöt, és telepíti az alkalmazásokat. A konfigurációt a. YAML-fájlokban és a git-ben tárolt módon írja le. Az ügynök figyeli a git-tárházat a változásokhoz, és alkalmazza azokat.  Ugyanez az ügynök rendszeres időközönként azt is biztosítja, hogy a fürt állapota megfelel a git-tárházban deklarált állapotnak, és visszaadja a fürtöt a kívánt állapotnak, ha nem felügyelt módosítások történtek.
+A GitOps a Kubernetes-konfiguráció (központi telepítések, névterek stb.) kívánt állapotának deklarálása a git-tárházban, majd a konfigurációk lekérdezése és lekéréses telepítése a fürtön egy operátor használatával. Ez a dokumentum az Azure arc-kompatibilis Kubernetes-fürtökön futó ilyen munkafolyamatok beállítását ismerteti.
 
-A fürt és egy vagy több git-tárház közötti kapcsolat a Azure Resource Manager `sourceControlConfiguration` kiterjesztési erőforrásként van követve. Az `sourceControlConfiguration` Erőforrás-tulajdonságok határozzák meg, hogy a Kubernetes-erőforrások hol és hogyan folynak a git és a fürt között. A `sourceControlConfiguration` rendszer az adatok titkosságának biztosítása érdekében a CosmosDb adatbázisában tárolja az adatok titkosítását.
+A fürt és egy vagy több git-tárház közötti kapcsolat a Azure Resource Manager `sourceControlConfiguration` kiterjesztési erőforrásként van követve. Az `sourceControlConfiguration` Erőforrás-tulajdonságok határozzák meg, hogy a Kubernetes-erőforrások hol és hogyan folynak a git és a fürt között. A `sourceControlConfiguration` rendszer az adatok titkosságának biztosítása érdekében a Azure Cosmos db adatbázisban titkosítva tárolja az adattárolást.
 
-A fürtben futó Azure arc-kompatibilis Kubernetes `config-agent` feladata az új vagy frissített erőforrások figyelése, `sourceControlConfiguration` és a git-tárház hivatkozásainak automatikus hozzáadása, frissítése vagy eltávolítása.
-
-Ugyanazokat a mintázatokat használhatja a fürtök nagyobb gyűjteményének kezeléséhez, amelyek több heterogén környezetben is üzembe helyezhetők. Előfordulhat például, hogy rendelkezik egy adattárral, amely meghatározza a szervezet alapkonfigurációját, és egyszerre több tízezer Kubernetes-fürtöt alkalmaz.
+A `config-agent` fürtben való futtatás az `sourceControlConfiguration` Azure arc-kompatibilis Kubernetes-erőforrás új vagy frissített bővítményi erőforrásainak figyelésére, valamint a git-tárház figyelésére, valamint a által végzett frissítések propagálására szolgál `sourceControlConfiguration` . Még több erőforrás is létrehozható `sourceControlConfiguration` `namespace` hatókörrel ugyanazon az Azure arc-kompatibilis Kubernetes-fürtön a több-bérlős szolgáltatás eléréséhez. Ilyen esetben az egyes operátorok csak a megfelelő névtérbe telepíthetik a konfigurációkat.
 
 A git-tárház bármilyen érvényes Kubernetes-erőforrást tartalmazhat, beleértve a névtereket, a ConfigMaps, a központi telepítéseket, a DaemonSets stb.  Az alkalmazások üzembe helyezéséhez is tartozhat Helm-diagramok. A gyakori forgatókönyvek közé tartozik a szervezet alapkonfigurációjának meghatározása, amely magában foglalhatja a közös RBAC-szerepköröket és-kötéseket, a figyelési vagy naplózási ügynököket, illetve a fürtre kiterjedő szolgáltatásokat is.
+
+Ugyanez a minta használható a fürtök nagyobb gyűjteményének kezelésére, amely heterogén környezetekben is üzembe helyezhető. Előfordulhat például, hogy rendelkezik egy adattárral, amely meghatározza a szervezet alapkonfigurációját, és egyszerre több tízezer Kubernetes-fürtöt alkalmaz. Az [Azure Policy](use-azure-policy.md) a `sourceControlConfiguration` hatókör (előfizetés vagy erőforráscsoport) alá tartozó összes Azure arc-Kubernetes erőforrás-készlettel automatizálhatja a-t egy adott paraméterekkel.
 
 Ez az első lépéseket ismertető útmutató végigvezeti a konfigurációk fürt-rendszergazdai hatókörrel való alkalmazásának lépésein.
 
@@ -39,12 +39,12 @@ A példában szereplő adattár egy olyan fürt munkatársai köré épül fel, 
  **üzembe helyezés:** `cluster-config/azure-vote` 
  **ConfigMap:**`team-a/endpoints`
 
-Az `config-agent` Azure új vagy frissített lekérdezése `sourceControlConfiguration` 30 másodpercenként.  Ez a maximális idő, ameddig az `config-agent` új vagy frissített konfiguráció felvételére kerül.
-Ha privát tárházat társít, gondoskodjon arról, hogy a [konfiguráció alkalmazása privát git-tárházból](#apply-configuration-from-a-private-git-repository) című témakör lépéseit is végrehajtsa.
+A `config-agent` lekérdezi az Azure-t az új vagy frissített `sourceControlConfiguration` 30 másodpercenként, ami `config-agent` egy új vagy frissített konfiguráció kiválasztásához szükséges maximális idő.
+Ha privát tárházat társít a `sourceControlConfiguration` alkalmazáshoz, győződjön meg arról, hogy elvégezte a [konfiguráció alkalmazása privát git-tárházból](#apply-configuration-from-a-private-git-repository)című témakör lépéseit is.
 
 ### <a name="using-azure-cli"></a>Az Azure parancssori felület használata
 
-A-hez készült Azure CLI-bővítmény használatával `k8sconfiguration` csatoljuk a csatlakoztatott fürtöt egy [példa git-tárházhoz](https://github.com/Azure/arc-k8s-demo). Ennek a konfigurációnak a nevét kell megadnia `cluster-config` , arra utasítja az ügynököt, hogy telepítse az operátort a `cluster-config` névtérben, és adja meg az operátor `cluster-admin` engedélyeit.
+Az Azure CLI-bővítményének használatával `k8sconfiguration` csatlakoztassa a csatlakoztatott fürtöt egy [példa git-tárházhoz](https://github.com/Azure/arc-k8s-demo). Ennek a konfigurációnak a nevét kell megadnia `cluster-config` , arra utasítja az ügynököt, hogy telepítse az operátort a `cluster-config` névtérben, és adja meg az operátor `cluster-admin` engedélyeit.
 
 ```console
 az k8sconfiguration create \
@@ -117,7 +117,7 @@ Ezeket a forgatókönyveket a Flux támogatja, de még nem sourceControlConfigur
 
 A konfiguráció létrehozásához a következő néhány további paramétert kell megszabni:
 
-`--enable-helm-operator`: *Opcionális* kapcsoló a Helm chart központi telepítések támogatásának engedélyezéséhez. A beállítás alapértelmezés szerint le van tiltva.
+`--enable-helm-operator`: *Opcionális* kapcsoló a Helm chart központi telepítések támogatásának engedélyezéséhez.
 
 `--helm-operator-chart-values`: Nem *kötelező* diagram-értékek a Helm-kezelőhöz (ha engedélyezve van).  Például: "--set Helm. Versions = v3".
 
@@ -125,11 +125,11 @@ A konfiguráció létrehozásához a következő néhány további paramétert k
 
 `--operator-namespace`: Az operátori névtér neve nem *kötelező* . Alapértelmezett: "default"
 
-`--operator-params`: Nem *kötelező* paraméterek a kezelőhöz. Egy idézőjelek között kell megadni. Például: ```--operator-params='--git-readonly --git-path=releases/prod' ```
+`--operator-params`: Nem *kötelező* paraméterek a kezelőhöz. Egy idézőjelek között kell megadni. Például: ```--operator-params='--git-readonly --git-path=releases' ```
 
 A-operátor-params támogatott beállításai
 
-| Beállítás | Description |
+| Beállítás | Leírás |
 | ------------- | ------------- |
 | --git-ág  | A git-tárház Kubernetes-jegyzékekhez használt ága. Az alapértelmezett érték a "Master". |
 | – git – elérési út  | Relatív elérési út a git-tárházon belül a Flux számára a Kubernetes-jegyzékek megkereséséhez. |
@@ -149,7 +149,10 @@ A-operátor-params támogatott beállításai
    {"OperatorMessage":"Error: {failed to install chart from path [helm-operator] for release [<operatorInstanceName>-helm-<operatorNamespace>]: err [release name \"<operatorInstanceName>-helm-<operatorNamespace>\" exceeds max length of 53]} occurred while doing the operation : {Installing the operator} on the config","ClusterState":"Installing the operator"}
    ```
 
-További információ: [Flux-dokumentáció](https://aka.ms/FluxcdReadme).
+További információ: Flux- [dokumentáció](https://aka.ms/FluxcdReadme).
+
+> [!TIP]
+> SourceControlConfiguration hozhat létre a Azure Portalon, valamint az Azure arc-kompatibilis Kubernetes-erőforrás panel **konfigurációk** lapján.
 
 ## <a name="validate-the-sourcecontrolconfiguration"></a>A sourceControlConfiguration ellenőrzése
 
@@ -206,7 +209,7 @@ A kiépítési folyamat során a `sourceControlConfiguration` átkerül néhány
 
 ## <a name="apply-configuration-from-a-private-git-repository"></a>Konfiguráció alkalmazása privát git-tárházból
 
-Ha privát git-tárházat használ, a hurok bezárásához még egy feladatot kell elvégeznie: hozzá kell adnia azt a nyilvános kulcsot, amelyet `flux` **üzembe helyezési kulcsként** generált a tárházban.
+Ha privát git-tárházat használ, a hurok bezárásához még egy feladatot kell elvégeznie: adja hozzá a (z `flux` ) rendszerbe állítási **kulcsként** generált nyilvános kulcsot a tárházban.
 
 **Nyilvános kulcs beszerzése az Azure CLI használatával**
 
@@ -232,7 +235,7 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 5. A nyilvános kulcs beillesztése (a környező idézőjelek mínusz)
 6. Kattintson a **Kulcs hozzáadása** lehetőségre.
 
-Az üzembe helyezési kulcsok kezelésével kapcsolatos további információkért tekintse meg a GitHub-dokumentációt.
+A kulcsok kezelésével kapcsolatos további információkért tekintse meg a GitHub-dokumentumokat.
 
 **Ha Azure DevOps-tárházat használ, adja hozzá a kulcsot az SSH-kulcsokhoz**
 
@@ -292,9 +295,11 @@ kubectl -n itops get all
 
 ## <a name="delete-a-configuration"></a>Konfiguráció törlése
 
-`sourceControlConfiguration`Az Azure CLI vagy Azure Portal használatával törölheti a t.  Miután elindította a DELETE parancsot, az `sourceControlConfiguration` erőforrás azonnal törlődik az Azure-ban, de akár 1 óráig is eltarthat a társított objektumok teljes törlése a fürtből (a rendszer lerövidíti az elemet). Ha a `sourceControlConfiguration` névterek hatókörével lett létrehozva, akkor a rendszer nem törli a névteret a fürtből (Ezzel elkerülhető a névtérben esetlegesen létrehozott egyéb erőforrások feltörése).
+Törölje `sourceControlConfiguration` Az Azure CLI vagy Azure Portal használatával.  Miután elindította a DELETE parancsot, az `sourceControlConfiguration` erőforrás azonnal törlődik az Azure-ban, de akár 1 óráig is eltarthat a társított objektumok teljes törlése a fürtből (az időeltolódás csökkentése érdekében).
 
-Vegye figyelembe, hogy a fürt azon módosításait, amelyek a követett git-tárházból történő központi telepítések eredményeként történtek, a törléskor nem törlődnek `sourceControlConfiguration` .
+> [!NOTE]
+> Miután létrehozta a sourceControlConfiguration a névtér hatókörével, lehetséges, hogy a `edit` névterek szerepkör-kötést használó felhasználók a munkaterheléseket ezen a névtéren helyezik üzembe. Ha a `sourceControlConfiguration` névtér hatóköre törölve lesz, a névtér érintetlen marad, és a rendszer nem törli a többi számítási feladat megszakítása érdekében.
+> A rendszer nem törli a fürt azon módosításait, amelyek a nyomon követett git-tárházból való üzembe helyezések eredményeként lettek törölve `sourceControlConfiguration` .
 
 ```console
 az k8sconfiguration delete --name '<config name>' -g '<resource group name>' --cluster-name '<cluster name>' --cluster-type connectedClusters
@@ -308,5 +313,5 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 
 ## <a name="next-steps"></a>További lépések
 
-- [A GitOps és a Helm használata a fürt konfigurációjához](./use-gitops-with-helm.md)
+- [A Helm használata a verziókövetés konfigurációjával](./use-gitops-with-helm.md)
 - [A fürt konfigurációjának szabályozása Azure Policy használatával](./use-azure-policy.md)

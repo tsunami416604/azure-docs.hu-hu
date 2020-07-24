@@ -1,6 +1,6 @@
 ---
-title: Apache Spark alkalmazások figyelése
-description: Az Azure szinapszis Studio segítségével figyelheti Apache Spark alkalmazásait.
+title: Apache Spark alkalmazások figyelése a szinapszis Studióban
+description: A szinapszis Studio használatával figyelheti Apache Spark alkalmazásait.
 services: synapse-analytics
 author: matt1883
 ms.service: synapse-analytics
@@ -9,14 +9,14 @@ ms.subservice: monitoring
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: e646f1bc1a25f58dd54437cbd77750479ac9ae99
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: a4dc2604dbd62da1baa4278ff3463f41337886bf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970899"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87052498"
 ---
-# <a name="use-the-azure-synapse-studio-preview-to-monitor-your-apache-spark-applications"></a>A Apache Spark-alkalmazások figyelése az Azure szinapszis Studio (előzetes verzió) használatával
+# <a name="use-synapse-studio-preview-to-monitor-your-apache-spark-applications"></a>A szinapszis Studio (előzetes verzió) használata a Apache Spark-alkalmazások figyelésére
 
 Az Azure szinapszis Analytics segítségével a Spark használatával jegyzetfüzeteket, feladatokat és más típusú alkalmazásokat futtathat a Spark-készletekben a munkaterületen.
 
@@ -24,7 +24,7 @@ Ez a cikk ismerteti, hogyan figyelheti meg Apache Spark-alkalmazásait, így nyo
 
 ## <a name="accessing-the-list-of-apache-spark-applications"></a>Apache Spark alkalmazások listájának elérése
 
-A munkaterületen lévő Apache Spark alkalmazások listájának megtekintéséhez először [nyissa meg az Azure szinapszis Studio](https://web.azuresynapse.net/) alkalmazást, és válassza ki a munkaterületet.
+A munkaterületen lévő Apache Spark alkalmazások listájának megtekintéséhez először [nyissa meg a szinapszis studiót](https://web.azuresynapse.net/) , és válassza ki a munkaterületet.
 
 ![Bejelentkezés a munkaterületre](./media/common/login-workspace.png)
 
@@ -52,6 +52,6 @@ Ha meg szeretné tekinteni az egyik Apache Spark alkalmazás részleteit, válas
 
 ## <a name="next-steps"></a>További lépések
 
-A folyamatok figyelésével kapcsolatos további információkért tekintse meg a [figyelő folyamat az Azure szinapszis Studio futtatása](how-to-monitor-pipeline-runs.md) című cikket. 
+A folyamatok figyelésével kapcsolatos további információkért tekintse meg a [folyamatok figyelése a szinapszis Studio](how-to-monitor-pipeline-runs.md) -ban című cikket. 
 
-A Apache Spark alkalmazás hibakeresésével kapcsolatos további információkért tekintse meg a [Apache Spark alkalmazások monitorozása az Azure szinapszis Studio](apache-spark-applications.md) -ban című cikket.
+Apache Spark alkalmazás hibakeresésével kapcsolatos további információkért tekintse meg a [Apache Spark alkalmazások monitorozása a szinapszis Studióban](apache-spark-applications.md) című cikket.

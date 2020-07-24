@@ -5,12 +5,12 @@ author: btardif
 ms.author: byvinyal
 ms.date: 9/23/2019
 ms.topic: article
-ms.openlocfilehash: 94a5fd3ae1de0708f0e5550547f7ab2fc9f881cb
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: c3c79944aa4add0a32dbb584b13606e32e146a1a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86146237"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87050298"
 ---
 # <a name="restore-deleted-app-service-app-using-powershell"></a>Eltávolított App Service-alkalmazás visszaállítása a PowerShell használatával
 
@@ -58,7 +58,7 @@ A részletes információk a következők:
 Miután azonosította a visszaállítani kívánt alkalmazást, visszaállíthatja azt a használatával `Restore-AzDeletedWebApp` .
 
 ```powershell
-Restore-AzDeletedWebApp -ResourceGroupName <my_rg> -Name <my_app> -TargetAppServicePlanName <my_asp>
+Restore-AzDeletedWebApp -TargetResourceGroupName <my_rg> -Name <my_app> -TargetAppServicePlanName <my_asp>
 ```
 > [!NOTE]
 > Az üzembe helyezési pontok nem állíthatók vissza az alkalmazás részeként. Ha vissza kell állítania egy átmeneti tárolóhelyet, használja a `-Slot <slot-name>` jelzőt.
@@ -66,7 +66,7 @@ Restore-AzDeletedWebApp -ResourceGroupName <my_rg> -Name <my_app> -TargetAppServ
 
 A következő parancs bemenetei:
 
-- **Erőforráscsoport**: cél erőforráscsoport, amelyben az alkalmazás vissza lesz állítva
+- **Cél erőforráscsoport**: cél erőforráscsoport, amelyben az alkalmazás vissza lesz állítva
 - **Név**: az alkalmazás nevének globálisan egyedinek kell lennie.
 - **TargetAppServicePlanName**: app Service az alkalmazáshoz társított csomag
 

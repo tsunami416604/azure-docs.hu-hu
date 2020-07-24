@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 743e3f50d747993250399493d97fc2becab19319
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 7/17/2020
+ms.openlocfilehash: 4b5898629c373e31d94ad09ca4af66de0428a7a2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79532042"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87047609"
 ---
 # <a name="azure-database-for-mariadb-server-firewall-rules"></a>Azure Database for MariaDB kiszolgálói tűzfalszabályok
 A tűzfalak mindaddig megakadályozzák az adatbázis-kiszolgáló elérését, amíg meg nem adja, hogy mely számítógépek rendelkeznek engedéllyel. A tűzfal az egyes kérések származó IP-címe alapján engedélyezi a hozzáférést a kiszolgálóhoz.
@@ -67,6 +67,11 @@ Vegye figyelembe a következő szempontokat, amikor a MariaDB-kiszolgáló szolg
    * Állítson be statikus IP-címeket az ügyfélszámítógépei számára, majd adja meg az IP-címeket tűzfalszabályokként.
 
 * **Úgy tűnik, hogy a kiszolgáló IP-címe nyilvános:** A Azure Database for MariaDB-kiszolgálóval létesített kapcsolatok egy nyilvánosan elérhető Azure-átjárón keresztül irányíthatók. A kiszolgáló tényleges IP-címét azonban tűzfal védi. További információért tekintse meg a [kapcsolati architektúráról szóló cikket](concepts-connectivity-architecture.md). 
+
+* **Nem lehet kapcsolatot létesíteni az Azure-erőforrással az engedélyezett IP-címmel:** Győződjön meg arról, hogy engedélyezve van-e a **Microsoft. SQL** szolgáltatási végpontja azon az alhálózaton, amelyhez csatlakozik. Ha a **Microsoft. SQL** engedélyezve van, az azt jelzi, hogy csak a [VNet-szolgáltatás végponti szabályait](concepts-data-access-security-vnet.md) szeretné használni az adott alhálózaton.
+
+   Előfordulhat például, hogy a következő hiba jelenik meg, ha egy Azure-beli virtuális gépről csatlakozik egy olyan alhálózaton, amelyhez engedélyezve van a **Microsoft. SQL** , de nincs megfelelő VNet-szabálya:`FATAL: Client from Azure Virtual Networks is not allowed to access the server`
+
 
 ## <a name="next-steps"></a>További lépések
 - [Azure Database for MariaDB tűzfalszabályok létrehozása és kezelése a Azure Portal használatával](./howto-manage-firewall-portal.md)

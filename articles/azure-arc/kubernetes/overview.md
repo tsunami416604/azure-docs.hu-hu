@@ -9,12 +9,12 @@ ms.author: mlearned
 description: Ez a cikk az Azure arc-kompatibilis Kubernetes áttekintését tartalmazza.
 keywords: Kubernetes, arc, Azure, tárolók
 ms.custom: references_regions
-ms.openlocfilehash: 3960a0f0b6866a0a5d3476e841d29c6e5a89a238
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 4f07c0e5e01648984514701cd4838f85478d86af
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84309934"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87050052"
 ---
 # <a name="what-is-azure-arc-enabled-kubernetes-preview"></a>Mi az Azure arc-kompatibilis Kubernetes előzetes verziója?
 
@@ -24,9 +24,8 @@ Kubernetes-fürt Azure-hoz való összekapcsolásához a fürt rendszergazdájá
 
 Az Azure arc-kompatibilis Kubernetes támogatja az iparági szabványnak megfelelő SSL-t az adatátvitel biztonságossá tételéhez. Az adatok titkosságának biztosítása érdekében a rendszer a Azure Cosmos DB adatbázisában tárolja az adatok titkosítását is.
  
- > [!NOTE]
-> Az Azure arc-kompatibilis Kubernetes előzetes verzióban érhető el. Nem ajánlott éles környezetben üzemelő számítási feladatokhoz. 
-
+> [!NOTE]
+> Az Azure arc-kompatibilis Kubernetes előzetes verzióban érhető el. Nem ajánlott éles környezetben üzemelő számítási feladatokhoz.
 
 ## <a name="supported-scenarios"></a>Támogatott esetek 
 
@@ -40,7 +39,6 @@ Az Azure arc-kompatibilis Kubernetes az alábbi forgatókönyveket támogatja:
 
 * Házirendek alkalmazása a Kubernetes Azure Policy használatával. 
 
- 
 ## <a name="supported-regions"></a>Támogatott régiók 
 
 Az Azure arc-kompatibilis Kubernetes jelenleg a következő régiókban támogatott: 

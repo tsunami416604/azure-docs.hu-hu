@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 12/14/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5b6879d11a4b47c0090f13baa0a15dcc696c8534
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 3301667c0ee6ad739b6fb734c2cea3aef4889bd9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525381"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87051844"
 ---
 # <a name="azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Azure Virtual Machines adatbázis-kezelő üzembe helyezése SAP-munkaterheléshez
 
@@ -74,7 +74,7 @@ ms.locfileid: "86525381"
 
 [azure-cli]:../../../cli-install-nodejs.md
 [azure-portal]:https://portal.azure.com
-[azure-ps]:/powershell/azureps-cmdlets-docs
+[azure-ps]:/powershell/azure/
 [azure-quickstart-templates-github]:https://github.com/Azure/azure-quickstart-templates
 [azure-script-ps]:https://go.microsoft.com/fwlink/p/?LinkID=395017
 [azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
@@ -374,10 +374,10 @@ A minimális konfiguráció a következő:
 
 | Összetevő | Lemez | Gyorsítótárazás | Storage-készlet |
 | --- | ---| --- | --- |
-| \oracle \<SID> \origlogaA & mirrlogB | Prémium | Egyik sem | Nem szükséges |
-| \oracle \<SID> \origlogaB & mirrlogA | Prémium | Egyik sem | Nem szükséges |
+| \oracle \<SID> \origlogaA & mirrlogB | Prémium | Nincs | Nem szükséges |
+| \oracle \<SID> \origlogaB & mirrlogA | Prémium | Nincs | Nem szükséges |
 | \oracle \<SID> \sapdata1... n | Prémium | Csak olvasható | Használható |
-| \oracle \<SID> \oraarch | Standard | Egyik sem | Nem szükséges |
+| \oracle \<SID> \oraarch | Standard | Nincs | Nem szükséges |
 | Oracle Home, saptrace,... | Operációsrendszer-lemez | | Nem szükséges |
 
 
@@ -387,13 +387,13 @@ A teljesítmény konfigurációja a következő:
 
 | Összetevő | Lemez | Gyorsítótárazás | Storage-készlet |
 | --- | ---| --- | --- |
-| \oracle \<SID> \origlogaA | Prémium | Egyik sem | Használható  |
-| \oracle \<SID> \origlogaB | Prémium | Egyik sem | Használható |
-| \oracle \<SID> \mirrlogAB | Prémium | Egyik sem | Használható |
-| \oracle \<SID> \mirrlogBA | Prémium | Egyik sem | Használható |
+| \oracle \<SID> \origlogaA | Prémium | Nincs | Használható  |
+| \oracle \<SID> \origlogaB | Prémium | Nincs | Használható |
+| \oracle \<SID> \mirrlogAB | Prémium | Nincs | Használható |
+| \oracle \<SID> \mirrlogBA | Prémium | Nincs | Használható |
 | \oracle \<SID> \sapdata1... n | Prémium | Csak olvasható | Ajánlott  |
-| \oracle\SID\sapdata (n + 1) * | Prémium | Egyik sem | Használható |
-| \oracle \<SID> \oraarch * | Prémium | Egyik sem | Nem szükséges |
+| \oracle\SID\sapdata (n + 1) * | Prémium | Nincs | Használható |
+| \oracle \<SID> \oraarch * | Prémium | Nincs | Nem szükséges |
 | Oracle Home, saptrace,... | Operációsrendszer-lemez | Nem szükséges |
 
 * (n + 1): üzemeltetési rendszerek, TEMP és visszavonás tablespaces. A rendszer és a visszavonási eszközök I/O-mintája eltér más, az alkalmazásadatok futtatására szolgáló tablespace-modelltől. A rendszer teljesítményének és az tablespace-EK visszavonásának legjobb lehetősége a gyorsítótárazás.
@@ -464,10 +464,10 @@ Minimális konfiguráció:
 
 | Összetevő | Lemez | Gyorsítótárazás | Csíkot |
 | --- | ---| --- | --- |
-| /Oracle/ \<SID> /origlogaA & mirrlogB | Prémium | Egyik sem | Nem szükséges |
-| /Oracle/ \<SID> /origlogaB & mirrlogA | Prémium | Egyik sem | Nem szükséges |
+| /Oracle/ \<SID> /origlogaA & mirrlogB | Prémium | Nincs | Nem szükséges |
+| /Oracle/ \<SID> /origlogaB & mirrlogA | Prémium | Nincs | Nem szükséges |
 | /Oracle/ \<SID> /sapdata1... n | Prémium | Csak olvasható | Használható |
-| /Oracle/ \<SID> /oraarch | Standard | Egyik sem | Nem szükséges |
+| /Oracle/ \<SID> /oraarch | Standard | Nincs | Nem szükséges |
 | Oracle Home, saptrace,... | Operációsrendszer-lemez | | Nem szükséges |
 
 * Kiszerelés: LVM Stripe vagy MDADM a RAID0 használatával
@@ -478,13 +478,13 @@ Teljesítmény konfigurációja:
 
 | Összetevő | Lemez | Gyorsítótárazás | Csíkot |
 | --- | ---| --- | --- |
-| /Oracle/ \<SID> /origlogaA | Prémium | Egyik sem | Használható  |
-| /Oracle/ \<SID> /origlogaB | Prémium | Egyik sem | Használható |
-| /Oracle/ \<SID> /mirrlogAB | Prémium | Egyik sem | Használható |
-| /Oracle/ \<SID> /mirrlogBA | Prémium | Egyik sem | Használható |
+| /Oracle/ \<SID> /origlogaA | Prémium | Nincs | Használható  |
+| /Oracle/ \<SID> /origlogaB | Prémium | Nincs | Használható |
+| /Oracle/ \<SID> /mirrlogAB | Prémium | Nincs | Használható |
+| /Oracle/ \<SID> /mirrlogBA | Prémium | Nincs | Használható |
 | /Oracle/ \<SID> /sapdata1... n | Prémium | Csak olvasható | Ajánlott  |
-| /Oracle/ \<SID> /sapdata (n + 1) * | Prémium | Egyik sem | Használható |
-| /Oracle/ \<SID> /oraarch * | Prémium | Egyik sem | Nem szükséges |
+| /Oracle/ \<SID> /sapdata (n + 1) * | Prémium | Nincs | Használható |
+| /Oracle/ \<SID> /oraarch * | Prémium | Nincs | Nem szükséges |
 | Oracle Home, saptrace,... | Operációsrendszer-lemez | Nem szükséges |
 
 * Kiszerelés: LVM Stripe vagy MDADM a RAID0 használatával

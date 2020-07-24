@@ -1,5 +1,5 @@
 ---
-title: Apache Spark az Azure szinapszis Analyticsben – alapvető fogalmak
+title: Apache Spark alapvető fogalmak
 description: Ez a cikk az Azure szinapszis Analytics és a különböző fogalmak Apache Sparkának bevezetését ismerteti.
 services: synapse-analytics
 author: euangMS
@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: aa1b4287899aaff9ede4832e999603773d79d28c
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.openlocfilehash: 806f4dff49e9650dba073721109e7d54a18ecbbe
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85194127"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87052333"
 ---
 # <a name="apache-spark-in-azure-synapse-analytics-core-concepts"></a>Apache Spark az Azure szinapszis Analytics alapvető fogalmakkal
 

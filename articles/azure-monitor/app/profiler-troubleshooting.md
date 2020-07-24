@@ -6,17 +6,17 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 7c9dd20aea410aecb34811ca6e08e0f641be292b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aa9b186e74ed3b8fe5496afd5b21c54f50537d5f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84148344"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87049793"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Az Application Insights Profiler engedélyezésével vagy megtekintésével kapcsolatos problémák elhárítása
 
-## <a name="active-issues"></a>Aktív problémák
-
-* A ASP.NET Core 3. x alkalmazások profilkészítése mostantól támogatott az Azure App Services.
+> [!CAUTION]
+> Hiba történt a Profiler futtatásához a Azure App Service ASP.NET Core alkalmazásaihoz. Javítunk, de eltarthat néhány hétig, hogy világszerte üzembe helyezzük. A hiba megkerüléséhez adja hozzá a Application Insights SDK-t az alkalmazáshoz az [itt](./asp-net-core.md#enable-application-insights-server-side-telemetry-visual-studio)található utasításokkal.
 
 ## <a name="general-troubleshooting"></a><a id="troubleshooting"></a>Általános hibaelhárítás
 
@@ -75,7 +75,7 @@ A Profiler megfelelő működéséhez:
 
 
 * A **ApplicationInsightsProfiler3** -webjobs futnia kell. A webjobs megkeresése:
-   1. Nyissa meg a [kudu](https://blogs.msdn.microsoft.com/cdndevs/2015/04/01/the-kudu-debug-console-azure-websites-best-kept-secret/).
+   1. Nyissa meg a [kudu](/archive/blogs/cdndevs/the-kudu-debug-console-azure-websites-best-kept-secret).
    1. Az **eszközök** menüben válassza a **webjobs irányítópult**elemet.  
       Megnyílik a **webjobs** panel. 
    
@@ -193,11 +193,3 @@ Ha az alkalmazás proxyn vagy tűzfalon keresztül csatlakozik az internethez, e
 [profiler-search-telemetry]:./media/profiler-troubleshooting/Profiler-Search-Telemetry.png
 [Profiler – webjobs]:./media/profiler-troubleshooting/Profiler-webjob.png
 [Profiler-webjobs-log]:./media/profiler-troubleshooting/Profiler-webjob-log.png
-
-
-
-
-
-
-
-

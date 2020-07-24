@@ -1,5 +1,5 @@
 ---
-title: Az GitOps és a Helm használata az Azure arc-kompatibilis fürtkonfiguráció (előzetes verzió)
+title: Helm-diagramok üzembe helyezése GitOps használatával az arc-kompatibilis Kubernetes-fürtön (előzetes verzió)
 services: azure-arc
 ms.service: azure-arc
 ms.date: 05/19/2020
@@ -8,14 +8,14 @@ author: mlearned
 ms.author: mlearned
 description: Az GitOps és a Helm használata az Azure arc-kompatibilis fürtkonfiguráció (előzetes verzió)
 keywords: GitOps, Kubernetes, K8s, Azure, Helm, arc, AK, Azure Kubernetes szolgáltatás, tárolók
-ms.openlocfilehash: 677c5f2b27794ebea9d38e470b5e1a5ba12bff7e
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: f6a30dd66ccf476da0293bdebf9054b6781a6bf6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85857219"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87049944"
 ---
-# <a name="use-gitops-with-helm-for-an-azure-arc-enabled-cluster-configuration-preview"></a>Az GitOps és a Helm használata az Azure arc-kompatibilis fürtkonfiguráció (előzetes verzió)
+# <a name="deploy-helm-charts-using-gitops-on-arc-enabled-kubernetes-cluster-preview"></a>Helm-diagramok üzembe helyezése GitOps használatával az arc-kompatibilis Kubernetes-fürtön (előzetes verzió)
 
 A Helm egy nyílt forráskódú csomagolási eszköz, amely segítséget nyújt a Kubernetes-alkalmazások életciklusának telepítéséhez és kezeléséhez. A Linux-csomagkezelő, például az APT és a yum hasonlóan a Helm a Kubernetes-diagramok kezelésére szolgál, amelyek előre konfigurált Kubernetes-erőforrások csomagjai.
 
@@ -45,7 +45,7 @@ Name           Location    ResourceGroup
 arc-helm-demo  eastus      k8s-clusters
 ```
 
-## <a name="overview-of-using-helm-with-azure-arc-enabled-kubernetes"></a>A Helm használatának áttekintése az Azure arc-kompatibilis Kubernetes
+## <a name="overview-of-using-gitops-and-helm-with-azure-arc-enabled-kubernetes"></a>A GitOps és a Helm használatának áttekintése az Azure arc-kompatibilis Kubernetes
 
  A Helm operátor a Helm chart kiadásait automatizáló adatáramlási bővítményt biztosít. A diagram kiadása egy HelmRelease nevű egyéni Kubernetes-erőforráson keresztül van leírva. A Flux szinkronizálja ezeket az erőforrásokat a git-ből a fürtbe, és a Helm operátor biztosítja, hogy a Helm-diagramok az erőforrásokban megadott módon legyenek közzétéve.
 
@@ -61,30 +61,25 @@ arc-helm-demo  eastus      k8s-clusters
 │       │   └── service.yaml
 │       └── values.yaml
 └── releases
-    └── prod
-        └── azure-vote-app.yaml
+    └── vote-app.yaml
 ```
 
-A git-tárházban két címtár található, amelyek közül az egyik egy Helm-diagramot, egy pedig a releases config fájlt tartalmazza. A `releases/prod` könyvtárban a `azure-vote-app.yaml` tartalmazza az alábbi HelmRelease-konfigurációt:
+A git-tárházban két címtár található, amelyek közül az egyik egy Helm-diagramot, egy pedig a releases config fájlt tartalmazza. A `releases` címtárban a `vote-app.yaml` tartalmazza az alábbi HelmRelease-konfigurációt:
 
 ```bash
- apiVersion: helm.fluxcd.io/v1
- kind: HelmRelease
- metadata:
-   name: azure-vote-app
-   namespace: prod
-   annotations:
- spec:
-   releaseName: azure-vote-app
-   chart:
-     git: https://github.com/Azure/arc-helm-demo
-     path: charts/azure-vote
-     ref: master
-   values:
-     image:
-       repository: dstrebel/azurevote
-       tag: v1
-     replicaCount: 3
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: vote-app
+  namespace: arc-k8s-demo
+spec:
+  releaseName: arc-k8s-demo
+  chart:
+    git: https://github.com/Azure/arc-helm-demo
+    ref: master
+    path: charts/azure-vote
+  values:
+    frontendServiceName: arc-k8s-demo-vote-front
 ```
 
 A Helm kiadásának konfigurációja a következő mezőket tartalmazza:
@@ -97,20 +92,26 @@ A Helm kiadásának konfigurációja a következő mezőket tartalmazza:
 
 A HelmRelease spec. Values paraméterben megadott beállítások felülbírálják a diagram forrásának Values. YAML megadott beállításait.
 
-A HelmRelease kapcsolatos további információkért tekintse meg a hivatalos [Helm-kezelő dokumentációját](https://docs.fluxcd.io/projects/helm-operator/en/1.0.0-rc9/references/helmrelease-custom-resource.html)
+A HelmRelease kapcsolatos további információkért tekintse meg a hivatalos [Helm-kezelő dokumentációját](https://docs.fluxcd.io/projects/helm-operator/en/stable/)
 
 ## <a name="create-a-configuration"></a>Konfiguráció létrehozása
 
-Az Azure CLI-bővítményének használatával `k8sconfiguration` kapcsolja össze a csatlakoztatott fürtöt a példában szereplő git-adattárral. Ennek a konfigurációnak a nevét `azure-voting-app` és a Flux-operátor üzembe helyezését a névtérben fogjuk megadni `prod` .
+Az Azure CLI-bővítményének használatával `k8sconfiguration` kapcsolja össze a csatlakoztatott fürtöt a példában szereplő git-adattárral. Ennek a konfigurációnak a nevét `azure-voting-app` és a Flux-operátor üzembe helyezését a névtérben fogjuk megadni `arc-k8s-demo` .
 
 ```bash
-az k8sconfiguration create --name azure-voting-app --resource-group  $RESOURCE_GROUP --cluster-name $CLUSTER_NAME --operator-instance-name azure-voting-app --operator-namespace prod --enable-helm-operator --helm-operator-version='0.6.0' --helm-operator-params='--set helm.versions=v3' --repository-url https://github.com/Azure/arc-helm-demo.git --operator-params='--git-readonly --git-path=releases/prod' --scope namespace --cluster-type connectedClusters
+az k8sconfiguration create --name azure-voting-app \
+  --resource-group $RESOURCE_GROUP --cluster-name $CLUSTER_NAME \
+  --operator-instance-name flux --operator-namespace arc-k8s-demo \
+  --operator-params='--git-readonly --git-path=releases' \
+  --enable-helm-operator --helm-operator-version='0.6.0' \
+  --helm-operator-params='--set helm.versions=v3' \
+  --repository-url https://github.com/Azure/arc-helm-demo.git  \
+  --scope namespace --cluster-type connectedClusters
 ```
 
 ### <a name="configuration-parameters"></a>Konfigurációs paraméterek
 
 A konfiguráció létrehozásának testreszabásához további tudnivalókat a [használni kívánt paraméterekről](./use-gitops-connected-cluster.md#additional-parameters)olvashat.
-
 
 ## <a name="validate-the-configuration"></a>A konfiguráció ellenőrzése
 
@@ -120,7 +121,7 @@ Az Azure CLI használatával ellenőrizze, hogy a `sourceControlConfiguration` s
 az k8sconfiguration show --resource-group $RESOURCE_GROUP --name azure-voting-app --cluster-name $CLUSTER_NAME --cluster-type connectedClusters
 ```
 
-Vegye figyelembe, hogy az `sourceControlConfiguration` erőforrás a megfelelőségi állapottal, az üzenetekkel és a hibakeresési információkkal frissül.
+Az `sourceControlConfiguration` erőforrás a megfelelőségi állapottal, az üzenetekkel és a hibakeresési információkkal frissül.
 
 **Kimeneti**
 
@@ -130,19 +131,24 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
   "complianceStatus": {
     "complianceState": "Installed",
     "lastConfigApplied": "2019-12-05T05:34:41.481000",
-    "message": "...",
+    "message": "{\"OperatorMessage\":null,\"ClusterState\":null}",
     "messageLevel": "3"
   },
-  "id": "/subscriptions/57ac26cf-a9f0-4908-b300-9a4e9a0fb205/resourceGroups/AzureArcTest/providers/Microsoft.Kubernetes/connectedClusters/AzureArcTest1/providers/Microsoft.KubernetesConfiguration/sourceControlConfigurations/cluster-config",
-  "name": "azure-vote-app",
-  "operatorInstanceName": "cluster-config",
-  "operatorNamespace": "prod",
-  "operatorParams": "--git-readonly --git-path=releases/prod",
+  "enableHelmOperator": "True",
+  "helmOperatorProperties": {
+    "chartValues": "--set helm.versions=v3",
+    "chartVersion": "0.6.0"
+  },
+  "id": "/subscriptions/57ac26cf-a9f0-4908-b300-9a4e9a0fb205/resourceGroups/AzureArcTest/providers/Microsoft.Kubernetes/connectedClusters/AzureArcTest1/providers/Microsoft.KubernetesConfiguration/sourceControlConfigurations/azure-voting-app",
+  "name": "azure-voting-app",
+  "operatorInstanceName": "flux",
+  "operatorNamespace": "arc-k8s-demo",
+  "operatorParams": "--git-readonly --git-path=releases",
   "operatorScope": "namespace",
   "operatorType": "Flux",
   "provisioningState": "Succeeded",
-  "repositoryPublicKey": "...",
-  "repositoryUrl": "git://github.com/Azure/arc-helm-demo.git",
+  "repositoryPublicKey": "",
+  "repositoryUrl": "https://github.com/Azure/arc-helm-demo.git",
   "resourceGroup": "AzureArcTest",
   "type": "Microsoft.KubernetesConfiguration/sourceControlConfigurations"
 }
@@ -150,20 +156,11 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 
 ## <a name="validate-application"></a>Alkalmazás érvényesítése
 
-Most ellenőrizzük, hogy az alkalmazás a szolgáltatás IP-címének beszerzésével működik-e.
+Futtassa az alábbi parancsot, és a böngészőben navigáljon a [localhost: 3000](http://localhost:3000) -re, és ellenőrizze, hogy fut-e az alkalmazás.
 
 ```bash
-kubectl get svc/azure-vote-front -n prod
+kubectl port-forward -n arc-k8s-demo svc/arc-k8s-demo-vote-front 3000:80
 ```
-
-**Kimeneti**
-
-```bash
-NAME               TYPE           CLUSTER-IP    EXTERNAL-IP      PORT(S)        AGE
-azure-vote-front   LoadBalancer   10.0.14.161   52.186.160.216   80:30372/TCP   4d22h
-```
-
-Keresse meg a fenti kimenetből a külső IP-címet, és nyissa meg egy böngészőben.
 
 ## <a name="next-steps"></a>További lépések
 

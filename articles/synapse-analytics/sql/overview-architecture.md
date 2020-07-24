@@ -1,5 +1,5 @@
 ---
-title: Azure szinapszis SQL-architektúra
+title: A Synapse SQL architektúrája
 description: Ismerje meg, hogy az Azure szinapszis SQL hogyan ötvözi a nagymértékben párhuzamos feldolgozást (MPP) az Azure Storage szolgáltatással a nagy teljesítmény és méretezhetőség érdekében.
 services: synapse-analytics
 author: mlee3gsd
@@ -10,11 +10,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: d073bc82b3a9e42e443caa5d3e7855fd4eb5b98b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9f2f3eee12bb8741f6d079f6f081a08f4e2db9b5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83658914"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87046863"
 ---
 # <a name="azure-synapse-sql-architecture"></a>Azure szinapszis SQL-architektúra 
 
@@ -44,7 +45,7 @@ A leválasztott tárolással és számítással a szinapszis SQL egyik használa
 
 * Az adatok áthelyezése nélkül növelheti vagy csökkentheti a számítási teljesítményt egy SQL-készleten (adatraktáron) belül.
 * Szüneteltetheti a számítási kapacitást az adatok megőrzésével, hogy csak a tárterületért kelljen fizetnie.
-* A működési időn belül folytatni tudja a számítási kapacitást.
+* Működési időben újra aktiválhatja a számítási kapacitást.
 
 ## <a name="azure-storage"></a>Azure Storage
 

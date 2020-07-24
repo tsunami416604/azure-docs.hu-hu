@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: d27abfda789a9bb1bd5479b059355703388333f8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 1e547cf3f08e49ce707cd079778588fb6be5acb5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86520646"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87048431"
 ---
 # <a name="azure-security-baseline-for-logic-apps"></a>Logic Apps Azure biztonsági alapterve
 
@@ -643,7 +643,7 @@ A Microsoft kezeli a Azure Logic Apps alapjául szolgáló infrastruktúrát, é
 
 ### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: szerepköralapú hozzáférés-vezérlés használata az erőforrásokhoz való hozzáférés szabályozásához
 
-**Útmutató**: csak meghatározott felhasználók vagy csoportok számára engedélyezheti adott feladatok futtatását, például a Logic apps felügyeletét, szerkesztését és megtekintését. Az engedélyeik szabályozásához használja az Azure szerepköralapú Access Control (RBAC), hogy testreszabott vagy beépített szerepköröket rendeljen az Azure-előfizetése tagjaihoz:
+**Útmutató**: csak meghatározott felhasználók vagy csoportok számára engedélyezheti adott feladatok futtatását, például a Logic apps felügyeletét, szerkesztését és megtekintését. Az engedélyeik szabályozásához használja az Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC), hogy testreszabott vagy beépített szerepköröket rendeljen az Azure-előfizetés tagjaihoz:
 - Logic app közreműködő: lehetővé teszi a logikai alkalmazások kezelését, de nem tudja módosítani őket.
 - Logikai alkalmazás kezelője: lehetővé teszi a Logic apps olvasását, engedélyezését és letiltását, de nem szerkesztheti és nem frissítheti őket.
 
@@ -1285,7 +1285,7 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 **Felelősség**: megosztott
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Lásd az [Azure biztonsági teljesítménytesztét](../security/benchmarks/overview.md)
 - További információ az [Azure biztonsági alaptervekről](../security/benchmarks/security-baselines-overview.md)

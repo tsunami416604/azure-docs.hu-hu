@@ -9,13 +9,13 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
 ms.date: 01/14/2020
-ms.author: anzaman
-ms.openlocfilehash: 79c3a7934e9152a4908f895c20ee6fbdc0f360cf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: kumud
+ms.openlocfilehash: 5fc565ecc1b501f52e934784695594dcfef2a83a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80127997"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87047286"
 ---
 # <a name="customize-a-brands-model-with-the-video-indexer-api"></a>Brands-modell testreszabása a Video Indexer API-val
 
@@ -37,7 +37,7 @@ A törzsben beállítható egyéb paraméterek:
 * Az `referenceUrl` érték a márka bármely hivatkozási webhelye lehet, például a wikipedia oldalára mutató hivatkozás.
 * Az `tags` érték a márka címkéit sorolja fel. Ez a címke a Video Indexer webhely márka *Kategória* mezőjében jelenik meg. Például az "Azure" márka címkézhető vagy kategorizálható "Cloud"-ként.
 
-### <a name="response"></a>Válasz
+### <a name="response"></a>Reagálás
 
 A válasz információt nyújt az imént létrehozott márkáról az alábbi példa formátuma alapján.
 
@@ -63,7 +63,7 @@ A válasz információt nyújt az imént létrehozott márkáról az alábbi pé
 
 A [márka törlése](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Brand?) API eltávolítja a megadott fiók egyéni márkák modelljéből származó márkát. A fiók meg van adva a `accountId` paraméterben. A sikeres hívás után a márka már nem *szerepel a* Brands *(márkák)* listában.
 
-### <a name="response"></a>Válasz
+### <a name="response"></a>Reagálás
 
 A márka törlését követően a rendszer nem adott vissza tartalmat.
 
@@ -71,7 +71,7 @@ A márka törlését követően a rendszer nem adott vissza tartalmat.
 
 A [Brand API beolvasása](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Brand?) lehetővé teszi, hogy a márka azonosítójának használatával megkeresse az egyéni márkák modellben található márka részleteit.
 
-### <a name="response"></a>Válasz
+### <a name="response"></a>Reagálás
 
 A válasz az alábbi példa formátumát követve információt nyújt a keresett márkáról (a márka AZONOSÍTÓjának használatával).
 
@@ -100,7 +100,7 @@ A válasz az alábbi példa formátumát követve információt nyújt a kereset
 
 A [Brand API frissítése](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Brand?) lehetővé teszi, hogy a márka azonosítójának használatával megkeresse az egyéni márkák modellben található márka részleteit.
 
-### <a name="response"></a>Válasz
+### <a name="response"></a>Reagálás
 
 A válasz az alábbi példa formátumát követve frissített információt nyújt a frissített adatokról.
 
@@ -126,7 +126,7 @@ A válasz az alábbi példa formátumát követve frissített információt nyú
 
 A [minden márka beolvasása](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Brands?) API az egyéni márkák modellben lévő összes márkát visszaadja a megadott fiókhoz, függetlenül attól, hogy a márka a *befoglalási* vagy *kizárási* márkák listájában szerepel-e.
 
-### <a name="response"></a>Válasz
+### <a name="response"></a>Reagálás
 
 A válasz tartalmazza a fiókban lévő összes márka listáját, és az alábbi példa formátumát követve mindegyik részletet.
 
@@ -166,7 +166,7 @@ A válasz tartalmazza a fiókban lévő összes márka listáját, és az alább
 
 A [Brands beállítások beolvasása](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Brands) API a megadott fiók márkák modell beállításait adja vissza. A márkák modell beállításai azt jelzik, hogy engedélyezve van-e a Bing Brands adatbázisának észlelése. Ha a Bing-márkák nincsenek engedélyezve, a Video Indexer csak a megadott fiók Custom Brands modelljéből származó márkákat fogja felderíteni.
 
-### <a name="response"></a>Válasz
+### <a name="response"></a>Reagálás
 
 A válasz azt jelzi, hogy a Bing márkák engedélyezve vannak-e az alábbi példa formátuma szerint.
 
@@ -186,7 +186,7 @@ A [márkák frissítése](https://api-portal.videoindexer.ai/docs/services/opera
 
 A `useBuiltIn` jelző értéke TRUE (igaz) érték azt jelenti, hogy a Bing-márkák engedélyezve vannak. Ha `useBuiltin` a hamis, a Bing-márkák le vannak tiltva.
 
-### <a name="response"></a>Válasz
+### <a name="response"></a>Reagálás
 
 A Brands modell beállításának frissítése nem történt meg a visszaadott tartalomban.
 

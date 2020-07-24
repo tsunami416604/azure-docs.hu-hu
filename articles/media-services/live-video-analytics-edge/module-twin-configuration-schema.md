@@ -3,20 +3,21 @@ title: Modul Twin JSON-sémája – Azure
 description: Ez a témakör a IoT Edge élő videó-elemzési moduljának kettős JSON-sémáját ismerteti.
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: a342c59b35c7ebb4b6021163da76bdd3e0d449c3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8bd86bdc2c8de9ee586e785db2074fa772100420
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84266814"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87053070"
 ---
 # <a name="module-twin-json-schema"></a>Modul Twin JSON-sémája
 
-Az ikrek olyan JSON-dokumentumok, amelyek az eszköz állapotával kapcsolatos információkat tárolnak, beleértve a metaadatokat, a konfigurációkat és a feltételeket. Az IoT Hub minden egyes rácsatlakoztatott eszközhöz fenntart egy ikereszközt. Részletes magyarázat: az [ikrek megismerése és használata IoT hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-module-twins)
+Az ikrek olyan JSON-dokumentumok, amelyek az eszköz állapotával kapcsolatos információkat tárolnak, beleértve a metaadatokat, a konfigurációkat és a feltételeket. Az IoT Hub minden egyes rácsatlakoztatott eszközhöz fenntart egy ikereszközt. Részletes magyarázat: az [ikrek megismerése és használata IoT hub](../../iot-hub/iot-hub-devguide-module-twins.md)
 
 Ez a témakör a IoT Edge élő videó-elemzési moduljának kettős JSON-sémáját ismerteti.
 
 > [!NOTE]
-> A Media Services erőforrások és a Media Services API elérésének engedélyezéséhez először hitelesítenie kell magát. További információ: [hozzáférés a Azure Media Services API](../latest/media-services-apis-overview.md#accessing-the-azure-media-services-api)-hoz.
+> A Media Services-erőforrások és a Media Services API eléréséhez először hitelesítenie kell magát. További információ: [hozzáférés a Azure Media Services API](../latest/media-services-apis-overview.md#accessing-the-azure-media-services-api)-hoz.
 
 ## <a name="module-twin-properties"></a>Modul Twin tulajdonságai
 
@@ -42,7 +43,7 @@ A IoT Edge Live Video Analytics a következő modul két tulajdonságát teszi e
 
 <sup>*</sup>Az egyszerű szolgáltatás tanúsítványát vagy jelszavát kell megadnia. 
 
-A dinamikus tulajdonságok a modul újraindítása nélkül is frissíthetők. A következő tulajdonságok értékeinek beszerzéséhez kövesse a [hozzáférés Media Services API-hoz](../latest/access-api-cli-how-to.md) című cikk utasításait. 
+A dinamikus tulajdonságok a modul újraindítása nélkül is frissíthetők. A következő tulajdonságok értékeinek beszerzéséhez kövesse a [hozzáférés Media Services API-hoz](../latest/access-api-howto.md) című cikk utasításait. 
 
 A választható diagnosztikai beállításokkal kapcsolatos további információkért tekintse meg a [figyelés és naplózás](monitoring-logging.md) című cikket.
 

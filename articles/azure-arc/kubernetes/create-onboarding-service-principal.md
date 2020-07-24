@@ -8,11 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: 'Azure arc-kompatibilis bevezetési egyszerű szolgáltatás létrehozása '
 keywords: Kubernetes, arc, Azure, tárolók
-ms.openlocfilehash: 3c95c6bb85c7c1bc097b7751a560a658863c0afd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 02689dba32c8cc91e4a4a4de4dee98bc990b4dd6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83725601"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87050067"
 ---
 # <a name="create-an-azure-arc-enabled-onboarding-service-principal-preview"></a>Azure arc-kompatibilis bevezetési egyszerű szolgáltatás létrehozása (előzetes verzió)
 
@@ -42,9 +43,9 @@ az ad sp create-for-RBAC --skip-assignment --name "https://azure-arc-for-k8s-onb
 }
 ```
 
-## <a name="assign-permissions"></a>Engedélyek kiosztása
+## <a name="assign-permissions"></a>Engedélyek hozzárendelése
 
-Az új egyszerű szolgáltatás létrehozása után rendelje hozzá az "Azure arc for Kubernetes bevezetéséhez" szerepkört az újonnan létrehozott rendszerbiztonsági tag számára. Ez egy beépített Azure-szerepkör korlátozott engedélyekkel, amelyek csak a rendszerbiztonsági tag számára engedélyezik a fürtök regisztrálását az Azure-ban. A rendszerbiztonsági tag nem tudja frissíteni, törölni vagy módosítani az előfizetésben lévő többi fürtöt és erőforrást.
+Az új szolgáltatásnév létrehozása után rendelje hozzá a "Kubernetes cluster-Azure arc bevezetése" szerepkört az újonnan létrehozott rendszerbiztonsági tag számára. Ez egy beépített Azure-szerepkör korlátozott engedélyekkel, amelyek csak a rendszerbiztonsági tag számára engedélyezik a fürtök regisztrálását az Azure-ban. A rendszerbiztonsági tag nem tudja frissíteni, törölni vagy módosítani az előfizetésben lévő többi fürtöt és erőforrást.
 
 A korlátozott képességek miatt az ügyfelek könnyedén újra használhatják ezt a résztvevőt több fürt bevezetéséhez.
 
@@ -53,7 +54,7 @@ Az engedélyek tovább korlátozhatók, `--scope` Ha a szerepkör hozzárendelé
 | Erőforrás  | `scope` argumentum| Hatás |
 | ------------- | ------------- | ------------- |
 | Előfizetés | `--scope /subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333` | Az egyszerű szolgáltatás minden olyan fürtöt regisztrálhat egy meglévő erőforráscsoporthoz a megadott előfizetésben |
-| Erőforráscsoport | `--scope /subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333/resourceGroups/myGroup`  | Az egyszerű szolgáltatásnév __csak__ a fürtök regisztrálását tudja regisztrálni az erőforráscsoporthoz`myGroup` |
+| Resource Group (Erőforráscsoport) | `--scope /subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333/resourceGroups/myGroup`  | Az egyszerű szolgáltatásnév __csak__ a fürtök regisztrálását tudja regisztrálni az erőforráscsoporthoz`myGroup` |
 
 ```console
 az role assignment create \

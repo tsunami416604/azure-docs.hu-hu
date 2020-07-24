@@ -7,11 +7,12 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: dfa9de94665c0ee98d0252be6de807f18e39b087
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3e64ffe5007d27a44167f08807a9694875fe48c4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83697978"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87050452"
 ---
 # <a name="manage-azure-analysis-services-with-powershell"></a>Az Azure Analysis Services kezelése a PowerShell-lel
 
@@ -25,7 +26,7 @@ A kiszolgáló erőforrás-kezelési feladatai, például a kiszolgálók létre
 
 A legtöbb PowerShell-feladat megköveteli, hogy rendszergazdai jogosultságokkal rendelkezzen a kezelt Analysis Services-kiszolgálón. Az ütemezett PowerShell-feladatok felügyelet nélküli műveletek. Az ütemező szolgáltatást futtató fióknak vagy szolgáltatásnak rendszergazdai jogosultságokkal kell rendelkeznie a Analysis Services kiszolgálón. 
 
-Azure PowerShell parancsmagokat használó kiszolgálói műveletek esetén a fióknak vagy a Feladatütemezőt futtató fióknak az erőforrás tulajdonosi szerepköréhez is tartoznia kell az [Azure szerepköralapú Access Control (RBAC)](../role-based-access-control/overview.md)szolgáltatásban. 
+Azure PowerShell parancsmagokat használó kiszolgálói műveletek esetén a fióknak vagy a Feladatütemezőt futtató fióknak az erőforrás tulajdonosi szerepköréhez is tartoznia kell az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../role-based-access-control/overview.md)szolgáltatásban. 
 
 ## <a name="resource-and-server-operations"></a>Erőforrás-és kiszolgálói műveletek 
 
@@ -43,7 +44,7 @@ Dokumentáció – [SQLServer-hivatkozás](/powershell/module/sqlserver)
 
 ### <a name="supported-cmdlets"></a>Támogatott parancsmagok
 
-|Parancsmag|Description|
+|Parancsmag|Leírás|
 |------------|-----------------| 
 |[Add-RoleMember](https://docs.microsoft.com/powershell/module/sqlserver/Add-RoleMember)|Vegyen fel egy tagot egy adatbázis-szerepkörbe.| 
 |[Backup – ASDatabase](https://docs.microsoft.com/powershell/module/sqlserver/backup-asdatabase)|Analysis Services adatbázis biztonsági mentése.|  

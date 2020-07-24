@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 72f9381a320dc0fb946dbf6f48c5bcab5390aed5
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: c49e92cda89cfc1d72a0550c2a53430f3e6f2844
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86243579"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87050330"
 ---
 # <a name="azure-api-management-faqs"></a>Azure API Management – gyakori kérdések
 Választ kaphat az Azure API Management gyakori kérdéseire, mintáinak és ajánlott eljárásaira.
@@ -77,7 +77,7 @@ A következőképpen adhat hozzá felhasználókat a rendszergazdák csoporthoz:
 2. Lépjen a frissíteni kívánt API Management-példánnyal rendelkező erőforráscsoporthoz.
 3. A API Management-ben rendelje hozzá az **API Management szolgáltatás közreműködői** szerepkört a felhasználóhoz.
 
-Az újonnan hozzáadott közreműködő mostantól Azure PowerShell [parancsmagokat](/powershell/azure/overview)is használhat. A következőképpen jelentkezhet be rendszergazdaként:
+Az újonnan hozzáadott közreműködő mostantól Azure PowerShell [parancsmagokat](/powershell/azure/)is használhat. A következőképpen jelentkezhet be rendszergazdaként:
 
 1. `Connect-AzAccount`Jelentkezzen be a parancsmag használatával.
 2. Állítsa a kontextust arra az előfizetésre, amely a szolgáltatást használja `Set-AzContext -SubscriptionID <subscriptionGUID>` .

@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/10/2020
 ms.author: alsin
-ms.openlocfilehash: af541faaf9529cec81c60cb1a879161d66e34a7e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 54d703b8a493610174f00844cd0736f65f3ee541
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84694382"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87052162"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>Red Hat Enterprise Linux saját előfizetéssel rendelkező Gold-lemezképek az Azure-ban
 
@@ -68,7 +69,7 @@ A dokumentum többi része a CLI metódusra összpontosít a feltételek kiépí
 
 ## <a name="use-the-red-hat-gold-images-from-the-azure-cli"></a>A Red Hat Gold images használata az Azure CLI-vel
 
-Az alábbi utasítások végigvezetik a RHEL virtuális gép kezdeti üzembe helyezési folyamatán az Azure CLI használatával. Ezek az utasítások feltételezik, hogy az [Azure CLI telepítve](https://docs.microsoft.com/cli/azure/install-azure-cli)van.
+Az alábbi utasítások végigvezetik a RHEL virtuális gép kezdeti üzembe helyezési folyamatán az Azure CLI használatával. Ezek az utasítások feltételezik, hogy az [Azure CLI telepítve](/cli/azure/install-azure-cli)van.
 
 >[!IMPORTANT]
 >Győződjön meg arról, hogy a közzétevő, az ajánlat, a terv és a Képhivatkozások összes kisbetűjét használja a következő parancsokhoz.
@@ -199,7 +200,7 @@ A Azure Disk Encryption alkalmazására vonatkozó lépésekért lásd: [Azure D
 
     Ebben az esetben forduljon a Microsoft vagy a Red Hat szolgáltatáshoz, és engedélyezze az előfizetését.
 
-- Ha módosít egy pillanatképet egy RHEL BYOS-rendszerképből, és megkísérli közzétenni ezt az egyéni rendszerképet a [megosztott rendszerkép](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries)-katalógusban, meg kell adnia a pillanatkép eredeti forrásának megfelelő tervezési információkat. A parancs például a következőképpen nézhet ki:
+- Ha módosít egy pillanatképet egy RHEL BYOS-rendszerképből, és megkísérli közzétenni ezt az egyéni rendszerképet a [megosztott rendszerkép](../../linux/shared-image-galleries.md)-katalógusban, meg kell adnia a pillanatkép eredeti forrásának megfelelő tervezési információkat. A parancs például a következőképpen nézhet ki:
 
     ```azurecli
     az vm create –image \

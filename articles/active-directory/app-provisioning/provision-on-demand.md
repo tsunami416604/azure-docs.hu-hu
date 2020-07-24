@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/23/2020
 ms.author: mimart
 ms.reviewer: arvinh
-ms.openlocfilehash: 78a56b6a848139c47d7934a47decb126afe00b7a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7799e873afb117481cebafd982df59a3267f4405
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85297528"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87051574"
 ---
 # <a name="on-demand-provisioning"></a>Igény szerinti kiépítés
 Az igény szerinti kiépítés lehetővé teszi, hogy másodpercek alatt kiépítse a felhasználót egy alkalmazásba. A funkció segítségével gyorsan elháríthatja a konfigurációs problémákat, ellenőrizheti a definiált kifejezéseket, tesztelheti a hatóköri szűrőket, és még sok más funkciót is. 
@@ -30,6 +30,8 @@ Az igény szerinti kiépítés lehetővé teszi, hogy másodpercek alatt kiépí
 5. Kattintson **az igény szerinti kiépítés**elemre.
 6. Keressen egy felhasználót az utónév, a vezetéknév, a megjelenítendő név, a felhasználó egyszerű neve vagy az e-mail cím alapján.
 7. Válassza a kiépítés elemet az oldal alján.
+
+:::image type="content" source="media/provision-on-demand/on-demand-provision-user.jpg" alt-text="Igény szerinti felhasználó kiépítése.":::
 
 ## <a name="understanding-the-provisioning-steps"></a>A kiépítési lépések ismertetése
 Az igény szerinti kiépítési képesség megkísérli megjeleníteni a kiépítési szolgáltatás által a felhasználó kiépítéséhez szükséges lépéseket. A felhasználók üzembe helyezése általában öt lépésből áll, az alábbi lépések közül egy vagy több az igény szerinti üzembe helyezési élményben jelenik meg.
@@ -88,6 +90,8 @@ A részletek megtekintése lapok a célként megadott felhasználó (k) tulajdon
 ### <a name="step-5-perform-action"></a>5. lépés: művelet végrehajtása
 Végül a kiépítési szolgáltatás olyan műveletet hajt végre, mint például a felhasználó létrehozása, frissítése, törlése vagy kihagyása. 
 
+:::image type="content" source="media/provision-on-demand/success-on-demand-provision.jpg" alt-text="A felhasználó sikeres kiépítése.":::
+
 **Részletek megtekintése**
 
 A részletek megtekintése szakasz a célalkalmazás alkalmazásban módosított attribútumokat jeleníti meg. Ez a kiépítési szolgáltatás tevékenységének végső kimenetét és az exportált attribútumok számát jelöli. Ha ez a lépés meghiúsul, a megjelenített attribútumok a kiépítési szolgáltatás által a módosításra megkísérelt attribútumokat jelölik.  
@@ -102,11 +106,11 @@ A részletek megtekintése szakasz a célalkalmazás alkalmazásban módosított
 **Mennyi ideig tart az igény szerinti kiépítés?** Általában kevesebb mint 30 másodpercet vesz igénybe. 
 
 ## <a name="known-limitations"></a>Ismert korlátozások
-Ma már van néhány ismert korlátozás. Kérjük, tegye közzé a [UserVoice](https://aka.ms/appprovisioningfeaturerequest) , hogy jobban rangsorolja a következő fejlesztéseket. Vegye figyelembe, hogy ezek a korlátozások az igény szerinti kiépítési képességre vonatkoznak. azokról a részletekről, amelyekkel az alkalmazás támogatja a kiépítési csoportokat, a törléseket stb., keresse meg az alkalmazás oktatóanyagát. 
+Ma már van néhány ismert korlátozás. Kérjük, tegye közzé a [felhasználói](https://aka.ms/appprovisioningfeaturerequest) hangvételt, hogy jobban rangsorolja a következő fejlesztéseket. Vegye figyelembe, hogy ezek a korlátozások az igény szerinti kiépítési képességre vonatkoznak. azokról a részletekről, amelyekkel az alkalmazás támogatja a kiépítési csoportokat, a törléseket stb., keresse meg az alkalmazás oktatóanyagát. 
 
 * A munkanap, az AWS és a SuccessFactors alkalmazások nem támogatják az igény szerinti üzembe helyezést.
 * A kiépítési csoportok és az igény szerinti szerepkörök nem támogatottak.
-* A felhasználók és csoportok letiltása vagy törlése nem támogatott.
+* Az igény szerinti kiépítés támogatja az alkalmazásból nem hozzárendelt felhasználók letiltását, de nem támogatja a letiltott vagy a Azure Active Directoryból törölt felhasználók letiltását vagy törlését (a felhasználók keresésekor nem jelennek meg).
 
 ## <a name="next-steps"></a>Következő lépések
 

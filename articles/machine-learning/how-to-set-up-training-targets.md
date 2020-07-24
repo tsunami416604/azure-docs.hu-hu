@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: how-to
 ms.date: 07/08/2020
 ms.custom: seodec18, tracking-python
-ms.openlocfilehash: c87812e665617f3ccfe48db3a0cca2ceac67f0bc
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 0f3682338c9373f3ba30c8b32ea5cf4132c18949
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86147437"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87048277"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>Számítási célok beállítása és használata a modell betanításához 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -98,12 +98,11 @@ Azure Machine Learning számítási fürt felügyelt számítási infrastruktúr
 
 A betanítási folyamat a felhőben lévő CPU-vagy GPU-alapú számítási csomópontok fürtön keresztüli elosztásához Azure Machine Learning számítást is használhat. A GPU-ket tartalmazó virtuálisgép-méretekkel kapcsolatos további információkért lásd: [GPU-optimalizált virtuális gépek méretei](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu). 
 
-Azure Machine Learning a számítások alapértelmezett korlátai, például a lefoglalt magok száma. További információ: [Az Azure-erőforrások kezelése és kvóták igénylése](https://docs.microsoft.com/azure/machine-learning/how-to-manage-quotas).
+Azure Machine Learning a számítások alapértelmezett korlátai, például a lefoglalt magok száma. További információ: [Az Azure-erőforrások kezelése és kvóták igénylése](/how-to-manage-quotas.md).
 
-Dönthet úgy is, hogy alacsony prioritású virtuális gépeket használ a számítási feladatok egy részének vagy egészének futtatásához. Ezek a virtuális gépek nem rendelkeznek garantált rendelkezésre állással, és a használat közben előzik is lehetnek. A rendszer újraindította a előzik-feladatot, és nem folytatja a műveletet.  Az alacsony prioritású virtuális gépek kedvezményes díjszabással rendelkeznek a normál virtuális gépekhez képest: [költségek tervezése és kezelése](https://docs.microsoft.com/azure/machine-learning/concept-plan-manage-cost).
 
 > [!TIP]
-> A fürtök általában legfeljebb 100 csomópontot tudnak méretezni, ha elegendő kvóta van a szükséges magok számához. Alapértelmezés szerint a fürtök a csomópontok közötti kommunikációt engedélyezik a fürt csomópontjai között, így például támogatják az MPI-feladatokat. A fürtöket azonban a csomópontok 1000S is méretezheti úgy, hogy egyszerűen [egy támogatási jegyet emelnek](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)fel, és az előfizetés, a munkaterület vagy egy adott fürt engedélyezési kérelmét kérik a csomópontok közötti kommunikáció letiltásához. 
+> A fürtök általában legfeljebb 100 csomópontot tudnak méretezni, ha elegendő kvóta van a szükséges magok számához. Alapértelmezés szerint a fürtök a csomópontok közötti kommunikációt engedélyezik a fürt csomópontjai között, így például támogatják az MPI-feladatokat. A fürtöket azonban a csomópontok 1000S is méretezheti úgy, hogy egyszerűen [egy támogatási jegyet emelnek](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)fel, és lehetővé teszi az előfizetés, a munkaterület vagy egy adott fürt számára a csomópontok közötti kommunikáció letiltását. 
 
 Azure Machine Learning a számítások újra felhasználhatók a futtatások között. A számítás a munkaterület más felhasználóival is megoszthatók, és a futtatások között megmaradnak, automatikusan felfelé vagy lefelé skálázást, a csomópontok száma és a fürtön beállított max_nodes alapján. A min_nodes beállítás szabályozza a rendelkezésre álló minimális csomópontokat.
 
@@ -118,14 +117,38 @@ Azure Machine Learning a számítások újra felhasználhatók a futtatások kö
 
    Azure Machine Learning számítás létrehozásakor több speciális tulajdonság is konfigurálható. A tulajdonságok lehetővé teszik a rögzített méretű állandó fürt vagy az előfizetéshez tartozó meglévő Azure-Virtual Network létrehozását.  A részletekért tekintse meg a [AmlCompute osztályt](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py
     ) .
-    
-   Emellett állandó Azure Machine Learning számítási erőforrást is létrehozhat és csatolhat [Azure Machine learning Studióban](#portal-create).
 
+    Emellett állandó Azure Machine Learning számítási erőforrást is létrehozhat és csatolhat [Azure Machine learning Studióban](#portal-create).
+
+   
 1. **Konfigurálás**: hozzon létre egy futtatási konfigurációt az állandó számítási célhoz.
 
    [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/amlcompute2.py?name=run_amlcompute)]
 
 Most, hogy csatlakoztatta a számítási és konfigurálta a futtatást, a következő lépés a [betanítási Futtatás elküldése](#submit).
+
+ ### <a name="lower-your-compute-cluster-cost"></a><a id="low-pri-vm"></a>Csökkentse a számítási fürt költségeit
+
+Dönthet úgy is, hogy [alacsony prioritású virtuális gépeket](concept-plan-manage-cost.md#low-pri-vm) használ a számítási feladatok egy részének vagy egészének futtatásához. Ezek a virtuális gépek nem rendelkeznek garantált rendelkezésre állással, és a használat közben előzik is lehetnek. A rendszer újraindította a előzik-feladatot, és nem folytatja a műveletet. 
+
+Egy alacsony prioritású virtuális gép megadásához használja a következő módszerek egyikét:
+    
+* A Studióban válassza az **alacsony prioritású** virtuális gép létrehozása lehetőséget.
+    
+* A Python SDK-val állítsa be az `vm_priority` attribútumot a létesítési konfigurációban.  
+    
+    ```python
+    compute_config = AmlCompute.provisioning_configuration(vm_size='STANDARD_D2_V2',
+                                                                vm_priority='lowpriority',
+                                                                max_nodes=4)
+    ```
+    
+* A CLI használatával állítsa be a `vm-priority` következőket:
+    
+    ```azurecli-interactive
+    az ml computetarget create amlcompute --name lowpriocluster --vm-size Standard_NC6 --max-nodes 5 --vm-priority lowpriority
+    ```
+
 
 
 ### <a name="azure-machine-learning-compute-instance"></a><a id="instance"></a>Azure Machine Learning számítási példány
@@ -337,7 +360,7 @@ Az előző lépések végrehajtásával tekintheti meg a számítási célok lis
 
 1. Töltse ki az űrlapot. Adja meg a szükséges tulajdonságokat, különösen a virtuálisgép- **családot**, valamint a számítás felgyorsításához használni kívánt **csomópontok maximális** értékét.  
 
-1. Válassza a __Létrehozás__ lehetőséget.
+1. Kattintson a __Létrehozás__ gombra.
 
 
 1. A létrehozási művelet állapotának megtekintéséhez válassza ki a listából a számítási célt:

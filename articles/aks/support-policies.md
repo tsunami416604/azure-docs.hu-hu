@@ -6,12 +6,12 @@ author: jnoller
 ms.topic: article
 ms.date: 01/24/2020
 ms.author: jenoller
-ms.openlocfilehash: ce014fc338ebfad18b91ba65b614ca0a380a3f7c
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: be80c0d5999ed06bcc505ec5737e7e416d28b981
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86243851"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87050683"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Támogatási szabályzatok az Azure Kubernetes Service-hez
 
@@ -137,7 +137,7 @@ Bár az ügyfelek bejelentkezhetnek és módosíthatják a munkavégző csomópo
 
 ## <a name="network-ports-access-and-nsgs"></a>Hálózati portok, hozzáférés és NSG
 
-Felügyelt szolgáltatásként az AK speciális hálózatkezelési és kapcsolódási követelményekkel rendelkezik. Ezek a követelmények kevésbé rugalmasak, mint a normál IaaS-összetevőkre vonatkozó követelmények. Az AK-ban az olyan műveletek, mint például a NSG-szabályok testreszabása, egy adott port blokkolása (például a 443-as kimenő portot letiltó tűzfalszabályok használata), valamint az engedélyezési URL-címek lehetővé teszik a fürt nem támogatott.
+Felügyelt szolgáltatásként az AK speciális hálózatkezelési és kapcsolódási követelményekkel rendelkezik. Ezek a követelmények kevésbé rugalmasak, mint a normál IaaS-összetevőkre vonatkozó követelmények. Az AK-ban olyan műveletek, mint például a NSG-szabályok testreszabása, egy adott port blokkolása (például a 443-as kimenő portot blokkoló tűzfalszabályok használata), és az URL-címek hozzáadása az engedélyezési listához, a fürt nem támogatott.
 
 > [!NOTE]
 > Az AK jelenleg nem teszi lehetővé, hogy teljes mértékben zárolja a kimenő forgalmat a fürtből. A fürt által a kimenő forgalomhoz használható URL-címek és portok listájának szabályozásához lásd: a kimenő [forgalom korlátozása](limit-egress-traffic.md).

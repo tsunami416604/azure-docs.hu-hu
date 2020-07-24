@@ -9,13 +9,13 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
 ms.date: 02/04/2020
-ms.author: anzaman
-ms.openlocfilehash: 19067bbbaf93c9abc9a9220b09dd482ce9115655
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: kumud
+ms.openlocfilehash: f373afae03357ffb65eb459f806fe441e29b21b9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80127984"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87047090"
 ---
 # <a name="customize-a-language-model-with-the-video-indexer-api"></a>Nyelvi modell testreszabása a Video Indexer API-val
 
@@ -37,7 +37,7 @@ A nyelvi modellbe felvenni kívánt fájlok feltöltéséhez a FormData használ
 * A kulcs a fájlnév és az érték lesz a txt-fájl.
 * A kulcs a fájlnév, az érték pedig a txt-fájl URL-címe lesz.
 
-### <a name="response"></a>Válasz
+### <a name="response"></a>Reagálás
 
 A válasz metaadatokat biztosít az újonnan létrehozott nyelvi modellhez, valamint a modell összes fájljának metaadatait a példa JSON-kimenetének formátumát követve:
 
@@ -75,7 +75,7 @@ A [Language Model API betanítása](https://api-portal.videoindexer.ai/docs/serv
 > [!NOTE]
 > Először létre kell hoznia a nyelvi modellt, és fel kell töltenie a fájljait. A nyelvi modell létrehozásakor vagy a nyelvi modell frissítésével tölthet fel fájlokat.
 
-### <a name="response"></a>Válasz
+### <a name="response"></a>Reagálás
 
 A válasz metaadatokat biztosít az újonnan betanított nyelvi modellhez, valamint a modell összes fájljának metaadatait a példa JSON-kimenetének formátumát követve:
 
@@ -111,7 +111,7 @@ A visszaadott `id` egyedi azonosító, amely a nyelvi modellek megkülönböztet
 
 A [nyelvi modell törlése](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Language-Model?&pattern=delete) API törli a megadott fiókból származó egyéni nyelvi modellt. A törölt nyelvi modellt használó összes videó esetében Ugyanez az index marad, amíg újra nem indexeli a videót. Ha újraindexeli a videót, hozzárendelhet egy új nyelvi modellt a videóhoz. Ellenkező esetben a Video Indexer az alapértelmezett modellt fogja használni a videó újraindexeléséhez.
 
-### <a name="response"></a>Válasz
+### <a name="response"></a>Reagálás
 
 A nyelvi modell törlése után a rendszer nem adott vissza tartalmat.
 
@@ -127,7 +127,7 @@ A nyelvi modellbe felvenni kívánt fájlok feltöltéséhez a FormData használ
 * A kulcs a fájlnév és az érték lesz a txt-fájl.
 * A kulcs a fájlnév, az érték pedig a txt-fájl URL-címe lesz.
 
-### <a name="response"></a>Válasz
+### <a name="response"></a>Reagálás
 
 A válasz metaadatokat biztosít az újonnan betanított nyelvi modellhez, valamint a modell összes fájljának metaadatait a példa JSON-kimenetének formátumát követve:
 
@@ -163,7 +163,7 @@ A `id` válaszban visszaadott fájlok használatával töltse le a fájl tartalm
 
 A [fájl frissítése](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Language-Model-file?&pattern=update) lehetővé teszi `enable` egy fájl nevének és állapotának frissítését egy egyéni nyelvi modellben a megadott fiókban.
 
-### <a name="response"></a>Válasz
+### <a name="response"></a>Reagálás
 
 A válasz metaadatokat biztosít az alábbi JSON-kimenet formátumát követően frissített fájlhoz.
 
@@ -183,7 +183,7 @@ Használja a `id` válaszban visszaadott fájl tartalmát a fájl tartalmának l
 
 A [Get](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Language-Model?&pattern=get) API adja vissza a megadott nyelvi modell adatait a megadott fiókban, például a nyelvet és a nyelvi modellben lévő fájlokat.
 
-### <a name="response"></a>Válasz
+### <a name="response"></a>Reagálás
 
 A válasz metaadatokat biztosít a megadott nyelvi modellhez, valamint a modell összes fájljának metaadatait a példa JSON-kimenetének formátumát követve:
 
@@ -219,7 +219,7 @@ Használja a `id` válaszban visszaadott fájl tartalmát a fájl tartalmának l
 
 A [Get all](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Language-Models?&pattern=get) API az összes egyéni nyelvi modellt visszaadja egy lista megadott fiókjában.
 
-### <a name="response"></a>Válasz
+### <a name="response"></a>Reagálás
 
 A válasz felsorolja a fiókban lévő összes nyelvi modellt, valamint az egyes metaadatokat és fájlokat a példaként megadott JSON-kimenet formátumát követve:
 
@@ -263,7 +263,7 @@ A válasz felsorolja a fiókban lévő összes nyelvi modellt, valamint az egyes
 
 A [delete](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Language-Model-File?&pattern=delete) API törli a megadott fájlt a megadott nyelvi modellből a megadott fiókból.
 
-### <a name="response"></a>Válasz
+### <a name="response"></a>Reagálás
 
 A nyelvi modellből való törlés után a rendszer nem adott vissza tartalmat.
 
@@ -271,7 +271,7 @@ A nyelvi modellből való törlés után a rendszer nem adott vissza tartalmat.
 
 A file API-k [metaadatainak beolvasása](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Language-Model-File-Data?&pattern=get%20language%20model) a megadott fájl tartalmát és metaadatait a fiókjában kiválasztott nyelvi modellből adja vissza.
 
-### <a name="response"></a>Válasz
+### <a name="response"></a>Reagálás
 
 A válasz JSON formátumban adja meg a fájl tartalmát és metaadatait, a következő példához hasonlóan:
 
@@ -293,7 +293,7 @@ A válasz JSON formátumban adja meg a fájl tartalmát és metaadatait, a köve
 
 A [Fájl letöltése](https://api-portal.videoindexer.ai/docs/services/operations/operations/Download-Language-Model-File-Content?) API letölt egy szövegfájlt, amely a megadott fiók megadott nyelvi modelljéből származó adott fájl tartalmát tartalmazza. A szövegfájlnak meg kell egyeznie az eredetileg feltöltött szövegfájl tartalmával.
 
-### <a name="response"></a>Válasz
+### <a name="response"></a>Reagálás
 
 A válasz egy szövegfájl letöltését fogja tartalmazni a fájl tartalmával a JSON formátumban.
 

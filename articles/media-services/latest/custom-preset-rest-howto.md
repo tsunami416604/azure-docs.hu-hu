@@ -12,12 +12,12 @@ ms.topic: article
 ms.custom: ''
 ms.date: 05/14/2019
 ms.author: juliako
-ms.openlocfilehash: 30e22cb786e5dc2a667fe41ca8edf398cf0b7613
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4bd092dbee09a783dcbd6e36c82a70ff5decaf83
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "65761797"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87053314"
 ---
 # <a name="how-to-encode-with-a-custom-transform---rest"></a>Kódolás egyéni átalakítással – REST
 
@@ -32,7 +32,7 @@ Egyéni beállításkészletek létrehozásakor a következő szempontokat kell 
 
 ## <a name="prerequisites"></a>Előfeltételek 
 
-- [Hozzon létre egy Media Services fiókot](create-account-cli-how-to.md). <br/>Ügyeljen rá, hogy jegyezze fel az erőforráscsoport nevét és a Media Services fiók nevét. 
+- [Hozzon létre egy Media Services fiókot](./create-account-howto.md). <br/>Ügyeljen rá, hogy jegyezze fel az erőforráscsoport nevét és a Media Services fiók nevét. 
 - [A Poster beállítása Azure Media Services REST API-hívásokhoz](media-rest-apis-with-postman.md).<br/>Ügyeljen arra, hogy kövesse az [Azure ad-token beszerzése](media-rest-apis-with-postman.md#get-azure-ad-token)című témakör utolsó lépését. 
 
 ## <a name="define-a-custom-preset"></a>Egyéni beállításkészlet definiálása
@@ -133,7 +133,7 @@ Ebben a példában először adunk hozzá egy AacAudio réteget a hangkódolásh
 
 ## <a name="create-a-new-transform"></a>Új átalakítás létrehozása  
 
-Ebben a példában egy olyan **átalakítót** hozunk létre, amely a korábban definiált egyéni beállításkészlet alapján lett létrehozva. Átalakítás létrehozásakor először a [Get](https://docs.microsoft.com/rest/api/media/transforms/get) paranccsal ellenőrizze, hogy az egyik már létezik-e. Ha az átalakítás létezik, használja újra. 
+Ebben a példában egy olyan **átalakítót** hozunk létre, amely a korábban definiált egyéni beállításkészlet alapján lett létrehozva. Átalakítás létrehozásakor először a [Get](/rest/api/media/transforms/get) paranccsal ellenőrizze, hogy az egyik már létezik-e. Ha az átalakítás létezik, használja újra. 
 
 A letöltött Poster gyűjteményében válassza az **átalakítások és feladatok** -> **Létrehozás vagy frissítés átalakítás**lehetőséget.
 
@@ -145,10 +145,10 @@ PUT https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:r
 
 Válassza a **törzs** fület, és cserélje le a törzset a [korábban megadott](#define-a-custom-preset)JSON-kódra. Ahhoz Media Services, hogy az átalakítást a megadott videóra vagy hangra alkalmazza, el kell küldenie egy feladatot az átalakítás alatt.
 
-Válassza a **Küldés**lehetőséget. 
+Válassza a **Küldés** lehetőséget. 
 
 Ahhoz Media Services, hogy az átalakítást a megadott videóra vagy hangra alkalmazza, el kell küldenie egy feladatot az átalakítás alatt. Ha egy teljes példát mutat be, amely bemutatja, hogyan küldhet el egy feladatot egy átalakítás alatt, tekintse meg az [oktatóanyag: Stream video Files – Rest](stream-files-tutorial-with-rest.md)című témakört.
 
 ## <a name="next-steps"></a>További lépések
 
-[További Rest-műveletek](https://docs.microsoft.com/rest/api/media/)
+[További Rest-műveletek](/rest/api/media/)
