@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/18/2016
 tags: connectors
-ms.openlocfilehash: 8dd54fec963b8f4775a8ade6277b071d62ca3850
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9fe4988b5499943f4b11ec5d640209ceb68e84ec
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86524206"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87040231"
 ---
 # <a name="access-and-manage-files-in-onedrive-connector-by-using-azure-logic-apps"></a>Fájlok elérése és kezelése a OneDrive-összekötőben Azure Logic Apps használatával
 
@@ -40,7 +40,7 @@ Az eseményindító egy olyan esemény, amely a logikai alkalmazásban definiál
 
 1. A Logic app Designerben írja be a következőt az `onedrive` Eseményindítók listájának lekéréséhez:  
 
-   ![A "Microsoft Managed API-k megjelenítése" nevű párbeszédpanel tartalmaz egy "onedrive" nevű mezőt. Itt látható a négy eseményindító listája. Ezek közül az első a "OneDrive-fájl létrehozásakor". A második, "OneDrive-when a fájl módosítva" lehetőség van kiválasztva.](./media/connectors-create-api-onedrive/onedrive-1.png)
+   ![Egy "a Microsoft által felügyelt" P I-k megjelenítése "nevű párbeszédpanel tartalmaz egy" onedrive "nevű mezőt. Itt látható a négy eseményindító listája. Ezek közül az első a "OneDrive-fájl létrehozásakor". A második, "OneDrive-when a fájl módosítva" lehetőség van kiválasztva.](./media/connectors-create-api-onedrive/onedrive-1.png)
 
 2. Válassza ki **a fájl módosításának időpontját**. Ha a kapcsolat már létezik, kattintson a választó megjelenítése gombra a mappa kiválasztásához.
 
@@ -68,7 +68,7 @@ A művelet egy logikai alkalmazásban definiált munkafolyamat által végrehajt
 
 3. A keresőmezőbe írja be az `onedrive` összes elérhető művelet listáját.
 
-   ![A "Microsoft Managed API-k megjelenítése" nevű párbeszédpanel tartalmaz egy "onedrive" nevű mezőt. Alább látható a nyolc művelet listája. Az első a "OneDrive-Create file", és ki van választva.](./media/connectors-create-api-onedrive/onedrive-actions.png) 
+   ![Egy "a Microsoft által felügyelt" P I-k megjelenítése "nevű párbeszédpanel tartalmaz egy" onedrive "nevű mezőt. Alább látható a nyolc művelet listája. Az első a "OneDrive-Create file", és ki van választva.](./media/connectors-create-api-onedrive/onedrive-actions.png) 
 
 4. A példánkban válassza a **OneDrive – fájl létrehozása**lehetőséget. Ha már létezik egy kapcsolódás, válassza ki a **mappa elérési útját** , adja meg a fájl **nevét**, és válassza ki a kívánt **fájlt** :  
 
@@ -86,6 +86,6 @@ A művelet egy logikai alkalmazásban definiált munkafolyamat által végrehajt
 
 Megtekintheti a hencegés során definiált összes eseményindítót és műveletet, valamint az [összekötő részleteiben](/connectors/onedriveconnector/)megjelenő korlátokat is.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Az Azure Logic Apps összekötői](apis-list.md)

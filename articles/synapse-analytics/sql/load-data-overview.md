@@ -1,5 +1,5 @@
 ---
-title: ETL helyett a ELT for szinapszis SQL Pool kialakítása | Microsoft Docs
+title: Alapszintű betöltési stratégia megtervezése az SQL-készlethez
 description: ETL helyett a kinyerési, betöltési és átalakítási (ELT) folyamatot kell megterveznie az adatok vagy az SQL-készlet betöltéséhez.
 services: synapse-analytics
 author: kevinvngo
@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 49ffb848dbcbed72776a5d767bb4b4872978af20
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: ca1f535c7f2d949e1f71a06ba9efab2818ee0201
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965500"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87046775"
 ---
 # <a name="designing-a-polybase-data-loading-strategy-for-azure-synapse-sql-pool"></a>Alapszintű betöltési stratégia tervezése az Azure szinapszis SQL-készlethez
 
@@ -27,7 +27,7 @@ Míg az SQL-készlet számos betöltési módszert támogat, többek között a 
 
 ## <a name="what-is-elt"></a>Mi az a ELT?
 
-A kinyerési, betöltési és átalakítási (ELT) folyamat során a rendszer egy adattárházba tölti ki az adatok kinyerését, majd átalakítja azokat.
+A kinyerési, betöltési és átalakítási (ELT) folyamat során a rendszer kinyeri az adatforrásrendszer adatait, betölti azokat egy adattárházba, majd átalakítja azokat.
 
 Az SQL-készlethez tartozó ELT megvalósításának alapvető lépései a következők:
 
@@ -50,7 +50,7 @@ A forrásrendszer adatokból való beolvasása a tárterület helyétől függ. 
 
 A kiinduló adatok az UTF-8 és az UTF-16 kódolású, tagolt szövegfájlokból is betöltődik. A tagolt szövegfájlok mellett az RC-fájlból, az ORKből és a Parkettaből is betöltődik a Hadoop fájlformátum. A rendszer a gzip és a Snappy tömörített fájlok adatait is képes betölteni. A Base jelenleg nem támogatja a bővített ASCII, a rögzített szélességű formátumot és a beágyazott formátumokat, például a WinZip, a JSON és az XML formátumot.
 
-Ha SQL Serverból exportál, a [BCP parancssori eszköz](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) használatával tagolt szövegfájlba exportálhatja az adatok mennyiségét. A Parquet és az SQL DW adattípusának megfeleltetése a következő:
+Ha SQL Serverból exportál, a [BCP parancssori eszköz](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) használatával tagolt szövegfájlba exportálhatja az adatok mennyiségét. A parketta és az SQL DW adattípusok megfeleltetése a következő:
 
 | **Parketta adattípusa** |                      **SQL-adattípus**                       |
 | :-------------------: | :----------------------------------------------------------: |
@@ -58,9 +58,9 @@ Ha SQL Serverból exportál, a [BCP parancssori eszköz](/sql/tools/bcp-utility?
 |       smallint        |                           smallint                           |
 |          int          |                             int                              |
 |        bigint         |                            bigint                            |
-|        logikai        |                             bit                              |
-|        double         |                            lebegőpontos                             |
-|         lebegőpontos         |                             valós szám                             |
+|        boolean        |                             bit                              |
+|        double         |                            float                             |
+|         float         |                             valós szám                             |
 |        double         |                            pénzt                             |
 |        double         |                          túlcsordulási                          |
 |        sztring         |                            NCHAR                             |
@@ -95,7 +95,7 @@ Előfordulhat, hogy az SQL-készletbe való betöltés előtt elő kell készít
 
 Az adatbetöltése előtt meg kell határoznia a külső táblákat az adattárházban. A Base külső táblákat használ az Azure Storage-ban tárolt adatok definiálásához és eléréséhez. Egy külső tábla hasonlít egy adatbázis-nézethez. A külső tábla tartalmazza a tábla sémáját, és az adatraktáron kívül tárolt adatértékekre mutat.
 
-A külső táblák meghatározása magában foglalja az adatforrás megadását, a szövegfájlok formátumát és a tábla definícióit. Ezek a T-SQL szintaxissal kapcsolatos témakörök, amelyekre szüksége lesz:
+A külső táblák meghatározása magában foglalja az adatforrás megadását, a szövegfájlok formátumát és a tábla definícióit. A következők a T-SQL szintaxissal kapcsolatos témakörök, amelyekre szüksége lesz:
 
 - [KÜLSŐ ADATFORRÁS LÉTREHOZÁSA](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
 - [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)

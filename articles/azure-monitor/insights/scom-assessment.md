@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/25/2018
-ms.openlocfilehash: 94251dfa2d9fa732912ed20d825e64f542d79188
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b71c6d8e0890bde377fae761f4486803229ceff4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80055412"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045684"
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>A környezet optimalizálása a System Center Operations Manager Health Check (előzetes verzió) megoldással
 
@@ -54,7 +54,7 @@ A megoldás telepítésekor és konfigurálásakor vegye figyelembe az alábbi i
 
 A System Center Operations Manager Health Check-megoldás az alábbi forrásokból gyűjt adatokat:
 
-* Registry
+* Regisztrációs adatbázis
 * Windows Management Instrumentation (WMI)
 * Eseménynapló
 * Fájladatok
@@ -64,7 +64,7 @@ Az adatok gyűjtése a felügyeleti kiszolgálón történik, és hét naponta L
 
 ## <a name="operations-manager-run-as-accounts-for-log-analytics"></a>Futtató Operations Manager-fiókok a Log Analyticshez
 
-A Log Analytics a számítási feladatokhoz a felügyeleti csomagokra épít a szolgáltatások értékének megadása érdekében. Minden munkaterheléshez a felügyeleti csomagok más biztonsági környezetben, például egy tartományi felhasználói fiókban való futtatásához munkaterhelés-specifikus jogosultságok szükségesek. Operations Manager futtató fiók konfigurálása emelt szintű hitelesítő adatokkal. További információ: [futtató fiók létrehozása](https://technet.microsoft.com/library/hh321655(v=sc.12).aspx) a Operations Manager dokumentációjában.
+A Log Analytics a számítási feladatokhoz a felügyeleti csomagokra épít a szolgáltatások értékének megadása érdekében. Minden munkaterheléshez a felügyeleti csomagok más biztonsági környezetben, például egy tartományi felhasználói fiókban való futtatásához munkaterhelés-specifikus jogosultságok szükségesek. Operations Manager futtató fiók konfigurálása emelt szintű hitelesítő adatokkal. További információ: [futtató fiók létrehozása](/previous-versions/system-center/system-center-2012-R2/hh321655(v=sc.12)) a Operations Manager dokumentációjában.
 
 Az alábbi információk segítségével állíthatja be System Center Operations Manager Health Check Operations Manager futtató fiókját.
 
@@ -147,7 +147,7 @@ ALTER ROLE [db_owner] ADD MEMBER [UserName]
 
 A System Center Operations Manager Health Check-megoldás felügyeleti csomagja tartalmazza a *Microsoft System Center Operations Manager Futtatás állapot-ellenőrzési szabálya*nevű szabályt. Ez a szabály felelős az állapot-ellenőrzés futtatásához. A szabály engedélyezéséhez és a gyakoriság konfigurálásához használja az alábbi eljárásokat.
 
-Alapértelmezés szerint a Microsoft System Center Operations Manager Futtatás állapot-ellenőrzési szabálya le van tiltva. Az állapot-ellenőrzési szolgáltatás futtatásához engedélyeznie kell a szabályt egy felügyeleti kiszolgálón. Hajtsa végre a következő lépéseket.
+Alapértelmezés szerint a Microsoft System Center Operations Manager Futtatás állapot-ellenőrzési szabálya le van tiltva. Az állapot-ellenőrzési szolgáltatás futtatásához engedélyeznie kell a szabályt egy felügyeleti kiszolgálón. Ehhez a következő lépések szükségesek.
 
 #### <a name="enable-the-rule-for-a-specific-management-server"></a>A szabály engedélyezése egy adott felügyeleti kiszolgáló számára
 

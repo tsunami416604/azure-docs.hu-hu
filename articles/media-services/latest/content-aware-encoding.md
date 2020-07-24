@@ -12,15 +12,16 @@ ms.topic: article
 ms.date: 04/29/2020
 ms.author: juliako
 ms.custom: ''
-ms.openlocfilehash: 57a8d308955719be0d84b87fb3a23c6f510c2836
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3669919a8ddf4ffcbcf0d3e7e060c62f4c8df1c6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84234899"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87039142"
 ---
 # <a name="use-the-content-aware-encoding-preset-to-find-the-optimal-bitrate-value-for-a-given-resolution"></a>Az adott megoldás optimális bitráta-értékének megkereséséhez használja a Content-Aware kódolási beállításkészletet
 
-A tartalom [adaptív sávszélességű adatfolyamként](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)történő továbbításához a videót több átviteli sebességre kell kódolni (magasról alacsonyra). Ez biztosítja a minőség kedvező romlását, mivel a bitrátát csökkenti, így a videó felbontása is megtörténik. Az ilyen több átviteli sebességű kódolás egy úgynevezett kódolási létrát használ, amely a felbontások és a bitráták táblázatát tartalmazza, a Media Services [beépített kódolási előkészleteket](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#encodernamedpreset).
+A tartalom [adaptív sávszélességű adatfolyamként](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)történő továbbításához a videót több átviteli sebességre kell kódolni (magasról alacsonyra). Ez biztosítja a minőség kedvező romlását, mivel a bitrátát csökkenti, így a videó felbontása is megtörténik. Az ilyen több átviteli sebességű kódolás egy úgynevezett kódolási létrát használ, amely a felbontások és a bitráták táblázatát tartalmazza, a Media Services [beépített kódolási előkészleteket](/rest/api/media/transforms/createorupdate#encodernamedpreset).
 
 Vegye figyelembe, hogy milyen tartalmat dolgoz fel, és testreszabhatja/hangolhatja a kódolási létrát az egyes videók összetettsége érdekében. Minden egyes megoldásnál van egy bitráta, amelyen kívül a minőség növekedése nem érzékelhető – a kódoló ebben az optimális bitráta-értékben működik. A következő optimalizálási szint a tartalomon alapuló felbontások kiválasztására szolgál, például egy PowerPoint-bemutató videója nem éri el a 720p-t. Továbbra is a kódoló feladata, hogy optimalizálja a videón belüli egyes lövések beállításait. 
 
@@ -81,7 +82,7 @@ TransformOutput[] output = new TransformOutput[]
 ## <a name="next-steps"></a>További lépések
 
 * [Oktatóanyag: videók feltöltése, kódolása és továbbítása a Media Services v3 segítségével](stream-files-tutorial-with-api.md)
-* [Oktatóanyag: távoli fájl kódolása URL-cím alapján és stream a videó – REST](stream-files-tutorial-with-rest.md)
+* [Oktatóanyag: Távoli fájl kódolása URL-cím alapján és videó streamelése – REST](stream-files-tutorial-with-rest.md)
 * [Oktatóanyag: távoli fájl kódolása URL-cím alapján és a videó továbbítása – parancssori felület](stream-files-cli-quickstart.md)
 * [Oktatóanyag: távoli fájl kódolása URL-cím alapján és stream a video-.NET](stream-files-dotnet-quickstart.md)
 * [Oktatóanyag: távoli fájl kódolása URL-cím alapján és stream a videón – Node.js](stream-files-nodejs-quickstart.md)

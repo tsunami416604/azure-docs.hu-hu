@@ -7,12 +7,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/09/2020
 ms.author: daperlov
-ms.openlocfilehash: 74c2e738153b1afa5c90f4769b6d9b0e982af363
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: e9df7b00a384859fb29577be0ad05da233683f46
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86225272"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87044534"
 ---
 # <a name="delta-format-in-azure-data-factory"></a>Különbözeti formátum a Azure Data Factoryban
 
@@ -22,6 +22,8 @@ Ez a cikk azt mutatja be, hogyan másolhat adatok egy [Azure Data Lake Store Gen
 
 > [!NOTE]
 > Az adatforgalom megfeleltetésének különbözeti formátum-összekötője jelenleg nyilvános előzetes verzióként érhető el.
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4ALTs]
 
 ## <a name="mapping-data-flow-properties"></a>Adatfolyam-tulajdonságok leképezése
 
@@ -37,7 +39,7 @@ Az alábbi táblázat a Delta forrás által támogatott tulajdonságokat sorolj
 | Fájlrendszer | A Delta-tó tárolója/fájlrendszere | igen | Sztring | Fájlrendszer |
 | Mappa elérési útja | A Delta-tó közvetlen | igen | Sztring | folderPath |
 | Tömörítés típusa | A különbözeti tábla tömörítési típusa | nem | `bzip2`<br>`gzip`<br>`deflate`<br>`ZipDeflate`<br>`snappy`<br>`lz4` | fájba |
-| Tömörítési szint | Válassza ki, hogy a tömörítés a lehető leggyorsabban befejeződjön-e, vagy ha az eredményül kapott fájlt optimálisan kell tömöríteni. | kötelező, ha meg `compressedType` van adva. | compressionLevel |
+| Tömörítési szint | Válassza ki, hogy a tömörítés a lehető leggyorsabban befejeződjön-e, vagy ha az eredményül kapott fájlt optimálisan kell tömöríteni. | kötelező, ha meg `compressedType` van adva. | `Optimal` vagy `Fastest` | compressionLevel |
 | Utazási idő | Válassza ki, hogy szeretne-e lekérdezni egy különbözeti tábla egy régebbi pillanatképét | nem | Lekérdezés timestamp szerint: időbélyeg <br> Lekérdezés verzió: Integer | timestampAsOf <br> versionAsOf |
 
 #### <a name="import-schema"></a>Séma importálása
@@ -73,7 +75,7 @@ Az alábbi táblázatban a különbözeti fogadó által támogatott tulajdonsá
 | Fájlrendszer | A Delta-tó tárolója/fájlrendszere | igen | Sztring | Fájlrendszer |
 | Mappa elérési útja | A Delta-tó közvetlen | igen | Sztring | folderPath |
 | Tömörítés típusa | A különbözeti tábla tömörítési típusa | nem | `bzip2`<br>`gzip`<br>`deflate`<br>`ZipDeflate`<br>`snappy`<br>`lz4` | fájba |
-| Tömörítési szint | Válassza ki, hogy a tömörítés a lehető leggyorsabban befejeződjön-e, vagy ha az eredményül kapott fájlt optimálisan kell tömöríteni. | kötelező, ha meg `compressedType` van adva. | compressionLevel |
+| Tömörítési szint | Válassza ki, hogy a tömörítés a lehető leggyorsabban befejeződjön-e, vagy ha az eredményül kapott fájlt optimálisan kell tömöríteni. | kötelező, ha meg `compressedType` van adva. | `Optimal` vagy `Fastest` | compressionLevel |
 | Vacuum | A tábla régebbi verziói esetében a megőrzési küszöbértéket órában kell megadni. 0 vagy kevesebb alapértelmezett érték 30 nap. | igen | Egész szám | vákuum |
 | Frissítési módszer | Itt adhatja meg, hogy mely frissítési műveletek engedélyezettek a Delta-tavon. A nem beszúrt metódusok esetében a sorok megjelöléséhez egy előző módosítási sor átalakítására van szükség. | igen | `true` vagy `false` | törölhető <br> Insertable <br> frissíthető <br> upsertable |
 

@@ -3,15 +3,16 @@ title: Hozzon létre egyéni Azure Resource Manager szerepkört, és rendelje ho
 description: Ez a cikk bemutatja, hogyan hozhat létre egyéni Azure Resource Manager szerepkört, és hogyan rendelhető hozzá az élő video Analytics szolgáltatáshoz az Azure CLI használatával IoT Edge.
 ms.topic: how-to
 ms.date: 05/27/2020
-ms.openlocfilehash: be317ac1e86fd38c72b87734909004a64dc2938b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eb4c9a1f90ab50f7070184fc9a394d9e6edb833a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84261169"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87043176"
 ---
 # <a name="create-custom-azure-resource-manager-role-and-assign-to-service-principal"></a>Egyéni Azure Resource Manager szerepkör létrehozása és hozzárendelés az egyszerű szolgáltatáshoz
 
-Az IoT Edge Module-példány élő videós elemzéséhez aktív Azure Media Services fiókra van szükség ahhoz, hogy megfelelően működjön. A IoT Edge modul és az Azure Media Service-fiók élő videós elemzésének kapcsolata a modul Twin tulajdonságain keresztül jön létre. Ezen Twin tulajdonságok egyike egy [egyszerű szolgáltatásnév](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object) , amely lehetővé teszi, hogy a modul-példány kommunikáljon a Media Services fiókján, és elindítsa a szükséges műveleteket. Ennek a szolgáltatásnak a lehető legkevesebb jogosultsággal kell rendelkeznie a lehetséges visszaélések és/vagy az Edge-eszközről való véletlen adatforgalom minimalizálásához.
+Az IoT Edge Module-példány élő videós elemzéséhez aktív Azure Media Services fiókra van szükség ahhoz, hogy megfelelően működjön. A IoT Edge modul és az Azure Media Service-fiók élő videós elemzésének kapcsolata a modul Twin tulajdonságain keresztül jön létre. Ezen Twin tulajdonságok egyike egy [egyszerű szolgáltatásnév](../../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) , amely lehetővé teszi, hogy a modul-példány kommunikáljon a Media Services fiókján, és elindítsa a szükséges műveleteket. Ennek a szolgáltatásnak a lehető legkevesebb jogosultsággal kell rendelkeznie a lehetséges visszaélések és/vagy az Edge-eszközről való véletlen adatforgalom minimalizálásához.
 
 Ebből a cikkből megtudhatja, hogyan hozhat létre egyéni Azure Resource Manager-szerepkört a Azure Cloud Shell, majd az egyszerű szolgáltatásnév létrehozásához használt lépéseket.
 
@@ -22,7 +23,7 @@ A cikk előfeltételei a következők:
 * Azure-előfizetés tulajdonosi előfizetéssel.
 * Az alkalmazás létrehozásához és az egyszerű szolgáltatás szerepkörhöz rendeléséhez jogosultságokkal rendelkező Azure Active Directory.
 
-A legegyszerűbben a portálon ellenőrizheti, hogy rendelkezik-e megfelelő jogosultságokkal. Lásd: [Szükséges engedélyek ellenőrzése](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions).
+A legegyszerűbben a portálon ellenőrizheti, hogy rendelkezik-e megfelelő jogosultságokkal. Lásd: [Szükséges engedélyek ellenőrzése](../../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app).
 
 ## <a name="overview"></a>Áttekintés  
 
@@ -48,7 +49,7 @@ Ha nem rendelkezik Media Service-fiókkal, akkor a következő lépésekkel hozh
     ```
     az account set --subscription " <yourSubscriptionName or yourSubscriptionId>"
     ```
-1. Hozzon létre egy [erőforráscsoportot](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create) és egy [Storage-fiókot](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create).
+1. Hozzon létre egy [erőforráscsoportot](/cli/azure/group?view=azure-cli-latest#az-group-create) és egy [Storage-fiókot](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create).
 1. Most hozzon létre egy Azure Media Service-fiókot a következő parancs használatával Cloud Shellban:
 
     ```
@@ -84,8 +85,8 @@ Ez a parancs a következőhöz hasonló választ hoz létre:
 ```
 1. A jelszó-hitelesítéssel rendelkező szolgáltatásnév kimenete tartalmazza azt a jelszót, amely ebben az esetben a "AadSecret" paraméter. 
 
-    Győződjön meg róla, hogy ezt az értéket másolja – nem lehet lekérni. Ha elfelejti a jelszót, [állítsa alaphelyzetbe az egyszerű szolgáltatásnév hitelesítő adatait](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest#reset-credentials).
-1. A appId és a bérlői kulcs a kimenetben "AadClientId" és "AadTenantId" néven jelenik meg. Ezek az egyszerű szolgáltatás hitelesítésében használatosak. Jegyezze fel az értékeket, de az az [ad SP listával](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-list)bármely pontról lekérhető.
+    Győződjön meg róla, hogy ezt az értéket másolja – nem lehet lekérni. Ha elfelejti a jelszót, [állítsa alaphelyzetbe az egyszerű szolgáltatásnév hitelesítő adatait](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest#reset-credentials).
+1. A appId és a bérlői kulcs a kimenetben "AadClientId" és "AadTenantId" néven jelenik meg. Ezek az egyszerű szolgáltatás hitelesítésében használatosak. Jegyezze fel az értékeket, de az az [ad SP listával](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-list)bármely pontról lekérhető.
 
 ### <a name="create-a-custom-role-definition"></a>Egyéni szerepkör-definíció létrehozása  
 
@@ -170,7 +171,7 @@ A fenti parancs kinyomtatja az egyszerű szolgáltatásnév objectId.
 “objectId” : “<yourObjectId>”,
 ```
 
-Használja az az [szerepkör-hozzárendelés létrehozása parancsot](https://docs.microsoft.com/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create) az egyéni szerepkör az egyszerű szolgáltatással való összekapcsolásához:
+Használja az az [szerepkör-hozzárendelés létrehozása parancsot](/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create) az egyéni szerepkör az egyszerű szolgáltatással való összekapcsolásához:
 
 ```
 az role assignment create --role “LVAEdge User” --assignee-object-id < objectId>    

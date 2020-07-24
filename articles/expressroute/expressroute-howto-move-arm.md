@@ -7,11 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 02/25/2019
 ms.author: charwen
-ms.openlocfilehash: 5c4bbdde04176edf693fc58d172a7dcc250c495a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3d094f614cbaf75158c38b86345fd5f925310d6b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84725001"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87039310"
 ---
 # <a name="move-expressroute-circuits-from-classic-to-resource-manager-deployment-model-using-powershell"></a>ExpressRoute-áramkörök áthelyezése a Klasszikusból a Resource Manager-alapú üzemi modellbe a PowerShell használatával
 
@@ -21,7 +22,7 @@ Ahhoz, hogy a klasszikus és a Resource Manager-alapú üzemi modellhez is Expre
 
 [!INCLUDE [updated-for-az](../../includes/hybrid-az-ps.md)]
 
-* Győződjön meg arról, hogy a klasszikus és az Azure PowerShell modulok helyileg is telepítve vannak a számítógépen. További információt [az Azure PowerShell telepítésével és konfigurálásával](/powershell/azure/overview) foglalkozó témakörben talál.
+* Győződjön meg arról, hogy a klasszikus és az Azure PowerShell modulok helyileg is telepítve vannak a számítógépen. További információt [az Azure PowerShell telepítésével és konfigurálásával](/powershell/azure/) foglalkozó témakörben talál.
 * A konfigurálás megkezdése előtt ellenőrizze, hogy áttekintette-e az [előfeltételeket](expressroute-prerequisites.md), az [útválasztási követelményeket](expressroute-routing.md)és a [munkafolyamatokat](expressroute-workflows.md) .
 * Tekintse át a [ExpressRoute-áramkör áthelyezése a Klasszikusból a Resource Managerbe](expressroute-move.md)című témakörben megadott információkat. Győződjön meg arról, hogy teljes mértékben ismeri a korlátozásokat és korlátozásokat.
 * Ellenőrizze, hogy az áramkör teljesen működőképes-e a klasszikus üzemi modellben.

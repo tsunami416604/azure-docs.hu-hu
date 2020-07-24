@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/21/2018
-ms.openlocfilehash: 1084be9a63e023257326de824ea200dcc1be74d9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 96df96fd6145d1c6e58eb5dfc672ec324da75202
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83684648"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87041607"
 ---
 # <a name="azure-networking-monitoring-solutions-in-azure-monitor"></a>Azure hálózatkezelési figyelési megoldások Azure Monitor
 
@@ -23,18 +24,18 @@ Azure Monitor a következő megoldásokat kínálja a hálózatok figyelésére:
     * Azure Application Gateway-naplók
     * Azure Application Gateway mérőszámok
 * Megoldások a hálózati tevékenységek figyelésére és naplózására a felhőalapú hálózaton
-    * [Forgalmi elemzések](https://docs.microsoft.com/azure/networking/network-monitoring-overview#traffic-analytics) 
+    * [Traffic Analytics](../../networking/network-monitoring-overview.md#traffic-analytics) 
     * Azure Network Security Group Analytics
 
 ## <a name="network-performance-monitor-npm"></a>Network Performance Monitor (NPM)
 
-A [Network Performance monitor](https://docs.microsoft.com/azure/networking/network-monitoring-overview) felügyeleti megoldás egy olyan hálózati figyelési megoldás, amely figyeli a hálózatok állapotát, rendelkezésre állását és elérhetőségét.  A következők közötti kapcsolat figyelésére használható:
+A [Network Performance monitor](../../networking/network-monitoring-overview.md) felügyeleti megoldás egy olyan hálózati figyelési megoldás, amely figyeli a hálózatok állapotát, rendelkezésre állását és elérhetőségét.  A következők közötti kapcsolat figyelésére használható:
 
 * Nyilvános felhő és helyszíni
 * Adatközpontok és felhasználói helyszínek (fiókirodák)
 * Többrétegű alkalmazások különböző szintjeinek üzemeltetésére szolgáló alhálózatok.
 
-További információ: [Network Performance monitor](https://docs.microsoft.com/azure/networking/network-monitoring-overview).
+További információ: [Network Performance monitor](../../networking/network-monitoring-overview.md).
 
 ## <a name="azure-application-gateway-and-network-security-group-analytics"></a>Azure Application Gateway és hálózati biztonsági csoport elemzése
 A megoldások használata:

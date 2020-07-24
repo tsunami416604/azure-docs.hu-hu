@@ -6,11 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: reference
 ms.date: 05/11/2020
-ms.openlocfilehash: 4d0d56dc4d6e7fa7765439e7387d67bb80a6ec9f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a31c089971b7e70e70c5906480deb2b17c197b9f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83124635"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87043607"
 ---
 # <a name="known-issues"></a>Ismert problémák #
 
@@ -49,7 +50,7 @@ Az aktuális kiadás a következő ismert problémákkal rendelkezik:
 
 - A csak hangalapú eszközök nem fognak visszajátszani a AzureHtml5JS-technológián keresztül.
   - Ha hang nélkül szeretné lejátszani az eszközöket, ezt megteheti, ha üres hangot szúr be a [Azure Media Services Explorer eszköz](https://aka.ms/amse) használatával
-  - A csendes hang beszúrásával kapcsolatos utasítások [itt](https://azure.microsoft.com/documentation/articles/media-services-advanced-encoding-with-mes/#silent_audio) találhatók
+  - A csendes hang beszúrásával kapcsolatos utasítások [itt](../previous/media-services-advanced-encoding-with-mes.md#silent_audio) találhatók
 
 ## <a name="flash"></a>Flash ##
 

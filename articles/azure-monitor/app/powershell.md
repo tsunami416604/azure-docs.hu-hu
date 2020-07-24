@@ -3,11 +3,12 @@ title: Azure-Application Insights automatizálása a PowerShell használatával 
 description: Erőforrások, riasztások és rendelkezésre állási tesztek létrehozása és kezelése a PowerShellben egy Azure Resource Manager sablon használatával.
 ms.topic: conceptual
 ms.date: 05/02/2020
-ms.openlocfilehash: c4e7c4fe14d829338e98a4b7e73726b1e605707c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1a0a3a5b186d57e8670201e601eee48ee858c976
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84485427"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87041625"
 ---
 #  <a name="manage-application-insights-resources-using-powershell"></a>Application Insights-erőforrások kezelése a PowerShell használatával
 
@@ -25,7 +26,7 @@ Telepítse a Azure PowerShell modult arra a gépre, amelyen futtatni szeretné a
 1. Telepítse a [Microsoft webplatform-telepítőt (V5 vagy újabb)](https://www.microsoft.com/web/downloads/platform.aspx).
 2. Microsoft Azure PowerShell telepítéséhez használja.
 
-A Resource Manager-sablonok használata mellett számos [Application Insights PowerShell-parancsmagot](https://docs.microsoft.com/powershell/module/az.applicationinsights)is tartalmaz, amelyek megkönnyítik Application Insights erőforrások programozott módon konfigurálását. A parancsmagok által engedélyezett képességek a következők:
+A Resource Manager-sablonok használata mellett számos [Application Insights PowerShell-parancsmagot](/powershell/module/az.applicationinsights)is tartalmaz, amelyek megkönnyítik Application Insights erőforrások programozott módon konfigurálását. A parancsmagok által engedélyezett képességek a következők:
 
 * Application Insights erőforrások létrehozása és törlése
 * Application Insights erőforrások és tulajdonságaik listájának beolvasása
@@ -36,7 +37,7 @@ A Resource Manager-sablonok használata mellett számos [Application Insights Po
 
 ## <a name="create-application-insights-resources-using-a-powershell-cmdlet"></a>Application Insights-erőforrások létrehozása PowerShell-parancsmag használatával
 
-A [New-AzApplicationInsights](https://docs.microsoft.com/powershell/module/az.applicationinsights/New-AzApplicationInsights) parancsmaggal az alábbi módon hozhat létre új Application Insights-erőforrást az Azure East US Datacenter szolgáltatásban:
+A [New-AzApplicationInsights](/powershell/module/az.applicationinsights/new-azapplicationinsights) parancsmaggal az alábbi módon hozhat létre új Application Insights-erőforrást az Azure East US Datacenter szolgáltatásban:
 
 ```PS
 New-AzApplicationInsights -ResourceGroupName <resource group> -Name <resource name> -location eastus
@@ -226,7 +227,7 @@ A további tulajdonságok a parancsmagok használatával érhetők el:
 * `Get-AzApplicationInsightsApiKey`
 * `Get-AzApplicationInsightsContinuousExport`
 
-Tekintse át a parancsmagok paramétereinek [részletes dokumentációját](https://docs.microsoft.com/powershell/module/az.applicationinsights) .  
+Tekintse át a parancsmagok paramétereinek [részletes dokumentációját](/powershell/module/az.applicationinsights) .  
 
 ## <a name="set-the-data-retention"></a>Az adatok megőrzésének beállítása
 
@@ -329,7 +330,7 @@ Set-ApplicationInsightsRetention `
 
 ## <a name="set-the-daily-cap"></a>A napi korlát beállítása
 
-A napi Cap-tulajdonságok beszerzéséhez használja a [set-AzApplicationInsightsPricingPlan](https://docs.microsoft.com/powershell/module/az.applicationinsights/Set-AzApplicationInsightsPricingPlan) parancsmagot: 
+A napi Cap-tulajdonságok beszerzéséhez használja a [set-AzApplicationInsightsPricingPlan](/powershell/module/az.applicationinsights/set-azapplicationinsightspricingplan) parancsmagot: 
 
 ```PS
 Set-AzApplicationInsightsDailyCap -ResourceGroupName <resource group> -Name <resource name> | Format-List
@@ -358,7 +359,7 @@ armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/
 <a id="price"></a>
 ## <a name="set-the-pricing-plan"></a>Árképzési terv beállítása 
 
-A jelenlegi díjszabási csomag beszerzéséhez használja a [set-AzApplicationInsightsPricingPlan](https://docs.microsoft.com/powershell/module/az.applicationinsights/Set-AzApplicationInsightsPricingPlan) parancsmagot:
+A jelenlegi díjszabási csomag beszerzéséhez használja a [set-AzApplicationInsightsPricingPlan](/powershell/module/az.applicationinsights/set-azapplicationinsightspricingplan) parancsmagot:
 
 ```PS
 Set-AzApplicationInsightsPricingPlan -ResourceGroupName <resource group> -Name <resource name> | Format-List
@@ -403,12 +404,12 @@ Ez a napi korlátot 200 GB/nap értékűre állítja be, konfigurálja a napi ko
 
 ## <a name="add-a-metric-alert"></a>Metrikai riasztás hozzáadása
 
-A metrikai riasztások létrehozásának automatizálásához olvassa el a [metrika riasztások sablonnal kapcsolatos cikket.](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates#template-for-a-simple-static-threshold-metric-alert)
+A metrikai riasztások létrehozásának automatizálásához olvassa el a [metrika riasztások sablonnal kapcsolatos cikket.](../platform/alerts-metric-create-templates.md#template-for-a-simple-static-threshold-metric-alert)
 
 
 ## <a name="add-an-availability-test"></a>Rendelkezésre állási teszt hozzáadása
 
-A rendelkezésre állási tesztek automatizálásához tekintse meg a [metrikus riasztások sablonjának cikkét](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates#template-for-an-availability-test-along-with-a-metric-alert).
+A rendelkezésre állási tesztek automatizálásához tekintse meg a [metrikus riasztások sablonjának cikkét](../platform/alerts-metric-create-templates.md#template-for-an-availability-test-along-with-a-metric-alert).
 
 ## <a name="add-more-resources"></a>További erőforrások hozzáadása
 
@@ -468,7 +469,7 @@ Az Azure-nak szigorú sorrendben kell beállítania az erőforrásokat. A követ
 ## <a name="next-steps"></a>További lépések
 Egyéb Automation-cikkek:
 
-* [Hozzon létre egy Application Insights erőforrás](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource#creating-a-resource-automatically) -gyors metódust sablon használata nélkül.
+* [Hozzon létre egy Application Insights erőforrás](./create-new-resource.md#creating-a-resource-automatically) -gyors metódust sablon használata nélkül.
 * [Riasztások beállítása](powershell-alerts.md)
 * [Hozzon létre webes teszteket](https://azure.microsoft.com/blog/creating-a-web-test-alert-programmatically-with-application-insights/)
 * [Az Azure Diagnostics küldése az Application Insights-ba](powershell-azure-diagnostics.md)

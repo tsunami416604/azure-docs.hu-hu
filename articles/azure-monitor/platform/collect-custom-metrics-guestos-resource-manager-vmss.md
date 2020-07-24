@@ -7,11 +7,12 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 9a7aa512c636f700cf9c6d990814d9367007c942
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 76f73df01b34cb20be48aefa3b5b3a6392a35b8b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83125774"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045199"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine-scale-set"></a>Vendég operációs rendszer metrikáinak küldése a Azure Monitor metrika-tárolóba egy Windowsos virtuálisgép-méretezési csoport Azure Resource Manager-sablonjának használatával
 
@@ -25,9 +26,9 @@ Ha most ismerkedik a Resource Manager-sablonokkal, ismerkedjen meg a [sablonok k
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Az előfizetést regisztrálni kell a [Microsoft. ininsights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services)szolgáltatásban. 
+- Az előfizetést regisztrálni kell a [Microsoft. ininsights](../../azure-resource-manager/management/resource-providers-and-types.md)szolgáltatásban. 
 
-- [Azure PowerShell](/powershell/azure) telepítve kell lennie, vagy használhatja a [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview). 
+- [Azure PowerShell](/powershell/azure) telepítve kell lennie, vagy használhatja a [Azure Cloud Shell](../../cloud-shell/overview.md). 
 
 - A virtuális gép erőforrásának olyan régióban kell lennie [, amely támogatja az egyéni metrikákat](metrics-custom-overview.md#supported-regions).
 
@@ -270,7 +271,7 @@ A Resource Manager-sablon üzembe helyezéséhez használja a Azure PowerShell:
 
 ## <a name="chart-your-metrics"></a>A metrikák diagramja 
 
-1. Jelentkezzen be az Azure portálra. 
+1. Jelentkezzen be az Azure Portalra. 
 
 1. A bal oldali menüben válassza a **figyelő**elemet. 
 
@@ -292,5 +293,3 @@ Azt is megteheti, hogy a metrika dimenzióit használja egy adott virtuális gé
 
 ## <a name="next-steps"></a>További lépések
 - További információ az [Egyéni metrikákkal](metrics-custom-overview.md)kapcsolatban.
-
-

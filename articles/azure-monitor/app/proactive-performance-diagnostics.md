@@ -4,11 +4,12 @@ description: Application Insights az alkalmazás telemetria intelligens elemzés
 ms.topic: conceptual
 ms.date: 05/04/2017
 ms.reviewer: antonfr
-ms.openlocfilehash: 22c1eeb00372b9b3c67d6a87f2300225a071438e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5152a3deb73c7069655ff016fbfc03f6b9cee16d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84016848"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045785"
 ---
 # <a name="smart-detection---performance-anomalies"></a>Intelligens észlelés – teljesítménybeli rendellenességek
 
@@ -33,7 +34,7 @@ Nem, egy értesítés nem azt jelenti, hogy az alkalmazásnak feltétlenül van 
 
 ## <a name="how-do-i-fix-it"></a>Hogyan lehet kijavítani a hibát?
 
-Az értesítések közé tartoznak a diagnosztikai információk. Íme egy példa:
+Az értesítések közé tartoznak a diagnosztikai információk. Bemutatunk egy példát:
 
 
 ![Íme egy példa a kiszolgálói válaszidő-romlás észlelésére](media/proactive-performance-diagnostics/server_response_time_degradation.png)
@@ -48,7 +49,7 @@ Az értesítések közé tartoznak a diagnosztikai információk. Íme egy péld
 
 ## <a name="configure-email-notifications"></a>E-mail-értesítések konfigurálása
 
-Az intelligens észlelési értesítések alapértelmezés szerint engedélyezve vannak, és a rendszer elküldte azokat a felhasználókat, akik [figyelik az olvasót](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) , és [figyelik a közreműködői](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) hozzáférést ahhoz az előfizetéshez, amelyben a Application Insights erőforrás található. Ennek módosításához kattintson a configure ( **Konfigurálás** ) elemre az e-mail-értesítésben, vagy nyissa meg a Application Insights intelligens észlelési beállításait. 
+Az intelligens észlelési értesítések alapértelmezés szerint engedélyezve vannak, és a rendszer elküldte azokat a felhasználókat, akik [figyelik az olvasót](../../role-based-access-control/built-in-roles.md#monitoring-reader) , és [figyelik a közreműködői](../../role-based-access-control/built-in-roles.md#monitoring-contributor) hozzáférést ahhoz az előfizetéshez, amelyben a Application Insights erőforrás található. Ennek módosításához kattintson a configure ( **Konfigurálás** ) elemre az e-mail-értesítésben, vagy nyissa meg a Application Insights intelligens észlelési beállításait. 
   
   ![Intelligens észlelési beállítások](media/proactive-performance-diagnostics/smart_detection_configuration.png)
   
@@ -69,12 +70,12 @@ Az intelligens Észlelésekkel kapcsolatos e-mailek száma Application Insights 
 * *Létrehozhatom a saját anomáliák észlelési szabályait, vagy testre is szabhatom a meglévő szabályokat?*
 
   * Még nem, de a következőket teheti:
-    * [Riasztásokat állíthat be](/azure/azure-monitor/platform/alerts-log) , amelyek azt jelzik, ha egy metrika átlép egy küszöbértéket.
+    * [Riasztásokat állíthat be](../platform/alerts-log.md) , amelyek azt jelzik, ha egy metrika átlép egy küszöbértéket.
     * [Exportálja a telemetria](../../azure-monitor/app/export-telemetry.md) egy [adatbázisba](../../azure-monitor/app/code-sample-export-sql-stream-analytics.md) vagy [Power BIba](../../azure-monitor/app/export-power-bi.md ), ahol elemezheti saját maga is.
 * *Milyen gyakran történik az elemzés?*
 
   * Az elemzést naponta futtatjuk a telemetria az előző naptól számítva (az UTC időzónában teljes nap).
-* *Tehát ez a [metrikai riasztásokat](/azure/azure-monitor/platform/alerts-log)váltja fel?*
+* *Tehát ez a [metrikai riasztásokat](../platform/alerts-log.md)váltja fel?*
   * Nem.  Nem vállalunk kötelezettséget arra, hogy észlelje az esetleges rendellenes viselkedést.
 
 
@@ -175,9 +176,9 @@ Ezek a diagnosztikai eszközök segítenek megvizsgálni a telemetria az alkalma
 * [Profilkészítő](profiler.md) 
 * [Pillanatkép-hibakereső](../../azure-monitor/app/snapshot-debugger.md)
 * [Elemzés](../../azure-monitor/log-query/get-started-portal.md)
-* [Analitika – intelligens diagnosztika](../../azure-monitor/app/analytics.md)
+* [Analitika – intelligens diagnosztika](../log-query/log-query-overview.md)
 
 Az intelligens észlelések teljesen automatikusak. De lehet, hogy néhány riasztást szeretne beállítani?
 
-* [Manuálisan konfigurált metrikai riasztások](/azure/azure-monitor/platform/alerts-log)
+* [Manuálisan konfigurált metrikai riasztások](../platform/alerts-log.md)
 * [Rendelkezésre állási webes tesztek](../../azure-monitor/app/monitor-web-app-availability.md)

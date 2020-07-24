@@ -3,12 +3,12 @@ title: Kapcsolódási problémák elhárítása – Azure Event Hubs | Microsoft
 description: Ez a cikk az Azure Event Hubs kapcsolódási problémáinak elhárításával kapcsolatos információkat tartalmaz.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 15c93873a25e70b0f9a88fc5ea621b90d58e7581
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b85c0895d1c8f165f494d29013adea014187dd23
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85322376"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87039327"
 ---
 # <a name="troubleshoot-connectivity-issues---azure-event-hubs"></a>Kapcsolódási problémák elhárítása – Azure Event Hubs
 Számos oka lehet annak, hogy az ügyfélalkalmazások nem tudnak csatlakozni az Event hub-hoz. Előfordulhat, hogy az Ön által tapasztalt kapcsolódási problémák állandóak vagy átmenetiek. Ha a probléma minden alkalommal (állandó) történik, érdemes megtekinteni a kapcsolódási karakterláncot, a szervezet tűzfalbeállítások, az IP-tűzfal beállításait, a hálózati biztonsági beállításokat (szolgáltatási végpontok, privát végpontok stb.). Átmeneti problémák esetén az SDK legújabb verziójára való frissítés, az eldobott csomagok vizsgálatára szolgáló parancsok futtatása, valamint a hálózati nyomkövetés beszerzése segíthet a hibák elhárításában. 
@@ -48,7 +48,7 @@ telnet <yournamespacename>.servicebus.windows.net 5671
 ```
 
 ### <a name="verify-that-ip-addresses-are-allowed-in-your-corporate-firewall"></a>Ellenőrizze, hogy az IP-címek engedélyezve vannak-e a vállalati tűzfalban
-Ha az Azure-t használja, időnként engedélyeznie kell bizonyos IP-címtartományok vagy URL-címek használatát a vállalati tűzfalon vagy proxyn a használt összes Azure-szolgáltatás eléréséhez. Ellenőrizze, hogy engedélyezett-e a forgalom a Event Hubs által használt IP-címeken. Az Azure Event Hubs által használt IP-címek esetében lásd: [Azure IP-címtartományok és szolgáltatás-címkék – nyilvános felhő](https://www.microsoft.com/download/details.aspx?id=56519) és [Service tag – EventHub](network-security.md#service-tags).
+Ha az Azure-t használja, időnként engedélyeznie kell bizonyos IP-címtartományok vagy URL-címek használatát a vállalati tűzfalon vagy proxyn a használt összes Azure-szolgáltatás eléréséhez. Ellenőrizze, hogy engedélyezett-e a forgalom a Event Hubs által használt IP-címeken. Az Azure Event Hubs által használt IP-címek esetében lásd: [Azure IP-címtartományok és szolgáltatás-címkék – nyilvános felhő](https://www.microsoft.com/download/details.aspx?id=56519).
 
 Ellenőrizze azt is, hogy a névtér IP-címe engedélyezett-e. Az alábbi lépéseket követve megkeresheti a kapcsolatok elérését lehetővé tevő megfelelő IP-címeket:
 
@@ -75,13 +75,16 @@ Ha a zóna redundanciát használja a névtérhez, néhány további lépést is
     ```
 3. Futtassa az nslookupt mindegyikhez az S1, az S2 és az S3 utótaggal a három rendelkezésre állási zónában futó mindhárom példány IP-címeinek lekéréséhez. 
 
+### <a name="verify-that-azureeventgrid-service-tag-is-allowed-in-your-network-security-groups"></a>Annak ellenőrzése, hogy a AzureEventGrid szolgáltatás címkéje engedélyezve van-e a hálózati biztonsági csoportokban
+Ha az alkalmazás egy alhálózaton belül fut, és van egy társított hálózati biztonsági csoport, ellenőrizze, hogy engedélyezett-e az internetes kimenő hozzáférés vagy a AzureEventGrid szolgáltatás címkéje. Lásd: [virtuális hálózati szolgáltatás címkék](../virtual-network/service-tags-overview.md) és keresés `EventHub` .
+
 ### <a name="check-if-the-application-needs-to-be-running-in-a-specific-subnet-of-a-vnet"></a>Ellenőrizze, hogy az alkalmazásnak egy vnet egy adott alhálózatán kell-e futnia
 Győződjön meg arról, hogy az alkalmazás egy olyan virtuális hálózati alhálózaton fut, amely hozzáfér a névtérhez. Ha nem, akkor futtassa az alkalmazást abban az alhálózatban, amely hozzáfér a névtérhez, vagy adja meg annak a számítógépnek az IP-címét, amelyen az alkalmazás fut az [IP-tűzfalon](event-hubs-ip-filtering.md). 
 
 Ha egy Event hub-névtérhez hoz létre virtuális hálózati szolgáltatási végpontot, a névtér csak a szolgáltatási végponthoz kötött alhálózatról fogad forgalmat. Ez a viselkedés kivételt jelent. Adott IP-címeket adhat hozzá az IP-tűzfalon az Event hub nyilvános végponthoz való hozzáférés engedélyezéséhez. További információ: [hálózati szolgáltatási végpontok](event-hubs-service-endpoints.md).
 
 ### <a name="check-the-ip-firewall-settings-for-your-namespace"></a>A névtér IP-tűzfal beállításainak megtekintése
-Győződjön meg arról, hogy az IP-tűzfal nem blokkolja a számítógép IP-címét, amelyen az alkalmazást futtatja.  
+Győződjön meg arról, hogy az IP-tűzfal nem tiltja le annak a számítógépnek a nyilvános IP-címét, amelyen az alkalmazást futtatja.  
 
 Alapértelmezés szerint a Event Hubs névterek az internetről érhetők el, feltéve, hogy a kérés érvényes hitelesítéssel és engedélyezéssel rendelkezik. Az IP-tűzfallal továbbra is korlátozhatja, hogy csak IPv4-címek vagy IPv4-címtartományok legyenek a [CIDR (osztály nélküli tartományok közötti útválasztás)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) jelöléssel.
 
@@ -108,9 +111,9 @@ Engedélyezze a diagnosztikai naplókat [Event Hubs virtuális hálózati kapcso
 ### <a name="check-if-the-namespace-can-be-accessed-using-only-a-private-endpoint"></a>Ellenőrizze, hogy a névtér csak privát végpont használatával érhető-e el
 Ha a Event Hubs névtér csak privát végponton keresztül érhető el, győződjön meg arról, hogy az ügyfélalkalmazás a magánhálózati végponton keresztül éri el a névteret. 
 
-Az [Azure Private link Service](../private-link/private-link-overview.md) lehetővé teszi az Azure Event Hubs elérését a virtuális hálózat **privát végpontján** keresztül. A privát végpontok olyan hálózati adapterek, amelyek az Azure Private-kapcsolaton keresztül csatlakoznak a szolgáltatáshoz. A privát végpont egy magánhálózati IP-címet használ a VNet, és hatékonyan hozza a szolgáltatást a VNet. A szolgáltatás felé irányuló összes forgalom a privát végponton keresztül irányítható, így nincs szükség átjáróra, NAT-eszközre, ExpressRoute vagy VPN-kapcsolatra, vagy nyilvános IP-címekre. A virtuális hálózat és a szolgáltatás közötti forgalom a Microsoft gerinchálózatán keresztül halad át, így kiküszöböli a nyilvános internet jelentette kitettséget. Kapcsolódhat egy Azure-erőforrás egy példányához, amely a legmagasabb szintű részletességet nyújtja a hozzáférés-vezérlésben.
+Az [Azure Private link Service](../private-link/private-link-overview.md) lehetővé teszi az Azure Event Hubs elérését a virtuális hálózat **privát végpontján** keresztül. A privát végpontok olyan hálózati adapterek, amelyek az Azure Private-kapcsolaton keresztül csatlakoznak a szolgáltatáshoz. A privát végpont egy magánhálózati IP-címet használ a virtuális hálózatról, amely hatékonyan hozza a szolgáltatást a virtuális hálózatba. A szolgáltatás felé irányuló összes forgalom a privát végponton keresztül irányítható, így nincs szükség átjáróra, NAT-eszközre, ExpressRoute vagy VPN-kapcsolatra, vagy nyilvános IP-címekre. A virtuális hálózat és a szolgáltatás közötti forgalom a Microsoft gerinchálózatán keresztül halad át, így kiküszöböli a nyilvános internet jelentette kitettséget. Kapcsolódhat egy Azure-erőforrás egy példányához, amely a legmagasabb szintű részletességet nyújtja a hozzáférés-vezérlésben.
 
-További információ: [privát végpontok konfigurálása](private-link-service.md). 
+További információ: [privát végpontok konfigurálása](private-link-service.md). A privát végpontok használatának ellenőrzéséhez tekintse meg a titkos végponti **kapcsolatok működését** ismertető szakaszt. 
 
 ### <a name="troubleshoot-network-related-issues"></a>A hálózattal kapcsolatos problémák elhárítása
 A Event Hubs hálózati problémáinak elhárításához kövesse az alábbi lépéseket: 
@@ -160,7 +163,7 @@ Az átmeneti kapcsolódási problémák a háttérrendszer frissítése és újr
 - Előfordulhat, hogy az alkalmazások néhány másodpercig le lesznek választva a szolgáltatástól.
 - Előfordulhat, hogy a kérelmek egy pillanatra szabályozva vannak.
 
-Ha az alkalmazás kódja az SDK-t használja, az újrapróbálkozási házirend már be van építve és aktív. Az alkalmazás az alkalmazás/munkafolyamat jelentős hatása nélkül újra csatlakozik. Ellenkező esetben próbálkozzon újra a szolgáltatással való csatlakozással néhány perc múlva, és ellenőrizze, hogy a problémák elmúlnak-e. 
+Ha az alkalmazás kódja az SDK-t használja, az újrapróbálkozási házirend már be van építve és aktív. Az alkalmazás az alkalmazás/munkafolyamat jelentős hatása nélkül újra csatlakozik. Ezeknek az átmeneti hibáknak a kifogása, a biztonsági mentés és a hívás újbóli kipróbálása biztosítja, hogy a kód rugalmasan kezelje ezeket az átmeneti problémákat.
 
 ## <a name="next-steps"></a>További lépések
 Lásd az alábbi cikkeket:

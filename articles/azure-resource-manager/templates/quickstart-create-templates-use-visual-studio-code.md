@@ -5,12 +5,12 @@ author: neilpeterson
 ms.date: 04/17/2020
 ms.topic: quickstart
 ms.author: nepeters
-ms.openlocfilehash: d36f8a9a8650b504da206e884d9be8e43e1becdb
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 06e7d3f291d32cecdcbf4d1f22ff9976d8970109
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86058146"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87040517"
 ---
 # <a name="quickstart-create-azure-resource-manager-templates-with-visual-studio-code"></a>Rövid útmutató: Azure Resource Manager sablonok létrehozása a Visual Studio Code-ban
 
@@ -18,7 +18,7 @@ A Visual Studio Code-hoz készült Azure Resource Manager Tools biztosítja a ny
 
 A rövid útmutató elvégzéséhez szüksége lesz a [Visual Studio Code](https://code.visualstudio.com/)-ra, amelyen telepítve van a [Azure Resource Manager Tools bővítmény](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools) . Az [Azure CLI](/cli/azure/?view=azure-cli-latest) -t vagy az Azure PowerShell- [modult](/powershell/azure/new-azureps-module-az?view=azps-3.7.0) is telepítenie és hitelesítenie kell.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="create-an-arm-template"></a>ARM-sablon létrehozása
 
@@ -102,7 +102,7 @@ Válassza ki `New`  >  `All Parameters` > válassza ki a paraméter fájljának 
 
 Ez a művelet létrehoz egy új paraméter-fájlt, és leképezi azt a sablonnal, amelyből létrehozták. A sablon kiválasztása után megtekintheti és módosíthatja az aktuális sablon/paraméter fájl-hozzárendelést a Visual Studio Code állapotjelző sávjában.
 
-![](./media/quickstart-create-templates-use-visual-studio-code/16.png)
+![A Visual Studio Code állapotjelző sávján a sablon/paraméter fájl leképezését ábrázoló kép.](./media/quickstart-create-templates-use-visual-studio-code/16.png)
 
 Most, hogy a paraméter fájlja le lett képezve a sablonra, a bővítmény a sablon és a paraméter fájlját is ellenőrzi. Ha szeretné megtekinteni ezt az ellenőrzést a gyakorlatban, adjon hozzá egy kétkarakteres értéket a paraméterhez `storageAccountName` a paraméter fájlban, és mentse a fájlt.
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2019
 ms.author: juliako
-ms.openlocfilehash: 4d4587c701a054828fc34785e2ae680fef47625d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 19acd39be11a33424008662eb27cd68ec0005f77
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80382919"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87038953"
 ---
 # <a name="monitor-media-services-diagnostic-logs"></a>Media Services diagnosztikai naplók figyelése
 
@@ -28,7 +28,7 @@ Ebből a cikkből megtudhatja, hogyan irányíthatja az adatútvonalat a Storage
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- [Hozzon létre egy Media Services fiókot](create-account-cli-how-to.md).
+- [Hozzon létre egy Media Services fiókot](./create-account-howto.md).
 - Tekintse át [a figyelő Media Services mérőszámait és a diagnosztikai naplókat](media-services-metrics-diagnostic-logs.md).
 
 ## <a name="route-data-to-the-storage-account-using-the-portal"></a>Az adatirányítás a Storage-fiókba a portál használatával
@@ -49,7 +49,7 @@ Ebből a cikkből megtudhatja, hogyan irányíthatja az adatútvonalat a Storage
 
    ![Diagnosztikai beállítások szakasz](media/media-services-diagnostic-logs/logs02.png)
 1. Állítsa a **Megőrzés (nap)** csúszkát a 30 értékre. Ez a csúszka beállítja a monitorozási adatok tárfiókban való megőrzésének időtartamát napokban. Az Azure Monitor automatikusan törli a megadott számú napnál régebbi adatokat. A nulla értékű megőrzési időszak határozatlan ideig tárolja az adatokat.
-1. Kattintson a **Save** (Mentés) gombra.
+1. Kattintson a **Mentés** gombra.
 
 Az erőforrás monitorozási adatai mostantól a tárfiókba kerülnek.
 
@@ -178,7 +178,7 @@ Előfordulhat, hogy akár öt percet is várnia kell, mielőtt az esemény megje
 
 * A Widevine a Google Inc által biztosított szolgáltatás, és a Google, Inc. szolgáltatási és adatvédelmi szabályzatának feltételei vonatkoznak rá.
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 * [Azure Monitor metrikák](../../azure-monitor/platform/data-platform.md)
 * [Diagnosztikai naplók Azure Monitor](../../azure-monitor/platform/platform-logs-overview.md)

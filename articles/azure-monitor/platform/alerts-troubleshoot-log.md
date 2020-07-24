@@ -6,18 +6,18 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 10/29/2018
-ms.openlocfilehash: 7be1c350af6c9bb84669b45a9bc8a1d9dd808133
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: b8edbbc397a56f4fcf5b3ae070f04ca61659d98d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86165634"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045342"
 ---
 # <a name="troubleshoot-log-alerts-in-azure-monitor"></a>A Azure Monitor naplózási értesítéseinek hibakeresése  
 
 Ebből a cikkből megtudhatja, Hogyan oldhatók meg a naplózási riasztásokkal kapcsolatos gyakori problémák Azure Monitor. Emellett megoldásokat kínál a naplók működésével és konfigurációjával kapcsolatos gyakori problémákra.
 
-A *log-riasztások* kifejezés azokat a szabályokat ismerteti, amelyek az [Azure log Analytics-munkaterületen](../learn/tutorial-viewdata.md) vagy az [Azure Application Insights](../../azure-monitor/app/analytics.md)-ban való naplózási lekérdezésen alapulnak. További információ a [naplózási riasztásokban](../platform/alerts-unified-log.md)szereplő funkciókról, fogalmakról és típusokról Azure monitor.
+A *log-riasztások* kifejezés azokat a szabályokat ismerteti, amelyek az [Azure log Analytics-munkaterületen](../log-query/get-started-portal.md) vagy az [Azure Application Insights](../log-query/log-query-overview.md)-ban való naplózási lekérdezésen alapulnak. További információ a [naplózási riasztásokban](../platform/alerts-unified-log.md)szereplő funkciókról, fogalmakról és típusokról Azure monitor.
 
 > [!NOTE]
 > Ez a cikk nem vizsgálja azokat az eseteket, amelyekben a Azure Portal riasztási szabályt váltott ki, és egy kapcsolódó műveleti csoport nem hajt végre értesítést. Ilyen esetekben tekintse meg a következő témakör részleteit: [műveleti csoportok létrehozása és kezelése a Azure Portalban](../platform/action-groups.md).
@@ -28,7 +28,7 @@ A *log-riasztások* kifejezés azokat a szabályokat ismerteti, amelyek az [Azur
 
 ### <a name="data-ingestion-time-for-logs"></a>Naplók adatfeldolgozási ideje
 
-A naplózási riasztás időszakonként [log Analytics](../learn/tutorial-viewdata.md) vagy [Application Insights](../../azure-monitor/app/analytics.md)alapján futtatja a lekérdezést. Mivel Azure Monitor több ezer ügyfelet dolgoz fel több ezer ügyféltől a különböző forrásokból a világ bármely részén, a szolgáltatás a különböző késések miatt nem alkalmas. További információ: [adatfeldolgozási idő Azure monitor naplókban](../platform/data-ingestion-time.md).
+A naplózási riasztás időszakonként [log Analytics](../log-query/get-started-portal.md) vagy [Application Insights](../log-query/log-query-overview.md)alapján futtatja a lekérdezést. Mivel Azure Monitor több ezer ügyfelet dolgoz fel több ezer ügyféltől a különböző forrásokból a világ bármely részén, a szolgáltatás a különböző késések miatt nem alkalmas. További információ: [adatfeldolgozási idő Azure monitor naplókban](../platform/data-ingestion-time.md).
 
 A késések enyhítése érdekében a rendszer többször is megvárja és újrapróbálkozik a riasztási lekérdezéssel, ha úgy találja, hogy a szükséges adatmennyiség még nincs betöltve. A rendszer exponenciálisan növekszik a várakozási idő beállítása. A naplózási riasztás csak az elérhető adatmennyiség után aktiválódik, így a késés a naplózási adatmennyiség lassú betöltése miatt lehet.
 
@@ -99,7 +99,7 @@ Egy elemzési lekérdezésben megadja a naplózási riasztások logikáját. Az 
 
 ![Végrehajtandó lekérdezés](media/alert-log-troubleshoot/LogAlertPreview.png)
 
-A **végrehajtandó lekérdezés** mező a naplózási riasztások szolgáltatás futtatására szolgál. Ha szeretné megismerni, hogy a riasztási lekérdezés kimenete milyen lehet a riasztás létrehozása előtt, a megadott lekérdezést és a TimeSpan az [Analytics-portálon](../log-query/portals.md) vagy az [elemzési API](https://docs.microsoft.com/rest/api/loganalytics/)-n keresztül futtathatja.
+A **végrehajtandó lekérdezés** mező a naplózási riasztások szolgáltatás futtatására szolgál. Ha szeretné megismerni, hogy a riasztási lekérdezés kimenete milyen lehet a riasztás létrehozása előtt, a megadott lekérdezést és a TimeSpan az [Analytics-portálon](../log-query/log-query-overview.md) vagy az [elemzési API](/rest/api/loganalytics/)-n keresztül futtathatja.
 
 ## <a name="log-alert-was-disabled"></a>A napló riasztása le lett tiltva
 
@@ -181,15 +181,48 @@ A Azure Monitor a konfiguráció részeként létrehozott összes naplózási ri
 - A lekérdezés [több erőforrás között fut](../log-query/cross-workspace-query.md). Egy vagy több megadott erőforrás már nem létezik.
 - A [metrikai típus naplózási riasztása](../../azure-monitor/platform/alerts-unified-log.md#metric-measurement-alert-rules) konfigurálva van egy riasztási lekérdezés, amely nem felel meg a szintaxis normáinak
 - Az elemzési platformhoz nem történt adatfolyam. A [lekérdezés végrehajtása hibát jelez](https://dev.loganalytics.io/documentation/Using-the-API/Errors) , mert a megadott lekérdezéshez nem tartozik információ.
-- A [lekérdezés nyelvének](https://docs.microsoft.com/azure/kusto/query/) változásai a parancsok és függvények módosított formátumát tartalmazzák. Így a riasztási szabályban korábban megadott lekérdezés már nem érvényes.
+- A [lekérdezés nyelvének](/azure/kusto/query/) változásai a parancsok és függvények módosított formátumát tartalmazzák. Így a riasztási szabályban korábban megadott lekérdezés már nem érvényes.
 
 [Azure Advisor](../../advisor/advisor-overview.md) figyelmeztet erre a viselkedésre. A rendszer javaslatot tesz az adott napló riasztási szabályának Azure Advisor, a közepes hatású magas rendelkezésre állás kategóriája és a "riasztási szabály kijavítása a figyeléshez" című cikk leírásával.
 
 > [!NOTE]
 > Ha a naplózási riasztási szabályban lévő riasztási lekérdezés nem kerül kijavításra, miután a Azure Advisor hét napig megadta a javaslatot, Azure Monitor letilthatja a naplózási riasztást, és gondoskodhat arról, hogy a szabály nem számítható fel feleslegesen, ha a szabály nem futtatható folyamatosan egy jókora (7 nap). Megtalálhatja azt a pontos időt, amikor a Azure Monitor letiltotta a napló riasztási szabályát, ha egy eseményt keres az Azure-beli [tevékenység naplójában](../../azure-resource-manager/management/view-activity-logs.md).
 
+## <a name="alert-rule-quota-was-reached"></a>Elérte a riasztási szabály kvótáját
+
+Az előfizetés és az erőforrás naplózott keresési riasztási szabályainak száma az [itt](https://docs.microsoft.com/azure/azure-monitor/service-limits)ismertetett kvóta-korlátozások hatálya alá tartozik.
+
+### <a name="recommended-steps"></a>Javasolt lépések
+    
+Ha elérte a kvóta korlátját, a következő lépések segíthetnek a probléma megoldásában.
+
+1. Próbálja meg törölni vagy letiltani a napló keresési riasztási szabályait, amelyeket a rendszer már nem használ.
+2. Ha növelni kívánja a kvótakorlátot, hozzon létre egy támogatási kérést, és adja meg a következő információkat:
+
+    - Azon előfizetések azonosítói, amelyeknél növelni kívánja a kvótakorlátokat
+    - A kvóta növelésének oka
+    - A kvóta növelésének erőforrás-típusa: **log Analytics**, **Application Insights** stb.
+    - Kért kvótakorlát
+
+
+### <a name="to-check-the-current-usage-of-new-log-alert-rules"></a>Az új naplózási riasztási szabályok aktuális használatának ellenõrzése
+    
+#### <a name="from-the-azure-portal"></a>Az Azure Portalról
+
+1. Nyissa meg a *Riasztások* képernyőt, és kattintson a *Riasztási szabályok kezelése* elemre
+2. Az *Előfizetés* legördülő vezérlővel szűrjön rá a szóban forgó előfizetésre
+3. NE szűrjön konkrét erőforráscsoport, erőforrástípus vagy erőforrás nevére
+4. A *jel típusa* legördülő menüben válassza a "keresés naplózása" lehetőséget.
+5. Ellenőrizze, hogy az *Állapot* legördülő vezérlő Engedélyezve értére van-e állítva
+6. A naplók keresési riasztási szabályainak teljes száma a szabályok lista felett jelenik meg
+
+#### <a name="from-api"></a>Küldő API
+
+- PowerShell – [Get-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/get-azscheduledqueryrule?view=azps-3.7.0)
+- REST API – [List by subscription](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/listbysubscription)
+
 ## <a name="next-steps"></a>További lépések
 
 - További információ a [log-riasztásokról az Azure-ban](../platform/alerts-unified-log.md).
-- További információ a [Application Insightsról](../../azure-monitor/app/analytics.md).
+- További információ a [Application Insightsról](../log-query/log-query-overview.md).
 - További információ a [naplók lekérdezéséről](../log-query/log-query-overview.md).

@@ -1,6 +1,6 @@
 ---
-title: Windows rendszerű virtuális asztali gazdagép-készlet terheléselosztása – Azure
-description: Gazdagépek terheléselosztási módszerei a Windows rendszerű virtuális asztali környezetekhez.
+title: Windows rendszerű virtuális asztali gazdagépek terheléselosztása (2019) – Azure
+description: Ismerje meg a Windows rendszerű virtuális asztali (2019-es kiadási) környezethez tartozó gazdagépek terheléselosztási módszereit.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e2bfbd580d0e114cf4a135879340745107183b6a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 50819fc6b1e13aeb1c0eddf306ecdfbe8147a44f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82614810"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87046263"
 ---
-# <a name="host-pool-load-balancing-methods"></a>Gazdagépcsoport terheléselosztási módszerei
+# <a name="host-pool-load-balancing-methods-fall-2019-release"></a>Gazdagép-készlet terheléselosztási módszerei (2019-es kiadás)
 
 >[!IMPORTANT]
 >Ez a tartalom a Fall 2019 kiadásra vonatkozik, amely nem támogatja a Windows rendszerű virtuális asztali objektumokat Azure Resource Manager. Ha a Spring 2020 Update szolgáltatásban bevezetett Azure Resource Manager Windows rendszerű virtuális asztali objektumokat szeretne felügyelni, tekintse meg [ezt a cikket](../host-pool-load-balancing.md).

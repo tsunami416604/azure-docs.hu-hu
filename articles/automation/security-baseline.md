@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 88f06bd30c97f857cd5a81068322a95c480a7b34
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 3b86c249630f7bfa5c2d319577c66d750b0f6268
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187421"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045912"
 ---
 # <a name="azure-security-baseline-for-automation"></a>Azure biztonsági alapkonfiguráció automatizáláshoz
 
@@ -918,7 +918,7 @@ A hibrid Runbook-feldolgozói szolgáltatás használatakor Azure Security Cente
 
 * [Azure Policy effektusok ismertetése](../governance/policy/concepts/effects.md)
 
-* [Automation-fiók üzembe helyezése Azure Resource Manager sablon használatával](./automation-create-account-template.md#deploy-the-template)
+* [Automation-fiók üzembe helyezése Azure Resource Manager sablon használatával](./quickstart-create-automation-account-template.md#deploy-the-template)
 
 * [Azure Policy minta beépített Azure Automation](./policy-samples.md)
 
@@ -1064,7 +1064,7 @@ A hibrid Runbook-feldolgozói szolgáltatás használatakor használja Azure Aut
 
 **Útmutató**: hitelesítő adatok beolvasása a programkódon belül a hitelesítő adatok azonosításához. A hitelesítő adatok beolvasása azt is javasolja, hogy a felderített hitelesítő adatokat biztonságosabb helyszínekre (például Azure Key Vault) helyezze.
 
-* [A hitelesítő adatok beolvasójának beállítása](https://secdevtools.azurewebsites.net/helpcredscan.htm)
+* [A hitelesítő adatok beolvasójának beállítása](https://secdevtools.azurewebsites.net/helpcredscan.html)
 
 **Azure Security Center figyelés**: jelenleg nem érhető el
 
@@ -1124,7 +1124,7 @@ A verziókövetés integrációs funkciójával naprakészen tarthatja a runbook
 
 * [Azure Resource Manager sablon referenciája Azure Automation erőforrásokhoz](/azure/templates/microsoft.automation/allversions)
 
-* [Automation-fiók létrehozása Azure Resource Manager sablon használatával](./automation-create-account-template.md)
+* [Automation-fiók létrehozása Azure Resource Manager sablon használatával](./quickstart-create-automation-account-template.md)
 
 * [Egy-és többerőforrásos exportálás Azure Portal sablonba](../azure-resource-manager/templates/export-template-portal.md)
 
@@ -1150,7 +1150,7 @@ A verziókövetés integrációs funkciójával naprakészen tarthatja a runbook
 
 * [Azure Resource Manager sablon referenciája Azure Automation erőforrásokhoz](/azure/templates/microsoft.automation/allversions)
 
-* [Automation-fiók létrehozása Azure Resource Manager sablon használatával](./automation-create-account-template.md)
+* [Automation-fiók létrehozása Azure Resource Manager sablon használatával](./quickstart-create-automation-account-template.md)
 
 * [Egy-és többerőforrásos exportálás Azure Portal sablonba](../azure-resource-manager/templates/export-template-portal.md)
 
@@ -1198,7 +1198,7 @@ A verziókövetés integrációs funkciójával naprakészen tarthatja a runbook
 
 **Felelősség**: ügyfél
 
-## <a name="incident-response"></a>Incidenskezelés
+## <a name="incident-response"></a>Incidensmegoldás
 
 *További információ [: Security Control: incidens válasza](../security/benchmarks/security-control-incident-response.md).*
 

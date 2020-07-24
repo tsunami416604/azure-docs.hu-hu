@@ -1,26 +1,26 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: digital-twins
 ms.service: digital-twins
 ms.topic: include
-ms.date: 02/03/2020
+ms.date: 07/09/2020
 author: deepakpalled
 ms.author: dpalled
-manager: cshankar
+manager: diviso
 ms.custom: include file
-ms.openlocfilehash: 11469d992e0f5669cd3fc1e3864627dd0b8ae23d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1e07f56bc2e820b325414e124c7825c1d356ca26
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81263343"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87046420"
 ---
-Az alábbiakban az általánosan elérhető főbb korlátokat összegzi.
+Az alábbiakban a Azure Time Series Insights Gen1 található főbb korlátokat összegzi.
 
 ### <a name="sku-ingress-rates-and-capacities"></a>SKU-ba beáramló díjak és kapacitások
 
-Az S1 és az S2 SKU beáramlási aránya és kapacitása rugalmasságot biztosít az új Time Series Insights környezet konfigurálásakor. Az SKU kapacitása azt jelzi, hogy a napi beáramlási arány a tárolt események vagy bájtok száma alapján történik, attól függően, hogy melyik az első. Vegye figyelembe, hogy a bejövő forgalom *percenként*mérhető, és a **szabályozás** a jogkivonat-gyűjtő algoritmus használatával történik. A bejövő forgalom 1 KB-os blokkokban van mérve. Például egy 0,8 KB-os tényleges eseményt egyetlen eseményként kell mérni, a 2,6 KB-os esemény pedig három eseménynek számít.
+Az S1 és az S2 SKU beáramlási aránya és kapacitása rugalmasságot biztosít az új Azure Time Series Insights környezet konfigurálásakor. Az SKU kapacitása azt jelzi, hogy a napi beáramlási arány a tárolt események vagy bájtok száma alapján történik, attól függően, hogy melyik az első. Vegye figyelembe, hogy a bejövő forgalom *percenként*mérhető, és a **szabályozás** a jogkivonat-gyűjtő algoritmus használatával történik. A bejövő forgalom 1 KB-os blokkokban van mérve. Például egy 0,8 KB-os tényleges eseményt egyetlen eseményként kell mérni, a 2,6 KB-os esemény pedig három eseménynek számít.
 
 | S1 SKU kapacitása | Bejövő forgalom aránya | Maximális tárolókapacitás
 | --- | --- | --- |
@@ -44,7 +44,7 @@ Az S2 SKU-környezetek havonta több eseményt támogatnak, és lényegesen maga
 
 ### <a name="property-limits"></a>Tulajdonságok korlátai
 
-A GA-tulajdonságok korlátai a kiválasztott SKU-környezettől függenek. A megadott esemény tulajdonságai a megfelelő JSON-, CSV-és diagram-oszlopokkal rendelkeznek, amelyek megtekinthetők a [Time Series Insights Explorerben](https://docs.microsoft.com/azure/time-series-insights/time-series-quickstart).
+A Gen1 tulajdonság korlátai a kiválasztott SKU-környezettől függenek. A megadott esemény tulajdonságai a megfelelő JSON-, CSV-és diagram-oszlopokkal rendelkeznek, amelyek megtekinthetők a [Azure Time Series Insights Explorerben](https://docs.microsoft.com/azure/time-series-insights/time-series-quickstart).
 
 | Termékváltozat | Maximális tulajdonságok |
 | --- | --- |
@@ -53,11 +53,11 @@ A GA-tulajdonságok korlátai a kiválasztott SKU-környezettől függenek. A me
 
 ### <a name="event-sources"></a>Eseményforrások
 
-A példányok száma legfeljebb két eseményforrás esetén támogatott. 
+A példányok száma legfeljebb két eseményforrás esetén támogatott.
 
 * Ismerje meg, hogyan [adhat hozzá egy Event hub-forrást](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-eventhub).
 * [IoT hub-forrás](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-iothub)konfigurálása.
 
 ### <a name="api-limits"></a>API-korlátok
 
-Az általános elérhetőség Time Series Insights REST API korlátozásait a REST API dokumentációjában [találja](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#limits)meg.
+A [REST API](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#limits)dokumentációjában a Azure Time Series Insights Gen1 REST API korlátai vannak megadva.

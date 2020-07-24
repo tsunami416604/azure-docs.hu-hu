@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan hozhatja létre első Azure Resource Manager-sa
 ms.devlang: java
 ms.date: 08/01/2019
 ms.topic: conceptual
-ms.openlocfilehash: fa09fbe8d239bbe10c0762d3aad7e19df23a9044
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: bce3d8ff2662ff62e1493cb26d797619b65c2762
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057449"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87040741"
 ---
 # <a name="create-and-deploy-arm-templates-by-using-the-intellij-idea"></a>ARM-sablonok létrehozása és üzembe helyezése a IntelliJ IDEA használatával
 
@@ -19,7 +19,7 @@ Megtudhatja, hogyan helyezhet üzembe egy Azure Resource Manager (ARM) sablont a
 
 Az oktatóanyag befejezése után üzembe kell helyeznie egy Azure Storage-fiókot. Ugyanez a folyamat használható más Azure-erőforrások üzembe helyezésére is.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -27,7 +27,7 @@ Az oktatóanyag elvégzéséhez az alábbiakra van szükség:
 
 * Telepített [IntelliJ IDEA](https://www.jetbrains.com/idea/download/) Ultimate Edition vagy Community Edition
 * Telepített [Azure Toolkit for IntelliJ](https://plugins.jetbrains.com/plugin/8053), további információért lásd az [IntelliJ beépülő moduljainak felügyeleti útmutatóját](https://www.jetbrains.com/help/idea/managing-plugins.html)
-* [Legyen bejelentkezve](/java/azure/intellij/azure-toolkit-for-intellij-sign-in-instructions) az Azure-fiókjába az Azure Toolkit for IntelliJ eléréséhez
+* [Legyen bejelentkezve](/azure/developer/java/toolkit-for-intellij/sign-in-instructions) az Azure-fiókjába az Azure Toolkit for IntelliJ eléréséhez
 
 ## <a name="deploy-a-quickstart-template"></a>Gyorsindítás sablon üzembe helyezése
 

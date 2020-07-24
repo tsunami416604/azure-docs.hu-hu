@@ -1,5 +1,5 @@
 ---
-title: Az Azure IoT-megoldáshoz csatlakoztatott IoT Plug and Play előzetes verziójú eszköz használata | Microsoft Docs
+title: Interakció a IoT Plug and Play a megoldáshoz csatlakoztatott előzetes verziójú eszközzel – C# | Microsoft Docs
 description: A C# (.NET) használatával csatlakozhat egy IoT Plug and Play előnézeti eszközhöz, amely az Azure IoT-megoldáshoz csatlakozik.
 author: dominicbetts
 ms.author: dobett
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 0953f68839217c1c75eb86f8399ce023f3863ab4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 226acdda94eb88825d60e35d48bfdd476ad1339c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76963971"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87044096"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-preview-device-thats-connected-to-your-solution-c"></a>Rövid útmutató: a megoldáshoz csatlakoztatott IoT Plug and Play előnézeti eszköz használata (C#)
 
@@ -95,7 +95,7 @@ Ebben a rövid útmutatóban egy minta IoT-megoldást használ a C#-ban, hogy eg
     dotnet run
     ```
 
-1. A _szolgáltatás_ -terminál kimenetében görgessen az `environmentalSensor` összetevőhöz. Láthatja, hogy `state` a tulajdonság, amely azt jelzi, hogy az eszköz online állapotú-e, _igaznak_jelent-e:
+1. A _szolgáltatás_ -terminál kimenetében görgessen az `environmentalSensor` összetevőhöz. Láthatja, hogy a `state` tulajdonság, amely azt jelzi, hogy az eszköz online állapotú-e, _igaznak_jelent-e:
 
     ```JSON
     "environmentalSensor": {

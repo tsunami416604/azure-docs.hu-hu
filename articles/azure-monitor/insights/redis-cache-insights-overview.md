@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/21/2020
-ms.openlocfilehash: 469b402c694bcfae5a826c03ea35dbef2c365148
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 70bf39011761bcf59c8270ecdcc0542e326aef42
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84945409"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045866"
 ---
 # <a name="explore-azure-monitor-for-azure-cache-for-redis-preview"></a>Ismerkedés az Azure cache Azure Monitor Redis (előzetes verzió)
 
@@ -23,7 +23,7 @@ Az Azure cache for Redis (előzetes verzió) Redis Azure Monitor-erőforrásaiho
 
 Ez a cikk segít megérteni az új figyelési élmény előnyeit. Azt is bemutatja, hogyan lehet módosítani és alkalmazkodni a felhasználói élményhez, hogy illeszkedjenek a szervezet egyedi igényeihez.
 
-## <a name="introduction"></a>Introduction (Bevezetés)
+## <a name="introduction"></a>Bevezetés
 
 A felhasználói élmény megkezdése előtt tisztában kell lennie azzal, hogy az Azure cache Azure Monitor for Redis vizuálisan hogyan jeleníti meg az információkat.
 
@@ -79,7 +79,7 @@ Ha a kék színnel jelölt Redis-erőforráshoz az Azure cache elemet választja
 - **Gyorsítótár-tévesztések**
 - **Hibák (max.)**
 
-### <a name="operations"></a>Műveletek
+### <a name="operations"></a>Üzemeltetés
 
 Amikor kiválasztja a **műveletek** elemet a lap tetején, megnyílik a munkafüzet sablonjának **műveleti** táblázata. Ezeket az oszlopokat jeleníti meg:
 
@@ -120,7 +120,7 @@ Ha a lap tetején a **hibák** lehetőséget választja, megnyílik a munkafüze
 
 ### <a name="metric-definitions"></a>Metrika-definíciók
 
-A munkafüzeteket alkotó metrika-definíciók teljes listáját az [elérhető metrikák és jelentéskészítési időközök című cikkben](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-monitor#available-metrics-and-reporting-intervals)tekintheti meg.
+A munkafüzeteket alkotó metrika-definíciók teljes listáját az [elérhető metrikák és jelentéskészítési időközök című cikkben](../../azure-cache-for-redis/cache-how-to-monitor.md#available-metrics-and-reporting-intervals)tekintheti meg.
 
 ## <a name="view-from-an-azure-cache-for-redis-resource"></a>Megtekintés Azure-gyorsítótárból Redis-erőforráshoz
 
@@ -156,7 +156,7 @@ A **teljesítmény** vagy a **műveletek** egyéb lapjainak kiválasztásával m
 
 ## <a name="pin-export-and-expand"></a>PIN-kód, exportálás és Kibontás
 
-Ha a metrikai szakaszt egy [Azure-irányítópultra](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboards)szeretné rögzíteni, válassza a gombostű szimbólumot a szakasz jobb felső részén.
+Ha a metrikai szakaszt egy [Azure-irányítópultra](../../azure-portal/azure-portal-dashboards.md)szeretné rögzíteni, válassza a gombostű szimbólumot a szakasz jobb felső részén.
 
 ![A gombostű szimbólummal jelölt metrikai szakasz](./media/cosmosdb-insights-overview/pin.png)
 
@@ -186,6 +186,6 @@ A hibaelhárítással kapcsolatos útmutatásért tekintse meg a dedikált munka
 
 ## <a name="next-steps"></a>További lépések
 
-* A [metrikai riasztások](../platform/alerts-metric.md) és a [szolgáltatás állapotára vonatkozó értesítések](../../service-health/alerts-activity-log-service-notifications.md) konfigurálása a problémák észlelését segítő automatizált riasztások beállításához.
+* A [metrikai riasztások](../platform/alerts-metric.md) és a [szolgáltatás állapotára vonatkozó értesítések](../../service-health/alerts-activity-log-service-notifications-portal.md) konfigurálása a problémák észlelését segítő automatizált riasztások beállításához.
 
 * Megismerheti a munkafüzetek által támogatott forgatókönyveket, a jelentések készítését és testreszabását, valamint az [interaktív jelentések létrehozásával Azure monitor munkafüzetek](../platform/workbooks-overview.md)használatával történő áttekintésével.

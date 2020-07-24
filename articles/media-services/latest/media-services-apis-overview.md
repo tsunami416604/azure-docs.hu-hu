@@ -13,28 +13,29 @@ ms.topic: article
 ms.date: 10/21/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 7ea74c85af062ce00dbccf8a486ce39cbd524bb0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 703c08cd5a884c8bfdd027b4ecf457c9e954a2dc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515069"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87043403"
 ---
-# <a name="develop-with-media-services-v3-apis"></a>Fejlesztés Media Services V3 API-kkal
+# <a name="develop-with-media-services-v3-apis"></a>Fejlesztés a Media Services v3 API-kkal
 
-Fejlesztőként Media Services [REST API](https://docs.microsoft.com/rest/api/media/) vagy ügyféloldali kódtárakat használhat, amelyek lehetővé teszik az REST API használatát az egyéni adathordozó-munkafolyamatok egyszerű létrehozásához, kezeléséhez és karbantartásához. Az [Media Services v3](https://aka.ms/ams-v3-rest-sdk) API a OpenAPI-specifikáción alapul (korábbi nevén a hencegés).
+Fejlesztőként Media Services [REST API](/rest/api/media/) vagy ügyféloldali kódtárakat használhat, amelyek lehetővé teszik az REST API használatát az egyéni adathordozó-munkafolyamatok egyszerű létrehozásához, kezeléséhez és karbantartásához. Az [Media Services v3](https://aka.ms/ams-v3-rest-sdk) API a OpenAPI-specifikáción alapul (korábbi nevén a hencegés).
 
 Ez a cikk azokat a szabályokat ismerteti, amelyek az entitásokra és API-kra vonatkoznak Media Services v3-val történő fejlesztéskor.
 
-## <a name="accessing-the-azure-media-services-api"></a>A Azure Media Services API elérése
+## <a name="accessing-the-azure-media-services-api"></a>Az Azure Media Services API elérése
 
-A Media Services erőforrások és a Media Services API elérésének engedélyezéséhez először hitelesítenie kell magát. Media Services támogatja a [Azure Active Directory (Azure ad)-alapú](../../active-directory/fundamentals/active-directory-whatis.md) hitelesítést. Két gyakori hitelesítési lehetőség a következők:
+A Media Services-erőforrások és a Media Services API eléréséhez először hitelesítenie kell magát. A Media Services az [Azure Active Directory- (Azure AD-) alapú](../../active-directory/fundamentals/active-directory-whatis.md) hitelesítést támogatja. Két gyakran használt hitelesítési lehetőség:
  
-* **Egyszerű szolgáltatás hitelesítése**: szolgáltatás hitelesítésére használatos (például Web Apps, Function apps, Logic apps, API és a Services). A hitelesítési módszert gyakran használó alkalmazások olyan alkalmazások, amelyek a Daemon Services, a közepes szintű szolgáltatások vagy az ütemezett feladatok futtatására szolgálnak. A webalkalmazások esetében például mindig olyan közepes rétegnek kell lennie, amely a Media Serviceshoz kapcsolódik egy egyszerű szolgáltatással.
-* **Felhasználói hitelesítés**: az alkalmazást használó személy hitelesítésére használható Media Services erőforrásokkal való kommunikációhoz. Az interaktív alkalmazásnak először meg kell kérnie a felhasználót a felhasználó hitelesítő adatainak megadására. Erre példa egy olyan felügyeleti konzol alkalmazás, amelyet a jogosultsággal rendelkező felhasználók a kódolási feladatok és az élő adatfolyamok figyelésére használnak.
+* **Szolgáltatásnév-hitelesítés**: Szolgáltatások (például: webalkalmazások, függvényalkalmazások, logikai alkalmazások, API-k és mikroszolgáltatások) hitelesítésére szolgál. Ezt a hitelesítési módszert általában a démonszolgáltatásokat, közepes szintű szolgáltatásokat vagy ütemezett feladatokat futtató alkalmazások használják. A webalkalmazások esetében például mindig olyan közepes rétegnek kell lennie, amely a Media Serviceshoz kapcsolódik egy egyszerű szolgáltatással.
+* **Felhasználóhitelesítés**: Olyan személyek hitelesítésére szolgál, akik a Media Services-erőforrásokkal való interakcióhoz használják az alkalmazást. Az interaktív alkalmazásnak először fel kell kérnie a felhasználót a hitelesítési adatainak a megadására. Ilyen alkalmazás lehet például egy olyan felügyeletikonzol-alkalmazás, amelyet a jogosultsággal rendelkező felhasználók a kódolási feladatok és az élő streamelés monitorozására használnak.
 
-A Media Services API megköveteli, hogy a REST API kérelmeket készítő felhasználó vagy alkalmazás hozzáférhessen a Media Services fiók erőforrásához, és használjon **közreműködői** vagy **tulajdonosi** szerepkört. Az API-t az **olvasó** szerepkörrel lehet elérni, de csak a **Get** vagy a **List** művelet lesz elérhető.További információ: Media Services- [fiókok szerepköralapú hozzáférés-vezérlése](rbac-overview.md).
+A Media Services API megköveteli, hogy a REST API-kéréseket kezdeményező felhasználó vagy alkalmazás hozzáféréssel rendelkezzen a Media Services-fiókerőforráshoz, és **Közreműködő** vagy **Tulajdonos** szerepkört használjon. Az API elérhető az **Olvasó** szerepkörrel, de ekkor csak a **lekérési** vagy a **listázási** művelet érhető el.További információért tekintse meg a [Media Services-fiókok szerepköralapú hozzáférés-vezérlésével](rbac-overview.md) foglalkozó cikket.
 
-Egyszerű szolgáltatásnév létrehozása helyett érdemes lehet felügyelt identitásokat használni az Azure-erőforrásokhoz az Media Services API Azure Resource Manager használatával való eléréséhez. Az Azure-erőforrások felügyelt identitásával kapcsolatos további tudnivalókért tekintse meg a [Mi az Azure-erőforrások felügyelt identitása](../../active-directory/managed-identities-azure-resources/overview.md)című témakört.
+Szolgáltatásnév létrehozása helyett érdemes lehet az Azure-erőforrások felügyelt identitásait használni a Media Services API Azure Resource Managerrel történő eléréséhez. Az Azure-erőforrások felügyelt identitásairól az [Azure-erőforrások felügyelt identitásait](../../active-directory/managed-identities-azure-resources/overview.md) ismertető cikkben tájékozódhat bővebben.
 
 ### <a name="azure-ad-service-principal"></a>Azure AD egyszerű szolgáltatás
 
@@ -53,7 +54,7 @@ A következő ábrán a számok kronológiai sorrendben jelenítik meg a kérelm
    * A REST Media Services erőforrás-URI-ja.
    * Azure AD-alkalmazás értékei: az ügyfél-azonosító és az ügyfél titka.
 
-   Az összes szükséges érték beszerzéséhez tekintse meg a következőt: [hozzáférés Azure Media Services API](access-api-cli-how-to.md)-hoz.
+   Az összes szükséges érték beszerzéséhez tekintse meg a következőt: [hozzáférés Azure Media Services API](./access-api-howto.md)-hoz.
 
 2. Az Azure AD hozzáférési jogkivonatot a középső szinten küldik el.
 4. A középső szintű kérelem küldése az Azure Media REST API az Azure AD-jogkivonattal.
@@ -79,36 +80,36 @@ További információ a Azure Resource Manager elnevezéséről: [elnevezési k�
 
 ### <a name="names-of-filesblobs-within-an-asset"></a>Egy eszközön belüli fájlok/Blobok nevei
 
-Az eszközön belüli fájlok/Blobok nevének a [blob neve](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata) és az [NTFS-név követelményeit](https://docs.microsoft.com/windows/win32/fileio/naming-a-file)is követnie kell. Ennek a követelménynek az oka, hogy a fájlok a blob Storage-ból egy helyi NTFS-lemezre másolhatók feldolgozásra.
+Az eszközön belüli fájlok/Blobok nevének a [blob neve](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata) és az [NTFS-név követelményeit](/windows/win32/fileio/naming-a-file)is követnie kell. Ennek a követelménynek az oka, hogy a fájlok a blob Storage-ból egy helyi NTFS-lemezre másolhatók feldolgozásra.
 
 ## <a name="long-running-operations"></a>Hosszan futó műveletek
 
 A `x-ms-long-running-operation` Azure Media Services [hencegő fájlokban](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01/streamingservice.json) megjelölt műveletek hosszú ideig futó műveletek. 
 
-Az aszinkron Azure-műveletek nyomon követésével kapcsolatos részletekért lásd: [aszinkron műveletek](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations#monitor-status-of-operation).
+Az aszinkron Azure-műveletek nyomon követésével kapcsolatos részletekért lásd: [aszinkron műveletek](../../azure-resource-manager/management/async-operations.md#monitor-status-of-operation).
 
 Media Services a következő hosszan futó műveletekkel rendelkezik:
 
-* [Élő események létrehozása](https://docs.microsoft.com/rest/api/media/liveevents/create)
-* [Élő események frissítése](https://docs.microsoft.com/rest/api/media/liveevents/update)
-* [Élő esemény törlése](https://docs.microsoft.com/rest/api/media/liveevents/delete)
-* [Élő esemény indítása](https://docs.microsoft.com/rest/api/media/liveevents/start)
-* [LiveEvent leállítása](https://docs.microsoft.com/rest/api/media/liveevents/stop)
+* [Élő események létrehozása](/rest/api/media/liveevents/create)
+* [Élő események frissítése](/rest/api/media/liveevents/update)
+* [Élő esemény törlése](/rest/api/media/liveevents/delete)
+* [Élő esemény indítása](/rest/api/media/liveevents/start)
+* [LiveEvent leállítása](/rest/api/media/liveevents/stop)
 
   A `removeOutputsOnStop` paraméter használatával törölje az összes társított élő kimenetet az esemény leállításakor.  
-* [LiveEvent alaphelyzetbe állítása](https://docs.microsoft.com/rest/api/media/liveevents/reset)
-* [LiveOutput létrehozása](https://docs.microsoft.com/rest/api/media/liveevents/create)
-* [LiveOutput törlése](https://docs.microsoft.com/rest/api/media/liveevents/delete)
-* [Streamvégpontok létrehozása](https://docs.microsoft.com/rest/api/media/streamingendpoints/create)
-* [Streamvégpontok frissítése](https://docs.microsoft.com/rest/api/media/streamingendpoints/update)
-* [Streamvégpontok törlése](https://docs.microsoft.com/rest/api/media/streamingendpoints/delete)
-* [Streamvégpontok elindítása](https://docs.microsoft.com/rest/api/media/streamingendpoints/start)
-* [Streamvégpontok leállítása](https://docs.microsoft.com/rest/api/media/streamingendpoints/stop)
-* [Streamvégpontok skálázása](https://docs.microsoft.com/rest/api/media/streamingendpoints/scale)
+* [LiveEvent alaphelyzetbe állítása](/rest/api/media/liveevents/reset)
+* [LiveOutput létrehozása](/rest/api/media/liveevents/create)
+* [LiveOutput törlése](/rest/api/media/liveevents/delete)
+* [Streamvégpontok létrehozása](/rest/api/media/streamingendpoints/create)
+* [Streamvégpontok frissítése](/rest/api/media/streamingendpoints/update)
+* [Streamvégpontok törlése](/rest/api/media/streamingendpoints/delete)
+* [Streamvégpontok elindítása](/rest/api/media/streamingendpoints/start)
+* [Streamvégpontok leállítása](/rest/api/media/streamingendpoints/stop)
+* [Streamvégpontok skálázása](/rest/api/media/streamingendpoints/scale)
 
 A hosszú művelet sikeres beküldésekor "202 elfogadva", és a művelet befejezéséhez a visszaadott művelet azonosítója alapján kell lekérdezni a műveletet.
 
-Az [aszinkron Azure-műveletek nyomon követése](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations) című cikk részletesen ismerteti, hogyan követheti nyomon az aszinkron Azure-műveletek állapotát a válaszban visszaadott értékek alapján.
+Az [aszinkron Azure-műveletek nyomon követése](../../azure-resource-manager/management/async-operations.md) című cikk részletesen ismerteti, hogyan követheti nyomon az aszinkron Azure-műveletek állapotát a válaszban visszaadott értékek alapján.
 
 Egy adott élő esemény vagy bármely hozzá tartozó élő kimenet esetében csak egy hosszan futó művelet támogatott. Az indítás után a hosszú ideig futó műveletnek meg kell felelnie, mielőtt egy későbbi, hosszan futó műveletet elindítson ugyanazon a LiveEvent vagy a kapcsolódó élő kimeneteken. Több élő kimenettel rendelkező élő események esetén várnia kell egy hosszú ideig futó művelet befejezését egy élő kimeneten, mielőtt a hosszú ideig futó műveletet aktivál egy másik élő kimeneten. 
 
@@ -147,7 +148,7 @@ Tekintse meg a [Azure Media Services közösségi](media-services-community.md) 
 
 ## <a name="see-also"></a>Lásd még
 
-Az összes szükséges érték beszerzéséhez tekintse meg a következőt: [hozzáférés Azure Media Services API](access-api-cli-how-to.md)-hoz.
+Az összes szükséges érték beszerzéséhez tekintse meg a következőt: [hozzáférés Azure Media Services API](./access-api-howto.md)-hoz.
 
 ## <a name="next-steps"></a>További lépések
 

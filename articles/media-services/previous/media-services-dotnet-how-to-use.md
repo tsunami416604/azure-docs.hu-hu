@@ -14,17 +14,17 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: ebdc0aaf1242a79770fafb7bee015115084f1068
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 3e4d56698ed14ec260838f3ecbec91d58945e4ca
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86077949"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87042930"
 ---
 # <a name="media-services-development-with-net"></a>Media Services fejlesztés .NET-tel 
 
 > [!NOTE]
-> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Tekintse meg a legújabb, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
+> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Tekintse meg a legújabb, [Media Services v3](../latest/index.yml)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
 
 Ez a cikk azt ismerteti, hogyan kezdheti el Media Services alkalmazások fejlesztését a .NET használatával.
 
@@ -34,7 +34,7 @@ A **Azure Media Services .net SDK** -kódtár lehetővé teszi a Media Services 
 * Egy Media Services-fiók egy új vagy meglévő Azure-előfizetésben. Tekintse [meg a Media Services-fiók létrehozását](media-services-portal-create-account.md)ismertető cikket.
 * Operációs rendszerek: Windows 10, Windows 7, Windows 2008 R2 vagy Windows 8.
 * A .NET-keretrendszer 4,5-es vagy újabb verziója.
-* Visual Studio.
+* A Visual Studióval.
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>Egy Visual Studio-projekt létrehozása és konfigurálása
 Ebből a szakaszból megtudhatja, hogyan hozhat létre egy projektet a Visual Studióban, és hogyan állíthatja be Media Services fejlesztéshez.  Ebben az esetben a projekt egy C# nyelvű Windows Console-alkalmazás, de az itt látható telepítési lépések a Media Services-alkalmazásokhoz (például egy Windows Forms alkalmazáshoz vagy egy ASP.NET-webalkalmazáshoz) létrehozott más típusú projektekre is érvényesek.
@@ -143,4 +143,3 @@ Most már [csatlakozhat az AMS API-hoz](media-services-use-aad-auth-to-access-am
 
 ## <a name="provide-feedback"></a>Visszajelzés küldése
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-

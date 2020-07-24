@@ -8,11 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.author: memildin
-ms.openlocfilehash: 76bf38c9d15e977b39922fdfbc7d30f533707cda
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5f558aaa367d156a8a4fa8633f113c6480236f5b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85801376"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87038614"
 ---
 # <a name="monitor-the-security-of-your-containers"></a>A tárolók biztonságának figyelése
 
@@ -35,13 +36,11 @@ Ez az oldal ismerteti, hogyan használható a Container [Security című cikkben
 
 1. A rendszerkép vizsgálatának elindításához küldje le azt a beállításjegyzékbe. 
 
-    Ha a vizsgálat befejeződik (általában körülbelül 10 percet követően), az eredmények Security Center javaslatokban érhetők el.
-    
+    Ha a vizsgálat befejeződik (általában körülbelül 2 percen belül, de akár 15 percet is igénybe vehet), a megállapítások a következőképpen érhetők el Security Center javaslatokként:
 
 1. A megállapítások megtekintéséhez nyissa meg a **javaslatok** lapot. Ha probléma merült fel, a következő javaslat jelenik meg:
 
     ![Javaslatok a problémák megoldásához ](media/monitor-container-security/acr-finding.png)
-
 
 1. Válassza ki a javaslatot. 
     Megnyílik a javaslat részletei lap, amely további információkat tartalmaz. Ez az információ tartalmazza a sebezhető rendszerképekkel ("érintett erőforrásokkal") és a Szervizelési lépésekkel rendelkező kibocsátásiegység-forgalmi jegyzékek listáját. 

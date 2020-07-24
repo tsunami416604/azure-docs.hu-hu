@@ -5,11 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 9bb22b12a7b3e972ff144bd121db4288801e2488
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 07b5ae99b98c6c6bbf4dc903cd1b583eb655a825
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81732939"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87041405"
 ---
 # <a name="troubleshooting-application-insights-agent-formerly-named-status-monitor-v2"></a>Application Insights ügynök hibaelhárítása (korábbi nevén Állapotmonitor v2)
 
@@ -54,7 +55,7 @@ A hibakeresési eszközök segítségével megtekintheti a tüneti viselkedést:
 
 ### <a name="conflict-with-iis-shared-configuration"></a>Ütközés az IIS megosztott konfigurációjával
 
-Ha a webkiszolgálók fürtje van, lehet, hogy [megosztott konfigurációt](https://docs.microsoft.com/iis/web-hosting/configuring-servers-in-the-windows-web-platform/shared-configuration_211)használ.
+Ha a webkiszolgálók fürtje van, lehet, hogy [megosztott konfigurációt](/iis/web-hosting/configuring-servers-in-the-windows-web-platform/shared-configuration_211)használ.
 A HttpModule nem lehet beinjektálni ebbe a megosztott konfigurációba.
 Futtassa az Enable parancsot az összes webkiszolgálón a DLL-fájlnak az egyes kiszolgálók GAC-ba történő telepítéséhez.
 
@@ -130,7 +131,7 @@ A parancsmag használatának részletes ismertetését az [API-referenciában](s
 
 ### <a name="collect-etw-logs-by-using-perfview"></a>ETW-naplók gyűjtése a Perfview eszköz használatával
 
-#### <a name="setup"></a>Telepítés
+#### <a name="setup"></a>Előkészületek
 
 1. Töltse le PerfView.exe és PerfView64.exe a [githubról](https://github.com/Microsoft/perfview/releases).
 2. PerfView64.exe elindítása.

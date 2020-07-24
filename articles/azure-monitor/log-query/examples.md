@@ -6,16 +6,17 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/16/2020
-ms.openlocfilehash: 18cd74ac9298b7dd058de2b224f677ec0d8f2d64
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 736daa8a09a8f08721c7b7d9c20f012f274b384a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79480283"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045515"
 ---
 # <a name="azure-monitor-log-query-examples"></a>Példák a Azure Monitor log lekérdezésekre
 Ez a cikk különféle példákat tartalmaz a [Kusto lekérdezési nyelvét](/azure/kusto/query/) használó [lekérdezések](log-query-overview.md) különböző típusú naplófájljainak lekérésére Azure monitorból. Az adatösszesítés és az elemzés különböző módszerekkel történik, így ezek a minták a saját igényeihez esetlegesen használt különböző stratégiák azonosítására használhatók.  
 
-A példákban használt különböző kulcsszavak részleteit a [Kusto nyelvi dokumentációjában](https://docs.microsoft.com/azure/kusto/query/) tekintheti meg. Áttekintheti a [lekérdezéseket](get-started-queries.md) , ha új Azure monitor.
+A példákban használt különböző kulcsszavak részleteit a [Kusto nyelvi dokumentációjában](/azure/kusto/query/) tekintheti meg. Áttekintheti a [lekérdezéseket](get-started-queries.md) , ha új Azure monitor.
 
 ## <a name="events"></a>Események
 
@@ -374,7 +375,7 @@ suspicious_users_that_later_logged_in
 
 ## <a name="usage"></a>Használat
 
-Az `Usage` adattípus segítségével nyomon követheti a betöltött adatmennyiséget megoldás vagy adattípus alapján. A betöltött adatmennyiségeket a [számítógép](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#data-volume-by-computer) vagy az [Azure-előfizetés, az erőforráscsoport vagy az erőforrás](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#data-volume-by-azure-resource-resource-group-or-subscription)alapján is megvizsgálhatja.
+Az `Usage` adattípus segítségével nyomon követheti a betöltött adatmennyiséget megoldás vagy adattípus alapján. A betöltött adatmennyiségeket a [számítógép](../platform/manage-cost-storage.md#data-volume-by-computer) vagy az [Azure-előfizetés, az erőforráscsoport vagy az erőforrás](../platform/manage-cost-storage.md#data-volume-by-azure-resource-resource-group-or-subscription)alapján is megvizsgálhatja.
 
 #### <a name="data-volume-by-solution"></a>Adatmennyiség megoldásonként
 

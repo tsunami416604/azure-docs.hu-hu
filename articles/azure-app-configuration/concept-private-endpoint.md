@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 3/12/2020
 ms.author: lcozzens
-ms.openlocfilehash: bbf2039ad695f332b69bd5429ff527a4a2534e26
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 3ec2a0e38f3bead5fbab8a119099bb5bbc3ded2e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86026984"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87042118"
 ---
 # <a name="using-private-endpoints-for-azure-app-configuration"></a>Privát végpontok használata az Azure app Configuration szolgáltatáshoz
 
@@ -22,9 +22,6 @@ Az alkalmazás konfigurációs tárolójához saját végpontok használata lehe
 - Gondoskodjon az alkalmazás konfigurációjának részleteiről, ha úgy konfigurálja a tűzfalat, hogy a nyilvános végponton az alkalmazás konfigurációjának minden kapcsolatát letiltsa.
 - A virtuális hálózat (VNet) biztonságának növelésével biztosítható, hogy az adatok ne legyenek a VNet.
 - Biztonságosan csatlakozhat az alkalmazás-konfigurációs tárolóhoz a helyszíni hálózatokról, amelyek a [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md) -en vagy a [expressroute](../expressroute/expressroute-locations.md) -en keresztül csatlakoznak a VNet.
-
-> [!NOTE]
-> A Private Endpoint funkció mostantól általánosan elérhető minden régióban, *kivéve* a közép-indiai régiót. A **Közép-indiai** régióban az Azure-alkalmazás konfigurációja nyilvános előzetesként kínálja a privát végpontok használatát. A nyilvános előzetes ajánlatok lehetővé teszik, hogy az ügyfelek a hivatalos kiadásuk előtt új funkciókkal kísérletezzenek.  A nyilvános előzetes verzió funkcióit és szolgáltatásait nem éles használatra szánták.
 
 ## <a name="conceptual-overview"></a>Fogalmi áttekintés
 

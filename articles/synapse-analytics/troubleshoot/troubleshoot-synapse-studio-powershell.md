@@ -1,5 +1,5 @@
 ---
-title: Az Azure szinapszis Studio (előzetes verzió) csatlakozási PowerShell hibáinak megoldása
+title: A szinapszis Studio (előzetes verzió) kapcsolódásának hibája a PowerShell használatával
 description: Az Azure szinapszis Studio-kapcsolat hibáinak megoldása a PowerShell használatával
 author: julieMSFT
 ms.service: synapse-analytics
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: bbc985407a6cb56f4f1b539f514ab092b5f7d0de
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f4afaf536a9c65758ad030e5cdeeee5fb97074d7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81431474"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87046682"
 ---
 # <a name="diagnose-azure-synapse-studio-preview-connectivity-issues-with-powershell-script"></a>Az Azure szinapszis Studio (előzetes verzió) kapcsolódási problémáinak diagnosztizálása a PowerShell-parancsfájllal
 

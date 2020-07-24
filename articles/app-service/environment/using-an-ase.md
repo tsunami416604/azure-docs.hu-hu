@@ -7,11 +7,12 @@ ms.topic: article
 ms.date: 5/10/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: fd1ffc8636e11ca20bc32b4b6f600e03d923d8b5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f9bfd601642ff9d6b5b5c5a1c2c508d1821e19c7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83125808"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87042193"
 ---
 # <a name="use-an-app-service-environment"></a>App Service-környezet használata
 
@@ -160,7 +161,7 @@ További változtatások nélkül az internetalapú CI-rendszerek (például a G
 
 Az ILB ASE alkalmazásainak közzétételi végpontjai az ILB ASE létrehozásakor megadott tartományt használják. Megtekintheti az alkalmazás közzétételi profiljában és az alkalmazás portál paneljén (az **Áttekintés**  >  **alapjai** és a **Tulajdonságok**területen is).
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Tárolás
 
 A kiegészítő csomag 1 TB tárterülettel rendelkezik a központhoz tartozó összes alkalmazáshoz. Az elkülönített díjszabási SKU-ban App Service csomag 250 GB-os korláttal rendelkezik. Egy előállítók esetében 250 GB tárterület kerül App Service csomagba az 1 TB-os korlátig. Több App Service terv is lehet, mint négy, de az 1 TB-os korláton túl nincs több tárterület.
 
@@ -208,7 +209,7 @@ Ha riasztást szeretne létrehozni a naplókban, kövesse a naplók [létrehozá
 
 Ha több ASE is rendelkezik, érdemes lehet néhány ASE frissíteni, mielőtt mások is. A **üzemeltetési Resource Manager** -objektumon belül megadhatja a **upgradePreference**értékét. A **upgradePreference** beállítását sablon, ARMClient vagy a használatával lehet konfigurálni https://resources.azure.com . A három lehetséges érték a következők:
 
-- **Nincs**: az Azure a beadott kötegben nem fogja frissíteni a Bea-t. Ez az alapértelmezett érték.
+- **Nincs**: az Azure a beadott kötegben nem fogja frissíteni a Bea-t. Ez az érték az alapértelmezett érték.
 - **Korai**: a bevezetés a app Service frissítéseinek első felében lesz frissítve.
 - **Későn**: a bevezetés a app Service frissítéseinek második felében lesz frissítve.
 
@@ -249,7 +250,31 @@ A bemutató rendszer törlése:
 
     ![Bemutatás törlése][3]
 
-1. Válassza az **OK** lehetőséget.
+1. Kattintson az **OK** gombra.
+
+## <a name="ase-cli"></a>KIEGÉSZÍTŐ PARANCSSORI FELÜLET
+
+Vannak parancssori képességek a bevezetéshez.  Az az CLI-parancsok alább láthatók.
+
+```azurecli
+C:\>az appservice ase --help
+
+Group
+    az appservice ase : Manage App Service Environments v2.
+        This command group is in preview. It may be changed/removed in a future release.
+Commands:
+    create         : Create app service environment.
+    delete         : Delete app service environment.
+    list           : List app service environments.
+    list-addresses : List VIPs associated with an app service environment.
+    list-plans     : List app service plans associated with an app service environment.
+    show           : Show details of an app service environment.
+    update         : Update app service environment.
+
+For more specific examples, use: az find "az appservice ase"
+```
+
+
 
 <!--Image references-->
 [1]: ./media/using_an_app_service_environment/usingase-appcreate.png

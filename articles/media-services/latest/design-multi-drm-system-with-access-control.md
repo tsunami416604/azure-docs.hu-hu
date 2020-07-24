@@ -14,11 +14,12 @@ ms.topic: article
 ms.date: 12/21/2018
 ms.author: willzhan
 ms.custom: seodec18
-ms.openlocfilehash: 3d02c335f6e950300a7ced36643e6276c3d8d16a
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 79f06bd5d6af05e334faf4e1f6d8cd3e358f89ba
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85957375"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87039191"
 ---
 # <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>Hozzáférés-vezérléssel ellátott Multi-DRM-rendszerek tervezése 
 
@@ -132,13 +133,13 @@ A következő táblázat a leképezést mutatja be.
 
 | **Építőelem** | **Technológia** |
 | --- | --- |
-| **Lejátszó** |[Azure Media Player](https://azure.microsoft.com/services/media-services/media-player/) |
+| **Player** |[Azure Media Player](https://azure.microsoft.com/services/media-services/media-player/) |
 | **Identitás-szolgáltató (IDENTITÁSSZOLGÁLTATÓ)** |Azure Active Directory (Azure AD) |
 | **Biztonságos jogkivonat-szolgáltatás (STS)** |Azure AD |
 | **DRM-védelem munkafolyamata** |Azure Media Services dinamikus védelem |
 | **DRM-licenckézbesítés** |* Media Services licenc kézbesítése (PlayReady, Widevine, FairPlay) <br/>* Axinom-licenckiszolgáló <br/>* Egyéni PlayReady-licenckiszolgáló |
-| **Forrás** |Azure Media Services streaming végpont |
-| **Kulcskezelés** |A hivatkozás megvalósításához nem szükséges |
+| **Származási** |Azure Media Services streaming végpont |
+| **Kulcskezelő** |A hivatkozás megvalósításához nem szükséges |
 | **Tartalomkezelés** |C# konzolos alkalmazás |
 
 Más szóval a IDENTITÁSSZOLGÁLTATÓ és az STS is elérhető az Azure AD-ben. A lejátszóhoz a [Azure Media Player API](https://amp.azure.net/libs/amp/latest/docs/) használatos. Mind a Azure Media Services, mind a Azure Media Player támogatja a CENC-t a DASH-en keresztül, a HLS, a PlayReady a Smooth streaming és az AES-128 titkosítást a DASH, a HLS és a Smooth FairPlay.
@@ -171,7 +172,7 @@ A folyamat futása közben:
    * Licenc-beszerzési URL-címek.
 * A lejátszó a licencek beszerzésére irányuló kérést a böngésző/DRM által támogatott böngészők alapján teszi elérhetővé. A licenc-beszerzési kérelemben a kulcs AZONOSÍTÓját és a JWT is elküldi a rendszer. A licenc-kézbesítési szolgáltatás ellenőrzi a JWT és a jogcímeket, mielőtt kiadja a szükséges licencet.
 
-## <a name="implementation"></a>Megvalósítás
+## <a name="implementation"></a>Implementálás
 ### <a name="implementation-procedures"></a>Megvalósítási eljárások
 A megvalósítás a következő lépéseket tartalmazza:
 
@@ -213,7 +214,7 @@ További információ: [JWT-jogkivonat hitelesítése Azure Media Services és d
 További információ az Azure AD-ről:
 
 * A fejlesztői információk a [Azure Active Directory fejlesztői útmutatójában](../../active-directory/develop/v2-overview.md)találhatók.
-* A rendszergazdai információk az [Azure ad-bérlői címtár felügyeletében](../../active-directory/fundamentals/active-directory-administer.md)találhatók.
+* A rendszergazdai információk az [Azure ad-bérlői címtár felügyeletében](../../active-directory/fundamentals/active-directory-whatis.md)találhatók.
 
 ### <a name="some-issues-in-implementation"></a>Néhány probléma a megvalósításban
 
@@ -281,7 +282,7 @@ Habár az Azure eredetileg csak Microsoft-fiók felhasználók számára engedé
 
 Mivel az Azure AD megbízhatónak tekinti a Microsoft-fiók tartományt, a következő tartományokból bármelyik fiókot hozzáadhatja az egyéni Azure AD-bérlőhöz, és a fiók használatával jelentkezhet be:
 
-| **Tartománynév** | **Domain** |
+| **Tartománynév** | **Tartomány** |
 | --- | --- |
 | **Egyéni Azure AD-bérlői tartomány** |somename.onmicrosoft.com |
 | **Vállalati tartomány** |microsoft.com |

@@ -6,11 +6,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: storage
-ms.openlocfilehash: 86419811cdf2c11204caae0ca5bf6f65fba063d2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7f83d798bbffeb232b45701beee828114ad3db7d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76288914"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87042595"
 ---
 # <a name="move-mainframe-storage-to-azure"></a>Nagyszámítógépes tároló áthelyezése az Azure-ba
 
@@ -44,7 +45,7 @@ Az Azure infrastruktúra-szolgáltatás ([IaaS](https://azure.microsoft.com/over
 
 A Microsoft petabájt kínál az Azure-ban üzemeltetett alkalmazásokhoz, és több tárolási lehetőség is rendelkezésre áll. Ezen tartomány az SSD-tárolóból a nagy teljesítményű, alacsony árú blob Storage-tárolók és-archívumok számára. Az Azure emellett egy adatredundancia-lehetőséget is biztosít a tároláshoz – ami több erőfeszítést tesz a mainframe-környezetekben való beállításra.
 
-Az Azure Storage Azure- [lemezként](/azure/virtual-machines/windows/managed-disks-overview), [Azure Filesként](/azure/storage/files/storage-files-introduction)és [Azure-blobként](/azure/storage/blobs/storage-blobs-overview) érhető el az alábbi táblázat összefoglalása során. További információ a [használatáról](https://docs.microsoft.com/azure/storage/common/storage-decide-blobs-files-disks).
+Az Azure Storage Azure- [lemezként](../../../windows/managed-disks-overview.md), [Azure Filesként](../../../../storage/files/storage-files-introduction.md)és [Azure-blobként](../../../../storage/blobs/storage-blobs-overview.md) érhető el az alábbi táblázat összefoglalása során. További információ a [használatáról](../../../../storage/common/storage-introduction.md).
 
 <!-- markdownlint-disable MD033 -->
 
@@ -104,10 +105,10 @@ A blob Storage a legnagyobb tárterületet biztosítja az Azure-ban. A tárterü
 ## <a name="next-steps"></a>További lépések
 
 - [Nagyszámítógép migrálása](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/overview)
-- [Az Azure Virtual Machines-t futtató nagyszámítógépek](/azure/virtual-machines/workloads/mainframe-rehosting/overview)
+- [Az Azure Virtual Machines-t futtató nagyszámítógépek](../overview.md)
 - [Nagyszámítógépek számítási teljesítményének áthelyezése az Azure-ba](mainframe-compute-Azure.md)
-- [Az Azure-Blobok, a Azure Files-vagy az Azure-lemezek használatának eldöntése](https://docs.microsoft.com/azure/storage/common/storage-decide-blobs-files-disks)
-- [standard SSD Managed Disks Azure-beli virtuális gépek számítási feladataihoz](https://docs.microsoft.com/azure/virtual-machines/windows/disks-standard-ssd)
+- [Az Azure-Blobok, a Azure Files-vagy az Azure-lemezek használatának eldöntése](../../../../storage/common/storage-introduction.md)
+- [standard SSD Managed Disks Azure-beli virtuális gépek számítási feladataihoz](../../../windows/disks-types.md#standard-ssd)
 
 ### <a name="ibm-resources"></a>IBM-erőforrások
 

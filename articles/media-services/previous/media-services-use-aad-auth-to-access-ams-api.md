@@ -13,18 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 8e1aeaf105ce371e965b433ac78e2b257f4bc18b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9d73c280e3f5639b11e0d07b9ef2f775f48cd3c3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81682048"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87038488"
 ---
 # <a name="access-the-azure-media-services-api-with-azure-ad-authentication"></a>Az Azure Media Services API hozzáférése Azure AD-hitelesítéssel  
 
 > [!NOTE]
-> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Tekintse meg a legújabb, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
+> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Tekintse meg a legújabb, [Media Services v3](../latest/index.yml)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
 
-A Azure Media Services API egy REST API. A használatával REST API vagy az elérhető ügyféloldali SDK-k használatával végezhet műveleteket a média erőforrásain. A Azure Media Services Media Services ügyféloldali SDK-t kínál Microsoft .NEThoz. A Media Services erőforrások és a Media Services API elérésének engedélyezéséhez először hitelesítenie kell magát. 
+A Azure Media Services API egy REST API. A használatával REST API vagy az elérhető ügyféloldali SDK-k használatával végezhet műveleteket a média erőforrásain. A Azure Media Services Media Services ügyféloldali SDK-t kínál Microsoft .NEThoz. A Media Services-erőforrások és a Media Services API eléréséhez először hitelesítenie kell magát. 
 
 Media Services támogatja a [Azure Active Directory (Azure ad)-alapú hitelesítést](../../active-directory/fundamentals/active-directory-whatis.md). Az Azure Media REST szolgáltatáshoz az szükséges, hogy a REST API kérelmeket használó felhasználó vagy alkalmazás vagy a **közreműködő** vagy a **tulajdonos** szerepkörrel rendelkezzen az erőforrásokhoz való hozzáféréshez. További információ: Bevezetés a [szerepköralapú Access Control használatába a Azure Portal](../../role-based-access-control/overview.md).  
 
@@ -45,8 +46,8 @@ A jogosulatlan kérelmek sikertelenek, a 401-es állapotkód. Ha ezt a hibakódo
  
 Ha az Azure AD-hitelesítést Azure Media Services használatával használja, két hitelesítési lehetőség közül választhat:
 
-- **Felhasználói hitelesítés**. Az alkalmazást használó személy hitelesítése Media Services erőforrásokkal való interakcióhoz. Az interaktív alkalmazásnak először meg kell kérnie a felhasználót a felhasználó hitelesítő adatainak megadására. Erre példa egy olyan felügyeleti konzol alkalmazás, amelyet a jogosultsággal rendelkező felhasználók a kódolási feladatok és az élő adatfolyamok figyelésére használnak. 
-- **Egyszerű szolgáltatás hitelesítése**. Szolgáltatás hitelesítése. A hitelesítési módszert gyakran használó alkalmazások olyan alkalmazások, amelyek a Daemon Services, a közepes szintű szolgáltatások vagy az ütemezett feladatok futtatására szolgálnak. Ilyenek például a Web Apps, a Function apps, a Logic apps, az API és a Service.
+- **Felhasználói hitelesítés**. Az alkalmazást használó személy hitelesítése Media Services erőforrásokkal való interakcióhoz. Az interaktív alkalmazásnak először meg kell kérnie a felhasználót a felhasználó hitelesítő adatainak megadására. Ilyen alkalmazás lehet például egy olyan felügyeletikonzol-alkalmazás, amelyet a jogosultsággal rendelkező felhasználók a kódolási feladatok és az élő streamelés monitorozására használnak. 
+- **Egyszerű szolgáltatás hitelesítése**. Szolgáltatás hitelesítése. Ezt a hitelesítési módszert általában a démonszolgáltatásokat, közepes szintű szolgáltatásokat vagy ütemezett feladatokat futtató alkalmazások használják. Ilyenek például a Web Apps, a Function apps, a Logic apps, az API és a Service.
 
 ### <a name="user-authentication"></a>Felhasználóhitelesítés 
 
@@ -144,16 +145,15 @@ Kivétel: "a távoli kiszolgáló a következő hibát adta vissza: (401) nem en
 
 Megoldás: a Media Services REST-kérelem sikeres végrehajtásához a hívó felhasználónak közreműködőnek vagy tulajdonosi szerepkörnek kell lennie abban a Media Services-fiókban, amelyhez hozzáférni próbál. További információ: [hozzáférés-vezérlés](media-services-use-aad-auth-to-access-ams-api.md#access-control) szakasz.
 
-## <a name="resources"></a>Erőforrások
+## <a name="resources"></a>További források
 
 A következő cikkek az Azure AD-hitelesítési fogalmak áttekintését ismertetik: 
 
-- [Az Azure AD által kezelt hitelesítési forgatókönyvek](../../active-directory/develop/authentication-scenarios.md)
-- [Alkalmazás hozzáadása, frissítése vagy eltávolítása az Azure AD-ben](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md)
+- [Az Azure AD által kezelt hitelesítési forgatókönyvek](../../active-directory/develop/authentication-vs-authorization.md)
+- [Alkalmazás hozzáadása, frissítése vagy eltávolítása az Azure AD-ben](../../active-directory/develop/quickstart-register-app.md)
 - [Szerepköralapú Access Control konfigurálása és kezelése a PowerShell használatával](../../role-based-access-control/role-assignments-powershell.md)
 
 ## <a name="next-steps"></a>További lépések
 
 * A Azure Portal használatával [férhet hozzá az Azure ad-hitelesítéshez Azure Media Services API](media-services-portal-get-started-with-aad.md)felhasználásához.
 * Az Azure AD-hitelesítés használatával [férhet hozzá Azure Media Services API-hoz a .net](media-services-dotnet-get-started-with-aad.md)-tel.
-

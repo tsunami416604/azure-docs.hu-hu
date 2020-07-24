@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: d420f244b0d1e5ccf9a7aaa78c10f613cdbad38f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1e844934852f3eb45f665a67bbdb7087a8ba0202
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85564266"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87039159"
 ---
 # <a name="move-logic-app-resources-to-other-azure-resource-groups-regions-or-subscriptions"></a>Logikai alkalmazás erőforrásainak áthelyezése más Azure-erőforráscsoportok,-régiók vagy-előfizetések között
 
@@ -94,7 +94,7 @@ Egyes Azure-erőforrások, például a helyszíni adatátjáró-erőforrások az
 
 Ahhoz például, hogy egy logikai alkalmazást egy integrációs fiókhoz lehessen kapcsolni, mindkét erőforrásnak ugyanabban a régióban kell lennie. Olyan helyzetekben, mint például a vész-helyreállítás, általában olyan integrációs fiókokra van szükség, amelyek azonos konfigurációval és összetevőkkel rendelkeznek. Más esetekben előfordulhat, hogy különböző konfigurációkkal és összetevőkkel rendelkező integrációs fiókokra van szükség.
 
-A Azure Logic Appsban lévő egyéni összekötők láthatók a szerzők és a felhasználók számára, akik ugyanazzal az Azure-előfizetéssel és azonos Azure Active Directory Bérlővel rendelkeznek. Ezek az összekötők ugyanabban a régióban érhetők el, ahol a Logic apps telepítve van. További információért lásd az [egyéni összekötők a vállalaton belüli megosztását](https://docs.microsoft.com/connectors/custom-connectors/share) ismertető cikket.
+A Azure Logic Appsban lévő egyéni összekötők láthatók a szerzők és a felhasználók számára, akik ugyanazzal az Azure-előfizetéssel és azonos Azure Active Directory Bérlővel rendelkeznek. Ezek az összekötők ugyanabban a régióban érhetők el, ahol a Logic apps telepítve van. További információért lásd az [egyéni összekötők a vállalaton belüli megosztását](/connectors/custom-connectors/share) ismertető cikket.
 
 A Visual studióból beolvasott sablon csak a logikai alkalmazás erőforrás-definícióit és annak kapcsolatait tartalmazza. Tehát ha a logikai alkalmazás más erőforrásokat használ, például egy integrációs fiókot és egy B2B-összetevőt, például a partnereket, a szerződéseket és a sémákat, akkor a Azure Portal használatával kell exportálnia az integrációs fiók sablonját. Ez a sablon az integrációs fiók és az összetevők erőforrás-definícióit tartalmazza. A sablon azonban nem teljes mértékben paraméteres. Ezért manuálisan kell parametrizálja az üzembe helyezéshez használni kívánt értékeket.
 

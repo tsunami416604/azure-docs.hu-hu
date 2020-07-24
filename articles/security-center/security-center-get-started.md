@@ -1,6 +1,6 @@
 ---
 title: Frissítés a standard szintű csomagra – Azure Security Center
-description: Ez a rövid útmutató bemutatja, hogyan frissíthet a Security Center Standard tarifacsomagjára a biztonság további erősítése érdekében.
+description: Ez a rövid útmutató bemutatja, hogyan frissíthet a Security Center szabványos díjszabási szintjére a további biztonság érdekében.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -14,27 +14,27 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/3/2018
 ms.author: memildin
-ms.openlocfilehash: 3f0d624605f617a8e5ab914c49c4c94a40ebdcc6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f16df87ca72b66003d8870dcd9d778616ea840d4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80435779"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87038545"
 ---
 # <a name="quickstart-onboard-your-azure-subscription-to-security-center-standard"></a>Rövid útmutató: Azure-előfizetés felvétele a Security Center Standard verziójába
-Az Azure Security Center egységes biztonsági felügyeletet és fenyegetésvédelmet biztosít a hibrid felhőalapú számítási feladatokhoz. Míg az Ingyenes szint korlátozott biztonságot nyújt, és azt is csak az Azure-erőforrások számára, a Standard szint kiterjeszti ezeket a képességeket a helyszíni és egyéb felhőkre. A Security Center segítségével megtalálhatja és kijavíthatja a biztonsági réseket, hozzáférés- és alkalmazásvezérlőket alkalmazhat a kártékony tevékenységek blokkolásához, észlelheti a fenyegetéseket az analitika és az intelligencia használatával, valamint gyorsan reagálhat, ha a rendszer támadás alatt áll. Security Center Standard díjmentesen is kipróbálható. További részletekért tekintse át az [árképzést ismertető oldalt](https://azure.microsoft.com/pricing/details/security-center/).
+Az Azure Security Center egységes biztonsági felügyeletet és fenyegetésvédelmet biztosít a hibrid felhőalapú számítási feladatokhoz. Habár az ingyenes szint korlátozott biztonságot nyújt az Azure-erőforrások számára, a standard szint kiterjeszti ezeket a képességeket a helyszíni és egyéb felhőkre. A Security Center segítségével megtalálhatja és kijavíthatja a biztonsági réseket, hozzáférés- és alkalmazásvezérlőket alkalmazhat a kártékony tevékenységek blokkolásához, észlelheti a fenyegetéseket az analitika és az intelligencia használatával, valamint gyorsan reagálhat, ha a rendszer támadás alatt áll. Security Center Standard díjmentesen is kipróbálható. További részletekért tekintse át az [árképzést ismertető oldalt](https://azure.microsoft.com/pricing/details/security-center/).
 
 Ebben a cikkben a biztonsági rések és fenyegetések figyelése érdekében a standard szintre frissíti a biztonságot, és telepíti a Log Analytics-ügynököt a virtuális gépekre.
 
 ## <a name="prerequisites"></a>Előfeltételek
 A Security Center használatához Microsoft Azure-előfizetéssel kell rendelkeznie. Ha nem rendelkezik előfizetéssel, regisztrálhat egy [ingyenes fiókkal](https://azure.microsoft.com/pricing/free-trial/).
 
-A Standard szintre való frissítéshez Előfizetés tulajdonosa, Előfizetés közreműködője vagy Biztonsági rendszergazda hozzárendelt szerepkörrel kell rendelkeznie.
+Az előfizetés standard szintre való frissítéséhez hozzá kell rendelnie az előfizetés tulajdonosa, az előfizetés közreműködője vagy a biztonsági rendszergazda szerepkört.
 
 ## <a name="enable-your-azure-subscription"></a>Azure-előfizetés engedélyezése
 
 1. Jelentkezzen be az [Azure Portalra](https://azure.microsoft.com/features/azure-portal/).
-2. A **Microsoft Azure** menüben válassza a **Security Center** elemet. Megnyílik a **Security Center – Áttekintés** képernyő.
+2. A **Microsoft Azure** menüben válassza a **Security Center** elemet. **Security Center – az Áttekintés** megnyílik.
 
    ![Security Center – Áttekintés][2]
 
@@ -49,12 +49,12 @@ A Security Center első indítása után néhány percen belül a következők j
 
 A Security Center teljes körű kihasználása érdekében az alábbi lépéseket kell elvégeznie a standard szintre való frissítéshez és a Log Analytics-ügynök telepítéséhez.
 
-## <a name="upgrade-to-the-standard-tier"></a>Frissítés a Standard szintre
-A Security Center rövid útmutatóinak és oktatóanyagainak elvégzéséhez frissítenie kell a Standard szintre. Security Center Standard ingyenes próbaverziót is rendelkezésre áll. További részletekért tekintse át az [árképzést ismertető oldalt](https://azure.microsoft.com/pricing/details/security-center/). 
+## <a name="upgrade-to-the-standard-pricing-tier"></a>Frissítés a standard díjszabási szintre
+A Security Center útmutatókat és oktatóanyagokat a standard szintre kell frissítenie. Security Center Standard ingyenes próbaverziót is rendelkezésre áll. További részletekért tekintse át az [árképzést ismertető oldalt](https://azure.microsoft.com/pricing/details/security-center/). 
 
 1. A Security Center főmenüjében válassza az **Első lépések** elemet.
  
-   ![Első lépések][4]
+   ![Bevezetés][4]
 
 2. A **Frissítés** területen a Security Center felsorolja az előkészítésre jogosult előfizetéseket és munkaterületeket. 
    - A **Próbaverzió alkalmazása** elemre kattintva megtekintheti előfizetéseinek és munkaterületeinek listáját, valamint a próbaidőszakkal kapcsolatos jogosultsági állapotukat.
@@ -75,7 +75,7 @@ Az log Analytics-ügynök automatikus kiépítés engedélyezése:
 1. A Security Center Főmenüben válassza a **díjszabás & beállítások**lehetőséget.
 2. Az előfizetés sorában kattintson arra az előfizetésre, amelyre módosítani szeretné a beállításokat.
 3. Az **Adatgyűjtés** lapon állítsa az **Automatikus telepítést****Be** értékre.
-4. Kattintson a **Mentés** gombra.
+4. Válassza a **Mentés** lehetőséget.
 ---
   ![Automatikus kiépítés engedélyezése][6]
 
@@ -83,20 +83,20 @@ Az Azure-beli virtuális gépekbe való új betekintésnek köszönhetően a Sec
 
   ![Javaslatok][8]
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-A gyűjtemény részét képező többi rövid útmutató és oktatóanyag erre a rövid útmutatóra épül. Ha azt tervezi, hogy az ezt követő rövid útmutatókkal és oktatóanyagokkal dolgozik tovább, továbbra is a Standard szintet futtassa, és hagyja engedélyezve az automatikus kiépítést. Ha nem folytatja a munkát, vagy vissza szeretne térni az Ingyenes szintre:
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+A gyűjtemény részét képező többi rövid útmutató és oktatóanyag erre a rövid útmutatóra épül. Ha azt tervezi, hogy az ezt követő rövid útmutatókkal és oktatóanyagokkal dolgozik tovább, folytassa a standard szint futtatását és az automatikus kiépítés engedélyezését. Ha nem folytatja a munkát, vagy vissza szeretne térni az Ingyenes szintre:
 
 1. Térjen vissza a Security Center főmenüre, és válassza a **díjszabás & beállítások**lehetőséget.
 2. Kattintson arra az előfizetésre, amelyet az ingyenes szintjére szeretne váltani.
-3. A **Tarifacsomag** pont alatt válassza az **Ingyenes** lehetőséget az előfizetés Standard szintről Ingyenes szintre való módosításához.
-5. Kattintson a **Mentés** gombra.
+3. Válassza az **árképzési szint** lehetőséget, és válassza az **ingyenes** lehetőséget a standard szintről az ingyenes szintre való előfizetés módosításához.
+5. Válassza a **Mentés** lehetőséget.
 
 Ha le szeretné tiltani az automatikus kiépítést:
 
 1. Térjen vissza a Security Center főmenüre, és válassza a **díjszabás & beállítások**lehetőséget.
 2. Tisztítsa meg az előfizetést, amelynél le szeretné tiltani az automatikus kiépítés szolgáltatást.
 3. Az **Adatgyűjtés** lapon állítsa az **Automatikus telepítést****Ki** értékre.
-4. Kattintson a **Mentés** gombra.
+4. Válassza a **Mentés** lehetőséget.
 
 >[!NOTE]
 > Az automatikus kiépítés letiltása nem távolítja el a Log Analytics ügynököt az Azure-beli virtuális gépekről, ahol az ügynököt kiépítték. Az automatikus kiépítés letiltása korlátozza az erőforrások biztonsági monitorozását.
@@ -107,6 +107,11 @@ Ebben a rövid útmutatóban frissített a standard szintre, és kiépítte a Lo
 
 > [!div class="nextstepaction"]
 > [Rövid útmutató: Windows rendszerű számítógépek felvétele az Azure Security Centerbe](quick-onboard-windows-computer.md)
+
+Szeretné optimalizálni és menteni a Felhőbeli kiadásait?
+
+> [!div class="nextstepaction"]
+> [A költségek elemzésének megkezdése a Cost Management](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
 
 <!--Image references-->
 [2]: ./media/security-center-get-started/overview.png

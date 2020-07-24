@@ -7,12 +7,12 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/20/2020
 tags: connectors
-ms.openlocfilehash: e7055964f9515189450fac5c993f6acda946bfd4
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f4bca70fbec5cf847a6bb5c0b97ed3496d6c2f8c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86524165"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87039985"
 ---
 # <a name="get-started-with-the-oracle-database-connector"></a>Ismerkedés az Oracle Database-összekötővel
 
@@ -77,7 +77,7 @@ Ez a cikk bemutatja, hogyan használhatja a Oracle Database-összekötőt egy lo
 
     A következő példában a rendszer a feladatok adatait egy emberi erőforrás-adatbázisból adja vissza: 
 
-    ![A "sor beolvasása (előzetes verzió)" nevű párbeszédpanel két szövegmezőt tartalmaz: "Table Name" (tábla neve), amely tartalmazza a "HRJOBS" karakterláncot, és tartalmaz egy legördülő listát, és a "sor azonosítója", amely tartalmazza a "SA_REP" nevet.](./media/connectors-create-api-oracledatabase/table-rowid.png)
+    ![A "sor beolvasása (előzetes verzió)" feliratú párbeszédpanel két szövegmezőt tartalmaz: "táblanév", amely a "H R-feladatok" kifejezést tartalmazza, és rendelkezik egy legördülő listával, és "sor i d", amely "S A _ REP" karaktert tartalmaz.](./media/connectors-create-api-oracledatabase/table-rowid.png)
 
 7. Ebben a következő lépésben használhatja a többi összekötőt a munkafolyamat felépítéséhez. Ha szeretné tesztelni az Oracle-adatok beolvasását, akkor küldjön Önnek egy e-mailt az Oracle-adatokkal az e-mailek küldése, például az Office 365 Outlook használatával. Az Oracle-táblázat dinamikus jogkivonatait használva hozza létre a `Subject` és az `Body` e-mail-címét:
 
@@ -127,5 +127,5 @@ A [Microsoft Q&egy kérdés oldal a Azure Logic apps](https://docs.microsoft.com
 Segítheti a Logic Apps és összekötők fejlesztését a szavazással és az ötletek elküldésével [https://aka.ms/logicapps-wish](https://aka.ms/logicapps-wish) . 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Hozzon létre egy logikai alkalmazást](../logic-apps/quickstart-create-first-logic-app-workflow.md), és fedezze fel az elérhető összekötőket Logic apps API-k [listájában](apis-list.md).

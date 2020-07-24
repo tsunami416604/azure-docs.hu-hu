@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 04/28/2020
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: 4f5ad6fd0444c40d95bf4c2f1105959bde07245d
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: 24c3ec1ee16123cef0c4e2bd230bfdb66915fc9f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86276311"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87040590"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>A Azure SQL Database és az Azure szinapszis Analytics naplózása
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -79,6 +79,9 @@ Különböző típusú műveletek és műveleti csoportok naplózását a PowerS
 A Azure SQL Database és az Azure szinapszis audit 4000 karakterből álló adattípust tárol egy naplózási rekordban. Ha egy auditálható művelet által visszaadott **utasítás** vagy **data_sensitivity_information** értéke több mint 4000 karakterből áll, az első 4000 karakternél hosszabb adatok csonkítva lesznek, **és nem lesznek naplózva**.
 A következő szakasz ismerteti a naplózás konfigurációját a Azure Portal használatával.
 
+  > [!NOTE]
+  > Egy szüneteltetett szinapszis SQL-készlet naplózásának engedélyezése nem lehetséges. A naplózás engedélyezéséhez szüntesse meg a szinapszis SQL-készlet szüneteltetését. További információ a [SZINAPSZIS SQL-készletről](https://docs.microsoft.com/azure/synapse-analytics/sql/best-practices-sql-pool).
+
 1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
 2. Navigáljon a **naplózás** elemre az SQL- **adatbázis** vagy az **SQL Server** -ablaktábla biztonsági fejléce alatt.
 3. Ha a kiszolgáló naplózási szabályzatát szeretné beállítani, akkor az adatbázis naplózása lapon kiválaszthatja a **kiszolgáló beállításainak megtekintése** hivatkozást. Ezután megtekintheti vagy módosíthatja a kiszolgáló naplózási beállításait. A kiszolgáló naplózási házirendjei a kiszolgálón lévő összes meglévő és újonnan létrehozott adatbázisra érvényesek.
@@ -119,10 +122,6 @@ A naplók Log Analytics munkaterületre való írásának konfigurálásához v�
 További részletek a Azure Monitor naplók munkaterületekről: [a Azure monitor naplók üzembe helyezésének megtervezése](https://docs.microsoft.com/azure/azure-monitor/platform/design-logs-deployment)
    
 ### <a name="audit-to-event-hub-destination"></a><a id="audit-event-hub-destination"></a>Naplózás az Event hub célhelyére
-
-> [!WARNING]
-> Ha olyan kiszolgálón engedélyezi a naplózást, amely SQL Database készlettel rendelkezik, a rendszer **a SQL Database készletet folytatja, és újra szünetelteti** , ami felmerülhet a számlázási költségekkel.
-> Egy szüneteltetett SQL Database-készlet naplózásának engedélyezése nem lehetséges. Ennek engedélyezéséhez szüntesse meg a SQL Database készlet szüneteltetését.
 
 Ha konfigurálni szeretné a naplók írását az Event hubhoz, válassza az **Event hub (előzetes verzió)** lehetőséget, és nyissa meg az **Event hub részleteit**. Válassza ki az Event hub-t, ahol a naplók meg lesznek írva, majd kattintson **az OK**gombra. Ügyeljen arra, hogy az Event hub ugyanabban a régióban legyen, mint az adatbázis és a kiszolgáló.
 

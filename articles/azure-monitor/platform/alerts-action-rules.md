@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan konfigurálhatja és kezelheti a Azure Monitorb
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.subservice: alerts
-ms.openlocfilehash: 573567386ba9cbaf8b36440fda5073f899fcdfc7
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 083db4ad046ee586f139309b62eedf0fcc2ffa6a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86112340"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045715"
 ---
 # <a name="action-rules-preview"></a>Műveleti szabályok (előzetes verzió)
 
@@ -21,14 +21,13 @@ A műveleti szabályok segítségével meghatározhatja vagy letilthatja a műve
 
 ### <a name="suppression-of-alerts"></a>Riasztások letiltása
 
-Számos esetben hasznos a riasztások által generált értesítések letiltása. Ezek a forgatókönyvek a tervezett karbantartási időszakokban a munkaidőn kívüli időpontokban való letiltásig terjedhetnek. A **ContosoVM** felelős csapat például a közelgő hétvégére vonatkozó riasztási értesítéseket szeretné letiltani, mivel a **ContosoVM** tervezett karbantartás alatt áll. 
+Számos esetben hasznos a riasztások által generált értesítések letiltása. Ezek a forgatókönyvek a tervezett karbantartási időszakokban a munkaidőn kívüli időpontokban való letiltásig terjedhetnek. A **ContosoVM** felelős csapat például a közelgő hétvégére vonatkozó riasztási értesítéseket szeretné letiltani, mivel a **ContosoVM** tervezett karbantartás alatt áll.
 
 Bár a csapat letilthatja az **ContosoVM** -on manuálisan konfigurált összes riasztási szabályt (és azt a karbantartás után is engedélyezheti), nem egyszerű folyamat. A műveleti szabályok segítenek a riasztások letiltásának megadásában a letiltási idő rugalmas konfigurálásával. Az előző példában a csapat meghatározhat egy műveleti szabályt a **ContosoVM** , amely letiltja a hétvégére vonatkozó összes riasztási értesítést.
 
-
 ### <a name="actions-at-scale"></a>Léptékű műveletek
 
-Bár a riasztási szabályok segítenek meghatározni a riasztás előállításakor kiváltó műveleti csoportot, az ügyfeleknek gyakran közös műveleti csoportjuk van a műveleteik hatókörén belül. Például az erőforráscsoport **ContosoRG** felelős csapat valószínűleg ugyanazt a műveleti csoportot fogja meghatározni a **ContosoRG**-ben definiált összes riasztási szabályhoz. 
+Bár a riasztási szabályok segítenek meghatározni a riasztás előállításakor kiváltó műveleti csoportot, az ügyfeleknek gyakran közös műveleti csoportjuk van a műveleteik hatókörén belül. Például az erőforráscsoport **ContosoRG** felelős csapat valószínűleg ugyanazt a műveleti csoportot fogja meghatározni a **ContosoRG**-ben definiált összes riasztási szabályhoz.
 
 A műveleti szabályok segítenek leegyszerűsíteni ezt a folyamatot. A skálázási műveletek megadásával a konfigurált hatókörön létrehozott összes riasztás esetében aktiválható egy műveleti csoport. Az előző példában a csapat egyetlen műveleti szabályt is meghatározhat a **ContosoRG** , amely ugyanazt a műveleti csoportot fogja kiváltani a benne létrehozott összes riasztáshoz.
 
@@ -37,11 +36,13 @@ A műveleti szabályok segítenek leegyszerűsíteni ezt a folyamatot. A skálá
 
 ## <a name="configuring-an-action-rule"></a>Műveleti szabály konfigurálása
 
+### <a name="portal"></a>[Portál](#tab/portal)
+
 A szolgáltatáshoz a Azure Monitor **riasztások** kezdőlapján a **műveletek kezelése** lehetőségre kattintva férhet hozzá. Ezután válassza a **műveleti szabályok (előzetes verzió)** lehetőséget. A szabályokat a riasztások kezdőlapján a **műveleti szabályok (előzetes verzió)** lehetőség kiválasztásával érheti el.
 
 ![A Azure Monitor kezdőlapjának műveleti szabályai](media/alerts-action-rules/action-rules-landing-page.png)
 
-Válassza az **+ új műveleti szabály**lehetőséget. 
+Válassza az **+ új műveleti szabály**lehetőséget.
 
 ![Új műveleti szabály hozzáadása](media/alerts-action-rules/action-rules-new-rule.png)
 
@@ -49,7 +50,7 @@ Azt is megteheti, hogy a riasztási szabály konfigurálása közben létrehoz e
 
 ![Új műveleti szabály hozzáadása](media/alerts-action-rules/action-rules-alert-rule.png)
 
-Ekkor megjelenik a folyamat lap a műveleti szabályok létrehozásához. Konfigurálja a következő elemeket: 
+Ekkor megjelenik a folyamat lap a műveleti szabályok létrehozásához. Konfigurálja a következő elemeket:
 
 ![Új műveleti szabály létrehozási folyamata](media/alerts-action-rules/action-rules-new-rule-creation-flow.png)
 
@@ -61,9 +62,9 @@ Először válassza ki a hatókört (Azure-előfizetés, erőforráscsoport vagy
 
 ### <a name="filter-criteria"></a>Szűrési feltételek
 
-Emellett a riasztások adott részhalmazára szűkítheti a szűrőket is. 
+Emellett a riasztások adott részhalmazára szűkítheti a szűrőket is.
 
-A rendelkezésre álló szűrők a következők: 
+A rendelkezésre álló szűrők a következők:
 
 * **Súlyosság**: az a lehetőség, hogy egy vagy több riasztási megszakítást válasszon ki. **Súlyosság = a Sev1** azt jelenti, hogy a műveleti szabály a Sev1 értékre beállított összes riasztásra érvényes.
 * **Figyelő szolgáltatás**: egy szűrő a kezdeményező figyelő szolgáltatás alapján. Ez a szűrő is többször is kiválasztható. A (z) **"Application Insights" figyelési szolgáltatás** például azt jelenti, hogy a műveleti szabály minden Application Insights-alapú riasztás esetében alkalmazható.
@@ -73,7 +74,7 @@ A rendelkezésre álló szűrők a következők:
 * **Leírás**: egy olyan regex (reguláris kifejezés) egyezés, amely a riasztási szabály részeként definiált karakterlánc-egyezést definiál a leíráshoz. Például a **Leírás tartalmazza** a "Prod" kifejezést, amely minden olyan riasztást tartalmaz, amely tartalmazza a "Prod" karakterláncot a leírásokban.
 * **Riasztási környezet (hasznos adat)**: egy olyan regex-egyezés, amely meghatározza a riasztás hasznos adatainak a riasztás környezeti mezőiben szereplő karakterlánc-egyezést. Például a **riasztási környezet (hasznos adatok) a "Computer-01"** karakterláncot tartalmazza minden olyan riasztásnak, amelynek hasznos adatai tartalmazzák a "Computer-01" karakterláncot.
 
-Ezeket a szűrőket egy másikkal együtt alkalmazza a rendszer. Ha például a **"= Virtual Machines** és **Súlyosság" = Sev0**értéket állítja be, akkor az összes **Sev0** -riasztás csak a virtuális gépeken van szűrve. 
+Ezeket a szűrőket egy másikkal együtt alkalmazza a rendszer. Ha például a **"= Virtual Machines** és **Súlyosság" = Sev0**értéket állítja be, akkor az összes **Sev0** -riasztás csak a virtuális gépeken van szűrve.
 
 ![Műveleti szabály szűrői](media/alerts-action-rules/action-rules-new-rule-creation-flow-filters.png)
 
@@ -92,7 +93,7 @@ Ha a **Mellőzés**lehetőséget választja, a műveletek és értesítések let
 
 #### <a name="action-group"></a>Műveletcsoport
 
-Ha a váltásban a **műveleti csoport** lehetőséget választja, akkor adjon hozzá egy meglévő műveleti csoportot, vagy hozzon létre újat. 
+Ha a váltásban a **műveleti csoport** lehetőséget választja, akkor adjon hozzá egy meglévő műveleti csoportot, vagy hozzon létre újat.
 
 > [!NOTE]
 > Egy műveleti szabállyal csak egy műveleti csoportot lehet hozzárendelni.
@@ -104,7 +105,83 @@ Ha a váltásban a **műveleti csoport** lehetőséget választja, akkor adjon h
 Utolsó lépésként adja meg a következő adatokat a műveleti szabályhoz:
 * Name
 * Az erőforráscsoport, amelyben mentve van
-* Leírás 
+* Description
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+A műveleti szabályokat az az [monitor Action-Rule Create](/cli/azure/ext/alertsmanagement/monitor/action-rule#ext-alertsmanagement-az-monitor-action-rule-create) paranccsal hozhatja létre az Azure CLI használatával.  A `az monitor action-rule` hivatkozás csak a [Azure monitor számos Azure CLI-hivatkozásának](/cli/azure/azure-cli-reference-for-monitor)egyike.
+
+### <a name="prepare-your-environment"></a>A környezet előkészítése
+
+1. [Az Azure CLI összetevő telepítése](/cli/azure/install-azure-cli)
+
+   Ha szeretné, a Azure Cloud Shell használatával is elvégezheti a jelen cikkben ismertetett lépéseket.  A Azure Cloud Shell egy interaktív rendszerhéj-környezet, amelyet a böngészőben használhat.  Cloud Shell elindítása a következő módszerek egyikével:
+
+   - Nyissa meg Cloud Shell[https://shell.azure.com](https://shell.azure.com)
+
+   - A [Azure Portal](https://portal.azure.com) jobb felső sarkában lévő menüsorban kattintson a **Cloud Shell** gombra
+
+1. Bejelentkezés lehetőséget.
+
+   Ha a parancssori felület helyi telepítését használja, jelentkezzen be az az [login](/cli/azure/reference-index#az-login) parancs használatával.  A hitelesítési folyamat befejezéséhez kövesse a terminálban megjelenő lépéseket.
+
+    ```azurecli
+    az login
+    ```
+
+1. A `alertsmanagement` bővítmény telepítése
+
+   A `az monitor action-rule` parancs az alapszintű Azure CLI kísérleti bővítménye. További információ a bővítmények [használatáról az Azure CLI használatával](/cli/azure/azure-cli-extensions-overview?).
+
+   ```azurecli
+   az extension add --name alertsmanagement
+   ```
+
+   A következő figyelmeztetés várható.
+
+   ```output
+   The installed extension `alertsmanagement` is experimental and not covered by customer support.  Please use with discretion.
+   ```
+
+### <a name="create-action-rules-with-the-azure-cli"></a>Műveleti szabályok létrehozása az Azure CLI-vel
+
+A szükséges és választható paraméterek megismeréséhez tekintse meg az Azure CLI hivatkozási tartalmát az [az monitor Action-Rule Create](/cli/azure/ext/alertsmanagement/monitor/action-rule#ext-alertsmanagement-az-monitor-action-rule-create) paranccsal.
+
+Hozzon létre egy műveleti szabályt, amely letiltja az értesítéseket egy erőforráscsoporthoz.
+
+```azurecli
+az monitor action-rule create --resource-group MyResourceGroupName \
+                              --name MyNewActionRuleName \
+                              --location Global \
+                              --status Enabled \
+                              --rule-type Suppression \
+                              --scope-type ResourceGroup \
+                              --scope /subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/MyResourceGroupName \
+                              --suppression-recurrence-type Always \
+                              --alert-context Contains Computer-01 \
+                               --monitor-service Equals "Log Analytics"
+```
+
+Hozzon létre egy műveleti szabályt, amely minden hétvégén letiltja az összes Sev4-riasztás értesítéseit az előfizetésben lévő összes virtuális gépen.
+
+```azurecli
+az monitor action-rule create --resource-group MyResourceGroupName \
+                              --name MyNewActionRuleName \
+                              --location Global \
+                              --status Enabled \
+                              --rule-type Suppression \
+                              --severity Equals Sev4 \
+                              --target-resource-type Equals Microsoft.Compute/VirtualMachines \
+                              --suppression-recurrence-type Weekly \
+                              --suppression-recurrence 0 6 \
+                              --suppression-start-date 12/09/2018 \
+                              --suppression-end-date 12/18/2018 \
+                              --suppression-start-time 06:00:00 \
+                              --suppression-end-time 14:00:00
+
+```
+
+* * *
 
 ## <a name="example-scenarios"></a>Példaforgatókönyvek
 
@@ -132,7 +209,7 @@ A contoso szeretné letiltani az értesítéseket minden, a **ContosoSub** -hez 
 
 ### <a name="scenario-3-action-group-defined-at-a-resource-group"></a>3. forgatókönyv: erőforráscsoport által definiált műveleti csoport
 
-A contoso [metrikus riasztást adott meg egy előfizetési szinten](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-overview#monitoring-at-scale-using-metric-alerts-in-azure-monitor). De meg szeretné határozni azokat a műveleteket, amelyek kifejezetten az erőforráscsoport **ContosoRG**létrehozott riasztásokhoz kapcsolódnak.
+A contoso [metrikus riasztást adott meg egy előfizetési szinten](./alerts-metric-overview.md#monitoring-at-scale-using-metric-alerts-in-azure-monitor). De meg szeretné határozni azokat a műveleteket, amelyek kifejezetten az erőforráscsoport **ContosoRG**létrehozott riasztásokhoz kapcsolódnak.
 
 **Megoldás:** Műveleti szabály létrehozása a alábbiakkal:
 * Hatókör = **ContosoRG**
@@ -140,15 +217,39 @@ A contoso [metrikus riasztást adott meg egy előfizetési szinten](https://docs
 * **ContosoActionGroup** beállított műveleti csoport
 
 > [!NOTE]
-> *A műveleti szabályokban és a riasztási szabályokban definiált műveleti csoportok egymástól függetlenül működnek, és nincs ismétlődés.* Ha a fentebb ismertetett forgatókönyvben egy műveleti csoport van megadva a riasztási szabályhoz, a művelet a műveleti szabályban definiált műveleti csoporttal együtt aktiválódik. 
+> *A műveleti szabályokban és a riasztási szabályokban definiált műveleti csoportok egymástól függetlenül működnek, és nincs ismétlődés.* Ha a fentebb ismertetett forgatókönyvben egy műveleti csoport van megadva a riasztási szabályhoz, a művelet a műveleti szabályban definiált műveleti csoporttal együtt aktiválódik.
 
 ## <a name="managing-your-action-rules"></a>A műveleti szabályok kezelése
+
+### <a name="portal"></a>[Portál](#tab/portal)
 
 A következő lista nézetből megtekintheti és kezelheti a műveleti szabályokat:
 
 ![Műveleti szabályok listája nézet](media/alerts-action-rules/action-rules-list-view.png)
 
 Itt engedélyezheti, letilthatja vagy törölheti az egyes műveletek szabályait a mellette található jelölőnégyzet bejelölésével. A műveleti szabály kiválasztásakor megnyílik a konfigurációs lapja. Az oldalon a műveleti szabály definíciójának frissítése és engedélyezése vagy letiltása segít.
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Az Azure CLI-ből megtekintheti és kezelheti a művelet szabályait az az [monitor Action-Rule](/cli/azure/ext/alertsmanagement/monitor) parancs használatával.
+
+A műveleti szabályok Azure CLI-vel való kezelése előtt készítse elő a környezetet a [műveleti szabály konfigurálása](#configuring-an-action-rule)című részben ismertetett utasítások alapján.
+
+```azurecli
+# List all action rules for a subscription
+az monitor action-rule list
+
+# Get details of an action rule
+az monitor action-rule show --resource-group MyResourceGroupName --name MyActionRuleName
+
+# Update an action rule.
+az monitor action-rule update --resource-group MyResourceGroupName --name MyActionRuleName --status Disabled
+
+# Delete an action rule.
+az monitor action-rule delete --resource-group MyResourceGroupName --name MyActionRuleName
+```
+
+* * *
 
 ## <a name="best-practices"></a>Ajánlott eljárások
 
@@ -181,12 +282,12 @@ Miután meghatározta a riasztási szabály céljának erőforrását, megtekint
 * Egy részhalmaz: például a definiált riasztási szabály egy előfizetésen belül van, és a műveleti szabály az előfizetésben található erőforráscsoporthoz van.
 * Felülbíráló: például a definiált riasztási szabály egy erőforráscsoport, és a műveleti szabály az erőforráscsoportot tartalmazó előfizetésen található.
 * Metszet: például a definiált riasztási szabály a **VM1** és a **VM2**, a műveleti szabály pedig a **VM2** és a **VM3**.
-    
+
 ![Átfedésben lévő műveleti szabályok](media/alerts-action-rules/action-rules-alert-rule-overlapping.png)
 
 ### <a name="can-i-see-the-alerts-that-have-been-suppressed-by-an-action-rule"></a>Megtekinthetem a műveleti szabály által letiltott riasztásokat?
 
-A [riasztások listája oldalon](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-managing-alert-instances)kiválaszthatja az **elnyomási állapot**nevű további oszlopot is. Ha a riasztási példány értesítését a rendszer letiltotta, akkor az az állapot jelenik meg a listában.
+A [riasztások listája oldalon](./alerts-managing-alert-instances.md)kiválaszthatja az **elnyomási állapot**nevű további oszlopot is. Ha a riasztási példány értesítését a rendszer letiltotta, akkor az az állapot jelenik meg a listában.
 
 ![Letiltott riasztási példányok](media/alerts-action-rules/action-rules-suppressed-alerts.png)
 
@@ -200,7 +301,7 @@ A Mellőzés mindig elsőbbséget élvez ugyanazon a hatókörön.
 
    `action rule AR2 defined for VM2 and VM3 with action group AG1`
 
-A VM1 és a VM3 összes riasztása esetén a Action Group AG1 egyszer aktiválódik. A **VM2**összes riasztása esetében a műveleti csoport AG1 kétszer aktiválódik, mert a műveleti szabályok nem ismétlik le a műveleteket. 
+A VM1 és a VM3 összes riasztása esetén a Action Group AG1 egyszer aktiválódik. A **VM2**összes riasztása esetében a műveleti csoport AG1 kétszer aktiválódik, mert a műveleti szabályok nem ismétlik le a műveleteket.
 
 ### <a name="what-happens-if-i-have-a-resource-monitored-in-two-separate-action-rules-and-one-calls-for-action-while-another-for-suppression-for-example-vm2-in-the-following-scenario"></a>Mi történik, ha egy erőforrást két külön műveleti szabályban figyeltem meg, és egy másikat a művelet közben letiltanak? A **VM2** például a következő esetben:
 
@@ -208,7 +309,7 @@ A VM1 és a VM3 összes riasztása esetén a Action Group AG1 egyszer aktiváló
 
    `action rule AR2 defined for VM2 and VM3 with suppression`
 
-A VM1 összes riasztása esetén a Action Group AG1 egyszer aktiválódik. A VM2 és a VM3 összes riasztására vonatkozó műveleteket és értesítéseket a rendszer letiltja. 
+A VM1 összes riasztása esetén a Action Group AG1 egyszer aktiválódik. A VM2 és a VM3 összes riasztására vonatkozó műveleteket és értesítéseket a rendszer letiltja.
 
 ### <a name="what-happens-if-i-have-an-alert-rule-and-an-action-rule-defined-for-the-same-resource-calling-different-action-groups-for-example-vm1-in-the-following-scenario"></a>Mi történik, ha a riasztási szabály és az ugyanahhoz az erőforráshoz definiált műveleti szabály különböző műveleti csoportokat hív meg? A **VM1** például a következő esetben:
 
@@ -216,8 +317,8 @@ A VM1 összes riasztása esetén a Action Group AG1 egyszer aktiválódik. A VM2
 
    `action rule AR1 defined for VM1 with action group AG1`
 
-A VM1 összes riasztása esetén a Action Group AG1 egyszer aktiválódik. Ha a "rule1" riasztási szabályt aktiválták, akkor a AG2 is aktiválódik. A műveleti szabályokban és a riasztási szabályokban definiált műveleti csoportok egymástól függetlenül működnek, és nincs ismétlődés. 
+A VM1 összes riasztása esetén a Action Group AG1 egyszer aktiválódik. Ha a "rule1" riasztási szabályt aktiválták, akkor a AG2 is aktiválódik. A műveleti szabályokban és a riasztási szabályokban definiált műveleti csoportok egymástól függetlenül működnek, és nincs ismétlődés.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [További információ az Azure-beli riasztásokról](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview)
+- [További információ az Azure-beli riasztásokról](./alerts-overview.md)

@@ -6,11 +6,12 @@ ms.author: ofmanor
 ms.topic: reference
 ms.date: 03/16/2020
 ms.subservice: alerts
-ms.openlocfilehash: 3e9eb9d0910e4c0e00e57eac80c09910f214db6a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c3eed095d87d1e1fa1f210b360822ceefdbe0521
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84300773"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045239"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-alerts"></a>Azure Monitor riasztásokkal kapcsolatos problémák elhárítása
 
@@ -240,13 +241,13 @@ Ha hiba történt a [műveleti szabály](alerts-action-rules.md)létrehozása, f
 
 1. **Hibaüzenetet kapott?**  
 
-    Rendelkeznie kell a [figyelő közreműködői beépített szerepkörrel](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor), vagy a műveleti szabályokkal és riasztásokkal kapcsolatos konkrét engedélyekkel.
+    Rendelkeznie kell a [figyelő közreműködői beépített szerepkörrel](../../role-based-access-control/built-in-roles.md#monitoring-contributor), vagy a műveleti szabályokkal és riasztásokkal kapcsolatos konkrét engedélyekkel.
 
 1. **Ellenőrizte a műveleti szabály paramétereit?**  
 
-    Győződjön meg a [műveleti szabály dokumentációjában](alerts-action-rules.md)vagy a [műveleti szabály PowerShell set-AzActionRule](https://docs.microsoft.com/powershell/module/az.alertsmanagement/Set-AzActionRule?view=azps-3.5.0) parancsának megtekintéséhez. 
+    Győződjön meg a [műveleti szabály dokumentációjában](alerts-action-rules.md)vagy a [műveleti szabály PowerShell set-AzActionRule](/powershell/module/az.alertsmanagement/set-azactionrule?view=azps-3.5.0) parancsának megtekintéséhez. 
 
 
 ## <a name="next-steps"></a>További lépések
-- Ha naplózási riasztást használ, tekintse meg a [riasztások hibaelhárítása](alert-log-troubleshoot.md)című témakört is.
+- Ha naplózási riasztást használ, tekintse meg a [riasztások hibaelhárítása](./alerts-troubleshoot-log.md)című témakört is.
 - Lépjen vissza a [Azure Portal](https://portal.azure.com) , és ellenőrizze, hogy megoldotta-e a problémát a fenti útmutatás alapján 

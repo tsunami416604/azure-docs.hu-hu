@@ -15,11 +15,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: anilmur
 ms.reviewer: juliako
-ms.openlocfilehash: 6210d6ee4877c6ba84178340cf0a6610e402da31
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8d103e6a0f7a47aadce524325e58fbb7069a1e13
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81641105"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87042821"
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>Többszörös átviteli sebességű streamek létrehozása az Azure Media Services élő streamelési funkciójával
 
@@ -174,7 +175,7 @@ Megadhatja azokat az IP-címeket, amelyek számára engedélyezett a videó köz
 Ha nem ad meg IP-címeket, és nem határoz meg szabálydefiníciót, a rendszer egyetlen IP-címet sem engedélyez. Ha az összes IP-címnek szeretne engedélyt adni, hozzon létre egy szabályt, és állítsa be a következő értéket: 0.0.0.0/0.
 
 ## <a name="channel-preview"></a>Csatorna előnézete
-### <a name="preview-urls"></a>Előzetes verziójú URL-címek
+### <a name="preview-urls"></a>Előnézeti URL-címek
 A csatornák olyan előzetes verziójú végpontot (előzetes verziójú URL-címet) biztosítanak, amelyet a további feldolgozás és a továbbítás előtt a stream előzetes verziójának megtekintéséhez és ellenőrzéséhez használ.
 
 A csatorna létrehozásakor az előnézeti URL-címet is beolvashatja. Az URL-cím lekéréséhez a csatornának nem kell **futó** állapotban lennie.
@@ -216,14 +217,14 @@ A **Default720p** a következő 6 rétegbe kódolja a videót.
 
 #### <a name="output-video-stream"></a>Kimeneti videó stream
 
-| Sávszélességű | Szélesség | Height (Magasság) | MaxFPS | Profil | Kimeneti adatfolyam neve |
+| Sávszélességű | Szélesség | Magasság | MaxFPS | Profil | Kimeneti adatfolyam neve |
 | --- | --- | --- | --- | --- | --- |
-| 3500 |1280 |720 |30 |Magasság |Video_1280x720_3500kbps |
-| 2200 |960 |540 |30 |Magasság |Video_960x540_2200kbps |
-| 1350 |704 |396 |30 |Magasság |Video_704x396_1350kbps |
-| 850 |512 |288 |30 |Magasság |Video_512x288_850kbps |
-| 550 |384 |216 |30 |Magasság |Video_384x216_550kbps |
-| 200 |340 |192 |30 |Magasság |Video_340x192_200kbps |
+| 3500 |1280 |720 |30 |Magas |Video_1280x720_3500kbps |
+| 2200 |960 |540 |30 |Magas |Video_960x540_2200kbps |
+| 1350 |704 |396 |30 |Magas |Video_704x396_1350kbps |
+| 850 |512 |288 |30 |Magas |Video_512x288_850kbps |
+| 550 |384 |216 |30 |Magas |Video_384x216_550kbps |
+| 200 |340 |192 |30 |Magas |Video_340x192_200kbps |
 
 #### <a name="output-audio-stream"></a>Kimeneti hang Stream
 
@@ -359,11 +360,10 @@ Tekintse át a Media Services képzési terveket.
 
 [Olyan csatornákat hozhat létre, amelyek élő kódolást végeznek egy éneklő bitrátából az adaptív sávszélességű adatfolyamba a .NET SDK-val](media-services-dotnet-creating-live-encoder-enabled-channel.md)
 
-[Csatornák kezelése REST API](https://docs.microsoft.com/rest/api/media/operations/channel)
+[Csatornák kezelése REST API](/rest/api/media/operations/channel)
 
 [Media Services fogalmak](media-services-concepts.md)
 
 [Azure Media Services darabolt MP4 élő betöltési specifikáció](../media-services-fmp4-live-ingest-overview.md)
 
 [live-overview]: ./media/media-services-manage-live-encoder-enabled-channels/media-services-live-streaming-new.png
-

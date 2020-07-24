@@ -14,35 +14,36 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: f5a2dd68d86a7a38fc7f2942351c42c84742d104
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6911b16c3fdf5bb94d42a40198943c3b1baa00da
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74887068"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87042835"
 ---
-# <a name="azure-media-services-error-codes"></a>Azure Media Services hibakódok
+# <a name="azure-media-services-error-codes"></a>Azure Media Services-hibakódok
 Microsoft Azure Media Services használatakor HTTP-hibakódok jelenhetnek meg a szolgáltatástól attól függően, hogy a hitelesítési tokenek lejárnak-e a Media Services által nem támogatott műveletekhez. Az alábbi lista a Media Services által visszaadott **http-hibakódokat** és azok lehetséges okait sorolja fel.  
 
-## <a name="400-bad-request"></a>400 hibás kérelem
+## <a name="400-bad-request"></a>400 Hibás kérés
 A kérelem érvénytelen információkat tartalmaz, és a következő okok egyike miatt el lesz utasítva:
 
 * Nem támogatott API-verzió van megadva. A legfrissebb verzióért lásd: [Media Services REST API-fejlesztés beállítása](media-services-rest-how-to-use.md).
-* A Media Services API-verziója nincs megadva. További információ az API-verzió megadásáról: [Media Services operations REST API Reference](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference).
+* A Media Services API-verziója nincs megadva. További információ az API-verzió megadásáról: [Media Services operations REST API Reference](/rest/api/media/operations/azure-media-services-rest-api-reference).
   
   > [!NOTE]
   > Ha .NET-vagy Java SDK-kat használ a Media Serviceshoz való kapcsolódáshoz, akkor az API-verzió akkor van megadva, ha a Media Services a művelettel próbálkozik, és valamilyen műveletet hajt végre.
   > 
   > 
-* Nem definiált tulajdonság lett megadva. A tulajdonság neve a következő hibaüzenetben jelenik meg:. Csak azok a tulajdonságok adhatók meg, amelyek egy adott entitás tagjai. Az entitások és tulajdonságaik listájának [Azure Media Services REST API hivatkozását](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference) itt tekintheti meg.
+* Nem definiált tulajdonság lett megadva. A tulajdonság neve a következő hibaüzenetben jelenik meg:. Csak azok a tulajdonságok adhatók meg, amelyek egy adott entitás tagjai. Az entitások és tulajdonságaik listájának [Azure Media Services REST API hivatkozását](/rest/api/media/operations/azure-media-services-rest-api-reference) itt tekintheti meg.
 * Érvénytelen tulajdonságérték lett megadva. A tulajdonság neve a következő hibaüzenetben jelenik meg:. Tekintse meg az előző hivatkozást az érvényes tulajdonságértékek és azok értékeinek megtekintéséhez.
 * A tulajdonság értéke hiányzik, és kötelező megadni.
 * A megadott URL-cím egy része rossz értéket tartalmaz.
 * Kísérlet történt egy WriteOnce tulajdonság frissítésére.
 * Kísérlet történt olyan feladat létrehozására, amely olyan elsődleges AssetFile rendelkező bemeneti eszközzel rendelkezik, amely nincs meghatározva vagy nem határozható meg.
-* Kísérlet történt egy SAS-lokátor frissítésére. SAS-lokátorok csak létrehozhatók vagy törölhetők. A folyamatos átviteli lokátorok frissíthetők. További információ: [lokátorok](https://docs.microsoft.com/rest/api/media/operations/locator).
+* Kísérlet történt egy SAS-lokátor frissítésére. SAS-lokátorok csak létrehozhatók vagy törölhetők. A folyamatos átviteli lokátorok frissíthetők. További információ: [lokátorok](/rest/api/media/operations/locator).
 * Nem támogatott művelet vagy lekérdezés lett elküldve.
 
-## <a name="401-unauthorized"></a>401 jogosulatlan
+## <a name="401-unauthorized"></a>401 Nem engedélyezett
 A kérést nem lehetett hitelesíteni (a hitelesítés engedélyezése előtt) a következő okok egyike miatt:
 
 * Hiányzó hitelesítési fejléc.
@@ -73,7 +74,7 @@ A kérelem a következő okok egyike miatt nem engedélyezett az erőforráson:
 * Kísérlet történt olyan entitás beolvasására, amely nem létezik.
 * Kísérlet történt olyan Storage-fiók megadására, amely nincs társítva a Media Services-fiókhoz.  
 
-## <a name="409-conflict"></a>409 ütközés
+## <a name="409-conflict"></a>409 Ütközés
 A kérelem a következő okok egyike miatt nem engedélyezett:
 
 * Egynél több AssetFile rendelkezik a megadott névvel az eszközön belül.
@@ -95,10 +96,10 @@ A kérelem feldolgozása során Media Services olyan hibába ütközik, amely me
 * Egyéb váratlan hiba.
 
 ## <a name="503-service-unavailable"></a>503 A szolgáltatás nem érhető el
-A kiszolgáló jelenleg nem tud kéréseket fogadni. Ezt a hibát a szolgáltatás túlzott kérései okozhatják. Media Services szabályozási mechanizmus korlátozza az erőforrás-használatot olyan alkalmazások esetében, amelyek túlzott kérést tesznek elérhetővé a szolgáltatás számára.
+A kiszolgáló jelenleg nem tud kéréseket fogadni. Ezt a hibát a szolgáltatásnak küldött túl sok kérés okozhatja. A Media Services szabályozási mechanizmusa korlátozza azon alkalmazások erőforrás-használatát, amelyek túl sok kérést küldenek a szolgáltatásnak.
 
 > [!NOTE]
-> Tekintse meg a hibaüzenetet, és a hibakód karakterláncában részletesebb információkhoz juthat arról, hogy az 503-as hiba miatt megkapta a hibát. Ez a hiba nem mindig jelenti a szabályozást.
+> A hibaüzenetet és a hibakódsztringet megtekintve juthat részletesebb információhoz az 503-as hiba okáról. Ez a hiba nem mindig jelent szabályozást.
 > 
 > 
 
@@ -108,7 +109,7 @@ A lehetséges állapot leírása:
 * "A kiszolgáló foglalt. Másodpercenként több {0} kérelem is szabályozható. "
 * "A kiszolgáló foglalt. A másodpercek alatt több kérelem is szabályozható {0} {1} . "
 
-Ennek a hibának a kezelése érdekében javasoljuk, hogy exponenciális visszaküldési újrapróbálkozási logikát használjon. Ez azt jelenti, hogy a több egymást követő hiba esetén az újrapróbálkozások között fokozatosan várakozik.  További információ: az [átmeneti hibák kezelésére szolgáló alkalmazás blokkja](https://msdn.microsoft.com/library/hh680905.aspx).
+Ennek a hibának a kezelése érdekében javasoljuk, hogy exponenciális visszaküldési újrapróbálkozási logikát használjon. Ez azt jelenti, hogy a több egymást követő hiba esetén az újrapróbálkozások között fokozatosan várakozik.  További információ: az [átmeneti hibák kezelésére szolgáló alkalmazás blokkja](/previous-versions/msp-n-p/hh680905(v=pandp.50)).
 
 > [!NOTE]
 > Ha a .net- [hez készült Azure Media Services SDK](https://github.com/Azure/azure-sdk-for-media-services/tree/master)-t használja, a 503-es hiba újrapróbálkozási logikáját az SDK implementálta.  
@@ -116,11 +117,10 @@ Ennek a hibának a kezelése érdekében javasoljuk, hogy exponenciális visszak
 > 
 
 ## <a name="see-also"></a>Lásd még:
-[Media Services Felügyeleti hibakódok](https://msdn.microsoft.com/library/windowsazure/dn167016.aspx)
+[Media Services Felügyeleti hibakódok](/rest/api/media/)
 
 ## <a name="next-steps"></a>További lépések
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Visszajelzés küldése
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-

@@ -3,11 +3,12 @@ title: Folyamatos videofelvétel – Azure
 description: A folyamatos videofelvétel (CVR) arra a folyamatra utal, amely folyamatosan rögzíti a videót a videó forrásaként. Ez a témakör a CVR ismerteti.
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 9a785125d4cfb2324224f4676e1d429342ec325c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 76af97fe1398421f5f37cfca32127d926ce56bac
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84261246"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87043313"
 ---
 # <a name="continuous-video-recording"></a>Folyamatos videófelvétel  
 
@@ -33,7 +34,7 @@ Az élő videó-elemzések IoT Edge támogatja a kevésbé tökéletes hálózat
     "localMediaCacheMaximumSizeMiB": "2048",
     "localMediaCachePath": "/var/lib/azuremediaservices/tmp/",
 ```
-Az utóbbi két tulajdonság a rugalmas rögzítéshez is fontos (mindkettő kötelező tulajdonságok egy eszköz fogadó csomóponthoz). A localMediaCachePath tulajdonság azt jelzi, hogy az eszköz fogadója a mappa elérési útját használja a médiaadatok gyorsítótárazásához az eszközre való feltöltés előtt. [Ebből](https://docs.microsoft.com/azure/iot-edge/how-to-access-host-storage-from-module) a cikkből megtudhatja, hogyan használhatja az Edge-modul az eszköz helyi tárolóját. A localMediaCacheMaximumSizeMiB tulajdonság határozza meg, hogy mennyi lemezterületet használhat az objektum a gyorsítótárban (1 MiB = 1024 * 1024 bájt). 
+Az utóbbi két tulajdonság a rugalmas rögzítéshez is fontos (mindkettő kötelező tulajdonságok egy eszköz fogadó csomóponthoz). A localMediaCachePath tulajdonság azt jelzi, hogy az eszköz fogadója a mappa elérési útját használja a médiaadatok gyorsítótárazásához az eszközre való feltöltés előtt. [Ebből](../../iot-edge/how-to-access-host-storage-from-module.md) a cikkből megtudhatja, hogyan használhatja az Edge-modul az eszköz helyi tárolóját. A localMediaCacheMaximumSizeMiB tulajdonság határozza meg, hogy mennyi lemezterületet használhat az objektum a gyorsítótárban (1 MiB = 1024 * 1024 bájt). 
 
 Ha a peremhálózati modul nagyon hosszú ideig elveszti a kapcsolódást, és a gyorsítótár mappában tárolt tartalom eléri a localMediaCacheMaximumSizeMiB értéket, az objektum fogadója elkezdi az adatok elvetését a gyorsítótárból a legrégebbi adatoktól kezdve. Ha például az eszköz 10 órakor megszakadt a kapcsolat, és a gyorsítótár eléri a maximális korlátot (6), akkor az objektum fogadója a 10:00-on rögzített adattörlést kezdi meg. 
 

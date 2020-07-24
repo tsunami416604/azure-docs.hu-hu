@@ -5,23 +5,24 @@ ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
 ms.author: dpalled
-manager: cshankar
+manager: diviso
 ms.reviewer: jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 05/05/2020
-ms.custom: seodec18~~~~
-ms.openlocfilehash: 010f7b908ceb9c8d07208db1312d8af8d4e27051
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 06/30/2020
+ms.custom: seodec18
+ms.openlocfilehash: 2503a58f7d5fe05240f374fabbe2bf88d34dcf6c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82838518"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87046627"
 ---
-# <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-azure-portal"></a>Hozzon létre egy hivatkozási adatkészletet a Time Series Insights-környezethez a Azure Portal használatával
+# <a name="create-a-reference-data-set-for-your-azure-time-series-insights-gen1-environment-using-the-azure-portal"></a>Hozzon létre egy hivatkozási adatkészletet a Azure Time Series Insights Gen1-környezethez a Azure Portal használatával
 
 Ez a cikk azt ismerteti, hogyan adhat hozzá egy hivatkozási adatkészletet a Azure Time Series Insights-környezethez. A hivatkozási adatok hasznosak a forrásadatok összekapcsolásához az értékek kibővítéséhez.
 
-A hivatkozási adatkészletek olyan elemek gyűjteményei, amelyek kibővítik az esemény forrásának eseményeit. Time Series Insights beáramlási motor az eseményforrás minden eseményét összekapcsolja a hivatkozási adathalmaz megfelelő adatsorával. Ez a kibővített esemény ezután lekérdezhető. Ez a csatlakozás a hivatkozási adatkészletben definiált elsődleges kulcs oszlop (ok) alapján történik.
+A hivatkozási adatkészletek olyan elemek gyűjteményei, amelyek kibővítik az esemény forrásának eseményeit. Azure Time Series Insights beáramlási motor az eseményforrás minden eseményét összekapcsolja a hivatkozási adathalmaz megfelelő adatsorával. Ez a kibővített esemény ezután lekérdezhető. Ez a csatlakozás a hivatkozási adatkészletben definiált elsődleges kulcs oszlop (ok) alapján történik.
 
 A hivatkozási adathalmazok nem csatlakoznak visszamenőlegesen. Így a rendszer csak a jelenlegi és a jövőbeli bejövő adatok összeegyeztetését és a hivatkozási dátumhoz való csatlakozást követően csatlakozik, miután konfigurálta és feltöltötte.
 
@@ -35,15 +36,15 @@ A hivatkozási adathalmazok nem csatlakoznak visszamenőlegesen. Így a rendszer
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-1. Keresse meg a meglévő Azure Time Series Insights-környezetét. A Azure Portal bal oldalán található menüben válassza az **összes erőforrás** lehetőséget. Válassza ki az Azure Time Series Insights-környezetet.
+1. Keresse meg a meglévő Azure Time Series Insights-környezetét. A Azure Portal bal oldalán található menüben válassza az **összes erőforrás** lehetőséget. Válassza ki Azure Time Series Insights-környezetét.
 
 1. Válassza az **Áttekintés** lapot. Az oldal tetején található **Essentials** szakasz kibontásával keresse meg a **Time Series Insights Explorer URL-címét** , és nyissa meg a hivatkozást.  
 
    [![Alapok kibontása szakasz](media/add-reference-data-set/essentials.png)](media/add-reference-data-set/essentials.png#lightbox)
 
-   Tekintse meg a Time Series Insights-környezet explorerjét.
+   Tekintse meg a Azure Time Series Insights-környezet Explorerjét.
 
-1. Bontsa ki a környezeti választót a Time Series Insights Explorerben. Válassza ki az aktív környezetet. Kattintson a jobb felső sarokban található hivatkozási adatikonra az Explorer oldalon.
+1. Bontsa ki a környezeti választót a Azure Time Series Insights Explorerben. Válassza ki az aktív környezetet. Kattintson a jobb felső sarokban található hivatkozási adatikonra az Explorer oldalon.
 
    [![Hivatkozási érték hozzáadása](media/add-reference-data-set/tsi-select-environment-and-data-icons.png)](media/add-reference-data-set/tsi-select-environment-and-data-icons.png#lightbox)
 

@@ -3,15 +3,15 @@ title: Blob Storage használata ellenőrzőpont-tárolóként Azure Stack hub-on
 description: Ez a cikk azt ismerteti, hogyan használható a Blob Storage ellenőrzőpont-tárolóként a Event Hubs Azure Stack hub (előzetes verzió) szolgáltatásban.
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: 0990941191827c66cd51d70216c75e106d0448fd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1c876ed36be6aec9395a1acba3a1deb25a47de2c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85322366"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87039225"
 ---
 # <a name="use-blob-storage-as-checkpoint-store---event-hubs-on-azure-stack-hub-preview"></a>Blob Storage használata ellenőrzőpont-tárolóként – Event Hubs az Azure Stack hub-on (előzetes verzió)
-Ha az Azure Blob Storaget használja ellenőrzőpont-tárolóként olyan környezetben, amely támogatja a Storage blob SDK eltérő verzióját, mint amilyeneket az Azure-ban általában elérhető, akkor programkódot kell használnia a Storage szolgáltatás API-verziójának módosítására az adott környezet által támogatott adott verzióra. Ha például [egy 2002-es Azure stack hub-os verzióban](https://docs.microsoft.com/azure-stack/user/event-hubs-overview)futtatja az Event Hubs-t, a Storage szolgáltatás legmagasabb rendelkezésre álló verziója a 2017-11-09-es verzió. Ebben az esetben programkódot kell használnia a Storage szolgáltatás API-verziójának 2017-11-09-re való célzásához. Az adott tárolási API-verzió célzására vonatkozó példát a GitHubon található példákban talál: 
+Ha az Azure Blob Storaget használja ellenőrzőpont-tárolóként olyan környezetben, amely támogatja a Storage blob SDK eltérő verzióját, mint amilyeneket az Azure-ban általában elérhető, akkor programkódot kell használnia a Storage szolgáltatás API-verziójának módosítására az adott környezet által támogatott adott verzióra. Ha például [egy 2002-es Azure stack hub-os verzióban](/azure-stack/user/event-hubs-overview)futtatja az Event Hubs-t, a Storage szolgáltatás legmagasabb rendelkezésre álló verziója a 2017-11-09-es verzió. Ebben az esetben programkódot kell használnia a Storage szolgáltatás API-verziójának 2017-11-09-re való célzásához. Az adott tárolási API-verzió célzására vonatkozó példát a GitHubon található példákban talál: 
 
 - [.NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/Sample10_RunningWithDifferentStorageVersion.cs)
 - [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs-checkpointstore-blob/src/samples/java/com/azure/messaging/eventhubs/checkpointstore/blob/EventProcessorWithCustomStorageVersion.java). 

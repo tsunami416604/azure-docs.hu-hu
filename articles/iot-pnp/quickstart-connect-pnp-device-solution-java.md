@@ -1,5 +1,5 @@
 ---
-title: Az Azure IoT-megoldáshoz csatlakoztatott IoT Plug and Play előzetes verziójú eszköz használata | Microsoft Docs
+title: Interakció a IoT Plug and Play a megoldáshoz csatlakoztatott előzetes verziójú eszközzel – Java | Microsoft Docs
 description: A Java használatával csatlakozhat egy IoT Plug and Play előnézeti eszközhöz, amely az Azure IoT-megoldáshoz csatlakozik.
 author: dominicbetts
 ms.author: dobett
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 53812e68fe397b81f29869565e0e4a0640a9ef23
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 43136e1a09cc771f39b92a83ca4c452fc1276091
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76964634"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87044032"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-preview-device-thats-connected-to-your-solution-java"></a>Gyors útmutató: interakció egy IoT Plug and Play a megoldáshoz csatlakoztatott előnézeti eszközzel (Java)
 
@@ -100,7 +100,7 @@ Ebben a rövid útmutatóban egy példaként szolgáló IoT-megoldást használ 
     java -jar get-digital-twin/target/get-digital-twin-with-deps.jar
     ```
 
-1. A _szolgáltatás_ -terminál kimenetében görgessen az `environmentalSensor` összetevőhöz. Láthatja, hogy `state` a tulajdonság _értéke TRUE (igaz_):
+1. A _szolgáltatás_ -terminál kimenetében görgessen az `environmentalSensor` összetevőhöz. Láthatja, hogy a `state` tulajdonság _értéke TRUE (igaz_):
     ```JSON
     "environmentalSensor" : {
       "name" : "environmentalSensor",

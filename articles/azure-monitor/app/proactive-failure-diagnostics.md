@@ -4,12 +4,12 @@ description: Riasztást küld a webalkalmazásnak küldött sikertelen kérelmek
 ms.topic: conceptual
 ms.date: 12/18/2018
 ms.reviewer: yalavi
-ms.openlocfilehash: 35c1769672e11cd7d1ec2f628b9d763dc8b90ac3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 27cf38a1cfcf8a9f87582ab3e78b48e78f3c63c2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85254786"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045810"
 ---
 # <a name="smart-detection---failure-anomalies"></a>Intelligens észlelés – hibák rendellenességei
 [Application Insights](../../azure-monitor/app/app-insights-overview.md) automatikusan riasztást küld a közel valós időben, ha a webalkalmazása rendellenes növekedést tapasztal a sikertelen kérések arányában. Ez a művelet szokatlanul megnövekszik a HTTP-kérelmek vagy a sikertelenként jelentett függőségi hívások gyakorisága. A kérelmek esetében a sikertelen kérelmek általában 400-as vagy magasabb szintű hibakódokkal rendelkeznek. A probléma osztályozásának és diagnosztizálásának elősegítése érdekében a riasztás részleteiben a hibák és a kapcsolódó alkalmazásadatok jellemzőinek elemzése szerepel. További diagnosztizálásra a Application Insights portálra mutató hivatkozások is rendelkezésre állnak. A szolgáltatásnak nincs szüksége beállításra és konfigurációra, mivel gépi tanulási algoritmusokat használ a normál meghibásodási arány előrejelzéséhez.
@@ -61,13 +61,13 @@ A riasztásokat a szabadalmaztatott gépi tanulási algoritmus váltja ki, így 
 
 ## <a name="configure-alerts"></a>Riasztások konfigurálása
 
-Az intelligens észlelési riasztási szabályt letilthatja a portálról vagy Azure Resource Manager használatával ([lásd a sablon példáját](https://docs.microsoft.com/azure/azure-monitor/app/proactive-arm-config)).
+Az intelligens észlelési riasztási szabályt letilthatja a portálról vagy Azure Resource Manager használatával ([lásd a sablon példáját](./proactive-arm-config.md)).
 
-Ez a riasztási szabály egy "Application Insights intelligens észlelés" nevű társított [műveleti csoporttal](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups) jön létre, amely e-mail-és webhook-műveleteket tartalmaz, és kiterjeszthető további műveletek elindítására, ha a riasztás tüzet okoz.
+Ez a riasztási szabály egy "Application Insights intelligens észlelés" nevű társított [műveleti csoporttal](../platform/action-groups.md) jön létre, amely e-mail-és webhook-műveleteket tartalmaz, és kiterjeszthető további műveletek elindítására, ha a riasztás tüzet okoz.
 
 > [!NOTE]
-> Az ebből a riasztási szabályból küldött e-mail-értesítéseket a rendszer alapértelmezés szerint az előfizetés figyelési olvasójának és a közreműködő szerepkörök figyeléséhez társított felhasználók számára küldi el. Erről további információt [itt](https://docs.microsoft.com/azure/azure-monitor/app/proactive-email-notification)talál.
-> A riasztási szabály által küldött értesítések a [Common Alert sémát](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema)követik.
+> Az ebből a riasztási szabályból küldött e-mail-értesítéseket a rendszer alapértelmezés szerint az előfizetés figyelési olvasójának és a közreműködő szerepkörök figyeléséhez társított felhasználók számára küldi el. Erről további információt [itt](./proactive-email-notification.md)talál.
+> A riasztási szabály által küldött értesítések a [Common Alert sémát](../platform/alerts-common-schema.md)követik.
 >
 
 Nyissa meg a riasztások lapot. A meghibásodási rendellenességek riasztási szabályai szerepelnek a manuálisan beállított riasztásokkal együtt, és láthatja, hogy jelenleg a riasztási állapotban van-e.
@@ -348,7 +348,7 @@ A meghibásodási rendellenességek intelligens észlelése kiegészíti a Appli
 
 *Néhány riasztás az ismert problémákról szól, és nem szeretném fogadni őket.*
 
-* Használhatja a [riasztás műveleti szabályok](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-action-rules) elnyomása funkciót.
+* Használhatja a [riasztás műveleti szabályok](../platform/alerts-action-rules.md) elnyomása funkciót.
 
 ## <a name="next-steps"></a>További lépések
 Ezek a diagnosztikai eszközök segítenek az alkalmazás adatainak vizsgálatában:

@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 765deda747d46a9ee5b6913c192fa1a43c56d35d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2336916f7d47b38a12ee0418353a249b5eaa3801
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85385899"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87042418"
 ---
 # <a name="azure-active-directory-b2c-partners"></a>Azure Active Directory B2C partnerek
 
-A partneri hálózat kibővíti a megoldási képességeiket a zökkenőmentes végfelhasználói élmények kiépítéséhez. A Azure AD B2C lehetővé teszi a partnerekkel való integrációt a többtényezős hitelesítési módszerek engedélyezéséhez, a biztonságos ügyfél-hitelesítés engedélyezéséhez, a szerepköralapú Access Control végrehajtásához, valamint a csalás elleni védelemhez a személyazonosság ellenőrzése és az ellenőrzés során. A részletes útmutatók segítségével megtudhatja, hogyan integrálhatja az alkalmazásokat az alább felsorolt partnerekkel.
+A partneri hálózat kibővíti a megoldási képességeiket a zökkenőmentes végfelhasználói élmények kiépítéséhez. A Azure AD B2C lehetővé teszi a partnerekkel való integrációt a többtényezős hitelesítési módszerek engedélyezéséhez, a biztonságos ügyfél-hitelesítés engedélyezéséhez, a szerepköralapú Access Control végrehajtásához, valamint a csalás elleni védelemhez a személyazonosság ellenőrzése és az ellenőrzés során. A részletes példákkal megismerheti, hogyan integrálhatja az alkalmazásokat az alább felsorolt partnerekkel.
 
 >[!NOTE]
 >A [githubon található Azure Active Directory B2C közösségi webhely](https://azure-ad-b2c.github.io/azureadb2ccommunity.io/) a Közösségtől származó egyéni szabályzatokat is biztosít.
@@ -30,8 +30,10 @@ A partneri hálózat kibővíti a megoldási képességeiket a zökkenőmentes v
 | Partner | Leírás és integrációs útmutató  |
 | :--- | :--- |
 | ![embléma](./media/partner-gallery/arkose-logo.png) | A [Arkóz Labs](./partner-arkose-labs.md) egy csalások elleni megelőzési megoldás szolgáltatója, amely segítséget nyújt a szervezeteknek a robotok elleni támadásokkal, a fiókok átvételi támadásokkal és a csalárd fiókok megnyitásával
+| ![embléma](./media/partner-gallery/experian-logo.png) | A [Experian](./partner-experian.md) egy személyazonosság-ellenőrző és ellenőrző szolgáltató, amely a felhasználói attribútumok alapján kockázatértékeléseket végez a csalások megelőzése érdekében.|
 | ![embléma](./media/partner-gallery/idology-logo.png) | A [IDology](./partner-idology.md) egy azonosító-ellenőrzési megoldásokkal, csalás-megelőzési megoldásokkal, megfelelőségi megoldásokkal és egyebekkel rendelkező személyazonosság-ellenőrzési és-ellenőrző szolgáltató.|
 | ![embléma](./media/partner-gallery/itsme-logo.png) | a [itsme](./partner-itsme.md) egy elektronikus azonosítási, hitelesítési és megbízhatósági szolgáltatás (eiDAS) által kompatibilis digitális azonosító megoldás, amely lehetővé teszi a felhasználók számára, hogy a kártyák olvasói, jelszavas, kétfaktoros hitelesítés és több PIN-kód nélkül is biztonságosan bejelentkezzenek. |
+| ![embléma](./media/partner-gallery/lexisnexis-logo.png) | A [LexisNexis](./partner-lexisnexis.md) egy profilkészítési és identitás-ellenőrzési szolgáltató, amely ellenőrzi a felhasználó azonosítását, és átfogó kockázatértékelést biztosít a felhasználó eszköze alapján. |
 | ![embléma](./media/partner-gallery/trusona-logo.png) | A [Trusona](./partner-trusona.md) -integráció segítségével biztonságosan bejelentkezhet, és engedélyezheti a jelszó nélküli hitelesítést, a többtényezős hitelesítést és a digitális licencek vizsgálatát.|
 | ![embléma](./media/partner-gallery/twilio-logo.png) | A [Twilio ellenőrzi](./partner-twilio.md) , hogy az alkalmazás több megoldást biztosít a többtényezős hitelesítés (MFA) SMS egyszeri jelszó (OTP), az időalapú egyszeri jelszó (TOTP) és a leküldéses értesítések, valamint a Payment Services-irányelv 2 (PSD2) direktíva követelményeinek teljesítéséhez.|
 | ![embléma](./media/partner-gallery/typingdna-logo.png) | A [TypingDNA](./partner-typingdna.md) egy, a felhasználó gépelési mintáján alapuló személyazonosság-ellenőrzési megoldás, amely a többtényezős hitelesítést kényszeríti, és segít megfelelni a 2. szintű Payment Services-irányelv (PSD2) SCA-követelményeinek. |

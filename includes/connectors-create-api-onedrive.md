@@ -3,33 +3,46 @@ ms.service: logic-apps
 ms.topic: include
 author: ecfan
 ms.author: estfan
-ms.date: 11/03/2016
-ms.openlocfilehash: 8b5f72f18ee5bf9c1e4dbaaa87d6705f55b09bc5
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 07/21/2020
+ms.openlocfilehash: 27df83552b450b7657c0595d1d419001df98148c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86524207"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87040248"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Egy Azure-fiók; létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free)
 * Egy [OneDrive](https://www.microsoft.com/store/apps/onedrive/9wzdncrfj1p3) -fiók 
 
-A OneDrive-fiók logikai alkalmazásban való használata előtt engedélyezze a logikai alkalmazásnak a OneDrive-fiókhoz való kapcsolódást.  Ezt könnyedén elvégezheti a logikai alkalmazáson belül a Azure Portalon. 
+Ahhoz, hogy a OneDrive-fiókját a Logic Apps használatával használhassa, engedélyezni kell Logic Apps, hogy a Azure Portalhoz kapcsolódjon a OneDrive-fiókjához.
 
-A következő lépések végrehajtásával engedélyezheti a logikai alkalmazásnak a OneDrive-fiókhoz való kapcsolódást:
+Az alábbi lépéseket követve engedélyezheti Logic Apps számára a OneDrive-fiókhoz való kapcsolódást:  
 
-1. Hozzon létre egy logikai alkalmazást. A Logic Apps Designerben válassza a legördülő listában a **Microsoft által felügyelt API** -k megjelenítése elemet, majd írja be a "onedrive" kifejezést a keresőmezőbe. Válasszon egy eseményindítót vagy műveletet:  
-   ![A "Microsoft Managed API-k megjelenítése" nevű párbeszédpanel egy "onedrive" nevű keresőmezőt tartalmaz. Itt látható a négy eseményindító listája. A listán elsőként a "OneDrive-when a fájl létrehozása" lehetőség van kiválasztva.](./media/connectors-create-api-onedrive/onedrive-1.png)
-2. Ha korábban még nem hozott létre kapcsolatot a OneDrive-hez, a rendszer felszólítja, hogy jelentkezzen be a OneDrive hitelesítő adataival:  
-   ![Egy "OneDrive-fájl létrehozásakor" nevű párbeszédablakban megjelenik a "Bejelentkezés" feliratú gomb.](./media/connectors-create-api-onedrive/onedrive-2.png)
-3. Válassza a **Bejelentkezés**lehetőséget, és adja meg felhasználónevét és jelszavát. **Bejelentkezés**kiválasztása:  
-   ![A "Bejelentkezés" nevű párbeszédpanel arra utasítja a Microsoft-fiók használatát. Két szövegmezőt tartalmaz "e-mail-cím" és "password" címkével, és a "Bejelentkezés megtartása" címkével is rendelkezik.](./media/connectors-create-api-onedrive/onedrive-3.png)   
-   
-    Ezekkel a hitelesítő adatokkal engedélyezhető, hogy a logikai alkalmazás csatlakozhasson a szolgáltatáshoz, és hozzáférhessen a OneDrive-fiókban lévő adatokhoz. 
+1. Jelentkezzen be az Azure Portalra. 
+
+1. Az **Azure-szolgáltatások**területen válassza a **Logic apps**lehetőséget. Ezután válassza ki a logikai alkalmazás nevét a listából.
+
+1. A logikai alkalmazás menüjében válassza a **Logic app Designer** elemet a **fejlesztői eszközök**területen.
+
+1. A Logic Apps Designerben válassza a **Microsoft felügyelt API** -k megjelenítése lehetőséget a legördülő listában, majd írja be a *OneDrive* kifejezést a keresőmezőbe. Válassza ki a használni kívánt triggert vagy műveletet:
+
+   ![Képernyőkép a Logic Apps Designerről, amely a hozzáadni kívánt OneDrive API-műveletek listáját jeleníti meg.](./media/connectors-create-api-onedrive/onedrive-1.png)
+
+2. Ha korábban még nem hozott létre kapcsolatot a OneDrive-hez, kövesse a OneDrive hitelesítő adataival való bejelentkezéshez szükséges utasításokat:  
+
+   ![Képernyőkép a Logic Apps Designerről, amely a OneDrive API bejelentkezési kérését jeleníti meg.](./media/connectors-create-api-onedrive/onedrive-2.png)
+
+3. Válassza a **Bejelentkezés**lehetőséget, és adja meg felhasználónevét és jelszavát. **Bejelentkezés**kiválasztása: 
+
+   ![Képernyőkép Microsoft-fiók bejelentkezési oldalról, OneDrive API-hitelesítéshez.](./media/connectors-create-api-onedrive/onedrive-3.png)   
+
+    Ezekkel a hitelesítő adatokkal engedélyezhető, hogy a logikai alkalmazás hozzáférhessen a OneDrive-fiókban lévő adatokhoz. 
+
 4. Válassza az **Igen** lehetőséget, ha engedélyezni szeretné a logikai alkalmazás számára a OneDrive-fiók használatát:  
-   ![Egy párbeszédpanel, amelynek címe: "az alkalmazás hozzáférhet az adatokhoz?" engedélyt kér a következő négy dolog elvégzésére: 1.) "Bejelentkezés automatikusan", 2) "az e-mail-címek elérése", 3) "az adatok elérése bármikor", és 4) "hozzáférés OneDrive-fájlokhoz". Van egy "igen" gomb, amely engedélyt ad, és egy "nem" gombot a megtagadásához. Az alkalmazás engedélyeinek módosításához hivatkozás található.](./media/connectors-create-api-onedrive/onedrive-4.png)   
-5. Figyelje meg, hogy létrejött a kapcsolatok. Most folytassa a logikai alkalmazás egyéb lépéseit:  
-   ![A "fájl létrehozásakor" nevű párbeszédpanel egy "mappa" nevű szövegmezőt tartalmaz a társított Tallózás gombbal.](./media/connectors-create-api-onedrive/onedrive-5.png)
 
+   ![Képernyőkép a Logic Apps Microsoft-fiók engedélyezéséről, amely az engedélyezett műveleteket mutatja.](./media/connectors-create-api-onedrive/onedrive-4.png)   
+   
+5. A kapcsolatok mostantól a lépésben szerepelnek. Válassza a mentés lehetőséget, majd folytassa a logikai alkalmazás létrehozását. 
+
+   ![Képernyőkép a Logic Apps Designerről, amely a OneDrive API-kapcsolattal rendelkező Action Editort jeleníti meg.](./media/connectors-create-api-onedrive/onedrive-5.png)

@@ -3,26 +3,25 @@ title: A virtuálisgép-ajánlatok díjszabása – Azure Marketplace
 description: Ismerteti a virtuálisgép-ajánlatok díjszabásának három módszerét.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-ms.date: 04/08/2020
-ms.openlocfilehash: b3d38c59d4c79e908aeef857164603a2a5160e05
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.topic: reference
+author: dsindona
+ms.author: dsindona
+ms.date: 07/14/2020
+ms.openlocfilehash: 8d6dcd7f3f86e111cfb17fb08c4faadac1552b94
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86115502"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87039115"
 ---
-<a name="pricing-for-virtual-machine-offers"></a>Virtuálisgép-ajánlatok díjszabása
-==================================
+# <a name="pricing-for-virtual-machine-offers"></a>Virtuálisgép-ajánlatok díjszabása
 
 > [!NOTE]
-> A Cloud Partner Portal API-k integrálva vannak a partneri központtal, és továbbra is működni fognak, miután az ajánlatokat áttelepítik a partner központba. Az integráció kis változásokat vezet be. Tekintse át a [Cloud Partner Portal API-hivatkozásban](./cloud-partner-portal-api-overview.md) felsorolt módosításokat, hogy a kód továbbra is működni fog a partneri központba való Migrálás után.
+> A Cloud Partner Portal API-k integrálva vannak a-vel, és továbbra is működnek a partner Centerben. Az áttérés kis változásokat mutat be. Tekintse át a [Cloud Partner Portal API-hivatkozásban](./cloud-partner-portal-api-overview.md) felsorolt módosításokat, hogy a kód továbbra is működőképes legyen a partneri központba való áttérés után. A CPP API-kat csak olyan meglévő termékekhez szabad használni, amelyek már integrálva lettek a partneri központba való áttérés előtt. az új termékeknek a partner Center beküldési API-kat kell használniuk.
 
 A virtuális gépekre vonatkozó ajánlatok díjszabása a következő három módon adható meg: testreszabott alapszintű díjszabás, alapszintű díjszabás és a számolótábla díjszabása.
 
-
-<a name="customized-core-pricing"></a>Testreszabott alapvető díjszabás
------------------------
+## <a name="customized-core-pricing"></a>Testreszabott alapvető díjszabás
 
 A díjszabás az egyes régiók és a Core kombinációk esetében egyedi. Az értékesítési listán szereplő összes régiót meg kell adni a definíció **virtualMachinePricing** / **regionPrices** szakaszában.  A kérelemben szereplő minden egyes [régióhoz](#regions) használja a megfelelő pénznemkóddal.  A következő példa ezeket a követelményeket mutatja be:
 
@@ -66,9 +65,7 @@ A díjszabás az egyes régiók és a Core kombinációk esetében egyedi. Az é
      }
 ```
 
-
-<a name="per-core-pricing"></a>Alapszintű díjszabás
-----------------
+## <a name="per-core-pricing"></a>Alapszintű díjszabás
 
 Ebben az esetben a közzétevők a SKU-ban egy árat határoznak meg USD értékben, és minden egyéb díj automatikusan létrejön. Az egységenkénti díj a kérelem **egyetlen** paraméterében van megadva.
 
@@ -84,9 +81,7 @@ Ebben az esetben a közzétevők a SKU-ban egy árat határoznak meg USD érték
      }
 ```
 
-
-<a name="spreadsheet-pricing"></a>Táblázat díjszabása
--------------------
+## <a name="spreadsheet-pricing"></a>Táblázat díjszabása
 
 A közzétevő a díjszabási táblázatot is feltöltheti egy ideiglenes tárolóhelyre, majd belefoglalja az URI-t a kérelembe, például a többi fájl összetevőt. A rendszer feltölti a táblázatot, és lefordítja a megadott árlista kiértékelésére, végül pedig a díjszabási információkkal frissíti az ajánlatot. Az ajánlatra vonatkozó későbbi GET-kérések a táblázat URI azonosítóját és a régió értékelt árát fogják visszaadni.
 
@@ -101,18 +96,15 @@ A közzétevő a díjszabási táblázatot is feltöltheti egy ideiglenes tárol
      }
 ```
 
-<a name="new-core-sizes-added-on-722019"></a>Új alapvető méretek hozzáadva a 7/2/2019
----------------------------
+## <a name="new-core-sizes-added-on-722019"></a>Új alapvető méretek hozzáadva a 7/2/2019
 
 Az új Azure-beli virtuálisgép-méretek (a magok száma alapján) új díjszabást kapott a VM-közzétevők 2019. július 2-án.  Az új árak a következő alapméretekre vonatkoznak: 10, 44, 48, 60, 120, 208 és 416.  A meglévő virtuális gépek esetében a magok méretének új díjait a jelenlegi árak alapján automatikusan kiszámítjuk.  A kiadók 2019 augusztus 1-ig megtekintik a további árakat, és elvégzik a kívánt módosításokat.  Ezt a dátumot követően, ha a közzétevő még nem tette közzé újra, az új alapvető méretek automatikusan kiszámított árai érvénybe lépnek.
 
-
-<a name="regions"></a>Régiók
--------
+## <a name="regions"></a>Régiók
 
 A következő táblázat azokat a különböző régiókat mutatja be, amelyeket megadhat a testreszabott alapdíjszabáshoz, valamint a hozzájuk tartozó pénznemkóddal.
 
-| **Régió** | **Name (Név)**             | **Pénznemkód** |
+| **Régió** | **Név**             | **Pénznemkód** |
 |------------|----------------------|-------------------|
 | DZ         | Algéria              | DZD               |
 | AR         | Argentína            | ARS               |

@@ -7,11 +7,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 09/19/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 06bdedf1dac92a2010718ffd3eb5c6e43bb51e6c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bf8ea45f37e421d70a68c4a6e138f5203e92d78f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83798126"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045768"
 ---
 # <a name="monitor-resource-groups-with-azure-monitor-preview"></a>Erőforráscsoportok figyelése Azure Monitorvel (előzetes verzió)
 
@@ -45,10 +46,10 @@ Az erőforráscsoport-elemzések oldal számos más eszközt is tartalmaz, amely
 
    |         |          |
    | ---------------- |:-----|
-   | [**Riasztások**](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)      |  A riasztások megtekintése, létrehozása és kezelése. |
-   | [**Mérőszámok**](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics) | Jelenítse meg és vizsgálja meg a metrika-alapú adatokat.    |
-   | [**Tevékenységnaplók**](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) | Az Azure-ban történt előfizetési szintű események.  |
-   | [**Alkalmazás-hozzárendelés**](https://docs.microsoft.com/azure/application-insights/app-insights-app-map) | Navigáljon az elosztott alkalmazás topológiájában a teljesítménnyel kapcsolatos szűk keresztmetszetek vagy a meghibásodási pontok azonosításához. |
+   | [**Riasztások**](../platform/alerts-overview.md)      |  A riasztások megtekintése, létrehozása és kezelése. |
+   | [**Mérőszámok**](../platform/data-platform.md) | Jelenítse meg és vizsgálja meg a metrika-alapú adatokat.    |
+   | [**Tevékenységnaplók**](../platform/platform-logs-overview.md) | Az Azure-ban történt előfizetési szintű események.  |
+   | [**Alkalmazás-hozzárendelés**](../app/app-map.md) | Navigáljon az elosztott alkalmazás topológiájában a teljesítménnyel kapcsolatos szűk keresztmetszetek vagy a meghibásodási pontok azonosításához. |
 
 ## <a name="failures-and-performance"></a>Hibák és teljesítmény
 
@@ -116,6 +117,6 @@ Az erőforráscsoportok Azure Monitor a riasztási állapot lekéréséhez Azure
 
 ## <a name="next-steps"></a>További lépések
 
-- [Munkafüzetek Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview)
-- [Azure Resource Health](https://docs.microsoft.com/azure/service-health/resource-health-overview)
-- [Riasztások Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)
+- [Munkafüzetek Azure Monitor](../platform/workbooks-overview.md)
+- [Azure Resource Health](../../service-health/resource-health-overview.md)
+- [Azure Monitor-riasztások](../platform/alerts-overview.md)

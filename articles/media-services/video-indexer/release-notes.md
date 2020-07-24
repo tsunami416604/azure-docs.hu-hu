@@ -12,11 +12,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 06/02/2020
 ms.author: juliako
-ms.openlocfilehash: 5bd4c9aa3fde9e3fa596ce5a18b892edfab60af5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d7667f7c5194762b227c3cddd5bea5ed9d50a96e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84325065"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87042634"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure Media Services Video Indexer kibocsátási megjegyzései
 
@@ -28,6 +29,18 @@ A legújabb fejleményekkel naprakészen tarthatja a cikket, amely a következő
 * Ismert problémák
 * Hibajavítások
 * Elavult funkciók
+
+## <a name="june-2020"></a>2020. június
+
+### <a name="search-by-topics"></a>Keresés témakörök szerint
+
+Mostantól használhatja a Search API-t adott témakörökkel rendelkező videók keresésére (csak API-val).
+
+A témaköröket a (választható paraméter) részeként adja hozzá a rendszer `textScope` . Részletekért lásd az [API](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Search-Videos) -t.  
+
+### <a name="labels-enhancement"></a>Címkék továbbfejlesztése
+
+A felirat fogójának frissítése megtörtént, és most már több vizuális címkét is tartalmaz, amelyek azonosíthatók.
 
 ## <a name="may-2020"></a>2020. május
 
@@ -162,7 +175,7 @@ Több előrelépés is jelent meg az IBC 2019-ben:
     Lehetővé teszi a csoportos hirdetések felismerési karaktereinek észlelését az animált tartalomban az egyéni jövőképtel való integráción keresztül. További információ: [animált karakterek észlelése](animated-characters-recognition.md).
 * Többnyelvű azonosítás (nyilvános előzetes verzió)
 
-    A hangsávokban több nyelven is felderítheti a szegmenseket, és a rajtuk alapuló többnyelvű átiratot hozhat létre. Kezdeti támogatás: angol, spanyol, német és francia. További információt a [többnyelvű tartalom automatikus azonosítása és](multi-language-identification-transcription.md)átírása című témakörben talál.
+    A hangsávokban több nyelven is felderítheti a szegmenseket, és a rajtuk alapuló többnyelvű átiratot hozhat létre. Kezdeti támogatás: angol, spanyol, német és francia. További információért tekintse meg a [többnyelvű tartalom automatikus azonosításával és átírásával](multi-language-identification-transcription.md) foglalkozó cikket.
 * Elnevezett entitások kinyerése személyekhez és helyekhez
 
     Természetes nyelvi feldolgozás (NLP) használatával kinyerheti a márkákat, a helyszíneket és a beszéd-és vizualizációs szövegből származó személyeket.

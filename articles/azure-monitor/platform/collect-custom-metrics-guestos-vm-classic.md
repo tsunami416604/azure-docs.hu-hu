@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: ''
-ms.openlocfilehash: 7656b60c31e7da7841f9afb723167eb061fe3401
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 87277c0c61f6d63e453386724dd472d2663e3148
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85124473"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045219"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metrics-database-for-a-windows-virtual-machine-classic"></a>Vendég operációs rendszer metrikáinak küldése a Windows rendszerű virtuális gépek Azure Monitor metrikáinak adatbázisába (klasszikus)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-A Azure Monitor [diagnosztikai bővítmény](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) (más néven "wad" vagy "diagnosztika") lehetővé teszi mérőszámok és naplók összegyűjtését a virtuális gép, a Cloud Service vagy a Service Fabric-fürt részeként futó vendég operációs rendszerből (vendég operációs rendszerből). A bővítmény [több különböző helyen](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json) is elküldheti a telemetria.
+A Azure Monitor [diagnosztikai bővítmény](./diagnostics-extension-overview.md) (más néven "wad" vagy "diagnosztika") lehetővé teszi mérőszámok és naplók összegyűjtését a virtuális gép, a Cloud Service vagy a Service Fabric-fürt részeként futó vendég operációs rendszerből (vendég operációs rendszerből). A bővítmény [több különböző helyen](./data-platform.md?toc=/azure/azure-monitor/toc.json) is elküldheti a telemetria.
 
 Ez a cikk a vendég operációs rendszer teljesítményének mérőszámait mutatja be a Windows rendszerű virtuális gépek (klasszikus) Azure Monitor metrika-adatbázisba való küldésének folyamatát. A diagnosztika 1,11-es verziójától kezdődően a metrikák közvetlenül a Azure Monitor metrikák tárolójába írhatók, ahol a standard platform metrikái már begyűjtése megtörtént. 
 
@@ -30,9 +30,9 @@ A cikkben leírt folyamat csak a Windows operációs rendszert futtató klasszik
 
 - Az Azure-előfizetéséhez [szolgáltatás-rendszergazdának vagy társ-rendszergazdának](../../cost-management-billing/manage/add-change-subscription-administrator.md) kell lennie. 
 
-- Az előfizetést regisztrálni kell a [Microsoft. ininsights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services)szolgáltatásban. 
+- Az előfizetést regisztrálni kell a [Microsoft. ininsights](../../azure-resource-manager/management/resource-providers-and-types.md)szolgáltatásban. 
 
-- [Azure PowerShell](/powershell/azure) vagy [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) telepítve kell lennie.
+- [Azure PowerShell](/powershell/azure) vagy [Azure Cloud Shell](../../cloud-shell/overview.md) telepítve kell lennie.
 
 - A virtuális gép erőforrásának olyan régióban kell lennie [, amely támogatja az egyéni metrikákat](metrics-custom-overview.md#supported-regions).
 
@@ -204,4 +204,3 @@ Adja meg az alkalmazásnak a "figyelési metrika közzétevője" engedélyt ahho
 
 ## <a name="next-steps"></a>További lépések
 - További információ az [Egyéni metrikákkal](metrics-custom-overview.md)kapcsolatban.
-

@@ -3,24 +3,25 @@ title: A környezet összekötése a Power BI-Azure Time Series Insightsrel | Mi
 description: Megtudhatja, hogyan csatlakozhat a Azure Time Series Insights a Power BIhoz a szervezeten belüli adatmegosztáshoz, diagramhoz és megjelenítéshez.
 author: deepakpalled
 ms.author: dpalled
-manager: cshankar
+manager: diviso
 services: time-series-insights
 ms.service: time-series-insights
 ms.topic: conceptual
-ms.date: 06/01/2020
-ms.openlocfilehash: ea46f37b0c09ca655b29ac3cfa2f168e18c85590
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 06/30/2020
+ms.openlocfilehash: b9d91921fc375a1209e8fa8df6e3c6ff56e55be0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85052453"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87046702"
 ---
-# <a name="visualize-data-from-time-series-insights-in-power-bi"></a>Adatok megjelenítése Time Series Insightsról Power BI
+# <a name="visualize-data-from-azure-time-series-insights-in-power-bi"></a>Adatok megjelenítése Azure Time Series Insightsról Power BI
 
-A Azure Time Series Insights egy platform az idősoros adatsorozatok felhőben történő tárolásához, kezeléséhez, lekérdezéséhez és megjelenítéséhez. A [Power bi](https://powerbi.microsoft.com) egy üzleti elemzési eszköz, amely sokoldalú vizualizációs képességekkel rendelkezik, amelyekkel megoszthatja az elemzéseket és az eredményeket a szervezeten belül. Mindkét szolgáltatás integrálható a Time Series Insights rejlő vizualizációs képességek és a Power BI.
+A Azure Time Series Insights egy platform az idősoros adatsorozatok felhőben történő tárolásához, kezeléséhez, lekérdezéséhez és megjelenítéséhez. A [Power bi](https://powerbi.microsoft.com) egy üzleti elemzési eszköz, amely sokoldalú vizualizációs képességekkel rendelkezik, amelyekkel megoszthatja az elemzéseket és az eredményeket a szervezeten belül. Mindkét szolgáltatás integrálható a Azure Time Series Insights rejlő vizualizációs képességek és a Power BI.
 
 A következőket fogja megtanulni:
 
-* Time Series Insights összekötése a Power BI a Cloud Connector használatával
+* Azure Time Series Insights összekötése a Power BI a Cloud Connector használatával
 * Vizualizációk létrehozása az adataival Power BI
 * A jelentés közzététele Power BI és megosztás a szervezet többi részével
 
@@ -31,28 +32,30 @@ Ha még nem rendelkezik ilyennel, hozzon létre egy [ingyenes Azure-előfizetés
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Töltse le és telepítse a [Power bi Desktop](https://powerbi.microsoft.com/downloads/) legújabb verzióját
-* [Azure Time Series Insights előzetes verziójú példányt](time-series-insights-update-how-to-manage.md) kell létrehoznia, vagy létre kell hoznia
+* [Azure Time Series Insights Gen2-környezet](time-series-insights-update-how-to-manage.md) létrehozása vagy létrehozása
 
 > [!IMPORTANT]
-> A Power BI-összekötő jelenleg a **meleg tároláshoz**konfigurált Time Series Insights előzetes *utólagos* elszámolású környezetekben támogatott.
+>
+> * Az összekötő jelenleg **csak a meleg tárolással**konfigurált Azure Time Series Insights Gen2 környezetekben támogatott.
+> * Ha egy másik Azure AD-Bérlővel rendelkezik vendég hozzáféréssel a Azure Time Series Insights Gen2-környezethez, nem fog tudni hozzáférni az összekötőhöz. További információ a [környezeti hozzáférési házirendekről](./concepts-access-policies.md).
 
-## <a name="connect-data-from-time-series-insights-to-power-bi"></a>Adatok összekötése Time Series Insightsról Power BI
+## <a name="connect-data-from-azure-time-series-insights-to-power-bi"></a>Adatok összekötése Azure Time Series Insightsról Power BI
 
-A Time Series Insights-környezet Power BIhoz való összekapcsolásához kövesse az alábbi lépéseket:
+A Azure Time Series Insights-környezet Power BIhoz való összekapcsolásához kövesse az alábbi lépéseket:
 
-1. Time Series Insights Explorer megnyitása
+1. Azure Time Series Insights Explorer megnyitása
 1. Az adatexportálás lekérdezésként vagy nyers adatként
-1. Power BI Desktop megnyitása
+1. A Power BI Desktop megnyitása
 1. Betöltés egyéni lekérdezésből
 
 ### <a name="export-data-into-power-bi-desktop"></a>Az adatexportálás Power BI asztalra
 
 Első lépések:
 
-1. Nyissa meg a Time Series Insights Preview Explorer alkalmazást, és adja meg az adatait.
+1. Nyissa meg az Azure Time Series Insights Gen2 Explorer alkalmazást, és adja meg az adatait.
 1. Miután létrehozta a megfelelő nézetet, navigáljon a **További műveletek** legördülő menüre, és válassza a **Kapcsolódás Power bi**lehetőséget.
 
-    [![Az előnézet Explorer exportálásának Time Series Insights](media/how-to-connect-power-bi/time-series-insights-export-option.png)](media/how-to-connect-power-bi/time-series-insights-export-option.png#lightbox)
+    [![Azure Time Series Insights Gen2 Explorer-exportálás](media/how-to-connect-power-bi/time-series-insights-export-option.png)](media/how-to-connect-power-bi/time-series-insights-export-option.png#lightbox)
 
 1. Állítsa be a paramétereket a lapon belül:
 
@@ -64,11 +67,11 @@ Első lépések:
        > Az adatokat később is összesítheti Power BIban, de az Összesítés után nem lehet visszaállítani a nyers adatokat. 
        
        > [!NOTE]
-       > A nyers események szintjének maximális száma 100 – K.
+       > A nyers események szintjének maximális száma 250 000.
 
        [![Kapcsolódás](media/how-to-connect-power-bi/connect-to-power-bi.png)](media/how-to-connect-power-bi/connect-to-power-bi.png#lightbox)
 
-   1. Ha nem konfigurálta a Time Series Insights-példányát a **meleg tároláshoz**, a rendszer figyelmeztetést küld.
+   1. Ha nem konfigurálta a Azure Time Series Insights-környezetet a **meleg tárolással**, a rendszer figyelmeztetést küld.
 
        [![Meleg tárolás – figyelmeztetés](media/how-to-connect-power-bi/connect-to-power-bi-warning.png)](media/how-to-connect-power-bi/connect-to-power-bi-warning.png#lightbox)
 
@@ -81,9 +84,9 @@ Első lépések:
 
     [![Kezdőlap legördülő lista](media/how-to-connect-power-bi/power-bi-home-drop-down.png)](media/how-to-connect-power-bi/power-bi-home-drop-down.png#lightbox)
 
-1. Keressen **Time Series Insights**, válassza a **Azure Time Series Insights (bétaverzió)**, majd a **kapcsolat**lehetőséget.
+1. Keressen **Azure Time Series Insights**, válassza a **Azure Time Series Insights (bétaverzió)**, majd a **kapcsolat**lehetőséget.
 
-    [![Power BI összekötése a Time Series Insights](media/how-to-connect-power-bi/connect-to-time-series-insights.png)](media/how-to-connect-power-bi/connect-to-time-series-insights.png#lightbox)
+    [![Power BI összekötése a Azure Time Series Insights](media/how-to-connect-power-bi/connect-to-time-series-insights.png)](media/how-to-connect-power-bi/connect-to-time-series-insights.png#lightbox)
 
     Másik lehetőségként navigáljon az **Azure** lapra, válassza a **Azure Time Series Insights (bétaverzió)**, majd a **Kapcsolódás**lehetőséget.
     
@@ -146,5 +149,3 @@ A kezelőfelület ekkor az alkalmazott kívánt módosításokat tükrözi.
 * További információ a Azure Time Series Insights [Power bi-összekötővel kapcsolatos fogalmakról](https://docs.microsoft.com/power-bi/desktop-query-overview) .
 
 * További információ a [Power bi asztalról](https://docs.microsoft.com/power-bi/desktop-query-overview).
-
-* Olvassa el [Time Series Insights a ga Explorer](https://docs.microsoft.com/azure/time-series-insights/time-series-quickstart) és a [Time Series Insights Preview Explorer programot](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-quickstart).

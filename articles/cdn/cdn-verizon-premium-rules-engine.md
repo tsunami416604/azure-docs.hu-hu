@@ -7,12 +7,12 @@ ms.service: azure-cdn
 ms.topic: how-to
 ms.date: 05/31/2019
 ms.author: allensu
-ms.openlocfilehash: 3c61407b2a0c9d0423d1f856101400771e27d846
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a49912bc2275e478d657f06587c4ddc830210d3a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84887420"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87040212"
 ---
 # <a name="override-http-behavior-using-the-azure-cdn-from-verizon-premium-rules-engine"></a>HTTP-viselkedés felülbírálása a Verizon Premium Rules Engine Azure CDN használatával
 
@@ -55,7 +55,7 @@ A szabályok motor eléréséhez először a **CDN-profil** oldal tetején lév�
     ![CDN új szabály beállításai](./media/cdn-rules-engine/cdn-new-rule.png)
    
    > [!IMPORTANT]
-   > A különböző szabályok listájának sorrendje befolyásolja a kezelésük módját. Egy későbbi szabály felülbírálhatja egy korábbi szabály által megadott műveleteket.
+   > A különböző szabályok listájának sorrendje befolyásolja a kezelésük módját. Egy későbbi szabály felülbírálhatja egy korábbi szabály által megadott műveleteket. Ha például van olyan szabály, amely lehetővé teszi az erőforrásokhoz való hozzáférést egy kérelem tulajdonsága alapján, valamint egy olyan szabályt, amely megtagadja az összes kérelem elérését, a második szabály felülbírálja az elsőt. A szabályok csak akkor bírálják felül a korábbi szabályokat, ha ugyanazokkal a tulajdonságokkal működnek.
    >
 
 3. Adjon meg egy nevet a **név/leírás** szövegmezőben.

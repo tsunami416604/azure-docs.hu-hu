@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.reviewer: cenkdin
-ms.openlocfilehash: b2099283bc3af19f7d23e5007377b8baac0066d8
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: cd1272b6c49d247d58486193fcbc488d566ec1b3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964821"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87043037"
 ---
 # <a name="creating-filters-with-media-services-net-sdk"></a>Szűrők létrehozása Media Services .NET SDK-val 
 > [!div class="op_single_selector"]
@@ -40,10 +40,10 @@ Megjegyzés: Ha frissít egy szűrőt, akár két percet is igénybe vehet, amí
 ## <a name="types-used-to-create-filters"></a>Szűrők létrehozásához használt típusok
 Szűrők létrehozásakor a következő típusok használatosak: 
 
-* **IStreamingFilter**.  Ez a típus a következő REST API [szűrőn](https://docs.microsoft.com/rest/api/media/operations/filter) alapul.
-* **IStreamingAssetFilter**. Ez a típus a következő REST API [AssetFilter](https://docs.microsoft.com/rest/api/media/operations/assetfilter) alapul.
-* **PresentationTimeRange**. Ez a típus a következő REST API [PresentationTimeRange](https://docs.microsoft.com/rest/api/media/operations/presentationtimerange) alapul.
-* **FilterTrackSelectStatement** és **IFilterTrackPropertyCondition**. Ezek a típusok a következő REST API-k [FilterTrackSelect és FilterTrackPropertyCondition](https://docs.microsoft.com/rest/api/media/operations/filtertrackselect) alapulnak.
+* **IStreamingFilter**.  Ez a típus a következő REST API [szűrőn](/rest/api/media/operations/filter) alapul.
+* **IStreamingAssetFilter**. Ez a típus a következő REST API [AssetFilter](/rest/api/media/operations/assetfilter) alapul.
+* **PresentationTimeRange**. Ez a típus a következő REST API [PresentationTimeRange](/rest/api/media/operations/presentationtimerange) alapul.
+* **FilterTrackSelectStatement** és **IFilterTrackPropertyCondition**. Ezek a típusok a következő REST API-k [FilterTrackSelect és FilterTrackPropertyCondition](/rest/api/media/operations/filtertrackselect) alapulnak.
 
 ## <a name="createupdatereaddelete-global-filters"></a>Globális szűrők létrehozása/frissítése/olvasása/törlése
 A következő kód bemutatja, hogyan használható a .NET az eszközök szűrőinek létrehozásához, frissítéséhez, olvasásához és törléséhez.
@@ -137,4 +137,3 @@ Az alábbi példák bemutatják, hogyan adhat hozzá szűrőket a folyamatos át
 
 ## <a name="see-also"></a>Lásd még:
 [Dinamikus jegyzékfájlok áttekintése](media-services-dynamic-manifest-overview.md)
-

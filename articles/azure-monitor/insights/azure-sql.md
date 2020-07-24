@@ -7,12 +7,12 @@ author: danimir
 ms.author: danil
 ms.date: 02/21/2020
 ms.reviewer: carlrab
-ms.openlocfilehash: bb9bc847944a4228a7b583e21d0aa957f1910a29
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 7e5f7bd9ec3cc9a66adb8743ce2a56d8b2ead204
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087180"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87041562"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Azure SQL Database figyelése Azure SQL Analytics használatával (előzetes verzió)
 
@@ -34,7 +34,7 @@ A Azure SQL Analytics egy Felhőbeli figyelési megoldás, amely támogatja az �
 | Összekapcsolt forrás | Támogatott | Description |
 | --- | --- | --- |
 | [Diagnosztikai beállítások](../platform/diagnostic-settings.md) | **Igen** | Az Azure metrika és a naplózási adatok közvetlenül az Azure-ban érkeznek Azure Monitor naplókra. |
-| [Azure Storage-fiók](../platform/collect-azure-metrics-logs.md) | No | Azure Monitor nem olvassa be a Storage-fiók adatait. |
+| [Azure Storage-fiók](../platform/resource-logs.md#send-to-log-analytics-workspace) | No | Azure Monitor nem olvassa be a Storage-fiók adatait. |
 | [Windows-ügynökök](../platform/agent-windows.md) | No | Azure SQL Analytics nem használja a közvetlen Windows-ügynököket. |
 | [Linux-ügynökök](../learn/quick-collect-linux-computer.md) | No | Azure SQL Analytics nem használja a közvetlen Linux-ügynököket. |
 | [System Center Operations Manage felügyeleti csoport](../platform/om-agents.md) | No | A Azure SQL Analytics nem használja közvetlen kapcsolódást a Operations Manager ügynöktől a Azure Monitor. |
