@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 73d7c129a63e4d63ad5cc05d8dac47720c7955e4
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 748e31499a4aa8f1ddd2cea4e918b688426338fa
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86511909"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87117253"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-windows-device"></a>Rövid útmutató: az első IoT Edge modul üzembe helyezése virtuális Windows-eszközön
 
@@ -22,10 +22,12 @@ Próbálja ki Azure IoT Edge ebben a rövid útmutatóban, ha egy virtuális Win
 
 Ennek a rövid útmutatónak a segítségével megtanulhatja az alábbiakat:
 
-1. Hozzon létre egy IoT hubot.
-2. IoT Edge-eszköz regisztrálása az IoT Hubon
-3. Telepítse és indítsa el a IoT Edge futtatókörnyezetet a virtuális eszközön.
-4. Modul távoli üzembe helyezése IoT Edge-eszközön és Telemetria küldése az IoT Hubnak
+> [!div class="checklist"]
+>
+> * Hozzon létre egy IoT hubot.
+> * IoT Edge-eszköz regisztrálása az IoT Hubon
+> * Telepítse és indítsa el a IoT Edge futtatókörnyezetet a virtuális eszközön.
+> * Modul távoli üzembe helyezése IoT Edge-eszközön és Telemetria küldése az IoT Hubnak
 
 ![Diagram – az eszköz és a felhő gyors üzembe helyezési architektúrája](./media/quickstart/install-edge-full.png)
 
@@ -251,7 +253,7 @@ Az erőforráscsoport törlését az erőforráscsoportok listájának megtekint
 az group list
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban létrehozott egy IoT Edge eszközt, és a Azure IoT Edge Cloud Interface használatával helyezi üzembe a kódot az eszközön. Most már van egy teszteszköze, amely nyers adatokat állít elő a környezetéről.
 

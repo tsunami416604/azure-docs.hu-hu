@@ -7,11 +7,12 @@ ms.author: cschorm
 ms.date: 3/17/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 3b416e6ccb035ede06a360c2697a9b20ca417d98
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3e284bc76da9ca40341d72f772aa7ee947a11638
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84725902"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87124306"
 ---
 # <a name="connect-azure-functions-apps-for-processing-data"></a>Azure Functions alkalmazások összekötése az adatfeldolgozáshoz
 
@@ -77,7 +78,7 @@ Ez az Ön alapszintű Azure-függvénye.
 
 Most már lefordíthatja és futtathatja a függvényt. Habár az Azure functions végül a felhőben fut, az Azure functions-t helyileg is futtathatja és hibakeresést végezhet.
 
-További információ erről: [Event Grid trigger helyi hibakeresése](../azure-functions/functions-debug-event-grid-trigger-local.md).
+További információ erről: [*Event Grid trigger helyi hibakeresése*](../azure-functions/functions-debug-event-grid-trigger-local.md).
 
 ### <a name="add-the-azure-digital-twins-sdk-to-your-azure-function-app"></a>Az Azure Digital Twins SDK hozzáadása az Azure Function-alkalmazáshoz
 
@@ -162,9 +163,9 @@ A következő parancs *principalId* értékének használatával rendelje hozzá
 az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<principal-ID>" --role "Azure Digital Twins Owner (Preview)"
 ```
 
-A felügyelt identitással kapcsolatos további információkért lásd: a [felügyelt identitások használata app Service és Azure Functionshoz](../app-service/overview-managed-identity.md).
+A felügyelt identitással kapcsolatos további információkért lásd: a [*felügyelt identitások használata app Service és Azure Functionshoz*](../app-service/overview-managed-identity.md).
 
-Végül elérhetővé teheti az Azure Digital Twins-példány URL-címét a függvény számára egy környezeti változó beállításával. Erről további információt a [környezeti változók](https://docs.microsoft.com/sandbox/functions-recipes/environment-variables)című témakörben talál.
+Végül elérhetővé teheti az Azure Digital Twins-példány URL-címét a függvény számára egy környezeti változó beállításával. Erről további információt a [*környezeti változók*](https://docs.microsoft.com/sandbox/functions-recipes/environment-variables)című témakörben talál.
 
 > [!TIP]
 > Az Azure digitális Twins-példány URL-címe az Azure digitális Twins-példány *állomásneve* *https://* hozzáadásával történik. Az állomásnév, valamint a példány összes tulajdonságának megtekintéséhez futtathatja a parancsot `az dt show --dt-name <your-Azure-Digital-Twins-instance>` .
@@ -208,7 +209,7 @@ Jegyezze fel a lapon látható **objektumazonosítót** is, ahogy azt a követke
 
 ### <a name="assign-access-roles"></a>Hozzáférési szerepkörök kiosztása
 
-Mivel az Azure Digital Twins szerepköralapú hozzáférés-vezérlést használ a hozzáférés kezeléséhez (lásd a [fogalmakat: az Azure Digital Twins-megoldások biztonsága](concepts-security.md) című témakört), emellett hozzá kell adnia egy szerepkört minden olyan alkalmazáshoz, amelyet engedélyezni szeretne az Azure digitális Twins eléréséhez.
+Mivel az Azure Digital Twins szerepköralapú hozzáférés-vezérlést használ a hozzáférés kezeléséhez (lásd a [*fogalmakat: az Azure Digital Twins-megoldások biztonsága*](concepts-security.md) című témakört), emellett hozzá kell adnia egy szerepkört minden olyan alkalmazáshoz, amelyet engedélyezni szeretne az Azure digitális Twins eléréséhez.
 
 Szerepkör hozzárendeléséhez szüksége lesz a létrehozott Azure digitális Twins-példány **erőforrás-azonosítójára** . Ha a példány létrehozásakor korábban nem jegyezte fel, akkor a következő paranccsal kérheti le:
 
@@ -231,4 +232,4 @@ Ebben a cikkben egy Azure-függvény Azure-beli digitális Ikrekhez való haszn�
 * Más szolgáltatásokból érkező üzeneteket fogadó Event Grid végpont
 
 Következő lépésként tekintse meg az alapszintű Azure-függvény létrehozása a IoT Hub adatok Azure digitális Ikrekbe való betöltéséhez:
-* [Útmutató: telemetria beolvasása IoT Hubból](how-to-ingest-iot-hub-data.md)
+* [*Útmutató: telemetria beolvasása IoT Hubból*](how-to-ingest-iot-hub-data.md)

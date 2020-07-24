@@ -16,11 +16,12 @@ ms.workload: na
 ms.date: 09/19/2018
 ms.author: terrylan
 Customer intent: As an IT Pro or decision maker I am trying to learn about identity management capabilities in Azure
-ms.openlocfilehash: f61b6193a0d2082296a17128b41d7220f9b7e05f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d1440bf2b8af85b81355dbc43b695a85994e4b8d
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77565893"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87124136"
 ---
 # <a name="azure-identity-management-security-overview"></a>Az Azure Identity Management biztonsági áttekintése
 
@@ -45,7 +46,7 @@ A cikk a következő alapvető Azure Identity Management-képességekre összpon
 * Felhasználói identitás és hozzáférés-kezelés
 * Eszközregisztráció
 * Privileged Identity Management
-* Identitásvédelem
+* Identity protection
 * Hibrid Identitáskezelés/Azure AD-kapcsolat
 * Azure AD hozzáférési felülvizsgálatok
 
@@ -90,10 +91,15 @@ További információ:
 
 Az RBAC az Azure Resource Managerre épülő engedélyezési rendszer, amely részletes hozzáférés-kezelési lehetőségeket nyújt az Azure-beli erőforrásokhoz. A RBAC lehetővé teszi a felhasználók által használt hozzáférés szintjének részletes szabályozását. Például korlátozhatja, hogy egy felhasználó csak a virtuális hálózatokat és egy másik felhasználót kezelje az erőforráscsoport összes erőforrásának kezeléséhez. Az Azure számos beépített szerepkört biztosít, amelyeket használhat. Az alábbiakban négy alapvető beépített szerepkört sorolunk fel. Az első három minden erőforrástípusra alkalmazható.
 
+- [Tulajdonos](/azure/role-based-access-control/built-in-roles.md#owner) – teljes körű hozzáféréssel rendelkezik az összes erőforráshoz, beleértve a másokhoz való hozzáférés delegálására vonatkozó jogosultságot is. 
+- [Közreműködő](/azure/role-based-access-control/built-in-roles.md#contributor) – az összes típusú Azure-erőforrást létrehozhatja és kezelheti, de mások számára nem biztosít hozzáférést.
+- [Olvasó](/azure/role-based-access-control/built-in-roles.md#reader) – megtekintheti a meglévő Azure-erőforrásokat.
+- [Felhasználói hozzáférés rendszergazdája](/azure/role-based-access-control/built-in-roles.md#administrator) – lehetővé teszi az Azure-erőforrásokhoz való felhasználói hozzáférés kezelését.
+
 További információ:
 
-* [Mi az a szerepköralapú hozzáférés-vezérlés (RBAC)?](/azure/role-based-access-control/overview)
-* [Beépített szerepkörök Azure-erőforrásokhoz](/azure/role-based-access-control/built-in-roles)
+* [Mi az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)?](/azure/role-based-access-control/overview)
+* [Beépített Azure-szerepkörök](/azure/role-based-access-control/built-in-roles)
 
 ## <a name="security-monitoring-alerts-and-machine-learning-based-reports"></a>Biztonsági monitorozás, riasztások és gépi tanuláson alapuló jelentések
 
@@ -157,7 +163,7 @@ További információ:
 * [Mi az az Azure AD Privileged Identity Management?](../../active-directory/privileged-identity-management/pim-configure.md)
 * [Azure AD-címtárbeli szerepkörök kiosztása a PIM-ben](../../active-directory/privileged-identity-management/pim-how-to-add-role-to-user.md)
 
-## <a name="identity-protection"></a>Identitásvédelem
+## <a name="identity-protection"></a>Identity protection
 
 A Azure AD Identity Protection egy olyan biztonsági szolgáltatás, amely összevont nézetet biztosít a szervezet identitásait érintő kockázati észlelések és potenciális sebezhetőségek számára. Az Identity Protection kihasználja a meglévő Azure AD-anomáliák – észlelési képességeket, amelyek az Azure AD rendellenes tevékenységi jelentéseiben érhetők el. Az Identity Protection olyan új kockázati észlelési típusokat is tartalmaz, amelyek valós időben észlelik a rendellenességeket.
 

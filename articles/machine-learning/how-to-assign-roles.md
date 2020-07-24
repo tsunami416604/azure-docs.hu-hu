@@ -11,12 +11,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 06/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: f289be1b3432d9c62b4841c513088afa16e0e447
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ff8d532bf1c19ded9567e8c1e4b63e674c01d0d8
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85609248"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87125173"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Azure Machine Learning munkaterület elérésének kezelése
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -25,18 +25,18 @@ Ebből a cikkből megtudhatja, hogyan kezelheti az Azure Machine Learning-munkat
 
 ## <a name="default-roles"></a>Alapértelmezett szerepkörök
 
-Az Azure Machine Learning munkaterület egy Azure-erőforrás. Más Azure-erőforrásokhoz hasonlóan, amikor létrejön egy új Azure Machine Learning munkaterület, három alapértelmezett szerepkör jön létre. Felhasználókat adhat hozzá a munkaterülethez, és hozzárendelheti őket a beépített szerepkörök valamelyikéhez.
+Az Azure Machine Learning-munkaterület egy Azure-erőforrás. A többi Azure-erőforráshoz hasonlóan az új Azure Machine Learning-munkaterületek is három alapértelmezett szerepkörrel rendelkeznek a létrehozásukkor. Felhasználókat adhat hozzá a munkaterülethez, és hozzárendelheti őket a beépített szerepkörök valamelyikéhez.
 
 | Szerepkör | Hozzáférési szint |
 | --- | --- |
 | **Olvasó** | Csak olvasási műveletek a munkaterületen. Az olvasók listázhatja és megtekintheti a munkaterületen lévő adategységeket (beleértve az [adattár](how-to-access-data.md) hitelesítő adatait), de nem tudja létrehozni vagy frissíteni ezeket az eszközöket. |
-| **Közreműködő** | Munkaterületen lévő eszközök megtekintése, létrehozása, szerkesztése vagy törlése (ha van ilyen). A közreműködők például létrehozhatnak egy kísérletet, létrehozhatnak vagy csatolhatnak egy számítási fürtöt, futtathatnak és telepíthetnek egy webszolgáltatást. |
-| **Tulajdonos** | Teljes hozzáférés a munkaterülethez, beleértve a munkaterületen lévő eszközök megtekintését, létrehozását, szerkesztését vagy törlését. Emellett módosíthatja a szerepkör-hozzárendeléseket is. |
+| **Közreműködő** | Munkaterületen lévő eszközök megtekintése, létrehozása, szerkesztése vagy törlése (ha van ilyen). A közreműködők például létrehozhatnak egy kísérletet, létrehozhatnak vagy csatolhatnak egy számítási fürtöt, futtatást végezhetnek és webszolgáltatásokat helyezhetnek üzembe. |
+| **Tulajdonos** | Teljes hozzáférés a munkaterülethez, beleértve a munkaterületen lévő eszközök megtekintését, létrehozását, szerkesztését vagy törlését. Emellett módosíthatja a szerepkör-hozzárendeléseket. |
 
 > [!IMPORTANT]
 > A szerepkör-hozzáférés az Azure több szintjére is kiterjed. Előfordulhat például, hogy valaki tulajdonosi hozzáféréssel rendelkezik a munkaterülethez, és nem rendelkezik tulajdonosi hozzáféréssel a munkaterületet tartalmazó erőforráscsoporthoz. További információ: [how RBAC Works](/azure/role-based-access-control/overview#how-rbac-works).
 
-Az adott beépített szerepkörökkel kapcsolatos további információkért lásd: [beépített szerepkörök az Azure-](/azure/role-based-access-control/built-in-roles)hoz.
+Az adott beépített szerepkörökkel kapcsolatos további információkért lásd: [Az Azure beépített szerepkörei](/azure/role-based-access-control/built-in-roles).
 
 ## <a name="manage-workspace-access"></a>Munkaterület-hozzáférés kezelése
 
@@ -45,7 +45,7 @@ Ha Ön a munkaterület tulajdonosa, szerepköröket adhat hozzá és távolítha
 - [PowerShell](/azure/role-based-access-control/role-assignments-powershell)
 - [Azure CLI](/azure/role-based-access-control/role-assignments-cli)
 - [REST API](/azure/role-based-access-control/role-assignments-rest)
-- [Azure Resource Manager-sablonok](/azure/role-based-access-control/role-assignments-template)
+- [Azure Resource Manager sablonok](/azure/role-based-access-control/role-assignments-template)
 
 Ha telepítette a [Azure Machine learning CLI](reference-azure-machine-learning-cli.md)-t, a parancssori felület parancs használatával is hozzárendelhet szerepköröket a felhasználókhoz.
 
@@ -69,7 +69,7 @@ Számos művelethez és feladathoz Azure Machine Learning beépített műveletek
 
 ## <a name="create-custom-role"></a>Egyéni szerepkör létrehozása
 
-Ha a beépített szerepkörök nem elégségesek, létrehozhat egyéni szerepköröket. Előfordulhat, hogy az egyéni szerepkörök olvasási, írási, törlési és számítási erőforrás-jogosultságokkal rendelkeznek az adott munkaterületen. A szerepkört egy adott munkaterület-szinten, egy adott erőforráscsoport-szinten vagy egy adott előfizetési szinten is elérhetővé teheti.
+Ha a beépített szerepkörök nem elegendőek, egyéni szerepköröket is létrehozhat. Előfordulhat, hogy az egyéni szerepkörök olvasási, írási, törlési és számítási erőforrás-jogosultságokkal rendelkeznek az adott munkaterületen. A szerepkört egy adott munkaterület-szinten, egy adott erőforráscsoport-szinten vagy egy adott előfizetési szinten is elérhetővé teheti.
 
 > [!NOTE]
 > Ezen a szinten az erőforrás tulajdonosának kell lennie ahhoz, hogy egyéni szerepköröket hozzon létre az adott erőforráson belül.
@@ -117,7 +117,7 @@ Az üzembe helyezés után ez a szerepkör elérhetővé válik a megadott munka
 az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientist" --user jdoe@contoson.com
 ```
 
-Az egyéni szerepkörökkel kapcsolatos további információkért lásd: [Egyéni szerepkörök az Azure-erőforrásokhoz](/azure/role-based-access-control/custom-roles).
+További információ az egyéni szerepkörökről: [Egyéni Azure-szerepkörök](/azure/role-based-access-control/custom-roles).
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
@@ -128,11 +128,11 @@ A következő táblázat a Azure Machine Learning tevékenységek összegzését
 
 | Tevékenység | Előfizetés szintű hatókör | Erőforráscsoport-szintű hatókör | Munkaterület-szintű hatókör |
 |---|---|---|---|
-| Új munkaterület létrehozása | Nem kötelező | Tulajdonos vagy közreműködő | N/A (A létrehozása után válik a tulajdonos vagy A magasabb hatókörű szerepkör örökli) |
-| Új számítási fürt létrehozása | Nem kötelező | Nem kötelező | Tulajdonos, közreműködő vagy egyéni szerepkör, amely lehetővé teszi a következőket:`workspaces/computes/write` |
-| Új notebook virtuális gép létrehozása | Nem kötelező | Tulajdonos vagy közreműködő | Nem lehetséges |
-| Új számítási példány létrehozása | Nem kötelező | Nem kötelező | Tulajdonos, közreműködő vagy egyéni szerepkör, amely lehetővé teszi a következőket:`workspaces/computes/write` |
-| Adatsík tevékenység, például a Futtatás elküldése, az adatok elérése, a modell üzembe helyezése vagy a közzétételi folyamat | Nem kötelező | Nem kötelező | Tulajdonos, közreműködő vagy egyéni szerepkör, amely lehetővé teszi a következőket:`workspaces/*/write` <br/> Szüksége van egy adattárra is, amely regisztrálva van a munkaterületen, hogy az MSI hozzáférjen a Storage-fiókban lévő adataihoz. |
+| Új munkaterület létrehozása | Nem szükséges | Tulajdonos vagy közreműködő | N/A (A létrehozása után válik a tulajdonos vagy A magasabb hatókörű szerepkör örökli) |
+| Új számítási fürt létrehozása | Nem szükséges | Nem szükséges | Tulajdonos, közreműködő vagy egyéni szerepkör, amely lehetővé teszi a következőket:`workspaces/computes/write` |
+| Új notebook virtuális gép létrehozása | Nem szükséges | Tulajdonos vagy közreműködő | Nem lehetséges |
+| Új számítási példány létrehozása | Nem szükséges | Nem szükséges | Tulajdonos, közreműködő vagy egyéni szerepkör, amely lehetővé teszi a következőket:`workspaces/computes/write` |
+| Adatsík tevékenység, például a Futtatás elküldése, az adatok elérése, a modell üzembe helyezése vagy a közzétételi folyamat | Nem szükséges | Nem szükséges | Tulajdonos, közreműködő vagy egyéni szerepkör, amely lehetővé teszi a következőket:`workspaces/*/write` <br/> Szüksége van egy adattárra is, amely regisztrálva van a munkaterületen, hogy az MSI hozzáférjen a Storage-fiókban lévő adataihoz. |
 
 
 ### <a name="q-how-do-i-list-all-the-custom-roles-in-my-subscription"></a>K. Hogyan a saját előfizetés összes egyéni szerepkörét listázom?

@@ -1,19 +1,19 @@
 ---
 title: Forgalmi adatok megjelenítése az Android térképen | Microsoft Azure térképek
 description: Ebből a cikkből megtudhatja, hogyan jelenítheti meg a forgalmi adatokat egy térképen a Microsoft Azure Maps Android SDK használatával.
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 02/27/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 92e111a6e76dbe285dd8cc7a93ce75f556142565
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 8b07b520dec4e9149c6748777a119b68e56c65e9
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86540145"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87126397"
 ---
 # <a name="show-traffic-data-on-the-map-using-azure-maps-android-sdk"></a>Forgalmi adatok megjelenítése a térképen Azure Maps Android SDK használatával
 
@@ -53,7 +53,7 @@ import static com.microsoft.azure.maps.mapcontrol.options.TrafficOptions.flow;
 
 Az alábbi kódrészlettel állíthatja be a forgalmi folyamatra vonatkozó adatokat. Az előző szakaszban szereplő kódhoz hasonlóan a metódus visszatérési értékét is átadjuk a `flow` `setTraffic` metódusnak. Négy érték adható át `flow` , és minden érték `flow` a megfelelő értéket adja vissza. A visszatérési értéke a következő `flow` argumentumként lesz átadva: `setTraffic` . A következő négy értéknél tekintse meg az alábbi táblázatot:
 
-|Folyamat értéke | Leírás|
+|Folyamat értéke | Description|
 | :-- | :-- |
 | Forgalomáramlási. NONE | Nem jeleníti meg a forgalmi adatokat a térképen |
 | Forgalomáramlási. relatív | Az út szabad áramlási sebességéhez viszonyított forgalmi adatokat jeleníti meg |
@@ -229,7 +229,7 @@ Egy adott szolgáltatás incidensének beszerzéséhez használhatja az alábbi 
 
    </center>
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A következő útmutatókból megtudhatja, hogyan adhat hozzá további információkat a térképhez:
 

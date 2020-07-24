@@ -3,20 +3,18 @@ title: Csevegés hozzáadása QnA Maker tudásbázishoz
 titleSuffix: Azure Cognitive Services
 description: Ha személyes Chit-csevegést szeretne hozzáadni a robothoz, akkor még több beszélgetést és részvételt tesz lehetővé, amikor létrehoz egy KB-ot. A QnA Maker lehetővé teszi, hogy egyszerűen vegyen fel egy előre feltöltött készletet a KB-ra.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: e06cad8e8ca62330b09e173cf6058905b49f19e4
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 0aca072a9e659d242dec9dd45a12f9568d419599
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83992906"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87124425"
 ---
 # <a name="add-chit-chat-to-a-knowledge-base"></a>Chit-csevegés hozzáadása egy tudásbázishoz
 
@@ -74,7 +72,7 @@ A metaadatok megtekintéséhez válassza az eszköztár **beállítások megteki
 ## <a name="add-additional-chit-chat-questions-and-answers"></a>További Chit-csevegési kérdések és válaszok hozzáadása
 Hozzáadhat egy olyan új QnA-párt, amely nem szerepel az előre definiált adatkészletben. Győződjön meg arról, hogy nem duplikál olyan QnA párt, amely már szerepel a Chit-Chat készletben. Új Chit-Chat-QnA hozzáadásakor a rendszer bekerül a **szerkesztői** forrásba. Annak érdekében, hogy a Ranger megértse, hogy ez a Chit-Chat, adja hozzá a "Vezércikk: chitchat" metaadat-kulcs/érték párokat, ahogy az alábbi képen látható:
 
-![! [A Chit-Chat QnAs hozzáadása] (.. /media/qnamaker-how-to-chit-chat/add-new-chit-chat.png)](../media/qnamaker-how-to-chit-chat/add-new-chit-chat.png#lightbox)
+![! [A Chit-Chat QnAs hozzáadása] (.. /Media/qnamaker-How-to-Chit-Chat/add-new-chit-chat.png)](../media/qnamaker-how-to-chit-chat/add-new-chit-chat.png#lightbox)
 
 ## <a name="delete-chit-chat-from-an-existing-kb"></a>Chit-csevegés törlése meglévő KB-ból
 Válassza ki a KB-ot, és navigáljon a **Beállítások** lapra. Az adott Chit-Chat-forrás fájlként van listázva a kiválasztott személyiség nevével. Ezt forrásfájlként is törölheti.
@@ -86,6 +84,6 @@ Válassza ki a KB-ot, és navigáljon a **Beállítások** lapra. Az adott Chit-
 > [!div class="nextstepaction"]
 > [Tudásbázis importálása](../Tutorials/migrate-knowledge-base.md)
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 [A QnA Maker áttekintése](../Overview/overview.md)

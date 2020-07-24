@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: how-to
 ms.date: 01/21/2020
 ms.author: rohogue
-ms.openlocfilehash: c1828bcde5c26c5605b867c115127eb2502bdd86
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 24c803bd94f56af551f3afa2cb7350219b4fa448
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85505341"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87124731"
 ---
 # <a name="prepare-to-create-the-avere-vfxt"></a>Felkészülés az Avere vFXT létrehozására
 
@@ -38,7 +38,7 @@ Vannak olyan megkerülő megoldások, amelyek lehetővé teszik, hogy a nem tula
 |----------|--------|-------|
 | Az erőforráscsoport rendszergazdája létrehozza a vFXT | A virtuális hálózatot, a tartományvezérlőt és a fürtcsomópontok létrehozását az erőforráscsoport keretében kell létrehozni. | A [felhasználói hozzáférés rendszergazdai](../role-based-access-control/built-in-roles.md#user-access-administrator) és [közreműködői](../role-based-access-control/built-in-roles.md#contributor) szerepkörei mind a célként megadott erőforráscsoport hatóköre. |
 | Meglévő, külső virtuális hálózat használata | A tartományvezérlő és a fürtcsomópontok a vFXT erőforráscsoport keretében jönnek létre, de egy meglévő virtuális hálózatot használnak egy másik erőforráscsoporthoz. | (1) a [felhasználói hozzáférés rendszergazdai](../role-based-access-control/built-in-roles.md#user-access-administrator) és [közreműködői](../role-based-access-control/built-in-roles.md#contributor) szerepkörei a vFXT erőforráscsoporthoz tartoznak; és (2) a [virtuális gép közreműködői](../role-based-access-control/built-in-roles.md#virtual-machine-contributor), a [felhasználói hozzáférés rendszergazdája](../role-based-access-control/built-in-roles.md#user-access-administrator)és a [avere közreműködői](../role-based-access-control/built-in-roles.md#avere-contributor) szerepkörök a virtuális hálózat erőforráscsoporthoz vannak korlátozva. |
-| Egyéni szerepkör a fürtök létrehozói számára | Nincs erőforrás-elhelyezési korlátozás. Ez a módszer nem tulajdonosai számára jelentős jogosultságokat biztosít. | Az előfizetés tulajdonosa létrehoz egy egyéni RBAC-szerepkört a [jelen cikkben](avere-vfxt-non-owner.md)leírtak szerint. |
+| Egyéni szerepkör a fürtök létrehozói számára | Nincs erőforrás-elhelyezési korlátozás. Ez a módszer nem tulajdonosai számára jelentős jogosultságokat biztosít. | Az előfizetés tulajdonosa létrehoz egy Azure-beli egyéni szerepkört a [jelen cikkben](avere-vfxt-non-owner.md)leírtak szerint. |
 
 ## <a name="quota-for-the-vfxt-cluster"></a>Kvóta a vFXT-fürthöz
 

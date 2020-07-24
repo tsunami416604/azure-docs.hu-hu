@@ -7,20 +7,20 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 6d51abab46cd8450dd3a09e5e5ef47e6267b990d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 7f7239e0c13478af712d8e8d9dad8fda23fe42c7
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258086"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87125532"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>Digitális ikrek gráfjának kezelése kapcsolatok használatával
 
 Az Azure digitális ikrek szíve a teljes környezetet jelképező [kettős gráf](concepts-twins-graph.md) . A Twin gráf a **kapcsolatokon**keresztül összekapcsolt digitális ikrekből tevődik össze.
 
-Ha rendelkezik egy működő [Azure digitális Twins-példánnyal](how-to-set-up-instance.md) , és beállította a [hitelesítést](how-to-authenticate-client.md) az ügyfélalkalmazás számára, a [**DigitalTwins API**](how-to-use-apis-sdks.md) -kkal digitális ikreket és azok kapcsolatait is létrehozhatja, módosíthatja és törölheti egy Azure digitális Twins-példányban. Használhatja a [.net (C#) SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)-t vagy az [Azure Digital Twins CLI](how-to-use-cli.md)-t is.
+Miután egy működő [Azure digitális Twins-példánnyal](how-to-set-up-instance-scripted.md) rendelkezik, és beállította a [hitelesítési](how-to-authenticate-client.md) kódot az ügyfélalkalmazás számára, a [**DigitalTwins API**](how-to-use-apis-sdks.md) -kkal digitális ikreket és azok kapcsolatait is létrehozhatja, módosíthatja és törölheti egy Azure digitális Twins-példányban. Használhatja a [.net (C#) SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)-t vagy az [Azure Digital Twins CLI](how-to-use-cli.md)-t is.
 
-Ez a cikk a kapcsolatok és a gráf egészének kezelésére koncentrál. az egyes digitális ikrekkel való munkavégzéshez tekintse meg az [útmutató: digitális ikrek kezelése](how-to-manage-twin.md)című témakört.
+Ez a cikk a kapcsolatok és a gráf egészének kezelésére koncentrál. az egyes digitális ikrekkel való munkavégzéshez tekintse meg az [*útmutató: digitális ikrek kezelése*](how-to-manage-twin.md)című témakört.
 
 [!INCLUDE [visualizing with Azure Digital Twins explorer](../../includes/digital-twins-visualization.md)]
 
@@ -62,7 +62,7 @@ public async static Task CreateRelationship(DigitalTwinsClient client, string sr
 }
 ```
 
-További információ a segítő osztályról `BasicRelationship` [: útmutató: az Azure digitális Twins API-k és SDK-k használata](how-to-use-apis-sdks.md).
+További információ a segítő osztályról `BasicRelationship` [*: útmutató: az Azure digitális Twins API-k és SDK-k használata*](how-to-use-apis-sdks.md).
 
 ## <a name="list-relationships"></a>Kapcsolatok listázása
 
@@ -108,7 +108,7 @@ Az Azure Digital Twins is rendelkezik egy API-val, amely az adott iker összes b
 
 Az előző kód minta a kimenő kapcsolatok megtalálására koncentrál. A következő példa hasonló, de megkeresi a bejövő kapcsolatokat. A megtalált elemek után is törli őket.
 
-Vegye figyelembe, hogy a IncomingRelationship-hívások nem adják vissza a teljes
+Vegye figyelembe, hogy a `IncomingRelationship` hívások nem adják vissza a kapcsolat teljes törzsét.
 
 ```csharp
 async Task<List<IncomingRelationship>> FindIncomingRelationshipsAsync(string dtId)
@@ -301,10 +301,10 @@ foreach (JsonElement row in data.RootElement.EnumerateArray())
 ```
 ## <a name="manage-relationships-with-cli"></a>Kapcsolatok kezelése a CLI-vel
 
-Az ikrek és kapcsolataik az Azure Digital Twins CLI használatával is kezelhetők. A parancsok a következő [útmutatóban találhatók: az Azure digitális Twins parancssori](how-to-use-cli.md)felületének használata.
+Az ikrek és kapcsolataik az Azure Digital Twins CLI használatával is kezelhetők. A parancsok a következő [*útmutatóban találhatók: az Azure digitális Twins parancssori*](how-to-use-cli.md)felületének használata.
 
 ## <a name="next-steps"></a>További lépések
 
 Tudnivalók az Azure Digital Twins Twin Graph lekérdezéséről:
-* [Fogalmak: lekérdezési nyelv](concepts-query-language.md)
-* [Útmutató: a Twin gráf lekérdezése](how-to-query-graph.md)
+* [*Fogalmak: lekérdezési nyelv*](concepts-query-language.md)
+* [*Útmutató: a Twin gráf lekérdezése*](how-to-query-graph.md)

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
-ms.openlocfilehash: 05a3fc7524b16033c48170b6cf0fa4e004c9eb9b
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 7f5ad0b493f925ce34ffe19892fa432322995a9c
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86257986"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87125207"
 ---
 # <a name="what-is-azure-digital-twins"></a>Mi az az Azure Digital Twins?
 
@@ -44,7 +44,7 @@ A DTDL a többi Azure IoT-szolgáltatás (például a [IoT Plug and Play (PNP)](
 
 Az Azure Digital Twins digitális modelljei élő, naprakész képviseletek a valós világban. Az egyéni DTDL-modellek kapcsolatainak használatával összekapcsolhatók az ikrek egy **élő gráfban** , amely a környezetet jelképezi.
 
-Megtekintheti az Azure Digital Twins gráf vizualizációját egy minta alkalmazás, az [**Azure digitális Twins Explorer**](https://github.com/Azure-Samples/digital-twins-explorer)segítségével.
+Megtekintheti az Azure Digital Twins gráf vizualizációját egy minta alkalmazás, az [**Azure digitális Twins Explorer**](https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/)segítségével.
 
 A minta vizualizáció a következőképpen néz ki:
 
@@ -94,16 +94,16 @@ Az alábbi ábra azt mutatja be, hogy az Azure Digital Twins egy nagyobb Azure I
 
 > [!IMPORTANT]
 > Az Azure Digital Twins jelenleg nyilvános előzetes verzióban érhető el.
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: a [*Microsoft Azure előzetes verziójának kiegészítő használati feltételei*](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-A nyilvános előzetes verzióban elérhető Azure Digital Twins-korlátok listáját a következő témakörben tekintheti meg [: referenciák a nyilvános előzetes verziókra vonatkozó korlátozások](reference-service-limits.md).
+A nyilvános előzetes verzióban elérhető Azure Digital Twins-korlátok listáját a következő témakörben tekintheti meg [*: referenciák a nyilvános előzetes verziókra vonatkozó korlátozások*](reference-service-limits.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha az Azure Digital Twins korábbi előzetes kiadásával dolgozott együtt, Ismerje meg, hogy mi változott:
-* [Áttekintés: eltérések az előző kiadástól](overview-differences.md)
+* [*Áttekintés: eltérések az előző kiadástól*](overview-differences.md)
 
 Vagy folytassa a munkát az Azure Digital Twins használatának első oktatóanyagával:
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: ügyfélalkalmazás kódolása](tutorial-code.md)
+> [*Oktatóanyag: ügyfélalkalmazás kódolása*](tutorial-code.md)

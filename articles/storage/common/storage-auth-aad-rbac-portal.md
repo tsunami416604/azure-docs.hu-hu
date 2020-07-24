@@ -1,7 +1,7 @@
 ---
 title: A Azure Portal használata RBAC-szerepkör hozzárendeléséhez adathozzáféréshez
 titleSuffix: Azure Storage
-description: Megtudhatja, hogyan rendelhet hozzá engedélyeket egy Azure Active Directory rendszerbiztonsági tag számára az Azure Portal segítségével szerepköralapú hozzáférés-vezérléssel (RBAC). Az Azure Storage támogatja a beépített és az egyéni RBAC-szerepköröket az Azure AD-n keresztül történő hitelesítéshez.
+description: Megtudhatja, hogyan rendelhet hozzá engedélyeket egy Azure Active Directory rendszerbiztonsági tag számára az Azure Portal segítségével szerepköralapú hozzáférés-vezérléssel (RBAC). Az Azure Storage támogatja az Azure AD-n keresztül történő hitelesítéshez használható beépített és egyéni Azure-szerepköröket.
 services: storage
 author: tamram
 ms.service: storage
@@ -10,12 +10,12 @@ ms.date: 07/16/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 77eb3ddfdbf2525aa031c462a38df5dcb8d31217
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e0278329ff6b6946c4107ea048367753eaccbfd8
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518758"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87124986"
 ---
 # <a name="use-the-azure-portal-to-assign-an-rbac-role-for-access-to-blob-and-queue-data"></a>A Azure Portal használatával rendeljen hozzá egy RBAC-szerepkört a blob-és üzenetsor-adat eléréséhez
 
@@ -95,10 +95,10 @@ Az **olvasó** szerepkör kiosztása csak olyan felhasználók számára szüks�
 > [!IMPORTANT]
 > A Azure Portal Storage Explorer előzetes verziója nem támogatja az Azure AD-beli hitelesítő adatok használatát a blob-vagy üzenetsor-adatok megtekintésére és módosítására. Storage Explorer a Azure Portal mindig a fiók kulcsait használja az adateléréshez. A Azure Portal Storage Explorer használatához olyan szerepkört kell hozzárendelni, amely tartalmazza a **Microsoft. Storage/storageAccounts/listkeys műveletének beolvasása/műveletet**.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a tárolási erőforrások RBAC szerepköreiről: az [Azure-blobok és-várólisták hozzáférésének hitelesítése Azure Active Directory használatával](storage-auth-aad.md). 
-- További információ a RBAC: [Mi a szerepköralapú hozzáférés-vezérlés (RBAC)?](../../role-based-access-control/overview.md).
+- További információ a RBAC: [Mi az az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)?](../../role-based-access-control/overview.md).
 - A következő cikkekből megtudhatja, hogyan rendelhet hozzá és kezelhet RBAC szerepkör-hozzárendeléseket Azure PowerShell, az Azure CLI vagy a REST API használatával:
     - [Szerepköralapú hozzáférés-vezérlés (RBAC) kezelése Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md)
     - [Szerepköralapú hozzáférés-vezérlés (RBAC) kezelése az Azure CLI-vel](../../role-based-access-control/role-assignments-cli.md)

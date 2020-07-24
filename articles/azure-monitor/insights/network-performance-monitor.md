@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 02/20/2018
-ms.openlocfilehash: 51111d92e85c6ddbdfac85c333293c2af8b31fbe
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 68be8d08939464d200da588c481447f8206c9117
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86498964"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87117194"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Network Performance Monitor megoldás az Azure-ban
 
@@ -56,7 +56,7 @@ A NPM a világ bármely részén lévő hálózatok és alkalmazások közötti 
 * Dél-Egyesült Királyság
 * Kelet-Ázsia
 * Dél-Korea középső régiója
-* Central India
+* Közép-India
 * USA-beli kormányzati Virginia
 * Kelet-Kína 2
 
@@ -65,6 +65,9 @@ A ExpressRoute-figyelő támogatott régiói listája a [dokumentációban](../.
 
 
 ## <a name="set-up-and-configure"></a>Beállítás és konfigurálás
+
+> [!NOTE]
+> Azt is megteheti, hogy a Microsoft monitoring Agent (MMA) vagy a OMS Linux Agent néven ismert Log Analytics ügynök.
 
 ### <a name="install-and-configure-agents"></a>Ügynökök telepítése és konfigurálása 
 
@@ -286,5 +289,5 @@ A díjszabással kapcsolatos információk [online állapotban](network-performa
 
 * **Csatlakozzon a kohorszhoz:** Mindig érdeklik, hogy az új ügyfelek csatlakozzanak a kohorszhoz. Ennek részeként korai hozzáférést kap az új funkciókhoz, és lehetőséget nyújt a Network Performance Monitor javítására. Ha érdekli a csatlakozás, töltse ki ezt a [gyors kérdőívet](https://aka.ms/npmcohort). 
 
-## <a name="next-steps"></a>Következő lépések 
+## <a name="next-steps"></a>További lépések 
 További információ a [Teljesítményfigyelőről](network-performance-monitor-performance-monitor.md), a [szolgáltatás-csatlakozási figyelőről](network-performance-monitor-performance-monitor.md)és a [ExpressRoute-figyelőről](network-performance-monitor-expressroute.md). 

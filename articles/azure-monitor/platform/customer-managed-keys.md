@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 07/05/2020
-ms.openlocfilehash: ad2e6a05fa8459d8e5a53d9bb8b8e08790a7d8ec
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 3835046e50180e1d1091f5083f276c7c1ad56612
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539414"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87117362"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Monitor ügyfél által felügyelt kulcs 
 
@@ -194,7 +194,7 @@ Ezek a beállítások a CLI-vel és a PowerShell-lel is frissíthetők:
 
 Ez az erőforrás köztes identitás-kapcsolatként használatos a Key Vault és az Log Analytics-munkaterületek között. Miután megkapta a jóváhagyást, hogy az előfizetések engedélyezettek voltak, hozzon létre egy Log Analytics *fürterőforrás* azon a régión, ahol a munkaterületek találhatók.
 
-*Fürterőforrás* létrehozásakor meg kell adnia a *kapacitás foglalási* szintjét (SKU). A *kapacitás foglalási* szintje napi 1 000 és 2 000 GB között lehet, és később is frissíthető 100-os lépésekben. Ha napi 2 000 GB-nál nagyobb kapacitású foglalásra van szüksége, lépjen kapcsolatba velünk a következő címen: LAIngestionRate@microsoft.com . [További információ](./manage-cost-storage.md#log-analytics-dedicated-clusters)
+*Fürterőforrás* létrehozásakor meg kell adnia a *kapacitás foglalási* szintjét (SKU). A *kapacitás foglalási* szintje napi 1000 és 3000 GB között lehet, és a 100-as lépésekben frissíthető. Ha napi 3000 GB-nál nagyobb kapacitású foglalásra van szüksége, lépjen kapcsolatba velünk a következő címen: LAIngestionRate@microsoft.com . [További információ](./manage-cost-storage.md#log-analytics-dedicated-clusters)
 
 A *billingType* tulajdonság határozza meg a *fürterőforrás* és a hozzá tartozó adatforrások számlázási hozzárendelését:
 - *Fürt* (alapértelmezett) – a fürt kapacitásának foglalási költségei a *fürterőforrás* számára vannak hozzárendelve.
@@ -467,9 +467,9 @@ Az összes adatai elérhetők maradnak a kulcs elforgatási művelete után, miv
 A Log Analyticsben használt lekérdezési nyelv kifejező, és bizalmas információkat tartalmazhat a lekérdezésekben vagy a lekérdezési szintaxisban hozzáadott megjegyzésekben. Egyes szervezetek megkövetelik, hogy az ilyen információk védelme a CMK szabályzat részeként történjen, és a kulcsával titkosított lekérdezéseket kell mentenie. A Azure Monitor lehetővé teszi, hogy a munkaterülethez való csatlakozáskor a saját kulcsával titkosított *mentett kereséseket* és *napló-riasztásokat* tartalmazó lekérdezéseket tárolja. 
 
 > [!NOTE]
-> A munkafüzetekben és az Azure-irányítópultokon használt lekérdezések CMK még nem támogatott. Ezek a lekérdezések a Microsoft-kulccsal titkosítva maradnak.  
+> Log Analytics lekérdezések a használt forgatókönyvtől függően különböző áruházakban menthetők. A lekérdezések a következő helyzetekben titkosítva maradnak a Microsoft Key (MMK) szolgáltatással: Azure Monitor, Azure-irányítópultok, Azure Logic app, Azure Notebooks és Automation Runbookok-munkafüzetek.
 
-Ha [saját tárolót](./private-storage.md) (BYOS) használ, és hozzárendeli azt a munkaterülethez, a szolgáltatás feltölti a *mentett-kereséseket* és a *log-riasztási* lekérdezéseket a Storage-fiókjába. Ez azt jelenti, hogy a Storage-fiókot és a [titkosítás-nyugalmi szabályzatot](../../storage/common/encryption-customer-managed-keys.md) a log Analytics fürtben lévő adatok titkosításához használt kulcs vagy egy másik kulcs használatával szabályozhatja. A Storage-fiókkal kapcsolatos költségekért azonban felelősnek kell lennie. 
+Ha saját tárolót (BYOS) használ, és hozzárendeli azt a munkaterülethez, a szolgáltatás feltölti a *mentett-kereséseket* és a *log-riasztási* lekérdezéseket a Storage-fiókjába. Ez azt jelenti, hogy a Storage-fiókot és a [titkosítás-nyugalmi szabályzatot](../../storage/common/encryption-customer-managed-keys.md) a log Analytics fürtben lévő adatok titkosításához használt kulcs vagy egy másik kulcs használatával szabályozhatja. A Storage-fiókkal kapcsolatos költségekért azonban felelősnek kell lennie. 
 
 **Szempontok a lekérdezések CMK beállítása előtt**
 * A munkaterület és a Storage-fiók "Write" engedélyekkel kell rendelkeznie
@@ -599,7 +599,7 @@ A konfiguráció után a rendszer minden új riasztási lekérdezést ment a tá
 
 - ***Kapacitás foglalásának* frissítése a *fürterőforrás* -ben**
 
-  Ha a társított munkaterületekhez tartozó adatmennyiség idővel módosul, és a kapacitás foglalási szintjét megfelelően szeretné frissíteni. Kövesse a [ *fürt* frissítése erőforrást](#update-cluster-resource-with-key-identifier-details) , és adja meg az új kapacitás értékét. A 1 000 és 2 000 GB közötti tartományban, illetve a 100-as lépéseknél lehet. A napi 2 000 GB-nál nagyobb szint esetén a Microsoft-kapcsolattartóval engedélyezheti. Vegye figyelembe, hogy nem kell megadnia a teljes REST-kérelem törzsét, és tartalmaznia kell az SKU-t:
+  Ha a társított munkaterületekhez tartozó adatmennyiség idővel módosul, és a kapacitás foglalási szintjét megfelelően szeretné frissíteni. Kövesse a [ *fürt* frissítése erőforrást](#update-cluster-resource-with-key-identifier-details) , és adja meg az új kapacitás értékét. A 1000 és 3000 GB közötti tartományban, illetve a 100-as lépéseknél lehet. A napi 3000 GB-nál nagyobb szint esetén a Microsoft-kapcsolattartóval engedélyezheti. Vegye figyelembe, hogy nem kell megadnia a teljes REST-kérelem törzsét, de tartalmaznia kell az SKU-t:
 
   ```powershell
   Update-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name" -SkuCapacity "daily-ingestion-gigabyte"

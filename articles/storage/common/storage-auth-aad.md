@@ -10,12 +10,12 @@ ms.date: 07/16/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: e4e64a022a8cb071eb1b3447995c1e91b910fe2d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 4eb3173700a0907f8195466b9e0d7ab1903cf93e
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519201"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87124782"
 ---
 # <a name="authorize-access-to-blobs-and-queues-using-azure-active-directory"></a>Blobokhoz és várólistákhoz való hozzáférés engedélyezése Azure Active Directory használatával
 
@@ -57,7 +57,7 @@ Ha szeretné megtudni, hogyan rendeljen hozzá egy beépített RBAC-szerepkört 
 - [Hozzáférés biztosítása Azure-blobok és -üzenetsorok adataihoz RBAC használatával az Azure CLI-vel](storage-auth-aad-rbac-cli.md)
 - [Hozzáférés biztosítása Azure-blobok és -üzenetsorok adataihoz RBAC használatával a PowerShell-lel](storage-auth-aad-rbac-powershell.md)
 
-További információ arról, hogy az Azure Storage beépített szerepkörei hogyan vannak definiálva. a [szerepkör-definíciók ismertetése](../../role-based-access-control/role-definitions.md#management-and-data-operations)című témakörben talál további információt. Az egyéni RBAC-szerepkörök létrehozásával kapcsolatos információkért tekintse meg [Az Azure szerepköralapú Access Control egyéni szerepköreinek létrehozása](../../role-based-access-control/custom-roles.md)című témakört.
+További információ arról, hogy az Azure Storage beépített szerepkörei hogyan vannak definiálva. a [szerepkör-definíciók ismertetése](../../role-based-access-control/role-definitions.md#management-and-data-operations)című témakörben talál további információt. Az egyéni Azure-szerepkörök létrehozásával kapcsolatos információkért lásd: [Azure egyéni szerepkörök](../../role-based-access-control/custom-roles.md).
 
 ### <a name="access-permissions-for-data-operations"></a>Az adatműveletek hozzáférési engedélyei
 
@@ -85,7 +85,7 @@ A Azure Portal azt jelzi, hogy melyik engedélyezési séma van használatban, a
 
 Azure CLI-és PowerShell-támogatás az Azure AD-beli hitelesítő adatokkal való bejelentkezéshez. A bejelentkezés után a munkamenet ezen hitelesítő adatok alatt fut. További információ: [Azure CLI-vagy PowerShell-parancsok futtatása Azure ad-beli hitelesítő adatokkal a blob-vagy üzenetsor-adatok eléréséhez](authorize-active-directory-powershell.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Blobok és várólisták hozzáférésének engedélyezése Azure Active Directory és felügyelt identitásokkal az Azure-erőforrásokhoz](storage-auth-aad-msi.md)
 - [Engedélyezés Azure Active Directory alkalmazásból a blobokhoz és várólistákhoz való hozzáféréshez](storage-auth-aad-app.md)

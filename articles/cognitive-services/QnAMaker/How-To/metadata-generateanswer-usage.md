@@ -3,19 +3,17 @@ title: Metaadatok a GenerateAnswer API-val – QnA Maker
 titleSuffix: Azure Cognitive Services
 description: QnA Maker lehetővé teszi metaadatok hozzáadását kulcs/érték párok formájában a kérdés-válasz párokhoz. Az eredményeket felhasználói lekérdezésekre szűrheti, és további, a követési beszélgetésekbe felhasználható információk tárolására is használható.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 03/31/2020
-ms.author: diberry
-ms.openlocfilehash: 171efd0e5750555130588f783c4a858def11afec
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.date: 07/16/2020
+ms.openlocfilehash: 863143cb2ec1085bf03b070c225f2be5e8e4393d
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83993507"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87126176"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>Válasz kérése a GenerateAnswer API-val és a metaadatokkal
 
@@ -146,7 +144,7 @@ var response = await _services.QnAServices[QnAMakerKey].GetAnswersAsync(turnCont
 
 Az előző JSON-kérelem csak a 30%-os vagy a küszöbérték feletti válaszokat kérte.
 
-## <a name="use-qna-maker-with-a-bot-in-nodejs"></a>QnA Maker használata robottal a Node. js-ben
+## <a name="use-qna-maker-with-a-bot-in-nodejs"></a>QnA Maker használata robottal Node.js
 
 A bot Framework hozzáférést biztosít a QnA Maker tulajdonságaihoz a [GETANSWER API](https://docs.microsoft.com/javascript/api/botbuilder-ai/qnamaker?view=botbuilder-ts-latest#generateanswer-string---undefined--number--number-)-val:
 
@@ -184,13 +182,40 @@ Mivel az eredmények csak a "Paradise" étterem esetében szükségesek, beáll�
 {
     "question": "When does this hotel close?",
     "top": 1,
-    "strictFilters": [
-      {
-        "name": "restaurant",
-        "value": "paradise"
-      }]
+    "strictFilters": [ { "name": "restaurant", "value": "paradise"}]
 }
 ```
+
+### <a name="logical-and-by-default"></a>Logikai és alapértelmezés szerint
+
+Ha több metaadat-szűrőt szeretne egyesíteni a lekérdezésben, adja hozzá a további metaadat-szűrőket a tulajdonság tömbhöz `strictFilters` . Alapértelmezés szerint az értékek logikailag kombinálhatók (és). A logikai kombináció megköveteli, hogy az összes szűrő megfeleljen a QnA pároknak ahhoz, hogy a válaszban vissza lehessen adni a párokat.
+
+Ez egyenértékű a `strictFiltersCompoundOperationType` tulajdonság értékkel való használatával `AND` .
+
+### <a name="logical-or-using-strictfilterscompoundoperationtype-property"></a>Logikai vagy strictFiltersCompoundOperationType tulajdonság használata
+
+Több metaadat-szűrő kombinálásával, ha csak egy vagy több szűrővel érintett, használja a `strictFiltersCompoundOperationType` tulajdonságot a értékkel `OR` .
+
+Ez lehetővé teszi a Tudásbázis számára, hogy válaszokat adjanak vissza, ha bármely szűrő egyezik, de nem ad vissza olyan válaszokat, amelyek nem rendelkeznek metaadatokkal.
+
+```json
+{
+    "question": "When do facilities in this hotel close?",
+    "top": 1,
+    "strictFilters": [
+      { "name": "type","value": "restaurant"},
+      { "name": "type", "value": "bar"},
+      { "name": "type", "value": "poolbar"}
+    ],
+    "strictFiltersCompoundOperationType": "OR"
+}
+```
+
+### <a name="metadata-examples-in-quickstarts"></a>Metaadatok – példák a gyors útmutatókban
+
+További információ a metaadatokat a QnA Maker-portálon a metaadatokkal kapcsolatban:
+* [Szerzői metaadatok hozzáadása a QnA-párokhoz](../quickstarts/add-question-metadata-portal.md#add-metadata-to-filter-the-answers)
+* [Lekérdezések előrejelzése – válaszok szűrése metaadatok alapján](../quickstarts/get-answer-from-knowledge-base-using-url-tool.md)
 
 <a name="keep-context"></a>
 
@@ -243,7 +268,7 @@ A alkalmazásban a közzétett kb, a `isTest=false` vagy a teszt Tudásbázis ha
 
 |Code|Magyarázat|
 |:--|--|
-|2xx|Sikeres|
+|2xx|Success|
 |400|A kérelem paraméterei helytelenek, mert a szükséges paraméterek hiányoznak, helytelenül formázottak vagy túl nagyok.|
 |400|A kérelem törzse helytelen, mert a JSON hiányzik, helytelenül formázott vagy túl nagy.|
 |401|Érvénytelen kulcs|

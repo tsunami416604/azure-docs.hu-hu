@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 06/10/2020
 ms.author: caya
-ms.openlocfilehash: 439313f0f42adf0513ce490ab6569171cce7934b
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 4634421829cf71c0c5b9476f8ff3d08b9caa7dbd
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86037902"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87117339"
 ---
 # <a name="tutorial-enable-the-ingress-controller-add-on-preview-for-a-new-aks-cluster-with-a-new-application-gateway-instance"></a>Oktatóanyag: az új, Application Gateway példánnyal rendelkező új AK-fürthöz tartozó bejövő vezérlő bővítmény (előzetes verzió) engedélyezése
 
@@ -40,7 +40,7 @@ Ha a parancssori felület helyi telepítését és használatát választja, az 
 
 Regisztrálja az *AK-IngressApplicationGatewayAddon* funkció jelzőjét az az [Feature Register](https://docs.microsoft.com/cli/azure/feature#az-feature-register) paranccsal az alábbi példában látható módon. Ezt csak egyszer kell elvégeznie előfizetés esetén, amíg a bővítmény még előzetes verzióban van.
 ```azurecli-interactive
-az feature register --name AKS-IngressApplicationGatewayAddon --namespace microsoft.containerservice
+az feature register --name AKS-IngressApplicationGatewayAddon --namespace Microsoft.ContainerService
 ```
 
 Az állapot megjelenítéséhez néhány percet is igénybe vehet `Registered` . A regisztrációs állapotot az az [Feature List](https://docs.microsoft.com/cli/azure/feature#az-feature-register) parancs használatával tekintheti meg:
@@ -63,7 +63,7 @@ az extension update --name aks-preview
 az extension list
 ```
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Az Azure-ban kapcsolódó erőforrásokat oszt ki egy erőforráscsoporthoz. Hozzon létre egy erőforráscsoportot az [az Group Create](/cli/azure/group#az-group-create)paranccsal. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot a *canadacentral* helyen (régió): 
 

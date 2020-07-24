@@ -2,20 +2,18 @@
 title: Azure Data Lake Analytics kód hibakeresése helyileg
 description: Megtudhatja, hogyan használhatja a Visual studióhoz készült Azure Data Lake-eszközöket az U-SQL-feladatok hibakereséséhez a helyi munkaállomáson.
 services: data-lake-analytics
-author: yanancai
-ms.author: yanacai
-ms.reviewer: jasonwhowell
+ms.reviewer: jasonh
 ms.assetid: 66dd58b1-0b28-46d1-aaae-43ee2739ae0a
 ms.service: data-lake-analytics
 ms.topic: how-to
 ms.workload: big-data
 ms.date: 07/03/2018
-ms.openlocfilehash: 580f23fa2b4fc9c5afee4eb8435e74a8bfa1fbe9
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 7176e2f64faa8e5b43574084a9cbd947dbd576d3
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86106951"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87125636"
 ---
 # <a name="debug-azure-data-lake-analytics-code-locally"></a>Azure Data Lake Analytics kód hibakeresése helyileg
 
@@ -50,7 +48,7 @@ A C#-szerelvények hibakeresése a Azure Data Lake Analytics szolgáltatásba va
 4. Az **F5 billentyűt** lenyomásával hibakeresést végezhet a C# **dll** -fájl helyi hivatkozásával.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Összetettebb lekérdezésre például lásd: [webhelyek naplófájljainak elemzése Azure Data Lake Analytics használatával](data-lake-analytics-analyze-weblogs.md).
 - A feladat részleteinek megtekintéséhez lásd: [Azure Data Lake Analytics feladatok böngésző és feladat nézetének használata](data-lake-analytics-data-lake-tools-view-jobs.md).

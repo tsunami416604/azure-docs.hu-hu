@@ -3,18 +3,16 @@ title: U-SQL-feladatok hibakeresése – Azure Data Lake eszközök a Visual Stu
 description: Ismerje meg, hogyan használhatja a Azure Data Lake Tools for Visual Studio Code-ot az U-SQL-feladatok helyi futtatásához és hibakereséséhez.
 services: data-lake-analytics
 ms.service: data-lake-analytics
-author: jejiang
-ms.author: jejiang
-ms.reviewer: jasonwhowell
+ms.reviewer: jasonh
 ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
 ms.topic: how-to
 ms.date: 07/14/2017
-ms.openlocfilehash: 141be5c2747ae5d0a812b1301b6af7203fe24351
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 4b8285281119121b509c62b11bf48a5f70a9f0f0
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110606"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87125700"
 ---
 # <a name="run-u-sql-and-debug-locally-in-visual-studio-code"></a>A U-SQL és a hibakeresés helyi futtatása a Visual Studio Code-ban
 Ez a cikk azt ismerteti, hogyan futtathatók a U-SQL-feladatok egy helyi fejlesztési gépen a korai kódolási fázisok felgyorsításához vagy a kód helyi hibakereséséhez a Visual Studio Code-ban. A Visual Studio Code Azure Data Lake eszközével kapcsolatos utasításokért lásd: a [Azure Data Lake Tools használata a Visual Studio Code](data-lake-analytics-data-lake-tools-for-vscode.md)-hoz.
@@ -83,7 +81,7 @@ A helyi hibakeresés végrehajtásához kövesse az alábbi lépéseket:
    ![A Visual Studio Code helyi hibakeresési eredményének Data Lake eszközei](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/data-lake-tools-for-vscode-local-debug-result.png)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Az Azure Data Lake Tools for Visual Studio kód használata](data-lake-analytics-data-lake-tools-for-vscode.md)
 * [A U-SQL fejlesztése a Python, az R és a CSharp Azure Data Lake Analytics a VSCode-ben](data-lake-analytics-u-sql-develop-with-python-r-csharp-in-vscode.md)
 * [Ismerkedés a Data Lake Analytics a PowerShell használatával](data-lake-analytics-get-started-powershell.md)

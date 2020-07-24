@@ -3,14 +3,14 @@ title: Az Azure Automation által használt Azure-adatközpont DNS-rekordjai | M
 description: Ez a cikk a Azure Automation szolgáltatások által igényelt DNS-rekordokat ismerteti, amikor az Automation-fiókot üzemeltető Azure-régióval való kommunikációt korlátozza.
 services: automation
 ms.subservice: process-automation
-ms.date: 06/22/2020
+ms.date: 07/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 44d70db195850b3f87806c69755095b521078b2e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 17d0857a8979cfcc632ab8951fb255f97229a665
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85298310"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87117184"
 ---
 # <a name="dns-records-for-azure-regions-used-by-azure-automation"></a>Az Azure Automation által használt Azure-régiók DNS-rekordjai
 
@@ -46,7 +46,7 @@ Az alábbi táblázat az egyes régiók DNS-rekordját tartalmazza.
 | USA-beli államigazgatás – Virginia | usge-jobruntimedata-prod-su1.azure-automation.us<br>usge-agentservice-prod-1.azure-automation.us |
 | USA nyugati középső régiója | wcus-jobruntimedata-prod-su1.azure-automation.net</br>wcus-agentservice-prod-1.azure-automation.net |
 | Nyugat-Európa |we-jobruntimedata-prod-su1.azure-automation.net</br>we-agentservice-prod-1.azure-automation.net |
-| USA nyugati régiója, 2. |wus2-jobruntimedata-prod-su1.azure-automation.net</br>wus2-agentservice-prod-1.azure-automation.net |
+| USA 2. nyugati régiója |wus2-jobruntimedata-prod-su1.azure-automation.net</br>wus2-agentservice-prod-1.azure-automation.net |
 
 ### <a name="support-for-private-link"></a>Privát hivatkozás támogatása
 
@@ -56,7 +56,7 @@ A Azure Automation [privát hivatkozásának](../../private-link/private-link-ov
 | --- | --- |
 | USA nyugati középső régiója |`https://<accountId>.webhook.wcus.azure-automation.net`<br>`https://<accountId>.agentsvc.wcus.azure-automation.net`<br>`https://<accountId>.jrds.wcus.azure-automation.net` |
 | USA nyugati régiója |`https://<accountId>.webhook.wus.azure-automation.net`<br>`https://<accountId>.agentsvc.wus.azure-automation.net`<br>`https://<accountId>.jrds.wus.azure-automation.net` |
-| USA nyugati régiója, 2. |`https://<accountId>.webhook.wus2.azure-automation.net`<br>`https://<accountId>.agentsvc.wus2.azure-automation.net`<br>`https://<accountId>.jrds.wus2.azure-automation.net` |
+| USA 2. nyugati régiója |`https://<accountId>.webhook.wus2.azure-automation.net`<br>`https://<accountId>.agentsvc.wus2.azure-automation.net`<br>`https://<accountId>.jrds.wus2.azure-automation.net` |
 | USA középső régiója |`https://<accountId>.webhook.cus.azure-automation.net`<br>`https://<accountId>.agentsvc.cus.azure-automation.net`<br>`https://<accountId>.jrds.cus.azure-automation.net` |
 | USA déli középső régiója |`https://<accountId>.webhook.scus.azure-automation.net`<br>`https://<accountId>.agentsvc.scus.azure-automation.net`<br>`https://<accountId>.jrds.scus.azure-automation.net` |
 | USA északi középső régiója |`https://<accountId>.webhook.ncus.azure-automation.net`<br>`https://<accountId>.agentsvc.ncus.azure-automation.net`<br>`https://<accountId>.jrds.ncus.azure-automation.net` |
@@ -83,6 +83,12 @@ A Azure Automation [privát hivatkozásának](../../private-link/private-link-ov
 | USA-beli államigazgatás – Virginia |`https://<accountId>.webhook.usge.azure-automation.us`<br>`https://<accountId>.agentsvc.usge.azure-automation.us`<br>`https://<accountId>.jrds.usge.azure-automation.us` |
 | USA-beli államigazgatás – Texas |`https://<accountId>.webhook.ussc.azure-automation.us`<br>`https://<accountId>.agentsvc.ussc.azure-automation.us`<br>`https://<accountId>.jrds.ussc.azure-automation.us` |
 | USA-beli államigazgatás – Arizona |`https://<accountId>.webhook.phx.azure-automation.us`<br>`https://<accountId>.agentsvc.phx.azure-automation.us`<br>`https://<accountId>.jrds.phx.azure-automation.us` |
+
+Cserélje le a `<accountId>` értéket a DNS-rekordba az Automation-fiók azonosítóját jelképező GUID azonosítójával az érték **URL-címéből**. A **kulcsok** azonosítóját a Azure Portalban található **Fiókbeállítások** területen érheti el.
+
+![Automation-fiók elsődleges kulcsának lapja](./media/automation-region-dns-records/automation-account-keys.png)
+
+Másolja az értéket a *fiókok/* URL- **cím** mező után –`https://<GUID>.agentsvc.<region>.azure-automation.net/accounts/<GUID>`
 
 Javasoljuk, hogy használja a [kivételek](../automation-runbook-execution.md#exceptions)meghatározásakor felsorolt címeket. A régió IP-címeinek listája a régiók nevei helyett a következő felhőalapú környezetek esetén töltse le a JSON-fájlt a Microsoft letöltőközpontból:
 

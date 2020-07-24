@@ -1,15 +1,15 @@
 ---
 title: Ethereum proof-of-Authority Consortium megoldási sablon üzembe helyezése az Azure-ban
 description: Az Azure-beli többtagú konzorcium Ethereum üzembe helyezéséhez és konfigurálásához használja a Ethereum-szolgáltatói konzorciumi megoldást.
-ms.date: 07/07/2020
+ms.date: 07/23/2020
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: 859be5d779663e429ef333c8fd8163c0aa60eab5
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: d75b5348c49728d2a796257fa4000f6c3a36831d
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085922"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87124925"
 ---
 # <a name="deploy-ethereum-proof-of-authority-consortium-solution-template-on-azure"></a>Ethereum proof-of-Authority Consortium megoldási sablon üzembe helyezése az Azure-ban
 
@@ -23,11 +23,14 @@ A megoldási sablon az egyes konzorciumok tagjai által használható blockchain
 
 Mielőtt kiválasztja a Ethereum proof-of-Authority Consortium megoldás sablonját, hasonlítsa össze a forgatókönyvet az elérhető Azure Blockchain-beállítások gyakori felhasználási eseteivel.
 
+> [!IMPORTANT]
+> Érdemes lehet az [Azure Blockchain szolgáltatást](../service/overview.md) használni az Azure-megoldás Ethereum helyett. Az Azure Blockchain Service egy támogatott felügyelt Azure-szolgáltatás. A paritásos Ethereum a Közösség által vezérelt fejlesztésre és karbantartásra váltott. További információ: [paritásos Ethereum átváltása a OPENETHEREUM DAO-](https://www.parity.io/parity-ethereum-openethereum-dao/)ra.
+
 Beállítás | Szolgáltatási modell | Gyakori használati eset
 -------|---------------|-----------------
-Megoldássablonok | IaaS | A megoldási sablonok Azure Resource Manager sablonok, amelyekkel teljes körűen konfigurált blockchain-topológiát lehet kiépíteni. A Sablonok Microsoft Azure számítási, hálózatkezelési és tárolási szolgáltatásokat telepítenek és konfigurálnak egy adott blockchain hálózati típushoz. A megoldási sablonokat szolgáltatói szerződés nélkül biztosítjuk. Támogatásért használja a [Microsoft Q&a kérdéses lapot](https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html) .
+Megoldássablonok | IaaS | A megoldási sablonok Azure Resource Manager sablonok, amelyekkel teljes körűen konfigurált blockchain-topológiát lehet kiépíteni. A Sablonok Microsoft Azure számítási, hálózatkezelési és tárolási szolgáltatásokat telepítenek és konfigurálnak egy adott blockchain hálózati típushoz. A megoldási sablonokat szolgáltatói szerződés nélkül biztosítjuk. Támogatásért használja a [Microsoft Q&a kérdéses lapot](/answers/topics/azure-blockchain-workbench.html) .
 [Azure Blockchain Service](../service/overview.md) | PaaS | Az Azure Blockchain szolgáltatás előzetes verziója leegyszerűsíti a konzorciumi Blockchain hálózatok képződését, kezelését és irányítását. Használja az Azure Blockchain szolgáltatást a Pásti, a konzorciumok felügyeletére, vagy a szerződés és a tranzakció adatvédelmet igénylő megoldásokhoz.
-[Azure Blockchain Workbench](../workbench/overview.md) | IaaS és Péter | Az Azure Blockchain Workbench előzetes verziója olyan Azure-szolgáltatások és-funkciók gyűjteménye, amelyek segítségével Blockchain-alkalmazásokat hozhat létre és helyezhet üzembe más szervezetekkel való üzleti folyamatok és adatmennyiségek megosztásához. Az Azure Blockchain Workbench használatával Blockchain-megoldást vagy Blockchain-alkalmazást készíthet. Az Azure Blockchain Workbenchre nem vonatkozik szolgáltatói szerződés. Támogatásért használja a [Microsoft Q&a kérdéses lapot](https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html) .
+[Azure Blockchain Workbench](../workbench/overview.md) | IaaS és Péter | Az Azure Blockchain Workbench előzetes verziója olyan Azure-szolgáltatások és-funkciók gyűjteménye, amelyek segítségével Blockchain-alkalmazásokat hozhat létre és helyezhet üzembe más szervezetekkel való üzleti folyamatok és adatmennyiségek megosztásához. Az Azure Blockchain Workbench használatával Blockchain-megoldást vagy Blockchain-alkalmazást készíthet. Az Azure Blockchain Workbenchre nem vonatkozik szolgáltatói szerződés. Támogatásért használja a [Microsoft Q&a kérdéses lapot](/answers/topics/azure-blockchain-workbench.html) .
 
 ## <a name="solution-architecture"></a>Megoldásarchitektúra
 
@@ -80,24 +83,24 @@ A [Azure Portal](https://portal.azure.com)válassza az **erőforrás létrehozá
 
 Válassza a **Blockchain**  >  **Ethereum-szolgáltatói konzorcium (előzetes verzió)** lehetőséget.
 
-### <a name="basics"></a>Alapvető beállítások
+### <a name="basics"></a>Alapbeállítások
 
 Az **alapértékek területen minden**központi telepítéshez meg kell adnia a szabványos paraméterek értékét.
 
-![Alapvető beállítások](./media/ethereum-poa-deployment/basic-blade.png)
+![Alapbeállítások](./media/ethereum-poa-deployment/basic-blade.png)
 
 Paraméter | Leírás | Példaérték
 ----------|-------------|--------------
 Új hálózat létrehozása vagy meglévő hálózat csatlakoztatása | Létrehozhat egy új konzorciumi hálózatot, vagy csatlakozhat egy már meglévő konzorciumi hálózathoz. Egy meglévő hálózathoz való csatlakozáshoz további paraméterek szükségesek. | Új létrehozása
 E-mail-cím | E-mailben értesítést kap, ha az üzemelő példány az üzembe helyezéssel kapcsolatos információkat tartalmaz. | Érvényes e-mail-cím
 Virtuális gép felhasználóneve | Az egyes telepített virtuális gépek rendszergazdai felhasználóneve | 1-64 alfanumerikus karakter
-Hitelesítés típusa | A virtuális géphez való hitelesítés módszere. | Jelszó
+Hitelesítéstípus | A virtuális géphez való hitelesítés módszere. | Jelszó
 Jelszó | Az egyes telepített virtuális gépek rendszergazdai fiókjának jelszava. Az összes virtuális gép kezdetben ugyanazzal a jelszóval rendelkezik. A jelszót a kiépítés után módosíthatja. | 12-72 karakter 
 Előfizetés | Az előfizetés, amelyre a konzorcium-hálózatot telepíteni kell |
-Erőforráscsoport| Az az erőforráscsoport, amelyre a konzorcium-hálózatot telepíteni kell. | myResourceGroup
-Hely | Az erőforráscsoport Azure-régiója. | USA nyugati régiója, 2.
+Resource Group (Erőforráscsoport)| Az az erőforráscsoport, amelyre a konzorcium-hálózatot telepíteni kell. | myResourceGroup
+Hely | Az erőforráscsoport Azure-régiója. | USA 2. nyugati régiója
 
-Válassza az **OK** lehetőséget.
+Kattintson az **OK** gombra.
 
 ### <a name="deployment-regions"></a>Központi telepítési régiók
 
@@ -108,10 +111,10 @@ A *központi telepítési régiók*területen határozza meg az egyes régiók �
 Paraméter | Leírás | Példaérték
 ----------|-------------|--------------
 Régió (k) száma|A konzorcium-hálózat üzembe helyezéséhez szükséges régiók száma| 2
-Első régió | A konzorcium-hálózat üzembe helyezésének első régiója | USA nyugati régiója, 2.
+Első régió | A konzorcium-hálózat üzembe helyezésének első régiója | USA 2. nyugati régiója
 Második régió | A konzorcium-hálózat üzembe helyezésének második régiója. A további régiók akkor is láthatók, ha a régiók száma kettő vagy nagyobb. | USA 2. keleti régiója
 
-Válassza az **OK** lehetőséget.
+Kattintson az **OK** gombra.
 
 ### <a name="network-size-and-performance"></a>Hálózati méret és teljesítmény
 
@@ -127,13 +130,13 @@ Elosztott terhelésű érvényesítő csomópontok száma | A hálózat részek�
 
 A virtuális gép és a tárolási rétegek hatással vannak a hálózati teljesítményre.  A következő táblázat segítségével kiválaszthatja a költséghatékonyságot:
 
-Virtuális gép SKU|Tárolási rétegek|Price|Teljesítmény|Késés
+Virtuális gép SKU|Tárolási rétegek|Ár|Átviteli sebesség|Késés
 ---|---|---|---|---
 F1|Standard SSD|alacsony|alacsony|magas
 D2_v3|Standard SSD|közepes|közepes|közepes
 F16s|Prémium SSD|magas|magas|alacsony
 
-Válassza az **OK** lehetőséget.
+Kattintson az **OK** gombra.
 
 ### <a name="ethereum-settings"></a>Ethereum-beállítások
 
@@ -152,7 +155,7 @@ Gáz korlátjának letiltása | A hálózat indítási blokkjának gáz-korlátj
 Visszazárási időszak blokkolása (mp) | Az üres blokkok létrehozásának gyakorisága, ha nincsenek tranzakciók a hálózaton. A magasabb szintű gyakoriság gyorsabb lesz, de nagyobb a tárolási költségek. | 15
 Tranzakciós engedély szerződése | A tranzakció bytecode vonatkozó szerződés. Az intelligens szerződések üzembe helyezésének és végrehajtásának korlátozása a Ethereum-fiókok engedélyezett listájára. |
 
-Válassza az **OK** lehetőséget.
+Kattintson az **OK** gombra.
 
 ### <a name="monitoring"></a>Figyelés
 
@@ -168,9 +171,9 @@ Hely | Az új példányt telepítő régió | USA keleti régiója
 Meglévő log Analytics-munkaterület azonosítója (Csatlakozás meglévő Azure Monitor naplókhoz = csatlakozás meglévőhöz)|A meglévő Azure Monitor naplók példányának munkaterület-azonosítója||NA
 Meglévő log Analytics elsődleges kulcs (Csatlakozás meglévő Azure Monitor naplókhoz = csatlakozás meglévőhöz)|A meglévő Azure Monitor naplók példányához való kapcsolódáshoz használt elsődleges kulcs||NA
 
-Válassza az **OK** lehetőséget.
+Kattintson az **OK** gombra.
 
-### <a name="summary"></a>Összefoglalás
+### <a name="summary"></a>Összegzés
 
 Az összefoglalás segítségével tekintse át a megadott bemeneteket, és futtassa az alapszintű telepítés előtti ellenőrzést. A telepítése előtt letöltheti a sablont és a paramétereket.
 
@@ -327,7 +330,7 @@ Biztonsági okokból az SSH-port elérését alapértelmezés szerint egy háló
 
     ![SSH engedélyezése engedélyezése](./media/ethereum-poa-deployment/ssh-enable-allow.png)
 
-1. Kattintson a **Mentés** gombra. A módosítások alkalmazása eltarthat néhány percig.
+1. Válassza a **Mentés** lehetőséget. A módosítások alkalmazása eltarthat néhány percig.
 
 A megadott rendszergazdai felhasználónévvel és jelszóval/SSH-kulccsal távolról csatlakozhat az érvényesítő csomópontok virtuális gépei számára az SSH-n keresztül. Az első érvényesítő csomópont elérésére szolgáló SSH-parancs megjelenik a sablon központi telepítési kimenetében. Például:
 
@@ -731,10 +734,10 @@ Ha visszajelzést szeretne küldeni, vagy új szolgáltatásokat szeretne kérni
 
 Folytassa a Microsoft-mérnökökkel és az Azure Blockchain közösségi szakértőivel.
 
-* [A Microsoft Q&egy kérdés oldalát](https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html). A blockchain-sablonok mérnöki támogatása az üzembe helyezési problémákra korlátozódik.
-* [Microsoft Tech Community](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)
+* [A Microsoft Q&egy kérdés oldalát](/answers/topics/azure-blockchain-workbench.html). A blockchain-sablonok mérnöki támogatása az üzembe helyezési problémákra korlátozódik.
+* [A Microsoft technikai közössége](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-blockchain-workbench)
 
 ## <a name="next-steps"></a>További lépések
 
-További Azure Blockchain-megoldásokért tekintse meg az [Azure Blockchain dokumentációját](https://docs.microsoft.com/azure/blockchain/).
+További Azure Blockchain-megoldásokért tekintse meg az [Azure Blockchain dokumentációját](../index.yml).

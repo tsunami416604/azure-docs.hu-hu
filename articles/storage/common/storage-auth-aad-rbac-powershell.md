@@ -1,7 +1,7 @@
 ---
 title: RBAC-szerepkör kiosztása az adateléréshez a PowerShell használatával
 titleSuffix: Azure Storage
-description: Ismerje meg, hogyan rendelhet hozzá engedélyeket Azure Active Directory rendszerbiztonsági tag számára a PowerShell használatával szerepköralapú hozzáférés-vezérléssel (RBAC). Az Azure Storage támogatja a beépített és az egyéni RBAC-szerepköröket az Azure AD-n keresztül történő hitelesítéshez.
+description: Ismerje meg, hogyan rendelhet hozzá engedélyeket Azure Active Directory rendszerbiztonsági tag számára a PowerShell használatával szerepköralapú hozzáférés-vezérléssel (RBAC). Az Azure Storage támogatja az Azure AD-n keresztül történő hitelesítéshez használható beépített és egyéni Azure-szerepköröket.
 services: storage
 author: tamram
 ms.service: storage
@@ -10,12 +10,12 @@ ms.date: 07/16/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: a67981e2919854b80479ccc1c27ecf97469eebce
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: dab10c8d7c93e130c707f6020309e5dd2440a028
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518681"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87124913"
 ---
 # <a name="use-powershell-to-assign-an-rbac-role-for-access-to-blob-and-queue-data"></a>A PowerShell használata RBAC-szerepkör hozzárendeléséhez a blob-és üzenetsor-adathoz való hozzáféréshez
 
@@ -23,7 +23,7 @@ Azure Active Directory (Azure AD) a [szerepköralapú hozzáférés-vezérlés (
 
 Ha egy Azure AD-rendszerbiztonsági tag egy RBAC-szerepkört rendel hozzá, az Azure hozzáférést biztosít ezen rendszerbiztonsági tag erőforrásaihoz. A hozzáférés hatóköre az előfizetés, az erőforráscsoport, a Storage-fiók vagy egy adott tároló vagy várólista szintjére is kiterjed. Az Azure AD rendszerbiztonsági tag lehet egy felhasználó, egy csoport, egy egyszerű alkalmazás vagy egy [felügyelt identitás az Azure-erőforrásokhoz](../../active-directory/managed-identities-azure-resources/overview.md).
 
-Ez a cikk ismerteti, hogyan használhatók a Azure PowerShell a beépített RBAC-szerepkörök listázásához és a felhasználókhoz való hozzárendeléséhez. További információ a Azure PowerShell használatáról: [Azure PowerShell áttekintése](https://docs.microsoft.com/powershell/azure/overview).
+Ez a cikk ismerteti, hogyan használhatók a Azure PowerShell a beépített RBAC-szerepkörök listázásához és a felhasználókhoz való hozzárendeléséhez. További információ a Azure PowerShell használatáról: [Azure PowerShell áttekintése](https://docs.microsoft.com/powershell/azure/).
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -133,7 +133,7 @@ New-AzRoleAssignment -SignInName <email> `
     -Scope  "/subscriptions/<subscription>"
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Azure-erőforrásokhoz való hozzáférés kezelése a RBAC és a Azure PowerShell használatával](../../role-based-access-control/role-assignments-powershell.md)
 - [Hozzáférés biztosítása Azure-blobok és -üzenetsorok adataihoz RBAC használatával az Azure CLI-vel](storage-auth-aad-rbac-cli.md)

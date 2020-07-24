@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 07/17/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: eb23f1e703c2e447c484ccb366914cb4b23c5bf7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f9d736098e42bf5ca07eca0cb952275c5e39c2a9
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536546"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87125190"
 ---
 # <a name="quickstart-create-a-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Gyors útmutató: terheléselosztó létrehozása a virtuális gépek terheléselosztásához a Azure Portal használatával
 
@@ -111,7 +111,7 @@ Hozzon létre egy **myHealthProbe** nevű állapotmintát a virtuális gépek á
     | Nem kifogástalan állapot küszöbértéke | Válassza a **2** értéket a nem megfelelő **állapotú küszöbértékek** vagy egymást követő mintavételi hibák számának megadásához, amelyeknek a virtuális gép nem megfelelő állapotba kell kerülnie.|
     | | |
 
-3. Kattintson az **OK** gombra.
+3. Hagyja meg a többi alapértelmezett értéket, majd kattintson az **OK gombra**.
 
 ### <a name="create-a-load-balancer-rule"></a>Terheléselosztási szabály létrehozása
 
@@ -140,7 +140,7 @@ Ebben a szakaszban egy terheléselosztó-szabályt fog létrehozni:
     | Háttérport | Adja meg a **80**értéket. |
     | A háttérkészlet | Válassza a **myBackendPool**lehetőséget.|
     | Állapotadat-mintavétel | Válassza a **myHealthProbe**lehetőséget. |
-    | Implicit kimenő szabályok létrehozása | Válassza az **Igen** lehetőséget. </br> További információ és speciális kimenő szabályok konfigurálása: </br> [Kimenő kapcsolatok az Azure-ban](load-balancer-outbound-connections.md) </br> [Terheléselosztás és kimenő szabályok konfigurálása standard Load Balancerban a Azure Portal használatával](configure-load-balancer-outbound-portal.md)
+    | Implicit kimenő szabályok létrehozása | Válassza a **Nem** lehetőséget.
 
 4. Hagyja meg a többi alapértelmezett beállítást, majd kattintson az **OK gombra**.
 
@@ -160,7 +160,7 @@ Ebben a szakaszban a következő információkra cseréli le a paramétereket:
 |-----------------------------|----------------------|
 | **\<resource-group-name>**  | Myresourcegrouplb erőforráscsoportban |
 | **\<virtual-network-name>** | myVNet          |
-| **\<region-name>**          | West Europe      |
+| **\<region-name>**          | Nyugat-Európa      |
 | **\<IPv4-address-space>**   | 10.1.0.0 \ 16          |
 | **\<subnet-name>**          | myBackendSubnet        |
 | **\<subnet-address-range>** | 10.1.0.0 \ 24          |
@@ -237,6 +237,49 @@ Ezek a virtuális gépek hozzáadódnak a korábban létrehozott terheléseloszt
     | A rendelkezésre állási zóna | **2** |**3**|
     | Hálózati biztonsági csoport | Meglévő **myNSG** kiválasztása| Meglévő **myNSG** kiválasztása|
 
+## <a name="create-outbound-rule-configuration"></a>Kimenő szabály konfigurációjának létrehozása
+A terheléselosztó kimenő szabályai a háttér-készletben lévő virtuális gépek kimenő SNAT konfigurálása. 
+
+A kimenő kapcsolatokról a [Kimenő kapcsolatok az Azure-ban](load-balancer-outbound-connections.md)című témakörben olvashat bővebben.
+
+### <a name="create-outbound-rule"></a>Kimenő szabály létrehozása
+
+1. Válassza a **minden szolgáltatás** lehetőséget a bal oldali menüben, válassza a **minden erőforrás**lehetőséget, majd az erőforrások listából válassza a **myLoadBalancer** lehetőséget.
+
+2. A **Beállítások**területen válassza a **Kimenő szabályok**elemet, majd kattintson a **Hozzáadás**gombra.
+
+3. A kimenő szabályok konfigurálásához használja ezeket az értékeket:
+
+    | Beállítás | Érték |
+    | ------- | ----- |
+    | Név | Adja meg a **myOutboundRule**. |
+    | Előtérbeli IP-cím | Válassza az **Új létrehozása** lehetőséget. </br> A **név**mezőben adja meg a **LoadBalancerFrontEndOutbound**. </br> Válasszon **IP-címet** vagy **IP-előtagot**. </br> Válassza az **új létrehozása** **nyilvános IP-cím** vagy **nyilvános IP-előtag**alapján lehetőséget. </br> A név mezőbe írja be a következőt: **myPublicIPOutbound** vagy **myPublicIPPrefixOutbound**. </br> Kattintson az **OK** gombra. </br> Válassza a **Hozzáadás** elemet.|
+    | Üresjárati időkorlát (perc) | Mozgassa a csúszkát **15 percre**.|
+    | TCP alaphelyzetbe állítása | Válassza az **Engedélyezve** lehetőséget.|
+    | A háttérkészlet | Válassza az **Új létrehozása** lehetőséget. </br> Adja meg a **MyBackendPoolOutbound** **nevet**. </br> Válassza a **Hozzáadás** elemet. |
+    | Port kiosztása – > a portok kiosztása | Válassza ki **manuálisan a kimenő portok számának** kiválasztása lehetőséget. |
+    | Kimenő portok – > választhat | Válassza ki a **portok száma példányt** |
+    | Kimenő portok – > portok/példányok száma | Adja meg a **10000**értéket. |
+
+4. Válassza a **Hozzáadás** elemet.
+
+### <a name="add-virtual-machines-to-outbound-pool"></a>Virtuális gépek hozzáadása a kimenő készlethez
+
+1. Válassza a **minden szolgáltatás** lehetőséget a bal oldali menüben, válassza a **minden erőforrás**lehetőséget, majd az erőforrások listából válassza a **myLoadBalancer** lehetőséget.
+
+2. A **Beállítások**területen válassza a **háttér-készletek**elemet.
+
+3. Válassza a **myBackendPoolOutbound**lehetőséget.
+
+4. A **virtuális hálózat**területen válassza a **myVNet**lehetőséget.
+
+5. A **virtuális gépek**területen válassza a **+ Hozzáadás**lehetőséget.
+
+6. Keresse meg a **myVM1**, a **MyVM2**és a **myVM3**melletti jelölőnégyzetet. 
+
+7. Válassza a **Hozzáadás** elemet.
+
+8. Válassza a **Mentés** lehetőséget.
 
 # <a name="option-2-create-a-load-balancer-basic-sku"></a>[2. lehetőség: terheléselosztó létrehozása (alapszintű SKU)](#tab/option-1-create-load-balancer-basic)
 
@@ -289,7 +332,7 @@ Ebben a szakaszban a következő információkra cseréli le a paramétereket:
 |-----------------------------|----------------------|
 | **\<resource-group-name>**  | Myresourcegrouplb erőforráscsoportban |
 | **\<virtual-network-name>** | myVNet          |
-| **\<region-name>**          | West Europe      |
+| **\<region-name>**          | Nyugat-Európa      |
 | **\<IPv4-address-space>**   | 10.1.0.0 \ 16          |
 | **\<subnet-name>**          | myBackendSubnet        |
 | **\<subnet-address-range>** | 10.1.0.0 \ 24          |
@@ -441,9 +484,10 @@ Ezek a virtuális gépek hozzáadódnak a korábban létrehozott terheléseloszt
     | Name |  **myVM2** |**myVM3**|
     | Rendelkezésre állási csoport| **MyAvailabilitySet** kiválasztása | **MyAvailabilitySet** kiválasztása|
     | Hálózati biztonsági csoport | Meglévő **myNSG** kiválasztása| Meglévő **myNSG** kiválasztása|
+
 ---
 
-### <a name="install-iis"></a>Az IIS telepítése
+## <a name="install-iis"></a>Az IIS telepítése
 
 1. Válassza a **minden szolgáltatás** lehetőséget a bal oldali menüben, válassza a **minden erőforrás**lehetőséget, majd az erőforrások listából válassza ki a **myVM1** , amely a **myresourcegrouplb erőforráscsoportban** erőforráscsoporthoz található.
 
@@ -490,7 +534,7 @@ Ha meg szeretné tekinteni, hogy a terheléselosztó mindhárom virtuális gépe
 
 Ha már nincs rá szükség, törölje az erőforráscsoportot, a terheléselosztó és az összes kapcsolódó erőforrást. Ehhez válassza ki az erőforrásokat tartalmazó erőforráscsoportot, majd válassza a **Törlés**lehetőséget a **myresourcegrouplb erőforráscsoportban** .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban a következőket hajtja végre:
 

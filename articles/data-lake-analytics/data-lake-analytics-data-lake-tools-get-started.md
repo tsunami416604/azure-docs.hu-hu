@@ -3,18 +3,16 @@ title: Azure Data Lake Analytics lekérdezése – Visual Studio
 description: Ismerje meg, hogyan telepítheti a Data Lake Tools for Visual Studio eszközt, valamint hogyan fejleszthet és tesztelhet U-SQL-parancsfájlokat.
 services: data-lake-analytics
 ms.service: data-lake-analytics
-author: saveenr
-ms.author: saveenr
-ms.reviewer: jasonwhowell
+ms.reviewer: jasonh
 ms.assetid: ad8a6992-02c7-47d4-a108-62fc5a0777a3
 ms.topic: how-to
 ms.date: 08/30/2019
-ms.openlocfilehash: 5843ca59c4542fcc990a6b5ac7e89d175efdfb04
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 2f02c16d73ca07c1909bf84bfb7e158b429d3096
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86107053"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87125972"
 ---
 # <a name="develop-u-sql-scripts-by-using-data-lake-tools-for-visual-studio"></a>U-SQL-parancsfájlok fejlesztése a Data Lake Tools for Visual Studio használatával
 
@@ -128,7 +126,7 @@ A legutóbbi feladatok állapotának megtekintéséhez és a képernyő frissít
 
 1. A **Feladatkimenetek** lapon jelölje be a `"/data.csv"` fájlt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [U-SQL-szkript futtatása a munkaállomáson teszteléshez és hibakereséshez](data-lake-analytics-data-lake-tools-local-run.md)
 * [C#-kód hibaelhárítása U-SQL-feladatokban az Azure Data Lake Tools for Visual Studio Code használatával](data-lake-tools-for-vscode-local-run-and-debug.md)

@@ -11,11 +11,12 @@ author: nishankgu
 ms.author: nigup
 ms.date: 05/08/2020
 ms.custom: contperfq4
-ms.openlocfilehash: df636ce1200d8c3744681a60532b22c409dd81dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d8be4169a44b2ef57db8aa49b96f6c5fe85ded1c
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84430461"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87125088"
 ---
 # <a name="manage--increase-quotas-for-resources-with-azure-machine-learning"></a>Erőforrások kezelése & az erőforrásokra vonatkozó kvóták növelése Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -71,7 +72,7 @@ Rendelkezésre álló erőforrások:
 | Egyetlen Azure Machine Learning számítási (AmlCompute) erőforrásban található csomópontok maximális száma | 100 csomópont |
 | GPU MPI-folyamatok maximális száma/csomópont | 1-4 |
 | GPU-feldolgozók maximális száma csomóponton | 1-4 |
-| Feladatok maximális élettartama | 90 nap<sup>1</sup> |
+| Feladatok maximális élettartama | 21 nap<sup>1</sup> |
 | Feladat maximális élettartama alacsony prioritású csomóponton | 7 nap<sup>2</sup> |
 | Paraméteres kiszolgálók maximális száma csomóponton | 1 |
 
@@ -94,7 +95,7 @@ Az adott időszakban (óránkénti hatókörben) vagy a teljes előfizetésen be
 
 A kvóta korlátainak részletesebb és naprakész listáját az Azure-ra vonatkozó kvóta [című cikkben találja](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#container-instances-limits).
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>Tárolás
 A Storage-fiókok száma régiónként és egy adott előfizetésben is korlátozott. Az alapértelmezett korlát 250, és a standard és a Premium Storage fiókot is tartalmazza. Ha egy adott régióban több mint 250 Storage-fiókra van szüksége, az [Azure támogatási szolgálatán](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest/)keresztül teheti meg a kérést. Az Azure Storage csapata áttekinti az üzleti ügyeit, és akár 250 Storage-fiókot is jóváhagyhat egy adott régióban.
 
 

@@ -1,5 +1,5 @@
 ---
-title: Az Azure biztonsági teljesítményteszt Linux Virtual Machines biztonsági alapterve
+title: Linux Virtual Machines Azure biztonsági alapterve
 description: A Linux Virtual Machines biztonsági alapterve az Azure biztonsági Teljesítménytesztben meghatározott biztonsági javaslatok megvalósítására szolgáló eljárási útmutatást és erőforrásokat biztosít.
 author: msmbaldwin
 ms.service: virtual-machines-linux
@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 2d8c4d67ed9b268bae55711fae8c4def33b967fc
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: bd6157f2775b2496e489cfbf03b35f49fb6f5442
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531508"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87124714"
 ---
-# <a name="linux-virtual-machines-security-baseline-for-azure-security-benchmark"></a>Az Azure biztonsági teljesítményteszt Linux Virtual Machines biztonsági alapterve
+# <a name="azure-security-baseline-for-linux-virtual-machines"></a>Linux Virtual Machines Azure biztonsági alapterve
 
 Az Linux Virtual Machines Azure biztonsági alapkonfigurációja olyan javaslatokat tartalmaz, amelyek segítségével javíthatja az üzemelő példány biztonsági állapotát.
 
@@ -568,7 +568,7 @@ A Microsoft a Transport Layer Security (TLS) protokollt használja az adatvédel
 
 * [Szerepköralapú hozzáférés-vezérlés (RBAC) Azure-erőforrásokhoz](../../role-based-access-control/overview.md)
 
-* [Beépített szerepkörök Azure-erőforrásokhoz](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)
+* [Beépített Azure-szerepkörök](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)
 
 **Azure Security Center figyelés**: nem érhető el
 
@@ -1190,7 +1190,7 @@ Az Azure Disk Encryption használata esetén visszaállíthatja az Azure-beli vi
 
 **Felelősség**: megosztott
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Lásd az [Azure biztonsági teljesítménytesztét](../../security/benchmarks/overview.md)
 - További információ az [Azure biztonsági alaptervekről](../../security/benchmarks/security-baselines-overview.md)

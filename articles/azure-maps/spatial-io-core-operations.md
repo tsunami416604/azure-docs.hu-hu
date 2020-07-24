@@ -1,19 +1,19 @@
 ---
 title: Alapszintű IO-műveletek | Microsoft Azure térképek
 description: Megtudhatja, hogyan lehet hatékonyan beolvasni és írni az XML-és tagolt adatok alap kódtárak használatával történő használatát a térbeli IO-modulból.
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 03/03/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 0b8fe1b319dc480879944d28f10645025a8cb38e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7e142fe348a339e4903d692cad569015edb69f75
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80371442"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87124476"
 ---
 # <a name="core-io-operations"></a>Alapszintű i/o-műveletek
 
@@ -30,7 +30,7 @@ Az `atlas.io.core.CsvReader` osztály beolvassa a tagolt adatkészleteket tartal
 
 Alapértelmezés szerint az olvasó a vessző karaktert fogja használni elválasztóként. A határolójel azonban bármelyik karakterre módosítható, vagy beállítható a következőre: `'auto'` . Ha a értékre `'auto'` van állítva, akkor az olvasó elemzi a karakterlánc első sorát. Ezután kiválasztja a leggyakoribb karaktert az alábbi táblázatból, hogy elválasztóként használja.
 
-| | |
+| Elválasztó | Karakter |
 | :-- | :-- |
 | Vessző | `,` |
 | Tab | `\t` |
