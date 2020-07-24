@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: f9484b81622e208077f0659975f42f46d90d2137
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 17616a223292ec07186b0a3fba264400423977ac
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232236"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87058758"
 ---
 # <a name="enable-or-disable-a-firewall-rule-on-an-azure-vm-guest-os"></a>Tűzfalszabály engedélyezése vagy letiltása egy Azure-beli virtuális gép vendég operációs rendszeréhez
 
@@ -77,7 +77,7 @@ Ha a virtuális gép online állapotban van, és ugyanazon a virtuális hálóza
 
 Ha a virtuális gép online állapotban van, és ugyanazon a virtuális hálózaton egy másik virtuális gépen is elérhető, a követést a másik virtuális gép használatával végezheti el.
 
-1.  A hibaelhárítási virtuális gépen töltse le a [PsTools](https://docs.microsoft.com/sysinternals/downloads/pstools).
+1.  A hibaelhárítási virtuális gépen töltse le a [PsTools](/sysinternals/downloads/pstools).
 
 2.  Nyisson meg egy CMD-példányt, és a belső IP-címén (DIP) keresztül férhet hozzá a virtuális géphez. 
 

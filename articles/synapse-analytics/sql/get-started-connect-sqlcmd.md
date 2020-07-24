@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 260c88142d93b8b79782b219f902c63a16b9218b
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 1af42a838463132a241447c11b90bfb489f879ac
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83197004"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87059456"
 ---
 # <a name="connect-to-synapse-sql-with-sqlcmd"></a>Kapcsolódás a szinapszis SQL-hez a Sqlcmd használatával
 
@@ -22,7 +22,7 @@ ms.locfileid: "83197004"
 > * [Azure Data Studio (előzetes verzió)](get-started-azure-data-studio.md)
 > * [Power BI](get-started-power-bi-professional.md)
 > * [Visual Studio](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
-> * [sqlcmd](../sql/get-started-connect-sqlcmd.md)
+> * [Sqlcmd](../sql/get-started-connect-sqlcmd.md)
 > * [SSMS](get-started-ssms.md)
 
 A [Sqlcmd](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) parancssori segédprogrammal kapcsolódhat az SQL on-demand (előzetes verzió) és az SQL-készlet lekérdezéséhez a szinapszis SQL-en belül.  
@@ -118,6 +118,6 @@ sqlcmd -S partyeunrt.database.windows.net -d demo -U Enter_Your_Username_Here -P
 "SELECT COUNT(*) FROM  OPENROWSET(BULK 'https://azureopendatastorage.blob.core.windows.net/censusdatacontainer/release/us_population_county/year=20*/*.parquet', FORMAT='PARQUET')" | sqlcmd -S partyeunrt.database.windows.net -d demo -U Enter_Your_Username_Here -P 'Enter_Your_Password_Here' -I > ./tables.out
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Sqlcmd beállításaival kapcsolatos további információkért tekintse meg a [Sqlcmd dokumentációját](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).

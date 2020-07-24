@@ -8,14 +8,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 5af9e34baf6115e801fbfe35e6e3895e48b360e7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0c4bef25a0be12c0335a82345ec998274f1faa67
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80881723"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87058397"
 ---
 # <a name="scenario-a-web-app-that-calls-web-apis"></a>Forgatókönyv: webes API-kat meghívó webalkalmazás
 
@@ -48,7 +49,7 @@ Ezért regisztrálják a titkos kódot (az alkalmazás jelszavát vagy tanúsít
 
 Ehhez a forgatókönyvhöz a következő konkrét feladatok szükségesek:
 
-- Az [alkalmazás regisztrálása](scenario-web-app-call-api-app-registration.md)során meg kell adnia egy válasz URI-t, titkos kulcsot vagy tanúsítványt az Azure ad-vel való megosztáshoz. Ha az alkalmazást több helyre is telepíti, ezeket az adatokat minden helyhez meg kell adnia.
+- Az [alkalmazás regisztrálása](scenario-web-app-call-api-app-registration.md)során meg kell adnia egy válasz URI-t, titkos kulcsot vagy tanúsítványt az Azure ad-vel való megosztáshoz. Ha az alkalmazást több helyre is telepíti, minden helyhez meg kell adnia egy válasz URI-t.
 - Az [alkalmazás-konfigurációnak](scenario-web-app-call-api-app-configuration.md) meg kell adnia az Azure ad-vel megosztott ügyfél-hitelesítő adatokat az alkalmazás regisztrálása során.
 
 ## <a name="next-steps"></a>További lépések

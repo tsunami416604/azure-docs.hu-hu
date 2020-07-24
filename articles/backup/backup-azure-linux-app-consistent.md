@@ -4,13 +4,14 @@ description: A Linux rendszerű virtuális gépek alkalmazás-konzisztens bizton
 ms.reviewer: anuragm
 ms.topic: conceptual
 ms.date: 01/12/2018
-ms.openlocfilehash: 36eeb9f63c67a01bf37412101e23be035596de94
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8d578df45235b3bef314245e4eb7a0976c4d48d6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74173007"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87054843"
 ---
-# <a name="application-consistent-backup-of-azure-linux-vms"></a>Az Azure Linux rendszerű virtuális gépek alkalmazásának konzisztens biztonsági mentése
+# <a name="application-consistent-backup-of-azure-linux-vms"></a>Azure-beli linuxos virtuális gépek alkalmazáskonzisztens biztonsági mentése
 
 A virtuális gépek biztonsági mentési pillanatképének készítésekor az alkalmazás konzisztenciája azt jelenti, hogy az alkalmazások akkor kezdődnek, amikor a virtuális gépek a visszaállítás után indulnak. Ahogy az is elképzelhető, hogy az alkalmazások konzisztenciája rendkívül fontos. Annak érdekében, hogy a Linux rendszerű virtuális gépek konzisztensek legyenek, az alkalmazással konzisztens biztonsági mentéseket használhat a Linux előtti és utáni parancsfájl-keretrendszer használatával. A pre-script és a parancsfájl utáni keretrendszer támogatja a Azure Resource Manager telepített linuxos virtuális gépeket. Az alkalmazás-konzisztencia parancsfájljai nem támogatják Service Manager telepített virtuális gépeket vagy Windowsos virtuális gépeket.
 
@@ -64,7 +65,7 @@ A parancsfájl-előkészítők natív Application API-kat indítanak, amelyek fo
 
     - **ScriptsExecutionPollTimeSeconds**: állítsa be azt az időpontot, ameddig a bővítménynek alvó állapotba kell esnie az egyes lekérdezések között a szkript végrehajtásához. Ha például az érték 2, a bővítmény ellenőrzi, hogy az előzetes/post parancsfájl végrehajtása 2 másodpercenként fejeződött-e be. A minimális és maximális érték 1 és 5 közötti lehet. Az értéknek szigorúan egész számnak kell lennie.
 
-6. A parancsfájl-keretrendszer konfigurálva van. Ha a virtuális gép biztonsági mentése már be van állítva, a következő biztonsági mentés elindítja a parancsfájlokat, és elindítja az alkalmazás-konzisztens biztonsági mentést. Ha a virtuális gép biztonsági mentése nincs konfigurálva, állítsa be úgy, hogy az [Azure-beli virtuális gépek biztonsági](https://docs.microsoft.com/azure/backup/backup-azure-vms-first-look-arm) mentését Recovery Services tárolók használatára konfigurálja.
+6. A parancsfájl-keretrendszer konfigurálva van. Ha a virtuális gép biztonsági mentése már be van állítva, a következő biztonsági mentés elindítja a parancsfájlokat, és elindítja az alkalmazás-konzisztens biztonsági mentést. Ha a virtuális gép biztonsági mentése nincs konfigurálva, állítsa be úgy, hogy az [Azure-beli virtuális gépek biztonsági](./backup-azure-vms-first-look-arm.md) mentését Recovery Services tárolók használatára konfigurálja.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
@@ -85,4 +86,4 @@ Győződjön meg arról, hogy a megfelelő naplózást adja hozzá a parancsfáj
 
 ## <a name="next-steps"></a>További lépések
 
-[Virtuális gép biztonsági mentésének konfigurálása Recovery Services-tárolóra](https://docs.microsoft.com/azure/backup/backup-azure-arm-vms)
+[Virtuális gép biztonsági mentésének konfigurálása Recovery Services-tárolóra](./backup-azure-vms-first-look-arm.md)

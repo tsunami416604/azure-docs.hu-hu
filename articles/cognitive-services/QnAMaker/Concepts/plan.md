@@ -1,33 +1,33 @@
 ---
 title: Az alkalmazás megtervezése – QnA Maker
-description: A QnA Maker alkalmazás megtervezéséhez meg kell ismernie, hogy a QnA Maker hogyan működik, és hogyan kommunikál más Azure-szolgáltatásokkal, valamint néhány Tudásbázis-koncepcióval.
+description: Megtudhatja, hogyan tervezze meg QnA Maker alkalmazását. Ismerje meg, hogy az QnA Maker hogyan működik, és hogyan kommunikálhat más Azure-szolgáltatásokkal és néhány ismereti alapfogalmakkal.
 ms.topic: conceptual
 ms.date: 07/2/2020
-ms.openlocfilehash: d19ec51aec7e71b6f040a03543f72af3aed09556
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 19499aceed96155fa42c78865b1d673a3830f5cc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85875708"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87054208"
 ---
 # <a name="plan-your-qna-maker-app"></a>A QnA Maker alkalmazás megtervezése
 
-A QnA Maker alkalmazás megtervezéséhez meg kell ismernie, hogy a QnA Maker hogyan működik, és hogyan kommunikál más Azure-szolgáltatásokkal, valamint néhány Tudásbázis-koncepcióval.
+A QnA Maker alkalmazás megtervezéséhez ismernie kell, hogy QnA Maker hogyan működik, és hogyan kommunikál más Azure-szolgáltatásokkal. Emellett a tudásalapú fogalmakat is alaposan fel kell ismernie.
 
 ## <a name="azure-resources"></a>Azure-erőforrások
 
-A QnA Makertel létrehozott összes [Azure-erőforrásnak](azure-resources.md#resource-purposes) konkrét célja van. Mivel minden erőforrás saját célra, korlátokra és [díjszabási](azure-resources.md#pricing-tier-considerations)csomagra vonatkozik, fontos tisztában lennie azzal, hogy ezeket az erőforrásokat hogyan végzi el a tervezési folyamat részeként.
+A QnA Makertel létrehozott összes [Azure-erőforrásnak](azure-resources.md#resource-purposes) konkrét célja van. Minden erőforrás saját célra, korlátokra és [díjszabási szintjére](azure-resources.md#pricing-tier-considerations)vonatkozik. Fontos megérteni ezeknek az erőforrásoknak a funkcióját, hogy ezt a tudást a tervezési folyamatba lehessen használni.
 
-|Erőforrás|Szerep|
+| Erőforrás | Cél |
 |--|--|
-| Erőforrás [QnA Maker](azure-resources.md#qna-maker-resource)|Szerzői műveletek és lekérdezések előrejelzése|
-| Erőforrás [Cognitive Search](azure-resources.md#cognitive-search-resource)|Adattárolás és keresés|
-| [Erőforrás-és alkalmazáscsomag-szolgáltatási erőforrás app Service](azure-resources.md#app-service-and-app-service-plan)|Előrejelzési végpont lekérdezése|
-| Erőforrás [Application Insights](azure-resources.md#application-insights)|Lekérdezés-előrejelzési telemetria|
+| Erőforrás [QnA Maker](azure-resources.md#qna-maker-resource) | Szerzői műveletek és lekérdezések előrejelzése |
+| Erőforrás [Cognitive Search](azure-resources.md#cognitive-search-resource) | Adattárolás és keresés |
+| [Erőforrás-és alkalmazáscsomag-szolgáltatási erőforrás app Service](azure-resources.md#app-service-and-app-service-plan) | Előrejelzési végpont lekérdezése |
+| Erőforrás [Application Insights](azure-resources.md#application-insights) | Lekérdezés-előrejelzési telemetria |
 
 ### <a name="resource-planning"></a>Erőforrás-tervezés
 
-A szerzői műveletek és a lekérdezések előrejelzése – az ingyenes szinten – az `F0` egyes erőforrások esetében is működik, és a szerzői és a lekérdezési előrejelzési élményt is biztosítja. Ha éles környezetben helyez át, élő, forgatókönyv, újraértékeli az erőforrás-kijelölést.
+Az `F0` egyes erőforrások ingyenes szintje működik, és a szerzői és a lekérdezési előrejelzési élményt is lehetővé teszi. Ezt a szintet használhatja a szerzői műveletek és a lekérdezések előrejelzésének megismeréséhez. Éles vagy élő forgatókönyvre való áttéréskor újra kell értékelnie az erőforrás-kijelölést.
 
 #### <a name="qna-maker-resource"></a>Erőforrás QnA Maker
 
@@ -35,7 +35,7 @@ Egyetlen QnA Maker erőforrás több tudásbázist is képes tárolni. A tudásb
 
 #### <a name="knowledge-base-size-and-throughput"></a>Tudásbázis mérete és átviteli sebessége
 
-Ha valós alkalmazást szeretne létrehozni, tervezze meg erőforrásait a Tudásbázis méretének megfelelően, és a lekérdezési előrejelzési kérelmeket.
+Valódi alkalmazás létrehozásakor tervezze meg a Tudásbázis méretének megfelelő erőforrásokat, valamint a várt lekérdezés-előrejelzési kérelmeket.
 
 A Tudásbázis méretét az alábbiak vezérlik:
 * Az erőforrás-díjszabási szintek [Cognitive Search](../../../search/search-limits-quotas-capacity.md)
@@ -45,31 +45,31 @@ A Tudásbázis lekérdezés-előrejelzési kérelmét a webalkalmazás-csomag é
 
 ### <a name="resource-sharing"></a>Erőforrás-megosztás
 
-Ha már rendelkezik néhány használatban lévő erőforrással, érdemes megfontolnia az erőforrások megosztását. Míg egyes erőforrások [megoszthatók](azure-resources.md#share-services-with-qna-maker), ez egy speciális forgatókönyv.
+Ha már rendelkezik néhány használatban lévő erőforrással, érdemes megfontolnia az erőforrások megosztását. Itt megtudhatja, hogy mely erőforrások [oszthatók](azure-resources.md#share-services-with-qna-maker) meg az erőforrás-megosztás speciális forgatókönyvének megismerésével.
 
 Az ugyanabban a QnA Maker erőforrásban létrehozott tudásbázisok ugyanazt a **tesztelési** lekérdezési előrejelzési végpontot használják.
 
-### <a name="understanding-impact-of-resource-selection"></a>Az erőforrás-kijelölés hatásának megértése
+### <a name="understand-the-impact-of-resource-selection"></a>Az erőforrás-kijelölés hatásának megismerése
 
 A megfelelő erőforrás-kiválasztás azt jelenti, hogy az Ön tudásbázisa sikeresen válaszol a lekérdezések előrejelzésére.
 
-Ha a Tudásbázis nem működik megfelelően, általában a probléma nem megfelelő erőforrás-kezelés.
+Ha a Tudásbázis nem működik megfelelően, a probléma általában nem megfelelő erőforrás-kezelés.
 
 Nem megfelelő erőforrás-kiválasztás esetén vizsgálat szükséges annak megállapításához, hogy melyik [erőforrást kell módosítani](azure-resources.md#when-to-change-a-pricing-tier).
 
 ## <a name="knowledge-bases"></a>Tudásbázisok
 
-A Tudásbázis közvetlenül kapcsolódik a QnA Maker erőforráshoz, és tartalmazza a lekérdezés-előrejelzési kérelmek megválaszolásához használt kérdés-és QnA-párokat.
+A Tudásbázis közvetlenül a QnA Maker erőforráshoz kötődik. Tartalmazza a lekérdezés-előrejelzési kérelmek megválaszolásához használt kérdés-válasz (QnA) párokat.
 
 ### <a name="language-considerations"></a>Nyelvi megfontolások
 
 A QnA Maker erőforráson létrehozott első Tudásbázis az erőforrás nyelvét állítja be. Egy QnA Maker erőforráshoz csak egy nyelv tartozhat.
 
-A lekérdezés a lekérdezés előrejelzési végpontjának való elküldése előtt strukturálja a QnA Maker erőforrásokat nyelv szerint, vagy használjon [fordítót](../../translator/translator-info-overview.md) a lekérdezés más nyelvről való módosítására a Tudásbázis nyelvén.
+A QnA Maker erőforrásokat nyelv szerint strukturálhatja, vagy a [fordító](../../translator/translator-info-overview.md) segítségével más nyelvről is módosíthatja a lekérdezéseket a Tudásbázis nyelvén, mielőtt elküldené a lekérdezést a lekérdezés előrejelzési végpontjának.
 
-### <a name="ingesting-data-sources"></a>Adatforrások begyűjtése
+### <a name="ingest-data-sources"></a>Adatforrások betöltése
 
-A Tudásbázis létrehozásához felhasznált, betöltött [adatforrások](knowledge-base.md)a következők lehetnek:
+Egy Tudásbázis létrehozásához a következő betöltött [adatforrások](knowledge-base.md) egyikét használhatja:
 
 * Nyilvános URL-cím
 * Privát SharePoint URL-címe
@@ -79,19 +79,19 @@ A betöltési folyamat a [támogatott tartalomtípusokat](content-types.md) Mark
 
 ### <a name="data-format-considerations"></a>Adatformátumra vonatkozó megfontolások
 
-Mivel a QnA pár végső formátuma Markdown, a [Markdown-támogatás](../reference-markdown-format.md) ismertetése fontos.
+Mivel a QnA pár végleges formátuma Markdown, fontos megérteni a [Markdown-támogatást](../reference-markdown-format.md).
 
-A csatolt lemezképeknek elérhetőnek kell lenniük egy nyilvános URL-címről, hogy megjelenjenek a QnA Maker portál tesztelés ablaktábláján, valamint az ügyfélalkalmazások, mivel QnA Maker nem biztosít hitelesítést a tartalomhoz, beleértve a lemezképeket is.
+A csatolt lemezképeknek elérhetőnek kell lenniük egy nyilvános URL-címről, amely megjelenik a QnA Maker portál tesztelés ablaktábláján vagy egy ügyfélalkalmazás alkalmazásban. A QnA Maker nem biztosít hitelesítést a tartalomhoz, beleértve a lemezképeket is.
 
 ### <a name="bot-personality"></a>Bot-személyiség
 
 Adjon hozzá egy robot-személyiséget a tudásbázishoz a [Chit-Chat](../how-to/chit-chat-knowledge-base.md)használatával. Ez a személyiség egy bizonyos társalgási hangon, például a *Professional* és a *Friendly*szolgáltatásban elérhető válaszokat tartalmaz. Ez a Chit-Chat olyan társalgási készletként van megadva, amelynek teljes hozzáférése van a hozzáadáshoz, szerkesztéshez és eltávolításhoz.
 
-A bot-személyiség akkor javasolt, ha a robot a tudásbázishoz csatlakozik. Ha több szolgáltatáshoz csatlakozik, amelyek közül az egyik az Ön tudásbázisa, dönthet úgy, hogy folytatja a chit-csevegés használatát a Tudásbázisban, de érdemes áttekintenie, hogy a bot szolgáltatás hogyan kommunikál, ha ez a megfelelő építészeti kialakítás a használathoz.
+A bot-személyiség akkor javasolt, ha a robot a tudásbázishoz csatlakozik. Kiválaszthatja, hogy a saját Tudásbázisban használja a Chit-Chat szolgáltatást, még akkor is, ha más szolgáltatásokhoz is csatlakozik, de érdemes áttekintenie, hogyan kommunikál a bot szolgáltatás, ha ez a megfelelő építészeti kialakítás a használathoz.
 
 ### <a name="conversation-flow-with-a-knowledge-base"></a>Beszélgetési folyamat tudásbázissal
 
-A beszélgetési folyamat általában egy felhasználó megszólításával kezdődik, például `Hi` vagy `Hello` . A Tudásbázis választ kaphat az általános válaszokra, például a következő kérdésekre is, amelyek a `Hi, how can I help you` beszélgetés folytatására is lehetőséget nyújtanak.
+A beszélgetési folyamat általában egy felhasználó megszólításával kezdődik, például `Hi` vagy `Hello` . A Tudásbázis választ kaphat az általános válaszokra, például a `Hi, how can I help you` következőre: a beszélgetés folytatására is lehetőséget nyújt.
 
 Meg kell terveznie a beszélgetési folyamatát egy hurkoval, hogy a felhasználó tudja, hogyan használja a robotot, és ne hagyhatja el a beszélgetésben a robot. Az [utólagos utasítások](../how-to/multiturn-conversation.md) összekapcsolják a QnA párok közötti összekapcsolást, amelyek lehetővé teszik a beszélgetési folyamat használatát.
 
@@ -103,37 +103,37 @@ A Tudásbázis authoring számos [szerepköralapú hozzáférési engedélyt](..
 
 ## <a name="integration-with-client-applications"></a>Integráció az ügyfélalkalmazások alkalmazásával
 
-Az [ügyfélalkalmazások](integration-with-other-applications.md) közötti integráció egy lekérdezés küldését jelenti az előrejelzési futtatókörnyezet végpontjának. A rendszer egy lekérdezést küld az adott tudásbázisba egy SDK-val vagy REST-alapú kéréssel a QnA Maker webalkalmazás-végpontjának.
+Az [ügyfélalkalmazások](integration-with-other-applications.md) közötti integráció az előrejelzési futtatókörnyezet végpontjának lekérdezését küldi el. A rendszer egy lekérdezést küld az adott tudásbázisba egy SDK-val vagy REST-alapú kéréssel a QnA Maker webalkalmazás-végpontjának.
 
-Az ügyfélalkalmazás helyes hitelesítéséhez az ügyfélalkalmazás a megfelelő hitelesítő adatokat és Tudásbázis-azonosítót kell küldenie. Ha Azure Bot Service használ, konfigurálja a beállítást a Azure Portal bot-konfigurációjának részeként.
+Az ügyfélalkalmazás megfelelő hitelesítéséhez az ügyfélalkalmazás a megfelelő hitelesítő adatokat és Tudásbázis-azonosítót kell küldenie. Ha Azure Bot Service használ, ezeket a beállításokat a Azure Portal bot-konfigurációjának részeként adja meg.
 
 ### <a name="conversation-flow-in-a-client-application"></a>Beszélgetési folyamat egy ügyfélalkalmazás
 
 A beszélgetési folyamat egy [ügyfélalkalmazás](integration-with-other-applications.md), például egy Azure bot esetében a tudásbázissal való interakció előtt és után is megkövetelheti a funkciót.
 
-Ha az ügyfélalkalmazás támogatja a beszélgetési folyamatot, vagy alternatív módszert biztosít a követő kérések vagy a Chit-Chit kezelésére, tervezze meg ezeket a korai, és győződjön meg arról, hogy az ügyfélalkalmazás által használt lekérdezés megfelelően van kezelve, vagy egy másik szolgáltatás, vagy pedig a tudásbázisba.
+Támogatja az ügyfélalkalmazás a beszélgetési folyamatokat, vagy ha alternatív módszert biztosít a követő kérések kezelésére, vagy akár a Chit-Chitra? Ha igen, tervezze meg ezeket a korai lépéseket, és győződjön meg róla, hogy az ügyfélalkalmazás lekérdezését megfelelően kezeli egy másik szolgáltatás, vagy ha a tudásbázisba érkezik.
 
-### <a name="dispatching-between-qna-maker-and-language-understanding-luis"></a>QnA Maker és Language Understanding (LUIS) közötti elküldés
+### <a name="dispatch-between-qna-maker-and-language-understanding-luis"></a>Küldés QnA Maker és Language Understanding között (LUIS)
 
-Az ügyfélalkalmazás több funkciót is biztosíthat, amelyek közül csak egy Tudásbázis válaszol. Más funkcióknak továbbra is ismerniük kell a társalgási szöveget, és ki kell bontani a jelentésből.
+Az ügyfélalkalmazás több funkciót is biztosíthat, amelyek közül csak egy Tudásbázis válaszol. A többi funkciónak továbbra is ismernie kell a társalgási szöveget, és ki kell olvasnia azt.
 
-Az ügyfélalkalmazások általános architektúrája QnA Maker és [Language Understanding (Luis)](../../LUIS/what-is-luis.md) együttes használata. A LUIS megadja a szöveg besorolását és kinyerését bármely lekérdezéshez, beleértve az egyéb szolgáltatásokat is, míg a QnA Maker a tudásbázistól választ ad.
+Az ügyfélalkalmazások általános architektúrája QnA Maker és [Language Understanding (Luis)](../../LUIS/what-is-luis.md) együttes használata. A LUIS megadja a szöveg besorolását és kinyerését bármely lekérdezéshez, beleértve az egyéb szolgáltatásokat is. QnA Maker a Tudásbázisban választ ad a válaszokra.
 
-[Megosztott architektúrában](../choose-natural-language-processing-service.md)a két szolgáltatás közötti elküldés a bot Framework [Feladó](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch) eszközével történik.
+Ilyen [megosztott architektúrák](../choose-natural-language-processing-service.md) esetén a két szolgáltatás közötti [kiküldést](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch) a bot Framework feladó eszköze végzi.
 
 ### <a name="active-learning-from-a-client-application"></a>Az ügyfélalkalmazás aktív tanulása
 
-A QnA Maker az _aktív tanulással_ fejleszti a tudásbázist, ha alternatív kérdéseket javasol a válaszra. Az ügyfélalkalmazás felelős az [aktív tanulás](active-learning-suggestions.md)egy részéért. Az ügyfélalkalmazás a társalgási kérések segítségével megállapíthatja, hogy a Tudásbázisból visszaadott válasz nem a felhasználó által keresett válasz volt, és a jobb válasz meghatározása. Az ügyfélalkalmazás [ezt az információt vissza kell küldenie a tudásbázisba](active-learning-suggestions.md#how-you-give-explicit-feedback-with-the-train-api) az előrejelzési minőség javítása érdekében.
+A QnA Maker az _aktív tanulással_ fejleszti a tudásbázist, ha alternatív kérdéseket javasol a válaszra. Az ügyfélalkalmazás felelős az [aktív tanulás](active-learning-suggestions.md)egy részéért. A társalgási kérések segítségével az ügyfélalkalmazás megállapíthatja, hogy a Tudásbázis olyan választ adott vissza, amely nem hasznos a felhasználó számára, és jobb választ tud adni. Az ügyfélalkalmazás [ezt az információt vissza kell küldenie a tudásbázisba](active-learning-suggestions.md#how-you-give-explicit-feedback-with-the-train-api) az előrejelzési minőség javítása érdekében.
 
 ### <a name="providing-a-default-answer"></a>Alapértelmezett válasz megadása
 
-Ha a Tudásbázis nem talál választ, az _alapértelmezett választ_adja vissza. Ez a válasz konfigurálható a QnA Maker portálon, a **Beállítások** lapon vagy az [API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update#request-body)-kon.
+Ha a Tudásbázis nem talál választ, az _alapértelmezett választ_adja vissza. Ez a válasz konfigurálható a QnA Maker portál **Beállítások** lapján vagy az [API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update#request-body)-kon.
 
-Ez az alapértelmezett válasz eltér az Azure bot alapértelmezett válaszával. Az Azure bot alapértelmezett válasza a Azure Portalban van konfigurálva a robot esetében, a konfigurációs beállítások részeként, és a rendszer akkor adja vissza, ha a pontszám küszöbértéke nem teljesül.
+Ez az alapértelmezett válasz eltér az Azure bot alapértelmezett válaszával. Az Azure bot alapértelmezett válaszát a Azure Portal a konfigurációs beállítások részeként konfigurálhatja. Ha a pontszám küszöbértéke nem teljesül, a függvény visszaadja.
 
 ## <a name="prediction"></a>Előrejelzés
 
-Az előrejelzés a Tudásbázis válasza, és több információt tartalmaz, mint amennyit csak a válasz. A lekérdezés-előrejelzési válasz beszerzéséhez használja a [GENEATEANSWER API](query-knowledge-base.md)-t.
+Az előrejelzés a Tudásbázis válasza, és több információt tartalmaz, mint amennyit csak a válasz. A lekérdezés-előrejelzési válasz beszerzéséhez használja a [GENERATEANSWER API](query-knowledge-base.md)-t.
 
 ### <a name="prediction-score-fluctuations"></a>Előrejelzési pontszámok ingadozásai
 
@@ -145,16 +145,16 @@ A pontszám több tényező alapján is változhat:
 * A lekérdezés elküldése `test` vagy `production` Tudásbázis
 
 [Kétfázisú válasz rangsorolása](query-knowledge-base.md#how-qna-maker-processes-a-user-query-to-select-the-best-answer):
-* Cognitive Search – az első rangsorban, hogy a válasz a Cognitive Searchtól való visszatéréshez, az _engedélyezett válaszok_ számának elég magasnak kell lennie ahhoz, hogy az Cognitive Search a legjobb válaszokat adja vissza, így azok beléphetnek a QnA Maker sorba.
-* QnA Maker – második rang – alkalmazza a featurization és a gépi tanulást a legjobb válasz meghatározásához.
+- Cognitive Search – első rangsor. Állítsa be, hogy a _válaszok_ száma elég nagy legyen ahhoz, hogy a Cognitive Search a legjobb válaszokat adja vissza, majd a QnA Maker ranker-ba kerüljön át.
+- QnA Maker második rangot. A featurization és a gépi tanulás alkalmazásával határozhatja meg a legjobb választ.
 
 ### <a name="service-updates"></a>Szolgáltatási hírek
 
-A szolgáltatás frissítései automatikusan kezelhetők a [legújabb futtatókörnyezet-frissítések](../how-to/set-up-qnamaker-service-azure.md#get-the-latest-runtime-updates)alkalmazásával.
+Alkalmazza a [legújabb futtatókörnyezeti frissítéseket](../how-to/set-up-qnamaker-service-azure.md#get-the-latest-runtime-updates) a szolgáltatás frissítéseinek automatikus kezelésére.
 
 ### <a name="scaling-throughput-and-resiliency"></a>Skálázás, átviteli sebesség és rugalmasság
 
-A skálázást, az átviteli sebességet és a rugalmasságot az [Azure-erőforrások](../how-to/set-up-qnamaker-service-azure.md), az azok díjszabási szintjei, valamint a környező architektúrák, például a [Traffic Manager](../how-to/set-up-qnamaker-service-azure.md#business-continuity-with-traffic-manager)határozzák meg.
+A skálázást, az átviteli sebességet és a rugalmasságot az [Azure-erőforrások](../how-to/set-up-qnamaker-service-azure.md), a díjszabási szintek, valamint a környező architektúrák, például a [Traffic Manager](../how-to/set-up-qnamaker-service-azure.md#business-continuity-with-traffic-manager)határozzák meg.
 
 ### <a name="analytics-with-application-insights"></a>Analitika Application Insights
 
@@ -169,9 +169,9 @@ A Tudásbázis [fejlesztési életciklusa](development-lifecycle-knowledge-base.
 Az [QnA-párokat](question-answer-set.md) az ügyfélalkalmazás használata alapján kell megtervezni és kifejleszteni.
 
 Minden pár tartalmazhatja a következőket:
-* Metaadatok – szűrhetők lekérdezéskor. Ez lehetővé teszi az QnA-párok címkézését az adatok forrásával, tartalmával, formátumával és céljával kapcsolatos további információkkal.
-* Követési kérések – az elérési út meghatározása a Tudásbázisban, hogy a felhasználó a megfelelő válaszra jusson.
-* Alternatív kérdések – a alternatív kérdések fontosak ahhoz, hogy a keresés a kérdés különböző formáiban is megfeleljen a válasznak. Az [aktív tanulási javaslatok](active-learning-suggestions.md) alternatív kérdéseket tesznek fel.
+* Metaadatok – szűrheti a lekérdezés során, hogy lehetővé tegye a QnA-párok címkézését az adatok forrásával, tartalmával, formátumával és céljával kapcsolatos további információkkal.
+* Utólagos utasítások – segít meghatározni az elérési utat a Tudásbázisban, hogy a felhasználó a megfelelő válaszra jusson.
+* Alternatív kérdések – fontos, hogy a keresés megegyezzen a kérdés különböző formáinak válaszával. Az [aktív tanulási javaslatok](active-learning-suggestions.md) alternatív kérdéseket tesznek fel.
 
 ### <a name="devops-development"></a>DevOps-fejlesztés
 
@@ -179,9 +179,9 @@ Az DevOps-folyamatba beszúrandó Tudásbázis létrehozásához a tudásbázist
 
 A Tudásbázis megosztja a Cognitive Search indexet az QnA Maker erőforrás minden más tudásbázisával. Amíg a Tudásbázis el van különítve a partícióval, az index megosztása a közzétett tudásbázishoz képest különbséget eredményezhet a pontszámban.
 
-Ahhoz, hogy ugyanaz a _pontszám_ legyen a `test` és a `production` Tudásbázisban, el kell különíteni egy QnA Maker erőforrást egyetlen tudásbázisba. Ebben az architektúrában az erőforrásnak csak az elkülönített batch-teszt hosszával kell élnie.
+Ahhoz, hogy _ugyanaz a pontszám_ legyen a `test` és a `production` Tudásbázisban, el kell különíteni egy QnA Maker erőforrást egyetlen tudásbázisba. Ebben az architektúrában az erőforrásnak csak az elkülönített batch-teszt után kell élnie.
 
-## <a name="next-step"></a>Következő lépés
+## <a name="next-steps"></a>További lépések
 
 * [Azure-erőforrások](../how-to/set-up-qnamaker-service-azure.md)
 * [Kérdés-válasz párok](question-answer-set.md)

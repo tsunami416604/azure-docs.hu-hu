@@ -1,25 +1,21 @@
 ---
-title: Tartalom továbbítása az ügyfeleknek | Microsoft Docs
+title: Tartalom továbbítása az ügyfeleknek
 description: Ez a témakör áttekintést nyújt arról, hogy mi vesz részt a tartalomnak a Azure Media Servicessal való megvalósításában.
 services: media-services
-documentationcenter: ''
 author: Juliako
 manager: femila
-editor: ''
 ms.assetid: 89ede54a-6a9c-4814-9858-dcfbb5f4fed5
 ms.service: media-services
 ms.workload: media
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 60d75a23609e962547c8c753086e9bef1d4c84eb
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 7a6a717f663e6e1ee5c2371c35557c7c374246fa
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85956593"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87060367"
 ---
 # <a name="deliver-content-to-customers"></a>Tartalom továbbítása az ügyfeleknek
 Ha streaming-vagy igény szerinti tartalmat továbbít az ügyfeleknek, a cél az, hogy magas színvonalú videót nyújtson különféle eszközökhöz különböző hálózati körülmények között.
@@ -55,7 +51,7 @@ Megadhatja az eszközökhöz tartozó szűrőket Media Services használatával.
 
 További információ: [szűrők és dinamikus jegyzékfájlok](media-services-dynamic-manifest-overview.md).
 
-## <a name="locators"></a><a id="locators"/>Keresők
+## <a name="locators"></a><a name="locators"></a>Keresők
 Ahhoz, hogy a felhasználó számára elérhető legyen egy URL-cím, amely használható a tartalom továbbításához vagy letöltéséhez, először közzé kell tennie az eszközt egy lokátor létrehozásával. A lokátor egy belépési pontot biztosít az adategységben található fájlok eléréséhez. A Media Services két lokátortípust támogat:
 
 * OnDemandOrigin-lokátorok. Ezek az adathordozók (például MPEG-DASH, HLS vagy Smooth Streaming) vagy fokozatosan letöltött fájlok továbbítására szolgálnak.
@@ -70,9 +66,9 @@ A lokátor lejárati dátummal rendelkezik. A Azure Portal 100 év lejárati dá
 > 
 > 
 
-A lokátor lejárati idejének módosításához használjon [REST](https://docs.microsoft.com/rest/api/media/operations/locator#update_a_locator) vagy [.NET](https://go.microsoft.com/fwlink/?LinkID=533259) API-t. Ne feledje, hogy a SAS-lokátor lejárati idejének módosításával az URL-cím is megváltozik.
+A lokátor lejárati idejének módosításához használjon [REST](/rest/api/media/operations/locator#update_a_locator) vagy [.NET](https://go.microsoft.com/fwlink/?LinkID=533259) API-t. Ne feledje, hogy a SAS-lokátor lejárati idejének módosításával az URL-cím is megváltozik.
 
-A lokátorok nem úgy vannak kialakítva, hogy a felhasználónkénti hozzáférés-vezérlést kezeljék. A digitális Rights Management (DRM) megoldások használatával különböző hozzáférési jogosultságokat biztosíthat az egyes felhasználók számára. További információ: az [adathordozó biztonságossá tétele](https://msdn.microsoft.com/library/azure/dn282272.aspx).
+A lokátorok nem úgy vannak kialakítva, hogy a felhasználónkénti hozzáférés-vezérlést kezeljék. A digitális Rights Management (DRM) megoldások használatával különböző hozzáférési jogosultságokat biztosíthat az egyes felhasználók számára. További információ: az [adathordozó biztonságossá tétele](/previous-versions/azure/dn282272(v=azure.100)).
 
 A lokátor létrehozásakor az Azure Storage-ban szükséges tárolási és terjesztési folyamatok miatt 30 másodperces késés is lehet.
 
@@ -87,7 +83,7 @@ A streaming URL-címeket használó felhasználók számára először létre ke
 
 Csak akkor továbbíthatja a TLS-t, ha a streaming végpontot, amelyről a tartalmat a 2014 szeptember 10. után hozták létre. Ha a folyamatos átviteli URL-címek a 2014. szeptember 10. után létrehozott streaming-végpontokon alapulnak, az URL-cím "streaming.mediaservices.windows.net"-t tartalmaz. A "origin.mediaservices.windows.net" (a régi) formátumot tartalmazó streaming URL-címek nem támogatják a TLS-t. Ha az URL-cím a régi formátumban van, és szeretné továbbítani a TLS-t, hozzon létre egy új streaming-végpontot. Az új adatfolyam-végponton alapuló URL-címek használatával továbbíthatja a tartalmat a TLS protokollon keresztül.
 
-## <a name="streaming-url-formats"></a><a id="URLs"/>Streaming URL-formátumok
+## <a name="streaming-url-formats"></a><a name="URLs"></a>Streaming URL-formátumok
 
 ### <a name="mpeg-dash-format"></a>MPEG-DASH formátum
 {stream végpontjának neve-Media Services fiók neve}.streaming.mediaservices.windows.net/{kereső azonosítója}/{fájlnév}.ism/Manifest(format=mpd-time-csf)
@@ -192,4 +188,3 @@ Előfordulhat, hogy az örökölt Smooth Streaming ügyfelek némelyike nem tám
 
 ## <a name="related-topics"></a>Kapcsolódó témakörök
 [Media Services lokátorok frissítése a működés közbeni tárolási kulcsok után](media-services-roll-storage-access-keys.md)
-

@@ -14,13 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 58d52cd194ca4391c61f2477189984273df1198a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e05c7a8388b662731c04ac4098d6eecb1d89fe4f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84712394"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87060159"
 ---
-# <a name="configure-a-content-key-authorization-policy"></a>A tartalmi kulcs engedélyezési házirendjének konfigurálása
+# <a name="configure-a-content-key-authorization-policy-by-using-the-media-services-net-sdk"></a>A tartalmi kulcs engedélyezési házirendjének konfigurálása a Media Services .NET SDK használatával
 
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../../includes/media-services-selector-content-key-auth-policy.md)]
 
@@ -33,11 +34,11 @@ Ha Media Services szeretne titkosítani egy adategységet, hozzá kell rendelnie
 
 Ha egy lejátszó egy adatfolyamot kér, Media Services a megadott kulccsal dinamikusan titkosítja a tartalmat AES vagy DRM titkosítás használatával. A stream visszafejtéséhez a lejátszó lekéri a kulcsot a kulcstovábbító szolgáltatástól. Annak megállapításához, hogy a felhasználó jogosult-e a kulcs lekérésére, a szolgáltatás kiértékeli a kulcshoz megadott engedélyezési házirendeket.
 
-A Media Services szolgáltatásban több különböző módot is beállíthat, amelynek segítségével a rendszer hitelesítheti a kulcskérelmet küldő felhasználókat. A tartalmi kulcs engedélyezési házirendje egy vagy több engedélyezési korlátozást tartalmazhat. A beállítások nyitott vagy jogkivonat-korlátozás. A jogkivonattal korlátozott szabályzatokat a biztonsági jogkivonatokkal kapcsolatos szolgáltatás (STS) által kiadott jogkivonatnak kell kísérnie. Media Services támogatja a tokeneket az egyszerű webes jogkivonat ([SWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2)) és a JSON web token ([JWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_3)) formátumban.
+A Media Services szolgáltatásban több különböző módot is beállíthat, amelynek segítségével a rendszer hitelesítheti a kulcskérelmet küldő felhasználókat. A tartalmi kulcs engedélyezési házirendje egy vagy több engedélyezési korlátozást tartalmazhat. A beállítások nyitott vagy jogkivonat-korlátozás. A jogkivonattal korlátozott szabályzatokat a biztonsági jogkivonatokkal kapcsolatos szolgáltatás (STS) által kiadott jogkivonatnak kell kísérnie. Media Services támogatja a tokeneket az egyszerű webes jogkivonat ([SWT](/previous-versions/azure/azure-services/gg185950(v=azure.100)#BKMK_2)) és a JSON web token ([JWT](/previous-versions/azure/azure-services/gg185950(v=azure.100)#BKMK_3)) formátumban.
 
 Media Services nem biztosít STS-t. Létrehozhat egy egyéni STS-t, vagy használhatja az Azure Access Control Service a jogkivonatok kibocsátására. Az STS-t úgy kell konfigurálni, hogy a megadott kulccsal aláírt tokent hozzon létre, és kiadja a jogkivonat-korlátozási konfigurációban megadott jogcímeket (a jelen cikkben leírtak szerint). Ha a jogkivonat érvényes, és a jogkivonatban lévő jogcímek egyeznek a tartalmi kulcshoz konfigurált jogcímekkel, a Media Services Key Delivery Service visszaadja a titkosítási kulcsot az ügyfélnek.
 
-További információért tekintse át a következő cikkeket:
+További információkért tekintse át a következő cikkeket:
 
 - [JWT jogkivonat-hitelesítés](http://www.gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/)
 - [Azure Media Services OWIN MVC-alapú alkalmazás integrálása Azure Active Directory és a JWT-jogcímek alapján történő kézbesítés korlátozása](http://www.gtrifonov.com/2015/01/24/mvc-owin-azure-media-services-ad-integration/)
@@ -438,4 +439,3 @@ Ha a kulcs-engedélyezési házirendhez használt jogkivonat-korlátozás alapj�
 
 ## <a name="next-steps"></a>További lépések
 Most, hogy beállította a tartalmi kulcs engedélyezési házirendjét, tekintse meg [az eszközök kézbesítési házirendjének konfigurálása](media-services-dotnet-configure-asset-delivery-policy.md)című témakört.
-

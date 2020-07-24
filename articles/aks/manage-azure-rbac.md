@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/07/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: fc0464c226b8edc2dae01f8ea54c3e5b2e11f2d6
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: bb4c689da38606561c657a3e4d85fd9e391267bf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86244260"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87056742"
 ---
 # <a name="use-azure-rbac-for-kubernetes-authorization-preview"></a>Azure RBAC használata Kubernetes-engedélyezéshez (előzetes verzió)
 
@@ -35,14 +35,14 @@ Az Azure-ból származó Kubernetes-erőforrások RBAC kezelése lehetővé tesz
 - Regisztráljon az előzetes verzióra <https://aka.ms/aad-rbac-sign-up-form> .
 - Győződjön meg arról, hogy engedélyezve van a `EnableAzureRBACPreview` funkció jelzője.
 - Győződjön meg arról, hogy engedélyezve van a `AAD-V2` funkció jelzője.
-- Győződjön meg arról, hogy a `aks-preview` CLI-bővítmény v 0.4.55 vagy újabb verziója van telepítve
+- Győződjön meg arról, hogy a `aks-preview` [CLI-bővítmény][az-extension-add] v 0.4.55 vagy újabb verziója van telepítve
 - Győződjön meg arról, hogy telepítette a [kubectl v 1.18.3 +][az-aks-install-cli]alkalmazást.
 
 #### <a name="register-enableazurerbacpreview-and-aad-v2-preview-features"></a>`EnableAzureRBACPreview`A regisztráció és az `AAD-V2` előzetes verzió funkciói
 
 Az Azure RBAC Kubernetes-engedélyezést használó AK-fürtök létrehozásához engedélyeznie kell a `EnableAzureRBACPreview` és a `AAD-V2` szolgáltatás jelzőit az előfizetésében.
 
-Regisztrálja a `EnableAzureRBACPreview` szolgáltatás jelölőjét az az [Feature Register][az-feature-register] paranccsal az alábbi példában látható módon:
+Regisztrálja a `EnableAzureRBACPreview` és a `AAD-V2` szolgáltatás jelzőit az az [Feature Register][az-feature-register] paranccsal az alábbi példában látható módon:
 
 ```azurecli-interactive
 az feature register --namespace "Microsoft.ContainerService" --name "EnableAzureRBACPreview"
@@ -64,9 +64,9 @@ Ha elkészült, frissítse a *Microsoft. tárolószolgáltatás* erőforrás-szo
 az provider register --namespace Microsoft.ContainerService
 ```
 
-#### <a name="install-aks-preview-cli-extension"></a>Az Kabai szolgáltatás telepítése – előnézeti CLI-bővítmény
+#### <a name="install-aks-preview-cli-extension"></a>Az aks-preview CLI-bővítmény telepítése
 
-Az Azure RBAC-t használó AK-fürtök létrehozásához a CLI *-előnézet CLI-* bővítményének 0.4.55 vagy újabb verziójára van szükség. Telepítse az *AK – előzetes* verzió Azure CLI bővítményét az az [Extension Add][az-extension-add] paranccsal, majd az az [Extension Update][az-extension-update] paranccsal keresse meg a rendelkezésre álló frissítéseket:
+Az Azure RBAC-t használó AK-fürtök létrehozásához a CLI *-előnézet CLI-* bővítményének 0.4.55 vagy újabb verziójára van szükség. Telepítse az *AK – előzetes* verzió Azure CLI bővítményét az az [Extension Add][az-extension-add] paranccsal, vagy telepítse az elérhető frissítéseket az az [Extension Update][az-extension-update] paranccsal:
 
 ```azurecli-interactive
 # Install the aks-preview extension
@@ -254,7 +254,7 @@ aks-nodepool1-93451573-vmss000002   Ready    agent   3h6m   v1.15.11
 ```
 
 
-## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
+## <a name="clean-up"></a>A feleslegessé vált elemek eltávolítása
 
 ### <a name="clean-role-assignment"></a>Szerepkör-hozzárendelés törlése
 
@@ -279,7 +279,7 @@ az role definition delete -n "AKS Deployment Viewer"
 az group delete -n MyResourceGroup
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ az AK-hitelesítésről, az engedélyezésről és a RBAC [itt](concepts-identity.md)olvasható.
 - További információk az Azure RBAC-ről [itt](../role-based-access-control/overview.md)olvashat.

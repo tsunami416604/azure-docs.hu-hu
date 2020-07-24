@@ -1,6 +1,6 @@
 ---
-title: Rövid útmutató – Telemetria küldése az Azure IoT Hubra | Microsoft Docs
-description: Ebben a rövid útmutatóban egy iOS-mintaalkalmazást fog futtatni szimulált telemetria egy IoT Hubra való küldéséhez és telemetria olvasásához az IoT Hubról, a felhőben történő feldolgozás érdekében.
+title: Telemetria küldése az Azure IoT Hub rövid útmutatóba (iOS)
+description: Futtasson egy minta iOS-alkalmazást, hogy szimulált telemetria küldjön egy IoT hubhoz, és beolvassa a telemetria az IoT hub-ból a felhőben történő feldolgozáshoz.
 author: wesmc7777
 manager: philmea
 ms.author: wesmc
@@ -11,12 +11,12 @@ ms.custom:
 - mvc
 - mqtt
 ms.date: 04/03/2019
-ms.openlocfilehash: dd6ad0a3bc20821f51fcb4637dd4af18a6c3ec84
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c5df389d9bb22fca72f2ff3b65c417f592208d58
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81769143"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87061570"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-ios"></a>Rövid útmutató: Telemetria küldése egy eszközről IoT Hubra (iOS)
 
@@ -28,7 +28,7 @@ Ez a cikk előre megírt Swift-alkalmazást használ a telemetria küldésére, 
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -41,7 +41,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
 - Győződjön meg arról, hogy a 8883-es port meg van nyitva a tűzfalon. Az ebben a rövid útmutatóban szereplő MQTT protokollt használ, amely a 8883-as porton keresztül kommunikál. Lehetséges, hogy ez a port bizonyos vállalati és oktatási hálózati környezetekben blokkolva van. A probléma megoldásával kapcsolatos további információkért lásd: [csatlakozás IoT hubhoz (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
 
-- A következő parancs futtatásával adja hozzá az Azure CLI-hez készült Microsoft Azure IoT-bővítményt a Cloud Shell-példányhoz. Az IoT bővítmény a IoT Hub, IoT Edge és IoT Device kiépítési szolgáltatás (DPS) adott parancsait hozzáadja az Azure CLI-hez.
+- A következő parancs futtatásával adja hozzá az Azure CLI-hez készült Microsoft Azure IoT-bővítményt a Cloud Shell-példányhoz. Az IoT-bővítmény az IoT Hubhoz, az IoT Edge-hez és az IoT Device Provisioning Service-hez (DPS) használható parancsokkal bővíti az Azure CLI-t.
 
    ```azurecli-interactive
    az extension add --name azure-iot
@@ -49,7 +49,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
 
    [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
-## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
+## <a name="create-an-iot-hub"></a>IoT-központ létrehozása
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -75,13 +75,13 @@ Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozz
    az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id myiOSdevice --output table
    ```
 
-   Jegyezze fel az eszköz kapcsolati sztringjét, amely a következőképpen néz ki:
+   Jegyezze fel az eszközkapcsolati sztringet, amely az alábbihoz hasonlóan néz ki:
 
    `HostName={YourIoTHubName}.azure-devices.net;DeviceId=myiOSdevice;SharedAccessKey={YourSharedAccessKey}`
 
     Ezt az értéket később a gyors útmutatóban fogja használni.
 
-## <a name="send-simulated-telemetry"></a>Szimulált telemetria küldése
+## <a name="send-simulated-telemetry"></a>Szimulált telemetriai adatok küldése
 
 A mintaalkalmazás az olyan iOS-eszközön fut, amely az IoT Hubon található eszközspecifikus végponthoz csatlakozik, és hőmérséklettel és páratartalommal kapcsolatos szimulált telemetriát küld. 
 
@@ -125,7 +125,7 @@ A következő képernyőképen az a példakimenet látható, amikor az alkalmaz�
 
    ![A szimulált eszköz futtatása](media/quickstart-send-telemetry-ios/view-d2c.png)
 
-## <a name="read-the-telemetry-from-your-hub"></a>Telemetria olvasása a Hubról
+## <a name="read-the-telemetry-from-your-hub"></a>Telemetriai adatok kiolvasása a központból
 
 Az XCode-emulátorban futtatott mintaalkalmazás megjeleníti az eszközről küldött üzenetek adatait. Az IoT Hub segítségével is megtekintheti az adatokat a kapott formában. Az IoT Hub CLI-bővítmény csatlakozhat a szolgáltatásoldali **Események** végponthoz az IoT Hubon. A bővítmény fogadja az eszközről a felhőbe irányuló üzeneteket, amelyeket a rendszer a szimulált eszközről küld. Az IoT Hub-háttéralkalmazások általában a felhőben futnak, hogy fogadják és feldolgozzák az eszközről a felhőbe küldött üzeneteket.
 
@@ -141,7 +141,7 @@ Az alábbi képernyőképen a helyi terminálablakban megjelenő telemetria-típ
 
 ![Telemetria megtekintése](media/quickstart-send-telemetry-ios/view-telemetry.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 [!INCLUDE [iot-hub-quickstarts-clean-up-resources](../../includes/iot-hub-quickstarts-clean-up-resources.md)]
 

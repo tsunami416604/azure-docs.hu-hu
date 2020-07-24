@@ -6,12 +6,12 @@ ms.service: azure-functions
 ms.topic: quickstart
 ms.date: 03/25/2020
 ms.author: dglover
-ms.openlocfilehash: 2eb1a016e04a4150a76112c68683926810f5c66d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: fa834e3ac4946c4f617e857342f850445eebfd30
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80674096"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87055441"
 ---
 # <a name="quickstart-create-your-first-http-triggered-function-with-kotlin-and-intellij"></a>Rövid útmutató: az első HTTP-triggert tartalmazó függvény létrehozása a Kotlin és a IntelliJ
 
@@ -26,7 +26,7 @@ Ha Kotlin-és IntelliJ-függvényt szeretne létrehozni, telepítse a következ�
 - [Java Developer Kit](https://aka.ms/azure-jdks) (JDK), 8-as verzió
 - [Apache Maven](https://maven.apache.org), 3,0-es vagy újabb verzió
 - [INTELLIJ Idea](https://www.jetbrains.com/idea/download), közösségi vagy Ultimate verziók a Maven használatával
-- [Azure CLI](https://docs.microsoft.com/cli/azure)
+- [Azure CLI](/cli/azure)
 - A Azure Functions Core Tools [2. x verziója](functions-run-local.md#v2) . Helyi fejlesztési környezetet biztosít a Azure Functions írásához, futtatásához és hibakereséséhez.
 
 > [!IMPORTANT]
@@ -40,12 +40,12 @@ Ha Kotlin-és IntelliJ-függvényt szeretne létrehozni, telepítse a következ�
 1. Az **archetípus hozzáadása** ablakban végezze el a következő mezőket:
     - _GroupID_: com. microsoft. Azure
     - _ArtifactId_: Azure-functions-Kotlin-archetípus
-    - _Verzió_: a [központi tárház](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-kotlin-archetype)
-    ![legújabb verziójának használata a Maven-projekt létrehozása az archetípusból a IntelliJ IDEA-ban](media/functions-create-first-kotlin-intellij/functions-create-intellij.png)  
+    - _Verzió_: a [központi tárház](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-kotlin-archetype)legújabb verziójának használata a 
+     ![ Maven-projekt létrehozása az archetípusból a IntelliJ IDEA-ban](media/functions-create-first-kotlin-intellij/functions-create-intellij.png)  
 1. Válassza **az OK**, majd a **tovább**lehetőséget.
 1. Adja meg az aktuális projekt adatait, majd kattintson a **Befejezés gombra**.
 
-A Maven egy új mappában hozza létre a projektfájlt, amelynek a neve megegyezik a _ArtifactId_ értékével. A projekt generált kódja egy egyszerű [http-triggert](/azure/azure-functions/functions-bindings-http-webhook) használó függvény, amely a kiváltó HTTP-kérelem törzsét visszhangzik.
+A Maven egy új mappában hozza létre a projektfájlt, amelynek a neve megegyezik a _ArtifactId_ értékével. A projekt generált kódja egy egyszerű [http-triggert](./functions-bindings-http-webhook.md) használó függvény, amely a kiváltó HTTP-kérelem törzsét visszhangzik.
 
 ## <a name="run-functions-locally-in-the-ide"></a>Függvények helyi futtatása az IDE-ben
 
@@ -55,7 +55,7 @@ A Maven egy új mappában hozza létre a projektfájlt, amelynek a neve megegyez
 1. Manuálisan importálhatja a módosításokat, vagy engedélyezheti az [automatikus importálást](https://www.jetbrains.com/help/idea/creating-and-optimizing-imports.html).
 1. Nyissa meg a **Maven-projektek** eszköztárat.
 1. Bontsa ki az **életciklus**csomópontot, majd nyissa meg a **csomagot**. A megoldás egy újonnan létrehozott célkönyvtár keretében lett létrehozva és csomagolva.
-1. Bontsa ki a **plugins** > **Azure-functions** és az **Azure-functions megnyitása: Futtatás** parancsot a Azure functions helyi futtatókörnyezet elindításához.  
+1. Bontsa ki a **plugins**  >  **Azure-functions** és az **Azure-functions megnyitása: Futtatás** parancsot a Azure functions helyi futtatókörnyezet elindításához.  
   ![Maven-eszköztár a Azure Functionshoz](media/functions-create-first-kotlin-intellij/functions-intellij-kotlin-maven-toolbar.png)  
 
 1. A függvény tesztelésének befejezése után zárjuk be a Futtatás párbeszédpanelt. Egyszerre csak egy Function Host lehet aktív és helyileg futni.
@@ -87,7 +87,7 @@ A Maven egy új mappában hozza létre a projektfájlt, amelynek a neve megegyez
    az login
    ```
 
-1. Telepítse a kódot egy új függvénybe a `azure-functions:deploy` Maven-cél használatával. A Maven-projektek ablakban az **Azure-functions: Deploy (üzembe helyezés** ) lehetőséget is kiválaszthatja.
+1. Telepítse a kódot egy új függvénybe a Maven- `azure-functions:deploy` cél használatával. A Maven-projektek ablakban az **Azure-functions: Deploy (üzembe helyezés** ) lehetőséget is kiválaszthatja.
 
    ```
    mvn azure-functions:deploy
@@ -106,4 +106,4 @@ A Maven egy új mappában hozza létre a projektfájlt, amelynek a neve megegyez
 ## <a name="next-steps"></a>További lépések
 
 Most, hogy üzembe helyezte az első Kotlin-függvényt az Azure-ban, tekintse át a [Java functions fejlesztői útmutatóját](functions-reference-java.md) a Java-és Kotlin függvények fejlesztésével kapcsolatos további információkért.
-- Vegyen fel további függvényeket különböző eseményindítókkal a projekthez `azure-functions:add` a Maven cél használatával.
+- Vegyen fel további függvényeket különböző eseményindítókkal a projekthez a `azure-functions:add` Maven cél használatával.

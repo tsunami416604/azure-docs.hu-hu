@@ -3,12 +3,12 @@ title: Az operatív Uram fejlesztése az Advisor szolgáltatással
 description: Az Azure-előfizetések működési kiválóságának optimalizálása Azure Advisor használatával.
 ms.topic: article
 ms.date: 10/24/2019
-ms.openlocfilehash: 1cac5a3f93df8422a3896b1251857bf552731fb4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2b4c4726400134e4eec3868e155da47cb8c515b5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85125395"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87057643"
 ---
 # <a name="achieve-operational-excellence-by-using-azure-advisor"></a>Az operatív kiválóság elérése Azure Advisor használatával
 
@@ -63,4 +63,4 @@ Az Advisor ajánlásaival kapcsolatos további tudnivalókért tekintse meg a k�
 * [Az Advisor teljesítményével kapcsolatos javaslatok](advisor-performance-recommendations.md)
 * [Advisor megbízhatósági javaslatok](advisor-high-availability-recommendations.md)
 * [Advisor biztonsági javaslatok](advisor-security-recommendations.md)
-* [Advisor REST API](https://docs.microsoft.com/rest/api/advisor/)
+* [Advisor REST API](/rest/api/advisor/)

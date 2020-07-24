@@ -3,20 +3,17 @@ title: Ügyfél által felügyelt kulcs használata Azure-lemezek titkosításá
 description: Saját kulcsok (BYOK-EK) használatával titkosíthatja az AK-OS operációs rendszert és az adatlemezeket.
 services: container-service
 ms.topic: article
-ms.date: 01/12/2020
-ms.openlocfilehash: 6452facc999456c35aa5d1c3bfe6b2f59141b7c5
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.date: 07/17/2020
+ms.openlocfilehash: d8443c9c7a0af7bfb7f146904c913663d82786b8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86252045"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87057305"
 ---
 # <a name="bring-your-own-keys-byok-with-azure-disks-in-azure-kubernetes-service-aks"></a>Saját kulcsok (BYOK) használata Azure-lemezekkel az Azure Kubernetes szolgáltatásban (ak)
 
 Az Azure Storage minden olyan adattárolót titkosít, amely egy Storage-fiókban található. Alapértelmezés szerint az adattitkosítás a Microsoft által kezelt kulcsokkal történik. A titkosítási kulcsok további szabályozásához megadhatja az [ügyfél által felügyelt kulcsokat][customer-managed-keys] , amelyekkel az AK-fürtökhöz tartozó operációs rendszer és adatlemezek esetében az inaktív adatok titkosítását is használhatja.
-
-> [!NOTE]
-> A Linux-és Windows-alapú BYOK-fürtök az Azure Managed Disks kiszolgálóoldali titkosítását támogató [Azure-régiókban][supported-regions] érhetők el.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -164,12 +161,11 @@ kubectl apply -f byok-azure-disk.yaml
 
 ## <a name="limitations"></a>Korlátozások
 
-* A BYOK jelenleg csak a GA-ban érhető el, és az előzetes verzió bizonyos [Azure-régiókban][supported-regions]
 * Az adatlemez titkosítása a 1,17-es vagy újabb Kubernetes-verzióval támogatott   
 * Csak azokon a régiókban érhető el, ahol a BYOK támogatott
 * Az ügyfél által felügyelt kulcsokkal való titkosítás jelenleg csak az új AK-fürtök esetében lehetséges, a meglévő fürtök nem frissíthetők.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Az AK-fürtök biztonságával kapcsolatos ajánlott eljárások][best-practices-security] áttekintése
 

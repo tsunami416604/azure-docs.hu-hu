@@ -1,5 +1,5 @@
 ---
-title: Gyors útmutató – Azure Key Vault a Pythonhoz készült ügyféloldali kódtár
+title: Gyors útmutató – Azure Key Vault Python ügyféloldali kódtár – kulcsok kezelése
 description: Megtudhatja, hogyan hozhat létre, kérhet le és törölhet kulcsokat egy Azure Key vaultból a Python ügyféloldali kódtár használatával
 author: msmbaldwin
 ms.author: mbaldwin
@@ -8,14 +8,14 @@ ms.service: key-vault
 ms.subservice: keys
 ms.topic: quickstart
 ms.custom: tracking-python
-ms.openlocfilehash: 5335d629ef6778cbab7273200652c19998c9c19d
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
+ms.openlocfilehash: fe88cfc71959cfa0e78c9e6129853afee248fd37
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/21/2020
-ms.locfileid: "85125176"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87060992"
 ---
-# <a name="quickstart-azure-key-vault-client-library-for-python"></a>Rövid útmutató: Azure Key Vault a Pythonhoz készült ügyféloldali kódtár
+# <a name="quickstart-azure-key-vault-keys-client-library-for-python"></a>Gyors útmutató: Azure Key Vault kulcsok ügyféloldali kódtára a Pythonhoz
 
 Ismerkedés a Azure Key Vault a Pythonhoz készült ügyféloldali kódtáraval. Az alábbi lépéseket követve telepítse a csomagot, és próbálja ki az alapszintű feladatokhoz tartozó kódot.
 
@@ -33,7 +33,7 @@ Az Azure Key Vault segít a felhőalapú alkalmazások és szolgáltatások ált
 
 - Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Python 2,7, 3.5.3 vagy újabb
-- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) vagy [Azure PowerShell](/powershell/azure/overview)
+- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) vagy [Azure PowerShell](/powershell/azure/)
 
 Ez a rövid útmutató azt feltételezi, hogy az [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) -t egy Linux-terminál ablakban futtatja.
 

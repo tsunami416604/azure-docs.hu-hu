@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 4/24/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 895e33a111fe5bb881d198ee4995b9534ca3d528
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 2e2a7f09ac6ff3be119a07ed0a2162525801ceef
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135882"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87061852"
 ---
 # <a name="create-custom-sdks-for-azure-digital-twins-using-autorest"></a>Egyéni SDK-k létrehozása az Azure Digital Twins-hoz az autorest használatával
 
-Jelenleg csak az Azure Digital Twins API-kkal való interakcióhoz közzétett adatközpont-SDK van a .NET (C#) rendszerhez. A .NET SDK-val és az API-kkal kapcsolatban általában a [útmutató: az Azure digitális Twins API-k és SDK](how-to-use-apis-sdks.md)-k használata című témakörben olvashat. Ha más nyelven dolgozik, ez a cikk bemutatja, hogyan hozhatja ki saját SDK-t az Ön által választott nyelven az autorest használatával.
+Jelenleg csak az Azure Digital Twins API-kkal való interakcióhoz közzétett adatközpont-SDK van a .NET (C#) rendszerhez. A .NET SDK-val és az API-kkal kapcsolatban általában a [*útmutató: az Azure digitális Twins API-k és SDK*](how-to-use-apis-sdks.md)-k használata című témakörben olvashat. Ha más nyelven dolgozik, ez a cikk bemutatja, hogyan hozhatja ki saját SDK-t az Ön által választott nyelven az autorest használatával.
 
 ## <a name="set-up-your-machine"></a>A gép beállítása
 
@@ -37,19 +37,19 @@ npm install -g autorest@2.0.4413
 Az Azure digitális Twins hencegő fájlján az autorest futtatásához kövesse az alábbi lépéseket:
 1. Másolja az Azure digitális Twins hencegő fájlját és a hozzá tartozó kapcsolódó mappát egy munkakönyvtárba.
 2. Egy parancssori ablak használatával váltson át erre a munkakönyvtárra.
-3. Futtassa az autorest parancsot a következő paranccsal. Cserélje le a `<language>` helyőrzőt az Ön által választott nyelvre:,, `--python` `--java` `--go` stb. (a beállítások teljes listáját megtalálja az [autorest readme](https://github.com/Azure/autorest)-ban).
+3. Futtassa az autorest parancsot a következő paranccsal. Cserélje le a `<language>` helyőrzőt az Ön által választott nyelvre: `--python` ,, `--java` `--go` stb. (A beállítások teljes listáját megtalálja az [Autorest README fájlban](https://github.com/Azure/autorest).)
 
 ```cmd/sh
 autorest --input-file=adtApiSwagger.json --<language> --output-folder=ADTApi --add-credentials --azure-arm --namespace=ADTApi
 ```
 
-Ennek eredményeképpen egy új, *ADTApi* nevű mappa jelenik meg a munkakönyvtárban. A generált SDK-fájlok a névtér *ADTApi*lesznek, amelyeket a jelen cikkben található további használati példákon keresztül továbbra is használni fog.
+Ennek eredményeképpen egy új, *ADTApi* nevű mappa jelenik meg a munkakönyvtárban. A generált SDK-fájlok a névtér *ADTApi*lesznek. Ezt a névteret továbbra is használhatja a jelen cikkben található használati példákban.
 
 Az autorest számos nyelvi kód generátort támogat.
 
 ## <a name="add-the-sdk-to-a-visual-studio-project"></a>Az SDK hozzáadása egy Visual Studio-projekthez
 
-Az autorest által létrehozott fájlokat közvetlenül egy .NET-megoldásba is felveheti. Mivel azonban valószínűleg szüksége lesz az Azure Digital Twins SDK-ra számos különálló projektben (az ügyfélalkalmazások, Azure Functions alkalmazások stb.), hasznos lehet egy különálló projekt (.NET-osztály könyvtára) létrehozása a generált fájlokból. Ezt az osztály-függvénytár-projektet több megoldásba is felhasználhatja projekt-referenciáként.
+Az autorest által létrehozott fájlokat közvetlenül egy .NET-megoldásba is felveheti. Azonban valószínű, hogy az Azure digitális Twins SDK-t több különálló projektben (az ügyfélalkalmazások, Azure Functions alkalmazások stb.) szeretné felvenni. Emiatt hasznos lehet egy különálló projekt (.NET-osztály könyvtára) létrehozása a generált fájlokból. Ezt követően belefoglalhatja ezt az osztály-függvénytár-projektet több megoldásba projekt-hivatkozásként.
 
 Ebből a szakaszból megtudhatja, hogyan hozhatja létre az SDK-t egy olyan osztály-függvénytárként, amely a saját projektje, és más projektekben is szerepelhet. Ezek a lépések a **Visual studióra** támaszkodnak ( [innen](https://visualstudio.microsoft.com/downloads/)telepítheti a legújabb verziót).
 
@@ -73,7 +73,7 @@ Ezek hozzáadásához nyissa meg az *eszközök > NuGet Package Manager > NuGet-
 
 1. A panelen ellenőrizze, hogy a *Tallózás* lap van-e kiválasztva.
 2. Keressen rá a *Microsoft. Rest* kifejezésre
-3. Válassza ki a *ClientRuntime* és a *ClientRuntime. Azure* csomagokat, és vegye fel őket a megoldásba
+3. Válassza ki a `ClientRuntime` és a `ClientRuntime.Azure` csomagokat, és vegye fel őket a megoldásba
 
 Most már felépítheti a projektet, és felhasználhatja azt projekt-referenciáként bármely olyan Azure digitális Twins-alkalmazásban, amelyet írsz.
 
@@ -87,7 +87,7 @@ Minden SDK-függvény szinkron és aszinkron verzióban érhető el.
 
 ### <a name="typed-and-untyped-data"></a>Beírt és nem típusos adattípusok
 
-REST API a hívások általában erősen beírt objektumokat adnak vissza. Mivel azonban az Azure Digital Twins lehetővé teszi, hogy a felhasználók definiálják a saját egyéni típusait az ikrek számára, nincs mód előre definiálni a statikus visszaküldési adatmennyiségeket számos Azure digitális Twins-híváshoz. Az API-k Ehelyett a megfelelő típusú burkoló típusokat adnak vissza, és az egyéni típusú Twin-adat a Json.NET objektumokban van (amely akkor használható, ha az "Object" adattípus szerepel az API-aláírásokban). Ezeket az objektumokat a kódban megfelelően elvégezheti.
+REST API a hívások általában erősen beírt objektumokat adnak vissza. Mivel azonban az Azure Digital Twins lehetővé teszi, hogy a felhasználók definiálják a saját egyéni típusait az ikrek számára, nincs mód előre definiálni a statikus visszaküldési adatmennyiségeket számos Azure digitális Twins-híváshoz. Ehelyett az API-k határozottan gépelt burkoló típusokat adnak vissza, ahol alkalmazhatóak, és az egyéni típusú Twin-adat a Json.NET objektumokban van (amelyet a rendszer akkor használ, amikor az "Object" adattípus szerepel az API-aláírásokban). Ezeket az objektumokat a kódban megfelelően elvégezheti.
 
 ### <a name="error-handling"></a>Hibakezelés
 
@@ -115,7 +115,7 @@ Az autorest két típusú lapozási mintát hoz létre az SDK számára:
 
 A nem lekérdezési lapozási mintában az egyes hívások két verziója létezik:
 * Egy verzió, amely a kezdeti hívást végzi (például `DigitalTwins.ListEdges()` )
-* Egy verzió a következő lapok beolvasásához, a "Next" utótaggal (például `DigitalTwins.ListEdgesNext()` )
+* A következő lapok beolvasására szolgáló verzió. Ezek a hívások a "Next" utótaggal rendelkeznek (például `DigitalTwins.ListEdgesNext()` )
 
 Az alábbi kódrészlet bemutatja, hogyan kérhető le az Azure Digital Twins kimenő kapcsolatainak lapozható listája:
 ```csharp
@@ -185,7 +185,7 @@ try
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Végigvezeti egy ügyfélalkalmazás létrehozásának lépésein, ahol az SDK-t használhatja:
-* [Oktatóanyag: ügyfélalkalmazás kódolása](tutorial-code.md)
+* [*Oktatóanyag: ügyfélalkalmazás kódolása*](tutorial-code.md)

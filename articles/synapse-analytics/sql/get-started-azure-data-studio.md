@@ -1,5 +1,5 @@
 ---
-title: 'Azure Data Studio (előzetes verzió): a kapcsolat és a lekérdezés szinapszis SQL'
+title: Kapcsolódás a szinapszis SQLhoz a Azure Data Studio használatával (előzetes verzió)
 description: A Azure Data Studio (előzetes verzió) használatával kapcsolódhat és lekérdezheti a szinapszis SQL-t az Azure szinapszis Analytics szolgáltatásban.
 services: synapse analytics
 author: azaricstefan
@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 561ea1a4f3577e037708c3b090188c59bd3c4aad
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 78807db19b413bb642e8dcf61e480d6d954b6178
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82187545"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87059558"
 ---
 # <a name="connect-to-synapse-sql-with-azure-data-studio-preview"></a>Kapcsolódás a szinapszis SQLhoz a Azure Data Studio használatával (előzetes verzió)
 
@@ -38,7 +38,7 @@ Válassza a **Microsoft SQL Server** lehetőséget a **kapcsolattípus mezőben*
 
 A kapcsolathoz a következő paraméterek szükségesek:
 
-* **Kiszolgáló:** Kiszolgáló az űrlapon `<Azure Synapse workspace name>`– OnDemand.SQL.azuresynapse.net
+* **Kiszolgáló:** Kiszolgáló az űrlapon `<Azure Synapse workspace name>` – OnDemand.SQL.azuresynapse.net
 * **Adatbázis:** Adatbázis neve
 
 > [!NOTE]
@@ -69,7 +69,7 @@ Az alábbi képernyőképen az **SQL-bejelentkezés**használatával láthatók 
 
 ![SQL-bejelentkezés](./media/get-started-azure-data-studio/2-database-details.png)
 
-A sikeres bejelentkezés után az alábbihoz hasonló irányítópultot kell látnia: ![irányítópult](./media/get-started-azure-data-studio/4-dashboard.png)
+A sikeres bejelentkezés után az alábbihoz hasonló irányítópultot kell látnia: ![ irányítópult](./media/get-started-azure-data-studio/4-dashboard.png)
 
 ## <a name="query"></a>Lekérdezés
 

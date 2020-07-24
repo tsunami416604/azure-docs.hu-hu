@@ -3,12 +3,12 @@ title: Figyelés és naplózás – Azure
 description: Ez a cikk áttekintést nyújt az élő videók elemzéséről IoT Edge figyelésről és naplózásról.
 ms.topic: reference
 ms.date: 04/27/2020
-ms.openlocfilehash: 807b0623159e0b50285b89da2835e9dd6cb037aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 82e4a5879e4c88e462edcddb02866ec9b671d7fe
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84261211"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87060457"
 ---
 # <a name="monitoring-and-logging"></a>Monitorozás és naplózás
 
@@ -98,7 +98,7 @@ A IoT Edge élő videó-elemzések eseményeket bocsátanak ki vagy telemetria a
      }
    }
    ```
-A modul által kibocsátott eseményeket a rendszer a [IoT Edge hubhoz](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub)továbbítja, és innen más célhelyekre is átirányítható. 
+A modul által kibocsátott eseményeket a rendszer a [IoT Edge hubhoz](../../iot-edge/iot-edge-runtime.md#iot-edge-hub)továbbítja, és innen más célhelyekre is átirányítható. 
 
 ## <a name="controlling-events"></a>Az események irányítása
 
@@ -110,7 +110,7 @@ A következő modul-Twin tulajdonságokat használhatja a modul [Twin JSON-sém�
    
 Az elemzési eseményeket olyan csomópontok hozza létre, mint például a mozgásészlelési processzor vagy a HTTP-bővítmény processzora, az IoT hub-fogadó pedig az IoT Edge hubhoz küldi el őket. 
 
-A [fenti események útválasztását](https://docs.microsoft.com/azure/iot-edge/module-composition#declare-routes) a $edgeHub modul twin (az üzembe helyezési jegyzékben) kívánt tulajdonságán keresztül szabályozhatja:
+A [fenti események útválasztását](../../iot-edge/module-composition.md#declare-routes) a $edgeHub modul twin (az üzembe helyezési jegyzékben) kívánt tulajdonságán keresztül szabályozhatja:
 
 ```
  "$edgeHub": {
@@ -126,16 +126,16 @@ A [fenti események útválasztását](https://docs.microsoft.com/azure/iot-edge
  }
 ```
 
-A fentiekben a lvaEdge az élő videó Analytics neve IoT Edge modulon, és az útválasztási szabály a [deklarált útvonalakban](https://docs.microsoft.com/azure/iot-edge/module-composition#declare-routes)definiált sémát követi.
+A fentiekben a lvaEdge az élő videó Analytics neve IoT Edge modulon, és az útválasztási szabály a [deklarált útvonalakban](../../iot-edge/module-composition.md#declare-routes)definiált sémát követi.
 
 > [!NOTE]
 > Annak érdekében, hogy az elemzési események elérjék a IoT Edge központot, egy IoT hub-fogadó csomópontnak kell lennie, amely a mozgásérzékelő processzor-és/vagy bármely HTTP-bővítmény processzor-csomópontján felül van.
 
 ## <a name="event-schema"></a>Eseményséma
 
-Az események a peremhálózati eszközről származnak, és a peremhálózati vagy a felhőben is felhasználhatók. A IoT Edge élő videó-elemzés által generált események megfelelnek az Azure IoT Hub által létrehozott [streaming Messaging-mintának](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct) , a rendszer tulajdonságai, az alkalmazás tulajdonságai és a törzs alapján.
+Az események a peremhálózati eszközről származnak, és a peremhálózati vagy a felhőben is felhasználhatók. A IoT Edge élő videó-elemzés által generált események megfelelnek az Azure IoT Hub által létrehozott [streaming Messaging-mintának](../../iot-hub/iot-hub-devguide-messages-construct.md) , a rendszer tulajdonságai, az alkalmazás tulajdonságai és a törzs alapján.
 
-### <a name="summary"></a>Összefoglalás
+### <a name="summary"></a>Összegzés
 
 A IoT Hubon keresztül megfigyelt minden esemény az alább leírtak szerint egy közös tulajdonsággal fog rendelkezni.
 
@@ -146,7 +146,7 @@ A IoT Hubon keresztül megfigyelt minden esemény az alább leírtak szerint egy
 |tulajdonos|   applicationProperty |sztring|    Az eseményt kibocsátó entitás alútvonala.|
 |eventTime| applicationProperty|    sztring| Az esemény létrehozásának ideje.|
 |eventType| applicationProperty |sztring|    Eseménytípus azonosítója (lásd alább).|
-|body (Törzs)|body (Törzs)  |objektum|    Adott esemény adatai.|
+|body (Törzs)|body (Törzs)  |object|    Adott esemény adatai.|
 |dataVersion    |applicationProperty|   sztring  |{Major}. Kisebb|
 
 ### <a name="properties"></a>Tulajdonságok
@@ -180,7 +180,7 @@ Az Eseménytípus a következő sémának megfelelő névtérhez van rendelve:
 
 #### <a name="event-classes"></a>Eseményosztályok
 
-|Osztály neve|Leírás|
+|Osztály neve|Description|
 |---|---|
 |Elemzés  |A tartalom elemzése részeként generált események.|
 |Diagnosztika    |A problémák és a teljesítmény diagnosztizálását segítő események.|
@@ -200,7 +200,7 @@ Az esemény időpontját a ISO8601 karakterlánc írja le, és ez az esemény id
 
 ## <a name="logging"></a>Naplózás
 
-Más IoT Edge modulokhoz hasonlóan a peremhálózati eszközön is ellenőrizheti [a tároló naplóit](https://docs.microsoft.com/azure/iot-edge/troubleshoot#check-container-logs-for-issues) . A naplókba írt adatokat a [következő modul Twin](module-twin-configuration-schema.md) tulajdonságai szabályozzák:
+Más IoT Edge modulokhoz hasonlóan a peremhálózati eszközön is ellenőrizheti [a tároló naplóit](../../iot-edge/troubleshoot.md#check-container-logs-for-issues) . A naplókba írt adatokat a [következő modul Twin](module-twin-configuration-schema.md) tulajdonságai szabályozzák:
 
 * Naplózási szint
 
@@ -222,7 +222,7 @@ Más IoT Edge modulokhoz hasonlóan a peremhálózati eszközön is ellenőrizhe
 
 Bizonyos esetekben előfordulhat, hogy a fentiekben leírtnál részletesebb naplókat kell létrehoznia, hogy az Azure támogatási szolgálata segítsen a probléma megoldásában. Ennek elvégzéséhez két lépés szükséges.
 
-Először [csatolja a modul tárterületét az createOptions-](https://docs.microsoft.com/azure/iot-edge/how-to-access-host-storage-from-module#link-module-storage-to-device-storage) on keresztül. Ha az [üzembe helyezési jegyzék sablonját](https://github.com/Azure-Samples/live-video-analytics-iot-edge-csharp/blob/master/src/edge/deployment.template.json) a gyors indítással vizsgálja, a következőt fogja látni:
+Először [csatolja a modul tárterületét az createOptions-](../../iot-edge/how-to-access-host-storage-from-module.md#link-module-storage-to-device-storage) on keresztül. Ha az [üzembe helyezési jegyzék sablonját](https://github.com/Azure-Samples/live-video-analytics-iot-edge-csharp/blob/master/src/edge/deployment.template.json) a gyors indítással vizsgálja, a következőt fogja látni:
 
 ```
 "createOptions": {
@@ -243,6 +243,6 @@ Ezután a modul bináris formában fogja írni a hibakeresési naplókat az (esz
 
 [Gyakori kérdések](faq.md#monitoring-and-metrics)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Folyamatos videófelvétel](continuous-video-recording-tutorial.md)

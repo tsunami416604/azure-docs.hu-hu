@@ -4,11 +4,12 @@ description: Ebből a cikkből megtudhatja, hogyan használhatók a Azure Backup
 ms.topic: conceptual
 ms.date: 03/05/2019
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: f4b91302723119e707d12a86480bbaff2eb4bec5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 645bf701a8f8561b2cb4f19378036ada82c4bedd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84485091"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87054550"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Azure Backup munkaterhelések figyelése
 
@@ -27,7 +28,7 @@ Az alábbi Azure Backup-megoldásokból származó feladatok itt láthatók:
 - Azure-beli virtuális gép biztonsági mentése
 - Azure-fájlok biztonsági mentése
 - Azure-beli számítási feladatok biztonsági mentése, például SQL és SAP HANA
-- Azure Backup ügynök (MAB)
+- Microsoft Azure Recovery Services (MARS) ügynök
 
 A System Center Data Protection Manager (SC-DPM), Microsoft Azure Backup Server (MABS) feladatok nem jelennek meg.
 
@@ -43,7 +44,7 @@ A riasztások elsődlegesen olyan helyzetek, amikor a felhasználók értesíté
 A szolgáltatás a következő forgatókönyveket figyelmeztethető forgatókönyvként határozza meg.
 
 - Biztonsági mentési/visszaállítási hibák
-- A biztonsági mentés sikeresen befejeződött az Azure Backup ügynök (MAB) esetében, de figyelmeztetésekkel
+- A biztonsági mentés sikeres volt, Microsoft Azure Recovery Services (MARS) ügynök figyelmeztetései
 - A védelem leállítása és a védelem leállítása az adattörlési szolgáltatással
 
 ### <a name="alerts-from-the-following-azure-backup-solutions-are-shown-here"></a>Itt jelennek meg a következő Azure Backup-megoldások riasztásai
@@ -51,7 +52,7 @@ A szolgáltatás a következő forgatókönyveket figyelmeztethető forgatókön
 - Azure-beli virtuális gép biztonsági mentései
 - Azure File biztonsági mentései
 - Az Azure munkaterhelés biztonsági mentései, mint például az SQL, SAP HANA
-- Azure Backup ügynök (MAB)
+- Microsoft Azure Recovery Services (MARS) ügynök 
 
 > [!NOTE]
 > A System Center Data Protection Manager (SC-DPM), Microsoft Azure Backup Server (MABS) riasztásai itt nem jelennek meg.

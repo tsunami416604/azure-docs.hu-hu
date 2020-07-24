@@ -3,15 +3,16 @@ title: Azure Recovery Services-tárolók és-kiszolgálók kezelése
 description: Ebből a cikkből megtudhatja, hogyan figyelheti és kezelheti a Recovery Services-tárolókat a Recovery Services-tároló áttekintő irányítópultjának használatával.
 ms.topic: conceptual
 ms.date: 07/08/2019
-ms.openlocfilehash: 598e9198ee7e153d8008389f97c0be399a0186ba
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1b3cc317b8a26b16bbeda9793f87d089f2fbc59f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84234609"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87054899"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>Recovery Services-tárolók figyelése és kezelése
 
-Ez a cikk azt ismerteti, hogyan használható a Recovery Services-tároló **áttekintése** irányítópult a Recovery Services-tárolók monitorozásához és kezeléséhez. Amikor megnyit egy Recovery Services tárolót a listából, megnyílik a kiválasztott tárolóhoz tartozó **áttekintő** irányítópult. Az irányítópult a tár különböző részleteit tartalmazza. A következő *csempék* láthatók: a kritikus és figyelmeztető riasztások állapota, a folyamatban lévő és a sikertelen biztonsági mentési feladatok, valamint a helyileg redundáns tárolás (LRS) és a Geo-redundáns tárolás (GRS) mennyisége. Ha Azure-beli virtuális gépekről készít biztonsági mentést a [ **tárolóba, a biztonsági mentés előzetes ellenőrzési állapota** csempe megjeleníti a kritikus vagy figyelmeztető elemeket](https://docs.microsoft.com/azure/backup/backup-azure-manage-windows-server#backup-pre-check-status). Az alábbi képen a **contoso-Vault** **Áttekintés** irányítópultja látható. A **biztonsági mentési elemek** csempén látható, hogy a tárolóban kilenc elem van regisztrálva.
+Ez a cikk azt ismerteti, hogyan használható a Recovery Services-tároló **áttekintése** irányítópult a Recovery Services-tárolók monitorozásához és kezeléséhez. Amikor megnyit egy Recovery Services tárolót a listából, megnyílik a kiválasztott tárolóhoz tartozó **áttekintő** irányítópult. Az irányítópult a tár különböző részleteit tartalmazza. A következő *csempék* láthatók: a kritikus és figyelmeztető riasztások állapota, a folyamatban lévő és a sikertelen biztonsági mentési feladatok, valamint a helyileg redundáns tárolás (LRS) és a Geo-redundáns tárolás (GRS) mennyisége. Ha Azure-beli virtuális gépekről készít biztonsági mentést a [ **tárolóba, a biztonsági mentés előzetes ellenőrzési állapota** csempe megjeleníti a kritikus vagy figyelmeztető elemeket](#backup-pre-check-status). Az alábbi képen a **contoso-Vault** **Áttekintés** irányítópultja látható. A **biztonsági mentési elemek** csempén látható, hogy a tárolóban kilenc elem van regisztrálva.
 
 ![Recovery Services-tároló irányítópultja](./media/backup-azure-manage-windows-server/rs-vault-blade.png)
 
@@ -112,7 +113,7 @@ Alapértelmezés szerint az összes adat, a **legutóbbi előfordulási idő**ki
 * Severity
 * Időtartam
 * Létrehozás ideje
-* Állapot
+* status
 * Legutóbbi előfordulás időpontja
 
 ### <a name="change-the-details-in-alerts-report"></a>A riasztások jelentés adatainak módosítása
@@ -177,7 +178,7 @@ A védett példányok egy adott típusának megismeréséhez kattintson az elemr
 
 ![a biztonsági mentési típus listája](./media/backup-azure-manage-windows-server/list-of-protected-virtual-machines.png)
 
-A virtuális gépek listája hasznos adatokkal rendelkezik: a társított erőforráscsoporthoz, a korábbi [biztonsági mentés előzetes ellenőrzési](https://docs.microsoft.com/azure/backup/backup-azure-manage-windows-server#backup-pre-check-status), utolsó biztonsági mentési állapota és a legutóbbi visszaállítási pont dátuma. A három pont, az utolsó oszlopban a gyakori feladatok elindítására szolgáló menüt nyitja meg. Az oszlopokban megadott hasznos információk eltérnek az egyes biztonsági mentési típusoknál.
+A virtuális gépek listája hasznos adatokkal rendelkezik: a társított erőforráscsoporthoz, a korábbi [biztonsági mentés előzetes ellenőrzési](#backup-pre-check-status), utolsó biztonsági mentési állapota és a legutóbbi visszaállítási pont dátuma. A három pont, az utolsó oszlopban a gyakori feladatok elindítására szolgáló menüt nyitja meg. Az oszlopokban megadott hasznos információk eltérnek az egyes biztonsági mentési típusoknál.
 
 ![a biztonsági mentési típus listája](./media/backup-azure-manage-windows-server/ellipsis-menu.png)
 
@@ -237,7 +238,7 @@ Megtekintheti az egyik műveletet vagy az összes műveletet. Két vagy három m
 * Biztonsági mentés letiltása
 * Biztonsági mentési adatok törlése
 
-#### <a name="status"></a>Állapot
+#### <a name="status"></a>status
 
 Az összes állapotot vagy egyet megtekintheti. Két vagy három állapotot nem lehet kijelölni. Az elérhető állapotok a következők:
 
@@ -286,4 +287,4 @@ Az irányítópulton található Backup Storage (biztonsági mentés) csempén a
 ## <a name="next-steps"></a>További lépések
 
 * [Windows Server-vagy Windows-ügyfél visszaállítása az Azure-ból](backup-azure-restore-windows-server.md)
-* További információ a Azure Backupről: [Azure Backup áttekintése](backup-introduction-to-azure-backup.md)
+* További információ a Azure Backupről: [Azure Backup áttekintése](./backup-overview.md)

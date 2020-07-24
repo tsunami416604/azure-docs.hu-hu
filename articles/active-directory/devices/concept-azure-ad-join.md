@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: conceptual
-ms.date: 06/27/2019
+ms.date: 07/20/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ca08b81a71cd61e727b11bbeb88c0c235d25c5e6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3839c7b87e5d07368727d037b585965dce91303a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85554897"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87058098"
 ---
 # <a name="azure-ad-joined-devices"></a>Azure AD-hez csatlakoztatott eszközök
 
@@ -29,6 +29,7 @@ Az Azure AD JOIN olyan szervezetek számára készült, amelyek csak felhőalap�
 |   | Egy szervezet összes felhasználójára érvényes |
 | **Az eszközök tulajdonjoga** | Szervezet |
 | **Operációs rendszerek** | Minden Windows 10-es eszköz |
+|   | [Az Azure-ban futó Windows Server 2019 Virtual Machines](howto-vm-sign-in-azure-ad-windows.md) (Server Core nem támogatott) |
 | **Telepítés** | Önkiszolgáló: Windows OOBE vagy beállítások |
 |   | Csoportos regisztráció |
 |   | Windows Autopilot |
@@ -82,5 +83,5 @@ Az alábbi módszerekkel létesíthet Azure AD-csatlakozást:
 
 - [Az Azure AD-csatlakozás implementálásának megtervezése](azureadjoin-plan.md)
 - [A helyi Rendszergazdák csoport kezelése az Azure AD-hez csatlakoztatott eszközökön](assign-local-admin.md)
-- [Az eszközök identitásának kezelése a Azure Portal használatával](device-management-azure-portal.md)
+- [Eszközidentitások kezelése az Azure Portal használatával](device-management-azure-portal.md)
 - [Elavult eszközök kezelése az Azure AD-ben](manage-stale-devices.md)

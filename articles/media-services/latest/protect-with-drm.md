@@ -15,17 +15,17 @@ ms.topic: conceptual
 ms.date: 07/09/2020
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 4bc7fe4e464b07c77d5a857fb793faa4262f97e4
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 8ab8a3ce0718cac3135bfdac67088d36fcd4f184
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206844"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87060613"
 ---
 # <a name="tutorial-use-drm-dynamic-encryption-and-license-delivery-service"></a>Oktatóanyag: a DRM dinamikus titkosításának és a licenc-kézbesítési szolgáltatásnak a használata
 
 > [!NOTE]
-> Bár ez az oktatóanyag a [.net SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet) -példákat használja, az általános lépések megegyeznek [a REST API](https://docs.microsoft.com/rest/api/media/liveevents), a [CLI](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest)vagy más támogatott [SDK](media-services-apis-overview.md#sdks)-k esetében.
+> Bár ez az oktatóanyag a [.net SDK](/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet) -példákat használja, az általános lépések megegyeznek [a REST API](/rest/api/media/liveevents), a [CLI](/cli/azure/ams/live-event?view=azure-cli-latest)vagy más támogatott [SDK](media-services-apis-overview.md#sdks)-k esetében.
 
 Az Azure Media Services segítségével a streamjeit Microsoft PlayReady-, Google Widevine- vagy Apple FairPlay-licencekkel titkosíthatja. A részletes magyarázatot lásd: [tartalomvédelem dinamikus titkosítással](content-protection-overview.md).
 
@@ -55,8 +55,8 @@ Az oktatóanyag elvégzésének feltételei a következők:
 * Tekintse meg a [Content Protection áttekintését](content-protection-overview.md) ismertető cikket.
 * Tekintse át a [többplatformos DRM-alapú tartalomkezelő rendszereket a hozzáférés-vezérléssel](design-multi-drm-system-with-access-control.md).
 * Telepítse a Visual Studio Code vagy a Visual Studio alkalmazást.
-* Hozzon létre egy új Azure Media Services-fiókot [az ebben a gyors útmutatóban](create-account-cli-quickstart.md) leírt módon.
-* Szerezze be a Media Services API-k használatához szükséges hitelesítő adatokat az [adatelérési API-kat](access-api-cli-how-to.md) bemutató szakasz leírását követve.
+* Hozzon létre egy új Azure Media Services-fiókot [az ebben a gyors útmutatóban](./create-account-howto.md) leírt módon.
+* Szerezze be a Media Services API-k használatához szükséges hitelesítő adatokat az [adatelérési API-kat](./access-api-howto.md) bemutató szakasz leírását követve.
 * Állítsa be a megfelelő értékeket az alkalmazás konfigurációs fájljába (appsettings.js).
 
 ## <a name="download-code"></a>Kód letöltése
@@ -144,7 +144,7 @@ Az **adatfolyam-kereső** létrehozásának folyamatát közzétételnek nevezz�
 
 ## <a name="get-a-test-token"></a>Tesztjogkivonat lekérése
 
-Ebben az oktatóanyagban meghatározzuk, hogy a tartalomkulcs-szabályzat jogkivonat-korlátozással rendelkezzen. A jogkivonattal korlátozott szabályzatokat a biztonsági jogkivonatokkal kapcsolatos szolgáltatás (STS) által kiadott jogkivonatnak kell kísérnie. Media Services támogatja a [JWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_3) -formátumokban lévő jogkivonatokat, és a példában konfiguráltunk.
+Ebben az oktatóanyagban meghatározzuk, hogy a tartalomkulcs-szabályzat jogkivonat-korlátozással rendelkezzen. A jogkivonattal korlátozott szabályzatokat a biztonsági jogkivonatokkal kapcsolatos szolgáltatás (STS) által kiadott jogkivonatnak kell kísérnie. Media Services támogatja a [JWT](/previous-versions/azure/azure-services/gg185950(v=azure.100)#BKMK_3) -formátumokban lévő jogkivonatokat, és a példában konfiguráltunk.
 
 A ContentKeyIdentifierClaim szerepel a ContentKeyPolicy szabályzatban, ami azt jelenti, hogy a kulcstovábbító szolgáltatásnak bemutatott jogkivonatban szerepelnie kell a ContentKey azonosítójának. A mintában nem adunk meg tartalmi kulcsot a folyamatos átviteli lokátor létrehozásakor, a rendszer létrehoz egy véletlenszerűen kiválasztottat a számunkra. A teszt token létrehozásához be kell szereznie a ContentKeyId, amelyet a ContentKeyIdentifierClaim jogcímbe kell helyezni.
 
@@ -152,7 +152,7 @@ A ContentKeyIdentifierClaim szerepel a ContentKeyPolicy szabályzatban, ami azt 
 
 ## <a name="build-a-streaming-url"></a>Streaming URL-cím létrehozása
 
-A [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) létrehozása után lekérheti a streamelési URL-címeket. URL-cím létrehozásához összefűzni kell a [streamvégpontok](https://docs.microsoft.com/rest/api/media/streamingendpoints) -gazdagép nevét és a **folyamatos átviteli lokátor** elérési útját. Ebben a példában az *alapértelmezett* **adatfolyam-végpontot** használja a rendszer. Amikor először hoz létre egy Media Service-fiókot, az *alapértelmezett* **folyamatos átviteli végpont** leállított állapotba kerül, ezért meg kell hívnia a **Start**parancsot.
+A [StreamingLocator](/rest/api/media/streaminglocators) létrehozása után lekérheti a streamelési URL-címeket. URL-cím létrehozásához összefűzni kell a [streamvégpontok](/rest/api/media/streamingendpoints) -gazdagép nevét és a **folyamatos átviteli lokátor** elérési útját. Ebben a példában az *alapértelmezett* **adatfolyam-végpontot** használja a rendszer. Amikor először hoz létre egy Media Service-fiókot, az *alapértelmezett* **folyamatos átviteli végpont** leállított állapotba kerül, ezért meg kell hívnia a **Start**parancsot.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithDRM/Program.cs#GetMPEGStreamingUrl)]
 
@@ -168,7 +168,7 @@ Megnyithat egy böngészőt, és beillesztheti az eredményül kapott URL-t, ame
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithDRM/Program.cs#CleanUp)]
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs szüksége az erőforráscsoportban lévő egyik erőforrásra sem, beleértve a jelen oktatóanyagban létrehozott Media Services- és Storage-fiókokat, törölje a korábban létrehozott erőforráscsoportot.
 

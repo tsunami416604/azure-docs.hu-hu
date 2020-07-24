@@ -2,13 +2,13 @@
 title: Gyakran ismételt kérdések az Azure Kubernetes szolgáltatásról (ak)
 description: Válaszok az Azure Kubernetes szolgáltatással (ak) kapcsolatos gyakori kérdésekre.
 ms.topic: conceptual
-ms.date: 05/14/2020
-ms.openlocfilehash: ba4ceaf0d7f9e3b344b2a6efbb84f2145c4a2f65
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.date: 07/21/2020
+ms.openlocfilehash: 4d93a4f3b58fc38710184f345fd467b2beb32b1a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86275716"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87057191"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Gyakori kérdések az Azure Kubernetes Service-szel (AKS) kapcsolatban
 
@@ -79,7 +79,7 @@ A csomópont-erőforráscsoport használata során ne feledje, hogy a következ�
 
 ## <a name="can-i-modify-tags-and-other-properties-of-the-aks-resources-in-the-node-resource-group"></a>Módosíthatom a csomóponti erőforráscsoporthoz tartozó AK-erőforrások címkéit és egyéb tulajdonságait?
 
-Ha módosítja vagy törli az Azure által létrehozott címkéket és az egyéb erőforrás-tulajdonságokat a csomópont-erőforráscsoport esetében, váratlan eredményekhez juthat, például a skálázási és a frissítési hibákhoz. Az AK lehetővé teszi a végfelhasználók számára létrehozott egyéni címkék létrehozását és módosítását. Előfordulhat, hogy egyéni címkéket kíván létrehozni vagy módosítani, például egy üzleti egység vagy költséghely hozzárendeléséhez. Ezt úgy érheti el, ha az Azure-szabályzatokat a felügyelt erőforráscsoport hatókörével hozza létre.
+Ha módosítja vagy törli az Azure által létrehozott címkéket és az egyéb erőforrás-tulajdonságokat a csomópont-erőforráscsoport esetében, váratlan eredményekhez juthat, például a skálázási és a frissítési hibákhoz. Az AK lehetővé teszi a végfelhasználók által létrehozott egyéni címkék létrehozását és módosítását, valamint a címkék hozzáadását [egy csomópont-készlet létrehozásakor](use-multiple-node-pools.md#specify-a-taint-label-or-tag-for-a-node-pool). Előfordulhat, hogy egyéni címkéket kíván létrehozni vagy módosítani, például egy üzleti egység vagy költséghely hozzárendeléséhez. Ezt úgy is megteheti, hogy az Azure-szabályzatokat a felügyelt erőforráscsoport hatókörével hozza létre.
 
 Ha azonban az AK-fürt csomópont-erőforráscsoport területén lévő erőforrásokra vonatkozó összes **Azure-beli címkét** módosítja, egy nem támogatott művelet, amely megszakítja a szolgáltatási szintű célkitűzést (SLO). További információkért lásd: az [AK-t kínáló szolgáltatás szintű szerződés?](#does-aks-offer-a-service-level-agreement)
 
@@ -137,7 +137,7 @@ Az AK-ügynökök csomópontjai standard Azure-beli virtuális gépekként vanna
 
 ## <a name="can-i-movemigrate-my-cluster-between-azure-tenants"></a>Áthelyezhetem/Áttelepíthetem a fürtöt az Azure-bérlők között?
 
-A `az aks update-credentials` parancs használatával egy AK-fürt helyezhető át az Azure-bérlők között. Kövesse a következő témakör utasításait: [frissítés vagy létrehozás egyszerű szolgáltatásnév](./update-credentials.md) , majd az [AK-fürt frissítése új hitelesítő adatokkal](./update-credentials.md#update-aks-cluster-with-new-service-principal-credentials).
+Az AK-fürt bérlők közötti áthelyezése jelenleg nem támogatott.
 
 ## <a name="can-i-movemigrate-my-cluster-between-subscriptions"></a>Áthelyezhetem/Áttelepíthetem a fürtöt az előfizetések között?
 

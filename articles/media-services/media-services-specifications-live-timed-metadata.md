@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/22/2019
 ms.author: johndeu
-ms.openlocfilehash: 551fb0cb9f3745a62d5d84f2c4878bbbbe5ad9a0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 37b3e5eff0baee736fc05760e19c31fdc513e23d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79137322"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87060379"
 ---
 # <a name="signaling-timed-metadata-in-live-streaming"></a>Időzített metaadatok jelzése élő adatfolyamban 
 
@@ -79,8 +80,8 @@ A következő dokumentumok olyan rendelkezéseket tartalmaznak, amelyek az ebben
 | [MPEGDASH]        | Information Technology – dinamikus adaptív átvitel HTTP-n keresztül (DASH) – 1. rész: a média bemutatása és a szegmens formátuma. Május 2014. Közzétett. URLhttps://www.iso.org/standard/65274.html         |
 | [MPEGCMAF]        | Információtechnológia – multimédia-alkalmazás formátuma (MPEG-A) – 19. rész: a szegmentált adathordozók közös multimédia-alkalmazási formátuma (CMAF). Január 2018. Közzétett. URLhttps://www.iso.org/standard/71975.html |
 | [MPEGCENC]        | Information Technology--MPEG Systems Technologies--7. rész: általános titkosítás az ISO-alapú médiafájl formátumú fájlokban. Február 2016. Közzétett. URLhttps://www.iso.org/standard/68042.html                   |
-| [MS-SSTR]         | ["Microsoft Smooth Streaming Protocol", május 15., 2014](https://docs.microsoft.com/openspecs/windows_protocols/ms-sstr/8383f27f-7efe-4c60-832a-387274457251)                                                     |
-| [MS-SSTR-betöltés]  | [Azure Media Services darabolt MP4 élő betöltési specifikáció](https://docs.microsoft.com/azure/media-services/media-services-fmp4-live-ingest-overview)                                                      |
+| [MS-SSTR]         | ["Microsoft Smooth Streaming Protocol", május 15., 2014](/openspecs/windows_protocols/ms-sstr/8383f27f-7efe-4c60-832a-387274457251)                                                     |
+| [MS-SSTR-betöltés]  | [Azure Media Services darabolt MP4 élő betöltési specifikáció](./media-services-fmp4-live-ingest-overview.md)                                                      |
 | [RFC8216]         | R. Pantos, Ed.; W. May. HTTP Live Streaming. Augusztus 2017. Tájékoztató. [https://tools.ietf.org/html/rfc8216](https://tools.ietf.org/html/rfc8216)                                                            |
 | [RFC4648]         | A Base16, a Base32 és a Base64-alapú adatkódolások[https://tools.ietf.org/html/rfc4648](https://tools.ietf.org/html/rfc4648)                                                                                     |
 | RTMP            | ["Az Adobe valós idejű üzenetkezelési protokollja", december 21., 2012](https://www.adobe.com/devnet/rtmp.html)                                                                                                            |
@@ -293,7 +294,7 @@ Az "onCuePoint" típusú üzenet típusa az [Adobe-Flash-AS] értékben van defi
 | name       | A névnek "**scte35**" értéknek kell lennie az elemi Live-ban.                                                                                                                                                                              |
 | time       | Az az idő másodpercben, amikor a Cue-pont bekövetkezett a videóban az idősor során                                                                                                                                           |
 | típus       | A Cue-pont típusát "**Event**" értékre kell beállítani.                                                                                                                                                                             |
-| paraméterek | A név/érték párok összevonási tömbje, amely a SCTE-35 üzenetből származó információkat tartalmazza, beleértve az azonosítót és az időtartamot is. Ezeket az értékeket Azure Media Services elemzi, és a jegyzékfájl díszítési címkéjén szerepel. |
+| parameters | A név/érték párok összevonási tömbje, amely a SCTE-35 üzenetből származó információkat tartalmazza, beleértve az azonosítót és az időtartamot is. Ezeket az értékeket Azure Media Services elemzi, és a jegyzékfájl díszítési címkéjén szerepel. |
 
 
 Ha ezt az ad-jelölőt használja, a HLS jegyzékfájl kimenete az Adobe "Simple" (egyszerű) üzemmódhoz hasonló.
@@ -418,7 +419,7 @@ A **ritka számot be kell jelenteni** az élő kiszolgáló jegyzékfájljában 
 | ------------------ | -------------- | ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | systemBitrate      | Szám         | Kötelező      | "0" értéknek **kell lennie** , amely egy ismeretlen, változó bitsebességű számot jelez.                                                                                                                                                          |
 | parentTrackName    | Sztring         | Kötelező      | A fölérendelt nyomon követési időszaknak **kell lennie** , amelyhez a ritka nyomon követési időkódok időkerete igazított. A szülő nyomon követése nem lehet ritka.                                                                             |
-| manifestOutput     | Logikai        | Kötelező      | A "true" értéknek **kell lennie** , amely azt jelzi, hogy a ritka nyomon követés be lesz ágyazva a zökkenőmentes ügyfél-jegyzékfájlba.                                                                                                                        |
+| manifestOutput     | Logikai érték        | Kötelező      | A "true" értéknek **kell lennie** , amely azt jelzi, hogy a ritka nyomon követés be lesz ágyazva a zökkenőmentes ügyfél-jegyzékfájlba.                                                                                                                        |
 | Altípus            | Sztring         | Kötelező      | Az "adat" négy karakterből álló kódnak **kell lennie** .                                                                                                                                                                                  |
 | Séma             | Sztring         | Kötelező      | Az üzenet-sémát azonosító URN vagy URL-címnek **kell lennie** . A (z) [SCTE-35] üzenetek **esetében ennek az** "urn: SCTE: scte35:2013: bin" értékűnek kell lennie ahhoz, hogy üzeneteket lehessen ELKÜLDENI a HLS, a Smooth és a Dash ügyfeleknek a [SCTE-35] megfelelőséggel. |
 | trackName          | Sztring         | Kötelező      | A ritka sáv nevének **kell lennie** . A trackName használatával több esemény-adatfolyamot is megkülönböztetni ugyanazzal a sémával. Minden egyedi esemény-adatfolyamnak egyedi nyomkövetési névvel **kell** rendelkeznie.                                |
@@ -881,7 +882,7 @@ A EventStream elem a következő attribútumokkal rendelkezik:
 | **Attribútum neve** | **Típus**                | **Szükséges?** | **Leírás**                                                                                                                                                                                                                                                                                                                                                                         |
 | ------------------ | ----------------------- | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | scheme_id_uri      | sztring                  | Kötelező      | Az üzenet sémáját azonosítja. A séma a séma attribútum értékeként van beállítva az élő kiszolgáló jegyzékfájlja mezőben. Az értéknek az üzenet sémáját azonosító URN-nek vagy URL- **címnek kell** lennie; A támogatott kimeneti schemeId "urn: SCTE: scte35:2014: XML + bin"/[SCTE-214-1] SEC 6.7.4 (MPD) lehet, mivel a szolgáltatás jelenleg csak az "XML + bin"-t támogatja, ha rövid idő alatt az MPD szerepel. |
-| value              | sztring                  | Választható      | Egy további karakterlánc-érték, amelyet a séma tulajdonosai használ az üzenet szemantikai testreszabásához. Annak érdekében, hogy a több esemény streamjét ugyanazzal a sémával megkülönböztesse, az értéket az esemény-adatfolyam **nevére kell beállítani** (trackName az [MS-SSTR-betöltés] vagy az AMF-üzenet neveként az [RTMP] betöltéséhez).                                                                         |
+| Érték              | sztring                  | Választható      | Egy további karakterlánc-érték, amelyet a séma tulajdonosai használ az üzenet szemantikai testreszabásához. Annak érdekében, hogy a több esemény streamjét ugyanazzal a sémával megkülönböztesse, az értéket az esemény-adatfolyam **nevére kell beállítani** (trackName az [MS-SSTR-betöltés] vagy az AMF-üzenet neveként az [RTMP] betöltéséhez).                                                                         |
 | Időskála          | 32 bites előjel nélküli egész szám | Kötelező      | Az időskála másodpercenkénti száma.                                                                                                                                                                                                                                                                                                                                                     |
 
 
@@ -1137,7 +1138,7 @@ A következő részletek felvázolják, hogy az ügyfélnek milyen értékeket k
 | Időskála               | 32 bites előjel nélküli egész szám | Kötelező      | A "emsg" mezőben lévő időpontok és időtartam mezők időkerete (óra/s).                                                                                                                                                                                                            |
 | Presentation_time_delta | 32 bites előjel nélküli egész szám | Kötelező      | A média bemutatójának időbeli változása az esemény megjelenítési idejének és a legkorábbi bemutatási idő különbözete ebben a szegmensben. A megjelenítési időt és az időtartamot az 1. és 2. típusú stream hozzáférési pontokkal (SAP) **kell** összehangolni az [ISO-14496-12] i. mellékletben meghatározottak szerint.                                  |
 | event_duration          | 32 bites előjel nélküli egész szám | Kötelező      | Az esemény vagy a 0xFFFFFFFF-es időtartam, amely ismeretlen időtartamot jelez.                                                                                                                                                                                                                              |
-| Azonosító                      | 32 bites előjel nélküli egész szám | Kötelező      | Az üzenet ezen példányát azonosítja. Az egyenértékű szemantikai értékkel rendelkező üzeneteknek azonos értékűeknek kell lenniük. Ha az üzenet betöltése után nincs megadva az azonosító, Azure Media Services egyedi azonosítót fog előállítani.                                                                                        |
+| Id                      | 32 bites előjel nélküli egész szám | Kötelező      | Az üzenet ezen példányát azonosítja. Az egyenértékű szemantikai értékkel rendelkező üzeneteknek azonos értékűeknek kell lenniük. Ha az üzenet betöltése után nincs megadva az azonosító, Azure Media Services egyedi azonosítót fog előállítani.                                                                                        |
 | Message_data            | bájttömb              | Kötelező      | Az esemény üzenete. A [SCTE-35] üzenetek esetében az üzenet a bináris splice_info_section (), amely megfelel a következőnek: [SCTE-214-3].                                                                                                                                                                        |
 
 

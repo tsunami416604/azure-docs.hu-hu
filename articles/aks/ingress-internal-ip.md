@@ -4,13 +4,13 @@ titleSuffix: Azure Kubernetes Service
 description: Megtudhatja, hogyan telepítheti és konfigurálhatja az NGINX beáramlási vezérlőt egy belső, magánhálózat Azure Kubernetes Service-(ak-) fürtben.
 services: container-service
 ms.topic: article
-ms.date: 07/02/2020
-ms.openlocfilehash: eecf34c6ad622c374e6f43670972279e297662a9
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.date: 07/21/2020
+ms.openlocfilehash: a20ef3155e41a438aed7cea7e7d9814b3add4d14
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86251586"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87056982"
 ---
 # <a name="create-an-ingress-controller-to-an-internal-virtual-network-in-azure-kubernetes-service-aks"></a>Bejövő vezérlő létrehozása belső virtuális hálózathoz az Azure Kubernetes szolgáltatásban (ak)
 
@@ -35,7 +35,7 @@ Ehhez a cikkhez az Azure CLI 2.0.64 vagy újabb verzióját is futtatnia kell. A
 
 Alapértelmezés szerint az NGINX bejövő vezérlő dinamikus nyilvános IP-cím-hozzárendeléssel jön létre. Az általános konfigurációs követelmény belső, magánhálózati és IP-cím használata. Ez a megközelítés lehetővé teszi a szolgáltatásokhoz való hozzáférés korlátozását belső felhasználók számára, külső hozzáférés nélkül.
 
-Hozzon létre egy *belső Behatolású. YAML* nevű fájlt a következő példa jegyzékfájl használatával. Ez a példa *10.240.0.42* rendel a *loadBalancerIP* -erőforráshoz. Adja meg saját belső IP-címét a bejövő adatkezelővel való használatra. Győződjön meg arról, hogy ez az IP-cím még nincs használatban a virtuális hálózaton belül.
+Hozzon létre egy *belső Behatolású. YAML* nevű fájlt a következő példa jegyzékfájl használatával. Ez a példa *10.240.0.42* rendel a *loadBalancerIP* -erőforráshoz. Adja meg saját belső IP-címét a bejövő adatkezelővel való használatra. Győződjön meg arról, hogy ez az IP-cím még nincs használatban a virtuális hálózaton belül. Emellett, ha meglévő virtuális hálózatot és alhálózatot használ, a virtuális hálózat és az alhálózat kezeléséhez megfelelő engedélyekkel kell konfigurálnia az AK-fürtöt. További információkért lásd: [kubenet hálózatkezelés használata saját IP-címtartományok az Azure Kubernetes szolgáltatásban (ak)][aks-configure-kubenet-networking] vagy az Azure [CNI hálózatkezelésének konfigurálása az Azure Kubernetes szolgáltatásban (ak)][aks-configure-advanced-networking] .
 
 ```yaml
 controller:
@@ -185,7 +185,7 @@ A következő példában a címnek való adatforgalom `http://10.240.0.42/` a ne
 Hozzon létre egy nevű fájlt `hello-world-ingress.yaml` , és másolja a következő PÉLDÁBAN YAML.
 
 ```yaml
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   name: hello-world-ingress
@@ -268,7 +268,7 @@ $ curl -L -k http://10.240.0.42/hello-world-two
 [...]
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ez a cikk a beáramló összetevők telepítésére szolgál. Amikor központilag telepít egy Helm-diagramot, a rendszer számos Kubernetes-erőforrást hoz létre. Ezek az erőforrások a hüvelyek, a központi telepítések és a szolgáltatások részét képezik. Ezen erőforrások törléséhez törölheti a teljes minta névteret vagy az egyes erőforrásokat.
 
@@ -358,3 +358,5 @@ További lehetőségek:
 [aks-http-app-routing]: http-application-routing.md
 [aks-ingress-own-tls]: ingress-own-tls.md
 [client-source-ip]: concepts-network.md#ingress-controllers
+[aks-configure-kubenet-networking]: configure-kubenet.md
+[aks-configure-advanced-networking]: configure-azure-cni.md

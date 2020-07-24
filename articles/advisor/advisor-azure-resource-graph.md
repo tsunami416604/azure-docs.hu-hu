@@ -4,12 +4,12 @@ description: Lekérdezések lekérdezése az Advisor-adatbázishoz az Azure Reso
 ms.topic: article
 ms.date: 03/12/2020
 ms.author: sagupt
-ms.openlocfilehash: c0786d1d09ff61ddd9c375c68b7199521e319a4f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 66bb500d419d1f5537afafd7a2df543ded8cc7ce
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85117834"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87057776"
 ---
 # <a name="query-for-advisor-data-in-resource-graph-explorer-azure-resource-graph"></a>Advisor-adatbázis lekérdezése az erőforrás-diagram Explorerben (Azure Resource Graph)
 
@@ -24,7 +24,7 @@ Az Advisor-erőforrások mostantól az [Azure Resource Graphba](https://azure.mi
 
 ## <a name="advisor-resource-types-in-azure-graph"></a>Advisor-erőforrástípusok az Azure Graph-ban
 
-Elérhető Advisor-erőforrástípusok az [erőforrás-gráfban](https://docs.microsoft.com/azure/governance/resource-graph/): 3 erőforrástípus áll rendelkezésre az Advisor-erőforrások alatt történő lekérdezéshez. Az alábbi lista felsorolja az erőforrás-gráfban lekérdezéshez elérhető erőforrásokat.
+Elérhető Advisor-erőforrástípusok az [erőforrás-gráfban](../governance/resource-graph/index.yml): 3 erőforrástípus áll rendelkezésre az Advisor-erőforrások alatt történő lekérdezéshez. Az alábbi lista felsorolja az erőforrás-gráfban lekérdezéshez elérhető erőforrásokat.
 * Microsoft. Advisor/konfigurációk
 * Microsoft. Advisor/javaslatok
 * Microsoft. Advisor/tiltások
@@ -42,4 +42,4 @@ Az Advisor ajánlásaival kapcsolatos további információkért lásd:
 * [Az Advisor teljesítményével kapcsolatos javaslatok](advisor-performance-recommendations.md)
 * [Advisor biztonsági javaslatok](advisor-security-recommendations.md)
 * [Advisor működési kiválósági javaslatok](advisor-operational-excellence-recommendations.md)
-* [Advisor REST API](https://docs.microsoft.com/rest/api/advisor/)
+* [Advisor REST API](/rest/api/advisor/)

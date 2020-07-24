@@ -4,18 +4,18 @@ description: Az alkalmazás Microsoft Identity platformmal való regisztrálása
 author: SureshJa
 ms.author: sureshja
 manager: CelesteDG
-ms.date: 10/12/2019
+ms.date: 07/21/2020
 ms.topic: conceptual
 ms.subservice: develop
 ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
-ms.openlocfilehash: 2a1507b008903085886f9392f3f4e5461997b6e2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 82b721d14d114b358939bebecff00bc762b075a6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80128860"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87058336"
 ---
 # <a name="validation-differences-by-supported-account-types-signinaudience"></a>Érvényesítési eltérések támogatott fióktípus (signInAudience) alapján
 
@@ -39,7 +39,7 @@ Tekintse meg a következő táblázatot a különböző támogatott fióktípus 
 | Tanúsítványok ( `keyCredentials` ) | Szimmetrikus aláíró kulcs | Szimmetrikus aláíró kulcs | Titkosítási és aszimmetrikus aláírási kulcs | 
 | Ügyfél-titkok ( `passwordCredentials` ) | Nincs korlát * | Nincs korlát * | Ha a liveSDK engedélyezve van: legfeljebb 2 ügyfél titka | 
 | Átirányítási URI `replyURLs` -k () | További információért lásd: [átirányítási URI/válasz URL-címekre vonatkozó korlátozások és korlátozások](reply-url.md) . | | | 
-| API-engedélyek ( `requiredResourceAccess` ) | Nincs korlát * | Nincs korlát * | Legfeljebb 30 engedély engedélyezett erőforráson (például Microsoft Graph) | 
+| API-engedélyek ( `requiredResourceAccess` ) | Nincs korlát * | Nincs korlát * | Legfeljebb 50 erőforrás/alkalmazás és 30 engedély erőforrás alapján (például Microsoft Graph). 200-os teljes korlát (erőforrás x engedélyek). | 
 | Az API által definiált hatókörök ( `oauth2Permissions` ) | A hatókör nevének maximális hossza 120 karakter <br><br> Nincs korlát * a definiált hatókörök számán | A hatókör nevének maximális hossza 120 karakter <br><br> Nincs korlát * a definiált hatókörök számán |  A hatókör nevének maximális hossza 40 karakter <br><br> Legfeljebb 100 hatókör definiálva | 
 | Felhatalmazott ügyfélalkalmazások ( `preautorizedApplications` ) | Nincs korlát * | Nincs korlát * | Maximális 500 összesen <br><br> Legfeljebb 100 ügyfél-alkalmazás definiálva <br><br> Ügyfél által definiált maximális 30 hatókör | 
 | appRoles | Támogatott <br> Nincs korlát * | Támogatott <br> Nincs korlát * | Nem támogatott | 

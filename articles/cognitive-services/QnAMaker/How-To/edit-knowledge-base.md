@@ -2,13 +2,13 @@
 title: Tudásbázis szerkesztése – QnA Maker
 description: A QnA Maker lehetővé teszi, hogy egy könnyen használható szerkesztési élményt biztosítson a Tudásbázis tartalmának kezeléséhez.
 ms.topic: conceptual
-ms.date: 05/19/2020
-ms.openlocfilehash: 66adf9e1fe227f11514276147de32e8691db7fab
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.date: 07/16/2020
+ms.openlocfilehash: 52aaaf630806ed6c71101860a1286f88a23ec3fa
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83993575"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87054023"
 ---
 # <a name="edit-qna-pairs-in-your-knowledge-base"></a>QnA-párok szerkesztése a Tudásbázisban
 
@@ -111,6 +111,10 @@ A válasz metaadataiban nem lehet összekapcsolni a QnA párokat.
 ## <a name="add-metadata"></a>Metaadatok hozzáadása
 
 Adja hozzá a metaadatokat úgy, hogy először kiválasztja a **megtekintési beállításokat**, majd kiválasztja a **metaadatok megjelenítése**lehetőséget. Ekkor megjelenik a metaadatok oszlop. Ezután válassza ki a **+** jelet egy metaadat-pár hozzáadásához. Ez a pár egy kulcsból és egy értékből áll.
+
+További információ a metaadatokat a QnA Maker-portálon a metaadatokkal kapcsolatban:
+* [Szerzői metaadatok hozzáadása a QnA-párokhoz](../quickstarts/add-question-metadata-portal.md#add-metadata-to-filter-the-answers)
+* [Lekérdezések előrejelzése – válaszok szűrése metaadatok alapján](../quickstarts/get-answer-from-knowledge-base-using-url-tool.md)
 
 ## <a name="save-changes-to-the-qna-pairs"></a>QnA-párok módosításainak mentése
 

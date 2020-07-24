@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 1e4c989e4550c1ea504a08d3cc975f2add5a4ba2
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 6f521cccdc8814fad8605460bf87c0d0fca20378
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86054729"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87055610"
 ---
 # <a name="create-your-first-function-with-java-and-eclipse"></a>Az első függvény létrehozása a Java és az Eclipse használatával 
 
@@ -28,7 +28,7 @@ Ha Java-és Eclipse-alapú functions-alkalmazást szeretne létrehozni, a követ
 -  [Java Developer Kit](https://www.azul.com/downloads/zulu/), 8-as verzió.
 -  [Apache Maven](https://maven.apache.org), 3,0-es vagy újabb verzió.
 -  [Eclipse](https://www.eclipse.org/downloads/packages/), Java és Maven támogatással.
--  [Azure CLI](https://docs.microsoft.com/cli/azure)
+-  [Azure CLI](/cli/azure)
 
 > [!IMPORTANT] 
 > A rövid útmutató befejezéséhez a JAVA_HOME környezeti változót a JDK telepítési helyére kell beállítani.
@@ -43,7 +43,7 @@ Javasoljuk, hogy a [Azure functions Core Tools, 2-es verziójú verziót](functi
 1. Ügyeljen arra, hogy az összes mező értékeit kitöltse, például:, `resourceGroup` `appName` és `appRegion` (használjon más appName, mint a **fabrikam-Function-20170920120101928**), és végül **fejezze**be a műveletet.
     ![Az Eclipse Maven create2](media/functions-create-first-java-eclipse/functions-create-eclipse2.png)  
 
-A Maven egy _artifactId_ nevű új mappában hozza létre a projektfájlokat. A projektben létrehozott kód egy egyszerű http- [triggert](/azure/azure-functions/functions-bindings-http-webhook) használó függvény, amely a kiváltó HTTP-kérelem törzsét visszhangzik.
+A Maven egy _artifactId_ nevű új mappában hozza létre a projektfájlokat. A projektben létrehozott kód egy egyszerű http- [triggert](./functions-bindings-http-webhook.md) használó függvény, amely a kiváltó HTTP-kérelem törzsét visszhangzik.
 
 ## <a name="run-functions-locally-in-the-ide"></a>Függvények helyi futtatása az IDE-ben
 

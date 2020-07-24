@@ -13,20 +13,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/21/2019
 ms.author: juliako
-ms.openlocfilehash: 079094965775c140c0343da98e40fd008995d45a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2c4654ce175e64c375c96164aed274bf8078d196
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74901187"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87060119"
 ---
 # <a name="dynamic-packaging"></a>Dinamikus csomagolás
 
 > [!div class="op_single_selector" title1="Válassza ki a használt Media Services verzióját:"]
-> * [3-as verzió](../latest/dynamic-packaging-overview.md)
+> * [3\. verzió](../latest/dynamic-packaging-overview.md)
 > * [2-es verzió](media-services-dynamic-packaging-overview.md)
 
 > [!NOTE]
-> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Tekintse meg a legújabb, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
+> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Tekintse meg a legújabb, [Media Services v3](../latest/index.yml)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
 
 A Microsoft Azure Media Services számos különböző ügyfél-technológiára (például iOS, XBOX, Silverlight, Windows 8) képes a médiafájl-formátumok, a média-adatfolyam-formátumok és a tartalomvédelem formátumának továbbítására. Ezek az ügyfelek különböző protokollokat ismernek, például az iOS megköveteli a HTTP Live Streaming (HLS) v4 formátumot, és a Silverlight és az Xbox megköveteli a Smooth Streaming. Ha egy adaptív sávszélességű (többszörös sávszélességű) MP4 (ISO Base Media 14496-12) fájl vagy egy adaptív sávszélességű Smooth Streaming fájl van beállítva, amelyet az MPEG DASH, a HLS vagy a Smooth Streaming megértéséhez szeretne használni, használja ki Media Services dinamikus csomagolás előnyeit.
 
@@ -69,4 +70,3 @@ A dinamikus csomagolás támogatja az MP4-fájlokat, amelyek az [AAC](https://en
 ## <a name="provide-feedback"></a>Visszajelzés küldése
 
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-

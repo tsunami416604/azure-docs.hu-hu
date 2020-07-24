@@ -2,13 +2,13 @@
 title: Együttműködés a Tudásbázisban – QnA Maker
 description: QnA Maker lehetővé teszi, hogy több személy is működjenek együtt a Tudásbázisban. Ez a szolgáltatás az Azure szerepköralapú Access Control biztosít.
 ms.topic: conceptual
-ms.date: 03/17/2020
-ms.openlocfilehash: 1a2908b4b65017f427682627ce5d83b186956a58
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.date: 07/13/2020
+ms.openlocfilehash: 4c550a36dd045873df4bc4a382e1c884466f95ad
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650785"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87054081"
 ---
 # <a name="collaboration-with-authors-and-editors"></a>Együttműködés a szerzőkkel és a szerkesztővel
 
@@ -30,15 +30,15 @@ A következő lépések a közreműködő szerepkört használják, de a [szerep
 
 1. Jelentkezzen be az [Azure](https://portal.azure.com/) Portalra, és lépjen a QnA Maker-erőforráshoz.
 
-    ![QnA Maker erőforráslista](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-resource-list.PNG)
+    ![QnA Maker erőforráslista](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-resource-list.png)
 
 1. Lépjen a **Access Control (iam)** lapra.
 
-    ![QnA Maker IAM](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam.PNG)
+    ![QnA Maker IAM](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam.png)
 
-1. Válassza a **Hozzáadás** lehetőséget.
+1. Válassza a **Hozzáadás** elemet.
 
-    ![QnA Maker IAM Hozzáadás](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add.PNG)
+    ![QnA Maker IAM Hozzáadás](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add.png)
 
 1. Válasszon ki egy szerepkört a következő listából:
 
@@ -46,17 +46,23 @@ A következő lépések a közreműködő szerepkört használják, de a [szerep
     |--|
     |Tulajdonos|
     |Közreműködő|
-    |QnA Maker olvasó|
-    |QnA Maker szerkesztő|
+    |Cognitive Services QnA Maker olvasó|
+    |Cognitive Services QnA Maker szerkesztő|
     |Cognitive Services felhasználó|
 
-    ![QnA Maker szerepkör hozzáadása](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add-role.PNG)
+    :::image type="content" source="../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-add-role-iam.png" alt-text="QnA Maker a szerepkör hozzáadása.":::
 
 1. Adja meg a felhasználó e-mail-címét, és kattintson a **Mentés**gombra.
 
-    ![QnA Maker e-mail-cím hozzáadása](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add-email.PNG)
+    ![QnA Maker e-mail-cím hozzáadása](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add-email.png)
+
+### <a name="view-qna-maker-knowledge-bases"></a>QnA Maker tudásbázisok megtekintése
 
 Ha az a személy, akivel a QnA Maker szolgáltatását a [QnA Maker portálra](https://qnamaker.ai)osztotta, az adott szolgáltatás összes tudásbázisát láthatja a szerepkörük alapján.
+
+Ha kijelölnek egy tudásbázist, az adott QnA Maker erőforráson aktuális szerepkörük látható a Tudásbázis neve mellett.
+
+:::image type="content" source="../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-knowledge-base-role-name.png" alt-text="Képernyőkép a Tudásbázisban a weblap bal felső sarkában, a Tudásbázis neve mellett zárójelben lévő, szerkesztési módban található Tudásbázisban.":::
 
 ## <a name="next-steps"></a>További lépések
 

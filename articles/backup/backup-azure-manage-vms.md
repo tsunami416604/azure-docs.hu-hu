@@ -4,11 +4,12 @@ description: Ismerje meg, hogyan kezelheti és figyelheti az Azure-beli virtuál
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/18/2019
-ms.openlocfilehash: 6e49d1eed81d15970519299fb6f662c650116d6e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4e3fb05b054ea682c315654e6df262e49d592597
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84248583"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87054749"
 ---
 # <a name="manage-azure-vm-backups-with-azure-backup-service"></a>Azure-beli virtuális gépek biztonsági másolatainak kezelése Azure Backup szolgáltatással
 
@@ -53,6 +54,17 @@ Virtuális gépek megtekintése a tároló irányítópultján:
 
 ## <a name="manage-backup-policy-for-a-vm"></a>Virtuális gép biztonsági mentési szabályzatának kezelése
 
+### <a name="modify-backup-policy"></a>Biztonsági mentési szabályzat módosítása
+
+Meglévő biztonsági mentési szabályzat módosítása:
+
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/). Nyissa meg a tároló irányítópultját.
+2. A **> biztonsági mentési házirendek kezelése**lapon válassza ki az Azure-beli virtuális gép típusának biztonsági mentési szabályzatát.
+3.  Kattintson a módosítás gombra, és módosítsa a beállításokat.
+
+
+### <a name="switch-backup-policy"></a>Biztonsági mentési szabályzat váltása 
+
 Biztonsági mentési szabályzat kezelése:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/). Nyissa meg a tároló irányítópultját.
@@ -77,6 +89,9 @@ A virtuális gép igény szerinti biztonsági mentését a védelem beállítás
 * Ha a kezdeti biztonsági mentés függőben van, az igény szerinti biztonsági mentés a virtuális gép teljes másolatát hozza létre a Recovery Services-tárolóban.
 * Ha a kezdeti biztonsági mentés elkészült, az igény szerinti biztonsági mentés csak az előző pillanatképből származó módosításokat küldi el a Recovery Services-tárolónak. Ez a későbbi biztonsági másolatok mindig növekményes.
 * Az igény szerinti biztonsági mentés megőrzési tartománya a biztonsági mentés indításakor megadott megőrzési érték.
+
+> [!NOTE]
+> A Azure Backup szolgáltatás naponta akár kilenc igény szerinti biztonsági mentést is támogat, de a Microsoft legfeljebb négy napi igény szerinti biztonsági mentést javasol a legjobb teljesítmény érdekében.
 
 Igény szerinti biztonsági mentés elindítása:
 
@@ -125,6 +140,9 @@ A védelem leállítása és a virtuális gép adattartalmának törlése:
 
     ![Biztonsági mentési adatok törlése](./media/backup-azure-manage-vms/delete-backup-data1.png)
 
+> [!NOTE]
+> A törlési művelet elvégzése után a rendszer 14 napig őrzi [meg a biztonsági](./soft-delete-virtual-machines.md)másolatba mentett összes adat mentését. <br>Emellett [engedélyezheti vagy letilthatja a nem kötelező törlést](./backup-azure-security-feature-cloud.md#enabling-and-disabling-soft-delete)is.
+
 ## <a name="resume-protection-of-a-vm"></a>Virtuális gép védelmének folytatása
 
 Ha a virtuális gép védelme beállításnál a [védelem leállítása és a biztonsági mentési adat megőrzése](#stop-protection-and-retain-backup-data) lehetőséget választotta, akkor a **biztonsági mentés folytatása**lehetőséggel is használható. Ez a beállítás nem érhető el, ha a [védelem leállítása és a biztonsági másolati](#stop-protection-and-delete-backup-data) beállítások törlése lehetőségre kattint, vagy [törli a biztonsági mentési adatkészletet](#delete-backup-data).
@@ -157,7 +175,7 @@ A virtuális gép biztonsági mentési adatfájljait kétféleképpen törölhet
 
   * Az elemhez tartozó biztonsági másolati elemek törléséhez válassza a **Törlés**lehetőséget. Egy értesítési üzenetből megtudhatja, hogy a biztonsági mentési információ törölve lett.
 
-Az adatai védelme érdekében Azure Backup tartalmazza a Soft delete funkciót. A helyreállítható törlés után még a virtuális gép biztonsági mentését (az összes helyreállítási pontot) is törli a rendszer, a biztonsági mentési adat 14 további napig megmarad. További információt [a Soft delete dokumentációjában](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud)talál.
+Az adatai védelme érdekében Azure Backup tartalmazza a Soft delete funkciót. A helyreállítható törlés után még a virtuális gép biztonsági mentését (az összes helyreállítási pontot) is törli a rendszer, a biztonsági mentési adat 14 további napig megmarad. További információt [a Soft delete dokumentációjában](./backup-azure-security-feature-cloud.md)talál.
 
   > [!NOTE]
   > Ha törli a biztonsági mentési adatmennyiséget, az összes kapcsolódó helyreállítási pontot törli. A törlendő helyreállítási pontok nem választhatók ki.
@@ -172,4 +190,4 @@ Az adatai védelme érdekében Azure Backup tartalmazza a Soft delete funkciót.
 
 * Ismerje meg, hogyan [készíthet biztonsági mentést az Azure-beli virtuális gépekről a virtuális gép beállításaiból](backup-azure-vms-first-look-arm.md).
 * Megtudhatja, hogyan [állíthatja vissza a virtuális gépeket](backup-azure-arm-restore-vms.md).
-* Ismerje meg, hogyan [figyelheti az Azure virtuális gépek biztonsági másolatait](backup-azure-monitor-vms.md).
+* Ismerje meg, hogyan [figyelheti az Azure virtuális gépek biztonsági másolatait](./backup-azure-monitoring-built-in-monitor.md).

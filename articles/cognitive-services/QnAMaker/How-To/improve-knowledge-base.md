@@ -1,14 +1,14 @@
 ---
-title: Tudásbázis fejlesztése – QnA Maker
+title: Az aktív tanulás javasolt kérdései – QnA Maker
 description: Az aktív tanulással javíthatja a Tudásbázis minőségét. Áttekintheti, elfogadhatja vagy elutasíthatja a meglévő kérdések eltávolítása vagy módosítása nélkül.
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: 88ccbc52e0eb3447d0b99cac9ba41761e292a6fd
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: bb95ddc40e122e2589d0396b94f0de921aab9350
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86231777"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87053941"
 ---
 # <a name="accept-active-learning-suggested-questions-in-the-knowledge-base"></a>Az aktív tanulás javasolt kérdéseinek elfogadása a Tudásbázisban
 
@@ -139,7 +139,7 @@ A JSON-törzs több beállítással rendelkezik:
 
 |JSON-törzs tulajdonság|Típus|Cél|
 |--|--|--|--|
-|`feedbackRecords`|tömb|Visszajelzések listája.|
+|`feedbackRecords`|array|Visszajelzések listája.|
 |`userId`|sztring|A javasolt kérdéseket elfogadó személy felhasználói azonosítója. A felhasználói azonosító formátuma. Például egy e-mail-cím lehet érvényes felhasználói azonosító az architektúrában. Választható.|
 |`userQuestion`|sztring|A felhasználó lekérdezésének pontos szövege. Kötelező.|
 |`qnaID`|szám|A [GenerateAnswer válaszban](metadata-generateanswer-usage.md#generateanswer-response-properties)található kérdés azonosítója. |

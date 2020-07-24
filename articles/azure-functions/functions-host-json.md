@@ -3,14 +3,14 @@ title: host.jsAzure Functions 2. x esetén
 description: A v2 futtatókörnyezettel rendelkező fájl Azure Functions host.jsdokumentációja.
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 8d9ea01ffd5bcf2adb25d4f1b3900ff291438ac8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 629f579642185c5600586473d1280d9b26f4cba3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85298497"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87055298"
 ---
-# <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>host.jsAzure Functions 2. x és újabb verziókra 
+# <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Azure Functions 2.x és újabb verziók – host.json referencia 
 
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Azure Functions futtatókörnyezet verzióját: "]
 > * [1-es verzió](functions-host-json-v1.md)
@@ -148,9 +148,9 @@ A teljes JSON-struktúra esetében tekintse [meg a fájl host.jskorábbi példá
 | Tulajdonság | Alapértelmezett | Description |
 | --------- | --------- | --------- | 
 | samplingSettings | n.a. | Lásd: [applicationInsights. samplingSettings](#applicationinsightssamplingsettings). |
-| enableLiveMetrics | igaz | Élő metrikák gyűjtésének engedélyezése. |
-| enableDependencyTracking | igaz | A függőségek követésének engedélyezése. |
-| enablePerformanceCountersCollection | igaz | Engedélyezi a kudu teljesítményszámlálók gyűjtését. |
+| enableLiveMetrics | true | Élő metrikák gyűjtésének engedélyezése. |
+| enableDependencyTracking | true | A függőségek követésének engedélyezése. |
+| enablePerformanceCountersCollection | true | Engedélyezi a kudu teljesítményszámlálók gyűjtését. |
 | liveMetricsInitializationDelay | 00:00:15 | Csak belső használatra. |
 | httpAutoCollectionOptions | n.a. | Lásd: [applicationInsights. httpAutoCollectionOptions](#applicationinsightshttpautocollectionoptions). |
 | snapshotConfiguration | n.a. | Lásd: [applicationInsights. snapshotConfiguration](#applicationinsightssnapshotconfiguration). |
@@ -159,15 +159,15 @@ A teljes JSON-struktúra esetében tekintse [meg a fájl host.jskorábbi példá
 
 |Tulajdonság | Alapértelmezett | Description |
 | --------- | --------- | --------- | 
-| isEnabled | igaz | Engedélyezheti vagy letilthatja a mintavételezést. | 
+| isEnabled | true | Engedélyezheti vagy letilthatja a mintavételezést. | 
 | maxTelemetryItemsPerSecond | 20 | Az egyes kiszolgálók gazdagépén másodpercenként naplózott telemetria-elemek megcélzott száma. Ha az alkalmazás számos gazdagépen fut, csökkentse ezt az értéket, hogy az a forgalom teljes célján belül maradjon. | 
 | evaluationInterval | 01:00:00 | A telemetria aktuális sebességének újraértékelésének időköze. A kiértékelést mozgóátlagként kell végrehajtani. Előfordulhat, hogy le kívánja rövidíteni ezt az intervallumot, ha a telemetria a hirtelen törtek. |
-| initialSamplingPercentage| 1.0 | A mintavételi folyamat elején alkalmazott kezdeti mintavételezési arány dinamikusan változik a százalékos arányban. Hibakeresés közben ne csökkentse az értéket. |
+| initialSamplingPercentage| 1,0 | A mintavételi folyamat elején alkalmazott kezdeti mintavételezési arány dinamikusan változik a százalékos arányban. Hibakeresés közben ne csökkentse az értéket. |
 | samplingPercentageIncreaseTimeout | 00:00:01 | A mintavételezés százalékos értékének megváltozásakor ez a tulajdonság határozza meg, hogy a későbbiekben milyen hamar Application Insights a mintavételezési százalékos arány a további adatmennyiségek rögzítéséhez. |
 | samplingPercentageDecreaseTimeout | 00:00:01 | A mintavételezés százalékos értékének megváltozásakor ez a tulajdonság határozza meg, hogy a későbbiekben milyen hamar Application Insights a mintavételezési százalékos arány a kevesebb adattal való rögzítéshez. |
 | minSamplingPercentage | 0.1 | Mivel a mintavételezési százalék változó, ez a tulajdonság határozza meg a minimálisan megengedett mintavételi százalékot. |
 | maxSamplingPercentage | 0.1 | Mivel a mintavételezési százalék változó, ez a tulajdonság határozza meg a maximálisan megengedett mintavételi százalékot. |
-| movingAverageRatio | 1.0 | A mozgóátlag kiszámításakor a legutóbbi értékhez rendelt súlyozást. 1 értékkel egyenlő vagy annál kisebb értéket használjon. A kisebb értékek miatt az algoritmus kevésbé lesz újraaktiválva a hirtelen változásokkal. |
+| movingAverageRatio | 1,0 | A mozgóátlag kiszámításakor a legutóbbi értékhez rendelt súlyozást. 1 értékkel egyenlő vagy annál kisebb értéket használjon. A kisebb értékek miatt az algoritmus kevésbé lesz újraaktiválva a hirtelen változásokkal. |
 | excludedTypes | null | Pontosvesszővel tagolt lista, amelyet nem szeretne mintát venni. A felismert típusok a következők:,,,, `Dependency` `Event` `Exception` `PageView` `Request` és `Trace` . A rendszer továbbítja a megadott típusok összes példányát. a nem megadott típusok mintául szolgálnak. |
 | includedTypes | null | A mintavételhez használni kívánt típusok pontosvesszővel tagolt listája; az üres lista minden típust magában foglalja. Írja be az `excludedTypes` itt felsorolt felülbírálási típusok listán szereplő típust. A felismert típusok a következők:,,,, `Dependency` `Event` `Exception` `PageView` `Request` és `Trace` . A megadott típusok példányainak mintája; a nem megadott vagy vélelmezett típusú típusok mintavételezés nélkül továbbítódnak. |
 
@@ -175,33 +175,33 @@ A teljes JSON-struktúra esetében tekintse [meg a fájl host.jskorábbi példá
 
 |Tulajdonság | Alapértelmezett | Description |
 | --------- | --------- | --------- | 
-| enableHttpTriggerExtendedInfoCollection | igaz | Engedélyezheti vagy letilthatja a http-eseményindítók kiterjesztett HTTP-kérelmi információit: bejövő kérelmek korrelációs fejlécei, többtényezős kulcsok támogatása, HTTP-metódus, elérési út és válasz. |
-| enableW3CDistributedTracing | igaz | Engedélyezheti vagy letilthatja a W3C elosztott nyomkövetési protokoll támogatását (és bekapcsolja az örökölt korrelációs sémát). Alapértelmezés szerint engedélyezve `enableHttpTriggerExtendedInfoCollection` , ha igaz. Ha `enableHttpTriggerExtendedInfoCollection` a értéke false (hamis), ez a jelző csak a kimenő kérelmekre vonatkozik, nem a bejövő kérelmekre. |
-| enableResponseHeaderInjection | igaz | Engedélyezheti vagy letilthatja a többszörös összetevők korrelációs fejlécének a válaszokban való befecskendezését. Az injekció engedélyezése lehetővé teszi, hogy Application Insights egy alkalmazás-hozzárendelést, hogy több rendszerállapot-kulcs legyen használatban. Alapértelmezés szerint engedélyezve `enableHttpTriggerExtendedInfoCollection` , ha igaz. Ez a beállítás nem érvényes `enableHttpTriggerExtendedInfoCollection` , ha a értéke hamis. |
+| enableHttpTriggerExtendedInfoCollection | true | Engedélyezheti vagy letilthatja a http-eseményindítók kiterjesztett HTTP-kérelmi információit: bejövő kérelmek korrelációs fejlécei, többtényezős kulcsok támogatása, HTTP-metódus, elérési út és válasz. |
+| enableW3CDistributedTracing | true | Engedélyezheti vagy letilthatja a W3C elosztott nyomkövetési protokoll támogatását (és bekapcsolja az örökölt korrelációs sémát). Alapértelmezés szerint engedélyezve `enableHttpTriggerExtendedInfoCollection` , ha igaz. Ha `enableHttpTriggerExtendedInfoCollection` a értéke false (hamis), ez a jelző csak a kimenő kérelmekre vonatkozik, nem a bejövő kérelmekre. |
+| enableResponseHeaderInjection | true | Engedélyezheti vagy letilthatja a többszörös összetevők korrelációs fejlécének a válaszokban való befecskendezését. Az injekció engedélyezése lehetővé teszi, hogy Application Insights egy alkalmazás-hozzárendelést, hogy több rendszerállapot-kulcs legyen használatban. Alapértelmezés szerint engedélyezve `enableHttpTriggerExtendedInfoCollection` , ha igaz. Ez a beállítás nem érvényes `enableHttpTriggerExtendedInfoCollection` , ha a értéke hamis. |
 
 ### <a name="applicationinsightssnapshotconfiguration"></a>applicationInsights. snapshotConfiguration
 
-A pillanatképekkel kapcsolatos további információkért tekintse meg a [.NET-alkalmazásokban előforduló kivételek hibakeresését](/azure/azure-monitor/app/snapshot-debugger) ismertető témakört, valamint a [Application Insights Snapshot Debugger vagy Pillanatképek megtekintését engedélyező problémákat](/azure/azure-monitor/app/snapshot-debugger-troubleshoot)
+A pillanatképekkel kapcsolatos további információkért tekintse meg a [.NET-alkalmazásokban előforduló kivételek hibakeresését](../azure-monitor/app/snapshot-debugger.md) ismertető témakört, valamint a [Application Insights Snapshot Debugger vagy Pillanatképek megtekintését engedélyező problémákat](../azure-monitor/app/snapshot-debugger-troubleshoot.md)
 
 |Tulajdonság | Alapértelmezett | Description |
 | --------- | --------- | --------- | 
 | agentEndpoint | null | A Application Insights Snapshot Debugger szolgáltatáshoz való kapcsolódáshoz használt végpont. Ha NULL, a rendszer egy alapértelmezett végpontot használ. |
 | captureSnapshotMemoryWeight | 0,5 | A folyamat aktuális memória-méretéhez megadott súlyozás, ha a rendszer ellenőrzi, hogy van-e elég memória a pillanatkép elvégzéséhez. A várt érték nagyobb, mint 0 megfelelő tört (0 < CaptureSnapshotMemoryWeight < 1). |
 | failedRequestLimit | 3 | A telemetria-processzor letiltása előtt a pillanatképek kérésére vonatkozó sikertelen kérelmek számának korlátozása.|
-| handleUntrackedExceptions | igaz | Engedélyezheti vagy letilthatja a Application Insights telemetria által nem követett kivételek nyomon követését. |
-| isEnabled | igaz | Pillanatkép-gyűjtemények engedélyezése vagy letiltása | 
+| handleUntrackedExceptions | true | Engedélyezheti vagy letilthatja a Application Insights telemetria által nem követett kivételek nyomon követését. |
+| isEnabled | true | Pillanatkép-gyűjtemények engedélyezése vagy letiltása | 
 | isEnabledInDeveloperMode | hamis | A pillanatkép-gyűjtemények engedélyezése vagy letiltása fejlesztői módban. |
-| isEnabledWhenProfiling | igaz | Engedélyezheti vagy letilthatja a pillanatképek létrehozását, még akkor is, ha a Application Insights Profiler részletes profilkészítési munkamenetet gyűjt. |
+| isEnabledWhenProfiling | true | Engedélyezheti vagy letilthatja a pillanatképek létrehozását, még akkor is, ha a Application Insights Profiler részletes profilkészítési munkamenetet gyűjt. |
 | isExceptionSnappointsEnabled | hamis | Engedélyezheti vagy letilthatja a kivételek szűrését. |
-| isLowPrioritySnapshotUploader | igaz | Meghatározza, hogy a SnapshotUploader folyamat a normál prioritás alatt fusson-e. |
+| isLowPrioritySnapshotUploader | true | Meghatározza, hogy a SnapshotUploader folyamat a normál prioritás alatt fusson-e. |
 | maximumCollectionPlanSize | 50 | Az egyiktől a 9999-ig terjedő tartományban bármikor nyomon követhető problémák maximális száma. |
 | maximumSnapshotsRequired | 3 | Egy adott problémára összegyűjtött Pillanatképek maximális száma az egyiktől a 999-ig terjedő tartományban. Probléma lehet az alkalmazás egyéni Throw utasítása. Ha a problémához összegyűjtött Pillanatképek száma eléri ezt az értéket, a rendszer nem gyűjt további pillanatképeket a problémához, amíg vissza nem állítja a problémát számlálókat (lásd: `problemCounterResetInterval` ), és a `thresholdForSnapshotting` korlát újra elérhetővé válik. |
 | problemCounterResetInterval | 24:00:00 | Milyen gyakran kell alaphelyzetbe állítani a probléma számlálóit egy perc és hét nap között. Ha eléri ezt az időközt, a rendszer az összes probléma számát nullára állítja vissza. A meglévő olyan problémák, amelyek már elértek a pillanatképek küszöbértékét, de még nem hozták létre a pillanatképek számát a alkalmazásban `maximumSnapshotsRequired` , aktívak maradnak. |
-| provideAnonymousTelemetry | igaz | Meghatározza, hogy a névtelen használatot és a hibát telemetria kell-e küldeni a Microsoftnak. Ez a telemetria akkor használható, ha felveszi a kapcsolatot a Microsofttal a Snapshot Debugger problémáinak elhárítása érdekében. A használati minták figyelésére is használható. |
+| provideAnonymousTelemetry | true | Meghatározza, hogy a névtelen használatot és a hibát telemetria kell-e küldeni a Microsoftnak. Ez a telemetria akkor használható, ha felveszi a kapcsolatot a Microsofttal a Snapshot Debugger problémáinak elhárítása érdekében. A használati minták figyelésére is használható. |
 | reconnectInterval | 00:15:00 | Az Snapshot Debugger-végponthoz való Újrakapcsolódás gyakorisága. A megengedett tartomány egy perc és egy nap között lehet. |
 | shadowCopyFolder | null | A bináris fájlok árnyékmásolat-másolásához használandó mappát adja meg. Ha nincs beállítva, az alábbi környezeti változók által megadott mappák a következő sorrendben lesznek kipróbálva: Fabric_Folder_App_Temp, LOCALAPPDATA, APPDATA, TEMP. |
-| shareUploaderProcess | igaz | Ha az értéke igaz, a SnapshotUploader csak egy példánya gyűjt és tölt fel pillanatképeket több, a InstrumentationKey-t használó alkalmazáshoz. Ha hamis értékre van állítva, a SnapshotUploader minden (ProcessName, InstrumentationKey) rekord esetében egyedi lesz. |
-| snapshotInLowPriorityThread | igaz | Meghatározza, hogy a pillanatképek feldolgozása alacsony IO-prioritású szálon történjen-e. A pillanatképek létrehozása gyors művelet, de a pillanatképnek a Snapshot Debugger szolgáltatásba való feltöltéséhez először a lemezre kell írni minidump. Ez a SnapshotUploader folyamat során történik. Ha ezt az értéket igaz értékre állítja, az alacsony prioritású IO-t használja a minidump írásához, amely nem fog versenyezni az alkalmazás erőforrásaival. Ha ezt az értéket hamis értékre állítja, a minidump létrehozása az alkalmazás lelassulásának rovására kerül. |
+| shareUploaderProcess | true | Ha az értéke igaz, a SnapshotUploader csak egy példánya gyűjt és tölt fel pillanatképeket több, a InstrumentationKey-t használó alkalmazáshoz. Ha hamis értékre van állítva, a SnapshotUploader minden (ProcessName, InstrumentationKey) rekord esetében egyedi lesz. |
+| snapshotInLowPriorityThread | true | Meghatározza, hogy a pillanatképek feldolgozása alacsony IO-prioritású szálon történjen-e. A pillanatképek létrehozása gyors művelet, de a pillanatképnek a Snapshot Debugger szolgáltatásba való feltöltéséhez először a lemezre kell írni minidump. Ez a SnapshotUploader folyamat során történik. Ha ezt az értéket igaz értékre állítja, az alacsony prioritású IO-t használja a minidump írásához, amely nem fog versenyezni az alkalmazás erőforrásaival. Ha ezt az értéket hamis értékre állítja, a minidump létrehozása az alkalmazás lelassulásának rovására kerül. |
 | snapshotsPerDayLimit | 30 | Egy nap alatt engedélyezett Pillanatképek maximális száma (24 óra). Ez a korlát a Application Insights szolgáltatási oldalon is érvényben van. A feltöltések díjszabása napi 50-ra korlátozódik (ez a rendszerállapot-kulcs). Ez az érték segít megelőzni a feltöltés során a végül elutasított további pillanatképek létrehozását. A nulla érték teljesen eltávolítja a korlátot, ami nem ajánlott. |
 | snapshotsPerTenMinutesLimit | 1 | A pillanatképek maximális száma 10 percen belül. Bár ehhez az értékhez nincs felső korlát, körültekintően kell megnövelni az éles számítási feladatokhoz, mert ez hatással lehet az alkalmazás teljesítményére. A pillanatképek létrehozása gyorsan elvégezhető, de a pillanatkép minidump létrehozása és a Snapshot Debugger szolgáltatásba való feltöltése sokkal lassabb művelet, amely az erőforrásokhoz (CPU és I/O) való alkalmazással verseng. |
 | tempFolder | null | Meghatározza a minidumps és a feltöltő naplófájljainak írására szolgáló mappát. Ha nincs beállítva, akkor a rendszer a *%temp%\Dumps* használja. |
@@ -277,7 +277,7 @@ A [gazdagép állapotának figyelésére](https://github.com/Azure/azure-webjobs
 
 |Tulajdonság  |Alapértelmezett | Description |
 |---------|---------|---------| 
-|engedélyezve|igaz|Megadja, hogy engedélyezve van-e a szolgáltatás. | 
+|engedélyezve|true|Megadja, hogy engedélyezve van-e a szolgáltatás. | 
 |healthCheckInterval|10 másodperc|Az időszakos háttér állapotának ellenőrzése közötti időtartam. | 
 |healthCheckWindow|2 perc|A beállítással együtt használt csúszó Time-ablak `healthCheckThreshold` .| 
 |healthCheckThreshold|6|Az állapot-ellenőrzések maximális száma a gazdagép újraindítása előtt.| 
@@ -310,7 +310,7 @@ A Function alkalmazás naplózási viselkedését szabályozza, beleértve a App
 |Tulajdonság  |Alapértelmezett | Description |
 |---------|---------|---------|
 |fileLoggingMode|debugOnly|Meghatározza, hogy a fájlok naplózása milyen szintű legyen engedélyezve.  A lehetőségek a következők:, `never` `always` `debugOnly` . |
-|Naplózási szint|n.a.|Az alkalmazásban lévő függvények naplózási kategóriájának szűrését meghatározó objektum. A 2. x és újabb verziók esetében kövesse a naplózási kategória szűrésének ASP.NET Core elrendezését. Ezzel a beállítással szűrheti az adott függvények naplózását. További információ: [naplózási szűrés](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) a ASP.net Core dokumentációjában. |
+|Naplózási szint|n.a.|Az alkalmazásban lévő függvények naplózási kategóriájának szűrését meghatározó objektum. A 2. x és újabb verziók esetében kövesse a naplózási kategória szűrésének ASP.NET Core elrendezését. Ezzel a beállítással szűrheti az adott függvények naplózását. További információ: [naplózási szűrés](/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) a ASP.net Core dokumentációjában. |
 |konzol|n.a.| A [konzol](#console) naplózási beállítása. |
 |applicationInsights|n.a.| A [applicationInsights](#applicationinsights) beállítás. |
 

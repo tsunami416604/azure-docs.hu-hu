@@ -3,15 +3,16 @@ title: 'GYIK: Azure Files biztonsági mentése'
 description: Ebből a cikkből megismerheti az Azure-fájlmegosztás Azure Backup szolgáltatással való védelemmel kapcsolatos gyakori kérdésekre adott válaszokat.
 ms.date: 04/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: ded1551dad1be34c116e61b9bf59f372169bca5c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 134d9520a3c2348b23ec27c6e14eb56468f2002d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84488698"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87054976"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Kérdések az Azure Files biztonsági mentéséről
 
-Ez a cikk az Azure Files biztonsági mentésével kapcsolatos általános kérdéseket válaszol meg. Egyes válaszokban részletes információkat tartalmazó cikkekre mutató hivatkozások találhatók. A Microsoft Q&a Azure Backup szolgáltatással kapcsolatos kérdéseket is felteheti a [kérdéses oldalon](https://docs.microsoft.com/answers/topics/azure-backup.html).
+Ez a cikk az Azure Files biztonsági mentésével kapcsolatos általános kérdéseket válaszol meg. Egyes válaszokban részletes információkat tartalmazó cikkekre mutató hivatkozások találhatók. A Microsoft Q&a Azure Backup szolgáltatással kapcsolatos kérdéseket is felteheti a [kérdéses oldalon](/answers/topics/azure-backup.html).
 
 A cikk szakaszainak gyors áttekintéséhez használja **A cikk tartalma** terület hivatkozásait a jobb oldalon.
 
@@ -55,7 +56,7 @@ Egy tetszőleges időpontban legfeljebb 200 pillanatkép készíthető fájlmego
 
 ### <a name="can-i-recover-from-a-deleted-azure-file-share"></a>Tudok helyreállítani törölt Azure-fájlmegosztásból?
 
-Ha a fájlmegosztás lágyan törölt állapotban van, először törölnie kell a fájlmegosztást a visszaállítási művelet elvégzéséhez. A törlési művelettel a fájlmegosztás aktív állapotba kerül, ahol bármikor visszaállítható. A fájlmegosztás törlésének visszavonásához látogasson el [erre a hivatkozásra](https://docs.microsoft.com/azure/storage/files/storage-files-enable-soft-delete?tabs=azure-portal#restore-soft-deleted-file-share) , vagy tekintse meg a [fájlmegosztási parancsfájl törlésének](./scripts/backup-powershell-script-undelete-file-share.md)visszavonása című témakört. Ha a fájlmegosztás véglegesen törölve lett, nem fogja tudni visszaállítani a tartalmakat és a pillanatképeket.
+Ha a fájlmegosztás lágyan törölt állapotban van, először törölnie kell a fájlmegosztást a visszaállítási művelet elvégzéséhez. A törlési művelettel a fájlmegosztás aktív állapotba kerül, ahol bármikor visszaállítható. A fájlmegosztás törlésének visszavonásához látogasson el [erre a hivatkozásra](../storage/files/storage-files-enable-soft-delete.md?tabs=azure-portal#restore-soft-deleted-file-share) , vagy tekintse meg a [fájlmegosztási parancsfájl törlésének](./scripts/backup-powershell-script-undelete-file-share.md)visszavonása című témakört. Ha a fájlmegosztás véglegesen törölve lett, nem fogja tudni visszaállítani a tartalmakat és a pillanatképeket.
 
 ### <a name="can-i-restore-from-backups-if-i-stopped-protection-on-an-azure-file-share"></a>Vissza tudok állítani biztonsági mentésekből, ha leállítottam az Azure-fájlmegosztás védelmét?
 
@@ -104,8 +105,8 @@ Ha módosítja a napi biztonsági mentési szabályzatot a GFS házirendre (hete
 | -------------- | ------------------------------ | --------- |
 | Napi          | Minden nap 21:00 órakor              | 50 nap   |
 | Heti         | Vasárnap, 21:00 órakor              | 3 hét   |
-| Havonta        | Az utolsó hétfőn, 9 ÓRAKOR         | 1 hónap   |
-| Éves         | Januártól harmadik vasárnap, 21:00-kor | 4 év   |
+| havonta        | Az utolsó hétfőn, 9 ÓRAKOR         | 1 hónap   |
+| Évi         | Januártól harmadik vasárnap, 21:00-kor | 4 év   |
 
 #### <a name="impact"></a>Hatás
 
@@ -139,7 +140,7 @@ Amikor új házirendet alkalmaznak a fájlmegosztás esetében, az összes jöv�
 | -------------- | ---------------------- | --------- |
 | Napi          | Minden nap 21:00 órakor     | 10 nap   |
 | Heti         | Hétfőn, 21:00 órakor      | 2 hét   |
-| Havonta        | Az utolsó hétfőn, 9 ÓRAKOR | 2 hónap  |
+| havonta        | Az utolsó hétfőn, 9 ÓRAKOR | 2 hónap  |
 
 #### <a name="impact-of-change"></a>A változás hatása
 

@@ -1,20 +1,20 @@
 ---
 title: Azure IoT Edge modul létrehozása az Azure Marketplace-en a partner centerrel
-description: Megtudhatja, hogyan hozhat létre, konfigurálhat és tehet közzé IoT Edge modul-ajánlatokat az Azure piactéren a partner Center használatával
+description: Megtudhatja, hogyan hozhat létre, konfigurálhat és tehet közzé IoT Edge modul-ajánlatokat az Azure piactéren a partner Center használatával.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: article
 author: anbene
 ms.author: mingshen
-ms.date: 06/17/2020
-ms.openlocfilehash: 11deb9b8146924d1a493872219ad85556d13c405
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 07/22/2020
+ms.openlocfilehash: b2a1e523e2af8c0be9c4211dfc8a0ffd2a889ca0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86520272"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87053667"
 ---
-# <a name="create-configure-and-publish-an-iot-edge-module-offer-in-azure-marketplace"></a>IoT Edge modul ajánlatának létrehozása, konfigurálása és közzététele az Azure Marketplace-en
+# <a name="create-an-iot-edge-module-offer"></a>IoT Edge-modulajánlat létrehozása
 
 Ez a cikk bemutatja, hogyan hozhat létre és tehet közzé egy eszközök internetes hálózata (IoT) Edge-modult az Azure Marketplace-hez. A Kezdés előtt [hozzon létre egy kereskedelmi Piactéri fiókot a partner Centerben](create-account.md) , ha még nem tette meg. Győződjön meg róla, hogy a fiókja regisztrálva van a kereskedelmi piactér programban.
 
@@ -149,7 +149,7 @@ Adja meg az ajánlat rövid leírását. Ez akár 100 karakter hosszú lehet, é
 
 Adja meg az ajánlat részletesebb leírását. Ez akár 256 karakter hosszú lehet, és a piactér keresési eredményeiben használható.
 
-### <a name="description"></a>Leírás
+### <a name="description"></a>Description
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -231,7 +231,7 @@ Az alábbi példa bemutatja, hogyan jelennek meg az ajánlati információk az A
 5. Adatvédelmi szabályzat címe (hivatkozás)
 6. Name
 7. Összegzés
-8. Leírás
+8. Description
 9. Hasznos hivatkozások
 10. Képernyőképek/videók
 
@@ -483,6 +483,6 @@ Az ajánlat közzétételre való elküldéséhez válassza a **Közzététel**l
 
 Egy e-mailt küldünk, amelyből megtudhatja, hogy az ajánlat előzetes verziója elérhető-e a felülvizsgálathoz és jóváhagyáshoz. Az ajánlat nyilvános közzétételéhez lépjen a partner Center webhelyre, és válassza a **Go-Live**lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Meglévő ajánlat frissítése a kereskedelmi piactéren](https://docs.microsoft.com//azure/marketplace/partner-center-portal/update-existing-offer)

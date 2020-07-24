@@ -8,14 +8,14 @@ metadata:
   ms.topic: landing-page
   ms.collection: collection
   author: ekpgh
-  ms.author: rohogue
+  ms.author: v-erkel
   ms.date: 11/07/2019
-  ms.openlocfilehash: 3cee41dd9cb4852eab884345404ba89eff8d9d91
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: a31fb7a2878766e960e602e5167df4f92a978f25
+  ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "77651032"
+  ms.lasthandoff: 07/23/2020
+  ms.locfileid: "87061287"
 landingContent:
 - title: Az Azure HPC Cache bemutatása
   linkLists:
@@ -23,12 +23,12 @@ landingContent:
     links:
     - text: Mi az az Azure HPC Cache?
       url: hpc-cache-overview.md
-- title: Első lépések
+- title: Bevezetés
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: Az Azure HPC Cache konfigurálásának előfeltételei
-      url: hpc-cache-prereqs.md
+      url: hpc-cache-prerequisites.md
     - text: A gyorsítótár létrehozása
       url: hpc-cache-create.md
     - text: Tároló hozzáadása

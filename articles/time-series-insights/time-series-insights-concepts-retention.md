@@ -5,26 +5,26 @@ ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
 ms.author: dpalled
-manager: cshankar
+manager: diviso
 ms.reviewer: jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 07/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: fd34595d5ea942602efc920904ff326fc203c088
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 005725acf7270ff87ac9418f27941bdb205ae986
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81380688"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87059419"
 ---
-# <a name="understand-data-retention-in-azure-time-series-insights"></a>Az adatmegőrzés ismertetése Azure Time Series Insights
+# <a name="understand-data-retention-in-azure-time-series-insights-gen1"></a>Az adatmegőrzés ismertetése Azure Time Series Insights Gen1
 
 Ez a cikk két olyan elsődleges beállítást ismertet, amelyek hatással vannak az adatmegőrzésre a Azure Time Series Insights-környezetben.
 
 ## <a name="video"></a>Videó
 
-### <a name="the-following-video-summarizes-time-series-insights-data-retention-and-how-to-plan-for-itbr"></a>Az alábbi videó összefoglalja Time Series Insights adatmegőrzést, és azt, hogyan tervezze meg.</br>
+### <a name="the-following-video-summarizes-azure-time-series-insights-data-retention-and-how-to-plan-for-itbr"></a>Az alábbi videó összefoglalja Azure Time Series Insights adatmegőrzést, és azt, hogyan tervezze meg.</br>
 
 > [!VIDEO https://www.youtube.com/embed/03x6zKDQ6DU]
 
@@ -36,15 +36,15 @@ Emellett a Azure Time Series Insights-környezet **tárolási korlátja túllép
 - **Bejövő forgalom szüneteltetése**
 
 > [!NOTE]
-> Új környezet létrehozásakor alapértelmezés szerint a megőrzés a **régi adatok törlésére**van konfigurálva. Ez a beállítás a Time Series Insights-környezet **configure (Konfigurálás** ) lapjának a Azure Portal használatával történő létrehozása után igény szerint állítható be.
-> * Az adatmegőrzési szabályzatok konfigurálásával kapcsolatos információkért olvassa el a [Time Series Insights megőrzésének konfigurálása](time-series-insights-how-to-configure-retention.md)című témakört.
+> Új környezet létrehozásakor alapértelmezés szerint a megőrzés a **régi adatok törlésére**van konfigurálva. Ez a beállítás a Azure Time Series Insights-környezet **configure (Konfigurálás** ) lapjának a Azure Portal használatával történő létrehozása után igény szerint állítható be.
+> * Az adatmegőrzési szabályzatok konfigurálásával kapcsolatos információkért olvassa el a [Azure Time Series Insights megőrzésének konfigurálása](time-series-insights-how-to-configure-retention.md)című témakört.
 
 Az adatmegőrzési szabályzatokat az alábbiakban részletesebben ismertetjük.
 
 ## <a name="purge-old-data"></a>Régi adattörlés
 
 - Azure Time Series Insights környezetek esetében az alapértelmezett beállítás a **régi értékek törlése** .  
-- A **régi adattörlést** akkor érdemes használni, ha a felhasználók mindig rendelkeznek a *legfrissebb* adatTime Series Insights-környezetben.
+- A **régi adattörlést** akkor érdemes használni, ha a felhasználók mindig rendelkeznek a *legfrissebb* adatAzure Time Series Insights-környezetben.
 - A **régi adattörlési** beállítás *kiüríti* az adatmennyiséget, ha a környezet korlátait (a megőrzési időt, a méretet vagy a darabszámot) eléri. Alapértelmezés szerint a megőrzés értéke 30 nap.
 - A legrégebbi betöltött adatot a rendszer először kiüríti (a "először az elsőben" megközelítést).
 
@@ -69,7 +69,7 @@ Ha a környezet napi beléptetési aránya meghaladja a napi 0,166 GB-ot, az ada
 - Segít az adatvesztés elleni védelemben, de létrehozhat egy lehetőséget a legutóbbi adatok elvesztésére, ha a bejövő forgalom szünetel az eseményforrás megőrzési időtartamán túl.
 - A környezet maximális kapacitásának elérésekor azonban a környezet szünetelteti az adatbevitelt, amíg a következő további műveletek nem történnek:
 
-   - A környezet maximális kapacitásának növelésével további méretezési egységeket adhat hozzá a [Time Series Insights-környezet skálázása](time-series-insights-how-to-scale-your-environment.md)című témakörben leírtak szerint.
+   - A környezet maximális kapacitásának növelésével további méretezési egységeket adhat hozzá a [Azure Time Series Insights-környezet skálázása](time-series-insights-how-to-scale-your-environment.md)című témakörben leírtak szerint.
    - A rendszer elérte az adatmegőrzési időszakot, és az adatok törlődnek, így a környezet a maximális kapacitás alatt marad.
 
 ### <a name="example-three"></a>Harmadik példa
@@ -86,16 +86,16 @@ A bejövő forgalom folytatásakor:
 > [!IMPORTANT]
 > Riasztásokat kell beállítania, hogy értesítést kapjon a bejövő forgalom szüneteltetésének elkerüléséhez. Az adatvesztés lehetséges, mivel az alapértelmezett megőrzési idő 1 nap az Azure-eseményeknél. Ezért a bejövő forgalom felfüggesztése után valószínűleg elveszíti a legutóbbi adatvesztést, kivéve, ha további műveletet végez. Az adatvesztés elkerülése érdekében növelje a kapacitást, vagy váltson viselkedésre a **régi adatmennyiség törléséhez** .
 
-Az érintett Event Hubsban érdemes lehet módosítani az üzenet- **megőrzési** tulajdonságot, hogy az adatvesztés minimálisra csökkenjen, ha az Time Series Insights.
+Az érintett Event Hubsban érdemes lehet módosítani az üzenet- **megőrzési** tulajdonságot, hogy az adatvesztés minimálisra csökkenjen, ha az Azure Time Series Insights.
 
 [![Event hub-üzenetek megőrzése.](media/time-series-insights-concepts-retention/event-hub-retention.png)](media/time-series-insights-concepts-retention/event-hub-retention.png#lightbox)
 
-Ha az eseményforrás () egyik tulajdonság sincs konfigurálva `timeStampPropertyName` , Time Series Insights alapértelmezett érték az Event hub-ban az X tengelyként való érkezés időbélyege. Ha `timeStampPropertyName` úgy van konfigurálva, hogy valami más legyen, a környezet az `timeStampPropertyName` események elemzésekor az adatcsomagban konfigurált konfigurációt keresi.
+Ha az eseményforrás () egyik tulajdonság sincs konfigurálva `timeStampPropertyName` , Azure Time Series Insights alapértelmezett érték az Event hub-ban az X tengelyként való érkezés időbélyege. Ha `timeStampPropertyName` úgy van konfigurálva, hogy valami más legyen, a környezet az `timeStampPropertyName` események elemzésekor az adatcsomagban konfigurált konfigurációt keresi.
 
-Olvassa el, [Hogyan méretezheti Time Series Insights-környezetét](time-series-insights-how-to-scale-your-environment.md) úgy, hogy a környezetét a további kapacitásra vagy a megőrzési időtartamra növelje.
+Olvassa el, [Hogyan méretezheti Azure Time Series Insights-környezetét](time-series-insights-how-to-scale-your-environment.md) úgy, hogy a környezetét a további kapacitásra vagy a megőrzési időtartamra növelje.
 
 ## <a name="next-steps"></a>További lépések
 
-- Az adatmegőrzési beállítások konfigurálásával és módosításával kapcsolatos információkért tekintse át [az adatmegőrzés konfigurálása Time Series Insightsban](time-series-insights-how-to-configure-retention.md)című témakört.
+- Az adatmegőrzési beállítások konfigurálásával és módosításával kapcsolatos információkért tekintse át [az adatmegőrzés konfigurálása Azure Time Series Insightsban](time-series-insights-how-to-configure-retention.md)című témakört.
 
 - Ismerje meg a [Azure Time Series Insights késésének csökkentését](time-series-insights-environment-mitigate-latency.md).

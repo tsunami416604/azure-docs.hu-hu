@@ -10,12 +10,12 @@ ms.subservice: keys
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: ambapat
-ms.openlocfilehash: 4eea0529e88e183ab517e8546e3ec1cb3cd0af7d
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: e67769d37b45a9e1344ce6aa72bd1e60e6bfe287
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86042934"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87061278"
 ---
 # <a name="import-hsm-protected-keys-for-key-vault-ncipher"></a>HSM-védelemmel ellátott kulcsok importálása Key Vaulthoz (nCipher)
 
@@ -62,7 +62,7 @@ Az alábbi táblázatban megtekintheti a saját kulcs (BYOK) használatának el�
 | Előfizetés az Azure-ba |Azure Key Vault létrehozásához Azure-előfizetésre van szükség: [regisztráljon az ingyenes próbaverzióra](https://azure.microsoft.com/pricing/free-trial/) |
 | A Azure Key Vault Premium szolgáltatási réteg HSM-védelemmel ellátott kulcsok támogatásához |A Azure Key Vault szolgáltatási szintjeivel és képességeivel kapcsolatos további információkért tekintse meg a [Azure Key Vault díjszabási](https://azure.microsoft.com/pricing/details/key-vault/) webhelyét. |
 | nCipher nShield HSM, intelligens kártyák és támogatási szoftverek |Hozzá kell férnie a nCipher hardveres biztonsági modulhoz, valamint a nCipher nShield HSM alapszintű működési ismeretéhez. Tekintse meg a [NCipher NShield hardveres biztonsági modult](https://www.ncipher.com/products/key-management/cloud-microsoft-azure/how-to-buy) a kompatibilis modellek listájához, vagy ha nem rendelkezik ilyennel, akkor VÁSÁROLjon HSM-et. |
-| A következő hardverek és szoftverek:<ol><li>Egy offline x64-es munkaállomás, amely a Windows 7 minimális Windows-operációs rendszerét és a nCipher nShield szoftvert legalább 11,50-es verzióval rendelkezik.<br/><br/>Ha ez a munkaállomás Windows 7 rendszert futtat, [telepítenie kell Microsoft .NET Framework 4,5](https://download.microsoft.com/download/b/a/4/ba4a7e71-2906-4b2d-a0e1-80cf16844f5f/dotnetfx45_full_x86_x64.exe)-es keretrendszert.</li><li>Egy internethez csatlakozó munkaállomás, amely a Windows 7 minimális Windows operációs rendszerét és a [Azure PowerShell](/powershell/azure/overview?view=azps-1.2.0) **minimálisan szükséges 1.1.0-verziót** telepítette.</li><li>USB-meghajtó vagy más hordozható tárolóeszköz, amelyen legalább 16 MB szabad terület található.</li></ol> |Biztonsági okokból javasoljuk, hogy az első munkaállomás ne csatlakozzon hálózathoz. Ez a javaslat azonban nincs programozott módon kényszerítve.<br/><br/>Az alábbi utasításokban ezt a munkaállomást leválasztott munkaállomásként nevezzük.</p></blockquote><br/>Emellett, ha a bérlői kulcs éles hálózatra vonatkozik, javasoljuk, hogy egy második, külön munkaállomás használatával töltse le az eszközkészletet, és töltse fel a bérlői kulcsot. Tesztelési célokra azonban használhatja az első munkaállomást is.<br/><br/>Az alábbi utasításokban ezt a második munkaállomást internetkapcsolattal rendelkező munkaállomásnak nevezzük.</p></blockquote><br/> |
+| A következő hardverek és szoftverek:<ol><li>Egy offline x64-es munkaállomás, amely a Windows 7 minimális Windows-operációs rendszerét és a nCipher nShield szoftvert legalább 11,50-es verzióval rendelkezik.<br/><br/>Ha ez a munkaállomás Windows 7 rendszert futtat, [telepítenie kell Microsoft .NET Framework 4,5](https://download.microsoft.com/download/b/a/4/ba4a7e71-2906-4b2d-a0e1-80cf16844f5f/dotnetfx45_full_x86_x64.exe)-es keretrendszert.</li><li>Egy internethez csatlakozó munkaállomás, amely a Windows 7 minimális Windows operációs rendszerét és a [Azure PowerShell](/powershell/azure/?view=azps-1.2.0) **minimálisan szükséges 1.1.0-verziót** telepítette.</li><li>USB-meghajtó vagy más hordozható tárolóeszköz, amelyen legalább 16 MB szabad terület található.</li></ol> |Biztonsági okokból javasoljuk, hogy az első munkaállomás ne csatlakozzon hálózathoz. Ez a javaslat azonban nincs programozott módon kényszerítve.<br/><br/>Az alábbi utasításokban ezt a munkaállomást leválasztott munkaállomásként nevezzük.</p></blockquote><br/>Emellett, ha a bérlői kulcs éles hálózatra vonatkozik, javasoljuk, hogy egy második, külön munkaállomás használatával töltse le az eszközkészletet, és töltse fel a bérlői kulcsot. Tesztelési célokra azonban használhatja az első munkaállomást is.<br/><br/>Az alábbi utasításokban ezt a második munkaállomást internetkapcsolattal rendelkező munkaállomásnak nevezzük.</p></blockquote><br/> |
 
 ## <a name="generate-and-transfer-your-key-to-azure-key-vault-hsm"></a>A kulcs előállítása és átvitele Azure Key Vault HSM-be
 
@@ -80,7 +80,7 @@ Ebben az első lépésben hajtsa végre az alábbi eljárásokat az internethez 
 
 ### <a name="step-11-install-azure-powershell"></a>1,1. lépés: a Azure PowerShell telepítése
 
-Az internethez csatlakoztatott munkaállomáson töltse le és telepítse a Azure PowerShell modult, amely tartalmazza a Azure Key Vault kezelésére szolgáló parancsmagokat. A telepítési utasításokért lásd: [Azure PowerShell telepítése és konfigurálása](/powershell/azure/overview).
+Az internethez csatlakoztatott munkaállomáson töltse le és telepítse a Azure PowerShell modult, amely tartalmazza a Azure Key Vault kezelésére szolgáló parancsmagokat. A telepítési utasításokért lásd: [Azure PowerShell telepítése és konfigurálása](/powershell/azure/).
 
 ### <a name="step-12-get-your-azure-subscription-id"></a>1,2. lépés: az Azure-előfizetés AZONOSÍTÓjának beolvasása
 

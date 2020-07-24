@@ -5,38 +5,38 @@ ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
 ms.author: dpalled
-manager: cshankar
+manager: diviso
 ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
-ms.date: 04/13/2020
-ms.openlocfilehash: 5bc160076e6a06c7ddcc99d989eb6d9c7fb3fe0f
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.date: 06/30/2020
+ms.openlocfilehash: 2140cbbc43af7f80c0c5fc2d7cea85cb31bd7bfe
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86042288"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87059349"
 ---
-# <a name="quickstart-explore-azure-time-series-insights"></a>Rövid útmutató: Ismerkedés az Azure Time Series Insightsszal
+# <a name="quickstart-explore-azure-time-series-insights-gen1"></a>Gyors útmutató: Azure Time Series Insights Gen1 megismerése
 
-Ez a Azure Time Series Insights Explorer rövid útmutató segítséget nyújt a Time Series Insights ingyenes bemutató környezetben való megkezdéséhez. Ebből a rövid útmutatóból megtudhatja, hogyan használhatja a webböngészőt nagy mennyiségű IoT-információ és az általánosan elérhető főbb funkciók megjelenítésére.
+Ez a Azure Time Series Insights Explorer rövid útmutató segítséget nyújt a Azure Time Series Insights ingyenes bemutató környezetben való megkezdéséhez. Ebből a rövid útmutatóból megtudhatja, hogyan használhatja a webböngészőt nagy mennyiségű IoT-információ és az általánosan elérhető főbb funkciók megjelenítésére.
 
 A Azure Time Series Insights egy teljes körűen felügyelt elemzési, tárolási és vizualizációs szolgáltatás, amely leegyszerűsíti a IoT-események milliárdjainak egyidejű feltárását és elemzését. Globális áttekintést nyújt az adatairól, így gyorsan ellenőrizheti IoT-megoldását, és elkerülheti az üzleti szempontból kritikus fontosságú eszközök költséges leállását. Azure Time Series Insights segít felderíteni a rejtett trendeket, a helyszíni rendellenességeket és a kiváltó okok elemzését közel valós időben.
 
 A további rugalmasság érdekében a hatékony [REST API](./concepts-query-overview.md) -kon és az [ügyfél-SDK](https://github.com/microsoft/tsiclient)-n keresztül Azure Time Series Insights adhat hozzá egy meglévő alkalmazáshoz. Az API-k segítségével az idősorozat-adatai tárolhatók, lefoglalhatók és felhasználhatók az Ön által választott ügyfélalkalmazások számára. Az ügyfél-SDK használatával felhasználói felületi összetevőket is hozzáadhat a meglévő alkalmazáshoz.
 
-Ez a Time Series Insights Explorer rövid útmutató az általánosan elérhető funkciókkal kapcsolatos interaktív bemutatót kínál.
+Ez a Azure Time Series Insights Explorer rövid útmutató a funkciók interaktív bemutatóját kínálja.
 
 > [!IMPORTANT]
 > Hozzon létre egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) , ha még nem hozott létre egyet.
 
 ## <a name="prepare-the-demo-environment"></a>A bemutató környezet előkészítése
 
-1. A böngészőben nyissa meg az [általános elérhetőségi bemutatót](https://insights.timeseries.azure.com/demo).
+1. A böngészőben nyissa meg a [Gen1 bemutatóját](https://insights.timeseries.azure.com/demo).
 
-1. Ha a rendszer kéri, jelentkezzen be a Time Series Insights Explorerbe az Azure-fiókja hitelesítő adataival.
+1. Ha a rendszer kéri, jelentkezzen be a Azure Time Series Insights Explorerbe az Azure-fiókja hitelesítő adataival.
 
-1. Megjelenik a Time Series Insights gyors bemutató oldal. A gyors bemutató elindításához kattintson a **tovább** gombra.
+1. Megjelenik a Azure Time Series Insights gyors bemutató oldal. A gyors bemutató elindításához kattintson a **tovább** gombra.
 
    [![Gyors útmutató – válassza a tovább lehetőséget](media/quickstart/quickstart-welcome.png)](media/quickstart/quickstart-welcome.png#lightbox)
 
@@ -50,7 +50,7 @@ Ez a Time Series Insights Explorer rövid útmutató az általánosan elérhető
 
    [![Időkeret kiválasztása](media/quickstart/quickstart-select-time.png)](media/quickstart/quickstart-select-time.png#lightbox)
 
-   A Time Series Insights megjelenít egy diagramot a megadott időkerethez. A vonalas diagramon különböző műveleteket végezhet el. Például szűrheti, rögzítheti, rendezheti és halmozhatja fel.
+   Azure Time Series Insights megjeleníti a megadott időkeret diagramjának vizualizációját. A vonalas diagramon különböző műveleteket végezhet el. Például szűrheti, rögzítheti, rendezheti és halmozhatja fel.
 
    Az **időkijelölési panelre**való visszatéréshez kattintson a lefelé mutató nyílra az ábrán látható módon:
 
@@ -91,6 +91,4 @@ Most, hogy elvégezte az oktatóanyagot, törölje a létrehozott erőforrásoka
 
 ## <a name="next-steps"></a>További lépések
 
-Készen áll a saját Time Series Insights környezet létrehozására:
-> [!div class="nextstepaction"]
-> [A Time Series Insights-környezet megtervezése](time-series-insights-environment-planning.md)
+* Készen áll a saját Azure Time Series Insights környezet létrehozására. Olvassa el [a Azure Time Series Insights-környezet megtervezése](time-series-insights-environment-planning.md)című cikkét.

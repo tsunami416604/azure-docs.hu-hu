@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.custom: has-adal-ref
-ms.openlocfilehash: 3833b27e9f90cbffa2320c84877d4eb5bb6520f7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a7d83c327eb1c37478c0c2e5725136d43a91a009
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82613268"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87061215"
 ---
 # <a name="ingest-historical-telemetry-data"></a>Korábbi telemetriaadatok feldolgozása
 
@@ -61,8 +61,14 @@ Kövesse az alábbi lépéseket:
     ```azurepowershell-interactive 
     cd
     ```
+    
+6. Futtassa az alábbi parancsot. Ezzel összekapcsolja az Azure AD-kérelmekhez használt hitelesített fiókot
 
-6. Futtassa a következő parancsot. Ezzel letölt egy parancsfájlt a saját könyvtárába.
+    ```azurepowershell-interactive 
+    Connect-AzureAD
+    ```
+
+7. Futtassa az alábbi parancsot. Ezzel letölt egy parancsfájlt a saját könyvtárába.
 
     ```azurepowershell-interactive 
 
@@ -70,7 +76,7 @@ Kövesse az alábbi lépéseket:
 
     ```
 
-7. Futtassa az alábbi parancsprogramot. A parancsfájl kéri a bérlő azonosítóját, amely **Azure Active Directory**  >  **áttekintő** oldalról kérhető le.
+8. Futtassa az alábbi parancsfájlt. A parancsfájl kéri a bérlő azonosítóját, amely **Azure Active Directory**  >  **áttekintő** oldalról kérhető le.
 
     ```azurepowershell-interactive 
 
@@ -78,7 +84,7 @@ Kövesse az alábbi lépéseket:
 
     ```
 
-8. A képernyőn megjelenő utasításokat követve rögzítheti az **API-végpont**, a **bérlői azonosító**, az **ügyfél-azonosító**, az **ügyfél titkos kulcsa**és a **EventHub kapcsolódási karakterláncának**értékét.
+9. A képernyőn megjelenő utasításokat követve rögzítheti az **API-végpont**, a **bérlői azonosító**, az **ügyfél-azonosító**, az **ügyfél titkos kulcsa**és a **EventHub kapcsolódási karakterláncának**értékét.
 
 
 ## <a name="create-device-or-sensor-metadata"></a>Eszköz vagy érzékelő metaadatainak létrehozása
@@ -103,7 +109,7 @@ Kövesse az alábbi lépéseket:
 |  ProductCode                    |  Eszköz Termékkód vagy modell neve vagy száma. Például: EnviroMonitor # 6800.  |
 |            Portok          |     A port neve és típusa, amely digitális vagy analóg.
 |     Name                 |  Az erőforrást azonosító név. Például a modell neve vagy a termék neve.
-      Leírás     | Adjon meg egy értelmes leírást a modellről.
+      Description     | Adjon meg egy értelmes leírást a modellről.
 |    Tulajdonságok          |    További tulajdonságok a gyártótól.   |
 |    **Eszköz**             |                      |
 |   DeviceModelId     |     A társított eszköz-modell azonosítója.  |
@@ -112,7 +118,7 @@ Kövesse az alábbi lépéseket:
 |  Hely            |  Az eszköz földrajzi szélessége (-90 és + 90), a hosszúság (-180 – 180) és a Jogosultságszint-emelés (méterben).
 |ParentDeviceId       |    Annak a fölérendelt eszköznek az azonosítója, amelyhez az eszköz csatlakoztatva van. Például egy átjáróhoz csatlakoztatott csomópont. A csomópontok átjáróként vannak parentDeviceId.  |
 |    Name            | Az erőforrás azonosítására szolgáló név. Az eszköz partnereinek olyan nevet kell küldeniük, amely konzisztens a partner oldalán található eszköznév nevével. Ha a partner eszköz neve felhasználó által definiált, akkor a felhasználó által definiált nevet is propagálni kell a FarmBeats.|
-|     Leírás       |      Adjon meg egy értelmes leírást. |
+|     Description       |      Adjon meg egy értelmes leírást. |
 |     Tulajdonságok    |  További tulajdonságok a gyártótól.
 |     **SensorModel**        |          |
 |       Típus (analóg, digitális)          |      Az érzékelő típusa, legyen az analóg vagy a digitális.       |
@@ -124,7 +130,7 @@ Kövesse az alábbi lépéseket:
 |        SensorMeasures > egység              | Az érzékelő telemetria-adategysége. A rendszer által meghatározott egységek: nincs egység, Celsius, Fahrenheit, Kelvin, Rankine, Pascal, Mercury, PSI, milliméter, centiméter, méter, hüvelyk, láb, Mile, kilométer, MilesPerHour, MilesPerSecond, KMPerHour, KMPerSecond, MetersPerHour, MetersPerSecond, Degree, WattsPerSquareMeter, KiloWattsPerSquareMeter, MilliWattsPerSquareCentiMeter, MilliJoulesPerSquareCentiMeter, VolumetricWaterContent, százalék, PartsPerMillion, MicroMol, MicroMolesPerLiter, SiemensPerSquareMeterPerMole, MilliSiemensPerCentiMeter, Centibar, DeciSiemensPerMeter, KiloPascal, VolumetricIonContent, liter, MilliLiter, másodperc, UnixTimestamp, MicroMolPerMeterSquaredPerSecond, InchesPerHour,/ExtendedType,,.|
 |    SensorMeasures > AggregationType    |  Az értékek a következők lehetnek: none, Average, Max, minimum vagy StandardDeviation.  |
 |          Name            | Egy erőforrás azonosítására szolgáló név. Például a modell neve vagy a termék neve.  |
-|    Leírás        | Adjon meg egy értelmes leírást a modellről.|
+|    Description        | Adjon meg egy értelmes leírást a modellről.|
 |   Tulajdonságok       |  További tulajdonságok a gyártótól.|
 |    **Érzékelő**      |          |
 | HardwareId          |   A gyártó által beállított érzékelő egyedi azonosítója.|
@@ -133,7 +139,7 @@ Kövesse az alábbi lépéseket:
 |   Port > neve        |  Annak a portnak a neve és típusa, amelyhez az érzékelő csatlakozik az eszközhöz. Ennek a névnek meg kell egyeznie az eszköz modelljében megadott névvel.|
 |    DeviceID  |    Annak az eszköznek az azonosítója, amelyhez az érzékelő csatlakozik. |
 | Name            |   Az erőforrást azonosító név. Például az érzékelő neve, a terméknév és a modell száma vagy a termékkód.|
-|    Leírás      | Adjon meg egy értelmes leírást.|
+|    Description      | Adjon meg egy értelmes leírást.|
 |    Tulajdonságok        |További tulajdonságok a gyártótól.|
 
 További információ az objektumokról: [hencegés](https://aka.ms/FarmBeatsDatahubSwagger).

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 06/29/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
-ms.openlocfilehash: 909f120275c58b04d8674f0610c40e13b96804b6
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 9e4c3615d16834a0517b46f1be7221eef28c602c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86143909"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87058747"
 ---
 # <a name="about-azure-virtual-wan"></a>Tudnivalók az Azure Virtual WAN-ról
 
@@ -110,7 +110,7 @@ A Virtual WAN speciális útválasztási fejlesztéseket biztosít. Lehetőség 
 
 ### <a name="global-vnet-peering"></a><a name="global"></a>Globális VNet-társítás
 
-A globális VNet-társítás egy mechanizmust biztosít két virtuális hálózatok különböző régiókban való összekapcsolásához. A virtuális WAN-ban a virtuális hálózati kapcsolatok virtuális hálózatok csatlakoznak a virtuális hubokhoz. A felhasználónak nem kell explicit módon beállítania a globális VNet-társítást. A virtuális központhoz csatlakoztatott virtuális hálózatok ugyanaz a régió VNet. Egy másik régióban lévő virtuális központhoz csatlakoztatott virtuális hálózatok globális VNet-megterhelési díjat von maga után.
+A globális VNet-társítás egy mechanizmust biztosít két virtuális hálózatok különböző régiókban való összekapcsolásához. A virtuális WAN-ban a virtuális hálózati kapcsolatok virtuális hálózatok csatlakoznak a virtuális hubokhoz. A felhasználónak nem kell explicit módon beállítania a globális VNet-társítást. Az azonos régióban található virtuális központhoz csatlakoztatott virtuális hálózatok VNet. Egy másik régióban lévő virtuális központhoz csatlakoztatott virtuális hálózatok globális VNet-megterhelési díjat von maga után.
 
 ### <a name="expressroute-traffic-encryption"></a><a name="encryption"></a>ExpressRoute-forgalom titkosítása
 

@@ -4,13 +4,13 @@ titleSuffix: Azure Kubernetes Service
 description: Megtudhatja, hogyan telepíthet és konfigurálhat egy alapszintű NGINX beáramlási vezérlőt egy Azure Kubernetes-szolgáltatási (ak-) fürtben.
 services: container-service
 ms.topic: article
-ms.date: 04/27/2020
-ms.openlocfilehash: bb7ac1d76e93a95fedc1dfdbfd67d2b057db60e3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 07/20/2020
+ms.openlocfilehash: d96118e8f9de37432874a9864fc5c35faeb95a5a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499817"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87057209"
 ---
 # <a name="create-an-ingress-controller-in-azure-kubernetes-service-aks"></a>Bejövő adatvezérlő létrehozása az Azure Kubernetes szolgáltatásban (ak)
 
@@ -163,10 +163,10 @@ Mindkét alkalmazás már fut a Kubernetes-fürtön. Az egyes alkalmazásokra ir
 
 A következő példában a *EXTERNAL_IP* felé irányuló forgalmat a rendszer átirányítja a nevű szolgáltatásba `aks-helloworld-one` . *EXTERNAL_IP/Hello-World-Two* irányuló forgalmat a szolgáltatás irányítja át `aks-helloworld-two` . *EXTERNAL_IP/statikus* irányuló forgalmat a rendszer a `aks-helloworld-one` statikus eszközökhöz tartozó nevű szolgáltatáshoz irányítja.
 
-Hozzon létre egy nevű fájlt `hello-world-ingress.yaml` , és másolja a következő PÉLDÁBAN YAML.
+Hozzon létre egy *Hello-World-beáramló. YAML* nevű fájlt, és másolja a következő PÉLDÁBAN szereplő YAML.
 
 ```yaml
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   name: hello-world-ingress
@@ -188,7 +188,7 @@ spec:
           servicePort: 80
         path: /hello-world-two(/|$)(.*)
 ---
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   name: hello-world-ingress-static
@@ -276,7 +276,7 @@ Végezetül törölheti saját maga is a névteret. Használja a `kubectl delete
 kubectl delete namespace ingress-basic
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez a cikk néhány külső összetevőt tartalmaz az ak-nak. Ha többet szeretne megtudni ezekről az összetevőkről, tekintse meg a következő Project-lapokat:
 

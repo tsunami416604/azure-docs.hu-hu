@@ -4,26 +4,27 @@ description: Megtudhatja, hogyan használhatja a közelségi csoportokat az AK-f
 services: container-service
 manager: gwallace
 ms.topic: article
-ms.date: 06/22/2020
-ms.openlocfilehash: 1bcdfb4bb3c910feeac0521308e1e7d733fbd959
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.date: 07/10/2020
+author: jluk
+ms.openlocfilehash: f6cb370d258a79420b03baf17ec964b091cdebb7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86244072"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87056583"
 ---
 # <a name="reduce-latency-with-proximity-placement-groups-preview"></a>A késés és a közelségi csoportok (előzetes verzió) csökkentése
 
 > [!Note]
-> Ha az AK-val közelítő elhelyezési csoportokat használ, az együttes elhelyezés csak az ügynök csomópontjaira vonatkozik. A csomópont csomópontra és a megfelelő üzemeltetett Pod-ról a pod-késésre való kijavítása megtörténik. Az egyhelyes elhelyezés nem befolyásolja a fürt vezérlő síkja elhelyezését.
+> Ha a közelségi elhelyezési csoportokat AK-on használja, az együttes elhelyezés csak az ügynök csomópontjaira vonatkozik. A csomópont csomópontra és a megfelelő üzemeltetett Pod-ról a pod-késésre való kijavítása megtörténik. Az egyhelyes elhelyezés nem befolyásolja a fürt vezérlő síkja elhelyezését.
 
-Amikor üzembe helyezi az alkalmazást az Azure-ban, a virtuálisgép-(VM-) példányok elosztása a régiók vagy a rendelkezésre állási zónák között hálózati késést okoz, ami hatással lehet az alkalmazás általános teljesítményére. A közelségi elhelyezési csoport olyan logikai csoport, amely biztosítja, hogy az Azure számítási erőforrásai fizikailag közel legyenek egymáshoz. Egyes alkalmazások, például a játékok, a mérnöki szimulációk és a nagy gyakoriságú kereskedelem (HFT) kis késést és gyorsan elvégezhető feladatokat igényelnek. A nagy teljesítményű számítástechnikai (HPC) forgatókönyvek esetében, például a következő esetekben érdemes lehet [Proximity elhelyezési csoportokat](../virtual-machines/linux/co-location.md#proximity-placement-groups) használni a fürt csomópontjaihoz.
+Amikor üzembe helyezi az alkalmazást az Azure-ban, a virtuálisgép-(VM-) példányok elosztása a régiók vagy a rendelkezésre állási zónák között hálózati késést okoz, ami hatással lehet az alkalmazás általános teljesítményére. A közelségi elhelyezési csoport olyan logikai csoport, amely biztosítja, hogy az Azure számítási erőforrásai fizikailag közel legyenek egymáshoz. Egyes alkalmazások, például a játékok, a mérnöki szimulációk és a nagy gyakoriságú kereskedelem (HFT) kis késést és gyorsan elvégezhető feladatokat igényelnek. A nagy teljesítményű számítástechnikai (HPC) forgatókönyvek esetében, például a következő esetekben érdemes lehet a [közeli elhelyezési csoportokat](../virtual-machines/linux/co-location.md#proximity-placement-groups) (PPG) használni a fürt csomópontjaihoz.
 
 ## <a name="limitations"></a>Korlátozások
 
-* A közelségi elhelyezési csoport egyetlen rendelkezésre állási zónát ölel fel.
-* A virtuális gépek rendelkezésre állási csoportjait használó AK-fürtök jelenleg nem támogatottak.
-* A meglévő csomópont-készletek nem módosíthatók közelségi elhelyezési csoportok használatára.
+* A közelségi elhelyezési csoport legfeljebb egy rendelkezésre állási zónához rendelhető.
+* A csomópont-készletnek Virtual Machine Scale Sets kell használnia egy közelségi elhelyezési csoport hozzárendeléséhez.
+* A csomópont-készletek csak létrehozási időpontot hozhatnak létre egy közelségi elhelyezési csoporthoz.
 
 > [!IMPORTANT]
 > Az AK előzetes verziójának funkciói az önkiszolgáló, a választható lehetőségek alapján érhetők el. Az előzetes verziók az "adott állapotban" és "elérhetőként" jelennek meg, és ki vannak zárva a szolgáltatói szerződésekből és a korlátozott jótállásból. A (z) és az ügyfél-támogatási szolgálatok a lehető leghatékonyabban fedezik az előzetes verziókat. Ezért ezeket a funkciókat nem éles használatra szánták. További információkért lásd a következő támogatási cikkeket:
@@ -40,7 +41,7 @@ A következő erőforrásokat kell telepítenie:
 ### <a name="set-up-the-preview-feature-for-proximity-placement-groups"></a>Az előzetes verzió funkciójának beállítása a Proximity elhelyezési csoportok számára
 
 > [!IMPORTANT]
-> Ha az AK-val közelítő elhelyezési csoportokat használ, az együttes elhelyezés csak az ügynök csomópontjaira vonatkozik. A csomópont csomópontra és a megfelelő üzemeltetett Pod-ról a pod-késésre való kijavítása megtörténik. Az egyhelyes elhelyezés nem befolyásolja a fürt vezérlő síkja elhelyezését.
+> Ha a közelségi elhelyezési csoportokat AK-beli csomópont-készletekkel használja, az együttes elhelyezés csak az ügynök csomópontjaira vonatkozik. A csomópont csomópontra és a megfelelő üzemeltetett Pod-ról a pod-késésre való kijavítása megtörténik. Az egyhelyes elhelyezés nem befolyásolja a fürt vezérlő síkja elhelyezését.
 
 ```azurecli-interactive
 # register the preview feature
@@ -63,6 +64,7 @@ az extension add --name aks-preview
 # Update the extension to make sure you have the latest version installed
 az extension update --name aks-preview
 ```
+
 ## <a name="node-pools-and-proximity-placement-groups"></a>Csomópont-készletek és Proximity-elhelyezési csoportok
 
 A közelségi elhelyezési csoporttal üzembe helyezett első erőforrás egy adott adatközponthoz csatlakozik. Az azonos közelségi elhelyezési csoporttal telepített további erőforrások ugyanabban az adatközpontban találhatók. Ha a közelségi elhelyezési csoportot használó összes erőforrás le lett állítva (fel van foglalva) vagy törölve lett, már nincs csatlakoztatva.
@@ -70,13 +72,23 @@ A közelségi elhelyezési csoporttal üzembe helyezett első erőforrás egy ad
 * Számos csomópont-készlet társítható egyetlen közelségi elhelyezési csoporttal.
 * Egy csomópont-készlet csak egyetlen közelségi elhelyezési csoporthoz társítható.
 
+### <a name="configure-proximity-placement-groups-with-availability-zones"></a>Proximity elhelyezési csoportok konfigurálása rendelkezésre állási zónákkal
+
+> [!NOTE]
+> Míg a közelségi csoportok egy csomópont-készletet igényelnek a legfeljebb egy rendelkezésre állási zónában, a 99,9%-os alapszintű [Azure VM SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_9/) még csak egyetlen zónában lévő virtuális gépek esetében érvényes.
+
+A közelségi csoportok az egyes csomópont-készletekhez tartozó csomópont-Pool-fogalmak. A PPG-erőforrások használata nem befolyásolja az AK vezérlő síkja rendelkezésre állását. Ez hatással lehet arra, hogyan kell a fürtöt zónákhoz tervezni. Annak biztosítása érdekében, hogy a fürt több zónán legyen elosztva, a következő kialakítás ajánlott.
+
+* Hozzon létre egy fürtöt az első rendszerkészlettel 3 zónával, és ne társítson közelségi elhelyezési csoportot. Ezzel biztosítható, hogy a rendszer egy dedikált csomópont-készletbe vigye, amely több zónában is elterjed.
+* Adjon hozzá további felhasználói csomópont-készleteket az egyes készletekhez tartozó egyedi zónával és közelségi elhelyezési csoporttal. Egy példa az 1. zónában és a PPG1, a nodepool2 a 2. zónában és a PPG2, a 3. zónában a nodepool3 nodepool1. Ez a fürt szintjén biztosítja a csomópontok több zónában való megoszlását, és minden egyes csomópont-készlet egy dedikált PPG-erőforrással rendelkező kijelölt zónában található.
+
 ## <a name="create-a-new-aks-cluster-with-a-proximity-placement-group"></a>Új AK-fürt létrehozása közelségi elhelyezési csoporttal
 
-Az alábbi példa az az [Group Create][az-group-create] paranccsal létrehoz egy *myResourceGroup* nevű erőforráscsoportot a *CentralUS* régióban. Ezután létrejön egy *myAKSCluster* nevű AK-fürt az az [AK Create][az-aks-create] paranccsal. 
+Az alábbi példa az az [Group Create][az-group-create] paranccsal létrehoz egy *myResourceGroup* nevű erőforráscsoportot a *CentralUS* régióban. Ezután létrejön egy *myAKSCluster* nevű AK-fürt az az [AK Create][az-aks-create] paranccsal.
 
 A gyorsított hálózatkezelés nagy mértékben javítja a virtuális gépek hálózati teljesítményét. Ideális esetben a közeli elhelyezési csoportok használata a gyorsított hálózatkezeléssel együtt. Alapértelmezés szerint az AK gyorsított hálózatkezelést használ a [támogatott virtuálisgép-példányokon](../virtual-network/create-vm-accelerated-networking-cli.md?toc=/azure/virtual-machines/linux/toc.json#limitations-and-constraints), beleértve a legtöbb Azure-beli virtuális gépet két vagy több vCPU.
 
-Hozzon létre egy új AK-fürtöt közelségi elhelyezési csoporttal:
+Hozzon létre egy új AK-fürtöt az első rendszercsomópont-készlethez társított közelségi elhelyezési csoporttal:
 
 ```azurecli-interactive
 # Create an Azure resource group
@@ -110,7 +122,7 @@ A parancs kimenetet hoz létre, amely tartalmazza a közelgő CLI-parancsokhoz s
 Használja az alábbi parancs *myPPGResourceID* értékének közelségi csoportjának erőforrás-azonosítóját:
 
 ```azurecli-interactive
-# Create an AKS cluster that uses a proximity placement group for the initial node pool
+# Create an AKS cluster that uses a proximity placement group for the initial system node pool only. The PPG has no effect on the cluster control plane.
 az aks create \
     --resource-group myResourceGroup \
     --name myAKSCluster \
@@ -135,7 +147,7 @@ az aks nodepool add \
     --ppg myPPGResourceID
 ```
 
-## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
+## <a name="clean-up"></a>A feleslegessé vált elemek eltávolítása
 
 A fürt törléséhez használja a [`az group delete`][az-group-delete] parancsot az AK-erőforráscsoport törléséhez:
 
@@ -143,7 +155,7 @@ A fürt törléséhez használja a [`az group delete`][az-group-delete] parancso
 az group delete --name myResourceGroup --yes --no-wait
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információ a [közelségi elhelyezési csoportokról][proximity-placement-groups].
 

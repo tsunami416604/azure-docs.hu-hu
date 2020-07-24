@@ -13,11 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 09/12/2019
 ms.author: cynthn
-ms.openlocfilehash: 2e97442d4104f52c1a76ba8cd1d81c99508bb242
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cc442886c4c4c26db5f5cde908ea647e2ee2f1bf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81605189"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87059009"
 ---
 # <a name="install-and-configure-remote-desktop-to-connect-to-a-linux-vm-in-azure"></a>A Linux rendszerű virtuális gépekhez való kapcsolódás Távoli asztal telepítése és konfigurálása az Azure-ban
 Az Azure-ban a Linux rendszerű virtuális gépeket általában egy Secure Shell-(SSH-) kapcsolatok használatával kezelik a parancssorból. A Linux vagy a gyors hibaelhárítási forgatókönyvek esetében a távoli asztal használata egyszerűbb lehet. Ez a cikk részletesen ismerteti, hogyan telepíthet és konfigurálhat egy asztali környezetet ([Xfce](https://www.xfce.org)) és egy távoli asztalt ([Xrdp](http://xrdp.org)) a Linux rendszerű virtuális géphez a Resource Manager-alapú üzemi modell használatával.
@@ -132,11 +133,10 @@ tail -f /var/log/syslog
 
 Más Linux-disztribúciók, például a Red Hat Enterprise Linux és a SUSE különböző módokon indíthatják újra a szolgáltatásokat és az alternatív naplófájlok helyét az ellenőrzés céljából.
 
-Ha nem kap választ a távoli asztal ügyfelén, és nem lát eseményeket a rendszernaplóban, ez a viselkedés azt jelzi, hogy a távoli asztali forgalom nem tudja elérni a virtuális gépet. Tekintse át a hálózati biztonsági csoport szabályait, és győződjön meg arról, hogy rendelkezik olyan szabállyal, amely engedélyezi a TCP-t a 3389-es port További információ: az [alkalmazások kapcsolódási problémáinak elhárítása](../windows/troubleshoot-app-connection.md).
+Ha nem kap választ a távoli asztal ügyfelén, és nem lát eseményeket a rendszernaplóban, ez a viselkedés azt jelzi, hogy a távoli asztali forgalom nem tudja elérni a virtuális gépet. Tekintse át a hálózati biztonsági csoport szabályait, és győződjön meg arról, hogy rendelkezik olyan szabállyal, amely engedélyezi a TCP-t a 3389-es port További információ: az [alkalmazások kapcsolódási problémáinak elhárítása](../troubleshooting/troubleshoot-app-connection.md).
 
 
 ## <a name="next-steps"></a>További lépések
 Az SSH-kulcsok Linux virtuális gépekkel való létrehozásával és használatával kapcsolatos további információkért lásd: [ssh-kulcsok létrehozása Linux rendszerű virtuális gépekhez az Azure-ban](mac-create-ssh-keys.md).
 
 További információ az SSH Windows rendszeren való használatáról: [ssh-kulcsok használata a Windowsban](ssh-from-windows.md).
-

@@ -7,12 +7,12 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/24/2020
-ms.openlocfilehash: e01ac332e61f51909ff1617f1716cd719b67c319
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d529e4e4b79f0c34eb8f95b028cca730b316d5f6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82127872"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87060300"
 ---
 # <a name="visualize-azure-cognitive-search-logs-and-metrics-with-power-bi"></a>Azure Cognitive Search-naplók és-metrikák megjelenítése Power BI
 Az [azure Cognitive Search](https://docs.microsoft.com/azure/search/search-what-is-azure-search) lehetővé teszi, hogy egy Azure Storage-fiókban tárolja a keresési szolgáltatáshoz tartozó műveleti naplókat és szolgáltatási metrikákat. Ezen a lapon megtudhatja, hogyan jelenítheti meg ezt az információt egy Power BI sablon alkalmazáson keresztül. Az alkalmazás részletes információkat nyújt a keresési szolgáltatásról, többek között a kereséssel, az indexeléssel, a műveletekkel és a szolgáltatási metrikákkal kapcsolatban.
@@ -27,13 +27,13 @@ A Power BI template app **Azure Cognitive Search: a naplók és a metrikák elem
     1. Navigáljon az Azure Cognitive Search szolgáltatásra a Azure Portal
     1. A bal oldali oszlopban a figyelés szakaszban válassza a **diagnosztikai beállítások** elemet.
 
-        ![](media/search-monitor-logs-powerbi/diagnostic-settings.png)
+        ![A diagnosztikai beállítások kiválasztását bemutató képernyőkép az Azure Cognitive Search szolgáltatás figyelés szakaszában.](media/search-monitor-logs-powerbi/diagnostic-settings.png)
 
     1. Válassza a **+ diagnosztikai beállítás hozzáadása** lehetőséget
     1. Keresse meg az **archívumot egy Storage-fiókban**, adja meg a Storage-fiók adatait, és keresse meg a **OperationLogs** és a **AllMetrics**
 
-        ![](media/search-monitor-logs-powerbi/add-diagnostic-setting.png)
-    1. Válassza a **Mentés** lehetőséget.
+        ![Képernyőfelvétel a mérőszámok és az erőforrás-naplózás kiválasztásáról a diagnosztikai beállítások lapon.](media/search-monitor-logs-powerbi/add-diagnostic-setting.png)
+    1. Válassza a **Mentés** lehetőséget
 
 1. A naplózás engedélyezése után a keresési szolgáltatással megkezdheti a naplók és mérőszámok generálását. Akár egy óráig is eltarthat, amíg a tárolók megjelennek a blob Storage-ban ezekkel a naplókkal. Ekkor megjelenik egy elemzések – **naplók – operationlogs** tároló a forgalmi naplók és az elemzések – **mérőszámok – pt1m** tároló a metrikák számára.
 
@@ -41,48 +41,48 @@ A Power BI template app **Azure Cognitive Search: a naplók és a metrikák elem
 
 1. Az alkalmazás telepítése után válassza ki az alkalmazást az alkalmazások listájából Power BI.
 
-    ![](media/search-monitor-logs-powerbi/azure-search-app-tile.png)
+    ![Képernyőfelvétel: az Azure Cognitive Search alkalmazás, amely az alkalmazások listájából választható ki.](media/search-monitor-logs-powerbi/azure-search-app-tile.png)
 
 1. Válassza a **Kapcsolódás** lehetőséget az adatkapcsolathoz
 
-    ![](media/search-monitor-logs-powerbi/get-started-with-your-new-app.png)
+    ![Az Azure Cognitive Search alkalmazásban az adataihoz való kapcsolódást bemutató képernyőkép.](media/search-monitor-logs-powerbi/get-started-with-your-new-app.png)
 
 1. Adja meg a naplókat és mérőszámokat tartalmazó Storage-fiók nevét. Alapértelmezés szerint az alkalmazás az utolsó 10 napot fogja megtekinteni, de ezt az értéket a **Days** paraméterrel lehet megváltoztatni.
 
-    ![](media/search-monitor-logs-powerbi/connect-to-storage-account.png)
+    ![Képernyőfelvétel: a Storage-fiók nevének és a lekérdezési napok számának beírása a Kapcsolódás az Azure-Cognitive Search lapra.](media/search-monitor-logs-powerbi/connect-to-storage-account.png)
 
 1. A hitelesítési módszerként válassza a **kulcs** lehetőséget, és adja meg a Storage-fiók kulcsát. Adatvédelmi szintként válassza a **magánjellegű** lehetőséget. Kattintson a Bejelentkezés gombra. Ennek hatására elkezdődik a betöltés.
 
-    ![](media/search-monitor-logs-powerbi/connect-to-storage-account-step-two.png)
+    ![Képernyőfelvétel: a hitelesítési módszer, a fiók kulcsa és az adatvédelmi szint bevitele a Kapcsolódás az Azure-Cognitive Search lapra.](media/search-monitor-logs-powerbi/connect-to-storage-account-step-two.png)
 
 1. Várjon, amíg az adatgyűjtés frissül. Ez eltarthat egy ideig, attól függően, hogy mennyi adattal rendelkezik. Láthatja, hogy az alábbi kijelző alapján a rendszer továbbra is frissíti-e az adott információt.
 
-    ![](media/search-monitor-logs-powerbi/workspace-view-refreshing.png)
+    ![Az adatfrissítési lapon található információk olvasását bemutató képernyőkép.](media/search-monitor-logs-powerbi/workspace-view-refreshing.png)
 
 1. Az Adatfrissítés befejezését követően válassza az **Azure Cognitive Search jelentés** lehetőséget a jelentés megtekintéséhez.
 
-    ![](media/search-monitor-logs-powerbi/workspace-view-select-report.png)
+    ![Az Azure Cognitive Search jelentés az Adatfrissítés lapon való kiválasztását bemutató képernyőkép.](media/search-monitor-logs-powerbi/workspace-view-select-report.png)
 
 1. Győződjön meg arról, hogy a jelentés megnyitása után frissítse az oldalt, hogy az megnyíljon az adataival.
 
-    ![](media/search-monitor-logs-powerbi/powerbi-search.png)
+    ![Képernyőkép az Azure Cognitive Search Power BI jelentésről.](media/search-monitor-logs-powerbi/powerbi-search.png)
 
 ## <a name="how-to-change-the-app-parameters"></a>Az alkalmazás paramétereinek módosítása
 Ha egy másik Storage-fiókból kívánja megjeleníteni az adatok megjelenítését, vagy módosítani szeretné a lekérdezési napok számát, kövesse az alábbi lépéseket a **napok** és a **StorageAccount** paramétereinek módosításához.
 
 1. Navigáljon a Power BI alkalmazásaihoz, keresse meg az Azure Cognitive Search alkalmazást, és válassza az **alkalmazás szerkesztése** gombot a munkaterület megtekintéséhez.
 
-    ![](media/search-monitor-logs-powerbi/azure-search-app-tile-edit.png)
+    ![Az Azure Cognitive Search-alkalmazás alkalmazás szerkesztése gombjának kijelölését bemutató képernyőkép.](media/search-monitor-logs-powerbi/azure-search-app-tile-edit.png)
 
 1. Válassza a **Beállítások** lehetőséget az adatkészlet beállításai közül.
 
-    ![](media/search-monitor-logs-powerbi/workspace-view-select-settings.png)
+    ![Képernyőfelvétel: beállítások kiválasztása az Azure Congnitive keresési adatkészlet beállításai között.](media/search-monitor-logs-powerbi/workspace-view-select-settings.png)
 
 1. Az adatkészletek lapon módosítsa a paraméterek értékeit, majd válassza az **alkalmaz**lehetőséget. Ha probléma merül fel a kapcsolatban, frissítse az adatforrás hitelesítő adatait ugyanazon a lapon.
 
 1. Lépjen vissza a munkaterületre, és válassza a **Frissítés most** lehetőséget az adatkészlet beállításai között.
 
-    ![](media/search-monitor-logs-powerbi/workspace-view-select-refresh-now.png)
+    ![Képernyőfelvétel: a frissítés most lehetőség kiválasztása az Azure Congnitive keresési adatkészlet beállításai között.](media/search-monitor-logs-powerbi/workspace-view-select-refresh-now.png)
 
 1. Nyissa meg a jelentést a frissített adatértékek megtekintéséhez. Előfordulhat, hogy frissítenie kell a jelentést a legfrissebb adatértékek megtekintéséhez.
 

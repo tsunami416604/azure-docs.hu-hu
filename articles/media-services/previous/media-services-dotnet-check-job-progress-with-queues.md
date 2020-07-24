@@ -14,19 +14,19 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: d75ba63955deb3fb6ef4a1207754097b0b3be532
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 533990ef0ea88be7f1f06021d7aa398e89f6390b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85962679"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87060319"
 ---
 # <a name="use-azure-queue-storage-to-monitor-media-services-job-notifications-with-net"></a>Media Services feladatok értesítéseinek figyelése az Azure üzenetsor-tárolóval a .NET használatával 
 
 > [!NOTE]
-> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Tekintse meg a legújabb, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
+> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Tekintse meg a legújabb, [Media Services v3](../latest/index.yml)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
 
-A kódolási feladatok futtatásakor gyakran szükség van a feladat előrehaladásának nyomon követésére. A Media Services konfigurálható úgy, hogy értesítéseket továbbítson az [Azure üzenetsor-tárolóba](../../storage/storage-dotnet-how-to-use-queues.md). A feladatok előrehaladását úgy figyelheti, hogy beolvassa az értesítéseket a várólista-tárolóból. 
+A kódolási feladatok futtatásakor gyakran szükség van a feladat előrehaladásának nyomon követésére. A Media Services konfigurálható úgy, hogy értesítéseket továbbítson az [Azure üzenetsor-tárolóba](../../storage/queues/storage-dotnet-how-to-use-queues.md). A feladatok előrehaladását úgy figyelheti, hogy beolvassa az értesítéseket a várólista-tárolóból. 
 
 A várólista-tárolóba küldött üzenetek a világ bármely pontján elérhetők. A várólista-tároló üzenetkezelési architektúrája megbízható és rugalmasan méretezhető. Az üzenetek lekérdezési várólistán való tárolását más módszerekkel ajánlott használni.
 
@@ -37,10 +37,10 @@ Ez a cikk bemutatja, hogyan kérhet le értesítési üzeneteket a várólista-t
 ## <a name="considerations"></a>Megfontolandó szempontok
 A várólista-tárolót használó Media Services alkalmazások fejlesztésekor vegye figyelembe a következőket:
 
-* A várólista-tárolás nem garantálja, hogy az első kimenő (FIFO) rendezett kézbesítés nem garantált. További információ: az [Azure Queues és a Azure Service Bus Queues](https://msdn.microsoft.com/library/azure/hh767287.aspx)összevetése és összehasonlítása.
+* A várólista-tárolás nem garantálja, hogy az első kimenő (FIFO) rendezett kézbesítés nem garantált. További információ: az [Azure Queues és a Azure Service Bus Queues](/previous-versions/azure/hh767287(v=azure.100))összevetése és összehasonlítása.
 * A várólista-tároló nem leküldéses szolgáltatás. Le kell kérdezni a várólistát.
-* Tetszőleges számú várólistát használhat. További információ: üzenetsor- [kezelési REST API](https://docs.microsoft.com/rest/api/storageservices/Queue-Service-REST-API).
-* A várólista-tároló bizonyos korlátozásokkal és sajátosságokkal rendelkezik. Ezeket az [Azure Queues és a Azure Service Bus Queues összevetése és kontrasztos](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted)összevetése írja le.
+* Tetszőleges számú várólistát használhat. További információ: üzenetsor- [kezelési REST API](/rest/api/storageservices/queue-service-rest-api).
+* A várólista-tároló bizonyos korlátozásokkal és sajátosságokkal rendelkezik. Ezeket az [Azure Queues és a Azure Service Bus Queues összevetése és kontrasztos](../../service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted.md)összevetése írja le.
 
 ## <a name="net-code-example"></a>.NET-kód – példa
 

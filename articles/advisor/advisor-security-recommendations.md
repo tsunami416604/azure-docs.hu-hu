@@ -3,12 +3,12 @@ title: Erőforrások biztonságosabbá tétele a Azure Advisor
 description: A Azure Advisor segítségével javíthatja az Azure-beli üzembe helyezések biztonságát.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: bf7a316c893600bed18b9392404af5792e2e31f7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f130135ed53dc2ba87f46cbf6f9faf0f07cc0654
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85113857"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87057660"
 ---
 # <a name="make-resources-more-secure-with-azure-advisor"></a>Erőforrások biztonságosabbá tétele a Azure Advisor
 
@@ -16,7 +16,7 @@ Azure Advisor egységes, összevont áttekintést nyújt az összes Azure-erőfo
 
 A Security Center az Azure-erőforrások biztonsági felügyeletének átláthatóbbá és szabályozhatóbbá tételével megkönnyíti a fenyegetések megelőzését, észlelését és elhárítását. Rendszeresen elemzi az Azure-erőforrások biztonsági állapotát. A Security Center javaslatokat hoz létre, amikor lehetséges biztonsági réseket észlel. A javaslatok végigvezetik a szükséges vezérlők konfigurálásának lépésein. 
 
-A biztonsági javaslatokkal kapcsolatos további információkért lásd: [biztonsági javaslatok kezelése Azure Security Centerban](https://azure.microsoft.com/documentation/articles/security-center-recommendations/).
+A biztonsági javaslatokkal kapcsolatos további információkért lásd: [biztonsági javaslatok kezelése Azure Security Centerban](../security-center/security-center-recommendations.md).
 
 ## <a name="how-to-access-security-recommendations-in-azure-advisor"></a>Biztonsági javaslatok elérése Azure Advisor
 
@@ -33,5 +33,5 @@ Az Advisor ajánlásaival kapcsolatos további tudnivalókért tekintse meg a k�
 * [Az Advisor teljesítményével kapcsolatos javaslatok](advisor-performance-recommendations.md)
 * [Advisor megbízhatósági javaslatok](advisor-high-availability-recommendations.md)
 * [Advisor működési kiválósági javaslatok](advisor-operational-excellence-recommendations.md)
-* [Advisor REST API](https://docs.microsoft.com/rest/api/advisor/)
+* [Advisor REST API](/rest/api/advisor/)
  

@@ -13,11 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a2c9500ecefed02b28c066de80137d8f0882fd5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 41329f2f5500db35ee76c9880bdbef984413004b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84731506"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87057890"
 ---
 # <a name="bulk-create-users-in-azure-active-directory"></a>Felhasználók tömeges létrehozása Azure Active Directory
 
@@ -47,6 +48,7 @@ A letöltött CSV-sablon sorai a következők:
 - Először a szükséges oszlopok szerepelnek.
 - Nem ajánlott új oszlopokat hozzáadni a sablonhoz. A hozzáadott további oszlopokat a rendszer figyelmen kívül hagyja, és nem dolgozza fel.
 - Javasoljuk, hogy a lehető legtöbbször töltse le a CSV-sablon legújabb verzióját.
+- Győződjön meg arról, hogy a mező előtt/után nem található nem kívánt szóköz. Az **egyszerű felhasználónevek**esetében az ilyen szóközök az importálási hiba miatt meghiúsulnak.
 
 ## <a name="to-create-users-in-bulk"></a>Felhasználók tömeges létrehozása
 

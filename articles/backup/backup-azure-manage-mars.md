@@ -4,11 +4,12 @@ description: Megtudhatja, hogyan kezelheti és figyelheti Microsoft Azure Recove
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: 2cd536e191702e2619030c2e0fa06262d2e004ee
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 376e2d53165ab822f75e635b42106e1fe13282a9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057823"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87054989"
 ---
 # <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>Microsoft Azure Recovery Services-(MARS-) ügynök biztonsági másolatainak kezelése a Azure Backup szolgáltatás használatával
 
@@ -48,7 +49,7 @@ A biztonsági mentési szabályzat módosításakor hozzáadhat új elemeket, el
 
     ![Elemek kijelölése](./media/backup-azure-manage-mars/select-item.png)
 
-6. Hajtsa végre a következő lépéseket, majd kattintson a **Befejezés** gombra a művelet befejezéséhez.
+6. Végezze el a következő lépéseket, és a művelet befejezéséhez kattintson a **Befejezés** gombra.
 
 ### <a name="add-exclusion-rules-to-existing-policy"></a>Kizárási szabályok hozzáadása a meglévő szabályzathoz
 
@@ -70,7 +71,7 @@ Kizárási szabályok hozzáadásával kihagyhatja azokat a fájlokat és mappá
 
     ![Elemek kijelölése](./media/backup-azure-manage-mars/subfolders-type.png)
 
-5. Hajtsa végre a következő lépéseket, majd kattintson a **Befejezés** gombra a művelet befejezéséhez.
+5. Végezze el a következő lépéseket, és a művelet befejezéséhez kattintson a **Befejezés** gombra.
 
 ### <a name="remove-items-from-existing-policy"></a>Elemek eltávolítása meglévő házirendből
 
@@ -81,7 +82,7 @@ Kizárási szabályok hozzáadásával kihagyhatja azokat a fájlokat és mappá
     > [!NOTE]
     > Körültekintően járjon el, ha teljesen eltávolítja a kötetet a szabályzatból.  Ha újra hozzá kell adnia, akkor a rendszer új kötetként kezeli. A következő ütemezett biztonsági mentés a növekményes biztonsági mentés helyett kezdeti biztonsági mentést (teljes biztonsági mentést) hajt végre. Ha a későbbiekben átmenetileg el kell távolítania és hozzá kell adnia az elemeket, akkor az **elemek eltávolítása** helyett a **kizárási beállítások** használata javasolt, hogy a teljes biztonsági mentés helyett a növekményes biztonsági mentést biztosítsa.
 
-2. Hajtsa végre a következő lépéseket, majd kattintson a **Befejezés** gombra a művelet befejezéséhez.
+2. Végezze el a következő lépéseket, és a művelet befejezéséhez kattintson a **Befejezés** gombra.
 
 ## <a name="stop-protecting-files-and-folder-backup"></a>Fájlok és mappák biztonsági mentésének leállítása
 
@@ -94,7 +95,7 @@ A fájlok és mappák biztonsági mentése kétféleképpen állítható le:
   - Ha úgy dönt, hogy folytatja a védelmet, használhatja a *biztonsági mentési ütemterv újbóli engedélyezése* lehetőséget. Ezt követően az adatok megmaradnak az új adatmegőrzési szabályzat alapján.
 - **Állítsa le a védelmet, és törölje a biztonsági másolati fájlokat**.
   - Ezzel a beállítással leállíthatja az összes jövőbeli biztonsági mentési feladatot az adatok védelme és az összes helyreállítási pont törlése után.
-  - A biztonsági mentési adatriasztások törléséről értesítő e-mailt fog kapni, amely üzenettel *törli a biztonsági mentési tétel adatait. Ezek az adatok 14 napig átmenetileg elérhetők lesznek, ami után véglegesen törlődik,* és a javasolt művelet *14 napon belül újra védetté teszi a biztonsági mentési tételt az adatok helyreállításához.*
+  - A biztonsági mentési adatriasztásról értesítő e-mailt kap, amely üzenettel *törli a biztonsági mentési tételhez tartozó adatait. Ezek az adatok 14 napig átmenetileg elérhetők lesznek, ami után véglegesen törlődik,* és a javasolt művelet *14 napon belül újra védetté teszi a biztonsági mentési tételt az adatok helyreállításához.*
   - A védelem folytatásához a törlési művelettől számított 14 napon belül meg kell oldania a védelmet.
 
 ### <a name="stop-protection-and-retain-backup-data"></a>A védelem leállítása és a biztonsági mentési adat megőrzése
@@ -102,16 +103,16 @@ A fájlok és mappák biztonsági mentése kétféleképpen állítható le:
 1. Nyissa meg a MARS felügyeleti konzolját, lépjen a **műveletek ablaktáblára**, és **válassza a biztonsági mentés időzítése elemet**.
 
     ![Ütemezett biztonsági mentés módosítása vagy leállítása.](./media/backup-azure-manage-mars/mars-actions.png)
-1. A **házirend elemének kiválasztása** lapon válassza **a fájlok és mappák biztonsági mentésének ütemezett módosítása** lehetőséget, majd kattintson a **tovább**gombra.
+1. A **házirend kiválasztása** lapon válassza a **fájlok és mappák biztonsági mentésének ütemezett módosítása** lehetőséget, majd kattintson a **tovább**gombra.
 
     ![Ütemezett biztonsági mentés módosítása vagy leállítása.](./media/backup-azure-manage-mars/select-policy-item-retain-data.png)
 1. Az **ütemezett biztonsági mentés módosítása vagy leállítása** lapon válassza a **Leállítás ezzel a biztonsági mentési ütemezéssel lehetőséget, de a tárolt biztonsági mentéseket tartsa meg, amíg újra nem aktiválja az ütemezést**. Ezután válassza a **tovább**lehetőséget.
 
     ![Ütemezett biztonsági mentés módosítása vagy leállítása.](./media/backup-azure-manage-mars/stop-schedule-backup.png)
-1. Az **ütemezett biztonsági mentés szüneteltetése** lapon tekintse át az információkat, majd kattintson a **Befejezés**gombra.
+1. Az **ütemezett biztonsági mentés szüneteltetése**lapon tekintse át az információkat, majd kattintson a **Befejezés**gombra.
 
     ![Ütemezett biztonsági mentés módosítása vagy leállítása.](./media/backup-azure-manage-mars/pause-schedule-backup.png)
-1. A **biztonsági mentési folyamat módosítása** alatt jelölje be az ütemezett biztonsági mentés szüneteltetése sikeres állapotban, majd kattintson a **Bezárás** gombra.
+1. A **biztonsági mentési folyamat módosítása**területen győződjön meg arról, hogy az ütemezett biztonsági mentés szüneteltetése sikeres állapotban van, majd a befejezéshez kattintson a **Bezárás** gombra.
 
 ### <a name="stop-protection-and-delete-backup-data"></a>Védelem leállítása és biztonsági másolatok törlése
 
@@ -155,17 +156,18 @@ Ha leállította a védelmet, miközben megtartja az adatvédelmet, és úgy dö
 
 A hitelesítő adatok titkosítására és visszafejtésére szolgálnak a helyszíni vagy helyi gép a MARS-ügynökkel vagy az Azure-ból történő biztonsági mentése vagy visszaállítása során. Ha elvesztette vagy elfelejtette a jelszót, akkor újra létrehozhatja a jelszót (ha a számítógép továbbra is regisztrálva van a Recovery Services-tárolóban, és a biztonsági mentés konfigurálva van), kövesse az alábbi lépéseket:
 
-- A Mars-ügynök konzolján lépjen a **műveletek ablaktáblára**, és  >  **módosítsa a tulajdonságok** >. Ezután nyissa meg a **titkosítás lapot**.<br>
-- Válassza a **jelszó módosítása** jelölőnégyzetet.<br>
-- Adjon meg egy új jelszót, vagy kattintson a **jelszó létrehozása**lehetőségre.
-- Az új jelszó mentéséhez kattintson a **Tallózás** gombra.
+1. A Mars-ügynök konzolján lépjen a **műveletek ablaktáblára**, és  >  **módosítsa a tulajdonságok** >. Ezután nyissa meg a **titkosítás lapot**.<br>
+1. Válassza a **jelszó módosítása** jelölőnégyzetet.<br>
+1. Adjon meg egy új jelszót, vagy kattintson a **jelszó létrehozása**lehetőségre.
+1. Az új jelszó mentéséhez kattintson a **Tallózás** gombra.
 
     ![Jelszó előállítása.](./media/backup-azure-manage-mars/passphrase.png)
-- A módosítások alkalmazásához kattintson **az OK** gombra.  Ha a [biztonsági funkció](https://docs.microsoft.com/azure/backup/backup-azure-security-feature#enable-security-features) engedélyezve van a Recovery Services-tároló Azure Portalján, a rendszer kérni fogja a biztonsági PIN-kód megadását. A PIN-kód fogadásához kövesse az ebben a [cikkben](https://docs.microsoft.com/azure/backup/backup-azure-security-feature#authentication-to-perform-critical-operations)ismertetett lépéseket.<br>
-- Illessze be a biztonsági PIN-kódot a portálról, majd kattintson az **OK** gombra a módosítások alkalmazásához.<br>
+
+1. A módosítások alkalmazásához kattintson **az OK** gombra.  Ha a [biztonsági funkció](./backup-azure-security-feature.md#enable-security-features) engedélyezve van a Recovery Services-tároló Azure Portalján, a rendszer kérni fogja a biztonsági PIN-kód megadását. A PIN-kód fogadásához kövesse az ebben a [cikkben](./backup-azure-security-feature.md#authentication-to-perform-critical-operations)ismertetett lépéseket.<br>
+1. Illessze be a biztonsági PIN-kódot a portálról, majd kattintson az **OK** gombra a módosítások alkalmazásához.<br>
 
     ![Jelszó előállítása.](./media/backup-azure-manage-mars/passphrase2.png)
-- Győződjön meg arról, hogy a jelszó biztonságos módon mentve van egy másik helyen (a forrásoldali gépen kívül), lehetőleg a Azure Key Vault. Tartsa nyomon az összes hozzáférési kódot, ha több géppel is rendelkezik a MARS-ügynökökkel való biztonsági mentéssel.
+1. Győződjön meg arról, hogy a jelszó biztonságos módon mentve van egy másik helyen (a forrásoldali gépen kívül), lehetőleg a Azure Key Vault. Tartsa nyomon az összes hozzáférési kódot, ha több géppel is rendelkezik a MARS-ügynökökkel való biztonsági mentéssel.
 
 ## <a name="managing-backup-data-for-unavailable-machines"></a>Nem elérhető gépek biztonsági mentési információinak kezelése
 
@@ -182,13 +184,14 @@ Ezekhez a gépekhez a Azure Backup szolgáltatás biztosítja, hogy az utolsó h
 A MARS biztonsági mentési szabályzatának kezelése a MARS-konzolon, és nem a portálon keresztül történik. Ha meg kell hosszabbítani a meglévő helyreállítási pontok megőrzési beállításait a lejárat előtt, akkor vissza kell állítania a gépet, telepítenie kell a MARS-konzolt, és ki kell terjesztenie a szabályzatot.
 
 - A gép visszaállításához hajtsa végre a következő lépéseket:
-  - [A virtuális gép visszaállítása egy másik célszámítógépre](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine)
-  - Hozza létre újra a célszámítógép nevét ugyanazzal az állomásnévvel, mint a forrásoldali géppel
-  - Telepítse az ügynököt, és regisztrálja újra ugyanazon a tárolón és ugyanazzal a jelszóval
-  - Indítsa el a MARS-ügyfelet, hogy az igényeinek megfelelően kiterjessze a megőrzési időtartamot
+  1. [A virtuális gép visszaállítása egy másik célszámítógépre](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine)
+  1. Hozza létre újra a célszámítógép nevét ugyanazzal az állomásnévvel, mint a forrásoldali géppel
+  1. Telepítse az ügynököt, és regisztrálja újra ugyanazon a tárolón és ugyanazzal a jelszóval
+  1. Indítsa el a MARS-ügyfelet, hogy az igényeinek megfelelően kiterjessze a megőrzési időtartamot
 - Az újonnan visszaállított, a MARStal védett gép továbbra is készít biztonsági mentést.  
 
 ## <a name="next-steps"></a>További lépések
 
-- A támogatott forgatókönyvekkel és korlátozásokkal kapcsolatos információkért tekintse meg a [Mars-ügynök támogatási mátrixát](https://docs.microsoft.com/azure/backup/backup-support-matrix-mars-agent).
+- A támogatott forgatókönyvekkel és korlátozásokkal kapcsolatos információkért tekintse meg a [Mars-ügynök támogatási mátrixát](./backup-support-matrix-mars-agent.md).
 - További információ az [igény szerinti biztonsági mentési szabályzat megőrzési viselkedéséről](backup-windows-with-mars-agent.md#set-up-on-demand-backup-policy-retention-behavior).
+- További gyakori kérdésekért lásd a Mars- [ügynök gyakori](backup-azure-file-folder-backup-faq.md)kérdéseit.

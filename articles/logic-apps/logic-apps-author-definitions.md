@@ -6,17 +6,18 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/01/2018
-ms.openlocfilehash: 0f5f01c757bf651beddaa76fc3eb8046b21b31eb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9163071237041d7c8510a644c573e3763434bb0c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75979392"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87060670"
 ---
 # <a name="create-edit-or-extend-json-for-logic-app-workflow-definitions-in-azure-logic-apps"></a>Logikai alkalmazásokhoz készült JSON-munkafolyamatdefiníciók létrehozása, szerkesztése, vagy kiterjesztése az Azure Logic Appsben
 
 Ha [Azure Logic apps](../logic-apps/logic-apps-overview.md)-ben automatizált munkafolyamatokkal rendelkező vállalati integrációs megoldásokat hoz létre, az alapul szolgáló logikai alkalmazás-definíciók egyszerű és deklaratív JavaScript Object Notation (JSON) és a [munkafolyamat-definíciós nyelv (WDL) sémáját](../logic-apps/logic-apps-workflow-definition-language.md) használják a leíráshoz és az érvényesítéshez. Ezek a formátumok a Logic app-definíciók könnyebben olvashatók és megérthetők, és a kód ismerete nélkül.
 Ha automatizálni szeretné a logikai alkalmazások létrehozását és üzembe helyezését, [Azure Resource Manager-sablonokban](../azure-resource-manager/templates/overview.md)található [Azure-erőforrásokként](../azure-resource-manager/management/overview.md) is hozzáadhat logikai alkalmazás-definíciókat.
-A Logic apps létrehozásához, kezeléséhez és üzembe helyezéséhez használhatja a [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.logicapp), az [Azure CLI](../azure-resource-manager/templates/deploy-cli.md)vagy a [Azure Logic apps REST API-kat](https://docs.microsoft.com/rest/api/logic/).
+A Logic apps létrehozásához, kezeléséhez és üzembe helyezéséhez használhatja a [Azure PowerShell](/powershell/module/az.logicapp), az [Azure CLI](../azure-resource-manager/templates/deploy-cli.md)vagy a [Azure Logic apps REST API-kat](/rest/api/logic/).
 
 Ha a Logic app-definíciókat a JSON-ban szeretné használni, nyissa meg a kód nézet szerkesztőjét, ha a Azure Portal vagy a Visual Studióban dolgozik, vagy másolja a definíciót a kívánt szerkesztőbe.
 Ha most ismerkedik a Logic apps szolgáltatással, tekintse át [az első logikai alkalmazás létrehozását ismertető témakört](../logic-apps/quickstart-create-first-logic-app-workflow.md).

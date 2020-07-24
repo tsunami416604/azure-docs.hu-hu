@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: kulcs beállítása és lekérése Azure Key Vault'
+title: Kulcsok attribútumainak létrehozása és lekérése Azure Key Vaultban – Azure CLI
 description: Gyors útmutató, amely bemutatja, hogyan lehet kulcsokat beállítani és lekérni Azure Key Vault az Azure CLI használatával
 services: key-vault
 author: msmbaldwin
@@ -10,18 +10,18 @@ ms.subservice: keys
 ms.topic: quickstart
 ms.date: 03/30/2020
 ms.author: mbaldwin
-ms.openlocfilehash: defc5317c127d771786989748e404285ca0c0584
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e9d56f0ad2da696eb683ea393ad75254ba3ce954
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81424208"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87061314"
 ---
 # <a name="quickstart-set-and-retrieve-a-key-from-azure-key-vault-using-azure-cli"></a>Rövid útmutató: kulcs beállítása és lekérése Azure Key Vault az Azure CLI használatával
 
 Ebben a rövid útmutatóban egy kulcstartót hoz létre Azure Key Vault az Azure CLI-vel. Az Azure Key Vault egy felhőszolgáltatás, amely biztonságos titkoskulcs-tárolóként működik. Biztonságosan tárolhatja kulcsait, jelszavait, tanúsítványait és egyéb titkos adatait. További információ a Key Vaultről: [Áttekintés](../general/overview.md). Az Azure CLI az Azure-erőforrások létrehozására és kezelésére szolgál, parancsok és szkriptek alkalmazásával. Ha ezt elvégezte, egy kulcsot fog tárolni.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
@@ -36,7 +36,7 @@ az login
 
 Ha további információt szeretne a bejelentkezési lehetőségekről a CLI-n keresztül, tekintse meg az [Azure CLI-vel való bejelentkezést](/cli/azure/authenticate-azure-cli?view=azure-cli-latest) ismertető részt.
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Az erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. A következő példában létrehoz egy *ContosoResourceGroup* nevű erőforráscsoportot az *eastus* helyen.
 
@@ -73,7 +73,7 @@ A nevezett **ExampleKey** létrehozásához írja be az alábbi parancsokat:
 az keyvault key create --vault-name "Contoso-Vault2" -n ExampleKey --protection software
 ```
 
-Most már hivatkozhat erre a kulcsra, amelyet a Azure Key Vaulthoz adott hozzá az URI használatával. Az **https://Contoso-Vault2.vault.azure.net/keys/ExampleKey** aktuális verzió beszerzéséhez használja a következőt:. 
+Most már hivatkozhat erre a kulcsra, amelyet a Azure Key Vaulthoz adott hozzá az URI használatával. **https://Contoso-Vault2.vault.azure.net/keys/ExampleKey**Az aktuális verzió beszerzéséhez használja a következőt:. 
 
 A korábban tárolt kulcs megtekintése:
 
@@ -84,7 +84,7 @@ az keyvault key show --name "ExampleKey" --vault-name "Contoso-Vault2"
 
 Most létrehozott egy Key Vault, tárolt egy kulcsot, és beolvasta azt.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 A gyűjtemény részét képező többi rövid útmutató és oktatóanyag erre a rövid útmutatóra épül. Ha azt tervezi, hogy az ezt követő rövid útmutatókkal és oktatóanyagokkal dolgozik tovább, ne törölje ezeket az erőforrásokat.
 Ha már nincs rá szükség, az [az group delete](/cli/azure/group) paranccsal eltávolíthatja az erőforráscsoportot és az összes kapcsolódó erőforrást. Az erőforrásokat a következőképpen törölheti:

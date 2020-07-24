@@ -11,26 +11,26 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.custom: seodec18
-ms.openlocfilehash: f0ce0f7d90540274d24a7e0248e6f197b74033a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a8da2355b62d7be36b10ac9a1ce4b53e87b4b288
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81416980"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87059217"
 ---
-# <a name="manage-ga-reference-data-for-an-azure-time-series-insights-environment-using-c"></a>Azure Time Series Insights-környezethez tartozó GA-referenciák kezelése C használatával #
+# <a name="manage-reference-data-for-an-azure-time-series-insights-gen-1-environment-using-c"></a>A Azure Time Series Insights 1. generációs környezetek hivatkozási adatai C használatával kezelhetők #
 
-Ez a cikk bemutatja, hogyan egyesítheti a C#, a [MSAL.net](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)és a Azure Active Directoryt, hogy programozott API-kéréseket lehessen készíteni a Azure Time Series Insights GA [Reference adatkezelés API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api)-hoz.
+Ez a cikk bemutatja, hogyan egyesítheti a C#, a [MSAL.net](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)és a Azure Active Directoryt, hogy programozott API-kéréseket lehessen készíteni a Azure Time Series Insights Gen 1 [Reference adatkezelés API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api)-hoz.
 
 > [!TIP]
 > A GA C# kód mintáinak megtekintése a következő helyen: [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample) .
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 Az alábbi mintakód a következő funkciókat mutatja be:
 
 * Hozzáférési jogkivonat beszerzése a [MSAL.net](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) **PublicClientApplication**használatával.
-* Szekvenciális létrehozási, OLVASÁSI, frissítési és TÖRLÉSi műveletek a GA [Reference adatkezelés API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api)-hoz.
+* Szekvenciális létrehozási, OLVASÁSI, frissítési és TÖRLÉSi műveletek az 1. generációs [hivatkozási adatkezelés API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api)-hoz.
 * Gyakori válasz-kódok, beleértve a [gyakori hibakódokat](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api#validation-and-error-handling).
     
     A Reference adatkezelés API egyenként dolgozza fel az egyes elemeket, és egy adott elemmel kapcsolatos hiba miatt nem akadályozza meg, hogy a többi sikeres befejezést hajtson végre. Ha például a kérelem 100 elemet tartalmaz, és egy elem hibát tartalmaz, akkor a 99-es elemek írása megtörténik, és a rendszer elutasítja az egyiket.
@@ -39,8 +39,8 @@ Az alábbi mintakód a következő funkciókat mutatja be:
 
 A mintakód fordítása és futtatása előtt végezze el a következő lépéseket:
 
-1. [GA Azure Time Series Insights környezet kiépítése](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-get-started
-) .
+1. Hozzon létre [egy 1. generációs Azure Time Series Insights](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-get-started
+) környezetet.
 
 1. [Hozzon létre egy hivatkozási adatkészletet](time-series-insights-add-reference-data-set.md) a környezetében. Használja a következő hivatkozási adatsémát:
 
@@ -309,4 +309,4 @@ namespace CsharpTsiMsalGaSample
 
 ## <a name="next-steps"></a>További lépések
 
-- Olvassa el a GA [reference adatkezelés API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api) -dokumentációját.
+- Olvassa el az 1. generációs [referenciát adatkezelés API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api) -dokumentációt.

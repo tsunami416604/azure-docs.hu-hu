@@ -14,14 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: 44002a8f4ab3b644e3530ee2d2fc06a7af271fbe
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 34f2cfa06cbdbb75b8fd610cd1f76fb33dde4cde
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531460"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87059844"
 ---
 # <a name="connect-your-qualys-vm-to-azure-sentinel-with-azure-function"></a>A Qualys virtuális gép összekötése az Azure Sentinel szolgáltatással az Azure Function használatával
+
+> [!IMPORTANT]
+> A Qualys VM-adatösszekötő az Azure Sentinel szolgáltatásban jelenleg nyilvános előzetes verzióban érhető el.
+> Ez a szolgáltatás szolgáltatói szerződés nélkül érhető el, és éles számítási feladatokhoz nem ajánlott. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 A Qualys sebezhetőség-kezelő (VM) összekötő segítségével könnyedén csatlakoztathatja az összes [Qualys-alapú virtuális gép](https://www.qualys.com/apps/vulnerability-management/) biztonsági megoldásának naplóit az Azure Sentinel használatával, megtekintheti az irányítópultokat, egyéni riasztásokat hozhat létre, és javíthatja a vizsgálatot. A Qualys virtuális gép és az Azure Sentinel közötti integráció a Azure Functions használatával kéri le a naplózási adataikat a REST API használatával.
 
@@ -46,7 +50,7 @@ A sikeres kapcsolatok létrejötte után az adat a **QualysHostDetection_CL** t�
 
 Akár 20 percet is igénybe vehet, amíg a naplók meg nem kezdődnek a Log Analytics.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebből a dokumentumból megtudhatta, hogyan csatlakoztatható a Qualys virtuális gép az Azure Sentinelhez az Azure Function Apps használatával. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 

@@ -4,14 +4,15 @@ description: Leírja az Azure HPC cache-t, amely egy fájl-hozzáférési gyors�
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: overview
-ms.date: 05/29/2020
+ms.date: 07/16/2020
 ms.author: v-erkel
-ms.openlocfilehash: c0d32beeedba61bc2ecdc444685f7e81073459be
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.custom: references_regions
+ms.openlocfilehash: 8c8223872ec3ef1d875e10ead8f327db01a924c4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84433696"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87053681"
 ---
 # <a name="what-is-azure-hpc-cache"></a>Mi az az Azure HPC Cache?
 
@@ -53,22 +54,16 @@ Az Azure HPC cache üzembe helyezésével felgyorsíthatja a mennyiségi elemzé
 
 ## <a name="region-availability"></a>Régiónkénti elérhetőség
 
-Az Azure HPC cache a következő Azure-régiókban érhető el:
+Az Azure [globális infrastruktúra-termékek régiónként](https://azure.microsoft.com/global-infrastructure/services/?products=hpc-cache) lapon megtudhatja, hol érhető el az Azure HPC cache.
 
-| Észak-Amerika      | Európa         | Ázsia            | Ausztrália      |
-|--------------------|----------------|-----------------|----------------|
-| USA keleti régiója            | Észak-Európa   | Dél-Korea középső régiója   | Kelet-Ausztrália |
-| USA 2. keleti régiója          | Nyugat-Európa    | Délkelet-Ázsia  |               |
-| USA déli középső régiója | | | |
-| USA nyugati régiója, 2.        | | | |
-
-Az [ügyfél által felügyelt kulcsok funkció](customer-keys.md) csak ezekben a régiókban támogatott:
+Az [ügyfél által felügyelt kulcsok funkció](customer-keys.md) csak az alábbi Azure-régiókban támogatott:
 
 * USA keleti régiója
 * USA déli középső régiója
-* USA nyugati régiója, 2.
-
-A legfrissebb rendelkezésre állási információkért tekintse meg az [Azure HPC cache-termék oldalát](https://azure.microsoft.com/services/hpc-cache) .
+* USA 2. nyugati régiója
+* West Europe
+* USA-beli államigazgatás – Arizona
+* USA-beli államigazgatás – Virginia
 
 ## <a name="service-availability"></a>Szolgáltatás rendelkezésre állása
 
@@ -76,8 +71,8 @@ Az Azure HPC cache használatával használni kívánt előfizetésekhez hozzáf
 
 Hozzáférés kérése az [űrlap](https://aka.ms/onboard-hpc-cache)kitöltésével. Miután hozzáadta az előfizetést a hozzáférési listához, létrehozhat gyorsítótárat is.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A képességeivel kapcsolatos további információkért olvassa el az [Azure HPC cache-termék oldalát](https://azure.microsoft.com/services/hpc-cache)
-* További tudnivalók a termékek [előfeltételeiről](hpc-cache-prereqs.md)
+* További tudnivalók a termékek [előfeltételeiről](hpc-cache-prerequisites.md)
 * [Azure HPC-gyorsítótár létrehozása](hpc-cache-create.md) a Azure Portal

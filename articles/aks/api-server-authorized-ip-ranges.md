@@ -4,11 +4,12 @@ description: Ismerje meg, hogyan biztonságossá teheti a fürtöt IP-címtartom
 services: container-service
 ms.topic: article
 ms.date: 11/05/2019
-ms.openlocfilehash: 4d9030e21c3b8f31c18c26fc54dc76d5b8d84a17
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c92d4e00da1cc3d372cca0bf4efbe648ae522608
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85100055"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87057461"
 ---
 # <a name="secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Biztonságos hozzáférés az API-kiszolgálóhoz a jogosult IP-címtartományok használatával az Azure Kubernetes szolgáltatásban (ak)
 
@@ -17,7 +18,7 @@ A Kubernetes-ben az API-kiszolgáló kérelmeket fogad a fürt műveleteinek vé
 Ebből a cikkből megtudhatja, hogyan használható az API-kiszolgáló által engedélyezett IP-címtartományok annak a korlátozására, hogy mely IP-címek és CIDRs férhetnek hozzá a vezérlő síkja.
 
 > [!IMPORTANT]
-> Az új fürtökön az API-kiszolgáló által engedélyezett IP-címtartományok csak a *standard* SKU Load Balancer esetében támogatottak. Az *alapszintű* SKU Load Balancer és a konfigurált API-kiszolgáló által jóváhagyott IP-címtartományok meglévő fürtök továbbra is ugyanúgy működnek, mint a *standard* SKU Load Balancer. Ezek a meglévő fürtök továbbra is működni fognak, ha a Kubernetes verziója vagy a vezérlő síkja frissül.
+> Az API-kiszolgáló által engedélyezett IP-címtartományok után létrehozott fürtökön a 2019 októberi időszakban az API-kiszolgáló által engedélyezett IP-címtartományok csak a *standard* SKU Load Balancer esetében támogatottak. Az *alapszintű* SKU Load Balancer és a konfigurált API-kiszolgáló által jóváhagyott IP-címtartományok meglévő fürtök továbbra is ugyanúgy működnek, mint a *standard* SKU Load Balancer. Ezek a meglévő fürtök továbbra is működni fognak, ha a Kubernetes verziója vagy a vezérlő síkja frissül. Az API-kiszolgáló által engedélyezett IP-címtartományok a privát fürtök esetében nem támogatottak.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -35,7 +36,7 @@ További információ az API-kiszolgálóról és az egyéb fürt-összetevőkr�
 
 ## <a name="create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled"></a>AK-fürt létrehozása az API-kiszolgáló által engedélyezett IP-címtartományok engedélyezve
 
-Az API-kiszolgáló által engedélyezett IP-címtartományok csak az új AK-fürtök esetében működnek, és nem támogatottak a privát AK-fürtök esetében. Hozzon létre egy fürtöt az [az AK Create][az-aks-create] paranccsal, és adja meg a *`--api-server-authorized-ip-ranges`* paramétert a jóváhagyott IP-címtartományok listájának megadásához. Ezek az IP-címtartományok általában a helyszíni hálózatok vagy a nyilvános IP-címek által használt címtartományok. CIDR-tartomány megadásakor a tartomány első IP-címével kezdjen el. Például a *137.117.106.90/29* egy érvényes tartomány, de győződjön meg arról, hogy az első IP-címet adta meg a tartományban, például *137.117.106.88/29*.
+Hozzon létre egy fürtöt az [az AK Create][az-aks-create] paranccsal, és adja meg a *`--api-server-authorized-ip-ranges`* paramétert a jóváhagyott IP-címtartományok listájának megadásához. Ezek az IP-címtartományok általában a helyszíni hálózatok vagy a nyilvános IP-címek által használt címtartományok. CIDR-tartomány megadásakor a tartomány első IP-címével kezdjen el. Például a *137.117.106.90/29* egy érvényes tartomány, de győződjön meg arról, hogy az első IP-címet adta meg a tartományban, például *137.117.106.88/29*.
 
 > [!IMPORTANT]
 > Alapértelmezés szerint a fürt a [standard SKU Load balancert][standard-sku-lb] használja, amelyet a kimenő átjáró konfigurálására használhat. Ha engedélyezi az API-kiszolgálók engedélyezett IP-tartományait a fürt létrehozása során, a fürt nyilvános IP-címe alapértelmezés szerint is engedélyezett a megadott tartományokon kívül. Ha a *""* vagy a nem értéket ad meg *`--api-server-authorized-ip-ranges`* , az API-kiszolgáló által engedélyezett IP-címtartományok le lesznek tiltva. Vegye figyelembe, hogy ha a PowerShellt használja, használja az *`--api-server-authorized-ip-ranges=""`* (egyenlőségjel) lehetőséget az elemzési problémák elkerüléséhez.
@@ -58,8 +59,10 @@ az aks create \
 > - A tűzfal nyilvános IP-címe
 > - Bármely tartomány, amely azokat a hálózatokat képviseli, amelyekről a fürtöt felügyelni szeretné
 > - Ha az AK-fürtön az Azure dev Spaces szolgáltatást használja, akkor a [régión alapuló további tartományokat][dev-spaces-ranges]is engedélyeznie kell.
-
-> A megadható IP-címtartományok felső határa 3500. 
+>
+> A megadható IP-címtartományok felső határa 200.
+>
+> A szabályok akár a 2perc is eltarthat. A kapcsolódás tesztelésekor adja meg a megadott időt.
 
 ### <a name="specify-the-outbound-ips-for-the-standard-sku-load-balancer"></a>A standard SKU Load Balancer kimenő IP-címeinek megadása
 

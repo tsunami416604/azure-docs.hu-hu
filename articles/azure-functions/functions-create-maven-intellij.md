@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 7ced455e8124abed75dc7b2bbf7f92eb13613347
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b1eb430f94ef545fa74ed225c427a121a47f7cf8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85556582"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87055779"
 ---
 # <a name="create-your-first-azure-function-with-java-and-intellij"></a>Az első Azure-függvény létrehozása Javával és IntelliJ
 
@@ -44,7 +44,7 @@ A Java-és IntelliJ-függvények fejlesztéséhez telepítse a következő szoft
 2. Az Azure-fiókjába való bejelentkezéshez nyissa meg az **Azure Explorer** oldalsávot, majd kattintson az **Azure-bejelentkezés** ikonra a felső sávban (vagy az IDEA-menüben: **Eszközök/Azure/Azure-bejelentkezés**).
     ![Az IntelliJ Azure Sign In (Azure-bejelentkezés) parancsa][intellij-azure-login]
 
-3. Az **Azure-bejelentkezés** ablakban válassza a **Bejelentkezés az eszközön** lehetőséget, majd kattintson a **Bejelentkezés** elemre ([egyéb bejelentkezési lehetőségek](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/sign-in-instructions)).
+3. Az **Azure-bejelentkezés** ablakban válassza a **Bejelentkezés az eszközön** lehetőséget, majd kattintson a **Bejelentkezés** elemre ([egyéb bejelentkezési lehetőségek](/azure/developer/java/toolkit-for-intellij/sign-in-instructions)).
 
    ![Az Azure bejelentkezési ablaka a kiválasztott Bejelentkezés az eszközön lehetőséggel][intellij-azure-popup]
 
@@ -156,7 +156,7 @@ Ebben a szakaszban a Azure Toolkit for IntelliJ segítségével létrehoz egy he
 Létrehozott egy Java functions-projektet egy HTTP által aktivált függvénnyel, futtatta azt a helyi gépen, és üzembe helyezte az Azure-ban. Most terjessze ki a függvényt...
 
 > [!div class="nextstepaction"]
-> [Azure Storage-üzenetsor kimeneti kötésének hozzáadása](/azure/azure-functions/functions-add-output-binding-storage-queue-java)
+> [Azure Storage-üzenetsor kimeneti kötésének hozzáadása](./functions-add-output-binding-storage-queue-java.md)
 
 
 [marketplace]:./media/functions-create-first-java-intellij/marketplace.png

@@ -14,14 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: e4185de879fa6136531e6d4c64908befa1d3bc45
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: df4292a40335e58c64b8ebc50ffb6ac1ceee8836
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531470"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87059897"
 ---
 # <a name="connect-your-proofpoint-tap-to-azure-sentinel-with-azure-function"></a>A Proofpoint KOPPINTson az Azure Sentinelre az Azure-függvény használatával
+
+> [!IMPORTANT]
+> A Proofpoint TAP adatösszekötő az Azure Sentinel szolgáltatásban jelenleg nyilvános előzetes verzióban érhető el.
+> Ez a szolgáltatás szolgáltatói szerződés nélkül érhető el, és éles számítási feladatokhoz nem ajánlott. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 A Proofpoint Targeted Attack Protection (KOPPINTÁS) összekötővel könnyedén csatlakoztathatja az összes [Proofpoint](https://www.proofpoint.com/us/products/advanced-threat-protection/targeted-attack-protection) a biztonsági megoldások naplóihoz az Azure Sentinel használatával, az irányítópultok megtekintéséhez, egyéni riasztások létrehozásához és a vizsgálat javításához. A Proofpoint TAP és az Azure Sentinel közötti integráció a Azure Functions használatával kéri le a naplózási adataikat a REST API használatával.
 
@@ -46,7 +50,7 @@ A sikeres kapcsolatok létrejötte után az adat a **ProofpointTAPMessagesBlocke
 
 Akár 20 percet is igénybe vehet, amíg a naplók meg nem kezdődnek a Log Analytics.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebből a dokumentumból megtudhatta, hogyan kapcsolódhat a Proofpoint az Azure Sentinelhez az Azure Function Apps használatával. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 

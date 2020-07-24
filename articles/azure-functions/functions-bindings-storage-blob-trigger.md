@@ -6,11 +6,12 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
 ms.custom: tracking-python
-ms.openlocfilehash: c88ace8693d15a58c78c70ba46001c98e92fc0a6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6b9cf3f76afecb1e6f7ad00a18eb7290b8decb5f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84559975"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87056040"
 ---
 # <a name="azure-blob-storage-trigger-for-azure-functions"></a>Azure Blob Storage-trigger Azure Functions
 
@@ -202,7 +203,7 @@ A [C# osztályok könyvtáraiban](functions-dotnet-class-library.md)használja a
 
 * [BlobTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.Storage/Blobs/BlobTriggerAttribute.cs)
 
-  Az attribútum konstruktora egy elérésiút-karakterláncot vesz fel, amely jelzi a tárolót, és opcionálisan egy [blob-nevet](#blob-name-patterns). Íme egy példa:
+  Az attribútum konstruktora egy elérésiút-karakterláncot vesz fel, amely jelzi a tárolót, és opcionálisan egy [blob-nevet](#blob-name-patterns). Bemutatunk egy példát:
 
   ```csharp
   [FunctionName("ResizeImage")]
@@ -277,7 +278,7 @@ Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított k
 |function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
 |---------|---------|----------------------|
 |**típusa** | n.a. | Értékre kell állítani `blobTrigger` . Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban.|
-|**direction** | n.a. | Értékre kell állítani `in` . Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban. A kivételek a [használat](#usage) szakaszban vannak feltüntetve. |
+|**irányba** | n.a. | Értékre kell állítani `in` . Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban. A kivételek a [használat](#usage) szakaszban vannak feltüntetve. |
 |**név** | n.a. | A blobot jelölő változó neve a függvény kódjában. |
 |**elérési útja** | **BlobPath** |A figyelni kívánt [tároló](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources) .  A [blob neve minta](#blob-name-patterns)lehet. |
 |**kapcsolat** | **Kapcsolat** | Egy olyan Alkalmazásbeállítás neve, amely a kötéshez használandó tárolási kapcsolati karakterláncot tartalmazza. Ha az Alkalmazásbeállítások neve "AzureWebJobs" előtaggal kezdődik, akkor itt csak a nevet adja meg. Ha például a "MyStorage" értékre van állítva `connection` , a functions futtatókörnyezet egy "AzureWebJobsMyStorage" nevű alkalmazás-beállítást keres. Ha `connection` üresen hagyja, a functions futtatókörnyezet az alapértelmezett tárolási kapcsolatok karakterláncát használja a nevű alkalmazás-beállításban `AzureWebJobsStorage` .<br><br>A kapcsolatok karakterláncának általános célú Storage-fiókhoz kell tartoznia, nem [blob Storage-fiókhoz](../storage/common/storage-account-overview.md#types-of-storage-accounts).|
@@ -300,7 +301,7 @@ A Blobok adataihoz való hozzáférés `context.bindings.<NAME>` `<NAME>` a *fun
 
 # <a name="python"></a>[Python](#tab/python)
 
-A blob-adatelérést a [InputStream](https://docs.microsoft.com/python/api/azure-functions/azure.functions.inputstream?view=azure-python)típussal megadott paraméterrel érheti el. A részletekért tekintse meg az [trigger példáját](#example) .
+A blob-adatelérést a [InputStream](/python/api/azure-functions/azure.functions.inputstream?view=azure-python)típussal megadott paraméterrel érheti el. A részletekért tekintse meg az [trigger példáját](#example) .
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -411,9 +412,9 @@ A blob-trigger belsőleg használ egy várólistát, így az egyidejű függvén
 
 [A használati terv az](functions-scale.md#how-the-consumption-and-premium-plans-work) egyik virtuális GÉPEN (VM) lévő function alkalmazást 1,5 GB memóriára korlátozza. A memóriát a párhuzamosan futó és a functions Runtime is használja. Ha egy blob által aktivált függvény a teljes blobot betölti a memóriába, az adott függvény által a Blobok által használt maximális memória 24 * a blob maximális mérete. Például a három blob által aktivált függvényt használó Function alkalmazás, valamint az alapértelmezett beállítások esetében a 3 * 24 = 72 függvény meghívása esetén a virtuális gépek maximális száma.
 
-A JavaScript és a Java függvények a teljes blobot a memóriába töltik be, a C# függvények pedig az, a vagy a POCO alkalmazáshoz kötődnek `string` `Byte[]` .
+A JavaScript és a Java függvények a teljes blobot a memóriába töltik be, a C#-függvények pedig a következőhöz kötődnek: `string` vagy `Byte[]` .
 
-## <a name="polling"></a>Lekérdezési
+## <a name="polling"></a>Ciklikus lekérdezés
 
 A lekérdezés hibridként működik a naplók vizsgálata és az időszakos tároló-ellenőrzések futtatása között. A Blobok a 10 000-es csoportokba vannak beolvasva, és az intervallumok közötti folytatási tokent használják.
 

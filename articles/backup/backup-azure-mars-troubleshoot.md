@@ -4,12 +4,12 @@ description: Ebből a cikkből megtudhatja, hogyan lehet elhárítani a Azure Ba
 ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/15/2019
-ms.openlocfilehash: ddff3ca8a89d8d5674be00fdebc70b0232cdbd13
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b810b5abfb15a39d19a0571b6ac36a6c86bf0b4f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539057"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87054652"
 ---
 # <a name="troubleshoot-the-microsoft-azure-recovery-services-mars-agent"></a>A Microsoft Azure Recovery Services-(MARS-) ügynök hibáinak megoldása
 
@@ -75,6 +75,12 @@ Javasoljuk, hogy a Microsoft Azure Recovery Services (MARS) ügynökével kapcso
 | Hiba  | Lehetséges ok | Ajánlott műveletek |
 | ---     | ---     | ---    |
 | <br /><ul><li>A Microsoft Azure Recovery szolgáltatás ügynökének nem sikerült kapcsolódnia a Microsoft Azure Backuphoz. (AZONOSÍTÓ: 100050) Ellenőrizze a hálózati beállításokat, és győződjön meg arról, hogy tud-e csatlakozni az internethez.<li>(407) proxy hitelesítés szükséges. |A proxy blokkolja a csatlakozást. |  <ul><li>Az Internet Explorerben nyissa meg a **Tools**  >  **Internet Options**  >  **Security**  >  **Internet**menüpontot. Válassza az **Egyéni szint** lehetőséget, majd görgessen le a **Fájl letöltése** szakaszhoz. Válassza az **Engedélyezés** lehetőséget.<p>Előfordulhat, hogy az Internet Explorerben [URL-címeket és IP-címeket](install-mars-agent.md#verify-internet-access) is hozzá kell adnia a megbízható helyekhez.<li>Módosítsa a beállításokat proxykiszolgáló használatára. Ezután adja meg a proxykiszolgáló részleteit.<li> Ha a számítógépén korlátozott az Internet-hozzáférés, győződjön meg arról, hogy a számítógépen vagy a proxyn a tűzfalbeállítások engedélyezik ezeket az [URL-címeket és IP-címeket](install-mars-agent.md#verify-internet-access). <li>Ha a kiszolgálón telepítve van a víruskereső szoftver, zárja ki ezeket a fájlokat a víruskeresőből: <ul><li>CBEngine.exe (dpmra.exe helyett).<li>CSC.exe (a .NET-keretrendszerhez kapcsolódóan). A .NET-keretrendszer minden olyan verziójához CSC.exe, amely telepítve van a kiszolgálóra. CSC.exe fájlok kizárása a .NET-keretrendszer összes verziójához az érintett kiszolgálón. <li>A mappa vagy a gyorsítótár helye. <br>A Scratch mappa vagy a gyorsítótár elérési útjának alapértelmezett helye: C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch.<li>A bin mappa a C:\Program Files\Microsoft Azure Recovery Services Agent\Bin.
+
+## <a name="the-specified-vault-credential-file-cannot-be-used-as-it-is-not-downloaded-from-the-vault-associated-with-this-server"></a>A tár megadott hitelesítő adatait tartalmazó fájl nem használható, mert nem tölthető le a kiszolgálóhoz társított tárolóból.
+
+| Hiba  | Lehetséges ok | Ajánlott műveletek |
+| ---     | ---     | ---    |
+| A tár megadott hitelesítő adatait tartalmazó fájl nem használható, mert nem tölthető le a kiszolgálóhoz társított tárolóból. (AZONOSÍTÓ: 100110) Adja meg a megfelelő tároló hitelesítő adatait. | A tár hitelesítőadat-fájlja egy másik tárolóból származik, mint az a kiszolgáló, amely már regisztrálva van. | Győződjön meg arról, hogy a célszámítógép és a forrásszámítógép ugyanahhoz a Recovery Services-tárolóhoz van regisztrálva. Ha a célkiszolgáló már regisztrálva van egy másik tárolóban, akkor a **kiszolgáló regisztrálása** lehetőséggel regisztrálhat a megfelelő tárba.  
 
 ## <a name="backup-jobs-completed-with-warning"></a>A biztonsági mentési feladatok figyelmeztetéssel fejeződött be
 
@@ -273,7 +279,7 @@ Hibaüzenet | Javasolt művelet
 -- | --
 Nem találhatók módosítások a fájlban. Ennek több oka lehet. Próbálkozzon újra a művelettel | A probléma megoldásához ellenőrizze az alábbi lépéseket, majd próbálja megismételni a műveletet:<br/> - [Győződjön meg arról, hogy a MARS-ügynök legújabb](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409) <br/> - [A biztonsági másolatok területét érintő tárolási problémák ellenőrzése és feloldása](#prerequisites)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a [Windows Server biztonsági mentéséről a Azure Backup ügynökkel](tutorial-backup-windows-server-to-azure.md).
 - Ha vissza kell állítania egy biztonsági mentést, olvassa el a [fájlok visszaállítása Windows rendszerű gépre](backup-azure-restore-windows-server.md)című témakört.

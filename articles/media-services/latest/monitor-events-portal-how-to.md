@@ -15,11 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 01/21/2020
 ms.author: juliako
-ms.openlocfilehash: 18503e64dc6f38daab61599153cd0e0fb6fadb20
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 92a97ddbd9497954b35efa33de7c2f843d4dd934
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76509223"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87060684"
 ---
 # <a name="create-and-monitor-media-services-events-with-event-grid-using-the-azure-portal"></a>Media Services-események létrehozása és monitorozása az Event Griddel az Azure Portalon
 
@@ -32,7 +33,7 @@ A folyamat végén látni fogja, hogy a rendszer elküldte az eseményadatokat a
 ## <a name="prerequisites"></a>Előfeltételek 
 
 * Aktív Azure-előfizetéssel rendelkezik.
-* Hozzon létre egy új Azure Media Services-fiókot [az ebben a gyors útmutatóban](create-account-cli-quickstart.md) leírt módon.
+* Hozzon létre egy új Azure Media Services-fiókot [az ebben a gyors útmutatóban](./create-account-howto.md) leírt módon.
 
 ## <a name="create-a-message-endpoint"></a>Üzenetvégpont létrehozása
 

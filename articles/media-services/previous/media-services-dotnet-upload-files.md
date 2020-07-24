@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 03b9995eab503ac1fcd4615882419dde31d4f8bf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4025ace5c2609783a8d0f09b99d60537addb6f08
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "64869459"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87060097"
 ---
 # <a name="upload-files-into-a-media-services-account-using-net"></a>Fájlok feltöltése Media Services-fiókba a .NET használatával 
 
 > [!NOTE]
-> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Tekintse meg a legújabb, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
+> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Tekintse meg a legújabb, [Media Services v3](../latest/index.yml)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
 
 A Media Services szolgáltatásban a digitális fájlok feltöltése vagy kimenete egy adategységbe történik. Az **eszköz** entitás tartalmazhat videó-, hang-, kép-, miniatűr-gyűjtemények, szöveg-és zárt feliratú fájlokat (valamint a fájlokra vonatkozó metaadatokat is).  A fájlok feltöltése után a rendszer biztonságosan tárolja a tartalmat a felhőben a további feldolgozáshoz és folyamatos átvitelhez.
 
@@ -315,4 +315,3 @@ Emellett az Azure Functions használatával is elindíthatja a kódolási felada
 Most, hogy feltöltött egy adategységet Media Servicesre, lépjen a [Media Processor beszerzése][How to Get a Media Processor] című cikkhez.
 
 [How to Get a Media Processor]: media-services-get-media-processor.md
-

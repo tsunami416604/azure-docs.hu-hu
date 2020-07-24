@@ -8,12 +8,12 @@ ms.devlang: Java
 ms.topic: quickstart
 ms.date: 03/27/2019
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: e06d7d73230b17710d8c667ab89d5ead522e6de1
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 0c872865cec4dbea75a9adfee62c26e7c4d40763
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85254259"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87056413"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service-on-linux"></a>Gyors útmutató: Java-alkalmazás létrehozása Azure App Service Linuxon
 
@@ -21,7 +21,7 @@ A [Linuxon futó App Service](app-service-linux-intro.md) hatékonyan méretezhe
 
 > [!NOTE]
 >
-> Ugyanezt is megteheti a népszerű ide-IntelliJ, az Eclipse és a VS Code használatával is. Tekintse meg a hasonló dokumentumokat [Azure Toolkit for IntelliJ](/java/azure/intellij/azure-toolkit-for-intellij-create-hello-world-web-app)rövid útmutató, [Azure Toolkit for Eclipse](/java/azure/eclipse/azure-toolkit-for-eclipse-create-hello-world-web-app) gyors útmutató vagy a [vs Code](https://code.visualstudio.com/docs/java/java-webapp)gyors üzembe helyezése című útmutatóban.
+> Ugyanezt is megteheti a népszerű ide-IntelliJ, az Eclipse és a VS Code használatával is. Tekintse meg a hasonló dokumentumokat [Azure Toolkit for IntelliJ](/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app)rövid útmutató, [Azure Toolkit for Eclipse](/azure/developer/java/toolkit-for-eclipse/create-hello-world-web-app) gyors útmutató vagy a [vs Code](https://code.visualstudio.com/docs/java/java-webapp)gyors üzembe helyezése című útmutatóban.
 >
 ![Azure App Service futó minta alkalmazás](media/quickstart-java/java-hello-world-in-browser-azure-app-service.png)
 
@@ -100,12 +100,12 @@ Szükség esetén közvetlenül a Pom-fájlban módosíthatja a App Service konf
  Tulajdonság | Kötelező | Leírás | Verzió
 ---|---|---|---
 `<schemaVersion>` | hamis | Határozza meg a konfigurációs séma verzióját. A támogatott értékek a következők: `v1` , `v2` . | 1.5.2
-`<resourceGroup>` | igaz | Azure-erőforráscsoport a webalkalmazáshoz. | 0.1.0 +
-`<appName>` | igaz | A webalkalmazás neve. | 0.1.0 +
-`<region>` | igaz | Meghatározza azt a régiót, ahol a webalkalmazás üzemeltetve lesz; az alapértelmezett érték a **westeurope**. A [támogatott régiók](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme) szakaszban található összes érvényes régió. | 0.1.0 +
+`<resourceGroup>` | true | Azure-erőforráscsoport a webalkalmazáshoz. | 0.1.0 +
+`<appName>` | true | A webalkalmazás neve. | 0.1.0 +
+`<region>` | true | Meghatározza azt a régiót, ahol a webalkalmazás üzemeltetve lesz; az alapértelmezett érték a **westeurope**. A [támogatott régiók](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme) szakaszban található összes érvényes régió. | 0.1.0 +
 `<pricingTier>` | hamis | A webalkalmazás díjszabási szintje. Az alapértelmezett érték a **P1V2**.| 0.1.0 +
-`<runtime>` | igaz | A futásidejű környezet konfigurációja a részleteket [itt](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme)tekintheti meg. | 0.1.0 +
-`<deployment>` | igaz | A központi telepítés konfigurálásával [itt](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme)láthatja a részleteket. | 0.1.0 +
+`<runtime>` | true | A futásidejű környezet konfigurációja a részleteket [itt](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme)tekintheti meg. | 0.1.0 +
+`<deployment>` | true | A központi telepítés konfigurálásával [itt](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme)láthatja a részleteket. | 0.1.0 +
 
 > [!div class="nextstepaction"]
 > [Egy hibába ütközött](https://www.research.net/r/javae2e?tutorial=app-service-linux-quickstart&step=config)

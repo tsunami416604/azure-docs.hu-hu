@@ -4,11 +4,12 @@ description: Megtudhatja, hogyan tekintheti meg a hibaelhárítási információ
 services: container-service
 ms.topic: article
 ms.date: 03/05/2019
-ms.openlocfilehash: b7a74803af916f9e9de72dd528273007ce37832f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2ef38aa76f4ef9152e7bc55a1d74c84ef426f0ac
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77595382"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87056752"
 ---
 # <a name="get-kubelet-logs-from-azure-kubernetes-service-aks-cluster-nodes"></a>Kubelet-naplók lekérése Azure Kubernetes Service- (AKS-) fürtcsomópontokból
 
@@ -31,6 +32,12 @@ Miután csatlakozott a csomóponthoz, futtassa a következő parancsot a *kubele
 ```console
 sudo journalctl -u kubelet -o cat
 ```
+
+> [!NOTE]
+> A Windows-csomópontok esetében a naplózási adatai a következőben találhatók, `C:\k` és a *további* paranccsal tekinthetők meg:
+> ```
+> more C:\k\kubelet.log
+> ```
 
 A következő minta kimenet a *kubelet* naplózási adatokat jeleníti meg:
 

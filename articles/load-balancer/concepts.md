@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/05/2020
+ms.date: 07/13/2020
 ms.author: allensu
-ms.openlocfilehash: cb8b3b58f1029a722121f491d202e245300d1aee
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 40b738c0f074f06b2f15a260cacda876aa78daf6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85801012"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87060797"
 ---
 # <a name="azure-load-balancer-concepts"></a>Azure Load Balancer fogalmak
 
@@ -42,9 +42,9 @@ További információ: [Azure Load Balancer elosztási módjának konfigurálás
 
 A következő kép a kivonatalapú elosztást szemlélteti:
 
-  ![Kivonatalapú elosztás](./media/load-balancer-overview/load-balancer-distribution.png)
+![Kivonatalapú elosztás](./media/load-balancer-overview/load-balancer-distribution.png)
 
-  *Ábra: Kivonatalapú elosztás*
+*Ábra: Kivonatalapú elosztás*
 
 ## <a name="application-independence-and-transparency"></a>Az alkalmazások függetlensége és átláthatósága
 
@@ -54,16 +54,38 @@ A Load Balancer közvetlenül nem kommunikál a TCP-vagy UDP-vagy az alkalmazás
 * Az alkalmazás hasznos adatai transzparensek a terheléselosztó számára. Bármely UDP-vagy TCP-alkalmazás támogatott lehet.
 * Mivel a terheléselosztó nem kommunikál a TCP-adattartalommal, és TLS-kiszervezést biztosít, átfogó titkosított forgatókönyveket hozhat létre. A terheléselosztó használatával a TLS-alkalmazásokhoz nagy léptékű kibővíthető teljesítmény áll a virtuális gépen. Például a TLS-munkamenet beírási kapacitását csak a háttérbeli készlethez hozzáadott virtuális gépek típusa és száma korlátozza.
 
-## <a name="load-balancer-terminology"></a>Load Balancer terminológia
-| Fogalom | Mit jelent? | Részletes dokumentum |
-| ---------- | ---------- | ----------|
-Kimenő kapcsolatok | A háttér-készletből a nyilvános IP-címekre irányuló folyamatok le vannak képezve a felületre. Az Azure a terheléselosztási Kimenő szabály segítségével fordítja le a nyilvános előtéri IP-címet a kimenő kapcsolatokra. Ez a konfiguráció az alábbi előnyökkel jár. A szolgáltatások egyszerű frissítése és vész-helyreállítása, mivel az előtér dinamikusan képezhető le a szolgáltatás egy másik példányára. Egyszerűbb hozzáférés-vezérlési lista (ACL) kezelése. Az előtérbeli IP-címekként kifejezett ACL-ek nem változnak a szolgáltatások vertikális felskálázása vagy újbóli üzembe helyezése esetén. A kimenő kapcsolatok kisebb számú IP-címhez való lefordítása, mint a gépek, csökkenti a biztonságos címzettek listáinak megvalósításának terheit.| További információ a forrás hálózati címfordításról (SNAT) és a Azure Load Balancerról: [SNAT és Azure Load Balancer](load-balancer-outbound-connections.md).
-Rendelkezésre állási zónák | A standard Load Balancer támogatja a további képességeket azokban a régiókban, ahol elérhetők a Availability Zones. Ezek a szolgáltatások a standard Load Balancer által biztosított növekményes funkciók.  Availability Zones konfigurációk mindkét típusú standard Load Balancer esetében elérhetők; nyilvános és belső. Egy zóna-redundáns frontend a zóna meghibásodását a dedikált infrastruktúra használatával, egyszerre az összes zónában megmaradja. Emellett egy adott zónához is garantálhatja a felületet. A zónákhoz tartozó előtérbeli felületet egyetlen zónában dedikált infrastruktúra szolgálja ki. A többzónás terheléselosztás elérhető a háttér-készlethez. Egy virtuális hálózat bármely virtuálisgép-erőforrása egy háttér-készlet része lehet. Az alapszintű Load Balancer nem támogatja a zónákat.| További információkért tekintse át [Availability Zones kapcsolódó képességeinek részletes megvitatását](load-balancer-standard-availability-zones.md) és [Availability Zones áttekintését](../availability-zones/az-overview.md) .
-| HA portok | Konfigurálhatja a HA port terheléselosztási szabályait, hogy az alkalmazás méretezése és megbízhatósága megbízható legyen. Ezek a szabályok a belső Load Balancer előtér-IP-címének rövid élettartamú portjain áramlanak be terheléselosztással. A funkció akkor hasznos, ha nem praktikus vagy nemkívánatos az egyes portok megadására. A HA-portok szabály lehetővé teszi, hogy aktív-passzív vagy aktív-aktív n + 1 forgatókönyvet hozzon létre. Ezek a forgatókönyvek a hálózati virtuális berendezésekhez és minden olyan alkalmazáshoz szükségesek, amelyhez a bejövő portok nagy tartománya szükséges. Az állapot-mintavétel segítségével meghatározható, hogy mely háttérrendszer kapjon új folyamatokat.  A porttartomány-forgatókönyvek emulálása hálózati biztonsági csoporttal végezhető el. Az alapszintű Load Balancer nem támogatja a HA portokat. | [Ha portok részletes megvitatását](load-balancer-ha-ports-overview.md) tekintse át
-| Több előtérrendszer | A Load Balancer több előtérbeli felülettel rendelkező több szabályt is támogat.  Standard Load Balancer kibontja ezt a képességet a kimenő forgatókönyvek esetében. A kimenő szabályok egy bejövő szabály inverzét jelentik. A Kimenő szabály társítást hoz létre a kimenő kapcsolatokhoz. A standard Load Balancer egy terheléselosztási szabályon keresztül a virtuális gép erőforrásaihoz társított összes előtérbeli felületet használja. Emellett a terheléselosztási szabály egyik paramétere is lehetővé teszi egy terheléselosztási szabály letiltását a kimenő kapcsolatok esetében, ami lehetővé teszi az adott előtérbeli elemek (például a none) kijelölését. Összehasonlítás esetén az alapszintű Load Balancer véletlenszerűen választja ki egyetlen előtérbeli felületet. Nincs lehetőség arra, hogy melyik előtér-felületet választotta.|
+## <a name="outbound-connections"></a>Kimenő kapcsolatok 
+
+A háttér-készletből a nyilvános IP-címekre irányuló folyamatok le vannak képezve a felületre. Az Azure a terheléselosztási Kimenő szabály segítségével fordítja le a nyilvános előtéri IP-címet a kimenő kapcsolatokra. Ez a konfiguráció az alábbi előnyökkel jár. A szolgáltatások egyszerű frissítése és vész-helyreállítása, mivel az előtér dinamikusan képezhető le a szolgáltatás egy másik példányára. Egyszerűbb hozzáférés-vezérlési lista (ACL) kezelése. Az előtérbeli IP-címekként kifejezett ACL-ek nem változnak a szolgáltatások vertikális felskálázása vagy újbóli üzembe helyezése esetén. A kimenő kapcsolatok kisebb számú IP-címhez való lefordítása, mint a gépek, csökkenti a biztonságos címzettek listáinak megvalósításának terheit. További információ a forrás hálózati címfordításról (SNAT) és a Azure Load Balancerról: [SNAT és Azure Load Balancer](load-balancer-outbound-connections.md).
+
+## <a name="availability-zones"></a>Rendelkezésre állási zónák 
+
+A standard Load Balancer támogatja a további képességeket azokban a régiókban, ahol elérhetők a Availability Zones. Availability Zones konfigurációk mindkét típusú standard Load Balancer számára elérhetők; nyilvános és belső. Egy zóna-redundáns frontend a zóna meghibásodását a dedikált infrastruktúra használatával, egyszerre az összes zónában megmaradja. Emellett egy adott zónához is garantálhatja a felületet. A zónákhoz tartozó előtérbeli felületet egyetlen zónában dedikált infrastruktúra szolgálja ki. A többzónás terheléselosztás elérhető a háttér-készlethez. Egy virtuális hálózat bármely virtuálisgép-erőforrása egy háttér-készlet része lehet. Az alapszintű Load Balancer nem támogatja a zónákat. További információkért tekintse át [Availability Zones kapcsolódó képességeinek részletes megvitatását](load-balancer-standard-availability-zones.md) és [Availability Zones áttekintését](../availability-zones/az-overview.md) .
+
+## <a name="ha-ports"></a>HA portok
+
+Konfigurálhatja a HA port terheléselosztási szabályait, hogy az alkalmazás méretezése és megbízhatósága megbízható legyen. Ezek a szabályok a belső Load Balancer előtér-IP-címének rövid élettartamú portjain áramlanak be terheléselosztással. A funkció akkor hasznos, ha nem praktikus vagy nemkívánatos az egyes portok megadására. A HA-portok szabály lehetővé teszi, hogy aktív-passzív vagy aktív-aktív n + 1 forgatókönyvet hozzon létre. Ezek a forgatókönyvek a hálózati virtuális berendezésekhez és minden olyan alkalmazáshoz szükségesek, amelyhez a bejövő portok nagy tartománya szükséges. Az állapot-mintavétel segítségével meghatározható, hogy mely háttérrendszer kapjon új folyamatokat.  A porttartomány-forgatókönyvek emulálása hálózati biztonsági csoporttal végezhető el. Az alapszintű Load Balancer nem támogatja a HA portokat. Tekintse át [a ha-portok részletes megvitatását](load-balancer-ha-ports-overview.md).
+
+## <a name="multiple-frontends"></a>Több előtérrendszer 
+
+A Load Balancer több előtérbeli felülettel rendelkező több szabályt is támogat.  Standard Load Balancer kibontja ezt a képességet a kimenő forgatókönyvek esetében. A kimenő szabályok egy bejövő szabály inverzét jelentik. A Kimenő szabály társítást hoz létre a kimenő kapcsolatokhoz. A standard Load Balancer egy terheléselosztási szabályon keresztül a virtuális gép erőforrásaihoz társított összes előtérbeli felületet használja. Emellett a terheléselosztási szabály egyik paramétere is lehetővé teszi egy terheléselosztási szabály letiltását a kimenő kapcsolatok esetében, ami lehetővé teszi az adott előtérbeli elemek (például a none) kijelölését. Összehasonlítás esetén az alapszintű Load Balancer véletlenszerűen választja ki egyetlen előtérbeli felületet. Nincs lehetőség arra, hogy melyik előtér-felületet választotta.
+
+## <a name="floating-ip"></a>Nem fix IP-cím
+
+Egyes alkalmazási forgatókönyvek előnyben részesítettek, vagy megkövetelik, hogy ugyanazt a portot használja több alkalmazás-példány a háttér-készletben lévő egyetlen virtuális gépen. A portok használatának gyakori példái közé tartozik a fürtözés a magas rendelkezésre álláshoz, a hálózati virtuális berendezések, valamint a több TLS-végpont ismételt titkosítás nélküli kimutatása. Ha több szabályban szeretné felhasználni a háttér-portot, akkor a szabály definíciójában engedélyeznie kell a lebegőpontos IP-címet.
+
+A **lebegőpontos IP-cím** az Azure terminológiai része, amely a Direct Server Return (DSR) néven ismert részét képezi. A DSR két részből áll: 
+
+- Folyamat topológiája
+- IP-cím-hozzárendelési séma
+
+A platform szintjén Azure Load Balancer mindig a DSR-folyamat topológiájában működik, függetlenül attól, hogy engedélyezve van-e a lebegőpontos IP-cím. Ez azt jelenti, hogy a folyamat kimenő részét mindig közvetlenül a forráshoz kell visszaírni a folyamatba.
+A lebegő IP-címek nélkül az Azure egy hagyományos terheléselosztási IP-cím-hozzárendelési sémát tesz elérhetővé a könnyű használat érdekében (a virtuálisgép-példányok IP-címe). A lebegőpontos IP-cím engedélyezése a terheléselosztó előtérbeli IP-címére való leképezést a további rugalmasság érdekében módosítja. További információ [itt](load-balancer-multivip-overview.md).
 
 
 ## <a name="limitations"></a><a name = "limitations"></a>Korlátozások
+
+- A belső terheléselosztási forgatókönyvek esetében jelenleg nem támogatott a lebegőpontos IP-cím a másodlagos IP-konfigurációk esetében.
 
 - Egy terheléselosztó-szabály nem terjedhet ki két virtuális hálózatra.  A frontendeknek és a háttérbeli példányoknak ugyanabban a virtuális hálózatban kell lenniük.  
 
@@ -75,7 +97,7 @@ Rendelkezésre állási zónák | A standard Load Balancer támogatja a további
 
 - A továbbítási IP-töredékek nem támogatottak a terheléselosztási szabályokban. Az UDP-és TCP-csomagok IP-töredezettsége nem támogatott a terheléselosztási szabályokban. HA portok terheléselosztási szabályai használhatók a meglévő IP-töredékek továbbítására. További információ: [magas rendelkezésre állású portok – áttekintés](load-balancer-ha-ports-overview.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Lásd: [nyilvános standard Load Balancer létrehozása](quickstart-load-balancer-standard-public-portal.md) a Load Balancer használatának megkezdéséhez: hozzon létre egyet, hozzon létre virtuális gépeket egy egyéni IIS-bővítménnyel, és a virtuális gépek között a webalkalmazás terheléselosztását.
 - További információ a [Azure Load Balancer kimenő kapcsolatokról](load-balancer-outbound-connections.md).

@@ -9,12 +9,12 @@ ms.workload: mobile
 ms.topic: article
 ms.author: apimpm
 ms.date: 04/23/2020
-ms.openlocfilehash: 51ce2e0dec8b38c9285f4f4e71dd35056b292b66
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: abcda4ea4b14f058325318661daa574494268780
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86254282"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87056374"
 ---
 # <a name="deploy-a-self-hosted-gateway-to-kubernetes"></a>Saját üzemeltetésű átjáró üzembe helyezése Kubernetesben
 
@@ -33,9 +33,9 @@ Ez a cikk az Azure-API Management saját üzemeltetésű átjáró-összetevőj�
 1. Válassza az **átjárók** lehetőséget az **üzembe helyezés és az infrastruktúra**területen.
 2. Válassza ki azt a saját üzemeltetésű átjáró-erőforrást, amelyet központilag telepíteni szeretne.
 3. Válassza a **telepítés**lehetőséget.
-4. A **jogkivonat** szövegmezőben lévő hozzáférési jogkivonat automatikusan lett létrehozva, az alapértelmezett **lejárati** és **titkos kulcs** értékei alapján. Ha szükséges, válasszon értékeket mindkét vezérlőelemben egy új jogkivonat létrehozásához.
+4. A **jogkivonat** szövegmezőben lévő hozzáférési jogkivonat automatikusan lett létrehozva az alapértelmezett **lejárati** és **titkos kulcs** értékei alapján. Ha szükséges, válasszon értékeket mindkét vezérlőelemben egy új jogkivonat létrehozásához.
 5. Válassza a **Kubernetes** lapot a **telepítési parancsfájlok**területen.
-6. Válassza ki a **<Gateway-name>. YML** fájl hivatkozást, és töltse le a YAML fájlt.
+6. Válassza a ** \<gateway-name\> . YML** fájl hivatkozást, és töltse le a YAML fájlt.
 7. Válassza a **Másolás** ikont a **telepítés** szövegmező jobb alsó sarkában, és mentse a `kubectl` parancsokat a vágólapra.
 8. Parancsok beillesztése a terminál (vagy parancs) ablakba. Az első parancs létrehoz egy titkos Kubernetes, amely a 4. lépésben létrehozott hozzáférési jogkivonatot tartalmazza. A második parancs a 6. lépésben letöltött konfigurációs fájlt alkalmazza a Kubernetes-fürtre, és elvárja, hogy a fájl az aktuális könyvtárban legyen.
 9. Futtassa a parancsokat a szükséges Kubernetes-objektumok létrehozásához az [alapértelmezett névtérben](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/) , és indítsa el a saját üzemeltetésű átjáró hüvelyeit a Microsoft Container Registryból letöltött [tároló-rendszerképből](https://aka.ms/apim/sputnik/dhub) .
@@ -107,6 +107,12 @@ A Azure Portalban megadott YAML-fájl az alapértelmezett [ClusterFirst](https:/
 
 A Kubernetes-névfeloldással kapcsolatos további tudnivalókért tekintse meg a [Kubernetes webhelyét](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service). Érdemes lehet a [DNS-házirendet](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-policy) vagy a [DNS-konfigurációt](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-config) a beállításnak megfelelően testreszabni.
 
+### <a name="custom-domain-names-and-ssl-certificates"></a>Egyéni tartománynevek és SSL-tanúsítványok
+
+Ha egyéni tartományneveket használ az API Management-végpontokhoz, különösen ha egyéni tartománynevet használ a felügyeleti végponthoz, előfordulhat, hogy frissítenie kell a `config.service.endpoint` ** \<gateway-name\> . YAML** fájlban lévő értéket, hogy az alapértelmezett tartománynevet az egyéni tartománynévre cserélje. Győződjön meg arról, hogy a felügyeleti végpont a saját üzemeltetésű átjáró Kubernetes-fürtben található Pod-ból érhető el.
+
+Ebben a forgatókönyvben, ha a felügyeleti végpont által használt SSL-tanúsítványt nem egy jól ismert HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány írta alá, meg kell győződnie arról, hogy a HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt megbízhatónak tartja a saját üzemeltetésű átjáró Pod-je.
+
 ### <a name="configuration-backup"></a>Konfiguráció biztonsági mentése
 Ha szeretne többet megtudni a saját üzemeltetésű átjárók működéséről egy ideiglenes Azure-kapcsolat kimaradása esetén, tekintse meg a saját üzemeltetésű [átjárók áttekintése](self-hosted-gateway-overview.md#connectivity-to-azure)című témakört.
 
@@ -118,6 +124,6 @@ A saját üzemeltetésű átjáró a társított API Management szolgáltatás k
 Ha az [Azure-hoz való csatlakozás](self-hosted-gateway-overview.md#connectivity-to-azure) átmenetileg megszakad, a telemetria az Azure-ba való továbbítása megszakad, és a leállás ideje alatt az adatvesztés történik.
 Érdemes lehet [helyi figyelést beállítani](how-to-configure-local-metrics-logs.md) , hogy megfigyelje az API-forgalom megfigyelését, és megakadályozza a telemetria elvesztését az Azure-kapcsolat kimaradásai során.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ha többet szeretne megtudni a saját üzemeltetésű átjáróról, tekintse meg a saját üzemeltetésű [átjáró áttekintése](self-hosted-gateway-overview.md)című témakört.

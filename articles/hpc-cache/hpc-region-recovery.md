@@ -5,12 +5,13 @@ author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.author: rohogue
-ms.openlocfilehash: 21074ae6bc4959da031bc7065cd7d0639ec2a14f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: v-erkel
+ms.openlocfilehash: 9159807f55ae52393b8fccec339fcc94c3e4ebb0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81537270"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87061382"
 ---
 # <a name="use-multiple-caches-for-regional-failover-recovery"></a>Több gyorsítótár használata a regionális feladatátvétel helyreállításához
 
@@ -54,6 +55,6 @@ Ha az eredeti ügyfelek érintettek, hozzon létre új ügyfeleket az USA 2. nyu
 
 Minden ügyfélnek csatlakoztatnia kell az új gyorsítótárat, még akkor is, ha az ügyfeleket nem befolyásolta a régió meghibásodása. Az új gyorsítótár a régitől eltérő csatlakoztatási címmel rendelkezik.
 
-## <a name="learn-more"></a>Tudjon meg többet
+## <a name="learn-more"></a>További információ
 
 Az Azure-alkalmazás architektúrájának útmutatója további információkat tartalmaz arról, hogyan lehet [helyreállítani az egész régióra kiterjedő szolgáltatás megszakadását](<https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region>).

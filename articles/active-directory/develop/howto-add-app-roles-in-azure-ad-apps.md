@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: how-to
-ms.date: 09/24/2018
+ms.date: 07/15/2020
 ms.author: kkrishna
 ms.reviewer: kkrishna, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 940ef671ab58074aaded49acb70db68a4971c1f2
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 0ec314e6b5abde60102dacfc81c9303cef16e887
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187030"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87058617"
 ---
 # <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>Útmutató: alkalmazás-Szerepkörök hozzáadása az alkalmazáshoz és fogadása a jogkivonatban
 
@@ -76,7 +76,7 @@ Az alábbi példa azt szemlélteti, hogy milyen műveleteket `appRoles` lehet ho
 > [!NOTE]
 >A `displayName` nem tartalmazhat szóközt.
 
-Megadhatja az alkalmazáshoz tartozó szerepköröket, `users` `applications` vagy mindkettőt. Ha elérhető `applications` , az alkalmazás szerepkörei a **szükséges engedélyek** panelen jelennek meg alkalmazási engedélyekként. Az alábbi példa egy alkalmazás-szerepkört mutat be a felé `Application` .
+Megadhatja az alkalmazáshoz tartozó szerepköröket, `users` `applications` vagy mindkettőt. Ha elérhető, az alkalmazás `applications` szerepkörei a **kezelés** szakaszban > API-engedélyek területen jelennek meg, **> > engedély hozzáadása a saját API-kkal > válasszon API > alkalmazási engedélyeket**. Az alábbi példa egy alkalmazás-szerepkört mutat be a felé `Application` .
 
 ```Json
 "appId": "8763f1c4-f988-489c-a51e-158e9ef97d6a",
@@ -118,6 +118,10 @@ Miután hozzáadta az alkalmazás-szerepköröket az alkalmazáshoz, hozzárende
 1. Válasszon egy szerepkört, és kattintson a **kiválasztás** gombra.
 1. A felhasználók és csoportok alkalmazásban való hozzárendelésének befejezéséhez nyomja le az alján található **hozzárendelés** gombot.
 1. Győződjön meg arról, hogy a hozzáadott felhasználók és csoportok megjelennek a frissített **felhasználók és csoportok** listában.
+
+### <a name="receive-roles-in-tokens"></a>Szerepkörök fogadása tokenekben
+
+Ha a különböző alkalmazás-szerepkörökhöz hozzárendelt felhasználók bejelentkeznek az alkalmazásba, a jogkivonatok a jogcímek számára a hozzárendelt szerepkörökkel rendelkeznek `roles` .
 
 ## <a name="more-information"></a>További információ
 

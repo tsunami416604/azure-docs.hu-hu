@@ -1,6 +1,6 @@
 ---
-title: Rövid útmutató – Telemetria küldése az Azure IoT Hubra | Microsoft Docs
-description: Ebben a rövid útmutatóban egy minta Xamarin. Forms-alkalmazást futtat, amely szimulált telemetria küld egy IoT hubhoz, és beolvassa a telemetria a IoT hub-ból a felhőben történő feldolgozásra.
+title: Telemetria küldése az Azure IoT Hub rövid útmutatóba (Xamarin. Forms)
+description: Futtasson egy minta Xamarin. Forms-alkalmazást, amely szimulált telemetria küld egy IoT hubhoz, és beolvassa a telemetria az IoT hub-ból a felhőben történő feldolgozásra.
 author: cmaneu
 manager: philmea
 ms.author: chmaneu
@@ -11,12 +11,12 @@ ms.custom:
 - mvc
 - mqtt
 ms.date: 07/01/2020
-ms.openlocfilehash: 4178ee38ca179f179824a13130121b997f4f5f14
-ms.sourcegitcommit: 374d1533ea2f2d9d3f8b6e6a8e65c6a5cd4aea47
+ms.openlocfilehash: 962dd35bd07e3ab542bdb8616b1cc2fda1441b36
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85807816"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87061540"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-xamarinforms"></a>Gyors útmutató: telemetria küldése az eszközről egy IoT-hubhoz (Xamarin. Forms)
 
@@ -39,7 +39,7 @@ Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fi
 
 - Győződjön meg arról, hogy a 8883-es port meg van nyitva a tűzfalon. Az ebben a rövid útmutatóban szereplő MQTT protokollt használ, amely a 8883-as porton keresztül kommunikál. Lehetséges, hogy ez a port bizonyos vállalati és oktatási hálózati környezetekben blokkolva van. A probléma megoldásával kapcsolatos további információkért lásd: [csatlakozás IoT hubhoz (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
-- A következő parancs futtatásával adja hozzá az Azure CLI-hez készült Microsoft Azure IoT-bővítményt a Cloud Shell-példányhoz. Az IoT bővítmény a IoT Hub, IoT Edge és IoT Device kiépítési szolgáltatás (DPS) adott parancsait hozzáadja az Azure CLI-hez.
+- A következő parancs futtatásával adja hozzá az Azure CLI-hez készült Microsoft Azure IoT-bővítményt a Cloud Shell-példányhoz. Az IoT-bővítmény az IoT Hubhoz, az IoT Edge-hez és az IoT Device Provisioning Service-hez (DPS) használható parancsokkal bővíti az Azure CLI-t.
 
    ```azurecli-interactive
    az extension add --name azure-iot
@@ -47,7 +47,7 @@ Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fi
 
    [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
-## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
+## <a name="create-an-iot-hub"></a>IoT-központ létrehozása
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -73,13 +73,13 @@ Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozz
    az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id myXamarinDevice --output table
    ```
 
-   Jegyezze fel az eszköz kapcsolati sztringjét, amely a következőképpen néz ki:
+   Jegyezze fel az eszközkapcsolati sztringet, amely az alábbihoz hasonlóan néz ki:
 
    `HostName={YourIoTHubName}.azure-devices.net;DeviceId=myXamarinDevice;SharedAccessKey={YourSharedAccessKey}`
 
     Ezt az értéket később a gyors útmutatóban fogja használni.
 
-## <a name="send-simulated-telemetry"></a>Szimulált telemetria küldése
+## <a name="send-simulated-telemetry"></a>Szimulált telemetriai adatok küldése
 
 A minta alkalmazás Windows rendszeren fut – egy iOS-eszközön vagy szimulátoron, illetve az Android-eszközön vagy a szimulátoron, amely a IoT hub eszköz-specifikus UWP csatlakozik, és szimulált hőmérséklet-és páratartalom-telemetria küld. 
 
@@ -96,7 +96,7 @@ A minta alkalmazás Windows rendszeren fut – egy iOS-eszközön vagy szimulát
 
 Az alábbi képernyőképen néhány példa kimenet jelenik meg, mivel az alkalmazás szimulált telemetria küld a IoT hubhoz: ![ futtassa a szimulált eszközt.](media/quickstart-send-telemetry-xamarinforms/view-d2c.png)
 
-## <a name="read-the-telemetry-from-your-hub"></a>Telemetria olvasása a Hubról
+## <a name="read-the-telemetry-from-your-hub"></a>Telemetriai adatok kiolvasása a központból
 
 Az XCode-emulátorban futtatott mintaalkalmazás megjeleníti az eszközről küldött üzenetek adatait. Az IoT Hub segítségével is megtekintheti az adatokat a kapott formában. Az IoT Hub CLI-bővítmény csatlakozhat a szolgáltatásoldali **Események** végponthoz az IoT Hubon. A bővítmény fogadja az eszközről a felhőbe irányuló üzeneteket, amelyeket a rendszer a szimulált eszközről küld. Az IoT Hub-háttéralkalmazások általában a felhőben futnak, hogy fogadják és feldolgozzák az eszközről a felhőbe küldött üzeneteket.
 

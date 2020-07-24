@@ -3,12 +3,12 @@ title: Bevezetés a Azure Advisorba
 description: Az Azure-beli üzembe helyezések optimalizálásához használja a Azure Advisor.
 ms.topic: article
 ms.date: 02/01/2019
-ms.openlocfilehash: 0c6c79dd764f92475b3b0121ae46706c0dfc0bcb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 17b68e220b7011dee2cc8fca440d58d980c28e6d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85117777"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87057696"
 ---
 # <a name="introduction-to-azure-advisor"></a>Bevezetés a Azure Advisorba
 
@@ -51,13 +51,13 @@ Az Advisor javaslatait a virtuális gép erőforrás-felületén is megtekinthet
 
 ### <a name="what-permissions-do-i-need-to-access-advisor"></a>Milyen engedélyekre van szükségem az Advisor eléréséhez?
  
-Az Advisor-ajánlásokat *tulajdonosként*, *közreműködőként*vagy az előfizetés *olvasójának* is elérheti.
+Az Advisor-javaslatokat az előfizetés, az erőforráscsoport vagy az erőforrás *tulajdonosaként*, *közreműködőként*vagy *olvasóként* is elérheti.
 
 ### <a name="what-resources-does-advisor-provide-recommendations-for"></a>Milyen erőforrásokra vonatkozó ajánlásokat biztosít az Advisor?
 
 Az Advisor ajánlásokat nyújt Application Gateway, App Services, rendelkezésre állási csoportok, Azure cache, Azure Data Factory, Azure Database for MySQL, Azure Database for PostgreSQL, Azure Database for MariaDB, Azure ExpressRoute, Azure Cosmos DB, Azure nyilvános IP-címek, SQL Data Warehouse, SQL-kiszolgálók, Storage-fiókok, Traffic Manager-profilok és virtuális gépek számára.
 
-A Azure Advisor a [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-recommendations) javaslataival is rendelkezik, amelyek további erőforrástípusok esetén javaslatokat is tartalmazhatnak.
+A Azure Advisor a [Azure Security Center](../security-center/security-center-recommendations.md) javaslataival is rendelkezik, amelyek további erőforrástípusok esetén javaslatokat is tartalmazhatnak.
 
 ### <a name="can-i-postpone-or-dismiss-a-recommendation"></a>Elhalasztottam vagy Elvetem a javaslatot?
 

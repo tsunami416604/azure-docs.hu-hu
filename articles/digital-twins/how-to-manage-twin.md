@@ -7,18 +7,18 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: e37c680f6bf9e296230232c0d4e0fab5f50ad3cd
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 48b8175ed5f753ffe7b62d3e97f4fe20f60da5ca
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86142380"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87061606"
 ---
 # <a name="manage-digital-twins"></a>Digitális ikereszközök kezelése
 
 A környezetben található entitásokat a [digitális ikrek](concepts-twins-graph.md)jelölik. A digitális ikrek kezelése magában foglalhatja a létrehozását, módosítását és eltávolítását. Ezeknek a műveleteknek a végrehajtásához használhatja a [**DigitalTwins API-kat**](how-to-use-apis-sdks.md), a [.net (C#) SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)-t vagy az [Azure digitális Twins parancssori](how-to-use-cli.md)felületét.
 
-Ez a cikk a digitális ikrek kezelésére koncentrál. Ha a kapcsolatokkal és a [Twin gráfmal](concepts-twins-graph.md) szeretne dolgozni, tekintse meg [az útmutató: a Twin gráf kezelése a kapcsolatokkal](how-to-manage-graph.md)című témakört.
+Ez a cikk a digitális ikrek kezelésére koncentrál. Ha a kapcsolatokkal és a [Twin gráfmal](concepts-twins-graph.md) szeretne dolgozni, tekintse meg [*az útmutató: a Twin gráf kezelése a kapcsolatokkal*](how-to-manage-graph.md)című témakört.
 
 > [!TIP]
 > Minden SDK-függvény szinkron és aszinkron verzióban érhető el.
@@ -44,7 +44,7 @@ A modell és a kezdeti tulajdonságértékek a paraméteren keresztül érhetők
 
 ### <a name="initialize-properties"></a>Tulajdonságok inicializálása
 
-A Twin Creation API olyan objektumot fogad el, amely a Twin tulajdonságok érvényes JSON-leírásában szerializálható. Lásd a következő [fogalmakat: digitális ikrek és a Twin gráf](concepts-twins-graph.md) a Twin-fájl JSON-formátumának leírásához.
+A Twin Creation API olyan objektumot fogad el, amely a Twin tulajdonságok érvényes JSON-leírásában szerializálható. Lásd a következő [*fogalmakat: digitális ikrek és a Twin gráf*](concepts-twins-graph.md) a Twin-fájl JSON-formátumának leírásához.
 
 A paramétereket manuálisan vagy egy megadott segítő osztály használatával is létrehozhatja. Íme egy példa.
 
@@ -91,7 +91,7 @@ object result = await client.GetDigitalTwin(id);
 
 Ez a hívás a Twin-adatok JSON-karakterláncként való visszaadása. 
 
-Ha több Twins egyetlen API-hívással szeretne beolvasni, tekintse meg a következő témakörben található lekérdezési API-példákat [: a Twin Graph lekérdezése](how-to-query-graph.md).
+Ha több Twins egyetlen API-hívással szeretne beolvasni, tekintse meg a következő témakörben található lekérdezési API-példákat [*: a Twin Graph lekérdezése*](how-to-query-graph.md).
 
 Vegye figyelembe a következő modellt (a [digitális Twins Definition Language (DTDL) nyelven](https://github.com/Azure/opendigitaltwins-dtdl/tree/master/DTDL)írt), amely a *holdat*határozza meg:
 
@@ -155,7 +155,7 @@ A digitális iker definiált tulajdonságai a digitális iker felső szintű tul
 
 A visszaadott JSON-t elemezheti a Twin paranccsal egy tetszőleges JSON-elemzési kódtár használatával, például: `System.Text.Json` .
 
-Használhatja az SDK részét képező szerializálási segítő osztályt is `BasicDigitalTwin` , amely az alapszintű Twin metaadatokat és tulajdonságokat az előre elemzett űrlapon fogja visszaadni. Például:
+Használhatja az SDK részét képező szerializálási segítő osztályt is `BasicDigitalTwin` , amely az alapszintű Twin metaadatokat és tulajdonságokat az előre elemzett űrlapon fogja visszaadni. Alább bemutatunk egy példát:
 
 ```csharp
 Response<string> res = client.GetDigitalTwin(twin_id);
@@ -168,7 +168,7 @@ foreach (string prop in twin.CustomProperties.Keys)
 }
 ```
 
-További információ a szerializálási segítő osztályokról [: az Azure Digital Twins API-k és SDK-k használata](how-to-use-apis-sdks.md).
+További információ a szerializálási segítő osztályokról [*: az Azure Digital Twins API-k és SDK-k használata*](how-to-use-apis-sdks.md).
 
 ## <a name="update-a-digital-twin"></a>Digitális iker frissítése
 
@@ -337,13 +337,13 @@ async Task FindAndDeleteIncomingRelationshipsAsync(string dtId)
 
 ### <a name="delete-all-digital-twins"></a>Az összes digitális ikrek törlése
 
-Az összes ikrek egyszerre történő törléséről például töltse le az oktatóanyagban használt minta alkalmazást [: Fedezze fel az alapokat egy minta ügyfélalkalmazás](tutorial-command-line-app.md)használatával. A *CommandLoop.cs* fájl ezt egy `CommandDeleteAllTwins` függvényben végzi el.
+Az összes ikrek egyszerre történő törléséről például töltse le az oktatóanyagban használt minta alkalmazást [*: Fedezze fel az alapokat egy minta ügyfélalkalmazás*](tutorial-command-line-app.md)használatával. A *CommandLoop.cs* fájl ezt egy `CommandDeleteAllTwins` függvényben végzi el.
 
 ## <a name="manage-twins-with-cli"></a>Ikrek kezelése a CLI-vel
 
-Az ikrek az Azure Digital Twins CLI használatával is kezelhetők. A parancsok a következő [útmutatóban találhatók: az Azure digitális Twins parancssori](how-to-use-cli.md)felületének használata.
+Az ikrek az Azure Digital Twins CLI használatával is kezelhetők. A parancsok a következő [*útmutatóban találhatók: az Azure digitális Twins parancssori*](how-to-use-cli.md)felületének használata.
 
 ## <a name="next-steps"></a>További lépések
 
 Ismerje meg, hogyan hozhat létre és kezelhet kapcsolatokat a digitális ikrek között:
-* [Útmutató: a Twin gráf kezelése kapcsolatok használatával](how-to-manage-graph.md)
+* [*Útmutató: a Twin gráf kezelése kapcsolatok használatával*](how-to-manage-graph.md)

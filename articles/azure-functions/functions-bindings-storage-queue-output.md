@@ -6,11 +6,12 @@ ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: cc996988-fb4f-47, tracking-python
-ms.openlocfilehash: eb61cad5f505e6895b550adca3e9f156222d6d30
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1141186a262676fc47b0727c47e682dfe95ba6fb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84559960"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87055914"
 ---
 # <a name="azure-queue-storage-output-bindings-for-azure-functions"></a>Az Azure üzenetsor-tároló kimeneti kötései Azure Functions
 
@@ -317,7 +318,7 @@ Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított k
 |function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
 |---------|---------|----------------------|
 |**típusa** | n.a. | Értékre kell állítani `queue` . Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban.|
-|**direction** | n.a. | Értékre kell állítani `out` . Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban. |
+|**irányba** | n.a. | Értékre kell állítani `out` . Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban. |
 |**név** | n.a. | Annak a változónak a neve, amely a függvény kódjában a várólistát jelképezi. Állítsa a értékre `$return` a függvény visszatérési értékének hivatkozásához.|
 |**queueName** |**QueueName** | A várólista neve. |
 |**kapcsolat** | **Kapcsolat** |Egy olyan Alkalmazásbeállítás neve, amely a kötéshez használandó tárolási kapcsolati karakterláncot tartalmazza. Ha az Alkalmazásbeállítások neve "AzureWebJobs" előtaggal kezdődik, akkor itt csak a nevet adja meg. Ha például a "MyStorage" értékre van állítva `connection` , a functions futtatókörnyezet egy "MyStorage" nevű alkalmazás-beállítást keres. Ha `connection` üresen hagyja, a functions futtatókörnyezet az alapértelmezett tárolási kapcsolatok karakterláncát használja a nevű alkalmazás-beállításban `AzureWebJobsStorage` .|
@@ -368,15 +369,15 @@ Az Event hub-üzenetek egy függvényből való üzembe helyezésének két lehe
 
 - Visszaadott **érték**: állítsa be `name` *function.js* tulajdonságát a értékre `$return` . Ezzel a konfigurációval a függvény visszatérési értéke üzenetsor-tárolási üzenetként is megmarad.
 
-- **Elengedhetetlen**: adjon meg egy értéket a [set](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python#set-val--t-----none) metódusnak, amely [kimenő](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python) típusként van deklarálva. Az átadott értéket `set` üzenetsor-tárolási üzenetként őrzi meg a rendszer.
+- **Elengedhetetlen**: adjon meg egy értéket a [set](/python/api/azure-functions/azure.functions.out?view=azure-python#set-val--t-----none) metódusnak, amely [kimenő](/python/api/azure-functions/azure.functions.out?view=azure-python) típusként van deklarálva. Az átadott értéket `set` üzenetsor-tárolási üzenetként őrzi meg a rendszer.
 
 # <a name="java"></a>[Java](#tab/java)
 
-Az Event hub-üzenetek egy függvényből való üzembe helyezésére két lehetőség áll rendelkezésre a [QueueOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.queueoutput) jegyzet használatával:
+Az Event hub-üzenetek egy függvényből való üzembe helyezésére két lehetőség áll rendelkezésre a [QueueOutput](/java/api/com.microsoft.azure.functions.annotation.queueoutput) jegyzet használatával:
 
 - Visszaadott **érték**: Ha a jegyzetet a függvényhez alkalmazza, a függvény visszatérési értéke Event hub-üzenetként marad.
 
-- **Elengedhetetlen**: Ha explicit módon be szeretné állítani az üzenet értékét, alkalmazza a jegyzetet egy adott paraméterre [`OutputBinding<T>`](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.OutputBinding) , ahol a egy `T` POJO vagy bármely natív Java-típus. Ezzel a konfigurációval a metódus értékének átadása az `setValue` Event hub-üzenetként megőrzi az értéket.
+- **Elengedhetetlen**: Ha explicit módon be szeretné állítani az üzenet értékét, alkalmazza a jegyzetet egy adott paraméterre [`OutputBinding<T>`](/java/api/com.microsoft.azure.functions.outputbinding) , ahol a egy `T` POJO vagy bármely natív Java-típus. Ezzel a konfigurációval a metódus értékének átadása az `setValue` Event hub-üzenetként megőrzi az értéket.
 
 ---
 
@@ -384,9 +385,9 @@ Az Event hub-üzenetek egy függvényből való üzembe helyezésére két lehet
 
 | Kötés |  Hivatkozás |
 |---|---|
-| Várólista | [Üzenetsor-hibakódok](https://docs.microsoft.com/rest/api/storageservices/queue-service-error-codes) |
-| BLOB, tábla, üzenetsor | [Tárolási hibakódok](https://docs.microsoft.com/rest/api/storageservices/fileservices/common-rest-api-error-codes) |
-| BLOB, tábla, üzenetsor |  [Hibaelhárítás](https://docs.microsoft.com/rest/api/storageservices/fileservices/troubleshooting-api-operations) |
+| Üzenetsor | [Üzenetsor-hibakódok](/rest/api/storageservices/queue-service-error-codes) |
+| BLOB, tábla, üzenetsor | [Tárolási hibakódok](/rest/api/storageservices/fileservices/common-rest-api-error-codes) |
+| BLOB, tábla, üzenetsor |  [Hibaelhárítás](/rest/api/storageservices/fileservices/troubleshooting-api-operations) |
 
 <a name="host-json"></a>  
 

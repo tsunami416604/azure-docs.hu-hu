@@ -1,5 +1,5 @@
 ---
-title: A kiterjesztett Spark-előzmények kiszolgáló használata az alkalmazások hibakereséséhez – Apache Spark az Azure Szinapszisban
+title: A kiterjesztett Spark-előzmények kiszolgáló használata az alkalmazások hibakereséséhez
 description: Használja a kiterjesztett Spark-előzményeket a Spark-alkalmazások hibakereséséhez és diagnosztizálásához az Azure szinapszis Analyticsben.
 services: synapse-analytics
 author: euangMS
@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: b4ee5d064d17d7b11305c6c86dc1d29ddccc642e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e8dece3478e00c6f9279767e57e3bb8aca865f45
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85194994"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87059993"
 ---
 # <a name="use-extended-apache-spark-history-server-to-debug-and-diagnose-apache-spark-applications"></a>Apache Spark alkalmazások hibakeresése és diagnosztizálása a kiterjesztett Apache Sparki előzményeket használó kiszolgálón
 
@@ -120,13 +120,13 @@ A Graph csomópont megjeleníti a hő jelmagyarázatban látható színeket.
 
 A feladatok lejátszásához válassza a **Lejátszás**lehetőséget. A **Leállítás lehetőség kiválasztásával** bármikor leállíthatja a leállítást. A feladat színei különböző állapotokat mutatnak vissza a lejátszáskor:
 
-|Szín|Értelmezés|
+|Szín (Color)|Értelmezés|
 |-|-|
 |Zöld|Sikeres: a feladatok sikeresen befejeződtek.|
 |Narancssárga|Újrapróbálkozás: a feladatok olyan példányai, amelyek sikertelenek voltak, de nem befolyásolják a feladat végső eredményét. Ezek a feladatok ismétlődő vagy újrapróbálkozási példányokkal rendelkeztek, amelyek később esetleg sikeresek lehetnek.|
 |Kék|Fut: a feladat fut.|
 |Fehér|Várakozás vagy kihagyva: a feladat futásra vár, vagy a szakasz ki lett hagyva.|
-|Vörös|Sikertelen: a feladat sikertelen volt.|
+|Piros|Sikertelen: a feladat sikertelen volt.|
 
 Az alábbi képen zöld, narancssárga és kék állapotú színek láthatók.
 
@@ -157,7 +157,7 @@ Mutasson a Graph csomópontra az elemleírás megjelenítéséhez, amikor a fela
 
 A feladatütemezés lapon egy elemleírás és egy kis ikon jelenik meg, ha olyan feladatokkal rendelkeznek, amelyek megfelelnek a következő feltételeknek:
 
-|Állapot|Description|
+|Feltétel|Description|
 |-|-|
 |Az adattorzítás|az adatolvasási méret > a fázisban lévő összes feladat átlagos adatolvasási mérete, valamint az adatolvasási méret > 10 MB|
 |Időbeli döntés|a végrehajtási idő > a szakasz összes feladatának átlagos végrehajtási időpontja * 2 és végrehajtási idő > 2 percen belül|

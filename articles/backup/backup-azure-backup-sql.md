@@ -3,11 +3,12 @@ title: SQL Server biztonsági mentése az Azure-ba DPM számítási feladatokkal
 description: Bevezetés SQL Server adatbázisok biztonsági mentésére az Azure Backup szolgáltatás használatával
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: f6a612bc56d1fa6b70ac89ed48f28d1ae48da2e6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dd091f9446cafdb6ff91ae5679c703e07457169c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84195777"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87055377"
 ---
 # <a name="back-up-sql-server-to-azure-as-a-dpm-workload"></a>SQL Server biztonsági mentése az Azure-ba DPM számítási feladatokkal
 
@@ -20,6 +21,34 @@ SQL Server-adatbázis biztonsági mentése az Azure-ba és az Azure-ból való h
 1. Hozzon létre egy biztonsági mentési szabályzatot SQL Server adatbázisok védelméhez az Azure-ban.
 1. Hozzon létre igény szerinti biztonsági másolatokat az Azure-ban.
 1. Az adatbázis helyreállítása az Azure-ból.
+
+## <a name="prerequisites-and-limitations"></a>Előfeltételek és korlátozások
+
+* Ha olyan adatbázist használ, amelynek fájljai távoli fájlmegosztásban találhatók, a védelem sikertelen lesz, és a 104-es azonosítójú hibaüzenet jelenik meg. A DPM nem támogatja a távoli fájlmegosztás SQL Server-adatvédelmének védelmét.
+* A DPM nem tudja megóvni a távoli SMB-megosztásokon tárolt adatbázisokat.
+* Győződjön meg arról, hogy a [rendelkezésre állási csoport replikái csak olvashatóként vannak konfigurálva](/sql/database-engine/availability-groups/windows/configure-read-only-access-on-an-availability-replica-sql-server?view=sql-server-ver15).
+* Explicit módon hozzá kell adnia a rendszerfiók **NTAuthority\System** a sysadmin (rendszergazda) csoporthoz SQL Serveron.
+* Ha egy másik helyre történő helyreállítást hajt végre egy részlegesen tárolt adatbázis esetében, győződjön meg arról, hogy a célként megadott SQL-példányon engedélyezve van a [tárolt adatbázisok](/sql/relational-databases/databases/migrate-to-a-partially-contained-database?view=sql-server-ver15#enable) funkció.
+* Ha egy másik helyre történő helyreállítást hajt végre egy file stream-adatbázis esetében, akkor győződjön meg arról, hogy a cél SQL-példányon engedélyezve van a [file stream Database](/sql/relational-databases/blob/enable-and-configure-filestream?view=sql-server-ver15) szolgáltatás.
+* Az SQL Server AlwaysOn rendelkezésre állási csoportok védelme:
+  * A DPM felismeri a rendelkezésre állási csoportokat, amikor lekérdezést futtat a védelmi csoport létrehozásakor.
+  * A DPM felismeri a feladatátvételeket, és folytatja az adatbázis védelmét.
+  * A DPM támogatja a többhelyes fürtkonfigurációkat az SQL Server-példányok esetében.
+* Amikor olyan adatbázist lát el védelemmel, amely használja az AlwaysOn funkciót, a DPM-re a következő korlátozások vonatkoznak:
+  * A DPM a rendelkezésre állási csoportokra vonatkozóan az SQL Serveren beállított biztonsági mentési házirendet a következőképpen szolgálja ki:
+    * Másodlagos előnyben részesítése – A biztonsági mentéseket egy másodlagos replikán kell végrehajtani, kivéve ha az elsődleges replika az egyetlen online replika. Ha több másodlagos replika érhető el, akkor a legmagasabb biztonsági mentési prioritású csomópont lesz kiválasztva a biztonsági mentéshez. Ha csak az elsődleges replika érhető el, akkor a biztonsági mentést az elsődleges replikán kell megtörténnie.
+    * Csak másodlagos – Az elsődleges replikán nem hajtható végre biztonsági mentés. Ha az elsődleges replika az egyetlen online replika, a biztonsági mentés nem lesz végrehajtva.
+    * Elsődleges – A biztonsági mentéseket mindig az elsődleges replikán kell végrehajtani.
+    * Bármely replika – A biztonsági mentések bármelyik rendelkezésre állási replikán végrehajthatók a rendelkezésre állási csoportban. A biztonsági mentéshez használt csomópont kiválasztása a csomópontok biztonsági mentési prioritása alapján történik.
+  * Vegye figyelembe a következőket:
+    * A biztonsági mentések bármilyen olvasható replikáról megtörténhetnek – ez az elsődleges, a szinkron másodlagos, az aszinkron másodlagos.
+    * Ha bármely replika ki van zárva a biztonsági mentésből, például a **kizárási replika** engedélyezve van, vagy nem olvashatóként van megjelölve, akkor a replika nem lesz kiválasztva a biztonsági mentéshez az egyik lehetőség közül.
+    * Ha több replika érhető el és olvasható, akkor a legmagasabb biztonsági mentési prioritású csomópont lesz kiválasztva a biztonsági mentéshez.
+    * Ha a biztonsági mentés sikertelen a kiválasztott csomóponton, a biztonsági mentési művelet meghiúsul.
+    * Az eredeti helyre történő helyreállítás nem támogatott.
+* SQL Server 2014 vagy újabb biztonsági mentési problémák:
+  * Az SQL Server 2014 új funkciót adott hozzá, amely létrehoz egy adatbázist a helyszíni SQL Server számára a [Windows Azure Blob Storage-ban](/sql/relational-databases/databases/sql-server-data-files-in-microsoft-azure?view=sql-server-ver15). A DPM nem használható ennek a konfigurációnak a megvédésére.
+  * Létezik néhány ismert probléma, amely a "másodlagos előnyben részesített" biztonsági mentést részesíti előnyben az SQL-AlwaysOn beállításnál. A DPM mindig a másodlagos biztonsági mentést végzi. Ha nem található másodlagos, akkor a biztonsági mentés sikertelen lesz.
 
 ## <a name="before-you-start"></a>Előkészületek
 
@@ -38,11 +67,11 @@ SQL Server-adatbázisok védelméhez az Azure-ban először hozzon létre egy bi
 1. A védelmi csoport létrehozásához válassza az **új** lehetőséget.
 
     ![Védelmi csoport létrehozása](./media/backup-azure-backup-sql/protection-group.png)
-1. A kezdőlapon tekintse át a védelmi csoport létrehozásával kapcsolatos útmutatást. Ezután válassza a **tovább**lehetőséget.
+1. A kezdőlapon tekintse át a védelmi csoport létrehozásával kapcsolatos útmutatást. Ezután kattintson a **Tovább** gombra.
 1. Válassza a **kiszolgálók**lehetőséget.
 
     ![A kiszolgálók védelmi csoport típusának kiválasztása](./media/backup-azure-backup-sql/pg-servers.png)
-1. Bontsa ki azt a SQL Server virtuális gépet, ahol a biztonsági másolatot készíteni kívánt adatbázisok találhatók. Megtekintheti azokat az adatforrásokat, amelyekről biztonsági másolatot készíthet az adott kiszolgálóról. Bontsa ki az **összes SQL-megosztás** elemet, majd válassza ki azokat az adatbázisokat, amelyekről biztonsági másolatot szeretne készíteni. Ebben a példában a reportserver $ MSDPM2012 és a reportserver $ MSDPM2012TempDB választjuk. Ezután válassza a **tovább**lehetőséget.
+1. Bontsa ki azt a SQL Server virtuális gépet, ahol a biztonsági másolatot készíteni kívánt adatbázisok találhatók. Megtekintheti azokat az adatforrásokat, amelyekről biztonsági másolatot készíthet az adott kiszolgálóról. Bontsa ki az **összes SQL-megosztás** elemet, majd válassza ki azokat az adatbázisokat, amelyekről biztonsági másolatot szeretne készíteni. Ebben a példában a reportserver $ MSDPM2012 és a reportserver $ MSDPM2012TempDB választjuk. Ezután kattintson a **Tovább** gombra.
 
     ![SQL Server-adatbázis kiválasztása](./media/backup-azure-backup-sql/pg-databases.png)
 1. Nevezze el a védelmi csoportot, majd válassza az **online védelmet szeretnék**lehetőséget.
@@ -67,7 +96,7 @@ SQL Server-adatbázisok védelméhez az Azure-ban először hozzon létre egy bi
 
     Ha a **kötetek automatikus növelését**választja, akkor a DPM képes a megnövekedett biztonsági mentési kötetre, mert az éles adatmennyiség növekszik. Ha nem választja ki **automatikusan a kötetek növekedését**, a DPM korlátozza a biztonsági mentési tárolót a védelmi csoport adatforrásaira.
 
-1. Ha Ön rendszergazda, dönthet úgy, hogy a kezdeti biztonsági mentést **automatikusan továbbítja a hálózaton keresztül** , és kiválasztja az átvitel időpontját. Vagy válassza a biztonsági mentés **manuális** átvitelét. Ezután válassza a **tovább**lehetőséget.
+1. Ha Ön rendszergazda, dönthet úgy, hogy a kezdeti biztonsági mentést **automatikusan továbbítja a hálózaton keresztül** , és kiválasztja az átvitel időpontját. Vagy válassza a biztonsági mentés **manuális** átvitelét. Ezután kattintson a **Tovább** gombra.
 
     ![Replika-létrehozási módszer kiválasztása](./media/backup-azure-backup-sql/pg-manual.png)
 
@@ -75,13 +104,13 @@ SQL Server-adatbázisok védelméhez az Azure-ban először hozzon létre egy bi
 
     A kezdeti biztonsági mentés befejeződése után a biztonsági mentések a kezdeti biztonsági másolaton fokozatosan folytatódnak. A növekményes biztonsági mentések általában kicsik, és könnyen átvihetők a hálózaton keresztül.
 
-1. Válassza ki a konzisztencia-ellenőrzés futtatásának idejét. Ezután válassza a **tovább**lehetőséget.
+1. Válassza ki a konzisztencia-ellenőrzés futtatásának idejét. Ezután kattintson a **Tovább** gombra.
 
     ![A konzisztencia-ellenőrzés futtatási idejének kiválasztása](./media/backup-azure-backup-sql/pg-consistent.png)
 
     A DPM képes konzisztencia-ellenőrzés futtatására a biztonsági mentési pont integritásán. Kiszámítja a biztonságimásolat-fájl ellenőrzőösszegét az üzemi kiszolgálón (ebben a példában a SQL Server számítógép) és az adott fájl biztonsági másolatait a DPM-ben. Ha az ellenőrzési ütközést észlel, akkor a rendszer a DPM található biztonsági másolati fájlt is megsérültnek tekinti. A DPM az ellenőrzőösszeg-eltérésnek megfelelő blokkok küldésével javítja a biztonsági másolatban szereplő adatokat. Mivel a konzisztencia-ellenőrzés teljesítmény-igényes művelet, a rendszergazdák dönthetnek úgy, hogy a konzisztencia-ellenőrzés vagy a Futtatás automatikusan történik.
 
-1. Válassza ki az Azure-ban védetté tenni kívánt adatforrásokat. Ezután válassza a **tovább**lehetőséget.
+1. Válassza ki az Azure-ban védetté tenni kívánt adatforrásokat. Ezután kattintson a **Tovább** gombra.
 
     ![Válassza ki az Azure-ban védetté tenni kívánt adatforrásokat](./media/backup-azure-backup-sql/pg-sqldatabases.png)
 1. Ha Ön rendszergazda, kiválaszthatja a szervezeti szabályzatoknak megfelelő biztonsági mentési ütemterveket és adatmegőrzési házirendeket.
@@ -147,12 +176,12 @@ Védett entitás, például SQL Server adatbázis helyreállítása az Azure-bó
 1. Kattintson a jobb gombbal az adatbázis nevére, és válassza a **helyreállítás**lehetőséget.
 
     ![Adatbázis helyreállítása az Azure-ból](./media/backup-azure-backup-sql/sqlbackup-recover.png)
-1. A DPM a helyreállítási pont részleteit jeleníti meg. Válassza a **Tovább** lehetőséget. Az adatbázis felülírásához válassza a helyreállítás típust a **SQL Server eredeti példányára**. Ezután válassza a **tovább**lehetőséget.
+1. A DPM a helyreállítási pont részleteit jeleníti meg. Válassza a **Tovább** lehetőséget. Az adatbázis felülírásához válassza a helyreállítás típust a **SQL Server eredeti példányára**. Ezután kattintson a **Tovább** gombra.
 
     ![Adatbázis helyreállítása az eredeti helyükre](./media/backup-azure-backup-sql/sqlbackup-recoveroriginal.png)
 
     Ebben a példában a DPM lehetővé teszi az adatbázis helyreállítását egy másik SQL Server példányba vagy egy különálló hálózati mappába.
-1. A **helyreállítási beállítások megadása** lapon választhatja ki a helyreállítási beállításokat. Kiválaszthatja például a **hálózati sávszélesség használatának szabályozását** a helyreállítás által használt sávszélesség szabályozásához. Ezután válassza a **tovább**lehetőséget.
+1. A **helyreállítási beállítások megadása** lapon választhatja ki a helyreállítási beállításokat. Kiválaszthatja például a **hálózati sávszélesség használatának szabályozását** a helyreállítás által használt sávszélesség szabályozásához. Ezután kattintson a **Tovább** gombra.
 1. Az **Összefoglalás** lapon az aktuális helyreállítási konfiguráció látható. Válassza a **helyreállítás**lehetőséget.
 
     A helyreállítás állapota a helyreállított adatbázist mutatja. A **Bezárás** gombra kattintva zárhatja be a varázslót, és megtekintheti a folyamat állapotát a **figyelés** munkaterületen.

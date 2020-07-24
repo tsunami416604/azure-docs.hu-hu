@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 07/08/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: 019ae80020dafb54f2c06dd504797f21069914ae
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: fc50934b4c301b4eea509ecc22e00c62ca091d75
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86507063"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87056555"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Az Azure Kubernetes Service-ben (AKS) támogatott Kubernetes-verziók
 
@@ -162,15 +162,15 @@ Ha egy fürtön több mint három (3) alverzió támogatott, és biztonsági koc
 
 A vezérlési síkon az összes csomópont-készlet verziójának egy ablakában kell lennie. A vezérlő síkja vagy a csomópont-készletek frissítésével kapcsolatos részletekért látogasson el a [Node-készletek frissítésének](use-multiple-node-pools.md#upgrade-a-cluster-control-plane-with-multiple-node-pools)dokumentációjában.
 
-**Kihagyhatok egy verziót a Verziófrissítéskor?**
+**Ki lehet hagyni több AK-verziót a fürt frissítése során?**
 
-Nem, a kubernetes ajánlott eljárásainak követése után az AK csak a következő javítás vagy másodlagos verzió frissítését teszi lehetővé. A Azure Portal csak azokat a verziókat jeleníti meg, amelyekre frissíthet, és a parancssori felületen futtathatja `az aks get-upgrades -n MyAKSCluster -g MyResourceGroup` az aktuális verzióban elérhető frissítéseket.
+Ha egy támogatott AK-fürtöt frissít, a Kubernetes alverzióit nem lehet kihagyni. Például a *1.12. x*  ->  *1.13. x* vagy *1.13. x*  ->  *1.14. x* közötti frissítések engedélyezettek, a *1.12. x*  ->  *1.14. x* azonban nem.
 
-**Hogyan frissíthetek egy támogatott verzióra, ha a legújabb támogatott verzió mögött több verzió is van?**
+A frissítéshez *1.12. x*  ->  *1,14. x*-ről először a *1.12. x*1.13. x verzióról kell frissíteni,  ->  *1.13.x*majd az *1.13. x*  ->  *1.14. x*verziójáról kell frissíteni.
 
-Ha továbbra is támogatni kívánja a támogatást, el kell kerülnie, hogy a jelenleg támogatott listán több verzió maradjon, de ha ebben az esetben az AK-t használja, a frissítés a minimális támogatott verzióra is engedélyezett lesz.
+Több verzió kihagyása csak akkor végezhető el, ha nem támogatott verzióról frissít vissza egy támogatott verzióra. Például nem támogatott *1.10. x* – > egy támogatott *1.15. x-et* lehet befejezni.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A fürt frissítésével kapcsolatos további információkért lásd: [Azure Kubernetes Service (ak) fürt frissítése][aks-upgrade].
 

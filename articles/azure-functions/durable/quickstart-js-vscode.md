@@ -5,12 +5,12 @@ author: anthonychu
 ms.topic: quickstart
 ms.date: 05/07/2020
 ms.reviewer: azfuncdf, antchu
-ms.openlocfilehash: 4ac33a01f574f537d64c706842c7d867f387c804
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.openlocfilehash: 7c6c105a2ef5fff2e05dd3ed37a0e7650626621a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85194467"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87056308"
 ---
 # <a name="create-your-first-durable-function-in-javascript"></a>Az első tartós függvény létrehozása a JavaScriptben
 
@@ -48,11 +48,11 @@ Ebben a szakaszban a Visual Studio Code használatával hozzon létre egy helyi 
 
 1. Az utasításokat követve adja meg a következő információkat:
 
-    | Kérdés | Érték | Leírás |
+    | Adatkérés | Érték | Leírás |
     | ------ | ----- | ----------- |
     | Válasszon nyelvet a Function app-projekthez | JavaScript | Hozzon létre egy helyi Node.js functions projektet. |
     | Válasszon verziót | Azure Functions v3 | Ez a beállítás csak akkor jelenik meg, ha az alapvető eszközök még nincsenek telepítve. Ebben az esetben a rendszer az alkalmazás első futtatásakor telepíti az alapvető eszközöket. |
-    | Válasszon sablont a projekt első függvényéhez | Kihagyás most | |
+    | Válasszon sablont a projekt első függvényéhez | Kihagyás | |
     | Válassza ki, hogyan szeretné megnyitni a projektet? | Megnyitás az aktuális ablakban | Nyissa meg újra a VS Code-t a kiválasztott mappában. |
 
 A Visual Studio Code szükség esetén telepíti a Azure Functions Core Tools. Emellett egy Function app-projektet is létrehoz egy mappában. Ez a projekt tartalmazza a konfigurációs fájlok [host.js](../functions-host-json.md) és [local.settings.js](../functions-run-local.md#local-settings-file) .
@@ -83,7 +83,7 @@ A sablon segítségével létrehozhatja a tartós függvény kódját a projektb
 
 1. Az utasításokat követve adja meg a következő információkat:
 
-    | Kérdés | Érték | Leírás |
+    | Adatkérés | Érték | Leírás |
     | ------ | ----- | ----------- |
     | Sablon kiválasztása a függvényhez | Durable Functions Orchestrator | Durable Functions-előkészítés létrehozása |
     | Adja meg a függvény nevét | HelloOrchestrator | Tartós függvény neve |
@@ -98,10 +98,10 @@ Ezután adja hozzá a hivatkozott `Hello` tevékenység függvényt.
 
 1. Az utasításokat követve adja meg a következő információkat:
 
-    | Kérdés | Érték | Leírás |
+    | Adatkérés | Érték | Leírás |
     | ------ | ----- | ----------- |
     | Sablon kiválasztása a függvényhez | Durable Functions tevékenység | Tevékenységi függvény létrehozása |
-    | Adja meg a függvény nevét | helló | A tevékenység függvényének neve |
+    | Adja meg a függvény nevét | Üdvözöljük | A tevékenység függvényének neve |
 
 Hozzáadta a `Hello` Orchestrator által meghívott tevékenység-függvényt. Nyissa meg a *Hello/index.jst* , és tekintse meg, hogy bemenetként és Üdvözlésként adja meg a nevet. A Activity függvény olyan műveleteket hajt végre, mint például egy adatbázis hívása vagy egy számítási művelet végrehajtása.
 
@@ -113,11 +113,11 @@ Végül egy HTTP által aktivált függvényt fog hozzáadni, amely elindítja a
 
 1. Az utasításokat követve adja meg a következő információkat:
 
-    | Kérdés | Érték | Leírás |
+    | Adatkérés | Érték | Leírás |
     | ------ | ----- | ----------- |
     | Sablon kiválasztása a függvényhez | Durable Functions HTTP Starter | HTTP Starter-függvény létrehozása |
     | Adja meg a függvény nevét | DurableFunctionsHttpStart | A tevékenység függvényének neve |
-    | Authorization level (Engedélyszint) | Névtelen | Bemutató céljából engedélyezze, hogy a függvény hitelesítés nélkül legyen meghívva |
+    | Engedélyszint | Névtelen | Bemutató céljából engedélyezze, hogy a függvény hitelesítés nélkül legyen meghívva |
 
 Olyan HTTP által aktivált függvényt adott hozzá, amely egy előkészítést indít el. Nyissa meg a *DurableFunctionsHttpStart/index.jst* , és tekintse meg, hogy az `client.startNew` új előkészítés elindításához használja-e. Ezután egy olyan `client.createCheckStatusResponse` http-választ ad vissza, amely URL-címeket tartalmaz, amelyek az új előkészítés figyelésére és kezelésére használhatók.
 
@@ -138,7 +138,7 @@ Az Azure Functions Core Tools lehetővé teszi Azure Functions-projektek helyi f
 
 1. Az utasításokat követve adja meg a következő információkat egy új Storage-fiók létrehozásához az Azure-ban.
 
-    | Kérdés | Érték | Leírás |
+    | Adatkérés | Érték | Leírás |
     | ------ | ----- | ----------- |
     | Előfizetés kiválasztása | *az előfizetés neve* | Válassza ki az Azure-előfizetését |
     | Válasszon Storage-fiókot | Új tárfiók létrehozása |  |
@@ -185,7 +185,7 @@ Miután ellenőrizte, hogy a függvény megfelelően fut a helyi számítógépe
 
 ## <a name="test-your-function-in-azure"></a>A függvény tesztelése az Azure-ban
 
-1. Másolja a vágólapra a HTTP-eseményindító URL-címét az **Output** (Kimenet) panelről. A HTTP-triggert használó függvényt meghívó URL-címnek a következő formátumúnak kell lennie:`http://<functionappname>.azurewebsites.net/orchestrators/HelloOrchestrator`
+1. Másolja a vágólapra a HTTP-eseményindító URL-címét az **Output** (Kimenet) panelről. A HTTP-triggert használó függvényt meghívó URL-címnek a következő formátumúnak kell lennie:`http://<functionappname>.azurewebsites.net/api/orchestrators/HelloOrchestrator`
 
 2. Illessze be a HTTP-kérelem új URL-címét a böngésző címsorába. Ugyanezt az állapot-választ kell megadnia, mint korábban a közzétett alkalmazás használatakor.
 

@@ -13,11 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 44299a55424f9b0338ee49d2742aeedf16db22e8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b27bd52ad8794222d52d37032b0cd4fdf99f47b7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84732089"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87057932"
 ---
 # <a name="assign-custom-admin-roles-using-the-microsoft-graph-api-in-azure-active-directory"></a>Egyéni rendszergazdai szerepkörök kiosztása a Microsoft Graph API használatával Azure Active Directory 
 
@@ -25,11 +26,11 @@ Automatizálhatja, hogyan rendeljen hozzá szerepköröket a felhasználói fió
 
 ## <a name="required-permissions"></a>Szükséges engedélyek
 
-Kapcsolódjon az Azure AD-szervezethez egy globális rendszergazdai fiókkal vagy egy emelt szintű identitás-rendszergazdával szerepkörök hozzárendeléséhez vagy eltávolításához.
+A szerepkörök hozzárendeléséhez vagy eltávolításához globális rendszergazda vagy Kiemelt szerepkörű rendszergazdai fiók használatával csatlakozhat az Azure AD-szervezethez.
 
 ## <a name="post-operations-on-roleassignment"></a>RoleAssignment utáni műveletek
 
-HTTP-kérelem a felhasználó és a szerepkör-definíció közötti szerepkör-hozzárendelés létrehozásához.
+### <a name="example-1-create-a-role-assignment-between-a-user-and-a-role-definition"></a>1. példa: szerepkör-hozzárendelés létrehozása egy felhasználó és egy szerepkör-definíció között.
 
 POST
 
@@ -44,17 +45,17 @@ Törzs
 {
     "principalId":"ab2e1023-bddc-4038-9ac1-ad4843e7e539",
     "roleDefinitionId":"194ae4cb-b126-40b2-bd5b-6091b380977d",
-    "resourceScopes":"/"
+    "directoryScopeId":"/"  // Don't use "resourceScope" attribute in Azure AD role assignments. It will be deprecated soon.
 }
 ```
 
-Válasz
+Reagálás
 
 ``` HTTP
 HTTP/1.1 201 Created
 ```
 
-HTTP-kérelem olyan szerepkör-hozzárendelés létrehozásához, amelyben a rendszerbiztonsági tag vagy szerepkör-definíció nem létezik
+### <a name="example-2-create-a-role-assignment-where-the-principal-or-role-definition-does-not-exist"></a>2. példa: szerepkör-hozzárendelés létrehozása, amelyben a rendszerbiztonsági tag vagy szerepkör-definíció nem létezik
 
 POST
 
@@ -68,20 +69,40 @@ Törzs
 {
     "principalId":" 2142743c-a5b3-4983-8486-4532ccba12869",
     "roleDefinitionId":"194ae4cb-b126-40b2-bd5b-6091b380977d",
-    "resourceScopes":"/"
+    "directoryScopeId":"/"  //Don't use "resourceScope" attribute in Azure AD role assignments. It will be deprecated soon.
 }
 ```
 
-Válasz
+Reagálás
 
 ``` HTTP
 HTTP/1.1 404 Not Found
 ```
+### <a name="example-3-create-a-role-assignment-on-a-single-resource-scope"></a>3. példa: szerepkör-hozzárendelés létrehozása egyetlen erőforrás-hatókörön
 
-HTTP-kérelem egyetlen erőforrás-hatókörű szerepkör-hozzárendelés létrehozásához egy beépített szerepkör-definícióban.
+POST
 
-> [!NOTE] 
-> A beépített szerepkörök ma már rendelkeznek egy korlátozással, amely csak a "/" szervezeti hatókörre vagy a "/AU/*" hatókörre alkalmazható. Az egyetlen erőforrás-hatókör nem működik a beépített szerepkörök esetében, de egyéni szerepkörök esetén is működik.
+``` HTTP
+https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments
+```
+
+Törzs
+
+``` HTTP
+{
+    "principalId":" 2142743c-a5b3-4983-8486-4532ccba12869",
+    "roleDefinitionId":"e9b2b976-1dea-4229-a078-b08abd6c4f84",    //role template ID of a custom role
+    "directoryScopeId":"/13ff0c50-18e7-4071-8b52-a6f08e17c8cc"  //object ID of an application
+}
+```
+
+Reagálás
+
+``` HTTP
+HTTP/1.1 201 Created
+```
+
+### <a name="example-4-create-an-administrative-unit-scoped-role-assignment-on-a-built-in-role-definition-which-is-not-supported"></a>4. példa: felügyeleti egység hatókörű szerepkör-hozzárendelésének létrehozása beépített szerepkör-definícióban, amely nem támogatott
 
 POST
 
@@ -94,12 +115,12 @@ Törzs
 ``` HTTP
 {
     "principalId":"ab2e1023-bddc-4038-9ac1-ad4843e7e539",
-    "roleDefinitionId":"194ae4cb-b126-40b2-bd5b-6091b380977d",
-    "resourceScopes":"/ab2e1023-bddc-4038-9ac1-ad4843e7e539"
+    "roleDefinitionId":"29232cdf-9323-42fd-ade2-1d097af3e4de",    //role template ID of Exchange Administrator
+    "directoryScopeId":"/administrativeUnits/13ff0c50-18e7-4071-8b52-a6f08e17c8cc"    //object ID of an administrative unit
 }
 ```
 
-Válasz
+Reagálás
 
 ``` HTTP
 HTTP/1.1 400 Bad Request
@@ -109,23 +130,17 @@ HTTP/1.1 400 Bad Request
         "code":"Request_BadRequest",
         "message":
         {
-            "lang":"en",
-            "value":"Provided authorization scope is not supported for built-in role definitions."},
-            "values":
-            [
-                {
-                    "item":"scope",
-                    "value":"/ab2e1023-bddc-4038-9ac1-ad4843e7e539"
-                }
-            ]
+            "message":"The given built-in role is not supported to be assigned to a single resource scope."
         }
     }
 }
 ```
 
+A felügyeleti egység hatóköre csak a beépített szerepkörök egy részhalmazát engedélyezi. A felügyeleti egységekben támogatott beépített szerepkörök listáját [ebben a dokumentációban](https://docs.microsoft.com/azure/active-directory/users-groups-roles/roles-admin-units-assign-roles) találja.
+
 ## <a name="get-operations-on-roleassignment"></a>Műveletek beolvasása a RoleAssignment
 
-HTTP-kérelem egy adott résztvevő szerepkör-hozzárendelésének beszerzéséhez
+### <a name="example-5-get-role-assignments-for-a-given-principal"></a>5. példa: szerepkör-hozzárendelések beolvasása egy adott résztvevőhöz
 
 GET
 
@@ -133,25 +148,29 @@ GET
 https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments&$filter=principalId eq ‘<object-id-of-principal>’
 ```
 
-Válasz
+Reagálás
 
 ``` HTTP
 HTTP/1.1 200 OK
-{ 
-    "id":"mhxJMipY4UanIzy2yE-r7JIiSDKQoTVJrLE9etXyrY0-1"
-    "principalId":"ab2e1023-bddc-4038-9ac1-ad4843e7e539",
-    "roleDefinitionId":"10dae51f-b6af-4016-8d66-8c2a99b929b3",
-    "resourceScopes":"/"
-} ,
 {
-    "id":"CtRxNqwabEKgwaOCHr2CGJIiSDKQoTVJrLE9etXyrY0-1"
-    "principalId":"ab2e1023-bddc-4038-9ac1-ad4843e7e539",
-    "roleDefinitionId":"3671d40a-1aac-426c-a0c1-a3821ebd8218",
-    "resourceScopes":"/"
+"value":[
+            { 
+                "id":"mhxJMipY4UanIzy2yE-r7JIiSDKQoTVJrLE9etXyrY0-1"
+                "principalId":"ab2e1023-bddc-4038-9ac1-ad4843e7e539",
+                "roleDefinitionId":"10dae51f-b6af-4016-8d66-8c2a99b929b3",
+                "directoryScopeId":"/"  
+            } ,
+            {
+                "id":"CtRxNqwabEKgwaOCHr2CGJIiSDKQoTVJrLE9etXyrY0-1"
+                "principalId":"ab2e1023-bddc-4038-9ac1-ad4843e7e539",
+                "roleDefinitionId":"fe930be7-5e62-47db-91af-98c3a49a38b1",
+                "directoryScopeId":"/"
+            }
+        ]
 }
 ```
 
-HTTP-kérelem egy adott szerepkör-definícióhoz tartozó szerepkör-hozzárendelés beszerzéséhez.
+### <a name="example-6-get-role-assignments-for-a-given-role-definition"></a>6. példa: szerepkör-hozzárendelések beolvasása egy adott szerepkör-definícióhoz.
 
 GET
 
@@ -159,19 +178,23 @@ GET
 https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments&$filter=roleDefinitionId eq ‘<object-id-or-template-id-of-role-definition>’
 ```
 
-Válasz
+Reagálás
 
 ``` HTTP
 HTTP/1.1 200 OK
 {
-    "id":"CtRxNqwabEKgwaOCHr2CGJIiSDKQoTVJrLE9etXyrY0-1"
-    "principalId":"ab2e1023-bddc-4038-9ac1-ad4843e7e539",
-    "roleDefinitionId":"3671d40a-1aac-426c-a0c1-a3821ebd8218",
-    "resourceScopes":"/"
+"value":[
+            {
+                "id":"CtRxNqwabEKgwaOCHr2CGJIiSDKQoTVJrLE9etXyrY0-1"
+                "principalId":"ab2e1023-bddc-4038-9ac1-ad4843e7e539",
+                "roleDefinitionId":"fe930be7-5e62-47db-91af-98c3a49a38b1",
+                "directoryScopeId":"/"
+            }
+     ]
 }
 ```
 
-HTTP-kérelem a szerepkör-hozzárendelés azonosító alapján való lekéréséhez.
+### <a name="example-7-get-a-role-assignment-by-id"></a>7. példa: szerepkör-hozzárendelés beolvasása azonosító alapján.
 
 GET
 
@@ -179,7 +202,7 @@ GET
 GET https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments/lAPpYvVpN0KRkAEhdxReEJC2sEqbR_9Hr48lds9SGHI-1
 ```
 
-Válasz
+Reagálás
 
 ``` HTTP
 HTTP/1.1 200 OK
@@ -187,13 +210,44 @@ HTTP/1.1 200 OK
     "id":"mhxJMipY4UanIzy2yE-r7JIiSDKQoTVJrLE9etXyrY0-1",
     "principalId":"ab2e1023-bddc-4038-9ac1-ad4843e7e539",
     "roleDefinitionId":"10dae51f-b6af-4016-8d66-8c2a99b929b3",
-    "resourceScopes":"/"
+    "directoryScopeId":"/"
+}
+```
+
+### <a name="example-8-get-role-assignments-for-a-given-scope"></a>8. példa: szerepkör-hozzárendelések beolvasása egy adott hatókörhöz
+
+
+GET
+
+``` HTTP
+GET https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments?$filter=directoryScopeId eq '/d23998b1-8853-4c87-b95f-be97d6c6b610'
+```
+
+Reagálás
+
+``` HTTP
+HTTP/1.1 200 OK
+{
+"value":[
+            { 
+                "id":"mhxJMipY4UanIzy2yE-r7JIiSDKQoTVJrLE9etXyrY0-1"
+                "principalId":"ab2e1023-bddc-4038-9ac1-ad4843e7e539",
+                "roleDefinitionId":"10dae51f-b6af-4016-8d66-8c2a99b929b3",
+                "directoryScopeId":"/d23998b1-8853-4c87-b95f-be97d6c6b610"
+            } ,
+            {
+                "id":"CtRxNqwabEKgwaOCHr2CGJIiSDKQoTVJrLE9etXyrY0-1"
+                "principalId":"ab2e1023-bddc-4038-9ac1-ad4843e7e539",
+                "roleDefinitionId":"3671d40a-1aac-426c-a0c1-a3821ebd8218",
+                "directoryScopeId":"/d23998b1-8853-4c87-b95f-be97d6c6b610"
+            }
+        ]
 }
 ```
 
 ## <a name="delete-operations-on-roleassignment"></a>Műveletek törlése a RoleAssignment
 
-HTTP-kérelem a felhasználó és a szerepkör-definíció közötti szerepkör-hozzárendelés törléséhez.
+### <a name="example-9-delete-a-role-assignment-between-a-user-and-a-role-definition"></a>9. példa: szerepkör-hozzárendelés törlése egy felhasználó és egy szerepkör-definíció között.
 
 DELETE
 
@@ -201,12 +255,12 @@ DELETE
 GET https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments/lAPpYvVpN0KRkAEhdxReEJC2sEqbR_9Hr48lds9SGHI-1
 ```
 
-Válasz
+Reagálás
 ``` HTTP
 HTTP/1.1 204 No Content
 ```
 
-HTTP-kérelem a már nem létező szerepkör-hozzárendelés törléséhez
+### <a name="example-10-delete-a-role-assignment-that-no-longer-exists"></a>10. példa: már nem létező szerepkör-hozzárendelés törlése
 
 DELETE
 
@@ -214,13 +268,13 @@ DELETE
 GET https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments/lAPpYvVpN0KRkAEhdxReEJC2sEqbR_9Hr48lds9SGHI-1
 ```
 
-Válasz
+Reagálás
 
 ``` HTTP
 HTTP/1.1 404 Not Found
 ```
 
-HTTP-kérelem az önálló és a beépített szerepkör-definíció közötti szerepkör-hozzárendelés törléséhez
+### <a name="example-11-delete-a-role-assignment-between-self-and-global-administrator-role-definition"></a>11. példa: szerepkör-hozzárendelés törlése az önkiszolgáló és a globális rendszergazda szerepkör-definíció között
 
 DELETE
 
@@ -228,7 +282,7 @@ DELETE
 GET https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments/lAPpYvVpN0KRkAEhdxReEJC2sEqbR_9Hr48lds9SGHI-1
 ```
 
-Válasz
+Reagálás
 
 ``` HTTP
 HTTP/1.1 400 Bad Request
@@ -239,12 +293,14 @@ HTTP/1.1 400 Bad Request
         "message":
         {
             "lang":"en",
-            "value":"Cannot remove self from built-in role definitions."},
+            "value":"Removing self from Global Administrator built-in role is not allowed"},
             "values":null
         }
     }
 }
 ```
+
+Megakadályozhatja, hogy a felhasználók töröljék a saját globális rendszergazdai szerepkörét, hogy elkerülje azt a helyzetet, amelyben a bérlőnek nulla globális rendszergazdája van. Az önmagukhoz rendelt egyéb szerepkörök eltávolítása engedélyezett.
 
 ## <a name="next-steps"></a>További lépések
 

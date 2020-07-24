@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 04/02/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 918e34114faa7a57e54ec45c1cca8036462a8fa1
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 61e2cdf63e5553ba8d796115284dad9a538c2b81
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187387"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87056282"
 ---
 # <a name="manage-certificates-in-azure-automation"></a>Tanúsítványok kezelése a Azure Automationban
 
@@ -34,13 +34,13 @@ Az alábbi táblázatban található parancsmagok automatizálási tanúsítván
 |[Remove-AzAutomationCertificate](/powershell/module/Az.Automation/Remove-AzAutomationCertificate?view=azps-3.7.0)|Eltávolít egy tanúsítványt az Automationből.|
 |[Set-AzAutomationCertificate](/powershell/module/Az.Automation/Set-AzAutomationCertificate?view=azps-3.7.0)|Beállítja egy meglévő tanúsítvány tulajdonságait, beleértve a tanúsítványfájl feltöltését és a **. pfx** fájl jelszavának beállítását.|
 
-Az [Add-AzureCertificate](/powershell/module/servicemanagement/azure/add-azurecertificate) parancsmag használható a megadott felhőalapú szolgáltatáshoz tartozó szolgáltatási tanúsítvány feltöltésére is.
+Az [Add-AzureCertificate](/powershell/module/servicemanagement/azure.service/add-azurecertificate) parancsmag használható a megadott felhőalapú szolgáltatáshoz tartozó szolgáltatási tanúsítvány feltöltésére is.
 
 ## <a name="internal-cmdlets-to-access-certificates"></a>A tanúsítványok elérésére szolgáló belső parancsmagok
 
 A következő táblázatban található belső parancsmag a runbookok lévő tanúsítványok elérésére szolgál. Ez a parancsmag a globális modulhoz tartozik `Orchestrator.AssetManagement.Cmdlets` . További információ: [belső parancsmagok](modules.md#internal-cmdlets).
 
-| Belső parancsmag | Leírás |
+| Belső parancsmag | Description |
 |:---|:---|
 |`Get-AutomationCertificate`|Lekéri egy runbook vagy DSC-konfigurációban használandó tanúsítványt. Egy [System. Security. kriptográfiai. X509Certificates. x509certificate2)](/dotnet/api/system.security.cryptography.x509certificates.x509certificate2) objektumot ad vissza.|
 
@@ -51,7 +51,7 @@ A következő táblázatban található belső parancsmag a runbookok lévő tan
 
 A következő táblázatban található függvény használatával férhet hozzá a Python 2 runbook lévő tanúsítványokhoz.
 
-| Függvény | Leírás |
+| Függvény | Description |
 |:---|:---|
 | `automationassets.get_automation_certificate` | Adatokat kér le egy tanúsítvány tárgyáról. |
 

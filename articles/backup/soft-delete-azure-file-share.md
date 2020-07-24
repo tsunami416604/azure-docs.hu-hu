@@ -3,15 +3,17 @@ title: Azure-fájlmegosztás véletlen törlésének védelme
 description: Ismerje meg, hogy a törlés hogyan védhető meg az Azure-fájlmegosztás véletlen törlésével.
 ms.topic: conceptual
 ms.date: 02/02/2020
-ms.openlocfilehash: 09d74a135fc43a7758004d77af2ec4c478345a2c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: references_regions
+ms.openlocfilehash: 7070cb1ee3881fbec2c6f44eae18f3bc51f8051d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84122408"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87054368"
 ---
 # <a name="accidental-delete-protection-for-azure-file-shares-using-azure-backup"></a>Az Azure-fájlmegosztás véletlen törlésének védelme Azure Backup használatával
 
-A maihoz vagy a véletlen törlés elleni védelem biztosításához a rendszer a Storage-fiókban lévő összes fájlmegosztás esetében engedélyezi a [Soft delete](https://docs.microsoft.com/azure/storage/files/storage-files-prevent-file-share-deletion) használatát, amikor a megfelelő Storage-fiókban lévő fájlmegosztás biztonsági mentését konfigurálja. A helyreállítható törléssel, még akkor is, ha egy rosszindulatú szereplő törli a fájlmegosztást, a fájlmegosztás tartalmát és a helyreállítási pontokat (pillanatképeket) legalább 14 napig őrzi meg a rendszer, ami lehetővé teszi a fájlmegosztás adatvesztés nélküli helyreállítását.  
+A maihoz vagy a véletlen törlés elleni védelem biztosításához a rendszer a Storage-fiókban lévő összes fájlmegosztás esetében engedélyezi a [Soft delete](../storage/files/storage-files-prevent-file-share-deletion.md) használatát, amikor a megfelelő Storage-fiókban lévő fájlmegosztás biztonsági mentését konfigurálja. A helyreállítható törléssel, még akkor is, ha egy rosszindulatú szereplő törli a fájlmegosztást, a fájlmegosztás tartalmát és a helyreállítási pontokat (pillanatképeket) legalább 14 napig őrzi meg a rendszer, ami lehetővé teszi a fájlmegosztás adatvesztés nélküli helyreállítását.  
 
 A Soft delete csak a standard és a prémium szintű Storage-fiókok esetében támogatott, és jelenleg az [ezen régiók](azure-file-share-support-matrix.md)Azure Backup oldalán engedélyezhető.
 
@@ -27,7 +29,7 @@ Amikor az első alkalommal konfigurálja a biztonsági mentést egy Storage-fió
 
 ### <a name="can-i-configure-the-number-of-days-for-which-my-snapshots-and-restore-points-will-be-retained-in-soft-deleted-state-after-i-delete-the-file-share"></a>Megadhatom, hogy hány nap elteltével maradnak meg a pillanatképek és a visszaállítási pontok a fájlmegosztás törlése után?
 
-Igen, a követelményeknek megfelelően állíthatja be a megőrzési időszakot. [Ez a dokumentum](https://docs.microsoft.com/azure/storage/files/storage-files-enable-soft-delete?tabs=azure-portal) a megőrzési időtartam konfigurálásának lépéseit ismerteti. A biztonsági másolattal ellátott fájlmegosztás esetén a minimális megőrzési beállításnak 14 nap kell lennie.
+Igen, a követelményeknek megfelelően állíthatja be a megőrzési időszakot. [Ez a dokumentum](../storage/files/storage-files-enable-soft-delete.md?tabs=azure-portal) a megőrzési időtartam konfigurálásának lépéseit ismerteti. A biztonsági másolattal ellátott fájlmegosztás esetén a minimális megőrzési beállításnak 14 nap kell lennie.
 
 ### <a name="does-azure-backup-reset-my-retention-setting-because-i-configured-it-to-less-than-14-days"></a>Azure Backup alaphelyzetbe állítja a megőrzési beállítást, mert kevesebb, mint 14 napig konfiguráltam?
 
@@ -39,14 +41,14 @@ A puha törlésű időszak alatt a védett példányok és a pillanatképek tár
 
 ### <a name="can-i-perform-a-restore-operation-when-my-data-is-in-soft-deleted-state"></a>Használhatok visszaállítási műveletet, ha az adataim nem törölt állapotban vannak?
 
-Először törölnie kell a törölt fájlmegosztás törlését a visszaállítási műveletek elvégzéséhez. A törlési művelettel a fájlmegosztást a biztonsági másolatba kerülő állapotba helyezheti, ahol bármikor visszaállítható. A fájlmegosztás törlésének visszavonásához látogasson el [erre a hivatkozásra](https://docs.microsoft.com/azure/storage/files/storage-files-enable-soft-delete?tabs=azure-portal#restore-soft-deleted-file-share) , vagy tekintse meg a [fájlmegosztási parancsfájl törlésének](./scripts/backup-powershell-script-undelete-file-share.md)visszavonása című témakört.
+Először törölnie kell a törölt fájlmegosztás törlését a visszaállítási műveletek elvégzéséhez. A törlési művelettel a fájlmegosztást a biztonsági másolatba kerülő állapotba helyezheti, ahol bármikor visszaállítható. A fájlmegosztás törlésének visszavonásához látogasson el [erre a hivatkozásra](../storage/files/storage-files-enable-soft-delete.md?tabs=azure-portal#restore-soft-deleted-file-share) , vagy tekintse meg a [fájlmegosztási parancsfájl törlésének](./scripts/backup-powershell-script-undelete-file-share.md)visszavonása című témakört.
 
 ### <a name="how-can-i-purge-the-data-of-a-file-share-in-a-storage-account-that-has-at-least-one-protected-file-share"></a>Hogyan törölhetem egy fájlmegosztás információit egy olyan Storage-fiókban, amely legalább egy védett fájlmegosztást tartalmaz?
 
 Ha van legalább egy védett fájlmegosztás egy Storage-fiókban, az azt jelenti, hogy az adott fiókban lévő összes fájlmegosztás esetében engedélyezve van a Soft DELETE, és az adatai a törlési művelet után 14 napig megmaradnak. Ha azonban azonnal törölni kívánja az adatvesztést, és nem szeretné megőrizni az adatmegőrzést, kövesse az alábbi lépéseket:
 
-1. Ha már törölte a fájlmegosztást, miközben a Soft delete engedélyezve volt, először törölje a fájlmegosztást a [fájlok portálján](https://docs.microsoft.com/azure/storage/files/storage-files-enable-soft-delete?tabs=azure-portal#restore-soft-deleted-file-share) , vagy a [fájlmegosztás törlésének megszüntetése parancsfájl](./scripts/backup-powershell-script-undelete-file-share.md)használatával.
-2. Az [ebben a dokumentumban](https://docs.microsoft.com/azure/storage/files/storage-files-enable-soft-delete?tabs=azure-portal#disable-soft-delete)említett lépéseket követve tiltsa le a Storage-fiókban lévő fájlmegosztás helyreállítható törlését.
+1. Ha már törölte a fájlmegosztást, miközben a Soft delete engedélyezve volt, először törölje a fájlmegosztást a [fájlok portálján](../storage/files/storage-files-enable-soft-delete.md?tabs=azure-portal#restore-soft-deleted-file-share) , vagy a [fájlmegosztás törlésének megszüntetése parancsfájl](./scripts/backup-powershell-script-undelete-file-share.md)használatával.
+2. Az [ebben a dokumentumban](../storage/files/storage-files-enable-soft-delete.md?tabs=azure-portal#disable-soft-delete)említett lépéseket követve tiltsa le a Storage-fiókban lévő fájlmegosztás helyreállítható törlését.
 3. Most törölje azt a fájlmegosztást, amelynek a tartalmát azonnal törölni kívánja.
 
 >[!NOTE]
@@ -57,7 +59,7 @@ Ha van legalább egy védett fájlmegosztás egy Storage-fiókban, az azt jelent
 
 ### <a name="in-the-context-of-a-file-shares-soft-delete-setting-what-changes-does-azure-backup-do-when-i-unregister-a-storage-account"></a>Egy fájlmegosztás helyreállítható törlési beállításának kontextusában milyen módosítások Azure Backup a Storage-fiók regisztrációjának törlésekor?
 
-A regisztráció törlésének időpontjában a Azure Backup ellenőrzi a fájlmegosztás megőrzési időtartamának beállítását, és ha 14 napnál hosszabb vagy 14 napnál kevesebb, akkor a megőrzési időt a következőképpen hagyja. Ha azonban a megőrzés 14 nap, azt úgy tekintjük, hogy Azure Backup engedélyezte, és így letiltjuk a törlést a regisztráció törlése során. Ha meg szeretné szüntetni a Storage-fiók regisztrációját, miközben a megőrzési beállítást is megtartja, akkor a regisztráció törlése után engedélyezze újra a Storage-fiók ablaktáblán. [Erre a hivatkozásra kattintva](https://docs.microsoft.com/azure/storage/files/storage-files-enable-soft-delete?tabs=azure-portal#restore-soft-deleted-file-share) megtekintheti a konfigurációs lépéseket.
+A regisztráció törlésének időpontjában a Azure Backup ellenőrzi a fájlmegosztás megőrzési időtartamának beállítását, és ha 14 napnál hosszabb vagy 14 napnál kevesebb, akkor a megőrzési időt a következőképpen hagyja. Ha azonban a megőrzés 14 nap, azt úgy tekintjük, hogy Azure Backup engedélyezte, és így letiltjuk a törlést a regisztráció törlése során. Ha meg szeretné szüntetni a Storage-fiók regisztrációját, miközben a megőrzési beállítást is megtartja, akkor a regisztráció törlése után engedélyezze újra a Storage-fiók ablaktáblán. [Erre a hivatkozásra kattintva](../storage/files/storage-files-enable-soft-delete.md?tabs=azure-portal#restore-soft-deleted-file-share) megtekintheti a konfigurációs lépéseket.
 
 ## <a name="next-steps"></a>További lépések
 

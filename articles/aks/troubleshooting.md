@@ -4,12 +4,12 @@ description: Útmutató az Azure Kubernetes szolgáltatás (ak) használata sor�
 services: container-service
 ms.topic: troubleshooting
 ms.date: 06/20/2020
-ms.openlocfilehash: f334f501335e9e384cfcc35b356e61ab66efe7a8
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: a65e5e2b507f45fe51a8f6406edae4d96affe227
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86243681"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87056511"
 ---
 # <a name="aks-troubleshooting"></a>AKS-hibaelhárítás
 
@@ -80,7 +80,11 @@ Az AK-ban a slo és a szolgáltatói szerződéseket (SLA-kat) biztosító magok
     - https://github.com/helm/helm/issues/4821
     - https://github.com/helm/helm/issues/3500
     - https://github.com/helm/helm/issues/4543
+- **[A csomópontok közötti belső forgalom blokkolva van?](#im-receiving-tcp-timeouts-such-as-dial-tcp-node_ip10250-io-timeout)**
 
+## <a name="im-receiving-tcp-timeouts-such-as-dial-tcp-node_ip10250-io-timeout"></a>Kapok `TCP timeouts` , például`dial tcp <Node_IP>:10250: i/o timeout`
+
+Ezek az időtúllépések a letiltott csomópontok közötti belső forgalomhoz kapcsolódnak. Ellenőrizze, hogy nem blokkolja-e a forgalmat, például a fürt csomópontjaihoz tartozó alhálózat [hálózati biztonsági csoportjaival](concepts-security.md#azure-network-security-groups) .
 
 ## <a name="im-trying-to-enable-role-based-access-control-rbac-on-an-existing-cluster-how-can-i-do-that"></a>A szerepköralapú Access Control (RBAC) szolgáltatást próbálom engedélyezni egy meglévő fürtön. Hogyan tehetem meg?
 
@@ -217,7 +221,7 @@ Ezt a problémát a Kubernetes következő verzióiban rögzítették:
 |--|:--:|
 | 1.10 | 1.10.2 vagy újabb |
 | 1,11 | 1.11.0 vagy újabb |
-| 1,12 és újabb verziók | N/A |
+| 1,12 és újabb verziók | n.a. |
 
 
 ### <a name="failure-when-setting-uid-and-gid-in-mountoptions-for-azure-disk"></a>Hiba történt az UID és a GID beállításakor az Azure Disk mountOptions esetében
@@ -274,7 +278,7 @@ Ezt a problémát a Kubernetes következő verzióiban rögzítették:
 | 1.12 | 1.12.9 vagy újabb |
 | 1.13 | 1.13.6 vagy újabb |
 | 1,14 | 1.14.2 vagy újabb |
-| 1,15 és újabb verziók | N/A |
+| 1,15 és újabb verziók | n.a. |
 
 Ha olyan Kubernetes-verziót használ, amely nem rendelkezik a probléma javításával, és a csomópont elavult lemezzel rendelkezik, enyhítheti a virtuális gépről a nem létező lemezek tömeges műveletként való leválasztásával. **A nem létező lemezek különálló leválasztása sikertelen lehet.**
 
@@ -293,7 +297,7 @@ Ezt a problémát a Kubernetes következő verzióiban rögzítették:
 | 1.12 | 1.12.10 vagy újabb |
 | 1.13 | 1.13.8 vagy újabb |
 | 1,14 | 1.14.4 vagy újabb |
-| 1,15 és újabb verziók | N/A |
+| 1,15 és újabb verziók | n.a. |
 
 Ha olyan Kubernetes-verziót használ, amely nem rendelkezik a probléma javításával, és a csomópont meghibásodott állapotban van, a virtuális gép állapotának manuális frissítésével csökkentheti a következő lépések egyikét:
 
@@ -402,7 +406,7 @@ Ezt a problémát a Kubernetes következő verzióiban rögzítették:
 |--|:--:|
 | 1.12 | 1.12.6 vagy újabb |
 | 1.13 | 1.13.4 vagy újabb |
-| 1,14 és újabb verziók | N/A |
+| 1,14 és újabb verziók | n.a. |
 
 ### <a name="azure-files-mount-fails-because-of-storage-account-key-changed"></a>Azure Files csatlakoztatás sikertelen, mert a Storage-fiók kulcsa módosult
 

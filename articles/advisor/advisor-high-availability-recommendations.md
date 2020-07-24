@@ -3,12 +3,12 @@ title: Az Advisor-alkalmazás megbízhatóságának javítása
 description: A Azure Advisor használatával biztosíthatja és javíthatja a megbízhatóságot az üzleti szempontból kritikus fontosságú Azure-környezetekben.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 928e0b098cb2cf117eff40d2257fc79dbe114f85
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1eba688a67a8684cdbb6846b389f83e61b349abe
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85124622"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87057665"
 ---
 # <a name="improve-the-reliability-of-your-application-by-using-azure-advisor"></a>Az alkalmazás megbízhatóságának javítása Azure Advisor használatával
 
@@ -59,7 +59,7 @@ Ha egy Traffic Manager-profil földrajzi útválasztásra van konfigurálva, a r
 
 ## <a name="use-soft-delete-on-your-azure-storage-account-to-save-and-recover-data-after-accidental-overwrite-or-deletion"></a>Az adatok mentése és helyreállítása a véletlen felülírás vagy törlés után a Soft delete használatával az Azure Storage-fiókban
 
-Engedélyezze a helyreállítható [törlést](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete) a Storage-fiókban, hogy a törölt Blobok a véglegesen törölt állapotba kerüljenek a végleges törlés helyett. Az adatok felülírásakor a rendszer létrehoz egy helyreállítható módon törölt pillanatképet a felülírt adatok állapotának mentéséhez. A Soft delete lehetővé teszi a helyreállítást véletlen törlések vagy felülírások esetén. Az Advisor olyan Azure Storage-fiókokat azonosít, amelyeken nincs engedélyezve a helyreállított törlés, és azt javasolja, hogy engedélyezze azt.
+Engedélyezze a helyreállítható [törlést](../storage/blobs/soft-delete-overview.md) a Storage-fiókban, hogy a törölt Blobok a véglegesen törölt állapotba kerüljenek a végleges törlés helyett. Az adatok felülírásakor a rendszer létrehoz egy helyreállítható módon törölt pillanatképet a felülírt adatok állapotának mentéséhez. A Soft delete lehetővé teszi a helyreállítást véletlen törlések vagy felülírások esetén. Az Advisor olyan Azure Storage-fiókokat azonosít, amelyeken nincs engedélyezve a helyreállított törlés, és azt javasolja, hogy engedélyezze azt.
 
 ## <a name="configure-your-vpn-gateway-to-active-active-for-connection-resiliency"></a>VPN-átjáró konfigurálása aktív-aktív kapcsolati rugalmasságra
 
@@ -107,7 +107,7 @@ Azure Advisor azonosítja Azure Cosmos DB a Azure Cosmos DB Spark-összekötő r
 2020. július 1-től nem hozhatók létre új Spark-fürtök a Spark 2,1 vagy 2,2 használatával a HDInsight 3,6-ben. Nem fog tudni új Spark-fürtöket létrehozni a Spark 2,3 a HDInsight 4,0 használatával. A meglévő fürtök a jelenlegi állapotukban futnak tovább, Microsoft-támogatás nélkül. 
 
 ## <a name="enable-virtual-machine-replication"></a>Virtuális gépek replikálásának engedélyezése
-Azok a virtuális gépek, amelyeken nincs engedélyezve a replikáció egy másik régióban, nem rugalmasak a regionális kimaradások terén. A virtuális gépek replikálása csökkenti az Azure-régiók leállása során fellépő hátrányos üzleti hatásokat. Az Advisor észleli azokat a virtuális gépeket, amelyeken nincs engedélyezve a replikáció, és azt javasolja, hogy engedélyezze. Ha engedélyezi a replikációt, a virtuális gépek gyorsan üzembe helyezhetők egy távoli Azure-régióban. [További információ a virtuális gépek replikálásáról.](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-quickstart)
+Azok a virtuális gépek, amelyeken nincs engedélyezve a replikáció egy másik régióban, nem rugalmasak a regionális kimaradások terén. A virtuális gépek replikálása csökkenti az Azure-régiók leállása során fellépő hátrányos üzleti hatásokat. Az Advisor észleli azokat a virtuális gépeket, amelyeken nincs engedélyezve a replikáció, és azt javasolja, hogy engedélyezze. Ha engedélyezi a replikációt, a virtuális gépek gyorsan üzembe helyezhetők egy távoli Azure-régióban. [További információ a virtuális gépek replikálásáról.](../site-recovery/azure-to-azure-quickstart.md)
 
 ## <a name="how-to-access-high-availability-recommendations-in-advisor"></a>Magas rendelkezésre állási javaslatok elérése az Advisorban
 

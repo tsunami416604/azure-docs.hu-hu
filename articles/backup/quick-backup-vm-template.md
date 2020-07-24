@@ -5,22 +5,22 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 05/14/2019
 ms.custom: mvc,subject-armqs
-ms.openlocfilehash: 4e54ca6452a219dedca56885bda28ed43991ad37
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 7aef0e7e48bfd3f56bd1c3718b1a547bea66cbe8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86248934"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87054475"
 ---
 # <a name="quickstart-back-up-a-virtual-machine-in-azure-with-an-arm-template"></a>Gyors útmutató: virtuális gép biztonsági mentése az Azure-ban ARM-sablonnal
 
-[Azure Backup](backup-overview.md) biztonsági mentést készít a helyszíni gépekről és alkalmazásokról, valamint az Azure-beli virtuális gépekről. Ez a cikk bemutatja, hogyan készíthet biztonsági mentést egy Azure-beli virtuális gépről egy Azure Resource Manager sablonnal (ARM-sablon) és Azure PowerShell. Ez a rövid útmutató egy ARM-sablon üzembe helyezésének folyamatát tárgyalja a Recover Services-tároló létrehozásához. Az ARM-sablonok fejlesztésével kapcsolatos további információkért tekintse meg a [Azure Resource Manager dokumentációját](/azure/azure-resource-manager/) és a [sablonra vonatkozó referenciát](/azure/templates/microsoft.recoveryservices/allversions).
+[Azure Backup](backup-overview.md) biztonsági mentést készít a helyszíni gépekről és alkalmazásokról, valamint az Azure-beli virtuális gépekről. Ez a cikk bemutatja, hogyan készíthet biztonsági mentést egy Azure-beli virtuális gépről egy Azure Resource Manager sablonnal (ARM-sablon) és Azure PowerShell. Ez a rövid útmutató egy ARM-sablon üzembe helyezésének folyamatát tárgyalja a Recover Services-tároló létrehozásához. Az ARM-sablonok fejlesztésével kapcsolatos további információkért tekintse meg a [Azure Resource Manager dokumentációját](../azure-resource-manager/index.yml) és a [sablonra vonatkozó referenciát](/azure/templates/microsoft.recoveryservices/allversions).
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
 A [Recovery Services](backup-azure-recovery-services-vault-overview.md) -tár egy logikai tároló, amely a védett erőforrások, például az Azure-beli virtuális gépek biztonsági mentési szolgáltatásait tárolja. A biztonsági mentési feladatok futtatásakor egy helyreállítási pontot hoz létre a Recovery Services-tárolón belül. Ezt követően ezen helyreállítási pontok egyikével állíthatja vissza az adatokat egy adott időpontra. Azt is megteheti, hogy a virtuális gép biztonsági mentését [Azure PowerShell](./quick-backup-vm-powershell.md), az [Azure CLI](quick-backup-vm-cli.md)vagy a [Azure Portal](quick-backup-vm-portal.md)használatával végezheti el.
 
-Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonok használatát, válassza az **üzembe helyezés az Azure** -ban gombot. A sablon megnyílik a Azure Portalban.
+Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonokat, kattintson az **Üzembe helyezés az Azure-ban** gombra. A sablon az Azure Portalon fog megnyílni.
 
 [![Üzembe helyezés az Azure-ban](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-recovery-services-create-vm-and-configure-backup%2Fazuredeploy.json)
 
@@ -71,7 +71,7 @@ A sablon létrehoz egy virtuális gépet, és lehetővé teszi a virtuális gép
 
 A biztonsági mentési feladatok figyeléséhez tekintse meg [a biztonsági mentési feladatok figyelése](./quick-backup-vm-powershell.md#monitor-the-backup-job)című témakört.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs szüksége a virtuális gép biztonsági mentésére, törölheti azt.
 
@@ -87,7 +87,7 @@ Remove-AzRecoveryServicesVault -Vault $vault
 Remove-AzResourceGroup -Name "myResourceGroup"
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A rövid útmutató során létrehozott egy Recovery Services-tárolót, engedélyezte a védelmet a virtuális gépen, valamint létrehozta a kezdeti helyreállítási pontot.
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/01/2019
 ms.author: willzhan
-ms.openlocfilehash: 63b835d5d6c442f19f6d1fbe1710547ab96e1b40
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d5d6c7738516337b3db90bbc5d1a94515e96b3ce
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82160239"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87060592"
 ---
 # <a name="offline-playready-streaming-for-windows-10-with-media-services-v3"></a>Offline PlayReady streaming a Windows 10 rendszerhez Media Services v3
 
@@ -44,7 +44,7 @@ Az offline mód megvalósítása során feltett kihívás a következő:
 * Az MP4-t sok játékos, kódoló eszköz támogatja, de az MP4-tároló és a DRM között nincs kötés.
 * Hosszú távon a CFF és a CENC a következő módon érhető el:. Napjainkban azonban az eszközök/lejátszó-támogatás ökoszisztémája még nem létezik. Jelenleg egy megoldásra van szükségünk.
  
-Az ötlet a következő: Smooth streaming ([PIFF](https://docs.microsoft.com/iis/media/smooth-streaming/protected-interoperable-file-format)) fájlformátum (h264/aac) PLAYREADY (AES-128 CTR) kötéssel rendelkezik. Az egyéni Smooth streaming. ismv-fájl (feltéve, hogy a hang egyesített a videóban) önmagában egy fMP4, és használható a lejátszáshoz. Ha egy zökkenőmentes adatfolyam-továbbítási tartalom PlayReady-titkosításon halad át, akkor mindegyik. ismv fájl PlayReady védett töredezett MP4-re vált. Kiválaszthat egy. ismv-fájlt az előnyben részesített bitrátával, és átnevezheti. mp4-ként a letöltéshez.
+Az ötlet a következő: Smooth streaming ([PIFF](/iis/media/smooth-streaming/protected-interoperable-file-format)) fájlformátum (h264/aac) PLAYREADY (AES-128 CTR) kötéssel rendelkezik. Az egyéni Smooth streaming. ismv-fájl (feltéve, hogy a hang egyesített a videóban) önmagában egy fMP4, és használható a lejátszáshoz. Ha egy zökkenőmentes adatfolyam-továbbítási tartalom PlayReady-titkosításon halad át, akkor mindegyik. ismv fájl PlayReady védett töredezett MP4-re vált. Kiválaszthat egy. ismv-fájlt az előnyben részesített bitrátával, és átnevezheti. mp4-ként a letöltéshez.
 
 A PlayReady Protected MP4 a progresszív letöltéshez két lehetőség áll rendelkezésre:
 

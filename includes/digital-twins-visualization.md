@@ -5,18 +5,18 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 7/10/2020
 ms.author: baanders
-ms.openlocfilehash: 839f35faf4e96528a94ee237dd09aab6c1692162
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: b637ef2be51ef2bbbe9fa7e1a2374927647ca382
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258107"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87061695"
 ---
 ## <a name="visualization"></a>Vizualizáció
 
 Habár az Azure Digital Twins-példánnyal való interakció elsődleges módja az [API-k és az SDK](../articles/digital-twins/how-to-use-apis-sdks.md)-k használatával történik, hasznos lehet a példányban létrehozott ikrek és gráfok vizualizációjának megtekintése.
 
-Az [**Azure Digital Twins Explorer**](https://github.com/Azure-Samples/digital-twins-explorer) egy minta alkalmazás az Azure digitális ikrek megjelenítéséhez és használatához. Az alkalmazás kódjának letöltéséhez és futtatásához kövesse a minta utasításait. 
+Az [**Azure Digital Twins Explorer**](https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) egy minta alkalmazás az Azure digitális ikrek megjelenítéséhez és használatához. Az alkalmazás kódjának letöltéséhez és futtatásához kövesse a minta utasításait. 
 
 Ezzel a mintával megtekintheti a digitális Twins és a létrehozott gráf vizuális ábrázolását más létrehozási és felügyeleti tevékenységek között.
 

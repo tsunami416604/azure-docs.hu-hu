@@ -4,13 +4,13 @@ titleSuffix: Azure Kubernetes Service
 description: Ismerje meg, hogyan telepíthet és konfigurálhat egy olyan NGINX bejövő adatkezelőt, amely saját tanúsítványokat használ egy Azure Kubernetes Service-(ak-) fürtben.
 services: container-service
 ms.topic: article
-ms.date: 07/02/2020
-ms.openlocfilehash: b3e844c0c4d4861f7a0a0e12c4ae9d59e23c24e2
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.date: 07/21/2020
+ms.openlocfilehash: 7588614f615e7aa7dee00fa7553ad986f2e26b37
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86251512"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87056966"
 ---
 # <a name="create-an-https-ingress-controller-and-use-your-own-tls-certificates-on-azure-kubernetes-service-aks"></a>HTTPS bejövőforgalom-vezérlő létrehozása, és saját TLS-tanúsítványok használata az Azure Kubernetes Service-ben (AKS)
 
@@ -211,7 +211,7 @@ A *TLS* szakasz azt mutatja be, hogy a bejövő forgalom útvonala a gazdagép *
 Hozzon létre egy nevű fájlt `hello-world-ingress.yaml` , és másolja a következő PÉLDÁBAN YAML.
 
 ```yaml
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   name: hello-world-ingress
@@ -257,13 +257,13 @@ ingress.extensions/hello-world-ingress created
 A tanúsítványoknak a hamis *demo.Azure.com* -gazdagépen való teszteléséhez használja `curl` a és a *--feloldás* paramétert. Ezzel a paraméterrel leképezheti a *demo.Azure.com* nevét a bejövő adatkezelő nyilvános IP-címére. Adja meg saját bejövő adatkezelője nyilvános IP-címét, az alábbi példában látható módon:
 
 ```
-curl -v -k --resolve demo.azure.com:443:40.87.46.190 https://demo.azure.com
+curl -v -k --resolve demo.azure.com:443:EXTERNAL_IP https://demo.azure.com
 ```
 
 Nincs további elérési út megadva a címnek, így a bejövő vezérlő alapértelmezett értéke az */* útvonal. A rendszer az első bemutató alkalmazást adja vissza, ahogy az a következő tömörített példában is látható:
 
 ```
-$ curl -v -k --resolve demo.azure.com:443:40.87.46.190 https://demo.azure.com
+$ curl -v -k --resolve demo.azure.com:443:EXTERNAL_IP https://demo.azure.com
 
 [...]
 <!DOCTYPE html>
@@ -290,7 +290,7 @@ A parancs kimenetében található *-v* paraméter `curl` részletes informáci�
 Most adja hozzá a */Hello-World-Two* elérési útját a címnek, például: `https://demo.azure.com/hello-world-two` . A rendszer az egyéni címmel rendelkező második bemutató alkalmazást adja vissza, ahogy az az alábbi tömörített példában is látható:
 
 ```
-$ curl -v -k --resolve demo.azure.com:443:137.117.36.18 https://demo.azure.com/hello-world-two
+$ curl -v -k --resolve demo.azure.com:443:EXTERNAL_IP https://demo.azure.com/hello-world-two
 
 [...]
 <!DOCTYPE html>
@@ -301,7 +301,7 @@ $ curl -v -k --resolve demo.azure.com:443:137.117.36.18 https://demo.azure.com/h
 [...]
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ez a cikk a beáramló összetevők és a minta alkalmazások telepítésére szolgál. Amikor központilag telepít egy Helm-diagramot, a rendszer számos Kubernetes-erőforrást hoz létre. Ilyen erőforrások például a hüvelyek, az üzembe helyezések és a szolgáltatások. Ezen erőforrások törléséhez törölheti a teljes minta névteret vagy az egyes erőforrásokat.
 
@@ -369,7 +369,7 @@ Végezetül törölheti saját maga is a névteret. Használja a `kubectl delete
 kubectl delete namespace ingress-basic
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez a cikk néhány külső összetevőt tartalmaz az ak-nak. Ha többet szeretne megtudni ezekről az összetevőkről, tekintse meg a következő Project-lapokat:
 

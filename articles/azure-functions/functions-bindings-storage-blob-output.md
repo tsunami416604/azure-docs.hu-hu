@@ -6,11 +6,12 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
 ms.custom: tracking-python
-ms.openlocfilehash: 56c11c2ae867769eb5eab00a2a6a3ecb616449b1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d7ba52c34c376139538a5d0bf7747cceb6b46cb2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84560021"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87056132"
 ---
 # <a name="azure-blob-storage-output-binding-for-azure-functions"></a>Az Azure Blob Storage kimeneti kötése Azure Functions
 
@@ -352,7 +353,7 @@ Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított k
 |function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
 |---------|---------|----------------------|
 |**típusa** | n.a. | Értékre kell állítani `blob` . |
-|**direction** | n.a. | `out`Kimeneti kötéshez be kell állítani. A kivételek a [használat](#usage) szakaszban vannak feltüntetve. |
+|**irányba** | n.a. | `out`Kimeneti kötéshez be kell állítani. A kivételek a [használat](#usage) szakaszban vannak feltüntetve. |
 |**név** | n.a. | A blobot jelölő változó neve a függvény kódjában.  Állítsa a értékre `$return` a függvény visszatérési értékének hivatkozásához.|
 |**elérési útja** |**BlobPath** | A blob-tároló elérési útja. |
 |**kapcsolat** |**Kapcsolat**| Egy olyan Alkalmazásbeállítás neve, amely a kötéshez használandó tárolási kapcsolati karakterláncot tartalmazza. Ha az Alkalmazásbeállítások neve "AzureWebJobs" előtaggal kezdődik, akkor itt csak a nevet adja meg. Ha például a "MyStorage" értékre van állítva `connection` , a functions futtatókörnyezet egy "AzureWebJobsMyStorage" nevű alkalmazás-beállítást keres. Ha `connection` üresen hagyja, a functions futtatókörnyezet az alapértelmezett tárolási kapcsolatok karakterláncát használja a nevű alkalmazás-beállításban `AzureWebJobsStorage` .<br><br>A kapcsolatok karakterláncának általános célú Storage-fiókhoz kell tartoznia, nem [csak blob Storage-fiókhoz](../storage/common/storage-account-overview.md#types-of-storage-accounts).|
@@ -393,9 +394,9 @@ Az `@BlobOutput` attribútum hozzáférést biztosít a függvényt kiváltó bl
 
 | Kötés |  Hivatkozás |
 |---|---|
-| Blob | [BLOB-hibakódok](https://docs.microsoft.com/rest/api/storageservices/fileservices/blob-service-error-codes) |
-| BLOB, tábla, üzenetsor |  [Tárolási hibakódok](https://docs.microsoft.com/rest/api/storageservices/fileservices/common-rest-api-error-codes) |
-| BLOB, tábla, üzenetsor |  [Hibaelhárítás](https://docs.microsoft.com/rest/api/storageservices/fileservices/troubleshooting-api-operations) |
+| Blob | [BLOB-hibakódok](/rest/api/storageservices/fileservices/blob-service-error-codes) |
+| BLOB, tábla, üzenetsor |  [Tárolási hibakódok](/rest/api/storageservices/fileservices/common-rest-api-error-codes) |
+| BLOB, tábla, üzenetsor |  [Hibaelhárítás](/rest/api/storageservices/fileservices/troubleshooting-api-operations) |
 
 ## <a name="next-steps"></a>További lépések
 

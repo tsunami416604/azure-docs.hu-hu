@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 5a09d672f44ce8835571277ab35f7545c7f5f33e
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 62754c455ec6aad4a3990bf4af749dcdcd425e55
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86058282"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87060217"
 ---
 # <a name="get-started-with-delivering-content-on-demand-by-using-the-azure-portal"></a>Igény szerinti tartalomtovábbítás az Azure Portal használatával
 
 > [!NOTE]
-> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Tekintse meg a legújabb, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
+> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Tekintse meg a legújabb, [Media Services v3](../latest/index.yml)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
 
 Ez az oktatóanyag végigvezeti a lépéseken, amelyek segítségével alapszintű igény szerinti videotartalom-továbbítási szolgáltatást hozhat létre az Azure Portalon egy Azure Media Services alkalmazással.
 
@@ -91,7 +91,7 @@ Kódolás a Media Encoder Standard használatával az Azure Portalon:
    Az erőforrások egyszerűbb kezelése érdekében lehetősége van módosítani a kimeneti objektum nevét, illetve a feladat nevét.
    
    ![Objektumok kódolása](./media/media-services-portal-vod-get-started/media-services-encode1.png)
-5. Válassza a **Létrehozás** lehetőséget.
+5. Kattintson a **Létrehozás** gombra.
 
 ### <a name="monitor-encoding-job-progress"></a>Kódolási feladatok előrehaladásának figyelése
 A kódolási feladat előrehaladásának nyomon követéséhez válassza az oldal tetején található **Beállítások**, majd pedig a **Feladatok** elemet.
@@ -125,7 +125,7 @@ A közös hozzáférésű jogosultságkód URL-címének formátuma a következ�
 > 
 > 
 
-A lokátor lejárati idejének módosításához használjon [REST API](https://docs.microsoft.com/rest/api/media/operations/locator#update_a_locator)-t vagy [.NET API](https://go.microsoft.com/fwlink/?LinkID=533259)-t. 
+A lokátor lejárati idejének módosításához használjon [REST API](/rest/api/media/operations/locator#update_a_locator)-t vagy [.NET API](https://go.microsoft.com/fwlink/?LinkID=533259)-t. 
 
 > [!NOTE]
 > Az SAS-lokátorok lejárati dátumának frissítésekor az URL-cím is módosul.

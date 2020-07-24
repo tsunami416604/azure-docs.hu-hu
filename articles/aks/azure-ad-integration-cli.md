@@ -6,12 +6,12 @@ author: TomGeske
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: thomasge
-ms.openlocfilehash: dfc3a546f4845d5eb2e4e144b66b5d97e4a68829
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f99b304d2e238d72b47b09261ede19b44827264a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518028"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87057370"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli-legacy"></a>Azure Active Directory integrálása az Azure Kubernetes szolgáltatással az Azure CLI használatával (örökölt)
 
@@ -79,7 +79,7 @@ serverApplicationSecret=$(az ad sp credential reset \
     --query password -o tsv)
 ```
 
-Az Azure AD-nek a következő műveletek végrehajtásához szükséges engedélyekkel kell rendelkeznie:
+Az Azure AD szolgáltatásnak a következő műveletek végrehajtásához szükséges engedélyekkel kell rendelkeznie:
 
 * Címtáradatok olvasása
 * Bejelentkezés és felhasználói profil olvasása
@@ -246,7 +246,7 @@ error: You must be logged in to the server (Unauthorized)
 * A felhasználó nem tagja több mint 200 csoportnak.
 * Az alkalmazás regisztrálásakor megadott titkos kód megegyezik a használatával konfigurált értékkel`--aad-server-app-secret`
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az ebben a cikkben látható parancsokat tartalmazó teljes parancsfájl esetében tekintse meg az [Azure ad-integrációs parancsfájlt az AK-minták][complete-script]tárházában.
 

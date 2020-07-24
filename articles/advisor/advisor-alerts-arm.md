@@ -4,12 +4,12 @@ description: Új javaslat Azure Advisor riasztások létrehozása
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 06/29/2020
-ms.openlocfilehash: ef15891cc01d0481c6253023de262f14dce0ec81
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 2becfbbc63beb6451e5e877c5a60553d98650494
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921082"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87057826"
 ---
 # <a name="quickstart-create-azure-advisor-alerts-on-new-recommendations-using-an-arm-template"></a>Rövid útmutató: Azure Advisor riasztások létrehozása új javaslatokhoz ARM-sablon használatával
 
@@ -17,7 +17,7 @@ Ebből a cikkből megtudhatja, hogyan állíthatja be a Azure Advisor új javasl
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Ha Azure Advisor észleli az egyik erőforrásra vonatkozó új javaslatot, egy eseményt az [Azure-tevékenység naplójában](/azure/azure-monitor/platform/activity-logs-overview)tárol a rendszer. Az eseményekre vonatkozó riasztásokat a Azure Advisor-specifikus riasztások létrehozási felületének használatával állíthatja be. Kiválaszthat egy előfizetést, és opcionálisan egy erőforráscsoportot is megadhatja azokat az erőforrásokat, amelyekről riasztást szeretne kapni.
+Ha Azure Advisor észleli az egyik erőforrásra vonatkozó új javaslatot, egy eseményt az [Azure-tevékenység naplójában](../azure-monitor/platform/platform-logs-overview.md)tárol a rendszer. Az eseményekre vonatkozó riasztásokat a Azure Advisor-specifikus riasztások létrehozási felületének használatával állíthatja be. Kiválaszthat egy előfizetést, és opcionálisan egy erőforráscsoportot is megadhatja azokat az erőforrásokat, amelyekről riasztást szeretne kapni.
 
 A következő tulajdonságokkal is meghatározhatja a javaslatok típusait:
 
@@ -37,7 +37,7 @@ A műveletcsoportokkal kapcsolatban további információt a [műveletcsoportok 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 - A parancsok helyi számítógépről való futtatásához telepítse az Azure CLI-t vagy a Azure PowerShell modulokat. További információ: [Az Azure CLI telepítése](/cli/azure/install-azure-cli) és [Azure PowerShell telepítése](/powershell/azure/install-az-ps).
 
 ## <a name="review-the-template"></a>A sablon áttekintése

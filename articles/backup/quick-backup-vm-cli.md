@@ -5,12 +5,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 01/31/2019
 ms.custom: mvc
-ms.openlocfilehash: a359e47a70f6a1a9e0957b4e1c3965c8db12339a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 275a53c0ae5e1058d58516e9c01fa894ddad2120
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74171991"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87054588"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-the-cli"></a>Virtuális gép biztonsági mentése az Azure-ban a parancssori felület (CLI) használatával
 
@@ -22,11 +22,11 @@ Ez a rövid útmutató a meglévő Azure-beli virtuális gépek biztonsági ment
 
 A parancssori felület helyi telepítéséhez és használatához az Azure CLI 2.0.18-as vagy újabb verzióját kell futtatnia. A parancssori felület verziójának megkereséséhez futtassa az `az --version` parancsot. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket.
 
-## <a name="create-a-recovery-services-vault"></a>Recovery Services-tároló létrehozása
+## <a name="create-a-recovery-services-vault"></a>Helyreállítási tár létrehozása
 
 A Recovery Services-tároló egy logikai tároló, amely az egyes védett erőforrások, például az Azure-beli virtuális gépek biztonsági másolatainak adatait tárolja. Amikor egy védett erőforrás biztonsági mentésének feladata fut, a rendszer egy helyreállítási pontot hoz létre a Recovery Services-tárolóban. Ezt követően ezen helyreállítási pontok egyikével állíthatja vissza az adatokat egy adott időpontra.
 
-Recovery Services-tárolót az [az backup vault create](https://docs.microsoft.com/cli/azure/backup/vault#az-backup-vault-create) paranccsal hozhat létre. Adja meg a védeni kívánt virtuális gépével megegyező erőforráscsoportot és helyet. Ha a [virtuális gépek rövid útmutatóját](../virtual-machines/linux/quick-create-cli.md) használta, a következőket hozta létre:
+Recovery Services-tárolót az [az backup vault create](/cli/azure/backup/vault#az-backup-vault-create) paranccsal hozhat létre. Adja meg a védeni kívánt virtuális gépével megegyező erőforráscsoportot és helyet. Ha a [virtuális gépek rövid útmutatóját](../virtual-machines/linux/quick-create-cli.md) használta, a következőket hozta létre:
 
 - egy *myResourceGroup* nevű erőforráscsoportot,
 - egy *myVM* nevű virtuális gépet,
@@ -38,7 +38,7 @@ az backup vault create --resource-group myResourceGroup \
     --location eastus
 ```
 
-A Recovery Services-tároló alapértelmezés szerint georedundáns tárolásra van beállítva. A georedundáns tárolás biztosítja, hogy a rendszer egy olyan másodlagos Azure-régióba replikálja a biztonsági mentési adatokat, amely a forrásadatok elsődleges helyétől több száz kilométerre található. Ha módosítani kell a tárolási redundancia beállítást, használja az [az Backup Vault Backup-Properties set](https://docs.microsoft.com/cli/azure/backup/vault/backup-properties?view=azure-cli-latest#az-backup-vault-backup-properties-set) parancsmagot.
+A Recovery Services-tároló alapértelmezés szerint georedundáns tárolásra van beállítva. A georedundáns tárolás biztosítja, hogy a rendszer egy olyan másodlagos Azure-régióba replikálja a biztonsági mentési adatokat, amely a forrásadatok elsődleges helyétől több száz kilométerre található. Ha módosítani kell a tárolási redundancia beállítást, használja az [az Backup Vault Backup-Properties set](/cli/azure/backup/vault/backup-properties?view=azure-cli-latest#az-backup-vault-backup-properties-set) parancsmagot.
 
 ```azurecli
 az backup vault backup-properties set \
@@ -49,7 +49,7 @@ az backup vault backup-properties set \
 
 ## <a name="enable-backup-for-an-azure-vm"></a>Biztonsági mentés engedélyezése Azure-beli virtuális gépeken
 
-Hozzon létre egy biztonsági szabályzatot, amely meghatározza, hogy a rendszer mikor futtassa a biztonsági mentési feladatokat, és meddig tárolja a helyreállítási pontokat. Az alapértelmezett védelmi házirend naponta egyszer futtat biztonsági mentési feladatot, és 30 napig őrzi meg a helyreállítási pontokat. Ezekkel az alapértelmezett értékekkel gyorsan biztosíthatja virtuális gépe védelmét. A virtuális gépek biztonsági mentési védelmének engedélyezéséhez használja az [az Backup Protection Enable-for-VM](https://docs.microsoft.com/cli/azure/backup/protection#az-backup-protection-enable-for-vm)lehetőséget. Adja meg az erőforráscsoportot és a védeni kívánt virtuális gépet, majd a használni kívánt házirendet:
+Hozzon létre egy biztonsági szabályzatot, amely meghatározza, hogy a rendszer mikor futtassa a biztonsági mentési feladatokat, és meddig tárolja a helyreállítási pontokat. Az alapértelmezett védelmi házirend naponta egyszer futtat biztonsági mentési feladatot, és 30 napig őrzi meg a helyreállítási pontokat. Ezekkel az alapértelmezett értékekkel gyorsan biztosíthatja virtuális gépe védelmét. A virtuális gépek biztonsági mentési védelmének engedélyezéséhez használja az [az Backup Protection Enable-for-VM](/cli/azure/backup/protection#az-backup-protection-enable-for-vm)lehetőséget. Adja meg az erőforráscsoportot és a védeni kívánt virtuális gépet, majd a használni kívánt házirendet:
 
 ```azurecli-interactive
 az backup protection enable-for-vm \
@@ -71,11 +71,11 @@ az backup protection enable-for-vm \
 ```
 
 > [!IMPORTANT]
-> Míg a CLI-vel egyszerre több virtuális gép biztonsági mentését is lehetővé teszi, győződjön meg arról, hogy egyetlen szabályzathoz nem tartozik több, mint 100 virtuális gép társítva. Ez az [ajánlott eljárás](https://docs.microsoft.com/azure/backup/backup-azure-vm-backup-faq#is-there-a-limit-on-number-of-vms-that-can-beassociated-with-a-same-backup-policy). Jelenleg a PS-ügyfél nem blokkolja explicit módon, ha több mint 100 virtuális gép van, de az ellenőrzési terv a jövőben is felvehető.
+> Míg a CLI-vel egyszerre több virtuális gép biztonsági mentését is lehetővé teszi, győződjön meg arról, hogy egyetlen szabályzathoz nem tartozik több, mint 100 virtuális gép társítva. Ez az [ajánlott eljárás](./backup-azure-vm-backup-faq.md#is-there-a-limit-on-number-of-vms-that-can-beassociated-with-the-same-backup-policy). Jelenleg a PS-ügyfél nem blokkolja explicit módon, ha több mint 100 virtuális gép van, de az ellenőrzési terv a jövőben is felvehető.
 
 ## <a name="start-a-backup-job"></a>Biztonsági mentési feladat indítása
 
-Ha szeretné a biztonsági mentést most elindítani, ahelyett, hogy megvárná, amíg az alapértelmezett házirend az ütemezett időben futtatja a feladatot, használja az [az backup protection backup-now](https://docs.microsoft.com/cli/azure/backup/protection#az-backup-protection-backup-now) parancsot. Ez az első biztonsági mentési feladat létrehoz egy teljes helyreállítási pontot. Az ezt a kezdeti biztonsági mentést követő további biztonsági mentési feladatok növekményes helyreállítási pontokat hoznak létre. A növekményes helyreállítási pontok hatékonyan használják a tárhelyet és az időt, mivel csak az utolsó biztonsági mentés óta végzett módosításokat viszik át.
+Ha szeretné a biztonsági mentést most elindítani, ahelyett, hogy megvárná, amíg az alapértelmezett házirend az ütemezett időben futtatja a feladatot, használja az [az backup protection backup-now](/cli/azure/backup/protection#az-backup-protection-backup-now) parancsot. Ez az első biztonsági mentési feladat létrehoz egy teljes helyreállítási pontot. Az ezt a kezdeti biztonsági mentést követő további biztonsági mentési feladatok növekményes helyreállítási pontokat hoznak létre. A növekményes helyreállítási pontok hatékonyan használják a tárhelyet és az időt, mivel csak az utolsó biztonsági mentés óta végzett módosításokat viszik át.
 
 A virtuális gépek biztonsági mentéséhez a következő paraméterek használhatók:
 
@@ -96,7 +96,7 @@ az backup protection backup-now \
 
 ## <a name="monitor-the-backup-job"></a>A biztonsági mentési feladat monitorozása
 
-A biztonsági mentési feladatok állapotának monitorozásához használja az [az backup job list](https://docs.microsoft.com/cli/azure/backup/job#az-backup-job-list) parancsot:
+A biztonsági mentési feladatok állapotának monitorozásához használja az [az backup job list](/cli/azure/backup/job#az-backup-job-list) parancsot:
 
 ```azurecli-interactive
 az backup job list \

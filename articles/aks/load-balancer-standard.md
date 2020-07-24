@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/14/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 11f8442f188ea6ce7ee1de5a093362279da4594c
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 417ca42e014c0bb197d7dd834b960f25fcfdf468
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86251163"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87056810"
 ---
 # <a name="use-a-public-standard-load-balancer-in-azure-kubernetes-service-aks"></a>Nyilvános standard Load Balancer használata az Azure Kubernetes szolgáltatásban (ak)
 
@@ -167,7 +167,7 @@ az aks update \
 
 #### <a name="create-the-cluster-with-your-own-public-ip-or-prefixes"></a>A fürt létrehozása saját nyilvános IP-címmel vagy előtagokkal
 
-Előfordulhat, hogy saját IP-címeket vagy IP-előtagokat kíván létrehozni a kimenő forgalomhoz a fürt létrehozási ideje alatt, hogy támogassa a kimenő végpontok engedélyezési forgatókönyveit. Fűzze hozzá ugyanezeket a paramétereket a fürt létrehozási lépéseként, hogy meghatározza a saját nyilvános IP-címeit és az IP-előtagokat a fürt életciklusának elején.
+Előfordulhat, hogy saját IP-címeket vagy IP-előtagokat kíván létrehozni a kimenő forgalomhoz a fürt létrehozási ideje alatt, hogy támogassa a kimenő végpontok engedélyezési listához való hozzáadását. Fűzze hozzá ugyanezeket a paramétereket a fürt létrehozási lépéseként, hogy meghatározza a saját nyilvános IP-címeit és az IP-előtagokat a fürt életciklusának elején.
 
 *A* *Load-Balancer-kimenő-IPS* paraméterrel hozzon létre egy új fürtöt a nyilvános IP-címekkel az elején.
 
@@ -293,6 +293,24 @@ spec:
   - MY_EXTERNAL_IP_RANGE
 ```
 
+## <a name="maintain-the-clients-ip-on-inbound-connections"></a>Az ügyfél IP-címének karbantartása bejövő kapcsolatokon
+
+Alapértelmezés szerint a `LoadBalancer` [Kubernetes](https://kubernetes.io/docs/tutorials/services/source-ip/#source-ip-for-services-with-type-loadbalancer) és az AK-ban található típusú szolgáltatások nem őrzik meg az ügyfél IP-címét a pod-nal létesített kapcsolatban. A pod számára továbbított csomag forrás IP-címe a csomópont magánhálózati IP-címe lesz. Az ügyfél IP-címének fenntartásához be kell állítania `service.spec.externalTrafficPolicy` a `local` szolgáltatást a szolgáltatás definíciójában. A következő jegyzékfájl egy példát mutat be:
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: azure-vote-front
+spec:
+  type: LoadBalancer
+  externalTrafficPolicy: Local
+  ports:
+  - port: 80
+  selector:
+    app: azure-vote-front
+```
+
 ## <a name="additional-customizations-via-kubernetes-annotations"></a>További testreszabások Kubernetes-jegyzetek használatával
 
 Az alábbi lista a Kubernetes-szolgáltatások típussal támogatott megjegyzéseit sorolja fel `LoadBalancer` , ezek a jegyzetek csak a **bejövő** folyamatokra érvényesek:
@@ -357,7 +375,7 @@ A következő korlátozások érvényesek a terheléselosztó és a *szabványos
 * *Standard szintű* Az SKU-terheléselosztó csak a *szabványos* SKU IP-címeket támogatja.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a Kubernetes Services szolgáltatásról a [Kubernetes Services dokumentációjában][kubernetes-services].
 

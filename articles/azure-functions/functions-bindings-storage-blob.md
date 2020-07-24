@@ -5,16 +5,16 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
-ms.openlocfilehash: 6950f1dd81ef2c70f2c45fb4c547ed7676067790
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eead2d6ae2860bf06f1b878c1bb1692d74c06df6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85847649"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87055978"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions-overview"></a>Azure Blob Storage-kötések Azure Functions – áttekintés
 
-A Azure Functions [triggerekkel és kötésekkel](./functions-triggers-bindings.md)integrálható az [Azure Storage](https://docs.microsoft.com/azure/storage/) -ba. A blob Storage-val való integráció lehetővé teszi olyan függvények összeállítását, amelyek reagálnak a blob-adatok változásaira, valamint az olvasási és írási értékekre.
+A Azure Functions [triggerekkel és kötésekkel](./functions-triggers-bindings.md)integrálható az [Azure Storage](../storage/index.yml) -ba. A blob Storage-val való integráció lehetővé teszi olyan függvények összeállítását, amelyek reagálnak a blob-adatok változásaira, valamint az olvasási és írási értékekre.
 
 | Műveletek | Típus |
 |---------|---------|

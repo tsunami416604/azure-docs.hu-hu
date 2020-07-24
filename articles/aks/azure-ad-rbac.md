@@ -4,13 +4,13 @@ titleSuffix: Azure Kubernetes Service
 description: Ismerje meg, hogyan használhatja Azure Active Directory csoporttagság használatát a fürterőforrások hozzáférésének korlátozásához szerepköralapú hozzáférés-vezérlés (RBAC) használatával az Azure Kubernetes szolgáltatásban (ak)
 services: container-service
 ms.topic: article
-ms.date: 04/16/2019
-ms.openlocfilehash: bb48e4f72506a69969cae39810640d23d771bde3
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/21/2020
+ms.openlocfilehash: 646b1b5fb5079f0b959aaa2337c1dbab09ff4134
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86106084"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87057337"
 ---
 # <a name="control-access-to-cluster-resources-using-role-based-access-control-and-azure-active-directory-identities-in-azure-kubernetes-service"></a>A fürterőforrások hozzáférésének szabályozása szerepköralapú hozzáférés-vezérléssel és Azure Active Directory identitásokkal az Azure Kubernetes szolgáltatásban
 
@@ -137,7 +137,7 @@ Hozzon létre egy nevű fájlt `role-dev-namespace.yaml` , és illessze be a kö
 
 ```yaml
 kind: Role
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: dev-user-full-access
   namespace: dev
@@ -168,7 +168,7 @@ Most hozzon létre egy RoleBinding a *appdev* csoport számára, hogy a korábba
 
 ```yaml
 kind: RoleBinding
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: dev-user-access
   namespace: dev
@@ -202,7 +202,7 @@ Hozzon létre egy nevű fájlt `role-sre-namespace.yaml` , és illessze be a kö
 
 ```yaml
 kind: Role
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: sre-user-full-access
   namespace: sre
@@ -233,7 +233,7 @@ Hozzon létre egy RoleBinding ahhoz a *opssre* -csoporthoz, amely a korábban l�
 
 ```yaml
 kind: RoleBinding
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: sre-user-access
   namespace: sre
@@ -266,13 +266,13 @@ az aks get-credentials --resource-group myResourceGroup --name myAKSCluster --ov
 Alapszintű NGINX Pod-t ütemezhet a [kubectl Run][kubectl-run] paranccsal a *fejlesztői* névtérben:
 
 ```console
-kubectl run --generator=run-pod/v1 nginx-dev --image=nginx --namespace dev
+kubectl run nginx-dev --image=nginx --namespace dev
 ```
 
 A bejelentkezéshez írja be a `appdev@contoso.com` cikk elején létrehozott saját fiókhoz tartozó hitelesítő adatokat. Miután sikeresen bejelentkezett, a rendszer a fiók jogkivonatát gyorsítótárazza a jövőbeli `kubectl` parancsokhoz. Az NGINX sikeresen be van jelölve, ahogy az a következő példában látható:
 
 ```console
-$ kubectl run --generator=run-pod/v1 nginx-dev --image=nginx --namespace dev
+$ kubectl run nginx-dev --image=nginx --namespace dev
 
 To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code B24ZD6FP8 to authenticate.
 
@@ -313,7 +313,7 @@ Error from server (Forbidden): pods is forbidden: User "aksdev@contoso.com" cann
 Ugyanígy próbáljon meg egy Pod-t más névtérben (például a *sre* névtérben) ütemezni. A felhasználó csoporttagság nem igazodik a Kubernetes-szerepkörhöz és a RoleBinding az engedélyek megadásához, ahogy az a következő példában látható:
 
 ```console
-$ kubectl run --generator=run-pod/v1 nginx-dev --image=nginx --namespace sre
+$ kubectl run nginx-dev --image=nginx --namespace sre
 
 Error from server (Forbidden): pods is forbidden: User "aksdev@contoso.com" cannot create resource "pods" in API group "" in the namespace "sre"
 ```
@@ -331,14 +331,14 @@ az aks get-credentials --resource-group myResourceGroup --name myAKSCluster --ov
 Próbálja meg ütemezni és megtekinteni a hüvelyeket a hozzárendelt *sre* -névtérben. Ha a rendszer kéri, jelentkezzen be a `opssre@contoso.com` cikk elején létrehozott saját hitelesítő adataival:
 
 ```console
-kubectl run --generator=run-pod/v1 nginx-sre --image=nginx --namespace sre
+kubectl run nginx-sre --image=nginx --namespace sre
 kubectl get pods --namespace sre
 ```
 
 Ahogy az az alábbi példában is látható, a hüvelyek létrehozása és megtekintése sikeresen megtekinthető:
 
 ```console
-$ kubectl run --generator=run-pod/v1 nginx-sre --image=nginx --namespace sre
+$ kubectl run nginx-sre --image=nginx --namespace sre
 
 To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code BM4RHP3FD to authenticate.
 
@@ -354,7 +354,7 @@ Most próbáljon meg megtekinteni vagy ütemezni a hüvelyeket a hozzárendelt S
 
 ```console
 kubectl get pods --all-namespaces
-kubectl run --generator=run-pod/v1 nginx-sre --image=nginx --namespace dev
+kubectl run nginx-sre --image=nginx --namespace dev
 ```
 
 Ezek `kubectl` a parancsok sikertelenek, ahogy az az alábbi példában is látható. A felhasználó csoporttagság-és Kubernetes-szerepköre és RoleBindings nem biztosítanak engedélyeket más névterekben lévő erőforrások létrehozásához vagy kezelőjéhez:
@@ -363,7 +363,7 @@ Ezek `kubectl` a parancsok sikertelenek, ahogy az az alábbi példában is láth
 $ kubectl get pods --all-namespaces
 Error from server (Forbidden): pods is forbidden: User "akssre@contoso.com" cannot list pods at the cluster scope
 
-$ kubectl run --generator=run-pod/v1 nginx-sre --image=nginx --namespace dev
+$ kubectl run nginx-sre --image=nginx --namespace dev
 Error from server (Forbidden): pods is forbidden: User "akssre@contoso.com" cannot create pods in the namespace "dev"
 ```
 
@@ -388,7 +388,7 @@ az ad group delete --group appdev
 az ad group delete --group opssre
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a Kubernetes-fürtök védelméről: [a hozzáférési és identitási beállítások az AK-][rbac-authorization]ban.
 

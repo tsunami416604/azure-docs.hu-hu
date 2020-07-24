@@ -3,12 +3,12 @@ title: SQL Server-adatbázisok visszaállítása Azure-beli virtuális gépen
 description: Ez a cikk azt ismerteti, hogyan lehet visszaállítani az Azure-beli virtuális gépen futó SQL Server-adatbázisokat, és hogy a rendszer biztonsági mentést készít a Azure Backup használatával.
 ms.topic: conceptual
 ms.date: 05/22/2019
-ms.openlocfilehash: 5d7fc52aaaca0bf99955919c954cc22ab0d9d3d8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 2c3b81c4d0bc4c7548fec8ec131fea66684a7aa8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538463"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87054579"
 ---
 # <a name="restore-sql-server-databases-on-azure-vms"></a>SQL Server-adatbázisok visszaállítása Azure-beli virtuális gépeken
 
@@ -127,7 +127,7 @@ Ha egy adatbázis helyett. bak fájlként szeretné visszaállítani a biztonsá
     >   - Hajtsa végre az `cmdkey /add:<storageacct>.file.core.windows.net /user:AZURE\<storageacct> /pass:<storagekey>` parancsot.
     >   - Hozzáférés ellenőrzése`dir \\<storageacct>.file.core.windows.net\<filesharename>`
     >- A Backup-tárolóban lévő fájlok visszaállításának elindítási `\\<storageacct>.file.core.windows.net\<filesharename>` útja<BR>
-    A PsExec-t a használatával töltheti le<https://docs.microsoft.com/sysinternals/downloads/psexec>
+    A PsExec letöltése a [Sysinternals](/sysinternals/downloads/psexec) lapról végezhető el.
 
 1. Kattintson az **OK** gombra.
 
@@ -168,6 +168,6 @@ Ha egy adatbázisban lévő fájlok teljes mérete meghaladja az [adott korláto
 
   ![Adatbázis visszaállítása nagyméretű fájllal](./media/backup-azure-sql-database/restore-large-files.jpg)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Kezelés és figyelés](manage-monitor-sql-database-backup.md) SQL Server a Azure Backup által biztonsági mentést tartalmazó adatbázisokat.
