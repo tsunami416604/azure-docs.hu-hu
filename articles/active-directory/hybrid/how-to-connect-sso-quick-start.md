@@ -16,12 +16,12 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 58e779e6feeba27711a1746fbf7d6878725790fa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bc955fe64ae68cb1248b0e616357bccf82f5f036
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85358004"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87115759"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quickstart"></a>Azure Active Directory zökkenőmentes egyszeri bejelentkezés: gyors üzembe helyezés
 
@@ -130,7 +130,7 @@ A felhasználók intranetes zónájának beállításai kétféleképpen módos�
    - **Érték neve**: a Kerberos-jegyek továbbítására szolgáló Azure ad URL-cím.
    - **Érték** (adathalmaz): **1** az intranet zónát jelzi.
 
-     Az eredmény így néz ki:
+     Az eredmény a következőhöz hasonló:
 
      Érték neve:`https://autologon.microsoftazuread-sso.com`
   
@@ -162,9 +162,9 @@ A felhasználók intranetes zónájának beállításai kétféleképpen módos�
 
 4. Adja meg a következő értékeket a megfelelő mezőkben, majd kattintson **az OK**gombra.
    - **Kulcs elérési útja**: ***Software\Microsoft\Windows\CurrentVersion\Internet Settings\ZoneMap\Domains\microsoftazuread-SSO.com\autologon***
-   - **Érték neve**: ***https***.
-   - **Érték típusa**: ***REG_DWORD***.
-   - **Érték**: ***00000001***.
+   - **Érték neve**: ***https***
+   - **Érték típusa**: ***REG_DWORD***
+   - **Érték**: ***00000001***
  
      ![Egyszeri bejelentkezés](./media/how-to-connect-sso-quick-start/sso16.png)
  

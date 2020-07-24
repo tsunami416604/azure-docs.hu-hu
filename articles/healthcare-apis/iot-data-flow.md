@@ -1,0 +1,66 @@
+---
+title: 'Fogalmak: a FHIR készült Azure API IoT-összekötő (előzetes verzió) funkciójának adatáramlása'
+description: Az IoT-összekötő adatforgalmának megismerése. A IoT-összekötő betölti, normalizálja, csoportosítja, átalakítja és megtartja a IoMT-adatot a FHIR készült Azure API-ra.
+services: healthcare-apis
+author: ms-puneet-nagpal
+ms.service: healthcare-apis
+ms.subservice: iomt
+ms.topic: conceptual
+ms.date: 05/13/2020
+ms.author: punagpal
+ms.openlocfilehash: c2d150fcd35bc51478a1d7f4a0407abce1446c06
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87099157"
+---
+# <a name="iot-connector-preview-data-flow"></a>Az IoT-összekötő (előzetes verzió) adatfolyama
+
+Ez a cikk áttekintést nyújt az IoT-összekötő adatforgalmáról. Megismerheti az IoT-összekötő különböző adatfeldolgozási szakaszait, amelyek az eszköz adatait FHIR-alapú [megfigyelési](https://www.hl7.org/fhir/observation.html) erőforrásokra alakítják át.
+
+![IoT-összekötő adatfolyama](media/concepts-iot-data-flow/iot-connector-data-flow.png)
+
+A fenti ábrán az IoT-összekötőn belüli különböző adatáramlási szakaszok láthatók. 
+
+## <a name="ingest"></a>Betöltés
+A betöltés az első olyan szakasz, ahol az eszközök az IoT-Összekötőbe érkeznek. Az eszközre vonatkozó adatfeldolgozási végpontot egy [Azure Event hub](https://docs.microsoft.com/azure/event-hubs/)tárolja. Az Azure Event hub platform támogatja a nagy léptékű és az átviteli sebességet, és másodpercenként több millió üzenet fogadását és feldolgozását is lehetővé teszi. Azt is lehetővé teszi, hogy az IoT-összekötő aszinkron módon felhasználja az üzeneteket, így nem kell megvárnia, amíg az eszköz feldolgozza az eszközöket.
+
+> [!NOTE]
+> Az eszközre jelenleg a JSON az egyetlen támogatott formátum.
+
+## <a name="normalize"></a>Normalizálni
+A normalizálás a következő lépés, amelyben az eszközök adatai bekerülnek a fenti Azure Event hub-ból, és az eszköz-hozzárendelési sablonok használatával dolgozzák fel őket. Ez a leképezési folyamat az eszközbeállítások normalizált sémába való átalakítását eredményezi. 
+
+A normalizálás folyamata nem csupán az adatfeldolgozást egyszerűsíti a későbbi fázisokban, de lehetővé teszi, hogy egy bemeneti üzenetet több normalizált üzenetbe is feldolgozzon. Egy eszköz például több létfontosságú jelet is küldhet a test hőmérsékletének, a pulzusszámának, a vérnyomás és a légzési aránynak egyetlen üzenetben. Ez a bemeneti üzenet négy különálló FHIR-erőforrást hoz létre. Az egyes erőforrások különböző létfontosságú aláírást képviselnek, és a bemeneti üzenet négy különböző normalizált üzenetbe lett kiosztva.
+
+## <a name="group"></a>Csoport
+A csoport a következő szakasz, ahol az előző fázisban elérhető normalizált üzenetek három különböző paraméterrel vannak csoportosítva: eszköz identitása, mérték típusa és időszaka.
+
+Az eszköz identitása és a mérési típus csoportosítása lehetővé teszi a [SampledData](https://www.hl7.org/fhir/datatypes.html#SampledData) -mérési típus használatát. Ez a típus tömör módot biztosít a FHIR-ben található eszköz mérési időalapú sorozatának ábrázolására. És az időszak azt szabályozza, hogy a IoT-összekötő által generált megfigyelési erőforrások milyen késéssel íródnak a FHIR készült Azure API-ban.
+
+> [!NOTE]
+> Az időszak értéke alapértelmezés szerint 15 percet vesz igénybe, és nem konfigurálható előzetes verzióra.
+
+## <a name="transform"></a>Átalakítás
+Az átalakítási szakaszban csoportosított normalizált üzenetek lesznek feldolgozva FHIR-leképezési sablonokkal. A sablon típusának megfelelő üzenetek a leképezésen keresztül megadott FHIR-alapú megfigyelési erőforrásokra kerülnek át.
+
+Ezen a ponton az [eszköz](https://www.hl7.org/fhir/device.html) erőforrása, valamint a hozzá tartozó [beteg](https://www.hl7.org/fhir/patient.html) erőforrás is BEolvasható a FHIR-kiszolgálóról az üzenetben található eszköz-azonosító használatával. Ezeket az erőforrásokat a rendszer a létrehozott megfigyelési erőforrásra mutató hivatkozásként adja hozzá.
+
+> [!NOTE]
+> A rendszer a FHIR-kiszolgáló terhelésének csökkentése érdekében az összes identitást megkeresi a gyorsítótárban. Ha több betegtel rendelkező eszközök újrafelhasználását tervezi, javasoljuk, hogy hozzon létre egy olyan virtuális eszköz-erőforrást, amely kifejezetten a betegre vonatkozik, és küldjön virtuális eszköz-azonosítót az üzenet tartalma. A virtuális eszköz szülőként társítható a tényleges eszköz erőforráshoz.
+
+Ha a FHIR-kiszolgálón nem található eszköz-erőforrás egy adott eszköz-azonosítóhoz, akkor az eredmény a `Resolution Type` létrehozáskor beállított értéktől függ. Ha a értékre `Lookup` van állítva, akkor a rendszer figyelmen kívül hagyja az adott üzenetet, és a folyamat továbbra is feldolgozza a többi bejövő üzenetet. Ha a értékre van állítva `Create` , a IoT-összekötő létrehoz egy operációs rendszer nélküli eszközt és a beteg erőforrásait a FHIR-kiszolgálón.  
+
+## <a name="persist"></a>Fennállnak
+Miután létrehozta a megfigyelési FHIR erőforrását az átalakítási fázisban, az erőforrás a FHIR Azure API-ba kerül. Ha a FHIR-erőforrás új, akkor a rendszer a kiszolgálón hozza létre. Ha a FHIR-erőforrás már létezik, frissülni fog.
+
+## <a name="next-steps"></a>További lépések
+
+A következő lépésre kattintva megtudhatja, hogyan hozhat létre eszköz-és FHIR-leképezési sablonokat.
+
+>[!div class="nextstepaction"]
+>[IoT-összekötő leképezési sablonjai](iot-mapping-templates.md)
+
+
+Az FHIR a HL7 bejegyzett védjegye, amelynek felhasználását a HL7 engedélyezte.

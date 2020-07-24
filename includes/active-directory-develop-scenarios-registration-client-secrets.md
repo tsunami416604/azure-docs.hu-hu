@@ -1,5 +1,5 @@
 ---
-title: fájlbefoglalás
+title: fájl belefoglalása
 description: fájl belefoglalása a bizalmas ügyfél-forgatókönyvekhez (démon, webalkalmazás, webes API)
 services: active-directory
 documentationcenter: dev-center-name
@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/18/2018
+ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: a5d34ac7eea50b67bd679d8cb8ddecf7ca277abd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a3acdbb93dd20f0b89e4f99d64f5f7a30ce40623
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76773382"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87102717"
 ---
 ## <a name="register-secrets-or-certificates"></a>Titkok vagy tanúsítványok regisztrálása
 
@@ -31,12 +31,10 @@ Az ügyfél hitelesítő adatainak kezelése az alkalmazások **tanúsítványai
 
 ![Tanúsítványok & Secrets oldal](../articles/active-directory/develop/media/quickstart-update-azure-ad-app-preview/credentials-certificates-secrets.png)
 
-- Az alkalmazás titkos kulcsát (más néven az ügyfél titkát) az Azure AD hozza létre a bizalmas ügyfélalkalmazás regisztrálása során. Ez a létrehozás akkor történik meg, amikor **új ügyfél-titkos kulcsot**választ. Ezen a ponton a **Save (Mentés**) lehetőség kiválasztása előtt át kell másolnia a titkos karakterláncot a vágólapra az alkalmazásban való használathoz. Ez a karakterlánc többé nem jelenik meg.
+- Az *ügyfél titkos kulcsának* létrehozásához válassza az **új ügyfél titkot** az alkalmazás regisztrációjában a Azure Portal. Amikor létrehozza az ügyfél titkos kulcsát, a titkos karakterláncot a **tanúsítványok & titkok** panelről való navigálás előtt _kell_ rögzítenie. A titkos kód karakterlánca soha nem jelenik meg újra.
 - Az alkalmazás regisztrálása során a **tanúsítvány feltöltése** gombra kattintva töltheti fel a tanúsítványt. Az Azure AD csak azokat a tanúsítványokat támogatja, amelyek közvetlenül regisztrálva vannak az alkalmazásban, és nem követik a tanúsítványláncot.
 
 Részletekért lásd: rövid útmutató [: ügyfélalkalmazás konfigurálása a webes API-k eléréséhez | Adja meg a hitelesítő adatokat az alkalmazáshoz](../articles/active-directory/develop/quickstart-configure-app-access-web-apis.md#add-credentials-to-your-web-application).
-
-
 
 ### <a name="register-client-secrets-by-using-powershell"></a>Ügyfél-titkok regisztrálása a PowerShell használatával
 

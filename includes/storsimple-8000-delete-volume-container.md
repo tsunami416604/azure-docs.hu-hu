@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: storsimple
 author: alkohli
 ms.service: storsimple
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/08/2018
 ms.author: alkohli
 ms.custom: include file
-ms.openlocfilehash: e683d17422321b780a1c01b3011292f2e2c631cb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 30bbd06e36ed1e03caa391165a8abc275f1899a7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67179166"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87102708"
 ---
 A mennyiségi tárolók törléséhez
  - kötetek törlése a kötet tárolóban. Ha a mennyiségi tárolóhoz társított kötetek tartoznak, először a köteteket offline állapotba kell állítani. Kövesse a [kötet offline állapotba](../articles/storsimple/storsimple-8000-manage-volumes-u2.md#take-a-volume-offline)helyezése című témakör lépéseit. A kötetek offline állapotba helyezése után törölheti őket. 
@@ -36,6 +36,6 @@ Ha a kötet tárolóban nincsenek társított kötetek, biztonsági mentési sza
 
 A kötet-tárolók listája frissült, hogy tükrözze a törölt kötet tárolóját.
 
-![](./media/storsimple-8000-delete-volume-container/deletevolumecontainer5.png)
+![Képernyőfelvétel a mennyiségi tároló lapról. A mennyiségi tárolók táblázatos listája már nem tartalmazza a törölt tárolót.](./media/storsimple-8000-delete-volume-container/deletevolumecontainer5.png)
 
 

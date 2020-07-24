@@ -9,12 +9,12 @@ ms.subservice: computer-vision
 ms.topic: include
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: a8d27b77e210236216883bf630464324a47d2e80
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.openlocfilehash: c1406b5e7297b1d48b23d9dfa684e0d76b68139f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "85073272"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87102736"
 ---
 <a name="HOLTop"></a>
 
@@ -70,7 +70,7 @@ Az alkalmazás **program** osztályában hozzon létre változókat az erőforr�
 Az alkalmazás könyvtárában telepítse az Computer Vision .NET-hez készült ügyféloldali kódtárat a következő paranccsal:
 
 ```dotnetcli
-dotnet add package Microsoft.Azure.CognitiveServices.Vision.ComputerVision --version 5.0.0
+dotnet add package Microsoft.Azure.CognitiveServices.Vision.ComputerVision --version 6.0.0-preview.1
 ```
 
 Ha a Visual Studio IDE-t használja, az ügyféloldali kódtár letölthető NuGet-csomagként érhető el.
@@ -79,7 +79,7 @@ Ha a Visual Studio IDE-t használja, az ügyféloldali kódtár letölthető NuG
 
 A következő osztályok és felületek a Computer Vision .NET SDK főbb funkcióit kezelik.
 
-|Name|Leírás|
+|Név|Leírás|
 |---|---|
 | [ComputerVisionClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-dotnet) | Ez az osztály minden Computer Vision funkcióhoz szükséges. Ezt az előfizetési adatokkal hozza létre, és a legtöbb képművelet végrehajtásához használja.|
 |[ComputerVisionClientExtensions](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.computervisionclientextensions?view=azure-dotnet)| Ez az osztály további metódusokat tartalmaz a **ComputerVisionClient**.|
@@ -211,7 +211,7 @@ Az alábbi kód a képtípussal kapcsolatos információkat jeleníti &mdash; me
 
 ## <a name="read-printed-and-handwritten-text"></a>Nyomtatott és kézzel írt szöveg olvasása
 
-A Computer Vision a képen látható szöveget olvashatja, és átalakíthatja a karakteres adatfolyamba. Az ebben a szakaszban szereplő kód olyan metódust határoz meg, `ExtractTextUrl` amely az ügyfél objektumával azonosítja és Kinyeri a nyomtatott vagy kézírásos szöveget a képen.
+A Computer Vision a képen látható szöveget olvashatja, és átalakíthatja a karakteres adatfolyamba. A szöveges felismeréssel kapcsolatos további információkért tekintse meg az [optikai karakterfelismerés (OCR)](../../concept-recognizing-text.md#read-api) fogalmi dokumentációját. Az ebben a szakaszban szereplő kód olyan metódust határoz meg, `BatchReadFileUrl` amely az ügyfél-objektumot használja a szöveg észleléséhez és kinyeréséhez a képen.
 
 Adja hozzá a metódus hívását a `Main` metódushoz.
 
@@ -219,7 +219,7 @@ Adja hozzá a metódus hívását a `Main` metódushoz.
 
 ### <a name="set-up-test-image"></a>Tesztelési rendszerkép beállítása
 
-A **program** osztályban mentse a hivatkozást annak a képnek az URL-címére, amelyből szöveget szeretne kinyerni.
+A **program** osztályban mentsen egy hivatkozást azon rendszerkép URL-címére, amelyből szöveget szeretne kinyerni. Ez a kódrészlet a nyomtatott és a kézírásos szöveghez is tartalmaz mintaképeket.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_extracttext_url)]
 
@@ -228,13 +228,13 @@ A **program** osztályban mentse a hivatkozást annak a képnek az URL-címére,
 
 ### <a name="call-the-read-api"></a>Az olvasási API meghívása
 
-Adja meg az új metódust a szöveg olvasásához. Adja hozzá az alábbi kódot, amely meghívja a **BatchReadFileAsync** metódust az adott képhez. Ez egy műveleti azonosítót ad vissza, és elindít egy aszinkron folyamatot a rendszerkép tartalmának olvasásához.
+Adja meg az új metódust a szöveg olvasásához. Adja hozzá az alábbi kódot, amely meghívja a **ReadAsync** metódust az adott képhez. Ez egy műveleti azonosítót ad vissza, és elindít egy aszinkron folyamatot a rendszerkép tartalmának olvasásához.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_extract_call)]
 
 ### <a name="get-read-results"></a>Olvasási eredmények beolvasása
 
-Ezután kérje le a **BatchReadFileAsync** -hívás által visszaadott művelet azonosítóját, és használja a szolgáltatás lekérdezésére a művelet eredményeihez. A következő kód ellenőrzi a műveletet egy másodperces időközönként, amíg az eredmények vissza nem állnak. Ezután kinyomtatja a kinyert szöveges adatát a konzolon.
+Ezután kérje le a **ReadAsync** -hívás által visszaadott művelet azonosítóját, és használja a szolgáltatás lekérdezésére a művelet eredményeihez. A következő kód ellenőrzi a műveletet egy másodperces időközönként, amíg az eredmények vissza nem állnak. Ezután kinyomtatja a kinyert szöveges adatát a konzolon.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_extract_response)]
 
@@ -244,7 +244,7 @@ Adja hozzá a következő kódot a beolvasott szöveges információk elemzésé
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_extract_display)]
 
-## <a name="run-the-application"></a>Alkalmazás futtatása
+## <a name="run-the-application"></a>Az alkalmazás futtatása
 
 Futtassa az alkalmazást az alkalmazás könyvtárából a `dotnet run` paranccsal.
 

@@ -1,17 +1,17 @@
 ---
 title: Feladatátvétel és javítás – Azure Cache for Redis
 description: Ismerje meg a feladatátvételt, a javítást, valamint az Azure cache Redis-hez készült frissítési folyamatát.
-author: asasine
+author: yegu-ms
+ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/18/2019
-ms.author: adsasine
-ms.openlocfilehash: d14e030898db364d6621933d0032fa9ce0cab676
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 7cfa7257e64421c30c359bb34044988bbb5af1dd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86185024"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87093085"
 ---
 # <a name="failover-and-patching-for-azure-cache-for-redis"></a>Feladatátvétel és javítás a Redis készült Azure cache-hez
 

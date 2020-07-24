@@ -9,12 +9,12 @@ ms.subservice: computer-vision
 ms.topic: include
 ms.date: 12/19/2019
 ms.author: pafarley
-ms.openlocfilehash: 3d52e83aa574dcd506270dc8e2f244a9f96add53
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.openlocfilehash: 6506dd0a0aea1957db85658e4f70aed4df72d071
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "85073275"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87102737"
 ---
 <a name="HOLTop"></a>
 
@@ -91,7 +91,7 @@ dependencies {
 
 A következő osztályok és felületek a Computer Vision Java SDK főbb funkcióit kezelik.
 
-|Name|Leírás|
+|Név|Leírás|
 |---|---|
 | [ComputerVisionClient](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-java-stable) | Ez az osztály minden Computer Vision funkcióhoz szükséges. Ezt az előfizetési adatok alapján hozza létre, és más osztályok példányainak előállítására használja.|
 |[ComputerVision](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.computervision?view=azure-java-stable)| Ez az osztály az ügyfél objektumból származik, és közvetlenül kezeli az összes képműveletet, például a képek elemzését, a szöveg észlelését és a miniatűr létrehozását.|
@@ -210,7 +210,7 @@ A Computer Vision a képen látható szöveget olvashatja, és átalakíthatja a
 
 ### <a name="call-the-recognize-api"></a>Az felismerő API meghívása
 
-Először használja a következő kódot a **recognizePrintedTextInStream** metódus meghívásához az adott képhez. Ha hozzáadja ezt a kódot a projekthez, a értéket a `localTextImagePath` helyi rendszerkép elérési útjára kell cserélnie. 
+Először használja a következő kódot a **recognizePrintedTextInStream** metódus meghívásához az adott képhez. Ha hozzáadja ezt a kódot a projekthez, a értéket a `localTextImagePath` helyi rendszerkép elérési útjára kell cserélnie. Itt töltheti le az itt használható [minta-rendszerképet](https://raw.githubusercontent.com/MicrosoftDocs/azure-docs/master/articles/cognitive-services/Computer-vision/Images/readsample.jpg) .
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_read_call)]
 
@@ -224,7 +224,7 @@ Végül zárjuk le a try/catch blokkot és a metódus definícióját.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_read_catch)]
 
-## <a name="run-the-application"></a>Alkalmazás futtatása
+## <a name="run-the-application"></a>Az alkalmazás futtatása
 
 Az alkalmazást az alábbiakkal hozhatja létre:
 

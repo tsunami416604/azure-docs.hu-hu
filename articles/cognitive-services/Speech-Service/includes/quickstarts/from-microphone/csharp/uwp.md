@@ -9,12 +9,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 04/02/2020
 ms.author: erhopf
-ms.openlocfilehash: 1c631f4dea3b182c97f11f3892dff834c7681507
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 1068f715eb80eb5b7991a5b25c71c81d26d9f3c8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81275412"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87102718"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -35,13 +35,13 @@ Első lépésként győződjön meg arról, hogy a projekt meg van nyitva a Visu
 
 Vegyünk fel egy olyan kódot, amely csontvázként működik a projekthez.
 
-1. A **megoldáskezelő**megnyitásához `MainPage.xaml`nyissa meg a t.
+1. A **megoldáskezelő**megnyitásához nyissa meg a t `MainPage.xaml` .
 
-2. A tervező XAML nézetében szúrja be a következő XAML-kódrészletet a **Grid** címkébe `<Grid>` ( `</Grid>`és között):
+2. A tervező XAML nézetében szúrja be a következő XAML-kódrészletet a **Grid** címkébe ( `<Grid>` és között `</Grid>` ):
 
    [!code-xml[UI elements](~/samples-cognitive-services-speech-sdk/quickstart/csharp/uwp/from-microphone/helloworld/MainPage.xaml#StackPanel)]
 
-3. A **megoldáskezelő**nyissa meg a kód mögötti forrásfájlt `MainPage.xaml.cs`. (Ez a következő alá `MainPage.xaml`van csoportosítva:.)
+3. A **megoldáskezelő**nyissa meg a kód mögötti forrásfájlt `MainPage.xaml.cs` . (Ez a következő alá van csoportosítva: `MainPage.xaml` .)
 
 4. Cserélje le a kódot a következő alapkóddal:
 
@@ -49,21 +49,19 @@ Vegyünk fel egy olyan kódot, amely csontvázként működik a projekthez.
 
 ## <a name="create-a-speech-configuration"></a>Beszédfelismerési konfiguráció létrehozása
 
-Az `SpeechRecognizer` objektumok inicializálásához létre kell hoznia egy olyan konfigurációt, amely az előfizetési kulcsot és az előfizetési régiót használja. Szúrja be ezt a `RecognizeSpeechAsync()` kódot a metódusba.
+Az objektumok inicializálásához `SpeechRecognizer` létre kell hoznia egy olyan konfigurációt, amely az előfizetési kulcsot és az előfizetési régiót használja. Szúrja be ezt a kódot a `SpeechRecognitionFromMicrophone_ButtonClicked()` metódusba.
 
 > [!NOTE]
-> Ez a példa a `FromSubscription()` metódust használja a `SpeechConfig`létrehozásához. Az elérhető módszerek teljes listáját lásd: [SpeechConfig osztály](https://docs.microsoft.com/dotnet/api/)[!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/uwp/from-microphone/helloworld/MainPage.xaml.cs?range=51-53)]
+> Ez a példa a metódust használja a létrehozásához `FromSubscription()` `SpeechConfig` . Az elérhető módszerek teljes listáját lásd: [SpeechConfig osztály](https://docs.microsoft.com/dotnet/api/)[!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/uwp/from-microphone/helloworld/MainPage.xaml.cs?range=51-53)]
 
 ## <a name="initialize-a-speechrecognizer"></a>SpeechRecognizer inicializálása
 
-Most hozzunk létre egy `SpeechRecognizer`. Ez az objektum egy using utasításon belül jön létre a nem felügyelt erőforrások megfelelő kiadásának biztosítása érdekében. Szúrja be ezt a `RecognizeSpeechAsync()` kódot a metódusba közvetlenül a beszédfelismerési konfiguráció alatt.
+Most hozzunk létre egy `SpeechRecognizer` . Ez az objektum egy using utasításon belül jön létre a nem felügyelt erőforrások megfelelő kiadásának biztosítása érdekében. Szúrja be ezt a kódot a `SpeechRecognitionFromMicrophone_ButtonClicked()` metódusba közvetlenül a beszédfelismerési konfiguráció alatt.
 [!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/uwp/from-microphone/helloworld/MainPage.xaml.cs?range=58,59,93)]
 
 ## <a name="recognize-a-phrase"></a>Kifejezés felismerése
 
-Az `SpeechRecognizer` objektumból meg fogja hívni a `RecognizeOnceAsync()` metódust. Ez a módszer lehetővé teszi, hogy a beszédfelismerési szolgáltatás tudja, hogy egyetlen kifejezést küld az észleléshez, és ha a kifejezést azonosította a beszédfelismerés felismerésének leállításához.
-
-A using utasításon belül adja hozzá ezt a kódot.
+Az `SpeechRecognizer` objektumból hívja meg a `RecognizeOnceAsync()` metódust. Ez a módszer lehetővé teszi, hogy a beszédfelismerési szolgáltatás tudja, hogy egyetlen kifejezést küld az észlelésre, és hogy a kifejezés azonosítása után leállítja a beszéd felismerését.
 
 [!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/uwp/from-microphone/helloworld/MainPage.xaml.cs?range=66)]
 
@@ -77,9 +75,9 @@ Ha a beszédfelismerési szolgáltatás visszaadja a felismerés eredményét, �
 
 Most már készen áll az alkalmazás létrehozására és tesztelésére.
 
-1. Az alkalmazás létrehozásához a menüsávon válassza a **Build** > **Build megoldás** elemet. A kód fordításának hiba nélkül végbe kell mennie.
+1. Az alkalmazás létrehozásához a menüsávon válassza a **Build**  >  **Build megoldás** elemet. A kód fordításának hiba nélkül végbe kell mennie.
 
-1. Az alkalmazás **indításához válassza a hibakeresés****indítása hibakeresést** (vagy nyomja le az F5 billentyűt). **F5** >  Megjelenik a **HelloWorld** ablak.
+1. **Debug**  >  Az alkalmazás indításához válassza a hibakeresés**indítása hibakeresést** (vagy nyomja le az **F5**billentyűt). Megjelenik a **HelloWorld** ablak.
 
    ![Minta UWP beszédfelismerési alkalmazás a C#-ben – gyors útmutató](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-uwp-helloworld-window.png)
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: e0f9bbf4e0d8edd153798b39f880f0adb8be6587
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 04a25b6b0b243744cc81c8b71a1f03e7c7375a68
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86502280"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87102715"
 ---
 ## <a name="understand-vm-reboots---maintenance-vs-downtime"></a>A virtuális gépek újraindításának ismertetése – karbantartás és állásidő
 Az Azure-beli virtuális gépeket három forgatókönyv befolyásolja: nem tervezett hardveres karbantartás, váratlan leállás és tervezett karbantartás.
@@ -99,7 +99,7 @@ Az [ütemezett eseményekre](https://docs.microsoft.com/azure/virtual-machines/v
 
 
 ## <a name="combine-a-load-balancer-with-availability-zones-or-sets"></a>Terheléselosztó kombinálása rendelkezésre állási zónákkal vagy készletekkel
-Egyesítse a [Azure Load Balancer](../articles/load-balancer/load-balancer-overview.md) egy rendelkezésre állási zónával, vagy állítsa be a legtöbb alkalmazás rugalmasságát. Az Azure Load Balancer több virtuális gép között osztja el a forgalmat. A Standard csomagban elérhető virtuális gépek esetében az Azure Load Balancer a csomag részét képezi. Nem mindegyik virtuális gép csomagja tartalmazza az Azure Load Balancert. A virtuális gépek terheléselosztásáról további információkért lásd a [virtuális gépek terheléselosztását](../articles/virtual-machines/virtual-machines-linux-load-balance.md) ismertető témakört.
+Egyesítse a [Azure Load Balancer](../articles/load-balancer/load-balancer-overview.md) egy rendelkezésre állási zónával, vagy állítsa be a legtöbb alkalmazás rugalmasságát. Az Azure Load Balancer több virtuális gép között osztja el a forgalmat. A Standard csomagban elérhető virtuális gépek esetében az Azure Load Balancer a csomag részét képezi. Nem mindegyik virtuális gép csomagja tartalmazza az Azure Load Balancert. A virtuális gépek terheléselosztásáról további információkért lásd a [virtuális gépek terheléselosztását](../articles/virtual-machines/linux/tutorial-load-balancer.md) ismertető témakört.
 
 Ha a terheléselosztó nem úgy van konfigurálva, hogy a terhelést elossza több virtuális gép között, a tervezett karbantartás hatással lesz az egyetlen forgalomkiszolgáló virtuális gépre, ami kimaradást okoz az alkalmazásrétegben. Ha több egy rétegbe tartozó virtuális gépet helyez egyazon terheléselosztó és rendelkezésre állási csoport alá, a forgalmat mindig legalább egy példány képes lesz kiszolgálni.
 

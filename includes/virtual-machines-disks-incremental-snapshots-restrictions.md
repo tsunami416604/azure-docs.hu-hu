@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: virtual-machines
 author: roygara
 ms.service: virtual-machines
@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 03/05/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 39a013f5f4b587137366147ade77f0be1b353c4c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f4af8a150b062526f08c1d15581ec26e2fe12d8c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82204486"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87102711"
 ---
 - A növekményes Pillanatképek jelenleg nem helyezhetők át az előfizetések között.
 - Jelenleg csak egy adott pillanatkép-családhoz tartozó SAS URI-k hozhatók létre akár öt pillanatképből.
 - Nem hozható létre növekményes pillanatkép a lemez előfizetésén kívüli adott lemezhez.
 - A lemezenként legfeljebb hét növekményes pillanatkép hozható létre 5 percenként.
 - Egyetlen lemezhez összesen 200 növekményes pillanatkép hozható létre.
-- A 4 TB-os határon belül a szülő lemez méretének változása előtt és után elvégzett Pillanatképek közötti változások nem olvashatók be. Újra le kell töltenie az átméretezés után létrehozott pillanatkép teljes másolatát. Ezt követően a 4 TB-os határ közötti átméretezés után létrehozott Pillanatképek közötti változásokat is beolvashatja. 
+- Nem lehet lekérdezni a pillanatképek közötti módosításokat, és azt követően, hogy módosította a szülő lemez méretét 4 TB-os határon belül. Tegyük fel például, hogy egy növekményes pillanatkép-pillanatkép – a, ha a lemez mérete 2 TB volt. Most megnövelte a lemez méretét 6 TB-ra, majd újabb növekményes pillanatkép-pillanatképet (b) vett fel. A Snapshot-a és a Snapshot-b közötti módosításokat nem lehet lekérni. Újra le kell töltenie az átméretezés után létrehozott pillanatkép-b teljes másolatát. Ezt követően a Snapshot-b és a Snapshot-b után létrehozott Pillanatképek közötti változásokat is beolvashatja. 

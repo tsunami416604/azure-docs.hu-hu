@@ -3,15 +3,16 @@ title: A Application Insights kibocsátási megjegyzései | Microsoft Docs
 description: Adja hozzá az üzembe helyezést, vagy készítsen jelölőket a metrikák Explorer diagramjaihoz Application Insights.
 ms.topic: conceptual
 ms.date: 07/01/2019
-ms.openlocfilehash: 0ad773ca6a7102ac718d43dfbbf6a4f834e681a0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8f6ffed8ae2039ec36ec8bd86518e6b359da65ec
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81010719"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87093034"
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>Jegyzetek a metrikus diagramokon Application Insights
 
-A jegyzetek megmutatják, hol telepített egy új buildet vagy más jelentős eseményt. A jegyzetek segítségével egyszerűen megtekintheti, hogy a módosítások hatással voltak-e az alkalmazás teljesítményére. Ezek automatikusan létrehozhatók az Azure- [folyamatok](https://docs.microsoft.com/azure/devops/pipelines/tasks/) Build rendszerével. Megjegyzéseket is létrehozhat, hogy minden olyan eseményt megjelölni, amelyet a PowerShellből hoz létre.
+A jegyzetek megmutatják, hol telepített egy új buildet vagy más jelentős eseményt. A jegyzetek segítségével egyszerűen megtekintheti, hogy a módosítások hatással voltak-e az alkalmazás teljesítményére. Ezek automatikusan létrehozhatók az Azure- [folyamatok](/azure/devops/pipelines/tasks/) Build rendszerével. Megjegyzéseket is létrehozhat, hogy minden olyan eseményt megjelölni, amelyet a PowerShellből hoz létre.
 
 ## <a name="release-annotations-with-azure-pipelines-build"></a>Kiadási jegyzetek az Azure-folyamatok létrehozásával
 

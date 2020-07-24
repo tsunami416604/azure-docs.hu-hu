@@ -4,11 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/15/2020
 ms.author: trbye
-ms.openlocfilehash: a46efdc1ca1391e5a8002bacca6a86b4d82eae96
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: bb7bc07bf7aa24af5ed45a5615457d71b3173868
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86035633"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87102746"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -24,18 +25,21 @@ class="docon docon-navigate-external x-hidden-focus"></span></a>
 
 Emellett a cél környezettől függően a következők egyikét használja:
 
+# <a name="script"></a>[parancsfájl](#tab/script)
+
+Töltse le és csomagolja ki a <a href="https://aka.ms/csspeech/jsbrowserpackage" target="_blank">JavaScript <span class="docon docon-navigate-external x-hidden-focus"></span> </a> *microsoft.cognitiveservices.speech.sdk.bundle.js* -fájlhoz készült Speech SDK-t, és helyezze el a HTML-fájl számára elérhető mappába.
+
+```html
+<script src="microsoft.cognitiveservices.speech.sdk.bundle.js"></script>;
+```
+
+> [!TIP]
+> Ha webböngészőt céloz meg, és a `<script>` címkét használja, az `sdk` előtag nem szükséges. Az `sdk` előtag a modul elnevezésére szolgáló alias `require` .
+
 # <a name="import"></a>[importálása](#tab/import)
 
 ```javascript
-import {
-    AudioConfig,
-    CancellationDetails,
-    CancellationReason,
-    PhraseListGrammar,
-    ResultReason,
-    SpeechConfig,
-    SpeechRecognizer
-} from "microsoft-cognitiveservices-speech-sdk";
+import * from "microsoft-cognitiveservices-speech-sdk";
 ```
 
 További információ `import` : <a href="https://javascript.info/import-export" target="_blank">Exportálás és <span class="docon docon-navigate-external x-hidden-focus"></span> Importálás </a>.
@@ -47,18 +51,6 @@ const sdk = require("microsoft-cognitiveservices-speech-sdk");
 ```
 
 További információ `require` : <a href="https://nodejs.org/en/knowledge/getting-started/what-is-require/" target="_blank">Mi a szükséges <span class="docon docon-navigate-external x-hidden-focus"></span> ? </a>.
-
-
-# <a name="script"></a>[parancsfájl](#tab/script)
-
-Töltse le és csomagolja ki a <a href="https://aka.ms/csspeech/jsbrowserpackage" target="_blank">JavaScript <span class="docon docon-navigate-external x-hidden-focus"></span> </a> *microsoft.cognitiveservices.speech.sdk.bundle.js* -fájlhoz készült Speech SDK-t, és helyezze el a HTML-fájl számára elérhető mappába.
-
-```html
-<script src="microsoft.cognitiveservices.speech.sdk.bundle.js"></script>;
-```
-
-> [!TIP]
-> Ha webböngészőt céloz meg, és a `<script>` címkét használja, az `sdk` előtag nem szükséges. Az `sdk` előtag a modul elnevezésére szolgáló alias `require` .
 
 ---
 

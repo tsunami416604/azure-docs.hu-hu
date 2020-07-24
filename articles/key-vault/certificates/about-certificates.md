@@ -10,14 +10,14 @@ ms.subservice: certificates
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 5e014634ecb251f05710de16daee30d72dae619e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 74007f5d10d58cf9680d4531304098cabe9b6d8b
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81685895"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87115675"
 ---
-# <a name="about-azure-key-vault-certificates"></a>Tudnivalók Azure Key Vault tanúsítványokról
+# <a name="about-azure-key-vault-certificates"></a>Információk az Azure Key Vault-tanúsítványokról
 
 Key Vault tanúsítványok támogatása biztosítja a x509-tanúsítványok kezelését, valamint a következő viselkedéseket:  
 
@@ -66,7 +66,7 @@ A válaszban további írásvédett attribútumok is szerepelnek:
 -   *NBF*: IntDate: a x509-tanúsítvány dátumának értékét tartalmazza.  
 
 > [!Note] 
-> Ha egy Key Vault-tanúsítvány lejár, az megcímezhető kulcs, és a titkos kód inműködőképes lesz.  
+> Ha egy Key Vault-tanúsítvány lejár, az ahhoz tartozó címezhető kulcs és titkos kulcs nem fog működni.  
 
 ### <a name="tags"></a>Címkék
 
@@ -81,10 +81,10 @@ A tanúsítvány-szabályzat a Key Vault-tanúsítványok életciklusának létr
 
 Ha egy Key Vault-tanúsítvány teljesen létre lett hozva, a szabályzatot meg kell adni. A házirend meghatározza, hogyan kell létrehozni ezt a Key Vault-tanúsítvány verzióját vagy a következő Key Vault-tanúsítvány verzióját. A szabályzat létrehozása után a későbbi verziókhoz nem szükséges egymást követő létrehozási művelet. Egy Key Vault-tanúsítvány összes verziójához csak egy példány van.  
 
-A tanúsítvány-házirend magas szinten a következő információkat tartalmazza:  
+A tanúsítvány-házirend magas szinten a következő adatokat tartalmazza (a definíciók [itt](https://docs.microsoft.com/powershell/module/az.keyvault/set-azkeyvaultcertificatepolicy?view=azps-4.4.0)találhatók):  
 
 -   X509 tanúsítvány tulajdonságai: a tulajdonos nevét, a tulajdonos alternatív neveit, valamint az X509-tanúsítványkérelem létrehozásához használt egyéb tulajdonságokat tartalmazza.  
--   Kulcs tulajdonságai: a kulcs típusát, a kulcs hosszát, az exportálható és a kulcs újrafelhasználására szolgáló mezőket tartalmazza. Ezek a mezők a Key vaultot tájékoztatják a kulcsok létrehozásáról.  
+-   Kulcs tulajdonságai: kulcs típusát, kulcs hosszát, exportálható és ReuseKeyOnRenewal mezőket tartalmaz. Ezek a mezők a Key vaultot tájékoztatják a kulcsok létrehozásáról.  
 -   Titkos kód tulajdonságai: olyan titkos tulajdonságokat tartalmaz, mint például a címezhető titok tartalomtípusa a titkos érték létrehozásához, a tanúsítvány titkosként való lekéréséhez.  
 -   Élettartam-műveletek: a KV-os tanúsítvány élettartamának műveleteit tartalmazza. Minden élettartam-művelet tartalmazza a következőket:  
 
@@ -101,14 +101,14 @@ A következő táblázat a x509-használati szabályzat hozzárendelését mutat
 
 |**X509-használat jelzői**|**Key Vault Key Ops**|**Alapértelmezett viselkedés**|
 |----------|--------|--------|
-|DataEncipherment|titkosítás, visszafejtés| N/A |
-|DecipherOnly|visszafejteni| N/A  |
+|DataEncipherment|titkosítás, visszafejtés| n.a. |
+|DecipherOnly|visszafejteni| n.a.  |
 |DigitalSignature|aláírás, ellenőrzés| Key Vault alapértelmezett beállítás a tanúsítvány létrehozási idejének használati specifikációja nélkül | 
-|EncipherOnly|encrypt| N/A |
-|KeyCertSign|aláírás, ellenőrzés|N/A|
+|EncipherOnly|encrypt| n.a. |
+|KeyCertSign|aláírás, ellenőrzés|n.a.|
 |KeyEncipherment|wrapKey, unwrapKey| Key Vault alapértelmezett beállítás a tanúsítvány létrehozási idejének használati specifikációja nélkül | 
-|Letagadhatatlanság nyújtására|aláírás, ellenőrzés| N/A |
-|crlsign|aláírás, ellenőrzés| N/A |
+|Letagadhatatlanság nyújtására|aláírás, ellenőrzés| n.a. |
+|crlsign|aláírás, ellenőrzés| n.a. |
 
 ## <a name="certificate-issuer"></a>Tanúsítvány kiállítója
 
@@ -150,7 +150,7 @@ Ha a tanúsítvány házirendje automatikus megújításra van beállítva, akko
 
 ## <a name="certificate-access-control"></a>Tanúsítvány Access Control
 
- A tanúsítványok hozzáférés-vezérlését Key Vault kezeli, és a tanúsítványokat tartalmazó Key Vault nyújtja. A tanúsítványok hozzáférés-vezérlési házirendje különbözik az azonos Key Vault található kulcsok és titkok hozzáférés-vezérlési házirendjeitől. A felhasználók egy vagy több tárolót hozhatnak létre a tanúsítványok tárolására, a forgatókönyvek megfelelő szegmentálásának és a tanúsítványok kezelésének fenntartása érdekében.  
+ A tanúsítványok hozzáférés-vezérlését a Key Vault kezeli, és az adott tanúsítványokat tartalmazó Key Vault biztosítja. A tanúsítványok hozzáférés-vezérlési házirendje különbözik az azonos Key Vault található kulcsok és titkok hozzáférés-vezérlési házirendjeitől. A felhasználók egy vagy több tárolót hozhatnak létre a tanúsítványok tárolására, a forgatókönyvek megfelelő szegmentálásának és a tanúsítványok kezelésének fenntartása érdekében.  
 
  A következő engedélyek a Key Vault Secrets hozzáférés-vezérlési bejegyzésében, és a titkos objektumon engedélyezett műveletek részletes tükrözése céljából használhatók:  
 

@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 04/24/2020
+ms.date: 07/17/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: c37c5a125bce23f8f2a813b5df4516323c2a2c12
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 2ef1fab7a6f32f45ee3047a24610085a2133a339
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83343446"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87102714"
 ---
 ## <a name="benefits-of-managed-disks"></a>A felügyelt lemezek előnyei
 
@@ -45,22 +45,30 @@ Az [Azure szerepköralapú hozzáférés-vezérlés (RBAC)](../articles/role-bas
 
 ### <a name="upload-your-vhd"></a>Töltse fel a VHD-t
 
- A közvetlen feltöltéssel könnyedén átviheti a virtuális merevlemezt egy Azure-beli felügyelt lemezre. Korábban egy olyan folyamatot kellett követnie, amely a Storage-fiókban tárolt adatait tartalmazza. Most kevesebb lépést kell megtennie. Könnyebb feltölteni a helyszíni virtuális gépeket az Azure-ba, feltöltve a nagyméretű felügyelt lemezekre, és a biztonsági mentési és visszaállítási folyamat egyszerűbbé válik. Emellett csökkenti a költségeket azzal, hogy lehetővé teszi az adatok feltöltését a felügyelt lemezekre közvetlenül anélkül, hogy a virtuális gépekhez csatlakoztatná őket. A közvetlen feltöltéssel akár 32 TiB méretig is feltöltheti a virtuális merevlemezeket.
+A közvetlen feltöltéssel könnyedén átviheti a virtuális merevlemezt egy Azure-beli felügyelt lemezre. Korábban egy olyan folyamatot kellett követnie, amely a Storage-fiókban tárolt adatait tartalmazza. Most kevesebb lépést kell megtennie. Könnyebb feltölteni a helyszíni virtuális gépeket az Azure-ba, feltöltve a nagyméretű felügyelt lemezekre, és a biztonsági mentési és visszaállítási folyamat egyszerűbbé válik. Emellett csökkenti a költségeket azzal, hogy lehetővé teszi az adatok feltöltését a felügyelt lemezekre közvetlenül anélkül, hogy a virtuális gépekhez csatlakoztatná őket. A közvetlen feltöltéssel akár 32 TiB méretig is feltöltheti a virtuális merevlemezeket.
 
- A VHD-k Azure-ba történő átviteléről a [parancssori](../articles/virtual-machines/linux/disks-upload-vhd-to-managed-disk-cli.md) felület vagy a [PowerShell](../articles/virtual-machines/windows/disks-upload-vhd-to-managed-disk-powershell.md) cikkeiben talál további információt.
+A VHD-k Azure-ba történő átviteléről a [parancssori](../articles/virtual-machines/linux/disks-upload-vhd-to-managed-disk-cli.md) felület vagy a [PowerShell](../articles/virtual-machines/windows/disks-upload-vhd-to-managed-disk-powershell.md) cikkeiben talál további információt.
 
-## <a name="encryption"></a>Titkosítás
+## <a name="security"></a>Biztonság
+
+### <a name="private-links"></a>Privát hivatkozások
+
+A felügyelt lemezek támogatják a privát hivatkozások használatával a felügyelt lemez belső hálózatra történő importálását vagy exportálását. A magánhálózati hivatkozások lehetővé teszik, hogy egy idő kötött közös hozzáférésű aláírás (SAS) URI-t állítson elő a nem csatlakoztatott felügyelt lemezekhez és pillanatképekhez, amelyek segítségével exportálhatja az egyéb régiókba a regionális terjeszkedés, a vész-helyreállítás és a kriminalisztikai elemzés céljából. A SAS URI használatával közvetlenül is feltölthet egy virtuális merevlemezt egy üres lemezre a helyszínen. Most már felhasználhatja a [privát hivatkozásokat](../articles/private-link/private-link-overview.md) a felügyelt lemezek exportálásának és importálásának korlátozására, hogy az csak az Azure-beli virtuális hálózaton belül is megtörténjen. A privát hivatkozások segítségével biztosíthatja, hogy az adatai csak a biztonságos Microsoft gerinc-hálózatban legyenek elérhetők.
+
+A felügyelt lemezek importálására és exportálására szolgáló privát hivatkozások engedélyezéséről a [CLI](../articles/virtual-machines/linux/disks-export-import-private-links-cli.md) -vagy [portál](../articles/virtual-machines/disks-enable-private-links-for-import-export-portal.md) cikkeiben talál további információt.
+
+### <a name="encryption"></a>Titkosítás
 
 A felügyelt lemezek két különböző típusú titkosítást kínálnak. Az első a kiszolgálóoldali titkosítás (SSE), amelyet a Storage szolgáltatás hajt végre. A második Azure Disk Encryption (ADE), amelyet engedélyezheti a virtuális gépek operációsrendszer-és adatlemezei számára.
 
-### <a name="server-side-encryption"></a>Kiszolgálóoldali titkosítás
+#### <a name="server-side-encryption"></a>Kiszolgálóoldali titkosítás
 
-Az [Azure kiszolgálóoldali titkosítása](../articles/virtual-machines/windows/disk-encryption.md) titkosítást biztosít, és biztosítja az adatok védelmét a szervezeti biztonsági és megfelelőségi kötelezettségek teljesítése érdekében. A kiszolgálóoldali titkosítás alapértelmezés szerint engedélyezve van minden felügyelt lemez, pillanatkép és lemezkép esetében az összes olyan régióban, ahol a felügyelt lemezek elérhetők. (Az ideiglenes lemezeket a Storage Service Encryption nem titkosítja, a [lemez szerepkörei: ideiglenes lemezek](#temporary-disk)című részben.
+A kiszolgálóoldali titkosítás titkosítást biztosít, és biztosítja az adatok védelmét a szervezeti biztonsági és megfelelőségi kötelezettségek teljesítése érdekében. A kiszolgálóoldali titkosítás alapértelmezés szerint engedélyezve van minden felügyelt lemez, pillanatkép és lemezkép esetében az összes olyan régióban, ahol a felügyelt lemezek elérhetők. (Előfordulhat, hogy az ideiglenes lemezek nem a kiszolgálóoldali titkosítással vannak titkosítva, kivéve, ha engedélyezi a titkosítást a gazdagépen; a [lemez szerepkörei: ideiglenes lemezek](#temporary-disk).
 
-Engedélyezheti az Azure-nak, hogy kezelje a kulcsait, ezek a platform által felügyelt kulcsok, vagy saját maguk is kezelhetik a kulcsokat, ezek az ügyfél által felügyelt kulcsok. További részletekért látogasson el a [Managed Disks GYIK oldalára](../articles/virtual-machines/windows/faq-for-disks.md#managed-disks-and-storage-service-encryption) .
+Engedélyezheti az Azure-nak, hogy kezelje a kulcsait, ezek a platform által felügyelt kulcsok, vagy saját maguk is kezelhetik a kulcsokat, ezek az ügyfél által felügyelt kulcsok. A részletekért látogasson el [Azure Disk Storage-cikk kiszolgálóoldali titkosítására](../articles/virtual-machines/windows/disk-encryption.md) .
 
 
-### <a name="azure-disk-encryption"></a>Azure Disk Encryption
+#### <a name="azure-disk-encryption"></a>Azure Disk Encryption
 
 Azure Disk Encryption lehetővé teszi a IaaS virtuális gépek által használt operációs rendszer és adatlemezek titkosítását. Ez a titkosítás felügyelt lemezeket tartalmaz. A Windows rendszerben a meghajtók titkosítása az iparági szabványnak megfelelő BitLocker titkosítási technológiával történik. A Linux rendszerben a lemezek titkosítása a DM-Crypt technológiával történik. A titkosítási folyamat integrálva van az Azure Key Vaulttal, így vezérelheti és felügyelheti a lemeztitkosítási kulcsokat. További információ: [Azure Disk Encryption Linux rendszerű virtuális gépekhez](../articles/virtual-machines/linux/disk-encryption-overview.md) vagy [Azure Disk Encryption Windows rendszerű virtuális gépekhez](../articles/virtual-machines/windows/disk-encryption-overview.md).
 
@@ -82,9 +90,9 @@ A lemez maximális kapacitása 2 048 GiB.
 
 ### <a name="temporary-disk"></a>Ideiglenes lemez
 
-Minden virtuális gép tartalmaz egy ideiglenes lemezt, amely nem felügyelt lemez. Az ideiglenes lemez rövid távú tárolást biztosít az alkalmazások és folyamatok számára, és kizárólag az olyan adattárolást célozza meg, mint például az oldal vagy a lapozófájlok. Előfordulhat, hogy az ideiglenes lemezen lévő adatvesztés egy [karbantartási esemény](../articles/virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime) bekövetkezésekor vagy [egy virtuális gép újratelepítése](../articles/virtual-machines/troubleshooting/redeploy-to-new-node-windows.md?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json)során elvész. A virtuális gép sikeres újraindítása során az ideiglenes lemezen tárolt adatmennyiség továbbra is fennáll.  
+Minden virtuális gép tartalmaz egy ideiglenes lemezt, amely nem felügyelt lemez. Az ideiglenes lemez rövid távú tárolást biztosít az alkalmazások és folyamatok számára, és kizárólag az olyan adattárolást célozza meg, mint például az oldal vagy a lapozófájlok. Előfordulhat, hogy az ideiglenes lemezen lévő adatvesztés egy [karbantartási esemény](../articles/virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime) vagy [egy virtuális gép újratelepítése](../articles/virtual-machines/troubleshooting/redeploy-to-new-node-windows.md?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json)során elvész. A virtuális gép sikeres újraindítása során az ideiglenes lemezen tárolt adatmennyiség továbbra is fennáll.  
 
-Az Azure Linux rendszerű virtuális gépeken az ideiglenes lemez általában/dev/sdb, és a Windows rendszerű virtuális gépeken az ideiglenes lemez alapértelmezés szerint D:. Az ideiglenes lemezt a kiszolgálóoldali titkosítás nem titkosítja (lásd: [titkosítás](#encryption)).
+Az Azure Linux rendszerű virtuális gépeken az ideiglenes lemez általában/dev/sdb, és a Windows rendszerű virtuális gépeken az ideiglenes lemez alapértelmezés szerint D:. Az ideiglenes lemezt a kiszolgálóoldali titkosítás nem titkosítja, kivéve, ha engedélyezi a titkosítást a gazdagépen.
 
 ## <a name="managed-disk-snapshots"></a>Felügyelt lemezek pillanatképei
 

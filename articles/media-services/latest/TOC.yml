@@ -52,7 +52,7 @@
   items:
     - name: Media Services v3-minták
       displayName: '.NET, Java'
-      href: 'https://docs.microsoft.com/samples/browse/?products=azure-media-services'
+      href: /samples/browse/?products=azure-media-services
     - name: Media Services v3 REST-minták
       href: 'https://github.com/Azure-Samples/media-services-v3-rest-postman'
 - name: Alapelvek
@@ -197,9 +197,6 @@
         - name: Igény szerinti videó
           displayName: 'failover, bcdr, HA, high availability'
           href: media-services-high-availability-encoding.md
-        - name: Streamelés
-          displayName: 'failover, bcdr, HA, high availability'
-          href: media-services-high-availability-streaming.md
     - name: Hibaelhárítás
       items:
         - name: Gyakori kérdések
@@ -376,8 +373,8 @@
         - name: Python
           href: 'https://aka.ms/ams-v3-python-ref'
         - name: Node.js
-          href: 'https://docs.microsoft.com/javascript/api/overview/azure/mediaservices/management'
-        - name: Indítás
+          href: /javascript/api/overview/azure/mediaservices/management
+        - name: Go
           href: 'https://aka.ms/ams-v3-go-ref'
     - name: Resource Manager-sablon
       href: /azure/templates/microsoft.media/allversions

@@ -1,18 +1,19 @@
 ---
-title: Nagyítási szintek és csempék rácsa | Microsoft Azure térképek
+title: Nagyítási szintek és csempék rácsa Microsoft Azure térképeken
 description: Ebben a cikkben megismerheti a nagyítási szinteket és a csempéket Microsoft Azure Maps-ben.
-author: Philmea
-ms.author: philmea
-ms.date: 01/22/2020
+author: anastasia-ms
+ms.author: v-stharr
+ms.date: 07/14/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: ''
-ms.openlocfilehash: b7dde6e1a77cebd1e88cc574d99e781ab55f0934
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+manager: philmea
+ms.openlocfilehash: 9493ad21847cca230606ff1641c9ac02c3355f53
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83123904"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87093051"
 ---
 # <a name="zoom-levels-and-tile-grid"></a>Nagyítási szintek és csemperács
 
@@ -23,15 +24,11 @@ Azure Maps használja a gömb Mercator vetítési koordináta-rendszerrel (EPSG:
 
 A Térkép lekérésének és megjelenítésének teljesítményének optimalizálása érdekében a Térkép szögletes csempére van osztva. A Azure Maps SDK olyan csempét használ, amelynek mérete 512 x 512 képpont, valamint kisebb 256 x 256 képpont a műholdas képekhez. A Azure Maps raszteres és vektoros csempéket biztosít 23 nagyítási szinthez, 0 és 22 közötti számmal. A 0. nagyítási szinten a teljes világ egyetlen csempére illeszkedik:
 
-<center>
-
-![Globális Térkép csempe](./media/zoom-levels-and-tile-grid/world0.png)</center>
+:::image type="content" source="./media/zoom-levels-and-tile-grid/world0.png" alt-text="Globális Térkép csempe":::
 
 A nagyítási szint 1 négy csempét használ a világ megjelenítéséhez: 2 x 2 négyzet
 
-<center>
-
-![2x2-es Térkép csempe elrendezése](media/zoom-levels-and-tile-grid/map-2x2-tile-layout.png)</center>
+:::image type="content" source="./media/zoom-levels-and-tile-grid/map-2x2-tile-layout.png" alt-text="2x2-es Térkép csempe elrendezése":::
 
 Minden további nagyítási szint quad – elosztja az előző csempéket, és létrehoz egy 2.<sup>zoom</sup> x 2<sup>nagyítású</sup>rácsot. A 22-es nagyítási szint a 2<sup>22</sup> x 2<sup>22</sup>vagy 4 194 304 x 4 194 304 csempe (17 592 186 044 416 csempék összesen).
 
@@ -79,11 +76,7 @@ var mapHeight = mapWidth;
 
 Mivel a Térkép szélessége és magassága eltér a nagyítási szinttől, a képpontok koordinátáit is használják. A térkép bal felső sarkában található képpontnak mindig van képpont-koordinátái (0, 0). A Térkép jobb alsó sarkában található pixel koordinátái *(width-1, height-1)*, vagy az előző szakaszban szereplő egyenletekre utalnak *(tileSize \* 2<sup>Nagyítás</sup>– 1, tileSize \* 2<sup>Nagyítás</sup>– 1)*. Például, ha a 2. szinten a 512 négyzet alakú csempéket használja, a képpont koordinátái (0, 0) és (2047, 2047) közé esnek, a következőhöz hasonlóan:
 
-<center>
-
-![Képpont dimenziókat ábrázoló Térkép](media/zoom-levels-and-tile-grid/map-width-height.png)
-
-</center>
+:::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/map-width-height.png" alt-text="Képpont dimenziókat ábrázoló Térkép":::
 
 A szélességi és a hosszúsági fok, valamint a részletesség szintje a képpont XY koordinátáit a következőképpen számítja ki:
 
@@ -109,9 +102,7 @@ var numberOfTilesHigh = numberOfTilesWide;
 
 Az egyes csempék a bal felső sarokban (0, 0) kezdve az XY koordinátákat adják meg *(2<sup>Nagyítás</sup>– 1, 2<sup>Nagyítás</sup>– 1)* a jobb alsó sarokban. A 2. nagyítási szint esetében például a csempe a következőtől kezdve a (0, 0) és a (7, 7) közötti tartomány koordinátáit követi:
 
-<center>
-
-![Csempe koordinátáinak térképe](media/zoom-levels-and-tile-grid/map-tiles-x-y-coordinates-7x7.png)</center>
+:::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/map-tiles-x-y-coordinates-7x7.png" alt-text="Csempe koordinátáinak térképe":::
 
 A képpont XY koordinátáinak pár pontja alapján könnyedén meghatározható az adott képpontot tartalmazó csempe XY koordinátái:
 
@@ -125,17 +116,13 @@ A csempéket a nagyítási szint hívja meg. Az x és y koordináták megfelelne
 
 A használni kívánt nagyítási szint meghatározásakor ügyeljen arra, hogy az egyes helyek rögzített pozícióban legyenek a csempén. Ennek eredményeképpen az adott kiterjedésű terület megjelenítéséhez szükséges csempék száma a globális Térkép nagyítási rácsának adott elhelyezésén múlik. Ha például két pont 900 méter távolságra van, akkor csak három csempével *lehet* megjeleníteni a 17. nagyítási szinten közöttük lévő útvonalat. Ha azonban a nyugati pont a csempe jobb oldalán található, a csempe bal oldalán lévő keleti pont pedig négy csempét tartalmazhat:
 
-<center>
-
-![Nagyítási bemutató méretezése](media/zoom-levels-and-tile-grid/zoomdemo_scaled.png)</center>
+:::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/zoomdemo_scaled.png" alt-text="Nagyítási bemutató méretezése":::
 
 A nagyítási szint meghatározása után az x és az y értékeket is kiszámíthatja. Az egyes nagyítási rácsok bal felső csempe x = 0, y = 0; a jobb alsó csempe x = 2<sup>Nagyítás-1</sup>, y = 2<sup>zoom-1</sup>.
 
 Itt látható az 1. nagyítási szint nagyítási rácsa:
 
-<center>
-
-![1. nagyítási szint nagyítási rácsa](media/zoom-levels-and-tile-grid/api_x_y.png)</center>
+:::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/api_x_y.png" alt-text="1. nagyítási szint nagyítási rácsa":::
 
 ## <a name="quadkey-indices"></a>Quadkey indexek
 
@@ -156,9 +143,7 @@ quadkey = 100111 (base 2) = 213 (base 4) = "213"
 
 `Qquadkeys`több érdekes tulajdonsága van. Első lépésként a `quadkey` (számjegyek száma) a megfelelő csempe nagyítási szintjét egyenlővé kell tennie. Másodszor, a `quadkey` csempék a `quadkey` szülő csempével kezdődnek (az előző szinten található csempét tartalmazó csempe). Ahogy az alábbi példában is látható, a csempe 2 a 20 és 23 közötti csempe szülőjének:
 
-<center>
-
-![Quadkey csempe piramis](media/zoom-levels-and-tile-grid/quadkey-tile-pyramid.png)</center>
+:::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/quadkey-tile-pyramid.png" alt-text="Quadkey csempe piramis":::
 
 Végül `quadkeys` adjon meg egy egydimenziós index-kulcsot, amely általában megőrzi a csempék közelségét az XY térben. Ez azt jelenti, hogy két, az XY koordinátákat tartalmazó csempének általában viszonylag közel kell lennie `quadkeys` egymáshoz. Ez azért fontos, hogy optimalizálja az adatbázis teljesítményét, mivel a szomszédos csempéket gyakran kérik a csoportokban, és érdemes megtartani ezeket a csempéket ugyanarra a lemezre, hogy a lemezes olvasások számát csökkenteni lehessen.
 

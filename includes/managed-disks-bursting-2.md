@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: virtual-machines
 author: albecker1
 ms.service: virtual-machines
@@ -8,13 +8,14 @@ ms.topic: include
 ms.date: 04/27/2020
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: 0b278841fc3693d79821d25caf7c9a208341dea1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cc0dd5e76227c0814659b74afc2ac46c8ca4de73
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85242159"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87102713"
 ---
-## <a name="common-scenarios"></a>Gyakori helyzetek
+## <a name="common-scenarios"></a>Gyakori forgatókönyvek
 A következő forgatókönyvek nagy mértékben kihasználhatják a betörést:
 - A **rendszerindítási időpontok javítása** – a betörést követően a példány jelentősen gyorsabb ütemben fog indulni. A Premium-kompatibilis virtuális gépek alapértelmezett operációsrendszer-lemeze például a P4-lemez, amely legfeljebb 120 IOPS és 25 MB/s kiépített teljesítményű. A Betöréssel a P4 akár 3500 IOPS-t és 170 MB/s-ot is biztosít, ami lehetővé teszi a rendszerindítási időt a 6X felgyorsításához.
 - **Kötegelt feladatok feldolgozása** – egyes alkalmazások számítási feladatai ciklikus jellegűek, és az idő nagy részében alapvető teljesítményt igényelnek, és rövid időn belül nagyobb teljesítményt igényelnek. Erre példa egy olyan könyvelési program, amely naponta dolgozza fel a tranzakciókat, amelyek kis mennyiségű lemezterületet igényelnek. A hónap végén a olyan jelentések egyeztetését végzi el, amelyek sokkal nagyobb mennyiségű lemezes forgalmat igényelnek.
@@ -27,7 +28,7 @@ A feltört kreditrendszer a virtuális gép szintjén és a lemez szintjén is a
 
 ![Feltört gyűjtő diagramja](media/managed-disks-bursting/bucket-diagram.jpg)
 
-Akár egészen addig, ahogy szeretné, hogy a 30 perces kitörést kívánja használni. Akár 30 percet is igénybe vehet a nap folyamán, vagy szórványosan. A termék üzembe helyezése után a rendszer készen áll a teljes kreditek kiszámítására és a kreditek elvégzésére, amely egy napnál kevesebb időt vesz igénybe. Saját belátása szerint felhalmozhatja és elköltheti a feltört krediteket, és a 30 perces gyűjtőnek nem kell megismételni a feltört időt. Az egyik dolog, ami azt jelzi, hogy a burst felhalmozódása különbözik az egyes erőforrásoktól, mert a használaton kívüli IOPS, valamint a teljesítményük alatti MB/s értéken alapul. Ez azt jelenti, hogy a magasabb alapszintű teljesítményű termékek az alacsonyabb alapkonfigurációt használó termékeknél gyorsabban felmerülhetnek a feltört mennyiségű terméknél. Egy tevékenység nélküli P1 lemez üresjárati ideje például 120 IOPS, míg a P20-lemezek másodpercenként 2 300 IOPS-t kapnak, és tevékenység nélkül üresjáratban vannak.
+Akár egészen addig, ahogy szeretné, hogy a 30 perces kitörést kívánja használni. Akár 30 percet is igénybe vehet a nap folyamán, vagy szórványosan. A termék üzembe helyezése után a rendszer készen áll a teljes értékű kreditekre, és ha a kreditek elvégzése egy napnál kevesebb időt vesz igénybe, a kreditek teljes összegét újra fel kell venni. Saját belátása szerint felhalmozhatja és elköltheti a feltört krediteket, és a 30 perces gyűjtőnek nem kell megismételni a feltört időt. Az egyik dolog, ami azt jelzi, hogy a burst felhalmozódása különbözik az egyes erőforrásoktól, mert a használaton kívüli IOPS, valamint a teljesítményük alatti MB/s értéken alapul. Ez azt jelenti, hogy a magasabb alapszintű teljesítményű termékek az alacsonyabb alapkonfigurációt használó termékeknél gyorsabban felmerülhetnek a feltört mennyiségű terméknél. Egy tevékenység nélküli P1 lemez üresjárati ideje például 120 IOPS, míg a P20-lemezek másodpercenként 2 300 IOPS-t kapnak, és tevékenység nélkül üresjáratban vannak.
 
 ## <a name="bursting-states"></a>Feltört állapotok
 Három állapottal rendelkezhet, ha az erőforrás a kitört állapotban van:

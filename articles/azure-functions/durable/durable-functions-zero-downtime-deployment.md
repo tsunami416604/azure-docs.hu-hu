@@ -6,16 +6,16 @@ ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: azfuncdf
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 45f87898f7da432e5bdd09061e74c33a1a8fe41b
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 11bbc30179cc27f4799b1fd2869cb312dfa34473
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86165702"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87093068"
 ---
 # <a name="zero-downtime-deployment-for-durable-functions"></a>Nulla – állásidő üzembe helyezése Durable Functions
 
-A Durable Functions [megbízható végrehajtási modellje](durable-functions-checkpointing-and-replay.md) megköveteli, hogy a determinisztikus legyenek, ami egy további, a frissítések központi telepítésekor megfontolandó kihívást hoz létre. Ha egy központi telepítés a tevékenységi függvények aláírásait vagy a Orchestrator logikát tartalmazza, a fedélzeti előkészítési példányok meghiúsulnak. Ez a helyzet különösen a hosszan futó munkafolyamatok példányai esetében jelent problémát, amely órákat vagy munkanapokat is jelenthet.
+A Durable Functions [megbízható végrehajtási modellje](./durable-functions-orchestrations.md) megköveteli, hogy a determinisztikus legyenek, ami egy további, a frissítések központi telepítésekor megfontolandó kihívást hoz létre. Ha egy központi telepítés a tevékenységi függvények aláírásait vagy a Orchestrator logikát tartalmazza, a fedélzeti előkészítési példányok meghiúsulnak. Ez a helyzet különösen a hosszan futó munkafolyamatok példányai esetében jelent problémát, amely órákat vagy munkanapokat is jelenthet.
 
 A hibák megelőzése érdekében két lehetőség közül választhat: 
 - Késleltetheti az üzembe helyezést, amíg az összes futó előkészítési példány be nem fejeződik.
@@ -52,7 +52,7 @@ A forgatókönyv beállításához kövesse az alábbi eljárást.
 
 1. Az egyes tárolóhelyek esetében állítsa be a [AzureWebJobsStorage alkalmazás beállítását](../functions-app-settings.md#azurewebjobsstorage) egy megosztott Storage-fiók kapcsolódási karakterláncára. Ezt a Storage-fiókhoz tartozó kapcsolási karakterláncot a Azure Functions futtatókörnyezet használja. Ezt a fiókot a Azure Functions futtatókörnyezet használja, és kezeli a függvény kulcsait.
 
-1. Az egyes tárolóhelyek esetében hozzon létre egy új alkalmazást, például: `DurableManagementStorage` . Állítsa az értékét a különböző Storage-fiókok kapcsolati karakterláncára. Ezeket a Storage-fiókokat a Durable Functions bővítmény használja a [megbízható végrehajtáshoz](durable-functions-checkpointing-and-replay.md). Mindegyik tárolóhelyhez külön Storage-fiókot használjon. Ne jelölje be a beállítást üzembe helyezési tárolóhelyként beállításként.
+1. Az egyes tárolóhelyek esetében hozzon létre egy új alkalmazást, például: `DurableManagementStorage` . Állítsa az értékét a különböző Storage-fiókok kapcsolati karakterláncára. Ezeket a Storage-fiókokat a Durable Functions bővítmény használja a [megbízható végrehajtáshoz](./durable-functions-orchestrations.md). Mindegyik tárolóhelyhez külön Storage-fiókot használjon. Ne jelölje be a beállítást üzembe helyezési tárolóhelyként beállításként.
 
 1. A Function app [host.jsfájl durableTask szakaszában](durable-functions-bindings.md#hostjson-settings)adja meg a `azureStorageConnectionStringName` 3. lépésben létrehozott Alkalmazásbeállítás nevét.
 
@@ -172,4 +172,3 @@ További információ: a [példányok kezelése az Azure](durable-functions-inst
 
 > [!div class="nextstepaction"]
 > [Verziószámozás Durable Functions](durable-functions-versioning.md)
-
