@@ -7,12 +7,12 @@ ms.service: firewall-manager
 ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: victorh
-ms.openlocfilehash: 87af7f0f9b446fb3a54a600f61409c2cfc1a2494
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 652c7cbfbe63ef2ae9a0d54e05407152ea300f1d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86189432"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87006993"
 ---
 # <a name="deploy-an-azure-firewall-with-multiple-public-ip-addresses"></a>Azure Firewall üzembe helyezése több nyilvános IP-címmel
 
@@ -37,9 +37,9 @@ $fw = New-AzFirewall -Name <firewall name> -ResourceGroupName $rgName `
      -VirtualHubId $vHubId 
 ```
 
-### <a name="delete-a-public-ip-address"></a>Nyilvános IP-cím törlése
+### <a name="update-a-public-ip-address"></a>Nyilvános IP-cím frissítése
 
-A Azure PowerShell használatával törölheti a nyilvános IP-címeket egy Azure Firewall. Az alábbi példa egy nyilvános IP-címet töröl egy tűzfallal. Három nyilvános IP-címmel kezdődik.
+A Azure PowerShell egy Azure Firewall nyilvános IP-címének frissítésére használható. Az alábbi példa egy nyilvános IP-címet töröl egy tűzfallal. Három nyilvános IP-címmel kezdődik.
 
 ```azurepowershell
 Select-AzSubscription -SubscriptionId <subscription ID>
