@@ -7,28 +7,26 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/19/2018
 ms.author: yushwang
-ms.openlocfilehash: ec370ca3aa8d89111dcb4737701c7ea58cd48195
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f693f6a40b87d024430c7626736fab0d0a032238
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84986090"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082001"
 ---
 # <a name="sample-configuration-cisco-asa-device-ikev2no-bgp"></a>Példa konfiguráció: Cisco ASA-eszköz (IKEv2/nincs BGP)
 Ez a cikk példákat tartalmaz a Cisco adaptív biztonsági berendezés (ASA) eszközeinek Azure VPN Gateway-hez való csatlakoztatására. Ez a példa a IKEv2 rendszert futtató Cisco ASA-eszközökre vonatkozik a Border Gateway Protocol (BGP) nélkül. 
 
 ## <a name="device-at-a-glance"></a>Eszköz dióhéjban
 
-|                        |                                   |
-| ---                    | ---                               |
-| Eszköz szállítója          | Cisco                             |
-| Eszközmodell           | ASA                               |
-| Cél verziója         | 8,4 és újabb verziók                     |
-| Tesztelt modell           | ASA 5505                          |
-| Tesztelt verzió         | 9,2                               |
-| IKE-verzió            | IKEv2                             |
-| BGP                    | No                                |
-| Azure VPN Gateway típusa | Route-alapú VPN-átjáró           |
-|                        |                                   |
+* Eszköz gyártója: **Cisco**
+* Eszköz modellje: **ASA**           
+* Cél verziója: **8,4 és újabb**
+* Tesztelt modell: **ASA 5505**
+* Tesztelt verzió: **9,2**             
+* IKE-verzió: **IKEv2**                  
+* BGP: **nem**      
+* Azure VPN Gateway típusa: **Route-alapú VPN Gateway**
 
 > [!NOTE]
 > A minta konfigurációja egy Cisco ASA-eszközt csatlakoztat egy Azure **Route-alapú** VPN-átjáróhoz. A kapcsolatok Egyéni IPsec/IKE-házirendet használnak a **UsePolicyBasedTrafficSelectors** beállítással, a [jelen cikkben](vpn-gateway-connect-multiple-policybased-rm-ps.md)leírtak szerint.

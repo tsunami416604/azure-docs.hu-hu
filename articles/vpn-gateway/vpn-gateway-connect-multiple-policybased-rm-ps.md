@@ -7,11 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 02/26/2020
 ms.author: yushwang
-ms.openlocfilehash: a8a4ba7ea3de9140d79856fad9d5d0bc42cf4c51
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7fb344e16ed672dfc6c88fbe2c4888c52c9b717d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84984612"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081984"
 ---
 # <a name="connect-azure-vpn-gateways-to-multiple-on-premises-policy-based-vpn-devices-using-powershell"></a>Azure VPN-átjárók csatlakoztatása több helyszíni, a PowerShell-t használó helyi házirend-alapú VPN-eszközhöz
 
@@ -35,8 +36,8 @@ A következő diagramok kiemelik a két modellt:
 ### <a name="azure-support-for-policy-based-vpn"></a>Azure-támogatás házirend alapú VPN-hez
 Jelenleg az Azure a VPN-átjárók mindkét üzemmódját támogatja: Route-alapú VPN-átjárók és házirend-alapú VPN-átjárók. Különböző belső platformokra épülnek, amelyek különböző specifikációkat eredményeznek:
 
-|                          | **Házirendalapú VPN Gateway** | **Útvonalalapú VPN Gateway**       |**Útvonalalapú VPN Gateway**                          |
-| ---                      | ---                         | ---                              |---                                                 |
+| Kategória | Házirendalapú VPN Gateway | Útvonalalapú VPN Gateway | Útvonalalapú VPN Gateway |
+| -------- | ----------------------- | ---------------------- | ---------------------- |---                                                 |
 | **Azure Gateway SKU**    | Alapszintű                       | Alapszintű                            | VpnGw1, VpnGw2, VpnGw3, VpnGw4, VpnGw5  |
 | **IKE-verzió**          | IKEv1                       | IKEv2                            | IKEv1 és IKEv2                         |
 | **Max. S2S-kapcsolatok** | **1**                       | 10                               | 30                     |
@@ -204,6 +205,6 @@ A következő sor azt mutatja be, hogy a házirend alapú forgalom-választókat
       ```
 
 ## <a name="next-steps"></a>További lépések
-Miután a kapcsolat létrejött, hozzáadhat virtuális gépeket a virtuális hálózataihoz. A lépésekért lásd: [Virtuális gép létrehozása](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Miután a kapcsolat létrejött, hozzáadhat virtuális gépeket a virtuális hálózataihoz. A lépésekért lásd: [Virtuális gép létrehozása](../virtual-machines/windows/quick-create-portal.md).
 
 Tekintse át az [IPSec/IKE-házirend konfigurálása a S2S VPN-hez vagy a VNet-VNet kapcsolatokhoz](vpn-gateway-ipsecikepolicy-rm-powershell.md) című témakört az egyéni IPSec/IKE-házirendekkel kapcsolatos további részletekért.

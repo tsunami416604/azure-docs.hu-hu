@@ -4,12 +4,12 @@ description: Hozza létre első saját, Linux-alapú tárolóalkalmazását az A
 ms.topic: conceptual
 ms.date: 1/4/2019
 ms.custom: tracking-python
-ms.openlocfilehash: 783f6a06d57a447998710e2c8ff349b23ef751c5
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 547030b983dd02e7b65d404188dccdcc24d53a22
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86256413"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083837"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>Az első Service Fabric-tárolóalkalmazás létrehozása Linux rendszeren
 > [!div class="op_single_selector"]
@@ -26,6 +26,8 @@ A meglévő alkalmazások Service Fabric-fürtökön lévő Linux-tárolókban v
   * [Service FABRIC SDK-t és eszközöket](service-fabric-get-started-linux.md).
   * [Linuxhoz készült Docker CE](https://docs.docker.com/engine/installation/#prior-releases). 
   * [Service Fabric parancssori felület](service-fabric-cli.md)
+
+* Egy legalább három csomóponttal rendelkező Linux-fürt.
 
 * Egy Azure Container Registry-beállításjegyzék – ehhez [hozzon létre egy tároló-beállításjegyzéket](../container-registry/container-registry-get-started-portal.md) Azure-előfizetésében. 
 
@@ -264,7 +266,7 @@ Csatlakozzon a futó tárolóhoz. Nyisson meg egy, az 4000-es porton visszaadott
 ![Hello World!][hello-world]
 
 
-## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
+## <a name="clean-up"></a>A feleslegessé vált elemek eltávolítása
 Használja a sablonban megadott eltávolítási szkriptet az alkalmazáspéldány helyi fejlesztési fürtről történő törléséhez, és törölje az alkalmazástípus regisztrációját.
 
 ```bash
@@ -371,7 +373,7 @@ Itt találja a jelen cikkben használt teljes szolgáltatás- és alkalmazásjeg
 Ha egy másik tárolószolgáltatást szeretne hozzáadni a Yeoman használatával már létrehozott alkalmazáshoz, hajtsa végre az alábbi lépéseket:
 
 1. Lépjen a meglevő alkalmazás gyökérkönyvtárába. Például `cd ~/YeomanSamples/MyApplication`, ha a `MyApplication` a Yeoman által létrehozott alkalmazás.
-2. Futtassa a `yo azuresfcontainer:AddService` parancsot.
+2. Az `yo azuresfcontainer:AddService` parancs futtatásával
 
 <a id="manually"></a>
 
@@ -466,7 +468,7 @@ A Service Fabric-futtatókörnyezet 6.2-es vagy újabb verzióiban a Docker-dém
 
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * További információk a [tárolók futtatásáról a Service Fabricban](service-fabric-containers-overview.md).
 * Tekintse meg a [.NET-alkalmazás üzembe helyezését](service-fabric-host-app-in-a-container.md) ismertető oktatóanyagot.
 * További információk a Service Fabric [alkalmazásainak élettartamáról](service-fabric-application-lifecycle.md).

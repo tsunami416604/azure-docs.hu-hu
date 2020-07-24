@@ -8,12 +8,12 @@ ms.author: rogarana
 ms.service: virtual-machines-linux
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 52a52f6f7bca99d662a68ae48276062969b194f0
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 25f4f99d2bd80034d2f337aa649417d2d06026be
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86236000"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082528"
 ---
 # <a name="azure-cli---enable-double-encryption-at-rest-on-your-managed-disks"></a>Azure CLI – a kettős titkosítás engedélyezése a felügyelt lemezeken a REST szolgáltatásban
 
@@ -73,5 +73,5 @@ Telepítse a legújabb [Azure CLI](/cli/azure/install-az-cli2) -t, és jelentkez
 
 Most, hogy létrehozta és konfigurálta ezeket az erőforrásokat, a segítségével biztonságossá teheti a felügyelt lemezeket. Az alábbi hivatkozások olyan parancsfájlokat tartalmaznak, amelyek mindegyike megfelelő forgatókönyvekkel rendelkezik, amelyek segítségével biztonságossá teheti a felügyelt lemezeket.
 
-[Azure Resource Manager sablon mintái](https://github.com/Azure-Samples/managed-disks-powershell-getting-started/tree/master/DoubleEncryption) 
- [Ügyfelek által felügyelt kulcsok engedélyezése kiszolgálóoldali titkosítással – példák](disks-enable-customer-managed-keys-cli.md#examples)
+- [Azure Resource Manager sablon mintái](https://github.com/Azure-Samples/managed-disks-powershell-getting-started/tree/master/DoubleEncryption)
+- [Ügyfelek által felügyelt kulcsok engedélyezése kiszolgálóoldali titkosítással – példák](disks-enable-customer-managed-keys-cli.md#examples)

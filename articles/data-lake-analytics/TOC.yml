@@ -21,6 +21,12 @@
     - name: Az Azure Policy beépített elemei
       displayName: 'samples, policies, definitions'
       href: ./policy-samples.md
+- name: Alapelvek
+  items:
+    - name: Biztonság
+      items:
+        - name: Biztonsági alapkonfiguráció az Azure biztonsági teljesítményteszthez
+          href: security-baseline.md
 - name: Útmutató
   items:
     - name: A Data Lake Analytics kezelése
@@ -87,7 +93,7 @@
               href: data-lake-analytics-data-lake-tools-develop-usql-database.md
             - name: Feladatok tallózása és megtekintése
               href: data-lake-analytics-data-lake-tools-view-jobs.md
-            - name: 'Egyéni C#-kód hibakeresése'
+            - name: Egyéni C#-kód hibakeresése
               href: data-lake-analytics-debug-u-sql-jobs.md
             - name: Ismétlődő feladatok hibaelhárítása
               href: data-lake-analytics-data-lake-tools-debug-recurring-job.md

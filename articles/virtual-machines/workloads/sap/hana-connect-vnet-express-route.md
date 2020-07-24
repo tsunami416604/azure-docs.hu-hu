@@ -13,11 +13,12 @@ ms.workload: infrastructure
 ms.date: 05/25/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f7ac8e69c4e149fdd0f365e19f7a0282a547af43
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c7e8d4875a8bf3f53ac536ae95ac7499a74d45c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77617185"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082154"
 ---
 # <a name="connect-a-virtual-network-to-hana-large-instances"></a>Virtuális hálózat összekapcsolása a HANA nagyméretű példányaival
 
@@ -95,7 +96,7 @@ New-AzVirtualNetworkGatewayConnection -Name $myConnectionName `
 ```
 
 > [!NOTE]
-> A New-AzVirtualNetworkGatewayConnection parancs utolsó paramétere, a **ExpressRouteGatewayBypass** egy új paraméter, amely lehetővé teszi a ExpressRoute gyors elérési útját. Olyan funkció, amely csökkenti a HANA nagyméretű példány-egységek és az Azure-beli virtuális gépek közötti hálózati késést. A funkciók a 2019 májusában lettek hozzáadva. További részletekért lásd a [SAP HANA (nagyméretű példányok) hálózati architektúráját](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture)ismertető cikket. A parancsok futtatása előtt győződjön meg arról, hogy a PowerShell-parancsmagok legújabb verzióját futtatja.
+> A New-AzVirtualNetworkGatewayConnection parancs utolsó paramétere, a **ExpressRouteGatewayBypass** egy új paraméter, amely lehetővé teszi a ExpressRoute gyors elérési útját. Olyan funkció, amely csökkenti a HANA nagyméretű példány-egységek és az Azure-beli virtuális gépek közötti hálózati késést. A funkciók a 2019 májusában lettek hozzáadva. További részletekért lásd a [SAP HANA (nagyméretű példányok) hálózati architektúráját](./hana-network-architecture.md)ismertető cikket. A parancsok futtatása előtt győződjön meg arról, hogy a PowerShell-parancsmagok legújabb verzióját futtatja.
 
 Ha az átjárót az előfizetéshez társított több ExpressRoute-áramkörhöz szeretné összekapcsolni, lehetséges, hogy ezt a lépést többször kell futtatnia. Előfordulhat például, hogy ugyanazt a virtuális hálózati átjárót fogja csatlakoztatni a ExpressRoute áramkörhöz, amely a virtuális hálózatot a helyszíni hálózathoz csatlakoztatja.
 
@@ -138,7 +139,7 @@ a következőket kell figyelembe vennie:
 - A ASN (autonóm rendszer száma) korlátozás vonatkozik arra, hogy a helyszíni útvonalakat a HANA nagyméretű példányokra hirdesse. A helyszíni szolgáltatás nem tehet közzé semmilyen, a 65000 – 65020 vagy 65515 tartományba tartozó privát ASN rendelkező útvonalat. 
 - Ha a helyszíni közvetlen hozzáférést a HANA nagyméretű példányaihoz csatlakoztatja, ki kell számítania az Azure-hoz csatlakozó áramkör díját. Az árakért keresse [meg Global REACH-bővítmény](https://azure.microsoft.com/pricing/details/expressroute/)árát.
 
-A telepítésre alkalmazott forgatókönyvek egyikének vagy mindkettőnek a megkereséséhez nyisson meg egy támogatási üzenetet az Azure-ban a következő témakörben leírtak szerint: [támogatási kérelem megnyitása HANA Large instances](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-li-portal#open-a-support-request-for-hana-large-instances)
+A telepítésre alkalmazott forgatókönyvek egyikének vagy mindkettőnek a megkereséséhez nyisson meg egy támogatási üzenetet az Azure-ban a következő témakörben leírtak szerint: [támogatási kérelem megnyitása HANA Large instances](./hana-li-portal.md#open-a-support-request-for-hana-large-instances)
 
 Az ehhez szükséges, a Microsoft számára a kéréshez használni kívánt, valamint a hozzájuk tartozó kulcsszavakat a következőképpen kell kinéznie:
 

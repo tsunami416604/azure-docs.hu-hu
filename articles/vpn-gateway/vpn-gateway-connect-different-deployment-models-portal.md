@@ -7,11 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/24/2019
 ms.author: cherylmc
-ms.openlocfilehash: 231fbe3a30cc9507ebb9b401bd2fe07a451c59a9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d3ab49d0ad24c2b2c8859408ed103178cede5b8b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84987670"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082103"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-the-portal"></a>Virtuális hálózatok összekötése különböző üzemi modellekkel a portál használatával
 
@@ -27,13 +28,13 @@ A klasszikus VNet Resource Manager-VNet való csatlakoztatása hasonló ahhoz, h
 
 Ha még nem rendelkezik virtuális hálózati átjáróval, és nem szeretne létrehozni egyet, érdemes lehet inkább a virtuális hálózatok csatlakoztatni a VNet-társ használatával. A virtuális hálózatok közötti társviszony nem használ VPN-átjárót. További információ: [Társviszony létesítése virtuális hálózatok között](../virtual-network/virtual-network-peering-overview.md).
 
-### <a name="before-you-begin"></a><a name="before"></a>Előkészületek
+### <a name="before-you-begin"></a><a name="before"></a>Kezdés előtt
 
 
 
 * Ezek a lépések azt feltételezik, hogy mindkét virtuális hálózatok már létre lett hozva. Ha gyakorlatként használja ezt a cikket, és nem rendelkezik virtuális hálózatok, a következő lépésekben talál hivatkozásokat a létrehozásához.
 * Ellenőrizze, hogy a virtuális hálózatok címtartományok nem fedik-e egymást egymással, vagy átfedésben van-e az átjárók által a csatlakozáshoz használt egyéb kapcsolatok tartományával.
-* Telepítse a legújabb PowerShell-parancsmagokat a Resource Manager és a Service Management (klasszikus) szolgáltatáshoz. Ebben a cikkben a Azure Portal és a PowerShellt is használjuk. A PowerShell szükséges a klasszikus VNet és a Resource Manager-VNet közötti kapcsolatok létrehozásához. További információt [az Azure PowerShell telepítésével és konfigurálásával](/powershell/azure/overview) foglalkozó témakörben talál. 
+* Telepítse a legújabb PowerShell-parancsmagokat a Resource Manager és a Service Management (klasszikus) szolgáltatáshoz. Ebben a cikkben a Azure Portal és a PowerShellt is használjuk. A PowerShell szükséges a klasszikus VNet és a Resource Manager-VNet közötti kapcsolatok létrehozásához. További információt [az Azure PowerShell telepítésével és konfigurálásával](/powershell/azure/) foglalkozó témakörben talál. 
 
 ### <a name="example-settings"></a><a name="values"></a>Példabeállítások
 

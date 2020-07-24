@@ -7,16 +7,19 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 7/16/2020
 ms.author: surmb
-ms.openlocfilehash: 2e2925723ee07ee2215bdd82bb730e31cdcdadc9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 160d056447bd53ea01437acd372b5efeb15b4773
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531676"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083157"
 ---
 # <a name="rewrite-url-with-azure-application-gateway---azure-portal-preview"></a>URL-cím újraírása az Azure Application Gateway-Azure Portal (előzetes verzió)
 
 Ez a cikk azt ismerteti, hogyan lehet a Azure Portal használatával konfigurálni egy [Application Gateway v2 SKU](application-gateway-autoscaling-zone-redundant.md) -példányt az URL-cím újraírásához.
+
+>[!NOTE]
+> Az URL-Újraírási funkció előzetes verzióban érhető el, és csak Standard_v2 és a Application Gateway WAF_v2 SKU-ban érhető el. Éles környezetben való használatra nem ajánlott. Az előzetes verziókkal kapcsolatos további tudnivalókért tekintse meg [a használati feltételeket itt](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -115,6 +118,6 @@ Tekintse át az alábbi mezőket a hozzáférési naplókban annak ellenőrzés�
 
 További információt a hozzáférési naplók összes mezőjéről [itt](application-gateway-diagnostics.md#for-application-gateway-and-waf-v2-sku)talál.
 
-##  <a name="next-steps"></a>Következő lépések
+##  <a name="next-steps"></a>További lépések
 
 Ha többet szeretne megtudni arról, hogyan állíthatók be a gyakori használati esetekben az újraírások, tekintse meg az [általános írási forgatókönyvek](rewrite-http-headers.md)című témakört.

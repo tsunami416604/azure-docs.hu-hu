@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0ff4fb08b1e627184760bb0a33797b2a324d4c55
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: c28fe96fe88a3b0744aaad72d49e8e2f52912fb6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045909"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082630"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Virtuálisgép-bővítmények és-szolgáltatások a Windows rendszerhez
 
@@ -35,7 +35,7 @@ Ez a cikk áttekintést nyújt a virtuálisgép-bővítményekről, az Azure vir
 Számos különböző Azure-beli virtuálisgép-bővítmény érhető el, amelyek mindegyike egy adott használati esettel rendelkezik. Néhány példa:
 
 - PowerShell kívánt állapot-konfiguráció alkalmazása egy virtuális gépre a Windows DSC bővítménnyel. További információ: az [Azure desired State Configuration bővítménye](dsc-overview.md).
-- Egy virtuális gép figyelésének konfigurálása a Log Analytics ügynök virtuálisgép-bővítményével. További információ: [Azure-beli virtuális gépek Összekapcsolásának Azure monitor naplók](../../log-analytics/log-analytics-azure-vm-extension.md).
+- Egy virtuális gép figyelésének konfigurálása a Log Analytics ügynök virtuálisgép-bővítményével. További információ: [Azure-beli virtuális gépek Összekapcsolásának Azure monitor naplók](../../azure-monitor/learn/quick-collect-azurevm.md).
 - Azure-beli virtuális gép konfigurálása a Chef használatával. További információ: az Azure-beli [virtuális gépek üzembe helyezésének automatizálása a Chef segítségével](../../chef/chef-automation.md).
 - Konfigurálja az Azure-infrastruktúra figyelését az Datadoggal bővítménnyel. További információ: [datadoggal blog](https://www.datadoghq.com/blog/introducing-azure-monitoring-with-one-click-datadog-deployment/).
 
@@ -65,18 +65,18 @@ Egyes bővítmények nem támogatottak az összes operációs rendszeren, és a 
 
 #### <a name="network-access"></a>Hálózati hozzáférés
 
-A bővítmények letöltése az Azure Storage bővítmény-tárházból történik, és a bővítmény állapotának feltöltése az Azure Storage-ba kerül. Ha az ügynökök [támogatott](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support) verzióját használja, nem kell engedélyeznie az Azure Storage-hoz való hozzáférést a virtuálisgép-régióban, mivel az ügynökkel átirányíthatja a kommunikációt az Azure Fabric-vezérlővel az ügynök-kommunikációhoz (HostGAPlugin funkció a privát IP- [168.63.129.16](https://docs.microsoft.com/azure/virtual-network/what-is-ip-address-168-63-129-16)található privilegizált csatornán keresztül). Ha az ügynök nem támogatott verzióját használ, engedélyeznie kell a kimenő hozzáférést az adott régióban lévő Azure Storage-hoz a virtuális gépről.
+A bővítmények letöltése az Azure Storage bővítmény-tárházból történik, és a bővítmény állapotának feltöltése az Azure Storage-ba kerül. Ha az ügynökök [támogatott](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support) verzióját használja, nem kell engedélyeznie az Azure Storage-hoz való hozzáférést a virtuálisgép-régióban, mivel az ügynökkel átirányíthatja a kommunikációt az Azure Fabric-vezérlővel az ügynök-kommunikációhoz (HostGAPlugin funkció a privát IP- [168.63.129.16](../../virtual-network/what-is-ip-address-168-63-129-16.md)található privilegizált csatornán keresztül). Ha az ügynök nem támogatott verzióját használ, engedélyeznie kell a kimenő hozzáférést az adott régióban lévő Azure Storage-hoz a virtuális gépről.
 
 > [!IMPORTANT]
 > Ha letiltotta a hozzáférést a *168.63.129.16* a vendég tűzfal vagy egy proxy használatával, a bővítmények a fentiektől függetlenül meghiúsulnak. A 80, 443 és 32526 portok megadása kötelező.
 
-Az ügynököket csak a bővítmény-csomagok és a jelentéskészítési állapotok letöltésére lehet használni. Ha például egy bővítmény telepítéséhez le kell töltenie egy parancsfájlt a GitHubról (egyéni parancsfájlból), vagy hozzá kell férnie az Azure Storage-hoz (Azure Backup), akkor további tűzfal/hálózati biztonsági csoport portjait kell megnyitnia. A különböző kiterjesztések eltérő követelményekkel rendelkeznek, mivel ezek az alkalmazások a saját jogukban vannak. Az Azure Storage-hoz vagy Azure Active Directoryhoz hozzáférést igénylő bővítmények esetében engedélyezheti a hozzáférést az [Azure NSG Service-címkék](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) használatával a tárolóhoz vagy a AzureActiveDirectory.
+Az ügynököket csak a bővítmény-csomagok és a jelentéskészítési állapotok letöltésére lehet használni. Ha például egy bővítmény telepítéséhez le kell töltenie egy parancsfájlt a GitHubról (egyéni parancsfájlból), vagy hozzá kell férnie az Azure Storage-hoz (Azure Backup), akkor további tűzfal/hálózati biztonsági csoport portjait kell megnyitnia. A különböző kiterjesztések eltérő követelményekkel rendelkeznek, mivel ezek az alkalmazások a saját jogukban vannak. Az Azure Storage-hoz vagy Azure Active Directoryhoz hozzáférést igénylő bővítmények esetében engedélyezheti a hozzáférést az [Azure NSG Service-címkék](../../virtual-network/security-overview.md#service-tags) használatával a tárolóhoz vagy a AzureActiveDirectory.
 
 A Windows Guest Agent ügynök nem támogatja a proxykiszolgálót az ügynök forgalmi kéréseinek átirányításához, ami azt jelenti, hogy a Windows vendég ügynöke az egyéni proxyra fog támaszkodni (ha rendelkezik ilyennel) az interneten vagy a gazdagépen lévő erőforrások IP-168.63.129.16 való eléréséhez.
 
 ## <a name="discover-vm-extensions"></a>Virtuálisgép-bővítmények felderítése
 
-Az Azure-beli virtuális gépekhez számos különböző virtuális gépi bővítmény érhető el. A teljes lista megtekintéséhez használja a [Get-AzVMExtensionImage](https://docs.microsoft.com/powershell/module/az.compute/get-azvmextensionimage). Az alábbi példa felsorolja az összes elérhető bővítményt a *WestUS* helyen:
+Az Azure-beli virtuális gépekhez számos különböző virtuális gépi bővítmény érhető el. A teljes lista megtekintéséhez használja a [Get-AzVMExtensionImage](/powershell/module/az.compute/get-azvmextensionimage). Az alábbi példa felsorolja az összes elérhető bővítményt a *WestUS* helyen:
 
 ```powershell
 Get-AzVmImagePublisher -Location "WestUS" | `
@@ -92,7 +92,7 @@ A következő módszerek használhatók a bővítmények egy meglévő virtuáli
 
 ### <a name="powershell"></a>PowerShell
 
-Több PowerShell-parancs létezik az egyes bővítmények futtatásához. A lista megtekintéséhez használja a [Get-Command](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/get-command) és a Filter on *bővítményt*:
+Több PowerShell-parancs létezik az egyes bővítmények futtatásához. A lista megtekintéséhez használja a [Get-Command](/powershell/module/microsoft.powershell.core/get-command) és a Filter on *bővítményt*:
 
 ```powershell
 Get-Command Set-Az*Extension* -Module Az.Compute
@@ -127,7 +127,7 @@ Set-AzVMCustomScriptExtension -ResourceGroupName "myResourceGroup" `
     -Run "Create-File.ps1" -Location "West US"
 ```
 
-A következő példában a virtuálisgép-hozzáférési bővítmény egy Windows rendszerű virtuális gép rendszergazdai jelszavának alaphelyzetbe állítására szolgál ideiglenes jelszóként. További információ a virtuális gépek hozzáférési bővítménnyel kapcsolatban: [Távoli asztal szolgáltatás alaphelyzetbe állítása Windows rendszerű virtuális gépen](../windows/reset-rdp.md). Ha már futtatta a parancsot, állítsa alaphelyzetbe a jelszót az első bejelentkezéskor:
+A következő példában a virtuálisgép-hozzáférési bővítmény egy Windows rendszerű virtuális gép rendszergazdai jelszavának alaphelyzetbe állítására szolgál ideiglenes jelszóként. További információ a virtuális gépek hozzáférési bővítménnyel kapcsolatban: [Távoli asztal szolgáltatás alaphelyzetbe állítása Windows rendszerű virtuális gépen](../troubleshooting/reset-rdp.md). Ha már futtatta a parancsot, állítsa alaphelyzetbe a jelszót az első bejelentkezéskor:
 
 ```powershell
 $cred=Get-Credential
@@ -137,7 +137,7 @@ Set-AzVMAccessExtension -ResourceGroupName "myResourceGroup" -VMName "myVM" -Nam
     -Password $cred.GetNetworkCredential().Password -typeHandlerVersion "2.0"
 ```
 
-A `Set-AzVMExtension` parancs használatával bármely virtuálisgép-bővítmény elindítható. További információkért lásd a [set-AzVMExtension referenciát](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension).
+A `Set-AzVMExtension` parancs használatával bármely virtuálisgép-bővítmény elindítható. További információkért lásd a [set-AzVMExtension referenciát](/powershell/module/az.compute/set-azvmextension).
 
 
 ### <a name="azure-portal"></a>Azure Portal
@@ -315,7 +315,7 @@ Ha a legújabb kiadási hibákat szeretné lekérni, javasoljuk, hogy mindig vá
 
 #### <a name="identifying-if-the-extension-is-set-with-autoupgrademinorversion-on-a-vm"></a>Annak azonosítása, hogy a bővítmény a autoUpgradeMinorVersion-mel van-e beállítva egy virtuális gépen
 
-A virtuálisgép-modellből megtekintheti, hogy a bővítmény a "autoUpgradeMinorVersion" használatával lett kiépítve. Az kereséshez használja a [Get-AzVm](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) , és adja meg az erőforráscsoportot és a virtuális gép nevét a következőképpen:
+A virtuálisgép-modellből megtekintheti, hogy a bővítmény a "autoUpgradeMinorVersion" használatával lett kiépítve. Az kereséshez használja a [Get-AzVm](/powershell/module/az.compute/get-azvm) , és adja meg az erőforráscsoportot és a virtuális gép nevét a következőképpen:
 
 ```powerShell
  $vm = Get-AzVm -ResourceGroupName "myResourceGroup" -VMName "myVM"
@@ -371,7 +371,7 @@ Az alábbi hibaelhárítási lépések minden virtuálisgép-bővítményre érv
 
 ### <a name="view-extension-status"></a>Bővítmény állapotának megtekintése
 
-A virtuálisgép-bővítmény virtuális gépen való futtatása után a [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) használatával adja vissza a bővítmény állapotát. Az *alállapotok [0]* érték azt jelzi, hogy a bővítmény kiépítése sikeres volt, ami azt jelenti, hogy a virtuális gép üzembe helyezése sikeresen megtörtént, de a virtuális gépen belüli bővítmény végrehajtása nem sikerült, *alállapotok [1]*.
+A virtuálisgép-bővítmény virtuális gépen való futtatása után a [Get-AzVM](/powershell/module/az.compute/get-azvm) használatával adja vissza a bővítmény állapotát. Az *alállapotok [0]* érték azt jelzi, hogy a bővítmény kiépítése sikeres volt, ami azt jelenti, hogy a virtuális gép üzembe helyezése sikeresen megtörtént, de a virtuális gépen belüli bővítmény végrehajtása nem sikerült, *alállapotok [1]*.
 
 ```powershell
 Get-AzVM -ResourceGroupName "myResourceGroup" -VMName "myVM" -Status
@@ -407,7 +407,7 @@ A bővítmény végrehajtási állapota a Azure Portalban is megtalálható. Egy
 
 ### <a name="rerun-vm-extensions"></a>VM-bővítmények újrafuttatása
 
-Előfordulhatnak olyan esetek, amikor egy virtuálisgép-bővítményt újra kell futtatni. A bővítmény újrafuttatásához távolítsa el, majd futtassa újra a bővítményt egy tetszőleges végrehajtási módszer használatával. A bővítmények eltávolításához használja a [Remove-AzVMExtension parancsot](https://docs.microsoft.com/powershell/module/az.compute/Remove-AzVMExtension) a következő módon:
+Előfordulhatnak olyan esetek, amikor egy virtuálisgép-bővítményt újra kell futtatni. A bővítmény újrafuttatásához távolítsa el, majd futtassa újra a bővítményt egy tetszőleges végrehajtási módszer használatával. A bővítmények eltávolításához használja a [Remove-AzVMExtension parancsot](/powershell/module/az.compute/remove-azvmextension) a következő módon:
 
 ```powershell
 Remove-AzVMExtension -ResourceGroupName "myResourceGroup" -VMName "myVM" -Name "myExtensionName"

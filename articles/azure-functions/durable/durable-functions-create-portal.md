@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan telepítheti a Azure Functions Durable Function
 ms.topic: conceptual
 ms.date: 04/10/2020
 ms.reviewer: azfuncdf
-ms.openlocfilehash: 7eee3c36620d0cc9f5906e355b76e7418c61b477
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b029fa246977dfe4210f6e8df242415f7e4103f1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85807961"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081916"
 ---
 # <a name="create-durable-functions-using-the-azure-portal"></a>Durable Functions létrehozása a Azure Portal használatával
 
@@ -42,7 +42,7 @@ Ha JavaScript-Durable Functions hoz létre, telepítenie kell a [ `durable-funct
 
    :::image type="content" source="./media/durable-functions-create-portal/kudu-choose-debug-console.png" alt-text="Kudu hibakeresési konzol":::
 
-3. A Function alkalmazás fájljának könyvtár-struktúrájának meg kell jelennie. Navigáljon a `site/wwwroot` mappához. Innen feltöltheti a fájlt úgy, hogy `package.json` áthúzza a fájl könyvtár ablakába. A minta a `package.json` következő:
+3. A Function alkalmazás fájljának könyvtár-struktúrájának meg kell jelennie. Lépjen a `site/wwwroot` mappába. Innen feltöltheti a fájlt úgy, hogy `package.json` áthúzza a fájl könyvtár ablakába. A minta a `package.json` következő:
 
     ```json
     {
@@ -58,8 +58,6 @@ Ha JavaScript-Durable Functions hoz létre, telepítenie kell a [ `durable-funct
 
    ![Kudu NPM-telepítés futtatása](./media/durable-functions-create-portal/kudu-npm-install.png)
    
-5. Végül a [kompatibilitási mód engedélyezéséhez](https://docs.microsoft.com/azure/azure-functions/durable/quickstart-js-vscode#enable-compatibility-mode-1) adjon hozzá egy értéket a `FUNCTIONS_V2_COMPATIBILITY_MODE` értékkel `true` .
-
 ## <a name="create-an-orchestrator-function"></a>Orchestrator függvény létrehozása
 
 1. A Function alkalmazásban válassza a bal oldali ablaktábla **függvények** elemét, majd a felső menüben válassza a **Hozzáadás** lehetőséget. 

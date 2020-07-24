@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: beszédfelismerési beszéd, Swift-Speech Service'
+title: 'Rövid útmutató: a gyors beszédfelismerés a macOS-Speech szolgáltatásban'
 titleSuffix: Azure Cognitive Services
 description: Megtudhatja, hogyan szintetizálhatja a gyors kommunikációt macOS rendszeren a Speech SDK használatával
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 06/25/2020
 ms.author: yulili
-ms.openlocfilehash: 1ed68b2ba00a89ff7b20b8ed61457dfb268917e4
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: 6dae832b0777ca2caf993e126ddfea074919a0dc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391264"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084789"
 ---
 # <a name="quickstart-synthesize-speech-in-swift-on-macos-using-the-speech-sdk"></a>Rövid útmutató: a beszédfelismerési szolgáltatás gyors használata macOS rendszeren a Speech SDK használatával
 
@@ -83,7 +83,7 @@ A további párbeszédpaneleken válassza az alábbi lehetőségeket:
 1. Hozza létre és futtassa a példát a **termék**  >  **futtatása** elem kiválasztásával a menüből, vagy kattintson a **Lejátszás** gombra.
 1. Miután beírt valamilyen szöveget, és rákattintott a gombra az alkalmazásban, hallania kell a szintetizált hanglejátszást.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [A GitHubon található minták megismerése](https://aka.ms/csspeech/samples)

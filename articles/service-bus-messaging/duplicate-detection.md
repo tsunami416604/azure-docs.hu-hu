@@ -3,11 +3,12 @@ title: Ismétlődő üzenetek észlelésének Azure Service Busa | Microsoft Doc
 description: Ez a cikk azt ismerteti, hogyan észlelhetők az ismétlődő elemek Azure Service Bus üzenetekben. Az ismétlődő üzenet figyelmen kívül hagyható, és eldobása is lehetséges.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: c8935fa67dda28bb2fec663c5e714982933f0f22
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dbca1b4b4f894d35835e7d37e0b4e742a2d3b917
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85337913"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083888"
 ---
 # <a name="duplicate-detection"></a>Duplikálás észlelése
 
@@ -32,7 +33,7 @@ A *MessageID* mindig lehet egy GUID-azonosító, de az azonosító az üzleti fo
 
 A portálon a funkció be van kapcsolva az entitások létrehozásakor a **duplikált észlelés engedélyezése** jelölőnégyzettel, amely alapértelmezés szerint ki van kapcsolva. Az új témakörök létrehozásának beállítása egyenértékű.
 
-![][1]
+![A várólista létrehozása párbeszédpanel képernyőképe a duplikált észlelés engedélyezése lehetőség kiválasztásával, és piros színnel.][1]
 
 > [!IMPORTANT]
 > A várólista létrehozása után nem engedélyezheti vagy tilthatja le az ismétlődő észlelést. Ezt csak a várólista létrehozásakor teheti meg. 
@@ -41,7 +42,7 @@ Programozott módon beállíthatja a jelzőt a [QueueDescription. requiresDuplic
 
 A duplikált észlelési időelőzmények alapértelmezett értéke 30 másodperc a várólisták és a témakörök esetében, a maximális érték pedig hét nap. Ezt a beállítást a Azure Portal üzenetsor és témakör tulajdonságai ablakában módosíthatja.
 
-![][2]
+![Képernyőkép a Service Bus funkcióról a Kiemelt tulajdonságok beállítással, valamint a pirosban megjelenő duplikált észlelési előzmények lehetőséggel.][2]
 
 Programozott módon beállíthatja a duplikált észlelési ablak méretét, amely során az üzenetsor-azonosítók megmaradnak, a [QueueDescription. DuplicateDetectionHistoryTimeWindow](/dotnet/api/microsoft.servicebus.messaging.queuedescription.duplicatedetectionhistorytimewindow#Microsoft_ServiceBus_Messaging_QueueDescription_DuplicateDetectionHistoryTimeWindow) tulajdonságot pedig a teljes .NET-keretrendszer API-val. A Azure Resource Manager API-val az érték a [queueProperties. duplicateDetectionHistoryTimeWindow](/azure/templates/microsoft.servicebus/namespaces/queues#property-values) tulajdonsággal van beállítva.
 

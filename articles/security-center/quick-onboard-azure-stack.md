@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/02/2019
 ms.author: memildin
-ms.openlocfilehash: 1f0a11616fe996f02d6464d23724156906176041
-ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
+ms.openlocfilehash: 67017bdc98b997c728c4d5dcfab92e0804498060
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84771155"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084007"
 ---
 # <a name="quickstart-onboard-your-azure-stack-virtual-machines-to-security-center"></a>Gyors útmutató: a Azure Stack virtuális gépek előkészítése Security Center
 Az Azure-előfizetés bevezetését követően engedélyezheti Security Center a Azure Stack-on futó virtuális gépeknek a Azure Stack piactéren való hozzáadásával a **Azure monitor, a frissítés és a konfiguráció kezelése** virtuálisgép-bővítményt.
@@ -33,8 +33,8 @@ A rövid útmutató elkezdése előtt rendelkeznie kell egy Azure-előfizetésse
 
 ## <a name="select-your-workspace-in-azure-security-center"></a>Válassza ki a munkaterületét Azure Security Center
 
-1. Jelentkezzen be az [Azure Portalon](https://azure.microsoft.com/features/azure-portal/).
-2. A **Microsoft Azure** menüben válassza a **Security Center** elemet. Megnyílik a **Security Center – Áttekintés** képernyő. 
+1. Jelentkezzen be az [Azure Portalra](https://azure.microsoft.com/features/azure-portal/).
+2. A **Microsoft Azure** menüben válassza a **Security Center** elemet. **Security Center – az Áttekintés** megnyílik. 
 
    ![Security Center – Áttekintés][2]
 
@@ -61,7 +61,7 @@ Most hozzá kell adnia a **Azure monitor, a frissítés és a konfiguráció kez
 
 1. Az új böngésző lapon jelentkezzen be a **Azure stack** portálra.
 2. Nyissa meg a **virtuális gépek** lapot, és válassza ki a Security Center védelemmel ellátni kívánt virtuális gépet. A virtuális gépek Azure Stackon való létrehozásával kapcsolatos információkért tekintse meg ezt a rövid útmutatót [a Windows rendszerű virtuális gépekről](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-quick-windows-portal) , illetve [a Linux rendszerű virtuális gépekről](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-quick-linux-portal).
-3. Válassza a **bővítmények**lehetőséget. Megjelenik a virtuális gépen telepített virtuálisgép-bővítmények listája.
+3. Válassza a **Bővítmények** lehetőséget. Megjelenik a virtuális gépen telepített virtuálisgép-bővítmények listája.
 4. Kattintson a **Hozzáadás** fülre. Megnyílik az **új erőforrás** menü panel, és megjeleníti az elérhető virtuálisgép-bővítmények listáját. 
 5. Válassza ki a **Azure monitor, a frissítés és a konfiguráció kezelése** bővítményt, és kattintson a **Létrehozás**gombra. Megnyílik a **telepítési bővítmény** konfigurációja panel.
 
@@ -86,7 +86,7 @@ A **Számítás** panelen kétféle ikon található:
 
 ![icon2](./media/quick-onboard-windows-computer/security-center-monitoring-icon2.png) Azure-beli virtuális gép (Azure Stack virtuális gépek ebben a csoportban jelennek meg)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 Ha már nincs rá szükség, eltávolíthatja a bővítményt a virtuális gépről a Azure Stack-portálon keresztül.
 
 A bővítmény eltávolítása:

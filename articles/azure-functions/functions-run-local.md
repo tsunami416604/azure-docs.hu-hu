@@ -1,18 +1,18 @@
 ---
-title: Azure Functions Core Tools használata
+title: Az Azure Functions Core Tools használata
 description: Megtudhatja, hogyan teheti meg az Azure functions szolgáltatást a parancssorból vagy a terminálból a helyi számítógépen, mielőtt futtatja őket a Azure Functionson.
 ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 8a68c793d9aaf94ad28f2e478254e42ede4800de
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 611cb5b94ee2ad458fa00a61af673696d7e7a212
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170360"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085146"
 ---
-# <a name="work-with-azure-functions-core-tools"></a>Azure Functions Core Tools használata
+# <a name="work-with-azure-functions-core-tools"></a>Az Azure Functions Core Tools használata
 
 Az Azure Functions Core Tools segítségével a helyi számítógépén, a parancssorban vagy a terminálban fejleszthet és futtathat függvényeket. A helyi függvények csatlakozhatnak az élő Azure-szolgáltatásokhoz, és a függvények a teljes functions Runtime használatával hibakeresést végezhetnek a helyi számítógépen. Az Azure-előfizetésben is üzembe helyezhet egy Function alkalmazást.
 
@@ -35,7 +35,7 @@ A Azure Functions Core Tools három verziója létezik. A használt verzió a he
 
 + **1. x verzió**: a Azure functions futtatókörnyezet 1. x verzióját támogatja. Az eszközök ezen verziója csak Windows rendszerű számítógépeken támogatott, és egy NPM- [csomagból](https://www.npmjs.com/package/azure-functions-core-tools)van telepítve.
 
-+ [**3. x/2. x verzió**](#v2): [a Azure functions futtatókörnyezet 3. x vagy 2. x verzióját](functions-versions.md)támogatja. Ezek a verziók támogatják a Windows, a [MacOS](/azure/azure-functions/functions-run-local?tabs=macos#v2)és a [Linux](/azure/azure-functions/functions-run-local?tabs=linux#v2) [rendszert](/azure/azure-functions/functions-run-local?tabs=windows#v2), és platform-specifikus csomagkezelő vagy NPM használatával telepíthetők.
++ [**3. x/2. x verzió**](#v2): [a Azure functions futtatókörnyezet 3. x vagy 2. x verzióját](functions-versions.md)támogatja. Ezek a verziók támogatják a Windows, a [MacOS](?tabs=macos#v2)és a [Linux](?tabs=linux#v2) [rendszert](?tabs=windows#v2), és platform-specifikus csomagkezelő vagy NPM használatával telepíthetők.
 
 Ha másként nincs jelezve, a cikkben szereplő példák a 3. x verzióra vonatkoznak.
 
@@ -48,7 +48,7 @@ Ha másként nincs jelezve, a cikkben szereplő példák a 3. x verzióra vonatk
 
 ### <a name="version-3x-and-2x"></a><a name="v2"></a>3. x és 2. x verzió
 
-Az eszközök 3. x/2. x verziója a .NET Core-ra épülő Azure Functions futtatókörnyezetet használja. Ez a verzió a .NET Core összes platformján támogatott, beleértve a Windows, a [MacOS](/azure/azure-functions/functions-run-local?tabs=macos#v2)és a [Linux](/azure/azure-functions/functions-run-local?tabs=linux#v2) [rendszert](/azure/azure-functions/functions-run-local?tabs=windows#v2)is. 
+Az eszközök 3. x/2. x verziója a .NET Core-ra épülő Azure Functions futtatókörnyezetet használja. Ez a verzió a .NET Core összes platformján támogatott, beleértve a Windows, a [MacOS](?tabs=macos#v2)és a [Linux](?tabs=linux#v2) [rendszert](?tabs=windows#v2)is. 
 
 > [!IMPORTANT]
 > A .NET Core SDK telepítési követelményeit kihagyhatja a [bővítmények]használatával.
@@ -240,7 +240,7 @@ Ha nincs beállítva érvényes tárolási kapcsolódási karakterlánc [`AzureW
 
 ### <a name="get-your-storage-connection-strings"></a>A tárolási kapcsolatok karakterláncának beolvasása
 
-Még ha a fejlesztési Microsoft Azure Storage Emulator is használja, érdemes lehet egy tényleges tárolási kapcsolatban is tesztelni. Feltételezve, hogy már [létrehozott egy Storage-fiókot](../storage/common/storage-create-storage-account.md), a következő módokon szerezhet be érvényes tárolási kapcsolatok karakterláncot:
+Még ha a fejlesztési Microsoft Azure Storage Emulator is használja, érdemes lehet egy tényleges tárolási kapcsolatban is tesztelni. Feltételezve, hogy már [létrehozott egy Storage-fiókot](../storage/common/storage-account-create.md), a következő módokon szerezhet be érvényes tárolási kapcsolatok karakterláncot:
 
 - A [Azure Portal]keresse meg és válassza ki a **Storage-fiókok**lehetőséget. 
   ![Válassza ki a Storage-fiókokat Azure Portal](./media/functions-run-local/select-storage-accounts.png)
@@ -303,7 +303,7 @@ Writing C:\myfunctions\myMyFunctionProj\MyQueueTrigger\function.json
 
 Ezeket a beállításokat a paranccsal is megadhatja a következő argumentumok használatával:
 
-| Argumentum     | Leírás                            |
+| Argumentum     | Description                            |
 | ------------------------------------------ | -------------------------------------- |
 | **`--csx`** | (2. x vagy újabb verzió.) Ugyanazokat a C#-szkripteket (. CSX) hozza létre, amelyek az 1. x verzióban és a portálon használatosak. |
 | **`--language`**, **`-l`**| A sablon programozási nyelve, például C#, F # vagy JavaScript. Ez a beállítás az 1. x verzióban szükséges. A 2. x vagy újabb verziókban ne használja ezt a kapcsolót, vagy válasszon olyan nyelvet, amely megfelel a munkavégző futtatókörnyezetnek. |
@@ -343,7 +343,7 @@ func start
 ```
 func start
 ```
-Ezt a parancsot [virtuális környezetben kell futtatni](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-python#create-venv).
+Ezt a parancsot [virtuális környezetben kell futtatni](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-python#create-venv).
 
 # <a name="typescript"></a>[TypeScript](#tab/ts)
 
@@ -574,7 +574,7 @@ Az ilyen típusú folyamatos átviteli naplókhoz a Application Insights integr�
 
 ## <a name="next-steps"></a>További lépések
 
-Megtudhatja, hogyan fejlesztheti, tesztelheti és teheti közzé Azure Functions a Azure Functions Core Tools [Microsoft Learning modul](https://docs.microsoft.com/learn/modules/develop-test-deploy-azure-functions-with-core-tools/) használatával Azure functions Core Tools [nyílt forráskódú, és a githubon üzemeltethető](https://github.com/azure/azure-functions-cli).  
+Megtudhatja, hogyan fejlesztheti, tesztelheti és teheti közzé Azure Functions a Azure Functions Core Tools [Microsoft Learning modul](/learn/modules/develop-test-deploy-azure-functions-with-core-tools/) használatával Azure functions Core Tools [nyílt forráskódú, és a githubon üzemeltethető](https://github.com/azure/azure-functions-cli).  
 Egy hiba vagy szolgáltatás kérésének megkereséséhez [Nyisson meg egy GitHub-problémát](https://github.com/azure/azure-functions-cli/issues).
 
 <!-- LINKS -->

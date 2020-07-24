@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/15/2020
 ms.author: memildin
-ms.openlocfilehash: 2ad817afd8f4e80e99055646dca34b9bb05d100f
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 1956090f1b927d9fd4e205eaa57bf1952cb1b070
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044311"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083990"
 ---
 # <a name="enhanced-secure-score-in-azure-security-center"></a>Fokozottan biztonságos pontszám Azure Security Center
 
@@ -172,7 +172,7 @@ Az alábbi táblázat a Azure Security Center biztonsági vezérlőit sorolja fe
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">Ajánlott biztonsági eljárások implementálása (max. pontszám 0)</p></strong>Modern biztonsági eljárások "a hálózati peremhálózat megsértésének feltételezése". Emiatt a szabályozás számos ajánlott eljárása az identitások kezelésére koncentrál.<br>A kulcsok és a hitelesítő adatok elvesztése gyakori probléma. <a href="https://docs.microsoft.com/azure/key-vault/key-vault-overview">Azure Key Vault</a> védi a kulcsokat és a titkos kulcsokat a kulcsok, a. pfx fájlok és a jelszavak titkosításával.<br>A virtuális magánhálózatok (VPN) biztonságos módon férhetnek hozzá a virtuális gépekhez. Ha a VPN-ek nem érhetők el, használjon összetett hozzáférési kódot és kétfaktoros hitelesítést, például az <a href="https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks">Azure multi-Factor Authentication</a>-t. A kétfaktoros hitelesítés megakadályozza, hogy a rendszer csak a felhasználóneveket és a jelszavakat használja.<br>Az erős hitelesítési és engedélyezési platformok használata egy másik ajánlott eljárás. Az összevont identitások használata lehetővé teszi, hogy a szervezetek delegálják a meghatalmazott identitások kezelését. Ez akkor is fontos, ha az alkalmazottak le vannak zárva, és a hozzáférését vissza kell vonni.</td>
-    <td class="tg-lboi"; width=55%>-Az előfizetéshez legfeljebb 3 tulajdonost kell kijelölni<br>-Az olvasási engedélyekkel rendelkező külső fiókokat el kell távolítani az előfizetésből<br>-Az MFA-t engedélyezni kell az előfizetésre vonatkozó olvasási engedéllyel rendelkező fiókokon<br>-A Storage-fiókokhoz a tűzfal és a virtuális hálózati konfigurációk hozzáférését korlátozni kell<br>-A RootManageSharedAccessKey kivételével az összes engedélyezési szabályt el kell távolítani az Event hub-névtérből<br>-Az SQL-kiszolgálókhoz Azure Active Directory rendszergazdának kell kiépíteni<br>-Az Event hub-példány engedélyezési szabályait definiálni kell<br>-A Storage-fiókokat át kell telepíteni az új Azure Resource Manager erőforrásokra<br>-A virtuális gépeket át kell telepíteni az új Azure Resource Manager erőforrásokra<br>-A SQL Database speciális biztonsági beállításaiban szerepelnie kell egy e-mail-címnek a biztonsági riasztások fogadásához<br>-A speciális adatbiztonságot engedélyezni kell a felügyelt példányokon<br>-Az összetett veszélyforrások elleni védelem összes típusát engedélyezni kell az SQL felügyelt példány speciális biztonsági beállításainál<br>-A rendszergazdák és az előfizetések tulajdonosainak szóló e-mail-értesítéseket engedélyezni kell az SQL Server speciális adatbiztonsági beállításaiban<br>-Az összetett veszélyforrások elleni védelem típusait "all" értékre kell állítani az SQL Server speciális adatbiztonsági beállításaiban<br>-Az alhálózatokat hálózati biztonsági csoporttal kell társítani<br>-Az összetett veszélyforrások elleni védelem összes típusát engedélyezni kell a kiszolgáló SQL Database speciális biztonsági beállításaiban<br>-Előnézet A Windows Exploit Guard-nek engedélyezve kell lennie <br>-Előnézet Telepíteni kell a vendég konfigurációs ügynököt<br>-A nem internetkapcsolattal rendelkező virtuális gépeket hálózati biztonsági csoportokkal kell védeni</td>
+    <td class="tg-lboi"; width=55%>-Az előfizetéshez legfeljebb 3 tulajdonost kell kijelölni<br>-Az olvasási engedélyekkel rendelkező külső fiókokat el kell távolítani az előfizetésből<br>-Az MFA-t engedélyezni kell az előfizetésre vonatkozó olvasási engedéllyel rendelkező fiókokon<br>-A Storage-fiókokhoz a tűzfal és a virtuális hálózati konfigurációk hozzáférését korlátozni kell<br>-A RootManageSharedAccessKey kivételével az összes engedélyezési szabályt el kell távolítani az Event hub-névtérből<br>-Az SQL-kiszolgálókhoz Azure Active Directory rendszergazdának kell kiépíteni<br>-A speciális adatbiztonságot engedélyezni kell a felügyelt példányokon<br>-Az Event hub-példány engedélyezési szabályait definiálni kell<br>-A Storage-fiókokat át kell telepíteni az új Azure Resource Manager erőforrásokra<br>-A virtuális gépeket át kell telepíteni az új Azure Resource Manager erőforrásokra<br>-Az alhálózatokat hálózati biztonsági csoporttal kell társítani<br>-Előnézet A Windows Exploit Guard-nek engedélyezve kell lennie <br>-Előnézet Telepíteni kell a vendég konfigurációs ügynököt<br>-A nem internetkapcsolattal rendelkező virtuális gépeket hálózati biztonsági csoportokkal kell védeni</td>
   </tr>
 </tbody>
 </table>

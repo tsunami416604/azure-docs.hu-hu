@@ -15,11 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 57ec22cb02512577f8737718cae9175403fb5603
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 627eca1f9a775f12fc9d504629c2a3abbcc919a7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74900884"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084500"
 ---
 # <a name="manage-streaming-endpoints-with-the-azure-portal"></a>Streamvégpontok kezelése az Azure Portalon 
 
@@ -66,7 +67,7 @@ A folyamatos átviteli végpont lehetővé teszi a következő tulajdonságok ko
 * Gyorsítótár-vezérlés
 * Helyek közötti hozzáférési házirendek
 
-További információ ezekről a tulajdonságokról: [streamvégpontok](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint).
+További információ ezekről a tulajdonságokról: [streamvégpontok](/rest/api/media/operations/streamingendpoint).
 
 >[!NOTE]
 >Ha a CDN engedélyezve van, nem férhet hozzá az IP-hozzáféréshez. Az IP-hozzáférés csak akkor érvényes, ha nem rendelkezik CDN-vel.
@@ -121,4 +122,3 @@ Tekintse át a Media Services képzési terveket.
 
 ## <a name="provide-feedback"></a>Visszajelzés küldése
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-

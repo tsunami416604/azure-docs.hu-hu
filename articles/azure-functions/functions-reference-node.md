@@ -3,23 +3,27 @@ title: JavaScript fejlesztői referenciája Azure Functions
 description: Ismerje meg, hogyan fejlesztheti a függvényeket a JavaScript használatával.
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: conceptual
-ms.date: 12/17/2019
-ms.openlocfilehash: d71301ef73cd94c13b12e17c923ec73abb8e4aae
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.date: 07/17/2020
+ms.openlocfilehash: c0e5dd7e1869accd309656b69bd2a07d21b1a3ec
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86252725"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082970"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions JavaScript fejlesztői útmutató
 
-Ez az útmutató a JavaScript-Azure Functions írásának bonyolult adatait tartalmazza.
+Ez az útmutató részletes információkat tartalmaz, amelyek segítenek a Azure Functions JavaScript használatával való sikeres fejlesztésében.
 
-A JavaScript-függvények olyan exportáltak, amelyek aktiváláskor `function` futnak ([a triggerek konfigurálása function.json](functions-triggers-bindings.md)). Az összes függvénynek átadott első argumentum egy `context` objektum, amely a kötési adatok fogadására és küldésére, a naplózásra és a futtatókörnyezettel folytatott kommunikációra szolgál.
+Express.js, Node.js vagy JavaScript-fejlesztőként, ha még nem ismeri a Azure Functionst, először olvassa el a következő cikkek egyikét:
 
-Ez a cikk azt feltételezi, hogy már elolvasta a [Azure functions fejlesztői referenciát](functions-reference.md). Az első függvény létrehozásához a [Visual Studio Code](functions-create-first-function-vs-code.md) használatával vagy [a portálon](functions-create-first-azure-function.md)hajtsa végre a functions rövid útmutatót.
+| Első lépések | Fogalmak| Interaktív tanulás |
+| -- | -- | -- | 
+| <ul><li>[Node.js függvény a Visual Studio Code használatával](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-javascript)</li><li>[Node.js függvény a Terminal/Command parancssorral](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-javascript)</li></ul> | <ul><li>[Fejlesztői útmutató](functions-reference.md)</li><li>[Üzemeltetési lehetőségek](functions-scale.md)</li><li>[Írógéppel függvények](#typescript)</li><li>[Teljesítménnyel &nbsp; kapcsolatos megfontolások](functions-best-practices.md)</li></ul> | <ul><li>[Kiszolgáló nélküli alkalmazás létrehozása](/learn/paths/create-serverless-applications/)</li><li>[Refrakció Node.js és expressz API-k kiszolgáló nélküli API-khoz](/learn/modules/shift-nodejs-express-apis-serverless/)</li></ul> |
 
-Ez a cikk a [írógéppel való alkalmazásfejlesztés](#typescript)támogatását is támogatja.
+## <a name="javascript-function-basics"></a>JavaScript-függvény alapjai
+
+A JavaScript (Node.js) függvény egy exportált művelet, `function` amely az aktiváláskor fut ([a triggerek function.jsbe van állítva](functions-triggers-bindings.md)). Az összes függvénynek átadott első argumentum egy `context` objektum, amely a kötési adatok fogadására és küldésére, a naplózásra és a futtatókörnyezettel folytatott kommunikációra szolgál.
 
 ## <a name="folder-structure"></a>Mappa szerkezete
 
@@ -100,7 +104,7 @@ module.exports = async function (context, req) {
 ## <a name="bindings"></a>Kötések 
 A JavaScriptben a [kötések](functions-triggers-bindings.md) konfigurálva és definiálva vannak a függvény function.jsján. A függvények számos módon működnek együtt a kötésekkel.
 
-### <a name="inputs"></a>Bemenetek
+### <a name="inputs"></a>Bevitelek
 A bemenet két kategóriára oszlik Azure Functionsban: az egyik az trigger bemenete, a másik pedig a további bemenet. Az trigger és más bemeneti kötések (-kötések `direction === "in"` ) háromféle módon olvashatók be a függvényekben:
  - **_[Ajánlott]_ A függvénynek átadott paraméterek.** A függvénynek ugyanolyan sorrendben kell átadni őket, mint *function.js*. A `name` *function.json* elemben definiált tulajdonságnak nem kell megegyeznie a paraméter nevével, bár ennek a következőnek kell lennie:.
  
@@ -118,7 +122,7 @@ A bemenet két kategóriára oszlik Azure Functionsban: az egyik az trigger beme
    };
    ```
    
- - **A JavaScript-objektumot használó bemenetként [`arguments`](https://msdn.microsoft.com/library/87dw3w1k.aspx) .** Ez lényegében ugyanaz, mint a bemenetek paraméterként való továbbítása, de lehetővé teszi a bemenetek dinamikus kezelését.
+ - **A JavaScript-objektumot használó bemenetként [`arguments`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments) .** Ez lényegében ugyanaz, mint a bemenetek paraméterként való továbbítása, de lehetővé teszi a bemenetek dinamikus kezelését.
  
    ```javascript
    module.exports = async function(context) { 
@@ -265,7 +269,7 @@ context.log(message)
 Lehetővé teszi, hogy az alapértelmezett nyomkövetési szinten írjon a streaming Function naplóiba. A `context.log` (z) rendszeren további naplózási módszerek érhetők el, amelyek lehetővé teszik a függvények naplóinak más nyomkövetési szinten történő írására:
 
 
-| Módszer                 | Leírás                                |
+| Metódus                 | Leírás                                |
 | ---------------------- | ------------------------------------------ |
 | **hiba (_üzenet_)**   | A hiba szintű naplózás vagy az alacsonyabb értékre ír.   |
 | **Figyelmeztetés (_üzenet_)**    | Figyelmeztetési szintű naplózás vagy alacsonyabb értékre írás. |
@@ -342,7 +346,7 @@ A HTTP-és webhook-eseményindítók és a HTTP-kimeneti kötések a HTTP-üzene
 
 A `context.req` (kérelem) objektum a következő tulajdonságokkal rendelkezik:
 
-| Tulajdonság      | Leírás                                                    |
+| Tulajdonság      | Description                                                    |
 | ------------- | -------------------------------------------------------------- |
 | _törzse_        | Egy objektum, amely tartalmazza a kérelem törzsét.               |
 | _fejlécek_     | Egy objektum, amely a kérések fejléceit tartalmazza.                   |
@@ -357,7 +361,7 @@ A `context.req` (kérelem) objektum a következő tulajdonságokkal rendelkezik:
 
 A `context.res` (válasz) objektum a következő tulajdonságokkal rendelkezik:
 
-| Tulajdonság  | Leírás                                               |
+| Tulajdonság  | Description                                               |
 | --------- | --------------------------------------------------------- |
 | _törzse_    | Egy objektum, amely tartalmazza a válasz törzsét.         |
 | _fejlécek_ | Egy objektum, amely tartalmazza a válasz fejléceit.             |
@@ -559,11 +563,11 @@ Ebben a példában fontos megjegyezni, hogy bár egy objektum exportálása foly
 
 A `--inspect` paraméterrel megkezdett Node.js folyamat egy hibakeresési ügyfelet figyel a megadott porton. Azure Functions 2. x verzióban megadhat argumentumokat a kódot futtató Node.js folyamathoz a környezeti változó vagy az alkalmazás beállításainak hozzáadásával `languageWorkers:node:arguments = <args>` . 
 
-A helyi hibakereséshez adja hozzá a `"languageWorkers:node:arguments": "--inspect=5858"` `Values` fájlt a [local.settings.js](https://docs.microsoft.com/azure/azure-functions/functions-run-local#local-settings-file) fájlhoz, és csatoljon egy hibakeresőt a 5858-es porthoz.
+A helyi hibakereséshez adja hozzá a `"languageWorkers:node:arguments": "--inspect=5858"` `Values` fájlt a [local.settings.js](./functions-run-local.md#local-settings-file) fájlhoz, és csatoljon egy hibakeresőt a 5858-es porthoz.
 
 A VS Code használatakor a `--inspect` rendszer automatikusan hozzáadja a paramétert a `port` projekt launch.jsfájljában lévő érték használatával.
 
-Az 1. x verzióban a beállítás `languageWorkers:node:arguments` nem fog működni. A hibakeresési portot a [`--nodeDebugPort`](https://docs.microsoft.com/azure/azure-functions/functions-run-local#start) Azure functions Core Tools paraméterrel lehet kiválasztani.
+Az 1. x verzióban a beállítás `languageWorkers:node:arguments` nem fog működni. A hibakeresési portot a [`--nodeDebugPort`](./functions-run-local.md#start) Azure functions Core Tools paraméterrel lehet kiválasztani.
 
 ## <a name="typescript"></a>TypeScript
 
@@ -613,7 +617,7 @@ A `npm start` parancs egyenértékű a következő parancsokkal:
 - `tsc`
 - `func start`
 
-#### <a name="publish-to-azure"></a>Közzététel az Azure platformon
+#### <a name="publish-to-azure"></a>Közzététel az Azure-ban
 
 Mielőtt az parancsot az [`func azure functionapp publish`] Azure-ba történő üzembe helyezéshez használja, a JavaScript-fájlok éles környezetben történő létrehozását a géppel készített forrásfájlokből hozza létre. 
 
@@ -632,7 +636,7 @@ Ha JavaScript-függvényekkel dolgozik, vegye figyelembe a következő részekbe
 
 ### <a name="choose-single-vcpu-app-service-plans"></a>VCPU App Service csomagok kiválasztása
 
-Ha a App Service csomagot használó Function-alkalmazást hoz létre, azt javasoljuk, hogy egyetlen vCPU csomagot válasszon, nem pedig több vCPU rendelkező csomagot. Napjainkban a függvények a JavaScript-funkciókat hatékonyabban futtatják az vCPU virtuális gépeken, a nagyobb méretű virtuális gépek használata azonban nem eredményezi a várt teljesítményt. Ha szükséges, manuálisan is kibővítheti a további vCPU virtuálisgép-példányok hozzáadásával, vagy engedélyezheti az autoskálázást is. További információ: a [Példányszám manuális vagy automatikus skálázása](../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service%2ftoc.json).
+Ha a App Service csomagot használó Function-alkalmazást hoz létre, azt javasoljuk, hogy egyetlen vCPU csomagot válasszon, nem pedig több vCPU rendelkező csomagot. Napjainkban a függvények a JavaScript-funkciókat hatékonyabban futtatják az vCPU virtuális gépeken, a nagyobb méretű virtuális gépek használata azonban nem eredményezi a várt teljesítményt. Ha szükséges, manuálisan is kibővítheti a további vCPU virtuálisgép-példányok hozzáadásával, vagy engedélyezheti az autoskálázást is. További információ: a [Példányszám manuális vagy automatikus skálázása](../azure-monitor/platform/autoscale-get-started.md?toc=/azure/app-service/toc.json).
 
 ### <a name="cold-start"></a>Hidegindító
 
@@ -692,7 +696,7 @@ module.exports = async function (context) {
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információkat találhat az alábbi forrásokban:
 

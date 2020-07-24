@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: TomSh
-ms.openlocfilehash: 9cb516b6d13b4b57a89bb276683857c62a758618
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0bcc67e80861df2827237298444175c3abdb6602
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84021874"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084048"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Elkülönítés az Azure nyilvános felhőben
 
@@ -63,9 +64,9 @@ A bérlői tárolók fogalma mélyen gyökerezik a címtárszolgáltatás minden
 
 Még akkor is, ha több Azure Active Directory-bérlő metaadatait ugyanazon a fizikai lemezen tárolják, nincs kapcsolat a címtárszolgáltatás által definiált tárolók között, amelyet viszont a bérlő rendszergazdája diktál.
 
-### <a name="azure-role-based-access-control-rbac"></a>Azure szerepköralapú Access Control (RBAC)
+### <a name="azure-role-based-access-control-azure-rbac"></a>Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)
 
-Az [Azure szerepköralapú Access Control (RBAC)](../../role-based-access-control/overview.md) lehetővé teszi az Azure-előfizetésekben elérhető különböző összetevők megosztását azáltal, hogy részletes hozzáférés-kezelést biztosít az Azure-hoz. Az Azure RBAC lehetővé teszi, hogy elkülönítse a feladatokat a szervezeten belül, és biztosítsa a hozzáférést, hogy a felhasználóknak milyen feladatokat kell elvégezniük. Ahelyett, hogy az Azure-előfizetésben vagy-erőforrásokban mindenki számára nem korlátozott engedélyeket adna, csak bizonyos műveleteket engedélyezhet.
+Az Azure [szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../../role-based-access-control/overview.md) lehetővé teszi az Azure-előfizetésekben elérhető különböző összetevők megosztását azáltal, hogy részletes hozzáférés-kezelést biztosít az Azure-hoz. Az Azure RBAC lehetővé teszi, hogy elkülönítse a feladatokat a szervezeten belül, és biztosítsa a hozzáférést, hogy a felhasználóknak milyen feladatokat kell elvégezniük. Ahelyett, hogy az Azure-előfizetésben vagy-erőforrásokban mindenki számára nem korlátozott engedélyeket adna, csak bizonyos műveleteket engedélyezhet.
 
 Az Azure RBAC három alapvető szerepkörrel rendelkezik, amelyek minden erőforrástípus esetében érvényesek:
 
@@ -144,7 +145,7 @@ Az Azure Fabric Controller felelős az infrastruktúra-erőforrások bérlői sz
 
 Az Azure hypervisor kikényszeríti a memória és a folyamatok elkülönítését a virtuális gépek között, és biztonságosan irányítja a hálózati forgalmat a vendég operációs rendszer bérlői számára. Ez kiküszöböli a virtuális gép szintjén és a csatornán keresztüli támadás lehetőségét.
 
-Az Azure-ban a legfelső szintű virtuális gép speciális: egy megerősített operációs rendszert futtat, amely egy Fabric-ügynököt (FA) futtató fő operációs rendszer. A FAs használatával a vendég ügynökök (GA) kezelhetők az ügyfél virtuális gépeken található vendég operációs rendszereken. A FAs a tárolási csomópontokat is kezeli.
+Az Azure-ban a legfelső szintű virtuális gép speciális: egy megerősített operációs rendszert futtat, amely egy Fabric-ügynököt (FA) futtató fő operációs rendszer. A FAs-t a vendég operációs rendszereken belül, az ügyfél-virtuális gépeken kezelheti. A FAs a tárolási csomópontokat is kezeli.
 
 Az Azure hypervisor, a root OS/FA, valamint az ügyfél virtuális gépei és gáz-gyűjteménye egy számítási csomópontból áll. A FAs-t egy Fabric-vezérlő (FC) felügyeli, amely a számítási és tárolási csomópontokon kívül van (a számítási és a tárolási fürtöket külön FCs kezeli). Ha az ügyfél a futása közben frissíti az alkalmazás konfigurációs fájlját, az FC kommunikál a gyári kapcsolattal, amely értesíti a számítógépeket a konfiguráció módosításának alkalmazásáról. Hardverhiba esetén az FC automatikusan megkeresi a rendelkezésre álló hardvereket, és ott újraindítja a virtuális gépet.
 
@@ -210,7 +211,7 @@ Az Azure a következő titkosítási típusokat biztosítja az adatvédelem érd
 - Titkosítás az átvitel során
 - Titkosítás inaktív állapotban
 
-#### <a name="encryption-in-transit"></a>Titkosítás az átvitel során
+#### <a name="encryption-in-transit"></a>Titkosítás átvitel közben
 
 Az átvitel közbeni titkosítás egy olyan mechanizmus, amely az adatok védelmét a hálózatokon keresztül továbbítja. Az Azure Storage használatával az alábbiakkal védheti meg az adatvédelmet:
 
@@ -318,4 +319,4 @@ Az [alhálózat](../../virtual-network/virtual-networks-overview.md) egy tovább
 
 - Ismerje meg a [Windows Azure virtuális hálózatokban található gépek hálózati elkülönítési lehetőségeit](https://azure.microsoft.com/blog/network-isolation-options-for-machines-in-windows-azure-virtual-networks/). Ez magában foglalja a klasszikus előtér-és háttér-forgatókönyvet, ahol egy adott háttérrendszer vagy alhálózat számítógépei csak bizonyos ügyfelek vagy más számítógépek számára engedélyezhetik az IP-címek engedélyezési listáján alapuló adott végponthoz való kapcsolódást.
 
-- Ismerje meg a [virtuális gépek elkülönítését az Azure-ban](../../virtual-machines/windows/isolation.md). Az Azure-beli számítások olyan virtuálisgép-méreteket biztosítanak, amelyek egy adott hardvereszközhöz vannak elkülönítve, és egyetlen ügyfélhez vannak hozzárendelve.
+- Ismerje meg a [virtuális gépek elkülönítését az Azure-ban](../../virtual-machines/isolation.md). Az Azure-beli számítások olyan virtuálisgép-méreteket biztosítanak, amelyek egy adott hardvereszközhöz vannak elkülönítve, és egyetlen ügyfélhez vannak hozzárendelve.

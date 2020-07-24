@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: overview
 ms.date: 07/02/2019
-ms.openlocfilehash: b3d5d003db89a11a013c3236a3afbe03ffe68557
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1f88496a6c474194089f20e128b2b92ec61e8559
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76271023"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083429"
 ---
 # <a name="high-performance-computing-on-h-series-vms"></a>Nagy teljesítményű számítástechnika a H-sorozatú virtuális gépeken
 
@@ -39,7 +39,7 @@ A InfiniBand a HB-sorozatú vagy a HC-sorozatú virtuális gépeken való beáll
 
 ## <a name="get-started"></a>Bevezetés
 
-Először döntse el, melyik H-sorozatú virtuális gépet fogja használni. A HPC-optimalizált virtuális gépekről további részleteket a [HB-sorozat áttekintése](hb-series-overview.md) és a [HC-sorozat áttekintése](hc-series-overview.md)című témakörben talál. A specifikációkat lásd: [nagy teljesítményű számítási](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc)virtuálisgép-méretek.
+Először döntse el, melyik H-sorozatú virtuális gépet fogja használni. A HPC-optimalizált virtuális gépekről további részleteket a [HB-sorozat áttekintése](hb-series-overview.md) és a [HC-sorozat áttekintése](hc-series-overview.md)című témakörben talál. A specifikációkat lásd: [nagy teljesítményű számítási](../../sizes-hpc.md)virtuálisgép-méretek.
 
 Miután kiválasztotta és létrehozott egy virtuális gépet az alkalmazáshoz, konfigurálnia kell a InfiniBand engedélyezésével. A InfiniBand Windows és Linux rendszerű virtuális gépeken való engedélyezéséről a [InfiniBand engedélyezése](enable-infiniband.md)című témakörben olvashat bővebben.
 
@@ -51,4 +51,4 @@ Miután kiválasztotta a virtuális gép sorozatát, állítsa be a InfiniBand �
 
 - Tekintse át a [HB-sorozat áttekintését](hb-series-overview.md) és a [HC-sorozat](hc-series-overview.md) áttekintését, és ismerkedjen meg a legfontosabb különbségekkel és specifikációkkal.
 
-- A HPC számítási feladatainak futtatásához szükséges építészeti áttekintést lásd: [nagy teljesítményű számítástechnika (HPC) az Azure](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/)-ban.
+- A HPC számítási feladatainak futtatásához szükséges építészeti áttekintést lásd: [nagy teljesítményű számítástechnika (HPC) az Azure](/azure/architecture/topics/high-performance-computing/)-ban.

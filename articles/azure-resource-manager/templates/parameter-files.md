@@ -3,12 +3,12 @@ title: Paraméterfájl létrehozása
 description: Paraméter létrehozása az értékek átadásához egy Azure Resource Manager sablon üzembe helyezése során
 ms.topic: conceptual
 ms.date: 06/19/2020
-ms.openlocfilehash: 7c03e161c7b3a18020de6a06d356720f5e4c31fd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8039b63978e52b69b0f8ffb4dd4e052769f3c5e6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85117505"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082936"
 ---
 # <a name="create-resource-manager-parameter-file"></a>Resource Manager-paraméter fájljának létrehozása
 
@@ -148,7 +148,7 @@ Végül tekintse meg az engedélyezett értékeket és a korlátozásokat, péld
 }
 ```
 
-## <a name="parameter-type-formats"></a>Paraméter típusú formátumok
+## <a name="parameter-type-formats"></a>Paramétertípusok formátumai
 
 A következő példában a különböző típusú paraméterek formátuma látható.
 
@@ -186,8 +186,8 @@ A következő példában a különböző típusú paraméterek formátuma látha
 
 Lásd:
 
-- [Erőforrások üzembe helyezése ARM-sablonokkal és Azure CLI-vel](./deploy-powershell.md#pass-parameter-values)
-- [Erőforrások üzembe helyezése ARM-sablonokkal és Azure PowerShell](./deploy-cli.md#parameters)
+- [Erőforrások üzembe helyezése ARM-sablonokkal és Azure CLI-vel](./deploy-cli.md#parameters)
+- [Erőforrások üzembe helyezése ARM-sablonokkal és Azure PowerShell](./deploy-powershell.md#pass-parameter-values)
 
 ## <a name="file-name"></a>Fájlnév
 

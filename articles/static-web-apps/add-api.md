@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: wachegha
-ms.openlocfilehash: fd4f57350e97ad38c2c78aec29b1e51d775e8a02
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 4df1aa53c09777ac2470581df07ac132255b005a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86104112"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083667"
 ---
 # <a name="add-an-api-to-azure-static-web-apps-preview-with-azure-functions"></a>API hozzáadása az Azure statikus Web Apps előzetes verziójához Azure Functions
 
@@ -53,7 +53,7 @@ Ezután létre kell hoznia egy Azure Functions projektet az alkalmazás API-ját
 1. Hozzon létre egy **API**nevű almappát a _My-Vanilla-API_ projekten belül.
 1. Nyomja meg az **F1** billentyűt a parancs paletta megnyitásához
 1. Írja be a **Azure functions: új projekt létrehozása...**
-1. Nyomja le az **ENTER** billentyűt
+1. Nyomja le az **Enter** billentyűt
 1. **Tallózás** kiválasztása
 1. Válassza ki az **API** -mappát a projekt-munkaterület könyvtáraként
 1. Válassza a **kiválasztás** lehetőséget.
@@ -133,7 +133,7 @@ A fenti beállításokkal az API-végpont:
 
 ## <a name="run-the-api-locally"></a>Az API helyi futtatása
 
-A Visual Studio Code integrálva van [Azure functions Core Tools](https://docs.microsoft.com/azure/azure-functions/functions-run-local) , hogy lehetővé tegye a projekt futtatását a helyi fejlesztési számítógépen, mielőtt közzéteszi az Azure-ban.
+A Visual Studio Code integrálva van [Azure functions Core Tools](../azure-functions/functions-run-local.md) , hogy lehetővé tegye a projekt futtatását a helyi fejlesztési számítógépen, mielőtt közzéteszi az Azure-ban.
 
 > [!TIP]
 > A folytatás előtt győződjön meg arról, hogy az [Előfeltételek](#prerequisites) szakaszban felsorolt összes erőforrás szerepel a telepítés előtt.
@@ -217,8 +217,8 @@ A Visual Studio Code használatával véglegesítheti és leküldheti a módosí
 
 ## <a name="create-a-static-web-app"></a>Statikus Webalkalmazás létrehozása
 
-1. Lépjen az [Azure Portalra](https://portal.azure.com)
-1. Kattintson **az erőforrás létrehozása** elemre.
+1. Navigáljon a [Azure Portal](https://portal.azure.com)
+1. Kattintson az **Erőforrás létrehozása** gombra
 1. **Statikus webalkalmazás** keresése
 1. Kattintson a **statikus webalkalmazás (előzetes verzió)** elemre.
 1. Kattintson a **Létrehozás** gombra
@@ -230,18 +230,18 @@ Ezután adja hozzá az alkalmazásra vonatkozó beállításokat.
 1. Nevezze el az alkalmazást a **My-Vanilla-API**néven.
 1. Válassza ki az Önhöz legközelebb eső _régiót_
 1. Válassza ki az **ingyenes** _SKU_ -t
-1. Kattintson a **Bejelentkezés a GitHub** használatával gombra, és hitelesítés a GitHub használatával
+1. Kattintson a **Bejelentkezés GitHub-fiókkal** gombra, majd végezzen hitelesítést a GitHub-fiókkal
 1. Válassza ki az előnyben részesített _szervezetet_
 1. Válassza a **My-Vanilla-API** elemet az _adattár_ legördülő menüből
 1. Válassza ki a **főkiszolgálót** az _ág_ legördülő menüből
-1. Kattintson a **következőre: build >** gombra a Build konfigurációjának szerkesztéséhez
+1. Kattintson a **Tovább: Létrehozás >** gombra a létrehozási konfiguráció szerkesztéséhez
 
 Ezután adja hozzá a következőt a Build adataihoz.
 
 1. Adja meg **/** az _alkalmazás helyét_.
 1. Adja meg az **API** -t az _API helye_ mezőben.
 1. Törölje az alapértelmezett értéket az alkalmazás-összetevő _helyéről_, hagyja üresen a mezőt.
-1. Kattintson az **Áttekintés + létrehozás** elemre.
+1. Kattintson a **Felülvizsgálat + létrehozás** elemre.
 1. Kattintson a **Létrehozás** gombra
 
     Ha a _Létrehozás_ gombra kattint, az Azure két dolgot tesz. Először az alapul szolgáló Cloud Services jön létre az alkalmazás támogatásához. Ezután a háttérben futó folyamat megkezdi az alkalmazás felépítését és üzembe helyezését.
@@ -260,7 +260,7 @@ Ezután adja hozzá a következőt a Build adataihoz.
 
 Ha nem szeretné tovább használni ezt az alkalmazást, a következő lépésekkel törölheti az Azure statikus webalkalmazást és a kapcsolódó erőforrásokat.
 
-1. Lépjen az [Azure Portalra](https://portal.azure.com)
+1. Navigáljon a [Azure Portal](https://portal.azure.com)
 1. A felső keresési sávban írja be az **erőforráscsoportok** kifejezést.
 1. Kattintson az **erőforráscsoportok** elemre.
 1. **MyResourceGroup** kiválasztása

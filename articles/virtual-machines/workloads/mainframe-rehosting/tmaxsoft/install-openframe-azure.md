@@ -8,12 +8,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: virtual-machines-linux
-ms.openlocfilehash: 1ad6e52c421d9cfec4640d3a330b5507d6ed3e9b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 41b31d5c4a01183d4620dcd6ec6f4729f078d382
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "72436044"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082392"
 ---
 # <a name="install-tmaxsoft-openframe-on-azure"></a>TmaxSoft-OpenFrame Kiindulópontul telepítése az Azure-ban
 
@@ -64,7 +64,7 @@ A következő táblázat az Azure-beli telepítés követelményeit sorolja fel.
 
 <table>
 <thead>
-    <tr><th>Követelmény</th><th>Leírás</th></tr>
+    <tr><th>Követelmény</th><th>Description</th></tr>
 </thead>
 <tbody>
 <tr><td>Támogatott Linux-disztribúciók az Azure-ban
@@ -349,7 +349,7 @@ A Tibero a OpenFrame Kiindulópontul-környezet számos kulcsfontosságú funkci
      )
     ```
 
-7. Hozza létre az adatbázist. A következő eredmény jelenik meg:
+7. Hozza létre az adatbázist. Az alábbi kimenet jelenik meg:
 
     ```
     Change core dump dir to /opt/tmaxdb/tibero6/bin/prof.
@@ -1167,7 +1167,7 @@ Az OSC az IBM CICS hasonló OpenFrame Kiindulópontul-környezet, amely támogat
      Ha elkészült, a "telepítés kész" üzenet jelenik meg.
 
 4. Győződjön meg arról, hogy a bash-profil frissítése OSC-változókkal történik.
-5. Tekintse át a OpenFrame Kiindulópontul \_ OSC7 \_ 0 \_ Fix2 \_ InstallLog. log fájlt. A következőhöz hasonló eredményt kell kapnia:
+5. Tekintse át a OpenFrame Kiindulópontul \_ OSC7 \_ 0 \_ Fix2 \_ InstallLog. log fájlt. Ennek az alábbihoz hasonlónak kell lennie:
 
      ```
      Summary 
@@ -1476,6 +1476,6 @@ Ezzel befejezte a OpenFrame Kiindulópontul-összetevők telepítését.
 
 Ha a nagyszámítógépek áttelepítését tervezi, a bővülő partneri ökoszisztémánk segítséget nyújt Önnek. A partneri megoldások kiválasztásával kapcsolatos részletes útmutatásért tekintse meg a [platform modernizációs szövetségét](https://datamigration.microsoft.com/).
 
--   [Bevezetés az Azure használatába](https://docs.microsoft.com/azure/)
--   [A gazdagép integrációs kiszolgálójának dokumentációja](https://docs.microsoft.com/host-integration-server/)
--   [Útmutató az Azure Virtual adatközponthoz](https://blogs.msdn.microsoft.com/azurecat/2018/03/12/new-whitepaper-azure-virtual-datacenter-lift-and-shift-guide/)
+-   [Bevezetés az Azure használatába](../../../../index.yml)
+-   [A gazdagép integrációs kiszolgálójának dokumentációja](/host-integration-server/)
+-   [Útmutató az Azure Virtual adatközponthoz](/archive/blogs/azurecat/new-whitepaper-azure-virtual-datacenter-lift-and-shift-guide)

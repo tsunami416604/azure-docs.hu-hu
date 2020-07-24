@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: cshoe
-ms.openlocfilehash: 1f08d6b8a2ce2381c3bc85891a292ac05561cf34
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: be406744dc9752dd3c924c636e85f43e133c1cca
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85832559"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085078"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>Kódtesztelési stratégiák az Azure Functions szolgáltatásban
 
@@ -31,7 +31,7 @@ Az alábbi példa azt ismerteti, hogyan hozhat létre C# Function alkalmazást a
 
 ![Azure Functions tesztelése a C# használatával a Visual Studióban](./media/functions-test-a-function/azure-functions-test-visual-studio-xunit.png)
 
-### <a name="setup"></a>Telepítés
+### <a name="setup"></a>Előkészületek
 
 A környezet beállításához hozzon létre egy Function és test alkalmazást. A következő lépések segítséget nyújtanak a tesztek támogatásához szükséges alkalmazások és függvények létrehozásában:
 
@@ -40,13 +40,13 @@ A környezet beállításához hozzon létre egy Function és test alkalmazást.
 3. [Hozzon létre egy időzítő függvényt a sablonból](./functions-create-scheduled-function.md) , és nevezze el **MyTimerTrigger**.
 4. [Hozzon létre egy XUnit teszt alkalmazást](https://xunit.github.io/docs/getting-started-dotnet-core) a megoldásban, és nevezze el a **functions.** tests nevet.
 5. A NuGet használata a tesztelési alkalmazásból a [Microsoft. AspNetCore. MVC](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc/) -re mutató hivatkozás hozzáadásához
-6. [Hivatkozzon a *functions* alkalmazásra](https://docs.microsoft.com/visualstudio/ide/managing-references-in-a-project?view=vs-2017) a *functions. tesztek* alkalmazásban.
+6. [Hivatkozzon a *functions* alkalmazásra](/visualstudio/ide/managing-references-in-a-project?view=vs-2017) a *functions. tesztek* alkalmazásban.
 
 ### <a name="create-test-classes"></a>Tesztelési osztályok létrehozása
 
 Most, hogy létrejöttek a projektek, létrehozhatók az automatizált tesztek futtatásához használt osztályok.
 
-A függvények a [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger) egy példányát veszik fel az üzenetek naplózásának kezelésére. Egyes tesztek vagy nem naplóznak üzeneteket, vagy nem érintik a naplózás megvalósításának módját. Más teszteknek ki kell értékelniük a naplózott üzeneteket annak megállapításához, hogy egy teszt átadásra kerül-e.
+A függvények a [ILogger](/dotnet/api/microsoft.extensions.logging.ilogger) egy példányát veszik fel az üzenetek naplózásának kezelésére. Egyes tesztek vagy nem naplóznak üzeneteket, vagy nem érintik a naplózás megvalósításának módját. Más teszteknek ki kell értékelniük a naplózott üzeneteket annak megállapításához, hogy egy teszt átadásra kerül-e.
 
 Létre fog hozni egy nevű új osztályt, `ListLogger` amely a tesztelés során kiértékelésre kerülő üzenetek belső listáját tartalmazza. A szükséges felület megvalósításához `ILogger` az osztálynak hatókörre van szüksége. A következő osztály kigúnyolja az osztálynak átadandó tesztelési esetek hatókörét `ListLogger` .
 
@@ -192,7 +192,7 @@ namespace Functions.Tests
 
 Az `TestFactory` osztály a következő tagokat valósítja meg:
 
-- **Adatok**: Ez a tulajdonság a mintaadatok [IEnumerable](https://docs.microsoft.com/dotnet/api/system.collections.ienumerable) gyűjteményét adja vissza. A kulcs érték párok a lekérdezési karakterláncba átadott értékeket jelölik.
+- **Adatok**: Ez a tulajdonság a mintaadatok [IEnumerable](/dotnet/api/system.collections.ienumerable) gyűjteményét adja vissza. A kulcs érték párok a lekérdezési karakterláncba átadott értékeket jelölik.
 
 - **CreateDictionary**: Ez a metódus fogadja a kulcs/érték párokat argumentumként, és visszaadja a `Dictionary` `QueryCollection` lekérdezési karakterlánc értékeit jelölő új létrehozáshoz használt újat.
 
@@ -268,7 +268,7 @@ Az alábbi példa azt ismerteti, hogyan hozható létre JavaScript-függvény al
 
 ![Azure Functions tesztelése a JavaScripttel a VS Code-ban](./media/functions-test-a-function/azure-functions-test-vs-code-jest.png)
 
-### <a name="setup"></a>Telepítés
+### <a name="setup"></a>Előkészületek
 
 A környezet beállításához a futtatásával inicializáljon egy új Node.js alkalmazást egy üres mappában `npm init` .
 

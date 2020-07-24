@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: how-to
 ms.date: 05/08/2020
 ms.author: buhollan
-ms.openlocfilehash: 66ad9c27ca69df230d9ce1d2282e734420fa14f3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 71748959f8b5350a4bd34349eefedbf9d99c76e5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85373665"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083616"
 ---
 # <a name="configure-application-settings-for-azure-static-web-apps-preview"></a>Alkalmazásbeállítások konfigurálása az Azure statikus Web Apps előzetes verziójának beállításához
 
@@ -33,7 +33,7 @@ Az Alkalmazásbeállítások más néven környezeti változók.
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Azure-beli statikus Web Apps alkalmazás
-- [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)
 
 ## <a name="types-of-application-settings"></a>Az Alkalmazásbeállítások típusai
 
@@ -109,9 +109,9 @@ A Azure Portal egy felületet biztosít az Alkalmazásbeállítások létrehozá
 
 1. Kattintson az **OK** gombra.
 
-1. Kattintson a **Save** (Mentés) gombra.
+1. Kattintson a **Mentés** gombra.
 
-### <a name="using-the-azure-cli"></a>Az Azure parancssori felületének használata
+### <a name="using-the-azure-cli"></a>Az Azure CLI-vel
 
 A parancs használatával a `az rest` Beállítások tömeges feltöltését végezheti el az Azure-ban. A parancs JSON-objektumokként fogadja el az Alkalmazásbeállítások egy nevű szülő tulajdonságban `properties` .
 

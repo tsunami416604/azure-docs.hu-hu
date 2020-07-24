@@ -13,11 +13,12 @@ ms.workload: infrastructure
 ms.date: 02/11/2020
 ms.author: bentrin
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fd1267711871b3e55f1a6229e46ae27b360322f6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: db51ec682f43366f5637c461e3fe4037dec8e364
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77617036"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085214"
 ---
 # <a name="sap-hana-on-azure-large-instance-migration-to-azure-virtual-machines"></a>SAP HANA Azure-beli nagyméretű példányok áttelepítése az Azure-ba Virtual Machines
 Ez a cikk a nagyméretű Azure-példányok lehetséges üzembe helyezési forgatókönyveit ismerteti, és tervezési és áttelepítési módszert kínál a lehető legkevesebb átmeneti állásidő
@@ -40,7 +41,7 @@ Ez a cikk a következő feltételezéseket biztosítja:
 - Az ügyfelek ellenőrizték a tervezési és áttelepítési tervet.
 - Tervezze meg a vész-helyreállítási virtuális gépet az elsődleges hellyel együtt.  Az ügyfelek nem használhatják a HLI az áttelepítés után virtuális gépeken futó elsődleges hely DR-csomópontjának.
 - Az ügyfelek az üzleti helyreállítás és a megfelelőségi követelmények alapján másolták a szükséges biztonságimásolat-fájlokat a cél virtuális gépekre. A virtuális gépekről elérhető biztonsági másolatok lehetővé teszik az időponthoz való visszaállítást az átmeneti időszakban.
-- Ha a HSR, az ügyfeleknek be kell állítania és konfigurálniuk kell a STONITH-eszközt a [SLES](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker) és a [RHEL](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker)-hez SAP HANA ha útmutatók.  Nincs előre konfigurálva, mint a HLI eset.
+- Ha a HSR, az ügyfeleknek be kell állítania és konfigurálniuk kell a STONITH-eszközt a [SLES](./high-availability-guide-suse-pacemaker.md) és a [RHEL](./high-availability-guide-rhel-pacemaker.md)-hez SAP HANA ha útmutatók.  Nincs előre konfigurálva, mint a HLI eset.
 - Ez az áttelepítési módszer nem fedi le a Optane-konfigurációval rendelkező HLI SKU-ket.
 
 ## <a name="deployment-scenarios"></a>Üzembe helyezési forgatókönyvek
@@ -48,21 +49,21 @@ A HLI-ügyfelekkel közös üzembe helyezési modellek a következő táblázatb
 
 | Forgatókönyv azonosítója | HLI forgatókönyv | Áttelepítés a Verbatim virtuális gépre? | Megjegyzés |
 | --- | --- | --- | --- |
-| 1 | [Egyetlen csomópont egyetlen SID-vel](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-with-one-sid) | Yes | - |
-| 2 | [Egyetlen csomópont a MCOS](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-mcos) | Yes | - |
-| 3 | [Önálló csomópont a Storage-replikációt használó DR használatával](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-with-dr-using-storage-replication) | No | A Storage-replikáció nem érhető el az Azure Virtual platformon, és nem változtathatja meg a jelenlegi DR-megoldást HSR vagy biztonsági mentésre vagy visszaállításra |
-| 4 | [Egyetlen csomópont DR (többcélú) tároló-replikáció használatával](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-with-dr-multipurpose-using-storage-replication) | No | A Storage-replikáció nem érhető el az Azure Virtual platformon, és nem változtathatja meg a jelenlegi DR-megoldást HSR vagy biztonsági mentésre vagy visszaállításra |
-| 5 | [HSR és STONITH a magas rendelkezésre állás érdekében](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#hsr-with-stonith-for-high-availability) | Yes | Nincsenek előre konfigurált SBD a cél virtuális gépekhez.  Válasszon ki és helyezzen üzembe egy STONITH-megoldást.  Lehetséges beállítások: Azure vívó Agent ( [RHEL](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker), [SLES](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker)), SBD |
-| 6 | [HA a HSR, a DR és a Storage replikációja](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#high-availability-with-hsr-and-dr-with-storage-replication) | No | Cserélje le a DR HSR vagy a Backup/Restore szolgáltatáshoz tartozó tárolási replikációt |
-| 7 | [Gazdagép automatikus feladatátvétele (1 + 1)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#host-auto-failover-11) | Yes | ANF használata megosztott tárolóhoz Azure-beli virtuális gépekkel |
-| 8 | [Kibővíthető készenléti állapottal](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#scale-out-with-standby) | Yes | BW/4HANA a M128s, a M416s, a M416ms virtuális gépek és a ANF használatával |
-| 9 | [Vertikális felskálázás készenlét nélkül](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#scale-out-without-standby) | Yes | BW/4HANA a M128s, a M416s és a M416ms virtuális gépekkel (a Storage-ANF használatával vagy anélkül) |
-| 10 | [Méretezés a DR használatával a Storage replikálásával](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#scale-out-with-dr-using-storage-replication) | No | Cserélje le a DR HSR vagy a Backup/Restore szolgáltatáshoz tartozó tárolási replikációt |
-| 11 | [Egyetlen csomópont a DR használatával HSR](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-with-dr-using-hsr) | Yes | - |
-| 12 | [Egyetlen csomópontos HSR a DR (Cost optimalizált)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-hsr-to-dr-cost-optimized) | Yes | - |
-| 13 | [HA és DR a HSR](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#high-availability-and-disaster-recovery-with-hsr) | Yes | - |
-| 14 | [HA és DR a HSR (Cost optimalizált)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#high-availability-and-disaster-recovery-with-hsr-cost-optimized) | Yes | - |
-| 15 | [Vertikális felskálázás DR használatával HSR](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#scale-out-with-dr-using-hsr) | Yes | BW/4HANA a M128s. M416s, M416ms virtuális gépek (ANF használatával vagy anélkül) |
+| 1 | [Egyetlen csomópont egyetlen SID-vel](./hana-supported-scenario.md#single-node-with-one-sid) | Yes | - |
+| 2 | [Egyetlen csomópont a MCOS](./hana-supported-scenario.md#single-node-mcos) | Yes | - |
+| 3 | [Önálló csomópont a Storage-replikációt használó DR használatával](./hana-supported-scenario.md#single-node-with-dr-using-storage-replication) | No | A Storage-replikáció nem érhető el az Azure Virtual platformon, és nem változtathatja meg a jelenlegi DR-megoldást HSR vagy biztonsági mentésre vagy visszaállításra |
+| 4 | [Egyetlen csomópont DR (többcélú) tároló-replikáció használatával](./hana-supported-scenario.md#single-node-with-dr-multipurpose-using-storage-replication) | No | A Storage-replikáció nem érhető el az Azure Virtual platformon, és nem változtathatja meg a jelenlegi DR-megoldást HSR vagy biztonsági mentésre vagy visszaállításra |
+| 5 | [HSR és STONITH a magas rendelkezésre állás érdekében](./hana-supported-scenario.md#hsr-with-stonith-for-high-availability) | Yes | Nincsenek előre konfigurált SBD a cél virtuális gépekhez.  Válasszon ki és helyezzen üzembe egy STONITH-megoldást.  Lehetséges beállítások: Azure vívó Agent ( [RHEL](./high-availability-guide-rhel-pacemaker.md), [SLES](./high-availability-guide-suse-pacemaker.md)), SBD |
+| 6 | [HA a HSR, a DR és a Storage replikációja](./hana-supported-scenario.md#high-availability-with-hsr-and-dr-with-storage-replication) | No | Cserélje le a DR HSR vagy a Backup/Restore szolgáltatáshoz tartozó tárolási replikációt |
+| 7 | [Gazdagép automatikus feladatátvétele (1 + 1)](./hana-supported-scenario.md#host-auto-failover-11) | Yes | ANF használata megosztott tárolóhoz Azure-beli virtuális gépekkel |
+| 8 | [Kibővíthető készenléti állapottal](./hana-supported-scenario.md#scale-out-with-standby) | Yes | BW/4HANA a M128s, a M416s, a M416ms virtuális gépek és a ANF használatával |
+| 9 | [Vertikális felskálázás készenlét nélkül](./hana-supported-scenario.md#scale-out-without-standby) | Yes | BW/4HANA a M128s, a M416s és a M416ms virtuális gépekkel (a Storage-ANF használatával vagy anélkül) |
+| 10 | [Méretezés a DR használatával a Storage replikálásával](./hana-supported-scenario.md#scale-out-with-dr-using-storage-replication) | No | Cserélje le a DR HSR vagy a Backup/Restore szolgáltatáshoz tartozó tárolási replikációt |
+| 11 | [Egyetlen csomópont a DR használatával HSR](./hana-supported-scenario.md#single-node-with-dr-using-hsr) | Yes | - |
+| 12 | [Egyetlen csomópontos HSR a DR (Cost optimalizált)](./hana-supported-scenario.md#single-node-hsr-to-dr-cost-optimized) | Yes | - |
+| 13 | [HA és DR a HSR](./hana-supported-scenario.md#high-availability-and-disaster-recovery-with-hsr) | Yes | - |
+| 14 | [HA és DR a HSR (Cost optimalizált)](./hana-supported-scenario.md#high-availability-and-disaster-recovery-with-hsr-cost-optimized) | Yes | - |
+| 15 | [Vertikális felskálázás DR használatával HSR](./hana-supported-scenario.md#scale-out-with-dr-using-hsr) | Yes | BW/4HANA a M128s. M416s, M416ms virtuális gépek (ANF használatával vagy anélkül) |
 
 
 ## <a name="source-hli-planning"></a>Forrás (HLI) tervezése
@@ -72,7 +73,7 @@ Egy HLI-kiszolgáló bevezetéséhez a Microsoft Service Management és az ügyf
 Az adatbázis tartalmának kiosztása jó működési gyakorlat, így nemkívánatos, elavult vagy elavult naplók nem lesznek áttelepítve az új adatbázisba.  A háztartások általában a régi, lejárt vagy inaktív adatmennyiségek törlését vagy archiválását foglalják magukban.  Ezeket az adathigiéniai műveleteket nem éles környezetben kell tesztelni, hogy a termelési használat előtt ellenőrizni tudják az adatvágási állapotuk érvényességét.
 
 ### <a name="allow-network-connectivity-for-new-vms-and-or-virtual-network"></a>Hálózati kapcsolat engedélyezése az új virtuális gépek és a virtuális hálózatok számára 
-Az ügyfél HLI üzembe helyezése során a hálózat beállítása a [SAP HANA (nagyméretű példányok) hálózati architektúrája](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture)című cikkben ismertetett információk alapján történt. Emellett a hálózati forgalom útválasztását az "útválasztás az Azure-ban" szakaszban ismertetett módon végezheti el.
+Az ügyfél HLI üzembe helyezése során a hálózat beállítása a [SAP HANA (nagyméretű példányok) hálózati architektúrája](./hana-network-architecture.md)című cikkben ismertetett információk alapján történt. Emellett a hálózati forgalom útválasztását az "útválasztás az Azure-ban" szakaszban ismertetett módon végezheti el.
 - Ha az új virtuális GÉPET áttelepítési célként állítja be, akkor ha a meglévő virtuális hálózatban olyan IP-címtartományok vannak elhelyezve, amelyek már engedélyezve vannak a HLI való csatlakozáshoz, nincs szükség további kapcsolódási frissítésre.
 - Ha az új Azure-beli virtuális gép új Microsoft Azure Virtual Networkba kerül, lehet, hogy egy másik régióban található, és a meglévő virtuális hálózattal van társítva, akkor az eredeti HLI-kiépítés ExpressRoute-szolgáltatási kulcsa és erőforrás-azonosítója használható az új virtuális hálózati IP-címtartomány elérésének engedélyezéséhez.  A Microsoft Service Management szolgáltatással koordinálhatja, hogy a virtuális hálózat HLI a kapcsolatot.  Megjegyzés: az alkalmazás és az adatbázis rétegek közötti hálózati késés csökkentése érdekében az alkalmazás-és az adatbázis-rétegnek ugyanazon a virtuális hálózaton kell lennie.  
 
@@ -106,7 +107,7 @@ Egy új infrastruktúra kiépítésével egy meglévőt kell megérdemelni annak
 A jelenlegi SAP-alkalmazáskiszolgáló központi telepítési régiója általában közel van a társított HLIs.  A HLIs azonban a rendelkezésre álló Azure-régióknál kevesebb helyen kínáljuk.  Amikor áttelepíti a fizikai HLI az Azure-beli virtuális gépre, az is jó idő, hogy a teljesítmény optimalizálása érdekében felhasználja az összes kapcsolódó szolgáltatás közelségi távolságát.  Eközben az egyik kulcsfontosságú szempont, hogy a kiválasztott régió minden szükséges erőforrással rendelkezzen.  Például a magas rendelkezésre állású virtuális gépek családjának, illetve az Azure-zónák ajánlatának rendelkezésre állása.
 
 ### <a name="virtual-network"></a>Virtuális hálózat 
-Az ügyfeleknek ki kell választaniuk, hogy az új HANA-adatbázist meglévő virtuális hálózaton szeretné-e futtatni, vagy újat kíván létrehozni.  Az elsődleges döntési tényező az SAP-környezet aktuális hálózati elrendezése.  Akkor is, ha az infrastruktúra az egyik zónából a kétzónás üzemelő példányba kerül, és a PPG-t használja, ez az architektúra-változást is alkalmazza. További információkért tekintse [meg az Azure PPG optimális hálózati késése az SAP-alkalmazással](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-proximity-placement-scenarios)című cikket.   
+Az ügyfeleknek ki kell választaniuk, hogy az új HANA-adatbázist meglévő virtuális hálózaton szeretné-e futtatni, vagy újat kíván létrehozni.  Az elsődleges döntési tényező az SAP-környezet aktuális hálózati elrendezése.  Akkor is, ha az infrastruktúra az egyik zónából a kétzónás üzemelő példányba kerül, és a PPG-t használja, ez az architektúra-változást is alkalmazza. További információkért tekintse [meg az Azure PPG optimális hálózati késése az SAP-alkalmazással](./sap-proximity-placement-scenarios.md)című cikket.   
 
 ### <a name="security"></a>Biztonság
 Azt jelzi, hogy az új SAP HANA virtuális gép új vagy meglévő vnet/alhálózaton van-e, egy új, üzleti szempontból kritikus fontosságú szolgáltatást jelent, amely védelmet igényel.  A vállalati adatok biztonsági házirendjének megfelelő hozzáférés-vezérlést ki kell értékelni és telepíteni kell az új szolgáltatási osztályhoz.
@@ -114,8 +115,8 @@ Azt jelzi, hogy az új SAP HANA virtuális gép új vagy meglévő vnet/alháló
 ### <a name="vm-sizing-recommendation"></a>VM-méretezési javaslat
 Ez a Migrálás lehetőséget biztosít a HANA számítási motor megfelelő méretének kiszámítására.  A Hana Studióval együtt a HANA [rendszernézeteket](https://help.sap.com/viewer/7c78579ce9b14a669c1f3295b0d8ca16/Cloud/3859e48180bb4cf8a207e15cf25a7e57.html) is használhatja a rendszererőforrás-felhasználás megismeréséhez, ami lehetővé teszi a jobb méretezést a kiadások hatékonyságának szabályozása érdekében.
 
-### <a name="storage"></a>Storage 
-A tárolási teljesítmény az SAP-alkalmazások felhasználói élményét befolyásoló tényezők egyike.  Egy adott VM-SKU-ra alapozva SAP HANA Azure-beli [virtuális gépek tárolási konfigurációinak](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)minimális tárolási elrendezése van közzétéve. Javasoljuk, hogy tekintse át ezeket a minimális specifikációkat, és hasonlítsa össze a meglévő HLI rendszerstatisztikával, hogy biztosítsa az új HANA-beli virtuális gép megfelelő i/o-kapacitását és teljesítményét.
+### <a name="storage"></a>Tárolás 
+A tárolási teljesítmény az SAP-alkalmazások felhasználói élményét befolyásoló tényezők egyike.  Egy adott VM-SKU-ra alapozva SAP HANA Azure-beli [virtuális gépek tárolási konfigurációinak](./hana-vm-operations-storage.md)minimális tárolási elrendezése van közzétéve. Javasoljuk, hogy tekintse át ezeket a minimális specifikációkat, és hasonlítsa össze a meglévő HLI rendszerstatisztikával, hogy biztosítsa az új HANA-beli virtuális gép megfelelő i/o-kapacitását és teljesítményét.
 
 Ha a PPG-t az új HANA-beli virtuális géphez és a hozzá tartozó alrendszerekhez konfigurálja, küldjön egy támogatási jegyet a tároló és a virtuális gép közös elhelyezésére és ellenőrzésére. Mivel előfordulhat, hogy a biztonsági mentési megoldás módosítására van szükség, a tárolási költségeket is újra kell látni, hogy elkerülje a működési kiadások meglepetéseit.
 
@@ -123,13 +124,13 @@ Ha a PPG-t az új HANA-beli virtuális géphez és a hozzá tartozó alrendszere
 A HLI esetében a rendszer a tárolási replikációt a vész-helyreállítási alapértelmezett beállításként kínálja. Ez a funkció nem az alapértelmezett beállítás az Azure-beli virtuális gépen SAP HANA. Vegye fontolóra az üzleti igényeinek megfelelő HSR, biztonsági mentési/helyreállítási vagy más támogatott megoldásokat.
 
 ### <a name="availability-sets-availability-zones-and-proximity-placement-groups"></a>Rendelkezésre állási csoportok, Availability Zones és Proximity elhelyezési csoportok 
-Az alkalmazási réteg és a SAP HANA közötti távolság lerövidítése a hálózati késés minimálisra csökkentése érdekében az új adatbázis virtuális gépet és az aktuális SAP-alkalmazás-kiszolgálókat a PPG-be kell helyezni. Ha szeretné megtudni, hogyan működik együtt az Azure-beli rendelkezésre állási csoport és a Availability Zones a PPG SAP-környezetek számára, tekintse meg a [közelséget](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-proximity-placement-scenarios) .
+Az alkalmazási réteg és a SAP HANA közötti távolság lerövidítése a hálózati késés minimálisra csökkentése érdekében az új adatbázis virtuális gépet és az aktuális SAP-alkalmazás-kiszolgálókat a PPG-be kell helyezni. Ha szeretné megtudni, hogyan működik együtt az Azure-beli rendelkezésre állási csoport és a Availability Zones a PPG SAP-környezetek számára, tekintse meg a [közelséget](./sap-proximity-placement-scenarios.md) .
 Ha a cél HANA rendszer tagjai több Azure-zónában vannak telepítve, akkor az ügyfeleknek egyértelmű képet kell kapniuk a kiválasztott zónák késési profiljáról. Az SAP-rendszerösszetevők elhelyezése optimális az SAP-alkalmazás és az adatbázis közötti proximális távolság tekintetében.  A nyilvános tartomány [rendelkezésre állási zónájának késési teszt eszköze](https://github.com/Azure/SAP-on-Azure-Scripts-and-Utilities/tree/master/AvZone-Latency-Test) megkönnyíti a mérést.  
 
 
 ### <a name="backup-strategy"></a>Biztonsági mentési stratégia
 Számos ügyfél már használ külső gyártótól származó biztonsági mentési megoldásokat a HLI-SAP HANA.  Ebben az esetben csak egy további védett virtuális gép és HANA-adatbázis konfigurálására van szükség.  A folyamatos HLI biztonsági mentési feladatok mostantól ütemezhetők, ha a gép az áttelepítés után le van szerelve.
-A virtuális gépen lévő SAP HANA Azure Backup már általánosan elérhető.  A következő hivatkozásokra kattintva részletes információkat talál: [biztonsági mentés](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database), [visszaállítás](https://docs.microsoft.com/azure/backup/sap-hana-db-restore) [, SAP HANA biztonsági](https://docs.microsoft.com/azure/backup/sap-hana-db-manage) mentés az Azure-beli virtuális gépeken.
+A virtuális gépen lévő SAP HANA Azure Backup már általánosan elérhető.  A következő hivatkozásokra kattintva részletes információkat talál: [biztonsági mentés](../../../backup/backup-azure-sap-hana-database.md), [visszaállítás](../../../backup/sap-hana-db-restore.md) [, SAP HANA biztonsági](../../../backup/sap-hana-db-manage.md) mentés az Azure-beli virtuális gépeken.
 
 ### <a name="dr-strategy"></a>DR-stratégia
 Ha a szolgáltatási szint célkitűzései egy hosszú helyreállítási időt foglalnak magukban, a blob Storage-ba való egyszerű biztonsági mentés és a visszaállítás egy új virtuális gépre való visszaállítása és helyreállítása a legegyszerűbb és legkevésbé költséges DR-stratégia.  
@@ -196,5 +197,5 @@ Ahogy a virtuálisgép-kiszolgálók felálltak, és a HLI-pengék le vannak sze
 
 ## <a name="next-steps"></a>További lépések
 Olvassa el a következő cikkeket:
-- [SAP HANA infrastruktúra-konfigurációk és-műveletek az Azure-](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations)ban.
-- [SAP-munkaterhelések az Azure-ban: tervezési és üzembe helyezési ellenőrzőlista](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-deployment-checklist).
+- [SAP HANA infrastruktúra-konfigurációk és-műveletek az Azure-](./hana-vm-operations.md)ban.
+- [SAP-munkaterhelések az Azure-ban: tervezési és üzembe helyezési ellenőrzőlista](./sap-deployment-checklist.md).

@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: szintetizálás beszéd, Objective-C-Speech Service'
+title: 'Gyors útmutató: a Objective-C beszédének szintetizálása a Speech SDK használatával'
 titleSuffix: Azure Cognitive Services
 description: Megtudhatja, hogyan szintetizálhat beszédet a Objective-C-ben iOS-ben a Speech SDK használatával
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 06/25/2020
 ms.author: yulili
-ms.openlocfilehash: 7a1cc2c45988e0c5a8c757e4d280b48dbbe56daa
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: fa1b62a987cb6c158c8d7f1fceb57bc47e5800eb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391383"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084840"
 ---
 # <a name="quickstart-synthesize-speech-in-objective-c-on-ios-using-the-speech-sdk"></a>Gyors útmutató: beszédfelismerési célú beszéd a Objective-C-ben iOS-ben a Speech SDK használatával
 
@@ -82,7 +82,7 @@ A további párbeszédpaneleken válassza az alábbi lehetőségeket:
 
 1. Miután beírt valamilyen szöveget, és rákattintott a gombra az alkalmazásban, hallania kell a szintetizált hanglejátszást.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [A Objective-C minták megismerése a GitHubon](https://aka.ms/csspeech/samples)

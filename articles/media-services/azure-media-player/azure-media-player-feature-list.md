@@ -6,17 +6,18 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: reference
 ms.date: 04/20/2020
-ms.openlocfilehash: e5595620a2f888b06ad5b35d2e8a008f23861463
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 41e090b9e1d4c091bd3972afd296c5751e6b8c58
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81727228"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082715"
 ---
 # <a name="feature-list"></a>Funkciólista #
 Itt láthatók a tesztelt funkciók és a nem támogatott funkciók listája:
 
-|                                         | TESZTELT | RÉSZLEGESEN TESZTELT | KIPRÓBÁLATLAN | TÁMOGATOTT | MEGJEGYZÉSEK                                                                                                                |
-|:----------------------------------------|--------|------------------|----------|-------------|:---------------------------------------------------------------------------------------------------------------------|
+| Funkció | TESZTELT | RÉSZLEGESEN TESZTELT | KIPRÓBÁLATLAN | TÁMOGATOTT | MEGJEGYZÉSEK |
+| ------- | ------ | ---------------- | -------- | ----------- | ----- |
 | Lejátszás                                |        |                  |          |             |                                                                                                                      |
 | Alapszintű igény szerinti lejátszás                | X      |                  |          |             | Csak Azure Media Services streamek támogatása                                                                      |
 | Alapszintű élő lejátszás                     | X      |                  |          |             | Csak Azure Media Services streamek támogatása                                                                      |
@@ -30,7 +31,7 @@ Itt láthatók a tesztelt funkciók és a nem támogatott funkciók listája:
 | Flash-tartalék (vaku)                | X      |                  |          |             | Nem minden szolgáltatás érhető el ebben a technológiában.                                                                         |
 | Silverlight tartalék Silverlight      | X      |                  |          |             | Nem minden szolgáltatás érhető el ebben a technológiában.                                                                         |
 | Natív HLS átmenő (Html5)         |        | X                |          |             | A platform korlátozásai miatt nem minden szolgáltatás érhető el ebben a technológiában.                                            |
-| Szolgáltatások                                |        |                  |          |             |                                                                                                                      |
+| Funkciók                                |        |                  |          |             |                                                                                                                      |
 | API-támogatás                             | X      |                  |          |             | Lásd: ismert problémák listája                                                                                                |
 | Alapszintű felhasználói felület                                | X      |                  |          |                                                                                                                                    |
 | Inicializálás JavaScript használatával       | X      |                  |          |             |                                                                                                                      |

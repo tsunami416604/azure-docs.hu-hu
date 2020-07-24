@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: guybo
-ms.openlocfilehash: f700dec6486bad9e7024d7c908a70dd0ff2b342c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fc18c278754afd4bb08d564a2f82680fd94bf866
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80066763"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082579"
 ---
 # <a name="information-for-non-endorsed-distributions"></a>Nem támogatott disztribúciók adatai
 
@@ -24,17 +24,18 @@ Az Azure-on futó összes disztribúciónak számos előfeltétele van. Ez a cik
 
 Javasoljuk, hogy kezdje az [Azure által támogatott disztribúciók](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)egyikével. A következő cikkek bemutatják, hogyan készítheti elő az Azure-ban támogatott különböző támogatott Linux-disztribúciókat:
 
-* **[CentOS-alapú disztribúciók](create-upload-centos.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
-* **[Debian Linux](debian-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
-* **[Oracle Linux](oracle-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
-* **[Red Hat Enterprise Linux](redhat-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
-* **[SLES és openSUSE](suse-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
-* **[Ubuntu](create-upload-ubuntu.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
+- [CentOS-alapú disztribúciók](create-upload-centos.md)
+- [Debian Linux](debian-create-upload-vhd.md)
+- [Flatcar Container Linux](flatcar-create-upload-vhd.md)
+- [Oracle Linux](oracle-create-upload-vhd.md)
+- [Red Hat Enterprise Linux](redhat-create-upload-vhd.md)
+- [SLES és openSUSE](suse-create-upload-vhd.md)
+- [Ubuntu](create-upload-ubuntu.md)
 
 Ez a cikk általános útmutatást nyújt a Linux-disztribúciók Azure-beli futtatásához.
 
 ## <a name="general-linux-installation-notes"></a>Általános linuxos telepítési megjegyzések
-* A Hyper-V virtuális merevlemez (VHDX) formátuma nem támogatott az Azure-ban, csak a *rögzített VHD*.  A lemezt VHD formátumba konvertálhatja a Hyper-V kezelőjével vagy a [Convert-VHD](https://docs.microsoft.com/powershell/module/hyper-v/convert-vhd) parancsmag használatával. Ha a VirtualBox-t használja, a lemez létrehozásakor válassza a **rögzített méret** lehetőséget az alapértelmezett (dinamikusan lefoglalt) helyett.
+* A Hyper-V virtuális merevlemez (VHDX) formátuma nem támogatott az Azure-ban, csak a *rögzített VHD*.  A lemezt VHD formátumba konvertálhatja a Hyper-V kezelőjével vagy a [Convert-VHD](/powershell/module/hyper-v/convert-vhd) parancsmag használatával. Ha a VirtualBox-t használja, a lemez létrehozásakor válassza a **rögzített méret** lehetőséget az alapértelmezett (dinamikusan lefoglalt) helyett.
 * Az Azure támogatja a Gen1 (BIOS rendszerindítási) & Gen2 (UEFI rendszerindítási) virtuális gépeket.
 * A VHD számára engedélyezett maximális méret 1 023 GB.
 * A Linux rendszer telepítésekor azt javasoljuk, hogy a logikai kötet-kezelő (LVM) helyett szabványos partíciókat használjon, amely számos telepítés esetében az alapértelmezett. A standard partíciók használatával elkerülhető, hogy az LVM neve ütközik a klónozott virtuális gépekkel, különösen akkor, ha egy operációsrendszer-lemez már csatlakoztatva van egy másik, azonos virtuális géphez a hibaelhárításhoz. Az [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) vagy a [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) adatlemezeken is használható.
@@ -66,7 +67,7 @@ Az Azure-beli VHD-lemezképeknek egy 1 MB-ra igazított virtuális mérettel kel
 
 * A VHD http: \/ / \<mystorageaccount> . blob.Core.Windows.net/VHDs/MyLinuxVM.vhd virtuális mérete 21475270656 bájtnál nem támogatott. A méretnek egész számnak kell lennie (MB-ban).
 
-Ebben az esetben méretezze át a virtuális gépet a Hyper-V Manager konzol vagy a [Resize-VHD PowerShell-](https://technet.microsoft.com/library/hh848535.aspx) parancsmag használatával.  Ha nem Windows-környezetben fut, javasoljuk, `qemu-img` hogy a használatával alakítsa át (ha szükséges), és méretezze át a VHD-t.
+Ebben az esetben méretezze át a virtuális gépet a Hyper-V Manager konzol vagy a [Resize-VHD PowerShell-](/powershell/module/hyper-v/resize-vhd?view=win10-ps) parancsmag használatával.  Ha nem Windows-környezetben fut, javasoljuk, `qemu-img` hogy a használatával alakítsa át (ha szükséges), és méretezze át a VHD-t.
 
 > [!NOTE]
 > Létezik egy [ismert hiba a qemu-IMG](https://bugs.launchpad.net/qemu/+bug/1490611) verzióban >= 2.2.1, amely egy nem megfelelően formázott VHD-t eredményez. A probléma a QEMU 2,6-es verziójában lett kijavítva. Javasoljuk, hogy a `qemu-img` 2.2.0 vagy az alacsonyabb, vagy a 2,6 vagy újabb rendszer használatát javasolja.
@@ -189,4 +190,3 @@ Az [Azure Linux-ügynök](../extensions/agent-linux.md) `waagent` egy Linux rend
    > A VirtualBox-on a következő hibaüzenet jelenhet meg a Futtatás után: `waagent -force -deprovision` `[Errno 5] Input/output error` . Ez a hibaüzenet nem kritikus, és figyelmen kívül hagyható.
 
 * Állítsa le a virtuális gépet, és töltse fel a VHD-t az Azure-ba.
-

@@ -5,11 +5,12 @@ ms.assetid: 4444dbf7-363c-47e2-b24a-dbd45cb08491
 ms.topic: article
 ms.date: 07/06/2016
 ms.custom: seodec18
-ms.openlocfilehash: 1295080d0eec7a4e88029cdadd85863f5f40d034
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c1b0ce62905424032c2100a1a032fa43ba97578f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74689249"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084857"
 ---
 # <a name="restore-an-app-in-azure"></a>Alkalmazás visszaállítása az Azure-ban
 Ebből a cikkből megtudhatja, hogyan állíthatja vissza az alkalmazást olyan [Azure app Serviceban](../app-service/overview.md) , amelyekről korábban készített biztonsági mentést (lásd: [az alkalmazás biztonsági mentése az Azure-ban](manage-backup.md)). Az alkalmazást visszaállíthatja a csatolt adatbázisaival egy korábbi állapotba, vagy létrehozhat egy új alkalmazást az eredeti alkalmazás biztonsági másolatai alapján. A Azure App Service a következő adatbázisokat támogatja a biztonsági mentéshez és visszaállításhoz:
@@ -28,14 +29,14 @@ A biztonsági másolatokból történő visszaállítás a **standard** és a **
     ![Válassza a Visszaállítás most lehetőséget][ChooseRestoreNow]
 2. A **visszaállítás** lapon először válassza ki a biztonsági mentés forrását.
    
-    ![](./media/web-sites-restore/021ChooseSource1.png)
+    ![A biztonsági mentési forrás kiválasztásának helyét bemutató képernyőkép.](./media/web-sites-restore/021ChooseSource1.png)
    
     Az **alkalmazás biztonsági mentése** lehetőség megjeleníti az aktuális alkalmazás összes meglévő biztonsági mentését, és egyszerűen kiválaszthat egyet.
     A **Storage (tárolás** ) beállítással bármely meglévő Azure Storage-fiókból és-tárolóból kiválaszthatja a Backup zip-fájlokat az előfizetésében.
     Ha egy másik alkalmazás biztonsági másolatát kísérli meg visszaállítani, használja a **Storage (tárolás** ) beállítást.
 3. Ezután adja meg az alkalmazás visszaállításának célját a **visszaállítási célhelyen**.
    
-    ![](./media/web-sites-restore/022ChooseDestination1.png)
+    ![Képernyőfelvétel: Itt adhatja meg, hogy hol adja meg az alkalmazás visszaállításának célhelyét.](./media/web-sites-restore/022ChooseDestination1.png)
    
    > [!WARNING]
    > Ha a **felülírás**lehetőséget választja, a rendszer törli az aktuális alkalmazás összes meglévő adatát, és felülírja azt. Mielőtt rákattintott **az OK**gombra, győződjön meg arról, hogy pontosan mit szeretne tenni.
@@ -76,12 +77,12 @@ A Részletek lapon a visszaállítási művelettel kapcsolatos rendelkezésre á
 
 ## <a name="automate-with-scripts"></a>Automatizálás szkriptekkel
 
-A parancsfájlok segítségével automatizálhatja a biztonsági mentési felügyeletet az [Azure CLI](/cli/azure/install-azure-cli) vagy a [Azure PowerShell](/powershell/azure/overview)használatával.
+A parancsfájlok segítségével automatizálhatja a biztonsági mentési felügyeletet az [Azure CLI](/cli/azure/install-azure-cli) vagy a [Azure PowerShell](/powershell/azure/)használatával.
 
 Példákat a következő témakörben talál:
 
 - [Azure CLI-minták](samples-cli.md)
-- [Azure PowerShell-minták](samples-powershell.md)
+- [Azure PowerShell minták](samples-powershell.md)
 
 <!-- ## Next Steps
 You can backup and restore App Service apps using REST API. -->

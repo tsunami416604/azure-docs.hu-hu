@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/16/2020
 ms.author: radeltch
-ms.openlocfilehash: 9419ed320089ff85722e0d9c0582e92491377ab1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eca36a2c13fcdc232d4d06ca6e59598fe9a611f2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84907465"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082137"
 ---
 # <a name="public-endpoint-connectivity-for-virtual-machines-using-azure-standard-load-balancer-in-sap-high-availability-scenarios"></a>Nyilvános végponti kapcsolat a Virtual Machines az Azure standard Load Balancer használata az SAP magas rendelkezésre állási helyzetekben
 
@@ -31,11 +31,11 @@ A cikk több lehetőséget is kínál, amelyekkel kiválaszthatja a forgatókön
 
 ## <a name="overview"></a>Áttekintés
 
-Ha a magas rendelkezésre állást az SAP-megoldások fürtözésen keresztüli megvalósítása révén hajtja végre, a szükséges összetevők egyike [Azure Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview). Az Azure két terheléselosztó SKU-t kínál: standard és alapszintű.
+Ha a magas rendelkezésre állást az SAP-megoldások fürtözésen keresztüli megvalósítása révén hajtja végre, a szükséges összetevők egyike [Azure Load Balancer](../../../load-balancer/load-balancer-overview.md). Az Azure két terheléselosztó SKU-t kínál: standard és alapszintű.
 
 A standard szintű Azure Load Balancer számos előnyt kínál az alapszintű Load Balancerhez képest. Például az Azure-beli rendelkezésre állási zónákon keresztül működik, így jobb monitorozási és naplózási képességeket biztosít a hibaelhárításhoz, csökkentve a késést. A "HA ports" szolgáltatás az összes portot lefedi, azaz már nem szükséges az összes különálló port listázása.  
 
-Fontos különbségek vannak az Azure Load Balancer alapszintű és standard SKU-jának között. Ezek egyike a nyilvános végpontra irányuló kimenő forgalom kezelésére szolgál. Az alapszintű SKU Load Balancer összehasonlításával kapcsolatban lásd: [Load BALANCER SKU-összehasonlítás](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview).  
+Fontos különbségek vannak az Azure Load Balancer alapszintű és standard SKU-jának között. Ezek egyike a nyilvános végpontra irányuló kimenő forgalom kezelésére szolgál. Az alapszintű SKU Load Balancer összehasonlításával kapcsolatban lásd: [Load BALANCER SKU-összehasonlítás](../../../load-balancer/load-balancer-overview.md).  
  
 Ha a nyilvános IP-címek nélküli virtuális gépek a belső (nincs nyilvános IP-cím) standard Azure Load Balancer háttér-készletbe kerülnek, nincs kimenő kapcsolat a nyilvános végpontokkal, kivéve, ha további konfigurálás történik.  
 
@@ -60,20 +60,20 @@ Ha az SAP üzembe helyezése nem igényel kimenő kapcsolatot a nyilvános végp
 Először olvassa el az alábbi dokumentumokat:
 
 * Azure-standard Load Balancer
-  * Az [azure standard Load Balancer áttekintése](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview) – átfogó áttekintés az Azure standard Load balancerről, a fontos alapelvekről, fogalmakról és oktatóanyagokról 
-  * [Kimenő kapcsolatok az Azure-ban](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#scenarios) – forgatókönyvek az Azure-beli kimenő kapcsolat eléréséhez
-  * Terheléselosztó [kimenő szabályai](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-rules-overview)– ismerteti a terheléselosztó kimenő szabályainak fogalmait és a kimenő szabályok létrehozását.
+  * Az [azure standard Load Balancer áttekintése](../../../load-balancer/load-balancer-overview.md) – átfogó áttekintés az Azure standard Load balancerről, a fontos alapelvekről, fogalmakról és oktatóanyagokról 
+  * [Kimenő kapcsolatok az Azure-ban](../../../load-balancer/load-balancer-outbound-connections.md#scenarios) – forgatókönyvek az Azure-beli kimenő kapcsolat eléréséhez
+  * Terheléselosztó [kimenő szabályai](../../../load-balancer/load-balancer-outbound-connections.md#outboundrules)– ismerteti a terheléselosztó kimenő szabályainak fogalmait és a kimenő szabályok létrehozását.
 * Azure Firewall
-  * [Azure Firewall áttekintése](https://docs.microsoft.com/azure/firewall/overview)– a Azure Firewall áttekintése
-  * [Oktatóanyag: Azure Firewall üzembe helyezése és konfigurálása](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal) – útmutatás a Azure Firewall konfigurálásához a Azure Portal használatával
-* [Virtual Networks – felhasználó által definiált szabályok](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#user-defined) – Azure-útválasztási fogalmak és szabályok  
-* [Biztonsági csoportok szolgáltatás címkéi](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) – a hálózati biztonsági csoportok és a tűzfal konfigurációjának leegyszerűsítése a szolgáltatás-címkékkel
+  * [Azure Firewall áttekintése](../../../firewall/overview.md)– a Azure Firewall áttekintése
+  * [Oktatóanyag: Azure Firewall üzembe helyezése és konfigurálása](../../../firewall/tutorial-firewall-deploy-portal.md) – útmutatás a Azure Firewall konfigurálásához a Azure Portal használatával
+* [Virtual Networks – felhasználó által definiált szabályok](../../../virtual-network/virtual-networks-udr-overview.md#user-defined) – Azure-útválasztási fogalmak és szabályok  
+* [Biztonsági csoportok szolgáltatás címkéi](../../../virtual-network/security-overview.md#service-tags) – a hálózati biztonsági csoportok és a tűzfal konfigurációjának leegyszerűsítése a szolgáltatás-címkékkel
 
 ## <a name="additional-external-azure-standard-load-balancer-for-outbound-connections-to-internet"></a>További külső Azure-standard Load Balancer az internet felé irányuló kimenő kapcsolatokhoz
 
-Az egyik lehetőség a nyilvános végpontok felé irányuló kimenő kapcsolat elérése anélkül, hogy a virtuális gép felé irányuló bejövő kapcsolat a nyilvános végpontról is elérhető legyen, egy második, nyilvános IP-címmel rendelkező terheléselosztó létrehozása, a virtuális gépek hozzáadása a második Load Balancer háttér-készletéhez, és csak [Kimenő szabályok](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-rules-overview)definiálása.  
-[Hálózati biztonsági csoportokkal](https://docs.microsoft.com/azure/virtual-network/security-overview) vezérelheti a nyilvános végpontokat, amelyek elérhetők a virtuális gép kimenő hívásainak számára.  
-További információ: 2. forgatókönyv a [Kimenő kapcsolatok](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#scenarios)dokumentumában.  
+Az egyik lehetőség a nyilvános végpontok felé irányuló kimenő kapcsolat elérése anélkül, hogy a virtuális gép felé irányuló bejövő kapcsolat a nyilvános végpontról is elérhető legyen, egy második, nyilvános IP-címmel rendelkező terheléselosztó létrehozása, a virtuális gépek hozzáadása a második Load Balancer háttér-készletéhez, és csak [Kimenő szabályok](../../../load-balancer/load-balancer-outbound-connections.md#outboundrules)definiálása.  
+[Hálózati biztonsági csoportokkal](../../../virtual-network/security-overview.md) vezérelheti a nyilvános végpontokat, amelyek elérhetők a virtuális gép kimenő hívásainak számára.  
+További információ: 2. forgatókönyv a [Kimenő kapcsolatok](../../../load-balancer/load-balancer-outbound-connections.md#scenarios)dokumentumában.  
 A konfiguráció a következőképpen fog kinézni:  
 
 ![Nyilvános végponti pontokhoz való kapcsolódás vezérlése hálózati biztonsági csoportokkal](./media/high-availability-guide-standard-load-balancer/high-availability-guide-standard-load-balancer-public.png)
@@ -81,11 +81,11 @@ A konfiguráció a következőképpen fog kinézni:
 ### <a name="important-considerations"></a>Fontos szempontok
 
 - Az azonos alhálózatban található több virtuális gép számára egy további nyilvános Load Balancer is használhatja, hogy a kimenő kapcsolatok elérhetők legyenek a nyilvános végponthoz, és optimalizálja a költségeket  
-- [Hálózati biztonsági csoportok](https://docs.microsoft.com/azure/virtual-network/security-overview) használatával szabályozhatja, hogy mely nyilvános végpontok érhetők el a virtuális gépekről. A hálózati biztonsági csoportot az alhálózathoz vagy az egyes virtuális gépekhez rendelheti hozzá. Ha lehetséges, használja a [szolgáltatási címkéket](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) a biztonsági szabályok bonyolultságának csökkentése érdekében.  
+- [Hálózati biztonsági csoportok](../../../virtual-network/security-overview.md) használatával szabályozhatja, hogy mely nyilvános végpontok érhetők el a virtuális gépekről. A hálózati biztonsági csoportot az alhálózathoz vagy az egyes virtuális gépekhez rendelheti hozzá. Ha lehetséges, használja a [szolgáltatási címkéket](../../../virtual-network/security-overview.md#service-tags) a biztonsági szabályok bonyolultságának csökkentése érdekében.  
 - Az Azure standard Load Balancer nyilvános IP-címmel és kimenő szabályokkal közvetlen hozzáférést biztosít a nyilvános végponthoz. Ha rendelkezik a vállalati biztonsági követelményekkel, hogy az összes kimenő forgalom a központosított vállalati megoldáson keresztül legyen naplózva és naplózva, előfordulhat, hogy nem tudja teljesíteni a követelményt ebben a forgatókönyvben.  
 
 >[!TIP]
->Ha lehetséges, a [szolgáltatási címkék](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) használatával csökkentse a hálózati biztonsági csoport összetettségét. 
+>Ha lehetséges, a [szolgáltatási címkék](../../../virtual-network/security-overview.md#service-tags) használatával csökkentse a hálózati biztonsági csoport összetettségét. 
 
 ### <a name="deployment-steps"></a>A központi telepítés lépései
 
@@ -100,7 +100,7 @@ A konfiguráció a következőképpen fog kinézni:
 2. Hozzon létre egy háttér-készlet **MyBackendPoolOfPublicILB** , és adja hozzá a virtuális gépeket.  
    1. Válassza ki a virtuális hálózatot  
    1. Válassza ki a virtuális gépeket és azok IP-címeit, és vegye fel őket a háttér-készletbe.  
-3. [Hozzon létre kimenő szabályokat](https://docs.microsoft.com/azure/load-balancer/configure-load-balancer-outbound-cli#create-outbound-rule). Jelenleg nem lehet kimenő szabályokat létrehozni a Azure Portalból. Az [Azure CLI](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest)-vel kimenő szabályokat hozhat létre.  
+3. [Hozzon létre kimenő szabályokat](../../../load-balancer/configure-load-balancer-outbound-cli.md#create-outbound-rule). Jelenleg nem lehet kimenő szabályokat létrehozni a Azure Portalból. Az [Azure CLI](../../../cloud-shell/overview.md?view=azure-cli-latest)-vel kimenő szabályokat hozhat létre.  
 
    ```azurecli
     az network lb outbound-rule create --address-pool MyBackendPoolOfPublicILB --frontend-ip-configs MyPublicILBFrondEndIP --idle-timeout 30 --lb-name MyPublicILB --name MyOutBoundRules  --outbound-ports 10000 --enable-tcp-reset true --protocol All --resource-group MyResourceGroup
@@ -117,13 +117,13 @@ A konfiguráció a következőképpen fog kinézni:
 
    ![Kimenő kapcsolatok a második Load Balancer nyilvános IP-címmel](./media/high-availability-guide-standard-load-balancer/high-availability-guide-standard-load-balancer-network-security-groups.png)
 
-   Az Azure-beli hálózati biztonsági csoportokkal kapcsolatos további információkért lásd: [biztonsági csoportok ](https://docs.microsoft.com/azure/virtual-network/security-overview). 
+   Az Azure-beli hálózati biztonsági csoportokkal kapcsolatos további információkért lásd: [biztonsági csoportok ](../../../virtual-network/security-overview.md). 
 
 ## <a name="azure-firewall-for-outbound-connections-to-internet"></a>Az internet felé irányuló kimenő kapcsolatok Azure Firewall
 
 Egy másik lehetőség a nyilvános végpontok felé irányuló kimenő kapcsolatok elérésére anélkül, hogy a nyilvános végpontokból érkező, a virtuális géphez való bejövő kapcsolódást nem engedélyezi Azure Firewall. A Azure Firewall egy felügyelt szolgáltatás, amely beépített, magas rendelkezésre állású, és több Availability Zones is terjedhet.  
-Emellett telepítenie kell a [felhasználó által megadott útvonalat](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#custom-routes), amely ahhoz az alhálózathoz van társítva, amelyben a virtuális gépek és az Azure Load Balancer telepítve van, és az Azure tűzfalra mutat, hogy átirányítsa a forgalmat a Azure Firewallon keresztül.  
-Az Azure Firewall telepítésének részletes ismertetését lásd: [Azure Firewall telepítése és konfigurálása](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal).  
+Emellett telepítenie kell a [felhasználó által megadott útvonalat](../../../virtual-network/virtual-networks-udr-overview.md#custom-routes), amely ahhoz az alhálózathoz van társítva, amelyben a virtuális gépek és az Azure Load Balancer telepítve van, és az Azure tűzfalra mutat, hogy átirányítsa a forgalmat a Azure Firewallon keresztül.  
+Az Azure Firewall telepítésének részletes ismertetését lásd: [Azure Firewall telepítése és konfigurálása](../../../firewall/tutorial-firewall-deploy-portal.md).  
 
 Az architektúra így néz ki:
 
@@ -137,7 +137,7 @@ Az architektúra így néz ki:
 - Ha a vállalati tűzfal megoldás nem Azure Firewall, és biztonsági követelményeknek kell megfelelnie, hogy az összes kimenő forgalom áthaladjon a központosított vállalati megoldással, ez a megoldás nem lehet praktikus.  
 
 >[!TIP]
->Ha lehetséges, használja a [szolgáltatási címkéket](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) a Azure Firewall szabályok bonyolultságának csökkentése érdekében.  
+>Ha lehetséges, használja a [szolgáltatási címkéket](../../../virtual-network/security-overview.md#service-tags) a Azure Firewall szabályok bonyolultságának csökkentése érdekében.  
 
 ### <a name="deployment-steps"></a>A központi telepítés lépései
 
@@ -229,5 +229,5 @@ Ha a kimenő forgalom továbbítása harmadik féltől származó tűzfalon kere
 
 ## <a name="next-steps"></a>További lépések
 
-* [Ismerje meg, hogyan konfigurálhatja a pacemakert a SUSE-ben az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker)
-* [Ismerje meg, hogyan konfigurálhatja a pacemakert az Azure-beli Red Hat-ban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker)
+* [Ismerje meg, hogyan konfigurálhatja a pacemakert a SUSE-ben az Azure-ban](./high-availability-guide-suse-pacemaker.md)
+* [Ismerje meg, hogyan konfigurálhatja a pacemakert az Azure-beli Red Hat-ban](./high-availability-guide-rhel-pacemaker.md)

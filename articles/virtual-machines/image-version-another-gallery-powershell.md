@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 1fe26a880979a431e456d9a1819dfd1b18d25f77
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 48f0a247ed023583c8489994439a790944b90fdc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86221221"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082596"
 ---
 # <a name="copy-an-image-from-another-gallery-using-powershell"></a>Rendszerkép másolása egy másik gyűjteményből a PowerShell használatával
 
@@ -100,7 +100,7 @@ A kimenet a következőhöz hasonlóan fog kinézni:
 }
 ```
 
-Hozzon létre egy új rendszerkép-definíciót a célhelyen a [New-AzGalleryImageDefinition](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion) parancsmag és a fenti kimenetből származó információk használatával.
+Hozzon létre egy új rendszerkép-definíciót a célhelyen a [New-AzGalleryImageDefinition](/powershell/module/az.compute/new-azgalleryimageversion) parancsmag és a fenti kimenetből származó információk használatával.
 
 
 Ebben a példában a képdefiníció neve *myDestinationImgDef* a *myDestinationGallery*nevű galériában.
@@ -123,7 +123,7 @@ $destinationImgDef  = New-AzGalleryImageDefinition `
 
 ## <a name="create-the-image-version"></a>A rendszerkép verziójának létrehozása
 
-Hozzon létre egy rendszerkép [-verziót a New-AzGalleryImageVersion](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion)használatával. Meg kell adnia a forrás rendszerkép AZONOSÍTÓját a `--managed-image` (z) paraméterben a rendszerkép verziójának a célhelyen való létrehozásához. 
+Hozzon létre egy rendszerkép [-verziót a New-AzGalleryImageVersion](/powershell/module/az.compute/new-azgalleryimageversion)használatával. Meg kell adnia a forrás rendszerkép AZONOSÍTÓját a `--managed-image` (z) paraméterben a rendszerkép verziójának a célhelyen való létrehozásához. 
 
 A képverzió megengedett karaktereinek száma számok és időszakok. A számoknak egy 32 bites egész számon belüli tartományba kell esniük. Formátum: *MajorVersion*. *MinorVersion*. *Javítás*.
 
@@ -156,7 +156,7 @@ $job.State
 > [!NOTE]
 > Meg kell várnia, amíg a rendszerkép verziója teljesen elkészült és replikálva lett ahhoz, hogy ugyanazt a felügyelt képet használhassa egy másik rendszerkép-verzió létrehozásához.
 >
-> A rendszerképet a prémium tárolóban is tárolhatja egy hozzáadási `-StorageAccountType Premium_LRS` vagy a [zóna redundáns tárterületével](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) , `-StorageAccountType Standard_ZRS` Ha létrehozza a rendszerkép verzióját.
+> A rendszerképet a prémium tárolóban is tárolhatja egy hozzáadási `-StorageAccountType Premium_LRS` vagy a [zóna redundáns tárterületével](../storage/common/storage-redundancy.md) , `-StorageAccountType Standard_ZRS` Ha létrehozza a rendszerkép verzióját.
 >
 
 

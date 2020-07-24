@@ -13,10 +13,11 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 37c83e77cadae002ff701a08c4b36a86f7cab9a0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79281235"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082834"
 ---
 # <a name="move-data-from-postgresql-using-azure-data-factory"></a>Adatok áthelyezése a PostgreSQL-ből a Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -74,9 +75,9 @@ A következő táblázat a PostgreSQL-hez társított szolgáltatáshoz tartozó
 | típus |A Type tulajdonságot a következőre kell beállítani: **OnPremisesPostgreSql** |Yes |
 | kiszolgáló |A PostgreSQL-kiszolgáló neve. |Yes |
 | adatbázis |A PostgreSQL-adatbázis neve. |Yes |
-| séma |A séma neve az adatbázisban. A séma neve megkülönbözteti a kis-és nagybetűket. |No |
+| schema |A séma neve az adatbázisban. A séma neve megkülönbözteti a kis-és nagybetűket. |No |
 | authenticationType |A PostgreSQL-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa. A lehetséges értékek a következők: névtelen, alapszintű és Windows. |Yes |
-| felhasználónév |Ha alapszintű vagy Windows-hitelesítést használ, adja meg a felhasználónevet. |No |
+| username |Ha alapszintű vagy Windows-hitelesítést használ, adja meg a felhasználónevet. |No |
 | jelszó |Adja meg a felhasználónévhez megadott felhasználói fiókhoz tartozó jelszót. |No |
 | Átjáró neve |Annak az átjárónak a neve, amelyet a Data Factory szolgáltatásnak használnia kell a helyszíni PostgreSQL-adatbázishoz való kapcsolódáshoz. |Yes |
 
@@ -98,12 +99,12 @@ Ha a forrás típusa **RelationalSource** (beleértve a PostgreSQL-t is), a köv
 
 | Tulajdonság | Leírás | Megengedett értékek | Kötelező |
 | --- | --- | --- | --- |
-| lekérdezés |Az egyéni lekérdezés használatával olvashatja el az adatolvasást. |SQL-lekérdezési karakterlánc. Példa: `"query": "select * from \"MySchema\".\"MyTable\""`. |Nem (ha meg van adva az **adatkészlet** **Táblanév** ) |
+| lekérdezés |Az egyéni lekérdezés használatával olvashatja el az adatolvasást. |SQL-lekérdezési karakterlánc. Például: `"query": "select * from \"MySchema\".\"MyTable\""`. |Nem (ha meg van adva az **adatkészlet** **Táblanév** ) |
 
 > [!NOTE]
 > A séma és a tábla neve megkülönbözteti a kis-és nagybetűket. Csatolja őket a `""` lekérdezésben (idézőjelek között).
 
-**Példa:**
+**Például**
 
  `"query": "select * from \"MySchema\".\"MyTable\""`
 
@@ -308,7 +309,7 @@ Az adatok PostgreSQL-be való áthelyezésekor a rendszer a következő leképez
 | bigserial |serial8 |Int64 |
 | bit [(n)] | |Bájt [], karakterlánc |
 | bit változó [(n)] |varbit |Bájt [], karakterlánc |
-| logikai |logikai |Logikai |
+| boolean |logikai |Logikai érték |
 | párbeszédpanel | |Bájt [], karakterlánc |
 | bytea | |Bájt [], karakterlánc |
 | karakter [(n)] |char [(n)] |Sztring |
@@ -318,7 +319,7 @@ Az adatok PostgreSQL-be való áthelyezésekor a rendszer a következő leképez
 | kör | |Bájt [], karakterlánc |
 | dátum | |Datetime |
 | daterange | |Sztring |
-| dupla pontosság |FLOAT8 |Double |
+| dupla pontosság |FLOAT8 |Dupla |
 | inet | |Bájt [], karakterlánc |
 | intarr | |Sztring |
 | int4range | |Sztring |

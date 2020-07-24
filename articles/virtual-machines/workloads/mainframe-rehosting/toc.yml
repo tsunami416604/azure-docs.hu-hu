@@ -2,7 +2,7 @@
   items:
     - name: Áttekintés
       items:
-        - name: Bevezetés
+        - name: Első lépések
           href: overview.md
         - name: Számítási feladatok
           href: partner-workloads.md
@@ -39,9 +39,9 @@
         - name: ADCD beállítása a zD&T-ben
           href: ibm/demo.md
         - name: IBM DB2 pureScale
-          href: /azure/virtual-machines/linux/ibm-db2-purescale-azure?toc=/azure/virtual-machines/workloads/mainframe-rehosting/toc.json
+          href: ../../linux/ibm-db2-purescale-azure.md?toc=/azure/virtual-machines/workloads/mainframe-rehosting/toc.json
         - name: Az IBM Db2 pureScale üzembe helyezése
-          href: /azure/virtual-machines/linux/deploy-ibm-db2-purescale-azure?toc=/azure/virtual-machines/workloads/mainframe-rehosting/toc.json
+          href: ../../linux/deploy-ibm-db2-purescale-azure.md?toc=/azure/virtual-machines/workloads/mainframe-rehosting/toc.json
     - name: További források
       items:
         - name: Tanulmányok

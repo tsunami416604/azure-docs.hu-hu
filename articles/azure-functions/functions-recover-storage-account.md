@@ -5,11 +5,12 @@ author: alexkarcher-msft
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: alkarche
-ms.openlocfilehash: 8fcd0661e2c7cab505121cf0d4d7b4c1d29017f8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d84e1269fecf3bd85538415b5790c22aaf6eb01e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77063781"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085112"
 ---
 # <a name="troubleshoot-error-azure-functions-runtime-is-unreachable"></a>Hibakeresési hiba: "a Azure Functions-futtatókörnyezet nem érhető el"
 
@@ -17,7 +18,7 @@ Ez a cikk segítséget nyújt a Azure Portalban megjelenő következő hibaüzen
 
 > "Hiba: a Azure Functions-futtatókörnyezet nem érhető el. Kattintson ide a tárolási konfiguráció részleteinek megtekintéséhez.
 
-Ez a probléma akkor fordul elő, ha a Azure Functions-futtatókörnyezet nem indítható el. A probléma leggyakoribb oka, hogy a Function alkalmazás elvesztette a hozzáférést a Storage-fiókjához. További információ: a [Storage-fiókra vonatkozó követelmények](https://docs.microsoft.com/azure/azure-functions/functions-create-function-app-portal#storage-account-requirements).
+Ez a probléma akkor fordul elő, ha a Azure Functions-futtatókörnyezet nem indítható el. A probléma leggyakoribb oka, hogy a Function alkalmazás elvesztette a hozzáférést a Storage-fiókjához. További információ: a [Storage-fiókra vonatkozó követelmények](./functions-create-function-app-portal.md#storage-account-requirements).
 
 A cikk további részében a hiba következő okának elhárítása segít, beleértve az egyes esetek azonosítását és megoldását.
 
@@ -25,7 +26,7 @@ A cikk további részében a hiba következő okának elhárítása segít, bele
 
 Minden Function alkalmazás működéséhez szükség van egy Storage-fiókra. Ha a fiók törölve lett, a függvény nem fog működni.
 
-Első lépésként tekintse meg a Storage-fiók nevét az alkalmazás beállításaiban. `AzureWebJobsStorage`Vagy `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` tartalmazza a Storage-fiók nevét, amely egy kapcsolatok karakterláncában van becsomagolva. További információ: [az Alkalmazásbeállítások referenciája Azure functions](https://docs.microsoft.com/azure/azure-functions/functions-app-settings#azurewebjobsstorage).
+Első lépésként tekintse meg a Storage-fiók nevét az alkalmazás beállításaiban. `AzureWebJobsStorage`Vagy `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` tartalmazza a Storage-fiók nevét, amely egy kapcsolatok karakterláncában van becsomagolva. További információ: [az Alkalmazásbeállítások referenciája Azure functions](./functions-app-settings.md#azurewebjobsstorage).
 
 Keresse meg a Storage-fiókját a Azure Portalban, és ellenőrizze, hogy még létezik-e. Ha törölték, hozza létre újra a Storage-fiókot, és cserélje le a tárolási kapcsolatok karakterláncait. A függvény kódja elveszett, és újra kell telepítenie.
 
@@ -36,12 +37,12 @@ Ha az előző lépésben nem találja a Storage-fiókhoz tartozó kapcsolatok ka
 ### <a name="required-application-settings"></a>Szükséges Alkalmazásbeállítások
 
 * Szükséges
-    * [`AzureWebJobsStorage`](https://docs.microsoft.com/azure/azure-functions/functions-app-settings#azurewebjobsstorage)
+    * [`AzureWebJobsStorage`](./functions-app-settings.md#azurewebjobsstorage)
 * A felhasználási terv funkcióihoz szükséges:
-    * [`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`](https://docs.microsoft.com/azure/azure-functions/functions-app-settings)
-    * [`WEBSITE_CONTENTSHARE`](https://docs.microsoft.com/azure/azure-functions/functions-app-settings)
+    * [`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`](./functions-app-settings.md)
+    * [`WEBSITE_CONTENTSHARE`](./functions-app-settings.md)
 
-További információ: [az Alkalmazásbeállítások referenciája Azure functions](https://docs.microsoft.com/azure/azure-functions/functions-app-settings).
+További információ: [az Alkalmazásbeállítások referenciája Azure functions](./functions-app-settings.md).
 
 ### <a name="guidance"></a>Útmutató
 
@@ -51,7 +52,7 @@ További információ: [az Alkalmazásbeállítások referenciája Azure functio
 
 ## <a name="storage-account-credentials-are-invalid"></a>A Storage-fiók hitelesítő adatai érvénytelenek
 
-A tárolási kulcsok újragenerálása esetén frissíteni kell a korábban tárgyalt Storage-fiókhoz tartozó kapcsolatok karakterláncait. További információ a Storage Key Management szolgáltatásról: [Azure Storage-fiók létrehozása](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account).
+A tárolási kulcsok újragenerálása esetén frissíteni kell a korábban tárgyalt Storage-fiókhoz tartozó kapcsolatok karakterláncait. További információ a Storage Key Management szolgáltatásról: [Azure Storage-fiók létrehozása](../storage/common/storage-account-create.md).
 
 ## <a name="storage-account-is-inaccessible"></a>A Storage-fiók nem érhető el
 
@@ -59,7 +60,7 @@ A Function alkalmazásnak képesnek kell lennie hozzáférni a Storage-fiókhoz.
 
 * A Function alkalmazást a rendszer a megfelelő hálózati szabályok nélkül helyezi üzembe a App Service Environment a Storage-fiókba irányuló és onnan érkező forgalom engedélyezéséhez.
 
-* A Storage-fiók tűzfala engedélyezve van, és nincs konfigurálva a függvények felé irányuló és onnan érkező forgalom engedélyezéséhez. További információ: [Azure Storage-tűzfalak és virtuális hálózatok konfigurálása](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
+* A Storage-fiók tűzfala engedélyezve van, és nincs konfigurálva a függvények felé irányuló és onnan érkező forgalom engedélyezéséhez. További információ: [Azure Storage-tűzfalak és virtuális hálózatok konfigurálása](../storage/common/storage-network-security.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
 ## <a name="daily-execution-quota-is-full"></a>A napi végrehajtási kvóta megtelt
 
@@ -87,7 +88,7 @@ A App Service Environment konfiguráció ellenőrzése:
    
 A portált olyan számítógépről is használhatja, amely az alkalmazást futtató virtuális hálózathoz vagy a virtuális hálózatban futó virtuális géphez van csatlakoztatva. 
 
-A bejövő szabályok konfigurálásával kapcsolatos további információkért tekintse [meg az App Service Environment hálózatkezelési szempontjainak](https://docs.microsoft.com/azure/app-service/environment/network-info#network-security-groups)hálózati biztonsági csoportjai című szakaszát.
+A bejövő szabályok konfigurálásával kapcsolatos további információkért tekintse [meg az App Service Environment hálózatkezelési szempontjainak](../app-service/environment/network-info.md#network-security-groups)hálózati biztonsági csoportjai című szakaszát.
 
 ## <a name="next-steps"></a>További lépések
 

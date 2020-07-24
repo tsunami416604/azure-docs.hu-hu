@@ -6,11 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: cynthn
-ms.openlocfilehash: 1594c030839cccdd48c4b032c6ad92f746f78e26
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 78b11a4d900b8c9cf30a1d37a2b7e6380d6b989a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78970276"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082562"
 ---
 # <a name="create-a-linux-virtual-machine-that-uses-ssh-authentication-with-the-rest-api"></a>SSH-hitelesítést használó linuxos virtuális gép létrehozása a REST API
 
@@ -45,7 +46,7 @@ A következő fejlécek megadása kötelező:
 | Kérelem fejléce   | Leírás |
 |------------------|-----------------|
 | *Content-Type* (Tartalomtípus):  | Kötelező. Állítsa `application/json` értékre. |
-| *Authorization* (Engedélyezés): | Kötelező. Állítsa egy érvényes `Bearer` [hozzáférési jogkivonatra](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients). |
+| *Authorization* (Engedélyezés): | Kötelező. Állítsa egy érvényes `Bearer` [hozzáférési jogkivonatra](/rest/api/azure/#authorization-code-grant-interactive-clients). |
 
 REST API kérelmekkel kapcsolatos általános információkért tekintse meg [a REST API kérelem/válasz összetevőit](/rest/api/azure/#components-of-a-rest-api-requestresponse).
 
@@ -121,13 +122,13 @@ A kérelem törzsében elérhető definíciók teljes listáját a [virtuális g
 
 ## <a name="sending-the-request"></a>A kérelem küldése
 
-A HTTP-kérelem elküldéséhez használhatja a kívánt ügyfelet. Egy [böngészőbeli eszközt](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate) is használhat a **kipróbálás** gombra kattintva.
+A HTTP-kérelem elküldéséhez használhatja a kívánt ügyfelet. Egy [böngészőbeli eszközt](/rest/api/compute/virtualmachines/createorupdate) is használhat a **kipróbálás** gombra kattintva.
 
 ### <a name="responses"></a>Válaszok
 
 A műveletnek két sikeres válasza van a virtuális gép létrehozásához vagy frissítéséhez:
 
-| Name        | Típus                                                                              | Description |
+| Név        | Típus                                                                              | Description |
 |-------------|-----------------------------------------------------------------------------------|-------------|
 | 200 OK      | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | OK          |
 | 201 létrehozva | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | Létrehozva     |
@@ -150,4 +151,4 @@ Az Azure REST API-kkal vagy más felügyeleti eszközökkel, például az Azure 
 - [Azure számítási szolgáltató REST API](/rest/api/compute/)
 - [Bevezetés az Azure REST API használatába](/rest/api/azure/)
 - [Azure CLI](/cli/azure/)
-- [Azure PowerShell-modul](/powershell/azure/overview)
+- [Azure PowerShell-modul](/powershell/azure/)

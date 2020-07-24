@@ -6,11 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 10/02/2019
 ms.author: sngun
-ms.openlocfilehash: 57db2253cbffa8e16313c7613de6d2ddb2f2b0a2
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 1bda235e5f3f867762457d0dc8214bbadc88059e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027239"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084823"
 ---
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>Kapcsolódás Azure Cosmos DB BI Analytics-eszközökkel az ODBC-illesztővel
 
@@ -235,9 +236,9 @@ Az új DSN használatával bármely ODBC-kompatibilis eszközzel csatlakozhat Az
 
 1. Az Power BI Desktopban található adatmegjelenítéshez jelölje be a tábla neve előtt található jelölőnégyzetet, majd kattintson a **Betöltés**elemre.
 
-1. Power BI Desktop a bal szélen válassza az adatlapot ![A Power BI Desktop Adatlapja](./media/odbc-driver/odbc-driver-data-tab.png) erősítse meg, hogy az adatai importálása megtörtént.
+1. Power BI Desktop a bal szélen kattintson az adatlapra az :::image type="icon" source="./media/odbc-driver/odbc-driver-data-tab.png"::: adatimportálás ellenőrzéséhez. 
 
-1. Mostantól a Power BI használatával is létrehozhat vizualizációkat, ha a jelentés lap jelentés lapján a Power BI Desktop, majd az új vizualizáció elemre kattint, ![ ](./media/odbc-driver/odbc-driver-report-tab.png) majd testreszabja a csempét. **New Visual** További információ a vizualizációk létrehozásáról a Power BI Desktopban: [Power bi vizualizációs típusai](https://powerbi.microsoft.com/documentation/powerbi-service-visualization-types-for-reports-and-q-and-a/).
+1. Mostantól létrehozhat vizualizációkat Power BI használatával, ha a jelentés lapra kattint :::image type="icon" source="./media/odbc-driver/odbc-driver-report-tab.png"::: , majd az **új vizualizáció**lehetőségre kattint, majd testreszabja a csempét. További információ a vizualizációk létrehozásáról a Power BI Desktopban: [Power bi vizualizációs típusai](https://powerbi.microsoft.com/documentation/powerbi-service-visualization-types-for-reports-and-q-and-a/). 
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 

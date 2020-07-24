@@ -1,6 +1,6 @@
 ---
-title: Windows rendszerű virtuális asztali környezet – Azure
-description: A Windows rendszerű virtuális asztali környezet alapvető elemei.
+title: Windows rendszerű virtuális asztali környezet (Fall 2019) – Azure
+description: Ismerje meg a Windows rendszerű virtuális asztali (2019-es kiadási) környezet alapvető elemeit, például a bérlőket és a gazdagépeket.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 153532b3c33158ee1a43db7883eb7a9ec621ade7
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 8cb41b4f94b14a94c79b490e38889825fd9d8d1a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86241675"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082647"
 ---
-# <a name="windows-virtual-desktop-environment"></a>A Windows Virtual Desktop környezete
+# <a name="windows-virtual-desktop-environment-fall-2019-release"></a>Windows rendszerű virtuális asztali környezet (2019-es kiadás)
 
 >[!IMPORTANT]
 >Ez a tartalom a Fall 2019 kiadásra vonatkozik, amely nem támogatja a Windows rendszerű virtuális asztali objektumokat Azure Resource Manager. Ha a Spring 2020 Update szolgáltatásban bevezetett Azure Resource Manager Windows rendszerű virtuális asztali objektumokat szeretne felügyelni, tekintse meg [ezt a cikket](../environment-setup.md).
@@ -59,7 +59,7 @@ A Windows virtuális asztal szolgáltatásban a Windows rendszerű virtuális as
 
 Miután hozzárendelte a felhasználókat az alkalmazás csoportjaihoz, csatlakozhatnak a Windows rendszerű virtuális asztali környezethez a Windows rendszerű virtuális asztali ügyfelek bármelyikével.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a delegált hozzáférésről és a szerepkörök felhasználókhoz való hozzárendeléséről a [Windows Virtual Desktopban](delegated-access-virtual-desktop-2019.md).
 

@@ -12,11 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 25e8be28903d490a7a8c17e16d2beddc44c95c41
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b47fb242a82097a9fa5c9c41dac99f0a7f8ab2c8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84782772"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085435"
 ---
 # <a name="time-sync-for-linux-vms-in-azure"></a>Linux rendszerű virtuális gépek időszinkronizálása az Azure-ban
 
@@ -127,11 +128,11 @@ Ebben a példában a visszaadott érték a *ptp0*, ezért ezt használjuk az ór
 cat /sys/class/ptp/ptp0/clock_name
 ```
 
-Ennek a **HyperV**kell visszaadnia.
+Ennek vissza kell térnie `hyperv` .
 
 ### <a name="chrony"></a>chrony
 
-Az Ubuntu 19,10-es és újabb verzióiban Red Hat Enterprise Linux és CentOS 7. x [chrony](https://chrony.tuxfamily.org/) úgy van konfigurálva, hogy a PTP-forrást használja. A chrony helyett a régebbi Linux-verziók a Network Time Protocol Daemon (ntpd) protokollt használják, amely nem támogatja a PTP-forrásokat. Ha engedélyezni szeretné a PTP-t ezekben a kiadásokban, manuálisan kell telepítenie és konfigurálnia a chrony (a chrony. conf fájlban) a következő kód használatával:
+Az Ubuntu 19,10-es és újabb verzióiban, Red Hat Enterprise Linux és CentOS 8. x verzióban a [chrony](https://chrony.tuxfamily.org/) egy PTP-alapú forrás-órajel használatára van konfigurálva. A chrony helyett a régebbi Linux-verziók a Network Time Protocol Daemon (ntpd) protokollt használják, amely nem támogatja a PTP-forrásokat. Ha engedélyezni szeretné a PTP-t ezekben a kiadásokban, manuálisan kell telepítenie és konfigurálnia a chrony (a chrony. conf fájlban) a következő kód használatával:
 
 ```bash
 refclock PHC /dev/ptp0 poll 3 dpoll -2 offset 0
@@ -143,9 +144,9 @@ A Red Hat és az NTP szolgáltatással kapcsolatos további információkért l�
 
 További információ a chrony: a [Chrony használata](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/ch-configuring_ntp_using_the_chrony_suite#sect-Using_chrony).
 
-Ha a chrony-és a TimeSync-források egyszerre is engedélyezve vannak, megjelölheti az egyiket **előnyben részesítettként**, amely a másik forrást biztonsági másolatként állítja be. Mivel az NTP-szolgáltatások nem frissítik a nagy terhelések óráját a hosszú időtartam után, a VMICTimeSync sokkal gyorsabban fogja helyreállítani a szüneteltetett virtuális gépek eseményeinek óráját, mint az NTP-alapú eszközökön.
+Ha a chrony-és a VMICTimeSync-források egyszerre is engedélyezve vannak, megjelölheti az egyiket **előnyben részesítettként**, amely a másik forrást biztonsági másolatként állítja be. Mivel az NTP-szolgáltatások nem frissítik a nagy terhelések óráját a hosszú időtartam után, a VMICTimeSync sokkal gyorsabban fogja helyreállítani a szüneteltetett virtuális gépek eseményeinek óráját, mint az NTP-alapú eszközökön.
 
-Alapértelmezés szerint a chronyd felgyorsítja vagy lelassítja a rendszeridőt, hogy javítsa az időeltolódást. Ha a drift túl nagy lesz, a chrony nem tudja kijavítani a driftet. Ennek leküzdéséhez a `makestep` **/etc/chrony.conf** paraméterének módosításával kényszerítheti a timesync, ha az eltolódás meghaladja a megadott küszöbértéket.
+Alapértelmezés szerint a chronyd felgyorsítja vagy lelassítja a rendszeridőt, hogy javítsa az időeltolódást. Ha a drift túl nagy lesz, a chrony nem tudja kijavítani a driftet. Ennek leküzdéséhez a `makestep` **/etc/chrony.conf** paramétert úgy lehet megváltoztatni, hogy az időszinkronizálást kényszerítse, ha az eltolódás meghaladja a megadott küszöbértéket.
 
  ```bash
 makestep 1.0 -1

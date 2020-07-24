@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.date: 01/27/2020
 ms.author: cynthn
 ms.reviewer: zivr
-ms.openlocfilehash: 2401e8c160fd1c2ee3a734f374f1d4409c52ed16
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9ea986b338d977102d78e9c12bcbe5b2f2c510e7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82098526"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083446"
 ---
 # <a name="deploy-vms-to-proximity-placement-groups-using-powershell"></a>Virtuális gépek üzembe helyezése a közeli elhelyezési csoportokban a PowerShell használatával
 
@@ -24,7 +24,7 @@ A közelségi elhelyezési csoport olyan logikai csoport, amely biztosítja, hog
 
 
 ## <a name="create-a-proximity-placement-group"></a>Közelségi elhelyezési csoport létrehozása
-Hozzon létre egy közelségi elhelyezési csoportot a [New-AzProximityPlacementGroup](https://docs.microsoft.com/powershell/module/az.compute/new-azproximityplacementgroup) parancsmag használatával. 
+Hozzon létre egy közelségi elhelyezési csoportot a [New-AzProximityPlacementGroup](/powershell/module/az.compute/new-azproximityplacementgroup) parancsmag használatával. 
 
 ```azurepowershell-interactive
 $resourceGroup = "myPPGResourceGroup"
@@ -49,7 +49,7 @@ Get-AzProximityPlacementGroup
 
 ## <a name="create-a-vm"></a>Virtuális gép létrehozása
 
-Hozzon létre egy virtuális gépet a közelségi elhelyezési csoportban a használatával `-ProximityPlacementGroup $ppg.Id` , hogy a virtuális gép létrehozásához használja a [AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) .
+Hozzon létre egy virtuális gépet a közelségi elhelyezési csoportban a használatával `-ProximityPlacementGroup $ppg.Id` , hogy a virtuális gép létrehozásához használja a [AzVM](/powershell/module/az.compute/new-azvm) .
 
 ```azurepowershell-interactive
 $vmName = "myVM"
@@ -146,7 +146,7 @@ foreach ($vmId in $vmIDs){
 
 ## <a name="scale-sets"></a>Méretezési csoportok
 
-Létrehozhat egy méretezési csoportot is a közelségi elhelyezési csoportban. A `-ProximityPlacementGroup` [New-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/new-azvmss) ugyanezzel a paraméterrel hozzon létre egy méretezési csoportot, és az összes példány ugyanabban a közelségi elhelyezési csoportban lesz létrehozva.
+Létrehozhat egy méretezési csoportot is a közelségi elhelyezési csoportban. A `-ProximityPlacementGroup` [New-AzVmss](/powershell/module/az.compute/new-azvmss) ugyanezzel a paraméterrel hozzon létre egy méretezési csoportot, és az összes példány ugyanabban a közelségi elhelyezési csoportban lesz létrehozva.
 
 
 Meglévő méretezési csoport hozzáadásához vagy eltávolításához először le kell állítania a méretezési csoportot. 

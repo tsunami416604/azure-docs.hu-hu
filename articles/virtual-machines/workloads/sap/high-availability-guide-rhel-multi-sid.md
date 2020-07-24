@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/24/2020
 ms.author: radeltch
-ms.openlocfilehash: 4f1bfd58e27f0cd677980ff9351d32d91a68e3e6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1de6ce3a653b4ef007c6f8c878cbe2aa49f507ca
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80247435"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085180"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-red-hat-enterprise-linux-for-sap-applications-multi-sid-guide"></a>Magas rendelkezésre állás az SAP NetWeaver Azure-beli virtuális gépeken Red Hat Enterprise Linux for SAP Applications multi-SID Guide
 
@@ -56,7 +56,7 @@ A példában a konfigurációk, telepítési parancsok stb. három SAP NetWeaver
 * **NW2**: ASCS-példány száma **10** és virtuális állomásnév **msnw2ascs**; Az ERS-példányok száma **12** és a virtuális gazdagép neve **msnw2ers**.  
 * **NW3**: ASCS-példány száma **20** és virtuális állomásnév **msnw3ascs**; A **22-es** számú példány és a virtuális állomásnév **msnw3ers**.  
 
-A cikk nem fedi le az adatbázis rétegét és az SAP NFS-megosztások központi telepítését. A cikkben szereplő példákban [Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes) mennyiségi **sapMSID** használunk az NFS-megosztásokhoz, feltéve, hogy a kötet már telepítve van. Azt is feltételezzük, hogy a Azure NetApp Files kötet NFSv3 protokollal van telepítve, és a következő fájlelérési utak léteznek az SAP Systems NW1, NW2 és NW3 ASCS és ERS példányai esetében:  
+A cikk nem fedi le az adatbázis rétegét és az SAP NFS-megosztások központi telepítését. A cikkben szereplő példákban [Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-create-volumes.md) mennyiségi **sapMSID** használunk az NFS-megosztásokhoz, feltéve, hogy a kötet már telepítve van. Azt is feltételezzük, hogy a Azure NetApp Files kötet NFSv3 protokollal van telepítve, és a következő fájlelérési utak léteznek az SAP Systems NW1, NW2 és NW3 ASCS és ERS példányai esetében:  
 
 * mennyiségi sapMSID (nfs://10.42.0.4/sapmnt<b>NW1</b>)
 * mennyiségi sapMSID (nfs://10.42.0.4/usrsap<b>NW1</b>ASCs)
@@ -106,7 +106,7 @@ Mielőtt elkezdené, tekintse meg a következő SAP-megjegyzéseket és dokument
 
 A fürtben részt vevő virtuális gépeket úgy kell méretezni, hogy az összes erőforrást futtatni lehessen, ha feladatátvétel történik. Az egyes SAP-SID-feladatok egymástól függetlenek lehetnek a többszörös SID magas rendelkezésre állási fürtben.  
 
-A magas rendelkezésre állás elérése érdekében az SAP NetWeaver magas rendelkezésre állású megosztásokat igényel. Ebben a dokumentációban az [Azure NETAPP Files NFS-köteteken](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes)üzembe helyezett SAP-megosztásokkal kapcsolatos példákat mutatjuk be. Az is lehetséges, hogy a megosztások a GlusterFS- [fürtön](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-glusterfs)is futtathatók, amelyet több SAP-rendszer is használhat.  
+A magas rendelkezésre állás elérése érdekében az SAP NetWeaver magas rendelkezésre állású megosztásokat igényel. Ebben a dokumentációban az [Azure NETAPP Files NFS-köteteken](../../../azure-netapp-files/azure-netapp-files-create-volumes.md)üzembe helyezett SAP-megosztásokkal kapcsolatos példákat mutatjuk be. Az is lehetséges, hogy a megosztások a GlusterFS- [fürtön](./high-availability-guide-rhel-glusterfs.md)is futtathatók, amelyet több SAP-rendszer is használhat.  
 
 ![SAP NetWeaver – magas rendelkezésre állás – áttekintés](./media/high-availability-guide-rhel/ha-rhel-multi-sid.png)
 
@@ -116,7 +116,7 @@ A magas rendelkezésre állás elérése érdekében az SAP NetWeaver magas rend
 > [!TIP]
 > Az SAP ASCS/ERS több SID-fürtszolgáltatása nagyobb komplexitású megoldás. A megvalósítás összetettebb. Emellett a karbantartási tevékenységek (például az operációs rendszer javításai) végrehajtásakor is magasabb adminisztrációs erőfeszítéssel jár. A tényleges megvalósítás megkezdése előtt Szánjon időt arra, hogy gondosan tervezze meg az üzembe helyezést és az összes érintett összetevőt, például a virtuális gépeket, az NFS-csatlakoztatásokat, a VIP-ket és a terheléselosztó konfigurációját  
 
-Az SAP NetWeaver ASCS, az SAP NetWeaver SCS és az SAP NetWeaver ERS virtuális állomásnév és virtuális IP-címeket használnak. Az Azure-ban a virtuális IP-címek használatához terheléselosztó szükséges. A [standard Load Balancer](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal)használatát javasoljuk.  
+Az SAP NetWeaver ASCS, az SAP NetWeaver SCS és az SAP NetWeaver ERS virtuális állomásnév és virtuális IP-címeket használnak. Az Azure-ban a virtuális IP-címek használatához terheléselosztó szükséges. A [standard Load Balancer](../../../load-balancer/quickstart-load-balancer-standard-public-portal.md)használatát javasoljuk.  
 
 A következő lista az (A) SCS és ERS Load Balancer konfigurációját mutatja be ehhez a többszörös SID-fürthöz, például három SAP-rendszerrel. A biztonsági azonosítók mindegyikéhez külön előtérbeli IP-címet, állapot-mintavételi és terheléselosztási szabályokat kell megadnia minden egyes ASCS és ERS-példányhoz. Rendelje hozzá az összes virtuális gépet, amelyek a ASCS/ASCS-fürt részét képezik egyetlen ILB egyetlen háttér-készletének.  
 
@@ -162,23 +162,23 @@ A következő lista az (A) SCS és ERS Load Balancer konfigurációját mutatja 
   * Az (A) SCS/ERS-fürt részét képező összes virtuális gép elsődleges hálózati adapteréhez csatlakozik
 
 > [!Note]
-> Ha a nyilvános IP-címek nélküli virtuális gépek a belső (nincs nyilvános IP-cím) standard Azure Load Balancer háttér-készletbe kerülnek, nem lesz kimenő internetkapcsolat, kivéve, ha további konfigurálást végeznek a nyilvános végpontok útválasztásának engedélyezéséhez. A kimenő kapcsolatok elérésével kapcsolatos részletekért lásd: [nyilvános végpontú kapcsolat Virtual Machines az Azure standard Load Balancer használata az SAP magas rendelkezésre állási helyzetekben](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections).  
+> Ha a nyilvános IP-címek nélküli virtuális gépek a belső (nincs nyilvános IP-cím) standard Azure Load Balancer háttér-készletbe kerülnek, nem lesz kimenő internetkapcsolat, kivéve, ha további konfigurálást végeznek a nyilvános végpontok útválasztásának engedélyezéséhez. A kimenő kapcsolatok elérésével kapcsolatos részletekért lásd: [nyilvános végpontú kapcsolat Virtual Machines az Azure standard Load Balancer használata az SAP magas rendelkezésre állási helyzetekben](./high-availability-guide-standard-load-balancer-outbound-connections.md).  
 
 > [!IMPORTANT]
-> Ne engedélyezze a TCP-időbélyegeket a Azure Load Balancer mögött elhelyezett Azure-beli virtuális gépeken. A TCP-időbélyegek engedélyezése az állapot-mintavételek meghibásodását eredményezi. Állítsa a **net. IPv4. tcp_timestamps** paramétert **0-ra**. Részletekért lásd: [Load Balancer Health](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)-tesztek.
+> Ne engedélyezze a TCP-időbélyegeket a Azure Load Balancer mögött elhelyezett Azure-beli virtuális gépeken. A TCP-időbélyegek engedélyezése az állapot-mintavételek meghibásodását eredményezi. Állítsa a **net. IPv4. tcp_timestamps** paramétert **0-ra**. Részletekért lásd: [Load Balancer Health](../../../load-balancer/load-balancer-custom-probe-overview.md)-tesztek.
 
 ## <a name="sap-shares"></a>SAP-megosztások
 
-Az SAP NetWeaver megosztott tárterületet igényel az átvitelhez, a profil könyvtárához stb. A nagy rendelkezésre állású SAP-rendszerek esetében fontos a nagy rendelkezésre állású megosztások használata. Az SAP-megosztások architektúráját is el kell döntenie. Az egyik lehetőség a megosztások telepítése [Azure NETAPP Files NFS-köteteken](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes).  A Azure NetApp Files az SAP NFS-megosztások beépített magas rendelkezésre állását fogja kapni.
+Az SAP NetWeaver megosztott tárterületet igényel az átvitelhez, a profil könyvtárához stb. A nagy rendelkezésre állású SAP-rendszerek esetében fontos a nagy rendelkezésre állású megosztások használata. Az SAP-megosztások architektúráját is el kell döntenie. Az egyik lehetőség a megosztások telepítése [Azure NETAPP Files NFS-köteteken](../../../azure-netapp-files/azure-netapp-files-create-volumes.md).  A Azure NetApp Files az SAP NFS-megosztások beépített magas rendelkezésre állását fogja kapni.
 
-Egy másik lehetőség, hogy az GlusterFS-t az Azure-beli [virtuális gépeken hozza létre a Red Hat Enterprise Linux for SAP NetWeaver számára](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-glusterfs), amely több SAP-rendszer között is megosztható. 
+Egy másik lehetőség, hogy az GlusterFS-t az Azure-beli [virtuális gépeken hozza létre a Red Hat Enterprise Linux for SAP NetWeaver számára](./high-availability-guide-rhel-glusterfs.md), amely több SAP-rendszer között is megosztható. 
 
 ## <a name="deploy-the-first-sap-system-in-the-cluster"></a>Az első SAP-rendszer üzembe helyezése a fürtben
 
 Most, hogy eldöntötte az SAP-megosztások architektúráját, a megfelelő dokumentációt követve telepítse az első SAP-rendszerét a fürtben.
 
-* Ha Azure NetApp Files NFS-köteteket használ, kövesse az Azure-beli [virtuális gépek magas rendelkezésre állását az SAP NetWeaver számára a Red Hat Enterprise Linux SAP-alkalmazásokhoz Azure NetApp Files](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files)  
-* Ha GlusterFS-fürtöt használ, kövesse az [GlusterFS Azure-beli virtuális gépeken az SAP NetWeaver Red Hat Enterprise Linux](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-glusterfs).  
+* Ha Azure NetApp Files NFS-köteteket használ, kövesse az Azure-beli [virtuális gépek magas rendelkezésre állását az SAP NetWeaver számára a Red Hat Enterprise Linux SAP-alkalmazásokhoz Azure NetApp Files](./high-availability-guide-rhel-netapp-files.md)  
+* Ha GlusterFS-fürtöt használ, kövesse az [GlusterFS Azure-beli virtuális gépeken az SAP NetWeaver Red Hat Enterprise Linux](./high-availability-guide-rhel-glusterfs.md).  
 
 A fent felsorolt dokumentumok végigvezetik a szükséges infrastruktúra előkészítésének lépésein, a fürt létrehozásán és az operációs rendszer az SAP-alkalmazás futtatásához való előkészítésének lépésein.  
 
@@ -204,7 +204,7 @@ A dokumentáció a következőket feltételezi:
 
 ### <a name="prepare-for-sap-netweaver-installation"></a>Felkészülés az SAP NetWeaver telepítésére
 
-1. Adja hozzá a konfigurációt az újonnan telepített rendszerhez (azaz **NW2**, **NW3**) a meglévő Azure Load Balancerhoz, és az utasításokat követve [telepítse manuálisan a Azure Load Balancert Azure Portal használatával](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files#deploy-linux-manually-via-azure-portal). Módosítsa az IP-címeket, az állapot-mintavételi portokat, a konfiguráció terheléselosztási szabályait.  
+1. Adja hozzá a konfigurációt az újonnan telepített rendszerhez (azaz **NW2**, **NW3**) a meglévő Azure Load Balancerhoz, és az utasításokat követve [telepítse manuálisan a Azure Load Balancert Azure Portal használatával](./high-availability-guide-rhel-netapp-files.md#deploy-linux-manually-via-azure-portal). Módosítsa az IP-címeket, az állapot-mintavételi portokat, a konfiguráció terheléselosztási szabályait.  
 
 2. **[A]** a további SAP-rendszerek beállításának névfeloldása. Használhatja a DNS-kiszolgálót, vagy módosíthatja `/etc/hosts` az összes csomópontot. Ez a példa a fájl használatát mutatja be `/etc/hosts` .  Igazítsa az IP-címeket és az állomásneveket a környezethez. 
 
@@ -247,8 +247,8 @@ A dokumentáció a következőket feltételezi:
 
    Frissítse a fájlrendszert a `/etc/fstab` fürtön üzembe helyezett további SAP-rendszerekhez.  
 
-   * Ha Azure NetApp Files használ, kövesse az [itt](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files#prepare-for-sap-netweaver-installation) található utasításokat.  
-   * Ha GlusterFS-fürtöt használ, kövesse az [itt](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel#prepare-for-sap-netweaver-installation) található utasításokat.  
+   * Ha Azure NetApp Files használ, kövesse az [itt](./high-availability-guide-rhel-netapp-files.md#prepare-for-sap-netweaver-installation) található utasításokat.  
+   * Ha GlusterFS-fürtöt használ, kövesse az [itt](./high-availability-guide-rhel.md#prepare-for-sap-netweaver-installation) található utasításokat.  
 
 ### <a name="install-ascs--ers"></a>ASCS/ERS telepítése
 
@@ -602,17 +602,17 @@ A dokumentáció a következőket feltételezi:
 
 Fejezze be az SAP telepítését:
 
-* [Az SAP NetWeaver alkalmazás-kiszolgálók előkészítése](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files#2d6008b0-685d-426c-b59e-6cd281fd45d7)
-* [Adatbázis-kezelő példány telepítése](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files#install-database)
-* [Elsődleges SAP-alkalmazáskiszolgáló telepítése](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files#sap-netweaver-application-server-installation)
+* [Az SAP NetWeaver alkalmazás-kiszolgálók előkészítése](./high-availability-guide-rhel-netapp-files.md#2d6008b0-685d-426c-b59e-6cd281fd45d7)
+* [Adatbázis-kezelő példány telepítése](./high-availability-guide-rhel-netapp-files.md#install-database)
+* [Elsődleges SAP-alkalmazáskiszolgáló telepítése](./high-availability-guide-rhel-netapp-files.md#sap-netweaver-application-server-installation)
 * Egy vagy több további SAP-alkalmazás példányának telepítése
 
 ## <a name="test-the-multi-sid-cluster-setup"></a>A többszörös SID-fürt beállításának tesztelése
 
 Az alábbi tesztek a Red Hat ajánlott eljárási útmutatójában szereplő tesztelési esetek egy részét képezik. Az Ön kényelme érdekében a szolgáltatás részét képezi. A fürt tesztek teljes listáját a következő dokumentációban találja:
 
-* Ha Azure NetApp Files NFS-köteteket használ, kövesse az Azure-beli [virtuális gépek magas rendelkezésre állását az SAP NETWEAVER RHEL és az SAP-alkalmazások Azure NetApp Files](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files)
-* Ha magas rendelkezésre `GlusterFS` állást használ, kövesse az Azure-beli [virtuális gépek magas rendelkezésre állását az SAP NetWeaver RHEL SAP-alkalmazásokhoz](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel)című témakörben.  
+* Ha Azure NetApp Files NFS-köteteket használ, kövesse az Azure-beli [virtuális gépek magas rendelkezésre állását az SAP NETWEAVER RHEL és az SAP-alkalmazások Azure NetApp Files](./high-availability-guide-rhel-netapp-files.md)
+* Ha magas rendelkezésre `GlusterFS` állást használ, kövesse az Azure-beli [virtuális gépek magas rendelkezésre állását az SAP NetWeaver RHEL SAP-alkalmazásokhoz](./high-availability-guide-rhel.md)című témakörben.  
 
 Mindig olvassa el a Red Hat ajánlott eljárásokat ismertető útmutatót, és végezze el az esetlegesen hozzáadott további tesztek elvégzését.  
 A bemutatott tesztek egy két csomóponton, több SID-fürtön, három SAP-rendszerrel vannak telepítve.  

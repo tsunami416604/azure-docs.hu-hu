@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/22/2020
-ms.openlocfilehash: b0ebbbb64e173e1501f08f8385b14c365759a804
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3bd0f01193b1e6579d60b581b43ad71ebb6001e3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82116281"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084194"
 ---
 # <a name="how-to-filter-by-language-in-azure-cognitive-search"></a>Szűrés nyelv alapján az Azure-ban Cognitive Search 
 
@@ -21,7 +21,7 @@ A többnyelvű keresőalkalmazás egyik kulcsfontosságú követelménye, hogy a
 
 A kérelemben szereplő lekérdezési paraméterek a keresési művelet hatókörére vonatkoznak, majd levágja azokat a mezőket, amelyek nem biztosítanak tartalmat a kézbesíteni kívánt keresési felülettel.
 
-| Paraméterek | Szerep |
+| Paraméterek | Cél |
 |-----------|--------------|
 | **searchFields** | A teljes szöveges keresést a megnevezett mezők listájára korlátozza. |
 | **$select** | Levágja a választ, hogy csak a megadott mezőket foglalja bele. Alapértelmezés szerint a rendszer az összes beolvasható mezőt visszaadja. A **$Select** paraméterrel kiválaszthatja, hogy melyeket kell visszaadnia. |
@@ -34,7 +34,7 @@ Az Azure Cognitive Searchban a lekérdezések egyetlen indexet céloznak meg. A 
 
 A következő példa a [Real-Estate mintából](search-get-started-portal.md) származik, amelynek több, különböző nyelvű tartalmakat tartalmazó karakterlánc-mezője van. Figyelje meg az index mezőinek nyelvi elemző hozzárendeléseit. A karakterláncokat tartalmazó mezők jobban teljesítik a teljes szöveges keresést, ha a cél nyelv nyelvi szabályainak kezelésére szolgáló elemzővel párosítva van.
 
-  ![](./media/search-filters-language/lang-fields.png)
+  ![Képernyőfelvétel: a Real-Estate minta Fields (mezők) képernyője. A mezők egy csoportja kiemelten kiemeli, hogy a Language Analyzer-hozzárendelések hogyan felelnek meg a Kiemelt mezők nyelveinek.](./media/search-filters-language/lang-fields.png)
 
 > [!Note]
 > A következő kódrészletek esetében a nyelvi elemzőket bemutató példákat lásd: [index (.net) definiálása](https://docs.microsoft.com/azure/search/search-create-index-dotnet) és [index (REST) definiálása](search-create-index-rest-api.md).
@@ -60,7 +60,7 @@ parameters =
 > [!Note]
 > Bár a lekérdezésnek nincs $filter argumentuma, ez a használati eset erősen kapcsolódik a szűrési fogalmakhoz, ezért szűrési forgatókönyvként jelenik meg.
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 + [Szűrők az Azure Cognitive Search](search-filters.md)
 + [Nyelvi elemzők](https://docs.microsoft.com/rest/api/searchservice/language-support)

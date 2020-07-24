@@ -6,11 +6,13 @@ ms.service: spring-cloud
 ms.topic: troubleshooting
 ms.date: 11/04/2019
 ms.author: brendm
-ms.openlocfilehash: db5363c5d8adaf29e2c460d9ce36afa2d29ae8e7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-java
+ms.openlocfilehash: b7b3236fe1e4052689657316df851753de7edbe5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84791656"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083684"
 ---
 # <a name="troubleshoot-common-azure-spring-cloud-issues"></a>Az Azure Spring Cloud-problémák gyakori problémáinak elhárítása
 
@@ -172,7 +174,7 @@ A környezeti változók tájékoztatják az Azure Spring Cloud Framework szolg�
 
 1. Indítsa újra az alkalmazást.
 
-1. Keresse meg `https://<your application test endpoint>/actuator/env` és vizsgálja meg a választ.  A listának így kell kinéznie:
+1. Keresse meg `https://<your application test endpoint>/actuator/env` és vizsgálja meg a választ.  Így kell kinéznie:
 
     ```json
     {

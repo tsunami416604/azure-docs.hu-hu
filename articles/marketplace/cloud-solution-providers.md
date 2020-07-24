@@ -3,16 +3,16 @@ title: Cloud Solution Provider – Microsoft kereskedelmi piactér
 description: Ismerje meg, hogyan értékesítheti ajánlatait a kereskedelmi piactéren a Microsoft Cloud Solution Provider (CSP) program partneri csatornáján keresztül.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: article
 author: keferna
 ms.author: keferna
-ms.date: 04/16/2020
-ms.openlocfilehash: d6c3af312717627a1719c5f1029ae638e7d4f827
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/14/2020
+ms.openlocfilehash: 8ac69d7d611aa75584955ed6ed83ab79c70ed73a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86104435"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082805"
 ---
 # <a name="cloud-solution-provider-program"></a>Cloud Solution Provider program
 
@@ -30,31 +30,31 @@ A következő ajánlatok jogosultak arra, hogy a partnerek által a CSP programb
 - Felügyelt alkalmazások
 
 > [!NOTE]
-> A tárolók és a saját licencek (BYOL) virtuálisgép-SKU-ket úgy kell megválasztani, hogy alapértelmezés szerint a kriptográfiai szolgáltatói programban lévő partnerek is eladják azokat.
+> A tárolók és a saját licencek (BYOL) virtuálisgép-csomagjait úgy kell megadni, hogy alapértelmezés szerint a kriptográfiai szolgáltatói programban lévő partnerek is eladják azokat.
 
-## <a name="how-to-configure-an-offering"></a>Ajánlat konfigurálása
+## <a name="how-to-configure-an-offer"></a>Ajánlat konfigurálása
 
-A CSP program bekapcsolási beállítása a partner központban van konfigurálva, vagy Cloud Partner Portal ajánlat-létrehozási élmény. [További információ a kiadói élmény megváltoztatásáról](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/Cloud-Marketplace-In-Partner-Center/m-p/9738#M293).
+Az ajánlat a partner Centerben való létrehozásakor adja meg a CSP-program opt-in beállítását. [További információ a kiadói élmény megváltoztatásáról](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/Cloud-Marketplace-In-Partner-Center/m-p/9738#M293).
 
 ### <a name="partner-center-opt-in"></a>Partneri központ – opt
 
-A partner Centerben a CSP viszonteladói célközönség modulban találhatja meg a bekapcsolási funkciót.
+A bejelentkezés a CSP viszonteladói célközönség modul alatt található:
 
 ![CSP viszonteladói közönség](media/marketplace-publishers-guide/csp-reseller-audience.png)
 
-A CSP-viszonteladói célközönség modulban három lehetőség közül választhat:
+Három lehetőség közül választhat:
 
-- Egy lehetőség: bármely partner a CSP programban
-- Második lehetőség: a kiválasztott CSP programban megadott partnerek
-- Harmadik lehetőség: nincsenek partnerek a CSP programban
+1. Bármely partner a CSP programban.
+2. A CSP programban kiválasztott partnerek.
+3. Nem található partner a CSP programban.
 
-#### <a name="option-one-any-partner-in-the-csp-program"></a>Egy lehetőség: bármely partner a CSP programban
+#### <a name="option-1-any-partner-in-the-csp-program"></a>1. lehetőség: bármely partner a CSP programban
 
 ![Bármely partner a CSP programban](media/marketplace-publishers-guide/csp-reseller-option-one.png)
 
  Ha ezt a lehetőséget választja, a CSP program összes partnere jogosult az ajánlatának viszonteladására az ügyfelek számára.
 
-#### <a name="option-two-specific-partners-in-the-csp-program-i-select"></a>Második lehetőség: a kiválasztott CSP programban megadott partnerek
+#### <a name="option-2-specific-partners-in-the-csp-program-i-select"></a>2. lehetőség: meghatározott partnerek a CSP programban Kiválasztom
 
 ![A CSP programban kiválasztott partnerek](media/marketplace-publishers-guide/csp-reseller-option-two.png)
 
@@ -87,17 +87,11 @@ Ha egy már közzétett ajánlat CSP-listáját frissíti, vegye fel a további 
 
 Ha van olyan ajánlata, amely már rendelkezik a jogosult partnerek listájával, és egy másik ajánlathoz ugyanazt a listát szeretné használni, használja az **Importálás/exportálás**lehetőséget. Navigáljon a CSP-listát tartalmazó ajánlathoz, és válassza a **kriptográfiai szolgáltatók exportálása**lehetőséget. A függvény fejleszt egy. csv-fájlt, amely importálható egy másik ajánlatba.
 
-#### <a name="option-three-no-partners-in-the-csp-program"></a>Harmadik lehetőség: nincsenek partnerek a CSP programban
+#### <a name="option-3-no-partners-in-the-csp-program"></a>3. lehetőség: nincsenek partnerek a CSP programban
 
 ![Nincsenek partnerek a CSP programban](media/marketplace-publishers-guide/csp-reseller-option-three.png)
 
 Ha ezt a lehetőséget választja, az ajánlatát a CSP programból választhatja ki. Ezt a lehetőséget bármikor módosíthatja.
-
-### <a name="cloud-partner-portal-opt-in"></a>Cloud Partner Portal
-
-Cloud Partner Portal a bekapcsolási lehetőség a piactér vagy a kirakat lapon van beállítva. A CSP programban meghatározott partnerek kiválasztásának lehetősége csak a partner Centerben érhető el.
-
-![CSP – felhasználói élmény a CPP-ben](media/marketplace-publishers-guide/csp-opt-in.png)
 
 ## <a name="deauthorize-partners-in-the-csp-program"></a>Partnerek dehatalmazása a CSP programban
 
@@ -115,9 +109,6 @@ Ha a CSP program egyik partnere nem adta meg a terméket az ügyfeleknek, és az
 4. Ha **olyan problémát választ ki, amely a legjobban leírja a problémát**, válassza a **meglévő ajánlat frissítése**lehetőséget.
 5. Kattintson a **tovább** gombra a **probléma részletei lapra** való átirányításhoz, és adja meg a probléma további részleteit.
 6. A probléma címéhez használja a **kriptográfiai szolgáltatót** , és adja meg a többi szükséges szakaszt.
-
-
-
 
 ## <a name="navigate-between-options"></a>Navigáljon a beállítások között
 
@@ -175,7 +166,7 @@ Ha az ajánlat jelenleg **3. lehetőség: nincs partner a CSP programban**, bár
 
 ## <a name="sharing-sales-and-support-materials-with-partners-in-the-csp-program"></a>Értékesítési és támogatási anyagok megosztása partnerekkel a CSP programban
 
-Ahhoz, hogy a partnerek a felhőalapú megoldás-szolgáltatói programban leghatékonyabban képviseljék az ajánlatát, és a szervezete is részt vesz, olyan értékesítési és támogatási anyagokat kell benyújtania, amelyek elérhetők lesznek a viszonteladók számára. Ezek az erőforrások nem lesznek elérhetők a piactéren kirakatokban lévő ügyfelek számára.
+Ahhoz, hogy a partnerek a felhőalapú megoldás-szolgáltatói programban leghatékonyabban képviseljék az ajánlatot, és a szervezete is részt vesz, be kell nyújtania a viszonteladók számára elérhető értékesítési és támogatási anyagokat. Ezek az erőforrások nem lesznek elérhetők a piactéren kirakatokban lévő ügyfelek számára.
 
 ### <a name="partner-center-csp-channel"></a>Partneri központ CSP-csatornája
 
@@ -183,13 +174,7 @@ Ha kiválasztotta a CSP-csatornát a partner Centerben, a kiadónak meg kell adn
 
 ![A partner Center CSP-biztosítékokkal kapcsolatos információi](media/marketplace-publishers-guide/pc-csp-channel.png)
 
-### <a name="cloud-partner-portal-csp-channel"></a>Cloud Partner Portal CSP-csatorna
-
-Ha a Cloud Partner Portal a CSP-csatornát választotta, a kiadónak olyan URL-címet kell megadnia, amely a megfelelő marketinganyagok és csatorna elérhetőségi adatait tárolja a CSP-csatornán:
-
-![Cloud Partner Portal CSP-biztosíték információi](media/marketplace-publishers-guide/cpp-csp-information.png)
-
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Látogasson el az [Azure Marketplace és a AppSource kiadói útmutatóba](marketplace-publishers-guide.md).
 

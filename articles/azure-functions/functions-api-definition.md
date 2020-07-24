@@ -5,11 +5,12 @@ author: alexkarcher-msft
 ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alkarche
-ms.openlocfilehash: cbfd0e36307210851070c22e74acb0a858446ce1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 59425456d6d8f4dc426a20deef7b866b3eaa1df4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81866722"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083068"
 ---
 # <a name="openapi-20-metadata-support-in-azure-functions-preview"></a>OpenAPI 2,0 metaadat-támogatás a Azure Functionsban (előzetes verzió)
 A OpenAPI 2,0 (korábban hencegés) metaadatainak támogatása Azure Functions egy előzetes funkció, amellyel OpenAPI 2,0-definíciót írhat a Function alkalmazásban. Ezt a fájlt ezután a Function alkalmazás használatával futtathatja.
@@ -22,7 +23,7 @@ A [OpenAPI-metaadatok](https://swagger.io/) lehetővé teszik, hogy egy olyan f�
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
 >[!TIP]
->Javasoljuk, hogy kezdje a [kezdeti lépéseket ismertető oktatóanyaggal](./functions-api-definition-getting-started.md) , majd térjen vissza ehhez a dokumentumhoz, és tudjon meg többet az egyes funkciókról.
+>Javasoljuk, hogy kezdje a [kezdeti lépéseket ismertető oktatóanyaggal](./functions-openapi-definition.md) , majd térjen vissza ehhez a dokumentumhoz, és tudjon meg többet az egyes funkciókról.
 
 ## <a name="enable-openapi-definition-support"></a><a name="enable"></a>OpenAPI-definíció támogatásának engedélyezése
 A Function app **platform funkcióinak**API- **definíciós** lapján az összes OpenAPI beállításait konfigurálhatja.
@@ -35,11 +36,11 @@ Egy üzemeltetett OpenAPI-definíció és egy rövid útmutató meghatározásá
 ## <a name="generate-a-swagger-skeleton-from-your-functions-metadata"></a><a name="generate-definition"></a>Hencegő csontváz létrehozása a függvény metaadataiból
 A sablonok segítségével megkezdheti az első OpenAPI-definíció megírását. A definíciós sablon szolgáltatás egy ritka OpenAPI-definíciót hoz létre az összes HTTP-trigger funkciójának function.jsfájljában található metaadatok használatával. További információkat kell kitöltenie az API-ról a OpenAPI- [specifikációból](https://swagger.io/specification/), például a kérések és a válaszok sablonjairól.
 
-Részletes útmutatásért tekintse meg az [első lépéseket ismertető oktatóanyagot](./functions-api-definition-getting-started.md).
+Részletes útmutatásért tekintse meg az [első lépéseket ismertető oktatóanyagot](./functions-openapi-definition.md).
 
 ### <a name="available-templates"></a><a name="templates"></a>Elérhető sablonok
 
-|Name| Description |
+|Név| Leírás |
 |:-----|:-----|
 |Generált definíció|Egy OpenAPI-definíció, amely a függvény meglévő metaadataiból kikövetkeztethető maximális mennyiségű adatot tartalmaz.|
 
@@ -59,7 +60,7 @@ A következő táblázat a Azure Portal beállításokat és a function.jsmegfel
 > [!NOTE]
 > Az x-MS-Summary bővítmény megjelenített nevet biztosít Logic Apps, PowerApps és flow-ban.
 >
-> További információkért lásd: [a PowerApps-hez készült hencegés definíciójának testreszabása](https://docs.microsoft.com/connectors/custom-connectors/openapi-extensions).
+> További információkért lásd: [a PowerApps-hez készült hencegés definíciójának testreszabása](/connectors/custom-connectors/openapi-extensions).
 
 ## <a name="use-cicd-to-set-an-api-definition"></a><a name="CICD"></a>API-definíció beállítása CI/CD használatával
 
@@ -69,12 +70,12 @@ A következő táblázat a Azure Portal beállításokat és a function.jsmegfel
    1. Állítsa be az **API-definíció forrását** a **működéshez**.
    1. Kattintson az **API-definíciós sablon létrehozása** lehetőségre, majd a **Mentés** gombra a sablon definíciójának létrehozásához a későbbi módosításhoz.
    1. Jegyezze fel az API-definíció URL-címét és kulcsát.
-1. [Folyamatos integráció/folyamatos üzembe helyezés (CI/CD) beállítása](https://docs.microsoft.com/azure/azure-functions/functions-continuous-deployment#requirements-for-continuous-deployment).
+1. [Folyamatos integráció/folyamatos üzembe helyezés (CI/CD) beállítása](./functions-continuous-deployment.md#requirements-for-continuous-deployment).
 2. Módosítsa swagger.jsa forrás vezérlőelemben a \site\wwwroot \.azurefunctions\swagger\swagger.json címen.
 
 A tárházban swagger.jsmódosításait mostantól az API-definíció URL-címe és az 1. c lépésben feljegyzett kulcs alapján hajtja végre a függvény alkalmazás.
 
 ## <a name="next-steps"></a>További lépések
-* [Első lépések oktatóanyag](functions-api-definition-getting-started.md). Próbálja ki a bemutatót egy OpenAPI-definíció működés közbeni megtekintéséhez.
+* [Első lépések oktatóanyag](./functions-openapi-definition.md). Próbálja ki a bemutatót egy OpenAPI-definíció működés közbeni megtekintéséhez.
 * [Azure functions GitHub-tárház](https://github.com/Azure/Azure-Functions/). Tekintse meg a functions tárházat, és küldjön visszajelzést az API-definíció támogatásának előzetes verziójáról. Hozzon fel GitHub-problémát minden, amit frissíteni szeretne.
 * [Azure functions fejlesztői referenciája](functions-reference.md). A kódolási függvények ismertetése és az eseményindítók és kötések meghatározása.

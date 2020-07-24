@@ -15,15 +15,16 @@ ms.workload: infrastructure
 ms.date: 05/25/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fb6f88fbfcbd539603e435b11661c428d54f3c34
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3231241e2fbc6e02725b5611d05b9ee4f0f1a35a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74224729"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082171"
 ---
 # <a name="connecting-azure-vms-to-hana-large-instances"></a>Azure-beli virtuális gépek csatlakozása nagy méretű HANA-példányokhoz
 
-Mi a [SAP HANA az Azure-ban (nagyméretű példányok)?](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) megemlíti, hogy a HANA nagyméretű példányainak az Azure-beli SAP-alkalmazási réteggel való minimális üzembe helyezése a következőhöz hasonlít:
+Mi a [SAP HANA az Azure-ban (nagyméretű példányok)?](./hana-overview-architecture.md) megemlíti, hogy a HANA nagyméretű példányainak az Azure-beli SAP-alkalmazási réteggel való minimális üzembe helyezése a következőhöz hasonlít:
 
 ![Azure-VNet az Azure-ban (nagyméretű példányok) és a helyszíni SAP HANAhoz csatlakoztatva](./media/hana-overview-architecture/image1-architecture.png)
 
@@ -93,13 +94,13 @@ A HANA nagyméretű példányok üzembe helyezéséhez szükséges IP-címtartom
 
 Választható IP-címtartományok, amelyeket végül el kell küldeni a Microsoftnak:
 
-- Ha úgy dönt, hogy a [ExpressRoute Global REACH](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) használatával engedélyezi a közvetlen útválasztást a helyszínről a nagyméretű példányok számára, egy másik/29 IP-címtartományt kell fenntartania. Ez a tartomány nem fedi át a korábban definiált többi IP-címtartományt.
-- Ha úgy dönt, hogy a [ExpressRoute Global REACH](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) használatával engedélyezi az egyik Azure-régióban található Hana nagyméretű példány-bérlőtől egy másik Azure-régióban lévő másik Hana nagyméretű példány bérlőhöz való közvetlen útválasztást, egy másik/29 IP-címtartományt kell fenntartania. Ez a tartomány nem fedi át a korábban definiált többi IP-címtartományt.
+- Ha úgy dönt, hogy a [ExpressRoute Global REACH](../../../expressroute/expressroute-global-reach.md) használatával engedélyezi a közvetlen útválasztást a helyszínről a nagyméretű példányok számára, egy másik/29 IP-címtartományt kell fenntartania. Ez a tartomány nem fedi át a korábban definiált többi IP-címtartományt.
+- Ha úgy dönt, hogy a [ExpressRoute Global REACH](../../../expressroute/expressroute-global-reach.md) használatával engedélyezi az egyik Azure-régióban található Hana nagyméretű példány-bérlőtől egy másik Azure-régióban lévő másik Hana nagyméretű példány bérlőhöz való közvetlen útválasztást, egy másik/29 IP-címtartományt kell fenntartania. Ez a tartomány nem fedi át a korábban definiált többi IP-címtartományt.
 
 A ExpressRoute Global Reach és a HANA nagyméretű példányok használatáról a következő dokumentumokban talál további információt:
 
-- [SAP HANA (nagyméretű példányok) hálózati architektúrája](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture)
-- [Virtuális hálózat összekapcsolása a HANA nagyméretű példányaival](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-connect-vnet-express-route)
+- [SAP HANA (nagyméretű példányok) hálózati architektúrája](./hana-network-architecture.md)
+- [Virtuális hálózat összekapcsolása a HANA nagyméretű példányaival](./hana-connect-vnet-express-route.md)
  
 Meg kell határoznia és meg kell terveznie a korábban ismertetett IP-címtartományt. Azonban nem kell továbbítania őket a Microsoftnak. A Microsoft számára a következő IP-címtartományok szükségesek:
 

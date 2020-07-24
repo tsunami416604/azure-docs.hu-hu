@@ -3,13 +3,14 @@ title: Durable Functions-Azure-beli feladat-hubok
 description: Megtudhatja, mi a Task hub a Azure Functions Durable Functions-bővítményében. Útmutató a feladatok hubok konfigurálásához.
 author: cgillum
 ms.topic: conceptual
-ms.date: 11/03/2019
+ms.date: 07/14/2020
 ms.author: azfuncdf
-ms.openlocfilehash: 427ab6c4e0e769ab881af0af3023d514c1b092c6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: afee79aecaad97ec4b441df0758166073b2413cf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81604618"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083106"
 ---
 # <a name="task-hubs-in-durable-functions-azure-functions"></a>Durable Functions (Azure Functions) feladat-hubok
 
@@ -127,6 +128,19 @@ public static async Task<HttpResponseMessage> Run(
 > Az előző C# példa a Durable Functions 2. x. Durable Functions 1. x esetén a helyett a értéket kell használnia `DurableOrchestrationContext` `IDurableOrchestrationContext` . A verziók közötti különbségekről a [Durable functions verziók](durable-functions-versions.md) című cikkben olvashat bővebben.
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+A fájl Task hub tulajdonsága az `function.json` alkalmazás beállításain keresztül van beállítva:
+
+```json
+{
+    "name": "input",
+    "taskHub": "%MyTaskHub%",
+    "type": "orchestrationClient",
+    "direction": "in"
+}
+```
+
+# <a name="python"></a>[Python](#tab/python)
 
 A fájl Task hub tulajdonsága az `function.json` alkalmazás beállításain keresztül van beállítva:
 

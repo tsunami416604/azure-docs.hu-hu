@@ -4,11 +4,12 @@ description: Eseményindítók és kötések használata a Azure Functions Durab
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 1f42c6c9b0086d49e539040334c83cfc0c6feb42
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 899bc3fdc94b8232acd3edf3e0cbab3c481ff8f2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84698061"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081848"
 ---
 # <a name="bindings-for-durable-functions-azure-functions"></a>Durable Functions kötései (Azure Functions)
 
@@ -18,7 +19,7 @@ A [Durable functions](durable-functions-overview.md) bővítmény két új trigg
 
 Az előkészítési trigger lehetővé teszi [tartós Orchestrator függvények](durable-functions-types-features-overview.md#orchestrator-functions)készítését. Ez az aktiválás támogatja az új Orchestrator-függvények indítását és a meglévő Orchestrator-függvények lefolytatását, amelyek "várnak" egy feladatot.
 
-Ha a Visual Studio-eszközöket használja a Azure Functionshoz, a [OrchestrationTriggerAttribute](https://docs.microsoft.com/dotnet/api/Microsoft.Azure.WebJobs.Extensions.DurableTask.OrchestrationTriggerAttribute?view=azure-dotnet) .net-attribútummal konfigurálhatja a előkészítési triggert.
+Ha a Visual Studio-eszközöket használja a Azure Functionshoz, a [OrchestrationTriggerAttribute](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.orchestrationtriggerattribute?view=azure-dotnet) .net-attribútummal konfigurálhatja a előkészítési triggert.
 
 Ha Orchestrator függvényeket ír a parancsfájlkezelési nyelveken (például JavaScript vagy C# parancsfájlkezelés), a (z) a következő JSON-objektum határozza meg a `bindings` *function.js* fájljában található tömbben:
 
@@ -463,7 +464,7 @@ Az entitások osztályai speciális mechanizmusokkal rendelkeznek a kötések é
 
 A következő kód egy egyszerű *számláló* entitás, amely a JavaScriptben írt tartós függvényként van megvalósítva. Ez a függvény három műveletet határoz meg:, `add` `reset` , és `get` , amelyek mindegyike egész állapotra működik.
 
-**function.jsbekapcsolva**
+**function.json**
 ```json
 {
   "bindings": [
@@ -601,7 +602,7 @@ Különösen nem érdemes jelezni a `Get` műveletet, mivel a rendszer nem ad vi
 
 Az alábbi példa egy üzenetsor által aktivált függvényt mutat be, amely "számláló" entitást mutat be a JavaScriptben.
 
-**function.jsbekapcsolva**
+**function.json**
 ```json
 {
     "bindings": [

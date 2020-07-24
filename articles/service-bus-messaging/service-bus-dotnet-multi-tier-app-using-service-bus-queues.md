@@ -4,11 +4,12 @@ description: Ezen .NET-oktatóanyag segítségével többrétegű alkalmazást f
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: c7a64e708d860fe9e5832ad3f1375f41f9b86724
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 183f3b6e1231c843c04290024a89c270f0dd0026
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85340303"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083939"
 ---
 # <a name="net-multi-tier-application-using-azure-service-bus-queues"></a>Többrétegű .NET-alkalmazás Azure Service Bus-üzenetsorok használatával
 
@@ -27,7 +28,7 @@ Az oktatóanyagban egy Azure-felhőszolgáltatásban hozza létre és futtatja m
 
 Az alábbi képernyőfelvételen a kész alkalmazás látható.
 
-![][0]
+![Képernyőkép az alkalmazás beküldési oldaláról.][0]
 
 ## <a name="scenario-overview-inter-role-communication"></a>Forgatókönyv áttekintése: szerepkörök közötti kommunikáció
 A feldolgozási kérés küldéséhez a webes szerepkörben futó előtér felhasználói felületi összetevőnek együtt kell működnie a feldolgozói szerepkörben futó középső rétegbeli logikával. Ez a példa Service Bus-üzenetkezelést használ a rétegek közötti kommunikációhoz.
@@ -36,7 +37,7 @@ A webes és a középső réteg között használt Service Bus-üzenetkezelés e
 
 A Service Bus kétfajta entitást biztosít a közvetítőalapú üzenettovábbítás támogatásához: üzenetsorokat és témaköröket. Az üzenetsorok esetén az egyes üzenetsorokra küldött üzeneteket egyetlen fogadó használja fel. A témakörök a közzététel/előfizetés mintát támogatják, amelyben az egyes közzétett üzenetek az adott témakörre való előfizetéssel érhetők el. Az egyes előfizetések logikai módon tartják fenn a saját üzenetsorukat. Az előfizetések konfigurálhatók szűrési szabályokkal is, amelyek az előfizetés üzenetsorába továbbított üzeneteket az adott szűrővel egyező üzenetekre korlátozzák. Az alábbi példa Service Bus-üzenetsorokat használ.
 
-![][1]
+![A webes szerepkör, a Service Bus és a feldolgozói szerepkör közötti kommunikációt bemutató ábra.][1]
 
 Ennek a kommunikációs mechanizmusnak több előnye is van a közvetlen üzenettovábbítással szemben:
 
@@ -44,7 +45,7 @@ Ennek a kommunikációs mechanizmusnak több előnye is van a közvetlen üzenet
 * **Terheléskiegyenlítés.** Számos alkalmazásban a rendszerterhelés időnként eltérő, míg az egyes munkaegységek feldolgozásához szükséges idő jellemzően állandó marad. Az üzenetek létrehozói és felhasználói közé üzenetsorokat helyezve a felhasználó alkalmazást (a feldolgozót) csak az átlagos terhelés, és nem a csúcsterhelés figyelembe vételével kell létrehozni. A bejövő terhelés változásával az üzenetsor hossza nő vagy csökken. Ez közvetlen megtakarításokkal jár az alkalmazásterhelés kiszolgálásához szükséges infrastruktúraméret költségei tekintetében.
 * **Terheléselosztás.** A terhelés növekedésével további feldolgozó folyamatok adhatók hozzá az üzenetsorból való olvasásra. Az egyes üzeneteket a feldolgozó folyamatoknak csak az egyike dolgozza fel. Ez a lekérésalapú terheléselosztás akkor is lehetővé teszi a feldolgozó gépek optimális használatát, ha azok feldolgozási teljesítménye eltérő, mivel az egyes gépek az üzeneteket a saját maximális sebességüknek megfelelően kérik le. Ezt a mintát gyakran a *versengő felhasználó* mintának hívják.
   
-  ![][2]
+  ![A webes szerepkör, a Service Bus és a két feldolgozói szerepkör közötti kommunikációt bemutató ábra.][2]
 
 Az alábbi szakaszok az architektúrát megvalósító kódot ismertetik.
 
@@ -63,27 +64,27 @@ Ezt követően hozzáadja a kódot, amely elemeket küld el a Service Bus-üzene
 
 1. Rendszergazdai jogosultságokkal indítsa el a Visual Studio alkalmazást: kattintson a jobb gombbal a **Visual Studio** programikonra, majd kattintson a **Futtatás rendszergazdaként** parancsra. A cikkben korábban tárgyalt Azure Compute Emulatorhoz a Visual Studiót rendszergazdai jogosultságokkal kell elindítani.
    
-   A Visual Studio programban, a **File** (Fájl) menüben kattintson a **New** (Új) elemre, majd kattintson a **Project** (Projekt) elemre.
-2. Az **Installed Templates** (Telepített sablonok) lap **Visual C#** területén kattintson a **Cloud** (Felhő), majd az **Azure Cloud Service** (Azure-felhőszolgáltatás) elemre. Adja a projektnek a **MultiTierApp** nevet. Ezt követően kattintson az **OK** gombra.
+   A Visual Studio programban, a **Fájl** menüben kattintson az **Új**, majd a **Projekt** elemre.
+2. Az **Installed Templates** (Telepített sablonok) lap **Visual C#** területén kattintson a **Cloud** (Felhő), majd az **Azure Cloud Service** (Azure-felhőszolgáltatás) elemre. Adja a projektnek a **MultiTierApp** nevet. Ezután kattintson az **OK** gombra.
    
-   ![][9]
+   ![Képernyőfelvétel: az új projekt párbeszédpanel, amelyen a felhő van kiválasztva, az Azure Cloud Service Visual C# kiemelve, és piros színnel jelenik meg.][9]
 3. A **Roles** (Szerepkörök) panelen kattintson duplán az **ASP.NET webes szerepkörre**.
    
-   ![][10]
-4. Vigye a mutatót a **WebRole1** elem fölé az **Azure Cloud Service solution** (Azure-felhőszolgáltatási megoldás) alatt, kattintson a ceruza ikonra, és írja át a webes szerepkör nevét a következőre: **FrontendWebRole**. Ezt követően kattintson az **OK** gombra. (Ügyeljen, hogy a „Frontend” nevet kis „e” betűvel írja, és ne „FrontEnd” formában.)
+   ![Képernyőkép az új Microsoft Azure Cloud Service párbeszédpanelről, amelyen a ASP.NET web role be van jelölve, és a Webrole1 webes is ki van választva.][10]
+4. Vigye a mutatót a **WebRole1** elem fölé az **Azure Cloud Service solution** (Azure-felhőszolgáltatási megoldás) alatt, kattintson a ceruza ikonra, és írja át a webes szerepkör nevét a következőre: **FrontendWebRole**. Ezután kattintson az **OK** gombra. (Ügyeljen, hogy a „Frontend” nevet kis „e” betűvel írja, és ne „FrontEnd” formában.)
    
-   ![][11]
+   ![Az új Microsoft Azure Cloud Service párbeszédpanel képernyőképe a FrontendWebRole névre átnevezett megoldásról.][11]
 5. A **New ASP.NET Project** (Új ASP.NET-projekt) párbeszédpanel **Select a template** (Sablon kiválasztása) listáján kattintson az **MVC** elemre.
    
-   ![][12]
+   ![Screenshotof az új ASP.NET projekt párbeszédpanelt, amely MVC kiemelve van, és piros színnel van kijelölve, és a Change Authentication (hitelesítés módosítása) beállítás piros színnel jelenik meg.][12]
 6. Továbbra is a **New ASP.NET Project** (Új ASP.NET-projekt) párbeszédpanelen kattintson a **Change Authentication** (Hitelesítés módosítása) gombra. Győződjön meg róla, hogy a **No Authentication** (Nincs hitelesítés) elem van kiválasztva a **Change Authentication** (Hitelesítés módosítása) párbeszédpanelen, majd kattintson az **OK** gombra. Ebben az oktatóanyaghoz egy olyan alkalmazást hoz létre, amelyhez nincs szükség felhasználói bejelentkezésre.
    
-    ![][16]
+    ![A hitelesítés módosítása párbeszédpanel képernyőképe a nincs kiválasztva hitelesítési lehetőséggel, és piros színnel.][16]
 7. A **New ASP.NET Project** (Új ASP.NET-projekt) párbeszédpanelen kattintson az **OK** gombra a projekt létrehozásához.
 8. A **Megoldáskezelőben** a **FrontendWebRole** projektben kattintson a jobb gombbal a **References** (Hivatkozások) elemre, majd kattintson a **Manage NuGet Packages** (NuGet-csomagok kezelése) parancsra.
 9. Kattintson a **Browse** (Tallózás) lapra, és keressen rá a következőre: **WindowsAzure.ServiceBus**. Válassza ki a **WindowsAzure.ServiceBus** csomagot, kattintson a **Telepítés** elemre, és fogadja el a használati feltételeket.
    
-   ![][13]
+   ![Képernyőkép a NuGet-csomagok kezelése párbeszédpanelről, ahol a WindowsAzure. ServiceBus ki van emelve, és a telepítési lehetőség piros színnel jelenik meg.][13]
    
    Vegye figyelembe, hogy a rendszer létrehozta a szükséges ügyfélszerelvényekre mutató hivatkozásokat, és hozzáadott néhány új kódfájlt.
 10. A **Megoldáskezelőben** kattintson a jobb gombbal a **Models** (Modellek) elemre, kattintson az **Add** (Hozzáadás) parancsra, majd kattintson a **Class** (Osztály) elemre. A **Name** (Név) mezőbe írja be az **OnlineOrder.cs** nevet. Ezután kattintson az **Add** (Hozzáadás) gombra.
@@ -165,16 +166,16 @@ Ebben a szakaszban az alkalmazás által megjelenített különféle oldalakat h
 4. A **Build** (Létrehozás) menüben kattintson a **Build Solution** (Megoldás létrehozása) elemre az eddigi munkája pontosságának ellenőrzésére.
 5. Most hozza létre a korábban létrehozott `Submit()` metódus nézetét. Kattintson a jobb gombbal a `Submit()` metódusban (a paraméterekkel nem rendelkező `Submit()`-túlterhelésbe), majd válassza az **Add View** (Nézet hozzáadása) elemet.
    
-   ![][14]
+   ![A kód képernyőképe a beküldési metódusra és egy legördülő listára összpontosítva, a nézet hozzáadása lehetőség kiemelve.][14]
 6. Megjelenik egy párbeszédpanel a nézet létrehozásához. A **Template** (Sablon) listában válassza a **Create** (Létrehozás) lehetőséget. A **Model class** (Modellosztály) listában válassza az **OnlineOrder** osztályt.
    
-   ![][15]
+   ![A nézet hozzáadása párbeszédpanel képernyőképe, amelyen a sablon és a modell osztály legördülő listája piros színnel szerepel.][15]
 7. Kattintson a **Hozzáadás** parancsra.
 8. Módosítsa az alkalmazás megjelenő nevét. A **Megoldáskezelőben** kattintson duplán a **Views\Shared\\_Layout.cshtml** fájlra a Visual Studio-szerkesztőben való megnyitásához.
 9. Cserélje le a **My ASP.NET Application** (Saját ASP.NET-alkalmazás) minden előfordulását **Northwind Traders Products** (Northwind Traders-termékek) értékre.
 10. Távolítsa el a **Home** (Kezdőlap), **About** (Névjegy) és **Contact** (Kapcsolatfelvétel) hivatkozásokat. Törölje a kiemelt kódot:
     
-    ![][28]
+    ![Képernyőkép a kód közül, amelyből a H T M L műveleti hivatkozási kód három sora van kiemelve.][28]
 11. Végül módosítsa úgy az elküldési lapot, hogy az megjelenítse az üzenetsorral kapcsolatos információkat. A **Megoldáskezelőben** kattintson duplán a **Views\Home\Submit.cshtml** fájlra a Visual Studio-szerkesztőben való megnyitásához. Adja hozzá a következő sort a `<h2>Submit</h2>` után. A `ViewBag.MessageCount` jelenleg üres. Később fogja majd feltölteni.
     
     ```html
@@ -182,7 +183,7 @@ Ebben a szakaszban az alkalmazás által megjelenített különféle oldalakat h
     ```
 12. Megvalósította a felhasználói felületet. Az **F5** billentyű lenyomásával futtathatja az alkalmazást, és ellenőrizheti, hogy várakozásainak megfelelően jelenik-e meg.
     
-    ![][17]
+    ![Képernyőkép az alkalmazás beküldési oldaláról.][17]
 
 ### <a name="write-the-code-for-submitting-items-to-a-service-bus-queue"></a>Az elemeknek a Service Bus-üzenetsorba történő elküldésére szolgáló kód megírása
 Adja hozzá az elemeknek a Service Bus-üzenetsorba történő elküldésére szolgáló kódot. Először hozza létre a Service Bus-üzenetsor kapcsolati adatait tartalmazó osztályt. Ezután inicializálja a kapcsolatot a Global.aspx.cs osztályból. Végül frissítse a korábban a HomeController.cs osztályban létrehozott elküldési kódot az elemek tényleges elküldéséhez a Service Bus-üzenetsorba.
@@ -289,13 +290,13 @@ Adja hozzá az elemeknek a Service Bus-üzenetsorba történő elküldésére sz
        }
        else
        {
-           return View(order);
+           return View(order); 
        }
    }
    ```
 9. Most ismét futtathatja az alkalmazást. Minden egyes alkalommal, amikor elküld egy rendelést, az üzenetek száma nőni fog.
    
-   ![][18]
+   ![Képernyőkép az alkalmazás beküldési oldaláról, az üzenetek számának értéke pedig 1.][18]
 
 ## <a name="create-the-worker-role"></a>A feldolgozói szerepkör létrehozása
 Most létrehozza a feldolgozói szerepkört, amely feldolgozza az elküldött rendeléseket. Ez a példa a **Worker Role with Service Bus Queue** (Feldolgozói szerepkör Service Bus-üzenetsorral) Visual Studio-projektsablont használja. A szükséges hitelesítő adatokat már beszerezte a portálról.
@@ -304,16 +305,16 @@ Most létrehozza a feldolgozói szerepkört, amely feldolgozza az elküldött re
 2. A Visual Studio **Megoldáskezelőjében** kattintson a jobb gombbal a **Roles** (Szerepkörök) mappára a **MultiTierApp** projekt alatt.
 3. Kattintson az **Add** (Hozzáadás), majd a **New Worker Role Project** (Új feldolgozói szerepkör projekt) elemre. Megjelenik az **Add New Role Project** (Új szerepkör projekt hozzáadása) párbeszédpanel.
    
-   ![][26]
+   ![Képernyőkép a Soultion Explorer panelről, az új feldolgozói szerepkör projektje lehetőséggel és a Hozzáadás lehetőség kiemelve.][26]
 4. Az **Add New Role Project** (Új szerepkör projekt hozzáadása) párbeszédpanelen kattintson a **Worker Role with Service Bus Queue** (Feldolgozói szerepkör Service Bus-üzenetsorral) lehetőségre.
    
-   ![][23]
+   ![Képernyőfelvétel: az ad New role Project (új szerepkör-projekt) párbeszédpanel feldolgozói szerepköre Service Bus üzenetsor kiemelése és piros színnel való megjelenítése.][23]
 5. A **Name** (Név) mezőben adja az **OrderProcessingRole** nevet a projektnek. Ezután kattintson az **Add** (Hozzáadás) gombra.
 6. Másolja a „Service Bus-névtér létrehozása” szakasz 9. lépésében beszerzett kapcsolati sztringet a vágólapra.
 7. A **Megoldáskezelőben** kattintson a jobb gombbal az 5. lépésben létrehozott **OrderProcessingRole** szerepkörre (az **OrderProcessingRole** szerepkörre kattintson a jobb gombbal a **Roles** (Szerepkörök) részen, és ne az osztályra). Ezután kattintson a **Properties** (Tulajdonságok) elemre.
 8. A **Properties** (Tulajdonságok) párbeszédpanel **Settings** (Beállítások) lapján kattintson a **Microsoft.ServiceBus.ConnectionString****Value** (Érték) mezőjébe, és illessze be a 6. lépésben másolt végpontértéket.
    
-   ![][25]
+   ![Képernyőkép a tulajdonságok párbeszédpanelről, amelyen a beállítások lap van kiválasztva, a Microsoft. ServiceBus. ConnectionString tábla pedig piros színnel van ellátva.][25]
 9. Hozza létre az **OnlineOrder** osztályt az üzenetsorból feldolgozott rendelések jelölésére. Használhat egy korábban létrehozott osztályt. A **Megoldáskezelőben** kattintson a jobb gombbal az **OrderProcessingRole** osztályra (az osztály ikonjára, ne a szerepkörre kattintson a jobb gombbal). Kattintson az **Add** (Hozzáadás), majd az **Existing Item** (Meglévő elem) elemre.
 10. Nyissa meg a **FrontendWebRole\Models** almappát, majd kattintson duplán az **OnlineOrder.cs** elemre a projekthez való hozzáadásához.
 11. A **WorkerRole.cs** osztályban az alábbi kódban látható módon módosítsa a **QueueName** változó `"ProcessingQueue"` értékét `"OrdersQueue"` értékre.
@@ -338,9 +339,9 @@ Most létrehozza a feldolgozói szerepkört, amely feldolgozza az elküldött re
     ```
 14. Befejezte az alkalmazást. A teljes alkalmazás teszteléséhez kattintson a jobb gombbal a MultiTierApp projektre a Megoldáskezelőben, válassza a **Set as Startup Project** (Beállítás kezdőprojektként) lehetőséget, majd nyomja le az F5 billentyűt. Láthatja, hogy az üzenetek száma nem nő, mert a feldolgozói szerepkör feldolgozza az üzenetsorban lévő elemeket, és befejezettként jelöli meg azokat. A feldolgozói szerepkör nyomkövetési kimenetét az Azure Compute Emulator felhasználói felületén tekintheti meg. Ehhez kattintson a jobb gombbal az emulátor ikonjára a tálca értesítési területén, és válassza a **Show Compute Emulator UI** (A Compute Emulator felhasználói felületének megjelenítése) lehetőséget.
     
-    ![][19]
+    ![Képernyőkép arról, hogy mi jelenik meg, ha az emulátor ikonjára kattint. A számítási emulátor felhasználói felületének megjelenítése a lehetőségek listájában található.][19]
     
-    ![][20]
+    ![Képernyőkép a Microsoft Azure számítási emulátor (expressz) párbeszédpanelről.][20]
 
 ## <a name="next-steps"></a>További lépések
 A Service Busról a következő forrásanyagokban találhat további információkat:  

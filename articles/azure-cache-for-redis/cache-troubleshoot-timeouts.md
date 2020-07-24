@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/18/2019
-ms.openlocfilehash: a5c5c80aaba083b0f65ac0dab41350765a8f5631
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3d9360a4b5c5f0ef080b3de2a9d425bcdf2b2e70
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85833757"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081899"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-timeouts"></a>Azure Cache for Redis-időtúllépések hibaelhárítása
 
@@ -30,7 +30,7 @@ A Redis készült Azure cache rendszeresen frissíti a kiszolgáló szoftverét 
 
 ## <a name="stackexchangeredis-timeout-exceptions"></a>StackExchange. Redis időtúllépési kivételek
 
-A StackExchange. Redis egy nevű konfigurációs beállítást használ a `synctimeout` 1000 MS alapértelmezett értékkel rendelkező szinkron műveletekhez. Ha egy szinkron hívás nem fejeződött be ebben az időszakban, a StackExchange. Redis ügyfél időtúllépési hibát jelez az alábbi példához hasonló módon:
+A StackExchange. Redis egy nevű konfigurációs beállítást használ a `synctimeout` 5000 MS alapértelmezett értékkel rendelkező szinkron műveletekhez. Ha egy szinkron hívás nem fejeződött be ebben az időszakban, a StackExchange. Redis ügyfél időtúllépési hibát jelez az alábbi példához hasonló módon:
 
 ```output
     System.TimeoutException: Timeout performing MGET 2728cc84-58ae-406b-8ec8-3f962419f641, inst: 1,mgr: Inactive, queue: 73, qu=6, qs=67, qc=0, wr=1/1, in=0/0 IOCP: (Busy=6, Free=999, Min=2,Max=1000), WORKER (Busy=7,Free=8184,Min=2,Max=8191)
@@ -47,7 +47,7 @@ Ez a hibaüzenet olyan metrikákat tartalmaz, amelyek segíthetnek a probléma o
 | QS |67 a folyamatban lévő műveletek elküldése a kiszolgálónak, de a válasz még nem érhető el. A válasz lehet `Not yet sent by the server` vagy`sent by the server but not yet processed by the client.` |
 | QC |a folyamatban lévő műveletek közül 0 a válaszokat észlelte, de még nem jelölték meg befejezettként, mert a befejezési hurokra várnak. |
 | WR |Aktív író van (vagyis a 6 el nem küldött kérések nincsenek figyelmen kívül hagyva) bájt/activewriters |
-| – |Nincs aktív olvasó, és a rendszer nulla bájtot olvas be a hálózati adapter bájtjainak/activereaders |
+| in |Nincs aktív olvasó, és a rendszer nulla bájtot olvas be a hálózati adapter bájtjainak/activereaders |
 
 A lehetséges kiváltó okok kivizsgálásához a következő lépéseket használhatja.
 
@@ -73,7 +73,7 @@ A lehetséges kiváltó okok kivizsgálásához a következő lépéseket haszn�
 
 1. Győződjön meg arról, hogy a kiszolgáló és az ügyfélalkalmazás ugyanabban a régióban van az Azure-ban. Előfordulhat például, hogy időtúllépéseket kap, amikor a gyorsítótár az USA keleti régiójában található, de az ügyfél az USA nyugati régiójában található, és a kérés nem fejeződik be az intervallumon belül, vagy ha a `synctimeout` helyi fejlesztői gépről végez hibakeresést. 
 
-    Erősen ajánlott, hogy a gyorsítótár és az ügyfél ugyanabban az Azure-régióban legyen. Ha olyan forgatókönyvvel rendelkezik, amely több régióra kiterjedő hívásokat is tartalmaz, az `synctimeout` alapértelmezett 1000-MS intervallumnál magasabb értéket kell beállítania a `synctimeout` kapcsolódási karakterláncban szereplő tulajdonsággal. Az alábbi példa egy, a StackExchange. Redis által biztosított, a Redis-hez készült, 2000-es ms-os adatforrást tartalmazó karakterláncot jelenít meg. `synctimeout`
+    Erősen ajánlott, hogy a gyorsítótár és az ügyfél ugyanabban az Azure-régióban legyen. Ha olyan forgatókönyvvel rendelkezik, amely több régióra kiterjedő hívásokat is tartalmaz, az `synctimeout` alapértelmezett 5000-MS intervallumnál magasabb értéket kell beállítania a `synctimeout` kapcsolódási karakterláncban szereplő tulajdonsággal. Az alábbi példa egy, a StackExchange. Redis által biztosított, a Redis-hez készült, 2000-es ms-os adatforrást tartalmazó karakterláncot jelenít meg. `synctimeout`
 
     ```output
     synctimeout=2000,cachename.redis.cache.windows.net,abortConnect=false,ssl=true,password=...

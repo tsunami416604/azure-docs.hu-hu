@@ -11,11 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: c1ed731943abf0efdd99ea54d2318fa402835e08
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4bcbbd9378b6ea861c926eed16d2ceed8131b913
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76720010"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082749"
 ---
 # <a name="team-data-science-process-roles-and-tasks"></a>Csoportos adatelemzési folyamat szerepkörei és feladatai
 
@@ -116,7 +117,7 @@ A munkafolyamat lépései három tevékenységbe sorolhatók:
 
 - A Project-érdeklődők a Sprint tervezését végzik
 - Az adatszakértők a `git` munkaelemek kezelésére szolgáló ágakat fejlesztenek
-- A projekt-vagy más csapattagok a kód felülvizsgálatát és a munkaágak egyesítését a Master ág számára
+- A projekt-és más csapattagok a kódok felülvizsgálatát és a munkaágak egyesítését az elsődleges ágra
 
 A projekt-végrehajtási munkafolyamattal kapcsolatos részletes utasításokért lásd: az [adatelemzési projektek agilis fejlesztése](agile-development.md).
 

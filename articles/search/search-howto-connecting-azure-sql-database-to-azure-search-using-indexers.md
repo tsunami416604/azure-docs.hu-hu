@@ -8,13 +8,13 @@ ms.author: magottei
 ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 862b3056445bddb358e6485ce5fec4de4d53eace
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.date: 07/12/2020
+ms.openlocfilehash: 725ee57a06d3d547142fdd39ef03e1c7e7c296a8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86039279"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084143"
 ---
 # <a name="connect-to-and-index-azure-sql-content-using-an-azure-cognitive-search-indexer"></a>Azure SQL-tartalomhoz való kapcsolódás és indexelés Azure Cognitive Search indexelő használatával
 
@@ -325,13 +325,13 @@ A **softDeleteMarkerValue** karakterláncnak kell lennie – a tényleges érté
 | idő adattípusúra, datetime, datetime2, Date, DateTimeOffset |EDM. DateTimeOffset, EDM. String | |
 | uniqueidentifer |Edm.String | |
 | földrajz |Edm.GeographyPoint |Csak a SRID 4326 (amely az alapértelmezett) típusú földrajzi példányok támogatottak |
-| ROWVERSION |N.A. |A sorcsoport oszlopai nem tárolhatók a keresési indexben, de használhatók a változások követéséhez |
-| idő, TimeSpan, bináris, varbinary, rendszerkép, XML, geometria, CLR-beli típusok |N.A. |Nem támogatott |
+| ROWVERSION |n.a. |A sorcsoport oszlopai nem tárolhatók a keresési indexben, de használhatók a változások követéséhez |
+| idő, TimeSpan, bináris, varbinary, rendszerkép, XML, geometria, CLR-beli típusok |n.a. |Nem támogatott |
 
 ## <a name="configuration-settings"></a>Konfigurációs beállítások
 Az SQL indexelő számos konfigurációs beállítást tesz elérhetővé:
 
-| Beállítás | Adattípus | Szerep | Alapértelmezett érték |
+| Beállítás | Adattípus | Cél | Alapértelmezett érték |
 | --- | --- | --- | --- |
 | queryTimeout |sztring |Az SQL-lekérdezés végrehajtásának időtúllépését állítja be |5 perc ("00:05:00") |
 | disableOrderByHighWaterMarkColumn |logikai |Azt eredményezi, hogy a magas vízjelzési házirend által használt SQL-lekérdezés kihagyja a ORDER BY záradékot. Lásd: [magas vízjelek szabályzata](#HighWaterMarkPolicy) |hamis |

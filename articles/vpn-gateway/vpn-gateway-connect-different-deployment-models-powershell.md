@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/17/2018
 ms.author: cherylmc
-ms.openlocfilehash: 843727c005fefdc2ca0484492a1feafe2a291b46
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 2c9b8a769dec1a2aa461a34203c98a228cf71d16
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86040749"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082052"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-powershell"></a>Különböző üzemi modellekből származó virtuális hálózatok összekapcsolása a PowerShell-lel
 
@@ -29,7 +29,7 @@ A klasszikus VNet Resource Manager-VNet való csatlakoztatása hasonló ahhoz, h
 
 Ha még nem rendelkezik virtuális hálózati átjáróval, és nem szeretne létrehozni egyet, érdemes lehet inkább a virtuális hálózatok csatlakoztatni a VNet-társ használatával. A virtuális hálózatok közötti társviszony nem használ VPN-átjárót. További információ: [Társviszony létesítése virtuális hálózatok között](../virtual-network/virtual-network-peering-overview.md).
 
-## <a name="before-you-begin"></a><a name="before"></a>Előkészületek
+## <a name="before-you-begin"></a><a name="before"></a>Kezdés előtt
 
 A következő lépések végigvezetik az egyes VNet dinamikus vagy Route-alapú átjárójának konfigurálásához szükséges beállításokkal, és létrehoznak egy VPN-kapcsolatot az átjárók között. Ez a konfiguráció nem támogatja a statikus vagy a házirend-alapú átjárókat.
 
@@ -37,7 +37,7 @@ A következő lépések végigvezetik az egyes VNet dinamikus vagy Route-alapú 
 
 * Mindkét virtuális hálózatok már létre lett hozva. Ha Resource Manager virtuális hálózatot kell létrehoznia, tekintse meg [az erőforráscsoport és a virtuális hálózat létrehozása](../virtual-network/quick-create-powershell.md#create-a-resource-group-and-a-virtual-network)című témakört. Klasszikus virtuális hálózat létrehozásához tekintse meg [a klasszikus VNet létrehozása](https://docs.microsoft.com/azure/virtual-network/create-virtual-network-classic)című témakört.
 * A virtuális hálózatok címtartományok nem fedik egymást egymással, vagy átfedésben vannak más kapcsolatok bármely tartományával, amelyekhez az átjárók csatlakozhatnak.
-* Telepítette a legújabb PowerShell-parancsmagokat. További információért lásd: [Azure PowerShell telepítése és konfigurálása](/powershell/azure/overview) . Győződjön meg arról, hogy a Service Management (SM) és a Resource Manager (RM) parancsmagokat is telepíti. 
+* Telepítette a legújabb PowerShell-parancsmagokat. További információért lásd: [Azure PowerShell telepítése és konfigurálása](/powershell/azure/) . Győződjön meg arról, hogy a Service Management (SM) és a Resource Manager (RM) parancsmagokat is telepíti. 
 
 ### <a name="example-settings"></a><a name="exampleref"></a>Példabeállítások
 
@@ -97,7 +97,7 @@ A **VirtualNetworkSites** elemben adjon hozzá egy átjáró-alhálózatot a VNe
 
 [!INCLUDE [vpn-gateway-no-nsg-include](../../includes/vpn-gateway-no-nsg-include.md)]
 
-**Példa:**
+**Például**
 
 ```xml
 <VirtualNetworkSites>

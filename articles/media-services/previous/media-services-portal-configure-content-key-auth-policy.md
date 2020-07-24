@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 9b81d58bbb79b05ea54af8b3f06f29b4a45a6555
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 2be430fc032acd94f851072f80d14a43638c8863
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86058163"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084585"
 ---
 # <a name="configure-a-content-key-authorization-policy"></a>A tartalmi kulcs engedélyezési házirendjének konfigurálása
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../../includes/media-services-selector-content-key-auth-policy.md)]
@@ -33,7 +33,7 @@ Ez a cikk bemutatja, hogyan konfigurálhatja a tartalom-kulcs engedélyezési h�
 
 Ha egy lejátszó egy dinamikusan titkosított adatfolyamot kér, Media Services a konfigurált kulccsal titkosítja a tartalmat AES vagy DRM titkosítás használatával. A stream visszafejtéséhez a lejátszó lekéri a kulcsot a kulcstovábbító szolgáltatástól. Annak megállapításához, hogy a felhasználó jogosult-e a kulcs lekérésére, a szolgáltatás kiértékeli a kulcshoz megadott engedélyezési házirendeket.
 
-Ha több tartalmi kulcsot szeretne használni, vagy egy kulcs/licenc kézbesítési szolgáltatás URL-címét szeretné megadni a Media Services Key Delivery Service-ben kívül, használja a Media Services .NET SDK-t vagy a REST API-kat. További információkért lásd:
+Ha több tartalmi kulcsot szeretne használni, vagy egy kulcs/licenc kézbesítési szolgáltatás URL-címét szeretné megadni a Media Services Key Delivery Service-ben kívül, használja a Media Services .NET SDK-t vagy a REST API-kat. További információ:
 
 * [A tartalmi kulcs engedélyezési házirendjének konfigurálása a Media Services .NET SDK használatával](media-services-dotnet-configure-content-key-auth-policy.md)
 * [A tartalmi kulcs engedélyezési házirendjének konfigurálása a Media Services használatával REST API](media-services-rest-configure-content-key-auth-policy.md)
@@ -57,7 +57,7 @@ A nyílt korlátozás azt jelenti, hogy a rendszer a kulcsot minden olyan szemé
 ### <a name="token-restriction"></a>Jogkivonat-korlátozás
 A jogkivonat-korlátozási szabályzat kiválasztásához kattintson a **jogkivonat** gombra.
 
-A jogkivonat-korlátozott szabályzatot egy biztonságijogkivonat-szolgáltatás (STS) által kiállított tokennek kell kísérnie. Media Services támogatja a tokeneket az egyszerű webes jogkivonat ([SWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2)) és a JSON web token (JWT) formátumokban. További információ: JWT- [hitelesítés](http://www.gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/).
+A jogkivonat-korlátozott szabályzatot egy biztonságijogkivonat-szolgáltatás (STS) által kiállított tokennek kell kísérnie. Media Services támogatja a tokeneket az egyszerű webes jogkivonat ([SWT](/previous-versions/azure/azure-services/gg185950(v=azure.100)#BKMK_2)) és a JSON web token (JWT) formátumokban. További információ: JWT- [hitelesítés](http://www.gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/).
 
 Media Services nem biztosít STS-t. Létrehozhat egy egyéni STS-t a jogkivonatok kibocsátásához. Az STS-t úgy kell konfigurálni, hogy a megadott kulccsal aláírt tokent hozzon létre, és kiadja a jogkivonat-korlátozási konfigurációban megadott jogcímeket. Ha a jogkivonat érvényes, és a jogkivonatban lévő jogcímek egyeznek a tartalmi kulcshoz konfigurált jogcímekkel, a Media Services Key Delivery Service visszaadja a titkosítási kulcsot az ügyfélnek.
 
@@ -94,4 +94,3 @@ Kiválaszthatja a **szabályzat XML importálása** gombot, és megadhat egy má
 
 [open_policy]: ./media/media-services-portal-configure-content-key-auth-policy/media-services-protect-content-with-open-restriction.png
 [token_policy]: ./media/media-services-key-authorization-policy/media-services-protect-content-with-token-restriction.png
-

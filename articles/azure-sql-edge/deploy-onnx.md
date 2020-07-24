@@ -1,6 +1,6 @@
 ---
-title: Előrejelzések üzembe helyezése és előrejelzése a ONNX az Azure SQL Edge-ben (előzetes verzió)
-description: Ismerje meg, hogyan alakíthatja ki a modelleket, hogyan alakíthatja át a ONNX, hogyan helyezheti üzembe az Azure SQL Edge (előzetes verzió) szolgáltatásban, majd hogyan futtathat natív ELŐREJELZÉSt az adatairól a feltöltött ONNX-modell használatával.
+title: Előrejelzések üzembe helyezése és elkészítése a ONNX
+description: Ismerje meg, hogyan alakíthatja át a modelleket, hogyan alakíthatja át a ONNX, hogyan helyezheti üzembe az Azure SQL Edge (előzetes verzió) vagy az Azure SQL felügyelt példányain (előzetes verzió), majd a feltöltött ONNX-modell használatával natív ELŐREJELZÉSt futtathat az adatairól.
 keywords: SQL Edge üzembe helyezése
 services: sql-edge
 ms.service: sql-edge
@@ -8,32 +8,40 @@ ms.subservice: machine-learning
 ms.topic: conceptual
 author: dphansen
 ms.author: davidph
-ms.date: 05/19/2020
-ms.openlocfilehash: b5cd655aaf9992c6908a7f9287f691fd36d84871
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/14/2020
+ms.openlocfilehash: fe1e4a195903803d3103da5f350de30a016e614b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85476733"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085013"
 ---
-# <a name="deploy-and-make-predictions-with-an-onnx-model-in-azure-sql-edge-preview"></a>Előrejelzések üzembe helyezése és elkészítése egy ONNX-modellel az Azure SQL Edge-ben (előzetes verzió)
+# <a name="deploy-and-make-predictions-with-an-onnx-model"></a>Előrejelzések üzembe helyezése és elkészítése egy ONNX-modellel
 
-Ebben a rövid útmutatóban megismerheti, hogyan végezheti el a modell betanítását, hogyan alakíthatja át a ONNX, hogyan helyezheti üzembe az Azure SQL Edge (előzetes verzió) szolgáltatásban, majd hogyan futtathatja a natív ELŐREJELZÉSt a feltöltött ONNX-modell használatával. További információ: [Machine learning és AI with ONNX in SQL Edge (előzetes verzió)](onnx-overview.md).
+Ebben a rövid útmutatóban megismerheti, hogyan végezheti el a modell betanítását, hogyan alakíthatja át a ONNX, hogyan helyezheti üzembe az [Azure SQL Edge (előzetes verzió)](onnx-overview.md) vagy az [Azure SQL felügyelt példányain (előzetes verzió)](../azure-sql/managed-instance/machine-learning-services-overview.md), majd a feltöltött ONNX modell használatával natív előrejelzést futtathat az adatairól.
 
 Ez a rövid útmutató a **scikit-tanuláson** alapul, és a [bostoni lakhatási adatkészletet](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_boston.html)használja.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-* Ha még nem telepített Azure SQL Edge-modult, kövesse az [SQL Edge (előzetes verzió) üzembe helyezésének lépéseit a Azure Portal használatával](deploy-portal.md).
+* Ha az Azure SQL Edge-t használja, és nem telepített Azure SQL Edge-modult, kövesse az [SQL Edge (előzetes verzió) üzembe helyezésének lépéseit a Azure Portal használatával](deploy-portal.md).
 
 * Telepítse a [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download).
 
-* Nyissa meg Azure Data Studio, és kövesse az alábbi lépéseket az ehhez a rövid útmutatóhoz szükséges csomagok telepítéséhez:
+* Telepítse a rövid útmutatóhoz szükséges Python-csomagokat:
 
-    1. Nyisson meg egy, a Python 3 kernelhez csatlakoztatott [új jegyzetfüzetet](https://docs.microsoft.com/sql/azure-data-studio/sql-notebooks) . 
-    1. Kattintson a **csomagok kezelése** elemre, majd az **új hozzáadása**elemre, keresse meg a **scikit – Learn (további tudnivalók**), és telepítse a scikit-Learn csomagot. 
-    1. Telepítse a **setuptools**, a **NumPy**, a **onnxmltools**, a **onnxruntime**, a **skl2onnx**, a **pyodbc**és a **SQLAlchemy** csomagokat is.
-    
+  1. Nyisson meg egy, a Python 3 kernelhez csatlakoztatott [új jegyzetfüzetet](https://docs.microsoft.com/sql/azure-data-studio/sql-notebooks) . 
+  1. Kattintson a **csomagok kezelése** elemre.
+  1. A **telepítés** lapon keresse meg a következő Python-csomagokat a telepített csomagok listájában. Ha a csomagok bármelyike nincs telepítve, válassza az **új hozzáadása** fület, keresse meg a csomagot, majd kattintson a **telepítés**gombra.
+     - **scikit-learn**
+     - **numpy**
+     - **onnxmltools**
+     - **onnxruntime**
+     - **pyodbc**
+     - **setuptools**
+     - **skl2onnx**
+     - **sqlalchemy**
+
 * Az alábbi szkriptekhez írja be a Azure Data Studio jegyzetfüzet egyik cellájába, és futtassa a cellát.
 
 ## <a name="train-a-pipeline"></a>Folyamat betanítása
@@ -219,7 +227,7 @@ MSE are equal
 
 ## <a name="insert-the-onnx-model"></a>A ONNX-modell beszúrása
 
-Tárolja a modellt az Azure SQL Edge-ben egy `models` adatbázisban lévő táblában `onnx` . A kapcsolatok karakterláncában válassza ki a **kiszolgáló**nevét, a **felhasználónevet**és a **jelszót**.
+Tárolja a modellt az Azure SQL Edge-ben vagy az Azure SQL felügyelt példányában az `models` adatbázis egyik táblájában `onnx` . A kapcsolatok karakterláncában válassza ki a **kiszolgáló**nevét, a **felhasználónevet**és a **jelszót**.
 
 ```python
 import pyodbc
@@ -277,7 +285,7 @@ conn.commit()
 
 ## <a name="load-the-data"></a>Az adatok betöltése
 
-Az adatgyűjtés az Azure SQL Edge-be.
+Töltse be az SQL-be az adatfájlokat.
 
 Először hozzon létre két táblát, **funkciót** és **célt**a Boston ház adatkészletének tárolására.
 
@@ -350,7 +358,7 @@ Most már megtekintheti az adatbázisban található adatfájlokat.
 
 ## <a name="run-predict-using-the-onnx-model"></a>ELŐREJELZÉS futtatása a ONNX-modell használatával
 
-Az Azure SQL Edge-modellben a feltöltött ONNX modell használatával natív ELŐREJELZÉSt futtathat az adatain.
+Az SQL-modellben a feltöltött ONNX modell használatával natív ELŐREJELZÉSt futtathat az adatain.
 
 > [!NOTE]
 > Módosítsa a notebook kernelét az SQL-re a fennmaradó cella futtatásához.
@@ -390,3 +398,4 @@ FROM PREDICT(MODEL = @model, DATA = predict_input, RUNTIME=ONNX) WITH (variable1
 ## <a name="next-steps"></a>Következő lépések
 
 * [Machine Learning és AI a ONNX az SQL Edge-ben](onnx-overview.md)
+* [Machine Learning Services az Azure SQL felügyelt példányában (előzetes verzió)](../azure-sql/managed-instance/machine-learning-services-overview.md)

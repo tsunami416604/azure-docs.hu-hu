@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: ffbc850c580daee5890f9c75021cc518918d098e
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 073a92f07d17614cb386c5c33a8058af9b59aaea
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86145381"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084075"
 ---
 # <a name="set-up-a-connection-to-an-azure-storage-account-using-a-managed-identity-preview"></a>Azure Storage-fiókhoz való kapcsolódás beállítása felügyelt identitás (előzetes verzió) használatával
 
@@ -53,17 +53,19 @@ Ebben a lépésben az Azure Cognitive Search-szolgáltatás engedélyt ad a Stor
     ![Szerepkör-hozzárendelés hozzáadása](./media/search-managed-identities/add-role-assignment-storage.png "Szerepkör-hozzárendelés hozzáadása")
 
 4. Válassza ki a megfelelő szerepkör (eke) t az indexelni kívánt Storage-fiók típusától függően:
-    1. Az Azure Blob Storage használatához hozzá kell adnia a keresési szolgáltatást az **olvasóhoz, valamint az adatelérési** és- **tárolási blob-Adatolvasó** szerepkörökhöz.
-    1. Azure Data Lake Storage Gen2 megköveteli a keresési szolgáltatás hozzáadását az **olvasóhoz és az adatelérési** és- **tárolási blob-adatolvasói** szerepkörökhöz.
-    1. Az Azure Table Storage használatához csak az **olvasó és az adatelérési** szerepkörhöz kell hozzáadnia a keresési szolgáltatást.
+    1. Az Azure Blob Storage használatához hozzá kell adnia a keresési szolgáltatást a **Storage blob Adatolvasó** szerepkörhöz.
+    1. Azure Data Lake Storage Gen2 megköveteli a keresési szolgáltatás hozzáadását a **Storage blob Adatolvasó** szerepkörhöz.
+    1. Az Azure Table Storage használatához hozzá kell adnia a keresési szolgáltatást az **olvasó és az adatelérési** szerepkörhöz.
 5.  Az **Azure ad-felhasználó,-csoport vagy-szolgáltatásnév** **hozzáférésének** elhagyása
 6.  Keresse meg a keresési szolgáltatást, jelölje ki, majd kattintson a **Mentés** gombra.
 
+    Példa Azure Blob Storage-hoz és Azure Data Lake Storage Gen2:
+
+    ![Storage blob adatolvasói szerepkör-hozzárendelés hozzáadása](./media/search-managed-identities/add-role-assignment-storage-blob-data-reader.png "Storage blob adatolvasói szerepkör-hozzárendelés hozzáadása")
+
+    Példa az Azure Table Storage szolgáltatásra:
+
     ![Olvasó-és adathozzáférési szerepkör-hozzárendelés hozzáadása](./media/search-managed-identities/add-role-assignment-reader-and-data-access.png "Olvasó-és adathozzáférési szerepkör-hozzárendelés hozzáadása")
-
-Vegye figyelembe, hogy az Azure Blob Storage-hoz és a Azure Data Lake Storage Gen2hoz való csatlakozáskor hozzá kell adnia a **Storage blob Adatolvasó** szerepkör-hozzárendelést is.
-
-![Storage blob adatolvasói szerepkör-hozzárendelés hozzáadása](./media/search-managed-identities/add-role-assignment-storage-blob-data-reader.png "Storage blob adatolvasói szerepkör-hozzárendelés hozzáadása")
 
 ### <a name="3---create-the-data-source"></a>3 – az adatforrás létrehozása
 

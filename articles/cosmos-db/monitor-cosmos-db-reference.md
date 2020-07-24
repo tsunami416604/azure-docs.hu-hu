@@ -5,40 +5,41 @@ author: bwren
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: how-to
-ms.date: 11/11/2019
+ms.date: 07/17/2020
 ms.author: bwren
 ms.custom: subject-monitoring
 ms.subservice: logs
-ms.openlocfilehash: 446d876033b09728ebcbec43c6300884a5c29cd3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 89dc81cdd06bedb6237cf48312ee7ed0510d93ce
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85262735"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084738"
 ---
 # <a name="azure-cosmos-db-monitoring-data-reference"></a>Azure Cosmos DB-adatmonitorozási referencia
-Ez a cikk referenciaként szolgál az Azure Cosmos DB teljesítményének és rendelkezésre állásának elemzéséhez gyűjtött naplózási és metrikaadatokra vonatkozóan. A Azure Cosmos DB figyelési adatainak gyűjtésével és elemzésével kapcsolatos részletekért tekintse meg a [figyelés Cosmos db](monitor-cosmos-db.md) .
 
+Ez a cikk referenciaként szolgál az Azure Cosmos DB teljesítményének és rendelkezésre állásának elemzéséhez gyűjtött naplózási és metrikaadatokra vonatkozóan. A Azure Cosmos DB figyelési adatainak gyűjtéséhez és elemzéséhez tekintse meg a [figyelő Azure Cosmos db](monitor-cosmos-db.md) cikket.
 
 ## <a name="resource-logs"></a>Erőforrásnaplók
-A következő táblázat a Azure Monitor-naplókba vagy az Azure Storage-ba gyűjtött Azure Cosmos DB erőforrás-naplók tulajdonságait sorolja fel. Azure Monitor naplókban a rendszer a **AzureDiagnostics** táblában gyűjti össze a *MICROSOFT.DOCUMENTDB* **ResourceProvider** értékével. 
+
+A következő táblázat a Azure Cosmos DB erőforrás-naplófájljainak tulajdonságait sorolja fel. Az erőforrás-naplókat Azure Monitor naplókba vagy az Azure Storage-ba gyűjti. Azure Monitor a rendszer a naplókat az erőforrás-szolgáltató * * neve alatt gyűjti a **AzureDiagnostics** táblában `MICROSOFT.DOCUMENTDB` .
 
 | Azure Storage-mező vagy-tulajdonság | Azure Monitor naplók tulajdonsága | Description |
 | --- | --- | --- |
 | **idő** | **TimeGenerated** | A művelet bekövetkeztekor megadott dátum és idő (UTC). |
 | **resourceId** | **Erőforrás** | Az Azure Cosmos DB fiók, amely számára engedélyezve vannak a naplók.|
-| **Kategória** | **Kategória** | Azure Cosmos DB naplók esetében a **DataPlaneRequests**, a **MongoRequests**, a **QueryRuntimeStatistics**, a **PartitionKeyStatistics**, a **PartitionKeyRUConsumption**, a **ControlPlaneRequests** a rendelkezésre álló naplózási típusok. |
-| **operationName** | **OperationName** | A művelet neve. Ez az érték a következő műveletek bármelyike lehet: létrehozás, frissítés, olvasás, ReadFeed, törlés, csere, végrehajtás, SqlQuery, lekérdezés, JSQuery, Head, HeadFeed vagy Upsert.   |
+| **Kategória** | **Kategória** | A Azure Cosmos DB, a **DataPlaneRequests**, a **MongoRequests**, a **QueryRuntimeStatistics**, a **PartitionKeyStatistics**, a **PartitionKeyRUConsumption**és a **ControlPlaneRequests** a rendelkezésre álló naplózási típusok. |
+| **operationName** | **OperationName** | A művelet neve. A művelet neve lehet:,,,,,,,,, `Create` `Update` ,, `Read` `ReadFeed` `Delete` `Replace` `Execute` `SqlQuery` `Query` `JSQuery` `Head` `HeadFeed` vagy `Upsert` .   |
 | **Tulajdonságok** | n.a. | A mező tartalmát az alábbi sorok írják le. |
 | **Tevékenységazonosító** | **activityId_g** | A naplózott művelet egyedi GUID azonosítója. |
-| **userAgent** | **userAgent_s** | Egy karakterlánc, amely megadja a kérést végző ügyfél-felhasználói ügynököt. A formátum {User Agent Name}/{Version}.|
-| **requestResourceType** | **requestResourceType_s** | Az elérni kívánt erőforrás típusa. Az érték a következő erőforrástípusok bármelyike lehet: adatbázis, tároló, dokumentum, melléklet, felhasználó, engedély, StoredProcedure, trigger, UserDefinedFunction vagy ajánlat. |
+| **userAgent** | **userAgent_s** | Az ügyfél felhasználói ügynökét megadó karakterlánc, amelyből a kérést elküldték. A felhasználói ügynök formátuma: `{user agent name}/{version}` .|
+| **requestResourceType** | **requestResourceType_s** | Az elérni kívánt erőforrás típusa. Ez az érték lehet adatbázis, tároló, dokumentum, melléklet, felhasználó, engedély, tárolt eljárás, trigger, felhasználó által definiált függvény vagy ajánlat. |
 | **statusCode** | **statusCode_s** | A művelet válaszának állapota. |
-| **requestResourceId** | **ResourceId** | A kérelemre vonatkozó resourceId. Az érték databaseRid, collectionRid vagy documentRid is mutathat a végrehajtott művelettől függően.|
+| **requestResourceId** | **ResourceId** | A kérelemre vonatkozó resourceId. A végrehajtott művelettől függően ez az érték a következőre mutat:, `databaseRid` `collectionRid` vagy `documentRid` .|
 | **clientIpAddress** | **clientIpAddress_s** | Az ügyfél IP-címe. |
-| **requestCharge** | **requestCharge_s** | A művelet által használt RUs száma |
+| **requestCharge** | **requestCharge_s** | A művelet által használt RU/s száma |
 | **collectionRid** | **collectionId_s** | A gyűjtemény egyedi azonosítója.|
-| **időtartama** | **duration_s** | A művelet időtartama ezredmásodpercben. |
+| **időtartama** | **duration_d** | A művelet időtartama ezredmásodpercben. |
 | **requestLength** | **requestLength_s** | A kérelem hossza (bájt). |
 | **responseLength** | **responseLength_s** | A válasz hossza (bájt).|
 | **resourceTokenUserRid** | **resourceTokenUserRid_s** | Ez az érték nem üres, ha [erőforrás-tokeneket](https://docs.microsoft.com/azure/cosmos-db/secure-access-to-data#resource-tokens) használ a hitelesítéshez. Az érték a felhasználó erőforrás-AZONOSÍTÓJÁRA mutat. |
@@ -49,7 +50,7 @@ Az összes Azure Monitor naplózási kategória és a társított sémák hivatk
 ## <a name="metrics"></a>Mérőszámok
 Az alábbi táblázatok felsorolják az Azure CosmOS DB-hez összegyűjtött platform-metrikákat. A rendszer az összes mérőszámot a névtérben tárolja **Cosmos dB standard metrikákat**.
 
-Az összes Azure Monitor támogatási metrikák (beleértve a CosmosDB) listáját lásd: [Azure monitor támogatott metrikák](../azure-monitor/platform/metrics-supported.md). 
+Az összes Azure Monitor támogatási metrikájának listáját (beleértve a Azure Cosmos DBt is) lásd: [Azure monitor támogatott metrikák](../azure-monitor/platform/metrics-supported.md). 
 
 #### <a name="request-metrics"></a>Kérelmek metrikái
             
@@ -98,7 +99,7 @@ Az összes Azure Monitor támogatási metrikák (beleértve a CosmosDB) listáj�
 |Metrika (metrika megjelenítendő neve)|Egység (aggregáció típusa)|Description|Dimenziók| Időbeli részletesség| Használat |
 |---|---|---|---| ---| ---|
 | CassandraRequests (Cassandra-kérelmek) | Darabszám (darabszám) | Cassandra API kérelmek száma| DatabaseName, CollectionName, ErrorCode, régió, OperationType, ResourceType| Mind| A Cassandra-kérések figyelésére szolgál percenkénti részletességgel. Az átlagos kérelmek másodpercenkénti lekéréséhez használja a Count összesítést percek alatt, és ossza meg a 60-as számmal.|
-| CassandraRequestCharges (Cassandra-kérelmek díjai) | Darabszám (Sum, min, Max, AVG) | Cassandra API kérelmek által felhasznált kérési egységek| DatabaseName, CollectionName, régió, OperationType, ResourceType| Mind| Egy Cassandra API fiók által percenként használt RUs figyelésére használatos.|
+| CassandraRequestCharges (Cassandra-kérelmek díjai) | Darabszám (Sum, min, Max, AVG) | A Cassandra API által felhasznált kérelmek egységei | DatabaseName, CollectionName, régió, OperationType, ResourceType| Mind| Egy Cassandra API fiók által percenként használt RUs figyelésére használatos.|
 | CassandraConnectionClosures (Cassandra-kapcsolatok bezárása) |Darabszám (darabszám) |Lezárt Cassandra-kapcsolatok száma| ClosureReason, régió| Mind | Az ügyfelek és a Azure Cosmos DB Cassandra API közötti kapcsolat figyelésére használatos.|
 
 ## <a name="see-also"></a>Lásd még:

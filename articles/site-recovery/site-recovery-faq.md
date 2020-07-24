@@ -2,14 +2,14 @@
 title: Általános kérdések a Azure Site Recovery szolgáltatással kapcsolatban
 description: Ez a cikk a Azure Site Recoveryekkel kapcsolatos népszerű általános kérdéseket tárgyalja.
 ms.topic: conceptual
-ms.date: 1/24/2020
+ms.date: 7/14/2020
 ms.author: raynew
-ms.openlocfilehash: b02d001d6fad905badaf17422bdd0554e3fc8493
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 89a5785811b4f4833a5a5ddcef827b258ce1775a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86133672"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083735"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>Általános kérdések a Azure Site Recovery
 
@@ -23,7 +23,7 @@ Ez a cikk a Azure Site Recoveryokkal kapcsolatos gyakori kérdéseket foglalja �
 
 ### <a name="what-does-site-recovery-do"></a>Mire való a Site Recovery?
 
-Site Recovery az üzletmenet-folytonossági és a vész-helyreállítási (BCDR-) stratégiához járul hozzá azáltal, hogy az Azure-beli virtuális gépeket a régiók, a helyszíni virtuális gépek és a fizikai kiszolgálók között az Azure-ba, a helyszíni gépeket pedig másodlagos adatközpontba irányítja és automatizálja. [További információk](site-recovery-overview.md).
+Site Recovery az üzletmenet-folytonossági és a vész-helyreállítási (BCDR-) stratégiához járul hozzá azáltal, hogy az Azure-beli virtuális gépeket a régiók, a helyszíni virtuális gépek és a fizikai kiszolgálók között az Azure-ba, a helyszíni gépeket pedig másodlagos adatközpontba irányítja és automatizálja. [További információ](site-recovery-overview.md).
 
 ### <a name="can-i-protect-a-virtual-machine-that-has-a-docker-disk"></a>Biztosítható a Docker-lemezzel rendelkező virtuális gépek elleni védelem?
 
@@ -116,6 +116,19 @@ A replikált elemekre telepített mobilitási ügynökök csak a TLS 1,2-es adat
 ### <a name="how-can-i-enforce-tls-12-on-hyperv-to-azure-site-recovery-scenarios"></a>Hogyan állíthatom be a TLS 1,2-et a HyperV-Azure Site Recovery helyzetekben?
 Az Azure Site Recovery-szolgáltatások közötti összes kommunikáció a TLS 1,2 protokollon történik. Site Recovery a rendszerben konfigurált biztonsági szolgáltatókat használ, és a legújabb elérhető TLS protokollt használja. Az egyiknek explicit módon engedélyeznie kell a TLS 1,2-et a beállításjegyzékben, majd Site Recovery a TLS 1,2-et fogja használni a szolgáltatásokkal való kommunikációhoz. 
 
+### <a name="how-can-i-enforce-restricted-access-on-my-storage-accounts-which-are-accessed-by-site-recovery-service-for-readingwriting-replication-data"></a>Hogyan érvényesíthető a korlátozott hozzáférés a saját Storage-fiókokon, amelyeket Site Recovery szolgáltatás a replikációs információk olvasására/írására használ?
+A Recovery Services-tároló felügyelt identitásának bekapcsolásához nyissa meg az *Identity (identitás* ) beállítást. Miután a tároló regisztrálva lesz Azure Active Directoryban, megtekintheti a Storage-fiókjait, és a következő szerepkör-hozzárendeléseket adhatja a tárolóhoz:
+
+- Resource Manager-alapú Storage-fiókok (szabványos típus):
+  - [Közreműködő](../role-based-access-control/built-in-roles.md#contributor)
+  - [Storage blob adatközreműködői](../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)
+- Resource Manager-alapú Storage-fiókok (prémium típus):
+  - [Közreműködő](../role-based-access-control/built-in-roles.md#contributor)
+  - [Storage blob-adattulajdonos](../role-based-access-control/built-in-roles.md#storage-blob-data-owner)
+- Klasszikus Storage-fiókok:
+  - [Klasszikus Storage-fiók közreműködői](../role-based-access-control/built-in-roles.md#classic-storage-account-contributor)
+  - [A klasszikus Storage-fiók kulcs-kezelő szolgáltatásának szerepköre](../role-based-access-control/built-in-roles.md#classic-storage-account-key-operator-service-role)
+
 ## <a name="disaster-recovery"></a>Vészhelyreállítás
 
 ### <a name="what-can-site-recovery-protect"></a>Mit lehet Site Recovery védelemmel ellátni?
@@ -142,7 +155,7 @@ Igen, Site Recovery támogatja a helyszíni VMware virtuális gépek vész-helyr
 ### <a name="is-disaster-recovery-supported-for-hyper-v-vms"></a>Támogatott-e a vész-helyreállítási szolgáltatás a Hyper-V virtuális gépeken?
 Igen, Site Recovery támogatja a helyszíni Hyper-V virtuális gépek vész-helyreállítását. [Tekintse át](hyper-v-azure-common-questions.md) a Hyper-V virtuális gépek vész-helyreállításával kapcsolatos gyakori kérdéseket.
 
-## <a name="is-disaster-recovery-supported-for-physical-servers"></a>A vész-helyreállítási támogatott a fizikai kiszolgálókon?
+### <a name="is-disaster-recovery-supported-for-physical-servers"></a>A vész-helyreállítási támogatott a fizikai kiszolgálókon?
 Igen, Site Recovery támogatja a Windows és Linux rendszerű helyszíni fizikai kiszolgálók vész-helyreállítását az Azure-ba vagy egy másodlagos helyre. Ismerje meg az [Azure](vmware-physical-azure-support-matrix.md#replicated-machines)-ba irányuló vész-helyreállítási követelményeket és[a másodlagos helyet](vmware-physical-secondary-support-matrix.md#replicated-vm-support).
 Vegye figyelembe, hogy a fizikai kiszolgálók az Azure-beli virtuális gépekként fognak futni a feladatátvétel után. Az Azure-ból a helyszíni fizikai kiszolgálóra történő feladat-visszavétel jelenleg nem támogatott. Csak egy VMware virtuális géphez lehet visszaadni.
 
@@ -238,7 +251,7 @@ Igen. A Linux operációs rendszer Azure Site Recovery támogatja az alkalmazás
 ## <a name="failover"></a>Feladatátvétel
 ### <a name="if-im-failing-over-to-azure-how-do-i-access-the-azure-vms-after-failover"></a>Ha az Azure-ban nem végeztem el az Azure-t, hogyan férhetnek hozzá az Azure-beli virtuális gépekhez a feladatátvétel után?
 
-Az Azure virtuális gépeket biztonságos internetkapcsolaton keresztül, helyek közötti VPN-en keresztül, vagy Azure ExpressRoute segítségével érheti el. A csatlakozáshoz több dolgot is elő kell készíteni. [További információk](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover).
+Az Azure virtuális gépeket biztonságos internetkapcsolaton keresztül, helyek közötti VPN-en keresztül, vagy Azure ExpressRoute segítségével érheti el. A csatlakozáshoz több dolgot is elő kell készíteni. [További információ](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover).
 
 
 ### <a name="if-i-fail-over-to-azure-how-does-azure-make-sure-my-data-is-resilient"></a>Ha az Azure-t átadja az Azure-nak, hogyan gondoskodik róla, hogy az adataim rugalmasak legyenek?
@@ -277,5 +290,5 @@ Igen. A Site Recovery munkafolyamatainak automatizálásához a Rest API-t, a Po
 
 [Ismerje meg](site-recovery-whats-new.md) az új frissítéseket, és szerezze be a [kumulatív információkat](service-updates-how-to.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Olvassa el a [Site Recovery áttekintését](site-recovery-overview.md)

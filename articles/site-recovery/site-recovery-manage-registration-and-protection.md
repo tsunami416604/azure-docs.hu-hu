@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 06/18/2019
 ms.author: rajanaki
-ms.openlocfilehash: a411fc9a95bef595a8fc49cad77189bb88fb7661
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 77dc21b4a04ec5de440b1a17da4747a3dcc711f9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84699634"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083718"
 ---
 # <a name="remove-servers-and-disable-protection"></a>Kiszolgálók eltávolítása és a védelem letiltása
 
@@ -168,11 +169,11 @@ A VMM által nem felügyelt Hyper-V-gazdagépek összegyűjtése Hyper-V-helyre 
    - **Replikáció letiltása és eltávolítás (ajánlott)** – ez a lehetőség eltávolítja a replikált elemet a Azure site Recoveryról, és leállítja a gép replikálását. A helyszíni virtuális gépen a replikálási konfiguráció törlődik, és a védett kiszolgáló számlázása Site Recovery leállt.
    - **Eltávolítás** – ez a beállítás csak akkor használható, ha a forrás környezet törölve van vagy nem érhető el (nincs csatlakoztatva). Ezzel eltávolítja a replikált elemet a Azure Site Recoveryról (a számlázás leállt). A helyszíni virtuális gépen a replikálási konfiguráció **nem** lesz törölve. 
 
- > [!NOTE]
-     > Ha az **Eltávolítás** lehetőséget választotta, akkor futtassa a következő parancsfájlokat a helyszíni Hyper-V kiszolgáló replikációs beállításainak tisztításához.
+    > [!NOTE]
+    > Ha az **Eltávolítás** lehetőséget választotta, akkor futtassa a következő parancsfájlokat a helyszíni Hyper-V kiszolgáló replikációs beállításainak tisztításához.
 
-> [!NOTE]
-> Ha a virtuális gép feladatátvétele már megtörtént, és az Azure-ban fut, vegye figyelembe, hogy a védelem letiltása nem távolítja el és nem érinti a feladatátvételt használó virtuális gépet.
+    > [!NOTE]
+    > Ha a virtuális gép feladatátvétele már megtörtént, és az Azure-ban fut, vegye figyelembe, hogy a védelem letiltása nem távolítja el és nem érinti a feladatátvételt használó virtuális gépet.
 
 1. A forrás Hyper-V gazdagép kiszolgálóján a virtuális gép replikálásának eltávolításához. Cserélje le a SQLVM1-t a virtuális gép nevére, és futtassa a szkriptet egy felügyeleti PowerShellből
 
@@ -195,8 +196,11 @@ A VMM által nem felügyelt Hyper-V-gazdagépek összegyűjtése Hyper-V-helyre 
      > Ha az **Eltávolítás** lehetőséget választotta, a következő szkriptek Kitakarításával törölheti a helyszíni VMM-kiszolgáló replikációs beállításait.
 3. Futtassa ezt a parancsfájlt a forrás VMM-kiszolgálón a PowerShell használatával (rendszergazdai jogosultságok szükségesek) a VMM-konzolról. Cserélje le a helyőrző **SQLVM1** a virtuális gép nevére.
 
-        $vm = get-scvirtualmachine -Name "SQLVM1"
-        Set-SCVirtualMachine -VM $vm -ClearDRProtection
+    ```powershell
+    $vm = get-scvirtualmachine -Name "SQLVM1"
+    Set-SCVirtualMachine -VM $vm -ClearDRProtection
+    ```
+
 4. A fenti lépések törlik a replikációs beállításokat a VMM-kiszolgálón. A Hyper-V-gazdagépen futó virtuális gép replikálásának leállításához futtassa ezt a parancsfájlt. Cserélje le a SQLVM1 nevet a virtuális gép nevére, és host01.contoso.com a Hyper-V-kiszolgáló nevével.
 
 ```powershell
@@ -219,17 +223,21 @@ A VMM által nem felügyelt Hyper-V-gazdagépek összegyűjtése Hyper-V-helyre 
 
 3. Futtassa ezt a parancsfájlt a forrás VMM-kiszolgálón a PowerShell használatával (rendszergazdai jogosultságok szükségesek) a VMM-konzolról. Cserélje le a helyőrző **SQLVM1** a virtuális gép nevére.
 
-        $vm = get-scvirtualmachine -Name "SQLVM1"
-        Set-SCVirtualMachine -VM $vm -ClearDRProtection
+    ```powershell
+    $vm = get-scvirtualmachine -Name "SQLVM1"
+    Set-SCVirtualMachine -VM $vm -ClearDRProtection
+    ```
+
 4. A másodlagos VMM-kiszolgálón futtassa ezt a parancsfájlt a másodlagos virtuális gép beállításainak megtisztításához:
 
-        $vm = get-scvirtualmachine -Name "SQLVM1"
-        Remove-SCVirtualMachine -VM $vm -Force
+    ```powershell
+    $vm = get-scvirtualmachine -Name "SQLVM1"
+    Remove-SCVirtualMachine -VM $vm -Force
+    ```
+
 5. A másodlagos VMM-kiszolgálón frissítse a Hyper-V-gazdagépen lévő virtuális gépeket, hogy a másodlagos virtuális gép ismét észlelve legyen a VMM-konzolon.
 6. A fenti lépésekkel törölheti a replikációs beállításokat a VMM-kiszolgálón. Ha le szeretné állítani a virtuális gép replikálását, futtassa a következő parancsfájlt az elsődleges és másodlagos virtuális gépeken. Cserélje le a SQLVM1 nevet a virtuális gép nevére.
 
-        Remove-VMReplication –VMName “SQLVM1”
-
-
-
-
+    ```powershell
+    Remove-VMReplication –VMName "SQLVM1"
+    ```

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-multiple
 ms.topic: article
 ms.date: 04/20/2018
 ms.author: akjosh
-ms.openlocfilehash: 874e6f9b1c0bebedb5f50ca38d0703420be69de5
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: c4a4f641283a9a4771a236ba844cfe296b31c28c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186962"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082678"
 ---
 # <a name="how-to-install-and-configure-trend-micro-deep-security-as-a-service-on-a-windows-vm"></a>A Trend Micro Deep Security telepítése és konfigurálása Windows rendszerű virtuális gépen
 
@@ -38,7 +38,7 @@ Ha a Trend Micro egy aktuális előfizetéssel rendelkezik egy helyszíni megold
 
 A [Azure Portal](https://portal.azure.com) lehetővé teszi a Trend Micro biztonsági bővítmény telepítését, ha a **piactéren** rendszerkép használatával hozza létre a virtuális gépet. Ha egyetlen virtuális gépet hoz létre, a portál használatával egyszerűen adhat hozzá védelmet a Trend Micro-ből.
 
-A **piactéren** egy bejegyzés használatával megnyílik egy varázsló, amely segít a virtuális gép beállításában. A Trend Micro biztonsági bővítmény telepítéséhez a varázsló harmadik paneljén a **Beállítások** panelt kell használni.  Általános útmutatásért lásd: [Windows rendszerű virtuális gép létrehozása a Azure Portalban](../windows/classic/tutorial.md).
+A **piactéren** egy bejegyzés használatával megnyílik egy varázsló, amely segít a virtuális gép beállításában. A Trend Micro biztonsági bővítmény telepítéséhez a varázsló harmadik paneljén a **Beállítások** panelt kell használni.  Általános útmutatásért lásd: [Windows rendszerű virtuális gép létrehozása a Azure Portalban](../windows/quick-create-portal.md).
 
 A varázsló **Beállítások** paneljén hajtsa végre a következő lépéseket:
 
@@ -57,7 +57,7 @@ A varázsló **Beállítások** paneljén hajtsa végre a következő lépéseke
 ## <a name="install-the-deep-security-agent-on-an-existing-vm"></a>A mély biztonsági ügynök telepítése meglévő virtuális gépre
 Az ügynök meglévő virtuális gépen való telepítéséhez a következő elemek szükségesek:
 
-* A Azure PowerShell modul, a 0.8.2 vagy újabb verziója telepítve van a helyi számítógépen. A telepített Azure PowerShell verziószámát a **Get-Module Azure | Format-Table Version** paranccsal tudja megtekinteni. Útmutatást és a legújabb verzióra mutató hivatkozást a [Azure PowerShell telepítése és konfigurálása](/powershell/azure/overview)című témakörben talál. Jelentkezzen be az Azure-előfizetésbe a használatával `Add-AzureAccount` .
+* A Azure PowerShell modul, a 0.8.2 vagy újabb verziója telepítve van a helyi számítógépen. A telepített Azure PowerShell verziószámát a **Get-Module Azure | Format-Table Version** paranccsal tudja megtekinteni. Útmutatást és a legújabb verzióra mutató hivatkozást a [Azure PowerShell telepítése és konfigurálása](/powershell/azure/)című témakörben talál. Jelentkezzen be az Azure-előfizetésbe a használatával `Add-AzureAccount` .
 * A virtuális gépre telepített virtuálisgép-ügynök.
 
 Először ellenőrizze, hogy a virtuálisgép-ügynök már telepítve van-e. Adja meg a felhőalapú szolgáltatás nevét és a virtuális gép nevét, majd futtassa a következő parancsokat egy rendszergazda szintű Azure PowerShell parancssorban. Cserélje le az idézőjelek közé eső összes karaktert, beleértve a < és a > karaktereket is.

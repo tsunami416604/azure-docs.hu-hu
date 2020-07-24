@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 082575a67ea43d62f322e177cff087e5bd572c27
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 852d8f8f85536dc62dd792e5727dd7ec0571ba29
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "72792896"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084211"
 ---
 # <a name="how-to-build-a-facet-filter-in-azure-cognitive-search"></a>Dimenziós szűrő létrehozása az Azure-ban Cognitive Search 
 
@@ -28,7 +28,7 @@ A részletes Navigálás a lekérdezés eredményeinek önálló irányított sz
 
 A dimenziók dinamikusak, és egy lekérdezésen keresztül lesznek visszaadva. A keresési válaszok bemutatják azokat az eredmények eléréséhez használt aspektus-kategóriákat. Ha nem ismeri a dimenziókat, a következő példa egy dimenziós navigációs struktúra szemléltetése.
 
-  ![](./media/search-filters-facets/facet-nav.png)
+  ![Egy olyan kép, amely egy keresési párbeszédpanelt jelenít meg, és a szűrt keresési eredményeket üzleti cím szerint csoportosítja. Egy nyíl jelzi, hogy az eredmények olyan dimenziók, amelyek egy aspektus navigációs struktúrában jelennek meg.](./media/search-filters-facets/facet-nav.png)
 
 Új a csiszolatlan navigációhoz, és további részletekre van szüksége? Megtudhatja [, hogyan valósítható meg a részletes navigálás az Azure Cognitive Searchban](search-faceted-navigation.md).
 
@@ -121,7 +121,7 @@ Az Azure Cognitive Searchban az egyik kihívás az, hogy az aktuális eredménye
 
 Bár ez egy gyakori használati eset, nem az, hogy a facet navigációs struktúra jelenleg azonnal elérhető. A statikus aspektusokat szeretnéő fejlesztők általában két szűrt lekérdezés kiadásával használják a korlátozásokat: egy hatókört az eredményekre, a másik pedig a dimenziók statikus listáját hozza létre navigációs célokra.
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 + [Szűrők az Azure Cognitive Search](search-filters.md)
 + [Index létrehozása REST API](https://docs.microsoft.com/rest/api/searchservice/create-index)

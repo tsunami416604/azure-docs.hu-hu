@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/07/2020
 ms.author: rochakm
-ms.openlocfilehash: 91aaedba13dfd9c0a3ea06b3460beaa8ead20233
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: d3e70384a99e2dad3f19825cb85b83861e4647e9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86130455"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083820"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-errors"></a>Az Azure-ról az Azure-ba irányuló virtuális gépek replikációs hibáinak elhárítása
 
@@ -535,6 +535,44 @@ Ez a probléma akkor fordulhat elő, ha a virtuális gépet korábban védelemme
 
 Törölje a hibaüzenetben azonosított replika lemezt, majd próbálja megismételni a sikertelen védelmi feladatot.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="enable-protection-failed-as-the-installer-is-unable-to-find-the-root-disk-error-code-151137"></a>A védelem engedélyezése nem sikerült, mert a telepítő nem találja a legfelső szintű lemezt (hibakód: 151137)
+
+Ez a hiba olyan linuxos gépek esetén fordul elő, amelyekben az operációsrendszer-lemez Azure Disk Encryption (ADE) használatával titkosítva van. Ez a probléma csak az ügynök 9,35-es verziójában érvényes.
+
+### <a name="possible-causes"></a>Lehetséges okok
+
+A telepítő nem találja a legfelső szintű fájlrendszert futtató főlemezt.
+
+### <a name="fix-the-problem"></a>A probléma javítása
+
+A probléma megoldásához kövesse az alábbi lépéseket:
+
+1. Keresse meg az ügynök BITS szolgáltatást a RHEL és a CentOS gépek _/var/lib/waagent_ a következő paranccsal: <br>
+
+    `# find /var/lib/ -name Micro\*.gz`
+
+   Várt kimenet:
+
+    `/var/lib/waagent/Microsoft.Azure.RecoveryServices.SiteRecovery.LinuxRHEL7-1.0.0.9139/UnifiedAgent/Microsoft-ASR_UA_9.35.0.0_RHEL7-64_GA_30Jun2020_release.tar.gz`
+
+2. Hozzon létre egy új könyvtárat, és módosítsa a könyvtárat erre az új könyvtárba.
+3. Bontsa ki az első lépésben található ügynök fájlját az alábbi parancs használatával:
+
+    `tar -xf <Tar Ball File>`
+
+4. Nyissa meg a (z) _prereq_check_installer.js_ fájlt, és törölje a következő sorokat. Ezt követően mentse a fájlt.
+
+    ```
+       {
+          "CheckName": "SystemDiskAvailable",
+          "CheckType": "MobilityService"
+       },
+    ```
+5. Hívja meg a telepítőt a parancs használatával: <br>
+
+    `./install -d /usr/local/ASR -r MS -q -v Azure`
+6. Ha a telepítő sikeres, próbálkozzon újra a replikációs feladat engedélyezése lehetőséggel.
+
+## <a name="next-steps"></a>További lépések
 
 [Azure-beli virtuális gépek replikálása másik Azure-régióba](azure-to-azure-how-to-enable-replication.md)
