@@ -9,12 +9,12 @@ ms.date: 01/02/2019
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: eff74fca5ac21a7df431b55cd5c307d3e994010b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 34e1b7e58a3ceb6c1c2d2b6bc4efd34ee93e9e4e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84792132"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090484"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Virtuális hálózati szolgáltatás végpontjai Azure Key Vault
 
@@ -39,7 +39,7 @@ A [Key Vault tűzfalak és virtuális hálózatok](network-security.md) konfigur
 
 A következő lépések szükségesek a tűzfalak és a virtuális hálózatok konfigurálásához. Ezek a lépések a PowerShell, az Azure CLI vagy a Azure Portal használata esetén érvényesek.
 
-1. Engedélyezze [Key Vault naplózást](logging.md)) a részletes hozzáférési naplók megjelenítéséhez. Ez segít a diagnosztikaben, ha a tűzfalak és a virtuális hálózati szabályok megakadályozzák a hozzáférést a kulcstartóhoz. (Ez a lépés nem kötelező, de kifejezetten ajánlott.)
+1. [Key Vault naplózás](logging.md) engedélyezése a részletes hozzáférési naplók megtekintéséhez. Ez segít a diagnosztikaben, ha a tűzfalak és a virtuális hálózati szabályok megakadályozzák a hozzáférést a kulcstartóhoz. (Ez a lépés nem kötelező, de kifejezetten ajánlott.)
 2. A **Key Vault szolgáltatási végpontjának** engedélyezése célként megadott virtuális hálózatokhoz és alhálózatokhoz.
 3. Egy kulcstartóhoz tartozó tűzfalak és virtuális hálózati szabályok beállításával korlátozhatja a kulcstartóhoz való hozzáférést adott virtuális hálózatokból, alhálózatokból és IPv4-címtartományokből.
 4. Ha a kulcstartónak bármely megbízható Microsoft-szolgáltatás számára elérhetőnek kell lennie, engedélyezze a **megbízható Azure-szolgáltatások** Key Vaulthoz való kapcsolódásának lehetőségét.
@@ -80,7 +80,7 @@ Itt látható azoknak a megbízható szolgáltatásoknak a listája, amelyek hoz
 |Azure Event Hubs|[Key Vault hozzáférésének engedélyezése az ügyfél által felügyelt kulcsok esetén](https://docs.microsoft.com/azure/event-hubs/configure-customer-managed-key)|
 |Azure Service Bus|[Key Vault hozzáférésének engedélyezése az ügyfél által felügyelt kulcsok esetén](https://docs.microsoft.com/azure/service-bus-messaging/configure-customer-managed-key)|
 |Azure Import/Export| [Az ügyfél által felügyelt kulcsok használata Azure Key Vault importálási/exportálási szolgáltatáshoz](https://docs.microsoft.com/azure/storage/common/storage-import-export-encryption-key-portal)
-|Azure Container Registry|[Beállításjegyzék-titkosítás az ügyfél által felügyelt kulcsokkal](../../container-registry/container-registry-customer-managed-keys.md)
+|Azure Container Registry|[Beállításjegyzék-titkosítás az ügyfél által felügyelt kulcsokkal](../../container-registry/container-registry-customer-managed-keys.md)<br><br/>[Összetevők átvitele másik beállításjegyzékbe](../../container-registry/container-registry-transfer-images.md)
 
 > [!NOTE]
 > Be kell állítania a megfelelő Key Vault hozzáférési szabályzatokat, hogy a megfelelő szolgáltatások hozzáférjenek a Key Vaulthoz.

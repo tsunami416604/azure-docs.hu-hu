@@ -3,17 +3,18 @@ title: Az Azure Event Hubs Apache Kafka kapcsolatos hibáinak elhárítása
 description: Ez a cikk bemutatja, hogyan lehet elhárítani a problémákat az Azure Event Hubs for Apache Kafka
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: c2403fd51729ef8809b9a70383ad6f9fd91e52b6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 034541aa6ea683c0e294ca8790b02f0dc60b5440
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85322675"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090569"
 ---
 # <a name="apache-kafka-troubleshooting-guide-for-event-hubs"></a>Event Hubs Apache Kafka hibaelhárítási útmutatója
 Ez a cikk hibaelhárítási tippeket nyújt a Event Hubs Apache Kafka való használatakor futtatott problémákhoz. 
 
 ## <a name="server-busy-exception"></a>Kiszolgáló foglalt kivétele
-A Kafka-szabályozás miatt előfordulhat, hogy a kiszolgáló foglalt kivételt okoz. A AMQP-ügyfelekkel a Event Hubs azonnal visszaadja a **kiszolgáló számára foglalt** kivételt a szolgáltatás szabályozása során. Ez egyenértékű a "Try Again később" üzenettel. A Kafka-ben az üzenetek a befejezés előtt késleltetve lesznek. A késleltetési hossz ezredmásodpercben, `throttle_time_ms` a termék/beolvasási válaszban is visszaadja. A legtöbb esetben ezek a késleltetett kérelmek nem ServerBusy-kivételként vannak naplózva Event Hubs irányítópultokon. Ehelyett a válasz értékét olyan `throttle_time_ms` jelzésként kell használni, amely túllépte a kiosztott kvótát.
+A Kafka-szabályozás miatt előfordulhat, hogy a kiszolgáló foglalt kivételt okoz. A AMQP-ügyfelekkel a Event Hubs azonnal visszaadja a **kiszolgáló számára foglalt** kivételt a szolgáltatás szabályozása során. Ez egyenértékű a "Try Again később" üzenettel. A Kafka-ben az üzenetek a befejezés előtt késleltetve lesznek. A késleltetési hossz ezredmásodpercben, `throttle_time_ms` a termék/beolvasási válaszban is visszaadja. A legtöbb esetben ezek a késleltetett kérelmek nem kerülnek be kiszolgálóként foglalt kivételként Event Hubs irányítópultokon. Ehelyett a válasz értékét olyan `throttle_time_ms` jelzésként kell használni, amely túllépte a kiosztott kvótát.
 
 Ha a forgalom túlzott, a szolgáltatás a következő viselkedéssel rendelkezik:
 
@@ -48,13 +49,13 @@ Ha a Kafka Event Hubs-on való használata során problémák merülnek fel, tek
 - **Tűzfal blokkolja a forgalmat** – ellenőrizze, hogy a tűzfal nem blokkolja-e a **9093** -es portot.
 - **TopicAuthorizationException** – a kivétel leggyakoribb okai a következők:
     - Egy elírás a konfigurációs fájlban lévő kapcsolatok karakterláncában, vagy
-    - A Event Hubs for Kafka alapszintű névtérben való használatának megkísérlése. A Kafka-Event Hubs [csak a standard és a dedikált szintű névterek esetében támogatott](https://azure.microsoft.com/pricing/details/event-hubs/).
+    - A Event Hubs for Kafka alapszintű névtérben való használatának megkísérlése. A Kafka szolgáltatáshoz tartozó Event Hubs [csak a standard és a dedikált szintű névterek esetében támogatott](https://azure.microsoft.com/pricing/details/event-hubs/).
 - A Kafka-verziókhoz való Event Hubs a Kafka-ökoszisztémák esetében a Kafka **1,0-es** és újabb verzióit támogatja. Néhány, a Kafka 0,10-es vagy újabb verzióját használó alkalmazás időnként működhet a Kafka protokoll visszamenőleges kompatibilitása miatt, de erősen ajánlott a régi API-verziók használata. A Kafka 0,9-es és korábbi verziói nem támogatják a szükséges SASL-protokollokat, és nem tudnak csatlakozni a Event Hubshoz.
 - **Furcsa kódolások a AMQP-fejléceken a Kafka** használatakor – amikor eseményeket küld az Event hub-ra a AMQP-en keresztül, a AMQP-tartalom fejlécei AMQP kódolással vannak szerializálva. A Kafka-fogyasztók nem deszerializálják a fejléceket a AMQP. A fejléc értékeinek olvasásához manuálisan dekódolja a AMQP-fejléceket. Azt is megteheti, hogy elkerüli a AMQP-fejléceket, ha tudja, hogy a Kafka protokollon keresztül fogja használni. További információkért tekintse meg [ezt a GitHub-problémát](https://github.com/Azure/azure-event-hubs-for-kafka/issues/56).
 - **SASL-hitelesítés** – a keretrendszernek a Event Hubs által megkövetelt hitelesítési protokollal való együttműködésre való beszerzése nehezebb, mint a szemnek. Ellenőrizze, hogy a SASL-hitelesítéshez használt keretrendszer erőforrásaival hogyan lehet elhárítani a konfigurációt. 
 
 ## <a name="limits"></a>Korlátok
-Apache Kafka és Event Hubs Kafka. A legtöbb esetben a Kafka-ökoszisztémák Event Hubs ugyanazokat az alapértékeket, tulajdonságokat, hibakódokat és általános viselkedést eredményezik, mint a Apache Kafka. Azok a példányok, amelyekben ez a két explicit módon eltér (vagy ahol a Event Hubs korlátozza, hogy a Kafka nem) alább látható:
+Apache Kafka és Event Hubs Kafka. A legtöbb esetben Event Hubs Kafka ugyanazokat az alapértékeket, tulajdonságokat, hibakódokat és általános viselkedést eredményezi, amelyeket Apache Kafka. A két explicit módon eltérő példányok (vagy ahol a Event Hubs korlátozza, hogy a Kafka nem) alább látható:
 
 - A tulajdonság maximális hossza `group.id` 256 karakter.
 - A maximális méret `offset.metadata.max.bytes` 1024 bájt
@@ -67,4 +68,4 @@ Ha többet szeretne megtudni a Kafka Event Hubséről és Event Hubsról, tekint
 - [Apache Kafka fejlesztői útmutató Event Hubs](apache-kafka-developer-guide.md)
 - [A Event Hubs Apache Kafka áttelepítési útmutatója](apache-kafka-migration-guide.md)
 - [Gyakori kérdések – Event Hubs Apache Kafka](apache-kafka-frequently-asked-questions.md)
-- [Ajánlott konfigurációk](https://github.com/Azure/azure-event-hubs-for-kafka/blob/master/CONFIGURATION.md)
+- [Ajánlott konfigurációk](apache-kafka-configurations.md)

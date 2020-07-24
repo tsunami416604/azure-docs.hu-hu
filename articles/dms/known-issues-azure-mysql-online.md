@@ -3,8 +3,8 @@ title: 'Ismert problémák: az online áttelepítés Azure Database for MySQL'
 titleSuffix: Azure Database Migration Service
 description: Ismerje meg az ismert problémákat és az áttelepítési korlátozásokat az online áttelepítéssel Azure Database for MySQL a Azure Database Migration Service használatakor.
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: arunkumarthiags
+ms.author: arthiaga
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
@@ -14,12 +14,12 @@ ms.custom:
 - seo-dt-2019
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: 8c3de28ea934302086a5b14e61482e6a4ab9a7ca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9a2e28439efaa1983c4deeff4c6746108fc28e4e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80235281"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090705"
 ---
 # <a name="online-migration-issues--limitations-to-azure-db-for-mysql-with-azure-database-migration-service"></a>Az online áttelepítéssel kapcsolatos problémák & a MySQL-hez készült Azure-ADATBÁZISra vonatkozó korlátozásokat Azure Database Migration Service
 
@@ -135,6 +135,8 @@ Ha az AWS RDS MySQL-ről a Azure Database for MySQLra próbál online áttelepí
     ```
 
 - Azure Database Migration Service az egyetlen áttelepítési tevékenységben az áttelepítéshez szükséges adatbázisok korlátja négy.
+
+- Az Azure DMS nem támogatja a lépcsőzetes hivatkozási műveletet, amely segít automatikusan törölni vagy frissíteni a gyermektábla egyező sorát, amikor egy sort törölnek vagy frissítenek a fölérendelt táblában. További információ a MySQL dokumentációjában található a [FOREIGN Key megkötések](https://dev.mysql.com/doc/refman/8.0/en/create-table-foreign-keys.html)című cikk hivatkozási műveletek című szakasza. Az Azure DMS-nek szüksége van arra, hogy a kezdeti adatterhelés során dobja el a külső kulcsra vonatkozó korlátozásokat a célként megadott adatbázis-kiszolgálón, és nem használhat hivatkozási műveleteket. Ha a számítási feladat a kapcsolódó alárendelt tábla ezen hivatkozási művelettel való frissítésének függvénye, akkor azt javasoljuk, hogy ehelyett végezzen el egy [memóriaképet és egy visszaállítást](https://docs.microsoft.com/azure/mysql/concepts-migrate-dump-restore) . 
 
 - **Hiba:** A sor mérete túl nagy (> 8126). Egyes oszlopok SZÖVEGre vagy BLOBra való módosítása segíthet. Az aktuális sor formátumában 0 bájtos BLOB-előtag van tárolva.
 

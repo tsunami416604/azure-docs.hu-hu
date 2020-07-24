@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/17/2018
-ms.openlocfilehash: 19a1883685193e80da5f1365ec2a30db0b8754f6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7d57536eee62c415058dd454f3da6ee5f3d04898
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81450140"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090331"
 ---
 # <a name="improve-security-for-b2b-messages-by-using-certificates"></a>A B2B-üzenetek biztonságának fokozása tanúsítványokkal
 
@@ -46,7 +46,7 @@ Ha olyan logikai alkalmazásokban szeretne *nyilvános tanúsítványt* használ
 
    | Tulajdonság | Érték | Leírás | 
    |----------|-------|-------------|
-   | **Name (Név)** | <*tanúsítvány neve*> | A tanúsítvány neve, amely ebben a példában a "publicCert". | 
+   | **Név** | <*tanúsítvány neve*> | A tanúsítvány neve, amely ebben a példában a "publicCert". | 
    | **Tanúsítvány típusa** | Nyilvános | A tanúsítvány típusa |
    | **Tanúsítvány** | <*tanúsítvány-fájl neve*> | A feltölteni kívánt tanúsítványfájl megkereséséhez és kiválasztásához válassza a **tanúsítvány** mező melletti mappa ikont. |
    ||||
@@ -59,7 +59,7 @@ Ha olyan logikai alkalmazásokban szeretne *nyilvános tanúsítványt* használ
 
 ## <a name="upload-a-private-certificate"></a>Privát tanúsítvány feltöltése
 
-Ha a logikai alkalmazásokban a B2B-képességekkel rendelkező *privát tanúsítványt* szeretne használni, először fel kell töltenie a tanúsítványt az integrációs fiókjába. Szükség van egy titkos kulcsra is, amelyet először a [Azure Key Vaulthoz](../key-vault/key-vault-get-started.md)kell hozzáadnia. 
+Ha a logikai alkalmazásokban a B2B-képességekkel rendelkező *privát tanúsítványt* szeretne használni, először fel kell töltenie a tanúsítványt az integrációs fiókjába. Szükség van egy titkos kulcsra is, amelyet először a [Azure Key Vaulthoz](../key-vault/general/overview.md)kell hozzáadnia. 
 
 Miután definiálta a tulajdonságokat a létrehozott [szerződésekben](logic-apps-enterprise-integration-agreements.md) , a tanúsítvány elérhetővé válik a B2B-üzenetek biztonságossá tételéhez.
 
@@ -68,7 +68,7 @@ Miután definiálta a tulajdonságokat a létrehozott [szerződésekben](logic-a
 
 1. [Adja hozzá a titkos kulcsot Azure Key Vaulthoz](../key-vault/certificates/certificate-scenarios.md#import-a-certificate) , és adja meg a **kulcs nevét**.
    
-2. Engedélyezi Azure Logic Apps számára, hogy műveleteket hajtson végre a Azure Key Vaulton. Ha hozzáférést szeretne biztosítani az Logic Apps egyszerű szolgáltatáshoz, használja a következő PowerShell [-parancsot: set-AzKeyVaultAccessPolicy](https://docs.microsoft.com/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy), például:
+2. Engedélyezi Azure Logic Apps számára, hogy műveleteket hajtson végre a Azure Key Vaulton. Ha hozzáférést szeretne biztosítani az Logic Apps egyszerű szolgáltatáshoz, használja a következő PowerShell [-parancsot: set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy), például:
 
    `Set-AzKeyVaultAccessPolicy -VaultName 'TestcertKeyVault' -ServicePrincipalName 
    '7cd684f4-8a78-49b0-91ec-6a35d38739ba' -PermissionsToKeys decrypt, sign, get, list`
@@ -85,7 +85,7 @@ Miután definiálta a tulajdonságokat a létrehozott [szerződésekben](logic-a
 
    | Tulajdonság | Érték | Leírás | 
    |----------|-------|-------------|
-   | **Name (Név)** | <*tanúsítvány neve*> | A tanúsítvány neve, amely ebben a példában a "privateCert". | 
+   | **Név** | <*tanúsítvány neve*> | A tanúsítvány neve, amely ebben a példában a "privateCert". | 
    | **Tanúsítvány típusa** | Privát | A tanúsítvány típusa |
    | **Tanúsítvány** | <*tanúsítvány-fájl neve*> | A feltölteni kívánt tanúsítványfájl megkereséséhez és kiválasztásához válassza a **tanúsítvány** mező melletti mappa ikont. Ha kulcstartót használ a titkos kulcshoz, a feltöltött fájl lesz a nyilvános tanúsítvány. | 
    | **Erőforráscsoport** | <*integráció – fiók – erőforrás-csoport*> | Az integrációs fiókhoz tartozó erőforráscsoport, amely ebben a példában a "MyResourceGroup". | 

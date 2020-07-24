@@ -3,12 +3,12 @@ title: Offline biztonsági mentés Azure Data Box használatával
 description: Ebből a témakörből megtudhatja, hogyan használhatja a Azure Data Box a nagyméretű kezdeti biztonsági mentési adatoknak a MARS-ügynökből egy Recovery Services-tárolóba való összevetéséhez
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: a60d749f270c9efab0649b49b5c0c41945faddf5
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e377ccde714c1486ff731d24d5a0cd64364bca37
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513693"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091028"
 ---
 # <a name="azure-backup-offline-backup-by-using-azure-data-box"></a>Offline biztonsági mentés Azure Backup Azure Data Box használatával
 
@@ -153,7 +153,7 @@ A MARS-ügynök a helyi rendszerkörnyezetben működik, ezért ugyanazt a jogos
 Annak biztosítása érdekében, hogy az Data Box eszközt helyi rendszerként csatlakoztassa az NFS protokoll használatával:
 
 1. Engedélyezze az ügyfél számára az NFS-szolgáltatást azon a Windows Serveren, amelyen telepítve van a MARS-ügynök. Határozza meg a másodlagos forrás *wim: D: \Sources\Install.wim: 4*.
-1. Töltse le a PSExec-t a <https://download.sysinternals.com/files/PSTools.zip> -kiszolgálóra a Mars-ügynökkel.
+1. Töltse le a PsExec a [Sysinternals](/sysinternals/downloads/psexec) lapról a kiszolgálóra, amelyen telepítve van a Mars-ügynök.
 1. Nyisson meg egy rendszergazda jogú parancssort, és futtassa a következő parancsot az *PSExec.exet* tartalmazó könyvtárral az aktuális könyvtárként.
 
     ```cmd

@@ -1,20 +1,20 @@
 ---
 title: Űrlap-felismerő szolgáltatás titkosítása inaktív adatok esetén
 titleSuffix: Azure Cognitive Services
-description: Az inaktív adatok titkosítása az űrlap-felismerővel.
+description: A Microsoft felügyeli a Microsoft által kezelt titkosítási kulcsokat, valamint lehetővé teszi az Cognitive Services-előfizetések kezelését a saját kulcsaival, az úgynevezett ügyfél által felügyelt kulcsokkal (CMK). Ez a cikk a inaktív adatok titkosítását ismerteti az űrlap-felismerő esetében, valamint a CMK engedélyezésének és kezelésének módját.
 author: erindormier
 manager: venkyv
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 05/11/2020
+ms.date: 07/10/2020
 ms.author: egeaney
-ms.openlocfilehash: b897de94ad8cdb628520f9386b076f762a5cc230
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: cf2a6a96517d1c3d63989bc511957019f078cd42
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537952"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090875"
 ---
 # <a name="form-recognizer-encryption-of-data-at-rest"></a>Űrlap-felismerő titkosítása inaktív adatok esetén
 
@@ -27,9 +27,7 @@ Az Azure űrlap-felismerő automatikusan titkosítja az adatait, amikor a felhő
 
 [!INCLUDE [cognitive-services-cmk](../includes/configure-customer-managed-keys.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Űrlap-felismerő ügyfél által felügyelt kulcs kérésének űrlapja](https://aka.ms/cogsvc-cmk)
 * [További információ a Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)
-
-

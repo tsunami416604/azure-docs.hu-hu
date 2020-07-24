@@ -6,15 +6,16 @@ ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 01/30/2020
-ms.openlocfilehash: 46989ed2468469443d4e91a1834bc20b12c25a1e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cb1af437fc663fcb95c768ec295862209a26064e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76908071"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090399"
 ---
 # <a name="view-and-create-queries-for-monitoring-and-tracking-in-azure-monitor-logs-for-azure-logic-apps"></a>A Azure Monitor-naplók figyelésére és nyomon követésére szolgáló lekérdezések megtekintése és létrehozása Azure Logic Apps
 
-Megtekintheti azokat az alapul szolgáló lekérdezéseket, amelyek a [Azure monitor naplók](../log-analytics/log-analytics-overview.md) eredményeit eredményezik, és olyan lekérdezéseket hozhatnak létre, amelyek az adott feltételek alapján szűrik az eredményeket. Például megkeresheti az üzeneteket egy adott adatcsere-vezérlőelem száma alapján. A lekérdezések a [Kusto lekérdezési nyelvét](https://aka.ms/LogAnalyticsLanguageReference)használják, amelyet szerkeszthet, ha különböző eredményeket szeretne megtekinteni. További információ: [Azure monitor log lekérdezések](../azure-monitor/log-query/query-language.md).
+Megtekintheti azokat az alapul szolgáló lekérdezéseket, amelyek a [Azure monitor naplók](../azure-monitor/log-query/log-query-overview.md) eredményeit eredményezik, és olyan lekérdezéseket hozhatnak létre, amelyek az adott feltételek alapján szűrik az eredményeket. Például megkeresheti az üzeneteket egy adott adatcsere-vezérlőelem száma alapján. A lekérdezések a [Kusto lekérdezési nyelvét](https://aka.ms/LogAnalyticsLanguageReference)használják, amelyet szerkeszthet, ha különböző eredményeket szeretne megtekinteni. További információ: [Azure monitor log lekérdezések](../azure-monitor/log-query/query-language.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 

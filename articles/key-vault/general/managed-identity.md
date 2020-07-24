@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: bb5288d043ab5638bb33c357cea55c64b03fcf1d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d2d4af5086e3cf4099013969cd359f8e11873c6d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81432124"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090620"
 ---
 # <a name="provide-key-vault-authentication-with-a-managed-identity"></a>Felügyelt identitással rendelkező Key Vault hitelesítés megadása
 
@@ -35,7 +35,7 @@ Az útmutató végrehajtásához a következő erőforrásokkal kell rendelkezni
    - [Key Vault létrehozása Azure PowerShell](../secrets/quick-create-powershell.md)
    - [Hozzon létre egy Key vaultot a Azure Portal](../secrets/quick-create-portal.md).
 - Meglévő App Service alkalmazás, amelyhez kulcstartó-hozzáférést kíván biztosítani. A [app Service dokumentáció](../../app-service/overview.md)lépéseinek követésével gyorsan létrehozhat egyet.
-- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) vagy [Azure PowerShell](/powershell/azure/overview). Azt is megteheti, hogy a [Azure Portal](https://portal.azure.com)is használja.
+- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) vagy [Azure PowerShell](/powershell/azure/). Azt is megteheti, hogy a [Azure Portal](https://portal.azure.com)is használja.
 
 
 ## <a name="adding-a-system-assigned-identity"></a>Rendszerhez rendelt identitás hozzáadása 
@@ -50,9 +50,9 @@ Ha felügyelt identitást szeretne beállítani a portálon, először hozzon l�
 
 1. Válassza a **felügyelt identitás**elemet. 
 
-1. A **rendszerhez rendelt** lapon váltson az **állapot** bekapcsolva **értékre**. Kattintson a **Save** (Mentés) gombra. 
+1. A **rendszerhez rendelt** lapon váltson az **állapot** bekapcsolva **értékre**. Kattintson a **Mentés** gombra. 
 
-    ![](../media/managed-identity-system-assigned.png)
+   ![A rendszer által hozzárendelt identitások mentését bemutató képernyőkép.](../media/managed-identity-system-assigned.png)
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -100,7 +100,7 @@ Jegyezze fel a `PrincipalId` -t, amelyre a következő szakaszban lesz szükség
 
 1.  Kattintson a **Hozzáadás** gombra az új hozzáférési szabályzat hozzáadásának befejezéséhez.
 
-    ![](../media/managed-identity-access-policy.png)
+    ![A Azure Portal új hozzáférési szabályzat hozzáadását bemutató képernyőkép.](../media/managed-identity-access-policy.png)
 
 ### <a name="azure-cli"></a>Azure CLI
 

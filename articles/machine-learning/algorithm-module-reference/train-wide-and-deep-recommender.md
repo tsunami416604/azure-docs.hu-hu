@@ -1,5 +1,5 @@
 ---
-title: Képmodell pontozása
+title: A Train Wide & Deep ajánló modul használata
 titleSuffix: Azure Machine Learning
 description: Megtudhatja, hogyan használhatja a betanítási szintű & Deep ajánló modult egy javaslati modell betanításához.
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 06/12/2020
-ms.openlocfilehash: 2ac5e5874ebb34b68cbfe8be1986852c67b97c21
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 234217b6571307db04941cc0b9989d3438cde1b7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84740056"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090178"
 ---
 # <a name="train-wide--deep-recommender"></a>Széles körű & a mély ajánló
 Ez a cikk azt ismerteti, hogyan használható a Azure Machine Learning Designer (előzetes verzió) teljes **körű & Deep ajánló** modulja egy javaslati modell betanításához. Ez a modul a Google által javasolt széles körű & mély tanuláson alapul.
@@ -66,7 +66,7 @@ A **felhasználói szolgáltatások** adatkészletének tartalmaznia kell a felh
 
 Például a felhasználói funkciók egy tipikus készlete a következőhöz hasonló lehet: 
 
-|UserId (Felhasználóazonosító)|Kor|Nem|Érdeklődését|Hely|
+|UserId (Felhasználóazonosító)|Életkor|Nem|Érdeklődését|Hely|
 |------------|--------------|-----------------------|---------------|------------|
 |1|25|male| Dráma    |Európa|
 |223|40|female|Francia|Ázsia|

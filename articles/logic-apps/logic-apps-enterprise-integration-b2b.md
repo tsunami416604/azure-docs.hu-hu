@@ -8,11 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 02/10/2020
-ms.openlocfilehash: b576fc99e2f203bb3d690a8135ee76cee26b3de8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2fd96777a5fe74d44aeed5f6de82e54b2663a024
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82792360"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090382"
 ---
 # <a name="receive-and-confirm--b2b-as2-messages-by-using-azure-logic-apps-and-enterprise-integration-pack"></a>B2B AS2-üzenetek fogadása és megerősítése Azure Logic Apps és Enterprise Integration Pack használatával
 
@@ -34,7 +35,7 @@ Ez a cikk bemutatja, hogyan hozhat létre olyan logikai alkalmazást, amely egy 
 
   Ha most ismerkedik a Logic apps szolgáltatással, tekintse át a [Mi az Azure Logic apps?](../logic-apps/logic-apps-overview.md) és a gyors útmutató [: hozza létre az első logikai alkalmazását](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-* Egy [integrációs fiók](../logic-apps/logic-apps-enterprise-integration-accounts.md) , amely társítva van az Azure-előfizetéséhez, és kapcsolódik a logikai alkalmazáshoz. A logikai alkalmazásnak és az integrációs fióknak ugyanazon a helyen vagy az Azure-régióban kell lennie.
+* Egy [integrációs fiók](./logic-apps-enterprise-integration-create-integration-account.md) , amely társítva van az Azure-előfizetéséhez, és kapcsolódik a logikai alkalmazáshoz. A logikai alkalmazásnak és az integrációs fióknak ugyanazon a helyen vagy az Azure-régióban kell lennie.
 
 * Legalább két olyan [kereskedelmi partner](../logic-apps/logic-apps-enterprise-integration-partners.md) , amelyet már definiált az integrációs fiókjában, valamint az [AS2-és X12-szerződéseket](logic-apps-enterprise-integration-agreements.md) az adott partnereknek.
 
@@ -104,7 +105,7 @@ Ha értesíteni szeretné a kereskedelmi partnert arról, hogy az üzenet érkez
 
 1. Az **AS2-dekódolási** művelet alatt válassza az **új lépés**lehetőséget.
 
-1. A **válasszon műveletet**területen a keresőmező alatt válassza a **beépített**lehetőséget. A keresőmezőbe írja be a `condition` kifejezést. A **műveletek** listából válassza a **feltétel**elemet.
+1. A **válasszon műveletet**területen a keresőmező alatt válassza a **beépített**lehetőséget. A keresőmezőbe írja be a `condition` kifejezést. A **Műveletek** listában válassza a **Feltétel** lehetőséget.
 
    ![A "feltétel" művelet hozzáadása](./media/logic-apps-enterprise-integration-b2b/add-condition-action.png)
 

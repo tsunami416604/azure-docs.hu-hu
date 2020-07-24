@@ -6,21 +6,21 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 06/29/2020
+ms.date: 07/22/2020
 ms.author: tamram
 ms.reviewer: fryu
-ms.openlocfilehash: f4263d372b82779fe68a6a15cc7db61a31359e14
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: ac5fad935e5c37df3a8bd64189a59612eaf097aa
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86209602"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091368"
 ---
 # <a name="access-public-containers-and-blobs-anonymously-with-net"></a>Nyilvános tárolók és Blobok elérése névtelenül a .NET-tel
 
-Az Azure Storage támogatja a névtelen, nyilvános olvasási hozzáférést a tárolók és a Blobok számára. Az ügyfelek névtelenül érhetik el a nyilvános tárolókat és a blobokat az Azure Storage ügyféloldali kódtárai használatával, valamint az Azure Storage szolgáltatáshoz való adatelérést támogató egyéb eszközökkel és segédprogramokkal.
+Az Azure Storage támogatja a tárolók és a Blobok opcionális nyilvános olvasási hozzáférését. Az ügyfelek névtelenül érhetik el a nyilvános tárolókat és a blobokat az Azure Storage ügyféloldali kódtárai használatával, valamint az Azure Storage szolgáltatáshoz való adatelérést támogató egyéb eszközökkel és segédprogramokkal.
 
-Ez a cikk bemutatja, hogyan érheti el egy nyilvános tárolót vagy blobot a .NET-ről. A névtelen olvasási hozzáférés tárolón való konfigurálásával kapcsolatos információkért lásd:. A Storage-fiókokhoz való névtelen hozzáférés megakadályozásával kapcsolatos információkért lásd:.
+Ez a cikk bemutatja, hogyan érheti el egy nyilvános tárolót vagy blobot a .NET-ről. A névtelen olvasási hozzáférés tárolón való konfigurálásával kapcsolatos információkért lásd: [Névtelen nyilvános olvasási hozzáférés beállítása tárolók és Blobok](anonymous-read-access-configure.md)számára. A Storage-fiókokhoz való névtelen hozzáférés megakadályozásával kapcsolatos információkért lásd: a [Névtelen nyilvános olvasási hozzáférés megakadályozása a tárolók és a Blobok](anonymous-read-access-prevent.md)számára.
 
 A tárolókat és blobokat elérő ügyfelek névtelenül használhatják a hitelesítő adatokat nem igénylő konstruktorokat. Az alábbi példák a tárolók és Blobok névtelen módon történő hivatkozásának néhány különböző módját mutatják be.
 

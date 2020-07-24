@@ -1,21 +1,21 @@
 ---
-title: Biztonság
+title: Azure Cognitive Services biztonság
 titleSuffix: Azure Cognitive Services
 description: További információ a Cognitive Services használatának különböző biztonsági szempontjairól.
 services: cognitive-services
-author: aahill
+author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 06/30/2020
-ms.author: aahi
+ms.date: 07/10/2020
+ms.author: erhopf
 ms.custom: tracking-python
-ms.openlocfilehash: d97b944d5d18a39d6eaf84b55363f487a2c17dbf
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: 51a9829a7ea19665e1081a48207f176b1a8e68c0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85611407"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090841"
 ---
 # <a name="azure-cognitive-services-security"></a>Azure Cognitive Services biztonság
 
@@ -203,9 +203,19 @@ NSString* value =
 
 * Translator
 
-Language Understanding esetén a Microsoft Engineers nem fér hozzá a E0 SKU-ban lévő összes ügyfél-adatszolgáltatáshoz. Ha a E0 SKU használatára van lehetősége, töltse ki és küldje el a [Luis szolgáltatási kérelem űrlapját](https://aka.ms/cogsvc-cmk). Körülbelül 3-5 munkanapot vesz igénybe, hogy visszahallgassa a kérés állapotát. Igénytől függően előfordulhat, hogy egy várólistába helyezi, és a rendszer jóváhagyja a helyet, és elérhetővé válik. Miután jóváhagyta a E0 SKU-val a LUIS-t, létre kell hoznia egy új Language Understanding-erőforrást a Azure Portal, és a E0 kell választania. A felhasználók nem fognak tudni frissíteni a F0 az új E0 SKU-ra.
+A következő szolgáltatások esetében a Microsoft Engineers nem fér hozzá a E0-szinten található összes ügyfél-adatszolgáltatáshoz: 
 
-A beszédfelismerési szolgáltatás jelenleg nem támogatja a Ügyfélszéf. A vásárlói adatait azonban a BYOS ("saját tárhely használata") tárolhatja, így a [Ügyfélszéfhoz](../security/fundamentals/customer-lockbox-overview.md)hasonló adatkezelési funkciók érhetők el. Ne feledje, hogy a beszédfelismerési szolgáltatás adatmennyisége és feldolgozása abban a régióban történik, ahol a beszédfelismerési erőforrás létrejött. Ez a nyugalmi állapotban tárolt adatokra és a tranzitban tárolt adatokra is vonatkozik. A testreszabási funkciók, például a Custom Speech és az egyéni hang használatakor az összes ügyfél-adat átvitele, tárolása és feldolgozása ugyanabban a régióban történik, ahol a BYOS (ha használatban van) és a Speech Service-erőforrás található.
+* Language Understanding
+* Face
+* Tartalommoderátor
+* Personalizer
+
+> [!IMPORTANT]
+> Az **űrlap-felismerő**esetében a Microsoft Engineers nem fér hozzá a 2020. július 10. után létrehozott erőforrásokhoz.
+
+Ha a E0 SKU használatára van lehetősége, töltse ki és küldje el ezt a [kérési űrlapot](https://aka.ms/cogsvc-cmk). Körülbelül 3-5 munkanapot vesz igénybe, hogy visszahallgassa a kérés állapotát. Igénytől függően előfordulhat, hogy egy várólistába helyezi, és a rendszer jóváhagyja a helyet, és elérhetővé válik. Miután jóváhagyta a E0 SKU-val a LUIS-t, létre kell hoznia egy új erőforrást a Azure Portal, és a E0 kell választania az árképzési szinten. A felhasználók nem fognak tudni frissíteni a F0 az új E0 SKU-ra.
+
+A beszédfelismerési szolgáltatás jelenleg nem támogatja a Ügyfélszéf. A vásárlói adatait azonban a saját tároló (BYOS) használatával is tárolhatja, így a Ügyfélszéfhoz hasonló adatellenőrzéseket érhet el. Ne feledje, hogy a beszédfelismerési szolgáltatás adatmennyisége és feldolgozása abban a régióban történik, ahol a beszédfelismerési erőforrás létrejött. Ez a nyugalmi állapotban tárolt adatokra és a tranzitban tárolt adatokra is vonatkozik. A testreszabási funkciók, például a Custom Speech és az egyéni hang használatakor az összes ügyfél-adat átvitele, tárolása és feldolgozása ugyanabban a régióban történik, ahol a BYOS (ha használatban van) és a Speech Service-erőforrás található.
 
 > [!IMPORTANT]
 > A Microsoft **nem** használja fel az ügyféladatokat, hogy javítsa a beszédfelismerési modelljeit. Emellett, ha a végpont-naplózás le van tiltva, és nem használ testreszabást, akkor a rendszer nem tárolja az ügyféladatokat. 

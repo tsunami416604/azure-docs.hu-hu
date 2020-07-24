@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 06/21/2020
 ms.author: rajosh
-ms.openlocfilehash: e80ec71bef8c34331fac076b7b08be48a9571c2e
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: db1de363856fd560fea97f8f9cdf542717c4cca3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86107699"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090093"
 ---
 # <a name="build-migration-plan-with-azure-migrate"></a>Migrálási terv létrehozása az Azure Migrate-tel
 
@@ -151,7 +151,7 @@ Az áttelepítési terv véglegesítése előtt győződjön meg arról, hogy a 
 
 - Ha szükséges, támogatást kaphat a megvalósításhoz. Számos szervezet úgy dönt, hogy külső segítséget nyújt a felhőbe való Migrálás támogatásához. Ha az Azure-ba gyorsan és magabiztosan szeretne áttérni személyre szabott segítséggel, vegye fontolóra egy [Azure-szakértő által felügyelt szolgáltatót](https://www.microsoft.com/solution-providers/search?cacheId=9c2fed4f-f9e2-42fb-8966-4c565f08f11e&ocid=CM_Discovery_Checklist_PDF)   vagy [FastTrack for Azure](https://azure.microsoft.com/programs/azure-fasttrack/?ocid=CM_Discovery_Checklist_PDF).  
 
-Hozzon létre egy hatékony felhőalapú áttelepítési tervet, amely részletes információkat tartalmaz az áttelepíteni kívánt alkalmazások listájáról/csoportjairól, az alkalmazás és az adatbázis rendelkezésre állásáról és az állásidő korlátozásáról, valamint a kívánt áttelepítési mérföldköveket. Az áttelepítési tervnek azt is figyelembe kell vennie, hogy mennyi időt vesz igénybe az Adatmásolás, és hogy az áttelepítés utáni tesztelési és átváltás tevékenységek esetében egy figyelmes puffert tartalmazzon. Az áttelepítés utáni tesztelésnek tartalmaznia kell a funkcionális, integrációs, biztonsági és teljesítmény-tesztelési használati eseteket annak biztosítására, hogy az áttelepített alkalmazások a várt módon működjenek, és az összes adatbázis-objektum és adatkapcsolat sikeresen át lett adva a felhőbe. Az áttelepítés utáni tesztelésnek tartalmaznia kell a funkcionális, integrációs, biztonsági és teljesítmény-tesztelési használati eseteket annak biztosítására, hogy az áttelepített alkalmazások a várt módon működjenek, és az összes adatbázis-objektum és adatkapcsolat sikeresen át lett adva a felhőbe.  
+Hozzon létre egy hatékony felhőalapú áttelepítési tervet, amely részletes információkat tartalmaz az áttelepíteni kívánt alkalmazások listájáról/csoportjairól, az alkalmazás és az adatbázis rendelkezésre állásáról és az állásidő korlátozásáról, valamint a kívánt áttelepítési mérföldköveket. Az áttelepítési tervnek azt is figyelembe kell vennie, hogy mennyi időt vesz igénybe az Adatmásolás, és hogy az áttelepítés utáni tesztelési és átváltás tevékenységek esetében egy figyelmes puffert tartalmazzon. Az áttelepítés utáni tesztelésnek tartalmaznia kell a funkcionális, integrációs, biztonsági és teljesítmény-tesztelési használati eseteket annak biztosítására, hogy az áttelepített alkalmazások a várt módon működjenek, és az összes adatbázis-objektum és adatkapcsolat sikeresen át lett adva a felhőbe.  
 
 Ezzel az elemzéssel létrehozhat egy áttelepítési ütemtervet, és deklarálhat egy karbantartási időszakot az alkalmazások és adatbázisok áttelepítéséhez minimálisan nulla állásidővel, és korlátozhatja a lehetséges működési/üzleti hatásokat az áttelepítés során.  
 
@@ -162,7 +162,7 @@ Ha készen áll az áttelepítésre, használja a Azure Migrate *kiszolgáló-á
 > [!NOTE]
 > A VMware virtuális gépek esetében a kiszolgáló értékelése a virtuális géphez megadott operációs rendszert használja vCenter Server a vendég operációs rendszer elemzésének kezeléséhez. A VMware-en futó Linux rendszerű virtuális gépek esetében jelenleg nem azonosítja a vendég operációs rendszer pontos kernel-verzióját.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Vizsgálja meg a [felhőalapú migrációs utat](/azure/architecture/cloud-adoption/getting-started/migrate)   Az Azure Cloud bevezetési keretrendszerében.
 - A Azure Migrate [első lépései](https://youtu.be/wFfq3YPxYHE) .

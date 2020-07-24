@@ -13,33 +13,34 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 06/13/2019
 ms.author: juliako
-ms.openlocfilehash: a28d4d96f643c12eeb6aa542db2c6af06f4fd954
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 793ddb8c99a4e21c176374f7cb3445d1a7d8fca0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78244643"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090059"
 ---
 # <a name="live-event-types-comparison"></a>Élő eseménytípus összehasonlítása
 
-Azure Media Services egy [élő esemény](https://docs.microsoft.com/rest/api/media/liveevents) lehet egy *áteresztő* (egy helyszíni élő kódoló több bitrátás streamet küld) vagy *élő kódolást* (a helyszíni élő kódoló egyetlen sávszélességű adatfolyamot küld). 
+Azure Media Services egy [élő esemény](/rest/api/media/liveevents) lehet egy *áteresztő* (egy helyszíni élő kódoló több bitrátás streamet küld) vagy *élő kódolást* (a helyszíni élő kódoló egyetlen sávszélességű adatfolyamot küld). 
 
 Ez a cikk az élő események típusaival kapcsolatos funkciókat hasonlítja össze.
 
 ## <a name="types-comparison"></a>Típusok összehasonlítása 
 
-Az alábbi táblázat összehasonlítja az élő események típusának funkcióit. A típusok beállítása a [LiveEventEncodingType](https://docs.microsoft.com/rest/api/media/liveevents/create#liveeventencodingtype)használatával történik a létrehozás során:
+Az alábbi táblázat összehasonlítja az élő események típusának funkcióit. A típusok beállítása a [LiveEventEncodingType](/rest/api/media/liveevents/create#liveeventencodingtype)használatával történik a létrehozás során:
 
 * **LiveEventEncodingType. None** – a helyszíni élő kódoló több bitrátás streamet küld. A betöltött adatfolyamok további feldolgozás nélkül haladnak át az élő eseményen. Más néven átmenő élő esemény.
 * **LiveEventEncodingType. Standard** – a helyszíni élő kódoló egyetlen sávszélességű adatfolyamot küld az élő eseménynek, és Media Services több bitrátás streamet hoz létre. Ha a hozzájárulási hírcsatorna 720p vagy nagyobb felbontású, a **Default720p** -készlet 6 feloldási/bitrátás párokat kódol (részletek a cikk későbbi részében).
 * **LiveEventEncodingType. Premium1080p** – a helyszíni élő kódoló egyetlen sávszélességű adatfolyamot küld az élő eseménynek, és Media Services több bitrátás adatfolyamot hoz létre. A Default1080p-készlet meghatározza a feloldási/bitráta párok kimeneti készletét (részletek a cikk későbbi részében). 
 
-| Szolgáltatás | Átmenő élő esemény | Standard vagy Premium1080p élő esemény |
+| Funkció | Átmenő élő esemény | Standard vagy Premium1080p élő esemény |
 | --- | --- | --- |
 | Az egyszeres sávszélességű bemenetek a felhőben több bitrátára vannak kódolva |No |Yes |
 | A hozzájárulási csatorna maximális felbontása |4K (4096x2160 at 60 Frames/mp) |1080p (1920x1088 30 keret/mp)|
 | Ajánlott maximális rétegek a hozzájárulási adatcsatornában|Legfeljebb 12|Egy hang|
 | Maximális rétegek a kimenetben| Ugyanaz, mint a bevitel|Legfeljebb 6 (lásd az alábbi rendszerbeállításokat)|
-| A hozzájárulási csatorna maximális összesített sávszélessége|60 Mbps|N.A.|
+| A hozzájárulási csatorna maximális összesített sávszélessége|60 Mbps|n.a.|
 | A hozzájárulás egyetlen rétegének maximális bitrátája |20 Mbps|20 Mbps|
 | Többnyelvű hangsávok támogatása|Yes|No|
 | Támogatott bemeneti videós kodekek |H. 264/AVC és H. 265/HEVC|H. 264/AVC|
@@ -50,7 +51,7 @@ Az alábbi táblázat összehasonlítja az élő események típusának funkció
 | Kimeneti videó maximális felbontása|Ugyanaz, mint a bevitel|Standard – 720p, Premium1080p – 1080p|
 | Bemeneti videó maximális képkockasebessége|60 képkocka/másodperc|Standard vagy Premium1080p – 30 keret/másodperc|
 | Bemeneti protokollok|RTMP, töredezett – MP4 (Smooth Streaming)|RTMP, töredezett – MP4 (Smooth Streaming)|
-| Price|Tekintse meg a [díjszabási oldalt](https://azure.microsoft.com/pricing/details/media-services/) , és kattintson az "élő videó" fülre.|Tekintse meg a [díjszabási oldalt](https://azure.microsoft.com/pricing/details/media-services/) , és kattintson az "élő videó" fülre.|
+| Ár|Tekintse meg a [díjszabási oldalt](https://azure.microsoft.com/pricing/details/media-services/) , és kattintson az "élő videó" fülre.|Tekintse meg a [díjszabási oldalt](https://azure.microsoft.com/pricing/details/media-services/) , és kattintson az "élő videó" fülre.|
 | Maximális futási idő| 24 óra x 365 nap, élő lineáris | 24 óra x 365 nap, élő lineáris (előzetes verzió)|
 | A beágyazott CEA 608/708 feliratok-adattovábbítási képesség|Igen|Igen|
 | Az élő átírások bekapcsolásának lehetősége|Igen|Igen|
@@ -64,7 +65,7 @@ Az alábbi táblázat összehasonlítja az élő események típusának funkció
 
 ## <a name="system-presets"></a>Rendszerbeállítás
 
-Az élő kódoló kimenetében található felbontásokat és bitrátákat a [presetName](https://docs.microsoft.com/rest/api/media/liveevents/create#liveeventencoding)határozza meg. Ha **standard** Live Encodert (LiveEventEncodingType. Standard) használ, akkor a *Default720p* előre megadott 6 feloldási/bitráta párokat határoz meg. Ellenkező esetben, ha **Premium1080p** élő kódolót (LiveEventEncodingType. Premium1080p) használ, akkor a *Default1080p* -készlet meghatározza a feloldási/bitráta párok kimeneti készletét.
+Az élő kódoló kimenetében található felbontásokat és bitrátákat a [presetName](/rest/api/media/liveevents/create#liveeventencoding)határozza meg. Ha **standard** Live Encodert (LiveEventEncodingType. Standard) használ, akkor a *Default720p* előre megadott 6 feloldási/bitráta párokat határoz meg. Ellenkező esetben, ha **Premium1080p** élő kódolót (LiveEventEncodingType. Premium1080p) használ, akkor a *Default1080p* -készlet meghatározza a feloldási/bitráta párok kimeneti készletét.
 
 > [!NOTE]
 > A Default1080p-beállításkészlet nem alkalmazható élő eseményre, ha standard Live Encoding-kódolásra van beállítva – hibaüzenetet kap. Akkor is hibaüzenetet kap, ha a Default720p-készletet egy Premium1080p élő kódolóra próbálja alkalmazni.
@@ -73,14 +74,14 @@ Az élő kódoló kimenetében található felbontásokat és bitrátákat a [pr
 
 Ha a hozzájárulási hírcsatorna 720p vagy magasabb felbontású, a **Default720p** -készlet a következő 6 rétegbe fogja kódolni a hírcsatornát. Az alábbi táblázatban a bitráta kbit/s, a MaxFPS pedig azt jelzi, hogy a képkockák maximális száma (a keret/másodpercben) a profil a használt H. 264 profilt jelöli.
 
-| Sávszélességű | Szélesség | Height (Magasság) | MaxFPS | Profil |
+| Sávszélességű | Szélesség | Magasság | MaxFPS | Profil |
 | --- | --- | --- | --- | --- |
-| 3500 |1280 |720 |30 |Magasság |
-| 2200 |960 |540 |30 |Magasság |
-| 1350 |704 |396 |30 |Magasság |
-| 850 |512 |288 |30 |Magasság |
-| 550 |384 |216 |30 |Magasság |
-| 200 |340 |192 |30 |Magasság |
+| 3500 |1280 |720 |30 |Magas |
+| 2200 |960 |540 |30 |Magas |
+| 1350 |704 |396 |30 |Magas |
+| 850 |512 |288 |30 |Magas |
+| 550 |384 |216 |30 |Magas |
+| 200 |340 |192 |30 |Magas |
 
 > [!NOTE]
 > Ha testre kell szabnia az élő kódolási beállításkészletet, nyisson meg egy támogatási jegyet az Azure Portalon keresztül. Meg kell adnia a felbontás és a bitsebesség kívánt táblázatát. Győződjön meg arról, hogy csak egy réteg 720p sebességű, és hogy legfeljebb 6 réteg van. Azt is megadhatja, hogy egy szabványos élő kódolóhoz kérjen beállításkészletet.
@@ -90,14 +91,14 @@ Ha a hozzájárulási hírcsatorna 720p vagy magasabb felbontású, a **Default7
 
 Ha a hozzájárulási csatorna 1080p felbontású, a **Default1080p** -készlet a következő 6 rétegbe fogja kódolni a hírcsatornát.
 
-| Sávszélességű | Szélesség | Height (Magasság) | MaxFPS | Profil |
+| Sávszélességű | Szélesség | Magasság | MaxFPS | Profil |
 | --- | --- | --- | --- | --- |
-| 5500 |1920 |1080 |30 |Magasság |
-| 3000 |1280 |720 |30 |Magasság |
-| 1600 |960 |540 |30 |Magasság |
-| 800 |640 |360 |30 |Magasság |
-| 400 |480 |270 |30 |Magasság |
-| 200 |320 |180 |30 |Magasság |
+| 5500 |1920 |1080 |30 |Magas |
+| 3000 |1280 |720 |30 |Magas |
+| 1600 |960 |540 |30 |Magas |
+| 800 |640 |360 |30 |Magas |
+| 400 |480 |270 |30 |Magas |
+| 200 |320 |180 |30 |Magas |
 
 > [!NOTE]
 > Ha testre kell szabnia az élő kódolási beállításkészletet, nyisson meg egy támogatási jegyet az Azure Portalon keresztül. Meg kell adnia a felbontás és a bitsebesség kívánt táblázatát. Győződjön meg arról, hogy a rendszer csak egy réteget (1080p) és legfeljebb 6 réteget mutat be. Azt is megadhatja, hogy az Premium1080p Live Encoder számára előre beállított értéket kérjen.

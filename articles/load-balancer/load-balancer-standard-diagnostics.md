@@ -12,11 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2019
 ms.author: allensu
-ms.openlocfilehash: 9003d35ce2eea18aa912a866802b026bb923aa08
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 034a49793d3a3e416f307741e49446979eb33bb3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81272695"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090450"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>Metrikák, riasztások és az erőforrások állapotának diagnosztikái a standard Load Balancerben
 
@@ -40,11 +41,14 @@ A különböző standard Load Balancer konfigurációk a következő metrikákat
 | Állapotadat-mintavétel állapota | Nyilvános és belső Load Balancer | A standard Load Balancer egy elosztott állapot-ellenőrzési szolgáltatást használ, amely figyeli az alkalmazás-végpont állapotát a konfigurációs beállításoknak megfelelően. Ez a metrika a terheléselosztó készletében lévő példányok összesített vagy végponti szűrt nézetét biztosítja. Láthatja, hogyan tekinti meg a Load Balancer az alkalmazás állapotát az állapotminta konfigurációja alapján. |  Átlag |
 | Csomagok szinkronizálása (SYN) | Nyilvános és belső Load Balancer | A standard szintű Load Balancer nem állítja le a Transmission Control Protocol- (TCP-) kapcsolatokat, és nem befolyásolja a TCP- vagy UDP-csomagok átvitelét. A folyamok és a hozzájuk tartozó kézfogások mindig a forrás és a virtuálisgép-példány között történnek. A TCP protokollal kapcsolatos forgatókönyvek hatékonyabb hibaelhárítása érdekében használhatja a SYN csomagszámlálókat, hogy átlássa, hány TCP-csatlakozási kísérlet történt. A metrika a fogadott TCP SYN-csomagok számáról készít jelentést.| Átlag |
 | SNAT-kapcsolatok | Nyilvános Load Balancer |A standard szintű Load Balancer azoknak a kimenő folyamoknak a számáról készít jelentést, amelyek el vannak rejtve a nyilvános IP-cím előtere elől. A forráshálózati címfordítási (SNAT-) portok véges erőforrások. Ez a metrika jelzi, hogy az alkalmazás milyen mértékben támaszkodik az SNAT-ra a kívülről érkező folyamok esetén. A sikeres és meghiúsult kimenő SNAT-folyamok számlálóiról jelentés készül, amely felhasználható a kimenő folyamok hibaelhárításához és az állapotuk áttekintéséhez.| Átlag |
-| Lefoglalt SNAT-portok | Nyilvános Load Balancer | standard Load Balancer a háttérbeli példányok által lefoglalt SNAT-portok számát jelenti | Átlag. |
+| Lefoglalt SNAT-portok | Nyilvános Load Balancer | standard Load Balancer a háttérbeli példányok által lefoglalt SNAT-portok számát jelenti | Átlagos. |
 | Használt SNAT-portok | Nyilvános Load Balancer | Standard Load Balancer a háttérbeli példányok által használt SNAT-portok számát jelenti. | Átlag | 
 | Bájtszámlálók |  Nyilvános és belső Load Balancer | A standard szintű Load Balancer jelentést készít az előtérrendszerenként feldolgozott adatok mennyiségéről. Látható, hogy a bájtok nincsenek egyenletesen elosztva a háttérpéldányok közt. Ez várhatóan az Azure Load Balancer algoritmusa a folyamatokon alapul. | Átlag |
 | Csomagszámlálók |  Nyilvános és belső Load Balancer | A standard szintű Load Balancer jelentést készít az előtérrendszerenként feldolgozott csomagok mennyiségéről.| Átlag |
 
+  >[!NOTE]
+  >A belső terheléselosztó NVA vagy tűzfal SYN-csomagon keresztüli forgalmának elosztásakor a bájtok számlálója és a csomagok számláló metrikái nem érhetők el, és nullaként jelennek meg. 
+  
 ### <a name="view-your-load-balancer-metrics-in-the-azure-portal"></a>A terheléselosztó metrikáinak megtekintése a Azure Portalban
 
 A Azure Portal megjeleníti a terheléselosztó mérőszámait a metrikák lapon, amely egy adott erőforráshoz és a Azure Monitor laphoz is elérhető a terheléselosztó erőforrás oldalán. 

@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: keferna
 ms.author: keferna
-ms.date: 05/08/2020
-ms.openlocfilehash: ad4e80c98097955703e4a6fb3c64e93a338f2720
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/22/2020
+ms.openlocfilehash: 93366bf963350bf9cbdbda15ec4070c21a1dc975
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121163"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090144"
 ---
 # <a name="common-questions-about-microsoft-commercial-marketplace"></a>Gyakori kérdések a Microsoft kereskedelmi piactérről
 
@@ -46,7 +46,7 @@ További információért tekintse meg a videót a [piactéren való értékesí
 
 ### <a name="is-there-a-listing-fee-for-the-microsoft-commercial-marketplace"></a>Díjköteles a Microsoft kereskedelmi piactér?
 
-Nem, a kereskedelmi piactéren elérhető ajánlatok közzétételére nincs díj. Az értékesítés egy kis hányadát, tranzakciós díjat számítunk fel, és befektetjük a Marketplace jutalmazási programba, a platform innovációba és a kereskedelmi piactéren végrehajtott műveletekbe.
+Nem, a kereskedelmi piactéren elérhető ajánlatok közzétételére nincs díj. Az értékesítés egy kis hányadát, tranzakciós díjat számítunk fel, és befektetjük a Marketplace jutalmazási programba, a platform innovációba és a kereskedelmi piactéren végrehajtott műveletekbe. Ez a tranzakciós díj az [Azure IP közös értékesítésű](https://docs.microsoft.com/azure/marketplace/marketplace-co-sell) incentivized ajánlatait is csökkenti.
 
 ### <a name="how-do-i-sign-up-to-be-a-publisher-in-the-microsoft-commercial-marketplace"></a>Hogyan regisztrálni, hogy kiadó legyen a Microsoft kereskedelmi piactéren?
 
@@ -340,7 +340,7 @@ A Microsoft felügyeleti központtal kapcsolatos információkért lásd: a [kü
 ### <a name="where-can-i-learn-about-azure-government-and-the-azure-government-marketplace"></a>Hol tudhatok meg többet a Azure Governmentról és a Azure Government Marketplace-ről?
 
 - [Azure Government](https://azure.microsoft.com/global-infrastructure/government)
-- [Microsoft Adatvédelmi központ](https://www.microsoft.com/trust-center)
-- [Azure Government dokumentáció](../azure-government/index.yml)
+- [Microsoft adatvédelmi központ](https://www.microsoft.com/trust-center)
+- [Az Azure Government dokumentációja](../azure-government/index.yml)
 - [Azure Government piactér](../azure-government/documentation-government-manage-marketplace.md)
 - [Azure Government megfelelőség](../azure-government/documentation-government-plan-compliance.md)

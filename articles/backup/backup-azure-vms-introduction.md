@@ -3,15 +3,16 @@ title: Azure-beli virtuális gépek biztonsági mentése
 description: Ebből a cikkből megtudhatja, hogy az Azure Backup szolgáltatás hogyan készít biztonsági másolatot az Azure Virtual Machines szolgáltatásról, és hogyan követi az ajánlott eljárásokat.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 9838f4993e71f2991500af0e152abee36f996050
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3c73b489404d1e8198fbd984b5188a7a2ccb973f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84322909"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091045"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>Az Azure virtuális gépek biztonsági mentésének áttekintése
 
-Ez a cikk azt ismerteti, hogy az [Azure Backup szolgáltatás](backup-introduction-to-azure-backup.md) hogyan készít biztonsági másolatot az Azure Virtual Machines-ről (VM).
+Ez a cikk azt ismerteti, hogy az [Azure Backup szolgáltatás](./backup-overview.md) hogyan készít biztonsági másolatot az Azure Virtual Machines-ről (VM).
 
 A Azure Backup független és elkülönített biztonsági mentéseket biztosít a virtuális gépeken tárolt adatmennyiségek nem szándékos megsemmisítése elleni védelemhez. A biztonsági mentések a helyreállítási pontok beépített felügyeletét biztosító Recovery Services-tárolóban tárolódnak. A konfiguráció és a skálázás egyszerű, a biztonsági mentések optimalizáltak, és szükség esetén egyszerűen visszaállíthatók.
 
@@ -25,8 +26,8 @@ A Azure Backup az Azure-beli virtuális gépek biztonsági mentését hajtja vé
 
 1. A biztonsági mentésre kijelölt Azure-beli virtuális gépek esetében a Azure Backup a megadott biztonsági mentési ütemtervnek megfelelően elindítja a biztonsági mentési feladatot.
 1. Az első biztonsági mentés során a rendszer egy biztonsági mentési bővítményt telepít a virtuális gépre, ha a virtuális gép fut.
-    - Windows rendszerű virtuális gépek esetén a [VMSnapshot bővítmény](https://docs.microsoft.com/azure/virtual-machines/extensions/vmsnapshot-windows) telepítve van.
-    - Linux rendszerű virtuális gépek esetén a [VMSnapshotLinux bővítmény](https://docs.microsoft.com/azure/virtual-machines/extensions/vmsnapshot-linux) telepítve van.
+    - Windows rendszerű virtuális gépek esetén a [VMSnapshot bővítmény](../virtual-machines/extensions/vmsnapshot-windows.md) telepítve van.
+    - Linux rendszerű virtuális gépek esetén a [VMSnapshotLinux bővítmény](../virtual-machines/extensions/vmsnapshot-linux.md) telepítve van.
 1. A rendszert futtató Windows rendszerű virtuális gépek esetén a biztonsági mentési koordinátákat a Windows Kötet árnyékmásolata szolgáltatás (VSS) segítségével végezze el a virtuális gép alkalmazással konzisztens pillanatképének elkészítéséhez.
     - Alapértelmezés szerint a Backup teljes VSS biztonsági mentést készít.
     - Ha a biztonsági mentés nem tud alkalmazás-konzisztens pillanatképet készíteni, akkor a rendszer az alapul szolgáló tárterület fájl-konzisztens pillanatképét veszi igénybe (mivel a virtuális gép leállításakor nem történik alkalmazás-írás).
@@ -63,7 +64,7 @@ A BEKs is biztonsági másolat készül. Tehát ha a BEKs elvesznek, a jogosult 
 
 A Azure Backup a biztonsági mentés ütemtervének megfelelően hozza a pillanatképeket.
 
-- **Windows rendszerű virtuális gépek:** Windows rendszerű virtuális gépek esetén a Backup szolgáltatás a VSS-vel koordinálja a virtuálisgép-lemezek alkalmazás-konzisztens pillanatképét.  Alapértelmezés szerint a Azure Backup teljes VSS biztonsági mentést készít (a biztonsági mentéskor levágja az alkalmazás naplóit, például a SQL Servert az alkalmazás szintjének konzisztens biztonsági mentésének lekéréséhez).  Ha SQL Server-adatbázist használ az Azure-beli virtuális gép biztonsági mentésére, akkor módosíthatja a VSS-másolás biztonsági mentésének beállítását (a naplók megőrzése érdekében). További információkért tekintse meg [ezt a cikket](https://docs.microsoft.com/azure/backup/backup-azure-vms-troubleshoot#troubleshoot-vm-snapshot-issues).
+- **Windows rendszerű virtuális gépek:** Windows rendszerű virtuális gépek esetén a Backup szolgáltatás a VSS-vel koordinálja a virtuálisgép-lemezek alkalmazás-konzisztens pillanatképét.  Alapértelmezés szerint a Azure Backup teljes VSS biztonsági mentést készít (a biztonsági mentéskor levágja az alkalmazás naplóit, például a SQL Servert az alkalmazás szintjének konzisztens biztonsági mentésének lekéréséhez).  Ha SQL Server-adatbázist használ az Azure-beli virtuális gép biztonsági mentésére, akkor módosíthatja a VSS-másolás biztonsági mentésének beállítását (a naplók megőrzése érdekében). További információkért tekintse meg [ezt a cikket](./backup-azure-vms-troubleshoot.md#troubleshoot-vm-snapshot-issues).
 
 - **Linux rendszerű virtuális gépek:** A Linux rendszerű virtuális gépek alkalmazás-konzisztens pillanatképének készítéséhez használja a Linux előtti és parancsfájl utáni keretrendszert a saját egyéni parancsfájljainak megírásához a konzisztencia biztosítása érdekében.
 
@@ -75,11 +76,14 @@ A Azure Backup a biztonsági mentés ütemtervének megfelelően hozza a pillana
 
 A következő táblázat a pillanatkép-konzisztencia különböző típusait ismerteti:
 
-**Pillanatkép** | **Részletek** | **Helyreállítás** | **Szempont**
+**Pillanatkép** | **Részletek** | **Helyreállítási** | **Szempont**
 --- | --- | --- | ---
 **Alkalmazás – konzisztens** | Az alkalmazással konzisztens biztonsági másolatok rögzítik a memória tartalmát és a függőben lévő I/O-műveleteket. Az alkalmazás-konzisztens Pillanatképek VSS-író (vagy Linux előtti/post szkriptek) használatával biztosítják az alkalmazásadatok egységességét a biztonsági mentés előtt. | Ha egy virtuális gépet egy alkalmazással konzisztens pillanatképtel állít le, a virtuális gép elindul. Nincs adatsérülés vagy adatvesztés. Az alkalmazások konzisztens állapotban kezdődnek. | Windows: az összes VSS-író sikeresen befejeződött<br/><br/> Linux: az előzetes/post parancsfájlokat a rendszer konfigurálta és sikeresen elvégezte
 **Fájlrendszer-konzisztens** | A fájlrendszerrel konzisztens biztonsági másolatok következetességet biztosítanak azáltal, hogy az összes fájlról pillanatképet készítenek.<br/><br/> | Ha olyan virtuális gépet állít vissza, amely fájlrendszerrel konzisztens pillanatképet használ, a virtuális gép elindul. Nincs adatsérülés vagy adatvesztés. Az alkalmazásoknak saját "felerősítő" mechanizmust kell alkalmazniuk, hogy a visszaállított adategységek konzisztensek legyenek. | Windows: néhány VSS-író nem sikerült <br/><br/> Linux: alapértelmezett (ha a Pre/post parancsfájlokat nem konfigurálták vagy nem sikerült)
 **Összeomlás – konzisztens** | Az összeomlás-konzisztens Pillanatképek általában akkor fordulnak elő, ha egy Azure-beli virtuális gép le van állítva a biztonsági mentés időpontjában. A rendszer csak azokat az adatmennyiségeket rögzíti, amelyek már léteznek a lemezen a biztonsági mentés során. | A virtuális gép rendszerindítási folyamatával kezdődik, majd egy lemez-ellenőrzéssel javítja a sérülési hibákat. Olyan memóriában tárolt adatok vagy írási műveletek, amelyeket nem a lemezre vittek át az összeomlás elvesztése előtt. Az alkalmazások saját adatellenőrzést hajtanak végre. Egy adatbázis-alkalmazás például az ellenőrzéshez használhatja a tranzakciónaplóját. Ha a tranzakciónapló olyan bejegyzéseket tartalmaz, amelyek nem szerepelnek az adatbázisban, akkor az adatbázis szoftvere az adatok konzisztenciája előtt Visszagörgeti a tranzakciókat. | A virtuális gép leállítása (leállítva/fel nem foglalt) állapotú.
+
+>[!NOTE]
+> Ha a kiépítési állapot **sikeres**, Azure Backup a fájlrendszerrel konzisztens biztonsági mentést végez. Ha a kiépítési állapot nem **érhető el** vagy **sikertelen**, a rendszer összeomlott biztonsági mentéseket végez. Ha a létesítési állapot **létrehozása** vagy **törlése**történik, az azt jelenti, hogy az Azure Backup újrapróbálkozik a műveletekkel.
 
 ## <a name="backup-and-restore-considerations"></a>Biztonsági mentéssel és visszaállítással kapcsolatos megfontolandó szempontok
 
@@ -107,8 +111,8 @@ Ezek a gyakori forgatókönyvek a teljes biztonsági mentés idejére hatással 
 Ha virtuális gépek biztonsági mentését konfigurálja, javasoljuk, hogy kövesse a következő eljárásokat:
 
 - Módosítsa a szabályzatban beállított alapértelmezett ütemezési időpontokat. Ha például a szabályzatban az alapértelmezett időpont 00:00, növelje az időzítést néhány perccel, hogy az erőforrás-használat optimális legyen.
-- Ha egyetlen tárolóból állítja vissza a virtuális gépeket, javasoljuk, hogy használjon különböző [általános célú v2 Storage-fiókokat](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade) annak biztosítására, hogy a cél Storage-fiók ne kapjon szabályozást. Az egyes virtuális gépeknek például eltérő Storage-fiókkal kell rendelkezniük. Ha például 10 virtuális gép van visszaállítva, használjon 10 különböző Storage-fiókot.
-- A Premium Storage szolgáltatást használó virtuális gépek biztonsági mentését azonnali visszaállítással ajánlott kiosztani a teljes lefoglalt tárterület *50%-os* szabad területét, amely **csak** az első biztonsági mentéshez szükséges. Az első biztonsági mentés befejezése után az 50%-os szabad terület már nem követelmény a biztonsági mentésekhez
+- Ha egyetlen tárolóból állítja vissza a virtuális gépeket, javasoljuk, hogy használjon különböző [általános célú v2 Storage-fiókokat](../storage/common/storage-account-upgrade.md) annak biztosítására, hogy a cél Storage-fiók ne kapjon szabályozást. Az egyes virtuális gépeknek például eltérő Storage-fiókkal kell rendelkezniük. Ha például 10 virtuális gép van visszaállítva, használjon 10 különböző Storage-fiókot.
+- A Premium Storage szolgáltatást azonnali visszaállítást használó virtuális gépek biztonsági mentéséhez javasolt a teljes lefoglalt tárterület *50%-os* szabad területének kiosztása, amely **csak** az első biztonsági mentéshez szükséges. Az első biztonsági mentés befejezése után az 50%-os szabad terület nem követelmény a biztonsági mentéshez.
 - A tárfiókonkénti lemezszám korlátozása attól függ, hogy milyen gyakorisággal használják a lemezeket az IaaS virtuális gépen futó alkalmazások. Általános gyakorlatként, ha 5–10 vagy több lemez található egyetlen tárfiókon, akkor a terhelést úgy egyenlítheti ki, hogy egyes lemezeket külön tárfiókokra helyez át.
 
 ## <a name="backup-costs"></a>Biztonsági mentési költségek

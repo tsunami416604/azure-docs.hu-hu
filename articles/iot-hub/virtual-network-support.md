@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.author: jlian
-ms.openlocfilehash: 32ff08c62e53384b64981e1c40a3485b17a8ce11
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: f15f0c3f6b442419d3d2e3a253d15465e130eae2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85918755"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090603"
 ---
 # <a name="iot-hub-support-for-virtual-networks-with-private-link-and-managed-identity"></a>IoT Hub a magánhálózati és felügyelt identitású virtuális hálózatok támogatása
 
@@ -47,6 +47,8 @@ A folytatás előtt győződjön meg arról, hogy teljesülnek az alábbi előfe
 * A helyszíni hálózatokban üzemelő eszközök esetében [virtuális magánhálózati (VPN)](../vpn-gateway/vpn-gateway-about-vpngateways.md) vagy [ExpressRoute](https://azure.microsoft.com/services/expressroute/) privát társak beállítása az Azure-VNet.
 
 ### <a name="set-up-a-private-endpoint-for-iot-hub-ingress"></a>Magánhálózati végpont beállítása IoT Hub bejövő forgalomhoz
+
+A magánhálózati végpont a IoT Hub eszköz API-k (például az eszközről a felhőbe irányuló üzenetek) és a szolgáltatási API-k (például eszközök létrehozása és frissítése) esetében működik.
 
 1. A Azure Portal területen válassza a **hálózatkezelés**, **privát végponti kapcsolatok**lehetőséget, majd kattintson a **+ privát végpontra**.
 

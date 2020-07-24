@@ -17,12 +17,12 @@ ms.date: 04/29/2020
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: cb984a944067ddb1449f58b464e596fd138dc7c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2921fb2895b8e42c0564c6e815a08da1d7e9d12d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82592009"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089974"
 ---
 # <a name="sending-push-notifications-with-azure-notification-hubs-and-nodejs"></a>Leküldéses értesítések küldése az Azure Notification Hubs és Node.js
 
@@ -44,7 +44,7 @@ A tárgyalt forgatókönyvek között leküldéses értesítések küldése az a
 
 ## <a name="notification-hubs"></a>Notification Hubs
 
-Az Azure Notification Hubs egy könnyen használható, többplatformos, méretezhető infrastruktúrát biztosít a leküldéses értesítések mobileszközök számára történő küldéséhez. A szolgáltatási infrastruktúrával kapcsolatos részletekért tekintse meg az [Azure Notification Hubs](https://msdn.microsoft.com/library/windowsazure/jj927170.aspx) oldalát.
+Az Azure Notification Hubs egy könnyen használható, többplatformos, méretezhető infrastruktúrát biztosít a leküldéses értesítések mobileszközök számára történő küldéséhez. A szolgáltatási infrastruktúrával kapcsolatos részletekért tekintse meg az [Azure Notification Hubs](/previous-versions/azure/azure-services/jj927170(v=azure.100)) oldalát.
 
 ## <a name="create-a-nodejs-application"></a>Node.js-alkalmazás létrehozása
 
@@ -89,7 +89,7 @@ Szerezze be a `connectionstring` [Azure Portal] a kapcsolatok értékét a köve
 ![Azure Portal – Notification Hubs](./media/notification-hubs-nodejs-how-to-use-notification-hubs/notification-hubs-portal.png)
 
 > [!NOTE]
-> A kapcsolati karakterláncot a [Azure PowerShell](/powershell/azureps-cmdlets-docs) által biztosított **Get-AzureSbNamespace** parancsmaggal vagy az Azure **SB-névtér show** parancsával is lekérheti az [Azure parancssori felületével (Azure CLI)](../cli-install-nodejs.md).
+> A kapcsolati karakterláncot a [Azure PowerShell](/powershell/azure/) által biztosított **Get-AzureSbNamespace** parancsmaggal vagy az Azure **SB-névtér show** parancsával is lekérheti az [Azure parancssori felületével (Azure CLI)](/cli/azure/install-classic-cli).
 
 ## <a name="general-architecture"></a>Általános architektúra
 
@@ -155,11 +155,11 @@ Az `MpnsService` objektum olyan `send` metódust biztosít, amellyel leküldése
 - **Címkék** – a címke azonosítója. Ha nincs megadva címke, a rendszer az értesítést az összes ügyfélnek küldi el.
 - **Hasznos** adatok – az üzenet XML-adattartalma.
 - **TargetName**  -  TargetName `toast` bejelentési értesítésekhez. `token`csempe értesítéseihez.
-- **NotificationClass** – az értesítés prioritása. Az érvényes értékekhez tekintse meg a [kiszolgálói dokumentum leküldéses értesítéseinek http-](https://msdn.microsoft.com/library/hh221551.aspx) **fejléc elemei** című szakaszát.
+- **NotificationClass** – az értesítés prioritása. Az érvényes értékekhez tekintse meg a [kiszolgálói dokumentum leküldéses értesítéseinek http-](/previous-versions/windows/xna/bb200104(v=xnagamestudio.41)) **fejléc elemei** című szakaszát.
 - **Beállítások** – nem kötelező kérelmek fejléce.
 - **Visszahívás** – a visszahívási függvény.
 
-Az érvényes `TargetName` `NotificationClass` és a fejléc beállítások listájáért tekintse meg a [kiszolgálói lapról leküldéses értesítéseket](https://msdn.microsoft.com/library/hh221551.aspx) .
+Az érvényes `TargetName` `NotificationClass` és a fejléc beállítások listájáért tekintse meg a [kiszolgálói lapról leküldéses értesítéseket](/previous-versions/windows/xna/bb200104(v=xnagamestudio.41)) .
 
 A következő mintakód a `MpnsService` által a által elérhetővé tett példányt használja a (z) által a `NotificationHubService` Toast leküldéses értesítés küldéséhez:
 
@@ -182,7 +182,7 @@ Az `WnsService` objektum olyan `send` metódust biztosít, amellyel leküldéses
 - **Beállítások** – nem kötelező kérelmek fejléce.
 - **Visszahívás** – a visszahívási függvény.
 
-Az érvényes típusok és a kérelmek fejlécek listáját a [leküldéses értesítési szolgáltatás kérése és a válasz fejlécei](https://msdn.microsoft.com/library/windows/apps/hh465435.aspx)című témakörben tekintheti meg.
+Az érvényes típusok és a kérelmek fejlécek listáját a [leküldéses értesítési szolgáltatás kérése és a válasz fejlécei](/previous-versions/windows/apps/hh465435(v=win.10))című témakörben tekintheti meg.
 
 A következő kód a `WnsService` által elérhetővé tett példányt használja a `NotificationHubService` UWP-alkalmazáshoz való leküldéses értesítés küldéséhez:
 
@@ -199,7 +199,7 @@ notificationHubService.wns.send(null, payload , 'wns/toast', function(error){
 
 A fenti kódrészletek lehetővé teszik a szolgáltatás-infrastruktúra egyszerű kiépítését, hogy leküldéses értesítéseket nyújtson a legkülönbözőbb eszközökhöz. Most, hogy megismerte a Notification Hubs és a node.js használatának alapjait, kövesse az alábbi hivatkozásokat, ahol további információt talál a képességek további kibővítéséről.
 
-- Tekintse meg az [Azure Notification HUBS](https://msdn.microsoft.com/library/azure/jj927170.aspx)MSDN-referenciáját.
+- Tekintse meg az [Azure Notification HUBS](/previous-versions/azure/azure-services/jj927170(v=azure.100))MSDN-referenciáját.
 - További minták és megvalósítási részletekért látogasson el az [Azure SDK for Node] adattárba a githubon.
 
 [Node-hoz készült Azure SDK]: https://github.com/WindowsAzure/azure-sdk-for-node
@@ -222,14 +222,14 @@ A fenti kódrészletek lehetővé teszik a szolgáltatás-infrastruktúra egysze
 [3]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/sb-queues-05.png
 [4]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/sb-queues-06.png
 [5]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/sb-queues-07.png
-[SqlFilter.SqlExpression]: https://msdn.microsoft.com/library/windowsazure/microsoft.servicebus.messaging.sqlfilter.sqlexpression.aspx
-[Azure Service Bus Notification Hubs]: https://msdn.microsoft.com/library/windowsazure/jj927170.aspx
-[SqlFilter]: https://msdn.microsoft.com/library/windowsazure/microsoft.servicebus.messaging.sqlfilter.aspx
+[SqlFilter.SqlExpression]: /dotnet/api/microsoft.servicebus.messaging.sqlfilter?view=azure-dotnet#microsoft_servicebus_messaging_sqlfilter_sqlexpression
+[Azure Service Bus Notification Hubs]: /previous-versions/azure/azure-services/jj927170(v=azure.100)
+[SqlFilter]: /dotnet/api/microsoft.servicebus.messaging.sqlfilter?view=azure-dotnet#microsoft_servicebus_messaging_sqlfilter
 [Web Site with WebMatrix]: /develop/nodejs/tutorials/web-site-with-webmatrix/
 [Node.js Cloud Service]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
 [Previous Management Portal]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/previous-portal.png
-[nodejswebsite]: https://docs.microsoft.com/azure/app-service/app-service-web-get-started-nodejs
-[webmatrix]: https://docs.microsoft.com/aspnet/web-pages/videos/introduction/create-a-website-using-webmatrix
+[nodejswebsite]: ../app-service/app-service-web-get-started-nodejs.md
+[webmatrix]: /aspnet/web-pages/videos/introduction/create-a-website-using-webmatrix
 [Node.js Cloud Service with Storage]: /develop/nodejs/tutorials/web-app-with-storage/
 [Node.js Web Application with Storage]: /develop/nodejs/tutorials/web-site-with-storage/
 [Azure Portal]: https://portal.azure.com

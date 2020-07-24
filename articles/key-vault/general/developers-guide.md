@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 2b5c28fccc411a8372ebd6015f796c8309146dfa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2edf1574784ec93448495086fdd05c988a3e55a7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85476767"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090535"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Az Azure Key Vault fejlesztői útmutatója
 
@@ -40,7 +40,7 @@ A Key vaultban található kulcsok, titkok vagy tanúsítványok használata el�
 
 - [Kulcstartók létrehozása és kezelése a CLI-vel](../secrets/quick-create-cli.md)
 - [Kulcstartók létrehozása és kezelése a PowerShell-lel](../secrets/quick-create-powershell.md)
-- [Kulcstartók létrehozása és kezelése az Azure porttal](../secrets/quick-create-portal.md)
+- [Kulcstartók létrehozása és kezelése a Azure Portal](../secrets/quick-create-portal.md)
 - [Kulcstartók létrehozása és kezelése a Pythonban](../secrets/quick-create-python.md)
 - [Key Vaultok létrehozása és kezelése Javával](../secrets/quick-create-java.md)
 - [Kulcstartók létrehozása és kezelése Node.js](../secrets/quick-create-node.md)
@@ -75,11 +75,11 @@ A .NET SDK 2. x verziójával kapcsolatos további információkért tekintse me
 
 Node.js a Key Vault Management API és a Key Vault Object API különállóak. A következő áttekintő cikk a mindkettőhöz biztosít hozzáférést. 
 
-[Node.jsAzure Key Vault moduljai](/javascript/api/overview/azure/key-vault?view=azure-node-latest)
+[Node.jsAzure Key Vault moduljai](https://docs.microsoft.com/javascript/api/overview/azure/key-vault-index?view=azure-node-latest)
 
 #### <a name="python"></a>Python
 
-[Azure Key Vault kódtárak a Pythonhoz](/python/api/overview/azure/key-vault?view=azure-python)
+[Azure Key Vault kódtárak a Pythonhoz](https://docs.microsoft.com/python/api/overview/azure/key-vault-index?view=azure-python)
 
 #### <a name="azure-cli"></a>Azure CLI
 
@@ -100,7 +100,7 @@ A Key Vault alkalmazással való használatának teljes példáit a következő 
 
 A következő cikkek és forgatókönyvek feladat-specifikus útmutatást nyújtanak a Azure Key Vault használatához:
 
-- A [Key Vault-bérlő azonosítójának módosítása az előfizetés áthelyezése után](subscription-move-fix.md) – ha áthelyezi az Azure-előfizetést az a bérlőtől a b bérlőhöz, a meglévő kulcstartók elérhetetlenné válnak a b bérlőhöz tartozó rendszerbiztonsági tag (felhasználók és alkalmazások) számára. javítsa ezt az útmutatót az útmutató használatával.
+- A [Key Vault-bérlő azonosítójának módosítása az előfizetés áthelyezése után](move-subscription.md) – ha áthelyezi az Azure-előfizetést az a bérlőtől a b bérlőhöz, a meglévő kulcstartók elérhetetlenné válnak a b bérlőhöz tartozó rendszerbiztonsági tag (felhasználók és alkalmazások) számára. javítsa ezt az útmutatót az útmutató használatával.
 - A [tűzfal mögötti Key Vault elérése](access-behind-firewall.md) – egy kulcstartó eléréséhez a Key Vault-ügyfélalkalmazás számára a különböző funkciókhoz több végpontot is el kell érnie.
 - [HSM-védelemmel ellátott kulcsok létrehozása és átvitele Azure Key Vaulthoz](../keys/hsm-protected-keys.md) – ez segít megtervezni, előállítani és továbbítani a saját HSM-védelemmel ellátott kulcsait, hogy azok a Azure Key Vault használatával legyenek használhatók.
 - [Biztonságos értékek (például jelszavak)](../../azure-resource-manager/templates/key-vault-parameter.md) átadása az üzembe helyezés során – ha egy biztonságos értéket (például jelszót) kell megadni paraméterként az üzembe helyezés során, az értéket tárolhatja titkosként egy Azure Key Vault, és hivatkozhat az értékre más Resource Manager-sablonokban.

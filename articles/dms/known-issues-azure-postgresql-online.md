@@ -3,8 +3,8 @@ title: 'Ismert problémák: a PostgreSQL-ből való online áttelepítés Azure 
 titleSuffix: Azure Database Migration Service
 description: Ismerje meg a PostgreSQL-ről online áttelepítéssel kapcsolatos ismert problémákat és áttelepítési korlátozásokat a Azure Database Migration Service használatával Azure Database for PostgreSQL.
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: arunkumarthiags
+ms.author: arthiaga
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
@@ -14,12 +14,12 @@ ms.custom:
 - seo-dt-2019
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: 3d1bc627ccb8814ab2dfb61fb0653ef0ac644038
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 564581a102ac3fab504e82db00ef54b3e45d0c19
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80235272"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090739"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-from-postgresql-to-azure-db-for-postgresql"></a>Ismert problémák/áttelepítési korlátozások a PostgreSQL-ből származó online áttelepítéssel a PostgreSQL-hez készült Azure DB-be
 
@@ -91,12 +91,12 @@ A PostgreSQL-ről Azure Database for PostgreSQLre való online áttelepítéssel
 
 Ha az AWS RDS PostgreSQL-ről a Azure Database for PostgreSQLra próbál online áttelepítést végezni, a következő hibák merülhetnek fel.
 
-- **Hiba**: a (z) {Database} adatbázisban a (z) {Table} tábla {Column} oszlopának alapértelmezett értéke eltér a forrás-és a célkiszolgálón. Az érték „{value on source}” a forráson és „{value on target}” a célon.
+- **Hiba**: A(z) „{database}” adatbázisban található „{table}” tábla „{column}” oszlopának alapértelmezett értéke eltérő a forrás- és a célkiszolgálón. Az érték „{value on source}” a forráson és „{value on target}” a célon.
 
   **Korlátozás**: Ez a hiba akkor fordul elő, ha egy oszlop sémájának alapértelmezett értéke eltér a forrás-és a cél-adatbázisok között.
   **Áthidaló megoldás**: Győződjön meg arról, hogy a célként megadott séma megfelel a forrás sémájának. A séma áttelepítésével kapcsolatos részletekért tekintse meg az [Azure PostgreSQL Online áttelepítési dokumentációját](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#migrate-the-sample-schema).
 
-- **Hiba**: a (z) {Database} céladatbázis {number of Tables} táblát tartalmaz, ahol a (z) {Database} forrásoldali adatbázis {number of Tables} táblát tartalmaz. A forrás- és a céladatbázisok táblái számának azonosnak kell lennie.
+- **Hiba**: A(z) „{database}” céladatbázis „{number of tables}” táblával rendelkezik, a(z) „{database}” forrásadatbázisban azonban „{number of tables}” tábla található. A forrás- és a céladatbázisok táblái számának azonosnak kell lennie.
 
   **Korlátozás**: Ez a hiba akkor fordul elő, ha a táblák száma eltér a forrás-és a cél-adatbázis között.
 

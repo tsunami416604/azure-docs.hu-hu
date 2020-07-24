@@ -11,18 +11,18 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 10/03/2019
 ms.author: diberry
-ms.openlocfilehash: a49452653f8ac4bcc62758d801a235be0929d314
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 831e766fbb10d616b3fbaf8f878228a9a51ece37
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84686630"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090943"
 ---
 # <a name="entities-per-culture-in-your-luis-model"></a>Entitások/kulturális elemek a LUIS-modellben
 
 Language Understanding (LUIS) előre összeépített entitásokat biztosít. Ha egy előre összeépített entitás szerepel az alkalmazásban, a LUIS tartalmazza a megfelelő entitás-előrejelzést a végpont válaszában. Az összes példa hosszúságú kimondott szöveg is címkével kell ellátni az entitással. Az előre elkészített entitások viselkedése **nem** módosítható. Ha másként nincs jelezve, az előre elkészített entitások az összes LUIS alkalmazás-területi beállításban (kulturális környezetekben) érhetők el. A következő táblázat az egyes kulturális környezetekben támogatott előre összeépített entitásokat tartalmazza.
 
-|Kulturális környezet|Szubkultúrák|Megjegyzések|
+|Kultúra|Szubkultúrák|Jegyzetek|
 |--|--|--|
 |Kínai|[zh-CN](#chinese-entity-support)||
 |Holland|[nl-NL](#dutch-entity-support)||
@@ -44,8 +44,8 @@ Az előre elkészített entitások egy adott nyelven való rendelkezésre állá
 
 A következő entitások támogatottak:
 
-|Előre elkészített entitás|```zh-CN``` |
-------|:------:|
+| Előre elkészített entitás | zh-CN |
+| --------------- | :---: |
 [Életkor](luis-reference-prebuilt-age.md):<br>év<br>hónap<br>hét<br>nap   |    V2, V3   |
 [Pénznem (pénz)](luis-reference-prebuilt-currency.md):<br>dollár<br>tört egység (pl.: Penny)  |    V2, V3   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>dátum<br>daterange<br>time<br>timerange   |    V2, V3   |
@@ -66,8 +66,8 @@ A következő entitások támogatottak:
 
 A következő entitások támogatottak:
 
-|Előre elkészített entitás|```nl-NL``` |
-------|:------:|
+| Előre elkészített entitás | nl-NL |
+| --------------- | :---: |
 [Életkor](luis-reference-prebuilt-age.md):<br>év<br>hónap<br>hét<br>nap   |    V2, V3   |
 [Pénznem (pénz)](luis-reference-prebuilt-currency.md):<br>dollár<br>tört egység (pl.: Penny)  |    V2, V3   |
 [Datetime](luis-reference-prebuilt-deprecated.md)   |    -   |
@@ -88,8 +88,8 @@ A következő entitások támogatottak:
 
 A következő entitások támogatottak:
 
-|Előre elkészített entitás|```en-US``` |
-------|:------:|
+| Előre elkészített entitás | en-US |
+| --------------- | :---: |
 [Életkor](luis-reference-prebuilt-age.md):<br>év<br>hónap<br>hét<br>nap   |    V2, V3   |
 [Pénznem (pénz)](luis-reference-prebuilt-currency.md):<br>dollár<br>tört egység (pl.: Penny)  |    V2, V3   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>dátum<br>daterange<br>time<br>timerange   |    V2, V3   |
@@ -110,8 +110,8 @@ A következő entitások támogatottak:
 
 A következő entitások támogatottak:
 
-|Előre elkészített entitás|```fr-FR``` |
-------|:------:|
+| Előre elkészített entitás | fr-FR |
+| --------------- | :---: |
 [Életkor](luis-reference-prebuilt-age.md):<br>év<br>hónap<br>hét<br>nap   |    V2, V3   |
 [Pénznem (pénz)](luis-reference-prebuilt-currency.md):<br>dollár<br>tört egység (pl.: Penny)  |    V2, V3   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>dátum<br>daterange<br>time<br>timerange   |    V2, V3   |
@@ -132,8 +132,8 @@ A következő entitások támogatottak:
 
 A következő entitások támogatottak:
 
-|Előre elkészített entitás|```fr-CA``` |
-------|:------:|
+| Előre elkészített entitás | fr – CA |
+| --------------- | :---: |
 [Életkor](luis-reference-prebuilt-age.md):<br>év<br>hónap<br>hét<br>nap   |    V2, V3   |
 [Pénznem (pénz)](luis-reference-prebuilt-currency.md):<br>dollár<br>tört egység (pl.: Penny)  |    V2, V3   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>dátum<br>daterange<br>time<br>timerange   |    V2, V3   |
@@ -154,8 +154,8 @@ A következő entitások támogatottak:
 
 A következő entitások támogatottak:
 
-|Előre elkészített entitás|```de-DE``` |
-------|:------:|
+|Előre elkészített entitás | de-DE |
+| -------------- | :---: |
 [Életkor](luis-reference-prebuilt-age.md):<br>év<br>hónap<br>hét<br>nap   |    V2, V3   |
 [Pénznem (pénz)](luis-reference-prebuilt-currency.md):<br>dollár<br>tört egység (pl.: Penny)  |    V2, V3   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>dátum<br>daterange<br>time<br>timerange   |    V2, V3   |
@@ -178,8 +178,8 @@ Olasz előre elkészített kor, pénznem, dimenzió, szám, százalék _felbont�
 
 A következő entitások támogatottak:
 
-|Előre elkészített entitás|```it-IT``` |
-------|:------:|
+| Előre elkészített entitás | it-IT |
+| --------------- | :---: |
 [Életkor](luis-reference-prebuilt-age.md):<br>év<br>hónap<br>hét<br>nap   |    V2, V3   |
 [Pénznem (pénz)](luis-reference-prebuilt-currency.md):<br>dollár<br>tört egység (pl.: Penny)  |    V2, V3   |
 [Datetime](luis-reference-prebuilt-deprecated.md)   |    -   |
@@ -200,8 +200,8 @@ A következő entitások támogatottak:
 
 A következő entitások támogatottak:
 
-|Előre elkészített entitás|```ja-JP``` |
-------|:------:|
+|Előre elkészített entitás | ja-JP |
+| -------------- | :---: |
 [Életkor](luis-reference-prebuilt-age.md):<br>év<br>hónap<br>hét<br>nap   |    V2,-   |
 [Pénznem (pénz)](luis-reference-prebuilt-currency.md):<br>dollár<br>tört egység (pl.: Penny)  |    V2,-   |
 [Datetime](luis-reference-prebuilt-deprecated.md)   |    -   |
@@ -222,8 +222,8 @@ A következő entitások támogatottak:
 
 A következő entitások támogatottak:
 
-|Előre elkészített entitás|```ko-KR``` |
-------|:------:|
+| Előre elkészített entitás | ko-KR |
+| --------------- | :---: |
 [Életkor](luis-reference-prebuilt-age.md):<br>év<br>hónap<br>hét<br>nap   |    -   |
 [Pénznem (pénz)](luis-reference-prebuilt-currency.md):<br>dollár<br>tört egység (pl.: Penny)  |    -   |
 [Datetime](luis-reference-prebuilt-deprecated.md)   |    -   |
@@ -244,8 +244,8 @@ A következő entitások támogatottak:
 
 A következő entitások támogatottak:
 
-|Előre elkészített entitás|```pt-BR``` |
-------|:------:|
+| Előre elkészített entitás | pt-BR |
+| --------------- | :---: |
 [Életkor](luis-reference-prebuilt-age.md):<br>év<br>hónap<br>hét<br>nap   |    V2, V3   |
 [Pénznem (pénz)](luis-reference-prebuilt-currency.md):<br>dollár<br>tört egység (pl.: Penny)  |    V2, V3   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>dátum<br>daterange<br>time<br>timerange   |    V2, V3   |
@@ -266,8 +266,8 @@ A következő entitások támogatottak:
 
 A következő entitások támogatottak:
 
-|Előre elkészített entitás|```es-ES``` |
-------|:------:|
+| Előre elkészített entitás | es-ES |
+| --------------- | :---: |
 [Életkor](luis-reference-prebuilt-age.md):<br>év<br>hónap<br>hét<br>nap   |    V2, V3   |
 [Pénznem (pénz)](luis-reference-prebuilt-currency.md):<br>dollár<br>tört egység (pl.: Penny)  |    V2, V3   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>dátum<br>daterange<br>time<br>timerange   |    V2, V3   |
@@ -288,8 +288,8 @@ A következő entitások támogatottak:
 
 A következő entitások támogatottak:
 
-|Előre elkészített entitás|```es-MX``` |
-------|:------:|
+| Előre elkészített entitás | es-MX |
+| --------------- | :---: |
 [Életkor](luis-reference-prebuilt-age.md):<br>év<br>hónap<br>hét<br>nap   |    -   |
 [Pénznem (pénz)](luis-reference-prebuilt-currency.md):<br>dollár<br>tört egység (pl.: Penny)  |    -   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>dátum<br>daterange<br>time<br>timerange   |    -   |
@@ -316,8 +316,8 @@ A KeyPhrase nem érhető el a portugál (brazíliai) alkultúrában ```pt-BR``` 
 
 <!--
 
-|Prebuilt entity|```tr-tr``` |
-------|:------:|
+| Prebuilt entity | tr-tr |
+| --------------- | :---: |
 [Age](luis-reference-prebuilt-age.md):<br>year<br>month<br>week<br>day   |    -   |
 [Currency (money)](luis-reference-prebuilt-currency.md):<br>dollar<br>fractional unit (ex: penny)  |    -   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>time<br>timerange   |    -   |

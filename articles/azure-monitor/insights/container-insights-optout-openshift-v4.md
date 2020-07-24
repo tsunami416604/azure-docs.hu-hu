@@ -3,12 +3,12 @@ title: Az Azure és a Red Hat OpenShift v4-fürt figyelésének leállítása | 
 description: Ez a cikk azt ismerteti, hogyan állíthatja le az Azure Red Hat-OpenShift és a Red Hat OpenShift 4-es verziójú, valamint a Azure Monitor for containers szolgáltatással történő figyelését.
 ms.topic: conceptual
 ms.date: 04/24/2020
-ms.openlocfilehash: 768c4db8d72778b555a4f343cf2e23b8fa861991
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bf61457b9c8cff40eb3fee2c93c7184fbaae6db5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82196438"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091147"
 ---
 # <a name="how-to-stop-monitoring-your-azure-and-red-hat-openshift-v4-cluster"></a>Az Azure-és Red Hat OpenShift v4-fürt figyelésének leállítása
 
@@ -49,4 +49,4 @@ A konfiguráció módosítása több percet is igénybe vehet. Mivel a Helm a t�
 
 ## <a name="next-steps"></a>További lépések
 
-Ha a Log Analytics munkaterület csak a fürt figyelésének támogatására lett létrehozva, és már nincs rá szükség, manuálisan kell törölnie. Ha nem ismeri a munkaterület törlésének módját, tekintse meg [Az Azure log Analytics munkaterület törlése](../../log-analytics/log-analytics-manage-del-workspace.md)című témakört.
+Ha a Log Analytics munkaterület csak a fürt figyelésének támogatására lett létrehozva, és már nincs rá szükség, manuálisan kell törölnie. Ha nem ismeri a munkaterület törlésének módját, tekintse meg [Az Azure log Analytics munkaterület törlése](../platform/delete-workspace.md)című témakört.

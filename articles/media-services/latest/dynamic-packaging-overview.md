@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 06/11/2020
 ms.author: juliako
-ms.openlocfilehash: 20389c8298f4e970c4b3ba93d96f811fdc905003
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+ms.openlocfilehash: f019ebd59b2d0b9d6bae8a5dc4904f1bcae0e6c1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84791605"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090110"
 ---
 # <a name="dynamic-packaging-in-media-services-v3"></a>Dinamikus csomagolás a Media Services v3-ban
 
@@ -28,7 +28,7 @@ A Microsoft Azure Media Services számos médiafájl-formátum kódolására has
 Media Services a streaming- [végpont](streaming-endpoint-concept.md) (forrás) egy dinamikus (igény szerinti) csomagolási és forrás-szolgáltatást jelent, amely az élő és igény szerinti tartalmat közvetlenül az ügyfél-lejátszó alkalmazásnak kézbesíti. A következő szakaszban említett Common Streaming Media-protokollok egyikét használja. A *dinamikus csomagolás* egy olyan szolgáltatás, amely minden streaming végponton (standard vagy prémium) szabványos.
 
 > [!NOTE]
-> A [Azure Portal](https://portal.azure.com/) a v3 [élő események](live-events-outputs-concept.md)kezelésére, a v3- [eszközök](assets-concept.md)megtekintésére, az API-k elérésére vonatkozó információk beszerzésére használható. Az összes többi felügyeleti feladathoz (például átalakításokhoz és feladatokhoz) használja a [REST API](https://docs.microsoft.com/rest/api/media/), a [CLI](https://aka.ms/ams-v3-cli-ref)vagy az egyik támogatott [SDK](media-services-apis-overview.md#sdks)-t.
+> A [Azure Portal](https://portal.azure.com/) a v3 [élő események](live-events-outputs-concept.md)kezelésére, a v3- [eszközök](assets-concept.md)megtekintésére, az API-k elérésére vonatkozó információk beszerzésére használható. Az összes többi felügyeleti feladathoz (például átalakításokhoz és feladatokhoz) használja a [REST API](/rest/api/media/), a [CLI](https://aka.ms/ams-v3-cli-ref)vagy az egyik támogatott [SDK](media-services-apis-overview.md#sdks)-t.
 
 ## <a name="to-prepare-your-source-files-for-delivery"></a>A forrásfájlok előkészítése a kézbesítéshez
 
@@ -126,7 +126,7 @@ További információ a Media Services v3 élő közvetítéséről: [élő köz
 A dinamikus csomagolás támogatja a [h. 264](https://en.m.wikipedia.org/wiki/H.264/MPEG-4_AVC) (MPEG-4 AVC vagy AVC1) és a [h. 265](https://en.m.wikipedia.org/wiki/High_Efficiency_Video_Coding) (HEVC, hev1 vagy hvc1) kódolású videókat tartalmazó MP4-fájlokat.
 
 > [!NOTE]
-> Akár 4K-ig terjedő, akár 60-es képkockákból álló és a frame sebességű, *dinamikus csomagolással*tesztelt felbontások is megoldhatók. A [prémium szintű kódoló](https://docs.microsoft.com/azure/media-services/previous/media-services-encode-asset#media-encoder-premium-workflow) támogatja a H. 265 kódolást az örökölt v2 API-kon keresztül.
+> Akár 4K-ig terjedő, akár 60-es képkockákból álló és a frame sebességű, *dinamikus csomagolással*tesztelt felbontások is megoldhatók. A [prémium szintű kódoló](../previous/media-services-encode-asset.md#media-encoder-premium-workflow) támogatja a H. 265 kódolást az örökölt v2 API-kon keresztül.
 
 ## <a name="audio-codecs-supported-by-dynamic-packaging"></a>Dinamikus csomagolás által támogatott hangkodekek
 

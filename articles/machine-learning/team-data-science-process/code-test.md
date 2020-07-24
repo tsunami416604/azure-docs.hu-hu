@@ -11,11 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=weig, previous-ms.author=weig
-ms.openlocfilehash: 9612114bb368898ccf31b2c8692869b84544b652
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fc837405e03ffac41d216a5ba18384208b07aaf1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76721994"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090297"
 ---
 # <a name="data-science-code-testing-on-azure-with-the-team-data-science-process-and-azure-devops-services"></a>Adatelemzési kód tesztelése az Azure-ban a csoportos adatelemzési folyamattal és az Azure DevOps Services szolgáltatással
 Ez a cikk az adatelemzési munkafolyamatok kódjának tesztelésére vonatkozó előzetes irányelveket ismerteti. Az ilyen tesztelések lehetővé teszik az adatszakértők számára, hogy szisztematikusan és hatékonyan ellenőrizzék a kód minőségét és várható eredményét. Olyan csoportos adatelemzési folyamat (TDSP) [projektjét használjuk, amely a korábban közzétett UCI Adult bevételi adatkészletet használja](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome) , hogy megmutassa, hogyan lehet elvégezni a kód tesztelését. 
@@ -141,7 +142,7 @@ A következő lépésekkel állíthatja be és futtathatja a kód tesztelését 
 
     !["& üzenetsor mentése" gomb](./media/code-test/save_and_queue_build_definition.PNG)
 
-Most, hogy minden alkalommal, amikor új véglegesíti a kódot a tárházba, a létrehozási folyamat automatikusan elindul. (Itt a főkiszolgálót használjuk adattárként, de bármilyen ágat megadhat.) A folyamat futtatja a **test1.py** fájlt az ügynök számítógépén, hogy ellenőrizze, hogy a kódban megadott összes érték megfelelően fut-e. 
+Most, hogy minden alkalommal, amikor új véglegesíti a kódot a tárházba, a létrehozási folyamat automatikusan elindul. Bármely ágat megadhat. A folyamat futtatja a **test1.py** fájlt az ügynök számítógépén, hogy ellenőrizze, hogy a kódban megadott összes érték megfelelően fut-e. 
 
 Ha a riasztások megfelelően vannak beállítva, értesítést fog kapni e-mailben, amikor elkészült a Build. A Build állapotát az Azure DevOps is megtekintheti. Ha nem sikerül, megtekintheti a Build részleteit, és megtudhatja, hogy melyik darabot sérült meg.
 

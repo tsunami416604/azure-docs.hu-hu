@@ -8,11 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 4ac818cfd267b781366c0e32c9f93cc885dff99c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 000e30f2656b88c068654fd8099cdff0ce0a4b37
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77566148"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091266"
 ---
 # <a name="create-vmware-virtual-machines-on-your-private-cloud"></a>VMware virtuális gépek létrehozása a saját felhőben
 
@@ -121,9 +122,9 @@ A Linux különböző csomagokat kínál a DNS-kiszolgálók beállításához. 
 
 Ezek a Microsoft-témakörök leírják, hogyan állíthat be egy Windows-kiszolgálót DNS-kiszolgálóként és DHCP-kiszolgálóként.
 
-[Windows Server DNS-kiszolgálóként](https://docs.microsoft.com/windows-server/networking/dns/dns-top)
+[Windows Server DNS-kiszolgálóként](/windows-server/networking/dns/dns-top)
 
-[Windows Server DHCP-kiszolgálóként](https://docs.microsoft.com/windows-server/networking/technologies/dhcp/dhcp-top)
+[Windows Server DHCP-kiszolgálóként](/windows-server/networking/technologies/dhcp/dhcp-top)
 
 ## <a name="customize-networking-configuration-optional"></a>Hálózati konfiguráció testreszabása (nem kötelező)
 
@@ -138,7 +139,7 @@ A CloudSimple-portál hálózati lapjai lehetővé teszik a tűzfalak és a virt
 5. Ha szükséges, használja a csúszkát az Üresjárati időkorlát módosításához.
 6. Adja meg azt a helyi IP-címet, amelyhez nyilvános IP-címet szeretne hozzárendelni.
 7. Szükség esetén adjon meg egy társított DNS-nevet.
-8. Kattintson a **Done** (Kész) gombra.
+8. Kattintson a **Kész** gombra.
 
     ![Nyilvános IP-cím](media/quick-create-pc-public-ip.png)
 

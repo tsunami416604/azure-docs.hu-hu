@@ -6,11 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 06/20/2019
-ms.openlocfilehash: 2e27958dd9379a26ca7e7f4d7e427e5afa216e29
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 86ee81f3802b7ec7f8189123192c20143a08cf3d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75981161"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090246"
 ---
 # <a name="build-your-first-serverless-app-by-using-azure-logic-apps-and-azure-functions-in-visual-studio"></a>Az első kiszolgáló nélküli alkalmazás létrehozása a Visual Studióban Azure Logic Apps és Azure Functions használatával
 
@@ -31,7 +32,7 @@ Ha kiszolgáló nélküli alkalmazást szeretne létrehozni a Visual Studióban,
     > A Visual Studio 2019-es vagy 2017-es vagy-es telepítésekor ügyeljen arra, hogy kiválassza az **Azure-fejlesztési** számítási feladatot.
 
   * [Microsoft Azure SDK for .net (2.9.1 vagy újabb verzió)](https://azure.microsoft.com/downloads/). 
-  További információ az [Azure SDK for .NET](https://docs.microsoft.com/dotnet/azure/dotnet-tools?view=azure-dotnet) készlettel kapcsolatban.
+  További információ az [Azure SDK for .NET](/dotnet/azure/dotnet-tools?view=azure-dotnet) készlettel kapcsolatban.
 
   * [Azure PowerShell](https://github.com/Azure/azure-powershell#installation).
 
@@ -43,7 +44,7 @@ Ha kiszolgáló nélküli alkalmazást szeretne létrehozni a Visual Studióban,
 
     * [Visual Studio 2015](https://aka.ms/download-azure-logic-apps-tools-visual-studio-2015)
   
-    Letöltheti és telepítheti az Azure Logic Apps alkalmazást közvetlenül a Visual Studio piacteréről, vagy nézzen utána, [hogyan telepítheti a bővítményt a Visual Studio rendszerén belül](https://docs.microsoft.com/visualstudio/ide/finding-and-using-visual-studio-extensions). 
+    Letöltheti és telepítheti az Azure Logic Apps alkalmazást közvetlenül a Visual Studio piacteréről, vagy nézzen utána, [hogyan telepítheti a bővítményt a Visual Studio rendszerén belül](/visualstudio/ide/finding-and-using-visual-studio-extensions). 
     Ne feledje, hogy a telepítés után újra kell indítani a Visual Studiót.
 
   * [Azure functions Core Tools](https://www.npmjs.com/package/azure-functions-core-tools) a helyi hibakeresési funkciókhoz.
@@ -135,7 +136,7 @@ Ha az üzembe helyezés után szeretné szerkeszteni a logikai alkalmazást, nyi
 
 ## <a name="create-your-azure-functions-project"></a>Azure Functions projekt létrehozása
 
-A functions-projekt és-függvény JavaScript, Python, F #, PowerShell, batch vagy bash használatával történő létrehozásához kövesse a következő témakörben ismertetett lépéseket: [Azure functions Core Tools](../azure-functions/functions-run-local.md). Ha az Azure-függvényt a C#on belül a megoldásban kívánja fejleszteni, egy C# osztály-függvénytárat kell használnia a [.net-osztály könyvtára függvényalkalmazásként való közzétételének](https://blogs.msdn.microsoft.com/appserviceteam/2017/03/16/publishing-a-net-class-library-as-a-function-app/)lépésein követve.
+A functions-projekt és-függvény JavaScript, Python, F #, PowerShell, batch vagy bash használatával történő létrehozásához kövesse a következő témakörben ismertetett lépéseket: [Azure functions Core Tools](../azure-functions/functions-run-local.md). Ha az Azure-függvényt a C#on belül a megoldásban kívánja fejleszteni, egy C# osztály-függvénytárat kell használnia a [.net-osztály könyvtára függvényalkalmazásként való közzétételének](https://azure.microsoft.com/blog/)lépésein követve.
 
 ## <a name="deploy-functions-from-visual-studio"></a>Függvények üzembe helyezése a Visual studióból
 

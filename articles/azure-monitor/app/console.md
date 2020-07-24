@@ -4,12 +4,12 @@ description: Webes alkalmazások figyelése a rendelkezésre állás, a teljesí
 ms.topic: conceptual
 ms.date: 05/21/2020
 ms.reviewer: lmolkova
-ms.openlocfilehash: d3d1d8aafaea8dcb9e67b842acfbd493e02e4854
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 955988cd16af5269c474061cf60fb18a040909e3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086245"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091232"
 ---
 # <a name="application-insights-for-net-console-applications"></a>Application Insights a .NET-konzol alkalmazásaihoz
 
@@ -18,7 +18,7 @@ ms.locfileid: "86086245"
 [Microsoft Azure](https://azure.com)-előfizetésre van szüksége. Jelentkezzen be egy Microsoft-fiókval, amely lehet Windows, Xbox Live vagy más Microsoft Cloud Services. Előfordulhat, hogy a csapata szervezeti előfizetéssel rendelkezik az Azure-hoz: kérje meg a tulajdonost, hogy vegye fel Önt a Microsoft-fiók használatával.
 
 > [!NOTE]
-> *Javasoljuk* , hogy a [Microsoft. ApplicationInsights. WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) csomagot és a hozzá tartozó utasításokat [használja az összes](../../azure-monitor/app/worker-service.md) konzolos alkalmazáshoz. Ez a csomag célja [`NetStandard2.0`](https://docs.microsoft.com/dotnet/standard/net-standard) , és így a .net Core 2,1-as vagy újabb verzióban, illetve a .NET-keretrendszer 4.7.2 vagy újabb verziókban használható.
+> *Javasoljuk* , hogy a [Microsoft. ApplicationInsights. WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) csomagot és a hozzá tartozó utasításokat [használja az összes](../../azure-monitor/app/worker-service.md) konzolos alkalmazáshoz. Ez a csomag célja [`NetStandard2.0`](/dotnet/standard/net-standard) , és így a .net Core 2,1-as vagy újabb verzióban, illetve a .NET-keretrendszer 4.7.2 vagy újabb verziókban használható.
 
 ## <a name="getting-started"></a>Első lépések
 

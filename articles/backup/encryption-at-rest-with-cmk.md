@@ -3,16 +3,16 @@ title: Biztonsági mentési adatai titkosítása az ügyfél által felügyelt k
 description: Megtudhatja, hogyan titkosíthatja a biztonsági mentési adatait az ügyfél által felügyelt kulcsokkal (CMK) a Azure Backup segítségével.
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: ee64b9f2c6d260d91763cbe2d339640a9fab9967
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: c26466582cbe5a10610f6766160c2b0bc51a4828
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86172548"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091096"
 ---
 # <a name="encryption-of-backup-data-using-customer-managed-keys"></a>Biztonsági mentési adatai titkosítása az ügyfél által felügyelt kulcsokkal
 
-Azure Backup lehetővé teszi, hogy az ügyfél által felügyelt kulcsok (CMK-EK) használatával Titkosítsa a biztonsági mentési adatait a platform által felügyelt kulcsok használata helyett, amely alapértelmezés szerint engedélyezve van. A biztonsági mentési adatai titkosításához használt kulcsokat [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/)kell tárolni.
+Azure Backup lehetővé teszi, hogy az ügyfél által felügyelt kulcsok (CMK-EK) használatával Titkosítsa a biztonsági mentési adatait a platform által felügyelt kulcsok használata helyett, amely alapértelmezés szerint engedélyezve van. A biztonsági mentési adatai titkosításához használt kulcsokat [Azure Key Vault](../key-vault/index.yml)kell tárolni.
 
 A biztonsági mentések titkosításához használt titkosítási kulcs különbözhet a forráshoz használttól. Az adatait egy AES 256-alapú adattitkosítási kulccsal (ADATTITKOSÍTÁSI kulcsot) védik, amely viszont a kulcsok (KEK) használatával védett. Ez teljes körű irányítást biztosít az adat és a kulcsok felett. A titkosítás engedélyezéséhez szükség van arra, hogy a Recovery Services-tároló hozzáférhessen a Azure Key Vault található titkosítási kulcshoz. A kulcsot igény szerint módosíthatja.
 
@@ -31,7 +31,7 @@ Ez a cikk a következőket ismerteti:
 
 - Ez a funkció jelenleg nem **támogatja a Mars-ügynök használatával történő biztonsági mentést**, és előfordulhat, hogy nem fogja tudni használni a CMK-titkosítású tárolót. A MARS-ügynök felhasználói jelszó-alapú titkosítást használ. A szolgáltatás emellett nem támogatja a klasszikus virtuális gépek biztonsági mentését.
 
-- Ez a funkció nem kapcsolódik a [Azure Disk Encryptionhoz](https://docs.microsoft.com/azure/security/fundamentals/azure-disk-encryption-vms-vmss), amely a virtuális gép lemezei számára a BitLocker (Windows rendszeren) és a dm-crypt (for Linux) rendszerhez készült vendég-alapú titkosítást használja.
+- Ez a funkció nem kapcsolódik a [Azure Disk Encryptionhoz](../security/fundamentals/azure-disk-encryption-vms-vmss.md), amely a virtuális gép lemezei számára a BitLocker (Windows rendszeren) és a dm-crypt (for Linux) rendszerhez készült vendég-alapú titkosítást használja.
 
 - Az Recovery Services-tároló csak az **ugyanabban a régióban**található, Azure Key Vaultban tárolt kulcsokkal titkosítható. Emellett a kulcsok csak **RSA 2048 kulcsok** lehetnek, és **engedélyezve** állapotban kell lenniük.
 
@@ -92,7 +92,7 @@ Most engedélyeznie kell a Recovery Services-tárolónak a titkosítási kulcsot
 
 ### <a name="enable-soft-delete-and-purge-protection-on-the-azure-key-vault"></a>A Azure Key Vault eltávolításának és törlésének engedélyezése
 
-Engedélyeznie kell a **Soft delete és Purge Protection** szolgáltatást a titkosítási kulcsot tároló Azure Key Vault. Ezt az alább látható Azure Key Vault felhasználói felületen végezheti el. (Másik lehetőségként ezek a tulajdonságok a Key Vault létrehozásakor is megadhatók.) További információt ezekről a Key Vault tulajdonságokról [itt](https://docs.microsoft.com/azure/key-vault/general/overview-soft-delete)talál.
+Engedélyeznie kell a **Soft delete és Purge Protection** szolgáltatást a titkosítási kulcsot tároló Azure Key Vault. Ezt az alább látható Azure Key Vault felhasználói felületen végezheti el. (Másik lehetőségként ezek a tulajdonságok a Key Vault létrehozásakor is megadhatók.) További információt ezekről a Key Vault tulajdonságokról [itt](../key-vault/general/overview-soft-delete.md)talál.
 
 ![A Soft delete és a Purge Protection engedélyezése](./media/encryption-at-rest-with-cmk/soft-delete-purge-protection.png)
 
@@ -193,13 +193,13 @@ Mielőtt továbblép a védelem konfigurálására, javasoljuk, hogy gondoskodjo
 >
 >Ha a fenti lépések mindegyikét megerősítettük, csak ezután folytassa a biztonsági mentés konfigurálását.
 
-Az ügyfél által felügyelt kulcsokkal titkosított Recovery Services-tárolóra vonatkozó biztonsági másolatok konfigurálásának és végrehajtásának folyamata megegyezik a platform által felügyelt kulcsokat használó tárolóval, és **nem változik a felhasználói élmény**. Ez igaz az Azure-beli [virtuális gépek biztonsági mentésére](https://docs.microsoft.com/azure/backup/quick-backup-vm-portal) , valamint a virtuális gépen futó munkaterhelések biztonsági mentésére (például [SAP HANA](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db), [SQL Server](https://docs.microsoft.com/azure/backup/tutorial-sql-backup) adatbázisokra).
+Az ügyfél által felügyelt kulcsokkal titkosított Recovery Services-tárolóra vonatkozó biztonsági másolatok konfigurálásának és végrehajtásának folyamata megegyezik a platform által felügyelt kulcsokat használó tárolóval, és **nem változik a felhasználói élmény**. Ez igaz az Azure-beli [virtuális gépek biztonsági mentésére](./quick-backup-vm-portal.md) , valamint a virtuális gépen futó munkaterhelések biztonsági mentésére (például [SAP HANA](./tutorial-backup-sap-hana-db.md), [SQL Server](./tutorial-sql-backup.md) adatbázisokra).
 
 ## <a name="restoring-data-from-backup"></a>Adatok visszaállítása biztonsági másolatból
 
 ### <a name="vm-backup"></a>Virtuális gép biztonsági mentése
 
-Az Recovery Services-tárolóban tárolt információk az [itt](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms)ismertetett lépések szerint állíthatók vissza. Az ügyfél által felügyelt kulcsokkal titkosított Recovery Services-tárolóból történő visszaállítás esetén dönthet úgy, hogy titkosítja a visszaállított adatok lemezes titkosítási készlettel (DES).
+Az Recovery Services-tárolóban tárolt információk az [itt](./backup-azure-arm-restore-vms.md)ismertetett lépések szerint állíthatók vissza. Az ügyfél által felügyelt kulcsokkal titkosított Recovery Services-tárolóból történő visszaállítás esetén dönthet úgy, hogy titkosítja a visszaállított adatok lemezes titkosítási készlettel (DES).
 
 #### <a name="restoring-vm--disk"></a>Virtuális gép/lemez visszaállítása
 

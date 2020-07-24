@@ -14,17 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/11/2020
 ms.author: juliako
-ms.openlocfilehash: 75ba2ad87eabd7ff6b0625ad95ab24a8ae58dd0f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cb3b319c583422b32798fce9cef4c73a4aa1f8de
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79461044"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090042"
 ---
 # <a name="manage-streaming-endpoints-with--media-services-v3"></a>Adatfolyam-végpontok kezelése Media Services v3-val
 
 A Media Services fiók létrehozásakor a rendszer **leállított** állapotban adja hozzá a fiókhoz az **alapértelmezett** [folyamatos átviteli végpontot](streaming-endpoint-concept.md) . A tartalom folyamatos átvitelének megkezdéséhez, valamint a [dinamikus csomagolás](dynamic-packaging-overview.md) és a [dinamikus titkosítás](content-protection-overview.md)kihasználásához a adatfolyam-továbbítási végpontnak **futó** állapotban kell lennie.
 
-Ez a cikk bemutatja, hogyan hajthatja végre a [Start](https://docs.microsoft.com/rest/api/media/streamingendpoints/start) parancsot a folyamatos átviteli végponton különböző technológiák használatával. 
+Ez a cikk bemutatja, hogyan hajthatja végre a [Start](/rest/api/media/streamingendpoints/start) parancsot a folyamatos átviteli végponton különböző technológiák használatával. 
  
 > [!NOTE]
 > Csak akkor számítunk fel díjat, ha a folyamatos átviteli végpont fut állapotban van.
@@ -43,9 +44,9 @@ Tekintse át
 POST https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mediaresources/providers/Microsoft.Media/mediaservices/slitestmedia10/streamingEndpoints/myStreamingEndpoint1/start?api-version=2018-07-01
 ```
 
-További információkért lásd: 
+További információ: 
 
-* A [Start a streamvégpontok](https://docs.microsoft.com/rest/api/media/streamingendpoints/start) Reference dokumentációja.
+* A [Start a streamvégpontok](/rest/api/media/streamingendpoints/start) Reference dokumentációja.
 * Az adatfolyam-végpont indítása aszinkron művelet. 
 
     További információ a hosszan futó műveletek figyeléséről: [hosszan futó műveletek](media-services-apis-overview.md).
@@ -69,7 +70,7 @@ az ams streaming-endpoint start [--account-name]
                                 [--subscription]
 ```
 
-További információ: [az AMS streaming-Endpoint Start](https://docs.microsoft.com/cli/azure/ams/streaming-endpoint?view=azure-cli-latest#az-ams-streaming-endpoint-start).
+További információ: [az AMS streaming-Endpoint Start](/cli/azure/ams/streaming-endpoint?view=azure-cli-latest#az-ams-streaming-endpoint-start).
 
 ## <a name="use-sdks"></a>SDK-k használata
 
@@ -105,4 +106,4 @@ Tekintse meg a [.net-kód teljes mintáját](https://github.com/Azure-Samples/me
 ## <a name="next-steps"></a>További lépések
 
 * [Media Services v3 OpenAPI-specifikáció (hencegés)](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01)
-* [Folyamatos átviteli végpont műveletei](https://docs.microsoft.com/rest/api/media/streamingendpoints)
+* [Folyamatos átviteli végpont műveletei](/rest/api/media/streamingendpoints)

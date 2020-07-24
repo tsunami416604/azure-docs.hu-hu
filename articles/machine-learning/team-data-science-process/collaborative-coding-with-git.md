@@ -10,11 +10,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 0708e395eff90ff5b889c05f0fd5e7a98205c5bc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 739be373992fcd994f085f8571675779e450bfee
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76721897"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090212"
 ---
 # <a name="collaborative-coding-with-git"></a>Együttműködésen alapuló kódolás a Gittel
 
@@ -28,7 +29,7 @@ Ha egy munkaelemet új ágra szeretne összekapcsolni, válassza a munkaelem mel
 
 ![1](./media/collaborative-coding-with-git/1-sprint-board-view.png)
 
-A **ág létrehozása** párbeszédpanelen adja meg az új ág nevét, valamint az alap Azure Repos git-tárházat és ágat. Az alaptárháznak ugyanabban az Azure DevOps-projektben kell lennie, mint a munkaelemnek. Az alapág lehet a fő ág vagy egy másik meglévő ág. Válassza az **ág létrehozása**lehetőséget. 
+A **ág létrehozása** párbeszédpanelen adja meg az új ág nevét, valamint az alap Azure Repos git-tárházat és ágat. Az alaptárháznak ugyanabban az Azure DevOps-projektben kell lennie, mint a munkaelemnek. Az alapág bármely létező ág lehet. Válassza az **ág létrehozása**lehetőséget. 
 
 ![2](./media/collaborative-coding-with-git/2-create-a-branch.png)
 
@@ -50,7 +51,7 @@ A munkaágra való váltás után megkezdheti a kód vagy a dokumentációs öss
 
 Célszerű létrehozni egy git ágat minden egyes felhasználói történet munkaelemhez. Ezután az egyes feladatok munkaelemekhez a felhasználói történet ág alapján hozhat létre ágat. Rendezze az ágakat egy olyan hierarchiában, amely a felhasználói történet – feladat kapcsolatnak felel meg, ha több ember dolgozik ugyanazon projekt különböző felhasználói történetén, vagy ugyanazon felhasználói történet különböző feladataiban. Az ütközések csökkentése érdekében az egyes csapattagok egy másik ág, illetve más kódok vagy egyéb összetevők esetében is dolgozhatnak egy adott ág megosztásakor. 
 
-Az alábbi ábrán a TDSP ajánlott elágazási stratégiája látható. Előfordulhat, hogy nincs szüksége az itt látható sok ágra, különösen akkor, ha csak egy vagy két személy dolgozik egy projekten, vagy csak egy felhasználó dolgozik a felhasználói történet összes feladatán. De a fejlesztési ág a Master ág alapján való elkülönítése mindig jó gyakorlat, és segít megakadályozni, hogy a kiadási ág megszakítsa a fejlesztési tevékenységeket. A git-ág modell teljes leírását a git- [elágazások sikeres modellje](https://nvie.com/posts/a-successful-git-branching-model/)című témakörben tekintheti meg.
+Az alábbi ábrán a TDSP ajánlott elágazási stratégiája látható. Előfordulhat, hogy nincs szüksége az itt látható sok ágra, különösen akkor, ha csak egy vagy két személy dolgozik egy projekten, vagy csak egy felhasználó dolgozik a felhasználói történet összes feladatán. Az elsődleges ág fejlesztési ága azonban mindig jó gyakorlat, és segít megakadályozni, hogy a kiadási ág megszakítsa a fejlesztési tevékenységeket. A git-ág modell teljes leírását a git- [elágazások sikeres modellje](https://nvie.com/posts/a-successful-git-branching-model/)című témakörben tekintheti meg.
 
 ![3](./media/collaborative-coding-with-git/3-git-branches.png)
 
@@ -97,7 +98,7 @@ Győződjön meg arról, hogy a kérelem **készként**van megjelölve.
 
 ![11](./media/collaborative-coding-with-git/11-spring-merge-pullrequest.png)
 
-Ha a bal oldali navigációs sávon visszavált a **repóba** , láthatja, hogy az ág törlése óta átváltotta a fő ágat `script` .
+Ha a bal oldali navigációs sávon visszatér a **repóhoz** , láthatja, hogy az ág törlése óta a fő ágra váltott `script` .
 
 ![12](./media/collaborative-coding-with-git/12-spring-branch-deleted.png)
 

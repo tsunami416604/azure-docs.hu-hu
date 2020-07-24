@@ -3,12 +3,12 @@ title: Azure Machine Learning Event Grid forrásként
 description: A Machine Learning-munkaterület eseményekhez megadott tulajdonságokat ismerteti Azure Event Grid
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: e72123a4f609b93e191c82f11443cbb1de7d012d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e256dbcef8c4e4a1354455843e4466d666c7d7b6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86522074"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090671"
 ---
 # <a name="azure-machine-learning-as-an-event-grid-source"></a>Azure Machine Learning Event Grid forrásként
 
@@ -95,12 +95,12 @@ Ez a szakasz egy példát mutat be, hogy az egyes események milyen módon nézn
   "eventTime": "2017-06-26T18:41:00.9584103Z",
   "id": "831e1650-001e-001b-66ab-eeb76e069631",
   "data": {
-    "ExperimentId": "0fa9dfaa-cba3-4fa7-b590-23e48548f5c1",
-    "ExperimentName": "automl-local-regression",
-    "RunId": "AutoML_ad912b2d-6467-4f32-a616-dbe4af6dd8fc_5",
-    "RunType": null,
-    "RunTags": {},
-    "RunProperties": {
+    "experimentId": "0fa9dfaa-cba3-4fa7-b590-23e48548f5c1",
+    "experimentName": "automl-local-regression",
+    "runId": "AutoML_ad912b2d-6467-4f32-a616-dbe4af6dd8fc_5",
+    "runType": null,
+    "runTags": {},
+    "runProperties": {
         "runTemplate": "automl_child",
         "pipeline_id": "5adc0a4fe02504a586f09a4fcbb241f9a4012062",
         "pipeline_spec": "{\"objects\": [{\"class_name\": \"StandardScaler\", \"module\": \"sklearn.preprocessing\", \"param_args\": [], \"param_kwargs\": {\"with_mean\": true, \"with_std\": false}, \"prepared_kwargs\": {}, \"spec_class\": \"preproc\"}, {\"class_name\": \"LassoLars\", \"module\": \"sklearn.linear_model\", \"param_args\": [], \"param_kwargs\": {\"alpha\": 0.001, \"normalize\": true}, \"prepared_kwargs\": {}, \"spec_class\": \"sklearn\"}], \"pipeline_id\": \"5adc0a4fe02504a586f09a4fcbb241f9a4012062\"}",
@@ -155,12 +155,12 @@ Ez a szakasz egy példát mutat be, hogy az egyes események milyen módon nézn
   "eventTime": "2017-06-26T18:41:00.9584103Z",
   "id": "831e1650-001e-001b-66ab-eeb76e069631",
   "data": {
-    "ExperimentId": "0fa9dfaa-cba3-4fa7-b590-23e48548f5c1",
-    "ExperimentName": "automl-local-regression",
-    "RunId": "AutoML_ad912b2d-6467-4f32-a616-dbe4af6dd8fc_5",
-    "RunType": null,
-    "RunTags": {},
-    "RunProperties": {
+    "experimentId": "0fa9dfaa-cba3-4fa7-b590-23e48548f5c1",
+    "experimentName": "automl-local-regression",
+    "runId": "AutoML_ad912b2d-6467-4f32-a616-dbe4af6dd8fc_5",
+    "runType": null,
+    "runTags": {},
+    "runProperties": {
         "runTemplate": "automl_child",
         "pipeline_id": "5adc0a4fe02504a586f09a4fcbb241f9a4012062",
         "pipeline_spec": "{\"objects\": [{\"class_name\": \"StandardScaler\", \"module\": \"sklearn.preprocessing\", \"param_args\": [], \"param_kwargs\": {\"with_mean\": true, \"with_std\": false}, \"prepared_kwargs\": {}, \"spec_class\": \"preproc\"}, {\"class_name\": \"LassoLars\", \"module\": \"sklearn.linear_model\", \"param_args\": [], \"param_kwargs\": {\"alpha\": 0.001, \"normalize\": true}, \"prepared_kwargs\": {}, \"spec_class\": \"sklearn\"}], \"pipeline_id\": \"5adc0a4fe02504a586f09a4fcbb241f9a4012062\"}",
@@ -175,7 +175,7 @@ Ez a szakasz egy példát mutat be, hogy az egyes események milyen módon nézn
         "scoring_data_location": "aml://artifact/ExperimentRun/dcid.AutoML_ad912b2d-6467-4f32-a616-dbe4af6dd8fc_5/outputs/scoring_file_v_1_0_0.py",
         "model_data_location": "aml://artifact/ExperimentRun/dcid.AutoML_ad912b2d-6467-4f32-a616-dbe4af6dd8fc_5/outputs/model.pkl"
     },
-   "RunStatus": "failed"
+   "runStatus": "failed"
    },
   "dataVersion": "",
   "metadataVersion": "1"
@@ -222,12 +222,12 @@ Az adatobjektum minden eseménytípus esetében a következő tulajdonságokkal 
 
 | Tulajdonság | Típus | Description |
 | -------- | ---- | ----------- |
-| ExperimentId | sztring | Annak a kísérletnek az azonosítója, amelyhez a Futtatás tartozik. |
-| ExperimentName | sztring | Annak a kísérletnek a neve, amelyhez a Futtatás tartozik. |
-| RunId | sztring | A befejezett Futtatás azonosítója. |
-| RunType | sztring | A befejezett Futtatás típusa. |
-| RunTags | object | A befejezett futtatások címkéi. |
-| RunProperties | object | A befejezett Futtatás tulajdonságai. |
+| experimentId | sztring | Annak a kísérletnek az azonosítója, amelyhez a Futtatás tartozik. |
+| experimentName | sztring | Annak a kísérletnek a neve, amelyhez a Futtatás tartozik. |
+| runId | sztring | A befejezett Futtatás azonosítója. |
+| runType | sztring | A befejezett Futtatás típusa. |
+| runTags | object | A befejezett futtatások címkéi. |
+| runProperties | object | A befejezett Futtatás tulajdonságai. |
 
 ### <a name="microsoftmachinelearningservicesdatasetdriftdetected"></a>Microsoft. MachineLearningServices. DatasetDriftDetected
 
@@ -246,20 +246,20 @@ Az adatobjektum minden eseménytípus esetében a következő tulajdonságokkal 
 
 | Tulajdonság | Típus | Description |
 | -------- | ---- | ----------- |
-| ExperimentId | sztring | Annak a kísérletnek az azonosítója, amelyhez a Futtatás tartozik. |
-| ExperimentName | sztring | Annak a kísérletnek a neve, amelyhez a Futtatás tartozik. |
-| RunId | sztring | A befejezett Futtatás azonosítója. |
-| RunType | sztring | A befejezett Futtatás típusa. |
-| RunTags | object | A befejezett futtatások címkéi. |
-| RunProperties | object | A befejezett Futtatás tulajdonságai. |
-| RunStatus | sztring | A Futtatás állapota. |
+| experimentId | sztring | Annak a kísérletnek az azonosítója, amelyhez a Futtatás tartozik. |
+| experimentName | sztring | Annak a kísérletnek a neve, amelyhez a Futtatás tartozik. |
+| runId | sztring | A befejezett Futtatás azonosítója. |
+| runType | sztring | A befejezett Futtatás típusa. |
+| runTags | object | A befejezett futtatások címkéi. |
+| runProperties | object | A befejezett Futtatás tulajdonságai. |
+| runStatus | sztring | A Futtatás állapota. |
 
 ## <a name="tutorials-and-how-tos"></a>Oktatóanyagok és útmutatók
 | Cím | Leírás |
 | ----- | ----- |
 | [Azure Machine Learning események felhasználása](../machine-learning/concept-event-grid-integration.md) | A Azure Machine Learning és a Event Grid integrálásának áttekintése. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A Azure Event Grid bemutatása: [Mi az Event Grid?](overview.md)
 * Azure Event Grid-előfizetés létrehozásával kapcsolatos további információkért lásd: [Event Grid előfizetési séma](subscription-creation-schema.md)

@@ -8,11 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: aa2af4302613aad23bfd78b4883bbb46c5e5ddbb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3571455db6ecc600bf0948087b40c281d72512ce
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76961126"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091249"
 ---
 # <a name="enable-cloudsimple-private-cloud-dns-servers-to-forward-dns-lookup-of-on-premises-resources-to-your-dns-servers"></a>A CloudSimple-alapú privát Felhőbeli DNS-kiszolgálók engedélyezése a helyszíni erőforrások DNS-keresésének továbbítására a DNS-kiszolgálókra
 
@@ -31,7 +32,7 @@ A helyi DNS-kiszolgáló DNS-keresésének továbbítása lehetővé teszi a saj
 A DNS-továbbítás működéséhez egy hálózati kapcsolatban kell lennie a saját felhőalapú hálózatáról a helyszíni hálózatra.  A hálózati kapcsolatok a használatával állíthatók be:
 
 * [Kapcsolódás a helyszínről a CloudSimple a ExpressRoute használatával](on-premises-connection.md)
-* [Helyek közötti VPN-átjáró beállítása](https://docs.microsoft.com/azure/vmware-cloudsimple/vpn-gateway#set-up-a-site-to-site-vpn-gateway)
+* [Helyek közötti VPN-átjáró beállítása](./vpn-gateway.md#set-up-a-site-to-site-vpn-gateway)
 
 A DNS-továbbítás működéséhez a tűzfal portjait meg kell nyitni a kapcsolódáskor.  A használt portok a 53-as TCP-port vagy az 53-es UDP-port.
 

@@ -3,12 +3,12 @@ title: Ismerkedés a Live Video Analytics szolgáltatással IoT Edge-Azure-ban
 description: Ez a rövid útmutató bemutatja, hogyan kezdheti el a IoT Edge Live Video Analytics szolgáltatást. Ismerje meg, hogyan derítheti fel a mozgást egy élő videó streamben.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 98ab333a495c31889bee2a9cddab778a12876af5
-ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
+ms.openlocfilehash: ccdbbffb3da240aab7897dd93a6c4ae85c550eba
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84816909"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090076"
 ---
 # <a name="quickstart-get-started---live-video-analytics-on-iot-edge"></a>Gyors útmutató: első lépések – élő videó-elemzés IoT Edge
 
@@ -34,7 +34,7 @@ Az oktatóanyaghoz a következő Azure-erőforrások szükségesek:
 * IoT Hub
 * Tárfiók
 * Azure Media Services fiók
-* Egy Linux rendszerű virtuális gép az Azure-ban, [IoT Edge futtatókörnyezettel](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux) telepítve
+* Egy Linux rendszerű virtuális gép az Azure-ban, [IoT Edge futtatókörnyezettel](../../iot-edge/how-to-install-iot-edge-linux.md) telepítve
 
 Ebben a rövid útmutatóban azt javasoljuk, hogy az Azure-előfizetésében lévő szükséges erőforrások üzembe helyezéséhez használja az [élő videó elemzési erőforrásainak telepítési parancsfájlját](https://github.com/Azure/live-video-analytics/tree/master/edge/setup) . Ehhez kövesse az alábbi lépéseket:
 
@@ -44,7 +44,7 @@ Ebben a rövid útmutatóban azt javasoljuk, hogy az Azure-előfizetésében lé
 
     ![Környezeti választó](./media/quickstarts/env-selector.png)
 
-1. Futtassa a következő parancsot.
+1. Futtassa az alábbi parancsot.
 
     ```
     bash -c "$(curl -sL https://aka.ms/lva-edge/setup-resources-for-samples)"
@@ -561,7 +561,7 @@ A **kimeneti** ablak a következő üzenetet jeleníti meg:
 
 Figyelje meg ezeket a részleteket:
 
-* Az üzenet tartalmaz egy `body` szakaszt és egy `applicationProperties` szakaszt. További információ: [IoT hub üzenetek létrehozása és olvasása](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct).
+* Az üzenet tartalmaz egy `body` szakaszt és egy `applicationProperties` szakaszt. További információ: [IoT hub üzenetek létrehozása és olvasása](../../iot-hub/iot-hub-devguide-messages-construct.md).
 * A alkalmazásban `applicationProperties` hivatkozik arra a csomópontra, amelyben az `subject` üzenet létrejött `MediaGraph` . Ebben az esetben az üzenet a mozgásészlelési processzorról származik.
 * A `applicationProperties` ben `eventType` azt jelzi, hogy ez az esemény egy elemzési esemény.
 * Az `eventTime` érték az az idő, amikor az esemény bekövetkezett.

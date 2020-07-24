@@ -3,21 +3,21 @@ title: A tárolók Azure Monitor áttekintése | Microsoft Docs
 description: Ez a cikk azokat a tárolókat ismerteti Azure Monitor, amelyek az AK-tárolók bevezetési megoldását figyelik, valamint a általa nyújtott értéket az AK-fürtök és az Azure-Container Instances állapotának figyelésével.
 ms.topic: conceptual
 ms.date: 05/21/2020
-ms.openlocfilehash: d176a84d72c92eddd4ffd4fcd1011bda172e5cc4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c5fcdd3bfc42e298791e1ab761fa4db432a93dd7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85337919"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091164"
 ---
-# <a name="azure-monitor-for-containers-overview"></a>A tárolókhoz készült Azure Monitor áttekintése
+# <a name="azure-monitor-for-containers-overview"></a>Tárolókhoz készült Azure Monitor – áttekintés
 
 A tárolók Azure Monitor a-ben üzembe helyezett tároló-munkaterhelések teljesítményének figyelésére szolgáló szolgáltatás:
 
 - Az [Azure Kubernetes szolgáltatásban (ak)](../../aks/intro-kubernetes.md) üzemeltetett fürtök Managed Kubernetes
 - Az Azure-ban üzemeltetett önfelügyelt Kubernetes-fürtök az [AK motor](https://github.com/Azure/aks-engine) használatával
 - [Azure Container Instances](../../container-instances/container-instances-overview.md)
-- [Azure stack](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1910) vagy helyszíni környezetben üzemeltetett, önállóan felügyelt Kubernetes-fürtök
+- [Azure stack](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1910) vagy helyszíni környezetben üzemeltetett, önállóan felügyelt Kubernetes-fürtök
 - [Azure Red Hat OpenShift](../../openshift/intro-openshift.md)
 - [Azure arc-kompatibilis Kubernetes](../../azure-arc/kubernetes/overview.md) (előzetes verzió)
 
@@ -40,7 +40,7 @@ A tárolók Azure Monitor a Azure Monitor különböző funkcióit használó á
 * Ismerje meg a fürt viselkedését az átlag és a legnagyobb terhelések alatt. Ez a tudás segíthet a kapacitási igények azonosításában és a fürt által fenntartott maximális terhelés meghatározásában.
 * Riasztásokat állíthat be, amelyekkel proaktívan értesítheti Önt, vagy rögzítheti azt, ha a csomópontokon vagy tárolókban a CPU és a memória kihasználtsága túllépi a küszöbértékeket, vagy ha az infrastruktúra vagy a csomópontok állapota összesítéssel a fürt állapota megváltozik.
 * A [Prometheus](https://prometheus.io/docs/introduction/overview/) -nal integrálva megtekintheti a csomópontokból és Kubernetes származó alkalmazások és munkaterhelések mérőszámait, és [lekérdezésekkel](container-insights-log-search.md) egyéni riasztásokat, irányítópultokat és részletes elemzéseket készíthet.
-* Figyelheti a tároló munkaterheléseit [, amelyek](https://github.com/Azure/aks-engine) a helyszíni és az [AK](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908)-os motoron üzemelnek Azure stack.
+* Figyelheti a tároló munkaterheléseit [, amelyek](https://github.com/Azure/aks-engine) a helyszíni és az [AK](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908)-os motoron üzemelnek Azure stack.
 * [Az Azure Red Hat OpenShift üzembe helyezett tároló-](../../openshift/intro-openshift.md)munkaterhelések figyelése.
 
     >[!NOTE]
@@ -51,7 +51,7 @@ A tárolók Azure Monitor a Azure Monitor különböző funkcióit használó á
 
 A Windows Server-fürtök Linux-fürthöz képest történő figyelésének fő eltérései a következők:
 
-- A Windows nem rendelkezik memóriabeli RSS-metrikával, ezért a Windows-csomópontok és-tárolók esetében nem érhető el. A [munkakészlet](https://docs.microsoft.com/windows/win32/memory/working-set) metrikája elérhető.
+- A Windows nem rendelkezik memóriabeli RSS-metrikával, ezért a Windows-csomópontok és-tárolók esetében nem érhető el. A [munkakészlet](/windows/win32/memory/working-set) metrikája elérhető.
 - A lemezes tárolás kapacitására vonatkozó információk nem érhetők el Windows-csomópontok esetén.
 - Csak a pod környezetek figyelhetők meg, nem pedig a Docker-környezetek.
 - Az előzetes kiadásban legfeljebb 30 Windows Server-tároló támogatott. Ez a korlátozás nem vonatkozik a Linux-tárolók esetében.

@@ -3,16 +3,17 @@ title: Migrálás az Azure Event Hubs for Apache Kafka
 description: Ez a cikk bemutatja, hogy a különböző protokollokat (AMQP, Apache Kafka és HTTPS) használó felhasználók és gyártók Hogyan válthatnak be eseményeket az Azure Event Hubs használatakor.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 8f6c4cbdcbbc1d589b0803f36305f9a9fe6eebfa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cf585cdc0a43c595ec013ba78a2e3ae191c40b8d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85322747"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090654"
 ---
 # <a name="migrate-to-azure-event-hubs-for-apache-kafka-ecosystems"></a>Migrálás az Apache Kafka-ökoszisztémákhoz készült Azure Event Hubsba
 Az Azure Event Hubs egy Apache Kafka-végpontot tesz elérhetővé, amely lehetővé teszi, hogy a Kafka protokoll használatával kapcsolódjon a Event Hubshoz. Ha minimális módosításokat végez a meglévő Kafka-alkalmazásban, csatlakozhat az Azure Event Hubshoz, és kihasználhatja az Azure-ökoszisztéma előnyeit. A Kafka-támogatás Event Hubs [Apache Kafka 1,0](https://kafka.apache.org/10/documentation.html) -es és újabb verzióiban.
 
-## <a name="pre-migration"></a>A migrálást megelőző folyamatok 
+## <a name="pre-migration"></a>A migrálás előtt 
 
 ### <a name="create-an-azure-account"></a>Azure-fiók létrehozása
 Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
@@ -30,7 +31,7 @@ Szükség lehet a teljes tartománynevet is, amely az Event hub-névtérre mutat
 
 Ha a Event Hubs névtér nem nyilvános felhőre van telepítve, a tartománynév eltérhet (például \* . servicebus.chinacloudapi.cn, \* . servicebus.usgovcloudapi.net vagy \* . servicebus.cloudapi.de).
 
-## <a name="migration"></a>Áttelepítés 
+## <a name="migration"></a>Migrálás 
 
 ### <a name="update-your-kafka-client-configuration"></a>A Kafka-ügyfél konfigurációjának frissítése
 
@@ -48,7 +49,7 @@ sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule require
 
 Ha a `sasl.jaas.config` keretrendszer nem támogatja a konfigurációt, keresse meg a SASL felhasználónevének és jelszavának beállításához használt konfigurációkat, és használja őket. Állítsa be a felhasználónevet `$ConnectionString` és a jelszót a Event Hubs-kapcsolódási karakterláncra.
 
-## <a name="post-migration"></a>A migrálást követő folyamatok
+## <a name="post-migration"></a>A migrálás után
 Futtasson egy Kafka-alkalmazást, amely eseményeket küld az Event hub-nak. Ezután ellenőrizze, hogy az Event hub fogadja-e az eseményeket a Azure Portal használatával. A Event Hubs névtér **Áttekintés** lapján váltson a **metrikák** szakasz **üzenetek** nézetére. Frissítse a lapot a diagram frissítéséhez. Eltarthat néhány másodpercig, amíg meg nem jelenik az üzenetek fogadása. 
 
 [![Annak ellenőrzése, hogy az Event hub fogadta-e az üzeneteket](./media/getstarted-dotnet-standard-send-v2/verify-messages-portal.png)](./media/getstarted-dotnet-standard-send-v2/verify-messages-portal.png#lightbox)
@@ -60,4 +61,4 @@ Ha többet szeretne megtudni a Kafka Event Hubséről és Event Hubsról, tekint
 - [Event Hubs Apache Kafka hibaelhárítási útmutatója](apache-kafka-troubleshooting-guide.md)
 - [Gyakori kérdések – Event Hubs Apache Kafka](apache-kafka-frequently-asked-questions.md)
 - [Apache Kafka fejlesztői útmutató az Azure-hoz Event Hubs](apache-kafka-developer-guide.md)
-- [Ajánlott konfigurációk](https://github.com/Azure/azure-event-hubs-for-kafka/blob/master/CONFIGURATION.md)
+- [Ajánlott konfigurációk](apache-kafka-configurations.md)

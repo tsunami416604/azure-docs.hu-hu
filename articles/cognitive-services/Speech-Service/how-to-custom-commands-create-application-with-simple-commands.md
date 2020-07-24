@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: 8e0927ccd8c94f589adf6eb11004b728f697b6e1
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: 6552d13ab68d8028cd95b18f2d0895d53bba462c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85362407"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090960"
 ---
 # <a name="create-application-with-simple-commands"></a>Alkalmazás létrehozása egyszerű parancsokkal
 
@@ -48,7 +48,7 @@ Az imént létrehozott **Smart-Room-Lite** egyéni parancsok alkalmazásban adjo
 
 A középső ablaktábla a parancs különböző tulajdonságait listázza. A parancs következő tulajdonságait kell konfigurálnia. A parancsok összes konfigurációs tulajdonságának magyarázatát a [hivatkozások](./custom-commands-references.md)menüpontban találja.
 
-| Konfiguráció            | Leírás                                                                                                                 |
+| Konfiguráció            | Description                                                                                                                 |
 | ---------------- | --------------------------------------------------------------------------------------------------------------------------- |
 | **Példa mondatokra** | Példa arra, hosszúságú kimondott szöveg, hogy a felhasználó el tudja indítani ezt a parancsot                                                                 |
 | **Paraméterek**       | A parancs végrehajtásához szükséges információk                                                                                |
@@ -83,8 +83,8 @@ Ezután a parancsnak rendelkeznie kell egy befejezési szabállyal. Ez a szabál
     
     | Beállítás    | Ajánlott érték                          | Leírás                                        |
     | ---------- | ---------------------------------------- | -------------------------------------------------- |
-    | **Name (Név)**       | ConfirmationResponse                  | A szabály célját leíró név          |
-    | **Feltételek** | None                                     | Feltételek, amelyek meghatározzák, hogy a szabály futtatható-e    |
+    | **Név**       | ConfirmationResponse                  | A szabály célját leíró név          |
+    | **Feltételek** | Nincs                                     | Feltételek, amelyek meghatározzák, hogy a szabály futtatható-e    |
     | **Műveletek**    | Beszédfelismerési válasz küldése > egyszerű szerkesztő > az első változatban >`Ok, turning the tv on` | A szabály feltételének teljesülésekor végrehajtandó művelet |
     
 
@@ -96,8 +96,7 @@ Ezután a parancsnak rendelkeznie kell egy befejezési szabállyal. Ez a szabál
 1. A művelet mentéséhez válassza a **Mentés** lehetőséget.
 1. A **befejezési szabályok** szakaszban kattintson a **Mentés** gombra a módosítások mentéséhez. 
 
-
- > [!NOTE]
+    > [!NOTE]
     > A parancshoz tartozó alapértelmezett befejezési szabályt nem szükséges használni. Ha szükséges, törölheti a meglévő alapértelmezett befejezési szabályt, és hozzáadhatja a saját szabályt is.
 
 ### <a name="try-it-out"></a>Próba
@@ -125,8 +124,8 @@ Ezután szerkessze a meglévő **befejezett** befejezési szabályokat a követk
 
 | Beállítás    | Ajánlott érték                          |
 | ---------- | ---------------------------------------- |
-| Name (Név)  | ConfirmationResponse                  |
-| Feltételek | None                                     |
+| Name  | ConfirmationResponse                  |
+| Feltételek | Nincs                                     |
 | Műveletek    | Beszédfelismerési válasz küldése > egyszerű szerkesztő > az első változatban >`Ok, setting temperature to 40 degrees` |
 
 A **Mentés** gombra kattintva mentse a parancs összes módosítását.
@@ -137,7 +136,7 @@ Hozzon létre egy új parancsot a **SetAlarm** a "**riasztás beállítása a 9.
 | Beállítás    | Ajánlott érték                          |
 | ---------- | ---------------------------------------- |
 | Szabály neve  | ConfirmationResponse                  |
-| Feltételek | None                                     |
+| Feltételek | Nincs                                     |
 | Műveletek    | Beszédfelismerési válasz küldése > egyszerű szerkesztő > az első változatban >`Ok, setting an alarm for 9 am tomorrow` |
 
 A **Mentés** gombra kattintva mentse a parancs összes módosítását.
@@ -145,7 +144,7 @@ A **Mentés** gombra kattintva mentse a parancs összes módosítását.
 ## <a name="try-it-out"></a>Próba
 
 A viselkedés tesztelése a csevegési teszt panel használatával
-1. Válassza a **betanítás**lehetőséget. A sikeres képzés után válassza a **tesztelés** és kipróbálás lehetőséget:
+1. Válassza a **Betanítás** lehetőséget. A sikeres képzés után válassza a **tesztelés** és kipróbálás lehetőséget:
     - Gépelje be a következőt: a hőmérséklet 40 fok.
     - Várt válasz: ok, hőmérséklet beállítása 40 fok
     - Írja be a következőt: TV bekapcsolása
