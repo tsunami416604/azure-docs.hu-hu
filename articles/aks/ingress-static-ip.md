@@ -4,13 +4,13 @@ titleSuffix: Azure Kubernetes Service
 description: Megtudhatja, hogyan telepíthet és konfigurálhat egy, az Azure Kubernetes Service (ak) fürtben statikus nyilvános IP-címmel rendelkező NGINX bejövő adatforgalom-vezérlőt.
 services: container-service
 ms.topic: article
-ms.date: 07/02/2020
-ms.openlocfilehash: a59bd1cfcc03b0a6c9af218cb7108a0ba094377d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.date: 07/21/2020
+ms.openlocfilehash: 89068210e0a2656c0a0642417532b28d8f10d93a
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86255285"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87130851"
 ---
 # <a name="create-an-ingress-controller-with-a-static-public-ip-address-in-azure-kubernetes-service-aks"></a>Statikus nyilvános IP-címmel rendelkező bejövő vezérlő létrehozása az Azure Kubernetes szolgáltatásban (ak)
 
@@ -48,6 +48,9 @@ Ezután hozzon létre egy nyilvános IP-címet a *statikus* kiosztási módszerr
 ```azurecli-interactive
 az network public-ip create --resource-group MC_myResourceGroup_myAKSCluster_eastus --name myAKSPublicIP --sku Standard --allocation-method static --query publicIp.ipAddress -o tsv
 ```
+
+> [!NOTE]
+> A fenti parancsok olyan IP-címet hoznak létre, amely törölve lesz, ha törli az AK-fürtöt. Másik lehetőségként létrehozhat egy olyan IP-címet is egy másik erőforráscsoporthoz, amelyet az AK-fürttől függetlenül kezelhet. Ha egy másik erőforráscsoporthoz hoz létre IP-címet, győződjön meg arról, hogy az AK-fürt által használt szolgáltatásnév delegált engedélyekkel rendelkezik a másik erőforráscsoporthoz, például a *hálózati közreműködőhöz*.
 
 Most telepítse az *Nginx-* beléptetési diagramot a Helm szolgáltatással. A magasabb szintű redundancia érdekében az NGINX bejövő forgalmi vezérlő két replikája van telepítve a `--set controller.replicaCount` paraméterrel. Ahhoz, hogy teljes mértékben élvezhesse a bejövő vezérlő replikáit, győződjön meg arról, hogy az AK-fürt több csomópontja van.
 
@@ -264,7 +267,7 @@ A következő példában a címnek való adatforgalom `https://demo-aks-ingress.
 Hozzon létre egy nevű fájlt `hello-world-ingress.yaml` , és másolja a következő PÉLDÁBAN YAML.
 
 ```yaml
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   name: hello-world-ingress
@@ -369,7 +372,7 @@ Most adja hozzá a */Hello-World-Two* elérési útját a teljes tartománynévh
 
 ![Példa két alkalmazásra](media/ingress/app-two.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ez a cikk a beáramlási összetevők, a tanúsítványok és a minta alkalmazások telepítéséhez használható. Amikor központilag telepít egy Helm-diagramot, a rendszer számos Kubernetes-erőforrást hoz létre. Ezek az erőforrások a hüvelyek, a központi telepítések és a szolgáltatások részét képezik. Ezen erőforrások törléséhez törölheti a teljes minta névteret vagy az egyes erőforrásokat.
 
@@ -428,7 +431,7 @@ Végezetül távolítsa el a bejövő vezérlőhöz létrehozott statikus nyilv�
 az network public-ip delete --resource-group MC_myResourceGroup_myAKSCluster_eastus --name myAKSPublicIP
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez a cikk néhány külső összetevőt tartalmaz az ak-nak. Ha többet szeretne megtudni ezekről az összetevőkről, tekintse meg a következő Project-lapokat:
 

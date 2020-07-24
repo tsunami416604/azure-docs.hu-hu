@@ -7,11 +7,12 @@ ms.service: dns
 ms.topic: how-to
 ms.date: 2/20/2020
 ms.author: allensu
-ms.openlocfilehash: 81a58657a4ab8f7403006ce02fb8f585feea86b0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fbf996a66bf76520002a22169903c7961080e38b
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711272"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131531"
 ---
 # <a name="how-to-protect-dns-zones-and-records"></a>DNS-zónák és -rekordok védelme
 
@@ -23,7 +24,7 @@ Ez a cikk azt ismerteti, hogyan teszi lehetővé a Azure DNS a saját DNS-zóná
 
 ## <a name="role-based-access-control"></a>Szerepköralapú hozzáférés-vezérlés
 
-Az Azure szerepköralapú Access Control (RBAC) részletes hozzáférés-kezelést tesz lehetővé az Azure-felhasználók,-csoportok és-erőforrások számára. A RBAC segítségével megadhatja a felhasználók által igényelt hozzáférési szintet. További információ arról, hogyan segít a RBAC a hozzáférés kezelésében: [Mi a szerepköralapú Access Control](../role-based-access-control/overview.md).
+Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) részletes hozzáférés-kezelést tesz lehetővé az Azure-felhasználók,-csoportok és-erőforrások számára. A RBAC segítségével megadhatja a felhasználók által igényelt hozzáférési szintet. További információ arról, hogyan segít a RBAC a hozzáférés kezelésében: [Mi az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../role-based-access-control/overview.md).
 
 ### <a name="the-dns-zone-contributor-role"></a>A DNS-zóna közreműködői szerepköre
 
@@ -167,7 +168,7 @@ A műveletek tulajdonság a következő DNS-specifikus engedélyeket határozza 
 A fennmaradó műveleteket a rendszer a [DNS-zóna közreműködői beépített szerepkörből](../role-based-access-control/built-in-roles.md#dns-zone-contributor)másolja.
 
 > [!NOTE]
-> Egyéni RBAC-szerepkör használata a rekordhalmazok törlésének megakadályozása érdekében, miközben továbbra is lehetővé teszi a frissítések frissítését, nem érvényes vezérlő. Megakadályozza a rekordhalmazok törlését, de nem akadályozza meg őket a módosításban.  Az engedélyezett módosítások közé tartoznak a rekordok hozzáadása és eltávolítása a rekordhalmazból, beleértve az összes rekord eltávolítását is, ha üres rekordhalmazt szeretne hagyni. Ennek ugyanaz a hatása, mint a rekord DNS-feloldási nézőpontból való törlése.
+> Egy egyéni Azure-szerepkör használatával megakadályozhatja a rekordhalmazok törlését, miközben továbbra is lehetővé teszi a frissítések frissítését. Megakadályozza a rekordhalmazok törlését, de nem akadályozza meg őket a módosításban.  Az engedélyezett módosítások közé tartoznak a rekordok hozzáadása és eltávolítása a rekordhalmazból, beleértve az összes rekord eltávolítását is, ha üres rekordhalmazt szeretne hagyni. Ennek ugyanaz a hatása, mint a rekord DNS-feloldási nézőpontból való törlése.
 
 Az egyéni szerepkör-definíciók jelenleg nem definiálhatók a Azure Portalon keresztül. A szerepkör-definíción alapuló egyéni szerepkört Azure PowerShell használatával lehet létrehozni:
 

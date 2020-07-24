@@ -1,17 +1,17 @@
 ---
 title: U-SQL-szerelvények kezelése CI/CD-folyamatokban – Azure Data Lake
 description: Ismerje meg az U-SQL C#-szerelvények felügyeletét a CI/CD-folyamatok Azure DevOps való kezelésével kapcsolatos ajánlott eljárásokat.
-author: yanancai
-ms.author: yanacai
+author: liudan66
+ms.author: liud
 ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 10/30/2018
-ms.openlocfilehash: 9daf2cc6ed176e46399f2cdb2f424a622fdeb812
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 4bb6ee60df291c1939d3bb0d72a9b3992be9b3c0
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86115391"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132143"
 ---
 # <a name="best-practices-for-managing-u-sql-assemblies-in-a-cicd-pipeline"></a>Ajánlott eljárások a U-SQL-szerelvények CI/CD-folyamatban való kezeléséhez
 
@@ -86,7 +86,7 @@ A U-SQL-adatbázist egy U-SQL adatbázis-projekt vagy egy `.usqldbpack` , a Visu
 
 Az Azure DevOps parancssori feladattal és az SDK-val egy automatizálási folyamatot állíthat be a U-SQL-adatbázis frissítéséhez. [További információ az SDK-ról és az U-SQL Database üzembe helyezéséhez szükséges CI/CD-folyamatok beállításáról](data-lake-analytics-cicd-overview.md#deploy-u-sql-database-through-azure-pipelines).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [CI/CD-folyamat beállítása Azure Data Lake Analyticshoz](data-lake-analytics-cicd-overview.md)
 * [A Azure Data Lake Analytics kód tesztelése](data-lake-analytics-cicd-test.md)

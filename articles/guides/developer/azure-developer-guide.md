@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: c4121482c37afcda0f580656bbe583128b7720fe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 10c9e2c3ecefedded393d6949be1480f2f02973b
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85829397"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131055"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Azure fejlesztői útmutató az első lépésekhez
 
@@ -76,7 +76,7 @@ A virtuális gépekhez tartozó szabályozás szintje miatt a kiszolgálói munk
 
 > **Használat esetén**: Virtual Machines használata, ha az alkalmazás-infrastruktúra teljes körű vezérlését szeretné végezni, vagy a helyszíni alkalmazások számítási feladatait az Azure-ba kívánja áttelepíteni anélkül, hogy módosítani kellene.
 >
-> Első **lépések**: [linuxos virtuális gép](../../virtual-machines/virtual-machines-linux-quick-create-portal.md) vagy [Windows rendszerű virtuális gép](../../virtual-machines/virtual-machines-windows-hero-tutorial.md) létrehozása a Azure Portalból.
+> Első **lépések**: [linuxos virtuális gép](../../virtual-machines/linux/quick-create-portal.md) vagy [Windows rendszerű virtuális gép](../../virtual-machines/windows/quick-create-portal.md) létrehozása a Azure Portalból.
 
 #### <a name="azure-functions-serverless"></a>Azure Functions (kiszolgáló nélküli)
 
@@ -141,11 +141,6 @@ A Docker-tárolók, az operációs rendszer virtualizálása, lehetővé teszik 
 
 Az Azure számos lehetőséget kínál a tárolók használatára az alkalmazásokban.
 
-- **Azure Docker**virtuálisgép-bővítmény: lehetővé teszi a virtuális gép Docker-gazdagépként való megadását a Docker-eszközökkel.
-
-  > **Mikor érdemes használni**: ha konzisztens tároló-telepítéseket szeretne készíteni az alkalmazásaihoz egy virtuális gépen, vagy ha a [Docker-összeállítást](https://docs.docker.com/compose/overview/)szeretné használni.
-  >
-  > Első **lépések**: [Docker-környezet létrehozása az Azure-ban a Docker VM bővítmény használatával](../../virtual-machines/virtual-machines-linux-dockerextension.md).
 
 - **Azure Kubernetes szolgáltatás**: lehetővé teszi olyan virtuális gépek fürtjének létrehozását, konfigurálását és kezelését, amelyek tároló alkalmazások futtatására vannak konfigurálva. Az Azure Kubernetes Service-ről további információt az [Azure Kubernetes Service bemutatása](../../aks/intro-kubernetes.md)című témakörben talál.
 
@@ -302,7 +297,7 @@ A Azure Erőforrás-kezelő nagyszerű eszköz az előfizetésben már létrehoz
 
 Ha engedélyezi az Azure-erőforrásokhoz való hozzáférést, az ajánlott eljárás az, hogy a felhasználók az adott feladat végrehajtásához szükséges legalacsonyabb jogosultsággal lássák el a felhasználókat.
 
-- **Szerepköralapú hozzáférés-vezérlés (RBAC)**: az Azure-ban hozzáférést biztosíthat a felhasználói fiókoknak (rendszerbiztonsági tag) egy adott hatókörben: előfizetés, erőforráscsoport vagy egyedi erőforrás. A RBAC lehetővé teszi, hogy erőforrásokat helyezzen üzembe egy erőforráscsoporthoz, és engedélyeket adjon egy adott felhasználónak vagy csoportnak. Azt is lehetővé teszi, hogy korlátozza a hozzáférést csak a célként megadott erőforráscsoporthoz tartozó erőforrásokhoz. Hozzáférést biztosíthat egyetlen erőforráshoz, például virtuális géphez vagy virtuális hálózathoz is. A hozzáférés engedélyezéséhez hozzá kell rendelnie egy szerepkört a felhasználóhoz, a csoporthoz vagy az egyszerű szolgáltatáshoz. Számos előre definiált szerepkör létezik, és saját egyéni szerepkörök is megadhatók. További információ: [Mi a szerepköralapú hozzáférés-vezérlés (RBAC)?](../../role-based-access-control/overview.md).
+- **Szerepköralapú hozzáférés-vezérlés (RBAC)**: az Azure-ban hozzáférést biztosíthat a felhasználói fiókoknak (rendszerbiztonsági tag) egy adott hatókörben: előfizetés, erőforráscsoport vagy egyedi erőforrás. A RBAC lehetővé teszi, hogy erőforrásokat helyezzen üzembe egy erőforráscsoporthoz, és engedélyeket adjon egy adott felhasználónak vagy csoportnak. Azt is lehetővé teszi, hogy korlátozza a hozzáférést csak a célként megadott erőforráscsoporthoz tartozó erőforrásokhoz. Hozzáférést biztosíthat egyetlen erőforráshoz, például virtuális géphez vagy virtuális hálózathoz is. A hozzáférés engedélyezéséhez hozzá kell rendelnie egy szerepkört a felhasználóhoz, a csoporthoz vagy az egyszerű szolgáltatáshoz. Számos előre definiált szerepkör létezik, és saját egyéni szerepkörök is megadhatók. További információ: [Mi az az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)?](../../role-based-access-control/overview.md).
 
   > **Mikor érdemes használni**: Ha a felhasználóknak és csoportoknak részletes hozzáférés-kezelést kell végeznie, vagy ha a felhasználónak egy előfizetés tulajdonosát kell tennie.
   >
@@ -319,7 +314,7 @@ Azure Resource Manager lehetővé teszi, hogy egyéni címkéket rendeljen az eg
 * A portálon
 * A Azure Resource Manager sablonban
 * A REST API használata
-* Az Azure parancssori felületének használata
+* Az Azure CLI-vel
 * A PowerShell használata
 
 Az egyes erőforrásokhoz több címkét is hozzárendelhet. További információ: [címkék használata az Azure-erőforrások rendszerezéséhez](../../resource-group-using-tags.md).

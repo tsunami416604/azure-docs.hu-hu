@@ -3,19 +3,17 @@ title: Batch-teszt TSV formátuma – QnA Maker
 titleSuffix: Azure Cognitive Services
 description: A Batch-tesztek TSV formátumának megismerése
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 10/24/2019
-ms.author: diberry
-ms.openlocfilehash: dccf034b6497651db70b6cc09fff3f1b1d645a1b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0ed948b4bf69fc672a59a7825279a12868d10521
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73507824"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132126"
 ---
 # <a name="batch-testing-tsv-format"></a>Batch-tesztelés TSV formátuma
 
@@ -36,7 +34,7 @@ A következő információk segítségével megismerheti és implementálhatja a
 
 ## <a name="tsv-input-fields"></a>TSV beviteli mezők
 
-|TSV bemeneti fájl mezői|Megjegyzések|
+|TSV bemeneti fájl mezői|Jegyzetek|
 |--|--|
 |KBID|A TUDÁSBÁZIS-azonosító a közzétételi oldalon található.|
 |Kérdés|A felhasználó által megadott kérdés.|
@@ -48,7 +46,7 @@ A következő információk segítségével megismerheti és implementálhatja a
 
 ## <a name="tsv-output-fields"></a>TSV kimeneti mezők 
 
-|TSV kimeneti fájl paraméterei|Megjegyzések|
+|TSV kimeneti fájl paraméterei|Jegyzetek|
 |--|--|
 |KBID|A TUDÁSBÁZIS-azonosító a közzétételi oldalon található.|
 |Kérdés|A bemeneti fájlban megadott kérdés.|

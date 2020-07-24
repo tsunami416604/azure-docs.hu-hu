@@ -5,15 +5,15 @@ author: bwren
 services: cosmos-db
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 05/20/2020
+ms.date: 07/22/2020
 ms.author: bwren
 ms.custom: subject-monitoring
-ms.openlocfilehash: cd100fca074e63c56cd6a19843cc68e1a1ddf214
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 9c2a87f3d70d3873771b3a59114b424efffe4fb9
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85850286"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87130188"
 ---
 # <a name="monitoring-azure-cosmos-db"></a>Figyelés Azure Cosmos DB
 
@@ -23,7 +23,7 @@ Az adatok figyelése ügyféloldali és kiszolgálóoldali metrikákkal végezhe
 
 * **Figyelő Azure Cosmos db portálról:** Az Azure Cosmos-fiók **metrikák** lapján elérhető metrikák figyelésére is lehetősége van. Az ezen a lapon található mérőszámok közé tartozik az átviteli sebesség, a tárterület, a rendelkezésre állás, a késés, a konzisztencia és a rendszerszintű metrika. Alapértelmezés szerint ezek a metrikák 7 napos megőrzési időtartammal rendelkeznek. További információkért tekintse meg a jelen cikk Azure Cosmos DB című részében [gyűjtött figyelési adatokat](#monitoring-from-azure-cosmos-db) .
 
-* **Monitorozás metrikákkal az Azure monitorban:** Nyomon követheti az Azure Cosmos-fiók metrikáit, és irányítópultokat hozhat létre a Azure Monitorból. Az Azure Monitor alapértelmezés szerint gyűjti a Azure Cosmos DB metrikákat, és nem konfigurál explicit módon semmit. Ezek a metrikák egyperces részletességgel vannak összegyűjtve, a részletesség a választott metrika alapján változhat. Alapértelmezés szerint ezek a metrikák 30 napos megőrzési időtartammal rendelkeznek. Az előző beállításokban elérhető metrikák többsége ezekben a metrikákban is elérhető. További információért lásd a jelen cikk [metrikus adatok elemzése](#analyze-metric-data) című szakaszát.
+* **Monitorozás metrikákkal az Azure monitorban:** Nyomon követheti az Azure Cosmos-fiók metrikáit, és irányítópultokat hozhat létre a Azure Monitorból. Az Azure Monitor alapértelmezés szerint gyűjti a Azure Cosmos DB metrikákat, és nem konfigurál explicit módon semmit. Ezek a metrikák egyperces részletességgel vannak összegyűjtve, a részletesség a választott metrika alapján változhat. Alapértelmezés szerint ezek a metrikák 30 napos megőrzési időtartammal rendelkeznek. Az előző beállításokban elérhető metrikák többsége ezekben a metrikákban is elérhető. A metrikák, például a tároló neve nem megkülönbözteti a kis-és nagybetűket. Ezért a kis-és nagybetűket megkülönböztető összehasonlítást kell használnia, amikor karakterlánc-összehasonlítást végez ezen dimenzió értékeken. További információért lásd a jelen cikk [metrikus adatok elemzése](#analyze-metric-data) című szakaszát.
 
 * **Figyelő a Azure monitor diagnosztikai naplóival:** Nyomon követheti az Azure Cosmos-fiók naplóit, és irányítópultokat hozhat létre a Azure Monitorból. A telemetria, például az eseményeket és a nyomkövetéseket, amelyek egy második részletességgel történnek, naplóként tárolódnak. Ha például egy tároló átviteli sebessége megváltozik, a Cosmos-fiók tulajdonságai módosulnak, ezek az események a naplókon belül lesznek rögzítve. Ezeket a naplókat az összegyűjtött adatok lekérdezésének futtatásával elemezheti. További információért lásd a jelen cikk [naplózási információk elemzése](#analyze-log-data) című szakaszát.
 

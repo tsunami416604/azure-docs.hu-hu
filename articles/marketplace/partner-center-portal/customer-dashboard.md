@@ -1,16 +1,16 @@
 ---
-title: Ügyfél-irányítópult a Microsoft kereskedelmi piactéren a partner Centerben
+title: Ügyfél-irányítópult a Microsoft kereskedelmi piactéren a partner Centerben, az Azure Marketplace-en és a Microsoft AppSource
 description: Megtudhatja, hogyan érheti el az ügyfelekkel kapcsolatos információkat, beleértve a növekedési trendeket, a kereskedelmi Piactéri elemzésekben az ügyfél irányítópultjának használatával.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-ms.date: 06/15/2020
-ms.openlocfilehash: 9f71a668b3473521e9d8d7c9318ab2e557380845
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.topic: article
+ms.date: 07/22/2020
+ms.openlocfilehash: f4dbdbfc3b835871516233e601881012190169ce
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121758"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131769"
 ---
 # <a name="customer-dashboard-in-commercial-marketplace-analytics"></a>Az Ügyfél irányítópult a kereskedelmi piactér-elemzésekben
 
@@ -29,17 +29,19 @@ Az **elemzés** menü **Customer (ügyfél) irányítópultja** megjeleníti az 
 - [Ügyfél földrajz szerint](#customer-by-geography)
 - [Ügyfelek trendjei](#customer-trends)
 - [Ügyfelek megrendelés és használat szerint](#customers-by-orders-and-usage)
-- [Ügyfelek SKU szerint](#customers-by-skus)
+- [Ügyfelek csomagok szerint](#customers-by-plans)
 - [Megrendelések és használat az ügyfél típusa szerint](#orders-and-usage-by-customer-type)
 - [Ügyfél részletei tábla](#customer-details-table)
 - [Ügyfél-oldal szűrők](#customer-page-filters)
+
+A partneri központban az ügyfelek beszerzése és a jelentéskészítés közötti maximális késés 48 óra.
 
 ### <a name="customer-summary"></a>Ügyfél összegzése
 
 Az ügyfél összegzése szakasz az összes ügyfél számát jeleníti meg, beleértve az új, meglévő és átesett, a kiválasztott dátumtartomány alatt.
 
 - Az ügyfelek teljes száma az ajánlat megvásárlásakor megvásárolt összes ügyfél számának van meghatározva, és legalább egy olyan rendeléssel rendelkezik, amely még nem lett megszakítva.
-- Az előző hónaphoz képest a növekedéshez tartozó ügyfelek százalékos arányát zöld vagy lefelé mutató piros színnel jelzi.
+- A növekedés az előző hónaphoz viszonyított százalékos arányát a szám és a felfelé mutató zöld vagy lefelé mutató piros színnel jelzi.
 - A növekedési trendeket oszlopdiagram jelképezi, és az egyes hónapok értékét a diagram oszlopai fölé helyezve jeleníti meg.
 
 Három ügyfél- **típus**létezik: új, meglévő és átvesző.
@@ -50,9 +52,9 @@ Három ügyfél- **típus**létezik: új, meglévő és átvesző.
 
 ### <a name="customer-by-geography"></a>Ügyfél földrajz szerint
 
-Az **ügyfél földrajz szerint** diagramon látható, hogy az ügyfél és az ügyfelek száma a kiválasztott dátumtartomány szerint van leképezve, és az ügyfél országa/régiója alapján képezhető le. A Térkép világos és sötét színe az ügyfelek számának alacsony és magas értékét jelöli. Kattintson egy rekordra a táblában az ország/régió nagyításához.
+Az **ügyfél földrajz szerint** diagramon látható, hogy a kiválasztott Dátumtartomány alapján beszerzett ügyfelek és ügyfelek száma, amelyek az ügyfél országa/régiója alapján vannak leképezve. A Térkép világos és sötét színe az ügyfelek számának alacsony és magas értékét jelöli. Válasszon ki egy rekordot a táblában az ország/régió nagyításához.
 
-A hő megjeleníti az ügyfelek darabszámát és a (z)% by Customer országot/régiót. A térképet áthelyezve megtekintheti a pontos helyet, és megnyithatja a nagyítást egy adott helyre. Ez a Térkép egy kiegészítő rácstal rendelkezik, amely lehetővé teszi az ügyfelek hely szerinti, illetve a helyhez újonnan hozzáadott ügyfelek megtekintését.
+A Heat-Map megjeleníti az ügyfelek darabszámát és a százalékos arányt az ügyfél országa/régiója szerint. A térképet áthelyezve megtekintheti a pontos helyet, és megnyithatja a nagyítást egy adott helyre. Ez a Térkép egy kiegészítő rácstal rendelkezik, amely lehetővé teszi az ügyfelek hely szerinti, illetve a helyhez újonnan hozzáadott ügyfelek megtekintését.
 
 ### <a name="customer-trends"></a>Ügyfelek trendjei
 
@@ -71,14 +73,14 @@ A **megrendelések/használati diagramok ügyfeleinek** három lapja van: "Order
 
 Példaként tekintse meg az alábbi táblázatot a normalizált használathoz: az ügyfelek első 30%-ában a normalizált használat 87%-a összesítve. Az ügyfelek 30%-os százalékos értéke csak 1 570 000 órányi használatot vesz igénybe.
 
-### <a name="customers-by-skus"></a>Ügyfelek SKU szerint
+### <a name="customers-by-plans"></a>Ügyfelek csomagok szerint
 
-Az alábbi táblázatban az **ügyfelek az SKU/használati diagramok alapján érhetők el** .
+Az **ügyfelek csomagok/használati** diagramok alább olvashatók.
 
 1. A ranglistán az első 50 ügyfél adatait rangsoroljuk sorrend szerint rendezve. Az ügyfél kiválasztása után az ügyfél adatai a ranglista 2., 3. és 4. szakaszában jelennek meg.
 2. Az ügyfél profiljának adatai ezen a helyen jelennek meg, amikor a közzétevők egy tulajdonosi szerepkörrel vannak bejelentkezve. Ha a közzétevők közreműködői szerepkörrel vannak bejelentkezve, az ebben a szakaszban található részletek nem lesznek elérhetők.
-3. Az SKU-ra vonatkozó rendelések alapján megjelenő megrendelések a SKU-hoz megvásárolt megrendelések részletezését jelenítik meg. Ekkor megjelennek a legmagasabb számú 5 SKU, a többi megrendelés pedig az "Rest all" alatt van csoportosítva.
-4. Az SKU-i munkaállomások fánk-diagram megjeleníti az SKU-hoz rendelt ülések részletezését. Megjelenik az első 5 SKU a legmagasabb számú hellyel, míg a többi megrendelés az összes Rest alatt van csoportosítva.
+3. A **megrendelések a tervek szerint** fánk-diagram megjeleníti a csomagok megvásárolt rendeléseinek részletezését. Megjelenik az első öt csomag a legmagasabb sorrendtel, míg a többi megrendelés a "Rest all" alatt van csoportosítva.
+4. Az **ülések** a tervek szerint fánk-diagram megjeleníti a csomagok számára rendezett helyek részletezését. Az első öt terv a legmagasabb számú hellyel jelenik meg, míg a többi megrendelés az összes Rest alatt van csoportosítva.
 
 ### <a name="orders-and-usage-by-customer-type"></a>Megrendelések és használat az ügyfél típusa szerint
 
@@ -95,7 +97,7 @@ A **Customer Details (ügyfél részletei** ) tábla a legnépszerűbb 1000-ügy
 - A rács minden oszlopa rendezhető.
 - Az adatokat egy TSV-fájlba lehet kibontani, ha a rekordok száma kisebb, mint 1000.
 - Ha a rekordok száma meghaladja a 1000-et, az exportált adatok aszinkron módon lesznek elhelyezve a letöltési oldalon a következő 30 napban.
-- A táblára szűrőket is alkalmazhat, hogy csak az Ön által érintett információk jelenjenek meg. Az adatok szűrhetők a vállalat neve, az ügyfél azonosítója, a piactér-előfizetés azonosítója, az Azure-licenc típusa, a beszerzett dátum, a dátum elveszett, az ügyfél e-mail-címe, az ügyfél országa/régiója/állam/város/zip, az ügyfél nyelve stb.
+- Alkalmazzon szűrőket a táblára, hogy csak az Önt érdeklő információk jelenjenek meg. Adatok szűrése a vállalat neve, az ügyfél azonosítója, a piactér-előfizetés azonosítója, az Azure-licenc típusa, a beszerzett idő, a dátum elvesztése, az ügyfél e-mail-címe, az ügyfél országa/régiója/állam/város/zip, az ügyfél nyelve
 - Ha egy védett ügyfél vásárolja meg az ajánlatot, a rendszer maszkba veszi az **ügyfelek részletes adatait** (* * * * * * * * * * * * *).
 - Az ügyfél dimenziójának részletei, például a vállalat neve, az ügyfél neve és az ügyfél e-mail-címe a szervezet azonosító szintjén, nem az Azure Marketplace-en vagy a AppSource tranzakciós szintjén.
 
@@ -104,9 +106,9 @@ A **Customer Details (ügyfél részletei** ) tábla a legnépszerűbb 1000-ügy
 Az **ügyfelek oldal** szűrői az ügyfelek oldal szintjén lesznek alkalmazva. Több szűrőt is kiválaszthat, hogy a diagramot a megtekinteni kívánt feltételekhez és a "részletes rendelések adatrács/exportálás" elemnél megjelenítendő értékekhez lehessen megjeleníteni. A szűrők a megrendelések oldal jobb felső sarkában kiválasztott adattartományra kinyert adattartományon lesznek alkalmazva.
 
 >[!NOTE]
-> Az ügyfél rácsa, az oldal szűrői és a lehetséges kijelölések részletes definíciói a [kereskedelmi piactér-elemzések gyakori kérdéseiben és terminológiájában](./faq-terminology.md)találhatók.
+> Az ügyfél rácsa, az oldal szűrői és a lehetséges kijelölések részletes definíciói az alább található GYIK-cikkben találhatók.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A partner Center kereskedelmi piactéren elérhető analitikai jelentések áttekintését lásd: [a partner Center kereskedelmi piacának elemzései](./analytics.md).
 - Az ajánlathoz tartozó Piactéri tevékenységet összefoglaló összesített adatok grafikonok, trendek és értékek esetében lásd: [az összefoglaló irányítópult a kereskedelmi piactér elemzésében](./summary-dashboard.md).

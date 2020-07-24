@@ -1,19 +1,19 @@
 ---
 title: Időjárási szolgáltatások – fogalmak | Microsoft Azure térképek
 description: Ebből a cikkből megtudhatja, milyen fogalmakat kell alkalmazni a Microsoft Azure Maps időjárási szolgáltatásokra vonatkozóan.
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 11/20/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: f38ef2c337564d2b36d3939b3ed03130437e35ea
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: e8ecbd50aa4490bde705b386a67b8732bb8c02c9
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86221765"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132109"
 ---
 # <a name="weather-services-in-azure-maps"></a>Időjárási szolgáltatások a Azure Maps
 
@@ -56,27 +56,27 @@ Néhány időjárási szolgáltatás API a válaszban visszaküldi a értéket `
 
 | Ikon száma |Ikon| Nap | Éjszaka | Szöveg |
 |-------------|:----:|-----|-------|------|
-| 1           | :::image type="icon" source="./media/weather-services-concepts/sunny-i.png"::: | Igen |  Nem    | Sunny|
-| 2           | :::image type="icon" source="./media/weather-services-concepts/mostly-sunny.png"::: | Igen |  Nem    | Többnyire napos|
-| 3           | :::image type="icon" source="./media/weather-services-concepts/partly-sunny.png"::: | Igen |  Nem    | Részben Sunny|
-| 4           | :::image type="icon" source="./media/weather-services-concepts/intermittent-clouds.png"::: | Igen |  Nem    | Időszakos felhők|
-| 5           | :::image type="icon" source="./media/weather-services-concepts/hazy-sunshine.png"::: | Igen |  Nem    | Ködös napsütés |
-| 6           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy.png"::: | Igen |  Nem    | Többnyire Felhőbeli|
+| 1           | :::image type="icon" source="./media/weather-services-concepts/sunny-i.png"::: | Yes |  Nem    | Sunny|
+| 2           | :::image type="icon" source="./media/weather-services-concepts/mostly-sunny.png"::: | Yes |  Nem    | Többnyire napos|
+| 3           | :::image type="icon" source="./media/weather-services-concepts/partly-sunny.png"::: | Yes |  Nem    | Részben Sunny|
+| 4           | :::image type="icon" source="./media/weather-services-concepts/intermittent-clouds.png"::: | Yes |  Nem    | Időszakos felhők|
+| 5           | :::image type="icon" source="./media/weather-services-concepts/hazy-sunshine.png"::: | Yes |  Nem    | Ködös napsütés |
+| 6           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy.png"::: | Yes |  Nem    | Többnyire Felhőbeli|
 | 7           | :::image type="icon" source="./media/weather-services-concepts/cloudy-i.png"::: | Igen |  Igen   | Felhős |
 | 8           | :::image type="icon" source="./media/weather-services-concepts/dreary-overcast.png"::: | Igen |  Igen   | Sivár (borús)|
 | 11           | :::image type="icon" source="./media/weather-services-concepts/fog-i.png"::: | Igen |  Igen   | Köd|
 | 12           | :::image type="icon" source="./media/weather-services-concepts/showers-i.png"::: | Igen |  Igen   | Zuhanyzók|
-| 13           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-showers.png"::: | Igen |  Nem    | Jórészt Felhőbeli|
-| 14           | :::image type="icon" source="./media/weather-services-concepts/partly-sunny-showers.png"::: | Igen |  Nem    | Részben napos és zuhanyozós|
+| 13           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-showers.png"::: | Yes |  Nem    | Jórészt Felhőbeli|
+| 14           | :::image type="icon" source="./media/weather-services-concepts/partly-sunny-showers.png"::: | Yes |  Nem    | Részben napos és zuhanyozós|
 | 15           | :::image type="icon" source="./media/weather-services-concepts/tstorms-i.png"::: | Igen |  Igen   | Zivatarok|
-| 16           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-tstorms.png"::: | Igen |  Nem    | Jórészt Felhőbeli|
-| 17           | :::image type="icon" source="./media/weather-services-concepts/partly-sunny-tstorms.png"::: | Igen |  Nem    | Részben napos, zivataros|
+| 16           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-tstorms.png"::: | Yes |  Nem    | Jórészt Felhőbeli|
+| 17           | :::image type="icon" source="./media/weather-services-concepts/partly-sunny-tstorms.png"::: | Yes |  Nem    | Részben napos, zivataros|
 | 18           | :::image type="icon" source="./media/weather-services-concepts/rain-i.png"::: | Igen |  Igen   | Eső|
 | 19           | :::image type="icon" source="./media/weather-services-concepts/flurries-i.png"::: | Igen |  Igen   | Flurries|
-| 20           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-flurries.png"::: | Igen |  Nem    | Többnyire Felhőbeli Flurries|
-| 21           | :::image type="icon" source="./media/weather-services-concepts/partly-sunny-flurries.png"::: | Igen |  Nem    | Részben Sunny a Flurries|
+| 20           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-flurries.png"::: | Yes |  Nem    | Többnyire Felhőbeli Flurries|
+| 21           | :::image type="icon" source="./media/weather-services-concepts/partly-sunny-flurries.png"::: | Yes |  Nem    | Részben Sunny a Flurries|
 | 22           | :::image type="icon" source="./media/weather-services-concepts/snow-i.png"::: | Igen |  Igen   | Vízisízni|
-| 23           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-snow.png"::: | Igen |  Nem    | Jórészt Felhőbeli|     
+| 23           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-snow.png"::: | Yes |  Nem    | Jórészt Felhőbeli|     
 | 24           | :::image type="icon" source="./media/weather-services-concepts/ice-i.png"::: | Igen |  Igen   | Ice |
 | 25           | :::image type="icon" source="./media/weather-services-concepts/sleet-i.png"::: | Igen |  Igen   | Ónos eső|
 | 26           | :::image type="icon" source="./media/weather-services-concepts/freezing-rain.png"::: | Igen |  Igen   | Fagyasztási eső|
@@ -84,11 +84,11 @@ Néhány időjárási szolgáltatás API a válaszban visszaküldi a értéket `
 | 30           | :::image type="icon" source="./media/weather-services-concepts/hot-i.png"::: | Igen |  Igen   | Gyakori|
 | 31           | :::image type="icon" source="./media/weather-services-concepts/cold-i.png"::: | Igen |  Igen   | Ritka elérésű|
 | 32           | :::image type="icon" source="./media/weather-services-concepts/windy-i.png"::: | Igen |  Igen   | Szeles|
-| 33           | :::image type="icon" source="./media/weather-services-concepts/clear-night.png"::: | Nem  |  Igen   | Törlés|
-| 34           | :::image type="icon" source="./media/weather-services-concepts/mostly-clear-night.png"::: | Nem  |  Igen   | Többnyire egyértelmű|
-| 35           | :::image type="icon" source="./media/weather-services-concepts/partly-cloudy-night.png"::: | Nem  |  Igen   | Részben felhőbe|
-| 36           | :::image type="icon" source="./media/weather-services-concepts/intermittent-clouds-Night.png"::: | Nem  |  Igen   | Időszakos felhők|
-| 37           | :::image type="icon" source="./media/weather-services-concepts/hazymoon-light.png"::: | Nem  |  Igen   | Ködös Holdfény|
+| 33           | :::image type="icon" source="./media/weather-services-concepts/clear-night.png"::: | Nem  |  Yes   | Törlés|
+| 34           | :::image type="icon" source="./media/weather-services-concepts/mostly-clear-night.png"::: | Nem  |  Yes   | Többnyire egyértelmű|
+| 35           | :::image type="icon" source="./media/weather-services-concepts/partly-cloudy-night.png"::: | Nem  |  Yes   | Részben felhőbe|
+| 36           | :::image type="icon" source="./media/weather-services-concepts/intermittent-clouds-Night.png"::: | Nem  |  Yes   | Időszakos felhők|
+| 37           | :::image type="icon" source="./media/weather-services-concepts/hazymoon-light.png"::: | Nem  |  Yes   | Ködös Holdfény|
 | 38           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-night.png"::: | Nem  |  Igen   | Többnyire Felhőbeli|
 | 39           | :::image type="icon" source="./media/weather-services-concepts/partly-cloudy-showers-night.png"::: | Nem  |  Igen   | Záporok részben felhőben|
 | 40           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-showers-night.png"::: | Nem  |  Igen   | Jórészt Felhőbeli|

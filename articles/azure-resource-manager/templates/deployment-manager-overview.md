@@ -4,11 +4,12 @@ description: Ismerteti, hogyan helyezhet üzembe egy szolgáltatást több régi
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 006c123dfbb682ff5c498872d7f717a4a09e0bb5
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 27e8c9c0aa2ee86b490d266fc6ff76f263eee7ef
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057925"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87130222"
 ---
 # <a name="enable-safe-deployment-practices-with-azure-deployment-manager-public-preview"></a>Biztonságos üzembe helyezési eljárások engedélyezése az Azure telepítéskezelő (nyilvános előzetes verzió)
 
@@ -36,7 +37,7 @@ További források:
 
 ## <a name="identity-and-access"></a>Identitás és hozzáférés
 
-A telepítéskezelő a [felhasználó által hozzárendelt felügyelt identitás](../../active-directory/managed-identities-azure-resources/overview.md) hajtja végre a telepítési műveleteket. Ezt az identitást a telepítés megkezdése előtt hozza létre. Hozzáféréssel kell rendelkeznie ahhoz az előfizetéshez, amelyen a szolgáltatást üzembe helyezi, és amely megfelelő jogosultsággal rendelkezik az üzembe helyezés befejezéséhez. A szerepkörökön keresztül kapott műveletekkel kapcsolatos információkért lásd: [beépített szerepkörök az Azure-erőforrásokhoz](../../role-based-access-control/built-in-roles.md).
+A telepítéskezelő a [felhasználó által hozzárendelt felügyelt identitás](../../active-directory/managed-identities-azure-resources/overview.md) hajtja végre a telepítési műveleteket. Ezt az identitást a telepítés megkezdése előtt hozza létre. Hozzáféréssel kell rendelkeznie ahhoz az előfizetéshez, amelyen a szolgáltatást üzembe helyezi, és amely megfelelő jogosultsággal rendelkezik az üzembe helyezés befejezéséhez. A szerepkörökön keresztül kapott műveletekkel kapcsolatos információkért lásd: az [Azure beépített szerepkörei](../../role-based-access-control/built-in-roles.md).
 
 Az identitásnak ugyanabban a helyen kell lennie, mint a bevezetés.
 

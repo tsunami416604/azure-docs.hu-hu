@@ -1,19 +1,17 @@
 ---
 title: Ismerje meg, Apache Spark Azure Data Lake Analytics U-SQL-fejlesztőknek.
 description: Ez a cikk Apache Spark fogalmakat ismerteti, amelyek segítenek az U-SQL-fejlesztők közötti különbségek elérésében.
-author: guyhay
-ms.author: guyhay
 ms.reviewer: jasonh
 ms.service: data-lake-analytics
 ms.topic: how-to
 ms.custom: understand-apache-spark-for-usql-developers
 ms.date: 10/15/2019
-ms.openlocfilehash: cb865ec4f5182a868450d1ff7c561a62f7ca3919
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 567574e65fcc1db3ef9e8aea73c6a59be0594f72
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86106407"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132296"
 ---
 # <a name="understand-apache-spark-for-u-sql-developers"></a>Az Apache Spark ismertetése U-SQL-fejlesztőknek
 
@@ -39,7 +37,7 @@ Több lépésből áll, és számos alternatíva is elérhető.
 > [!CAUTION]
 > A [Azure Databricks](../azure-databricks/what-is-azure-databricks.md) és [Azure HDInsight Spark](../hdinsight/spark/apache-spark-overview.md) a fürtszolgáltatások, és nem a kiszolgáló nélküli feladatok, például a Azure Data Lake Analytics. A költségek csökkentése érdekében meg kell fontolnia, hogyan kell kiépíteni a fürtöket a megfelelő költség/teljesítmény arány és az élettartamuk kezeléséhez. Ezek a szolgáltatások eltérő teljesítménnyel rendelkeznek a .NET-ben írt felhasználói kóddal, ezért a burkolókat kell írnia, vagy egy támogatott nyelven kell újraírnia a kódot. További információ: a [Spark-adatformátumok megismerése](understand-spark-data-formats.md), [Apache Spark kód fogalmai az U-SQL-fejlesztők](understand-spark-code-concepts.md)számára, [.net for Apache Spark](https://dotnet.microsoft.com/apps/data/spark)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [A Spark-adatformátumok megismerése U-SQL-fejlesztőknek](understand-spark-data-formats.md)
 - [A Spark Code-fogalmak megismerése U-SQL-fejlesztőknek](understand-spark-code-concepts.md)

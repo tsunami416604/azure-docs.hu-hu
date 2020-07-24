@@ -3,19 +3,17 @@ title: 'Funkciók: művelet és kontextus – személyre szabott'
 titleSuffix: Azure Cognitive Services
 description: A személyre szabott javaslatokat a testre szabható funkciók, a műveletek és a kontextus információi alapján végezheti el. A funkciók lehetnek általánosak vagy egy elemre jellemzőek.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 10/14/2019
-ms.author: diberry
-ms.openlocfilehash: 408501232891a7971d03c89acc647d9ed19609b3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 590416f077fc1ff9430e42e27217548476c9032f
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77026149"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132772"
 ---
 # <a name="features-are-information-about-actions-and-context"></a>A funkciók a műveletekkel és környezettel kapcsolatos információk
 
@@ -25,8 +23,8 @@ A személyre szabott **funkciók**az **aktuális környezettel** kapcsolatos inf
 
 Előfordulhat például, hogy a következő **funkcióval** rendelkezik:
 
-* A _felhasználó persona_ , például `Sports_Shopper`a. Ez nem lehet egyedi felhasználói azonosító. 
-* A _tartalom_ , például ha egy videó az a `Documentary`, a `Movie`vagy a `TV Series`, vagy hogy elérhető-e egy kereskedelmi elem a tárolóban.
+* A _felhasználó persona_ , például a `Sports_Shopper` . Ez nem lehet egyedi felhasználói azonosító. 
+* A _tartalom_ , például ha egy videó az a `Documentary` , a `Movie` vagy a, `TV Series` vagy hogy elérhető-e egy kereskedelmi elem a tárolóban.
 * Az _aktuális_ idő, például a hét napja.
 
 A személyre szabott funkció nem írja elő, korlátozza vagy kijavítja a műveletekhez és környezetekhez elküldhető szolgáltatásokat:
@@ -56,7 +54,7 @@ A személyre szabás a névterekben rendezett funkciókat veszi igénybe. Ön ha
 Az alábbi példák az alkalmazások által használt szolgáltatások névtereit mutatják be:
 
 * User_Profile_from_CRM
-* Time
+* Idő
 * Mobile_Device_Info
 * http_user_agent
 * VideoResolution
@@ -69,10 +67,10 @@ Az alábbi példák az alkalmazások által használt szolgáltatások névterei
 A szolgáltatás névtereit a saját konvenciói szerint nevezheti el, feltéve, hogy érvényes JSON-kulcsok vannak. A névterek a funkciók különálló készletekre való rendszerezésére, valamint a hasonló névvel rendelkező funkciók egyértelműsítse szolgálnak. A névtereket "előtagként" tekintheti meg, amelyet a rendszer a szolgáltatás neveként ad hozzá. A névterek nem ágyazhatók egymásba.
 
 
-A következő JSON `user` `state`-ban a, a `device` és a szolgáltatás névtereket tartalmaz. 
+A következő JSON-ban a, a `user` `state` és a `device` szolgáltatás névtereket tartalmaz. 
 
 > [!Note]
-> Jelenleg erősen ajánlott az UTF-8-alapú és más betűvel ellátott szolgáltatásbeli névterek neveinek használata. `user`Például `state`: `device` ,, és kezdje a `u` `s`következővel:, `d`és. A jelenleg azonos első karakterrel rendelkező névterek ütközést okozhatnak a gépi tanuláshoz használt indexekben.
+> Jelenleg erősen ajánlott az UTF-8-alapú és más betűvel ellátott szolgáltatásbeli névterek neveinek használata. Például:, `user` , `state` és kezdje a következővel:, `device` `u` `s` és `d` . A jelenleg azonos első karakterrel rendelkező névterek ütközést okozhatnak a gépi tanuláshoz használt indexekben.
 
 A JSON-objektumok tartalmazhatnak beágyazott JSON-objektumokat és egyszerű tulajdonságokat/értékeket is. Egy tömb csak akkor szerepelhet, ha a tömb elemei számokból állnak. 
 
@@ -155,9 +153,9 @@ Például:
 Számos más [Azure-Cognitive Services](https://www.microsoft.com/cognitive-services)is használhat, például:
 
 * [Entitáskapcsolás](../entitylinking/home.md)
-* [Szövegelemzés](../text-analytics/overview.md)
-* [Érzelemfelismerés](../emotion/home.md)
-* [Számítógépes látástechnológia](../computer-vision/home.md)
+* [Text Analytics](../text-analytics/overview.md)
+* [Érzelem](../emotion/home.md)
+* [Computer Vision](../computer-vision/home.md)
 
 ## <a name="actions-represent-a-list-of-options"></a>A műveletek a lehetőségek listáját jelölik
 

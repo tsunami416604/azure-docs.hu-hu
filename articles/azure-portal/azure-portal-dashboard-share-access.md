@@ -13,11 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 03/23/2020
 ms.author: mblythe
-ms.openlocfilehash: 60f1f2d20ec2989f73098a18392b936593b85656
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9ead7eb19e49574073f038648ca1d247b2dab98f
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84764026"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131701"
 ---
 # <a name="share-azure-dashboards-by-using-role-based-access-control"></a>Azure-irányítópultok megosztása a szerepköralapú hozzáférés-vezérlés használatával
 
@@ -86,6 +87,5 @@ Az irányítópult egyik szerepköréhez hozzárendelhet egy felhasználói csop
 
 ## <a name="next-steps"></a>További lépések
 
-* A szerepkörök listáját lásd: [beépített szerepkörök az Azure-erőforrásokhoz](../role-based-access-control/built-in-roles.md).
+* A szerepkörök listáját az [Azure beépített szerepkörei](../role-based-access-control/built-in-roles.md)című részben tekintheti meg.
 * Az erőforrások kezelésével kapcsolatos további információkért lásd: [Az Azure-erőforrások kezelése a Azure Portal használatával](resource-group-portal.md).
-

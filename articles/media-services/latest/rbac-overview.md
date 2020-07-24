@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 05/23/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 93b2cd3a2565b14ea07d6db6b14dd146e4223528
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1872d0dd56a0459988e65852340c36493ee53f9f
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "66236922"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132245"
 ---
 # <a name="role-based-access-control-rbac-for-media-services-accounts"></a>Szerepköralapú hozzáférés-vezérlés (RBAC) Media Services fiókokhoz
 
@@ -36,14 +36,14 @@ foreach (Microsoft.Azure.Management.Media.Models.Operation a in client.Operation
 }
 ```
 
-A [beépített szerepkör-definíciók](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) című cikkből megtudhatja, hogy pontosan mit biztosít a szerepkör. 
+A [beépített szerepkör-definíciók](../../role-based-access-control/built-in-roles.md) című cikkből megtudhatja, hogy pontosan mit biztosít a szerepkör. 
 
 További információt a következő cikkekben talál:
 
-- [A hagyományos előfizetés-rendszergazdai szerepkörök, az Azure RBAC-szerepkörök és az Azure AD-rendszergazdai szerepkörök](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)
-- [Mi az Azure-erőforrások RBAC?](https://docs.microsoft.com/azure/role-based-access-control/overview)
-- [A RBAC használata a hozzáférés kezeléséhez](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-rest)
-- [Erőforrás-szolgáltatói műveletek Media Services](https://docs.microsoft.com/azure/role-based-access-control/resource-provider-operations#microsoftmedia)
+- [A hagyományos előfizetés-rendszergazdai szerepkörök, az Azure RBAC-szerepkörök és az Azure AD-rendszergazdai szerepkörök](../../role-based-access-control/rbac-and-directory-admin-roles.md)
+- [Mi az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)?](../../role-based-access-control/overview.md)
+- [A RBAC használata a hozzáférés kezeléséhez](../../role-based-access-control/role-assignments-rest.md)
+- [Erőforrás-szolgáltatói műveletek Media Services](../../role-based-access-control/resource-provider-operations.md#microsoftmedia)
 
 ## <a name="next-steps"></a>További lépések
 

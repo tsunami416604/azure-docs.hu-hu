@@ -9,12 +9,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: carlrab, vanto
 ms.date: 07/06/2020
-ms.openlocfilehash: 5f7e3f763fc7107ba1b4be1dc8b19e55aa88b5a8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 6297f7797758069ee75fe14960d72f9c497b0fe6
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86504690"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132976"
 ---
 # <a name="azure-sql-connectivity-settings"></a>Az Azure SQL-kapcsolatok beállításai
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -173,7 +173,7 @@ $sqlserverid=(Get-AzSqlServer -ServerName sql-server-name -ResourceGroupName sql
 $id="$sqlserverid/connectionPolicies/Default"
 
 # Get current connection policy
-(Get-AzResource -ResourceId $id).Properties.connectionType
+(Get-AzResource -ResourceId $id -ApiVersion 2014-04-01 -Verbose).Properties.ConnectionType
 
 # Update connection policy
 Set-AzResource -ResourceId $id -Properties @{"connectionType" = "Proxy"} -f
@@ -217,7 +217,7 @@ az resource show --ids %sqlserverid%
 az resource update --ids %sqlserverid% --set properties.connectionType=Proxy
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A Azure SQL Database kapcsolatok működésének áttekintését lásd: [kapcsolati architektúra](connectivity-architecture.md)
 - További információ a kiszolgálók kapcsolódási házirendjének módosításáról: [Conn-Policy](https://docs.microsoft.com/cli/azure/sql/server/conn-policy).

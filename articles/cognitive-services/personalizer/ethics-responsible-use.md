@@ -3,19 +3,17 @@ title: Etika és felelősségteljes használat – személyre szabás
 titleSuffix: Azure Cognitive Services
 description: Ezek az irányelvek célja, hogy segítséget nyújtson a személyre szabás kialakításában a vállalat és a szolgáltatás megbízhatóságának kiépítésében. Ügyeljen arra, hogy az emberek életében való személyre szabás hatására a kutatásra, a tanulásra és a tudatos működésre figyeljen. Ha kétségei vannak, kérjen útmutatást.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 06/12/2019
-ms.author: diberry
-ms.openlocfilehash: e422284b871214dbeca31b5dd17b9177a18ad3c8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 602da28f0c235fb0e797a493bc1160631c042a9d
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80478106"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132721"
 ---
 # <a name="guidelines-for-responsible-implementation-of-personalizer"></a>Útmutatás a személyre szabáshoz
 
@@ -129,10 +127,10 @@ A következőkben az AI-k felelős megvalósításának kialakítási területei
 * Egyértelműen kommunikálhat a felhasználókkal, hogy milyen célra használják a személyeket, milyen célokra és milyen adatforrásokra.
 * Archiválja az adatokat és az eszközöket – például a modelleket, a tanulási szabályzatokat és más adatokat –, amelyeket a személyre szabott funkció használ, hogy képes legyen reprodukálni az eredményeket.
 
-### <a name="transparency"></a>Átlátszóság
+### <a name="transparency"></a>Átláthatóság
 *Az AI-rendszereknek érthetőnek kell lenniük*. Személyre szabott:
 
-* *Adja meg a felhasználóknak a tartalom személyre szabásával kapcsolatos információkat.* Megjelenítheti például a felhasználók számára egy olyan gombot, amely `Why These Suggestions?` megmutatja, hogy a felhasználó és a műveletek mely fő funkciói játszottak szerepkört a személyre szabás eredményében.
+* *Adja meg a felhasználóknak a tartalom személyre szabásával kapcsolatos információkat.* Megjelenítheti például a felhasználók számára egy olyan gombot, `Why These Suggestions?` amely megmutatja, hogy a felhasználó és a műveletek mely fő funkciói játszottak szerepkört a személyre szabás eredményében.
 * Győződjön meg arról, hogy a használati feltételek megemlítik, hogy a felhasználói élmény személyre szabásával és viselkedésével kapcsolatos információkat fog használni.
 
 ### <a name="fairness"></a>Igazságosság

@@ -2,20 +2,20 @@
 title: CI/CD-folyamat beállítása Azure Data Lake Analyticshoz
 description: Ismerje meg, hogyan állíthatja be a Azure Data Lake Analytics folyamatos integrációját és folyamatos üzembe helyezését.
 services: data-lake-analytics
-author: yanancai
-ms.author: yanacai
-ms.reviewer: jasonwhowell
+author: liudan66
+ms.author: liud
+ms.reviewer: jasonh
 ms.assetid: 66dd58b1-0b28-46d1-aaae-43ee2739ae0a
 ms.service: data-lake-analytics
 ms.topic: how-to
 ms.workload: big-data
 ms.date: 09/14/2018
-ms.openlocfilehash: cd696539cda5b24d801da692822b13de143249dd
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 09b4f36a5c97b6bcc0a8d11d2fb1ee0893fae80a
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121520"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87130137"
 ---
 # <a name="how-to-set-up-a-cicd-pipeline-for-azure-data-lake-analytics"></a>CI/CD-folyamat beállítása Azure Data Lake Analyticshoz  
 
@@ -455,7 +455,7 @@ Az alábbi lépéseket követve állíthatja be az adatbázis-telepítési felad
 
 | Paraméter | Leírás | Alapértelmezett érték | Kötelező |
 |---------|-----------|-------------|--------|
-|Csomag|A telepítendő U-SQL-adatbázis központi telepítési csomagjának elérési útja.|null|igaz|
+|Csomag|A telepítendő U-SQL-adatbázis központi telepítési csomagjának elérési útja.|null|true|
 |Adatbázis|A telepítendő vagy létrehozandó adatbázis neve.|master|hamis|
 |Naplófájl|A fájl elérési útja a naplózáshoz. Alapértelmezett értéke a standard out (konzol).|null|hamis|
 |Naplózási szint|Naplózási szint: részletes, normál, figyelmeztetés vagy hiba.|Naplózási szint. Normal|hamis|
@@ -464,17 +464,17 @@ Az alábbi lépéseket követve állíthatja be az adatbázis-telepítési felad
 
 |Paraméter|Leírás|Alapértelmezett érték|Kötelező|
 |---------|-----------|-------------|--------|
-|DataRoot|A helyi adatgyökér mappájának elérési útja|null|igaz|
+|DataRoot|A helyi adatgyökér mappájának elérési útja|null|true|
 
 #### <a name="parameters-for-azure-data-lake-analytics-deployment"></a>Azure Data Lake Analytics központi telepítésének paraméterei
 
 |Paraméter|Leírás|Alapértelmezett érték|Kötelező|
 |---------|-----------|-------------|--------|
-|Fiók|Megadja, hogy melyik Azure Data Lake Analytics fiókot kell központilag telepíteni a fiók nevére.|null|igaz|
-|ResourceGroup|Az Azure Data Lake Analytics fiók Azure-erőforráscsoport-neve.|null|igaz|
-|SubscriptionId|A Azure Data Lake Analytics fiókhoz tartozó Azure-előfizetés azonosítója.|null|igaz|
-|Bérlő|A bérlő neve a Azure Active Directory (Azure AD) tartomány neve. Keresse meg a Azure Portal előfizetés-kezelés lapján.|null|igaz|
-|AzureSDKPath|Az Azure SDK-ban függő szerelvények keresésének elérési útja.|null|igaz|
+|Fiók|Megadja, hogy melyik Azure Data Lake Analytics fiókot kell központilag telepíteni a fiók nevére.|null|true|
+|ResourceGroup|Az Azure Data Lake Analytics fiók Azure-erőforráscsoport-neve.|null|true|
+|SubscriptionId|A Azure Data Lake Analytics fiókhoz tartozó Azure-előfizetés azonosítója.|null|true|
+|Bérlő|A bérlő neve a Azure Active Directory (Azure AD) tartomány neve. Keresse meg a Azure Portal előfizetés-kezelés lapján.|null|true|
+|AzureSDKPath|Az Azure SDK-ban függő szerelvények keresésének elérési útja.|null|true|
 |Interaktív|Azt határozza meg, hogy az interaktív módot használja-e a hitelesítéshez.|hamis|hamis|
 |ClientID|A nem interaktív hitelesítéshez szükséges Azure AD-alkalmazás azonosítója.|null|Nem interaktív hitelesítéshez szükséges.|
 |Titkos|A nem interaktív hitelesítéshez szükséges titkos kód vagy jelszó. Csak megbízható és biztonságos környezetben használható.|null|Nem interaktív hitelesítéshez szükséges, vagy más esetben használja a SecreteFile.|
@@ -482,7 +482,7 @@ Az alábbi lépéseket követve állíthatja be az adatbázis-telepítési felad
 |Bizonyítványfájl|A fájl elmenti az X. 509 minősítést a nem interaktív hitelesítéshez. Az alapértelmezett érték az ügyfél titkos hitelesítésének használata.|null|hamis|
 | JobPrefix | A U-SQL DDL-feladatok adatbázis-telepítésének előtagja. | Deploy_ + DateTime. Now | hamis |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [A Azure Data Lake Analytics kód tesztelése](data-lake-analytics-cicd-test.md).
 - [Futtassa a U-SQL-szkriptet a helyi gépen](data-lake-analytics-data-lake-tools-local-run.md).

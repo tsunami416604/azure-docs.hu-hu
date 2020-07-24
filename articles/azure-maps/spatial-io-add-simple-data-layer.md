@@ -1,19 +1,19 @@
 ---
 title: Egyszerű adatréteg hozzáadása | Microsoft Azure térképek
 description: Megtudhatja, hogyan adhat hozzá egy egyszerű adatréteget a Azure Maps web SDK által biztosított térbeli IO-modul használatával.
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 02/29/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 61272bee350fc7c7dd7d0e17adc55c436f4706ef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 622aa41975fdec015e4ca4964309c5c4bf274ef2
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84885966"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131446"
 ---
 # <a name="add-a-simple-data-layer"></a>Egyszerű adatréteg hozzáadása
 
@@ -113,7 +113,7 @@ Ha a szolgáltatás egy `Point` vagy a `MultiPoint` , és a szolgáltatás nem r
 
 A fürtöket a buborék réteg is megjeleníti. Alapértelmezés szerint a fürt sugara a következőre van beállítva: `16` . A fürt színe a fürtben lévő pontok számától függ, az alábbiakban meghatározottak szerint:
 
-| pontok száma | Szín    |
+| pontok száma | Szín (Color)    |
 |-------------|----------|
 | &gt;= 100   | `red`    |
 | &gt;= 10    | `yellow` |

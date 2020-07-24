@@ -3,19 +3,17 @@ title: A QnA Maker szolgáltatás újdonságai
 titleSuffix: Azure Cognitive Services
 description: Ez a cikk a QnA Makerával kapcsolatos híreket tartalmaz.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: overview
-ms.date: 06/15/2020
-ms.author: diberry
-ms.openlocfilehash: 285f68b4f0d7284740867f83311135d6c3efa90f
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+ms.date: 07/16/2020
+ms.openlocfilehash: 0337abedbc5b592a0ae48fabd5bc7ecbb484def9
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84791214"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132789"
 ---
 # <a name="whats-new-in-qna-maker"></a>A QnA Maker újdonságai
 
@@ -24,6 +22,12 @@ Ismerje meg a szolgáltatás újdonságait. Ezek az elemek megjegyzések, videó
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
 
 Ismerje meg a QnA Maker újdonságait.
+
+### <a name="july-2020"></a>2020. július
+
+* [Metaadatok: `OR` több metaadat párok logikai kombinációja](how-to/metadata-generateanswer-usage.md#logical-or-using-strictfilterscompoundoperationtype-property)
+* Cognitive Search végpontok magánjellegűként való konfigurálásának [lépései](how-to/set-up-qnamaker-service-azure.md#configuring-cognitive-search-as-a-private-endpoint-inside-a-vnet) , de továbbra is elérhetők a QnA Maker számára.
+* [90 napos inaktivitás](how-to/set-up-qnamaker-service-azure.md#inactivity-policy-for-free-search-resources)után megszűnik az erőforrások ingyenes Cognitive Searcha.
 
 ### <a name="june-2020"></a>2020. június
 
@@ -71,7 +75,7 @@ Ismerje meg a QnA Maker újdonságait.
 * Továbbfejlesztett természetes nyelvi feldolgozási (NLP) [ranker](concepts/query-knowledge-base.md#ranker-process) -modell angol nyelven
 
 > [!div class="nextstepaction"]
-> [QnA Maker-szolgáltatás létrehozása](how-to/set-up-qnamaker-service-azure.md)
+> [QnA Maker szolgáltatás létrehozása](how-to/set-up-qnamaker-service-azure.md)
 
 ## <a name="cognitive-service-updates"></a>A kognitív szolgáltatás frissítései
 

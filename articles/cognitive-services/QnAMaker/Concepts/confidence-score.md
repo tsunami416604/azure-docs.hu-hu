@@ -3,20 +3,18 @@ title: Megbízhatósági pontszám – QnA Maker
 titleSuffix: Azure Cognitive Services
 description: A tudásbázist közzé kell tenni. A közzététel után a tudásbázist a generateAnswer API használatával kérdezi le a futásidejű előrejelzési végponton.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 01/27/2020
-ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: d901a803311805825c22503af6098e805a67e8f6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: faf24f11763ca2bcd9bb872b09b5d1b69e78bd06
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76843452"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131157"
 ---
 # <a name="the-confidence-score-of-an-answer"></a>A válasz megbízhatósági pontszáma
 Ha egy Tudásbázisban egy felhasználói lekérdezés egyezik, a QnA Maker a megfelelő válaszokat adja vissza, és egy megbízhatósági pontszámmal együtt. Ez a pontszám azt jelzi, hogy a válasz a megfelelő egyezés az adott felhasználói lekérdezés esetében.
@@ -57,11 +55,11 @@ A küszöbérték kiválasztásakor tartsa szem előtt a pontosság és a lefede
 > [!NOTE]
 > A QnA Maker újabb verziói között szerepelnek a pontozási logikával kapcsolatos tökéletesítések, és befolyásolhatják a küszöbértéket. Minden alkalommal, amikor frissíti a szolgáltatást, győződjön meg arról, hogy szükség esetén tesztelje és csípése a küszöbértéket. [Itt](https://www.qnamaker.ai/UserSettings)megtekintheti a QnA szolgáltatás verzióját, és megtudhatja, hogyan kérheti le a [legújabb frissítéseket.](../How-To/set-up-qnamaker-service-azure.md#get-the-latest-runtime-updates)
 
-## <a name="set-threshold"></a>Küszöbérték beállítása
+## <a name="set-threshold"></a>Küszöbérték megadása
 
 A küszöbérték pontszámát állítsa be a [GENERATEANSWER API JSON-törzsének](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration)tulajdonságára. Ez azt jelenti, hogy a GenerateAnswer minden egyes hívása esetében be kell állítania azt.
 
-A bot Framework-ben állítsa be a pontszám értékét a [C#](../how-to/metadata-generateanswer-usage.md?#use-qna-maker-with-a-bot-in-c) vagy [Node. js](../how-to/metadata-generateanswer-usage.md?#use-qna-maker-with-a-bot-in-nodejs)értékű Options objektum részeként.
+A bot Framework-ben állítsa be a pontszám értékét a [C#](../how-to/metadata-generateanswer-usage.md?#use-qna-maker-with-a-bot-in-c) vagy [Node.js](../how-to/metadata-generateanswer-usage.md?#use-qna-maker-with-a-bot-in-nodejs)értékkel rendelkező Options objektum részeként.
 
 ## <a name="improve-confidence-scores"></a>A megbízhatósági pontszámok javítása
 A felhasználói lekérdezésekre adott válasz megbízhatósági pontszámának javítása érdekében a felhasználó lekérdezését hozzáadhatja a tudásbázishoz az adott válaszra vonatkozó alternatív kérdésként. A kis-és nagybetűk megkülönböztetésére is használható [, ha](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/replace) szinonimákat ad hozzá a tudásbázisban található kulcsszavakhoz.

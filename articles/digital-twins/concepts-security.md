@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 0a1447e64b606170601e6df6a443f53e3132294d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ec681d0af132d11e18703dce6105352651a70180
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86522261"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131616"
 ---
 # <a name="secure-azure-digital-twins-with-role-based-access-control"></a>Biztonságos Azure-beli digitális Twins szerepköralapú hozzáférés-vezérléssel
 
@@ -35,7 +35,7 @@ A hitelesítési lépés megköveteli, hogy az alkalmazás kérése OAuth 2,0 ho
 
 Az engedélyezési lépés megköveteli, hogy a rendszerbiztonsági tag hozzá legyen rendelve egy RBAC-szerepkörhöz. A rendszerbiztonsági tag számára hozzárendelt szerepkörök határozzák meg, hogy a résztvevő milyen engedélyeket fog tartalmazni. Az Azure Digital Twins olyan RBAC-szerepköröket biztosít, amelyek az Azure digitális Twins erőforrásaihoz tartozó engedélyek készleteit foglalják magukban. Ezeket a szerepköröket a cikk későbbi részében ismertetjük.
 
-Ha többet szeretne megtudni az Azure-ban támogatott szerepkörökről és szerepkör-hozzárendelésekről, tekintse meg az Azure RBAC dokumentációjának [különböző szerepköreinek megismerése](../role-based-access-control/rbac-and-directory-admin-roles.md) című témakört.
+Ha többet szeretne megtudni az Azure-ban támogatott szerepkörökről és szerepkör-hozzárendelésekről, tekintse meg az Azure RBAC dokumentációjának [*különböző szerepköreinek megismerése*](../role-based-access-control/rbac-and-directory-admin-roles.md) című témakört.
 
 ### <a name="authentication-with-managed-identities"></a>Hitelesítés felügyelt identitásokkal
 
@@ -46,19 +46,19 @@ A felügyelt identitások esetében az Azure platform kezeli ezt a futásidejű 
 ### <a name="authorization-rbac-roles-for-azure-digital-twins"></a>Engedélyezés: RBAC szerepkörök az Azure Digital Twins-hoz
 
 Az Azure az alábbi beépített RBAC-szerepköröket biztosítja az Azure digitális Twins-erőforrásokhoz való hozzáférés engedélyezéséhez:
-* Azure digitális ikrek tulajdonosa (előzetes verzió) – ezt a szerepkört használva teljes hozzáférést biztosíthat az Azure digitális Twins-erőforrásaihoz.
-* Azure digitális ikrek olvasója (előzetes verzió) – Ez a szerepkör csak olvasási hozzáférést biztosít az Azure digitális Twins erőforrásaihoz.
+* *Azure digitális ikrek tulajdonosa (előzetes verzió)* – ezt a szerepkört használva teljes hozzáférést biztosíthat az Azure digitális Twins-erőforrásaihoz.
+* *Azure digitális ikrek olvasója (előzetes verzió)* – ez a szerepkör csak olvasási hozzáférést biztosít az Azure digitális Twins erőforrásaihoz.
 
 > [!TIP]
-> Az Azure digitális Twins-olvasó (előzetes verzió) szerepkör mostantól támogatja a böngészési kapcsolatokat is.
+> Az *Azure digitális Twins-olvasó (előzetes verzió)* szerepkör mostantól támogatja a böngészési kapcsolatokat is.
 
-A beépített szerepkörök meghatározásával kapcsolatos további információkért lásd: a szerepkör- [definíciók megismerése](../role-based-access-control/role-definitions.md) az Azure RBAC dokumentációjában. Az egyéni RBAC-szerepkörök létrehozásával kapcsolatos információkért lásd: [Egyéni szerepkörök az Azure-erőforrásokhoz](../role-based-access-control/custom-roles.md).
+A beépített szerepkörök meghatározásával kapcsolatos további információkért lásd: a szerepkör- [*definíciók megismerése*](../role-based-access-control/role-definitions.md) az Azure RBAC dokumentációjában. Az egyéni Azure-szerepkörök létrehozásával kapcsolatos információkért lásd: [*Azure egyéni szerepkörök*](../role-based-access-control/custom-roles.md).
 
 A szerepköröket kétféleképpen rendelheti hozzá:
-* Az Azure Digital Twins hozzáférés-vezérlés (IAM) paneljén a Azure Portalban (lásd: [szerepkör-hozzárendelések hozzáadása vagy eltávolítása az Azure RBAC és a Azure Portal használatával](../role-based-access-control/role-assignments-portal.md))
+* Az Azure Digital Twins hozzáférés-vezérlés (IAM) paneljén a Azure Portalban (lásd: [*szerepkör-hozzárendelések hozzáadása vagy eltávolítása az Azure RBAC és a Azure Portal használatával*](../role-based-access-control/role-assignments-portal.md))
 * szerepkör hozzáadására vagy eltávolítására szolgáló CLI-parancsok használatával
 
-A részletes útmutatásért próbálja ki az [Azure Digital Twins oktatóanyagban: teljes *körű megoldás összekapcsolása*](tutorial-end-to-end.md).
+A részletes útmutatásért próbálja ki az Azure Digital Twins [*oktatóanyagban: teljes körű megoldás összekapcsolása*](tutorial-end-to-end.md).
 
 ## <a name="permission-scopes"></a>Engedélyek hatókörei
 
@@ -71,8 +71,14 @@ Az alábbi lista azokat a szinteket ismerteti, amelyeken az Azure Digital Twins-
 * Digitális kettős kapcsolat: az erőforráshoz tartozó műveletek határozzák meg a SZIFILISZi műveletek vezérlését a digitális ikrek közötti [kapcsolatokon](concepts-twins-graph.md) a Twin gráfban.
 * Esemény útvonala: az erőforrás műveletei határozzák meg az Azure digitális ikrek [eseményeinek továbbítására](concepts-route-events.md) vonatkozó engedélyeket egy végponti szolgáltatáshoz, például az [Event Hub](../event-hubs/event-hubs-about.md), a [Event Grid](../event-grid/overview.md)vagy a [Service Bus](../service-bus-messaging/service-bus-messaging-overview.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="troubleshooting"></a>Hibaelhárítás
 
-* Tekintse meg, hogyan hajthatja végre ezeket a lépéseket egy példaként szolgáló ügyfélalkalmazás használatával [*: az ügyfélalkalmazás hitelesítése*](how-to-authenticate-client.md).
+Ha egy felhasználó olyan műveletet próbál végrehajtani, amelyet nem engedélyeznek a szerepkörük, előfordulhat, hogy a szolgáltatáskérelem olvasása hibaüzenetet kap `403 (Forbidden)` . További információt és hibaelhárítási lépéseket a [*Hibaelhárítás: az Azure digitális Twins-kérelem sikertelen állapot: 403 (tiltott)*](troubleshoot-error-403.md)című témakörben talál.
+
+## <a name="next-steps"></a>További lépések
+
+* Tekintse meg ezeket a fogalmakat működés közben [*: példány és hitelesítés beállítása*](how-to-set-up-instance-scripted.md).
+
+* Tekintse meg, hogyan kezelheti ezeket a fogalmakat az ügyfélalkalmazás kódjában az [*alkalmazás-hitelesítési kód írása*](how-to-authenticate-client.md)című témakörben.
 
 * További információ [Az Azure](../role-based-access-control/overview.md)-beli RBAC.

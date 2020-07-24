@@ -7,30 +7,25 @@ ms.author: alkarche
 ms.date: 6/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 923ae652872246916b2a4c5e8be95871983dbe95
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bc22cf5a21709ccacafe068a60541cc9990d1131
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85559831"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132262"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins"></a>Végpontok és útvonalak kezelése az Azure digitális Ikrekben
 
 Az Azure Digital Twins-ban átirányíthatja az [eseményekre vonatkozó értesítéseket](how-to-interpret-event-data.md) az alsóbb rétegbeli szolgáltatásokhoz, vagy kapcsolódhat a számítási erőforrásokhoz. Ezt úgy teheti meg, hogy először olyan **végpontokat** állít be, amelyek megkapják az eseményeket, majd azokat az [**esemény-útvonalakat**](concepts-route-events.md) , amelyek meghatározzák, hogy az Azure Digital Twins mely eseményeit kapja meg a végpontok.
 
 A támogatott végpontok típusai a következők:
-* [Eseményközpont](../event-hubs/event-hubs-about.md)
+* [Event Hub](../event-hubs/event-hubs-about.md)
 * [Event Grid](../event-grid/overview.md)
 * [Szolgáltatásbusz](../service-bus-messaging/service-bus-messaging-overview.md)
 
-További információ a különböző végpontokról: [választás az Azure Messaging Services között](https://docs.microsoft.com/azure/event-grid/compare-messaging-services).
+További információ a különböző végpontokról: [*választás az Azure Messaging Services között*](https://docs.microsoft.com/azure/event-grid/compare-messaging-services).
 
 A végpontokat és útvonalakat a [**EventRoutes API**](how-to-use-apis-sdks.md)-k, a [.net (C#) SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)vagy az [Azure digitális Twins parancssori](how-to-use-cli.md)felülete kezeli. A [Azure Portal](https://portal.azure.com)is kezelhetők.
-
-> [!NOTE]
-> Az események útvonalának Azure Portalon keresztüli kezelése jelenleg csak az Azure-felhasználók számára érhető el a vállalati-tartományi fiókokban. 
->
->Ha személyes [Microsoft-fiók (MSA)](https://account.microsoft.com/account/Account)használ, például egy @outlook.com fiókot, használja az Azure Digital Twins API-kat vagy a CLI-t az események útvonalának kezeléséhez a cikkben leírtak szerint.
 
 ## <a name="create-an-endpoint-for-azure-digital-twins"></a>Végpont létrehozása az Azure Digital Twins számára
 
@@ -70,7 +65,14 @@ az dt endpoint create eventhub --endpoint-name <Event-Hub-endpoint-name> --event
 
 ## <a name="manage-event-routes-with-apis"></a>Események útvonalának kezelése API-kkal
 
-Az Azure digitális Twins-ból egy végpontba küldött adatok tényleges küldéséhez meg kell határoznia egy esemény-útvonalat. Az Azure Digital Twins **EventRoutes API-jai** lehetővé teszik a fejlesztők számára, hogy az események áramlását a rendszeren és az alárendelt szolgáltatásokon keresztül. További információk az esemény-útvonalakról a [fogalmakban: az Azure Digital Twins eseményeinek továbbítása](concepts-route-events.md).
+Az Azure digitális Twins-ból egy végpontba küldött adatok tényleges küldéséhez meg kell határoznia egy esemény-útvonalat. Az Azure Digital Twins **EventRoutes API-jai** lehetővé teszik a fejlesztők számára, hogy az események áramlását a rendszeren és az alárendelt szolgáltatásokon keresztül. További információk az esemény-útvonalakról a [*fogalmakban: az Azure Digital Twins eseményeinek továbbítása*](concepts-route-events.md).
+
+Ha befejezte a végpontok beállítását, folytassa az esemény-útvonal létrehozásával.
+
+>[!NOTE]
+>Ha nemrég telepítette a végpontokat, ellenőrizze, hogy készen állnak-e a telepítésre, **mielőtt** új esemény-útvonalra próbálja használni őket. Ha az útválasztás telepítése sikertelen, mert a végpontok nem állnak készen, várjon néhány percet, és próbálkozzon újra.
+>
+> Ha a folyamat futtatásakor ezt a folyamatot szeretné használni, akkor érdemes lehet ezt megvárnia, ha 2-3 perc várakozási idő alatt a végponti szolgáltatás befejezi a telepítést, mielőtt továbblép az útvonal beállítására.
 
 A cikkben szereplő minták a C# SDK-t használják.
 
@@ -174,7 +176,7 @@ Egy szűrő implementálása vagy frissítése során a módosítás néhány pe
 
 ## <a name="manage-endpoints-and-routes-with-cli"></a>Végpontok és útvonalak kezelése a CLI-vel
 
-A végpontok és útvonalak az Azure Digital Twins CLI használatával is kezelhetők. A parancsok a következő [útmutatóban találhatók: az Azure digitális Twins parancssori](how-to-use-cli.md)felületének használata.
+A végpontok és útvonalak az Azure Digital Twins CLI használatával is kezelhetők. A parancsok a következő [*útmutatóban találhatók: az Azure digitális Twins parancssori*](how-to-use-cli.md)felületének használata.
 
 ## <a name="monitor-event-routes"></a>Események útvonalának figyelése
 
@@ -189,4 +191,4 @@ Itt megtekintheti a példány metrikáit, és létrehozhat egyéni nézeteket is
 ## <a name="next-steps"></a>További lépések
 
 További információ a fogadott üzenetek különböző típusairól:
-* [Útmutató: az események értelmezése](how-to-interpret-event-data.md)
+* [*Útmutató: az események értelmezése*](how-to-interpret-event-data.md)

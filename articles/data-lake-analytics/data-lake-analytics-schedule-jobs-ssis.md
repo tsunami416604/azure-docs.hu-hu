@@ -2,20 +2,18 @@
 title: U-SQL-feladatok ütemezett Azure Data Lake Analytics a SSIS használatával
 description: Ismerje meg, hogy a SQL Server Integration Services használatával hogyan ütemezhet U-SQL-feladatokat beágyazott parancsfájllal vagy U-SQL-lekérdezési fájlokkal.
 services: data-lake-analytics
-author: yanancai
-ms.author: yanacai
-ms.reviewer: jasonwhowell
+ms.reviewer: jasonh
 ms.assetid: 66dd58b1-0b28-46d1-aaae-43ee2739ae0a
 ms.service: data-lake-analytics
 ms.topic: how-to
 ms.workload: big-data
 ms.date: 07/17/2018
-ms.openlocfilehash: cafb657bbb981edddf9d6bbcfc8d390a519804b5
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: ac747b87cf1a0f2d7c85d05975a31f953bfa5aae
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121299"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132500"
 ---
 # <a name="schedule-u-sql-jobs-using-sql-server-integration-services-ssis"></a>U-SQL-feladatok ütemezett SQL Server Integration Services (SSIS) használatával
 
@@ -106,7 +104,7 @@ A SSIS-csomag Tervező nézetében adjon hozzá egy **Azure Data Lake Store fáj
 
 3. Állítsa be a **AzureDataLakeAnalyticsConnection** arra a Azure Data Lake Analytics-fiókra, amelyhez feladatokat kíván küldeni. További információ a [Azure Data Lake Analytics Csatlakozáskezelőről](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-data-lake-analytics-connection-manager?view=sql-server-2017).
 
-4. Más feladatok konfigurációjának beállítása. [További információ](https://docs.microsoft.com/sql/integration-services/control-flow/azure-data-lake-analytics-task?view=sql-server-2017).
+4. Más feladatok konfigurációjának beállítása. [További információk](https://docs.microsoft.com/sql/integration-services/control-flow/azure-data-lake-analytics-task?view=sql-server-2017).
 
 5. **Kifejezések** használata a U-SQL-feladatok nevének dinamikus beállításához:
 
@@ -166,7 +164,7 @@ Bizonyos esetekben érdemes lehet dinamikusan beállítani az U-SQL változó é
 
 [További információ a U-SQL-szkript paramétereinek megadásáról](https://docs.microsoft.com/sql/integration-services/control-flow/azure-data-lake-analytics-task?view=sql-server-2017#parameter-mapping-page-configuration).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [SSIS-csomagok futtatása az Azure-ban](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)
 - [Azure Feature Pack integrációs szolgáltatásokhoz (SSIS)](https://docs.microsoft.com/sql/integration-services/azure-feature-pack-for-integration-services-ssis?view=sql-server-2017#scenario-managing-data-in-the-cloud)

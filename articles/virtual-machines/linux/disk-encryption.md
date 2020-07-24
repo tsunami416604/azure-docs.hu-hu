@@ -8,12 +8,12 @@ ms.author: rogarana
 ms.service: virtual-machines-linux
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 0847f2360a3562f96454992470e3cc2000f66b11
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: fba16f9245c8d438268338329ebadad7a57ef206
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86502724"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131922"
 ---
 # <a name="server-side-encryption-of-azure-disk-storage"></a>Azure Disk Storage kiszolgálóoldali titkosítása
 
@@ -78,10 +78,9 @@ A fokozott biztonságú bizalmas ügyfelek, akik az adott titkosítási algoritm
 
 [Azure Disk Encryption](../../security/fundamentals/azure-disk-encryption-vms-vmss.md) a Linux [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) szolgáltatásával titkosítja a felügyelt lemezeket az ügyfél által felügyelt KULCSOKKAL a vendég virtuális gépen belül.  Az ügyfél által felügyelt kulcsokkal rendelkező kiszolgálóoldali titkosítás javítja az ADE-t, mivel lehetővé teszi a virtuális gépekhez tartozó operációsrendszer-típusok és-lemezképek használatát a Storage szolgáltatásban tárolt adattitkosítással.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [Végpontok közötti titkosítás engedélyezése a Host-CLI titkosítással](disks-enable-host-based-encryption-cli.md)
-- [A kettős titkosítás engedélyezése a felügyelt lemezeken – parancssori felület](disks-enable-double-encryption-at-rest-cli.md)
-- [Az ügyfél által felügyelt kulcsok engedélyezése a felügyelt lemezeken – parancssori felület](disks-enable-customer-managed-keys-cli.md)
-- [Ügyfél által felügyelt kulcsok engedélyezése a felügyelt lemezekhez – portál](disks-enable-customer-managed-keys-portal.md)
+- Engedélyezheti a végpontok közötti titkosítást a gazdagépen a [CLI](disks-enable-host-based-encryption-cli.md) vagy a [Azure Portal](disks-enable-host-based-encryption-portal.md)használatával történő titkosítással.
+- A [CLI](disks-enable-double-encryption-at-rest-cli.md) vagy a [Azure Portal](disks-enable-double-encryption-at-rest-portal.md)használatával a felügyelt lemezek esetében engedélyezze a kettős titkosítást.
+- Az ügyfél által felügyelt kulcsok engedélyezése a [parancssori](disks-enable-customer-managed-keys-cli.md) felülettel vagy a [Azure Portalsal](disks-enable-customer-managed-keys-portal.md)rendelkező felügyelt lemezeken.
 - [Mi az Azure Key Vault?](../../key-vault/general/overview.md)

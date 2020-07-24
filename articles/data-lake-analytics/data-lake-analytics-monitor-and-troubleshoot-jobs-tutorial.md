@@ -2,18 +2,16 @@
 title: Azure Data Lake Analytics figyelése – Azure Portal
 description: Ez a cikk azt ismerteti, hogyan használható a Azure Portal a Azure Data Lake Analytics feladatok hibaelhárításához.
 ms.service: data-lake-analytics
-author: saveenr
-ms.author: saveenr
-ms.reviewer: jasonwhowell
+ms.reviewer: jasonh
 ms.assetid: b7066d81-3142-474f-8a34-32b0b39656dc
 ms.topic: troubleshooting
 ms.date: 12/05/2016
-ms.openlocfilehash: 08e14765b2b70f1e2567bd6a9cd2d67ee9aed83b
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 5445ad61295be3637005ead734cc31126c88a440
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121282"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132075"
 ---
 # <a name="monitor-jobs-in-azure-data-lake-analytics-using-the-azure-portal"></a>Feladatok monitorozása az Azure Data Lake Analyticsben az Azure Portallal
 
@@ -48,7 +46,7 @@ ms.locfileid: "86121282"
 
 8. Kattintson a **Feladat elküldése** elemre.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Azure Data Lake Analytics áttekintése](data-lake-analytics-overview.md)
 * [Az Azure Data Lake Analytics használatának első lépései az Azure PowerShell-lel](data-lake-analytics-get-started-powershell.md)

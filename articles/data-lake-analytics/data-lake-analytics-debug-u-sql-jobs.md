@@ -3,18 +3,16 @@ title: A C#-kód hibakeresése Azure Data Lake U-SQL-feladatokhoz
 description: Ez a cikk azt ismerteti, hogyan lehet hibakeresést végezni a U-SQL-ben a Azure Data Lake Tools for Visual Studio használatával.
 services: data-lake-analytics
 ms.service: data-lake-analytics
-author: yanancai
-ms.author: yanacai
-ms.reviewer: jasonwhowell
+ms.reviewer: jasonh
 ms.assetid: bcd0b01e-1755-4112-8e8a-a5cabdca4df2
 ms.topic: how-to
 ms.date: 11/30/2017
-ms.openlocfilehash: 9c1c36d146b4370962fc6328f6b75ef7160e28b5
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: ca6fe4ad35e59472e8cf8f3b8476417e01c2668f
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121452"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131871"
 ---
 # <a name="debug-user-defined-c-code-for-failed-u-sql-jobs"></a>Felhasználó által definiált C# kód hibakeresése a sikertelen U-SQL-feladatokhoz
 
@@ -105,7 +103,7 @@ A sikertelen feladatok újraküldése:
 
 3. Küldje el újra az U-SQL-feladatot.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [A U-SQL programozható útmutatója](data-lake-analytics-u-sql-programmability-guide.md)
 - [A felhasználó által definiált U-SQL-operátorok fejlesztése Azure Data Lake Analytics feladatokhoz](data-lake-analytics-u-sql-develop-user-defined-operators.md)

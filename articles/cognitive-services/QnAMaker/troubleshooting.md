@@ -3,13 +3,12 @@ title: Hibaelhárítás – QnA Maker
 description: A QnA Maker szolgáltatással kapcsolatos leggyakrabban felmerülő kérdések válogatott listája segít a szolgáltatás gyorsabb és jobb eredményekkel való elfogadásában.
 ms.topic: troubleshooting
 ms.date: 03/25/2020
-ms.author: diberry
-ms.openlocfilehash: 7847e21dbcf07f669d6802fffdd1e43623a72340
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ec994677b17ee21dbf4ee6091be3bdf943572b2e
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80804350"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131990"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>QnA Maker hibaelhárítása
 
@@ -30,7 +29,7 @@ További információ a [díjszabási szintekről](Concepts/azure-resources.md).
 <details>
 <summary><b>A QnAMaker szolgáltatás végpontjának beszerzése</b></summary>
 
-**Válasz**: a QnAMaker szolgáltatás végpontja hibakeresési célokra használható, amikor felveszi a kapcsolatot a QnAMaker támogatási szolgálatával vagy a UserVoice. A végpont egy URL-cím ebben az űrlapban: `https://your-resource-name.azurewebsites.net`.
+**Válasz**: a QnAMaker szolgáltatás végpontja hibakeresési célokra használható, amikor felveszi a kapcsolatot a QnAMaker támogatási szolgálatával vagy a UserVoice. A végpont egy URL-cím ebben az űrlapban: `https://your-resource-name.azurewebsites.net` .
 
 1. Lépjen a QnAMaker szolgáltatásra (erőforráscsoport) a [Azure Portal](https://portal.azure.com)
 
@@ -209,12 +208,12 @@ Ha több nyelvből származó tartalommal rendelkezik, ügyeljen arra, hogy mind
 1. Noha még mindig az App Service-ben van, válassza a **fejlesztői eszközök**, majd a **speciális eszközök**, majd a **tovább**lehetőséget. Ekkor megnyílik egy új böngészőablak.
 1. Válassza a **hibakeresési konzol**, majd a **cmd** parancsot egy parancssori eszköz megnyitásához.
 1. Navigáljon a _site/wwwroot/az adat/QnAMaker/_ könyvtárhoz.
-1. Távolítsa el az összes olyan mappát, `rd`amelynek a neve megkezdődik.
+1. Távolítsa el az összes olyan mappát, amelynek a neve megkezdődik `rd` .
 
     Ne **törölje** a következőket:
 
-    * KbIdToRankerMappings. txt fájl
-    * EndpointSettings. JSON fájl
+    * KbIdToRankerMappings.txt fájl
+    * Fájl EndpointSettings.js
     * EndpointKeys mappa
 
 1. Indítsa el az App Service-t.
@@ -244,7 +243,7 @@ Ha több nyelvből származó tartalommal rendelkezik, ügyeljen arra, hogy mind
 **Válasz**: az alábbi információkra van szüksége a Tudásbázisban:
 
 * Tudásbázis-azonosító.
-* A Tudásbázis közzétett végpontjának egyéni altartományának neve `host`, amelyet a **Beállítások** lapon talál a közzététel után.
+* A Tudásbázis közzétett végpontjának egyéni altartományának neve, amelyet `host` a **Beállítások** lapon talál a közzététel után.
 * A Tudásbázis közzétett végponti kulcsa – a **Beállítások** lapon, a közzététel után.
 
 Ezekkel az információkkal a Azure Portal a robot app Service-t. A **Beállítások – > konfiguráció – > Alkalmazásbeállítások**területen módosítsa ezeket az értékeket.

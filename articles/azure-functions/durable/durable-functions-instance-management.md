@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 1837d342c4476633ee33a8579abe7389ac9bbddf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ce85473e80bfccf1bcff3e21408fd91e4cd428a4
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80476830"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131327"
 ---
 # <a name="manage-instances-in-durable-functions-in-azure"></a>Durable Functions-példányok kezelése az Azure-ban
 
@@ -18,13 +18,13 @@ Ha a [Durable functions](durable-functions-overview.md) -bővítményt használj
 
 Elindíthatja és leállíthatja például a példányokat, és lekérdezheti a példányokat, beleértve az összes példány és a lekérdezési példányok lekérdezési lehetőségeit. Emellett elküldheti az eseményeket a példányokra, megvárhatja az előkészítési befejezést, és lekérheti a HTTP-kezelés webhook URL-címét. Ez a cikk más felügyeleti műveletekre is kiterjed, például a példányok újratekercselését, a példányok előzményeinek törlését és egy adott feladat központi törlését.
 
-A Durable Functionsban lehetősége van arra, hogy hogyan kívánja megvalósítani ezeket a kezelési műveleteket. Ez a cikk olyan példákat tartalmaz, amelyek a .NET (C#) és a JavaScript [Azure functions Core Tools](../functions-run-local.md) is használják.
+A Durable Functionsban lehetősége van arra, hogy hogyan kívánja megvalósítani ezeket a kezelési műveleteket. Ez a cikk olyan példákat tartalmaz, amelyek a .NET (C#), a JavaScript és a Python [Azure functions Core Tools](../functions-run-local.md) használják.
 
 ## <a name="start-instances"></a>Példányok indítása
 
 Fontos, hogy el tudja indítani a előkészítési példányát. Ez általában akkor történik, ha Durable Functions kötést használ egy másik függvény triggerében.
 
-A `StartNewAsync` koordinációs ügyfél-kötés (.net) vagy `startNew` ( [orchestration client binding](durable-functions-bindings.md#orchestration-client) JavaScript) metódusa új példányt indít el. Belsőleg ez a metódus enqueues egy üzenetet a vezérlési várólistába, amely ezután elindítja egy függvény indítását a megadott névvel, amely a koordinációs [eseményindító kötését](durable-functions-bindings.md#orchestration-trigger)használja.
+A `StartNewAsync` (z) (.net), `startNew` (JavaScript) vagy `start_new` (Python) metódus a koordinációs [ügyfél-kötésben](durable-functions-bindings.md#orchestration-client) új példányt indít el. Belsőleg ez a metódus enqueues egy üzenetet a vezérlési várólistába, amely ezután elindítja egy függvény indítását a megadott névvel, amely a koordinációs [eseményindító kötését](durable-functions-bindings.md#orchestration-trigger)használja.
 
 Ez az aszinkron művelet akkor fejeződik be, amikor a koordináló folyamat sikeresen ütemezve van.
 
@@ -60,7 +60,7 @@ public static async Task Run(
 
 <a name="javascript-function-json"></a>Ha másként nincs megadva, a lapon szereplő példák a HTTP-triggert használják a következő function.js.
 
-**function.jsbekapcsolva**
+**function.json**
 
 ```json
 {
@@ -102,6 +102,56 @@ module.exports = async function(context, input) {
 };
 ```
 
+# <a name="python"></a>[Python](#tab/python)
+
+<a name="javascript-function-json"></a>Ha másként nincs megadva, a lapon szereplő példák a HTTP-triggert használják a következő function.js.
+
+**function.json**
+
+```json
+{
+  "scriptFile": "__init__.py",
+  "bindings": [    
+    {
+      "name": "msg",
+      "type": "queueTrigger",
+      "direction": "in",
+      "queueName": "messages",
+      "connection": "AzureStorageQueuesConnectionString"
+    },
+    {
+      "name": "$return",
+      "type": "http",
+      "direction": "out"
+    },
+    {
+      "name": "starter",
+      "type": "durableClient",
+      "direction": "in"
+    }
+  ],
+  "disabled": false
+}
+```
+
+> [!NOTE]
+> Ez a példa Durable Functions 2. x verziót céloz meg. Az 1. x verzióban a `orchestrationClient` helyett használja a parancsot `durableClient` .
+
+**__init__. a**
+
+```python
+import logging
+import azure.functions as func
+import azure.durable_functions as df
+
+async def main(req: func.HttpRequest, starter: str) -> func.HttpResponse:
+    client = df.DurableOrchestrationClient(starter)
+    
+    instance_id = await client.start_new('HelloWorld', None, None)
+    logging.log(f"Started orchestration with ID = ${instance_id}.")
+
+```
+
 ---
 
 ### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
@@ -127,7 +177,7 @@ func durable start-new --function-name HelloWorld --input @counter-data.json --t
 
 A munkafolyamatok kezelésének részeként legvalószínűbb, hogy adatokat kell gyűjtenie egy összehangoló példány állapotáról (például azt, hogy az megfelelően fejeződött-e be vagy sikertelen volt-e).
 
-A `GetStatusAsync` (z) (.net) vagy a `getStatus` (JavaScript) metódus a koordinációs [ügyfél-kötésben](durable-functions-bindings.md#orchestration-client) lekérdezi egy összehangoló példány állapotát.
+A `GetStatusAsync` (z) (.net), `getStatus` (JavaScript) vagy a `get_status` (Python) metódus a koordinációs [ügyfél-kötésben](durable-functions-bindings.md#orchestration-client) lekérdezi egy összehangoló példány állapotát.
 
 Paraméterekként (kötelező), (opcionális), `instanceId` `showHistory` `showHistoryOutput` (opcionális) és `showInput` (opcionális).
 
@@ -153,7 +203,7 @@ A metódus egy olyan objektumot ad vissza, amely a következő tulajdonságokkal
   * Leállítva: a példány leállítása váratlanul **megszakadt**.
 * **Előzmények**: a folyamat végrehajtási előzményei. Ez a mező csak akkor van feltöltve, ha a értéke `showHistory` `true` .
 
-Ez a metódus `null` a (.net) vagy (JavaScript) értéket adja vissza, `undefined` Ha a példány nem létezik.
+Ez a metódus `null` a (.net), `undefined` (JavaScript) vagy `None` (Python) értéket adja vissza, ha a példány nem létezik.
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -185,6 +235,19 @@ module.exports = async function(context, instanceId) {
 ```
 
 Lásd: [példányok elindítása](#javascript-function-json) a function.jsa konfigurációban.
+
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+
+async def main(req: func.HttpRequest, starter: str, instance_id: str) -> func.HttpResponse:
+    client = df.DurableOrchestrationClient(starter)
+
+    status = await client.get_status(instance_id)
+    # do something based on the current status
+```
 
 ---
 
@@ -218,7 +281,7 @@ func durable get-history --id 0ab8c55a66644d68a3a8b220b12d209c
 
 Ahelyett, hogy egyszerre egy példányt kelljen lekérdezni, érdemes lehet hatékonyabban lekérdezni őket egyszerre.
 
-A `GetStatusAsync` (.net) vagy a `getStatusAll` (JavaScript) metódus használatával kérdezheti le az összes előkészítési példány állapotát. A .NET-ben átadhat egy `CancellationToken` objektumot arra az esetre, ha meg szeretné szüntetni. A metódus azokat az objektumokat adja vissza, amelyek ugyanazokkal a tulajdonságokkal rendelkeznek, mint a `GetStatusAsync` paraméterekkel rendelkező metódus.
+A `GetStatusAsync` (.net), `getStatusAll` (JavaScript) vagy a `get_status_all` (Python) metódus használatával lekérdezheti az összes összehangoló példány állapotát. A .NET-ben átadhat egy `CancellationToken` objektumot arra az esetre, ha meg szeretné szüntetni. A metódus azokat az objektumokat adja vissza, amelyek ugyanazokkal a tulajdonságokkal rendelkeznek, mint a `GetStatusAsync` paraméterekkel rendelkező metódus.
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -253,6 +316,24 @@ module.exports = async function(context, req) {
         context.log(JSON.stringify(instance));
     });
 };
+```
+
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import logging
+import json
+import azure.functions as func
+import azure.durable_functions as df
+
+
+async def main(req: func.HttpRequest, starter: str) -> func.HttpResponse:
+    client = df.DurableOrchestrationClient(starter)
+
+    instances = await client.get_status_all()
+
+    for instance in instances:
+        logging.log(json.dumps(instance))
 ```
 
 Lásd: [példányok elindítása](#javascript-function-json) a function.jsa konfigurációban.
@@ -331,6 +412,31 @@ module.exports = async function(context, req) {
 
 Lásd: [példányok elindítása](#javascript-function-json) a function.jsa konfigurációban.
 
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import logging
+from datetime import datetime
+import json
+import azure.functions as func
+import azure.durable_functions as df
+from azure.durable_functions.models.OrchestrationRuntimeStatus import OrchestrationRuntimeStatus
+
+async def main(req: func.HttpRequest, starter: str) -> func.HttpResponse:
+    client = df.DurableOrchestrationClient(starter)
+
+    runtime_status = [OrchestrationRuntimeStatus.Completed, OrchestrationRuntimeStatus.Running]
+
+    instances = await client.get_status_by(
+        datetime(2018, 3, 10, 10, 1, 0),
+        datetime(2018, 3, 10, 10, 23, 59),
+        runtime_status
+    )
+
+    for instance in instances:
+        logging.log(json.dumps(instance))
+```
+
 ---
 
 ### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
@@ -355,7 +461,7 @@ func durable get-instances --created-after 2018-03-10T13:57:31Z --created-before
 
 Ha olyan előkészítési példánnyal rendelkezik, amely túl sokáig tart, vagy csak le kell állítania, mielőtt bármilyen okból befejeződik, lehetősége van lemondani.
 
-A `TerminateAsync` (.net) vagy a `terminate` (JavaScript) metódust használhatja a koordinációs [ügyfél kötéséhez](durable-functions-bindings.md#orchestration-client) a példányok megszakításához. A két paraméter egy `instanceId` és egy `reason` karakterlánc, amely a naplókba és a példányok állapotára van írva.
+A példányok leállításához használhatja a `TerminateAsync` (.net), `terminate` (JavaScript) vagy a `terminate` (Python) metódust a koordinációs [ügyfél kötéséhez](durable-functions-bindings.md#orchestration-client) . A két paraméter egy `instanceId` és egy `reason` karakterlánc, amely a naplókba és a példányok állapotára van írva.
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -387,6 +493,19 @@ module.exports = async function(context, instanceId) {
 ```
 
 Lásd: [példányok elindítása](#javascript-function-json) a function.jsa konfigurációban.
+
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+
+async def main(req: func.HttpRequest, starter: str, instance_id: str) -> func.HttpResponse:
+    client = df.DurableOrchestrationClient(starter)
+
+    reason = "It was time to be done."
+    return client.terminate(instance_id, reason)
+```
 
 ---
 
@@ -453,6 +572,19 @@ module.exports = async function(context, instanceId) {
 
 Lásd: [példányok elindítása](#javascript-function-json) a function.jsa konfigurációban.
 
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+
+async def main(req: func.HttpRequest, starter: str, instance_id: str) -> func.HttpResponse:
+    client = df.DurableOrchestrationClient(starter)
+
+    event_data = [1, 2 ,3]
+    return client.raise_event(instance_id, 'MyEvent', event_data)
+```
+
 ---
 
 > [!NOTE]
@@ -493,6 +625,39 @@ Az alábbi példa egy HTTP-trigger függvényt mutat be, amely bemutatja, hogyan
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/HttpSyncStart/index.js)]
 
 Lásd: [példányok elindítása](#javascript-function-json) a function.jsa konfigurációban.
+
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import logging
+import azure.functions as func
+import azure.durable_functions as df
+
+timeout = "timeout"
+retry_interval = "retryInterval"
+
+async def main(req: func.HttpRequest, starter: str) -> func.HttpResponse:
+    client = df.DurableOrchestrationClient(starter)
+
+    instance_id = await client.start_new(req.route_params['functionName'], None, req.get_body())
+    logging.log(f"Started orchestration with ID = '${instance_id}'.")
+
+    timeout_in_milliseconds = get_time_in_seconds(req, timeout)
+    timeout_in_milliseconds = timeout_in_milliseconds if timeout_in_milliseconds != None else 30000
+    retry_interval_in_milliseconds = get_time_in_seconds(req, retry_interval)
+    retry_interval_in_milliseconds = retry_interval_in_milliseconds if retry_interval_in_milliseconds != None else 1000
+
+    return client.wait_for_completion_or_create_check_status_response(
+        req,
+        instance_id,
+        timeout_in_milliseconds,
+        retry_interval_in_milliseconds
+    )
+
+def get_time_in_seconds(req: func.HttpRequest, query_parameter_name: str):
+    query_value = req.params.get(query_parameter_name)
+    return query_value if query_value != None else 1000
+```
 
 ---
 
@@ -600,6 +765,22 @@ modules.exports = async function(context, ctx) {
 
 Lásd: [példányok elindítása](#javascript-function-json) a function.jsa konfigurációban.
 
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+
+async def main(req: func.HttpRequest, starter: str, instance_id: str) -> func.cosmosdb.cdb.Document:
+    client = df.DurableOrchestrationClient(starter)
+
+    payload = client.create_check_status_response(req, instance_id).get_body().decode()
+
+    return func.cosmosdb.CosmosDBConverter.encode({
+        id: instance_id,
+        payload: payload
+    })
+```
 ---
 
 ## <a name="rewind-instances-preview"></a>Példányok visszatekerése (előzetes verzió)
@@ -647,6 +828,22 @@ module.exports = async function(context, instanceId) {
 
 Lásd: [példányok elindítása](#javascript-function-json) a function.jsa konfigurációban.
 
+# <a name="python"></a>[Python](#tab/python)
+
+> [!NOTE]
+> Ez a funkció jelenleg nem támogatott a Pythonban.
+
+<!-- ```python
+import azure.functions as func
+import azure.durable_functions as df
+
+async def main(req: func.HttpRequest, starter: str, instance_id: str) -> func.HttpResponse:
+    client = df.DurableOrchestrationClient(starter)
+
+    reason = "Orchestrator failed and needs to be revived."
+    return client.rewind(instance_id, reason)
+``` -->
+
 ---
 
 ### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
@@ -693,6 +890,18 @@ module.exports = async function(context, instanceId) {
 
 Lásd: [példányok elindítása](#javascript-function-json) a function.jsa konfigurációban.
 
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+
+async def main(req: func.HttpRequest, starter: str, instance_id: str) -> func.HttpResponse:
+    client = df.DurableOrchestrationClient(starter)
+
+    return client.purge_instance_history(instance_id)
+```
+
 ---
 
 A következő példa egy időzítő által aktivált függvényt mutat be, amely kiüríti az összes olyan előkészítési példány előzményeit, amely a megadott időintervallum után fejeződött be. Ebben az esetben az összes példányhoz tartozó, 30 vagy több nappal ezelőtt befejezett összes példányra vonatkozó adatvesztést távolítja el. Napi egyszeri futtatásra van ütemezve, 12 ÓRAKOR:
@@ -722,7 +931,7 @@ public static Task Run(
 
 A `purgeInstanceHistoryBy` metódussal több példány esetében is feltételesen törölheti a példányok előzményeit.
 
-**function.jsbekapcsolva**
+**function.json**
 
 ```json
 {
@@ -759,7 +968,22 @@ module.exports = async function (context, myTimer) {
     return client.purgeInstanceHistoryBy(createdTimeFrom, createdTimeTo, runtimeStatuses);
 };
 ```
+# <a name="python"></a>[Python](#tab/python)
 
+```python
+import azure.functions as func
+import azure.durable_functions as df
+from azure.durable_functions.models.DurableOrchestrationStatus import OrchestrationRuntimeStatus
+from datetime import datetime, timedelta
+
+async def main(req: func.HttpRequest, starter: str, instance_id: str) -> func.HttpResponse:
+    client = df.DurableOrchestrationClient(starter)
+    created_time_from = datetime.datetime()
+    created_time_to = datetime.datetime.today + timedelta(days = -30)
+    runtime_statuses = [OrchestrationRuntimeStatus.Completed]
+
+    return client.purge_instance_history_by(created_time_from, created_time_to, runtime_statuses)
+```
 ---
 
 > [!NOTE]

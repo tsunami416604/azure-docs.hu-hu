@@ -6,17 +6,17 @@ ms.author: govindk
 ms.reviewer: sngun
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 06/18/2019
-ms.openlocfilehash: 5428de23eb0e1b8c31f4576881526ec08ccc9698
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.date: 07/22/2020
+ms.openlocfilehash: b8cf0425a4a40c4692f4c0c7fcf11dbb23019b23
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027813"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132670"
 ---
 # <a name="monitor-and-debug-with-metrics-in-azure-cosmos-db"></a>A Azure Cosmos DB metrikáinak monitorozása és hibakeresése
 
-Az Azure Cosmos DB az átviteli sebességhez, a tároláshoz, a konzisztenciához, a rendelkezésre álláshoz és a késéshez nyújt metrikákat. Az Azure Portal ezen metrikák összesített nézetét nyújtja. Az Azure Cosmos DB-metrikákat az Azure Monitor API-ból is megtekintheti. Az Azure monitor metrikáinak megtekintéséről a [metrikák Beolvasása Azure monitor](cosmos-db-azure-monitor-metrics.md) cikkből tájékozódhat. 
+Az Azure Cosmos DB az átviteli sebességhez, a tároláshoz, a konzisztenciához, a rendelkezésre álláshoz és a késéshez nyújt metrikákat. Az Azure Portal ezen metrikák összesített nézetét nyújtja. Az Azure Cosmos DB-metrikákat az Azure Monitor API-ból is megtekintheti. A metrikák, például a tároló neve nem megkülönbözteti a kis-és nagybetűket. Ezért a kis-és nagybetűket megkülönböztető összehasonlítást kell használnia, amikor karakterlánc-összehasonlítást végez ezen dimenzió értékeken. Az Azure monitor metrikáinak megtekintéséről a [metrikák Beolvasása Azure monitor](cosmos-db-azure-monitor-metrics.md) cikkből tájékozódhat.
 
 Ez a cikk a gyakori használati eseteket, valamint a problémák Azure Cosmos DB-metrikákkal való elemzését és hibakeresését mutatja be. A metrikák gyűjtése öt percenként történik, és hét napig tart.
 

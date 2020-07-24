@@ -3,19 +3,17 @@ title: Az offline kiértékelési módszer használata – személyre szabás
 titleSuffix: Azure Cognitive Services
 description: Ez a cikk azt ismerteti, hogyan használható az offline értékelés az alkalmazás hatékonyságának méréséhez és a tanulási hurok elemzéséhez.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.author: diberry
-ms.openlocfilehash: f8ceef5e80bf15f0ba52a9c289e617018febfb5c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 627f511bb12c16c8f54935d1f782cb7c2c962163
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77623587"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132755"
 ---
 # <a name="offline-evaluation"></a>Offline értékelés
 
@@ -108,5 +106,5 @@ Javasoljuk, hogy tekintse meg a funkciók értékeléseit, és kérje a követke
 
 ## <a name="next-steps"></a>További lépések
 
-[A megszemélyesítő](how-to-settings.md)
-[Offline értékelések](how-to-offline-evaluation.md) konfigurálása a [személyre szabás működésének](how-personalizer-works.md) megismerése
+[Személyre szabás beállítása](how-to-settings.md) 
+ [Offline értékelések futtatása](how-to-offline-evaluation.md) A [megszemélyesítő működésének](how-personalizer-works.md) megismerése

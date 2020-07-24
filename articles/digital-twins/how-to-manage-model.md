@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 01bb5f9ae6d8c7a6374a8b1392b061f31fdb63a3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fec93169a8c49422c9e310cddc08ae3412b89166
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85390584"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132279"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Azure digitális Twins-modellek kezelése
 
@@ -66,7 +66,7 @@ Ez a modell definiálja a beteg helyiség nevét és egyedi AZONOSÍTÓját, val
 Ezt a módszert követve megadhatja a kórházi részleg, a zónák vagy a kórház modelljeit.
 
 > [!TIP]
-> Létezik egy ügyféloldali kódtár, amely a DTDL elemzéséhez és érvényesítéséhez használható. Létrehoz egy C#-objektummodell a DTDL-tartalomból, amely modellen alapuló fejlesztési forgatókönyvekben használható, például felhasználói felületi elemek létrehozásához. Ezt a kódtárat is használhatja annak biztosítására, hogy a modellek ne legyenek szintaktikai hibák a feltöltésük előtt. További információ erről a könyvtárról és a DTDL-érvényesítő számára készült mintához való hozzáférésről [: útmutató: a modellek elemzése és érvényesítése](how-to-use-parser.md).
+> Létezik egy ügyféloldali kódtár, amely a DTDL elemzéséhez és érvényesítéséhez használható. Létrehoz egy C#-objektummodell a DTDL-tartalomból, amely modellen alapuló fejlesztési forgatókönyvekben használható, például felhasználói felületi elemek létrehozásához. Ezt a kódtárat is használhatja annak biztosítására, hogy a modellek ne legyenek szintaktikai hibák a feltöltésük előtt. További információ erről a könyvtárról és a DTDL-érvényesítő számára készült mintához való hozzáférésről [*: útmutató: a modellek elemzése és érvényesítése*](how-to-use-parser.md).
 
 ## <a name="manage-models-with-apis"></a>Modellek kezelése API-kkal.
 
@@ -190,7 +190,7 @@ A modell leszerelési állapota a `ModelData` modell lekérési API-k által vis
 
 A példány összes modelljét egyszerre is törölheti, vagy megteheti azt egyéni alapon.
 
-Az összes modell törlésére példaként töltse le az oktatóanyagban használt minta alkalmazást [: Fedezze fel az alapokat egy minta ügyfélalkalmazás](tutorial-command-line-app.md)használatával. A *CommandLoop.cs* fájl ezt egy `CommandDeleteAllModels` függvényben végzi el.
+Az összes modell törlésére példaként töltse le az oktatóanyagban használt minta alkalmazást [*: Fedezze fel az alapokat egy minta ügyfélalkalmazás*](tutorial-command-line-app.md)használatával. A *CommandLoop.cs* fájl ezt egy `CommandDeleteAllModels` függvényben végzi el.
 
 A szakasz további részében lebonthatja a modell törlésének részleteit, és bemutatja, hogyan végezheti el azt egy adott modell esetében.
 
@@ -247,9 +247,9 @@ Az Azure digitális Twins nem akadályozza ezt az állapotot, ezért ügyeljen a
 
 ## <a name="manage-models-with-cli"></a>Modellek kezelése a CLI-vel
 
-A modellek az Azure Digital Twins CLI használatával is kezelhetők. A parancsok a következő [útmutatóban találhatók: az Azure digitális Twins parancssori](how-to-use-cli.md)felületének használata.
+A modellek az Azure Digital Twins CLI használatával is kezelhetők. A parancsok a következő [*útmutatóban találhatók: az Azure digitális Twins parancssori*](how-to-use-cli.md)felületének használata.
 
 ## <a name="next-steps"></a>További lépések
 
 Ismerje meg, hogyan hozhat létre és kezelhet digitális ikreket a modelljei alapján:
-* [Útmutató: digitális ikrek kezelése](how-to-manage-twin.md)
+* [*Útmutató: digitális ikrek kezelése*](how-to-manage-twin.md)

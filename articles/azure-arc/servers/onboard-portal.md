@@ -6,15 +6,15 @@ ms.service: azure-arc
 ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
-ms.date: 07/14/2020
+ms.date: 07/23/2020
 ms.topic: conceptual
 ms.custom: references_regions
-ms.openlocfilehash: cf09dd1521994f01e5f43b981d4bff540f3b1f40
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: fe26731a7f217d0f441a3dea1650f2652677a57f
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86506451"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87133010"
 ---
 # <a name="connect-hybrid-machines-to-azure-from-the-azure-portal"></a>Hibrid gépek összekötése az Azure-ba a Azure Portal
 
@@ -89,6 +89,10 @@ Ha a telepítés befejezése után az ügynök nem indul el, ellenőrizze a napl
 
 1. Nyisson meg egy emelt szintű PowerShell-parancssort.
 
+    >[!NOTE]
+    >A parancsfájl csak a Windows PowerShell 64 bites verziójáról támogatja a futtatást.
+    >
+
 1. Váltson arra a mappára vagy megosztásra, amelyre a parancsfájlt másolta, majd futtassa azt a kiszolgálón a parancsfájl futtatásával `./OnboardingScript.ps1` .
 
 Ha a telepítés befejezése után az ügynök nem indul el, ellenőrizze a naplókat a részletes hibaüzenetek megtekintéséhez. A *%ProgramFiles%\AzureConnectedMachineAgentAgent\logs*a naplózási könyvtár.
@@ -155,13 +159,13 @@ Az ügynök telepítése után konfigurálja úgy, hogy az alábbi parancs futta
 >[!NOTE]
 >A **azcmagent**futtatásához *rendszergazdai* jogosultságokkal kell rendelkeznie a Linux rendszerű gépeken.
 
-## <a name="verify-the-connection-with-azure-arc"></a>Az Azure arc-beli kapcsolatok ellenőrzése
+## <a name="verify-the-connection-with-azure-arc"></a>Az Azure Arc csatlakozásának ellenőrzése
 
-Miután telepítette az ügynököt, és úgy konfigurálja, hogy az Azure arc for Servers (előzetes verzió) szolgáltatáshoz kapcsolódjon, lépjen a Azure Portal, és ellenőrizze, hogy a kiszolgáló sikeresen csatlakoztatva van-e. Megtekintheti a gépeket a [Azure Portalban](https://aka.ms/hybridmachineportal).
+Miután telepítette az ügynököt, és úgy konfigurálja, hogy az Azure arc for Servers (előzetes verzió) szolgáltatáshoz kapcsolódjon, lépjen a Azure Portal, és ellenőrizze, hogy a kiszolgáló sikeresen csatlakoztatva van-e. A gépet megtekintheti az [Azure Portalon](https://aka.ms/hybridmachineportal).
 
 ![Sikeres kiszolgálói kapcsolatok](./media/onboard-portal/arc-for-servers-successful-onboard.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Megtudhatja, hogyan kezelheti a gépet [Azure Policy](../../governance/policy/overview.md)használatával, például a virtuális gép [vendég konfigurációjában](../../governance/policy/concepts/guest-configuration.md), ellenőrizheti, hogy a gép a várt log Analytics munkaterületről jelent-e jelentést, lehetővé teszi a figyelést a virtuális [gépekkel Azure monitor](../../azure-monitor/insights/vminsights-enable-at-scale-policy.md)és sok más további műveletet.
 

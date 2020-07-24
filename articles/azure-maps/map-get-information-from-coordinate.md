@@ -1,19 +1,20 @@
 ---
 title: Egy Térkép koordinátáival kapcsolatos információk megjelenítése | Microsoft Azure térképek
 description: Megtudhatja, hogyan jelenítheti meg a térképen a címekre vonatkozó információkat, amikor a felhasználó kiválaszt egy koordinátákat.
-author: Philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 274d1102649dade1b3295bd02feba03f64a26ad5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 02ffbd9352b97fd0968aee89b0e8f41e3bc30713
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83123989"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87130409"
 ---
 # <a name="get-information-from-a-coordinate"></a>Koordináta információinak lekérése
 

@@ -8,12 +8,12 @@ ms.date: 6/3/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: 8f3e670a4f2a49bcce48be1ba0452a36cbf96df1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6aad6201136bb925d5e094de115cc7274cc7872a
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392318"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131412"
 ---
 # <a name="use-azure-digital-twins-to-update-an-azure-maps-indoor-map"></a>Azure Maps beltéri Térkép frissítése az Azure digitális Twins használatával
 
@@ -27,9 +27,9 @@ Ez a útmutató a következő módon fog kiterjedni:
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-* Kövesse az Azure digitális Twins [oktatóanyagát: teljes körű megoldás összekapcsolását](./tutorial-end-to-end.md).
+* Kövesse az Azure digitális Twins [*oktatóanyagát: teljes körű megoldás összekapcsolását*](./tutorial-end-to-end.md).
     * Ezt a Twin-t egy további végponttal és útvonallal kell kiterjeszteni. Az oktatóanyagból egy másik függvényt is hozzáadhat a Function alkalmazáshoz. 
-* Kövesse a Azure Maps [oktatóanyagot: a Azure Maps Creator használatával beltéri térképeket hozhat](../azure-maps/tutorial-creator-indoor-maps.md) létre, amelyekkel Azure Maps fedett térképet hozhat létre a *szolgáltatás stateset*.
+* Kövesse a Azure Maps [*oktatóanyagot: a Azure Maps Creator használatával beltéri térképeket hozhat*](../azure-maps/tutorial-creator-indoor-maps.md) létre, amelyekkel Azure Maps fedett térképet hozhat létre a *szolgáltatás stateset*.
     * A [statesets](../azure-maps/creator-indoor-maps.md#feature-statesets) olyan dinamikus tulajdonságok (állapotok) gyűjteményei, amelyek adatkészlet-funkciókhoz, például helyiségekhez vagy berendezésekhez vannak rendelve. A fenti Azure Maps oktatóanyagban a funkció stateset a térképen megjelenített szoba állapotát tárolja.
     * Szüksége lesz a szolgáltatás *STATESET azonosítóra* és Azure Maps *előfizetés-azonosítóra*.
 
@@ -45,11 +45,11 @@ Először létre kell hoznia egy útvonalat az Azure Digital Ikrekben, hogy az �
 
 ## <a name="create-a-route-and-filter-to-twin-update-notifications"></a>Útvonal és szűrő létrehozása a kettős frissítési értesítésekhez
 
-Az Azure Digital Twins-példányok dupla frissítési eseményeket bocsátanak ki, amikor a Twin állapot frissül. Az [Azure Digital Twins oktatóanyaga: a fenti lépésekhez kapcsolódó végpontok közötti megoldás összekapcsolása](./tutorial-end-to-end.md) egy olyan forgatókönyvvel, amelyben egy hőmérőt használ egy szoba Twin-hez csatolt hőmérséklet-attribútum frissítéséhez. Ezt a megoldást kiterjesztheti az ikrek frissítési értesítéseire való feliratkozással, és ezekkel az információkkal frissítheti a térképeket.
+Az Azure Digital Twins-példányok dupla frissítési eseményeket bocsátanak ki, amikor a Twin állapot frissül. Az Azure Digital Twins [*oktatóanyaga: a fenti lépésekhez kapcsolódó végpontok közötti megoldás összekapcsolása*](./tutorial-end-to-end.md) egy olyan forgatókönyvvel, amelyben egy hőmérőt használ egy szoba Twin-hez csatolt hőmérséklet-attribútum frissítéséhez. Ezt a megoldást kiterjesztheti az ikrek frissítési értesítéseire való feliratkozással, és ezekkel az információkkal frissítheti a térképeket.
 
-Ez a minta közvetlenül a IoT-eszköz helyett a Twin szobaból olvassa be, ami rugalmasan változtatja meg az alapul szolgáló adatforrást a hőmérsékleten anélkül, hogy frissítenie kellene a leképezési logikát. Például több hőmérőt is hozzáadhat, vagy beállíthatja, hogy egy hőmérőt egy másik helyiséggel osszanak meg, anélkül, hogy a Térkép logikáját kellene frissítenie.
+Ez a minta közvetlenül a IoT-eszköz helyett a Twin szobaból olvassa be, amely rugalmasságot biztosít a mögöttes adatforrások hőmérsékletének módosításához anélkül, hogy frissítenie kellene a leképezési logikát. Például több hőmérőt is hozzáadhat, vagy beállíthatja, hogy egy hőmérőt egy másik helyiséggel osszanak meg, anélkül, hogy frissítenie kellene a Térkép logikáját.
 
-1. Hozzon létre egy Event Grid-témakört, amely az Azure Digital Twins-példánnyal származó eseményeket fogja kapni.
+1. Hozzon létre egy Event Grid-témakört, amely az Azure digitális Twins-példányának eseményeit fogja kapni.
     ```azurecli
     az eventgrid topic create -g <your-resource-group-name> --name <your-topic-name> -l <region>
     ```
@@ -61,14 +61,14 @@ Ez a minta közvetlenül a IoT-eszköz helyett a Twin szobaból olvassa be, ami 
 
 3. Hozzon létre egy útvonalat az Azure Digital Ikrekben, hogy dupla frissítési eseményt küldjön a végpontnak.
     ```azurecli
-    az dt route create -n <your-Azure-Digital-Twins-instance-name> --endpoint-name <Event-Grid-endpoint-name> --route-name <my_route> --filter "{ "endpointId": "<endpoint-ID>","filter": "type = 'Microsoft.DigitalTwins.Twin.Update'"}"
+    az dt route create -n <your-Azure-Digital-Twins-instance-name> --endpoint-name <Event-Grid-endpoint-name> --route-name <my_route> --filter "type = 'Microsoft.DigitalTwins.Twin.Update'"
     ```
 
 ## <a name="create-an-azure-function-to-update-maps"></a>Azure-függvény létrehozása a Maps frissítéséhez
 
-Egy Event Grid által aktivált függvényt fog létrehozni a Function alkalmazásban a [végpontok közötti oktatóanyagban](./tutorial-end-to-end.md). Ez a függvény kicsomagolja ezeket az értesítéseket, és frissítéseket küld egy Azure Maps szolgáltatás stateset egy szoba hőmérsékletének frissítéséhez. 
+Létre fog hozni egy Event Grid által aktivált függvényt a Function alkalmazásban a teljes körű oktatóanyagban ([*oktatóanyag: végpontok közötti megoldás összekapcsolása*](./tutorial-end-to-end.md)). Ez a függvény kicsomagolja ezeket az értesítéseket, és frissítéseket küld egy Azure Maps szolgáltatás stateset egy szoba hőmérsékletének frissítéséhez. 
 
-Tekintse meg a következő dokumentumot a hivatkozási információkhoz: [Azure Event Grid trigger Azure functions](https://docs.microsoft.com/azure/azure-functions/functions-bindings-event-grid-trigger).
+Tekintse meg a következő dokumentumot a hivatkozási információkhoz: [*Azure Event Grid trigger Azure functions*](https://docs.microsoft.com/azure/azure-functions/functions-bindings-event-grid-trigger).
 
 Cserélje le a függvény kódját a következő kódra. Csak a Space ikrek frissítéseit szűri, a frissített hőmérsékletet olvassa be, majd elküldi ezeket az adatokat a Azure Mapsnak.
 
@@ -100,7 +100,7 @@ namespace SampleFunctionsApp
 
             //Parse updates to "space" twins
             if (message["data"]["modelId"].ToString() == "dtmi:contosocom:DigitalTwins:Space;1")
-            {   //Set the ID of the room to be updated in our map. 
+            {   //Set the ID of the room to be updated in your map. 
                 //Replace this line with your logic for retrieving featureID. 
                 string featureID = "UNIT103";
 
@@ -138,9 +138,9 @@ az functionapp config appsettings set --settings "statesetID=<your-Azure-Maps-st
 
 Az élő frissítés hőmérsékletének megtekintéséhez kövesse az alábbi lépéseket:
 
-1. Szimulált IoT-adatok küldésének megkezdése a **DeviceSimulator** -projekt futtatásával az Azure Digital Twins [oktatóanyagból: Kapcsolódás végpontok közötti megoldáshoz](tutorial-end-to-end.md). Az ehhez tartozó útmutatást a a [*configure és a Run The szimuláció*](././tutorial-end-to-end.md#configure-and-run-the-simulation) szakaszban találja.
+1. Szimulált IoT-adatok küldésének megkezdése a **DeviceSimulator** -projekt futtatásával az Azure Digital Twins [*oktatóanyagból: Kapcsolódás végpontok közötti megoldáshoz*](tutorial-end-to-end.md). Az ehhez tartozó útmutatást a a [*configure és a Run The szimuláció*](././tutorial-end-to-end.md#configure-and-run-the-simulation) szakaszban találja.
 2. [A **Azure Maps beltéri** modul](../azure-maps/how-to-use-indoor-module.md) használatával jelenítheti meg a Azure Maps creatorben létrehozott beltéri térképeket.
-    1. Másolja a HTML-t a [*példából: használja*](../azure-maps/how-to-use-indoor-module.md#example-use-the-indoor-maps-module) a beltéri térképek című oktatóanyag beltéri térképek modulját [: használja a Azure Maps beltéri térképek modult](../azure-maps/how-to-use-indoor-module.md) egy helyi fájlba.
+    1. Másolja a HTML-t a [*példából: használja*](../azure-maps/how-to-use-indoor-module.md#example-use-the-indoor-maps-module) a beltéri térképek című oktatóanyag beltéri térképek modulját [*: használja a Azure Maps beltéri térképek modult*](../azure-maps/how-to-use-indoor-module.md) egy helyi fájlba.
     1. Cserélje le a *tilesetId* és a *STATESETID* a helyi HTML-fájlba az értékekkel.
     1. Nyissa meg a fájlt a böngészőben.
 
@@ -160,5 +160,5 @@ A topológia konfigurációjától függően a három attribútumot a Térkép r
 
 Az alábbi hivatkozásokat követve további információkat olvashat az ikrek gráf információinak kezelésével, frissítésével és lekérésével kapcsolatban:
 
-* [Útmutató: digitális ikrek kezelése](./how-to-manage-twin.md)
-* [Útmutató: a Twin gráf lekérdezése](./how-to-query-graph.md)
+* [*Útmutató: digitális ikrek kezelése*](./how-to-manage-twin.md)
+* [*Útmutató: a Twin gráf lekérdezése*](./how-to-query-graph.md)

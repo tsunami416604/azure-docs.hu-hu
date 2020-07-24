@@ -5,13 +5,14 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 07/23/2020
 ms.reviewer: sngun
-ms.openlocfilehash: f234579c6fb2b6f1bc0cd518b87ea69fae30093a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f5a867a00fa28dcd03842d02be16d88e3a7d2e9f
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74869833"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132653"
 ---
 # <a name="unique-key-constraints-in-azure-cosmos-db"></a>Egyedi kulcsokra vonatkozó korlátozások a Azure Cosmos DB
 
@@ -19,7 +20,7 @@ Az egyedi kulcsok adatintegritási réteget vesznek fel egy Azure Cosmos-tárol�
 
 Miután létrehozta az egyedi kulcs-házirenddel rendelkező tárolót, a rendszer az egyedi kulcs megkötése által megadott módon megakadályozza a meglévő elemek új vagy frissítésének létrehozását egy logikai partíción belül. Az egyedi kulccsal összevont partíciós kulcs garantálja a tároló hatókörén belüli elem egyediségét.
 
-Vegyünk például egy Azure Cosmos-tárolót e-mail-címmel, amely az egyedi kulcs megkötése, és `CompanyID` a partíciós kulcs. Ha a felhasználó e-mail-címét egyedi kulccsal konfigurálja, minden elemnek egyedi e-mail-címe van az adott területen belül `CompanyID` . Két elem nem hozható létre duplikált e-mail-címmel, és ugyanazzal a partíciós kulcs értékkel. 
+Vegyünk például egy Azure Cosmos-tárolót e-mail-címmel, amely az egyedi kulcs megkötése, és `CompanyID` a partíciós kulcs. Ha a felhasználó e-mail-címét egyedi kulccsal konfigurálja, minden elemnek egyedi e-mail-címe van az adott területen belül `CompanyID` . Két elem nem hozható létre duplikált e-mail-címmel, és ugyanazzal a partíciós kulcs értékkel. Azure Cosmos DB SQL (Core) API-ban az elemek JSON-értékként vannak tárolva. Ezeket a JSON-értékeket megkülönbözteti a kis-és nagybetűk Ha egy tulajdonságot egyedi kulcsként választ, a tulajdonsághoz beillesztheti a kis-és nagybetűket megkülönböztető értékeket is. Ha például egy egyedi kulcs van definiálva a Name (név) tulajdonságban, a "Gaby" kifejezés eltér a "Gaby" típustól, és a tárolóba is beilleszthető.
 
 Ha ugyanazzal az e-mail-címmel szeretne elemeket létrehozni, de nem ugyanaz az utónév, a vezetéknév és az e-mail-cím, adjon hozzá további elérési utakat az egyedi kulcs házirendjéhez. Ahelyett, hogy csak az e-mail-cím alapján hozzon létre egyedi kulcsot, létrehozhat egy egyedi kulcsot is az utónév, a vezetéknév és az e-mail cím kombinációjával. Ezt a kulcsot összetett egyedi kulcsnak nevezzük. Ebben az esetben a három érték egy adott egyedi kombinációja `CompanyID` engedélyezett. 
 

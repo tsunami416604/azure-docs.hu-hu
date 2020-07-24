@@ -2,20 +2,18 @@
 title: fájl belefoglalása
 description: fájl belefoglalása
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: luis
 ms.topic: include
 ms.custom: include file
 ms.date: 04/27/2020
-ms.author: diberry
-ms.openlocfilehash: a5af58c645720f0643e9245dc106248e36f2658f
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: fabd79829425147667c46f686a1ec1ceb6a29b00
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84237705"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132889"
 ---
 Ez a Poster-alapú rövid útmutató végigvezeti Önt a Tudásbázisból kapott válasz beszerzésén.
 
@@ -37,7 +35,7 @@ Ezzel az eljárással konfigurálhatja a Poster-t, majd beolvashatja az összes 
 
 1. A Tudásbázis **Beállítások** lapján kattintson a **poster (beküldés** ) fülre, és tekintse meg a Tudásbázisból a válasz létrehozásához használt konfigurációt. Másolja a következő adatokat a Poster-ban való használatra.
 
-    |Name (Név)|Beállítás|Cél és érték|
+    |Name|Beállítás|Cél és érték|
     |--|--|--|
     |`POST`| `/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer`|Ez az URL-cím HTTP-metódusa és útvonala.|
     |`Host`|`https://YOUR-RESOURCE_NAME.azurewebsites.net/qnamaker`|Ez az URL-cím gazdagépe. Fűzze össze a gazdagépet, és tegye az értékeket a teljes generateAnswer URL-cím beszerzéséhez.|

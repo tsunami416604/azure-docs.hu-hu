@@ -3,19 +3,17 @@ title: Megerősítő tanulás – személyre szabás
 titleSuffix: Azure Cognitive Services
 description: A személyre szabással kapcsolatos javaslatok megtételéhez a megszemélyesítő a műveletekkel és az aktuális környezettel kapcsolatos információkat használ. Ezekkel a műveletekkel és környezettel kapcsolatos információk a szolgáltatásoknak nevezett attribútumok vagy tulajdonságok.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/07/2019
-ms.author: diberry
-ms.openlocfilehash: 36071cdee25cfa99fc54b0e5c0c0aa822cb5fe2f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8b97221de4921e06ddfab610618f37683b990181
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68662838"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132738"
 ---
 # <a name="what-is-reinforcement-learning"></a>Mi a megerősítő tanulás?
 
@@ -59,7 +57,7 @@ John emellett számos olyan oktatóanyagot is kapott, mint például a közös e
 
 A személyre szabás jelenleg a [Vowpal Wabbit](https://github.com/VowpalWabbit/vowpal_wabbit/wiki) használja a gépi tanulás alapjaként. Ez a keretrendszer lehetővé teszi a maximális átviteli sebességet és a legalacsonyabb késést a személyre szabási rangsorolása és a modell tanítása az összes eseménnyel.
 
-## <a name="references"></a>Referencia
+## <a name="references"></a>Hivatkozások
 
 * [A kontextusos döntések alacsony technikai adóssággal való kihasználása](https://arxiv.org/abs/1606.03966)
 * [A méltányos besoroláshoz való csökkentési megközelítés](https://arxiv.org/abs/1803.02453)

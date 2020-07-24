@@ -3,16 +3,16 @@ title: Erőforrások rendszerezése felügyeleti csoportokkal – Azure-irányí
 description: Megismerheti a felügyeleti csoportokat és azok használatának módját, valamint a hozzájuk tartozó engedélyek működését.
 ms.date: 07/06/2020
 ms.topic: overview
-ms.openlocfilehash: b3d031b68ee7dba9c80ee0c7e97898bb8b439a47
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 1856b2d6f8fafb18757d547d0117f584fb2abb24
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85963682"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132925"
 ---
 # <a name="what-are-azure-management-groups"></a>Mik azok az Azure felügyeleti csoportok?
 
-Ha a vállalatnak sok előfizetése van, jól jöhet egy módszer, hogy hatékonyan kezelje az előfizetésekhez való hozzáférést, a szabályzatokat és a megfelelőséget. Az Azure Management Groups előfizetések fölötti hatókörszintet biztosít. Az előfizetéseket „felügyeleti csoportok” nevű tárolókba rendezheti, és az irányítási feltételeket alkalmazhatja a felügyeleti csoportokra. A felügyeleti csoporton belüli összes előfizetés automatikusan örökli a felügyeleti csoportra alkalmazott feltételeket. A felügyeleti csoportok nagy léptékű, nagyvállalati szintű felügyeletet tesznek lehetővé, függetlenül az előfizetése típusától.
+Ha a vállalatnak sok előfizetése van, jól jöhet egy módszer, hogy hatékonyan kezelje az előfizetésekhez való hozzáférést, a szabályzatokat és a megfelelőséget. Az Azure-beli felügyeleti csoportok hatóköre az előfizetések fölötti szint. Az előfizetéseket „felügyeleti csoportok” nevű tárolókba rendezheti, és az irányítási feltételeket alkalmazhatja a felügyeleti csoportokra. A felügyeleti csoporton belüli összes előfizetés automatikusan örökli a felügyeleti csoportra alkalmazott feltételeket. A felügyeleti csoportok nagy léptékű, nagyvállalati szintű felügyeletet tesznek lehetővé, függetlenül az előfizetése típusától.
 A felügyeleti csoporton belüli összes előfizetésnek ugyanazzal az Azure Active Directory-bérlővel kell megbízhatósági kapcsolatban állnia.
 
 Alkalmazhat például olyan szabályzatokat egy felügyeleti csoportra, amelyek korlátozzák a virtuális gépek (VM-ek) létrehozásához elérhető régiókat. A szabályzat minden felügyeleti csoportra, előfizetésre és erőforrásra érvényes lesz a felügyeleti csoporton belül, ha csak az adott régióban engedélyezi virtuális gépek létrehozását.
@@ -25,15 +25,15 @@ A felügyeleti csoportok és előfizetések rugalmas szerkezetének létrehozás
 
 Létrehozhat egy hierarchiát, amelyre szabályzatot alkalmazhat, például a virtuális gépek helyének az USA nyugati régiójára való korlátozását a „Production” csoporton. Ez a szabályzat minden olyan Nagyvállalati Szerződés (EA) előfizetésre vonatkozik, amely az adott felügyeleti csoport leszármazottait képezi, és az előfizetések alá tartozó összes virtuális gépre érvényes lesz. Ezt a biztonsági szabályzatot az erőforrás vagy az előfizetés tulajdonosa nem módosíthatja, ez pedig hatékonyabb kontrollt biztosít.
 
-A felügyeleti csoportok használatának másik esete, amikor egyszerre több előfizetés számára szeretne felhasználói hozzáférést biztosítani. Ha több előfizetést helyez a felügyeleti csoport alá, mindössze egy [szerepköralapú hozzáférés-vezérlési](../../role-based-access-control/overview.md) (RBAC) hozzárendelést kell létrehoznia a felügyeleti csoporthoz, amelytől az összes előfizetés örökli a hozzáférést. Ahelyett, hogy különböző előfizetésekre szkriptelne RBAC-hozzárendeléseket, a felügyeleti csoporton egyetlen hozzárendeléssel biztosíthatja a szükséges hozzáférést a felhasználóknak.
+A felügyeleti csoportok használatának másik esete, amikor egyszerre több előfizetéshez szeretne felhasználói hozzáférést biztosítani. Ha több előfizetést helyez a felügyeleti csoport alá, mindössze egy [szerepköralapú hozzáférés-vezérlési](../../role-based-access-control/overview.md) (RBAC) hozzárendelést kell létrehoznia a felügyeleti csoporthoz, amelytől az összes előfizetés örökli a hozzáférést. Ahelyett, hogy különböző előfizetésekre szkriptelne RBAC-hozzárendeléseket, a felügyeleti csoporton egyetlen hozzárendeléssel biztosíthatja a szükséges hozzáférést a felhasználóknak.
 
-### <a name="important-facts-about-management-groups"></a>A felügyeleti csoportok fontosabb jellemzői
+### <a name="important-facts-about-management-groups"></a>A felügyeleti csoportokkal kapcsolatos fontos tudnivalók
 
 - A címtárak legfeljebb 10 000 felügyeleti csoportot támogatnak.
 - A felügyeleticsoport-fák legfeljebb hatszintűek lehetnek.
   - A korlátozásba nem tartozik bele a gyökérszint és az előfizetés szintje.
 - Felügyeleti csoportonként vagy előfizetésenként egy szülő támogatott.
-- Az egyes felügyeleti csoportok alá számos gyermek tartozhat.
+- Minden felügyeleti csoportnak több gyermeke lehet.
 - Az egyes címtárakban minden előfizetés és felügyeleti csoport egyetlen hierarchiában található. Tekintse meg [A gyökérszintű felügyeleti csoport fontosabb jellemzői](#important-facts-about-the-root-management-group) című szakaszt.
 
 ## <a name="root-management-group-for-each-directory"></a>Az egyes címtárak gyökérszintű felügyeleti csoportja
@@ -42,7 +42,7 @@ Minden címtárhoz tartozik egy legfelső szintű, vagy más néven gyökérszin
 
 ### <a name="important-facts-about-the-root-management-group"></a>A gyökérszintű felügyeleti csoport fontosabb jellemzői
 
-- A gyökérszintű felügyeleti csoport megjelenített neve alapértelmezés szerint **Bérlői gyökércsoport** lesz. Az azonosító az Azure Active Directory-azonosító lesz.
+- Alapértelmezés szerint a gyökérszintű felügyeleti csoport megjelenített neve **Gyökérszintű bérlői csoport**. Az azonosító az Azure Active Directory-azonosító lesz.
 - A megjelenített név módosításához a fiókjának a Tulajdonos vagy Közreműködő szerepkörrel kell rendelkeznie a gyökérszintű felügyeleti csoportra vonatkozóan. A felügyeleti csoport nevének frissítéséhez tekintse meg a [felügyeleti csoport nevének módosítása](manage.md#change-the-name-of-a-management-group) című témakört.
 - A gyökérszintű felügyeleti csoportot a többi felügyeleti csoporttal szemben nem lehet törölni vagy áthelyezni.  
 - A címtár összes előfizetése és felügyeleti csoportja a gyökérszintű felügyeleti csoport alá kerül.
@@ -100,9 +100,9 @@ Az alábbi ábrán a felügyeleti csoportokkal kapcsolatos szerepkörök és tá
 \*: MG közreműködő és MG olvasó csak a felügyeleti csoport hatókörén engedélyezi a felhasználóknak a műveletek elvégzését.  
 \*\*: A gyökérszintű felügyeleti csoportban lévő szerepkör-hozzárendelések nem szükségesek az előfizetés vagy a felügyeleti csoport áthelyezésére és onnan való áthelyezésére. A hierarchián belüli elemek áthelyezésének részleteiért tekintse meg az [Erőforrások kezelése felügyeleti csoportokkal](manage.md) című szakaszt.
 
-## <a name="custom-rbac-role-definition-and-assignment"></a>Egyéni RBAC szerepkör-definíció és hozzárendelés
+## <a name="azure-custom-role-definition-and-assignment"></a>Azure egyéni szerepkör-definíció és hozzárendelés
 
-A felügyeleti csoportok egyéni RBAC szerepkör-támogatása jelenleg előzetes verzióban érhető el bizonyos [korlátozásokkal](#limitations). A felügyeleti csoportok hatóköre a szerepkör-definíció hozzárendelhető hatókörében határozható meg. Az egyéni RBAC-szerepkör hozzárendelhető lesz az adott felügyeleti csoporthoz és az alá tartozó összes felügyeleti csoporthoz, előfizetéshez, erőforráscsoporthoz vagy erőforráshoz. Az egyéni szerepkör ugyanúgy öröklődik lefelé a hierarchián belül, mint a beépített szerepkörök.  
+Az Azure egyéni szerepkör-támogatás a felügyeleti csoportokhoz jelenleg előzetes verzióban érhető el, bizonyos [korlátozásokkal](#limitations). A felügyeleti csoportok hatóköre a szerepkör-definíció hozzárendelhető hatókörében határozható meg. Ez az Azure-beli egyéni szerepkör ezután elérhető lesz az adott felügyeleti csoporton és bármely felügyeleti csoporton, előfizetésen, erőforráscsoporton vagy erőforráson való hozzárendeléshez. Az egyéni szerepkör ugyanúgy öröklődik lefelé a hierarchián belül, mint a beépített szerepkörök.  
 
 ### <a name="example-definition"></a>Példa definíció
 

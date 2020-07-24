@@ -3,16 +3,14 @@ title: Diagnosztikai naplók engedélyezése és megtekintése Azure Data Lake A
 description: Ismerje meg, hogyan állíthatja be és érheti el a diagnosztikai naplókat a Azure Data Lake Analytics
 services: data-lake-analytics
 ms.service: data-lake-analytics
-author: jasonwhowell
-ms.author: jasonh
 ms.topic: how-to
 ms.date: 02/12/2018
-ms.openlocfilehash: 9d389c433cb8a049671668cb58b3d80691ff0d16
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: c8c24134c4694a9a2df36ac278452a532a5125ad
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121435"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132602"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-analytics"></a>Az Azure Data Lake Analytics diagnosztikai naplóinak elérése
 
@@ -45,7 +43,7 @@ A diagnosztikai naplózás lehetővé teszi az adathozzáférés-naplózási nyo
 
    * A __Storage-fiókba való archiváláshoz__határozza meg, hogy hány nap elteltével szeretné megőrizni az adatok mennyiségét.
 
-   * Kattintson a __Save__ (Mentés) gombra.
+   * Kattintson a __Mentés__ gombra.
 
         > [!NOTE]
         > A __Save (Mentés__ ) gombra való kattintás előtt ki kell választania a __Storage-fiókba való archiválást__, a __streamet egy Event hub__ -ba, vagy __elküldeni log Analytics__ .
@@ -128,7 +126,7 @@ A naplózási és a kérési naplók strukturált JSON formátumúak.
 
 #### <a name="request-log-schema"></a>Kérelem naplózási sémája
 
-| Name | Típus | Leírás |
+| Név | Típus | Description |
 | --- | --- | --- |
 | time |Sztring |A napló időbélyegzője (UTC) |
 | resourceId |Sztring |Annak az erőforrásnak az azonosítója, amelyre a művelet került |
@@ -142,7 +140,7 @@ A naplózási és a kérési naplók strukturált JSON formátumúak.
 
 #### <a name="request-log-properties-schema"></a>Kérelem naplójának tulajdonságai sémája
 
-| Name | Típus | Leírás |
+| Név | Típus | Description |
 | --- | --- | --- |
 | HttpMethod |Sztring |A művelethez használt HTTP-metódus. Például: GET. |
 | Elérési út |Sztring |A művelet végrehajtásának elérési útja |
@@ -178,7 +176,7 @@ A naplózási és a kérési naplók strukturált JSON formátumúak.
 
 #### <a name="audit-log-schema"></a>Auditnapló sémája
 
-| Name | Típus | Leírás |
+| Név | Típus | Description |
 | --- | --- | --- |
 | time |Sztring |A napló időbélyegzője (UTC) |
 | resourceId |Sztring |Annak az erőforrásnak az azonosítója, amelyre a művelet került |
@@ -196,7 +194,7 @@ A naplózási és a kérési naplók strukturált JSON formátumúak.
 
 #### <a name="audit-log-properties-schema"></a>Naplózási napló tulajdonságai sémája
 
-| Name | Típus | Leírás |
+| Név | Típus | Description |
 | --- | --- | --- |
 | JobId |Sztring |A feladathoz rendelt azonosító |
 | JobName |Sztring |A feladatokhoz megadott név |
@@ -213,6 +211,6 @@ A naplózási és a kérési naplók strukturált JSON formátumúak.
 
 Azure Data Lake Analytics a naplófájlok feldolgozásának és elemzésének módját mutatja be. A minta a következő címen található: [https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample](https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample) .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Az Azure Data Lake Analytics áttekintése](data-lake-analytics-overview.md)

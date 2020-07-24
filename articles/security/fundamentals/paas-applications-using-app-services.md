@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2019
 ms.author: terrylan
-ms.openlocfilehash: 49b51a5f14f305afa915ec1d0fae42ca9ded6b1e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fc273c2e6e27c191b4407ffae86a4ba227ee642b
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81461667"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131038"
 ---
 # <a name="best-practices-for-securing-paas-web-and-mobile-applications-using-azure-app-service"></a>Ajánlott eljárások a Pásti webes és mobil alkalmazások biztonságossá tételéhez Azure App Service használatával
 
@@ -33,7 +33,7 @@ A Azure App Service egy szolgáltatásként nyújtott platform (Pásti), amely l
 A App Service OAuth 2,0 szolgáltatást biztosít az identitás-szolgáltató számára. A OAuth 2,0 a webalkalmazások, asztali alkalmazások és mobiltelefonok speciális engedélyezési folyamatainak biztosítása mellett az ügyfelek fejlesztői egyszerűségére koncentrál. Az Azure AD OAuth 2,0-et használ a mobil-és webalkalmazásokhoz való hozzáférés engedélyezéséhez. További információ: [hitelesítés és engedélyezés Azure app Serviceban](../../app-service/overview-authentication-authorization.md).
 
 ## <a name="restrict-access-based-on-role"></a>Hozzáférés korlátozása a szerepkör alapján
-A hozzáférés korlátozása elengedhetetlen azon szervezetek számára, akik biztonsági házirendeket kívánnak kikényszeríteni az adateléréshez. A szerepköralapú hozzáférés-vezérlés (RBAC) segítségével engedélyeket rendelhet hozzá a felhasználókhoz, csoportokhoz és alkalmazásokhoz egy bizonyos hatókörben, például a szükséges ismeretet és a legalacsonyabb szintű biztonsági alapelveket. Ha többet szeretne megtudni a felhasználók alkalmazásokhoz való hozzáférésének biztosításáról, tekintse meg a [Mi a szerepköralapú hozzáférés-vezérlés](/azure/role-based-access-control/overview)című témakört.
+A hozzáférés korlátozása elengedhetetlen azon szervezetek számára, akik biztonsági házirendeket kívánnak kikényszeríteni az adateléréshez. A szerepköralapú hozzáférés-vezérlés (RBAC) segítségével engedélyeket rendelhet hozzá a felhasználókhoz, csoportokhoz és alkalmazásokhoz egy bizonyos hatókörben, például a szükséges ismeretet és a legalacsonyabb szintű biztonsági alapelveket. Ha többet szeretne megtudni arról, hogy a felhasználók hogyan férhetnek hozzá az alkalmazásokhoz, tekintse meg a [Mi az az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](/azure/role-based-access-control/overview)című témakört.
 
 ## <a name="protect-your-keys"></a>A kulcsok megóvása
 Nem számít, hogy mennyire jó a biztonsága, ha elveszíti az előfizetési kulcsokat. Az Azure Key Vault segít a felhőalapú alkalmazások és szolgáltatások által használt titkosítási kulcsok és titkos kulcsok védelmében. A Key Vault segítségével titkosíthatja a kulcsokat és a titkos kulcsokat (például a hitelesítési kulcsokat, a Storage-fiók kulcsait, az adattitkosítási kulcsokat). PFX-fájlok és jelszavak) a hardveres biztonsági modulok (HSM-EK) által védett kulcsok használatával. A még nagyobb biztonság érdekében lehetőség van arra is, hogy kulcsokat importáljon és generáljon a hardveres biztonsági modulokban. A TLS-tanúsítványok automatikus megújítással történő kezeléséhez Key Vault is használhatja. További információ: [Mi a Azure Key Vault](../../key-vault/general/overview.md) .

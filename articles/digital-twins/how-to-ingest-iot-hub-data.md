@@ -7,11 +7,12 @@ ms.author: cschorm
 ms.date: 3/17/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 351f7ed131d545d2aa83df753cac3f26e76e4ccb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7c73f007f85a963a09de4e05222082fd52f784c0
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84725851"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131565"
 ---
 # <a name="ingest-iot-hub-telemetry-into-azure-digital-twins"></a>IoT Hub telemetria betöltése az Azure digitális Twinsba
 
@@ -41,7 +42,7 @@ Ezt a forgatókönyvet az alábbi ábrán ismertetjük:
 
 A példa folytatása előtt végre kell hajtania a következő előfeltételeket.
 1. Hozzon létre egy IoT hubot. Útmutatásért tekintse meg a [IoT hub](../iot-hub/quickstart-send-telemetry-cli.md) útmutató *IoT hub létrehozása* című szakaszát.
-2. Hozzon létre legalább egy Azure-függvényt az események IoT Hubból való feldolgozásához. [Útmutató: Azure-függvény beállítása az adatok feldolgozásához](how-to-create-azure-function.md) egy olyan alapszintű Azure-függvény létrehozásához, amely csatlakozhat az Azure Digital Twins-hoz, és meghívja az Azure digitális Twins API-funkcióit. Ennek a funkciónak a többi része fog kiépíteni.
+2. Hozzon létre legalább egy Azure-függvényt az események IoT Hubból való feldolgozásához. [*Útmutató: Azure-függvény beállítása az adatok feldolgozásához*](how-to-create-azure-function.md) egy olyan alapszintű Azure-függvény létrehozásához, amely csatlakozhat az Azure Digital Twins-hoz, és meghívja az Azure digitális Twins API-funkcióit. Ennek a funkciónak a többi része fog kiépíteni.
 3. Esemény célhelyének beállítása a hub-adatként. A [Azure Portal](https://portal.azure.com/)navigáljon a IoT hub-példányhoz. Az *események*területen hozzon létre egy előfizetést az Azure-függvényhez. 
 
     :::image type="content" source="media/how-to-ingest-iot-hub-data/add-event-subscription.png" alt-text="Azure Portal: esemény-előfizetés hozzáadása":::
@@ -54,7 +55,7 @@ A példa folytatása előtt végre kell hajtania a következő előfeltételeket
 
 ## <a name="create-an-azure-function-in-visual-studio"></a>Azure-függvény létrehozása a Visual Studióban
 
-Ez a szakasz ugyanazokat a Visual Studio-indítási lépéseket és az Azure Function csontvázát használja a [útmutató: Azure-függvény beállítása az adatok feldolgozásához](how-to-create-azure-function.md). A csontváz kezeli a hitelesítést, és létrehoz egy szolgáltatási ügyfelet, amely készen áll arra, hogy feldolgozza az adatfeldolgozást, és az Azure Digital Twins API-kat hívja 
+Ez a szakasz ugyanazokat a Visual Studio-indítási lépéseket és az Azure Function csontvázát használja a [*útmutató: Azure-függvény beállítása az adatok feldolgozásához*](how-to-create-azure-function.md). A csontváz kezeli a hitelesítést, és létrehoz egy szolgáltatási ügyfelet, amely készen áll arra, hogy feldolgozza az adatfeldolgozást, és az Azure Digital Twins API-kat hívja 
 
 A csontváz függvény szíve a következő:
 
@@ -267,9 +268,9 @@ Most már rendelkezik egy Azure-függvénnyel, amely a IoT Hubból érkező forg
 
 ## <a name="debug-azure-function-apps-locally"></a>Az Azure Function apps helyi hibakeresése
 
-Az Azure functions hibakeresése helyileg Event Grid triggerrel lehetséges. További információ erről: [Event Grid trigger helyi hibakeresése](../azure-functions/functions-debug-event-grid-trigger-local.md).
+Az Azure functions hibakeresése helyileg Event Grid triggerrel lehetséges. További információ erről: [*Event Grid trigger helyi hibakeresése*](../azure-functions/functions-debug-event-grid-trigger-local.md).
 
 ## <a name="next-steps"></a>További lépések
 
 További információ az Azure Digital Twins szolgáltatással való bejövő és kimenő adatforgalomról:
-* [Fogalmak: integráció más szolgáltatásokkal](concepts-integration.md)
+* [*Fogalmak: integráció más szolgáltatásokkal*](concepts-integration.md)

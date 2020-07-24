@@ -3,18 +3,16 @@ title: Felhasználó által definiált U-SQL-operátorok fejlesztése – Azure 
 description: Megtudhatja, hogyan fejleszthet felhasználó által definiált operátorokat Azure Data Lake Analytics feladatokban felhasználható és újra felhasználni.
 services: data-lake-analytics
 ms.service: data-lake-analytics
-author: saveenr
-ms.author: saveenr
-ms.reviewer: jasonwhowell
+ms.reviewer: jasonh
 ms.assetid: e5189e4e-9438-46d1-8686-ed4836bf3356
 ms.topic: how-to
 ms.date: 12/05/2016
-ms.openlocfilehash: 771590a145d4da0a3a81050e6bbe8a9a4d528b30
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 71cb6e026c81b00e475ae3f4e7fc4958a8de82a3
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121214"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131803"
 ---
 # <a name="develop-u-sql-user-defined-operators-udos"></a>Felhasználó által definiált U-SQL-operátorok fejlesztése (Udo)
 Ez a cikk azt ismerteti, hogyan lehet felhasználó által definiált operátorokat feldolgozni egy U-SQL-feladatokban.
@@ -26,7 +24,7 @@ Ez a cikk azt ismerteti, hogyan lehet felhasználó által definiált operátoro
 1. A Visual Studióban válassza a **fájl > új > project > U-SQL-projekt**elemet.
 2. Kattintson az **OK** gombra. A Visual Studio létrehoz egy megoldást egy script. usql fájllal.
 3. A **megoldáskezelő**bontsa ki a script. usql elemet, majd kattintson duplán a **script.usql.cs**elemre.
-4. Illessze be a következő kódot a fájlba:
+4. A fájlba illessze be az alábbi kódot:
 
    ```usql
    using Microsoft.Analytics.Interfaces;
@@ -126,7 +124,7 @@ Ez a cikk azt ismerteti, hogyan lehet felhasználó által definiált operátoro
 
 2. Bontsa ki a minták, majd a kimenetek csomópontot, majd kattintson duplán a **Drivers.csv**elemre.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [U-SQL-kifejezések kiterjesztése felhasználói kóddal](/u-sql/concepts/extending-u-sql-expressions-with-user-code)
 * [A Visual studióhoz készült Data Lake Tools használata az U-SQL-alkalmazások fejlesztéséhez](data-lake-analytics-data-lake-tools-get-started.md)

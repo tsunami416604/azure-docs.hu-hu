@@ -1,19 +1,19 @@
 ---
 title: GeoJSON adatformátuma geokerítésen | Microsoft Azure térképek
 description: Ebből a cikkből megtudhatja, hogyan készítse elő a geokerítésen-adatait, amelyek felhasználhatók a Microsoft Azure Maps GET és POST Geokerítésen API használatával.
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 02/14/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 7b9860908dd3bdf3dcda727f350578a97b890cac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 924c23f0fb0156ff585872dded72932a1574a12d
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80335623"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131305"
 ---
 # <a name="geofencing-geojson-data"></a>Geokerítések GeoJSON-adatbázis
 
@@ -30,12 +30,12 @@ A geokerítésen vagy geofences vonatkozó adatmennyiséget `Feature` objektum �
 * A a `expiredTime` geokerítések-adatok lejárati dátuma és időpontja. Ha a kérelemben szereplő érték későbbi ennél az `userTime` értéknél, a megfelelő geokerítésen-adatmennyiség lejárt adatként minősül, és a rendszer nem kérdezi le. Ekkor a geokerítésen-geometryId a `expiredGeofenceGeometryId` geokerítésen-válaszban található tömbbe kerül.
 * A a `validityPeriod` geokerítésen érvényességi időtartamának listája. Ha a `userTime` kérelemben szereplő érték az érvényességi időtartamon kívül esik, a megfelelő geokerítésen-adatmennyiség érvénytelennek minősül, és nem lesz lekérdezve. A geokerítésen-geometryId a `invalidPeriodGeofenceGeometryId` geokerítésen-válaszon belüli tömb tartalmazza. A következő táblázat a validityPeriod elem tulajdonságait mutatja be.
 
-| Name | Típus | Kötelező  | Leírás |
+| Név | Típus | Kötelező  | Leírás |
 | :------------ |:------------: |:---------------:| :-----|
-| startTime | Datetime  | igaz | Az érvényességi időtartam kezdő dátumának időpontja. |
-| endTime   | Datetime  | igaz |  Az érvényességi időszak befejezési dátumának időpontja. |
+| startTime | Datetime  | true | Az érvényességi időtartam kezdő dátumának időpontja. |
+| endTime   | Datetime  | true |  Az érvényességi időszak befejezési dátumának időpontja. |
 | naptárkivételhez RecurrenceType érték | sztring | hamis |   Az időszak ismétlődési típusa Az érték lehet:,, `Daily` `Weekly` `Monthly` vagy `Yearly` . Az alapértelmezett érték: `Daily` .|
-| businessDayOnly | Logikai | hamis |  Jelezze, hogy az adatai csak munkanapokon érvényesek-e. Az alapértelmezett érték: `false` .|
+| businessDayOnly | Logikai érték | hamis |  Jelezze, hogy az adatai csak munkanapokon érvényesek-e. Az alapértelmezett érték: `false` .|
 
 
 * Az összes koordináta-érték [hosszúság, szélesség] szerint van megadva a ben `WGS84` .

@@ -13,11 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2019
 ms.author: sumi
 ms.custom: ''
-ms.openlocfilehash: 692d86fa27ea42df6fe1128b64e408a5d4a4d08b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6935ea505643f253daf4c0b7d818137f52583682
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85444454"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132823"
 ---
 # <a name="virtual-network-service-endpoints"></a>Virtuális hálózati szolgáltatásvégpontok
 
@@ -122,7 +123,7 @@ Miután konfigurálta a szolgáltatási végpontokat egy adott szolgáltatáshoz
 
 A szolgáltatási végpontok a virtuális hálózatokon egy írási hozzáféréssel rendelkező felhasználótól függetlenül konfigurálhatók a virtuális hálózatokon. Az Azure-szolgáltatási erőforrások VNet való biztonságossá tételéhez a felhasználónak engedéllyel kell rendelkeznie a *Microsoft. Network/virtualNetworks/Subnets/joinViaServiceEndpoint/művelethez* a hozzáadott alhálózatokhoz. A beépített szolgáltatás-rendszergazdai szerepkörök alapértelmezés szerint tartalmazzák ezt az engedélyt. Az engedélyt egyéni szerepkörök létrehozásával módosíthatja.
 
-További információ a beépített szerepkörökről: [beépített szerepkörök az Azure-erőforrásokhoz](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json). A konkrét engedélyek egyéni szerepkörökhöz való hozzárendelésével kapcsolatos további információkért lásd: [Egyéni szerepkörök az Azure-erőforrásokhoz](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+További információ a beépített szerepkörökről: [Azure beépített szerepkörök](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json). A konkrét engedélyek egyéni szerepkörökhöz való hozzárendelésével kapcsolatos további információkért lásd: [Egyéni Azure-szerepkörök](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 A virtuális hálózatok és az Azure-szolgáltatási erőforrások tartozhatnak ugyanahhoz az előfizetéshez, de különböző előfizetésekhez is. Ha a virtuális hálózat és az Azure-szolgáltatási erőforrások különböző előfizetésekhez tartoznak, akkor az erőforrásoknak ugyanahhoz az Active Directory- (AD-) bérlőhöz kell tartozniuk. 
 
@@ -151,4 +152,3 @@ A gyakori kérdésekért lásd: [Virtual Network szolgáltatási végponttal kap
 - [Azure-szolgáltatás integrációja virtuális hálózatokban](virtual-network-for-azure-services.md)
 - [Virtual Network szolgáltatási végpont házirendjei](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoint-policies-overview)
 - [Azure Resource Manager-sablon](https://azure.microsoft.com/resources/templates/201-vnet-2subnets-service-endpoints-storage-integration)
-

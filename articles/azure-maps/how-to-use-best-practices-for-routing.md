@@ -1,18 +1,19 @@
 ---
 title: Ajánlott eljárások Azure Maps Route Servicehoz | Microsoft Azure térképek
 description: Megtudhatja, hogyan irányíthatja a járműveket Microsoft Azure Maps Route Service használatával.
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 03/11/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 24fa4c48f6ca03e4049483a9acfff067d5a6a736
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 79e9096030aada9fa368bb2e78af323139c0586c
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84266695"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132211"
 ---
 # <a name="best-practices-for-azure-maps-route-service"></a>Ajánlott eljárások Azure Maps Route Service-hez
 
@@ -30,7 +31,7 @@ Azure Maps [Route Service](https://docs.microsoft.com/rest/api/maps/route) Route
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A Azure Maps API-k hívásához egy Azure Maps-fiókra és egy kulcsra van szükség. További információkért lásd: [fiók létrehozása](quick-demo-map-app.md#create-an-account-with-azure-maps) és [elsődleges kulcs beszerzése](quick-demo-map-app.md#get-the-primary-key-for-your-account). Az elsődleges kulcsot elsődleges előfizetési kulcsnak vagy előfizetési kulcsnak is nevezzük.
+A Azure Maps API-k hívásához egy Azure Maps-fiókra és egy kulcsra van szükség. További információkért lásd: [fiók létrehozása](quick-demo-map-app.md#create-an-azure-maps-account) és [elsődleges kulcs beszerzése](quick-demo-map-app.md#get-the-primary-key-for-your-account). Az elsődleges kulcsot elsődleges előfizetési kulcsnak vagy előfizetési kulcsnak is nevezzük.
 
 A Azure Maps-hitelesítéssel kapcsolatos információkért lásd: a [Azure Maps hitelesítés kezelése](./how-to-manage-authentication.md). A Route Service lefedettségével kapcsolatos további információkért tekintse meg az [Útválasztás lefedettségét](routing-coverage.md).
 
@@ -72,7 +73,7 @@ Az útvonal számítási **travelTimeInSeconds** értéke a forgalom miatti kés
 
 Ha a kérelemben a **computeTravelTimeFor = all** paramétert adja meg, akkor a válasz összefoglaló eleme a következő mezőket fogja tartalmazni, beleértve a korábbi forgalmi feltételeket:
 
-| Elem | Description|
+| Elem | Leírás|
 | :--- | :--- |
 | noTrafficTravelTimeInSeconds | A becsült utazási idő, ha a forgalmi körülmények miatt nem jár késés az útvonalon, például a torlódás miatt |
 | historicTrafficTravelTimeInSeconds | Becsült utazási idő kiszámítása időfüggő korábbi forgalmi adatok alapján |

@@ -6,14 +6,14 @@ ms.service: azure-arc
 ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
-ms.date: 02/04/2020
+ms.date: 07/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: ac6a00efa7db848e4c05703c81ba835fbf5f77e3
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 7ac04b29853ce0d4f6ac4004bdfad4effd283170
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103789"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132993"
 ---
 # <a name="connect-hybrid-machines-to-azure-at-scale"></a>Hibrid gépek összekötése az Azure-on nagy méretekben
 
@@ -37,7 +37,7 @@ A [Azure PowerShell](/powershell/azure/install-az-ps) használatával létrehozh
 
 Az egyszerű szolgáltatásnév a PowerShell használatával történő létrehozásához hajtsa végre a következő műveleteket.
 
-1. Futtassa a következő parancsot. A parancsmag kimenetét [`New-AzADServicePrincipal`](/powershell/module/az.resources/new-azadserviceprincipal) egy változóban kell tárolnia, vagy egy későbbi lépésben nem fogja tudni lekérni a szükséges jelszót.
+1. Futtassa az alábbi parancsot. A parancsmag kimenetét [`New-AzADServicePrincipal`](/powershell/module/az.resources/new-azadserviceprincipal) egy változóban kell tárolnia, vagy egy későbbi lépésben nem fogja tudni lekérni a szükséges jelszót.
 
     ```azurepowershell-interactive
     $sp = New-AzADServicePrincipal -DisplayName "Arc-for-servers" -Role "Azure Connected Machine Onboarding"
@@ -76,7 +76,7 @@ Az **Azure Connected Machine** bevezetési szerepkör csak a gép bevezetéséhe
 
 ## <a name="install-the-agent-and-connect-to-azure"></a>Az ügynök telepítése és az Azure-hoz való kapcsolódás
 
-A következő lépésekkel telepítheti és konfigurálhatja a csatlakoztatott gépi ügynököt a hibrid gépeken a parancsfájl-sablon használatával, amely a [hibrid gépek csatlakoztatása az Azure-hoz](onboard-portal.md) című témakörben leírt hasonló lépéseket hajt végre a Azure Portal cikkben. A különbség az utolsó lépés, amelyben az Azure arc kapcsolatát az paranccsal az egyszerű szolgáltatásnév használatával hozza létre `azcmagent` . 
+A következő lépésekkel telepítheti és konfigurálhatja a csatlakoztatott gépi ügynököt a hibrid gépeken a parancsfájl-sablon használatával, amely a [hibrid gépek csatlakoztatása az Azure-hoz](onboard-portal.md) című témakörben leírt hasonló lépéseket hajt végre a Azure Portal cikkben. A különbség az utolsó lépés, amelyben az Azure arc kapcsolatát az paranccsal az egyszerű szolgáltatásnév használatával hozza létre `azcmagent` .
 
 Az alábbi beállításokkal konfigurálhatja az `azcmagent` egyszerű szolgáltatáshoz használt parancsot.
 
@@ -110,6 +110,10 @@ msiexec /i AzureConnectedMachineAgent.msi /l*v installationlog.txt /qn | Out-Str
   --subscription-id "{subscriptionID}"
 ```
 
+>[!NOTE]
+>A parancsfájl csak a Windows PowerShell 64 bites verziójáról támogatja a futtatást.
+>
+
 ### <a name="linux-installation-script"></a>Linuxos telepítési parancsfájl
 
 A következőkben egy példa látható a Linux telepítési parancsfájlhoz készült csatlakoztatott Machine Agent ügynökre, amelyet az egyszerű szolgáltatásnév használata az ügynök teljes mértékben automatizált, nem interaktív telepítésének támogatásához módosított.
@@ -131,11 +135,14 @@ azcmagent connect \
   --subscription-id "{subscriptionID}"
 ```
 
-Miután telepítette az ügynököt, és úgy konfigurálja, hogy az Azure arc for Servers (előzetes verzió) szolgáltatáshoz kapcsolódjon, lépjen a Azure Portal, és ellenőrizze, hogy a kiszolgáló sikeresen csatlakoztatva van-e. Megtekintheti a gépeket a [Azure Portalban](https://aka.ms/hybridmachineportal).
+>[!NOTE]
+>A **azcmagent**futtatásához *rendszergazdai* jogosultságokkal kell rendelkeznie a Linux rendszerű gépeken.
+
+Miután telepítette az ügynököt, és úgy konfigurálja, hogy az Azure arc for Servers (előzetes verzió) szolgáltatáshoz kapcsolódjon, lépjen a Azure Portal, és ellenőrizze, hogy a kiszolgáló sikeresen csatlakoztatva van-e. A gépet megtekintheti az [Azure Portalon](https://aka.ms/hybridmachineportal).
 
 ![Sikeres kiszolgálói kapcsolatok](./media/onboard-portal/arc-for-servers-successful-onboard.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Megtudhatja, hogyan kezelheti a gépet [Azure Policy](../../governance/policy/overview.md)használatával, például a virtuális gép [vendég konfigurációjában](../../governance/policy/concepts/guest-configuration.md), ellenőrizheti, hogy a gép a várt log Analytics munkaterületről jelent-e jelentést, lehetővé teszi a figyelést a virtuális [gépekkel Azure monitor](../../azure-monitor/insights/vminsights-enable-at-scale-policy.md)és sok más további műveletet.
 

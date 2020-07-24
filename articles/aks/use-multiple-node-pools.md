@@ -4,14 +4,14 @@ description: Ismerje meg, hogyan hozhat létre és kezelhet több Node-készlete
 services: container-service
 ms.topic: article
 ms.date: 04/08/2020
-ms.openlocfilehash: c35b3cdbde79a771eccc42c7c3a60b0ab4e08e8a
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 400e595d51f08428b01337e63f6c6e8ba5836794
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86250855"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87133095"
 ---
-# <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Fürthöz tartozó több Node-készlet létrehozása és kezelése az Azure Kubernetes szolgáltatásban (ak)
+# <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Egy fürthöz több csomópontkészlet létrehozása és felügyelete az Azure Kubernetes Service (AKS) szolgáltatásban
 
 Az Azure Kubernetes szolgáltatásban (ak) az azonos konfiguráció csomópontjai a *csomópont-készletekbe*vannak csoportosítva. Ezek a csomópont-készletek az alkalmazásokat futtató mögöttes virtuális gépeket tartalmazzák. A csomópontok kezdeti száma és a mérete (SKU) akkor van meghatározva, amikor egy AK-fürtöt hoz létre, amely létrehoz egy [rendszercsomópont-készletet][use-system-pool]. A különböző számítási vagy tárolási igényekkel rendelkező alkalmazások támogatásához további *felhasználói csomópont-készleteket*is létrehozhat. A rendszercsomópont-készletek a kritikus rendszerhüvelyek, például a CoreDNS és a tunnelfront üzemeltetésének elsődleges célját szolgálják ki. A felhasználói csomópontok készletei az alkalmazás-hüvelyek üzemeltetésének elsődleges céljaként szolgálnak. Az Application hüvelyek azonban a rendszercsomópont-készletekbe ütemezhetők, ha csak egy készletet szeretne használni az AK-fürtben. A felhasználói csomópontok készletei az alkalmazás-specifikus hüvelyek elhelyezésére szolgálnak. Ezekkel a további felhasználói csomópont-készletekkel például GPU-t biztosíthat a nagy számítási igényű alkalmazásokhoz, vagy hozzáférhet a nagy teljesítményű SSD-tárolóhoz.
 
@@ -72,7 +72,7 @@ Ha a fürt elkészült, használja az az [AK Get-hitelesítőadats][az-aks-get-c
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-## <a name="add-a-node-pool"></a>Csomópont-készlet hozzáadása
+## <a name="add-a-node-pool"></a>Csomópontkészlet hozzáadása
 
 Az előző lépésben létrehozott fürt egyetlen csomópont-készlettel rendelkezik. Hozzunk létre egy második csomópont-készletet az az [AK nodepool Add][az-aks-nodepool-add] paranccsal. A következő példa egy *mynodepool* nevű csomópont-készletet hoz létre, amely *3* csomópontot futtat:
 
@@ -503,6 +503,9 @@ az aks nodepool add \
     --no-wait
 ```
 
+> [!NOTE]
+> A csomópont-készlet létrehozásakor a rendszer csak a csomópontok készletei számára állíthatja be a megromlást.
+
 Az az [AK nodepool List][az-aks-nodepool-list] parancs kimenetének következő példája azt mutatja, hogy a *Taintnp* csomópontokat *hoz létre* a megadott *nodeTaints*:
 
 ```console
@@ -783,7 +786,7 @@ A csomópontok nyilvános IP-címeit többféleképpen is megtalálhatja:
 az vmss list-instance-public-ips -g MC_MyResourceGroup2_MyManagedCluster_eastus -n YourVirtualMachineScaleSetName
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ebben a cikkben létrehozta a GPU-alapú csomópontokat tartalmazó AK-fürtöt. A szükségtelen díjak csökkentése érdekében érdemes törölni a *gpunodepool*vagy a teljes Kabai fürtöt.
 
@@ -805,7 +808,7 @@ A csomópont-készletek esetében a nyilvános IP-címhez létrehozott további 
 az group delete --name myResourceGroup2 --yes --no-wait
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a [rendszercsomópont-készletekről][use-system-pool].
 

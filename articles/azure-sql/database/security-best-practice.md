@@ -10,12 +10,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 02/20/2020
 ms.reviewer: ''
-ms.openlocfilehash: 8104302afa84446e2d57c7156f33bc0160e31472
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 00369ae45a13414ce46f324e37afe24be24a48e0
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85986779"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132942"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database-and-azure-sql-managed-instance"></a>A közös biztonsági követelmények kezelése a Azure SQL Database és az Azure SQL felügyelt példányával
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -240,9 +240,9 @@ Csak a szükséges [engedélyek](https://docs.microsoft.com/sql/relational-datab
   - Ügyeljen arra, hogy ne rendeljen hozzá felhasználókat felesleges szerepkörökhöz.
 
 - Azure Resource Manager:
-  - Ha elérhető vagy egyéni RBAC-szerepköröket használ, használja a beépített szerepköröket, és rendelje hozzá a szükséges engedélyeket.
-    - [Az Azure beépített szerepkörei](../../role-based-access-control/built-in-roles.md)
-    - [Egyéni szerepkörök Azure-erőforrásokhoz](../../role-based-access-control/custom-roles.md)
+  - Ha elérhető vagy egyéni Azure-szerepköröket használ, és hozzárendeli a szükséges engedélyeket, használja a beépített szerepköröket.
+    - [Beépített Azure-szerepkörök](../../role-based-access-control/built-in-roles.md)
+    - [Egyéni Azure-szerepkörök](../../role-based-access-control/custom-roles.md)
 
 **Ajánlott eljárások**:
 
@@ -291,7 +291,7 @@ A feladatok elkülönítése – más néven a vámok elkülönítése – azt a
 - Azonosítsa a rendszerhez hozzáférő felhasználók (és automatizált folyamatok) átfogó hierarchiáját.
 
 - Hozzon létre szerepköröket a szükséges felhasználói csoportoknak megfelelően, és rendeljen engedélyeket a szerepkörökhöz.
-  - A Azure Portal vagy a PowerShell-Automation segítségével történő felügyeleti szintű feladatokhoz RBAC-szerepköröket használjon. Keressen egy beépített szerepkört, amely megfelel a követelménynek, vagy hozzon létre egy egyéni RBAC-szerepkört az elérhető engedélyek használatával.
+  - A Azure Portal vagy a PowerShell-Automation segítségével történő felügyeleti szintű feladatokhoz RBAC-szerepköröket használjon. Keressen egy beépített szerepkört, amely megfelel a követelménynek, vagy hozzon létre egy egyéni Azure-szerepkört az elérhető engedélyek használatával.
   - Kiszolgálói szerepköröket hozhat létre a felügyelt példányok kiszolgáló szintű feladatai számára (új bejelentkezések és adatbázisok létrehozása).
   - Adatbázis-szintű feladatokhoz tartozó adatbázis-szerepkörök létrehozása.
 
@@ -342,8 +342,8 @@ A SoD-ban mélyebbre szánt olvasóknak a következő erőforrásokat ajánlott 
   - [Tárolt eljárások aláírása](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/signing-stored-procedures-in-sql-server)
 
 - Azure Resource Management esetén:
-  - [Az Azure beépített szerepkörei](../../role-based-access-control/built-in-roles.md)
-  - [Egyéni szerepkörök Azure-erőforrásokhoz](../../role-based-access-control/custom-roles.md)
+  - [Beépített Azure-szerepkörök](../../role-based-access-control/built-in-roles.md)
+  - [Egyéni Azure-szerepkörök](../../role-based-access-control/custom-roles.md)
   - [A Azure AD Privileged Identity Management használata emelt szintű hozzáféréshez](https://www.microsoft.com/itshowcase/using-azure-ad-privileged-identity-management-for-elevated-access)
 
 ### <a name="perform-regular-code-reviews"></a>Szabványos kód-felülvizsgálatok végrehajtása

@@ -2,26 +2,28 @@
 title: Újdonságok – személyre szabás
 titleSuffix: Azure Cognitive Services
 description: Ez a cikk a személyre szabással kapcsolatos híreket tartalmaz.
-author: diberry
 manager: nitinme
 services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: overview
-ms.date: 06/10/2020
-ms.author: diberry
-ms.openlocfilehash: 973a8b7eb8dad66568a5beb45adea9740dd0402a
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.date: 07/17/2020
+ms.openlocfilehash: 5e3606ac04d5023e28bc2304aba79a8211c58881
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84700634"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87133078"
 ---
 # <a name="whats-new-in-personalizer"></a>A személyre szabás újdonságai
 
 Ismerje meg a szolgáltatás újdonságait. Ezek az elemek tartalmazhatnak kibocsátási megjegyzéseket, videókat, blogbejegyzéseket és más típusú információkat. A lapon lévő könyvjelzővel naprakészen tarthatja a szolgáltatást.
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
+
+### <a name="july-2020"></a>2020. július
+
+* Új oktatóanyag – a [személyre szabás használata egy csevegési robotban](tutorial-use-personalizer-chat-bot.md)
 
 ### <a name="june-2020"></a>2020. június
 
@@ -58,7 +60,7 @@ A Build 2019 konferencián a következő előzetes funkciók jelentek meg:
 
 [Cognitive Services Azure Update-hirdetmények](https://azure.microsoft.com/updates/?product=cognitive-services)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Gyors útmutató: visszajelzési hurok létrehozása a C-ben #](csharp-quickstart-commandline-feedback-loop.md)
 * [Az interaktív bemutató használata](https://personalizationdemo.azurewebsites.net/)

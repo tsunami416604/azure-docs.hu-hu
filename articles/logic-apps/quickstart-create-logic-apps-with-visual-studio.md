@@ -1,18 +1,18 @@
 ---
-title: Feladat-munkafolyamatok automatizálása a Visual Studióban
-description: Ismétlődő munkafolyamatok létrehozása, ütemezett és futtatása a vállalati integrációhoz Azure Logic Apps és a Visual Studio használatával
+title: Feladatok és munkafolyamatok automatizálása a Visual Studióval
+description: Automatizált munkafolyamatok létrehozása, betartása és futtatása a vállalati integrációhoz a Azure Logic Apps és a Visual Studio használatával
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: logicappspm
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 11/08/2019
-ms.openlocfilehash: 4416c9f9d1c55a460cb983089706e984d90ba082
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 07/22/2020
+ms.openlocfilehash: cd46821b74803d62be0361346166ed78a5f53286
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86520766"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132364"
 ---
 # <a name="quickstart-create-automated-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>Rövid útmutató: Automatizált feladatok, folyamatok és munkafolyamatok létrehozása az Azure Logic Apps használatával – Visual Studio
 
@@ -51,9 +51,15 @@ Ebben a rövid útmutatóban ugyanazt a logikai alkalmazást hozza létre a Visu
   
     Letöltheti és telepítheti az Azure Logic Apps alkalmazást közvetlenül a Visual Studio piacteréről, vagy nézzen utána, [hogyan telepítheti a bővítményt a Visual Studio rendszerén belül](/visualstudio/ide/finding-and-using-visual-studio-extensions). Ne feledje, hogy a telepítés után újra kell indítani a Visual Studiót.
 
+  * Ha Azure Government-előfizetéseket szeretné használni a Visual Studióval, tekintse meg a következő témaköröket a további telepítéshez:
+
+    * Visual Studio 2019: gyors útmutató [: Kapcsolódás a Azure Governmenthoz a Visual Studióval](../azure-government/documentation-government-connect-vs.md)
+
+    * Visual Studio 2017: [Az Azure Environment választó Visual Studio bővítmény bemutatása](https://devblogs.microsoft.com/azuregov/introducing-the-azure-environment-selector-visual-studio-extension/), amelyet a [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=SteveMichelotti.AzureEnvironmentSelector)-en tölthet le és telepíthet.
+
 * Internet-hozzáférés a beágyazott Logikaialkalmazás-tervező használatakor.
 
-  A tervezőnek internetkapcsolatra van szüksége az erőforrások létrehozásához az Azure-ban, illetve a logikai alkalmazásban található összekötők tulajdonságainak és adatainak olvasásához. A Dynamics CRM Online-kapcsolatok esetében például a tervező ellenőrzi a CRM-példányt az alapértelmezett és az egyéni tulajdonságok esetében.
+  A tervezőnek internetkapcsolatra van szüksége az erőforrások létrehozásához az Azure-ban, illetve a logikai alkalmazásban található összekötők tulajdonságainak és adatainak olvasásához.
 
 * A Logic Apps által támogatott e-mail-fiók, például Office 365 Outlook, Outlook.com vagy Gmail. Más szolgáltatók esetén itt tekintse át az [Összekötők listáját](/connectors/). Ez a példa az Office 365 Outlookot használja. Ha más szolgáltatót használ, a lépések ugyanazok, de a felhasználói felület kissé eltérhet.
 
@@ -112,7 +118,7 @@ Ha rendelkezik az Azure erőforráscsoport-projekttel, hozzon létre egy logikai
 
    ![Azure-előfizetés, erőforráscsoport és erőforrás helyének kiválasztása](./media/quickstart-create-logic-apps-with-visual-studio/select-azure-subscription-resource-group-location.png)
 
-   | Beállítás | Példaérték | Leírás |
+   | Beállítás | Példaérték | Description |
    | ------- | ------------- | ----------- |
    | Felhasználói fiók | Fabrikam <br> sophia-owen@fabrikam.com | A fiók, amelyet a Visual studióba való bejelentkezéskor használt |
    | **Előfizetés** | Utólagos, használatalapú fizetés <br> (sophia-owen@fabrikam.com) | Az Azure-előfizetés és a társított fiók neve |
@@ -202,7 +208,7 @@ Ha elkészült a logikai alkalmazással, törölje a logikai alkalmazást és a 
 
 1. Törölje a Visual Studio-megoldást a helyi számítógépről.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben egy logikai alkalmazást állított össze, helyezett üzembe és futtatott a Visual Studióval. A Logic apps és a Visual Studio használatával végzett speciális üzembe helyezés kezelésével és végrehajtásával kapcsolatos információkért tekintse meg a következő cikkeket:
 

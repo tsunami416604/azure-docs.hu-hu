@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: e5c57ba56ce236bcf07478e1784eec6d4c632d1c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ca54cb44618da1ff92b12b3ad918da513ab2be2f
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82195247"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131820"
 ---
 # <a name="azure-security-baseline-for-cosmos-db"></a>Cosmos DB Azure biztonsági alapterve
 
@@ -78,7 +78,7 @@ Az adatforrások közötti megosztás konfigurálása:https://docs.microsoft.com
 
 A Azure Cosmos DB-példányokhoz társított virtuális hálózatokon DDoS Protection szabványt engedélyezheti a DDoS-támadások elleni védelemhez. A Azure Security Center integrált fenyegetési intelligencia használatával megtagadhatja a kommunikációt az ismert kártékony vagy nem használt internetes IP-címekkel.
 
-Cosmos DB komplex veszélyforrások elleni védelem configureAzure:https://docs.microsoft.com/azure/cosmos-db/cosmos-db-advanced-threat-protection
+Azure Cosmos DB komplex veszélyforrások elleni védelem konfigurálása:https://docs.microsoft.com/azure/cosmos-db/cosmos-db-advanced-threat-protection
 
 A DDoS Protection konfigurálása:https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection
 
@@ -121,7 +121,7 @@ Cosmos DB komplex veszélyforrások elleni védelem konfigurálása:https://docs
 
 ### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1,8: a hálózati biztonsági szabályok bonyolultságának és adminisztratív terhelésének csökkentése
 
-**Útmutató**: az Azure Cosmos-fiókhoz hozzáféréssel rendelkező erőforrások esetében Virtual Network szolgáltatás-címkék használatával definiálja a hálózati securitygGroups vagy Azure Firewall a hálózati hozzáférés-vezérlést. Biztonsági szabályok létrehozása során szolgáltatáscímkéket használhat bizonyos IP-címek helyett. Ha egy szabály megfelelő forrás vagy cél mezőjében megadja a szolgáltatási címke nevét (például AzureCosmosDB), akkor engedélyezheti vagy megtagadhatja a megfelelő szolgáltatás forgalmát. A Microsoft kezeli a szolgáltatási címke által felölelt címek előtagjait, és automatikusan frissíti a szolgáltatási címkét a címek változásával.
+**Útmutató**: az Azure Cosmos-fiókhoz hozzáféréssel rendelkező erőforrások esetében Virtual Network szolgáltatás-címkék használatával definiálhatja a hálózati biztonsági csoportokon vagy Azure Firewall a hálózati hozzáférés-vezérlést. Biztonsági szabályok létrehozása során szolgáltatáscímkéket használhat bizonyos IP-címek helyett. Ha egy szabály megfelelő forrás vagy cél mezőjében megadja a szolgáltatási címke nevét (például AzureCosmosDB), akkor engedélyezheti vagy megtagadhatja a megfelelő szolgáltatás forgalmát. A Microsoft kezeli a szolgáltatási címke által felölelt címek előtagjait, és automatikusan frissíti a szolgáltatási címkét a címek változásával.
 
 További információ a szolgáltatási címkék használatáról:https://docs.microsoft.com/azure/virtual-network/service-tags-overview
 

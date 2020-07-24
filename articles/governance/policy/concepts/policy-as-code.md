@@ -1,14 +1,14 @@
 ---
 title: Szabályzat tervezése kódmunkafolyamatokként
 description: Megtudhatja, hogyan tervezhet munkafolyamatokat a Azure Policy-definíciók kódként való üzembe helyezéséhez és az erőforrások automatikus ellenőrzéséhez.
-ms.date: 05/20/2020
+ms.date: 07/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 17964459c6c06e6d7df09da4d3f0813350f209ec
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 02ff979feac1afb5f1664e6387e0abcde69b60eb
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970943"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131497"
 ---
 # <a name="design-policy-as-code-workflows"></a>Szabályzat tervezése kódmunkafolyamatokként
 
@@ -20,6 +20,24 @@ Ahogy halad a felhő irányításával, érdemes áttérnie az egyes szabályzat
 A szabályzat mint kód az ötletek kombinációja. Lényegében tartsa meg a házirend-definíciókat a forrás vezérlőelemben, és valahányszor változás történik, tesztelje és ellenőrizze a változást. Ez azonban nem lehet olyan mértékben, hogy a szabályzatok a kód-vagy DevOps is betartsák az infrastruktúrát.
 
 Az érvényesítési lépésnek más folyamatos integrációs vagy folyamatos üzembe helyezési munkafolyamatok összetevőjének is kell lennie. Ilyenek például az alkalmazás-környezet vagy a virtuális infrastruktúra üzembe helyezése. Azáltal, hogy Azure Policy érvényesítéssel a létrehozási és üzembe helyezési folyamat korai összetevőjét, az alkalmazás-és műveleti csapatok észlelik, ha a módosítások nem megfelelőek, jóval azelőtt, hogy túl későn történnek, és éles környezetben próbálnak üzembe helyezni.
+
+## <a name="definitions-and-foundational-information"></a>Definíciók és alapvető információk
+
+Mielőtt beolvassa a szabályzat részleteit a kód munkafolyamata során, tekintse át az alábbi definíciókat és példákat:
+
+- [Szabályzatdefiníció](./definition-structure.md)
+- [Kezdeményezési definíció](./initiative-definition-structure.md)
+
+A fájlnevek a szabályzat vagy a kezdeményezés definíciójának részeire vannak igazítva:
+- `policy(set).json`– A teljes definíció
+- `policy(set).parameters.json`– A `properties.parameters` definíció része
+- `policy.rules.json`– A `properties.policyRule` definíció része
+- `policyset.definitions.json`– A `properties.policyDefinitions` definíció része
+
+Ilyen fájlformátumok például a [Azure Policy GitHub](https://github.com/Azure/azure-policy/)-tárházban érhetők el:
+
+- Házirend-definíció: [címke hozzáadása az erőforrásokhoz](https://github.com/Azure/azure-policy/tree/master/samples/Tags/add-tag)
+- Kezdeményezési definíció: [Számlázási címkék](https://github.com/Azure/azure-policy/tree/master/samples/PolicyInitiatives/multiple-billing-tags)
 
 ## <a name="workflow-overview"></a>A munkafolyamat áttekintése
 

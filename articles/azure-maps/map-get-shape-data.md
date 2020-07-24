@@ -1,19 +1,19 @@
 ---
 title: Adatok beolvasása a térképen lévő alakzatokból | Microsoft Azure térképek
 description: Ebből a cikkből megtudhatja, hogyan szerezheti be az adatalakzatokat térképeken a Microsoft Azure Maps web SDK használatával.
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 09/04/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 88db018575f92e777223f383c65cd6db51ba515a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f1c333eb470b4093b1fa453f9a64d400bb9bc567
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80334415"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87130375"
 ---
 # <a name="get-shape-data"></a>Formázott adatok lekérése
 

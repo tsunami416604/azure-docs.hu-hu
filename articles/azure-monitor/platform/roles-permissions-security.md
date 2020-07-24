@@ -7,11 +7,12 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: 86314fd5bfe103cef8332ee3113f46fb0e39dafc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4ffbe10a1f9a1629c74c144b8773a7de89890576
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83836379"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132007"
 ---
 # <a name="roles-permissions-and-security-in-azure-monitor"></a>Szerepkörök, engedélyek és biztonság a Azure Monitorban
 
@@ -27,10 +28,10 @@ A figyelési olvasó szerepkörrel rendelkező személyek megtekinthetik az elő
 
 * Megtekintheti a portálon a figyelési irányítópultokat, és saját privát figyelési irányítópultokat hozhat létre.
 * Az [Azure-riasztásokban](alerts-overview.md) definiált riasztási szabályok megtekintése
-* A metrikák lekérdezése a [Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931930.aspx), a [PowerShell-parancsmagok](powershell-quickstart-samples.md)vagy a [platformfüggetlen CLI](../samples/cli-samples.md)használatával.
+* A metrikák lekérdezése a [Azure Monitor REST API](/rest/api/monitor/metrics), a [PowerShell-parancsmagok](../samples/powershell-samples.md)vagy a [platformfüggetlen CLI](../samples/cli-samples.md)használatával.
 * A műveletnapló lekérdezése a portál, a Azure Monitor REST API, a PowerShell-parancsmagok vagy a platformfüggetlen CLI használatával.
 * Egy erőforrás [diagnosztikai beállításainak](diagnostic-settings.md) megtekintése.
-* Az előfizetéshez tartozó [napló profiljának](activity-log-export.md) megtekintése.
+* Az előfizetéshez tartozó [napló profiljának](./activity-log.md#legacy-collection-methods) megtekintése.
 * Az autoskálázási beállítások megtekintése.
 * Riasztási tevékenység és beállítások megtekintése.
 * Hozzáférés Application Insights az adatvédelemhez és az adatmegjelenítés az AI Analyticsben.
@@ -51,7 +52,7 @@ A figyelő közreműködő szerepkörrel rendelkező személyek megtekinthetik a
 
 * Figyelési irányítópultok közzététele megosztott irányítópultként.
 * Erőforrás [diagnosztikai beállításainak](diagnostic-settings.md) megadása.\*
-* Adja meg egy előfizetés [naplózási profilját](activity-log-export.md) .\*
+* Adja meg egy előfizetés [naplózási profilját](./activity-log.md#legacy-collection-methods) .\*
 * Riasztási szabályok tevékenységének és beállításainak megadása az [Azure-riasztások](alerts-overview.md)használatával.
 * Application Insights webes tesztek és összetevők létrehozása.
 * Log Analytics munkaterület megosztott kulcsainak listázása.
@@ -66,8 +67,8 @@ A figyelő közreműködő szerepkörrel rendelkező személyek megtekinthetik a
 > 
 > 
 
-## <a name="monitoring-permissions-and-custom-rbac-roles"></a>Monitorozási engedélyek és egyéni RBAC-szerepkörök
-Ha a fenti beépített szerepkörök nem felelnek meg a csoport pontos igényeinek, [létrehozhat egy egyéni RBAC-szerepkört](../../role-based-access-control/custom-roles.md) , amely részletesebb engedélyekkel rendelkezik. Alább láthatók a közös Azure Monitor RBAC műveletek a leírásokkal.
+## <a name="monitoring-permissions-and-azure-custom-roles"></a>Figyelési engedélyek és egyéni Azure-szerepkörök
+Ha a fenti beépített szerepkörök nem felelnek meg a csoport pontos igényeinek, létrehozhat egy részletesebb engedélyekkel rendelkező Azure-beli [Egyéni szerepkört](../../role-based-access-control/custom-roles.md) is. Alább láthatók a közös Azure Monitor RBAC műveletek a leírásokkal.
 
 | Művelet | Description |
 | --- | --- |
@@ -96,7 +97,7 @@ Ha a fenti beépített szerepkörök nem felelnek meg a csoport pontos igényein
 > 
 > 
 
-A fenti táblázat használatával például létrehozhat egy egyéni RBAC-szerepkört a "Tevékenységnaplók olvasója" számára, a következőhöz hasonló módon:
+A fenti táblázat használatával például létrehozhat egy Azure-beli egyéni szerepkört a "Tevékenységnaplók olvasója" számára, a következőhöz hasonló módon:
 
 ```powershell
 $role = Get-AzRoleDefinition "Reader"
@@ -125,7 +126,7 @@ Mindhárom adattípust tárolhatja egy Storage-fiókban, vagy továbbíthatja az
 * Soha ne adja meg a Listkeys műveletének beolvasása engedélyt a Storage-fiókok vagy az Event hubok számára az előfizetés hatókörében, ha a felhasználónak csak a figyelési adathoz kell hozzáférést biztosítania. Ehelyett adja meg ezeket az engedélyeket a felhasználónak egy erőforrás vagy erőforráscsoport számára (ha van egy dedikált figyelési erőforráscsoport) hatóköre.
 
 ### <a name="limiting-access-to-monitoring-related-storage-accounts"></a>A figyeléssel kapcsolatos Storage-fiókokhoz való hozzáférés korlátozása
-Ha egy felhasználónak vagy alkalmazásnak hozzá kell férnie egy Storage-fiókban lévő figyelési információhoz, olyan [fiókot kell előállítania](https://msdn.microsoft.com/library/azure/mt584140.aspx) a Storage-fiókhoz, amely a blob Storage-hoz csak olvasási hozzáféréssel rendelkező figyelési adathozzáférést tartalmaz. A PowerShellben ez a következőhöz hasonló lehet:
+Ha egy felhasználónak vagy alkalmazásnak hozzá kell férnie egy Storage-fiókban lévő figyelési információhoz, olyan [fiókot kell előállítania](/rest/api/storageservices/create-account-sas) a Storage-fiókhoz, amely a blob Storage-hoz csak olvasási hozzáféréssel rendelkező figyelési adathozzáférést tartalmaz. A PowerShellben ez a következőhöz hasonló lehet:
 
 ```powershell
 $context = New-AzStorageContext -ConnectionString "[connection string for your monitoring Storage Account]"
@@ -134,7 +135,7 @@ $token = New-AzStorageAccountSASToken -ResourceType Service -Service Blob -Permi
 
 Ezután megadhatja a jogkivonatot az adott Storage-fiókból beolvasni kívánt entitásnak, valamint listázhatja és beolvashatja az adott Storage-fiókban lévő összes blobot.
 
-Ha ezt az engedélyt a RBAC-mel kell vezérelni, az adott tárolási fiókra vonatkozóan a Microsoft. Storage/storageAccounts/listkeys műveletének beolvasása/Action engedélyt is megadhatja. Ez olyan felhasználók számára szükséges, akiknek be kell tudniuk állítani a diagnosztikai beállításokat vagy a naplózási profilt egy Storage-fiókba való archiváláshoz. Létrehozhat például egy olyan felhasználóhoz vagy alkalmazáshoz a következő egyéni RBAC-szerepkört, amelynek csak egy Storage-fiókból kell beolvasnia:
+Ha ezt az engedélyt a RBAC-mel kell vezérelni, az adott tárolási fiókra vonatkozóan a Microsoft. Storage/storageAccounts/listkeys műveletének beolvasása/Action engedélyt is megadhatja. Ez olyan felhasználók számára szükséges, akiknek be kell tudniuk állítani a diagnosztikai beállításokat vagy a naplózási profilt egy Storage-fiókba való archiváláshoz. Létrehozhat például egy olyan felhasználóhoz vagy alkalmazáshoz a következő egyéni Azure-szerepkört, amelynek csak egy Storage-fiókból kell beolvasnia:
 
 ```powershell
 $role = Get-AzRoleDefinition "Reader"
@@ -188,5 +189,3 @@ További információ: [hálózati biztonság és Azure Storage](../../storage/c
 ## <a name="next-steps"></a>További lépések
 * [További információ a RBAC és az engedélyekről a Resource Managerben](../../role-based-access-control/overview.md)
 * [A monitorozás áttekintése az Azure-ban](../../azure-monitor/overview.md)
-
-

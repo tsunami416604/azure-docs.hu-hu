@@ -1,20 +1,20 @@
 ---
-title: Feladatok automatizálása a Visual Studio Code-ban
-description: Logikai alkalmazás alapjául szolgáló JSON-definíciók létrehozása vagy szerkesztése a Visual Studio Code használatával (VS Code)
+title: Feladatok és munkafolyamatok automatizálása a Visual Studio Code-ban
+description: Logic app-munkafolyamati definíciók létrehozása vagy szerkesztése a Visual Studio Code használatával (VS Code)
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, deli, logicappspm
+ms.reviewer: jonfan, deli, logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/25/2019
-ms.openlocfilehash: 3dccb596be2d97dd0f38d680537913a76ce09e93
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a2239d5ee70e90b9ee7c07b4dca78a45d2ce7ef9
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82147064"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131480"
 ---
-# <a name="quickstart-create-and-manage-logic-app-workflow-definitions-by-using-visual-studio-code"></a>Gyors útmutató: logikai alkalmazások munkafolyamat-definícióinak létrehozása és kezelése a Visual Studio Code használatával
+# <a name="quickstart-create-and-manage-logic-app-workflow-definitions-by-using-visual-studio-code"></a>Rövid útmutató: Logic Apps-munkafolyamatdefiníciók létrehozása és kezelése a Visual Studio Code használatával
 
 A [Azure Logic apps](../logic-apps/logic-apps-overview.md) és a Visual Studio Code használatával olyan logikai alkalmazásokat hozhat létre és kezelhet, amelyek segítségével automatizálhatja a feladatokat, munkafolyamatokat és folyamatokat az alkalmazások, adatok, rendszerek és szolgáltatások integrálásához a szervezetek és a vállalatok között. Ez a rövid útmutató bemutatja, hogyan hozhatja létre és szerkesztheti az alapul szolgáló munkafolyamat-definíciókat, amelyek JavaScript Object Notation (JSON) használnak a Logic apps számára a kód alapú felhasználói felületeken keresztül. Az Azure-ban már üzembe helyezett meglévő logikai alkalmazások is dolgozhatnak.
 
@@ -50,9 +50,9 @@ Mielőtt nekikezdene, győződjön meg arról, hogy rendelkezik a következőkke
 
     További információ: [bővítmény piactér](https://code.visualstudio.com/docs/editor/extension-gallery). A bővítmény nyílt forráskódú verziójának beszerzéséhez látogasson el a [Azure Logic apps-bővítményt a Visual Studio Code](https://github.com/Microsoft/vscode-azurelogicapps)-hoz a githubon.
 
-<a name="sign-in-azure"></a>
+<a name="access-azure"></a>
 
-## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
+## <a name="access-azure-from-visual-studio"></a>Az Azure elérése a Visual studióból
 
 1. Nyissa meg a Visual Studio Code-ot. A Visual Studio Code eszköztáron válassza az Azure ikont.
 
@@ -99,7 +99,7 @@ Mielőtt nekikezdene, győződjön meg arról, hogy rendelkezik a következőkke
 
 ## <a name="create-new-logic-app"></a>Új logikai alkalmazás létrehozása
 
-1. Ha még nem jelentkezett be Azure-fiókjába és-előfizetésbe a Visual Studio code-on belül, kövesse az [előző lépéseket a bejelentkezéshez](#sign-in-azure).
+1. Ha még nem jelentkezett be Azure-fiókjába és-előfizetésbe a Visual Studio code-on belül, kövesse az [előző lépéseket a bejelentkezéshez](#access-azure).
 
 1. A Visual Studio Code-ban **Logic apps**alatt nyissa meg az előfizetés helyi menüjét, és válassza a **logikai alkalmazás létrehozása**lehetőséget.
 
@@ -123,17 +123,17 @@ Mielőtt nekikezdene, győződjön meg arról, hogy rendelkezik a következőkke
 
    ![Adja meg a logikai alkalmazás nevét](./media/quickstart-create-logic-apps-visual-studio-code/enter-name-logic-app.png)
 
-   Az Azure-ablakban az Azure-előfizetése alatt megjelenik az új és üres logikai alkalmazás. A Visual Studio Code egy JSON-fájlt (. logicapp. JSON) is megnyit, amely tartalmazza a logikai alkalmazás csontváz-munkafolyamatának definícióját. Most már megkezdheti a logikai alkalmazás munkafolyamat-definíciójának manuális készítését ebben a JSON-fájlban. A munkafolyamat-definíciók struktúrájával és szintaxisával kapcsolatos technikai útmutatóért tekintse [meg a Azure Logic apps munkafolyamat-definíciós nyelvi sémáját](../logic-apps/logic-apps-workflow-definition-language.md).
+   Az Azure-ablakban az Azure-előfizetése alatt megjelenik az új és üres logikai alkalmazás. A Visual Studio Code egy JSON-(.logicapp.js-) fájlt is megnyit, amely tartalmazza a logikai alkalmazás csontváz-munkafolyamatának definícióját. Most már megkezdheti a logikai alkalmazás munkafolyamat-definíciójának manuális készítését ebben a JSON-fájlban. A munkafolyamat-definíciók struktúrájával és szintaxisával kapcsolatos technikai útmutatóért tekintse [meg a Azure Logic apps munkafolyamat-definíciós nyelvi sémáját](../logic-apps/logic-apps-workflow-definition-language.md).
 
    ![Üres logikai alkalmazás munkafolyamat-definíciós JSON-fájlja](./media/quickstart-create-logic-apps-visual-studio-code/empty-logic-app-workflow-definition.png)
 
    Itt látható például egy példa logikai alkalmazás munkafolyamat-definíciója, amely egy RSS-triggerrel és egy Office 365 Outlook-művelettel kezdődik. A JSON-elemek általában betűrendben jelennek meg az egyes szakaszokban. A minta azonban ezeket az elemeket nagyjából abban a sorrendben jeleníti meg, ahogy a logikai alkalmazás lépései megjelennek a tervezőben.
 
    > [!IMPORTANT]
-   > Ha újra szeretné használni a minta logikai alkalmazás definícióját, szüksége lesz egy Office 365 szervezeti fiókra, például: @fabrikam.com. Győződjön meg arról, hogy a fiktív e-mail-címet a saját e-mail-címére cseréli. Egy másik e-mail-összekötő, például a Outlook.com vagy a Gmail használatához `Send_an_email_action` cserélje le a műveletet egy olyan hasonló műveletre, [amely a Azure Logic apps által támogatott e-mail-összekötőn](../connectors/apis-list.md)érhető el.
+   > Ha újra szeretné használni a minta logikai alkalmazás definícióját, szüksége lesz egy Office 365 szervezeti fiókra, például: @fabrikam.com . Győződjön meg arról, hogy a fiktív e-mail-címet a saját e-mail-címére cseréli. Egy másik e-mail-összekötő, például a Outlook.com vagy a Gmail használatához cserélje le a `Send_an_email_action` műveletet egy olyan hasonló műveletre, [amely a Azure Logic apps által támogatott e-mail-összekötőn](../connectors/apis-list.md)érhető el.
    >
    > Ha a Gmail-összekötőt szeretné használni, akkor csak a G-Suite üzleti fiókok használhatják ezt az összekötőt a Logic apps korlátozás nélkül. 
-   > Ha rendelkezik Gmail-fiókkal, akkor ezt az összekötőt csak meghatározott Google által jóváhagyott szolgáltatásokkal használhatja, vagy [létrehozhat egy Google-ügyfélprogramot, amelyet a Gmail-összekötővel történő hitelesítéshez használhat](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application). 
+   > Ha rendelkezik Gmail-fiókkal, akkor ezt az összekötőt csak meghatározott Google által jóváhagyott szolgáltatásokkal használhatja, vagy [létrehozhat egy Google-ügyfélprogramot, amelyet a Gmail-összekötővel történő hitelesítéshez használhat](/connectors/gmail/#authentication-and-bring-your-own-application). 
    > További információkért lásd: [adatbiztonsági és adatvédelmi szabályzatok a Google-összekötők számára a Azure Logic apps](../connectors/connectors-google-data-security-privacy-policy.md).
 
    ```json
@@ -226,7 +226,7 @@ A logikai alkalmazás Azure Portalban való áttekintéséhez kövesse az alább
 
 Ha a Visual Studio Code-ban szerkeszt egy közzétett logikai alkalmazást, és menti a módosításokat, *felülírja* a már telepített alkalmazást. A logikai alkalmazás éles környezetben való megszakadásának elkerülése és a fennakadások csökkentése érdekében először inaktiválja a logikai alkalmazást. Ezután újra aktiválhatja a logikai alkalmazást, miután meggyőződött arról, hogy a logikai alkalmazás továbbra is működik.
 
-1. Ha még nem jelentkezett be Azure-fiókjába és-előfizetésbe a Visual Studio code-on belül, kövesse az [előző lépéseket a bejelentkezéshez](#sign-in-azure).
+1. Ha még nem jelentkezett be Azure-fiókjába és-előfizetésbe a Visual Studio code-on belül, kövesse az [előző lépéseket a bejelentkezéshez](#access-azure).
 
 1. Az Azure ablakban **Logic apps**alatt bontsa ki az Azure-előfizetését, hogy megtekintse az adott előfizetéshez tartozó összes logikai alkalmazást.
 
@@ -247,7 +247,7 @@ A Visual Studio Code-ban megnyithatja és szerkesztheti az Azure-ban már üzemb
 > [!IMPORTANT] 
 > Mielőtt egy aktívan futó logikai alkalmazást szerkesszen az éles környezetben, ne a logikai alkalmazás megszakadásának kockázatát, és csökkentse a fennakadást a [logikai alkalmazás letiltásával](#disable-enable-logic-app).
 
-1. Ha még nem jelentkezett be Azure-fiókjába és-előfizetésbe a Visual Studio code-on belül, kövesse az [előző lépéseket a bejelentkezéshez](#sign-in-azure).
+1. Ha még nem jelentkezett be Azure-fiókjába és-előfizetésbe a Visual Studio code-on belül, kövesse az [előző lépéseket a bejelentkezéshez](#access-azure).
 
 1. Az Azure ablakban **Logic apps**alatt bontsa ki az Azure-előfizetését, és válassza ki a kívánt logikai alkalmazást.
 
@@ -255,7 +255,7 @@ A Visual Studio Code-ban megnyithatja és szerkesztheti az Azure-ban már üzemb
 
    ![A meglévő logikai alkalmazás szerkesztőjének megnyitása](./media/quickstart-create-logic-apps-visual-studio-code/open-editor-existing-logic-app.png)
 
-   A Visual Studio Code a helyi ideiglenes mappában nyitja meg a. logicapp. JSON fájlt, így megtekintheti a logikai alkalmazás munkafolyamat-definícióját.
+   A Visual Studio Code megnyitja a .logicapp.jsa helyi ideiglenes mappában található fájlon, így megtekintheti a logikai alkalmazás munkafolyamat-definícióját.
 
    ![Közzétett logikai alkalmazás munkafolyamat-definíciójának megtekintése](./media/quickstart-create-logic-apps-visual-studio-code/edit-published-logic-app-workflow-definition.png)
 
