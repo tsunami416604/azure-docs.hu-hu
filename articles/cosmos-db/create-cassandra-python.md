@@ -9,12 +9,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 05/18/2020
 ms.custom: tracking-python
-ms.openlocfilehash: dee07db85d8886ab44be096e405143ea0d881ba2
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: a388cde60e0d19aed1af9620f82b7baa6d5b08fc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85118272"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87067320"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-python-sdk-and-azure-cosmos-db"></a>Gyors útmutató: Cassandra-alkalmazás létrehozása a Python SDK-val és a Azure Cosmos DB
 
@@ -137,9 +137,9 @@ Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja 
 
 1. A [Azure Portal](https://portal.azure.com/)Azure Cosmos db-fiókjában válassza a **kapcsolatok karakterlánc**lehetőséget. 
 
-1. Válassza a ![a képernyő jobb oldalán található Másolás gombot](./media/create-cassandra-python/copy.png) használatával (a képernyő jobb oldalán) másolja a vágólapra a felső, CONTACT POINT (Kapcsolódási pont) értéket.
+1. A :::image type="icon" source="./media/create-cassandra-python/copy.png"::: képernyő jobb oldalán található gomb használatával másolja a legfelső értéket, a kapcsolódási pontot. 
 
-    :::image type="content" source="./media/create-cassandra-python/keys.png" alt-text="Hozzáférési felhasználónév, jelszó és kapcsolódási pont megtekintése és másolása az Azure Portal kapcsolati sztring paneljén":::
+   :::image type="content" source="./media/create-cassandra-python/keys.png" alt-text="Hozzáférési felhasználónév, jelszó és kapcsolódási pont megtekintése és másolása az Azure Portal kapcsolati sztring paneljén":::
 
 1. Nyissa meg a *config.py* fájlt. 
 

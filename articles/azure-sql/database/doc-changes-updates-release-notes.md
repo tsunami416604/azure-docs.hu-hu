@@ -9,14 +9,14 @@ ms.subservice: service
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 05/13/2020
+ms.date: 06/17/2020
 ms.author: sstein
-ms.openlocfilehash: ed6f164adb9e0a6daf24342021087b2cede3289d
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 4257b2fab5e0cca0cb016794673ed39ae4973895
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85981373"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87067407"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>A Azure SQL Database & SQL felügyelt példányának újdonságai
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -42,15 +42,14 @@ Ez a táblázat a terminológia változásának gyors összehasonlítását bizt
 |**Azure SQL Database**|*Önálló adatbázis* Azure SQL Database| Ha nincs kifejezetten megadva, a terméknév Azure SQL Database a rugalmas készletbe telepített önálló adatbázisokat és adatbázisokat is tartalmazza. |
 |**Azure SQL Database**|*Rugalmas készlet* Azure SQL Database| Ha nincs kifejezetten megadva, a terméknév Azure SQL Database a rugalmas készletbe telepített önálló adatbázisokat és adatbázisokat is tartalmazza.  |
 |**Azure SQL Database** |Azure SQL Database | Bár a kifejezés változatlan marad, az már csak az önálló adatbázisra és a rugalmas készletekre vonatkozik, és nem tartalmazza a felügyelt példányt. |
-| **Azure SQL**| N.A. | Ez az Azure-ban elérhető SQL Server adatbázismotor-termékek családját jelenti: Azure SQL Database, Azure SQL felügyelt példány és Azure-beli virtuális gépeken SQL Server. | 
+| **Azure SQL**| n.a. | Ez az Azure-ban elérhető SQL Server adatbázismotor-termékek családját jelenti: Azure SQL Database, Azure SQL felügyelt példány és Azure-beli virtuális gépeken SQL Server. | 
 
 ## <a name="features-in-public-preview"></a>A nyilvános előzetes verzióban elérhető funkciók
 
 ### <a name="azure-sql-database"></a>[Azure SQL Database](#tab/single-database)
 
-| Szolgáltatás | Részletek |
+| Funkció | Részletek |
 | ---| --- |
-| Új Fsv2 és M-sorozatú hardveres generációk| További információ: [Hardware Generations](service-tiers-vcore.md#hardware-generations).|
 | Gyorsított adatbázis-helyreállítás önálló adatbázisokkal és rugalmas készletekkel | További információ: [gyorsított adatbázis-helyreállítás](../accelerated-database-recovery.md).|
 | Adatfelderítés és besorolás  |További információ: [Azure SQL Database és az Azure szinapszis Analytics adatfelderítési & besorolása](data-discovery-and-classification-overview.md).|
 | Rugalmas adatbázis-feladatok | További információ: [rugalmas feladatok létrehozása, konfigurálása és kezelése](elastic-jobs-overview.md). |
@@ -63,7 +62,7 @@ Ez a táblázat a terminológia változásának gyors összehasonlítását bizt
 
 ### <a name="azure-sql-managed-instance"></a>[Felügyelt Azure SQL-példány](#tab/managed-instance)
 
-| Szolgáltatás | Részletek |
+| Funkció | Részletek |
 | ---| --- |
 | <a href="/azure/sql-database/sql-database-instance-pools">Példánykészletek</a> | A kisebb SQL-példányok felhőbe való áttelepíthető kényelmes és költséghatékony módszer. |
 | <a href="https://aka.ms/managed-instance-aadlogins">Példány szintű Azure AD-kiszolgálói rendszerbiztonsági tag (bejelentkezések)</a> | Hozzon létre példány-szintű bejelentkezéseket a <a href="https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">külső szolgáltatói utasítás létrehozási azonosítójával</a> . |
@@ -96,10 +95,10 @@ A következő funkciók engedélyezve vannak az SQL felügyelt példány üzembe
 
 ### <a name="known-issues"></a>Ismert problémák
 
-|Probléma  |Felderített dátum  |Állapot  |Feloldás dátuma  |
+|Probléma  |Felderített dátum  |status  |Feloldás dátuma  |
 |---------|---------|---------|---------|
-|[A manuális biztonsági mentés ELLENŐRZŐÖSSZEG nélküli visszaállítása sikertelen lehet](#restoring-manual-backup-without-checksum-might-fail)|2020. május|Megkerülő megoldás| |
-|[Az ügynök nem válaszol a meglévő feladatok módosítása, letiltása vagy engedélyezése esetén](#agent-becomes-unresponsive-upon-modifying-disabling-or-enabling-existing-jobs)|2020. május|Automatikusan lecsökkentve| |
+|[A manuális biztonsági mentés ELLENŐRZŐÖSSZEG nélküli visszaállítása sikertelen lehet](#restoring-manual-backup-without-checksum-might-fail)|2020. május|Feloldva|2020. június|
+|[Az ügynök nem válaszol a meglévő feladatok módosítása, letiltása vagy engedélyezése esetén](#agent-becomes-unresponsive-upon-modifying-disabling-or-enabling-existing-jobs)|2020. május|Feloldva|2020. június|
 |[Nem az SQL felügyelt példányára vonatkozó engedélyek vannak alkalmazva az erőforráscsoporthoz](#permissions-on-resource-group-not-applied-to-sql-managed-instance)|Feb 2020|Megkerülő megoldás||
 |[Feladatátvételi csoportok manuális feladatátvételének korlátozása a portálon keresztül](#limitation-of-manual-failover-via-portal-for-failover-groups)|Jan 2020|Megkerülő megoldás||
 |[Az SQL-ügynök szerepköreinek kifejezett EXECUTE engedélyekre van szükségük a nem sysadmin (nem rendszergazdai) bejelentkezésekhez](#in-memory-oltp-memory-limits-are-not-applied)|Dec 2019|Megkerülő megoldás||

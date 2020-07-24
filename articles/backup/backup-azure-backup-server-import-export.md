@@ -3,12 +3,12 @@ title: A DPM és az Azure Backup Server kapcsolat nélküli biztonsági mentése
 description: A Azure Backup segítségével az Azure import/export szolgáltatással küldhet adathálózatot a hálózatról. Ez a cikk a DPM és a Azure Backup Server offline biztonsági mentési munkafolyamatát ismerteti.
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: 3f02c48ddd2c5cd4831d8c7a84dbbf42f55a562a
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: f27a38657bb43a1d1153a0372db0e1f9e284eccc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187795"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87067343"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server-mabs"></a>A DPM és a Azure Backup Server offline biztonsági mentési munkafolyamata (MABS)
 
@@ -49,7 +49,7 @@ Az offline biztonsági mentési munkafolyamat elindítása előtt győződjön m
 
 * A DPM vagy a MABS-kiszolgálón győződjön meg arról, hogy a Microsoft Edge vagy az Internet Explorer 11 telepítve van, és a JavaScript engedélyezve van.
 * Hozzon létre egy Azure Storage-fiókot a Recovery Services-tárolóval megegyező előfizetésben.
-* Győződjön meg arról, hogy rendelkezik a [szükséges engedélyekkel](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) a Azure Active Directory alkalmazás létrehozásához. Az offline biztonsági mentési munkafolyamat létrehoz egy Azure Active Directory alkalmazást az Azure Storage-fiókhoz társított előfizetésben. Az alkalmazás célja, hogy az offline biztonsági mentési munkafolyamathoz szükséges biztonságos és hatókörrel rendelkező Azure Backup biztosítson az Azure importálási szolgáltatáshoz.
+* Győződjön meg arról, hogy rendelkezik a [szükséges engedélyekkel](../active-directory/develop/howto-create-service-principal-portal.md) a Azure Active Directory alkalmazás létrehozásához. Az offline biztonsági mentési munkafolyamat létrehoz egy Azure Active Directory alkalmazást az Azure Storage-fiókhoz társított előfizetésben. Az alkalmazás célja, hogy az offline biztonsági mentési munkafolyamathoz szükséges biztonságos és hatókörrel rendelkező Azure Backup biztosítson az Azure importálási szolgáltatáshoz.
 * Regisztrálja a Microsoft. ImportExport erőforrás-szolgáltatót az Azure Storage-fiókot tartalmazó előfizetéssel. Az erőforrás-szolgáltató regisztrálása:
     1. A főmenüben kattintson az **előfizetések**elemre.
     2. Ha több előfizetésre is feliratkozott, válassza ki azt az előfizetést, amelyet az offline biztonsági mentéshez használ. Ha csak egy előfizetést használ, megjelenik az előfizetése.
@@ -64,7 +64,7 @@ Az offline biztonsági mentési munkafolyamat elindítása előtt győződjön m
 
 ## <a name="workflow"></a>Munkafolyamat
 
-Az ebben a szakaszban található információk segítségével elvégezheti az offline biztonsági mentés munkafolyamatát, így az adatok továbbíthatók egy Azure-adatközpontba, és feltölthetők az Azure Storage-ba. Ha kérdése van az importálási szolgáltatással vagy a folyamat bármely aspektusával kapcsolatban, tekintse meg a korábban hivatkozott [importálási szolgáltatás áttekintése](https://docs.microsoft.com/azure/storage/common/storage-import-export-service) dokumentációt.
+Az ebben a szakaszban található információk segítségével elvégezheti az offline biztonsági mentés munkafolyamatát, így az adatok továbbíthatók egy Azure-adatközpontba, és feltölthetők az Azure Storage-ba. Ha kérdése van az importálási szolgáltatással vagy a folyamat bármely aspektusával kapcsolatban, tekintse meg a korábban hivatkozott [importálási szolgáltatás áttekintése](../storage/common/storage-import-export-service.md) dokumentációt.
 
 ## <a name="initiate-offline-backup"></a>Offline biztonsági mentés indítása
 
@@ -188,7 +188,7 @@ Az Azure-beli importálási feladatok feldolgozásához szükséges idő mennyis
 
 ### <a name="monitor-azure-import-job-status"></a>Azure-beli importálási feladatok állapotának figyelése
 
-Az importálási feladat állapotát a Azure Portal figyelheti az **importálási/exportálási feladatok** lapra, és kiválaszthatja a feladatát. Az importálási feladatok állapotával kapcsolatos további információkért tekintse meg a [tároló importálása exportálási szolgáltatásról](https://docs.microsoft.com/azure/storage/common/storage-import-export-service) szóló cikket.
+Az importálási feladat állapotát a Azure Portal figyelheti az **importálási/exportálási feladatok** lapra, és kiválaszthatja a feladatát. Az importálási feladatok állapotával kapcsolatos további információkért tekintse meg a [tároló importálása exportálási szolgáltatásról](../storage/common/storage-import-export-service.md) szóló cikket.
 
 ### <a name="complete-the-workflow"></a>A munkafolyamat befejezése
 

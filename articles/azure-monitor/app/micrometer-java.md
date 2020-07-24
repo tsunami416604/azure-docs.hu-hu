@@ -5,11 +5,12 @@ ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 11/01/2018
-ms.openlocfilehash: dd04087db32f0bbfa75dafa7e12c355e5ab7b515
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: da75498d6e4616b287ddb11c69df2469baaf2655
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77670066"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87067630"
 ---
 # <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk"></a>A Mikrométer használata az Azure Application Insights Java SDK-val
 A Mikrométer alkalmazás-figyelési mérőszámai a JVM-alapú alkalmazás kódjára vonatkoznak, és lehetővé teszi az adatok exportálását kedvenc megfigyelési rendszerbe. Ez a cikk bemutatja, hogyan használható a Mikrométer a Application Insights a Spring boot és a nem rugós rendszerindítási alkalmazásokhoz.
@@ -270,4 +271,4 @@ Adja hozzá a következő kötési kódot a konfigurációs fájlhoz:
 ## <a name="next-steps"></a>További lépések
 
 * A mikrométersel kapcsolatos további tudnivalókért tekintse meg a hivatalos [mikrométer dokumentációját](https://micrometer.io/docs).
-* A Spring on Azure-ról az Azure-beli hivatalos [tavaszi dokumentációban](https://docs.microsoft.com/java/azure/spring-framework/?view=azure-java-stable)olvashat bővebben.
+* A Spring on Azure-ról az Azure-beli hivatalos [tavaszi dokumentációban](/java/azure/spring-framework/?view=azure-java-stable)olvashat bővebben.

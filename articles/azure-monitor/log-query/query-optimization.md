@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2019
-ms.openlocfilehash: 9ae0aec6b87a746ed1f141dcf98f599acd20ab3a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5a454d04701160492539f5c9caba57c9e617401e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82864249"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87067488"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>Naplók optimalizálása Azure Monitorban
 Azure Monitor naplók az [Azure adatkezelő (ADX)](/azure/data-explorer/) használatával tárolják a naplófájlokat, és lekérdezéseket futtatnak az adatok elemzéséhez. Létrehozza, kezeli és karbantartja a ADX-fürtöket, és optimalizálja azokat a log Analysis számítási feladatokhoz. Amikor lekérdezést futtat, az optimalizált, és a munkaterület-adatok tárolására szolgáló megfelelő ADX-fürtre irányítja. A Azure Monitor-naplók és az Azure Adatkezelő számos automatikus lekérdezés-optimalizálási mechanizmust használ. Míg az automatikus optimalizálások jelentős lökést nyújtanak, bizonyos esetekben jelentősen növelheti a lekérdezési teljesítményt. Ez a cikk ismerteti a teljesítménnyel kapcsolatos szempontokat és számos technikát a kijavításához.
@@ -156,7 +157,7 @@ Heartbeat
 > Ez a mutató csak a közvetlen fürtből származó CPU-t jeleníti meg. A többrégiós lekérdezésekben csak az egyik régiót jelöli. Több munkaterület lekérdezése esetén előfordulhat, hogy nem tartalmazza az összes munkaterületet.
 
 ### <a name="avoid-full-xml-and-json-parsing-when-string-parsing-works"></a>A karakterlánc-elemzés működése során Kerülje a teljes XML-és JSON-elemzést
-Egy XML-vagy JSON-objektum teljes elemzése nagy mennyiségű processzor-és memória-erőforrást is igénybe vehet. Sok esetben, ha csak egy vagy két paraméterre van szükség, és az XML-vagy JSON-objektumok egyszerűek, az [elemzési operátor](/azure/kusto/query/parseoperator) vagy más [szöveges elemzési módszerek](/azure/azure-monitor/log-query/parse-text)használatával könnyebben elemezheti őket karakterláncként. A teljesítmény növelése nagyobb jelentőséggel bír, mert az XML-vagy JSON-objektumban lévő rekordok száma növekszik. Elengedhetetlen, ha a rekordok száma több tízezer milliót is elér.
+Egy XML-vagy JSON-objektum teljes elemzése nagy mennyiségű processzor-és memória-erőforrást is igénybe vehet. Sok esetben, ha csak egy vagy két paraméterre van szükség, és az XML-vagy JSON-objektumok egyszerűek, az [elemzési operátor](/azure/kusto/query/parseoperator) vagy más [szöveges elemzési módszerek](./parse-text.md)használatával könnyebben elemezheti őket karakterláncként. A teljesítmény növelése nagyobb jelentőséggel bír, mert az XML-vagy JSON-objektumban lévő rekordok száma növekszik. Elengedhetetlen, ha a rekordok száma több tízezer milliót is elér.
 
 A következő lekérdezés például pontosan ugyanazokat az eredményeket fogja visszaadni, mint a fenti lekérdezéseket anélkül, hogy teljes XML-elemzést végezne. Vegye figyelembe, hogy az XML-fájl struktúrájában bizonyos feltételezések merülnek fel, például az, hogy a FilePath elem a FileHash után jön, és ezek egyike sem rendelkezik attribútumokkal. 
 
@@ -218,6 +219,64 @@ SecurityEvent
 | where EventID == 4624 //Logon GUID is relevant only for logon event
 | summarize LoginSessions = dcount(LogonGuid) by Account
 ```
+
+### <a name="avoid-multiple-scans-of-same-source-data-using-conditional-aggregation-functions-and-materialize-function"></a>A feltételes összesítési függvények és a megvalósult függvények használatával ne vizsgáljon meg azonos forrásadatokat
+Ha egy lekérdezés több allekérdezéssel is egyesítve van a JOIN vagy a Union operátorral, akkor minden allekérdezés külön ellenőrzi a teljes forrást, majd egyesíti az eredményeket. Ez többszörösen ellenőrzi, hogy az adat hányszor van beolvasva – kritikus tényező a nagyon nagy adatkészletekben.
+
+Ennek elkerülésére szolgáló módszer a feltételes összesítési függvények használatával. Az összegző operátorban használt [aggregációs függvények](/azure/data-explorer/kusto/query/summarizeoperator#list-of-aggregation-functions) többsége egy feltételes verzió, amely lehetővé teszi egyetlen, több feltételt tartalmazó összefoglaló operátor használatát. 
+
+Az alábbi lekérdezések például a bejelentkezési események számát és az egyes fiókok folyamat-végrehajtási eseményeinek számát mutatják. Ugyanezeket az eredményeket adják vissza, de az első az, hogy kétszer vizsgálja meg a második vizsgálatot:
+
+```Kusto
+//Scans the SecurityEvent table twice and perform expensive join
+SecurityEvent
+| where EventID == 4624 //Login event
+| summarize LoginCount = count() by Account
+| join 
+(
+    SecurityEvent
+    | where EventID == 4688 //Process execution event
+    | summarize ExecutionCount = count(), ExecutedProcesses = make_set(Process) by Account
+) on Account
+```
+
+```Kusto
+//Scan only once with no join
+SecurityEvent
+| where EventID == 4624 or EventID == 4688 //early filter
+| summarize LoginCount = countif(EventID == 4624), ExecutionCount = countif(EventID == 4688), ExecutedProcesses = make_set_if(Process,EventID == 4688)  by Account
+```
+
+Egy másik eset, ahol az allekérdezések szükségtelenek az [elemzési operátor](/azure/data-explorer/kusto/query/parseoperator?pivots=azuremonitor) előzetes szűrésével, így biztosítható, hogy csak az adott mintának megfelelő rekordokat dolgozza fel. Ez szükségtelen, mert az elemzési operátor és más hasonló operátorok üres eredményeket adnak vissza, ha a minta nem egyezik. Az alábbiakban két olyan lekérdezés látható, amely pontosan ugyanazokat az eredményeket jeleníti meg, míg a második lekérdezési adatvizsgálat csak egyszer történik meg. A második lekérdezésben minden elemzési parancs csak az eseményeire vonatkozik. A kibővítő operátor ezt követően azt mutatja be, hogyan lehet az üres adathelyzetekre hivatkozni.
+
+```Kusto
+//Scan SecurityEvent table twice
+union(
+SecurityEvent
+| where EventID == 8002 
+| parse EventData with * "<FilePath>" FilePath "</FilePath>" * "<FileHash>" FileHash "</FileHash>" *
+| distinct FilePath
+),(
+SecurityEvent
+| where EventID == 4799
+| parse EventData with * "CallerProcessName\">" CallerProcessName1 "</Data>" * 
+| distinct CallerProcessName1
+)
+```
+
+```Kusto
+//Single scan of the SecurityEvent table
+SecurityEvent
+| where EventID == 8002 or EventID == 4799
+| parse EventData with * "<FilePath>" FilePath "</FilePath>" * "<FileHash>" FileHash "</FileHash>" * //Relevant only for event 8002
+| parse EventData with * "CallerProcessName\">" CallerProcessName1 "</Data>" *  //Relevant only for event 4799
+| extend FilePath = iif(isempty(CallerProcessName1),FilePath,"")
+| distinct FilePath, CallerProcessName1
+```
+
+Ha a fentiek nem teszik lehetővé az allekérdezések használatának elkerülését, egy másik megoldás a lekérdezési motorra mutat, hogy az egyes példányok mindegyike a [() függvényt](/azure/data-explorer/kusto/query/materializefunction?pivots=azuremonitor)használja. Ez akkor hasznos, ha a forrásadatok olyan függvényből érkeznek, amely többször is szerepel a lekérdezésben.
+
+
 
 ### <a name="reduce-the-number-of-columns-that-is-retrieved"></a>Csökkentse a beolvasott oszlopok számát
 

@@ -3,12 +3,12 @@ title: Rendszerállapot visszaállítása Windows Serverre
 description: Részletes útmutató a Windows Server rendszerállapotának az Azure-beli biztonsági másolatból történő visszaállításához.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 5212e5ea0ed3a8c0e0a8e9d4fa45f1eb6c901bf5
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 8ba4cb5d5617b6a051aec8c54a595e701f62fb87
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86184462"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87067366"
 ---
 # <a name="restore-system-state-to-windows-server"></a>Rendszerállapot visszaállítása a Windows Server rendszerre
 
@@ -183,7 +183,7 @@ Ez a cikk csak az első forgatókönyvet tárgyalja, amely az AD DS nonauthorati
         >[!NOTE]
         >Ha az összes Active Directory-adat visszaállítása (és nincsenek működő tartományvezérlők az erdőben), a fenti 9. lépésben jelölje be a **Active Directory fájlok mérvadó visszaállításának elvégzése**jelölőnégyzetet.
 
-    * A [Wbadmin](https://docs.microsoft.com/windows-server/administration/windows-commands/wbadmin-start-systemstaterecovery) segédprogram használatával hajtsa végre a visszaállítást a parancssorból.
+    * A [Wbadmin](/windows-server/administration/windows-commands/wbadmin-start-systemstaterecovery) segédprogram használatával hajtsa végre a visszaállítást a parancssorból.
 
         Szüksége lesz a használni kívánt biztonsági másolat verziószámára. A verziószámok listáját a következő parancs futtatásával kérheti le:
 
@@ -193,7 +193,7 @@ Ez a cikk csak az első forgatókönyvet tárgyalja, amely az AD DS nonauthorati
 
         Ezután használja ezt a verziószámot a visszaállítás futtatásához.
 
-        Ha például el szeretné végezni az [AD DS nonauthorative visszaállítását, és a SYSVOL mappa mérvadó visszaállítását](https://docs.microsoft.com/windows-server/identity/ad-ds/manage/ad-forest-recovery-nonauthoritative-restore) a 04/30/2020-es és 9:00-es verzióról származó biztonsági mentéssel, akkor a következőt kell `\\servername\share` beírnia a megosztott erőforrásban `server01` :
+        Ha például el szeretné végezni az [AD DS nonauthorative visszaállítását, és a SYSVOL mappa mérvadó visszaállítását](/windows-server/identity/ad-ds/manage/ad-forest-recovery-nonauthoritative-restore) a 04/30/2020-es és 9:00-es verzióról származó biztonsági mentéssel, akkor a következőt kell `\\servername\share` beírnia a megosztott erőforrásban `server01` :
 
         ```cmd
         wbadmin start systemstaterecovery -version:04/30/2020-09:00 -backupTarget:\\servername\share -machine:server01 -authsysvol

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/12/2019
-ms.openlocfilehash: dc9425b25fa594d06473865f1add9c91c7760a97
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b1756bd72dc78bfafc8959c4ff1c8f95d255c931
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85557232"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87067559"
 ---
 # <a name="integrate-system-center-operations-manager-with-azure-monitor-for-vms-map-feature"></a>System Center Operations Manager integrálása Azure Monitor for VMs Térkép funkcióval
 
@@ -138,9 +138,9 @@ Az aktuális terv a következő problémákat és korlátozásokat mutatja be:
 
 Az egyszerű szolgáltatásnév létrehozásával kapcsolatos hivatalos Azure-dokumentációért lásd:
 
-* [Egyszerű szolgáltatásnév létrehozása a PowerShell használatával](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authenticate-service-principal)
-* [Egyszerű szolgáltatásnév létrehozása az Azure CLI használatával](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authenticate-service-principal-cli)
-* [Egyszerű szolgáltatásnév létrehozása a Azure Portal használatával](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal)
+* [Egyszerű szolgáltatásnév létrehozása a PowerShell használatával](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)
+* [Egyszerű szolgáltatásnév létrehozása az Azure CLI használatával](/azure/azure-resource-manager/resource-group-authenticate-service-principal-cli)
+* [Egyszerű szolgáltatásnév létrehozása a Azure Portal használatával](../../active-directory/develop/howto-create-service-principal-portal.md)
 
 ### <a name="suggestions"></a>Javaslatok
 

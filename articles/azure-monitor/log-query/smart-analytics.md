@@ -6,16 +6,17 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/15/2019
-ms.openlocfilehash: 51584ccf5f845be8a06b1e049cae11e636edef11
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 82960845e357579b82c493958287cb602d75182e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77659832"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87067405"
 ---
 # <a name="log-analytics-smart-analytics-examples"></a>Intelligens elemzési példák Log Analytics
 Ez a cikk olyan példákat tartalmaz, amelyek a Log Analytics Smart Analytics-függvényeit használják a felhasználói tevékenységek elemzésének végrehajtásához. Ezekkel a példákkal elemezheti Application Insights által figyelt saját alkalmazásait, vagy használhatja az ezekben a lekérdezésekben szereplő fogalmakat a hasonló elemzésekhez más adatain. 
 
-A példákban használt különböző kulcsszavak részleteit a [Kusto nyelvi dokumentációjában](https://docs.microsoft.com/azure/kusto/query/) tekintheti meg. Áttekintheti a [lekérdezéseket](get-started-queries.md) , ha új log Analytics.
+A példákban használt különböző kulcsszavak részleteit a [Kusto nyelvi dokumentációjában](/azure/kusto/query/) tekintheti meg. Áttekintheti a [lekérdezéseket](get-started-queries.md) , ha új log Analytics.
 
 ## <a name="cohorts-analytics"></a>Kohorszok elemzése
 

@@ -7,20 +7,20 @@ author: bwren
 ms.author: bwren
 ms.date: 08/19/2019
 ms.custom: mvc, sec-javascript-october2019
-ms.openlocfilehash: 2e63b2ca0ee7246009068e6a2875795a14aeddb3
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 91a4e2f6a770282e9d031c31fdf1af15f0cd00bf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84695368"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87067545"
 ---
 # <a name="collect-data-from-an-azure-virtual-machine-with-azure-monitor"></a>Adatok gyűjtése egy Azure-beli virtuális gépről Azure Monitor
 
-A [Azure monitor](../overview.md) adatokat gyűjthet közvetlenül az Azure-beli virtuális gépekről egy log Analytics-munkaterületre a részletes elemzés és korreláció céljából. A Windows és [Linux](../../virtual-machines/extensions/oms-linux.md) [rendszerhez](../../virtual-machines/extensions/oms-windows.md) készült log Analytics virtuálisgép-bővítmény telepítése lehetővé teszi, hogy a Azure monitor adatokat gyűjtsön az Azure-beli virtuális gépekről. Ez a rövid útmutató bemutatja, hogyan konfigurálhat és gyűjthet adatokat az Azure Linux vagy Windows rendszerű virtuális gépekről a virtuálisgép-bővítmény használatával néhány egyszerű lépéssel.  
+A [Azure monitor](../overview.md) adatokat gyűjthet közvetlenül az Azure-beli virtuális gépekről egy log Analytics-munkaterületre a részletek és a korrelációk elemzéséhez. A Windows és [Linux](../../virtual-machines/extensions/oms-linux.md) [rendszerhez](../../virtual-machines/extensions/oms-windows.md) készült log Analytics virtuálisgép-bővítmény telepítése lehetővé teszi, hogy a Azure monitor adatokat gyűjtsön az Azure-beli virtuális gépekről. Ez a rövid útmutató bemutatja, hogyan konfigurálhat és gyűjthet adatokat az Azure Linux vagy Windows rendszerű virtuális gépekről a virtuálisgép-bővítmény használatával néhány egyszerű lépéssel.  
  
 A rövid útmutató feltételezi, hogy rendelkezik egy meglévő Azure-beli virtuális géppel. Ha nem, akkor virtuális gépekre vonatkozó rövid útmutatók alapján létrehozhat egy [Windows virtuális gépet](../../virtual-machines/windows/quick-create-portal.md) vagy egy [Linux virtuális gépet](../../virtual-machines/linux/quick-create-cli.md).
 
-## <a name="sign-in-to-azure-portal"></a>Jelentkezzen be az Azure Portalon
+## <a name="sign-in-to-azure-portal"></a>Bejelentkezés az Azure portálra
 
 Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen. 
 
@@ -141,4 +141,4 @@ Most, hogy már gyűjti a működési és teljesítményadatokat a Windows vagy 
 Az adatok megtekintésének és elemzésének ismertetéséhez lépjen tovább az útmutatóhoz.
 
 > [!div class="nextstepaction"]
-> [Adatok megtekintése és elemzése a Log Analyticsben](../../azure-monitor/learn/tutorial-viewdata.md)
+> [Adatok megtekintése és elemzése a Log Analyticsben](../log-query/get-started-portal.md)

@@ -6,14 +6,14 @@ ms.service: azure-arc
 ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
-ms.date: 05/18/2020
+ms.date: 07/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 086491484592c8015bdb519bb498e73da3836f6f
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 122f88e8bf14d3e3b082930716cffc3621afd336
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103908"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87067695"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>A csatlakoztatott gép ügynökének kezelése és karbantartása
 
@@ -142,6 +142,9 @@ A Azcmagent eszköz (Azcmagent.exe) segítségével konfigurálható az Azure ar
 * **-v vagy--verbose** – részletes naplózás engedélyezése
 
 A **csatlakozást**, a **leválasztást**és az **újracsatlakozást** manuálisan is végrehajthatja interaktív módon, vagy automatizálhatja ugyanazzal a szolgáltatással, amelyet több ügynök bevezetéséhez vagy egy Microsoft Identity platform [hozzáférési jogkivonatának](../../active-directory/develop/access-tokens.md)használatával használ. Ha nem használ egyszerű szolgáltatásnevet a számítógép Azure arc for Servers (előzetes verzió) szolgáltatáshoz való regisztrálásához, tekintse meg az alábbi [cikket](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) egy egyszerű szolgáltatásnév létrehozásához.
+
+>[!NOTE]
+>A **azcmagent**futtatásához *rendszergazdai* jogosultságokkal kell rendelkeznie a Linux rendszerű gépeken.
 
 ### <a name="connect"></a>Kapcsolódás
 
@@ -312,7 +315,7 @@ Ha úgy szeretné konfigurálni az ügynököt, hogy a proxykiszolgáló haszná
 sudo azcmagent_proxy remove
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Megtudhatja, hogyan kezelheti a gépet [Azure Policy](../../governance/policy/overview.md)használatával, például a virtuális gép [vendég konfigurációjában](../../governance/policy/concepts/guest-configuration.md), ellenőrizheti, hogy a gép a várt log Analytics munkaterületről jelent-e jelentést, lehetővé teszi a figyelést a virtuális [gépekkel Azure monitor](../../azure-monitor/insights/vminsights-enable-at-scale-policy.md)és sok más további műveletet.
 
