@@ -1,19 +1,19 @@
 ---
 title: Válassza ki a megfelelő árképzési szintet | Microsoft Azure térképek
 description: Ebben a cikkben a Microsoft Azure Maps által kínált díjszabási csomagokat ismerheti meg.
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 01/15/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: a8bf7ff9bacd4fe84ee5b64d0aed5cb271ce06f8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4b32706822ff16780388f4acb5d59bf3d91e6d91
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80335660"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87133333"
 ---
 # <a name="choose-the-right-pricing-tier-in-azure-maps"></a>Válassza ki a megfelelő díjszabási szintet Azure Maps
 
@@ -33,7 +33,7 @@ A S0 díjszabási szintje Önnek megfelelő, ha az alapszintű Térinformatikai 
 | Szatellit képek                       |                     | ✓        |
 | Keresés                                  | ✓                    | ✓        |
 | Batch-keresés                            |                     | ✓        |
-| Útválasztás                                   | ✓                    |✓        |
+| Útvonal                                   | ✓                    |✓        |
 | Kötegelt Útválasztás                            |                    | ✓        |
 | Mátrix-Útválasztás                          |                     | ✓        |
 | Útvonal tartománya (izokrón)                |                     | ✓        |

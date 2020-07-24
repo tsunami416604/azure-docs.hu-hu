@@ -2,27 +2,25 @@
 title: fájl belefoglalása
 description: fájl belefoglalása
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: include
 ms.custom: include file
 ms.date: 04/27/2020
-ms.author: diberry
-ms.openlocfilehash: 237ba5ba390b4065a67f29611fbd43375c239578
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: ddf16334830b64c57e9d09a75dfc80fc319a9ccd
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82188864"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87133841"
 ---
-[A dokumentációs](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-personalizer/?view=azure-node-latest) |[könyvtár forráskód](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-personalizer) | [-csomagjához (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-personalizer) | tartozó[minták](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/quickstarts/node/sample.js)
+[Dokumentáció](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-personalizer/?view=azure-node-latest)  | [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-personalizer)  |  [Csomag (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-personalizer)  |  [Példák](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/quickstarts/node/sample.js)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
-* A [Node. js](https://nodejs.org) és a NPM jelenlegi verziója.
+* A [Node.js](https://nodejs.org) és a NPM jelenlegi verziója.
 
 ## <a name="using-this-quickstart"></a>A rövid útmutató használata
 
@@ -47,15 +45,15 @@ Egy konzolablak (például a cmd, a PowerShell vagy a bash) ablakban hozzon lét
 mkdir myapp && cd myapp
 ```
 
-`package.json` Fájl létrehozásához futtassa a `npm init -y` parancsot.
+`npm init -y`Fájl létrehozásához futtassa a parancsot `package.json` .
 
 ```console
 npm init -y
 ```
 
-## <a name="install-the-nodejs-library-for-personalizer"></a>A Node. js-függvénytár telepítése személyre szabáshoz
+## <a name="install-the-nodejs-library-for-personalizer"></a>A Node.js könyvtárának telepítése személyre szabáshoz
 
-Telepítse a (z) Node. js-hez készült személyre szabott ügyféloldali kódtárat a következő paranccsal:
+Telepítse a Node.js személyre szabott ügyféloldali kódtárat a következő paranccsal:
 
 ```console
 npm install @azure/cognitiveservices-personalizer --save
@@ -79,7 +77,7 @@ A jutalom meghatározása ebben a rövid útmutatóban triviális. Éles rendsze
 
 ## <a name="code-examples"></a>Kódpéldák
 
-Ezek a kódrészletek megmutatják, hogyan hajthatja végre a következőket a következővel: Node. js-hez készült személyre szabott ügyféloldali kódtár:
+Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következőket a Node.js személyre szabott ügyféloldali kódtár használatával:
 
 * [Személyre szabott ügyfél létrehozása](#create-a-personalizer-client)
 * [Rangsor API](#request-the-best-action)
@@ -87,23 +85,23 @@ Ezek a kódrészletek megmutatják, hogyan hajthatja végre a következőket a k
 
 ## <a name="create-a-new-nodejs-application"></a>Új Node.js-alkalmazás létrehozása
 
-Hozzon létre egy új Node. js-alkalmazást az előnyben részesített `sample.js`szerkesztőben vagy a nevű ide-ben.
+Hozzon létre egy új Node.js alkalmazást az előnyben részesített szerkesztőben vagy a nevű IDE-ben `sample.js` .
 
 ## <a name="add-the-dependencies"></a>Függőségek hozzáadása
 
-Nyissa meg a **sample. js** fájlt az előnyben részesített szerkesztőben vagy az ide-ben. Adja hozzá a `requires` következőt a NPM-csomagok hozzáadásához:
+Nyissa meg a **sample.js** fájlt az előnyben részesített szerkesztőben vagy az ide-ben. Adja hozzá a következőt a `requires` NPM-csomagok hozzáadásához:
 
 [!code-javascript[Add module dependencies](~/samples-personalizer/quickstarts/node/sample.js?name=Dependencies)]
 
 ## <a name="add-personalizer-resource-information"></a>Személyre szabott erőforrás-információk hozzáadása
 
-Hozzon létre változókat az erőforráshoz tartozó Azure-kulcshoz és végponthoz a `PERSONALIZER_KEY` ( `PERSONALIZER_ENDPOINT`z) és a (z) nevű környezeti változók alapján. Ha az alkalmazás elindítása után hozta létre a környezeti változókat, akkor a változó eléréséhez be kell zárnia és újra kell töltenie a szerkesztőt, az IDE-t vagy a shellt. A metódusokat később a rövid útmutatóban fogja létrehozni.
+Hozzon létre változókat az erőforráshoz tartozó Azure-kulcshoz és végponthoz a (z) és a (z) nevű környezeti változók alapján `PERSONALIZER_KEY` `PERSONALIZER_ENDPOINT` . Ha az alkalmazás elindítása után hozta létre a környezeti változókat, akkor a változó eléréséhez be kell zárnia és újra kell töltenie a szerkesztőt, az IDE-t vagy a shellt. A metódusokat később a rövid útmutatóban fogja létrehozni.
 
 [!code-javascript[Add Personalizer resource information](~/samples-personalizer/quickstarts/node/sample.js?name=AuthorizationVariables)]
 
 ## <a name="create-a-personalizer-client"></a>Személyre szabott ügyfél létrehozása
 
-Ezután hozzon létre egy metódust, amely egy személyre szabott ügyfelet ad vissza. A metódus paramétere a `PERSONALIZER_RESOURCE_ENDPOINT` és a ApiKey. `PERSONALIZER_RESOURCE_KEY`
+Ezután hozzon létre egy metódust, amely egy személyre szabott ügyfelet ad vissza. A metódus paramétere a `PERSONALIZER_RESOURCE_ENDPOINT` és a ApiKey `PERSONALIZER_RESOURCE_KEY` .
 
 [!code-javascript[Create a Personalizer client](~/samples-personalizer/quickstarts/node/sample.js?name=Client)]
 
@@ -132,7 +130,7 @@ Adja hozzá a következő metódusokat, amelyek [megkapják a tartalom választ�
 
 ## <a name="request-the-best-action"></a>A legjobb művelet kérése
 
-A rangsorolási kérelem teljesítéséhez a program megkéri a felhasználó beállításait, hogy hozzon létre tartalmakat. A folyamat létrehozhat olyan tartalmat, amely kizárható a műveletekből, `excludeActions`a következő módon:. A rangsorolási kérelemnek szüksége van a [műveletekre](../concepts-features.md#actions-represent-a-list-of-options) és azok szolgáltatásaira, a LicenseManager CurrentContext szolgáltatásaira, a excludeActions és egy egyedi rangú esemény-azonosítóra, hogy megkapja a rangsorolt választ.
+A rangsorolási kérelem teljesítéséhez a program megkéri a felhasználó beállításait, hogy hozzon létre tartalmakat. A folyamat létrehozhat olyan tartalmat, amely kizárható a műveletekből, a következő módon: `excludeActions` . A rangsorolási kérelemnek szüksége van a [műveletekre](../concepts-features.md#actions-represent-a-list-of-options) és azok szolgáltatásaira, a LicenseManager CurrentContext szolgáltatásaira, a excludeActions és egy egyedi rangú esemény-azonosítóra, hogy megkapja a rangsorolt választ.
 
 Ez a rövid útmutató a napszak és a felhasználói élelmiszer-beállítások egyszerű kontextusát tartalmazza. Az éles rendszerekben a [műveletek és szolgáltatások](../concepts-features.md) meghatározása és [értékelése](../concept-feature-evaluation.md) nem triviális kérdés lehet.
 
@@ -149,7 +147,7 @@ Ez a rövid útmutató egy egyszerű számot rendel hozzá a jutalom pontszámá
 
 ## <a name="run-the-program"></a>A program futtatása
 
-Futtassa az alkalmazást a Node. js-ből az alkalmazás könyvtárából.
+Futtassa az alkalmazást a Node.js az alkalmazás könyvtárából.
 
 ```console
 node sample.js

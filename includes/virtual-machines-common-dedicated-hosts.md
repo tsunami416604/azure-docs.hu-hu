@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/10/2020
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 7cf03de2efdb1026934985c225a2a9eecbfbb5a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 24e4554e2202c8b5452193e1b0f48cf6c8ada5dd
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84902713"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87133845"
 ---
 ## <a name="limitations"></a>Korlátozások
 
@@ -79,7 +79,15 @@ A dedikált gazdagép kiosztása után az Azure hozzárendeli azt a fizikai kisz
 
 ## <a name="quotas"></a>Kvóták
 
-Az alapértelmezett kvóta 3000 vCPU a dedikált gazdagépekhez régiónként. Az üzembe helyezhető gazdagépek számát azonban a gazdagéphez használt virtuálisgép-mérethez tartozó kvóta is korlátozza. Az utólagos **elszámolású előfizetések** esetében például az USA keleti régiójában csak 10 vCPU lehet elérhető az Dsv3-méretekhez. Ebben az esetben a dedikált gazdagép üzembe helyezése előtt a kvóta növelését legalább 64 vCPU kell megadnia. Ha szükséges, kattintson a jobb felső sarokban található **kérelem növelés** gombra.
+A dedikált gazdagépek telepítésekor két típusú kvóta használható.
+
+1. Dedikált gazdagép vCPU kvótája. Az alapértelmezett kvóta 3000 vCPU, régiónként.
+1. Virtuálisgép-méret család kvótája. Az utólagos **elszámolású előfizetések** esetében például az USA keleti régiójában csak 10 vCPU lehet elérhető az Dsv3-méretekhez. Dsv3 dedikált gazdagép üzembe helyezéséhez a dedikált gazdagép üzembe helyezése előtt a kvóta növelését legalább 64 vCPU kell megadnia. 
+
+A kvóta növeléséhez hozzon létre egy támogatási kérelmet a [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+
+A dedikált gazdagép kiépítés a dedikált gazdagép-vCPU és a virtuálisgép-család vCPU kvótáját is felhasználja, de nem fogja használni a regionális vCPU.
+
 
 ![Képernyőkép a portál használati és kvóták oldaláról](./media/virtual-machines-common-dedicated-hosts/quotas.png)
 

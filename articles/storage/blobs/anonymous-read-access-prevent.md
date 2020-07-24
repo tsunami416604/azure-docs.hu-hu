@@ -6,27 +6,29 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/13/2020
+ms.date: 07/23/2020
 ms.author: tamram
 ms.reviewer: fryu
-ms.openlocfilehash: 24d726f7600c3ba80833640be8036bf0daa2c014
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e30c4142232a2d695204f5c8f612eb44791c847c
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518724"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87133163"
 ---
 # <a name="prevent-anonymous-public-read-access-to-containers-and-blobs"></a>Tárolók és Blobok névtelen nyilvános olvasási hozzáférésének tiltása
 
 Az Azure Storage szolgáltatásban tárolt tárolók és Blobok névtelen nyilvános olvasási hozzáférése kényelmes módszer az adatmegosztáshoz, de biztonsági kockázatot jelenthet. Fontos, hogy megfontoltan kezelje a névtelen hozzáférést, és Ismerje meg, hogyan értékelheti ki a névtelen hozzáférést az adataihoz. Az üzemeltetés bonyolultsága, az emberi hiba, vagy a nyilvánosan elérhető adatvédelemmel szembeni rosszindulatú támadás költséges adatvesztést eredményezhet. A Microsoft azt javasolja, hogy csak akkor engedélyezze a névtelen hozzáférést, ha az alkalmazási forgatókönyvhöz szükséges.
 
-Alapértelmezés szerint a megfelelő engedélyekkel rendelkező felhasználók a tárolók és a Blobok nyilvános hozzáférését is konfigurálhatják. A Storage-fiók szintjén megtilthatja az összes nyilvános hozzáférést. Ha letiltja a nyilvános Blobok hozzáférését a Storage-fiókhoz, a fiókban lévő tárolók nem konfigurálhatók nyilvános hozzáférésre. A nyilvános hozzáférésre már konfigurált tárolók már nem fogadják el a névtelen kérelmeket. További információ: [Névtelen nyilvános olvasási hozzáférés beállítása tárolók és Blobok](anonymous-read-access-configure.md)számára.
+Alapértelmezés szerint a blob-adataihoz való nyilvános hozzáférés mindig tiltott. A Storage-fiók alapértelmezett konfigurációja azonban lehetővé teszi, hogy a felhasználó megfelelő engedélyekkel konfigurálja a tárolók és Blobok nyilvános hozzáférését egy Storage-fiókban. A fokozott biztonság érdekében megtilthatja az összes nyilvános hozzáférést a Storage-fiókhoz, függetlenül az egyes tárolók nyilvános hozzáférési beállításától. A Storage-fiókhoz való nyilvános hozzáférés letiltása megakadályozza, hogy a felhasználó engedélyezze a fiókban lévő tárolók nyilvános elérését. A Microsoft azt javasolja, hogy a Storage-fiókhoz való nyilvános hozzáférést csak akkor engedélyezze, ha a forgatókönyv megköveteli. A nyilvános hozzáférés letiltásával megakadályozható, hogy a nem kívánt névtelen hozzáférés miatt illetéktelenek legyenek az adatmegsértések.
+
+Ha letiltja a nyilvános Blobok hozzáférését a Storage-fiókhoz, az Azure Storage elutasítja az adott fiókhoz tartozó névtelen kérelmeket. Miután a nyilvános hozzáférés nem engedélyezett egy fiók esetében, a fiókban lévő tárolók nem konfigurálhatók a nyilvános hozzáféréshez. A nyilvános hozzáférésre már konfigurált tárolók már nem fogadják el a névtelen kérelmeket. További információ: [Névtelen nyilvános olvasási hozzáférés beállítása tárolók és Blobok](anonymous-read-access-configure.md)számára.
 
 Ez a cikk bemutatja, hogyan elemezheti a névtelen kérelmeket egy Storage-fiókkal, és hogyan akadályozhatja meg a névtelen hozzáférést a teljes Storage-fiókhoz vagy egy adott tárolóhoz.
 
 ## <a name="detect-anonymous-requests-from-client-applications"></a>Ügyfélalkalmazások névtelen kérelmének észlelése
 
-Ha nem engedélyezi a nyilvános olvasási hozzáférést egy Storage-fiókhoz, a rendszer elutasítja a hozzáférést a tárolók és a Blobok számára, amelyek jelenleg nyilvános hozzáférésre vannak konfigurálva. A Storage-fiókhoz való nyilvános hozzáférés letiltása felülbírálja a Storage-fiókban lévő összes tároló nyilvános hozzáférési beállításait. Ha a Storage-fiókhoz való nyilvános hozzáférés nem engedélyezett, a fiókra vonatkozó jövőbeli névtelen kérelmek sikertelenek lesznek.
+Ha nem engedélyezi a nyilvános olvasási hozzáférést egy Storage-fiókhoz, a rendszer elutasítja a hozzáférést a tárolók és a Blobok számára, amelyek jelenleg nyilvános hozzáférésre vannak konfigurálva. A Storage-fiókhoz való nyilvános hozzáférés letiltása felülbírálja a Storage-fiókban lévő egyes tárolók nyilvános hozzáférési beállításait. Ha a Storage-fiókhoz való nyilvános hozzáférés nem engedélyezett, a fiókra vonatkozó jövőbeli névtelen kérelmek sikertelenek lesznek.
 
 Annak megismeréséhez, hogy a nyilvános hozzáférés letiltása milyen hatással lehet az ügyfélalkalmazások alkalmazására, a Microsoft javasolja, hogy engedélyezze a naplózást és a metrikákat az adott fiókhoz, és elemezze a névtelen kérések mintáit egy adott időtartamon belül. A metrikák használatával határozza meg a Storage-fiókhoz való névtelen kérések számát, és a naplók segítségével határozza meg, hogy mely tárolók névtelenül érhetők el.
 
@@ -156,7 +158,7 @@ $ctx = $storageAccount.Context
 New-AzStorageContainer -Name $containerName -Permission Blob -Context $ctx
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Névtelen nyilvános olvasási hozzáférés konfigurálása a tárolók és a Blobok számára](anonymous-read-access-configure.md)
 - [Nyilvános tárolók és Blobok elérése névtelenül a .NET-tel](anonymous-read-access-client.md)

@@ -2,19 +2,17 @@
 title: fájl belefoglalása
 description: fájl belefoglalása
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
 ms.custom: include file
 ms.date: 04/16/2020
-ms.author: diberry
-ms.openlocfilehash: 1c3631b4a2964c5e3a8d8267d1934a5822966342
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: ac0192da3afa76c3c21056f218f2b249c44d1c36
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83673441"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87133846"
 ---
 Cognitive Services két természetes nyelvi feldolgozási szolgáltatást biztosít, [Language Understanding](../luis/what-is-luis.md) és [QnA Maker](../qnamaker/overview/overview.md), amelyek mindegyike más célra szolgál. Ismerje meg, hogy mikor kell használni az egyes szolgáltatásokat, és hogyan kell egymással kiegészíteni őket.
 
@@ -43,7 +41,7 @@ Ha a csevegési robot megkapja a szöveget `How do I get to the Human Resources 
 
 ## <a name="when-do-you-use-luis"></a>Mikor használja a LUIS-t?
 
-Akkor használja a LUIS-t, ha ismernie kell a Kimondás szándékát egy folyamat részeként a csevegési robotban. Ha továbbra is a példában szereplő szövegre `How do I get to the Human Resources building on the Seattle North campus?` kattint, a felhasználó szándéka, hogy megkeresse a helyet, megadhatja a teljes (entitásokkal kihúzott) részletek részleteit egy másik szolgáltatás, például egy szállítási kiszolgáló számára a válasz beszerzéséhez.
+A LUIS használata akkor ajánlott, amikor tisztában kell lennie a beszédelem szándékával a csevegőrobot egyik folyamatának részeként. Ha továbbra is a példában szereplő szövegre `How do I get to the Human Resources building on the Seattle North campus?` kattint, a felhasználó szándéka, hogy megkeresse a helyet, megadhatja a teljes (entitásokkal kihúzott) részletek részleteit egy másik szolgáltatás, például egy szállítási kiszolgáló számára a válasz beszerzéséhez.
 
 Nem kell összekapcsolnia a LUIS és a QnA Makert a szándék meghatározásához.
 
@@ -51,7 +49,7 @@ Nem kell összekapcsolnia a LUIS és a QnA Makert a szándék meghatározásáho
 
 ## <a name="when-do-you-use-qna-maker"></a>Mikor használja a QnA Maker?
 
-A QnA Maker akkor használja, ha a válaszok statikus tudásbázisa van. Ez a Tudásbázis az Ön igényeinek megfelelően egyedi, amelyet dokumentumok, például PDF-EK és URL-címek használatával készített.
+A QnA Makert akkor használja, ha rendelkezésére áll a válaszok statikus tudásbázisa. Ez a tudásbázis az Ön egyedi igényeinek felel meg, és dokumentumokkal, például PDF-ekkel és URL-címekkel hozta létre.
 
 Ha folytatja a példát, `How do I get to the Human Resources building on the Seattle North campus?` küldje el a szöveget lekérdezésként a közzétett QnA Maker szolgáltatásba, és fogadja el a legjobb választ.
 
@@ -75,7 +73,7 @@ Ha a csevegési robotnak több információra van szüksége, mint amennyit a sz
 
 A robot Framework **[elküldési parancssori](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch)** felületének használatával létrehozhat egy folyamatot, amely mindkét szolgáltatással használható. Ez az eszköz egy olyan legjobb LUIS-alkalmazást hoz létre, amely a LUIS és a QnA Maker között alárendelt alkalmazásként való kiszállításra szolgál. [További](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&tabs=cs) információ a Luis, a QnA Maker és a bot keretrendszer integrálásáról.
 
-A bot Builder minta, az **NLP a küldéssel**, [C#](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/14.nlp-with-dispatch) vagy [Node. js](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/14.nlp-with-dispatch)használatával hajtsa végre ezt a típusú csevegési robotot.
+A bot Builder minta, az **NLP a küldéssel**, [C#](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/14.nlp-with-dispatch) vagy [Node.js](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/14.nlp-with-dispatch)segítségével megvalósíthatja ezt a típusú csevegési robotot.
 
 ## <a name="best-practices"></a>Ajánlott eljárások
 

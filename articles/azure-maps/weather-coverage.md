@@ -1,19 +1,19 @@
 ---
 title: Időjárási lefedettség | Microsoft Azure térképek
 description: Ebben a cikkben a Microsoft Azure Maps időjárási lefedettségével kapcsolatos tudnivalókat talál.
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 11/20/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: c18a09b494de7ecb639fbc5639b7162bdb02d2a6
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: d6e08f53fa6c5fbfa8e7f4569b7475c21e40dc05
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86241981"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87133214"
 ---
 # <a name="azure-maps-weather-coverage"></a>Azure Maps időjárási lefedettség
 
@@ -23,12 +23,12 @@ Azure Maps az összes ország és régió esetében nem rendelkezik azonos szint
 
 Az alábbi táblázat az egyes országokból/régióktól kérhető időjárási információkról nyújt információt.
 
-| Szimbólum | Jelentés |
+| Szimbólum | Értelmezés |
 |--------|---------|
 |*       |A Route, a CURRENT conditions, az óránkénti előrejelzés, a negyedéves előrejelzés és a napi előrejelzési API-k esetében érvényes. |
 
 
-## <a name="americas"></a>Amerika
+## <a name="americas"></a>Észak-, Dél- és Közép-Amerika
 
 | Ország/régió              |  Műholdas csempék | Perc előrejelzés, radar csempék | Más | 
 |-----------------------------|:----------------:|:-----------------:|:--------:|  

@@ -2,22 +2,20 @@
 title: fájl belefoglalása
 description: fájl belefoglalása
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: include
 ms.custom: include file
 ms.date: 04/27/2020
-ms.author: diberry
-ms.openlocfilehash: d35f11125809167c4834b33f913d9369a6402ac0
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: b602ab1a6aa6f9c4c153924bce63da12d872a62e
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82188865"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87133844"
 ---
-[A dokumentációs](https://docs.microsoft.com/python/api/azure-cognitiveservices-personalizer/azure.cognitiveservices.personalizer?view=azure-python) | [könyvtár forráskód](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-personalizer) | [-csomagjához (PyPI)](https://pypi.org/project/azure-cognitiveservices-personalizer/) | tartozó[minták](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/quickstarts/python/sample.py)
+[Dokumentáció](https://docs.microsoft.com/python/api/azure-cognitiveservices-personalizer/azure.cognitiveservices.personalizer?view=azure-python)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-personalizer)  |  [Csomag (PyPI)](https://pypi.org/project/azure-cognitiveservices-personalizer/)  |  [Példák](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/quickstarts/python/sample.py)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -67,7 +65,7 @@ Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következőket a 
 
 ## <a name="create-a-new-python-application"></a>Új Python-alkalmazás létrehozása
 
-Hozzon létre egy új Python-alkalmazást az előnyben részesített `sample.py`szerkesztőben vagy a nevű ide-ben.
+Hozzon létre egy új Python-alkalmazást az előnyben részesített szerkesztőben vagy a nevű IDE-ben `sample.py` .
 
 ## <a name="add-the-dependencies"></a>Függőségek hozzáadása
 
@@ -77,15 +75,15 @@ A projekt könyvtárában nyissa meg a **sample.py** fájlt az előnyben részes
 
 ## <a name="add-personalizer-resource-information"></a>Személyre szabott erőforrás-információk hozzáadása
 
-Hozzon létre változókat az erőforráshoz tartozó Azure-kulcshoz és végponthoz a `PERSONALIZER_RESOURCE_KEY` ( `PERSONALIZER_RESOURCE_ENDPOINT`z) és a (z) nevű környezeti változók alapján. Ha az alkalmazás elindítása után hozta létre a környezeti változókat, akkor a változó eléréséhez be kell zárnia és újra kell töltenie a szerkesztőt, az IDE-t vagy a shellt. A metódusokat később a rövid útmutatóban fogja létrehozni.
+Hozzon létre változókat az erőforráshoz tartozó Azure-kulcshoz és végponthoz a (z) és a (z) nevű környezeti változók alapján `PERSONALIZER_RESOURCE_KEY` `PERSONALIZER_RESOURCE_ENDPOINT` . Ha az alkalmazás elindítása után hozta létre a környezeti változókat, akkor a változó eléréséhez be kell zárnia és újra kell töltenie a szerkesztőt, az IDE-t vagy a shellt. A metódusokat később a rövid útmutatóban fogja létrehozni.
 
-Az erőforrás neve a végpont URL-címének része `https://<your-resource-name>.api.cognitive.microsoft.com/`:.
+Az erőforrás neve a végpont URL-címének része: `https://<your-resource-name>.api.cognitive.microsoft.com/` .
 
 [!code-python[Create variables to hold the Personalizer resource key and endpoint values found in the Azure portal.](~/samples-personalizer/quickstarts/python/sample.py?name=AuthorizationVariables)]
 
 ## <a name="create-a-personalizer-client"></a>Személyre szabott ügyfél létrehozása
 
-Ezután hozzon létre egy metódust, amely egy személyre szabott ügyfelet ad vissza. A metódus paramétere a `PERSONALIZER_RESOURCE_ENDPOINT` és a ApiKey. `PERSONALIZER_RESOURCE_KEY`
+Ezután hozzon létre egy metódust, amely egy személyre szabott ügyfelet ad vissza. A metódus paramétere a `PERSONALIZER_RESOURCE_ENDPOINT` és a ApiKey `PERSONALIZER_RESOURCE_KEY` .
 
 [!code-python[Create the Personalizer client](~/samples-personalizer/quickstarts/python/sample.py?name=Client)]
 
@@ -116,7 +114,7 @@ Adja hozzá a következő metódusokat, amelyek [megkapják a tartalom választ�
 ## <a name="request-the-best-action"></a>A legjobb művelet kérése
 
 
-A rangsorolási kérelem teljesítéséhez a program megkéri a felhasználó beállításait, hogy hozzon létre egy `currentContent` tartalom-választási lehetőséget. A folyamat létrehozhat olyan tartalmat, amely kizárható a műveletekből, `excludeActions`a következő módon:. A válasz fogadásához a Rank kérelemnek szüksége van a műveletekre és azok szolgáltatásaira, a LicenseManager CurrentContext szolgáltatásaira, a excludeActions és egy egyedi esemény-AZONOSÍTÓra.
+A rangsorolási kérelem teljesítéséhez a program megkéri a felhasználó beállításait, hogy hozzon létre egy `currentContent` tartalom-választási lehetőséget. A folyamat létrehozhat olyan tartalmat, amely kizárható a műveletekből, a következő módon: `excludeActions` . A válasz fogadásához a Rank kérelemnek szüksége van a műveletekre és azok szolgáltatásaira, a LicenseManager CurrentContext szolgáltatásaira, a excludeActions és egy egyedi esemény-AZONOSÍTÓra.
 
 Ez a rövid útmutató a napszak és a felhasználói élelmiszer-beállítások egyszerű kontextusát tartalmazza. Az éles rendszerekben a [műveletek és szolgáltatások](../concepts-features.md) meghatározása és [értékelése](../concept-feature-evaluation.md) nem triviális kérdés lehet.
 

@@ -1,20 +1,20 @@
 ---
 title: Áttekintés | Microsoft Azure térképek
 description: Ismerkedjen meg Microsoft Azure Maps szolgáltatásaival és képességeivel, és hogyan használhatja őket az alkalmazásokban.
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 01/15/2020
 ms.topic: overview
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, references_regions
-ms.openlocfilehash: 2b6c61c5c144923ece80fddf8a1412d68f35ad52
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 56dce7f52c172255ae316a9171555b8687b7c683
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86242873"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87133418"
 ---
 # <a name="what-is-azure-maps"></a>Mi az Azure Maps?
 
@@ -57,7 +57,7 @@ Mobil leképezési alkalmazások létrehozásához használja a Azure Maps Andro
 
 Azure Maps a következő kilenc szolgáltatásból áll, amelyek földrajzi kontextust biztosítanak az Azure-alkalmazásokhoz.
 
-### <a name="data-service"></a>Adatszolgáltatás
+### <a name="data-service"></a>Data szolgáltatás
 
 Az adatleképezések esetében elengedhetetlen az adatkezelés. Az adatszolgáltatással a térbeli adatok és a képek összeállításával használható térinformatikai adatok tölthetők fel és tárolhatók.  Az ügyféladatok a Azure Maps szolgáltatáshoz közelebb hozása csökkenti a késést, növeli a termelékenységet, és új forgatókönyveket hoz létre az alkalmazásaiban. A szolgáltatással kapcsolatos részletekért tekintse meg az [adatszolgáltatási API dokumentációját](https://docs.microsoft.com/rest/api/maps/data).
 
@@ -159,7 +159,7 @@ Az IP-cím használatával megtekintheti az IP-címek beolvasott kétbetűs orsz
 
 Ha további részleteket szeretne megtudni a REST API IP-címéről, olvassa el az [Azure Maps Térinformatikai API dokumentációját](https://docs.microsoft.com/rest/api/maps/geolocation).
 
-## <a name="programming-model"></a>Programozási modell
+## <a name="programming-model"></a>A programozási modell
 
 A Azure Maps a mobilitáshoz készült, és több platformon futó alkalmazások fejlesztéséhez is segítséget nyújt. Olyan programozási modellt használ, amely az agnosztikus nyelvét használja, és támogatja a JSON-kimenetet a [REST API](https://docs.microsoft.com/rest/api/maps/)-kon keresztül.
 
@@ -190,7 +190,7 @@ A Azure Maps API-k jelenleg az összes országban és régióban érhetők el, a
 
 Ellenőrizze, hogy az aktuális IP-cím helye támogatott országban/régióban található-e.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Próbálja ki a Azure Mapst bemutató minta alkalmazást:
 

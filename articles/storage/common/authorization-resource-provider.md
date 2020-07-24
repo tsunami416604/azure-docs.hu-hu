@@ -9,12 +9,12 @@ ms.date: 12/12/2019
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 73077b6b25c09c17deb4ad468c79fe6d5ddd648e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 634e1866a2c3e30e0750b9e6f4b2b3f93db2f8dc
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85833255"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87133112"
 ---
 # <a name="use-the-azure-storage-resource-provider-to-access-management-resources"></a>Az Azure Storage erőforrás-szolgáltató használata a kezelési erőforrások eléréséhez
 
@@ -26,7 +26,7 @@ Az Azure Storage erőforrás-szolgáltatóval olyan műveleteket hajthat végre,
 
 A Microsoft két REST API-t biztosít az Azure Storage-erőforrások használatához. Ezek az API-k az Azure Storage-ban végrehajtható összes művelet alapját képezik. Az Azure Storage REST API lehetővé teszi a Storage-fiókban tárolt adatkezelést, beleértve a blob-, üzenetsor-, fájl-és táblázat-adatmennyiséget. Az Azure Storage erőforrás-szolgáltató REST API lehetővé teszi a Storage-fiókkal és a kapcsolódó erőforrásokkal való munkát.
 
-A blob-adatok olvasását vagy írását kérő kérelem eltérő engedélyeket igényel, mint a felügyeleti műveletet végrehajtó kérelem. A RBAC részletesen szabályozza az engedélyeket mindkét típusú erőforráshoz. Ha RBAC-szerepkört rendel egy rendszerbiztonsági tag számára, győződjön meg arról, hogy megértette, hogy milyen engedélyeket kap a résztvevő. Az egyes beépített RBAC-szerepkörökhöz társított műveletek részletes ismertetését lásd: [beépített szerepkörök az Azure-erőforrásokhoz](../../role-based-access-control/built-in-roles.md).
+A blob-adatok olvasását vagy írását kérő kérelem eltérő engedélyeket igényel, mint a felügyeleti műveletet végrehajtó kérelem. A RBAC részletesen szabályozza az engedélyeket mindkét típusú erőforráshoz. Ha RBAC-szerepkört rendel egy rendszerbiztonsági tag számára, győződjön meg arról, hogy megértette, hogy milyen engedélyeket kap a résztvevő. Az egyes beépített RBAC-szerepkörökhöz társított műveletek részletes ismertetését az [Azure beépített szerepköreivel](../../role-based-access-control/built-in-roles.md)foglalkozó cikkben tekintheti meg.
 
 Az Azure Storage támogatja az Azure AD-t a blob-és üzenetsor-tárolással kapcsolatos kérések engedélyezéséhez. A blob-és üzenetsor-műveletek RBAC szerepköreivel kapcsolatos további információkért lásd: a [blobok és várólisták hozzáférésének engedélyezése Active Directory használatával](storage-auth-aad.md).
 
@@ -34,7 +34,7 @@ Az Azure Storage támogatja az Azure AD-t a blob-és üzenetsor-tárolással kap
 
 Minden Azure-előfizetéshez tartozik egy társított Azure Active Directory, amely kezeli a felhasználókat, a csoportokat és az alkalmazásokat. A [Microsoft Identity platform](/azure/active-directory/develop/)kontextusában egy felhasználót, csoportot vagy alkalmazást is a rendszerbiztonsági tag néven is ismert. A szerepkör alapú hozzáférés-vezérlés (RBAC) segítségével hozzáférést biztosíthat az előfizetésben lévő erőforrásokhoz egy olyan rendszerbiztonsági tag számára, amely a Active Directoryban van definiálva.
 
-Ha RBAC-szerepkört rendel egy rendszerbiztonsági tag számára, akkor azt a hatókört is jelzi, amelyen a szerepkör által biztosított engedélyek érvényben vannak. Felügyeleti műveletekhez hozzárendelhet egy szerepkört az előfizetés, az erőforráscsoport vagy a Storage-fiók szintjén. RBAC-szerepkört hozzárendelhet egy rendszerbiztonsági tag számára a [Azure Portal](https://portal.azure.com/), az [Azure CLI-eszközök](../../cli-install-nodejs.md), a [PowerShell](/powershell/azureps-cmdlets-docs)vagy az [Azure Storage erőforrás-szolgáltató REST API](/rest/api/storagerp)használatával.
+Ha RBAC-szerepkört rendel egy rendszerbiztonsági tag számára, akkor azt a hatókört is jelzi, amelyen a szerepkör által biztosított engedélyek érvényben vannak. Felügyeleti műveletekhez hozzárendelhet egy szerepkört az előfizetés, az erőforráscsoport vagy a Storage-fiók szintjén. RBAC-szerepkört hozzárendelhet egy rendszerbiztonsági tag számára a [Azure Portal](https://portal.azure.com/), az [Azure CLI-eszközök](../../cli-install-nodejs.md), a [PowerShell](/powershell/azure/)vagy az [Azure Storage erőforrás-szolgáltató REST API](/rest/api/storagerp)használatával.
 
 További információ: [Mi az az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)?](../../role-based-access-control/overview.md) és a [klasszikus előfizetés-rendszergazdai szerepkörök, az Azure RBAC szerepkörei és az Azure ad rendszergazdai szerepkörei](../../role-based-access-control/rbac-and-directory-admin-roles.md).
 
@@ -57,7 +57,7 @@ A tábla harmadik oszlopa azt jelzi, hogy a beépített szerepkör támogatja-e 
 
 ### <a name="custom-roles-for-management-operations"></a>Egyéni szerepkörök felügyeleti műveletekhez
 
-Az Azure Emellett támogatja az egyéni RBAC-szerepkörök definiálását a felügyeleti erőforrásokhoz való hozzáféréshez. További információ az egyéni szerepkörökről: [Egyéni szerepkörök az Azure-erőforrásokhoz](../../role-based-access-control/custom-roles.md).
+Az Azure Emellett támogatja az egyéni Azure-szerepkörök definiálását a felügyeleti erőforrásokhoz való hozzáféréshez. További információ az egyéni szerepkörökről: [Egyéni Azure-szerepkörök](../../role-based-access-control/custom-roles.md).
 
 ## <a name="code-samples"></a>Kódminták
 
