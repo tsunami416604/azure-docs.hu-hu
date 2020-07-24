@@ -18,12 +18,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: ff37a3ecb55c6ee034d3fd2558909c3b4ef1d375
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 3065cd6f185c0fdfaea1d6c0d02d2fee69bd04c7
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223431"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87116934"
 ---
 # <a name="tutorial-send-location-based-push-notifications-with-notification-hubs-and-bing-spatial-data"></a>Oktatóanyag: Location-alapú leküldéses értesítések küldése a Notification Hubs és a Bing térbeli adatainak
 
@@ -63,7 +63,7 @@ Ebben az oktatóanyagban a következő lépéseket hajtja végre:
 
     A folyamatfájl a következő entitást jelöli:
 
-    ![Képernyőkép a San Francisco Waterfront egy AP-ről egy piros sokszögtel, amely a mólók területét körvonalazza.](./media/notification-hubs-geofence/bing-maps-geofence.png)
+    ![Képernyőkép a San Francisco Waterfront-ról egy vörös sokszögű térképről, amely a mólók területét vázolja fel.](./media/notification-hubs-geofence/bing-maps-geofence.png)
 5. Az **Upload data as a data source** (Adat feltöltése adatforrásként) oldalon tegye a következőket:
    1. Válassza ki a **pipe** (folyamat) elemet a **Data format** (Adatformátum) beállításnál.
    2. Tallózással keresse meg és válassza ki az `NotificationHubGeofence.pipe` előző lépésben létrehozott fájlt.
@@ -164,7 +164,7 @@ Ebben az oktatóanyagban a következő lépéseket hajtja végre:
     }
     ```
 
-    További információ a felhasználó helyének a UWP-alkalmazásokban való beszerzéséről:[a felhasználó helyének beolvasása](https://msdn.microsoft.com/library/windows/apps/mt219698.aspx).
+    További információ a felhasználó helyének a UWP-alkalmazásokban való beszerzéséről:[a felhasználó helyének beolvasása](/windows/uwp/maps-and-location/get-location).
 5. Nyissa meg a főoldal (`MainPage.xaml.cs`) kódoldalát annak ellenőrzéséhez, hogy a helyadatok lekérése valóban működik-e. Hozzon létre egy új eseménykezelőt a `Loaded` eseményhez a `MainPage` konstruktorban.
 
     ```csharp
@@ -389,11 +389,11 @@ Ebben az oktatóanyagban a következő lépéseket hajtja végre:
 
     ![Képernyőkép a TESZTÜZENET megjelenítéséről a Windows asztalról.](./media/notification-hubs-geofence/notification-hubs-test-notification.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További lépésekre is szükség lehet, hogy a megoldás éles környezetben is használható legyen.
 
-1. Mindenekelőtt a geokerítések dinamikus viselkedését kell biztosítania. Ehhez úgy kell beállítani a Bing API-t, hogy új határvonalakat tudjon feltölteni a meglévő adatforráson belül. Erről a [Bing Spatial Data Services API-dokumentációjában](https://msdn.microsoft.com/library/ff701734.aspx) talál további információt.
+1. Mindenekelőtt a geokerítések dinamikus viselkedését kell biztosítania. Ehhez úgy kell beállítani a Bing API-t, hogy új határvonalakat tudjon feltölteni a meglévő adatforráson belül. Erről a [Bing Spatial Data Services API-dokumentációjában](/bingmaps/spatial-data-services/) talál további információt.
 2. Ezután [címkézéssel](notification-hubs-tags-segment-push-message.md) megadhat adott felhasználókat, így biztosíthatja, hogy a megfelelő személyek kapják meg az értesítéseket.
 
-A jelen oktatóanyagban bemutatott megoldás egy olyan forgatókönyvet ismertet, amelyben sokféle célplatform lehetséges, ezért nem korlátozza rendszerspecifikus képességekkel a geokerítés-rendszert. A Univerzális Windows-platform ugyanakkor a [geokerítések azonnali észlelésére](https://msdn.microsoft.com/windows/uwp/maps-and-location/set-up-a-geofence) szolgáló képességekkel rendelkezik.
+A jelen oktatóanyagban bemutatott megoldás egy olyan forgatókönyvet ismertet, amelyben sokféle célplatform lehetséges, ezért nem korlátozza rendszerspecifikus képességekkel a geokerítés-rendszert. A Univerzális Windows-platform ugyanakkor a [geokerítések azonnali észlelésére](/windows/uwp/maps-and-location/set-up-a-geofence) szolgáló képességekkel rendelkezik.

@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 04/27/2020
 ms.author: cshoe
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: aa4087f3eafcd217eedc707697d093155b13b9e6
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: a7cdeb7bfde7396026b782382b34228c309b37d7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83116336"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088144"
 ---
 # <a name="create-a-function-that-integrates-with-azure-logic-apps"></a>Az Azure Logic Apps szolgáltatással integrálható függvények létrehozása
 
@@ -38,7 +38,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 + Egy [Outlook.com](https://outlook.com/)-fiók (az értesítések küldéséhez).
 
 > [!NOTE]
-> Ha a Gmail-összekötőt szeretné használni, csak a G-Suite üzleti fiókok használhatják ezt az összekötőt a Logic apps korlátozásai nélkül. Ha rendelkezik Gmail-fiókkal, akkor a Gmail-összekötőt csak bizonyos Google által jóváhagyott alkalmazásokkal és szolgáltatásokkal használhatja, vagy [létrehozhat egy Google-ügyfélprogramot, amelyet a Gmail-összekötőn való hitelesítéshez használhat](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application). További információkért lásd: [adatbiztonsági és adatvédelmi szabályzatok a Google-összekötők számára a Azure Logic apps](../connectors/connectors-google-data-security-privacy-policy.md).
+> Ha a Gmail-összekötőt szeretné használni, csak a G-Suite üzleti fiókok használhatják ezt az összekötőt a Logic apps korlátozásai nélkül. Ha rendelkezik Gmail-fiókkal, akkor a Gmail-összekötőt csak bizonyos Google által jóváhagyott alkalmazásokkal és szolgáltatásokkal használhatja, vagy [létrehozhat egy Google-ügyfélprogramot, amelyet a Gmail-összekötőn való hitelesítéshez használhat](/connectors/gmail/#authentication-and-bring-your-own-application). További információkért lásd: [adatbiztonsági és adatvédelmi szabályzatok a Google-összekötők számára a Azure Logic apps](../connectors/connectors-google-data-security-privacy-policy.md).
 
 + A témakör [Az első függvény létrehozása az Azure Portalon](functions-create-first-azure-function.md) című cikkben létrehozott erőforrásokat használja kiindulópontként.
 Hajtsa végre az itt található lépéseket a függvényalkalmazás létrehozásához, ha eddig még nem tette meg.
@@ -59,7 +59,7 @@ A Cognitive Services API-k egyéni erőforrásként érhetők el az Azure-ban. A
     | --- | --- | --- |
     | **Név** | MyCognitiveServicesAccnt | Válasszon egy egyedi fióknevet. |
     | **Hely** | USA nyugati régiója | Az Önhöz legközelebbi helyet használja. |
-    | **Díjszabási csomag** | F0 | Kezdjen a legalacsonyabb szinttel. Ha kifogy a hívásokból, lépjen magasabb szintre.|
+    | **Tarifacsomag** | F0 | Kezdjen a legalacsonyabb szinttel. Ha kifogy a hívásokból, lépjen magasabb szintre.|
     | **Erőforráscsoport** | myResourceGroup | Ugyanazt az erőforráscsoportot használja minden olyan szolgáltatáshoz, amely az oktatóanyagban szóba kerül.|
 
 4. Kattintson a **Létrehozás** gombra az erőforrás létrehozásához. 
@@ -169,8 +169,8 @@ Először kapcsolatot kell létesíteni a Twitter-fiókjával. A logikai alkalma
     | Beállítás      |  Ajánlott érték   | Leírás                                        |
     | ----------------- | ------------ | ------------- |
     | **Keresett szöveg** | #Azure | Olyan hashtaget használjon, amely elég népszerű ahhoz, hogy a választott időszakban új Twitter-üzenetek vonatkozzanak rá. Amikor az ingyenes szintet használja és a hashtag túl népszerű, gyorsan felhasználhatja a Cognitive Services API tranzakciókvótáját. |
-    | **Időköz** | 15 | A Twitter-kérelmek között eltelt idő, a gyakoriság mértékegységében megadva. |
-    | **Gyakoriság** | Perc | A tweetek lekérdezési gyakoriságának mértékegysége.  |
+    | **Intervallum** | 15 | A Twitter-kérelmek között eltelt idő, a gyakoriság mértékegységében megadva. |
+    | **Gyakoriság** | Minute | A tweetek lekérdezési gyakoriságának mértékegysége.  |
 
 3.  Kattintson a **Mentés** gombra, hogy csatlakozzon a Twitter-fiókjához. 
 
@@ -239,11 +239,11 @@ A munkafolyamat utolsó része egy e-mail-értesítés küldésének kiváltása
     
 | Beállítás      |  Ajánlott érték   | Leírás  |
 | ----------------- | ------------ | ------------- |
-| **Címzett** | Írja be az e-mail-címét | Az e-mail-cím, amelyre megérkezik az értesítés. |
+| **Hogy** | Írja be az e-mail-címét | Az e-mail-cím, amelyre megérkezik az értesítés. |
 | **Tárgy** | A tweetek által tükrözött vélemény kedvezőtlen  | Az e-mail-értesítés tárgysora.  |
 | **Törzs** | Tweet szövege, Hely | Kattintson a **Tweet szövege** és a **Hely** paraméterre. |
 
-1. Kattintson a **Save** (Mentés) gombra.
+1. Kattintson a **Mentés** gombra.
 
 Most, hogy a munkafolyamat befejeződött, engedélyezheti a logikai alkalmazást, és megtekintheti a függvényt működés közben.
 
@@ -304,4 +304,3 @@ Folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan hozhat l�
 > [Kiszolgáló nélküli API létrehozása az Azure Functions használatával](functions-create-serverless-api.md)
 
 A Logic Apps szolgáltatással kapcsolatos további információkért lásd: [Azure Logic Apps](../logic-apps/logic-apps-overview.md).
-

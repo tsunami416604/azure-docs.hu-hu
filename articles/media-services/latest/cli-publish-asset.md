@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 01/25/2019
 ms.author: juliako
-ms.openlocfilehash: 44cf234fd8419164f7dd7f8320952a5c6c0842e0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ccc981af63391527473452e2f53e7abd108fb739
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74896119"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092150"
 ---
 # <a name="cli-example-publish-an-asset"></a>CLI-példa: Objektum közzététele
 
@@ -27,7 +27,7 @@ A jelen cikkben lévő Azure CLI-példaszkript bemutatja, hogyan hozhat létre s
 
 ## <a name="prerequisites"></a>Előfeltételek 
 
-[Hozzon létre egy Media Services fiókot](create-account-cli-how-to.md).
+[Hozzon létre egy Media Services fiókot](./create-account-howto.md).
 
 [!INCLUDE [media-services-cli-instructions.md](../../../includes/media-services-cli-instructions.md)]
 

@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: az SQL igény szerinti összekapcsolása Power BI Desktop & jelentés létrehozása'
+title: Az SQL igény szerinti összekapcsolása Power BI Desktop & jelentés létrehozása
 description: Ebből az oktatóanyagból megtudhatja, hogyan csatlakoztatható az SQL on-demand az Azure szinapszis Analytics szolgáltatásban Power BI asztalhoz, és hogyan hozhat létre bemutató jelentést egy nézet alapján.
 services: synapse analytics
 author: azaricstefan
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 2f4a1ab6dc2f5cb8576931ea5fc1da85f5597624
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 325a2015e4107a20dfaec22e904cf3cc6ce3085d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85213227"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089175"
 ---
 # <a name="tutorial-use-sql-on-demand-with-power-bi-desktop--create-a-report"></a>Oktatóanyag: az SQL igény szerinti használata Power BI Desktop & jelentés létrehozása
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 >
@@ -100,7 +100,7 @@ A bemutatóban szereplő adat a következő adatkészleteket tartalmazza:
 
 Az USA népessége nemek és faji hovatartozás szerint, a 2000-es és a 2010-es Decennial-népszámlálás a parketta formátumában.
 
-| Mappa elérési útja                                                  | Leírás                                                  |
+| Mappa elérési útja                                                  | Description                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | /Release parancsot                                                    | A demo Storage-fiókban lévő adatszülő mappa               |
 | /Release/us_population_county/                               | Az USA-beli populációs adatfájlok parkettás formátumban, évről évre particionálva a kaptár/Hadoop particionálási sémával. |

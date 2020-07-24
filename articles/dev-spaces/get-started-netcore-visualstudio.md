@@ -7,12 +7,12 @@ ms.date: 07/09/2018
 ms.topic: tutorial
 description: Ez az oktatóanyag bemutatja, hogyan használható az Azure dev Spaces és a Visual Studio a .NET Core-alkalmazások hibakereséséhez és gyors megismétléséhez az Azure Kubernetes Service-ben
 keywords: Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s
-ms.openlocfilehash: ba90cbc8bc0267f1fba8c9495886bdc8ce2ac5e3
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 722f2f5b86bd67df7c7250cdbfc44ebcc048c773
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83995904"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090790"
 ---
 # <a name="create-a-kubernetes-dev-space-visual-studio-and-net-core-with-azure-dev-spaces"></a>Kubernetes fejlesztői terület létrehozása: a Visual Studio és a .NET Core az Azure dev Spaces használatával
 
@@ -23,10 +23,10 @@ Ebből az útmutatóból a következőket tudhatja meg:
 - Két külön szolgáltatás egymástól függetlenül történő fejlesztése, és a használt Kubernetes DNS-szolgáltatás észlelésével hívásindítás egy másik szolgáltatásba.
 - A kód hatékony fejlesztése és tesztelése, csapatkörnyezetben.
 
-> [!Note]
+> [!NOTE]
 > **Ha bármikor elakad** , tekintse meg a [Hibaelhárítás](troubleshooting.md) című szakaszt.
 
-## <a name="install-the-azure-cli"></a>Telepítse az Azure CLI-t
+## <a name="install-the-azure-cli"></a>Az Azure CLI összetevő telepítése
 Az Azure Dev Spaces használatához minimális helyi gépbeállítás szükséges. A Dev Spaces-tér konfigurációjának legnagyobb része a felhőben van tárolva, és megosztható más felhasználókkal. Első lépésként töltse le és futtassa az [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) parancssori felületet.
 
 ### <a name="sign-in-to-azure-cli"></a>Bejelentkezés az Azure CLI-be
@@ -36,7 +36,7 @@ Jelentkezzen be az Azure-ba. Írja be a következő parancsot egy terminálablak
 az login
 ```
 
-> [!Note]
+> [!NOTE]
 > Ha nem rendelkezik Azure-előfizetéssel, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free).
 
 #### <a name="if-you-have-multiple-azure-subscriptions"></a>Ha több Azure-előfizetéssel is rendelkezik...
@@ -91,31 +91,31 @@ Ebben a szakaszban létre fog hozni egy ASP.NET Core webalkalmazást, és egy t�
 
 Hozzon létre egy új projektet a Visual studióból. Jelenleg a projektnek egy **ASP.NET Core-webalkalmazásnak** kell lennie. Nevezze el a projektet a "**webfrontend**" néven.
 
-![](media/get-started-netcore-visualstudio/NewProjectDialog1.png)
+![Az "új projekt" párbeszédpanel a "webfrontend" nevű C Sharp-webalkalmazás létrehozását mutatja be a következő helyen: C:\Source\Repos. A "megoldás" legördülő lista az "új megoldás létrehozása" és a "megoldási könyvtár létrehozása" jelölőnégyzetet mutatja be.](media/get-started-netcore-visualstudio/NewProjectDialog1.png)
 
 Válassza ki a **Webalkalmazás (Model-View-Controller)** sablont, és ellenőrizze, hogy a párbeszédpanel tetején a két legördülő listában a **.NET Core** és az **ASP.NET Core 2.0** van-e kijelölve. A projekt létrehozásához kattintson az **OK** gombra.
 
-![](media/get-started-netcore-visualstudio/NewProjectDialog2.png)
+![A "NEW A S P dot NET Core Web Application" párbeszédpanelen két legördülő lista jelenik meg a "dot NET Core" és A "A S P dot NET Core 2 0. pont" mezőben. A mezőlista alatti, a "webalkalmazás (Model-View-Controller)" sablon a "webalkalmazás (modell-nézet-vezérlő)" sablonnal van kiválasztva. A "Docker-támogatás engedélyezése" jelölőnégyzet nincs bejelölve.](media/get-started-netcore-visualstudio/NewProjectDialog2.png)
 
 ### <a name="enable-dev-spaces-for-an-aks-cluster"></a>A DevSpaces engedélyezése egy AKS-fürtön
 
 Az imént létrehozott projektben válassza ki az **Azure Dev Spaces** lehetőséget az indítási beállítások legördülő menüjéből, ahogy az az alábbi képen látható.
 
-![](media/get-started-netcore-visualstudio/LaunchSettings.png)
+![A legördülő lista a Microsoft Visual Studio int Preview nevű ablak tetején található. "Azure dev Spaces" van kiválasztva.](media/get-started-netcore-visualstudio/LaunchSettings.png)
 
 Az ezt követően megjelenő párbeszédpanelen ellenőrizze, hogy a megfelelő fiókkal van-e bejelentkezve, majd válasszon ki egy meglévő Kubernetes-fürtöt.
 
-![](media/get-started-netcore-visualstudio/Azure-Dev-Spaces-Dialog.PNG)
+![Az Azure dev Spaces párbeszédpanel a következő mezőket tartalmazhatja: "előfizetés", "Azure Kubernetes Service cluster" és "space".](media/get-started-netcore-visualstudio/Azure-Dev-Spaces-Dialog.PNG)
 
 A **Tér** legördülő menüt egyelőre hagyja a `default` alapértelmezett értéken. Erről a beállításról a későbbiekben kaphat további információt. Jelölje be a **Nyilvánosan hozzáférhető** jelölőnégyzetet, hogy a webalkalmazás nyilvános végpontról is elérhető legyen. Ez a beállítás nem szükséges, de hasznos lehet néhány fogalom bemutatásához az útmutató későbbi szakaszában. De ne aggódjon, mindkét esetben végezhet a webhelyen hibakeresést a Visual Studio segítségével.
 
-![](media/get-started-netcore-visualstudio/Azure-Dev-Spaces-Dialog2.png)
+![A nyilvánosan elérhető jelölőnégyzet be van jelölve.](media/get-started-netcore-visualstudio/Azure-Dev-Spaces-Dialog2.png)
 
 A fürt kiválasztásához vagy létrehozásához kattintson az **OK** gombra.
 
 Ha egy olyan fürtöt választ, amely nincs az Azure Dev Spaceshez konfigurálva, a rendszer egy üzenetben rákérdez, hogy szeretné-e konfigurálni.
 
-![](media/get-started-netcore-visualstudio/Add-Azure-Dev-Spaces-Resource.png)
+![Az üzenet szövege: "Azure dev Spaces erőforrás hozzáadása? A kiválasztott egy K-S fürtöt úgy kell konfigurálni, hogy használni lehessen az Azure dev Spaces használatát. Szeretné ezt megtenni? " Vannak "O K" és "Mégse" gomb.](media/get-started-netcore-visualstudio/Add-Azure-Dev-Spaces-Resource.png)
 
 Kattintson az **OK** gombra.
 
@@ -124,9 +124,9 @@ Kattintson az **OK** gombra.
 
  Egy háttérművelet fogja végrehajtani a konfigurálást. Ez eltarthat néhány percig. Ha meg szeretné nézni, hogy tart-e még a folyamat, vigye az egérmutatót az állapotsor bal alsó sarkában lévő **Háttérfolyamatok** ikon fölé, az alábbi ábrán látható módon.
 
-![](media/get-started-netcore-visualstudio/BackgroundTasks.PNG)
+![Az egérmutatóban megjelenő előugró ablak a "saját K S" csoport létrehozása az erőforráscsoport-ban című részen látható. "](media/get-started-netcore-visualstudio/BackgroundTasks.PNG)
 
-> [!Note]
+> [!NOTE]
 > Amíg a Dev Spaces-tér létrehozása sikeresen le nem zárul, nem tud hibakeresést végezni az alkalmazáson.
 
 ### <a name="look-at-the-files-added-to-project"></a>A projekthez adott fájlok ellenőrzése
@@ -138,7 +138,7 @@ A rendszer hozzáadott egy `Dockerfile` nevű fájlt is. Ez a fájl olyan inform
 
 Végül látni fog egy `azds.yaml` nevű fájlt, amely a Dev Spaces-tér által igényelt fejlesztéskori konfigurációt tartalmazza.
 
-![](media/get-started-netcore-visualstudio/ProjectFiles.png)
+![A "a z d s dot YAML" fájl a "webfrontend" megoldásban jelenik meg a Megoldáskezelő ablakban.](media/get-started-netcore-visualstudio/ProjectFiles.png)
 
 ## <a name="debug-a-container-in-kubernetes"></a>Tároló hibakeresése a Kubernetesben
 Amint a Dev Spaces-tér létrehozása sikeresen lezárul, hibakeresést végezhet az alkalmazáson. Állítson be egy töréspontot a kódban, például a `HomeController.cs` fájl 20. sorában, ahol a `Message` változó van beállítva. Nyomja le az **F5** billentyűt a hibakeresés indításához. 

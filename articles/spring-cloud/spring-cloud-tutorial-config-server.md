@@ -6,12 +6,13 @@ ms.topic: how-to
 ms.author: brendm
 author: bmitchell287
 ms.date: 10/18/2019
-ms.openlocfilehash: bfce1ce54da9d9e8e7feaa8e8eb5cd676866a1cb
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.custom: devx-track-java
+ms.openlocfilehash: dd97932d0aaa89373636a60e793f531cda18abdd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86142186"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091436"
 ---
 # <a name="set-up-a-spring-cloud-config-server-instance-for-your-service"></a>Egy Spring Cloud config Server-példány beállítása a szolgáltatáshoz
 
@@ -20,7 +21,7 @@ Ez a cikk bemutatja, hogyan csatlakozhat egy Spring Cloud config Server-példán
 A Spring Cloud config kiszolgáló-és ügyféloldali támogatást biztosít az elosztott rendszerekben található külső konfigurációhoz. A konfigurációs kiszolgáló példányával központi helyen kezelheti az alkalmazások külső tulajdonságait az összes környezetben. További információ: [Spring Cloud config Server Reference](https://spring.io/projects/spring-cloud-config).
 
 ## <a name="prerequisites"></a>Előfeltételek
-* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd. 
+* Azure-előfizetés. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 * Már üzembe lett helyezve, és futtatja az Azure Spring Cloud Service-t. Azure Spring Cloud-szolgáltatás beállításához és elindításához lásd [: gyors útmutató: Java Spring-alkalmazás elindítása az Azure CLI használatával](spring-cloud-quickstart-launch-app-cli.md).
 
 ## <a name="restriction"></a>Korlátozás
@@ -54,7 +55,7 @@ A nyilvános git-tárház beállításához használt összes konfigurálható t
 > [!NOTE]
 > Kötőjel (-) használata a szavak elkülönítésére az egyetlen jelenleg támogatott elnevezési konvenció. Használhatja például az *alapértelmezett címkét*, de nem *defaultLabel*.
 
-| Tulajdonság        | Kötelező | Szolgáltatás                                                      |
+| Tulajdonság        | Kötelező | Funkció                                                      |
 | :-------------- | -------- | ------------------------------------------------------------ |
 | `uri`           | Yes    | A konfigurációs kiszolgálóként használt git-tárház URI-ja a *http://*, a *https://*, a *git@* és a *SSH://* karakterrel kezdődik. |
 | `default-label` | No     | A git-tárház alapértelmezett címkéje az adattár *neve*, a *címke neve*vagy a tárház *véglegesítő azonosítója* lehet. |
@@ -69,7 +70,7 @@ A privát git-tárház SSH-val történő beállításához használt összes ko
 > [!NOTE]
 > Kötőjel (-) használata a szavak elkülönítésére az egyetlen jelenleg támogatott elnevezési konvenció. Használhatja például az *alapértelmezett címkét*, de nem *defaultLabel*.
 
-| Tulajdonság                   | Kötelező | Szolgáltatás                                                      |
+| Tulajdonság                   | Kötelező | Funkció                                                      |
 | :------------------------- | -------- | ------------------------------------------------------------ |
 | `uri`                      | Yes    | A konfigurációs kiszolgálóként használt git-tárház URI-JÁT *http://*, *https://*, *git@* vagy *SSH://* kell elindítani. |
 | `default-label`            | No     | A git-tárház alapértelmezett címkéje az adattár *neve*, a *címke neve*vagy a tárház *véglegesítő azonosítója* lehet. |
@@ -88,7 +89,7 @@ Az alapszintű hitelesítéssel rendelkező privát git-tárház beállításáh
 > [!NOTE]
 > Kötőjel (-) használata a szavak elkülönítésére az egyetlen jelenleg támogatott elnevezési konvenció. Használja például az *alapértelmezett-címkét*, ne *defaultLabel*.
 
-| Tulajdonság        | Kötelező | Szolgáltatás                                                      |
+| Tulajdonság        | Kötelező | Funkció                                                      |
 | :-------------- | -------- | ------------------------------------------------------------ |
 | `uri`           | Yes    | A konfigurációs kiszolgálóként használt git-tárház URI-JÁT a *http://*, a *https://*, a *git@* vagy a *SSH://* kell elindítani. |
 | `default-label` | No     | A git-tárház alapértelmezett címkéje az adattár *neve*, a *címke neve*vagy a tárház *véglegesítő azonosítója* lehet. |
@@ -106,7 +107,7 @@ Az alábbi listában a git-adattárak beállításához használt összes konfig
 > [!NOTE]
 > Kötőjel (-) használata a szavak elkülönítésére az egyetlen jelenleg támogatott elnevezési konvenció. Használja például az *alapértelmezett-címkét*, ne *defaultLabel*.
 
-| Tulajdonság                           | Kötelező         | Szolgáltatás                                                      |
+| Tulajdonság                           | Kötelező         | Funkció                                                      |
 | :--------------------------------- | ---------------- | ------------------------------------------------------------ |
 | `repos`                            | No             | Egy adott névvel rendelkező git-tárház beállításait tartalmazó Térkép. |
 | `repos."uri"`                      | Igen bekapcsolva`repos` | A konfigurációs kiszolgálóként használt git-tárház URI-JÁT a *http://*, a *https://*, a *git@* vagy a *SSH://* kell elindítani. |

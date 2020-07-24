@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 06/12/2020
-ms.openlocfilehash: 17754eb7e9e3d1a3f11386d85ed1a40424cb233c
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
+ms.openlocfilehash: c495e4135195d05dbb20c993f436cb42bd55fff6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/21/2020
-ms.locfileid: "85126334"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090807"
 ---
 # <a name="create-a-resource-lock-for-azure-cosmos-sql-api-database-and-container-using-azure-powershell"></a>Erőforrás-zárolás létrehozása az Azure Cosmos SQL API-adatbázishoz és-tárolóhoz Azure PowerShell használatával
 
@@ -21,7 +21,7 @@ ms.locfileid: "85126334"
 [!INCLUDE [sample-powershell-install](../../../../../includes/sample-powershell-install-no-ssh.md)]
 
 > [!IMPORTANT]
-> Az erőforrás-zárolások nem működnek a felhasználók által a Cosmos DB SDK-val összekapcsolt módosítások, a fiókok kulcsain keresztül csatlakozó eszközök vagy az Azure Portal használatával, kivéve, ha a Cosmos DB fiókot a rendszer először zárolja az `disableKeyBasedMetadataWriteAccess` engedélyezett tulajdonsággal. Ha többet szeretne megtudni a tulajdonság engedélyezéséről, tekintse meg az SDK-k [módosításainak megelőzését](../../../role-based-access-control.md#preventing-changes-from-cosmos-sdk)ismertető témakört.
+> Az erőforrás-zárolások nem működnek a felhasználók által a Cosmos DB SDK-val összekapcsolt módosítások, a fiókok kulcsain keresztül csatlakozó eszközök vagy az Azure Portal használatával, kivéve, ha a Cosmos DB fiókot a rendszer először zárolja az `disableKeyBasedMetadataWriteAccess` engedélyezett tulajdonsággal. Ha többet szeretne megtudni a tulajdonság engedélyezéséről, tekintse meg az SDK-k [módosításainak megelőzését](../../../role-based-access-control.md#prevent-sdk-changes)ismertető témakört.
 
 ## <a name="sample-script"></a>Példaszkript
 

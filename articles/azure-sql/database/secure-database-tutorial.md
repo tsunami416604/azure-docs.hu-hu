@@ -10,12 +10,12 @@ ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 09/03/2019
 ms.custom: seoapril2019 sqldbrb=1
-ms.openlocfilehash: c658283ed610dcd14fca82b14217cba979388fc2
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 73ffe7fe6336d9547ebbbf4c894bd1b9398e0900
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85252916"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092932"
 ---
 # <a name="tutorial-secure-a-database-in-azure-sql-database"></a>Oktatóanyag: adatbázis biztonságossá tétele Azure SQL Databaseban
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -48,11 +48,11 @@ További tudnivalókat a [Azure SQL Database biztonsági áttekintése](/azure/s
 
 Az oktatóanyag elvégzéséhez győződjön meg arról, hogy rendelkezik a következő előfeltételekkel:
 
-- [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)
+- [Az SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)
 - Egy [kiszolgáló](logical-servers.md) és egy önálló adatbázis
   - Létrehozás a [Azure Portal](single-database-create-quickstart.md), a [CLI](az-cli-script-samples-content-guide.md)vagy a [PowerShell használatával](powershell-script-content-guide.md)
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
@@ -82,7 +82,7 @@ Kiszolgáló szintű tűzfalszabály beállítása:
 
 1. Az **Áttekintés** lapon válassza a **kiszolgáló tűzfalának beállítása**lehetőséget. Ekkor megnyílik a kiszolgáló **tűzfalbeállítások** lapja.
 
-   1. Válassza az **ügyfél IP-** címének hozzáadása lehetőséget az eszköztáron az aktuális IP-cím új tűzfalszabályként való hozzáadásához. A szabály az 1433-as portot egyetlen IP-cím vagy IP-címtartomány számára nyithatja meg. Kattintson a **Mentés** gombra.
+   1. Válassza az **ügyfél IP-** címének hozzáadása lehetőséget az eszköztáron az aktuális IP-cím új tűzfalszabályként való hozzáadásához. A szabály az 1433-as portot egyetlen IP-cím vagy IP-címtartomány számára nyithatja meg. Válassza a **Mentés** lehetőséget.
 
       ![kiszolgálótűzfal-szabály beállítása](./media/secure-database-tutorial/server-firewall-rule2.png)
 
@@ -146,7 +146,7 @@ Az Azure AD konfigurálásával kapcsolatos információkért lásd:
 - [Saját tartománynév hozzáadása az Azure AD-hez](../../active-directory/fundamentals/add-custom-domain.md)
 - [A Microsoft Azure mostantól támogatja a Windows Server Active Directoryval való összevonást](https://azure.microsoft.com/blog/20../../windows-azure-now-supports-federation-with-windows-server-active-directory/)
 - [Az Azure AD-címtár felügyelete](../../active-directory/fundamentals/active-directory-whatis.md)
-- [Az Azure AD kezelése a PowerShell használatával](/powershell/azure/overview?view=azureadps-2.0)
+- [Az Azure AD kezelése a PowerShell használatával](/powershell/azure/?view=azureadps-2.0)
 - [Hibrid identitáshoz szükséges portok és protokollok](../../active-directory/hybrid/reference-connect-ports.md)
 
 ## <a name="manage-database-access"></a>Adatbázis-hozzáférés kezelése
@@ -250,7 +250,7 @@ A speciális adatbiztonság engedélyezése:
 
 1. Az **SQL Server** oldalon keresse meg a **Biztonság** szakaszt, és válassza a **speciális adatbiztonság**lehetőséget.
 
-   1. A funkció engedélyezéséhez válassza a be lehetőséget **a** **speciális adatbiztonság** területen. Válasszon egy Storage-fiókot a sebezhetőségi felmérés eredményeinek mentéséhez. Kattintson a **Mentés** gombra.
+   1. A funkció engedélyezéséhez válassza a be lehetőséget **a** **speciális adatbiztonság** területen. Válasszon egy Storage-fiókot a sebezhetőségi felmérés eredményeinek mentéséhez. Ez után válassza a **Mentés** lehetőséget.
 
       ![Navigációs panel](./media/secure-database-tutorial/threat-settings.png)
 
@@ -292,7 +292,7 @@ A naplózás engedélyezése:
 
        - **Event hub**, amely lehetővé teszi, hogy az események más alkalmazásokban való használatra legyenek átirányítva
 
-   1. Kattintson a **Mentés** gombra.
+   1. Válassza a **Mentés** lehetőséget.
 
       ![Naplózási beállítások](./media/secure-database-tutorial/audit-settings.png)
 
@@ -317,7 +317,7 @@ Az adatmaszkolás engedélyezése:
 
     ![Maszk beállításai](./media/secure-database-tutorial/mask-settings.png)
 
-1. Kattintson a **Mentés** gombra. A kiválasztott információk mostantól az adatvédelem során maszkoltak.
+1. Válassza a **Mentés** lehetőséget. A kiválasztott információk mostantól az adatvédelem során maszkoltak.
 
     ![Példa maszkra](./media/secure-database-tutorial/mask-query.png)
 
@@ -331,7 +331,7 @@ A titkosítás engedélyezése vagy ellenőrzése:
 
 1. A **Biztonság** szakaszban válassza az **transzparens adattitkosítás**lehetőséget.
 
-1. Ha szükséges, állítsa be az **adattitkosítást** **a**következőre:. Kattintson a **Mentés** gombra.
+1. Ha szükséges, állítsa be az **adattitkosítást** **a**következőre:. Válassza a **Mentés** lehetőséget.
 
     ![Transzparens adattitkosítás](./media/secure-database-tutorial/encryption-settings.png)
 
@@ -340,7 +340,7 @@ A titkosítás engedélyezése vagy ellenőrzése:
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban megtanulta, hogy csak néhány egyszerű lépéssel javítsa az adatbázis biztonságát. Megismerte, hogyan végezheti el az alábbi műveleteket:
+Ebben az oktatóanyagban megtanulta, hogy csak néhány egyszerű lépéssel javítsa az adatbázis biztonságát. Megtanulta végrehajtani az alábbi műveleteket:
 
 > [!div class="checklist"]
 >

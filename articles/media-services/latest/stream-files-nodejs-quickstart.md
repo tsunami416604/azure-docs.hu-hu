@@ -1,5 +1,5 @@
 ---
-title: Videofájlok továbbítása Azure Media Services-Node. js-vel | Microsoft Docs
+title: Videofájlok továbbítása Azure Media Services-Node.jssal | Microsoft Docs
 description: Az oktatóanyag lépéseit követve hozzon létre egy új Azure Media Services fiókot, kódoljon egy fájlt, és továbbítsa a Azure Media Player.
 services: media-services
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 08/19/2019
 ms.author: juliako
-ms.openlocfilehash: fa9fbf3bac55ca0b26c3644b7f6818fa96088612
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5e4c50b4b66d164ba2e89cfc537d9dd8593c4f57
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "69639393"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092031"
 ---
-# <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---nodejs"></a>Oktatóanyag: távoli fájl kódolása URL-cím alapján és stream a video-Node. js-hez
+# <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---nodejs"></a>Oktatóanyag: távoli fájl kódolása URL-cím alapján és stream a videón – Node.js
 
 Ebből az oktatóanyagból megtudhatja, hogy milyen egyszerűen kódolhatja és indíthatja el a streaming-videókat számos különböző böngészőn és eszközön a Azure Media Services használatával. A bemenő tartalmak HTTPS- URL- és SAS URL-címekkel vagy az Azure Blob Storage-ban található fájlok elérési útjával határozhatók meg.
 
@@ -35,12 +35,12 @@ Az oktatóanyag végére egy videót is továbbíthat.
 ## <a name="prerequisites"></a>Előfeltételek
 
 - [Node.js](https://nodejs.org/en/download/) telepítése
-- [Hozzon létre egy Media Services fiókot](create-account-cli-how-to.md).<br/>Ügyeljen arra, hogy az erőforráscsoport neveként használt értékeket jegyezze fel, és Media Services a fiók nevét.
-- Kövesse a [Azure Media Services API-nak az Azure CLI-vel való elérésének](access-api-cli-how-to.md) lépéseit, és mentse a hitelesítő adatokat. Ezeket az API-k eléréséhez kell használnia.
+- [Hozzon létre egy Media Services fiókot](./create-account-howto.md).<br/>Ügyeljen arra, hogy az erőforráscsoport neveként használt értékeket jegyezze fel, és Media Services a fiók nevét.
+- Kövesse a [Azure Media Services API-nak az Azure CLI-vel való elérésének](./access-api-howto.md) lépéseit, és mentse a hitelesítő adatokat. Ezeket az API-k eléréséhez kell használnia.
 
 ## <a name="download-and-configure-the-sample"></a>A minta letöltése és konfigurálása
 
-Egy GitHub-tárház klónozása, amely tartalmazza a streaming Node. js mintát a gépre a következő parancs használatával:  
+A következő parancs használatával klónozott egy GitHub-tárházat, amely a streaming Node.js mintát tartalmazza a gépre:  
 
  ```bash
  git clone https://github.com/Azure-Samples/media-services-v3-node-tutorials.git
@@ -48,7 +48,7 @@ Egy GitHub-tárház klónozása, amely tartalmazza a streaming Node. js mintát 
 
 A minta a [StreamFilesSample](https://github.com/Azure-Samples/media-services-v3-node-tutorials/tree/master/AMSv3Samples/StreamFilesSample) mappában található.
 
-Nyissa meg az [index. js](https://github.com/Azure-Samples/media-services-v3-node-tutorials/blob/master/AMSv3Samples/StreamFilesSample/index.js#L25) fájlt a letöltött projektben. Cserélje le `endpoint config` az értékeket az API-k [eléréséhez](access-api-cli-how-to.md)kapott hitelesítő adatokkal.
+Nyissa meg [index.js](https://github.com/Azure-Samples/media-services-v3-node-tutorials/blob/master/AMSv3Samples/StreamFilesSample/index.js#L25) a letöltött projektben. Cserélje le az `endpoint config` értékeket az API-k [eléréséhez](./access-api-howto.md)kapott hitelesítő adatokkal.
 
 A minta a következő műveleteket hajtja végre:
 
@@ -60,9 +60,9 @@ A minta a következő műveleteket hajtja végre:
 6. Adatfolyam- **keresőt**hoz létre.
 7. Streamelési URL-címeket épít fel.
 
-## <a name="run-the-sample-app"></a>Mintaalkalmazás futtatása
+## <a name="run-the-sample-app"></a>A mintaalkalmazás futtatása
 
-1. Az alkalmazás letölti a kódolt fájlokat. Hozzon létre egy mappát, ahol a kimeneti fájlok el szeretnének menni, és frissítse a **outputFolder** változó értékét az [index. js](https://github.com/Azure-Samples/media-services-v3-node-tutorials/blob/master/AMSv3Samples/StreamFilesSample/index.js#L39) fájlban.
+1. Az alkalmazás letölti a kódolt fájlokat. Hozzon létre egy mappát, ahol a kimeneti fájlok el szeretnének menni, és frissítse a **outputFolder** változó értékét a [index.js](https://github.com/Azure-Samples/media-services-v3-node-tutorials/blob/master/AMSv3Samples/StreamFilesSample/index.js#L39) fájlban.
 1. Nyisson meg egy **parancssort**, keresse meg a minta címtárát, és hajtsa végre a következő parancsokat.
 
     ```
@@ -72,7 +72,7 @@ A minta a következő műveleteket hajtja végre:
 
 A futásának befejezése után a következőhöz hasonló kimenetnek kell megjelennie:
 
-![Futtassa a következőt:](./media/stream-files-nodejs-quickstart/run.png)
+![Futtatás](./media/stream-files-nodejs-quickstart/run.png)
 
 ## <a name="test-with-azure-media-player"></a>Tesztelés az Azure Media Player használatával
 
@@ -81,7 +81,7 @@ Ebben a cikkben az Azure Media Playert használjuk a streamelés teszteléséhez
 > [!NOTE]
 > Ha a lejátszót egy HTTPS-hely futtatja, az URL-t módosítsa a HTTPS-protokoll használatára.
 
-1. Nyisson meg egy webböngészőt, [https://aka.ms/azuremediaplayer/](https://aka.ms/azuremediaplayer/)és navigáljon a következőhöz:.
+1. Nyisson meg egy webböngészőt, és navigáljon a következőhöz: [https://aka.ms/azuremediaplayer/](https://aka.ms/azuremediaplayer/) .
 2. Az **URL** mezőbe illessze be az alkalmazás futtatásakor kapott streamelési URL-értékek egyikét. 
  
      Az URL-címet HLS, Dash vagy Smooth formátumban is beillesztheti, és a Azure Media Player a megfelelő folyamatos átviteli protokollra vált az eszközön való automatikus lejátszás érdekében.
@@ -89,7 +89,7 @@ Ebben a cikkben az Azure Media Playert használjuk a streamelés teszteléséhez
 
 Az Azure Media Player használható tesztelésre, az éles környezetben való használata azonban nem ajánlott. 
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs szüksége az erőforráscsoport egyik erőforrására sem, beleértve az oktatóanyaghoz létrehozott Media Services-és Storage-fiókokat, törölje az erőforráscsoportot.
 
@@ -101,7 +101,7 @@ az group delete --name amsResourceGroup
 
 ## <a name="see-also"></a>Lásd még
 
-[Feladattípus](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode)-hibakódok.
+[Feladattípus](/rest/api/media/jobs/get#joberrorcode)-hibakódok.
 
 ## <a name="next-steps"></a>További lépések
 

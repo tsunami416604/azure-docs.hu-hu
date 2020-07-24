@@ -10,11 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: b3f337798525860748cf7b535c2bce478dad8e27
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 9c5b07d402219907337a590e1131691fb1e24cc2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86043002"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090586"
 ---
 # <a name="azure-key-vault-logging"></a>Az Azure Key Vault naplózása
 
@@ -42,7 +43,7 @@ További információ a Key Vaultről: [Mi az Azure Key Vault?](overview.md)). T
 Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
 * Egy meglévő kulcstároló.  
-* Azure PowerShell a 1.0.0 minimális verziója. Az Azure PowerShell telepítésérről és az Azure-előfizetéssel való társításáról további információt [How to install and configure Azure PowerShell](/powershell/azure/overview) (Az Azure PowerShell telepítése és konfigurálása) című cikkben találhat. Ha már telepítette Azure PowerShell és nem ismeri a verziót, a Azure PowerShell konzolon írja be a következőt: `$PSVersionTable.PSVersion` .  
+* Azure PowerShell a 1.0.0 minimális verziója. Az Azure PowerShell telepítésérről és az Azure-előfizetéssel való társításáról további információt [How to install and configure Azure PowerShell](/powershell/azure/) (Az Azure PowerShell telepítése és konfigurálása) című cikkben találhat. Ha már telepítette Azure PowerShell és nem ismeri a verziót, a Azure PowerShell konzolon írja be a következőt: `$PSVersionTable.PSVersion` .  
 * A Key Vault naplóihoz elegendő tárhely az Azure-ban.
 
 ## <a name="connect-to-your-key-vault-subscription"></a><a id="connect"></a>Kapcsolódás a Key Vault-előfizetéshez
@@ -69,7 +70,7 @@ Ezután adja meg a naplózni kívánt kulcstartóhoz tartozó előfizetést, maj
 Set-AzContext -SubscriptionId <subscription ID>
 ```
 
-A PowerShell a megfelelő előfizetésre mutat, különösen akkor, ha több előfizetése van társítva a fiókjához. További információ az Azure PowerShell konfigurálásáról: [How to install and configure Azure PowerShell](/powershell/azure/overview) (Az Azure PowerShell telepítése és konfigurálása).
+A PowerShell a megfelelő előfizetésre mutat, különösen akkor, ha több előfizetése van társítva a fiókjához. További információ az Azure PowerShell konfigurálásáról: [How to install and configure Azure PowerShell](/powershell/azure/) (Az Azure PowerShell telepítése és konfigurálása).
 
 ## <a name="create-a-storage-account-for-your-logs"></a><a id="storage"></a>Storage-fiók létrehozása a naplókhoz
 
@@ -96,7 +97,7 @@ $kv = Get-AzKeyVault -VaultName 'ContosoKeyVault'
 
 ## <a name="enable-logging-using-azure-powershell"></a><a id="enable"></a>Naplózás engedélyezése Azure PowerShell használatával
 
-A Key Vault naplózásának engedélyezéséhez a **set-AzDiagnosticSetting** parancsmagot fogjuk használni az új Storage-fiókhoz és a kulcstartóhoz létrehozott változókkal együtt. Az **-enabled** jelzőt úgy is beállítjuk, hogy **$true** , és a kategóriát a **AuditEvent** (az egyetlen kategória Key Vault naplózás) értékre állítsa be:
+A Key Vault naplózásának engedélyezéséhez a **set-AzDiagnosticSetting** parancsmagot fogjuk használni az új Storage-fiókhoz és a kulcstartóhoz létrehozott változókkal együtt. Az **-enabled** jelzőt úgy is beállítjuk, hogy **$true** , és a kategóriát állítsa `AuditEvent` (az egyetlen kategória a Key Vault naplózáshoz):
 
 ```powershell
 Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $true -Category AuditEvent
@@ -270,15 +271,15 @@ A következő táblázat a mezőneveket és a leírásokat tartalmazza:
 | **resourceId** |Azure Resource Manager erőforrás-azonosító. Key Vault naplók esetében ez mindig a Key Vault erőforrás-azonosító. |
 | **operationName** |A művelet neve, ahogy a következő táblázat is mutatja. |
 | **operationVersion** |REST API az ügyfél által kért verziót. |
-| **Kategória** |Az eredmény típusa. Key Vault naplók esetében a **AuditEvent** az egyetlen elérhető érték. |
+| **Kategória** |Az eredmény típusa. Key Vault naplók esetében `AuditEvent` az egyetlen elérhető érték. |
 | **resultType** |A REST API kérelem eredménye. |
 | **resultSignature** |A HTTP-állapot. |
 | **resultDescription** |Az eredmény további leírása, amennyiben elérhető. |
-| **durationMs** |A REST API-kérelem végrehajtásának ideje ezredmásodpercben. Ebbe nincs beleszámítva a hálózati késés, így az ügyféloldalon mért idő ettől eltérhet. |
+| **Átl** |A REST API-kérelem végrehajtásának ideje ezredmásodpercben. Ebbe nincs beleszámítva a hálózati késés, így az ügyféloldalon mért idő ettől eltérhet. |
 | **callerIpAddress** |Annak az ügyfélnek az IP-címe, amely a kérelmet elvégezte. |
 | **correlationId** |Egy nem kötelező GUID, amelyet az ügyfél alkalmazhat az ügyféloldali és a szolgáltatásoldali (Key Vault) naplók egyeztetéséhez. |
 | **identitás** |Az REST API kérelemben bemutatott jogkivonat identitása. Ez általában a "felhasználó", "a" szolgáltatásnév "vagy" felhasználó + appId "kombinációja, amely egy Azure PowerShell-parancsmagból származó kérelem esetében van. |
-| **Tulajdonságok** |A művelettől (**operationName**) függően változó információk. A legtöbb esetben ez a mező tartalmazza az ügyfél adatait (az ügyfél által átadott felhasználói ügynök sztringjét), a pontos REST API kérelem URI-JÁT és a HTTP-állapotkódot. Emellett, ha egy objektum egy kérelem eredményeképpen lett visszaadva (például a Key **create** vagy a **VaultGet**), a kulcs URI-ját ("id"), a tároló URI-JÁT vagy a titkos azonosítót is tartalmazza. |
+| **Tulajdonságok** |A művelettől (**operationName**) függően változó információk. A legtöbb esetben ez a mező tartalmazza az ügyfél adatait (az ügyfél által átadott felhasználói ügynök sztringjét), a pontos REST API kérelem URI-JÁT és a HTTP-állapotkódot. Emellett, ha egy objektum egy kérelem eredményeképpen érkezik (például a Key **create** vagy a **VaultGet**), a kulcs URI-ját (as), a tároló `id` URI-ját vagy a titkos kódot is tartalmazza. |
 
 A **OperationName** *ObjectVerb* formátumban vannak. Például:
 
@@ -320,9 +321,9 @@ A következő táblázat felsorolja a **operationName** és a hozzá tartozó RE
 
 ## <a name="use-azure-monitor-logs"></a><a id="loganalytics"></a>Azure Monitor naplók használata
 
-Azure Monitor naplók Key Vault megoldásával áttekintheti Key Vault **AuditEvent** naplóit. Azure Monitor naplókban a naplók segítségével elemezheti az adatokat, és lekérheti a szükséges információkat. 
+A Key Vault naplók áttekintéséhez használhatja a Azure Monitor naplók Key Vault megoldását `AuditEvent` . Azure Monitor naplókban a naplók segítségével elemezheti az adatokat, és lekérheti a szükséges információkat. 
 
-További információk, például a beállításának módja: [Azure Key Vault megoldás a Azure monitor naplókban](../../azure-monitor/insights/azure-key-vault.md). Ez a cikk útmutatást is tartalmaz, ha át kell térnie a régi Key Vault megoldásról, amelyet a Azure Monitor naplók előzetes verziójában nyújtottak be, amikor először átirányítja a naplókat egy Azure Storage-fiókba, és konfigurálta Azure Monitor naplókat, amelyeket onnan olvas.
+További információk, például a beállításának módja: [Azure Key Vault Azure monitor](../../azure-monitor/insights/key-vault-insights-overview.md).
 
 ## <a name="next-steps"></a><a id="next"></a>További lépések
 
