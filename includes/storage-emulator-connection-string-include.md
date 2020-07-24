@@ -2,16 +2,16 @@
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 10/26/2018
+ms.date: 07/17/2020
 ms.author: tamram
-ms.openlocfilehash: 8c577db3e9f2bff9e86c3a7c37274630f90dd680
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 85e7cb86217340e77a6f597a357c3de1f91fb8d0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67179323"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87070554"
 ---
-A Storage Emulator egyetlen rögzített fiókot és egy jól ismert hitelesítési kulcsot támogat a megosztott kulcsos hitelesítéshez. Ez a fiók és a kulcs az egyetlen megosztott kulcs hitelesítő adatai, amelyek használata engedélyezett a Storage Emulator használatával. Ezek a következők:
+A Azurite egyetlen rögzített fiókot és egy jól ismert hitelesítési kulcsot támogat a megosztott kulcsos hitelesítéshez. Ez a fiók és a kulcs az egyetlen megosztott kulcs hitelesítő adatai, amelyek használata engedélyezett a Azurite. Ezek a következők:
 
 ```
 Account name: devstoreaccount1
@@ -19,13 +19,13 @@ Account key: Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZ
 ```
 
 > [!NOTE]
-> A Storage Emulator által támogatott hitelesítési kulcs kizárólag az ügyfél-hitelesítési kód működésének tesztelésére szolgál. Nem szolgál biztonsági céllal. Az üzemi Storage-fiók és a kulcs nem használható a Storage Emulator használatával. A fejlesztési fiókot ne használja éles adatszolgáltatással.
+> A Azurite által támogatott hitelesítési kulcs kizárólag az ügyfél-hitelesítési kód működésének tesztelésére szolgál. Nem szolgál biztonsági céllal. Az üzemi Storage-fiók és a kulcs nem használható a Azurite. A fejlesztési fiókot ne használja éles adatszolgáltatással.
 > 
-> A Storage Emulator csak a HTTP protokollon keresztül támogatja a kapcsolatokat. Azonban a HTTPS az a javasolt protokoll, amellyel a termelési Azure Storage-fiók erőforrásaihoz férhet hozzá.
+> A Azurite csak HTTP-n keresztül támogatja a kapcsolatokat. Azonban a HTTPS az a javasolt protokoll, amellyel a termelési Azure Storage-fiók erőforrásaihoz férhet hozzá.
 > 
 
 #### <a name="connect-to-the-emulator-account-using-a-shortcut"></a>Kapcsolódás az Emulator-fiókhoz parancsikon használatával
-Az alkalmazásból a Storage emulatorhoz való kapcsolódás legegyszerűbb módja egy kapcsolati karakterlánc konfigurálása az alkalmazás konfigurációs fájljában, amely hivatkozik a parancsikonra `UseDevelopmentStorage=true` . Az alábbi példa egy *app.config* fájlban lévő Storage emulatorhoz tartozó kapcsolódási sztringet szemlélteti: 
+Az alkalmazás Azurite való csatlakoztatásának legegyszerűbb módja egy kapcsolati karakterlánc konfigurálása az alkalmazás konfigurációs fájljában, amely hivatkozik a parancsikonra `UseDevelopmentStorage=true` . Az alábbi példa egy *app.config* fájlban Azurite kapcsolódási sztringet mutat be: 
 
 ```xml
 <appSettings>
@@ -40,16 +40,7 @@ Az Emulator-fiók nevére és kulcsára hivatkozó kapcsolódási karakterlánc 
 DefaultEndpointsProtocol=http;AccountName=devstoreaccount1;
 AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;
 BlobEndpoint=http://127.0.0.1:10000/devstoreaccount1;
-TableEndpoint=http://127.0.0.1:10002/devstoreaccount1;
 QueueEndpoint=http://127.0.0.1:10001/devstoreaccount1;
 ```
 
 Ez az érték megegyezik a fent látható parancsikonnal `UseDevelopmentStorage=true` .
-
-#### <a name="specify-an-http-proxy"></a>HTTP-proxy meghatározása
-Megadhat egy HTTP-proxyt is, amelyet akkor használhat, ha a szolgáltatást a Storage Emulator használatával teszteli. Ez hasznos lehet a HTTP-kérések és a válaszok megfigyelésére a tárolási szolgáltatásokkal kapcsolatos műveletek hibakeresése során. Proxy megadásához adja hozzá a `DevelopmentStorageProxyUri` kapcsolót a kapcsolati karakterlánchoz, és állítsa az értékét a proxy URI-ra. Itt látható például egy olyan kapcsolódási sztring, amely a Storage emulatorra mutat, és egy HTTP-proxyt konfigurál:
-
-```
-UseDevelopmentStorage=true;DevelopmentStorageProxyUri=http://myProxyUri
-```
-

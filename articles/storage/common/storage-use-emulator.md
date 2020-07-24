@@ -1,21 +1,25 @@
 ---
-title: Az Azure Storage Emulator használata fejlesztési és tesztelési célokra | Microsoft Docs
+title: Az Azure Storage Emulator használata fejlesztéshez és teszteléshez
 description: Az Azure Storage Emulator ingyenes helyi fejlesztési környezetet biztosít az Azure Storage-alkalmazások fejlesztéséhez és teszteléséhez.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 08/21/2019
+ms.date: 07/16/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: how-to
-ms.openlocfilehash: eb13dbb7e4cfbbb1b2ea42ea1753e7615df03a7d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dd179160ad6796da40a5b98e89a10999ad0445d1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85512169"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87070542"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>Az Azure Storage Emulator használata fejlesztéshez és teszteléshez
 
 A Microsoft Azure Storage Emulator egy olyan eszköz, amely az Azure Blob-, üzenetsor-és Table Services-t emulálja helyi fejlesztési célokra. Az alkalmazást helyileg tesztelheti az Azure-előfizetés létrehozása vagy a költségek felmerülése nélkül. Ha meggyőződött arról, hogy az alkalmazás hogyan működik az emulátorban, váltson egy Azure Storage-fiók használatára a felhőben.
+
+> [!IMPORTANT]
+> Az Azure Storage-emulátor már nincs aktívan kifejlesztve. A [**Azurite**](storage-use-azurite.md) a Storage Emulator platform tovább tart. A Azurite felülírja az Azure Storage-emulátort. A Azurite továbbra is frissülni fog az Azure Storage API-k legújabb verzióinak támogatásához. További információ: [**a Azurite Emulator használata a helyi Azure Storage-fejlesztéshez**](storage-use-azurite.md).
 
 ## <a name="get-the-storage-emulator"></a>A Storage Emulator beszerzése
 
@@ -74,7 +78,7 @@ A Storage Emulator parancssori eszköz használatával inicializálhatja a Stora
 
    `AzureStorageEmulator.exe init /server .`
 
-   Használhatja a következő parancsot is, amely újrainicializálja az adatbázist az alapértelmezett LocalDB-példányra:
+   Vagy használhatja a következő parancsot is, amely inicializálja az adatbázist az alapértelmezett LocalDB-példányra:
 
    `AzureStorageEmulator.exe init /forceCreate`
 
@@ -178,7 +182,7 @@ Az 3,0-es verziótól kezdődően a rendszer a Storage Emulator indításakor me
 
 A beállítások listájának megtekintéséhez írja be a `/help` parancsot a parancssorba.
 
-| Beállítás | Description | Parancs | Argumentumok |
+| Beállítás | Leírás | Parancs | Argumentumok |
 | --- | --- | --- | --- |
 | **Kezdés** |Elindítja a Storage emulatort. |`AzureStorageEmulator.exe start [-inprocess]` |*-Újrafeldolgozás*: indítsa el az emulátort az aktuális folyamatban az új folyamat létrehozása helyett. |
 | **Leállítás** |Leállítja a Storage-emulátort. |`AzureStorageEmulator.exe stop` | |
@@ -327,3 +331,7 @@ Nincsenek eltérések az emulátorban található üzenetsor-tároláshoz.
 * Értékelje ki a többplatformos, Közösség által karbantartott nyílt forráskódú Storage Emulator- [Azurite](https://github.com/azure/azurite). 
 * A .NET-et [használó Azure Storage-minták](../storage-samples-dotnet.md) több, az alkalmazás fejlesztésekor felhasználható kódrészletre mutató hivatkozásokat is tartalmaznak.
 * A [Microsoft Azure Storage Explorer](https://storageexplorer.com) használatával dolgozhat a felhőalapú Storage-fiókban található erőforrásokkal, és a Storage emulatorban is.
+
+## <a name="see-also"></a>Lásd még:
+
+* [Helyi Azure Storage-fejlesztés Azurite, Azure SDK-val és Azure Storage Explorer](https://blog.jongallant.com/2020/04/local-azure-storage-development-with-azurite-azuresdks-storage-explorer/)
