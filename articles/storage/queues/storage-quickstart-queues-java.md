@@ -7,12 +7,12 @@ ms.date: 12/4/2019
 ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
-ms.openlocfilehash: a4c873e7ec1867b6ce53cd9f4c3d5c54242a6f16
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: a5037a86d7d6236f6fa8597dd33148417ddee116
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232338"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86999554"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-java"></a>Gyors útmutató: Azure üzenetsor Storage ügyféloldali kódtára a Javához
 
@@ -27,7 +27,12 @@ Használja az Azure üzenetsor Storage ügyféloldali kódtárat a Javához a k�
 * Üzenetek fogadása és törlése egy várólistából
 * Üzenetsor törlése
 
-[API-referenciák dokumentációja](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/index.html)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue)  |  [Csomag (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-queue)  |  [Példák](https://docs.microsoft.com/azure/storage/common/storage-samples-java?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
+További források:
+
+* [API-referenciadokumentáció](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/index.html)
+* [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue)
+* [Csomag (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-queue)
+* [Példák](https://docs.microsoft.com/azure/storage/common/storage-samples-java?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
 
 ## <a name="prerequisites"></a>Előfeltételek
 

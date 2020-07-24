@@ -14,11 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b91eb361d4bcae304734817ee7f57141d6f06415
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bd060972e562759fcc1071f2c6549578bd3d4ed9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84727857"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015714"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>Azure Active Directory-parancsmagok csoportbeállítások konfigurálásához
 
@@ -31,7 +32,7 @@ A nem rendszergazda felhasználók biztonsági csoportok létrehozásáról a se
 
 Az Office 365-csoportok beállításait egy Setting objektummal és egy SettingsTemplate objektummal kell konfigurálni. Kezdetben a címtárban nem jelennek meg beállítások objektumok, mert a címtár az alapértelmezett beállításokkal van konfigurálva. Az alapértelmezett beállítások módosításához egy új beállítási objektumot kell létrehoznia egy beállítási sablonnal. A beállítások sablonjait a Microsoft határozza meg. Több különböző beállítási sablon is létezik. A címtárhoz tartozó Office 365-csoport beállításainak konfigurálásához használja a "Group. Unified" nevű sablont. Az Office 365-csoport beállításainak egyetlen csoportra való konfigurálásához használja a "Group. Unified. Guest" nevű sablont. Ez a sablon egy Office 365-csoport vendég-hozzáférésének kezelésére szolgál. 
 
-A parancsmagok a Azure Active Directory PowerShell V2 modul részét képezik. A modul számítógépekre történő letöltéséről és telepítéséről a [PowerShell 2. verziójának Azure Active Directory](https://docs.microsoft.com/powershell/azuread/)cikkében talál útmutatást. A modul 2. verziójának kiadását [a PowerShell-galériából](https://www.powershellgallery.com/packages/AzureAD/)is telepítheti.
+A parancsmagok a Azure Active Directory PowerShell V2 modul részét képezik. A modul számítógépekre történő letöltéséről és telepítéséről a [PowerShell 2. verziójának Azure Active Directory](https://docs.microsoft.com/powershell/azure/active-directory/overview)cikkében talál útmutatást. A modul 2. verziójának kiadását [a PowerShell-galériából](https://www.powershellgallery.com/packages/AzureAD/)is telepítheti.
 
 ## <a name="install-powershell-cmdlets"></a>PowerShell-parancsmagok telepítése
 
@@ -318,9 +319,9 @@ Ezzel a lépéssel eltávolítja a beállításokat a címtár szintjén, amely 
    ```
 
 ## <a name="cmdlet-syntax-reference"></a>Parancsmag szintaxisának referenciája
-[Azure Active Directory-parancsmagokkal](/powershell/azure/install-adv2?view=azureadps-2.0)kapcsolatban további Azure Active Directory PowerShell-dokumentációt talál.
+[Azure Active Directory-parancsmagokkal](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)kapcsolatban további Azure Active Directory PowerShell-dokumentációt talál.
 
-## <a name="additional-reading"></a>További olvasnivaló
+## <a name="additional-reading"></a>További információ
 
 * [Erőforráshozzáférés-kezelés Azure Active Directory-csoportokkal](../fundamentals/active-directory-manage-groups.md)
 * [Helyszíni identitások integrálása az Azure Active Directoryval](../hybrid/whatis-hybrid-identity.md)

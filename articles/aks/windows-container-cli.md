@@ -1,15 +1,15 @@
 ---
-title: Windows Server-tároló létrehozása Azure Kubernetes Service (ak) fürtön
+title: Windows Server-tároló létrehozása AK-fürtön az Azure CLI használatával
 description: Ismerje meg, hogyan hozhat létre gyorsan Kubernetes-fürtöt, hogyan helyezhet üzembe egy alkalmazást egy Windows Server-tárolóban az Azure Kubernetes szolgáltatásban (ak) az Azure CLI használatával.
 services: container-service
 ms.topic: article
-ms.date: 05/06/2020
-ms.openlocfilehash: 29ee22cb4b28726b25ead6ff78d90de99847666b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/16/2020
+ms.openlocfilehash: 5baa4f807002cc39428eb46e5a86cf59bd022cb2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84886958"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015629"
 ---
 # <a name="create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>Windows Server-tároló létrehozása Azure Kubernetes szolgáltatásbeli (ak) fürtön az Azure CLI használatával
 
@@ -35,7 +35,7 @@ A következő további korlátozások érvényesek a Windows Server Node-készle
 * Az AK-fürt legfeljebb 100 csomópontot tartalmazhat az egyes csomópont-készletekben.
 * A Windows Server-csomópontok készletének neve legfeljebb 6 karakterből állhat.
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Az Azure-erőforráscsoport olyan logikai csoport, amelyben az Azure-erőforrások üzembe helyezése és kezelése zajlik. Az erőforráscsoportok létrehozásakor meg kell adnia egy helyet. Ez a hely határozza meg, hogy az erőforráscsoport metaadatai hol vannak tárolva, és az erőforrások hol futnak az Azure-ban, ha nem ad meg másik régiót az erőforrások létrehozásakor. Hozzon létre egy erőforráscsoportot az az [Group Create][az-group-create] paranccsal.
 
@@ -70,7 +70,7 @@ A következő példa kimenete azt mutatja, hogy az erőforráscsoport sikeresen 
 Ha olyan AK-fürtöt szeretne futtatni, amely támogatja a Windows Server-tárolók csomópont-készleteit, a fürtnek az [Azure CNI][azure-cni-about] (Advanced) hálózati beépülő modult használó hálózati házirendet kell használnia. További információ a szükséges alhálózati tartományok és hálózati megfontolások megtervezéséhez: az [Azure CNI hálózatkezelésének konfigurálása][use-advanced-networking]. Az az [AK Create][az-aks-create] paranccsal hozzon létre egy *myAKSCluster*nevű AK-fürtöt. Ez a parancs létrehozza a szükséges hálózati erőforrásokat, ha nem léteznek.
 
 * A fürt két csomóponttal van konfigurálva
-* A *Windows-admin-password* és a *Windows-admin-username* paraméterek a fürtön létrehozott Windows Server-tárolók rendszergazdai hitelesítő adatait adja meg.
+* A *Windows-admin-password* és a *Windows-admin-username* paraméterek beállítja a fürtön létrehozott Windows Server-tárolók rendszergazdai hitelesítő adatait, és meg kell felelniük a [Windows Server-jelszó követelményeinek][windows-server-password].
 * A csomópont-készlet használja`VirtualMachineScaleSets`
 
 > [!NOTE]
@@ -142,7 +142,7 @@ aks-nodepool1-12345678-vmssfedcba   Ready    agent   13m    v1.16.9
 aksnpwin987654                      Ready    agent   108s   v1.16.9
 ```
 
-## <a name="run-the-application"></a>Alkalmazás futtatása
+## <a name="run-the-application"></a>Az alkalmazás futtatása
 
 A Kubernetes jegyzékfájl a fürt kívánt állapotát határozza meg, például a tároló lemezképeit. Ebben a cikkben egy jegyzékfájlt használunk a ASP.NET-minta alkalmazás Windows Server-tárolóban való futtatásához szükséges összes objektum létrehozásához. Ez a jegyzékfájl egy [Kubernetes-telepítést][kubernetes-deployment] tartalmaz a ASP.net-minta alkalmazáshoz és egy külső [Kubernetes szolgáltatáshoz][kubernetes-service] az alkalmazás internetről való eléréséhez.
 
@@ -294,3 +294,4 @@ Az AKS-sel kapcsolatos további információkért és a kódtól az üzembe hely
 [aks-faq]: faq.md
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
+[windows-server-password]: /windows/security/threat-protection/security-policy-settings/password-must-meet-complexity-requirements#reference

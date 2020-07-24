@@ -14,16 +14,17 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 03c5e3fe7fe84b968b59d0668619b3feddacc4f1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ce3a97678dea7e7b26caa3b1b091b023eca1a555
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84727823"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015697"
 ---
 # <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>Azure Active Directory 2-es verziójú parancsmagok a csoport kezeléséhez
 
 > [!div class="op_single_selector"]
-> - [Azure Portalra](../fundamentals/active-directory-groups-create-azure-portal.md?context=azure/active-directory/users-groups-roles/context/ugr-context)
+> - [Azure Portal](../fundamentals/active-directory-groups-create-azure-portal.md?context=azure/active-directory/users-groups-roles/context/ugr-context)
 > - [PowerShell](groups-settings-v2-cmdlets.md)
 >
 >
@@ -49,7 +50,7 @@ A következő parancs használatával ellenőrizheti, hogy a modul használatra 
     Binary     2.0.0.115    azuread                      {Add-AzureADAdministrati...}
 ```
 
-Most már elkezdheti használni a parancsmagokat a modulban. Az Azure AD-modulban található parancsmagok teljes leírását a [Azure Active Directory PowerShell 2-es verziójának](/powershell/azure/install-adv2?view=azureadps-2.0)online dokumentációjában találja.
+Most már elkezdheti használni a parancsmagokat a modulban. Az Azure AD-modulban található parancsmagok teljes leírását a [Azure Active Directory PowerShell 2-es verziójának](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)online dokumentációjában találja.
 
 > [!NOTE]
 > Az Azure AD PowerShell-parancsmagok nem működnek az új PowerShell 7 használatával, mivel a .net Core-on alapul. Tisztában vagyunk azzal, hogy a frissítés folyamatban van. Mostantól javasoljuk, hogy az Azure AD PowerShell-műveletekhez használni kívánt Windows PowerShell 5. x modult használja. 
@@ -337,7 +338,7 @@ Az Office 365 Group visszaírási a Azure Active Directory (Azure AD) nyilvános
 
 ## <a name="next-steps"></a>További lépések
 
-[Azure Active Directory-parancsmagokkal](/powershell/azure/install-adv2?view=azureadps-2.0)kapcsolatban további Azure Active Directory PowerShell-dokumentációt talál.
+[Azure Active Directory-parancsmagokkal](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)kapcsolatban további Azure Active Directory PowerShell-dokumentációt talál.
 
 * [Erőforráshozzáférés-kezelés Azure Active Directory-csoportokkal](../fundamentals/active-directory-manage-groups.md?context=azure/active-directory/users-groups-roles/context/ugr-context)
 * [Helyszíni identitások integrálása az Azure Active Directoryval](../hybrid/whatis-hybrid-identity.md?context=azure/active-directory/users-groups-roles/context/ugr-context)

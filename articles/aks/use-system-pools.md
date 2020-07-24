@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 06/18/2020
 ms.author: mlearned
-ms.openlocfilehash: 01dcd6b7b366b7a1ada581ec154409ee7598e7a6
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 2994a616d60258e81cbd5a409690abc18538183a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86250838"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015527"
 ---
 # <a name="manage-system-node-pools-in-azure-kubernetes-service-aks"></a>Rendszercsomópont-készletek kezelése az Azure Kubernetes szolgáltatásban (ak)
 
@@ -28,14 +28,16 @@ Az Azure Kubernetes szolgáltatásban (ak) az azonos konfiguráció csomópontja
 A rendszercsomópont-készleteket támogató AK-fürtök létrehozásakor és kezelésekor a következő korlátozások érvényesek.
 
 * Tekintse [meg a kvótákat, a virtuális gépek méretére vonatkozó korlátozásokat és a régió elérhetőségét az Azure Kubernetes szolgáltatásban (ak)][quotas-skus-regions].
-* Az AK-fürtöt virtuálisgép-méretezési csoportokkal kell felépíteni.
+* Az AK-fürtöt virtuálisgép-méretezési csoportokkal és a *standard* SKU Load balancerrel kell felépíteni.
 * A csomópontok készletének neve csak kisbetűket és kisbetűs karaktereket tartalmazhat. A Linux-csomópontok készletei esetében a hossznak 1 és 12 karakter közöttinek kell lennie. Windows-csomópontos készletek esetén a hossznak 1 és 6 karakter közöttinek kell lennie.
 * A csomópont-készlet üzemmódjának beállításához a 2020-03-01-es vagy újabb API-verziót kell használni. Az 2020-03-01-nál régebbi API-verziókban létrehozott fürtök csak a felhasználói csomópontok készleteit tartalmazzák, de áttelepíthetők a rendszercsomópont-készletek tárolására a következő [frissítési készlet üzemmódjának lépéseit](#update-existing-cluster-system-and-user-node-pools)követve.
 * A csomópont-készlet módja kötelező tulajdonság, és az ARM-sablonok vagy a közvetlen API-hívások használata esetén explicit módon kell megadni.
 
 ## <a name="system-and-user-node-pools"></a>Rendszer-és felhasználói csomópontok készletei
 
-A rendszercsomópont-készlet csomópontjain a **kubernetes.Azure.com/Mode címke: System**. Minden AK-fürt legalább egy rendszercsomópont-készletet tartalmaz. A rendszercsomópont-készletek a következő korlátozásokkal rendelkeznek:
+Egy rendszercsomópont-készlet esetében az AK automatikusan a következő címkét rendeli hozzá a **kubernetes.Azure.com/Mode: rendszer** csomópontokhoz. Ez azt eredményezi, hogy a rendszer az e címkét tartalmazó csomópont-készleteken ütemezi a rendszerhüvelyek ütemezését. Ez a címke nem akadályozza meg az alkalmazás-hüvelyek ütemezését a rendszercsomópont-készleteken. Javasoljuk azonban, hogy a kritikus rendszerhüvelyeket az alkalmazás-hüvelyből elkülönítve akadályozza meg, hogy a helytelenül konfigurált vagy szélhámos alkalmazási hüvelyek véletlenül meggyilkolják a rendszer hüvelyeit. Ezt a viselkedést egy dedikált rendszercsomópont-készlet létrehozásával kényszerítheti ki. A `CriticalAddonsOnly=true:NoSchedule` szennyező eszköz használatával megakadályozhatja, hogy az alkalmazás-hüvelyek ütemezve legyenek a rendszercsomópont-készleteken.
+
+A rendszercsomópont-készletek a következő korlátozásokkal rendelkeznek:
 
 * A Rendszerkészletek osType Linux rendszernek kell lennie.
 * A felhasználói csomópont-készletek osType lehet Linux vagy Windows.
@@ -46,6 +48,7 @@ A rendszercsomópont-készlet csomópontjain a **kubernetes.Azure.com/Mode címk
 
 A következő műveleteket hajthatja végre a Node Pools használatával:
 
+* Dedikált rendszercsomópont-készlet létrehozása (a rendszer-hüvelyek a csomópont-készletekhez való ütemezésének előnyben részesítése `mode:system` )
 * Módosítsa a rendszercsomópont-készletet felhasználói csomópont-készletként, ha rendelkezik egy másik rendszercsomópont-készlettel, hogy a helyére kerüljön az AK-fürtben.
 * Felhasználói csomópont-készlet módosítása rendszercsomópont-készletként.
 * Felhasználói csomópontok készletének törlése.
@@ -55,7 +58,7 @@ A következő műveleteket hajthatja végre a Node Pools használatával:
 
 ## <a name="create-a-new-aks-cluster-with-a-system-node-pool"></a>Új AK-fürt létrehozása rendszercsomópont-készlettel
 
-Amikor új AK-fürtöt hoz létre, a rendszer automatikusan létrehoz egy egyetlen csomóponttal rendelkező rendszercsomópont-készletet. A kezdeti csomópont-készlet alapértelmezett értéke rendszer típusú üzemmód. Amikor új csomópont-készleteket hoz létre az az AK nodepool Add paranccsal, ezek a csomópont-készletek a felhasználói csomópontok készletei, kivéve, ha explicit módon megadja a Mode paramétert.
+Amikor új AK-fürtöt hoz létre, a rendszer automatikusan létrehoz egy egyetlen csomóponttal rendelkező rendszercsomópont-készletet. A kezdeti csomópont-készlet alapértelmezett értéke rendszer típusú üzemmód. Ha a-val új csomópont-készleteket hoz létre `az aks nodepool add` , ezek a csomópontok a felhasználói csomópontok készletei, kivéve, ha explicit módon megadja a Mode paramétert.
 
 A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot a *eastus* régióban.
 
@@ -63,54 +66,73 @@ A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscso
 az group create --name myResourceGroup --location eastus
 ```
 
-Használja az [az aks create][az-aks-create] parancsot egy AKS-fürt létrehozásához. A következő példa egy *myAKSCluster* nevű fürtöt hoz létre egy olyan rendszerkészlettel, amely egy csomópontot tartalmaz. Az éles számítási feladatokhoz győződjön meg arról, hogy legalább három csomóponttal rendelkező rendszercsomópont-készleteket használ. A művelet végrehajtása több percet is igénybe vehet.
+Használja az [az aks create][az-aks-create] parancsot egy AKS-fürt létrehozásához. Az alábbi példa egy *myAKSCluster* nevű fürtöt hoz létre egy olyan dedikált rendszerkészlettel, amely egy csomópontot tartalmaz. Az éles számítási feladatokhoz győződjön meg arról, hogy legalább három csomóponttal rendelkező rendszercsomópont-készleteket használ. A művelet végrehajtása több percet is igénybe vehet.
 
 ```azurecli-interactive
+# Create a new AKS cluster with a single system pool
 az aks create -g myResourceGroup --name myAKSCluster --node-count 1 --generate-ssh-keys
 ```
 
-## <a name="add-a-system-node-pool-to-an-existing-aks-cluster"></a>Rendszercsomópont-készlet hozzáadása meglévő AK-fürthöz
+## <a name="add-a-dedicated-system-node-pool-to-an-existing-aks-cluster"></a>Dedikált rendszercsomópont-készlet hozzáadása meglévő AK-fürthöz
 
-Egy vagy több rendszercsomópont-készletet is hozzáadhat meglévő AK-fürtökhöz. A következő parancs egy üzemmód típusú rendszer csomópont-készletét adja meg, amelynek alapértelmezett száma három csomópont.
+> [!Important]
+> A csomópontok nem módosíthatók a parancssori felületen keresztül a csomópont-készlet létrehozása után.
+
+Egy vagy több rendszercsomópont-készletet is hozzáadhat meglévő AK-fürtökhöz. Javasoljuk, hogy az alkalmazás-hüvelyeket a felhasználói csomópontok készletén ütemezze, és a rendszercsomópont-készleteket csak a kritikus rendszerhüvelyek számára fordítsa. Ezzel megelőzhető, hogy a rosszindulatú alkalmazások véletlenül meggyilkolják a rendszerhüvelyeket. Kényszerítse ki ezt a viselkedést a `CriticalAddonsOnly=true:NoSchedule` rendszercsomópont-készletek [megromlásával][aks-taints] . 
+
+A következő parancs egy olyan dedikált csomópont-készletet hoz létre, amely a Mode Type típusú rendszer alapértelmezett három csomópontjának a számát adja meg.
 
 ```azurecli-interactive
-az aks nodepool add -g myResourceGroup --cluster-name myAKSCluster -n mynodepool --mode system
+az aks nodepool add \
+    --resource-group myResourceGroup \
+    --cluster-name myAKSCluster \
+    --name systempool \
+    --node-count 3 \
+    --node-taints CriticalAddonsOnly=true:NoSchedule \
+    --mode system
 ```
 ## <a name="show-details-for-your-node-pool"></a>A Node-készlet részleteinek megjelenítése
 
 A csomópont-készlet részleteit a következő paranccsal tekintheti meg.  
 
 ```azurecli-interactive
-az aks nodepool show -g myResourceGroup --cluster-name myAKSCluster -n mynodepool
+az aks nodepool show -g myResourceGroup --cluster-name myAKSCluster -n systempool
 ```
 
-A System Node-készletekhez egy **rendszer** típusú mód van definiálva, és a felhasználói csomópontok készletei esetében **felhasználói** üzemmód van megadva.
+A System Node-készletekhez egy **rendszer** típusú mód van definiálva, és a felhasználói csomópontok készletei esetében **felhasználói** üzemmód van megadva. A Rendszerkészletek esetében ellenőrizze, hogy a beszennyező beállítás értéke `CriticalAddonsOnly=true:NoSchedule` -e, ami megakadályozza, hogy az alkalmazás az adott csomópont-készleten ütemezve legyen.
 
 ```output
 {
   "agentPoolType": "VirtualMachineScaleSets",
   "availabilityZones": null,
-  "count": 3,
+  "count": 1,
   "enableAutoScaling": null,
   "enableNodePublicIp": false,
-  "id": "/subscriptions/666d66d8-1e43-4136-be25-f25bb5de5883/resourcegroups/myResourceGroup/providers/Microsoft.ContainerService/managedClusters/myAKSCluster/agentPools/mynodepool",
+  "id": "/subscriptions/yourSubscriptionId/resourcegroups/myResourceGroup/providers/Microsoft.ContainerService/managedClusters/myAKSCluster/agentPools/systempool",
   "maxCount": null,
   "maxPods": 110,
   "minCount": null,
   "mode": "System",
-  "name": "mynodepool",
+  "name": "systempool",
+  "nodeImageVersion": "AKSUbuntu-1604-2020.06.30",
   "nodeLabels": {},
-  "nodeTaints": null,
-  "orchestratorVersion": "1.15.10",
-  "osDiskSizeGb": 100,
+  "nodeTaints": [
+    "CriticalAddonsOnly=true:NoSchedule"
+  ],
+  "orchestratorVersion": "1.16.10",
+  "osDiskSizeGb": 128,
   "osType": "Linux",
-  "provisioningState": "Succeeded",
+  "provisioningState": "Failed",
+  "proximityPlacementGroupId": null,
   "resourceGroup": "myResourceGroup",
   "scaleSetEvictionPolicy": null,
   "scaleSetPriority": null,
   "spotMaxPrice": null,
   "tags": null,
   "type": "Microsoft.ContainerService/managedClusters/agentPools",
+  "upgradeSettings": {
+    "maxSurge": null
+  },
   "vmSize": "Standard_DS2_v2",
   "vnetSubnetId": null
 }
@@ -146,7 +168,17 @@ Korábban nem lehetett törölni a rendszercsomópont-készletet, amely a kezdet
 az aks nodepool delete -g myResourceGroup --cluster-name myAKSCluster -n mynodepool
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+
+A fürt törléséhez használja az az [Group delete][az-group-delete] parancsot az AK-erőforráscsoport törléséhez:
+
+```azurecli-interactive
+az group delete --name myResourceGroup --yes --no-wait
+```
+
+
+
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben megtanulta, hogyan hozhat létre és kezelhet rendszercsomópont-készleteket egy AK-fürtben. További információ a több csomópontos készletek használatáról: [több csomópontos készlet használata][use-multiple-node-pools].
 
@@ -159,6 +191,7 @@ Ebben a cikkben megtanulta, hogyan hozhat létre és kezelhet rendszercsomópont
 [kubernetes-label-syntax]: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set
 
 <!-- INTERNAL LINKS -->
+[aks-taints]: use-multiple-node-pools.md#schedule-pods-using-taints-and-tolerations
 [aks-windows]: windows-container-cli.md
 [az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
 [az-aks-create]: /cli/azure/aks#az-aks-create
