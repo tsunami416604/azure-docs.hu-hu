@@ -2,19 +2,19 @@
 title: Szerepköralapú hozzáférés biztosítása a felhasználók számára
 titleSuffix: Azure Maps
 description: Szerepköralapú hozzáférés-vezérlés használata a felhasználók engedélyezésének megadásához Azure Maps
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 06/17/2020
 ms.topic: include
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 86f89397f3685443071788580253ee11ce4b70be
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2b138dab2a97537a93b8d873f79b6ee9c00b4af4
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84988585"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87126745"
 ---
 ## <a name="grant-role-based-access-for-users-to-azure-maps"></a>Szerepköralapú hozzáférés biztosítása a felhasználók számára a Azure Maps
 
@@ -29,7 +29,7 @@ További információk az [Azure ad](https://docs.microsoft.com/azure/active-dir
 
     ![RBAC megadása](../media/how-to-manage-authentication/how-to-grant-rbac.png)
 
-2. A **szerepkör-hozzárendelések** lap **szerepkör**területén válassza ki a beépített Azure Maps szerepkör-definíciót, például **Azure Maps Adatolvasó** vagy **Azure Maps adatközreműködő**. A **hozzáférés társítása**területen válassza az **Azure ad-felhasználó,-csoport vagy egyszerű szolgáltatásnév**lehetőséget. Válassza ki a résztvevőt név alapján. Kattintson a **Mentés** gombra.
+2. A **szerepkör-hozzárendelések** lap **szerepkör**területén válassza ki a beépített Azure Maps szerepkör-definíciót, például **Azure Maps Adatolvasó** vagy **Azure Maps adatközreműködő**. A **hozzáférés társítása**területen válassza az **Azure ad-felhasználó,-csoport vagy egyszerű szolgáltatásnév**lehetőséget. Válassza ki a résztvevőt név alapján. Ez után válassza a **Mentés** lehetőséget.
 
    * A [szerepkör-hozzárendelések hozzáadása vagy eltávolítása](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)című témakörben talál további információt.
 
