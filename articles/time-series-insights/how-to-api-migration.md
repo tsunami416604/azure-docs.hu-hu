@@ -8,14 +8,14 @@ ms.author: shresha
 manager: dpalled
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 07/22/2020
+ms.date: 07/23/2020
 ms.custom: shresha
-ms.openlocfilehash: 6cd06c31b56ce89a13af9bae8c77dc73efd69ef7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a5721748f023ea5f098b71d8d43dbda53721c54d
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87099094"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171765"
 ---
 # <a name="migrating-to-new-azure-time-series-insights-gen2-api-versions"></a>Áttelepítés új Azure Time Series Insights Gen2 API-verzióra
 
@@ -23,30 +23,30 @@ ms.locfileid: "87099094"
 
 Ha a nyilvános előzetes verzióban (2020. július 16. előtt) létrehozott egy Azure Time Series Insights Gen2-környezetet, frissítse az ÁME-környezetet, hogy az új, általánosan elérhető API-kat használja a jelen cikkben ismertetett lépéseket követve.
 
-Az új API-verzió a `2020-07-31` és a frissített [idősorozat-kifejezés szintaxisát](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax)használja. 
+Az új API-verzió a `2020-07-31` és a frissített [idősorozat-kifejezés szintaxisát](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax)használja.
 
 A felhasználóknak át kell telepíteniük a környezetük [idősorozat-modellezési változóit](./concepts-variables.md), a mentett lekérdezéseket, Power bi lekérdezéseket és az API-végpontokat meghívó egyéni eszközöket. Ha bármilyen kérdése vagy problémája van az áttelepítési folyamattal kapcsolatban, küldjön egy támogatási jegyet a Azure Portal, és nevezze el ezt a dokumentumot.
 
 > [!IMPORTANT]
-> Az előzetes verziójú API `2018-11-01-preview` -verzió az 2020-as október 31-ig továbbra is támogatott lesz. A szolgáltatásban felmerülő fennakadások elkerülése érdekében végezze el az áttelepítés összes vonatkozó lépését. 
+> Az előzetes verziójú API `2018-11-01-preview` -verzió az 2020-as október 31-ig továbbra is támogatott lesz. A szolgáltatásban felmerülő fennakadások elkerülése érdekében végezze el az áttelepítés összes vonatkozó lépését.
 
 ## <a name="migrate-time-series-model-and-saved-queries"></a>Idősorozat-modell és mentett lekérdezések migrálása
 
-Annak érdekében, hogy a felhasználók áttelepítse az [Idősorozat-modell változóit](./concepts-variables.md) és a mentett lekérdezéseket, a [Azure Time Series Insights Explorerben](https://insights.timeseries.azure.com)elérhetővé válik egy beépített eszköz. Navigáljon az áttelepíteni kívánt környezethez, és kövesse az alábbi lépéseket. **Az áttelepítést részben elvégezheti, és később is visszatérhet a befejezéshez, de a frissítések egyike sem állítható vissza.** 
+Annak érdekében, hogy a felhasználók áttelepítse az [Idősorozat-modell változóit](./concepts-variables.md) és a mentett lekérdezéseket, a [Azure Time Series Insights Explorerben](https://insights.timeseries.azure.com)elérhetővé válik egy beépített eszköz. Navigáljon az áttelepíteni kívánt környezethez, és kövesse az alábbi lépéseket. **Az áttelepítést részben elvégezheti, és később is visszatérhet a befejezéshez, de a frissítések egyike sem állítható vissza.**
 
 > [!NOTE]
 > A környezetnek közreműködőnek kell lennie az idősorozat-modell és a mentett lekérdezések frissítéseinek létrehozásához. Ha Ön nem közreműködő, csak a személyes mentett lekérdezéseket tudja áttelepíteni. A továbblépés előtt tekintse át a [környezeti hozzáférési házirendeket](./concepts-access-policies.md) és a hozzáférési szintet.
 
-1. A rendszer arra kéri, hogy az Explorer frissítse az idősorozat-modell változói és a mentett lekérdezések által használt szintaxist. 
-   
+1. A rendszer arra kéri, hogy az Explorer frissítse az idősorozat-modell változói és a mentett lekérdezések által használt szintaxist.
+
     [![Adatkérés](media/api-migration/ux-prompt.png)](media/v2-update-overview/overview-one.png#lightbox)
-    
-    Ha véletlenül lezárta az értesítést, akkor az értesítési panelen található. 
+
+    Ha véletlenül lezárta az értesítést, akkor az értesítési panelen található.
 
 1. Kattintson a **frissítések megjelenítése** elemre az áttelepítési eszköz megnyitásához.
-    
-1. Kattintson a **típusok letöltése**elemre. Mivel a Migrálás felülírja a jelenlegi típusait a változó szintaxisának módosításához, meg kell mentenie a jelenlegi típusok másolatát. Az eszköz értesíti Önt, ha a rendszer letölti a típusokat. 
-   
+
+1. Kattintson a **típusok letöltése**elemre. Mivel a Migrálás felülírja a jelenlegi típusait a változó szintaxisának módosításához, meg kell mentenie a jelenlegi típusok másolatát. Az eszköz értesíti Önt, ha a rendszer letölti a típusokat.
+
     [![Letöltési típusok](media/api-migration/ux-migration-tool.png)](media/v2-update-overview/overview-one.png#lightbox)
 
 1. Kattintson a **változók frissítése**elemre. Az eszköz értesíti, ha a változók frissítve lettek.
@@ -56,39 +56,38 @@ Annak érdekében, hogy a felhasználók áttelepítse az [Idősorozat-modell v�
 
     [![Változók frissítése](media/api-migration/ux-migration-tool-downloaded-types.png)](media/v2-update-overview/overview-one.png#lightbox)
 
-2. Kattintson a **mentett lekérdezések frissítése**elemre. Az eszköz értesíti, ha a változók frissítve lettek.
-   
+1. Kattintson a **mentett lekérdezések frissítése**elemre. Az eszköz értesíti, ha a változók frissítve lettek.
+
     [![Mentett lekérdezések frissítése](media/api-migration/ux-migration-tool-updated-variables.png)](media/v2-update-overview/overview-one.png#lightbox)
 
-3. Kattintson a **Kész** gombra.
+1. Kattintson a **Kész** gombra.
 
     [![Áttelepítés befejezve](media/api-migration/ux-migration-tool-updated-saved-queries.png)](media/v2-update-overview/overview-one.png#lightbox)
 
-
-Tekintse át a frissített környezetet az újonnan létrehozott változók és mentett lekérdezések ábrázolásával. Ha nem várt viselkedést lát a diagramon, küldjön visszajelzést az Explorer visszajelzési eszközének használatával. 
+Tekintse át a frissített környezetet az újonnan létrehozott változók és mentett lekérdezések ábrázolásával. Ha nem várt viselkedést lát a diagramon, küldjön visszajelzést az Explorer visszajelzési eszközének használatával.
 
 ## <a name="migrate-power-bi-queries"></a>Power BI lekérdezések migrálása
 
-Ha a Power BI-összekötővel generált lekérdezéseket, a rendszer hívásokat kezdeményez a Azure Time Series Insights az előzetes verziójú API-verzió és a régi idősorozat-kifejezés szintaxisának használatával. Ezek a lekérdezések továbbra is sikeresen lekérik az adatlekérdezéseket, amíg az előnézeti API elavult nem lesz. 
+Ha a Power BI-összekötővel generált lekérdezéseket, a rendszer hívásokat kezdeményez a Azure Time Series Insights az előzetes verziójú API-verzió és a régi idősorozat-kifejezés szintaxisának használatával. Ezek a lekérdezések továbbra is sikeresen lekérik az adatlekérdezéseket, amíg az előnézeti API elavult nem lesz.
 
-Ha frissíteni szeretné a lekérdezéseket az új API-verzió és az új idősorozat-kifejezés szintaxisának használatára, a lekérdezéseket újra létre kell hozni az Intézőből. További információ [a lekérdezések létrehozásáról az Power bi-összekötő használatával](./how-to-connect-power-bi.md). 
+Ha frissíteni szeretné a lekérdezéseket az új API-verzió és az új idősorozat-kifejezés szintaxisának használatára, a lekérdezéseket újra létre kell hozni az Intézőből. További információ [a lekérdezések létrehozásáról az Power bi-összekötő használatával](./how-to-connect-power-bi.md).
 
 > [!NOTE]
-> A Power BI Desktop júliusi 2020-es verzióját kell használnia. Ha nem jelenik meg, a [lekérdezési hasznos adatok verziószáma érvénytelen](./how-to-diagnose-troubleshoot.md#problem-power-bi-connector-shows-unable-to-connect). 
+> A Power BI Desktop júliusi 2020-es verzióját kell használnia. Ha nem jelenik meg, a [lekérdezési hasznos adatok verziószáma érvénytelen](./how-to-diagnose-troubleshoot.md#problem-power-bi-connector-shows-unable-to-connect).
 
 ## <a name="migrate-custom-applications"></a>Egyéni alkalmazások migrálása
 
-Ha az egyéni alkalmazás a következő REST-végpontokra hívja fel a hívást, elegendő az API verziójának frissítése az `2020-07-31` URI-ban: 
+Ha az egyéni alkalmazás a következő REST-végpontokra hívja fel a hívást, elegendő az API verziójának frissítése az `2020-07-31` URI-ban:
 
 - Idősorozat-modell API-k
   - Modell beállítások API-k
-    - [Get](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/modelsettings/get)
+    - [Lekérés](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/modelsettings/get)
     - [Frissítés](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/modelsettings/update)
-  - Példány API-k 
+  - Példány API-k
     - [Az összes batch-művelet](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/executebatch)
     - [Lista](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/list)
     - [Search](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/search)
-    - [Javaslom](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/suggest)
+    - [Ajánlás](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/suggest)
   - Hierarchia API-k
     - [Az összes batch-művelet](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeserieshierarchies/executebatch)
     - [Lista](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeserieshierarchies/list)
@@ -96,8 +95,7 @@ Ha az egyéni alkalmazás a következő REST-végpontokra hívja fel a hívást,
     - [Törlés, műveletek beolvasása](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/executebatch)
     - [Lista](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/list)
 
-
-A következő REST-végpontok esetében frissítenie kell az API-verziót `2020-07-31` az URI-ban, és ellenőrizze, hogy a tulajdonság összes előfordulása `tsx` a frissített [Idősorozat-kifejezés szintaxisát](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax)használja-e. 
+A következő REST-végpontok esetében frissítenie kell az API-verziót `2020-07-31` az URI-ban, és ellenőrizze, hogy a tulajdonság összes előfordulása `tsx` a frissített [Idősorozat-kifejezés szintaxisát](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax)használja-e.
 
 - Típusok API-k
   - [Put művelet](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/executebatch#typesbatchput)
@@ -106,12 +104,12 @@ A következő REST-végpontok esetében frissítenie kell az API-verziót `2020-
   - [GetSeries](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#getseries)
   - [GetAggregateSeries](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#aggregateseries)
 
-
 ### <a name="examples"></a>Példák
 
 #### <a name="typesbatchput"></a>TypesBatchPut
 
-Régi kérelem törzse (által használt `2018-11-01-preview` ): 
+Régi kérelem törzse (által használt `2018-11-01-preview` ):
+
 ```JSON
 {
   "put": [
@@ -139,6 +137,7 @@ Régi kérelem törzse (által használt `2018-11-01-preview` ):
 ```
 
 Frissített kérelem törzse (által használt `2020-07-31` ):
+
 ```JSON
 {
   "put": [
@@ -169,7 +168,8 @@ Másik lehetőségként a is lehetséges `filter` `$event.Mode.String = 'outdoor
 
 #### <a name="getevents"></a>GetEvents
 
-Régi kérelem törzse (által használt `2018-11-01-preview` ): 
+Régi kérelem törzse (által használt `2018-11-01-preview` ):
+
 ```JSON
 {
   "getEvents": {
@@ -195,6 +195,7 @@ Régi kérelem törzse (által használt `2018-11-01-preview` ):
 ```
 
 Frissített kérelem törzse (által használt `2020-07-31` ):
+
 ```JSON
 {
   "getEvents": {
@@ -219,10 +220,12 @@ Frissített kérelem törzse (által használt `2020-07-31` ):
 }
 ```
 
-Másik lehetőségként a is lehetséges `filter` `($event['Value'].Double != null) OR ($event['Status'].String = 'Good')` . 
+Másik lehetőségként a is lehetséges `filter` `($event['Value'].Double != null) OR ($event['Status'].String = 'Good')` .
 
 #### <a name="getseries"></a>GetSeries
-Régi kérelem törzse (által használt `2018-11-01-preview` ): 
+
+Régi kérelem törzse (által használt `2018-11-01-preview` ):
+
 ```JSON
 {
   "getSeries": {
@@ -252,6 +255,7 @@ Régi kérelem törzse (által használt `2018-11-01-preview` ):
 ```
 
 Frissített kérelem törzse (által használt `2020-07-31` ):
+
 ```JSON
 {
   "getSeries": {
@@ -280,10 +284,12 @@ Frissített kérelem törzse (által használt `2020-07-31` ):
 }
 ```
 
-Másik lehetőségként a is lehetséges `value` `$event['Bar-Pressure-Offset'].Double` . Ha nem ad meg adattípust, az adattípust a rendszer mindig dupla értékre veszi. A speciális karakter () megjelenítéséhez a zárójeles jelölést kell használni `-` . 
+Másik lehetőségként a is lehetséges `value` `$event['Bar-Pressure-Offset'].Double` . Ha nem ad meg adattípust, az adattípust a rendszer mindig dupla értékre veszi. A speciális karakter () megjelenítéséhez a zárójeles jelölést kell használni `-` .
 
 #### <a name="getaggregateseries"></a>GetAggregateSeries
-Régi kérelem törzse (által használt `2018-11-01-preview` ): 
+
+Régi kérelem törzse (által használt `2018-11-01-preview` ):
+
 ```JSON
 {
   "aggregateSeries": {
@@ -314,6 +320,7 @@ Régi kérelem törzse (által használt `2018-11-01-preview` ):
 ```
 
 Frissített kérelem törzse (által használt `2020-07-31` ):
+
 ```JSON
   "aggregateSeries": {
     "timeSeriesId": [

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: bd1c41f23164d8dda2712ef2c361498cdaed6105
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: aae1797f7f1a252a4f094ee9f1b079fb60ba72f3
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87032296"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131735"
 ---
 # <a name="build-out-an-end-to-end-solution"></a>Hozzon létre egy végpontok közötti megoldást
 
@@ -93,7 +93,7 @@ A következő lépés egy [Azure functions alkalmazás](../azure-functions/funct
 * *ProcessHubToDTEvents*: a bejövő IoT hubi adatfeldolgozás feldolgozása és az Azure digitális Twins frissítése ennek megfelelően
 * *ProcessDTRoutedData*: a digitális ikrekből származó adatok feldolgozása, és ennek megfelelően frissíti a szülő ikreket az Azure digitális ikrekben
 
-Ebben a szakaszban közzé fogja tenni az előre megírt Function alkalmazást, és gondoskodjon arról, hogy a Function alkalmazás hozzáférhessen az Azure digitális Twins-hoz, Azure Active Directory (HRE) identitás hozzárendelésével. Ezeknek a lépéseknek a végrehajtása lehetővé teszi, hogy az oktatóanyag további részében a functions alkalmazásban lévő függvények is használhatók legyenek. 
+Ebben a szakaszban közzé fogja tenni az előre megírt Function alkalmazást, és gondoskodjon arról, hogy a Function alkalmazás hozzáférhessen az Azure digitális Twins-hoz, Azure Active Directory (Azure AD) identitás hozzárendelésével. Ezeknek a lépéseknek a végrehajtása lehetővé teszi, hogy az oktatóanyag további részében a functions alkalmazásban lévő függvények is használhatók legyenek. 
 
 ### <a name="publish-the-app"></a>Az alkalmazás közzététele
 
@@ -141,7 +141,7 @@ A Visual Studio fő ablakában megnyíló *Közzététel* ablaktáblán győződ
 
 ### <a name="assign-permissions-to-the-function-app"></a>Engedélyek kiosztása a Function alkalmazáshoz
 
-Ha engedélyezni szeretné a Function app számára az Azure Digital Twins elérését, a következő lépés az alkalmazás beállításainak konfigurálása, a rendszer által felügyelt HRE-identitás kiosztása, valamint az identitás *tulajdonosi* engedélyeinek megadása az Azure Digital Twins-példányban.
+Ha engedélyezni szeretné a Function app számára az Azure Digital Twins elérését, a következő lépés az alkalmazás beállításainak konfigurálása, a rendszer által felügyelt Azure AD-identitás kiosztása, valamint az identitás *tulajdonosi* engedélyeinek megadása az Azure Digital Twins-példányban.
 
 Azure Cloud Shell a következő parancs használatával állítson be egy olyan alkalmazás-beállítást, amelyet a Function alkalmazás a digitális Twins-példányra való hivatkozáshoz fog használni.
 
@@ -410,7 +410,7 @@ Itt látható az oktatóanyagban kiépített forgatókönyv áttekintése.
 
 :::image type="content" source="media/tutorial-end-to-end/building-scenario.png" alt-text="A teljes építési forgatókönyv ábrája. Az eszközről a IoT Hubba, egy Azure-függvénnyel (B. nyíl) egy Azure Digital Twins-példányra (A szakasz), Event Grid majd egy másik Azure-függvényre (A C. nyílra) átáramló adatok ábrázolása.":::
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs szüksége az oktatóanyagban létrehozott erőforrásokra, a következő lépésekkel törölheti őket. 
 
@@ -423,7 +423,7 @@ A Azure Cloud Shell használatával törölheti az erőforráscsoport összes Az
 az group delete --name <your-resource-group>
 ```
 
-Ezután törölje az ügyfélalkalmazás számára a következő paranccsal létrehozott HRE-regisztrációs alkalmazást:
+Ezután törölje az ügyfélalkalmazás számára az alábbi paranccsal létrehozott Azure AD-alkalmazás regisztrációját:
 
 ```azurecli
 az ad app delete --id <your-application-ID>

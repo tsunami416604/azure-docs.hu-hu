@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 5/8/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: fcedec126c925ff218b8a0fb17b81dbf5ac1d769
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ce3f775b7a72239fba7eb7c1538ec4f0831f1c74
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87044233"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87124560"
 ---
 # <a name="explore-azure-digital-twins-with-a-sample-client-app"></a>Ismerje meg az Azure Digital Twins-t egy minta ügyfélalkalmazás alkalmazásával
 
@@ -78,7 +78,7 @@ Mielőtt továbblép, ügyeljen arra, hogy mentse a fájlt.
 > Ha saját modellt szeretne létrehozni, beillesztheti a *Room* Model-kódot egy új fájlba, amelyet egy *. JSON* kiterjesztéssel menthet a *AdtSampleApp\SampleClientApp\Models* mappában. Ezt követően a következő lépésekkel adhat hozzá tulajdonságokat és kapcsolatokat, amelyeknek bármilyen tulajdonsága van. A mappában található egyéb mintákat is megtekintheti ötleteket.
 
 > [!TIP] 
-> A DTDL érvényességének ellenőrzéséhez használhatja a Language-agnosztikus [DTDL-érvényesítő mintát](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator) , amellyel ellenőrizhetők a modell dokumentumai. A szolgáltatás a DTDL-elemző könyvtárra épül, amelyről további információt a modellek elemzése [és ellenőrzése](how-to-use-parser.md)című témakörben olvashat.
+> A DTDL érvényességének ellenőrzéséhez használhatja a Language-agnosztikus [DTDL-érvényesítő mintát](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator) , amellyel ellenőrizhetők a modell dokumentumai. A szolgáltatás a DTDL-elemző könyvtárra épül, amelyről további információt a modellek elemzése [*és ellenőrzése*](how-to-use-parser.md)című témakörben olvashat.
 
 ### <a name="get-started-with-the-command-line-app"></a>Ismerkedés a parancssori alkalmazással
 
@@ -283,7 +283,7 @@ Az Azure Digital Twins egyik fő funkciója, hogy könnyen és hatékonyan [lek�
 
     :::image type="content" source="media/tutorial-command-line-app/output-query-compound.png" alt-text="Az összetett lekérdezés eredménye, amely nem mutat eredményt":::
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Az oktatóanyagban szereplő projekt a következő oktatóanyag alapjául szolgál, [*oktatóanyag: végpontok közötti megoldás összekötése*](tutorial-end-to-end.md). Ha továbbra is a következő oktatóanyagot tervezi, megtarthatja az itt beállított erőforrásokat, hogy továbbra is használhassa ezt az Azure Digital Twins-példányt és konfigurált minta alkalmazást.
 * Ebben az esetben a minta alkalmazás `DeleteAllTwins` és a `DeleteAllModels` parancsok segítségével törölheti az ikreket és a modelleket a példányában. Ez a következő oktatóanyaghoz biztosít tiszta lappal.

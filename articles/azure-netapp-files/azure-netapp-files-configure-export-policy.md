@@ -7,21 +7,25 @@ ms.author: b-juche
 ms.service: azure-netapp-files
 ms.workload: storage
 ms.topic: how-to
-ms.date: 10/18/2019
-ms.openlocfilehash: e59648ee76b6715029c690329cbf8f4f1eee7243
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/24/2020
+ms.openlocfilehash: 6d990b94210383ba4b30569693f4471f43306ed2
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483652"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87169823"
 ---
 # <a name="configure-export-policy-for-an-nfs-volume"></a>Exportálási szabályzat konfigurálása NFS-kötethez
 
-Konfigurálhat egy exportálási szabályzatot, amellyel szabályozhatja az Azure NetApp Files-kötethez való hozzáférést. Azure NetApp Files exportálási házirend csak az NFS-köteteket támogatja.  A NFSv3 és a Nfsv4 névleképezője egyaránt támogatott. 
+Az exportálási házirend konfigurálásával szabályozhatja a Azure NetApp Files kötethez való hozzáférést. Azure NetApp Files exportálási házirend az NFS protokollt (NFSv3 és NFSv 4.1) és a kettős protokollt (NFSv3 és SMB) használó köteteket támogatja. 
+
+Legfeljebb öt exportálási szabályzatot hozhat létre.
 
 ## <a name="steps"></a>Lépések 
 
-1.  Kattintson a **házirend exportálása** lehetőségre a Azure NetApp Files navigációs ablaktáblán. 
+1.  A kötetek lapon válassza ki azt a kötetet, amelyhez konfigurálni szeretné az exportálási szabályzatot, majd kattintson a **házirend exportálása**lehetőségre. 
+
+    Az exportálási házirendet a kötet létrehozása során is konfigurálhatja.
 
 2.  Töltse ki az alábbi mezőket az exportálási szabályzat létrehozásához:   
     *  **Index**   
@@ -39,7 +43,11 @@ Konfigurálhat egy exportálási szabályzatot, amellyel szabályozhatja az Azur
         * Olvasás és írás
         * Csak olvasási engedély
 
-    ![Exportálási szabályzat](../media/azure-netapp-files/azure-netapp-files-export-policy.png) 
+    * **Gyökérszintű hozzáférés**  
+        Annak megadása, hogy a `root` fiók hozzáférhet-e a kötethez.  Alapértelmezés szerint a gyökérszintű hozzáférés be van **kapcsolva**, és a `root` fiók hozzáfér a kötethez.
+
+        ![Exportálási szabályzat](../media/azure-netapp-files/azure-netapp-files-export-policy.png) 
+
 
 
 ## <a name="next-steps"></a>További lépések 

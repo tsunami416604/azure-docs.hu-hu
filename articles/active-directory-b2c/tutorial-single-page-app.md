@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.author: mimart
 ms.date: 04/04/2020
-ms.custom: mvc, seo-javascript-september2019
+ms.custom: mvc, seo-javascript-september2019, devx-track-javascript
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: cd696b6aba96b06a7b84722d61eb40bbfa15c0ff
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: c8aca82567de0b564aadc355b198502450dd7a5c
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84447934"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87169803"
 ---
 # <a name="tutorial-enable-authentication-in-a-single-page-application-with-azure-ad-b2c"></a>Oktatóanyag: hitelesítés engedélyezése egyoldalas alkalmazásban Azure AD B2C
 
@@ -71,7 +71,7 @@ Ha frissíteni szeretne egy alkalmazást a Azure AD B2C-bérlőben, használhatj
 1. Válassza az **összes szolgáltatás** elemet a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Azure ad B2C**.
 1. Válassza az **alkalmazások (örökölt)** lehetőséget, majd válassza ki a *webapp1* alkalmazást.
 1. A **Válasz URL-cím**területen adja hozzá a címet `http://localhost:6420` .
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 1. A Tulajdonságok lapon jegyezze fel az **alkalmazás azonosítóját**. Az alkalmazás-azonosítót egy későbbi lépésben kell használni, amikor frissíti a kódot az egyoldalas webalkalmazásban.
 
 * * *
@@ -90,7 +90,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-
 
 Most, hogy beolvasta a mintát, frissítse a kódot a Azure AD B2C bérlői nevével és egy korábbi lépésben rögzített alkalmazás-AZONOSÍTÓval.
 
-1. Nyissa meg a *authConfig. js* fájlt a *JavaScriptSPA* mappában.
+1. Nyissa meg a *authConfig.js* fájlt a *JavaScriptSPA* mappában.
 1. Az `msalConfig` objektumban frissítse a következőket:
     * `clientId`egy korábbi lépésben rögzített **alkalmazás-(ügyfél-) azonosítóval** rendelkező értékkel
     * `authority`URI a Azure AD B2C bérlői nevével és az előfeltételek részeként létrehozott regisztrációs/bejelentkezési felhasználói folyamat nevével (például *B2C_1_signupsignin1*)
@@ -131,7 +131,7 @@ Most, hogy beolvasta a mintát, frissítse a kódot a Azure AD B2C bérlői nev�
     npm start
     ```
 
-    A konzol ablakban a helyileg futó Node. js-kiszolgáló portszáma látható:
+    A konzol ablakban a helyileg futó Node.js kiszolgáló portszáma látható:
 
     ```console
     Listening on port 6420...
@@ -168,7 +168,7 @@ Ezen a ponton az alkalmazás továbbra is megpróbál kommunikálni a bemutató 
 
 A védett API engedélyezéséhez lépjen a sorozat következő oktatóanyagára (lásd a [következő lépések](#next-steps) szakaszt).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban egy egyoldalas alkalmazást konfigurált a Azure AD B2C-bérlő felhasználói folyamatával való együttműködéshez a regisztrálási és bejelentkezési képesség biztosításához. A következő lépéseket végezte el:
 

@@ -3,20 +3,18 @@ title: 'Oktatóanyag: Azure notebook – személyre szabott'
 titleSuffix: Azure Cognitive Services
 description: Ez az oktatóanyag szimulál egy személyre szabott hurkot _system egy Azure jegyzetfüzetben, amely azt jelzi, hogy az ügyfél milyen típusú kávét rendel. A felhasználókat és azok beállításait egy felhasználói adatkészletben tárolja a rendszer. A kávéval kapcsolatos információk a Coffee-adatkészletekben is elérhetők és tárolhatók.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: tutorial
 ms.date: 04/27/2020
-ms.author: diberry
 ms.custom: tracking-python
-ms.openlocfilehash: 30897e1bdd5d139d3a11980430cbcc6b10052ecc
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 62e9140a1bab44d913e164304af13204f375f461
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84608485"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131973"
 ---
 # <a name="tutorial-use-personalizer-in-azure-notebook"></a>Oktatóanyag: személyre szabott használata az Azure jegyzetfüzetben
 
@@ -654,14 +652,14 @@ A második diagramon látható növekedés jelenik meg a rangsorban a felhaszná
 
 ![A második diagramon látható növekedés jelenik meg a rangsorban a felhasználói beállításokkal összehangoló rangsorolási előrejelzések között.](./media/tutorial-azure-notebook/azure-notebook-chart-results-happy-graph.png)
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha nem kívánja folytatni az oktatóanyag-sorozatot, törölje a következő erőforrásokat:
 
 * Törölje az Azure notebook-projektet.
 * A személyre szabott erőforrás törlése.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az ebben a mintában használt [Jupyter-jegyzetfüzet és-adatfájlok](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/tree/master/samples/azurenotebook) elérhetők a GitHub-tárházban a személyre szabáshoz.
 

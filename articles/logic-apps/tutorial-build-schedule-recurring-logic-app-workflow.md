@@ -3,16 +3,16 @@ title: Ütemterv-alapú automatizált munkafolyamatok összeállítása
 description: Oktatóanyag – ütemezett, ismétlődő és automatizált munkafolyamatok létrehozása Azure Logic Apps használatával
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: logicappspm
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/12/2019
-ms.openlocfilehash: 977f138fad1f2eb1eae95049d2bd8a730ba5687e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 41f7b1309a9c7fa9a5f2abb3e2e59f08ef31382d
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87048734"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87124850"
 ---
 # <a name="tutorial-create-automated-schedule-based-recurring-workflows-by-using-azure-logic-apps"></a>Oktatóanyag: automatizált, ütemezett és ismétlődő munkafolyamatok létrehozása Azure Logic Apps használatával
 
@@ -43,11 +43,9 @@ Az elkészült logikai alkalmazás nagyjából a következő munkafolyamathoz ha
 
 * Az útvonal megtételéhez szükséges idő lekéréséhez szükség van a Bing Térképek API hozzáférési kulcsára. A kulcs lekéréséhez kövesse a [Bing Térképek-kulcs lekérése](/bingmaps/getting-started/bing-maps-dev-center-help/getting-a-bing-maps-key) lépéseit.
 
-## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
-
-Jelentkezzen be az [Azure Portalra](https://portal.azure.com) az Azure-fiókja hitelesítő adataival.
-
 ## <a name="create-your-logic-app"></a>A logikai alkalmazás létrehozása
+
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) az Azure-fiókja hitelesítő adataival.
 
 1. Az Azure fő menüjében válassza az **erőforrás létrehozása**  >  **integrációs**  >  **logikai alkalmazás**lehetőséget.
 
@@ -94,8 +92,8 @@ Ezután adja hozzá az ismétlődési [eseményindítót](../logic-apps/logic-ap
 
    | Tulajdonság | Kötelező | Érték | Leírás |
    |----------|----------|-------|-------------|
-   | **Intervallum** | Yes | 1 | Az ellenőrzések között kivárt intervallumok száma |
-   | **Gyakoriság** | Yes | Hét | Az ismétlődéshez használni kívánt időegység |
+   | **Intervallum** | Igen | 1 | Az ellenőrzések között kivárt intervallumok száma |
+   | **Gyakoriság** | Igen | Hét | Az ismétlődéshez használni kívánt időegység |
    |||||
 
 1. Az **intervallum** és a **gyakoriság**területen nyissa meg az **új paraméter hozzáadása** listát, és válassza ki ezeket a tulajdonságokat az triggerhez való hozzáadáshoz.
@@ -143,8 +141,8 @@ Most, hogy van eseményindítója, adjon hozzá egy olyan [műveletet](../logic-
 
    | Tulajdonság | Kötelező | Érték | Leírás |
    |----------|----------|-------|-------------|
-   | **Kapcsolat neve** | Yes | BingMapsConnection | Adja meg a kapcsolat nevét. Ez a példa a "BingMapsConnection" kifejezést használja. |
-   | **API-kulcs** | Yes | <*a-Bing-Maps-Key*> | Adja meg a korábban kapott Bing Térképek-kulcsot. Ha nem rendelkezik Bing Térképek-kulccsal, tudja meg, [hogyan kérhet le kulcsot](/bingmaps/getting-started/bing-maps-dev-center-help/getting-a-bing-maps-key). |
+   | **Kapcsolat neve** | Igen | BingMapsConnection | Adja meg a kapcsolat nevét. Ez a példa a "BingMapsConnection" kifejezést használja. |
+   | **API-kulcs** | Igen | <*a-Bing-Maps-Key*> | Adja meg a korábban kapott Bing Térképek-kulcsot. Ha nem rendelkezik Bing Térképek-kulccsal, tudja meg, [hogyan kérhet le kulcsot](/bingmaps/getting-started/bing-maps-dev-center-help/getting-a-bing-maps-key). |
    |||||
 
 1. Nevezze át a műveletet a következő leírásra: `Get route and travel time with traffic`
@@ -163,11 +161,11 @@ Most, hogy van eseményindítója, adjon hozzá egy olyan [műveletet](../logic-
 
    | Tulajdonság | Kötelező | Érték | Leírás |
    |----------|----------|-------|-------------|
-   | **1. útvonalpont** | Yes | <*Start – hely*> | Az útvonal kiindulópontja |
-   | **2. útvonalpont** | Yes | <*végső hely*> | Az útvonal célállomása |
-   | **Optimalizálás** | No | timeWithTraffic | Az útvonal optimalizálására szolgáló paraméter (például távolság, utazási idő a jelenlegi forgalom mellett stb.). Válassza ki a "timeWithTraffic" paramétert. |
-   | **Távolság mértékegysége** | No | <*saját preferencia*> | Az útvonalhoz használt távolság-mértékegység. Ez a példa az "Mile" egységet használja egységként. |
-   | **Közlekedési mód** | No | Vezetés | Az útvonalhoz használt közlekedési mód. Válassza a "vezetés" módot. |
+   | **1. útvonalpont** | Igen | <*Start – hely*> | Az útvonal kiindulópontja |
+   | **2. útvonalpont** | Igen | <*végső hely*> | Az útvonal célállomása |
+   | **Optimalizálás** | Nem | timeWithTraffic | Az útvonal optimalizálására szolgáló paraméter (például távolság, utazási idő a jelenlegi forgalom mellett stb.). Válassza ki a "timeWithTraffic" paramétert. |
+   | **Távolság mértékegysége** | Nem | <*saját preferencia*> | Az útvonalhoz használt távolság-mértékegység. Ez a példa az "Mile" egységet használja egységként. |
+   | **Közlekedési mód** | Nem | Vezetés | Az útvonalhoz használt közlekedési mód. Válassza a "vezetés" módot. |
    ||||
 
    További információk ezekről a paraméterekről: [Útvonal kiszámítása](/bingmaps/rest-services/routes/calculate-a-route).
@@ -194,9 +192,9 @@ Alapértelmezés szerint az előző **Útvonal lekérése** művelet a jelenlegi
 
    | Tulajdonság | Kötelező | Érték | Leírás |
    |----------|----------|-------|-------------|
-   | **Név** | Yes | travelTime | A változó neve. Ez a példa a "travelTime" kifejezést használja. |
-   | **Típus** | Yes | Egész szám | A változó adattípusa |
-   | **Érték** | No| Egy kifejezés, amely átalakítja a jelenlegi utazási időt másodpercekből percekké (lásd a táblázat alatti lépéseket). | A változó kezdeti értéke |
+   | **Név** | Igen | travelTime | A változó neve. Ez a példa a "travelTime" kifejezést használja. |
+   | **Típus** | Igen | Egész szám | A változó adattípusa |
+   | **Érték** | Nem| Egy kifejezés, amely átalakítja a jelenlegi utazási időt másodpercekből percekké (lásd a táblázat alatti lépéseket). | A változó kezdeti értéke |
    ||||
 
    1. Az **érték** tulajdonsághoz tartozó kifejezés létrehozásához kattintson a szövegmezőbe, hogy megjelenjen a dinamikus tartalmak listája. Ha szükséges, állítsa szélesebbre a böngésző ablakát, amíg meg nem jelenik a lista. A dinamikus tartalom listában válassza a **kifejezés**lehetőséget.
@@ -351,7 +349,7 @@ Az **ismétlődési** eseményindítót használó egyéb logikai alkalmazások 
 * Régebbi Azure-blobok törlése.
 * Üzenet hozzáadása egy Azure Storage-üzenetsorhoz.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs szüksége a minta logikai alkalmazásra, törölje a logikai alkalmazást és a kapcsolódó erőforrásokat tartalmazó erőforráscsoportot. 
 

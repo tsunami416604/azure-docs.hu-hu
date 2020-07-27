@@ -5,13 +5,13 @@ author: lfittl
 ms.author: lufittl
 ms.service: postgresql
 ms.topic: how-to
-ms.date: 11/04/2019
-ms.openlocfilehash: e813459ddf516b170e7f429646dad38452188335
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/23/2020
+ms.openlocfilehash: 178c339f6f47569160a9a748794678c610f35734
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86102378"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171632"
 ---
 # <a name="use-azure-active-directory-for-authentication-with-postgresql"></a>Azure Active Directory használata a PostgreSQL-sel való hitelesítéshez
 
@@ -155,7 +155,7 @@ Ha Azure AD-felhasználót szeretne hozzáadni a Azure Database for PostgreSQL-a
 3. Szerepkör létrehozása `<user>@yourtenant.onmicrosoft.com` a Azure Database for PostgreSQLban.
 4. `<user>@yourtenant.onmicrosoft.com`A szerepkör azure_ad_user tagja legyen. Ezt csak az Azure AD-felhasználók kapják meg.
 
-**Példa:**
+**Például**
 
 ```sql
 CREATE ROLE "user1@yourtenant.onmicrosoft.com" WITH LOGIN IN ROLE azure_ad_user;
@@ -168,7 +168,7 @@ CREATE ROLE "user1@yourtenant.onmicrosoft.com" WITH LOGIN IN ROLE azure_ad_user;
 
 Ha engedélyezni szeretné az Azure AD-csoport számára az adatbázishoz való hozzáférést, használja ugyanazt a mechanizmust, mint a felhasználók számára, hanem adja meg a csoport nevét:
 
-**Példa:**
+**Például**
 
 ```sql
 CREATE ROLE "Prod DB Readonly" WITH LOGIN IN ROLE azure_ad_user;
@@ -209,7 +209,7 @@ GRANT azure_ad_user TO "DBReadUser";
 
 Ez azt feltételezi, hogy létrehozott egy "DBReadUser" csoportot az Azure AD-ben. Az adott csoportba tartozó felhasználók mostantól a felhasználóként bejelentkezhetnek az adatbázisba.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Tekintse át a [Azure Database for PostgreSQL – egyetlen kiszolgálóval Azure Active Directory hitelesítéssel](concepts-aad-authentication.md) kapcsolatos általános fogalmakat
 

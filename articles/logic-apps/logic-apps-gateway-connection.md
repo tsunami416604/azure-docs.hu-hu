@@ -3,15 +3,15 @@ title: Az adatforrások elérése a helyszínen
 description: Helyi adatforrásokhoz való kapcsolódás Azure Logic Apps egy Azure helyszíni adatátjáró-erőforrás létrehozásával
 services: logic-apps
 ms.suite: integration
-ms.reviewer: arthii, logicappspm
+ms.reviewer: arthii, divswa, logicappspm
 ms.topic: article
-ms.date: 02/14/2020
-ms.openlocfilehash: b216fa668483ef6fc30c1054dd4f65361ad17934
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 07/21/2020
+ms.openlocfilehash: 94fedc5dc6c9f420fbf14f80618a6daeefe908b2
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87065945"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87172052"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Csatlakozás helyszíni adatforrásokhoz az Azure Logic Appsből
 
@@ -56,9 +56,9 @@ Azure Logic Apps támogatja az olvasási és írási műveleteket az adatátjár
 
 * [Ugyanazt az Azure-fiókot és-előfizetést](../logic-apps/logic-apps-gateway-install.md#requirements) használja, amelyet az adatátjáró telepítésekor használt. Az Azure-fióknak egyetlen [Azure Active Directory (Azure ad) bérlőhöz vagy címtárhoz](../active-directory/fundamentals/active-directory-whatis.md#terminology)kell tartoznia.
 
-* Az átjáró telepítése még nincs regisztrálva, és egy másik Azure Gateway-erőforrás igényli.
+* Az átjáró telepítése még nincs regisztrálva, és egy másik meglévő Azure Gateway-erőforrás igényli a Azure Portal.
 
-  Amikor átjáró-erőforrást hoz létre a Azure Portalban, ki kell választania egy átjáró-telepítést, amely az átjáró-erőforrásra és csak az átjáró erőforrására hivatkozik. Azure Logic Apps a helyszíni eseményindítók és műveletek a helyszíni adatforrásokhoz való kapcsolódáshoz az átjáró-erőforrást használják. Ezekben az eseményindítókban és műveletekben ki kell választania az Azure-előfizetését és a használni kívánt kapcsolódó átjáró-erőforrást. Minden átjáró-erőforrás csak egy Azure-fiókra hivatkozik.
+  Amikor átjáró-erőforrást hoz létre a Azure Portalban, ki kell választania egy olyan átjáró-telepítést, amely az átjáró erőforrására és csak az átjáró erőforrására hivatkozik. Minden átjáró-erőforrás csak egy Azure-fiókra mutató hivatkozást tud csatolni. Azure Logic Apps a helyszíni eseményindítók és műveletek a helyszíni adatforrásokhoz való csatlakozáskor az átjáró erőforrást használják. Ha rendelkezik előfizetés-hozzáféréssel, különböző Azure-előfizetések közül választhat, amelyek mindegyike egy másik átjáró-erőforráshoz van társítva. A logikai alkalmazásnak és az átjáró erőforrásnak nem kell ugyanazt az Azure-előfizetést használnia.
 
   > [!NOTE]
   > Csak az átjáró rendszergazdája hozhatja létre az átjáró erőforrását a Azure Portalban. Az egyszerű szolgáltatások jelenleg nem támogatottak. 
@@ -107,6 +107,8 @@ Miután létrehozta az átjáró-erőforrást, és társítja az Azure-előfizet
 1. **A helyszíni adatátjárón keresztül válassza a kapcsolat**lehetőséget.
 
 1. Az **átjárók**területen az **előfizetések** listából válassza ki azt az Azure-előfizetést, amelyhez a kívánt átjáró-erőforrás tartozik.
+
+   Ha rendelkezik előfizetés-hozzáféréssel, különböző Azure-előfizetések közül választhat, amelyek mindegyike egy másik átjáró-erőforráshoz van társítva. A logikai alkalmazásnak és az átjáró erőforrásnak nem kell ugyanazt az Azure-előfizetést használnia.
 
 1. Válassza ki a kívánt átjáró-erőforrást a **csatlakozási átjáró** listából, amely megjeleníti a kiválasztott előfizetésben elérhető átjáró-erőforrásokat. Minden átjáró-erőforrás egyetlen átjáróhoz van csatolva.
 

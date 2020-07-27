@@ -3,12 +3,12 @@ title: Élő videó elemzése saját modell használatával – Azure
 description: Ebben a rövid útmutatóban a számítógép jövőképét fogja alkalmazni az élő videó hírcsatornájának (szimulált) IP-kamerából való elemzéséhez.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 2ff618e275624bc46c6fc3221507c5584047c51c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: dc8c2d1f0620a92a13cb1f4c0b83c2452f964fd6
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87043207"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87170613"
 ---
 # <a name="quickstart-analyze-live-video-by-using-your-own-model"></a>Rövid útmutató: élő videó elemzése saját modell használatával
 
@@ -278,11 +278,13 @@ Az üzenetekben figyelje meg a következő adatokat:
 * A `body` szakasz az elemzési eseményre vonatkozó információkat tartalmaz. Ebben az esetben az esemény egy következtetési esemény, így a törzs tartalmaz egy `inferences` adathalmazt.
 * A `inferences` szakasz azt jelzi, hogy az a `type` `entity` . Ez a szakasz az entitással kapcsolatos további információkat tartalmaz.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha más gyors útmutatókat szeretne kipróbálni, tartsa meg a létrehozott erőforrásokat. Ellenkező esetben lépjen a Azure Portalra, nyissa meg az erőforráscsoportot, válassza ki azt az erőforráscsoportot, amelyben ezt a rövid útmutatót futtatta, és törölje az összes erőforrást.
 
 ## <a name="next-steps"></a>További lépések
+
+* Próbálja ki a [YOLOv3 modell biztonságos verzióját](https://github.com/Azure/live-video-analytics/blob/master/utilities/video-analysis/tls-yolov3-onnx/readme.md) , és telepítse azt az IOT Edge-eszközre. 
 
 Tekintse át a speciális felhasználókra vonatkozó további kihívásokat:
 

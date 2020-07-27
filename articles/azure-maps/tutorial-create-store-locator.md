@@ -1,20 +1,20 @@
 ---
 title: 'Oktatóanyag: áruházbeli lokátor alkalmazás létrehozása Azure Maps használatával | Microsoft Azure térképek'
 description: Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre áruházbeli lokátor webalkalmazást Microsoft Azure Maps web SDK használatával.
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 01/14/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 5caeb9ff5c289343e1869a55808bde7fbe035479
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: bafb5d08508113c7d40b91f20b79be533ab1dd08
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86517552"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131344"
 ---
 # <a name="tutorial-create-a-store-locator-by-using-azure-maps"></a>Oktatóanyag: tároló-lokátor létrehozása Azure Maps használatával
 
@@ -940,7 +940,7 @@ Ha a böngészőablakot kevesebb, mint 700 képpont szélesre módosítja, vagy 
 
 ![Képernyőkép az áruházi lokátor kis képernyős verziójáról](./media/tutorial-create-store-locator/FinishedSimpleStoreLocatorSmallScreen.png)</center>
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre alapszintű tároló-lokátort Azure Maps használatával. Előfordulhat, hogy az oktatóanyagban létrehozott áruház-lokátor rendelkezik az összes szükséges funkcióval. Lehetőség van az áruházbeli lokátor szolgáltatásainak hozzáadására, vagy további speciális funkciók használatára az egyéni felhasználói élmény érdekében: 
 

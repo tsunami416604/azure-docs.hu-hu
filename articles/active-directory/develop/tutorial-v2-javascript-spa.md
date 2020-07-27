@@ -10,13 +10,13 @@ ms.topic: tutorial
 ms.workload: identity
 ms.date: 03/20/2019
 ms.author: nacanuma
-ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 573aef4f0d340d0d32dc4977e0937bca9c6d3cef
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.custom: aaddev, identityplatformtop40, devx-track-javascript
+ms.openlocfilehash: 745132284ee48270b46b6bd2f785d8bec19404fb
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84338924"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87129678"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>Bejelentkezés a felhasználókba és a Microsoft Graph API meghívása egy JavaScript egyoldalas alkalmazásból (SPA)
 
@@ -42,7 +42,7 @@ Ez az útmutató a következő könyvtárat használja:
 
 |Kódtár|Leírás|
 |---|---|
-|[msal. js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|Microsoft hitelesítési függvénytár JavaScripthez|
+|[msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|Microsoft hitelesítési függvénytár JavaScripthez|
 
 ## <a name="set-up-your-web-server-or-project"></a>Webkiszolgáló vagy projekt beállítása
 
@@ -52,15 +52,15 @@ Ez az útmutató a következő könyvtárat használja:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Az oktatóanyag futtatásához helyi webkiszolgálóra, például [Node. js](https://nodejs.org/en/download/), [.net Core](https://www.microsoft.com/net/core)vagy IIS Express [Visual Studio 2017](https://www.visualstudio.com/downloads/)-integrációra van szükség.
+* Az oktatóanyag futtatásához helyi webkiszolgálóra, például [Node.js](https://nodejs.org/en/download/), [.net Core](https://www.microsoft.com/net/core)vagy IIS Express [Visual Studio 2017](https://www.visualstudio.com/downloads/)-integrációra van szükség.
 
-* Az útmutató utasításai a Node. js-ben létrehozott webkiszolgálón alapulnak. Javasoljuk, hogy a [Visual Studio Code](https://code.visualstudio.com/download) -ot használja integrált fejlesztői környezetként (ide).
+* Az útmutatóban szereplő utasítások a Node.js beépített webkiszolgálón alapulnak. Javasoljuk, hogy a [Visual Studio Code](https://code.visualstudio.com/download) -ot használja integrált fejlesztői környezetként (ide).
 
 * Egy modern böngésző. Ez a JavaScript-minta [ES6](http://www.ecma-international.org/ecma-262/6.0/) -konvenciókat használ, ezért **nem** támogatja az **Internet Explorert**.
 
-## <a name="create-your-project"></a>A projekt létrehozása
+## <a name="create-your-project"></a>Projekt létrehozása
 
-Győződjön meg arról, hogy telepítve van a [Node. js](https://nodejs.org/en/download/) , majd hozzon létre egy mappát az alkalmazás üzemeltetéséhez. Itt egy egyszerű [expressz](https://expressjs.com/) webkiszolgálót fogunk megvalósítani a fájl kiszolgálásához `index.html` .
+Győződjön meg arról, hogy telepítve van [Node.js](https://nodejs.org/en/download/) , majd hozzon létre egy mappát az alkalmazás üzemeltetéséhez. Itt egy egyszerű [expressz](https://expressjs.com/) webkiszolgálót fogunk megvalósítani a fájl kiszolgálásához `index.html` .
 
 1. Egy terminál (például a Visual Studio Code integrált terminál) használatával keresse meg a projekt mappáját, majd írja be a következőt:
 
@@ -190,7 +190,7 @@ Most már rendelkezik egy egyszerű kiszolgálóval a gyógyfürdő kiszolgálá
    ```
 
    > [!TIP]
-   > A MSAL. js fájl verzióját az előző szkriptben lecserélheti a legújabb, a [MSAL. js kiadásban](https://github.com/AzureAD/microsoft-authentication-library-for-js/releases)megjelent verzióra.
+   > Az előző szkriptben lévő MSAL.js verzióját lecserélheti a legújabb kiadott verzióra [MSAL.js kiadásokban](https://github.com/AzureAD/microsoft-authentication-library-for-js/releases).
 
 2. Hozzon létre egy nevű. js `ui.js` -fájlt, amely a DOM-elemeket fogja elérni és frissíteni, majd adja hozzá a következő kódot:
 
@@ -264,7 +264,7 @@ Most már rendelkezik egy egyszerű kiszolgálóval a gyógyfürdő kiszolgálá
    }
    ```
 
-## <a name="register-your-application"></a>Alkalmazás regisztrálása
+## <a name="register-your-application"></a>Az alkalmazás regisztrálása
 
 A hitelesítés további folytatása előtt regisztrálja alkalmazását **Azure Active Directoryon**.
 
@@ -274,15 +274,15 @@ A hitelesítés további folytatása előtt regisztrálja alkalmazását **Azure
 1. Ha megjelenik az **Alkalmazás regisztrálása** oldal, adjon nevet az alkalmazásnak.
 1. A **támogatott fiókok típusai**területen válassza a **fiókok lehetőséget bármely szervezeti címtárban és személyes Microsoft-fiókban**.
 1. Az **átirányítási URI** szakaszban válassza ki a **webplatformot a** legördülő listából, majd állítsa be az értéket a webkiszolgálón alapuló alkalmazás URL-címére.
-1. Kattintson a **Register** (Regisztrálás) elemre.
+1. Válassza a **Regisztráció** lehetőséget.
 1. Az alkalmazás **áttekintése** lapon jegyezze fel az **alkalmazás (ügyfél) azonosítójának** értékét későbbi használatra.
 1. Ez a rövid útmutató az [implicit engedélyezési folyamat](v2-oauth2-implicit-grant-flow.md) engedélyezését igényli. A regisztrált alkalmazás bal oldali ablaktábláján válassza a **hitelesítés**lehetőséget.
 1. A **Speciális beállítások**területén az **implicit engedélyezés**területen jelölje be az **azonosító tokenek** és a **hozzáférési tokenek** jelölőnégyzetet. Az azonosító jogkivonatok és hozzáférési tokenek megadása kötelező, mert az alkalmazásnak be kell jelentkeznie a felhasználókba, és hívnia kell egy API-t.
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
-> ### <a name="set-a-redirect-url-for-nodejs"></a>Adja meg a Node. js átirányítási URL-címét
+> ### <a name="set-a-redirect-url-for-nodejs"></a>Átirányítási URL-cím beállítása Node.jshoz
 >
-> A Node. js-ben beállíthatja a webkiszolgáló portját az *index. js* fájlban. Ez az oktatóanyag a 3000-es portot használja, de bármilyen más elérhető portot is használhat.
+> Node.js esetében beállíthatja a webkiszolgáló-portot a *index.js* fájlban. Ez az oktatóanyag a 3000-es portot használja, de bármilyen más elérhető portot is használhat.
 >
 > Ha egy átirányítási URL-címet szeretne beállítani az alkalmazás regisztrációs adatai között, váltson vissza az **alkalmazás regisztrációja** ablaktáblára, és tegye a következők egyikét:
 >
@@ -320,7 +320,7 @@ Hozzon létre egy nevű új. js fájlt `authConfig.js` , amely tartalmazza a hit
   };
 ```
 
- Az elemek magyarázata:
+ Ebben a példában:
  - *\<Enter_the_Application_Id_Here>* a regisztrált alkalmazáshoz tartozó **alkalmazás (ügyfél) azonosítója** .
  - *\<Enter_the_Cloud_Instance_Id_Here>* Az Azure-felhő példánya. A fő vagy a globális Azure-felhőhöz egyszerűen írja be a következőt: *https://login.microsoftonline.com* . Az **országos** felhők (például Kína) esetében lásd: [nemzeti felhők](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud).
  - *\<Enter_the_Tenant_info_here>* az a következő lehetőségek egyikére van beállítva:
@@ -409,13 +409,13 @@ Hozzon létre egy nevű új. js fájlt `authPopup.js` , amely tartalmazza a hite
 
 ### <a name="more-information"></a>További információ
 
-Miután a felhasználó első alkalommal kiválasztja a **Bejelentkezés** gombot, a `signIn` metódus meghívja a `loginPopup` felhasználót a bejelentkezéshez. Ezzel a módszerrel megnyílik egy előugró ablak a *Microsoft Identity platform végpontján* a felhasználó hitelesítő adatainak megadásához és érvényesítéséhez. Sikeres bejelentkezés után a rendszer visszairányítja a felhasználót az eredeti *index. html* oldalra. A rendszer a tokent fogadja, dolgozza fel `msal.js` , és a jogkivonatban található információkat gyorsítótárazza. Ez a jogkivonat *azonosító jogkivonat* , és alapszintű információt tartalmaz a felhasználóról, például a felhasználó megjelenítendő nevét. Ha bármilyen célra szeretné használni a token által biztosított bármilyen adatforrást, győződjön meg róla, hogy a háttér-kiszolgáló érvényesíti ezt a jogkivonatot annak biztosításához, hogy a jogkivonatot a rendszer egy érvényes felhasználónak adja ki az alkalmazás számára.
+Miután a felhasználó első alkalommal kiválasztja a **Bejelentkezés** gombot, a `signIn` metódus meghívja a `loginPopup` felhasználót a bejelentkezéshez. Ezzel a módszerrel megnyílik egy előugró ablak a *Microsoft Identity platform végpontján* a felhasználó hitelesítő adatainak megadásához és érvényesítéséhez. Sikeres bejelentkezés után a rendszer visszairányítja a felhasználót az eredeti *index.html* lapra. A rendszer a tokent fogadja, dolgozza fel `msal.js` , és a jogkivonatban található információkat gyorsítótárazza. Ez a jogkivonat *azonosító jogkivonat* , és alapszintű információt tartalmaz a felhasználóról, például a felhasználó megjelenítendő nevét. Ha bármilyen célra szeretné használni a token által biztosított bármilyen adatforrást, győződjön meg róla, hogy a háttér-kiszolgáló érvényesíti ezt a jogkivonatot annak biztosításához, hogy a jogkivonatot a rendszer egy érvényes felhasználónak adja ki az alkalmazás számára.
 
 Az útmutató által létrehozott SPA a `acquireTokenSilent` `acquireTokenPopup` Microsoft Graph API felhasználói profil adatainak lekérdezéséhez használt *hozzáférési token* beszerzésére hívja fel a kapcsolatot. Ha olyan mintát kell használnia, amely érvényesíti az azonosító jogkivonatot, tekintse meg [ezt](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2 "GitHub Active-Directory-JavaScript-singlepageapp-DotNet-webapi-v2 minta") a minta alkalmazást a githubban. A minta egy ASP.NET webes API-t használ a jogkivonat-ellenőrzéshez.
 
 #### <a name="get-a-user-token-interactively"></a>Felhasználói jogkivonat interaktív lekérése
 
-A kezdeti bejelentkezés után nem kívánja megkérni a felhasználókat, hogy minden alkalommal újra hitelesíteni tudják az erőforrásokhoz való hozzáféréshez szükséges jogkivonatot. Így a *acquireTokenSilent* a legtöbb időt kell használni a tokenek beszerzéséhez. Vannak azonban olyan helyzetek, amikor kényszeríteni kell a felhasználókat, hogy együttműködjön a Microsoft Identity platform-végponttal. Példák:
+A kezdeti bejelentkezés után nem kívánja megkérni a felhasználókat, hogy minden alkalommal újra hitelesíteni tudják az erőforrásokhoz való hozzáféréshez szükséges jogkivonatot. Így a *acquireTokenSilent* a legtöbb időt kell használni a tokenek beszerzéséhez. Vannak azonban olyan helyzetek, amikor kényszeríteni kell a felhasználókat, hogy együttműködjön a Microsoft Identity platform-végponttal. Erre példák a következők:
 
 - A felhasználóknak újra meg kell adniuk a hitelesítő adataikat, mert a jelszó lejárt.
 - Az alkalmazás hozzáférést kér egy erőforráshoz, és szüksége van a felhasználó belefoglalására.
@@ -445,7 +445,7 @@ A `acquireTokenSilent` metódus felhasználói beavatkozás nélkül kezeli a to
       };
    ```
 
-   Az elemek magyarázata:
+   Ebben a példában:
    - *\<Enter_the_Graph_Endpoint_Here>* az MS Graph API példánya. A globális MS Graph API végpont esetében egyszerűen cserélje le ezt a karakterláncot a következőre: `https://graph.microsoft.com` . A nemzeti Felhőbeli üzembe helyezések esetében tekintse meg [Graph API dokumentációját](https://docs.microsoft.com/graph/deployments).
 
 1. Ezután hozzon létre egy nevű. js `graph.js` -fájlt, amely Rest-hívást hajt végre Microsoft Graph API-nak, és adja hozzá a következő kódot:
@@ -477,17 +477,17 @@ Az útmutatóban létrehozott minta alkalmazásban a metódus használatával HT
 
 ## <a name="test-your-code"></a>A kód tesztelése
 
-1. Konfigurálja úgy a kiszolgálót, hogy az *index. html* fájljának helyétől függően TCP-portot hallgasson. A Node. js esetében indítsa el a webkiszolgálót a port figyeléséhez a következő parancsok parancssori parancssorból történő futtatásával az alkalmazás mappájából:
+1. Konfigurálja úgy a kiszolgálót, hogy olyan TCP-portot Hallgasson meg, amely a *index.html* -fájljának helye alapján van. Node.js esetén indítsa el a webkiszolgálót a port figyeléséhez a következő parancsok parancssori parancssorból történő futtatásával az alkalmazás mappájából:
 
    ```bash
    npm install
    npm start
    ```
-1. A böngészőben adja meg a **http://localhost:3000** vagy **http://localhost:{port}** a értéket, ahol a *port* a webkiszolgáló által figyelt port. Ekkor meg kell jelennie az *index. html* fájl tartalmának és a **Bejelentkezés** gombnak.
+1. A böngészőben adja meg a **http://localhost:3000** vagy **http://localhost:{port}** a értéket, ahol a *port* a webkiszolgáló által figyelt port. Ekkor meg kell jelennie a *index.html* -fájl és a **Bejelentkezés** gomb tartalmának.
 
 ## <a name="test-your-application"></a>Az alkalmazás tesztelése
 
-Miután a böngésző betölti az *index. html* fájlt, válassza a **Bejelentkezés**lehetőséget. A rendszer felszólítja, hogy jelentkezzen be a Microsoft Identity platform-végponttal:
+Miután a böngésző betölti a *index.html* fájlt, válassza a **Bejelentkezés**lehetőséget. A rendszer felszólítja, hogy jelentkezzen be a Microsoft Identity platform-végponttal:
 
 ![A JavaScript SPA-fiók bejelentkezési ablaka](media/active-directory-develop-guidedsetup-javascriptspa-test/javascriptspascreenshot1.png)
 

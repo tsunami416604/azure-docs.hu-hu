@@ -3,16 +3,16 @@ title: Több Azure-szolgáltatással rendelkező feladatok automatizálása
 description: Oktatóanyag – automatizált munkafolyamatok létrehozása az e-mailek feldolgozásához Azure Logic Apps, Azure Storage és Azure Functions használatával
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: logicappspm
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 02/27/2020
-ms.openlocfilehash: 9835e4e65ba4bfce1b0f9f6dc74a944db4cdcb28
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 925759b63d1225c720ad439f15b82632a4921cbb
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87048859"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132330"
 ---
 # <a name="tutorial-automate-tasks-to-process-emails-by-using-azure-logic-apps-azure-functions-and-azure-storage"></a>Oktatóanyag: feladatok automatizálása az e-mailek feldolgozásához Azure Logic Apps, Azure Functions és Azure Storage használatával
 
@@ -47,13 +47,11 @@ Az elkészült logikai alkalmazás nagyjából a következő munkafolyamathoz ha
 
 * Az [ingyenes Microsoft Azure Storage Explorer](https://storageexplorer.com/) letöltése és telepítése. Az eszköz segítségével ellenőrizheti, hogy a Storage-tároló megfelelően van-e beállítva.
 
-## <a name="sign-in-to-azure-portal"></a>Bejelentkezés az Azure portálra
-
-Jelentkezzen be az [Azure Portalra](https://portal.azure.com) az Azure-fiókja hitelesítő adataival.
-
 ## <a name="set-up-storage-to-save-attachments"></a>Tároló beállítása a mellékletek mentésére
 
 A bejövő e-mailek és mellékletek blobként menthetőek egy [Azure Storage-tárolóba](../storage/common/storage-introduction.md).
+
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) az Azure-fiókja hitelesítő adataival.
 
 1. A Storage-tároló létrehozása előtt [hozzon létre egy Storage-fiókot](../storage/common/storage-account-create.md) ezekkel a beállításokkal a Azure Portal **alapok** lapján:
 
@@ -280,8 +278,8 @@ Ezután adjon hozzá egy [eseményindítót](../logic-apps/logic-apps-overview.m
       | Beállítás | Érték | Leírás |
       | ------- | ----- | ----------- |
       | **Mappa** | Beérkezett üzenetek | Az ellenőrizni kívánt e-mail-mappa |
-      | **Melléklettel rendelkezik** | Yes | Csak a melléklettel rendelkező e-mailek beolvasása. <p>**Megjegyzés:** Az eseményindító nem törli az e-maileket a fiókból, csak ellenőrzi az új üzeneteket, és feldolgozza azokat, amelyek megfelelnek a tárgyszűrőnek. |
-      | **Mellékletek is** | Yes | A mellékletek egyszerű ellenőrzése helyett azok lekérése bemenetként a munkafolyamathoz. |
+      | **Melléklettel rendelkezik** | Igen | Csak a melléklettel rendelkező e-mailek beolvasása. <p>**Megjegyzés:** Az eseményindító nem törli az e-maileket a fiókból, csak ellenőrzi az új üzeneteket, és feldolgozza azokat, amelyek megfelelnek a tárgyszűrőnek. |
+      | **Mellékletek is** | Igen | A mellékletek egyszerű ellenőrzése helyett azok lekérése bemenetként a munkafolyamathoz. |
       | **Intervallum** | 1 | Az ellenőrzések között kivárt intervallumok száma |
       | **Gyakoriság** | Minute | Az ellenőrzések közötti intervallumok időegysége |
       ||||
@@ -666,7 +664,7 @@ Következő lépésként tesztelje a logikai alkalmazást, amely most az alábbi
 
 Gratulálunk, sikeresen létrehozott és futtatott egy logikai alkalmazást, amely feladatokat automatizál különböző Azure-szolgáltatásokban, és egyéni kódokat hív meg.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs szükség erre a mintára, törölje a logikai alkalmazást és a kapcsolódó erőforrásokat tartalmazó erőforráscsoportot.
 

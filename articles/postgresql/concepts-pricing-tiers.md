@@ -6,18 +6,18 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.openlocfilehash: caa5c0178cda563650928be40d02716868255fb1
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: b99e5f7d079e580ad8fcd30a311c24a55ef7fc5b
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121622"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171141"
 ---
 # <a name="pricing-tiers-in-azure-database-for-postgresql---single-server"></a>Az egykiszolgálós Azure Database for PostgreSQL tarifacsomagjai
 
 A Azure Database for PostgreSQL-kiszolgálót a három különböző díjszabási szint egyikében hozhatja létre: alapszintű, általános célú és memória optimalizálva. Az árképzési csomagokat a virtuális mag olyan számítási mennyisége különbözteti meg, amely kiépíthető, memóriát virtuális mag, valamint az adatok tárolására szolgáló tárolási technológiát. Az összes erőforrást a PostgreSQL-kiszolgáló szintjén kell kiépíteni. A kiszolgálók egy vagy több adatbázissal rendelkezhetnek.
 
-| Erőforrás/szintek | **Alapszintű** | **általános célú** | **Memória optimalizálva** |
+| Erőforrás/szintek | **Basic** | **általános célú** | **Memória optimalizálva** |
 |:---|:----------|:--------------------|:---------------------|
 | Számítási generáció | Gen 4, Gen 5 | Gen 4, Gen 5 | 5. gen |
 | Virtuális mag | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
@@ -43,7 +43,7 @@ A számítási erőforrások virtuális mag-ként vannak megadva, amely az alapu
 
 Az Ön által kiépített tárterület a Azure Database for PostgreSQL-kiszolgáló számára elérhető tárolási kapacitás mennyisége. A tárterületet az adatbázisfájlok, az ideiglenes fájlok, a tranzakciónaplók és a PostgreSQL-kiszolgáló naplófájljai használják. A kiépített tárterület teljes mennyisége határozza meg a kiszolgáló számára elérhető I/O-kapacitást is.
 
-| Tárolási attribútumok | **Alapszintű** | **általános célú** | **Memória optimalizálva** |
+| Tárolási attribútumok | **Basic** | **általános célú** | **Memória optimalizálva** |
 |:---|:----------|:--------------------|:---------------------|
 | Tárolási típus | Alapszintű tárterület | általános célú Storage | általános célú Storage |
 | Tárterület mérete | 5 GB – 1 TB | 5 GB – 16 TB | 5 GB – 16 TB |
@@ -85,9 +85,9 @@ Ha például 1000 GB tárhelyet használ, és a tényleges kihasználtság megha
 
 Ne feledje, hogy a tárterület csak akkor méretezhető, ha nem.
 
-## <a name="backup"></a>Backup
+## <a name="backup-storage"></a>Biztonsági mentési tár
 
-A szolgáltatás automatikusan biztonsági másolatot készít a kiszolgálóról. A megőrzési időtartamot 7 és 35 nap közé is kiválaszthatja. A általános célú és a memóriára optimalizált kiszolgálók dönthetnek úgy, hogy a biztonsági mentések földrajzilag redundáns tárolóhelyet biztosítanak. További információ a biztonsági mentésekről a [fogalmakat ismertető cikkben](concepts-backup.md).
+A Azure Database for PostgreSQL a kiépített kiszolgáló tárterületének akár 100%-át is elérhetővé teszi a biztonsági mentési tárolóként, többletköltség nélkül. Az ezen összegnél nagyobb mennyiségű biztonsági mentési tárterületért havi GB-ot kell fizetni. Ha például 250 GB tárterülettel rendelkező kiszolgálót hoz létre, akkor a kiszolgáló biztonsági mentései esetében a 250 GB-nyi további tárterület is rendelkezésre áll. A 250 GB-nál nagyobb biztonsági másolatok tárolására a [díjszabási modellnek](https://azure.microsoft.com/pricing/details/postgresql/)megfelelően kerül sor. A biztonsági mentési tárhely használatának befolyásolására, a biztonsági mentési tárolási költségek figyelésére és szabályozására szolgáló tényezők megismeréséhez tekintse meg a [biztonsági mentési dokumentációt](concepts-backup.md).
 
 ## <a name="scale-resources"></a>Erőforrások skálázása
 
@@ -104,7 +104,7 @@ A tárterület skálázása és a biztonsági mentés megőrzési időtartamána
 
 A legfrissebb díjszabási információkért tekintse meg a szolgáltatás [díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/PostgreSQL/). A kívánt konfiguráció költségének megtekintéséhez a [Azure Portal](https://portal.azure.com/#create/Microsoft.PostgreSQLServer) a kiválasztott beállítások alapján megjeleníti a havi költséget a **díjszabási szintek** lapon. Ha még nem rendelkezik Azure-előfizetéssel, az Azure díjszabási kalkulátor használatával megbecsülheti a becsült árat. Az [Azure díjszabási kalkulátor](https://azure.microsoft.com/pricing/calculator/) webhelyén válassza az **elemek hozzáadása**, majd az **adatbázisok** kategóriát, és **Azure Database for PostgreSQL** a beállítások testreszabásához.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ismerje meg, hogyan [hozhat létre PostgreSQL-kiszolgálót a portálon](tutorial-design-database-using-azure-portal.md).
 - A [szolgáltatás korlátainak](concepts-limits.md)megismerése.

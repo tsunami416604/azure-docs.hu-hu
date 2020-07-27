@@ -1,6 +1,6 @@
 ---
 title: Pillanatképek kezelése Azure NetApp Files használatával | Microsoft Docs
-description: Ismerteti, hogyan lehet pillanatképeket létrehozni egy kötethez, vagy egy pillanatképből egy új kötetre visszaállítani a Azure NetApp Files használatával.
+description: Ismerteti, hogyan lehet pillanatképeket létrehozni és kezelni Azure NetApp Files használatával.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -12,24 +12,24 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 03/03/2020
+ms.date: 07/24/2020
 ms.author: b-juche
-ms.openlocfilehash: ed13c61646bd2a6672b613964507d291a69a6821
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ebbf83e1abe6140614a45bfa89570cdf19283f8f
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483601"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87169641"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>Pillanatképek kezelése az Azure NetApp Filesszal
 
-A Azure NetApp Files használatával manuálisan hozhat létre egy kötetre vonatkozó igény szerinti pillanatképet, vagy visszaállíthat egy pillanatképből egy új kötetre. A Azure NetApp Files szolgáltatás nem hoz létre automatikusan kötet-pillanatképeket.  
+Azure NetApp Files támogatja az igény szerinti pillanatképek létrehozását és a pillanatkép-szabályzatok használatát az automatikus pillanatkép-létrehozás ütemezéséhez.  A pillanatképet új kötetre is visszaállíthatja.  
 
 ## <a name="create-an-on-demand-snapshot-for-a-volume"></a>Igény szerinti pillanatkép létrehozása kötethez
 
-Pillanatképeket csak igény szerint hozhat létre. A pillanatkép-szabályzatok jelenleg nem támogatottak.
+Igény szerint kötet-pillanatképeket is létrehozhat. 
 
-1.  A kötet panelen kattintson a **Pillanatképek**elemre.
+1.  Lépjen arra a kötetre, amelyhez pillanatképet szeretne készíteni. Kattintson a **Pillanatképek**elemre.
 
     ![Pillanatképek navigálása](../media/azure-netapp-files/azure-netapp-files-navigate-to-snapshots.png)
 
@@ -43,47 +43,109 @@ Pillanatképeket csak igény szerint hozhat létre. A pillanatkép-szabályzatok
 
 4. Kattintson az **OK** gombra. 
 
+## <a name="manage-snapshot-policies"></a>Pillanatkép-házirendek kezelése
+
+A pillanatkép-szabályzatok használatával automatikusan elvégezheti a kötetek pillanatképeit. Szükség szerint módosíthatja a pillanatkép-szabályzatot, vagy törölheti a már nem szükséges pillanatkép-szabályzatot is.  
+
+### <a name="create-a-snapshot-policy"></a>Pillanatkép-szabályzat létrehozása 
+
+A pillanatkép-szabályzat lehetővé teszi a pillanatképek létrehozásának gyakoriságát óránként, naponta, hetente vagy havonta. Meg kell adnia a köteten megőrizni kívánt Pillanatképek maximális számát is.  
+
+1.  A NetApp-fiók nézetében kattintson a **Pillanatkép-házirend**elemre.
+
+    ![Pillanatkép-házirend navigációja](../media/azure-netapp-files/snapshot-policy-navigation.png)
+
+2.  A pillanatkép-házirend ablakban állítsa be a házirend állapotát **engedélyezve**értékre. 
+
+3.  Óránkénti, napi, heti vagy havi pillanatkép-szabályzatok létrehozásához kattintson az **óránként**, **naponta**, **hetente**vagy **havonta** fülre. A **megőrizni kívánt Pillanatképek számának**meghatározása.  
+
+    Tekintse meg a kötetek számára engedélyezett maximális számú pillanatképet tartalmazó [Azure NetApp Files erőforrás-korlátozásait](azure-netapp-files-resource-limits.md) . 
+
+    Az alábbi példa az óránkénti Pillanatképek házirend-konfigurációját mutatja be. 
+
+    ![Pillanatkép-szabályzat óránként](../media/azure-netapp-files/snapshot-policy-hourly.png)
+
+    Az alábbi példa a napi Pillanatképek házirend-konfigurációját mutatja be.
+
+    ![Pillanatkép-szabályzat naponta](../media/azure-netapp-files/snapshot-policy-daily.png)
+
+    Az alábbi példa a heti Pillanatképek házirend-konfigurációját mutatja be.
+
+    ![Pillanatkép-szabályzat hetente](../media/azure-netapp-files/snapshot-policy-weekly.png)
+
+    Az alábbi példa a havi Pillanatképek házirend-konfigurációját mutatja be.
+
+    ![Pillanatkép-szabályzat havonta](../media/azure-netapp-files/snapshot-policy-monthly.png) 
+
+4.  Kattintson a **Mentés** gombra.  
+
+Ha további pillanatkép-házirendeket kell létrehoznia, ismételje meg a 3. lépést.
+A létrehozott szabályzatok megjelennek a pillanatkép-szabályzat lapon.
+
+Ha azt szeretné, hogy a kötet a pillanatkép-szabályzatot használja, a [kötetre kell alkalmaznia a házirendet](azure-netapp-files-manage-snapshots.md#apply-a-snapshot-policy-to-a-volume). 
+
+### <a name="apply-a-snapshot-policy-to-a-volume"></a>Pillanatkép-szabályzat alkalmazása kötetre
+
+Ha azt szeretné, hogy a kötet egy létrehozott pillanatkép-szabályzatot használjon, a kötetre kell alkalmaznia a szabályzatot. 
+
+1.  Lépjen a **kötetek** lapra, kattintson a jobb gombbal arra a kötetre, amelyre a pillanatkép-szabályzatot alkalmazni kívánja, majd válassza a **Szerkesztés**lehetőséget.
+
+    ![Kötetek jobb gombbal kattintva menü](../media/azure-netapp-files/volume-right-cick-menu.png) 
+
+2.  A Szerkesztés ablak **Pillanatkép-házirend**területén válassza ki a kötethez használni kívánt szabályzatot.  A szabályzat alkalmazásához kattintson **az OK** gombra.  
+
+    ![Pillanatkép-szabályzat szerkesztése](../media/azure-netapp-files/snapshot-policy-edit.png) 
+
+### <a name="modify-a-snapshot-policy"></a>Pillanatkép-szabályzat módosítása 
+
+Módosíthat egy meglévő pillanatkép-szabályzatot a házirend állapotának, a pillanatképek gyakoriságának (óránként, naponta, hetente vagy havonta), illetve a megtartani kívánt Pillanatképek számának módosításához.  
+ 
+1.  A NetApp-fiók nézetében kattintson a **Pillanatkép-házirend**elemre.
+
+2.  Kattintson a jobb gombbal a módosítani kívánt pillanatkép-szabályzatra, majd válassza a **Szerkesztés**lehetőséget.
+
+    ![Pillanatkép-házirend kattintson a jobb gombbal a menüre](../media/azure-netapp-files/snapshot-policy-right-click-menu.png) 
+
+3.  Hajtsa végre a megjelenő pillanatkép-házirend ablak módosításait, majd kattintson a **Mentés**gombra. 
+
+### <a name="delete-a-snapshot-policy"></a>Pillanatkép-szabályzat törlése 
+
+Törölheti azt a pillanatkép-szabályzatot, amelyet már nem szeretne megőrizni.   
+
+1.  A NetApp-fiók nézetében kattintson a **Pillanatkép-házirend**elemre.
+
+2.  Kattintson a jobb gombbal a módosítani kívánt pillanatkép-szabályzatra, majd válassza a **Törlés**lehetőséget.
+
+    ![Pillanatkép-házirend kattintson a jobb gombbal a menüre](../media/azure-netapp-files/snapshot-policy-right-click-menu.png) 
+
+3.  Kattintson az **Igen** gombra annak megerősítéséhez, hogy törölni kívánja a pillanatkép-szabályzatot.   
+
+    ![Pillanatkép-szabályzat törlésének megerősítése](../media/azure-netapp-files/snapshot-policy-delete-confirm.png) 
+
 ## <a name="restore-a-snapshot-to-a-new-volume"></a>Pillanatkép visszaállítása új kötetre
 
 Jelenleg csak egy új kötetre állíthatja vissza a pillanatképet. 
-1. A pillanatképek listájának megjelenítéséhez nyissa meg a kötetek panelen a **Pillanatképek kezelése** panelt. 
-2. Válassza ki a visszaállítani kívánt pillanatképet.  
-3. Kattintson a jobb gombbal a pillanatkép nevére, és válassza a **Visszaállítás az új kötetre** lehetőséget a menüpontban.  
+1. A pillanatképek listájának megjelenítéséhez válassza a kötetek panel **Pillanatképek** elemét. 
+2. Kattintson a jobb gombbal a visszaállítani kívánt pillanatképre, majd válassza a menü **új kötet visszaállítása** elemét.  
 
     ![Pillanatkép visszaállítása új kötetre](../media/azure-netapp-files/azure-netapp-files-snapshot-restore-to-new-volume.png)
 
-4. Az új kötet ablakban adja meg az új kötet adatait:  
+3. A kötet létrehozása ablakban adja meg az új kötet adatait:  
     * **név**   
         Adja meg a létrehozni kívánt kötet nevét.  
         
         A névnek egyedinek kell lennie az erőforráscsoporton belül. Legalább három karakter hosszúnak kell lennie.  Bármilyen alfanumerikus karakter használható.
 
-    * **Fájl elérési útja**     
-        Adja meg az új kötet exportálási útvonalának létrehozásához használni kívánt fájlelérési utat. A rendszer az exportálási útvonal használatával csatlakoztatja és éri el a kötetet.   
-        
-        A csatlakoztatási cél az NFS-szolgáltatás IP-címének végpontja. Ennek létrehozása automatikusan történik.   
-        
-        Az elérési út neve csak betűket, számokat és kötőjeleket („-”) tartalmazhat. A név 16–40 karakter hosszú lehet. 
-
     * **Kvóta**  
-        Adja meg a kötet számára kiosztott logikai tárterület mennyiségét.  
+        Itt adhatja meg a kötethez lefoglalni kívánt logikai tárterület mennyiségét.  
 
-        A **Rendelkezésre álló kvóta** mező a kiválasztott kapacitáskészletben fel nem használt terület mennyiségét mutatja, amely felhasználható egy új kötet létrehozása során. Az új kötet mérete nem haladhatja meg a rendelkezésre álló kvótát.
+    ![Visszaállítás új kötetre](../media/azure-netapp-files/snapshot-restore-new-volume.png) 
 
-    *   **Virtuális hálózat**  
-        Adja meg azt az Azure-beli virtuális hálózatot (VNet), amelyről el szeretné érni a kötetet.  
-        A megadott vnet rendelkeznie kell egy Azure NetApp Files delegált alhálózattal. Azure NetApp Files csak ugyanarról a vnet vagy egy olyan vnet férhet hozzá, amely ugyanabban a régióban található, mint a vnet-társításon keresztül. A kötetet a helyszíni hálózatról Express Route használatával érheti el. 
-
-    * **Alhálózat**  
-        Itt adhatja meg a kötethez használni kívánt alhálózatot.  
-        A megadott alhálózatot delegálni kell a Azure NetApp Files szolgáltatásnak. Létrehozhat egy új alhálózatot az alhálózat **létrehozása** lehetőség kiválasztásával.  
-   <!--
-    ![Restored new volume](../media/azure-netapp-files/azure-netapp-files-snapshot-new-volume.png) 
-   -->
-
-5. Kattintson az **OK** gombra.   
+4. Kattintson a **felülvizsgálat + létrehozás**gombra.  Kattintson a **Létrehozás** lehetőségre.   
+    Az új kötet ugyanazt a protokollt használja, mint amelyet a pillanatkép használ.   
     Az új kötet, amelybe a pillanatkép vissza lett állítva, megjelenik a kötetek panelen.
 
 ## <a name="next-steps"></a>További lépések
 
-[Az Azure NetApp Files tárhely-hierarchiájának ismertetése](azure-netapp-files-understand-storage-hierarchy.md)
+* [Az Azure NetApp Files tárhely-hierarchiájának ismertetése](azure-netapp-files-understand-storage-hierarchy.md)
+* [Az Azure NetApp Files erőforráskorlátai](azure-netapp-files-resource-limits.md)

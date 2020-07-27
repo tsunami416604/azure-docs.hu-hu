@@ -618,6 +618,14 @@
           href: vs-active-directory-webapi-what-happened.md
         - name: Hibák diagnosztizálása hitelesítés során
           href: vs-active-directory-error.md
+    - name: Alkalmazás piacra juttatása
+      items:
+        - name: Közzététel az App Source-ban
+          href: v2-howto-get-appsource-certified.md
+        - name: Közzététel az Azure AD alkalmazáskatalógusban
+          href: v2-howto-app-gallery-listing.md
+        - name: Közzététel az Office 365 Értékesítői információközpontban
+          href: 'https://docs.microsoft.com/office/dev/store/use-the-seller-dashboard-to-submit-to-the-office-store'
 - name: Referencia
   items:
     - name: Alkalmazásjegyzék

@@ -5,29 +5,31 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: python
 ms.topic: sample
-ms.date: 04/05/2018
+ms.date: 07/23/2020
 author: sakash279
 ms.author: akshanka
 ms.reviewer: sngun
 ms.custom: tracking-python
-ms.openlocfilehash: 0d24f5621786ce292d98ae1fc6dd8fafc5b69c55
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 3e21cc7a66f09b5e759b3d3a53ab95dd9710900d
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84556225"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171965"
 ---
 # <a name="get-started-with-azure-table-storage-and-the-azure-cosmos-db-table-api-using-python"></a>Bevezetés az Azure Table Storage és az Azure Cosmos DB Table API Pythonnal való használatával
 
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 [!INCLUDE [storage-table-applies-to-storagetable-and-cosmos](../../includes/storage-table-applies-to-storagetable-and-cosmos.md)]
 
-Az Azure Table Storage és az Azure Cosmos DB olyan szolgáltatások, amelyek strukturált NoSQL-adatokat tárolnak a felhőben, séma nélküli kulcs-/attribútumtárat biztosítva. Mivel a Table Storage és az Azure Cosmos DB séma nélküli, az adatokat könnyen az alkalmazás változó igényeihez igazíthatja. A Table Storage és a Table API adataihoz számos alkalmazástípus gyorsan és költséghatékonyan férhet hozzá, a költségei pedig jellemzően alacsonyabbak, mint a hagyományos SQL hasonló mennyiségű adathoz való használata esetében.
+Az Azure Table Storage és a Azure Cosmos DB olyan szolgáltatások, amelyek strukturált NoSQL tárolnak a felhőben, amely egy kulcs-/attribútum-tárolót biztosít a séma nélküli kialakításhoz. Mivel a Table Storage és az Azure Cosmos DB séma nélküli, az adatokat könnyen az alkalmazás változó igényeihez igazíthatja. A Table Storage és a Table API-adatmennyiségek gyorsak és költséghatékonyak számos különböző típusú alkalmazáshoz, és általában alacsonyabb, mint a hagyományos SQL-hez hasonló adatmennyiségek esetében.
 
-A Table Storage vagy az Azure Cosmos DB segítségével olyan rugalmas adatkészleteket tárolhat, mint például webalkalmazások felhasználói adatai, címtárak, eszközadatok és bármilyen egyéb metaadat, amelyre a szolgáltatásnak szüksége van. Egy táblán korlátlan számú entitást tárolhat, és egy tárfiók a kapacitásán belül korlátlan számú táblát tartalmazhat.
+A Table Storage vagy a Azure Cosmos DB használatával rugalmas adatkészleteket tárolhat, például a webalkalmazásokhoz, a címjegyzékekhez, az eszköz adataihoz vagy a szolgáltatás által igényelt más típusú metaadatokhoz tartozó felhasználói adatokat. Egy táblán korlátlan számú entitást tárolhat, és egy tárfiók a kapacitásán belül korlátlan számú táblát tartalmazhat.
 
 ### <a name="about-this-sample"></a>A minta ismertetése
+
 Ez a minta az [Azure Cosmos DB Table SDK Pythonhoz](https://pypi.python.org/pypi/azure-cosmosdb-table/) használatát mutatja be gyakori Azure Table Storage-forgatókönyvekben. Az SDK neve azt jelzi, hogy az Azure Cosmos DB-hez készült, azonban az Azure Cosmos DB és az Azure Table Storage szolgáltatással egyaránt használható, mivel az egyes szolgáltatásoknak csak a végpontja egyedi. Ezek a forgatókönyvek az alábbiakat bemutató Python-példákkal jellemezhetők:
+
 * Táblák létrehozása és törlése
 * Entitások beszúrása és lekérdezése
 * Entitások módosítása
@@ -38,17 +40,20 @@ A minta forgatókönyveinek végrehajtása közben érdemes megtekinteni a [Pyth
 
 A minta sikeres teljesítéséhez a következőkre lesz szüksége:
 
-- [Python](https://www.python.org/downloads/) 2.7, 3.3, 3.4, 3.5 vagy 3.6
-- [Azure Cosmos db a Pythonhoz készült Table SDK](https://pypi.python.org/pypi/azure-cosmosdb-table/)-t. Ez az SDK az Azure Table Storage-hoz és az Azure Cosmos DB Table API-hoz is csatlakozik.
-- [Azure Storage-fiók](../storage/common/storage-account-create.md) vagy [Azure Cosmos DB-fiók](https://azure.microsoft.com/try/cosmosdb/)
+* [Python](https://www.python.org/downloads/) 2.7, 3.3, 3.4, 3.5 vagy 3.6
+* [Azure Cosmos db a Pythonhoz készült Table SDK](https://pypi.python.org/pypi/azure-cosmosdb-table/)-t. Ez az SDK az Azure Table Storage-hoz és az Azure Cosmos DB Table API-hoz is csatlakozik.
+* [Azure Storage-fiók](../storage/common/storage-account-create.md) vagy [Azure Cosmos DB-fiók](https://azure.microsoft.com/try/cosmosdb/)
 
 ## <a name="create-an-azure-service-account"></a>Azure-szolgáltatásfiók létrehozása
+
 [!INCLUDE [cosmos-db-create-azure-service-account](../../includes/cosmos-db-create-azure-service-account.md)]
 
-### <a name="create-an-azure-storage-account"></a>Azure Storage-fiók létrehozása
+**Azure Storage-fiók létrehozása**
+
 [!INCLUDE [cosmos-db-create-storage-account](../../includes/cosmos-db-create-storage-account.md)]
 
-### <a name="create-an-azure-cosmos-db-table-api-account"></a>Azure Cosmos DB Table API-fiók létrehozása
+**Azure Cosmos DB Table API-fiók létrehozása**
+
 [!INCLUDE [cosmos-db-create-tableapi-account](../../includes/cosmos-db-create-tableapi-account.md)]
 
 ## <a name="install-the-azure-cosmos-db-table-sdk-for-python"></a>Az Azure Cosmos DB Table SDK Pythonhoz telepítése
@@ -229,7 +234,7 @@ Ha már nincs szüksége egy táblára vagy a benne található entitásokra, h�
 table_service.delete_table('tasktable')
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [A Table API-val történő fejlesztéshez kapcsolódó gyakori kérdések](https://docs.microsoft.com/azure/cosmos-db/faq)
 * [Az Azure Cosmos DB SDK Pythonhoz API-referenciája](https://docs.microsoft.com/python/api/overview/azure/cosmosdb?view=azure-python)

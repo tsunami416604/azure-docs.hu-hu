@@ -5,23 +5,29 @@ ms.assetid: 96cf87b9-8db6-41a8-863a-abb828e3d06d
 ms.topic: how-to
 ms.date: 03/26/2020
 ms.custom: mvc, devcenter, cc996988-fb4f-47
-ms.openlocfilehash: 030af8a289daaf03d17f8402e8d603e893657853
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cd4ddc5b6b685813740aed63cc6f446bc66e8169
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83123614"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87170094"
 ---
 # <a name="create-your-first-function-in-the-azure-portal"></a>Az első függvény létrehozása az Azure portálon
 
 Azure Functions lehetővé teszi a kód kiszolgáló nélküli környezetben való futtatását anélkül, hogy először létre kellene hoznia egy virtuális gépet (VM), vagy közzé kellene tennie egy webalkalmazást. Ebből a cikkből megtudhatja, hogyan használhatja a Azure Functionst a "Hello World" HTTP-trigger függvény létrehozásához a Azure Portalban.
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+Javasoljuk, hogy [helyileg fejlessze a függvényeket](functions-develop-local.md) , és tegye közzé az Azure-ban egy Function alkalmazásban.  
+A következő hivatkozások egyikével kezdheti meg a választott helyi fejlesztési környezet és nyelv használatát:
 
-Ha Ön C#-fejlesztő, érdemes [létrehoznia az első függvényt a Visual Studio 2019-ben](functions-create-your-first-function-visual-studio.md) a portál helyett. 
+| Visual Studio Code | Terminál/parancssor | Visual Studio |
+| --- | --- | --- |
+|  &bull;&nbsp;[Ismerkedés a C-vel #](./functions-create-first-function-vs-code.md?pivots=programming-language-csharp)<br/>&bull;&nbsp;[Ismerkedés a Javával](./functions-create-first-function-vs-code.md?pivots=programming-language-java)<br/>&bull;&nbsp;[Ismerkedés a JavaScripttel](./functions-create-first-function-vs-code.md?pivots=programming-language-javascript)<br/>&bull;&nbsp;[Ismerkedés a PowerShell-lel](./functions-create-first-function-vs-code.md?pivots=programming-language-powershell)<br/>&bull;&nbsp;[Ismerkedés a Pythontal](./functions-create-first-function-vs-code.md?pivots=programming-language-python) |&bull;&nbsp;[Ismerkedés a C-vel #](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-csharp)<br/>&bull;&nbsp;[Ismerkedés a Javával](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java)<br/>&bull;&nbsp;[Ismerkedés a JavaScripttel](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-javascript)<br/>&bull;&nbsp;[Ismerkedés a PowerShell-lel](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-powershell)<br/>&bull;&nbsp;[Ismerkedés a Pythontal](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-python) | [Ismerkedés a C-vel #](functions-create-your-first-function-visual-studio.md) |
+
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Jelentkezzen be az [Azure Portalba](https://portal.azure.com) az Azure-fiókjával.
+Jelentkezzen be az [Azure Portalra](https://portal.azure.com) az Azure-fiókjával.
 
 ## <a name="create-a-function-app"></a>Függvényalkalmazás létrehozása
 
@@ -67,7 +73,7 @@ Ezután hozzon létre egy függvényt az új függvény alkalmazásban.
 
    ![A függvények naplómegtekintője az Azure Portalon.](./media/functions-create-first-azure-function/function-view-logs.png)
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 [!INCLUDE [Clean-up resources](../../includes/functions-quickstart-cleanup.md)]
 

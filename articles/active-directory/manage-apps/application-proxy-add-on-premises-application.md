@@ -12,12 +12,12 @@ ms.date: 10/24/2019
 ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7fd1b815a56a21e502decb440806040c626c13d2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a7153200bc80f6e27a99123a1bba676d0188f607
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87019641"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87129032"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Oktatóanyag: helyi alkalmazás hozzáadása a távoli eléréshez az alkalmazásproxy használatával Azure Active Directory
 
@@ -87,9 +87,6 @@ A TLS 1,2 engedélyezése:
    ```
 
 1. Indítsa újra a kiszolgálót.
-
-> [!IMPORTANT]
-> Ahhoz, hogy a legjobb titkosítást nyújtson ügyfeleinknek, az alkalmazásproxy szolgáltatás csak a TLS 1,2 protokollokra korlátozza a hozzáférést. Ezeket a módosításokat a 2019-es augusztus 31-ig fokozatosan kivezették és hatályba lépnek. Győződjön meg arról, hogy az összes ügyfél-kiszolgáló és böngésző-kiszolgáló kombináció frissítve van a TLS 1,2 használatára az alkalmazásproxy szolgáltatáshoz való csatlakozás fenntartása érdekében. Ezek közé tartoznak azok az ügyfelek, akikkel a felhasználók az Application proxyn keresztül közzétett alkalmazások elérését használják. Lásd: Felkészülés a [TLS 1,2-es verzióra az Office 365-ben](https://support.microsoft.com/help/4057306/preparing-for-tls-1-2-in-office-365) hasznos referenciák és erőforrások.
 
 ## <a name="prepare-your-on-premises-environment"></a>A helyszíni környezet előkészítése
 

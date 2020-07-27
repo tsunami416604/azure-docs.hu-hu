@@ -10,13 +10,14 @@ ms.assetid: 1c46ed69-4049-44ec-9b46-e90e964a4a8e
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 04/15/2020
+ms.date: 07/24/2020
 ms.author: jingwang
-ms.openlocfilehash: a59d9291d1eaa4aa87d40914679e39c9cbf29cee
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a5d203664520aebadefd16c19813d7957dd37fc4
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84112644"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171257"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Metaadatok beolvasása tevékenység Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -59,6 +60,7 @@ A metaadatok beolvasása tevékenység bemenetként fogadja az adatkészletet, �
 - Az Azure Blob Storage esetében a `lastModified` tárolóra és a blobra vonatkozik, de a virtuális mappára nem.
 - `lastModified`a szűrő jelenleg az alárendelt elemek szűrésére vonatkozik, de a megadott mappa vagy fájl nem.
 - A mappák/fájlok helyettesítő szűrője nem támogatott a metaadatok beolvasása tevékenység esetén.
+- `structure`és `columnCount` nem támogatottak a bináris, JSON-vagy XML-fájlok metaadatainak beolvasása esetén.
 
 **Relációs adatbázis**
 
@@ -73,7 +75,7 @@ A metaadatok beolvasása tevékenység bemenetként fogadja az adatkészletet, �
 
 A következő metaadatokat adhatja meg a metaadatok beolvasása tevékenység mezőinek listájában a megfelelő információk lekéréséhez:
 
-| Metaadat típusa | Description |
+| Metaadat típusa | Leírás |
 |:--- |:--- |
 | itemName | A fájl vagy mappa neve. |
 | itemType | A fájl vagy mappa típusa. A visszaadott érték a következő: `File` vagy `Folder` . |
@@ -92,7 +94,7 @@ A következő metaadatokat adhatja meg a metaadatok beolvasása tevékenység me
 >[!NOTE]
 >Ha a fájl tárolja a metaadatokat, és `modifiedDatetimeStart` konfigurálja `modifiedDatetimeEnd` a vagy a-t, a `childItems` kimenetben csak a megadott tartományon belüli utolsó módosítási időt tartalmazó fájlok jelennek meg. A nem tartalmazza az almappákban található elemeket.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>Szintaxis
 
 **Metaadatok beolvasása tevékenység**
 
@@ -110,7 +112,7 @@ A következő metaadatokat adhatja meg a metaadatok beolvasása tevékenység me
 }
 ```
 
-**Adatkészlet**
+**Adathalmaz**
 
 ```json
 {
@@ -138,10 +140,10 @@ A metaadatok beolvasása tevékenység jelenleg a következő típusú metaadato
 
 Tulajdonság | Leírás | Kötelező
 -------- | ----------- | --------
-Mezőlista | A metaadatokhoz szükséges információk típusai. A támogatott metaadatokkal kapcsolatos részletekért tekintse meg a jelen cikk [metaadat-beállítások](#metadata-options) című szakaszát. | Yes 
-adatkészlet | A metaadatok beolvasása tevékenység által a metaadatokat lekérő hivatkozási adatkészlet. A támogatott összekötők információit a [képességek](#capabilities) című szakaszban találja. Az adatkészlet szintaxisával kapcsolatos részletekért tekintse meg az összekötőhöz kapcsolódó témaköröket. | Yes
-formatSettings | Alkalmazza a Format Type adatkészlet használatakor. | No
-storeSettings | Alkalmazza a Format Type adatkészlet használatakor. | No
+Mezőlista | A metaadatokhoz szükséges információk típusai. A támogatott metaadatokkal kapcsolatos részletekért tekintse meg a jelen cikk [metaadat-beállítások](#metadata-options) című szakaszát. | Igen 
+adatkészlet | A metaadatok beolvasása tevékenység által a metaadatokat lekérő hivatkozási adatkészlet. A támogatott összekötők információit a [képességek](#capabilities) című szakaszban találja. Az adatkészlet szintaxisával kapcsolatos részletekért tekintse meg az összekötőhöz kapcsolódó témaköröket. | Igen
+formatSettings | Alkalmazza a Format Type adatkészlet használatakor. | Nem
+storeSettings | Alkalmazza a Format Type adatkészlet használatakor. | Nem
 
 ## <a name="sample-output"></a>Példa kimenet
 

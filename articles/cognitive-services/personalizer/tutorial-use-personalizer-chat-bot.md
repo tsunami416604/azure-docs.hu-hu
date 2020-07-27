@@ -3,13 +3,12 @@ title: Személyre szabás használata a csevegési robotban – személyre szab�
 description: Testreszabhatja a C# .NET chat robotot egy személyre szabott hurok használatával, hogy a megfelelő tartalmat biztosítsa a felhasználóknak a műveletek (funkciók) és a környezeti funkciók alapján.
 ms.topic: tutorial
 ms.date: 07/17/2020
-ms.author: diberry
-ms.openlocfilehash: d269dbf95356d1d8d0fb7c2f27e0828d016d0ac6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8e936b4017ad50434bc7d6b05b4217f82a9080e0
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87101516"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131667"
 ---
 # <a name="tutorial-use-personalizer-in-net-chat-bot"></a>Oktatóanyag: személyre szabott használata a .NET-csevegési robotban
 
@@ -423,7 +422,7 @@ Ha éles robotban szeretné használni a személyre szabott beállításokat, te
 * A jutalom használati eseten alapuló kiszámítása: Ez a példa két, nulla értékű és egy, a pontszám nélküli és negatív értékkel rendelkező értéket mutatott be. A rendszerek részletesebb pontozást igényelnek.
 * Bot Channels: Ez a minta egyetlen csatornát használ, de ha egynél több csatornát vagy a botok egyetlen csatornán való változatát kívánja használni, akkor előfordulhat, hogy a személyre szabott modell környezeti funkcióinak részeként kell figyelembe vennie.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha elkészült ezzel az Oktatóanyaggal, törölje a következő erőforrásokat:
 

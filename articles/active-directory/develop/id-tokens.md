@@ -14,12 +14,12 @@ ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
-ms.openlocfilehash: 2fbbf5f9d01ed4a469967dac87faa3b130905757
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: aca2e0a878470a644aff3a42411b69da9096fc78
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87027104"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87170510"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Microsoft Identity platform azonosító tokenek
 
@@ -51,7 +51,7 @@ Tekintse meg ezt a v 2.0 minta tokent a [JWT.MS](https://jwt.ms/#id_token=eyJ0eX
 
 ### <a name="header-claims"></a>Fejléc jogcímei
 
-|Jogcím | Formátum | Description |
+|Jogcím | Formátum | Leírás |
 |-----|--------|-------------|
 |`typ` | String – mindig "JWT" | Azt jelzi, hogy a token egy JWT token.|
 |`alg` | Sztring | Meghatározza a jogkivonat aláírásához használt algoritmust. Példa: "RS256" |
@@ -62,7 +62,7 @@ Tekintse meg ezt a v 2.0 minta tokent a [JWT.MS](https://jwt.ms/#id_token=eyJ0eX
 
 Ez a lista azokat a JWT jogcímeket jeleníti meg, amelyek alapértelmezés szerint a legtöbb id_tokensban szerepelnek (kivéve, ha van ilyen).  Az alkalmazás azonban [választható jogcímeket](active-directory-optional-claims.md) is használhat a ID_TOKEN további JWT jogcímek igényléséhez.  Ezek a jogcím alapján a `groups` felhasználó nevével kapcsolatos információkra terjedhetnek.
 
-|Jogcím | Formátum | Description |
+|Jogcím | Formátum | Leírás |
 |-----|--------|-------------|
 |`aud` |  Karakterlánc, alkalmazás-azonosító URI | Azonosítja a jogkivonat kívánt címzettjét. A-ben a célközönség az alkalmazáshoz `id_tokens` hozzárendelt alkalmazás azonosítója a Azure Portal. Az alkalmazásnak ellenőriznie kell ezt az értéket, és el kell utasítania a jogkivonatot, ha az érték nem egyezik. |
 |`iss` |  Karakterlánc, STS URI | Azonosítja azt a biztonságijogkivonat-szolgáltatást (STS), amely létrehozza és visszaadja a tokent, valamint azt az Azure AD-bérlőt, amelyben a felhasználó hitelesítése megtörtént. Ha a jogkivonatot a v 2.0-végpont adta ki, akkor az URI-ja befejeződik `/v2.0` .  Az a GUID, amely azt jelzi, hogy a felhasználó egy Microsoft-fiók vásárló felhasználója `9188040d-6c67-4c5b-b112-36a304b66dad` . Az alkalmazásnak a jogcím GUID részét kell használnia, hogy korlátozza azon bérlők készletét, amelyek be tudnak jelentkezni az alkalmazásba, ha vannak ilyenek. |
@@ -87,7 +87,7 @@ Ez a lista azokat a JWT jogcímeket jeleníti meg, amelyek alapértelmezés szer
 |`ver` | Karakterlánc, vagy 1,0 vagy 2,0 | Megadja a id_token verzióját. |
 
 > [!NOTE]
-> A v 1.0 és a v 22.0 id_token a fenti példákban látható információk mennyiségétől függ. A verzió lényegében azt az Azure AD platform-végpontot határozza meg, ahonnan a kiadást adták. Az [Azure ad OAuth megvalósítása](about-microsoft-identity-platform.md) az évek során fejlődött. Jelenleg két különböző outh-végpont létezik az Azure AD-alkalmazásokhoz. Használhatja a v 2.0 vagy a v 1.0 kategóriába sorolt új végpontokat. Mindkét OAuth végpontja eltérő. A v 2.0-végpont újabb, és a rendszer áttelepíti a v 1.0 végpont funkcióit erre a végpontra. Az új fejlesztőknek a v 2.0-s végpontot kell használniuk.
+> A 1.0-s és a 2.0-s verzió id_token a fenti példákban látható információk mennyiségétől függ. A verzió lényegében azt az Azure AD platform-végpontot határozza meg, ahonnan a kiadást adták. Az [Azure ad OAuth megvalósítása](about-microsoft-identity-platform.md) az évek során fejlődött. Jelenleg két különböző outh-végpont létezik az Azure AD-alkalmazásokhoz. Használhatja a v 2.0 vagy a v 1.0 kategóriába sorolt új végpontokat. Mindkét OAuth végpontja eltérő. A v 2.0-végpont újabb, és a rendszer áttelepíti a v 1.0 végpont funkcióit erre a végpontra. Az új fejlesztőknek a v 2.0-s végpontot kell használniuk.
 >
 > - 1.0-s verzió: Azure AD-végpontok:`https://login.microsoftonline.com/common/oauth2/authorize`
 > - v 2.0: Microsoft identitypPlatform-végpontok:`https://login.microsoftonline.com/common/oauth2/v2.0/authorize`

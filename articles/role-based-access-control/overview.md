@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/17/2020
+ms.date: 07/23/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 3846a4669cc2a77862e73dbb8e7743b19740e8a4
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 45601e820bc03b263fbf664a43ce34266dc4a488
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996497"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171580"
 ---
 # <a name="what-is-azure-role-based-access-control-azure-rbac"></a>Mi az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)?
 
@@ -27,11 +27,15 @@ A felhőbeli erőforrások hozzáférésének kezelése kritikus fontosságú a 
 
 Az Azure RBAC egy [Azure Resource Managerra](../azure-resource-manager/management/overview.md) épülő engedélyezési rendszer, amely részletes hozzáférés-vezérlést biztosít az Azure-erőforrásokhoz.
 
+Ez a videó az Azure RBAC gyors áttekintését nyújtja.
+
+>[!VIDEO https://www.youtube.com/embed/Dzhm-garKBM]
+
 ## <a name="what-can-i-do-with-azure-rbac"></a>Mire használhatom az Azure RBAC?
 
 Íme néhány példa arra, hogy mit tehet az Azure RBAC:
 
-- Az egyik felhasználó számára engedélyezheti az előfizetésben lévő virtuális gépek, a másik felhasználó számára pedig a virtuális hálózatok kezelését.
+- Az egyik felhasználó számára engedélyezheti az előfizetésben lévő virtuális gépek, a másik felhasználó számára pedig a virtuális hálózatok kezelését
 - Engedélyezheti egy adatbázis-rendszergazdai csoport számára az előfizetésben lévő SQL-adatbázisok kezelését.
 - Engedélyezheti egy felhasználó számára az egy adott erőforráscsoportba tartozó összes erőforrás, például a virtuális gépek, a webhelyek és az alhálózatok kezelését.
 - Engedélyezheti egy alkalmazás számára az egy adott erőforráscsoportba tartozó összes erőforrás elérését.
@@ -57,22 +61,26 @@ A *szerepkör-definíció* engedélyek gyűjteménye. Általában csak *szerepk�
 
 ![Szerepkör-hozzárendelések szerepkör-definíciója](./media/overview/rbac-role-definition.png)
 
-Az Azure számos [beépített szerepkört](built-in-roles.md) biztosít, amelyeket használhat. Az alábbiakban négy alapvető beépített szerepkört sorolunk fel. Az első három minden erőforrástípusra alkalmazható.
+Az Azure számos [beépített szerepkört](built-in-roles.md) tartalmaz, amelyeket használhat. Az alábbiakban négy alapvető beépített szerepkört sorolunk fel. Az első három minden erőforrástípusra alkalmazható.
 
-- [Tulajdonos](built-in-roles.md#owner) – teljes hozzáféréssel rendelkezik az összes erőforráshoz, beleértve a hozzáférés mások számára való delegálásának jogát is.
+- [Tulajdonos](built-in-roles.md#owner) – teljes körű hozzáféréssel rendelkezik az összes erőforráshoz, beleértve a másokhoz való hozzáférés delegálására vonatkozó jogosultságot is.
 - [Közreműködő](built-in-roles.md#contributor) – az összes típusú Azure-erőforrást létrehozhatja és kezelheti, de mások számára nem biztosít hozzáférést.
 - [Olvasó](built-in-roles.md#reader) – megtekintheti a meglévő Azure-erőforrásokat.
-- [Felhasználói hozzáférés rendszergazdája](built-in-roles.md#user-access-administrator) – kezelheti a felhasználók Azure-erőforrásokhoz való hozzáférését.
+- [Felhasználói hozzáférés rendszergazdája](built-in-roles.md#user-access-administrator) – lehetővé teszi az Azure-erőforrásokhoz való felhasználói hozzáférés kezelését.
 
 A többi beépített szerepkör adott Azure-erőforrások kezelését teszi lehetővé. Például a [Virtuális gépek közreműködője](built-in-roles.md#virtual-machine-contributor) szerepkör virtuális gépek létrehozását és kezelését teszi lehetővé. Ha a beépített szerepkörök nem felelnek meg a szervezet konkrét igényeinek, létrehozhat saját [Egyéni Azure-szerepköröket](custom-roles.md)is.
+
+Ez a videó gyors áttekintést nyújt a beépített szerepkörökről és az egyéni szerepkörökről.
+
+>[!VIDEO https://www.youtube.com/embed/I1mefHptRgo]
 
 Az Azure olyan adatműveletekkel rendelkezik, amelyek lehetővé teszik az adatokhoz való hozzáférés megadását egy adott objektumon belül. Ha például egy felhasználó adatolvasási hozzáféréssel rendelkezik egy tárfiókhoz, akkor olvashatja az adott tárfiókban lévő blobokat vagy üzeneteket. További információ: az [Azure szerepkör-definíciók ismertetése](role-definitions.md).
 
 ### <a name="scope"></a>Hatókör
 
-A *hatókör* azon erőforrások készlete, amelyekre a hozzáférés vonatkozik. Szerepkörök hozzárendelésekor hatókör meghatározásával tovább korlátozhatja az engedélyezett műveletek körét. Ez hasznos lehet például, ha egy felhasználót [Webhelyek közreműködője](built-in-roles.md#website-contributor) szerepkörrel szeretne felruházni, de csak egyetlen erőforráscsoportra vonatkozóan.
+A *hatókör* azon erőforrások készlete, amelyekre a hozzáférés vonatkozik. Szerepkörök hozzárendelésekor hatókör meghatározásával tovább korlátozhatja az engedélyezett műveletek körét. Ez akkor hasznos, ha egy [webhely közreműködői](built-in-roles.md#website-contributor)szerepkört szeretne tenni, de csak egy erőforráscsoporthoz.
 
-Az Azure-ban a hatókörök több szinten határozhatók meg: a [felügyeleti csoport](../governance/management-groups/overview.md), az előfizetés, az erőforráscsoport vagy az erőforrás szintjén. A hatókörök szülő-gyermek (származtatott) kapcsolatokba vannak rendezve.
+Az Azure-ban több szinten is megadhat egy hatókört: [felügyeleti csoport](../governance/management-groups/overview.md), előfizetés, erőforráscsoport vagy erőforrás. A hatókörök szülő-gyermek (származtatott) kapcsolatokba vannak rendezve.
 
 ![Szerepkör-hozzárendelés hatóköre](./media/overview/rbac-scope.png)
 

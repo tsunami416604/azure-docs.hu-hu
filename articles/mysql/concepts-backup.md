@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/27/2020
-ms.openlocfilehash: 3a6162bb381f4e54114e3cabbf138f5b1c6aaae0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e28fc3c5779f2c31abbb48a7ced448cd8f92d1a2
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80373035"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171850"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql"></a>Biztonsági mentés és visszaállítás Azure Database for MySQL
 
@@ -19,13 +19,30 @@ Azure Database for MySQL automatikusan létrehozza a kiszolgáló biztonsági m�
 
 ## <a name="backups"></a>Biztonsági másolatok
 
-Azure Database for MySQL biztonsági másolatokat készít az adatfájlokról és a tranzakciónaplóról. A maximálisan támogatott tárterülettől függően teljes és különbözeti biztonsági mentéseket (4 TB-os maximális tárolási kiszolgálókat) vagy pillanatképes biztonsági mentést (legfeljebb 16 TB-os maximális tárolási kiszolgálót) használhat. Ezek a biztonsági másolatok lehetővé teszik a kiszolgálók visszaállítását bármely időpontra a beállított biztonsági mentési megőrzési időszakon belül. Az alapértelmezett biztonsági mentési megőrzési időszak hét nap. Opcionálisan akár 35 napig is [beállíthatja](howto-restore-server-portal.md#set-backup-configuration) . Az összes biztonsági mentés titkosítása AES 256 bites titkosítás használatával történik.
+Azure Database for MySQL biztonsági másolatokat készít az adatfájlokról és a tranzakciónaplóról. A maximálisan támogatott tárolási mérettől függően teljes és különbözeti biztonsági mentéseket (4 TB-os maximális tárolási kiszolgálókat) vagy pillanatképes biztonsági mentést (legfeljebb 16 TB-os maximális tárolási kiszolgálókat) használhat. Ezek a biztonsági másolatok lehetővé teszik a kiszolgálók visszaállítását bármely időpontra a beállított biztonsági mentési megőrzési időszakon belül. Az alapértelmezett biztonsági mentési megőrzési időszak hét nap. Opcionálisan akár 35 napig is [beállíthatja](howto-restore-server-portal.md#set-backup-configuration) . Az összes biztonsági mentés titkosítása AES 256 bites titkosítás használatával történik.
 
 Ezek a biztonságimásolat-fájlok nem felhasználók számára lettek kitéve, és nem exportálhatók. Ezek a biztonsági másolatok csak Azure Database for MySQL-beli visszaállítási műveletekhez használhatók. A [mysqldump](concepts-migrate-dump-restore.md) használatával másolhat egy adatbázist.
 
 ### <a name="backup-frequency"></a>Biztonsági mentés gyakorisága
 
-Általánosságban elmondható, hogy a teljes biztonsági mentések hetente, a különbözeti biztonsági mentések naponta kétszer történnek a 4 TB-os maximális támogatott tárterülettel rendelkező kiszolgálók esetében. A pillanatképek biztonsági mentése legalább naponta egyszer történik a legfeljebb 16 TB tárterületet támogató kiszolgálók esetén. A tranzakciós naplók biztonsági mentése mindkét esetben öt percenként történik. A teljes biztonsági mentés első pillanatképét a rendszer a kiszolgáló létrehozása után azonnal ütemezi. A kezdeti teljes biztonsági mentés hosszabb időt vehet igénybe egy nagy visszaállított kiszolgálón. Az a legkorábbi időpont, ameddig egy új kiszolgáló visszaállítható a kezdeti teljes biztonsági mentés befejezésének időpontjára. Mivel a pillanatképek azonnaliek, a legfeljebb 16 TB tárhellyel rendelkező kiszolgálók bármikor visszaállíthatók a létrehozási időre.
+#### <a name="servers-with-up-to-4-tb-storage"></a>Legfeljebb 4 TB tárhellyel rendelkező kiszolgálók
+
+Legfeljebb 4 TB-os maximális tárterületet támogató kiszolgálók esetén a teljes biztonsági mentés hetente egyszer történik. A különbözeti biztonsági mentések naponta kétszer történnek. A tranzakciós napló biztonsági mentései öt percenként történnek.
+
+#### <a name="servers-with-up-to-16-tb-storage"></a>Legfeljebb 16 TB tárhellyel rendelkező kiszolgálók
+Az [Azure-régiók](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage)egy részhalmazában az újonnan kiosztott kiszolgálók akár 16 TB-nyi tárhelyet is támogatnak. Ezen nagyméretű tároló kiszolgálókon a biztonsági másolatok pillanatkép-alapúak. Az első teljes pillanatkép biztonsági mentése a kiszolgáló létrehozása után azonnal ütemezve van. Az első teljes pillanatkép biztonsági mentése a kiszolgáló alapbiztonsági mentéseként marad. A pillanatképek következő biztonsági mentései csak különbözeti biztonsági másolatokat használnak. 
+
+A különbözeti Pillanatképek biztonsági mentései naponta legalább egyszer történnek. A különbözeti Pillanatképek biztonsági mentése rögzített ütemezés szerint nem történik meg. A különbözeti Pillanatképek biztonsági mentései 24 óránként történnek, kivéve, ha a tranzakciós napló (BinLog a MySQL-ben) meghaladja a 50 GB-ot a legutóbbi különbözeti biztonsági mentés óta. Egy nap alatt legfeljebb hat különbözeti pillanatkép engedélyezett. 
+
+A tranzakciós napló biztonsági mentései öt percenként történnek. 
+
+### <a name="backup-retention"></a>Biztonsági mentés megőrzése
+
+A biztonsági mentések a kiszolgálón tárolt biztonsági másolatok megőrzési időszakának beállítása alapján őrződnek meg. 7 és 35 nap közötti megőrzési időtartamot választhat. Az alapértelmezett megőrzési időtartam 7 nap. A megőrzési időszakot a kiszolgáló létrehozásakor vagy később állíthatja be, ha a [Azure Portal](https://docs.microsoft.com/azure/mysql/howto-restore-server-portal#set-backup-configuration) vagy az [Azure CLI](https://docs.microsoft.com/azure/mysql/howto-restore-server-cli#set-backup-configuration)használatával frissíti a biztonsági mentési konfigurációt. 
+
+A biztonsági másolatok megőrzési időszaka azt szabályozza, hogy az adott időpontra visszamenőleges visszaállítás hogyan kérhető le, mert az elérhető biztonsági másolatokon alapul. A biztonsági mentés megőrzési időszaka helyreállítási perspektívában is kezelhető helyreállítási ablakként. A biztonsági másolatok megőrzési időszakán belül az időponthoz való visszaállításhoz szükséges összes biztonsági másolat megmarad a biztonságimásolat-tárolóban. Ha például a biztonsági másolat megőrzési időtartama 7 nap, a helyreállítási időszak az utolsó 7 nap lesz. Ebben a forgatókönyvben a kiszolgáló utolsó 7 napban történő visszaállításához szükséges összes biztonsági mentést megőrzi a rendszer. A biztonsági másolatok megőrzési ablaka hét nap:
+- A 4 TB-os tárolóval rendelkező örökölt kiszolgálók két teljes adatbázis biztonsági mentését, az összes különbözeti biztonsági mentést és a tranzakciónapló biztonsági mentését a legkorábbi teljes adatbázis biztonsági mentése óta hajtják végre.
+-   A nagyméretű tárolóval rendelkező kiszolgálók (16 TB) megőrzik a teljes adatbázis-pillanatképet, az összes különbözeti pillanatképet és a tranzakciónapló biztonsági mentését az elmúlt 8 napban.
 
 ### <a name="backup-redundancy-options"></a>A Backup redundancia beállításai
 
@@ -36,9 +53,11 @@ Azure Database for MySQL rugalmasságot biztosít a helyileg redundáns vagy geo
 
 ### <a name="backup-storage-cost"></a>Biztonsági mentési tárolási díj
 
-A Azure Database for MySQL a kiépített kiszolgáló tárterületének akár 100%-át is elérhetővé teszi a biztonsági mentési tárolóként, többletköltség nélkül. Ez általában alkalmas a biztonsági másolatok megtartására, amely hét nap. A további felhasznált biztonsági mentési tárhelyeket GB-onként számítjuk fel.
+A Azure Database for MySQL a kiépített kiszolgáló tárterületének akár 100%-át is elérhetővé teszi a biztonsági mentési tárolóként, többletköltség nélkül. Minden további felhasznált biztonsági mentési tárterületért GB/hó díjat számítunk fel. Ha például 250 GB tárterülettel rendelkező kiszolgálót épít ki, akkor a kiszolgáló biztonsági mentéséhez 250 GB-nyi további tárterület is rendelkezésre áll. A biztonsági mentéshez a 250 GB-nál nagyobb mennyiségű tárterületet a [díjszabási modell](https://azure.microsoft.com/pricing/details/mysql/)szerint számítjuk fel. 
 
-Ha például létrehozta a 250 GB-ot tartalmazó kiszolgálót, a biztonsági mentési tárterület 250 GB-nyi tartalék tárhelye díjmentes. A 250 GB-nál nagyobb tárterületért díjat számítunk fel.
+A Azure Monitor által elérhető [biztonsági mentési tár](concepts-monitoring.md) a Azure Portal segítségével a kiszolgáló által felhasznált biztonsági mentési tárterület figyelésére használható. A biztonsági mentési tár használt mérőszáma a teljes adatbázis biztonsági mentése, a különbözeti biztonsági másolatok és a naplózott biztonsági mentések által felhasznált tárterület összegét adja meg a kiszolgáló biztonsági mentésének megőrzési időszaka alapján. A biztonsági mentések gyakorisága a szolgáltatás által felügyelt és korábban ismertetett. A kiszolgáló súlyos tranzakciós tevékenysége miatt a biztonsági másolatok tárolási kihasználtsága a teljes adatbázis méretétől függetlenül növekszik. A földrajzilag redundáns tároláshoz a biztonsági mentési tárterület a helyileg redundáns tárolásnál kétszer szerepel. 
+
+A biztonsági mentési tárolási költségek szabályozásának elsődleges módja a biztonsági mentési megőrzési időtartam beállítása, valamint a megfelelő biztonsági mentési redundancia-beállítások kiválasztása a kívánt helyreállítási célok eléréséhez. A megőrzési időtartamot 7 és 35 nap közé is kiválaszthatja. A általános célú és a memóriára optimalizált kiszolgálók dönthetnek úgy, hogy a biztonsági mentések földrajzilag redundáns tárolóhelyet biztosítanak.
 
 ## <a name="restore"></a>Visszaállítás
 

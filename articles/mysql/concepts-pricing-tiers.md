@@ -6,18 +6,18 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.openlocfilehash: b9cf070e1431c04a7e899a3b8875c8db796608d3
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 163f440c9f98a1d53793fddab2590f7345944fda
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119888"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171016"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Árképzési szintek Azure Database for MySQL
 
 A Azure Database for MySQL-kiszolgálót a három különböző díjszabási szint egyikében hozhatja létre: alapszintű, általános célú és memória optimalizálva. Az árképzési csomagokat a virtuális mag olyan számítási mennyisége különbözteti meg, amely kiépíthető, memóriát virtuális mag, valamint az adatok tárolására szolgáló tárolási technológiát. Minden erőforrást a MySQL-kiszolgáló szintjén kell kiépíteni. A kiszolgálók egy vagy több adatbázissal rendelkezhetnek.
 
-| Attribútum   | **Alapszintű** | **általános célú** | **Memória optimalizálva** |
+| Attribútum   | **Basic** | **általános célú** | **Memória optimalizálva** |
 |:---|:----------|:--------------------|:---------------------|
 | Számítási generáció | Gen 4, Gen 5 | Gen 4, Gen 5 | 5. gen |
 | Virtuális mag | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
@@ -83,9 +83,9 @@ Ha például 1000 GB tárhelyet használ, és a tényleges kihasználtság megha
 
 Ne feledje, hogy a tárterület csak akkor méretezhető, ha nem.
 
-## <a name="backup"></a>Backup
+## <a name="backup-storage"></a>Biztonsági mentési tár 
 
-A szolgáltatás automatikusan biztonsági másolatot készít a kiszolgálóról. A megőrzési időtartamot 7 és 35 nap közé is kiválaszthatja. A általános célú és a memóriára optimalizált kiszolgálók dönthetnek úgy, hogy a biztonsági mentések földrajzilag redundáns tárolóhelyet biztosítanak. További információ a biztonsági mentésekről a [fogalmakat ismertető cikkben](concepts-backup.md).
+A Azure Database for MySQL a kiépített kiszolgáló tárterületének akár 100%-át is elérhetővé teszi a biztonsági mentési tárolóként, többletköltség nélkül. Az ezen összegnél nagyobb mennyiségű biztonsági mentési tárterületért havi GB-ot kell fizetni. Ha például 250 GB tárterülettel rendelkező kiszolgálót hoz létre, akkor a kiszolgáló biztonsági mentései esetében a 250 GB-nyi további tárterület is rendelkezésre áll. A 250 GB-nál nagyobb biztonsági másolatok tárolására a [díjszabási modellnek](https://azure.microsoft.com/pricing/details/mysql/)megfelelően kerül sor. A biztonsági mentési tárhely használatának befolyásolására, a biztonsági mentési tárolási költségek figyelésére és szabályozására szolgáló tényezők megismeréséhez tekintse meg a [biztonsági mentési dokumentációt](concepts-backup.md).
 
 ## <a name="scale-resources"></a>Erőforrások skálázása
 
@@ -99,7 +99,7 @@ A tárterület skálázása és a biztonsági mentés megőrzési időtartamána
 
 A legfrissebb díjszabási információkért tekintse meg a szolgáltatás [díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/mysql/). A kívánt konfiguráció költségének megtekintéséhez a [Azure Portal](https://portal.azure.com/#create/Microsoft.MySQLServer) a kiválasztott beállítások alapján megjeleníti a havi költséget a **díjszabási szintek** lapon. Ha még nem rendelkezik Azure-előfizetéssel, az Azure díjszabási kalkulátor használatával megbecsülheti a becsült árat. Az [Azure díjszabási kalkulátor](https://azure.microsoft.com/pricing/calculator/) webhelyén válassza az **elemek hozzáadása**, majd az **adatbázisok** kategóriát, és **Azure Database for MySQL** a beállítások testreszabásához.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Megtudhatja, hogyan [hozhat létre MySQL-kiszolgálót a portálon](howto-create-manage-server-portal.md).
 - A [szolgáltatás korlátainak](concepts-limits.md)megismerése.

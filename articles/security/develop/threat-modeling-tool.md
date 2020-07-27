@@ -7,11 +7,12 @@ ms.service: security
 ms.subservice: security-develop
 ms.topic: article
 ms.date: 02/16/2017
-ms.openlocfilehash: 0d800102b6f6ff77944a2b625d3bcecef69c1ee9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dcf782a41dbb09135f7a4cd767a94ff90578b6ba
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75548747"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87169361"
 ---
 # <a name="microsoft-threat-modeling-tool"></a>Microsoft Threat Modeling Tool
 
@@ -34,9 +35,9 @@ Az eszköz a következőket teszi lehetővé:
 
 ## <a name="next-steps"></a>További lépések
 
-Az alábbi táblázat a Threat Modeling Tool első lépéseihez tartalmaz fontos hivatkozásokat:
+Az alábbi táblázat fontos hivatkozásokat tartalmaz, amelyekkel elsajátíthatja a Threat Modeling Tool: lásd még: [rendszerkövetelmények](threat-modeling-tool-releases.md)
 
-| Lépés  | Description                                                                                   |
+| Lépés  | Leírás                                                                                   |
 | ----- | --------------------------------------------------------------------------------------------- |
 | **1** | [A Threat Modeling Tool letöltése](https://aka.ms/threatmodelingtool)                                |
 | **2** | [Olvassa el az első lépéseket ismertető útmutatót](threat-modeling-tool-getting-started.md)    |
@@ -44,7 +45,7 @@ Az alábbi táblázat a Threat Modeling Tool első lépéseihez tartalmaz fontos
 | **4** | [A generált veszélyforrások kategóriáinak megismerése](threat-modeling-tool-threats.md)   |
 | **5** | [A generált fenyegetések enyhítésének megkeresése](threat-modeling-tool-mitigations.md) |
 
-## <a name="resources"></a>Erőforrások
+## <a name="resources"></a>Források
 
 Íme néhány régebbi, a veszélyforrások modellezésével kapcsolatos cikk még ma:
 

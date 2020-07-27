@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 07/23/2020
 ms.author: allensu
 ms:custom: seodec18
-ms.openlocfilehash: e11113f34e7dbb9d659944bd29e101cee009668b
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 33c5db061860096b0411fbe91191f6c4a513e4c2
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/24/2020
-ms.locfileid: "87133146"
+ms.locfileid: "87172139"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-azure-powershell"></a>Gyors útmutató: nyilvános terheléselosztó létrehozása a virtuális gépek terheléselosztásához Azure PowerShell használatával
 
@@ -181,8 +181,6 @@ Terheléselosztó-szabály létrehozása az [Add-AzLoadBalancerRuleConfig](/powe
 * Elosztott terhelésű hálózati forgalom küldése a háttérbeli címkészlet **myBackEndPool** a 80-es **porton**keresztül. 
 * A Health mintavételi **myHealthProbe**használata.
 * **TCP**protokoll.
-* Engedélyezze a kimenő forrás hálózati címfordítást (SNAT) a előtérbeli IP-cím használatával.
-
 
 ```azurepowershell-interactive
 ## Variables for the command ##
@@ -193,11 +191,8 @@ $port = '80'
 ## $feip and $bePool are the variables from previous steps. ##
 
 $rule = 
-New-AzLoadBalancerRuleConfig -Name $lbr -Protocol $pro -Probe $probe -FrontendPort $port -BackendPort $port -FrontendIpConfiguration $feip -BackendAddressPool $bePool
+New-AzLoadBalancerRuleConfig -Name $lbr -Protocol $pro -Probe $probe -FrontendPort $port -BackendPort $port -FrontendIpConfiguration $feip -BackendAddressPool $bePool -DisableOutboundSNAT
 ```
-> [!NOTE]
-> A fenti parancs a terheléselosztó háttér-készletében lévő erőforrások kimenő kapcsolatát teszi lehetővé. A kimenő kapcsolatok speciális konfigurálásához tekintse meg a **[kimenő kapcsolatokat az Azure-ban](load-balancer-outbound-connections.md)** , és **[konfigurálja a terheléselosztást és a kimenő szabályokat standard Load BALANCER az Azure CLI használatával](configure-load-balancer-outbound-cli.md)**.
-
 
 ### <a name="create-load-balancer-resource"></a>Terheléselosztó erőforrás létrehozása
 
@@ -313,7 +308,7 @@ $ip3 = 'myVMPubIP3'
 $sku = 'Standard'
 $all = 'static'
 
-$RdpPubIP2 = 
+$RdpPubIP3 = 
 New-AzPublicIpAddress -Name $ip3 -ResourceGroupName $rg -Location $loc -SKU $sku -AllocationMethod $all
 ```
 
@@ -638,6 +633,191 @@ New-AzVM -ResourceGroupName $rg -Zone $zn -Location $loc -VM $vmConfig
 ```
 
 A három virtuális gép létrehozása és konfigurálása néhány percet vesz igénybe.
+
+## <a name="create-outbound-rule-configuration"></a>Kimenő szabály konfigurációjának létrehozása
+A terheléselosztó kimenő szabályai a háttér-készletben lévő virtuális gépek kimenő SNAT konfigurálása. 
+
+A kimenő kapcsolatokról a [Kimenő kapcsolatok az Azure-ban](load-balancer-outbound-connections.md)című témakörben olvashat bővebben.
+
+### <a name="create-outbound-public-ip-address"></a>Kimenő nyilvános IP-cím létrehozása
+
+A [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) használata a következőhöz:
+
+* Hozzon létre egy szabványos, redundáns nyilvános IP-címet a **myPublicIPOutbound**néven.
+* A **myresourcegrouplb erőforráscsoportban**.
+
+```azurepowershell-interactive
+## Variables for the command ##
+$rg = 'MyResourceGroupLB'
+$loc = 'eastus'
+$pubIP = 'myPublicIPOutbound'
+$sku = 'Standard'
+$all = 'static'
+
+$publicIp = 
+New-AzPublicIpAddress -ResourceGroupName $rg -Name $pubIP -Location $loc -AllocationMethod $all -SKU $sku
+```
+
+Ha egy nyilvános IP-címet szeretne létrehozni az 1. zónában, használja a következő parancsot:
+
+```azurepowershell-interactive
+## Variables for the command ##
+$rg = 'MyResourceGroupLB'
+$loc = 'eastus'
+$pubIP = 'myPublicIPOutbound'
+$sku = 'Standard'
+$all = 'static'
+
+$publicIp = 
+New-AzPublicIpAddress -ResourceGroupName $rg -Name $pubIP -Location $loc -AllocationMethod $all -SKU $sku -zone 1
+```
+### <a name="create-outbound-frontend-ip-configuration"></a>Kimenő előtéri IP-konfiguráció létrehozása
+
+Új előtér-IP-konfiguráció létrehozása az [Add-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/add-azloadbalancerfrontendipconfig):
+
+* Elnevezett **myFrontEndOutbound**.
+* Nyilvános IP- **myPublicIPOutbound**társítva.
+
+```azurepowershell-interactive
+## Variables for the command ##
+$fen = 'myFrontEndOutbound'
+
+## Get the load balancer configuration  and apply the frontend config##
+Get-AzLoadBalancer -Name $lbn -ResourceGroupName $rg | Add-AzLoadBalancerFrontendIPConfig -Name $fen -PublicIpAddress $publicIP | Set-AzLoadBalancer
+```
+
+### <a name="create-outbound-pool"></a>Kimenő készlet létrehozása
+
+Hozzon létre egy új kimenő készletet a [Add-AzLoadBalancerBackendAddressPoolConfig](/powershell/module/az.network/add-azloadbalancerbackendaddresspoolconfig). 
+
+Alkalmazza a készletet és a frontend IP-címét a terheléselosztó számára a [set-AzLoadBalancer](/powershell/module/az.network/set-azloadbalancer)::
+
+* Elnevezett **myBackEndPoolOutbound**.
+
+```azurepowershell-interactive
+## Variables for the command ##
+$ben = 'myBackEndPoolOutbound'
+$lbn = 'myLoadBalancer'
+$rg = 'myResourceGroupLB'
+
+## Get the load balancer configuration and create the outbound backend address pool##
+Get-AzLoadBalancer -Name $lbn -ResourceGroupName $rg | Add-AzLoadBalancerBackendAddressPoolConfig -Name $ben | Set-AzLoadBalancer
+```
+### <a name="create-outbound-rule-and-apply-to-load-balancer"></a>Kimenő szabály létrehozása és alkalmazása a terheléselosztó számára
+
+Hozzon létre egy új kimenő szabályt a kimenő háttérrendszer-készlethez az [Add-AzLoadBalancerOutboundRuleConfig](/powershell/module/az.network/new-azloadbalanceroutboundruleconfig). 
+
+Alkalmazza a szabályt a terheléselosztó számára a [set-AzLoadBalancer](/powershell/module/az.network/set-azloadbalancer):
+
+* Elnevezett **myOutboundRule**.
+* A terheléselosztó **myLoadBalancer**van társítva.
+* A frontend **myFrontEndOutbound**van társítva.
+* **Minden**protokoll.
+* A **15**üresjárati időkorlátja.
+* **10000** kimenő portok.
+* A háttér-készlet **myBackEndPoolOutbound**van társítva.
+* Az erőforráscsoport **myresourcegrouplb erőforráscsoportban**.
+
+```azurepowershell-interactive
+## Variables for the commands ##
+$rg = 'myResourceGroupLB'
+$lbn = 'myLoadBalancer'
+$brn = 'myOutboundRule'
+$pro = 'All'
+$idl = '15'
+$por = '10000'
+
+## Get the load balancer configuration ##
+$lb = 
+Get-AzLoadBalancer -Name $lbn -ResourceGroupName $rg 
+
+## Apply the outbound rule configuration to the load balancer. ##
+$lb | Add-AzLoadBalancerOutBoundRuleConfig -Name $brn -FrontendIPConfiguration $lb.FrontendIpConfigurations[1] -BackendAddressPool $lb.BackendAddressPools[1] -Protocol $pro -IdleTimeoutInMinutes $idl -AllocatedOutboundPort $por | Set-AzLoadBalancer
+```
+
+### <a name="add-virtual-machines-to-outbound-pool"></a>Virtuális gépek hozzáadása a kimenő készlethez
+
+Adja hozzá a virtuálisgép-hálózati adaptereket a terheléselosztó kimenő készletéhez az [Add-AzNetworkInterfaceIpConfig](/powershell/module/az.network/add-aznetworkinterfaceipconfig)használatával:
+
+
+#### <a name="vm1"></a>VM1
+* A háttérbeli címkészlet **myBackEndPoolOutbound**.
+* Az erőforráscsoport **myresourcegrouplb erőforráscsoportban**.
+* A hálózati adapter **myNicVM1** és **ipconfig1**van társítva.
+* A terheléselosztó **myLoadBalancer**van társítva.
+
+```azurepowershell-interactive
+## Variables for the commands ##
+$rg = 'myResourceGroupLB'
+$lbn = 'myLoadBalancer'
+$bep = 'myBackEndPoolOutbound'
+$nic1 = 'myNicVM1'
+$ipc = 'ipconfig1'
+
+## Get the load balancer configuration ##
+$lb = 
+Get-AzLoadBalancer -Name $lbn -ResourceGroupName $rg
+
+## Get the network interface configuration ##
+$nic = 
+Get-AzNetworkInterface -Name $nic1 -ResourceGroupName $rg
+
+## Apply the backend to the network interface ##
+$nic | Set-AzNetworkInterfaceIpConfig -Name $ipc -LoadBalancerBackendAddressPoolId $lb.BackendAddressPools[1].id | Set-AzNetworkInterface
+```
+
+#### <a name="vm2"></a>VM2
+* A háttérbeli címkészlet **myBackEndPoolOutbound**.
+* Az erőforráscsoport **myresourcegrouplb erőforráscsoportban**.
+* A hálózati adapter **myNicVM2** és **ipconfig1**van társítva.
+* A terheléselosztó **myLoadBalancer**van társítva.
+
+```azurepowershell-interactive
+## Variables for the commands ##
+$rg = 'myResourceGroupLB'
+$lbn = 'myLoadBalancer'
+$bep = 'myBackEndPoolOutbound'
+$nic2 = 'myNicVM2'
+$ipc = 'ipconfig1'
+
+## Get the load balancer configuration ##
+$lb = 
+Get-AzLoadBalancer -Name $lbn -ResourceGroupName $rg
+
+## Get the network interface configuration ##
+$nic = 
+Get-AzNetworkInterface -Name $nic2 -ResourceGroupName $rg
+
+## Apply the backend to the network interface ##
+$nic | Set-AzNetworkInterfaceIpConfig -Name $ipc -LoadBalancerBackendAddressPoolId $lb.BackendAddressPools[1].id | Set-AzNetworkInterface
+```
+
+#### <a name="vm3"></a>VM3
+* A háttérbeli címkészlet **myBackEndPoolOutbound**.
+* Az erőforráscsoport **myresourcegrouplb erőforráscsoportban**.
+* A hálózati adapter **myNicVM3** és **ipconfig1**van társítva.
+* A terheléselosztó **myLoadBalancer**van társítva.
+
+```azurepowershell-interactive
+## Variables for the commands ##
+$rg = 'myResourceGroupLB'
+$lbn = 'myLoadBalancer'
+$bep = 'myBackEndPoolOutbound'
+$nic3 = 'myNicVM3'
+$ipc = 'ipconfig1'
+
+## Get the load balancer configuration ##
+$lb = 
+Get-AzLoadBalancer -Name $lbn -ResourceGroupName $rg
+
+## Get the network interface configuration ##
+$nic = 
+Get-AzNetworkInterface -Name $nic3 -ResourceGroupName $rg
+
+## Apply the backend to the network interface ##
+$nic | Set-AzNetworkInterfaceIpConfig -Name $ipc -LoadBalancerBackendAddressPoolId $lb.BackendAddressPools[1].id | Set-AzNetworkInterface
+
+```
 
 # <a name="option-2-create-a-load-balancer-basic-sku"></a>[2. lehetőség: terheléselosztó létrehozása (alapszintű SKU)](#tab/option-1-create-load-balancer-basic)
 
@@ -1268,7 +1448,7 @@ Telepítse az IIS-t egy egyéni weboldallal mindkét háttérbeli virtuális gé
 5. Az RDP-kapcsolatok lezárása a **myVM1**, a **MyVM2**és a **myVM3**.
 
 
-## <a name="test-load-balancer"></a>Terheléselosztó tesztelése
+## <a name="test-the-load-balancer"></a>A terheléselosztó tesztelése
 A terheléselosztó nyilvános IP-címének lekéréséhez használja a [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress):
 
 * Elnevezett **myPublicIP**
@@ -1286,7 +1466,7 @@ Másolja a nyilvános IP-címet, majd illessze be a böngésző címsorába.
 
 ![Terheléselosztó tesztelése](media/quickstart-create-basic-load-balancer-powershell/load-balancer-test.png)
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs rá szükség, a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) paranccsal eltávolítható az erőforráscsoport, a terheléselosztó és az összes 
 

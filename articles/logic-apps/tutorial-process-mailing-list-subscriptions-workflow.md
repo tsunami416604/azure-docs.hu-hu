@@ -3,16 +3,16 @@ title: Jóváhagyási alapú automatizált munkafolyamatok létrehozása
 description: Oktatóanyag – jóváhagyási alapú automatikus munkafolyamat létrehozása, amely a levelezőlista-előfizetéseket dolgozza fel Azure Logic Apps használatával
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: logicappspm
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/20/2019
-ms.openlocfilehash: c1ed32a95864c20690607912bc32c01e3e597a65
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d9d2f29ffc34c203e5f3b3ebf094e73fb9cdfb75
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87048602"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132398"
 ---
 # <a name="tutorial-create-automated-approval-based-workflows-by-using-azure-logic-apps"></a>Oktatóanyag: automatikus jóváhagyási alapú munkafolyamatok létrehozása Azure Logic Apps használatával
 
@@ -21,6 +21,7 @@ Ez az oktatóanyag bemutatja, hogyan hozhat létre egy olyan [logikai alkalmazá
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
+>
 > * Üres logikai alkalmazás létrehozása.
 > * Trigger hozzáadása az e-mailes feliratkozási kérelmek monitorozására.
 > * Művelet hozzáadása, amely elküldi az e-mailes kérelmeket jóváhagyásra vagy elutasításra.
@@ -41,11 +42,9 @@ Az elkészült logikai alkalmazás nagyjából a következő munkafolyamathoz ha
 
 * Egy e-mail-fiók az Office 365 Outlook vagy Outlook.com, amely támogatja a jóváhagyási munkafolyamatokat. Ez a cikk az Office 365 Outlookot használja. Ha más e-mail-fiókot használ, az általános lépések ugyanazok, a felhasználói felület azonban némiképp eltérhet.
 
-## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
-
-Jelentkezzen be az [Azure Portalra](https://portal.azure.com) az Azure-fiókja hitelesítő adataival.
-
 ## <a name="create-your-logic-app"></a>A logikai alkalmazás létrehozása
+
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) az Azure-fiókja hitelesítő adataival.
 
 1. Az Azure fő menüjében válassza az **erőforrás létrehozása**  >  **integrációs**  >  **logikai alkalmazás**lehetőséget.
 
@@ -205,9 +204,9 @@ Most adjon hozzá egy műveletet, amely hozzáadja a jóváhagyott tagot a level
 
    | Tulajdonság | Kötelező | Érték | Leírás |
    |----------|----------|-------|-------------|
-   | **Listaazonosító** | Yes | `test-members-ML` | A MailChimp levelezési lista neve. Ez a példa a "test-Members-ML" kifejezést használja. |
-   | **Állapot** | Yes | `subscribed` | Válassza ki az új tag előfizetési állapotát. Ez a példa az "előfizetett" kifejezést használja. <p>További információ: [Feliratkozók kezelése a MailChimp API-val](https://developer.mailchimp.com/documentation/mailchimp/guides/manage-subscribers-with-the-mailchimp-api/). |
-   | **E-mail-cím** | Yes | <*új tag – e-mail-cím*> | A dinamikus tartalmak listájából **válassza ki az** új **üzenet érkezésekor**lehetőséget, amely az új tag e-mail-címét adja meg. |
+   | **Listaazonosító** | Igen | `test-members-ML` | A MailChimp levelezési lista neve. Ez a példa a "test-Members-ML" kifejezést használja. |
+   | **Állapot** | Igen | `subscribed` | Válassza ki az új tag előfizetési állapotát. Ez a példa az "előfizetett" kifejezést használja. <p>További információ: [Feliratkozók kezelése a MailChimp API-val](https://developer.mailchimp.com/documentation/mailchimp/guides/manage-subscribers-with-the-mailchimp-api/). |
+   | **E-mail-cím** | Igen | <*új tag – e-mail-cím*> | A dinamikus tartalmak listájából **válassza ki az** új **üzenet érkezésekor**lehetőséget, amely az új tag e-mail-címét adja meg. |
    ||||
 
    További információ a művelet tulajdonságairól: [MailChimp-összekötő leírása](/connectors/mailchimp/).
@@ -260,9 +259,9 @@ Ezután állítsa be az elküldendő e-maileket, amelyek arról értesítik, hog
 
    | Tulajdonság | Kötelező | Érték | Leírás |
    |----------|----------|-------|-------------|
-   | **Hogy** | Yes | <*saját e-mail cím*> | Az e-mail-cím, amelyre a sikeres műveletet jelző e-mail érkezik. Tesztelési célokra használhatja a saját e-mail-címét. |
-   | **Tárgy** | Yes | <*tulajdonos – siker – e-mail*> | A sikeres műveletet jelző e-mail tárgya. Ebben az oktatóanyagban adja meg a következő szöveget: <p>`Success! Member added to "test-members-ML": ` <p>A dinamikus tartalom listából válassza ki az **E-mail cím** tulajdonságot a **tag hozzáadása a listához**területen. |
-   | **Törzs** | Yes | <*törzs a sikerhez – e-mail*> | A sikeres műveletet jelző e-mail szövegtörzse. Ebben az oktatóanyagban adja meg a következő szöveget: <p>`New member has joined "test-members-ML":` <p>A dinamikus tartalom listából válassza ki az **E-mail cím** tulajdonságot. <p>A következő sorban adja meg ezt a szöveget:`Member opt-in status: ` <p> A dinamikus tartalom listából válassza ki az **állapot** tulajdonságot a **tag hozzáadása a listához**területen. |
+   | **Hogy** | Igen | <*saját e-mail cím*> | Az e-mail-cím, amelyre a sikeres műveletet jelző e-mail érkezik. Tesztelési célokra használhatja a saját e-mail-címét. |
+   | **Tárgy** | Igen | <*tulajdonos – siker – e-mail*> | A sikeres műveletet jelző e-mail tárgya. Ebben az oktatóanyagban adja meg a következő szöveget: <p>`Success! Member added to "test-members-ML": ` <p>A dinamikus tartalom listából válassza ki az **E-mail cím** tulajdonságot a **tag hozzáadása a listához**területen. |
+   | **Törzs** | Igen | <*törzs a sikerhez – e-mail*> | A sikeres műveletet jelző e-mail szövegtörzse. Ebben az oktatóanyagban adja meg a következő szöveget: <p>`New member has joined "test-members-ML":` <p>A dinamikus tartalom listából válassza ki az **E-mail cím** tulajdonságot. <p>A következő sorban adja meg ezt a szöveget:`Member opt-in status: ` <p> A dinamikus tartalom listából válassza ki az **állapot** tulajdonságot a **tag hozzáadása a listához**területen. |
    |||||
 
 1. Mentse a logikai alkalmazást.
@@ -285,9 +284,9 @@ Ezután állítsa be az elküldendő e-maileket, amelyek arról értesítik, hog
 
    | Tulajdonság | Kötelező | Érték | Leírás |
    |----------|----------|-------|-------------|
-   | **Hogy** | Yes | <*saját e-mail cím*> | Az e-mail-cím, amelyre a sikertelen műveletet jelző e-mail érkezik. Tesztelési célokra használhatja a saját e-mail-címét. |
-   | **Tárgy** | Yes | <*hiba tárgya – e-mail*> | A sikertelen műveletet jelző e-mail tárgya. Ebben az oktatóanyagban adja meg a következő szöveget: <p>`Failed, member not added to "test-members-ML": ` <p>A dinamikus tartalom listából válassza ki az **E-mail cím** tulajdonságot a **tag hozzáadása a listához**területen. |
-   | **Törzs** | Yes | <*törzs – hiba – e-mail*> | A sikertelen műveletet jelző e-mail szövegtörzse. Ebben az oktatóanyagban adja meg a következő szöveget: <p>`Member might already exist. Check your MailChimp account.` |
+   | **Hogy** | Igen | <*saját e-mail cím*> | Az e-mail-cím, amelyre a sikertelen műveletet jelző e-mail érkezik. Tesztelési célokra használhatja a saját e-mail-címét. |
+   | **Tárgy** | Igen | <*hiba tárgya – e-mail*> | A sikertelen műveletet jelző e-mail tárgya. Ebben az oktatóanyagban adja meg a következő szöveget: <p>`Failed, member not added to "test-members-ML": ` <p>A dinamikus tartalom listából válassza ki az **E-mail cím** tulajdonságot a **tag hozzáadása a listához**területen. |
+   | **Törzs** | Igen | <*törzs – hiba – e-mail*> | A sikertelen műveletet jelző e-mail szövegtörzse. Ebben az oktatóanyagban adja meg a következő szöveget: <p>`Member might already exist. Check your MailChimp account.` |
    |||||
 
 1. Mentse a logikai alkalmazást. 
@@ -318,7 +317,7 @@ Következő lépésként tesztelje a logikai alkalmazást, amely most az alábbi
 
 Gratulálunk, sikeresen létrehozott és futtatott egy logikai alkalmazást, amely adatokat integrál különböző Azure- és Microsoft-szolgáltatások, illetve egyéb SaaS-alkalmazások között.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs szüksége a minta logikai alkalmazásra, törölje a logikai alkalmazást és a kapcsolódó erőforrásokat tartalmazó erőforráscsoportot. 
 

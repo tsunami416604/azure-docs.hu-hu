@@ -5,15 +5,15 @@ author: lfittl-msft
 ms.author: lufittl
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 01/22/2019
-ms.openlocfilehash: 12316abd4a738d54e01f88873498e4b299d6053d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/23/2020
+ms.openlocfilehash: 942789d5541e796247af2dbdf9371cce4701105e
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85556364"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171903"
 ---
-# <a name="use-azure-active-directory-for-authenticating-with-mysql"></a>Azure Active Directory használata a MySQL-sel való hitelesítéshez
+# <a name="use-azure-active-directory-for-authenticating-with-mysql"></a>Az Azure Active Directory használata a MySQL-lel történő hitelesítéshez
 
 A Microsoft Azure Active Directory (Azure AD) hitelesítés az Azure AD-ben meghatározott identitásokkal való Azure Database for MySQL csatlakozáshoz használt mechanizmus.
 Az Azure AD-hitelesítéssel egy központi helyen kezelheti az adatbázis-felhasználói identitásokat és más Microsoft-szolgáltatásokat, ami leegyszerűsíti az engedélyek kezelését.

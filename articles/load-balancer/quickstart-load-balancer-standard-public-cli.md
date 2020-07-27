@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 07/20/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: f8da00e531a9712b7bbb459378e3c0448e3c028f
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 40af7a7d3bcc4584260735ddbcbf84ac0936ce15
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131514"
+ms.locfileid: "87172103"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-azure-cli"></a>Rövid útmutató: Nyilvános Load Balancer létrehozása a virtuális gépek terhelésének elosztásához az Azure CLI használatával
 
@@ -504,14 +504,14 @@ Adja hozzá a virtuálisgép-hálózati adaptereket a terheléselosztó kimenő 
 #### <a name="vm1"></a>VM1
 * A háttérbeli címkészlet **myBackEndPoolOutbound**.
 * Az erőforráscsoport **myresourcegrouplb erőforráscsoportban**.
-* A hálózati adapter **myVMNic1** és **ipconfig1**van társítva.
+* A hálózati adapter **myNicVM1** és **ipconfig1**van társítva.
 * A terheléselosztó **myLoadBalancer**van társítva.
 
 ```azurecli-interactive
   az network nic ip-config address-pool add \
    --address-pool myBackendPoolOutbound \
    --ip-config-name ipconfig1 \
-   --nic-name myVMNic1 \
+   --nic-name myNicVM1 \
    --resource-group myResourceGroupLB \
    --lb-name myLoadBalancer
 ```
@@ -519,14 +519,14 @@ Adja hozzá a virtuálisgép-hálózati adaptereket a terheléselosztó kimenő 
 #### <a name="vm2"></a>VM2
 * A háttérbeli címkészlet **myBackEndPoolOutbound**.
 * Az erőforráscsoport **myresourcegrouplb erőforráscsoportban**.
-* A hálózati adapter **myVMNic2** és **ipconfig1**van társítva.
+* A hálózati adapter **myNicVM2** és **ipconfig1**van társítva.
 * A terheléselosztó **myLoadBalancer**van társítva.
 
 ```azurecli-interactive
   az network nic ip-config address-pool add \
    --address-pool myBackendPoolOutbound \
    --ip-config-name ipconfig1 \
-   --nic-name myVMNic2 \
+   --nic-name myNicVM2 \
    --resource-group myResourceGroupLB \
    --lb-name myLoadBalancer
 ```
@@ -534,14 +534,14 @@ Adja hozzá a virtuálisgép-hálózati adaptereket a terheléselosztó kimenő 
 #### <a name="vm3"></a>VM3
 * A háttérbeli címkészlet **myBackEndPoolOutbound**.
 * Az erőforráscsoport **myresourcegrouplb erőforráscsoportban**.
-* A hálózati adapter **myVMNic3** és **ipconfig1**van társítva.
+* A hálózati adapter **myNicVM3** és **ipconfig1**van társítva.
 * A terheléselosztó **myLoadBalancer**van társítva.
 
 ```azurecli-interactive
   az network nic ip-config address-pool add \
    --address-pool myBackendPoolOutbound \
    --ip-config-name ipconfig1 \
-   --nic-name myVMNic3 \
+   --nic-name myNicVM3 \
    --resource-group myResourceGroupLB \
    --lb-name myLoadBalancer
 ```
@@ -932,7 +932,7 @@ Másolja a nyilvános IP-címet, majd illessze be a böngésző címsorába.
 ```
 :::image type="content" source="./media/load-balancer-standard-public-cli/running-nodejs-app.png" alt-text="A terheléselosztó tesztelése" border="true":::
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs rá szükség, az az [Group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) paranccsal távolítsa el az erőforráscsoportot, a Load balancert és az összes kapcsolódó erőforrást.
 

@@ -25,6 +25,11 @@
       href: extension-resource-types.md
     - name: Erőforráspéldányra vonatkozó korlátozás
       href: resources-without-resource-group-limit.md
+    - name: Biztonság
+      items:
+        - name: Az Azure Policy biztonsági vezérlői
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
 - name: Útmutató
   items:
     - name: Áthelyezés – erőforráscsoportok/előfizetések

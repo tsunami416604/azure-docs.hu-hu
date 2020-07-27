@@ -1,20 +1,20 @@
 ---
 title: 'Oktatóanyag: elektromos járművek irányítása Azure Notebooks (Python) használatával | Microsoft Azure térképek'
 description: Az elektromos járművek átirányítása Microsoft Azure Maps útválasztási API-k és Azure Notebooks használatával.
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, tracking-python
-ms.openlocfilehash: 32a3ec0caae303c37cad771b2bbbd1b7840512a9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f341179d121af2fa4e5b198aeee2ea65bc6c378c
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075434"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87133316"
 ---
 # <a name="tutorial-route-electric-vehicles-by-using-azure-notebooks-python"></a>Oktatóanyag: elektromos járművek átirányítása Azure Notebooks használatával (Python)
 
@@ -62,7 +62,7 @@ Ennek az oktatóanyagnak a követéséhez létre kell hoznia egy Azure notebook-
  
     ![Az új projekt létrehozása panel](./media/tutorial-ev-routing/create-project-window.png)
 
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
 1. A projekt létrehozása után töltse le ezt a [Jupyter notebook-dokumentumot](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/blob/master/AzureMapsJupyterSamples/Tutorials/EV%20Routing%20and%20Reachable%20Range/EVrouting.ipynb) a [Azure Maps Jupyter notebook-tárházból](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook).
 

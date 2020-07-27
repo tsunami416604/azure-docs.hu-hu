@@ -8,16 +8,17 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: cherylmc
-ms.openlocfilehash: 4949d5f2621957d6830625fe798601db4472a75d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 8c52b2141d2f29303939facf89d4a59fb3d333fd
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87064907"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171882"
 ---
 # <a name="about-virtual-hub-routing"></a>Információ a virtuális központ útválasztásáról
 
-A virtuális központ útválasztási funkcióit egy olyan útválasztó biztosítja, amely az átjárók közötti összes útválasztást felügyeli Border Gateway Protocol (BGP) használatával. A virtuális központ több átjárót is tartalmazhat, például a helyek közötti VPN-átjárót, a ExpressRoute átjárót, a pont – hely átjárót Azure Firewall. Ez az útválasztó a virtuális hubhoz csatlakozó virtuális hálózatok közötti átviteli kapcsolatot is biztosít, amely akár 50 GB/s-os összesített átviteli sebességet is képes támogatni. Ezek az útválasztási képességek a szabványos virtuális WAN-ügyfelekre vonatkoznak.
+A virtuális központ útválasztási funkcióit egy olyan útválasztó biztosítja, amely az átjárók közötti összes útválasztást felügyeli Border Gateway Protocol (BGP) használatával. A virtuális központ több átjárót is tartalmazhat, például a helyek közötti VPN-átjárót, a ExpressRoute átjárót, a pont – hely átjárót Azure Firewall. Ez az útválasztó a virtuális hubhoz csatlakozó virtuális hálózatok közötti átviteli kapcsolatot is biztosít, amely akár 50 GB/s-os összesített átviteli sebességet is képes támogatni. Ezek az útválasztási képességek a szabványos virtuális WAN-ügyfelekre vonatkoznak. 
 
 Az Útválasztás konfigurálásával kapcsolatban lásd: [a virtuális központ útválasztásának konfigurálása](how-to-virtual-hub-routing.md).
 
@@ -79,6 +80,15 @@ Az útválasztási táblák mostantól társítási és propagálási funkciókk
 Az útválasztási táblázat új funkcióinak használatához várjon, amíg az Azure-ba való bevezetéshez a 3. augusztusi hét befejeződik. Ha az Útválasztás szakaszban már meglévő útvonalak találhatók a Azure Portal található hubhoz, először törölnie kell őket, majd újra létre kell hoznia az új útválasztási táblákat (az útválasztási táblák szakaszban érhető el Azure Portal)
 
 * **Alapszintű virtuális WAN-ügyfelek meglévő útvonalakkal a Virtual hub-ban**: az útválasztási táblázat új funkcióinak használatához várjon, amíg az Azure-ba való bevezetéshez a 3. augusztusi hét befejeződik. Ha az Útválasztás szakaszban már meglévő útvonalak találhatók a Azure Portal található hubhoz, először törölnie kell őket, majd **frissítenie** kell az alapszintű virtuális WAN-t a standard virtuális WAN-ra. Lásd: [virtuális WAN frissítése alapszintről standard verzióra](upgrade-virtual-wan.md).
+
+## <a name="virtual-wan-routing-considerations"></a><a name="considerations"></a>A virtuális WAN útválasztási szempontjai
+
+Virtuális WAN-útválasztás konfigurálásakor vegye figyelembe a következőket:
+
+* Az összes ág-kapcsolatot (pont – hely, hely – hely és ExpressRoute) társítani kell az alapértelmezett útválasztási táblázathoz. Így az összes ág ugyanazokat az előtagokat fogja megtanulni.
+* Az összes ág-kapcsolatnak az útvonalakat ugyanabba az útválasztási táblákba kell terjesztenie. Ha például úgy dönt, hogy az ágaknak az alapértelmezett útválasztási táblázatba kell terjeszteniük, akkor ennek a konfigurációnak konzisztensnek kell lennie az összes ág között. Ennek eredményeképpen az alapértelmezett útválasztási táblázathoz társított összes kapcsolat elérheti az összes ágát.
+* Azure Firewall jelenleg nem támogatott ág – ág.
+* Ha több régióban Azure Firewall használ, az összes küllős virtuális hálózatot ugyanahhoz az útválasztási táblához kell társítani. Ha például a virtuális hálózatok egy részhalmaza lesz a Azure Firewallon, míg más virtuális hálózatok megkerüli a Azure Firewall ugyanabban a virtuális központban nem lehetséges.
 
 ## <a name="next-steps"></a>További lépések
 

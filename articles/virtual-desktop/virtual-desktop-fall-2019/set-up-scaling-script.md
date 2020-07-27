@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 442dfc1667027bd39b138d59a28542138cc4a1ca
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 690f59c643f1fe8c8cfc74758a0f8f13b129f78a
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87085956"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87172065"
 ---
 # <a name="scale-session-hosts-using-azure-automation"></a>A munkamenet-gazdagépek méretezése Azure Automation használatával
 
@@ -60,10 +60,10 @@ Az eszköz azonban a következő korlátozásokkal is rendelkezik:
 
 - Ez a megoldás csak a készletezett, több munkamenetet futtató munkamenet-gazda virtuális gépekre vonatkozik.
 - Ez a megoldás bármely régióban felügyeli a virtuális gépeket, de csak az Azure Automation-fiókkal és az Azure Logic App-alkalmazással megegyező előfizetésben használható.
-- A runbook-feladatok maximális futtatókörnyezete 3 óra. Ha a gazdagépen lévő virtuális gépek elindítása vagy leállítása hosszabb időt vesz igénybe, a feladat sikertelen lesz. További részletekért lásd: [megosztott erőforrások](../../automation/automation-runbook-execution.md#fair-share)
+- A runbook-feladatok maximális futtatókörnyezete 3 óra. Ha a gazdagépen lévő virtuális gépek elindítása vagy leállítása hosszabb időt vesz igénybe, a feladat sikertelen lesz. További részletekért tekintse meg a [megosztott erőforrások](../../automation/automation-runbook-execution.md#fair-share)című témakört.
 
 >[!NOTE]
->A skálázási eszköz szabályozza a skálázási készlet terheléselosztási módját. Ez a beállítás az első terheléselosztást adja meg a csúcs és a maximum óra között.
+>A skálázási eszköz szabályozza a jelenleg méretezés alatt álló gazdagép terheléselosztási módját. Az eszköz a szélesség – első terheléselosztási módot használja mind a csúcs-, mind a kétórás időpontra.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -140,7 +140,7 @@ Most, hogy már rendelkezik egy Azure Automation fiókkal, létre kell hoznia eg
 
 Egy [Azure Automation futtató fiók](../../automation/manage-runas-account.md) hitelesítést biztosít az Azure-beli erőforrások Azure-parancsmagokkal való kezeléséhez. Amikor létrehoz egy futtató fiókot, létrehoz egy új egyszerű szolgáltatásnevet a Azure Active Directoryban, és hozzárendeli a közreműködői szerepkört az egyszerű szolgáltatásnév-felhasználóhoz az előfizetés szintjén. Az Azure-beli futtató fiókok segítségével biztonságosan hitelesítheti a tanúsítványokat és az egyszerű szolgáltatásnév nevét anélkül, hogy a Felhasználónév és a Jelszó tárolása a hitelesítőadat-objektumban megtörténjen. További információ a futtató fiók hitelesítéséről: a [futtató fiók engedélyeinek korlátozása](../../automation/manage-runas-account.md#limit-run-as-account-permissions).
 
-Minden olyan felhasználó, aki tagja az előfizetés-adminisztrátorok szerepkörnek, és az előfizetés rendszergazdája, a következő szakasz utasításait követve hozhat létre futtató fiókot.
+Minden olyan felhasználó, aki tagja az előfizetés-adminisztrátorok szerepkörnek, és az előfizetés rendszergazdája is létrehozhat egy futtató fiókot.
 
 Futtató fiók létrehozása a Azure Automation fiókban:
 

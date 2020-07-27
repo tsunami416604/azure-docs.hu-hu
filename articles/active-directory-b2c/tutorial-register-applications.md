@@ -12,12 +12,12 @@ ms.date: 04/10/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b7164aa71495100d7be4f1c0f6ef6de90644831b
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: 0f3ecb918aa1f830edeafbe57b365441e1e534f4
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87115969"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87169330"
 ---
 # <a name="tutorial-register-a-web-application-in-azure-active-directory-b2c"></a>Oktatóanyag: webalkalmazás regisztrálása a Azure Active Directory B2Cban
 
@@ -31,7 +31,7 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 Ha inkább natív alkalmazást használ (például iOS, Android, Mobile & Desktop), Ismerje meg, [Hogyan regisztrálhat egy natív ügyfélalkalmazás](add-native-application.md).
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -63,7 +63,7 @@ Az alkalmazások Azure AD B2C-bérlőben való regisztrálásához használhatja
 
 Az alkalmazás regisztrációjának befejezése után engedélyezze az implicit engedélyezési folyamatot:
 
-1. A **kezelés**területen válassza a **hitelesítés**lehetőséget.
+1. A bal oldali menüben kattintson a **kezelés**elemre, majd válassza a **hitelesítés**lehetőséget.
 1. Az **implicit engedélyezés**területen jelölje be a **hozzáférési jogkivonatok** és az **azonosító tokenek** jelölőnégyzetet.
 1. Válassza a **Mentés** lehetőséget.
 
@@ -96,7 +96,7 @@ Ha az alkalmazás egy hozzáférési jogkivonat engedélyezési kódját cserél
 #### <a name="app-registrations"></a>[Alkalmazásregisztrációk](#tab/app-reg-ga/)
 
 1. A **Azure ad B2C-Alkalmazásregisztrációk** lapon válassza ki a létrehozott alkalmazást, például *webapp1*.
-1. A **kezelés**területen válassza a **tanúsítványok & Secrets**elemet.
+1. A bal oldali menüben kattintson a **kezelés**elemre, majd válassza a **tanúsítványok & Secrets**elemet.
 1. Válassza az **Új titkos ügyfélkód** lehetőséget.
 1. Adja meg az ügyfél titkos kódjának leírását a **Leírás** mezőben. Például: *clientsecret1*.
 1. A **lejárat**szakaszban válassza ki azt az időtartamot, amelynek a titka érvényes, majd válassza a **Hozzáadás**lehetőséget.
