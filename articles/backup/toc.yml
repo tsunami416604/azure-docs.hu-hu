@@ -89,6 +89,8 @@
           href: backup-azure-monitor-alert-faq.md
     - name: Biztonsági mentési architektúra
       href: backup-architecture.md
+    - name: Útmutatás és ajánlott eljárások
+      href: guidance-best-practices.md
 - name: Útmutatók
   items:
     - name: Recovery Services-tároló
@@ -375,6 +377,9 @@
           href: encryption-at-rest-with-cmk.md
         - name: Beépített biztonsági vezérlők
           href: backup-security-controls.md
+        - name: Az Azure Policy biztonsági vezérlői
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
         - name: Biztonsági alapkonfiguráció
           href: security-baseline.md
     - name: Hibaelhárítás

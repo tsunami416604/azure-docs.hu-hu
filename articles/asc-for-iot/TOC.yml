@@ -5,6 +5,8 @@
   items:
     - name: Megoldásarchitektúra
       href: architecture.md
+    - name: Biztonsági megoldás az Azure RTOS-hez
+      href: iot-security-azure-rtos.md
     - name: Biztonsági ügynökök
       href: security-agent-architecture.md
     - name: Biztonsági Edge-modul
@@ -53,9 +55,9 @@
       items:
         - name: Üzembe helyezendő ügynök kiválasztása
           href: how-to-deploy-agent.md
-        - name: 'C#-alapú biztonsági ügynök üzembe helyezése Windows-eszközön'
+        - name: C#-alapú biztonsági ügynök üzembe helyezése Windows-eszközön
           href: how-to-deploy-windows-cs.md
-        - name: 'C#-alapú biztonsági ügynök üzembe helyezése Linux-eszközön'
+        - name: C#-alapú biztonsági ügynök üzembe helyezése Linux-eszközön
           href: how-to-deploy-linux-cs.md
         - name: C-alapú biztonsági ügynök üzembe helyezése Linux-eszközön
           href: how-to-deploy-linux-c.md
@@ -65,7 +67,7 @@
           href: troubleshoot-agent.md
         - name: Helyi konfiguráció – C
           href: azure-iot-security-local-configuration-c.md
-        - name: 'Helyi konfiguráció – C#'
+        - name: Helyi konfiguráció – C#
           href: azure-iot-security-local-configuration-csharp.md
     - name: Biztonsági Edge-modul üzembe helyezése
       href: how-to-deploy-edge.md

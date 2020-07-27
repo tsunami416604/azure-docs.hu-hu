@@ -60,6 +60,8 @@
         - name: A Marketplace-ből származó előnyei
           href: ./gtm-your-marketplace-benefits.md
           items:
+            - name: Az Azure-beli használati kötelezettségvállalás előnyei
+              href: ./azure-consumption-commitment-benefit.md
             - name: Együttes értékesítési partnerek bevonása
               href: ./marketplace-co-sell.md
             - name: Előnyben részesített megoldások

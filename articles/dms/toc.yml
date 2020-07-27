@@ -59,6 +59,10 @@
           href: tutorial-postgresql-azure-postgresql-online-portal.md
         - name: az Azure DB for PostgreSQL-be (Az CLI)
           href: tutorial-postgresql-azure-postgresql-online.md
+    - name: Azure DB for PostgreSQL migrálása – egyetlen kiszolgáló
+      items:
+        - name: az Azure DB for PostgreSQL-be (portál)
+          href: tutorial-azure-postgresql-to-azure-postgresql-online-portal.md
     - name: RDS PostgreSQL migrálása
       items:
         - name: az Azure DB for PostgreSQL-be

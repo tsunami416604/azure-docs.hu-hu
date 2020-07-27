@@ -59,13 +59,15 @@
     - name: Felkészülés
       items:
         - name: Gyorsítótárszint kiválasztása
-          href: 'cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use'
+          href: cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use
         - name: A gyorsítótár elosztása klaszterezéssel
           href: cache-how-to-premium-clustering.md
         - name: A gyorsítótár megőrzése a Redis adatmegőrzési funkciójával
           href: cache-how-to-premium-persistence.md
         - name: A gyorsítótár védelme virtuális hálózattal
           href: cache-how-to-premium-vnet.md
+        - name: Privát csatlakozás gyorsítótárhoz
+          href: cache-private-link.md
         - name: Georeplikáció beállítása
           href: cache-how-to-geo-replication.md
         - name: Mentés lefoglalt kapacitással
@@ -101,9 +103,9 @@
         - name: Adatok importálása és exportálása
           href: cache-how-to-import-export-data.md
         - name: Újraindítás
-          href: 'cache-administration.md#reboot'
+          href: cache-administration.md#reboot
         - name: Frissítések ütemezése
-          href: 'cache-administration.md#schedule-updates'
+          href: cache-administration.md#schedule-updates
         - name: A redis-cli.exe hozzáférésének konfigurálása
           href: cache-how-to-redis-cli-tool.md
         - name: A TLS 1.0 és 1.1 eltávolítása
@@ -113,7 +115,7 @@
         - name: Monitorozás az Azure Portalon
           href: cache-how-to-monitor.md
         - name: Riasztások beállítása kivételekhez
-          href: 'cache-how-to-monitor.md#operations-and-alerts'
+          href: cache-how-to-monitor.md#operations-and-alerts
     - name: Diagnosztika és hibaelhárítás
       items:
         - name: Redis-kiszolgáló hibaelhárítása

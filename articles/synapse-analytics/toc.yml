@@ -6,6 +6,24 @@
   items:
     - name: Mi az az Azure Synapse Analytics?
       href: overview-what-is.md
+    - name: Első lépések
+      items:
+        - name: Introduction (Bevezetés)
+          href: get-started.md
+        - name: '1. lépés: Synapse-munkaterület létrehozása'
+          href: get-started-create-workspace.md
+        - name: '2. lépés: Elemzés SQL-készlettel'
+          href: get-started-analyze-sql-pool.md
+        - name: '3. lépés: Elemzés a Spark használatával'
+          href: get-started-analyze-spark.md
+        - name: '4. lépés: Elemzés igény szerinti SQL használatával'
+          href: get-started-analyze-sql-on-demand.md
+        - name: '5. lépés: Tárfiók adatainak elemzése'
+          href: get-started-analyze-storage.md
+        - name: "6.\_lépés: Összehangolás folyamatok használatával"
+          href: get-started-pipelines.md
+        - name: '7- lépés: Vizualizáció a Power BI használatával'
+          href: get-started-visualize-power-bi.md
     - name: Hasznos tanácsok
       href: overview-cheat-sheet.md
     - name: GYIK
@@ -46,8 +64,6 @@
       href: quickstart-connect-synapse-link-cosmos-db.md
 - name: Oktatóanyagok
   items:
-    - name: Bevezetés
-      href: get-started.md
     - name: Apache Spark-alkalmazások futtatása Spark-készletekhez
       href: ./spark/intellij-tool-synapse.md
     - name: Spark-feladatdefiníciók
@@ -698,6 +714,8 @@
               href: ../data-factory/connector-web-table.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Xero
               href: ../data-factory/connector-xero.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: XML formátum
+              href: ../data-factory/format-xml.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Zoho
               href: ../data-factory/connector-zoho.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: Adatok áthelyezése
@@ -755,9 +773,11 @@
               href: ../data-factory/transform-data-using-spark.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: HDInsight Streaming-tevékenység
               href: ../data-factory/transform-data-using-hadoop-streaming.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: ML kötegelt végrehajtási tevékenység
+            - name: Machine Learning folyamat-végrehajtási tevékenység
+              href: ../data-factory/transform-data-machine-learning-service.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Machine Learning Studio (klasszikus) kötegelt végrehajtási tevékenysége
               href: ../data-factory/transform-data-using-machine-learning.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: ML Update-erőforrástevékenység
+            - name: Machine Learning Studio (klasszikus) erőforrás-frissítési tevékenysége
               href: ../data-factory/update-machine-learning-models.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Tárolt eljárási tevékenység
               href: ../data-factory/transform-data-using-stored-procedure.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
@@ -856,7 +876,7 @@
     - name: PowerShell
       href: /powershell/module/az.synapse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
     - name: REST API-k
-      href: ./sql-data-warehouse/sql-data-warehouse-manage-compute-rest-api.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+      href: /rest/api/synapse/
     - name: Rendszernézetek
       href: sql/reference-tsql-system-views.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
     - name: T-SQL

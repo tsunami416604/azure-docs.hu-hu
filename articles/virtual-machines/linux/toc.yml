@@ -170,7 +170,7 @@
     - name: Azure Resource Manager
       href: ../../azure-resource-manager/management/overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: Régiók
-      href: regions.md
+      href: ../regions.md
     - name: Bővítmények
       items:
         - name: Tudnivalók az Azure-bővítményekről
@@ -182,7 +182,7 @@
     - name: Rendelkezésre állás és teljesítmény
       items:
         - name: Rendelkezésre állás
-          href: availability.md
+          href: ../availability.md
         - name: Közös elhelyezés
           href: co-location.md
         - name: Hálózati teljesítmény
@@ -290,7 +290,7 @@
             - name: Előre fizetés dedikált gazdagépekért
               href: ../prepay-dedicated-hosts-reserved-instances.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
             - name: Mi az az Azure Reservations?
-              href: ../../billing/billing-save-compute-costs-reservations.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+              href: ../../cost-management-billing/reservations/save-compute-costs-reservations.md?toc=/azure/virtual-machines/linux/toc.json
             - name: Virtuálisgép-példányok méretrugalmassága
               href: reserved-vm-instance-size-flexibility.md
         - name: Spot virtuális gépek
@@ -298,10 +298,12 @@
           displayName: 'pre-empt, preempt'
         - name: Azure-beli virtuális gépek ideiglenes lemez nélkül
           href: ../azure-vms-no-temp-disk.md
+        - name: Azure-beli virtuálisgép-méretek elnevezési konvenciói
+          href: ../vm-naming-conventions.md
         - name: Előző generációk
           href: ../sizes-previous-gen.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Izolált méretek
-          href: isolation.md
+          href: ../isolation.md
         - name: 'Azure számítási egységek (Azure Compute Units, ACU-k)'
           href: ../acu.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: vCPU-kvóták
@@ -311,7 +313,7 @@
             - name: Előre fizetés virtuális gépekért
               href: prepay-reserved-vm-instances.md
             - name: Mi az az Azure Reservations?
-              href: ../../billing/billing-save-compute-costs-reservations.md
+              href: ../../cost-management-billing/reservations/save-compute-costs-reservations.md
             - name: Virtuálisgép-példányok méretrugalmassága
               href: reserved-vm-instance-size-flexibility.md
         - name: Teljesítményteszt pontszámai
@@ -345,17 +347,22 @@
         - name: Rövid élettartamú operációsrendszer-lemezek
           href: ephemeral-os-disks.md
     - name: Hálózat
-      href: network-overview.md
+      href: ../network-overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: Méretezési csoportok
       href: ../../virtual-machine-scale-sets/overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: Infrastruktúra automatizálása
-      href: infrastructure-automation.md
+      href: ../infrastructure-automation.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: Biztonság
       items:
         - name: Biztonság és szabályzatok
           href: security-policy.md
         - name: Azure Disk Encryption
           href: disk-encryption-overview.md
+        - name: Az Azure Policy biztonsági vezérlői
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ../security-controls-policy.md
+        - name: Biztonsági alapkonfiguráció az Azure biztonsági teljesítményteszthez
+          href: security-baseline.md
         - name: Beépített biztonsági vezérlők
           href: virtual-machines-linux-security-controls.md
         - name: Bastion
@@ -367,9 +374,9 @@
     - name: Biztonsági másolat és helyreállítás
       href: backup-recovery.md
     - name: A felhő bevezetésének keretrendszere
-      href: 'https://docs.microsoft.com/azure/cloud-adoption-framework/get-started/'
+      href: /azure/cloud-adoption-framework/get-started/
     - name: Architektúra-központ
-      href: 'https://docs.microsoft.com/azure/architecture/'
+      href: /azure/architecture/
     - name: Infrastruktúrával kapcsolatos irányelvek
       href: infrastructure-example.md
 - name: Útmutatók
@@ -427,22 +434,24 @@
           items:
             - name: Általános lépések
               href: create-upload-generic.md
-            - name: Ubuntu
-              href: create-upload-ubuntu.md
             - name: CentOS
               href: create-upload-centos.md
-            - name: Red Hat
-              href: redhat-create-upload-vhd.md
             - name: Debian
               href: debian-create-upload-vhd.md
-            - name: SUSE
-              href: suse-create-upload-vhd.md
+            - name: Flatcar Container Linux
+              href: flatcar-create-upload-vhd.md
+            - name: FreeBSD
+              href: freebsd-intro-on-azure.md
             - name: Oracle Linux
               href: oracle-create-upload-vhd.md
             - name: OpenBSD
               href: create-upload-openbsd.md
-            - name: FreeBSD
-              href: freebsd-intro-on-azure.md
+            - name: Red Hat
+              href: redhat-create-upload-vhd.md
+            - name: SUSE
+              href: suse-create-upload-vhd.md
+            - name: Ubuntu
+              href: create-upload-ubuntu.md
         - name: A cloud-init használata
           items:
             - name: A cloud-init áttekintése
@@ -632,7 +641,7 @@
         - name: Vészhelyreállítás
           href: ../virtual-machines-disaster-recovery-guidance.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Virtuális gépek biztonsági mentése
-          href: ../../backup/backup-introduction-to-azure-backup.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+          href: ../../backup/backup-overview.md?bc=/azure/virtual-machines/linux/breadcrumb/toc.json&toc=/azure/virtual-machines/linux/toc.json
           items:
             - name: Biztonsági másolat készítése egyetlen virtuális gépről
               href: ../../backup/quick-backup-vm-cli.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
@@ -694,7 +703,7 @@
             - name: Áttekintés
               href: ../extensions/agent-linux.md
             - name: Ügynök frissítése
-              href: update-agent.md
+              href: ../extensions/update-linux-agent.md
         - name: Spekulatív végrehajtás kockázatának csökkentése
           href: mitigate-se.md
         - name: Metaadatok monitorozása
@@ -726,7 +735,6 @@
         - name: Ütemezett események
           href: scheduled-events.md
     - name: Virtuális gépek monitorozása
-      href: ../../azure-monitor/insights/monitor-vm-azure.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
       items:
         - name: Ügynökök
           items:
@@ -763,7 +771,7 @@
                       href: ../../azure-monitor/platform/agent-data-sources.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
                     - name: Egyéni JSON-adatok
                       href: ../../azure-monitor/platform/data-sources-json.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
-                    - name: A CollectD teljesítményadatai
+                    - name: A collectd teljesítményadatai
                       href: ../../azure-monitor/platform/data-sources-collectd.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
                     - name: Rendszernapló
                       href: ../../azure-monitor/platform/data-sources-syslog.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
@@ -820,7 +828,7 @@
     - name: Rendelkezésre állás és méretezés
       items:
         - name: Automatikus méretezés
-          href: ../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+          href: ../../virtual-machine-scale-sets/overview.md?bc=/azure/virtual-machines/linux/breadcrumb/toc.json&toc=/azure/virtual-machines/linux/toc.json
         - name: Magas rendelkezésre állás
           href: manage-availability.md
         - name: Rendelkezésre állási csoport módosítása
@@ -865,7 +873,7 @@
     - name: Tárolók futtatása
       items:
         - name: Docker-gazdagép létrehozása
-          href: dockerextension.md
+          href: 'https://github.com/Azure/azure-docker-extension/blob/master/README.md'
         - name: A Docker Machine használata
           href: docker-machine.md
         - name: A Docker Compose használata
@@ -873,9 +881,9 @@
     - name: Alkalmazások futtatása
       items:
         - name: Cloud Foundry
-          href: 'https://docs.microsoft.com/azure/cloudfoundry/'
+          href: ../../cloudfoundry/index.yml
         - name: Cassandra
-          href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/n-tier-cassandra?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json'
+          href: /azure/architecture/reference-architectures/n-tier/n-tier-cassandra?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: OpenShift
           items:
             - name: OpenShift áttekintése
@@ -913,7 +921,7 @@
             - name: MS SQL Linux rendszeren
               href: /sql/linux/sql-server-linux-azure-virtual-machine
         - name: Nagy teljesítményű számítástechnika (HPC)
-          href: 'https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/'
+          href: /azure/architecture/topics/high-performance-computing/
         - name: IBM Db2 pureScale
           items:
             - name: Architektúra
@@ -937,6 +945,10 @@
           href: disks-shared-enable.md
         - name: VHD feltöltése lemezre – CLI
           href: disks-upload-vhd-to-managed-disk-cli.md
+        - name: Lemez biztonságos importálása/exportálása – CLI
+          href: disks-export-import-private-links-cli.md
+        - name: Lemez biztonságos importálása/exportálása – Portal
+          href: ../disks-enable-private-links-for-import-export-portal.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Lemez átméretezése
           href: expand-disks.md
         - name: A Storage Explorer használata lemezek kezelésére
@@ -955,12 +967,16 @@
           items:
             - name: Titkosítás engedélyezése a gazdagépen – CLI
               href: disks-enable-host-based-encryption-cli.md
+            - name: Titkosítás engedélyezése a gazdagépen – Portal
+              href: disks-enable-host-based-encryption-portal.md
             - name: Felhasználó által kezelt kulcsok engedélyezése – CLI
               href: disks-enable-customer-managed-keys-cli.md
             - name: Felhasználó által kezelt kulcsok engedélyezése – Portal
               href: disks-enable-customer-managed-keys-portal.md
-            - name: Az inaktív állapotban történő kettős adattitkosítás engedélyezése
+            - name: Inaktív állapotban történő kettős adattitkosítás engedélyezése – CLI
               href: disks-enable-double-encryption-at-rest-cli.md
+            - name: Inaktív állapotban történő kettős adattitkosítás engedélyezése – Portal
+              href: disks-enable-double-encryption-at-rest-portal.md
         - name: Migrálás és átalakítás
           items:
             - name: Migrálás prémium szintű tárolóba az Azure Site Recoveryvel
@@ -996,7 +1012,7 @@
     - name: Hálózatkezelés felügyelete
       items:
         - name: Virtuális hálózat létrehozása
-          href: ../../virtual-network/virtual-networks-create-vnet-arm-cli.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+          href: ../../virtual-network/quick-create-cli.md?bc=/azure/virtual-machines/linux/breadcrumb/toc.json&toc=/azure/virtual-machines/linux/toc.json
         - name: Portok megnyitása virtuális géphez
           href: nsg-quickstart.md
         - name: Nyilvános IP-cím hozzárendelése
@@ -1017,18 +1033,18 @@
     - name: Felügyelt identitások konfigurálása
       items:
         - name: Portál
-          href: /azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+          href: ../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: parancssori felület
-          href: /azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+          href: ../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: PowerShell
-          href: /azure/active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+          href: ../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Azure Resource Manager-sablon
           displayName: ARM
-          href: /azure/active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+          href: ../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: REST
-          href: /azure/active-directory/managed-identities-azure-resources/qs-configure-rest-vm?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+          href: ../../active-directory/managed-identities-azure-resources/qs-configure-rest-vm.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Azure SDK-k
-          href: /azure/active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+          href: ../../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: Virtuálisgép-bővítmények használata
       items:
         - name: Bővítménytelepítés korlátozása
@@ -1098,13 +1114,13 @@
             - name: Helyszíni virtuális gép feltöltése
               href: upload-vhd.md
             - name: Az Azure Site Recovery használata
-              href: ../../site-recovery/site-recovery-migrate-to-azure.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+              href: ../../site-recovery/migrate-overview.md?bc=/azure/virtual-machines/linux/breadcrumb/toc.json&toc=/azure/virtual-machines/linux/toc.json
 - name: Referencia
   items:
     - name: Azure CLI
       href: /cli/azure/vm
     - name: PowerShell
-      href: /powershell/azureps-cmdlets-docs
+      href: /powershell/azure/
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.compute
     - name: Java
@@ -1121,10 +1137,10 @@
 - name: További források
   items:
     - name: Q&A
-      href: 'https://docs.microsoft.com/answers/topics/azure-virtual-machines.html'
+      href: /answers/topics/azure-virtual-machines.html
     - name: ARM-sablonok létrehozása
       displayName: 'Azure Resource Manager, ARM'
-      href: /azure/azure-resource-manager/
+      href: ../../azure-resource-manager/index.yml
     - name: Fejlessze a készségeit a Microsoft Learnnel
       href: /learn/browse/?products=azure-virtual-machines
     - name: Azure-ütemterv

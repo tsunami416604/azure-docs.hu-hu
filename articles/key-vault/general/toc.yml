@@ -1,20 +1,28 @@
 - name: Általános kérdések
   href: index.yml
 - name: Áttekintés
-  expanded: true
   items:
     - name: Információk az Azure Key Vaultról
       href: overview.md
     - name: 'A kulcsok, titkos kódok és tanúsítványok ismertetése'
       href: about-keys-secrets-certificates.md
+- name: Rövid útmutatók
+  expanded: true
+  items:
+    - name: parancssori felület
+      href: quick-create-cli.md
+    - name: PowerShell
+      href: quick-create-powershell.md
+    - name: Portál
+      href: quick-create-portal.md
 - name: Oktatóanyagok
   items:
     - name: Azure-beli virtuális gép
       items:
-        - name: Az Azure Key Vault használata Windows rendszerű virtuális géppel a .NET-ben
-          href: tutorial-net-windows-virtual-machine.md
-        - name: Az Azure Key Vault használata Windows rendszerű virtuális géppel Pythonban
-          href: tutorial-python-windows-virtual-machine.md
+        - name: Az Azure Key Vault használata egy virtuális géppel a .NET-ben
+          href: tutorial-net-virtual-machine.md
+        - name: Az Azure Key Vault használata egy virtuális géppel Pythonban
+          href: tutorial-python-virtual-machine.md
     - name: Azure Kubernetes Service
       items:
         - name: Az Azure Key Vault integrálása a Kubernetesszel
@@ -117,15 +125,11 @@
     - name: A Key Vault áthelyezése
       items:
         - name: Key Vault áthelyezése másik erőforráscsoportba
-          href: keyvault-moveresourcegroup.md
+          href: move-resourcegroup.md
         - name: A Key Vault áthelyezése egy másik előfizetésbe
-          href: keyvault-move-subscription.md
+          href: move-subscription.md
         - name: A Key Vault áthelyezése egy másik régióba
-          href: keyvault-moveregion.md
-    - name: Hibaelhárítás
-      items:
-        - name: Kulcstartó bérlőazonosítójának módosítása egy előfizetés áthelyezése után
-          href: subscription-move-fix.md
+          href: move-region.md
 - name: Referencia
   items:
     - name: REST API-hibakódok – Azure Key Vault

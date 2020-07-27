@@ -67,6 +67,8 @@
       href: concepts-app-templates.md
     - name: Mik azok az eszközsablonok?
       href: concepts-device-templates.md
+    - name: Üzenetek hasznos adatai
+      href: concepts-telemetry-properties-commands.md
     - name: Eszközkapcsolatok
       href: concepts-get-connected.md
     - name: IoT Edge-eszközök csatlakoztatása

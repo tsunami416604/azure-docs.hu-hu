@@ -11,7 +11,7 @@
 - name: Útmutatók
   items:
     - name: Előfeltételek
-      href: hpc-cache-prereqs.md
+      href: hpc-cache-prerequisites.md
     - name: A gyorsítótár létrehozása
       href: hpc-cache-create.md
     - name: Tároló hozzáadása
@@ -46,6 +46,8 @@
   items:
     - name: Támogatási jegy megnyitása
       href: hpc-cache-support-ticket.md
+    - name: Azure CLI beállítása az Azure HPC Cache-hez
+      href: az-cli-prerequisites.md
     - name: A Blob Storage-fiók tűzfalbeállításainak kikerülése
       href: hpc-cache-blob-firewall-fix.md
     - name: NFS-céltároló létrehozásának hibaelhárítása

@@ -2,13 +2,16 @@
   tocHref: /azure/
   topicHref: /azure/index
   items:
-    - name: Migrálás
+    - name: Migrate (Áttelepítés)
       tocHref: /azure/
       topicHref: /azure/migrate/index
 - name: Azure
   tocHref: /sql/
   topicHref: /azure/index
   items:
-    - name: Migrálás
+    - name: Migrate (Áttelepítés)
       tocHref: /sql/dma/
+      topicHref: /azure/migrate/index
+    - name: AVS-migrálás értékelése
+      tocHref: /azure/azure-vmware/
       topicHref: /azure/migrate/index

@@ -157,6 +157,11 @@
       href: visualizations.md
     - name: Partnerintegrációk
       href: platform/partners.md
+    - name: Biztonság
+      items:
+        - name: Az Azure Policy biztonsági vezérlői
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./platform/security-controls-policy.md
 - name: Útmutatók
   items:
     - name: Forgatókönyvek
@@ -244,8 +249,6 @@
                       href: platform/diagnostics-extension-to-application-insights.md
                     - name: Verzióelőzmények
                       href: platform/diagnostics-extension-versions.md
-                    - name: JSON-sorok erőforrásnapló-formátuma
-                      href: platform/resource-logs-append-blobs.md
                     - name: Hibaelhárítás
                       href: platform/diagnostics-extension-troubleshooting.md
                 - name: Linux
@@ -264,9 +267,9 @@
                 - name: Linux-ügynökök
                   href: platform/agent-linux.md
                 - name: Virtuálisgép-bővítmény Windowshoz
-                  href: ../virtual-machines/windows/extensions-oms.md?toc=/azure/azure-monitor/toc.json
+                  href: ../virtual-machines/extensions/oms-windows.md?toc=/azure/azure-monitor/toc.json
                 - name: Virtuálisgép-bővítmény Linuxhoz
-                  href: ../virtual-machines/linux/extensions-oms.md?toc=/azure/azure-monitor/toc.json
+                  href: ../virtual-machines/extensions/oms-linux.md?toc=/azure/azure-monitor/toc.json
                 - name: Log Analytics-átjáró
                   href: platform/gateway.md
                 - name: Ügynökkezelés
@@ -430,7 +433,7 @@
         - name: Méretezés egyéni metrikákkal
           href: platform/autoscale-custom-metric.md
         - name: Virtuálisgép-méretezési csoportok méretezése
-          href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md?toc=/azure/azure-monitor/toc.json
+          href: ../virtual-machine-scale-sets/tutorial-autoscale-powershell.md?toc=/azure/azure-monitor/toc.json
         - name: Virtuálisgép-méretezési csoportok méretezése Resource Manager-sablonokkal
           href: platform/autoscale-virtual-machine-scale-sets.md
         - name: Webhookok és e-mailes értesítések használata
@@ -446,7 +449,7 @@
             - name: Rendelkezésre állás
               href: app/monitor-web-app-availability.md
             - name: Metrikákhoz kapcsolódó riasztások
-              href: app/alerts.md
+              href: ./platform/alerts-log.md
         - name: Metrika riasztási szabályai
           items:
             - name: Metrikariasztások kezelése
@@ -474,19 +477,20 @@
             - name: Riasztás tevékenységnapló-eseményhez
               href: platform/alerts-activity-log.md
             - name: Migráláskezelési események tevékenységnapló-riasztásokra
-              href: platform/migrate-management-alerts.md
+              href: ./platform/activity-log-alerts.md
             - name: Webhookséma
               href: platform/activity-log-alerts-webhook.md
         - name: Szolgáltatásállapot-riasztások
           items:
             - name: Értesítések megtekintése
-              href: platform/service-notifications.md
+              href: ../service-health/service-notifications.md
             - name: Riasztások beállítása értesítési eseményekhez
               href: platform/alerts-activity-log-service-notifications.md
         - name: Értesítések és műveletek
           items:
             - name: Műveleti szabályok (előzetes verzió)
               href: platform/alerts-action-rules.md
+              displayName: 'Azure CLI, az monitor action rule'
             - name: Műveletcsoport létrehozása
               href: platform/action-groups.md
             - name: Gyakori riasztási séma
@@ -556,7 +560,7 @@
         - name: Az Application Insights áttekintése
           href: app/app-insights-overview.md
         - name: GYIK
-          href: app/troubleshoot-faq.md
+          href: ./faq.md
         - name: Kódalapú monitorozás
           items:
             - name: ASP.NET-mag
@@ -970,7 +974,11 @@
         - name: Adatelemzés naplólekérdezésekkel
           href: insights/container-insights-log-search.md
         - name: Riasztások kezelése
-          href: insights/container-insights-alerts.md
+          items:
+            - name: Naplóriasztási szabályok létrehozása
+              href: insights/container-insights-log-alerts.md
+            - name: Metrikariasztási szabályok létrehozása
+              href: insights/container-insights-metric-alerts.md
         - name: Ügynökkezelés
           href: insights/container-insights-manage-agent.md
         - name: Prometheus-metrikagyűjtés konfigurálása
@@ -1016,6 +1024,7 @@
       items:
         - name: Áttekintés
           href: insights/solutions.md
+          displayName: 'Azure CLI, az monitor log-analytics'
         - name: Célmegoldások
           href: insights/solution-targeting.md
         - name: Elérhető megoldások
@@ -1028,8 +1037,6 @@
               href: insights/capacity-performance.md
             - name: Docker- és Windows-tárolók monitorozása
               href: insights/containers.md
-            - name: Key Vault-elemzés
-              href: insights/azure-key-vault.md
             - name: Hálózatok
               items:
                 - name: Hálózatelemzés
@@ -1173,7 +1180,7 @@
     - name: Terminológiai változások
       href: terminology.md
     - name: Adatreferencia
-      href: 'https://docs.microsoft.com/azure/azure-monitor/reference/'
+      href: /azure/azure-monitor/reference/
     - name: Támogatott metrikák
       items:
         - name: Platformmetrikák
@@ -1288,6 +1295,8 @@
         - name: Exportálás Blob Storage formátumba
           displayname: Diagnostic settings
           href: platform/resource-logs-blob-format.md
+        - name: Key Vault-elemzés (elavult)
+          href: insights/azure-key-vault-deprecated.md
 - name: További források
   items:
     - name: Azure-ütemterv

@@ -110,6 +110,9 @@
                   href: authenticate-application.md
         - name: Beépített biztonsági vezérlők
           href: service-bus-messaging-security-controls.md
+        - name: Az Azure Policy biztonsági vezérlői
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
         - name: Hálózati biztonság
           href: network-security.md
 - name: Útmutatók

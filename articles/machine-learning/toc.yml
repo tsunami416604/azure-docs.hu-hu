@@ -96,6 +96,7 @@
     - name: Enterprise és alapszintű kiadások
       href: concept-editions.md
     - name: Költségtervezés és a költségek kezelése
+      displayName: low priority VM
       href: concept-plan-manage-cost.md
     - name: Tervező (áthúzásos ML)
       items:
@@ -166,6 +167,9 @@
             - name: Webszolgáltatások biztonságossá tétele TLS használatával
               displayName: ssl
               href: how-to-secure-web-service.md
+            - name: Rugalmasság növelése
+              displayName: 'high availability, disaster recovery'
+              href: how-to-high-availability-machine-learning.md
             - name: Az Azure AD Identity használata AKS-környezetekben
               href: how-to-use-azure-ad-identity.md
             - name: Tárelérési kulcsok újragenerálása
@@ -217,6 +221,9 @@
         - name: Szoftverkörnyezetek beállítása
           displayName: 'pip, Conda, anaconda'
           href: how-to-use-environments.md
+        - name: Privát Python-csomagok használata
+          displayName: 'pip, Conda, anaconda'
+          href: how-to-use-private-python-packages.md
         - name: Naplózás engedélyezése
           displayName: 'troubleshoot, log, files, tracing'
           href: how-to-enable-logging.md
@@ -356,6 +363,9 @@
           href: how-to-deploy-and-where.md
         - name: Üzembe helyezési forgatókönyvek
           items:
+            - name: Meglévő modellek használata
+              displayName: publish existing model
+              href: how-to-deploy-existing-model.md
             - name: Azure ML számítási példányok
               href: how-to-deploy-local-container-notebook-vm.md
             - name: Azure Kubernetes Service
@@ -374,18 +384,15 @@
               href: how-to-deploy-functions.md
             - name: Azure Cognitive Search
               href: how-to-deploy-model-cognitive-search.md
-            - name: Azure IoT Edge-eszközök
-              href: /azure/iot-edge/tutorial-deploy-machine-learning?context=azure/machine-learning/context/ml-context
+            - name: Egyéni Docker-rendszerkép használata
+              href: how-to-deploy-custom-docker-image.md
+            - name: IoT Edge
+              href: /azure/iot-edge/tutorial-deploy-machine-learning?context=azure/machine-learning/service/context/ml-context
             - name: FPGA-következtetés
               href: how-to-deploy-fpga-web-service.md
-            - name: Egyéni Docker-rendszerképek
-              href: how-to-deploy-custom-docker-image.md
-            - name: Nem Azure ML-modellek
-              displayName: publish existing model
-              href: how-to-deploy-existing-model.md
         - name: Hibakeresés és hibaelhárítás
           href: how-to-troubleshoot-deployment.md
-        - name: Szolgáltatásvégpont hívása
+        - name: Ügyfelek létrehozása
           displayName: create client consume request response synchronous
           href: how-to-consume-web-service.md
         - name: Modellek monitorozása
@@ -393,8 +400,6 @@
             - name: Modelladatok gyűjtése és kiértékelése
               displayName: track production
               href: how-to-enable-data-collection.md
-            - name: Adateltérés észlelése
-              href: how-to-monitor-data-drift.md
             - name: Monitorozás az Application Insights segítségével
               href: how-to-enable-app-insights.md
         - name: Titkosított származtatási szolgáltatás üzembe helyezése

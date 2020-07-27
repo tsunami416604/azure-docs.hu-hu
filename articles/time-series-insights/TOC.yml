@@ -2,32 +2,58 @@
   href: index.yml
 - name: Áttekintés
   items:
-    - name: Tudnivalók a Time Series Insightsról
-      href: time-series-insights-update-overview.md
+    - name: Mi az a Time Series Insights Gen2?
+      href: overview-what-is-tsi.md
+    - name: Használati esetek
+      href: overview-use-cases.md
 - name: Rövid útmutatók
   expanded: true
   items:
-    - name: Az Azure Time Series Insights általánosan elérhető verziója
-      items:
-        - name: Ismerkedés a Time Series Insightsszal
-          href: time-series-quickstart.md
-    - name: Az Azure Time Series Insights előzetes verziója
-      items:
-        - name: Ismerkedés a Time Series Insights előzetes verziójával
-          href: time-series-insights-update-quickstart.md
+    - name: A Time Series Insights Gen2 megismerése
+      href: quickstart-explore-tsi.md
 - name: Oktatóanyagok
   items:
-    - name: Az Azure Time Series Insights általánosan elérhető verziója
-      items:
-        - name: Time Series Insights-környezet létrehozása
-          href: tutorial-create-populate-tsi-environment.md
-    - name: Az Azure Time Series Insights előzetes verziója
-      items:
-        - name: Előzetes verziójú környezet beállítása
-          href: time-series-insights-update-create-environment.md
+    - name: A Time Series Insights Gen2-környezet beállítása
+      href: tutorials-set-up-tsi-environment.md
 - name: Alapelvek
   items:
-    - name: Az Azure Time Series Insights általánosan elérhető verziója
+    - name: Azure Time Series Insights Gen2
+      items:
+        - name: Integrálás és tárolás
+          items:
+            - name: Az adatbetöltés áttekintése
+              href: concepts-ingestion-overview.md
+            - name: Támogatott adattípusok
+              href: concepts-supported-data-types.md
+            - name: Streamfeldolgozási eseményforrások
+              href: concepts-streaming-ingestion-event-sources.md
+            - name: JSON-egybesimítás és escape-karaktersorozat szabályai
+              href: concepts-json-flattening-escaping-rules.md
+            - name: Streamelési bejövő forgalom átviteli sebességének korlátai
+              href: concepts-streaming-ingress-throughput-limits.md
+            - name: Tárolás
+              href: concepts-storage.md
+        - name: Modell
+          items:
+            - name: Modell áttekintése
+              href: concepts-model-overview.md
+            - name: Változók
+              href: concepts-variables.md
+        - name: Lekérdezés
+          items:
+            - name: Lekérdezések áttekintése
+              href: concepts-query-overview.md
+        - name: Vizualizáció az Explorerben
+          items:
+            - name: UX-panelek
+              href: concepts-ux-panels.md
+        - name: Kompatibilitástörő változások
+          items:
+            - name: Támogatás hozzáadása long adattípushoz
+              href: breaking-changes-long-data-type.md
+            - name: Változások a JSON-egybesimításban és -tárolásban
+              href: ingestion-rules-update.md
+    - name: Azure Time Series Insights Gen1
       items:
         - name: Tudnivalók a Time Series Insightsról
           href: time-series-insights-overview.md
@@ -37,61 +63,61 @@
           href: time-series-insights-explorer.md
         - name: Az adatmegőrzés ismertetése
           href: time-series-insights-concepts-retention.md
-        - name: Fejlesztés
-          items:
-            - name: Hitelesítés és engedélyezés
-              href: time-series-insights-authentication-and-authorization.md
-            - name: Adatok lekérdezése a C# használatával
-              href: time-series-insights-query-data-csharp.md
-            - name: Referenciaadatok kezelése a C#-ban
-              href: time-series-insights-manage-reference-data-csharp.md
-            - name: Egyéni nézet megosztása
-              href: time-series-insights-parameterized-urls.md
-    - name: Az Azure Time Series Insights előzetes verziója
+    - name: Fejlesztés
       items:
-        - name: Használati esetek
-          href: time-series-insights-update-use-cases.md
-        - name: A környezet megtervezése
-          href: time-series-insights-update-plan.md
-        - name: A betöltés áttekintése
-          href: concepts-ingestion-overview.md
-        - name: Támogatott adattípusok
-          href: concepts-supported-data-types.md
-        - name: Streaming Ingestion-eseményforrások
-          href: concepts-streaming-ingestion-event-sources.md
-        - name: JSON-egybesimítás és escape-karaktersorozat szabályai
-          href: concepts-json-flattening-escaping-rules.md
-        - name: Streamelési bejövő forgalom átviteli sebességének korlátai
-          href: concepts-streaming-throughput-limitations.md
-        - name: Storage
-          href: concepts-storage.md
-        - name: Time Series-modell
-          href: concepts-model-overview.md
-        - name: Time Series-lekérdezés
-          href: concepts-query-overview.md
-        - name: Adatok vizualizációja az Explorer előzetes verziójában
-          href: time-series-insights-update-explorer.md
-        - name: Fejlesztés
-          items:
-            - name: Hitelesítés és engedélyezés
-              href: time-series-insights-authentication-and-authorization.md
-            - name: Adatok lekérdezése a C# használatával
-              href: time-series-insights-update-query-data-csharp.md
-            - name: Power BI-integráció
-              href: concepts-power-bi.md
+        - name: Hitelesítés és engedélyezés
+          href: time-series-insights-authentication-and-authorization.md
+        - name: Adatok lekérdezése a C# használatával
+          href: time-series-insights-query-data-csharp.md
+        - name: Referenciaadatok kezelése a C#-ban
+          href: time-series-insights-manage-reference-data-csharp.md
+        - name: Egyéni nézet megosztása
+          href: time-series-insights-parameterized-urls.md
 - name: Útmutatók
   items:
     - name: Adathozzáférés biztosítása
-      href: time-series-insights-data-access.md
+      href: concepts-access-policies.md
     - name: Csatlakozás az Event Hubshoz
       href: time-series-insights-how-to-add-an-event-source-eventhub.md
     - name: Csatlakozás az IoT Hubhoz
       href: time-series-insights-how-to-add-an-event-source-iothub.md
     - name: Erőforrások kezelése sablonokkal
       href: time-series-insights-manage-resources-using-azure-resource-manager-template.md
-    - name: Az Azure Time Series Insights általánosan elérhető verziója
+    - name: Azure Time Series Insights Gen2
       items:
-        - name: Környezet létrehozása
+        - name: Ajánlott eljárások
+          items:
+            - name: A környezet megtervezése
+              href: how-to-plan-your-environment.md
+        - name: A környezet kezelése
+          items:
+            - name: Kiépítés és kezelés
+              href: how-to-provision-manage.md
+            - name: Diagnosztizálás és hibaelhárítás
+              href: how-to-diagnose-troubleshoot.md
+        - name: Integrálás és tárolás
+          items:
+            - name: Egy TSID kiválasztása
+              href: how-to-select-tsid.md
+        - name: Modell
+          items:
+            - name: Saját modell szerkesztése
+              href: how-to-edit-your-model.md
+        - name: Összekötők
+          items:
+            - name: Csatlakozás a Power BI-hoz
+              href: how-to-connect-power-bi.md
+        - name: Migrálások
+          items:
+            - name: Migrálás új API-verziókra
+              href: how-to-api-migration.md
+    - name: Azure Time Series Insights Gen1
+      items:
+        - name: Ismerkedés a Time Series Insightsszal
+          href: time-series-quickstart.md
+        - name: Környezet létrehozása és feltöltése
+          href: tutorial-create-populate-tsi-environment.md
+        - name: Környezet létrehozása az Azure Portalon
           href: time-series-insights-get-started.md
         - name: Az adatmegőrzés konfigurálása
           href: time-series-insights-how-to-configure-retention.md
@@ -107,60 +133,86 @@
           href: time-series-insights-environment-mitigate-latency.md
         - name: Diagnosztika és hibaelhárítás
           href: time-series-insights-diagnose-and-solve-problems.md
-    - name: Az Azure Time Series Insights előzetes verziója
-      items:
-        - name: Kiépítés és kezelés
-          href: time-series-insights-update-how-to-manage.md
-        - name: Time Series-azonosító kiválasztása
-          href: time-series-insights-update-how-to-id.md
-        - name: Diagnosztika és hibaelhárítás
-          href: time-series-insights-update-how-to-troubleshoot.md
-        - name: Adatmodellezés
-          href: time-series-insights-update-how-to-tsm.md
-        - name: A JSON testreszabása bejövő adatforgalomhoz és lekérdezésekhez
-          href: time-series-insights-update-how-to-shape-events.md
-        - name: Csatlakozás a Power BI-hoz
-          href: how-to-connect-power-bi.md
-- name: Kompatibilitástörő változások
-  items:
-    - name: Az Azure Time Series Insights előzetes verziója
-      items:
-        - name: Támogatás hozzáadása long adattípushoz
-          href: time-series-insights-long-data-type.md
-        - name: Változások a JSON-egybesimításban és -tárolásban
-          href: ingestion-rules-update.md
 - name: Referencia
   items:
     - name: Time Series Insights
       items:
-        - name: Azure Time Series Insights
-          href: /rest/api/time-series-insights/index
-        - name: 'Adathozzáférés, általános hozzáférés'
-          href: /rest/api/time-series-insights/ga
+        - name: REST API-k áttekintése
+          href: 'https://docs.microsoft.com/rest/api/time-series-insights/'
+        - name: Data Access Gen2
           items:
-            - name: Lekérdezés
-              href: /rest/api/time-series-insights/ga-query
+            - name: Áttekintés
+              href: 'https://docs.microsoft.com/rest/api/time-series-insights/preview'
+            - name: Modell beállításai
               items:
+                - name: Áttekintés
+                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/modelsettings'
+                - name: Lekérés
+                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/modelsettings/get'
+                - name: Frissítés
+                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/modelsettings/update'
+            - name: Lekérdezés
+              items:
+                - name: Áttekintés
+                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query'
+                - name: Végrehajtás
+                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute'
+                - name: Rendelkezésre állás lekérése
+                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/getavailability'
+                - name: Eseményséma lekérése
+                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/geteventschema'
+            - name: Idősor-hierarchiák
+              items:
+                - name: Áttekintés
+                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeserieshierarchies'
+                - name: Köteg végrehajtása
+                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeserieshierarchies/executebatch'
+                - name: Lekérés
+                  href: 'https://docs.microsoft.com/en-us/rest/api/time-series-insights/dataaccessgen2/timeserieshierarchies/list'
+            - name: Idősorpéldányok
+              items:
+                - name: Áttekintés
+                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances'
+                - name: Köteg végrehajtása
+                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/executebatch'
+                - name: Lekérés
+                  href: 'https://docs.microsoft.com/en-us/rest/api/time-series-insights/dataaccessgen2/timeserieshierarchies/list'
+                - name: Keresés
+                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/search'
+                - name: Ajánlás
+                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/suggest'
+            - name: Idősortípusok
+              items:
+                - name: Áttekintés
+                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes'
+                - name: Köteg végrehajtása
+                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/executebatch'
+                - name: Lekérés
+                  href: 'https://docs.microsoft.com/en-us/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/list'
+        - name: Data Access Gen1
+          items:
+            - name: Áttekintés
+              href: 'https://docs.microsoft.com/rest/api/time-series-insights/ga'
+            - name: Lekérdezés
+              items:
+                - name: Lekérdezés
+                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/ga-query'
                 - name: API
-                  href: /rest/api/time-series-insights/ga-query-api
+                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api'
                 - name: Szintaxis
-                  href: /rest/api/time-series-insights/ga-query-syntax
+                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/ga-query-syntax'
             - name: Reference Data API
-              href: /rest/api/time-series-insights/ga-reference-data-api
-        - name: Adathozzáférési fogalmak előzetes verziója
-          href: /rest/api/time-series-insights/preview
+              href: 'https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api'
     - name: Ügyféloldali SDK
       items:
         - name: JavaScript ügyféloldali SDK
           href: 'https://github.com/microsoft/tsiclient/blob/master/docs/API.md'
     - name: Azure CLI
-      href: /cli/azure/ext/timeseriesinsights/timeseriesinsights
-      displayName: az iot
+      href: 'https://docs.microsoft.com/cli/azure/ext/timeseriesinsights/timeseriesinsights?view=azure-cli-latest'
 - name: További források
-  expanded: true
   items:
     - name: Támogatási és súgólehetőségek
-      href: /azure/iot-fundamentals/iot-support-help
+      href: 'https://docs.microsoft.com/azure/iot-fundamentals/iot-support-help'
     - name: Ügyfelek adatkérései
       href: time-series-insights-customer-data-requests.md
     - name: Fejlesztői erőforrások
@@ -181,6 +233,22 @@
           href: 'https://azure.microsoft.com/pricing/calculator/'
         - name: Régiónkénti elérhetőség
           href: 'https://azure.microsoft.com/regions/services/'
+    - name: Támogatási és súgólehetőségek
+      items:
+        - name: Azure-támogatási lehetőségek
+          href: 'https://azure.microsoft.com/support/options/'
+        - name: Azure IoT – Támogatási és súgólehetőségek
+          href: 'https://docs.microsoft.com/azure/iot-fundamentals/iot-support-help'
+        - name: Stack Overflow
+          href: 'https://stackoverflow.com/questions/tagged/azure-timeseries-insights'
+        - name: MSDN-fórum
+          href: 'https://social.msdn.microsoft.com/Forums/home?forum=AzureTimeSeriesInsights'
+    - name: Visszajelzés és fórumok
+      items:
+        - name: MSDN-fórum
+          href: 'https://social.msdn.microsoft.com/Forums/home?forum=AzureTimeSeriesInsights'
+        - name: Termékkérések és javaslatok
+          href: 'https://feedback.azure.com/forums/906859-azure-time-series-insights'
     - name: Azure-videók
       href: 'https://azure.microsoft.com/resources/videos/index/?services=time-series-insights'
     - name: Channel 9-videók

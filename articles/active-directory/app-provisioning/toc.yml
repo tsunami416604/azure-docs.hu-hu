@@ -83,10 +83,10 @@
       href: application-provisioning-config-problem-scim-compatibility.md
     - name: SCIM- és Graph-forgatókönyvek
       href: scim-graph-scenarios.md
-    - name: Az üzembehelyezési módszer kiválasztása
-      href: isv-automatic-provisioning-multi-tenant-apps.md
     - name: Felhőalapú HR üzembe helyezése
       items:
+        - name: SuccessFactors-integráció
+          href: sap-successfactors-integration-reference.md
         - name: SuccessFactors-attribútumok referenciája
           href: sap-successfactors-attribute-reference.md
         - name: Workday-attribútumok referenciája

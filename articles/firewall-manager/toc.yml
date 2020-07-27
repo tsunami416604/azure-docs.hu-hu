@@ -44,7 +44,7 @@
       href: migrate-to-policy.md
     - name: DNS-beállítások
       href: dns-settings.md
-    - name: Több nyilvános IP-cím üzembe helyezése
+    - name: Több nyilvános IP-cím üzembe helyezése – PowerShell
       href: multiple-public-ip-powershell.md
 - name: Referencia
   items:

@@ -8,7 +8,7 @@
       href: quickstart-powershell.md
 - name: Funkciók és eszközök
   href: features.md
-- name: oktatóanyagokat
+- name: Oktatóanyagok
   items:
     - name: Ansible
       items:
@@ -32,6 +32,8 @@
       href: msi-authorization.md
     - name: Cloud Shell beágyazása
       href: embed-cloud-shell.md
+    - name: Cloud Shell egy Azure-beli virtuális hálózatban
+      href: private-vnet.md
 - name: A Cloud Shell-szerkesztő használata
   href: using-cloud-shell-editor.md
 - name: Hibaelhárítás és korlátozások

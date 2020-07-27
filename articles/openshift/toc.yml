@@ -18,6 +18,8 @@
   items:
     - name: Privát Azure Red Hat OpenShift 4-fürt létrehozása
       href: howto-create-private-cluster-4x.md
+    - name: Lekérési kulcs frissítése egy Azure Red Hat OpenShift 4-fürthöz
+      href: howto-add-update-pull-secret.md
     - name: DNS-továbbítás konfigurálása Azure Red Hat OpenShift 4-fürthöz
       href: dns-forwarding.md
     - name: Azure Active Directory-hitelesítés konfigurálása Azure Red Hat OpenShift 4-fürthöz
@@ -67,6 +69,10 @@
               href: cluster-administration-cluster-admin-role.md
             - name: 2 – Biztonsági környezet korlátozásainak kezelése az Azure Red Hat OpenShift 3.11-ben
               href: cluster-administration-security-context-constraints.md
+- name: Alapelvek
+  items:
+    - name: Hálózatkezelés az Azure Red Hat OpenShift 4-fürtökben
+      href: concepts-networking.md
 - name: Referencia
   items:
     - name: Az Azure Red Hat OpenShift parancssori felülete

@@ -5,7 +5,6 @@
     - name: Mik a virtuálisgép-méretezési csoportok?
       href: overview.md
 - name: Rövid útmutatók
-  expanded: true
   items:
     - name: Létrehozás az Azure Portalon
       href: quick-create-portal.md
@@ -21,6 +20,7 @@
         - name: Windows méretezési csoport
           displayName: 'ARM, resource manager'
           href: quick-create-template-windows.md
+  expanded: true
 - name: Oktatóanyagok
   items:
     - name: 1 – Méretezési csoport létrehozása/kezelése
@@ -102,65 +102,71 @@
       href: ../azure-resource-manager/management/overview.md
       maintainContext: true
     - name: Régiók
-      href: ../virtual-machines/windows/regions.md
+      href: ../virtual-machines/regions.md
     - name: Rendelkezésre állás és teljesítmény
-      maintainContext: true
       items:
         - name: Rendelkezésre állás
-          href: availability.md
+          href: ../virtual-machines/availability.md?toc=%2fazure%2fvirtual-machine-scale-sets%2ftoc.json
         - name: Közös elhelyezés
           href: co-location.md
         - name: Hálózati teljesítmény
           href: ../virtual-network/virtual-network-optimize-network-bandwidth.md?toc=%2fazure%2fvirtual-machine-scale-sets%2fwindows%2ftoc.json
         - name: Tartalék tartományok kezelése méretezési csoportokban
           href: virtual-machine-scale-sets-manage-fault-domains.md
+      maintainContext: true
     - name: Képek
       href: shared-image-galleries.md
     - name: Virtuálisgép-típusok és -méretek
       href: ../virtual-machines/windows/sizes.md
-      maintainContext: true
       items:
         - name: Általános célú
-          href: ../virtual-machines/windows/sizes-general.md
+          href: ../virtual-machines/sizes-general.md
           maintainContext: true
           items:
             - name: B sorozat – adatlöket-kezelés
-              href: ../virtual-machines/windows/b-series-burstable.md
+              href: ../virtual-machines/sizes-b-series-burstable.md
               maintainContext: true
         - name: Számításra optimalizált
-          href: ../virtual-machines/windows/sizes-compute.md
+          href: ../virtual-machines/sizes-compute.md
           maintainContext: true
         - name: Memóriaoptimalizált
-          href: ../virtual-machines/windows/sizes-memory.md
+          href: ../virtual-machines/sizes-memory.md
           maintainContext: true
           items:
             - name: Korlátozott vCPU-k
               href: ../virtual-machines/windows/constrained-vcpu.md
               maintainContext: true
         - name: Tárolásra optimalizált
-          href: ../virtual-machines/windows/sizes-storage.md
+          href: ../virtual-machines/sizes-storage.md
           maintainContext: true
         - name: GPU-optimalizált
-          href: ../virtual-machines/windows/sizes-gpu.md
+          href: ../virtual-machines/sizes-gpu.md
           maintainContext: true
           items:
             - name: NVIDIA GPU-illesztők beállítása
               href: ../virtual-machines/windows/n-series-driver-setup.md
               maintainContext: true
         - name: Nagy teljesítményű számítás
-          href: ../virtual-machines/windows/sizes-hpc.md
+          href: ../virtual-machines/sizes-hpc.md
+          maintainContext: true
+        - name: Azure-beli virtuális gépek ideiglenes lemez nélkül
+          href: ../virtual-machines/azure-vms-no-temp-disk.md
+          maintainContext: true
+        - name: Azure-beli virtuálisgép-méretek elnevezési konvenciói
+          href: ../virtual-machines/vm-naming-conventions.md
           maintainContext: true
         - name: 'Azure számítási egységek (Azure Compute Units, ACU-k)'
-          href: ../virtual-machines/windows/acu.md
+          href: ../virtual-machines/acu.md
           maintainContext: true
         - name: Teljesítményteszt pontszámai
           href: ../virtual-machines/windows/compute-benchmark-scores.md
           maintainContext: true
+      maintainContext: true
     - name: Támogatott Linux-disztribúciók
       href: ../virtual-machines/linux/endorsed-distros.md
       maintainContext: true
     - name: Karbantartás és frissítések
-      href: ../virtual-machines/windows/maintenance-and-updates.md
+      href: ../virtual-machines/maintenance-and-updates.md?bc=/azure/virtual-machines/windows/breadcrumb/toc.json&toc=/azure/virtual-machines/windows/toc.json
       maintainContext: true
     - name: Vezénylési módok
       href: orchestration-modes.md
@@ -198,11 +204,13 @@
           href: ../virtual-machines/windows/security-policy.md
         - name: Azure Disk Encryption
           href: disk-encryption-overview.md
+        - name: Az Azure biztonsági alapkonfigurációja
+          href: security-baseline.md
         - name: Beépített biztonsági vezérlők
           href: virtual-machine-scale-sets-security-controls.md
       maintainContext: true
     - name: Figyelés
-      href: ../virtual-machines/windows/monitor.md
+      href: ../azure-monitor/insights/monitor-vm-azure.md
       maintainContext: true
     - name: Telepítési szempontok
       items:
@@ -381,9 +389,7 @@
 - name: Referencia
   items:
     - name: Azure PowerShell
-      href: /powershell/azure/overview
-    - name: Azure CLI
-      href: ../virtual-machines/azure-cli-arm-commands.md
+      href: /powershell/azure/
     - name: REST
       href: /rest/api/virtualmachinescalesets/
     - name: Azure-sablonok

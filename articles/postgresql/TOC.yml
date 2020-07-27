@@ -351,6 +351,8 @@
           items:
             - name: Riasztások létrehozása metrikákhoz
               href: howto-hyperscale-alert-on-metric.md
+            - name: Hozzáférés az adatbázisnaplókhoz
+              href: howto-hyperscale-logging.md
         - name: Hibaelhárítás
           items:
             - name: Csatlakozási hibák elhárítása

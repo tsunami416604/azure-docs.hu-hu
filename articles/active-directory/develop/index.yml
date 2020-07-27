@@ -9,12 +9,12 @@ metadata:
   ms.service: active-directory
   ms.subservice: develop
   ms.workload: identity
-  ms.openlocfilehash: 689fb9953f6de9c717d774e222824c5b3701527e
-  ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+  ms.openlocfilehash: e17e6195d629238c9c719d8e34780593129ae244
+  ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 07/10/2020
-  ms.locfileid: "86230349"
+  ms.lasthandoff: 07/23/2020
+  ms.locfileid: "87027070"
 landingContent:
 - title: A Microsoft identitásplatformja
   linkLists:
@@ -62,7 +62,7 @@ landingContent:
     links:
     - text: ASP.NET
       url: quickstart-v2-aspnet-webapp.md
-    - text: ASP.NET-mag
+    - text: ASP.NET Core
       url: quickstart-v2-aspnet-core-webapp.md
     - text: Python
       url: quickstart-v2-python-webapp.md
@@ -76,7 +76,7 @@ landingContent:
       url: quickstart-v2-ios.md
     - text: Windows rendszerű asztali gép (WPF)
       url: quickstart-v2-windows-desktop.md
-- title: Webes API-k biztonságossá tétele
+- title: Webes API
   linkLists:
   - linkListType: get-started
     links:
@@ -92,11 +92,27 @@ landingContent:
       url: microsoft-graph-intro.md
     - text: A Microsoft Graph-hitelesítés áttekintése
       url: https://docs.microsoft.com/graph/auth/
-- title: SAML 2.0
+- title: Protokollok
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Az OAuth 2.0 és az OpenID Connect
+      url: active-directory-v2-protocols.md
+    - text: SAML 2.0
+      url: active-directory-saml-protocol-reference.md
+- title: Végfelhasználói kereskedelem (B2C)
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az az Azure AD B2C?
+      url: ../../active-directory-b2c/overview.md
+    - text: Műszaki jellemzők és funkciók áttekintése
+      url: ../../active-directory-b2c/technical-overview.md
+- title: Felügyelt identitások
   linkLists:
   - linkListType: get-started
     links:
-    - text: Hogyan használja az Azure AD az SAML-protokollt
-      url: active-directory-saml-protocol-reference.md
-    - text: Egyszeri bejelentkezés SAML használatával az Azure AD-ben
-      url: single-sign-on-saml-protocol.md
+    - text: Tudnivalók az Azure-erőforrások felügyelt identitásairól
+      url: ../managed-identities-azure-resources/overview.md
+    - text: Felügyelt identitások és Azure-beli virtuális gépek
+      url: ../managed-identities-azure-resources/how-managed-identities-work-vm.md

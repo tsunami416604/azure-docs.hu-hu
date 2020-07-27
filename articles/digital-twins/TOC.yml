@@ -40,9 +40,11 @@
       items:
         - name: Az Azure Digital Twins CLI használata
           href: how-to-use-cli.md
-        - name: Azure Digital Twins-példány létrehozása
-          href: how-to-set-up-instance.md
-        - name: Ügyfélalkalmazás hitelesítése
+        - name: Példány és hitelesítés beállítása (szkriptelt)
+          href: how-to-set-up-instance-scripted.md
+        - name: Példány és hitelesítés beállítása (manuális)
+          href: how-to-set-up-instance-manual.md
+        - name: Alkalmazáshitelesítési kód írása
           href: how-to-authenticate-client.md
     - name: Tervezési modellek
       items:
@@ -50,6 +52,8 @@
           href: how-to-manage-model.md
         - name: Modellek elemzése és ellenőrzése
           href: how-to-use-parser.md
+        - name: Címkék hozzáadása
+          href: how-to-use-tags.md
     - name: Élő végrehajtási környezet használata
       items:
         - name: Digitális ikereszközök kezelése
@@ -72,10 +76,16 @@
           href: how-to-manage-routes.md
         - name: Integrálás az Azure Mapsszel
           href: how-to-integrate-maps.md
+        - name: Integrálás az Azure Time Series Insights szolgáltatással
+          href: how-to-integrate-time-series-insights.md
     - name: Hibaelhárítás
       items:
         - name: Ismert problémák
           href: troubleshoot-known-issues.md
+        - name: Problémamegoldás
+          items:
+            - name: 403 (Tiltott)
+              href: troubleshoot-error-403.md
 - name: Referencia
   items:
     - name: Digital Twins szolgáltatási korlátok
@@ -145,7 +155,7 @@
         - name: Azure Digital Twins-minta
           href: 'https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples/'
         - name: Azure Digital Twins-felderítő (minta)
-          href: 'https://github.com/Azure-Samples/digital-twins-explorer'
+          href: 'https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/'
         - name: DTDL-érvényesítő (minta)
           href: 'https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator/'
     - name: Azure-eszközök

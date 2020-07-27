@@ -1104,6 +1104,8 @@
       items:
         - name: Adatok visszaállítása biztonsági mentésből
           href: how-to-backup-and-restore.md
+        - name: Kvótanövelés kérése
+          href: create-support-request-quota-increase.md
     - name: Figyelés
       items:
         - name: A Cosmos DB monitorozása
@@ -1112,6 +1114,8 @@
           items:
             - name: Azure Monitor a Cosmoshoz (előzetes verzió)
               href: ../azure-monitor/insights/cosmosdb-insights-overview.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+            - name: Monitorozandó forgatókönyvek
+              href: use-metrics.md
             - name: Kiszolgálóoldali késés monitorozása
               href: monitor-server-side-latency.md
             - name: Kérelemegység-használat monitorozása
@@ -1124,8 +1128,8 @@
               href: cosmosdb-monitor-resource-logs.md
             - name: Vezérlősík-naplózás
               href: audit-control-plane-logs.md
-        - name: Mérőszámok megtekintése Azure Cosmos DB-fiókból
-          href: use-metrics.md
+        - name: Riasztások konfigurálása
+          href: create-alerts.md
         - name: Adatreferencia monitorozása
           href: monitor-cosmos-db-reference.md
         - name: Alkalmazásnaplózás a Logic Apps használatával

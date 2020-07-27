@@ -280,6 +280,8 @@
           href: storage-blob-pageblob-overview.md
         - name: Statikus webhelyek
           href: storage-blob-static-website.md
+        - name: Az NFS 3.0 protokoll támogatása
+          href: network-file-system-protocol-support.md
     - name: Útmutató
       items:
         - name: Tárfiókok létrehozása és kezelése
@@ -469,12 +471,12 @@
                   href: ../common/storage-use-azcopy-configure.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Azure Data Factory
               href: ../../data-factory/connector-azure-blob-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Blob-tároló csatlakoztatása fájlrendszerként Linux rendszeren
+            - name: Tár csatlakoztatása Linuxról NFS használatával
+              href: network-file-system-protocol-support-how-to.md
+            - name: Tár csatlakoztatása Linuxról blobfuse használatával
               href: storage-how-to-mount-container-linux.md
             - name: Adatok átvitele az adatátviteli kódtárral
               href: ../common/storage-use-data-movement-library.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Tárolómigrálás – Gyakori kérdések
-              href: ../common/storage-migration-faq.md
         - name: Fejlesztés blobok használatával
           items:
             - name: C++
@@ -662,6 +664,9 @@
               href: security-recommendations.md
             - name: Hozzáférés-vezérlés (könyvtárak és fájlok)
               href: data-lake-storage-access-control.md
+            - name: Az Azure Policy biztonsági vezérlői
+              displayName: 'regulatory, compliance, standards, domains'
+              href: ./security-controls-policy.md
         - name: Kompatibilitás
           items:
             - name: Többprotokollos hozzáférés

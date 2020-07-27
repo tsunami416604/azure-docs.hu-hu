@@ -75,6 +75,8 @@
           href: enterprise-state-roaming-faqs.md
 - name: Referencia
   items:
+    - name: A TLS 1.2 kényszerítése
+      href: reference-device-registration-tls-1-2.md
     - name: Az Enterprise State Roaming csoportházirend-objektumainak beállításai
       href: enterprise-state-roaming-group-policy-settings.md
     - name: Az Enterprise State Roaming Windows-beállításai

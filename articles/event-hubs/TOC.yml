@@ -124,6 +124,9 @@
           href: network-security.md
         - name: Beépített biztonsági vezérlők
           href: event-hubs-security-controls.md
+        - name: Az Azure Policy biztonsági vezérlői
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
         - name: Biztonsági alapkonfiguráció
           href: security-baseline.md
     - name: AMQP 1.0 protokoll – útmutató
@@ -196,7 +199,7 @@
         - name: Diagnosztikai naplók beállítása
           href: event-hubs-diagnostic-logs.md
         - name: Azure Diagnostics-adatok streamelése az Event Hubs használatával
-          href: event-hubs-streaming-azure-diags-data.md
+          href: ../azure-monitor/platform/diagnostics-extension-stream-event-hubs.md
         - name: Átviteli egységek automatikus skálázása
           href: event-hubs-auto-inflate.md
         - name: Event Hubs felügyeleti könyvtárak
@@ -289,6 +292,8 @@
       href: /azure/templates/microsoft.eventhub/allversions
     - name: Kvóták
       href: event-hubs-quotas.md
+    - name: Apache Kafka-konfigurációk
+      href: apache-kafka-configurations.md
 - name: További források
   items:
     - name: Fejlessze a készségeit a Microsoft Learnnel

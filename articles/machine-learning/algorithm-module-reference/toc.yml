@@ -68,10 +68,14 @@
           href: boosted-decision-tree-regression.md
         - name: Döntési erdő típusú regresszió
           href: decision-forest-regression.md
+        - name: Gyors erdő típusú kvantilis regresszió
+          href: fast-forest-quantile-regression.md
         - name: Lineáris regresszió
           href: linear-regression.md
         - name: Neurális hálózat típusú regresszió
           href: neural-network-regression.md
+        - name: Poisson-regresszió
+          href: poisson-regression.md
     - name: Fürtözés
       items:
         - name: K-közép csoportosítás

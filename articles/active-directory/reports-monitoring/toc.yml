@@ -84,6 +84,8 @@
           href: troubleshoot-missing-data-download.md
         - name: Nem lehet hozzáférni a jelentéskészítési Graph API-khoz
           href: troubleshoot-graph-api.md
+        - name: Adatnaplózás az ellenőrzött tartomány változásakor
+          href: troubleshoot-audit-data-verified-domain.md
 - name: Referencia
   expanded: true
   items:

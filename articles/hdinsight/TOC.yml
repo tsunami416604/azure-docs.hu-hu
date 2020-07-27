@@ -35,7 +35,7 @@
           href: ./hdinsight-sdk-python-samples.md
         - name: Azure-minták böngészője
           href: 'https://azure.microsoft.com/resources/samples/?service=hdinsight'
-    - name: Alapelvek
+    - name: Fogalmak
       items:
         - name: Apache-összetevők a HDInsighton
           href: ./hdinsight-component-versioning.md
@@ -939,8 +939,6 @@
           href: ./control-network-traffic.md
         - name: NSG-khez és UDR-ekhez szükséges IP-címek
           href: ./hdinsight-management-ip-addresses.md
-        - name: Az Azure Firewall szolgáltatáscímkéi
-          href: ./hdinsight-service-tags.md
         - name: Ügyfél által felügyelt kulcson alapuló lemeztitkosítás
           href: ./disk-encryption.md
         - name: LDAP-szinkronizálás a Ranger és az Apache Ambari szolgáltatásban
@@ -967,8 +965,12 @@
           href: ./hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md
         - name: Tűzfal használata a kimenő forgalom korlátozására
           href: ./hdinsight-restrict-outbound-traffic.md
+        - name: Szolgáltatásvégpont-szabályzatok létrehozása
+          href: ./service-endpoint-policies.md
         - name: Hálózati virtuális berendezés konfigurálása
           href: ./network-virtual-appliance.md
+        - name: Az Azure Firewall szolgáltatáscímkéi
+          href: ./hdinsight-service-tags.md
         - name: Hibaelhárítás
           items:
             - name: Az ESP hitelesítéssel kapcsolatos problémái

@@ -14,6 +14,9 @@
       href: automation-quickstart-create-runbook.md
     - name: Desired State Configuration engedélyezése egy gép számára
       href: automation-quickstart-dsc-configuration.md
+    - name: Automation-fiók létrehozása – ARM-sablon
+      displayName: Resource Manager
+      href: quickstart-create-automation-account-template.md
 - name: Oktatóanyagok
   items:
     - name: Grafikus runbook létrehozása
@@ -58,7 +61,7 @@
         - name: Automation-fiók létrehozása az Azure Portalon
           href: automation-create-standalone-account.md
         - name: Automation-fiók létrehozása Resource Manager-sablonnal
-          href: automation-create-account-template.md
+          href: quickstart-create-automation-account-template.md
         - name: Hitelesítés konfigurálása az Amazon Web Services segítségével
           href: automation-config-aws-account.md
         - name: Hitelesítés konfigurálása az Azure AD-vel
@@ -177,6 +180,18 @@
               href: automation-dsc-extension-history.md
             - name: A State Configuration hibáinak elhárítása
               href: troubleshoot/desired-state-configuration.md
+            - name: Forgatókönyvek
+              items:
+                - name: STIG-alapú adatok konfigurálása
+                  href: automation-dsc-configuration-based-on-stig.md
+                - name: Adatok konfigurálása nagy mennyiségben
+                  href: automation-dsc-config-data-at-scale.md
+                - name: Konfiguráció létrehozása meglévő kiszolgálókból
+                  href: automation-dsc-config-from-server.md
+                - name: Konfigurációk átalakítása összetett erőforrásokká
+                  href: automation-dsc-create-composite.md
+                - name: Nem megfelelő kiszolgálók szervizelése
+                  href: automation-dsc-remediate.md
         - name: Változáskövetés és leltár
           items:
             - name: Áttekintés
