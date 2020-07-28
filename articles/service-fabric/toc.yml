@@ -143,6 +143,9 @@
           href: cluster-security-certificates.md
         - name: Tanúsítványkezelés a Service Fabricben
           href: cluster-security-certificate-management.md
+        - name: Az Azure Policy biztonsági vezérlői
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
         - name: Biztonsági alapkonfiguráció az Azure biztonsági teljesítményteszthez
           href: security-baseline.md
     - name: Terminológia

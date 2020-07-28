@@ -345,7 +345,7 @@
         - name: Megosztott lemezek
           href: disks-shared.md
         - name: Rövid élettartamú operációsrendszer-lemezek
-          href: ephemeral-os-disks.md
+          href: ../ephemeral-os-disks.md
     - name: Hálózat
       href: ../network-overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: Méretezési csoportok
