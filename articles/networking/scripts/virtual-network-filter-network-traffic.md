@@ -1,6 +1,6 @@
 ---
 title: Azure CLI-példaszkript – Virtuális gép hálózati forgalmának szűrése | Microsoft Docs
-description: Azure CLI-példaszkript – Virtuális gép kimenő és bejövő hálózati forgalmának szűrése.
+description: Egy Azure CLI-parancsfájl használatával szűrheti a bejövő és a kimenő virtuális gép (VM) hálózati forgalmát.
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 07/07/2017
 ms.author: kumud
-ms.openlocfilehash: fb62def47e46e6f72a2f04efaefaa9d36ef9e72c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d685da261a917b2d7b6432da65d1c1600ca07961
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080900"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281650"
 ---
 # <a name="use-an-azure-cli-script-to-filter-inbound-and-outbound-vm-network-traffic"></a>Azure CLI-szkript használata a bejövő és kimenő virtuálisgép-hálózati forgalom szűréséhez
 

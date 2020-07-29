@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/06/2020
 author: keferna
 ms.author: keferna
-ms.openlocfilehash: c305a2513a5ace241fe697766b851cd2851e8b78
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 029883ea1ac85bdd1ea256caaa711d6537c06a76
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536043"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287895"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>A kereskedelmi piactér előnyei
 
@@ -41,7 +41,7 @@ A program előnyeinek részletes ismertetését ebben a [Marketplace jutalmazás
 Az első lépések egyszerűek:
 
 1. Ajánlat közzététele Microsoft AppSource vagy Azure piactéren.
-2. Nyissa meg a [Piactéri jutalmakat](https://partner.microsoft.com/en-us/dashboard/mpn/program/commercialmarketplace) a partner Centerben, és válassza **a regisztrálás a Marketplace jutalmazási programban**lehetőséget.
+2. Nyissa meg a [Piactéri jutalmakat](https://partner.microsoft.com/dashboard/mpn/program/commercialmarketplace) a partner Centerben, és válassza **a regisztrálás a Marketplace jutalmazási programban**lehetőséget.
 3. Az értékesítés és a marketing előnyeinek aktiválásához vállalati marketing-kapcsolattartót kell rendelnie. A kapcsolattartó fogja megkapni a további információkat a Marketplace Rewardsszal kapcsolatban.
 4. A marketing kapcsolattartási adatok hozzáadásához vagy frissítéséhez lépjen a Marketplace jutalmazási oldal értékesítés és marketing előnyei lapjának tetejére, majd válassza a **Hozzáadás, frissítés vagy módosítás**lehetőséget.  Ezután tegye a következőket:
 
@@ -116,7 +116,7 @@ Ezt az ajánlatot angol nyelven, az Azure Marketplace-en vagy Microsoft AppSourc
 
 A megtévesztőnek bizonyuló tranzakciók nem számítanak bele a kiadó által számlázott értékesítési program szintjébe, ahogy azt a [lista, a próbaverzió, a Consulting](#list-trial-and-consulting-benefits) szakasz és a [Transact partner előnyei](#marketplace-rewards-for-transact-partners) című szakasz tartalmazza. A csalás eltávolítását követően a Microsoft kiosztja a partnereket a jogosultsági szintek szerint a tényleges számlázott értékesítések alapján.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az ajánlat létrehozásához vagy konfigurálásához jelentkezzen be a [partner Centerben](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) .
 

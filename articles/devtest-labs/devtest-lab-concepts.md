@@ -3,12 +3,12 @@ title: DevTest Labs-fogalmak | Microsoft Docs
 description: Ismerje meg a DevTest Labs alapfogalmait, és hogy miként könnyítheti meg az Azure-beli virtuális gépek létrehozását, kezelését és figyelését
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 8f82f0484caf23d20092318b5bc2a32b0e6b1f1d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 43d62d637686a785cafd29aa311ccf20cb942721
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074971"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283843"
 ---
 # <a name="devtest-labs-concepts"></a>DevTest Labs-fogalmak
 ## <a name="overview"></a>Áttekintés
@@ -17,10 +17,10 @@ Az alábbi lista a főbb DevTest Labs-fogalmakat és-definíciókat tartalmazza:
 ## <a name="labs"></a>Tesztkörnyezetek
 A labor olyan infrastruktúra, amely magában foglalja az erőforrások egy csoportját, például a Virtual Machines (VM), amely lehetővé teszi, hogy a korlátok és kvóták megadásával hatékonyabban kezelhesse ezeket az erőforrásokat.
 
-## <a name="virtual-machine"></a>Virtuális gép
+## <a name="virtual-machine"></a>virtuális gép
 Az Azure-beli virtuális gépek az Azure által kínált különböző típusú [, igény szerinti, méretezhető számítási erőforrások](/azure/architecture/guide/technology-choices/compute-decision-tree) egyike. Az Azure-beli virtuális gépek lehetővé teszik a virtualizáció rugalmasságát anélkül, hogy az azt futtató fizikai hardvereket kellene vásárolnia és fenntartania, de továbbra is fenn kell tartania a virtuális gépet bizonyos feladatok (például a konfigurálás, a javítás és a rajta futó szoftver telepítése) végrehajtásával.
 
-[Az Azure-beli Windows rendszerű virtuális gépek áttekintése](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-overview) információt nyújt arról, hogy mit kell figyelembe vennie a virtuális gép létrehozása előtt, hogyan hozza létre, és hogyan kezelje.
+[Az Azure-beli Windows rendszerű virtuális gépek áttekintése](../virtual-machines/windows/overview.md) információt nyújt arról, hogy mit kell figyelembe vennie a virtuális gép létrehozása előtt, hogyan hozza létre, és hogyan kezelje.
 
 ## <a name="claimable-vm"></a>Igényelhető virtuális gép
 Az Azure-beli igényelhető virtuális gépek egy olyan virtuális gép, amelyet bármely, engedélyekkel rendelkező labor-felhasználó használhat. A tesztkörnyezet rendszergazdája előkészítheti a virtuális gépeket meghatározott alapképekkel és összetevőkkel, és mentheti őket egy megosztott készletbe. A labor-felhasználók ezután igényelhetnek egy működő virtuális gépet a készletből, ha erre a konfigurációra van szükségük.
@@ -28,7 +28,7 @@ Az Azure-beli igényelhető virtuális gépek egy olyan virtuális gép, amelyet
 Egy igényelt virtuális gép kezdetben nincs hozzárendelve egy adott felhasználóhoz, de az összes felhasználó listájában megjelenik a "igényelhető virtuális gépek" alatt. Azt követően, hogy egy virtuális gépet egy felhasználó igényel, a rendszer áthelyezi a "saját virtuális gépek" területen, és más felhasználók már nem igényelhetik azt.
 
 ## <a name="environment"></a>Környezet
-A DevTest Labs szolgáltatásban a környezet a tesztkörnyezetben található Azure-erőforrások gyűjteményére utal. [Ez a blogbejegyzés](https://blogs.msdn.microsoft.com/devtestlab/2016/11/16/connect-2016-news-for-azure-devtest-labs-azure-resource-manager-template-based-environments-vm-auto-shutdown-and-more/) a több virtuális gépre kiterjedő környezetek Azure Resource Manager-sablonokból való létrehozását ismerteti.
+A DevTest Labs szolgáltatásban a környezet a tesztkörnyezetben található Azure-erőforrások gyűjteményére utal. [Ez a blogbejegyzés](./devtest-lab-faq.md#blog-post) a több virtuális gépre kiterjedő környezetek Azure Resource Manager-sablonokból való létrehozását ismerteti.
 
 ## <a name="base-images"></a>Alapként szolgáló rendszerképek
 Az alaplemezképek a virtuális gépek gyors létrehozásához és konfigurálásához szükséges összes eszközt és beállítást tartalmazó virtuálisgép-lemezképek. A virtuális gép kiépítéséhez válasszon ki egy meglévő alapot, és adjon hozzá egy összetevőt a tesztelési ügynök telepítéséhez. Ezután mentheti a kiépített virtuális gépet úgy, hogy az a virtuális gép minden egyes üzembe helyezése után a tesztelési ügynök újratelepítése nélkül is használható legyen.
@@ -74,7 +74,7 @@ Mivel a hatókörök hierarchikusak, amikor egy felhasználó egy bizonyos ható
 ## <a name="azure-resource-manager-templates"></a>Azure Resource Manager-sablonok
 Az ebben a cikkben tárgyalt fogalmakat Azure Resource Manager sablonok használatával konfigurálhatja, amelyek lehetővé teszik az Azure-megoldás infrastruktúrájának/konfigurációjának meghatározását, és a rendszer ismételt üzembe helyezését konzisztens állapotba.
 
-[Azure Resource Manager sablonok struktúrájának és szintaxisának megismerése](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates#template-format) egy Azure Resource Manager sablon struktúráját és a sablon különböző részeiben elérhető tulajdonságokat ismerteti.
+[Azure Resource Manager sablonok struktúrájának és szintaxisának megismerése](../azure-resource-manager/templates/template-syntax.md#template-format) egy Azure Resource Manager sablon struktúráját és a sablon különböző részeiben elérhető tulajdonságokat ismerteti.
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 

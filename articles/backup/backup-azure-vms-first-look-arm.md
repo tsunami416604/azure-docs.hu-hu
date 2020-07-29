@@ -3,12 +3,12 @@ title: Azure-beli virtuális gép biztonsági mentése a virtuális gép beáll�
 description: Ebből a cikkből megtudhatja, hogyan készíthet biztonsági mentést egy egyedi Azure-beli vagy több Azure-beli virtuális gépről a Azure Backup szolgáltatással.
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: 580cb1ad5f611991212bc8cdb48c66339f14d8e8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 722c24ce87edc692156a86338521aa3b2f9c7562
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538887"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286741"
 ---
 # <a name="back-up-an-azure-vm-from-the-vm-settings"></a>Azure-beli virtuális gép biztonsági mentése a virtuális gép beállításaiból
 
@@ -39,15 +39,15 @@ Az Azure-beli virtuális gépek biztonsági mentéséhez Azure Backup telepít e
    - Ha már rendelkezik tárolóval, kattintson a **meglévő kiválasztása**elemre, majd válasszon ki egy tárolót.
    - Ha nem rendelkezik tárolóval, kattintson az **új létrehozása**lehetőségre. Adja meg a tároló nevét. Ugyanabban a régióban és erőforráscsoporthoz lett létrehozva, mint a virtuális gép. Ezek a beállítások nem módosíthatók, ha közvetlenül a virtuális gép beállításaiból engedélyezi a biztonsági mentést.
 
-   ![Biztonsági mentés engedélyezése varázsló](./media/backup-azure-vms-first-look-arm/vm-menu-enable-backup-small.png)
+        ![Biztonsági mentés engedélyezése varázsló](./media/backup-azure-vms-first-look-arm/vm-menu-enable-backup-small.png)
 
-6. A **biztonsági mentési szabályzat kiválasztása**területen tegye a következőket:
+6. A **biztonsági mentési szabályzat kiválasztása**területen tegye a következők egyikét:
 
    - Hagyja meg az alapértelmezett házirendet. Ezzel a beállítással naponta egyszer biztonsági másolatot készít a virtuális gépről, és 30 napig megőrzi a biztonsági mentéseket a tárolóban.
    - Ha rendelkezik ilyennel, válasszon ki egy meglévő biztonsági mentési szabályzatot.
    - Hozzon létre egy új szabályzatot, és adja meg a házirend-beállításokat.  
 
-   ![Biztonsági mentési házirend kiválasztása](./media/backup-azure-vms-first-look-arm/set-backup-policy.png)
+       ![Biztonsági mentési házirend kiválasztása](./media/backup-azure-vms-first-look-arm/set-backup-policy.png)
 
 7. Kattintson a **biztonsági mentés engedélyezése**elemre. Ez a biztonsági mentési szabályzatot a virtuális géppel társítja.
 
@@ -85,7 +85,7 @@ A cikk utasításait követve engedélyezheti az Azure-beli virtuális gépek bi
 >
 >**Az előzetes verzióra való feliratkozáshoz írjon nekünk a következőt:AskAzureBackupTeam@microsoft.com**
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ha a jelen cikkben ismertetett eljárások valamelyikével kapcsolatban nehézségekbe ütközik, tekintse meg a [hibaelhárítási útmutatót](backup-azure-vms-troubleshoot.md).
 - [További](backup-azure-manage-vms.md) információ a biztonsági másolatok kezeléséről.

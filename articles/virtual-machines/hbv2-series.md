@@ -4,14 +4,15 @@ description: A HBv2 sorozatú virtuális gépek specifikációi.
 author: vermagit
 ms.service: virtual-machines
 ms.subservice: sizes
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: amverma
-ms.openlocfilehash: 730065333fde7431b7018ef0a6e614e12727d7ed
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f9717105c9241777d72a8943e87f33ab31c8038c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84673853"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288493"
 ---
 # <a name="hbv2-series"></a>HBv2 sorozat
 
@@ -34,7 +35,7 @@ Memória-megőrzési frissítések: nem támogatott
 
 - [Általános célú](sizes-general.md)
 - [Memóriaoptimalizált](sizes-memory.md)
-- [Tárolásra optimalizált](sizes-storage.md)
+- [Tároptimalizált](sizes-storage.md)
 - [GPU-optimalizált](sizes-gpu.md)
 - [Nagy teljesítményű számítás](sizes-hpc.md)
 - [Előző generációk](sizes-previous-gen.md)

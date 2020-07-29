@@ -4,15 +4,15 @@ description: Ismerje meg az Azure-hoz készült vCPU-kvótákat.
 author: cynthn
 ms.service: virtual-machines
 ms.workload: infrastructure-services
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/31/2018
 ms.author: cynthn
-ms.openlocfilehash: ce08ebeba6ad09ec4cba063d787c510dce6e1e2f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 684c665d57127b7ca52771c0498ef370293e4003
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86501988"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292304"
 ---
 # <a name="virtual-machine-vcpu-quotas"></a>Virtuális gépek vCPU-kvótái
 
@@ -59,6 +59,6 @@ A fenntartott VM-példányok, amelyek a virtuális gépek méretének rugalmass�
 
 Ha egy előfizetési RI megvásárlásához kvóta-növelésre van szükség, akkor az előfizetésre vonatkozó [kvóta növelését kérheti](../../azure-portal/supportability/resource-manager-core-quotas-request.md) .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A számlázással és a kvótákkal kapcsolatos további információkért lásd: [Azure-előfizetések és-szolgáltatások korlátai, kvótái és megkötései](../../azure-resource-manager/management/azure-subscription-service-limits.md?toc=/azure/billing/TOC.json).

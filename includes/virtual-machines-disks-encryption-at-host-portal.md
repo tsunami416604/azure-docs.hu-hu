@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/07/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: c5ea31217bd3088ec123281b36f8578b08ea25b2
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: f0a706cc51027bc503da9ee3bc637216e9e52853
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/24/2020
-ms.locfileid: "87136237"
+ms.locfileid: "87171358"
 ---
 ## <a name="restrictions"></a>Korlátozások
 
@@ -50,12 +50,12 @@ Egy új virtuális gépet kell üzembe helyeznie, hogy engedélyezze a titkosít
 1. Hozzon létre egy új virtuális gépet, válasszon ki egy megfelelő régiót és egy támogatott VM-méretet.
 1. Adja meg a többi értéket az **alapszintű** panelen, majd lépjen a **lemezek** panelre.
 
-    :::image type="content" source="media/virtual-machines-disks-encryption-at-host-portal/disks-encryption-at-host-basic-blade.png" alt-text="Példa szövege":::
+    :::image type="content" source="media/virtual-machines-disks-encryption-at-host-portal/disks-encryption-at-host-basic-blade.png" alt-text="Képernyőfelvétel: a virtuális gépek létrehozási alapjai panel, a régió és a V M méret van kiemelve.":::
 
 1. A **lemezek** panelen válassza az **Igen** lehetőséget a **titkosításhoz a gazdagépen**.
 1. Végezze el a többi kijelölést úgy, ahogy szeretné.
 
-    :::image type="content" source="media/virtual-machines-disks-encryption-at-host-portal/disks-encryption-at-host-disk-blade.png" alt-text="Példa szövege":::
+    :::image type="content" source="media/virtual-machines-disks-encryption-at-host-portal/disks-encryption-at-host-disk-blade.png" alt-text="A virtuális gépek létrehozási lemezei panel képernyőképe a gazdagépen lévő titkosítás kiemelése.":::
 
 1. Fejezze be a virtuális gép telepítési folyamatát, és válassza ki a környezetnek megfelelő beállításokat.
 

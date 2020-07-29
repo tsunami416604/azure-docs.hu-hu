@@ -11,15 +11,15 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
-ms.topic: article
+ms.topic: how-to
 ms.date: 10/10/2019
 ms.author: cynthn
-ms.openlocfilehash: 854421452228a54833da4b0f05669c6d5f1c842f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: df2b58e0067932edd9dfa21ee1a6fbb2a5c1fdf7
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86501738"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289754"
 ---
 # <a name="create-a-linux-vm-from-a-custom-disk-with-the-azure-cli"></a>Linuxos virtuális gép létrehozása egyéni lemezről az Azure CLI-vel
 
@@ -132,5 +132,5 @@ az vm create \
 
 A forrás virtuális gép hitelesítő adataival SSH-val csatlakozhat a virtuális géphez. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Miután felkészítette és feltöltötte az egyéni virtuális lemezt, további információt olvashat a [Resource Manager és a sablonok használatáról](../../azure-resource-manager/management/overview.md). Előfordulhat, hogy [adatlemezt](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) is szeretne hozzáadni az új virtuális gépekhez. Ha olyan alkalmazások futnak a virtuális gépeken, amelyekhez hozzá kell férnie, ne felejtse el [megnyitni a portokat és a végpontokat](nsg-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
