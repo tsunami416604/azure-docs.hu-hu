@@ -7,6 +7,7 @@ description: Ismerje meg, hogyan engedélyezheti az Azure dev Spaces szolgáltat
 keywords: Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s
 ms.openlocfilehash: b62c4a4861529c19363f159b8cc64a32a0ba11e8
 ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/02/2020
 ms.locfileid: "83996261"
