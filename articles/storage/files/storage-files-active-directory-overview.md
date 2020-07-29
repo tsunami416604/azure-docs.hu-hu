@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: rogarana
-ms.openlocfilehash: cb57606259fe674519015fd2de741d6c1d08c5e9
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 48441a48fe6f72e88e080967451d9904c3e586b2
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87127196"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372321"
 ---
 # <a name="overview-of-azure-files-identity-based-authentication-options-for-smb-access"></a>Az SMB-hozzáférésre vonatkozó Azure Files identitás-alapú hitelesítési beállítások áttekintése
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -123,7 +123,7 @@ Az identitás-alapú hitelesítést engedélyezheti az Azure-AD DS vagy a helysz
 
 ### <a name="configure-share-level-permissions-for-azure-files"></a>Megosztási szintű engedélyek konfigurálása Azure Fileshoz
 
-Ha az Azure AD DS vagy a helyszíni AD DS hitelesítés engedélyezve van, használhatja a beépített RBAC-szerepköröket, vagy egyéni szerepköröket konfigurálhat az Azure AD-identitásokhoz, valamint hozzáférési jogokat rendelhet a Storage-fiókokban lévő összes fájlmegosztási megosztáshoz. A hozzárendelt engedély lehetővé teszi, hogy a megadott identitás csak a megosztáshoz kapjon hozzáférést, semmi más, még a gyökérkönyvtárban sem. Az Azure-fájlmegosztás esetében továbbra is külön kell konfigurálnia a címtár-vagy a fájl szintű engedélyeket.
+Ha az Azure AD DS vagy a helyszíni AD DS hitelesítés engedélyezve van, használhatja az Azure beépített szerepköreit, vagy egyéni szerepköröket konfigurálhat az Azure AD-identitásokhoz, valamint hozzáférési jogokat rendelhet a Storage-fiókokban lévő összes fájlmegosztási megosztáshoz. A hozzárendelt engedély lehetővé teszi, hogy a megadott identitás csak a megosztáshoz kapjon hozzáférést, semmi más, még a gyökérkönyvtárban sem. Az Azure-fájlmegosztás esetében továbbra is külön kell konfigurálnia a címtár-vagy a fájl szintű engedélyeket.
 
 ### <a name="configure-directory-or-file-level-permissions-for-azure-files"></a>A Azure Files könyvtár-vagy fájl szintű engedélyeinek konfigurálása
 

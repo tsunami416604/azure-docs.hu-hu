@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 06/17/2020
 ms.custom: azure-synapse
-ms.openlocfilehash: 7b8c6e09616f261c371b010b38d2c0f81376a6f9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4f6a64cf30ecc684e05675d366ff5c9fc6642126
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84944764"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372161"
 ---
 # <a name="write-audit-to-a-storage-account-behind-vnet-and-firewall"></a>Naplózás írása a VNet és a tűzfal mögötti Storage-fiókba
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -61,7 +61,7 @@ Kapcsolódjon [Azure Portal](https://portal.azure.com) az előfizetéséhez. Nav
   >
   >Ha nem látja ezt az üzenetet, a Storage-fiók nem egy VNet mögött található.
 
-4. Adja meg a megőrzési időtartam napjainak számát. Ezt követően kattintson az **OK** gombra. A megőrzési időtartamnál régebbi naplók törlődnek.
+4. Adja meg a megőrzési időtartam napjainak számát. Ezután kattintson az **OK** gombra. A megőrzési időtartamnál régebbi naplók törlődnek.
 
 5. Válassza a **Mentés** lehetőséget a naplózási beállításokban.
 
@@ -77,7 +77,7 @@ Az ebben a szakaszban szereplő parancsfájloknak a futtatása előtt frissíten
 |:-----|:-----|
 |`<subscriptionId>`| Azure-előfizetés azonosítója|
 |`<resource group>`| Erőforráscsoport|
-|`<logical SQL server>`| Kiszolgáló neve|
+|`<logical SQL server>`| Kiszolgálónév|
 |`<administrator login>`| Rendszergazdai fiók |
 |`<complex password>`| A rendszergazdai fiókhoz tartozó összetett jelszó|
 
@@ -120,7 +120,7 @@ Az SQL audit beállítása az események VNet vagy tűzfal mögötti Storage-fi�
 2. Nyissa meg az [Azure Portalt](https://portal.azure.com). Nyissa meg a tárfiókot. Keresse meg **Access Control (iam)**, majd kattintson a **szerepkör-hozzárendelés hozzáadása**lehetőségre. Rendeljen hozzá **Storage blob-adatközreműködői** RBAC szerepkört a Azure Active Directory (Azure ad) szolgáltatásban regisztrált adatbázist futtató kiszolgálóhoz az előző lépésben leírtak szerint.
 
    > [!NOTE]
-   > Ezt a lépést csak a tulajdonosi jogosultsággal rendelkező tagok hajthatják végre. Az Azure-erőforrások különböző beépített szerepköreiért tekintse meg az [Azure beépített szerepköreit](../../role-based-access-control/built-in-roles.md).
+   > Ezt a lépést csak a tulajdonosi jogosultsággal rendelkező tagok hajthatják végre. A különböző Azure-beli beépített szerepkörökhöz tekintse meg az [Azure beépített szerepköreit](../../role-based-access-control/built-in-roles.md).
 
 3. Konfigurálja a [kiszolgáló blob naplózási házirendjét](/rest/api/sql/server%20auditing%20settings/createorupdate)a *storageAccountAccessKey*megadása nélkül:
 

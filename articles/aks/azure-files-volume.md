@@ -5,12 +5,12 @@ description: Megtudhatja, hogyan hozhat létre manuálisan olyan köteteket, Azu
 services: container-service
 ms.topic: article
 ms.date: 03/01/2019
-ms.openlocfilehash: 144d93cbb3b66f260dbd9d92863ca5fb13ed00a5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e7f013d16b899418a5262f23dfcc595a1e270616
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82207666"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281208"
 ---
 # <a name="manually-create-and-use-a-volume-with-azure-files-share-in-azure-kubernetes-service-aks"></a>Azure Files megosztással rendelkező kötet manuális létrehozása és használata az Azure Kubernetes szolgáltatásban (ak)
 
@@ -234,6 +234,8 @@ A tároló specifikációjának frissítésével hivatkozhat a *PersistentVolume
 A kapcsolódó ajánlott eljárásokért lásd: [ajánlott eljárások a tároláshoz és a biztonsági mentéshez az AK-ban][operator-best-practices-storage].
 
 Az AK-fürtökkel kapcsolatos további információk a Azure Fileskal együttműködve: [Azure Files Kubernetes beépülő modulja][kubernetes-files].
+
+A tárolási osztályok paramétereinek megtekintéséhez lásd: [statikus kiépítés (saját fájlmegosztás használata)](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/docs/driver-parameters.md#static-provisionbring-your-own-file-share).
 
 <!-- LINKS - external -->
 [kubectl-create]: https://kubernetes.io/docs/user-guide/kubectl/v1.8/#create

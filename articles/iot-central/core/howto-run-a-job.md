@@ -7,11 +7,12 @@ author: sarahhubbard
 ms.author: sahubbar
 ms.date: 06/08/2020
 ms.topic: how-to
-ms.openlocfilehash: dec9abc38bc0354ef3d22994a7988bfb006f5769
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6073f71eb21ba4a6739647964d4888044d6ee59a
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84609742"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283621"
 ---
 # <a name="create-and-run-a-job-in-your-azure-iot-central-application"></a>Feladatok létrehozása és futtatása az Azure IoT Central alkalmazásban
 
@@ -42,7 +43,11 @@ Ebből a szakaszból megtudhatja, hogyan hozhat létre és futtathat feladatokat
     > [!NOTE]
     > A korábban futtatott feladatok esetében 30 nappal korábbi előzményeket tekinthet meg.
 
-7. A feladatok áttekintéséhez válassza ki a listából a megtekinteni kívánt feladatot. Ez az Áttekintés a feladatok részleteit, az eszközöket és az Eszközállapot-értékeket tartalmazza. Ebből az áttekintésből kiválaszthatja a feladatok **részleteinek letöltése** lehetőséget is, ha le szeretné tölteni a feladatok részleteit tartalmazó CSV-fájlt, beleértve az eszközöket és az állapotukat is. Ezek az információk a hibaelhárításhoz hasznosak lehetnek:
+7. Kattintson a mentett feladatokra, és hajtsa végre a feladatot a Futtatás gombra kattintva. Egy felugró ablak jelenik meg. Erősítse meg a feladatok futtatása gombra kattintva. 
+
+    ![Feladatok futtatása](./media/howto-run-a-job/run-job.png)
+
+8. A feladatok a függőben lévő, futó és befejezett különböző fázisokon haladnak át. A feladatok végrehajtásának részletei az eredmények mérőszámait, az időtartam részleteit és az eszközök listáját tartalmazó rácsot tartalmazzák. Ebből az áttekintésből kiválaszthatja az **eredmények naplóját** is, hogy letöltse a feladatok részleteit tartalmazó CSV-fájlt, beleértve az eszközöket és az állapotukat is. Ez az információ hasznos lehet a hibaelhárításhoz.
 
     ![Eszközállapot megtekintése](./media/howto-run-a-job/download-details.png)
 
@@ -50,13 +55,23 @@ Ebből a szakaszból megtudhatja, hogyan hozhat létre és futtathat feladatokat
 
 Az egyik futó feladat leállításához nyissa meg, majd válassza a **Leállítás**lehetőséget. A feladatok állapota úgy változik, hogy a rendszer leállítja a feladatot. Az **Összefoglalás** szakaszban látható, hogy mely eszközök lettek végrehajtva, sikertelenek, vagy még függőben vannak.
 
-A jelenleg leállított feladatok futtatásához jelölje ki azt, majd válassza a **Futtatás**lehetőséget. A feladatok állapota úgy változik, hogy az tükrözze a feladatot. Az **Összefoglalás** szakasz a legújabb folyamattal folytatja a frissítést.
-
 ![Feladatok kezelése](./media/howto-run-a-job/manage-job.png)
+
+Ha a feladatot leállított állapotban van, kattintson a **Folytatás** gombra a feladatok végrehajtásának folytatásához. A feladatok állapota úgy változik, hogy az tükrözze a feladatot. Az **Összefoglalás** szakasz a legújabb folyamattal folytatja a frissítést.
+
+![Leállított feladatok](./media/howto-run-a-job/stopped-job.png)
 
 ## <a name="copy-a-job"></a>Feladatok másolása
 
-Az egyik meglévő feladat másolásához jelölje ki azt a **feladatok** lapon, majd válassza a **Másolás**lehetőséget. Ekkor megnyílik a feladatok konfigurációjának egy másolata, amelyet **a rendszer a** feladatok nevéhez hozzáfűz. Az új feladatot az alábbiak szerint mentheti vagy futtathatja:
+Az egyik meglévő feladat másolásához válassza ki azt a **feladatok** lapon, és válassza a **feladat részletei**lehetőséget. Ekkor megjelenik a feladatok részletei lap. 
+
+![Feladat részletei](./media/howto-run-a-job/job-details.png)
+
+Kattintson a **Másolás** gombra
+
+![Feladat részletei](./media/howto-run-a-job/job-details-copy.png)
+
+Ekkor megnyílik a feladatok konfigurációjának egy másolata, amelyet **a rendszer a** feladatok nevéhez hozzáfűz. Az új feladatot az alábbiak szerint mentheti vagy futtathatja:
 
 ![Másolási feladatok](./media/howto-run-a-job/copy-job.png)
 
@@ -66,7 +81,7 @@ A feladatok létrehozása után az **állapot** oszlop a feladatokhoz tartozó l
 
 | Állapotüzenet       | Állapot jelentése                                          |
 | -------------------- | ------------------------------------------------------- |
-| Befejeződött            | Ezt a feladatot minden eszközön végrehajtotta a rendszer.              |
+| Befejezve            | Ezt a feladatot minden eszközön végrehajtotta a rendszer.              |
 | Sikertelen               | A feladatot nem sikerült végrehajtani, és nem hajtották végre teljesen az eszközökön.  |
 | Függőben              | Ez a feladattípus még nem kezdte meg az eszközökön való végrehajtást.         |
 | Fut              | Ez a feladatok jelenleg az eszközökön vannak végrehajtva.             |
@@ -85,7 +100,7 @@ A feladatok és az összes érintett eszköz állapotának megtekintéséhez nyi
 
 | Állapotüzenet       | Állapot jelentése                                                                |
 | -------------------- | ----------------------------------------------------------------------------- |
-| Befejeződött            | Az eszközön végrehajtott feladatok.                                     |
+| Befejezve            | Az eszközön végrehajtott feladatok.                                     |
 | Sikertelen               | A feladatot nem sikerült végrehajtani az eszközön. A hibaüzenet további információkat jelenít meg.  |
 | Függőben              | A feladatot még nem hajtották végre ezen az eszközön.                                   |
 

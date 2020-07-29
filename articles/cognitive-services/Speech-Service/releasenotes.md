@@ -11,14 +11,43 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: eceb34b57a0b2dd62f93f7732a6b93221e3ecb56
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 152907908f12a41679b3161e0c4b39348926399e
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86512663"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373793"
 ---
 # <a name="speech-service-release-notes"></a>Beszédfelismerési szolgáltatás kibocsátási megjegyzései
+
+## <a name="speech-sdk-1130-2020-july-release"></a>Speech SDK 1.13.0:2020 – júliusi kiadás
+
+**Megjegyzés**: a Windowson futó Speech SDK a visual Studio 2015, 2017 és 2019 rendszerhez készült Microsoft Visual C++ terjeszthető változattól függ. Töltse le és telepítse innen [.](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)
+
+**Új funkciók**
+- **C#**: az aszinkron beszélgetések átírásának támogatása. [Itt](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-async-conversation-transcription)találja a dokumentációt.  
+- **JavaScript**: a [böngésző](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/browser/speaker-recognition) és a [node.js](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/node/speaker-recognition)Speaker Recognition támogatását is felvettük.
+- **JavaScript**: az automatikus nyelvfelismerés/nyelvi azonosító támogatása. [Itt](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-automatic-language-detection?pivots=programming-language-javascript)találja a dokumentációt.
+- **Objective-C**: a többeszközes beszélgetések és a beszélgetés átírásának támogatása. 
+- **Python**: bővített hangtámogatás a Pythonhoz Windows és Linux rendszeren. [Itt](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-codec-compressed-audio-input-streams)találja a dokumentációt. 
+
+**Hibajavítások**
+- **Összes**: kijavított egy olyan problémát, amely miatt a KeywordRecognizer nem mozdult el a streamek továbbítása után.
+- **Összes**: kijavított egy hibát, amely a KeywordRecognitionResult beszerzett adatfolyamot okozta, hogy ne tartalmazza a kulcsszót.
+- **Összes**: kijavított egy hibát, amely szerint a SendMessageAsync nem küldi el az üzenetet a dróton keresztül, miután a felhasználók befejeztek a várakozást.
+- **Mind**: javítva Speaker Recognition API-k összeomlása, amikor a felhasználók több VoiceProfileClient indítanak el:: SpeakerRecEnrollProfileAsync, és nem vártak a befejezéshez.
+- **Összes**: a VoiceProfileClient és a SpeakerRecognizer osztályokban a fájlok naplózásának engedélyezése rögzített.
+- **JavaScript**: [probléma](https://github.com/microsoft/cognitive-services-speech-sdk-js/issues/74) javítva a szabályozással a böngésző méretének csökkentése érdekében.
+- **JavaScript**: [probléma](https://github.com/microsoft/cognitive-services-speech-sdk-js/issues/78) javítva a streamek memóriavesztés esetén.
+- **JavaScript**: a NodeJS-ből származó OCSP-válaszok gyorsítótárazása hozzáadva.
+- **Java**: kijavított egy problémát, amely BigInteger-mezőket eredményezett, így mindig 0 értéket ad vissza.
+- **iOS**: kijavítva és [probléma](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/702) az iOS App Store-ban a Speech SDK-alapú alkalmazások közzétételekor.
+
+**Példák**
+- **C++** [: Speaker Recognitionhoz](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/cpp/windows/console/samples/speaker_recognition_samples.cpp)hozzáadott mintakód.
+
+**COVID – 19 rövidített tesztelés:** Az elmúlt néhány hét során távolról végzett munka miatt nem sikerült a lehető legkevesebb kézi ellenőrzési tesztet végrehajtani, mint általában. Nem történt semmilyen olyan változás, amelyet úgy gondolunk, hogy bármi megszakadt, és az automatizált tesztek mindegyike sikeres volt. Ha nem valószínű, hogy kihagytak valamit, kérjük, tudassa velünk a [githubon](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues?q=is%3Aissue+is%3Aopen).<br>
+Egészségesek maradjanak!
 
 ## <a name="text-to-speech-2020-july-release"></a>Szöveg-beszéd 2020 – júliusi kiadás
 
@@ -69,7 +98,7 @@ ms.locfileid: "86512663"
 * Pénznem olvasása
     * Kijavítottuk a és a pénznem beolvasásával kapcsolatos problémát `es-ES``es-MX`
      
-    | Nyelv | Bevitel | Fejlesztés utáni kiolvasás |
+    | Nyelv | Input (Bemenet) | Fejlesztés utáni kiolvasás |
     |---|---|---|
     | `es-MX` | $1,58 | un peso cincuenta y Ocho centavos |
     | `es-ES` | $1,58 | un dólar cincuenta y Ocho centavos |
@@ -85,7 +114,7 @@ ms.locfileid: "86512663"
 
 ### <a name="samplessdk"></a>Minták/SDK
 
-* JavaScript: megjavítja a FireFox lejátszási problémáját, valamint a Safarit macOS és iOS rendszeren. 
+* JavaScript: megjavítja a Firefox lejátszási problémáját, valamint a Safarit macOS és iOS rendszeren. 
 
 ## <a name="speech-sdk-1121-2020-june-release"></a>Speech SDK 1.12.1:2020 – júniusi kiadás
 **Speech CLI (más néven SPX)**
@@ -115,7 +144,7 @@ Egészségesek maradjanak!
 
 
 ## <a name="speech-sdk-1120-2020-may-release"></a>Speech SDK 1.12.0:2020 – májusi kiadás
-**Speech CLI (más néven SPX)**
+**Speech CLI (más néven SPX-ként is ismert)**
 - Az **SPX** egy új parancssori eszköz, amellyel elvégezhető a parancssorból való felismerés, szintézis, fordítás, kötegelt átírás és egyéni beszédfelismerés. A segítségével tesztelheti a beszédfelismerési szolgáltatást, vagy parancsfájlban megadhatja a végrehajtani kívánt beszédfelismerési szolgáltatás feladatait. Töltse le az eszközt, és olvassa el [itt](https://docs.microsoft.com/azure/cognitive-services/speech-service/spx-overview)a dokumentációt.
 
 **Új funkciók**

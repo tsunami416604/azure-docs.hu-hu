@@ -3,12 +3,12 @@ title: Azure Service Fabric-fürt üzembe helyezésének megtervezése
 description: Ismerje meg, hogyan tervezheti meg és készítse elő az Azure-beli üzemi Service Fabric-fürtök üzembe helyezését.
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.openlocfilehash: 462548d7f32a015701ef12e9777e8d9b1b1350f4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1064e59491b7144aafade24bd50131478fe025eb
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610591"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281327"
 ---
 # <a name="plan-and-prepare-for-a-cluster-deployment"></a>A fürt üzembe helyezésének megtervezése és előkészítése
 
@@ -51,7 +51,7 @@ Az *ideiglenes operációsrendszer-lemezek* a helyi virtuális GÉPEN (VM) létr
 
 Az ideiglenes operációsrendszer-lemezek nem egy adott Service Fabric funkció, hanem az Azure-beli *virtuálisgép-méretezési* csoportok egyik funkciója, amely Service Fabric csomópont-típusokra van leképezve. A Service Fabric használatához a következőkre van szükség a fürt Azure Resource Manager sablonjában:
 
-1. Győződjön meg arról, hogy a csomópont-típusok támogatják az Azure-beli [virtuális gépek támogatott méreteit](../virtual-machines/windows/ephemeral-os-disks.md) az átmeneti operációsrendszer-lemezekhez, és hogy a virtuális gép méretének mérete az operációsrendszer-lemez méretének támogatásához (lásd az alábbi *megjegyzést* ). Például:
+1. Győződjön meg arról, hogy a csomópont-típusok támogatják az Azure-beli [virtuális gépek támogatott méreteit](../virtual-machines/ephemeral-os-disks.md) az átmeneti operációsrendszer-lemezekhez, és hogy a virtuális gép méretének mérete az operációsrendszer-lemez méretének támogatásához (lásd az alábbi *megjegyzést* ). Például:
 
     ```xml
     "vmNodeType1Size": {
@@ -97,7 +97,7 @@ Az ideiglenes operációsrendszer-lemezek nem egy adott Service Fabric funkció,
 > Az áttelepítés érdekében a felhasználóknak új nodeType kell [felvenniük](./virtual-machine-scale-set-scale-node-type-scale-out.md) az ideiglenes lemezekkel, át kell helyezniük a munkaterheléseket az új nodeType & [el kell távolítani](./service-fabric-how-to-remove-node-type.md) a meglévő nodeType.
 >
 
-További információ és további konfigurációs lehetőségek: [ideiglenes operációsrendszer-lemezek Azure-beli virtuális gépekhez](../virtual-machines/windows/ephemeral-os-disks.md) 
+További információ és további konfigurációs lehetőségek: [ideiglenes operációsrendszer-lemezek Azure-beli virtuális gépekhez](../virtual-machines/ephemeral-os-disks.md) 
 
 
 ### <a name="select-the-durability-and-reliability-levels-for-the-cluster"></a>A fürt tartóssági és megbízhatósági szintjeinek kiválasztása

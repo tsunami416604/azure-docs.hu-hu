@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8c9fbf2d86c2e066566bab11b1701909be64a37
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 588e63e630caa4746b493d4530e301f72e5ccb5f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87025846"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282942"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Bejelentkezés az Azure-beli Windows rendszerű virtuális gépre Azure Active Directory hitelesítéssel (előzetes verzió)
 
@@ -208,7 +208,7 @@ A feltételes hozzáférési szabályzatok, például a többtényezős hiteles�
 ## <a name="log-in-using-azure-ad-credentials-to-a-windows-vm"></a>Bejelentkezés Azure AD-beli hitelesítő adatokkal egy Windows rendszerű virtuális gépen
 
 > [!IMPORTANT]
-> Az Azure AD-hez csatlakoztatott virtuális gépekkel létesített távoli kapcsolódás csak olyan Windows 10 rendszerű számítógépeken engedélyezett, amelyekhez az Azure AD-hez csatlakoztatott vagy hibrid Azure AD csatlakozik **ugyanahhoz** a címtárhoz, mint a virtuális gép. Emellett az Azure AD-beli hitelesítő adatok használatával történő RDP-hez a felhasználónak a két RBAC szerepkör egyikéhez kell tartoznia, a virtuális gép rendszergazdai felhasználónevét vagy a virtuális gép felhasználói bejelentkezési adatait. Jelenleg az Azure Bastion nem használható Azure Active Directory hitelesítéssel való bejelentkezésre az AADLoginForWindows bővítménnyel. Csak a közvetlen RDP használata támogatott.
+> Az Azure AD-hez csatlakoztatott virtuális gépekkel létesített távoli kapcsolódás csak olyan Windows 10 rendszerű számítógépeken engedélyezett, amelyeken az Azure AD regisztrálva van (a minimálisan szükséges Build 20H1), vagy az Azure AD-hez csatlakoztatott vagy a hibrid Azure AD-hez **ugyanahhoz** a címtárhoz csatlakozik. Emellett az Azure AD-beli hitelesítő adatok használatával történő RDP-hez a felhasználónak a két RBAC szerepkör egyikéhez kell tartoznia, a virtuális gép rendszergazdai felhasználónevét vagy a virtuális gép felhasználói bejelentkezési adatait. Ha Azure AD-regisztrált Windows 10 rendszerű számítógépet használ, meg kell adnia a hitelesítő adatokat a AzureAD\UPN formátumban (például AzureAD\john@contoso.com ). Jelenleg az Azure Bastion nem használható Azure Active Directory hitelesítéssel az AADLoginForWindows bővítménnyel való bejelentkezéshez. csak a közvetlen RDP használata támogatott.
 
 Bejelentkezés a Windows Server 2019 rendszerű virtuális gépre az Azure AD használatával: 
 
@@ -342,7 +342,7 @@ Ha a következő hibaüzenet jelenik meg, amikor távoli asztali kapcsolattal ke
 Győződjön meg arról, hogy a távoli asztali kapcsolat kezdeményezéséhez használt Windows 10 rendszerű számítógép vagy az Azure AD-hez csatlakoztatott vagy a hibrid Azure AD ugyanahhoz az Azure AD-címtárhoz van csatlakoztatva, amelyben a virtuális gép csatlakoztatva van. Az eszköz identitásával kapcsolatos további információkért tekintse meg az [eszköz identitását](/azure/active-directory/devices/overview)ismertető cikket.
 
 > [!NOTE]
-> A Windows 10 20H1 támogatja az Azure AD regisztrált SZÁMÍTÓGÉPét, hogy kezdeményezzen távoli asztali kapcsolatokat a virtuális géppel. Csatlakozzon a Windows Insider programhoz, és próbálja ki a Windows 10 új funkcióit.
+> A Windows 10 Build 20H1 támogatja az Azure AD-ban regisztrált SZÁMÍTÓGÉPeket, hogy RDP-kapcsolatokat kezdeményezzenek a virtuális géppel. Ha egy regisztrált Azure AD-t (nem az Azure AD-hez csatlakoztatott vagy hibrid Azure AD-csatlakoztatott) futtató számítógépet használ a virtuális géphez való kapcsolatok kezdeményezéséhez, meg kell adnia a hitelesítő adatokat a következő formátumban: AzureAD\UPn (például AzureAD\john@contoso.com ).
 
 Azt is ellenőrizze, hogy az Azure AD JOIN befejeződése után nem lett-e eltávolítva az AADLoginForWindows bővítmény.
  

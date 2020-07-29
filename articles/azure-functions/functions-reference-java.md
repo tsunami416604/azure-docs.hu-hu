@@ -3,12 +3,13 @@ title: Java fejlesztői referenciája Azure Functions
 description: Ismerje meg, hogyan fejlesztheti a függvényeket a Javával.
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.openlocfilehash: f1c2c3a3b6c28813cc9ecd9eb794e26e1e60d5e2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-java
+ms.openlocfilehash: 121a3263a28da5e17b1ab918529aa9f285089687
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87041532"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372416"
 ---
 # <a name="azure-functions-java-developer-guide"></a>A Java fejlesztői útmutató Azure Functions
 
@@ -16,7 +17,7 @@ Ez az útmutató részletes információkat tartalmaz, amelyek segítenek a Azur
 
 Ha a Azure Functions új, Java-fejlesztőként, vegye figyelembe a következő cikkek egyikét:
 
-| Első lépések | Fogalmak| 
+| Első lépések | Alapelvek| 
 | -- | -- |  
 | <ul><li>[Java-függvény a Visual Studio Code használatával](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-java)</li><li>[Java/Maven függvény a Terminal/parancssor használatával](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java)</li><li>[Java-függvény a Gradle használatával](functions-create-first-java-gradle.md)</li><li>[Java-függvény az Eclipse használatával](functions-create-maven-eclipse.md)</li><li>[Java-függvény a IntelliJ IDEA használatával](functions-create-maven-intellij.md)</li></ul> | <ul><li>[Fejlesztői útmutató](functions-reference.md)</li><li>[Üzemeltetési lehetőségek](functions-scale.md)</li><li>[Teljesítménnyel &nbsp; kapcsolatos megfontolások](functions-best-practices.md)</li></ul> |
 
@@ -100,7 +101,7 @@ Példa:
 ```java
 public class Function {
     public String echo(@HttpTrigger(name = "req", 
-      methods = {"post"},  authLevel = AuthorizationLevel.ANONYMOUS) 
+      methods = {HttpMethod.POST},  authLevel = AuthorizationLevel.ANONYMOUS) 
         String req, ExecutionContext context) {
         return String.format(req);
     }
@@ -152,7 +153,7 @@ Az alábbi táblázat a functions futtatókörnyezet minden egyes főverziójáh
 
 Jelenleg a Maven archetípusa létrehoz egy pom.xml, amely a Java 8-at célozza meg. A következő elemeket kell frissíteni a Java 11-et futtató Function alkalmazás létrehozásához pom.xml.
 
-| Elem |  Java 8 érték | Java 11 érték | Description |
+| Elem |  Java 8 érték | Java 11 érték | Leírás |
 | ---- | ---- | ---- | --- |
 | **`Java.version`** | 1.8 | 11 | A Maven-Compiler-beépülő modul által használt Java-verzió. |
 | **`JavaVersion`** | 8 | 11 | Az Azure-beli Function alkalmazás által üzemeltetett Java-verzió. |
@@ -272,7 +273,7 @@ import com.microsoft.azure.functions.annotation.*;
 public class Function {
     @FunctionName("echo")
     public static String echo(
-        @HttpTrigger(name = "req", methods = { "put" }, authLevel = AuthorizationLevel.ANONYMOUS, route = "items/{id}") String inputReq,
+        @HttpTrigger(name = "req", methods = { HttpMethod.PUT }, authLevel = AuthorizationLevel.ANONYMOUS, route = "items/{id}") String inputReq,
         @TableInput(name = "item", tableName = "items", partitionKey = "Example", rowKey = "{id}", connection = "AzureWebJobsStorage") TestInputData inputData
         @TableOutput(name = "myOutputTable", tableName = "Person", connection = "AzureWebJobsStorage") OutputBinding<Person> testOutputData,
     ) {
@@ -402,7 +403,7 @@ import com.microsoft.azure.functions.annotation.*;
 public class Function {
     @FunctionName("metadata")
     public static String metadata(
-        @HttpTrigger(name = "req", methods = { "get", "post" }, authLevel = AuthorizationLevel.ANONYMOUS) Optional<String> body,
+        @HttpTrigger(name = "req", methods = { HttpMethod.GET, HttpMethod.POST }, authLevel = AuthorizationLevel.ANONYMOUS) Optional<String> body,
         @BindingName("name") String queryValue
     ) {
         return body.orElse(queryValue);
@@ -444,7 +445,7 @@ import com.microsoft.azure.functions.*;
 import com.microsoft.azure.functions.annotation.*;
 
 public class Function {
-    public String echo(@HttpTrigger(name = "req", methods = {"post"}, authLevel = AuthorizationLevel.ANONYMOUS) String req, ExecutionContext context) {
+    public String echo(@HttpTrigger(name = "req", methods = {HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS) String req, ExecutionContext context) {
         if (req.isEmpty()) {
             context.getLogger().warning("Empty request body received by function " + context.getFunctionName() + " with invocation " + context.getInvocationId());
         }
@@ -487,7 +488,7 @@ A következő példa beolvassa az [alkalmazás beállítását](functions-how-to
 ```java
 
 public class Function {
-    public String echo(@HttpTrigger(name = "req", methods = {"post"}, authLevel = AuthorizationLevel.ANONYMOUS) String req, ExecutionContext context) {
+    public String echo(@HttpTrigger(name = "req", methods = {HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS) String req, ExecutionContext context) {
         context.getLogger().info("My app setting value: "+ System.getenv("myAppSetting"));
         return String.format(req);
     }

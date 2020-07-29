@@ -4,30 +4,41 @@ description: Ismerje meg, hogyan lehet SQL-lekérdezéseket lekérdezni a Azure 
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 06/21/2019
+ms.date: 07/24/2020
 ms.author: tisande
-ms.openlocfilehash: 1d24261edea843fa928ad00e3ce7babcb84acd3b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d292b7cfcda73cb4cd6ac2535c7e27fc675e1030
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74873335"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87308185"
 ---
 # <a name="getting-started-with-sql-queries"></a>SQL-lekérdezések – első lépések
 
-Azure Cosmos DB SQL API-fiókok az Structured Query Language (SQL) használatával JSON-lekérdezési nyelvet használó elemek lekérdezését támogatják. A Azure Cosmos DB lekérdezési nyelv tervezési céljai a következők:
+Azure Cosmos DB SQL API-fiókokban kétféleképpen olvashatók be az információk:
 
-* Támogassa az SQLot, amely az egyik legismertebb és legnépszerűbb lekérdezési nyelv, és nem egy új lekérdezési nyelvet talál. Az SQL egy formális programozási modellt biztosít a JSON-elemek részletes lekérdezéséhez.  
+**Pont beolvasása** – a kulcs/érték megkeresése egyetlen *elem-azonosítón* és partíciós kulcson végezhető el. Az *Item azonosító* és a partíciós kulcs kombinációja a kulcs, és maga az az érték. 1 KB-os dokumentum esetén a pont általában az 1., 10 MS alatti késéssel rendelkező [kérési egységet](request-units.md) olvassa. A pont olvasás egyetlen elemmel tér vissza.
 
-* A JavaScript programozási modelljét a lekérdezési nyelv alapjaként használhatja. A JavaScript típusú rendszer, a kifejezés kiértékelése és a függvény meghívása az SQL API gyökerei. Ezek a gyökerek természetes programozási modellt biztosítanak olyan funkciókhoz, mint például a kapcsolatok kivetítése, a hierarchikus Navigálás a JSON-elemek, az önillesztések, a térbeli lekérdezések és a teljes mértékben JavaScriptben írt felhasználói függvények meghívása (UDF) számára.
+**SQL-lekérdezések** – az adatlekérdezéshez lekérdezéseket írhat a STRUCTURED Query Language (SQL) használatával JSON-lekérdezési nyelvként. A lekérdezések mindig legalább 2,3-es kérési egységbe kerülnek, és általánosságban a pont olvasásakor nagyobb és nagyobb a változó késése. A lekérdezések számos elemet adhatnak vissza.
+
+A legtöbb nagy mennyiségű olvasási terhelés Azure Cosmos DB a pontok és az SQL-lekérdezések kombinációját használja. Ha csak egyetlen elem olvasását kell elolvasnia, az olvasások olcsóbbak és gyorsabbak a lekérdezéseknél. A pont olvasásának nem kell a lekérdezési motort használnia az adateléréshez, és közvetlenül is elolvashatja az adatokat. Természetesen nem lehetséges, hogy az összes számítási feladat kizárólag olvasási pontok használatával olvassa az adatokat, így az SQL lekérdezési nyelvként és a [séma-agnosztikus indexelés](index-overview.md) révén rugalmasabban férhet hozzá az adatokhoz.
+
+Íme néhány példa arra, hogyan végezheti el a pontok olvasását az egyes SDK-kal:
+
+- [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.container.readitemasync?view=azure-dotnet)
+- [Java SDK](https://docs.microsoft.com/java/api/com.azure.cosmos.cosmoscontainer.readitem?view=azure-java-stable#com_azure_cosmos_CosmosContainer__T_readItem_java_lang_String_com_azure_cosmos_models_PartitionKey_com_azure_cosmos_models_CosmosItemRequestOptions_java_lang_Class_T__)
+- [Node.js SDK](https://docs.microsoft.com/javascript/api/@azure/cosmos/item?view=azure-node-latest#read-requestoptions-)
+- [Python SDK](https://docs.microsoft.com/python/api/azure-cosmos/azure.cosmos.containerproxy?view=azure-python#read-item-item--partition-key--populate-query-metrics-none--post-trigger-include-none----kwargs-)
+
+A dokumentum hátralévő része azt mutatja be, hogyan kezdheti el az SQL-lekérdezések írását a Azure Cosmos DBban. Az SQL-lekérdezések az SDK-n vagy a Azure Portalon is futtathatók.
 
 ## <a name="upload-sample-data"></a>Mintaadatok feltöltése
 
-Az SQL API Cosmos DB fiókjában hozzon létre egy nevű tárolót `Families` . Hozzon létre két egyszerű JSON-elemet a tárolóban. Az Azure Cosmos DB lekérdezési docs legtöbb lekérdezését futtathatja ezen adathalmaz használatával.
+Az SQL API Cosmos DB fiókjában hozzon létre egy nevű tárolót `Families` . Hozzon létre két egyszerű JSON-elemet a tárolóban. Az adathalmaz használatával a Azure Cosmos DB lekérdezési dokumentációjában a legtöbb lekérdezési lekérdezést futtathatja.
 
 ### <a name="create-json-items"></a>JSON-elemek létrehozása
 
 A következő kód két egyszerű JSON-elemet hoz létre a családokról. Az Andersen és a Wakefield család egyszerű JSON-elemei közé tartoznak a szülők, a gyermekek és a hozzájuk tartozó háziállatok, a címek és a regisztrációs adatok. Az első elem sztringeket, számokat, logikai elemeket, tömböket és beágyazott tulajdonságokat tartalmaz.
-
 
 ```json
 {
@@ -71,7 +82,7 @@ A második tétel a `givenName` és `familyName` a helyett a és a értéket has
             { "givenName": "Shadow" }
         ]
       },
-      { 
+      {
         "familyName": "Miller",
          "givenName": "Lisa",
          "gender": "female",
@@ -87,7 +98,7 @@ A második tétel a `givenName` és `familyName` a helyett a és a értéket has
 
 Próbáljon ki néhány lekérdezést a JSON-adaton, hogy megértse a Azure Cosmos DB SQL-lekérdezési nyelvének főbb szempontjait.
 
-A következő lekérdezés azokat az elemeket adja vissza, amelyekben a `id` mező megfelel `AndersenFamily` . Mivel ez egy `SELECT *` lekérdezés, a lekérdezés kimenete a teljes JSON-elem. A SELECT szintaxissal kapcsolatos további információkért lásd: [SELECT utasítás](sql-query-select.md). 
+A következő lekérdezés azokat az elemeket adja vissza, amelyekben a `id` mező megfelel `AndersenFamily` . Mivel ez egy `SELECT *` lekérdezés, a lekérdezés kimenete a teljes JSON-elem. A SELECT szintaxissal kapcsolatos további információkért lásd: [SELECT utasítás](sql-query-select.md).
 
 ```sql
     SELECT *
@@ -95,7 +106,7 @@ A következő lekérdezés azokat az elemeket adja vissza, amelyekben a `id` mez
     WHERE f.id = "AndersenFamily"
 ```
 
-A lekérdezés eredményei a következők: 
+A lekérdezés eredményei a következők:
 
 ```json
     [{

@@ -1,6 +1,5 @@
 ---
-title: Munkaterület létrehozása
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (klasszikus): munkaterület létrehozása – Azure'
 description: Azure Machine Learning Studio (klasszikus) használatához Machine Learning Studio (klasszikus) munkaterületre van szükség. Ez a munkaterület tartalmazza a kísérletek létrehozásához, kezeléséhez és közzétételéhez szükséges eszközöket.
 services: machine-learning
 ms.service: machine-learning
@@ -10,13 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 12/07/2017
-ms.openlocfilehash: ede84fefed7db9d2afcc0ad65833ab2c0fefbc03
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c30797ad757fa12c4dfdf4749536c1095259eb58
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84696524"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283520"
 ---
-# <a name="create-and-share-an-azure-machine-learning-studio-classic-workspace"></a>Azure Machine Learning Studio (klasszikus) munkaterület létrehozása és megosztása
+# <a name="create-and-share-an-machine-learning-studio-classic-workspace"></a>Machine Learning Studio (klasszikus) munkaterület létrehozása és megosztása
+
+**a következőkre vonatkozik:** ![ nincs](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine learning](../overview-what-is-azure-ml.md) ![ Igen ](../../../includes/media/aml-applies-to-skus/yes.png) Machine learning Studio (klasszikus) 
 
 Azure Machine Learning Studio (klasszikus) használatához Machine Learning Studio (klasszikus) munkaterületre van szükség. Ez a munkaterület tartalmazza a kísérletek létrehozásához, kezeléséhez és közzétételéhez szükséges eszközöket.
 
@@ -24,7 +26,7 @@ Azure Machine Learning Studio (klasszikus) használatához Machine Learning Stud
 
 Ha Machine Learning Studio (klasszikus) munkaterületet szeretne megnyitni, be kell jelentkeznie a munkaterület létrehozásához használt Microsoft-fiókba, vagy meg kell kapnia egy meghívót a tulajdonostól, hogy csatlakozzon a munkaterülethez. A Azure Portal kezelheti a munkaterületet, amely a hozzáférés konfigurálását is lehetővé teszi.
 
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com/)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/)
 
     > [!NOTE]
     > A bejelentkezéshez és a Studio (klasszikus) munkaterület létrehozásához Azure-előfizetés rendszergazdájának kell lennie. 

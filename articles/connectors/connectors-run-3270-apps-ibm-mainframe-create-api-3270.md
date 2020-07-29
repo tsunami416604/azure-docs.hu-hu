@@ -9,12 +9,12 @@ ms.reviewer: estfan, valthom
 ms.topic: article
 ms.date: 03/06/2019
 tags: connectors
-ms.openlocfilehash: 808eef5424d678559ae94ffd04e41eacd0f16aee
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 41e3f1ff430293ebc7b3828a0fd7090923fc209c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80371105"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281480"
 ---
 # <a name="integrate-3270-screen-driven-apps-on-ibm-mainframes-with-azure-by-using-azure-logic-apps-and-ibm-3270-connector"></a>A 3270-es képernyő-vezérelt, IBM-nagyszámítógépeken elérhető alkalmazások integrálása az Azure-ral az Azure Logic Apps és az IBM 3270-összekötő használatával
 
@@ -292,7 +292,7 @@ Ebben a módban a navigációs tervhez társított metódust kell megadnia. Mind
    |---------------|-----------------|
    | **Adattípus** | Bájt, dátum és idő, decimális, int, Long, Short, string |
    | **Mező kitöltésének technikája** | A paraméterek ezeket a kitöltési típusokat támogatják, ha szükséges, üres értékekkel töltik fel őket: <p><p>- **Típus**: írja be a karaktereket egymás után a mezőbe. <p>- **Fill (kitöltés**): cserélje le a mező tartalmát a karakterekre, és ha szükséges, üres értékeket kell kitöltenie. <p>- **EraseEofType**: törölje a mezőt, majd írja be egymás után a karaktereket a mezőbe. |
-   | **Formázó sztring** | Egyes paraméterek adattípusai formázó karakterláncot használnak, amely tájékoztatja az 3270-összekötőt, és a képernyőn lévő szöveg konvertálása .NET-adattípusba: <p><p>- **Dátum**és idő: a DateTime Format sztring a [.net egyéni dátum-és időformátum-karakterláncokat](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)követi. A dátum például a `06/30/2019` Format karakterláncot használja `MM/dd/yyyy` . <p>- **Decimális**: a decimális formátum karakterlánca a [Cobol Picture záradékot](https://www.ibm.com/support/knowledgecenter/SS6SG3_5.2.0/com.ibm.cobol52.ent.doc/PGandLR/ref/rlddepic.html)használja. A szám például `100.35` a Format karakterláncot használja `999V99` . |
+   | **Formázó sztring** | Egyes paraméterek adattípusai formázó karakterláncot használnak, amely tájékoztatja az 3270-összekötőt, és a képernyőn lévő szöveg konvertálása .NET-adattípusba: <p><p>- **Dátum**és idő: a DateTime Format sztring a [.net egyéni dátum-és időformátum-karakterláncokat](/dotnet/standard/base-types/custom-date-and-time-format-strings)követi. A dátum például a `06/30/2019` Format karakterláncot használja `MM/dd/yyyy` . <p>- **Decimális**: a decimális formátum karakterlánca a [Cobol Picture záradékot](https://www.ibm.com/support/knowledgecenter/SS6SG3_5.2.0/com.ibm.cobol52.ent.doc/PGandLR/ref/rlddepic.html)használja. A szám például `100.35` a Format karakterláncot használja `999V99` . |
    |||
 
 ## <a name="save-and-view-metadata"></a>Metaadatok mentése és megtekintése
@@ -409,7 +409,7 @@ Ha befejezi ezeket a lépéseket, használhatja a logikai alkalmazásban létreh
 
 ## <a name="connector-reference"></a>Összekötő-referencia
 
-Az összekötő részletes technikai részleteiről, például az eseményindítók, a műveletek és a korlátok az összekötő hencegő fájljában leírtak alapján: az [összekötő hivatkozási lapja](https://docs.microsoft.com/connectors/si3270/).
+Az összekötő részletes technikai részleteiről, például az eseményindítók, a műveletek és a korlátok az összekötő hencegő fájljában leírtak alapján: az [összekötő hivatkozási lapja](/connectors/si3270/).
 
 > [!NOTE]
 > Az [integrációs szolgáltatási környezet (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)logikai alkalmazásai esetében az összekötő ISE által címkézett verziója az [ISE-üzenetek korlátait](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) használja helyette.
@@ -417,3 +417,4 @@ Az összekötő részletes technikai részleteiről, például az eseményindít
 ## <a name="next-steps"></a>További lépések
 
 * További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése
+

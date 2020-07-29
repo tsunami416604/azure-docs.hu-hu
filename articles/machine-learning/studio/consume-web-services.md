@@ -1,6 +1,5 @@
 ---
-title: Webszolgáltatás felhasználása
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (klasszikus): webszolgáltatások felhasználása – Azure'
 description: Ha a gépi tanulási szolgáltatás központi telepítése Azure Machine Learning Studio (klasszikus), a REST-alapú webszolgáltatás akár valós idejű kérelem-válasz szolgáltatásként, akár batch-végrehajtási szolgáltatásként is felhasználható.
 services: machine-learning
 ms.service: machine-learning
@@ -10,13 +9,17 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18, tracking-python
 ms.date: 05/29/2020
-ms.openlocfilehash: 8d78d26298790e033f006fd3f37567caf97f97ec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ec88d501fbc262275484f3abaeb7326d963a16e5
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84696626"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282517"
 ---
-# <a name="how-to-consume-an-azure-machine-learning-studio-classic-web-service"></a>Azure Machine Learning Studio (klasszikus) webszolgáltatás felhasználása
+# <a name="how-to-consume-a-machine-learning-studio-classic-web-service"></a>Machine Learning Studio (klasszikus) webszolgáltatás felhasználása
+
+**a következőkre vonatkozik:** ![ nincs](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine learning](../overview-what-is-azure-ml.md) ![ Igen ](../../../includes/media/aml-applies-to-skus/yes.png) Machine learning Studio (klasszikus) 
+
 
 Miután telepített egy Azure Machine Learning Studio (klasszikus) prediktív modellt webszolgáltatásként, használhat egy REST API az adatküldés és az előrejelzések beszerzése érdekében. Az adatküldés valós időben vagy batch módban is elvégezhető.
 

@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 06/30/2020
+ms.date: 07/28/2020
 ms.author: victorh
-ms.openlocfilehash: 90f817ac3bbd475d8a84df44bc284f09fcd19ce3
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 748adbcc719df2cdcf734f308bd4b083e9ca6ec0
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85565794"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372365"
 ---
 # <a name="azure-firewall-manager-deployment-overview"></a>Azure Firewall Manager üzembe helyezésének áttekintése
 
@@ -65,6 +65,13 @@ Azure Firewall Manager üzembe helyezésének több módja is van, de a követke
 > - Régiónként legfeljebb egy hub virtuális WAN-t használhat. Ennek eléréséhez azonban több virtuális WAN-t is hozzáadhat a régióhoz.
 > - A vWAN lévő hubok esetében nem lehet átfedésben lévő IP-szóközök.
 > - A hub-VNet kapcsolatainak ugyanabban a régióban kell lenniük, mint a hub-nak.
+
+## <a name="convert-virtual-networks"></a>Virtuális hálózatok konvertálása
+
+Ha egy meglévő virtuális hálózatot központi virtuális hálózatra alakít át, a következő információk érvényesek:
+
+- Ha a virtuális hálózat meglévő Azure Firewall rendelkezik, válasszon ki egy, a meglévő tűzfallal társítandó tűzfal-házirendet. A tűzfal-kiépítési állapot frissülni fog, miközben a tűzfal házirendje lecseréli a tűzfalszabályok szabályait. A kiépítési állapot során a tűzfal folytatja a forgalom feldolgozását, és nincs leállás. A meglévő szabályokat a Firewall Manager vagy a Azure PowerShell használatával importálhatja a tűzfal házirendjébe.
+- Ha a virtuális hálózat nem rendelkezik társított Azure Firewallval, a rendszer tűzfalat helyez üzembe, és a tűzfal-házirend társítva van az új tűzfallal.
 
 ## <a name="next-steps"></a>További lépések
 

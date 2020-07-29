@@ -3,7 +3,7 @@ title: Rendelkezésre állási csoport figyelők konfigurálása & Load Balancer
 description: Részletes útmutató figyelő létrehozásához az Azure Virtual Machines szolgáltatásban SQL Server az Always On rendelkezésre állási csoport számára
 services: virtual-machines
 documentationcenter: na
-author: MikeRayMSFT
+author: MashaMSFT
 editor: monicar
 ms.assetid: d1f291e9-9af2-41ba-9d29-9541e3adcfcf
 ms.service: virtual-machines-sql
@@ -11,13 +11,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 02/16/2017
-ms.author: mikeray
+ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: a2eb6278a9e796c33178f895eede6fd8f2144e9a
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: a83755a08a3579484796cd56623cb3401d03d874
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921684"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284285"
 ---
 # <a name="configure-a-load-balancer-for-a-sql-server-always-on-availability-group-in-azure-virtual-machines"></a>Terheléselosztó konfigurálása SQL Server always on rendelkezésre állási csoporthoz az Azure-ban Virtual Machines
 
@@ -68,7 +69,7 @@ Először hozza létre a Load balancert.
 
    | Beállítás | Érték |
    | --- | --- |
-   | **Name (Név)** |A terheléselosztó nevét jelölő szöveges név. Például: **sqlLB**. |
+   | **Név** |A terheléselosztó nevét jelölő szöveges név. Például: **sqlLB**. |
    | **Típus** |**Belső**: a legtöbb implementáció belső Load balancert használ, amely lehetővé teszi, hogy az ugyanazon a virtuális hálózaton lévő alkalmazások csatlakozzanak a rendelkezésre állási csoporthoz.  </br> **Külső**: lehetővé teszi, hogy az alkalmazások nyilvános internetkapcsolaton keresztül csatlakozzanak a rendelkezésre állási csoporthoz. |
    | **Virtuális hálózat** |Válassza ki azt a virtuális hálózatot, amelyre a SQL Server példányok tartoznak. |
    | **Alhálózat** |Válassza ki azt az alhálózatot, amelyhez a SQL Server példányok tartoznak. |
@@ -116,10 +117,10 @@ A mintavétel határozza meg, hogy az Azure hogyan ellenőrzi, hogy a SQL Server
 
    | Beállítás | Érték |
    | --- | --- |
-   | **Name (Név)** |A mintavételt jelölő szöveges név. Például: **SQLAlwaysOnEndPointProbe**. |
+   | **Név** |A mintavételt jelölő szöveges név. Például: **SQLAlwaysOnEndPointProbe**. |
    | **Protokoll** |**TCP** |
    | **Port** |Bármely elérhető portot használhat. Például *59999*. |
-   | **Időköz** |*5* |
+   | **Intervallum** |*5* |
    | **Nem kifogástalan állapot küszöbértéke** |*2* |
 
 4.  Válassza az **OK** lehetőséget. 
@@ -142,10 +143,10 @@ A terheléselosztási szabályok azt konfigurálhatják, hogy a terheléseloszt�
 
    | Beállítás | Érték |
    | --- | --- |
-   | **Name (Név)** |A terheléselosztási szabályokat jelképező szöveges név. Például: **SQLAlwaysOnEndPointListener**. |
+   | **Név** |A terheléselosztási szabályokat jelképező szöveges név. Például: **SQLAlwaysOnEndPointListener**. |
    | **Protokoll** |**TCP** |
    | **Port** |*1433* |
-   | **Háttérport** |*1433*. Ez az érték figyelmen kívül lesz hagyva, mert ez a szabály **lebegőpontos IP-címet használ (a közvetlen kiszolgáló visszatérése)**. |
+   | **Háttér-port** |*1433*. Ez az érték figyelmen kívül lesz hagyva, mert ez a szabály **lebegőpontos IP-címet használ (a közvetlen kiszolgáló visszatérése)**. |
    | **Mintavétel** |Használja a terheléselosztó számára létrehozott mintavétel nevét. |
    | **Munkamenet-állandóság** |**Nincs** |
    | **Üresjárati időkorlát (perc)** |*4* |
@@ -234,10 +235,10 @@ Ha IP-címet szeretne hozzáadni egy terheléselosztó számára a Azure Portal,
 
    |Beállítás |Érték
    |:-----|:----
-   |**Name (Név)** |A mintavételt azonosító név.
+   |**Név** |A mintavételt azonosító név.
    |**Protokoll** |TCP
    |**Port** |Egy nem használt TCP-port, amelynek minden virtuális gépen elérhetőnek kell lennie. Más célra nem használható. Két figyelő nem használhatja ugyanazt a mintavételi portot. 
-   |**Időköz** |A mintavételi kísérletek közötti idő. Használja az alapértelmezett (5) értéket.
+   |**Intervallum** |A mintavételi kísérletek közötti idő. Használja az alapértelmezett (5) értéket.
    |**Nem kifogástalan állapot küszöbértéke** |Azon egymást követő küszöbértékek száma, amelyeknek sikertelennek kell lennie a virtuális gép nem megfelelő állapotának számítása előtt.
 
 8. A mintavétel mentéséhez kattintson **az OK gombra** . 
@@ -248,14 +249,14 @@ Ha IP-címet szeretne hozzáadni egy terheléselosztó számára a Azure Portal,
 
     |Beállítás |Érték
     |:-----|:----
-    |**Name (Név)** |A terheléselosztási szabályt azonosító név. 
+    |**Név** |A terheléselosztási szabályt azonosító név. 
     |**Előtérbeli IP-cím** |Válassza ki a létrehozott IP-címet. 
     |**Protokoll** |TCP
     |**Port** |Használja az SQL Server-példányok által használt portot. Az alapértelmezett példány az 1433-es portot használja, hacsak nem módosította. 
-    |**Háttér-port** |Használja ugyanazt az értéket, mint a **port**.
-    |**Háttér-készlet** |Az SQL Server példányokkal rendelkező virtuális gépeket tartalmazó készlet. 
-    |**Állapotadat-mintavétel** |Válassza ki a létrehozott mintavételt.
-    |**Munkamenet-állandóság** |None
+    |**Háttérport** |Használja ugyanazt az értéket, mint a **port**.
+    |**Háttérkészlet** |Az SQL Server példányokkal rendelkező virtuális gépeket tartalmazó készlet. 
+    |**Állapotteszt** |Válassza ki a létrehozott mintavételt.
+    |**Munkamenet-állandóság** |Nincs
     |**Üresjárati időkorlát (perc)** |Alapértelmezett (4)
     |**Lebegőpontos IP-cím (közvetlen kiszolgáló visszaadása)** | Engedélyezve
 
@@ -297,14 +298,14 @@ Ha egy rendelkezésre állási csoport részt vesz egy elosztott rendelkezésre 
 
    |Beállítás |Érték
    |:-----|:----
-   |**Name (Név)** |Az elosztott rendelkezésre állási csoport terheléselosztási szabályát azonosító név. 
+   |**Név** |Az elosztott rendelkezésre állási csoport terheléselosztási szabályát azonosító név. 
    |**Előtérbeli IP-cím** |Használja ugyanazt a frontend IP-címet, mint a rendelkezésre állási csoportot.
    |**Protokoll** |TCP
    |**Port** |5022 – az [elosztott rendelkezésre állási csoport végpont-figyelője](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/configure-distributed-availability-groups)portja.</br> Bármely elérhető port lehet.  
-   |**Háttér-port** | 5022 – ugyanazt az értéket használja, mint a **port**.
-   |**Háttér-készlet** |Az SQL Server példányokkal rendelkező virtuális gépeket tartalmazó készlet. 
-   |**Állapotadat-mintavétel** |Válassza ki a létrehozott mintavételt.
-   |**Munkamenet-állandóság** |None
+   |**Háttérport** | 5022 – ugyanazt az értéket használja, mint a **port**.
+   |**Háttérkészlet** |Az SQL Server példányokkal rendelkező virtuális gépeket tartalmazó készlet. 
+   |**Állapotteszt** |Válassza ki a létrehozott mintavételt.
+   |**Munkamenet-állandóság** |Nincs
    |**Üresjárati időkorlát (perc)** |Alapértelmezett (4)
    |**Lebegőpontos IP-cím (közvetlen kiszolgáló visszaadása)** | Engedélyezve
 

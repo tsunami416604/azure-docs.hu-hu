@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: fec93169a8c49422c9e310cddc08ae3412b89166
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: b8a53ae598130086a9009dbec891052e863cdf0f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132279"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281361"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Azure digitális Twins-modellek kezelése
 
@@ -65,8 +65,11 @@ Ez a modell definiálja a beteg helyiség nevét és egyedi AZONOSÍTÓját, val
 
 Ezt a módszert követve megadhatja a kórházi részleg, a zónák vagy a kórház modelljeit.
 
-> [!TIP]
-> Létezik egy ügyféloldali kódtár, amely a DTDL elemzéséhez és érvényesítéséhez használható. Létrehoz egy C#-objektummodell a DTDL-tartalomból, amely modellen alapuló fejlesztési forgatókönyvekben használható, például felhasználói felületi elemek létrehozásához. Ezt a kódtárat is használhatja annak biztosítására, hogy a modellek ne legyenek szintaktikai hibák a feltöltésük előtt. További információ erről a könyvtárról és a DTDL-érvényesítő számára készült mintához való hozzáférésről [*: útmutató: a modellek elemzése és érvényesítése*](how-to-use-parser.md).
+### <a name="validate-syntax"></a>Szintaxis ellenőrzése
+
+Létezik egy ügyféloldali kódtár, amely a DTDL elemzéséhez és érvényesítéséhez használható. Létrehoz egy C#-objektummodell a DTDL-tartalomból, amely modellen alapuló fejlesztési forgatókönyvekben használható, például felhasználói felületi elemek létrehozásához. Ezt a kódtárat is használhatja annak biztosítására, hogy a modellek ne legyenek szintaktikai hibák a feltöltésük előtt. 
+
+További információ erről a könyvtárról és a DTDL-érvényesítő számára készült mintához való hozzáférésről [*: útmutató: a modellek elemzése és érvényesítése*](how-to-use-parser.md).
 
 ## <a name="manage-models-with-apis"></a>Modellek kezelése API-kkal.
 
@@ -82,7 +85,10 @@ A következő részben bemutatjuk, hogyan végezheti el a különböző modell-k
 
 A modellek létrehozása után feltöltheti őket az Azure Digital Twins-példányba.
 
-Az alábbi kódrészlet a következőt mutatja be:
+> [!TIP]
+> Javasoljuk, hogy az Azure Digital Twins-példányba való feltöltés előtt ellenőrizze a modelleket offline állapotba. Használhatja a [DTDL ügyféloldali elemző függvénytárát](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/) és a [DTDL-érvényesítő mintát](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator) a következő témakörben ismertetett módon [*: útmutató: elemzési és érvényesítési modellek*](how-to-use-parser.md) a modellek ellenőrzése előtt a szolgáltatásba való feltöltés előtt.
+
+Ha készen áll a modell feltöltésére, használja a következő kódrészletet:
 
 ```csharp
 // 'client' is an instance of DigitalTwinsClient
@@ -126,10 +132,7 @@ A modell fájljai több modellt is tartalmazhatnak. Ebben az esetben a modelleke
 ]
 ```
  
-A feltöltéskor a rendszer érvényesíti a modell fájljait.
-
-> [!TIP] 
-> Vegye figyelembe, hogy a [DTDL ügyféloldali elemző függvénytárat](how-to-use-parser.md) is használhatja az ügyféloldali modellek ellenőrzéséhez.
+A feltöltéskor a modell fájljait a szolgáltatás ellenőrzi.
 
 ### <a name="retrieve-models"></a>Modellek beolvasása
 

@@ -4,16 +4,16 @@ description: AzCopy konfigurálása, optimalizálása és megoldása.
 author: normesta
 ms.service: storage
 ms.topic: how-to
-ms.date: 04/10/2020
+ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: acfe868f26d7509d1dd06554482b4fb3b29a5b22
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7e79f186688f3b6531ac24df4e3ae4201cf1903c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85504355"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282432"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>AzCopy konfigurálása, optimalizálása és megoldása
 
@@ -23,12 +23,12 @@ Az AzCopy egy parancssori segédprogram, amellyel blobokat és fájlokat másolh
 > Ha olyan tartalmat keres, amely segítséget nyújt a AzCopy megkezdéséhez, tekintse meg a következő cikkeket:
 > - [Bevezetés az AzCopy használatába](storage-use-azcopy-v10.md)
 > - [Adatok átvitele a AzCopy és a blob Storage szolgáltatással](storage-use-azcopy-blobs.md)
-> - [Adatok átvitele a AzCopy és a file Storage szolgáltatással](storage-use-azcopy-files.md)
+> - [Adatok átvitele az AzCopy használatával és fájltárolás](storage-use-azcopy-files.md)
 > - [Adatok átvitele a AzCopy és az Amazon S3 gyűjtővel](storage-use-azcopy-s3.md)
 
 ## <a name="configure-proxy-settings"></a>Proxybeállítások konfigurálása
 
-A AzCopy proxybeállítások konfigurálásához állítsa be a `https_proxy` környezeti változót. Ha Windows rendszeren futtatja a AzCopy-t, a AzCopy automatikusan észleli a proxybeállításokat, így nem kell ezt a beállítást használnia a Windows rendszerben. Ha úgy dönt, hogy ezt a beállítást használja a Windows rendszerben, az automatikusan felülbírálja az automatikus észlelést.
+A AzCopy proxybeállítások konfigurálásához állítsa be a `https_proxy` környezeti változót. Ha Windows rendszeren futtatja az AzCopyt, az AzCopy automatikusan észleli a proxybeállításokat, így Windows rendszeren nem kell használnia ezt a beállítást. Ha ezen beállítás használata mellett dönt Windows rendszeren, az felülírja az automatikus észlelést.
 
 | Operációs rendszer | Parancs  |
 |--------|-----------|
@@ -63,13 +63,13 @@ Ez a szakasz a következő optimalizálási feladatok elvégzéséhez nyújt seg
 
 ### <a name="run-benchmark-tests"></a>Teljesítményteszt-tesztek futtatása
 
-Adott blob-tárolók vagy fájlmegosztás teljesítmény-teljesítményteszt-tesztjét futtatva megtekintheti az általános teljesítménymutatókat és a teljesítmény szűk keresztmetszeteit. 
+Adott blob-tárolók vagy fájlmegosztás teljesítmény-teljesítményteszt-tesztjét futtatva megtekintheti az általános teljesítménymutatókat és a teljesítmény szűk keresztmetszeteit. A tesztet a generált teszteredmények feltöltésével vagy letöltésével futtathatja. 
 
 A teljesítmény-teljesítményteszt teszt futtatásához használja a következő parancsot.
 
 |    |     |
 |--------|-----------|
-| **Syntax** | `azcopy benchmark 'https://<storage-account-name>.blob.core.windows.net/<container-name>'` |
+| **Szintaxis** | `azcopy benchmark 'https://<storage-account-name>.blob.core.windows.net/<container-name>'` |
 | **Példa** | `azcopy benchmark 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D'` |
 
 > [!TIP]
@@ -77,9 +77,7 @@ A teljesítmény-teljesítményteszt teszt futtatásához használja a következ
 
 Ez a parancs teljesítménytesztet futtat egy megadott célhelyre való feltöltéssel. A tesztelési adatok a memóriában jönnek létre, feltöltve a célhelyre, majd a teszt befejezése után törlődnek a célhelyről. Megadhatja, hogy hány fájl legyen létrehozva, és hogy milyen méretben szeretné őket használni a választható parancssori paraméterek használatával.
 
-A részletes dokumentációs dokumentáció: [azcopy benchmark](storage-ref-azcopy-bench.md).
-
-A parancs részletes súgójának megtekintéséhez írja be a parancsot, `azcopy benchmark -h` majd nyomja le az ENTER billentyűt.
+Ha a tesztet az adatletöltéssel szeretné futtatni, állítsa a paramétert a következőre: `mode` `download` . A részletes dokumentációs dokumentáció: [azcopy benchmark](storage-ref-azcopy-bench.md). 
 
 ### <a name="optimize-throughput"></a>Teljesítmény optimalizálása
 
@@ -89,9 +87,9 @@ A `cap-mbps` parancsokban a jelzőt használhatja, hogy a felső korlátot az ad
 azcopy jobs resume <job-id> --cap-mbps 10
 ```
 
-Az átviteli sebesség kisebb fájlok átvitele esetén is csökkenhet. A környezeti változó beállításával növelheti az átviteli sebességet is `AZCOPY_CONCURRENCY_VALUE` . Ez a változó határozza meg az egyidejű kérések számát.  
+Az átviteli sebesség kisebb fájlok átvitele esetén csökkenhet. A környezeti változó beállításával növelheti az átviteli sebességet is `AZCOPY_CONCURRENCY_VALUE` . Ez a változó meghatározza az egyidejű kérelmek lehetséges számát.  
 
-Ha a számítógép kevesebb mint 5 processzorral rendelkezik, akkor a változó értéke a következő lesz: `32` . Ellenkező esetben az alapértelmezett érték 16, szorozva a processzorok számával. Ennek a változónak a maximális alapértelmezett értéke a `3000` , de ezt az értéket manuálisan vagy lejjebb is állíthatja. 
+Ha a számítógép kevesebb mint 5 processzorral rendelkezik, akkor a változó értéke a következő lesz: `32` . Egyéb esetben az alapértelmezett érték a CPU-k száma szorozva 16-tal. Ennek a változónak a maximális alapértelmezett értéke a `3000` , de ezt az értéket manuálisan vagy lejjebb is állíthatja. 
 
 | Operációs rendszer | Parancs  |
 |--------|-----------|

@@ -5,16 +5,17 @@ description: Megtudhatja, hogyan taníthat ki egy modellt, és hogyan állíthat
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.author: peterlu
 author: peterclu
 ms.date: 02/24/2020
-ms.custom: Ignite2019, designer
-ms.openlocfilehash: a464ab001eec877ffc6dc0ab5e33e82493c226ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.topic: conceptual
+ms.custom: how-to, designer
+ms.openlocfilehash: 61465210c9ad476c6d8d2987330498aa0efa39d4
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84429928"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319609"
 ---
 # <a name="run-batch-predictions-using-azure-machine-learning-designer-preview"></a>Batch-előrejelzések futtatása az Azure Machine Learning Designerrel (előzetes verzió)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -33,6 +34,8 @@ A Batch-pontozási szolgáltatások SDK-val való beállításával kapcsolatos 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Ez az útmutató feltételezi, hogy már rendelkezik egy betanítási folyamattal. A tervező bevezetéséhez fejezze be [a tervezői oktatóanyag egyik részét](tutorial-designer-automobile-price-train-score.md). 
+
+[!INCLUDE [machine-learning-missing-ui](../../includes/machine-learning-missing-ui.md)]
 
 ## <a name="create-a-batch-inference-pipeline"></a>Batch-következtetési folyamat létrehozása
 
@@ -80,7 +83,7 @@ Most már készen áll a következtetési folyamat üzembe helyezésére. Ezzel 
 
     A párbeszédpanel alján látható, hogy a paramétert a betanítás során használt adatkészlet-azonosító alapértelmezett értékével konfigurálta.
 
-1. Kattintson a **Közzététel** lehetőségre.
+1. Kattintson a **Publish** (Közzététel) elemre.
 
 ![Folyamat közzététele](./media/how-to-run-batch-predictions-designer/publish-inference-pipeline.png)
 

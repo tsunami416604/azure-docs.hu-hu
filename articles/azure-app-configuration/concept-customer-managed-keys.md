@@ -6,18 +6,15 @@ ms.author: lcozzens
 ms.date: 02/18/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: 32c4fe3e542135201a7bf4a23aeff94a0e2f902e
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: bcafdbdfd07456a01d956b622d9c5e6ed4b0b6f2
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86023567"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371855"
 ---
 # <a name="use-customer-managed-keys-to-encrypt-your-app-configuration-data"></a>Az alkalmazás konfigurációs adatai titkosítása az ügyfél által felügyelt kulcsok használatával
 Az Azure-alkalmazás konfigurációja [titkosítja a bizalmas adatokat a nyugalmi](../security/fundamentals/encryption-atrest.md)állapotban. Az ügyfél által felügyelt kulcsok használata fokozott adatvédelmet biztosít, mivel lehetővé teszi a titkosítási kulcsok kezelését.  A felügyelt kulcs titkosításának használatakor az alkalmazás konfigurációjában található összes bizalmas információ titkosítása egy felhasználó által megadott Azure Key Vault kulccsal történik.  Ez lehetővé teszi a titkosítási kulcs igény szerinti elforgatását.  Emellett lehetővé teszi az Azure-alkalmazások konfigurációjának bizalmas adatokhoz való hozzáférésének visszavonását azáltal, hogy visszavonja az alkalmazás konfigurációs példányának kulcshoz való hozzáférését.
-
-> [!NOTE]
-> Az ügyfél által felügyelt kulcsok mostantól minden régióban általánosan elérhetők, *kivéve* a közép-indiai régiót. A **Közép-indiai** régióban az Azure-alkalmazás konfigurációja nyilvános előzetes verzióként kínálja az ügyfél által felügyelt kulcsok használatát. A nyilvános előzetes ajánlatok lehetővé teszik, hogy az ügyfelek a hivatalos kiadásuk előtt új funkciókkal kísérletezzenek.  A nyilvános előzetes verzió funkcióit és szolgáltatásait nem éles használatra szánták.
 
 ## <a name="overview"></a>Áttekintés 
 Az Azure-alkalmazás konfigurációja a Microsoft által biztosított 256 bites AES-titkosítási kulccsal titkosítja a bizalmas adatokat a nyugalmi állapotban. Minden alkalmazás-konfigurációs példány saját titkosítási kulccsal rendelkezik, amelyet a szolgáltatás kezel, és a bizalmas adatok titkosítására szolgál. A bizalmas adatok tartalmazzák a kulcs-érték párokban található értékeket.  Ha az ügyfél által felügyelt kulcs funkció engedélyezve van, az alkalmazás konfigurációja egy felügyelt identitást használ, amelyet az alkalmazás konfigurációs példányához rendeltek, hogy a hitelesítés a Azure Active Directory használatával történjen. A felügyelt identitás ezután meghívja a Azure Key Vault és becsomagolja az alkalmazás konfigurációs példányának titkosítási kulcsát. Ekkor a rendszer tárolja a burkolt titkosítási kulcsot, és a kicsomagolt titkosítási kulcsot egy órára gyorsítótárazza az alkalmazás konfigurációjában. Az alkalmazás konfigurációja óránként frissíti az alkalmazás-konfigurációs példány titkosítási kulcsának nem burkolt verzióját. Ez a szokásos üzemi körülmények között biztosítja a rendelkezésre állást. 
@@ -81,7 +78,7 @@ A kezdéshez szüksége lesz egy megfelelően konfigurált Azure app Configurati
     az appconfig identity assign --name contoso-app-config --resource-group contoso-resource-group --identities [system]
     ```
     
-    A parancs kimenete tartalmazza a rendszerhez rendelt identitás elsődleges AZONOSÍTÓját ("principalId") és a bérlő AZONOSÍTÓját ("tenandId").  Ezt a rendszer a felügyelt kulcshoz való hozzáférés megadására fogja használni.
+    A parancs kimenete tartalmazza a rendszerhez rendelt identitás elsődleges AZONOSÍTÓját ("principalId") és a bérlő AZONOSÍTÓját ("tenandId").  Ezek az azonosítók a felügyelt kulcshoz való hozzáférés biztosításához lesznek használva.
 
     ```json
     {

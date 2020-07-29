@@ -4,16 +4,16 @@ description: Webes teszteket állíthat be az Application Insightsban. Riasztás
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 6daa2e4abb1b6580fd70f104e85f3a917f47dcdc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6f9c5fa691456195943f97419c1175fd5b586878
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87024588"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87310276"
 ---
 # <a name="monitor-the-availability-of-any-website"></a>Bármely webhely rendelkezésre állásának monitorozása
 
-A webalkalmazás/webhely üzembe helyezése után ismétlődő teszteket állíthat be a rendelkezésre állás és a válaszadás figyeléséhez. Az [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) rendszeres időközönként, világszerte különböző helyekről webes kéréseket küld az alkalmazására. Riasztást küld, ha az alkalmazás nem válaszol, vagy ha túl lassan válaszol.
+A webalkalmazás/webhely üzembe helyezése után ismétlődő teszteket állíthat be a rendelkezésre állás és a válaszadás figyeléséhez. Az [Azure Application Insights](./app-insights-overview.md) rendszeres időközönként, világszerte különböző helyekről webes kéréseket küld az alkalmazására. Riasztást küld, ha az alkalmazás nem válaszol, vagy ha túl lassan válaszol.
 
 Rendelkezésre állási teszteket állíthat be bármely olyan HTTP- vagy HTTPS-végponthoz, amely a nyilvános internetről érhető el. Nem kell módosítania a tesztelni kívánt webhelyet. Valójában még nem kell a saját webhelynek lennie. A szolgáltatástól függő REST API rendelkezésre állását ellenőrizheti.
 
@@ -107,9 +107,9 @@ A rendelkezésre állási teszt eredményét követve megtekintheti a tranzakci�
 * A probléma nyomon követéséhez naplózhat egy problémát vagy munkaelemet a git-vagy az Azure-táblákban. A hiba tartalmazni fog egy hivatkozást erre az eseményre.
 * Megnyithatja a webes teszt eredményét a Visual Studióban.
 
-További információ a végpontok közötti tranzakciós [diagnosztikai élményről](../../azure-monitor/app/transaction-diagnostics.md).
+További információ a végpontok közötti tranzakciós [diagnosztikai élményről](./transaction-diagnostics.md).
 
-Kattintson a kivétel sorra, és tekintse meg a szintetikus rendelkezésre állási teszt sikertelenségét okozó kiszolgálóoldali kivétel részleteit. Emellett a [hibakeresési pillanatképet](../../azure-monitor/app/snapshot-debugger.md) is megtekintheti a gazdagabb kódok szintjének diagnosztizálásához.
+Kattintson a kivétel sorra, és tekintse meg a szintetikus rendelkezésre állási teszt sikertelenségét okozó kiszolgálóoldali kivétel részleteit. Emellett a [hibakeresési pillanatképet](./snapshot-debugger.md) is megtekintheti a gazdagabb kódok szintjének diagnosztizálásához.
 
 ![Kiszolgálóoldali diagnosztika](./media/monitor-web-app-availability/open-instance-4.png)
 
@@ -120,8 +120,8 @@ A nyers eredmények mellett két fő rendelkezésre állási metrikát is megtek
 
 ## <a name="automation"></a>Automation
 
-* [Használjon PowerShell-szkripteket a rendelkezésre állási teszt automatikus beállításához](../../azure-monitor/app/powershell.md#add-an-availability-test).
-* Állítson be egy [webhookot](../../azure-monitor/platform/alerts-webhooks.md), amelyet a rendszer riasztás esetén hív meg.
+* [Használjon PowerShell-szkripteket a rendelkezésre állási teszt automatikus beállításához](./powershell.md#add-an-availability-test).
+* Állítson be egy [webhookot](../platform/alerts-webhooks.md), amelyet a rendszer riasztás esetén hív meg.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
@@ -131,3 +131,4 @@ Dedikált [hibaelhárítási cikk](troubleshoot-availability.md).
 
 * [Rendelkezésre állási riasztások](availability-alerts.md)
 * [Többlépéses webes tesztek](availability-multistep.md)
+

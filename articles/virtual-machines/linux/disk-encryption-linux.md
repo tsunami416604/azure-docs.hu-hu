@@ -4,16 +4,16 @@ description: Ez a cikk a Linux rendszerű virtuális gépek Microsoft Azure leme
 author: msmbaldwin
 ms.service: virtual-machines-linux
 ms.subservice: security
-ms.topic: article
+ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7664cebbd12e075e9b9ea7ea75021b61569a80cf
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7452a08125008e3d25ffb7d0eff59f55ca9be0b1
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080284"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372654"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Azure Disk Encryption-forgatókönyvek Linux rendszerű virtuális gépeken
 
@@ -409,7 +409,7 @@ A Azure Disk Encryption a következő Linux-forgatókönyvek, funkciók és tech
 - Kernel-összeomlási memóriakép (kdump).
 - Oracle ACFS (ASM-fürt fájlrendszere).
 - Gen2 virtuális gépek (lásd: [a 2. generációs virtuális gépek támogatása az Azure](generation-2.md#generation-1-vs-generation-2-capabilities)-ban).
-- Lsv2 sorozatú virtuális gépek (lásd: [Lsv2 sorozat](../lsv2-series.md)).
+- A Lsv2 sorozatú virtuális gépek NVMe lemezei (lásd: [Lsv2 sorozat](../lsv2-series.md)).
 - Egy "beágyazott csatlakoztatási ponttal" rendelkező virtuális gép; Ez azt eredményezi, hogy több csatlakoztatási pont van egyetlen elérési úton (például "/1stmountpoint/Data/2stmountpoint").
 - Egy virtuális gép, amely egy operációsrendszer-mappához csatlakoztatott adatmeghajtóval rendelkezik.
 - Az M sorozatú virtuális gépek írásgyorsító lemezzel.

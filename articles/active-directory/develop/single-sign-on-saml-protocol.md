@@ -4,22 +4,22 @@ titleSuffix: Microsoft identity platform
 description: Ez a cikk az egyszeri bejelentkezési (SSO) SAML protokollt ismerteti Azure Active Directory
 services: active-directory
 documentationcenter: .net
-author: rwike77
+author: kenwith
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.author: ryanwi
+ms.author: kenwith
 ms.custom: aaddev
-ms.reviewer: hirsin
-ms.openlocfilehash: a68c0248ce364be486610c406388586b69cbb3f4
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.reviewer: paulgarn
+ms.openlocfilehash: f3896bf795e3b1ca258f65fa2c6f4974f2115014
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86076946"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282993"
 ---
 # <a name="single-sign-on-saml-protocol"></a>Egyszeri bejelentkezéses SAML protokoll
 
@@ -46,7 +46,7 @@ xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
 </samlp:AuthnRequest>
 ```
 
-| Paraméter | Típus | Description |
+| Paraméter | Típus | Leírás |
 | --- | --- | --- |
 | ID | Kötelező | Az Azure AD ezt az attribútumot használja a `InResponseTo` visszaadott válasz attribútumának feltöltéséhez. Az azonosító nem kezdődhet számmal, ezért a közös stratégia egy olyan karakterláncot, mint az "id", egy GUID karakterlánc-ábrázolására. Például `id6c1c178c166d486687be4aaf5e482730` érvényes azonosító. |
 | Verzió | Kötelező | Ezt a paramétert **2,0**-re kell állítani. |
@@ -104,7 +104,7 @@ Ha meg van adni, ne adja meg az `ProxyCount` attribútumot `IDPListOption` vagy 
 ### <a name="subject"></a>Tárgy
 Ne tartalmazzon egy `Subject` elemet. Az Azure AD nem támogatja a kérelem tárgyának megadását, és hibaüzenetet ad vissza, ha van ilyen.
 
-## <a name="response"></a>Válasz
+## <a name="response"></a>Reagálás
 Ha a kért bejelentkezés sikeresen befejeződik, az Azure AD választ küld a Cloud Service-nek. A sikeres bejelentkezési kísérletre adott válasz az alábbi példához hasonlóan néz ki:
 
 ```
@@ -150,7 +150,7 @@ Ha a kért bejelentkezés sikeresen befejeződik, az Azure AD választ küld a C
 </samlp:Response>
 ```
 
-### <a name="response"></a>Válasz
+### <a name="response"></a>Reagálás
 
 Az `Response` elem az engedélyezési kérelem eredményét tartalmazza. Az Azure AD beállítja `ID` az `Version` elemet és az `IssueInstant` értékeket a `Response` elemben. A következő attribútumokat is beállítja:
 
@@ -167,7 +167,7 @@ A kiállítói elemmel kapcsolatos válasz például a következő mintához has
 <Issuer xmlns="urn:oasis:names:tc:SAML:2.0:assertion"> https://sts.windows.net/82869000-6ad1-48f0-8171-272ed18796e9/</Issuer>
 ```
 
-### <a name="status"></a>Állapot
+### <a name="status"></a>status
 
 Az `Status` elem a bejelentkezés sikerességét vagy meghibásodását közvetíti. Tartalmazza a `StatusCode` elemet, amely tartalmaz egy kódot vagy egy beágyazott kódot, amely a kérelem állapotát jelöli. Emellett tartalmazza a `StatusMessage` elemet is, amely a bejelentkezési folyamat során létrehozott egyéni hibaüzeneteket tartalmazza.
 

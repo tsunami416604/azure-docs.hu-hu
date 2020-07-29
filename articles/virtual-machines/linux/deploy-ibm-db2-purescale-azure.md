@@ -3,15 +3,15 @@ title: Az IBM DB2-pureScale üzembe helyezése az Azure-ban
 description: Megtudhatja, hogyan helyezhet üzembe egy közelmúltbeli példát a vállalatnak az IBM DB2-környezetből, amely a z/OS-ben fut az Azure-ban az IBM DB2-pureScale.
 author: njray
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/09/2018
 ms.author: edprice
-ms.openlocfilehash: 7e2ec4bfe04112d300a63e6326f0391968e385f7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 17ea965758150adb72d8e8f9fee9937bd5387a48
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86510731"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371923"
 ---
 # <a name="deploy-ibm-db2-purescale-on-azure"></a>Az IBM DB2-pureScale üzembe helyezése az Azure-ban
 
@@ -19,7 +19,7 @@ Ez a cikk azt ismerteti, hogyan lehet üzembe helyezni egy olyan [példa archite
 
 Az áttelepítéshez használt lépések követéséhez tekintse meg a [DB2onAzure](https://aka.ms/db2onazure) adattár telepítési parancsfájljait a githubon. Ezek a parancsfájlok egy tipikus, közepes méretű online tranzakció-feldolgozási (OLTP) munkaterhelés architektúráján alapulnak.
 
-## <a name="get-started"></a>Első lépések
+## <a name="get-started"></a>Bevezetés
 
 Az architektúra üzembe helyezéséhez töltse le és futtassa a [DB2onAzure](https://aka.ms/db2onazure) -tárházban található Deploy.sh-parancsfájlt a githubon.
 
@@ -133,7 +133,7 @@ A GitHub-tárház tartalmaz egy tudásbázist, amelyet a szerzők tartanak fenn.
 
 További információ ezekről és az egyéb ismert problémákról: kb.md-fájl a [DB2onAzure](https://aka.ms/DB2onAzure) -tárházban.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 -   [Szükséges felhasználók létrehozása a DB2 pureScale szolgáltatás telepítéséhez](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.qb.server.doc/doc/t0055374.html?pos=2)
 

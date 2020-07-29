@@ -3,12 +3,12 @@ title: Biztonsági vezérlők
 description: Tudnivalók a Azure Backup szolgáltatásban használt biztonsági ellenőrzésekről. Ezek a vezérlők segítik a szolgáltatást a biztonsági rések megelőzésében, észlelésében és megválaszolásában.
 ms.topic: conceptual
 ms.date: 09/23/2019
-ms.openlocfilehash: c5a324ac3738abfcf1a51442d7acd78a01e5717e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 4a59ab0edeeba480475ac593d2721f95c7b5f48a
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513540"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371719"
 ---
 # <a name="security-controls-for-azure-backup"></a>A Azure Backup biztonsági vezérlői
 
@@ -38,7 +38,7 @@ Ez a cikk a Azure Backup beépített biztonsági vezérlőket dokumentálja.
 | Biztonsági ellenőrzés | Igen/nem | Jegyzetek| Dokumentáció
 |---|---|--|--|
 | Hitelesítés| Igen | A hitelesítés Azure Active Directoryon keresztül történik. |  |
-| Engedélyezés| Igen | A rendszer felhasználja az ügyfél által létrehozott és beépített RBAC-szerepköröket. További információ: [szerepköralapú Access Control használata Azure Backup helyreállítási pontok kezeléséhez](./backup-rbac-rs-vault.md). |  |
+| Engedélyezés| Igen | A rendszer felhasználja az ügyfél által létrehozott és az Azure beépített szerepköreit. További információ: [szerepköralapú Access Control használata Azure Backup helyreállítási pontok kezeléséhez](./backup-rbac-rs-vault.md). |  |
 
 ## <a name="data-protection"></a>Adatvédelem
 

@@ -5,12 +5,13 @@ ms.topic: conceptual
 author: MSNev
 ms.author: newylie
 ms.date: 06/05/2020
-ms.openlocfilehash: a76ed65ebc1c56232d4fa42c6df20f619fe14ca3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 83f518326b38e9832c46997a0a2791eb9f35705e
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86517059"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371634"
 ---
 # <a name="troubleshooting-sdk-load-failure-for-javascript-web-apps"></a>Az SDK betöltési hibáinak elhárítása JavaScript-webalkalmazásokhoz
 
@@ -206,6 +207,6 @@ A kódrészlet és a nyilvános CDN-végpontok használata helyett használhatja
 A kódrészlethez hasonlóan az is előfordulhat, hogy a saját parancsfájlokat (az SDK-NPM csomagok használatával vagy anélkül) érintheti az itt felsorolt blokkoló problémák, így az alkalmazástól, a felhasználóktól és a keretrendszertől függően érdemes lehet megfontolni a kódrészlet logikájának megvalósítását, hogy észlelje és jelentse ezeket a problémákat.
 
 
-## <a name="next-steps"></a>Következő lépések 
+## <a name="next-steps"></a>További lépések 
 - [További segítség kérése a GitHubon történt probléma bejelentésével](https://github.com/Microsoft/ApplicationInsights-JS/issues)
 - [Weblap használatának figyelése](javascript.md)

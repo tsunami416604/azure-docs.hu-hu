@@ -3,12 +3,12 @@ title: Üzembehelyezési módok
 description: Leírja, hogy miként lehet megállapítani, hogy a teljes vagy növekményes központi telepítési módot használja-e Azure Resource Manager.
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: f20f41e989e1a994b7806aecf6e7cee5a4c27014
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e584acd4af1dc6adb5f5d383acd5d16da0815f32
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87040427"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371583"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Azure Resource Manager üzembe helyezési módok
 
@@ -29,7 +29,7 @@ Ha a sablon olyan erőforrást tartalmaz, amely nincs központilag telepítve, m
 
 Ügyeljen arra, hogy a teljes mód legyen a [másolási hurkokkal](copy-resources.md). A rendszer a másolási hurok feloldása után nem a sablonban megadott erőforrásokat törli.
 
-Ha [egy sablonban több erőforráscsoporthoz](cross-resource-group-deployment.md)is telepít, a telepítési műveletben megadott erőforráscsoport erőforrásai törölhetők. A másodlagos erőforráscsoportok erőforrásai nem törlődnek.
+Ha [egy sablonban több erőforráscsoporthoz](cross-scope-deployment.md)is telepít, a telepítési műveletben megadott erőforráscsoport erőforrásai törölhetők. A másodlagos erőforráscsoportok erőforrásai nem törlődnek.
 
 Az erőforrástípusok eltérő módon kezelik a teljes módú törlést. A fölérendelt erőforrások automatikusan törlődnek, ha nem egy teljes módban telepített sablonban vannak. Néhány alárendelt erőforrás nem törlődik automatikusan, ha nem a sablonban. Ezeket a gyermek erőforrásokat azonban törli a rendszer, ha törli a fölérendelt erőforrást.
 

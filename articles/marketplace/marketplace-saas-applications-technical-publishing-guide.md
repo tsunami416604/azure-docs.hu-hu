@@ -6,12 +6,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2020
-ms.openlocfilehash: c19799265679eeead96bf95943f274aa32c75ff2
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.author: mingshen
+author: mingshen-ms
+ms.openlocfilehash: 20d14d656132b2809fe5a79d909c27799438a247
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121571"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87280936"
 ---
 # <a name="saas-applications-offer-publishing-guide"></a>Az SaaS-alkalmazások ajánlat-közzétételi útmutatója
 
@@ -132,7 +134,7 @@ A Microsoft üzemelteti a kereskedelmi tranzakciót. A Microsoft az Ön nevében
 >[!Note]
 >A Cloud Solution Providers (CSP) Partner Channel opt-in mostantól elérhető.  Az ajánlat Microsoft CSP-partneri csatornákon keresztüli forgalmazásával kapcsolatos további információkért tekintse meg a [Cloud Solution Providers](./cloud-solution-providers.md) című témakört.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ha még nem tette meg,
 
 * [További](https://azuremarketplace.microsoft.com/sell) információ a Piactérről.

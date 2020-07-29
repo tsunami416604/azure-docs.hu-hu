@@ -16,11 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 56132eae03a52af425e00bec93a63a697a2a55e6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ec4d91d90a952805781d6d38a0fc8a8fcef84f39
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84204735"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283469"
 ---
 # <a name="azure-operational-security-best-practices"></a>Az Azure működési biztonságának ajánlott eljárásai
 Ez a cikk az Azure-ban tárolt adatok, alkalmazások és egyéb eszközök védelmére vonatkozó ajánlott eljárásokat ismerteti.
@@ -181,7 +182,7 @@ Fontos, hogy az alkalmazások elég rugalmasak legyenek ahhoz, hogy az alkalmaz�
 
 Az Azure Cloud Services esetében konfigurálja az egyes szerepköröket [több példány](../../cloud-services/cloud-services-choose-me.md)használatára.
 
-Az [Azure Virtual Machines](/azure/virtual-machines/windows/overview)esetén győződjön meg arról, hogy a virtuálisgép-architektúra több virtuális gépet tartalmaz, és hogy minden virtuális gép egy [rendelkezésre állási csoportba](/azure/virtual-machines/virtual-machines-windows-manage-availability)tartozik. Javasoljuk, hogy használjon virtuálisgép-méretezési csoportokat az automatikus skálázási képességekhez.
+Az [Azure Virtual Machines](../../virtual-machines/windows/overview.md)esetén győződjön meg arról, hogy a virtuálisgép-architektúra több virtuális gépet tartalmaz, és hogy minden virtuális gép egy [rendelkezésre állási csoportba](../../virtual-machines/windows/tutorial-availability-sets.md)tartozik. Javasoljuk, hogy használjon virtuálisgép-méretezési csoportokat az automatikus skálázási képességekhez.
 
 **Ajánlott eljárás**: a biztonsági védelem egy alkalmazásban való rétegződése csökkenti a sikeres támadás esélyét. Hozzon létre biztonságos terveket az alkalmazásaihoz az Azure platform beépített képességeinek használatával.  
 **Részletek**: a támadás kockázata az alkalmazás méretével (felszíni területével) növekszik. Az engedélyezési lista használatával csökkentheti a felületet a kihelyezett IP-címtartomány és a terheléselosztó által nem szükséges portok ([Azure Load Balancer](/azure/load-balancer/load-balancer-get-started-internet-portal) és az [Azure Application Gateway](/azure/application-gateway/application-gateway-create-probe-portal)) bezárásához.

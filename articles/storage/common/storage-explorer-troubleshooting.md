@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: a49e5fbe9eac689b630a0f3b443729faf29cdb0d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 492f44353a9a43279afa4869640193f1baddd41c
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84974517"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372875"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Az Azure Storage Explorer hibaelhárítási útmutatója
 
@@ -63,13 +63,13 @@ Ha blob-tárolókat vagy-várólistákat szeretne elérni, az Azure-beli hiteles
 1. Nyissa meg a csatlakozási párbeszédpanelt.
 2. Válassza az erőforrás hozzáadása Azure Active Directory használatával (Azure AD) lehetőséget. Kattintson a Tovább gombra.
 3. Válassza ki azt a felhasználói fiókot és bérlőt, amelyhez hozzá kívánja rendelni az erőforrást. Kattintson a Tovább gombra.
-4. Válassza ki az erőforrás típusát, adja meg az erőforrás URL-címét, és adjon meg egy egyedi megjelenítendő nevet a kapcsolódáshoz. Kattintson a Tovább gombra. Kattintson a Connect (Csatlakozás) gombra.
+4. Válassza ki az erőforrás típusát, adja meg az erőforrás URL-címét, és adjon meg egy egyedi megjelenítendő nevet a kapcsolódáshoz. Kattintson a Tovább gombra. Kattintson a Csatlakozás gombra.
 
 Más erőforrástípusok esetében jelenleg nem áll rendelkezésre RBAC kapcsolatos megoldás. Megkerülő megoldásként igényelhet SAS URI-t az [erőforráshoz való csatoláshoz](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux#use-a-shared-access-signature-uri).
 
-### <a name="recommended-built-in-rbac-roles"></a>Ajánlott beépített RBAC-szerepkörök
+### <a name="recommended-azure-built-in-roles"></a>Ajánlott Azure beépített szerepkörök
 
-Több beépített RBAC-szerepkör is rendelkezésre áll, amelyek biztosítják a Storage Explorer használatához szükséges engedélyeket. A szerepkörök némelyike:
+Több Azure-beli beépített szerepkör is rendelkezésre áll, amelyek biztosítják a Storage Explorer használatához szükséges engedélyeket. A szerepkörök némelyike:
 - [Tulajdonos](/azure/role-based-access-control/built-in-roles#owner): mindent kezelhet, beleértve az erőforrásokhoz való hozzáférést is. **Megjegyzés**: Ez a szerepkör a kulcs elérését biztosítja.
 - [Közreműködő](/azure/role-based-access-control/built-in-roles#contributor): mindent kezelhet, kivéve az erőforrásokhoz való hozzáférést. **Megjegyzés**: Ez a szerepkör a kulcs elérését biztosítja.
 - [Olvasó](/azure/role-based-access-control/built-in-roles#reader): erőforrások olvasása és listázása.
@@ -243,7 +243,7 @@ Ha ezt a hibaüzenetet kapja, amikor egyéni csatlakozást próbál hozzáadni, 
 3. Attól függően, hogy milyen típusú kapcsolatra van probléma, keresse meg a kulcsát, majd másolja az értékét egy szövegszerkesztőbe. Az érték az egyéni nevek tömbje, a következőhöz hasonlóan:
     * Tárfiókok
         * `StorageExplorer_CustomConnections_Accounts_v1`
-    * BLOB-tárolók
+    * Blobtárolók
         * `StorageExplorer_CustomConnections_Blobs_v1`
         * `StorageExplorer_CustomConnections_Blobs_v2`
     * Fájlmegosztások

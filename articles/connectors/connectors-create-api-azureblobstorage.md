@@ -7,11 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/21/2020
 tags: connectors
-ms.openlocfilehash: eb943bfe36be10d1e95d569a5c1bf48563e909c1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 34608a085c0d60e0ce07e5d198622f80a43f8b38
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711289"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284081"
 ---
 # <a name="create-and-manage-blobs-in-azure-blob-storage-by-using-azure-logic-apps"></a>Blobok létrehozása és kezelése az Azure Blob Storageban Azure Logic Apps használatával
 
@@ -19,7 +20,7 @@ Ez a cikk bemutatja, hogyan érheti el és kezelheti a blobként tárolt fájlok
 
 Tegyük fel, hogy rendelkezik egy olyan eszközzel, amely frissítve lesz egy Azure-webhelyen. Ez a logikai alkalmazás triggerként működik. Ha ez az esemény történik, a logikai alkalmazás a blob Storage-tárolóban is frissítheti a fájlt, amely egy művelet a logikai alkalmazásban.
 
-Ha most ismerkedik a Logic apps szolgáltatással, tekintse át a [Mi az Azure Logic apps](../logic-apps/logic-apps-overview.md) és a gyors útmutató [: az első logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md)lehetőséget. Az összekötő-specifikus technikai információk az [Azure Blob Storage-összekötő dokumentációjában](https://docs.microsoft.com/connectors/azureblobconnector/)olvashatók.
+Ha most ismerkedik a Logic apps szolgáltatással, tekintse át a [Mi az Azure Logic apps](../logic-apps/logic-apps-overview.md) és a gyors útmutató [: az első logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md)lehetőséget. Az összekötő-specifikus technikai információk az [Azure Blob Storage-összekötő dokumentációjában](/connectors/azureblobconnector/)olvashatók.
 
 > [!IMPORTANT]
 > A Logic apps nem fér hozzá közvetlenül a tűzfalak mögött lévő Storage-fiókokhoz, ha mindkettő ugyanabban a régióban található. Megkerülő megoldásként különböző régiókban lehet a Logic apps és a Storage-fiók. További információ a Azure Logic Apps és a tűzfalak mögötti Storage-fiókok hozzáférésének engedélyezéséről: [hozzáférés a tűzfal mögötti fiókokhoz](#storage-firewalls) szakasz a jelen témakör későbbi részében.
@@ -120,10 +121,10 @@ Ez a példa csak egy blob tartalmát kéri le. A tartalom megtekintéséhez adjo
 
 1. Amikor a rendszer felszólítja a kapcsolódás létrehozására, adja meg a következő információkat:
 
-   | Tulajdonság | Kötelező | Érték | Description |
+   | Tulajdonság | Kötelező | Érték | Leírás |
    |----------|----------|-------|-------------|
-   | **Kapcsolat neve** | Yes | <*kapcsolattípus*> | A kapcsolódáshoz létrehozandó név |
-   | **Tárfiók** | Yes | <*Storage – fiók*> | Válassza ki a Storage-fiókját a listából. |
+   | **Kapcsolat neve** | Igen | <*kapcsolattípus*> | A kapcsolódáshoz létrehozandó név |
+   | **Storage-fiók** | Igen | <*Storage – fiók*> | Válassza ki a Storage-fiókját a listából. |
    ||||
 
    Például:
@@ -136,7 +137,7 @@ Ez a példa csak egy blob tartalmát kéri le. A tartalom megtekintéséhez adjo
 
 ## <a name="connector-reference"></a>Összekötő-referencia
 
-Az összekötő részletes technikai részleteiről, például az eseményindítók, a műveletek és a korlátok az összekötő hencegő fájljában leírtak alapján: az [összekötő hivatkozási lapja](https://docs.microsoft.com/connectors/azureblobconnector/).
+Az összekötő részletes technikai részleteiről, például az eseményindítók, a műveletek és a korlátok az összekötő hencegő fájljában leírtak alapján: az [összekötő hivatkozási lapja](/connectors/azureblobconnector/).
 
 > [!NOTE]
 > Az [integrációs szolgáltatási környezet (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)logikai alkalmazásai esetében az összekötő ISE által címkézett verziója az [ISE-üzenetek korlátait](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) használja helyette.
@@ -193,7 +194,7 @@ A kivétel és a felügyelt identitás támogatásának beállításához köves
 1. A logikai alkalmazás munkafolyamatában adja hozzá és állítsa be a HTTP-műveletet vagy-triggert a Storage-fiók vagy-entitás eléréséhez.
 
    > [!IMPORTANT]
-   > A kimenő HTTP-művelethez vagy az Azure Storage-fiókokhoz indított hívások elindításához ellenőrizze, hogy a kérelem fejléce tartalmazza-e a `x-ms-version` Storage-fiókban futtatni kívánt művelethez tartozó tulajdonságot és API-verziót. További információ: [hozzáférés hitelesítése felügyelt identitással](../logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity) és [verziószámozás az Azure Storage-szolgáltatásokhoz](https://docs.microsoft.com/rest/api/storageservices/versioning-for-the-azure-storage-services#specifying-service-versions-in-requests).
+   > A kimenő HTTP-művelethez vagy az Azure Storage-fiókokhoz indított hívások elindításához ellenőrizze, hogy a kérelem fejléce tartalmazza-e a `x-ms-version` Storage-fiókban futtatni kívánt művelethez tartozó tulajdonságot és API-verziót. További információ: [hozzáférés hitelesítése felügyelt identitással](../logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity) és [verziószámozás az Azure Storage-szolgáltatásokhoz](/rest/api/storageservices/versioning-for-the-azure-storage-services#specifying-service-versions-in-requests).
 
 1. Ezen a műveleten [válassza ki a hitelesítéshez használandó felügyelt identitást](../logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity) .
 
@@ -206,3 +207,4 @@ Ha [API Management](../api-management/api-management-key-concepts.md)dedikált s
 ## <a name="next-steps"></a>További lépések
 
 * További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése
+

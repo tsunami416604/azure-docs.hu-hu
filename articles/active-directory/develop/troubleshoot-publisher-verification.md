@@ -12,12 +12,12 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: dcdce6ee6683c5770f97f5f3dc20e1c9b409ead0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3069e3caf81d9bb2f809b21c88383c419e3b90b3
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85477039"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282976"
 ---
 # <a name="troubleshoot-publisher-verification-preview"></a>Közzétevő ellenőrzésének hibaelhárítása (előzetes verzió)
 Ha nem tudja befejezni a folyamatot, vagy nem várt viselkedést tapasztal a [közzétevő ellenőrzésekor (előzetes verzió)](publisher-verification-overview.md), akkor a következő lépésekkel kell kezdenie, ha hibákat kap, vagy nem várt viselkedés jelenik meg: 
@@ -37,7 +37,7 @@ Az alábbiakban néhány gyakori probléma merülhet fel, amelyek a folyamat sor
     1. Navigáljon az [MPN-regisztráció oldalra](https://partner.microsoft.com/dashboard/account/v3/enrollment/joinnow/basicpartnernetwork/new)
     1. Bejelentkezés felhasználói fiókkal a szervezeti elsődleges Azure AD-bérlőben 
     1. Ha egy MPN-fiók már létezik, a rendszer felismeri, és hozzáadja a fiókhoz. 
-    1. Lépjen a [partner profil oldalra](https://partner.microsoft.com/en-us/pcv/accountsettings/connectedpartnerprofile) , ahol megjelenik az MPN-azonosító és az elsődleges fiók kapcsolata
+    1. Lépjen a [partner profil oldalra](https://partner.microsoft.com/pcv/accountsettings/connectedpartnerprofile) , ahol megjelenik az MPN-azonosító és az elsődleges fiók kapcsolata
 
 - **Nem tudom, kik az Azure AD globális rendszergazdája (más néven vállalati rendszergazda vagy bérlői rendszergazda), hogyan találom meg őket? Mi a helyzet az alkalmazás rendszergazdájával vagy egy másik rendszergazdai szerepkörrel?**
     1. Jelentkezzen be az [Azure ad-portálra](https://aad.portal.azure.com) a szervezete elsődleges bérlője felhasználói fiókjának használatával
@@ -45,14 +45,14 @@ Az alábbiakban néhány gyakori probléma merülhet fel, amelyek a folyamat sor
     1. Kattintson a globális rendszergazda lehetőségre, vagy a kívánt rendszergazdai szerepkörre.
     1. Megjelenik a szerepkörhöz hozzárendelt felhasználók listája
 
-- **Nem tudom, kik az MPN-fiókomhoz tartozó rendszergazda (k)** Nyissa meg az [MPN felhasználói kezelés lapot](https://partner.microsoft.com/en-us/pcv/users) , és a felhasználók listájának szűrésével tekintse meg, hogy a felhasználók milyen rendszergazdai szerepkörökkel rendelkeznek.
+- **Nem tudom, kik az MPN-fiókomhoz tartozó rendszergazda (k)** Nyissa meg az [MPN felhasználói kezelés lapot](https://partner.microsoft.com/pcv/users) , és a felhasználók listájának szűrésével tekintse meg, hogy a felhasználók milyen rendszergazdai szerepkörökkel rendelkeznek.
 
 - **Hibaüzenet jelenik meg, hogy az MPN-azonosító érvénytelen, vagy nem fér hozzá.**
-    1. Lépjen a [partner profiljához](https://partner.microsoft.com/en-us/pcv/accountsettings/connectedpartnerprofile) , és ellenőrizze, hogy: 
+    1. Lépjen a [partner profiljához](https://partner.microsoft.com/pcv/accountsettings/connectedpartnerprofile) , és ellenőrizze, hogy: 
         - Az MPN-azonosító helyes. 
         - Nincsenek hibák vagy "függőben lévő műveletek", valamint a jogi üzleti profilban és a partneri adatokban található ellenőrzési állapot "engedélyezett" vagy "sikeres".
-    1. Nyissa meg az [MPN bérlői felügyelet oldalt](https://partner.microsoft.com/en-us/dashboard/account/v3/tenantmanagement) , és ellenőrizze, hogy az alkalmazás regisztrálva van-e a bérlőben, és hogy felhasználói fiókkal van-e aláírva a társított bérlők listáján.
-    1. Nyissa meg az [MPN-felhasználó felügyelete lapot](https://partner.microsoft.com/en-us/pcv/users) , és erősítse meg, hogy a bejelentkezéshez használt felhasználó globális rendszergazda, MPN-rendszergazda vagy rendszergazdai fiók.
+    1. Nyissa meg az [MPN bérlői felügyelet oldalt](https://partner.microsoft.com/dashboard/account/v3/tenantmanagement) , és ellenőrizze, hogy az alkalmazás regisztrálva van-e a bérlőben, és hogy felhasználói fiókkal van-e aláírva a társított bérlők listáján.
+    1. Nyissa meg az [MPN-felhasználó felügyelete lapot](https://partner.microsoft.com/pcv/users) , és erősítse meg, hogy a bejelentkezéshez használt felhasználó globális rendszergazda, MPN-rendszergazda vagy rendszergazdai fiók.
 
 - **Az Azure AD-portálra való bejelentkezéskor nem jelenik meg a regisztrált alkalmazások egyike sem. miért?** 
     Előfordulhat, hogy az alkalmazás regisztrációja egy másik felhasználói fiókkal vagy egy másik Bérlővel lett létrehozva. Győződjön meg arról, hogy a megfelelő fiókkal van bejelentkezve abban a bérlőben, amelyben az alkalmazás regisztrációja létrejött.
@@ -84,7 +84,7 @@ POST /applications/0cd04273-0d11-4e62-9eb3-5c3971a7cbec/setVerifiedPublisher
 } 
 ```
  
-Válasz 
+Reagálás 
 ```
 204 No Content 
 ```
@@ -98,7 +98,7 @@ Kérés:
 POST /applications/0cd04273-0d11-4e62-9eb3-5c3971a7cbec/unsetVerifiedPublisher 
 ```
  
-Válasz 
+Reagálás 
 ```
 204 No Content 
 ```
@@ -209,7 +209,7 @@ Ez a funkció Microsoft fogyasztói fiókok esetén nem támogatott. Csak az Azu
 
 Ha áttekintette az összes korábbi információt, és továbbra is a Microsoft Graph hibaüzenetet kap, gyűjtsön annyit az alábbi információk közül, amennyire csak lehetséges, és [forduljon a Microsoft ügyfélszolgálatához](developer-support-help-options.md#open-a-support-request).
 
-- Időbélyeg 
+- Timestamp 
 - CorrelationId 
 - A bejelentkezett felhasználó ObjectID vagy UserPrincipalName 
 - Célalkalmazás ObjectId

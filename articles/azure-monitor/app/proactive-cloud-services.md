@@ -4,11 +4,12 @@ description: Figyelje az Azure Cloud Services Azure-beli rendszerindítási hib�
 ms.topic: conceptual
 ms.date: 06/07/2018
 ms.reviewer: harelbr
-ms.openlocfilehash: 997c5e063c4181a597520e60e2a7669401b9677d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1cdfc6dc3ac74997743512ee07f9293699e3ad10
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77669743"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87309290"
 ---
 # <a name="alert-on-issues-in-azure-cloud-services-using-the-azure-diagnostics-integration-with-azure-application-insights"></a>Riasztás az Azure Cloud Services az Azure Diagnostics Azure-beli integrációjának használatával Application Insights
 
@@ -90,7 +91,7 @@ A **szabály létrehozása** ablakban a **riasztási feltétel meghatározása**
 A **keresési lekérdezés** mezőbe illessze be az előző lépésben előkészített egyesített lekérdezést.
 
 Ezután folytassa a **küszöbérték** mezővel, és állítsa az értékét 0-ra. Igény szerint megadhatja az **időszak** és a gyakoriság **mezőket**.
-Kattintson a **Done** (Kész) gombra.
+Kattintson a **Kész** gombra.
 
 ![A jel logikai lekérdezés konfigurálásának képernyőképe](./media/proactive-cloud-services/003.png)
 
@@ -110,7 +111,7 @@ Miután definiálta a műveleti csoportot, erősítse meg a módosításokat, ma
 
 További információ az automatikus észlelésről:
 
-[Hibák rendellenességei](../../azure-monitor/app/proactive-failure-diagnostics.md) 
- [Memóriavesztés](../../azure-monitor/app/proactive-potential-memory-leak.md) 
- [Teljesítménnyel kapcsolatos rendellenességek](../../azure-monitor/app/proactive-performance-diagnostics.md)
+[Hibák rendellenességei](./proactive-failure-diagnostics.md) 
+ [Memóriavesztés](./proactive-potential-memory-leak.md) 
+ [Teljesítménnyel kapcsolatos rendellenességek](./proactive-performance-diagnostics.md)
 

@@ -9,11 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: a33933e63cc7c15de7d60430521f810f8546988c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ad92f796205d84a372de610cb210bbf8878a6c9b
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84667879"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282772"
 ---
 # <a name="configure-replication-to-azure-sql-edge-preview"></a>Replikáció konfigurálása az Azure SQL Edge-be (előzetes verzió) 
 
@@ -23,7 +24,7 @@ Az Azure SQL Edge egy példányát leküldéses előfizetőként konfigurálhatj
   
 - Az Azure SQL Edge példányának leküldéses előfizetőnek kell lennie a közzétevő számára.
 - A közzétevő és a terjesztő a következők egyike lehet:
-   - Helyszíni vagy SQL Server Azure-beli virtuális gépen futó példánya SQL Server. További információ: [SQL Server az Azure Virtual Machines áttekintése](https://azure.microsoft.com/documentation/articles/virtual-machines-sql-server-infrastructure-services/). SQL Server példányoknak a SQL Server 2016-nál későbbi verziót kell használnia.
+   - Helyszíni vagy SQL Server Azure-beli virtuális gépen futó példánya SQL Server. További információ: [SQL Server az Azure Virtual Machines áttekintése](https://docs.microsoft.com/azure/azure-sql/virtual-machines/). SQL Server példányoknak a SQL Server 2016-nál későbbi verziót kell használnia.
    - Az Azure SQL felügyelt példányának egy példánya. Az SQL felügyelt példánya képes a közzétevő, a terjesztő és az előfizetői adatbázisok üzemeltetésére. További információ: [replikáció SQL Database felügyelt példánnyal](https://docs.microsoft.com/azure/sql-database/replication-with-sql-database-managed-instance/).
 
 - A terjesztési adatbázis és a replikációs ügynökök nem helyezhetők el az Azure SQL Edge egy példányán.  

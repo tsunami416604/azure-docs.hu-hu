@@ -3,12 +3,12 @@ title: Élő ASP.NET-webapp figyelése az Azure Application Insights segítség�
 description: Megfigyelheti egy webhely teljesítményét annak ismételt üzembe helyezése nélkül. A helyszíni vagy virtuális gépeken üzemeltetett ASP.NET webalkalmazásokkal működik.
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: 93b150b831a01989093fd916d17e31aee27beb3a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 70a405d2c32641be2ed4038fbffebce0e1340f83
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499528"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87310446"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>Az eszköz webalkalmazásai futásidőben Application Insights kód nem csatolhatók
 
@@ -22,7 +22,7 @@ A Állapotmonitor az IIS-ben üzemeltetett .NET-alkalmazások vagy a helyszínen
 - Ha az alkalmazás üzembe helyezése Azure-beli virtuális GÉPRE vagy Azure virtuálisgép-méretezési csoportba történik, kövesse [az alábbi utasításokat](azure-vm-vmss-apps.md).
 - Ha az alkalmazás üzembe helyezése az Azure app Servicesben történik, kövesse [az alábbi utasításokat](azure-web-apps.md).
 - Ha az alkalmazás üzembe helyezése egy Azure-beli virtuális gépen történik, akkor a Application Insights figyelését az Azure Vezérlőpultról kapcsolhatja be.
-- (Külön cikkek is vannak az [Azure Cloud Services](../../azure-monitor/app/cloudservices.md)kialakításával kapcsolatban.)
+- (Külön cikkek is vannak az [Azure Cloud Services](./cloudservices.md)kialakításával kapcsolatban.)
 
 
 ![A sikertelen kérelmekkel, a kiszolgáló válaszideje és a kiszolgálói kérelmekkel kapcsolatos információkat tartalmazó app betekintési diagramok áttekintése](./media/monitor-performance-live-website-now/overview-graphs.png)
@@ -40,12 +40,12 @@ Itt található egy összefoglaló az egyes módszerek eredményeiről:
 |  | Felépítési idő | Futási idő |
 | --- | --- | --- |
 | **Kérelmek & kivételek** |Igen |Igen |
-| **[Részletesebb kivételek](../../azure-monitor/app/asp-net-exceptions.md)** | |Igen |
-| **[Függőségi diagnosztika](../../azure-monitor/app/asp-net-dependencies.md)** |.NET 4.6+ esetén, kevésbé részletesen |Igen, teljes részletesség: eredménykódok, SQL-parancsszöveg, HTTP-parancsok|
-| **[Rendszerteljesítmény-számlálók](../../azure-monitor/app/performance-counters.md)** |Igen |Igen |
+| **[Részletesebb kivételek](./asp-net-exceptions.md)** | |Igen |
+| **[Függőségi diagnosztika](./asp-net-dependencies.md)** |.NET 4.6+ esetén, kevésbé részletesen |Igen, teljes részletesség: eredménykódok, SQL-parancsszöveg, HTTP-parancsok|
+| **[Rendszerteljesítmény-számlálók](./performance-counters.md)** |Igen |Igen |
 | **[API egyéni telemetria][api]** |Igen |Nem |
-| **[Nyomkövetési napló integrációja](../../azure-monitor/app/asp-net-trace-logs.md)** |Igen |Nem |
-| **[Az oldal nézet & felhasználói](../../azure-monitor/app/javascript.md)** |Igen |Nem |
+| **[Nyomkövetési napló integrációja](./asp-net-trace-logs.md)** |Igen |Nem |
+| **[Az oldal nézet & felhasználói](./javascript.md)** |Igen |Nem |
 | **Szükség van a kód ismételt felépítésére** |Igen | Nem |
 
 
@@ -70,7 +70,7 @@ Ha az alkalmazás egy IIS-kiszolgálón fut, engedélyezze az Application Insigh
 
 ## <a name="customize-monitoring-options"></a>A megfigyelési beállítások testreszabása
 
-Az Application Insights engedélyezése DLL-eket és az ApplicationInsights.config fájlt adja hozzá a webapphoz. A [.config fájl szerkesztésével](../../azure-monitor/app/configuration-with-applicationinsights-config.md) bizonyos beállítások módosíthatók.
+Az Application Insights engedélyezése DLL-eket és az ApplicationInsights.config fájlt adja hozzá a webapphoz. A [.config fájl szerkesztésével](./configuration-with-applicationinsights-config.md) bizonyos beállítások módosíthatók.
 
 ## <a name="when-you-re-publish-your-app-re-enable-application-insights"></a>Az Application Insights ismételt engedélyezése az alkalmazás ismételt közzétételekor
 
@@ -106,7 +106,7 @@ Ezeket a lépéseket végrehajtva ellenőrizheti, hogy a telepítés sikeres vol
 
 ### <a name="cant-connect-no-telemetry"></a>Nem tud csatlakozni? Nem működik a telemetria?
 
-* Nyissa meg [a szükséges kimenő portokat](../../azure-monitor/app/ip-addresses.md#outgoing-ports) a kiszolgálója tűzfalán, hogy az Állapotfigyelő működhessen.
+* Nyissa meg [a szükséges kimenő portokat](./ip-addresses.md#outgoing-ports) a kiszolgálója tűzfalán, hogy az Állapotfigyelő működhessen.
 
 ### <a name="unable-to-login"></a>Nem lehet bejelentkezni
 
@@ -261,7 +261,7 @@ Egy asztali alkalmazás, amelyet az IIS-webkiszolgálón kell telepítenie. Seg�
 ### <a name="when-do-i-use-status-monitor"></a>Mire használhatom az Állapotfigyelőt?
 
 * Bármely, az IIS-kiszolgálón futtatott, akár már futó webalkalmazások beállításához.
-* További telemetria engedélyezéséhez olyan webalkalmazások számára, amelyeket [az Application Insights SDK-val állítottak össze](../../azure-monitor/app/asp-net.md) a fordítás során. 
+* További telemetria engedélyezéséhez olyan webalkalmazások számára, amelyeket [az Application Insights SDK-val állítottak össze](./asp-net.md) a fordítás során. 
 
 ### <a name="can-i-close-it-after-it-runs"></a>A futtatás után bezárhatom?
 
@@ -319,7 +319,7 @@ A fordítási során már kiépített alkalmazások esetén:
 
 A telemetriai adatok megtekintése:
 
-* [A metrikák áttekintése](../../azure-monitor/platform/metrics-charts.md) a teljesítmény és a használat figyeléséhez
+* [A metrikák áttekintése](../platform/metrics-charts.md) a teljesítmény és a használat figyeléséhez
 * [Események és naplók keresése][diagnostic] a problémák diagnosztizálásához
 * [Elemzések](../log-query/log-query-overview.md) az összetettebb lekérdezésekhez
 
@@ -331,11 +331,12 @@ További telemetriai funkciók hozzáadása:
 
 <!--Link references-->
 
-[api]: ../../azure-monitor/app/api-custom-events-metrics.md
+[api]: ./api-custom-events-metrics.md
 [availability]: monitor-web-app-availability.md
-[client]: ../../azure-monitor/app/javascript.md
-[diagnostic]: ../../azure-monitor/app/diagnostic-search.md
-[greenbrown]: ../../azure-monitor/app/asp-net.md
+[client]: ./javascript.md
+[diagnostic]: ./diagnostic-search.md
+[greenbrown]: ./asp-net.md
 [qna]: ../faq.md
-[roles]: ../../azure-monitor/app/resources-roles-access-control.md
-[usage]: ../../azure-monitor/app/javascript.md
+[roles]: ./resources-roles-access-control.md
+[usage]: ./javascript.md
+

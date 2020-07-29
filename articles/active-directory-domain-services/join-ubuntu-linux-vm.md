@@ -11,12 +11,13 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/13/2020
 ms.author: iainfou
-ms.openlocfilehash: 7eaf8b6b5cddc8a01b59cda0cafc819e06a5ec7c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: fasttrack-edit
+ms.openlocfilehash: d01d961a5d5b86f74bb785c3fddfa09843aa060c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87005004"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283146"
 ---
 # <a name="join-an-ubuntu-linux-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>Ubuntu Linux virtuális gép csatlakoztatása Azure Active Directory Domain Services felügyelt tartományhoz
 
@@ -138,7 +139,7 @@ Most, hogy a szükséges csomagok telepítve vannak a virtuális gépen, és az 
     A felügyelt tartománynevet is meg kell adni az összes nagybetűs mezőben. A következő példában a nevű fiók a `contosoadmin@aaddscontoso.com` Kerberos inicializálására szolgál. Adja meg a felügyelt tartomány részét képező saját felhasználói fiókot:
 
     ```console
-    kinit contosoadmin@AADDSCONTOSO.COM
+    kinit -V contosoadmin@AADDSCONTOSO.COM
     ```
 
 1. Végül csatlakoztassa a virtuális gépet a felügyelt tartományhoz a `realm join` parancs használatával. Ugyanazt a felhasználói fiókot használja, mint amely az előző parancsban megadott felügyelt tartomány része `kinit` , például `contosoadmin@AADDSCONTOSO.COM` :
@@ -182,7 +183,7 @@ Az előző lépésben telepített csomagok egyike a System Security Services Dae
 1. A módosítás alkalmazásához indítsa újra a SSSD szolgáltatást:
 
     ```console
-    sudo service sssd restart
+    sudo systemctl restart sssd
     ```
 
 ## <a name="configure-user-account-and-group-settings"></a>A felhasználói fiók és a csoport beállításainak konfigurálása

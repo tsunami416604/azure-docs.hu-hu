@@ -3,12 +3,13 @@ title: Események küldése vagy fogadása az Azure Event Hubs Java (örökölt)
 description: Ez a cikk bemutatja, hogyan hozhat létre olyan Java-alkalmazást, amely az Azure Event Hubs a régi Azure-eventhubs csomag használatával küld/fogad eseményeket.
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: 8c44cfa2a3130e714ac95989248aee634996df2a
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.custom: devx-track-java
+ms.openlocfilehash: 6efa21f4869dddef9d54001a8669b4b039240910
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85320317"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371974"
 ---
 # <a name="use-java-to-send-events-to-or-receive-events-from-azure-event-hubs-azure-eventhubs"></a>Az Azure Event Hubs (Azure-eventhubs) eseményeinek küldése vagy fogadása a Java használatával
 

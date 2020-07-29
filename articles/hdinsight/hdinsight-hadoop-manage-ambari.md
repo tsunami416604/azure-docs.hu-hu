@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/16/2020
-ms.openlocfilehash: f3244ec3f85d5085d3dbc2e503eab59af5572c56
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: ce078a3dad645f592bb33ed55ce508f68ce8f30a
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86075756"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281386"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>HDInsight-fürtök kezelése az Apache Ambari webes felületével
 
@@ -49,7 +49,7 @@ Amikor megnyílik az oldal, jegyezze fel a felső sávot. Ez a sáv a következ�
 
 ![Apache Ambari-irányítópult – áttekintés](./media/hdinsight-hadoop-manage-ambari/apache-ambari-dashboard.png)
 
-|Item |Description |
+|Elem |Leírás |
 |---|---|
 |Ambari embléma|Megnyitja az irányítópultot, amely a fürt figyelésére használható.|
 |Fürt neve # Ops|A folyamatban lévő Ambari-műveletek számát jeleníti meg. A fürt nevének kiválasztásakor vagy az **# Ops** megjeleníti a háttérben futó műveletek listáját.|
@@ -108,6 +108,7 @@ A fürtben lévő csomópontokkal kapcsolatos további információkért válass
 
 Az irányítópulton található **szolgáltatások** oldalsáv gyors betekintést nyújt a fürtön futó szolgáltatások állapotával. A különböző ikonok jelzik az állapotot vagy a végrehajtandó műveleteket. A sárga Lomtár például akkor jelenik meg, ha egy szolgáltatást újra kell indítani.
 
+
 ![Apache Ambari-szolgáltatások oldalsó sáv](./media/hdinsight-hadoop-manage-ambari/apache-ambari-service-bar.png)
 
 > [!NOTE]  
@@ -153,7 +154,7 @@ A **gazdagépek** lapon a fürtben található összes gazdagép szerepel. A gaz
 
 2. A **műveletek** menüben válassza ki a végrehajtani kívánt műveletet:
 
-    |Item |Description |
+    |Elem |Leírás |
     |---|---|
     |Az összes összetevő elindítása|Indítsa el az összes összetevőt a gazdagépen.|
     |Az összes összetevő leállítása|Állítsa le az összes összetevőt a gazdagépen.|
@@ -170,10 +171,10 @@ A **gazdagépek** lapon a fürtben található összes gazdagép szerepel. A gaz
 
 Az **irányítópult** vagy **szolgáltatások** lapon a szolgáltatások listájának alján található **műveletek** gomb használatával állítsa le és indítsa el az összes szolgáltatást.
 
-![Apache Ambari-szolgáltatási műveletek listája](./media/hdinsight-hadoop-manage-ambari/ambari-service-actions.png)
+:::image type="content" source="./media/hdinsight-hadoop-manage-ambari/ambari-service-actions.png" alt-text="Apache Ambari-szolgáltatási műveletek listája." border="true":::
 
 > [!WARNING]  
-> A **Hozzáadási szolgáltatás** megjelenik ebben a menüben, ezért nem használható szolgáltatások hozzáadására a HDInsight-fürthöz. Az új szolgáltatásokat a fürt üzembe helyezése során parancsfájl-művelettel kell hozzáadni. A parancsfájl-műveletek használatával kapcsolatos további információkért lásd: [HDInsight-fürtök testreszabása parancsfájl-műveletek használatával](hdinsight-hadoop-customize-cluster-linux.md).
+> Az új szolgáltatásokat a fürt üzembe helyezése során parancsfájl-művelettel kell hozzáadni. A parancsfájl-műveletek használatával kapcsolatos további információkért lásd: [HDInsight-fürtök testreszabása parancsfájl-műveletek használatával](hdinsight-hadoop-customize-cluster-linux.md).
 
 Míg a **műveletek** gomb újraindíthatja az összes szolgáltatást, gyakran egy adott szolgáltatás indítását, leállítását vagy újraindítását is elvégezheti. A következő lépésekkel végezheti el a műveleteket egy adott szolgáltatáson:
 

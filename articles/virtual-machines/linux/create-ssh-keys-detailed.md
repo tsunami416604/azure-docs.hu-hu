@@ -3,15 +3,15 @@ title: SSH kulcspár létrehozásának részletes lépései
 description: Megtudhatja, hogyan hozhat létre és kezelhet egy nyilvános és titkos SSH-kulcspárt a Linux rendszerű virtuális gépek számára az Azure-ban.
 author: cynthn
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: how-to
 ms.date: 12/06/2019
 ms.author: cynthn
-ms.openlocfilehash: 8c826f5e0e36d693dd3ba98640bceae228ba34e8
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: ebce641aa7cb59deaf74490fb934b3f1536911a9
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119208"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372773"
 ---
 # <a name="detailed-steps-create-and-manage-ssh-keys-for-authentication-to-a-linux-vm-in-azure"></a>Részletes lépések: SSH-kulcsok létrehozása és kezelése az Azure-beli linuxos virtuális gépek hitelesítéséhez 
 A Secure Shell (SSH) kulcspár használatával létrehozhat egy Linux rendszerű virtuális gépet az Azure-ban, amely alapértelmezés szerint SSH-kulcsokat használ a hitelesítéshez, így nincs szükség a bejelentkezéshez szükséges jelszavakra. A Azure Portal, az Azure CLI, a Resource Manager-sablonok vagy más eszközök segítségével létrehozott virtuális gépek tartalmazhatják a nyilvános SSH-kulcsot az üzembe helyezés részeként, amely beállítja az SSH-kulcsos hitelesítést az SSH-kapcsolatokhoz. 
@@ -231,7 +231,7 @@ ssh myvm
 
 Amikor először jelentkezik be egy kiszolgálóra SSH-kulccsal, a parancs felszólítja a kulcshoz tartozó jelszó megadására.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ezután létre kell hoznia az Azure Linux virtuális gépeket az új nyilvános SSH-kulcs használatával. Azok az Azure-beli virtuális gépek, amelyek nyilvános SSH-kulccsal lettek létrehozva, mint a bejelentkezés, jobban biztonságosak, mint az alapértelmezett bejelentkezési módszerrel létrehozott virtuális gépek, a jelszavak.
 

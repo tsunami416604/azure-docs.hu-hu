@@ -13,12 +13,12 @@ ms.date: 07/22/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 0470ab635f34291b4c92259e556329d6b2f401c7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 42356ec4277c8441b4833560f431740e9e2f56c8
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87026084"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87311347"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Microsoft Identity platform és OAuth 2,0 engedélyezési kód folyamatábrája
 
@@ -34,9 +34,11 @@ Magas szinten az alkalmazás teljes hitelesítési folyamata a következőképpe
 
 ![OAuth-hitelesítési kód folyamatábrája](./media/v2-oauth2-auth-code-flow/convergence-scenarios-native.svg)
 
-## <a name="setup-required-for-single-page-apps"></a>Az egyoldalas alkalmazásokhoz szükséges beállítás
+## <a name="redirect-uri-setup-required-for-single-page-apps"></a>Az egyoldalas alkalmazásokhoz szükséges átirányítási URI-beállítás
 
-Az egyoldalas alkalmazásokhoz tartozó engedélyezési kód esetében további beállításokra van szükség.  Az [alkalmazás létrehozása](howto-create-service-principal-portal.md)során meg kell jelölnie az alkalmazás átirányítási URI-ját `spa` átirányítási URI-ként. Ez azt eredményezi, hogy a bejelentkezési kiszolgáló engedélyezi a CORS (a több eredetű erőforrás-megosztást) az alkalmazás számára.  Erre azért van szükség, hogy az x/óra használatával váltsa be a kódot.
+Az egyoldalas alkalmazásokhoz tartozó engedélyezési kód esetében további beállításokra van szükség.  Kövesse az [egyoldalas alkalmazás létrehozásának](scenario-spa-app-registration.md#redirect-uri-msaljs-20-with-auth-code-flow) utasításait, hogy az átirányítási URI-t helyesen megjelölje a CORS. Ha frissíteni szeretne egy meglévő átirányítási URI-t a CORS engedélyezéséhez, nyissa meg a jegyzékfájl-szerkesztőt, és állítsa be az `type` átirányítási URI mezőjét `spa` a `replyUrlsWithType` szakaszba. Az átirányítási URI-ra is kattinthat a hitelesítés lap "web" szakaszában, és kiválaszthatja az áttelepíteni kívánt URI azonosítókat az engedélyezési kód folyamatának használatával.
+
+Az `spa` átirányítás típusa visszamenőlegesen kompatibilis az implicit folyamattal. Azok az alkalmazások, amelyek jelenleg az implicit folyamatot használják a jogkivonatok fogadására, problémák nélkül áthelyezhetők az `spa` átirányítási URI-típusra, és folytatják az implicit folyamat használatát.
 
 Ha megpróbálja használni az engedélyezési kód folyamatát, és ezt a hibaüzenetet látja:
 
@@ -64,7 +66,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 > A kérelem végrehajtásához kattintson az alábbi hivatkozásra. A bejelentkezést követően a böngészőt át kell irányítani a `https://localhost/myapp/` `code` címsorába.
 > <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&response_mode=query&scope=openid%20offline_access%20https%3A%2F%2Fgraph.microsoft.com%2Fmail.read&state=12345" target="_blank">https://login.microsoftonline.com/common/oauth2/v2.0/authorize...</a>
 
-| Paraméter    | Kötelező/nem kötelező | Description |
+| Paraméter    | Kötelező/nem kötelező | Leírás |
 |--------------|-------------|--------------|
 | `tenant`    | kötelező    | A `{tenant}` kérelem elérési útjának értéke használható annak szabályozására, hogy ki jelentkezhet be az alkalmazásba. Az engedélyezett értékek:,, `common` `organizations` `consumers` és bérlői azonosítók. További részletek: [protokoll alapjai](active-directory-v2-protocols.md#endpoints).  |
 | `client_id`   | kötelező    | Az alkalmazáshoz hozzárendelt [Azure Portal – Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) felhasználói felület **(ügyfél) azonosítója** .  |
@@ -120,7 +122,7 @@ error=access_denied
 
 Az alábbi táblázat azokat a hibakódokat ismerteti, amelyeket a rendszer a `error` hiba válaszának paraméterében adhat vissza.
 
-| Hibakód  | Description    | Ügyfél művelete   |
+| Hibakód  | Leírás    | Ügyfél művelete   |
 |-------------|----------------|-----------------|
 | `invalid_request` | Protokollhiba, például hiányzó kötelező paraméter. | Javítsa ki és küldje el újra a kérelmet. Ez a kezdeti tesztelés során általában felmerülő fejlesztési hiba. |
 | `unauthorized_client` | Az ügyfélalkalmazás nem jogosult engedélyezési kód igénylésére. | Ez a hiba általában akkor fordul elő, ha az ügyfélalkalmazás nincs regisztrálva az Azure AD-ben, vagy nem kerül be a felhasználó Azure AD-bérlőbe. Az alkalmazás arra kéri a felhasználót, hogy telepítse az alkalmazást, és hozzáadja azt az Azure AD-hez. |
@@ -154,7 +156,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 > [!TIP]
 > Próbálja meg végrehajtani a kérelmet postán! (Ne felejtse el lecserélni a `code` ) [ ![ Próbálja meg futtatni ezt a kérelmet postán](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 
-| Paraméter  | Kötelező/nem kötelező | Description     |
+| Paraméter  | Kötelező/nem kötelező | Leírás     |
 |------------|-------------------|----------------|
 | `tenant`   | kötelező   | A `{tenant}` kérelem elérési útjának értéke használható annak szabályozására, hogy ki jelentkezhet be az alkalmazásba. Az engedélyezett értékek:,, `common` `organizations` `consumers` és bérlői azonosítók. További részletek: [protokoll alapjai](active-directory-v2-protocols.md#endpoints).  |
 | `client_id` | kötelező  | Az alkalmazáshoz hozzárendelt [Azure Portal – Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) lap alkalmazás-(ügyfél-) azonosítója. |
@@ -217,7 +219,7 @@ A következőhöz hasonló hibaüzenetek jelennek meg:
 
 ### <a name="error-codes-for-token-endpoint-errors"></a>Hibakódok jogkivonat-végponti hibákhoz
 
-| Hibakód         | Description        | Ügyfél művelete    |
+| Hibakód         | Leírás        | Ügyfél művelete    |
 |--------------------|--------------------|------------------|
 | `invalid_request`  | Protokollhiba, például hiányzó kötelező paraméter. | Javítsa ki a kérést vagy az alkalmazást, és küldje el újra a kérelmet.   |
 | `invalid_grant`    | Az engedélyezési kód vagy a PKCE-ellenőrző érvénytelen vagy lejárt. | Próbálkozzon egy új kéréssel a `/authorize` végponton, és ellenőrizze, hogy helyesek-e a code_verifier paraméter.  |
@@ -229,7 +231,7 @@ A következőhöz hasonló hibaüzenetek jelennek meg:
 | `temporarily_unavailable` | A kiszolgáló átmenetileg túl elfoglalt a kérelem kezeléséhez. | Próbálja megismételni a kérelmet. Előfordulhat, hogy az ügyfélalkalmazás megmagyarázza a felhasználót, hogy a válasza egy ideiglenes feltétel miatt késleltetve van. |
 
 > [!NOTE]
-> Az egyoldalas alkalmazások olyan `invalid_request` hibaüzenetet kaphatnak, amely azt jelzi, hogy a több eredetű jogkivonat beváltásának engedélyezése csak az "egylapos alkalmazás" ügyfél-típus esetében engedélyezett.  Ez azt jelzi, hogy a jogkivonat kéréséhez használt átirányítási URI nem lett átirányítási URI-ként megjelölve `spa` .  Tekintse át az [alkalmazás regisztrációjának lépéseit](#setup-required-for-single-page-apps) a folyamat engedélyezéséhez.
+> Az egyoldalas alkalmazások olyan `invalid_request` hibaüzenetet kaphatnak, amely azt jelzi, hogy a több eredetű jogkivonat beváltásának engedélyezése csak az "egylapos alkalmazás" ügyfél-típus esetében engedélyezett.  Ez azt jelzi, hogy a jogkivonat kéréséhez használt átirányítási URI nem lett átirányítási URI-ként megjelölve `spa` .  Tekintse át az [alkalmazás regisztrációjának lépéseit](#redirect-uri-setup-required-for-single-page-apps) a folyamat engedélyezéséhez.
 
 ## <a name="use-the-access-token"></a>Hozzáférési jogkivonat használata
 

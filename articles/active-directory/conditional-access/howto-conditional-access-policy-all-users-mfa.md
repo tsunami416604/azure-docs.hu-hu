@@ -11,11 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7af1347ac57e1a5c5ae99744924ea04fe9757581
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e1e99556b0a0c5b7559cc03b152a19e78aeb58f6
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83995345"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283044"
 ---
 # <a name="conditional-access-require-mfa-for-all-users"></a>Feltételes hozzáférés: MFA megkövetelése minden felhasználó számára
 
@@ -49,10 +50,10 @@ A következő lépések segítenek létrehozni egy feltételes hozzáférési sz
 1. A **hozzárendelések**alatt válassza a **felhasználók és csoportok** lehetőséget.
    1. A **Belefoglalás**területen válassza a **minden felhasználó** lehetőséget.
    1. A **kizárás**területen válassza a **felhasználók és csoportok** lehetőséget, majd válassza ki a szervezet vészhelyzeti hozzáférését vagy az adatbontási fiókokat. 
-   1. Válassza a **Done** (Kész) lehetőséget.
+   1. Válassza a **Kész** lehetőséget.
 1. A **Cloud apps vagy a műveletek**területen válassza a  >  **Include** **minden felhőalapú alkalmazás**lehetőséget.
    1. A **kizárás**területen válassza ki azokat az alkalmazásokat, amelyek nem igénylik a többtényezős hitelesítést.
-1. A **feltételek**  >  **ügyfélalkalmazások (előzetes verzió)** területen állítsa az **Igen**értékre a **konfigurálást** . **A válassza ki azokat az ügyfélalkalmazások, amelyekre ez a szabályzat vonatkozik,** az összes kijelölt alapértelmezett értékre kerül, majd válassza a **kész**lehetőséget.
+1. Az **Conditions**  >  **ügyfélalkalmazások (előzetes verzió)** feltételek alatt **válassza ki a házirend** hatálya alá tartozó ügyfélalkalmazások kiválasztása lehetőséget az összes kijelölt alapértelmezett érték elhagyásához, majd válassza a **kész**lehetőséget.
 1. A **hozzáférés-vezérlés**  >  **megadása**területen válassza a **hozzáférés biztosítása**, a **többtényezős hitelesítés megkövetelése**, majd a **kiválasztás**lehetőséget.
 1. Erősítse meg a beállításokat, és állítsa be az engedélyezési **szabályzatot** **bekapcsolva**értékre.
 1. Válassza a **Létrehozás** lehetőséget a szabályzat engedélyezéséhez.
@@ -67,8 +68,8 @@ A fenti példában szereplő házirendben a szervezet dönthet úgy, hogy nem ig
    1. Konfigurálja az **Igen értéket**.
    1. Adjon meg **bármilyen helyet**.
    1. **Az összes megbízható helyszín**kizárása.
-   1. Válassza a **Done** (Kész) lehetőséget.
-1. Válassza a **Done** (Kész) lehetőséget.
+   1. Válassza a **Kész** lehetőséget.
+1. Válassza a **Kész** lehetőséget.
 1. **Mentse** a szabályzat módosításait.
 
 ## <a name="next-steps"></a>További lépések

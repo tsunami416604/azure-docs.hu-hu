@@ -11,14 +11,15 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/10/2020
+ms.date: 07/28/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 4ee6a3c09d24d6968227ef4215000888c5f4af05
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e27fe0589498de13f5eb6e17f8869bb9d7352a09
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84791010"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372076"
 ---
 # <a name="list-azure-role-assignments-using-azure-powershell"></a>Azure-beli szerepkör-hozzárendelések listázása Azure PowerShell használatával
 
@@ -139,6 +140,26 @@ Get-AzRoleAssignment -Scope /providers/Microsoft.Management/managementGroups/<gr
 
 ```Example
 PS C:\> Get-AzRoleAssignment -Scope /providers/Microsoft.Management/managementGroups/marketing-group
+```
+
+## <a name="list-role-assignments-for-a-resource"></a>Erőforráshoz tartozó szerepkör-hozzárendelések listázása
+
+Egy adott erőforráshoz tartozó szerepkör-hozzárendelések listázásához használja a [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment) és a `-Scope` paramétert. A hatókör az erőforrástól függően eltérő lesz. A hatókör beszerzéséhez paraméterek nélkül futtathatja az `Get-AzRoleAssignment` összes szerepkör-hozzárendelést, majd megkeresheti a listázni kívánt hatókört.
+
+```azurepowershell
+Get-AzRoleAssignment -Scope "/subscriptions/<subscription_id>/resourcegroups/<resource_group_name>/providers/<provider_name>/<resource_type>/<resource>
+```
+
+Az alábbi példa bemutatja, hogyan listázhatja ki a Storage-fiók szerepkör-hozzárendeléseit. Vegye figyelembe, hogy ez a parancs a magasabb hatókörű (például erőforráscsoportok és előfizetések) szerepkör-hozzárendeléseket is felsorolja, amelyek erre a tárolási fiókra vonatkoznak.
+
+```Example
+PS C:\> Get-AzRoleAssignment -Scope "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/storage-test-rg/providers/Microsoft.Storage/storageAccounts/storagetest0122"
+```
+
+Ha csak az erőforráson közvetlenül hozzárendelt szerepkör-hozzárendeléseket szeretné listázni, akkor a [Where-Object](/powershell/module/microsoft.powershell.core/where-object) paranccsal szűrheti a listát.
+
+```Example
+PS C:\> Get-AzRoleAssignment | Where-Object {$_.Scope -eq "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/storage-test-rg/providers/Microsoft.Storage/storageAccounts/storagetest0122"}
 ```
 
 ## <a name="list-role-assignments-for-classic-service-administrator-and-co-administrators"></a>Szerepkör-hozzárendelések listázása a klasszikus szolgáltatás-rendszergazda és a társ-rendszergazdák számára

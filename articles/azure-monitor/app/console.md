@@ -4,25 +4,25 @@ description: Webes alkalmazások figyelése a rendelkezésre állás, a teljesí
 ms.topic: conceptual
 ms.date: 05/21/2020
 ms.reviewer: lmolkova
-ms.openlocfilehash: 955988cd16af5269c474061cf60fb18a040909e3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 28f86e32dd73e25079ca685538fd0cb6f351b2d9
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091232"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87310463"
 ---
 # <a name="application-insights-for-net-console-applications"></a>Application Insights a .NET-konzol alkalmazásaihoz
 
-[Application Insights](../../azure-monitor/app/app-insights-overview.md) lehetővé teszi a webalkalmazások figyelését a rendelkezésre állás, a teljesítmény és a használat érdekében.
+[Application Insights](./app-insights-overview.md) lehetővé teszi a webalkalmazások figyelését a rendelkezésre állás, a teljesítmény és a használat érdekében.
 
 [Microsoft Azure](https://azure.com)-előfizetésre van szüksége. Jelentkezzen be egy Microsoft-fiókval, amely lehet Windows, Xbox Live vagy más Microsoft Cloud Services. Előfordulhat, hogy a csapata szervezeti előfizetéssel rendelkezik az Azure-hoz: kérje meg a tulajdonost, hogy vegye fel Önt a Microsoft-fiók használatával.
 
 > [!NOTE]
-> *Javasoljuk* , hogy a [Microsoft. ApplicationInsights. WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) csomagot és a hozzá tartozó utasításokat [használja az összes](../../azure-monitor/app/worker-service.md) konzolos alkalmazáshoz. Ez a csomag célja [`NetStandard2.0`](/dotnet/standard/net-standard) , és így a .net Core 2,1-as vagy újabb verzióban, illetve a .NET-keretrendszer 4.7.2 vagy újabb verziókban használható.
+> *Javasoljuk* , hogy a [Microsoft. ApplicationInsights. WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) csomagot és a hozzá tartozó utasításokat [használja az összes](./worker-service.md) konzolos alkalmazáshoz. Ez a csomag célja [`NetStandard2.0`](/dotnet/standard/net-standard) , és így a .net Core 2,1-as vagy újabb verzióban, illetve a .NET-keretrendszer 4.7.2 vagy újabb verziókban használható.
 
 ## <a name="getting-started"></a>Első lépések
 
-* [Hozzon létre egy Application Insights-erőforrást](../../azure-monitor/app/create-new-resource.md) az [Azure Portalon](https://portal.azure.com). Az alkalmazás típusa mezőben válassza az **általános**lehetőséget.
+* [Hozzon létre egy Application Insights-erőforrást](./create-new-resource.md) az [Azure Portalon](https://portal.azure.com). Az alkalmazás típusa mezőben válassza az **általános**lehetőséget.
 * Végezze el a kialakítási kulcs másolását. Keresse meg a kulcsot a létrehozott új erőforrás **Essentials** legördülő menüjében.
 * Telepítse a legújabb [Microsoft. ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights) csomagot.
 * Adja meg a kialakítási kulcsot a kódban a telemetria követése előtt (vagy állítsa be APPINSIGHTS_INSTRUMENTATIONKEY környezeti változót). Ezután manuálisan nyomon követheti a telemetria, és megtekintheti a Azure Portal
@@ -96,7 +96,7 @@ A konfigurációs fájlhoz a [Microsoft. ApplicationInsights. windowsserver](htt
 
 ### <a name="configuring-telemetry-collection-from-code"></a>Telemetria-gyűjtemény konfigurálása a kódból
 > [!NOTE]
-> A konfigurációs fájl olvasása nem támogatott a .NET Core-ban. Érdemes lehet Application Insights SDK-t használni [a ASP.net Core](../../azure-monitor/app/asp-net-core.md)
+> A konfigurációs fájl olvasása nem támogatott a .NET Core-ban. Érdemes lehet Application Insights SDK-t használni [a ASP.net Core](./asp-net-core.md)
 
 * Az alkalmazás indítási létrehozása és konfigurálása során `DependencyTrackingTelemetryModule` a példánynak egyedinek kell lennie, és meg kell őrizni az alkalmazás élettartamát.
 
@@ -207,5 +207,6 @@ namespace ConsoleApp
 ```
 
 ## <a name="next-steps"></a>További lépések
-* A [függőségek figyelésével](../../azure-monitor/app/asp-net-dependencies.md) ellenőrizheti, hogy a REST, az SQL vagy más külső erőforrások lassulnak-e.
-* [Az API használatával](../../azure-monitor/app/api-custom-events-metrics.md) saját eseményeket és mérőszámokat küldhet az alkalmazás teljesítményének és használatának részletesebb áttekintéséhez.
+* A [függőségek figyelésével](./asp-net-dependencies.md) ellenőrizheti, hogy a REST, az SQL vagy más külső erőforrások lassulnak-e.
+* [Az API használatával](./api-custom-events-metrics.md) saját eseményeket és mérőszámokat küldhet az alkalmazás teljesítményének és használatának részletesebb áttekintéséhez.
+

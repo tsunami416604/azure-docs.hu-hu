@@ -4,15 +4,15 @@ description: Ismerkedjen meg a bevezető hálózati forgalommal, valamint a hál
 author: ccompy
 ms.assetid: 955a4d84-94ca-418d-aa79-b57a5eb8cb85
 ms.topic: article
-ms.date: 06/29/2020
+ms.date: 07/27/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 10cb1149880c70d991dd5ab49acceab3283372a7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 6fde04be99eaa61287b486eaefdcb92d66d88bc7
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86517853"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87280919"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>App Service-környezet hálózati megfontolásai #
 
@@ -109,7 +109,7 @@ Ha megváltoztatja a VNet DNS-beállítását, akkor újra kell indítania a szo
 A központilag működő működési függőségek mellett a portál felületének néhány további eleme is van. A Azure Portal egyes képességei az _SCM-helyhez_való közvetlen hozzáféréstől függenek. Azure App Service minden alkalmazásához két URL van. Az első URL-cím az alkalmazás elérésére szolgál. A második URL-cím az SCM-hely elérésére szolgál, amely más néven a _kudu-konzol_. Az SCM-helyet használó szolgáltatások a következők:
 
 -   WebJobs
--   Függvények
+-   Functions
 -   Naplózási adatfolyam
 -   Kudu
 -   Bővítmények
@@ -158,13 +158,14 @@ A NSG szükséges, a beosztási funkcióhoz tartozó bejegyzések lehetővé tes
 * a bekapcsolási alhálózatból az összes porton lévő bekapcsoló alhálózatba
 
 **Kimenő**
+* UDP – az 53-es port összes IP-címe
 * UDP – az 123-es port összes IP-címe
 * TCP a 80-es portok összes IP-címeire, 443
 * TCP és az IP-szolgáltatás címkéje AzureSQL az 1433-as porton
 * TCP és az összes IP-cím a 12000-as porton
 * az összes porton lévő bekapcsolási alhálózatra
 
-Ezek a portok nem tartalmazzák azokat a portokat, amelyeket az alkalmazásai a sikeres használathoz igényelnek. Előfordulhat például, hogy az alkalmazásnak meg kell hívnia egy MySQL-kiszolgálót a 3306-as porton a (z) 53-es porton, a NSG-szabályok nem érintik a DNS-re irányuló forgalmat. A 123-es porton futó Network Time Protocol (NTP) az operációs rendszer által használt Time szinkronizációs protokoll. Az NTP-végpontok nem kifejezetten a App Servicesra vonatkoznak, az operációs rendszertől függően változhatnak, és nem szerepelnek jól meghatározott címek listáján. Az időszinkronizálási problémák megelőzése érdekében engedélyeznie kell az UDP-forgalmat az 123-es porton található összes címhez. Az 12000-es porthoz tartozó kimenő TCP a rendszer támogatásához és elemzéséhez szükséges. A végpontok dinamikusak, és nincsenek pontosan meghatározott címekben.
+Ezek a portok nem tartalmazzák azokat a portokat, amelyeket az alkalmazásai a sikeres használathoz igényelnek. Előfordulhat például, hogy az alkalmazásnak meg kell hívnia egy MySQL-kiszolgálót a 3306-es porton. A 123-es porton futó Network Time Protocol (NTP) az operációs rendszer által használt Time szinkronizációs protokoll. Az NTP-végpontok nem kifejezetten a App Servicesra vonatkoznak, az operációs rendszertől függően változhatnak, és nem szerepelnek jól meghatározott címek listáján. Az időszinkronizálási problémák megelőzése érdekében engedélyeznie kell az UDP-forgalmat az 123-es porton található összes címhez. Az 12000-es porthoz tartozó kimenő TCP a rendszer támogatásához és elemzéséhez szükséges. A végpontok dinamikusak, és nincsenek pontosan meghatározott címekben.
 
 A normál alkalmazás-hozzáférési portok a következők:
 

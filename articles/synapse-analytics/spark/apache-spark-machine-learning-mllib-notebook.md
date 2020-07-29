@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.subservice: machine-learning
 ms.date: 04/15/2020
 ms.author: euang
-ms.openlocfilehash: 8cd189bf4037d42348d9a94c47cf0122e63af58f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b7ae2e3045b8f6e56b756ac1b2a4233ac8af9688
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089294"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373453"
 ---
 # <a name="build-a-machine-learning-app-with-apache-spark-mllib-and-azure-synapse-analytics"></a>Gépi tanulási alkalmazás létrehozása Apache Spark MLlib és az Azure szinapszis Analytics használatával
 
@@ -22,7 +22,7 @@ Ebből a cikkből megtudhatja, hogyan hozhat létre Apache Spark [MLlib](https:/
 
 A MLlib egy alapvető Spark-könyvtár, amely számos segédprogramot biztosít a gépi tanulási feladatokhoz, beleértve a következőkre alkalmas segédprogramokat:
 
-- Osztályozás
+- Besorolás
 - Regresszió
 - Fürtözés
 - Témakör modellezése
@@ -225,7 +225,7 @@ train_data_df, test_data_df = encoded_final_df.randomSplit([trainingFraction, te
 Most, hogy két DataFrames van, a következő feladat a modell képletének létrehozása és futtatása a betanítási DataFrame, majd a tesztelési DataFrame érvényesítve. A különböző kombinációk hatásának megtekintéséhez a modell képletének különböző verzióival kell kísérletezni.
 
 > [!Note]
-> A modell mentéséhez szüksége lesz a Azure Storage Blob adatközreműködői RBAC szerepkörre. A Storage-fiók területen navigáljon a Access Control (IAM) elemre, és válassza a szerepkör-hozzárendelés hozzáadása elemet. Rendeljen hozzá Storage blob-adatközreműködői RBAC szerepkört a SQL Database-kiszolgálóhoz. Ezt a lépést csak a tulajdonosi jogosultsággal rendelkező tagok hajthatják végre. Az Azure-erőforrások különböző beépített szerepköreiért tekintse meg ezt az [útmutatót](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
+> A modell mentéséhez szüksége lesz a Azure Storage Blob adatközreműködői RBAC szerepkörre. A Storage-fiók területen navigáljon a Access Control (IAM) elemre, és válassza a szerepkör-hozzárendelés hozzáadása elemet. Rendeljen hozzá Storage blob-adatközreműködői RBAC szerepkört a SQL Database-kiszolgálóhoz. Ezt a lépést csak a tulajdonosi jogosultsággal rendelkező tagok hajthatják végre. A különböző Azure-beli beépített szerepkörökhöz tekintse meg ezt az [útmutatót](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
 
 ```python
 ## Create a new LR object for the model
@@ -278,7 +278,7 @@ plt.show()
 
 Miután befejezte az alkalmazás futtatását, állítsa le a notebookot az erőforrások felszabadításához. ehhez zárja be a fület, vagy válassza a **munkamenet befejezése** elemet a jegyzetfüzet alján található állapot panelen.
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 - [Áttekintés: Apache Spark az Azure szinapszis Analytics szolgáltatásban](apache-spark-overview.md)
 
