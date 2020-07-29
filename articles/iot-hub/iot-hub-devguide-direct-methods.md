@@ -10,12 +10,14 @@ ms.author: rezas
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 873f871625b812937d1e6ac360f7e0565121a4eb
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+- 'Role: Cloud Development'
+- 'Role: IoT Device'
+ms.openlocfilehash: 55472f16cefeca3b00bea79e71aee5d6588528d6
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045994"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323060"
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>Közvetlen metódusok megismerése és meghívása az IoT Hubból
 
@@ -115,7 +117,7 @@ Futtassa a módosított parancsot a megadott közvetlen metódus meghívásához
 ```bash
 https://<iothubName>.azure-devices.net/twins/<deviceId>/modules/<moduleName>/methods?api-version=2018-06-30
 ```
-### <a name="response"></a>Válasz
+### <a name="response"></a>Reagálás
 
 A háttérbeli alkalmazás a következő elemekből álló választ kap:
 
@@ -166,7 +168,7 @@ Az eszköz által fogadott törzs formátuma a következő:
 
 A metódusokra vonatkozó kérelmek QoS 0.
 
-#### <a name="response"></a>Válasz
+#### <a name="response"></a>Reagálás
 
 Az eszköz választ küld a következő `$iothub/methods/res/{status}/?$rid={request id}` helyekre:
 
@@ -192,7 +194,7 @@ A AMQP üzenet a metódus kérését képviselő fogadási hivatkozáson érkezi
 
 * Az AMQP JSON-ként tartalmazó üzenet törzse.
 
-#### <a name="response"></a>Válasz
+#### <a name="response"></a>Reagálás
 
 Az eszköz létrehoz egy küldési hivatkozást a metódus válaszának visszaadásához a címen `amqps://{hostname}:5671/devices/{deviceId}/methods/deviceBound` .
 

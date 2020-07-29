@@ -1,6 +1,6 @@
 ---
-title: Windows Virtual Desktop Host Pool Service-frissítések (Fall 2019) – Azure
-description: Megtudhatja, hogyan hozhat létre egy érvényesítési gazdagépet a szolgáltatások frissítéseinek figyelésére, mielőtt az éles környezetbe helyezné a frissítéseket.
+title: Windows rendszerű virtuális asztali (klasszikus) gazdagép-készlet szolgáltatás frissítései – Azure
+description: Ellenőrzési címkészlet létrehozása a szolgáltatások frissítéseinek figyeléséhez, mielőtt az éles környezetbe helyezné a frissítéseket.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: tutorial
 ms.date: 05/27/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 806c3396d9188ea6abc5f779a26d99247d802ebe
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 448f02990798869e3dd5a804d1b0e0038b810a24
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86527584"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288671"
 ---
-# <a name="tutorial-create-a-host-pool-to-validate-service-updates-fall-2019-release"></a>Oktatóanyag: állomáslista létrehozása a szolgáltatás frissítéseinek ellenőrzéséhez (2019-es kiadás)
+# <a name="tutorial-create-a-host-pool-to-validate-service-updates-in-windows-virtual-desktop-classic"></a>Oktatóanyag: a szolgáltatás frissítéseinek ellenőrzéséhez szükséges gazdagép létrehozása a Windows Virtual Desktopban (klasszikus)
 
 >[!IMPORTANT]
->Ez a tartalom a Fall 2019 kiadásra vonatkozik, amely nem támogatja a Windows rendszerű virtuális asztali objektumokat Azure Resource Manager. Ha a Spring 2020 Update szolgáltatásban bevezetett Azure Resource Manager Windows rendszerű virtuális asztali objektumokat szeretne felügyelni, tekintse meg [ezt a cikket](../create-validation-host-pool.md).
+>Ez a tartalom a Windows rendszerű virtuális asztali (klasszikus) verzióra vonatkozik, amely nem támogatja Azure Resource Manager Windows rendszerű virtuális asztali objektumokat. Ha Azure Resource Manager Windows rendszerű virtuális asztali objektumokat szeretne felügyelni, tekintse meg [ezt a cikket](../create-validation-host-pool.md).
 
 A gazdagép-készletek egy vagy több azonos virtuális gép gyűjteményei a Windows rendszerű virtuális asztali bérlői környezetekben. Mielőtt üzembe helyezi a gazdagép-készleteket az éles környezetben, javasoljuk, hogy hozzon létre egy érvényesítési gazdagépet. A rendszer először alkalmazza a frissítéseket az érvényesítési gazdagépekre, így a szolgáltatás frissítéseinek figyelésével megfigyelheti őket az éles környezetbe. Érvényesítési címkészlet nélkül előfordulhat, hogy nem deríti fel azokat a módosításokat, amelyek hibákat vezetnek be, ami az éles környezetben lévő felhasználók számára állásidőt eredményezhet.
 
@@ -77,7 +77,7 @@ A parancsmag eredményeinek ehhez a kimenethez hasonlóan kell kinéznie:
 
 A szolgáltatás frissítései havonta történnek. Jelentős problémák esetén a kritikus frissítések gyakoribb ütemben lesznek elérhetők.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy létrehozott egy érvényesítési gazdagépet, megtudhatja, hogyan használhatja a Azure Service Health a Windows rendszerű virtuális asztali környezet figyelésére. 
 

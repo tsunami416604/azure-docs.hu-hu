@@ -1,6 +1,6 @@
 ---
-title: Windows rendszerű virtuális asztali alkalmazás-csoportok kezelése – Azure
-description: Leírja, hogyan kell beállítani a Windows rendszerű virtuális asztali bérlőket a Azure Active Directoryban.
+title: Windows rendszerű virtuális asztali (klasszikus) alkalmazások csoportjainak kezelése – Azure
+description: Útmutató a Windows rendszerű virtuális asztali (klasszikus) bérlők beállításához a Azure Active Directoryban.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: tutorial
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 55c2ed5f9066d85643588f77806bbd41e92dd16b
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: fcf946c4bde89f3c14e78744305bc274ea67962f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82614416"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284982"
 ---
-# <a name="tutorial-manage-app-groups-for-windows-virtual-desktop"></a>Oktatóanyag: alkalmazás-csoportok kezelése a Windows rendszerű virtuális asztali gépeken
+# <a name="tutorial-manage-app-groups-for-windows-virtual-desktop-classic"></a>Oktatóanyag: alkalmazás-csoportok kezelése a Windows rendszerű virtuális asztali gépeken (klasszikus)
 
 >[!IMPORTANT]
->Ez a tartalom a Fall 2019 kiadásra vonatkozik, amely nem támogatja a Windows rendszerű virtuális asztali objektumokat Azure Resource Manager. Ha a Spring 2020 Update szolgáltatásban bevezetett Azure Resource Manager Windows rendszerű virtuális asztali objektumokat szeretne felügyelni, tekintse meg [ezt a cikket](../manage-app-groups.md).
+>Ez a tartalom a Windows rendszerű virtuális asztali (klasszikus) verzióra vonatkozik, amely nem támogatja Azure Resource Manager Windows rendszerű virtuális asztali objektumokat. Ha Azure Resource Manager Windows rendszerű virtuális asztali objektumokat szeretne felügyelni, tekintse meg [ezt a cikket](../manage-app-groups.md).
 
 Az új Windows rendszerű virtuális asztali készlethez létrehozott alapértelmezett alkalmazáscsoport a teljes asztalt is közzéteszi. Emellett létrehozhat egy vagy több RemoteApp-alkalmazáscsoport is a gazdagéphez. Ezt az oktatóanyagot követve hozzon létre egy RemoteApp-alkalmazáscsoport alkalmazást, és tegye közzé az egyes **Start** menüket.
 
@@ -54,7 +54,7 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
    Get-RdsStartMenuApp <tenantname> <hostpoolname> <appgroupname>
    ```
    
-4. A következő parancsmag futtatásával telepítheti az alkalmazást a `AppAlias`alapján. `AppAlias`a 3. lépés kimenetének futtatásakor láthatóvá válik.
+4. A következő parancsmag futtatásával telepítheti az alkalmazást a alapján `AppAlias` . `AppAlias`a 3. lépés kimenetének futtatásakor láthatóvá válik.
 
    ```powershell
    New-RdsRemoteApp <tenantname> <hostpoolname> <appgroupname> -Name <remoteappname> -AppAlias <appalias>

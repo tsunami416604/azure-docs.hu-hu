@@ -3,18 +3,18 @@ title: Telemetria folyamatos exportálása a Application Insightsból | Microsof
 description: A diagnosztikai és használati adatok exportálása a Microsoft Azure tárolóba, és onnan tölthető le.
 ms.topic: conceptual
 ms.date: 05/26/2020
-ms.openlocfilehash: 54cd6db6de4aa9c1b8f8894c03a8803ee4aa2b00
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f67a5c555c438298cee701ca065aaf8c01c6406e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87014524"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324335"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Telemetria exportálása az Application Insightsból
 Szeretné megőrizni a telemetria a normál megőrzési időtartamnál hosszabb ideig? Vagy dolgozza fel valamilyen speciális módon? A folyamatos exportálás ideális ehhez. A Application Insights-portálon megjelenített események JSON formátumban exportálhatók Microsoft Azureba. Innen letöltheti az adatait, és bármilyen kódot írhat, amelyet fel kell dolgoznia.  
 
 > [!NOTE]
-> A folyamatos Exportálás csak a klasszikus Application Insights-erőforrások esetében támogatott. A [munkaterület-alapú Application Insights erőforrásoknak](./create-workspace-resource.md) [diagnosztikai beállításokat](./create-workspace-resource.md#export-telemetry)kell használniuk.
+> A folyamatos exportálás csak a klasszikus Application Insights-erőforrások esetén támogatott. A [munkaterület-alapú Application Insights-erőforrásoknak](./create-workspace-resource.md) [diagnosztikai beállításokat](./create-workspace-resource.md#export-telemetry) kell használniuk.
 >
 
 A folyamatos exportálás beállítása előtt bizonyos alternatívákat érdemes figyelembe venni:
@@ -22,11 +22,11 @@ A folyamatos exportálás beállítása előtt bizonyos alternatívákat érdeme
 * A metrikák vagy a Keresés lap tetején található exportálás gomb lehetővé teszi táblázatok és diagramok Excel-számolótáblába való átvitelét.
 
 * Az [elemzés](../log-query/log-query-overview.md) hatékony lekérdezési nyelvet biztosít a telemetria számára. Az eredmények exportálására is használható.
-* Ha [Power BIban lévő adatait szeretné felfedezni](../../azure-monitor/app/export-power-bi.md ), folyamatos exportálás nélkül is megteheti.
+* Ha [Power BIban lévő adatait szeretné felfedezni](./export-power-bi.md), folyamatos exportálás nélkül is megteheti.
 * Az [adatelérési REST API](https://dev.applicationinsights.io/) lehetővé teszi a telemetria programozott módon való elérését.
 * A telepítő [folyamatos exportálását a PowerShell](/powershell/module/az.applicationinsights/new-azapplicationinsightscontinuousexport)használatával is elérheti.
 
-A folyamatos exportálás után a rendszer a szokásos [megőrzési időszakra](../../azure-monitor/app/data-retention-privacy.md)vonatkozóan a Application Insightsban is elérhetővé teszi az adatok tárolását
+A folyamatos exportálás után a rendszer a szokásos [megőrzési időszakra](./data-retention-privacy.md)vonatkozóan a Application Insightsban is elérhetővé teszi az adatok tárolását
 
 ## <a name="continuous-export-advanced-storage-configuration"></a>Folyamatos exportálás speciális tárolási konfiguráció
 
@@ -52,7 +52,7 @@ A folyamatos exportálás nem **támogatja** a következő Azure Storage-funkci�
 4. Hozzon létre vagy válasszon ki egy tárolót a tárolóban.
 
 > [!NOTE]
-> Miután létrehozta az exportálást, az újonnan betöltött adatforgalom az Azure Blob Storage-ba kerül. A folyamatos Exportálás csak a folyamatos Exportálás engedélyezése után létrehozott/beolvasott új telemetria továbbítja. A folyamatos Exportálás engedélyezése előtt létező összes adattal nem exportálja a rendszer, és a korábban létrehozott adatexportálást nem lehet visszamenőlegesen exportálni a folyamatos exportálás használatával.
+> Miután létrehozta az exportálást, az újonnan betöltött adatforgalom az Azure Blob Storage-ba kerül. A folyamatos Exportálás csak a folyamatos Exportálás engedélyezése után létrehozott/beolvasott új telemetria továbbítja. A folyamatos exportálás engedélyezése előtt meglévő adatokat a rendszer nem exportálja, és nincs támogatott lehetőség a korábban létrehozott adatok visszamenőleges exportálására a folyamatos exportálással.
 
 A tárolóban lévő adatmennyiség körülbelül egy órával késleltethető.
 
@@ -60,13 +60,13 @@ Az első exportálás befejezése után a következőhöz hasonló struktúra ta
 
 |Név | Leírás |
 |:----|:------|
-| [Rendelkezésre állás](export-data-model.md#availability) | Jelentések [rendelkezésre állását ismertető webes tesztek](../../azure-monitor/app/monitor-web-app-availability.md).  |
-| [Esemény](export-data-model.md#events) | A [TrackEvent ()](../../azure-monitor/app/api-custom-events-metrics.md#trackevent)által generált egyéni események. 
-| [Kivételek](export-data-model.md#exceptions) |A kiszolgáló és a böngésző [kivételeit](../../azure-monitor/app/asp-net-exceptions.md) jelenti.
-| [Üzenetek](export-data-model.md#trace-messages) | A [TrackTrace](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace)és a [naplózási adapterek](../../azure-monitor/app/asp-net-trace-logs.md)küldik.
+| [Rendelkezésre állás](export-data-model.md#availability) | Jelentések [rendelkezésre állását ismertető webes tesztek](./monitor-web-app-availability.md).  |
+| [Esemény](export-data-model.md#events) | A [TrackEvent ()](./api-custom-events-metrics.md#trackevent)által generált egyéni események. 
+| [Kivételek](export-data-model.md#exceptions) |A kiszolgáló és a böngésző [kivételeit](./asp-net-exceptions.md) jelenti.
+| [Üzenetek](export-data-model.md#trace-messages) | A [TrackTrace](./api-custom-events-metrics.md#tracktrace)és a [naplózási adapterek](./asp-net-trace-logs.md)küldik.
 | [Metrikák](export-data-model.md#metrics) | Metrikai API-hívások generálása.
 | [PerformanceCounters](export-data-model.md) | A Application Insights által gyűjtött teljesítményszámlálók.
-| [Kérelmek](export-data-model.md#requests)| A [TrackRequest](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest)küldte. A standard modulok ezt a kiszolgálót használják a kiszolgálón mért válaszidő megjelentéséhez.| 
+| [Kérelmek](export-data-model.md#requests)| A [TrackRequest](./api-custom-events-metrics.md#trackrequest)küldte. A standard modulok ezt a kiszolgálót használják a kiszolgálón mért válaszidő megjelentéséhez.| 
 
 ### <a name="to-edit-continuous-export"></a>A folyamatos exportálás szerkesztése
 
@@ -79,19 +79,19 @@ Az Exportálás leállításához kattintson a Letiltás gombra. Amikor az Enged
 Az Exportálás végleges leállításához törölje azt. Így nem törli az adatait a tárolóból.
 
 ### <a name="cant-add-or-change-an-export"></a>Nem lehet hozzáadni vagy módosítani az exportálást?
-* Az Exportálás hozzáadásához vagy módosításához tulajdonosi, közreműködő vagy Application Insights közreműködői hozzáférési jogosultság szükséges. [További információ a szerepkörökről][roles].
+* Az exportálások hozzáadásához vagy módosításához tulajdonosi, közreműködői vagy Application Insights-közreműködői hozzáférési jogosultságra van szüksége. [További információ a szerepkörökről][roles].
 
 ## <a name="what-events-do-you-get"></a><a name="analyze"></a>Milyen eseményekhez juthat?
 Az exportált adatok az alkalmazásból kapott nyers telemetria, kivéve, ha az ügyfél IP-címéből kiszámított helyadatok hozzáadására kerül sor.
 
-A [mintavétel](../../azure-monitor/app/sampling.md) által elvetett adatvesztés nem szerepel az exportált adatsorokban.
+A [mintavétel](./sampling.md) által elvetett adatvesztés nem szerepel az exportált adatsorokban.
 
 A rendszer nem tartalmazza a többi számított metrikát. Például nem exportáljuk az átlagos CPU-kihasználtságot, de exportáljuk a nyers telemetria, amelyből az átlagot számítjuk.
 
-Az adatmennyiség magában foglalja az Ön által beállított [rendelkezésre állási webes tesztek](../../azure-monitor/app/monitor-web-app-availability.md) eredményeit is.
+Az adatmennyiség magában foglalja az Ön által beállított [rendelkezésre állási webes tesztek](./monitor-web-app-availability.md) eredményeit is.
 
 > [!NOTE]
-> **Mintavételi.** Ha az alkalmazás sok adatokat küld, a mintavételi funkció működhet, és csak a generált telemetria egy részét küldheti el. [További tudnivalók a mintavételezésről.](../../azure-monitor/app/sampling.md)
+> **Mintavételi.** Ha az alkalmazás sok adatot küld, előfordulhat, hogy a mintavételezési szolgáltatás csak a létrehozott telemetria töredékét küldi el a működése során. [További tudnivalók a mintavételezésről.](./sampling.md)
 >
 >
 
@@ -162,11 +162,11 @@ Nagyobb mintakód esetén lásd: [feldolgozói szerepkör használata][exportasa
 Az Ön felelőssége, hogy kezelje a tárolókapacitást, és szükség esetén törölje a régi adatmennyiséget.
 
 ## <a name="if-you-regenerate-your-storage-key"></a>Ha újragenerálta a tárolási kulcsot...
-Ha megváltoztatja a kulcsát a tárolóra, a folyamatos exportálás nem fog működni. Ekkor megjelenik egy értesítés az Azure-fiókjában.
+Ha módosítja a tároló kulcsát, a folyamatos exportálás nem fog működni. Ekkor egy értesítés jelenik meg az Azure-fiókjában.
 
-Nyissa meg a folyamatos exportálás lapot, és szerkessze az exportálást. Szerkessze az Exportálás célhelyét, de csak hagyja ki ugyanazt a tárolót. A megerősítéshez kattintson az OK gombra.
+Nyissa meg a Folyamatos exportálás lapot, és módosítsa az exportálást. Módosítsa az Exportálás célhelye beállítást, de hagyja kiválasztva az adott tárolót. Kattintson az OK gombra a megerősítéshez.
 
-A folyamatos exportálás újra fog indulni.
+A folyamatos exportálás újraindul.
 
 ## <a name="export-samples"></a>Minták exportálása
 
@@ -210,5 +210,6 @@ Nagyobb lépték esetén vegye fontolóra a [HDInsight](https://azure.microsoft.
 
 <!--Link references-->
 
-[exportasa]: ../../azure-monitor/app/code-sample-export-sql-stream-analytics.md
-[roles]: ../../azure-monitor/app/resources-roles-access-control.md
+[exportasa]: ./code-sample-export-sql-stream-analytics.md
+[roles]: ./resources-roles-access-control.md
+

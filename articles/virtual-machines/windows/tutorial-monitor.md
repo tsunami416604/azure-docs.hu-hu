@@ -10,12 +10,12 @@ ms.workload: infrastructure
 ms.date: 09/27/2018
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: c60d27cb75526d801880658846a6b61760f4bf7e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 154e4c9421d1c0a54b3d9b5f53424e7640fe62d8
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86508083"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323570"
 ---
 # <a name="tutorial-monitor-a-windows-virtual-machine-in-azure"></a>Oktatóanyag: Windowsos virtuális gép figyelése az Azure-ban
 
@@ -93,7 +93,7 @@ Az Azure-beli virtuális gép monitorozásának engedélyezése Azure Monitor fo
     A lista előjelöli az alapértelmezett munkaterületet és helyet, ahol a virtuális gép üzembe lett helyezve az előfizetésben. 
 
     >[!NOTE]
-    >Ha új Log Analytics munkaterületet szeretne létrehozni a figyelési adatok virtuális gépről való tárolásához, tekintse meg a [log Analytics munkaterület létrehozása](../../azure-monitor/learn/quick-create-workspace.md)című témakört. A Log Analytics-munkaterületnek a [támogatott régiók](../../azure-monitor/insights/vminsights-enable-overview.md#log-analytics)egyikéhez kell tartoznia.
+    >Ha új Log Analytics munkaterületet szeretne létrehozni a figyelési adatok virtuális gépről való tárolásához, tekintse meg a [log Analytics munkaterület létrehozása](../../azure-monitor/learn/quick-create-workspace.md)című témakört. A munkaterületnek a [támogatott régiók](../../azure-monitor/insights/vminsights-configure-workspace.md#supported-regions)valamelyikéhez kell tartoznia.
 
 Ha engedélyezte a figyelést, előfordulhat, hogy néhány percet várnia kell, amíg meg nem tekinti a virtuális gép teljesítmény-metrikáit.
 
@@ -129,7 +129,7 @@ A következő példában az átlagos processzorhasználat alapján hozunk létre
 
 6. Kattintson az **OK** gombra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban konfigurálta és megtekintette a virtuális gép teljesítményét. Megtanulta végrehajtani az alábbi műveleteket:
 

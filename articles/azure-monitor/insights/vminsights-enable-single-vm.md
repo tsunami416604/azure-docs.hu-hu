@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/25/2020
-ms.openlocfilehash: 4cdb9390b3146df74f2cbe8eba7b170a5d11fb2c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d4f14280f38a2389809477b84461eb3174909316
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85507058"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323893"
 ---
 # <a name="enable-azure-monitor-for-single-vm-or-vmss-in-the-azure-portal"></a>Azure Monitor engedélyezése egyetlen virtuális géphez vagy VMSS a Azure Portal
 Ez a cikk azt ismerteti, hogyan engedélyezhető a Azure Monitor for VMs egy virtuális gép vagy virtuálisgép-méretezési csoport számára a Azure Portal használatával. Ez az eljárás a következő módon használható:
@@ -34,7 +34,7 @@ Mielőtt elkezdené, tekintse át az [előfeltételeket](vminsights-enable-overv
 
     ![Virtuális gép Azure Monitor for VMsának engedélyezése](media/vminsights-enable-single-vm/enable-vminsights-vm-portal.png)
 
-1. Ha a virtuális gép még nem csatlakozik Log Analytics munkaterülethez, a rendszer kérni fogja, hogy válasszon egyet. Ha korábban még nem [hozott létre munkaterületet](../../azure-monitor/learn/quick-create-workspace.md), akkor kiválaszthatja azt a helyet, ahol a virtuális gép vagy a VMSS telepítve van az előfizetésben. A rendszer létrehozza és konfigurálja ezt a munkaterületet, ha még nem létezik.
+1. Ha a virtuális gép még nem csatlakozik Log Analytics munkaterülethez, a rendszer kérni fogja, hogy válasszon egyet. Ha korábban még nem [hozott létre munkaterületet](../learn/quick-create-workspace.md), akkor kiválaszthatja azt a helyet, ahol a virtuális gép vagy a VMSS telepítve van az előfizetésben. A rendszer létrehozza és konfigurálja ezt a munkaterületet, ha még nem létezik.
 
 2. Az állapotüzenetek a konfiguráció elvégzése után kapják meg az üzeneteket.
 
@@ -49,3 +49,4 @@ Mielőtt elkezdené, tekintse át az [előfeltételeket](vminsights-enable-overv
 
 * A felderített alkalmazások függőségeinek megtekintéséhez lásd: [Azure monitor for VMS Térkép használata](vminsights-maps.md). 
 * A szűk keresztmetszetek, a teljes kihasználtság és a virtuális gép teljesítményének meghatározása: az Azure-beli [virtuális gépek teljesítményének megtekintése](vminsights-performance.md).
+

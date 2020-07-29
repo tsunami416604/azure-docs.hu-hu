@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/16/2019
-ms.openlocfilehash: f34389785c0f4a43bfcab3e50f2dcd132b2cb629
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 8abd9d7f33a07141418ad67cc2128af40ad0bd51
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505805"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324760"
 ---
 # <a name="transition-from-log-analytics-log-search-to-azure-monitor-logs"></a>Áttérés Log Analytics naplóbeli keresésről Azure Monitor naplókra
 A naplóbeli keresés a Log Analytics nemrég váltotta fel a Azure Monitor naplók elemzésére szolgáló új felhasználói élményt. A naplóbeli keresés oldal jelenleg továbbra is elérhető a **naplók (klasszikus)** menüpontban a Azure Portal **log Analytics munkaterületek** lapján, de 2019. február 15-én el lesz távolítva. Ez a cikk a két funkció közötti különbségeket ismerteti, amelyek segítenek a naplók közötti keresésben való áttérésben. 
@@ -44,7 +44,7 @@ Ha az aktuális lekérdezést Azure Monitor naplókba szeretné menteni, válass
 ![Napló lekérdezésének mentése](media/log-search-transition/save-query-logs.png)
 
 ## <a name="saved-queries"></a>Mentett lekérdezések
-A naplóbeli keresés során a mentett lekérdezések a művelet sáv **mentett keresések**menüpontján keresztül érhetők el. A Azure Monitor-naplókban a lekérdezés- [kezelőből](../log-query/get-started-portal.md#save-queries)férhet hozzá a mentett lekérdezésekhez.
+A naplóbeli keresés során a mentett lekérdezések a művelet sáv **mentett keresések**menüpontján keresztül érhetők el. A Azure Monitor-naplókban a lekérdezés- [kezelőből](./get-started-portal.md#save-queries)férhet hozzá a mentett lekérdezésekhez.
 
 ![Lekérdezési tallózó](media/log-search-transition/query-explorer.png)
 
@@ -66,6 +66,7 @@ Azure Monitor naplókban [hozzon létre egy riasztást a napló lekérdezésből
 
 ![Műveletcsoport](media/log-search-transition/action-group.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ az új [Azure monitor naplókról](get-started-portal.md).
+

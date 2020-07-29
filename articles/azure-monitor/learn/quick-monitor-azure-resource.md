@@ -6,12 +6,12 @@ ms.topic: quickstart
 author: bwren
 ms.author: bwren
 ms.date: 12/15/2019
-ms.openlocfilehash: 597b12a584e7b4c17ec21635e18368f897ad168a
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
+ms.openlocfilehash: 0e29b25f5d846cae1563ea90271cf007d02e248c
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85443876"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324267"
 ---
 # <a name="quickstart-monitor-an-azure-resource-with-azure-monitor"></a>Gyors útmutató: Azure-erőforrások figyelése Azure Monitor
 [Azure monitor](../overview.md) elindítja az adatok gyűjtését az Azure-erőforrásokból a létrehozásuk pillanatában. Ez a rövid útmutató egy adott erőforráshoz automatikusan összegyűjtött és a Azure Portalban megtekinthető adatokat ismerteti. Később további adatokat is hozzáadhat a konfigurációhoz, és a Azure Monitor menüben megtekintheti az előfizetéshez tartozó összes erőforráshoz gyűjtött adatokat.
@@ -19,7 +19,7 @@ ms.locfileid: "85443876"
 Az Azure-erőforrásokból gyűjtött monitorozási adatok részletes ismertetését lásd: az [Azure-erőforrások figyelése Azure monitorokkal](../insights/monitor-azure-resource.md).
 
 
-## <a name="sign-in-to-azure-portal"></a>Jelentkezzen be az Azure Portalon
+## <a name="sign-in-to-azure-portal"></a>Bejelentkezés az Azure portálra
 
 Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen. 
 
@@ -70,4 +70,5 @@ A metrikák olyan numerikus értékek, amelyek egy adott időpontban írják le 
 Ebben a rövid útmutatóban megtekintett egy Azure-erőforrás tevékenység-naplóját és metrikáit, amelyeket a Azure Monitor automatikusan gyűjt. Folytassa a következő rövid útmutatóval, amely bemutatja, hogyan gyűjtheti be a tevékenység naplóját egy Log Analytics munkaterületre, ahol a [naplózási lekérdezések](../log-query/log-query-overview.md)használatával elemezhetők.
 
 > [!div class="nextstepaction"]
-> [Azure-tevékenység naplójának küldése Log Analytics munkaterületre](quick-monitor-azure-resource.md)
+> [Azure-tevékenység naplójának küldése Log Analytics munkaterületre]()
+

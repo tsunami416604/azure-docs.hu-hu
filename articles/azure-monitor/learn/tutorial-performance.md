@@ -7,12 +7,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 06/15/2020
 ms.custom: mvc
-ms.openlocfilehash: 6e344908fff54a06f1885774c88b509096c26e08
-ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
+ms.openlocfilehash: 3c7185e07190895dfcc97555c6603049ed41c18c
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84783146"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322499"
 ---
 # <a name="find-and-diagnose-performance-issues-with-azure-application-insights"></a>Teljesítménybeli problémák észlelése és diagnosztizálása az Application Insights segítségével
 
@@ -32,8 +32,8 @@ Az oktatóanyag elvégzéséhez:
 - Telepítse a [Visual Studio 2019](https://www.visualstudio.com/downloads/) -et a következő munkaterhelésekkel:
     - ASP.NET és webfejlesztés
     - Azure-fejlesztés
-- Telepítsen egy .NET-alkalmazást az Azure-hoz, és [engedélyezze az Application Insights SDK](../../azure-monitor/app/asp-net.md)-t.
-- [Engedélyezze az Application Insights profilkészítőt](../../azure-monitor/app/profiler.md#installation) az alkalmazásához.
+- Telepítsen egy .NET-alkalmazást az Azure-hoz, és [engedélyezze az Application Insights SDK](../app/asp-net.md)-t.
+- [Engedélyezze az Application Insights profilkészítőt](../app/profiler.md#installation) az alkalmazásához.
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
 Jelentkezzen be a Azure Portalba a következő címen: [https://portal.azure.com](https://portal.azure.com) .
@@ -56,12 +56,12 @@ Az Application Insights teljesítményadatokat gyűjt az alkalmazás különböz
 
 4.  A jobb oldali teljesítmény panelen a kiválasztott művelet különböző kéréseihez tartozó időtartamok eloszlását láthatja.  Szűkítse a keretet úgy, hogy a 95. percentilisnél kezdődjön. A „3 legnagyobb függőség” megállapításkártya egyszerűen megmutatja, hogy a külső függőségek valószínűleg hozzájárulnak a tranzakciók lassúságához.  Kattintson a minták számát tartalmazó gombra a minták listájának megtekintéséhez. A listáról kiválaszthatja bármelyik mintát, és megtekintheti a tranzakciók részleteit.
 
-5.  Első ránézésre is megállapítható, hogy a Fabrikamaccount Azure-tábla a felelős a tranzakció teljes időtartamának legnagyobb részéért. Láthatja továbbá, hogy egy kivétel miatt meghiúsult. Ha a lista bármelyik elemére kattint, a jobb oldalon megjelennek az elem részletei. [További információ a tranzakciódiagnosztikai felületről](../../azure-monitor/app/transaction-diagnostics.md)
+5.  Első ránézésre is megállapítható, hogy a Fabrikamaccount Azure-tábla a felelős a tranzakció teljes időtartamának legnagyobb részéért. Láthatja továbbá, hogy egy kivétel miatt meghiúsult. Ha a lista bármelyik elemére kattint, a jobb oldalon megjelennek az elem részletei. [További információ a tranzakciódiagnosztikai felületről](../app/transaction-diagnostics.md)
 
     ![Végpontok közötti részletek](media/tutorial-performance/4-end-to-end.png)
     
 
-6.  A [**Profiler**](../../azure-monitor/app/profiler-overview.md) segítséget nyújt a kódok szintjének diagnosztizálásához azáltal, hogy megjeleníti a művelethez és az egyes lépésekhez szükséges időponthoz tartozó tényleges kódot. Előfordulhat, hogy bizonyos műveletek nem hagynak nyomot, mivel a profilkészítő időszakosan fut.  Idővel több műveletnek lehet nyoma.  Kattintson a **Profilkészítői adatok** elemre a profilkészítő a műveleten való futtatásának elindításához.
+6.  A [**Profiler**](../app/profiler-overview.md) segítséget nyújt a kódok szintjének diagnosztizálásához azáltal, hogy megjeleníti a művelethez és az egyes lépésekhez szükséges időponthoz tartozó tényleges kódot. Előfordulhat, hogy bizonyos műveletek nem hagynak nyomot, mivel a profilkészítő időszakosan fut.  Idővel több műveletnek lehet nyoma.  Kattintson a **Profilkészítői adatok** elemre a profilkészítő a műveleten való futtatásának elindításához.
 5.  A nyom megjeleníti az egyes műveletekhez tartozó eseményeket, így diagnosztizálhatja a művelet időtartamáért felelős kiváltó okot.  Kattintson az egyik leghosszabb időtartamot megjelenítő példára.
 6.  Kattintson a **gyors elérési út** elemre, hogy kiemelje a művelet teljes időtartamára vonatkozó események megadott elérési útját.  Ebben a példában azt láthatja, hogy a leglassabb hívás a *FabrikamFiberAzureStorage.GetStorageTableData* metódusból származik. A legtöbb időt igénybe vevő metódus a *CloudTable.CreateIfNotExist*. Ha ez a kódsor lefut minden alkalommal, amikor a függvény meghívása megtörténik, az felesleges hálózati hívásokat és processzorhasználatot eredményez. A kód kijavításának legjobb módja az, hogy ha ezt a sort egy olyan indítási metódusba helyezi, amely csak egyszer fut le.
 
@@ -112,4 +112,5 @@ A kiszolgáló teljesítményére gyűjtött adatokhoz hasonlóan a Application 
 Most már megtanulta, hogyan azonosíthatja a futásidejű kivételeket. Térjen át a következő oktatóanyagra, hogy megtanulja, hogyan hozhat létre riasztásokat a hibákhoz.
 
 > [!div class="nextstepaction"]
-> [Alkalmazásállapot-riasztás](../../azure-monitor/learn/tutorial-alert.md)
+> [Alkalmazásállapot-riasztás](./tutorial-alert.md)
+

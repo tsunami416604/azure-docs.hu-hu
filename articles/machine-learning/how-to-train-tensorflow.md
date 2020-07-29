@@ -5,17 +5,17 @@ description: Megtudhatja, hogyan futtathat TensorFlow-betanítási szkripteket a
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.author: maxluk
 author: maxluk
 ms.date: 08/20/2019
-ms.custom: seodec18
-ms.openlocfilehash: 6604f9ca6c8525a9b60ac6ffc0d043b052a27b18
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.topic: conceptual
+ms.custom: how-to
+ms.openlocfilehash: 1d7523f68f97250f71405f840a6a5e9fcf9fb2f9
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87030868"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320867"
 ---
 # <a name="build-a-tensorflow-deep-learning-model-at-scale-with-azure-machine-learning"></a>TensorFlow mély tanulási modellt készíthet Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]

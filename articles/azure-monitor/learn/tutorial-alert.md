@@ -7,12 +7,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/10/2019
 ms.custom: mvc
-ms.openlocfilehash: 1c39bfdbcfb924505473b20b3d56a28d54c84f93
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 706f3913e25eca6240c186e45709faf6c77620bf
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505873"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324573"
 ---
 # <a name="monitor-and-alert-on-application-health-with-azure-application-insights"></a>Az alkalmazás állapotának figyelése és riasztása az Azure Application Insights
 
@@ -68,9 +68,10 @@ A Application Insights rendelkezésre állási tesztek lehetővé teszik az alka
 
     ![Teszt eredménye](media/tutorial-alert/test-result-001.png)
   
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy megismerte a problémákkal kapcsolatos riasztásokat, folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan használhatja a felhasználókat az alkalmazással való kommunikációra.
 
 > [!div class="nextstepaction"]
-> [A felhasználók megismerése](../../azure-monitor/learn/tutorial-users.md)
+> [A felhasználók megismerése](./tutorial-users.md)
+

@@ -1,6 +1,6 @@
 ---
-title: A Windows rendszerű virtuális asztali webes ügyfélprogram összekötése – Azure
-description: Kapcsolódás a Windows rendszerű virtuális asztalhoz a webes ügyfélprogram használatával.
+title: Windows rendszerű virtuális asztali (klasszikus) webes ügyfél összekötése – Azure
+description: Kapcsolódás a Windows rendszerű virtuális asztalhoz (klasszikus) a webes ügyfélprogram használatával.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e95498498fd15d7a6e73630e218f9bdd1b892f09
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: efe97c86ebfac8e130489b3105a97302866d6822
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85204795"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87270379"
 ---
-# <a name="connect-with-the-web-client"></a>Kapcsolódás a webügyféllel
+# <a name="connect-to-windows-virtual-desktop-classic-with-the-web-client"></a>Kapcsolódás a Windows rendszerű virtuális asztalhoz (klasszikus) a webes ügyféllel
 
 >[!IMPORTANT]
->Ez a tartalom a Fall 2019 kiadásra vonatkozik, amely nem támogatja a Windows rendszerű virtuális asztali objektumokat Azure Resource Manager. Ha a Spring 2020 Update szolgáltatásban bevezetett Azure Resource Manager Windows rendszerű virtuális asztali objektumokat szeretne felügyelni, tekintse meg [ezt a cikket](../connect-web.md).
+>Ez a tartalom a Windows rendszerű virtuális asztali (klasszikus) verzióra vonatkozik, amely nem támogatja Azure Resource Manager Windows rendszerű virtuális asztali objektumokat. Ha Azure Resource Manager Windows rendszerű virtuális asztali objektumokat szeretne felügyelni, tekintse meg [ezt a cikket](../connect-web.md).
 
 A webes ügyfél lehetővé teszi a Windows rendszerű virtuális asztali erőforrások elérését egy webböngészőből a hosszadalmas telepítési folyamat nélkül.
 
@@ -42,7 +42,7 @@ Habár minden HTML5-kompatibilis böngészőnek működnie kell, a következő o
 Egy böngészőben nyissa meg a Windows rendszerű virtuális asztali webes ügyfelet, <https://rdweb.wvd.microsoft.com/webclient> és jelentkezzen be a felhasználói fiókjával.
 
 >[!NOTE]
->Ha a Windows rendszerű virtuális asztali Spring 2020 kiadást Azure Resource Manager-integrációval használja, akkor ehelyett kapcsolódjon az erőforrásokhoz <https://rdweb.wvd.microsoft.com/arm/webclient> .
+>Ha Azure Resource Manager-integrációval rendelkező Windows rendszerű virtuális asztalt használ, ehelyett kapcsolódjon az erőforrásokhoz <https://rdweb.wvd.microsoft.com/arm/webclient> .
 
 >[!NOTE]
 >Ha már bejelentkezett egy másik Azure Active Directory fiókkal, mint amelyet a Windowsos virtuális asztalhoz kíván használni, akkor ki kell jelentkeznie, vagy egy privát böngészőablakot kell használnia.

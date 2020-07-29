@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.topic: overview
 ms.date: 03/18/2020
 ms.author: victorh
-ms.openlocfilehash: 28cf8d9fd60cc6fc158812aa0a1dff3a4b0dced1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d56c57a12995e0ea94c10f371bf09a3b3f9733ba
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80754296"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87278624"
 ---
 # <a name="azure-web-application-firewall-on-azure-content-delivery-network"></a>Azure webalkalmazási tűzfal az Azure Content Delivery Network
 
@@ -45,7 +45,7 @@ Azure CDN futtatott webalkalmazásnak egyszerre csak egy WAF szabályzata lehet 
 
 A WAF házirend a következő két módban való futtatásra konfigurálható:
 
-- *Észlelési mód*: Ha az észlelési módban fut, a WAF nem hajt végre más műveleteket, mint a figyelők, és naplózza a kérést és a MEGegyező WAF-SZABÁLYT a WAF-naplókhoz. Bekapcsolhatja a naplózási diagnosztikát a bejárati ajtóhoz. A portál használata esetén lépjen a **diagnosztika** szakaszra.
+- *Észlelési mód*: Ha az észlelési módban fut, a WAF nem hajt végre más műveleteket, mint a figyelők, és naplózza a kérést és a MEGegyező WAF-SZABÁLYT a WAF-naplókhoz. Bekapcsolhatja a CDN naplózási diagnosztikát. A portál használata esetén lépjen a **diagnosztika** szakaszra.
 
 - *Megelőzési mód*: megelőzési módban a WAF végrehajtja a megadott műveletet, ha egy kérelem megfelel egy szabálynak. Ha talál egyezést, az alacsonyabb prioritású további szabályok kiértékelése nem történik meg. A rendszer a WAF-naplókban is naplózza a megfeleltetett kérelmeket.
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 121b3ced2e021f3907983623ea60185286797670
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: a74fe2bf6b326dac782ac75418a7f4960e66501a
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86024448"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87275003"
 ---
 # <a name="conditional-access-conditions"></a>Feltételes hozzáférés: feltételek
 
@@ -63,6 +63,9 @@ A helyekkel kapcsolatos további információkért tekintse meg a következő t�
 ## <a name="client-apps-preview"></a>Ügyfélalkalmazások (előzetes verzió)
 
 A feltételes hozzáférési szabályzatok alapértelmezés szerint a modern hitelesítési protokollokat használó böngészőalapú alkalmazásokra és alkalmazásokra vonatkoznak. Ezen alkalmazások mellett a rendszergazdák dönthetnek úgy is, hogy az Exchange ActiveSync-ügyfeleket és az örökölt protokollokat használó más ügyfeleket is tartalmazzák.
+
+> [!NOTE]
+> Az igen/nincs váltógomb konfigurálása az ügyfélalkalmazások feltételében el lett távolítva, hogy könnyebb legyen megtekinteni, hogy mely ügyfélalkalmazások vannak kiválasztva. Ez nem befolyásolja, hogy mely ügyfélalkalmazások érvényesek a meglévő szabályzatokra.
 
 - Böngésző
    - Ezek közé tartoznak a webes alkalmazások, amelyek olyan protokollokat használnak, mint például az SAML, a WS-Federation, az OpenID Connect vagy a OAuth-alapú bizalmas ügyfélként regisztrált szolgáltatások.
@@ -164,7 +167,7 @@ Ez a beállítás hatással van a következő Mobile apps és asztali ügyfelek 
 
 Ha a házirendhez rendelt hozzáférés-vezérlés **jóváhagyott ügyfélalkalmazás használatát igényli**, a rendszer a felhasználót az Outlook Mobile-ügyfél telepítésére és használatára irányítja. Abban az esetben, ha a **többtényezős hitelesítés** szükséges, az érintett felhasználók le vannak tiltva, mert az egyszerű hitelesítés nem támogatja a többtényezős hitelesítést.
 
-További információért tekintse át a következő cikkeket:
+További információkért tekintse át a következő cikkeket:
 
 - [Örökölt hitelesítés letiltása feltételes hozzáféréssel](block-legacy-authentication.md)
 - [Jóváhagyott ügyfélalkalmazások feltételes hozzáféréssel való megkövetelése](app-based-conditional-access.md)

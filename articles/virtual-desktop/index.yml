@@ -11,12 +11,12 @@ metadata:
   author: Heidilohr
   ms.author: helohr
   ms.date: 03/06/2020
-  ms.openlocfilehash: 596d115d02d246afc037bd6f453f2eec2f9ca2d1
-  ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+  ms.openlocfilehash: 26cba2d46a8d203bd16551702b4af6069b23008c
+  ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 07/11/2020
-  ms.locfileid: "86259849"
+  ms.lasthandoff: 07/28/2020
+  ms.locfileid: "87285118"
 landingContent:
 - title: Tudnivalók a Windows Virtual Desktopról
   linkLists:
@@ -24,7 +24,7 @@ landingContent:
     links:
     - text: Mit takar a Windows Virtual Desktop?
       url: overview.md
-- title: Ismerkedés a Windows Virtual Desktop 2020. tavaszi kiadásával
+- title: Ismerkedés a Windows Virtual Desktoppal
   linkLists:
   - linkListType: tutorial
     links:
@@ -36,7 +36,7 @@ landingContent:
       url: create-validation-host-pool.md
     - text: Szolgáltatásriasztások beállítása
       url: set-up-service-alerts.md
-- title: Ismerkedés a Windows Virtual Desktop 2019. őszi kiadásával
+- title: Ismerkedés a Windows Virtual Desktoppal (klasszikus)
   linkLists:
   - linkListType: tutorial
     links:

@@ -9,11 +9,13 @@ ms.devlang: java
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 10ad2fa3eb03254894c51fff66389ec3a8da4c38
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-java
+ms.openlocfilehash: 60d73f8b3eae21ab399853e8d05b67b7b431ee5f
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83651893"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321054"
 ---
 # <a name="troubleshoot-issues-when-you-use-the-azure-cosmos-db-async-java-sdk-v2-with-sql-api-accounts"></a>A Azure Cosmos DB aszinkron Java SDK v2 és az SQL API-fiókok használata esetén felmerülő problémák elhárítása
 
@@ -52,7 +54,7 @@ A kapcsolatok szabályozása akkor fordulhat elő, ha a gazdagép vagy az [Azure
 
 ##### <a name="connection-limit-on-a-host-machine"></a><a name="connection-limit-on-host"></a>A gazdagépre vonatkozó kapcsolatonként
 Bizonyos linuxos rendszerek (például a Red Hat) felső korláttal rendelkeznek a megnyitott fájlok teljes számánál. A Linux rendszerű szoftvercsatornák fájlokként vannak megvalósítva, így ez a szám a kapcsolatok teljes számát is korlátozza.
-Futtassa a következő parancsot.
+Futtassa az alábbi parancsot.
 
 ```bash
 ulimit -a

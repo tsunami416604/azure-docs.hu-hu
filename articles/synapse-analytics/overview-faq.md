@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 43f0dfa5fd413d201eb8c63aa752a6fd8db68f6c
-ms.sourcegitcommit: 374d1533ea2f2d9d3f8b6e6a8e65c6a5cd4aea47
+ms.openlocfilehash: ba6f79fffe5287be7574d422f026489d4da2795e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85807876"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287505"
 ---
 # <a name="azure-synapse-analytics-workspaces-preview-frequently-asked-questions"></a>Azure szinapszis Analytics (munkaterületek előzetes verzió) – gyakori kérdések
 
@@ -32,6 +32,8 @@ A: az Azure szinapszis egy integrált adatplatform a BI, AI és folyamatos intel
 - Egyszerűen figyelheti és gyorsan optimalizálhatja, reagálhatja és hibakeresési eseményeket végezhet a munkaterület tevékenységeiben bármely rétegben.
 - A metaadatok kezelése a motorok között. Hozzon létre egy Spark-táblázatot, amely automatikusan elérhető lesz az Azure szinapszis-adatbázisaiban.
 - Az adatkezelés egységes felhasználói élményt nyújt. A szinapszis Studio nagy adatfejlesztőket, adatmérnököket, Adattervezők, adatelemzőket és adatszakértőket kínál ugyanahhoz a platformhoz.
+
+További információ: [Mi az az Azure szinapszis Analytics](https://docs.microsoft.com/azure/synapse-analytics/overview-what-is).
 
 ### <a name="q-what-are-the-main-components-of-azure-synapse-analytics"></a>K: az Azure szinapszis Analytics fő összetevői
 

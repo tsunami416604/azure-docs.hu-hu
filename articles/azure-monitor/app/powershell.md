@@ -3,18 +3,18 @@ title: Azure-Application Insights automatizálása a PowerShell használatával 
 description: Erőforrások, riasztások és rendelkezésre állási tesztek létrehozása és kezelése a PowerShellben egy Azure Resource Manager sablon használatával.
 ms.topic: conceptual
 ms.date: 05/02/2020
-ms.openlocfilehash: 1a0a3a5b186d57e8670201e601eee48ee858c976
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 53cdf338db5cc4ea359f729297fe57e63853aa5c
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87041625"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322482"
 ---
 #  <a name="manage-application-insights-resources-using-powershell"></a>Application Insights-erőforrások kezelése a PowerShell használatával
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Ez a cikk bemutatja, hogyan automatizálható a [Application Insights](../../azure-monitor/app/app-insights-overview.md) -erőforrások automatikus létrehozása és frissítése az Azure Resource Management használatával. Előfordulhat például, hogy egy összeállítási folyamat részeként ezt megteheti. Az alapszintű Application Insights erőforrás mellett létrehozhat [rendelkezésre állási webes teszteket](../../azure-monitor/app/monitor-web-app-availability.md), [riasztásokat](../../azure-monitor/platform/alerts-log.md)állíthat be, és beállíthatja az [árképzési sémát](pricing.md), és más Azure-erőforrásokat is létrehozhat.
+Ez a cikk bemutatja, hogyan automatizálható a [Application Insights](./app-insights-overview.md) -erőforrások automatikus létrehozása és frissítése az Azure Resource Management használatával. Előfordulhat például, hogy egy összeállítási folyamat részeként ezt megteheti. Az alapszintű Application Insights erőforrás mellett létrehozhat [rendelkezésre állási webes teszteket](./monitor-web-app-availability.md), [riasztásokat](../platform/alerts-log.md)állíthat be, és beállíthatja az [árképzési sémát](pricing.md), és más Azure-erőforrásokat is létrehozhat.
 
 Az erőforrások létrehozásának kulcsa a [Azure Resource Manager](../../azure-resource-manager/management/manage-resources-powershell.md)JSON-sablonjai. Az alapszintű eljárás: a meglévő erőforrások JSON-definícióinak letöltése; parametrizálja bizonyos értékeket, például neveket; Ezután futtassa a sablont, amikor új erőforrást szeretne létrehozni. Egyszerre több erőforrást is becsomagolhat, így egyetlen lépéssel létrehozhatja őket, például egy alkalmazás-figyelő rendelkezésre állási tesztekkel, riasztásokkal és tárolással a folyamatos exportáláshoz. A parameterizations néhány finomságot talál, amelyeket itt mutatjuk be.
 
@@ -474,3 +474,4 @@ Egyéb Automation-cikkek:
 * [Hozzon létre webes teszteket](https://azure.microsoft.com/blog/creating-a-web-test-alert-programmatically-with-application-insights/)
 * [Az Azure Diagnostics küldése az Application Insights-ba](powershell-azure-diagnostics.md)
 * [Kiadási jegyzetek létrehozása](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1)
+

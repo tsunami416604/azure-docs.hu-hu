@@ -4,17 +4,17 @@ description: Felsorolja a nagy teljesítményű számítástechnikai virtuális 
 author: vermagit
 ms.service: virtual-machines
 ms.subservice: sizes
-ms.topic: article
+ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: 041300efd9d756f2ef8145adb23d745b2345c7eb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ffbe61cd84d2c543f0db97a5d70ad13193f2a68d
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87058782"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87267115"
 ---
 # <a name="high-performance-computing-vm-sizes"></a>Nagy teljesítményű számítástechnikai VM-méretek
 
@@ -96,7 +96,7 @@ Az Azure számos lehetőséget kínál a RDMA-hálózattal kommunikáló Windows
 
 - **Microsoft HPC Pack**  -  A [HPC Pack](/powershell/high-performance-computing/overview) tartalmaz egy futásidejű környezetet az MS-MPI számára, amely az Azure RDMA hálózatot használja RDMA-kompatibilis Linux virtuális gépeken való üzembe helyezéskor. Központi telepítések például: [Linux RDMA-fürt beállítása HPC-csomaggal MPI-alkalmazások futtatásához](/powershell/high-performance-computing/hpcpack-linux-openfoam).
 
-## <a name="deployment-considerations"></a>Üzembe helyezési megfontolások
+## <a name="deployment-considerations"></a>Telepítési szempontok
 
 - **Azure-előfizetés** – több számítási igényű példány üzembe helyezéséhez vegye fontolóra az utólagos elszámolású előfizetést vagy az egyéb vásárlási lehetőségeket. Amennyiben [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) használ, csak korlátozott számú számítási magot használhat az Azure-ban.
 

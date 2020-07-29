@@ -5,12 +5,12 @@ ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: c3d43bc20c31475a00a0ea81e4abdeb5405162a7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a1e72fba4ece24afffba573d954c7627af46a6cd
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081797"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87273373"
 ---
 # <a name="monitor-azure-functions"></a>Az Azure Functions monitorozása
 
@@ -64,7 +64,7 @@ A Application Insights használatáról az [Application Insights dokumentációj
 
 Az Application Insights következő területei hasznosak lehetnek a függvények viselkedésének, teljesítményének és hibáinak kiértékelése során:
 
-| Vizsgálat | Description |
+| Vizsgálat | Leírás |
 | ---- | ----------- |
 | **[Hibák](../azure-monitor/app/asp-net-exceptions.md)** |  Diagramok és riasztások létrehozása a függvények hibái és a kiszolgálói kivételek alapján. A **művelet** neve a függvény neve. A függőségek meghibásodása csak akkor jelenik meg, ha egyéni telemetria valósít meg a függőségekhez. |
 | **[Teljesítmény](../azure-monitor/app/performance-counters.md)** | A teljesítménnyel kapcsolatos problémák elemzéséhez tekintse meg az erőforrás-kihasználtságot és az átviteli sebességet a **felhőalapú szerepkör példányain**. Ez az adat hasznos lehet olyan forgatókönyvek hibakereséséhez, ahol a függvények a mögöttes erőforrások leállását végzik. |
@@ -233,7 +233,7 @@ Egy kategória összes naplójának letiltásához használhatja a naplózási s
 
 ## <a name="configure-the-aggregator"></a>A gyűjtő konfigurálása
 
-Ahogy az előző szakaszban is látható, a futtatókörnyezet összesíti a függvények végrehajtásával kapcsolatos adatokat egy adott időszakban. Az alapértelmezett időtartam 30 másodperc vagy 1 000 fut, amelyik előbb eléri a értéket. Ezt a beállítást a fájl [host.js] is konfigurálhatja.  Bemutatunk egy példát:
+Ahogy az előző szakaszban is látható, a futtatókörnyezet összesíti a függvények végrehajtásával kapcsolatos adatokat egy adott időszakban. Az alapértelmezett időtartam 30 másodperc vagy 1 000 fut, amelyik előbb eléri a értéket. Ezt a beállítást a fájl [host.js] is konfigurálhatja.  Íme egy példa:
 
 ```json
 {
@@ -246,7 +246,7 @@ Ahogy az előző szakaszban is látható, a futtatókörnyezet összesíti a fü
 
 ## <a name="configure-sampling"></a>Mintavételezés konfigurálása
 
-Application Insights tartalmaz egy [mintavételi](../azure-monitor/app/sampling.md) funkciót, amely képes arra, hogy túl sok telemetria-adatmennyiséget állítson elő a befejezett végrehajtásokon a maximális terhelés idején. Ha a bejövő végrehajtások aránya meghaladja a megadott küszöbértéket, Application Insights véletlenszerűen figyelmen kívül hagyja a bejövő végrehajtások némelyikét. A másodpercenkénti végrehajtások maximális számának alapértelmezett beállítása 20 (öt az 1. x verzióban). A mintavételezésthost.js- [on](./functions-host-json.md#applicationinsights)is konfigurálhatja.  Bemutatunk egy példát:
+Application Insights tartalmaz egy [mintavételi](../azure-monitor/app/sampling.md) funkciót, amely képes arra, hogy túl sok telemetria-adatmennyiséget állítson elő a befejezett végrehajtásokon a maximális terhelés idején. Ha a bejövő végrehajtások aránya meghaladja a megadott küszöbértéket, Application Insights véletlenszerűen figyelmen kívül hagyja a bejövő végrehajtások némelyikét. A másodpercenkénti végrehajtások maximális számának alapértelmezett beállítása 20 (öt az 1. x verzióban). A mintavételezésthost.js- [on](./functions-host-json.md#applicationinsights)is konfigurálhatja.  Íme egy példa:
 
 ### <a name="version-2x-and-later"></a>2. x vagy újabb verzió
 
@@ -596,6 +596,9 @@ A functions v2 automatikusan gyűjti a függőségeket a HTTP-kérelmek, a Servi
 A függőségek megjelenítéséhez egyéni kódot is írhat. Példákat a [C# egyéni telemetria szakaszban](#log-custom-telemetry-in-c-functions)talál. A mintakód olyan Application Insights alkalmazás- *hozzárendelést* eredményez, amely a következő képhez hasonlóan néz ki:
 
 ![Alkalmazástérkép](./media/functions-monitoring/app-map.png)
+
+> [!NOTE]
+> A függőségek információs szinten vannak megírva. Ha figyelmeztetés vagy ennél újabb szűrést végez, nem fog megjelenni ezek az információk. Emellett a függőségek automatikus gyűjtése nem felhasználói hatókörben történik. Ügyeljen arra, hogy a szint legalább a felhasználói Hatókörön kívüli **adatokra** legyen beállítva a host.jsn (például a függvényen kívül. <YOUR_FUNCTION_NAME>. Felhasználói kulcs), ha szeretné, hogy ezek a függőségek rögzítve legyenek.
 
 ## <a name="enable-application-insights-integration"></a>Application Insights-integráció engedélyezése
 

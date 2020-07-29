@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.reviewer: sngun
 ms.custom: tracking-python
-ms.openlocfilehash: 15f5ac1da6d24feceed3a9106b990ae31e3571e3
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 8d33756e1c28247c48d0b4c0a734e604c4e9eab0
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85851615"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87280817"
 ---
 # <a name="tutorial-set-up-azure-cosmos-db-global-distribution-using-the-sql-api"></a>Oktatóanyag: Azure Cosmos DB globális terjesztés beállítása az SQL API használatával
 
@@ -28,34 +28,35 @@ Ez a cikk a következő feladatokat mutatja be:
 <a id="portal"></a>
 [!INCLUDE [cosmos-db-tutorial-global-distribution-portal](../../includes/cosmos-db-tutorial-global-distribution-portal.md)]
 
-
 ## <a name="connecting-to-a-preferred-region-using-the-sql-api"></a><a id="preferred-locations"></a>Csatlakozás egy előnyben részesített régióhoz az SQL API használatával
 
-A [globális terjesztés](distribute-data-globally.md) kihasználása érdekében az ügyfélalkalmazások megadhatják a preferált régiók sorrendbe rendezett listáját a dokumentumokkal kapcsolatos műveletek elvégzéséhez. Ezt a kapcsolódási szabályzat beállításával lehet megtenni. Az SQL SDK az Azure Cosmos DB-fiók konfigurációja, az aktuális régiónkénti rendelkezésre állás és a megadott preferencialista alapján fogja kiválasztani az optimális végpontot az írási és olvasási műveletek végrehajtásához.
+A [globális terjesztés](distribute-data-globally.md) kihasználása érdekében az ügyfélalkalmazások megadhatják a preferált régiók sorrendbe rendezett listáját a dokumentumokkal kapcsolatos műveletek elvégzéséhez. Az SQL SDK az Azure Cosmos DB-fiók konfigurációja, az aktuális régiónkénti rendelkezésre állás és a megadott preferencialista alapján fogja kiválasztani az optimális végpontot az írási és olvasási műveletek végrehajtásához.
 
-A preferencialista meghatározására akkor kerül sor, amikor kapcsolatot inicializál az SQL SDK-k használatával. Az SDK-k egy „PreferredLocations” nevű választható paramétert is elfogadnak, amely az Azure-régiók rendezett listája.
+A preferencialista meghatározására akkor kerül sor, amikor kapcsolatot inicializál az SQL SDK-k használatával. Az SDK-k elfogadnak egy opcionális paramétert, `PreferredLocations` amely az Azure-régiók rendezett listája.
 
-Az SDK automatikusan elküldi az írásokat az aktuális írási régióba.
+Az SDK automatikusan elküldi az írásokat az aktuális írási régióba. Az összes olvasás az előnyben részesített helyszínek listájának első elérhető régiójába lesz elküldve. Ha a kérelem meghiúsul, az ügyfél a következő régióba fogja lekérni a listát.
 
-Az olvasásokat a PreferredLocations lista első elérhető régiójába küldi. Ha a kérelem meghiúsul, az ügyfél továbbadja a listát a következő régiónak, és így tovább.
+Az SDK csak az előnyben részesített helyekben megadott régiókból próbál olvasni. Így például, ha az Azure Cosmos-fiók négy régióban érhető el, de az ügyfél csak két olvasási (nem írható) régiót határoz meg a alkalmazásban `PreferredLocations` , akkor a nem megadott olvasási régióból nem lesz kiszolgálva az olvasás `PreferredLocations` . Ha a listában megadott olvasási régiók `PreferredLocations` nem érhetők el, az olvasások az írási régióból lesznek kézbesítve.
 
-Az SDK-k csak a PreferredLocations listában szereplő régiókból próbálnak meg olvasni. Így ha például az adatbázisfiók négy régióban érhető el, de az ügyfél csak két olvasási (nem írási) régiót ad meg a PreferredLocations listában, akkor a PreferredLocations listán nem szereplő olvasási régiók nem szolgálnak ki olvasásokat. Ha a PreferredLocations listán szereplő olvasási régiók nem érhetők el, az olvasásokat is az írási régió szolgálja ki.
+Az alkalmazás ellenőrizheti a jelenlegi írási végpontot és az SDK által választott olvasási végpontot, ha ellenőrzi a két tulajdonságot, `WriteEndpoint` és az `ReadEndpoint` SDK 1,8-es vagy újabb verziójában érhető el. Ha a `PreferredLocations` tulajdonság nincs beállítva, az összes kérelem az aktuális írási régióból lesz kézbesítve.
 
-Az alkalmazás az SDK 1.8-as vagy újabb verzióiban elérhető WriteEndpoint és a ReadEndpoint tulajdonságok megtekintésével ellenőrizni tudja az SDK által kiválasztott aktuális írási és olvasási végpontot.
-
-Ha a PreferredLocations tulajdonság nincs beállítva, a kérelmek az aktuális írási régióból lesznek teljesítve.
+Ha nem adja meg az előnyben részesített helyet, de a `setCurrentLocation` metódust használta, az SDK automatikusan feltölti az előnyben részesített helyet az aktuális régió alapján, amelyen az ügyfél fut. Az SDK megrendeli a régiókat a régiónak az aktuális régióhoz való közelsége alapján.
 
 ## <a name="net-sdk"></a>.NET SDK
+
 Az SDK a kód módosítása nélkül használható. Ebben az esetben az SDK automatikusan átirányítja az olvasásokat és az írásokat az aktuális írási régióba.
 
-A .NET SDK 1.8-as és újabb verzióiban a DocumentClient konstruktor ConnectionPolicy paramétere rendelkezik egy Microsoft.Azure.Documents.ConnectionPolicy.PreferredLocations nevű tulajdonsággal. Ez a tulajdonság egy `<string>` típusú gyűjtemény, amelynek egy listát kell tartalmaznia a régiónevekkel. A sztringértékek formázása [Az Azure régiói][regions] oldalon található Régiónév oszlop alapján történik, és az első karakter előtt, illetve az utolsó karakter után nincs szóköz.
+A .NET SDK 1.8-as és újabb verzióiban a DocumentClient konstruktor ConnectionPolicy paramétere rendelkezik egy Microsoft.Azure.Documents.ConnectionPolicy.PreferredLocations nevű tulajdonsággal. Ez a tulajdonság egy `<string>` típusú gyűjtemény, amelynek egy listát kell tartalmaznia a régiónevekkel. A karakterlánc-értékek az [Azure-régiók][regions] lap régió neve oszlopában vannak formázva, az első és az utolsó karakter előtt vagy után szóközök nélkül.
 
 Az aktuális írási és olvasási végpontokat a DocumentClient.WriteEndpoint és a DocumentClient.ReadEndpoint tulajdonság tartalmazza.
 
 > [!NOTE]
 > A végpontok URL-címei nem tekinthetők hosszú élettartamú állandóknak. A szolgáltatás bármikor frissítheti őket. Az SDK automatikusan kezeli ezt a módosítást.
 >
->
+
+# <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
+
+Ha a .NET v2 SDK-t használja, a `PreferredLocations` tulajdonsággal állíthatja be az előnyben részesített régiót.
 
 ```csharp
 // Getting endpoints from application settings or other configuration location
@@ -78,6 +79,54 @@ DocumentClient docClient = new DocumentClient(
 // connect to DocDB
 await docClient.OpenAsync().ConfigureAwait(false);
 ```
+
+Azt is megteheti, hogy a `SetCurrentLocation` tulajdonságot használja, és lehetővé teszi, hogy az SDK a közelség alapján kiválassza az előnyben részesített helyet.
+
+```csharp
+// Getting endpoints from application settings or other configuration location
+Uri accountEndPoint = new Uri(Properties.Settings.Default.GlobalDatabaseUri);
+string accountKey = Properties.Settings.Default.GlobalDatabaseKey;
+  
+ConnectionPolicy connectionPolicy = new ConnectionPolicy();
+
+connectionPolicy.SetCurrentLocation("West US 2"); /
+
+// initialize connection
+DocumentClient docClient = new DocumentClient(
+    accountEndPoint,
+    accountKey,
+    connectionPolicy);
+
+// connect to DocDB
+await docClient.OpenAsync().ConfigureAwait(false);
+```
+
+# <a name="net-sdk-v3"></a>[.NET SDK V3](#tab/dotnetv3)
+
+Ha a .NET v3 SDK-t használja, a `ApplicationPreferredRegions` tulajdonsággal állíthatja be az előnyben részesített régiót.
+
+```csharp
+
+CosmosClientOptions options = new CosmosClientOptions();
+options.ApplicationName = "MyApp";
+options.ApplicationPreferredRegions = new List<string> {Regions.WestUS, Regions.WestUS2};
+
+CosmosClient client = new CosmosClient(connectionString, options);
+
+```
+
+Azt is megteheti, hogy a `ApplicationRegion` tulajdonságot használja, és lehetővé teszi, hogy az SDK a közelség alapján kiválassza az előnyben részesített helyet.
+
+```csharp
+CosmosClientOptions options = new CosmosClientOptions();
+options.ApplicationName = "MyApp";
+// If the application is running in West US
+options.ApplicationRegion = Regions.WestUS;
+
+CosmosClient client = new CosmosClient(connectionString, options);
+```
+
+---
 
 ## <a name="nodejsjavascript"></a>Node.js/JavaScript
 

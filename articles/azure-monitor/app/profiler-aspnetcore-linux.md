@@ -6,18 +6,18 @@ author: cweining
 ms.author: cweining
 ms.date: 02/23/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 6ef67addba2bcc96cfb51f9f217d7d43e729bdf4
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f01eaf879e70406c6dbe17e6fc544f7aed367e8b
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539907"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324114"
 ---
 # <a name="profile-aspnet-core-azure-linux-web-apps-with-application-insights-profiler"></a>Profil ASP.NET Core Azure Linux-webalkalmazások és a Application Insights Profiler
 
 Ez a szolgáltatás jelenleg előzetes kiadásban elérhető.
 
-Megtudhatja, hogy mennyi idő telik el az élő webalkalmazás egyes módszereiben [Application Insights](../../azure-monitor/app/app-insights-overview.md)használatakor. A Application Insights Profiler mostantól elérhető ASP.NET Core webalkalmazásokhoz, amelyek a Azure App Service Linux rendszeren futnak. Ez az útmutató lépésről lépésre bemutatja, hogyan gyűjthetők össze a Profiler-Nyomkövetések ASP.NET Core linuxos webalkalmazásokhoz.
+Megtudhatja, hogy mennyi idő telik el az élő webalkalmazás egyes módszereiben [Application Insights](./app-insights-overview.md)használatakor. A Application Insights Profiler mostantól elérhető ASP.NET Core webalkalmazásokhoz, amelyek a Azure App Service Linux rendszeren futnak. Ez az útmutató lépésről lépésre bemutatja, hogyan gyűjthetők össze a Profiler-Nyomkövetések ASP.NET Core linuxos webalkalmazásokhoz.
 
 Miután elvégezte a bemutatót, az alkalmazás összegyűjthet Profiler-nyomkövetéseket, például a képen látható nyomkövetéseket. Ebben a példában a Profiler-nyomkövetés azt jelzi, hogy egy adott webes kérelem lassú a várakozási idő miatt. Az alkalmazást lelassító *gyors elérési utat* egy láng ikon jelöli. A **HomeController** szakasz **About** metódusa lelassítja a webalkalmazást, mert a metódus hívja a **Thread. Sleep** függvényt.
 
@@ -149,7 +149,7 @@ További üzembe helyezési lehetőségekért tekintse meg [ezt a cikket](../../
 
 ## <a name="add-application-insights-to-monitor-your-web-apps"></a>Application Insights hozzáadása a webalkalmazások figyeléséhez
 
-1. [Hozzon létre egy Application Insights erőforrást](./../../azure-monitor/app/create-new-resource.md ).
+1. [Hozzon létre egy Application Insights erőforrást](./create-new-resource.md).
 
 2. Másolja a Application Insights erőforrás **rendszerállapotkulcsot** értékét, és állítsa be a következő beállításokat a webalkalmazásokban:
 
@@ -167,7 +167,8 @@ További üzembe helyezési lehetőségekért tekintse meg [ezt a cikket](../../
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ha Azure App Service által üzemeltetett egyéni tárolókat használ, a Application Insights Profiler engedélyezéséhez kövesse az [Service Profiler engedélyezése a tároló ASP.net Core alkalmazás számára](https://github.com/Microsoft/ApplicationInsights-Profiler-AspNetCore/tree/master/examples/EnableServiceProfilerForContainerApp) című témakör utasításait.
 
 Jelentse be a Application Insights GitHub-adattárral kapcsolatos problémákat vagy javaslatokat: [ApplicationInsights-Profiler-AspNetCore: Issues](https://github.com/Microsoft/ApplicationInsights-Profiler-AspNetCore/issues).
+

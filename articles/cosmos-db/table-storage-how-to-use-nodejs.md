@@ -5,39 +5,41 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: nodejs
 ms.topic: sample
-ms.date: 04/05/2018
+ms.date: 07/23/2020
 author: sakash279
 ms.author: akshanka
-ms.openlocfilehash: 1f0541cd3ae7cf2c78d3cd2bf6844fed930e7968
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2abe23de5fbd2feada6ac8ff0a827b8575bcb28b
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85833147"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171999"
 ---
 # <a name="how-to-use-azure-table-storage-or-the-azure-cosmos-db-table-api-from-nodejs"></a>Az Azure Table Storage és az Azure Cosmos DB Table API használata a Node.js segítségével
+
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 [!INCLUDE [storage-table-applies-to-storagetable-and-cosmos](../../includes/storage-table-applies-to-storagetable-and-cosmos.md)]
 
-## <a name="overview"></a>Áttekintés
-Ez a cikk bemutatja, hogyan hajthat végre gyakori forgatókönyveket az Azure Storage Table szolgáltatás vagy az Azure Cosmos DB használatával egy Node.js-alkalmazásban.
+Ebből a cikkből megtudhatja, hogyan hozhat létre táblákat, tárolhat adatait, és hogyan végezhet szifilisz-műveleteket az adatokon. Válassza ki az Azure Table service vagy a Azure Cosmos DB Table API. A minták Node.jsban íródnak.
 
 ## <a name="create-an-azure-service-account"></a>Azure-szolgáltatásfiók létrehozása
 
 [!INCLUDE [cosmos-db-create-azure-service-account](../../includes/cosmos-db-create-azure-service-account.md)]
 
-### <a name="create-an-azure-storage-account"></a>Azure Storage-fiók létrehozása
+**Azure Storage-fiók létrehozása**
 
 [!INCLUDE [cosmos-db-create-storage-account](../../includes/cosmos-db-create-storage-account.md)]
 
-### <a name="create-an-azure-cosmos-db-table-api-account"></a>Azure Cosmos DB Table API-fiók létrehozása
+**Azure Cosmos DB Table API-fiók létrehozása**
 
 [!INCLUDE [cosmos-db-create-tableapi-account](../../includes/cosmos-db-create-tableapi-account.md)]
 
 ## <a name="configure-your-application-to-access-azure-storage-or-the-azure-cosmos-db-table-api"></a>Az alkalmazás konfigurálása az Azure Storage vagy Azure Cosmos DB Table API használatához
+
 Az Azure Storage vagy Azure Cosmos DB használatához szükség van az Azure Storage SDK for Node.js csomagra, amelyben a Storage REST-szolgáltatásokkal kommunikáló egyszerűsített kódtárak találhatók.
 
 ### <a name="use-node-package-manager-npm-to-install-the-package"></a>Csomag telepítése a Node Package Manager (NPM) használatával
+
 1. Használjon egy parancssori felületet, amilyen például a **PowerShell** (Windows), a **Terminal** (Mac) vagy a **Bash** (Unix), és keresse meg azt a mappát, amelyben létrehozta az alkalmazást.
 2. Írja be az **npm install azure-storage** kifejezést a parancsablakba. A parancs kimenete az alábbihoz fog hasonlítani.
 
@@ -57,34 +59,42 @@ Az Azure Storage vagy Azure Cosmos DB használatához szükség van az Azure Sto
 3. A **node_modules** mappa létrehozásának ellenőrzéséhez manuálisan is futtathatja az **ls** parancsot. A mappában található az **azure-storage** csomag, amely a tárhely eléréséhez szükséges kódtárakat tartalmazza.
 
 ### <a name="import-the-package"></a>A csomag importálása
+
 Adja hozzá a következő kódot a **server.js** fájl elejéhez az alkalmazásban:
 
 ```javascript
 var azure = require('azure-storage');
 ```
 
-## <a name="add-an-azure-storage-connection"></a>Azure Storage-kapcsolat hozzáadása
-Az Azure-modul az AZURE_STORAGE_ACCOUNT és AZURE_STORAGE_ACCESS_KEY, illetve az AZURE_STORAGE_CONNECTION_STRING környezeti változókat olvassa be az Azure Storage-fiókhoz való csatlakozáshoz szükséges információkért. Ha ezek a környezeti változók nincsenek beállítva, meg kell adnia a fiókadatokat a **TableService** hívásakor. A következő kóddal például létrehozhat egy **TableService** objektumot:
+## <a name="add-your-connection-string"></a>Adja meg a kapcsolatok karakterláncát
+
+Csatlakozhat az Azure Storage-fiókhoz vagy a Azure Cosmos DB Table API-fiókhoz. Szerezze be a kapcsolatok karakterláncát a használt fiók típusától függően.
+
+### <a name="add-an-azure-storage-connection"></a>Azure Storage-kapcsolat hozzáadása
+
+Az Azure-modul az AZURE_STORAGE_ACCOUNT és AZURE_STORAGE_ACCESS_KEY, illetve az AZURE_STORAGE_CONNECTION_STRING környezeti változókat olvassa be az Azure Storage-fiókhoz való csatlakozáshoz szükséges információkért. Ha a környezeti változók nincsenek beállítva, meg kell adnia a fiók adatait a híváskor `TableService` . A következő kód például létrehoz egy `TableService` objektumot:
 
 ```javascript
 var tableSvc = azure.createTableService('myaccount', 'myaccesskey');
 ```
 
-## <a name="add-an-azure-cosmos-db-connection"></a>Azure Cosmos DB-kapcsolat hozzáadása
-Azure Cosmos DB-kapcsolat hozzáadásához hozzon létre egy **TableService** objektumot, és adja meg fiókjának nevét, elsődleges kulcsát és végpontját. Ezeket az értékeket a **Settings**  >  Cosmos db-fiókjához tartozó Azure Portalban lévő beállítások**közötti kapcsolatok sztringből** másolhatja. Például:
+### <a name="add-an-azure-cosmos-db-connection"></a>Azure Cosmos DB-kapcsolat hozzáadása
+
+Azure Cosmos DB-kapcsolatok hozzáadásához hozzon létre egy `TableService` objektumot, és adja meg a fiók nevét, az elsődleges kulcsot és a végpontot. Ezeket az értékeket a **Settings**  >  Cosmos db-fiókjához tartozó Azure Portalban lévő beállítások**közötti kapcsolatok sztringből** másolhatja. Például:
 
 ```javascript
 var tableSvc = azure.createTableService('myaccount', 'myprimarykey', 'myendpoint');
 ```
 
 ## <a name="create-a-table"></a>Tábla létrehozása
-Az alábbi kód egy **TableService** objektumot hoz létre, amelyet egy új tábla létrehozásához használ.
+
+A következő kód létrehoz egy `TableService` objektumot, és felhasználja egy új tábla létrehozásához.
 
 ```javascript
 var tableSvc = azure.createTableService();
 ```
 
-A **createTableIfNotExists** meghívásával létrehozhat egy új táblát a megadott névvel, amennyiben még nem létezik. Az alábbi példában létrehozunk egy új, „mytable” nevű táblát, ha még nem létezik ilyen:
+A hívás `createTableIfNotExists` új táblát hoz létre a megadott névvel, ha még nem létezik. Az alábbi példában létrehozunk egy új, „mytable” nevű táblát, ha még nem létezik ilyen:
 
 ```javascript
 tableSvc.createTableIfNotExists('mytable', function(error, result, response){
@@ -96,8 +106,9 @@ tableSvc.createTableIfNotExists('mytable', function(error, result, response){
 
 A `result.created` értéke `true`, amennyiben új táblát hoz létre, és `false`, amennyiben a tábla már létezik. A `response` a kérésre vonatkozó információkat tartalmaz.
 
-### <a name="filters"></a>Szűrők
-A **TableService** objektummal opcionális szűrőket alkalmazhat a végrehajtott műveleteken. A szűrési műveletek magukban foglalhatják a naplózást, az automatikus újrapróbálkozásokat stb. A szűrők olyan objektumok, amelyek az aláírással ellátott metódust implementálják:
+### <a name="apply-filters"></a>Szűrők alkalmazása
+
+A használatával végrehajtott műveletekhez nem kötelező szűrést alkalmazhat `TableService` . A szűrési műveletek magukban foglalhatják a naplózást, az automatikus újrapróbálkozásokat stb. A szűrők olyan objektumok, amelyek az aláírással ellátott metódust implementálják:
 
 ```javascript
 function handle (requestOptions, next)
@@ -109,9 +120,9 @@ A kérésbeállítások előfeldolgozása után a metódusnak hívnia kell a **n
 function (returnObject, finalCallback, next)
 ```
 
-A visszahívás során – a **returnObject** (a kiszolgálóra küldött kérésre adott válasz) feldolgozása után – a visszahívásnak meg kell hívnia a **next** értéket (ha létezik), hogy további szűrőket is fel tudjon dolgozni, vagy egyszerűen meg kell hívnia a **finalCallback** értéket, hogy befejezze a szolgáltatásmeghívást.
+Ebben a visszahívásban, és a `returnObject` (a kéréstől a kiszolgálónak küldött válasz) feldolgozását követően a visszahívásnak meg kell hívnia, `next` hogy továbbra is feldolgozza-e más szűrőket, vagy egyszerűen hívja meg a szolgáltatás meghívásának `finalCallback` befejezését.
 
-Az Azure SDK for Node.js tartalmaz két szűrőt (**ExponentialRetryPolicyFilter** és **LinearRetryPolicyFilter**), amelyek újrapróbálkozási logikát implementálnak. Az alábbi példában létrehozunk egy **TableService** objektumot, amely az **ExponentialRetryPolicyFilter** szűrőt használja:
+Az újrapróbálkozási logikát megvalósító két szűrő szerepel az Azure SDK for Node.js, a `ExponentialRetryPolicyFilter** and ` LinearRetryPolicyFilter `. The following creates a ` TableService ` object that uses the ` ExponentialRetryPolicyFilter:
 
 ```javascript
 var retryOperations = new azure.ExponentialRetryPolicyFilter();
@@ -119,6 +130,7 @@ var tableSvc = azure.createTableService().withFilter(retryOperations);
 ```
 
 ## <a name="add-an-entity-to-a-table"></a>Entitás hozzáadása a táblához
+
 Entitás hozzáadásához először hozzon létre egy objektumot, amely meghatározza az entitástulajdonságokat. Az összes entitásnak tartalmaznia kell a **PartitionKey** és **RowKey** egyedi entitásazonosítókat.
 
 * **PartitionKey** – Meghatározza, hogy melyik partíció tárolja az entitást.
@@ -126,7 +138,7 @@ Entitás hozzáadásához először hozzon létre egy objektumot, amely meghatá
 
 A **PartitionKey** és a **RowKey** értéknek is sztringértéknek kell lennie. További információt a [Table Service adatmodelljét ismertető](https://msdn.microsoft.com/library/azure/dd179338.aspx) témakörben talál.
 
-Az alábbi egy entitás meghatározására szolgál példaként. Vegye figyelembe, hogy a **dueDate** az **Edm.DateTime** egy típusaként van meghatározva. A típus meghatározása nem kötelező, és a rendszer kikövetkezteti a nem meghatározott típusokat.
+Az alábbi egy entitás meghatározására szolgál példaként. A **dueDate** típusként van definiálva `Edm.DateTime` . A típus meghatározása nem kötelező, és a rendszer kikövetkezteti a nem meghatározott típusokat.
 
 ```javascript
 var task = {
@@ -138,9 +150,9 @@ var task = {
 ```
 
 > [!NOTE]
-> Minden rekordhoz tartozik egy **Timestamp** mező is, amelyet az Azure állít be az entitások beszúrásakor vagy frissítésekor.
+> `Timestamp`Minden rekordhoz van egy mező is, amelyet az Azure állít be, amikor egy entitást beszúr vagy frissít.
 
-Emellett az **entityGenerator** is használható entitások létrehozásához. A következő példa ugyanezt a feladatentitást hozza létre az **entityGenerator** használatával.
+A használatával `entityGenerator` entitásokat is létrehozhat. A következő példa ugyanazt a feladatot hozza létre a használatával `entityGenerator` .
 
 ```javascript
 var entGen = azure.TableUtilities.entityGenerator;
@@ -152,7 +164,7 @@ var task = {
 };
 ```
 
-Ha entitást kíván hozzáadni a táblához, továbbítsa az entitásobjektumot az **insertEntity** metódusnak.
+Ha hozzá szeretne adni egy entitást a táblához, adja át az entitás objektumot a `insertEntity` metódusnak.
 
 ```javascript
 tableSvc.insertEntity('mytable',task, function (error, result, response) {
@@ -171,19 +183,20 @@ Példaválasz:
 ```
 
 > [!NOTE]
-> Alapértelmezés szerint az **insertEntity** nem adja vissza a beszúrt entitást a `response` információinak részeként. Ha egyéb műveleteket szeretne végrehajtani ezen az entitáson vagy gyorsítótárazni kívánja az információkat, érdemes lehet visszakérni a `result` részeként. Ezt az **echoContent** engedélyezésével érheti el:
+> Alapértelmezés szerint a `insertEntity` nem küldi vissza a beszúrt entitást az `response` információ részeként. Ha egyéb műveleteket szeretne végrehajtani ezen az entitáson vagy gyorsítótárazni kívánja az információkat, érdemes lehet visszakérni a `result` részeként. Ezt a következőképpen teheti meg `echoContent` :
 >
 > `tableSvc.insertEntity('mytable', task, {echoContent: true}, function (error, result, response) {...}`
 
 ## <a name="update-an-entity"></a>Entitás frissítése
+
 Több metódus is rendelkezésre áll a meglévő entitások frissítéséhez:
 
-* **replaceEntity** – Egy meglévő entitást frissít azáltal, hogy másikra cseréli.
-* **mergeEntity** – Egy meglévő entitást frissít azáltal, hogy új tulajdonságértékeket kapcsol hozzá.
-* **insertOrReplaceEntity** – Egy meglévő entitást frissít azáltal, hogy másikra cseréli. Ha még nincsen entitás, beszúr egy újat.
-* **insertOrMergeEntity** – Egy meglévő entitást frissít azáltal, hogy új tulajdonságértékeket kapcsol hozzá. Ha még nincsen entitás, beszúr egy újat.
+* `replaceEntity`-Egy meglévő entitás frissítése a helyére.
+* `mergeEntity`-Egy meglévő entitás frissítése új tulajdonságértékek meglévő entitásba való egyesítésével.
+* `insertOrReplaceEntity`-Egy meglévő entitás frissítése a helyére. Ha még nincsen entitás, beszúr egy újat.
+* `insertOrMergeEntity`-Egy meglévő entitás frissítése új tulajdonságértékek meglévőbe való egyesítésével. Ha még nincsen entitás, beszúr egy újat.
 
-Az alábbi példa azt mutatja be, hogyan frissítheti az entitásokat a **replaceEntity** használatával:
+Az alábbi példa egy entitás frissítését mutatja be a használatával `replaceEntity` :
 
 ```javascript
 tableSvc.replaceEntity('mytable', updatedTask, function(error, result, response){
@@ -204,12 +217,13 @@ tableSvc.replaceEntity('mytable', updatedTask, function(error, result, response)
 >
 >
 
-Ha a **replaceEntity** és **mergeEntity** metódusok esetében a frissíteni kívánt entitás nem létezik, akkor a frissítés meghiúsul. Ezért, ha tárolni szeretne egy entitást függetlenül attól, hogy már létezik-e, használja az **insertOrReplaceEntity** vagy **insertOrMergeEntity** metódusokat.
+`replaceEntity` `mergeEntity` Ha a és a esetében a frissítendő entitás nem létezik, akkor a frissítési művelet meghiúsul; ezért ha egy entitást attól függetlenül kíván tárolni, hogy az már létezik, használja `insertOrReplaceEntity` vagy `insertOrMergeEntity` .
 
 Sikeres frissítés esetén a frissített entitás `result`ETagje** a ** részét képezi.
 
 ## <a name="work-with-groups-of-entities"></a>Entitáscsoportok használata
-Annak biztosításához, hogy a kiszolgáló elvégezze a kérés elemi feldolgozását, néha érdemes több műveletet egyszerre, egy kötegben elküldeni. Ehhez a **TableBatch** osztállyal hozzon létre egy köteget, majd használja a **TableService****executeBatch** metódusát a kötegelt műveletek végrehajtásához.
+
+Annak biztosításához, hogy a kiszolgáló elvégezze a kérés elemi feldolgozását, néha érdemes több műveletet egyszerre, egy kötegben elküldeni. Ennek elvégzéséhez használja az `TableBatch` osztályt egy köteg létrehozásához, majd használja a `executeBatch` metódust a `TableService` kötegelt műveletek végrehajtásához.
 
  Az alábbi példa két entitás egy kötegben való elküldését mutatja be:
 
@@ -242,6 +256,7 @@ tableSvc.executeBatch('mytable', batch, function (error, result, response) {
 Sikeres kötegműveletek esetén a `result` a kötegben lévő minden egyes műveletről tartalmaz információkat.
 
 ### <a name="work-with-batched-operations"></a>Kötegelt műveletek használata
+
 Az `operations` tulajdonság áttekintésével megvizsgálhatja a köteghez adott műveleteket. A következő metódusokat is használhatja, ha a műveletekkel szeretne dolgozni:
 
 * **clear** – Törli egy köteg összes műveletét.
@@ -251,6 +266,7 @@ Az `operations` tulajdonság áttekintésével megvizsgálhatja a köteghez adot
 * **size** – Visszaadja a kötegben lévő műveletek számát.
 
 ## <a name="retrieve-an-entity-by-key"></a>Entitás lekérése kulcs alapján
+
 Ha egy adott entitást kíván visszaadni a **PartitionKey** és a **RowKey** alapján, használja a **retrieveEntity** metódust.
 
 ```javascript
@@ -264,6 +280,7 @@ tableSvc.retrieveEntity('mytable', 'hometasks', '1', function(error, result, res
 A művelet végrehajtása után a `result` tartalmazza az entitást.
 
 ## <a name="query-a-set-of-entities"></a>Több entitás lekérdezése
+
 Tábla lekérdezéséhez használja a **TableQuery** objektumot, amellyel összeállíthat egy lekérdezési kifejezést az alábbi záradékokkal:
 
 * **select** – A lekérdezésben visszaadandó mezők.
@@ -294,6 +311,7 @@ tableSvc.queryEntities('mytable',query, null, function(error, result, response) 
 Ha a lekérdezés sikeres, a `result.entries` a lekérdezési feltételekkel egyező entitások tömbjét tartalmazza. Ha a lekérdezés nem tudta visszaadni az összes entitást, a `result.continuationToken` nem *null* értékű lesz, és felhasználható a **queryEntities** harmadik paramétereként további eredmények lekéréséhez. A kezdeti lekérdezéshez használja a *null* értéket harmadik paraméterként.
 
 ### <a name="query-a-subset-of-entity-properties"></a>Az entitástulajdonságok egy részének lekérdezése
+
 Egy táblalekérdezéssel egy entitásnak csak bizonyos mezőit is lekérdezheti.
 Ez csökkenti a sávszélesség felhasználását, és javíthatja a lekérdezési teljesítményt, főleg a nagy entitások esetében. Használja a **select** záradékot, és adja át a visszaadni kívánt mezők nevét. A következő lekérdezés például csak a **description** és **dueDate** mezőket adja vissza.
 
@@ -305,6 +323,7 @@ var query = new azure.TableQuery()
 ```
 
 ## <a name="delete-an-entity"></a>Entitás törlése
+
 Entitásokat a partíció- és a sorkulcsokkal törölhet. Ebben a példában a **task1** objektum tartalmazza a törölni kívánt entitás **RowKey** és **PartitionKey** értékeit. Ezután a rendszer a **deleteEntity** metódusba továbbítja az objektumot.
 
 ```javascript
@@ -326,6 +345,7 @@ tableSvc.deleteEntity('mytable', task, function(error, response){
 >
 
 ## <a name="delete-a-table"></a>Tábla törlése
+
 Az alábbi kóddal törölhető egy tábla egy tárfiókból.
 
 ```javascript
@@ -339,6 +359,7 @@ tableSvc.deleteTable('mytable', function(error, response){
 Ha nem biztos benne, hogy a tábla létezik, használja a **deleteTableIfExists** metódust.
 
 ## <a name="use-continuation-tokens"></a>Folytatási tokenek használata
+
 Ha nagy mennyiségű találatot eredményez egy tábla lekérdezése, fontolja meg a folytatási tokenek használatát. Előfordulhat, hogy nagy mennyiségű lekérdezhető adat áll rendelkezésre, amelyet nem feltétlenül fog észrevenni, ha az összeállítás nem teszi lehetővé a folytatási token jelenlétének a felismerését.
 
 Ha jelen van ilyen token, az entitások lekérdezésekor visszaadott **results** objektum beállít egy `continuationToken` tulajdonságot. Ezt lekérdezések végrehajtásakor használhatja, hogy továbbléphessen a partíciók és táblaentitások között.
@@ -367,6 +388,7 @@ Ha megvizsgálja a `continuationToken` objektumot, olyan tulajdonságokat fog ta
 A és a együtt is használható `top` `continuationToken` az oldalméret beállításához.
 
 ## <a name="work-with-shared-access-signatures"></a>Közös hozzáférésű jogosultságkódok használata
+
 A közös hozzáférésű jogosultságkódokkal (Shared access signatures, SAS) biztonságos és részletes hozzáférést biztosíthat a táblákhoz anélkül, hogy megadná Storage-fiókjának nevét vagy kulcsait. Az SAS-t gyakran használják az adatokhoz való korlátozott hozzáférés biztosítására, például arra, hogy a mobilalkalmazások hozzáférhessenek a lekérdezésrekordokhoz.
 
 A megbízható alkalmazások, például a felhőalapú szolgáltatások SAS-eket hoznak létre a **TableService****generateSharedAccessSignature** metódusával, és átadják azokat nem megbízható vagy részben megbízható alkalmazásoknak, például mobilalkalmazásoknak. A rendszer egy szabályzat segítségével hozza létre az SAS-eket, amely meghatározza az SAS érvényességének kezdő és befejező dátumát, valamint az SAS tulajdonosának biztosított hozzáférési szintet.
@@ -412,6 +434,7 @@ sharedTableService.queryEntities(query, null, function(error, result, response) 
 Mivel az SAS csak lekérdezési hozzáféréssel lett létrehozva, a rendszert hibát jelez, amennyiben megkísérel entitásokat beszúrni, frissíteni vagy törölni.
 
 ### <a name="access-control-lists"></a>Hozzáférés-vezérlési listák
+
 Hozzáférés-vezérlési listát (Access Control List, ACL) is használhat az SAS hozzáférési szabályzatának beállítására. Ez akkor hasznos, ha több ügyfélnek is lehetővé kívánja tenni a tábla elérését úgy, hogy az egyes ügyfelekre más-más hozzáférési szabályzat vonatkozik.
 
 A rendszer ACL-eket implementál egy hozzáférésiszabályzat-tömbbel, és minden szabályzathoz azonosító van társítva. Az alábbi példa két szabályzatot határoz meg, egyet „user1”, egy másikat pedig „user2” részére:
@@ -454,6 +477,7 @@ tableSAS = tableSvc.generateSharedAccessSignature('hometasks', { Id: 'user2' });
 ```
 
 ## <a name="next-steps"></a>További lépések
+
 További információkért lásd a következő forrásanyagokat.
 
 * A [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) egy ingyenes, önálló alkalmazás, amelynek segítségével vizuálisan dolgozhat Azure Storage-adatokkal Windows, macOS és Linux rendszereken.

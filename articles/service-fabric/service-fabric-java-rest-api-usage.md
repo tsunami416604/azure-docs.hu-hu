@@ -4,13 +4,14 @@ description: Service Fabric Java ügyféloldali API-k előállítása és haszn�
 author: rapatchi
 ms.topic: conceptual
 ms.date: 11/27/2017
+ms.custom: devx-track-java
 ms.author: rapatchi
-ms.openlocfilehash: c093958b9a8c5a21cb6996db891705ec8c3d21ab
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 24ee4a3d8109626bf93e01fbd10c00140762c9c6
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86246282"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324624"
 ---
 # <a name="azure-service-fabric-java-client-apis"></a>Azure Service Fabric Java ügyféloldali API-k
 
@@ -124,5 +125,5 @@ Minden API-hoz négy túlterhelést talál a megvalósításhoz. Ha választhat�
  4. **nyilvános megfigyelhető \<ServiceResponse\<Void>> removeReplicaWithServiceResponseAsync (string csomópontnév, UUID partitionId, karakterlánc replicaId)**
     * Az API-hívás ezen változata akkor használható, ha reaktív aszinkron programozást szeretne használni, és a nyers Rest-választal foglalkozik.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * A [Service FABRIC REST API](/rest/api/servicefabric/) -k megismerése

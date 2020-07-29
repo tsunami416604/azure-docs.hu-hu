@@ -3,12 +3,12 @@ title: Azure DevTest Labs használata a virtuális gépek és a Pásti tesztelé
 description: Megtudhatja, hogyan használhatja a Azure DevTest Labst a virtuális gépek és a Péter tesztelési környezetével kapcsolatos forgatókönyvekhez.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: f364c227c1b53b7887b34c8a3c92ad9045526328
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9207c070c13c5e276a6ab95e3bcf1bb8671dc382
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85484162"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87272895"
 ---
 # <a name="use-azure-devtest-labs-for-vm-and-paas-test-environments"></a>Azure DevTest Labs használata a virtuális gépek és a Pásti tesztelési környezetekhez
 
@@ -33,7 +33,7 @@ Ebben a cikkben megismerheti a tesztelési követelmények teljesítéséhez has
    
     További információt az alábbi táblázatban található hivatkozásokra kattintva talál:
    
-   | Tevékenység | Ismertetett témák |
+   | Feladat | Ismertetett témák |
    | --- | --- |
    | [Labor létrehozása az Azure DevTest Labs szolgáltatásban](devtest-lab-create-lab.md) |Megtudhatja, hogyan hozhat létre labort Azure DevTest Labs a Azure Portalban. |
 2. **Virtuális gépek létrehozása percek alatt, előre elkészített Piactéri rendszerképek és Egyéni rendszerképek használatával** 
@@ -44,11 +44,11 @@ Ebben a cikkben megismerheti a tesztelési követelmények teljesítéséhez has
   
     További információt az alábbi táblázatban található hivatkozásokra kattintva talál:
    
-   | Tevékenység | Ismertetett témák |
+   | Feladat | Ismertetett témák |
    | --- | --- |
    | [Azure Marketplace-rendszerképek konfigurálása](devtest-lab-configure-marketplace-images.md) |Megtudhatja, hogyan engedélyezheti az Azure Marketplace-lemezképek engedélyezési lehetőségeit, így csak a tesztelők számára kívánt rendszerképeket lehet kiválasztani.|
    | [Egyéni lemezkép létrehozása](devtest-lab-create-template.md) |Hozzon létre egy egyéni rendszerképet a szükséges szoftver előzetes telepítésével, így a tesztelők gyorsan létrehozhatnak egy virtuális gépet az egyéni rendszerkép használatával.|
-   | [Tudnivalók a rendszerkép-előállítóról](https://blogs.msdn.microsoft.com/devtestlab/2017/04/17/video-custom-image-factory-with-azure-devtest-labs/) |Tekintsen meg egy videót, amely leírja, hogyan kell beállítani és használni a rendszerkép-előállítót.|
+   | [Tudnivalók a rendszerkép-előállítóról](./devtest-lab-faq.md#blog-post) |Tekintsen meg egy videót, amely leírja, hogyan kell beállítani és használni a rendszerkép-előállítót.|
 
 3. **Újrafelhasználható sablonok létrehozása tesztelési gépekhez** 
    
@@ -56,7 +56,7 @@ Ebben a cikkben megismerheti a tesztelési követelmények teljesítéséhez has
    
     További információt az alábbi táblázatban található hivatkozásokra kattintva talál:
    
-   | Tevékenység | Ismertetett témák |
+   | Feladat | Ismertetett témák |
    | --- | --- |
    | [DevTest Labs-képletek kezelése virtuális gépek létrehozásához](devtest-lab-manage-formulas.md) |Megtudhatja, hogyan hozhat létre képletet a rendszerkép, a virtuálisgép-méret (a CPU és a RAM kombinációja) és egy virtuális hálózat kiválasztásával.|
 
@@ -68,7 +68,7 @@ Ebben a cikkben megismerheti a tesztelési követelmények teljesítéséhez has
 
     További információt az alábbi táblázatban található hivatkozásokra kattintva talál:
    
-   | Tevékenység | Ismertetett témák |
+   | Feladat | Ismertetett témák |
    | --- | --- |
    | [Több virtuális gépes környezet és PaaS-erőforrás létrehozása Azure Resource Manager-sablonokkal](devtest-lab-create-environment-from-arm.md) |Megtudhatja, hogyan helyezhet üzembe több virtuális gépet konzisztens állapotban a tesztkörnyezet számára.|
 
@@ -84,7 +84,7 @@ Ebben a cikkben megismerheti a tesztelési követelmények teljesítéséhez has
 
    További információt az alábbi táblázatban található hivatkozásokra kattintva talál:
    
-   | Tevékenység | Ismertetett témák |
+   | Feladat | Ismertetett témák |
    | --- | --- |
    | [Egyéni összetevők létrehozása a DevTest Labs virtuális géphez](devtest-lab-artifact-author.md) |Saját egyéni összetevőket hozhat létre a laborban található virtuális gépekhez.|
    | [Git-tárház hozzáadása az egyéni összetevők és Azure Resource Manager sablonok tárolásához Azure DevTest Labs](devtest-lab-add-artifact-repo.md) |Ismerje meg, hogyan tárolhatja az egyéni összetevőket a saját privát git-tárházában.|
@@ -99,7 +99,7 @@ Ebben a cikkben megismerheti a tesztelési követelmények teljesítéséhez has
    
     További információt az alábbi táblázatban található hivatkozásokra kattintva talál:
    
-   | Tevékenység | Ismertetett témák |
+   | Feladat | Ismertetett témák |
    | --- | --- |
    | [Laborszabályzatok definiálása](devtest-lab-set-lab-policy.md) |Szabályozza a költségeket a szabályzatok beállításával a laborban. |
    | [Az összes tesztkörnyezetben működő virtuális gép törlése PowerShell-parancsfájl használatával](devtest-lab-faq.md#how-do-i-automate-the-process-of-deleting-all-the-vms-in-my-lab) |A tesztelés befejezésekor törölje az összes labort egy művelettel.|
@@ -112,7 +112,7 @@ Ebben a cikkben megismerheti a tesztelési követelmények teljesítéséhez has
    
     További információt az alábbi táblázatban található hivatkozásokra kattintva talál:
    
-   | Tevékenység | Ismertetett témák |
+   | Feladat | Ismertetett témák |
    | --- | --- |
    | [Virtuális hálózat konfigurálása Azure DevTest Labsban](devtest-lab-configure-vnet.md) |Megtudhatja, hogyan konfigurálhat virtuális hálózatot Azure DevTest Labs a Azure Portal használatával.|
 
@@ -122,7 +122,7 @@ Ebben a cikkben megismerheti a tesztelési követelmények teljesítéséhez has
    
     További információt az alábbi táblázatban található hivatkozásokra kattintva talál:
    
-   | Tevékenység | Ismertetett témák |
+   | Feladat | Ismertetett témák |
    | --- | --- |
    | [Tesztelő hozzáadása laborhoz Azure DevTest Labs](devtest-lab-add-devtest-user.md) |A Azure Portal használatával tesztelő adhat hozzá a laborhoz.|
    | [Tesztelők hozzáadása a laborhoz PowerShell-parancsfájl használatával](devtest-lab-add-devtest-user.md#add-an-external-user-to-a-lab-using-powershell) |Használja a PowerShellt a tesztelők a laborba való felvételének automatizálásához. |
@@ -134,9 +134,8 @@ Ebben a cikkben megismerheti a tesztelési követelmények teljesítéséhez has
    
     További információt az alábbi táblázatban található hivatkozásokra kattintva talál:
    
-   | Tevékenység | Ismertetett témák |
+   | Feladat | Ismertetett témák |
    | --- | --- |
    | [Labor létrehozása Resource Manager-sablonnal](devtest-lab-faq.md#how-do-i-create-a-lab-from-a-resource-manager-template) |Hozzon létre laborokat a Azure DevTest Labs Resource Manager-sablonok használatával. |
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
-

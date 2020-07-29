@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
-ms.date: 06/26/2020
-ms.openlocfilehash: 95177282ad5b07a600f11f72789e0fc08f4b52c0
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.date: 07/27/2020
+ms.openlocfilehash: f8b532716e14a8a90b0be061f7d93abf43e55e38
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86199816"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321989"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Mik azok a számítási célok Azure Machine Learning? 
 
@@ -53,7 +53,7 @@ A következő esetekben hozhat létre Azure Machine Learning számítási péld�
 * Azure Portal
 * Python SDK [ComputeInstance](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computeinstance(class)?view=azure-ml-py) és [AmlCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute(class)?view=azure-ml-py) osztályok
 * [R SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-compute-targets) (előzetes verzió)
-* Resource Manager-sablon
+* Resource Manager-sablon. Példa a sablonra: [Azure Machine learning számítási sablon létrehozása](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-amlcompute).
 * Machine learning- [bővítmény az Azure CLI-hez](reference-azure-machine-learning-cli.md#resource-management).  
 
 Ha létrehozta ezeket a számítási erőforrásokat, az automatikusan a munkaterület részét képezi, más típusú számítási céloktól eltérően.
@@ -82,17 +82,17 @@ A támogatott adatsorozatokkal és korlátozásokkal kapcsolatos további inform
 
 | **Támogatott VM-sorozat**  | **Korlátozások** |
 |------------|------------|
-| D | Nincsenek |
-| Dv2 | Nincsenek |  
-| DSv2 | Nincsenek |  
-| FSv2 | Nincsenek |  
+| D | Nincs |
+| Dv2 | Nincs |  
+| DSv2 | Nincs |  
+| FSv2 | Nincs |  
 | M | Jóváhagyást igényel |
-| NC | Nincsenek |    
+| NC | Nincs |    
 | NCsv2 | Jóváhagyást igényel |
 | NCsv3 | Jóváhagyást igényel |  
 | NDs | Jóváhagyást igényel |
 | NDv2 | Jóváhagyást igényel |
-| NV | Nincsenek |
+| NV | Nincs |
 | NVv3 | Jóváhagyást igényel | 
 
 

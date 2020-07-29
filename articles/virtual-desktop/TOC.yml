@@ -1,4 +1,4 @@
-- name: A Windows Virtual Desktop 2020. tavaszi kiadása
+- name: Windows Virtual Desktop
   href: index.yml
 - name: Áttekintés
   items:
@@ -6,7 +6,7 @@
       href: overview.md
     - name: Újdonságok
       href: whats-new.md
-    - name: 2019. őszi kibocsátási megjegyzések
+    - name: A Windows Virtual Desktop (klasszikus) dokumentációja
       href: ./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md
 - name: Oktatóanyagok
   items:

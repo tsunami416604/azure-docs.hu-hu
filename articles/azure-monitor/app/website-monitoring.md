@@ -4,12 +4,12 @@ description: Ebből a rövid útmutatóból megtudhatja, hogyan állíthatja be 
 ms.topic: quickstart
 ms.date: 07/15/2019
 ms.custom: mvc
-ms.openlocfilehash: fa2ecd5d953ec0411a122dc7107ce23de1ae5bc6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: eb6c0a8319257949cee8f35be6cdfac22f1fe5d4
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87014048"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323434"
 ---
 # <a name="quickstart-start-monitoring-your-website-with-azure-monitor-application-insights"></a>Rövid útmutató: a webhely figyelésének megkezdése Azure Monitor Application Insights
 
@@ -38,7 +38,7 @@ A Application Insights a helyszínen vagy a felhőben futó, internetkapcsolatta
    | **Név**      | Globálisan egyedi érték | A figyelt alkalmazást azonosító név. |
    | **Erőforráscsoport**     | myResourceGroup      | Az új erőforráscsoport neve Application Insights-adattároláshoz. Létrehozhat egy új erőforráscsoportot, vagy használhat egy meglévőt is. |
    | **Hely** | USA keleti régiója | Válasszon egy Önhöz közeli helyet, vagy a közelében, ahol az alkalmazás üzemeltetve van. |
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
 ## <a name="create-an-html-file"></a>HTML-fájl létrehozása
 
@@ -105,21 +105,21 @@ A Application Insights a helyszínen vagy a felhőben futó, internetkapcsolatta
 
    ![Az adott időtartamon belüli felhasználói kéréseket mutató elemzési diagram](./media/website-monitoring/analytics-query.png)
 
-1. Térjen vissza az **Áttekintés** oldalra. A **vizsgálat** fejléc alatt válassza a **böngésző**, majd a **teljesítmény**lehetőséget.  A webhely teljesítményével kapcsolatos metrikák jelennek meg. A hibák és kivételek elemzéséhez egy megfelelő nézet tartozik a webhelyén. A [végpontok közötti tranzakció részleteinek](../../azure-monitor/app/transaction-diagnostics.md)eléréséhez választhat **mintákat** .
+1. Térjen vissza az **Áttekintés** oldalra. A **vizsgálat** fejléc alatt válassza a **böngésző**, majd a **teljesítmény**lehetőséget.  A webhely teljesítményével kapcsolatos metrikák jelennek meg. A hibák és kivételek elemzéséhez egy megfelelő nézet tartozik a webhelyén. A [végpontok közötti tranzakció részleteinek](./transaction-diagnostics.md)eléréséhez választhat **mintákat** .
 
    ![Kiszolgálómetrikák diagram](./media/website-monitoring/browser-performance.png)
 
-1. A fő Application Insights menüben a **használat** fejléc alatt válassza a [**felhasználók**](../../azure-monitor/app/usage-segmentation.md) lehetőséget a [felhasználói viselkedés elemzési eszközeinek](../../azure-monitor/app/usage-overview.md)megkezdéséhez. Mivel egyetlen gépről próbálunk tesztelni, csak egy felhasználó adatait fogjuk látni. Az élő webhelyek esetében a felhasználók eloszlása így néz ki:
+1. A fő Application Insights menüben a **használat** fejléc alatt válassza a [**felhasználók**](./usage-segmentation.md) lehetőséget a [felhasználói viselkedés elemzési eszközeinek](./usage-overview.md)megkezdéséhez. Mivel egyetlen gépről próbálunk tesztelni, csak egy felhasználó adatait fogjuk látni. Az élő webhelyek esetében a felhasználók eloszlása így néz ki:
 
      ![Felhasználók diagram](./media/website-monitoring/usage-users.png)
 
-1. Több oldalt tartalmazó összetettebb webhelyhez a [**Felhasználókövetés**](../../azure-monitor/app/usage-flows.md) eszközzel nyomon követheti a látogatók által a webhely különböző részein áthaladó útvonalakat.
+1. Több oldalt tartalmazó összetettebb webhelyhez a [**Felhasználókövetés**](./usage-flows.md) eszközzel nyomon követheti a látogatók által a webhely különböző részein áthaladó útvonalakat.
 
    ![Felhasználókövetés vizualizációja](./media/website-monitoring/user-flows.png)
 
 A webhelyek figyelésére szolgáló speciális konfigurációk megismeréséhez tekintse meg a [JavaScript SDK API-referenciáját](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md).
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha azt tervezi, hogy további rövid útmutatókkal vagy oktatóanyagokkal dolgozik tovább, ne törölje az ebben a rövid útmutatóban létrehozott erőforrásokat. Ellenkező esetben a következő lépésekkel törölheti a rövid útmutatóban létrehozott összes erőforrást a Azure Portal.
 
@@ -133,3 +133,4 @@ Ha azt tervezi, hogy további rövid útmutatókkal vagy oktatóanyagokkal dolgo
 
 > [!div class="nextstepaction"]
 > [Teljesítményproblémák észlelése és diagnosztizálása](../log-query/log-query-overview.md)
+

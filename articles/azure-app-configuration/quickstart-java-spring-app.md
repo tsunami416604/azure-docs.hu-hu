@@ -9,13 +9,14 @@ editor: ''
 ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.date: 04/18/2020
+ms.custom: devx-track-java
 ms.author: lcozzens
-ms.openlocfilehash: 69b9733f4d79f5fc42fe86ca0f8a97305205aeef
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 51052994a4d00995910a85546cce57867b6143f6
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82085059"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324777"
 ---
 # <a name="quickstart-create-a-java-spring-app-with-azure-app-configuration"></a>Rövid útmutató: Java Spring-alkalmazás létrehozása az Azure app Configuration szolgáltatással
 
@@ -31,11 +32,11 @@ Ebben a rövid útmutatóban beépíti az Azure-alkalmazások konfigurációját
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. A következő kulcs-érték párok hozzáadásához válassza a **Configuration Explorer** > **+ kulcs létrehozása** > **-érték** elemet:
+6. **Configuration Explorer**  >  **+ Create**  >  A következő kulcs-érték párok hozzáadásához válassza a Configuration Explorer +**kulcs létrehozása-érték** elemet:
 
     | Kulcs | Érték |
     |---|---|
-    | /application/config.message | helló |
+    | /application/config.message | Üdvözöljük |
 
     Most hagyja üresen a **címke** és a **tartalom típusát** .
 
@@ -58,9 +59,9 @@ A [Spring inicializáló](https://start.spring.io/) használatával hozzon létr
 
 ## <a name="connect-to-an-app-configuration-store"></a>Kapcsolódás alkalmazás-konfigurációs tárolóhoz
 
-1. Miután kicsomagolta a fájlokat a helyi rendszeren, az egyszerű Spring boot-alkalmazás készen áll a szerkesztésre. Keresse meg a *Pom. XML* fájlt az alkalmazás gyökérkönyvtárában.
+1. Miután kicsomagolta a fájlokat a helyi rendszeren, az egyszerű Spring boot-alkalmazás készen áll a szerkesztésre. Keresse meg az alkalmazás gyökérkönyvtárában található *pom.xml* fájlt.
 
-1. Nyissa meg a *Pom. XML* fájlt egy szövegszerkesztőben, és adja hozzá a Spring Cloud Azure config Starter- `<dependencies>`t a következő listához:
+1. Nyissa meg a *pom.xml* fájlt egy szövegszerkesztőben, és adja hozzá a Spring Cloud Azure config Starter-t a következő listához `<dependencies>` :
 
     **Spring Cloud 1.1. x**
 
@@ -126,7 +127,7 @@ A [Spring inicializáló](https://start.spring.io/) használatával hozzon létr
     }
     ```
 
-1. Nyissa meg az alkalmazás fő Java-fájlját, és adja hozzá `@EnableConfigurationProperties` a szolgáltatást a funkció engedélyezéséhez.
+1. Nyissa meg az alkalmazás fő Java-fájlját, és adja hozzá a `@EnableConfigurationProperties` szolgáltatást a funkció engedélyezéséhez.
 
     ```java
     import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -140,7 +141,7 @@ A [Spring inicializáló](https://start.spring.io/) használatával hozzon létr
     }
     ```
 
-1. Hozzon létre egy nevű `bootstrap.properties` új fájlt az alkalmazás erőforrások könyvtára alatt, és adja hozzá a következő sorokat a fájlhoz. Cserélje le a mintavételi értékeket az alkalmazás konfigurációs tárolójának megfelelő tulajdonságaira.
+1. Hozzon létre egy nevű új fájlt `bootstrap.properties` az alkalmazás erőforrások könyvtára alatt, és adja hozzá a következő sorokat a fájlhoz. Cserélje le a mintavételi értékeket az alkalmazás konfigurációs tárolójának megfelelő tulajdonságaira.
 
     ```CLI
     spring.cloud.azure.appconfiguration.stores[0].connection-string= ${APP_CONFIGURATION_CONNECTION_STRING}

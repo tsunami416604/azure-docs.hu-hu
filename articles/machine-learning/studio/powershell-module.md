@@ -1,6 +1,5 @@
 ---
-title: PowerShell-modulok
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (klasszikus): PowerShell-modulok – Azure'
 description: A PowerShell használatával Azure Machine Learning Studio (klasszikus) munkaterületeket, kísérleteket, webszolgáltatásokat és egyebeket hozhat létre és kezelhet.
 services: machine-learning
 ms.service: machine-learning
@@ -9,14 +8,17 @@ ms.topic: conceptual
 author: likebupt
 ms.author: keli19
 ms.date: 04/25/2019
-ms.openlocfilehash: 3977bd13d0d3300126e06626e33fde753acc964f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 46f51a09a82d544a5940dfad69dc8e36d99a2f7a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87065784"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324981"
 ---
 # <a name="powershell-modules-for-azure-machine-learning-studio-classic"></a>PowerShell-modulok Azure Machine Learning Studio (klasszikus)
+
+**a következőkre vonatkozik:** ![ nincs](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine learning](../overview-what-is-azure-ml.md) ![ Igen ](../../../includes/media/aml-applies-to-skus/yes.png) Machine learning Studio (klasszikus) 
+
 
 A PowerShell-modulok használatával programozott módon kezelheti a Studio (klasszikus) erőforrásait és eszközeit, például munkaterületeket, adatkészleteket és webszolgáltatásokat.
 

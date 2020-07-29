@@ -8,12 +8,12 @@ ms.author: mbullwin
 ms.date: 06/26/2019
 ms.reviewer: daviste
 ms.custom: mvc
-ms.openlocfilehash: a5c025f40f3d78e9e2ff54a0de76763a3e717640
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0539dcecbbbfe28817122e0f47e813182a9abd9d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86498695"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322142"
 ---
 # <a name="start-analyzing-your-mobile-app-with-app-center-and-application-insights"></a>A mobilalkalmazás elemzésének első lépései az App Center és az Application Insights használatával
 
@@ -150,7 +150,7 @@ Az App Center által biztosított elemzőeszközök mellett az Application Insig
    * **Munkafüzetek** – képi megjelenítések és szöveg megosztható jelentésbe való egyesítéséhez.
    * **Kohorszok** – az adott felhasználó- vagy eseménycsoportok elnevezéséhez és mentéséhez, hogy könnyen lehessen rájuk hivatkozni más elemzési eszközökből.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha nem szeretné tovább használni az Application Insightsot az App Centerrel, kapcsolja ki az exportálást az App Centerben, és törölje az Application Insights-erőforrást. Ez meg fogja akadályozni, hogy az Application Insights további díjakat számoljon fel ezért az erőforrásért.
 
@@ -164,7 +164,8 @@ Az Application Insights-erőforrás törlése:
 1. Az Azure Portal bal oldali menüjében kattintson az **Erőforráscsoportok** lehetőségre, majd válassza ki az erőforráscsoportot, amelyben az Application Insights-erőforrás létrejött.
 2. Nyissa meg a törölni kívánt Application Insights-erőforrást. Kattintson a **Törlés** gombra az erőforrás felső menüjében, és hagyja jóvá. Ez véglegesen törölni fogja az adatok Application Insightsba exportált másolatát.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Ismerje meg, hogyan használják az ügyfelek az alkalmazást](../../azure-monitor/app/usage-overview.md)
+> [Ismerje meg, hogyan használják az ügyfelek az alkalmazást](../app/usage-overview.md)
+

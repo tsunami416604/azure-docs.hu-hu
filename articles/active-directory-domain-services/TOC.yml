@@ -31,6 +31,8 @@
       href: powershell-create-instance.md
     - name: Felügyelt tartomány létrehozása sablon használatával
       href: template-create-instance.md
+    - name: Hatókörön belüli szinkronizálás konfigurálása az Azure AD PowerShell használatával
+      href: powershell-scoped-synchronization.md
 - name: Alapelvek
   items:
     - name: Az adminisztráció alapjai

@@ -1,6 +1,6 @@
 ---
-title: Szolgáltatási riasztások beállítása a Windows rendszerű virtuális asztalhoz – Fall 2019 – Azure
-description: Azure Service Health beállítása a szolgáltatás értesítéseinek fogadására a Windows rendszerű virtuális asztali számítógépeken.
+title: Szolgáltatási riasztások beállítása a Windows rendszerű virtuális asztali gépekhez (klasszikus) – Azure
+description: A Azure Service Health beállítása a szolgáltatás értesítéseinek fogadására a Windows rendszerű virtuális asztali számítógépeken (klasszikus).
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: tutorial
 ms.date: 05/27/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 5b3a29e97fbdf2579e2ef6a86b8dadf91f679366
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a3f938c6e4c9bb13794ddd01092f0e79077a89cc
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87085826"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283384"
 ---
-# <a name="tutorial-set-up-service-alerts---fall-2019"></a>Oktatóanyag: szolgáltatási riasztások beállítása – Fall 2019
+# <a name="tutorial-set-up-service-alerts-for-windows-virtual-desktop-classic"></a>Oktatóanyag: szolgáltatási riasztások beállítása a Windows rendszerű virtuális asztali gépekhez (klasszikus)
 
 >[!IMPORTANT]
->Ez a tartalom a Fall 2019 kiadásra vonatkozik, amely nem támogatja a Windows rendszerű virtuális asztali objektumokat Azure Resource Manager. Ha a Spring 2020 Update szolgáltatásban bevezetett Azure Resource Manager Windows rendszerű virtuális asztali objektumokat szeretne felügyelni, tekintse meg [ezt a cikket](../set-up-service-alerts.md).
+>Ez a tartalom a Windows rendszerű virtuális asztali (klasszikus) verzióra vonatkozik, amely nem támogatja Azure Resource Manager Windows rendszerű virtuális asztali objektumokat. Ha Azure Resource Manager Windows rendszerű virtuális asztali objektumokat szeretne felügyelni, tekintse meg [ezt a cikket](../set-up-service-alerts.md).
 
 A Azure Service Health segítségével figyelheti a Windows rendszerű virtuális asztali szolgáltatással kapcsolatos problémákat és az állapot-tanácsadókat. A Azure Service Health különböző típusú riasztásokat (például e-maileket vagy SMS-ket) tud értesíteni, segít megérteni a probléma hatását, és a probléma megoldásakor naprakészen tarthatja a frissítést. A Azure Service Health az állásidő enyhítését, valamint a tervezett karbantartás és az erőforrások rendelkezésre állását befolyásoló változások előkészítését is segíti.
 

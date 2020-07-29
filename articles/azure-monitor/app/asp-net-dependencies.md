@@ -3,16 +3,16 @@ title: Függőségek nyomon követése az Azure Application Insightsban | Micros
 description: A helyszíni vagy Microsoft Azure webalkalmazástól származó függőségi hívások figyelése Application Insightsokkal.
 ms.topic: conceptual
 ms.date: 06/26/2020
-ms.openlocfilehash: 9980db352e5d2c342131e0d6a2cd1248adb10810
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a7f42c19c835e4f5c49f4d7aa91504b606a09f5b
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87067724"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321377"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>Függőségek nyomon követése az Azure Application Insights 
 
-A *függőség* az alkalmazás által meghívott összetevő. Általában egy HTTP-vel hívott szolgáltatások, adatbázisok vagy fájlrendszerek. [Application Insights](../../azure-monitor/app/app-insights-overview.md) méri a függőségi hívások időtartamát, függetlenül attól, hogy a meghibásodása vagy sem, valamint további információk, például a függőség neve és így tovább. Megvizsgálhat bizonyos függőségi hívásokat, és összekapcsolhatja őket a kérelmekkel és a kivételekkel.
+A *függőség* az alkalmazás által meghívott összetevő. Általában egy HTTP-vel hívott szolgáltatások, adatbázisok vagy fájlrendszerek. [Application Insights](./app-insights-overview.md) méri a függőségi hívások időtartamát, függetlenül attól, hogy a meghibásodása vagy sem, valamint további információk, például a függőség neve és így tovább. Megvizsgálhat bizonyos függőségi hívásokat, és összekapcsolhatja őket a kérelmekkel és a kivételekkel.
 
 ## <a name="automatically-tracked-dependencies"></a>Automatikusan követett függőségek
 
@@ -154,7 +154,7 @@ Itt láthatja a sikertelen függőségek darabszámát. Ha további részleteket
 
 ## <a name="logs-analytics"></a>Naplók (Analitika)
 
-A függőségeket a [Kusto lekérdezési nyelvén](/azure/kusto/query/)követheti nyomon. Íme néhány példa.
+A függőségeket a [Kusto lekérdezési nyelvén](/azure/kusto/query/)követheti nyomon. Az alábbiakban néhány példa következik.
 
 * A sikertelen függőségi hívások keresése:
 
@@ -202,6 +202,7 @@ Mint minden Application Insights SDK, a függőség-gyűjtési modul is nyílt f
 
 ## <a name="next-steps"></a>További lépések
 
-* [Kivételek](../../azure-monitor/app/asp-net-exceptions.md)
-* [Felhasználói & lap adatvédelme](../../azure-monitor/app/javascript.md)
-* [Rendelkezésre állás](../../azure-monitor/app/monitor-web-app-availability.md)
+* [Kivételek](./asp-net-exceptions.md)
+* [Felhasználói & lap adatvédelme](./javascript.md)
+* [Rendelkezésre állás](./monitor-web-app-availability.md)
+

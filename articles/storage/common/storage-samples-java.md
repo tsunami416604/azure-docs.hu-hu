@@ -2,17 +2,18 @@
 title: Azure Storage-minták Java használatával | Microsoft Docs
 description: Mintakód és alkalmazások megtekintése, letöltése és futtatása az Azure Storage-ban. A Java Storage ügyféloldali kódtárainak használatával megismerheti a Blobok, várólisták, táblák és fájlok első lépéseket bemutató mintáit.
 author: mhopkins-msft
+ms.custom: devx-track-java
 ms.author: mhopkins
 ms.date: 02/13/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: 26fe0538548e13933e112e83bae6e6131f2a030d
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: b0e0588810fcac239a3647f9b750dd036341ab9f
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594639"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322227"
 ---
 # <a name="azure-storage-samples-using-v12-java-client-libraries"></a>Azure Storage-minták a V12 Java ügyféloldali kódtárak használatával
 
@@ -225,7 +226,7 @@ A következő táblázat áttekintést nyújt a minták tárházáról, valamint
 
 :::row:::
    :::column span="":::
-      [Fájlmegosztás létrehozása](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/ShareServiceSample.java#L31)
+      [Fájlmegosztások létrehozása](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/ShareServiceSample.java#L31)
    :::column-end:::
    :::column span="":::
       [Tulajdonságok beolvasása](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/ShareServiceSample.java#L40)
@@ -252,7 +253,7 @@ A következő táblázat áttekintést nyújt a minták tárházáról, valamint
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Megosztási pillanatkép létrehozása](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/ShareSample.java#L55)
+      [Megosztás-pillanatkép létrehozása](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/ShareSample.java#L55)
    :::column-end:::
    :::column span="":::
       [Könyvtár létrehozása megosztási ügyfél használatával](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/ShareSample.java#L63)
@@ -350,7 +351,7 @@ A következő táblázat áttekintést nyújt a minták tárházáról, valamint
    :::column-end:::
 :::row-end:::
 
-### <a name="queue"></a>Várólista
+### <a name="queue"></a>Üzenetsor
 
 :::row:::
    :::column span="":::
@@ -451,5 +452,5 @@ További információ a mintákról más nyelveken:
 
 * .NET: [Azure Storage-minták .NET használatával](storage-samples-dotnet.md)
 * Python: [Azure Storage-minták a Python használatával](storage-samples-python.md)
-* JavaScript/Node. js: [Azure Storage-minták JavaScript használatával](storage-samples-javascript.md)
+* JavaScript/Node.js: [Azure Storage-minták JavaScript használatával](storage-samples-javascript.md)
 * Minden más nyelv: [Azure Storage-minták](storage-samples.md)

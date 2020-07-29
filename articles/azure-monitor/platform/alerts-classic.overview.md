@@ -4,17 +4,17 @@ description: A klasszikus riasztások elavultak. A riasztások lehetővé teszik
 ms.topic: conceptual
 ms.date: 05/19/2018
 ms.subservice: alerts
-ms.openlocfilehash: 7d120550d17dcac7410a259e131ad81feb0afdf9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 56dd601e8d961d65ec21eefcc2dd5fed5c75f9fe
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86515954"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322363"
 ---
 # <a name="what-are-classic-alerts-in-microsoft-azure"></a>Mik a Microsoft Azure klasszikus riasztásai?
 
 > [!NOTE]
-> Ez a cikk bemutatja, hogyan hozhat létre régebbi klasszikus metrikai riasztásokat. Azure Monitor mostantól támogatja [az újabb, közel valós idejű metrikai riasztásokat és új riasztási élményt](../../azure-monitor/platform/alerts-overview.md). A klasszikus riasztások kivonásra kerülnek, de továbbra is korlátozott mértékben használják azokat az [erőforrásokat, amelyek](./monitoring-classic-retirement.md)még nem támogatják az új riasztásokat. 
+> Ez a cikk bemutatja, hogyan hozhat létre régebbi klasszikus metrikai riasztásokat. Azure Monitor mostantól támogatja [az újabb, közel valós idejű metrikai riasztásokat és új riasztási élményt](./alerts-overview.md). A klasszikus riasztások kivonásra kerülnek, de továbbra is korlátozott mértékben használják azokat az [erőforrásokat, amelyek](./monitoring-classic-retirement.md)még nem támogatják az új riasztásokat. 
 >
 
 A riasztások lehetővé teszik az adatfeltételek konfigurálását, és értesítést kapnak, ha a feltételek megfelelnek a legújabb figyelési adatnak.
@@ -40,8 +40,8 @@ Az újabb metrikai riasztások az alábbi előnyökkel járnak a klasszikus metr
 - **Többdimenziós mérőszámok támogatása**: riasztást készíthet a dimenziós mérőszámokról, így a mérőszám érdekes szegmensét figyelheti.
 - **Nagyobb mértékű szabályozás a metrikus feltételeknél**: megadhat gazdagabb riasztási szabályokat. Az újabb riasztások támogatják a metrikák maximális, minimális, átlagos és teljes értékének figyelését.
 - **Több mérőszám együttes figyelése**: több mérőszámot is figyelheti (jelenleg legfeljebb két mérőszámot) egyetlen szabállyal. A riasztás akkor aktiválódik, ha mindkét metrika megszegi a vonatkozó küszöbértékeket a megadott időszakra vonatkozóan.
-- **Jobb értesítési rendszer**: az összes újabb riasztás olyan [műveleti csoportokat](../../azure-monitor/platform/action-groups.md)használ, amelyek az értesítések és műveletek névvel ellátott csoportjai, amelyek többször is felhasználhatók több riasztásban.  A klasszikus metrikai riasztások és a régebbi Log Analytics riasztások nem használnak műveleti csoportokat. 
-- **Metrikák a naplókból** (nyilvános előzetes verzió): a log Analytics beolvasott adatok mostantól kioszthatók és átalakíthatók Azure monitor metrikára, majd a többi mérőszámhoz hasonlóan riasztást is kaphatnak. A klasszikus riasztásokra jellemző terminológiát a [riasztások (klasszikus)](alerts-classic.overview.md) című témakörben tekintheti meg. 
+- **Jobb értesítési rendszer**: az összes újabb riasztás olyan [műveleti csoportokat](./action-groups.md)használ, amelyek az értesítések és műveletek névvel ellátott csoportjai, amelyek többször is felhasználhatók több riasztásban.  A klasszikus metrikai riasztások és a régebbi Log Analytics riasztások nem használnak műveleti csoportokat. 
+- **Metrikák a naplókból** (nyilvános előzetes verzió): a log Analytics beolvasott adatok mostantól kioszthatók és átalakíthatók Azure monitor metrikára, majd a többi mérőszámhoz hasonlóan riasztást is kaphatnak. A klasszikus riasztásokra jellemző terminológiát a [riasztások (klasszikus)]() című témakörben tekintheti meg. 
 
 
 ## <a name="classic-alerts-on-azure-monitor-data"></a>Klasszikus riasztások Azure Monitor-adatszolgáltatásban
@@ -51,7 +51,7 @@ A klasszikus riasztások két típusa érhető el – metrikus riasztások és m
 
 * **Klasszikus műveletnapló – riasztások** – egy adatfolyam-naplózási riasztás, amely egy, a szűrési feltételeknek megfelelő műveletnapló-eseményre mutat. Ezek a riasztások csak egy állapottal rendelkeznek, "aktiválva". A riasztási motor egyszerűen alkalmazza a szűrési feltételeket minden új eseményre. Nem keres régebbi bejegyzéseket. Ezek a riasztások értesítik, ha új Service Health incidens következik be, vagy amikor egy felhasználó vagy alkalmazás végrehajt egy műveletet az előfizetésben, például "virtuális gép törlése".
 
-Az Azure Monitoron keresztül elérhető erőforrás-naplózási adatforrások esetében a rendszer átirányítja az adatLog Analyticsba, és egy napló lekérdezése riasztást használ Log Analytics most az [új riasztási módszert](../../azure-monitor/platform/alerts-overview.md) használja 
+Az Azure Monitoron keresztül elérhető erőforrás-naplózási adatforrások esetében a rendszer átirányítja az adatLog Analyticsba, és egy napló lekérdezése riasztást használ Log Analytics most az [új riasztási módszert](./alerts-overview.md) használja 
 
 A következő ábra összefoglalja Azure Monitorban lévő adatforrásokat, és fogalmilag azt, hogyan lehet a riasztást kikapcsolni.
 
@@ -68,7 +68,7 @@ Az Azure a következő kifejezéseket használja a klasszikus riasztások és a 
 ## <a name="how-do-i-receive-a-notification-from-an-azure-monitor-classic-alert"></a>Hogyan értesítést kap egy Azure Monitor klasszikus riasztásról?
 A különböző szolgáltatásokból származó Azure-riasztások a saját beépített értesítési módszereiket használták. 
 
-Azure Monitor létrehozta a *műveleti csoportok*nevű újrafelhasználható értesítési csoportot. A műveleti csoportok a fogadók készletét adják meg egy értesítéshez. Minden alkalommal, amikor egy riasztás aktiválva van, amely a műveleti csoportra hivatkozik, minden fogadó megkapja ezt az értesítést. A műveleti csoportok lehetővé teszik a fogadók (például a meghívásos mérnök-lista) egy csoporton belüli felhasználását számos riasztási objektumban. A műveleti csoportok az e-mail-címek, SMS-számok és számos más művelet mellett egy webhook URL-címére való közzétételsel támogatják az értesítést.  További információ: [Action groups](../../azure-monitor/platform/action-groups.md). 
+Azure Monitor létrehozta a *műveleti csoportok*nevű újrafelhasználható értesítési csoportot. A műveleti csoportok a fogadók készletét adják meg egy értesítéshez. Minden alkalommal, amikor egy riasztás aktiválva van, amely a műveleti csoportra hivatkozik, minden fogadó megkapja ezt az értesítést. A műveleti csoportok lehetővé teszik a fogadók (például a meghívásos mérnök-lista) egy csoporton belüli felhasználását számos riasztási objektumban. A műveleti csoportok az e-mail-címek, SMS-számok és számos más művelet mellett egy webhook URL-címére való közzétételsel támogatják az értesítést.  További információ: [Action groups](./action-groups.md). 
 
 A régebbi klasszikus műveletnapló riasztásai a műveleti csoportokat használják.
 
@@ -82,7 +82,7 @@ A webhookok lehetővé teszik az automatizálást és a szervizelést, például
 - Azure logikai alkalmazás
 - harmadik féltől származó szolgáltatás
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Információk kérése a riasztási szabályokról és a konfigurálásuk a használatával:
 
 * További információ a [metrikákkal](data-platform.md) kapcsolatban
@@ -96,3 +96,4 @@ Információk kérése a riasztási szabályokról és a konfigurálásuk a hasz
 * Tekintse át a [tevékenység naplójának riasztása webhook sémáját](activity-log-alerts-webhook.md)
 * További információ a [műveleti csoportokról](action-groups.md)
 * [Újabb riasztások](alerts-metric.md) konfigurálása
+

@@ -13,13 +13,14 @@ ms.custom:
 - seo-java-august2019
 - seo-java-september2019
 - mqtt
+- devx-track-java
 ms.date: 06/21/2019
-ms.openlocfilehash: d73fab92535820186fcce997c2a5c72abf130c18
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3c6a8285c672e6683a259b2a65be4e6ecbd4aafa
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81771000"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322278"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-azure-iot-hub-with-java"></a>Gyors útmutató: Azure IoT hub-hoz csatlakoztatott eszköz vezérlése Javával
 
@@ -55,7 +56,7 @@ mvn --version
 
 ### <a name="add-azure-iot-extension"></a>Azure IoT-bővítmény hozzáadása
 
-A következő parancs futtatásával adja hozzá az Azure CLI-hez készült Microsoft Azure IoT-bővítményt a Cloud Shell-példányhoz. Az IoT bővítmény a IoT Hub, IoT Edge és IoT Device kiépítési szolgáltatás (DPS) adott parancsait hozzáadja az Azure CLI-hez.
+A következő parancs futtatásával adja hozzá az Azure CLI-hez készült Microsoft Azure IoT-bővítményt a Cloud Shell-példányhoz. Az IoT-bővítmény az IoT Hubhoz, az IoT Edge-hez és az IoT Device Provisioning Service-hez (DPS) használható parancsokkal bővíti az Azure CLI-t.
 
 ```azurecli-interactive
 az extension add --name azure-iot
@@ -97,7 +98,7 @@ Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozz
       --output table
     ```
 
-    Jegyezze fel az eszköz kapcsolati sztringjét, amely a következőképpen néz ki:
+    Jegyezze fel az eszközkapcsolati sztringet, amely az alábbihoz hasonlóan néz ki:
 
    `HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyNodeDevice;SharedAccessKey={YourSharedAccessKey}`
 
@@ -127,7 +128,7 @@ A szimulálteszköz-alkalmazás az IoT Hubon található eszközspecifikus végp
 
 2. Nyissa meg az **src/main/java/com/microsoft/docs/iothub/samples/SimulatedDevice.java** fájlt egy tetszőleges szövegszerkesztőben.
 
-    Cserélje le a `connString` változó értékét a korábban megjegyzett eszköz-összekapcsolási sztringre. Ezután mentse a módosításokat a **SimulatedDevice. Java**fájlba.
+    Cserélje le a változó értékét `connString` a korábban megjegyzett eszköz-összekapcsolási sztringre. Ezután mentse a módosításokat a **SimulatedDevice. Java**fájlba.
 
 3. Futtassa az alábbi parancsokat a helyi terminálablakban a szükséges kódtárak telepítéséhez és a szimulálteszköz-alkalmazás létrehozásához:
 
@@ -153,7 +154,7 @@ A háttéralkalmazás az IoT Hubon található szolgáltatásoldali végponthoz 
 
 2. Nyissa meg az **src/main/java/com/microsoft/docs/iothub/samples/BackEndApplication.java** fájlt egy Ön által választott szövegszerkesztőben.
 
-    Cserélje le a `iotHubConnectionString` változó értékét arra a szolgáltatás-összekapcsolási sztringre, amelyet korábban jegyzett készített. Ezután mentse a módosításokat a **BackEndApplication. Java**fájlba.
+    Cserélje le a változó értékét arra `iotHubConnectionString` a szolgáltatás-összekapcsolási sztringre, amelyet korábban jegyzett készített. Ezután mentse a módosításokat a **BackEndApplication. Java**fájlba.
 
 3. Futtassa az alábbi parancsokat a helyi terminálablakban a szükséges kódtárak telepítéséhez és a háttéralkalmazás létrehozásához:
 

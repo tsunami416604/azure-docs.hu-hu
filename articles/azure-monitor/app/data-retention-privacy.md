@@ -3,12 +3,12 @@ title: Adatmegőrzés és tárolás az Azure Application Insightsban | Microsoft
 description: Adatmegőrzési és adatvédelmi szabályzati nyilatkozat
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 16483c9417c08ea60853d7e70b7121cd0af9db71
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 039e86f964649441967dff82270a3a6c460612f0
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86540060"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324471"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Adatgyűjtés,-megőrzés és-tárolás Application Insights
 
@@ -38,24 +38,24 @@ Application Insights SDK-k számos különböző típusú alkalmazáshoz érhet�
 ## <a name="what-data-does-it-collect"></a>Milyen adatokat gyűjt?
 Három adatforrás található:
 
-* Az SDK, amelyet [fejlesztési](../../azure-monitor/app/asp-net.md) vagy [futtatási időben](../../azure-monitor/app/monitor-performance-live-website-now.md)integrálhat az alkalmazásba. Különböző SDK-k léteznek különböző típusú alkalmazásokhoz. Emellett van egy [SDK a weblapokhoz](../../azure-monitor/app/javascript.md)is, amelyek betöltődik a végfelhasználó böngészőjébe az oldallal együtt.
+* Az SDK, amelyet [fejlesztési](./asp-net.md) vagy [futtatási időben](./monitor-performance-live-website-now.md)integrálhat az alkalmazásba. Különböző SDK-k léteznek különböző típusú alkalmazásokhoz. Emellett van egy [SDK a weblapokhoz](./javascript.md)is, amelyek betöltődik a végfelhasználó böngészőjébe az oldallal együtt.
   
-  * Minden SDK számos [modult](../../azure-monitor/app/configuration-with-applicationinsights-config.md)tartalmaz, amelyek különböző módszereket használnak különböző telemetria gyűjtéséhez.
+  * Minden SDK számos [modult](./configuration-with-applicationinsights-config.md)tartalmaz, amelyek különböző módszereket használnak különböző telemetria gyűjtéséhez.
   * Ha a fejlesztés során telepíti az SDK-t, az API-val saját telemetria is elküldheti a standard modulok mellett. Ez az egyéni telemetria tartalmazhat az elküldeni kívánt összes adathalmazt.
-* Egyes webkiszolgálókon vannak olyan ügynökök is, amelyek az alkalmazással együtt futnak, és telemetria küldenek a CPU, a memória és a hálózat kihasználtságáról. Például az Azure-beli virtuális gépek, a Docker-gazdagépek és a [Java EE-kiszolgálók](../../azure-monitor/app/java-agent.md) rendelkezhetnek ilyen ügynökökkel.
-* A [rendelkezésre állási tesztek](../../azure-monitor/app/monitor-web-app-availability.md) a Microsoft által futtatott folyamatok, amelyek rendszeres időközönként küldenek kéréseket a webalkalmazásnak. Az eredményeket a rendszer elküldi a Application Insights szolgáltatásnak.
+* Egyes webkiszolgálókon vannak olyan ügynökök is, amelyek az alkalmazással együtt futnak, és telemetria küldenek a CPU, a memória és a hálózat kihasználtságáról. Például az Azure-beli virtuális gépek, a Docker-gazdagépek és a [Java EE-kiszolgálók](./java-agent.md) rendelkezhetnek ilyen ügynökökkel.
+* A [rendelkezésre állási tesztek](./monitor-web-app-availability.md) a Microsoft által futtatott folyamatok, amelyek rendszeres időközönként küldenek kéréseket a webalkalmazásnak. Az eredményeket a rendszer elküldi a Application Insights szolgáltatásnak.
 
 ### <a name="what-kinds-of-data-are-collected"></a>Milyen típusú adatokat gyűjt a rendszer?
 A fő kategóriák a következők:
 
-* [Webkiszolgáló telemetria](../../azure-monitor/app/asp-net.md) – HTTP-kérelmek.  URI, a kérelem feldolgozásához szükséges idő, válasz kódja, ügyfél IP-címe. `Session id`.
-* [Weblapok](../../azure-monitor/app/javascript.md) – oldal, felhasználói és munkamenetek száma. Oldal betöltési ideje Kivételek. Ajax-hívások.
+* [Webkiszolgáló telemetria](./asp-net.md) – HTTP-kérelmek.  URI, a kérelem feldolgozásához szükséges idő, válasz kódja, ügyfél IP-címe. `Session id`.
+* [Weblapok](./javascript.md) – oldal, felhasználói és munkamenetek száma. Oldal betöltési ideje Kivételek. Ajax-hívások.
 * Teljesítményszámlálók – memória, CPU, IO, hálózati kihasználtság.
 * Ügyfél-és kiszolgálói környezet – operációs rendszer, területi beállítás, eszköz típusa, böngésző, képernyőfelbontás.
-* [Kivételek](../../azure-monitor/app/asp-net-exceptions.md) és összeomlások – **verem-memóriaképek**, `build id` CPU-típus. 
-* [Függőségek](../../azure-monitor/app/asp-net-dependencies.md) – külső szolgáltatásokra irányuló hívások, például REST, SQL, Ajax. URI vagy a kapcsolatok karakterlánca, időtartam, sikeres, parancs.
-* [Rendelkezésre állási tesztek](../../azure-monitor/app/monitor-web-app-availability.md) – a tesztelés és a lépések időtartama, válaszok.
-* A [nyomkövetési naplók](../../azure-monitor/app/asp-net-trace-logs.md) és az [Egyéni telemetria](../../azure-monitor/app/api-custom-events-metrics.md)  -  **minden kódot a naplókba vagy telemetria**.
+* [Kivételek](./asp-net-exceptions.md) és összeomlások – **verem-memóriaképek**, `build id` CPU-típus. 
+* [Függőségek](./asp-net-dependencies.md) – külső szolgáltatásokra irányuló hívások, például REST, SQL, Ajax. URI vagy a kapcsolatok karakterlánca, időtartam, sikeres, parancs.
+* [Rendelkezésre állási tesztek](./monitor-web-app-availability.md) – a tesztelés és a lépések időtartama, válaszok.
+* A [nyomkövetési naplók](./asp-net-trace-logs.md) és az [Egyéni telemetria](./api-custom-events-metrics.md)  -  **minden kódot a naplókba vagy telemetria**.
 
 [További részletek](#data-sent-by-application-insights).
 
@@ -71,16 +71,16 @@ Weblapok esetében nyissa meg a böngésző hibakeresési ablakát.
 ![Nyomja meg az F12 billentyűt, és nyissa meg a hálózat lapot.](./media/data-retention-privacy/08-browser.png)
 
 ### <a name="can-i-write-code-to-filter-the-telemetry-before-it-is-sent"></a>Írhatok kódot a telemetria szűréséhez az elküldése előtt?
-Ez egy [telemetria-feldolgozó beépülő modul](../../azure-monitor/app/api-filtering-sampling.md)megírásával lehetséges.
+Ez egy [telemetria-feldolgozó beépülő modul](./api-filtering-sampling.md)megírásával lehetséges.
 
 ## <a name="how-long-is-the-data-kept"></a>Mennyi ideig tart az adat?
-A nyers adatpontok (azaz az elemzésekben lekérdezhető és a keresés során megvizsgálandó elemek) akár 730 napig is megmaradnak. [A megőrzési időtartam](./pricing.md#change-the-data-retention-period) 30, 60, 90, 120, 180, 270, 365, 550 vagy 730 nap lehet. Ha 730 napnál hosszabb ideig kell megőriznie az adatmennyiséget, a [folyamatos exportálás](../../azure-monitor/app/export-telemetry.md) használatával átmásolhatja azt egy Storage-fiókba az adatfeldolgozás során. 
+A nyers adatpontok (azaz az elemzésekben lekérdezhető és a keresés során megvizsgálandó elemek) akár 730 napig is megmaradnak. [A megőrzési időtartam](./pricing.md#change-the-data-retention-period) 30, 60, 90, 120, 180, 270, 365, 550 vagy 730 nap lehet. Ha 730 napnál hosszabb ideig kell megőriznie az adatmennyiséget, a [folyamatos exportálás](./export-telemetry.md) használatával átmásolhatja azt egy Storage-fiókba az adatfeldolgozás során. 
 
 Az 90 napnál hosszabb ideig tartott adatok mellett további díjak is felmerülhetnek. További információ a [Azure monitor díjszabási oldalának](https://azure.microsoft.com/pricing/details/monitor/)Application Insights díjszabásáról.
 
 Az összesített adatokat (azaz a számításokat, az átlagokat és az egyéb statisztikai adatokat, amelyek a metrika Explorerben láthatók) a 90 napos gabona 1 percen belül őrzi meg.
 
-A [hibakeresési Pillanatképek](../../azure-monitor/app/snapshot-debugger.md) tárolása 15 napig tart. Ez az adatmegőrzési szabályzat az alkalmazáson belüli alapon van beállítva. Ha ezt az értéket kell megnövelni, akkor a Azure Portal támogatási esetének megnyitásával növelheti a növekedést.
+A [hibakeresési Pillanatképek](./snapshot-debugger.md) tárolása 15 napig tart. Ez az adatmegőrzési szabályzat az alkalmazáson belüli alapon van beállítva. Ha ezt az értéket kell megnövelni, akkor a Azure Portal támogatási esetének megnyitásával növelheti a növekedést.
 
 ## <a name="who-can-access-the-data"></a>Ki férhet hozzá az adatokhoz?
 Az adatai láthatók az Ön számára, és ha van szervezeti fiókja, a csapattagok. 
@@ -233,7 +233,7 @@ openssl s_client -connect bing.com:443 -tls1_2
 
 ## <a name="personal-data-stored-in-application-insights"></a>A Application Insightsban tárolt személyes adattárolás
 
-A [Application Insights személyes adatkezelési cikk](../../azure-monitor/platform/personal-data-mgmt.md) részletesen ismerteti ezt a problémát.
+A [Application Insights személyes adatkezelési cikk](../platform/personal-data-mgmt.md) részletesen ismerteti ezt a problémát.
 
 #### <a name="can-my-users-turn-off-application-insights"></a>Kikapcsolhatom a felhasználók a Application Insights?
 Nem közvetlenül. Nem biztosítunk olyan kapcsolót, amelyet a felhasználók a Application Insights kikapcsolására használhatnak.
@@ -249,7 +249,7 @@ Az SDK-k különböző platformok között változnak, és több összetevő is 
 | --- | --- |
 | [Application Insights SDK hozzáadása .NET webes projekthez][greenbrown] |ServerContext<br/>Következtetni<br/>Teljesítményszámlálók<br/>Kérelmek<br/>**Kivételek**<br/>Munkamenet<br/>felhasználók |
 | [Állapotmonitor telepítése IIS-kiszolgálón][redfield] |Függőségek<br/>ServerContext<br/>Következtetni<br/>Teljesítményszámlálók |
-| [Application Insights SDK hozzáadása Java-webalkalmazáshoz][java] |ServerContext<br/>Következtetni<br/>Kérelem<br/>Munkamenet<br/>felhasználók |
+| [Application Insights SDK hozzáadása Java-webalkalmazáshoz][java] |ServerContext<br/>Következtetni<br/>Kérés<br/>Munkamenet<br/>felhasználók |
 | [JavaScript SDK hozzáadása a weboldalhoz][client] |ClientContext <br/>Következtetni<br/>Oldal<br/>ClientPerf<br/>Ajax |
 | [Alapértelmezett tulajdonságok megadása][apiproperties] |A standard és az egyéni események **tulajdonságai** |
 | [TrackMetric hívása][api] |Numerikus értékek<br/>**Tulajdonságok** |
@@ -286,7 +286,7 @@ Az SDK-k különböző platformok között változnak, és több összetevő is 
 [ApplicationInsights.configszerkesztésével kikapcsolhatja az egyes adatmennyiségeket][config]
 
 > [!NOTE]
-> Az ügyfél IP-címe a földrajzi hely kiértékelésére szolgál, de alapértelmezés szerint az IP-adatmennyiség már nem tárolódik, és az összes nulla a társított mezőbe íródik. Ha többet szeretne megtudni a személyes adatkezelésről, javasoljuk ezt a [cikket](../../azure-monitor/platform/personal-data-mgmt.md#application-data). Ha IP-cím adatait kell tárolnia, az [IP-cím gyűjtésével kapcsolatos cikk](./ip-collection.md) végigvezeti Önt a lehetőségein.
+> Az ügyfél IP-címe a földrajzi hely kiértékelésére szolgál, de alapértelmezés szerint az IP-adatmennyiség már nem tárolódik, és az összes nulla a társított mezőbe íródik. Ha többet szeretne megtudni a személyes adatkezelésről, javasoljuk ezt a [cikket](../platform/personal-data-mgmt.md#application-data). Ha IP-cím adatait kell tárolnia, az [IP-cím gyűjtésével kapcsolatos cikk](./ip-collection.md) végigvezeti Önt a lehetőségein.
 
 ## <a name="credits"></a>Kreditek
 Ez a termék a MaxMind által létrehozott GeoLite2-adatokból áll [https://www.maxmind.com](https://www.maxmind.com) .
@@ -295,13 +295,14 @@ Ez a termék a MaxMind által létrehozott GeoLite2-adatokból áll [https://www
 
 <!--Link references-->
 
-[api]: ../../azure-monitor/app/api-custom-events-metrics.md
-[apiproperties]: ../../azure-monitor/app/api-custom-events-metrics.md#properties
-[client]: ../../azure-monitor/app/javascript.md
-[config]: ../../azure-monitor/app/configuration-with-applicationinsights-config.md
-[greenbrown]: ../../azure-monitor/app/asp-net.md
-[java]: ../../azure-monitor/app/java-get-started.md
-[platforms]: ../../azure-monitor/app/platforms.md
+[api]: ./api-custom-events-metrics.md
+[apiproperties]: ./api-custom-events-metrics.md#properties
+[client]: ./javascript.md
+[config]: ./configuration-with-applicationinsights-config.md
+[greenbrown]: ./asp-net.md
+[java]: ./java-get-started.md
+[platforms]: ./platforms.md
 [pricing]: https://azure.microsoft.com/pricing/details/application-insights/
-[redfield]: ../../azure-monitor/app/monitor-performance-live-website-now.md
-[start]: ../../azure-monitor/app/app-insights-overview.md
+[redfield]: ./monitor-performance-live-website-now.md
+[start]: ./app-insights-overview.md
+

@@ -8,20 +8,17 @@ ms.topic: tutorial
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 7c22ad844f0a543cfbf2e007ab2bfc8f0fe22ef7
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: e27bbdcec9b0c9e2bcabf4228a19d87e263d60f4
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85362934"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291445"
 ---
 # <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>Oktatóanyag: állomáslista létrehozása a Azure Portal
 
 >[!IMPORTANT]
->Ez a tartalom a Spring 2020 frissítésre vonatkozik Azure Resource Manager Windows rendszerű virtuális asztali objektumokkal. Ha a Windows rendszerű virtuális 2019 asztalt Azure Resource Manager objektumok nélkül használja, tekintse meg [ezt a cikket](./virtual-desktop-fall-2019/create-host-pools-azure-marketplace-2019.md). A Windows rendszerű virtuális asztali 2019 környezettel létrehozott összes objektum nem kezelhető a Azure Portal.
->
-> A Windows rendszerű virtuális asztali Spring 2020 frissítése jelenleg nyilvános előzetes verzióban érhető el. Ezt az előzetes verziót szolgáltatói szerződés nélkül biztosítjuk, és nem javasoljuk, hogy éles számítási feladatokhoz használja azt. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. 
-> További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+>Ez a tartalom a Windows rendszerű virtuális asztali Azure Resource Manager Windows virtuális asztali objektumokkal vonatkozik. Ha a Windowsos virtuális asztalt (klasszikus) Azure Resource Manager objektumok nélkül használja, tekintse meg [ezt a cikket](./virtual-desktop-fall-2019/create-host-pools-azure-marketplace-2019.md). A Windows rendszerű virtuális asztallal (klasszikus) létrehozott objektumokat nem lehet felügyelni a Azure Portal.
 
 A gazdagép-készletek egy vagy több azonos virtuális gép (VM) gyűjteményei, amelyek a Windows rendszerű virtuális asztali környezetekben találhatók. Mindegyik gazdagép tartalmazhatja azt az alkalmazáscsoport-csoportot, amelyet a felhasználók a fizikai asztalon lévők használatával kezelhetnek.
 
@@ -186,7 +183,7 @@ Az asztali alkalmazás csoportjának regisztrálása munkaterületre:
 
 Ezt követően már készen is van!
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy elvégezte a gazdagép készletét, feltöltheti azt a RemoteApp-programok használatával. Ha többet szeretne megtudni a Windows rendszerű virtuális asztali alkalmazások kezeléséről, tekintse meg a következő oktatóanyagot:
 

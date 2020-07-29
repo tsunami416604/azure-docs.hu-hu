@@ -10,11 +10,14 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: wesmc
-ms.openlocfilehash: 3175956e35603cc4ad3a938f3d316c0af8f2d227
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom:
+- 'Role: Cloud Development'
+ms.openlocfilehash: 1188c597b3e46af140173d59b2cbac972d0c018c
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81640534"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324029"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-nodejs"></a>Málna PI összekötése az Azure IoT Hub (Node.js)
 
@@ -44,13 +47,13 @@ Még nem rendelkezik csomaggal? Próbálja ki a [málna PI online szimulátort](
 
 * Szenzorok adatainak küldése az IoT hubhoz.
 
-## <a name="what-you-need"></a>Mi szükséges
+## <a name="what-you-need"></a>Amire szükség lesz
 
-![Mi szükséges](./media/iot-hub-raspberry-pi-kit-node-get-started/0-starter-kit.png)
+![Amire szükség lesz](./media/iot-hub-raspberry-pi-kit-node-get-started/0-starter-kit.png)
 
 * Egy málna pi 2 vagy málna PI 3 tábla.
 
-* Azure-előfizetés. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 * A PI-hoz csatlakozó figyelő, USB-billentyűzet és-egér.
 

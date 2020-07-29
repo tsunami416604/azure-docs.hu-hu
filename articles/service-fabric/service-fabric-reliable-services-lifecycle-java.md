@@ -4,13 +4,14 @@ description: Ismerkedjen meg az Azure Service Fabric Reliable Services alkalmaz�
 author: PavanKunapareddyMSFT
 ms.topic: conceptual
 ms.date: 06/30/2017
+ms.custom: devx-track-java
 ms.author: pakunapa
-ms.openlocfilehash: b86f68126825f146a50ed21edf2acbda2b5181cf
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: b22c78a0259e4430ac6bfae1c0a9379c4a832cd4
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86245177"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324607"
 ---
 # <a name="reliable-services-lifecycle"></a>A Reliable Services életciklusa
 > [!div class="op_single_selector"]
@@ -127,6 +128,6 @@ A Reliable Services tesztelésének és érvényesítésének fontos része a `R
 * Az `onCloseAsync()` elérési úton történt hibák `onAbort()` meghívásának eredménye. Ez a hívás egy utolsó esélyes, legjobb lehetőség arra, hogy a szolgáltatás kiürítse és felszabadítsa az általuk igényelt erőforrásokat. Ez általában akkor fordul elő, ha a csomóponton állandó hibát észlel, vagy ha Service Fabric belső meghibásodások miatt nem tudja megbízhatóan kezelni a szolgáltatási példány életciklusát.
 * `OnChangeRoleAsync()`akkor lesz meghívva, amikor az állapot-nyilvántartó szolgáltatás replikája megváltoztatja a szerepkört, például az elsődleges vagy a másodlagos. Az elsődleges replikák írási állapotot kapnak (a megbízható gyűjtemények létrehozásához és írásához engedélyezett). A másodlagos replikák olvasási állapotot kapnak (csak a meglévő megbízható gyűjteményekből olvashatók be). Egy állapot-nyilvántartó szolgáltatásban a legtöbb munka az elsődleges replikán történik. A másodlagos replikák csak olvasási ellenőrzés, jelentéskészítés, adatbányászat vagy más írásvédett feladatok végrehajtására használhatók.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Bevezetés a Reliable Servicesba](service-fabric-reliable-services-introduction.md)
 * [Reliable Services rövid útmutató](service-fabric-reliable-services-quick-start-java.md)

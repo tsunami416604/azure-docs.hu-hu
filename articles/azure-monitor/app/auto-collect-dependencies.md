@@ -5,12 +5,12 @@ ms.topic: reference
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/06/2020
-ms.openlocfilehash: ba7830cc1c0a3e6a563b4343b37ec07f7d508af4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2227facfcf469bc22034da0da504b390cc0deee1
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087985"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324182"
 ---
 # <a name="dependency-auto-collection"></a>Függőségek automatikus összegyűjtése
 
@@ -23,7 +23,7 @@ Az alábbiakban látható a függőségi hívások jelenleg támogatott listája
 | ASP.NET webűrlapok | 4.5 + |
 | ASP.NET, MVC | 4 + |
 | ASP.NET WebAPI | 4.5 + |
-| ASP.NET Core | 1.1 + |
+| ASP.NET-mag | 1.1 + |
 | <b>Kommunikációs kódtárak</b> |
 | [HttpClient](https://www.microsoft.com/net/) | 4.5 +, .NET Core 1.1 + |
 | [SqlClient](https://www.nuget.org/packages/System.Data.SqlClient) | .NET Core 1.0 +, NuGet 4.3.0 |
@@ -88,9 +88,10 @@ Az alábbiakban látható a függőségi hívások jelenleg támogatott listája
 
 ## <a name="next-steps"></a>További lépések
 
-- Egyéni függőségi követés beállítása a [.net](../../azure-monitor/app/asp-net-dependencies.md)-hez.
-- Egyéni függőség-követés beállítása a [Javához](../../azure-monitor/app/java-agent.md).
-- Egyéni függőségi követés beállítása a [OpenCensus Pythonhoz](../../azure-monitor/app/opencensus-python-dependency.md).
-- [Egyéni függőségi telemetria írása](../../azure-monitor/app/api-custom-events-metrics.md#trackdependency)
-- Lásd: [adatmodell](../../azure-monitor/app/data-model.md) Application Insights típusokhoz és adatmodellekhez.
-- Tekintse meg Application Insights által támogatott [platformokat](../../azure-monitor/app/platforms.md) .
+- Egyéni függőségi követés beállítása a [.net](./asp-net-dependencies.md)-hez.
+- Egyéni függőség-követés beállítása a [Javához](./java-agent.md).
+- Egyéni függőségi követés beállítása a [OpenCensus Pythonhoz](./opencensus-python-dependency.md).
+- [Egyéni függőségi telemetria írása](./api-custom-events-metrics.md#trackdependency)
+- Lásd: [adatmodell](./data-model.md) Application Insights típusokhoz és adatmodellekhez.
+- Tekintse meg Application Insights által támogatott [platformokat](./platforms.md) .
+

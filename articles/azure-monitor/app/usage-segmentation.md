@@ -6,20 +6,20 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 01/24/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 0d605286df70988852d1650be58cfb2c395de814
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d11b12ba37d543ec21985c52c4ffb3399bfc56d1
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539805"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323519"
 ---
 # <a name="users-sessions-and-events-analysis-in-application-insights"></a>Felhasználók, munkamenetek és események elemzése Application Insights
 
-Megtudhatja, hogy mikor használják a felhasználók a webalkalmazást, mely oldalakat érdeklik leginkább, hol találhatók a felhasználók, és milyen böngészőket és operációs rendszereket használnak. Az üzleti és a használati telemetria elemzése az [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md)használatával.
+Megtudhatja, hogy mikor használják a felhasználók a webalkalmazást, mely oldalakat érdeklik leginkább, hol találhatók a felhasználók, és milyen böngészőket és operációs rendszereket használnak. Az üzleti és a használati telemetria elemzése az [Azure Application Insights](./app-insights-overview.md)használatával.
 
 ![Képernyőkép Application Insights felhasználókról](./media/usage-segmentation/0001-users.png)
 
-## <a name="get-started"></a>Első lépések
+## <a name="get-started"></a>Bevezetés
 
 Ha még nem látja az adatokat a Application Insights-portálon található felhasználók, munkamenetek vagy események paneleken, [Ismerkedjen meg a használati eszközök használatának első lépéseivel](usage-overview.md).
 
@@ -29,9 +29,9 @@ A használati pengék három szemszögből ugyanazt az eszközt használják a w
 
 * **Felhasználók eszköz**: hány ember használta az alkalmazást és annak funkcióit.  A felhasználókat a böngésző cookie-jai tárolt névtelen azonosítók használatával számoljuk el. A különböző böngészőket vagy számítógépeket használó egyetlen személy több felhasználónak is számít.
 * **Munkamenetek eszköz**: a felhasználói tevékenység hány munkamenete tartalmazta az alkalmazás egyes lapjait és funkcióit. A munkamenetek a felhasználói tétlenség fél órája vagy 24 órányi folyamatos használat után számítanak.
-* **Events Tool (események) eszköz**: az alkalmazás egyes oldalai és funkciói milyen gyakran használatosak. Az oldal nézet akkor számít, ha egy böngésző betölt egy oldalt az alkalmazásból, ha már van ilyen [eszköz](../../azure-monitor/app/javascript.md). 
+* **Events Tool (események) eszköz**: az alkalmazás egyes oldalai és funkciói milyen gyakran használatosak. Az oldal nézet akkor számít, ha egy böngésző betölt egy oldalt az alkalmazásból, ha már van ilyen [eszköz](./javascript.md). 
 
-    Egy egyéni esemény az alkalmazásban előforduló egyik előfordulást jelképezi, gyakran egy felhasználói interakciót, például egy kattintással vagy egy feladat befejezését. Az alkalmazásban programkódot szúrhat be [Egyéni események létrehozásához](../../azure-monitor/app/api-custom-events-metrics.md#trackevent).
+    Egy egyéni esemény az alkalmazásban előforduló egyik előfordulást jelképezi, gyakran egy felhasználói interakciót, például egy kattintással vagy egy feladat befejezését. Az alkalmazásban programkódot szúrhat be [Egyéni események létrehozásához](./api-custom-events-metrics.md#trackevent).
 
 ## <a name="querying-for-certain-users"></a>Bizonyos felhasználók lekérdezése
 
@@ -55,12 +55,13 @@ A felhasználók, munkamenetek vagy események jelentésében tárolt adatmásol
 
 A **felhasználók** betartása szakasz az aktuális lekérdezéssel megegyező öt minta felhasználó adatait jeleníti meg. Az összesítések mellett figyelembe kell venni és meg kell vizsgálni az egyének viselkedését, és betekintést nyerhet arról, hogy a felhasználók miként használják ténylegesen az alkalmazást.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A használati tapasztalatok engedélyezéséhez kezdjen el [Egyéni eseményeket](./api-custom-events-metrics.md#trackevent) vagy [oldalletöltések](./api-custom-events-metrics.md#page-views)küldését.
 - Ha már elküldte az egyéni eseményeket vagy a lapok nézeteit, tekintse meg a használati eszközöket, amelyekkel megismerheti, hogy a felhasználók miként használják a szolgáltatást.
     - [Tölcsérek](usage-funnels.md)
     - [Megőrzés](usage-retention.md)
     - [Felhasználói folyamatok](usage-flows.md)
-    - [Munkafüzetek](../../azure-monitor/platform/workbooks-overview.md)
+    - [Munkafüzetek](../platform/workbooks-overview.md)
     - [Felhasználói környezet hozzáadása](usage-send-user-context.md)
+

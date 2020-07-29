@@ -3,24 +3,24 @@ title: Hibák és kivételek diagnosztizálása az Azure Application Insights
 description: A ASP.NET-alkalmazásokból származó kivételek rögzítése a kérelem telemetria együtt.
 ms.topic: conceptual
 ms.date: 07/11/2019
-ms.openlocfilehash: 4d298b3b8541590387995898b0b9f067e8130c3d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c91ab4bcf8a0d2172c89fa04bd7a3b4999b2217e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86517212"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321360"
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>A webalkalmazások kivételeinek diagnosztizálása a Application Insights
-Az élő webalkalmazásban lévő kivételeket [Application Insights](../../azure-monitor/app/app-insights-overview.md). A sikertelen kérelmeket a kivételekkel és más eseményekkel is összekapcsolhatja az ügyfélen és a kiszolgálón is, így gyorsan diagnosztizálhatja az okokat.
+Az élő webalkalmazásban lévő kivételeket [Application Insights](./app-insights-overview.md). A sikertelen kérelmeket a kivételekkel és más eseményekkel is összekapcsolhatja az ügyfélen és a kiszolgálón is, így gyorsan diagnosztizálhatja az okokat.
 
 ## <a name="set-up-exception-reporting"></a>A kivételek jelentésének beállítása
 * A kiszolgálói alkalmazás által jelentett kivételek:
-  * Azure Web Apps: a [Application Insights bővítmény](../../azure-monitor/app/azure-web-apps.md) hozzáadása
-  * Azure-beli virtuális gépek és Azure virtuálisgép-méretezési csoport IIS által üzemeltetett alkalmazások: az [alkalmazás figyelési bővítményének](../../azure-monitor/app/azure-vm-vmss-apps.md) hozzáadása
-  * Telepítse [Application INSIGHTS SDK](../../azure-monitor/app/asp-net.md) -t az alkalmazás kódjába, vagy
-  * IIS-webkiszolgálók: [Application Insights ügynök](../../azure-monitor/app/monitor-performance-live-website-now.md)futtatása; vagy
+  * Azure Web Apps: a [Application Insights bővítmény](./azure-web-apps.md) hozzáadása
+  * Azure-beli virtuális gépek és Azure virtuálisgép-méretezési csoport IIS által üzemeltetett alkalmazások: az [alkalmazás figyelési bővítményének](./azure-vm-vmss-apps.md) hozzáadása
+  * Telepítse [Application INSIGHTS SDK](./asp-net.md) -t az alkalmazás kódjába, vagy
+  * IIS-webkiszolgálók: [Application Insights ügynök](./monitor-performance-live-website-now.md)futtatása; vagy
   * Java-webalkalmazások: a [Java-ügynök](./java-in-process-agent.md) engedélyezése
-* Telepítse a [JavaScript-kódrészletet](../../azure-monitor/app/javascript.md) a weboldalain a böngészőbeli kivételek elfogásához.
+* Telepítse a [JavaScript-kódrészletet](./javascript.md) a weboldalain a böngészőbeli kivételek elfogásához.
 * Néhány alkalmazás-keretrendszerben vagy bizonyos beállításokkal további lépéseket kell elvégeznie, hogy több kivételt kapjon:
   * [Webes űrlapok](#web-forms)
   * [MVC](#mvc)
@@ -70,29 +70,29 @@ Az alkalmazásra vonatkozó diagnosztikai adatgyűjtéshez kódot szúrhat be a 
 
 Erre számos lehetősége van:
 
-* A [TrackEvent ()](../../azure-monitor/app/api-custom-events-metrics.md#trackevent) általában a használati minták figyelésére használatos, de az általa küldött adatok is megjelennek az egyéni események szakaszban a diagnosztikai keresésben. Az események neve, és a karakterlánc-tulajdonságokat és numerikus mérőszámokat is végezhet, amelyeken [szűrheti a diagnosztikai kereséseket](../../azure-monitor/app/diagnostic-search.md).
-* A [TrackTrace ()](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace) lehetővé teszi, hogy több adatot, például post-adatokat küldjön.
+* A [TrackEvent ()](./api-custom-events-metrics.md#trackevent) általában a használati minták figyelésére használatos, de az általa küldött adatok is megjelennek az egyéni események szakaszban a diagnosztikai keresésben. Az események neve, és a karakterlánc-tulajdonságokat és numerikus mérőszámokat is végezhet, amelyeken [szűrheti a diagnosztikai kereséseket](./diagnostic-search.md).
+* A [TrackTrace ()](./api-custom-events-metrics.md#tracktrace) lehetővé teszi, hogy több adatot, például post-adatokat küldjön.
 * A [TrackException () verem-](#exceptions) nyomkövetéseket küld. [További információ a kivételekről](#exceptions).
 * Ha már olyan naplózási keretrendszert használ, mint például a Log4Net vagy a NLog, [rögzítheti ezeket a naplókat](asp-net-trace-logs.md) , és megtekintheti azokat a diagnosztikai keresésben a kérelem és a kivétel adatai mellett.
 
-Az események megjelenítéséhez nyissa meg a bal oldali menü [Keresés](../../azure-monitor/app/diagnostic-search.md) elemét, válassza a legördülő menü **eseménytípus**lehetőséget, majd válassza az egyéni esemény, nyomkövetés vagy kivétel lehetőséget.
+Az események megjelenítéséhez nyissa meg a bal oldali menü [Keresés](./diagnostic-search.md) elemét, válassza a legördülő menü **eseménytípus**lehetőséget, majd válassza az egyéni esemény, nyomkövetés vagy kivétel lehetőséget.
 
 ![Részletezés](./media/asp-net-exceptions/customevents.png)
 
 > [!NOTE]
-> Ha az alkalmazása sok telemetriát hoz létre, az adaptív mintavételezési modul automatikusan csökkenti a portálra küldött mennyiséget, és csupán az eseményeket megjelenítő töredékeket küld. Az azonos művelet részét képező események ki lesznek választva, vagy ki lesznek választva a csoportnak, így a kapcsolódó események között lehet navigálni. [További tudnivalók a mintavételezésről.](../../azure-monitor/app/sampling.md)
+> Ha az alkalmazása sok telemetriát hoz létre, az adaptív mintavételezési modul automatikusan csökkenti a portálra küldött mennyiséget, és csupán az eseményeket megjelenítő töredékeket küld. Az azonos művelet részét képező események ki lesznek választva, vagy ki lesznek választva a csoportnak, így a kapcsolódó események között lehet navigálni. [További tudnivalók a mintavételezésről.](./sampling.md)
 >
 >
 
 ### <a name="how-to-see-request-post-data"></a>A kérelem utáni információk megjelenítése
 A kérelem részletei nem tartalmazzák az alkalmazásba egy POST-hívásban továbbított adatokat. Az adatjelentések meghívásához:
 
-* [Telepítse az SDK](../../azure-monitor/app/asp-net.md) -t az alkalmazás projektben.
-* A [Microsoft. ApplicationInsights. TrackTrace ()](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace)hívásához helyezzen be kódot az alkalmazásba. Küldje el a POST (üzenet) paramétert. Korlátozva van a megengedett méret, ezért csak az alapvető adatmennyiséget kell elküldenie.
+* [Telepítse az SDK](./asp-net.md) -t az alkalmazás projektben.
+* A [Microsoft. ApplicationInsights. TrackTrace ()](./api-custom-events-metrics.md#tracktrace)hívásához helyezzen be kódot az alkalmazásba. Küldje el a POST (üzenet) paramétert. Korlátozva van a megengedett méret, ezért csak az alapvető adatmennyiséget kell elküldenie.
 * Sikertelen kérelem kivizsgálásakor keresse meg a kapcsolódó nyomkövetéseket.
 
 ## <a name="capturing-exceptions-and-related-diagnostic-data"></a><a name="exceptions"></a>Kivételek és kapcsolódó diagnosztikai adat rögzítése
-Először nem jelenik meg a portálon az alkalmazás hibáit okozó kivételek. A böngészőre vonatkozó kivételek jelennek meg (ha a [JavaScript SDK](../../azure-monitor/app/javascript.md) -t használja a weboldalain). Az IIS azonban a legtöbb kiszolgálói kivételt felveszi, és egy kódot kell megírnia, hogy megtekintse őket.
+Először nem jelenik meg a portálon az alkalmazás hibáit okozó kivételek. A böngészőre vonatkozó kivételek jelennek meg (ha a [JavaScript SDK](./javascript.md) -t használja a weboldalain). Az IIS azonban a legtöbb kiszolgálói kivételt felveszi, és egy kódot kell megírnia, hogy megtekintse őket.
 
 A következőket teheti:
 
@@ -152,7 +152,7 @@ A legegyszerűbb módszer a TrackException () hívásának beszúrása egy kivé
     End Try
 ```
 
-A tulajdonságok és a mérések paramétereinek megadása nem kötelező, de hasznos lehet a [szűréshez és további információk hozzáadásához](../../azure-monitor/app/diagnostic-search.md) . Ha például olyan alkalmazással rendelkezik, amely több játékot is futtathat, megtalálhatja az adott játékhoz kapcsolódó összes kivételről szóló jelentést. Az egyes szótárakhoz tetszőleges számú elemet adhat hozzá.
+A tulajdonságok és a mérések paramétereinek megadása nem kötelező, de hasznos lehet a [szűréshez és további információk hozzáadásához](./diagnostic-search.md) . Ha például olyan alkalmazással rendelkezik, amely több játékot is futtathat, megtalálhatja az adott játékhoz kapcsolódó összes kivételről szóló jelentést. Az egyes szótárakhoz tetszőleges számú elemet adhat hozzá.
 
 ## <a name="browser-exceptions"></a>Böngészőkivételek
 A legtöbb böngészőbeli kivételt jelenteni kell.
@@ -201,12 +201,12 @@ A Application Insights web SDK 2,6-es verziójától (beta3 és újabb verziókt
 
 Számos esetben a kivétel szűrői nem kezelhetik. Például:
 
-* A vezérlő konstruktorai által kiváltott kivételek.
-* Az üzenetkezelők által kiváltott kivételek.
-* Az Útválasztás során kiváltott kivételek.
-* A válasz tartalmának szerializálásakor kiváltott kivételek.
-* Kivétel történt az alkalmazás indításakor.
-* Kivétel történt a háttérben végzett feladatokban.
+* A vezérlőkonstruktorokban történt kivételek.
+* Az üzenetkezelőkben történt kivételek.
+* Az útválasztás során történt kivételek.
+* A választartalmak szerializálása során történt kivételek.
+* Az alkalmazás indítása során történt kivételek.
+* A háttérfeladatokban történt kivételek.
 
 Az alkalmazás által *kezelt* összes kivételt manuálisan kell nyomon követni.
 A vezérlőkből származó nem kezelt kivételek általában 500 "belső kiszolgálóhiba" választ eredményeznek. Ha az ilyen választ a kezelt kivétel (vagy egyáltalán nem kivétel) eredményeképpen manuálisan készíti el, azt a 500-es megfelelő kérelem telemetria nyomon követheti `ResultCode` , azonban Application INSIGHTS SDK nem tudja követni a megfelelő kivételt.
@@ -293,12 +293,12 @@ A Application Insights web SDK 2,6-es verziójától (beta3 és újabb verziókt
 
 Számos esetben a kivétel szűrői nem kezelhetik. Például:
 
-* A vezérlő konstruktorai által kiváltott kivételek.
-* Az üzenetkezelők által kiváltott kivételek.
-* Az Útválasztás során kiváltott kivételek.
-* A válasz tartalmának szerializálásakor kiváltott kivételek.
-* Kivétel történt az alkalmazás indításakor.
-* Kivétel történt a háttérben végzett feladatokban.
+* A vezérlőkonstruktorokban történt kivételek.
+* Az üzenetkezelőkben történt kivételek.
+* Az útválasztás során történt kivételek.
+* A választartalmak szerializálása során történt kivételek.
+* Az alkalmazás indítása során történt kivételek.
+* A háttérfeladatokban történt kivételek.
 
 Az alkalmazás által *kezelt* összes kivételt manuálisan kell nyomon követni.
 A vezérlőkből származó nem kezelt kivételek általában 500 "belső kiszolgálóhiba" választ eredményeznek. Ha az ilyen választ a kezelt kivétel (vagy egyáltalán nem kivétel) eredményeképpen manuálisan készíti el, azt a 500-es megfelelő kérelem telemetria nyomon követheti `ResultCode` , azonban Application INSIGHTS SDK nem tudja követni a megfelelő kivételt.
@@ -482,7 +482,7 @@ Add the attribute to the service implementations:
 [Sample](https://github.com/AppInsightsSamples/WCFUnhandledExceptions)
 
 ## <a name="exception-performance-counters"></a>Kivételi teljesítményszámlálók
-Ha [telepítette a Application Insights ügynököt](../../azure-monitor/app/monitor-performance-live-website-now.md) a-kiszolgálóra, a kivételek aránya a .net alapján mérhető. Ez magában foglalja a kezelt és a nem kezelt .NET-kivételeket is.
+Ha [telepítette a Application Insights ügynököt](./monitor-performance-live-website-now.md) a-kiszolgálóra, a kivételek aránya a .net alapján mérhető. Ez magában foglalja a kezelt és a nem kezelt .NET-kivételeket is.
 
 Nyisson meg egy mérőszám-kezelő lapot, adjon hozzá egy új diagramot, és válassza a **kivételek aránya**elemet a teljesítményszámlálók területen.
 
@@ -490,7 +490,8 @@ A .NET-keretrendszer kiszámítja az arányt a kivételek számának és az inte
 
 Ez eltér a "kivételek" számával, amelyet a Application Insights-portál a TrackException jelentéseinek számlálása alapján számít ki. A mintavételi időközök eltérőek, és az SDK nem küld TrackException-jelentéseket az összes kezelt és nem kezelt kivételhez.
 
-## <a name="next-steps"></a>Következő lépések
-* [A REST, az SQL és más függőségek hívásának figyelése](../../azure-monitor/app/asp-net-dependencies.md)
-* [Az oldal betöltési idejének, a böngésző kivételeinek és az AJAX-hívások figyelése](../../azure-monitor/app/javascript.md)
-* [Teljesítményszámlálók figyelése](../../azure-monitor/app/performance-counters.md)
+## <a name="next-steps"></a>További lépések
+* [A REST, az SQL és más függőségek hívásának figyelése](./asp-net-dependencies.md)
+* [Az oldal betöltési idejének, a böngésző kivételeinek és az AJAX-hívások figyelése](./javascript.md)
+* [Teljesítményszámlálók figyelése](./performance-counters.md)
+

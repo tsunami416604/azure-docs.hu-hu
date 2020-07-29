@@ -10,19 +10,19 @@
       items:
         - name: Introduction (Bevezetés)
           href: get-started.md
-        - name: '1. lépés: Synapse-munkaterület létrehozása'
+        - name: 1. Synapse-munkaterület létrehozása
           href: get-started-create-workspace.md
-        - name: '2. lépés: Elemzés SQL-készlettel'
+        - name: 2. Elemzés SQL-készlettel
           href: get-started-analyze-sql-pool.md
-        - name: '3. lépés: Elemzés a Spark használatával'
+        - name: 3. Elemzés a Spark használatával
           href: get-started-analyze-spark.md
-        - name: '4. lépés: Elemzés igény szerinti SQL használatával'
+        - name: 4. Elemzés igény szerinti SQL használatával
           href: get-started-analyze-sql-on-demand.md
-        - name: '5. lépés: Tárfiók adatainak elemzése'
+        - name: 5. Tárfiók adatainak elemzése
           href: get-started-analyze-storage.md
-        - name: "6.\_lépés: Összehangolás folyamatok használatával"
+        - name: 6. Összehangolás folyamatok használatával
           href: get-started-pipelines.md
-        - name: '7- lépés: Vizualizáció a Power BI használatával'
+        - name: 7. Vizualizáció a Power BI használatával
           href: get-started-visualize-power-bi.md
     - name: Hasznos tanácsok
       href: overview-cheat-sheet.md
@@ -264,6 +264,8 @@
                   href: /sql/t-sql/statements/alter-materialized-view-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Eredményhalmaz gyorsítótárazása
               href: /sql/t-sql/statements/set-result-set-caching-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Machine Learning-előrejelzések
+              href: ./sql-data-warehouse/sql-data-warehouse-predict.md
             - name: Táblák
               items:
                 - name: Áttekintés

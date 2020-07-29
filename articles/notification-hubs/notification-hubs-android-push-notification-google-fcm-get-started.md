@@ -11,17 +11,17 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: tutorial
-ms.custom: mvc
+ms.custom: mvc, devx-track-java
 ms.date: 06/22/2020
 ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 09/11/2019
-ms.openlocfilehash: e8c19a491f836a71b26f86924fddad92adb23d42
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: 3b32a61dcf8dfe403a44af236afad830472d1b8d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85390533"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321462"
 ---
 # <a name="tutorial-send-push-notifications-to-android-devices-using-firebase-sdk-version-06"></a>Oktatóanyag: leküldéses értesítések küldése Android-eszközökre a Firebase SDK 0,6-es verziójának használatával
 
@@ -61,7 +61,7 @@ Az oktatóanyag elvégzése előfeltétele az Android-alkalmazásokhoz tartozó 
 3. A **projekt konfigurálása** oldalon hajtsa végre a következő lépéseket: 
     1. Adjon nevet az alkalmazásnak.
     2. Itt adhatja meg a projektfájlok mentési helyét. 
-    3. Válassza a **Befejezés** gombot. 
+    3. Válassza a **Befejezés** lehetőséget. 
 
         ![A projekt konfigurálása)](./media/notification-hubs-android-push-notification-google-fcm-get-started/configure-project.png)
 
@@ -542,7 +542,7 @@ Leküldéses értesítéseket a [Azure Portal] küldhet a következő lépések 
 
 1. A Azure Portal a központ értesítési központ lapján válassza a **küldési teszt** lehetőséget a **Hibaelhárítás** szakaszban.
 3. A **Platformok** beállításnál válassza az **Android** lehetőséget.
-4. Válassza a **Küldés**lehetőséget.  Az Android-eszközön még nem jelenik meg értesítés, mert nem futtatta rajta a Mobile alkalmazást. Miután futtatta a Mobile alkalmazást, kattintson ismét a **Küldés** gombra az értesítési üzenet megtekintéséhez.
+4. Kattintson a **Küldés** gombra.  Az Android-eszközön még nem jelenik meg értesítés, mert nem futtatta rajta a Mobile alkalmazást. Miután futtatta a Mobile alkalmazást, kattintson ismét a **Küldés** gombra az értesítési üzenet megtekintéséhez.
 5. A művelet eredményeit a lap alján található listában láthatja.
 
     ![Azure Notification Hubs – küldés tesztelése](./media/notification-hubs-android-push-notification-google-fcm-get-started/notification-hubs-test-send.png)
@@ -559,7 +559,7 @@ Mielőtt a leküldéses értesítéseket egy emulátoron belül teszteli, győz�
 
 Győződjön meg arról is, hogy hozzáadta Google-fiókját a futó emulátorhoz a **Beállítások**  >  **fiókok**területen. Ellenkező esetben az FCM-sel való regisztrációra tett kísérletek a ** \_ sikertelen hitelesítésre** vonatkozó kivételt okozhatnak.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban a Firebase Cloud Messaging szolgáltatást használta az értesítések küldéséhez a szolgáltatásban regisztrált összes Android-eszközre. Ha szeretné megtudni, hogy hogyan küldhet leküldéses értesítéseket adott eszközökre, lépjen tovább a következő oktatóanyagra:
 

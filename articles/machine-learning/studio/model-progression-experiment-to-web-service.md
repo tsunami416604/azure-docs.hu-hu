@@ -1,6 +1,5 @@
 ---
-title: Hogyan válik a modell webszolgáltatás
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (klasszikus): hogyan válik a modell webszolgáltatás – Azure'
 description: Annak mechanikája, hogy a Azure Machine Learning Studio (klasszikus) modell hogyan halad egy fejlesztési kísérletből egy webszolgáltatásba.
 services: machine-learning
 ms.service: machine-learning
@@ -10,13 +9,17 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 03/20/2017
-ms.openlocfilehash: 4d7ab5cada77ccebc214e09b43fbb70b3ad8bb59
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6a02ac6db7e560fcb90a87b7bc96284c279c1654
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84117189"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324998"
 ---
 # <a name="how-a-machine-learning-studio-classic-model-progresses-from-an-experiment-to-a-web-service"></a>Hogyan halad egy Machine Learning Studio (klasszikus) modell egy kísérletből a webszolgáltatásba
+
+**a következőkre vonatkozik:** ![ nincs](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine learning](../overview-what-is-azure-ml.md) ![ Igen ](../../../includes/media/aml-applies-to-skus/yes.png) Machine learning Studio (klasszikus) 
+
 
 A Azure Machine Learning Studio (klasszikus) egy interaktív vászon, amely lehetővé teszi egy prediktív elemzési modellt jelölő ***kísérlet*** fejlesztését, futtatását, tesztelését és megismétlését. Számos különböző modul érhető el, amelyek a következőket tehetik:
 

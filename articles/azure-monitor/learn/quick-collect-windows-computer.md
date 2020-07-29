@@ -13,20 +13,20 @@ ms.topic: quickstart
 ms.date: 08/22/2019
 ms.author: bwren
 ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: d13a7cf87ba22dce96992c362f8b800ba79f6976
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 12d87d6d458d6cda21ca581337012e800a3d4bce
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539635"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324318"
 ---
 # <a name="collect-data-from-a-windows-computer-in-a-hybrid-environment-with-azure-monitor"></a>Adatok gyűjtése egy Windows rendszerű számítógépről hibrid környezetben Azure Monitor
 
-[Azure monitor](../overview.md) adatokat gyűjthet közvetlenül a környezetében található fizikai vagy virtuális Windows rendszerű számítógépekről egy log Analytics munkaterületre, amely részletes elemzést és korrelációt biztosít. A [log Analytics ügynök](../platform/log-analytics-agent.md) telepítése lehetővé teszi, hogy a Azure monitor adatközpontból vagy más felhőalapú környezetből gyűjtsön adatokat. Ez a rövid útmutató bemutatja, hogyan konfigurálhatja a windowsos számítógépekről történő adatgyűjtést néhány egyszerű lépésben. Az Azure Windows rendszerű virtuális gépekkel kapcsolatos további információkért lásd: [adatok gyűjtése az Azure Virtual Machines szolgáltatással kapcsolatban](../../azure-monitor/learn/quick-collect-azurevm.md).  
+[Azure monitor](../overview.md) adatokat gyűjthet közvetlenül a környezetében található fizikai vagy virtuális Windows rendszerű számítógépekről egy log Analytics munkaterületre, amely részletes elemzést és korrelációt biztosít. A [log Analytics ügynök](../platform/log-analytics-agent.md) telepítése lehetővé teszi, hogy a Azure monitor adatközpontból vagy más felhőalapú környezetből gyűjtsön adatokat. Ez a rövid útmutató bemutatja, hogyan konfigurálhatja a windowsos számítógépekről történő adatgyűjtést néhány egyszerű lépésben. Az Azure Windows rendszerű virtuális gépekkel kapcsolatos további információkért lásd: [adatok gyűjtése az Azure Virtual Machines szolgáltatással kapcsolatban](./quick-collect-azurevm.md).  
 
-A támogatott konfiguráció megismeréséhez tekintse meg a [támogatott Windows operációs rendszerek](../../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems) és [hálózati tűzfal konfigurálása](../../azure-monitor/platform/log-analytics-agent.md#network-requirements)című témakört.
+A támogatott konfiguráció megismeréséhez tekintse meg a [támogatott Windows operációs rendszerek](../platform/log-analytics-agent.md#supported-windows-operating-systems) és [hálózati tűzfal konfigurálása](../platform/log-analytics-agent.md#network-requirements)című témakört.
  
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 ## <a name="sign-in-to-azure-portal"></a>Bejelentkezés az Azure portálra
 
@@ -142,7 +142,7 @@ Most, hogy engedélyezte az adatgyűjtést, futtasson egy egyszerű naplót, hog
 
     ![Log Analytics naplóbeli keresés eredménye](media/quick-collect-azurevm/log-analytics-search-perf.png)
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs szüksége rájuk, távolítsa el az ügynököt a számítógépről, és törölje a Log Analytics munkaterületet.  
 
@@ -158,7 +158,7 @@ A korábban létrehozott Log Analytics munkaterület törléséhez válassza ki 
 
 ![Log Analytics munkaterület törlése](media/quick-collect-azurevm/log-analytics-portal-delete-resource.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy operatív és teljesítményadatokat gyűjt a Windows rendszerű számítógépéről, könnyedén megkezdheti az összegyűjtött adatok feltárását, elemzését és *kezelését.*  
 
@@ -166,3 +166,4 @@ Az adatmegtekintés és-elemzés megismeréséhez folytassa az oktatóanyagot:
 
 > [!div class="nextstepaction"]
 > [Adatok megtekintése és elemzése a Log Analyticsben](../log-query/get-started-portal.md)
+

@@ -5,17 +5,18 @@ description: Megtudhatja, hogyan helyezheti üzembe a Azure Machine Learning mod
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
+ms.topic: conceptual
+ms.custom: how-to
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/12/2020
-ms.openlocfilehash: 44c197b7d9935a7b0631c6cbcd96fde783c2fffe
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 6ad6ca72f0861324a10e93a1eadbdc11c6104574
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087265"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320969"
 ---
 # <a name="deploy-a-model-to-azure-container-instances"></a>Modell üzembe helyezése Azure Container Instances
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -26,6 +27,11 @@ Ismerje meg, hogyan helyezhet üzembe egy modellt webszolgáltatásként a Azure
 - A fejlesztés alatt álló modellt tesztel. 
 
 Az ACI-ra vonatkozó kvóta-és területi elérhetőséggel kapcsolatos információkért lásd: a [kvóták és a régió rendelkezésre állása Azure Container instances](https://docs.microsoft.com/azure/container-instances/container-instances-quotas) cikkben.
+
+> [!IMPORTANT]
+> Javasoljuk, hogy a webszolgáltatásba való üzembe helyezés előtt helyileg végezzen hibakeresést, további információ: [helyi hibakeresés](https://docs.microsoft.com/azure/machine-learning/how-to-troubleshoot-deployment#debug-locally)
+>
+> Azure Machine Learning- [központi telepítés helyi jegyzetfüzetre című témakört](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/deploy-to-local) is használhatja.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

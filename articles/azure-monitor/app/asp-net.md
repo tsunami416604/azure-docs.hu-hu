@@ -3,16 +3,16 @@ title: Webalkalmazás-elemzés beállítása az ASP.NET-hez az Azure Application
 description: Konfigurálhatja a helyszíni vagy az Azure-ban üzemeltetett ASP.NET-webhely teljesítmény-, rendelkezésre állási és felhasználói viselkedési elemzési eszközeit.
 ms.topic: conceptual
 ms.date: 05/08/2019
-ms.openlocfilehash: 7dd60be0a3f2ee7e1a0d306fa007bed166746115
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4e51fb43a9e088c991af2132b6a5d2257da8d78a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84886835"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324216"
 ---
 # <a name="set-up-application-insights-for-your-aspnet-website"></a>Az Application Insights beállítása az ASP.NET-webhelyhez
 
-Ez az eljárás beállítja, hogy az ASP.NET webapp telemetriát küldjön az [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) szolgáltatásnak. Az eljárás a saját helyszíni IIS-kiszolgálón vagy a felhőben futtatott ASP.NET-alkalmazásokon használható. Diagramokat és hatékony lekérdezési nyelvet biztosít, amelyek révén jobban megismerheti az alkalmazás működését, és hogy a felhasználók minként használják, valamint automatikus riasztásokat kaphat a meghibásodásokkal és a teljesítményproblémákkal kapcsolatban. Számos fejlesztő már így is rendkívül hasznosnak tartja ezeket a funkciókat, azonban a telemetria szükség esetén bővíthető és testre is szabható.
+Ez az eljárás beállítja, hogy az ASP.NET webapp telemetriát küldjön az [Azure Application Insights](./app-insights-overview.md) szolgáltatásnak. Az eljárás a saját helyszíni IIS-kiszolgálón vagy a felhőben futtatott ASP.NET-alkalmazásokon használható. Diagramokat és hatékony lekérdezési nyelvet biztosít, amelyek révén jobban megismerheti az alkalmazás működését, és hogy a felhasználók minként használják, valamint automatikus riasztásokat kaphat a meghibásodásokkal és a teljesítményproblémákkal kapcsolatban. Számos fejlesztő már így is rendkívül hasznosnak tartja ezeket a funkciókat, azonban a telemetria szükség esetén bővíthető és testre is szabható.
 
 A telepítés mindössze néhány kattintással végrehajtható a Visual Studióban. A szolgáltatás díjmentesen is használható, ha a telemetria mennyiségét korlátozza. Ez a funkció lehetővé teszi a kísérletezést és hibakeresést, illetve a nem sok felhasználóval rendelkező helyek figyelését. Ha úgy dönt, hogy belevág, és az éles webhelyét is figyelni fogja, a későbbiekben könnyen emelhető a korlát.
 
@@ -46,7 +46,7 @@ Válassza az első **lépések**lehetőséget.
 
 Ha szeretné beállítani az erőforráscsoportot vagy az adatok tárolásának helyét, kattintson a **Configure settings** (Beállítások konfigurálása) lehetőségre. Az erőforráscsoportok az adatokhoz való hozzáférés szabályozásához használhatóak. Ha például több alkalmazása is van, amelyek egy adott rendszer részét képezik, azok Application Insights-adatait ugyanabba az erőforráscsoportba helyezheti.
 
- Kattintson a **Register** (Regisztrálás) elemre.
+ Válassza a **Regisztráció** lehetőséget.
 
 ![Képernyőkép az alkalmazásregisztrációs szakaszról az Application Insights oldalon](./media/asp-net/00005-register-ed.png)
 
@@ -54,7 +54,7 @@ Ha szeretné beállítani az erőforráscsoportot vagy az adatok tárolásának 
 
  A telemetria az [Azure Portalra](https://portal.azure.com) lesz küldve a hibakeresés során és az alkalmazás közzététele után is.
 > [!NOTE]
-> Ha a hibakeresés során nem szeretne telemetriát küldeni a portálra, adja hozzá az Application Insights SDK-t az alkalmazáshoz, de ne konfiguráljon erőforrást a portálon. A telemetria a hibakeresés során a Visual Studióban lesz megtekinthető. Később visszatérhet erre a konfigurációs oldalra, vagy megvárhatja az alkalmazás üzembe helyezését, és [bekapcsolhatja a telemetriát a futtatás során](../../azure-monitor/app/status-monitor-v2-overview.md).
+> Ha a hibakeresés során nem szeretne telemetriát küldeni a portálra, adja hozzá az Application Insights SDK-t az alkalmazáshoz, de ne konfiguráljon erőforrást a portálon. A telemetria a hibakeresés során a Visual Studióban lesz megtekinthető. Később visszatérhet erre a konfigurációs oldalra, vagy megvárhatja az alkalmazás üzembe helyezését, és [bekapcsolhatja a telemetriát a futtatás során](./status-monitor-v2-overview.md).
 
 ## <a name="step-2-run-your-app"></a><a name="run"></a> 2. lépés: Az alkalmazás futtatása
 Futtassa az alkalmazást az F5 billentyűvel. Nyisson meg több lapot, hogy létrejöjjön valamennyi telemetria.
@@ -77,7 +77,7 @@ A Visual Studio Application Insights keresőablakában az alkalmazásából szá
 > [!Tip]
 > Ha nem jelennek meg adatok, ellenőrizze, hogy megfelelő-e az időtartomány, majd kattintson a Search (Keresés) ikonra.
 
-[További tudnivalók az Application Insights-eszközökről a Visual Studióban](../../azure-monitor/app/visual-studio.md).
+[További tudnivalók az Application Insights-eszközökről a Visual Studióban](./visual-studio.md).
 
 <a name="monitor"></a>
 ### <a name="see-telemetry-in-web-portal"></a>Telemetria megtekintése a webportálon
@@ -93,14 +93,14 @@ A portál az alkalmazásából származó telemetriai adatok nézetével nyílik
 A portálon az egyik csempére vagy diagramra kattintva további részleteket tekinthet meg.
 
 ## <a name="step-4-publish-your-app"></a>4. lépés: Az alkalmazás közzététele
-Tegye közzé alkalmazását az IIS-kiszolgálón vagy az Azure-on. Az [Élő mérőszámok streammel](../../azure-monitor/app/live-stream.md) ellenőrizheti, hogy minden rendben működik-e.
+Tegye közzé alkalmazását az IIS-kiszolgálón vagy az Azure-on. Az [Élő mérőszámok streammel](./live-stream.md) ellenőrizheti, hogy minden rendben működik-e.
 
 A telemetria a Application Insights portálon épül fel, ahol nyomon követheti a metrikákat, és megkeresheti a telemetria. A hatékony [Kusto lekérdezési nyelvet](/azure/kusto/query/) használhatja a használat és a teljesítmény elemzéséhez, vagy adott események megtalálásához is.
 
-Továbbra is elemezheti a telemetria a [Visual Studióban](../../azure-monitor/app/visual-studio.md), olyan eszközökkel, mint a diagnosztikai keresés és a [trendek](../../azure-monitor/app/visual-studio-trends.md).
+Továbbra is elemezheti a telemetria a [Visual Studióban](./visual-studio.md), olyan eszközökkel, mint a diagnosztikai keresés és a [trendek](./visual-studio-trends.md).
 
 > [!NOTE]
-> Ha az alkalmazása elég telemetriát küld a [szabályozási korlát](../../azure-monitor/app/pricing.md#limits-summary) eléréséhez, az automatikus [mintavételezés](../../azure-monitor/app/sampling.md) bekapcsol. A mintavételezés csökkenti az alkalmazásból küldött telemetria mennyiségét, míg a korrelatív adatokat diagnosztikai célból megőrzi.
+> Ha az alkalmazása elég telemetriát küld a [szabályozási korlát](./pricing.md#limits-summary) eléréséhez, az automatikus [mintavételezés](./sampling.md) bekapcsol. A mintavételezés csökkenti az alkalmazásból küldött telemetria mennyiségét, míg a korrelatív adatokat diagnosztikai célból megőrzi.
 >
 >
 
@@ -120,27 +120,28 @@ Ha az ApplicationInsights.config fájlt testreszabta, mentse el egy példányát
 
 További témaköröket is elolvashat, ha a következők érdeklik:
 
-* [Webalkalmazás beállítása futási időben](../../azure-monitor/app/monitor-performance-live-website-now.md)
-* [Azure Cloud Services](../../azure-monitor/app/cloudservices.md)
+* [Webalkalmazás beállítása futási időben](./monitor-performance-live-website-now.md)
+* [Azure Cloud Services](./cloudservices.md)
 
 ### <a name="more-telemetry"></a>További telemetria
 
-* **[Böngésző és oldalbetöltési adatok](../../azure-monitor/app/javascript.md)** – Kódrészlet beszúrása a weboldalakra.
-* **[Részletesebb függőség- és kivételfigyelés](../../azure-monitor/app/monitor-performance-live-website-now.md)** – Állapotfigyelő telepítése a kiszolgálón.
-* A felhasználói műveletek számlálására, időpontjára vagy mérésére szolgáló **[Egyéni események kódolása](../../azure-monitor/app/api-custom-events-metrics.md)** .
-* **[Naplóadatok lekérése](../../azure-monitor/app/asp-net-trace-logs.md)** – Naplóadatok összevetése a telemetriával.
+* **[Böngésző és oldalbetöltési adatok](./javascript.md)** – Kódrészlet beszúrása a weboldalakra.
+* **[Részletesebb függőség- és kivételfigyelés](./monitor-performance-live-website-now.md)** – Állapotfigyelő telepítése a kiszolgálón.
+* A felhasználói műveletek számlálására, időpontjára vagy mérésére szolgáló **[Egyéni események kódolása](./api-custom-events-metrics.md)** .
+* **[Naplóadatok lekérése](./asp-net-trace-logs.md)** – Naplóadatok összevetése a telemetriával.
 
 ### <a name="analysis"></a>Elemzés
 
-* **[Az Application Insights használata a Visual Studióban](../../azure-monitor/app/visual-studio.md)**<br/>A telemetriával végzett hibakereséssel, diagnosztikai kereséssel és a kódig való részletezés lefúrással kapcsolatos információkat tartalmaz.
-* **[Elemzés](../../azure-monitor/log-query/get-started-portal.md)** – Erőteljes lekérdezési nyelv.
+* **[Az Application Insights használata a Visual Studióban](./visual-studio.md)**<br/>A telemetriával végzett hibakereséssel, diagnosztikai kereséssel és a kódig való részletezés lefúrással kapcsolatos információkat tartalmaz.
+* **[Elemzés](../log-query/get-started-portal.md)** – Erőteljes lekérdezési nyelv.
 
 ### <a name="alerts"></a>Riasztások
 
-* [Rendelkezésre állási tesztek](../../azure-monitor/app/monitor-web-app-availability.md): Hozzon létre teszteket, hogy megbizonyosodjon róla, oldala látható a weben.
-* [Intelligens diagnosztika](../../azure-monitor/app/proactive-diagnostics.md): Ezek a tesztek automatikusan futnak, a beállításukhoz semmit sem kell tennie. Értesítést kap, ha az alkalmazásában szokatlanul magas a meghiúsult kérelmek száma.
-* [Metrikai riasztások](../../azure-monitor/platform/alerts-log.md): riasztások beállítása, amely figyelmezteti, ha egy metrika átlépi a küszöbértéket. Az alkalmazás kódjába beépített egyedi metrikákhoz is állíthat be riasztásokat.
+* [Rendelkezésre állási tesztek](./monitor-web-app-availability.md): Hozzon létre teszteket, hogy megbizonyosodjon róla, oldala látható a weben.
+* [Intelligens diagnosztika](./proactive-diagnostics.md): Ezek a tesztek automatikusan futnak, a beállításukhoz semmit sem kell tennie. Értesítést kap, ha az alkalmazásában szokatlanul magas a meghiúsult kérelmek száma.
+* [Metrikai riasztások](../platform/alerts-log.md): riasztások beállítása, amely figyelmezteti, ha egy metrika átlépi a küszöbértéket. Az alkalmazás kódjába beépített egyedi metrikákhoz is állíthat be riasztásokat.
 
 ### <a name="automation"></a>Automation
 
-* [Application Insights-erőforrások létrehozásának automatizálása](../../azure-monitor/app/powershell.md)
+* [Application Insights-erőforrások létrehozásának automatizálása](./powershell.md)
+

@@ -11,11 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dfdfcda0ce466299d57f79ba1e60a96309078587
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: be80ff95cc03f8cf2a08e9ce92146fe5028dcb9c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84014349"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87275272"
 ---
 # <a name="conditional-access-cloud-apps-or-actions"></a>Feltételes hozzáférés: felhőalapú alkalmazások vagy műveletek
 
@@ -116,6 +117,7 @@ A Microsoft-alkalmazások mellett a rendszergazdák bármilyen Azure AD-beli reg
 - [A gyűjteményből hozzáadott alkalmazások](../manage-apps/add-application-portal.md)
 - [A katalógusban nem szereplő egyéni alkalmazások](../manage-apps/add-non-gallery-app.md)
 - [Az App Delivery Controllers és Networks szolgáltatáson keresztül közzétett örökölt alkalmazások](../manage-apps/secure-hybrid-access.md)
+- [Jelszó-alapú egyszeri Singet](../manage-apps/configure-password-single-sign-on-non-gallery-applications.md) használó alkalmazások
 
 > [!NOTE]
 > Mivel a feltételes hozzáférési házirend olyan szolgáltatáshoz való hozzáférés követelményeit állítja be, amely nem alkalmazható az ügyfél (nyilvános/natív) alkalmazásra. Más szóval a házirend nincs beállítva közvetlenül egy ügyfélen (nyilvános/natív) alkalmazáson, de a rendszer akkor alkalmazza, amikor egy ügyfél meghívja a szolgáltatást. A SharePoint szolgáltatásban beállított házirendek például a SharePoint szolgáltatást hívó ügyfelekre érvényesek. Az Exchange-ben beállított házirend az e-mailek Outlook-ügyfél használatával való elérésére tett kísérletre vonatkozik. Ezért nem érhetők el az ügyfél (nyilvános/natív) alkalmazások a Cloud apps választóban való kiválasztáshoz, és a feltételes hozzáférés beállítás nem érhető el a bérlőben regisztrált ügyfél (nyilvános/natív) alkalmazás Alkalmazásbeállítások esetében. 

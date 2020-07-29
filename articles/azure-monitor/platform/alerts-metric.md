@@ -6,12 +6,12 @@ ms.author: harelbr
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.subservice: alerts
-ms.openlocfilehash: b535cda8fe7d98748eb0657a599a61ed1f8549d2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c040958d9518485bc5d583fc01aedd50d5c6e57a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87045362"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321122"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>Metrikariasztások létrehozása, megtekintése és kezelése az Azure Monitorral
 
@@ -32,7 +32,7 @@ Az alábbi eljárás azt ismerteti, hogyan hozhat létre metrikus riasztási sza
 
 3. Kattintson a **cél kiválasztása**lehetőségre, a betöltött környezet ablaktáblán válassza ki azt a cél erőforrást, amelyre a riasztást szeretné használni. A figyelni kívánt erőforrás megtalálásához használja az **előfizetés** és az **Erőforrás típusa** legördülő listát. Az erőforrást a keresősáv használatával is megkeresheti.
 
-4. Ha a kiválasztott erőforrás metrikákkal rendelkezik, akkor a jobb alsó sarokban található **elérhető jelek** tartalmazzák a metrikákat is. Ebben a [cikkben](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported)a metrikus riasztásokhoz támogatott erőforrástípusok teljes listáját tekintheti meg.
+4. Ha a kiválasztott erőforrás metrikákkal rendelkezik, akkor a jobb alsó sarokban található **elérhető jelek** tartalmazzák a metrikákat is. Ebben a [cikkben](./alerts-metric-near-real-time.md#metrics-and-dimensions-supported)a metrikus riasztásokhoz támogatott erőforrástípusok teljes listáját tekintheti meg.
 
 5. A cél erőforrás kiválasztása után kattintson a **feltétel hozzáadása**elemre.
 
@@ -136,7 +136,8 @@ Az előző szakasz ismerteti, hogyan hozhat létre, tekinthet meg és kezelhet m
 
 ## <a name="next-steps"></a>További lépések
 
-- [Metrikai riasztások létrehozása Azure Resource Manager-sablonok használatával](../../azure-monitor/platform/alerts-metric-create-templates.md).
+- [Metrikai riasztások létrehozása Azure Resource Manager-sablonok használatával](./alerts-metric-create-templates.md).
 - A [metrikai riasztások működésének megismerése](alerts-metric-overview.md).
 - [Megtudhatja, hogyan működik a metrikák riasztásai a dinamikus küszöbértékek feltételével](alerts-dynamic-thresholds.md).
-- [A webes Hook sémájának ismertetése metrikus riasztásokhoz](../../azure-monitor/platform/alerts-metric-near-real-time.md#payload-schema)
+- [A webes Hook sémájának ismertetése metrikus riasztásokhoz](./alerts-metric-near-real-time.md#payload-schema)
+

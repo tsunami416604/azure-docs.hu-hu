@@ -10,12 +10,12 @@ ms.custom:
 - seo-python-october2019
 - cli-validate
 - tracking-python
-ms.openlocfilehash: b4968d16f9ec2e034bde653215677ad40c6b983f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 718c9a62cc867e5d65cc3c79e78ce3282f1037c7
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073805"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285849"
 ---
 # <a name="tutorial-deploy-a-django-web-app-with-postgresql-in-azure-app-service"></a>Oktatóanyag: Django-webalkalmazás üzembe helyezése a PostgreSQL-sel Azure App Service
 
@@ -132,7 +132,7 @@ az postgres up --resource-group DjangoPostgres-tutorial-rg --location westus2 --
 
 - Cserélje le az értékét az *\<postgres-server-name>* összes Azure-beli egyedi névre (a kiszolgálói végpont `https://\<postgres-server-name>.postgres.database.azure.com` ). A megfelelő minta a vállalat nevének és egy másik egyedi érték kombinációjának használata.
 - És rendszer esetén a *\<admin-username>* *\<admin-password>* hitelesítő adatok megadásával hozzon létre egy rendszergazdai felhasználót ehhez a postgres-kiszolgálóhoz.
-- Az itt használt B_Gen4_1 (alapszintű, Gen4, 1 Core) [árképzési szint](/postgresql/concepts-pricing-tiers) a legkevésbé költséges. Éles adatbázisok esetében hagyja ki az `--sku-name` argumentumot, hogy ehelyett a GP_Gen5_2 (általános célú, Gen 5, 2 magok) szintet használja.
+- Az itt használt B_Gen4_1 (alapszintű, Gen4, 1 Core) [árképzési szint](../../postgresql/concepts-pricing-tiers.md) a legkevésbé költséges. Éles adatbázisok esetében hagyja ki az `--sku-name` argumentumot, hogy ehelyett a GP_Gen5_2 (általános célú, Gen 5, 2 magok) szintet használja.
 
 Ez a parancs a következő műveleteket hajtja végre, ami eltarthat néhány percig:
 
@@ -402,7 +402,7 @@ Alapértelmezés szerint a portál az alkalmazás **Áttekintés** oldalát jele
 
 ![A Python Django-alkalmazás kezelése a Azure Portal áttekintés lapján](./media/tutorial-python-postgresql-app/manage-django-app-in-app-services-in-the-azure-portal.png)
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha meg szeretné tartani az alkalmazást, vagy folytassa a következő oktatóanyaggal, ugorjon a [következő lépésekre](#next-steps). Ellenkező esetben a folyamatos költségek elkerülése érdekében törölheti az ehhez az oktatóanyaghoz tartozó erőforráscsoport-létrehozási csoportot:
 

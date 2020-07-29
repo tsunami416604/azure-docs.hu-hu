@@ -7,17 +7,18 @@ manager: craigg
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/07/2018
-ms.openlocfilehash: f9b3cde8ff0f3a1b97d53a1de72cb6c5c48a800c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5c2de10f5fbacd689a9ae92eb1f7295cccea3fb6
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76289781"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87279261"
 ---
 # <a name="azure-database-for-postgresql-migration-partners"></a>Azure Database for PostgreSQL áttelepítési partnerek
 A Azure Database for PostgreSQL-megoldás széles körű támogatásához számos piacvezető partner és eszköz közül választhat. Ez a cikk a Azure Database for PostgreSQLt támogató áttelepítési megoldásokkal rendelkező Microsoft-partnereket emeli ki.
 
 ## <a name="migration-partners"></a>Áttelepítési partnerek
-| Partner | Description | Hivatkozások | Videók |
+| Partner | Leírás | Hivatkozások | Videók |
 | --- | --- | --- | --- |
 | ![SNP-technológiák][1] |**SNP-technológiák**<br>Az SNP-technológiák egy felhőalapú szolgáltató, amely biztonságos és megbízható megoldásokat kínál a jövőbe tartozó vállalkozások számára. A vállalat hisz abban, hogy valódi értéket generál a vállalkozása számára. A gondolattól a végrehajtásig az SNP-technológiák közös célt szolgálnak az ügyfelekkel, hogy a befektetésük előnyre legyen kialakítva.|[Webhely][snp_website]<br>[Twitter][snp_twitter]<br>[Kapcsolattartó][snp_contact] | |
 | ![DB legjobb technológiák, LLC][2] |**DB legjobb technológiák, LLC**<br>Az adatbázis a legjobban segíti az ügyfeleket a felügyelt Azure Database-szolgáltatásokból. A vállalat számos lehetőséget kínál az első lépések megtételére, beleértve a [jövőbeli állapotú építészeti kialakítást](https://na01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.dbbest.com%2Fservices%2Ffuture-state-architectural-design%2F&data=02%7C01%7Cjtoland%40microsoft.com%7C7311aa2024894a80eff208d5cfd45696%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636643433261194557&sdata=SCr3kseFvcU7mI1%2FZt7K2elXAqLY%2FyL6AO944QiWoLg%3D&reserved=0), [adatkezelés Microsoft adatplatform-optimalizálást](https://www.dbbest.com/services/data-management-optimization-for-microsoft-data-platform/), [Microsoft Azure üzembe helyezési tervezési szolgáltatásokat](https://www.dbbest.com/services/microsoft-azure-deployment-planning-services)és az [Azure adatplatform-készültségi képzését](https://www.dbbest.com/services/azure-data-platform-readiness-training).|[Webhely][dbbest_website]<br>[Twitter][dbbest_twitter]<br>[YouTube][dbbest_youtube]<br>[Kapcsolattartó][dbbest_contact] | |
@@ -27,7 +28,7 @@ A Azure Database for PostgreSQL-megoldás széles körű támogatásához számo
 | ![Pactera][6] |**Pactera**<br>A Pactera egy globális cég, amely tanácsadási, digitális, technológiai és üzemeltetési szolgáltatásokat kínál a világ vezető vállalkozásai számára. A mérnöki gyökerektől a digitális átalakításban a legújabbhoz képest versenyképes peremhálózatot biztosítanak ügyfeleinek. A bevált módszertanok és eszközök biztosítják, hogy az adatai biztonságosak, hitelesek és pontosak legyenek.|[Webhely][pactera_website]<br>[Twitter][pactera_twitter]<br>[Kapcsolattartó][pactera_contact] | |
 
 ## <a name="next-steps"></a>További lépések
-Ha többet szeretne megtudni a Microsoft egyéb partnereiről, tekintse meg a [Microsoft partner webhelyét](https://partner.microsoft.com/en-US/).
+Ha többet szeretne megtudni a Microsoft egyéb partnereiről, tekintse meg a [Microsoft partner webhelyét](https://partner.microsoft.com/).
 
 <!--Image references-->
 [1]: ./media/partner-migration-postgresql/SNP_Logo.png

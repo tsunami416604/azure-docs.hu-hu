@@ -3,12 +3,12 @@ title: Szűrés és előfeldolgozás a Application Insights SDK-ban | Microsoft 
 description: Telemetria-processzorok és telemetria-inicializálók írása az SDK-hoz a telemetria a Application Insights portálra való elküldése előtt.
 ms.topic: conceptual
 ms.date: 11/23/2016
-ms.openlocfilehash: adaada3589fd0db1c7d47b788ad50d570defe780
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a16dc7bc9f6f3c49640d320fbfbffaa7acbed6b9
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87014626"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323213"
 ---
 # <a name="filter-and-preprocess-telemetry-in-the-application-insights-sdk"></a>Telemetria szűrése és előfeldolgozása az Application Insights SDK-ban
 
@@ -17,7 +17,7 @@ A Application Insights SDK beépülő moduljait úgy is megírhatja és konfigur
 * A [mintavétel](sampling.md) csökkenti a telemetria mennyiségét anélkül, hogy befolyásolná a statisztikát. Összekapcsolja a kapcsolódó adatpontokat, így a probléma diagnosztizálásakor megtekintheti őket. A portálon a teljes számlálás megszorozza a mintavételezéssel.
 * A telemetria processzorokkal történő szűréssel kiszűrheti a telemetria az SDK-ban, mielőtt elküldi a kiszolgálónak. Csökkentheti például a telemetria mennyiségét a robotoktól érkező kérések kizárásával. A szűrés a mintavételnél nagyobb alapszintű megközelítés a forgalom csökkentése érdekében. Így hatékonyabban vezérelheti a továbbított adatokat, de hatással lehet a statisztikára. Kiszűrheti például az összes sikeres kérést.
 * A telemetria inicializálók az alkalmazásból eljuttatott bármely telemetria [hozzáadhatnak vagy módosíthatnak tulajdonságokat](#add-properties) , beleértve a standard modulok telemetria is. Hozzáadhat például számított értékeket vagy verziószámokat, amelyekkel szűrheti a portálon található adatok mennyiségét.
-* [Az SDK API](../../azure-monitor/app/api-custom-events-metrics.md) egyéni események és metrikák küldésére szolgál.
+* [Az SDK API](./api-custom-events-metrics.md) egyéni események és metrikák küldésére szolgál.
 
 Előkészületek:
 
@@ -34,7 +34,7 @@ A telemetria szűréséhez írja be a telemetria-processzort, és regisztrálja 
 > [!WARNING]
 > Az SDK-ból a processzorok használatával elküldött telemetria szűrésével eldöntheti a portálon megjelenő statisztikákat, és megnehezíti a kapcsolódó elemek követését.
 >
-> Ehelyett érdemes [mintavételezést](../../azure-monitor/app/sampling.md)használni.
+> Ehelyett érdemes [mintavételezést](./sampling.md)használni.
 >
 >
 
@@ -352,7 +352,7 @@ Közvetlenül a portálról kapott inicializálási kód után szúrjon be egy t
 </script>
 ```
 
-A telemetria elemben elérhető nem egyéni tulajdonságok összegzését lásd: [Application Insights export adatmodell](../../azure-monitor/app/export-data-model.md).
+A telemetria elemben elérhető nem egyéni tulajdonságok összegzését lásd: [Application Insights export adatmodell](./export-data-model.md).
 
 Tetszőleges számú inicializáló hozzáadhat. Ezeket a rendszer a hozzáadásuk sorrendjében hívja meg.
 
@@ -542,7 +542,7 @@ Mi a különbség a telemetria processzorok és a telemetria inicializálók kö
 
 ## <a name="reference-docs"></a>Dokumentációs dokumentumok
 
-* [Az API áttekintése](../../azure-monitor/app/api-custom-events-metrics.md)
+* [Az API áttekintése](./api-custom-events-metrics.md)
 * [ASP.NET-hivatkozás](/previous-versions/azure/dn817570(v=azure.100))
 
 ## <a name="sdk-code"></a>SDK-kód 
@@ -552,6 +552,7 @@ Mi a különbség a telemetria processzorok és a telemetria inicializálók kö
 * [JavaScript SDK](https://github.com/Microsoft/ApplicationInsights-JS)
 
 ## <a name="next-steps"></a><a name="next"></a>További lépések
-* [Események és naplók keresése](../../azure-monitor/app/diagnostic-search.md)
-* [Mintavételezés](../../azure-monitor/app/sampling.md)
+* [Események és naplók keresése](./diagnostic-search.md)
+* [mintavételi](./sampling.md)
 * [Hibaelhárítás](../faq.md)
+

@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/29/2020
-ms.openlocfilehash: afcad5df1072f2eb474e54aaeca866735a12c5c8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 340eb1a983f074a5ab934a30c55649852ec08b62
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84424465"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325151"
 ---
 # <a name="wire-data-20-preview-solution-in-azure-monitor"></a>Wire Data 2.0 (előzetes verzió) megoldás a Azure Monitor
 
@@ -55,10 +56,10 @@ A Wire Data a Microsoft függőségi ügynöktől kapja az adatokat. A Dependenc
 
 | **Csatlakoztatott forrás** | **Támogatott** | **Leírás** |
 | --- | --- | --- |
-| Windows-ügynökök | Yes | A Wire Data adatok elemez és gyűjt a Windows rendszerű ügynökszámítógépekről. <br><br> A Windows rendszerhez készült [log Analytics ügynökön](../platform/agent-windows.md)kívül a Windows-ügynökök a Microsoft függőségi ügynököt is igénylik. A támogatott operációsrendszer-verziók teljes listáját megtekintheti a [támogatott operációs rendszerek](vminsights-enable-overview.md#supported-operating-systems) szakaszban. |
-| Linux-ügynökök | Yes | A Wire Data adatokat elemez és gyűjt a Linux rendszerű ügynökszámítógépekről.<br><br> A [Linux rendszerhez készült log Analytics-ügynökön](../learn/quick-collect-linux-computer.md)kívül a Linux-ügynökök igénylik a Microsoft függőségi ügynököt. A támogatott operációsrendszer-verziók teljes listáját megtekintheti a [támogatott operációs rendszerek](vminsights-enable-overview.md#supported-operating-systems) szakaszban. |
-| System Center Operations Manage felügyeleti csoport | Yes | A Wire Data adatokat elemez és gyűjt az olyan Windows- és Linux-ügynököktől, amelyek egy csatlakoztatott [System Center Operations Manager felügyeleti csoporthoz](../platform/om-agents.md) tartoznak. <br><br> Szükség van egy közvetlen kapcsolódásra a System Center Operations Manager ügynök számítógépéről Azure Monitorre. |
-| Azure Storage-fiók | No | A Wire Data ügynökszámítógépekről gyűjt adatokat, így az Azure Storage-ből nem tud adatokat gyűjteni. |
+| Windows-ügynökök | Igen | A Wire Data adatok elemez és gyűjt a Windows rendszerű ügynökszámítógépekről. <br><br> A Windows rendszerhez készült [log Analytics ügynökön](../platform/agent-windows.md)kívül a Windows-ügynökök a Microsoft függőségi ügynököt is igénylik. A támogatott operációsrendszer-verziók teljes listáját megtekintheti a [támogatott operációs rendszerek](vminsights-enable-overview.md#supported-operating-systems) szakaszban. |
+| Linux-ügynökök | Igen | A Wire Data adatokat elemez és gyűjt a Linux rendszerű ügynökszámítógépekről.<br><br> A [Linux rendszerhez készült log Analytics-ügynökön](../learn/quick-collect-linux-computer.md)kívül a Linux-ügynökök igénylik a Microsoft függőségi ügynököt. A támogatott operációsrendszer-verziók teljes listáját megtekintheti a [támogatott operációs rendszerek](vminsights-enable-overview.md#supported-operating-systems) szakaszban. |
+| System Center Operations Manage felügyeleti csoport | Igen | A Wire Data adatokat elemez és gyűjt az olyan Windows- és Linux-ügynököktől, amelyek egy csatlakoztatott [System Center Operations Manager felügyeleti csoporthoz](../platform/om-agents.md) tartoznak. <br><br> Szükség van egy közvetlen kapcsolódásra a System Center Operations Manager ügynök számítógépéről Azure Monitorre. |
+| Azure Storage-fiók | Nem | A Wire Data ügynökszámítógépekről gyűjt adatokat, így az Azure Storage-ből nem tud adatokat gyűjteni. |
 
 Windows rendszeren a Microsoft monitoring Agent (MMA) szolgáltatást a System Center Operations Manager és a Azure Monitor egyaránt használja az adatok összegyűjtéséhez és elküldéséhez. A környezettől függően az ügynököt System Center Operations Manager ügynöknek, Log Analytics ügynöknek, az MMA-nak vagy a közvetlen ügynöknek nevezzük. System Center Operations Manager és Azure Monitor az MMA némileg eltérő verzióját nyújtják. Ezek a verziók az egyes jelentések System Center Operations Manager, Azure Monitor vagy mindkettőre használhatók.
 
@@ -166,7 +167,7 @@ A következő részben a Linux rendszeren futó függőségi ügynök támogatot
 
 A Wire Data megoldásnak a munkaterületekhez való konfigurálásához végezze el az alábbi lépéseket:
 
-1. Engedélyezze a Activity Log Analytics megoldást az [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.WireData2OMS?tab=Overview) -en, vagy használja a [figyelési megoldások hozzáadása a Solutions Galleryból](../../azure-monitor/insights/solutions.md)című témakörben ismertetett eljárást.
+1. Engedélyezze a Activity Log Analytics megoldást az [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.WireData2OMS?tab=Overview) -en, vagy használja a [figyelési megoldások hozzáadása a Solutions Galleryból](./solutions.md)című témakörben ismertetett eljárást.
 2. Telepítse a függőségi ügynököt minden olyan számítógépre, amelyen le szeretné kérni az adatgyűjtést. A függőségi ügynök nyomon követheti a kapcsolatokat az azonnali szomszédokkal, így előfordulhat, hogy nincs szüksége ügynökre minden számítógépen.
 
 > [!NOTE]
@@ -181,7 +182,7 @@ A függőségi ügynök telepítve van a Windows rendszerű számítógépeken I
 
 A következő lépésekkel telepítheti a függőségi ügynököt a Windows rendszerű számítógépekre:
 
-1. Telepítse a Log Analytics ügynököt az [adatok összegyűjtése a környezetben üzemeltetett Windows rendszerű számítógépekről](../../azure-monitor/platform/agent-windows.md)című témakör lépéseit követve.
+1. Telepítse a Log Analytics ügynököt az [adatok összegyűjtése a környezetben üzemeltetett Windows rendszerű számítógépekről](../platform/agent-windows.md)című témakör lépéseit követve.
 2. Töltse le a Windows-függőségi ügynököt az előző szakaszban található hivatkozás használatával, majd futtassa a következő paranccsal:`InstallDependencyAgent-Windows.exe`
 3. Az ügynök telepítéséhez kövesse a varázslót.
 4. Ha a függőségi ügynök nem indul el, ellenőrizze a naplókat a hibák részletes ismertetéséhez. Windows-ügynökök esetén a naplózási könyvtár a következő: %Programfiles%\Microsoft Dependency Agent\logs.
@@ -192,7 +193,7 @@ A parancssorból való telepítéshez a következő táblában leírt paraméter
 
 InstallDependencyAgent-Windows.exe /?
 
-| **Jelző** | **Leírás** |
+| **Jelölő** | **Leírás** |
 | --- | --- |
 | <code>/?</code> | A parancssori kapcsolók listájának lekérése. |
 | <code>/S</code> | Beavatkozás nélküli telepítés a felhasználónak szóló üzenetek nélkül. |
@@ -207,7 +208,7 @@ A függőségi ügynök Linux rendszerű számítógépekre van telepítve a Ins
 
 Az alábbi lépésekkel telepítheti a függőségi ügynököt az egyes Linux rendszerű számítógépekre:
 
-1. Telepítse a Log Analytics-ügynököt az [adatok gyűjtése a környezetben üzemeltetett Linux rendszerű számítógépekről](../../azure-monitor/learn/quick-collect-linux-computer.md#obtain-workspace-id-and-key)című témakör lépéseit követve.
+1. Telepítse a Log Analytics-ügynököt az [adatok gyűjtése a környezetben üzemeltetett Linux rendszerű számítógépekről](../learn/quick-collect-linux-computer.md#obtain-workspace-id-and-key)című témakör lépéseit követve.
 2. Töltse le a Linux-függőségi ügynököt az előző szakaszban található hivatkozásra kattintva, majd a következő paranccsal telepítse root-ként: sh InstallDependencyAgent-Linux64. bin
 3. Ha a függőségi ügynök nem indul el, ellenőrizze a naplókat a hibák részletes ismertetéséhez. A Linux-ügynökökön a naplókönyvtár a következő: /var/opt/microsoft/dependency-agent/log.
 
@@ -217,7 +218,7 @@ A telepítésjelzők listájának megtekintéséhez futtassa a `-help` jelzővel
 InstallDependencyAgent-Linux64.bin -help
 ```
 
-| **Jelző** | **Leírás** |
+| **Jelölő** | **Leírás** |
 | --- | --- |
 | <code>-help</code> | A parancssori kapcsolók listájának lekérése. |
 | <code>-s</code> | Beavatkozás nélküli telepítés a felhasználónak szóló üzenetek nélkül. |
@@ -225,7 +226,7 @@ InstallDependencyAgent-Linux64.bin -help
 
 A függőségi ügynök fájljai a következő könyvtárakba kerülnek:
 
-| **Files** | **Hely** |
+| **Fájlokat** | **Hely** |
 | --- | --- |
 | Alapvető fájlok | /opt/microsoft/dependency-agent |
 | Naplófájlok | /var/opt/microsoft/dependency-agent/log |
@@ -415,4 +416,5 @@ A bemeneti adatok minden típusához létrejön egy _WireData_ típusú rekord. 
 
 ## <a name="next-steps"></a>További lépések
 
-- [Keresés a naplókban](../../azure-monitor/log-query/log-query-overview.md) az átviteli adatokhoz kapcsolódó részletes keresési rekordok megtekintéséhez.
+- [Keresés a naplókban](../log-query/log-query-overview.md) az átviteli adatokhoz kapcsolódó részletes keresési rekordok megtekintéséhez.
+

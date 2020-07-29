@@ -1,6 +1,6 @@
 ---
-title: Kapcsolódás a Windows rendszerű virtuális asztalhoz a 2019-es verzió Androidról – Azure
-description: Kapcsolódás a Windows rendszerű virtuális asztalhoz az Android-ügyfél használatával.
+title: Kapcsolódás Windowsos virtuális asztalhoz (klasszikus) Androidról – Azure
+description: Kapcsolódás a Windows rendszerű virtuális asztalhoz (klasszikus) az Android-ügyfél használatával.
 services: virtual-desktop
 author: heidilohr
 ms.service: virtual-desktop
@@ -8,19 +8,19 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ccea4e39146500cb9d3796c4ca99725e2e2ac429
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: fd319c7a6b356052f91e779e2f2a67eff4c4b6de
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087152"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87270753"
 ---
-# <a name="connect-with-the-android-client"></a>Kapcsolódás az Android-ügyféllel
+# <a name="connect-to-windows-virtual-desktop-classic-with-the-android-client"></a>Kapcsolódás a Windows rendszerű virtuális asztalhoz (klasszikus) az Android-ügyféllel
 
 > A következőkre vonatkozik: Android 4,1 és újabb verziók, Chromebook a ChromeOS 53 és újabb verziókkal.
 
 >[!IMPORTANT]
->Ez a tartalom a Fall 2019 kiadásra vonatkozik, amely nem támogatja a Windows rendszerű virtuális asztali objektumokat Azure Resource Manager. Ha a Spring 2020 Update szolgáltatásban bevezetett Azure Resource Manager Windows rendszerű virtuális asztali objektumokat szeretne felügyelni, tekintse meg [ezt a cikket](../connect-android.md).
+>Ez a tartalom a Windows rendszerű virtuális asztali (klasszikus) verzióra vonatkozik, amely nem támogatja Azure Resource Manager Windows rendszerű virtuális asztali objektumokat. Ha Azure Resource Manager Windows rendszerű virtuális asztali objektumokat szeretne felügyelni, tekintse meg [ezt a cikket](../connect-android.md).
 
 >[!NOTE]
 > A Windows rendszerű virtuális asztali erőforrások az Android-ügyfélről való elérésének lehetősége jelenleg előzetes verzióban érhető el.

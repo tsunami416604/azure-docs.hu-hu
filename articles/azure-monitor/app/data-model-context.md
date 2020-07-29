@@ -4,11 +4,12 @@ description: Application Insights telemetria környezeti adatmodellje
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.reviewer: sergkanz
-ms.openlocfilehash: 8a2e3296643b13a54c4fceb11f044a2808cf2877
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 25ff7d92da5ea0a6aba84aad1cfc98e5295e151e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77671863"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322669"
 ---
 # <a name="telemetry-context-application-insights-data-model"></a>Telemetria kontextus: Application Insights adatmodell
 
@@ -38,14 +39,14 @@ Maximális hossz: 64
 
 ## <a name="operation-id"></a>Művelet azonosítója
 
-A gyökérszintű művelet egyedi azonosítója. Ez az azonosító lehetővé teszi, hogy több összetevőn keresztül csoportosítsa a telemetria. Részletekért lásd: [telemetria korreláció](../../azure-monitor/app/correlation.md) . A művelet azonosítóját egy kérelem vagy egy oldal nézet hozza létre. Az összes többi telemetria ezt a mezőt az azt tartalmazó kérelem vagy az oldal nézet értékére állítja be. 
+A gyökérszintű művelet egyedi azonosítója. Ez az azonosító lehetővé teszi, hogy több összetevőn keresztül csoportosítsa a telemetria. Részletekért lásd: [telemetria korreláció](./correlation.md) . A művelet azonosítóját egy kérelem vagy egy oldal nézet hozza létre. Az összes többi telemetria ezt a mezőt az azt tartalmazó kérelem vagy az oldal nézet értékére állítja be. 
 
 Maximális hossz: 128
 
 
 ## <a name="parent-operation-id"></a>Szülő műveleti azonosító
 
-Az telemetria elem közvetlen szülője egyedi azonosítója. Részletekért lásd: [telemetria korreláció](../../azure-monitor/app/correlation.md) .
+Az telemetria elem közvetlen szülője egyedi azonosítója. Részletekért lásd: [telemetria korreláció](./correlation.md) .
 
 Maximális hossz: 128
 
@@ -75,7 +76,7 @@ Maximális hossz: 64
 
 Névtelen felhasználói azonosító. Az alkalmazás végfelhasználóját jelöli. Ha a telemetria egy szolgáltatásból küldik, a felhasználói környezet arra a felhasználóra szól, aki kezdeményezte a műveletet a szolgáltatásban.
 
-A [mintavétel](../../azure-monitor/app/sampling.md) az egyik módszer, amellyel minimálisra csökkenthető a begyűjtött telemetria mennyisége. A mintavételezési algoritmus megkísérli az összes korrelált telemetria vagy annak mintavételezését. A rendszer névtelen felhasználói azonosítót használ a mintavételi pontszám generálásához. Így a névtelen felhasználói azonosítónak elég véletlenszerű értéknek kell lennie. 
+A [mintavétel](./sampling.md) az egyik módszer, amellyel minimálisra csökkenthető a begyűjtött telemetria mennyisége. A mintavételezési algoritmus megkísérli az összes korrelált telemetria vagy annak mintavételezését. A rendszer névtelen felhasználói azonosítót használ a mintavételi pontszám generálásához. Így a névtelen felhasználói azonosítónak elég véletlenszerű értéknek kell lennie. 
 
 Ha névtelen felhasználói azonosítót használ a Felhasználónév tárolására, a mező helytelenül van használva. Hitelesített felhasználói azonosító használata.
 
@@ -126,6 +127,7 @@ Maximális hossz: 256
 
 ## <a name="next-steps"></a>További lépések
 
-- Ismerje meg [, hogyan bővítheti és szűrheti a telemetria](../../azure-monitor/app/api-filtering-sampling.md).
+- Ismerje meg [, hogyan bővítheti és szűrheti a telemetria](./api-filtering-sampling.md).
 - Lásd: [adatmodell](data-model.md) Application Insights típusokhoz és adatmodellekhez.
-- Tekintse meg a szabványos környezeti tulajdonságok gyűjteményének [konfigurációját](../../azure-monitor/app/configuration-with-applicationinsights-config.md#telemetry-initializers-aspnet).
+- Tekintse meg a szabványos környezeti tulajdonságok gyűjteményének [konfigurációját](./configuration-with-applicationinsights-config.md#telemetry-initializers-aspnet).
+

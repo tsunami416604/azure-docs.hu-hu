@@ -9,12 +9,12 @@ ms.subservice: windows
 ms.date: 11/30/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: f6dd0792a764ef423f31131e80ab28a45f1fe4c3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c5bcc1f2de379eb9a8a49a2259533bcea33328d1
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86500293"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87265194"
 ---
 # <a name="tutorial-create-a-virtual-machine-scale-set-and-deploy-a-highly-available-app-on-windows-with-azure-powershell"></a>Oktatóanyag: Virtuálisgép-méretezési csoport létrehozása és magas rendelkezésre állású alkalmazás üzembe helyezése Windows rendszeren, az Azure PowerShell használatával
 A virtuálisgép-méretezési csoport lehetővé teszi azonos, automatikus skálázású virtuális gépek készletének üzembe helyezését és kezelését. A méretezési csoportba tartozó virtuális gépek számát manuálisan is méretezheti. A szabályokat az erőforrás-használat, például a processzor, a memória igénye vagy a hálózati forgalom alapján is megadhatja az autoskálázáshoz. Ebben az oktatóanyagban egy virtuálisgép-méretezési csoport üzembe helyezését mutatja be az Azure-ban, és megismerheti a következőket:
@@ -37,7 +37,7 @@ A virtuálisgép-méretezési csoport lehetővé teszi azonos, automatikus skál
 
 A virtuális gépek a méretezési csoportban igény szerint jönnek létre. Az automatikus skálázási szabályok megadásával beállíthatja, hogyan és mikor szeretne a virtuális gépeket hozzáadni vagy eltávolítani a méretezési csoportban. Ezek a szabályok olyan metrikák alapján aktiválódhatnak, mint a CPU-terhelés, a memóriahasználat és a hálózati forgalom.
 
-A méretezési csoportok legfeljebb 1000 virtuális gépek támogatására képesek, ha Azure platformrendszerképet használnak. A jelentős telepítési követelményekkel rendelkező, illetve a virtuális gépek jelentős testreszabását igénylő számítási feladatok esetén [egyéni rendszerkép létrehozására lehet szükség a virtuális gépekhez](tutorial-custom-images.md). Egyéni rendszerkép használatakor egy méretezési csoportban legfeljebb 300 virtuális gépet hozhat létre.
+A méretezési csoportok legfeljebb 1000 virtuális gépek támogatására képesek, ha Azure platformrendszerképet használnak. A jelentős telepítési követelményekkel rendelkező, illetve a virtuális gépek jelentős testreszabását igénylő számítási feladatok esetén [egyéni rendszerkép létrehozására lehet szükség a virtuális gépekhez](tutorial-custom-images.md). Egyéni rendszerkép használata esetén akár 600 virtuális gépet is létrehozhat egy méretezési csoporton belül.
 
 
 ## <a name="create-a-scale-set"></a>Méretezési csoport létrehozása
@@ -271,7 +271,7 @@ Add-AzAutoscaleSetting `
 Az automatikus skálázás tervezésével kapcsolatban bővebben az [automatikus skálázás ajánlott eljárásait](/azure/architecture/best-practices/auto-scaling) ismertető cikkben tájékozódhat.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben az oktatóanyagban létrehozott egy virtuálisgép-méretezési csoportot. Megtanulta végrehajtani az alábbi műveleteket:
 
 > [!div class="checklist"]

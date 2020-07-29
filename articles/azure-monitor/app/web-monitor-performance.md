@@ -4,12 +4,12 @@ description: A Application Insights első lépései. A helyszíni vagy Microsoft
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.reviewer: sdash
-ms.openlocfilehash: 2b93e7f0fdb909a40667b001fa99929b3cfe27ad
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d624286d214a86364fe85192bf5ede885d4b6a78
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87014165"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323451"
 ---
 # <a name="monitor-performance-in-web-applications"></a>Webalkalmazások teljesítményének monitorozása
 
@@ -23,9 +23,9 @@ Az ügyféloldali oldalon Application Insights a weblapokról és az iOS-, Andro
 ## <a name="set-up-performance-monitoring"></a><a name="setup"></a>Teljesítményfigyelés beállítása
 Ha még nem adott hozzá Application Insightst a projekthez (azaz ha nincs ApplicationInsights.config), válasszon egyet az alábbi módszerek közül:
 
-* [ASP.NET-webalkalmazások](../../azure-monitor/app/asp-net.md)
-  * [Kivétel-figyelés hozzáadása](../../azure-monitor/app/asp-net-exceptions.md)
-  * [Függőség figyelésének hozzáadása](../../azure-monitor/app/monitor-performance-live-website-now.md)
+* [ASP.NET-webalkalmazások](./asp-net.md)
+  * [Kivétel-figyelés hozzáadása](./asp-net-exceptions.md)
+  * [Függőség figyelésének hozzáadása](./monitor-performance-live-website-now.md)
 * [Java EE-alapú webalkalmazások](./java-in-process-agent.md)
 
 ## <a name="exploring-performance-metrics"></a><a name="view"></a>Teljesítmény-mérőszámok feltárása
@@ -106,7 +106,7 @@ Adja meg az erőforrást a többi tulajdonság előtt. Ne válassza a webteszt-e
 
 ## <a name="find-and-fix-performance-bottlenecks-with-performance-investigation-experience"></a>Teljesítménybeli szűk keresztmetszetek keresése és javítása a teljesítménnyel kapcsolatos vizsgálatokkal
 
-A teljesítmény-vizsgálati folyamattal ellenőrizheti a lassú teljesítményű műveleteket a webalkalmazásban. Gyorsan kiválaszthat egy adott lassú műveletet, és a [Profilert](../../azure-monitor/app/profiler.md) használhatja a root értékre, mert a lassú műveletek le lettek hajtva a kódban. A kiválasztott művelethez megjelenített új időtartam-eloszlás használatával gyorsan megtekintheti, hogy milyen rossz a felhasználói élmény. Láthatja, hogy a felhasználói interakciók közül hány lett hatással az egyes lassú működésekre. A következő példában úgy döntöttünk, hogy alaposabban szemügyre vesszük az ügyfelek/részletek beszerzésének élményét. Az időtartam eloszlása esetében láthatjuk, hogy három tüske van. A bal szélső tüske körülbelül 400 MS, és nagyszerűen reagáló élményt jelent. A középső tüske körülbelül 1,2 s, és közepes élményt jelent. Végül a 3,6 s-ben egy kis tüske is szerepel, amely a esetek 99% percentilis-élményt képviseli, ami valószínűleg azt eredményezi, hogy az ügyfelek nem maradnak meg. Ez a élmény tízszer lassabb, mint az azonos művelettel kapcsolatos nagy élmény. 
+A teljesítmény-vizsgálati folyamattal ellenőrizheti a lassú teljesítményű műveleteket a webalkalmazásban. Gyorsan kiválaszthat egy adott lassú műveletet, és a [Profilert](./profiler.md) használhatja a root értékre, mert a lassú műveletek le lettek hajtva a kódban. A kiválasztott művelethez megjelenített új időtartam-eloszlás használatával gyorsan megtekintheti, hogy milyen rossz a felhasználói élmény. Láthatja, hogy a felhasználói interakciók közül hány lett hatással az egyes lassú működésekre. A következő példában úgy döntöttünk, hogy alaposabban szemügyre vesszük az ügyfelek/részletek beszerzésének élményét. Az időtartam eloszlása esetében láthatjuk, hogy három tüske van. A bal szélső tüske körülbelül 400 MS, és nagyszerűen reagáló élményt jelent. A középső tüske körülbelül 1,2 s, és közepes élményt jelent. Végül a 3,6 s-ben egy kis tüske is szerepel, amely a esetek 99% percentilis-élményt képviseli, ami valószínűleg azt eredményezi, hogy az ügyfelek nem maradnak meg. Ez a élmény tízszer lassabb, mint az azonos művelettel kapcsolatos nagy élmény. 
 
 ![Ügyfelek/részletek beolvasása három időtartamra vonatkozó tüskék](./media/web-monitor-performance/PerformanceTriageViewZoomedDistribution.png)
 
@@ -142,12 +142,13 @@ A teljesítmény vizsgálatával kapcsolatos tapasztalatok az arra a példára �
 
 <!--Link references-->
 
-[availability]: ../../azure-monitor/app/monitor-web-app-availability.md
-[diagnostic]: ../../azure-monitor/app/diagnostic-search.md
-[greenbrown]: ../../azure-monitor/app/asp-net.md
+[availability]: ./monitor-web-app-availability.md
+[diagnostic]: ./diagnostic-search.md
+[greenbrown]: ./asp-net.md
 [qna]: ../faq.md
-[redfield]: ../../azure-monitor/app/monitor-performance-live-website-now.md
-[start]: ../../azure-monitor/app/app-insights-overview.md
+[redfield]: ./monitor-performance-live-website-now.md
+[start]: ./app-insights-overview.md
 [usage]: usage-overview.md
-[livestream]: ../../azure-monitor/app/live-stream.md
-[snapshot]: ../../azure-monitor/app/snapshot-debugger.md
+[livestream]: ./live-stream.md
+[snapshot]: ./snapshot-debugger.md
+

@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
-ms.openlocfilehash: 7f5ad0b493f925ce34ffe19892fa432322995a9c
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 45b535db9fccb41542ee74cb28845d49211e16ec
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87125207"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281055"
 ---
 # <a name="what-is-azure-digital-twins"></a>Mi az az Azure Digital Twins?
 
-Az **Azure Digital Twins** egy IoT platform, amely teljes környezetek átfogó digitális modelljeinek létrehozását teszi lehetővé. Ezek a környezetek lehetnek olyan épületek, gyárak, gazdaságok, energiahálózatok, vasutak, stadionok és sok más – akár a teljes város is. Ezek a digitális modellek olyan elemzések megszerzésére használhatók, amelyek jobb termékeket, optimalizált műveleteket, csökkentett költségeket és áttörést jelentő felhasználói élményt nyújtanak.
+Az **Azure Digital Twins** egy szolgáltatásként nyújtott platform, amely lehetővé teszi a teljes környezetek átfogó digitális modelljeinek létrehozását. Ezek a környezetek lehetnek olyan épületek, gyárak, gazdaságok, energiahálózatok, vasutak, stadionok és sok más – akár a teljes város is. Ezek a digitális modellek olyan elemzések megszerzésére használhatók, amelyek jobb termékeket, optimalizált műveleteket, csökkentett költségeket és áttörést jelentő felhasználói élményt nyújtanak.
 
 Kihasználhatja az Azure digitális Ikrekre épülő tartományi szaktudását, így testre szabott, csatlakoztatott megoldásokat hozhat létre:
 * Bármilyen környezet modellezése és a digitális ikrek életre hozása méretezhető és biztonságos módon

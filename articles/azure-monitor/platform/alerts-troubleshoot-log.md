@@ -6,35 +6,35 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 10/29/2018
-ms.openlocfilehash: b8edbbc397a56f4fcf5b3ae070f04ca61659d98d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a66cb190309fb9e966392f57a251eff746bfa315
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87045342"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321105"
 ---
 # <a name="troubleshoot-log-alerts-in-azure-monitor"></a>A Azure Monitor naplózási értesítéseinek hibakeresése  
 
 Ebből a cikkből megtudhatja, Hogyan oldhatók meg a naplózási riasztásokkal kapcsolatos gyakori problémák Azure Monitor. Emellett megoldásokat kínál a naplók működésével és konfigurációjával kapcsolatos gyakori problémákra.
 
-A *log-riasztások* kifejezés azokat a szabályokat ismerteti, amelyek az [Azure log Analytics-munkaterületen](../log-query/get-started-portal.md) vagy az [Azure Application Insights](../log-query/log-query-overview.md)-ban való naplózási lekérdezésen alapulnak. További információ a [naplózási riasztásokban](../platform/alerts-unified-log.md)szereplő funkciókról, fogalmakról és típusokról Azure monitor.
+A *log-riasztások* kifejezés azokat a szabályokat ismerteti, amelyek az [Azure log Analytics-munkaterületen](../log-query/get-started-portal.md) vagy az [Azure Application Insights](../log-query/log-query-overview.md)-ban való naplózási lekérdezésen alapulnak. További információ a [naplózási riasztásokban](./alerts-unified-log.md)szereplő funkciókról, fogalmakról és típusokról Azure monitor.
 
 > [!NOTE]
-> Ez a cikk nem vizsgálja azokat az eseteket, amelyekben a Azure Portal riasztási szabályt váltott ki, és egy kapcsolódó műveleti csoport nem hajt végre értesítést. Ilyen esetekben tekintse meg a következő témakör részleteit: [műveleti csoportok létrehozása és kezelése a Azure Portalban](../platform/action-groups.md).
+> Ez a cikk nem vizsgálja azokat az eseteket, amelyekben a Azure Portal riasztási szabályt váltott ki, és egy kapcsolódó műveleti csoport nem hajt végre értesítést. Ilyen esetekben tekintse meg a következő témakör részleteit: [műveleti csoportok létrehozása és kezelése a Azure Portalban](./action-groups.md).
 
 ## <a name="log-alert-didnt-fire"></a>A napló riasztása nem tűz
 
-Íme néhány gyakori ok, amiért egy konfigurált [naplózási riasztási szabály állapota Azure monitor](../platform/alerts-log.md) nem a [várt módon *fired* ](../platform/alerts-managing-alert-states.md)jelenik meg.
+Íme néhány gyakori ok, amiért egy konfigurált [naplózási riasztási szabály állapota Azure monitor](./alerts-log.md) nem a [várt módon *fired* ](./alerts-managing-alert-states.md)jelenik meg.
 
 ### <a name="data-ingestion-time-for-logs"></a>Naplók adatfeldolgozási ideje
 
-A naplózási riasztás időszakonként [log Analytics](../log-query/get-started-portal.md) vagy [Application Insights](../log-query/log-query-overview.md)alapján futtatja a lekérdezést. Mivel Azure Monitor több ezer ügyfelet dolgoz fel több ezer ügyféltől a különböző forrásokból a világ bármely részén, a szolgáltatás a különböző késések miatt nem alkalmas. További információ: [adatfeldolgozási idő Azure monitor naplókban](../platform/data-ingestion-time.md).
+A naplózási riasztás időszakonként [log Analytics](../log-query/get-started-portal.md) vagy [Application Insights](../log-query/log-query-overview.md)alapján futtatja a lekérdezést. Mivel Azure Monitor több ezer ügyfelet dolgoz fel több ezer ügyféltől a különböző forrásokból a világ bármely részén, a szolgáltatás a különböző késések miatt nem alkalmas. További információ: [adatfeldolgozási idő Azure monitor naplókban](./data-ingestion-time.md).
 
 A késések enyhítése érdekében a rendszer többször is megvárja és újrapróbálkozik a riasztási lekérdezéssel, ha úgy találja, hogy a szükséges adatmennyiség még nincs betöltve. A rendszer exponenciálisan növekszik a várakozási idő beállítása. A naplózási riasztás csak az elérhető adatmennyiség után aktiválódik, így a késés a naplózási adatmennyiség lassú betöltése miatt lehet.
 
 ### <a name="incorrect-time-period-configured"></a>Helytelen időtartam konfigurálva
 
-A következő témakörben leírtak szerint: a [naplózási riasztások terminológiája](../platform/alerts-unified-log.md#log-search-alert-rule---definition-and-types)című cikk a konfigurációban megadott időtartamot határozza meg a lekérdezés időtartománya alapján. A lekérdezés csak azokat a rekordokat adja vissza, amelyek ezen a tartományon belül lettek létrehozva.
+A következő témakörben leírtak szerint: a [naplózási riasztások terminológiája](./alerts-unified-log.md#log-search-alert-rule---definition-and-types)című cikk a konfigurációban megadott időtartamot határozza meg a lekérdezés időtartománya alapján. A lekérdezés csak azokat a rekordokat adja vissza, amelyek ezen a tartományon belül lettek létrehozva.
 
 Az időszak korlátozza a naplózási lekérdezéshez beolvasott adatvesztést a visszaélések megakadályozása érdekében, és megkerüli a naplózási lekérdezésekben használt idő (például a **ago**) parancsot. Ha például az időszak 60 percre van állítva, és a lekérdezés a 1:15 ÓRAKOR fut, akkor a rendszer csak a 12:15 PM és az 1:15 közötti rekordokat használja a napló lekérdezéséhez. Ha a naplózási lekérdezés olyan időparancst használ, mint az **ago (1d)**, a lekérdezés továbbra is csak 12:15 pm és 1:15 PM közötti adatmennyiséget használ, mivel az adott időszak az adott intervallumra van beállítva.
 
@@ -44,7 +44,7 @@ Győződjön meg arról, hogy a konfigurációban szereplő időszak megfelel a 
 
 ### <a name="suppress-alerts-option-is-set"></a>A riasztások mellőzése beállítás be van állítva
 
-A [napló riasztási szabály létrehozásáról](../platform/alerts-log.md#create-a-log-alert-rule-with-the-azure-portal)szóló cikk 8. lépésében leírtak szerint Azure Portal a naplózási riasztások lehetőséget biztosítanak a **riasztások letiltására** , amely letiltja az aktiválási és értesítési műveleteket a beállított időtartamra. Ennek eredményeképpen előfordulhat, hogy a riasztás nem tűz. Valójában nem volt tűz, de letiltották.  
+A [napló riasztási szabály létrehozásáról](./alerts-log.md#create-a-log-alert-rule-with-the-azure-portal)szóló cikk 8. lépésében leírtak szerint Azure Portal a naplózási riasztások lehetőséget biztosítanak a **riasztások letiltására** , amely letiltja az aktiválási és értesítési műveleteket a beállított időtartamra. Ennek eredményeképpen előfordulhat, hogy a riasztás nem tűz. Valójában nem volt tűz, de letiltották.  
 
 ![Riasztások mellőzése](media/alert-log-troubleshoot/LogAlertSuppress.png)
 
@@ -83,11 +83,11 @@ Mivel az **Összesítés** az **időbélyegző**alapján van definiálva, az ada
 
 ## <a name="log-alert-fired-unnecessarily"></a>A naplózási riasztás szükségtelen
 
-A [Azure monitor konfigurált naplózási riasztási szabály](../platform/alerts-log.md) váratlanul indítható az [Azure-riasztásokban](../platform/alerts-managing-alert-states.md)való megtekintésekor. Az alábbi szakaszok néhány gyakori okot ismertetnek.
+A [Azure monitor konfigurált naplózási riasztási szabály](./alerts-log.md) váratlanul indítható az [Azure-riasztásokban](./alerts-managing-alert-states.md)való megtekintésekor. Az alábbi szakaszok néhány gyakori okot ismertetnek.
 
 ### <a name="alert-triggered-by-partial-data"></a>A riasztások részlegesen aktiválva
 
-A Log Analytics és Application Insights a betöltési késések és a feldolgozás hatálya alá esnek. Ha napló-riasztási lekérdezést futtat, akkor előfordulhat, hogy nem áll rendelkezésre adathozzáférés, vagy csak néhány rendelkezésre álló adattal rendelkezik. További információ: [adatfeldolgozási idő naplózása Azure monitorban](../platform/data-ingestion-time.md).
+A Log Analytics és Application Insights a betöltési késések és a feldolgozás hatálya alá esnek. Ha napló-riasztási lekérdezést futtat, akkor előfordulhat, hogy nem áll rendelkezésre adathozzáférés, vagy csak néhány rendelkezésre álló adattal rendelkezik. További információ: [adatfeldolgozási idő naplózása Azure monitorban](./data-ingestion-time.md).
 
 A riasztási szabály konfigurálásának módjától függően előfordulhat, hogy a rendszer a riasztások végrehajtásának időpontjában nem tartalmaz adatmennyiséget vagy részleges adatnaplót. Ilyen esetekben javasoljuk, hogy módosítsa a riasztás lekérdezését vagy konfigurációját.
 
@@ -103,7 +103,7 @@ A **végrehajtandó lekérdezés** mező a naplózási riasztások szolgáltatá
 
 ## <a name="log-alert-was-disabled"></a>A napló riasztása le lett tiltva
 
-Az alábbi részekben felsorolunk néhány okot, amiért Azure Monitor letilthatja a [napló riasztási szabályát](../platform/alerts-log.md).
+Az alábbi részekben felsorolunk néhány okot, amiért Azure Monitor letilthatja a [napló riasztási szabályát](./alerts-log.md).
 
 ### <a name="resource-where-the-alert-was-created-no-longer-exists"></a>A riasztást létrehozó erőforrás már nem létezik
 
@@ -179,7 +179,7 @@ Az Azure-beli tevékenység naplójának következő mintája olyan riasztási s
 A Azure Monitor a konfiguráció részeként létrehozott összes naplózási riasztási szabálynak meg kell határoznia egy elemzési lekérdezést, amelyet a riasztási szolgáltatás rendszeresen fog futni. Az elemzési lekérdezés helyes szintaxissal rendelkezhet a szabályok létrehozásakor vagy frissítésekor. Bizonyos esetekben azonban előfordulhat, hogy a napló riasztási szabályában megadott lekérdezés szintaktikai hibákat tud kialakítani, és a szabály végrehajtásának sikertelenségét okozhatja. Néhány gyakori ok, amiért a naplózási riasztási szabályban megadott elemzési lekérdezés a következőkhöz tud hibákat kialakítani:
 
 - A lekérdezés [több erőforrás között fut](../log-query/cross-workspace-query.md). Egy vagy több megadott erőforrás már nem létezik.
-- A [metrikai típus naplózási riasztása](../../azure-monitor/platform/alerts-unified-log.md#metric-measurement-alert-rules) konfigurálva van egy riasztási lekérdezés, amely nem felel meg a szintaxis normáinak
+- A [metrikai típus naplózási riasztása](./alerts-unified-log.md#metric-measurement-alert-rules) konfigurálva van egy riasztási lekérdezés, amely nem felel meg a szintaxis normáinak
 - Az elemzési platformhoz nem történt adatfolyam. A [lekérdezés végrehajtása hibát jelez](https://dev.loganalytics.io/documentation/Using-the-API/Errors) , mert a megadott lekérdezéshez nem tartozik információ.
 - A [lekérdezés nyelvének](/azure/kusto/query/) változásai a parancsok és függvények módosított formátumát tartalmazzák. Így a riasztási szabályban korábban megadott lekérdezés már nem érvényes.
 
@@ -218,11 +218,12 @@ Ha elérte a kvóta korlátját, a következő lépések segíthetnek a problém
 
 #### <a name="from-api"></a>Küldő API
 
-- PowerShell – [Get-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/get-azscheduledqueryrule?view=azps-3.7.0)
-- REST API – [List by subscription](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/listbysubscription)
+- PowerShell – [Get-AzScheduledQueryRule](/powershell/module/az.monitor/get-azscheduledqueryrule?view=azps-3.7.0)
+- REST API – [List by subscription](/rest/api/monitor/scheduledqueryrules/listbysubscription)
 
 ## <a name="next-steps"></a>További lépések
 
-- További információ a [log-riasztásokról az Azure-ban](../platform/alerts-unified-log.md).
+- További információ a [log-riasztásokról az Azure-ban](./alerts-unified-log.md).
 - További információ a [Application Insightsról](../log-query/log-query-overview.md).
 - További információ a [naplók lekérdezéséről](../log-query/log-query-overview.md).
+

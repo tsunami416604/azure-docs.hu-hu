@@ -3,11 +3,12 @@ title: Azure Application Insights – áttekintés irányítópult | Microsoft D
 description: Alkalmazások figyelése az Azure Application Insights és az áttekintő irányítópult funkcióinak segítségével.
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: e5188972d9058b85a9765c7d33f6209b37245d7e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c8aa4460a545f032eaa60560de00efff27ae1ef
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77669896"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322533"
 ---
 # <a name="application-insights-overview-dashboard"></a>Application Insights áttekintése irányítópult
 
@@ -56,6 +57,7 @@ Ha a **csempe beállításainak megadása** lehetőséget választja, és az egy
 
 ## <a name="next-steps"></a>További lépések
 
-- [Tölcsérek](../../azure-monitor/app/usage-funnels.md)
-- [Megőrzés](../../azure-monitor/app/usage-retention.md)
-- [Felhasználói folyamatok](../../azure-monitor/app/usage-flows.md)
+- [Tölcsérek](./usage-funnels.md)
+- [Megőrzés](./usage-retention.md)
+- [Felhasználói folyamatok](./usage-flows.md)
+

@@ -6,16 +6,16 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 01/23/2018
-ms.openlocfilehash: bb21bcefa0f9fb6f691ebfb578177c64543c1403
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 46c219a82d45129ed0856d22d88be819938e5240
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85549650"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325304"
 ---
 # <a name="create-service-manager-web-app-using-the-automated-script"></a>Service Manager Webalkalmazás létrehozása az automatikus parancsfájl használatával
 
-A következő szkripttel hozza létre a webalkalmazást a Service Manager példányához. Service Manager kapcsolattal kapcsolatos további információkért tekintse meg a [következőt: Service Manager webalkalmazás](../../azure-monitor/platform/itsmc-connections.md#create-and-deploy-service-manager-web-app-service)
+A következő szkripttel hozza létre a webalkalmazást a Service Manager példányához. Service Manager kapcsolattal kapcsolatos további információkért tekintse meg a [következőt: Service Manager webalkalmazás](./itsmc-connections.md#create-and-deploy-service-manager-web-app-service)
 
 Futtassa a szkriptet a következő szükséges részletek megadásával:
 
@@ -318,4 +318,5 @@ if(!$err)
 ```
 
 ## <a name="next-steps"></a>További lépések
-[A hibrid kapcsolatok konfigurálása](../../azure-monitor/platform/itsmc-connections.md#configure-the-hybrid-connection).
+[A hibrid kapcsolatok konfigurálása](./itsmc-connections.md#configure-the-hybrid-connection).
+

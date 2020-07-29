@@ -1,7 +1,7 @@
 ---
 title: Azure-beli virtuális hálózat létrehozása, módosítása vagy törlése
 titlesuffix: Azure Virtual Network
-description: Megtudhatja, hogyan hozhat létre, módosíthat vagy törölhet virtuális hálózatokat az Azure-ban.
+description: Hozzon létre és töröljön egy virtuális hálózatot, és módosítsa a beállításokat, például a DNS-kiszolgálókat és az IP-címtartományt egy meglévő virtuális hálózat számára.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -12,11 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: kumud
-ms.openlocfilehash: 3f0060944a2733c31c3bef67aa005e5476778ce2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0a35576435780ee43d9f2aa99167b736f90799ab
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710031"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87265245"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>Virtuális hálózat létrehozása, módosítása vagy törlése
 
@@ -90,7 +91,7 @@ A cikk bármely szakaszának lépéseinek elvégzése előtt hajtsa végre a kö
      - [Tevékenységnapló](../azure-monitor/platform/platform-logs-overview.md)
      - [Hozzáférés-vezérlés (IAM)](../role-based-access-control/overview.md)
      - [Címkék](../azure-resource-manager/management/tag-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-     - [Zárak](../azure-resource-manager/management/lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+     - [Zárolások](../azure-resource-manager/management/lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
      - [Automation-szkript](../azure-resource-manager/management/manage-resource-groups-portal.md#export-resource-groups-to-templates)
 
 **Parancsok**
@@ -122,7 +123,7 @@ Címtartomány hozzáadása vagy eltávolítása:
 4. Hajtsa végre a következő lehetőségek egyikét:
     - **Címtartomány hozzáadása**: adja meg az új címtartományt. A címtartomány nem fedi át a virtuális hálózathoz definiált meglévő címtartományt.
     - **Címtartomány eltávolítása**: az eltávolítani kívánt címtartomány jobb oldalán válassza a **...**, majd az **Eltávolítás**lehetőséget. Ha egy alhálózat létezik a címtartományból, nem távolíthatja el a címtartományt. Címtartomány eltávolításához először törölnie kell a címtartomány meglévő alhálózatait (és az alhálózatokban található összes erőforrást).
-5. Kattintson a **Mentés** gombra.
+5. Válassza a **Mentés** lehetőséget.
 
 **Parancsok**
 
@@ -143,7 +144,7 @@ A virtuális hálózathoz csatlakozó virtuális gépek a virtuális hálózatho
    - Válasszon ki **egy címeket**: az eltávolítani kívánt kiszolgáló mellett válassza a **...**, majd az **Eltávolítás**lehetőséget. A kiszolgáló törlésével a kiszolgáló csak a virtuális hálózatok listájáról távolítható el. A DNS-kiszolgáló továbbra is regisztrálva lesz az Azure-ban a többi virtuális hálózat használatára.
    - **DNS-kiszolgáló címeinek átrendezése**: fontos ellenőrizni, hogy a DNS-kiszolgálókat a környezetének megfelelő sorrendben sorolja-e fel. A DNS-kiszolgálók listáját a rendszer a megadott sorrendben használja. Nem működnek ciklikus multiplexelés beállításként. Ha a lista első DNS-kiszolgálója elérhető, akkor az ügyfél ezt a DNS-kiszolgálót használja, függetlenül attól, hogy a DNS-kiszolgáló megfelelően működik-e. Távolítsa el az összes felsorolt DNS-kiszolgálót, majd adja őket vissza a kívánt sorrendben.
    - **Módosítsa a címeket**: jelölje ki a DNS-kiszolgálót a listában, majd adja meg az új címeket.
-5. Kattintson a **Mentés** gombra.
+5. Válassza a **Mentés** lehetőséget.
 6. Indítsa újra a virtuális hálózathoz csatlakozó virtuális gépeket, hogy azok hozzá legyenek rendelve az új DNS-kiszolgáló beállításaihoz. A virtuális gépek továbbra is a jelenlegi DNS-beállításokat használják, amíg újra nem indítják őket.
 
 **Parancsok**
@@ -170,7 +171,7 @@ A virtuális hálózat csak akkor törölhető, ha nincs csatlakoztatva erőforr
 
 Ha virtuális hálózatokon szeretné elvégezni a feladatokat, a fiókját hozzá kell rendelni a [hálózati közreműködő](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) szerepkörhöz vagy egy [Egyéni](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) szerepkörhöz, amely az alábbi táblázatban felsorolt megfelelő műveletekhez van rendelve:
 
-| Műveletek                                  |   Name                                |
+| Művelet                                  |   Név                                |
 |---------------------------------------- |   --------------------------------    |
 |Microsoft. Network/virtualNetworks/READ   |   Virtuális hálózat beolvasása              |
 |Microsoft. Network/virtualNetworks/Write  |   Virtuális hálózat létrehozása vagy frissítése  |

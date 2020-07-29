@@ -9,14 +9,17 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2019
-ms.openlocfilehash: 8252c9bf899811163193c9ed21f1f81c9fd0502f
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 1b7b94f88653621c895ba8365651b78dcbf9d59f
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86080805"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325015"
 ---
 # <a name="get-started-with-azure-machine-learning-studio-classic-in-r"></a>Első lépések az Azure Machine Learning Studio (klasszikus) az R-ben
+
+**a következőkre vonatkozik:** ![ nincs](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine learning](../overview-what-is-azure-ml.md) ![ Igen ](../../../includes/media/aml-applies-to-skus/yes.png) Machine learning Studio (klasszikus) 
+
 
 <!-- Stephen F Elston, Ph.D. -->
 Ebből az oktatóanyagból megtudhatja, hogyan használhatja a ML Studio (klasszikus) t az R-kód létrehozásához, teszteléséhez és végrehajtásához. A végén egy teljes előrejelző megoldás fog megjelenni.  
@@ -1335,7 +1338,7 @@ A RStudio elég jól dokumentálva. Íme néhány hivatkozás a RStudio dokument
 Ez az R-programozási oktatóanyag ismerteti az alapismereteket, amelyekkel a Azure Machine Learning Studio (klasszikus) R nyelvét kell használnia. Ha nem ismeri az R-t, két bevezetést kell elérhetővé tennie a CRANban:
 
 * A [kezdőknek](https://cran.r-project.org/doc/contrib/Paradis-rdebuts_en.pdf) az Emmanuel Paradis jó kiindulópontja az R.  
-* [Az R bevezetője](https://cran.r-project.org/doc/manuals/R-intro.html) a W. N használatával. Venables et. Al. egy kicsit mélyebbre kerül.
+* [Az R bevezetője](https://cran.r-project.org/doc/manuals/R-intro.html) a W. N használatával. Venables et. mtsai. egy kicsit mélyebbre kerül.
 
 Az R-ben számos könyv található, amely segítséget nyújt az első lépésekhez. Itt talál néhány hasznosat:
 

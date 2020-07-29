@@ -1,6 +1,6 @@
 ---
 title: A kimenő SMTP-kapcsolatok hibáinak megoldása az Azure-ban | Microsoft Docs
-description: Ismerje meg, hogyan oldhatja meg a kimenő SMTP-kapcsolatok problémáit az Azure-ban.
+description: Ismerje meg a javasolt módszert az e-mailek küldéséhez és az Azure-beli kimenő SMTP-kapcsolatok hibáinak elhárításához.
 services: virtual-network
 author: genlin
 manager: dcscontentpm
@@ -12,11 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/20/2018
 ms.author: genli
-ms.openlocfilehash: 148a8bf7626d8b8ee687658990fdaf2fce9f7de7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e58f498ca254378354fb0e9e21d04fe9969588c9
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83590094"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87265262"
 ---
 # <a name="troubleshoot-outbound-smtp-connectivity-issues-in-azure"></a>A kimenő SMTP-kapcsolati problémák elhárítása az Azure-ban
 

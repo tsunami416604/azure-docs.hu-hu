@@ -7,11 +7,16 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2019
-ms.openlocfilehash: 71a5737434e78bc39bccdfeb950e0dbc32ed0052
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom:
+- 'Role: Cloud Development'
+- 'Role: Operations'
+- 'Role: Technical Support'
+ms.openlocfilehash: 675391a92c991f80faadf8b75abc79dcb4cd19d7
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84688976"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322958"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Hivatkozás – IoT Hub kvóták és szabályozás
 
@@ -106,7 +111,7 @@ IoT Hub érvényesíti a többi működési korlátot:
 | Automatikus eszköz-és modul-konfigurációk<sup>1</sup> | 100 konfiguráció/fizetős SKU-hub. 20 konfiguráció egy ingyenes SKU-hubhoz. |
 | Automatikus központi telepítések IoT Edge<sup>1</sup> | 50 modul üzembe helyezése. 100 üzemelő példányok (beleértve a rétegzett központi telepítéseket) fizetett SKU-hubhoz. 10 üzemelő példány ingyenes SKU-hubhoz. |
 | Ikrek<sup>1</sup> | A kívánt tulajdonságok maximális mérete és a jelentett tulajdonságok rész 32 KB. A címkék maximális mérete 8 KB. |
-| Megosztott elérési házirendek | A megosztott hozzáférési házirendek maximális száma 16 |
+| Megosztott elérési szabályzatok | A megosztott hozzáférési házirendek maximális száma 16 |
 
 <sup>1</sup> Ez a funkció nem érhető el az alapszintű IoT Hub. További információ: [How to Choo the right IoT hub](iot-hub-scaling.md).
 

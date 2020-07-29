@@ -1,10 +1,10 @@
-- name: A Windows Virtual Desktop 2019. őszi kiadása
+- name: Windows Virtual Desktop (klasszikus)
   href: ../index.yml
 - name: Áttekintés
   items:
     - name: Mit takar a Windows Virtual Desktop?
       href: ../overview.md
-    - name: 2020. tavaszi kibocsátási megjegyzések
+    - name: A Windows Virtual Desktop dokumentációja
       href: ../create-host-pools-azure-marketplace.md
 - name: Oktatóanyagok
   items:

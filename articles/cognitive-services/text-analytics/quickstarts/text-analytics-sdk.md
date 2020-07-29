@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 06/11/2020
+ms.date: 07/27/2020
 ms.author: aahi
 ms.custom: tracking-python
 zone_pivot_groups: programming-languages-text-analytics
-ms.openlocfilehash: c475c17e5d196c0eedf38df83f782309143ad979
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: f31ac8b36134548c3a7ecc4b0bf37d28a8ab7e4b
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84735554"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291685"
 ---
 # <a name="quickstart-use-the-text-analytics-client-library"></a>Gyors útmutató: az Text Analytics ügyféloldali kódtár használata
 
@@ -87,7 +87,7 @@ Ha erre a lapra kattintott, valószínűleg nem jelenik meg egy rövid útmutat�
 
 ::: zone-end
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforrást vagy az erőforráscsoportot. Az erőforráscsoport törlésével a hozzá társított egyéb erőforrások is törlődnek.
 
@@ -99,8 +99,8 @@ Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforr�
 > [!div class="nextstepaction"]
 > [Megoldás megismerése](../text-analytics-user-scenarios.md#analyze-recorded-inbound-customer-calls)
 
-* [Text Analytics áttekintése](../overview.md)
+* [A Text Analytics áttekintése](../overview.md)
 * [Hangulat elemzése](../how-tos/text-analytics-how-to-sentiment-analysis.md)
 * [Entitások felismerése](../how-tos/text-analytics-how-to-entity-linking.md)
-* [Nyelv felismerése](../how-tos/text-analytics-how-to-keyword-extraction.md)
+* [Nyelvfelismerés](../how-tos/text-analytics-how-to-keyword-extraction.md)
 * [Nyelvi felismerés](../how-tos/text-analytics-how-to-language-detection.md)

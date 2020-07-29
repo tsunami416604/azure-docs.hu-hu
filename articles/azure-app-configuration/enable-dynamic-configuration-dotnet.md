@@ -8,16 +8,16 @@ ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 10/21/2019
 ms.author: lcozzens
-ms.openlocfilehash: 7b6081e6bad1382ca2b3a8349036234c0c01cb13
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: e8bc1d2eb978e0685552ff9b86d70ea4731285cf
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85856517"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87277740"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-net-framework-app"></a>Oktatóanyag: dinamikus konfiguráció használata .NET-keretrendszerbeli alkalmazásokban
 
-Az alkalmazás-konfiguráció .NET ügyféloldali kódtár támogatja az igény szerinti konfigurációs beállítások frissítését anélkül, hogy újra kellene indítani az alkalmazást. Ezt úgy teheti meg, hogy először beolvassa a `IConfigurationRefresher` konfigurációs szolgáltató beállításai közül a példányát, majd a `Refresh` kódban bárhol meghívja a példányt.
+Az alkalmazás-konfiguráció .NET ügyféloldali kódtár támogatja az igény szerinti konfigurációs beállítások frissítését anélkül, hogy újra kellene indítani az alkalmazást. Ezt úgy teheti meg, hogy először beolvassa a `IConfigurationRefresher` konfigurációs szolgáltató beállításai közül a példányát, majd a `TryRefreshAsync` kódban bárhol meghívja a példányt.
 
 A beállítások frissítésének megtartásához és a konfigurációs tárolóhoz való túl sok hívás elkerüléséhez minden beállításhoz gyorsítótárat kell használni. Amíg a beállítás gyorsítótárazott értéke lejárt, a frissítési művelet nem frissíti az értéket, még akkor is, ha az érték módosult a konfigurációs tárolóban. Az egyes kérések alapértelmezett lejárati ideje 30 másodperc, de szükség esetén felül lehet bírálni.
 
@@ -95,7 +95,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
         PrintMessage().Wait();
     }
     ```
-    A `ConfigureRefresh` metódussal adhatja meg azokat a beállításokat, amelyeket a konfigurációs adatainak az alkalmazás konfigurációs tárolójával való frissítéséhez használ a frissítési művelet elindításakor. A metódus meghívásával lekérhető egy példány a metódushoz `IConfigurationRefresher` `GetRefresher` megadott beállításokkal `AddAzureAppConfiguration` , és az `Refresh` ebben a példányban található metódus a kód bármely pontjára kiválthatja a frissítési műveletet.
+    A `ConfigureRefresh` metódussal adhatja meg azokat a beállításokat, amelyeket a konfigurációs adatainak az alkalmazás konfigurációs tárolójával való frissítéséhez használ a frissítési művelet elindításakor. A metódus meghívásával lekérhető egy példány a metódushoz `IConfigurationRefresher` `GetRefresher` megadott beállításokkal `AddAzureAppConfiguration` , és az `TryRefreshAsync` ebben a példányban található metódus a kód bármely pontjára kiválthatja a frissítési műveletet.
 
     > [!NOTE]
     > A konfigurációs beállítás alapértelmezett gyorsítótár-lejárati ideje 30 másodperc, de felülbírálható úgy, hogy meghívja a metódust az `SetCacheExpiration` inicializálási beállítások argumentumként megadott metódusban `ConfigureRefresh` .
@@ -110,7 +110,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
         // Wait for the user to press Enter
         Console.ReadLine();
 
-        await _refresher.Refresh();
+        await _refresher.TryRefreshAsync();
         Console.WriteLine(_configuration["TestApp:Settings:Message"] ?? "Hello world!");
     }
     ```
@@ -150,7 +150,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
     > [!NOTE]
     > Mivel a gyorsítótár lejárati ideje 10 másodpercre van állítva a `SetCacheExpiration` metódusnak a frissítési művelethez való megadása során, a rendszer csak akkor frissíti a konfigurációs beállítás értékét, ha az adott beállítás utolsó frissítése óta legalább 10 másodperc eltelt.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 

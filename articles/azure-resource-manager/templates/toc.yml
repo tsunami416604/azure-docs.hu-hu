@@ -302,6 +302,8 @@
         - name: Üzembehelyezési szkript
           displayName: custom script
           href: deployment-script-template.md
+        - name: Üzembe helyezési szkript létrehozása fejlesztési környezethez
+          href: deployment-script-template-configure-dev.md
         - name: Sablonok modularizálása
           displayName: 'linked templates, nested templates'
           href: linked-templates.md

@@ -14,12 +14,12 @@ ms.workload: na
 ms.date: 01/16/2020
 ms.author: spelluru
 ms.custom: mvc
-ms.openlocfilehash: 767d1f3a504e91783e37d8ff1c1b97f62816af3b
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: ab09d2cf0f43d0858fb9a281f39385bff244cc99
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84899467"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290383"
 ---
 # <a name="use-azure-cli-to-create-and-verify-availability-of-a-virtual-machine-in-a-lab-in-azure-devtest-labs"></a>Virtuális gép létrehozása és elérhetőségének ellenőrzése Azure DevTest Labs tesztkörnyezetben az Azure CLI használatával
 
@@ -53,6 +53,6 @@ Ez a szkript a következő parancsokat használja:
 
 ## <a name="next-steps"></a>További lépések
 
-Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](https://docs.microsoft.com/cli/azure).
+Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](/cli/azure).
 
 További Azure Lab Services CLI-példaszkripteket az [Azure Lab Services CLI-mintáiban](../samples-cli.md) találhat.

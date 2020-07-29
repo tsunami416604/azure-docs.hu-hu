@@ -1,6 +1,5 @@
 ---
-title: '1. Oktatóanyag: hitelkockázat előrejelzése'
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (klasszikus) oktatóanyag: hitelkockázat előrejelzése – Azure'
 description: Részletes oktatóanyag, amely bemutatja, hogyan hozhat létre a hitelkockázat értékelésére szolgáló prediktív elemzési megoldást Azure Machine Learning Studio (klasszikus). Ez az oktatóanyag egy háromrészes oktatóanyag-sorozat első része.  Bemutatja, hogyan hozhat létre munkaterületet, tölthet fel és hozhat létre egy kísérletet.
 keywords: hitelkockázat, prediktív elemzési megoldás,kockázatértékelés
 author: sdgilley
@@ -10,14 +9,17 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 59874387b6dfc23fddbd6c6eed89263a54389649
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b8e2d0cd0d9aa567cfab9e2fef66ad6363e59d53
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87047995"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324896"
 ---
 # <a name="tutorial-1-predict-credit-risk---azure-machine-learning-studio-classic"></a>1. Oktatóanyag: hitelkockázat előrejelzése – Azure Machine Learning Studio (klasszikus)
+
+**a következőkre vonatkozik:** ![ nincs](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine learning](../overview-what-is-azure-ml.md) ![ Igen ](../../../includes/media/aml-applies-to-skus/yes.png) Machine learning Studio (klasszikus) 
+
 
 [!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
 
@@ -292,7 +294,7 @@ A kísérlet most a következőhöz hasonlóan néz ki:
 További információ az R-szkriptek kísérletekben való használatáról: [a kísérlet kiterjesztése az r](extend-your-experiment-with-r.md)használatával.
 
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 [!INCLUDE [machine-learning-studio-clean-up](../../../includes/machine-learning-studio-clean-up.md)]
 

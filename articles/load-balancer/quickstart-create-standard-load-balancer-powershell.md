@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 07/23/2020
 ms.author: allensu
 ms:custom: seodec18
-ms.openlocfilehash: 33c5db061860096b0411fbe91191f6c4a513e4c2
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: b8a95687b1567eb6e063ccc871a4a130c5f2db69
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87172139"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290358"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-azure-powershell"></a>Gyors útmutató: nyilvános terheléselosztó létrehozása a virtuális gépek terheléselosztásához Azure PowerShell használatával
 
@@ -635,7 +635,7 @@ New-AzVM -ResourceGroupName $rg -Zone $zn -Location $loc -VM $vmConfig
 A három virtuális gép létrehozása és konfigurálása néhány percet vesz igénybe.
 
 ## <a name="create-outbound-rule-configuration"></a>Kimenő szabály konfigurációjának létrehozása
-A terheléselosztó kimenő szabályai a háttér-készletben lévő virtuális gépek kimenő SNAT konfigurálása. 
+A terheléselosztó kimenő szabályai a háttér-készletben lévő virtuális gépek kimenő forrásának hálózati címfordítását (SNAT) konfigurálja. 
 
 A kimenő kapcsolatokról a [Kimenő kapcsolatok az Azure-ban](load-balancer-outbound-connections.md)című témakörben olvashat bővebben.
 
@@ -690,7 +690,7 @@ Get-AzLoadBalancer -Name $lbn -ResourceGroupName $rg | Add-AzLoadBalancerFronten
 
 Hozzon létre egy új kimenő készletet a [Add-AzLoadBalancerBackendAddressPoolConfig](/powershell/module/az.network/add-azloadbalancerbackendaddresspoolconfig). 
 
-Alkalmazza a készletet és a frontend IP-címét a terheléselosztó számára a [set-AzLoadBalancer](/powershell/module/az.network/set-azloadbalancer)::
+Alkalmazza a készletet és a frontend IP-címét a terheléselosztó számára a [set-AzLoadBalancer](/powershell/module/az.network/set-azloadbalancer):
 
 * Elnevezett **myBackEndPoolOutbound**.
 
@@ -1409,7 +1409,7 @@ A három virtuális gép létrehozása és konfigurálása néhány percet vesz 
 
 Telepítse az IIS-t egy egyéni weboldallal mindkét háttérbeli virtuális gépen a következőképpen:
 
-1. Szerezze be a három virtuális gép nyilvános IP-címét a [Get-AzPublicIPAddress](/powershell/module/az.compute/get-azpublicipaddress)használatával.
+1. Szerezze be a három virtuális gép nyilvános IP-címét a [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress)használatával.
 
    ```azurepowershell-interactive
    ## Variables for commands. ##

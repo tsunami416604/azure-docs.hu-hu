@@ -1,22 +1,71 @@
 ---
 title: Az ügynök és a bővítmény hibáinak elhárítása
 description: Az ügynökkel, bővítménnyel és lemezekkel kapcsolatos Azure Backup hibák tünetei, okai és megoldása.
-ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: 55af4bddb5a963a831c1438400a7a243cca20573
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5bf52606e6fa5de6a122a65432da87de1491e17f
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538819"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324743"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup hibával kapcsolatos hibák elhárítása: az ügynökkel vagy bővítménnyel kapcsolatos problémák
 
 Ez a cikk hibaelhárítási lépéseket tartalmaz, amelyek segítségével megoldhatja a virtuálisgép-ügynökkel és-bővítménysel folytatott kommunikációhoz kapcsolódó Azure Backup hibákat.
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
+
+## <a name="step-by-step-guide-to-troubleshoot-backup-failures"></a>Részletes útmutató a biztonsági mentési hibák elhárításához
+
+A leggyakoribb biztonsági mentési hibák a következő hibaelhárítási lépések követésével önállóan oldhatók fel:
+
+### <a name="step-1-check-azure-vm-health"></a>1. lépés: az Azure-beli virtuális gép állapotának keresése
+
+- Győződjön meg arról, hogy az Azure-beli **virtuális gép kiépítési állapota "fut"**: Ha a [virtuális gép kiépítési állapota](https://docs.microsoft.com/azure/virtual-machines/windows/states-lifecycle#provisioning-states) **leállított/nem lefoglalt/frissítési** állapotban van, akkor az nem fog tudni a biztonsági mentési művelettel. Nyissa meg *Azure Portal > virtuálisgép-> áttekintés >* , és ellenőrizze a virtuális gép állapotát, és győződjön meg róla, hogy **fut** , és próbálkozzon újra a biztonsági mentési művelettel
+- **Tekintse át a függőben lévő operációs rendszer frissítéseit vagy újraindítását**: Győződjön meg arról, hogy nincs függőben lévő operációsrendszer-frissítés vagy függőben lévő újraindítás a virtuális gépen.
+
+### <a name="step-2-check-azure-vm-guest-agent-service-health"></a>2. lépés: az Azure VM Guest Agent szolgáltatás állapotának keresése
+
+- **Győződjön meg arról, hogy az Azure VM Guest Agent szolgáltatás elindult és**naprakész:
+  - Windows rendszerű virtuális gépen:
+    - Navigáljon a **Services. msc szolgáltatáshoz** , és győződjön meg arról, hogy a **Windows Azure VM Guest Agent szolgáltatás** működik. Győződjön meg arról is, hogy a [legújabb verzió](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) van telepítve. További információ: a [Windows virtuális gép vendég ügynökével kapcsolatos problémák](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms).
+    - Az Azure-beli virtuálisgép-ügynök alapértelmezés szerint a portál, a PowerShell, a parancssori felület vagy egy Azure Resource Manager sablon Azure Marketplace-rendszerképből üzembe helyezett összes Windows rendszerű virtuális gépen telepítve van. [Az ügynök manuális telepítése](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows#manual-installation) akkor lehet szükséges, ha az Azure-ban üzembe helyezett egyéni virtuálisgép-lemezképet hoz létre.
+    - Tekintse át a támogatási mátrixot annak ellenőrzéséhez, hogy a virtuális gép fut-e a [támogatott Windows operációs rendszeren](backup-support-matrix-iaas.md#operating-system-support-windows).
+  - Linux rendszerű virtuális gépen
+    - A parancs végrehajtásával győződjön meg arról, hogy az Azure VM Guest Agent szolgáltatás fut `ps-e` . Győződjön meg arról is, hogy a [legújabb verzió](https://docs.microsoft.com/azure/virtual-machines/extensions/update-linux-agent) van telepítve. További információ: Linux rendszerű [virtuális gép vendég ügynökével kapcsolatos problémák](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms).
+    - Győződjön meg arról, hogy a [Linux rendszerű virtuális gépek ügynökének függőségei a rendszercsomagokban](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux#requirements) a támogatott konfigurációval rendelkeznek. Például: a Python 2,6-es és újabb verziója támogatott.
+    - Tekintse át a támogatási mátrixot annak ellenőrzéséhez, hogy a virtuális gép fut-e a [támogatott Linux operációs rendszeren.](backup-support-matrix-iaas.md#operating-system-support-linux)
+
+### <a name="step-3-check-azure-vm-extension-health"></a>3. lépés: az Azure VM-bővítmény állapotának megtekintése
+
+- Győződjön meg arról, hogy az összes Azure-beli virtuálisgép **-bővítmény "kiépítés sikeres" állapotban**van: Ha bármely bővítmény hibás állapotban van, akkor az zavarhatja a biztonsági mentést.
+- *Nyissa meg Azure Portal > virtuálisgép-> beállításait > bővítmények > bővítmények állapota* elemre, és ellenőrizze, hogy a bővítmények **kiépítés sikeres** állapotban van-e.
+- Győződjön meg arról, hogy az összes [bővítményi probléma](https://docs.microsoft.com/azure/virtual-machines/extensions/overview#troubleshoot-extensions) megoldódott, és próbálkozzon újra a biztonsági mentési művelettel.
+- Győződjön meg arról, hogy a **com+ rendszeralkalmazás** működik. Emellett a **Elosztott tranzakciók koordinátora szolgáltatásnak** **hálózati szolgáltatás fiókként**kell futnia. A [com+ és az MSDTC hibáinak elhárításához](backup-azure-vms-troubleshoot.md#extensionsnapshotfailedcom--extensioninstallationfailedcom--extensioninstallationfailedmdtc---extension-installationoperation-failed-due-to-a-com-error)kövesse a cikkben ismertetett lépéseket.
+
+### <a name="step-4-check-azure-backup-vm-extension-health"></a>4. lépés: Azure Backup virtuálisgép-bővítmény állapotának keresése
+
+A Azure Backup a virtuálisgép-Pillanatképek bővítmény használatával készíti el az Azure-beli virtuális gép alkalmazásának konzisztens biztonsági mentését. Azure Backup a biztonsági mentés engedélyezése után telepíti a bővítményt az első ütemezett biztonsági mentés részeként.
+
+- Győződjön meg arról, hogy a **VMSnapshot-bővítmény nem meghibásodott állapotban**van: kövesse az ebben a [szakaszban](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#usererrorvmprovisioningstatefailed---the-vm-is-in-failed-provisioning-state) felsorolt lépéseket az Azure Backup-bővítmény kifogástalan állapotának ellenőrzéséhez és biztosításához.
+
+- **Ellenőrizze, hogy a víruskereső blokkolja-e a bővítményt**: bizonyos víruskereső szoftverek megakadályozhatják a bővítmények végrehajtását.
+  
+  A biztonsági mentési hiba időpontjában ellenőrizze, hogy vannak-e naplóbejegyzések a ***Eseménynapló-alkalmazás naplófájljaiban*** a ***Hibás alkalmazás neve: IaaSBcdrExtension.exe***. Ha a bejegyzéseket látja, akkor lehet, hogy a virtuális gépen konfigurált víruskereső korlátozza a biztonsági mentési bővítmény végrehajtását. A teszteléshez zárja ki a következő könyvtárakat a víruskereső-konfigurációban, majd próbálja megismételni a biztonsági mentési műveletet.
+  - `C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot`
+  - `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot`
+
+- Ellenőrizze, hogy szükséges-e a **hálózati hozzáférés**: a bővítmények letöltése az Azure Storage bővítmény adattárában és a bővítmény állapotának feltöltése az Azure Storage-ba történik. [További információ](https://docs.microsoft.com/azure/virtual-machines/extensions/features-windows#network-access).
+  - Ha az ügynök nem támogatott verzióját használ, engedélyeznie kell a kimenő hozzáférést az adott régióban lévő Azure Storage-hoz a virtuális gépről.
+  - Ha letiltotta a hozzáférést `168.63.129.16` a vendég tűzfal vagy egy proxy használatával, a bővítmények a fentiektől függetlenül sikertelenek lesznek. A 80, 443 és 32526 portok szükségesek, [További információ](https://docs.microsoft.com/azure/virtual-machines/extensions/features-windows#network-access).
+
+- Győződjön meg arról, hogy a **DHCP engedélyezve van a vendég virtuális gépen**: Ez azért szükséges, hogy a IaaS virtuális gép biztonsági mentése a DHCP-ből beolvassa a gazdagép vagy a háló címeit. Ha statikus magánhálózati IP-címmel kell rendelkeznie, konfigurálja azt a Azure Portal vagy a PowerShell használatával, és győződjön meg arról, hogy a virtuális gépen belül a DHCP-beállítás engedélyezve van, [További információ](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken).
+
+- **Ellenőrizze, hogy a VSS-író szolgáltatás működik-** e: a VSS- [író hibáinak elhárításához](backup-azure-vms-troubleshoot.md#extensionfailedvsswriterinbadstate---snapshot-operation-failed-because-vss-writers-were-in-a-bad-state)kövesse az alábbi lépéseket.
+- **Kövesse a biztonsági mentéssel kapcsolatos ajánlott**eljárásokat ismertető útmutatót: az [Azure virtuális gépek biztonsági mentésének engedélyezésére vonatkozó ajánlott eljárások](backup-azure-vms-introduction.md#best-practices)áttekintése.
+- A **titkosított lemezekre vonatkozó irányelvek áttekintése**: Ha engedélyezi a titkosított lemezekkel rendelkező virtuális gépek biztonsági mentését, győződjön meg róla, hogy az összes szükséges engedélyt megadja. További információ: [titkosított Azure-beli virtuális gép biztonsági mentése és visszaállítása](backup-azure-vms-encryption.md#encryption-support).
 
 ## <a name="usererrorguestagentstatusunavailable---vm-agent-unable-to-communicate-with-azure-backup"></a><a name="UserErrorGuestAgentStatusUnavailable-vm-agent-unable-to-communicate-with-azure-backup"></a>UserErrorGuestAgentStatusUnavailable – A virtuálisgép-ügynök nem tud kommunikálni az Azure Backup szolgáltatással
 

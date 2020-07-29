@@ -3,23 +3,20 @@ title: 'Gyors útmutató: Azure Blob Storage Library v12 – .NET'
 description: Ebből a rövid útmutatóból megtudhatja, hogyan használhatja az Azure Blob Storage ügyféloldali kódtárat a .NET-hez egy tároló és egy blob (Object) tárolóban lévő blob létrehozásához. Ezután megtudhatja, hogyan töltheti le a blobot a helyi számítógépére, és hogyan listázhatja ki a tárolóban található összes blobot.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 11/05/2019
+ms.date: 07/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 26594486e1d98c0349fd41470c749109faf71b0b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d142206a9640ce53ea7463a2c68c5d1c8f64c354
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87011413"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287200"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-net"></a>Rövid útmutató: Az Azure Blob Storage .NET-hez készült ügyféloldali kódtára (v12)
 
 Ismerkedés a .NET-hez készült Azure Blob Storage ügyféloldali kódtáraval. Az Azure Blob Storage a Microsoft felhőalapú objektumtárolási megoldása. Kövesse a csomag telepítésének lépéseit, és próbálja ki például az alapszintű feladatokhoz tartozó kódot. A Blob Storage nagy mennyiségű strukturálatlan adat tárolására van optimalizálva.
-
-> [!NOTE]
-> A korábbi SDK-verzió használatának megkezdéséhez lásd [: gyors útmutató: Azure Blob Storage ügyféloldali kódtára a .net-hez](storage-quickstart-blobs-dotnet-legacy.md).
 
 Használja az Azure Blob Storage ügyféloldali kódtárat a .NET-hez a következőhöz:
 

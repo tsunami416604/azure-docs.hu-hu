@@ -6,12 +6,12 @@ author: harelbr
 ms.author: harelbr
 ms.date: 03/13/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 41298be1b0288f429647d8b38a1cc75dd2c40b0a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 8e2bf4e451ebc3c9ebba2c01dae6703fc79aa606
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86516753"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324131"
 ---
 # <a name="smart-detection-e-mail-notification-change"></a>Az e-mail értesítések intelligens észlelésének változása
 
@@ -40,10 +40,11 @@ Ha felhasználókat szeretne hozzárendelni a figyelési olvasóhoz vagy a közr
 
 Ha bármilyen kérdése vagy problémája van a változással kapcsolatban, ne habozzon [kapcsolatba lépni velünk](mailto:smart-alert-feedback@microsoft.com).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ az intelligens észlelésről:
 
-- [Hibaanomáliák](../../azure-monitor/app/proactive-failure-diagnostics.md)
-- [Memóriavesztés](../../azure-monitor/app/proactive-potential-memory-leak.md)
-- [Teljesítményanomáliák](../../azure-monitor/app/proactive-performance-diagnostics.md)
+- [Hibaanomáliák](./proactive-failure-diagnostics.md)
+- [Memóriavesztés](./proactive-potential-memory-leak.md)
+- [Teljesítményanomáliák](./proactive-performance-diagnostics.md)
+

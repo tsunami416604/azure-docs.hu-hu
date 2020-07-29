@@ -3,23 +3,20 @@ title: 'Rövid útmutató: Azure üzenetsor Storage Library v12-.NET'
 description: Megtudhatja, hogyan használhatja az Azure üzenetsor .NET V12 függvénytárát üzenetsor létrehozásához és üzenetek a várólistához való hozzáadásához. Ezután megtudhatja, hogyan olvashatja és törölheti az üzeneteket a várólistából. Azt is megtudhatja, hogyan törölhet egy várólistát.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 11/22/2019
+ms.date: 07/24/2020
 ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
-ms.openlocfilehash: 69e2c118ec298ebddf16d428ea2278de42e91309
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5931311368a6389386adb689a505feeeed03b29c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87036692"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289179"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-net"></a>Gyors útmutató: Azure üzenetsor Storage ügyféloldali kódtára a .NET-hez
 
 Ismerkedjen meg az Azure üzenetsor Storage ügyféloldali kódtár 12-es verziójával a .NET-hez. Az Azure üzenetsor-tároló egy olyan szolgáltatás, amely nagy mennyiségű üzenetet tárol a későbbi lekérésekhez és feldolgozáshoz. Az alábbi lépéseket követve telepítheti a csomagot, és kipróbálhatja a programkódot az alapszintű feladatokhoz.
-
-> [!NOTE]
-> A korábbi SDK-verzió használatának megkezdéséhez tekintse meg a gyors üzembe helyezési útmutató [: a .net-hez készült Azure Storage SDK-v11 használata a várólista kezeléséhez](storage-quickstart-queues-dotnet-legacy.md).
 
 Használja az Azure üzenetsor Storage ügyféloldali kódtárat a .NET-hez a következőhöz:
 

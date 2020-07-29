@@ -156,6 +156,8 @@
       href: customer-managed-keys.md
     - name: Incidens létrehozása riasztásból
       href: create-incidents-from-alerts.md
+    - name: A SOC hatékonyabb kezelése incidensmetrikákkal
+      href: manage-soc-with-incident-metrics.md
     - name: Veszélyforrás-keresés
       href: hunting.md
       items:

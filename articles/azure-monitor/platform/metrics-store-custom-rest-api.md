@@ -7,18 +7,19 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 84709c022631543101889f784231158ebb96b6f3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c315cc8c9dfcfa66999ff263fab95f414061e54e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77662264"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321258"
 ---
 # <a name="send-custom-metrics-for-an-azure-resource-to-the-azure-monitor-metric-store-by-using-a-rest-api"></a>Egyéni metrikák küldése az Azure-erőforrásokhoz az Azure Monitor metrikai tárolóba egy REST API használatával
 
 Ebből a cikkből megtudhatja, hogyan küldhet egyéni metrikákat az Azure-erőforrásokhoz az Azure Monitor metrikai tárolóba egy REST API használatával. A metrikák Azure Monitor a standard metrikákkal végezheti el az összes dolgot. Ilyenek például a diagramok, a riasztások és a többi külső eszközre történő útválasztás.  
 
 >[!NOTE]  
->A REST API csak egyéni metrikák küldését engedélyezi az Azure-erőforrásokhoz. A különböző környezetekben vagy a helyszínen lévő erőforrások metrikáinak elküldéséhez használhatja a [Application Insights](../../azure-monitor/app/api-custom-events-metrics.md).    
+>A REST API csak egyéni metrikák küldését engedélyezi az Azure-erőforrásokhoz. A különböző környezetekben vagy a helyszínen lévő erőforrások metrikáinak elküldéséhez használhatja a [Application Insights](../app/api-custom-events-metrics.md).    
 
 
 ## <a name="create-and-authorize-a-service-principal-to-emit-metrics"></a>Egyszerű szolgáltatás létrehozása és engedélyezése mérőszámok kibocsátásához 
@@ -92,13 +93,13 @@ Ha a folyamat néhány részével hibaüzenetet kap, vegye figyelembe a követke
 1. Azure-erőforrásként nem lehet mérőszámokat kiadni egy előfizetéshez vagy erőforráscsoporthoz. 
 1. A 20 percnél régebbi tárolóba nem helyezhető metrika. A metrikai tároló a riasztások és a valós idejű diagramok esetében van optimalizálva. 
 2. A dimenziók neveinek számának meg kell egyeznie az értékekkel, és fordítva. Keresse meg az értékeket. 
-2. Lehet, hogy mérőszámokat bocsát ki egy olyan régióra, amely nem támogatja az egyéni metrikákat. Lásd: [támogatott régiók](../../azure-monitor/platform/metrics-custom-overview.md#supported-regions). 
+2. Lehet, hogy mérőszámokat bocsát ki egy olyan régióra, amely nem támogatja az egyéni metrikákat. Lásd: [támogatott régiók](./metrics-custom-overview.md#supported-regions). 
 
 
 
 ## <a name="view-your-metrics"></a>Metrikák megtekintése 
 
-1. Jelentkezzen be az Azure portálra. 
+1. Jelentkezzen be az Azure Portalra. 
 
 1. A bal oldali menüben válassza a **figyelő**elemet. 
 
@@ -116,5 +117,5 @@ Ha a folyamat néhány részével hibaüzenetet kap, vegye figyelembe a követke
 
  
 ## <a name="next-steps"></a>További lépések
-- További információ az [Egyéni metrikákkal](../../azure-monitor/platform/metrics-custom-overview.md)kapcsolatban.
+- További információ az [Egyéni metrikákkal](./metrics-custom-overview.md)kapcsolatban.
 

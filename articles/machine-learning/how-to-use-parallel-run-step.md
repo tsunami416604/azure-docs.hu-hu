@@ -11,12 +11,12 @@ ms.author: tracych
 author: tracychms
 ms.date: 07/16/2020
 ms.custom: Build2020, tracking-python
-ms.openlocfilehash: 23fe2704cb74a5dc1411d5556dd6f3bbbac8937a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 475c5b3073b25c79b57a2ab507af642a8af3547f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87047987"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288878"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>Batch-következtetés futtatása nagy mennyiségű adattal a Azure Machine Learning használatával
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -27,13 +27,13 @@ A ParallelRunStep segítségével egyszerűen méretezheti az offline következt
 
 Ez a cikk a következő feladatokat ismerteti:
 
-> * Gépi tanulási erőforrások beállítása.
-> * Állítsa be a Batch-adatok bemeneteit és kimenetét.
-> * Készítse elő az előre betanított képbesorolási modellt a [MNIST](https://publicdataset.azurewebsites.net/dataDetail/mnist/) adatkészlet alapján. 
-> * Írja be a következtetési parancsfájlt.
-> * Hozzon létre egy [gépi tanulási folyamatot](concept-ml-pipelines.md) , amely ParallelRunStep tartalmaz, és futtassa a Batch következtetést a MNIST-tesztelési lemezképeken. 
-> * A Batch-következtetések újraküldése új adatbevitelsel és paraméterekkel. 
-> * Tekintse meg az eredményeket.
+> 1. Gépi tanulási erőforrások beállítása.
+> 1. Állítsa be a Batch-adatok bemeneteit és kimenetét.
+> 1. Készítse elő az előre betanított képbesorolási modellt a [MNIST](https://publicdataset.azurewebsites.net/dataDetail/mnist/) adatkészlet alapján. 
+> 1.  Írja be a következtetési parancsfájlt.
+> 1. Hozzon létre egy [gépi tanulási folyamatot](concept-ml-pipelines.md) , amely ParallelRunStep tartalmaz, és futtassa a Batch következtetést a MNIST-tesztelési lemezképeken. 
+> 1. A Batch-következtetések újraküldése új adatbevitelsel és paraméterekkel. 
+> 1. Tekintse meg az eredményeket.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -205,16 +205,16 @@ model = Model.register(model_path="models/",
 A parancsfájlnak két függvényt *kell tartalmaznia* :
 - `init()`: Használja ezt a funkciót bármilyen költséges vagy közös felkészüléshez a későbbi következtetésekhez. Használhatja például a modell betöltését egy globális objektumba. Ezt a függvényt a rendszer csak egyszer hívja meg a folyamat elején.
 -  `run(mini_batch)`: A függvény minden `mini_batch` példánynál futni fog.
-    -  `mini_batch`: A ParallelRunStep meghívja a Run metódust, és egy listát vagy pandák DataFrame ad át a metódus argumentumaként. Mini_batch minden bejegyzése – egy fájl elérési útja, ha a bemenet egy FileDataset, egy Panda DataFrame, ha a bemenet TabularDataset.
-    -  `response`: a Run () metódusnak egy Panda DataFrame vagy egy tömböt kell visszaadnia. Append_row output_action esetében ezek a visszaadott elemek a közös kimeneti fájlba vannak hozzáfűzve. Summary_only esetén a rendszer figyelmen kívül hagyja az elemek tartalmát. Az összes kimeneti művelet esetében minden visszaadott kimeneti elem a bemeneti elem egy sikeres futtatását jelzi a bemenet mini-batchben. Győződjön meg arról, hogy a Futtatás eredményében elegendő adat szerepel a kimenet leképezése a kimeneti eredmény futtatásához. A futtatási kimenet a kimeneti fájlban lesz megírva, és nem garantált, hogy sorrendben legyenek, a kimenetben lévő egyes kulcsokat kell használnia a bemenethez való leképezéshez.
+    -  `mini_batch`: `ParallelRunStep` meghívja a Run metódust, és egy listát vagy `DataFrame` a pandák argumentumot ad át a metódusnak. A mini_batch minden bejegyzése egy fájl elérési útja lesz, ha a bemenet `FileDataset` vagy egy Panda, `DataFrame` Ha a bemenet a `TabularDataset` .
+    -  `response`: a Run () metódusnak egy pandák `DataFrame` vagy egy tömböt kell visszaadnia. Append_row output_action esetében ezek a visszaadott elemek a közös kimeneti fájlba vannak hozzáfűzve. Summary_only esetén a rendszer figyelmen kívül hagyja az elemek tartalmát. Az összes kimeneti művelet esetében minden visszaadott kimeneti elem a bemeneti elem egy sikeres futtatását jelzi a bemenet mini-batchben. Győződjön meg arról, hogy a Futtatás eredményében elegendő adat szerepel a kimenet leképezése a kimeneti eredmény futtatásához. A futtatási kimenet a kimeneti fájlban lesz megírva, és nem garantált, hogy sorrendben legyenek, a kimenetben lévő egyes kulcsokat kell használnia a bemenethez való leképezéshez.
 
 ```python
+%%writefile digit_identification.py
 # Snippets from a sample script.
 # Refer to the accompanying digit_identification.py
 # (https://aka.ms/batch-inference-notebooks)
 # for the implementation script.
 
-%%writefile digit_identification.py
 import os
 import numpy as np
 import tensorflow as tf
@@ -289,7 +289,7 @@ batch_env.docker.base_image = DEFAULT_GPU_IMAGE
 
 `ParallelRunConfig`a `ParallelRunStep` Azure Machine learning folyamaton belüli példány fő konfigurációja. Ezzel a paranccsal becsomagolhatja a parancsfájlt, és konfigurálhatja a szükséges paramétereket, beleértve az alábbi bejegyzéseket:
 - `entry_script`: Egy felhasználói parancsfájl helyi fájl elérési útjaként, amely több csomóponton párhuzamosan fog futni. Ha `source_directory` van ilyen, használjon relatív elérési utat. Ellenkező esetben használja a gépen elérhető bármely elérési utat.
-- `mini_batch_size`: A mini-batch egyetlen hívásnak átadott mérete `run()` . (nem kötelező; az alapértelmezett érték a `10` FileDataset és `1MB` a TabularDataset fájl.)
+- `mini_batch_size`: A mini-batch egyetlen hívásnak átadott mérete `run()` . (nem kötelező; az alapértelmezett érték a és a rendszerhez tartozó `10` fájlok `FileDataset` `1MB` `TabularDataset` .)
     - A esetében `FileDataset` a minimális értékkel rendelkező fájlok száma `1` . Több fájlt is egyesítheti egyetlen mini-kötegbe.
     - A esetében `TabularDataset` a mérete az adatmennyiség. Az értékek például a következők:,, `1024` `1024KB` `10MB` és `1GB` . A javasolt érték: `1MB` . A mini-batch-ból `TabularDataset` soha nem lesz keresztben a fájl határa. Ha például. csv fájlokkal rendelkezik, amelyek különböző méretűek, a legkisebb fájl 100 KB, a legnagyobb pedig 10 MB. Ha be van állítva `mini_batch_size = 1MB` , akkor az 1 MB-nál kisebb méretű fájlok egyetlen mini batch-ként lesznek kezelve. Az 1 MB-nál nagyobb méretű fájlok több mini-kötegre lesznek felosztva.
 - `error_threshold`: A rendszer figyelmen kívül hagyja a hibák számát a (z `TabularDataset` ) és a (z) esetében a `FileDataset` feldolgozás során. Ha a teljes bemenethez tartozó hibák száma meghaladja ezt az értéket, a rendszer megszakítja a feladatot. A hiba küszöbértéke a teljes bemenetre vonatkozik, nem a metódusnak eljuttatott egyes mini-batch esetében `run()` . A tartomány `[-1, int.max]` . A `-1` rész azt jelzi, hogy a rendszer figyelmen kívül hagyja az összes hibát a feldolgozás során.
@@ -306,7 +306,7 @@ batch_env.docker.base_image = DEFAULT_GPU_IMAGE
 - `run_invocation_timeout`: A `run()` metódus meghívásának időtúllépése másodpercben. (nem kötelező; az alapértelmezett érték: `60` )
 - `run_max_try`: Maximális számú próbálkozás a `run()` mini batch számára. A nem `run()` sikerült, ha kivétel keletkezik, vagy ha a rendszer nem ad vissza semmit, ha `run_invocation_timeout` a szolgáltatás elérte az értéket (opcionális; az alapértelmezett érték `3` ). 
 
-A (z),,,, és as értéket megadhatja, `mini_batch_size` `node_count` hogy a `process_count_per_node` `logging_level` `run_invocation_timeout` `run_max_try` `PipelineParameter` folyamat futásának újraküldésekor a paraméterek értékei finomhangolása megtörténjen. Ebben a példában a és a PipelineParameter használja `mini_batch_size` , `Process_count_per_node` és ezeket az értékeket fogja módosítani, ha később újra elküld egy futtatást. 
+A (z),,,, és as értéket megadhatja, `mini_batch_size` `node_count` hogy a `process_count_per_node` `logging_level` `run_invocation_timeout` `run_max_try` `PipelineParameter` folyamat futásának újraküldésekor a paraméterek értékei finomhangolása megtörténjen. Ebben a példában a `PipelineParameter` és a és a () `mini_batch_size` értéket fogja használni, `Process_count_per_node` Ha később újra elküld egy futtatást. 
 
 Ez a példa feltételezi, hogy a `digit_identification.py` korábban tárgyalt parancsfájlt használja. Ha saját parancsfájlt használ, `source_directory` ennek megfelelően módosítsa a és a `entry_script` paramétereket.
 
@@ -396,7 +396,7 @@ pipeline_run_2.wait_for_completion(show_output=True)
 ```
 ## <a name="view-the-results"></a>Eredmények megtekintése
 
-A fenti Futtatás eredményei a PipelineData objektumban megadott adattárolóba kerülnek, ami ebben az esetben a következő: *következtetések*. A rendszer az alapértelmezett blob-tárolóban tárolja az eredményeket, és megtekintheti a Storage-fiókját, és megtekintheti Storage Explorer, a fájl elérési útja a következő: azureml-blobtárhely-*GUID*/azureml/*RunId* / *output_dir*.
+A fenti Futtatás eredményei az `DataStore` `PipelineData` objektumban megadott kimeneti adatként vannak írva, amelyek ebben az esetben a *következtetések*. A rendszer az alapértelmezett blob-tárolóban tárolja az eredményeket, és megtekintheti a Storage-fiókját, és megtekintheti Storage Explorer, a fájl elérési útja a következő: azureml-blobtárhely-*GUID*/azureml/*RunId* / *output_dir*.
 
 A találatok megtekintéséhez letöltheti ezeket az adatfájlokat is. Alább látható a mintakód az első 10 sor megtekintéséhez.
 

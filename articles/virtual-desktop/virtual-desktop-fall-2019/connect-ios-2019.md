@@ -1,6 +1,6 @@
 ---
-title: Kapcsolódás a Windows rendszerű virtuális asztalhoz az iOS-Azure 2019
-description: Kapcsolódás a Windows rendszerű virtuális asztalhoz az iOS-ügyfél használatával.
+title: Kapcsolódás a Windows rendszerű virtuális asztalhoz (klasszikus) iOS-ről – Azure
+description: Kapcsolódás a Windows rendszerű virtuális asztalhoz (klasszikus) az iOS-ügyfél használatával.
 services: virtual-desktop
 author: heidilohr
 ms.service: virtual-desktop
@@ -8,19 +8,19 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 26c031710c96c42b1d5236332e445992de87616e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 06de85e23b1d6350a48735506c8931922d40b799
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087135"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87270736"
 ---
-# <a name="connect-with-the-ios-client"></a>Kapcsolódás az iOS-ügyfélhez
+# <a name="connect-to-windows-virtual-desktop-classic-with-the-ios-client"></a>Kapcsolódás a Windows rendszerű virtuális asztalhoz (klasszikus) az iOS-ügyféllel
 
 > A következőkre vonatkozik: iOS 13,0 vagy újabb. IPhone-, iPad-és iPod Touch-kompatibilis.
 
 >[!IMPORTANT]
->Ez a tartalom a Fall 2019 kiadásra vonatkozik, amely nem támogatja a Windows rendszerű virtuális asztali objektumokat Azure Resource Manager. Ha a Spring 2020 Update szolgáltatásban bevezetett Azure Resource Manager Windows rendszerű virtuális asztali objektumokat szeretne felügyelni, tekintse meg [ezt a cikket](../connect-ios.md).
+>Ez a tartalom a Windows rendszerű virtuális asztali (klasszikus) verzióra vonatkozik, amely nem támogatja Azure Resource Manager Windows rendszerű virtuális asztali objektumokat. Ha Azure Resource Manager Windows rendszerű virtuális asztali objektumokat szeretne felügyelni, tekintse meg [ezt a cikket](../connect-ios.md).
 
 A Windows rendszerű virtuális asztali erőforrásokat a letölthető ügyféllel is elérheti iOS-eszközéről. Ebből az útmutatóból megtudhatja, hogyan állíthatja be az iOS-ügyfelet.
 

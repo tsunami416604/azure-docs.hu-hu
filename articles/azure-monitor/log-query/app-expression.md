@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/09/2019
-ms.openlocfilehash: 5d31c829487400f8eb239c0b837e53eecafeb900
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7cb8073d048118e704dafb0c70fe7cdb6774344a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83201108"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324539"
 ---
 # <a name="app-expression-in-azure-monitor-query"></a>alkalmazás () kifejezés Azure Monitor lekérdezésben
 
@@ -19,7 +20,7 @@ A `app` kifejezés egy Azure monitor lekérdezésben van használatban, amely eg
 > [!IMPORTANT]
 > Ha [munkaterületen alapuló Application Insights erőforrást](../app/create-workspace-resource.md) használ, a rendszer nem használja az app () kifejezést, mert a rendszer egy log Analytics munkaterületen tárolja a naplóbeli adatkészletet. A log () kifejezés használatával olyan lekérdezést írhat, amely több munkaterületen is tartalmaz alkalmazást. Ugyanazon a munkaterületen több alkalmazás esetében nincs szükség több munkaterület-lekérdezésre.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>Szintaxis
 
 `app(`*Azonosító*`)`
 
@@ -72,5 +73,6 @@ union
 ## <a name="next-steps"></a>További lépések
 
 - Tekintse meg a [munkaterület kifejezését](workspace-expression.md) log Analytics munkaterületre való hivatkozáshoz.
-- További információ a [Azure monitor adatainak](../../azure-monitor/log-query/log-query-overview.md) tárolásáról.
+- További információ a [Azure monitor adatainak](./log-query-overview.md) tárolásáról.
 - A [Kusto lekérdezési nyelv](/azure/kusto/query/)teljes dokumentációjának elérése.
+

@@ -7,13 +7,13 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: yegu
-ms.custom: mvc, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 02430e2dfa68ff0ce4bf116666d72a46e1120746
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.custom: mvc, seo-java-august2019, seo-java-september2019, devx-track-java
+ms.openlocfilehash: 3cd8b18358128c8566c0cde668c084a22dd261d0
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83848855"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320697"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-java"></a>Gyors útmutató: az Azure cache használata a Redis Javával
 
@@ -117,7 +117,7 @@ Ez a kód azt mutatja be, hogyan csatlakozhat egy Azure cache-hez a Redis-péld�
 
 Mentse az *App.java* fájlt.
 
-## <a name="build-and-run-the-app"></a>Az alkalmazás létrehozása és futtatása
+## <a name="build-and-run-the-app"></a>Készítsen buildet és futtassa az alkalmazást
 
 Hajtsa végre a következő Maven-parancsot az alkalmazás buildeléséhez és elindításához:
 
@@ -130,7 +130,7 @@ Az alábbi példában a `Message` kulcsot láthatja. A kulcsnak korábban gyors�
 
 ![Befejeződött az Azure cache a Redis alkalmazáshoz](./media/cache-java-get-started/azure-cache-redis-complete.png)
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha azt tervezi, hogy a következő oktatóanyaggal folytatja, megtarthatja és újból felhasználhatja az ebben a rövid útmutatóban létrehozott erőforrásokat.
 
