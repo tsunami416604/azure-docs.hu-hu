@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: a7fab9515051180fdb1b894602478768a60177ef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fd0057c5f5e365d6c91ae221a7add813855bb1ec
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85362057"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323587"
 ---
 # <a name="onboarding-and-installing"></a>Előkészítés és telepítés
 
@@ -50,9 +50,9 @@ Ha megfelel a fenti képesítéseknek, a Microsoft biztonsági kód elemzése b�
 
 - Zónák – kapcsolattartási adatok:cloudsupport@zones.com
 - Wortell – kapcsolattartási adatok:info@wortell.nl
-- Logicis – kapcsolattartási adatok:Matthew.Curtis@us.logicalis.com 
+- Logicis – kapcsolattartási adatok:logicalisleads@us.logicalis.com
 
-### <a name="become-a-partner"></a>Partnerré válni
+### <a name="become-a-partner"></a>Legyen Ön is partner
 
 A Microsoft biztonsági kód elemzése csapat a partnereknek szóló szerződéssel rendelkező Premier szintű támogatás keres. A partnerek segítséget nyújtanak az Azure DevOps ügyfeleinek, hogy biztonságosabban fejlesszenek, ha a bővítményt a megvásárolni kívánt ügyfeleknek értékesítik, de nem rendelkeznek nagyvállalati támogatási szerződéssel a Microsofttal. Az érdekelt partnerek regisztrálhatnak [itt](http://www.microsoftpartnersupport.com/msrd/opin).
 
@@ -63,7 +63,7 @@ A Microsoft biztonsági kód elemzése csapat a partnereknek szóló szerződés
 1. Válassza a **megosztott**lehetőséget.
 1. Válassza ki a Microsoft biztonsági kód elemzése bővítményt, majd válassza a **telepítés**lehetőséget.
 1. A legördülő listában válassza ki az Azure DevOps-szervezetet a bővítmény telepítéséhez.
-1. Válassza a **Telepítés** gombot. A telepítés befejezése után elkezdheti használni a bővítményt.
+1. Válassza a **Telepítés** lehetőséget. A telepítés befejezése után elkezdheti használni a bővítményt.
 
 >[!NOTE]
 > Még ha nincs hozzáférése a bővítmény telepítéséhez, folytassa a telepítési lépésekkel. A telepítési folyamat során az Azure DevOps-szervezet rendszergazdájától kérhet hozzáférést.

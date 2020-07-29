@@ -9,21 +9,23 @@ ms.custom:
 - mvc
 - amqp
 - mqtt
+- 'Role: Cloud Development'
+- 'Role: IoT Device'
 ms.date: 02/22/2019
 ms.topic: tutorial
 ms.service: iot-hub
-ms.openlocfilehash: e42b403717eb83db06a9f719a6451cbca74c2929
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e26c3fc9ec420596a4ec152f7f176e44acc7b4c3
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81770045"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321666"
 ---
 # <a name="tutorial-use-a-simulated-device-to-test-connectivity-with-your-iot-hub"></a>Oktatóanyag: Szimulált eszköz használata az IoT Hub-kapcsolat ellenőrzéséhez
 
 Ebben az oktatóanyagban az Azure IoT Hub portál eszközeivel és az Azure CLI parancsaival teszteli az eszközkapcsolatot. Az oktatóanyag emellett egy egyszerű eszközszimulátort is használ, amelyet az asztali gépén futtat.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
@@ -44,7 +46,7 @@ az extension add --name azure-iot
 
 [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
-Az oktatóanyagban futtatott eszközszimulátor alkalmazás Node.js használatával készült. A fejlesztői gépen a Node. js v10. x. x vagy újabb verziója szükséges.
+Az oktatóanyagban futtatott eszközszimulátor alkalmazás Node.js használatával készült. A fejlesztői gépen Node.js v10. x. x vagy újabb verzió szükséges.
 
 A Node.js-t a [nodejs.org](https://nodejs.org) oldalról töltheti le többféle platformra.
 
@@ -161,7 +163,7 @@ Sikeresen hitelesített egy eszközről egy parancssori felületi paranccsal lé
 
 Az eszközök az alábbi protokollok bármelyikével csatlakozhatnak az IoT Hubhoz:
 
-| Protocol (Protokoll) | Kimenő port |
+| Protokoll | Kimenő port |
 | --- | --- |
 | MQTT |8883 |
 | MQTT WebSocketen keresztül |443 |

@@ -5,13 +5,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 06/25/2020
-ms.openlocfilehash: 072f8fd44fa45648afd15cb40cba26bb427c7b56
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 07/27/2020
+ms.openlocfilehash: 96783955eac6ade90a155236891307720616ed20
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539618"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323944"
 ---
 # <a name="enable-azure-monitor-for-vms-overview"></a>Azure Monitor for VMs-áttekintés engedélyezése
 
@@ -47,17 +47,17 @@ A Azure Monitor for VMs a következő régiókban támogatja a Log Analytics mun
 - USA déli középső régiója
 - USA keleti régiója
 - USA 2. keleti régiója
-- Central US
+- USA középső régiója
 - USA északi középső régiója
 - US Gov az
 - US Gov VA
 - Közép-Kanada
 - Az Egyesült Királyság déli régiója
 - Észak-Európa
-- West Europe
+- Nyugat-Európa
 - Kelet-Ázsia
 - Délkelet-Ázsia
-- Central India
+- Közép-India
 - Kelet-Japán
 - Kelet-Ausztrália
 - Délkelet-Ausztrália
@@ -67,22 +67,16 @@ A Azure Monitor for VMs a következő régiókban támogatja a Log Analytics mun
 >
 
 Ha nem rendelkezik Log Analytics munkaterülettel, létrehozhat egyet az egyik erőforrás használatával:
-* [Azure CLI](../../azure-monitor/learn/quick-create-workspace-cli.md)
+* [Azure CLI](../learn/quick-create-workspace-cli.md)
 * [PowerShell](../platform/powershell-workspace-configuration.md)
-* [Azure Portal](../../azure-monitor/learn/quick-create-workspace.md)
-* [Azure Resource Manager](../../azure-monitor/platform/template-workspace-configuration.md)
+* [Azure Portal](../learn/quick-create-workspace.md)
+* [Azure Resource Manager](../platform/template-workspace-configuration.md)
 
-Létrehozhat egy munkaterületet is, miközben egy Azure-beli virtuális gép vagy egy virtuálisgép-méretezési csoport figyelését engedélyezi a Azure Portalban.
+- Azure virtuális gép
+- Azure virtuálisgép-méretezési csoport
+- Az Azure arc-hoz csatlakoztatott hibrid virtuális gép
 
-Azure Policy, Azure PowerShell vagy Azure Resource Manager sablonokat használó méretezési forgatókönyv beállításához telepítenie kell a *VMInsights* -megoldást. Ezt a következő módszerek egyikével teheti meg:
-
-* [Azure PowerShell](vminsights-enable-at-scale-powershell.md#set-up-a-log-analytics-workspace)használata.
-* A Azure Monitor for VMs [**házirend-lefedettség**](vminsights-enable-at-scale-policy.md#manage-policy-coverage-feature-overview) lapon válassza a **munkaterület konfigurálása**lehetőséget. 
-
-### <a name="azure-arc-machines"></a>Azure arc-gépek
-Azure Monitor for VMs elérhető az Azure arc-kompatibilis kiszolgálókhoz olyan régiókban, amelyeken elérhető az ív-bővítmény szolgáltatás. A felhasználóknak az arc-ügynök 0,9-es vagy újabb verzióját kell futtatniuk ahhoz, hogy a Azure Monitor for VMst az ív használatára képes kiszolgálókon engedélyezzék.
-
-### <a name="supported-operating-systems"></a>Támogatott operációs rendszerek
+## <a name="supported-operating-systems"></a>Támogatott operációs rendszerek
 
 A következő táblázat felsorolja a Azure Monitor for VMs által támogatott Windows-és Linux-operációs rendszereket. A szakasz későbbi részében egy teljes listát talál, amely részletesen ismerteti a Linux operációs rendszer kiadásának és a támogatott kernelnek a verziószámát.
 
@@ -158,54 +152,40 @@ A következő táblázat felsorolja a Azure Monitor for VMs által támogatott W
 |:--|:--|
 | 9 | 4,9 | 
 
-### <a name="the-microsoft-dependency-agent"></a>A Microsoft függőségi ügynök
-
-A Azure Monitor for VMs Térkép funkciója a Microsoft függőségi ügynöktől kapja meg az adatait. A függőségi ügynök a Log Analytics ügynökre támaszkodik Log Analyticshoz való kapcsolódáskor. Ezért a rendszernek rendelkeznie kell a függőségi ügynökkel telepített és konfigurált Log Analytics-ügynökkel.
-
-Függetlenül attól, hogy engedélyezi-e a Azure Monitor for VMst egyetlen Azure-beli virtuális gépen, vagy az igény szerinti üzembe helyezési módszert használja, a Windows vagy [Linux](../../virtual-machines/extensions/agent-dependency-linux.md) [rendszerhez](../../virtual-machines/extensions/agent-dependency-windows.md) készült Azure-beli virtuálisgép-függőségi ügynök bővítmény használatával telepítse az ügynököt a felhasználói felület részeként.
-
->[!NOTE]
->Az ebben a szakaszban ismertetett információk a [Service Map megoldásra](service-map.md)is érvényesek.  
-
-Hibrid környezetben a függőségi ügynököt manuálisan vagy automatikus módszerrel is letöltheti és telepítheti.
-
-A következő táblázat azokat a csatlakoztatott forrásokat ismerteti, amelyeket a Térkép funkció támogat egy hibrid környezetben.
+## <a name="supported-azure-arc-machines"></a>Támogatott Azure arc-gépek
+Azure Monitor for VMs elérhető az Azure arc-kompatibilis kiszolgálókhoz olyan régiókban, amelyeken elérhető az ív-bővítmény szolgáltatás. Az ív-ügynök 0,9-es vagy újabb verzióját kell futtatnia.
 
 | Csatlakoztatott forrás | Támogatott | Leírás |
 |:--|:--|:--|
-| Windows-ügynökök | Igen | A Windows [log Analytics ügynökével](../../azure-monitor/platform/log-analytics-agent.md)együtt a Windows-ügynököknek szüksége van a függőségi ügynökre. További információ: [támogatott operációs rendszerek](#supported-operating-systems). |
-| Linux-ügynökök | Igen | A [Linux rendszerhez készült log Analytics-ügynökkel](../../azure-monitor/platform/log-analytics-agent.md)együtt a Linux-ügynököknek szüksége van a függőségi ügynökre. További információ: [támogatott operációs rendszerek](#supported-operating-systems). |
+| Windows-ügynökök | Igen | A Windows [log Analytics ügynökével](../platform/log-analytics-agent.md)együtt a Windows-ügynököknek szüksége van a függőségi ügynökre. További információ: [támogatott operációs rendszerek](#supported-operating-systems). |
+| Linux-ügynökök | Igen | A [Linux rendszerhez készült log Analytics-ügynökkel](../platform/log-analytics-agent.md)együtt a Linux-ügynököknek szüksége van a függőségi ügynökre. További információ: [támogatott operációs rendszerek](#supported-operating-systems). |
 | System Center Operations Manage felügyeleti csoport | Nem | |
 
-A függőségi ügynököt a következő helyekről töltheti le:
+## <a name="agents"></a>Ügynökök
+Azure Monitor for VMs a következő két ügynököt kell telepíteni az egyes virtuális gépekre vagy virtuálisgép-méretezési csoportokra. Ezeknek az ügynököknek a telepítése és a munkaterülethez való csatlakoztatása az egyetlen követelmény az erőforrás bevezetéséhez.
 
-| Fájl | Operációs rendszer | Verzió | SHA-256 |
-|:--|:--|:--|:--|
-| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.10.4.10090 | B4E1FF9C1E5CD254AA709AEF9723A81F04EC0763C327567C582CE99C0C5A0BAE  |
-| [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.10.4.10090 | A56E310D297CE3B343AE8F4A6F72980F1C3173862D6169F1C713C2CA09660A9F |
+- [Log Analytics ügynök](../platform/log-analytics-agent.md). Eseményeket és teljesítményadatokat gyűjt a virtuális gépről vagy virtuálisgép-méretezési csoportból, és továbbítja azt a Log Analytics munkaterületre. Az Azure-erőforrások Log Analytics ügynökének üzembe helyezési módszerei a Windows és [Linux](../../virtual-machines/extensions/oms-linux.md) [rendszerhez](../../virtual-machines/extensions/oms-windows.md) készült virtuálisgép-bővítményt használják.
+- Függőségi ügynök. Gyűjti a felderített adatokat a virtuális gépen és a külső folyamatok függőségein futó folyamatokról, amelyeket az [Azure monitor for VMS Térkép funkciója](vminsights-maps.md)használ. A függőségi ügynök a Log Analytics ügynökre támaszkodik, hogy az adatAzure Monitorba kézbesítse az adatforrást. Az Azure-erőforrások függőségi ügynökének üzembe helyezési módszerei a Windows és [Linux](../../virtual-machines/extensions/agent-dependency-linux.md) [rendszerhez](../../virtual-machines/extensions/agent-dependency-windows.md) készült virtuálisgép-bővítményt használják.
 
-## <a name="role-based-access-control"></a>Szerepköralapú hozzáférés-vezérlés
+> [!NOTE]
+> A Log Analytics ügynök ugyanaz az ügynök, amelyet a System Center Operations Manager használ. A Azure Monitor for VMs felügyelheti a Operations Manager által is figyelt ügynököket, ha azokat közvetlenül csatlakoztatják, és telepítik a függőségi ügynököt. A [felügyeleti csoport kapcsolatain](../tform/../platform/om-agents.md) keresztül Azure monitorhoz csatlakozó ügynököket Azure monitor for VMS nem lehet figyelni.
 
-A Azure Monitor for VMs szolgáltatásainak engedélyezéséhez és eléréséhez a *log Analytics közreműködő* szerepkörrel kell rendelkeznie. A teljesítmény-, állapot-és leképezési adat megtekintéséhez az Azure-beli virtuális gép *figyelési olvasójának* szerepkörrel kell rendelkeznie. A Log Analytics munkaterületet konfigurálni kell a Azure Monitor for VMshoz.
+Az alábbi módszerek több módszert is biztosítanak ezeknek az ügynököknek a üzembe helyezésére. 
 
-A Log Analytics munkaterület elérésének szabályozásáról a [munkaterületek kezelése](../../azure-monitor/platform/manage-access.md)című témakörben olvashat bővebben.
+| Metódus | Leírás |
+|:---|:---|
+| [Azure Portal](vminsights-enable-single-vm.md) | Telepítsen mindkét ügynököt egyetlen virtuális gépre, virtuálisgép-méretezési csoportra vagy az Azure arc-hoz csatlakoztatott hibrid virtuális gépekre. |
+| [Resource Manager-sablonok](vminsights-enable-powershell.md) | Telepítse mindkét ügynököt a támogatott módszerek bármelyikével egy Resource Manager-sablon üzembe helyezéséhez, beleértve a CLI-t és a PowerShellt is. |
+| [Azure Policy](vminsights-enable-at-scale-policy.md) | Azure Policy-kezdeményezés hozzárendelésével automatikusan telepítheti az ügynököket virtuális gép vagy virtuálisgép-méretezési csoport létrehozásakor. |
+| [Manuális telepítés](vminsights-enable-hybrid-cloud.md) | Telepítse az ügynököket a vendég operációs rendszerbe az Azure-on kívül üzemeltetett számítógépeken, például az adatközpontban vagy más felhőalapú környezetekben. |
 
-## <a name="how-to-enable-azure-monitor-for-vms"></a>A Azure Monitor for VMs engedélyezése
 
-Azure Monitor for VMs engedélyezése a táblázatban leírt módszerek egyikének használatával:
 
-| Központi telepítés állapota | Metódus | Leírás |
-|------------------|--------|-------------|
-| Egyetlen Azure-beli virtuális gép, Azure-VMSS vagy Azure arc-gép | [Engedélyezés a portálról](vminsights-enable-single-vm.md) | Válassza **ki** az eredményeket közvetlenül a Azure Portal menüjéből. |
-| Több Azure-beli virtuális gép, Azure-VMSS vagy Azure-beli ív | [Engedélyezés Azure Policy](vminsights-enable-at-scale-policy.md) | A Azure Policy használatával automatikusan engedélyezheti a virtuális gépek vagy VMSS létrehozását. |
-| | [Engedélyezés Azure PowerShell vagy Azure Resource Manager sablonokkal](vminsights-enable-at-scale-powershell.md) | Azure PowerShell-vagy Azure Resource Manager-sablonok használatával engedélyezheti több Azure-beli virtuális gép, Azure arc virtuális gép vagy Azure-VMSS használatát egy adott előfizetésen vagy erőforráscsoporton keresztül. |
-| Hibrid felhő | [Hibrid környezet engedélyezése](vminsights-enable-hybrid-cloud.md) | Üzembe helyezés az adatközpontban vagy más felhőalapú környezetekben üzemeltetett virtuális gépeken vagy fizikai számítógépeken. |
 
 ## <a name="management-packs"></a>Felügyeleti csomagok
+Ha egy Log Analytics munkaterületen Azure Monitor for VMs van konfigurálva, a rendszer két felügyeleti csomagot továbbít az adott munkaterülethez csatlakozó összes Windows-számítógépre. A felügyeleti csomagokat a *Microsoft. IntelligencePacks. ApplicationDependencyMonitor* és a *Microsoft. IntelligencePacks. VMInsights* nevű csomag tartalmazza, és a rendszer a *%ProgramFiles%\Microsoft monitoring Agent\Agent\Health szolgáltatás State\Management csomagjaira ír \* . 
 
-Ha a Azure Monitor for VMs engedélyezve van, és egy Log Analytics munkaterületre van konfigurálva, a felügyeleti csomag a munkaterületnek jelentő összes Windows-számítógépre továbbítódik. Ha a [System Center Operations Manager felügyeleti csoportot](../../azure-monitor/platform/om-agents.md) a log Analytics munkaterülettel integrálta, a Service Map felügyeleti csomagot a felügyeleti csoportból kell telepíteni a felügyeleti csoportnak jelentő Windows rendszerű számítógépekre.  
-
-A felügyeleti csomag neve *Microsoft. IntelligencePacks. ApplicationDependencyMonitor*. A `%Programfiles%\Microsoft Monitoring Agent\Agent\Health Service State\Management Packs\` mappához írt mappa. Az adatforrás, amelyet a felügyeleti csomag használ `%Program files%\Microsoft Monitoring Agent\Agent\Health Service State\Resources\<AutoGeneratedID>\Microsoft.EnterpriseManagement.Advisor.ApplicationDependencyMonitorDataSource.dll` .
+A *ApplicationDependencyMonitor* felügyeleti csomag által használt adatforrás **% Program Files%\Microsoft monitoring Agent\Agent\Health Service State\Resources \<AutoGeneratedID>\Microsoft.EnterpriseManagement.Advisor.ApplicationDependencyMonitorDataSource.dll*. A *VMInsights* felügyeleti csomag által használt adatforrás a *(z)% program files%\Microsoft monitoring Agent\Agent\Health Service State\Resources \<AutoGeneratedID> \ Microsoft.VirtualMachineMonitoringModule.dll*.
 
 ## <a name="diagnostic-and-usage-data"></a>Diagnosztikai és használati adatok
 
@@ -217,8 +197,7 @@ További információ az adatok gyűjtéséről és használatáról: a [Microso
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-dsr-and-stp-note.md)]
 
-Most, hogy engedélyezte a virtuális gép figyelését, a figyelési információk a Azure Monitor for VMs elemzéséhez érhetők el.
-
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Teljesítményfigyelő funkció használatának megismeréséhez tekintse meg a [Azure monitor for VMS teljesítményének megtekintése](vminsights-performance.md)című témakört. A felderített alkalmazások függőségeinek megtekintéséhez lásd: [Azure monitor for VMS Térkép megtekintése](vminsights-maps.md).
+

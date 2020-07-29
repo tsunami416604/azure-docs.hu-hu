@@ -8,13 +8,15 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 02/01/2020
-ms.custom: mqtt
-ms.openlocfilehash: 1f61748a0a0d3d999670b6129e0e58758715ba3b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom:
+- mqtt
+- 'Role: Cloud Development'
+ms.openlocfilehash: 4887315ddef3f15ee3f6ef5ad80cf8df8b1dcd34
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85601853"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327769"
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>Az IoT Hub eszközön található ikrek megismerése és használata
 
@@ -183,7 +185,7 @@ A megoldás háttérrendszer a következő, HTTPS protokollon keresztül elérhe
 
   - Tulajdonságok
 
-    | Name | Érték |
+    | Név | Érték |
     | --- | --- |
     $content típusa | application/json |
     $iothub – enqueuedtime |  Az értesítés elküldésének ideje |
@@ -199,7 +201,7 @@ A megoldás háttérrendszer a következő, HTTPS protokollon keresztül elérhe
 
   - Törzs
         
-    Ez a szakasz a JSON-formátum összes kettős módosítását tartalmazza. Ugyanazt a formátumot használja, mint a javítás, a különbséggel, hogy az összes különálló szakaszt tartalmazhatja: címkék, tulajdonságok. jelentett, Properties. desired, és hogy tartalmazza a "$metadata" elemeket. Példa:
+    Ez a szakasz a JSON-formátum összes kettős módosítását tartalmazza. Ugyanazt a formátumot használja, mint a javítás, a különbséggel, hogy az összes különálló szakaszt tartalmazhatja: címkék, tulajdonságok. jelentett, Properties. desired, és hogy tartalmazza a "$metadata" elemeket. Például:
 
     ```json
     {

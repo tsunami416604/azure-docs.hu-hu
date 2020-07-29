@@ -2,18 +2,19 @@
 title: Csoportmunka-fejlesztés a Java és a Visual Studio Code használatával
 services: azure-dev-spaces
 author: stepro
+ms.custom: devx-track-java
 ms.author: stephpr
 ms.date: 08/01/2018
 ms.topic: tutorial
 description: Ebből az oktatóanyagból megtudhatja, hogyan használható az Azure dev Spaces és a Visual Studio Code az Azure Kubernetes szolgáltatásban található Java-alkalmazásokban való csoportmunka-fejlesztéshez
 keywords: 'Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s '
 manager: gwallace
-ms.openlocfilehash: 8bfcf16d3fcf685f946eb38b0b47fce4f2feba5b
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 80544b497caf39ee45acb82ff644a5c06ac3ff7e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86220235"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327191"
 ---
 # <a name="team-development-using-java-and-visual-studio-code-with-azure-dev-spaces"></a>Csoportmunka-fejlesztés a Java és a Visual Studio Code segítségével az Azure dev Spaces használatával
 
@@ -148,7 +149,7 @@ Most távolítsa el az URL-cím „scott.s.” előtagját, és frissítse a bö
 
 Ha rendelkezik egy _fejlesztői_ területtel, amely mindig tartalmazza a legújabb módosításokat, és feltételezi, hogy az alkalmazás úgy van kialakítva, hogy kihasználja a DevSpace-alapú útválasztást az oktatóanyag szakaszban leírtak szerint, remélhetőleg könnyen megtekintheti, hogy a fejlesztői helyek hogyan segíthetnek a nagyobb alkalmazások környezetében rejlő új szolgáltatások tesztelésében. Ahelyett, hogy az _összes_ szolgáltatást a saját tárhelyére kellene telepítenie, létrehozhat egy olyan privát helyet, amely a _dev_-ből származik, és csak a ténylegesen használt szolgáltatások közül választhat. A dev Spaces útválasztási infrastruktúrája a REST-t úgy fogja kezelni, hogy a saját tárterületének számos szolgáltatását használja, miközben a keresés közben a legújabb verzióra, a _fejlesztői_ térben pedig az alapértelmezett értékre kerül. És még jobb, ha _több_ fejlesztő is aktívan fejleszti a különböző szolgáltatásokat a saját területén anélkül, hogy megzavarja egymást.
 
-### <a name="well-done"></a>Remek!
+### <a name="well-done"></a>Szép munka!
 Elvégezte az első lépéseket ismertető útmutatót! Megtanulta végrehajtani az alábbi műveleteket:
 
 > [!div class="checklist"]

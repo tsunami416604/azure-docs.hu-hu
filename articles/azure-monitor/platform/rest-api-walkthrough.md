@@ -5,12 +5,12 @@ ms.subservice: metrics
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.custom: has-adal-ref
-ms.openlocfilehash: e25e85f811d1c5d854b471bf0417e75ab1686d72
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 500d5242d5185a8014283918c1f3a22c5c22cf48
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505125"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325593"
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Azure monitoring REST API útmutató
 
@@ -731,9 +731,10 @@ Tevékenységek naplóinak beolvasása szűrés vagy kiválasztás nélkül:
 GET https://management.azure.com/subscriptions/089bd33f-d4ec-47fe-8ba5-0753aa5c5b33/providers/microsoft.insights/eventtypes/management/values?api-version=2015-04-01
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* Tekintse át a [figyelés áttekintését](../../azure-monitor/overview.md).
+* Tekintse át a [figyelés áttekintését](../overview.md).
 * A [támogatott metrikák megtekintése Azure monitor](metrics-supported.md).
 * Tekintse át a [Microsoft Azure figyelő REST API referenciát](/rest/api/monitor/).
 * Tekintse át az [Azure felügyeleti könyvtárát](/previous-versions/azure/reference/mt417623(v=azure.100)).
+

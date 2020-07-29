@@ -5,15 +5,127 @@ author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
-ms.date: 04/20/2020
-ms.openlocfilehash: fc8304fb068152c800d7b71f77fb601956fb6510
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 07/27/2020
+ms.openlocfilehash: 113249f56c1f5f9c035ec2ff6ccb7309dd355763
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87023399"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281344"
 ---
 # <a name="changelog"></a>Változásnapló #
+
+## <a name="235-official-update-june-1-2020"></a>2.3.5 (hivatalos frissítés, 1 2020. június)
+
+### <a name="bug-fixes-235"></a>Hibajavítások 2.3.5
+
+- Hozzáférhetőség Az ESC billentyű-figyelő a beállítások panelen dokumentumhoz van csatolva
+- Hozzáférhetőség Annak megakadályozása, hogy a lejátszó felhasználói felülete ne jelenjen meg, ha a vezérlő sáv vagy a beállítások menü fókuszt tartalmaz
+- A vezérlő sáv nem megfelelő időpontot jelenít meg, ha a falióra-idő megjelenítési beállításai engedélyezve vannak
+
+### <a name="changes-235"></a>Módosítások 2.3.5
+
+- Hozzáadott hibaüzenet a hibakód 0x00400005 és dokumentálva
+
+## <a name="234-official-update-march-4-2020"></a>2.3.4 (hivatalos frissítés, 4 2020. március)
+
+### <a name="bug-fixes-234"></a>Hibajavítások 2.3.4
+
+- Nem lehet beállítani a PlayReady overrideLicenseAcquistionUrl
+- Nem lehet lejátszani egy tartalmat a megszakításokkal
+- Hozzáférhetőség Az ID attribútum értékének egyedinek kell lennie a képernyőolvasó riasztásához
+- Hozzáférhetőség A lezárt feliratok beállításai párbeszédpanel bezárásakor a fókusz kilépése párbeszédpanel
+
+### <a name="changes-234"></a>A 2.3.4 módosítása
+
+- Tartalom naplózása – a sikeres letöltés után a rendszer a visszafejtési hibák elemzését segíti a 2.3.3 (hivatalos frissítés november 12 2019)
+
+### <a name="features-234"></a>A 2.3.4-es funkciók
+
+- A videó lefedésének és a vezérlőelem sávján látható falióra-idő megjelenítésének támogatása
+
+### <a name="bug-fixes-234"></a>Hibajavítások 2.3.4
+
+- A hangkövetési kapcsoló működik, de a IE11 és a Windows7 objektum kimenete nem támogatja a (z) "enabled" tulajdonságot vagy metódust.
+- A hangsávok kapcsolója meghiúsul, ha a puffer teljesen betöltődött
+- A hangkövetési kapcsoló meghiúsul, ha a felhasználó gyorsan szünetelteti a videó-és váltást a hangsávok között
+- Hozzáférhetőség Nem definiált elemleírások videó vezérlőelemhez a videolejátszó alatt
+- Hiányzó hangerő-szabályozó gombok a Html5-ből attól függően, hogy a rendszer mikor fogadta a loadstart
+- Hozzáférhetőség Nem lehet beállítani a plakáthoz tartozó kép helyettesítő szövegét
+- Hozzáférhetőség Az alkalmazás fókusza elvész, miután kiválasztja a "kész" lehetőséget a képfeliratok beállításai párbeszédpanelen
+- Hozzáférhetőség Helytelen ARIA-attribútumok vannak definiálva a "videó" elemhez a "szegmensek előzetese" alatt
+
+### <a name="changes-234"></a>A 2.3.4 módosítása
+
+- Üres felirat/műsorszám eltávolítva az iOS-és MacOS-Safari-HLS lejátszásakor
+- A IMSC1-feliratok 412s számának csökkentése
+- Kimeneti figyelmeztetés a konzolon 10 egymást követő üres IMSC1 – az élő hibakeresést segítő feliratokra adott válaszok
+
+## <a name="232-official-update-october-9-2019"></a>2.3.2 (hivatalos frissítés, október 9 2019)
+
+### <a name="features"></a>Szolgáltatások
+
+-PlayReady-támogatás hozzáadva a Chromium Edge böngészőhöz készült DASH lejátszáshoz
+
+### <a name="bug-fixes-232"></a>Hibajavítások 2.3.2
+
+- Az aktuális lejátszási sebesség a lejátszási sebesség menüben nem jelenik meg, kivéve, ha a felhasználó manuálisan állítja be
+- Hozzáférhetőség A "Settings" (beállítások) panel nincs összecsukva az "ESC" kulccsal
+- Hozzáférhetőség A (z) "AMP" billentyűparancs nem működik, ha a Narrátor be van kapcsolva
+
+### <a name="changes-232"></a>A 2.3.2 módosítása
+
+- Az E-AC3 hangkodeket nem támogató böngészők esetén az E-AC3 hangsávok rejtettek a hangkövetési menüben
+- Az E-AC3 hangkodeket támogató böngészők esetén az E-AC3 hangsáv alapértelmezés szerint ki van választva
+- A hangkodekek váltását nem támogató böngészők esetén a hangsávokat a kijelölt vágányon lévő különböző kodekekkel együtt elrejtjük
+
+## <a name="231-official-update-august-12-2019"></a>2.3.1 (hivatalos frissítés, 12 2019. augusztus)
+
+### <a name="features-231"></a>Szolgáltatások 2.3.1
+
+- Egy esemény jelzése, ha a emsg-mezők beérkeznek a DASH lejátszási támogatásával, hogy megjelenjenek az EK-3 hangsávok az EC-3-et támogató böngészők hang menüjében, és lehetővé teszik az AAC-EC3 való váltást
+
+### <a name="bug-fixes-231"></a>Hibajavítások 2.3.1
+
+- A hangsáv menüje sérült az EC-3 zeneszámok eltávolítása után
+- Az aktuális idő nagy lehet, mint a videó időtartama
+- A lejátszási sebesség initialSpeed-n keresztüli beállítása nem működik
+- Előfordulhat, hogy egy keresés után a lejátszó beragadt
+- Az Edge és az IE egy érintőképernyőn az oldalra nagyítás után a seekbar megnyomásával vagy fölé húzva nem pontosan a videó helyes szegmense jelenik meg.
+- Hozzáférhetőség A Play/Pause ARIA-címkéje nem tartalmaz leírót a video Player Térkép élő szegmense számára, amely nem található a megfelelő amp hiba miatti hiba
+- Hozzáférhetőség A lejátszáshoz/szüneteltetéshez használt ARIA-szerepköröknek érvényes értékeknek kell megfelelniük (. VJ-Text-Track-Display)
+- Hozzáférhetőség Bizonyos ARIA-szerepköröket bizonyos szülőknek kell tartalmazniuk
+- Hozzáférhetőség A videolejátszó IMSC1 feliratának lejátszási/szüneteltetési gombja nem definiált elemleírást az aktuális video/audio pufferben való keresés után.
+
+### <a name="changes-231"></a>Változások 2.3.1
+
+- Amikor beolvas egy segmentDecryptError, és a lejátszó már az élő szélén van, a lejátszó most frissíti a jegyzékfájlt a következő szegmens kipróbálása helyett
+- További naplózás hozzáadása a diagnosztika szolgáltatáshoz
+- Frissített dokumentáció az iOS Safari foglalja FairPlay támogatásához
+- Példa hozzáadva a "srclang" IMSC1-beállításhoz
+- Hozzáadott kitöltés, textPadding, boxShadow felülbírálások a szöveges sávokhoz.
+- Egy errorcode (0x0020025B) hozzáadásával megkülönböztetheti, hogy a szegmens letöltése nem sikerült, mert nem csak dobta a 0x00200259
+
+## <a name="230-official-release-april-30-2019"></a>2.3.0 (hivatalos kiadás, 30 2019. április)
+
+### <a name="features-230"></a>Funkciók 2.3.0
+
+- A DASH IMSC1-feliratok támogatása hozzáadva
+- Csak videós eszközök támogatása a KÖTŐJELhez
+- API-presentationTimeOffsetInSec hozzáadva
+
+### <a name="bug-fixes-230"></a>Hibajavítások 2.3.0
+
+- Az AMP LowLatency heurisztikus profilja ütközik az iOS-videók "Mute" és "unmute" lejátszásával bizonyos nyelvekhez nem megfelelő fordítás
+- A folyamatjelző csúszka csúszkájának ARIA-valuenow értéke néha helytelen
+- A szöveges nyomkövetési képernyő ARIA-szerepkörének értéke helytelen
+
+### <a name="changes-230"></a>2.3.0 módosítása
+
+- A naplók mostantól a letöltött adathordozó-töredékek méretét is tartalmazzák
+- IE 9 és IE 10 támogatása eltávolítva
+- Frissített CEA708-minta a balra igazított feliratok megjelenítéséhez
+- MediaError. üzenet belefoglalása a naplókba lejátszási hibák esetén
 
 ## <a name="224-official-update-february-22-2019"></a>2.2.4 (hivatalos frissítés, február 22 2019) ##
 
@@ -31,7 +143,7 @@ ms.locfileid: "87023399"
 
 ## <a name="223-official-update-january-9-2019"></a>2.2.3 (hivatalos frissítés, január 9 2019) ##
 
-### <a name="features"></a>Funkciók ###
+### <a name="features-223"></a>A 2.2.3 funkció ###
 
 - Vonás HLS A hangkövetési menü hozzáadva a Safari HLS lejátszásához
 

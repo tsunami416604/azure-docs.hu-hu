@@ -4,12 +4,12 @@ description: Egyéni műveletek nyomon követése az Azure Application Insights 
 ms.topic: conceptual
 ms.date: 11/26/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: 49c2ad44dab5e4f57db2f11c17c269289e56d2d5
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: bd30f60928df3644b215f185d620393d1edda8c7
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86540043"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320374"
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>Egyéni műveletek nyomon követése Application Insights .NET SDK-val
 
@@ -206,7 +206,7 @@ public async Task Process(BrokeredMessage message)
 Az alábbi példa bemutatja, hogyan követheti nyomon az [Azure Storage-várólista](../../storage/queues/storage-dotnet-how-to-use-queues.md) műveleteit, és hogyan korrelálhat telemetria a gyártó, a fogyasztó és az Azure Storage között. 
 
 A tárolási várólista HTTP API-val rendelkezik. A várólista összes hívását nyomon követheti a HTTP-kérelmek Application Insights függőségi gyűjtője.
-Alapértelmezés szerint a ASP.NET és ASP.NET Core alkalmazásokban más típusú alkalmazásokkal van konfigurálva, a [konzolon futó alkalmazások dokumentációjában](../../azure-monitor/app/console.md) olvashat
+Alapértelmezés szerint a ASP.NET és ASP.NET Core alkalmazásokban más típusú alkalmazásokkal van konfigurálva, a [konzolon futó alkalmazások dokumentációjában](./console.md) olvashat
 
 Érdemes lehet összekapcsolni a Application Insights műveleti AZONOSÍTÓját is a Storage-kérelem azonosítójával. A Storage-kérelmek ügyfelének és a kiszolgálói kérelmek AZONOSÍTÓjának beállításával és lekérésével kapcsolatos információkért lásd: az [Azure Storage figyelése, diagnosztizálása és hibáinak megoldása](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md#end-to-end-tracing).
 
@@ -475,11 +475,12 @@ A tevékenységek a Application Insights és az automatikus függőségek, valam
 
 Minden Application Insights művelet (kérelem vagy függőség) magában foglalja `Activity` a-ha `StartOperation` a neve, a tevékenység a következőt hozza létre:. `StartOperation`a kérések vagy függőségi telemetriáiról manuális nyomon követése ajánlott módszer, és minden összefügg.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ismerkedjen meg a [telemetria korrelációjának](correlation.md) alapjaival Application Insightsban.
-- Tekintse át a korrelált adatkezelési [tranzakciós diagnosztika](../../azure-monitor/app/transaction-diagnostics.md) és az [alkalmazás-hozzárendelés](../../azure-monitor/app/app-map.md)módját.
-- Tekintse meg az [adatmodellt](../../azure-monitor/app/data-model.md) Application Insights típusokhoz és adatmodellekhez.
-- Egyéni [eseményeket és mérőszámokat](../../azure-monitor/app/api-custom-events-metrics.md) jelenthet a Application Insights.
+- Tekintse át a korrelált adatkezelési [tranzakciós diagnosztika](./transaction-diagnostics.md) és az [alkalmazás-hozzárendelés](./app-map.md)módját.
+- Tekintse meg az [adatmodellt](./data-model.md) Application Insights típusokhoz és adatmodellekhez.
+- Egyéni [eseményeket és mérőszámokat](./api-custom-events-metrics.md) jelenthet a Application Insights.
 - Tekintse meg a környezeti tulajdonságok gyűjteményének szabványos [konfigurációját](configuration-with-applicationinsights-config.md#telemetry-initializers-aspnet) .
 - Tekintse meg a [System. Diagnostics. Activity felhasználói útmutatót](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) , és nézze meg, hogyan korreláljuk a telemetria.
+

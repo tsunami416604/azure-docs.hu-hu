@@ -5,18 +5,18 @@ description: Azure Machine Learning üzembe helyezett webszolgáltatások figyel
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.reviewer: jmartens
 ms.author: larryfr
 author: blackmist
-ms.date: 06/09/2020
-ms.custom: tracking-python
-ms.openlocfilehash: d28cd3b1d8722970505eb313bd8e80589ce9ff87
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/23/2020
+ms.topic: conceptual
+ms.custom: how-to, tracking-python
+ms.openlocfilehash: 2bc3eb72ff0c5d29fd72de848abf87dfe84e2a01
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84743507"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320221"
 ---
 # <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>A ML webszolgáltatás-végpontokról származó adatok figyelése és gyűjtése
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -36,7 +36,7 @@ A végpont kimeneti adatok és válaszok összegyűjtése mellett a következők
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma
+* Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy ingyenes fiókot a virtuális gép létrehozásának megkezdése előtt. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma
 
 * Egy Azure Machine Learning munkaterület, egy helyi könyvtár, amely tartalmazza a parancsfájlokat, és a Azure Machine Learning SDK for Python telepítve van. Az előfeltételek beszerzéséről a [fejlesztési környezet konfigurálása](how-to-configure-environment.md) című cikkben olvashat bővebben.
 
@@ -153,15 +153,20 @@ Az Azure Application Insights a Azure Machine Learning studióból is engedélye
 1. Válassza ki **a diagnosztika és az adatgyűjtés engedélyezése Application Insights**
 
     ![Az alkalmazás-felismerés engedélyezése](./media/how-to-enable-app-insights/enable-app-insights.png)
-## <a name="evaluate-data"></a>Az adatértékelés
+
+## <a name="view-metrics-and-logs"></a>Metrikák és naplók megtekintése
+
 A szolgáltatás adatait a rendszer az Azure Application Insights-fiókjában tárolja, amely ugyanabban az erőforráscsoporthoz van, mint Azure Machine Learning.
 A megtekintéshez:
 
-1. Lépjen a [Azure Portal](https://ms.portal.azure.com/) Azure Machine learning munkaterületére, és kattintson a Application Insights hivatkozásra.
+1. Lépjen a Azure Machine Learning munkaterületére a [Studióban](https://ml.azure.com/).
+1. Válassza a **végpontok**lehetőséget.
+1. Válassza ki a telepített szolgáltatást.
+1. Görgessen le a **Application Insights URL-cím** megkereséséhez, és kattintson a hivatkozásra.
 
-    [![AppInsightsLoc](./media/how-to-enable-app-insights/AppInsightsLoc.png)](././media/how-to-enable-app-insights/AppInsightsLoc.png#lightbox)
+    [![Application Insights URL-cím keresése](./media/how-to-enable-app-insights/appinsightsloc.png)](././media/how-to-enable-app-insights/appinsightsloc.png#lightbox)
 
-1. A bal oldali lista **Áttekintés** lapján vagy a __figyelés__ szakaszban válassza a __naplók__lehetőséget.
+1. Az Application Isights, a bal oldali lista **Áttekintés** lapján vagy a __figyelés__ szakaszban válassza a __naplók__lehetőséget.
 
     [![A figyelés áttekintése lap](./media/how-to-enable-app-insights/overview.png)](./media/how-to-enable-app-insights/overview.png#lightbox)
 
@@ -186,7 +191,7 @@ Az Azure Application Insights [folyamatos exportálásával](https://docs.micros
 
 A Azure Data Factory, az Azure ML-feldolgozási folyamatai vagy más adatfeldolgozási eszközök is használhatók az adatátalakításhoz igény szerint. Ha átalakította az adatokat, akkor a Azure Machine Learning munkaterületre is regisztrálhat adatkészletként. Ehhez lásd: [adatkészletek létrehozása és regisztrálása](how-to-create-register-datasets.md).
 
-   [![Folyamatos exportálás](./media/how-to-enable-app-insights/continuous-export-setup.png)](././media/how-to-enable-app-insights/continuous-export-setup.png)
+:::image type="content" source="media/how-to-enable-app-insights/continuous-export-setup.png" alt-text="Folyamatos exportálás":::
 
 
 ## <a name="example-notebook"></a>Példajegyzetfüzet

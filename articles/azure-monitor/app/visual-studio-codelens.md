@@ -7,15 +7,15 @@ ms.author: daviste
 ms.date: 03/17/2017
 ms.reviewer: mbullwin
 ms.custom: vs-azure
-ms.openlocfilehash: 5354379b73eca46e35c41cc0cf580b113dae7e8c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 2a562378ae626351922e43d33f38e62331ab58de
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499256"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323485"
 ---
 # <a name="application-insights-telemetry-in-visual-studio-codelens"></a>Application Insights Telemetria a Visual Studio CodeLensben
-A telemetriával megjegyzések fűzhetők a webalkalmazás kódjában szereplő metódusokhoz a futásidejű kivételekkel és a kérések válaszidejével kapcsolatban. Ha telepíti az [Azure Application Insights-t](../../azure-monitor/app/app-insights-overview.md) az alkalmazásban, a telemetria megjelenik a Visual Studio [CodeLensben](/visualstudio/ide/find-code-changes-and-other-history-with-codelens?view=vs-2015) – az egyes függvények felett láthatók a jegyzetek, ahol korábban a függvény hivatkozási helyeinek száma, a legutóbbi szerkesztő neve vagy egyéb hasznos információk jelentek meg.
+A telemetriával megjegyzések fűzhetők a webalkalmazás kódjában szereplő metódusokhoz a futásidejű kivételekkel és a kérések válaszidejével kapcsolatban. Ha telepíti az [Azure Application Insights-t](./app-insights-overview.md) az alkalmazásban, a telemetria megjelenik a Visual Studio [CodeLensben](/visualstudio/ide/find-code-changes-and-other-history-with-codelens?view=vs-2015) – az egyes függvények felett láthatók a jegyzetek, ahol korábban a függvény hivatkozási helyeinek száma, a legutóbbi szerkesztő neve vagy egyéb hasznos információk jelentek meg.
 
 ![CodeLens](./media/visual-studio-codelens/codelens-overview.png)
 
@@ -70,6 +70,7 @@ További részletekért kattintson a CodeLens-kérésjelzőre:
 ## <a name="next-steps"></a><a name="next"></a>További lépések
 |  |  |
 | --- | --- |
-| **[Az Application Insights használata a Visual Studióban](../../azure-monitor/app/visual-studio.md)**<br/>Telemetriát kereshet, adatokat tekinthet meg a CodeLensben és konfigurálhatja az Application Insights alkalmazást. Mindezt a Visual Studión belül. |![Kattintson a jobb gombbal a projektre, és válassza az Application Insights, Keresés lehetőséget.](./media/visual-studio-codelens/34.png) |
-| **[További adatok hozzáadása](../../azure-monitor/app/asp-net-more.md)**<br/>Figyelheti a használatot, az elérhetőséget, a függőségeket és a kivételeket. Integrálhatja a nyomkövetéseket naplózási keretrendszerekből. Egyéni telemetriát írhat. |![Visual Studio](./media/visual-studio-codelens/64.png) |
-| **[Az Application Insights portál használata](../../azure-monitor/app/overview-dashboard.md)**<br/>Az irányítópultok, a hatékony diagnosztikai és elemző eszközök, riasztások, egy élő függőségi térkép az alkalmazásához, valamint a telemetria exportálása. |![Visual Studio](./media/visual-studio-codelens/62.png) |
+| **[Az Application Insights használata a Visual Studióban](./visual-studio.md)**<br/>Telemetriát kereshet, adatokat tekinthet meg a CodeLensben és konfigurálhatja az Application Insights alkalmazást. Mindezt a Visual Studión belül. |![Kattintson a jobb gombbal a projektre, és válassza az Application Insights, Keresés lehetőséget.](./media/visual-studio-codelens/34.png) |
+| **[További adatok hozzáadása](./asp-net-more.md)**<br/>Figyelheti a használatot, az elérhetőséget, a függőségeket és a kivételeket. Integrálhatja a nyomkövetéseket naplózási keretrendszerekből. Egyéni telemetriát írhat. |![Visual Studio](./media/visual-studio-codelens/64.png) |
+| **[Az Application Insights portál használata](./overview-dashboard.md)**<br/>Az irányítópultok, a hatékony diagnosztikai és elemző eszközök, riasztások, egy élő függőségi térkép az alkalmazásához, valamint a telemetria exportálása. |![Visual Studio](./media/visual-studio-codelens/62.png) |
+

@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 01/08/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 4481e62fb15b5ec21b48deb00f1438abf01aa27a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: fffb83fe680572c2448323a61b767a401c9a4834
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87041465"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323706"
 ---
 # <a name="impact-analysis-with-application-insights"></a>Impact Analysis Application Insights
 
@@ -28,7 +28,7 @@ A teljesítmény elemzése azonban csak a hatások egy részhalmaza lehet. Mivel
 ![Képernyőképek konvertálása böngészők szerint](./media/usage-impact/0004-browsers.png)
 
 > [!NOTE]
-> A Application Insights-erőforrásnak oldalletöltések vagy egyéni eseményeket kell tartalmaznia az Impact eszköz használatához. [Megtudhatja, hogyan állíthatja be az alkalmazást úgy, hogy automatikusan összegyűjtse a Application Insights JavaScript SDK-val](../../azure-monitor/app/javascript.md). Azt is vegye figyelembe, hogy mivel a korreláció elemzése, a minta méretének számítása.
+> A Application Insights-erőforrásnak oldalletöltések vagy egyéni eseményeket kell tartalmaznia az Impact eszköz használatához. [Megtudhatja, hogyan állíthatja be az alkalmazást úgy, hogy automatikusan összegyűjtse a Application Insights JavaScript SDK-val](./javascript.md). Azt is vegye figyelembe, hogy mivel a korreláció elemzése, a minta méretének számítása.
 >
 >
 
@@ -85,5 +85,6 @@ A hatás végső kiszámításának módja attól függően változik, hogy metr
     - [Tölcsérek](usage-funnels.md)
     - [Megőrzés](usage-retention.md)
     - [Felhasználói folyamatok](usage-flows.md)
-    - [Munkafüzetek](../../azure-monitor/platform/workbooks-overview.md)
+    - [Munkafüzetek](../platform/workbooks-overview.md)
     - [Felhasználói környezet hozzáadása](usage-send-user-context.md)
+

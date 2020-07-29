@@ -1,6 +1,6 @@
 ---
-title: Windows rendszerű virtuális asztali alkalmazáskészlet Azure Marketplace – Azure
-description: Windows rendszerű virtuális asztali címkészlet létrehozása az Azure Marketplace használatával.
+title: Windows rendszerű virtuális asztali (klasszikus) gazdagép-készlet Azure Marketplace – Azure
+description: Windows rendszerű virtuális asztali (klasszikus) címkészlet létrehozása az Azure Marketplace használatával.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: b4472baa51bb0b8806c7ad617c0fc1001c800ff0
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 3f0db05459b8e81764915c5dffb373e7f19edbc4
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86256849"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291300"
 ---
-# <a name="tutorial-create-a-host-pool-by-using-the-azure-marketplace"></a>Oktatóanyag: állomáslista létrehozása az Azure Marketplace használatával
+# <a name="tutorial-create-a-host-pool-in-windows-virtual-desktop-classic"></a>Oktatóanyag: gazdagép létrehozása a Windows Virtual Desktopban (klasszikus)
 
 >[!IMPORTANT]
->Ez a tartalom a Fall 2019 kiadásra vonatkozik, amely nem támogatja a Windows rendszerű virtuális asztali objektumokat Azure Resource Manager. Ha a Spring 2020 Update szolgáltatásban bevezetett Azure Resource Manager Windows rendszerű virtuális asztali objektumokat szeretne felügyelni, tekintse meg [ezt a cikket](../create-host-pools-azure-marketplace.md).
+>Ez a tartalom a Windows rendszerű virtuális asztali (klasszikus) verzióra vonatkozik, amely nem támogatja Azure Resource Manager Windows rendszerű virtuális asztali objektumokat. Ha Azure Resource Manager Windows rendszerű virtuális asztali objektumokat szeretne felügyelni, tekintse meg [ezt a cikket](../create-host-pools-azure-marketplace.md).
 
 Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre egy gazdagép-készletet egy Windows rendszerű virtuális asztali bérlőn egy Microsoft Azure Marketplace ajánlat használatával.
 
@@ -52,13 +52,13 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 Az Azure Marketplace ajánlatának futtatása új címkészlet kiépítéséhez:
 
-1. Az Azure Portal menüjében vagy a **Kezdőlapon** válassza az **Erőforrás létrehozása** elemet.
+1. Az Azure Portal menüjében vagy a **Kezdőlapon** lapon válassza az **Erőforrás létrehozása** elemet.
 1. A piactér keresési ablakában adja meg a **Windows virtuális asztal** kifejezést.
 1. Válassza **a Windows virtuális asztal – címkészlet kiépítése**lehetőséget, majd válassza a **Létrehozás**lehetőséget.
 
 Ezután kövesse a következő szakaszban található utasításokat a megfelelő lapokra vonatkozó információk megadásához.
 
-### <a name="basics"></a>Alapbeállítások
+### <a name="basics"></a>Alapvető beállítások
 
 Az **alapok** lapon a következő műveleteket végezheti el:
 
@@ -115,7 +115,7 @@ A **Windows rendszerű virtuális asztali bérlő adatai** lapon:
    Ha végrehajtotta az [egyszerű szolgáltatásnév és a szerepkör-hozzárendelések létrehozása a PowerShell-lel oktatóanyagot](create-service-principal-role-powershell.md), válassza az **egyszerű szolgáltatásnév**lehetőséget.
 
 1. Az **egyszerű szolgáltatásnév**esetében az **Azure ad-bérlő azonosítója**mezőben adja meg az egyszerű szolgáltatásnevet tartalmazó Azure ad-példány bérlői rendszergazdai fiókját. Csak a jelszavas hitelesítő adatokkal rendelkező egyszerű szolgáltatások támogatottak.
-1. Kattintson a **Tovább: Ellenőrzés és létrehozás** lehetőségre.
+1. Válassza a **Tovább: Ellenőrzés és létrehozás** lehetőségre.
 
 ## <a name="complete-setup-and-create-the-virtual-machine"></a>A telepítés befejezése és a virtuális gép létrehozása
 

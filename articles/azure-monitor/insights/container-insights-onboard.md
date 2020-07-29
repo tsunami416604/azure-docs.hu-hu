@@ -3,12 +3,12 @@ title: Azure Monitor engedélyezése a tárolók számára | Microsoft Docs
 description: Ez a cikk bemutatja, hogyan engedélyezheti és konfigurálhatja a tárolók Azure Monitorét, hogy megtudja, hogyan hajtja végre a tárolót, és hogy milyen teljesítménnyel kapcsolatos problémákat észlelt a rendszer.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 5131d7b8a357075345b5165398d5fa9fc06b5ad8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 1cb393faded714593ce635669f585d5979ee69b8
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499035"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320306"
 ---
 # <a name="enable-azure-monitor-for-containers"></a>Tárolók Azure Monitor engedélyezése
 
@@ -28,7 +28,7 @@ A következő támogatott módszerek bármelyikével engedélyezheti a tárolók
 - Azure Portal
 - Azure PowerShell
 - Azure CLI
-- [Terraform és AK](../../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md)
+- [Terraform és AK](/azure/developer/terraform/create-k8s-cluster-with-tf-and-aks)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -128,6 +128,7 @@ A tárolók Azure Monitorának engedélyezéséhez használja az alábbi táblá
 | | [OpenShift-fürt engedélyezése Azure Resource Manager sablon használatával](container-insights-azure-redhat-setup.md#enable-using-an-azure-resource-manager-template) | Az előre konfigurált Azure Resource Manager sablonnal engedélyezheti a figyelést egy meglévő OpenShift-fürthöz. |
 | | [OpenShift-fürt engedélyezése Azure Monitor](container-insights-azure-redhat-setup.md#from-the-azure-portal) | Engedélyezheti a figyelést egy vagy több olyan OpenShift-fürtön, amelyek már telepítve vannak a Azure Monitor több fürtből álló oldaláról. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy engedélyezte a figyelést, megkezdheti az Azure Kubernetes szolgáltatásban (ak), Azure Stack vagy más környezetben üzemeltetett Kubernetes-fürtök teljesítményének elemzését. A Azure Monitor for containers használatának megismeréséhez tekintse meg a [Kubernetes-fürt teljesítményének megtekintése](container-insights-analyze.md)című témakört.
+

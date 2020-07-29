@@ -8,13 +8,16 @@ services: iot-hub
 ms.topic: tutorial
 ms.date: 03/12/2019
 ms.author: robinsh
-ms.custom: mvc
-ms.openlocfilehash: 38a40d628b883c0e7ada824d47d3fdf3d29caf93
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom:
+- mvc
+- 'Role: Cloud Development'
+- 'Role: Data Analytics'
+ms.openlocfilehash: 4af3d00c4f0096199cf914f57b51b04036cec7cf
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74084384"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87317892"
 ---
 # <a name="tutorial-use-the-azure-cli-and-azure-portal-to-configure-iot-hub-message-routing"></a>Oktatóanyag: az Azure CLI és a Azure Portal használatával konfigurálhatja IoT Hub üzenetek útválasztását
 
@@ -31,7 +34,7 @@ Másolja és illessze be az alábbi szkriptet Cloud Shellba, majd nyomja le az E
 Több olyan erőforrás neve van, amelynek globálisan egyedinek kell lennie, például a IoT Hub neve és a Storage-fiók neve. Ennek egyszerűbbé tétele érdekében az erőforrásnevek egy *randomValue*nevű véletlenszerű alfanumerikus értékkel vannak hozzáfűzve. A rendszer egyszer hozza létre a randomValue a parancsfájl tetején, és szükség szerint hozzáfűzi az erőforrások nevét a parancsfájlban. Ha nem szeretné, hogy véletlenszerű legyen, beállíthatja egy üres sztringre vagy egy adott értékre.
 
 > [!TIP]
-> Tipp a hibakereséshez: Ez a szkript a folytatási szimbólumot ( `\`a fordított perjelet) használja, hogy a szkript olvashatóbb legyen. Ha a parancsfájl futtatása során probléma merül fel, győződjön meg arról, hogy a Cloud Shell `bash` -munkamenet fut, és a fordított perjelek bármelyike után nincsenek szóközök.
+> Tipp a hibakereséshez: Ez a szkript a folytatási szimbólumot (a fordított perjelet `\` ) használja, hogy a szkript olvashatóbb legyen. Ha a parancsfájl futtatása során probléma merül fel, győződjön meg arról, hogy a Cloud Shell-munkamenet fut, `bash` és a fordított perjelek bármelyike után nincsenek szóközök.
 >
 
 ```azurecli-interactive
@@ -168,13 +171,13 @@ Most beállíthatja az útválasztást a tárfiókhoz. Lépjen az Üzenetirány�
 
    **Adatforrás**: A legördülő listából válassza az **Eszköztelemetria-üzenetek** elemet.
 
-   **Útvonal engedélyezése**: Ügyeljen rá, hogy `enabled`a mező értéke.
+   **Útvonal engedélyezése**: Ügyeljen rá, hogy a mező értéke `enabled` .
    
    **Útválasztási lekérdezés**: Lekérdezési sztringként írja be a következőt: `level="storage"`.
 
    ![Útválasztási lekérdezés létrehozása a Storage-fiókhoz](./media/tutorial-routing/message-routing-finish-route-storage-ep.png)  
 
-   Kattintson a **Mentés** gombra. A befejezés után a rendszer visszalép az Üzenetirányítás panelre, ahol láthatja a tároló új útválasztási lekérdezését. Zárja be az Útvonalak panelt, ezzel visszatér az Erőforráscsoport oldalra.
+   Válassza a **Mentés** lehetőséget. A befejezés után a rendszer visszalép az Üzenetirányítás panelre, ahol láthatja a tároló új útválasztási lekérdezését. Zárja be az Útvonalak panelt, ezzel visszatér az Erőforráscsoport oldalra.
 
 ### <a name="route-to-a-service-bus-queue"></a>Útvonal Service Bus üzenetsor felé
 
@@ -210,7 +213,7 @@ Most állítsa be az útválasztást a Service Bus-üzenetsorhoz. Lépjen az Üz
 
    ![Útválasztási lekérdezés létrehozása az Service Bus üzenetsor számára](./media/tutorial-routing/message-routing-finish-route-sbq-ep.png)
 
-7. Kattintson a **Mentés** gombra. Miután visszatért az Útvonalak panelre, láthatja a két új útvonalat, ahogy itt is szerepelnek.
+7. Válassza a **Mentés** lehetőséget. Miután visszatért az Útvonalak panelre, láthatja a két új útvonalat, ahogy itt is szerepelnek.
 
    ![Az imént beállított útvonalak](./media/tutorial-routing/message-routing-show-both-routes.png)
 

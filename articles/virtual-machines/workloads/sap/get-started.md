@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 07/16/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 03d0367b3794069908b31ee7af1250fd70f1bdf7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7319adfc88eedb007677a78693ab0b2e514e646f
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525211"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171656"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Az Azure használata az SAP munkaterhelés-forgatókönyvek üzemeltetéséhez és futtatásához
 
@@ -104,6 +104,7 @@ Az Azure-szolgáltatások SAP-összetevőkbe való integrálásával kapcsolatos
 
 ## <a name="change-log"></a>Módosítási napló
 
+- 07/23/2020: a [Save on SAP HANA Large instances hozzáadva egy Azure foglalási](../../../cost-management-billing/reservations/prepay-hana-large-instances-reserved-capacity.md) cikkből megtudhatja, hogy mit kell tudnia a SAP HANA Large instances foglalás megvásárlása és a vásárlás elvégzése előtt?
 - 07/16/2020: leírja, hogyan telepítheti az SAP-hez készült új virtuálisgép-bővítményt az Azure PowerShell használatával a [telepítési útmutatóban](deployment-guide.md)
 - 7/04/2020: az [Azure monitor for SAP Solutions (előzetes verzió)](./azure-monitor-overview.md) kiadása
 - 07/01/2020: kevésbé költséges tárolási konfigurációra utal, amely az Azure Premium Storage burst funkcióján alapul, [SAP HANA Azure-beli virtuális gépek tárolási konfigurációinak](./hana-vm-operations-storage.md) dokumentálása 

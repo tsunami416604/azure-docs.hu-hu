@@ -1,6 +1,6 @@
 ---
-title: Windows rendszerű virtuális asztali bérlői gazdagép-készlet létrehozása – Azure
-description: A bérlői és a gazdagép-készletezési problémák elhárítása és megoldása a Windows rendszerű virtuális asztali bérlői környezet beállítása során.
+title: Windows rendszerű virtuális asztali (klasszikus) bérlői gazdagép-készlet létrehozása – Azure
+description: A bérlői és a gazdagépi készletek problémáinak elhárítása és megoldása a Windows rendszerű virtuális asztali (klasszikus) bérlői környezet beállítása során.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: troubleshooting
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: aad3bffeba4395ba415fb99a3667d04d18769a47
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: bd9a6dd5d11ab69635d610eee3f92a90e942b576
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86026695"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87269597"
 ---
-# <a name="tenant-and-host-pool-creation"></a>Bérlői és gazdagépcsoport létrehozása
+# <a name="tenant-and-host-pool-creation-in-windows-virtual-desktop-classic"></a>Bérlői és gazdagépi készlet létrehozása a Windows Virtual Desktopban (klasszikus)
 
 >[!IMPORTANT]
->Ez a tartalom a Fall 2019 kiadásra vonatkozik, amely nem támogatja a Windows rendszerű virtuális asztali objektumokat Azure Resource Manager. Ha a Spring 2020 Update szolgáltatásban bevezetett Azure Resource Manager Windows rendszerű virtuális asztali objektumokat szeretne felügyelni, tekintse meg [ezt a cikket](../troubleshoot-set-up-issues.md).
+>Ez a tartalom a Windows rendszerű virtuális asztali (klasszikus) verzióra vonatkozik, amely nem támogatja Azure Resource Manager Windows rendszerű virtuális asztali objektumokat. Ha Azure Resource Manager Windows rendszerű virtuális asztali objektumokat szeretne felügyelni, tekintse meg [ezt a cikket](../troubleshoot-set-up-issues.md).
 
 Ez a cikk a Windows rendszerű virtuális asztali bérlő és a kapcsolódó munkamenet-gazdagépek infrastruktúrájának kezdeti beállítása során felmerülő problémákat ismerteti.
 

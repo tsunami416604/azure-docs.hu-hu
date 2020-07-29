@@ -7,21 +7,21 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 7/9/2020
 ms.subservice: alerts
-ms.openlocfilehash: 043ecc07c521f9c1c79835bcd67ff1d81cacfa34
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 3b0215ea2f02441f93e6eb9b672744638ae93b11
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539465"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321139"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Metrikariasztás létrehozása Resource Manager-sablonnal
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Ez a cikk bemutatja, hogyan konfigurálhat egy [Azure Resource Manager sablonnal](../../azure-resource-manager/templates/template-syntax.md) [újabb metrikai riasztásokat](../../azure-monitor/platform/alerts-metric-near-real-time.md) Azure monitor. A Resource Manager-sablonok lehetővé teszik, hogy programozott módon állítsa be a riasztásokat konzisztens és reprodukálható módon a környezetekben. Az újabb metrikai riasztások jelenleg [ezen erőforrástípusok készletén](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported)érhetők el.
+Ez a cikk bemutatja, hogyan konfigurálhat egy [Azure Resource Manager sablonnal](../../azure-resource-manager/templates/template-syntax.md) [újabb metrikai riasztásokat](./alerts-metric-near-real-time.md) Azure monitor. A Resource Manager-sablonok lehetővé teszik, hogy programozott módon állítsa be a riasztásokat konzisztens és reprodukálható módon a környezetekben. Az újabb metrikai riasztások jelenleg [ezen erőforrástípusok készletén](./alerts-metric-near-real-time.md#metrics-and-dimensions-supported)érhetők el.
 
 > [!IMPORTANT]
-> Erőforrás-sablon metrikai riasztások létrehozásához az erőforrástípus esetében: az Azure Log Analytics munkaterület (azaz) `Microsoft.OperationalInsights/workspaces` további lépéseket igényel. Részletekért tekintse meg a [naplók – erőforrás-sablon metrikai riasztása](../../azure-monitor/platform/alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs)című cikket.
+> Erőforrás-sablon metrikai riasztások létrehozásához az erőforrástípus esetében: az Azure Log Analytics munkaterület (azaz) `Microsoft.OperationalInsights/workspaces` további lépéseket igényel. Részletekért tekintse meg a [naplók – erőforrás-sablon metrikai riasztása](./alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs)című cikket.
 
 Az alapszintű lépések a következők:
 
@@ -3464,7 +3464,7 @@ az group deployment create \
 
 ## <a name="template-for-an-availability-test-along-with-a-metric-alert"></a>A rendelkezésre állási teszthez tartozó sablon, valamint metrikus riasztás
 
-[Application Insights rendelkezésre állási tesztek](../../azure-monitor/app/monitor-web-app-availability.md) segítségével figyelheti a webhely vagy alkalmazás elérhetőségét a világ különböző helyeiről. A rendelkezésre állási teszt riasztásai értesítik, ha a rendelkezésre állási tesztek bizonyos számú helyről sikertelenek.
+[Application Insights rendelkezésre állási tesztek](../app/monitor-web-app-availability.md) segítségével figyelheti a webhely vagy alkalmazás elérhetőségét a világ különböző helyeiről. A rendelkezésre állási teszt riasztásai értesítik, ha a rendelkezésre állási tesztek bizonyos számú helyről sikertelenek.
 A rendelkezésre állási tesztekkel kapcsolatos riasztások ugyanazzal az erőforrással, mint a metrikai riasztások (Microsoft. bepillantások/metricAlerts). A következő minta Azure Resource Manager sablonnal egy egyszerű rendelkezésre állási teszt és egy kapcsolódó riasztás állítható be.
 
 Mentse az alábbi JSON-t availabilityalert.jsként az útmutató céljára.
@@ -3623,8 +3623,9 @@ az group deployment create \
     --parameters @availabilityalert.parameters.json
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ [Az Azure-beli riasztásokról](alerts-overview.md)
 - Megtudhatja, hogyan [hozhat létre műveleti csoportot Resource Manager-sablonokkal](action-groups-create-resource-manager-template.md)
 - A JSON szintaxis és tulajdonságok esetében lásd: [Microsoft. metricAlerts/](/azure/templates/microsoft.insights/metricalerts) a sablon referenciája.
+

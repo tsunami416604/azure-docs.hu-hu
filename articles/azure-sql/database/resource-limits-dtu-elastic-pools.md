@@ -4,18 +4,19 @@ description: Ez az oldal néhány gyakori DTU-erőforrás-korlátot ismertet a r
 services: sql-database
 ms.service: sql-database
 ms.subservice: elastic-pools
-ms.custom: seo-lt-2019 sqldbrb=1
+ms.custom: references_regions
 ms.devlang: ''
 ms.topic: conceptual
 author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: carlrab
 ms.date: 04/17/2020
-ms.openlocfilehash: 10b792a642f6c22ab804d6c5e5c3f7f722f0d3be
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4377be82dfdb66ab7186d4472c8b1f5453b47809
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84043113"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325117"
 ---
 # <a name="resources-limits-for-elastic-pools-using-the-dtu-purchasing-model"></a>A rugalmas készletek DTU beszerzési modell használatával történő korlátozása
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -29,7 +30,7 @@ Ez a cikk részletes erőforrás-korlátokat biztosít a Azure SQL Databaseban l
 
 Azure SQL Database rugalmas készletek esetében az alábbi táblázatok az egyes szolgáltatási szintek és számítási méretek számára elérhető erőforrásokat mutatják be. A szolgáltatási szintet, a számítási méretet és a tárterület mennyiségét a alábbiak szerint állíthatja be:
 
-* [Azure Portalra](elastic-pool-manage.md#azure-portal)
+* [Azure Portal](elastic-pool-manage.md#azure-portal)
 * [PowerShell](elastic-pool-manage.md#powershell)
 * [Azure CLI](elastic-pool-manage.md#azure-cli)
 * [REST API](elastic-pool-manage.md#rest-api).
@@ -47,8 +48,8 @@ Azure SQL Database rugalmas készletek esetében az alábbi táblázatok az egye
 | eDTU-k száma készletenként | **50** | **100** | **200** | **300** | **400** | **800** | **1200** | **1600** |
 |:---|---:|---:|---:| ---: | ---: | ---: | ---: | ---: |
 | Foglalt tárterület/készlet (GB) | 5 | 10 | 20 | 29 | 39 | 78 | 117 | 156 |
-| Tárolási lehetőségek maximális száma (GB) | 5 | 10 | 20 | 29 | 39 | 78 | 117 | 156 |
-| Memóriában tárolt OLTP-tárolók maximális száma (GB) | N.A. | N.A. | N.A. | N.A. | N.A. | N.A. | N.A. | N.A. |
+| Maximális tárterület készletenként (GB) | 5 | 10 | 20 | 29 | 39 | 78 | 117 | 156 |
+| Memóriában tárolt OLTP-tárolók maximális száma (GB) | n.a. | n.a. | n.a. | n.a. | n.a. | n.a. | n.a. | n.a. |
 | Adatbázisok maximális száma <sup>1</sup> . készletben | 100 | 200 | 500 | 500 | 500 | 500 | 500 | 500 |
 | Egyidejű feldolgozók (kérelmek) maximális száma a <sup>2</sup> . készletben | 100 | 200 | 400 | 600 | 800 | 1600 | 2400 | 3200 |
 | Egyidejű munkamenetek maximális száma/készlet <sup>2</sup> | 30000 | 30000 | 30000 | 30000 |30000 | 30000 | 30000 | 30000 |
@@ -65,77 +66,85 @@ Azure SQL Database rugalmas készletek esetében az alábbi táblázatok az egye
 
 | eDTU-k száma készletenként | **50** | **100** | **200** | **300** | **400** | **800**|
 |:---|---:|---:|---:| ---: | ---: | ---: |
-| Foglalt tárterület/készlet (GB) | 50 | 100 | 200 | 300 | 400 | 800 |
-| Tárolási lehetőségek maximális száma (GB) | 50, 250, 500 | 100, 250, 500, 750 | 200, 250, 500, 750, 1024 | 300, 500, 750, 1024, 1280 | 400, 500, 750, 1024, 1280, 1536 | 800, 1024, 1280, 1536, 1792, 2048 |
-| Memóriában tárolt OLTP-tárolók maximális száma (GB) | N.A. | N.A. | N.A. | N.A. | N.A. | N.A. |
-| Adatbázisok maximális száma <sup>1</sup> . készletben | 100 | 200 | 500 | 500 | 500 | 500 |
-| Egyidejű feldolgozók (kérelmek) maximális száma a <sup>2</sup> . készletben | 100 | 200 | 400 | 600 | 800 | 1600 |
-| Egyidejű munkamenetek maximális száma/készlet <sup>2</sup> | 30000 | 30000 | 30000 | 30000 | 30000 | 30000 |
+| Készletbe foglalt tárterület (GB) <sup>1</sup> | 50 | 100 | 200 | 300 | 400 | 800 |
+| Maximális tárterület készletenként (GB) | 500 | 750 | 1024 | 1280 | 1536 | 2048 |
+| Memóriában tárolt OLTP-tárolók maximális száma (GB) | n.a. | n.a. | n.a. | n.a. | n.a. | n.a. |
+| Adatbázisok maximális száma ( <sup>2</sup> . készlet) | 100 | 200 | 500 | 500 | 500 | 500 |
+| Egyidejű feldolgozók (kérelmek) maximális száma a <sup>3</sup> . készletben | 100 | 200 | 400 | 600 | 800 | 1600 |
+| Egyidejű munkamenetek maximális száma ( <sup>3</sup> ) | 30000 | 30000 | 30000 | 30000 | 30000 | 30000 |
 | Edtu minimális száma adatbázis szerint | 0, 10, 20, 50 | 0, 10, 20, 50, 100 | 0, 10, 20, 50, 100, 200 | 0, 10, 20, 50, 100, 200, 300 | 0, 10, 20, 50, 100, 200, 300, 400 | 0, 10, 20, 50, 100, 200, 300, 400, 800 |
 | Edtu maximális választéka adatbázison | 10, 20, 50 | 10, 20, 50, 100 | 10, 20, 50, 100, 200 | 10, 20, 50, 100, 200, 300 | 10, 20, 50, 100, 200, 300, 400 | 10, 20, 50, 100, 200, 300, 400, 800 |
 | Maximális tárterület adatbázisonként (GB) | 500 | 750 | 1024 | 1024 | 1024 | 1024 |
 ||||||||
 
-<sup>1</sup> további megfontolásokat az [Erőforrás-kezelés sűrű rugalmas készletekben](elastic-pool-resource-management.md) című témakörben talál.
+<sup>1</sup> a további kiépített tárterület miatt felmerülő további költségekkel kapcsolatos további információkért tekintse meg [SQL Database díjszabási lehetőségeit](https://azure.microsoft.com/pricing/details/sql-database/elastic/) .
 
-<sup>2</sup> az egyidejű feldolgozók (kérelmek) maximális száma az egyes adatbázisokhoz: [Egyadatbázisos erőforrás-korlátok](resource-limits-vcore-single-databases.md). Ha például a rugalmas készlet Gen5 használ, és az adatbázis max. virtuális mag értéke 2, akkor az egyidejű feldolgozók maximális száma 200.  Ha az adatbázis max. virtuális mag értéke 0,5, akkor az egyidejű feldolgozók maximális száma értéke 50, mivel a Gen5-ben legfeljebb 100 egyidejű dolgozó van. Ha az adatbázis más maximális virtuális mag-beállításai kevesebb, mint 1 virtuális mag vagy kevesebb, az egyidejű feldolgozók maximális száma hasonlóan átméretezhető.
+<sup>2</sup> további megfontolásokat az [Erőforrás-kezelés sűrű rugalmas készletekben](elastic-pool-resource-management.md) című témakörben talál.
+
+<sup>3</sup> az egyidejű feldolgozók (kérelmek) maximális száma az egyes adatbázisokhoz: [Egyadatbázisos erőforrás-korlátok](resource-limits-vcore-single-databases.md). Ha például a rugalmas készlet Gen5 használ, és az adatbázis max. virtuális mag értéke 2, akkor az egyidejű feldolgozók maximális száma 200.  Ha az adatbázis max. virtuális mag értéke 0,5, akkor az egyidejű feldolgozók maximális száma értéke 50, mivel a Gen5-ben legfeljebb 100 egyidejű dolgozó van. Ha az adatbázis más maximális virtuális mag-beállításai kevesebb, mint 1 virtuális mag vagy kevesebb, az egyidejű feldolgozók maximális száma hasonlóan átméretezhető.
 
 ### <a name="standard-elastic-pool-limits-continued"></a>Standard rugalmas készletek korlátai (folytatás)
 
 | eDTU-k száma készletenként | **1200** | **1600** | **2000** | **2500** | **3000** |
 |:---|---:|---:|---:| ---: | ---: |
-| Foglalt tárterület/készlet (GB) | 1200 | 1600 | 2000 | 2500 | 3000 |
-| Tárolási lehetőségek maximális száma (GB) | 1200, 1280, 1536, 1792, 2048, 2304, 2560 | 1600, 1792, 2048, 2304, 2560, 2816, 3072 | 2000, 2048, 2304, 2560, 2816, 3072, 3328, 3584 | 2500, 2560, 2816, 3072, 3328, 3584, 3840, 4096 | 3000, 3072, 3328, 3584, 3840, 4096 |
-| Memóriában tárolt OLTP-tárolók maximális száma (GB) | N.A. | N.A. | N.A. | N.A. | N.A. |
-| Adatbázisok maximális száma <sup>1</sup> . készletben | 500 | 500 | 500 | 500 | 500 |
-| Egyidejű feldolgozók (kérelmek) maximális száma a <sup>2</sup> . készletben | 2400 | 3200 | 4000 | 5000 | 6000 |
-| Egyidejű munkamenetek maximális száma/készlet <sup>2</sup> | 30000 | 30000 | 30000 | 30000 | 30000 |
+| Készletbe foglalt tárterület (GB) <sup>1</sup> | 1200 | 1600 | 2000 | 2500 | 3000 |
+| Maximális tárterület készletenként (GB) | 2560 | 3072 | 3584 | 4096 | 4096 |
+| Memóriában tárolt OLTP-tárolók maximális száma (GB) | n.a. | n.a. | n.a. | n.a. | n.a. |
+| Adatbázisok maximális száma ( <sup>2</sup> . készlet) | 500 | 500 | 500 | 500 | 500 |
+| Egyidejű feldolgozók (kérelmek) maximális száma a <sup>3</sup> . készletben | 2400 | 3200 | 4000 | 5000 | 6000 |
+| Egyidejű munkamenetek maximális száma ( <sup>3</sup> ) | 30000 | 30000 | 30000 | 30000 | 30000 |
 | Edtu minimális száma adatbázis szerint | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1200 | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600 | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600, 2000 | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600, 2000, 2500 | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600, 2000, 2500, 3000 |
 | Edtu maximális választéka adatbázison | 10, 20, 50, 100, 200, 300, 400, 800, 1200 | 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600 | 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600, 2000 | 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600, 2000, 2500 | 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600, 2000, 2500, 3000 |
-| Tárolási lehetőségek maximális száma (GB) | 1024 | 1024 | 1024 | 1024 | 1024 |
+| Maximális tárterület adatbázisonként (GB) | 1024 | 1024 | 1024 | 1024 | 1024 |
 |||||||
 
-<sup>1</sup> további megfontolásokat az [Erőforrás-kezelés sűrű rugalmas készletekben](elastic-pool-resource-management.md) című témakörben talál.
+<sup>1</sup> a további kiépített tárterület miatt felmerülő további költségekkel kapcsolatos további információkért tekintse meg [SQL Database díjszabási lehetőségeit](https://azure.microsoft.com/pricing/details/sql-database/elastic/) .
 
-<sup>2</sup> az egyidejű feldolgozók (kérelmek) maximális száma az egyes adatbázisokhoz: [Egyadatbázisos erőforrás-korlátok](resource-limits-vcore-single-databases.md). Ha például a rugalmas készlet Gen5 használ, és az adatbázis max. virtuális mag értéke 2, akkor az egyidejű feldolgozók maximális száma 200.  Ha az adatbázis max. virtuális mag értéke 0,5, akkor az egyidejű feldolgozók maximális száma értéke 50, mivel a Gen5-ben legfeljebb 100 egyidejű dolgozó van. Ha az adatbázis más maximális virtuális mag-beállításai kevesebb, mint 1 virtuális mag vagy kevesebb, az egyidejű feldolgozók maximális száma hasonlóan átméretezhető.
+<sup>2</sup> további megfontolásokat az [Erőforrás-kezelés sűrű rugalmas készletekben](elastic-pool-resource-management.md) című témakörben talál.
+
+<sup>3</sup> az egyidejű feldolgozók (kérelmek) maximális száma az egyes adatbázisokhoz: [Egyadatbázisos erőforrás-korlátok](resource-limits-vcore-single-databases.md). Ha például a rugalmas készlet Gen5 használ, és az adatbázis max. virtuális mag értéke 2, akkor az egyidejű feldolgozók maximális száma 200.  Ha az adatbázis max. virtuális mag értéke 0,5, akkor az egyidejű feldolgozók maximális száma értéke 50, mivel a Gen5-ben legfeljebb 100 egyidejű dolgozó van. Ha az adatbázis más maximális virtuális mag-beállításai kevesebb, mint 1 virtuális mag vagy kevesebb, az egyidejű feldolgozók maximális száma hasonlóan átméretezhető.
 
 ### <a name="premium-elastic-pool-limits"></a>Prémium rugalmas készletek korlátai
 
 | eDTU-k száma készletenként | **125** | **250** | **500** | **1000** | **1500**|
 |:---|---:|---:|---:| ---: | ---: |
-| Foglalt tárterület/készlet (GB) | 250 | 500 | 750 | 1024 | 1536 |
-| Tárolási lehetőségek maximális száma (GB) | 250, 500, 750, 1024 | 500, 750, 1024 | 750, 1024 | 1024 | 1536 |
+| Készletbe foglalt tárterület (GB) <sup>1</sup> | 250 | 500 | 750 | 1024 | 1536 |
+| Maximális tárterület készletenként (GB) | 1024 | 1024 | 1024 | 1024 | 1536 |
 | Memóriában tárolt OLTP-tárolók maximális száma (GB) | 1 | 2 | 4 | 10 | 12 |
-| Adatbázisok maximális száma <sup>1</sup> . készletben | 50 | 100 | 100 | 100 | 100 |
-| Egyidejű feldolgozók maximális száma (kérelem) <sup>2</sup> | 200 | 400 | 800 | 1600 | 2400 |
-| Egyidejű munkamenetek maximális száma/készlet <sup>2</sup> | 30000 | 30000 | 30000 | 30000 | 30000 |
+| Adatbázisok maximális száma ( <sup>2</sup> . készlet) | 50 | 100 | 100 | 100 | 100 |
+| Egyidejű feldolgozók maximális száma (kérelem) <sup>3</sup> | 200 | 400 | 800 | 1600 | 2400 |
+| Egyidejű munkamenetek maximális száma ( <sup>3</sup> ) | 30000 | 30000 | 30000 | 30000 | 30000 |
 | eDTU-k minimális száma adatbázisonként | 0, 25, 50, 75, 125 | 0, 25, 50, 75, 125, 250 | 0, 25, 50, 75, 125, 250, 500 | 0, 25, 50, 75, 125, 250, 500, 1000 | 0, 25, 50, 75, 125, 250, 500, 1000|
 | eDTU-k maximális száma adatbázisonként | 25, 50, 75, 125 | 25, 50, 75, 125, 250 | 25, 50, 75, 125, 250, 500 | 25, 50, 75, 125, 250, 500, 1000 | 25, 50, 75, 125, 250, 500, 1000|
 | Maximális tárterület adatbázisonként (GB) | 1024 | 1024 | 1024 | 1024 | 1024 |
 |||||||
 
-<sup>1</sup> további megfontolásokat az [Erőforrás-kezelés sűrű rugalmas készletekben](elastic-pool-resource-management.md) című témakörben talál.
+<sup>1</sup> a további kiépített tárterület miatt felmerülő további költségekkel kapcsolatos további információkért tekintse meg [SQL Database díjszabási lehetőségeit](https://azure.microsoft.com/pricing/details/sql-database/elastic/) .
 
-<sup>2</sup> az egyidejű feldolgozók (kérelmek) maximális száma az egyes adatbázisokhoz: [Egyadatbázisos erőforrás-korlátok](resource-limits-vcore-single-databases.md). Ha például a rugalmas készlet Gen5 használ, és az adatbázis max. virtuális mag értéke 2, akkor az egyidejű feldolgozók maximális száma 200.  Ha az adatbázis max. virtuális mag értéke 0,5, akkor az egyidejű feldolgozók maximális száma értéke 50, mivel a Gen5-ben legfeljebb 100 egyidejű dolgozó van. Ha az adatbázis más maximális virtuális mag-beállításai kevesebb, mint 1 virtuális mag vagy kevesebb, az egyidejű feldolgozók maximális száma hasonlóan átméretezhető.
+<sup>2</sup> további megfontolásokat az [Erőforrás-kezelés sűrű rugalmas készletekben](elastic-pool-resource-management.md) című témakörben talál.
+
+<sup>3</sup> az egyidejű feldolgozók (kérelmek) maximális száma az egyes adatbázisokhoz: [Egyadatbázisos erőforrás-korlátok](resource-limits-vcore-single-databases.md). Ha például a rugalmas készlet Gen5 használ, és az adatbázis max. virtuális mag értéke 2, akkor az egyidejű feldolgozók maximális száma 200.  Ha az adatbázis max. virtuális mag értéke 0,5, akkor az egyidejű feldolgozók maximális száma értéke 50, mivel a Gen5-ben legfeljebb 100 egyidejű dolgozó van. Ha az adatbázis más maximális virtuális mag-beállításai kevesebb, mint 1 virtuális mag vagy kevesebb, az egyidejű feldolgozók maximális száma hasonlóan átméretezhető.
 
 ### <a name="premium-elastic-pool-limits-continued"></a>Prémium rugalmas készletek korlátai (folytatás)
 
 | eDTU-k száma készletenként | **2000** | **2500** | **3000** | **3500** | **4000**|
 |:---|---:|---:|---:| ---: | ---: |
-| Foglalt tárterület/készlet (GB) | 2048 | 2560 | 3072 | 3548 | 4096 |
-| Tárolási lehetőségek maximális száma (GB) | 2048 | 2560 | 3072 | 3548 | 4096|
+| Készletbe foglalt tárterület (GB) <sup>1</sup> | 2048 | 2560 | 3072 | 3548 | 4096 |
+| Maximális tárterület készletenként (GB) | 2048 | 2560 | 3072 | 3548 | 4096|
 | Memóriában tárolt OLTP-tárolók maximális száma (GB) | 16 | 20 | 24 | 28 | 32 |
-| Adatbázisok maximális száma <sup>1</sup> . készletben | 100 | 100 | 100 | 100 | 100 |
-| Egyidejű feldolgozók (kérelmek) maximális száma a <sup>2</sup> . készletben | 3200 | 4000 | 4800 | 5600 | 6400 |
-| Egyidejű munkamenetek maximális száma/készlet <sup>2</sup> | 30000 | 30000 | 30000 | 30000 | 30000 |
+| Adatbázisok maximális száma ( <sup>2</sup> . készlet) | 100 | 100 | 100 | 100 | 100 |
+| Egyidejű feldolgozók (kérelmek) maximális száma a <sup>3</sup> . készletben | 3200 | 4000 | 4800 | 5600 | 6400 |
+| Egyidejű munkamenetek maximális száma ( <sup>3</sup> ) | 30000 | 30000 | 30000 | 30000 | 30000 |
 | Edtu minimális száma adatbázis szerint | 0, 25, 50, 75, 125, 250, 500, 1000, 1750 | 0, 25, 50, 75, 125, 250, 500, 1000, 1750 | 0, 25, 50, 75, 125, 250, 500, 1000, 1750 | 0, 25, 50, 75, 125, 250, 500, 1000, 1750 | 0, 25, 50, 75, 125, 250, 500, 1000, 1750, 4000 |
 | Edtu maximális választéka adatbázison | 25, 50, 75, 125, 250, 500, 1000, 1750 | 25, 50, 75, 125, 250, 500, 1000, 1750 | 25, 50, 75, 125, 250, 500, 1000, 1750 | 25, 50, 75, 125, 250, 500, 1000, 1750 | 25, 50, 75, 125, 250, 500, 1000, 1750, 4000 |
 | Maximális tárterület adatbázisonként (GB) | 1024 | 1024 | 1024 | 1024 | 1024 |
 |||||||
 
-<sup>1</sup> további megfontolásokat az [Erőforrás-kezelés sűrű rugalmas készletekben](elastic-pool-resource-management.md) című témakörben talál.
+<sup>1</sup> a további kiépített tárterület miatt felmerülő további költségekkel kapcsolatos további információkért tekintse meg [SQL Database díjszabási lehetőségeit](https://azure.microsoft.com/pricing/details/sql-database/elastic/) .
 
-<sup>2</sup> az egyidejű feldolgozók (kérelmek) maximális száma az egyes adatbázisokhoz: [Egyadatbázisos erőforrás-korlátok](resource-limits-vcore-single-databases.md). Ha például a rugalmas készlet Gen5 használ, és az adatbázis max. virtuális mag értéke 2, akkor az egyidejű feldolgozók maximális száma 200.  Ha az adatbázis max. virtuális mag értéke 0,5, akkor az egyidejű feldolgozók maximális száma értéke 50, mivel a Gen5-ben legfeljebb 100 egyidejű dolgozó van. Ha az adatbázis más maximális virtuális mag-beállításai kevesebb, mint 1 virtuális mag vagy kevesebb, az egyidejű feldolgozók maximális száma hasonlóan átméretezhető.
+<sup>2</sup> további megfontolásokat az [Erőforrás-kezelés sűrű rugalmas készletekben](elastic-pool-resource-management.md) című témakörben talál.
+
+<sup>3</sup> az egyidejű feldolgozók (kérelmek) maximális száma az egyes adatbázisokhoz: [Egyadatbázisos erőforrás-korlátok](resource-limits-vcore-single-databases.md). Ha például a rugalmas készlet Gen5 használ, és az adatbázis max. virtuális mag értéke 2, akkor az egyidejű feldolgozók maximális száma 200.  Ha az adatbázis max. virtuális mag értéke 0,5, akkor az egyidejű feldolgozók maximális száma értéke 50, mivel a Gen5-ben legfeljebb 100 egyidejű dolgozó van. Ha az adatbázis más maximális virtuális mag-beállításai kevesebb, mint 1 virtuális mag vagy kevesebb, az egyidejű feldolgozók maximális száma hasonlóan átméretezhető.
 
 > [!IMPORTANT]
 > A prémium szinten több mint 1 TB tárterület érhető el az összes régióban, kivéve a következőket: Kelet-Kína, Észak-Kína, Közép-Németország, Németország északkeleti régiója, az USA nyugati középső régiója, US DoD régiók és az USA kormányzati központja. Ezekben a régiókban a prémium szintű Storage Max 1 TB-ra van korlátozva.  További információ: [P11-P15 current korlátozások](single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb).

@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
 ms.date: 04/20/2020
-ms.openlocfilehash: 4d3d522de84ebd019fd432f5c4e5d89ac5ef8bcf
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 6d592064729bbdd64e485e0bd0373b2d471597e0
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84263737"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282483"
 ---
 # <a name="azure-media-player-plugin-gallery"></a>Azure Media Player beépülő modul gyűjteménye #
 
@@ -20,7 +20,7 @@ ms.locfileid: "84263737"
 | Beépülő modul neve                         | Bemutató URL-címe                    | Forráskód                | Leírás    |
 |-------------------------------------|-----------------------------|----------------------------|----------------|
 | További funkciók                 | | | |
-| **Új!** AMP360Video                | [Bemutató](http://www.babylonjs.com/demos/amp360video/)                        | [GitHub](https://github.com/BabylonJS/Extensions/tree/master/Amp360Video)                     | A beépülő modul lehetővé teszi a 360 videó megjelenítését az amp vagy az asztalon vagy a VR-kompatibilis eszközökön. A teljes dokumentáció [itt](https://doc\.babylonjs\.com/extensions/amp360video)érhető el: |
+| **Új!** AMP360Video                | [Bemutató](http://www.babylonjs.com/demos/amp360video/)                        | [GitHub](https://github.com/BabylonJS/Extensions/tree/master/Amp360Video)                     | A beépülő modul lehetővé teszi a 360 videó megjelenítését az amp vagy az asztalon vagy a VR-kompatibilis eszközökön. A teljes dokumentáció [itt](https://doc.babylonjs.com/extensions/amp360video)érhető el: |
 |  Sprite tipp                         | [Bemutató](http://www.skymedia.tv/asset/sprite)                        | [GitHub](https://github.com/RickShahid/SpriteTip)                    | Azure Media Player (AMP) beépülő modul a videó miniatűr képének megjelenítéséhez, amely Azure Media Services (AMS) Media Encoder Standard (MES) alapján jön létre. |
 | Diagnosztika átfedésben                 | [Bemutató](https://openidconnectweb.azurewebsites.net/Diagnoverlay.html)                        | [GitHub](https://github.com/willzhan/diagnoverlay)                     | Ez a beépülő modul a következőt jeleníti meg: az összes kulcsfontosságú paraméter, a videó statisztikái, a videolejátszás életciklusának összes eseménye, valamint a DRM-védelemmel kapcsolatos információk, például a Key ID, a licenc-megszerzési URL-címek,                                                                                                                                                                      |
 | Frame rate és időkód kalkulátor | Nincs elérhető bemutató | [GitHub](https://github.com/mconverti/media-services-javascript-azure-media-player-framerate-timecode-calculator-plugin)                     | Ez a beépülő modul kiszámítja a videó képkocka arányát az `tfhd` / `trun` első MPEG-Dash videó töredékének MP4-mezői alapján, elemezi az időméretezési értéket az MPEG-Dash ügyfél-jegyzékfájlból, valamint lehetővé teszi az időkód létrehozását egy adott abszolút időtartamra a lejátszótól (valamint a játékosnak az időkód által megadott abszolút időt is biztosít) |
@@ -30,14 +30,14 @@ ms.locfileid: "84263737"
 | Idősor-jelölők                    | [Bemutató](http://sr-test.azurewebsites.net/Tests/Plugin%20Gallery/plugins/timelinemarkers/example.html)                        | [GitHub](https://github.com/Azure-Samples/media-services-javascript-azure-media-player-timeline-markers-plugin)                     | Ez a beépülő modul az időpontok tömbjét veszi igénybe, és a folyamatjelző sáv fölé rendezi az egyes időpontokat. |
 | Elemzés                           | | | |
 | Application Insights                | [Blogbejegyzés](https://azure.microsoft.com/blog/player-analytics-azure-media-player-plugin/)                   | [GitHub](https://github.com/Azure-Samples/media-services-javascript-azure-media-player-application-insights-plugin)                     | Ez a beépülő modul, amely nyomon követi a lejátszó metrikáit és portjait, hogy Power BI a megtekintők játékosi élményének intuitív grafikus ábrázolását. |
-| Google Analytics                    | N/A                         | [GitHub](https://github.com/Azure-Samples/media-services-javascript-azure-media-player-google-analytics-plugin)                     | Google Analytics beépülő modul a Azure Media Playerhoz |
+| Google Analytics                    | n.a.                         | [GitHub](https://github.com/Azure-Samples/media-services-javascript-azure-media-player-google-analytics-plugin)                     | Google Analytics beépülő modul a Azure Media Playerhoz |
 | Diagnosztika                         | | | |
 | Diagnosztika kimenete                  | [Bemutató](http://sr-test.azurewebsites.net/Tests/Plugin%20Gallery/plugins/diagnosticslogger/example.html)                        | [GitHub](https://github.com/Azure-Samples/media-services-javascript-azure-media-player-diagnostic-logger-plugin)                     | Ez a beépülő modul a saját lejátszójában a diagnosztika tömbjét jeleníti meg, hogy a működés közben megtekintse a bemutató hivatkozást, és megnyitja a JavaScript-konzolt. |
 | Könnyű hozzáférés                      | | | |
 | Nagyítás                             | [Bemutató](http://sr-test.azurewebsites.net/Tests/Plugin%20Gallery/plugins/zoom/example.html)                        | [GitHub](https://github.com/Azure-Samples/media-services-javascript-azure-media-player-zoom-plugin)                     | Ez a beépülő modul egy húzással használható nagyítási skálát jelenít meg a játékosok képernyőjén, így a nézők nagyítani tudják a tartalmat |
-| Élő feliratok                       | [Azure blogbejegyzés](https://azure.microsoft.com/blog/live-real-time-captions-with-azure-media-services-and-player/),[SubPly post](http://www.subply.com/en/Products/AzureLiveCaptions.htm) | N/A | *További információ: post.* Teljes körű munkafolyamatok, amelyek élő feliratozásra készültek Azure Media Playerhoz, a bal szélső hivatkozásra kattintva megtekintheti a SubPly webhelyét, és további információkat tudhat meg a megoldásról |
+| Élő feliratok                       | [Azure blogbejegyzés](https://azure.microsoft.com/blog/live-real-time-captions-with-azure-media-services-and-player/),[SubPly post](http://www.subply.com/en/Products/AzureLiveCaptions.htm) | n.a. | *További információ: post.* Teljes körű munkafolyamatok, amelyek élő feliratozásra készültek Azure Media Playerhoz, a bal szélső hivatkozásra kattintva megtekintheti a SubPly webhelyét, és további információkat tudhat meg a megoldásról |
 | Gyorsbillentyűk                            | <strike>[Bemutató](http://sr-test.azurewebsites.net/Tests/Plugin%20Gallery/plugins/hotkeys/example.html)</strike>                        | <strike>[GitHub](https://github.com/Azure-Samples/media-services-javascript-azure-media-player-hot-keys-plugin)</strike>                     | A gyorsbillentyűk beépülő modul lehetővé teszi, hogy a nézők a lejátszó különböző szempontjait vezérelve általános beépülő modulok, például F teljes képernyős, M az Elnémítás és a nyílbillentyűkkel a folyamatjelző sáv vezérlőelemhez. *Megjegyzés: Ez a beépülő modul már integrálva van az AMP-es verzióba, de ingyenesen használhatja erőforrásként* |
-| Közösségi tartalom                              | | | |
+| Közösségi                              | | | |
 | Megosztás                               | [Bemutató](http://sr-test.azurewebsites.net/Tests/Plugin%20Gallery/plugins/share/example.html)                        | [GitHub](https://github.com/Azure-Samples/media-services-javascript-azure-media-player-social-share-plugin)                     | Ez a beépülő modul egy megosztás gombot ad hozzá a lejátszó vezérlőelem sávjához, így a nézők megoszthatják a barátaikat a Facebook, a Twitter vagy a LinkedIn használatával. |
 
 ## <a name="next-steps"></a>További lépések ##

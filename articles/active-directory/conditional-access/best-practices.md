@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d63cb1d7e2b0086a3d9ef6e3917ebefa11c7ccba
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 60d72a98a22fa85e87eb8560ad968415ca70f9a5
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253375"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87275428"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Ajánlott eljárások a feltételes hozzáféréshez Azure Active Directory
 
@@ -31,15 +31,15 @@ Ez a cikk azt feltételezi, hogy már ismeri az alábbi fogalmakat és terminol�
 
 Új szabályzat létrehozásakor nincsenek kiválasztva felhasználók, csoportok, alkalmazások vagy hozzáférés-vezérlések.
 
-![Felhőalapú alkalmazások](./media/best-practices/02.png)
+![Felhőalkalmazások](./media/best-practices/02.png)
 
 A szabályzat működéséhez konfigurálnia kell a következőket:
 
-| Mi           | Hogyan                                  | miért |
+| Mi           | Hogyan                                  | Miért |
 | :--            | :--                                  | :-- |
-| **Felhőalapú alkalmazások** |Válasszon ki egy vagy több alkalmazást.  | A feltételes hozzáférési szabályzat célja, hogy lehetővé tegye annak szabályozását, hogy a jogosult felhasználók hozzáférjenek a felhőalapú alkalmazásokhoz.|
-| **Felhasználók és csoportok** | Válasszon ki legalább egy olyan felhasználót vagy csoportot, amely jogosult a kiválasztott felhőalapú alkalmazások elérésére. | A rendszer soha nem indít olyan feltételes hozzáférési szabályzatot, amely nem rendelkezik hozzárendelt felhasználókkal és csoportokkal. |
-| **Hozzáférés-vezérlés** | Válasszon ki legalább egy hozzáférés-vezérlést. | Ha a feltételek teljesülnek, a házirend-feldolgozónak tudnia kell, hogy mi a teendő. |
+| **Felhőalkalmazások** |Válasszon ki legalább egy alkalmazást.  | A feltételes hozzáférési szabályzat célja, hogy lehetővé tegye annak szabályozását, hogy a jogosult felhasználók hozzáférjenek a felhőalapú alkalmazásokhoz.|
+| **Felhasználók és csoportok** | Válasszon ki legalább egy felhasználót vagy csoportot, amely jogosult a kijelölt felhőalkalmazások elérésére. | A rendszer soha nem indít olyan feltételes hozzáférési szabályzatot, amely nem rendelkezik hozzárendelt felhasználókkal és csoportokkal. |
+| **Hozzáférés-vezérlés** | Válasszon ki legalább egy hozzáférés-vezérlőt. | A feltételek teljesülése esetén a szabályzat feldolgozásához tudni kell, hogy mi a teendő. |
 
 ## <a name="what-you-should-know"></a>Alapismeretek
 
@@ -49,14 +49,21 @@ Egy felhőalapú alkalmazáshoz való hozzáféréskor több feltételes hozzáf
 
 Az összes házirend kikényszerítve két fázisban:
 
-- 1. fázis: 
-   - Részletek gyűjteménye: adatok összegyűjtése a már megelégedett házirendek azonosításához.
-   - Ebben a fázisban a felhasználók akkor láthatják a tanúsítványt, ha az eszköz megfelelősége a feltételes hozzáférési szabályzatok részét képezi. Ez az üzenet akkor fordulhat elő, ha az eszköz operációs rendszere nem Windows 10.
-   - A házirend kiértékelésének 1. fázisa az összes engedélyezett házirendre és házirendre vonatkozóan a [csak jelentési módban](concept-conditional-access-report-only.md)történik.
-- 2. fázis:
-   - Kényszerítés: az 1. fázisban összegyűjtött részletek beszerzése érdekében kérje a felhasználótól, hogy teljesítse a még nem teljesített további követelményeket.
-   - Eredmények alkalmazása a munkamenetre. 
-   - A házirend kiértékelésének 2. fázisa az összes engedélyezett házirend esetében bekövetkezik.
+- 1. fázis: a munkamenet részleteinek összegyűjtése 
+   - Összegyűjtheti a munkamenet részleteit, például a felhasználói helyet és az eszköz identitását, amely a szabályzat kiértékeléséhez szükséges lesz. 
+   - Ebben a fázisban a felhasználók akkor láthatják a tanúsítványt, ha az eszköz megfelelősége a feltételes hozzáférési szabályzatok részét képezi. Ez az üzenet akkor fordulhat elő, ha az eszköz operációs rendszere nem Windows 10. 
+   - A házirend kiértékelésének 1. fázisa az engedélyezett házirendek és házirendek esetében a [csak jelentési módban](concept-conditional-access-report-only.md)történik.
+- 2. fázis: kényszerítés 
+   - A nem teljesített követelmények azonosításához használja az 1. fázisban összegyűjtött munkamenet részleteit. 
+   - Ha van olyan házirend, amely a hozzáférés blokkolására van konfigurálva, a tiltás engedélyezése vezérlővel a kényszerítés le lesz tiltva, és a felhasználó blokkolva lesz. 
+   - A felhasználónak ezután meg kell adnia további, az 1. fázisban nem teljesített támogatás-vezérlési követelményeket az alábbi sorrendben, amíg a szabályzat nem teljesül:  
+      - Többtényezős hitelesítés 
+      - Jóváhagyott ügyfélalkalmazás/alkalmazás-védelmi szabályzat 
+      - Felügyelt eszköz (megfelelő vagy hibrid Azure AD-csatlakozás) 
+      - Használati feltételek 
+      - Egyéni vezérlők  
+      - Ha meggyőződött róla, hogy a vezérlők teljesültek, alkalmazza a munkamenet-vezérlőket (alkalmazás kényszerített, Microsoft Cloud App Security és jogkivonat élettartama) 
+   - A házirend kiértékelésének 2. fázisa az összes engedélyezett házirend esetében bekövetkezik. 
 
 ### <a name="how-are-assignments-evaluated"></a>Hogyan történik a hozzárendelések kiértékelése?
 

@@ -6,11 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 07/11/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 8d2e573f34895207a455838b5fc64f95560943d2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 02d1bd9d204d88ba90218b1254c66ac0da80be85
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77670916"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323502"
 ---
 # <a name="troubleshoot-user-behavior-analytics-tools-in-application-insights"></a>A Application Insights felhasználói viselkedési elemzési eszközeinek hibáinak megoldása
 Kérdése van a [felhasználói viselkedést elemző eszközökkel kapcsolatban Application Insights](usage-overview.md): [felhasználók, munkamenetek, események](usage-segmentation.md), [tölcsérek](usage-funnels.md), [Felhasználókövetés](usage-flows.md), [megőrzés](usage-retention.md)vagy kohorszok? Íme néhány válasz.
@@ -18,13 +19,13 @@ Kérdése van a [felhasználói viselkedést elemző eszközökkel kapcsolatban 
 ## <a name="counting-users"></a>Felhasználók számlálása
 **A felhasználói viselkedés elemzési eszközei azt mutatják, hogy az alkalmazásom egy felhasználóval vagy munkamenettel rendelkezik, de tudom, hogy az alkalmazásom sok felhasználóval vagy munkamenettel rendelkezik. Hogyan oldhatók meg ezek a helytelen számok?**
 
-A Application Insights összes telemetria-eseményében szerepel egy [névtelen felhasználói azonosító](../../azure-monitor/app/data-model-context.md) és egy [munkamenet-azonosító](../../azure-monitor/app/data-model-context.md) a szabványos tulajdonságaik közül kettőként. Alapértelmezés szerint az összes használati elemzési eszköz a felhasználók és a munkamenetek számát ezen azonosítók alapján számítja ki. Ha ezeket a szabványos tulajdonságokat nem tölti fel egyedi azonosítók az alkalmazás minden felhasználója és munkamenete számára, akkor a használati elemzési eszközökben a felhasználók és a munkamenetek helytelen száma jelenik meg.
+A Application Insights összes telemetria-eseményében szerepel egy [névtelen felhasználói azonosító](./data-model-context.md) és egy [munkamenet-azonosító](./data-model-context.md) a szabványos tulajdonságaik közül kettőként. Alapértelmezés szerint az összes használati elemzési eszköz a felhasználók és a munkamenetek számát ezen azonosítók alapján számítja ki. Ha ezeket a szabványos tulajdonságokat nem tölti fel egyedi azonosítók az alkalmazás minden felhasználója és munkamenete számára, akkor a használati elemzési eszközökben a felhasználók és a munkamenetek helytelen száma jelenik meg.
 
-Ha webalkalmazást figyel, a legegyszerűbb megoldás a [Application Insights JavaScript SDK](../../azure-monitor/app/javascript.md) hozzáadása az alkalmazáshoz, és győződjön meg arról, hogy a parancsfájl-kódrészlet be van töltve minden figyelni kívánt oldalon. A JavaScript SDK automatikusan létrehoz névtelen felhasználói és munkamenet-azonosítókat, majd feltölti a telemetria-eseményeket az alkalmazásból elküldett azonosítókkal.
+Ha webalkalmazást figyel, a legegyszerűbb megoldás a [Application Insights JavaScript SDK](./javascript.md) hozzáadása az alkalmazáshoz, és győződjön meg arról, hogy a parancsfájl-kódrészlet be van töltve minden figyelni kívánt oldalon. A JavaScript SDK automatikusan létrehoz névtelen felhasználói és munkamenet-azonosítókat, majd feltölti a telemetria-eseményeket az alkalmazásból elküldett azonosítókkal.
 
 Ha webszolgáltatást figyel (nincs felhasználói felülete), [hozzon létre egy telemetria-inicializáló, amely feltölti a névtelen felhasználói azonosító és a munkamenet-azonosító tulajdonságait](usage-send-user-context.md) a szolgáltatás egyedi felhasználók és munkamenetek fogalmai alapján.
 
-Ha az alkalmazás [hitelesített felhasználói azonosítókat](../../azure-monitor/app/api-custom-events-metrics.md#authenticated-users)küld, akkor a felhasználók eszközön a hitelesített felhasználói azonosítók alapján számíthat. A "Megjelenítés" legördülő menüben válassza a "hitelesített felhasználók" lehetőséget.
+Ha az alkalmazás [hitelesített felhasználói azonosítókat](./api-custom-events-metrics.md#authenticated-users)küld, akkor a felhasználók eszközön a hitelesített felhasználói azonosítók alapján számíthat. A "Megjelenítés" legördülő menüben válassza a "hitelesített felhasználók" lehetőséget.
 
 A felhasználói viselkedés elemzési eszközei jelenleg nem támogatják a felhasználók és a munkamenetek számlálását a névtelen felhasználói AZONOSÍTÓtól, a hitelesített felhasználói AZONOSÍTÓtól vagy a munkamenet-AZONOSÍTÓtól eltérő tulajdonságok alapján.
 
@@ -47,6 +48,6 @@ Ha az alkalmazás túl sok egyéni eseményazonosító küldését küldi el, m�
 
 * [A felhasználói viselkedés elemzési eszközeinek áttekintése](usage-overview.md)
 
-## <a name="get-help"></a>Segítség kérése
+## <a name="get-help"></a>Segítségkérés
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/ms-application-insights)
 

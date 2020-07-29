@@ -4,12 +4,12 @@ description: Az Azure-ban Web Apps, virtuálisgép-méretezési csoportokhoz és
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: 47da813498ef2cd4d16aeaa5ab31eff24b1db267
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 414716fbbb36167e52c4f3b98c70ae7696ffea8f
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539533"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327055"
 ---
 # <a name="best-practices-for-autoscale"></a>Ajánlott eljárások az automatikus méretezéshez
 Azure Monitor az autoscale csak [Virtual Machine Scale sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [app Service-Web Apps](https://azure.microsoft.com/services/app-service/web/)és [API Management szolgáltatásokra](../../api-management/api-management-key-concepts.md)vonatkozik.
@@ -22,7 +22,7 @@ Azure Monitor az autoscale csak [Virtual Machine Scale sets](https://azure.micro
   Az autoskálázási beállítás a példányok maximális, minimális és alapértelmezett értékét jelöli.
 * Az autoskálázási feladatok mindig beolvasják a kapcsolódó metrikát a méretezéshez, így ellenőrzi, hogy a kibővíthető vagy méretezhető-e a beállított küszöbérték. Megtekintheti az automatikus méretezés által méretezhető mérőszámok listáját Azure Monitor az automatikus [skálázás általános metrikái](autoscale-common-metrics.md)alapján.
 * Az összes küszöbértéket egy példány szintjén számítjuk ki. Például: "az egyik példány skálázása, ha az átlagos CPU-> 80%-os, ha a példányszám értéke 2", azaz a skálázást, ha az összes példány átlagos PROCESSZORa meghaladja a 80%-ot.
-* Az összes autoskálázási hiba a tevékenység naplójában van naplózva. Ezután beállíthat egy műveletnapló- [riasztást](./../../azure-monitor/platform/activity-log-alerts.md) , hogy e-mailben, SMS-ben vagy webhookon keresztül értesítést kapjon, ha van egy autoskálázási hiba.
+* Az összes autoskálázási hiba a tevékenység naplójában van naplózva. Ezután beállíthat egy műveletnapló- [riasztást](./activity-log-alerts.md) , hogy e-mailben, SMS-ben vagy webhookon keresztül értesítést kapjon, ha van egy autoskálázási hiba.
 * Hasonlóképpen, az összes sikeres méretezési műveletet a rendszer közzéteszi a tevékenység naplójában. Ezután beállíthat egy műveletnapló-riasztást, hogy a rendszer e-mailben, SMS-ben vagy webhookon keresztül értesítést kapjon, amikor sikeresek az automatikusan skálázási műveletek. Az e-mail-vagy webhook-értesítéseket úgy is konfigurálhatja, hogy a sikeres skálázási műveletekről értesítést kapjon az autoskálázási beállítás értesítések lapján.
 
 ## <a name="autoscale-best-practices"></a>Ajánlott eljárások az autoskálázáshoz
@@ -151,3 +151,4 @@ A műveletnapló értesítésein kívül az e-mail-vagy webhook-értesítéseket
 ## <a name="next-steps"></a>Következő lépések
 - [Hozzon létre egy műveletnapló-riasztást az előfizetésben lévő összes autoskálázási motor műveleteinek figyeléséhez.](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)
 - [Eseménynapló-riasztás létrehozása az összes sikertelen, az előfizetésen belüli és a vertikális Felskálázási műveletek figyeléséhez](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)
+

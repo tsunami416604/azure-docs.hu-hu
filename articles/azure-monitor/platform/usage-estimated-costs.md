@@ -8,19 +8,19 @@ ms.date: 10/28/2019
 ms.author: mbullwin
 ms.reviewer: Dale.Koetke
 ms.subservice: ''
-ms.openlocfilehash: 530ddf7af5b95cfec948270affbd13b6d61d08ff
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: eb96537f67c61fb31759da020068f784d0e89993
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081440"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323400"
 ---
 # <a name="monitoring-usage-and-estimated-costs-in-azure-monitor"></a>A használat és a becsült költségek figyelése Azure Monitor
 
 > [!NOTE]
 > Ez a cikk bemutatja, hogyan tekintheti meg a használati és becsült költségeket több Azure-figyelési szolgáltatás között. A Azure Monitor adott összetevőivel kapcsolatos kapcsolódó cikkek a következők:
 > - A [használat és a költségek kezelése Azure monitor naplókkal](manage-cost-storage.md) : az adatmegőrzési időszak módosításával, valamint az adatfelhasználás elemzésével és riasztásával kapcsolatos költségek szabályozása.
-> - [A Application Insights használatának és költségeinek kezelése](../../azure-monitor/app/pricing.md) a Application Insights adatfelhasználásának elemzését ismerteti.
+> - [A Application Insights használatának és költségeinek kezelése](../app/pricing.md) a Application Insights adatfelhasználásának elemzését ismerteti.
 
 ## <a name="azure-monitor-pricing-model"></a>Azure Monitor díjszabási modell
 
@@ -96,3 +96,4 @@ A szervezet által megvásárolt csomag csomópontjainak számától függően �
 > [!WARNING]
 > Ha a szervezete a jelenlegi Microsoft Operations Management Suite E1 és E2 értékkel rendelkezik, általában a "csomópontos (OMS)" árképzési rétegben és Application Insights a "vállalati" díjszabási szinten érdemes megtartani a Log Analytics-munkaterületeket. 
 >
+

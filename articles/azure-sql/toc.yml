@@ -78,6 +78,8 @@
                   href: database/authentication-mfa-ssms-configure.md
                 - name: Feltételes hozzáférés
                   href: database/conditional-access-configure.md
+                - name: Szolgáltatásnevek (alkalmazások)
+                  href: database/authentication-aad-service-principal.md
             - name: Transzparens adattitkosítás (TDE)
               items:
                 - name: Áttekintés
@@ -141,6 +143,8 @@
               href: database/long-term-backup-retention-configure.md
         - name: Biztonság
           items:
+            - name: Azure AD-vendégfelhasználók létrehozása és beállítása Azure AD-rendszergazdaként
+              href: database/authentication-aad-guest-users.md
             - name: A TDE konfigurálása BYOK megoldással
               href: database/transparent-data-encryption-byok-configure.md
             - name: Biztonságirés-keresések tárolása a tárterületen
@@ -277,6 +281,8 @@
               href: database/transparent-data-encryption-byok-key-rotation.md
             - name: A TDE-védő eltávolítása
               href: database/transparent-data-encryption-byok-remove-tde-protector.md
+            - name: Felhasználók létrehozása szolgáltatásnevek használatával
+              href: database/authentication-aad-service-principal-tutorial.md
         - name: Adatok áthelyezése
           items:
             - name: Migrálás DMS használatával

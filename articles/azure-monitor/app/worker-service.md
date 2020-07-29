@@ -3,12 +3,12 @@ title: Application Insights a Worker Service-alkalmazásokhoz (nem HTTP-alkalmaz
 description: A .NET Core/. NET Framework nem HTTP-alkalmazások figyelése Azure Monitor Application Insightsokkal.
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: 7ae146c6c010f067973c9fbae4c90bd1116d7c21
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d429a1e0515d24d1c9953af7815dadf2488be302
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499205"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325406"
 ---
 # <a name="application-insights-for-worker-service-applications-non-http-applications"></a>Application Insights Worker Service-alkalmazásokhoz (nem HTTP-alkalmazások)
 
@@ -540,9 +540,10 @@ using Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel;
 
 [Olvassa el és járuljon hozzá a kódhoz](https://github.com/Microsoft/ApplicationInsights-aspnetcore#recent-updates).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Az API használatával](../../azure-monitor/app/api-custom-events-metrics.md) saját eseményeket és mérőszámokat küldhet az alkalmazás teljesítményének és használatának részletes áttekintéséhez.
-* A [további függőségek nyomon követése nem történik meg automatikusan](../../azure-monitor/app/auto-collect-dependencies.md).
-* Az [automatikusan összegyűjtött telemetria gazdagítása vagy szűrése](../../azure-monitor/app/api-filtering-sampling.md).
+* [Az API használatával](./api-custom-events-metrics.md) saját eseményeket és mérőszámokat küldhet az alkalmazás teljesítményének és használatának részletes áttekintéséhez.
+* A [további függőségek nyomon követése nem történik meg automatikusan](./auto-collect-dependencies.md).
+* Az [automatikusan összegyűjtött telemetria gazdagítása vagy szűrése](./api-filtering-sampling.md).
 * [Függőség injekció ASP.net Coreban](/aspnet/core/fundamentals/dependency-injection).
+

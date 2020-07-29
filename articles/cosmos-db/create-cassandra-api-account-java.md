@@ -8,13 +8,13 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: tutorial
 ms.date: 12/06/2018
-ms.custom: seodec18
-ms.openlocfilehash: e114bf3a87f3018cc51c5752d57ce5911053542f
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.custom: seodec18, devx-track-java
+ms.openlocfilehash: fa25d07ff034cec50da515341bd9ca604ee28577
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85118406"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319184"
 ---
 # <a name="tutorial-create-a-cassandra-api-account-in-azure-cosmos-db-by-using-a-java-application-to-store-keyvalue-data"></a>Oktatóanyag: Cassandra API-fiók létrehozása a Azure Cosmos DBban Java-alkalmazás használatával a kulcs/érték típusú adattároláshoz
 
@@ -31,7 +31,7 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
 
 ## <a name="prerequisites"></a>Előfeltételek 
 
-* Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). 
+* Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) a virtuális gép létrehozásának megkezdése előtt. 
 
 * Szerezze be a [Java Development Kit (JDK)](/java/azure/jdk/?view=azure-java-stable)legújabb verzióját. 
 
@@ -51,12 +51,12 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
    |ID   |   Adjon meg egy egyedi nevet    | Adjon meg egy egyedi nevet az Azure Cosmos-fiók azonosításához. <br/><br/>A rendszer a .azure.com utótaggal egészíti ki a megadott azonosítót a kapcsolódási pont létrehozásához, ezért válasszon egyedi, de felismerhető azonosítót.         |
    |API    |  Cassandra   |  A létrehozni kívánt fiók típusát az API határozza meg. <br/> Válassza a **Cassandra**lehetőséget, mert ebben a cikkben egy olyan széles oszlopú adatbázist fog létrehozni, amely a Cassandra Query Language (CQL) szintaxis használatával kérdezhető le.  |
    |Előfizetés    |  Az Ön előfizetése        |  Válassza ki az Azure Cosmos-fiókhoz használni kívánt Azure-előfizetést.        |
-   |Erőforráscsoport   | Név megadása    |  Válassza az **Új létrehozása** elemet, majd adja meg a fiók új erőforráscsoport-nevét. Az egyszerűség kedvéért használhat az azonosítójával megegyező nevet.    |
+   |Erőforráscsoport   | Adjon meg egy nevet    |  Válassza az **Új létrehozása** elemet, majd adja meg a fiók új erőforráscsoport-nevét. Az egyszerűség kedvéért használhat az azonosítójával megegyező nevet.    |
    |Hely    |  Válassza ki a felhasználóihoz legközelebb eső régiót    |  Válassza ki azt a földrajzi helyet, ahol az Azure Cosmos-fiókját tárolni szeretné. Használja a felhasználókhoz legközelebb eső helyet, hogy a lehető leggyorsabb hozzáférést biztosítsa az adataihoz.    |
 
    :::image type="content" source="./media/create-cassandra-api-account-java/create-account.png" alt-text="Fiók létrehozása a portál használatával":::
 
-4. Kattintson a **Létrehozás** gombra. <br/>A fiók létrehozása eltarthat néhány percig. Az erőforrás létrehozása után az **üzembe helyezés sikeres** értesítése látható a portál jobb oldalán.
+4. Válassza a **Létrehozás** lehetőséget. <br/>A fiók létrehozása eltarthat néhány percig. Az erőforrás létrehozása után az **üzembe helyezés sikeres** értesítése látható a portál jobb oldalán.
 
 ## <a name="get-the-connection-details-of-your-account"></a>A fiók kapcsolati adatainak lekérése  
 

@@ -11,12 +11,12 @@ ms.reviewer: maghan, jingwang
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 07/16/2020
-ms.openlocfilehash: ee641840839772d858cea775acb23e375d6aadea
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: eb423ebd354adeb8273755d34323b283d53eb8b5
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87117411"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283894"
 ---
 # <a name="quickstart-create-an-azure-data-factory-using-arm-template"></a>Rövid útmutató: Azure Data Factory létrehozása ARM-sablonnal
 
@@ -41,7 +41,7 @@ Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonoka
 
 ### <a name="azure-subscription"></a>Azure-előfizetés
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/), mielőtt hozzákezd.
 
 ### <a name="create-a-file"></a>Fájl létrehozása
 
@@ -58,7 +58,7 @@ Mentse a fájlt a **C:\ADFv2QuickStartPSH** mappába. (Ha a mappa még nem léte
 
 Az ebben a gyorsútmutatóban használt sablon az [Azure-gyorssablonok](https://azure.microsoft.com/resources/templates/101-data-factory-v2-blob-to-blob-copy/) közül származik.
 
-:::code language="json" source="~/quickstart-templates/101-data-factory-v2-blob-to-blob-copy/azuredeploy.json" range="1-196" highlight="40-187":::
+:::code language="json" source="~/quickstart-templates/101-data-factory-v2-blob-to-blob-copy/azuredeploy.json":::
 
 A sablonban vannak definiálva Azure-erőforrások:
 
@@ -170,7 +170,7 @@ A folyamat automatikusan létrehoz egy kimeneti mappát a blob-tárolóban. Ezut
 
     :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-output.png" alt-text="Kimenet":::
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Kétféleképpen távolíthatja el a rövid útmutatóban létrehozott erőforrásokat. [Törölheti az Azure-erőforráscsoportot](../azure-resource-manager/management/delete-resource-group.md)is, amely tartalmazza az erőforráscsoport összes erőforrását. Ha a többi erőforrást érintetlenül szeretné hagyni, csak az ebben az oktatóanyagban létrehozott adat-előállítót törölje.
 

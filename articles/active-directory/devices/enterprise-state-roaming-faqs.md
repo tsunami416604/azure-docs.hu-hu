@@ -11,11 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ad76835b0c72b691e1ef8810f2c58dedb8f597d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 35669a7d80907e2335c68b1da9010f5879aa6c7c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78672378"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87274085"
 ---
 # <a name="settings-and-data-roaming-faq"></a>Beállítások és adatroaming GYIK
 
@@ -25,18 +26,18 @@ Ez a cikk bizonyos kérdésekre ad választ, amelyekkel a rendszergazdák a beá
 
 **Windows-beállítások**: a Windows operációs rendszerbe beépített számítógép-beállítások. Ezek általában olyan beállítások, amelyek személyre szabják a számítógépet, és a következő széles kategóriákat tartalmazzák:
 
-* *Téma*, amely olyan funkciókat tartalmaz, mint például az asztali téma és a tálca beállításai.
-* Az *Internet Explorer beállításai*, beleértve a legutóbb megnyitott lapokat és kedvenceket.
+* *Téma*, amely magában foglalja az asztali témát és a tálca beállításait is.
+* *Az Internet Explorer beállításai* az utoljára megnyitott lapokkal és kedvencekkel együtt.
 * A *Microsoft Edge böngésző beállításai*, például a kedvencek és az olvasások listája.
 * *Jelszavak*, beleértve az internetes jelszavakat, a Wi-Fi profilokat és egyebeket.
-* *Nyelvi beállítások*, amelyek magukban foglalják a billentyűzetkiosztások beállításait, a rendszer nyelvét, a dátumot és az időt, és így tovább.
-* *Könnyű hozzáférést biztosító funkciók*, például a kontrasztos téma, a Narrátor és a nagyító.
+* *Nyelvi beállítások*, beleértve egyebek között a billentyűzetkiosztások beállításait, a rendszer nyelvét, és a dátum és idő beállításait.
+* *Könnyű kezelés funkciók*, például kontrasztos témák, Narrátor és Nagyító.
 * *Egyéb Windows-beállítások*, például az egér beállításai.
 
 > [!NOTE]
 > Ez a cikk a Microsoft Edge korábbi HTML-alapú böngészőre vonatkozik, amely a Windows 10 2015-es verziójában indult el. A cikk nem vonatkozik az új, 2020. január 15-én kiadott Microsoft Edge Chromium-alapú böngészőre. Az új Microsoft Edge szinkronizálási működésével kapcsolatos további információkért tekintse meg a [Microsoft Edge Sync](/deployedge/microsoft-edge-enterprise-sync)című cikket.
 
-**Alkalmazásadatok**: az univerzális Windows-alkalmazások a beállításokat egy barangoló mappába írhatják, és a mappába írt összes adattal automatikusan szinkronizálva lesznek. Az egyes alkalmazás-fejlesztőknek köszönhetően az alkalmazások kihasználhatják ezt a képességet. A barangolást használó univerzális Windows-alkalmazások fejlesztésével kapcsolatos további információkért tekintse meg az [AppData Storage API](https://msdn.microsoft.com/library/windows/apps/mt299098.aspx) és a [Windows 8 AppData barangolás fejlesztői blogját](https://blogs.msdn.com/b/windowsappdev/archive/2012/07/17/roaming-your-app-data.aspx).
+**Alkalmazásadatok**: az univerzális Windows-alkalmazások a beállításokat egy barangoló mappába írhatják, és a mappába írt összes adattal automatikusan szinkronizálva lesznek. Az egyes alkalmazás-fejlesztőknek köszönhetően az alkalmazások kihasználhatják ezt a képességet. A barangolást használó univerzális Windows-alkalmazások fejlesztésével kapcsolatos további információkért tekintse meg az [AppData Storage API](https://msdn.microsoft.com/library/windows/apps/mt299098.aspx) és a [Windows 8 AppData barangolás fejlesztői blogját](https://blogs.windows.com/windowsdeveloper/2016/05/04/roaming-app-data-and-the-user-experience/).
 
 ## <a name="what-account-is-used-for-settings-sync"></a>Milyen fiókot használ a beállítások szinkronizálásához?
 

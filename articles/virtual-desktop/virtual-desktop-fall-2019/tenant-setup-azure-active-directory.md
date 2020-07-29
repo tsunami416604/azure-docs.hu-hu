@@ -1,6 +1,6 @@
 ---
-title: Bérlő létrehozása a Windows rendszerű virtuális asztalon – Azure
-description: Leírja, hogyan kell beállítani a Windows rendszerű virtuális asztali bérlőket a Azure Active Directoryban.
+title: Bérlő létrehozása a Windows Virtual Desktopban (klasszikus) – Azure
+description: Útmutató a Windows rendszerű virtuális asztali (klasszikus) bérlők beállításához a Azure Active Directoryban.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: tutorial
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6a1e301b63eee348f59a1b9570c2c3ffcd78ecef
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: a1f2dbf1f7cfc8fbb6a29129c7e445ffef87b070
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85362390"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286359"
 ---
-# <a name="tutorial-create-a-tenant-in-windows-virtual-desktop"></a>Oktatóanyag: bérlő létrehozása a Windows Virtual Desktopban
+# <a name="tutorial-create-a-tenant-in-windows-virtual-desktop-classic"></a>Oktatóanyag: bérlő létrehozása a Windows Virtual Desktopban (klasszikus)
 
 >[!IMPORTANT]
->Ez a tartalom a Fall 2019 kiadásra vonatkozik, amely nem támogatja a Windows rendszerű virtuális asztali objektumokat Azure Resource Manager.
+>Ez a tartalom a Windows rendszerű virtuális asztali (klasszikus) verzióra vonatkozik, amely nem támogatja Azure Resource Manager Windows rendszerű virtuális asztali objektumokat.
 
 A bérlők létrehozása a Windows Virtual Desktopban az első lépés az asztali virtualizálási megoldás felépítése felé. A bérlő egy vagy több gazdagép egy csoportja. Mindegyik gazdagép több munkamenet-gazdagépből áll, és virtuális gépekként fut az Azure-ban, és regisztrálva van a Windows rendszerű virtuális asztali szolgáltatásban. Az egyes címkészlet egy vagy több olyan alkalmazáscsoportből is áll, amelyek a távoli asztal és a távoli alkalmazás erőforrásainak közzétételére szolgálnak a felhasználók számára. A Bérlővel létrehozhatók a gazdagépek, létrehozhatók alkalmazások, felhasználók rendelhetők, és a szolgáltatáson keresztül is csatlakozhatnak.
 

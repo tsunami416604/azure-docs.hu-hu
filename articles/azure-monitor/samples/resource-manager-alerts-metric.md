@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: sample
 ms.date: 05/18/2020
 ms.subservice: alerts
-ms.openlocfilehash: 793a4b3e8ea0dde2e4ad755cbff5a07a36c44cb9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: dad4262520da1ec88c634c98aa2af2bf66bab936
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86515376"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322295"
 ---
 # <a name="resource-manager-template-samples-for-metric-alert-rules-in-azure-monitor"></a>Resource Manager-sablonok – minták metrikus riasztási szabályokhoz Azure Monitor
 
@@ -23,7 +23,7 @@ Ez a cikk példákat tartalmaz [Azure Resource Manager sablonok](../../azure-res
 A metrikus riasztási szabályokkal használható erőforrások listáját a [Azure monitor metrikai riasztások támogatott erőforrásai](../platform/alerts-metric-near-real-time.md) című részben tekintheti meg. A riasztási szabályok sémájának és tulajdonságainak magyarázata a [metrikus riasztások – létrehozás vagy frissítés](/rest/api/monitor/metricalerts/createorupdate)lehetőségnél érhető el.
 
 > [!NOTE]
-> Erőforrás-sablon metrikai riasztások létrehozásához az erőforrástípus esetében: az Azure Log Analytics munkaterület (azaz) `Microsoft.OperationalInsights/workspaces` további lépéseket igényel. Részletekért lásd: [metrikai riasztás a naplókhoz – erőforrás-sablon](../../azure-monitor/platform/alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs).
+> Erőforrás-sablon metrikai riasztások létrehozásához az erőforrástípus esetében: az Azure Log Analytics munkaterület (azaz) `Microsoft.OperationalInsights/workspaces` további lépéseket igényel. Részletekért lásd: [metrikai riasztás a naplókhoz – erőforrás-sablon](../platform/alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs).
 
 
 
@@ -3127,7 +3127,7 @@ Ez a minta egy dinamikus küszöbértékek metrikai riasztási szabályt hoz lé
 
 
 ## <a name="availability-test-with-metric-alert"></a>Rendelkezésre állási teszt metrikus riasztással
-[Application Insights rendelkezésre állási tesztek](../../azure-monitor/app/monitor-web-app-availability.md) segítségével figyelheti a webhely vagy alkalmazás elérhetőségét a világ különböző helyeiről. A rendelkezésre állási teszt riasztásai értesítik, ha a rendelkezésre állási tesztek bizonyos számú helyről sikertelenek. A rendelkezésre állási tesztekkel kapcsolatos riasztások ugyanazzal az erőforrással, mint a metrikai riasztások (Microsoft. bepillantások/metricAlerts). Az alábbi minta egy egyszerű rendelkezésre állási tesztet és egy hozzá tartozó riasztást hoz létre.
+[Application Insights rendelkezésre állási tesztek](../app/monitor-web-app-availability.md) segítségével figyelheti a webhely vagy alkalmazás elérhetőségét a világ különböző helyeiről. A rendelkezésre állási teszt riasztásai értesítik, ha a rendelkezésre állási tesztek bizonyos számú helyről sikertelenek. A rendelkezésre állási tesztekkel kapcsolatos riasztások ugyanazzal az erőforrással, mint a metrikai riasztások (Microsoft. bepillantások/metricAlerts). Az alábbi minta egy egyszerű rendelkezésre állási tesztet és egy hozzá tartozó riasztást hoz létre.
 
 > [!NOTE]
 > `&amp`; a & HTML-entitásának hivatkozása. Az URL-paramétereket még mindig egyetlen & választja el, de ha HTML-ben említi az URL-címet, akkor kódolni kell. Tehát ha a pingURL paraméter értéke "&", el kell menekülnie a következővel: " `&amp` ;"
@@ -3261,8 +3261,9 @@ Ez a minta egy dinamikus küszöbértékek metrikai riasztási szabályt hoz lé
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [További Azure monitor-sablonok beszerzése](resource-manager-samples.md).
 - [További információ a riasztásokról](../platform/alerts-overview.md).
 - [Minta beszerzése egy műveleti csoport létrehozásához Resource Manager-sablonnal](resource-manager-action-groups.md)
+

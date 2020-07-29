@@ -2,15 +2,16 @@
 title: Függvények közzététele az Azure-ban a Java és a Gradle használatával
 description: HTTP által aktivált függvény létrehozása és közzététele az Azure-ban Java és Gradle használatával.
 author: KarlErickson
+ms.custom: devx-track-java
 ms.author: karler
 ms.topic: how-to
 ms.date: 04/08/2020
-ms.openlocfilehash: 906f3d45edef6180557c54f0ff29cd11a1c96fa3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ce2169838faaee8da459f80979fa31318e9d50c9
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87055674"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322176"
 ---
 # <a name="use-java-and-gradle-to-create-and-publish-a-function-to-azure"></a>Függvények létrehozása és közzététele az Azure-ban a Java és a Gradle használatával
 

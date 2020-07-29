@@ -6,11 +6,12 @@ author: brahmnes
 ms.author: bfung
 ms.date: 03/07/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 194a2da23c8fb405c492df8f6ee173cc97fde4ec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c1cc9893a309dcdf7ac575494d164052bb0c617c
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77671341"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325678"
 ---
 # <a name="enable-snapshot-debugger-for-net-apps-in-azure-service-fabric-cloud-service-and-virtual-machines"></a>A .NET-alkalmazások Snapshot Debugger engedélyezése az Azure Service Fabric, a Cloud Service és a Virtual Machines
 
@@ -20,11 +21,11 @@ Ha az alkalmazás az Azure Service Fabric, a Cloud Service, a Virtual Machines v
     
 ## <a name="configure-snapshot-collection-for-aspnet-applications"></a>Pillanatkép-gyűjtemény konfigurálása ASP.NET-alkalmazásokhoz
 
-1. Ha még nem tette meg, [engedélyezze Application Insights a webalkalmazásban](../../azure-monitor/app/asp-net.md).
+1. Ha még nem tette meg, [engedélyezze Application Insights a webalkalmazásban](./asp-net.md).
 
 2. Adja meg a [Microsoft. ApplicationInsights. snapshotcollector nugetcsomag](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet-csomagot az alkalmazásban.
 
-3. Ha szükséges, testreszabhatja a [ApplicationInsights.confighoz ](../../azure-monitor/app/configuration-with-applicationinsights-config.md)hozzáadott Snapshot Debugger konfigurációt. Az alapértelmezett Snapshot Debugger konfiguráció többnyire üres, és az összes beállítás megadása nem kötelező. Az alábbi példa az alapértelmezett konfigurációval egyenértékű konfigurációt mutatja be:
+3. Ha szükséges, testreszabhatja a [ApplicationInsights.confighoz ](./configuration-with-applicationinsights-config.md)hozzáadott Snapshot Debugger konfigurációt. Az alapértelmezett Snapshot Debugger konfiguráció többnyire üres, és az összes beállítás megadása nem kötelező. Az alábbi példa az alapértelmezett konfigurációval egyenértékű konfigurációt mutatja be:
 
     ```xml
     <TelemetryProcessors>
@@ -58,12 +59,12 @@ Ha az alkalmazás az Azure Service Fabric, a Cloud Service, a Virtual Machines v
     </TelemetryProcessors>
     ```
 
-4. A pillanatképek csak a Application Insights jelentett kivételeken lesznek összegyűjtve. Bizonyos esetekben (például a .NET platform régebbi verzióiban) előfordulhat, hogy a kivételek [gyűjteményét be kell állítania](../../azure-monitor/app/asp-net-exceptions.md#exceptions) a portálon található pillanatképekkel kapcsolatos kivételek megtekintéséhez.
+4. A pillanatképek csak a Application Insights jelentett kivételeken lesznek összegyűjtve. Bizonyos esetekben (például a .NET platform régebbi verzióiban) előfordulhat, hogy a kivételek [gyűjteményét be kell állítania](./asp-net-exceptions.md#exceptions) a portálon található pillanatképekkel kapcsolatos kivételek megtekintéséhez.
 
 
 ## <a name="configure-snapshot-collection-for-applications-using-aspnet-core-20-or-above"></a>Pillanatkép-gyűjtemény konfigurálása a ASP.NET Core 2,0-es vagy újabb verzióját használó alkalmazásokhoz
 
-1. Ha még nem tette meg, [engedélyezze Application Insights a ASP.net Core webalkalmazásban](../../azure-monitor/app/asp-net-core.md).
+1. Ha még nem tette meg, [engedélyezze Application Insights a ASP.net Core webalkalmazásban](./asp-net-core.md).
 
     > [!NOTE]
     > Győződjön meg arról, hogy az alkalmazás a Microsoft. ApplicationInsights. AspNetCore csomag 2.1.1-es vagy újabb verziójára hivatkozik.
@@ -150,7 +151,7 @@ Ha az alkalmazás az Azure Service Fabric, a Cloud Service, a Virtual Machines v
 
 ## <a name="configure-snapshot-collection-for-other-net-applications"></a>Pillanatkép-gyűjtemény konfigurálása más .NET-alkalmazásokhoz
 
-1. Ha az alkalmazás még nincs felépítve Application Insightsval, [a Application Insights engedélyezésével és a kialakítási kulcs beállításával](../../azure-monitor/app/windows-desktop.md)kezdheti meg az első lépéseket.
+1. Ha az alkalmazás még nincs felépítve Application Insightsval, [a Application Insights engedélyezésével és a kialakítási kulcs beállításával](./windows-desktop.md)kezdheti meg az első lépéseket.
 
 2. Adja hozzá a [Microsoft. ApplicationInsights. snapshotcollector nugetcsomag](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet-csomagot az alkalmazásban.
 
@@ -179,3 +180,4 @@ Ha az alkalmazás az Azure Service Fabric, a Cloud Service, a Virtual Machines v
 - Adatforgalom létrehozása az alkalmazás számára, amely kivételt indíthat. Ezután várjon 10 – 15 percet a pillanatképek Application Insights példányba való elküldésekor.
 - A Azure Portal található [Pillanatképek](snapshot-debugger.md?toc=/azure/azure-monitor/toc.json#view-snapshots-in-the-portal) .
 - Snapshot Debugger problémák elhárításával kapcsolatos segítségért lásd: [Snapshot Debugger hibaelhárítás](snapshot-debugger-troubleshoot.md?toc=/azure/azure-monitor/toc.json).
+

@@ -3,19 +3,19 @@ title: Windowsos asztali alkalmazások használatának és teljesítményének f
 description: A windowsos asztali alkalmazások használatát és teljesítményét az Application Insights segítségével elemezheti.
 ms.topic: conceptual
 ms.date: 06/11/2020
-ms.openlocfilehash: ddb602536e1b8bbc987c4ba366e2007163c814ec
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 17613fc6cea24643c2b88182e7e56a1d216b2da8
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499188"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323417"
 ---
 # <a name="monitoring-usage-and-performance-in-classic-windows-desktop-apps"></a>Klasszikus windowsos asztali alkalmazások használatának és teljesítményének figyelése
 
-A helyszínen, az Azure-ban és más felhőben üzemeltetett alkalmazások is kihasználhatják az Application Insights előnyeit. Az egyetlen korlát, hogy [engedélyezni kell a kommunikációt](../../azure-monitor/app/ip-addresses.md) az Application Insights szolgáltatással. Az univerzális Windows-platformra (UWP) épülő alkalmazásokhoz a [Visual Studio App Center](../../azure-monitor/learn/mobile-center-quickstart.md) használatát javasoljuk.
+A helyszínen, az Azure-ban és más felhőben üzemeltetett alkalmazások is kihasználhatják az Application Insights előnyeit. Az egyetlen korlát, hogy [engedélyezni kell a kommunikációt](./ip-addresses.md) az Application Insights szolgáltatással. Az univerzális Windows-platformra (UWP) épülő alkalmazásokhoz a [Visual Studio App Center](../learn/mobile-center-quickstart.md) használatát javasoljuk.
 
 ## <a name="to-send-telemetry-to-application-insights-from-a-classic-windows-application"></a>Klasszikus Windows-alkalmazásból származó telemetriai adatok küldése az Application Insightsba
-1. [Hozzon létre egy Application Insights-erőforrást](../../azure-monitor/app/create-new-resource.md ) az [Azure Portalon](https://portal.azure.com). 
+1. [Hozzon létre egy Application Insights-erőforrást](./create-new-resource.md) az [Azure Portalon](https://portal.azure.com). 
 2. Végezze el a kialakítási kulcs másolását.
 3. A Visual Studióban szerkessze az alkalmazási projekt NuGet-csomagjait, és vegye fel a Microsoft.ApplicationInsights.WindowsServer csomagot. (Vagy válassza a Microsoft. ApplicationInsights lehetőséget, ha csak az alap API-t szeretné használni, a standard szintű telemetria-gyűjtési modulok nélkül.)
 4. Állítsa be a kialakítási kulcsot a kódban:
@@ -27,7 +27,7 @@ A helyszínen, az Azure-ban és más felhőben üzemeltetett alkalmazások is ki
     `<InstrumentationKey>`*a kulcs*`</InstrumentationKey>` 
    
     Az ApplicationInsights.config használatakor győződjön meg arról, hogy annak tulajdonságait a következőre állította a Megoldáskezelőben: **Build Action = Content, Copy to Output Directory = Copy**.
-5. [Az API-val](../../azure-monitor/app/api-custom-events-metrics.md) telemetriai adatokat küldhet.
+5. [Az API-val](./api-custom-events-metrics.md) telemetriai adatokat küldhet.
 6. Futtassa az alkalmazást, és tekintse meg a telemetria a Azure Portalban létrehozott erőforrásban.
 
 ## <a name="example-code"></a><a name="telemetry"></a>Mintakód
@@ -174,8 +174,9 @@ namespace WindowsFormsApp2
 > [!NOTE]
 > Bár a fentiekben leírtak szerint technikailag használhatja a telemetria-processzort, még akkor is, ha az [örökölt Enterprise (node) díjszabási](./pricing.md#legacy-enterprise-per-node-pricing-tier)szinten van, ez a túlszámlázás lehetséges lehetőségét eredményezi, mert a csomópontok díjszabása nem képes megfelelően megkülönböztetni a csomópontokat.
 
-## <a name="next-steps"></a>Következő lépések
-* [Irányítópult létrehozása](../../azure-monitor/app/overview-dashboard.md)
-* [Diagnosztikai keresés](../../azure-monitor/app/diagnostic-search.md)
-* [Metrikák böngészése](../../azure-monitor/platform/metrics-charts.md)
+## <a name="next-steps"></a>További lépések
+* [Irányítópult létrehozása](./overview-dashboard.md)
+* [Diagnosztikai keresés](./diagnostic-search.md)
+* [Metrikák böngészése](../platform/metrics-charts.md)
 * [Analytics-lekérdezések](../log-query/log-query-overview.md)
+

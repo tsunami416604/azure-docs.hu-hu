@@ -6,16 +6,16 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 06/19/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 19a0e94206691dc741020374bf5c827ba423515d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c53b43d811e5e2b9cd8d70e3c8e05af444895154
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87008353"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320646"
 ---
 # <a name="availability-alerts"></a>Rendelkezésre állási riasztások
 
-Az [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) rendszeres időközönként, világszerte különböző helyekről webes kéréseket küld az alkalmazására. Riasztást küld, ha az alkalmazás nem válaszol, vagy ha túl lassan válaszol.
+Az [Azure Application Insights](./app-insights-overview.md) rendszeres időközönként, világszerte különböző helyekről webes kéréseket küld az alkalmazására. Riasztást küld, ha az alkalmazás nem válaszol, vagy ha túl lassan válaszol.
 
 ## <a name="enable-alerts"></a>Riasztások engedélyezése
 
@@ -65,7 +65,7 @@ Az [új egyesített riasztások](../platform/alerts-overview.md)használatával 
 
 ## <a name="automate-alerts"></a>Riasztások automatizálása
 
-Ha Azure Resource Manager-sablonokkal szeretné automatizálni ezt a folyamatot, tekintse meg a [metrikák létrehozása a Resource Manager-sablonnal](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-an-availability-test-along-with-a-metric-alert) című dokumentumot.
+Ha Azure Resource Manager-sablonokkal szeretné automatizálni ezt a folyamatot, tekintse meg a [metrikák létrehozása a Resource Manager-sablonnal](../platform/alerts-metric-create-templates.md#template-for-an-availability-test-along-with-a-metric-alert) című dokumentumot.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
@@ -75,3 +75,4 @@ Dedikált [hibaelhárítási cikk](troubleshoot-availability.md).
 
 * [Többlépéses webes tesztek](availability-multistep.md)
 * [URL pingelése webes tesztek](monitor-web-app-availability.md)
+

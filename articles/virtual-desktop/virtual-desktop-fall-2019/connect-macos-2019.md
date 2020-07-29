@@ -1,6 +1,6 @@
 ---
-title: Kapcsolódás a Windows rendszerű virtuális asztalhoz a macOS-Azure-ból 2019
-description: Kapcsolódás a Windows rendszerű virtuális asztalhoz a macOS-ügyféllel.
+title: Kapcsolódás a Windows rendszerű virtuális asztalhoz (klasszikus) macOS-Azure-ból
+description: Kapcsolódás a Windows rendszerű virtuális asztalhoz (klasszikus) a macOS-ügyfél használatával.
 services: virtual-desktop
 author: heidilohr
 ms.service: virtual-desktop
@@ -8,19 +8,19 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 1d8f9e3a5f4c529e3574be7dbeae8bd385f85367
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a4aac80f7e4ef93b6503398c225b2aeffe566dbe
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087107"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87270566"
 ---
-# <a name="connect-with-the-macos-client"></a>Kapcsolódás a macOS-ügyfélhez
+# <a name="connect-to-windows-virtual-desktop-classic-with-the-macos-client"></a>Kapcsolódás a Windows rendszerű virtuális asztalhoz (klasszikus) a macOS-ügyféllel
 
 > A következőkre vonatkozik: macOS 10,12 vagy újabb
 
 >[!IMPORTANT]
->Ez a tartalom a Fall 2019 kiadásra vonatkozik, amely nem támogatja a Windows rendszerű virtuális asztali objektumokat Azure Resource Manager. Ha a Spring 2020 Update szolgáltatásban bevezetett Azure Resource Manager Windows rendszerű virtuális asztali objektumokat szeretne felügyelni, tekintse meg [ezt a cikket](../connect-macos.md).
+>Ez a tartalom a Windows rendszerű virtuális asztali (klasszikus) verzióra vonatkozik, amely nem támogatja Azure Resource Manager Windows rendszerű virtuális asztali objektumokat. Ha Azure Resource Manager Windows rendszerű virtuális asztali objektumokat szeretne felügyelni, tekintse meg [ezt a cikket](../connect-macos.md).
 
 A macOS-eszközökről elérheti a Windows rendszerű virtuális asztali erőforrásokat a letölthető ügyféllel. Ebből az útmutatóból megtudhatja, hogyan állíthatja be az ügyfelet.
 

@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 01/03/2019
 ms.reviewer: abgreg;mbullwin
-ms.openlocfilehash: a3a59b6658e6ea0229f65492b20b5f5f2882d12a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 46b7479df6d087915cfe81895a786a528da6b9bb
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499239"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327905"
 ---
 # <a name="send-user-context-ids-to-enable-usage-experiences-in-azure-application-insights"></a>Felhasználói környezeti azonosítók küldése a használati élmények engedélyezéséhez az Azure-ban Application Insights
 
@@ -30,7 +30,7 @@ A felhasználó által az idő múlásával nyomon követhető, Application Insi
 - Munkamenetek: munkamenet-azonosító belefoglalása.
 
 > [!NOTE]
-> Ez egy speciális cikk, amely ismerteti a felhasználói tevékenység nyomon követésének manuális lépéseit Application Insights. Számos webalkalmazással **ezek a lépések nem szükségesek**, mivel az alapértelmezett kiszolgálóoldali SDK-k az [ügyfél/böngésző-oldal JavaScript SDK](../../azure-monitor/app/website-monitoring.md )-val együtt általában elegendőek a felhasználói tevékenységek automatikus követéséhez. Ha még nem konfigurálta az [ügyféloldali figyelést](../../azure-monitor/app/website-monitoring.md ) a kiszolgálóoldali SDK mellett, először is ellenőrizze, hogy a felhasználói viselkedés elemzési eszközei a várt módon működnek-e.
+> Ez egy speciális cikk, amely ismerteti a felhasználói tevékenység nyomon követésének manuális lépéseit Application Insights. Számos webalkalmazással **ezek a lépések nem szükségesek**, mivel az alapértelmezett kiszolgálóoldali SDK-k az [ügyfél/böngésző-oldal JavaScript SDK](./website-monitoring.md)-val együtt általában elegendőek a felhasználói tevékenységek automatikus követéséhez. Ha még nem konfigurálta az [ügyféloldali figyelést](./website-monitoring.md) a kiszolgálóoldali SDK mellett, először is ellenőrizze, hogy a felhasználói viselkedés elemzési eszközei a várt módon működnek-e.
 
 ## <a name="choosing-user-ids"></a>Felhasználói azonosítók kiválasztása
 
@@ -126,7 +126,7 @@ namespace MvcWebRole.Telemetry
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A használati tapasztalatok engedélyezéséhez kezdjen el [Egyéni eseményeket](./api-custom-events-metrics.md#trackevent) vagy [oldalletöltések](./api-custom-events-metrics.md#page-views)küldését.
 - Ha már elküldte az egyéni eseményeket vagy a lapok nézeteit, tekintse meg a használati eszközöket, amelyekkel megismerheti, hogy a felhasználók miként használják a szolgáltatást.
@@ -134,4 +134,5 @@ namespace MvcWebRole.Telemetry
     - [Felhasználók, munkamenetek és események](usage-segmentation.md)
     - [Tölcsérek](usage-funnels.md)
     - [Megőrzés](usage-retention.md)
-    - [Munkafüzetek](../../azure-monitor/platform/workbooks-overview.md)
+    - [Munkafüzetek](../platform/workbooks-overview.md)
+

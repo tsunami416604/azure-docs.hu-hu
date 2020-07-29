@@ -2,15 +2,15 @@
 title: ARM-sablon – gyakori kérdések
 description: Gyakori kérdések (GYIK) Azure Resource Manager-sablonokról.
 ms.topic: conceptual
-ms.date: 05/30/2020
+ms.date: 07/27/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: fb4bac00c4d971e7b056c18fe609d77b077dbcbb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e23334daf0f4f6d5a6917af49c786d47c4557375
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85296865"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327259"
 ---
 # <a name="frequently-asked-questions-about-arm-templates"></a>Az ARM-sablonokkal kapcsolatos gyakori kérdések
 
@@ -48,7 +48,7 @@ Ez a cikk a Azure Resource Manager-(ARM-) sablonokkal kapcsolatos gyakori kérd�
 
   Az új sablon nyelvének megismeréséhez [regisztráljon az értesítésekre](https://aka.ms/armLangUpdates).
 
-  A sablon specifikációinak megtekintéséhez [csatlakozzon a várakozási listához](https://aka.ms/templateSpecsWaitlist).
+  A sablon specifikációinak megismeréséhez tekintse meg a [Azure Resource Manager sablon specifikációi (előzetes verzió)](template-specs.md)című témakört.
 
 ## <a name="creating-and-testing-templates"></a>Sablonok létrehozása és tesztelése
 
@@ -64,7 +64,7 @@ Ez a cikk a Azure Resource Manager-(ARM-) sablonokkal kapcsolatos gyakori kérd�
 
 * **Létrehozhatok egy erőforráscsoportot egy ARM-sablonban, és erőforrásokat telepíthetek rá?**
 
-  Igen, létrehozhat egy erőforráscsoportot egy sablonban, ha az Azure-előfizetése szintjén telepíti a sablont. Az erőforráscsoport létrehozásához és az erőforrások üzembe helyezéséhez lásd: [erőforráscsoport és erőforrások](deploy-to-subscription.md#resource-group-and-resources).
+  Igen, létrehozhat egy erőforráscsoportot egy sablonban, ha az Azure-előfizetése szintjén telepíti a sablont. Az erőforráscsoport létrehozásához és az erőforrások üzembe helyezéséhez lásd: [erőforráscsoport és erőforrások](deploy-to-subscription.md#resource-groups).
 
 * **Létrehozhatok egy előfizetést egy ARM-sablonban?**
 
@@ -102,7 +102,7 @@ Ez a cikk a Azure Resource Manager-(ARM-) sablonokkal kapcsolatos gyakori kérd�
 
   Igen.
 
-## <a name="template-specs"></a>Sablon specifikációi
+## <a name="template-specs"></a>Sablonspecifikációk
 
 * **Hogyan vehetek részt a sablon specifikációinak előzetes kiadásában?**
 

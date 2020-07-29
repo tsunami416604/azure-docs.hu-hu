@@ -10,12 +10,12 @@ author: peterclu
 ms.author: peterlu
 ms.date: 03/29/2020
 ms.custom: designer
-ms.openlocfilehash: d2ed9a605b19287c2ea693187c445dc8a4b3b932
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: c1d927583ecf0ac5684c607b7d203c3224fe87b1
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206319"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318827"
 ---
 # <a name="example-pipelines--datasets-for-azure-machine-learning-designer-preview"></a>Példa folyamatokra & adatkészletek Azure Machine Learning Designer számára (előzetes verzió)
 
@@ -25,6 +25,8 @@ A Azure Machine Learning Designer beépített példái segítségével gyorsan m
 
 * Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://aka.ms/AMLFree).
 * Azure Machine Learning munkaterület a vállalati SKU-val.
+
+[!INCLUDE [machine-learning-missing-ui](../../includes/machine-learning-missing-ui.md)]
 
 ## <a name="use-sample-pipelines"></a>Mintavételezési folyamatok használata
 
@@ -44,7 +46,7 @@ A következő módon használhat tervezői mintát:
 
    1. A vászontól jobbra található **Beállítások** ablaktáblán válassza a **számítási cél kiválasztása**lehetőséget.
 
-   1. A megjelenő párbeszédpanelen válasszon ki egy meglévő számítási célt, vagy hozzon létre újat. Kattintson a **Mentés** gombra.
+   1. A megjelenő párbeszédpanelen válasszon ki egy meglévő számítási célt, vagy hozzon létre újat. Válassza a **Mentés** lehetőséget.
 
    1. Válassza a **beküldés** lehetőséget a vászon tetején a folyamat futtatásának elküldéséhez.
 
@@ -68,7 +70,7 @@ Ismerkedjen meg ezekkel a beépített regressziós mintákkal.
 | [1. példa: regresszió – autó árának előrejelzése (alapszintű)](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-regression-automobile-price-basic.md) | Az autó árának előrejelzése lineáris regresszióval. |
 | [2. minta: regresszió – autó árának előrejelzése (speciális)](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-regression-automobile-price-compare-algorithms.md) | Előre jelezheti az autók árát a döntési erdőben és a döntési fa regresszort. Hasonlítsa össze a modelleket a legjobb algoritmus megkereséséhez.
 
-## <a name="classification"></a>Osztályozás
+## <a name="classification"></a>Besorolás
 
 Ismerkedjen meg ezekkel a beépített besorolási mintákkal. A mintákról a minták megnyitásával és a modulok megjegyzésének megtekintésével többet is megtudhat.
 
@@ -125,7 +127,7 @@ A minta adatkészletek az **adatkészletek** - **mintáinak** kategóriájában 
 
 [!INCLUDE [aml-ui-cleanup](../../includes/aml-ui-cleanup.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A prediktív elemzés és a gépi tanulás alapjai a [bemutatóban: az autó árának előrejelzése a tervezővel](tutorial-designer-automobile-price-train-score.md)
 

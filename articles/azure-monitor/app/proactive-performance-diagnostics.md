@@ -4,18 +4,18 @@ description: Application Insights az alkalmazás telemetria intelligens elemzés
 ms.topic: conceptual
 ms.date: 05/04/2017
 ms.reviewer: antonfr
-ms.openlocfilehash: 5152a3deb73c7069655ff016fbfc03f6b9cee16d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c817e2c7f609bbbec52eff1b898a8d7c53209a28
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87045785"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321309"
 ---
 # <a name="smart-detection---performance-anomalies"></a>Intelligens észlelés – teljesítménybeli rendellenességek
 
-[Application Insights](../../azure-monitor/app/app-insights-overview.md) automatikusan elemzi a webalkalmazás teljesítményét, és figyelmezteti a lehetséges problémákra. Lehet, hogy ezt olvashatja, mert az intelligens észlelési értesítések egyikét kapta.
+[Application Insights](./app-insights-overview.md) automatikusan elemzi a webalkalmazás teljesítményét, és figyelmezteti a lehetséges problémákra. Lehet, hogy ezt olvashatja, mert az intelligens észlelési értesítések egyikét kapta.
 
-Ehhez a szolgáltatáshoz nincs szükség speciális beállításra, kivéve, ha az alkalmazást a Application Insightsra konfigurálja a [támogatott nyelvre](../../azure-monitor/app/platforms.md). Akkor aktív, ha az alkalmazás elég telemetria hoz létre.
+Ehhez a szolgáltatáshoz nincs szükség speciális beállításra, kivéve, ha az alkalmazást a Application Insightsra konfigurálja a [támogatott nyelvre](./platforms.md). Akkor aktív, ha az alkalmazás elég telemetria hoz létre.
 
 ## <a name="when-would-i-get-a-smart-detection-notification"></a>Mikor kapok egy intelligens észlelési értesítést?
 
@@ -34,7 +34,7 @@ Nem, egy értesítés nem azt jelenti, hogy az alkalmazásnak feltétlenül van 
 
 ## <a name="how-do-i-fix-it"></a>Hogyan lehet kijavítani a hibát?
 
-Az értesítések közé tartoznak a diagnosztikai információk. Bemutatunk egy példát:
+Az értesítések közé tartoznak a diagnosztikai információk. Íme egy példa:
 
 
 ![Íme egy példa a kiszolgálói válaszidő-romlás észlelésére](media/proactive-performance-diagnostics/server_response_time_degradation.png)
@@ -43,7 +43,7 @@ Az értesítések közé tartoznak a diagnosztikai információk. Bemutatunk egy
 2. **Hatókör**. A probléma hatással van az összes forgalomra, vagy csak néhány oldalra? Bizonyos böngészőkre vagy helyszínekre korlátozódik? Ezeket az információkat az értesítésből lehet beszerezni.
 3. **Diagnosztika**. Gyakran előfordul, hogy az értesítésben szereplő diagnosztikai információk a probléma természetét fogják javasolni. Ha például a válaszidő lelassul, ha a kérések sebessége magas, akkor a kiszolgáló vagy a függőségek túlterhelését sugallják. 
 
-    Ellenkező esetben nyissa meg Application Insights teljesítmény paneljét. Itt megtalálhatja a [Profiler](profiler.md) -adatgyűjtést. Kivételek eldobása esetén a [Snapshot debuggert](../../azure-monitor/app/snapshot-debugger.md)is kipróbálhatja.
+    Ellenkező esetben nyissa meg Application Insights teljesítmény paneljét. Itt megtalálhatja a [Profiler](profiler.md) -adatgyűjtést. Kivételek eldobása esetén a [Snapshot debuggert](./snapshot-debugger.md)is kipróbálhatja.
 
 
 
@@ -60,18 +60,18 @@ Az intelligens Észlelésekkel kapcsolatos e-mailek száma Application Insights 
 ## <a name="faq"></a>GYIK
 
 * *Tehát a Microsoft munkatársai megvizsgálják az adataikat?*
-  * Nem. A szolgáltatás teljesen automatikus. Csak Ön kapja meg az értesítéseket. Az adatai [magánjellegűek](../../azure-monitor/app/data-retention-privacy.md).
+  * Nem. A szolgáltatás teljesen automatikus. Csak Ön kapja meg az értesítéseket. Az adatai [magánjellegűek](./data-retention-privacy.md).
 * *Elemzi az Application Insights által összegyűjtött összes adatokat?*
   * Jelenleg nem. Jelenleg elemezzük a kérelem válaszideje, a függőségi válaszidő és az oldal betöltési ideje. A további mérőszámok elemzése a várakozó várakozási sorban áll.
 
 * Milyen típusú alkalmazásokhoz működik ez?
-  * Ezek a romlások minden olyan alkalmazásban észlelhetők, amely a megfelelő telemetria hozza létre. Ha a webalkalmazásban Application Insights telepített, akkor a rendszer automatikusan nyomon követi a kérelmeket és a függőségeket. Ha azonban a háttér-szolgáltatásokban vagy más alkalmazásokban a [TrackRequest ()](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest) vagy a [TrackDependency](../../azure-monitor/app/api-custom-events-metrics.md#trackdependency)hívásait szúrta be, akkor az intelligens észlelés ugyanúgy fog működni.
+  * Ezek a romlások minden olyan alkalmazásban észlelhetők, amely a megfelelő telemetria hozza létre. Ha a webalkalmazásban Application Insights telepített, akkor a rendszer automatikusan nyomon követi a kérelmeket és a függőségeket. Ha azonban a háttér-szolgáltatásokban vagy más alkalmazásokban a [TrackRequest ()](./api-custom-events-metrics.md#trackrequest) vagy a [TrackDependency](./api-custom-events-metrics.md#trackdependency)hívásait szúrta be, akkor az intelligens észlelés ugyanúgy fog működni.
 
 * *Létrehozhatom a saját anomáliák észlelési szabályait, vagy testre is szabhatom a meglévő szabályokat?*
 
   * Még nem, de a következőket teheti:
     * [Riasztásokat állíthat be](../platform/alerts-log.md) , amelyek azt jelzik, ha egy metrika átlép egy küszöbértéket.
-    * [Exportálja a telemetria](../../azure-monitor/app/export-telemetry.md) egy [adatbázisba](../../azure-monitor/app/code-sample-export-sql-stream-analytics.md) vagy [Power BIba](../../azure-monitor/app/export-power-bi.md ), ahol elemezheti saját maga is.
+    * [Exportálja a telemetria](./export-telemetry.md) egy [adatbázisba](./code-sample-export-sql-stream-analytics.md) vagy [Power BIba](./export-power-bi.md), ahol elemezheti saját maga is.
 * *Milyen gyakran történik az elemzés?*
 
   * Az elemzést naponta futtatjuk a telemetria az előző naptól számítva (az UTC időzónában teljes nap).
@@ -92,16 +92,16 @@ Először is számít? Ha egy oldal mindig lassan töltődik be, de a hely felha
 
 Általános útmutatóként használja a Impact utasítást (érintett felhasználók vagy forgalom), de vegye figyelembe, hogy nem ez a teljes történet. Gyűjtsön más bizonyítékot a megerősítéshez.
 
-Vegye figyelembe a probléma paramétereit. Ha földrajzilag függ, állítsa be a [rendelkezésre állási teszteket](../../azure-monitor/app/monitor-web-app-availability.md) , beleértve az adott régiót: az adott területen csak hálózati problémák merülhetnek fel.
+Vegye figyelembe a probléma paramétereit. Ha földrajzilag függ, állítsa be a [rendelkezésre állási teszteket](./monitor-web-app-availability.md) , beleértve az adott régiót: az adott területen csak hálózati problémák merülhetnek fel.
 
 ### <a name="diagnose-slow-page-loads"></a>Lassú oldal terhelésének diagnosztizálása
 Hol található a probléma? Lassú a kiszolgáló válasza, a lap nagyon hosszú, vagy a böngészőnek sok munkát kell tennie a megjelenítéshez?
 
 Nyissa meg a böngészők metrika paneljét. A böngésző oldal betöltési idejének szegmentált megjelenítése megmutatja, hogy az idő hol zajlik. 
 
-* Ha a **küldési kérelem ideje** magas, vagy a kiszolgáló lassan válaszol, vagy ha a kérelem sok adattal rendelkező bejegyzés. A válaszidő vizsgálatához tekintse meg a [teljesítmény mérőszámait](../../azure-monitor/app/web-monitor-performance.md#metrics) .
-* Állítsa be a [függőségek nyomon követését](../../azure-monitor/app/asp-net-dependencies.md) , hogy megtekintse, hogy a lassúság oka a külső szolgáltatások vagy az adatbázis.
-* Ha a **Válasz fogadása** túlsúlyban van, a lap és a hozzá tartozó részek – JavaScript, CSS, képek és így tovább (de aszinkron módon nem tölthetők be). Állítson be egy [rendelkezésre állási tesztet](../../azure-monitor/app/monitor-web-app-availability.md), és győződjön meg arról, hogy a függő részek betöltésére vonatkozó beállítás be van állítva. Ha némi eredményt kap, nyissa meg az eredmény részleteit, és bontsa ki a különböző fájlok betöltési idejének megjelenítéséhez.
+* Ha a **küldési kérelem ideje** magas, vagy a kiszolgáló lassan válaszol, vagy ha a kérelem sok adattal rendelkező bejegyzés. A válaszidő vizsgálatához tekintse meg a [teljesítmény mérőszámait](./web-monitor-performance.md#metrics) .
+* Állítsa be a [függőségek nyomon követését](./asp-net-dependencies.md) , hogy megtekintse, hogy a lassúság oka a külső szolgáltatások vagy az adatbázis.
+* Ha a **Válasz fogadása** túlsúlyban van, a lap és a hozzá tartozó részek – JavaScript, CSS, képek és így tovább (de aszinkron módon nem tölthetők be). Állítson be egy [rendelkezésre állási tesztet](./monitor-web-app-availability.md), és győződjön meg arról, hogy a függő részek betöltésére vonatkozó beállítás be van állítva. Ha némi eredményt kap, nyissa meg az eredmény részleteit, és bontsa ki a különböző fájlok betöltési idejének megjelenítéséhez.
 * A nagy **ügyfél-feldolgozási idő** azt sugallja, hogy a parancsfájlok lassan futnak. Ha az ok nem nyilvánvaló, vegyen fel némi időzítési kódot, és küldje el az időpontokat a trackMetric-hívásokban.
 
 ### <a name="improve-slow-pages"></a>Lassú lapok javítása
@@ -174,11 +174,12 @@ Módosítsa az időtartományt és a szűrőket a telemetria megismeréséhez.
 Ezek a diagnosztikai eszközök segítenek megvizsgálni a telemetria az alkalmazásból:
 
 * [Profilkészítő](profiler.md) 
-* [Pillanatkép-hibakereső](../../azure-monitor/app/snapshot-debugger.md)
-* [Elemzés](../../azure-monitor/log-query/get-started-portal.md)
+* [Pillanatkép-hibakereső](./snapshot-debugger.md)
+* [Elemzés](../log-query/get-started-portal.md)
 * [Analitika – intelligens diagnosztika](../log-query/log-query-overview.md)
 
 Az intelligens észlelések teljesen automatikusak. De lehet, hogy néhány riasztást szeretne beállítani?
 
 * [Manuálisan konfigurált metrikai riasztások](../platform/alerts-log.md)
-* [Rendelkezésre állási webes tesztek](../../azure-monitor/app/monitor-web-app-availability.md)
+* [Rendelkezésre állási webes tesztek](./monitor-web-app-availability.md)
+

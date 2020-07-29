@@ -5,17 +5,18 @@ description: Megtudhatja, hogyan helyezheti üzembe a Azure Machine Learning mod
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
+ms.topic: conceptual
+ms.custom: how-to
 ms.author: mnark
 author: MrudulaN
 ms.reviewer: larryfr
 ms.date: 03/05/2020
-ms.openlocfilehash: 5f2872becd5fb23c71fabb63fb4eafe27c00a637
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: e4a62b9892af661f74df5b49ff4a451fb673b4e1
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86106968"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325763"
 ---
 # <a name="deploy-a-model-to-azure-machine-learning-compute-instances"></a>Modell üzembe helyezése Azure Machine Learning számítási példányok számára
 
@@ -51,7 +52,7 @@ A számítási példány tartalmaz egy példaként szolgáló jegyzetfüzetet, a
     * Jegyzetfüzet virtuális gép: `https://<vm_name>-<local_service_port>.<azure_region_of_workspace>.notebooks.azureml.net/score` . 
     * Számítási példány: `https://<vm_name>-<local_service_port>.<azure_region_of_workspace>.instances.azureml.net/score` . 
 
-    Példa: 
+    Például: 
     * Jegyzetfüzet virtuális gép:`https://vm-name-6789.northcentralus.notebooks.azureml.net/score` 
     * Számítási példány:`https://vm-name-6789.northcentralus.instances.azureml.net/score`
 
@@ -92,7 +93,7 @@ resp = requests.post(service_url, test_sample, headers=headers)
 print("prediction:", resp.text)
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Modell üzembe helyezése egyéni Docker-rendszerkép használatával](how-to-deploy-custom-docker-image.md)
 * [Üzembe helyezés hibaelhárítása](how-to-troubleshoot-deployment.md)

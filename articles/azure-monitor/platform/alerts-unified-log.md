@@ -6,34 +6,34 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 5/31/2019
 ms.subservice: alerts
-ms.openlocfilehash: 0d080c18a1af9549373750b787093fec03b32006
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1d3b3215fe05ef2f57805b5df2b441f360f45df2
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073597"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322346"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Riasztások naplózása Azure Monitor
 
-A naplózási riasztások az [Azure-riasztások](../../azure-monitor/platform/alerts-overview.md)által támogatott riasztási típusok egyike. A riasztások naplózása lehetővé teszi a felhasználók számára, hogy az Azure Analytics platformot használják a riasztások alapjául.
+A naplózási riasztások az [Azure-riasztások](./alerts-overview.md)által támogatott riasztási típusok egyike. A riasztások naplózása lehetővé teszi a felhasználók számára, hogy az Azure Analytics platformot használják a riasztások alapjául.
 
-A naplózási riasztás a [Azure monitor naplókhoz](../log-query/get-started-portal.md) vagy [Application Insightshoz](../../azure-monitor/app/cloudservices.md#view-azure-diagnostics-events)létrehozott naplóbeli keresési szabályokból áll. További információ a használatáról: [log-riasztások létrehozása az Azure-ban](../../azure-monitor/platform/alerts-log.md)
+A naplózási riasztás a [Azure monitor naplókhoz](../log-query/get-started-portal.md) vagy [Application Insightshoz](../app/cloudservices.md#view-azure-diagnostics-events)létrehozott naplóbeli keresési szabályokból áll. További információ a használatáról: [log-riasztások létrehozása az Azure-ban](./alerts-log.md)
 
 > [!NOTE]
-> A [Azure monitor naplók](../log-query/get-started-portal.md) népszerű naplózási adatai mostantól a Azure monitor metrika platformján is elérhetők. Részletek nézetben a [naplók metrikai riasztása](../../azure-monitor/platform/alerts-metric-logs.md)
+> A [Azure monitor naplók](../log-query/get-started-portal.md) népszerű naplózási adatai mostantól a Azure monitor metrika platformján is elérhetők. Részletek nézetben a [naplók metrikai riasztása](./alerts-metric-logs.md)
 
 
 ## <a name="log-search-alert-rule---definition-and-types"></a>Napló keresési riasztási szabálya – definíció és típusok
 
-Az Azure Alerts naplókeresési szabályokat hoz létre megadott naplólekérdezések rendszeres időközönként való automatikus futtatására.  Ha a naplólekérdezés eredménye megfelel bizonyos feltételeknek, létrejön egy riasztásbejegyzés. A szabály ekkor automatikusan futtathat egy vagy több műveletet [Műveletcsoportok](../../azure-monitor/platform/action-groups.md) használatával. A naplózási riasztások létrehozásához, módosításához és frissítéséhez szükség lehet az [Azure monitoring közreműködői](../../azure-monitor/platform/roles-permissions-security.md) szerepkörre. a hozzáférés & lekérdezés végrehajtási jogosultsága a riasztási szabályban vagy a riasztási lekérdezésben lévő elemzési cél (ok) hoz. Ha a felhasználó nem rendelkezik hozzáféréssel a riasztási szabály vagy a riasztási lekérdezés összes analitikai céljához, akkor a szabály létrehozása meghiúsulhat, vagy a napló riasztási szabálya részleges eredménnyel lesz végrehajtva.
+Az Azure Alerts naplókeresési szabályokat hoz létre megadott naplólekérdezések rendszeres időközönként való automatikus futtatására.  Ha a naplólekérdezés eredménye megfelel bizonyos feltételeknek, létrejön egy riasztásbejegyzés. A szabály ekkor automatikusan futtathat egy vagy több műveletet [Műveletcsoportok](./action-groups.md) használatával. A naplózási riasztások létrehozásához, módosításához és frissítéséhez szükség lehet az [Azure monitoring közreműködői](./roles-permissions-security.md) szerepkörre. a hozzáférés & lekérdezés végrehajtási jogosultsága a riasztási szabályban vagy a riasztási lekérdezésben lévő elemzési cél (ok) hoz. Ha a felhasználó nem rendelkezik hozzáféréssel a riasztási szabály vagy a riasztási lekérdezés összes analitikai céljához, akkor a szabály létrehozása meghiúsulhat, vagy a napló riasztási szabálya részleges eredménnyel lesz végrehajtva.
 
 A naplók keresési szabályait a következő részletek határozzák meg:
 
-- **Napló lekérdezése**  A riasztási szabály kiváltódásakor minden alkalommal lefutó lekérdezés.  A lekérdezés által visszaadott rekordok alapján megállapítható, hogy egy riasztás aktiválva van-e. Az elemzési lekérdezés lehet egy adott Log Analytics munkaterülethez vagy Application Insights alkalmazáshoz, és akár több Log Analytics is terjedhet, [és Application Insights erőforrásokhoz](../../azure-monitor/log-query/cross-workspace-query.md#querying-across-log-analytics-workspaces-and-from-application-insights) , valamint az összes erőforrásra vonatkozó lekérdezési jogosultsággal rendelkezik. 
+- **Napló lekérdezése**  A riasztási szabály kiváltódásakor minden alkalommal lefutó lekérdezés.  A lekérdezés által visszaadott rekordok alapján megállapítható, hogy egy riasztás aktiválva van-e. Az elemzési lekérdezés lehet egy adott Log Analytics munkaterülethez vagy Application Insights alkalmazáshoz, és akár több Log Analytics is terjedhet, [és Application Insights erőforrásokhoz](../log-query/cross-workspace-query.md#querying-across-log-analytics-workspaces-and-from-application-insights) , valamint az összes erőforrásra vonatkozó lekérdezési jogosultsággal rendelkezik. 
     > [!IMPORTANT]
-    > a Application Insights-és naplózási riasztások [több erőforrással történő lekérdezési](../../azure-monitor/log-query/cross-workspace-query.md#querying-across-log-analytics-workspaces-and-from-application-insights) támogatása a [scheduledQueryRules API-val konfigurált log Analytics](../../azure-monitor/platform/alerts-log-api-switch.md) esetén.
+    > a Application Insights-és naplózási riasztások [több erőforrással történő lekérdezési](../log-query/cross-workspace-query.md#querying-across-log-analytics-workspaces-and-from-application-insights) támogatása a [scheduledQueryRules API-val konfigurált log Analytics](./alerts-log-api-switch.md) esetén.
 
-    Bizonyos analitikai parancsok és kombinációk nem kompatibilisek a naplóbeli riasztásokban való használattal; További részletekért tekintse meg [a riasztási lekérdezéseket Azure monitorban](../../azure-monitor/platform/alerts-log-query.md).
+    Bizonyos analitikai parancsok és kombinációk nem kompatibilisek a naplóbeli riasztásokban való használattal; További részletekért tekintse meg [a riasztási lekérdezéseket Azure monitorban](./alerts-log-query.md).
 
 - **Időtartam.**  Megadja a lekérdezés időtartományát. A lekérdezés csak azokat a rekordokat adja vissza, amelyek az aktuális idő ezen tartományában jöttek létre. Az időtartam korlátozza a naplózási lekérdezéshez beolvasott adatvesztést, és megkerüli a naplózási lekérdezésben használt idő (például a ago) utasításait. <br>*Ha például az időszak 60 percre van állítva, és a lekérdezés a 1:15 ÓRAKOR fut, csak a 12:15 PM és 1:15 PM között létrehozott rekordokat adja vissza a rendszer a napló lekérdezésének végrehajtásához. Most, hogy a napló lekérdezése a (z) (7D) időpontot használja, a napló lekérdezése csak a 12:15 PM és a 1:15 PM közötti adatértékre lesz futtatva, mintha az csak az elmúlt 60 percben található. És nem a log lekérdezésben megadott hét napig.*
 
@@ -41,7 +41,7 @@ A naplók keresési szabályait a következő részletek határozzák meg:
 
 - **Küszöbérték**.  A rendszer kiértékeli a napló keresésének eredményét, és megállapítja, hogy létre kell-e hozni egy riasztást.  A küszöbérték különbözik a naplók keresési riasztási szabályainak különböző típusaitól.
 
-A naplóbeli keresési szabályok [Azure monitor naplók](../log-query/get-started-portal.md) vagy [Application Insights](../../azure-monitor/app/cloudservices.md#view-azure-diagnostics-events)esetén lehetnek. Az alábbi szakaszokban részletesen ismertetjük ezeket a típusokat.
+A naplóbeli keresési szabályok [Azure monitor naplók](../log-query/get-started-portal.md) vagy [Application Insights](../app/cloudservices.md#view-azure-diagnostics-events)esetén lehetnek. Az alábbi szakaszokban részletesen ismertetjük ezeket a típusokat.
 
 - **[Az eredmények száma](#number-of-results-alert-rules)**. Egyszeres riasztás jön létre, ha a naplóbeli keresés által visszaadott rekordok száma meghaladja a megadott számot.
 - **[Metrika mértékegysége](#metric-measurement-alert-rules)**.  A napló keresési eredményeiben a megadott küszöbértéket meghaladó értékekkel létrehozott riasztás.
@@ -81,7 +81,7 @@ A **metrika mértékének** riasztási szabályai riasztást hoznak létre egy l
 - **Csoport mező**: a mező minden példányához létrejön egy összesített értéket tartalmazó rekord, és mindegyikhez riasztást lehet létrehozni.  Ha például riasztást szeretne készíteni az egyes számítógépekhez, akkor azt a **számítógép**fogja használni. Ha a riasztási lekérdezésben több csoportosítási mező van megadva, a felhasználó megadhatja, hogy melyik mezőt kell használni az eredmények rendezéséhez az **összesítő on** (metricColumn) paraméter használatával.
 
     > [!NOTE]
-    > Az *aggregált on* (metricColumn) beállítás a metrikák mértékének naplózási riasztásai a Application Insights és a naplózási riasztások esetében a [scheduledQueryRules API használatával konfigurált log Analytics](../../azure-monitor/platform/alerts-log-api-switch.md) esetén.
+    > Az *aggregált on* (metricColumn) beállítás a metrikák mértékének naplózási riasztásai a Application Insights és a naplózási riasztások esetében a [scheduledQueryRules API használatával konfigurált log Analytics](./alerts-log-api-switch.md) esetén.
 
 - **Intervallum**: az az időtartam, ameddig az adatokat összesíti.  Ha például **öt percet**adott meg, a rendszer egy rekordot hoz létre a csoport mező minden egyes példányához, amely a riasztáshoz megadott időszakban 5 perces időközönként összesítve lesz.
 
@@ -152,22 +152,23 @@ A naplózási riasztásokra vonatkozó díjszabás a [Azure monitor díjszabási
 - Riasztások naplózása Application Insights megjelenített riasztások pontos neve mellett az erőforráscsoport és a riasztás tulajdonságaival együtt
 - Riasztások naplózása Log Analytics megjelenített riasztások pontos neve, az erőforráscsoport és a riasztás tulajdonságaival együtt. a [SCHEDULEDQUERYRULES API](/rest/api/monitor/scheduledqueryrules) -val való létrehozáskor
 
-Az [örökölt log Analytics API](../../azure-monitor/platform/api-alerts.md) riasztási műveleteket és ütemterveket tartalmaz log Analytics mentett keresés részeként, és nem a megfelelő [Azure-erőforrásokat](../../azure-resource-manager/management/overview.md). Ezért az Azure-ban való számlázáshoz az [új API](../../azure-monitor/platform/alerts-log-api-switch.md) -ra való áttérés vagy az [örökölt log Analytics API](../../azure-monitor/platform/api-alerts.md) -Hidden pszeudo riasztási szabályok segítségével a számlázást engedélyezni kell az **log Analytics Azure Portal használatával** létrehozott korábbi naplózási riasztásokhoz `microsoft.insights/scheduledqueryrules` . Az `microsoft.insights/scheduledqueryrules` `<WorkspaceName>|<savedSearchId>|<scheduleId>|<ActionId>` Erőforrás-csoport és a riasztás tulajdonságai mellett a számlázáshoz létrehozott rejtett pszeudo-szabályok.
+Az [örökölt log Analytics API](./api-alerts.md) riasztási műveleteket és ütemterveket tartalmaz log Analytics mentett keresés részeként, és nem a megfelelő [Azure-erőforrásokat](../../azure-resource-manager/management/overview.md). Ezért az Azure-ban való számlázáshoz az [új API](./alerts-log-api-switch.md) -ra való áttérés vagy az [örökölt log Analytics API](./api-alerts.md) -Hidden pszeudo riasztási szabályok segítségével a számlázást engedélyezni kell az **log Analytics Azure Portal használatával** létrehozott korábbi naplózási riasztásokhoz `microsoft.insights/scheduledqueryrules` . Az `microsoft.insights/scheduledqueryrules` `<WorkspaceName>|<savedSearchId>|<scheduleId>|<ActionId>` Erőforrás-csoport és a riasztás tulajdonságai mellett a számlázáshoz létrehozott rejtett pszeudo-szabályok.
 
 > [!NOTE]
 > Ha az érvénytelen karakterek, például a `<, >, %, &, \, ?, /` jelen vannak, a rendszer a `_` rejtett pszeudo-riasztási szabály nevével helyettesíti, és így az Azure-számlán is szerepel.
 
 Ha el szeretné távolítani a riasztási szabályok számlázásához létrehozott rejtett scheduleQueryRules-erőforrásokat az [örökölt log Analytics API](api-alerts.md)-val, a felhasználó a következők bármelyikét végezheti el:
 
-- Bármelyik felhasználó [átválthatja a riasztási szabályok API-beállításait a log Analytics munkaterületen](../../azure-monitor/platform/alerts-log-api-switch.md) , és a riasztási szabályok elvesztésével vagy a figyelés Azure Resource Manager megfelelő [scheduledQueryRules API](/rest/api/monitor/scheduledqueryrules)-val való áthelyezésével. Így nincs szükség a kiszámlázható pszeudo-riasztási szabályok elvégzésére.
-- Ha a felhasználó nem szeretné váltani az API-beállításokat, a felhasználónak **törölnie** kell az eredeti és a riasztási műveletet az [örökölt log Analytics API](api-alerts.md) -val vagy a törléssel [Azure Portal az eredeti napló riasztási szabálya](../../azure-monitor/platform/alerts-log.md#view--manage-log-alerts-in-azure-portal) alapján.
+- Bármelyik felhasználó [átválthatja a riasztási szabályok API-beállításait a log Analytics munkaterületen](./alerts-log-api-switch.md) , és a riasztási szabályok elvesztésével vagy a figyelés Azure Resource Manager megfelelő [scheduledQueryRules API](/rest/api/monitor/scheduledqueryrules)-val való áthelyezésével. Így nincs szükség a kiszámlázható pszeudo-riasztási szabályok elvégzésére.
+- Ha a felhasználó nem szeretné váltani az API-beállításokat, a felhasználónak **törölnie** kell az eredeti és a riasztási műveletet az [örökölt log Analytics API](api-alerts.md) -val vagy a törléssel [Azure Portal az eredeti napló riasztási szabálya](./alerts-log.md#view--manage-log-alerts-in-azure-portal) alapján.
 
-A riasztási szabályok a [régi log Analytics API](api-alerts.md)-val való számlázásához létrehozott rejtett scheduleQueryRules-erőforrások mellett a Put művelethez hasonló módosítási műveletek sikertelenek lesznek. Mivel a `microsoft.insights/scheduledqueryrules` pszeudo-szabályok az [örökölt log Analytics API](api-alerts.md)használatával létrehozott riasztási szabályok számlázására szolgálnak. A riasztási szabályok módosítását [örökölt log Analytics API](api-alerts.md) -val kell elvégezni (vagy) [a felhasználó átválthatja a riasztási szabályok API-BEÁLLÍTÁSAIT](../../azure-monitor/platform/alerts-log-api-switch.md) a [scheduledQueryRules API](/rest/api/monitor/scheduledqueryrules) használatára.
+A riasztási szabályok a [régi log Analytics API](api-alerts.md)-val való számlázásához létrehozott rejtett scheduleQueryRules-erőforrások mellett a Put művelethez hasonló módosítási műveletek sikertelenek lesznek. Mivel a `microsoft.insights/scheduledqueryrules` pszeudo-szabályok az [örökölt log Analytics API](api-alerts.md)használatával létrehozott riasztási szabályok számlázására szolgálnak. A riasztási szabályok módosítását [örökölt log Analytics API](api-alerts.md) -val kell elvégezni (vagy) [a felhasználó átválthatja a riasztási szabályok API-BEÁLLÍTÁSAIT](./alerts-log-api-switch.md) a [scheduledQueryRules API](/rest/api/monitor/scheduledqueryrules) használatára.
 
 ## <a name="next-steps"></a>További lépések
 
-* Ismerje meg [, hogyan hozhat létre naplóbeli riasztásokat az Azure](../../azure-monitor/platform/alerts-log.md)-ban.
+* Ismerje meg [, hogyan hozhat létre naplóbeli riasztásokat az Azure](./alerts-log.md)-ban.
 * Ismerkedjen meg [a webhookokkal a log-riasztásokban az Azure-ban](alerts-log-webhook.md).
-* Ismerje meg az [Azure-riasztásokat](../../azure-monitor/platform/alerts-overview.md).
+* Ismerje meg az [Azure-riasztásokat](./alerts-overview.md).
 * További információ a [Application Insightsról](../log-query/log-query-overview.md).
-* További információ a [log Analyticsról](../../azure-monitor/log-query/log-query-overview.md).
+* További információ a [log Analyticsról](../log-query/log-query-overview.md).
+

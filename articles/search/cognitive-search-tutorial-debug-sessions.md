@@ -8,12 +8,12 @@ manager: nitinme
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 05/19/2020
-ms.openlocfilehash: 35590fd8aefb8b6a90adeef52fabe773663403c2
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: 2f25cab211d24facea7863c15b6d7671a9657ae9
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85510992"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290673"
 ---
 # <a name="tutorial-diagnose-repair-and-commit-changes-to-your-skillset"></a>Oktatóanyag: a készségkészlet változásainak diagnosztizálása, javítása és elutasítása
 
@@ -23,7 +23,7 @@ Ebben a cikkben a Azure Portal segítségével érheti el a hibakeresési munkam
 > A hibakeresési munkamenetek az előzetes verziójú szolgáltatások, amelyek szolgáltatói szerződés nélkül érhetők el, és nem ajánlottak éles számítási feladatokhoz. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 >
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -73,7 +73,7 @@ Ebben a szakaszban a Poster és egy megadott gyűjtemény használatával hozhat
 1. A **fájlok**  >  **új**területen válassza ki az importálni kívánt gyűjteményt.
 1. A gyűjtemény importálása után bontsa ki a műveletek listáját (...).
 1. Kattintson a **Szerkesztés** gombra.
-1. Adja meg a searchService nevét (például ha a végpont https://mydemo.search.windows.net , akkor a szolgáltatás neve "mydemo").
+1. Adja meg a searchService nevét (például ha a végpont `https://mydemo.search.windows.net` , a szolgáltatás neve: " `mydemo` ").
 1. Adja meg a keresési szolgáltatás elsődleges vagy másodlagos kulcsát tartalmazó apiKey.
 1. Adja meg a storageConnectionString az Azure Storage-fiók kulcsok oldaláról.
 1. Adja meg a Storage-fiókban létrehozott tároló containerName.
@@ -239,7 +239,7 @@ A hibakeresési munkamenet elindítását követően a keresési szolgáltatás 
 1. Zárjuk be a hibakeresési munkamenetet, és válassza ki az **Indexelő** fület.
 1. Nyissa meg a "klinikai kísérletek – idxr".
 1. Kattintson az **Alaphelyzetbe állítás**gombra.
-1. Kattintson a **Futtatás**gombra. A megerősítéshez kattintson **az OK** gombra.
+1. Kattintson a **Futtatás** elemre. A megerősítéshez kattintson **az OK** gombra.
 
 Ha az indexelő befejezte a futást, akkor a futtatási Előzmények lapon a legutóbbi Futtatás időbélyegzője mellett egy zöld pipa és a szó sikeres lesz. A módosítások alkalmazása érdekében:
 
@@ -249,7 +249,7 @@ Ha az indexelő befejezte a futást, akkor a futtatási Előzmények lapon a leg
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha a saját előfizetésében dolgozik, érdemes az egyes projektek végén eldöntenie, hogy szüksége lesz-e még a létrehozott erőforrásokra. A továbbra is futó erőforrások költségekkel járhatnak. Az erőforrások egyesével is törölhetők, de az erőforráscsoport törlésével egyszerre eltávolítható az összes erőforrás is.
+Ha a saját előfizetésében dolgozik, érdemes az egyes projektek végén eldöntenie, hogy szüksége lesz-e még a létrehozott erőforrásokra. A továbbra is futó erőforrások költségekkel járhatnak. Az erőforrásokat törölheti egyesével, vagy az erőforráscsoport törlésével eltávolíthatja a benne lévő összes erőforrást is.
 
 A bal oldali navigációs panelen a **minden erőforrás** vagy **erőforráscsoport** hivatkozás használatával megkeresheti és kezelheti az erőforrásokat a portálon.
 

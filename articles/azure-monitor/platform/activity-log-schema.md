@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 06/09/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 3d7085f54634ab1175fc0f916e24b7f03dc1bc9b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e50d6b6fe88cbad42d238ee2779abfe10e752f0e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073679"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327276"
 ---
 # <a name="azure-activity-log-event-schema"></a>Azure Activity log esemény sémája
 Az [Azure-tevékenység naplója](platform-logs-overview.md) betekintést nyújt az Azure-ban történt előfizetési szintű eseményekre. Ez a cikk a tevékenységek naplójának kategóriáit és az egyes sémákat ismerteti. 
@@ -34,7 +34,7 @@ A tevékenység naplójának minden eseménye egy adott kategóriával rendelkez
 | [Resource Health](#resource-health-category) | Az Azure-erőforrásokra vonatkozó összes erőforrás-állapottal kapcsolatos esemény rekordját tartalmazza. Resource Health eseményre például a _virtuális gép állapota nem érhető el értékre módosult_.<br><br>Resource Health események a négy állapot egyikét jelezhetik: _elérhető_, nem _elérhető_, _csökkentett teljesítményű_és _ismeretlen_. Emellett Resource Health eseményeket úgy is kategorizálhatja, hogy _platform kezdeményezett_ vagy _felhasználó által kezdeményezett_. |
 | [Riasztás](#alert-category) | Az Azure-riasztások aktiválási rekordját tartalmazza. Egy riasztási esemény például a _MyVM CPU%-a az elmúlt 5 percben 80_.|
 | [Automatikus méretezés](#autoscale-category) | Az adott előfizetésben definiált bármely, az autoskálázási motor működésével kapcsolatos események rekordját tartalmazza. Az autoskálázási eseményre például _nem sikerült a vertikális Felskálázási művelet_. |
-| [Javaslat](#recommendation-category) | A Azure Advisor ajánlásainak eseményeit tartalmazza. |
+| [Ajánlás](#recommendation-category) | A Azure Advisor ajánlásainak eseményeit tartalmazza. |
 | [Biztonság](#security-category) | A Azure Security Center által generált riasztások rekordját tartalmazza. A biztonsági eseményekre példaként a rendszer _gyanús kettős kiterjesztésű fájlt futtat_. |
 | [Szabályzat](#policy-category) | A Azure Policy által végrehajtott összes hatás művelet műveleteit tartalmazza. Példák a házirendi eseményekre: _naplózás_ és _Megtagadás_. A házirend által végrehajtott összes művelet az erőforráson végzett műveletként van modellezve. |
 
@@ -130,7 +130,7 @@ Ez a kategória a Resource Manageren keresztül végrehajtott összes létrehoz�
 ```
 
 ### <a name="property-descriptions"></a>Tulajdonságok leírása
-| Elem neve | Description |
+| Elem neve | Leírás |
 | --- | --- |
 | engedélyezés |Az esemény RBAC-tulajdonságainak blobja. Általában a "művelet", a "szerepkör" és a "hatókör" tulajdonságokat tartalmazza. |
 | hívó |Annak a felhasználónak az e-mail-címe, aki a művelet, UPN-jogcím vagy SPN jogcím alapján végrehajtotta a rendelkezésre állást. |
@@ -277,7 +277,7 @@ Ez a kategória az Azure-erőforrásokra vonatkozó összes erőforrás-állapot
 ```
 
 ### <a name="property-descriptions"></a>Tulajdonságok leírása
-| Elem neve | Description |
+| Elem neve | Leírás |
 | --- | --- |
 | csatornák | Mindig a "rendszergazda, művelet" |
 | correlationId | A karakterlánc formátumú GUID. |
@@ -370,7 +370,7 @@ Ez a kategória a klasszikus Azure-riasztások összes aktiválásának rekordj�
 ```
 
 ### <a name="property-descriptions"></a>Tulajdonságok leírása
-| Elem neve | Description |
+| Elem neve | Leírás |
 | --- | --- |
 | hívó | Mindig Microsoft. bepillantást/alertRules |
 | csatornák | Mindig a "rendszergazda, művelet" |
@@ -396,7 +396,7 @@ Ez a kategória a klasszikus Azure-riasztások összes aktiválásának rekordj�
 A tulajdonságok mező a riasztási esemény forrásától függően eltérő értékeket fog tartalmazni. Két gyakori riasztási esemény szolgáltatója a tevékenységek naplójának riasztásai és a metrikák riasztásai.
 
 #### <a name="properties-for-activity-log-alerts"></a>A műveletnapló-riasztások tulajdonságai
-| Elem neve | Description |
+| Elem neve | Leírás |
 | --- | --- |
 | Properties. subscriptionId | A tevékenység naplójának eseményéhez tartozó előfizetés-azonosító, amely miatt a tevékenység naplójának riasztási szabálya aktiválva lett. |
 | Properties. eventDataId | A tevékenység naplójának eseményéhez tartozó esemény-azonosító, amely miatt a tevékenység naplójának riasztási szabálya aktiválva lett. |
@@ -407,7 +407,7 @@ A tulajdonságok mező a riasztási esemény forrásától függően eltérő é
 | tulajdonságok. status | A tevékenység naplózási eseményének állapota, amely miatt a rendszer aktiválja a tevékenység naplójának riasztási szabályát.|
 
 #### <a name="properties-for-metric-alerts"></a>Metrikus riasztások tulajdonságai
-| Elem neve | Description |
+| Elem neve | Leírás |
 | --- | --- |
 | Tulajdonságok. RuleUri | A metrika riasztási szabályának erőforrás-azonosítója. |
 | Tulajdonságok. RuleName | A metrika riasztási szabályának neve. |
@@ -480,7 +480,7 @@ Ez a kategória tartalmazza az adott előfizetésben definiált, az előfizetés
 ```
 
 ### <a name="property-descriptions"></a>Tulajdonságok leírása
-| Elem neve | Description |
+| Elem neve | Leírás |
 | --- | --- |
 | hívó | Mindig Microsoft. bepillantást/autoscaleSettings |
 | csatornák | Mindig a "rendszergazda, művelet" |
@@ -570,7 +570,7 @@ Ez a kategória tartalmazza a Azure Security Center által generált riasztások
 ```
 
 ### <a name="property-descriptions"></a>Tulajdonságok leírása
-| Elem neve | Description |
+| Elem neve | Leírás |
 | --- | --- |
 | csatornák | Mindig "művelet" |
 | correlationId | A karakterlánc formátumú GUID. |
@@ -651,7 +651,7 @@ Ez a kategória a szolgáltatásokhoz létrehozott új javaslatok rekordját tar
 
 ```
 ### <a name="property-descriptions"></a>Tulajdonságok leírása
-| Elem neve | Description |
+| Elem neve | Leírás |
 | --- | --- |
 | csatornák | Mindig "művelet" |
 | correlationId | A karakterlánc formátumú GUID. |
@@ -761,7 +761,7 @@ Ez a kategória a [Azure Policy](../../governance/policy/overview.md)által vég
 
 ### <a name="policy-event-property-descriptions"></a>Házirend-esemény tulajdonságainak leírása
 
-| Elem neve | Description |
+| Elem neve | Leírás |
 | --- | --- |
 | engedélyezés | Az esemény RBAC-tulajdonságainak tömbje. Az új erőforrások esetében ez a művelet és a kiértékelést kiváltó kérelem hatóköre. A meglévő erőforrások esetében a művelet a következő: "Microsoft. Resources/checkPolicyCompliance/Read". |
 | hívó | Új erőforrások esetén a központi telepítést kezdeményező identitás. Meglévő erőforrások esetében a Microsoft Azure Policy bepillantást az RP GUID azonosító. |
@@ -796,7 +796,7 @@ Ez a kategória a [Azure Policy](../../governance/policy/overview.md)által vég
 Amikor az Azure-tevékenység naplóját egy Storage-fiókba vagy egy Event hubhoz viszi, az adatforrások az [erőforrás-napló sémáját](./resource-logs-schema.md)követik. Az alábbi táblázat a fenti sémák tulajdonságainak hozzárendelését mutatja be az erőforrás-naplók sémába.
 
 > [!IMPORTANT]
-> A Storage-fiókba írt tevékenység-naplófájlok formátuma JSON-sorokra módosult november 1. és 2018. között. A formátum változásának részleteiért lásd: [felkészülés a formátum módosítására Azure monitor erőforrás-naplók archiválása egy Storage-fiókba](./resource-logs-append-blobs.md) .
+> A Storage-fiókba írt tevékenység-naplófájlok formátuma JSON-sorokra módosult november 1. és 2018. között. A formátum változásának részleteiért lásd: [felkészülés a formátum módosítására Azure monitor erőforrás-naplók archiválása egy Storage-fiókba](/azure/azure-monitor/platform/resource-logs-blob-format) .
 
 
 | Erőforrás-naplók sémájának tulajdonsága | Műveletnapló REST API Schema tulajdonság | Jegyzetek |
@@ -885,3 +885,4 @@ A következő példa egy olyan eseményt mutat be, amely ezt a sémát használj
 ## <a name="next-steps"></a>További lépések
 * [További információ a tevékenység naplóról](platform-logs-overview.md)
 * [Diagnosztikai beállítás létrehozása a műveletnapló Log Analytics munkaterületre, Azure Storage-ba vagy Event hubokba való küldéséhez](diagnostic-settings.md)
+

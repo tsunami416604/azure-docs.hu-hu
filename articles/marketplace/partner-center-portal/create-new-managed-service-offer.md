@@ -4,15 +4,15 @@ description: Új felügyelt szolgáltatási ajánlat létrehozása az Azure Mark
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: JnHs
-ms.author: jenhayes
+author: Microsoft-BradleyWright
+ms.author: brwrigh
 ms.date: 07/07/2020
-ms.openlocfilehash: 3bb663dcdf007bf77d1b9f2b46af532774af22e1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 193781e078f12dec553d98c15699c7e665966a87
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086387"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326621"
 ---
 # <a name="create-a-managed-service-offer"></a>Felügyelt szolgáltatásra vonatkozó ajánlat létrehozása
 
@@ -42,7 +42,7 @@ Adja meg az **ajánlat azonosítóját**. Ez a fiókban található egyes ajánl
 Adjon meg egy **ajánlat-aliast**. Ez a partner Centerben az ajánlathoz használt név.
 
 * Ez a név nem használatos a piactéren, és nem egyezik meg az ajánlat nevével és az ügyfelek számára megjelenített egyéb értékekkel.
-* A **create (létrehozás**) lehetőség kiválasztása után az ajánlat aliasa nem módosítható.
+* Az ajánlat aliasa nem módosítható a **Létrehozás**gombra kattintva.
 
 Válassza a **Létrehozás** lehetőséget az ajánlat létrehozásához és a folytatáshoz.
 
@@ -90,7 +90,7 @@ Az alábbi példa bemutatja, hogyan jelennek meg az ajánlati információk a Az
 3. Hasznos hivatkozások
 4. Képernyőképek
 
-### <a name="name"></a>Name
+### <a name="name"></a>Név
 
 Az itt megadott név jelenik meg az ügyfelek számára az ajánlati lista címének megfelelően. Ez a mező előre fel van töltve az ajánlat- **aliashoz** megadott szöveggel az ajánlat létrehozásakor, de ez az érték módosítható. Ez a név lehet védjeggyel ellátott (és előfordulhat, hogy védjegyeket vagy szerzői jogi szimbólumokat is tartalmaz). A név nem lehet hosszabb 50 karakternél, és nem tartalmazhat hangulatjelek.
 
@@ -102,7 +102,7 @@ Adja meg az ajánlat rövid leírását (legfeljebb 100 karakter), amelyet a pia
 
 Adja meg az ajánlat hosszabb leírását (legfeljebb 256 karakter). Ez a hosszú összefoglalás a piactér keresési eredményei között is felhasználható.
 
-### <a name="description"></a>Description
+### <a name="description"></a>Leírás
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 

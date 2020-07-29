@@ -121,7 +121,7 @@
                   href: ./partner-center-portal/create-azure-vm-technical-asset.md
                 - name: Azure-beli virtuális gép technikai eszközei – gyakori kérdések
                   href: ./partner-center-portal/common-issues-during-vhd-creation.md
-                - name: Azure-beli virtuális gép rendszerképének tanúsítása
+                - name: VHD-ből üzembe helyezett virtuális gépek tesztelése
                   href: ./partner-center-portal/azure-vm-image-certification.md
                 - name: SAS URI
                   items:

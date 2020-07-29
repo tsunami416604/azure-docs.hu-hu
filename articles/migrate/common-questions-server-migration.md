@@ -3,12 +3,12 @@ title: Azure Migrate kiszolgáló áttelepítésével kapcsolatos gyakori kérd�
 description: Választ kaphat a Azure Migrate kiszolgáló áttelepítésének a gépek áttelepítésére való használatával kapcsolatos gyakori kérdésekre.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 282f7ab27eead59fc87a95ea7d397268177f4f2c
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: af40aecaa1614542074cf87ce95eb81492233bdc
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224128"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321224"
 ---
 # <a name="azure-migrate-server-migration-common-questions"></a>Azure Migrate kiszolgáló áttelepítése: gyakori kérdések
 
@@ -80,7 +80,7 @@ Nem. A Azure Migrate csak felügyelt lemezekre (standard HDD, prémium SSD) tám
 
 ## <a name="how-many-vms-can-i-replicate-at-one-time-by-using-agentless-migration"></a>Hány virtuális gépet lehet egyszerre replikálni az ügynök nélküli áttelepítés használatával?
 
-Jelenleg a 100-es virtuális gépeket a vCenter Server egy példányán egyszerre telepítheti át. Migrálás 10 virtuális gép kötegei között.
+Jelenleg a 300-es virtuális gépeket a vCenter Server egy példányán egyszerre telepítheti át. Migrálás 10 virtuális gép kötegei között.
 
 ## <a name="how-do-i-throttle-replication-in-using-azure-migrate-appliance-for-agentless-vmware-replication"></a>Hogyan a replikációt a Azure Migrate berendezés használatával az ügynök nélküli VMware-replikációhoz?  
 
@@ -106,7 +106,7 @@ A gépek áttelepítése a fizikai kiszolgálóként való kezeléssel számos e
 
 ## <a name="i-deployed-two-or-more-appliances-to-discover-vms-in-my-vcenter-server-however-when-i-try-to-migrate-the-vms-i-only-see-vms-corresponding-to-one-of-the-appliance"></a>Két (vagy több) készülék üzembe helyezésével felderítem a virtuális gépeket a vCenter Server. Ha azonban megpróbálom áttelepíteni a virtuális gépeket, csak az egyik készülékhez tartozó virtuális gépeket látok.
 
-Habár ez jó használati eset lehet, jelenleg nem támogatott. Ha két (vagy több) készüléket helyez üzembe ugyanazon virtuális gépek felderítéséhez, olyan szolgáltatási problémát okoz, amelyben a virtuális gépek tulajdonlása megtartja a két készülék közötti váltást. Itt láthatja, hogy a virtuális gépek megjelennek és eltűnnek. Ilyen esetekben a probléma megoldásához törölnie kell egy készüléket, és kemény frissítést kell végeznie.
+Ha több készülék is be van állítva, akkor nincs átfedés a megadott vCenter-fiókok virtuális gépei között. Egy ilyen átfedéssel rendelkező felderítés nem támogatott forgatókönyv.
 
 ## <a name="do-i-need-vmware-vcenter-to-migrate-vmware-vms"></a>A VMWare virtuális gépek áttelepítéséhez VMware vCenter szükséges?
 [VMWare virtuális gépek](server-migrate-overview.md) áttelepítéséhez VMware ügynök-alapú vagy ügynök nélküli Migrálás esetén az ESXi-gazdagépeket, amelyeken a virtuális gépek találhatók, vCenter Server kell felügyelni. Ha nem rendelkezik vCenter Serverekkel, áttelepítheti a VMware virtuális gépeket fizikai kiszolgálóként való áttelepítéssel. [További információ](migrate-support-matrix-physical-migration.md).

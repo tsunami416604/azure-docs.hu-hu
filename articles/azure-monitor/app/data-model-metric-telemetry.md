@@ -4,16 +4,16 @@ description: Application Insights adatmodell metrikus telemetria
 ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
-ms.openlocfilehash: 44f0b070a7c0da416002d9bf7e509d643a96dc7a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f8e787b8a94987e7d68e12a0e4e69f4c63e21e19
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86540009"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320578"
 ---
 # <a name="metric-telemetry-application-insights-data-model"></a>Metrikus telemetria: Application Insights adatmodell
 
-A [Application Insights](../../azure-monitor/app/app-insights-overview.md)kétféle metrikai telemetria támogat: egyetlen mérési és előre aggregált metrika. Az egyszeres mérés csak a név és az érték. Az előre aggregált metrika a metrika minimális és maximális értékét adja meg az összesítési intervallumban és a szórásban.
+A [Application Insights](./app-insights-overview.md)kétféle metrikai telemetria támogat: egyetlen mérési és előre aggregált metrika. Az egyszeres mérés csak a név és az érték. Az előre aggregált metrika a metrika minimális és maximális értékét adja meg az összesítési intervallumban és a szórásban.
 
 Az előre összesített metrikai telemetria feltételezi, hogy az összesítési időszak egy perc volt.
 
@@ -33,7 +33,7 @@ A rendszerszintű és a folyamat számlálóit jelölő metrika:
 | `\ASP.NET Applications(??APP_W3SVC_PROC??)\Request Execution Time`   | Munka folyamatban... | [requestExecutionTime](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FrequestExecutionTime) | kérelmek átlagos végrehajtási ideje
 | `\ASP.NET Applications(??APP_W3SVC_PROC??)\Requests In Application Queue` | Munka folyamatban... | [requestsInQueue](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FrequestsInQueue) | a várólistán való feldolgozásra váró kérelmek száma
 
-## <a name="name"></a>Name
+## <a name="name"></a>Név
 
 A Application Insights Portálon és felhasználói felületen megjelenő metrika neve. 
 
@@ -63,8 +63,9 @@ Az egyéni tulajdonsággal `CustomPerfCounter` beállított metrika `true` azt j
 
 [!INCLUDE [application-insights-data-model-properties](../../../includes/application-insights-data-model-properties.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- Ismerje meg, hogyan használhatja [a Application INSIGHTS API-t egyéni eseményekhez és mérőszámokhoz](../../azure-monitor/app/api-custom-events-metrics.md#trackmetric).
+- Ismerje meg, hogyan használhatja [a Application INSIGHTS API-t egyéni eseményekhez és mérőszámokhoz](./api-custom-events-metrics.md#trackmetric).
 - Lásd: [adatmodell](data-model.md) Application Insights típusokhoz és adatmodellekhez.
-- Tekintse meg Application Insights által támogatott [platformokat](../../azure-monitor/app/platforms.md) .
+- Tekintse meg Application Insights által támogatott [platformokat](./platforms.md) .
+

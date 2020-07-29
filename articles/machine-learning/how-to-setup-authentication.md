@@ -8,15 +8,15 @@ ms.author: larryfr
 ms.reviewer: larryfr
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.date: 06/17/2020
-ms.custom: has-adal-ref
-ms.openlocfilehash: 34641e7a883f6b07fe63595cf5750df2569640f8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.topic: conceptual
+ms.custom: how-to, has-adal-ref
+ms.openlocfilehash: 653ca578e9fafd245c22bcfd7db038d5c23da016
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84974687"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326953"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Azure Machine Learning erőforrások és munkafolyamatok hitelesítésének beállítása
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -46,7 +46,7 @@ A dokumentációban és a mintákban a legtöbb példa interaktív hitelesítés
     ws = Workspace.from_config()
     ```
 
-    A `from_config()` függvény megkeresi a munkaterület-kapcsolatok adatait tartalmazó JSON-fájlt.
+    A `from_config()` függvény egy JSON-fájlt keres, amely a munkaterülethez való csatlakozáshoz szükséges információkat tartalmazza.
 
 * Ha a `Workspace` konstruktort használja az előfizetés, az erőforráscsoport és a munkaterület adatainak megadására, a rendszer az interaktív hitelesítést is kéri.
 
@@ -328,7 +328,7 @@ Az üzembe helyezett modellekkel való hitelesítéssel kapcsolatos további inf
 
 ### <a name="token-based-web-service-authentication"></a>Jogkivonat-alapú webszolgáltatások hitelesítése
 
-Ha engedélyezi a jogkivonat-hitelesítést egy webszolgáltatáshoz, a felhasználóknak egy Azure Machine Learning JSON Web Token kell bemutatnia a webszolgáltatásnak az eléréséhez. A jogkivonat egy megadott időkereten belül lejár, és a hívások folytatásához frissíteni kell.
+Ha engedélyezi a jogkivonat-hitelesítést egy webszolgáltatáshoz, a felhasználóknak egy Azure Machine Learning JSON Web Token kell bemutatnia a webszolgáltatásnak az eléréséhez. A jogkivonat egy megadott időkeret után lejár, és a hívások folytatásához frissíteni kell.
 
 * **Alapértelmezés szerint** a jogkivonat-hitelesítés le van tiltva az Azure Kubernetes Service-ben való üzembe helyezéskor.
 * A jogkivonat-hitelesítés **nem támogatott** , ha Azure Container instances telepíti.
@@ -370,7 +370,7 @@ print(token)
 ```
 
 > [!IMPORTANT]
-> A jogkivonat időpontját követően új jogkivonatot kell kérnie `refresh_by` . Ha a Python SDK-n kívülre kell frissítenie a jogkivonatokat, az egyik lehetőség az, hogy a REST API a szolgáltatás-egyszerű hitelesítéssel rendszeres időközönként a `service.get_token()` hívást a korábban tárgyalt módon használja.
+> Új jogkivonatot kell kérnie a jogkivonat `refresh_by` ideje után. Ha a Python SDK-n kívülre kell frissítenie a jogkivonatokat, az egyik lehetőség az, hogy a REST API a szolgáltatás-egyszerű hitelesítéssel rendszeres időközönként a `service.get_token()` hívást a korábban tárgyalt módon használja.
 >
 > Javasoljuk, hogy az Azure Kubernetes Service-fürttel azonos régióban hozza létre Azure Machine Learning munkaterületét.
 >

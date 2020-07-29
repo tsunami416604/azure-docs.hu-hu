@@ -1,6 +1,5 @@
 ---
-title: Webszolgáltatás naplózásának engedélyezése
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (klasszikus): webszolgáltatások naplózásának engedélyezése – Azure'
 description: Megtudhatja, hogyan engedélyezheti a Machine Learning Studio (klasszikus) webszolgáltatások naplózását. A naplózás további információkat biztosít az API-k hibakereséséhez.
 services: machine-learning
 author: likebupt
@@ -11,13 +10,17 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: how-to
 ms.date: 06/15/2017
-ms.openlocfilehash: 71516641ab5110511d58f7e453759271aff9885a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: baaad137e4a5bc5268642addb5779961b7be3b04
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84705831"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326239"
 ---
 # <a name="enable-logging-for-azure-machine-learning-studio-classic-web-services"></a>Azure Machine Learning Studio (klasszikus) webszolgáltatások naplózásának engedélyezése
+
+**a következőkre vonatkozik:** ![ nincs](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine learning](../overview-what-is-azure-ml.md) ![ Igen ](../../../includes/media/aml-applies-to-skus/yes.png) Machine learning Studio (klasszikus) 
+
 
 Ez a dokumentum a Machine Learning Studio (klasszikus) webszolgáltatások naplózási képességével kapcsolatos információkat tartalmaz. A naplózási szolgáltatás további információkat tartalmaz, amelyek csak egy adott számú és egy üzeneten felül segítenek a Machine Learning Studio (klasszikus) API-k hívásának hibakeresésében.  
 
@@ -41,7 +44,7 @@ Engedélyezi a naplózást a [Azure Machine learning Studio (klasszikus) webszol
 
    ![Naplózási szint kiválasztása](./media/web-services-logging/enable-logging.png)
 
-6. Kattintson a **Save** (Mentés) gombra.
+6. Kattintson a **Mentés** gombra.
 
 7. A klasszikus webszolgáltatások esetében hozza létre a **ml-diagnosztika** tárolót.
 
@@ -49,7 +52,7 @@ Engedélyezi a naplózást a [Azure Machine learning Studio (klasszikus) webszol
 
    1. A [Azure Portal](https://portal.azure.com)lépjen a webszolgáltatáshoz társított Storage-fiókra.
 
-   2. A **Blob Service** területen kattintson a **Tárolók** lehetőségre.
+   2. A **blob szolgáltatás**alatt kattintson a **tárolók**elemre.
 
    3. Ha a tároló **ml-diagnosztika** nem létezik, kattintson a **+ tároló**elemre, adja meg a tárolónak a "ml-diagnosztika" nevet, és válassza a **hozzáférési típust** "blob"-ként. Kattintson az **OK** gombra.
 

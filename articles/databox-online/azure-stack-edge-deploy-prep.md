@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 06/03/2019
+ms.date: 07/22/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: e6b752eab3f6a8f40fad8b2f947a82f86a8ccfe5
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: c8f64bc81afb941e13dd310a7efd9432639ec281
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652064"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131837"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge"></a>Oktatóanyag: Felkészülés a Azure Stack Edge üzembe helyezésére  
 
@@ -22,16 +22,16 @@ Ez az első oktatóanyag az üzembe helyezési oktatóanyagok sorozatában, amel
 
 A beállítási és konfigurációs folyamat befejezéséhez rendszergazdai jogosultságok szükségesek. A portál előkészítése kevesebb mint 10 percet vesz igénybe.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 >
 > * Új erőforrás létrehozása
 > * Az aktiválási kulcs lekérése
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
-## <a name="get-started"></a>Első lépések
+## <a name="get-started"></a>Bevezetés
 
 Azure Stack Edge telepítéséhez tekintse meg az alábbi oktatóanyagokat az előírt sorozatban.
 
@@ -57,32 +57,35 @@ Mielőtt hozzákezd, győződjön meg az alábbiakról:
 
 * Az Azure Stack Edge/Data Box Gateway, a IoT Hub és az Azure Storage-erőforrások esetében tulajdonosi vagy közreműködői hozzáférése van az erőforráscsoport szintjén.
 
-  * Ha Azure Stack Edge/Data Box Gateway erőforrást szeretne létrehozni, akkor az erőforrás-csoport szintjén a közreműködő (vagy magasabb szintű) jogosultsággal kell rendelkeznie. Győződjön meg arról is, hogy a `Microsoft.DataBoxEdge` szolgáltató regisztrálva van. A regisztrálásával kapcsolatos információkért lépjen az erőforrás- [szolgáltató regisztrálása](azure-stack-edge-manage-access-power-connectivity-mode.md#register-resource-providers)elemre.
+  * A közreműködői hozzáférés biztosításához az előfizetés szintjén kell lennie a **tulajdonosnak** . Ahhoz, hogy a közreműködői hozzáférhessen valaki másnak, a Azure Portal lépjen a **minden szolgáltatás**  >  **előfizetések**  >  **hozzáférés-vezérlés (iam)**  >  **+**  >  **Add role assignment**adja hozzá a szerepkör-hozzárendelés hozzáadása lehetőséget. További információ: [oktatóanyag: felhasználói hozzáférés biztosítása az Azure-erőforrásokhoz a Azure Portal használatával](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal).
+
+  * Ha Azure Stack Edge/Data Box Gateway erőforrást szeretne létrehozni, akkor az erőforrás-csoport szintjén a közreműködő (vagy magasabb szintű) jogosultsággal kell rendelkeznie. Győződjön meg arról is, hogy az `Microsoft.DataBoxEdge` erőforrás-szolgáltató regisztrálva van. Az erőforrás-szolgáltatók regisztrálásával kapcsolatos információkért lásd: az [erőforrás-szolgáltató regisztrálása](azure-stack-edge-manage-access-power-connectivity-mode.md#register-resource-providers).
   * Ha IoT Hub erőforrást szeretne létrehozni, győződjön meg arról, hogy a Microsoft. Devices szolgáltató regisztrálva van. A regisztrálásával kapcsolatos információkért lépjen az erőforrás- [szolgáltató regisztrálása](azure-stack-edge-manage-access-power-connectivity-mode.md#register-resource-providers)elemre.
   * A Storage-fiók erőforrásának létrehozásához ismét közreműködői vagy magasabb szintű hozzáférési hatókörre van szükség az erőforráscsoport szintjén. Az Azure Storage alapértelmezés szerint regisztrált erőforrás-szolgáltató.
 * Rendszergazdai vagy felhasználói hozzáféréssel rendelkezik Azure Active Directory Graph APIhoz. További információ: [Azure Active Directory Graph API](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-).
 * Rendelkezik Microsoft Azure Storage-fiókkal és a hozzá szükséges hozzáférési hitelesítő adatokkal.
+* A rendszergazda által beállított bármely Azure-házirend nem blokkolja. A szabályzatokkal kapcsolatos további információkért lásd: gyors útmutató: szabályzat- [hozzárendelés létrehozása a nem megfelelő erőforrások azonosításához](https://docs.microsoft.com/azure/governance/policy/assign-policy-portal).
 
 ### <a name="for-the-azure-stack-edge-device"></a>Az Azure Stack Edge-eszközhöz
 
 Fizikai eszköz üzembe helyezése előtt győződjön meg az alábbiakról:
 
-- Áttekintette a szállítási csomagban található biztonsági információkat.
-- Az eszköz csatlakoztatásához az adatközpontban egy szabványos 19. állványban érhető el egy 1U-tárolóhely.
-- Olyan sima, stabil és szintű munkafelülethez férhet hozzá, ahol az eszköz biztonságosan megnyugodtan működik.
-- A hely, ahol be kívánja állítani az eszközt, szabványos AC-teljesítménnyel rendelkezik egy független forrásból, vagy egy szünetmentes áramforrással (UPS) rendelkező rack Power Distribution Unit (PDU).
-- Hozzáférése kell rendelkeznie egy fizikai eszközhöz.
+* Áttekintette a szállítási csomagban található biztonsági információkat.
+* Az eszköz csatlakoztatásához az adatközpontban egy szabványos 19. állványban érhető el egy 1U-tárolóhely.
+* Olyan sima, stabil és szintű munkafelülethez férhet hozzá, ahol az eszköz biztonságosan megnyugodtan működik.
+* A hely, ahol be kívánja állítani az eszközt, szabványos AC-teljesítménnyel rendelkezik egy független forrásból, vagy egy szünetmentes áramforrással (UPS) rendelkező rack Power Distribution Unit (PDU).
+* Hozzáférése kell rendelkeznie egy fizikai eszközhöz.
 
 ### <a name="for-the-datacenter-network"></a>Adatközponti hálózat
 
 Mielőtt hozzákezd, győződjön meg az alábbiakról:
 
-- Az adatközpontban található hálózat a Azure Stack Edge-eszköz hálózati követelményeinek megfelelően van konfigurálva. További információ: [Azure stack Edge rendszerkövetelményei](azure-stack-edge-system-requirements.md).
+* Az adatközpontban található hálózat a Azure Stack Edge-eszköz hálózati követelményeinek megfelelően van konfigurálva. További információ: [Azure stack Edge rendszerkövetelményei](azure-stack-edge-system-requirements.md).
 
-- Az Azure Stack Edge normál működési feltételei:
+* Az Azure Stack Edge normál működési feltételei:
 
-    - Legalább 10 MB/s letöltési sávszélesség, hogy az eszköz naprakész maradjon.
-    - A fájlok átviteléhez legalább 20 Mbps dedikált feltöltési és letöltési sávszélesség szükséges.
+  * Legalább 10 MB/s letöltési sávszélesség, hogy az eszköz naprakész maradjon.
+  * A fájlok átviteléhez legalább 20 Mbps dedikált feltöltési és letöltési sávszélesség szükséges.
 
 ## <a name="create-a-new-resource"></a>Új erőforrás létrehozása
 
@@ -95,7 +98,7 @@ Azure Stack peremhálózati erőforrás létrehozásához hajtsa végre a követ
     - A Azure Portal ezen az URL-címen: [https://portal.azure.com](https://portal.azure.com) .
     - Vagy a Azure Government portál ezen az URL-címen: [https://portal.azure.us](https://portal.azure.us) . További részletekért lépjen a [kapcsolódás Azure Government a portál használatával](https://docs.microsoft.com/azure/azure-government/documentation-government-get-started-connect-with-portal).
 
-2. A bal oldali panelen válassza az **+ erőforrás létrehozása**lehetőséget. Keresse meg és válassza ki **Azure stack Edge/Data Box Gateway**. Kattintson a **Létrehozás** gombra.
+2. A bal oldali panelen válassza az **+ erőforrás létrehozása**lehetőséget. Keresse meg és válassza ki **Azure stack Edge/Data Box Gateway**. Válassza a **Létrehozás** lehetőséget.
 3. Válassza ki az Azure Stack Edge-eszközhöz használni kívánt előfizetést. Válassza ki azt a régiót, ahol az Azure Stack Edge-erőforrást telepíteni kívánja. Az Azure Stack Edge-erőforrást tartalmazó régiók listáját itt tekintheti meg: [régiónként elérhető Azure-termékek](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all).
 
     Az eszköz üzembe helyezésének földrajzi régiójához legközelebb eső helyet válasszon. A régió csak az eszközkezelés metaadatait tárolja. A tényleges adatok bármilyen Storage-fiókban tárolhatók.
@@ -115,7 +118,7 @@ Azure Stack peremhálózati erőforrás létrehozásához hajtsa végre a követ
 
     |Beállítás  |Érték  |
     |---------|---------|
-    |Name (Név)   | Az erőforrást azonosító valódi név.<br>A névnek 2–50 karakter hosszúságúnak kell lennie, és csak betűket, számokat, illetve kötőjelet tartalmazhat.<br> A névnek betűvel vagy számmal kell kezdődnie és végződnie.        |
+    |Név   | Az erőforrást azonosító valódi név.<br>A névnek 2–50 karakter hosszúságúnak kell lennie, és csak betűket, számokat, illetve kötőjelet tartalmazhat.<br> A névnek betűvel vagy számmal kell kezdődnie és végződnie.        |
     |Régió     |Az Azure Stack Edge-erőforrást tartalmazó régiók listáját itt tekintheti meg: [régiónként elérhető Azure-termékek](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Azure Government használata esetén az összes kormányzati régió elérhető az [Azure-régiókban](https://azure.microsoft.com/global-infrastructure/regions/)látható módon.<br> Az eszköz üzembe helyezésének földrajzi régiójához legközelebb eső helyet válasszon.|
 
     ![Projekt és példány részletei](media/azure-stack-edge-deploy-prep/data-box-edge-resource.png)
@@ -127,15 +130,15 @@ Azure Stack peremhálózati erőforrás létrehozásához hajtsa végre a követ
 
     ![Az új eszköz szállítási címe](media/azure-stack-edge-deploy-prep/data-box-edge-resource1.png)
 
-6. Válassza a **Next (tovább): felülvizsgálat + létrehozás**elemet.
+6. Válassza a **Tovább: Ellenőrzés és létrehozás** lehetőségre.
 
 7. A **felülvizsgálat + létrehozás** lapon tekintse át a **díjszabás részleteit**, **használati feltételek**és az erőforrás részleteit. Válassza ki az **adatvédelmi feltételeket áttekintő**kombinált listát.
 
     ![Tekintse át Azure Stack Edge-erőforrás részleteit és adatvédelmi feltételeit](media/azure-stack-edge-deploy-prep/data-box-edge-resource2.png)
 
-8. Kattintson a **Létrehozás** gombra.
+8. Válassza a **Létrehozás** lehetőséget.
 
-Az erőforrás létrehozása néhány percet vesz igénybe. Az erőforrás sikeres létrehozása és üzembe helyezése után értesítést kap. Válassza **az Ugrás erőforráshoz**lehetőséget.
+Az erőforrás létrehozása néhány percet vesz igénybe. Az erőforrás sikeres létrehozása és üzembe helyezése után értesítést kap. Válassza az **Erőforrás megnyitása** lehetőséget.
 
 ![Ugrás az Azure Stack Edge-erőforrásra](media/azure-stack-edge-deploy-prep/data-box-edge-resource3.png)
 
@@ -160,7 +163,7 @@ Az Azure Stack Edge-erőforrás működésének megkezdése után le kell kérni
 > * Az aktiválási kulcs három nappal a létrehozása után lejár.
 > * Ha a kulcs lejárt, állítson be egy új kulcsot. A régebbi kulcs nem lesz érvényes.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban megismerte a Azure Stack Edge-témaköröket, például a következőket:
 
@@ -173,6 +176,3 @@ Folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan telepíth
 
 > [!div class="nextstepaction"]
 > [Azure Stack Edge telepítése](./azure-stack-edge-deploy-install.md)
-
-
-

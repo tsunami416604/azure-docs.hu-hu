@@ -7,11 +7,12 @@ services: monitoring
 ms.topic: conceptual
 ms.date: 02/16/2018
 ms.subservice: alerts
-ms.openlocfilehash: b75bda626f887f1224c1b0f18a80887983a2367d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ff3d055840d69623234a799c62b1d8a6efd96ec5
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77665306"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327089"
 ---
 # <a name="sms-alert-behavior-in-action-groups"></a>SMS-riasztás viselkedése a műveleti csoportokban
 
@@ -29,7 +30,7 @@ Egy műveleti csoport részeként konfigurált SMS-fogadó SMS-t kap, ha riaszt�
 * A gazdagépbejegyzés, amelyre a riasztást elküldték
 * A riasztás címe
 
-| VÁLASZ | Description |
+| VÁLASZ | Leírás |
 | ----- | ----------- |
 | Megbénít`<Action Group Short name>` | Letiltja a további SMS-ket a műveleti csoportból |
 | ENGEDÉLYEZÉSE`<Action Group Short name>` | Az SMS újbóli engedélyezése a műveleti csoportból |
@@ -43,5 +44,5 @@ Egy műveleti csoport részeként konfigurált SMS-fogadó SMS-t kap, ha riaszt�
 ## <a name="next-steps"></a>Következő lépések
 [Tekintse át a tevékenységek naplójának riasztásait](alerts-overview.md) , és Ismerje meg, hogyan kaphat riasztást  
 További információ az [SMS-díjak korlátozásáról](alerts-rate-limiting.md)  
-További információ a [műveleti csoportokról](../../azure-monitor/platform/action-groups.md)
+További információ a [műveleti csoportokról](./action-groups.md)
 

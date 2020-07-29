@@ -1020,6 +1020,10 @@
           href: insights/resource-group-insights.md
         - name: Megállapítások hibaelhárítása
           href: insights/troubleshoot-workbooks.md
+    - name: Elemzés módosítása
+      items:
+        - name: Elemzés módosítása
+          href: app/change-analysis.md
     - name: Megoldások
       items:
         - name: Áttekintés
@@ -1073,30 +1077,6 @@
               href: insights/vmware.md
             - name: Wire Data-megoldás
               href: insights/wire-data.md
-        - name: Nézetek
-          items:
-            - name: Nézetek átalakítása munkafüzetekké
-              items:
-                - name: Az átalakítás áttekintése
-                  href: platform/view-designer-conversion-overview.md
-                - name: Átalakítási beállítások
-                  href: platform/view-designer-conversion-options.md
-                - name: Áttekintés és hozzáférés
-                  href: platform/view-designer-conversion-access.md
-                - name: Gyakori feladatok
-                  href: platform/view-designer-conversion-tasks.md
-                - name: Csempeátalakítások
-                  href: platform/view-designer-conversion-tiles.md
-                - name: Példák
-                  href: platform/view-designer-conversion-examples.md
-            - name: Nézettervező
-              href: platform/view-designer.md
-            - name: Csempe referenciája
-              href: platform/view-designer-tiles.md
-            - name: Vizualizációs rész referenciája
-              href: platform/view-designer-parts.md
-            - name: Szűrők
-              href: platform/view-designer-filters.md
     - name: Munkafüzetek
       items:
         - name: Áttekintés
@@ -1124,6 +1104,20 @@
                   href: platform/workbooks-time.md
                 - name: Szövegparaméterek
                   href: platform/workbooks-text.md
+        - name: Nézetek átalakítása munkafüzetekké
+          items:
+            - name: Az átalakítás áttekintése
+              href: platform/view-designer-conversion-overview.md
+            - name: Átalakítási beállítások
+              href: platform/view-designer-conversion-options.md
+            - name: Áttekintés és hozzáférés
+              href: platform/view-designer-conversion-access.md
+            - name: Gyakori feladatok
+              href: platform/view-designer-conversion-tasks.md
+            - name: Csempeátalakítások
+              href: platform/view-designer-conversion-tiles.md
+            - name: Példák
+              href: platform/view-designer-conversion-examples.md
     - name: Egyéb vizualizációk
       items:
         - name: Power BI
@@ -1217,6 +1211,8 @@
           href: app/azure-functions-supported-features.md
         - name: Kibocsátási megjegyzések
           items:
+            - name: Kódalapú monitorozási SDK-k
+              href: app/release-notes.md
             - name: Webalkalmazás-bővítmény
               href: app/web-app-extension-release-notes.md
         - name: Adatmodell
@@ -1297,6 +1293,16 @@
           href: platform/resource-logs-blob-format.md
         - name: Key Vault-elemzés (elavult)
           href: insights/azure-key-vault-deprecated.md
+        - name: Nézetek
+          items:
+            - name: Nézettervező
+              href: platform/view-designer.md
+            - name: Csempe referenciája
+              href: platform/view-designer-tiles.md
+            - name: Vizualizációs rész referenciája
+              href: platform/view-designer-parts.md
+            - name: Szűrők
+              href: platform/view-designer-filters.md
 - name: További források
   items:
     - name: Azure-ütemterv

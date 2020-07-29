@@ -3,24 +3,24 @@ title: Használat elemzése az Azure Application Insights használatával | Micr
 description: Ismerje meg a felhasználókat, és hogy mit csinálnak az alkalmazással.
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.openlocfilehash: 1acc803d66bef29a77266d4e38e1605ffd75f36f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bd0b95fe92171d2c5a1515941dbf86a0e31e04be
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87014065"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323553"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Használatelemzés az Application Insights szolgáltatással
 
-A webes vagy mobil alkalmazások mely funkciói a legnépszerűbbek? A felhasználók a céljaikat az alkalmazással érik el? Kiesnek bizonyos pontokon, és később visszatérnek?  Az [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) segítségével hatékony információkhoz juthat az alkalmazás használatáról. Minden alkalommal, amikor frissíti az alkalmazást, megvizsgálhatja, hogy milyen jól működik a felhasználók számára. Ezzel az ismerettel a következő fejlesztési ciklusokra vonatkozó adatvezérelt döntéseket hozhat.
+A webes vagy mobil alkalmazások mely funkciói a legnépszerűbbek? A felhasználók a céljaikat az alkalmazással érik el? Kiesnek bizonyos pontokon, és később visszatérnek?  Az [Azure Application Insights](./app-insights-overview.md) segítségével hatékony információkhoz juthat az alkalmazás használatáról. Minden alkalommal, amikor frissíti az alkalmazást, megvizsgálhatja, hogy milyen jól működik a felhasználók számára. Ezzel az ismerettel a következő fejlesztési ciklusokra vonatkozó adatvezérelt döntéseket hozhat.
 
 ## <a name="send-telemetry-from-your-app"></a>Telemetria küldése az alkalmazásból
 
 A legjobb megoldás a Application Insights telepítésével érhető el az App Server kódjában és a weblapjain. Az alkalmazás ügyfél-és kiszolgáló-összetevői telemetria küldenek a Azure Portalnak elemzés céljából.
 
-1. **Kiszolgáló kódja:** Telepítse a megfelelő modult a [ASP.net](../../azure-monitor/app/asp-net.md), az [Azure](../../azure-monitor/app/app-insights-overview.md)-ra, a [Java](../../azure-monitor/app/java-get-started.md)-ra, a [Node.jsra ](../../azure-monitor/app/nodejs.md)vagy [más](../../azure-monitor/app/platforms.md) alkalmazásra.
+1. **Kiszolgáló kódja:** Telepítse a megfelelő modult a [ASP.net](./asp-net.md), az [Azure](./app-insights-overview.md)-ra, a [Java](./java-get-started.md)-ra, a [Node.jsra ](./nodejs.md)vagy [más](./platforms.md) alkalmazásra.
 
-    * *Nem szeretné telepíteni a kiszolgálói kódot? Egyszerűen [hozzon létre egy Azure Application Insights-erőforrást](../../azure-monitor/app/create-new-resource.md ).*
+    * *Nem szeretné telepíteni a kiszolgálói kódot? Egyszerűen [hozzon létre egy Azure Application Insights-erőforrást](./create-new-resource.md).*
 
 2. **Weblap kódja:** A bezárás előtt adja hozzá a következő szkriptet a weboldalához ``</head>`` . Cserélje le a rendszerállapot-kulcsot a Application Insights erőforrás megfelelő értékére:
     
@@ -36,7 +36,7 @@ A legjobb megoldás a Application Insights telepítésével érhető el az App S
 
     A webhelyek figyeléséhez szükséges speciális konfigurációk megismeréséhez tekintse meg a [JavaScript SDK-referenciát ismertető cikket](./javascript.md).
 
-3. **Mobile App code:** Az App Center SDK használatával gyűjthet eseményeket az alkalmazásból, majd az események másolatait elküldheti az elemzéshez az [útmutató](../../azure-monitor/learn/mobile-center-quickstart.md)alapján Application Insights.
+3. **Mobile App code:** Az App Center SDK használatával gyűjthet eseményeket az alkalmazásból, majd az események másolatait elküldheti az elemzéshez az [útmutató](../learn/mobile-center-quickstart.md)alapján Application Insights.
 
 4. **Telemetria beolvasása:** Futtassa a projektet hibakeresési módban néhány percre, majd keresse meg az eredményeket a Application Insights áttekintés paneljén.
 
@@ -103,7 +103,7 @@ Vagy a kiszolgáló oldalán:
 
 Ezekhez az eseményekhez tulajdonságokat is csatolhat, így szűrheti vagy feloszthatja az eseményeket a portálon való vizsgálat során. Emellett az egyes eseményekhez, például a névtelen felhasználói AZONOSÍTÓhoz is csatolni kell a tulajdonságok standard készletét, amely lehetővé teszi egy adott felhasználó tevékenységi sorrendjének nyomon követését.
 
-További információ az [Egyéni eseményekről](../../azure-monitor/app/api-custom-events-metrics.md#trackevent) és a [tulajdonságokról](../../azure-monitor/app/api-custom-events-metrics.md#properties).
+További információ az [Egyéni eseményekről](./api-custom-events-metrics.md#trackevent) és a [tulajdonságokról](./api-custom-events-metrics.md#properties).
 
 ### <a name="slice-and-dice-events"></a>Szeletek és kockák eseményei
 
@@ -121,7 +121,7 @@ Ehhez a technikához külön tulajdonságértékeket kell csatolni az alkalmazá
 
 A Application Insights portálon szűrje és ossza meg az adatait a tulajdonságértékek alapján, hogy összehasonlítsa a különböző verziókat.
 
-Ehhez [állítson be egy telemetria-inicializálást](../../azure-monitor/app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer):
+Ehhez [állítson be egy telemetria-inicializálást](./api-filtering-sampling.md#addmodify-properties-itelemetryinitializer):
 
 **ASP.NET-alkalmazások**
 
@@ -175,5 +175,6 @@ Minden új TelemetryClients automatikusan hozzáadja a megadott tulajdonságért
    - [Tölcsérek](usage-funnels.md)
    - [Megőrzés](usage-retention.md)
    - [Felhasználói folyamatok](usage-flows.md)
-   - [Munkafüzetek](../../azure-monitor/platform/workbooks-overview.md)
+   - [Munkafüzetek](../platform/workbooks-overview.md)
    - [Felhasználói környezet hozzáadása](usage-send-user-context.md)
+

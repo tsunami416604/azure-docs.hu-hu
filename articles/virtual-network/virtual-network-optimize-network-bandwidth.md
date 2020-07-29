@@ -1,6 +1,6 @@
 ---
 title: VM-hálózat teljesítményének optimalizálása | Microsoft Docs
-description: Ismerje meg, hogyan optimalizálhatja az Azure-beli virtuális gépek hálózati átviteli sebességét.
+description: Optimalizálja a hálózat átviteli sebességét Microsoft Azure Windows és Linux rendszerű virtuális gépekhez, beleértve a nagyobb disztribúciókat, mint például az Ubuntu, a CentOS és a Red Hat.
 services: virtual-network
 documentationcenter: na
 author: steveesp
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/15/2017
 ms.author: steveesp
-ms.openlocfilehash: 86785ada1d5b55a1eaa7c81243dd0b6c39087e1c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7b693d10b4e1925e9c07111982a616b56b77e5b6
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84695963"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87265143"
 ---
 # <a name="optimize-network-throughput-for-azure-virtual-machines"></a>Az Azure-beli virtuális gépek hálózati teljesítményének optimalizálása
 

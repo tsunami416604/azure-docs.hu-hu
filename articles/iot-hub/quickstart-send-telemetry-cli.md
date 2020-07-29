@@ -6,15 +6,16 @@ ms.topic: quickstart
 ms.custom:
 - iot-send-telemetry-cli
 - iot-p0-scenario
+- 'Role: Cloud Development'
 ms.author: timlt
 author: timlt
 ms.date: 11/06/2019
-ms.openlocfilehash: b8a057890d20fc233eae6f1636d83e73855305b7
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 9ab2074816198499b749416298298c44605b9818
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83727046"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87317909"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-monitor-it-with-the-azure-cli"></a>Gyors útmutató: telemetria küldése egy eszközről egy IoT-hubhoz, és az Azure CLI-vel való figyelése
 
@@ -24,7 +25,7 @@ Az IoT Hub olyan Azure-szolgáltatás, amely lehetővé teszi nagy mennyiségű 
 
 ## <a name="prerequisites"></a>Előfeltételek
 - Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egyet ingyen a](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) Kezdés előtt.
-- Azure CLI-vel. Ebben a rövid útmutatóban az összes parancsot futtathatja a böngészőben futtatott interaktív CLI-rendszerhéj Azure Cloud Shellával. Ha a Cloud Shell használja, semmit nem kell telepítenie. Ha a parancssori felület helyi használatát szeretné használni, ehhez a rövid útmutatóhoz az Azure CLI 2.0.76 vagy újabb verziójára lesz szükség. A verzió megkereséséhez futtassa a következő parancsot: az --version. A telepítéshez vagy a frissítéshez lásd: az [Azure CLI telepítése]( /cli/azure/install-azure-cli).
+- Azure CLI. Ebben a rövid útmutatóban az összes parancsot futtathatja a böngészőben futtatott interaktív CLI-rendszerhéj Azure Cloud Shellával. Ha a Cloud Shell használja, semmit nem kell telepítenie. Ha a parancssori felület helyi használatát szeretné használni, ehhez a rövid útmutatóhoz az Azure CLI 2.0.76 vagy újabb verziójára lesz szükség. A verzió megkereséséhez futtassa a következő parancsot: az --version. A telepítéshez vagy a frissítéshez lásd: az [Azure CLI telepítése]( /cli/azure/install-azure-cli).
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
@@ -173,7 +174,7 @@ A Azure Portal lehetővé teszi a IoT Hub és az eszközök összes aspektusána
 
 5. Igény szerint a **metrika** legördülő menüvel más mérőszámokat jeleníthet meg a szimulált eszközön. Például a *C2d üzenetek kézbesítésének befejezése* vagy az *összes eszköz (előzetes verzió)*. 
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 Ha már nincs szüksége az ebben a rövid útmutatóban létrehozott Azure-erőforrásokra, az Azure CLI használatával törölheti őket.
 
 Ha folytatja a következő javasolt cikket, megtarthatja a már létrehozott erőforrásokat, és újra felhasználhatja azokat. 
@@ -193,7 +194,7 @@ Erőforráscsoport törlése név alapján:
     az group list
     ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben a rövid útmutatóban az Azure CLI-t használta egy IoT hub létrehozásához, egy szimulált eszköz létrehozásához, a telemetria elküldéséhez, a telemetria figyeléséhez, a felhőből az eszközre irányuló üzenetek küldéséhez és az erőforrások törléséhez. Az eszközön az üzenetküldési metrikák megjelenítéséhez a Azure Portal használta.
 
 Ha Ön egy eszköz fejlesztője, a javasolt következő lépés a telemetria rövid útmutatója, amely az Azure IoT Device SDK-t használja a C-hez. opcionálisan tekintse meg az egyik elérhető Azure IoT Hub telemetria gyors üzembe helyezési cikkét az Ön által választott nyelven vagy SDK-ban.
