@@ -3,15 +3,15 @@ title: Ubuntu Linux VHD létrehozása és feltöltése az Azure-ban
 description: Megtudhatja, hogyan hozhat létre és tölthet fel egy Ubuntu Linux operációs rendszert tartalmazó Azure-beli virtuális merevlemezt (VHD-t).
 author: danielsollondon
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/06/2020
 ms.author: danis
-ms.openlocfilehash: 7a0d4d0a1c36f901ea38c5c73d3aa7a2cf49e02f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 8b34e266214285f6483acca59050780810e62345
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86502690"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373351"
 ---
 # <a name="prepare-an-ubuntu-virtual-machine-for-azure"></a>Ubuntu rendszerű virtuális gép előkészítése az Azure-beli használatra
 
@@ -179,5 +179,5 @@ Ez a cikk azt feltételezi, hogy már telepített egy Ubuntu Linux operációs r
 14. Az Azure csak rögzített méretű VHD-ket fogad el. Ha a virtuális gép operációsrendszer-lemeze nem rögzített méretű VHD, használja a `Convert-VHD` PowerShell-parancsmagot, és válassza a `-VHDType Fixed` lehetőséget. Tekintse meg az `Convert-VHD` alábbi dokumentumokat: [Convert-VHD](/powershell/module/hyper-v/convert-vhd?view=win10-ps).
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Most már készen áll a Ubuntu Linux virtuális merevlemez használatára az Azure-beli új virtuális gépek létrehozásához. Ha első alkalommal tölti fel a. vhd-fájlt az Azure-ba, tekintse meg a Linux rendszerű [virtuális gép létrehozása egyéni lemezről](upload-vhd.md#option-1-upload-a-vhd)című témakört.

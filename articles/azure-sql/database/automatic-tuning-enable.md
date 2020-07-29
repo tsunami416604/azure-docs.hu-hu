@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/03/2019
-ms.openlocfilehash: 6ffc81f7fc5cf36ff4e9bada8f72cfef013afcbc
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 94ffe2852380d238e9829a8ab0cc69ebe82b74fe
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85982786"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373504"
 ---
 # <a name="enable-automatic-tuning-in-the-azure-portal-to-monitor-queries-and-improve-workload-performance"></a>A Azure Portal automatikus hangolásának engedélyezése a lekérdezések figyeléséhez és a munkaterhelés teljesítményének növeléséhez
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -117,7 +117,7 @@ Az automatikus hangolás az adatbázison végrehajtott összes műveletet figyel
 
 ## <a name="permissions"></a>Engedélyek
 
-Mivel az automatikus hangolás egy Azure-szolgáltatás, a használatához az Azure beépített RBAC-szerepköreit kell használnia. Az SQL-hitelesítés használata nem elegendő a funkciónak a Azure Portal való használatához.
+Mivel az automatikus hangolás egy Azure-szolgáltatás, a használatához az Azure beépített szerepköreit kell használnia. Az SQL-hitelesítés használata nem elegendő a funkciónak a Azure Portal való használatához.
 
 Az automatikus hangolás használatához a felhasználónak való megadáshoz minimálisan szükséges engedély az Azure beépített [SQL Database közreműködő](../../role-based-access-control/built-in-roles.md#sql-db-contributor) szerepköre. Érdemes lehet magasabb jogosultsági szerepköröket is használni, például SQL Server közreműködőt, SQL felügyelt példány közreműködőjét, közreműködőt és tulajdonost.
 

@@ -3,12 +3,12 @@ title: Előzetes verzió – a Kubernetes Azure Policy megismerése
 description: Ismerje meg, hogyan használja a Azure Policy a Rego-t és a nyílt házirend-ügynököt az Azure-ban vagy a helyszínen futó Kubernetes futtató fürtök kezelésére. Ez egy előzetes verziójú szolgáltatás.
 ms.date: 06/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: a044ea33f1a7710c4bb97d30cf8f11d4de2838b1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 461dd467ecda2764c6753ed6eeee0405f8420bbc
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85373624"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373759"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters-preview"></a>A Kubernetes-fürtök Azure Policy megismerése (előzetes verzió)
 
@@ -203,7 +203,7 @@ A Azure Policy bővítmény telepítése vagy a szolgáltatás bármely funkció
 
 1. Nyissa meg a bővítmény portjait. A Azure Policy bővítmény ezeket a tartományokat és portokat használja a szabályzat-definíciók és-hozzárendelések beolvasásához, valamint a fürt megfelelőségének visszahívásához a Azure Policy.
 
-   |Domain |Port |
+   |Tartomány |Port |
    |---|---|
    |`gov-prod-policy-data.trafficmanager.net` |`443` |
    |`raw.githubusercontent.com` |`443` |
@@ -371,9 +371,9 @@ A Kubernetes kezelésének Azure Policy nyelvi szerkezete a meglévő szabályza
 
 A _details. constraintTemplate_ és a _details. megkötés_ tulajdonságok részeként a házirend-definícióban Azure Policy átadja ezen [CustomResourceDefinitions](https://github.com/open-policy-agent/gatekeeper#constraint-templates) (CRD) URI-azonosítóját a bővítménynek. A Rego az a nyelv, amelyet az OPA és a forgalomirányító támogat a Kubernetes-fürtre irányuló kérelem érvényesítéséhez. A Kubernetes-kezelés meglévő szabványának támogatásával a Azure Policy lehetővé teszi a meglévő szabályok újbóli használatát, és azok párosítását Azure Policy egy egységes Felhőbeli megfelelőségi jelentéskészítési élmény érdekében. További információ: [What is Rego?](https://www.openpolicyagent.org/docs/latest/policy-language/#what-is-rego).
 
-## <a name="assign-a-built-in-policy-definition"></a>Beépített szabályzat-definíció kiosztása
+## <a name="assign-a-built-in-policy-definition"></a>Beépített szabályzatdefiníció hozzárendelése
 
-Ahhoz, hogy szabályzat-definíciót rendeljen a Kubernetes-fürthöz, hozzá kell rendelnie a megfelelő szerepköralapú hozzáférés-vezérlés (RBAC) házirend-hozzárendelési műveleteit. A beépített RBAC-szerepkörök **erőforrás-házirend közreműködője** és **tulajdonosa** rendelkezik ezekkel a műveletekkel. További információ: [RBAC-engedélyek Azure Policy](../overview.md#rbac-permissions-in-azure-policy).
+Ahhoz, hogy szabályzat-definíciót rendeljen a Kubernetes-fürthöz, hozzá kell rendelnie a megfelelő szerepköralapú hozzáférés-vezérlés (RBAC) házirend-hozzárendelési műveleteit. Az Azure beépített szerepköreinek **erőforrás-házirend közreműködője** és **tulajdonosa** rendelkezik ezekkel a műveletekkel. További információ: [RBAC-engedélyek Azure Policy](../overview.md#rbac-permissions-in-azure-policy).
 
 A következő lépésekkel megkeresheti a fürt kezelésére szolgáló beépített szabályzat-definíciókat a Azure Portal használatával:
 

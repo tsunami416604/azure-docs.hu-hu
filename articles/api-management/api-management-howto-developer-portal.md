@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 07/15/2020
+ms.date: 07/28/2020
 ms.author: apimpm
-ms.openlocfilehash: 7d479f18e8764a69cdc81f99d723534e4895b0e4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f5f4df58a4b147ccb73c7d69f5307a8328803442
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87025081"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373147"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Az Azure API Management fejlesztői portál áttekintése
 
@@ -105,7 +105,19 @@ A REST API keresztül programozott módon érheti el és kezelheti a fejlesztői
 
 Az API-t [a GitHub-adattár wiki szakasza ismerteti][2]. A portál tartalmának a környezetek közötti áttelepítésének automatizálására is használható – például egy tesztkörnyezetben az éles környezetbe. Erről a folyamatról a GitHubról szóló [cikkben](https://aka.ms/apimdocs/migrateportal) olvashat bővebben.
 
+### <a name="how-do-i-move-from-the-managed-to-the-self-hosted-version"></a>Hogyan a felügyelt rendszerről a saját üzemeltetésű verzióra?
+
+A [githubon található fejlesztői portál adattárának wiki szakaszának][2]részletes leírását itt találja.
+
+### <a name="can-i-have-multiple-developer-portals-in-one-api-management-service"></a>Használhatok több fejlesztői portált egy API Management szolgáltatásban?
+
+Egy felügyelt portált és több saját üzemeltetésű portált is használhat. Az összes portál tartalmát ugyanabban a API Management szolgáltatásban tárolja a rendszer, így azok azonosak lesznek. Ha szeretné megkülönböztetni a portálok megjelenését és funkcióit, saját maga is üzemeltetheti azokat a saját egyéni widgetekkel, amelyek dinamikusan testreszabják a futásidejű oldalakat, például az URL-cím alapján.
+
 ### <a name="does-the-portal-support-azure-resource-manager-templates-andor-is-it-compatible-with-api-management-devops-resource-kit"></a>Támogatja a portál a Azure Resource Manager sablonokat, és/vagy kompatibilis-e a API Management DevOps Resource Kit-vel?
+
+Nem.
+
+### <a name="is-the-portals-content-saved-with-the-backuprestore-functionality-in-api-management"></a>A portál tartalma a API Management biztonsági mentési/helyreállítási funkcióival lett mentve?
 
 Nem.
 
@@ -205,7 +217,7 @@ A hívási hibát a TLS/SSL-tanúsítvány is okozhatja, amely egy egyéni tarto
 | Apple Safari                | Igen<sup>1</sup> |
 | Google Chrome               | Igen<sup>1</sup> |
 | Microsoft Edge              | Igen<sup>1</sup> |
-| Microsoft Internet Explorer | No              |
+| Microsoft Internet Explorer | Nem              |
 | Mozilla Firefox             | Igen<sup>1</sup> |
 
  <small><sup>1</sup> támogatott a két legújabb üzemi verzióban.</small>

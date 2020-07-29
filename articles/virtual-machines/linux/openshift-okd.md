@@ -5,16 +5,16 @@ author: haroldwongms
 manager: joraio
 ms.service: virtual-machines-linux
 ms.subservice: workloads
-ms.topic: article
+ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 10/15/2019
 ms.author: haroldw
-ms.openlocfilehash: dbd67903223bf4c8c2117f5356bc987665217362
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a7524ea80906f9df5f63af9e7d672bbef500b0d9
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86527030"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373334"
 ---
 # <a name="deploy-okd-in-azure"></a>OKD üzembe helyezése az Azure-ban
 
@@ -148,7 +148,7 @@ Az üzembe helyezés befejezésekor kapcsolódjon a OpenShift-konzolhoz a böng�
 $ ssh -p 2200 clusteradmin@myopenshiftmaster.cloudapp.azure.com
 ```
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Az az [Group delete](/cli/azure/group) paranccsal távolítsa el az erőforráscsoportot, a OpenShift-fürtöt és az összes kapcsolódó erőforrást, ha már nincs rájuk szükség.
 
@@ -156,7 +156,7 @@ Az az [Group delete](/cli/azure/group) paranccsal távolítsa el az erőforrásc
 az group delete --name openshiftrg
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Üzembe helyezés utáni feladatok](./openshift-container-platform-3x-post-deployment.md)
 - [OpenShift-telepítés hibáinak megoldása](./openshift-container-platform-3x-troubleshooting.md)

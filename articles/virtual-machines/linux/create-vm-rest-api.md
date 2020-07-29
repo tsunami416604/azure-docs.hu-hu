@@ -3,15 +3,15 @@ title: Linux rendszerű virtuális gép létrehozása a REST API
 description: Megtudhatja, hogyan hozhat létre olyan linuxos virtuális gépet az Azure-ban, amely az Azure REST API Managed Disks és SSH-hitelesítést használ.
 author: cynthn
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/05/2018
 ms.author: cynthn
-ms.openlocfilehash: 78b11a4d900b8c9cf30a1d37a2b7e6380d6b989a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d6e5195f43991f4d40af57c1ab4b87aaca475b64
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082562"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373402"
 ---
 # <a name="create-a-linux-virtual-machine-that-uses-ssh-authentication-with-the-rest-api"></a>SSH-hitelesítést használó linuxos virtuális gép létrehozása a REST API
 
@@ -54,7 +54,7 @@ REST API kérelmekkel kapcsolatos általános információkért tekintse meg [a 
 
 A kérelem törzsének létrehozásához a következő általános definíciók használhatók:
 
-| Name                       | Kötelező | Típus                                                                                | Description  |
+| Név                       | Kötelező | Típus                                                                                | Description  |
 |----------------------------|----------|-------------------------------------------------------------------------------------|--------------|
 | location                   | True (Igaz)     | sztring                                                                              | Erőforrás helye. |
 | name                       |          | sztring                                                                              | A virtuális gép neve. |

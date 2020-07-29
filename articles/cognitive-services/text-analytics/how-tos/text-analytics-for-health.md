@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 07/28/2020
 ms.author: aahi
-ms.openlocfilehash: cbc950647dc2f7102f20766c22f434526ab66639
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: dbd0699924268b38d69bc576a5886e8d31fa1208
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86122316"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373470"
 ---
 # <a name="how-to-use-text-analytics-for-health-preview"></a>Útmutató: a Text Analytics for Health használata (előzetes verzió)
 
@@ -23,7 +23,7 @@ ms.locfileid: "86122316"
 > A Text Analytics for Health egy előzetes verzió, amely az "adott állapotban" és "minden HIBÁval" érhető el. Ennek megfelelően a **text Analytics for Health (előzetes verzió) nem valósítható meg, és nem helyezhető üzembe semmilyen éles használatban.** Az egészségügyi Text Analytics nem az orvosi eszközként, klinikai támogatásként, diagnosztikai eszközként vagy más olyan technológiával való használatra készültek, amelyet a diagnosztika, a gyógyítás, a mérséklés, a kezelés vagy más feltételek megelőzéséhez, illetve más feltételekhez való felhasználáshoz kíván használni, és a Microsoft semmilyen jogot nem biztosít erre a képességre ilyen célra. Ezt a képességet nem úgy tervezték, hogy az orvosi szakorvosok vagy egészségügyi szakvélemények, diagnózis, kezelés vagy az egészségügyi szakemberek klinikai ítélete helyett ne legyenek implementálva, és ne legyenek használhatók. Az ügyfél kizárólag a Text Analytics for Health szolgáltatásért felelős. A Microsoft nem garantálja, hogy az állapotra vagy a képességgel kapcsolatban biztosított bármely anyagra vonatkozó Text Analytics bármely egészségügyi célra elegendő, vagy bármely személy egészségügyi vagy orvosi követelményeinek kielégítése érdekében. 
 
 
-Az Azure Text Analytics for Health egy olyan tárolós szolgáltatás, amely a strukturálatlan szövegektől, például az orvos megjegyzései, a mentesítési összefoglalók, a klinikai dokumentumok és az elektronikus egészségügyi jelentések alapján kinyeri és címkézi a kapcsolódó egészségügyi adatokat.  
+A Text Analytics for Health egy olyan tárolós szolgáltatás, amely a strukturálatlan szövegektől, például az orvos megjegyzései, a mentesítési összefoglalók, a klinikai dokumentumok és az elektronikus egészségügyi jelentések alapján kinyeri és felcímkézi a kapcsolódó egészségügyi adatokat.  
 
 ## <a name="features"></a>Szolgáltatások
 
@@ -62,7 +62,7 @@ Az orvosi tartalom értelmét nagy hatással van a módosítók, például a tag
 
 ---
 
-A támogatott entitások teljes listájáért tekintse meg az Text Analytics által visszaadott [entitások kategóriáit](../named-entity-types.md?tabs=health) .
+A támogatott entitások teljes listájáért tekintse meg az Text Analytics for Health által visszaadott [entitási kategóriákat](../named-entity-types.md?tabs=health) .
 
 ## <a name="supported-languages"></a>Támogatott nyelvek
 
@@ -80,8 +80,8 @@ Töltse ki és küldje el a [Cognitive Services tárolók kérelem űrlapját](h
 
 Több módon is telepítheti és futtathatja a tárolót. 
 
-1. A [Azure Portal](text-analytics-how-to-install-containers.md?tabs=healthcare) használatával hozzon létre egy Text Analytics-erőforrást, és a Docker használatával szerezze be a tárolót.
-2. Az alábbi PowerShell-és [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) -parancsfájlok segítségével automatizálhatja az erőforrás-telepítési tárolók konfigurációját.
+- A [Azure Portal](text-analytics-how-to-install-containers.md?tabs=healthcare) használatával hozzon létre egy Text Analytics-erőforrást, és a Docker használatával szerezze be a tárolót.
+- Az erőforrás-telepítési tároló konfigurációjának automatizálásához használja az alábbi PowerShell-és [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) -parancsfájlokat.
 
 ### <a name="install-the-container-using-azure-web-app-for-containers"></a>A tároló telepítése az Azure Web App for Containers használatával
 
@@ -223,7 +223,7 @@ További információ: NGINX dokumentációja az [NGINX SSL-lezárásáról](htt
 
 
 ## <a name="example-api-request"></a>Példa API-kérelemre
-A tároló REST-alapú lekérdezés-előrejelzési végpont API-kat biztosít.
+A tároló REST-alapú lekérdezés-előrejelzési végpont API-kat nyújt.
 
 Az alábbi példában szereplő cURL-kérelem használatával küldjön le egy lekérdezést arra a tárolóra, amelyet telepített, majd a `serverURL` megfelelő értékkel cserélje le a változót.
 
@@ -404,8 +404,8 @@ A következő JSON példa az állapot API-válasz törzsének Text Analytics:
     ...
 ```
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
-* [Text Analytics áttekintése](../overview.md)
+* [A Text Analytics áttekintése](../overview.md)
 * [Elnevezett entitások kategóriái](../named-entity-types.md)
 * [Újdonságok](../whats-new.md)

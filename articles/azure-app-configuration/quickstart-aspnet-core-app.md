@@ -8,11 +8,12 @@ ms.devlang: csharp
 ms.topic: quickstart
 ms.date: 02/19/2020
 ms.author: lcozzens
-ms.openlocfilehash: 2dc2143619594c8fd46fa4e838b97a3ecde95653
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 069bce6f2f8e46679cbc82dd92c9fd73bfecde85
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027715"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373521"
 ---
 # <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>Gyors útmutató: ASP.NET Core-alkalmazás létrehozása az Azure-alkalmazás konfigurálásával
 
@@ -242,11 +243,13 @@ Ha dolgozik a Azure Cloud Shellban, válassza a *webes előnézet* gombot, majd 
 
 Amikor a rendszer kéri, hogy konfigurálja a portot az előzetes verzióhoz, írja be a "5000" értéket, és válassza a *Megnyitás és Tallózás*lehetőséget.  A weblap beolvassa az "adatok az Azure-alkalmazás konfigurációjától" című lapot.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+![Gyorsindítás alkalmazás indítása](./media/quickstarts/aspnet-core-app-launch-local-before.png)
+
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban létrehozott egy új alkalmazás-konfigurációs tárolót, és azt egy ASP.NET Core webalkalmazással használta az [alkalmazás-konfigurációs szolgáltatón](https://go.microsoft.com/fwlink/?linkid=2074664)keresztül. Ha szeretné megtudni, hogyan konfigurálhatja a ASP.NET Core alkalmazást a konfigurációs beállítások dinamikus frissítéséhez, folytassa a következő oktatóanyaggal.
 

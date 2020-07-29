@@ -3,15 +3,15 @@ title: DNS-névfeloldási beállítások Linux rendszerű virtuális gépekhez
 description: A Linux rendszerű virtuális gépek névfeloldási forgatókönyvei az Azure IaaS, beleértve a megadott DNS-szolgáltatásokat, a hibrid külső DNS-t és a saját DNS-kiszolgálóját.
 author: RicksterCDN
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/19/2016
 ms.author: rclaus
-ms.openlocfilehash: 41cf83a3d9c756d69df2e2e9777ebd8eb54d4d74
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: aa007888c68df41242f937e1062a90ec1b7fc3ce
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86494734"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372824"
 ---
 # <a name="dns-name-resolution-options-for-linux-virtual-machines-in-azure"></a>DNS-névfeloldási lehetőségek Linux rendszerű virtuális gépekhez az Azure-ban
 Az Azure alapértelmezés szerint DNS-névfeloldást biztosít az egyetlen virtuális hálózatban lévő összes virtuális géphez. Saját DNS-névfeloldási megoldást is alkalmazhat saját DNS-szolgáltatásainak konfigurálásával az Azure-gazdagépeken futó virtuális gépeken. A következő forgatókönyvek segíthetnek kiválasztani az adott helyzetnek megfelelőt.

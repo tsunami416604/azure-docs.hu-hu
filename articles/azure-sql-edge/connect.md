@@ -8,13 +8,13 @@ ms.topic: conceptual
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
-ms.date: 05/19/2020
-ms.openlocfilehash: 6d82446a915863e6aa95cc79a421f86b8c4dd3a2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/25/2020
+ms.openlocfilehash: bc7410325bbcf3086c4ac2054b7bc663629a29e5
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85252644"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373113"
 ---
 # <a name="connect-and-query-azure-sql-edge-preview"></a>Az Azure SQL Edge (előzetes verzió) összekötése és lekérdezése
 
@@ -29,8 +29,8 @@ Az Azure SQL Edge-ben a tároló üzembe helyezése után a következő helyekr�
 
 Bármelyik általános eszközről csatlakozhat az Azure SQL Edge-példány egy példányához:
 
-* [Sqlcmd](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-tools): a Sqlcmd ügyféleszközök már szerepelnek az Azure SQL Edge tároló-rendszerképében. Ha egy futó tárolóhoz egy interaktív bash-rendszerhéj csatlakozik, az eszközöket helyileg is futtathatja.
-* [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms)
+* [Sqlcmd](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-tools): a Sqlcmd ügyféleszközök már szerepelnek az Azure SQL Edge tároló-rendszerképében. Ha egy futó tárolóhoz egy interaktív bash-rendszerhéj csatlakozik, az eszközöket helyileg is futtathatja. Az SQL-ügyfél eszközei nem érhetők el a ARM64 platformon, mivel azok nem szerepelnek az SQL Edge-tárolók ARM64-verziójában. 
+* [Az SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms)
 * [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download-azure-data-studio)
 * [Visual Studio Code](https://docs.microsoft.com/sql/visual-studio-code/sql-server-develop-use-vscode)
 
@@ -55,7 +55,7 @@ Ha egy hálózati gépről szeretne csatlakozni egy Azure SQL Edge-adatbázis-mo
 
 ## <a name="connect-to-the-database-engine-from-within-the-container"></a>Kapcsolódás az adatbázis-motorhoz a tárolón belülről
 
-Az [SQL Server parancssori eszközöket](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-tools) az Azure SQL Edge Container-rendszerképe tartalmazza. Ha egy interaktív parancssorhoz csatolja a tárolót, az eszközöket helyileg is futtathatja.
+Az [SQL Server parancssori eszközöket](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-tools) az Azure SQL Edge Container-rendszerképe tartalmazza. Ha egy interaktív parancssorhoz csatolja a tárolót, az eszközöket helyileg is futtathatja. Az SQL-ügyfél eszközei nem érhetők el a ARM64 platformon, mivel azok nem szerepelnek az SQL Edge-tárolók ARM64-verziójában. 
 
 1. A `docker exec -it` paranccsal interaktív bash-rendszerhéj indítható el a futó tárolóban. A következő példában `e69e056c702d` a tároló azonosítója.
 

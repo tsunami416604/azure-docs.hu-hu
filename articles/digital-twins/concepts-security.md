@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: ec681d0af132d11e18703dce6105352651a70180
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: bc6b3911ed6d04561d25ef166625f9e73023726d
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131616"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373283"
 ---
 # <a name="secure-azure-digital-twins-with-role-based-access-control"></a>Biztonságos Azure-beli digitális Twins szerepköralapú hozzáférés-vezérléssel
 
@@ -45,7 +45,7 @@ A felügyelt identitások esetében az Azure platform kezeli ezt a futásidejű 
 
 ### <a name="authorization-rbac-roles-for-azure-digital-twins"></a>Engedélyezés: RBAC szerepkörök az Azure Digital Twins-hoz
 
-Az Azure az alábbi beépített RBAC-szerepköröket biztosítja az Azure digitális Twins-erőforrásokhoz való hozzáférés engedélyezéséhez:
+Az Azure az alábbi Azure beépített szerepköröket biztosítja az Azure digitális Twins-erőforrásokhoz való hozzáférés engedélyezéséhez:
 * *Azure digitális ikrek tulajdonosa (előzetes verzió)* – ezt a szerepkört használva teljes hozzáférést biztosíthat az Azure digitális Twins-erőforrásaihoz.
 * *Azure digitális ikrek olvasója (előzetes verzió)* – ez a szerepkör csak olvasási hozzáférést biztosít az Azure digitális Twins erőforrásaihoz.
 

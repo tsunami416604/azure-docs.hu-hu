@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/06/2020
-ms.openlocfilehash: 8474b49e3e6b12a613de19df055cbf6e43fb0aa2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5a09a30bafa5bc9ef052b14cad29e000bbd09a48
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86503786"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287381"
 ---
 # <a name="documentation-changes-for-sql-server-on-azure-virtual-machines"></a>Az Azure-beli SQL Server dokumentációjának változásai Virtual Machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -37,7 +37,7 @@ Az Azure-ban a virtuális gépek (VM-EK) üzembe helyezését SQL Server beépí
 | Változások | Részletek |
 | --- | --- |
 | **Elosztott hálózat neve (DNN)** | A Windows Server 2016-ban a SQL Server 2019-es verzióban mostantól megtekinthető a feladatátvételi fürt példányának (verzió) útválasztási forgalmának támogatása [, nem pedig](hadr-distributed-network-name-dnn-configure.md) Azure Load Balancer. Ez a támogatás leegyszerűsíti és egyszerűsíti a magas rendelkezésre állású (HA) megoldáshoz való csatlakozást az Azure-ban. | 
-| **És Azure-beli megosztott lemezekkel** | Most már lehetséges a [feladatátvevő fürt példányának (](failover-cluster-instance-overview.md) verziójának) üzembe helyezése az Azure-beli [megosztott lemezek](failover-cluster-instance-azure-shared-disks-manually-configure.md) használatával SQL Server 2019-mel egy Windows Server 2016 + virtuális gépen. |
+| **És Azure-beli megosztott lemezekkel** | Most már lehetséges az [Azure megosztott lemezek](failover-cluster-instance-azure-shared-disks-manually-configure.md)használatával üzembe helyezni a [feladatátvevő fürt példányát (verzió)](failover-cluster-instance-overview.md) . |
 | **Átszervezett** | Az Azure-beli [virtuális gépeken SQL Serverokkal rendelkező feladatátvevő fürt példányaira](failover-cluster-instance-overview.md) vonatkozó dokumentációt a rendszer újraírta és átrendezte az érthetőség kedvéért. Elválasztottunk néhány konfigurációs tartalmat, például a [fürtkonfiguráció ajánlott eljárásait](hadr-cluster-best-practices.md), a [virtuális gépek előkészítését egy SQL Server](failover-cluster-instance-prepare-vm.md)és a [Azure Load Balancer](hadr-vnn-azure-load-balancer-configure.md)konfigurálásának módját. | 
 | &nbsp; | &nbsp; |
 

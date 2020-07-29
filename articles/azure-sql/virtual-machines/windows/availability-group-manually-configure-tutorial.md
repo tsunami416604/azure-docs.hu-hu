@@ -3,7 +3,7 @@ title: 'Oktatóanyag: SQL Server always on rendelkezésre állási csoport konfi
 description: Ez az oktatóanyag bemutatja, hogyan hozhat létre SQL Server always on rendelkezésre állási csoportot az Azure Virtual Machines-on.
 services: virtual-machines
 documentationCenter: na
-author: MikeRayMSFT
+author: MashaMSFT
 editor: monicar
 tags: azure-service-management
 ms.assetid: 08a00342-fee2-4afe-8824-0db1ed4b8fca
@@ -12,13 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/30/2018
-ms.author: mikeray
+ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 0b98838441325245b3f4322a32eb5e2376557313
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 22240c61b2341999528dcb477308990133042fa0
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85960741"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286859"
 ---
 # <a name="tutorial-configure-a-sql-server-availability-group-on-azure-virtual-machines-manually"></a>Oktatóanyag: SQL Server rendelkezésre állási csoport konfigurálása az Azure Virtual Machines-on manuálisan
 
@@ -38,7 +39,7 @@ Az oktatóanyag feltételezi, hogy rendelkezik SQL Server always on rendelkezés
 
 A következő táblázat felsorolja azokat az előfeltételeket, amelyeket el kell végeznie az oktatóanyag megkezdése előtt:
 
-| Követelmény |Description |
+| Követelmény |Leírás |
 |----- |----- |----- |
 |![Square ](./media/availability-group-manually-configure-tutorial/square.png) **Two SQL Server instances**    | – Azure-beli rendelkezésre állási csoport <br/> -Egyetlen tartományban <br/> -A feladatátvételi fürtszolgáltatás telepített funkciója |
 |![Square ](./media/availability-group-manually-configure-tutorial/square.png) **Windows Server**    | Fájlmegosztás a tanúsító fürthöz |  
@@ -81,7 +82,7 @@ Az előfeltételek befejezését követően az első lépés egy Windows Server 
    | Kiszolgálók kiválasztása |A Kiszolgálónév mezőbe írja be az első SQL Server nevet **, majd válassza** a **Hozzáadás**lehetőséget. |
    | Érvényesítési figyelmeztetés |Válassza a **nem lehetőséget. nem igényelem a Microsoft támogatását ehhez a fürthöz, ezért nem kívánja futtatni az ellenőrző teszteket. A Tovább gombra kattintva folytassa a fürt létrehozását**. |
    | Hozzáférési pont a fürt felügyeletéhez |Adja meg a fürt nevét, például **SQLAGCluster1** a **fürt nevében**.|
-   | Megerősítés |Csak akkor használja az alapértelmezett értékeket, ha tárolóhelyeket használ. Lásd a táblázatot követő megjegyzést. |
+   | Visszaigazolás |Csak akkor használja az alapértelmezett értékeket, ha tárolóhelyeket használ. Lásd a táblázatot követő megjegyzést. |
 
 ### <a name="set-the-windows-server-failover-cluster-ip-address"></a>A Windows Server feladatátvételi fürt IP-címének beállítása
 
@@ -120,7 +121,7 @@ Adja hozzá a másik SQL Server a fürthöz.
 
 1. Válassza a **Tovább** lehetőséget.
 
-1. Válassza a **Befejezés** gombot.
+1. Válassza a **Befejezés** lehetőséget.
 
    Feladatátvevőfürt-kezelő azt mutatja, hogy a fürt új csomóponttal rendelkezik, és a **csomópontok** tárolóban listázza azt.
 
@@ -184,7 +185,7 @@ Ezután állítsa be a fürt kvórumát.
 
 1. Ellenőrizze a beállításokat a **megerősítéshez**. Válassza a **Tovább** lehetőséget.
 
-1. Válassza a **Befejezés** gombot.
+1. Válassza a **Befejezés** lehetőséget.
 
 A fürt alapvető erőforrásai egy tanúsító fájlmegosztás használatára vannak konfigurálva.
 
@@ -371,7 +372,7 @@ Az Azure-ban a terheléselosztó lehet standard Load Balancer vagy egy alapszint
 
    | Beállítás | Mező |
    | --- | --- |
-   | **Name (Név)** |Használjon egy szöveges nevet a terheléselosztó számára, például **sqlLB**. |
+   | **Név** |Használjon egy szöveges nevet a terheléselosztó számára, például **sqlLB**. |
    | **Típus** |Belső |
    | **Virtuális hálózat** |Használja az Azure-beli virtuális hálózat nevét. |
    | **Alhálózat** |Használja annak az alhálózatnak a nevét, amelyben a virtuális gép található.  |
@@ -415,10 +416,10 @@ A terheléselosztó konfigurálásához létre kell hoznia egy háttér-készlet
 
    | Beállítás | Leírás | Példa
    | --- | --- |---
-   | **Name (Név)** | Szöveg | SQLAlwaysOnEndPointProbe |
+   | **Név** | Szöveg | SQLAlwaysOnEndPointProbe |
    | **Protokoll** | Válassza a TCP beállítást | TCP |
    | **Port** | A fel nem használt portok | 59999 |
-   | **Időköz**  | A mintavételi kísérletek közötti időtartam másodpercben |5 |
+   | **Intervallum**  | A mintavételi kísérletek közötti időtartam másodpercben |5 |
    | **Nem kifogástalan állapot küszöbértéke** | Az egymást követő mintavételi hibák száma, amelyeknek meg kell történnie, hogy a virtuális gép nem kifogástalannak minősül  | 2 |
 
 1. Az állapot mintavételének beállításához kattintson **az OK gombra** .
@@ -431,14 +432,14 @@ A terheléselosztó konfigurálásához létre kell hoznia egy háttér-készlet
 
    | Beállítás | Leírás | Példa
    | --- | --- |---
-   | **Name (Név)** | Szöveg | SQLAlwaysOnEndPointListener |
+   | **Név** | Szöveg | SQLAlwaysOnEndPointListener |
    | **Előtérbeli IP-cím** | Válasszon egy címtartományt |Használja a terheléselosztó létrehozásakor létrehozott címeket. |
    | **Protokoll** | Válassza a TCP beállítást |TCP |
    | **Port** | A rendelkezésre állási csoport figyelője portjának használata | 1433 |
-   | **Háttérport** | Ez a mező nem használható, ha a közvetlen kiszolgáló visszaadására beállított lebegőpontos IP-cím | 1433 |
+   | **Háttér-port** | Ez a mező nem használható, ha a közvetlen kiszolgáló visszaadására beállított lebegőpontos IP-cím | 1433 |
    | **Mintavétel** |A mintavételhez megadott név | SQLAlwaysOnEndPointProbe |
    | **Munkamenetek megőrzése** | Legördülő lista | **Nincs** |
-   | **Üresjárati időtúllépés** | A TCP-kapcsolatok megnyitásának percben tartása | 4 |
+   | **Üresjárat időkorlátja** | A TCP-kapcsolatok megnyitásának percben tartása | 4 |
    | **Lebegőpontos IP-cím (közvetlen kiszolgáló visszaadása)** | |Engedélyezve |
 
    > [!WARNING]
@@ -459,10 +460,10 @@ A WSFC IP-címének is szerepelnie kell a terheléselosztó számára.
 
    | Beállítás | Leírás | Példa
    | --- | --- |---
-   | **Name (Név)** | Szöveg | WSFCEndPointProbe |
+   | **Név** | Szöveg | WSFCEndPointProbe |
    | **Protokoll** | Válassza a TCP beállítást | TCP |
    | **Port** | A fel nem használt portok | 58888 |
-   | **Időköz**  | A mintavételi kísérletek közötti időtartam másodpercben |5 |
+   | **Intervallum**  | A mintavételi kísérletek közötti időtartam másodpercben |5 |
    | **Nem kifogástalan állapot küszöbértéke** | Az egymást követő mintavételi hibák száma, amelyeknek meg kell történnie, hogy a virtuális gép nem kifogástalannak minősül  | 2 |
 
 1. Az állapot mintavételének beállításához kattintson **az OK gombra** .
@@ -473,14 +474,14 @@ A WSFC IP-címének is szerepelnie kell a terheléselosztó számára.
 
    | Beállítás | Leírás | Példa
    | --- | --- |---
-   | **Name (Név)** | Szöveg | WSFCEndPoint |
+   | **Név** | Szöveg | WSFCEndPoint |
    | **Előtérbeli IP-cím** | Válasszon egy címtartományt |Használja a WSFC IP-cím beállításakor létrehozott címet. Ez eltér a figyelő IP-címétől. |
    | **Protokoll** | Válassza a TCP beállítást |TCP |
    | **Port** | A fürt IP-címéhez használja a portot. Ez egy elérhető port, amely nem használatos a figyelő mintavételi portjához. | 58888 |
-   | **Háttérport** | Ez a mező nem használható, ha a közvetlen kiszolgáló visszaadására beállított lebegőpontos IP-cím | 58888 |
+   | **Háttér-port** | Ez a mező nem használható, ha a közvetlen kiszolgáló visszaadására beállított lebegőpontos IP-cím | 58888 |
    | **Mintavétel** |A mintavételhez megadott név | WSFCEndPointProbe |
    | **Munkamenetek megőrzése** | Legördülő lista | **Nincs** |
-   | **Üresjárati időtúllépés** | A TCP-kapcsolatok megnyitásának percben tartása | 4 |
+   | **Üresjárat időkorlátja** | A TCP-kapcsolatok megnyitásának percben tartása | 4 |
    | **Lebegőpontos IP-cím (közvetlen kiszolgáló visszaadása)** | |Engedélyezve |
 
    > [!WARNING]

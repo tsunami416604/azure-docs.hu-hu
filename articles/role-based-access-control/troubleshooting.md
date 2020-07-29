@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 05/01/2020
+ms.date: 07/24/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: 8d6c9ab2bacf94b3a27bfd1de0189d8b89b5efaf
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: bf8fa174611c7173c957ded49ff9135f90cebc08
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87129440"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287218"
 ---
 # <a name="troubleshoot-azure-rbac"></a>Az Azure RBAC hibáinak megoldása
 
@@ -52,6 +52,22 @@ $ras.Count
 ## <a name="problems-with-azure-role-assignments"></a>Azure-beli szerepkör-hozzárendelésekkel kapcsolatos problémák
 
 - Ha nem tud szerepkör-hozzárendelést hozzáadni a Azure Portal on hozzáférés- **vezérlés (iam)** elemnél, **mert a**  >  **szerepkör-hozzárendelés hozzáadása** lehetőség le van tiltva, vagy ha az engedélyekkel kapcsolatos hibaüzenet jelenik meg, akkor a "nem rendelkezik a művelet végrehajtásához szükséges engedélyekkel" nevű ügyfél. Győződjön meg arról, hogy jelenleg be van jelentkezve egy olyan szerepkörrel rendelkező felhasználóval, amely jogosult a `Microsoft.Authorization/roleAssignments/write` szerepkörhöz hozzárendelni kívánt hatókörre, például [tulajdonos](built-in-roles.md#owner) vagy [felhasználói hozzáférés rendszergazdai](built-in-roles.md#user-access-administrator) jogosultsággal.
+- Ha egy egyszerű szolgáltatásnevet használ a szerepkörök hozzárendeléséhez, akkor előfordulhat, hogy a "nincs megfelelő jogosultsága a művelet végrehajtásához" hibaüzenet jelenik meg. Tegyük fel például, hogy rendelkezik egy olyan egyszerű szolgáltatással, amely hozzá lett rendelve a tulajdonosi szerepkörhöz, és a következő szerepkör-hozzárendelést próbálja meg létrehozni az Azure CLI használatával:
+
+    ```azurecli
+    az login --service-principal --username "SPNid" --password "password" --tenant "tenantid"
+    az role assignment create --assignee "userupn" --role "Contributor"  --scope "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}"
+    ```
+
+    Ha a "nem megfelelő jogosultságok a művelet végrehajtásához" hibaüzenet jelenik meg, akkor valószínű, hogy az Azure CLI megpróbálja megkeresni a megbízott identitást az Azure AD-ben, és az egyszerű szolgáltatásnév alapértelmezés szerint nem tudja beolvasni az Azure AD-t.
+
+    Ez a hiba kétféleképpen oldható fel. Első lépésként rendelje hozzá a [címtár-olvasók](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers) szerepkört az egyszerű szolgáltatáshoz, hogy az képes legyen az információk olvasására a címtárban. A címtárat is megadhatja [. olvassa el a Microsoft Graph összes engedélyét](https://docs.microsoft.com/graph/permissions-reference) .
+
+    A hiba megoldásának második módja, ha a szerepkör-hozzárendelést a (z `--assignee-object-id` ) helyett a paraméter használatával hozza létre `--assignee` . A használatával `--assignee-object-id` Az Azure CLI kihagyja az Azure ad-keresést. Meg kell kérnie annak a felhasználónak, csoportnak vagy alkalmazásnak az AZONOSÍTÓját, amelyhez hozzá szeretné rendelni a szerepkört. További információ: [Azure-beli szerepkör-hozzárendelések hozzáadása vagy eltávolítása az Azure CLI használatával](role-assignments-cli.md#new-service-principal).
+
+    ```azurecli
+    az role assignment create --assignee-object-id 11111111-1111-1111-1111-111111111111  --role "Contributor" --scope "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}"
+    ```
 
 ## <a name="problems-with-custom-roles"></a>Problémák az egyéni szerepkörökkel
 

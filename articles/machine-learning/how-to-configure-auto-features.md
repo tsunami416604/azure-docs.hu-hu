@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 05/28/2020
-ms.openlocfilehash: 950f258e7380d7fbd25e1a5fe2dd4673ba122c52
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: b01d6c36b31ef4f03522d03ca327439cfa31be8d
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321584"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373742"
 ---
 # <a name="featurization-in-automated-machine-learning"></a>Featurization az automatizált gépi tanulásban
 
@@ -114,13 +114,13 @@ Guardrail|status|Trigger feltétele &nbsp; &nbsp;
 
 Testreszabhatja a featurization beállításait, így biztosíthatja, hogy a ML-modellek betanításához használt adatokat és szolgáltatásokat a megfelelő előrejelzések képezzék.
 
-A featurizations testreszabásához adja meg  `"featurization": FeaturizationConfig` az `AutoMLConfig` objektumot az objektumban. Ha a kísérlethez a Azure Machine Learning Studiot használja, tekintse meg a [útmutató cikket](how-to-use-automated-ml-for-ml-models.md#customize-featurization).
+A featurizations testreszabásához adja meg  `"featurization": FeaturizationConfig` az `AutoMLConfig` objektumot az objektumban. Ha a kísérlethez a Azure Machine Learning Studiot használja, tekintse meg a [útmutató cikket](how-to-use-automated-ml-for-ml-models.md#customize-featurization). Az előrejelzési feladatokhoz tartozó featurization testreszabásához tekintse meg az [előrejelzési útmutató című témakört](how-to-auto-train-forecast.md#customize-featurization).
 
 A támogatott testreszabások a következők:
 
 |Testreszabás|Definíció|
 |--|--|
-|**Oszlop céljának frissítése**|A megadott oszlop szolgáltatás típusának felülbírálása.|
+|**Oszlop céljának frissítése**|Felülbírálja a megadott oszlop automatikusan észlelt funkciójának típusát.|
 |**A transzformátor paraméterének frissítése** |Frissítse a megadott átalakító paramétereit. Jelenleg támogatja az *imputált* (mean, leggyakoribb és közepes) és a *HashOneHotEncoder*.|
 |**Oszlopok eldobása** |Meghatározza az eldobni kívánt oszlopokat a featurized.|
 |**Transzformátorok letiltása**| Megadja a featurization-folyamathoz használandó blokk-átalakítókat.|

@@ -12,35 +12,51 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 09/03/2019
+ms.date: 07/20/2020
 ms.author: damaerte
-ms.openlocfilehash: d0cfd428e1bd380d17049cbc229bb8850793056e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 766245dcfe42c16106df6beed938fe2f04af05cc
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073029"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286664"
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Az Azure Cloud Shell áttekintése
-Az Azure Cloud Shell interaktív, hitelesített, böngészőben elérhető felület az Azure-erőforrások felügyeletéhez.
-Rugalmasságot nyújt a munkamódszeréhez leginkább illő héjfelület (akár a Bash, akár a PowerShell) kiválasztásának lehetőségével.
 
-Az alábbi gombra kattintva próbálja ki a shell.azure.com.
+Az Azure Cloud Shell interaktív, hitelesített, böngészőben elérhető felület az Azure-erőforrások felügyeletéhez. Rugalmasságot nyújt a munkamódszeréhez leginkább illő héjfelület (akár a Bash, akár a PowerShell) kiválasztásának lehetőségével.
 
-[![Beágyazás elindítása](https://shell.azure.com/images/launchcloudshell.png "Az Azure Cloud Shell elindítása")](https://shell.azure.com)
+A Cloud Shell három módon érheti el:
 
-Próbálja ki a Azure Portalt a Cloud Shell ikon használatával.
+- **Közvetlen hivatkozás**: nyisson meg egy böngészőt [https://shell.azure.com](https://shell.azure.com) .
 
-![Portál elindítása](media/overview/portal-launch-icon.png)
+- **Azure Portal**: válassza a Cloud Shell ikont a [Azure Portal](https://portal.azure.com):
 
-## <a name="features"></a>Funkciók
+    ![Ikon a Cloud Shell elindításához a Azure Portal](media/overview/portal-launch-icon.png)
+
+- **Kódrészletek: a** [docs.microsoft.com](https://docs.microsoft.com) és a [Microsoft Learn](https://docs.microsoft.com/learn/)lapon jelölje be az Azure CLI-vel és az Azure PowerShell kódrészletekkel megjelenő **kipróbálás** gombot:
+
+    ```azurecli-interactive
+    az account show
+    ```
+
+    ```azurepowershell-interactive
+    Get-AzSubscription
+    ```
+
+    A **TRY IT (kipróbálás** ) gomb a Cloud Shell közvetlenül a dokumentáció mellett a bash (Azure CLI-kódrészletek) vagy a PowerShell (Azure PowerShell kódrészletek esetében) használatával nyitja meg.
+
+    A parancs futtatásához használja a **Másolás** parancsot a kódrészletben, a **CTRL** + **SHIFT** + **v** (Windows/Linux) vagy a **cmd** + **SHIFT** + **v** (MacOS) használatával illessze be a parancsot, majd nyomja le az **ENTER**billentyűt.
+
+## <a name="features"></a>Szolgáltatások
 
 ### <a name="browser-based-shell-experience"></a>Böngészőalapú rendszerhéj-felület
-A Cloud Shell lehetővé teszi az Azure felügyeleti feladatokkal létrehozott, böngészőalapú parancssori felület elérését.
-Kihasználhatja a Cloud Shellt, hogy a helyi gépekről csak a felhő által biztosított munkafolyamatok legyenek lekötve.
+
+A Cloud Shell lehetővé teszi az Azure felügyeleti feladatokkal létrehozott, böngészőalapú parancssori felület elérését. Kihasználhatja a Cloud Shellt, hogy a helyi gépekről csak a felhő által biztosított munkafolyamatok legyenek lekötve.
 
 ### <a name="choice-of-preferred-shell-experience"></a>Az előnyben részesített rendszerhéj-élmény kiválasztása
+
 A felhasználók a bash vagy a PowerShell közül választhatnak.
+
 1. Válassza a **Cloud Shell**lehetőséget.
 
     ![Cloud Shell ikon](media/overview/overview-cloudshell-icon.png)
@@ -49,22 +65,26 @@ A felhasználók a bash vagy a PowerShell közül választhatnak.
 
     ![Válassza a bash vagy a PowerShell lehetőséget.](media/overview/overview-choices.png)
 
+    Az első indítás után a rendszerhéj típusa legördülő vezérlő használatával válthat a bash és a PowerShell között:
+
+    ![A bash vagy a PowerShell kiválasztására szolgáló legördülő vezérlő](media/overview/select-shell-drop-down.png)
+
 ### <a name="authenticated-and-configured-azure-workstation"></a>Hitelesített és konfigurált Azure munkaállomás
+
 A Cloud Shell a Microsoft felügyeli, ezért népszerű parancssori eszközöket és nyelvi támogatást nyújt. Az Azure CLI-n vagy Azure PowerShell-parancsmagokon keresztül a Cloud Shell automatikusan biztonságosan hitelesíti az erőforrásokhoz való azonnali hozzáférést.
 
 Tekintse meg a [Cloud Shell telepített eszközök teljes listáját.](features.md#tools)
 
 ### <a name="integrated-cloud-shell-editor"></a>Integrált Cloud Shell szerkesztő
+
 Cloud Shell egy integrált grafikus szövegszerkesztőt kínál a nyílt forráskódú Monaco-szerkesztő alapján. Egyszerűen hozhat létre és szerkeszthet konfigurációs fájlokat `code .` Az Azure CLI vagy a Azure PowerShell használatával történő zökkenőmentes üzembe helyezéshez.
 
 [További információ a Cloud Shell Szerkesztőről](using-cloud-shell-editor.md).
 
-### <a name="integrated-with-docsmicrosoftcom"></a>Integrálva a docs.microsoft.com
-
-A Cloud Shell közvetlenül a [docs.microsoft.com](https://docs.microsoft.com)-on tárolt dokumentációból is használhatja. Integrálva van [Microsoft Learn](https://docs.microsoft.com/learn/), [Azure PowerShell](https://docs.microsoft.com/powershell/azure/) és az [Azure CLI dokumentációjában](https://docs.microsoft.com/cli/azure) – kattintson a kódrészletben található "Try" (kipróbálás) gombra, hogy megnyissa a zökkenőmentes rendszerhéj-élményt. 
-
 ### <a name="multiple-access-points"></a>Több hozzáférési pont
+
 A Cloud Shell egy rugalmas eszköz, amely a következő helyekről használható:
+
 * [portal.azure.com](https://portal.azure.com)
 * [shell.azure.com](https://shell.azure.com)
 * [Az Azure CLI dokumentációja](https://docs.microsoft.com/cli/azure)
@@ -73,14 +93,16 @@ A Cloud Shell egy rugalmas eszköz, amely a következő helyekről használható
 * [Visual Studio Code Azure-fiók bővítmény](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)
 
 ### <a name="connect-your-microsoft-azure-files-storage"></a>Microsoft Azure fájlok tárolójának összekötése
-Cloud Shell gépek ideiglenesek, de a fájlok két módon maradnak meg: lemezképen keresztül, valamint egy nevű csatlakoztatott fájlmegosztás használatával `clouddrive` .  Az első indítás alkalmával a Cloud Shell felkéri egy erőforráscsoport, tárfiók és Azure Files-megosztás létrehozására. Ez egy egyszeri lépés, és a rendszer automatikusan csatolja az összes munkamenethez. Egyetlen fájlmegosztás képezhető le, amelyet a bash és a PowerShell is használ Cloud Shellban.
+
+Cloud Shell gépek ideiglenesek, de a fájlok két módon maradnak meg: lemezképen keresztül, valamint egy nevű csatlakoztatott fájlmegosztás használatával `clouddrive` . Az első indítás alkalmával a Cloud Shell felkéri egy erőforráscsoport, tárfiók és Azure Files-megosztás létrehozására. Ez egy egyszeri lépés, és a rendszer automatikusan csatolja az összes munkamenethez. Egyetlen fájlmegosztás képezhető le, amelyet a bash és a PowerShell is használ Cloud Shellban.
 
 További információ: [új vagy meglévő Storage-fiók](persisting-shell-storage.md) csatlakoztatása, illetve a [Cloud Shell használt adatmegőrzési mechanizmusok](persisting-shell-storage.md#how-cloud-shell-storage-works)megismerése.
 
 > [!NOTE]
 > A Cloud Shell Storage-fiókok nem támogatják az Azure Storage-tűzfalat.
 
-## <a name="concepts"></a>Fogalmak
+## <a name="concepts"></a>Alapelvek
+
 * A Cloud Shell munkamenetenkénti, felhasználónkénti alapon megadott ideiglenes gazdagépen fut.
 * Cloud Shell idő után 20 perccel interaktív tevékenység nélkül
 * Cloud Shell egy Azure-fájlmegosztás csatlakoztatását igényli
@@ -92,8 +114,10 @@ További információ: [új vagy meglévő Storage-fiók](persisting-shell-stora
 További információ a bash szolgáltatásairól [Cloud Shell](features.md) és [a PowerShellben Cloud Shellban](features-powershell.md).
 
 ## <a name="pricing"></a>Díjszabás
+
 A Cloud Shell gép üzemeltetése ingyenes, és egy csatlakoztatott Azure Files-megosztás előfeltétele. A normál tárolási költségek érvényesek.
 
 ## <a name="next-steps"></a>További lépések
+
 [Bash Cloud Shell rövid útmutatóban](quickstart.md) <br>
 [PowerShell Cloud Shell rövid útmutató](quickstart-powershell.md)

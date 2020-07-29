@@ -8,12 +8,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/10/2019
-ms.openlocfilehash: 77cbd5a3c293b137f49a11263580ef45407c6c2b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3dea4c0f63b6c4e76c2289e6c3d930ea32cf2880
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090467"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373215"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-azure-powershell"></a>A Storage-fiók kulcsainak kezelése Key Vault és Azure PowerShell
 
@@ -43,7 +43,7 @@ Az Azure AD-bérlő minden regisztrált alkalmazást biztosít egy [egyszerű sz
 
 A Key Vault egy olyan Microsoft-alkalmazás, amely az összes Azure AD-bérlőben előre regisztrálva van. A Key Vault minden Azure-felhőben ugyanazzal az alkalmazás-AZONOSÍTÓval van regisztrálva.
 
-| Bérlők | Felhő | Alkalmazásazonosító |
+| Bérlők | Felhőbeli | Alkalmazásazonosító |
 | --- | --- | --- |
 | Azure AD | Azure Government | `7e7c393b-45d0-48b1-a35e-2905ddf8183c` |
 | Azure AD | Azure – nyilvános | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
@@ -99,7 +99,7 @@ $storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -St
 
 ### <a name="give-key-vault-access-to-your-storage-account"></a>Key Vault hozzáférés biztosítása a Storage-fiókhoz
 
-Mielőtt Key Vault a Storage-fiók kulcsainak elérését és kezelését, engedélyeznie kell a Storage-fiókjához való hozzáférését. A Key Vault alkalmazásnak engedélyekkel kell rendelkeznie a Storage-fiók kulcsainak *listázásához* és *újbóli létrehozásához* . Ezek az engedélyek engedélyezve vannak a beépített RBAC szerepkör- [kezelő szolgáltatás](/azure/role-based-access-control/built-in-roles#storage-account-key-operator-service-role)szerepkörrel. 
+Mielőtt Key Vault a Storage-fiók kulcsainak elérését és kezelését, engedélyeznie kell a Storage-fiókjához való hozzáférését. A Key Vault alkalmazásnak engedélyekkel kell rendelkeznie a Storage-fiók kulcsainak *listázásához* és *újbóli létrehozásához* . Ezek az engedélyek engedélyezve vannak az Azure beépített szerepkörű [Storage-fiók kulcs-kezelő szolgáltatásának szerepkörén](/azure/role-based-access-control/built-in-roles#storage-account-key-operator-service-role)keresztül. 
 
 Rendelje hozzá ezt a szerepkört az Key Vault egyszerű szolgáltatáshoz, és korlátozza a hatókört a Storage-fiókra a Azure PowerShell [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment?view=azps-2.6.0) parancsmag használatával.
 

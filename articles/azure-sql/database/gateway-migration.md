@@ -10,15 +10,15 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: e9bf1f06b1ec1f99da1ce653b4bc72f4638ba451
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 22bfab5b9f00a392054fa1aef6a93195180fd968
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86084953"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373487"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Azure SQL Database forgalom áttelepítése újabb átjáróra
-[!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
+[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Az Azure-infrastruktúra fejlesztésekor a Microsoft rendszeresen frissíti a hardvert, hogy biztosítsa a lehető legjobb felhasználói élményt. Az elkövetkező hónapokban az újabb hardveres generációk számára készült átjárók hozzáadását tervezzük, áttelepítjük a forgalmat, és végül leszerelik a régebbi hardverekre épülő átjárókat egyes régiókban.  
 
@@ -27,6 +27,19 @@ Az ügyfelek értesítést kapnak e-mailben, valamint a Azure Portal az egyes r�
 ## <a name="status-updates"></a>Állapot-frissítések
 
 # <a name="in-progress"></a>[Folyamatban](#tab/in-progress-ip)
+### <a name="september-2020"></a>2020. szeptember
+
+Az új SQL Gateway-átjárók a következő régiókban lesznek hozzáadva:
+
+- Észak-Európa: 13.74.104.113 
+- Nyugat-RÉGIÓJA: 40.78.248.10 
+- Nyugat-Európa: 52.236.184.163 
+- USA déli középső régiója: 20.45.121.1, 20.49.88.1 
+
+A meglévő SQL-átjárók a következő régiókban kezdik el a forgalom fogadását:
+- Kelet-Japán: 40.79.184.8, 40.79.192.5
+
+Ezek az SQL-átjárók a 2020. szeptember 1-jén kezdik el az ügyfelek forgalmának elfogadását. 
 
 ### <a name="august-2020"></a>Augusztus 2020
 
@@ -38,7 +51,7 @@ Az új SQL Gateway-átjárók a következő régiókban lesznek hozzáadva:
 
 Ezek az SQL-átjárók az ügyfelek forgalmának elfogadását az 2020. augusztus 10-én megkezdik. 
 
-# <a name="completed"></a>[Befejeződött](#tab/completed-ip)
+# <a name="completed"></a>[Befejezve](#tab/completed-ip)
 
 A következő átjárók áttelepítése befejeződött: 
 

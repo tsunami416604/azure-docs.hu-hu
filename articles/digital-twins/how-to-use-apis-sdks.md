@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 34a02de8a6789a028c776e784ea4aa9692f53d9d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 867c32203d8f780b307ede2ba2916ad4e82e1136
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079157"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373240"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>Az Azure Digital Twins API-k és SDK-k használata
 
@@ -284,7 +284,7 @@ Az API-metrikák, például a kérelmek, a késések és a hibák aránya a [Azu
 
 A portál kezdőlapján keresse meg az Azure Digital Twins-példányát, és adja meg a részleteit. Válassza ki a **mérőszámok** lehetőséget az Azure Digital Twins-példány menüjében a *metrikák* lap megjelenítéséhez.
 
-:::image type="content" source="media/how-to-use-apis-sdks/metrics.png" alt-text="A Azure Portalban található Azure Digital Twins-példány metrikáinak lapja":::
+:::image type="content" source="media/how-to-view-metrics/azure-digital-twins-metrics.png" alt-text="Képernyőfelvétel az Azure Digital Twins metrikáinak oldaláról":::
 
 Itt megtekintheti a példány metrikáit, és létrehozhat egyéni nézeteket is.
 

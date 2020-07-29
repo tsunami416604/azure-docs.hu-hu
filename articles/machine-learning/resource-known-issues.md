@@ -8,15 +8,15 @@ ms.author: jmartens
 ms.reviewer: mldocs
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: troubleshooting
-ms.custom: contperfq4
+ms.topic: conceptual
+ms.custom: troubleshooting, contperfq4
 ms.date: 03/31/2020
-ms.openlocfilehash: 56acddda2cf5ae2ef2a94353ec11c3ddf6990e1c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 8f58fcef1a35494053803d98b43ce97fed7205e0
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536113"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373691"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Ismert problémák és hibaelhárítás a Azure Machine Learningban
 
@@ -369,7 +369,13 @@ Ha egy távoli feladatból származó számítási célra hajt végre felügyele
 
 Ha például megpróbál létrehozni vagy csatolni egy számítási célt egy olyan ML-folyamatból, amely távoli végrehajtásra van elküldve, a rendszer hibaüzenetet küld.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="missing-user-interface-items-in-studio"></a>Hiányzó felhasználói felületi elemek a Studióban
+
+Az Azure szerepköralapú hozzáférés-vezérléssel korlátozható a Azure Machine Learningkal végrehajtható műveletek korlátozása. Ezek a korlátozások megakadályozhatják a felhasználói felület elemeinek megjelenítését a Azure Machine Learning Studióban. Ha például olyan szerepkört rendelt hozzá, amely nem tud számítási példányt létrehozni, akkor a számítási példány létrehozásának lehetősége nem fog megjelenni a Studióban.
+
+További információ: [felhasználók és szerepkörök kezelése](how-to-assign-roles.md).
+
+## <a name="next-steps"></a>További lépések
 
 További hibaelhárítási cikkek a Azure Machine Learning:
 

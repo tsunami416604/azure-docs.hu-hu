@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 6/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: bc22cf5a21709ccacafe068a60541cc9990d1131
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 8c9fbf7bc45ed2070570faf0d1dfdb15b5fd98ee
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132262"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373266"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins"></a>Végpontok és útvonalak kezelése az Azure digitális Ikrekben
 
@@ -147,7 +147,7 @@ Szűrő hozzáadásához használjon PUT-kérést a *https://{YourHost}/EventRou
 
 Itt láthatók a támogatott útválasztási szűrők.
 
-| Szűrő neve | Description | Séma szűrése | Támogatott értékek | 
+| Szűrő neve | Leírás | Séma szűrése | Támogatott értékek | 
 | --- | --- | --- | --- |
 | Típus | A digitális kettős példányon keresztül áramló [esemény típusa](./concepts-route-events.md#types-of-event-messages) | `"filter" : "type = '<eventType>'"` | `Microsoft.DigitalTwins.Twin.Create` <br> `Microsoft.DigitalTwins.Twin.Delete` <br> `Microsoft.DigitalTwins.Twin.Update`<br>`Microsoft.DigitalTwins.Relationship.Create`<br>`Microsoft.DigitalTwins.Relationship.Update`<br> `Microsoft.DigitalTwins.Relationship.Delete` <br> `microsoft.iot.telemetry`  |
 | Forrás | Az Azure Digital Twins-példány neve | `"filter" : "source = '<hostname>'"`|  **Értesítésekhez**:`<yourDigitalTwinInstance>.<yourRegion>.azuredigitaltwins.net` <br> **Telemetria esetén**:`<yourDigitalTwinInstance>.<yourRegion>.azuredigitaltwins.net/digitaltwins/<twinId>`|
@@ -184,7 +184,7 @@ Az útválasztási metrikák, például a darabszám, a késés és a hibák ar�
 
 A portál kezdőlapján keresse meg az Azure Digital Twins-példányát, és adja meg a részleteit. Válassza ki a **mérőszámok** lehetőséget az Azure Digital Twins-példány menüjében a *metrikák* lap megjelenítéséhez.
 
-:::image type="content" source="media/how-to-manage-routes/metrics.png" alt-text="A Azure Portalban található Azure Digital Twins-példány metrikáinak lapja":::
+:::image type="content" source="media/how-to-view-metrics/azure-digital-twins-metrics.png" alt-text="Képernyőfelvétel az Azure Digital Twins metrikáinak oldaláról":::
 
 Itt megtekintheti a példány metrikáit, és létrehozhat egyéni nézeteket is.
 

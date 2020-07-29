@@ -4,16 +4,16 @@ description: Ez a cikk hibaelhárítási tippeket tartalmaz a Linux rendszerű v
 author: msmbaldwin
 ms.service: virtual-machines-linux
 ms.subservice: security
-ms.topic: article
+ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 02/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1be80defd7a4291d1224d5b0cb9f9e833dcf9af5
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f0ca50d137ef7e6378d2bf8d0ab03127d49a9a88
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86510514"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373589"
 ---
 # <a name="azure-disk-encryption-on-an-isolated-network"></a>Azure Disk Encryption izolált hálózaton
 
@@ -49,7 +49,7 @@ Ha engedélyezve van a titkosítás az [Azure ad hitelesítő adataival](disk-en
 
 A virtuális gépnek képesnek kell lennie az [Azure-példány metaadatainak szolgáltatás](instance-metadata-service.md) -végpontjának elérésére, amely egy jól ismert, nem irányítható IP-címet () használ, `169.254.169.254` amely csak a virtuális gépről érhető el.  A helyi HTTP-forgalmat az erre a címmé megváltoztató proxy-konfigurációk nem támogatottak.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További lépések az [Azure Disk Encryption hibaelhárításához](disk-encryption-troubleshooting.md)
 - [Inaktív adatok titkosítása az Azure-ban](../../security/fundamentals/encryption-atrest.md)

@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 03/05/2019
-ms.openlocfilehash: 1b508a6b4fa8a541381ea8b74046adb2f79034d3
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 4d0ee48a42814ab2c4229c5f8f239aa1a1c28544
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044141"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87314220"
 ---
 # <a name="stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>Stream Analytics és Power BI: valós idejű elemzési irányítópult az adatfolyam-továbbításhoz
 
@@ -45,7 +45,7 @@ A valós idejű csalások észlelését ismertető oktatóanyagban a kimenetet a
    |---------|---------|
    |Kimeneti alias  |  CallStream – PowerBI  |
    |Adatkészlet neve  |   SA-adatkészlet  |
-   |Table name (Táblázat neve) |  csalárd – hívások  |
+   |Tábla neve |  csalárd – hívások  |
 
    ![Stream Analytics kimenet konfigurálása](media/stream-analytics-power-bi-dashboard/configure-stream-analytics-output.png)
 
@@ -99,7 +99,7 @@ Power BI adatkészletekkel kapcsolatos további információkért tekintse meg a
    GROUP BY TumblingWindow(Duration(second, 1))
    ```
 
-4. Kattintson a **Save** (Mentés) gombra.
+4. Kattintson a **Mentés** gombra.
 
 
 ## <a name="test-the-query"></a>A lekérdezés tesztelése
@@ -184,16 +184,6 @@ A streaming Analytics-feladatok a bejövő adatfolyamban megjelenő csalárd hí
 
      ![Elkészült Power BI irányítópulton két csempe látható a csalárd hívásokhoz](./media/stream-analytics-power-bi-dashboard/pbi-dashboard-fraudulent-calls-finished.png)
 
-
-## <a name="learn-more-about-power-bi"></a>További információ a Power BI
-
-Ez az oktatóanyag azt mutatja be, hogyan hozhat létre csak néhány fajta vizualizációt egy adatkészlethez. A Power BI segítséget nyújthat más ügyfél üzleti intelligencia-eszközeinek létrehozásához a szervezet számára. További ötleteket a következő forrásokban talál:
-
-* Egy Power BI irányítópult egy másik példájának megtekintéséhez tekintse meg a [Első lépések Power bi](https://youtu.be/L-Z_6P56aas?t=1m58s) videóval.
-* A streaming Analytics-feladatok kimenetének Power BI és Power BI csoportok használatával történő konfigurálásával kapcsolatos további információkért tekintse át a [stream Analytics outputs](stream-analytics-define-outputs.md) című cikk [Power bi](stream-analytics-define-outputs.md#power-bi) szakaszát. 
-* További információ a Power BI használatáról: [Power bi-irányítópultok](https://powerbi.microsoft.com/documentation/powerbi-service-dashboards/).
-
-
 ## <a name="learn-about-limitations-and-best-practices"></a>További tudnivalók a korlátozásokról és az ajánlott eljárásokról
 Jelenleg Power BI nagyjából egyszer hívható meg másodpercenként. A streaming vizualizációk 15 KB-os csomagokat támogatnak. Ezen túlmenően a streaming vizualizációk meghiúsulnak (de a leküldések továbbra is működni fognak). Ezeknek a korlátozásoknak a miatt a Power BI a legtermészetesebb esetben olyan esetekhez nyújtja magát, amikor az Azure Stream Analytics jelentős adatterhelést eredményez. Azt javasoljuk, hogy a kiugró ablak vagy a ugráló ablak használatával ellenőrizze, hogy az adatküldés másodpercenként legfeljebb egy leküldéses legyen, és hogy a lekérdezés az átviteli sebességre vonatkozó követelményeken belül landol-e.
 
@@ -234,12 +224,9 @@ Hasonlóképpen, ha egy feladatot a jogkivonat lejárta után is elindít, hiba 
 
 Miután az engedélyezést Power BItel frissítette, egy zöld riasztás jelenik meg az engedélyezési területen, hogy tükrözze a probléma megoldását.
 
-## <a name="get-help"></a>Segítség kérése
-További segítségért próbálja ki a [Microsoft Q&a Azure stream Analytics kérdéseit](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
-
 ## <a name="next-steps"></a>További lépések
 * [Bevezetés a Azure Stream Analyticsba](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md) (Bevezetés az Azure Stream Analytics használatába)
-* [Scale Azure Stream Analytics jobs (Azure Stream Analytics-feladatok méretezése)](stream-analytics-scale-jobs.md)
+* [Stream Analytics kimenetek](stream-analytics-define-outputs.md)
 * [Azure Stream Analytics lekérdezés nyelvi referenciája](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure Stream Analytics felügyeleti REST API referenciája](https://msdn.microsoft.com/library/azure/dn835031.aspx)

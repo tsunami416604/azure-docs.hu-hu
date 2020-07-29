@@ -4,12 +4,12 @@ description: Ismerteti, Hogyan oldhatók fel a gyakori hibák, amikor erőforrá
 tags: top-support-issue
 ms.topic: troubleshooting
 ms.date: 06/25/2020
-ms.openlocfilehash: 9914cf8267624cd05db860e7dd8eb8d8c5831f7e
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 652e4ec3c7f0de982b973733d75d736949b97bcc
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86055664"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373997"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Gyakori Azure-beli üzembe helyezési hibák elhárítása az Azure Resource Managerrel
 
@@ -21,7 +21,7 @@ Ha egy hibakódra vonatkozó információt keres, és ez a cikk nem tartalmaz in
 
 ## <a name="error-codes"></a>Hibakódok
 
-| Hibakód | Kezelés | További információ |
+| Hibakód | Kockázatcsökkentés | További információ |
 | ---------- | ---------- | ---------------- |
 | AccountNameInvalid | Kövesse a Storage-fiókok elnevezési korlátozásait. | [A Storage-fiók nevének feloldása](error-storage-account-name.md) |
 | AccountPropertyCannotBeSet | Keresse meg a rendelkezésre álló Storage-fiók tulajdonságait. | [storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |
@@ -78,7 +78,7 @@ Ha egy hibakódra vonatkozó információt keres, és ez a cikk nem tartalmaz in
 | SubnetsNotInSameVnet | A virtuális gépeknek csak egy virtuális hálózata lehet. Több hálózati adapter telepítésekor győződjön meg arról, hogy ugyanahhoz a virtuális hálózathoz tartoznak. | [Több hálózati adapter](../../virtual-machines/windows/multiple-nics.md) |
 | SubscriptionNotRegistered | Hálózati erőforrások telepítésekor a Microsoft. Network erőforrás-szolgáltató automatikusan regisztrálva van az előfizetésben. Előfordulhat, hogy az automatikus regisztráció nem fejeződött be időben. Az időszakos hiba elkerüléséhez regisztrálja a Microsoft. Network erőforrás-szolgáltatót az üzembe helyezés előtt. | [Regisztráció feloldása](error-register-resource-provider.md) |
 | TemplateResourceCircularDependency | Felesleges függőségek eltávolítása. | [Körkörös függőségek feloldása](error-invalid-template.md#circular-dependency) |
-| TooManyTargetResourceGroups | Az erőforráscsoportok számának csökkentése egyetlen központi telepítéshez. | [Erőforráscsoportok közötti üzembe helyezés](cross-resource-group-deployment.md) |
+| TooManyTargetResourceGroups | Az erőforráscsoportok számának csökkentése egyetlen központi telepítéshez. | [Több hatókörű központi telepítés](cross-scope-deployment.md) |
 
 ## <a name="find-error-code"></a>Hibakód keresése
 

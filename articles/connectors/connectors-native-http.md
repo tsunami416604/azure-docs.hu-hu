@@ -7,11 +7,12 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 06/09/2020
 tags: connectors
-ms.openlocfilehash: 23c6a555909d43f640fb5089fb60da8bac065886
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c7a0ddb80ba28548fc1821cc2063e500af0fa66
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84609519"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286631"
 ---
 # <a name="call-service-endpoints-over-http-or-https-from-azure-logic-apps"></a>Szolgáltatásvégpontok HTTP-n vagy HTTPS-en keresztül történő meghívása az Azure Logic Appsből
 
@@ -43,7 +44,7 @@ Ez a beépített trigger egy HTTP-hívást kezdeményez a végpont megadott URL-
 
 1. A tervező keresési mezőjében válassza a **beépített**lehetőséget. A keresőmezőbe írja be `http` szűrőként a kifejezést. Az **Eseményindítók** listából válassza ki a **http** -eseményindítót.
 
-   ![HTTP-trigger kiválasztása](./media/connectors-native-http/select-http-trigger.png)
+   ![Válassza a HTTP-trigger lehetőséget.](./media/connectors-native-http/select-http-trigger.png)
 
    Ez a példa átnevezi a triggert a "HTTP trigger" névre, hogy a lépésnek legyen egy leíró neve. A példa később egy HTTP-műveletet is felvesz, és mindkét névnek egyedinek kell lennie.
 
@@ -161,7 +162,7 @@ Az alábbi példa a HTTP-művelet JSON-definícióját mutatja be az alapul szol
 
 ## <a name="asynchronous-request-response-behavior"></a>Aszinkron kérelem – válasz viselkedése
 
-Alapértelmezés szerint a Azure Logic Apps összes HTTP-alapú művelete követi a normál [aszinkron műveleti mintát](https://docs.microsoft.com/azure/architecture/patterns/async-request-reply). Ez a minta azt adja meg, hogy egy HTTP-művelet vagy egy, a végpontra, szolgáltatásra, rendszerre vagy API-ra irányuló kérés küldése után a fogadó azonnal ["202 elfogadott"](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.3) választ ad vissza. Ez a kód megerősíti, hogy a fogadó elfogadta a kérést, de nem fejezte be a feldolgozást. A válasz tartalmazhat egy `location` fejlécet, amely meghatározza az URL-címet és a frissítési azonosítót, amelyet a hívó használhat az aszinkron kérelem állapotának lekéréséhez vagy a fogadó leállításához, illetve az ["200 OK"](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1) sikerességi válasz vagy más nem 202 válasz visszaadását. A hívónak azonban nem kell megvárnia, amíg a kérés befejezte a feldolgozást, és továbbra is futtathatja a következő műveletet. További információ: az [aszinkron szolgáltatások integrációja a szolgáltatásbeli önállóságot kényszeríti](https://docs.microsoft.com/azure/architecture/microservices/design/interservice-communication#synchronous-versus-asynchronous-messaging).
+Alapértelmezés szerint a Azure Logic Apps összes HTTP-alapú művelete követi a normál [aszinkron műveleti mintát](/azure/architecture/patterns/async-request-reply). Ez a minta azt adja meg, hogy egy HTTP-művelet vagy egy, a végpontra, szolgáltatásra, rendszerre vagy API-ra irányuló kérés küldése után a fogadó azonnal ["202 elfogadott"](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.3) választ ad vissza. Ez a kód megerősíti, hogy a fogadó elfogadta a kérést, de nem fejezte be a feldolgozást. A válasz tartalmazhat egy `location` fejlécet, amely meghatározza az URL-címet és a frissítési azonosítót, amelyet a hívó használhat az aszinkron kérelem állapotának lekéréséhez vagy a fogadó leállításához, illetve az ["200 OK"](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1) sikerességi válasz vagy más nem 202 válasz visszaadását. A hívónak azonban nem kell megvárnia, amíg a kérés befejezte a feldolgozást, és továbbra is futtathatja a következő műveletet. További információ: az [aszinkron szolgáltatások integrációja a szolgáltatásbeli önállóságot kényszeríti](/azure/architecture/microservices/design/interservice-communication#synchronous-versus-asynchronous-messaging).
 
 * A Logic app Designerben a HTTP-művelet, de az trigger nem, **aszinkron mintázatú** beállítással rendelkezik, amely alapértelmezés szerint engedélyezve van. Ezzel a beállítással megadhatja, hogy a hívó ne várjon a feldolgozás befejezésére, és továbblép a következő műveletre, de továbbra is ellenőrzi az állapotot, amíg a feldolgozás leáll. Ha le van tiltva, ez a beállítás azt határozza meg, hogy a hívó a következő műveletre való áttérés előtt megvárja a feldolgozás befejeződését.
 
@@ -252,14 +253,14 @@ Az trigger-és műveleti paraméterekkel kapcsolatos további információkért 
 
 Itt talál további információt a HTTP-triggerből vagy-műveletből származó kimenetekről, ami visszaadja ezt az információt:
 
-| Tulajdonság | Típus | Description |
+| Tulajdonság | Típus | Leírás |
 |----------|------|-------------|
 | `headers` | JSON-objektum | A kérelemben szereplő fejlécek |
 | `body` | JSON-objektum | A kérelem szövegtörzsét tartalmazó objektum |
 | `status code` | Egész szám | A kérelemben szereplő állapotkód |
 |||
 
-| Állapotkód | Description |
+| Állapotkód | Leírás |
 |-------------|-------------|
 | 200 | OK |
 | 202 | Elfogadva |
@@ -273,3 +274,4 @@ Itt talál további információt a HTTP-triggerből vagy-műveletből származ�
 ## <a name="next-steps"></a>További lépések
 
 * További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése
+

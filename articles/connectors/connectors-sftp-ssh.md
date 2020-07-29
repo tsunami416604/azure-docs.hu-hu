@@ -8,12 +8,12 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 07/20/2020
 tags: connectors
-ms.openlocfilehash: a277c6205dfb9dfa04565fb3ebcb3da589669764
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f3de582ff69dbd57aa4692fd5c3901602569cf9e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087883"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286614"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>SFTP-fájlok monitorozása, létrehozása és kezelése SSH és az Azure Logic Apps használatával
 
@@ -50,9 +50,9 @@ Az SFTP-SSH-összekötő és az SFTP-összekötő közötti különbségekért t
 
   Az adatrészlet mérete egy kapcsolatban van társítva, ami azt jelenti, hogy ugyanazt a kapcsolatokat használhatja a darabolást támogató műveletekhez, majd olyan műveletekhez, amelyek nem támogatják a darabolást. Ebben az esetben az adathalmaz mérete olyan műveletek esetében, amelyek nem támogatják az adatdarabolási tartományokat 5 MB-ról 50 MB-ra. Ez a táblázat azt mutatja, hogy mely SFTP-SSH-műveletek támogatják a darabolást:
 
-  | Műveletek | Adatdarabolás támogatása | Adatméret-méretezési támogatás felülbírálása |
+  | Művelet | Adatdarabolás támogatása | Adatméret-méretezési támogatás felülbírálása |
   |--------|------------------|-----------------------------|
-  | **Fájl másolása** | No | Nem alkalmazható |
+  | **Fájl másolása** | Nem | Nem alkalmazható |
   | **Fájl létrehozása** | Igen | Igen |
   | **Mappa létrehozása** | Nem alkalmazható | Nem alkalmazható |
   | **Fájl törlése** | Nem alkalmazható | Nem alkalmazható |
@@ -63,7 +63,7 @@ Az SFTP-SSH-összekötő és az SFTP-összekötő közötti különbségekért t
   | **Fájl metaadatainak beolvasása elérési út használatával** | Nem alkalmazható | Nem alkalmazható |
   | **Mappában található fájlok listázása** | Nem alkalmazható | Nem alkalmazható |
   | **Fájl átnevezése** | Nem alkalmazható | Nem alkalmazható |
-  | **Fájl frissítése** | No | Nem alkalmazható |
+  | **Fájl frissítése** | Nem | Nem alkalmazható |
   ||||
 
 * SFTP – az SSH-eseményindítók nem támogatják az üzenetek darabolását. Fájl tartalmának kérésekor az eseményindítók csak a 15 MB vagy annál kisebb fájlokat jelölik ki. A 15 MB-nál nagyobb fájlok lekéréséhez kövesse az alábbi mintát:
@@ -113,7 +113,7 @@ Az SFTP-SSH-összekötő és az SFTP-összekötő közötti különbségekért t
 
 Az SFTP-SSH elindítja az SFTP fájlrendszer lekérdezésével és a legutóbbi lekérdezés óta módosult fájlok keresésével kapcsolatos munkát. Egyes eszközök lehetővé teszik, hogy a fájlok változásakor őrizze meg az időbélyeget. Ezekben az esetekben le kell tiltania ezt a funkciót, így az trigger működhet. Íme néhány gyakori beállítás:
 
-| SFTP-ügyfél | Műveletek |
+| SFTP-ügyfél | Művelet |
 |-------------|--------|
 | WinSCP | Ugrás a **Beállítások**  >  **Beállítások**  >  **átvitel**  >  **szerkesztési**  >  **megőrzési időbélyegének**  >  **letiltása** |
 | Filezillát | Ugrás az **Transfer**  >  **átvitt fájlok adatmegőrzési időbélyegére –**  >  **Letiltás** |
@@ -255,7 +255,7 @@ Ha nem tudja elkerülni vagy késleltetni a fájl áthelyezését, kihagyhatja a
 
 ## <a name="connector-reference"></a>Összekötő-referencia
 
-Az összekötő részletes technikai részleteiről, például az eseményindítók, a műveletek és a korlátok az összekötő hencegő fájljában leírtak alapján: az [összekötő hivatkozási lapja](https://docs.microsoft.com/connectors/sftpwithssh/).
+Az összekötő részletes technikai részleteiről, például az eseményindítók, a műveletek és a korlátok az összekötő hencegő fájljában leírtak alapján: az [összekötő hivatkozási lapja](/connectors/sftpwithssh/).
 
 > [!NOTE]
 > Az [integrációs szolgáltatási környezet (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)logikai alkalmazásai esetében az összekötő ISE-címkével ellátott verziója adatdarabolást igényel az [ISE-üzenetek használatának korlátozásához](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) .
@@ -263,3 +263,4 @@ Az összekötő részletes technikai részleteiről, például az eseményindít
 ## <a name="next-steps"></a>További lépések
 
 * További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése
+

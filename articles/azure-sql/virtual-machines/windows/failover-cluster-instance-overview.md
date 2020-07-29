@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: a40c5512da40ede84251ec16345a3957c391bb71
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 00c9482eab74003f6a667d52440d4cb6dd21fcfc
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965536"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287367"
 ---
 # <a name="failover-cluster-instances-with-sql-server-on-azure-virtual-machines"></a>Feladatátvevő fürt példányai SQL Server az Azure-ban Virtual Machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -48,10 +48,10 @@ Az Azure-beli virtuális gépeken SQL Server különböző lehetőségeket kín�
 
 ||[Azure megosztott lemezek](../../../virtual-machines/windows/disks-shared.md)|[Prémium fájlmegosztás](../../../storage/files/storage-how-to-create-premium-fileshare.md) |[Közvetlen tárolóhelyek (S2D)](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)|
 |---------|---------|---------|---------|
-|**Operációs rendszer minimális verziója**| Windows Server 2016|Windows Server 2012|Windows Server 2016|
-|**Minimális SQL Server-verzió**|SQL Server 2019|SQL Server 2012|SQL Server 2016|
+|**Operációs rendszer minimális verziója**| Mind |Windows Server 2012|Windows Server 2016|
+|**Minimális SQL Server-verzió**|Mind|SQL Server 2012|SQL Server 2016|
 |**Támogatott virtuális gépek rendelkezésre állása** |Rendelkezésre állási csoportok Proximity elhelyezési csoportokkal |Rendelkezésre állási készletek és rendelkezésre állási zónák|Rendelkezésre állási csoportok |
-|**A FileStream támogatása**|Nem|Nem|Igen |
+|**A FileStream támogatása**|Igen|Nem|Igen |
 |**Azure BLOB-gyorsítótár**|Nem|Nem|Igen|
 
 A szakasz további része felsorolja az Azure-beli virtuális gépeken SQL Server számára elérhető egyes tárolási lehetőségek előnyeit és korlátozásait. 
@@ -60,18 +60,18 @@ A szakasz további része felsorolja az Azure-beli virtuális gépeken SQL Serve
 
 Az [Azure Shared Disks](../../../virtual-machines/windows/disks-shared.md) az [Azure Managed Disks](../../../virtual-machines/windows/managed-disks-overview.md)szolgáltatás. A Windows Server feladatátvételi fürtszolgáltatás támogatja az Azure-beli megosztott lemezek feladatátvevő fürt-példánnyal való használatát. 
 
-**Támogatott operációs rendszer**: Windows Server 2019   
-**Támogatott SQL-verzió**: SQL Server 2019   
+**Támogatott operációs rendszer**: mind   
+**Támogatott SQL-verzió**: ALL     
 
 **Előnyök**: 
 - Hasznos az Azure-ba migrálni kívánt alkalmazások számára, miközben a magas rendelkezésre állást és a vész-helyreállítási (HADR) architektúrát is megtartja. 
 - Fürtözött alkalmazásokat telepíthet át az Azure-ba a SCSI-állandó lefoglalások (SCSI PR) támogatása miatt. 
 - Támogatja a közös Azure-prémium SSD a SQL Server összes verziójának és a megosztott Azure Ultra Disk Storage SQL Server 2019-es verziójával. 
 - Egyetlen megosztott lemezt vagy több megosztott lemezt is használhat egy megosztott tároló létrehozásához. 
+- Támogatja a FileStream.
 
 
 **Korlátozások**: 
-- Csak a SQL Server 2019 és a Windows Server 2019 esetében érhető el előzetes verzióban. 
 - A virtuális gépeket ugyanahhoz a rendelkezésre állási csoporthoz és közelségi helyhez kell helyezni.
 - A rendelkezésre állási zónák nem támogatottak.
 - Prémium SSD lemez gyorsítótárazása nem támogatott.

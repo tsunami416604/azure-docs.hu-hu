@@ -4,14 +4,15 @@ description: Ismerje meg az Azure-beli infrastruktúra üzembe helyezésének le
 author: cynthn
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: 6040bf8862131f5a8a5564cd2f5d845fa0490a95
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 500de3f89bd041adf0b73e21762495d8c89e19c8
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78944906"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286291"
 ---
 # <a name="example-azure-infrastructure-walkthrough-for-linux-vms"></a>Példa Azure Infrastructure-útmutató Linux rendszerű virtuális gépekhez
 Ez a cikk végigvezeti egy példaként szolgáló alkalmazás-infrastruktúra kiépítésén. Részletesen ismertetjük az infrastruktúra megtervezését egy egyszerű, online tároláshoz, amely összefoglalja az elnevezési konvenciók, a rendelkezésre állási csoportok, a virtuális hálózatok és a terheléselosztó, valamint a virtuális gépek (VM-EK) tényleges üzembe helyezésének összes irányelvét és döntését.

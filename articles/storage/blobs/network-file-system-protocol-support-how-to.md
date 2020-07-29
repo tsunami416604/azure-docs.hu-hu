@@ -9,12 +9,12 @@ ms.date: 07/21/2020
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: 8f4ef046221ae50d2b05525d6cea2d268282551c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d3907967572b22e7a70316080b08a4368a9805ce
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87099617"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372909"
 ---
 # <a name="mount-blob-storage-on-linux-using-the-network-file-system-nfs-30-protocol-preview"></a>BLOB Storage csatlakoztatása Linux rendszeren a hálózati fájlrendszer (NFS) 3,0 protokoll (előzetes verzió) használatával
 
@@ -113,7 +113,7 @@ Hozzon létre egy tárolót a Storage-fiókban ezen eszközök vagy SDK-k bárme
 |[AzCopy](../common/storage-use-azcopy-blobs.md#create-a-container)|[Java](data-lake-storage-directory-file-acl-java.md#create-a-container)|
 |[PowerShell](data-lake-storage-directory-file-acl-powershell.md#create-a-container)|[Python](data-lake-storage-directory-file-acl-python.md#create-a-container)|
 |[Azure CLI](data-lake-storage-directory-file-acl-cli.md#create-a-container)|[JavaScript](data-lake-storage-directory-file-acl-javascript.md)|
-||[REST](https://docs.microsoft.com/rest/api/storageservices/create-container)|
+|[Azure Portal](https://portal.azure.com)|[REST](https://docs.microsoft.com/rest/api/storageservices/create-container)|
 
 ## <a name="step-7-mount-the-container"></a>7. lépés: a tároló csatlakoztatása
 
@@ -139,9 +139,8 @@ Hozzon létre egy tárolót a Storage-fiókban ezen eszközök vagy SDK-k bárme
 |---|---|
 |`Access denied by server while mounting`|Győződjön meg arról, hogy az ügyfél egy támogatott alhálózaton belül fut. Tekintse meg a [támogatott hálózati telephelyeket](network-file-system-protocol-support.md#supported-network-connections).|
 |`No such file or directory`| Győződjön meg arról, hogy a csatlakoztatni kívánt tároló létre lett hozva a szolgáltatás regisztrálásának ellenőrzése után. Lásd: [2. lépés: annak ellenőrzése, hogy a szolgáltatás regisztrálva van-e](#step-2-verify-that-the-feature-is-registered). Győződjön meg arról is, hogy a mount parancsot írja be, és a paramétereket közvetlenül a terminálon adja meg. Ha a parancs bármely részét a terminálba másolja és beilleszti egy másik alkalmazásból, a beillesztett adatok rejtett karakterei is megjelenhetnek a hiba miatt.|
-|A nem NFS 3,0-eszközök használatával feltöltött fájlok nem láthatók a címtárban. | Szüntesse meg a tároló csatlakoztatását, majd csatlakoztassa újra a tárolót. |
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 [Hálózati fájlrendszer (NFS) 3,0 protokoll támogatása az Azure Blob Storage-ban (előzetes verzió)](network-file-system-protocol-support.md)
 

@@ -3,12 +3,12 @@ title: Érvénytelenek a sablon hibái
 description: Ismerteti, Hogyan oldhatók fel a sablon érvénytelen hibái Azure Resource Manager sablonok telepítésekor.
 ms.topic: troubleshooting
 ms.date: 05/22/2020
-ms.openlocfilehash: a3589f42f707240272a411a985adefd5e6c5539c
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 3e68d4634d0092d05222348ca0db0116422faec3
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118885"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373810"
 ---
 # <a name="resolve-errors-for-invalid-template"></a>Érvénytelen sablonnal kapcsolatos hibák elhárítása
 
@@ -130,7 +130,7 @@ Ellenőrizze az engedélyezett értékeket a sablonban, és adjon meg egyet az �
 
 ## <a name="solution-4---too-many-target-resource-groups"></a>4. megoldás – túl sok cél erőforráscsoport
 
-Előfordulhat, hogy ez a hiba a korábbi központi telepítések során fordul elő, mert egyetlen központi telepítésben legfeljebb öt cél erőforráscsoport van korlátozva. 2020 májusában a korlátot 800-erőforráscsoportok értékre emelték. További információ: [Azure-erőforrások telepítése több előfizetésre vagy erőforráscsoport-re](cross-resource-group-deployment.md).
+Előfordulhat, hogy ez a hiba a korábbi központi telepítések során fordul elő, mert egyetlen központi telepítésben legfeljebb öt cél erőforráscsoport van korlátozva. 2020 májusában a korlátot 800-erőforráscsoportok értékre emelték. További információ: [Azure-erőforrások telepítése több előfizetésre vagy erőforráscsoport-re](cross-scope-deployment.md).
 
 <a id="circular-dependency"></a>
 
@@ -150,7 +150,7 @@ Ha eltávolítja az értékeket a **dependsOn** tulajdonságból, a sablon telep
 
 Ha ez a módszer nem oldja meg a körkörös függőséget, érdemes lehet áthelyezni a telepítési logika egy részét alárendelt erőforrásokra (például bővítményekre vagy konfigurációs beállításokra). Konfigurálja ezeket a alárendelt erőforrásokat úgy, hogy az a körkörös függőségben érintett erőforrások után legyen üzembe helyezhető. Tegyük fel például, hogy két virtuális gépet telepít, de tulajdonságokat kell megadnia, amelyek a másikra hivatkoznak. Ezeket a következő sorrendben helyezheti üzembe:
 
-1. VM1
+1. vm1
 2. VM2
 3. A VM1 bővítmény a VM1 és a VM2 függvénytől függ. A bővítmény beállítja azokat az értékeket a VM1, amelyeket a VM2-ből kap.
 4. A VM2 bővítmény a VM1 és a VM2 függvénytől függ. A bővítmény beállítja azokat az értékeket a VM2, amelyeket a VM1-ből kap.

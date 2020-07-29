@@ -2,12 +2,13 @@
 title: Bővítményerőforrás-típusok
 description: Felsorolja az Azure-erőforrástípusok használatát a más erőforrástípusok képességeinek bővítésére.
 ms.topic: conceptual
-ms.date: 04/06/2020
-ms.openlocfilehash: 3a3fbc531750bec4b16e38f1fe79f613c1b94f5e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/28/2020
+ms.openlocfilehash: 84de9b66f9001985b8c7b92882f03ff8c7cbf431
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80754868"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87374014"
 ---
 # <a name="resource-types-that-extend-capabilities-of-other-resources"></a>Más erőforrások képességeit kiterjesztő erőforrástípusok
 
@@ -27,7 +28,9 @@ A kiterjesztési erőforrás olyan erőforrás, amely egy másik erőforrás ké
 - Microsoft. Authorization/engedélyek
 - Microsoft. Authorization/policyAssignments
 - Microsoft. Authorization/policyDefinitions
+- Microsoft. Authorization/policyExemptions
 - Microsoft. Authorization/policySetDefinitions
+- Microsoft. Authorization/privateLinkAssociations
 - Microsoft. Authorization/roleAssignments
 - Microsoft. Authorization/roleAssignmentsUsageMetrics
 - Microsoft. Authorization/roleDefinitions
@@ -38,6 +41,7 @@ A kiterjesztési erőforrás olyan erőforrás, amely egy másik erőforrás ké
 - Microsoft. Billing/createBillingRoleAssignment
 - Microsoft. Blueprint/blueprintAssignments
 - Microsoft. Blueprint/tervrajzok
+- Microsoft. ChangeAnalysis/resourceChanges
 - Microsoft. fogyasztás/AggregatedCost
 - Microsoft. fogyasztás/egyenlegek
 - Microsoft. fogyasztás/költségvetés
@@ -49,6 +53,7 @@ A kiterjesztési erőforrás olyan erőforrás, amely egy másik erőforrás ké
 - Microsoft. fogyasztás/OperationStatus
 - Microsoft. fogyasztás/Pricesheets
 - Microsoft. fogyasztás/ReservationDetails
+- Microsoft. fogyasztás/ReservationRecommendationDetails
 - Microsoft. fogyasztás/ReservationRecommendations
 - Microsoft. fogyasztás/ReservationSummaries
 - Microsoft. fogyasztás/ReservationTransactions
@@ -63,6 +68,7 @@ A kiterjesztési erőforrás olyan erőforrás, amely egy másik erőforrás ké
 - Microsoft. ContainerInstance/serviceAssociationLinks
 - Microsoft. CostManagement/riasztások
 - Microsoft. CostManagement/költségvetés
+- Microsoft. CostManagement/costAllocationRules
 - Microsoft. CostManagement/méretek
 - Microsoft. CostManagement/export
 - Microsoft. CostManagement/ExternalSubscriptions
@@ -70,8 +76,8 @@ A kiterjesztési erőforrás olyan erőforrás, amely egy másik erőforrás ké
 - Microsoft. CostManagement/Query
 - Microsoft. CostManagement/Reportconfigs
 - Microsoft. CostManagement/jelentések
-- Microsoft. CostManagement/nézetek
 - Microsoft. CostManagement/showbackRules
+- Microsoft. CostManagement/nézetek
 - Microsoft. CustomProviders/társítások
 - Microsoft. EventGrid/eventSubscriptions
 - Microsoft. EventGrid/extensionTopics
@@ -107,12 +113,13 @@ A kiterjesztési erőforrás olyan erőforrás, amely egy másik erőforrás ké
 - Microsoft. ManagedServices/registrationDefinitions
 - Microsoft. OperationalInsights/storageInsightConfigs
 - Microsoft. OperationsManagement/managementassociations
+- Microsoft. PolicyInsights/igazolások
 - Microsoft. PolicyInsights/policyEvents
 - Microsoft. PolicyInsights/policyStates
 - Microsoft. PolicyInsights/policyTrackedResources
 - Microsoft. PolicyInsights/szervizelések
 - Microsoft. Recoveryservices szolgáltatónál/backupProtectedItems
-- Microsoft. Recoveryservices szolgáltatónál/replicationEligibilityResults    
+- Microsoft. Recoveryservices szolgáltatónál/replicationEligibilityResults
 - Microsoft. ResourceHealth/availabilityStatuses
 - Microsoft. ResourceHealth/childAvailabilityStatuses
 - Microsoft. ResourceHealth/childResources
@@ -130,11 +137,12 @@ A kiterjesztési erőforrás olyan erőforrás, amely egy másik erőforrás ké
 - Microsoft. Security/complianceResults
 - Microsoft. Security/dataCollectionAgents
 - Microsoft. Security/deviceSecurityGroups
-- Microsoft. Security/networkData
+- Microsoft. Security/jitPolicies
 - Microsoft. Security/serverVulnerabilityAssessments
 - Microsoft. SecurityInsights/összesítések
 - Microsoft. SecurityInsights/alertRuleTemplates
 - Microsoft. SecurityInsights/alertRules
+- Microsoft. SecurityInsights/automationRules
 - Microsoft. SecurityInsights/könyvjelzők
 - Microsoft. SecurityInsights/esetek
 - Microsoft. SecurityInsights/dataConnectors
@@ -144,6 +152,7 @@ A kiterjesztési erőforrás olyan erőforrás, amely egy másik erőforrás ké
 - Microsoft. SecurityInsights/incidensek
 - Microsoft. SecurityInsights/officeConsents
 - Microsoft. SecurityInsights/beállítások
+- Microsoft. SecurityInsights/threatIntelligence
 - Microsoft. SoftwarePlan/hybridUseBenefits
 - Microsoft. előfizetés/CreateSubscription
 - Microsoft. support/supporttickets
