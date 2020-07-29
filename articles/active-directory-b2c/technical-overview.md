@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 05/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 08c7a5b977534e6c2852f8095ce14c44bda71bf1
-ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
+ms.openlocfilehash: 15b96a8bb5460064d6f50f81809f7e3850b30a4c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84331534"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281922"
 ---
 # <a name="technical-and-feature-overview-of-azure-active-directory-b2c"></a>A Azure Active Directory B2C technikai és funkcióinak áttekintése
 
@@ -75,7 +75,7 @@ A Azure AD B2C konfigurálható úgy, hogy a felhasználók a külső közössé
 
 A külső identitás-szolgáltató összevonásával lehetővé teheti a felhasználók számára, hogy a meglévő közösségi vagy vállalati fiókjával jelentkezzenek be anélkül, hogy új fiókot kellene létrehoznia az alkalmazáshoz.
 
-A regisztrációs vagy bejelentkezési oldalon Azure AD B2C megjeleníti azon külső identitás-szolgáltatók listáját, amelyeket a felhasználó kiválaszthat a bejelentkezéshez. Miután kiválasztotta az egyik külső identitás-szolgáltatót, a rendszer a kiválasztott szolgáltató webhelyére helyezi (átirányítja) a bejelentkezési folyamat befejezéséhez. Ha a felhasználó sikeresen bejelentkezett, a rendszer visszaküldi azokat Azure AD B2C az alkalmazásban lévő fiók hitelesítéséhez.
+A regisztrációs vagy bejelentkezési oldalon Azure AD B2C megjeleníti azon külső identitás-szolgáltatók listáját, amelyeket a felhasználó kiválaszthat a bejelentkezéshez. Miután kiválasztotta az egyik külső identitás-szolgáltatót, a rendszer a kiválasztott szolgáltató webhelyére helyezi (átirányítja) a bejelentkezési folyamat befejezéséhez. Ha a felhasználó sikeresen bejelentkezett, a rendszer visszaküldi Azure AD B2C az alkalmazásban lévő fiók hitelesítéséhez.
 
 ![Mobil bejelentkezési példa közösségi fiókkal (Facebook)](media/technical-overview/external-idp.png)
 
@@ -260,7 +260,7 @@ Azure AD B2C segítségével felfedezheti, hogy mikor regisztrálhatnak vagy jel
 
 További információ a használati elemzésekről: a [felhasználói viselkedés nyomon követése Azure Active Directory B2C a Application Insights használatával](analytics-with-application-insights.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy alaposabban megtekintette a Azure Active Directory B2C funkcióit és technikai aspektusait, a szolgáltatással való ismerkedéshez hozzon létre egy B2C-bérlőt:
 

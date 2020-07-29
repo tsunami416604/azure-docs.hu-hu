@@ -3,16 +3,16 @@ title: Az LVM és a RAID konfigurálása titkosított eszközökön – Azure Di
 description: Ez a cikk útmutatást nyújt az LVM és a RAID konfigurálásához a Linux rendszerű virtuális gépek titkosított eszközein.
 author: jofrance
 ms.service: security
-ms.topic: article
+ms.topic: how-to
 ms.author: jofrance
 ms.date: 03/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: 3be8863d86fd1525e6f64b46ddf5ca3c702ecdea
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 746243336d74aefc55df48872fe9dd21e9cd99a5
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87029229"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87268220"
 ---
 # <a name="configure-lvm-and-raid-on-encrypted-devices"></a>Az LVM és a RAID konfigurálása titkosított eszközökön
 

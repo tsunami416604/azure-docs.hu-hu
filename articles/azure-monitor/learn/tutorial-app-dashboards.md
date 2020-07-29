@@ -7,12 +7,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 07/3/2019
 ms.custom: mvc
-ms.openlocfilehash: caf8b1899cad95ade6297e78e8f2cf35939ef189
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a08e00b2debce970bdbd385b785806c8636e5946
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77661634"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318419"
 ---
 # <a name="create-custom-kpi-dashboards-using-azure-application-insights"></a>Egyéni KPI irányítópultok létrehozása az Azure Application Insights használatával
 
@@ -31,7 +31,7 @@ Több irányítópultot is létrehozhat az Azure Portalon, amelyeknek a csempéi
 
 Az oktatóanyag elvégzéséhez:
 
-- Telepítsen egy .NET-alkalmazást az Azure-hoz, és [engedélyezze az Application Insights SDK](../../azure-monitor/app/asp-net.md)-t.
+- Telepítsen egy .NET-alkalmazást az Azure-hoz, és [engedélyezze az Application Insights SDK](../app/asp-net.md)-t.
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
@@ -57,7 +57,7 @@ A statikus szöveget tartalmazó irányítópultok nem nagyon érdekesek, ezért
 
 
 1. Válassza ki az **Application Insights** erőforrást a kezdőképernyőn.
-2. Az **Áttekintés** ablaktáblán kattintson a rögzítés ikonra ![PIN-kód](media/tutorial-app-dashboards/pushpin.png) ikonra, hogy hozzáadja a csempét az utoljára megtekintett irányítópulthoz.  
+2. Az **Áttekintés** ablaktáblán kattintson a rögzítés ikonra ![ PIN-kód ikonra, ](media/tutorial-app-dashboards/pushpin.png) hogy hozzáadja a csempét az utoljára megtekintett irányítópulthoz.  
  
 3. A jobb felső sarokban egy értesítés jelenik meg, amelyet a csempe rögzített az irányítópulton. Kattintson a **rögzítve az irányítópultra** az értesítésben, hogy visszatérjen az irányítópulthoz, vagy használja az irányítópult ablaktáblát.
 4. Ezzel a csempével most már hozzá lesz adva az irányítópulthoz. A csempe elhelyezésének módosításához válassza a **Szerkesztés** lehetőséget. Kattintson és húzza rá a helyére, majd kattintson a **Testreszabás kész**lehetőségre. Az irányítópulton ezzel már van egy olyan csempe, amely hasznos információkat tartalmaz.
@@ -68,7 +68,7 @@ A statikus szöveget tartalmazó irányítópultok nem nagyon érdekesek, ezért
 A **Metrika** panel segítségével az Application Insights által gyűjtött metrikák időbeli alakulását mutató diagramokat készíthet választható szűrőkkel és csoportosítással.  Ahogy az Application Insights minden más elemét, ezt a diagramot is felveheti az irányítópultra.  Ehhez előbb szükség van némi testreszabásra.
 
 1. Válassza ki a **Application Insights** erőforrást a kezdőképernyőn.
-1. Válassza a **Metrika** lehetőséget.  
+1. Válassza a **Metrikák** lehetőséget.  
 2. Már létrejött egy üres diagram, és most a rendszer kéri, hogy adjon hozzá egy metrikát.  Adjon hozzá egy metrikát a diagramhoz, valamint igény szerint szűrőt és csoportosítást is.  Az alábbi példában a kiszolgálókérelmek száma látható sikeresség szerint csoportosítva.  Ez a sikeres és sikertelen kérelmek akkumulált nézetét mutatja.
 
     ![Metrika hozzáadása](media/tutorial-app-dashboards/metrics.png)
@@ -88,7 +88,7 @@ Mivel az Azure Applications-adatelemzési naplók (Analitika) egy különálló 
 
     ![Irányítópult közzététele](media/tutorial-app-dashboards/8dashboard-share.png)
 
-2. Hagyja változatlanul az **Irányítópult nevét**, és válassza ki az **Előfizetés nevét** az irányítópult megosztásához.  Kattintson a **Publish** (Közzététel) gombra.  Az irányítópult mostantól elérhető más szolgáltatások és előfizetések számára.  Meghatározhat adott felhasználókat, akiknek hozzáférést kíván biztosítani az irányítópulthoz.
+2. Hagyja változatlanul az **Irányítópult nevét**, és válassza ki az **Előfizetés nevét** az irányítópult megosztásához.  Kattintson a **Közzététel** gombra.  Az irányítópult mostantól elérhető más szolgáltatások és előfizetések számára.  Meghatározhat adott felhasználókat, akiknek hozzáférést kíván biztosítani az irányítópulthoz.
 1. Válassza ki a **Application Insights** erőforrást a kezdőképernyőn.
 2. Kattintson a **naplók (Analitika)** elemre a figyelés elemnél a naplók (Analytics) portál megnyitásához.
 3. Írja be a következő lekérdezést, amely a 10 leggyakrabban lekérdezett lapot és a kérelmek számát adja vissza:
@@ -127,4 +127,5 @@ Mivel az Azure Applications-adatelemzési naplók (Analitika) egy különálló 
 Most, hogy megismerkedett az egyéni irányítópultok létrehozásával, tekintse át az Application Insights dokumentációját, amely egy esettanulmányt is tartalmaz.
 
 > [!div class="nextstepaction"]
-> [Részletes diagnosztika](../../azure-monitor/app/devops.md)
+> [Részletes diagnosztika](../app/devops.md)
+

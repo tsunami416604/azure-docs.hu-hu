@@ -4,15 +4,15 @@ description: A kifizetési szabályzatokkal kapcsolatos részletek, beleértve a
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: mingshen
+author: mingshen-ms
 ms.author: mingshen
 ms.date: 04/24/2020
-ms.openlocfilehash: f26e006998b0818ba84fa23ee1941a1033ef205b
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: d72a80298be96d32547737a98e5279da0c5d8ef0
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118290"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324828"
 ---
 # <a name="payout-policy-details"></a>Fizetési szabályzat részletei
 
@@ -42,9 +42,9 @@ A következő szakaszok ismertetik a kifizetési folyamatokat.
 
 | Esemény  | Dátum  | Partner láthatósága: partneri központ – kifizetési jelentés  |  Partner láthatósága: a partner Center Analytics\* |
 | --- | --- | --- | --- |
-| Tranzakció vagy havi használat | 8/1/2020 – 8/31/2020 | N.A. | **Használati jelentés**: új felhasználás látható (négy óránként frissül)<br>**Rendelési jelentés**: N/A |
-| Befejezési időszak (hónap) | 8/31/2020 | N.A. | **Használati jelentés**: hónap végi felhasználás látható<br>**Rendelési jelentés**: N/A |
-| Megrendelés létrehozva | 9/3/2020 – 9/7/2020 | N.A. | **Használati jelentés**: a Rendeléskód/OrderLineItemID által megjelenített felhasználás<br>**Rendelési jelentés**: aktívként megjelenített Vevői megrendelések |
+| Tranzakció vagy havi használat | 8/1/2020 – 8/31/2020 | n.a. | **Használati jelentés**: új felhasználás látható (négy óránként frissül)<br>**Rendelési jelentés**: N/A |
+| Befejezési időszak (hónap) | 8/31/2020 | n.a. | **Használati jelentés**: hónap végi felhasználás látható<br>**Rendelési jelentés**: N/A |
+| Megrendelés létrehozva | 9/3/2020 – 9/7/2020 | n.a. | **Használati jelentés**: a Rendeléskód/OrderLineItemID által megjelenített felhasználás<br>**Rendelési jelentés**: aktívként megjelenített Vevői megrendelések |
 | Kifizetési kereset kiszámítása | 9/4/2020 – 9/10/2020 | A kifizetési irányítópult tranzakciós előzményeiben **feldolgozatlan** megjelölve | **Használati jelentés**: a Rendeléskód/OrderLineItemID által megjelenített felhasználás<br>**Rendelési jelentés**: aktívként megjelenített Vevői megrendelések |
 | Havi kifizetés | 10/5/2020 | A kifizetési irányítópulton a tranzakciós előzményekben **közelgőként** van megjelölve | **Használati jelentés**: a Rendeléskód/OrderLineItemID által megjelenített felhasználás<br>**Rendelési jelentés**: aktívként megjelenített Vevői megrendelések |
 | Kifizetés dátuma | 10/15/2020 | A tranzakció **Sent** előzményeiben és a kifizetési irányítópult fizetések szakaszában ellátottként van megjelölve | **Használati jelentés**: a Rendeléskód/OrderLineItemID által megjelenített felhasználás<br>**Rendelési jelentés**: aktívként megjelenített Vevői megrendelések |
@@ -59,10 +59,10 @@ Az összes bankkártyával vagy havi számlával történő vásárlás 30 napos
 
 | Esemény  | Dátum  | Partner láthatósága: partneri központ – kifizetési jelentés  |  Partner láthatósága: a partner Center Analytics\*  |
 | --- | --- | --- | --- |
-| Tranzakció vagy havi használat | 8/1/2019 - 8/31/2019 | N.A. | **Használati jelentés**: új felhasználás látható (négy óránként frissül)<br>**Rendelési jelentés**: N/A |
-| Befejezési időszak (hónap) | 8/31/2019 | N.A. | **Használati jelentés**: hónap végi felhasználás látható<br>**Rendelési jelentés**: N/A |
-| Megrendelés létrehozva | 9/3/2019 – 9/7/2019 | N.A. | **Használati jelentés**: a Rendeléskód/OrderLineItemID által megjelenített felhasználás<br>**Rendelési jelentés**: aktívként megjelenített Vevői megrendelések |
-| Vevői számla összegyűjtve | 9/7/2019 – 9/10/2019 | N.A. | **Használati jelentés**: a Rendeléskód/OrderLineItemID által megjelenített felhasználás<br>**Rendelési jelentés**: aktívként megjelenített Vevői megrendelések |
+| Tranzakció vagy havi használat | 8/1/2019 - 8/31/2019 | n.a. | **Használati jelentés**: új felhasználás látható (négy óránként frissül)<br>**Rendelési jelentés**: N/A |
+| Befejezési időszak (hónap) | 8/31/2019 | n.a. | **Használati jelentés**: hónap végi felhasználás látható<br>**Rendelési jelentés**: N/A |
+| Megrendelés létrehozva | 9/3/2019 – 9/7/2019 | n.a. | **Használati jelentés**: a Rendeléskód/OrderLineItemID által megjelenített felhasználás<br>**Rendelési jelentés**: aktívként megjelenített Vevői megrendelések |
+| Vevői számla összegyűjtve | 9/7/2019 – 9/10/2019 | n.a. | **Használati jelentés**: a Rendeléskód/OrderLineItemID által megjelenített felhasználás<br>**Rendelési jelentés**: aktívként megjelenített Vevői megrendelések |
 | Kifizetés kiszámítása | 9/8/2019 -9/12/2019 | A kifizetési irányítópult tranzakciós előzményeiben **feldolgozatlan** megjelölve | **Használati jelentés**: a Rendeléskód/OrderLineItemID által megjelenített felhasználás<br>**Rendelési jelentés**: aktívként megjelenített Vevői megrendelések |
 | Havi kifizetés | 11/5/2019\* | A kifizetési irányítópulton a tranzakciós előzményekben **közelgőként** megjelölve | **Használati jelentés**: a Rendeléskód/OrderLineItemID által megjelenített felhasználás<br>**Rendelési jelentés**: aktívként megjelenített Vevői megrendelések |
 | Kifizetés dátuma | 11/15/2019 | A tranzakció előzményeiben és a kifizetési irányítópult fizetések szakaszában **eljuttatott** jelöléssel ellátottként van megjelölve | **Használati jelentés**: a Rendeléskód/OrderLineItemID által megjelenített felhasználás<br>**Rendelési jelentés**: aktívként megjelenített Vevői megrendelések |
@@ -76,10 +76,10 @@ Az ezen dátum előtt bekövetkezett összes vásárlás feldolgozása és kifiz
 
 | Esemény  | Dátum  | Partner láthatósága: partneri központ – kifizetési jelentés  |  Partner láthatósága: a partner Center Analytics\*  |
 | --- | --- | --- | --- |
-| Tranzakció vagy havi használat | 8/1/2019 – 8/31/2019 | N.A. | **Használati jelentés**: új felhasználás látható (négy óránként frissül)<br>**Rendelési jelentés**: N/A |
-| Befejezési időszak (hónap) | 8/31/2019 | N.A. | **Használati jelentés**: hónap végi felhasználás látható<br>**Rendelési jelentés**: N/A |
-| Megrendelés létrehozva | 9/3/2019 – 9/7/2019 | N.A. | **Használati jelentés**: a Rendeléskód/OrderLineItemID által megjelenített felhasználás<br>**Rendelési jelentés**: aktívként megjelenített Vevői megrendelések |
-| Vevői számla összegyűjtve | 12/1/2019 | N.A. | **Használati jelentés**: a Rendeléskód/OrderLineItemID által megjelenített felhasználás<br>**Rendelési jelentés**: aktívként megjelenített Vevői megrendelések |
+| Tranzakció vagy havi használat | 8/1/2019 – 8/31/2019 | n.a. | **Használati jelentés**: új felhasználás látható (négy óránként frissül)<br>**Rendelési jelentés**: N/A |
+| Befejezési időszak (hónap) | 8/31/2019 | n.a. | **Használati jelentés**: hónap végi felhasználás látható<br>**Rendelési jelentés**: N/A |
+| Megrendelés létrehozva | 9/3/2019 – 9/7/2019 | n.a. | **Használati jelentés**: a Rendeléskód/OrderLineItemID által megjelenített felhasználás<br>**Rendelési jelentés**: aktívként megjelenített Vevői megrendelések |
+| Vevői számla összegyűjtve | 12/1/2019 | n.a. | **Használati jelentés**: a Rendeléskód/OrderLineItemID által megjelenített felhasználás<br>**Rendelési jelentés**: aktívként megjelenített Vevői megrendelések |
 | Kifizetés kiszámítása | 12/5/2019 – 12/7/2019 | A kifizetési irányítópult tranzakciós előzményeiben **feldolgozatlan** megjelölve | **Használati jelentés**: a Rendeléskód/OrderLineItemID által megjelenített felhasználás<br>**Rendelési jelentés**: aktívként megjelenített Vevői megrendelések |
 | Havi kifizetés | 1/5/2019 | A kifizetési irányítópulton a tranzakciós előzményekben **közelgőként** megjelölve | **Használati jelentés**: a Rendeléskód/OrderLineItemID által megjelenített felhasználás<br>**Rendelési jelentés**: aktívként megjelenített Vevői megrendelések |
 | Kifizetés dátuma | 1/15/2019 | **A tranzakció** előzményeiben és a kifizetési irányítópult fizetések szakaszában ellátottként megjelölt | **Használati jelentés**: a Rendeléskód/OrderLineItemID által megjelenített felhasználás<br>**Rendelési jelentés**: aktívként megjelenített Vevői megrendelések |
@@ -101,10 +101,10 @@ A következő példa egy ütemezett ütemtervet mutat be:
 | --- | --- | --- |
 | Példa a kifizetés dátumára | 10/15/2020 | A kifizetési **irányítópulton a** tranzakciós előzmények és a fizetések részben ellátottként van megjelölve |
 | <font color="red">Ha az ügyfél nem fizet a Microsoftnak</font> | 12/2/2020 – 12/5/2020 | Nincs változás, ugyanaz, mint fent |
-| Az ügyfél megkapja az első késedelmes fizetési értesítő e-mailt | 12/6/2020 | None |
-| Az ügyfél rendszeresen kap e-maileket a megnövekedett sürgősségről | 12/7/2020 – 1/31/2021 | None |
+| Az ügyfél megkapja az első késedelmes fizetési értesítő e-mailt | 12/6/2020 | Nincs |
+| Az ügyfél rendszeresen kap e-maileket a megnövekedett sürgősségről | 12/7/2020 – 1/31/2021 | Nincs |
 | Valószínűleg a közzétevő értesítést kap a kiírásról | 1/7/2021 | A közzétevőnek küldött e-mail-értesítés, amelyet az ügyfele még nem küldött el. A tranzakció-azonosító és a dollár összege is szerepel. |
-| Az ügyfél lemondási értesítést kap | 2/1/2021 | None |
+| Az ügyfél lemondási értesítést kap | 2/1/2021 | Nincs |
 | A gyűjtési folyamat vége/az alapok le vannak írva | 2/15/2021 | A közzétevőnek elküldött e-mail-értesítés, amelyből a rendszer kiírta a forrásokat. A tranzakció-azonosító és a dollár összege is szerepel. |
 | A kifizetés le van vonva | 3/1/2021 | A közzétevő negatív tranzakciót fog látni a partner Center kifizetési utasításban |
 | A kifizetés megtagadva | 3/15/2021 | A jövőbeli kifizetések a partner Center kifizetési nyilatkozatában jelennek meg. A közzétevő nem kap fizetést, amíg az egyenleg már nem negatív.  |

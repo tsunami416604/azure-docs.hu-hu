@@ -3,21 +3,24 @@ title: 'Gyors útmutató: az Azure Storage v11 használata a .NET-hez egy üzene
 description: Ebből a rövid útmutatóból megtudhatja, hogyan használhatja a .NET-hez készült Azure Storage ügyféloldali kódtárat üzenetsor létrehozására és az ahhoz tartozó üzenetek hozzáadására. Ezután megtudhatja, hogyan olvashatja és dolgozhatja fel az üzeneteket a várólistából.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 02/06/2018
+ms.date: 07/24/2020
 ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
 ms.reviewer: dineshm
-ms.openlocfilehash: 807765aea66561abb5a8764f119d2be4632a56d5
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.openlocfilehash: 71700efecfc173392562327f6d150d79d1a9c84f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84807563"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292688"
 ---
 # <a name="quickstart-use-the-azure-storage-sdk-v11-for-net-to-manage-a-queue"></a>Rövid útmutató: a .NET-hez készült Azure Storage SDK v11 használatával kezelheti a várólistákat
 
 Ebből a rövid útmutatóból megtudhatja, hogyan használhatja az Azure Storage ügyféloldali kódtár 11-es verzióját a .NET-hez egy üzenetsor létrehozásához és az üzenetek hozzáadásához. Ezután megtudhatja, hogyan olvashatja és dolgozhatja fel az üzeneteket a várólistából. 
+
+> [!NOTE]
+> Ez a rövid útmutató az Azure üzenetsor-tároló ügyféloldali függvénytárának örökölt verzióját használja. A legújabb verzió használatának megkezdéséhez lásd: gyors üzembe helyezési útmutató az [Azure üzenetsor Storage ügyféloldali kódtára a .net-hez](storage-quickstart-queues-dotnet.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -277,6 +280,6 @@ Tekintse meg ezeket a további forrásokat a .NET-fejlesztéshez az Azure Queues
 Ebből a rövid útmutatóból megtudhatta, hogyan adhat hozzá üzeneteket egy várólistához, hogyan szúrhat be üzeneteket egy várólistából, és hogyan dolgozza fel az üzeneteket a .NET használatával. 
 
 > [!div class="nextstepaction"]
-> [Alkalmazások közötti kommunikáció az Azure üzenetsor-tárolóval](https://docs.microsoft.com/learn/modules/communicate-between-apps-with-azure-queue-storage/index)
+> [Alkalmazások közötti kommunikáció az Azure Queue Storage használatával](https://docs.microsoft.com/learn/modules/communicate-between-apps-with-azure-queue-storage/index)
 
 - A .NET Core keretrendszerrel kapcsolatos további információért lásd [a .NET használatának első lépéseit 10 percben](https://www.microsoft.com/net/learn/get-started/) ismertető szakaszt.

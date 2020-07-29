@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: ranku
 ms.date: 04/09/2020
-ms.openlocfilehash: 1665bc42578c189ed27208eb31cc4bdb2e27bbb9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 60dd9631df0b997ce39134002bdb6ed9f69336ed
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536164"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319269"
 ---
 # <a name="tutorial-create-a-labeling-project-for-multi-class-image-classification"></a>Oktatóanyag: címkézési projekt létrehozása a többosztályos képek besorolásához 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -146,9 +146,7 @@ Az oktatóanyagnak ebben a részében a *projekt rendszergazdájától* származ
 
 1. A [Machine learning Studióban](https://ml.azure.com)válassza a bal oldalon található **adatfelirat** lehetőséget a projekt megkereséséhez.  
 
-1. Válassza ki a projekt nevét a listában.
-
-1. A projekt neve alatt válassza ki az **adatfelirat**lehetőséget.
+1. Válassza ki a projekthez tartozó **címke hivatkozást** .
 
 1. Olvassa el az utasításokat, majd válassza a **feladatok**lehetőséget.
 
@@ -202,12 +200,12 @@ A képfeliratokat [kókusz formátumban](http://cocodataset.org/#format-data) va
 
 1. A címkék sikeres exportálása után a bal oldalon található **adatkészletek** elemre kattintva megtekintheti az eredményeket.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 
 [!INCLUDE [aml-delete-resource-group](../../includes/aml-delete-resource-group.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban a képeket címkézte.  Most használja a címkével ellátott adatait:
 

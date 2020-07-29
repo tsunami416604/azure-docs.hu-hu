@@ -6,16 +6,16 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
-ms.openlocfilehash: 771cfa11375e97f2f6a94fc65cbd72306b12cd7e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 64884f07bc59e5ff2b29eac645ddb469ef3db465
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84803966"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325185"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms"></a>Naplók lekérdezése Azure Monitor for VMs
 
-A Azure Monitor for VMs a teljesítmény-és a kapcsolatok mérőszámait, a számítógép-és feldolgozási leltári adatokat, valamint az állapotadatok adatait és a Azure Monitor Log Analytics munkaterületére továbbítja azokat.  Ezek az adatAzure Monitor [lekérdezésekhez](../../azure-monitor/log-query/log-query-overview.md) érhetők el. Ezeket az információkat olyan forgatókönyvekre alkalmazhatja, amelyek tartalmazzák az áttelepítés megtervezését, a kapacitás elemzését, a felderítést és az igény szerinti teljesítménnyel kapcsolatos hibaelhárítást.
+A Azure Monitor for VMs a teljesítmény-és a kapcsolatok mérőszámait, a számítógép-és feldolgozási leltári adatokat, valamint az állapotadatok adatait és a Azure Monitor Log Analytics munkaterületére továbbítja azokat.  Ezek az adatAzure Monitor [lekérdezésekhez](../log-query/log-query-overview.md) érhetők el. Ezeket az információkat olyan forgatókönyvekre alkalmazhatja, amelyek tartalmazzák az áttelepítés megtervezését, a kapacitás elemzését, a felderítést és az igény szerinti teljesítménnyel kapcsolatos hibaelhárítást.
 
 ## <a name="map-records"></a>Rekordok leképezése
 
@@ -112,7 +112,7 @@ A *VMConnection* táblában lévő összes RemoteIp-tulajdonságot a rendszer az
 |:--|:--|
 |MaliciousIp |A RemoteIp címe |
 |IndicatorThreadType |Az észlelt veszélyforrás a következő értékek egyike: *botnet*, *C2*, *CryptoMining*, *Darknet*, *DDos*, *MaliciousUrl*, *malware*, *phishing*, *proxy*, *PUA*, *List*.   |
-|Description |A megfigyelt fenyegetés leírása. |
+|Leírás |A megfigyelt fenyegetés leírása. |
 |TLPLevel |A forgalmi lámpa protokoll (TLP) szintje az egyik definiált érték, a *fehér*, a *zöld*, a *sárga*és a *vörös*. |
 |Megbízhatóság |Az értékek *0 – 100*. |
 |Severity |Az értékek *0 – 5*, ahol az *5* a legsúlyosabb, a *0* pedig egyáltalán nem súlyos. Az alapértelmezett érték *3*.  |
@@ -233,7 +233,7 @@ A *VMProcess* rendelkező rekordok a függőségi ügynökkel rendelkező kiszol
 |Csoport | A feldolgozó csoport neve. Az ugyanabban a csoportban lévő folyamatok logikailag kapcsolódnak egymáshoz, például ugyanannak a terméknek vagy rendszerösszetevőnek a része. |
 |StartTime | A folyamat készletének kezdési ideje |
 |FirstPid | A folyamat első PID-je |
-|Description | A folyamat leírása |
+|Leírás | A folyamat leírása |
 |CompanyName | A vállalat neve |
 |InternalName | A belső név |
 |TermékNév | A termék neve |
@@ -243,7 +243,7 @@ A *VMProcess* rendelkező rekordok a függőségi ügynökkel rendelkező kiszol
 |CommandLine | A parancssor |
 |WorkingDirectory | A munkakönyvtár |
 |Szolgáltatások | Azon szolgáltatások tömbje, amelyeken a folyamat végrehajtása történik |
-|UserName (Felhasználónév) | Az a fiók, amelyben a folyamat végre van hajtva |
+|Felhasználónév | Az a fiók, amelyben a folyamat végre van hajtva |
 |UserDomain | Az a tartomány, amelyben a folyamat végrehajtás alatt áll |
 |_ResourceId | A munkaterületen belüli folyamat egyedi azonosítója |
 
@@ -442,7 +442,7 @@ A *InsightsMetrics* rendelkező rekordok a virtuális gép vendég operációs r
 |Computer | A számítógép teljes tartományneve | 
 |Forrás | *vm.azm.ms* |
 |Névtér | A teljesítményszámláló kategóriája | 
-|Name | A teljesítményszámláló neve |
+|Név | A teljesítményszámláló neve |
 |Headdel | Összegyűjtött érték | 
 |Címkék | A rekorddal kapcsolatos részletek. Az alábbi táblázatban láthatja a különböző bejegyzéstípusokkal használt címkéket.  |
 |Ügynökazonosító | Az egyes számítógépek ügynökének egyedi azonosítója |
@@ -451,10 +451,10 @@ A *InsightsMetrics* rendelkező rekordok a virtuális gép vendég operációs r
 
 A jelenleg a *InsightsMetrics* táblába összegyűjtött teljesítményszámlálók az alábbi táblázatban láthatók:
 
-| Névtér | Name | Description | Unit (Egység) | Címkék |
+| Névtér | Név | Leírás | Egység | Címkék |
 |:---|:---|:---|:---|:---|
 | Computer    | Szívverés             | Számítógép szívverése                        | | |
-| Memory (Memória)      | AvailableMB           | Rendelkezésre álló memória bájtjai                    | Megabájtban      | memorySizeMB – teljes memória mérete|
+| Memória      | AvailableMB           | Rendelkezésre álló memória bájtjai                    | Megabájtban      | memorySizeMB – teljes memória mérete|
 | Network (Hálózat)     | WriteBytesPerSecond   | Hálózati írási bájtok másodpercenként            | BytesPerSecond | NetworkDeviceId – az eszköz azonosítója<br>bájtok – elküldési bájtok összesen |
 | Network (Hálózat)     | ReadBytesPerSecond    | Hálózati olvasási bájtok másodpercenként             | BytesPerSecond | networkDeviceId – az eszköz azonosítója<br>bájtok – fogadott bájtok összesen |
 | Processzor   | UtilizationPercentage | Processzor kihasználtsága (%)          | Százalék        | totalCpus – processzorok összesen |
@@ -473,6 +473,7 @@ A jelenleg a *InsightsMetrics* táblába összegyűjtött teljesítményszámlá
 
 ## <a name="next-steps"></a>További lépések
 
-* Ha a Azure Monitor naplóbeli lekérdezések írásakor új, tekintse át a következő [témakört: log Analytics használata](../../azure-monitor/log-query/get-started-portal.md) a Azure Portal a naplók írásához.
+* Ha a Azure Monitor naplóbeli lekérdezések írásakor új, tekintse át a következő [témakört: log Analytics használata](../log-query/get-started-portal.md) a Azure Portal a naplók írásához.
 
-* További információ a [keresési lekérdezések írásához](../../azure-monitor/log-query/search-queries.md).
+* További információ a [keresési lekérdezések írásához](../log-query/search-queries.md).
+

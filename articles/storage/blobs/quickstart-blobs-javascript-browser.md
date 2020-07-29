@@ -3,16 +3,16 @@ title: 'Gyors útmutató: Azure Blob Storage Library V12 – JavaScript egy bön
 description: Ebből a rövid útmutatóból megtudhatja, hogyan használhatja az Azure Blob Storage ügyféloldali kódtárat a JavaScripthez a böngészőben. Létrehoz egy tárolót és egy objektumot a blob Storage-ban. Következő lépésként megtudhatja, hogyan listázhatja egy tároló összes blobját. Végezetül megismerheti a Blobok törlését és a tárolók törlését.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 04/18/2020
+ms.date: 07/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: f884e6d3cbc2e1f3127b251818f4617fccb6a999
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 039aea76e5e59d43078c2fa884e192922ec50035
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87011328"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87276992"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
@@ -26,9 +26,6 @@ További források:
 * [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob)
 * [Csomag (NPM)](https://www.npmjs.com/package/@azure/storage-blob)
 * [Példák](https://docs.microsoft.com/azure/storage/common/storage-samples-javascript?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
-
-> [!NOTE]
-> A korábbi SDK-verzió használatának megkezdéséhez lásd [: gyors útmutató: Blobok kezelése a JavaScript v10 SDK-val Node.js](storage-quickstart-blobs-nodejs-legacy.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -294,7 +291,7 @@ A [Azure Portal](https://portal.azure.com)a következő lépésekkel ELLENŐRIZH
 3. Válassza a **frissítés**lehetőséget. Az új tároló eltűnik.
 4. A webalkalmazás bezárásához.
 
-### <a name="clean-up-resources"></a>Erőforrások felszabadítása
+### <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Kattintson a **terminál** konzolra a Visual Studio Code-ban, és nyomja le a CTRL + C billentyűkombinációt a webkiszolgáló leállításához.
 

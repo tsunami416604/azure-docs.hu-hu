@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/05/2020
-ms.openlocfilehash: b6b32f9eadc6677bad591f4040981c4c95bf1f76
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 98caca31e172f54c3e37f33c5a463790d9d27032
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82871243"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325984"
 ---
 # <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-azure-monitor"></a>Az SQL-környezet optimalizálása a SQL Server Health-ellenőrzési megoldással Azure Monitor
 
@@ -43,9 +44,9 @@ A megoldás hozzáadása és az értékelés befejezése után a fókusz terüle
 
 A SQL Server-kiszolgálók állapot-ellenőrzésének végrehajtásához a következő támogatott módszerek egyikével kell ügynököt és kapcsolatot létesíteni a Azure Monitorhoz:
 
-1. Telepítse a [Microsoft monitoring Agent (MMA)](../../azure-monitor/platform/agent-windows.md) programot, ha a kiszolgálót még nem figyeli a System Center 2016 – Operations Manager vagy Operations Manager 2012 R2.
+1. Telepítse a [Microsoft monitoring Agent (MMA)](../platform/agent-windows.md) programot, ha a kiszolgálót még nem figyeli a System Center 2016 – Operations Manager vagy Operations Manager 2012 R2.
 2. Ha a System Center 2016 – Operations Manager vagy Operations Manager 2012 R2 rendszerrel van figyelve, és a felügyeleti csoport nincs integrálva a Azure Monitor-be, a kiszolgáló többplatformos lehet a Log Analytics, hogy adatokat gyűjtsön és továbbítson a szolgáltatásnak, és továbbra is a Operations Manager figyeli.  
-3. Ellenkező esetben, ha a Operations Manager felügyeleti csoport integrálva van a szolgáltatással, hozzá kell adnia a tartományvezérlőket az adatgyűjtéshez a szolgáltatáshoz az [ügynök által felügyelt számítógépek hozzáadása](../../azure-monitor/platform/om-agents.md#connecting-operations-manager-to-azure-monitor) után, miután engedélyezte a megoldást a munkaterületen.  
+3. Ellenkező esetben, ha a Operations Manager felügyeleti csoport integrálva van a szolgáltatással, hozzá kell adnia a tartományvezérlőket az adatgyűjtéshez a szolgáltatáshoz az [ügynök által felügyelt számítógépek hozzáadása](../platform/om-agents.md#connecting-operations-manager-to-azure-monitor) után, miután engedélyezte a megoldást a munkaterületen.  
 
 A SQL Server ügynöke, amely egy Operations Manager felügyeleti csoportnak jelent jelentést, adatokat gyűjt, továbbít a hozzárendelt felügyeleti kiszolgálóhoz, majd közvetlenül egy felügyeleti kiszolgálóról küldi el a Azure Monitor.  Az adatOperations Manager-adatbázisok nem kerülnek be az adatforrásba.  
 
@@ -55,7 +56,7 @@ Ha a SQL Server Operations Manager figyeli, konfigurálnia kell egy Operations M
 Az SQL Health-ellenőrzések a következő forrásokból gyűjtenek adatokat az Ön által engedélyezett ügynök használatával:
 
 * Windows Management Instrumentation (WMI)
-* Registry
+* Regisztrációs adatbázis
 * Teljesítményszámlálók
 * A dinamikus felügyeleti nézet eredményeinek SQL Server
 
@@ -84,7 +85,7 @@ Az alábbi információk segítségével állíthatja be az SQL Health-ellenőrz
    > A futtató fiók típusának Windowsnak kell lennie. A futtató fióknak a helyi Rendszergazdák csoport részét kell képeznie a SQL Server példányokat üzemeltető összes Windows-kiszolgálón.
    >
    >
-5. Kattintson a **Save** (Mentés) gombra.
+5. Kattintson a **Mentés** gombra.
 6. Módosítsa, majd hajtsa végre az alábbi T-SQL-mintát minden SQL Server példányon, hogy az állapot-ellenőrzés elvégzéséhez szükséges minimális engedélyeket adja meg a futtató fiók számára. Ezt azonban nem kell megtennie, ha egy futtató fiók már része a sysadmin (rendszergazda) kiszolgálói szerepkörnek SQL Server példányokon.
 
 ```
@@ -235,7 +236,7 @@ Az eredmények az Excel programba exportálhatók további áttekintés céljáb
 
 * A rendszer a következő típusú adatokat gyűjti össze:
   * WMI
-  * Registry
+  * Regisztrációs adatbázis
   * Teljesítményszámlálók
   * SQL dinamikus felügyeleti nézetek (DMV).
 
@@ -257,3 +258,4 @@ Az eredmények az Excel programba exportálhatók további áttekintés céljáb
 
 ## <a name="next-steps"></a>További lépések
 * A [lekérdezésekkel](../log-query/log-query-overview.md) megtudhatja, hogyan elemezheti a részletes SQL Health-ellenőrzési információkat és javaslatokat.
+

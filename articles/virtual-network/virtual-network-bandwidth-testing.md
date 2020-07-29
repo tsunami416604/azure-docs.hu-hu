@@ -1,7 +1,7 @@
 ---
 title: Azure-beli virtuálisgép-hálózat teljesítményének tesztelése
 titlesuffix: Azure Virtual Network
-description: Ismerje meg, hogyan tesztelheti az Azure-beli virtuális gépek hálózati átviteli sebességét.
+description: A NTTTCP használatával megcélozhatja a hálózatot a teszteléshez, és csökkentheti a teljesítményt befolyásoló egyéb erőforrások használatát.
 services: virtual-network
 documentationcenter: na
 author: steveesp
@@ -12,11 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/21/2017
 ms.author: steveesp
-ms.openlocfilehash: 964b0bd543e887cce304d785d18a651f50bd4c45
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e5aa2c1c51fccddc3fb62d7ebdbadee19a2b093e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708246"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87265177"
 ---
 # <a name="bandwidththroughput-testing-ntttcp"></a>Sávszélesség/átviteli sebesség tesztelése (NTTTCP)
 

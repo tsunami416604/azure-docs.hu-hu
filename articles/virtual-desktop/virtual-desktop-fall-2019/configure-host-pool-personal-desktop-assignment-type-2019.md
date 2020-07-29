@@ -1,6 +1,6 @@
 ---
-title: Windows rendszerű virtuális asztali személyes asztal hozzárendelése (Fall 2019) – Azure
-description: Megtudhatja, hogyan konfigurálhatja a Windows rendszerű virtuális asztalok hozzárendelési típusát (2019-es kiadás) a személyes asztali gazdaszámítógépen.
+title: Windows rendszerű virtuális asztali (klasszikus) személyes asztali hozzárendelés típusa – Azure
+description: A Windows rendszerű virtuális asztali (klasszikus) személyes asztali címkészlet hozzárendelési típusának konfigurálása.
 services: virtual-desktop
 author: HeidiLohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 05/22/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 036e144922fcb49c486813b8668d944dd771536e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 76b68ba0a51d250e4ce143314c9126597133e97f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087186"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87271042"
 ---
-# <a name="configure-the-personal-desktop-host-pool-assignment-type-fall-2019-release"></a>A személyes asztali címkészlet hozzárendelési típusának konfigurálása (2019-es kiadás)
+# <a name="configure-the-personal-desktop-host-pool-assignment-type-for-windows-virtual-desktop-classic"></a>A személyes asztali címkészlet hozzárendelési típusának konfigurálása a Windows rendszerű virtuális asztali gépekhez (klasszikus)
 
 >[!IMPORTANT]
->Ez a tartalom a Fall 2019 kiadásra vonatkozik, amely nem támogatja a Windows rendszerű virtuális asztali objektumokat Azure Resource Manager. Ha a Spring 2020 Update szolgáltatásban bevezetett Azure Resource Manager Windows rendszerű virtuális asztali objektumokat szeretne felügyelni, tekintse meg [ezt a cikket](../configure-host-pool-personal-desktop-assignment-type.md).
+>Ez a tartalom a Windows rendszerű virtuális asztali (klasszikus) verzióra vonatkozik, amely nem támogatja Azure Resource Manager Windows rendszerű virtuális asztali objektumokat. Ha Azure Resource Manager Windows rendszerű virtuális asztali objektumokat szeretne felügyelni, tekintse meg [ezt a cikket](../configure-host-pool-personal-desktop-assignment-type.md).
 
 A személyes asztali címkészlet hozzárendelési típusának konfigurálásával beállíthatja a Windows rendszerű virtuális asztali környezetét, hogy jobban megfeleljen az igényeinek. Ebben a témakörben bemutatjuk, hogyan konfigurálhatja az automatikus vagy közvetlen hozzárendelést a felhasználók számára.
 

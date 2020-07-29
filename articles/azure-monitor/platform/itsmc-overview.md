@@ -6,13 +6,14 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
-ms.openlocfilehash: b0ae621791fb989fbb1fdab6a045bc8e9707bc74
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 989399bcc86547b914deb442fa9793f6d79d0606
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83846528"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325321"
 ---
-# <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Az Azure csatlakoztatása ITSM-eszközökhöz az IT Service Management-összekötő használatával
+# <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Az Azure ITSM-eszközökhöz kapcsolása az IT-szolgáltatásmenedzsmenti csatoló használatával
 
 ![IT-szolgáltatásmenedzsmenti csatoló szimbólum](media/itsmc-overview/itsmc-symbol.png)
 
@@ -77,10 +78,10 @@ A kapcsolatok létrehozásához elő kell készítenie a ITSM eszközt, hogy eng
 
 Attól függően, hogy melyik ITSM-termékhez csatlakozik, kövesse az alábbi lépéseket:
 
-- [System Center Service Manager (SCSM)](../../azure-monitor/platform/itsmc-connections.md#connect-system-center-service-manager-to-it-service-management-connector-in-azure)
-- [ServiceNow](../../azure-monitor/platform/itsmc-connections.md#connect-servicenow-to-it-service-management-connector-in-azure)
-- [Megjelenő](../../azure-monitor/platform/itsmc-connections.md#connect-provance-to-it-service-management-connector-in-azure)  
-- [Cherwell](../../azure-monitor/platform/itsmc-connections.md#connect-cherwell-to-it-service-management-connector-in-azure)
+- [System Center Service Manager (SCSM)](./itsmc-connections.md#connect-system-center-service-manager-to-it-service-management-connector-in-azure)
+- [ServiceNow](./itsmc-connections.md#connect-servicenow-to-it-service-management-connector-in-azure)
+- [Megjelenő](./itsmc-connections.md#connect-provance-to-it-service-management-connector-in-azure)  
+- [Cherwell](./itsmc-connections.md#connect-cherwell-to-it-service-management-connector-in-azure)
 
 Miután elő a ITSM-eszközöket, kövesse az alábbi lépéseket a kapcsolatok létrehozásához:
 
@@ -93,7 +94,7 @@ Miután elő a ITSM-eszközöket, kövesse az alábbi lépéseket a kapcsolatok 
 
    ![ITSM-kapcsolatok hozzáadása](media/itsmc-overview/add-new-itsm-connection.png)
 
-4. Adja meg a [ITSM termékek/szolgáltatások ITSMC-kapcsolatok konfigurálása című cikkben](../../azure-monitor/platform/itsmc-connections.md)leírtak szerint megjelenő kapcsolatbeállításokat.
+4. Adja meg a [ITSM termékek/szolgáltatások ITSMC-kapcsolatok konfigurálása című cikkben](./itsmc-connections.md)leírtak szerint megjelenő kapcsolatbeállításokat.
 
    > [!NOTE]
    >
@@ -150,13 +151,13 @@ Az irányítópult információt nyújt az összekötő állapotáról is, amely
 
 Az érintett számítógépeken szinkronizált incidenseket is megjelenítheti a Service Map megoldáson belül.
 
-Service Map automatikusan feltérképezi az alkalmazás összetevőit Windows-és Linux-rendszereken, és leképezi a szolgáltatások közötti kommunikációt. Használatával a kiszolgálók úgy jelennek meg, ahogyan Ön gondol rájuk: egymással összekapcsolt rendszerekként, amelyek kritikus fontosságú szolgáltatásokat tesznek elérhetővé. A Service Map megmutatja a kapcsolatokat mindazon kiszolgálók, folyamatok és portok között, amelyek TCP-kapcsolattal összekötött architektúrában találhatóak, és ehhez nem szükséges semmilyen konfiguráció, csupán az ügynököt kell telepíteni. [További információk](../../azure-monitor/insights/service-map.md).
+Service Map automatikusan feltérképezi az alkalmazás összetevőit Windows-és Linux-rendszereken, és leképezi a szolgáltatások közötti kommunikációt. Használatával a kiszolgálók úgy jelennek meg, ahogyan Ön gondol rájuk: egymással összekapcsolt rendszerekként, amelyek kritikus fontosságú szolgáltatásokat tesznek elérhetővé. A Service Map megmutatja a kapcsolatokat mindazon kiszolgálók, folyamatok és portok között, amelyek TCP-kapcsolattal összekötött architektúrában találhatóak, és ehhez nem szükséges semmilyen konfiguráció, csupán az ügynököt kell telepíteni. [További információ](../insights/service-map.md).
 
 Ha a Service Map megoldást használja, megtekintheti a ITSM-megoldásokban létrehozott ügyfélszolgálati elemeket az alábbi példában látható módon:
 
 ![Log Analytics képernyő](media/itsmc-overview/itsmc-overview-integrated-solutions.png)
 
-További információ: [Service Map](../../azure-monitor/insights/service-map.md)
+További információ: [Service Map](../insights/service-map.md)
 
 
 ## <a name="additional-information"></a>További információ
@@ -227,7 +228,7 @@ ServiceDeskWorkItemType_s = "módosítási kérelem"
 - Tervezett befejezési dátum
 - Munka kezdő dátuma
 - Munka befejezési dátuma
-- Description
+- Leírás
 - Computer
 
 ## <a name="output-data-for-a-servicenow-incident"></a>ServiceNow incidens kimeneti adatkészlete
@@ -274,7 +275,7 @@ ServiceDeskWorkItemType_s = "módosítási kérelem"
 | PlannedEndDate_t  |   Tervezett befejezési dátum |
 | WorkStartDate_t  | Tényleges kezdési dátum |
 | WorkEndDate_t | Tényleges befejezési dátum|
-| Description_s | Description |
+| Description_s | Leírás |
 | Computer  | Konfigurációs tétel |
 
 
@@ -284,7 +285,7 @@ ServiceDeskWorkItemType_s = "módosítási kérelem"
    - Győződjön meg arról, hogy minden kapcsolathoz helyesen adta meg a felhasználónevet, a jelszót, az ügyfél-azonosítót és az ügyfél-titkot.  
    - Ellenőrizze, hogy rendelkezik-e megfelelő jogosultságokkal a megfelelő ITSM-termékben a kapcsolódáshoz.  
    - Service Manager kapcsolatok esetén  
-   - Győződjön meg arról, hogy a webalkalmazás sikeresen telepítve van, és a hibrid kapcsolat létrejött. Annak ellenőrzéséhez, hogy a kapcsolat sikeresen létrejött-e a helyszíni Service Manager géppel, látogasson el a webalkalmazás URL-címére, amely a [hibrid kapcsolat](../../azure-monitor/platform/itsmc-connections.md#configure-the-hybrid-connection)készítéséhez szükséges dokumentációban található.  
+   - Győződjön meg arról, hogy a webalkalmazás sikeresen telepítve van, és a hibrid kapcsolat létrejött. Annak ellenőrzéséhez, hogy a kapcsolat sikeresen létrejött-e a helyszíni Service Manager géppel, látogasson el a webalkalmazás URL-címére, amely a [hibrid kapcsolat](./itsmc-connections.md#configure-the-hybrid-connection)készítéséhez szükséges dokumentációban található.  
 
 2. Ha a ServiceNow származó adatok nem lettek szinkronizálva a Log Analyticsba, győződjön meg arról, hogy a ServiceNow-példány nem alvó állapotú. A ServiceNow dev-példányok időnként hosszabb ideig tétlenek maradnak. Máskülönben jelentse a problémát.
 3. Ha Log Analytics a riasztások tüzet, de a munkaelemek nem jönnek létre a ITSM termékben, vagy a konfigurációs elemek nem jönnek létre/nem kapcsolódnak munkaelemekhez vagy más általános információkhoz, tekintse meg a következő helyeket:
@@ -294,7 +295,7 @@ ServiceDeskWorkItemType_s = "módosítási kérelem"
 ## <a name="troubleshoot-service-manager-web-app-deployment"></a>Service Manager webalkalmazás központi telepítésének hibáinak megoldása
 1.  A webalkalmazások telepítésével kapcsolatos problémák esetén győződjön meg arról, hogy rendelkezik az erőforrások létrehozásához és üzembe helyezéséhez szükséges engedélyekkel az előfizetésben.
 2.  Ha **"az objektum hivatkozása nem az objektum példányára"** hibaüzenet jelenik meg, akkor a [parancsfájl](itsmc-service-manager-script.md)futtatásakor ellenőrizze, hogy érvényes értékeket adott-e meg a **Felhasználó konfigurációja** szakaszban.
-3.  Ha nem sikerül létrehozni a Service Bus Relay-névteret, győződjön meg arról, hogy a szükséges erőforrás-szolgáltató regisztrálva van az előfizetésben. Ha nincs regisztrálva, manuálisan hozza létre a Service Bus Relay-névteret a Azure Portalból. Azt is létrehozhatja, miközben létrehozza [a hibrid kapcsolatokat](../../azure-monitor/platform/itsmc-connections.md#configure-the-hybrid-connection) a Azure Portal.
+3.  Ha nem sikerül létrehozni a Service Bus Relay-névteret, győződjön meg arról, hogy a szükséges erőforrás-szolgáltató regisztrálva van az előfizetésben. Ha nincs regisztrálva, manuálisan hozza létre a Service Bus Relay-névteret a Azure Portalból. Azt is létrehozhatja, miközben létrehozza [a hibrid kapcsolatokat](./itsmc-connections.md#configure-the-hybrid-connection) a Azure Portal.
 
 
 ## <a name="contact-us"></a>Kapcsolat
@@ -302,4 +303,5 @@ ServiceDeskWorkItemType_s = "módosítási kérelem"
 A IT-szolgáltatásmenedzsmenti csatoló kapcsolatos bármilyen lekérdezésért és Visszajelzésért lépjen kapcsolatba velünk a következő címen: [omsitsmfeedback@microsoft.com](mailto:omsitsmfeedback@microsoft.com) .
 
 ## <a name="next-steps"></a>További lépések
-[ITSM-termékek/-szolgáltatások hozzáadása a it-szolgáltatásmenedzsmenti csatolóhoz](../../azure-monitor/platform/itsmc-connections.md).
+[ITSM-termékek/-szolgáltatások hozzáadása a it-szolgáltatásmenedzsmenti csatolóhoz](./itsmc-connections.md).
+

@@ -37,6 +37,11 @@
       href: best-practices.md
     - name: Feltételes hozzáférés az Azure felügyeleti szolgáltatásaihoz
       href: conditional-access-azure-management.md
+    - name: Biztonság
+      items:
+        - name: Az Azure Policy biztonsági vezérlői
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
 - name: Útmutatók
   items:
     - name: Szerepkör-definíciók felsorolása

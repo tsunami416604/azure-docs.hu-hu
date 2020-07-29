@@ -3,12 +3,12 @@ title: Virtuális gép Azure Resource Manager sablonjának megtekintése és has
 description: Megtudhatja, hogyan használhatja a Azure Resource Manager sablont egy virtuális gépről más virtuális gépek létrehozásához
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: a53a6ad44cac59bd925e6d200ca50074a2fcd963
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e58b54d61653f1edba3c3893edb902a94fbf9f2b
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85476614"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87272691"
 ---
 # <a name="create-virtual-machines-using-an-azure-resource-manager-template"></a>Virtuális gépek létrehozása Azure Resource Manager sablon használatával 
 
@@ -35,7 +35,7 @@ A DevTest Labs-ben kétféleképpen hozhatók létre virtuális gépek a Resourc
 
 A cikk további része a Microsoft. segédösszetevője/Labs/virtualmachines szolgáltatást használó Resource Manager-sablonokat ismerteti. Ezeket a laboratóriumi rendszergazdák használják a laboratóriumi virtuális gépek létrehozásának automatizálására (például a megkövetelhető virtuális gépekre) vagy a aranyszínű képek generálására (például a rendszerkép-előállítóra).
 
-[Azure Resource Manager sablonok létrehozásával kapcsolatos ajánlott eljárások](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-template-best-practices) számos útmutatást és javaslatot nyújtanak a megbízható és könnyen használható Azure Resource Manager sablonok létrehozásához.
+[Azure Resource Manager sablonok létrehozásával kapcsolatos ajánlott eljárások](../azure-resource-manager/templates/template-best-practices.md) számos útmutatást és javaslatot nyújtanak a megbízható és könnyen használható Azure Resource Manager sablonok létrehozásához.
 
 ## <a name="view-and-save-a-virtual-machines-resource-manager-template"></a>Virtuális gép Resource Manager-sablonjának megtekintése és mentése
 1. A virtuális gép létrehozásának megkezdéséhez kövesse az első virtuális gép [tesztkörnyezetben való létrehozásához](tutorial-create-custom-lab.md#add-a-vm-to-the-lab) szükséges lépéseket.

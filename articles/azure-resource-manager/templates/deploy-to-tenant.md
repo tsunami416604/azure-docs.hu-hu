@@ -2,13 +2,13 @@
 title: Erőforrások üzembe helyezése a bérlőn
 description: Ismerteti, hogyan lehet erőforrásokat telepíteni a bérlői hatókörben egy Azure Resource Manager sablonban.
 ms.topic: conceptual
-ms.date: 05/08/2020
-ms.openlocfilehash: 45541bcbea5a80e55dbc9f80e1eae8e17189bf6e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/27/2020
+ms.openlocfilehash: a6523ff70dc7307713bb6aecf90e2ea9f8e2bfdd
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84945443"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321751"
 ---
 # <a name="create-resources-at-the-tenant-level"></a>Erőforrások létrehozása a bérlői szinten
 
@@ -16,15 +16,32 @@ Ha a szervezete megérett, előfordulhat, hogy az Azure AD-bérlőn belül meg k
 
 ## <a name="supported-resources"></a>Támogatott erőforrások
 
-A következő erőforrástípusok a bérlői szinten helyezhetők üzembe:
+Nem minden erőforrástípust lehet központilag telepíteni a bérlői szintre. Ez a szakasz felsorolja, hogy milyen típusú erőforrástípusok támogatottak.
 
-* [központi telepítések](/azure/templates/microsoft.resources/deployments) – a felügyeleti csoportokra vagy előfizetésekre telepítendő beágyazott sablonokhoz.
-* [managementGroups](/azure/templates/microsoft.management/managementgroups)
+Azure-szabályzatok esetén használja a következőt:
+
 * [policyAssignments](/azure/templates/microsoft.authorization/policyassignments)
 * [policyDefinitions](/azure/templates/microsoft.authorization/policydefinitions)
 * [policySetDefinitions](/azure/templates/microsoft.authorization/policysetdefinitions)
+
+Szerepköralapú hozzáférés-vezérléshez használja a következőt:
+
 * [roleAssignments](/azure/templates/microsoft.authorization/roleassignments)
 * [roleDefinitions](/azure/templates/microsoft.authorization/roledefinitions)
+
+A felügyeleti csoportokra, előfizetésekre vagy erőforráscsoportokre telepítendő beágyazott sablonok esetében használja a következőt:
+
+* [központi telepítések](/azure/templates/microsoft.resources/deployments)
+
+Felügyeleti csoportok létrehozásához használja a következőt:
+
+* [managementGroups](/azure/templates/microsoft.management/managementgroups)
+
+A költségek kezeléséhez használja a következőt:
+
+* [billingProfiles](/azure/templates/microsoft.billing/billingaccounts/billingprofiles)
+* [utasításokat](/azure/templates/microsoft.billing/billingaccounts/billingprofiles/instructions)
+* [invoiceSections](/azure/templates/microsoft.billing/billingaccounts/billingprofiles/invoicesections)
 
 ### <a name="schema"></a>Séma
 
@@ -94,6 +111,56 @@ Megadhatja a központi telepítés nevét, vagy használhatja az alapértelmezet
 
 Az egyes központi telepítési nevek esetében a hely nem módosítható. A központi telepítést nem lehet az egyik helyen létrehozni, ha egy másik helyen már van ilyen nevű üzemelő példány. Ha a hibakódot kapja `InvalidDeploymentLocation` , használjon más nevet vagy ugyanazt a helyet, mint az adott név előző üzembe helyezését.
 
+## <a name="deployment-scopes"></a>Központi telepítési hatókörök
+
+Bérlőn való üzembe helyezéskor a bérlő vagy a felügyeleti csoportok, az előfizetések és az erőforráscsoportok megcélzása is megcélozható a bérlőben. A sablont telepítő felhasználónak hozzáféréssel kell rendelkeznie a megadott hatókörhöz.
+
+A sablon erőforrások szakaszában meghatározott erőforrások a bérlőre lesznek alkalmazva.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "resources": [
+        tenant-level-resources
+    ],
+    "outputs": {}
+}
+```
+
+Egy felügyeleti csoportnak a bérlőn belüli célzásához adjon hozzá egy beágyazott központi telepítést, és adja meg a `scope` tulajdonságot.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "mgName": {
+            "type": "string"
+        }
+    },
+    "variables": {
+        "mgId": "[concat('Microsoft.Management/managementGroups/', parameters('mgName'))]"
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2020-06-01",
+            "name": "nestedMG",
+            "scope": "[variables('mgId')]",
+            "location": "eastus",
+            "properties": {
+                "mode": "Incremental",
+                "template": {
+                    nested-template
+                }
+            }
+        }
+    ],
+    "outputs": {}
+}
+```
+
 ## <a name="use-template-functions"></a>A Template functions használata
 
 A bérlői központi telepítések esetén fontos szempont a sablon funkcióinak használata:
@@ -141,7 +208,7 @@ A [következő sablon](https://github.com/Azure/azure-quickstart-templates/tree/
 }
 ```
 
-## <a name="assign-role"></a>Szerepkör kiosztása
+## <a name="assign-role"></a>Szerepkör hozzárendelése
 
 A [következő sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/tenant-deployments/tenant-role-assignment) egy szerepkört rendel a bérlői hatókörhöz.
 

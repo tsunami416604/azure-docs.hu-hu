@@ -7,12 +7,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/20/2017
 ms.custom: mvc
-ms.openlocfilehash: ae4a7335394f0e2f0bd0e3ac47c36b1f61026428
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ce9bf6fe6d130cf8511db2b2351c0de01b753d81
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079587"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318402"
 ---
 # <a name="use-azure-application-insights-to-understand-how-customers-are-using-your-application"></a>Az alkalmazás ügyfelek általi használatának megismerése az Azure Application Insights használatával
 
@@ -36,8 +36,8 @@ Az oktatóanyag elvégzéséhez:
     - ASP.NET és webfejlesztés
     - Azure-fejlesztés
 - Töltse le és telepítse a [Visual Studio Snapshot Debugger](https://aka.ms/snapshotdebugger) alkalmazást.
-- Telepítsen egy .NET-alkalmazást az Azure-hoz, és [engedélyezze az Application Insights SDK](../../azure-monitor/app/asp-net.md)-t. 
-- [Küldjön telemetriát az alkalmazásból](../../azure-monitor/app/usage-overview.md#send-telemetry-from-your-app) egyéni események/oldalmegtekintések hozzáadásához
+- Telepítsen egy .NET-alkalmazást az Azure-hoz, és [engedélyezze az Application Insights SDK](../app/asp-net.md)-t. 
+- [Küldjön telemetriát az alkalmazásból](../app/usage-overview.md#send-telemetry-from-your-app) egyéni események/oldalmegtekintések hozzáadásához
 - Küldjön [felhasználói környezetet](../app/usage-send-user-context.md) a felhasználók tevékenységeinek időbeli nyomon követéséhez és a használati funkciók teljes körű kiaknázásához.
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
@@ -164,4 +164,5 @@ A **munkafüzetek** adatvizualizációkat, Analytics-lekérdezéseket és szöve
 Most, hogy elsajátította, hogyan elemezheti a felhasználókat, térjen át a következő oktatóanyagra, amelyből elsajátíthatja az egyéni irányítópultok létrehozását, amelyek ezeket az információkat az alkalmazással kapcsolatos további hasznos adatokkal kombinálják.
 
 > [!div class="nextstepaction"]
-> [Egyéni irányítópultok létrehozása](../../azure-monitor/learn/tutorial-app-dashboards.md)
+> [Egyéni irányítópultok létrehozása](./tutorial-app-dashboards.md)
+

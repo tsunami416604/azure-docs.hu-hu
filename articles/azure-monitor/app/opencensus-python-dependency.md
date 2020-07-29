@@ -6,18 +6,18 @@ author: lzchen
 ms.author: lechen
 ms.date: 10/15/2019
 ms.custom: tracking-python
-ms.openlocfilehash: e99ea1d5a90455a4c470346fbbe5d1095c426e81
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c5f78535a3bd5ab93d3020d14a6242257c492297
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499460"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321292"
 ---
 # <a name="track-dependencies-with-opencensus-python"></a>Függőségek követése a OpenCensus Pythonban
 
 A függőségek az alkalmazás által hívott külső összetevők. A függőségi adatok gyűjtése a OpenCensus Python és annak különböző integrációi használatával történik. Ezután a rendszer elküldi az adat Application Insights Azure Monitor alatt `dependencies` telemetria.
 
-Először is a Python-alkalmazást a legújabb [OpenCensus PYTHON SDK](../../azure-monitor/app/opencensus-python.md)-val alakíthatja ki.
+Először is a Python-alkalmazást a legújabb [OpenCensus PYTHON SDK](./opencensus-python.md)-val alakíthatja ki.
 
 ## <a name="in-process-dependencies"></a>Folyamaton belüli függőségek
 
@@ -168,10 +168,11 @@ from opencensus.trace import config_integration
 config_integration.trace_integrations(['sqlalchemy'])
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Alkalmazástérkép](../../azure-monitor/app/app-map.md)
-* [Rendelkezésre állás](../../azure-monitor/app/monitor-web-app-availability.md)
-* [Search](../../azure-monitor/app/diagnostic-search.md)
-* [Log (Analytics) lekérdezés](../../azure-monitor/log-query/log-query-overview.md)
-* [Tranzakció diagnosztikája](../../azure-monitor/app/transaction-diagnostics.md)
+* [Alkalmazástérkép](./app-map.md)
+* [Rendelkezésre állás](./monitor-web-app-availability.md)
+* [Search](./diagnostic-search.md)
+* [Log (Analytics) lekérdezés](../log-query/log-query-overview.md)
+* [Tranzakció diagnosztikája](./transaction-diagnostics.md)
+

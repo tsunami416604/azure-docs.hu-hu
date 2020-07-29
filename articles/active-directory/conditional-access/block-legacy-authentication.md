@@ -11,11 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd66bc742d0832cba5d6f302bfe30c85e2d82716
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5d3df4eee14e5ce2f0638058efde0f80d0e5b051
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253341"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87275479"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>Útmutató: az Azure AD-val való örökölt hitelesítés letiltása feltételes hozzáféréssel   
 
@@ -54,7 +55,7 @@ Hogyan akadályozhatja meg, hogy az örökölt hitelesítést használó alkalma
 
 A feltételes hozzáférési házirendeket az első tényezős hitelesítés befejeződése után kényszeríti ki a rendszer. Ezért a feltételes hozzáférés nem az első vonali védelem, mint például a szolgáltatásmegtagadási (DoS) támadások, de az ilyen eseményekből származó jeleket is használhat (például a bejelentkezési kockázati szint, a kérelem helye stb.) a hozzáférés meghatározásához.
 
-## <a name="implementation"></a>Megvalósítás
+## <a name="implementation"></a>Implementálás
 
 Ez a szakasz azt ismerteti, hogyan lehet feltételes hozzáférési szabályzatot konfigurálni a régi hitelesítés blokkolására. 
 
@@ -84,7 +85,7 @@ Mielőtt blokkolni tudja az örökölt hitelesítést a címtárban, először m
 
 1. Navigáljon a **Azure Portal**  >  **Azure Active Directory**a  >  **bejelentkezések**elemre.
 1. Ha nem látható, akkor adja hozzá az ügyfélalkalmazás oszlopot, ha az **oszlopok**  >  **ügyfélalkalmazás**elemre kattint.
-1. **Szűrők hozzáadása**  >  **Ügyfélalkalmazás** > jelölje ki az összes örökölt hitelesítési protokollt, és kattintson az **alkalmaz**gombra.
+1. **Szűrők hozzáadása**  >  **Ügyfélalkalmazás** > válassza ki az összes örökölt hitelesítési protokollt. Válasszon a szűrési párbeszédablakon kívül a kiválasztott beállítások alkalmazásához és a párbeszédpanel bezárásához.
 
 A szűrés csak az örökölt hitelesítési protokollok által végrehajtott bejelentkezési kísérleteket fogja megjeleníteni. Az egyes bejelentkezési kísérletekre kattintva további részleteket is megtudhat. Az **alapinformációk** lapon található **ügyfélalkalmazás** mező jelzi, hogy melyik örökölt hitelesítési protokollt használta a rendszer.
 

@@ -6,27 +6,27 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/24/2019
-ms.openlocfilehash: bfd25c2572e91c2984f2845e08941614fff65570
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 77684ffef6be988dbb6b7057ba8c56f5227007b6
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539771"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326069"
 ---
 # <a name="using-service-map-solution-in-azure"></a>A Service Map megoldás használata az Azure-ban
 
 A Szolgáltatástérkép automatikusan felderíti az alkalmazás-összetevőket Windows és Linux rendszereken, és feltérképezi a szolgáltatások közötti kommunikációt. A Service Map használatával a kiszolgálókat úgy tekintheti meg, ahogyan azt el szoktuk képzelni: egymással összekapcsolt rendszereket, amelyek kritikus fontosságú szolgáltatásokat tesznek elérhetővé. A Service Map megmutatja a kiszolgálók közötti kapcsolatokat, a folyamatokat, a bejövő és a kimenő kapcsolatok késéseit, valamint minden TCP-vel csatlakoztatott architektúra portjait, és ehhez konfigurációra sincs szükség, csupán telepíteni kell az ügynököt.
 
-Ez a cikk a Service Map bevezetésének és használatának részleteit ismerteti. További információ a megoldás előfeltételeinek konfigurálásáról: [a Azure monitor for VMS áttekintésének engedélyezése](vminsights-enable-overview.md#prerequisites). Az összegzéshez a következőkre lesz szüksége:
+Ez a cikk a Service Map bevezetésének és használatának részleteit ismerteti. A megoldás előfeltételei a következők:
 
-* Log Analytics munkaterület a megoldás engedélyezéséhez.
+* Egy Log Analytics munkaterület egy [támogatott régióban](vminsights-configure-workspace.md#supported-regions).
 
-* A Windows rendszerű számítógépre vagy Linux-kiszolgálóra telepített Log Analytics ügynök, amely ugyanazt a munkaterületet jelenti, amelyhez a megoldást engedélyezte.
+* A Windows rendszerű számítógépre vagy Linux-kiszolgálóra telepített [log Analytics ügynök](vminsights-enable-overview.md#agents) ugyanahhoz a munkaterülethez csatlakozik, amelyhez a megoldást engedélyezte.
 
-* A Windows rendszerű számítógépre vagy Linux-kiszolgálóra telepített függőségi ügynök.
+* A Windows rendszerű számítógépre vagy Linux-kiszolgálóra telepített [függőségi ügynök](vminsights-enable-overview.md#agents) .
 
 >[!NOTE]
->Ha már telepítette Service Map, mostantól megtekintheti a térképeit Azure Monitor for VMsban is, amely a virtuális gépek állapotának és teljesítményének figyelésére szolgáló további funkciókat is tartalmaz. További információ: [Azure monitor for VMS Overview (áttekintés](../../azure-monitor/insights/vminsights-overview.md)). Ha többet szeretne megtudni a Service Map megoldás és a Azure Monitor for VMs Térkép funkció közötti különbségekről, tekintse meg az alábbi [gyakori kérdéseket](../faq.md#azure-monitor-for-vms).
+>Ha már telepítette Service Map, mostantól megtekintheti a térképeit Azure Monitor for VMsban is, amely a virtuális gépek állapotának és teljesítményének figyelésére szolgáló további funkciókat is tartalmaz. További információ: [Azure monitor for VMS Overview (áttekintés](./vminsights-overview.md)). Ha többet szeretne megtudni a Service Map megoldás és a Azure Monitor for VMs Térkép funkció közötti különbségekről, tekintse meg az alábbi [gyakori kérdéseket](../faq.md#azure-monitor-for-vms).
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -304,7 +304,7 @@ A **számítógép frissítései** ablaktábla a kiválasztott kiszolgálóhoz t
 
 ## <a name="log-analytics-records"></a>Log Analytics-rekordok
 
-Service Map számítógép-és feldolgozási leltári adatként [kereshetők](../../azure-monitor/log-query/log-query-overview.md) a log Analytics. Ezeket az információkat olyan forgatókönyvekre alkalmazhatja, amelyek tartalmazzák az áttelepítés megtervezését, a kapacitás elemzését, a felderítést és az igény szerinti teljesítménnyel kapcsolatos hibaelhárítást.
+Service Map számítógép-és feldolgozási leltári adatként [kereshetők](../log-query/log-query-overview.md) a log Analytics. Ezeket az információkat olyan forgatókönyvekre alkalmazhatja, amelyek tartalmazzák az áttelepítés megtervezését, a kapacitás elemzését, a felderítést és az igény szerinti teljesítménnyel kapcsolatos hibaelhárítást.
 
 A rendszer óránként létrehoz egy rekordot minden egyedi számítógéphez és folyamathoz, továbbá a folyamat vagy számítógép indításakor vagy a Service Mapba való bevezetéskor generált rekordokon kívül. Ezek a rekordok a következő táblákban található tulajdonságokkal rendelkeznek. A ServiceMapComputer_CL események mezői és értékei a ServiceMap Azure Resource Manager API-ban lévő számítógép-erőforrás mezőire vannak leképezve. A ServiceMapProcess_CL események mezői és értékei a ServiceMap Azure Resource Manager API-ban található folyamat-erőforrás mezőire vannak leképezve. A ResourceName_s mező megegyezik a megfelelő Resource Manager-erőforrásban található Name mezővel. 
 
@@ -548,9 +548,9 @@ A Microsoft a Service Map szolgáltatás használatával automatikusan gyűjti a
 
 További információ az adatok gyűjtéséről és használatáról: a [Microsoft Online Services adatvédelmi nyilatkozata](https://go.microsoft.com/fwlink/?LinkId=512132).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-További információ a Log Analytics [naplóbeli keresésekről](../../azure-monitor/log-query/log-query-overview.md) Service Map által összegyűjtött adatok lekéréséhez.
+További információ a Log Analytics [naplóbeli keresésekről](../log-query/log-query-overview.md) Service Map által összegyűjtött adatok lekéréséhez.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
@@ -603,3 +603,4 @@ Győződjön meg a `C:\Program Files\Microsoft Dependency Agent\logs\wrapper.log
 ## <a name="suggestions"></a>Javaslatok
 
 Visszajelzést szeretne kapni a Service Mapről vagy a dokumentációról?  Látogasson el a felhasználói hangvételi [oldalra](https://feedback.azure.com/forums/267889-log-analytics/category/184492-service-map), ahol javaslatot tehet a funkciókra, vagy megszavazhatja a meglévő javaslatokat.
+

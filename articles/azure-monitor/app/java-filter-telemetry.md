@@ -3,11 +3,12 @@ title: Az Azure Application Insights telemetria szűrése a Java-webalkalmazásb
 description: Csökkentse a telemetria forgalmat úgy, hogy kiszűri azokat az eseményeket, amelyeket nem kell figyelnie.
 ms.topic: conceptual
 ms.date: 3/14/2019
-ms.openlocfilehash: 020e54132e0ca0a9f9ccf0236f94515877015637
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cd53a0e02eb43bdf7cde4952ed4835c6d1cdd126
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77659917"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322584"
 ---
 # <a name="filter-telemetry-in-your-java-web-app"></a>Telemetria szűrése a Java-webalkalmazásban
 
@@ -22,7 +23,7 @@ A beépített szűrők a következők:
 
 > [!NOTE]
 > A szűrők elferdítik az alkalmazás metrikáit. Dönthet például úgy, hogy a lassú válaszok diagnosztizálásához beállít egy szűrőt a gyors válaszadási idő elvetéséhez. Azonban tisztában kell lennie azzal, hogy Application Insights által jelentett átlagos válaszidő a valós fordulatszámnál lassabb lesz, és a kérések száma kisebb lesz, mint a tényleges szám.
-> Ha ez problémát jelent, használja inkább a [mintavételezést](../../azure-monitor/app/sampling.md) .
+> Ha ez problémát jelent, használja inkább a [mintavételezést](./sampling.md) .
 
 ## <a name="setting-filters"></a>Szűrők beállítása
 
@@ -151,7 +152,7 @@ Kiszűri az adott szintetikus források telemetria:
 
 ### <a name="telemetry-event-filter"></a>Telemetria-esemény szűrője
 
-Egyéni események szűrése (a [TrackEvent ()](../../azure-monitor/app/api-custom-events-metrics.md#trackevent)használatával naplózva).
+Egyéni események szűrése (a [TrackEvent ()](./api-custom-events-metrics.md#trackevent)használatával naplózva).
 
 
 ```XML
@@ -167,7 +168,7 @@ Egyéni események szűrése (a [TrackEvent ()](../../azure-monitor/app/api-cust
 
 ### <a name="trace-telemetry-filter"></a>Nyomkövetési telemetria szűrője
 
-Szűri a naplók nyomkövetéseit (a [TrackTrace ()](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace) vagy egy [naplózási keretrendszer-gyűjtővel](java-trace-logs.md)naplózva).
+Szűri a naplók nyomkövetéseit (a [TrackTrace ()](./api-custom-events-metrics.md#tracktrace) vagy egy [naplózási keretrendszer-gyűjtővel](java-trace-logs.md)naplózva).
 
 ```XML
 
@@ -267,4 +268,5 @@ Létre kell hoznia a saját szűrő paramétereit, `application.properties` és 
 
 ## <a name="next-steps"></a>További lépések
 
-* [Mintavételezés](../../azure-monitor/app/sampling.md) – vegye fontolóra a mintavételezést olyan Alternatív megoldásként, amely nem rontja a metrikákat.
+* [Mintavételezés](./sampling.md) – vegye fontolóra a mintavételezést olyan Alternatív megoldásként, amely nem rontja a metrikákat.
+

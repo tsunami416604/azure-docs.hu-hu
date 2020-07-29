@@ -3,22 +3,22 @@ title: Az Azure AD App SAML-jogcímek testreszabása
 titleSuffix: Microsoft identity platform
 description: Megtudhatja, hogyan szabhatja testre az SAML-jogkivonat által az Azure AD-ben közzétett vállalati alkalmazásokhoz kiadott jogcímeket.
 services: active-directory
-author: rwike77
+author: kenwith
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: how-to
 ms.date: 10/22/2019
-ms.author: ryanwi
+ms.author: kenwith
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 6f56427dabdee715412596557fa075c5eb4df500
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5cce985e3f63ade94fb626d18bded440caeff1fa
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87027308"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87274468"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Útmutató: az SAML-jogkivonatban kiadott jogcímek testreszabása nagyvállalati alkalmazásokhoz
 
@@ -54,7 +54,7 @@ Ha az SAML-kérelem nem tartalmaz NameIDPolicy-elemet, az Azure AD a megadott fo
 
 A **név-azonosító formátum** legördülő listából választhatja ki az alábbi lehetőségek egyikét.
 
-| NameID formátuma | Description |
+| NameID formátuma | Leírás |
 |---------------|-------------|
 | **Alapértelmezett** | Az Azure AD az alapértelmezett forrás formátumot fogja használni. |
 | **Állandó** | Az Azure AD a NameID formátumot használja állandóként. |
@@ -98,7 +98,7 @@ Bármilyen állandó (statikus) értéket hozzárendelhet az Azure AD-ben defini
 
 Használhatja a jogcím-átalakítási funkciókat is.
 
-| Függvény | Description |
+| Függvény | Leírás |
 |----------|-------------|
 | **ExtractMailPrefix()** | Eltávolítja a tartományi utótagot az e-mail-címről vagy az egyszerű felhasználónévből. Ez csak a Felhasználónév első részét (például "joe_smith") adja ki a (z joe_smith@contoso.com ) helyett. |
 | **Csatlakozás ()** | Egy attribútumot ellenőrzött tartománnyal társít. Ha a kiválasztott felhasználóazonosító-érték tartományhoz tartozik, a rendszer kibontja a felhasználónevet a kiválasztott ellenőrzött tartomány hozzáfűzéséhez. Ha például az e-mail-címet ( joe_smith@contoso.com ) adja meg a felhasználói azonosító értékként, és a contoso.onmicrosoft.com-t ellenőrzött tartományként választja, akkor ez a következőt eredményezi: joe_smith@contoso.onmicrosoft.com . |

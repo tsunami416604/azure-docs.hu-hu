@@ -3,18 +3,18 @@ title: A Application Insights üzembe helyezésének megtervezése – egy vagy 
 description: A különböző erőforrásokhoz való közvetlen telemetria fejlesztési, tesztelési és üzemi bélyegzők.
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: ff301887aebf64d26d0fb391a8a16adefc8a3860
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 159a1c5554c0ac017bc9eeb2e9df65fddba334ba
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86516719"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326545"
 ---
 # <a name="how-many-application-insights-resources-should-i-deploy"></a>Hány Application Insights erőforrást kell üzembe helyezni
 
-Ha egy webalkalmazás következő verzióját fejleszti, nem szeretné összekeverni a [Application Insights](../../azure-monitor/app/app-insights-overview.md) telemetria az új verzióról és a már kiadott verzióról. A félreértések elkerülése érdekében küldje el a telemetria különböző fejlesztési szakaszokból, hogy elkülönítse Application Insights erőforrásait, külön rendszerállapot-kulccsal (erőforráskulcsot). Annak érdekében, hogy könnyebb legyen módosítani a kialakítási kulcsot az egyik fázisról a másikra való váltáskor, hasznos lehet a rendszerállapotkulcsot beállítása kódban a konfigurációs fájl helyett.
+Ha egy webalkalmazás következő verzióját fejleszti, nem szeretné összekeverni a [Application Insights](./app-insights-overview.md) telemetria az új verzióról és a már kiadott verzióról. A félreértések elkerülése érdekében küldje el a telemetria különböző fejlesztési szakaszokból, hogy elkülönítse Application Insights erőforrásait, külön rendszerállapot-kulccsal (erőforráskulcsot). Annak érdekében, hogy könnyebb legyen módosítani a kialakítási kulcsot az egyik fázisról a másikra való váltáskor, hasznos lehet a rendszerállapotkulcsot beállítása kódban a konfigurációs fájl helyett.
 
-(Ha a rendszer egy Azure Cloud Service-szolgáltatás, akkor [egy másik módszer a különálló erőforráskulcsot beállítására](../../azure-monitor/app/cloudservices.md).)
+(Ha a rendszer egy Azure Cloud Service-szolgáltatás, akkor [egy másik módszer a különálló erőforráskulcsot beállítására](./cloudservices.md).)
 
 ## <a name="about-resources-and-instrumentation-keys"></a>Az erőforrások és a rendszerállapot-kulcsok ismertetése
 
@@ -58,7 +58,7 @@ protected void Application_Start()
 Ebben a példában a különböző erőforrások erőforráskulcsot a webes konfigurációs fájl különböző verzióiba helyezi. A webes konfigurációs fájl cseréje – a kiadási parancsfájl részeként is elvégezhető – a cél erőforrást fogja cserélni.
 
 ### <a name="web-pages"></a>Weblapok
-A Rendszerállapotkulcsot az alkalmazás weblapjain is használják, a gyors üzembe helyezés [panelen található parancsfájlban](../../azure-monitor/app/javascript.md). Ahelyett, hogy a parancsfájlba kellene írnia, azt a kiszolgáló állapotától kell meghoznia. Például egy ASP.NET-alkalmazásban:
+A Rendszerállapotkulcsot az alkalmazás weblapjain is használják, a gyors üzembe helyezés [panelen található parancsfájlban](./javascript.md). Ahelyett, hogy a parancsfájlba kellene írnia, azt a kiszolgáló állapotától kell meghoznia. Például egy ASP.NET-alkalmazásban:
 
 ```javascript
 <script type="text/javascript">
@@ -86,14 +86,14 @@ Szüksége lesz az összes olyan erőforrás rendszerállapot-kulcsaira, amelyek
 ## <a name="filter-on-build-number"></a>Kiépítés számának szűrése
 Amikor közzéteszi az alkalmazás új verzióját, a különböző buildek közül választhat, hogy el szeretné-e különíteni a telemetria.
 
-Megadhatja az alkalmazás verzió tulajdonságát, így szűrheti a [keresési](../../azure-monitor/app/diagnostic-search.md) és [metrikai Explorer](../../azure-monitor/platform/metrics-charts.md) eredményeit.
+Megadhatja az alkalmazás verzió tulajdonságát, így szűrheti a [keresési](./diagnostic-search.md) és [metrikai Explorer](../platform/metrics-charts.md) eredményeit.
 
 Az alkalmazás verzió tulajdonságának beállítása több különböző módszerrel is elvégezhető.
 
 * Közvetlen beállítás:
 
     `telemetryClient.Context.Component.Version = typeof(MyProject.MyClass).Assembly.GetName().Version;`
-* Ezt a sort egy [telemetria inicializáló](../../azure-monitor/app/api-custom-events-metrics.md#defaults) sorba csomagolva biztosíthatja, hogy az összes TelemetryClient-példány konzisztens legyen.
+* Ezt a sort egy [telemetria inicializáló](./api-custom-events-metrics.md#defaults) sorba csomagolva biztosíthatja, hogy az összes TelemetryClient-példány konzisztens legyen.
 * [ASP.NET] Állítsa be a verziót a alkalmazásban `BuildInfo.config` . A webmodul a BuildLabel csomópontból fogja kiválasztani a verziót. Adja meg ezt a fájlt a projektben, és ne feledje, hogy a másolás mindig tulajdonságot Megoldáskezelő.
 
     ```XML
@@ -132,14 +132,15 @@ Az alkalmazásverzió nyomon követéséhez győződjön meg arról, hogy a Micr
 </PropertyGroup>
 ```
 
-Ha megkapja a verzióinformációkat, az Application Insights webmodul automatikusan hozzáadja az **Alkalmazás verzióját** tulajdonságként a telemetria minden eleméhez. Ez lehetővé teszi a verziók szerinti szűrést, amikor [diagnosztikai kereséseket](../../azure-monitor/app/diagnostic-search.md) végez, illetve [metrikákat vizsgál](../../azure-monitor/platform/metrics-charts.md).
+Ha megkapja a verzióinformációkat, az Application Insights webmodul automatikusan hozzáadja az **Alkalmazás verzióját** tulajdonságként a telemetria minden eleméhez. Ez lehetővé teszi a verziók szerinti szűrést, amikor [diagnosztikai kereséseket](./diagnostic-search.md) végez, illetve [metrikákat vizsgál](../platform/metrics-charts.md).
 
 Figyelje meg azonban, hogy a build verziószámát csak a Microsoft Build motorja hozza létre, nem pedig a Visual studióból származó fejlesztői Build.
 
 ### <a name="release-annotations"></a>Kiadási jegyzetek
-Ha az Azure DevOps-t használja, [beolvashatja](../../azure-monitor/app/annotations.md) a diagramokhoz hozzáadott jegyzet jelölőket, amikor új verziót ad ki. 
+Ha az Azure DevOps-t használja, [beolvashatja](./annotations.md) a diagramokhoz hozzáadott jegyzet jelölőket, amikor új verziót ad ki. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Több szerepkör megosztott erőforrásai](../../azure-monitor/app/app-map.md)
-* [Telemetria inicializáló létrehozása a következő megkülönböztetéséhez | B változatok](../../azure-monitor/app/api-filtering-sampling.md#add-properties)
+* [Több szerepkör megosztott erőforrásai](./app-map.md)
+* [Telemetria inicializáló létrehozása a következő megkülönböztetéséhez | B változatok](./api-filtering-sampling.md#add-properties)
+

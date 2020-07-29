@@ -3,15 +3,16 @@ title: Naplók lekérdezése Azure Monitorról tárolók számára | Microsoft D
 description: A tárolók Azure Monitor a metrikákat és a naplózási adatokat gyűjtik, és ez a cikk ismerteti a rekordokat, és példákat tartalmaz a lekérdezésekre.
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.openlocfilehash: 392aac8f81ac3894fca8b6f70570834a5af16ade
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 12c32c84f2c2aef5d6d0817c11e1ef010f30ffcb
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84298303"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320289"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-containers"></a>Naplók lekérdezése Azure Monitorról tárolók számára
 
-A tárolók Azure Monitor a tároló gazdagépek és tárolók teljesítmény-mérőszámait, leltározási adatait és állapotadatok adatait gyűjtik. Az adatok gyűjtése három percenként történik, és a rendszer továbbítja azokat a Azure Monitor Log Analytics munkaterületére. Ezek az adatAzure Monitor [lekérdezésekhez](../../azure-monitor/log-query/log-query-overview.md) érhetők el. Ezeket az információkat olyan forgatókönyvekre alkalmazhatja, amelyek tartalmazzák az áttelepítés megtervezését, a kapacitás elemzését, a felderítést és az igény szerinti teljesítménnyel kapcsolatos hibaelhárítást.
+A tárolók Azure Monitor a tároló gazdagépek és tárolók teljesítmény-mérőszámait, leltározási adatait és állapotadatok adatait gyűjtik. Az adatok gyűjtése három percenként történik, és a rendszer továbbítja azokat a Azure Monitor Log Analytics munkaterületére. Ezek az adatAzure Monitor [lekérdezésekhez](../log-query/log-query-overview.md) érhetők el. Ezeket az információkat olyan forgatókönyvekre alkalmazhatja, amelyek tartalmazzák az áttelepítés megtervezését, a kapacitás elemzését, a felderítést és az igény szerinti teljesítménnyel kapcsolatos hibaelhárítást.
 
 ## <a name="container-records"></a>Tároló rekordjai
 
@@ -47,7 +48,7 @@ A tároló a munkaterületre továbbított kimenetet naplózza STDOUT és STDERR
 
 Gyakran hasznos olyan lekérdezéseket létrehozni, amelyek egy példával vagy kettővel kezdődnek, majd az igényeinek megfelelően módosítják őket. A fejlettebb lekérdezések létrehozásához a következő példa-lekérdezésekkel lehet kísérletezni:
 
-| Lekérdezés | Description | 
+| Lekérdezés | Leírás | 
 |-------|-------------|
 | ContainerInventory<br> &#124; Project számítógép, név, rendszerkép, ImageTag, ContainerState, CreatedTime, StartedTime, FinishedTime<br> &#124; renderelési táblázat | Egy tároló életciklus-információinak listázása| 
 | KubeEvents_CL<br> &#124;, ahol nem (IsEmpty (Namespace_s))<br> &#124; rendezés TimeGenerated desc szerint<br> &#124; renderelési táblázat | Kubernetes események|
@@ -111,3 +112,4 @@ A kimenet az alábbi példához hasonló eredményeket mutat:
 ## <a name="next-steps"></a>További lépések
 
 A tárolók Azure Monitor nem tartalmaz előre meghatározott riasztásokat. Tekintse át a [teljesítménnyel kapcsolatos riasztások létrehozása a Azure monitor for containers](container-insights-alerts.md) szolgáltatással című témakört, amelyből megtudhatja, hogyan hozhat létre ajánlott riasztásokat magas CPU-és memóriahasználat esetén a DevOps vagy működési folyamatok és eljárások támogatásához 
+

@@ -3,12 +3,12 @@ title: Docker-alkalmazások figyelése az Azure Application Insightsban | Micros
 description: A Docker-teljesítményszámlálók, az események és a kivételek a Application Insightson, valamint a tároló alkalmazások telemetria is megjeleníthetők.
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: 6af39db68c2020e578fe6fbd39870b2e00a16e07
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 1cbb2968fec68eb750ce3c9b6cac09f23a1d36c5
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539924"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324420"
 ---
 # <a name="monitor-docker-applications-in-application-insights-deprecated"></a>Docker-alkalmazások figyelése Application Insightsban (elavult)
 
@@ -23,15 +23,15 @@ Ha a [Application Insights rendszerképet](https://hub.docker.com/r/microsoft/ap
 
 * Életciklus-telemetria a gazdagépen futó összes tárolóról – indítás, leállítás és így tovább.
 * Teljesítményszámlálók az összes tárolóhoz. CPU, memória, hálózati használat és sok más.
-* Ha [telepítette Application INSIGHTS SDK](../../azure-monitor/app/java-get-started.md) -t a Javához a tárolókban futó alkalmazásokban, az alkalmazások összes telemetria további tulajdonságokkal fog rendelkezni a tároló és a gazdaszámítógép azonosításához. Így például, ha egynél több gazdagépen futó alkalmazás példányai vannak, egyszerűen szűrheti az alkalmazás telemetria a gazdagép alapján.
+* Ha [telepítette Application INSIGHTS SDK](./java-get-started.md) -t a Javához a tárolókban futó alkalmazásokban, az alkalmazások összes telemetria további tulajdonságokkal fog rendelkezni a tároló és a gazdaszámítógép azonosításához. Így például, ha egynél több gazdagépen futó alkalmazás példányai vannak, egyszerűen szűrheti az alkalmazás telemetria a gazdagép alapján.
 
 ## <a name="set-up-your-application-insights-resource"></a>A Application Insights erőforrás beállítása
 
-1. Jelentkezzen be [Microsoft Azure Portalba](https://azure.com) , és nyissa meg az alkalmazás Application Insights erőforrását; vagy [hozzon létre egy újat](../../azure-monitor/app/create-new-resource.md ). 
+1. Jelentkezzen be [Microsoft Azure Portalba](https://azure.com) , és nyissa meg az alkalmazás Application Insights erőforrását; vagy [hozzon létre egy újat](./create-new-resource.md). 
    
-    *Melyik erőforrást használjam?* Ha a gazdagépen futó alkalmazásokat valaki más fejlesztette ki, akkor [létre kell hoznia egy új Application Insights erőforrást](../../azure-monitor/app/create-new-resource.md ). Itt tekintheti meg és elemezheti a telemetria. (Válassza az "általános" lehetőséget az alkalmazás típusához.)
+    *Melyik erőforrást használjam?* Ha a gazdagépen futó alkalmazásokat valaki más fejlesztette ki, akkor [létre kell hoznia egy új Application Insights erőforrást](./create-new-resource.md). Itt tekintheti meg és elemezheti a telemetria. (Válassza az "általános" lehetőséget az alkalmazás típusához.)
    
-    Ha azonban Ön fejleszti az alkalmazásokat, reméljük, hogy [hozzáadta Application INSIGHTS SDK](../../azure-monitor/app/java-get-started.md) -t mindegyikhez. Ha ezek mind egyetlen üzleti alkalmazás összetevői, akkor beállíthatja, hogy mindegyiket egy adott erőforráshoz telemetria el, és ugyanazt az erőforrást fogja használni a Docker-életciklus és a teljesítményadatok megjelenítéséhez. 
+    Ha azonban Ön fejleszti az alkalmazásokat, reméljük, hogy [hozzáadta Application INSIGHTS SDK](./java-get-started.md) -t mindegyikhez. Ha ezek mind egyetlen üzleti alkalmazás összetevői, akkor beállíthatja, hogy mindegyiket egy adott erőforráshoz telemetria el, és ugyanazt az erőforrást fogja használni a Docker-életciklus és a teljesítményadatok megjelenítéséhez. 
    
     A harmadik forgatókönyv, hogy a legtöbb alkalmazást fejlesztette ki, de külön erőforrásokat használ a telemetria megjelenítéséhez. Ebben az esetben valószínűleg egy külön erőforrást is létre kell hoznia a Docker-adatforráshoz.
 
@@ -54,7 +54,7 @@ Most, hogy elvégezte a telemetria megjelenítését, beállíthatja a begyűjt�
 Docker-gazdagépen csak egy Application Insights rendszerkép szükséges. Ha az alkalmazás több Docker-gazdagépre van telepítve, akkor minden gazdagépen ismételje meg a parancsot.
 
 ## <a name="update-your-app"></a>Alkalmazás frissítése
-Ha az alkalmazása a [Javához készült Application INSIGHTS SDK](../../azure-monitor/app/java-get-started.md)-val van ellátva, adja hozzá a következő sort a projektben lévő ApplicationInsights.xml-fájlhoz a `<TelemetryInitializers>` elem alatt:
+Ha az alkalmazása a [Javához készült Application INSIGHTS SDK](./java-get-started.md)-val van ellátva, adja hozzá a következő sort a projektben lévő ApplicationInsights.xml-fájlhoz a `<TelemetryInitializers>` elem alatt:
 
 ```xml
 
@@ -73,7 +73,7 @@ Hamarosan megtekintheti a Docker-alkalmazásból érkező adatok adatait, külö
 ### <a name="docker-container-events"></a>Docker-tároló eseményei
 ![például](./media/docker/13.png)
 
-Az egyes események kivizsgálásához kattintson a [Keresés](../../azure-monitor/app/diagnostic-search.md)gombra. Keresés és szűrés a kívánt események megkereséséhez. További részletekért kattintson bármelyik eseményre.
+Az egyes események kivizsgálásához kattintson a [Keresés](./diagnostic-search.md)gombra. Keresés és szűrés a kívánt események megkereséséhez. További részletekért kattintson bármelyik eseményre.
 
 ### <a name="exceptions-by-container-name"></a>Kivételek a tároló neve alapján
 ![például](./media/docker/14.png)
@@ -90,14 +90,15 @@ Az AI SDK-val az alkalmazásból elkészített telemetria-kérések a Docker kö
 
 *Hogyan lekérni a telemetria az alkalmazásból?*
 
-* Telepítse az Application Insights SDK-t az alkalmazásban. Útmutató: [Java Web Apps](../../azure-monitor/app/java-get-started.md), [Windows Web Apps](../../azure-monitor/app/asp-net.md).
+* Telepítse az Application Insights SDK-t az alkalmazásban. Útmutató: [Java Web Apps](./java-get-started.md), [Windows Web Apps](./asp-net.md).
 
 ## <a name="video"></a>Videó
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Java-Application Insights](../../azure-monitor/app/java-get-started.md)
-* [Node.js-hez készült Application Insights](../../azure-monitor/app/nodejs.md)
-* [ASP.NET Application Insights](../../azure-monitor/app/asp-net.md)
+* [Java-Application Insights](./java-get-started.md)
+* [Node.js-hez készült Application Insights](./nodejs.md)
+* [ASP.NET Application Insights](./asp-net.md)
+

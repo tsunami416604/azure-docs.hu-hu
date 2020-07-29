@@ -6,12 +6,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/19/2020
 ms.topic: tutorial
-ms.openlocfilehash: 53031efa831f788fe0fe58146496b427f4cfb4db
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: fa92cd4f4cba63eee09714813954af9fa9c9c4ea
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86185534"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290947"
 ---
 # <a name="tutorial-create-a-graphical-runbook"></a>Oktatóanyag: grafikus runbook létrehozása
 
@@ -32,6 +32,7 @@ Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 * Egy Azure-előfizetés. Ha még nem rendelkezik fiókkal, [aktiválhatja MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/), illetve [regisztrálhat egy ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * [Automation-fiók](../index.yml) a forgatókönyv tárolásához és az Azure erőforrásokban való hitelesítéshez. Ennek a fióknak jogosultsággal kell rendelkeznie a virtuális gép elindításához és leállításához.
 * Egy Azure virtuális gép. A gép leállítása és elindítása óta nem lehet üzemi virtuális gép.
+* Szükség esetén [importálja az Azure-modulokat](../shared-resources/modules.md) vagy a [frissítési modulokat](../automation-update-azure-modules.md) a használt parancsmagok alapján.
 
 ## <a name="step-1---create-runbook"></a>1. lépés – Runbook létrehozása
 
@@ -349,7 +350,7 @@ Mostantól módosíthatja a runbook, hogy csak akkor próbálja meg elindítani 
 
 31. Indítsa el a runbook a virtuális gép leállításával, és a számítógépnek el kell indulnia.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információ a grafikus létrehozásról: [grafikus runbook készítése Azure Automationban](../automation-graphical-authoring-intro.md).
 * A PowerShell-runbookok megkezdéséhez tekintse meg [a PowerShell-Runbook létrehozása](automation-tutorial-runbook-textual-powershell.md)című témakört.

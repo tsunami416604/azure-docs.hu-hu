@@ -4,16 +4,16 @@ description: Tekintse át, hogy mit tehet a metrikus riasztásokkal, és hogyan 
 ms.date: 07/16/2020
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: 05e25a67279786ef4679552503e577b1b1a382ea
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9ac034eb144e5873f8f73ab7b1d7459394ce4775
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539431"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327140"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>A metrikariasztások működése az Azure Monitorban
 
-A Azure Monitor metrikus riasztások a többdimenziós mérőszámok felett működnek. Ezek a metrikák lehetnek [platform-metrikák](alerts-metric-near-real-time.md#metrics-and-dimensions-supported), [Egyéni metrikák](../../azure-monitor/platform/metrics-custom-overview.md), [népszerű naplók Azure monitor konvertálva mérőszámokra](../../azure-monitor/platform/alerts-metric-logs.md) és Application Insights mérőszámokra. A metrikai riasztások rendszeres időközönként értékelik ki, hogy egy vagy több metrikai idősorozatra vonatkozó feltételek igazak-e, és értesítjük, ha teljesülnek az értékelések. A metrikai riasztások állapota, azaz csak akkor küldenek értesítéseket, ha az állapot megváltozik.
+A Azure Monitor metrikus riasztások a többdimenziós mérőszámok felett működnek. Ezek a metrikák lehetnek [platform-metrikák](alerts-metric-near-real-time.md#metrics-and-dimensions-supported), [Egyéni metrikák](./metrics-custom-overview.md), [népszerű naplók Azure monitor konvertálva mérőszámokra](./alerts-metric-logs.md) és Application Insights mérőszámokra. A metrikai riasztások rendszeres időközönként értékelik ki, hogy egy vagy több metrikai idősorozatra vonatkozó feltételek igazak-e, és értesítjük, ha teljesülnek az értékelések. A metrikai riasztások állapota, azaz csak akkor küldenek értesítéseket, ha az állapot megváltozik.
 
 ## <a name="how-do-metric-alerts-work"></a>Hogyan működnek a metrikus riasztások?
 
@@ -135,9 +135,9 @@ Eddig azt tapasztalta, hogy egyetlen metrikai riasztást is használhat egy vagy
 
 Ez a funkció jelenleg a platform metrikái (nem egyéni metrikák) esetén támogatott a következő szolgáltatásokhoz a következő Azure-felhőkben:
 
-| Szolgáltatás | Nyilvános Azure | Államigazgatás | Kína |
+| Szolgáltatás | Nyilvános Azure | Government | Kína |
 |:--------|:--------|:--------|:--------|
-| Virtuális gépek  | **Igen** | Nem | Nem |
+| Virtual machines (Virtuális gépek)  | **Igen** | Nem | Nem |
 | SQL Server-adatbázisok | **Igen** | **Igen** | Nem |
 | SQL Server rugalmas készletek | **Igen** | **Igen** | Nem |
 | Adatmező peremhálózati eszközei | **Igen** | **Igen** | Nem |
@@ -152,7 +152,7 @@ A figyelés hatókörét a három módszer egyikével adhatja meg egyetlen metri
 >
 > A többerőforrásos metrika riasztási szabályának hatókörének tartalmaznia kell legalább egy erőforrást a kiválasztott erőforrástípus számára.
 
-Több erőforrást figyelő metrikai riasztási szabályok létrehozása olyan, mint [bármely más metrikai riasztás](alerts-metric.md) , amely egyetlen erőforrás figyelésére szolgál. Csak a különbség, hogy az összes figyelni kívánt erőforrást kijelöli. Ezeket a szabályokat [Azure Resource Manager sablonokon](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-a-metric-alert-that-monitors-multiple-resources)keresztül is létrehozhatja. Minden egyes megfigyelt erőforráshoz külön értesítést fog kapni.
+Több erőforrást figyelő metrikai riasztási szabályok létrehozása olyan, mint [bármely más metrikai riasztás](alerts-metric.md) , amely egyetlen erőforrás figyelésére szolgál. Csak a különbség, hogy az összes figyelni kívánt erőforrást kijelöli. Ezeket a szabályokat [Azure Resource Manager sablonokon](./alerts-metric-create-templates.md#template-for-a-metric-alert-that-monitors-multiple-resources)keresztül is létrehozhatja. Minden egyes megfigyelt erőforráshoz külön értesítést fog kapni.
 
 > [!NOTE]
 >
@@ -164,12 +164,13 @@ A metrikus riasztások esetében általában 5 percen belül értesítést fog k
 
 ## <a name="supported-resource-types-for-metric-alerts"></a>A metrikus riasztások által támogatott erőforrástípusok
 
-A támogatott erőforrástípusok teljes listáját ebben a [cikkben](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported)találja.
+A támogatott erőforrástípusok teljes listáját ebben a [cikkben](./alerts-metric-near-real-time.md#metrics-and-dimensions-supported)találja.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Megtudhatja, hogyan hozhat létre, tekinthet meg és kezelhet metrikus riasztásokat az Azure-ban](alerts-metric.md)
-- [Megtudhatja, hogyan helyezhet üzembe metrikus riasztásokat Azure Resource Manager sablonok használatával](../../azure-monitor/platform/alerts-metric-create-templates.md)
+- [Megtudhatja, hogyan helyezhet üzembe metrikus riasztásokat Azure Resource Manager sablonok használatával](./alerts-metric-create-templates.md)
 - [További információ a műveleti csoportokról](action-groups.md)
 - [További információ a dinamikus küszöbértékek feltételének típusáról](alerts-dynamic-thresholds.md)
+

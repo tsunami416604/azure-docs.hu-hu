@@ -4,17 +4,17 @@ description: Hasonlítsa össze a Windows Servert futtató Azure-beli virtuális
 author: cynthn
 ms.service: virtual-machines-windows
 ms.subservice: sizes
-ms.topic: article
+ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 04/29/2020
 ms.author: cynthn
 ms.reviewer: davberg
-ms.openlocfilehash: c3e0fdc398d3b0b851c6f548119858e6c41a5a19
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 019c627743c344fc0f07c8954ebdfdf2eca0437b
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82583918"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87267047"
 ---
 # <a name="compute-benchmark-scores-for-windows-vms"></a>Windows rendszerű virtuális gépek számítási teljesítményteszt-pontszámai
 A következő SPECInt-teljesítménytesztek a Windows Server rendszert futtató Azure-beli virtuális gépek számítási teljesítményét mutatják be. A számítási teljesítménytesztek pontszámai Linux rendszerű [virtuális gépek](../linux/compute-benchmark-scores.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)esetén is elérhetők.
@@ -32,9 +32,9 @@ A következő SPECInt-teljesítménytesztek a Windows Server rendszert futtató 
 | Standard_A2_v2 | 2 | 1 | Intel (R) Xeon (R) CPU E5 – 2673 v4 @ 2.30 GHz | 17 | 28,9 | 1.8 | 
 | Standard_A2m_v2 | 2 | 1 | Intel (R) Xeon (R) CPU E5-2660 0 @ 2.20 GHz | 14 | 29,0 | 0,5 | 
 | Standard_A2m_v2 | 2 | 1 | Intel (R) Xeon (R) CPU E5 – 2673 v3 @ 2.40 GHz | 11 | 26,3 | 0,8 | 
-| Standard_A2m_v2 | 2 | 1 | Intel (R) Xeon (R) CPU E5 – 2673 v4 @ 2.30 GHz | 21 | 28,4 | 1.0 | 
-| Standard_A4_v2 | 4 | 1 | Intel (R) Xeon (R) CPU E5-2660 0 @ 2.20 GHz | 27 | 56,6 | 1.0 | 
-| Standard_A4_v2 | 4 | 1 | Intel (R) Xeon (R) CPU E5 – 2673 v3 @ 2.40 GHz | 13 | 52,8 | 2.0 | 
+| Standard_A2m_v2 | 2 | 1 | Intel (R) Xeon (R) CPU E5 – 2673 v4 @ 2.30 GHz | 21 | 28,4 | 1,0 | 
+| Standard_A4_v2 | 4 | 1 | Intel (R) Xeon (R) CPU E5-2660 0 @ 2.20 GHz | 27 | 56,6 | 1,0 | 
+| Standard_A4_v2 | 4 | 1 | Intel (R) Xeon (R) CPU E5 – 2673 v3 @ 2.40 GHz | 13 | 52,8 | 2,0 | 
 | Standard_A4_v2 | 4 | 1 | Intel (R) Xeon (R) CPU E5 – 2673 v4 @ 2.30 GHz | 15 | 52,1 | 4,5 | 
 | Standard_A4m_v2 | 4 | 1 | Intel (R) Xeon (R) CPU E5-2660 0 @ 2.20 GHz | 17 | 56,4 | 1.8 | 
 | Standard_A4m_v2 | 4 | 1 | Intel (R) Xeon (R) CPU E5 – 2673 v3 @ 2.40 GHz | 6 | 53,4 | 1.9 | 
@@ -61,7 +61,7 @@ A következő SPECInt-teljesítménytesztek a Windows Server rendszert futtató 
 | Standard_B2ms | 2 | 1 | Intel (R) Xeon (R) CPU E5 – 2673 v4 @ 2.30 GHz | 36 | 19,8 | 0,8 | 
 | Standard_B2s | 2 | 1 | Intel (R) Xeon (R) CPU E5 – 2673 v3 @ 2.40 GHz | 2 | 13,0 | 0,0 | 
 | Standard_B2s | 2 | 1 | Intel (R) Xeon (R) CPU E5 – 2673 v4 @ 2.30 GHz | 29 | 13,0 | 0,5 | 
-| Standard_B4ms | 4 | 1 | Intel (R) Xeon (R) CPU E5 – 2673 v3 @ 2.40 GHz | 6 | 27,1 | 1.0 | 
+| Standard_B4ms | 4 | 1 | Intel (R) Xeon (R) CPU E5 – 2673 v3 @ 2.40 GHz | 6 | 27,1 | 1,0 | 
 | Standard_B4ms | 4 | 1 | Intel (R) Xeon (R) CPU E5 – 2673 v4 @ 2.30 GHz | 43 | 28,3 | 0.7 | 
 | Standard_B8ms | 8 | 1 | Intel (R) Xeon (R) CPU E5 – 2673 v3 @ 2.40 GHz | 3 | 42,0 | 0,0 | 
 | Standard_B8ms | 8 | 1 | Intel (R) Xeon (R) CPU E5 – 2673 v4 @ 2.30 GHz | 25 | 41,4 | 0.9 | 
@@ -163,7 +163,7 @@ A következő SPECInt-teljesítménytesztek a Windows Server rendszert futtató 
 | Standard_D1_v2 | 1 | 1 | Intel (R) Xeon (R) CPU E5 – 2673 v4 @ 2.30 GHz | 31 | 34,7 | 2.5 | 
 | Standard_D2_v2 | 2 | 1 | Intel (R) Xeon (R) CPU E5 – 2673 v3 @ 2.40 GHz | 18 | 66,0 | 1.8 | 
 | Standard_D2_v2 | 2 | 1 | Intel (R) Xeon (R) CPU E5 – 2673 v4 @ 2.30 GHz | 31 | 69,9 | 5.0 | 
-| Standard_D3_v2 | 4 | 1 | Intel (R) Xeon (R) CPU E5 – 2673 v3 @ 2.40 GHz | 27 | 127,7 | 3.0 | 
+| Standard_D3_v2 | 4 | 1 | Intel (R) Xeon (R) CPU E5 – 2673 v3 @ 2.40 GHz | 27 | 127,7 | 3,0 | 
 | Standard_D3_v2 | 4 | 1 | Intel (R) Xeon (R) CPU E5 – 2673 v4 @ 2.30 GHz | 27 | 133,4 | 9,1 | 
 | Standard_D4_v2 | 8 | 1 | Intel (R) Xeon (R) CPU E5 – 2673 v3 @ 2.40 GHz | 15 | 238,7 | 4.4 | 
 | Standard_D4_v2 | 8 | 1 | Intel (R) Xeon (R) CPU E5 – 2673 v4 @ 2.30 GHz | 36 | 248,9 | 4,8 | 
@@ -172,7 +172,7 @@ A következő SPECInt-teljesítménytesztek a Windows Server rendszert futtató 
 | Standard_D5_v2 | 16 | 2 | Intel (R) Xeon (R) CPU E5 – 2673 v3 @ 2.40 GHz | 5 | 466,0 | 0,0 | 
 | Standard_D11_v2 | 2 | 1 | Intel (R) Xeon (R) CPU E5 – 2673 v3 @ 2.40 GHz | 22 | 66,4 | 2.9 | 
 | Standard_D11_v2 | 2 | 1 | Intel (R) Xeon (R) CPU E5 – 2673 v4 @ 2.30 GHz | 27 | 69,0 | 6.7 | 
-| Standard_D12_v2 | 4 | 1 | Intel (R) Xeon (R) CPU E5 – 2673 v3 @ 2.40 GHz | 24 | 127,7 | 4.6 | 
+| Standard_D12_v2 | 4 | 1 | Intel (R) Xeon (R) CPU E5 – 2673 v3 @ 2.40 GHz | 24 | 127,7 | 4,6 | 
 | Standard_D12_v2 | 4 | 1 | Intel (R) Xeon (R) CPU E5 – 2673 v4 @ 2.30 GHz | 20 | 135,9 | 9,3 | 
 | Standard_D13_v2 | 8 | 1 | Intel (R) Xeon (R) CPU E5 – 2673 v3 @ 2.40 GHz | 16 | 237,4 | 6.6 | 
 | Standard_D13_v2 | 8 | 1 | Intel (R) Xeon (R) CPU E5 – 2673 v4 @ 2.30 GHz | 28 | 250,2 | 3,8 | 
@@ -188,7 +188,7 @@ A következő SPECInt-teljesítménytesztek a Windows Server rendszert futtató 
 | Standard_E4s_v3 | 4 | 1 | Intel (R) Xeon (R) CPU E5 – 2673 v4 @ 2.30 GHz | 28 | 81,4 | 3.3 | 
 | Standard_E8s_v3 | 8 | 1 | Intel (R) Xeon (R) CPU E5 – 2673 v4 @ 2.30 GHz | 29 | 156,3 | 5.1 | 
 | Standard_E8 – 2s_v3 | 2 | 1 | Intel (R) Xeon (R) CPU E5 – 2673 v4 @ 2.30 GHz | 57 | 41,8 | 2,6 | 
-| Standard_E8 – 4s_v3 | 4 | 1 | Intel (R) Xeon (R) CPU E5 – 2673 v4 @ 2.30 GHz | 45 | 82,9 | 3.0 | 
+| Standard_E8 – 4s_v3 | 4 | 1 | Intel (R) Xeon (R) CPU E5 – 2673 v4 @ 2.30 GHz | 45 | 82,9 | 3,0 | 
 | Standard_E16s_v3 | 16 | 1 | Intel (R) Xeon (R) CPU E5 – 2673 v4 @ 2.30 GHz | 31 | 295,7 | 4,5 | 
 | Standard_E16 – 4s_v3 | 4 | 1 | Intel (R) Xeon (R) CPU E5 – 2673 v4 @ 2.30 GHz | 45 | 82,7 | 3,8 | 
 | Standard_E16 – 8s_v3 | 8 | 1 | Intel (R) Xeon (R) CPU E5 – 2673 v4 @ 2.30 GHz | 39 | 158,3 | 4,5 | 
@@ -241,8 +241,8 @@ A következő SPECInt-teljesítménytesztek a Windows Server rendszert futtató 
 
 | Méret | vCPU-k | NUMA-csomópontok | CPU | Futtatás | Átlagos alapdíj | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
-| Standard_F1s | 1 | 1 | Intel (R) Xeon (R) CPU E5 – 2673 v3 @ 2.40 GHz | 31 | 33,2 | 1.0 | 
-| Standard_F1s | 1 | 1 | Intel (R) Xeon (R) CPU E5 – 2673 v4 @ 2.30 GHz | 41 | 35,1 | 2.0 | 
+| Standard_F1s | 1 | 1 | Intel (R) Xeon (R) CPU E5 – 2673 v3 @ 2.40 GHz | 31 | 33,2 | 1,0 | 
+| Standard_F1s | 1 | 1 | Intel (R) Xeon (R) CPU E5 – 2673 v4 @ 2.30 GHz | 41 | 35,1 | 2,0 | 
 | Standard_F2s | 2 | 1 | Intel (R) Xeon (R) CPU E5 – 2673 v3 @ 2.40 GHz | 18 | 63,7 | 1.8 | 
 | Standard_F2s | 2 | 1 | Intel (R) Xeon (R) CPU E5 – 2673 v4 @ 2.30 GHz | 21 | 66,6 | 3,8 | 
 | Standard_F4s | 4 | 1 | Intel (R) Xeon (R) CPU E5 – 2673 v3 @ 2.40 GHz | 14 | 128,4 | 2.9 | 
@@ -257,7 +257,7 @@ A következő SPECInt-teljesítménytesztek a Windows Server rendszert futtató 
 | Méret | vCPU-k | NUMA-csomópontok | CPU | Futtatás | Átlagos alapdíj | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_F1 | 1 | 1 | Intel (R) Xeon (R) CPU E5 – 2673 v3 @ 2.40 GHz | 15 | 32,8 | 1.8 | 
-| Standard_F1 | 1 | 1 | Intel (R) Xeon (R) CPU E5 – 2673 v4 @ 2.30 GHz | 13 | 33,3 | 2.0 | 
+| Standard_F1 | 1 | 1 | Intel (R) Xeon (R) CPU E5 – 2673 v4 @ 2.30 GHz | 13 | 33,3 | 2,0 | 
 | Standard_F2 | 2 | 1 | Intel (R) Xeon (R) CPU E5 – 2673 v3 @ 2.40 GHz | 27 | 64,9 | 6.0 | 
 | Standard_F2 | 2 | 1 | Intel (R) Xeon (R) CPU E5 – 2673 v4 @ 2.30 GHz | 21 | 67,8 | 4,9 | 
 | Standard_F4 | 4 | 1 | Intel (R) Xeon (R) CPU E5 – 2673 v3 @ 2.40 GHz | 18 | 128,4 | 3.3 | 
@@ -335,7 +335,7 @@ A következő SPECInt-teljesítménytesztek a Windows Server rendszert futtató 
 | Standard_M128s | 128 | 4 | Intel (R) Xeon (R) CPU E7 – 8890 v3 @ 2,50 GHz | 12 | 1775,8 | 11,6 | 
 | Standard_M16ms | 16 | 1 | Intel (R) Xeon (R) CPU E7 – 8890 v3 @ 2,50 GHz | 20 | 293,1 | 11,8 | 
 | Standard_M32ls | 32 | 1 | Intel (R) Xeon (R) CPU E7 – 8890 v3 @ 2,50 GHz | 13 | 535,2 | 4,8 | 
-| Standard_M32ms | 32 | 1 | Intel (R) Xeon (R) CPU E7 – 8890 v3 @ 2,50 GHz | 11 | 534,1 | 4.6 | 
+| Standard_M32ms | 32 | 1 | Intel (R) Xeon (R) CPU E7 – 8890 v3 @ 2,50 GHz | 11 | 534,1 | 4,6 | 
 | Standard_M32ms | 32 | 2 | Intel (R) Xeon (R) CPU E7 – 8890 v3 @ 2,50 GHz | 1 | 589,0 | 0,0 | 
 | Standard_M32ts | 32 | 1 | Intel (R) Xeon (R) CPU E7 – 8890 v3 @ 2,50 GHz | 12 | 538,6 | 3.2 | 
 | Standard_M64ls | 64 | 2 | Intel (R) Xeon (R) CPU E7 – 8890 v3 @ 2,50 GHz | 13 | 1015,2 | 10,0 | 

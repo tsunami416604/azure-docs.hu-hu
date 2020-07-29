@@ -1,7 +1,7 @@
 ---
 title: Virtuális hálózat létrehozása – rövid útmutató – Azure PowerShell
 titlesuffix: Azure Virtual Network
-description: Ebben a rövid útmutatóban megismerheti, hogyan hozhat létre virtuális hálózatot az Azure Portal használatával. A virtuális hálózatok lehetővé teszik az Azure-erőforrások, például a virtuális gépek, a magánjellegű kommunikációt és az internetet.
+description: Ebben a rövid útmutatóban egy virtuális hálózatot hoz létre a Azure Portal használatával. A virtuális hálózatok lehetővé teszik az Azure-erőforrások kommunikációját egymással és az internettel.
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 12/04/2018
 ms.author: kumud
-ms.openlocfilehash: 1d30b35264707c59c899cc3a224e4affa2a4696e
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: e547da3d1a26a7dcc110a8349dbae3c7e3f29e0b
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84707463"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291943"
 ---
 # <a name="quickstart-create-a-virtual-network-using-powershell"></a>Gyors útmutató: Virtuális hálózat létrehozása a PowerShell használatával
 
@@ -155,7 +155,7 @@ mstsc /v:<publicIpAddress>
 
 1. A *myVm1*távoli asztal nyissa meg a PowerShellt.
 
-1. Írja be a `ping myVm2` (igen) kifejezést.
+1. Írja be a következő szöveget: `ping myVm2`
 
     A következőhöz hasonló lesz:
 
@@ -209,7 +209,7 @@ mstsc /v:<publicIpAddress>
 
 1. Zárja be a *myVm2* virtuális géppel létesített távoli asztali kapcsolatot.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha végzett a virtuális hálózattal és a virtuális gépekkel, a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) használatával távolítsa el az erőforráscsoportot és a hozzá tartozó összes erőforrást:
 

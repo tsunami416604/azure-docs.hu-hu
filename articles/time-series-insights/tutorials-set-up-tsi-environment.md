@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: tutorial
-ms.date: 07/07/2020
+ms.date: 07/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: 8db3a5292af2d53945c60a7b4ec1eb3c78381b9b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 83cf8ca47774713ca8dbfd493d7aa16bf65fb6b7
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87101637"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286461"
 ---
 # <a name="tutorial-set-up-an-azure-time-series-insights-gen2-environment"></a>Oktatóanyag: Azure Time Series Insights Gen2-környezet beállítása
 
@@ -48,7 +48,7 @@ Ebben a szakaszban három szimulált eszközt fog létrehozni, amelyek az Azure 
 
    [![Az Azure IoT megoldás-gyorssegédek lapja.](media/v2-update-provision/iot-solution-accelerators-landing-page.png)](media/v2-update-provision/iot-solution-accelerators-landing-page.png#lightbox)
 
-1. A következő lapon válassza a **kipróbálás most**lehetőséget. Ezután adja meg a szükséges paramétereket az **eszköz-szimulációs megoldás létrehozása** lapon.
+1. Adja meg azt az előfizetést, amelyben létre szeretné hozni az eszköz szimulációját.
 
    Paraméter|Leírás
    ---|---
@@ -61,7 +61,7 @@ Ebben a szakaszban három szimulált eszközt fog létrehozni, amelyek az Azure 
 
    [![Az eszköz-szimulációs megoldás kiépítése.](media/v2-update-provision/iot-solution-accelerators-configuration.png)](media/v2-update-provision/iot-solution-accelerators-configuration.png#lightbox)
 
-1. A kiépítés befejezése után két értesítés jelenik meg, amely azt jelenti **, hogy a**központi telepítési állapot a **kiépítés** befejezését követően lett áthelyezve. 
+1. A kiépítés befejezése után két értesítés jelenik meg, amely azt jelenti **, hogy a**központi telepítési állapot a **kiépítés** befejezését követően lett áthelyezve.
 
    >[!IMPORTANT]
    > Még ne adja meg a megoldás-gyorssegédet! Tartsa meg ezt a weblapot, mert később vissza fog térni.
@@ -76,29 +76,29 @@ Ebben a szakaszban három szimulált eszközt fog létrehozni, amelyek az Azure 
 
 Ez a szakasz azt ismerteti, hogyan hozható létre Azure Time Series Insights Gen2-környezet, és hogyan csatlakoztatható a IoT-megoldás-gyorsító által létrehozott IoT hubhoz a [Azure Portal](https://portal.azure.com/)használatával.
 
-1. Jelentkezzen be az [Azure Portalba](https://portal.azure.com) az Azure-előfizetési fiók használatával. 
-1. Válassza az **+ Erőforrás létrehozása** lehetőséget a bal felső sarokban. 
-1. Válassza ki a **eszközök internetes hálózata** kategóriát, majd válassza a **Time Series Insights**lehetőséget. 
+1. Jelentkezzen be az [Azure Portalba](https://portal.azure.com) az Azure-előfizetési fiók használatával.
+1. Válassza az **+ Erőforrás létrehozása** lehetőséget a bal felső sarokban.
+1. Válassza ki a **eszközök internetes hálózata** kategóriát, majd válassza a **Time Series Insights**lehetőséget.
 
    [![Válassza ki a Time Series Insights környezeti erőforrást.](media/v2-update-provision/tsi-create-new-environment.png)](media/v2-update-provision/tsi-create-new-environment.png#lightbox)
 
 1. Az **Time Series Insights környezet létrehozása** ablaktábla **alapok** lapján adja meg a következő paramétereket:
 
-    | Paraméter | Műveletek |
+    | Paraméter | Művelet |
     | --- | ---|
     | **Környezet neve** | Adjon egyedi nevet a Azure Time Series Insights Gen2-környezetnek. |
     | **Előfizetés** | Adja meg azt az előfizetést, amelyben létre szeretné hozni a Azure Time Series Insights Gen2-környezetet. Az ajánlott eljárás az, hogy ugyanazt az előfizetést használja, mint az eszköz-szimulátor által létrehozott többi IoT-erőforrást. |
     | **Erőforráscsoport** | Válasszon ki egy meglévő erőforráscsoportot, vagy hozzon létre egy új erőforráscsoportot a Azure Time Series Insights Gen2 környezeti erőforráshoz. Az erőforráscsoport az Azure-erőforrások tárolója. Az ajánlott eljárás az, hogy ugyanazt az erőforráscsoportot használja, mint az eszköz-szimulátor által létrehozott többi IoT-erőforrást. |
     | **Hely** | Válasszon ki egy adatközpont-régiót Azure Time Series Insights Gen2-környezetéhez. A további késés elkerülése érdekében érdemes létrehozni a Azure Time Series Insights Gen2-környezetét ugyanabban a régióban, mint az eszköz-szimulátor által létrehozott IoT hub. |
     | **Szint** |  Válassza a **Gen2 (L1)** lehetőséget. Ez a Azure Time Series Insights Gen2 termék SKU-jának. |
-    | **Tulajdonság neve** | Adjon meg egy értéket, amely egyedileg azonosítja a Time Series-példányt. A **tulajdonság azonosítója** mezőben megadott érték később nem módosítható. Ebben az oktatóanyagban adja meg a ***iothub--kapcsolatok-Device-ID***értéket. Ha többet szeretne megtudni az idősorozat-AZONOSÍTÓról, olvassa el az [ajánlott eljárásokat az idősorozat-azonosító kiválasztásához](./time-series-insights-update-how-to-id.md). |
+    | **Idősorozat-azonosító tulajdonságának neve** | Adja meg az idősorozat-példányok egyedi azonosítására szolgáló értékeket tartalmazó tulajdonság nevét. A **tulajdonságnév** mezőben megadott érték idősorozat-azonosítóként való megadása később nem módosítható. Ebben az oktatóanyagban adja meg a ***iothub--kapcsolatok-Device-ID***értéket. Ha többet szeretne megtudni az idősorozat-AZONOSÍTÓról, beleértve az összetett idősorozat-azonosítót, olvassa el az [ajánlott eljárásokat az Idősorozat-azonosító kiválasztásához](./time-series-insights-update-how-to-id.md). |
     | **Tárfiók neve** | Adjon meg egy globálisan egyedi nevet egy új Storage-fiókhoz.|
     | **Storage-fiók típusa** | Válassza ki az új Storage-fiók tárolási típusát. Ajánlott StorageV2|
-    | **Storage-fiók replikálása** | Válassza ki az új Storage-fiók tárolási típusát. A hely kiválasztása alapján a LRS, a GRS és a ZRS közül választhat. Ehhez a tuorial válassza a LRS lehetőséget.|
+    | **Storage-fiók replikálása** | Válassza ki az új Storage-fiók tárolási típusát. A hely kiválasztása alapján a LRS, a GRS és a ZRS közül választhat. Ebben az oktatóanyagban választhat LRS|
     | **Hierarchikus névtér** |Ez a beállítás választható, ha kijelöli a StorageV2 Storage-típust. Alapértelmezés szerint le van tiltva. Ebben az oktatóanyagban meghagyhatja az alapértelmezett *letiltott* állapotban.|
-    |**Meleg tároló engedélyezése**|Válassza az **Igen** lehetőséget a meleg tároló engedélyezéséhez. Később is visszatérhet, és engedélyezheti vagy letilthatja ezt a beállítást. |
+    |**Meleg tároló engedélyezése**|Válassza az **Igen** lehetőséget a meleg tároló engedélyezéséhez. Ez a beállítás a környezet létrehozása után is letiltható és újra engedélyezhető. |
     |**Adatmegőrzés (nap)**|Válassza az alapértelmezett beállítást 7 nap. |
-    
+
     [![Új Time Series Insights környezeti konfiguráció.](media/v2-update-provision/tsi-environment-configuration.png)](media/v2-update-provision/tsi-environment-configuration.png#lightbox)
 
 1. Válassza a Next (tovább) lehetőséget **: eseményforrás**.
@@ -107,7 +107,7 @@ Ez a szakasz azt ismerteti, hogyan hozható létre Azure Time Series Insights Ge
 
 1. Az **eseményforrás** lapon adja meg a következő paramétereket:
 
-   | Paraméter | Műveletek |
+   | Paraméter | Művelet |
    | --- | --- |
    | **Létrehoz egy eseményforrás?** | Válassza az **Igen** lehetőséget.|
    | **Név** | Adjon meg egyedi értéket az eseményforrás neveként. |
@@ -123,7 +123,7 @@ Ez a szakasz azt ismerteti, hogyan hozható létre Azure Time Series Insights Ge
 
    [![Konfigurálja a létrehozott IoT hubot eseményforrásként.](media/v2-update-provision/tsi-configure-event-source.png)](media/v2-update-provision/tsi-configure-event-source.png#lightbox)
 
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
     [![Tekintse át a + létrehozás oldalt a létrehozás gombbal.](media/v2-update-provision/tsi-environment-confirmation.png)](media/v2-update-provision/tsi-environment-confirmation.png#lightbox)
 
@@ -133,7 +133,7 @@ Ez a szakasz azt ismerteti, hogyan hozható létre Azure Time Series Insights Ge
 
 1. Alapértelmezés szerint a Azure Time Series Insights Gen2-környezethez férhet hozzá, ha Ön az Azure-előfizetés tulajdonosa. Ellenőrizze, hogy rendelkezik-e hozzáféréssel:
 
-   1. Keresse meg az erőforráscsoportot, majd válassza ki az újonnan létrehozott Azure Time Series Insights Gen2-környezetét. 
+   1. Keresse meg az erőforráscsoportot, majd válassza ki az újonnan létrehozott Azure Time Series Insights Gen2-környezetét.
 
       [![Válassza ki és tekintse meg a környezetét.](media/v2-update-provision/verify-tsi-resource-in-group.png)](media/v2-update-provision/verify-tsi-resource-in-group.png#lightbox)
 
@@ -157,11 +157,11 @@ Most, hogy üzembe helyezte a Azure Time Series Insights Gen2-környezetét, meg
 
    [![Eszköz-szimulációs webalkalmazások beleegyezett.](media/v2-update-provision/sawa-signin-consent.png)](media/v2-update-provision/sawa-signin-consent.png#lightbox)
 
-1. Válassza az **+ új szimuláció**lehetőséget. 
+1. Válassza az **+ új szimuláció**lehetőséget.
 
     1. A **szimulációs beállítások** oldal betöltése után adja meg a szükséges paramétereket.
 
-        | Paraméter | Műveletek |
+        | Paraméter | Művelet |
         | --- | --- |
         | **Név** | Adjon egyedi nevet a szimulátornak. |
         | **Leírás** | Adjon meg egy definíciót. |
@@ -217,16 +217,16 @@ Ebben a szakaszban egy modellt alkalmaz az adatai struktúrájára. A modell elv
 
 1. Adja meg a következő paramétereket:
 
-    | Paraméter | Műveletek |
+    | Paraméter | Művelet |
     | --- | ---|
     | **Név** | **Lift** megadása |
     | **Leírás** | Adja meg a **lift típus definícióját** |
 
-1. Ezután válassza a **változók** lapot. 
+1. Ezután válassza a **változók** lapot.
 
     1. Válassza a **+ változó hozzáadása** lehetőséget, és adja meg a következő értékeket a felvonó első változójának. Összesen három változót fog létrehozni.
 
-        | Paraméter | Műveletek |
+        | Paraméter | Művelet |
         | --- | --- |
         | **Név** | Adja meg az **AVG hőmérsékletet**. |
         | **Altípus** | **Numerikus** elem kiválasztása |
@@ -235,7 +235,7 @@ Ebben a szakaszban egy modellt alkalmaz az adatai struktúrájára. A modell elv
 
     1. Kattintson az **Alkalmaz** gombra. Ezután adja meg ismét a **változót** , és állítsa be a következő értékeket:
 
-        | Paraméter | Műveletek |
+        | Paraméter | Művelet |
         | --- | --- |
         | **Név** | Adja meg az **AVG Vibration**értéket. |
         | **Altípus** | **Numerikus** elem kiválasztása |
@@ -244,7 +244,7 @@ Ebben a szakaszban egy modellt alkalmaz az adatai struktúrájára. A modell elv
 
     1. Kattintson az **Alkalmaz** gombra. Ezután adja meg ismét a **változót** , és állítsa be a következő értékeket a harmadik és a végső változóhoz:
 
-        | Paraméter | Műveletek |
+        | Paraméter | Művelet |
         | --- | --- |
         | **Név** | Adja meg a **padlót**. |
         | **Altípus** | **Kategorikus** kijelölése |
@@ -260,23 +260,23 @@ Ebben a szakaszban egy modellt alkalmaz az adatai struktúrájára. A modell elv
         [![A típus hozzáadását követően tekintse át a modellt a modell nézetben.](media/v2-update-provision/tsi-add-type-and-view.png)](media/v2-update-provision/tsi-add-type-and-view.png#lightbox)
 
 1. Válassza a **hierarchiák** fület. Ezután válassza a **+ Hozzáadás**lehetőséget.
-   
+
    1. A **hierarchia szerkesztése** panelen állítsa be a következő paramétereket:
 
-        | Paraméter | Műveletek |
+        | Paraméter | Művelet |
         | --- | ---|
         | **Név** | Adja meg a **hely hierarchiáját**. |
-        |**Szintek**| Adja meg az **országot** az első szint neveként <br> Válassza a **+ szint hozzáadása** lehetőséget <br> Adja meg a második szint **városát** , majd válassza a **+ szint hozzáadása** elemet. <br> A harmadik és utolsó szint neveként adja meg a **Building** nevet |
+        |**Szintek**| Adja meg az **országot** az első szint neveként <br /> Válassza a **+ szint hozzáadása** lehetőséget <br /> Adja meg a második szint **városát** , majd válassza a **+ szint hozzáadása** elemet. <br /> A harmadik és utolsó szint neveként adja meg a **Building** nevet |
 
-    1. Válassza a **Mentés** lehetőséget.
+   1. Válassza a **Mentés** lehetőséget.
 
         [![Az új hierarchia megjelenítése a modell nézetben.](media/v2-update-provision/tsi-add-hierarchy-and-view.png)](media/v2-update-provision/tsi-add-hierarchy-and-view.png#lightbox)
 
-1. Navigáljon a **példányokhoz**. 
+1. Navigáljon a **példányokhoz**.
 
     1. A jobb szélen lévő **műveletek** területen kattintson a ceruza ikonra az első példány szerkesztéséhez a következő értékekkel:
 
-        | Paraméter | Műveletek |
+        | Paraméter | Művelet |
         | --- | --- |
         | **Típus** | Válassza a **lift**lehetőséget. |
         | **Név** | **1. felvonó** megadása|
@@ -284,7 +284,7 @@ Ebben a szakaszban egy modellt alkalmaz az adatai struktúrájára. A modell elv
 
     1. Lépjen a **példány mezőire** , és adja meg a következő értékeket:
 
-        | Paraméter | Műveletek |
+        | Paraméter | Művelet |
         | --- | --- |
         | **Hierarchiák** | **Hely hierarchiájának** kiválasztása |
         | **Ország** | **USA** megadása |
@@ -297,7 +297,7 @@ Ebben a szakaszban egy modellt alkalmaz az adatai struktúrájára. A modell elv
 
     **2. lift esetén:**
 
-    | Paraméter | Műveletek |
+    | Paraméter | Művelet |
     | --- | --- |
     | **Típus** | Válassza a **lift**lehetőséget. |
     | **Név** | **2. felvonó** megadása|
@@ -309,7 +309,7 @@ Ebben a szakaszban egy modellt alkalmaz az adatai struktúrájára. A modell elv
 
     **3. felvonó esetén:**
 
-    | Paraméter | Műveletek |
+    | Paraméter | Művelet |
     | --- | --- |
     | **Típus** | Válassza a **lift**lehetőséget. |
     | **Név** | **3. felvonó** megadása|
@@ -333,7 +333,7 @@ Ebben a szakaszban egy modellt alkalmaz az adatai struktúrájára. A modell elv
 
     [![A 2. felvonó és a hierarchia megjelenítése.](media/v2-update-provision/iot-solution-accelerator-elevator-two.png)](media/v2-update-provision/iot-solution-accelerator-elevator-two.png#lightbox)
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Most, hogy elvégezte az oktatóanyagot, törölje a létrehozott erőforrásokat:
 

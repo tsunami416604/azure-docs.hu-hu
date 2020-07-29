@@ -6,12 +6,12 @@ ms.author: dukek
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.subservice: alerts
-ms.openlocfilehash: f592c42bc06c6bcd33ce6e10c506f8af0d8e0cf2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f6d5cbfc8d781e96a4d348f31f4a5d175ebd5a3d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87008387"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321887"
 ---
 # <a name="how-to-trigger-complex-actions-with-azure-monitor-alerts"></a>Összetett műveletek elindítása Azure Monitor riasztásokkal
 
@@ -19,7 +19,7 @@ Ebből a cikkből megtudhatja, hogyan állíthat be és indíthat el egy logikai
 
 ## <a name="overview"></a>Áttekintés
 
-Amikor egy Azure Monitor riasztást indít el, meghívja a [műveleti csoportot](../../azure-monitor/platform/action-groups.md). A műveleti csoportok lehetővé teszik, hogy egy vagy több műveletet indítson el, hogy értesítse másokat a riasztásokról, és azt is javítsa.
+Amikor egy Azure Monitor riasztást indít el, meghívja a [műveleti csoportot](./action-groups.md). A műveleti csoportok lehetővé teszik, hogy egy vagy több műveletet indítson el, hogy értesítse másokat a riasztásokról, és azt is javítsa.
 
 Az általános folyamat:
 
@@ -294,6 +294,7 @@ A metrikai riasztások létrehozásának folyamata hasonló a [műveletnapló-ri
 Logic Apps számos különböző összekötővel rendelkezik, amelyek lehetővé teszik, hogy számos alkalmazás és adatbázis között aktiválja a műveleteket. A Slack, SQL Server, Oracle, Salesforce, csak néhány példa. További információ az összekötők használatáról: [Logic app-összekötők](../../connectors/apis-list.md).  
 
 ## <a name="next-steps"></a>További lépések
-* [Tekintse át az Azure-tevékenységek naplójának riasztásait](../../azure-monitor/platform/alerts-overview.md) , és Ismerje meg, hogyan fogadhat riasztásokat.  
+* [Tekintse át az Azure-tevékenységek naplójának riasztásait](./alerts-overview.md) , és Ismerje meg, hogyan fogadhat riasztásokat.  
 * Megtudhatja, hogyan [konfigurálhat riasztásokat Azure Service Health értesítés közzétételekor](../../service-health/alerts-activity-log-service-notifications-portal.md).
-* További információ a [műveleti csoportokról](../../azure-monitor/platform/action-groups.md).
+* További információ a [műveleti csoportokról](./action-groups.md).
+

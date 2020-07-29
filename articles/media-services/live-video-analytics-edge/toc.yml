@@ -64,6 +64,8 @@
       href: manage-recording-policy-how-to.md
     - name: Élő videó elemzése tetszőleges mesterséges intelligenciával
       href: analyze-with-ai-your-choice-how-to.md
+    - name: Közvetlen metódusok meghívása a portállal
+      href: use-azure-portal-to-invoke-direct-methods.md
     - name: Hibaelhárítás
       href: troubleshoot-how-to.md
 - name: Referencia

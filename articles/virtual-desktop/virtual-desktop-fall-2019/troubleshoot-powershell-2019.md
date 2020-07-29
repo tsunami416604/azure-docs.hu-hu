@@ -1,6 +1,6 @@
 ---
-title: Windows rendszerű virtuális asztali PowerShell (Fall 2019) – Azure
-description: A PowerShell hibáinak elhárítása a Windows rendszerű virtuális asztalok (2019-es kiadás) bérlői környezetének beállításakor.
+title: Windows rendszerű virtuális asztali (klasszikus) PowerShell – Azure
+description: A PowerShell hibáinak elhárítása a Windows rendszerű virtuális asztali (klasszikus) bérlői környezet beállításakor.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: troubleshooting
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 3171cc54de57b70a18a3f1b9ee3317cf29f79d4b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 04ef12d6de8820740be687bd09ffaa5a8e69eb86
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87085809"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87269614"
 ---
-# <a name="windows-virtual-desktop-powershell-fall-2019-release"></a>Windows rendszerű virtuális asztali PowerShell (2019-es kiadás)
+# <a name="windows-virtual-desktop-classic-powershell"></a>Windows rendszerű virtuális asztali (klasszikus) PowerShell
 
 >[!IMPORTANT]
->Ez a tartalom a Fall 2019 kiadásra vonatkozik, amely nem támogatja a Windows rendszerű virtuális asztali objektumokat Azure Resource Manager. Ha a Spring 2020 Update szolgáltatásban bevezetett Azure Resource Manager Windows rendszerű virtuális asztali objektumokat szeretne felügyelni, tekintse meg [ezt a cikket](../troubleshoot-powershell.md).
+>Ez a tartalom a Windows rendszerű virtuális asztali (klasszikus) verzióra vonatkozik, amely nem támogatja Azure Resource Manager Windows rendszerű virtuális asztali objektumokat. Ha Azure Resource Manager Windows rendszerű virtuális asztali objektumokat szeretne felügyelni, tekintse meg [ezt a cikket](../troubleshoot-powershell.md).
 
 Ez a cikk a PowerShell és a Windows rendszerű virtuális asztal használatával kapcsolatos hibák és problémák megoldására használható. Távoli asztali szolgáltatások PowerShell-lel kapcsolatos további információkért lásd: [Windows virtuális asztali PowerShell](/powershell/module/windowsvirtualdesktop/).
 

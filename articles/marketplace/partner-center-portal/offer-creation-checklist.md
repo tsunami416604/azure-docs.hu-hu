@@ -5,30 +5,32 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: c56295f1e56e4ba3b6af9caf8ba38ce1f0552eeb
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: mingshen-ms
+ms.author: mingshen
+ms.openlocfilehash: 11c1c307d00b9347081a313308ad2467086ec208
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86101708"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327395"
 ---
 # <a name="saas-offer-creation-checklist-in-partner-center"></a>SaaS-ajánlat létrehozási ellenőrzőlistája a partner Centerben
 
-Az SaaS-ajánlat létrehozási folyamata több oldalt is igénybe vesz.  Az egyes lapokon megadható részletek az egyes elemekre mutató hivatkozásokat tartalmaznak.
+Az SaaS-ajánlat létrehozásának folyamata több oldalt is igénybe vesz.  Ez a cikk az egyes lapokon megadható részleteket ismerteti, és az egyes elemekre mutató hivatkozásokat tartalmaz.
 
-Az alább megadott vagy megadható elemek szerepelnek.  Bizonyos területek nem kötelezőek, vagy a megadott alapértelmezett értékekkel rendelkeznek, amelyeket igény szerint módosíthat.  Ezeket a részeket az itt felsorolt sorrendben nem kell feldolgoznia.
+> [!NOTE]
+> Ha egy elérhető SaaS-ajánlatot hoz létre, győződjön meg arról, hogy implementálja a [SaaS-megvalósítási API](./pc-saas-fulfillment-apis.md)-kkal való integrációt.  Az API-kkal való integráció az egyetlen módszer a piactér megfelelő működéséhez. Arról is gondoskodnia kell, hogy az alkalmazás Azure AD-hitelesítést használjon egyszeri bejelentkezéssel (SSO). Tekintse [meg a kereskedelmi piactéren elérhető Azure ad-és Transact SaaS-ajánlatokat](../azure-ad-saas.md).
 
->[!Note]
->Ha elérhető SaaS-ajánlatot hoz létre, győződjön meg arról, hogy implementálja a [SaaS-megvalósítási API](./pc-saas-fulfillment-apis.md)-kkal való integrációt.  Az API-kkal való integráció az egyetlen módszer a piactér megfelelő működéséhez.
+Az Ön által megkövetelt vagy megadható elemek alább láthatók.  Bizonyos területek nem kötelezőek, vagy a megadott alapértelmezett értékekkel rendelkeznek, amelyeket igény szerint módosíthat.  Ezeket a részeket az itt felsorolt sorrendben nem kell feldolgoznia.
 
-| **Item**    | **Szerep**  |
+| **Item**    | **Cél**  |
 | :---------- | :-------------------|
 | [**Új ajánlat – modális**](#new-offer-modal) | Az ajánlatok azonosító adatait gyűjti.  |
 | [Ajánlat beállítása lap](#offer-setup-page) | Lehetővé teszi, hogy belépjen a főbb funkciók használatára, és válassza ki, hogyan értékesítheti ajánlatát a Microsofton keresztül.  |
 | [Tulajdonságok lap](#properties-page) | Adja meg az ajánlatnak a piactéren való csoportosításához használt kategóriákat és iparágakat, az ajánlatát támogató jogi szerződéseket és az alkalmazás verzióját. |
 | [Ajánlati lista lapja](#offer-listing-page) | Adja meg a piactéren megjelenítendő ajánlat részleteit, beleértve az ajánlat és a marketing-eszközök leírását.|
 | [Előnézet lap](#preview-page) | Az ajánlat közzétételét megelőzően korlátozott előzetes célközönséget adhat meg az ajánlat közzététele előtt a nagyobb Piactéri közönségnek.|
-| [Ajánlat – technikai konfiguráció lap](#technical-configuration-page)  |  Csak akkor érhető el, ha az ajánlatot a Microsofton keresztül adja el.  Adja meg a piactér által az ajánlathoz való csatlakozáshoz használt technikai részleteket (a Kezdőlap URL-címét, a kapcsolat webhook URL-címét, az Azure AD-bérlő AZONOSÍTÓját és az Azure AD-alkalmazás AZONOSÍTÓját).  Ezek a paraméterek szükségesek ahhoz, hogy megfelelően integrálva legyenek a SaaS-betöltéssel és a piactéren mért számlázási API-kkal.|
+| [Technikai konfiguráció lap](#technical-configuration-page)  |  Csak akkor érhető el, ha az ajánlatot a Microsofton keresztül adja el.  Adja meg a piactér által az ajánlathoz való csatlakozáshoz használt technikai részleteket (a Kezdőlap URL-címét, a kapcsolat webhook URL-címét, az Azure AD-bérlő AZONOSÍTÓját és az Azure AD-alkalmazás AZONOSÍTÓját).  Ezek a paraméterek szükségesek ahhoz, hogy megfelelően integrálva legyenek a SaaS-betöltéssel és a piactéren mért számlázási API-kkal.|
 | [**Új modális csomag**](#plan-identity-modal) | Gyűjti a terv azonosító adatait.  |
 | [A lista megtervezése lap](#plan-listing-page)  | Csak akkor érhető el, ha az ajánlatot a Microsofton keresztül adja el. A tervnek a piactéren való listázásához használt részletek meghatározása.  |
 | [A díjszabási & rendelkezésre állási oldalának megtervezése](#plan-pricing--availability-page)  | Csak akkor érhető el, ha az ajánlatot a Microsofton keresztül adja el.  Összegyűjti az üzleti jellemzőit (díjszabási modell), a célközönséget és a piac rendelkezésre állását az ajánlat minden egyes csomagjában (verzióban).  |
@@ -36,10 +38,9 @@ Az alább megadott vagy megadható elemek szerepelnek.  Bizonyos területek nem 
 | A test Drive technikai konfigurációjának lapja  | Csak akkor érhető el, ha kijelöli az ajánlata tesztelésére szolgáló meghajtót. Adja meg a bemutató (vagy a "teszt meghajtó") technikai részleteit, amelyek lehetővé teszik az ügyfelek számára, hogy a megvásárlása előtt kipróbálják az ajánlatot.  |
 | [Áttekintés és közzététel oldal](#review-and-publish-page)  | Válassza ki a közzétenni kívánt módosításokat, tekintse meg az egyes lapok állapotát, és adjon meg megjegyzéseket a minősítési csapatnak.  |
 
+## <a name="new-offer-modal"></a>Új ajánlat – modális
 
-## <a name="new-offer-modal"></a>Új ajánlat – modális 
-
-Az elsőként megjelenő információ az ajánlat AZONOSÍTÓját és aliasát adja meg. 
+Az elsőként megjelenő információ az ajánlat AZONOSÍTÓját és aliasát adja meg.
 
 | **Mezőnév**    | **Megjegyzések**   |  
 | :---------------- | :-----------| 
@@ -79,8 +80,8 @@ A tőzsdei oldalon megadhatja, hogy az ügyfelek milyen szövegeket és képeket
 
 | **Mezőnév**    | **Megjegyzések**   |
 | :---------------- | :-----------| 
-| Name  | Kötelező, Max 50 karakter. |
-| Összefoglalás  | Kötelező, Max 100 karakter. | 
+| Név  | Kötelező, Max 50 karakter. |
+| Összegzés  | Kötelező, Max 100 karakter. | 
 | Leírás  | Kötelező, Max 3000 karakter. |
 | Első lépések utasítások  | Kötelező, Max 3000 karakter. |
 | Első lépések utasítások  | Kötelező, Max 3000 karakter. |
@@ -106,6 +107,9 @@ Az Előnézet lapon megadhatja, hogy az ajánlat előzetes verziójához milyen 
 ## <a name="technical-configuration-page"></a>Technikai konfiguráció lap 
 
 A technikai konfiguráció lapon megadhatja a Microsoft által az ajánlathoz való kapcsolódáshoz használt technikai részleteket. Ez az oldal nem látható, ha úgy döntött, hogy nem értékesíti a Microsoftot.
+
+> [!NOTE]
+> A visszagörgethető ajánlatok esetében létre kell hoznia egy kezdőlapot, és az alkalmazásnak az Azure AD-hitelesítést kell használnia egyszeri bejelentkezéssel (SSO). További információ: [Az Azure ad és a transactd SaaS-ajánlatok a kereskedelmi piactéren](../azure-ad-saas.md).
 
 | **Mezőnév**    | **Megjegyzések**   |  
 | :---------------- | :-----------| 
@@ -141,7 +145,7 @@ A csomag díjszabása és rendelkezésre állása lapon meghatározhatja az ajá
 | Díjszabási modell  | Kötelező. Alapértelmezett: átalány. Beállítások: átalány, felhasználónként. |
 | Minimális és maximális számú ülőhely  | Nem kötelező, csak akkor érhető el, ha ki van választva az ülőhely-alapú díjszabási modell. |
 | Számlázási időszak  | Kötelező. Alapértelmezett: havonta. Beállítások: havonta, évente. |
-| Price  | Havonta szükséges USD, ha a havi számlázási időszak van kiválasztva; vagy USD/év, ha az éves számlázási időszak van kiválasztva. |
+| Ár  | Havonta szükséges USD, ha a havi számlázási időszak van kiválasztva; vagy USD/év, ha az éves számlázási időszak van kiválasztva. |
 | Célközönség megtervezése  | Választható. Alapértelmezett: nyilvános csomag. Beállítások: nyilvános, saját bérlő azonosítója |
 | Korlátozott csomag célközönsége (bérlő azonosítója + Leírás)  | Kötelező, ha a saját csomag van kiválasztva. Ha kézzel van megadva, min. 1 és legfeljebb 10 bérlői azonosítót kell megadni. Maximális 20000, ha a CSV-fájl importálása megtörténjen. |
 
@@ -161,6 +165,6 @@ Csak akkor érhető el, ha kijelöli az ajánlata tesztelésére szolgáló megh
 | :---------------- | :-----------| 
 | A minősítéssel kapcsolatos megjegyzések  | Választható. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Új SaaS-ajánlat létrehozása](./create-new-saas-offer.md)

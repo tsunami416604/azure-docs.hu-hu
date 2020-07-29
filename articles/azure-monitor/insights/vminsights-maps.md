@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/20/2020
-ms.openlocfilehash: acb96984a49e4ad8535f87a41da11b3b63ae207b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3227585b62583d0a05f8dbc0444ee5bb4a27df77
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80283854"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320510"
 ---
 # <a name="use-the-map-feature-of-azure-monitor-for-vms-to-understand-application-components"></a>Az alkalmazás-összetevők értelmezéséhez használja a Azure Monitor for VMs Térkép funkcióját
 Azure Monitor for VMs a felderített alkalmazás-összetevőket megtekintheti az Azure-ban vagy a környezetben futó Windows-és Linux-alapú virtuális gépeken (VM-EK). A virtuális gépek két módon figyelhetők meg. A térképeket közvetlenül egy virtuális gépről tekintheti meg, vagy megtekintheti az Azure Monitor térképét, hogy megjelenjenek-e az összetevők a virtuális gépek csoportjai között. Ez a cikk segítséget nyújt a két megtekintési módszer és a Térkép funkció használatának megismerésében. 
@@ -49,7 +49,7 @@ Ahhoz, hogy a Térkép funkció megjelenjen a kapcsolódó riasztások, hozzon l
 - Adjon meg egy záradékot a riasztások számítógép szerinti csoportosításához (például **1 perc számítógép-intervallummal**).
 - A riasztás alapja egy metrika.
 
-Az Azure-riasztásokkal és a riasztási szabályok létrehozásával kapcsolatos további információkért tekintse [meg a Azure monitor egyesített riasztásait](../../azure-monitor/platform/alerts-overview.md)ismertető témakört.
+Az Azure-riasztásokkal és a riasztási szabályok létrehozásával kapcsolatos további információkért tekintse [meg a Azure monitor egyesített riasztásait](../platform/alerts-overview.md)ismertető témakört.
 
 A jobb felső sarokban a **Jelmagyarázat** lehetőség a térképen lévő szimbólumokat és szerepköröket ismerteti. Ha közelebbről szeretné megtekinteni a térképet, és a körére helyezi, használja a jobb alsó sarokban található Nagyítási vezérlőket. Megadhatja a nagyítási szintet, és a térképet az oldal méretéhez is elvégezheti.  
 
@@ -128,10 +128,11 @@ Azure Monitor a Térkép funkció globális áttekintést nyújt a virtuális g�
 
 Válasszon ki egy munkaterületet a lap tetején található **munkaterület** -választó használatával. Ha egynél több Log Analytics munkaterülettel rendelkezik, válassza ki azt a munkaterületet, amelyen engedélyezve van a megoldás, és amelyen a virtuális gépek jelentést küldenek. 
 
-A **csoport** választója a kiválasztott munkaterülethez kapcsolódó számítógép-előfizetéseket, erőforráscsoportokat, [számítógépcsoportokat](../../azure-monitor/platform/computer-groups.md)és virtuálisgép-méretezési csoportokat adja vissza. A kijelölés csak a Térkép szolgáltatásra vonatkozik, és nem végzi el a teljesítményt vagy az állapotot.
+A **csoport** választója a kiválasztott munkaterülethez kapcsolódó számítógép-előfizetéseket, erőforráscsoportokat, [számítógépcsoportokat](../platform/computer-groups.md)és virtuálisgép-méretezési csoportokat adja vissza. A kijelölés csak a Térkép szolgáltatásra vonatkozik, és nem végzi el a teljesítményt vagy az állapotot.
 
 Alapértelmezés szerint a Térkép az utolsó 30 percet mutatja. Ha szeretné megtekinteni, hogy a függőségek hogyan látszanak a múltban, akár egy óráig is lekérdezheti a korábbi időtartományokat. A lekérdezés futtatásához használja a **TimeRange** -választót. Futtathat egy lekérdezést, például egy incidens során, vagy megtekintheti az állapotot a változás előtt.  
 
 ## <a name="next-steps"></a>További lépések
 
 A szűk keresztmetszetek azonosításához, a teljesítmény vizsgálatához és a virtuális gépek általános kihasználtságának megismeréséhez tekintse meg a [Azure monitor for VMS teljesítmény állapotának megtekintése](vminsights-performance.md)című témakört. 
+

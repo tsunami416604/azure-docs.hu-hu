@@ -2,13 +2,13 @@
 title: Erőforrások, erőforráscsoportok és előfizetések címkézése a logikai szervezet számára
 description: Bemutatja, hogyan alkalmazhat címkéket az Azure-erőforrások számlázáshoz és felügyelethez való rendszerezéséhez.
 ms.topic: conceptual
-ms.date: 07/01/2020
-ms.openlocfilehash: 9dd025818a64a8ece1f4218a8341a40ecc617829
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.date: 07/27/2020
+ms.openlocfilehash: fa56fac79855b438a0cd1c10ed1008d69ca3e2fe
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86056922"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323876"
 ---
 # <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>Címkék használata az Azure-erőforrások és a felügyeleti hierarchia rendszerezéséhez
 
@@ -438,7 +438,7 @@ Ha több értéket szeretne tárolni egyetlen címkében, alkalmazzon a megfelel
 
 ### <a name="apply-tags-from-resource-group"></a>Címkék alkalmazása az erőforrás-csoportból
 
-Ha címkéket szeretne alkalmazni egy erőforráscsoporthoz egy erőforrásra, használja a [resourceGroup](../templates/template-functions-resource.md#resourcegroup) függvényt. A címke értékének beolvasása során a szintaxis helyett használja a `tags[tag-name]` szintaxist `tags.tag-name` , mert néhány karakter nem megfelelően van értelmezve a dot jelölésben.
+Ha címkéket szeretne alkalmazni egy erőforrás-csoportból egy erőforrásra, használja a [resourceGroup ()](../templates/template-functions-resource.md#resourcegroup) függvényt. A címke értékének beolvasása során a szintaxis helyett használja a `tags[tag-name]` szintaxist `tags.tag-name` , mert néhány karakter nem megfelelően van értelmezve a dot jelölésben.
 
 ```json
 {
@@ -578,7 +578,7 @@ Az erőforráscsoport vagy az előfizetés által alkalmazott címkéket nem ör
 
 Címkék segítségével a számlázási adatok is csoportosíthatók. Ha például több virtuális gépet futtat különböző vállalatok számára, akkor a használatot címkék segítségével tudja költséghely szerint csoportosítani. A címkék a költségek futtatókörnyezet szerinti besorolására, például az éles környezetben futó virtuális gépek használatának kiszámlázására is felhasználhatók.
 
-A címkékre vonatkozó információkat az [Azure erőforrás-használat és a RateCard API](../../cost-management-billing/manage/usage-rate-card-overview.md) -k, illetve a használat vesszővel tagolt (CSV) fájl segítségével kérheti le. A használati fájlt a [Azure Fiókközpont](https://account.azure.com/Subscriptions) vagy Azure Portal töltheti le. További információkért tekintse [meg az Azure számlázási és napi használati adatainak letöltését vagy megtekintését](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md)ismertető témakört. A Azure Fiókközpont a használati fájl letöltésekor válassza a **2. verziót**. A számlázási címkéket támogató szolgáltatások esetében a címkék a **címkék** oszlopban jelennek meg.
+A címkékre vonatkozó információkat az [Azure erőforrás-használat és-arány kártya API](../../cost-management-billing/manage/usage-rate-card-overview.md) -k vagy a használat vesszővel tagolt (CSV) fájlja segítségével kérheti le. A használati fájlt a [Azure Fiókközpont](https://account.azure.com/Subscriptions) vagy Azure Portal töltheti le. További információkért tekintse [meg az Azure számlázási és napi használati adatainak letöltését vagy megtekintését](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md)ismertető témakört. A Azure Fiókközpont a használati fájl letöltésekor válassza a **2. verziót**. A számlázási címkéket támogató szolgáltatások esetében a címkék a **címkék** oszlopban jelennek meg.
 
 REST API műveletekhez tekintse meg az [Azure számlázási REST API referenciáját](/rest/api/billing/).
 
@@ -596,6 +596,8 @@ Az alábbi korlátozások érvényesek a címkékre:
    > Azure DNS zónák és Traffic Manager szolgáltatások jelenleg nem teszik lehetővé a szóközök használatát a címkében.
    >
    > Az Azure bejárati ajtó nem támogatja a `#` címke nevében való használatát.
+   >
+   > Azure Automation és Azure CDN csak a 15 címkét támogatja az erőforrásokon.
 
 ## <a name="next-steps"></a>További lépések
 

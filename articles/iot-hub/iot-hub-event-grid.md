@@ -11,15 +11,17 @@ ms.author: robinsh
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: a67d90a0888c39938f07c294f8e161ce98fd945a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+- 'Role: Cloud Development'
+ms.openlocfilehash: a5707ef266f3d49bdcbff9793a0b90e6c3f4cb68
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81732499"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327650"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>IoT Hub eseményekre való reagálás Event Grid használatával a műveletek elindításához
 
-Az Azure IoT Hub integrálható Azure Event Gridekkel, így értesítéseket küldhet más szolgáltatásoknak, és alsóbb rétegbeli folyamatokat indíthat. Konfigurálja üzleti alkalmazásait IoT Hub események figyelésére, hogy megbízható, skálázható és biztonságos módon reagáljon a kritikus eseményekre.Létrehozhat például egy adatbázist frissítő alkalmazást, létrehoz egy munkahelyi jegyet, és minden alkalommal elküld egy e-mail-értesítést, amikor új IoT-eszköz regisztrálva van az IoT hub-ban.
+Az Azure IoT Hub és az Azure Event Grid integrációja révén eseményekkel kapcsolatos értesítéseket küldhet más szolgáltatásokba, és alsóbb rétegbeli folyamatokat aktiválhat. Üzleti alkalmazásait úgy konfigurálhatja, hogy figyeljék az IoT Hub-eseményeket, így megbízható, skálázható és biztonságos módon reagálhat a kritikus eseményekre.Készíthet például olyan alkalmazást, amely frissít egy adatbázist, létrehoz egy munkajegyet és e-mail-értesítést küld minden alkalommal, amikor új IoT-eszközt regisztrálnak az IoT-központba.
 
 A [Azure Event Grid](../event-grid/overview.md) egy teljes körűen felügyelt esemény-útválasztási szolgáltatás, amely egy közzétételi és előfizetési modellt használ. Event Grid beépített támogatást biztosít az Azure-szolgáltatásokhoz, például a [Azure Functionshoz](../azure-functions/functions-overview.md) és a [Azure Logic Appshoz](../logic-apps/logic-apps-what-are-logic-apps.md), és az események riasztásait a nem Azure-szolgáltatásokhoz webhookok használatával lehet kézbesíteni. A Event Grid által támogatott eseménykezelők teljes listájáért tekintse [meg a Azure Event Grid bemutatása](../event-grid/overview.md)című témakört.
 
@@ -33,19 +35,19 @@ A Event Grid integráció a Event Grid által támogatott régiókban találhat�
 
 IoT Hub közzéteszi a következő eseménytípus-típusokat:
 
-| Eseménytípus | Description |
+| Eseménytípus | Leírás |
 | ---------- | ----------- |
-| Microsoft. Devices. DeviceCreated | Közzétett, ha egy eszköz regisztrálva van egy IoT-hubhoz. |
-| Microsoft. Devices. DeviceDeleted | Közzétételre kerül, ha egy eszközt törölnek egy IoT-hubhoz. |
-| Microsoft. Devices. DeviceConnected | Akkor jelenik meg, amikor egy eszköz IoT-hubhoz csatlakozik. |
-| Microsoft. Devices. DeviceDisconnected | Akkor jelenik meg, ha egy eszköz le van választva egy IoT hubhoz. |
-| Microsoft. Devices. DeviceTelemetry | Közzétételre kerül, amikor egy eszköz telemetria üzenetet küld egy IoT-hubhoz |
+| Microsoft.Devices.DeviceCreated | Közzétett, ha egy eszköz regisztrálva van egy IoT-hubhoz. |
+| Microsoft.Devices.DeviceDeleted | Közzétételre kerül, ha egy eszközt törölnek egy IoT-hubhoz. |
+| Microsoft.Devices.DeviceConnected | Akkor jelenik meg, amikor egy eszköz IoT-hubhoz csatlakozik. |
+| Microsoft.Devices.DeviceDisconnected | Akkor jelenik meg, ha egy eszköz le van választva egy IoT hubhoz. |
+| Microsoft.Devices.DeviceTelemetry | Eszköz-telemetriai üzenet IoT-központba küldésekor van közzétéve |
 
 A Azure Portal vagy az Azure CLI használatával konfigurálhatja, hogy mely eseményeket kell közzétenni az egyes IoT-központokból. Például próbálja ki az oktatóanyagot az [Azure IoT hub eseményekkel kapcsolatos e-mail-értesítések küldéséhez Logic Apps használatával](../event-grid/publish-iot-hub-events-to-logic-apps.md).
 
 ## <a name="event-schema"></a>Eseményséma
 
-IoT Hub események tartalmazzák az eszköz életciklusában bekövetkező változásokra való reagáláshoz szükséges összes információt. IoT Hub eseményt a **Microsoft. Devices**EventType tulajdonságának ellenőrzésével azonosíthatja. További információ az Event Grid esemény tulajdonságainak használatáról: [Event Grid Event Schema](../event-grid/event-schema.md).
+IoT Hub események tartalmazzák az eszköz életciklusában bekövetkező változásokra való reagáláshoz szükséges összes információt. Egy IoT Hub-esemény arról ismerhető fel, hogy az eventType tulajdonság a **Microsoft.Devices** előtaggal kezdődik. További információ az Event Grid esemény tulajdonságainak használatáról: [Event Grid Event Schema](../event-grid/event-schema.md).
 
 ### <a name="device-connected-schema"></a>Csatlakoztatott eszköz sémája
 
@@ -192,15 +194,15 @@ A D2C hivatkozás meg van nyitva, ha telemetria küld.
 
 Ha az eszköz kapcsolata vibrál, ami azt jelenti, hogy az eszköz gyakran csatlakozik a hálózathoz, és leválasztja a kapcsolatot, a rendszer nem küldi el minden egyes kapcsolati állapotot, de az aktuális kapcsolati állapotot rendszeres pillanatképként fogja közzétenni, amíg a villogás folytatódik. Ha ugyanazt a kapcsolati állapotot vagy eltérő sorszámot vagy eltérő kapcsolati állapotot jelző eseményt fogad, mindkettő azt jelenti, hogy módosult az eszköz kapcsolati állapota.
 
-## <a name="tips-for-consuming-events"></a>Tippek az események fogyasztásához
+## <a name="tips-for-consuming-events"></a>Tippek események felhasználásához
 
-Az IoT Hub eseményeket kezelő alkalmazásoknak a következő ajánlott eljárásokat kell követniük:
+Az IoT Hub-eseményeket kezelő alkalmazásokkal érdemes figyelembe venni az alábbi javaslatokat:
 
-* Több előfizetés is konfigurálható az események ugyanahhoz az eseménykezelőhöz való továbbítására, ezért ne feltételezzük, hogy az események egy adott forrásból származnak. Mindig ellenőrizze az üzenet témakörét, és győződjön meg arról, hogy az a várt IoT hub-ról származik.
+* Több feliratkozás is konfigurálható úgy, hogy ugyanahhoz az eseménykezelőhöz irányítsák az eseményeket, ezért nem szabad feltételezni, hogy az események egy adott forrásból származnak. Az üzenet témakörének vizsgálatával mindig ellenőrizni kell, hogy az abból az IoT-központból érkezett, ahonnan várta.
 
-* Ne Tételezzük fel, hogy minden kapott esemény a várt típus. Az üzenet feldolgozása előtt mindig keresse meg a eventType.
+* Nem szabad feltételezni, hogy minden kapott esemény a várt típusú. Az üzenet feldolgozása előtt mindig keresse meg a eventType.
 
-* Az üzenetek megérkeznek a sorrendbe, vagy késés után is. A ETAG mező használatával megtudhatja, hogy az objektumokkal kapcsolatos adatok naprakészek-e az eszköz által létrehozott vagy az eszköz által törölt események esetében.
+* Megtörténhet, hogy az üzenetek más sorrendben, vagy késve érkeznek. A ETAG mező használatával megtudhatja, hogy az objektumokkal kapcsolatos adatok naprakészek-e az eszköz által létrehozott vagy az eszköz által törölt események esetében.
 
 ## <a name="next-steps"></a>További lépések
 

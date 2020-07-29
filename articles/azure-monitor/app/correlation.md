@@ -7,26 +7,26 @@ ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
 ms.custom: tracking-python
-ms.openlocfilehash: 432ff655ef072d491227d297e620612203f73d3f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b4facaee44a0bc5c7d64376ca80e5aaf8d0768d0
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092983"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323162"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Telemetria korreláció a Application Insightsban
 
-A szolgáltatások világában minden logikai művelet végrehajtásához a szolgáltatás különböző összetevőinek kell működniük. Ezeket az összetevőket külön is figyelheti [Application Insights](../../azure-monitor/app/app-insights-overview.md)használatával. A Application Insights támogatja az elosztott telemetria korrelációt, amelyet annak észlelésére használ, hogy melyik összetevő felelős a hibákért vagy a teljesítmény romlásához.
+A szolgáltatások világában minden logikai művelet végrehajtásához a szolgáltatás különböző összetevőinek kell működniük. Ezeket az összetevőket külön is figyelheti [Application Insights](./app-insights-overview.md)használatával. A Application Insights támogatja az elosztott telemetria korrelációt, amelyet annak észlelésére használ, hogy melyik összetevő felelős a hibákért vagy a teljesítmény romlásához.
 
 Ez a cikk a Application Insights által a több összetevő által elküldett telemetria korrelációt okozó adatmodellt ismerteti. Magában foglalja a kontextus-propagálási technikákat és protokollokat. Emellett a korrelációs taktikák megvalósítását is magában foglalja a különböző nyelveken és platformokon.
 
 ## <a name="data-model-for-telemetry-correlation"></a>Telemetria korrelációs adatmodell
 
-Application Insights definiál egy [adatmodellt](../../azure-monitor/app/data-model.md) az elosztott telemetria korrelációhoz. A telemetria logikai művelettel való hozzárendeléséhez minden telemetria-elemhez tartozik egy nevű környezeti mező `operation_Id` . Ezt az azonosítót az elosztott nyomkövetés minden telemetria-eleme megosztja. Így még akkor is, ha egyetlen rétegből elveszíti a telemetria, a többi összetevő által jelentett telemetria is hozzárendelheti.
+Application Insights definiál egy [adatmodellt](./data-model.md) az elosztott telemetria korrelációhoz. A telemetria logikai művelettel való hozzárendeléséhez minden telemetria-elemhez tartozik egy nevű környezeti mező `operation_Id` . Ezt az azonosítót az elosztott nyomkövetés minden telemetria-eleme megosztja. Így még akkor is, ha egyetlen rétegből elveszíti a telemetria, a többi összetevő által jelentett telemetria is hozzárendelheti.
 
-Az elosztott logikai műveletek jellemzően olyan kisebb műveletekből állnak, amelyek az egyik összetevő által feldolgozott kérelmek. Ezeket a műveleteket a [kérelem telemetria](../../azure-monitor/app/data-model-request-telemetry.md)határozza meg. Minden kérelem telemetria-eleme rendelkezik a saját `id` egyedi és globális azonosítására. A kérelemhez társított összes telemetria-elemnek (például a nyomkövetéseknek és kivételeknek) a kérelem értékét kell beállítania `operation_parentId` `id` .
+Az elosztott logikai műveletek jellemzően olyan kisebb műveletekből állnak, amelyek az egyik összetevő által feldolgozott kérelmek. Ezeket a műveleteket a [kérelem telemetria](./data-model-request-telemetry.md)határozza meg. Minden kérelem telemetria-eleme rendelkezik a saját `id` egyedi és globális azonosítására. A kérelemhez társított összes telemetria-elemnek (például a nyomkövetéseknek és kivételeknek) a kérelem értékét kell beállítania `operation_parentId` `id` .
 
-Minden kimenő művelet, például egy HTTP-hívás egy másik összetevőhöz, a [függőségi telemetria](../../azure-monitor/app/data-model-dependency-telemetry.md)szerint jelenik meg. A függőségi telemetria a `id` globálisan egyedit is definiálja. A függőségi hívás által kezdeményezett telemetria kérelme ezt használja `id` `operation_parentId` .
+Minden kimenő művelet, például egy HTTP-hívás egy másik összetevőhöz, a [függőségi telemetria](./data-model-dependency-telemetry.md)szerint jelenik meg. A függőségi telemetria a `id` globálisan egyedit is definiálja. A függőségi hívás által kezdeményezett telemetria kérelme ezt használja `id` `operation_parentId` .
 
 Az elosztott logikai művelet nézetét a `operation_Id` , `operation_parentId` `request.id` a és a használatával is létrehozhatja `dependency.id` . Ezek a mezők a telemetria-hívások oksági sorrendjét is meghatározzák.
 
@@ -216,7 +216,7 @@ A [OpenTracing adatmodell-specifikációja](https://opentracing.io/) és Applica
 | `Operation_Id`                         | `TraceId`                                           |
 | `Operation_ParentId`                   | `Reference`típus `ChildOf` (a szülő span)     |
 
-További információ: [Application Insights telemetria adatmodell](../../azure-monitor/app/data-model.md).
+További információ: [Application Insights telemetria adatmodell](./data-model.md).
 
 A OpenTracing-fogalmak definícióit lásd: OpenTracing- [specifikáció](https://github.com/opentracing/specification/blob/master/specification.md) és [szemantikai konvenciók](https://github.com/opentracing/specification/blob/master/semantic_conventions.md).
 
@@ -372,10 +372,11 @@ A [Java-ügynök](./java-in-process-agent.md) , valamint a [Java SDK](../../azur
 
 ## <a name="next-steps"></a>További lépések
 
-- [Egyéni telemetria](../../azure-monitor/app/api-custom-events-metrics.md)írása.
+- [Egyéni telemetria](./api-custom-events-metrics.md)írása.
 - A ASP.NET Core-és ASP.NET speciális korrelációs forgatókönyvei: [Egyéni műveletek nyomon követése](custom-operations-tracking.md).
-- További információ a más SDK-k [cloud_RoleName beállításáról](../../azure-monitor/app/app-map.md#set-cloud-role-name) .
-- A Application Insights összes összetevőjének bevezetését. Tekintse meg a [támogatott platformokat](../../azure-monitor/app/platforms.md).
-- Tekintse meg Application Insights típusok [adatmodelljét](../../azure-monitor/app/data-model.md) .
-- Ismerje meg [, hogyan bővítheti és szűrheti a telemetria](../../azure-monitor/app/api-filtering-sampling.md).
+- További információ a más SDK-k [cloud_RoleName beállításáról](./app-map.md#set-cloud-role-name) .
+- A Application Insights összes összetevőjének bevezetését. Tekintse meg a [támogatott platformokat](./platforms.md).
+- Tekintse meg Application Insights típusok [adatmodelljét](./data-model.md) .
+- Ismerje meg [, hogyan bővítheti és szűrheti a telemetria](./api-filtering-sampling.md).
 - Tekintse át a [Application Insights konfigurációs referenciát](configuration-with-applicationinsights-config.md).
+

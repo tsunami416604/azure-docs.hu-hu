@@ -5,18 +5,18 @@ description: Ez a cikk azt ismerteti, hogyan használható a Azure Machine Learn
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.author: vaidyas
 author: csteegz
 ms.reviewer: larryfr
 ms.date: 06/17/2020
-ms.custom: tracking-python
-ms.openlocfilehash: 344112e19adbfaa1b06eebab309f31ed4e070c7d
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.topic: conceptual
+ms.custom: how-to, tracking-python
+ms.openlocfilehash: 5233850ef9656f225caebc10458218eede393ab3
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86076997"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325780"
 ---
 # <a name="deploy-a-deep-learning-model-for-inference-with-gpu"></a>Mély tanulási modell üzembe helyezése a GPU-val való következtetéshez
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -102,7 +102,7 @@ További információ a Azure Machine Learning-vel való használatáról: [üze
 A bejegyzési parancsfájl fogadja a webszolgáltatásnak küldött adatok fogadását, átadja a modellnek, és visszaadja a pontozás eredményét. A következő szkript betölti a Tensorflow modellt az indításkor, majd a modell használatával szerzi be az adatgyűjtést.
 
 > [!TIP]
-> A bejegyzési parancsfájl a modellre jellemző. A szkriptnek például tudnia kell, hogy milyen keretrendszert kell használni a modellhez, az adatformátumokhoz stb.
+> A bejegyzés parancsfájlja egyedi a modellnél. A szkriptnek például tudnia kell, hogy milyen keretrendszert kell használni a modellhez, az adatformátumokhoz stb.
 
 ```python
 import json

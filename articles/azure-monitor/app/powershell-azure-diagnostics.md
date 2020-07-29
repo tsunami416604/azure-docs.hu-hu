@@ -3,16 +3,16 @@ title: Az Application Insights beállítása a PowerShell segítségével az Azu
 description: Automatizálja a Azure Diagnostics Application Insightsre való konfigurálását.
 ms.topic: conceptual
 ms.date: 08/06/2019
-ms.openlocfilehash: 20f5a5c61c65b476a98c59b24283a2d15c39ddae
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 3d0b7d1e8d4a164d517834eae877844d85b9a256
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86111184"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320357"
 ---
 # <a name="using-powershell-to-set-up-application-insights-for-azure-cloud-services"></a>Azure-Application Insights beállítása a PowerShell használatával Cloud Services
 
-A [Microsoft Azure](https://azure.com)[konfigurálható úgy, hogy az Azure Diagnostics adatait elküldje](../../azure-monitor/platform/diagnostics-extension-to-application-insights.md) az [Azure Application Insights ](../../azure-monitor/app/app-insights-overview.md) szolgáltatásba. A diagnosztika az Azure Cloud Services szolgáltatáshoz és az Azure virtuális gépekhez kapcsolódik. Kiegészíti az alkalmazáson belülről az Application Insights SDK használatával küldött telemetriát. Az új erőforrások Azure-ban való létrehozási folyamatának részeként konfigurálhatja a diagnosztikát a PowerShell segítségével.
+A [Microsoft Azure](https://azure.com)[konfigurálható úgy, hogy az Azure Diagnostics adatait elküldje](../platform/diagnostics-extension-to-application-insights.md) az [Azure Application Insights ](./app-insights-overview.md) szolgáltatásba. A diagnosztika az Azure Cloud Services szolgáltatáshoz és az Azure virtuális gépekhez kapcsolódik. Kiegészíti az alkalmazáson belülről az Application Insights SDK használatával küldött telemetriát. Az új erőforrások Azure-ban való létrehozási folyamatának részeként konfigurálhatja a diagnosztikát a PowerShell segítségével.
 
 ## <a name="azure-template"></a>Azure-sablon
 Ha a webalkalmazás az Azure-ban található és Azure Resource Manager-sablonnal hozza létre az erőforrásait, az Application Insights konfigurálásához hozzáadhatja ezt az erőforrások csomóponthoz:
@@ -123,8 +123,8 @@ Remove-AzureServiceDiagnosticsExtension -ServiceName "MyService" -Role "WebRole"
 ```
 
 
-## <a name="see-also"></a>Lásd még
-* [Azure Cloud Services alkalmazások figyelése az Application Insights segítségével](../../azure-monitor/app/cloudservices.md)
-* [Az Azure Diagnostics küldése az Application Insights-ba](../../azure-monitor/platform/diagnostics-extension-to-application-insights.md)
+## <a name="see-also"></a>További információ
+* [Azure Cloud Services alkalmazások figyelése az Application Insights segítségével](./cloudservices.md)
+* [Az Azure Diagnostics küldése az Application Insights-ba](../platform/diagnostics-extension-to-application-insights.md)
 * [Riasztások konfigurálásának automatizálása](powershell-alerts.md)
 

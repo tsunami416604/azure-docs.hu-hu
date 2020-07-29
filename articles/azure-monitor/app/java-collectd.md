@@ -3,21 +3,22 @@ title: A Java-webalkalmazások teljesítményének monitorozása Linux rendszere
 description: A Java-webhely bővített alkalmazás-teljesítményének figyelése a Application Insights gyűjtött beépülő modullal.
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: 62a723dad7e9f6c2bfdabde159968d507d2d5d41
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 648d0e5adc289dfeb83a54c3dcb9ab7d25fc1cc4
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81537525"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322601"
 ---
 # <a name="collectd-linux-performance-metrics-in-application-insights"></a>begyűjtve: Linux teljesítmény-metrikák a Application Insights
 
 
-A Linux rendszerbeli teljesítmény-mérőszámok megismeréséhez [Application Insights](../../azure-monitor/app/app-insights-overview.md)-ben telepítse a [begyűjtést](https://collectd.org/), valamint a Application Insights beépülő modullal. Ez a nyílt forráskódú megoldás különféle rendszerszintű és hálózati statisztikákat gyűjt.
+A Linux rendszerbeli teljesítmény-mérőszámok megismeréséhez [Application Insights](./app-insights-overview.md)-ben telepítse a [begyűjtést](https://collectd.org/), valamint a Application Insights beépülő modullal. Ez a nyílt forráskódú megoldás különféle rendszerszintű és hálózati statisztikákat gyűjt.
 
 A gyűjtést általában akkor fogja használni, ha [a Java-webszolgáltatását már Application Insights][java]-mel konfigurálta. Több adat nyújt segítséget az alkalmazás teljesítményének növeléséhez vagy a problémák diagnosztizálásához. 
 
 ## <a name="get-your-instrumentation-key"></a>A kialakítási kulcs beszerzése
-A [Microsoft Azure Portal](https://portal.azure.com)nyissa meg azt a [Application Insights](../../azure-monitor/app/app-insights-overview.md) -erőforrást, amelyen meg szeretné jeleníteni az adott adatforrást. (Vagy [hozzon létre egy új erőforrást](../../azure-monitor/app/create-new-resource.md ).)
+A [Microsoft Azure Portal](https://portal.azure.com)nyissa meg azt a [Application Insights](./app-insights-overview.md) -erőforrást, amelyen meg szeretné jeleníteni az adott adatforrást. (Vagy [hozzon létre egy új erőforrást](./create-new-resource.md).)
 
 Készítsen másolatot a kialakítási kulcsról, amely azonosítja az erőforrást.
 
@@ -104,7 +105,7 @@ Külön irányelvek egy sortöréssel.
 *Nem látok információt a portálon*
 
 * Nyissa meg a [keresést][diagnostic] , és ellenőrizze, hogy a nyers események megérkeztek-e. Időnként hosszabb időt is igénybe kell venni a metrikák Explorerben.
-* Előfordulhat, hogy [tűzfal-kivételeket kell beállítania a kimenő adatértékekhez](../../azure-monitor/app/ip-addresses.md) .
+* Előfordulhat, hogy [tűzfal-kivételeket kell beállítania a kimenő adatértékekhez](./ip-addresses.md) .
 * A nyomkövetés engedélyezése a Application Insights beépülő modulban. A sor hozzáadása a következőn belül `<Plugin ApplicationInsightsWriter>` :
   * `SDKLogger true`
 * Nyisson meg egy terminált, és kezdjen el részletes módban összegyűjteni, hogy megtekintse a jelentett problémákat:
@@ -120,13 +121,12 @@ Megkerülő megoldás: a probléma az írási beépülő modulok által összegy
 
 <!--Link references-->
 
-[api]: ../../azure-monitor/app/api-custom-events-metrics.md
-[apiexceptions]: ../../azure-monitor/app/api-custom-events-metrics.md#track-exception
-[availability]: ../../azure-monitor/app/monitor-web-app-availability.md
-[diagnostic]: ../../azure-monitor/app/diagnostic-search.md
+[api]: ./api-custom-events-metrics.md
+[apiexceptions]: ./api-custom-events-metrics.md#track-exception
+[availability]: ./monitor-web-app-availability.md
+[diagnostic]: ./diagnostic-search.md
 [eclipse]: app-insights-java-eclipse.md
 [java]: java-get-started.md
 [javalogs]: java-trace-logs.md
-[metrics]: ../../azure-monitor/platform/metrics-charts.md
-
+[metrics]: ../platform/metrics-charts.md
 

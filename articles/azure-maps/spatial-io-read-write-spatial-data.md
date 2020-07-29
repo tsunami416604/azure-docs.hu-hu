@@ -8,12 +8,13 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 633af1475266e39e9c8dd278a018316c36e6491b
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.custom: devx-track-javascript
+ms.openlocfilehash: a482b860ae13e817727ca0c3848a598fe3632136
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87124408"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87277587"
 ---
 # <a name="read-and-write-spatial-data"></a>Térbeli adatok beolvasása és írása
 
@@ -40,7 +41,7 @@ Tömörített fájl (zip vagy KMZ) beolvasásakor a rendszer kibontja és beolva
 
 Az olvasási függvény eredménye egy `SpatialDataSet` objektum. Ez az objektum kiterjeszti a GeoJSON FeatureCollection osztályt. Könnyedén átadható a `DataSource` szolgáltatásnak, hogy egy térképen jelenítse meg a funkcióit. A `SpatialDataSet` nem csak a szolgáltatással kapcsolatos információkat tartalmaz, de tartalmazhat KML-fedéseket, feldolgozási mérőszámokat és egyéb részleteket is, az alábbi táblázatban leírtak szerint.
 
-| Tulajdonság neve | Típus | Description | 
+| Tulajdonság neve | Típus | Leírás | 
 |---------------|------|-------------|
 | `bbox` | `BoundingBox` | Az adatkészletben lévő összes adat határoló mezője. |
 | `features` | `Feature[]` | Az adatkészleten belüli GeoJSON-funkciók. |

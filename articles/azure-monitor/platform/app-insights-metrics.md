@@ -7,19 +7,19 @@ ms.topic: reference
 ms.date: 07/03/2019
 ms.author: vitalyg
 ms.subservice: application-insights
-ms.openlocfilehash: ca8aa62c4119b9b0b7bbed53cf722c694696ef5b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9ea98df4b6cd8572412e7082b451feac3736919c
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073565"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327072"
 ---
 # <a name="application-insights-log-based-metrics"></a>Application Insights log-alapú metrikák
 
 Application Insights log-alapú metrikák segítségével elemezheti a figyelt alkalmazások állapotát, hatékony irányítópultokat hozhat létre, és beállíthatja a riasztásokat. Kétféle metrika létezik:
 
-* A jelenet mögötti [log-alapú mérőszámok](../../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#log-based-metrics) le vannak fordítva a tárolt események [Kusto-lekérdezéseinek](/azure/kusto/query/) .
-* A [standard mérőszámok](../../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#pre-aggregated-metrics) előre összesített idősorozatként vannak tárolva.
+* A jelenet mögötti [log-alapú mérőszámok](../app/pre-aggregated-metrics-log-metrics.md#log-based-metrics) le vannak fordítva a tárolt események [Kusto-lekérdezéseinek](/azure/kusto/query/) .
+* A [standard mérőszámok](../app/pre-aggregated-metrics-log-metrics.md#pre-aggregated-metrics) előre összesített idősorozatként vannak tárolva.
 
 Mivel a *standard mérőszámok* előzetes összesítése a gyűjtemény során történik, jobb teljesítményt biztosítanak a lekérdezés időpontjában. Ez jobb választást tesz lehetővé az irányítópultok és a valós idejű riasztások számára. A *log-alapú mérőszámok* több dimenzióval rendelkeznek, így az adatelemzés és az alkalmi diagnosztika kiváló lehetőséget biztosít számukra. A [névtér-választóval](metrics-getting-started.md#create-your-first-metric-chart) válthat a log-alapú és a standard mérőszámok között a [metrikák Explorerben](metrics-getting-started.md).
 
@@ -38,11 +38,11 @@ Ha ugyanazt a metrikát ábrázolja a [metrikák Explorerben](metrics-getting-st
 - A kiválasztott **felosztott diagram** dimenzió egy extra összefoglaló tulajdonságra van lefordítva. Ha például a diagramot a *hely*alapján osztja szét, és egy 5 perces részletességgel ábrázolja azt, akkor a program összegzi az *Összefoglaló* záradékot *... raktárhely alapján (timestamp, 5 m), hely*.
 
 > [!NOTE]
-> Ha még nem ismeri a Kusto lekérdezési nyelvét, a Kusto-utasítások másolásával és beillesztésével az Log Analytics lekérdezési ablaktáblán végezheti el a módosítások végrehajtása nélkül. Az alapszintű diagram megjelenítéséhez kattintson a **Futtatás** gombra. Ahogy elkezdi megérteni a lekérdezési nyelv szintaxisát, elindíthatja a kisebb módosításokat, és megtekintheti a módosítás hatását. A saját adatai megismerése nagyszerű lehetőséget jelent a [log Analytics](../../azure-monitor/log-query/get-started-portal.md) és [Azure monitor](../../azure-monitor/overview.md)teljes teljesítményének megkezdésére.
+> Ha még nem ismeri a Kusto lekérdezési nyelvét, a Kusto-utasítások másolásával és beillesztésével az Log Analytics lekérdezési ablaktáblán végezheti el a módosítások végrehajtása nélkül. Az alapszintű diagram megjelenítéséhez kattintson a **Futtatás** gombra. Ahogy elkezdi megérteni a lekérdezési nyelv szintaxisát, elindíthatja a kisebb módosításokat, és megtekintheti a módosítás hatását. A saját adatai megismerése nagyszerű lehetőséget jelent a [log Analytics](../log-query/get-started-portal.md) és [Azure monitor](../overview.md)teljes teljesítményének megkezdésére.
 
 ## <a name="availability-metrics"></a>Rendelkezésre állási metrikák
 
-A rendelkezésre állási kategória metrikái lehetővé teszik a webalkalmazás állapotának megtekintését a világ minden pontján megfigyelt módon. [Adja meg a rendelkezésre állási teszteket](../../azure-monitor/app/monitor-web-app-availability.md) , hogy megkezdje az ebből a kategóriából származó mérőszámok használatát.
+A rendelkezésre állási kategória metrikái lehetővé teszik a webalkalmazás állapotának megtekintését a világ minden pontján megfigyelt módon. [Adja meg a rendelkezésre állási teszteket](../app/monitor-web-app-availability.md) , hogy megkezdje az ebből a kategóriából származó mérőszámok használatát.
 
 ### <a name="availability-availabilityresultsavailabilitypercentage"></a>Rendelkezésre állás (availabilityResults/availabilityPercentage)
 A *rendelkezésre állási* metrika a webteszt futtatásának azon hányadát mutatja, amely nem észlelt problémákat. A legalacsonyabb lehetséges érték a 0, amely azt jelzi, hogy a webteszt összes futtatása meghiúsult. A 100 érték azt jelenti, hogy a webteszt összes futtatása megfelelt az érvényesítési feltételeknek.
@@ -59,7 +59,7 @@ availabilityResults
 
 ### <a name="availability-test-duration-availabilityresultsduration"></a>Rendelkezésre állási teszt időtartama (availabilityResults/időtartam)
 
-A *rendelkezésre állási teszt időtartamának* mérőszáma azt mutatja, hogy mennyi idő telt el a webes teszt futtatásához. A [többlépéses webes tesztek](../../azure-monitor/app/availability-multistep.md)esetében a metrika az összes lépés végrehajtásának teljes idejét mutatja.
+A *rendelkezésre állási teszt időtartamának* mérőszáma azt mutatja, hogy mennyi idő telt el a webes teszt futtatásához. A [többlépéses webes tesztek](../app/availability-multistep.md)esetében a metrika az összes lépés végrehajtásának teljes idejét mutatja.
 
 |Mértékegység|Támogatott összesítések|Támogatott méretek|
 |---|---|---|---|---|---|
@@ -92,7 +92,7 @@ availabilityResults
 A böngésző metrikáit a Application Insights JavaScript SDK gyűjti a valós végfelhasználói böngészőkből. Nagyszerű betekintést nyújtanak a felhasználói élménybe a webalkalmazással. A böngésző metrikái jellemzően nem mintavételezés alatt állnak, ami azt jelenti, hogy a használati számok nagyobb pontosságot biztosítanak, mint a kiszolgálóoldali metrikák, amelyeket mintavételezéssel lehet eldönteni.
 
 > [!NOTE]
-> A böngésző metrikáinak összegyűjtéséhez az alkalmazásnak a [Application Insights JavaScript SDK](../../azure-monitor/app/javascript.md)-val kell rendelkeznie.
+> A böngésző metrikáinak összegyűjtéséhez az alkalmazásnak a [Application Insights JavaScript SDK](../app/javascript.md)-val kell rendelkeznie.
 
 ### <a name="browser-page-load-time-browsertimingstotalduration"></a>Böngésző oldalának betöltési ideje (browserTimings/totalDuration)
 
@@ -210,7 +210,7 @@ dependencies
 
 ### <a name="exceptions-exceptionscount"></a>Kivételek (kivételek/darabszám)
 
-Minden alkalommal, amikor kivételt naplóz Application Insights, az SDK [trackException () metódusát](../../azure-monitor/app/api-custom-events-metrics.md#trackexception) hívja meg. A kivételek mérőszáma a naplózott kivételek számát jeleníti meg.
+Minden alkalommal, amikor kivételt naplóz Application Insights, az SDK [trackException () metódusát](../app/api-custom-events-metrics.md#trackexception) hívja meg. A kivételek mérőszáma a naplózott kivételek számát jeleníti meg.
 
 |Mértékegység|Támogatott összesítések|Előre összevont méretek|Jegyzetek|
 |---|---|---|---|
@@ -224,7 +224,7 @@ exceptions
 
 ### <a name="failed-requests-requestsfailed"></a>Sikertelen kérelmek (kérelmek/sikertelen)
 
-A *sikertelenként*megjelölt, nyomon követett kiszolgálói kérelmek száma. Alapértelmezés szerint a Application Insights SDK automatikusan megjelöl minden olyan kiszolgálói kérelmet, amely sikertelen kérelemként HTTP-5xx vagy 4xx adott vissza. Ezt a logikát testreszabhatja úgy, hogy módosítja a kérelem telemetria-eleme *sikerességi* tulajdonságát egy [Egyéni telemetria-inicializálásban](../../azure-monitor/app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer).
+A *sikertelenként*megjelölt, nyomon követett kiszolgálói kérelmek száma. Alapértelmezés szerint a Application Insights SDK automatikusan megjelöl minden olyan kiszolgálói kérelmet, amely sikertelen kérelemként HTTP-5xx vagy 4xx adott vissza. Ezt a logikát testreszabhatja úgy, hogy módosítja a kérelem telemetria-eleme *sikerességi* tulajdonságát egy [Egyéni telemetria-inicializálásban](../app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer).
 
 |Mértékegység|Támogatott összesítések|Előre összevont méretek|Jegyzetek|
 |---|---|---|---|
@@ -254,7 +254,7 @@ exceptions
 
 ## <a name="performance-counters"></a>Teljesítményszámlálók
 
-A **teljesítményszámlálók** kategóriájában lévő metrikák használatával érheti el [Application Insights által gyűjtött rendszerteljesítményi számlálókat](../../azure-monitor/app/performance-counters.md).
+A **teljesítményszámlálók** kategóriájában lévő metrikák használatával érheti el [Application Insights által gyűjtött rendszerteljesítményi számlálókat](../app/performance-counters.md).
 
 ### <a name="available-memory-performancecountersavailablememory"></a>Rendelkezésre álló memória (performanceCounters/availableMemory)
 
@@ -492,3 +492,4 @@ union traces, requests, pageViews, dependencies, customEvents, availabilityResul
 | summarize dcount(user_AuthenticatedId) by bin(timestamp, 1h)
 | render barchart
 ```
+

@@ -4,12 +4,12 @@ description: Egyéni napi/heti/havi jelentések automatizálása Azure Applicati
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 4eb580b90c0bf9acafc4e8f805c2eef7eaae06d3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: abd87af1a9cf61aba21e9231350aabc661e5091b
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86540077"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320408"
 ---
 # <a name="automate-custom-reports-with-azure-application-insights-data"></a>Egyéni jelentések automatizálása Azure Application Insights-beli adatkezeléssel
 
@@ -148,9 +148,10 @@ Ezek a lépések csak akkor érvényesek, ha még nem rendelkezik konfigurált S
 
    ![Az API-kulcs másolása képernyőfelvétel](./media/automate-custom-reports/function-app-17.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* További információ az [elemzési lekérdezések](../../azure-monitor/log-query/get-started-queries.md)létrehozásáról.
+* További információ az [elemzési lekérdezések](../log-query/get-started-queries.md)létrehozásáról.
 * További információ az [Application Insights adatainak programozott lekérdezéséről](https://dev.applicationinsights.io/)
 * További tudnivalók a [Logic Apps](../../logic-apps/logic-apps-overview.md) szolgáltatásról
 * További információ a [Microsoft Flowról](https://ms.flow.microsoft.com).
+

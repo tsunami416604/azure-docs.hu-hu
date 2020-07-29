@@ -4,15 +4,15 @@ description: Ismerje meg az új Azure-alkalmazás létrehozásának lépéseit �
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-author: qianw211
-ms.author: dsindona
+author: AarathiN
+ms.author: aarathin
 ms.date: 07/14/2020
-ms.openlocfilehash: 6789e32cbbb1257a668e7be87a8b73a0511b6fb0
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: f9d7e88e78800df07dfe82d7336324eef38b92d5
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87127434"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326672"
 ---
 # <a name="create-an-azure-application-offer"></a>Azure-alkalmazásajánlat létrehozása
 
@@ -38,7 +38,7 @@ Tekintse át a következő erőforrásokat, amikor előkészíti az Azure-alkalm
 
 * Gyorsútmutatók:
 
-    * [Azure Gyorsindítás sablonok](https://azure.microsoft.com/documentation/templates/)
+    * [Azure-gyorssablonok](https://azure.microsoft.com/documentation/templates/)
     * [Azure-sablonok – ajánlott eljárások útmutatója](https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md)
     * [Alkalmazásdefiníció közzététele](../../managed-applications/publish-service-catalog-app.md)
     * [Szolgáltatáskatalógusban elérhető alkalmazás üzembe helyezése](../../managed-applications/deploy-service-catalog-quickstart.md)
@@ -187,8 +187,8 @@ Ezen a lapon kezelhetők a kereskedelmi Marketplace-ajánlathoz tartozó másola
 4. Használati feltételek
 5. Adatvédelmi szabályzat címe (hivatkozás)
 6. Ajánlat neve
-7. Összegzés
-8. Description
+7. Összefoglalás
+8. Leírás
 9. Képernyőképek/videók
 
 <br>Az alábbi példa bemutatja, hogyan jelennek meg az ajánlati információk a Azure Portalban:
@@ -202,7 +202,7 @@ Ezen a lapon kezelhetők a kereskedelmi Marketplace-ajánlathoz tartozó másola
 3. Hasznos hivatkozások
 4. Képernyőképek
 
-#### <a name="name"></a>Name
+#### <a name="name"></a>Név
 
 Az itt megadott név jelenik meg az ügyfelek számára az ajánlati lista címének megfelelően. Ez a mező előre fel van töltve az ajánlat- **aliashoz** megadott szöveggel az ajánlat létrehozásakor, de ez az érték módosítható. Ez a név lehet védjeggyel ellátott (és előfordulhat, hogy védjegyeket vagy szerzői jogi szimbólumokat is tartalmaz). A név nem lehet hosszabb 50 karakternél, és nem tartalmazhat hangulatjelek.
 
@@ -214,7 +214,7 @@ Adja meg az ajánlat rövid leírását, amely legfeljebb 100 karakter hosszú l
 
 Adja meg az ajánlat hosszabb leírását, amely legfeljebb 256 karakter hosszú lehet. Ez a leírás a keresési eredményekben is használható.
 
-#### <a name="description"></a>Description
+#### <a name="description"></a>Leírás
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 

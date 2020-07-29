@@ -7,13 +7,13 @@ ms.author: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 04/09/2020
-ms.openlocfilehash: 277e478ca1cbb63200bdea14b1c02ea016af78ba
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 07/27/2020
+ms.openlocfilehash: 1ba293890f6a6fd165e03486d7da375f2ac53ab1
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87031201"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326447"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>Adatcímkéző projekt létrehozása és címkék exportálása 
 
@@ -21,11 +21,11 @@ ms.locfileid: "87031201"
 
 A gépi tanulási projektek terjedelmes adatcímkézése gyakran fejfájás. A számítógép-látási összetevővel rendelkező projektek, például a képosztályozás vagy az objektumok észlelése általában több ezer rendszerkép használatát igénylik.
  
-[Azure Machine learning](https://ml.azure.com/) központi helyet biztosít a címkézési projektek (nyilvános előzetes verzió) létrehozásához, kezeléséhez és figyeléséhez. Felhasználhatja az adatok, címkék és csoporttagok koordinálását a címkézési feladatok hatékony kezelésére. Machine Learning támogatja a képbesorolást, a többcímkés vagy a többosztályos és az objektum-azonosítást a kötött mezőkkel.
+Az adatfeliratok [Azure Machine learning](https://ml.azure.com/) központi helyet biztosítanak a címkézési projektek létrehozásához, kezeléséhez és figyeléséhez. Felhasználhatja az adatok, címkék és csoporttagok koordinálását a címkézési feladatok hatékony kezelésére. Machine Learning támogatja a képbesorolást, a többcímkés vagy a többosztályos és az objektum-azonosítást a kötött mezőkkel.
 
-Azure Machine Learning nyomon követi a folyamat előrehaladását, és fenntartja a hiányos címkéző feladatok várólistáját.
+Az Adatfeliratok nyomon követik az előrehaladást, és megtartják a hiányos címkéző feladatok várólistáját.
 
-Elindíthatja és leállíthatja a projektet, és figyelheti a címkézési folyamatot. A címkézett adatokat kókusz formátumban vagy Azure Machine Learning adatkészletként is exportálhatja.
+Elindíthatja és leállíthatja a projektet, és szabályozhatja a címkézés folyamatát. Megtekintheti a címkével ellátott adatokat, és az exportálást kókusz formátumban vagy Azure Machine Learning adatkészletként is elvégezheti.
 
 > [!Important]
 > Jelenleg csak a képbesorolás és az objektum-azonosító címkézési projektek támogatottak. Emellett az adatlemezképeknek elérhetőnek kell lenniük egy Azure Blob-adattárban. (Ha nem rendelkezik meglévő adattárral, képeket tölthet fel a projekt létrehozása során.)
@@ -44,7 +44,7 @@ Ebből a cikkből megtudhatja, hogyan végezheti el a következőket:
 * A címkével ellátni kívánt, helyi vagy Azure Blob Storage-beli adatfájlok.
 * Az alkalmazni kívánt címkék halmaza.
 * A címkézésre vonatkozó utasítások.
-* Azure-előfizetés. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://aka.ms/AMLFree).
+* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://aka.ms/AMLFree), mielőtt hozzákezd.
 * Machine Learning munkaterület. Lásd: [Azure Machine learning munkaterület létrehozása](how-to-manage-workspace.md).
 
 ## <a name="create-a-labeling-project"></a>Címkézési projekt létrehozása
@@ -57,9 +57,9 @@ Projekt létrehozásához válassza a **projekt hozzáadása**lehetőséget. Adj
 
 :::image type="content" source="media/how-to-create-labeling-projects/labeling-creation-wizard.png" alt-text="Projekt-létrehozási varázsló címkézése":::
 
-* Válassza a **Képbesorolás többosztályos** a projektekhez lehetőséget, ha csak *egyetlen osztályt* szeretne alkalmazni osztályokból egy képből.
-* Válassza a **Képbesorolás több címkét** a projektekhez lehetőséget, ha egy *vagy több* címkét szeretne alkalmazni az osztályok egy adott képére. Előfordulhat például, hogy egy kutya fényképét a *kutya* és a *nappali*is címkézi.
-* Válassza az **objektum azonosítása (határolókeret)** lehetőséget a projektek esetében, ha egy adott képen egy osztályt és egy határoló mezőt szeretne hozzárendelni.
+* Válassza a **Képbesorolás többosztályos** projektek számára lehetőséget, ha csak *egyetlen címkét* szeretne alkalmazni egy képcsoportból egy képből.
+* Válassza a **Képbesorolás több címkét** a projektekhez lehetőséget, ha egy *vagy több* címkét szeretne alkalmazni egy képcsoportból egy képből. Előfordulhat például, hogy egy kutya fényképét a *kutya* és a *nappali*is címkézi.
+* Válassza az **objektum azonosítása (határolókeret)** lehetőséget a projektek esetében, ha címkét és egy határoló mezőt szeretne hozzárendelni egy képen található minden objektumhoz.
 
 Ha készen áll a folytatásra, válassza a **tovább** lehetőséget.
 
@@ -187,14 +187,54 @@ A címkézési projekt inicializálását követően a projekt egyes szempontjai
 > Előfordulhat, hogy a lap nem frissül automatikusan. Ezért egy szüneteltetés után manuálisan frissítse az oldalt, hogy megtekintse a projekthez **létrehozott**állapotot.
 
 ## <a name="run-and-monitor-the-project"></a>A projekt futtatása és figyelése
+A projekt inicializálását követően az Azure elindítja a futtatását. Válassza ki a projektet a fő **adatfelirat** lapon a projekt részleteinek megtekintéséhez.
 
-A projekt inicializálását követően az Azure elindítja a futtatását. Válassza ki a projektet a fő **adatfelirat** lapon a **projekt részleteinek**megtekintéséhez. Az **irányítópult** lapon látható a címkézési feladat állapota.
+A projekt szüneteltetéséhez vagy újraindításához kapcsolja be a **futó** állapotot a jobb felső sarokban. Csak akkor címkézheti az adatfeliratot, ha a projekt fut.
+
+### <a name="dashboard"></a>Irányítópult
+
+Az **irányítópult** lapon látható a címkézési feladat állapota.
+
+:::image type="content" source="media/how-to-create-labeling-projects/labeling-dashboard.png" alt-text="Adatcímkéző irányítópult":::
+
+Az állapotjelző diagramon látható, hogy hány elem van megcímkézve, és hogy hányat még nem végeztek el.  A függőben lévő elemek a következők lehetnek:
+
+* Még nincs hozzáadva egy feladathoz
+* Egy Labeler rendelt feladatban szerepel, de még nem fejeződött be 
+* A feladatok várólistáján még hozzá kell rendelni
+
+A középső szakasz a feladat-várólistát jeleníti meg, amelyet még hozzá kell rendelni. Ha a ML által támogatott címkézés ki van kapcsolva, ez a szakasz a hozzárendelni kívánt manuális feladatok számát mutatja. Ha a ML által támogatott címkézés be van kapcsolva, ez a következőket is megjeleníti:
+
+* A várólistában fürtözött elemeket tartalmazó feladatok
+* A várólistában lévő, előcímkével ellátott elemeket tartalmazó feladatok
+
+Továbbá, ha a ML által támogatott címkézés engedélyezve van, egy kis folyamatjelző sáv jelenik meg, amikor a következő betanítási művelet bekövetkezik.  A kísérletek szakaszban hivatkozások találhatók a gépi tanulási futtatásokhoz.
+
+* Képzés – modell betanítása a címkék előrejelzéséhez
+* Ellenőrzés – meghatározza, hogy a rendszer a modell előrejelzését használja-e az elemek előzetes címkézéséhez 
+* Következtetés – előrejelzési Futtatás új elemekhez
+* Featurization – fürtök elemei (csak képbesorolási projektekhez)
+
+A jobb oldalon a Befejezett feladatok címkéjének eloszlása.  Ne feledje, hogy egyes projekttípus esetében egy elem több címkével is rendelkezhet, ebben az esetben a címkék teljes száma nagyobb lehet, mint az összes elem.
+
+### <a name="data-tab"></a>Az adatlap
 
 Az **adat** lapon megtekintheti az adatkészletet, és ellenőrizheti a címkézett adatokat. Ha nem megfelelően címkézett információt lát, jelölje ki, majd válassza az **elutasítás**lehetőséget, amely eltávolítja a címkéket, és visszahelyezi az adatfelirat nélküli várólistába.
 
-A projekt szüneteltetéséhez vagy újraindításához kattintson az indítás **szüneteltetése** / **Start** gombra. Csak akkor címkézheti az adatfeliratot, ha a projekt fut.
+### <a name="details-tab"></a>Részletek lap
 
-Az adatokat közvetlenül a **Project Details (projekt részletei** ) oldaláról is megcímkézheti a **felirat adatainak**kiválasztásával.
+A projekt részleteinek megtekintése.  Ezen a lapon a következőket teheti:
+
+* A projekt részleteinek és a bemeneti adatkészleteknek a megtekintése
+* Növekményes frissítés engedélyezése
+* A projektben címkézett kimenetek tárolásához használt tárolási tároló részleteinek megtekintése
+* Címkék hozzáadása a projekthez
+* A címkékhez adni kívánt utasítások szerkesztése
+* A ML által támogatott címkézés részleteinek szerkesztése, beleértve az engedélyezést/letiltást
+
+### <a name="access-for-labelers"></a>Címkékhez való hozzáférés
+
+A munkaterülethez hozzáférő bárki megcímkézheti az adatait a projektben.  Testreszabhatja a címkéző engedélyeit is, hogy az hozzáférhessen a címkézéshez, de a munkaterület vagy a címkézési projekt más részeihez sem.  További részletekért lásd: [Azure Machine learning munkaterület hozzáférésének kezelése](how-to-assign-roles.md), és az [Egyéni Labeler-szerepkör](how-to-assign-roles.md#labeler)létrehozásának ismertetése.
 
 ## <a name="add-new-label-class-to-a-project"></a>Új címke osztály hozzáadása projekthez
 
@@ -203,7 +243,7 @@ A címkézési folyamat során azt tapasztalhatja, hogy további címkékre van 
 A következő lépések segítségével adhat hozzá egy vagy több címkét egy projekthez:
 
 1. Válassza ki a projektet a fő **adatfelirat** lapon.
-1. A lap tetején válassza a **felfüggesztés** lehetőséget a címkéző tevékenységtől való leállításához.
+1. A lap jobb felső részén állítsa be a **futást** , hogy **szüneteltetve** legyen a címkéző tevékenységének leállítása.
 1. Válassza a **Részletek** fület.
 1. A bal oldali listában válassza a **címke osztályok**lehetőséget.
 1. A lista tetején válassza a **+ Címkék hozzáadása** ![ feliratot](media/how-to-create-labeling-projects/add-label.png)
@@ -212,7 +252,7 @@ A következő lépések segítségével adhat hozzá egy vagy több címkét egy
     * Kezdjen el az összes meglévő címke megtartásával.  Válassza ezt a lehetőséget, ha az összes adatfelirat nélküli értéket szeretné megjelölni, de a meglévő címkéket a korábban címkézett lemezképek alapértelmezett címkéjéként kívánja megtartani.
     * Folytatás, az összes meglévő címke megtartása. Válassza ezt a lehetőséget, ha az összes olyan adathalmazt meg szeretné őrizni, amely már meg van jelölve, és kezdje el használni az új címkét, amely még nem címkézett.
 1. Szükség szerint módosítsa az utasítások lapját az új felirat (ok) hoz.
-1. Miután hozzáadta az összes új címkét, a lap tetején kattintson a **Start** gombra a projekt újraindításához.  
+1. Miután hozzáadta az összes új címkét, a lap jobb felső sarkában a váltás **szüneteltetve** **értékre** vált a projekt újraindításához.  
 
 ## <a name="export-the-labels"></a>A címkék exportálása
 

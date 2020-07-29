@@ -6,12 +6,12 @@ ms.author: harelbr
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.subservice: alerts
-ms.openlocfilehash: 53ea43213a48cb712eb6ce685f03b733b83948b1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b8e2f580bb21d2f432ce5dcbc3e06c15ba6f380b
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87045538"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327208"
 ---
 # <a name="create-metric-alerts-for-logs-in-azure-monitor"></a>Metrikai riasztások létrehozása a naplókhoz Azure Monitor
 
@@ -19,16 +19,16 @@ ms.locfileid: "87045538"
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Azure Monitor támogatja a [metrikus riasztási típust](../../azure-monitor/platform/alerts-metric-near-real-time.md) , amely a [klasszikus riasztások](../../azure-monitor/platform/alerts-classic-portal.md)előnyeivel rendelkezik. A metrikák az [Azure-szolgáltatások nagyméretű listájához](../../azure-monitor/platform/metrics-supported.md)érhetők el. Ez a cikk az erőforráshoz tartozó részhalmazok (azaz) használatát ismerteti `Microsoft.OperationalInsights/workspaces` .
+Azure Monitor támogatja a [metrikus riasztási típust](./alerts-metric-near-real-time.md) , amely a [klasszikus riasztások](./alerts-classic-portal.md)előnyeivel rendelkezik. A metrikák az [Azure-szolgáltatások nagyméretű listájához](./metrics-supported.md)érhetők el. Ez a cikk az erőforráshoz tartozó részhalmazok (azaz) használatát ismerteti `Microsoft.OperationalInsights/workspaces` .
 
 Metrikai riasztásokat használhat a mutatóként kinyert népszerű Log Analytics naplókban, beleértve az Azure-ban vagy a helyszínen található erőforrásokat is. A támogatott Log Analytics megoldások az alábbiak szerint vannak felsorolva:
 
-- [Teljesítményszámlálók](../../azure-monitor/platform/data-sources-performance-counters.md) Windows & Linux rendszerű gépekhez
-- [Szívverési rekordok Agent Health](../../azure-monitor/insights/solution-agenthealth.md)
+- [Teljesítményszámlálók](./data-sources-performance-counters.md) Windows & Linux rendszerű gépekhez
+- [Szívverési rekordok Agent Health](../insights/solution-agenthealth.md)
 - [Felügyeleti rekordok frissítése](../../automation/automation-update-management.md)
-- [Esemény](../../azure-monitor/platform/data-sources-windows-events.md) -adatnaplók
+- [Esemény](./data-sources-windows-events.md) -adatnaplók
 
-Az Azure-ban a lekérdezésen alapuló [naplózási riasztásokra](../../azure-monitor/platform/alerts-log.md) **vonatkozó mérőszám-riasztások** használatának számos előnye van. Némelyikük alább látható:
+Az Azure-ban a lekérdezésen alapuló [naplózási riasztásokra](./alerts-log.md) **vonatkozó mérőszám-riasztások** használatának számos előnye van. Némelyikük alább látható:
 
 - A metrikai riasztások közel valós idejű figyelési képességet és metrikai riasztásokat biztosítanak a naplókból származó adatoknak a log forrásból való biztosításához.
 - A metrikai riasztások csak akkor jelennek meg, ha riasztást küldenek, és ha a riasztás megoldódott, Ha a riasztási feltétel teljesül, a riasztásokat a rendszer az állapot nélküli naplóba helyezi, és minden intervallumban megőrzi a tüzelést.
@@ -39,10 +39,10 @@ Az Azure-ban a lekérdezésen alapuló [naplózási riasztásokra](../../azure-m
 
 ## <a name="metrics-and-dimensions-supported-for-logs"></a>Naplók által támogatott mérőszámok és méretek
 
- A metrikai riasztások támogatják a dimenziókat használó mérőszámok riasztásait. Méretek használatával szűrheti a metrikát a megfelelő szintre. A rendszer felsorolja a [log Analytics munkaterületekről](../../azure-monitor/platform/metrics-supported.md#microsoftoperationalinsightsworkspaces) származó naplókhoz támogatott metrikák teljes listáját. a támogatott megoldások között.
+ A metrikai riasztások támogatják a dimenziókat használó mérőszámok riasztásait. Méretek használatával szűrheti a metrikát a megfelelő szintre. A rendszer felsorolja a [log Analytics munkaterületekről](./metrics-supported.md#microsoftoperationalinsightsworkspaces) származó naplókhoz támogatott metrikák teljes listáját. a támogatott megoldások között.
 
 > [!NOTE]
-> Egy Log Analytics munkaterületről [Azure monitor-metrikák](../../azure-monitor/platform/metrics-charts.md)használatával kinyert támogatott metrika megtekintéséhez az adott metrikán létre kell hozni egy metrikai riasztást a naplóhoz. A naplók metrikai riasztásában kiválasztott dimenziók csak Azure Monitor-metrikák használatával jelennek meg a feltáráshoz.
+> Egy Log Analytics munkaterületről [Azure monitor-metrikák](./metrics-charts.md)használatával kinyert támogatott metrika megtekintéséhez az adott metrikán létre kell hozni egy metrikai riasztást a naplóhoz. A naplók metrikai riasztásában kiválasztott dimenziók csak Azure Monitor-metrikák használatával jelennek meg a feltáráshoz.
 
 ## <a name="creating-metric-alert-for-log-analytics"></a>Metrikai riasztás létrehozása Log Analyticshoz
 
@@ -53,14 +53,14 @@ Az alábbiakban felsoroljuk a naplókhoz tartozó metrikus riasztások készít�
 
 A Log Analytics-adatokon összegyűjtött naplók metrikája előtt be kell állítani és elérhetővé kell tennie a következőket:
 
-1. **Aktív log Analytics munkaterület**: egy érvényes és aktív log Analytics munkaterület jelen kell lennie. További információ: [log Analytics munkaterület létrehozása a Azure Portalban](../../azure-monitor/learn/quick-create-workspace.md).
-2. Az **ügynök konfigurálva van log Analytics munkaterületre**: az ügynököt az Azure-beli virtuális gépekhez (és/vagy) a helyszíni virtuális gépekhez kell konfigurálni, hogy az adatküldés a korábbi lépésben használt log Analytics munkaterületre történjen. További információ: [log Analytics – ügynök áttekintése](../../azure-monitor/platform/agents-overview.md).
-3. A **támogatott log Analytics megoldások telepítve**vannak: a log Analytics megoldást konfigurálni kell, és adatokat kell elküldeni log Analytics munkaterület által támogatott megoldásokba a [teljesítményszámlálók a Windows & Linux](../../azure-monitor/platform/data-sources-performance-counters.md), [szívverési rekordok a Agent Health, az](../../azure-monitor/insights/solution-agenthealth.md) [Update Management](../../automation/automation-update-management.md)és az [Event adatok](../../azure-monitor/platform/data-sources-windows-events.md)számára.
-4. **Naplók küldésére konfigurált log Analytics megoldások**: a log Analytics megoldásnak rendelkeznie kell az [log Analytics munkaterületek által támogatott mérőszámokhoz](../../azure-monitor/platform/metrics-supported.md#microsoftoperationalinsightsworkspaces) tartozó szükséges naplókkal/adatokkal. A *(z)% rendelkezésre álló memória* számlálójának esetében például először a [teljesítményszámlálók](../../azure-monitor/platform/data-sources-performance-counters.md) megoldásban kell konfigurálni.
+1. **Aktív log Analytics munkaterület**: egy érvényes és aktív log Analytics munkaterület jelen kell lennie. További információ: [log Analytics munkaterület létrehozása a Azure Portalban](../learn/quick-create-workspace.md).
+2. Az **ügynök konfigurálva van log Analytics munkaterületre**: az ügynököt az Azure-beli virtuális gépekhez (és/vagy) a helyszíni virtuális gépekhez kell konfigurálni, hogy az adatküldés a korábbi lépésben használt log Analytics munkaterületre történjen. További információ: [log Analytics – ügynök áttekintése](./agents-overview.md).
+3. A **támogatott log Analytics megoldások telepítve**vannak: a log Analytics megoldást konfigurálni kell, és adatokat kell elküldeni log Analytics munkaterület által támogatott megoldásokba a [teljesítményszámlálók a Windows & Linux](./data-sources-performance-counters.md), [szívverési rekordok a Agent Health, az](../insights/solution-agenthealth.md) [Update Management](../../automation/automation-update-management.md)és az [Event adatok](./data-sources-windows-events.md)számára.
+4. **Naplók küldésére konfigurált log Analytics megoldások**: a log Analytics megoldásnak rendelkeznie kell az [log Analytics munkaterületek által támogatott mérőszámokhoz](./metrics-supported.md#microsoftoperationalinsightsworkspaces) tartozó szükséges naplókkal/adatokkal. A *(z)% rendelkezésre álló memória* számlálójának esetében például először a [teljesítményszámlálók](./data-sources-performance-counters.md) megoldásban kell konfigurálni.
 
 ## <a name="configuring-metric-alert-for-logs"></a>Metrikai riasztás konfigurálása a naplókhoz
 
- A metrikai riasztások a Azure Portal, a Resource Manager-sablonok, a REST API, a PowerShell és az Azure CLI használatával hozhatók létre és kezelhetők. Mivel a naplók metrikai riasztásai, a metrikus riasztások egy változata – amint az előfeltételek teljesülnek, a naplók metrikai riasztása a megadott Log Analytics munkaterülethez hozható létre. A [metrikai riasztások](../../azure-monitor/platform/alerts-metric-near-real-time.md) minden jellemzője és funkciója a naplók metrikájának riasztására is vonatkozik. beleértve a hasznos adatok sémáját, a vonatkozó kvóta korlátait és a számlázás díját.
+ A metrikai riasztások a Azure Portal, a Resource Manager-sablonok, a REST API, a PowerShell és az Azure CLI használatával hozhatók létre és kezelhetők. Mivel a naplók metrikai riasztásai, a metrikus riasztások egy változata – amint az előfeltételek teljesülnek, a naplók metrikai riasztása a megadott Log Analytics munkaterülethez hozható létre. A [metrikai riasztások](./alerts-metric-near-real-time.md) minden jellemzője és funkciója a naplók metrikájának riasztására is vonatkozik. beleértve a hasznos adatok sémáját, a vonatkozó kvóta korlátait és a számlázás díját.
 
 Részletes részletekért és példákért tekintse meg a [metrikai riasztások létrehozásával és kezelésével](https://aka.ms/createmetricalert)foglalkozó témakört. A naplók metrikai riasztásai esetében kövesse a metrikai riasztások kezelésével kapcsolatos útmutatást, és győződjön meg a következőkről:
 
@@ -688,5 +688,6 @@ az group deployment create --resource-group myRG --template-file metricfromLogsA
 ## <a name="next-steps"></a>További lépések
 
 - További információ a [metrikai riasztásokról](alerts-metric.md).
-- További információ a [log-riasztásokról az Azure-ban](../../azure-monitor/platform/alerts-unified-log.md).
+- További információ a [log-riasztásokról az Azure-ban](./alerts-unified-log.md).
 - További információ [Az Azure-beli riasztásokról](alerts-overview.md).
+

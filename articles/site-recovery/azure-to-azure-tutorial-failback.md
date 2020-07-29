@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/14/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: e6257311473987ee053caeade6bfe14533353b73
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: f73d20c19e8fc26c553490772f5374e8a88a77b2
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134452"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289306"
 ---
 # <a name="fail-back-an-azure-vm-between-azure-regions"></a>Azure-beli virtuális gép feladatátvétele Azure-régiók között
 
@@ -58,7 +58,7 @@ A virtuális gépek újravédése után szükség szerint visszatérhet az első
     ![Virtuális gép elsődleges és másodlagos régiókban](./media/site-recovery-azure-to-azure-failback/azure-to-azure-failback-vm-view.png)
 
 > [!NOTE]
-> A Site Recovery Extension 9.28. x. x verziót futtató gépek esetében a [40 kumulatív frissítéssel](https://support.microsoft.com/help/4521530/update-rollup-40-for-azure-site-recovery) site Recovery a másodlagos vész-helyreállítási régióban lévő gépek tisztítása, a feladat-visszavétel befejezése és a virtuális gépek ismételt védelme után. A másodlagos régióban nem szükséges manuálisan törölni a virtuális gépeket és a hálózati adaptereket. Ha a feladatátvételt követően teljesen letiltja a replikálást, Site Recovery a virtuális gépek és hálózati adapterek mellett a vész-helyreállítási régióban lévő lemezeket is törli.
+> A felügyelt lemezeket használó gépek esetében, valamint a Site Recovery bővítmény 9.28. x. x verziójának futtatása a 40-es [kumulatív frissítéssel](https://support.microsoft.com/help/4521530/update-rollup-40-for-azure-site-recovery) site Recovery a másodlagos vész-helyreállítási régióban lévő gépek tisztítása, a feladat-visszavétel befejezése és a virtuális gépek ismételt védelme után. A másodlagos régióban nem szükséges manuálisan törölni a virtuális gépeket és a hálózati adaptereket. Vegye figyelembe, hogy a nem felügyelt lemezekkel rendelkező virtuális gépek nem törlődnek. Ha a feladatátvételt követően teljesen letiltja a replikálást, Site Recovery a virtuális gépek és hálózati adapterek mellett a vész-helyreállítási régióban lévő lemezeket is törli.
 
 ## <a name="next-steps"></a>További lépések
 

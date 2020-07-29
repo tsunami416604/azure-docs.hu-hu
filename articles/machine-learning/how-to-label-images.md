@@ -7,13 +7,13 @@ ms.author: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 04/09/2020
-ms.openlocfilehash: a9c9dee94dd50462109a8864ffb413ce991c8dbd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 07/27/2020
+ms.openlocfilehash: a71b4096e791221057fdcc5d14351ceccab720fb
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072399"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87307199"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>Képek címkézése egy címkézési projektben 
 
@@ -37,11 +37,9 @@ Miután a projekt rendszergazdája [létrehoz egy címkézési projektet](https:
 
 1. A projekt megkereséséhez kattintson a bal oldalon található **adatfeliratok** elemre.  
 
-1. Válassza ki a projekt nevét a listában.
-
 ## <a name="understand-the-labeling-task"></a>A címkézési feladat ismertetése
 
-Miután kiválasztotta a projektet, a lap tetején válassza az **adatfelirat**lehetőséget.
+Az adatcímkéző projektek táblázatában válassza a projekt **felirat hivatkozását** .
 
 Megtekintheti a projektre vonatkozó utasításokat. Leírják, hogy milyen típusú adatokra van szüksége, hogyan teheti meg a döntéseket és egyéb releváns információkat. Miután elolvasta ezeket az információkat, a lap tetején válassza a **feladatok**lehetőséget.  Vagy az oldal alján kattintson a **címkézés indítása**lehetőségre.
 

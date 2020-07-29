@@ -6,27 +6,27 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/13/2019
-ms.openlocfilehash: 0b18c34f8c0378d22d138b865d72fa4f351d7b8f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 80e87d6fdab6ecf15c241581f8c19d36b30d7e30
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073638"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327106"
 ---
 # <a name="application-insights-connector-management-solution-deprecated"></a>Application Insights Connector felügyeleti megoldás (elavult)
 
 ![Application Insights szimbólum](./media/app-insights-connector/app-insights-connector-symbol.png)
 
 >[!NOTE]
-> Az [erőforrások közötti lekérdezések](../../azure-monitor/log-query/cross-workspace-query.md)támogatásával a Application Insights Connector felügyeleti megoldás már nem szükséges. Az Azure piactéren elavult és eltávolított, valamint a OMS-portálon, amely az Azure-beli kereskedelmi felhő esetében hivatalosan elavult, 2019. 2019. március 30-án megszűnik az Azure US government Cloud.
+> Az [erőforrások közötti lekérdezések](../log-query/cross-workspace-query.md)támogatásával a Application Insights Connector felügyeleti megoldás már nem szükséges. Az Azure piactéren elavult és eltávolított, valamint a OMS-portálon, amely az Azure-beli kereskedelmi felhő esetében hivatalosan elavult, 2019. 2019. március 30-án megszűnik az Azure US government Cloud.
 >
 >A meglévő kapcsolatok 2019 június 30-ig továbbra is működni fognak.  A OMS-portál elavult használata esetén nincs lehetőség a meglévő kapcsolatok konfigurálására és eltávolítására a portálon. A meglévő kapcsolatok eltávolításához lásd: [az összekötő eltávolítása](#removing-the-connector-with-powershell) az alábbi PowerShell-lel a PowerShell használatával.
 >
->Több alkalmazás naplózási információinak lekérdezéséhez Application Insights tekintse meg a [több Azure Monitor Application Insights erőforrás egységesítését](../log-query/unify-app-resource-data.md)ismertető témakört. További információ a OMS-portál érvénytelenítéséről: a [OMS-portál áthelyezése az Azure](../../azure-monitor/platform/oms-portal-transition.md)-ba.
+>Több alkalmazás naplózási információinak lekérdezéséhez Application Insights tekintse meg a [több Azure Monitor Application Insights erőforrás egységesítését](../log-query/unify-app-resource-data.md)ismertető témakört. További információ a OMS-portál érvénytelenítéséről: a [OMS-portál áthelyezése az Azure](./oms-portal-transition.md)-ba.
 >
 > 
 
-Az Applications-alapú adatelemzési összekötő megoldásával diagnosztizálhatja a teljesítménnyel kapcsolatos problémákat, és megismerheti, hogy a felhasználók milyen műveleteket végeznek az alkalmazással, ha [Application Insights](../../azure-monitor/app/app-insights-overview.md)figyelik. Ugyanazon alkalmazás-telemetria nézetei, amelyekben a fejlesztők megtekintenek a Application Insightsban Log Analytics érhetők el. Ha azonban a Application Insights-alkalmazásait Log Analytics integrálja, az alkalmazások láthatósága egyre nagyobb mértékben megnövekszik azzal, hogy a művelet-és alkalmazásadatok egy helyen vannak. Ugyanezek a nézetek segítenek az alkalmazás-fejlesztőknek való együttműködésben. A közös nézetek segítségével csökkentheti az alkalmazás-és platformokkal kapcsolatos problémák észlelésének és megoldásának idejét.
+Az Applications-alapú adatelemzési összekötő megoldásával diagnosztizálhatja a teljesítménnyel kapcsolatos problémákat, és megismerheti, hogy a felhasználók milyen műveleteket végeznek az alkalmazással, ha [Application Insights](../app/app-insights-overview.md)figyelik. Ugyanazon alkalmazás-telemetria nézetei, amelyekben a fejlesztők megtekintenek a Application Insightsban Log Analytics érhetők el. Ha azonban a Application Insights-alkalmazásait Log Analytics integrálja, az alkalmazások láthatósága egyre nagyobb mértékben megnövekszik azzal, hogy a művelet-és alkalmazásadatok egy helyen vannak. Ugyanezek a nézetek segítenek az alkalmazás-fejlesztőknek való együttműködésben. A közös nézetek segítségével csökkentheti az alkalmazás-és platformokkal kapcsolatos problémák észlelésének és megoldásának idejét.
 
 A megoldás használatakor a következőket teheti:
 
@@ -42,12 +42,12 @@ A megoldás használatakor a következőket teheti:
 
 A legtöbb más Log Analytics-megoldástól eltérően az ügynökök nem gyűjtenek adatokat az Application Insights Connector. A megoldás által használt összes adatok közvetlenül az Azure-ból származnak.
 
-| Összekapcsolt forrás | Támogatott | Description |
+| Összekapcsolt forrás | Támogatott | Leírás |
 | --- | --- | --- |
-| [Windows-ügynökök](../../azure-monitor/platform/agent-windows.md) | No | A megoldás nem gyűjt adatokat a Windows-ügynököktől. |
-| [Linux-ügynökök](../../azure-monitor/learn/quick-collect-linux-computer.md) | No | A megoldás nem gyűjt adatokat a Linux-ügynököktől. |
-| [SCOM felügyeleti csoport](../../azure-monitor/platform/om-agents.md) | No | A megoldás nem gyűjt adatokat a csatlakoztatott SCOM felügyeleti csoportba tartozó ügynököktől. |
-| [Azure Storage-fiók](./resource-logs.md#send-to-log-analytics-workspace) | No | A megoldás nem gyűjt adatokat az Azure Storage-ból. |
+| [Windows-ügynökök](./agent-windows.md) | Nem | A megoldás nem gyűjt adatokat a Windows-ügynököktől. |
+| [Linux-ügynökök](../learn/quick-collect-linux-computer.md) | Nem | A megoldás nem gyűjt adatokat a Linux-ügynököktől. |
+| [SCOM felügyeleti csoport](./om-agents.md) | Nem | A megoldás nem gyűjt adatokat a csatlakoztatott SCOM felügyeleti csoportba tartozó ügynököktől. |
+| [Azure Storage-fiók](./resource-logs.md#send-to-log-analytics-workspace) | Nem | A megoldás nem gyűjt adatokat az Azure Storage-ból. |
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -57,7 +57,7 @@ A legtöbb más Log Analytics-megoldástól eltérően az ügynökök nem gyűjt
 
 ## <a name="configuration"></a>Konfiguráció
 
-1. Engedélyezze a Azure Web Apps Analytics megoldást az [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AppInsights?tab=Overview) -en, vagy használja az [Solutions Gallery log Analytics-megoldások hozzáadása](../../azure-monitor/insights/solutions.md)című témakörben leírt eljárást.
+1. Engedélyezze a Azure Web Apps Analytics megoldást az [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AppInsights?tab=Overview) -en, vagy használja az [Solutions Gallery log Analytics-megoldások hozzáadása](../insights/solutions.md)című témakörben leírt eljárást.
 2. Keresse fel az [Azure Portalt](https://portal.azure.com). Application Insights megnyitásához válassza **az összes szolgáltatás** elemet. Ezután keressen rá Application Insights. 
 3. Az **előfizetések**területen válasszon ki egy Application Insights erőforrásokkal rendelkező előfizetést, majd a **név**területen válasszon ki egy vagy több alkalmazást.
 4. Kattintson a **Mentés** gombra.
@@ -144,7 +144,7 @@ A kimutatáshoz kattintson az egyes sorok végén megjelenő három pontra (**..
 
 ### <a name="sample-corrected-data"></a>Minta – javított adatértékek
 
-A Application Insights *[mintavételi korrekciót](../../azure-monitor/app/sampling.md)* biztosít a telemetria-forgalom csökkentése érdekében. Ha engedélyezi a mintavételezést a Application Insights alkalmazásban, a Application Insights és a Log Analyticsban tárolt bejegyzések száma kevesebb. Míg az adatkonzisztencia megmarad a **Application Insights Connector** oldalon és perspektívákban, manuálisan kell megadnia az egyéni lekérdezésekhez tartozó mintavételes adatok helyességét.
+A Application Insights *[mintavételi korrekciót](../app/sampling.md)* biztosít a telemetria-forgalom csökkentése érdekében. Ha engedélyezi a mintavételezést a Application Insights alkalmazásban, a Application Insights és a Log Analyticsban tárolt bejegyzések száma kevesebb. Míg az adatkonzisztencia megmarad a **Application Insights Connector** oldalon és perspektívákban, manuálisan kell megadnia az egyéni lekérdezésekhez tartozó mintavételes adatok helyességét.
 
 Itt látható egy példa a naplóbeli keresési lekérdezésben a mintavételezési korrekcióra:
 
@@ -163,8 +163,8 @@ A megoldás a következő telemetria-típusokat fogadja a csatlakoztatott Applic
 - Rendelkezésre állás
 - Kivételek
 - Kérelmek
-- Oldalletöltések – a munkaterülete számára az oldalmegtekintések fogadásához konfigurálnia kell az alkalmazásokat az információk összegyűjtéséhez. További információ: [oldalmegtekintések](../../azure-monitor/app/api-custom-events-metrics.md#page-views).
-- Egyéni események – a munkaterület egyéni események fogadásához konfigurálnia kell az alkalmazásokat az információk összegyűjtéséhez. További információ: [TrackEvent](../../azure-monitor/app/api-custom-events-metrics.md#trackevent).
+- Oldalletöltések – a munkaterülete számára az oldalmegtekintések fogadásához konfigurálnia kell az alkalmazásokat az információk összegyűjtéséhez. További információ: [oldalmegtekintések](../app/api-custom-events-metrics.md#page-views).
+- Egyéni események – a munkaterület egyéni események fogadásához konfigurálnia kell az alkalmazásokat az információk összegyűjtéséhez. További információ: [TrackEvent](../app/api-custom-events-metrics.md#trackevent).
 
 Az adatok a Log Analyticstól érkeznek a Application Insights, mert elérhetővé válnak.
 
@@ -245,7 +245,7 @@ Minden típusú bemeneti adathoz létrejön egy *ApplicationInsights* *típusú*
 | Tulajdonság | Leírás |
 | --- | --- |
 | Típus | ApplicationInsights |
-| TelemetryType | Kérelem |
+| TelemetryType | Kérés |
 | ResponseCode | Az ügyfélnek küldött HTTP-válasz |
 | RequestSuccess | Sikert vagy hibát jelez. TRUE (igaz) vagy FALSE (hamis). |
 | RequestID | AZONOSÍTÓ a kérelem egyedi azonosításához |
@@ -318,4 +318,5 @@ ApplicationInsights | summarize by ApplicationName
 
 ## <a name="next-steps"></a>További lépések
 
-- A Application Insights-alkalmazások részletes adatainak megtekintéséhez használja a [log Search kifejezést](../../azure-monitor/log-query/log-query-overview.md) .
+- A Application Insights-alkalmazások részletes adatainak megtekintéséhez használja a [log Search kifejezést](../log-query/log-query-overview.md) .
+

@@ -1,28 +1,31 @@
 ---
 title: 'Gyors útmutató: Azure Blob Storage ügyféloldali kódtár v10 a JavaScripthez'
-description: Blobok és tárolók létrehozása, feltöltése és törlése a Node. js-ben az Azure Storage ügyféloldali kódtár v10 a JavaScripthez
+description: Blobok és tárolók létrehozása, feltöltése és törlése a Node.jsban az Azure Storage ügyféloldali kódtár v10 a JavaScripthez
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 01/24/2020
+ms.date: 07/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: c2bf401713dc7ae3b060181f1df56d0915f68aed
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 01d9c2e2b822af607d7473206461b97dfa627c17
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78269501"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282024"
 ---
-# <a name="quickstart-manage-blobs-with-javascript-v10-sdk-in-nodejs"></a>Rövid útmutató: Blobok kezelése a JavaScript v10 SDK-val a Node. js-ben
+# <a name="quickstart-manage-blobs-with-javascript-v10-sdk-in-nodejs"></a>Gyors útmutató: Blobok kezelése a JavaScript v10 SDK-val Node.js
 
-Ebből a rövid útmutatóból megtudhatja, hogyan kezelheti a blobokat a Node. js használatával. A Blobok olyan objektumok, amelyek nagy mennyiségű szöveges vagy bináris adatok tárolására képesek, beleértve a képeket, a dokumentumokat, a médiafolyamokat és az archiválási adatokhoz. Feltöltheti, letöltheti, listázhatja és törölheti a blobokat, és kezelheti a tárolókat.
+Ebből a rövid útmutatóból megtudhatja, hogyan kezelheti a blobokat a Node.js használatával. A Blobok olyan objektumok, amelyek nagy mennyiségű szöveges vagy bináris adatok tárolására képesek, beleértve a képeket, a dokumentumokat, a médiafolyamokat és az archiválási adatokhoz. Feltöltheti, letöltheti, listázhatja és törölheti a blobokat, és kezelheti a tárolókat.
+
+> [!NOTE]
+> Ez a rövid útmutató az Azure Blob Storage ügyféloldali függvénytárának örökölt verzióját használja. A legújabb verzió használatának megkezdéséhez lásd: gyors útmutató [: Blobok kezelése a JavaScript V12 SDK-val Node.js](storage-quickstart-blobs-nodejs.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - Egy Azure Storage-fiók. [Hozzon létre egy Storage-fiókot](../common/storage-account-create.md).
-- [Node. js](https://nodejs.org/en/download/)-fájl.
+- [Node.js](https://nodejs.org/en/download/).
 
 ## <a name="download-the-sample-application"></a>A mintaalkalmazás letöltése
 
@@ -408,5 +411,5 @@ A kódminta végén a tárfiókba írt összes adat automatikusan törölve lesz
 Ez a rövid útmutató azt mutatja be, hogyan kezelhetők a blobok és tárolók az Azure Blob Storage-tárfiókokban a Node.js használatával. Az SDK használatával kapcsolatos bővebb információkért lásd a GitHub-adattárat.
 
 > [!div class="nextstepaction"]
-> [Azure Storage v10 SDK a JavaScript-tárházhoz](https://github.com/Azure/azure-storage-js)
-> az[Azure Storage JavaScript API-referenciája](/javascript/api/overview/azure/storage-overview)
+> [Azure Storage v10 SDK a JavaScript-tárházhoz](https://github.com/Azure/azure-storage-js) 
+>  Az [Azure Storage JavaScript API-referenciája](/javascript/api/overview/azure/storage-overview)

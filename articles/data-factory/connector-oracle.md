@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 04/09/2020
+ms.date: 07/24/2020
 ms.author: jingwang
-ms.openlocfilehash: d37a9bd4cc29ee60f9833ffbcb5a2701a19bbaa7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bac673f5c8c8d6a4e2b368938a0c08c893518022
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81416832"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171269"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>Adatok másolása az Oracle-ből és a rendszerből a Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -58,7 +58,7 @@ Pontosabban, ez az Oracle-összekötő a következőket támogatja:
 
 Az Integration Runtime egy beépített Oracle-illesztőprogramot biztosít. Ezért nem kell manuálisan telepítenie az illesztőprogramot, amikor a és az Oracle rendszerbe másol adatokból.
 
-## <a name="get-started"></a>Első lépések
+## <a name="get-started"></a>Bevezetés
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -76,6 +76,8 @@ Az Oracle társított szolgáltatás a következő tulajdonságokat támogatja:
 
 >[!TIP]
 >Ha "ORA-01025: UPI paraméter a tartományon kívül" hibaüzenet jelenik meg, és az Oracle verziója 8i, adja hozzá `WireProtocolMode=1` a kapcsolódási karakterlánchoz. Ezután próbálkozzon újra.
+
+Ha több Oracle-példánnyal rendelkezik a feladatátvételi forgatókönyvhöz, létrehozhat Oracle-alapú társított szolgáltatást, és kitöltheti az elsődleges gazdagépet, a portot, a felhasználónevet, a jelszót stb., és hozzáadhat egy új "**további kapcsolati tulajdonságot**" a tulajdonság nevével `AlternateServers` és az értékkel, és `(HostName=<secondary host>:PortNumber=<secondary port>:ServiceName=<secondary service name>)` nem hagyja ki a szögletes zárójeleket, és nem kell figyelnie a kettőspontokra ( `:` ) az A másodlagos kiszolgálók következő értéke például két másodlagos adatbázis-kiszolgálót határoz meg a kapcsolat feladatátvételéhez: `(HostName=AccountingOracleServer:PortNumber=1521:SID=Accounting,HostName=255.201.11.24:PortNumber=1522:ServiceName=ABackup.NA.MyCompany)` .
 
 További kapcsolatok tulajdonságai az adott esetben a kapcsolatok karakterláncában állíthatók be:
 
@@ -124,7 +126,7 @@ Az Oracle-kapcsolatok titkosításának engedélyezéséhez két lehetőség kö
     3.  Helyezze a `truststore` fájlt a saját üzemeltetésű IR-gépre. Tegyük fel például, hogy a fájl a következő helyen található: C:\MyTrustStoreFile.
     4.  A Azure Data Factoryban konfigurálja az Oracle-kapcsolatok karakterláncát a `EncryptionMethod=1` és a megfelelő `TrustStore` / `TrustStorePassword` értékkel. Például: `Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;EncryptionMethod=1;TrustStore=C:\\MyTrustStoreFile;TrustStorePassword=<trust_store_password>`.
 
-**Példa:**
+**Például**
 
 ```json
 {
@@ -176,11 +178,11 @@ Az adatok és az Oracle közötti másoláshoz állítsa az adatkészlet Type (t
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
 | típus | Az adatkészlet Type tulajdonságát be kell állítani `OracleTable` . | Igen |
-| séma | A séma neve. |Nem, forrás, igen, fogadó  |
-| tábla | A tábla vagy nézet neve. |Nem, forrás, igen, fogadó  |
+| schema | A séma neve. |Nem, forrás, igen, fogadó  |
+| table | A tábla vagy nézet neve. |Nem, forrás, igen, fogadó  |
 | tableName | A tábla/nézet neve a sémával. Ez a tulajdonság visszamenőleges kompatibilitás esetén támogatott. Az új számítási feladatokhoz használja a és a elemet `schema` `table` . | Nem, forrás, igen, fogadó |
 
-**Példa:**
+**Például**
 
 ```json
 {
@@ -266,7 +268,7 @@ Az Oracle-be történő másoláshoz állítsa a fogadó típusát a másolási 
 | writeBatchTimeout | Az a várakozási idő, ameddig a Batch INSERT művelet befejeződik, mielőtt időtúllépés történt.<br/>Az engedélyezett értékek a TimeSpan. Például 00:30:00 (30 perc). | Nem |
 | preCopyScript | Adja meg a másolási tevékenység futtatásához szükséges SQL-lekérdezést, mielőtt az összes futtatáskor beírja az Oracle-ba. Ennek a tulajdonságnak a használatával törölheti az előre feltöltött adatkészleteket. | Nem |
 
-**Példa:**
+**Például**
 
 ```json
 "activities":[
@@ -307,7 +309,7 @@ A particionált másolás engedélyezésekor a Data Factory párhuzamos lekérde
 
 Javasoljuk, hogy engedélyezze a párhuzamos másolást az adatok particionálásával, különösen akkor, ha nagy mennyiségű adatmennyiséget tölt be az Oracle-adatbázisból. Az alábbiakban a különböző forgatókönyvekhez javasolt konfigurációk szerepelnek. Az adatok file-alapú adattárba való másolása során a rendszer úgy helyezi át, hogy több fájlként írjon egy mappába (csak a mappa nevét adja meg), amely esetben a teljesítmény jobb, mint egyetlen fájl írásakor.
 
-| Eset                                                     | Javasolt beállítások                                           |
+| Forgatókönyv                                                     | Javasolt beállítások                                           |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | Teljes terhelés nagyméretű táblából, fizikai partíciókkal.          | **Partíciós beállítás**: a tábla fizikai partíciói. <br><br/>A végrehajtás során a Data Factory automatikusan észleli a fizikai partíciókat, és az Adatmásolást partíciók szerint. |
 | Teljes terhelés a nagyméretű táblából fizikai partíciók nélkül, míg az adatparticionálás egész oszlopa. | **Partíciós beállítások**: dinamikus tartományú partíció.<br>**Partíciós oszlop**: az adatparticionáláshoz használt oszlop megadására szolgál. Ha nincs megadva, a rendszer az elsődleges kulcs oszlopot használja. |

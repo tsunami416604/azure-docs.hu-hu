@@ -1,6 +1,6 @@
 ---
 title: Tárolóalapú hálózatkezelés az Azure Virtual Networkkel | Microsoft Docs
-description: Megtudhatja, hogyan engedélyezheti a tárolóknak egy Azure-beli virtuális hálózat használatát.
+description: Ismerje meg az Azure Virtual Network Container Network Interface (CNI) beépülő modult, valamint azt, hogyan engedélyezheti a tárolók számára az Azure-Virtual Network használatát.
 services: virtual-network
 documentationcenter: na
 author: aanandr
@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 9/18/2018
 ms.author: aanandr
 ms.custom: ''
-ms.openlocfilehash: b2a0a0527ffaedacbabcf19435fbc1772b632816
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bd86b2ec803b2327d3daa2d4274f13328fec8c27
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84707497"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283214"
 ---
 # <a name="enable-containers-to-use-azure-virtual-network-capabilities"></a>Azure Virtual Network-képességek használatának engedélyezése a tárolók számára
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/12/2020
-ms.openlocfilehash: 2da00b44be7018bef80e466231efb75a8eb99754
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a2ece33974e5bb4d8cb6257d3ca68a258f9b8c81
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081542"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326001"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>A Azure Monitor figyelési megoldásai
 
@@ -125,7 +125,7 @@ A Közösség tagjai felügyeleti megoldásokat küldhetnek az Azure Gyorsindít
 
 ### <a name="install-a-solution-with-the-azure-cli"></a>Megoldás telepítése az Azure CLI-vel
 
-Megoldás telepítésekor ki kell választania egy [log Analytics munkaterületet](/azure/azure-monitor/platform/manage-access) , ahol a megoldás telepítve lesz, és az adatok gyűjtése történik.  Az Azure CLI-vel a munkaterületek kezelése az az [monitor log-Analytics munkaterület-](/cli/azure/monitor/log-analytics/workspace) referenciák használatával végezhető el.  A munkaterület és a fiók összekapcsolásához kövesse az [log Analytics munkaterület és az Automation-fiók](#log-analytics-workspace-and-automation-account) című témakörben leírt eljárást.
+Megoldás telepítésekor ki kell választania egy [log Analytics munkaterületet](../platform/manage-access.md) , ahol a megoldás telepítve lesz, és az adatok gyűjtése történik.  Az Azure CLI-vel a munkaterületek kezelése az az [monitor log-Analytics munkaterület-](/cli/azure/monitor/log-analytics/workspace) referenciák használatával végezhető el.  A munkaterület és a fiók összekapcsolásához kövesse az [log Analytics munkaterület és az Automation-fiók](#log-analytics-workspace-and-automation-account) című témakörben leírt eljárást.
 
 A figyelési megoldás telepítéséhez használja az az [monitor log-Analytics megoldás létrehozása](/cli/azure/ext/log-analytics-solution/monitor/log-analytics/solution) lehetőséget.  Szögletes zárójelben lévő paraméterek megadása nem kötelező.
 
@@ -192,6 +192,7 @@ az monitor log-analytics solution delete --name
 
 ## <a name="next-steps"></a>További lépések
 
-* Szerezze be a [Microsoft figyelési megoldásainak listáját](solutions-inventory.md).
+* Szerezze be a [Microsoft figyelési megoldásainak listáját](/azure/azure-monitor/monitor-reference).
 * Megtudhatja, hogyan [hozhat létre lekérdezéseket](../log-query/log-query-overview.md) a figyelési megoldások által gyűjtött adatok elemzéséhez.
 * Tekintse [meg Azure monitor összes Azure CLI-parancsát](/cli/azure/azure-cli-reference-for-monitor).
+

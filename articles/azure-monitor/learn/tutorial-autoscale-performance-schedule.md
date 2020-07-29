@@ -8,12 +8,12 @@ ms.date: 12/11/2017
 ms.author: ancav
 ms.custom: mvc
 ms.subservice: autoscale
-ms.openlocfilehash: 9a069c4e63abd5307c123799d92e656294045a65
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 8a55ab9b6b87a379fbdebcead4467ec47507d67a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505856"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327514"
 ---
 # <a name="create-an-autoscale-setting-for--azure-resources-based-on-performance-data-or-a-schedule"></a>Automatikus méretezési beállítás Azure-erőforrásokhoz teljesítményadatok vagy ütemezés alapján
 
@@ -159,7 +159,7 @@ Az automatikus méretezési beállítás leskálázási feltétele akkor aktivá
 
     ![Leskálázási műveletek megtekintése](./media/tutorial-autoscale-performance-schedule/Scale-In-Chart.png)
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 1. Az Azure Portal bal oldali menüjében kattintson az **Összes erőforrás** lehetőségre, majd válassza ki az oktatóanyag során létrehozott webalkalmazást.
 
@@ -169,7 +169,7 @@ Az automatikus méretezési beállítás leskálázási feltétele akkor aktivá
 
 4. A törlés megerősítéséhez írja be a **yes** (igen) szöveget a szövegmezőbe, majd kattintson a **Törlés** gombra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban az alábbiakat végezte el:  
 > [!div class="checklist"]
@@ -180,7 +180,8 @@ Ebben az oktatóanyagban az alábbiakat végezte el:
 > * Az erőforrások törlése
 
 
-Az automatikus méretezési beállításokkal kapcsolatos további információért folytassa az [automatikus méretezés áttekintésével](../../azure-monitor/platform/autoscale-overview.md).
+Az automatikus méretezési beállításokkal kapcsolatos további információért folytassa az [automatikus méretezés áttekintésével](../platform/autoscale-overview.md).
 
 > [!div class="nextstepaction"]
 > [Monitorozási adatok archiválása](../platform/platform-logs-overview.md)
+

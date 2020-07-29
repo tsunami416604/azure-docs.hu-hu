@@ -1,6 +1,5 @@
 ---
-title: Mi az ML Studio (klasszikus)
-titleSuffix: Azure
+title: Mi az ML Studio (klasszikus) – Azure
 description: A Azure Machine Learning Studio (klasszikus) egy fogd és vidd eszköz, amellyel gyorsan készíthet modelleket a használatra kész algoritmusok és modulok használatával.
 services: machine-learning
 author: likebupt
@@ -11,14 +10,16 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: overview
 ms.date: 03/24/2020
-ms.openlocfilehash: c1772ceb514e46542129759711f2d45db39abf82
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0b0e09cfe855e017c297cbad1667eef81726d3da
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80371974"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326205"
 ---
 # <a name="what-is-machine-learning-studio-classic"></a>Mi az Machine Learning Studio (klasszikus)?
+
+**a következőkre vonatkozik:** ![ nincs](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine learning](../overview-what-is-azure-ml.md) ![ Igen ](../../../includes/media/aml-applies-to-skus/yes.png) Machine learning Studio (klasszikus) 
 
 [!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
 
@@ -41,8 +42,8 @@ A prediktív elemzési modell létrehozásához nincs szükség programozásra, 
 ## <a name="download-the-machine-learning-studio-classic-overview-diagram"></a>Az Machine Learning Studio (klasszikus) áttekintési diagram letöltése
 Töltse le a **Microsoft Azure Machine learning Studio (klasszikus) képességek áttekintése** diagramot, és tekintse át a Machine learning Studio (klasszikus) képességeinek magas szintű nézetét. Hogy mindig kéznél legyen, kinyomtathatja a diagramot tabloid méretben (11 x 17-es méret).
 
-**A diagram letöltése: [Microsoft Azure Machine learning Studio (klasszikus) képességek áttekintése](https://download.microsoft.com/download/C/4/6/C4606116-522F-428A-BE04-B6D3213E9E52/ml_studio_overview_v1.1.pdf)**
-![Microsoft Azure Machine learning Studio (klasszikus) képességek áttekintése](./media/what-is-ml-studio/ml_studio_overview_v1.1.png)
+**A diagram letöltése: [Microsoft Azure Machine learning Studio (klasszikus) képességek áttekintése](https://download.microsoft.com/download/C/4/6/C4606116-522F-428A-BE04-B6D3213E9E52/ml_studio_overview_v1.1.pdf) ** 
+ ![ A Microsoft Azure Machine Learning Studio (klasszikus) képességeinek áttekintése](./media/what-is-ml-studio/ml_studio_overview_v1.1.png)
 
 
 ## <a name="components-of-a-studio-classic--experiment"></a>A Studio (klasszikus) kísérlet összetevői

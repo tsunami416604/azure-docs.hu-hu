@@ -2,17 +2,18 @@
 title: 'Gyors útmutató: Azure üzenetsor Storage Library V12 – Java'
 description: Megtudhatja, hogyan hozhat létre üzenetsor létrehozásához és üzeneteket a várólistához az Azure-üzenetsor Java V12-es kódtár használatával. Ezután megtudhatja, hogyan olvashatja és törölheti az üzeneteket a várólistából. Azt is megtudhatja, hogyan törölhet egy várólistát.
 author: mhopkins-msft
+ms.custom: devx-track-java
 ms.author: mhopkins
 ms.date: 12/4/2019
 ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
-ms.openlocfilehash: a5037a86d7d6236f6fa8597dd33148417ddee116
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 753c245631d2fbdc8122f955c1db6562a1554031
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "86999554"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319371"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-java"></a>Gyors útmutató: Azure üzenetsor Storage ügyféloldali kódtára a Javához
 

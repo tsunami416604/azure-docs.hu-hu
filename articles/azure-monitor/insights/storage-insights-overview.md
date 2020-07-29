@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/11/2020
-ms.openlocfilehash: d71201da0c4af35720a309fe0dfa068cd2c69630
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7daba35b9247443c84cedad03f252ea6858da236
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081610"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327344"
 ---
 # <a name="monitoring-your-storage-service-with-azure-monitor-for-storage"></a>A Storage szolgáltatás figyelése Azure Monitor a Storage-ban
 
@@ -242,7 +242,7 @@ A kiválasztott Storage-fiókok száma legfeljebb 200, a kiválasztott előfizet
 
 ### <a name="how-to-change-the-coloring-and-threshold-for-availability"></a>A színezés és a küszöbérték módosítása a rendelkezésre álláshoz
 
-Tekintse át a [rendelkezésre állási küszöbérték módosítása](storage-insights-overview.md#modify-the-availability-threshold) szakaszt, amely részletesen ismerteti, hogyan módosíthatja a rendelkezésre állást a színezés és a küszöbértékek között.
+Tekintse át a [rendelkezésre állási küszöbérték módosítása](#modify-the-availability-threshold) szakaszt, amely részletesen ismerteti, hogyan módosíthatja a rendelkezésre állást a színezés és a küszöbértékek között.
 
 ### <a name="how-to-analyze-and-troubleshoot-the-data-shown-in-azure-monitor-for-storage"></a>Hogyan elemezheti és elháríthatja a Azure Monitorban megjelenő, a tárolásra vonatkozó adatelemzést?
 
@@ -274,3 +274,4 @@ A rendszer minden munkafüzetet a Storage-fiókba ment, amelyet a ben mentett. P
 * Ismerkedjen meg a forgatókönyvekkel, amelyek támogatják az új és a meglévő jelentések testreszabását, valamint az [interaktív jelentések Azure monitor-munkafüzetekkel való létrehozását](../platform/workbooks-overview.md)ismertető áttekintést.
 
 * Az Azure Storage szolgáltatással kapcsolatos problémák azonosítására, diagnosztizálására és hibaelhárítására vonatkozó részletes útmutató a Storage Analytics és egyéb eszközök használatáról: [Microsoft Azure Storage figyelése, diagnosztizálása és hibaelhárítása](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md).
+

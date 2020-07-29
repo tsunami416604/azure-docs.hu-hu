@@ -7,11 +7,14 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 09/06/2018
 ms.author: robinsh
-ms.openlocfilehash: c43c142b22709d42416b2dd14dfc78812970916a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom:
+- 'Role: Cloud Development'
+ms.openlocfilehash: 8f7555129f5f514d1954ac56cf87872a85ca91d0
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708110"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326732"
 ---
 # <a name="create-an-iot-hub-using-the-azure-portal"></a>IoT hub létrehozása a Azure Portal használatával
 
@@ -19,7 +22,7 @@ ms.locfileid: "84708110"
 
 Ez a cikk bemutatja, hogyan hozhat létre és kezelhet IoT-hubokat a [Azure Portal](https://portal.azure.com)használatával.
 
-Az oktatóanyag lépéseinek használatához Azure-előfizetésre van szükség. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Az oktatóanyag lépéseinek használatához Azure-előfizetésre van szükség. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 ## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
 
@@ -41,7 +44,7 @@ A meglévő IoT hub beállításait a IoT Hub panelből való létrehozása utá
 
 **Tulajdonságok**: megjeleníti a máshol másolható és használható tulajdonságok listáját, például az erőforrás-azonosítót, az erőforráscsoportot, a helyet és így tovább.
 
-### <a name="shared-access-policies"></a>Megosztott elérési házirendek
+### <a name="shared-access-policies"></a>Megosztott elérési szabályzatok
 
 A megosztott hozzáférési házirendek listáját a **Beállítások** szakaszban található **megosztott hozzáférési házirendek** lehetőségre kattintva is megtekintheti vagy módosíthatja. Ezek a szabályzatok határozzák meg az eszközök és szolgáltatások IoT Hubhoz való kapcsolódásának engedélyeit. 
 
