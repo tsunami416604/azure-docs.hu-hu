@@ -11,11 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: d997c6d4eae93290cbb1e4cafe6c7ad662a65933
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7c12cfc21668a13586d94089a7049f6f0d6066d7
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85336876"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87336922"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Folyamatos integráció és kézbesítés Azure Data Factory
 
@@ -48,7 +49,7 @@ Alább látható egy példa az Azure Repos git szolgáltatással konfigurált Az
 
 1.  A lekéréses kérelem jóváhagyása és a módosítások egyesítése a Master ág esetében a módosítások a fejlesztői gyárban lesznek közzétéve.
 
-1.  Amikor a csapat készen áll a módosítások egy teszt-vagy ellenőrzését-gyárba való üzembe helyezésére, a csapat az Azure-folyamatok kiadására kerül, és üzembe helyezi a fejlesztői gyár kívánt verzióját a ellenőrzését. Ez az üzembe helyezés az Azure-folyamatok feladatának részeként zajlik, és Resource Manager-sablon paramétereit használja a megfelelő konfiguráció alkalmazásához.
+1.  Ha a csapat készen áll a módosítások tesztelési vagy ellenőrzését (felhasználói elfogadási tesztelés) gyárba való telepítésére, a csapat az Azure-folyamatokat is kiadja, és üzembe helyezi a fejlesztői gyár kívánt verzióját a ellenőrzését. Ez az üzembe helyezés az Azure-folyamatok feladatának részeként zajlik, és Resource Manager-sablon paramétereit használja a megfelelő konfiguráció alkalmazásához.
 
 1.  Miután ellenőrizte a módosításokat a tesztelési gyárban, telepítse az üzemi gyárat a folyamatok kiadásának következő feladatának használatával.
 
@@ -304,7 +305,7 @@ Az alábbi példa azt szemlélteti, hogy a paraméterezés-sablonok hogyan nézn
 ```
 Íme egy magyarázat arról, hogy az előző sablon hogyan épül fel, az erőforrástípus szerinti bontásban.
 
-#### <a name="pipelines"></a>Pipelines
+#### <a name="pipelines"></a>Folyamatok
     
 * Az elérési út bármely tulajdonsága `activities/typeProperties/waitTimeInSeconds` paraméterrel van elfoglalva. A folyamatokban lévő minden olyan tevékenység, amelynek a neve `waitTimeInSeconds` (például a `Wait` tevékenység), egy alapértelmezett névvel van ellátva. A Resource Manager-sablonban azonban nem szerepel alapértelmezett érték. A Resource Manager üzembe helyezése során kötelezően megadandó adatok lesznek.
 * Hasonlóképpen, egy nevű tulajdonság `headers` (például egy `Web` tevékenység) paraméterének típusa `object` (JObject). Alapértelmezett értékkel rendelkezik, amely megegyezik a forrás-előállítóval megegyező értékkel.

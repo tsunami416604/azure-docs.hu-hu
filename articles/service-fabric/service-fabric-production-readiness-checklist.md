@@ -3,12 +3,12 @@ title: Azure Service Fabric üzemi készültségi ellenőrzőlista
 description: Az ajánlott eljárások követésével megkezdheti Service Fabric alkalmazás és a fürt gyártását.
 ms.topic: conceptual
 ms.date: 6/05/2019
-ms.openlocfilehash: 7011860b8e1162b35cbfee3a9e796163710b7fdc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cf5245b4b97706703d9f96e047ecb49786ff6266
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610030"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282058"
 ---
 # <a name="production-readiness-checklist"></a>Termelési készenlét ellenőrzőlistája
 
@@ -22,7 +22,7 @@ Készen áll az alkalmazás és a fürt a termelési forgalom elvégzésére? Az
 1. Használjon D2v2 vagy magasabb SKU-t az elsődleges csomópont típusához. Ajánlott olyan SKU-t választani, amelynek legalább 50 GB-os merevlemez-kapacitása van.
 1. Az üzemi fürtöknek [biztonságosnak](service-fabric-cluster-security.md)kell lenniük. Egy biztonságos fürt beállításával kapcsolatos példát ebben a [fürtözött sablonban](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/7-VM-Windows-3-NodeTypes-Secure-NSG)talál. Használjon köznapi neveket a tanúsítványokhoz, és ne használjon önaláírt tanúsítványokat.
 1. [Erőforrás-korlátozásokat adhat hozzá a tárolók és szolgáltatások](service-fabric-resource-governance.md)számára, hogy ne használják a csomópont-erőforrások 75%-át. 
-1. Ismerje meg és állítsa be a [tartóssági szintet](service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster). Állapot-nyilvántartó számítási feladatokat futtató csomópont-típusok esetén ezüst vagy magasabb tartóssági szint ajánlott. Az elsődleges csomópont típusának az ezüst vagy a magasabb értéknek kell lennie.
+1. Ismerje meg és állítsa be a [tartóssági szintet](service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster). Állapot-nyilvántartó számítási feladatokat futtató csomópont-típusok esetén ezüst vagy magasabb tartóssági szint ajánlott.
 1. Ismerje meg és válassza ki a csomópont típusának [megbízhatósági szintjét](service-fabric-cluster-capacity.md#reliability-characteristics-of-the-cluster) . Az ezüst vagy a nagyobb megbízhatóság ajánlott.
 1. A számítási feladatok terhelésének és méretezésének tesztelésével azonosíthatja a fürt [kapacitásának követelményeit](service-fabric-cluster-capacity.md) . 
 1. A szolgáltatásait és alkalmazásait figyelik, és az alkalmazások naplóit a rendszer riasztással hozza létre és tárolja. Lásd például: [naplózás hozzáadása a Service Fabric alkalmazáshoz](service-fabric-how-to-diagnostics-log.md) és a [tárolók figyelése Azure monitor naplókkal](service-fabric-diagnostics-oms-containers.md).

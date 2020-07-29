@@ -7,12 +7,12 @@ ms.date: 05/21/2020
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 7e90a4e9ec88e074ec7b30d78bc99cfa8bf39ba2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1eab1022e9b0f03597c108c3c927909aa9bb2712
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87002352"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337109"
 ---
 # <a name="what-are-device-templates"></a>Mik azok az eszközsablonok?
 
@@ -28,6 +28,9 @@ Az eszköz sablonjai a következő szakaszt tartalmazzák:
 - _Felhő tulajdonságai_ A sablon ezen része lehetővé teszi, hogy a megoldás fejlesztője a tárolni kívánt eszköz-metaadatokat határozza meg. A felhő tulajdonságai soha nem szinkronizálhatók az eszközökkel, és csak az alkalmazásban léteznek. A felhő tulajdonságai nem érintik azt a kódot, amelyet az eszköz fejlesztője a DCM megvalósítására ír.
 - _Testreszabások_. A sablon ezen része lehetővé teszi, hogy a megoldás fejlesztője felülbírálja a DCM egyes definícióit. A testreszabások akkor hasznosak, ha a megoldás fejlesztője szeretné megszabni, hogy az alkalmazás hogyan kezelje az értéket, például egy tulajdonság megjelenített nevének vagy a telemetria értékének megjelenítéséhez használt színnek a módosítását. A testreszabások nem érintik azt a kódot, amelyet az eszköz fejlesztője a DCM megvalósítására ír.
 - _Nézetek_. Az eszközbeállítások ezen része lehetővé teszi, hogy a megoldás fejlesztője a vizualizációkat definiálja az eszköz adatainak megtekintéséhez, valamint az eszközök felügyeletére és vezérlésére szolgáló űrlapokat. A nézetek a DCM, a Cloud Properties és a testreszabásokat használják. A nézetek nem érintik azt a kódot, amelyet az eszköz fejlesztője a DCM megvalósítására ír.
+
+> [!NOTE]
+> A [IoT Plug and Play a nyilvános előzetes verzió frissítésének](../../iot-pnp/overview-iot-plug-and-play.md) célja, hogy az eszközök fejlesztői és OEM-eszközei kiépítsék az eszközöket, amelyek tanúsítják a IoT Plug and Play a ga elindítása előtt.
 
 ## <a name="device-capability-models"></a>Eszközképesség-modellek
 

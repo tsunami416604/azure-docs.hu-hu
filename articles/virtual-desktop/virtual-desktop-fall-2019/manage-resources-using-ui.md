@@ -1,6 +1,6 @@
 ---
 title: Felügyeleti eszköz üzembe helyezése Azure Resource Manager sablonnal – Azure
-description: Felhasználói felületi eszköz telepítése Azure Resource Manager sablonnal a Windows rendszerű virtuális asztali erőforrások kezeléséhez.
+description: Felhasználói felületi eszköz telepítése Azure Resource Manager sablonnal a Windows rendszerű virtuális asztali (klasszikus) erőforrások kezeléséhez.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 3c3e93cf711d4dadfdc2354a297b0588fb637c80
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bf9fff614f638aec9519c11b2bb558cc77b94814
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514226"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284948"
 ---
-# <a name="deploy-a-management-tool-with-an-azure-resource-manager-template"></a>Felügyeleti eszköz üzembe helyezése Azure Resource Manager sablonnal
+# <a name="deploy-a-windows-virtual-desktop-classic-management-tool-with-an-azure-resource-manager-template"></a>Windows rendszerű virtuális asztali (klasszikus) felügyeleti eszköz üzembe helyezése Azure Resource Manager sablonnal
 
 >[!IMPORTANT]
->Ez a tartalom a Fall 2019 kiadásra vonatkozik, amely nem támogatja a Windows rendszerű virtuális asztali objektumokat Azure Resource Manager.
+>Ez a tartalom a Windows rendszerű virtuális asztali (klasszikus) verzióra vonatkozik, amely nem támogatja Azure Resource Manager Windows rendszerű virtuális asztali objektumokat.
 
 A cikkben szereplő utasítások alapján megtudhatja, hogyan helyezheti üzembe a felhasználói felületet egy Azure Resource Manager sablon használatával.
 
@@ -51,7 +51,7 @@ Mielőtt elkezdené, győződjön meg arról, hogy a kiszolgáló és az ügyfé
 Az Azure Resource Management-sablon üzembe helyezéséhez kövesse az alábbi utasításokat:
 
 1. Nyissa meg a [GitHub Azure RDS-templates oldalt](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/wvd-management-ux/deploy).
-2. A sablon üzembe helyezése az Azure-ban.
+2. Helyezze üzembe a sablont az Azure-ban.
     - Ha vállalati előfizetésben végez üzembe helyezést, görgessen le, és válassza **az üzembe helyezés az Azure**-ban lehetőséget.
     - Ha felhőalapú megoldás-szolgáltatói előfizetést használ, kövesse az alábbi utasításokat az Azure-ba történő üzembe helyezéshez:
         1. Görgessen le, és kattintson **a jobb gombbal az Azure**-ba, majd válassza a **hivatkozás helyének másolása**lehetőséget.

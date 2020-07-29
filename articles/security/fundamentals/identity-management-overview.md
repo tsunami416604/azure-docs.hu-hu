@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 09/19/2018
 ms.author: terrylan
 Customer intent: As an IT Pro or decision maker I am trying to learn about identity management capabilities in Azure
-ms.openlocfilehash: d1440bf2b8af85b81355dbc43b695a85994e4b8d
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: d6c82b1070f76cedcd84b8cd8a0a7bb6f683110d
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87124136"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285322"
 ---
 # <a name="azure-identity-management-security-overview"></a>Az Azure Identity Management biztonsági áttekintése
 
@@ -91,10 +91,10 @@ További információ:
 
 Az RBAC az Azure Resource Managerre épülő engedélyezési rendszer, amely részletes hozzáférés-kezelési lehetőségeket nyújt az Azure-beli erőforrásokhoz. A RBAC lehetővé teszi a felhasználók által használt hozzáférés szintjének részletes szabályozását. Például korlátozhatja, hogy egy felhasználó csak a virtuális hálózatokat és egy másik felhasználót kezelje az erőforráscsoport összes erőforrásának kezeléséhez. Az Azure számos beépített szerepkört biztosít, amelyeket használhat. Az alábbiakban négy alapvető beépített szerepkört sorolunk fel. Az első három minden erőforrástípusra alkalmazható.
 
-- [Tulajdonos](/azure/role-based-access-control/built-in-roles.md#owner) – teljes körű hozzáféréssel rendelkezik az összes erőforráshoz, beleértve a másokhoz való hozzáférés delegálására vonatkozó jogosultságot is. 
-- [Közreműködő](/azure/role-based-access-control/built-in-roles.md#contributor) – az összes típusú Azure-erőforrást létrehozhatja és kezelheti, de mások számára nem biztosít hozzáférést.
-- [Olvasó](/azure/role-based-access-control/built-in-roles.md#reader) – megtekintheti a meglévő Azure-erőforrásokat.
-- [Felhasználói hozzáférés rendszergazdája](/azure/role-based-access-control/built-in-roles.md#administrator) – lehetővé teszi az Azure-erőforrásokhoz való felhasználói hozzáférés kezelését.
+- [Tulajdonos](/azure/role-based-access-control/built-in-roles#owner) – teljes körű hozzáféréssel rendelkezik az összes erőforráshoz, beleértve a másokhoz való hozzáférés delegálására vonatkozó jogosultságot is. 
+- [Közreműködő](/azure/role-based-access-control/built-in-roles#contributor) – az összes típusú Azure-erőforrást létrehozhatja és kezelheti, de mások számára nem biztosít hozzáférést.
+- [Olvasó](/azure/role-based-access-control/built-in-roles#reader) – megtekintheti a meglévő Azure-erőforrásokat.
+- [Felhasználói hozzáférés rendszergazdája](/azure/role-based-access-control/built-in-roles#user-access-administrator) – lehetővé teszi az Azure-erőforrásokhoz való felhasználói hozzáférés kezelését.
 
 További információ:
 

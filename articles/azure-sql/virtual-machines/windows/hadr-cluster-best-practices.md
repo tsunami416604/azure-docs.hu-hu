@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: d20ac5964ef70618d4d7dc2d4a7fe7d7d01284ce
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: de773bb2188f09822cae59ce42924a9a49f8087e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965531"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285628"
 ---
 # <a name="cluster-configuration-best-practices-sql-server-on-azure-vms"></a>A fürt konfigurálásának ajánlott eljárásai (SQL Server Azure-beli virtuális gépeken)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -42,27 +42,26 @@ A három csomópontos fürt gyakorlatilag egyetlen csomópontból álló vesztes
 
 A kvórumerőforrás megvédi a fürtöt a fenti problémák bármelyikén. 
 
-Ha SQL Server Azure-beli virtuális gépeken szeretné konfigurálni a kvórum-erőforrást, használhatja a következő tanúsító típusokat: 
+A következő táblázat felsorolja az Azure-beli virtuális géppel való használatra ajánlott sorrendben elérhető kvórum beállításokat, és a tanúsító lemez előnyben részesített választása: 
 
 
 ||[Tanúsító lemez](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)  |[Felhőbeli tanúsító](/windows-server/failover-clustering/deploy-cloud-witness)  |[Tanúsító fájlmegosztás](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)  |
 |---------|---------|---------|---------|
 |**Támogatott operációs rendszer**| Mind |Windows Server 2016 +| Windows Server 2012 +|
-|**Támogatott SQL Server verziója**|SQL Server 2019|SQL Server 2016 +|SQL Server 2016 +|
+
 
 
 
 ### <a name="disk-witness"></a>Tanúsító lemez
 
-A tanúsító lemez egy kisméretű fürtözött lemez a fürt rendelkezésre álló tárolási csoportjában. Ez a lemez nagyon elérhető, és feladatátvételt hajt végre a csomópontok között. A fürt adatbázisának egy példányát tartalmazza, amelynek alapértelmezett mérete általában 1 GB-nál kisebb. 
+A tanúsító lemez egy kisméretű fürtözött lemez a fürt rendelkezésre álló tárolási csoportjában. Ez a lemez nagyon elérhető, és feladatátvételt hajt végre a csomópontok között. A fürt adatbázisának egy példányát tartalmazza, amelynek alapértelmezett mérete általában 1 GB-nál kisebb. A tanúsító lemez az Azure-beli virtuális gép előnyben részesített kvóruma, mivel a probléma megoldására a Felhőbeli tanúsító és a tanúsító fájlmegosztás eltérően van szükség. 
 
 Konfiguráljon egy Azure-beli megosztott lemezt a tanúsító lemezként. 
 
 Első lépésként tekintse meg [a tanúsító lemez konfigurálása](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)című témakört.
 
 
-**Támogatott operációs rendszer**: mind    
-**Támogatott SQL-verzió**: SQL Server 2019   
+**Támogatott operációs rendszer**: mind   
 
 
 ### <a name="cloud-witness"></a>Felhőbeli tanúsító
@@ -73,21 +72,18 @@ Első lépésként tekintse meg [a Felhőbeli tanúsító konfigurálása](/wind
 
 
 **Támogatott operációs rendszer**: Windows Server 2016 és újabb verziók   
-**Támogatott SQL-verzió**: SQL Server 2016-es és újabb verziók     
 
 
 ### <a name="file-share-witness"></a>Tanúsító fájlmegosztás
 
 A tanúsító fájlmegosztás egy SMB-fájlmegosztás, amely általában Windows Server rendszert futtató fájlkiszolgálón van konfigurálva. Egy tanúsító. log fájlban tárolja a fürtszolgáltatási információkat, de nem tárolja a fürt adatbázisának másolatát. Az Azure-ban beállíthat egy [Azure-fájlmegosztást](../../../storage/files/storage-how-to-create-file-share.md) , amelyet tanúsító fájlmegosztásként használhat, vagy a fájlmegosztást külön virtuális gépen is használhatja.
 
-Ha másik Azure-fájlmegosztást fog használni, csatlakoztathatja azt ugyanazzal a folyamattal, amely [a prémium fájlmegosztás csatlakoztatására](failover-cluster-instance-premium-file-share-manually-configure.md#mount-premium-file-share)szolgál. 
+Ha Azure-fájlmegosztást fog használni, csatlakoztathatja a [prémium fájlmegosztás csatlakoztatásához](failover-cluster-instance-premium-file-share-manually-configure.md#mount-premium-file-share)használt folyamattal. 
 
 Első lépésként tekintse [meg a tanúsító fájlmegosztás konfigurálása](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)című témakört.
 
 
 **Támogatott operációs rendszer**: Windows Server 2012 és újabb verziók   
-**Támogatott SQL-verzió**: SQL Server 2016-es és újabb verziók   
-
 
 ## <a name="connectivity"></a>Kapcsolatok
 

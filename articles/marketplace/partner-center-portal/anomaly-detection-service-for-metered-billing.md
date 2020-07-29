@@ -4,17 +4,17 @@ description: Leírja, hogyan működik a anomáliák észlelése, hogyan törté
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: anbene
 ms.author: mingshen
+author: mingshen-ms
 ms.date: 06/10/2020
-ms.openlocfilehash: becd15ceea41e40b35848f46f9657c501acf659a
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: cb134c82f231eb8b6329b1acafb181032edd6936
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86122030"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320085"
 ---
-# <a name="anomaly-detection-service-for-metered-billing"></a>Anomáliák észlelése szolgáltatás mért számlázáshoz
+# <a name="anomaly-detection-service-for-metered-billing"></a>Rendellenesség-észlelő szolgáltatás forgalmi díjas számlázáshoz
 
 A [piactér-mérési szolgáltatás](marketplace-metering-service-apis-faq.md) lehetővé teszi, hogy olyan ajánlatokat hozzon létre a kereskedelmi piactér programban, amelyek díja a nem standard egységek alapján történik. A mért számlázással elküldheti az ügyfél használati eseményeit a Microsoftnak, és a használat alapján előkészítjük a számlázást.
 
@@ -58,9 +58,9 @@ Ha megerősíti, hogy az észlelt rendellenességek normál használatban vannak
 
 ## <a name="when-and-how-to-get-support"></a>Mikor és hogyan kérhet támogatást
 
-Ha a helytelen használatot küldte a Microsoft számára, és ez az ügyfél számára is fennáll, akkor a Microsoft nem küld számlát az ügyfélnek a jelentett használat miatt, vagy a használatért kell fizetnie. A bevételt a jelentés alá tartozó bevétel miatt kell viselnie.
+Ha a helytelen használatot küldte a Microsoft számára, és ez az ügyfél számára is fennáll, akkor a Microsoft nem küld számlát az ügyfélnek a jelentett használat miatt, vagy a használatért kell fizetnie. A kevesebb mennyiség jelentése miatti bevételkiesést Önnek kell állnia.
 
-Ha a következő esetek valamelyike fennáll, megnyithat egy támogatási jegyet, amellyel visszatérítési vagy számlázási beállításokat igényelhet ügyfelei számára:
+A következő esetekben támogatási jegyet nyithat, hogy visszatérítést kérjen, vagy helyesbíttesse az ügyfelek számláját:
 
 - Megerősítette, hogy az észlelt rendellenességek egyike valódi probléma, és a helytelen használat az ügyfél **túlterhelését** eredményezi.
 - Felderíti, hogy helytelen használatot kapott nekünk, és a helytelen használat az ügyfél **túlterhelését** eredményezi.

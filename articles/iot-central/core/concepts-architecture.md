@@ -8,11 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 12ad231d81b6c134ebb8d4902b3f95c978e9622d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1e4b81f2350795b1244289119d714e99bc06ba6f
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84695334"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337143"
 ---
 # <a name="azure-iot-central-architecture"></a>Az Azure IoT Central architektúrája
 
@@ -29,7 +30,7 @@ Az eszközök az Azure IoT Central alkalmazással cserélik át az adatait. Az e
 - Mérések küldése, például telemetria.
 - Szinkronizálhatja a beállításokat az alkalmazással.
 
-Az Azure IoT Central-ban az eszköz által az alkalmazással megadható adatcsere megadására kerül egy eszköz sablonjában. További információ az eszközök sablonjairól: [metaadatok kezelése](#metadata-management).
+Az Azure IoT Centralban az eszköz és az alkalmazás közti adatcseréhez használt adatokat egy eszközsablonban adhatja meg. További információ az eszközök sablonjairól: [metaadatok kezelése](#metadata-management).
 
 Ha többet szeretne megtudni arról, hogy az eszközök hogyan csatlakoznak az Azure IoT Central-alkalmazáshoz, tekintse meg az [eszköz kapcsolatát](concepts-get-connected.md).
 
@@ -134,7 +135,7 @@ Egy Azure IoT Central-alkalmazásban az eszközök sablonjai határozzák meg az
 
 IoT Central alkalmazás-eszköz sablonjában a következőket tartalmazza:
 
-- Az **eszköz képességeinek modelljei** határozzák meg az eszköz képességeit, például az általa küldött telemetria, az eszköz állapotát meghatározó tulajdonságokat, valamint azokat a parancsokat, amelyekre az eszköz válaszol. Az eszköz képességei egy vagy több interfészbe vannak rendezve. Az eszköz képességeinek modelljeivel kapcsolatos további információkért tekintse meg a [IoT Plug and Play (előzetes verzió)](../../iot-pnp/overview-iot-plug-and-play.md) dokumentációját.
+- Az **eszköz képességeinek modelljei** határozzák meg az eszköz képességeit, például az általa küldött telemetria, az eszköz állapotát meghatározó tulajdonságokat, valamint azokat a parancsokat, amelyekre az eszköz válaszol. Az eszköz képességei egy vagy több interfészbe vannak rendezve.
 - A **felhő tulajdonságai** határozzák meg az adott eszközhöz tartozó tulajdonságokat IoT Central. Ezek a tulajdonságok csak IoT Central tárolódnak, és soha nem lesznek elküldve egy eszközre.
 - A **nézetek** határozzák meg azokat az irányítópultokat és űrlapokat, amelyeket a készítő hoz létre, hogy az operátor figyelje és felügyelje az eszközöket.
 - A **testreszabások** lehetővé teszik, hogy a szerkesztő felülbírálja az eszköz képességeinek modelljét, hogy azok jobban megfeleljenek a IoT Central alkalmazásnak.

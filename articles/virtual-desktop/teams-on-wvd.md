@@ -5,20 +5,20 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: how-to
-ms.date: 05/29/2020
+ms.date: 07/28/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: baab0160247e17556f0928f12f26a5ecca767210
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: f6185cbb871d63cfdf5a4c336944158593b63e4a
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87129304"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372841"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>A Microsoft Teams használata a Windows rendszerű virtuális asztalon
 
 >[!IMPORTANT]
->A Microsoft Teams Media Optimization jelenleg nyilvános előzetes verzióban érhető el. Javasoljuk, hogy a csapatok éles számítási feladatokhoz való telepítése előtt értékelje az optimalizált csapatok felhasználói élményét. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
+>A csapatoknak szánt média-optimalizálás Microsoft 365 kormányzati környezetekben nem támogatott.
 
 >[!NOTE]
 >A Microsoft Teams szolgáltatáshoz készült média-optimalizálás csak Windows 10-es gépeken futó Windows asztali ügyfélprogram esetében érhető el. A média-optimalizáláshoz a Windows asztali ügyfél verziója 1.2.1026.0 vagy újabb verzió szükséges.
@@ -53,15 +53,21 @@ A csapatok számára a média optimalizálásának engedélyezéséhez állítsa
 
 ### <a name="install-the-teams-websocket-service"></a>A Teams WebSocket szolgáltatás telepítése
 
-Telepítse a [WebSocket szolgáltatást](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4yj0i) a virtuálisgép-rendszerképre. Ha telepítési hibába ütközik, telepítse a [legújabb Microsoft Visual C++ újraterjeszthető](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) csomagot, és próbálkozzon újra.
+Telepítse a legújabb [WebSocket szolgáltatást](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4AQBt) a virtuálisgép-lemezképen. Ha telepítési hibába ütközik, telepítse a [legújabb Microsoft Visual C++ újraterjeszthető](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) csomagot, és próbálkozzon újra.
 
 #### <a name="latest-websocket-service-versions"></a>A WebSocket szolgáltatás legújabb verziói
 
-A következő táblázat felsorolja az egyes felhasználói csoportok számára elérhető aktuális verziókat:
+A következő táblázat a WebSocket szolgáltatás legújabb verzióit sorolja fel:
 
-|Verzió    |Kiadási dátum  |
-|-----------|--------------|
-|0.11.0     |05/29/2020    |
+|Verzió        |Kiadási dátum  |
+|---------------|--------------|
+|1.0.2006.11001 |07/28/2020    |
+|0.11.0         |05/29/2020    |
+
+#### <a name="updates-for-version-10200611001"></a>A 1.0.2006.11001 verziójának frissítései
+
+- Kijavított egy problémát, amelyben a csapatok alkalmazásának minimalizálása hívás vagy értekezlet közben a beérkező videó eldobása okozta.
+- Az egyik figyelő kiválasztásának támogatása a többmonitoros asztali munkamenetekben való megosztáshoz.
 
 ### <a name="install-microsoft-teams"></a>A Microsoft Teams telepítése
 
@@ -117,7 +123,7 @@ A WebSocket szolgáltatás és a csapatok asztali alkalmazás telepítése után
 
 3. Válassza ki a felhasználói profil rendszerképét, majd válassza a **Beállítások**lehetőséget.
 
-      Ha a média-optimalizálás betöltődik, a helyileg elérhető hangeszközök és fényképezőgépek enumerálása az eszköz menüjében történik. Ha a menüben a **távoli hang**látható, lépjen ki a csapatok alkalmazásból, és próbálkozzon újra. Ha az eszközök továbbra sem jelennek meg a menüben, lépjen vissza a [Microsoft Teams telepítéséhez](#install-microsoft-teams) , és ellenőrizze, hogy befejeződött-e a telepítési folyamat.
+      Ha a média-optimalizálás betöltődik, a helyileg elérhető hangeszközök és fényképezőgépek enumerálása az eszköz menüjében történik. Ha a menüben a **távoli hang**látható, lépjen ki a csapatok alkalmazásból, és próbálkozzon újra. Ha az eszközök továbbra sem jelennek meg a menüben, ellenőrizze az adatvédelmi beállításokat a helyi számítógépen. Győződjön meg arról, hogy a **Beállítások**  >  **adatvédelmi**  >  **alkalmazás engedélyei** területen **be van kapcsolva**az **alkalmazások a mikrofonhoz való hozzáférésének engedélyezése** beállítás. Válassza le a távoli munkamenetet, majd csatlakoztassa újra, és keresse meg újra a hang-és video-eszközöket. A hívásokhoz és az értekezletekhez a videóval való csatlakozáshoz engedélyt kell adnia az alkalmazások számára a kamerához való hozzáféréshez is.
 
 ## <a name="known-issues-and-limitations"></a>Ismert problémák és korlátozások
 
@@ -133,9 +139,7 @@ A virtualizált környezetekben lévő csapatok használata eltér a nem virtual
 ### <a name="calls-and-meetings"></a>Hívások és értekezletek
 
 - A Windows rendszerű virtuális asztali környezetekben a Teams asztali ügyfél nem támogatja az élő eseményeket. Egyelőre azt javasoljuk, hogy a [csapat webes ügyfelétől](https://teams.microsoft.com) érkező élő eseményeket a távoli munkamenetben vegyen részt.
-- Ha a Teams alkalmazást a hívás vagy az értekezlet során minimalizálja, előfordulhat, hogy a bejövő videó nem jelenik meg az alkalmazás kibontásakor.
 - A hívások vagy értekezletek jelenleg nem támogatják az alkalmazások megosztását. Az asztali munkamenetek támogatják az asztali megosztást.
-- Ha egy többmonitoros telepítésben asztali megosztást használ, minden figyelő meg lesz osztva.
 - A vezérlés és az irányítás szabályozása jelenleg nem támogatott.
 - A Windows rendszerű virtuális asztali csapatok csak egy bejövő videó bemenetet támogatnak egyszerre. Ez azt jelenti, hogy ha valaki megpróbálja megosztani a képernyőjét, a képernyője az értekezlet vezetője képernyőjén fog megjelenni.
 - A WebRTC korlátozások miatt a bejövő és a kimenő videó stream-feloldása 720p-ra van korlátozva.

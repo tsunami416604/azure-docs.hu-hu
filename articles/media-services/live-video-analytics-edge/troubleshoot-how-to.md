@@ -5,12 +5,12 @@ author: IngridAtMicrosoft
 ms.topic: how-to
 ms.author: inhenkel
 ms.date: 05/24/2020
-ms.openlocfilehash: 62163217862f586be7ed5c0a6000693f8e7fcdd6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ca41a403f789fd529ac65c21799d3d3e7f3becf6
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87043184"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285458"
 ---
 # <a name="troubleshoot-live-video-analytics-on-iot-edge"></a>Élő videó-elemzések hibáinak megoldása IoT Edge
 
@@ -266,6 +266,9 @@ Javasoljuk, hogy a közvetlen metódusokat *ne* hívja párhuzamosan. Hívja meg
 
 Ha az önállóan vezérelt hibaelhárítási lépések nem oldják meg a problémát, lépjen a Azure Portal, és [Nyisson meg egy támogatási jegyet](../../azure-portal/supportability/how-to-create-azure-support-request.md).
 
+> [!WARNING]
+> A naplók tartalmazhatnak személyes azonosításra alkalmas adatokat, például az Ön IP-címét. A naplók összes helyi példánya törölve lesz, amint befejeződik a vizsgálat, és lezárjuk a támogatási jegyet.  
+
 A jegyhez hozzáadni kívánt naplók összegyűjtéséhez kövesse a következő szakasz utasításait. A naplófájlokat a támogatási kérelem **részletek** ablaktábláján töltheti fel.
 
 ### <a name="use-the-support-bundle-command"></a>A support-Bundle parancs használata
@@ -309,7 +312,7 @@ Ha a hibakeresési naplók létrehozásához IoT Edge modul Live Video Analytics
 
 1. Válassza a **Frissítés** lehetőséget.
 1. Válassza a **felülvizsgálat + létrehozás**lehetőséget. Egy sikeres érvényesítési üzenet a zöld szalagcím alatt lesz közzétéve.
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 1. Frissítse a **modul Identity Twin** értékét, hogy az DebugLogsDirectory paraméterre mutasson, amely arra a könyvtárra mutat, amelyben a naplók gyűjtése történik:
 
     a. A **modulok** táblázatban válassza a **lvaEdge**lehetőséget.  

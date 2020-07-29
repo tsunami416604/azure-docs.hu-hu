@@ -5,16 +5,16 @@ author: cynthn
 ms.service: virtual-machines-windows
 ms.subservice: imaging
 ms.workload: infrastructure-services
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/27/2018
 ms.author: cynthn
 ms.custom: legacy
-ms.openlocfilehash: 3aa4a7db9982d41cf32c1ddc4de6762bf1fdecf4
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d1cd4a25a2a9f07c75976d5eb5c97ba450ffdabb
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86508797"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284642"
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>Felügyelt rendszerkép létrehozása általánosított Azure-beli virtuális gépből
 
@@ -45,7 +45,7 @@ A Windows rendszerű virtuális gép általánosításához kövesse az alábbi 
    
 4. A **leállítási beállításoknál**válassza a **Leállítás**lehetőséget.
    
-5. Kattintson az **OK** gombra.
+5. Válassza az **OK** lehetőséget.
    
     ![A Sysprep elindítása](./media/upload-generalized-managed/sysprepgeneral.png)
 
@@ -245,5 +245,5 @@ Ha olyan virtuális gépről szeretne felügyelt rendszerképet létrehozni, ame
     ```
 
     
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [Hozzon létre egy virtuális gépet egy felügyelt rendszerképből](create-vm-generalized-managed.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).    

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/04/2019
-ms.openlocfilehash: 540e824f301c402e1f65f6186b26ad1672e21d37
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ef34dbfd3af326dbf2d82e09a4c5c8c8e4a91a84
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539346"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319796"
 ---
 # <a name="log-analytics-data-security"></a>Adatbiztonság Log Analytics
 Ennek a dokumentumnak az a célja, hogy Log Analyticsra vonatkozó információt szolgáltasson, amely a Azure Monitor egyik funkciója, hogy kiegészítse a [Azure biztonsági és adatkezelési központ](https://www.microsoft.com/en-us/trust-center?rtc=1)információit.  
@@ -148,7 +148,7 @@ Operations Manager esetén a Operations Manager felügyeleti csoport kapcsolatot
 
 A csatlakoztatott rendszerek és a Log Analytics szolgáltatás közötti összes kommunikáció titkosítva van. A TLS (HTTPS) protokollt használja a titkosításhoz.  A Microsoft SDL eljárást követve biztosíthatja, hogy Log Analytics naprakész legyen a titkosítási protokollok legújabb fejlesztései között.
 
-Az ügynökök mindegyike Log Analytics adatokat gyűjt. A gyűjtött adatok típusa a használt megoldások típusaitól függ. Az adatgyűjtés összegzését [a Solutions Gallery log Analytics-megoldások hozzáadása](../../azure-monitor/insights/solutions.md)című részében tekintheti meg. Emellett a legtöbb megoldás esetében részletesebb gyűjteményi információk is elérhetők. A megoldás az előre definiált nézetek, a naplózott keresési lekérdezések, az adatgyűjtési szabályok és a feldolgozási logika összessége. Megoldás importálásához csak a rendszergazdák használhatják a Log Analytics. A megoldás importálása után a rendszer áthelyezi a Operations Manager felügyeleti kiszolgálókra (ha ez használatban van), majd a kiválasztott ügynökökre. Ezután az ügynökök gyűjtik az adatokat.
+Az ügynökök mindegyike Log Analytics adatokat gyűjt. A gyűjtött adatok típusa a használt megoldások típusaitól függ. Az adatgyűjtés összegzését [a Solutions Gallery log Analytics-megoldások hozzáadása](../insights/solutions.md)című részében tekintheti meg. Emellett a legtöbb megoldás esetében részletesebb gyűjteményi információk is elérhetők. A megoldás az előre definiált nézetek, a naplózott keresési lekérdezések, az adatgyűjtési szabályok és a feldolgozási logika összessége. Megoldás importálásához csak a rendszergazdák használhatják a Log Analytics. A megoldás importálása után a rendszer áthelyezi a Operations Manager felügyeleti kiszolgálókra (ha ez használatban van), majd a kiválasztott ügynökökre. Ezután az ügynökök gyűjtik az adatokat.
 
 ## <a name="2-send-data-from-agents"></a>2. adatok küldése az ügynököktől
 Regisztrálja az összes ügynököt egy regisztrációs kulccsal, és biztonságos kapcsolatot létesít az ügynök és a Log Analytics szolgáltatás között tanúsítványalapú hitelesítéssel és TLS-vel az 443-es porton keresztül. A Log Analytics titkos tárolót használ a kulcsok létrehozásához és karbantartásához. A titkos kulcsokat 90 naponta elforgatják, és az Azure-ban tárolják, és azokat az Azure-műveletek kezelik, akik szigorú szabályozási és megfelelőségi eljárásokat követnek.
@@ -171,7 +171,8 @@ Az adatbázisban tárolt összegyűjtött adatok megőrzési ideje a kiválaszto
 ## <a name="4-use-log-analytics-to-access-the-data"></a>4. a Log Analytics használata az adateléréshez
 Log Analytics munkaterület eléréséhez jelentkezzen be a Azure Portal a korábban beállított szervezeti fiókkal vagy Microsoft-fiók. A portál és a Log Analytics szolgáltatás közötti összes forgalmat biztonságos HTTPS-csatornán keresztül küldik el. A portál használatakor a rendszer egy munkamenet-azonosítót hoz létre a felhasználói ügyfélen (webböngészőn), és a rendszer a munkamenet megszakítása előtt helyi gyorsítótárban tárolja az adataikat. Ha leállt, a gyorsítótár törlődik. A személyazonosításra alkalmas adatokat nem tartalmazó ügyféloldali cookie-k nem törlődnek automatikusan. A munkamenet-cookie-k HTTPOnly vannak megjelölve, és biztonságosak. Az előre meghatározott üresjárati időszak után a Azure Portal munkamenet megszakad.
 
-## <a name="next-steps"></a>Következő lépések
-* Ismerje meg, hogyan gyűjthet adatokat az Azure-beli virtuális gépek Log Analyticsával az [Azure VM](../../azure-monitor/learn/quick-collect-azurevm.md)gyors üzembe helyezését követően.  
+## <a name="next-steps"></a>További lépések
+* Ismerje meg, hogyan gyűjthet adatokat az Azure-beli virtuális gépek Log Analyticsával az [Azure VM](../learn/quick-collect-azurevm.md)gyors üzembe helyezését követően.  
 
-*  Ha a környezetben található fizikai vagy virtuális Windows-vagy Linux-számítógépekről szeretne adatokat gyűjteni, tekintse meg a Linux rendszerű [számítógépek](../../azure-monitor/learn/quick-collect-linux-computer.md) és a [Windows rendszerű számítógépek](../../azure-monitor/learn/quick-collect-windows-computer.md) gyors útmutatója című témakört.
+*  Ha a környezetben található fizikai vagy virtuális Windows-vagy Linux-számítógépekről szeretne adatokat gyűjteni, tekintse meg a Linux rendszerű [számítógépek](../learn/quick-collect-linux-computer.md) és a [Windows rendszerű számítógépek](../learn/quick-collect-windows-computer.md) gyors útmutatója című témakört.
+

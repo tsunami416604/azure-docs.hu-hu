@@ -1,6 +1,6 @@
 ---
-title: Windows rendszerű virtuális asztali diagnosztika log Analytics (Fall 2019) – Azure
-description: Ismerje meg, hogyan használható a log Analytics a Windows rendszerű virtuális asztali (Fall 2019 kiadás) diagnosztikai szolgáltatással.
+title: Windows rendszerű virtuális asztali (klasszikus) diagnosztika log Analytics – Azure
+description: A log Analytics használata a Windows rendszerű virtuális asztali (klasszikus) diagnosztika szolgáltatással.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: c4c59268f63252813c7e08608d5d8ee499b11f53
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 500758839b426143650707d3d77d78e8a064533e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077619"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285067"
 ---
-# <a name="use-log-analytics-for-the-diagnostics-feature-fall-2019-release"></a>Log Analytics használata a diagnosztikai szolgáltatáshoz (a 2019-es verzióban)
+# <a name="use-log-analytics-for-the-diagnostics-feature-in-windows-virtual-desktop-classic"></a>Log Analytics használata a Windows Virtual Desktop diagnosztikai szolgáltatásához (klasszikus)
 
 >[!IMPORTANT]
->Ez a tartalom a Fall 2019 kiadásra vonatkozik, amely nem támogatja a Windows rendszerű virtuális asztali objektumokat Azure Resource Manager. Ha a Spring 2020 Update szolgáltatásban bevezetett Azure Resource Manager Windows rendszerű virtuális asztali objektumokat szeretne felügyelni, tekintse meg [ezt a cikket](../diagnostics-log-analytics.md).
+>Ez a tartalom a Windows rendszerű virtuális asztali (klasszikus) verzióra vonatkozik, amely nem támogatja Azure Resource Manager Windows rendszerű virtuális asztali objektumokat. Ha Azure Resource Manager Windows rendszerű virtuális asztali objektumokat szeretne felügyelni, tekintse meg [ezt a cikket](../diagnostics-log-analytics.md).
 
 A Windows rendszerű virtuális asztali szolgáltatás diagnosztikai szolgáltatást biztosít, amely lehetővé teszi, hogy a rendszergazda egyetlen felületen azonosítsa a problémákat. Ez a szolgáltatás naplózza a diagnosztikai adatokat, amikor valaki hozzárendelt egy Windows rendszerű virtuális asztali szerepkört a szolgáltatáshoz. Minden napló tartalmaz információt arról, hogy mely Windows virtuális asztali szerepkört vett részt a tevékenységben, a munkamenet során megjelenő hibaüzeneteket, a bérlői adatokat és a felhasználói adatokat. A diagnosztikai szolgáltatás a felhasználói és rendszergazdai műveletekhez is létrehozza a tevékenység naplóit. Minden tevékenység naplója három fő kategóriába tartozik:
 

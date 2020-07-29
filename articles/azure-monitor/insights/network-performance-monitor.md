@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 02/20/2018
-ms.openlocfilehash: 68be8d08939464d200da588c481447f8206c9117
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: 720a768679cdbd45224e5c9a05b8f8d0c9b9ea81
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87117194"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326086"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Network Performance Monitor megoldás az Azure-ban
 
@@ -113,7 +113,7 @@ A Network Performance Monitor szintetikus tranzakciókat használ a forrás-és 
 
 ### <a name="configure-the-solution"></a>A megoldás konfigurálása 
 
-1. Adja hozzá a Network Performance Monitor megoldást a munkaterülethez az [Azure piactéren](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview). Használhatja a [Solutions Gallery Azure monitor megoldások hozzáadása](../../azure-monitor/insights/solutions.md)című témakörben ismertetett eljárást is. 
+1. Adja hozzá a Network Performance Monitor megoldást a munkaterülethez az [Azure piactéren](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview). Használhatja a [Solutions Gallery Azure monitor megoldások hozzáadása](./solutions.md)című témakörben ismertetett eljárást is. 
 2. Nyissa meg Log Analytics munkaterületét, és válassza az **Áttekintés** csempét. 
 3. Válassza ki a **Network Performance monitor** csempét az üzenet *megoldásához további konfiguráció szükséges*.
 
@@ -291,3 +291,4 @@ A díjszabással kapcsolatos információk [online állapotban](network-performa
 
 ## <a name="next-steps"></a>További lépések 
 További információ a [Teljesítményfigyelőről](network-performance-monitor-performance-monitor.md), a [szolgáltatás-csatlakozási figyelőről](network-performance-monitor-performance-monitor.md)és a [ExpressRoute-figyelőről](network-performance-monitor-expressroute.md). 
+

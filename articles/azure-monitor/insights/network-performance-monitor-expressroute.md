@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: abshamsft
 ms.author: absha
 ms.date: 11/27/2018
-ms.openlocfilehash: 6ac610d7dcf9849b6b439741957684867b9d01aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a9f268e5080a5c04c5cdb4767f2db5fd2d77cd3c
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77660750"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326154"
 ---
 # <a name="expressroute-monitor"></a>ExpressRoute-figyelő
 
@@ -108,7 +109,7 @@ Network Performance Monitor segítséget nyújt több áramköri kapcsolati prob
 
 Az értesítési kódokat láthatja, és riasztásokat állíthat be rajtuk a **LogAnalytics**-on keresztül. A **NPM diagnosztika** lapon az összes aktivált diagnosztikai üzenet leírását láthatja.
 
-| Értesítési kód (naplók) | Description |
+| Értesítési kód (naplók) | Leírás |
 | --- | --- |
 | 5501 | A ExpressRoute áramkör másodlagos kapcsolata nem haladhat át |
 | 5502 | A ExpressRoute áramkör elsődleges kapcsolata nem haladhat át |
@@ -139,4 +140,5 @@ Az értesítési kódokat láthatja, és riasztásokat állíthat be rajtuk a **
  
 
 ## <a name="next-steps"></a>További lépések
-[Keresési naplók](../../azure-monitor/log-query/log-query-overview.md) a hálózati teljesítményadatok részletes rekordjainak megtekintéséhez.
+[Keresési naplók](../log-query/log-query-overview.md) a hálózati teljesítményadatok részletes rekordjainak megtekintéséhez.
+

@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
-ms.custom: codepen
-ms.openlocfilehash: 12c407ecacdce6b9052ca70ef70a2ae87928b6c2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: codepen, devx-track-javascript
+ms.openlocfilehash: 2942ae25e3ac84ae6f91ebbba08581eb87bcd169
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87064695"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285679"
 ---
 # <a name="how-to-use-image-templates"></a>Rendszerképsablonok használata
 
@@ -119,7 +119,7 @@ Tekintse meg a Pen <a href='https://codepen.io/azuremaps/pen/EqQvzq/'>HTML-jelö
 
 Ha az alkalmazás ugyanazt az ikont használja különböző ikonokkal, vagy ha olyan modult hoz létre, amely további képsablonokat ad hozzá, egyszerűen hozzáadhatja és lekérheti ezeket az ikonokat a Azure Maps web SDK-ból. Használja a következő statikus függvényeket a `atlas` névtérben.
 
-| Name | Visszatérési típus | Description | 
+| Név | Visszatérési típus | Leírás | 
 |-|-|-|
 | `addImageTemplate(templateName: string, template: string, override: boolean)` | | Hozzáadja az egyéni SVG-képsablont az Atlas-névtérhez. |
 |  `getImageTemplate(templateName: string, scale?: number)`| sztring | Egy SVG-sablon beolvasása név alapján. |
@@ -127,7 +127,7 @@ Ha az alkalmazás ugyanazt az ikont használja különböző ikonokkal, vagy ha 
 
 Az SVG-képsablonok a következő helyőrző értékeket támogatják:
 
-| Helyőrző | Description |
+| Helyőrző | Leírás |
 |-|-|
 | `{color}` | Az elsődleges szín. | 
 | `{secondaryColor}` | A másodlagos szín | 

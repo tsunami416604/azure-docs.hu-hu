@@ -4,12 +4,13 @@ description: Ismerje meg, hogyan fejlesztheti a függvényeket a JavaScript hasz
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: c0e5dd7e1869accd309656b69bd2a07d21b1a3ec
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 636df121ea5b09a421ae7bedaf9e30cbbd1966f5
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082970"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87280868"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions JavaScript fejlesztői útmutató
 
@@ -17,7 +18,7 @@ Ez az útmutató részletes információkat tartalmaz, amelyek segítenek a Azur
 
 Express.js, Node.js vagy JavaScript-fejlesztőként, ha még nem ismeri a Azure Functionst, először olvassa el a következő cikkek egyikét:
 
-| Első lépések | Fogalmak| Interaktív tanulás |
+| Első lépések | Alapelvek| Interaktív tanulás |
 | -- | -- | -- | 
 | <ul><li>[Node.js függvény a Visual Studio Code használatával](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-javascript)</li><li>[Node.js függvény a Terminal/Command parancssorral](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-javascript)</li></ul> | <ul><li>[Fejlesztői útmutató](functions-reference.md)</li><li>[Üzemeltetési lehetőségek](functions-scale.md)</li><li>[Írógéppel függvények](#typescript)</li><li>[Teljesítménnyel &nbsp; kapcsolatos megfontolások](functions-best-practices.md)</li></ul> | <ul><li>[Kiszolgáló nélküli alkalmazás létrehozása](/learn/paths/create-serverless-applications/)</li><li>[Refrakció Node.js és expressz API-k kiszolgáló nélküli API-khoz](/learn/modules/shift-nodejs-express-apis-serverless/)</li></ul> |
 
@@ -346,7 +347,7 @@ A HTTP-és webhook-eseményindítók és a HTTP-kimeneti kötések a HTTP-üzene
 
 A `context.req` (kérelem) objektum a következő tulajdonságokkal rendelkezik:
 
-| Tulajdonság      | Description                                                    |
+| Tulajdonság      | Leírás                                                    |
 | ------------- | -------------------------------------------------------------- |
 | _törzse_        | Egy objektum, amely tartalmazza a kérelem törzsét.               |
 | _fejlécek_     | Egy objektum, amely a kérések fejléceit tartalmazza.                   |
@@ -361,7 +362,7 @@ A `context.req` (kérelem) objektum a következő tulajdonságokkal rendelkezik:
 
 A `context.res` (válasz) objektum a következő tulajdonságokkal rendelkezik:
 
-| Tulajdonság  | Description                                               |
+| Tulajdonság  | Leírás                                               |
 | --------- | --------------------------------------------------------- |
 | _törzse_    | Egy objektum, amely tartalmazza a válasz törzsét.         |
 | _fejlécek_ | Egy objektum, amely tartalmazza a válasz fejléceit.             |

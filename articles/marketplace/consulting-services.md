@@ -5,12 +5,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 4a45239836779fc83aa2e3927c6e3ff752c87182
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: Microsoft-BradleyWright
+ms.author: brwrigh
+ms.openlocfilehash: 5cea220b44618787e34ce2297921d715476b7f14
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103755"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87280953"
 ---
 # <a name="consulting-service-offers"></a>Tanácsadási szolgáltatás ajánlatok
 
@@ -152,8 +154,8 @@ Miután a Content felülvizsgálati csapat áttekinti az ajánlat leírásait é
 |---------|---------|---------|
 |**Értékelés**    |   Részletes menetrendet tartalmaz a többnapos vagy a többhetes értékelésekhez, és megfogalmazhatja, hogy az ügyfél milyen feladatait várhatja el.      |    Optimalizálja ajánlatait a legnépszerűbb SEO-kulcsszavakkal.     |
 |**Eligazítás**    |   Az ügyfél által várhatóan felhasználható adatok kihangsúlyozása. Ne feledje, hogy a *tájékoztatót* személyesen kell megadni. Ha virtuális szolgáltatást biztosít, válasszon egy másik ajánlat típust.    |  Optimalizálja ajánlatait a legnépszerűbb SEO-kulcsszavakkal.       |
-|**Megvalósítás**    |  Részletes menetrendet tartalmaz a többnapos vagy a többhetes implementációk számára, és megfogalmazhatja, hogy milyen mérnöki változások, technikai összetevők vagy egyéb összetevők várhatók az ügyfél számára.       |    Optimalizálja ajánlatait a legnépszerűbb SEO-kulcsszavakkal.     |
-|**A koncepció igazolása**    |    Megfogalmazhatja, hogy milyen mérnöki változások, technikai összetevők vagy egyéb összetevők várhatók az ügyfelek számára az engagement eredményeinek megfelelően.     | Optimalizálja ajánlatait a legnépszerűbb SEO-kulcsszavakkal.        |
+|**Implementálás**    |  Részletes menetrendet tartalmaz a többnapos vagy a többhetes implementációk számára, és megfogalmazhatja, hogy milyen mérnöki változások, technikai összetevők vagy egyéb összetevők várhatók az ügyfél számára.       |    Optimalizálja ajánlatait a legnépszerűbb SEO-kulcsszavakkal.     |
+|**Megvalósíthatósági vizsgálat**    |    Megfogalmazhatja, hogy milyen mérnöki változások, technikai összetevők vagy egyéb összetevők várhatók az ügyfelek számára az engagement eredményeinek megfelelően.     | Optimalizálja ajánlatait a legnépszerűbb SEO-kulcsszavakkal.        |
 |**Workshop**    |   Az ajánlat időtartamától függően naponta, hetente vagy havonta részletes napirendet is megadhat. A workshop tanulási céljainak és egyéb termékeinek tagolása.     |   Optimalizálja ajánlatait a legnépszerűbb SEO-kulcsszavakkal.      |
 ||
 
@@ -167,7 +169,7 @@ A partner Centerben a [Markdown](/contribute/markdown-reference)használatával 
 * Minden címsor után adjon hozzá sortörést.
 * **Félkövér** formázáshoz adjon hozzá egy dupla csillagot ( \* \* ) szóköz nélkül egy szó vagy egy sorozat elejéhez és végéhez (például írja be a \* \* tartalmat a \* \* Word **tartalmának**formázásához).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha még nem tette meg, Ismerje meg, hogyan [növelheti Felhőbeli üzletét az Azure Marketplace-szel](https://azuremarketplace.microsoft.com/sell).
 

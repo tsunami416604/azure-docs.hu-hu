@@ -8,14 +8,15 @@ ms.author: luquinta
 ms.reviewer: luquinta
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
+ms.topic: conceptual
+ms.custom: how-to
 ms.date: 07/09/2020
-ms.openlocfilehash: 2deb939745647636cc04ae124d1e843db0bef7f6
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 5ec6af894f434f8d1f7df34b2ed0c2514ab88cc4
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206498"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87306145"
 ---
 # <a name="manage-azure-machine-learning-resources-with-the-vs-code-extension-preview"></a>Azure Machine Learning erőforrások kezelése a VS Code bővítménnyel (előzetes verzió)
 
@@ -376,7 +377,7 @@ További információ: webszolgáltatás- [végpontok](concept-azure-machine-lea
 1. Bontsa ki a munkaterületet tartalmazó előfizetés csomópontot.
 1. Bontsa ki a **végpontok** csomópontot a munkaterületen belül.
 1. Kattintson a jobb gombbal az eltávolítani kívánt központi telepítésre, majd válassza a **szolgáltatás eltávolítása**lehetőséget.
-1. Megjelenik egy üzenet, amely megerősíti, hogy el kívánja távolítani a szolgáltatást. Kattintson **az OK gombra**.
+1. Megjelenik egy üzenet, amely megerősíti, hogy el kívánja távolítani a szolgáltatást. Kattintson az **OK** gombra.
 
 ### <a name="manage-deployments"></a>Központi telepítések kezelése
 

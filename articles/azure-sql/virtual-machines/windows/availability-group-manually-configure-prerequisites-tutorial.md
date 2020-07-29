@@ -3,7 +3,7 @@ title: 'Oktatóanyag: rendelkezésre állási csoport előfeltételei'
 description: Ez az oktatóanyag bemutatja, hogyan konfigurálhatja az Azure Virtual Machines SQL Server always on rendelkezésre állási csoport létrehozásához szükséges előfeltételeket.
 services: virtual-machines
 documentationCenter: na
-author: MikeRayMSFT
+author: MashaMSFT
 editor: monicar
 tags: azure-service-management
 ms.assetid: c492db4c-3faa-4645-849f-5a1a663be55a
@@ -12,13 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/29/2018
-ms.author: mikeray
+ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: b72e894b7280a2d3e0fa978125e53ae79b2d20e3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 881fa116b1a44d4714002f71e6ebd163279d8c70
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84669358"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284302"
 ---
 # <a name="prerequisites-for-creating-always-on-availability-groups-on-sql-server-on-azure-virtual-machines"></a>Always On rendelkezésre állási csoportok létrehozásának előfeltételei az Azure-beli SQL Serveron Virtual Machines
 
@@ -41,7 +42,7 @@ Ez az oktatóanyag feltételezi, hogy rendelkezik a SQL Server always on rendelk
 
 Rendelkeznie kell Azure-fiókkal. [Megnyithat egy ingyenes Azure-fiókot](https://signup.azure.com/signup?offer=ms-azr-0044p&appId=102&ref=azureplat-generic) , vagy [aktiválhatja a Visual Studio előfizetői előnyeit](https://docs.microsoft.com/visualstudio/subscriptions/subscriber-benefits).
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Ezzel a beállítással **+** új objektumot hozhat létre a portálon.
@@ -86,7 +87,7 @@ A virtuális hálózat létrehozása a Azure Portalban:
 
    | **Mező** | Érték |
    | --- | --- |
-   | **Name (Név)** |autoHAVNET |
+   | **Név** |autoHAVNET |
    | **Címtér** |10.33.0.0/24 |
    | **Alhálózat neve** |Rendszergazda |
    | **Alhálózati címtartomány** |10.33.0.0/29 |
@@ -129,7 +130,7 @@ A következő táblázat összefoglalja a hálózati konfiguráció beállítás
 
 | **Mező** | Érték |
 | --- | --- |
-| **Name (Név)** |**autoHAVNET** |
+| **Név** |**autoHAVNET** |
 | **Címtér** |Ez az érték az előfizetés elérhető címeitől függ. Egy tipikus érték a 10.0.0.0/16. |
 | **Alhálózat neve** |**rendszergazda** |
 | **Alhálózati címtartomány** |Ez az érték az előfizetés elérhető címeitől függ. Egy tipikus érték a 10.0.0.0/24. |
@@ -151,7 +152,7 @@ Konfigurálja a két rendelkezésre állási csoportot a következő táblázatb
 
 | **Mező** | Tartományvezérlő rendelkezésre állási készlete | Rendelkezésre állási csoport SQL Server |
 | --- | --- | --- |
-| **Name (Név)** |adavailabilityset |sqlavailabilityset |
+| **Név** |adavailabilityset |sqlavailabilityset |
 | **Erőforráscsoport** |SQL-HA-RG |SQL-HA-RG |
 | **Tartalék tartományok** |3 |3 |
 | **Frissítési tartományok** |5 |3 |
@@ -183,7 +184,7 @@ A következő táblázat a két gép beállításait mutatja be:
 
 | **Mező** | Érték |
 | --- | --- |
-| **Name (Név)** |Első tartományvezérlő: *ad-Primary-DC*.</br>Második tartományvezérlő *ad-másodlagos-tartományvezérlő*. |
+| **Név** |Első tartományvezérlő: *ad-Primary-DC*.</br>Második tartományvezérlő *ad-másodlagos-tartományvezérlő*. |
 | **Virtuális merevlemez típusa** |SSD |
 | **Felhasználónév** |Rdfe |
 | **Jelszó** |Contoso! 0000 |
@@ -191,7 +192,7 @@ A következő táblázat a két gép beállításait mutatja be:
 | **Erőforráscsoport** |SQL-HA-RG |
 | **Hely** |*Tartózkodási hely* |
 | **Méret** |DS1_V2 |
-| **Storage** | **Felügyelt lemezek használata**  -  **Igen** |
+| **Storage-fiók** | **Felügyelt lemezek használata**  -  **Igen** |
 | **Virtuális hálózat** |autoHAVNET |
 | **Alhálózat** |admin |
 | **Nyilvános IP-cím** |*A virtuális géppel megegyező név* |
@@ -231,7 +232,7 @@ A következő lépésekben konfigurálja az **ad-Primary-DC** gépet a Corp.cont
     ![Szerepkörök hozzáadása párbeszédpanel](./media/availability-group-manually-configure-prerequisites-tutorial-/23-addroles.png)
 
 7. Kattintson a **Tovább gombra** , amíg el nem éri a **megerősítő** szakaszt. Jelölje be a **célkiszolgáló automatikus újraindítása, ha szükséges** jelölőnégyzetet.
-8. Válassza a **Telepítés** gombot.
+8. Válassza a **Telepítés** lehetőséget.
 9. A szolgáltatások telepítésének befejezését követően térjen vissza a **Kiszolgálókezelő** irányítópultra.
 10. Válassza az új **AD DS** lehetőséget a bal oldali ablaktáblán.
 11. A sárga figyelmeztető sávban válassza a **továbbiak** hivatkozást.
@@ -247,7 +248,7 @@ A következő lépésekben konfigurálja az **ad-Primary-DC** gépet a Corp.cont
     | **Tartományvezérlő beállításai** |**Címtárszolgáltatások helyreállító módjának jelszava** = contoso! 0000<br/>**Jelszó megerősítése** = contoso! 0000 |
 
 14. A **tovább** gombra kattintva megtekintheti a varázsló többi lapját. Az **Előfeltételek ellenőrzése** lapon győződjön meg arról, hogy a következő üzenet jelenik meg: az **összes előfeltétel-ellenőrzés sikeresen átadva**. Áttekintheti a vonatkozó figyelmeztető üzeneteket, de lehetséges, hogy folytathatja a telepítést.
-15. Válassza a **Telepítés** gombot. Az **ad-Primary-DC** virtuális gép automatikusan újraindul.
+15. Válassza a **Telepítés** lehetőséget. Az **ad-Primary-DC** virtuális gép automatikusan újraindul.
 
 ### <a name="note-the-ip-address-of-the-primary-domain-controller"></a>Jegyezze fel az elsődleges tartományvezérlő IP-címét.
 
@@ -261,7 +262,7 @@ Az elsődleges tartományvezérlő IP-címének lekérésének egyik módja a Az
 
 3. Az elsődleges tartományvezérlőn válassza a **hálózati adapterek**lehetőséget.
 
-![Hálózati illesztők](./media/availability-group-manually-configure-prerequisites-tutorial-/25-primarydcip.png)
+![Hálózati adapterek](./media/availability-group-manually-configure-prerequisites-tutorial-/25-primarydcip.png)
 
 Jegyezze fel a kiszolgáló magánhálózati IP-címét.
 
@@ -275,7 +276,7 @@ Miután létrehozta az első tartományvezérlőt, és engedélyezte a DNS-t az 
 
 3. Válassza az **Egyéni**lehetőséget, majd írja be az elsődleges tartományvezérlő magánhálózati IP-címét.
 
-4. Kattintson a **Mentés** gombra.
+4. Válassza a **Mentés** lehetőséget.
 
 ### <a name="configure-the-second-domain-controller"></a>A második tartományvezérlő konfigurálása
 
@@ -286,7 +287,7 @@ Az elsődleges tartományvezérlő újraindítása után beállíthatja a másod
 3. Módosítsa az előnyben részesített DNS-kiszolgáló címeit a tartományvezérlő címeként.
 4. A **hálózati és megosztási központban**válassza ki a hálózati adaptert.
 
-   ![Hálózati illesztő](./media/availability-group-manually-configure-prerequisites-tutorial-/26-networkinterface.png)
+   ![Hálózati adapter](./media/availability-group-manually-configure-prerequisites-tutorial-/26-networkinterface.png)
 
 5. Válassza ki a **Tulajdonságok** elemet.
 6. Válassza a **Internet Protocol 4-es verzió (TCP/IPv4)** lehetőséget, majd válassza a **Tulajdonságok**lehetőséget.
@@ -310,7 +311,7 @@ Az elsődleges tartományvezérlő újraindítása után beállíthatja a másod
 
     ![Központi telepítés konfigurálása](./media/availability-group-manually-configure-prerequisites-tutorial-/28-deploymentconfig.png)
 
-18. Kattintson a **Kiválasztás** gombra.
+18. Válassza a **Kiválasztás** lehetőséget.
 19. Kapcsolódjon a rendszergazdai fiók használatával (**Corp. CONTOSO. COM\domainadmin**) és jelszó (**contoso! 0000**).
 20. A **tartomány kiválasztása az erdőből**területen válassza ki a tartományt, majd kattintson **az OK gombra**.
 21. A **tartományvezérlő beállításainál**használja az alapértelmezett értékeket, és állítsa be a Címtárszolgáltatások helyreállító módjának jelszavát.
@@ -396,7 +397,7 @@ Ezután hozzon létre három virtuális gépet – két SQL Server virtuális g�
 | A virtuális gép konfigurációjának **alapjai** |**Név** = fürt – FSW<br/>**Felhasználónév** = rdfe<br/>**Password** = contoso! 0000<br/>**Előfizetés** = az előfizetése<br/>**Erőforráscsoport** = SQL-ha-RG<br/>**Location** = az Azure-beli helye |**Név** = SQLServer-0<br/>**Felhasználónév** = rdfe<br/>**Password** = contoso! 0000<br/>**Előfizetés** = az előfizetése<br/>**Erőforráscsoport** = SQL-ha-RG<br/>**Location** = az Azure-beli helye |**Név** = SQLServer-1<br/>**Felhasználónév** = rdfe<br/>**Password** = contoso! 0000<br/>**Előfizetés** = az előfizetése<br/>**Erőforráscsoport** = SQL-ha-RG<br/>**Location** = az Azure-beli helye |
 | Virtuális gép konfigurációjának **mérete** |**Size** = DS1 \_ v2 (1 VCPU, 3,5 GB) |**Size** = DS2 \_ v2 (2 VCPU, 7 GB)</br>A méretnek támogatnia kell az SSD-tárolót (prémium szintű lemezes támogatás). )) |**Size** = DS2 \_ v2 (2 VCPU, 7 GB) |
 | Virtuális gép konfigurációs **beállításai** |**Storage**: felügyelt lemezek használata.<br/>**Virtuális hálózat** = autoHAVNET<br/>**Alhálózat** = sqlsubnet (10.1.1.0/24)<br/>A **nyilvános IP-cím** automatikusan létrejön.<br/>**Hálózati biztonsági csoport** = nincs<br/>**Figyelési diagnosztika** = engedélyezve<br/>**Diagnosztikai Storage-fiók** = automatikusan létrehozott Storage-fiók használata<br/>**Rendelkezésre állási csoport** = sqlAvailabilitySet<br/> |**Storage**: felügyelt lemezek használata.<br/>**Virtuális hálózat** = autoHAVNET<br/>**Alhálózat** = sqlsubnet (10.1.1.0/24)<br/>A **nyilvános IP-cím** automatikusan létrejön.<br/>**Hálózati biztonsági csoport** = nincs<br/>**Figyelési diagnosztika** = engedélyezve<br/>**Diagnosztikai Storage-fiók** = automatikusan létrehozott Storage-fiók használata<br/>**Rendelkezésre állási csoport** = sqlAvailabilitySet<br/> |**Storage**: felügyelt lemezek használata.<br/>**Virtuális hálózat** = autoHAVNET<br/>**Alhálózat** = sqlsubnet (10.1.1.0/24)<br/>A **nyilvános IP-cím** automatikusan létrejön.<br/>**Hálózati biztonsági csoport** = nincs<br/>**Figyelési diagnosztika** = engedélyezve<br/>**Diagnosztikai Storage-fiók** = automatikusan létrehozott Storage-fiók használata<br/>**Rendelkezésre állási csoport** = sqlAvailabilitySet<br/> |
-| A virtuális gép konfigurációjának **SQL Server beállításai** |Nem értelmezhető |**SQL-kapcsolat** = Private (Virtual Networkon belül)<br/>**Port** = 1433<br/>**SQL-hitelesítés** = letiltás<br/>**Tárolási konfiguráció** = általános<br/>**Automatikus javítás** = vasárnap 2:00-kor<br/>**Automatikus biztonsági mentés** = letiltva</br>**Azure Key Vault integráció** = letiltva |**SQL-kapcsolat** = Private (Virtual Networkon belül)<br/>**Port** = 1433<br/>**SQL-hitelesítés** = letiltás<br/>**Tárolási konfiguráció** = általános<br/>**Automatikus javítás** = vasárnap 2:00-kor<br/>**Automatikus biztonsági mentés** = letiltva</br>**Azure Key Vault integráció** = letiltva |
+| A virtuális gép konfigurációjának **SQL Server beállításai** |Nem alkalmazható |**SQL-kapcsolat** = Private (Virtual Networkon belül)<br/>**Port** = 1433<br/>**SQL-hitelesítés** = letiltás<br/>**Tárolási konfiguráció** = általános<br/>**Automatikus javítás** = vasárnap 2:00-kor<br/>**Automatikus biztonsági mentés** = letiltva</br>**Azure Key Vault integráció** = letiltva |**SQL-kapcsolat** = Private (Virtual Networkon belül)<br/>**Port** = 1433<br/>**SQL-hitelesítés** = letiltás<br/>**Tárolási konfiguráció** = általános<br/>**Automatikus javítás** = vasárnap 2:00-kor<br/>**Automatikus biztonsági mentés** = letiltva</br>**Azure Key Vault integráció** = letiltva |
 
 <br/>
 

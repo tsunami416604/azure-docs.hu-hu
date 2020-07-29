@@ -1,6 +1,6 @@
 ---
 title: Azure CLI parancsfájl minta – társ-két virtuális hálózat | Microsoft Docs
-description: Azure CLI parancsfájl minta – társ két virtuális hálózat
+description: Azure CLI parancsfájl-minta használatával két virtuális hálózatot hozhat létre és kapcsolhat össze ugyanabban a régióban az Azure-hálózaton keresztül.
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 07/07/2017
 ms.author: kumud
-ms.openlocfilehash: c301c66c3b668ae48314c4d1eb06657d8573209c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a4c3c353e87ad88d7bae10ae011bdd59e7992309
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87030402"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282092"
 ---
 # <a name="use-an-azure-cli-sample-script-to-connect-two-virtual-networks"></a>Azure CLI-parancsfájl használata két virtuális hálózat összekapcsolásához
 

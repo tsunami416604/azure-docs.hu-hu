@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 08/28/2019
 ms.author: tiag
-ms.openlocfilehash: 7774ea5138e6d77547e386531e573457cd6d2862
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5353bad3ff631fd7baa5d9892d38449ba622ea46
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525942"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284676"
 ---
 # <a name="linux-vm-boots-to-grub-rescue"></a>A Linux rendszerű virtuális gép a grub Rescue-t indítja
 
@@ -35,7 +35,7 @@ A kapott hibától függően kövesse az alábbi kockázatcsökkentő lépéseke
 * Ha a rendszer **ismeretlen**hibát észlel, akkor ez a hiba a rendszerindító partíció fájlrendszerének sérülése vagy helytelen kernel-konfiguráció miatt eredményezhet.
 
    * Fájlrendszerrel kapcsolatos problémák esetén hajtsa végre a következő cikkben ismertetett lépéseket [: Linux Recovery: nem lehet SSH-t Linux virtuális géphez a fájlrendszer hibái miatt (fsck, inode)](/archive/blogs/linuxonazure/linux-recovery-cannot-ssh-to-linux-vm-due-to-file-system-errors-fsck-inodes).
-   * Kernel-problémák esetén kövesse a [Linux helyreállítás: a kernel problémákkal kapcsolatos nem rendszerindítási problémák manuális kijavítása](/archive/blogs/linuxonazure/linux-recovery-manually-fixing-non-boot-issues-related-to-kernel-problems), illetve a Linux-helyreállítás című cikk lépéseit [: a nem rendszerindítási problémák kijavítása kernel-problémákról a kromát használatával](/archive/blogs/linuxonazure/linux-recovery-fixing-non-boot-issues-related-to-kernel-problems-using-chroot).
+   * Kernel-problémák esetén kövesse a [Linux helyreállítás: a kernel problémákkal kapcsolatos nem rendszerindítási problémák manuális kijavítása](http://linuxonazure.azurewebsites.net/linux-recovery-fixing-non-boot-issues-related-to-kernel-problems-using-chroot/), illetve a Linux-helyreállítás című cikk lépéseit [: a nem rendszerindítási problémák kijavítása kernel-problémákról a kromát használatával](http://linuxonazure.azurewebsites.net/linux-recovery-fixing-non-boot-issues-related-to-kernel-problems-using-chroot/).
    
 ### <a name="error---file-not-found"></a>Hiba – a fájl nem található
 
@@ -65,7 +65,7 @@ A kapott hibától függően kövesse az alábbi kockázatcsökkentő lépéseke
 
    * Ha a hiányzó fájl `/boot/grub/menu.lst` , akkor ez a hiba a régebbi operációsrendszer-verziók esetében (**RHEL 6. x**, **CentOS 6. x** és **Ubuntu 14,04**), így a parancsok elhalasztható. Hozzon létre egy régi kiszolgálót, és ellenőrizze, hogy a megfelelő parancsok vannak-e megadva.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Az Azure Virtual Machine Agent áttekintése](../extensions/agent-windows.md)
 * [Virtuálisgép-bővítmények és-szolgáltatások a Windows rendszerhez](../extensions/features-windows.md)

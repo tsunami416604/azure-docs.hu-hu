@@ -32,9 +32,9 @@
       href: release-notes.md
 - name: Rövid útmutatók
   items:
-    - name: Azure Synapse-munkaterület létrehozása
+    - name: Synapse-munkaterület létrehozása
       href: quickstart-create-workspace.md
-    - name: Az Azure Synapse Studio használata
+    - name: A Synapse Studio használata
       href: quickstart-synapse-studio.md
     - name: Power BI-munkaterület csatolása
       href: quickstart-power-bi.md

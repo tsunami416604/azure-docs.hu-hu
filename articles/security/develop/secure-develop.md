@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 34294bf29ec861d7bbb954ece7016de37769a332
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 7818ae36c785311466d2fb26ce45dcf50983145d
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232695"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283486"
 ---
 # <a name="develop-secure-applications-on-azure"></a>Biztonságos alkalmazások fejlesztése az Azure szolgáltatásban
 Ebben a cikkben a Felhőbeli alkalmazások fejlesztésekor megfontolandó biztonsági tevékenységeket és ellenőrzéseket mutatjuk be. A Microsoft [biztonsági fejlesztési életciklus (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) megvalósítási és ellenőrzési szakaszaiban megfontolandó biztonsági kérdések és fogalmak. A cél az, hogy segítséget nyújtson olyan tevékenységek és Azure-szolgáltatások definiálásához, amelyeket a biztonságosabb alkalmazások fejlesztéséhez használhat.
@@ -62,7 +62,7 @@ Ezt a kiszolgálót nem az ügyfél oldalán (vagy a kiszolgálón és az ügyf�
 
 ### <a name="verify-your-applications-outputs"></a>Az alkalmazás kimenetének ellenőrzése
 
-Minden olyan kimenetet, amelyet vizuálisan vagy egy dokumentumon belül már tartalmaz, mindig kódolva kell lennie és el kell menekülnie. A [Escape](https://www.owasp.org/index.php/Injection_Theory#Escaping_.28aka_Output_Encoding.29)-, más néven a *kimeneti kódolás*a segítségével biztosítható, hogy a nem megbízható adatokat ne a jármű adja meg az injekciós támadásokhoz. Az adatellenőrzéssel együtt folytatott Escape-szolgáltatás többrétegű védelmet biztosít a rendszer egészének biztonságának növelésére.
+Minden olyan kimenetet, amelyet vizuálisan vagy egy dokumentumon belül már tartalmaz, mindig kódolva kell lennie és el kell menekülnie. A [Escape](https://owasp.org/www-community/Injection_Theory#Escaping_.28aka_Output_Encoding.29)-, más néven a *kimeneti kódolás*a segítségével biztosítható, hogy a nem megbízható adatokat ne a jármű adja meg az injekciós támadásokhoz. Az adatellenőrzéssel együtt folytatott Escape-szolgáltatás többrétegű védelmet biztosít a rendszer egészének biztonságának növelésére.
 
 A Escape-funkció biztosítja, hogy minden *kimenetként* jelenjen meg. A szökés azt is lehetővé teszi, hogy a tolmács tudja, hogy az adatok nem hajthatók végre, és ez megakadályozza a támadások működését. Ez egy, a *többhelyes parancsfájlok* (XSS) elnevezésű gyakori támadási módszer.
 

@@ -7,11 +7,12 @@ ms.reviewer: plarsen, logicappspm
 ms.topic: conceptual
 ms.date: 08/23/2018
 tags: connectors
-ms.openlocfilehash: 32b482607827ee4420e39b1936586d64f9ea3139
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bd85155f932d57319f5f27081b44b48e5540bfb2
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77651381"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284047"
 ---
 # <a name="access-and-manage-ibm-db2-resources-by-using-azure-logic-apps"></a>Az IBM DB2-erőforrások elérése és kezelése Azure Logic Apps használatával
 
@@ -81,12 +82,12 @@ A kapcsolat beállításához adja meg a kapcsolódási adatokat, ha a rendszer 
 
 | Tulajdonság | Kötelező | Leírás |
 |----------|----------|-------------|
-| **Kapcsolat helyszíni átjárón keresztül** | No | Csak helyszíni kapcsolatokra vonatkozik. |
-| **Kapcsolat neve** | Yes | A kapcsolatok neve, például "MyLogicApp-DB2-kapcsolatok" |
-| **Kiszolgáló** | Yes | A DB2-kiszolgáló címe vagy aliasának kettőspont-portszáma, például: "myDB2server.cloudapp.net:50000" <p><p>**Megjegyzés**: ez az érték olyan karakterlánc, amely egy TCP/IP-címet vagy aliast jelöl IPv4-vagy IPv6-formátumban, majd egy kettőspontot és egy TCP/IP-portszámot. |
-| **Adatbázis** | Yes | Az adatbázis neve <p><p>**Megjegyzés**: ez az érték olyan karakterlánc, amely a DRDA-adatbázis nevét (RDBNAM) jelöli: <p>– A z/OS esetében a DB2 egy 16 bájtos karakterláncot fogad el, amelyben az adatbázis "IBM DB2 for z/OS" néven ismert. <br>-DB2 for i elfogadok egy 18 bájtos karakterláncot, amelyben az adatbázis "IBM DB2 for i" néven ismert. <br>-A DB2 for LUW 8 bájtos karakterláncot fogad el. |
-| **Username** | Yes | Az adatbázishoz tartozó Felhasználónév <p><p>**Megjegyzés**: ez az érték olyan karakterlánc, amelynek hossza az adott adatbázison alapul: <p><p>– A z/OS esetében a DB2 egy 8 bájtos karakterláncot fogad el. <br>-DB2 – 10 bájtos karakterláncot Fogadok el. <br>– A Linux vagy UNIX rendszerhez készült DB2 8 bájtos karakterláncot fogad el. <br>-A DB2 for Windows egy 30 bájtos karakterláncot fogad el. |
-| **Jelszó** | Yes | Az adatbázis jelszava |
+| **Kapcsolat helyszíni átjárón keresztül** | Nem | Csak helyszíni kapcsolatokra vonatkozik. |
+| **Kapcsolat neve** | Igen | A kapcsolatok neve, például "MyLogicApp-DB2-kapcsolatok" |
+| **Kiszolgáló** | Igen | A DB2-kiszolgáló címe vagy aliasának kettőspont-portszáma, például: "myDB2server.cloudapp.net:50000" <p><p>**Megjegyzés**: ez az érték olyan karakterlánc, amely egy TCP/IP-címet vagy aliast jelöl IPv4-vagy IPv6-formátumban, majd egy kettőspontot és egy TCP/IP-portszámot. |
+| **Adatbázis** | Igen | Az adatbázis neve <p><p>**Megjegyzés**: ez az érték olyan karakterlánc, amely a DRDA-adatbázis nevét (RDBNAM) jelöli: <p>– A z/OS esetében a DB2 egy 16 bájtos karakterláncot fogad el, amelyben az adatbázis "IBM DB2 for z/OS" néven ismert. <br>-DB2 for i elfogadok egy 18 bájtos karakterláncot, amelyben az adatbázis "IBM DB2 for i" néven ismert. <br>-A DB2 for LUW 8 bájtos karakterláncot fogad el. |
+| **Felhasználónév** | Igen | Az adatbázishoz tartozó Felhasználónév <p><p>**Megjegyzés**: ez az érték olyan karakterlánc, amelynek hossza az adott adatbázison alapul: <p><p>– A z/OS esetében a DB2 egy 8 bájtos karakterláncot fogad el. <br>-DB2 – 10 bájtos karakterláncot Fogadok el. <br>– A Linux vagy UNIX rendszerhez készült DB2 8 bájtos karakterláncot fogad el. <br>-A DB2 for Windows egy 30 bájtos karakterláncot fogad el. |
+| **Jelszó** | Igen | Az adatbázis jelszava |
 ||||
 
 Például:
@@ -101,14 +102,14 @@ A kapcsolatok létrehozása előtt már telepítve kell lennie a helyszíni adat
 
 | Tulajdonság | Kötelező | Leírás |
 |----------|----------|-------------|
-| **Kapcsolat helyszíni átjárón keresztül** | Yes | Akkor érvényes, ha helyszíni csatlakozást szeretne használni, és megjeleníti a helyszíni kapcsolódási tulajdonságokat. |
-| **Kapcsolat neve** | Yes | A kapcsolatok neve, például "MyLogicApp-DB2-kapcsolatok" | 
-| **Kiszolgáló** | Yes | A DB2-kiszolgáló címe vagy aliasának kettőspont-portszáma, például: "myDB2server: 50000" <p><p>**Megjegyzés**: ez az érték olyan karakterlánc, amely egy TCP/IP-címet vagy aliast jelöl IPv4-vagy IPv6-formátumban, majd egy kettőspontot és egy TCP/IP-portszámot. |
-| **Adatbázis** | Yes | Az adatbázis neve <p><p>**Megjegyzés**: ez az érték olyan karakterlánc, amely a DRDA-adatbázis nevét (RDBNAM) jelöli: <p>– A z/OS esetében a DB2 egy 16 bájtos karakterláncot fogad el, amelyben az adatbázis "IBM DB2 for z/OS" néven ismert. <br>-DB2 for i elfogadok egy 18 bájtos karakterláncot, amelyben az adatbázis "IBM DB2 for i" néven ismert. <br>-A DB2 for LUW 8 bájtos karakterláncot fogad el. |
-| **Hitelesítés** | Yes | A kapcsolatok hitelesítési típusa, például "alapszintű" <p><p>**Megjegyzés**: válassza ki ezt az értéket a listából, amely alapszintű vagy Windows (Kerberos) elemet tartalmaz. |
-| **Username** | Yes | Az adatbázishoz tartozó Felhasználónév <p><p>**Megjegyzés**: ez az érték olyan karakterlánc, amelynek hossza az adott adatbázison alapul: <p><p>– A z/OS esetében a DB2 egy 8 bájtos karakterláncot fogad el. <br>-DB2 – 10 bájtos karakterláncot Fogadok el. <br>– A Linux vagy UNIX rendszerhez készült DB2 8 bájtos karakterláncot fogad el. <br>-A DB2 for Windows egy 30 bájtos karakterláncot fogad el. |
-| **Jelszó** | Yes | Az adatbázis jelszava |
-| **Átjáró** | Yes | A telepített helyszíni adatátjáró neve <p><p>**Megjegyzés**: válassza ki ezt az értéket a listából, amely tartalmazza az Azure-előfizetésben és az erőforráscsoporthoz található összes telepített adatátjárót. |
+| **Kapcsolat helyszíni átjárón keresztül** | Igen | Akkor érvényes, ha helyszíni csatlakozást szeretne használni, és megjeleníti a helyszíni kapcsolódási tulajdonságokat. |
+| **Kapcsolat neve** | Igen | A kapcsolatok neve, például "MyLogicApp-DB2-kapcsolatok" | 
+| **Kiszolgáló** | Igen | A DB2-kiszolgáló címe vagy aliasának kettőspont-portszáma, például: "myDB2server: 50000" <p><p>**Megjegyzés**: ez az érték olyan karakterlánc, amely egy TCP/IP-címet vagy aliast jelöl IPv4-vagy IPv6-formátumban, majd egy kettőspontot és egy TCP/IP-portszámot. |
+| **Adatbázis** | Igen | Az adatbázis neve <p><p>**Megjegyzés**: ez az érték olyan karakterlánc, amely a DRDA-adatbázis nevét (RDBNAM) jelöli: <p>– A z/OS esetében a DB2 egy 16 bájtos karakterláncot fogad el, amelyben az adatbázis "IBM DB2 for z/OS" néven ismert. <br>-DB2 for i elfogadok egy 18 bájtos karakterláncot, amelyben az adatbázis "IBM DB2 for i" néven ismert. <br>-A DB2 for LUW 8 bájtos karakterláncot fogad el. |
+| **Hitelesítés** | Igen | A kapcsolatok hitelesítési típusa, például "alapszintű" <p><p>**Megjegyzés**: válassza ki ezt az értéket a listából, amely alapszintű vagy Windows (Kerberos) elemet tartalmaz. |
+| **Felhasználónév** | Igen | Az adatbázishoz tartozó Felhasználónév <p><p>**Megjegyzés**: ez az érték olyan karakterlánc, amelynek hossza az adott adatbázison alapul: <p><p>– A z/OS esetében a DB2 egy 8 bájtos karakterláncot fogad el. <br>-DB2 – 10 bájtos karakterláncot Fogadok el. <br>– A Linux vagy UNIX rendszerhez készült DB2 8 bájtos karakterláncot fogad el. <br>-A DB2 for Windows egy 30 bájtos karakterláncot fogad el. |
+| **Jelszó** | Igen | Az adatbázis jelszava |
+| **Átjáró** | Igen | A telepített helyszíni adatátjáró neve <p><p>**Megjegyzés**: válassza ki ezt az értéket a listából, amely tartalmazza az Azure-előfizetésben és az erőforráscsoporthoz található összes telepített adatátjárót. |
 ||||
 
 Például:
@@ -152,8 +153,8 @@ Egy DB2-adatbázistábla egyik rekordjának beolvasásához használja a logikai
 
    | Tulajdonság | Kötelező | Leírás |
    |----------|----------|-------------|
-   | **Table name (Táblázat neve)** | Yes | A kívánt rekordot tartalmazó tábla, például "térség" ebben a példában |
-   | **Területi azonosító** | Yes | A kívánt rekord azonosítója (például "99999") ebben a példában |
+   | **Tábla neve** | Igen | A kívánt rekordot tartalmazó tábla, például "térség" ebben a példában |
+   | **Területi azonosító** | Igen | A kívánt rekord azonosítója (például "99999") ebben a példában |
    ||||
 
    ![Tábla kiválasztása](./media/connectors-create-api-db2/db2-get-row-action-select-table.png)
@@ -232,10 +233,10 @@ Ha egyetlen rekordot szeretne hozzáadni egy DB2-adatbázis táblához, használ
 
    | Tulajdonság | Kötelező | Leírás |
    |----------|----------|-------------|
-   | **Table name (Táblázat neve)** | Yes | A rekord hozzáadására szolgáló tábla, például "térség" |
-   | **Területi azonosító** | Yes | A hozzáadandó régió azonosítója, például "99999" |
-   | **A környék leírása** | Yes | A felvenni kívánt területek leírása, például "99999. rész" |
-   | **Régió azonosítója** | Yes | A hozzáadandó régió azonosítója, például: "102" |
+   | **Tábla neve** | Igen | A rekord hozzáadására szolgáló tábla, például "térség" |
+   | **Területi azonosító** | Igen | A hozzáadandó régió azonosítója, például "99999" |
+   | **A környék leírása** | Igen | A felvenni kívánt területek leírása, például "99999. rész" |
+   | **Régió azonosítója** | Igen | A hozzáadandó régió azonosítója, például: "102" |
    |||| 
 
    Például:
@@ -279,11 +280,11 @@ Ha egy DB2-adatbázistábla egyetlen rekordját szeretné frissíteni, használj
 
    | Tulajdonság | Kötelező | Leírás |
    |----------|----------|-------------|
-   | **Table name (Táblázat neve)** | Yes | A rekord frissítésére szolgáló tábla, például "térség" |
-   | **Sor azonosítója** | Yes | A frissítendő rekord azonosítója, például: "99999" |
-   | **Területi azonosító** | Yes | Az új területi azonosító, például "99999" |
-   | **A környék leírása** | Yes | Az új környék leírása, például "frissítve 99999" |
-   | **Régió azonosítója** | Yes | Az új régió azonosítója, például "102" |
+   | **Tábla neve** | Igen | A rekord frissítésére szolgáló tábla, például "térség" |
+   | **Sor azonosítója** | Igen | A frissítendő rekord azonosítója, például: "99999" |
+   | **Területi azonosító** | Igen | Az új területi azonosító, például "99999" |
+   | **A környék leírása** | Igen | Az új környék leírása, például "frissítve 99999" |
+   | **Régió azonosítója** | Igen | Az új régió azonosítója, például "102" |
    ||||
 
    Például:
@@ -327,8 +328,8 @@ Ha egyetlen rekordot szeretne törölni egy DB2-adatbázis táblából, használ
 
    | Tulajdonság | Kötelező | Leírás |
    |----------|----------|-------------|
-   | **Table name (Táblázat neve)** | Yes | A rekord törlésére szolgáló tábla, például "térség" |
-   | **Sor azonosítója** | Yes | A törlendő rekord azonosítója, például: "99999" |
+   | **Tábla neve** | Igen | A rekord törlésére szolgáló tábla, például "térség" |
+   | **Sor azonosítója** | Igen | A törlendő rekord azonosítója, például: "99999" |
    ||||
 
    Például:
@@ -358,7 +359,7 @@ Bontsa ki a **sor törlése** műveletet.
 
 ## <a name="connector-reference"></a>Összekötő-referencia
 
-Az összekötő részletes technikai részleteiről, például az eseményindítók, a műveletek és a korlátok az összekötő hencegő fájljában leírtak alapján: az [összekötő hivatkozási lapja](https://docs.microsoft.com/connectors/db2/).
+Az összekötő részletes technikai részleteiről, például az eseményindítók, a műveletek és a korlátok az összekötő hencegő fájljában leírtak alapján: az [összekötő hivatkozási lapja](/connectors/db2/).
 
 > [!NOTE]
 > Az [integrációs szolgáltatási környezet (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)logikai alkalmazásai esetében az összekötő ISE által címkézett verziója az [ISE-üzenetek korlátait](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) használja helyette.
@@ -366,3 +367,4 @@ Az összekötő részletes technikai részleteiről, például az eseményindít
 ## <a name="next-steps"></a>További lépések
 
 * További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése
+

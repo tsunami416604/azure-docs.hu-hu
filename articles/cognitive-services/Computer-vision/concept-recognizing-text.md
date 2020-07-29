@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/23/2020
 ms.author: t-bebon
 ms.custom: seodec18
-ms.openlocfilehash: 6bc118145bec30085c2d9fbf726c40a20b312430
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 83e76cd96e09b0e136d2bfbe2e5863b289724bdd
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207037"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284251"
 ---
 # <a name="optical-character-recognition-ocr"></a>Optikai karakterfelismerés (OCR)
 
@@ -24,7 +24,7 @@ A Microsoft Computer Vision API olyan optikai karakterfelismerési (OCR) képess
 
 ## <a name="read-api"></a>API olvasása 
 
-A Computer Vision [READ API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) a Microsoft legújabb OCR-technológiája, amely Kinyeri a nyomtatott szövegeket (hét nyelv), a kézírásos szöveget (csak angol nyelven), számjegyeket és pénznem szimbólumokat a képekből és a többoldalas PDF-dokumentumokból. Ez a funkció úgy van optimalizálva, hogy szövegből kinyert szöveg-és többoldalas PDF-dokumentumokból, vegyes nyelvekkel. Támogatja a nyomtatott és a kézírásos szöveg (csak angol nyelven) észlelését ugyanabban a képen vagy dokumentumban. Tekintse meg az [OCR által támogatott nyelvek](https://docs.microsoft.com/azure/cognitive-services/computer-vision/language-support#optical-character-recognition-ocr) teljes listáját tartalmazó oldalt.
+A Computer Vision [READ API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) a Microsoft legújabb OCR-technológiája, amely a nyomtatott szövegeket több nyelven, kézírásos szövegben (csak angol nyelven), számjegyeket és pénznem szimbólumokat gyűjti a képekből és a többoldalas PDF-dokumentumokból. Ez a funkció úgy van optimalizálva, hogy szövegből kinyert szöveg-és többoldalas PDF-dokumentumokból, vegyes nyelvekkel. Támogatja a nyomtatott és a kézírásos szöveg (csak angol nyelven) észlelését ugyanabban a képen vagy dokumentumban. Tekintse meg az [OCR által támogatott nyelvek](https://docs.microsoft.com/azure/cognitive-services/computer-vision/language-support#optical-character-recognition-ocr) teljes listáját tartalmazó oldalt.
 
 ### <a name="how-ocr-works"></a>Az OCR működése
 
@@ -123,7 +123,7 @@ Jelenleg az olvasási művelet támogatja a kézzel írt szöveg kinyerését ki
 
 ### <a name="printed-text-in-supported-languages"></a>Kinyomtatott szöveg a támogatott nyelveken
 
-Az olvasási API támogatja a nyomtatott szövegek angol, spanyol, német, francia, olasz, portugál és holland nyelvű kinyerését. Ha a forgatókönyv további nyelvek támogatását igényli, tekintse meg a jelen dokumentum OCR API áttekintése című témakörét. Tekintse meg az [OCR által támogatott nyelvek](https://docs.microsoft.com/azure/cognitive-services/computer-vision/language-support#optical-character-recognition-ocr) listáját
+Az olvasási 3,0 API támogatja a nyomtatott szövegek angol, spanyol, német, francia, olasz, portugál és holland nyelvű kinyerését. [Olvasás 3,1 – előzetes verzió. 1 az API nyilvános előzetes verziója](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-1/operations/5d986960601faab4bf452005) támogatja az egyszerűsített kínai verziót. Ha a forgatókönyv további nyelvek támogatását igényli, tekintse meg a jelen dokumentum OCR API áttekintése című témakörét. Tekintse meg az [OCR által támogatott nyelvek](https://docs.microsoft.com/azure/cognitive-services/computer-vision/language-support#optical-character-recognition-ocr) listáját
 
 ![Egy elforgatott kép és annak szövege olvasható és körülhatárolt](./Images/supported-languages-example.png)
 
@@ -137,7 +137,7 @@ Az olvasási API támogatja a több nyelvet tartalmazó képeket és dokumentumo
 
 Akárcsak az összes kognitív szolgáltatás esetében, az olvasási szolgáltatást használó fejlesztőknek ismerniük kell a Microsoft-szabályzatokat az ügyféladatok alapján. További információért tekintse meg a [Microsoft adatvédelmi Központjának](https://www.microsoft.com/en-us/trust-center/product-overview) Cognitive Services lapját.
 
-### <a name="deploy-on-premises"></a>Helyszíni üzembe helyezés
+### <a name="containers-for-on-premise-deployment"></a>Helyszíni üzembe helyezéshez használható tárolók
 
 Az olvasás a Docker-tárolóként (előzetes verzió) is elérhető, amely lehetővé teszi az új OCR-képességek üzembe helyezését a saját környezetében. A tárolók az adott biztonsági és adatirányítási követelményekhez is kiválóak. Lásd: [olvasási tárolók telepítése és futtatása.](https://docs.microsoft.com/azure/cognitive-services/computer-vision/computer-vision-how-to-install-containers)
 
@@ -149,4 +149,5 @@ Az [OCR API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815
 ## <a name="next-steps"></a>További lépések
 
 - További információ az [olvasási 3,0 Rest APIról](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005).
+- Ismerkedjen meg az [Read 3,1 – preview. 1 REST API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-1/operations/5d986960601faab4bf452005) az egyszerűsített kínai támogatásával.
 - A [szöveg kinyerése](./QuickStarts/CSharp-hand-text.md) rövid útmutatóval a C#, a Java, a JavaScript vagy a Python használatával, valamint a REST API segítségével implementálhatja az OCR-t.

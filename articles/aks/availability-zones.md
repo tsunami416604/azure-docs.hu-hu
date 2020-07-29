@@ -5,11 +5,12 @@ services: container-service
 ms.custom: fasttrack-edit, references_regions
 ms.topic: article
 ms.date: 02/27/2020
-ms.openlocfilehash: 06507c75d486717a77676154818f2032b7e8c807
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: feea8c3cba170244be2ca3ec7a11c36a3c39f700
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84195564"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281225"
 ---
 # <a name="create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>Rendelkezésre állási zónákat használó Azure Kubernetes-szolgáltatásbeli (ak-) fürt létrehozása
 
@@ -27,7 +28,7 @@ Szüksége lesz az Azure CLI-verzió 2.0.76 vagy újabb verziójára, és konfig
 
 Az AK-fürtök jelenleg rendelkezésre állási zónák használatával hozhatók létre a következő régiókban:
 
-* USA középső régiója
+* Central US
 * USA 2. keleti régiója
 * USA keleti régiója
 * Közép-Franciaország
@@ -36,7 +37,7 @@ Az AK-fürtök jelenleg rendelkezésre állási zónák használatával hozható
 * Délkelet-Ázsia
 * Az Egyesült Királyság déli régiója
 * Nyugat-Európa
-* USA nyugati régiója, 2.
+* USA 2. nyugati régiója
 
 A következő korlátozások érvényesek az AK-fürtök rendelkezésre állási zónák használatával történő létrehozásakor:
 
@@ -84,7 +85,7 @@ az aks create \
     --zones 1 2 3
 ```
 
-Az AK-fürt létrehozása néhány percet vesz igénybe.
+Az AKS-fürt létrehozása eltarthat néhány percig.
 
 Annak eldöntése során, hogy az új csomópont melyik zónába tartozik, az adott AK-beli csomópont-készlet az [alapul szolgáló Azure-Virtual Machine Scale sets által kínált legjobb erőkifejtési zónát][vmss-zone-balancing]fogja használni. Egy adott AK-beli csomópont-készlet "kiegyensúlyozottnak" minősül, ha minden zónában azonos számú virtuális gép vagy + \- 1 virtuális gép található a méretezési csoport minden más zónájában.
 
@@ -98,7 +99,7 @@ Először szerezze be az AK-fürt hitelesítő adatait az az az [AK Get-hiteles�
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-Ezután használja a [kubectl leíró][kubectl-describe] parancsot a fürt csomópontjainak listázásához. Szűrje a *failure-domain.Beta.kubernetes.IO/Zone* értéket a következő példában látható módon:
+Ezután a [kubectl Leírás][kubectl-describe] parancs használatával sorolja fel a fürt csomópontjait, és szűrje a *failure-domain.Beta.kubernetes.IO/Zone* értéket. A következő példa egy bash-rendszerhéjra mutat.
 
 ```console
 kubectl describe nodes | grep -e "Name:" -e "failure-domain.beta.kubernetes.io/zone"
@@ -130,7 +131,7 @@ az aks scale \
     --node-count 5
 ```
 
-Ha a skálázási művelet néhány perc elteltével befejeződik, a parancsnak a `kubectl describe nodes | grep -e "Name:" -e "failure-domain.beta.kubernetes.io/zone"` következőhöz hasonló kimenetet kell adnia:
+Ha a skálázási művelet néhány perc elteltével befejeződik, a `kubectl describe nodes | grep -e "Name:" -e "failure-domain.beta.kubernetes.io/zone"` bash-rendszerhéjban lévő parancsnak a következőhöz hasonló kimenetet kell adnia:
 
 ```console
 Name:       aks-nodepool1-28993262-vmss000000
@@ -151,7 +152,7 @@ Most két további csomópont található az 1. és a 2. zónában. Három repli
 kubectl run nginx --image=nginx --replicas=3
 ```
 
-A hüvelyeket futtató csomópontok megtekintésével láthatja, hogy a hüvelyek a három különböző rendelkezésre állási zónának megfelelő csomópontokon futnak. A paranccsal például a `kubectl describe pod | grep -e "^Name:" -e "^Node:"` következőhöz hasonló kimenetet kaphat:
+A hüvelyeket futtató csomópontok megtekintésével láthatja, hogy a hüvelyek a három különböző rendelkezésre állási zónának megfelelő csomópontokon futnak. Például `kubectl describe pod | grep -e "^Name:" -e "^Node:"` egy bash-rendszerhéjban a paranccsal a következőhöz hasonló kimenetet kaphat:
 
 ```console
 Name:         nginx-6db489d4b7-ktdwg

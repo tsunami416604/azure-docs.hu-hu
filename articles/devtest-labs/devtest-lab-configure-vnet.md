@@ -3,12 +3,12 @@ title: Virtuális hálózat konfigurálása Azure DevTest Labsban | Microsoft Do
 description: Megtudhatja, hogyan konfigurálhat egy meglévő virtuális hálózatot és alhálózatot, és hogyan használhatja azokat egy virtuális gépen Azure DevTest Labs
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 0819527cfc2a9dfd4e93226542acb7cb0c6d7273
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 21fe23b6be6fdc924c5502ff97f9c03a3f3e759d
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85482649"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283554"
 ---
 # <a name="configure-a-virtual-network-in-azure-devtest-labs"></a>Virtuális hálózat konfigurálása Azure DevTest Labsban
 Ahogy azt a cikk azt ismerteti, hogyan adhat hozzá egy virtuális gépet a [laborhoz](devtest-lab-add-vm.md), amikor a virtuális gépet egy laborban hozza létre, megadhat egy konfigurált virtuális hálózatot. Előfordulhat például, hogy el kell érnie a Corpnet-erőforrásait a virtuális gépekről a ExpressRoute vagy helyek közötti VPN-kapcsolattal konfigurált virtuális hálózat használatával.
@@ -53,10 +53,9 @@ A következő lépések végigvezetik a meglévő virtuális hálózatok (és al
 
 Most, hogy a virtuális hálózat be van állítva, akkor kiválasztható virtuális gép létrehozásakor. Ha szeretné megtekinteni, hogyan hozható létre virtuális gép, és hogyan adhat meg virtuális hálózatot, tekintse meg a cikket, [adjon hozzá egy virtuális gépet egy laborhoz](devtest-lab-add-vm.md). 
 
-Az Azure [Virtual Network dokumentációja](https://docs.microsoft.com/azure/virtual-network) további információkat nyújt a virtuális hálózatok használatáról, beleértve a VNet beállítását és kezelését, valamint a helyszíni hálózathoz való kapcsolódást.
+Az Azure [Virtual Network dokumentációja](../virtual-network/index.yml) további információkat nyújt a virtuális hálózatok használatáról, beleértve a VNet beállítását és kezelését, valamint a helyszíni hálózathoz való kapcsolódást.
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
 ## <a name="next-steps"></a>További lépések
 Miután hozzáadta a kívánt virtuális hálózatot a laborhoz, a következő lépés [egy virtuális gép hozzáadása a laborhoz](devtest-lab-add-vm.md).
-

@@ -3,19 +3,19 @@ title: Az alkalmazás forrásának titkosítása nyugalmi állapotban
 description: Az alkalmazásadatok titkosítása az Azure Storage-ban, és csomag fájlként történő üzembe helyezése.
 ms.topic: article
 ms.date: 03/06/2020
-ms.openlocfilehash: 6dfb56a5ef6b1ab3cfbd0762bf7816e37ce0aa39
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1dd0d11baa16a325a22a501d40e22e5bad6adb21
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081882"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282330"
 ---
 # <a name="encrypt-your-application-data-at-rest-using-customer-managed-keys"></a>Az alkalmazásban tárolt adatok titkosítása az ügyfél által felügyelt kulcsok használatával
 
 A Function alkalmazásban tárolt alkalmazásadatok titkosításához Azure Storage-fiókra és egy Azure Key Vaultra van szükség. Ezeket a szolgáltatásokat akkor használja a rendszer, amikor az alkalmazást egy központi telepítési csomagból futtatja.
 
   - [Az Azure Storage lehetővé teszi a titkosítást a nyugalmi](../storage/common/storage-service-encryption.md)állapotban. Használhatja a rendszerszintű kulcsokat vagy a saját, az ügyfél által felügyelt kulcsokat. Itt tárolja az alkalmazás adatait, ha nem fut az Azure-beli Function alkalmazásban.
-  - [Futtatás központi telepítési csomagból] a ((run-functions-from-deployment-package.md) a App Service üzembe helyezési funkciója. Lehetővé teszi a webhely tartalmának Azure Storage-fiókból való üzembe helyezését egy közös hozzáférési aláírás (SAS) URL-cím használatával.
+  - A [központi telepítési csomagból való futtatás](run-functions-from-deployment-package.md) a app Service központi telepítési funkciója. Lehetővé teszi a webhely tartalmának Azure Storage-fiókból való üzembe helyezését egy közös hozzáférési aláírás (SAS) URL-cím használatával.
   - [Key Vault referenciák](../app-service/app-service-key-vault-references.md) app Service biztonsági funkciója. Lehetővé teszi, hogy az alkalmazás beállításainak megfelelően importálja a titkokat futásidőben. Ezzel titkosíthatja az Azure Storage-fiók SAS URL-címét.
 
 ## <a name="set-up-encryption-at-rest"></a>Titkosítás beállítása nyugalmi állapotban

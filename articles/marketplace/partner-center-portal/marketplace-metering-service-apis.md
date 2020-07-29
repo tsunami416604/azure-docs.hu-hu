@@ -5,12 +5,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/26/2020
-ms.openlocfilehash: 8a6636b0fc6c3e67ec171d738efb3fd8a93de30c
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: mingshen-ms
+ms.author: mingshen
+ms.openlocfilehash: ac48973653e89d43521979a5606a8a3a3c2e1346
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120772"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319983"
 ---
 # <a name="marketplace-metered-billing-apis"></a>Marketplace mért számlázási API-k
 
@@ -43,7 +45,7 @@ Erőforráson belül egy naptári nap minden órájában csak egy használati es
 
 *Kérelem fejlécei:*
 
-| Content-Type       | A(z) `application/json` használata  |
+| Content-Type       | A `application/json` használata  |
 | ------------------ | ---------------------------- |
 | `x-ms-requestid`     | Egyedi karakterlánc-érték az ügyféltől érkező kérelem nyomon követéséhez, lehetőleg egy GUID-azonosító. Ha ez az érték nincs megadva, a rendszer létrehoz egy értéket, és megadja a válasz fejléceit. |
 | `x-ms-correlationid` | Egyedi karakterlánc-érték a művelethez az ügyfélen. Ez a paraméter a kiszolgálói oldalon található eseményekkel összekapcsolja az ügyfél-művelet összes eseményét. Ha ez az érték nincs megadva, a rendszer létrehoz egy értéket, és megadja a válasz fejléceit. |
@@ -155,7 +157,7 @@ A Batch-használati esemény API lehetővé teszi, hogy egyszerre több megvás�
 
 *Kérelem fejlécei:*
 
-| Content-Type       | A(z) `application/json` használata       |
+| Content-Type       | A `application/json` használata       |
 | ------------------ | ------ |
 | `x-ms-requestid`     | Egyedi karakterlánc-érték az ügyféltől érkező kérelem nyomon követéséhez, lehetőleg egy GUID-azonosító. Ha ez az érték nincs megadva, a rendszer létrehoz egy értéket, és megadja a válasz fejléceit. |
 | `x-ms-correlationid` | Egyedi karakterlánc-érték a művelethez az ügyfélen. Ez a paraméter a kiszolgálói oldalon található eseményekkel összekapcsolja az ügyfél-művelet összes eseményét. Ha ez az érték nincs megadva, a rendszer létrehoz egy értéket, és megadja a válasz fejléceit. |
@@ -273,6 +275,6 @@ Egy meglévő élő ajánlathoz is használhat privát csomagot, hogy a tesztel�
 
 Kövesse a [partner Center kereskedelmi piactér programjának támogatásával](./support.md) kapcsolatos útmutatást a közzétevők támogatási lehetőségeinek megismeréséhez, és nyisson meg egy támogatási jegyet a Microsofttal.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Service API-k mérésével kapcsolatos további információkért lásd: a [piactér-mérési szolgáltatás API-jai – gyakori kérdések](./marketplace-metering-service-apis-faq.md).

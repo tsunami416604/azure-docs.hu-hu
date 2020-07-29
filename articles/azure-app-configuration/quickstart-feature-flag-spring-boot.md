@@ -6,12 +6,13 @@ ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.date: 04/18/2020
 ms.author: lcozzens
-ms.openlocfilehash: a0d3c23f8f53b8ddfbd3fbd1cb1744a47664ce08
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.custom: devx-track-java
+ms.openlocfilehash: 2340e728933cc230fb53b9581f4b02b41a9438b6
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83774023"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372059"
 ---
 # <a name="quickstart-add-feature-flags-to-a-spring-boot-app"></a>Gyors útmutató: szolgáltatás-jelzők hozzáadása Spring boot-alkalmazáshoz
 
@@ -53,9 +54,9 @@ A [Spring inicializáló](https://start.spring.io/) használatával hozzon létr
 
 ## <a name="add-feature-management"></a>Szolgáltatások felügyeletének hozzáadása
 
-1. Miután kicsomagolta a fájlokat a helyi rendszeren, a Spring boot-alkalmazás készen áll a szerkesztésre. Keresse meg a *Pom. xml fájlt* az alkalmazás gyökérkönyvtárában.
+1. Miután kicsomagolta a fájlokat a helyi rendszeren, a Spring boot-alkalmazás készen áll a szerkesztésre. Keresse meg *pom.xml* az alkalmazás gyökérkönyvtárában.
 
-1. Nyissa meg a *Pom. XML* fájlt egy szövegszerkesztőben, és adja hozzá a következőt a listájához `<dependencies>` :
+1. Nyissa meg a *pom.xml* fájlt egy szövegszerkesztőben, és adja hozzá a következőt a listájához `<dependencies>` :
 
     **Spring Cloud 1.1. x**
 
@@ -184,7 +185,7 @@ A [Spring inicializáló](https://start.spring.io/) használatával hozzon létr
     }
     ```
 
-1. Hozzon létre egy *üdvözlő. html* nevű új HTML-fájlt az alkalmazás sablonok könyvtára.
+1. Hozzon létre egy *welcome.html* nevű új HTML-fájlt az alkalmazás sablonok könyvtárában.
 
     ```html
     <!DOCTYPE html>
@@ -297,7 +298,7 @@ A [Spring inicializáló](https://start.spring.io/) használatával hozzon létr
 
     ![Gyorsindítás alkalmazás elindítása helyi](./media/quickstarts/spring-boot-feature-flag-local-after.png)
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 

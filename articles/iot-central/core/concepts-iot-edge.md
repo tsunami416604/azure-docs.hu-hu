@@ -7,13 +7,14 @@ ms.date: 12/12/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 89d068fbd835a5b4f8886a2ed77691f94a701bb0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f8660cb18f5e7ac5f3695eb15475570b107bf25c
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81759103"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337075"
 ---
-# <a name="connect-azure-iot-edge-devices-to-an-azure-iot-central-application"></a>Azure IoT Edge eszközök csatlakoztatása Azure IoT Central-alkalmazáshoz
+# <a name="connect-azure-iot-edge-devices-to-an-azure-iot-central-application"></a>Azure IoT Edge-eszközök csatlakoztatása Azure IoT Central-alkalmazáshoz
 
 *Ez a cikk a megoldás-építők és az eszközök fejlesztőire vonatkozik.*
 
@@ -57,7 +58,7 @@ Az Azure IoT Central-ban importálhat egy üzembe helyezési jegyzéket egy eszk
 
 ![Üzembe helyezési jegyzékfájl életciklusának folyamatábrája](./media/concepts-iot-edge/dmflow.png)
 
-A IoT Plug and Play (előzetes verzió) a következőképpen modellezi a IoT Edge eszközt:
+A IoT Central IoT Edge eszköz modelljét az alábbiak szerint:
 
 * Minden IoT Edge eszköz-sablonhoz tartozik egy eszköz-képesség modell.
 * Az üzembe helyezési jegyzékben felsorolt összes egyéni modulhoz létrejön egy modul-képesség modell.

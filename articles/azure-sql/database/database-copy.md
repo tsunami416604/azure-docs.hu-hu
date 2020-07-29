@@ -10,25 +10,23 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sashan
 ms.reviewer: carlrab
-ms.date: 02/24/2020
-ms.openlocfilehash: d92882014f66234be8a8b1d7063dae866ec6f230
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/27/2020
+ms.openlocfilehash: 4dd27a5d3bca5ca1c0395feb049d5a814211c539
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84045297"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87309256"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-a-database-in-azure-sql-database"></a>Adatbázis tranzakciós szempontból konzisztens másolatának másolása Azure SQL Database
 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-Azure SQL Database számos módszert biztosít egy meglévő [adatbázis](single-database-overview.md) tranzakciós szempontból konzisztens másolatának létrehozásához ugyanazon a kiszolgálón vagy egy másik kiszolgálón. Az adatbázist a Azure Portal, a PowerShell vagy a T-SQL használatával másolhatja.
+Azure SQL Database számos módszert biztosít egy meglévő [adatbázis](single-database-overview.md) másolatának létrehozásához ugyanazon a kiszolgálón vagy egy másik kiszolgálón. A Azure Portal, a PowerShell, az Azure CLI vagy a T-SQL használatával másolhat egy adatbázist.
 
 ## <a name="overview"></a>Áttekintés
 
-A másolási kérelem időpontját tartalmazó adatbázis-másolat a forrásadatbázis pillanatképe. Ugyanezt a kiszolgálót vagy egy másik kiszolgálót is kiválaszthatja. Azt is megteheti, hogy megtartja a szolgáltatási szintet és a számítási méretet, vagy eltérő számítási méretet használ ugyanazon a szolgáltatási szinten (kiadás) belül. A másolás befejezése után teljesen működőképes, független adatbázis lesz. Ezen a ponton bármely kiadásra frissítheti vagy visszaminősítheti azt. A bejelentkezések, a felhasználók és az engedélyek egymástól függetlenül kezelhetők. A másolás a Geo-replikációs technológiával jön létre, és a kivetés befejezése után a rendszer automatikusan leállítja a Geo-replikálási hivatkozást. A Geo-replikáció használatának összes követelménye az adatbázis-másolási műveletre vonatkozik. Részletekért lásd: az [aktív geo-replikáció áttekintése](active-geo-replication-overview.md) .
-
-> [!NOTE]
-> Az adatbázisok [automatikus biztonsági mentése](automated-backups-overview.md) az adatbázis-másolat létrehozásakor használatos.
+Az adatbázis-másolat a forrásadatbázis tranzakciós szempontból konzisztens pillanatképe, amely a másolási kérelem elindítása utáni időpontra mutat. Ugyanezt a kiszolgálót vagy egy másik kiszolgálót is kiválaszthat a másoláshoz. Dönthet úgy is, hogy megtartja a szolgáltatási szintet és a forrás-adatbázis számítási méretét, vagy más számítási méretet használ ugyanazon vagy egy másik szolgáltatási szinten belül. A másolás befejezése után teljesen működőképes, független adatbázis lesz. A másolt adatbázisban a bejelentkezések, a felhasználók és az engedélyek a forrás-adatbázistól függetlenül kezelhetők. A másolás a Geo-replikációs technológiával jön létre. A replika beültetésének befejezése után a rendszer automatikusan leállítja a Geo-replikálási hivatkozást. A Geo-replikáció használatának összes követelménye az adatbázis-másolási műveletre vonatkozik. Részletekért lásd: az [aktív geo-replikáció áttekintése](active-geo-replication-overview.md) .
 
 ## <a name="logins-in-the-database-copy"></a>Bejelentkezések az adatbázis-másolatban
 
@@ -170,7 +168,7 @@ Ha egy adatbázist egy másik kiszolgálóra másol, a felhasználók és bejele
 
 A következő hibák fordulhatnak elő az adatbázisok Azure SQL Databaseban történő másolása során. További információk az [Azure SQL-adatbázis másolása](database-copy.md) című részben.
 
-| Hibakód | Severity | Description |
+| Hibakód | Súlyosság | Leírás |
 | ---:| ---:|:--- |
 | 40635 |16 |A (z)%. &#x2a;ls IP-címmel rendelkező ügyfél átmenetileg le van tiltva. |
 | 40637 |16 |Az adatbázis-másolat létrehozása jelenleg le van tiltva. |

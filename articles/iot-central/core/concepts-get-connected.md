@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: a66613406de66cf9478b90d4ad58c115a30fdf5d
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 82d797189096994e02c77e9d342c00b13dfa187d
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224751"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337092"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Csatlakozás az Azure IoT Centralhoz
 
@@ -213,13 +213,13 @@ A IoT Central egyik fő funkciója az, hogy az eszközök automatikusan az eszk�
 
 Az alábbi kódrészletek a további hasznos adatok formátumát jelenítik meg, amelyeket az eszköznek a DPS regisztrációs hívása során kell elküldeni az automatikus társítás működéséhez.
 
-Ez a formátum olyan eszközök esetében, amelyek az általánosan elérhető SDK-t használják, amely nem támogatja a IoT Plug and Play:
+Az általánosan elérhető SDK-t használó eszközök formátuma:
 
 ```javascript
     iotcModelId: '< this is the URN for the capability model>';
 ```
 
-A IoT Plug and Playt támogató nyilvános előzetes verziójú SDK-t használó eszközök formátuma:
+A nyilvános előzetes verziójú eszköz SDK-t használó eszközök formátuma:
 
 ```javascript
 '__iot:interfaces': {
@@ -280,8 +280,6 @@ Az alábbi táblázat összefoglalja, hogy az Azure IoT Central-eszköz funkció
 | Tulajdonság | Eszköz kettős jelentett tulajdonságai |
 | Tulajdonság (írható) | Az eszköz Twin kívánt és jelentett tulajdonságai |
 | Parancs | Közvetlen metódusok |
-
-Ha többet szeretne megtudni az eszköz SDK-k használatáról, tekintse meg a [MXChip IoT fejlesztői készlet-eszköz csatlakoztatása az Azure IoT Central-alkalmazáshoz](howto-connect-devkit.md) például kód című témakört.
 
 ### <a name="protocols"></a>Protokollok
 
