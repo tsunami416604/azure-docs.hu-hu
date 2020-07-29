@@ -7,20 +7,28 @@ ms.author: alkarche
 ms.date: 7/14/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 9be44d29ab08a7404bfb14d691bb5bb339284714
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 3d03588230cd0fb959807cd8f19930792d9846f0
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131599"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285594"
 ---
-# <a name="integrate-digital-twins-with-azure-time-series-insights"></a>Digitális ikrek integrálása Azure Time Series Insights
+# <a name="integrate-azure-digital-twins-with-azure-time-series-insights"></a>Az Azure Digital Twins integrálása Azure Time Series Insights
 
-Ebből a referenciából megtudhatja, hogyan integrálhatja az Azure Digital Twins-t [Azure Time Series Insights (ÁME)](../time-series-insights/overview-what-is-tsi.md)használatával. Ez a megoldás lehetővé teszi a IoT-megoldással kapcsolatos korábbi adatok összegyűjtését és elemzését. Az Azure Digital Twins kiválóan alkalmas az adatok Time Series Insightsba való takarmányozására, mivel lehetővé teszi több adatfolyam összekapcsolását és az adatok egységesítését, mielőtt elküldené azt a Time Series Insightsba. 
+Ebből a cikkből megtudhatja, hogyan integrálhatja az Azure Digital Twins-t [Azure Time Series Insights (ÁME)](../time-series-insights/overview-what-is-tsi.md)használatával.
+
+A cikkben ismertetett megoldás lehetővé teszi a IoT-megoldással kapcsolatos korábbi adatok összegyűjtését és elemzését. Az Azure Digital Twins kiválóan alkalmas az adatok Time Series Insightsba való takarmányozására, mivel lehetővé teszi több adatfolyam összekapcsolását és az adatok egységesítését, mielőtt elküldené azt a Time Series Insightsba. 
+
+## <a name="prerequisites"></a>Előfeltételek
+
+Mielőtt kapcsolatot hozna létre Time Series Insightsval, rendelkeznie kell egy **Azure digitális Twins-példánnyal**. Ezt a példányt úgy kell beállítani, hogy az adatok alapján frissítse a digitális Twin-adatokat, mivel a két adatot frissíteni kell, hogy az adatok nyomon kövessék a Time Series Insights. 
+
+Ha még nem rendelkezik ezzel a beállítással, létrehozhatja azt az Azure Digital Twins [*oktatóanyagának használatával: Kapcsolódás végpontok közötti megoldáshoz*](./tutorial-end-to-end.md). Az oktatóanyag végigvezeti egy olyan Azure Digital Twins-példány beállításán, amely egy virtuális IoT-eszközzel működik a digitális dupla frissítések elindításához.
 
 ## <a name="solution-architecture"></a>Megoldásarchitektúra
 
-Az alábbi elérési úton megjelenő Time Series-bepillantást az Azure Digital Twins-ba fogja csatolni.
+Az alábbi elérési úton az Azure digitális Twins-hoz Time Series Insights fog kapcsolódni.
 
 :::row:::
     :::column:::
@@ -30,53 +38,52 @@ Az alábbi elérési úton megjelenő Time Series-bepillantást az Azure Digital
     :::column-end:::
 :::row-end:::
 
-## <a name="prerequisites"></a>Előfeltételek
-
-* Szüksége lesz egy Azure Digital Twins-példányra, amely néhány alkalommal frissítheti a Twin-adatokat, hogy megtekintse az adatokat a Time Series Insightsban. 
-    * Ha még nem rendelkezik ilyennel, kövesse az Azure Digital Twins [*oktatóanyagot: kapcsolódjon egy teljes körű megoldáshoz*](./tutorial-end-to-end.md) , amely egy Azure digitális Twins-példányt és egy virtuális IoT-eszközt hoz létre kettős változtatások létrehozásához.
-
 ## <a name="create-a-route-and-filter-to-twin-update-notifications"></a>Útvonal és szűrő létrehozása a kettős frissítési értesítésekhez
 
-Az Azure Digital Twins-példányok [dupla frissítési eseményeket](how-to-interpret-event-data.md) bocsátanak ki, amikor a Twin állapot frissül. A rendszer létrehoz egy útvonalat, amely további feldolgozás céljából irányítja ezeket a frissítési eseményeket egy Event hub-ra.
+Az Azure Digital Twins-példányok [dupla frissítési eseményeket](how-to-interpret-event-data.md) bocsátanak ki, amikor a Twin állapot frissül. Ebben a szakaszban egy Azure digitális Twins- [**esemény útvonalát**](concepts-route-events.md) fogja létrehozni, amely további feldolgozás céljából irányítja ezeket a frissítési eseményeket az Azure [Event Hubsba](../event-hubs/event-hubs-about.md) .
 
-Az Azure Digital Twins [*oktatóanyaga: egy végpontok közötti megoldás összekapcsolásával*](./tutorial-end-to-end.md) elsajátíthatja egy olyan forgatókönyvet, amelyben egy hőmérőt használ egy szoba Twin-hez csatolt hőmérséklet-attribútum frissítéséhez. Ez a minta a Twin-frissítéseket használja ahelyett, hogy telemetria egy IoT-eszközről, amely lehetővé teszi az alapul szolgáló adatforrás módosítását anélkül, hogy frissítenie kellene a Time Series Insights logikát.
+Az Azure Digital Twins [*oktatóanyaga: egy végpontok közötti megoldás összekapcsolása*](./tutorial-end-to-end.md) egy olyan forgatókönyv segítségével, amelyben egy hőmérőt használ egy hőmérséklet-attribútum frissítésére egy olyan digitális ikeren, amely egy helyet jelöl. Ez a minta a Twin-frissítésekre támaszkodik, és nem továbbítja a telemetria egy IoT-eszközről, így rugalmasan módosíthatja az alapul szolgáló adatforrást anélkül, hogy frissítenie kellene a Time Series Insights logikát.
 
-1. Hozzon létre egy Event hub-névteret, amely az Azure digitális Twins-példányának eseményeit fogja kapni. Használhatja az alábbi Azure CLI-utasításokat, vagy használhatja a Azure Portal: rövid útmutató [*: Event hub létrehozása Azure Portal használatával*](../event-hubs/event-hubs-create.md).
+1. Először hozzon létre egy Event hub-névteret, amely az Azure digitális Twins-példányának eseményeit fogja kapni. Használhatja az alábbi Azure CLI-utasításokat, vagy használhatja a Azure Portal: rövid útmutató [*: Event hub létrehozása Azure Portal használatával*](../event-hubs/event-hubs-create.md).
 
     ```azurecli-interactive
     # Create an Event Hubs namespace. Specify a name for the Event Hubs namespace.
-    az eventhubs namespace create --name <Event Hubs namespace> --resource-group <resource group name> -l <region, for example: East US>
+    az eventhubs namespace create --name <name for your Event Hubs namespace> --resource-group <resource group name> -l <region, for example: East US>
     ```
 
-2. Eseményközpont létrehozása.
+2. Hozzon létre egy Event hubot a névtéren belül.
 
     ```azurecli-interactive
     # Create an event hub to receive twin change events. Specify a name for the event hub. 
-    az eventhubs eventhub create --name <event hub name> --resource-group <resource group name> --namespace-name <Event Hubs namespace>
+    az eventhubs eventhub create --name <name for your Twins event hub> --resource-group <resource group name> --namespace-name <Event Hubs namespace from above>
     ```
 
 3. Hozzon létre egy [engedélyezési szabályt](https://docs.microsoft.com/cli/azure/eventhubs/eventhub/authorization-rule?view=azure-cli-latest#az-eventhubs-eventhub-authorization-rule-create) a küldési és fogadási engedélyekkel.
 
     ```azurecli-interactive
     # Create an authorization rule. Specify a name for the rule.
-    az eventhubs eventhub authorization-rule create --rights Listen Send --resource-group <resource group name> --namespace-name <Event Hubs namespace> --eventhub-name <twins event hub name> --name <twins auth rule>
+    az eventhubs eventhub authorization-rule create --rights Listen Send --resource-group <resource group name> --namespace-name <Event Hubs namespace from above> --eventhub-name <Twins event hub name from above> --name <name for your Twins auth rule>
     ```
 
-4. Hozzon létre egy végpontot, amely összekapcsolja az Event Grid-témakört az Azure digitális Twins szolgáltatással.
+4. Hozzon létre egy Azure digitális Twins- [végpontot](concepts-route-events.md#create-an-endpoint) , amely az Event Grid-témakört az Azure Digital Twins-példánnyal csatolja.
 
     ```azurecli
-    az dt endpoint create eventhub --endpoint-name <Event-Hub-endpoint-name> --eventhub-resource-group <resource group name> --eventhub-namespace <Event Hubs namespace> --eventhub <twins event hub name> --eventhub-policy <twins auth rule> -n <your-Azure-Digital-Twins-instance-name>
+    az dt endpoint create eventhub --endpoint-name <name for your Event Hubs endpoint> --eventhub-resource-group <resource group name> --eventhub-namespace <Event Hubs namespace from above> --eventhub <Twins event hub name from above> --eventhub-policy <Twins auth rule from above> -n <your Azure Digital Twins instance name>
     ```
 
-5. Hozzon létre egy útvonalat az Azure Digital Ikrekben, hogy dupla frissítési eseményt küldjön a végpontnak. Az ebben az útvonalban lévő szűrő csak a kettős frissítési üzeneteket továbbítja a végpontnak.
+5. Hozzon létre egy [útvonalat](concepts-route-events.md#create-an-event-route) az Azure Digital ikrekben, hogy dupla frissítési eseményt küldjön a végpontnak. Az ebben az útvonalban lévő szűrő csak a kettős frissítési üzeneteket továbbítja a végpontnak.
 
     ```azurecli
-    az dt route create -n <your-Azure-Digital-Twins-instance-name> --endpoint-name <Event-Hub-endpoint-name> --route-name <my_route> --filter "type = 'Microsoft.DigitalTwins.Twin.Update'"
+    az dt route create -n <your Azure Digital Twins instance name> --endpoint-name <Event Hub endpoint from above> --route-name <name for your route> --filter "type = 'Microsoft.DigitalTwins.Twin.Update'"
     ```
+
+A továbblépés előtt jegyezze fel a *Event Hubs névteret* és az *erőforráscsoportot*, ahogy azt újra használni fogja a cikk későbbi részében újabb Event hub létrehozásához.
 
 ## <a name="create-an-azure-function"></a>Azure-függvény létrehozása 
 
-Ezután létre fog hozni egy Event Hubs által aktivált függvényt egy új Function alkalmazásban, a Function alkalmazást a teljes körű oktatóanyagban ([*oktatóanyag: teljes körű megoldás összekapcsolása*](./tutorial-end-to-end.md)). Ez a függvény átalakítja ezeket a frissítéseket az eredeti űrlapról JSON-javítási dokumentumként a csak frissített és hozzáadott értékeket tartalmazó JSON-objektumokra.
+Ezután létre fog hozni egy Event Hubs által aktivált függvényt egy Function alkalmazásban. Használhatja a teljes körű oktatóanyagban létrehozott Function alkalmazást ([*oktatóanyag: végpontok közötti megoldás összekapcsolását*](./tutorial-end-to-end.md)) vagy a sajátját. 
+
+Ez a függvény átalakítja ezeket a kettős frissítési eseményeket az eredeti űrlapról JSON-javításként szolgáló dokumentumként a JSON-objektumokba, amelyek csak a frissített és hozzáadott értékeket tartalmazzák az ikrektől.
 
 További információ a Event Hubs Azure functions használatával történő használatáról: [*azure Event Hubs trigger Azure Functionshoz*](../azure-functions/functions-bindings-event-hubs-trigger.md).
 
@@ -98,8 +105,8 @@ namespace SampleFunctionsApp
     { 
         [FunctionName("ProcessDTUpdatetoTSI")]
         public static async Task Run(
-            [EventHubTrigger("twins-fx-hub", Connection = "EventHubAppSetting-Twins")]EventData myEventHubMessage, 
-            [EventHub("alkarche-tsi-demo-hub", Connection = "EventHubAppSetting-TSI")]IAsyncCollector<string> outputEvents, 
+            [EventHubTrigger("twins-event-hub", Connection = "EventHubAppSetting-Twins")]EventData myEventHubMessage, 
+            [EventHub("tsi-event-hub", Connection = "EventHubAppSetting-TSI")]IAsyncCollector<string> outputEvents, 
             ILogger log)
         {
             JObject message = (JObject)JsonConvert.DeserializeObject(Encoding.UTF8.GetString(myEventHubMessage.Body));
@@ -128,48 +135,50 @@ namespace SampleFunctionsApp
 
 Innen a függvény ezután elküldi az általa létrehozott JSON-objektumokat egy második esemény-hubhoz, amely Time Series Insightshoz fog csatlakozni.
 
+Később olyan környezeti változók is megadhatók, amelyeket ez a függvény a saját Event hubokhoz való kapcsolódáshoz használ majd.
+
 ## <a name="send-telemetry-to-an-event-hub"></a>Telemetria küldése az Event hub-nak
 
-Most hozzon létre egy második Event hub-t, és konfigurálja a függvényt az Event hub kimenetének továbbításához. Ez az Event hub ezután csatlakozik Time Series Insightshoz.
+Most hozzon létre egy második Event hub-t, és konfigurálja a függvényt, hogy a kimenetét továbbítsa az Event hub-nak. Ez az Event hub ezután csatlakozik Time Series Insightshoz.
 
 ### <a name="create-an-event-hub"></a>Eseményközpont létrehozása
 
-Használhatja az alábbi Azure CLI-utasításokat, vagy használhatja a Azure Portal: rövid útmutató [*: Event hub létrehozása Azure Portal használatával*](../event-hubs/event-hubs-create.md).
+A második Event hub létrehozásához használhatja az alábbi Azure CLI-utasításokat, vagy használhatja a Azure Portal: rövid útmutató [*: Event hub létrehozása Azure Portal használatával*](../event-hubs/event-hubs-create.md).
 
-1. Az Event hub-névtér és az erőforráscsoport nevének előkészítése a korábbi verziókból 
+1. Készítse elő a *Event Hubs névteret* és az *erőforráscsoport* nevét a jelen cikk korábbi részében
 
-2. Eseményközpont létrehozása
+2. Új Event hub létrehozása
     ```azurecli-interactive
     # Create an event hub. Specify a name for the event hub. 
-    az eventhubs eventhub create --name <TSI event hub name> --resource-group <resource group name> --namespace-name <Event Hubs namespace>
+    az eventhubs eventhub create --name <name for your TSI event hub> --resource-group <resource group name from earlier> --namespace-name <Event Hubs namespace from earlier>
     ```
 3. [Engedélyezési szabály](https://docs.microsoft.com/cli/azure/eventhubs/eventhub/authorization-rule?view=azure-cli-latest#az-eventhubs-eventhub-authorization-rule-create) létrehozása küldési és fogadási engedélyekkel
     ```azurecli-interactive
     # Create an authorization rule. Specify a name for the rule.
-    az eventhubs eventhub authorization-rule create --rights Listen Send --resource-group <resource group name> --namespace-name <Event Hubs namespace> --eventhub-name <event hub name> --name <TSI auth rule>
+    az eventhubs eventhub authorization-rule create --rights Listen Send --resource-group <resource group name> --namespace-name <Event Hubs namespace from earlier> --eventhub-name <TSI event hub name from above> --name <name for your TSI auth rule>
     ```
 
-### <a name="configure-your-function"></a>A függvény konfigurálása
+## <a name="configure-your-function"></a>A függvény konfigurálása
 
-Egy környezeti változót kell beállítania a Function alkalmazásban, amely az Event hub kapcsolati karakterláncát tartalmazza.
+A következő lépésben környezeti változókat kell beállítania a Function alkalmazásban, amely tartalmazza a létrehozott Event hubok kapcsolati karakterláncait.
 
-#### <a name="set-the-time-series-insights-event-hub-connection-string"></a>Az Time Series Insights Event hub kapcsolati karakterláncának beállítása
+### <a name="set-the-twins-event-hub-connection-string"></a>Az ikrek Event hub kapcsolati karakterláncának beállítása
 
-1. Szerezze be az Time Series Insights hub felett létrehozott engedélyezési szabályok [Event hub kapcsolati karakterláncát](../event-hubs/event-hubs-get-connection-string.md) :
+1. Szerezze be az ikrek [Event hub kapcsolati karakterláncát](../event-hubs/event-hubs-get-connection-string.md)a fent létrehozott engedélyezési szabályok alapján az ikrek hubhoz.
 
     ```azurecli-interactive
-    az eventhubs eventhub authorization-rule keys list --resource-group <resource group name> --namespace-name <Event Hubs namespace> --eventhub-name <twins event hub name> --name <twins auth rule>
+    az eventhubs eventhub authorization-rule keys list --resource-group <resource group name> --namespace-name <Event Hubs namespace> --eventhub-name <Twins event hub name from earlier> --name <Twins auth rule from earlier>
     ```
 
-2. A Function alkalmazásban hozzon létre egy alkalmazást, amely tartalmazza a kapcsolatok karakterláncát:
+2. Használja azt a kapcsolódási karakterláncot, amelyet a függvény alkalmazásban a kapcsolódási sztringet tartalmazó alkalmazás-beállítás létrehozásához fog használni:
 
     ```azurecli-interactive
-    az functionapp config appsettings set --settings "EventHubAppSetting-TSI=<your-event-hub-connection-string> -g <your-resource-group> -n <your-App-Service-(function-app)-name>"
+    az functionapp config appsettings set --settings "EventHubAppSetting-Twins=<Twins event hub connection string> -g <resource group> -n <your App Service (function app) name>"
     ```
 
-#### <a name="set-the-twins-event-hub-connection-string"></a>Az ikrek Event hub kapcsolati karakterláncának beállítása
+### <a name="set-the-time-series-insights-event-hub-connection-string"></a>Az Time Series Insights Event hub kapcsolati karakterláncának beállítása
 
-1. Szerezze be az [Event hub kapcsolati karakterláncát](../event-hubs/event-hubs-get-connection-string.md) az ikrek hubhoz fent létrehozott engedélyezési szabályokhoz.
+1. Szerezze be az ÁME [Event hub kapcsolati karakterláncát](../event-hubs/event-hubs-get-connection-string.md)az Time Series Insights hub felett létrehozott engedélyezési szabályok használatával:
 
     ```azurecli-interactive
     az eventhubs eventhub authorization-rule keys list --resource-group <resource group name> --namespace-name <Event Hubs namespace> --eventhub-name <TSI event hub name> --name <TSI auth rule>
@@ -178,16 +187,16 @@ Egy környezeti változót kell beállítania a Function alkalmazásban, amely a
 2. A Function alkalmazásban hozzon létre egy alkalmazást, amely tartalmazza a kapcsolatok karakterláncát:
 
     ```azurecli-interactive
-    az functionapp config appsettings set --settings "EventHubAppSetting-Twins=<your-event-hub-connection-string> -g <your-resource-group> -n <your-App-Service-(function-app)-name>"
+    az functionapp config appsettings set --settings "EventHubAppSetting-TSI=<TSI event hub connection string> -g <resource group> -n <your App Service (function app) name>"
     ```
 
 ## <a name="create-and-connect-a-time-series-insights-instance"></a>Time Series Insights-példány létrehozása és összekötése
 
-Ezután állítson be egy Time Series Insights-példányt, amely a második Event hub adatait fogja fogadni. További információ erről a folyamatról [ *: oktatóanyag: Azure Time Series INSIGHTS Gen2 TB-környezet beállítása*](../time-series-insights/tutorials-set-up-tsi-environment.md)
+Ezután állítson be egy Time Series Insights-példányt, amely a második Event hub adatait fogja fogadni. Kövesse az alábbi lépéseket, és a folyamattal kapcsolatos további információkért tekintse [*meg az oktatóanyag: Azure Time Series Insights GEN2 TB-környezet beállítása*](../time-series-insights/tutorials-set-up-tsi-environment.md)című témakört.
 
 1. A Azure Portal Time Series Insights erőforrás létrehozásának megkezdéséhez. 
     1. Válassza ki a **TB (előzetes verzió)** árképzési szintet.
-    2. Ehhez a környezethez ki kell választania egy idősorozat-azonosítót. Az idősorozat-azonosító legfeljebb három olyan érték lehet, amelyet a Time Series Insightsban lévő adatok kereséséhez fog használni. Ebben az oktatóanyagban használhatja a **$dtId**. További információ az azonosító érték kiválasztásáról az [*ajánlott eljárásokban az idősorozat-azonosító kiválasztásához*](https://docs.microsoft.com/azure/time-series-insights/how-to-select-tsid).
+    2. Ehhez a környezethez ki kell választania egy **idősorozat-azonosítót** . Az idősorozat-azonosító legfeljebb három olyan érték lehet, amelyet a Time Series Insightsban lévő adatok kereséséhez fog használni. Ebben az oktatóanyagban használhatja a **$dtId**. További információ az azonosító érték kiválasztásáról az [*ajánlott eljárásokban az idősorozat-azonosító kiválasztásához*](https://docs.microsoft.com/azure/time-series-insights/how-to-select-tsid).
     
         :::image type="content" source="media/how-to-integrate-time-series-insights/create-twin-id.png" alt-text="A létrehozási portál UX Time Series Insights-környezethez. A TB (előzetes verzió) árképzési szintje be van jelölve, az idősorozat-azonosító tulajdonság neve pedig $dtId":::
 
@@ -197,23 +206,23 @@ Ezután állítson be egy Time Series Insights-példányt, amely a második Even
 
 ## <a name="begin-sending-iot-data-to-azure-digital-twins"></a>IoT-adatok küldésének megkezdése az Azure Digital Twinsba
 
-Az adatok Time Series Insightsba való küldésének megkezdéséhez meg kell kezdenie a digitális Twin tulajdonságok frissítését az adatértékek módosításával. Használja az az [DT Twin Update](https://docs.microsoft.com/cli/azure/ext/azure-iot/dt/twin?view=azure-cli-latest#ext-azure-iot-az-dt-twin-update) parancsot.
+Az adatok Time Series Insightsba való küldésének megkezdéséhez meg kell kezdenie a digitális Twin-tulajdonságok frissítését az Azure Digital Twins-ban az adatértékek módosításával. Használja az az [DT Twin Update](https://docs.microsoft.com/cli/azure/ext/azure-iot/dt/twin?view=azure-cli-latest#ext-azure-iot-az-dt-twin-update) parancsot.
 
-Ha a teljes körű oktatóanyagot használja a környezet beállításának támogatásához, megkezdheti a szimulált IoT-adatok küldését a projekt futtatásával `DeviceSimulator` Az Azure Digital Twins [*oktatóanyag: teljes körű megoldás összekapcsolásával*](tutorial-end-to-end.md). Az útmutató az oktatóanyag [*konfigurálása és futtatása a szimuláció*](tutorial-end-to-end.md#configure-and-run-the-simulation) szakaszban található.
+Ha teljes körű oktatóanyagot használ ([*oktatóanyag: végpontok közötti megoldás összekapcsolásával*](tutorial-end-to-end.md)) a környezet beállításának elősegítése érdekében, megkezdheti a szimulált IoT-adatok küldését a minta *DeviceSimulator* -projekt futtatásával. Az útmutató az oktatóanyag [*konfigurálása és futtatása a szimuláció*](tutorial-end-to-end.md#configure-and-run-the-simulation) szakaszban található.
 
 ## <a name="visualize-your-data-in-time-series-insights"></a>Jelenítse meg az adatait Time Series Insights
 
 Az adatforgalom az Time Series Insights-példányba kerül, és készen áll az elemzésre. Kövesse az alábbi lépéseket a beérkező adatforgalom megismeréséhez.
 
-1. Nyissa meg Time Series Insights-példányát a Azure Portalban. Látogasson el az áttekintésben látható Time Series Insights Explorer URL-címére.
+1. Nyissa meg Time Series Insights-példányát a [Azure Portalban](https://portal.azure.com) (a példány nevét megkeresheti a portál keresési sávján). Látogasson el a példány áttekintésében látható *Time Series Insights Explorer URL-címére* .
     
-    :::image type="content" source="media/how-to-integrate-time-series-insights/view-environment.png" alt-text="A Time Series Insights-környezet áttekintés lapján kattintson a Time Series Insights Explorer URL-címére":::
+    :::image type="content" source="media/how-to-integrate-time-series-insights/view-environment.png" alt-text="A Time Series Insights-környezet áttekintés lapján válassza ki a Time Series Insights Explorer URL-címét":::
 
-2. Az Explorerben a bal oldali három ikrek látható. Kattintson a **thermostat67**elemre, válassza a **patch_value**lehetőséget, majd kattintson a **Hozzáadás**gombra.
+2. Az Explorerben megjelenik a három ikrek a bal oldalon látható Azure digitális Ikrekből. Válassza a _**thermostat67**_ lehetőséget, válassza a **hőmérséklet**lehetőséget, és kattintson a **Hozzáadás gombra**.
 
-    :::image type="content" source="media/how-to-integrate-time-series-insights/add-data.png" alt-text="Kattintson a * * thermostat67 * * elemre, válassza a * * hőmérséklet * * elemet, majd kattintson * * Hozzáadás * *":::
+    :::image type="content" source="media/how-to-integrate-time-series-insights/add-data.png" alt-text="Válassza a * * thermostat67 * * elemet, válassza a * * hőmérséklet * * elemet, és a * * Hozzáadás * *":::
 
-3. Ekkor látnia kell a termosztátból a kezdeti hőmérséklet-leolvasásokat az alább látható módon. Ugyanazt a hőmérséklet-olvasási értéket frissíti a rendszer a room21 és a floor1, és párhuzamosan jelenítheti meg az adatfolyamokat.
+3. Ekkor látnia kell a termosztátból a kezdeti hőmérséklet-leolvasásokat az alább látható módon. Ugyanazt a hőmérséklet-olvasási értéket frissíti a rendszer a *room21* és a *floor1*, és párhuzamosan jelenítheti meg az adatfolyamokat.
     
     :::image type="content" source="media/how-to-integrate-time-series-insights/initial-data.png" alt-text="A kezdeti hőmérsékleti adatai az ÁME Explorerben vannak ábrázolva. 68 és 85 közötti véletlenszerű értékek sora":::
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/05/2020
-ms.openlocfilehash: 9a96db0e9a834dcddbb5f247953fa1bbf0dc39ce
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 294c93242a3fee5db14f5919ebb367aebcca3a80
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539703"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326188"
 ---
 # <a name="monitoring-azure-virtual-machines-with-azure-monitor"></a>Azure-beli virtuális gépek figyelése Azure Monitor
 Ez a cikk azt ismerteti, hogyan használható a Azure Monitor az Azure-beli virtuális gépek monitorozási adatainak gyűjtésére és elemzésére az állapotuk fenntartása érdekében. A virtuális gépeket a rendelkezésre állás és a teljesítmény figyelésére használhatja Azure Monitor mint bármely [más Azure-erőforrást](monitor-azure-resource.md), de ezek más erőforrásokkal is egyediek, mivel a vendég operációs és a rendszer, valamint a rajta futó munkaterhelések figyelésére is szükség van. 
@@ -134,7 +134,7 @@ Miután konfigurálta a figyelési adatok gyűjtését egy virtuális géphez, t
 |:---|:---|
 | Áttekintés | Megjeleníti a virtuális gép gazdagépének [platform metrikáit](../platform/data-platform-metrics.md) . Kattintson egy gráfra, hogy működjön együtt ezekkel az adatokkal a [mérőszámok Explorerben](../platform/metrics-getting-started.md). |
 | Tevékenységnapló | Az aktuális virtuális gép számára szűrt [tevékenység-naplóbejegyzések](../platform/activity-log.md#view-the-activity-log) . |
-| Insights | [Azure monitor for VMS](../insights/vminsights-overview.md) megnyitása az aktuális virtuális gép térképével. |
+| Insights | [Azure monitor for VMS](./vminsights-overview.md) megnyitása az aktuális virtuális gép térképével. |
 | Riasztások | Az aktuális virtuális géphez tartozó [riasztások](../platform/alerts-overview.md) megtekintése.  |
 | Mérőszámok | Nyissa meg a [metrikák Explorert](../platform/metrics-getting-started.md) az aktuális virtuális géphez beállított hatókörrel. |
 | Diagnosztikai beállítások | Engedélyezze és konfigurálja a [diagnosztikai bővítményt](../platform/diagnostics-extension-overview.md) az aktuális virtuális géphez. |
@@ -238,7 +238,8 @@ A meglévő SCOM-funkciókat bővítő Azure Monitor szolgáltatásai többek k�
 A meglévő SCOM-felügyeleti csoport Log Analytics-munkaterülethez való csatlakoztatásáról további információt a [Operations Manager csatlakoztatása a Azure monitorhoz](../platform/om-agents.md) című témakörben talál.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Megtudhatja, hogyan elemezheti Azure Monitor naplókban lévő adatelemzéseket a naplók használatával.](../log-query/get-started-queries.md)
 * [Tudnivalók a riasztásokról Azure Monitor mérőszámokkal és naplókkal.](../platform/alerts-overview.md)
+

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
-ms.openlocfilehash: d85cd05ee6b40b6b660958330145ed0c61b1b0a3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 45a10ddce165626bfbadb0ba0b3d68b81709c3bb
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539669"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326137"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Network Performance Monitor megoldás – gyakori kérdések
 
@@ -19,7 +19,7 @@ ms.locfileid: "86539669"
 
 Ez a cikk az Azure-beli Network Performance Monitor (NPM) kapcsolatos gyakori kérdéseket (GYIK) rögzíti
 
-A [Network Performance monitor](../../networking/network-monitoring-overview.md) egy felhőalapú [hibrid hálózati figyelési](../../azure-monitor/insights/network-performance-monitor-performance-monitor.md) megoldás, amely a hálózati infrastruktúra különböző pontjai közötti hálózati teljesítmény figyelését segíti. Emellett a [szolgáltatás-és alkalmazás-végpontok](../../azure-monitor/insights/network-performance-monitor-service-connectivity.md) hálózati kapcsolatának figyelésére és [Az Azure-ExpressRoute teljesítményének figyelésére](../../azure-monitor/insights/network-performance-monitor-expressroute.md)is lehetőséget nyújt. 
+A [Network Performance monitor](../../networking/network-monitoring-overview.md) egy felhőalapú [hibrid hálózati figyelési](./network-performance-monitor-performance-monitor.md) megoldás, amely a hálózati infrastruktúra különböző pontjai közötti hálózati teljesítmény figyelését segíti. Emellett a [szolgáltatás-és alkalmazás-végpontok](./network-performance-monitor-service-connectivity.md) hálózati kapcsolatának figyelésére és [Az Azure-ExpressRoute teljesítményének figyelésére](./network-performance-monitor-expressroute.md)is lehetőséget nyújt. 
 
 A Network Performance Monitor észleli a hálózati problémákat, például a forgalmi blackholing, az útválasztási hibákat, valamint azokat a problémákat, amelyeket a hagyományos hálózati figyelési módszerek nem képesek észlelni. A megoldás riasztásokat készít, és értesíti, amikor egy hálózati kapcsolat meghaladja a küszöbértéket. Emellett biztosítja a hálózat teljesítményével kapcsolatos problémák időbeni észlelését és leszűkíti a hiba forrásának helyszínét egy hálózati szegmensre vagy eszközre. 
 
@@ -40,7 +40,7 @@ A Linux-alapú csomópontokat használó hálózatok figyelésének lehetősége
 Ahhoz, hogy a NPM megoldás a csomópontokon futó virtuális gépeken a hálózatok figyelésére fusson, a csomópontoknak legalább 500 MB memóriával és egy mag kell rendelkezniük. Nem kell külön csomópontokat használnia a NPM futtatásához. A megoldás olyan csomópontokon is futhat, amelyeken más munkaterhelések futnak. A megoldás képes a figyelési folyamat leállítására, ha az több mint 5%-os CPU-t használ.
 
 ### <a name="to-use-npm-should-i-connect-my-nodes-as-direct-agent-or-through-system-center-operations-manager"></a>A NPM használatához csatlakoztatni kell a saját csomópontokat közvetlen ügynökként vagy System Center Operations Manageron keresztül?
-A Teljesítményfigyelő és a szolgáltatás-csatlakozási figyelő funkciói támogatják a [közvetlen ügynökként csatlakoztatott](../../azure-monitor/platform/agent-windows.md) csomópontokat, és [Operations Manageron keresztül csatlakoznak](../../azure-monitor/platform/om-agents.md).
+A Teljesítményfigyelő és a szolgáltatás-csatlakozási figyelő funkciói támogatják a [közvetlen ügynökként csatlakoztatott](../platform/agent-windows.md) csomópontokat, és [Operations Manageron keresztül csatlakoznak](../platform/om-agents.md).
 
 Az ExpressRoute-figyelési funkció esetében az Azure-csomópontokat csak közvetlen ügynökként kell csatlakoztatni. Az Operations Manageron keresztül csatlakoztatott Azure-csomópontok nem támogatottak. A helyszíni csomópontok esetében a közvetlen ügynökként és Operations Manager-n keresztül csatlakozó csomópontok ExpressRoute-áramkör figyelésére is használhatók.
 
@@ -49,12 +49,12 @@ Ha Windows Server-alapú csomópontokkal figyeli a hálózatot, javasoljuk, hogy
 
 Az ICMP használata a Windows rendszerű asztali számítógépekhez és az ügyfél operációs rendszer alapú csomópontjaihoz ajánlott. Ez a platform nem teszi lehetővé, hogy a TCP-adat a nyers szoftvercsatornán legyen elküldve, amelyet a NPM a hálózati topológia felderítésére használ.
 
-Az egyes protokollok relatív előnyeiről [itt](../../azure-monitor/insights/network-performance-monitor-performance-monitor.md#choose-the-protocol)talál további információt.
+Az egyes protokollok relatív előnyeiről [itt](./network-performance-monitor-performance-monitor.md#choose-the-protocol)talál további információt.
 
 ### <a name="how-can-i-configure-a-node-to-support-monitoring-using-tcp-protocol"></a>Hogyan állíthatok be egy csomópontot a figyelés támogatásához a TCP protokoll használatával?
 Ahhoz, hogy a csomópont támogassa a figyelést a TCP protokoll használatával: 
 * Győződjön meg arról, hogy a csomópont platformja Windows Server (2008 SP1 vagy újabb).
-* Futtassa [EnableRules.ps1](https://aka.ms/npmpowershellscript) PowerShell-parancsfájlt a csomóponton. További részletekért tekintse meg az [utasításokat](../../azure-monitor/insights/network-performance-monitor.md#configure-log-analytics-agents-for-monitoring) .
+* Futtassa [EnableRules.ps1](https://aka.ms/npmpowershellscript) PowerShell-parancsfájlt a csomóponton. További részletekért tekintse meg az [utasításokat](./network-performance-monitor.md#configure-log-analytics-agents-for-monitoring) .
 
 
 ### <a name="how-can-i-change-the-tcp-port-being-used-by-npm-for-monitoring"></a>Hogyan változtathatom meg a NPM által használt TCP-portot a figyeléshez?
@@ -182,10 +182,10 @@ NetworkMonitoring
 ```
 
 ### <a name="which-regions-are-supported-for-npms-performance-monitor"></a>Mely régiók támogatottak a NPM teljesítményének monitorozásához?
-A NPM a világ bármely részén lévő hálózatok közötti kapcsolat figyelésére a [támogatott régiók](../../azure-monitor/insights/network-performance-monitor.md#supported-regions) egyikében üzemeltetett munkaterületről
+A NPM a világ bármely részén lévő hálózatok közötti kapcsolat figyelésére a [támogatott régiók](./network-performance-monitor.md#supported-regions) egyikében üzemeltetett munkaterületről
 
 ### <a name="which-regions-are-supported-for-npms-service-connectivity-monitor"></a>Mely régiók támogatottak a NPM szolgáltatás kapcsolódási figyelője számára?
-A NPM a világ bármely részén a szolgáltatásokhoz való kapcsolódást a [támogatott régiók](../../azure-monitor/insights/network-performance-monitor.md#supported-regions) egyikében üzemeltetett munkaterületről tudja figyelni.
+A NPM a világ bármely részén a szolgáltatásokhoz való kapcsolódást a [támogatott régiók](./network-performance-monitor.md#supported-regions) egyikében üzemeltetett munkaterületről tudja figyelni.
 
 ### <a name="which-regions-are-supported-for-npms-expressroute-monitor"></a>Mely régiók támogatottak a NPM ExpressRoute-figyelője számára?
 A NPM bármely Azure-régióban található ExpressRoute-áramköröket nyomon követheti. A NPM való bevezetéshez Log Analytics munkaterületre lesz szükség, amelyet a [támogatott régiók](../../expressroute/how-to-npm.md) egyikében kell üzemeltetni.
@@ -297,6 +297,7 @@ A figyeléshez használt csomópontok állapotát a következő nézetből tekin
 ### <a name="can-npm-report-latency-numbers-in-microseconds"></a>NPM a jelentés késési számait a másodpercenként?
 A NPM felkerekíti a késési számokat a felhasználói felületen és ezredmásodpercben. Ugyanazokat az adatokat a rendszer magasabb részletességgel tárolja (esetenként akár négy tizedesjegy is).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- További információ a Network Performance Monitorről az [Azure-beli Network Performance monitor megoldásra](../../azure-monitor/insights/network-performance-monitor.md)való hivatkozással.
+- További információ a Network Performance Monitorről az [Azure-beli Network Performance monitor megoldásra](./network-performance-monitor.md)való hivatkozással.
+

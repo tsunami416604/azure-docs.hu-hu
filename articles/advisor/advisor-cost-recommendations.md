@@ -3,12 +3,12 @@ title: A szolgáltatási költségek csökkentése Azure Advisor használatával
 description: A Azure Advisor használatával optimalizálhatja az Azure-beli üzemelő példányok költségeit.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 6fa57726ee37d78438b4e07d329f1af00f157d7e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e8f0e555f71c31bb3286cee59bb7161c3ce3986e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87057736"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284370"
 ---
 # <a name="reduce-service-costs-by-using-azure-advisor"></a>A szolgáltatási költségek csökkentése Azure Advisor használatával
 
@@ -89,7 +89,7 @@ A 60%-os megtakarítás érdekében javasoljuk, hogy a pillanatképeket a normá
 Az Azure Blob Storage-objektumok számával, a teljes mérettel és a tranzakciókkal kapcsolatos intelligenciával az Advisor észleli, hogy engedélyezni kell-e az életciklus-kezelést egy vagy több Storage-fiókra vonatkozóan. Arra kéri, hogy hozzon létre életciklus-kezelési szabályokat, hogy a tárolási költségek optimalizálása érdekében automatikusan leszűkítse az adatait a tárhelyre, miközben az adatok az Azure Blob Storage-ban való megőrzése mellett az alkalmazások kompatibilitását is megőrzi.
 
 ## <a name="create-an-ephemeral-os-disk-recommendation"></a>Javasolt a rövid élettartamú operációsrendszer-lemezek létrehozása
-Az [ideiglenes operációsrendszer-lemez](../virtual-machines/windows/ephemeral-os-disks.md) a következőket teszi lehetővé: 
+Az [ideiglenes operációsrendszer-lemez](../virtual-machines/ephemeral-os-disks.md) a következőket teszi lehetővé: 
 - Az operációsrendszer-lemezek tárolási költségeinek mentése. 
 - Csökkentse az írási/olvasási késleltetést az operációsrendszer-lemezekre. 
 - Az operációs rendszer (és az ideiglenes lemez) alaphelyzetbe állításával gyorsabbá teheti a virtuális gépek lemezkép-rendszerképének működését.

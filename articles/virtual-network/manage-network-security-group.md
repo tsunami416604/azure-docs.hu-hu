@@ -1,7 +1,7 @@
 ---
 title: Azure-beli hálózati biztonsági csoport létrehozása, módosítása vagy törlése
 titlesuffix: Azure Virtual Network
-description: Megtudhatja, hogyan hozhat létre, módosíthat vagy törölhet hálózati biztonsági csoportokat.
+description: Ismerje meg, hogy hol találhatók a biztonsági szabályokkal kapcsolatos információk, valamint a hálózati biztonsági csoportok létrehozásának, módosításának és törlésének módja.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -11,11 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/13/2020
 ms.author: kumud
-ms.openlocfilehash: 38fe9582595969ac92d3468b3b7e8c0a9d793c0c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dfb6426ec4e75f6484df37008522b966ebc3af6f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708280"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281259"
 ---
 # <a name="create-change-or-delete-a-network-security-group"></a>Hálózati biztonsági csoport létrehozása, módosítása vagy törlése
 
@@ -45,17 +46,17 @@ Létrehozhatja, [megtekintheti az összeset](#view-all-network-security-groups),
 
 Az egyes Azure-helyekhez és-előfizetésekhez több hálózati biztonsági csoport is létrehozható. További információ: Azure- [előfizetések és-szolgáltatások korlátai, kvótái és megkötései](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
 
-1. A [Azure Portal](https://portal.azure.com) menüben vagy a **Kezdőlap** lapon válassza az **erőforrás létrehozása**lehetőséget.
+1. Az [Azure Portal](https://portal.azure.com) menüjében vagy a **Kezdőlapon** válassza az **Erőforrás létrehozása** elemet.
 
 2. Válassza a **hálózatkezelés**, majd a **hálózati biztonsági csoport**elemet.
 
 3. A **hálózati biztonsági csoport létrehozása** lapon az **alapok** lapon adja meg a következő beállítások értékeit:
 
-    | Beállítás | Műveletek |
+    | Beállítás | Művelet |
     | --- | --- |
     | **Előfizetés** | Válassza ki az előfizetését. |
     | **Erőforráscsoport** | Válasszon ki egy meglévő erőforráscsoportot, vagy válassza az **új létrehozása** lehetőséget egy új erőforráscsoport létrehozásához. |
-    | **Name (Név)** | Adjon meg egy egyedi szöveges karakterláncot egy erőforráscsoport belül. |
+    | **Név** | Adjon meg egy egyedi szöveges karakterláncot egy erőforráscsoport belül. |
     | **Régió** | Válassza ki a kívánt helyet. |
 
 4. Válassza az **Áttekintés + létrehozás** lehetőséget.
@@ -95,7 +96,7 @@ Ha többet szeretne megtudni a felsorolt általános Azure-beállításokról, t
 - [Tevékenységnapló](../azure-monitor/platform/platform-logs-overview.md)
 - [Hozzáférés-vezérlés (IAM)](../role-based-access-control/overview.md)
 - [Címkék](../azure-resource-manager/management/tag-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-- [Zárak](../azure-resource-manager/management/lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+- [Zárolások](../azure-resource-manager/management/lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [Automation-szkript](../azure-resource-manager/templates/export-template-portal.md)
 
 #### <a name="commands"></a>Parancsok
@@ -174,7 +175,7 @@ Az egyes Azure-helyekhez és-előfizetésekhez legfeljebb egy hálózati biztons
     | **Protokoll** | **Bármely**, **TCP**, **UDP**vagy **ICMP** | A szabályt a Transmission Control Protocol (TCP), a User Datagram Protocol (UDP) vagy a Internet Control Message Protocol (ICMP) számára korlátozhatja. Az alapértelmezett érték az, hogy a szabály az összes protokollra vonatkozzon. |
     | **Művelet** | **Engedélyezés** vagy **Megtagadás** | Ez a beállítás határozza meg, hogy ez a szabály engedélyezi vagy megtagadja a hozzáférést a megadott forrás-és célhely-konfigurációhoz. |
     | **Prioritás** | 100 és 4096 közötti érték, amely a hálózati biztonsági csoporton belüli összes biztonsági szabály esetében egyedi. | Az Azure prioritási sorrendben dolgozza fel a biztonsági szabályokat. Minél kisebb a szám, annál magasabb a prioritás. Azt javasoljuk, hogy a prioritási számok között hagyjon különbséget a szabályok létrehozásakor, például 100, 200 és 300. A hézagok kihagyása megkönnyíti a szabályok hozzáadását a jövőben, így a meglévő szabályoknál magasabb vagy alacsonyabb prioritást biztosíthat. |
-    | **Name (Név)** | A szabály egyedi neve a hálózati biztonsági csoporton belül | A név legfeljebb 80 karakter hosszú lehet. Betűvel vagy számmal kell kezdődnie, és betűvel, számmal vagy aláhúzással kell végződnie. A név csak betűket, számokat, aláhúzásokat, pontokat és kötőjeleket tartalmazhat. |
+    | **Név** | A szabály egyedi neve a hálózati biztonsági csoporton belül | A név legfeljebb 80 karakter hosszú lehet. Betűvel vagy számmal kell kezdődnie, és betűvel, számmal vagy aláhúzással kell végződnie. A név csak betűket, számokat, aláhúzásokat, pontokat és kötőjeleket tartalmazhat. |
     | **Leírás** | Egy szöveg leírása | Opcionálisan megadhatja a biztonsági szabály szövegének leírását is. |
 
 #### <a name="commands"></a>Parancsok
@@ -261,7 +262,7 @@ Az alkalmazás biztonsági csoportja nulla vagy több hálózati adaptert tartal
 
 ### <a name="create-an-application-security-group"></a>Alkalmazás biztonsági csoportjának létrehozása
 
-1. A [Azure Portal](https://portal.azure.com) menüben vagy a **Kezdőlap** lapon válassza az **erőforrás létrehozása**lehetőséget.
+1. Az [Azure Portal](https://portal.azure.com) menüjében vagy a **Kezdőlapon** válassza az **Erőforrás létrehozása** elemet.
 
 2. A keresőmezőbe írja be az *alkalmazás biztonsági csoportja*mezőt.
 
@@ -269,11 +270,11 @@ Az alkalmazás biztonsági csoportja nulla vagy több hálózati adaptert tartal
 
 4. Az **alkalmazás biztonsági csoport létrehozása** lapon az **alapok** lapon adja meg a következő beállítások értékeit:
 
-    | Beállítás | Műveletek |
+    | Beállítás | Művelet |
     | --- | --- |
     | **Előfizetés** | Válassza ki az előfizetését. |
     | **Erőforráscsoport** | Válasszon ki egy meglévő erőforráscsoportot, vagy válassza az **új létrehozása** lehetőséget egy új erőforráscsoport létrehozásához. |
-    | **Name (Név)** | Adjon meg egy egyedi szöveges karakterláncot egy erőforráscsoport belül. |
+    | **Név** | Adjon meg egy egyedi szöveges karakterláncot egy erőforráscsoport belül. |
     | **Régió** | Válassza ki a kívánt helyet. |
 
 5. Válassza az **Áttekintés + létrehozás** lehetőséget.
@@ -354,7 +355,7 @@ A hálózati biztonsági csoportokkal, a biztonsági szabályokkal és az alkalm
 
 ### <a name="network-security-group"></a>Hálózati biztonsági csoport
 
-| Műveletek                                                        |   Name                                                                |
+| Művelet                                                        |   Név                                                                |
 |-------------------------------------------------------------- |   -------------------------------------------                         |
 | Microsoft. Network/networkSecurityGroups/READ                  |   Hálózati biztonsági csoport beolvasása                                          |
 | Microsoft. Network/networkSecurityGroups/Write                 |   Hálózati biztonsági csoport létrehozása vagy frissítése                             |
@@ -363,7 +364,7 @@ A hálózati biztonsági csoportokkal, a biztonsági szabályokkal és az alkalm
 
 ### <a name="network-security-group-rule"></a>Hálózati biztonsági csoport szabálya
 
-| Műveletek                                                        |   Name                                                                |
+| Művelet                                                        |   Név                                                                |
 |-------------------------------------------------------------- |   -------------------------------------------                         |
 | Microsoft. Network/networkSecurityGroups/securityRules/READ            |   Szabály lekérése                                                            |
 | Microsoft. Network/networkSecurityGroups/securityRules/Write           |   Szabály létrehozása vagy frissítése                                               |
@@ -371,7 +372,7 @@ A hálózati biztonsági csoportokkal, a biztonsági szabályokkal és az alkalm
 
 ### <a name="application-security-group"></a>Alkalmazásbiztonsági csoport
 
-| Műveletek                                                                     | Name                                                     |
+| Művelet                                                                     | Név                                                     |
 | --------------------------------------------------------------             | -------------------------------------------              |
 | Microsoft. Network/applicationSecurityGroups/joinIpConfiguration/Action     | IP-konfiguráció csatlakoztatása egy alkalmazás biztonsági csoportjához|
 | Microsoft. Network/applicationSecurityGroups/joinNetworkSecurityRule/Action | Biztonsági szabály csatlakoztatása egy alkalmazás biztonsági csoportjához    |

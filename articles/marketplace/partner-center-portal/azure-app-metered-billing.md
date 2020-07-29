@@ -5,12 +5,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/22/2020
-ms.openlocfilehash: d1ed294412e44c79fc1eb8cbc01bf134f08a953f
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.author: mingshen
+author: mingshen-ms
+ms.openlocfilehash: 07779769dae4c43148bbf4a8205feceea85ed363
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118936"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320051"
 ---
 # <a name="managed-application-metered-billing"></a>Felügyelt alkalmazás mért számlázása 
 
@@ -65,7 +67,7 @@ A számlázási dimenziók az ajánlat minden csomagjában meg vannak osztva. Eg
 A dimenziót definiáló attribútumok az ajánlat minden csomagjában meg vannak osztva. Mielőtt közzéteszi az ajánlatot, az ezen attribútumok bármely csomag kontextusában történt módosítása hatással lesz az összes csomag dimenziójának meghatározására. Miután közzétette az ajánlatot, ezek az attribútumok többé nem lesznek szerkeszthetve. Az attribútumok a következők:
 
 * Azonosító
-* Name
+* Név
 * Mértékegység
 
 A dimenziók egyéb attribútumai az egyes csomagokra jellemzőek, és a tervtől eltérő értékekkel rendelkezhetnek.  A terv közzététele előtt módosíthatja ezeket az értékeket, és csak ezt a csomagot fogja érinteni. Miután közzétette a csomagot, ezek az attribútumok többé nem lesznek szerkeszthetve. Az attribútumok a következők:
@@ -91,7 +93,7 @@ A Marketplace-mérési szolgáltatással használt dimenzió azt mutatja be, hog
 Ha egy ajánlatot közzétesznek egy dimenzióval, az adott dimenzióra vonatkozó ajánlati szintű adatok már nem módosíthatók:
 
 * Azonosító
-* Name
+* Név
 * Mértékegység
 
 A csomag közzététele után a terv szintű részletek már nem módosíthatók:
@@ -109,22 +111,14 @@ Az egyetlen ajánlathoz konfigurálható méretek maximális száma 18 egyedi di
 
 ## <a name="get-support"></a>Támogatás kérése
 
-Ha a következő esetek valamelyike érvényes, akkor nyisson meg egy támogatási jegyet.
+Ha az alábbi problémák valamelyikével rendelkezik, nyisson meg egy támogatási jegyet.
 
 * Technikai problémák a Marketplace-mérési szolgáltatás API-jával.
 * Egy olyan problémát, amelyet az oldal hibája vagy hibája miatt meg kell adni (pl. helytelen használati esemény).
 * A mért számlázással kapcsolatos egyéb problémák.
 
-A támogatási jegy beküldéséhez kövesse az alábbi lépéseket:
+Kövesse a [partner Center kereskedelmi piactér programjának támogatását](./support.md) ismertető témakör útmutatását a kiadói támogatási lehetőségek megismeréséhez és a Microsoft támogatási jegyének megnyitásához.
 
-1. Nyissa meg a [támogatási lapot](https://support.microsoft.com/supportforbusiness/productselection?sapId=48734891-ee9a-5d77-bf29-82bf8d8111ff). Az első néhány legördülő menüt automatikusan kitölti a rendszer. A piactér támogatásához azonosítsa a termékcsaládot **felhő-és online szolgáltatásként**, a termékként a **piactér-közzétevőként**. Ne módosítsa a legördülő menü előre megadott beállításait.
-2. A "termék verziójának kiválasztása" területen válassza az **élő ajánlat kezelése**lehetőséget.
-3. A "válasszon ki egy kategóriát, amely a legjobban leírja a problémát" területen válassza az **Azure-alkalmazások ajánlat**lehetőséget.
-4. A "probléma leírása, amely a legjobban leírja a problémát" területen válassza a **mért számlázás**lehetőséget.
-5. A Next ( **tovább** ) gombra kattintva átirányítjuk a **probléma részletei** lapra, ahol további részleteket adhat meg a hibáról.
-
-További közzétevői támogatási lehetőségekért lásd: [támogatás a kereskedelmi piactér programhoz a partner Centerben](support.md).
-
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információért lásd: [Marketplace-mérési szolgáltatás API](./marketplace-metering-service-apis.md) -k.

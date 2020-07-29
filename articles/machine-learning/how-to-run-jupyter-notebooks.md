@@ -8,14 +8,15 @@ ms.author: osomorog
 ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
+ms.topic: conceptual
+ms.custom: how-to
 ms.date: 06/27/2020
-ms.openlocfilehash: 476f3925886a6de68b49e1861d22e6cfaf594202
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c794b87a88cec20b75923e1f251c1e309a43ef1c
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85601453"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319592"
 ---
 # <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>Jupyter-jegyzetfüzetek futtatása a munkaterületen
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -31,7 +32,7 @@ Ismerje meg, hogyan teheti meg:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://aka.ms/AMLFree).
+* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://aka.ms/AMLFree), mielőtt hozzákezd.
 * Machine Learning munkaterület. Lásd: [Azure Machine learning munkaterület létrehozása](how-to-manage-workspace.md).
 
 ## <a name="create-notebooks"></a><a name="create"></a>Jegyzetfüzetek létrehozása
@@ -124,7 +125,7 @@ Válassza az **ellenőrzőpontok** lehetőséget a notebook menüben egy elnevez
 
 ### <a name="useful-keyboard-shortcuts"></a>Hasznos billentyűparancsok
 
-|Billentyűzet  |Műveletek  |
+|Billentyűzet  |Művelet  |
 |---------|---------|
 |SHIFT + ENTER     |  Cella futtatása       |
 |CTRL + SZÓKÖZ | IntelliSense aktiválása |
@@ -164,14 +165,14 @@ A notebook eszköztár lehetővé teszi, hogy megváltoztassa a környezetet, am
 
 Ezek a műveletek nem változtatják meg a jegyzetfüzet állapotát vagy a jegyzetfüzetben lévő változók értékeit:
 
-|Műveletek  |Eredmény  |
+|Művelet  |Eredmény  |
 |---------|---------| --------|
 |A kernel leállítása     |  Leállítja a futó cellákat. A cella futtatása automatikusan újraindítja a rendszermagot. |
 |Navigáljon egy másik munkaterület szakaszhoz     |     A futó cellák le vannak állítva. |
 
 Ezek a műveletek alaphelyzetbe állítják a jegyzetfüzet állapotát, és a jegyzetfüzetben lévő összes változót visszaállítják.
 
-|Műveletek  |Eredmény  |
+|Művelet  |Eredmény  |
 |---------|---------| --------|
 | A kernel módosítása | A jegyzetfüzet új kernelt használ |
 | Számítás váltása    |     A jegyzetfüzet automatikusan az új számítást használja. |
@@ -198,17 +199,17 @@ A [rendelkezésre álló Jupyter-kernelek](https://github.com/jupyter/jupyter/wi
 
 A **számítási** legördülő lista melletti kijelző megjeleníti az állapotát.  Az állapot a legördülő menüben is látható.  
 
-|Szín |Számítási állapot |
+|Szín (Color) |Számítási állapot |
 |---------|---------| 
 | Zöld | A számítás fut |
-| Vörös |A számítás nem sikerült | 
+| Piros |A számítás nem sikerült | 
 | Fekete | Számítás leállítva |
 |  Világoskék |Számítás létrehozása, indítása, újraindítása, beállítás |
 |  Szürke |Számítási törlés, Leállítás |
 
 A **kernel** legördülő lista melletti kijelző megjeleníti az állapotát.
 
-|Szín |Kernel állapota |
+|Szín (Color) |Kernel állapota |
 |---------|---------|
 |  Zöld |Kernel csatlakoztatva, tétlen, foglalt|
 |  Szürke |A kernel nincs csatlakoztatva |

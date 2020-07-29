@@ -6,11 +6,12 @@ ms.author: lcozzens
 ms.date: 02/20/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: 6d072cd03fa0e5c8da4593d8633a268d3b5a50fb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 66d0e32e7dfdd5ab2abee5108ac8ce54c5222747
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84197061"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371821"
 ---
 # <a name="sync-your-github-repository-to-app-configuration"></a>A GitHub-tárház szinkronizálása az alkalmazás konfigurációjával
 
@@ -24,7 +25,7 @@ A GitHub-műveletek [munkafolyamat](https://help.github.com/articles/about-githu
 A GitHub [dokumentációja](https://help.github.com/actions/automating-your-workflow-with-github-actions/configuring-a-workflow) részletes áttekintést nyújt a GitHub-munkafolyamatokról és-műveletekről. 
 
 ## <a name="enable-github-actions-in-your-repository"></a>GitHub-műveletek engedélyezése a tárházban
-A GitHub-művelet elindításához nyissa meg a tárházat, és válassza a **műveletek** fület. kattintson az **Új munkafolyamat**elemre, majd **állítsa be a munkafolyamatot**. Végül keresse meg a piactéren az "Azure app Configuration Sync" kifejezést.
+A GitHub-művelet elindításához nyissa meg a tárházat, és válassza a **műveletek** fület. Válassza az **Új munkafolyamat**lehetőséget, majd **állítson be egy munkafolyamatot**. Végül keresse meg a piactéren az "Azure app Configuration Sync" kifejezést.
 > [!div class="mx-imgBorder"]
 > ![Válassza a művelet fület](media/find-github-action.png)
 
@@ -307,15 +308,15 @@ A bemeneti paraméterek a művelet által a Futtatás során használt adatokat 
 
 | Bemeneti név | Kötelező? | Érték |
 |----|----|----|
-| configurationFile | Yes | A tárházban található konfigurációs fájl relatív elérési útja.  A glob-minták támogatottak, és több fájlt is tartalmazhatnak. |
-| formátumban | Yes | A konfigurációs fájl fájlformátuma.  Az érvényes formátumok a következők: JSON, YAML, Properties. |
-| connectionString | Yes | Az alkalmazás konfigurációs példányához tartozó kapcsolatok karakterlánca. A rendszer a GitHub-tárházban titkosként tárolja a kapcsolatok karakterláncát, és csak a titkos nevet kell használni a munkafolyamatban. |
-| elválasztó | Yes | A konfigurációs fájl kulcs-érték párokra való összeolvasztásakor használt elválasztó.  Az érvényes értékek a következők:. , ; : - _ __ / |
-| előtag | No | A kulcsok elejéhez hozzáadandó előtag. |
-| címke | No | Kulcs-érték párok beállításakor használt címke Ha nincs megadva, a rendszer null címkét használ. |
-| szigorú | No | Logikai érték, amely meghatározza, hogy engedélyezve van-e a szigorú üzemmód. Az alapértelmezett érték a hamis. |
-| mélység | No | A konfigurációs fájl összeolvasztásának maximális mélysége.  A mélységnek pozitív számnak kell lennie.  Az alapértelmezett érték nem rendelkezik maximális mélységgel. |
-| tags | No | Megadja a kulcs-érték párokon beállított címkét.  A várt formátum a következő alakzat JSON-objektumának sztringesített formája: {[propertyName: string]: string;} Minden tulajdonságnév-érték címkévé válik. |
+| configurationFile | Igen | A tárházban található konfigurációs fájl relatív elérési útja.  A glob-minták támogatottak, és több fájlt is tartalmazhatnak. |
+| formátumban | Igen | A konfigurációs fájl fájlformátuma.  Az érvényes formátumok a következők: JSON, YAML, Properties. |
+| connectionString | Igen | Az alkalmazás konfigurációs példányához tartozó kapcsolatok karakterlánca. A rendszer a GitHub-tárházban titkosként tárolja a kapcsolatok karakterláncát, és csak a titkos nevet kell használni a munkafolyamatban. |
+| elválasztó | Igen | A konfigurációs fájl kulcs-érték párokra való összeolvasztásakor használt elválasztó.  Az érvényes értékek a következők:. , ; : - _ __ / |
+| előtag | Nem | A kulcsok elejéhez hozzáadandó előtag. |
+| címke | Nem | Kulcs-érték párok beállításakor használt címke Ha nincs megadva, a rendszer null címkét használ. |
+| szigorú | Nem | Logikai érték, amely meghatározza, hogy engedélyezve van-e a szigorú üzemmód. Az alapértelmezett érték a hamis. |
+| mélység | Nem | A konfigurációs fájl összeolvasztásának maximális mélysége.  A mélységnek pozitív számnak kell lennie.  Az alapértelmezett érték nem rendelkezik maximális mélységgel. |
+| tags | Nem | Megadja a kulcs-érték párokon beállított címkét.  A várt formátum a következő alakzat JSON-objektumának sztringesített formája: {[propertyName: string]: string;} Minden tulajdonságnév-érték címkévé válik. |
 
 ## <a name="next-steps"></a>További lépések
 

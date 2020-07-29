@@ -4,14 +4,15 @@ description: A Lsv2 sorozatú virtuális gépek specifikációi.
 author: sasha-melamed
 ms.service: virtual-machines
 ms.subservice: sizes
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 9db5f391635505c18c7fe7c868431a0abc943730
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cedb5899b392cb111f9c1bb76949e940ef837252
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84675978"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284812"
 ---
 # <a name="lsv2-series"></a>Lsv2 sorozat
 
@@ -36,14 +37,14 @@ Premium Storage gyorsítótárazás: nem támogatott
 
 Memória-megőrzési frissítések: nem támogatott
 
-| Méret | vCPU | Memória (GiB) | <sup>1</sup> . ideiglenes lemez (GIB) | NVMe-lemezek<sup>2</sup> | NVMe lemez átviteli sebessége<sup>3</sup> (olvasási IOPS/Mbps) | Nem gyorsítótárazott adatlemez átviteli sebessége (IOPs/MBps)<sup>4</sup> | A nem gyorsítótárazott adatlemezek maximális adatátviteli sebessége (IOPs/MBps)<sup>5</sup>| Adatlemezek maximális száma | Hálózati adapterek maximális száma/várt hálózati sávszélesség (Mbps) |
-|---|---|---|---|---|---|---|---|---|---|
-| Standard_L8s_v2   |  8 |  64 |  80 |  1x 1.92 TB  | 400000/2000  | 8000/160   | 8000/1280 | 16 | 2 / 3200   |
-| Standard_L16s_v2  | 16 | 128 | 160 |  2x 1.92 TB  | 800000/4000  | 16000/320  | 16000/1280 | 32 | 4 / 6400   |
-| Standard_L32s_v2  | 32 | 256 | 320 |  4x 1.92 TB  | 1,5 m/8000    | 32000/640  | 32000/1280 | 32 | 8 / 12800  |
-| Standard_L48s_v2  | 48 | 384 | 480 |  6x 1.92 TB  | 2.2 m/14000   | 48000/960  | 48000/2000 | 32 | 8/16000 + |
-| Standard_L64s_v2  | 64 | 512 | 640 |  8x 1.92 TB  | 2,9 m/16000   | 64000/1280 | 64000/2000 | 32 | 8/16000 + |
-| Standard_L80s_v2<sup>6</sup> | 80 | 640 | 800 | 10x 1.92 TB | 3.8 m/20000 | 80000/1400 | 80000/2000 | 32 | 8/16000 + |
+| Méret | vCPU | Memória (GiB) | <sup>1</sup> . ideiglenes lemez (GIB) | NVMe-lemezek<sup>2</sup> | NVMe lemez átviteli sebessége<sup>3</sup> (olvasási IOPS/Mbps) | Nem gyorsítótárazott adatlemez átviteli sebessége (IOPs/MBps)<sup>4</sup> | A nem gyorsítótárazott adatlemezek maximális adatátviteli sebessége (IOPs/MBps)<sup>5</sup>| Adatlemezek maximális száma | Hálózati adapterek maximális száma | Várt hálózati sávszélesség (Mbps) |
+|---|---|---|---|---|---|---|---|---|---|---|
+| Standard_L8s_v2   |  8 |  64 |  80 |  1x 1.92 TB  | 400000/2000  | 8000/160   | 8000/1280 | 16 | 2 | 3200   |
+| Standard_L16s_v2  | 16 | 128 | 160 |  2x 1.92 TB  | 800000/4000  | 16000/320  | 16000/1280 | 32 | 4 | 6400   |
+| Standard_L32s_v2  | 32 | 256 | 320 |  4x 1.92 TB  | 1,5 m/8000    | 32000/640  | 32000/1280 | 32 | 8 | 12800  |
+| Standard_L48s_v2  | 48 | 384 | 480 |  6x 1.92 TB  | 2.2 m/14000   | 48000/960  | 48000/2000 | 32 | 8 | 16000 + |
+| Standard_L64s_v2  | 64 | 512 | 640 |  8x 1.92 TB  | 2,9 m/16000   | 64000/1280 | 64000/2000 | 32 | 8 | 16000 + |
+| Standard_L80s_v2<sup>6</sup> | 80 | 640 | 800 | 10x 1.92 TB | 3.8 m/20000 | 80000/1400 | 80000/2000 | 32 | 8 | 16000 + |
 
 <sup>1</sup> a Lsv2 sorozatú virtuális gépek szabványos SCSI-alapú ideiglenes erőforrás-lemezzel rendelkeznek az operációs rendszer lapozófájljának/swap-fájljának használatához (D: Windows rendszeren, Linuxon/dev/sdb). Ez a lemez 80 GiB tárterületet, 4 000 IOPS és 80 MBps átviteli sebességet biztosít minden 8 vCPU (például Standard_L80s_v2 biztosítja a 800 GiB-t az 40 000 IOPS és a 800 MBPS-ban). Ez biztosítja, hogy a NVMe-meghajtók teljes mértékben kiállíthatók legyenek az alkalmazások általi használatra. Ez a lemez elmúló, és az összes adatvesztés a Leállítás/felszabadítás során elvész.
 
@@ -73,6 +74,21 @@ Memória-megőrzési frissítések: nem támogatott
 - A lemezteljesítmény másodpercenkénti bemeneti/kimeneti műveletek (IOPS) mennyiségeként van kifejezve, valamint MBps-ben, ahol 1 MBps = 10^6 bájt/másodperc.
 - Ha a legjobb teljesítményt szeretné használni a virtuális gépek számára, az adatlemezek számát a vCPU 2 lemezre kell korlátoznia.
 - A **várt hálózati sávszélesség** a virtuálisgép- [típusokban lefoglalt](../virtual-network/virtual-machine-network-throughput.md) maximális összesített sávszélesség az összes hálózati adapteren, minden célhelynél. A felső határértékek nem garantáltak, csak útmutatóul szolgálnak a kívánt alkalmazásra megfelelő VM-típus kiválasztásához. A tényleges hálózati teljesítmény számos tényezőtől függ, többek között a hálózat túlterhelésétől, az alkalmazás terhelésétől, valamint az alkalmazás hálózati beállításaitól. A hálózati átviteli sebesség optimalizálásával kapcsolatos információkért lásd: [A hálózati átviteli sebesség optimalizálása Windows és Linux rendszeren](../virtual-network/virtual-network-optimize-network-bandwidth.md). Linux vagy Windows rendszeren a várt hálózati teljesítmény eléréséhez egy adott verzió kiválasztására vagy a virtuális gép optimalizálására lehet szükség. További információkért lásd: [Virtuális gépek átviteli sebességének megbízható tesztelése](../virtual-network/virtual-network-bandwidth-testing.md).
+
+
+## <a name="other-sizes-and-information"></a>Egyéb méretek és információk
+
+- [Általános célú](sizes-general.md)
+- [Memóriaoptimalizált](sizes-memory.md)
+- [Tároptimalizált](sizes-storage.md)
+- [GPU-optimalizált](sizes-gpu.md)
+- [Nagy teljesítményű számítás](sizes-hpc.md)
+- [Előző generációk](sizes-previous-gen.md)
+
+Árképzési kalkulátor: [árképzési kalkulátor](https://azure.microsoft.com/pricing/calculator/)
+
+További információ a lemezek típusairól: [lemezek típusai](https://docs.microsoft.com/azure/virtual-machines/linux/disks-types#ultra-ssd-preview/)
+
 
 ## <a name="next-steps"></a>További lépések
 

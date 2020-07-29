@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 07/10/2020
+ms.date: 07/15/2020
 ms.author: alkohli
-ms.openlocfilehash: 34b1ce42850fcefcc2b0d146e7f33d720fd8062d
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: a99499110951ccbc0458b5ce848930fed9205dad
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86202536"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372014"
 ---
 # <a name="use-the-local-web-ui-to-administer-your-data-box-and-data-box-heavy"></a>A helyi webes felhasználói felület használata a Data Box és Data Box Heavy felügyeletéhez
 
@@ -35,7 +35,7 @@ A cikk az alábbi oktatóanyagokat tartalmazza:
 
 Ha eszközproblémákat tapasztal, létrehozhat egy támogatási csomagot a rendszernaplókból. A Microsoft támogatási szolgálata a csomag segítségével hárítja el a problémát. Támogatási csomag létrehozásához hajtsa végre a következő lépéseket:
 
-1. A helyi webes felhasználói felületen nyissa meg a **Contact Support** (Kapcsolatfelvétel a támogatási szolgálattal) lapot, és kattintson a **Create Support package** (Támogatási csomag létrehozása) elemre.
+1. A helyi webes KEZELŐFELÜLETen lépjen a **Kapcsolatfelvétel az ügyfélszolgálattal** lehetőségre, és válassza a **támogatási csomag létrehozása**lehetőséget.
 
     ![Támogatási csomag létrehozása – 1](media/data-box-local-web-ui-admin/create-support-package-1.png)
 
@@ -43,14 +43,13 @@ Ha eszközproblémákat tapasztal, létrehozhat egy támogatási csomagot a rend
 
     ![Támogatási csomag létrehozása – 2](media/data-box-local-web-ui-admin/create-support-package-2.png)
 
-3. A támogatási csomag létrehozásának befejezését követően kattintson a **Download Support package** (Támogatási csomag letöltése) elemre. 
+3. A támogatási csomag létrehozásának befejezése után válassza a **támogatási csomag letöltése**lehetőséget.
 
     ![Támogatási csomag létrehozása – 4](media/data-box-local-web-ui-admin/create-support-package-4.png)
 
 4. Tallózással válassza ki a letöltés helyét. Nyissa meg a mappát a tartalmak megtekintéséhez.
 
     ![Támogatási csomag létrehozása – 5](media/data-box-local-web-ui-admin/create-support-package-5.png)
-
 
 ## <a name="shut-down-or-restart-your-device"></a>Az eszköz leállítása és újraindítása
 
@@ -59,7 +58,7 @@ Az eszközt a helyi webes felhasználói felület használatával állíthatja l
 Az eszköz leállításához hajtsa végre az alábbi lépéseket.
 
 1. A helyi webes felhasználói felületen lépjen a **Shut down or restart** (Leállítás vagy újraindítás) lapra.
-2. Kattintson a **Shut down** (Leállítás) elemre.
+2. Válassza a **Leállítás**lehetőséget.
 
     ![A Data Box leállítása – 1](media/data-box-local-web-ui-admin/shut-down-local-web-ui-1.png)
 
@@ -72,11 +71,11 @@ Az eszköz leállítását követően az előlapon található bekapcsoló gombb
 A Data Box újraindításához hajtsa végre az alábbi lépéseket.
 
 1. A helyi webes felhasználói felületen lépjen a **Shut down or restart** (Leállítás vagy újraindítás) lapra.
-2. Kattintson a **Restart** (Újraindítás) elemre.
+2. Válassza az **Újraindítás**lehetőséget.
 
     ![A Data Box újraindítása – 1](media/data-box-local-web-ui-admin/restart-local-web-ui-1.png)
 
-3. Ha a rendszer megerősítést kér, kattintson az **OK** gombra a folytatáshoz.
+3. Ha a rendszer megerősítést kér, kattintson **az OK gombra** a folytatáshoz.
 
    Az eszköz leáll, majd újraindul.
 
@@ -90,9 +89,9 @@ Mielőtt elkezdené, győződjön meg arról, hogy az eszköz elvégezte **szál
 
     ![Az eszköz szállításra kész](media/data-box-portal-admin/ready-to-ship.png)
 
-2. A **fájlok** listájának letöltése gombra kattintva letöltheti a Data Box másolt fájlok listáját.
+2. Válassza a **fájlok listájának letöltése** lehetőséget a Data Box másolt fájlok listájának letöltéséhez.
 
-    ![Kattintson a fájlok listájának letöltése elemre.](media/data-box-portal-admin/download-list-of-files.png)
+    ![Válassza a fájlok listájának letöltése lehetőséget.](media/data-box-portal-admin/download-list-of-files.png)
 
 3. A Fájlkezelőben láthatja, hogy az eszközhöz való kapcsolódáshoz használt protokolltól és a használt Azure Storage-típustól függően a fájlok külön listája jön létre.
 
@@ -184,5 +183,46 @@ Határozottan javasoljuk, hogy csak akkor tiltsa le az ellenőrző létrehozás�
 > [!NOTE]
 > Az ellenőrzőösszeg-számítás kihagyása beállítás csak akkor érhető el, ha a Azure Data Box fel van oldva. Ez a beállítás nem jelenik meg, ha az eszköz zárolva van.
 
-- Megtudhatja, hogyan [kezelheti a Data Box és Data Box Heavy a Azure Portalon keresztül](data-box-portal-admin.md).
+## <a name="enable-smb-signing"></a>SMB-aláírás engedélyezése
 
+A kiszolgáló-üzenetblokk (SMB) aláírása olyan szolgáltatás, amelyen keresztül az SMB-t használó kommunikáció digitálisan aláírható a csomagok szintjén. Ez az aláírás megakadályozza, hogy a támadások az SMB-csomagokat módosítsák az átvitel során.
+
+Az SMB-aláírással kapcsolatos további információkért lásd: [a kiszolgáló-üzenetblokk aláírásának áttekintése](https://support.microsoft.com/help/887429/overview-of-server-message-block-signing).
+
+Az SMB-aláírás engedélyezése az Azure-eszközön:
+
+1. Az eszköz helyi webes FELÜLETének jobb felső sarkában válassza a **Beállítások**lehetőséget.
+
+    ![Beállítások megnyitása](media/data-box-local-web-ui-admin/data-box-settings-1.png)
+
+2. **Engedélyezés** SMB-aláírás.
+
+    ![SMB-aláírás engedélyezése](media/data-box-local-web-ui-admin/data-box-smb-signing-1.png)
+
+3. Kattintson az **Alkalmaz** gombra.
+4. A helyi webes felhasználói felületen lépjen a **Shut down or restart** (Leállítás vagy újraindítás) lapra.
+5. Válassza az **Újraindítás**lehetőséget.
+
+## <a name="enable-tls-11"></a>TLS 1,1 engedélyezése
+
+Alapértelmezés szerint a Azure Data Box Transport Layer Security (TLS) 1,2 titkosítást használ, mivel az biztonságosabb, mint a TSL 1,1. Ha azonban Ön vagy az ügyfelei böngészőt használnak a TLS 1,2-et nem támogató adateléréshez, akkor engedélyezheti a TLS 1,1-et.
+
+A TLS-vel kapcsolatos további információkért lásd: [Azure Data Box Gateway biztonság](../databox-online/data-box-gateway-security.md).
+
+A TLS 1,1 engedélyezése Azure-eszközön:
+
+1. Az eszköz helyi webes FELÜLETének jobb felső sarkában válassza a **Beállítások**lehetőséget.
+
+    ![Beállítások megnyitása](media/data-box-local-web-ui-admin/data-box-settings-1.png)
+
+2. **Engedélyezés** TLS 1,1.
+
+    ![TLS 1,1 engedélyezése](media/data-box-local-web-ui-admin/data-box-tls-1-1.png)
+
+3. Kattintson az **Alkalmaz** gombra.
+4. A helyi webes felhasználói felületen lépjen a **Shut down or restart** (Leállítás vagy újraindítás) lapra.
+5. Válassza az **Újraindítás**lehetőséget.
+
+## <a name="next-steps"></a>További lépések
+
+- Megtudhatja, hogyan [kezelheti a Data Box és Data Box Heavy a Azure Portalon keresztül](data-box-portal-admin.md).

@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
-ms.custom: codepen
-ms.openlocfilehash: aaf974eca4b307fc122cf0ee5fdb0ddbcf75088a
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: codepen, devx-track-javascript
+ms.openlocfilehash: 54477bd74df660edb12f6daffbaa2a7390f9516a
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86242610"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285713"
 ---
 # <a name="data-driven-style-expressions-web-sdk"></a>Adatvezérelt stílusú kifejezések (web SDK)
 
@@ -81,18 +81,18 @@ A jelen dokumentumban szereplő összes példa a következő funkcióval mutatja
 
 Az adatkifejezések hozzáférést biztosítanak a szolgáltatásban található tulajdonság-értékekhez. 
 
-| Kifejezés | Visszatérési típus | Leírás |
+| Expression | Visszatérési típus | Leírás |
 |------------|-------------|-------------|
-| `['at', number, array]` | objektum | Egy elem lekérése egy tömbből. |
+| `['at', number, array]` | object | Egy elem lekérése egy tömbből. |
 | `['geometry-type']` | sztring | A szolgáltatás geometriai típusának beolvasása: pont, multipoint, LineString, MultiLineString, sokszög és többsokszög. |
 | `['get', string]` | value | A tulajdonság értékének beolvasása az aktuális funkció tulajdonságaiból. Null értéket ad vissza, ha a kért tulajdonság hiányzik. |
 | `['get', string, object]` | value | A tulajdonság értékének beolvasása a megadott objektum tulajdonságaiból. Null értéket ad vissza, ha a kért tulajdonság hiányzik. |
-| `['has', string]` | logikai | Meghatározza, hogy a szolgáltatás tulajdonságai rendelkeznek-e a megadott tulajdonsággal. |
-| `['has', string, object]` | logikai | Meghatározza, hogy az objektum tulajdonságai rendelkeznek-e a megadott tulajdonsággal. |
+| `['has', string]` | boolean | Meghatározza, hogy a szolgáltatás tulajdonságai rendelkeznek-e a megadott tulajdonsággal. |
+| `['has', string, object]` | boolean | Meghatározza, hogy az objektum tulajdonságai rendelkeznek-e a megadott tulajdonsággal. |
 | `['id']` | value | A szolgáltatás AZONOSÍTÓjának beolvasása, ha rendelkezik ilyennel. |
 | `['length', string | array]` | szám | Egy karakterlánc vagy tömb hosszának beolvasása. |
-| `['in', boolean | string | number, array]` | logikai | Meghatározza, hogy egy elem létezik-e tömbben |
-| `['in', substring, string]` | logikai | Meghatározza, hogy létezik-e egy alsztring egy karakterláncban. |
+| `['in', boolean | string | number, array]` | boolean | Meghatározza, hogy egy elem létezik-e tömbben |
+| `['in', substring, string]` | boolean | Meghatározza, hogy létezik-e egy alsztring egy karakterláncban. |
 
 **Példák**
 
@@ -141,7 +141,7 @@ Hasonlóképpen a sokszögek körvonalai is megjelennek a sorokban. Ha le szeret
 
 A matematikai kifejezések matematikai operátorokat biztosítanak az adatvezérelt számítások végrehajtásához a kifejezés keretrendszerében.
 
-| Kifejezés | Visszatérési típus | Leírás |
+| Expression | Visszatérési típus | Leírás |
 |------------|-------------|-------------|
 | `['+', number, number, …]` | szám | Kiszámítja a megadott számok összegét. |
 | `['-', number]` | szám | A megadott szám szerinti 0 kivonása. |
@@ -196,17 +196,17 @@ A logikai kifejezések logikai operátorok egy készletét biztosítják a logik
 
 Az értékek összehasonlításakor az összehasonlítás szigorúan be van írva. A különböző típusú értékek mindig egyenlőtlennek számítanak. Azok az esetek, amelyekben a típusok ismertek, hogy az elemzési idő eltérő, és elemzési hibát eredményez. 
 
-| Kifejezés | Visszatérési típus | Leírás |
+| Expression | Visszatérési típus | Leírás |
 |------------|-------------|-------------|
-| `['! ', boolean]` | logikai | Logikai tagadás. Visszaadja `true` , ha a bemenet `false` , és `false` Ha a bemenet szerepel `true` . |
-| `['!= ', value, value]` | logikai | Visszaadja `true` , ha a bemeneti értékek nem egyenlőek, `false` ellenkező esetben. |
-| `['<', value, value]` | logikai | Akkor adja vissza `true` , ha az első bemenet szigorúan kisebb a másodiknál, `false` ellenkező esetben. Az argumentumoknak karakterláncoknak vagy mindkét számnak kell lenniük. |
-| `['<=', value, value]` | logikai | Azt adja vissza `true` , hogy az első bemenet kisebb-e vagy egyenlő-e a másodikval, `false` ellenkező esetben. Az argumentumoknak karakterláncoknak vagy mindkét számnak kell lenniük. |
-| `['==', value, value]` | logikai | Visszaadja `true` , ha a bemeneti értékek egyenlőek, `false` ellenkező esetben. Az argumentumoknak karakterláncoknak vagy mindkét számnak kell lenniük. |
-| `['>', value, value]` | logikai | Azt adja vissza `true` , hogy az első bemenet szigorúan nagyobb-e, mint a második, `false` ellenkező esetben. Az argumentumoknak karakterláncoknak vagy mindkét számnak kell lenniük. |
-| `['>=' value, value]` | logikai | Akkor adja vissza `true` , ha az első bemenet nagyobb vagy egyenlő, mint a második, `false` ellenkező esetben. Az argumentumoknak karakterláncoknak vagy mindkét számnak kell lenniük. |
-| `['all', boolean, boolean, …]` | logikai | Visszaadja `true` , ha az összes bemenet `true` , `false` ellenkező esetben. |
-| `['any', boolean, boolean, …]` | logikai | Visszaadja `true` , ha a bemenetek bármelyike `true` , `false` ellenkező esetben. |
+| `['! ', boolean]` | boolean | Logikai tagadás. Visszaadja `true` , ha a bemenet `false` , és `false` Ha a bemenet szerepel `true` . |
+| `['!= ', value, value]` | boolean | Visszaadja `true` , ha a bemeneti értékek nem egyenlőek, `false` ellenkező esetben. |
+| `['<', value, value]` | boolean | Akkor adja vissza `true` , ha az első bemenet szigorúan kisebb a másodiknál, `false` ellenkező esetben. Az argumentumoknak karakterláncoknak vagy mindkét számnak kell lenniük. |
+| `['<=', value, value]` | boolean | Azt adja vissza `true` , hogy az első bemenet kisebb-e vagy egyenlő-e a másodikval, `false` ellenkező esetben. Az argumentumoknak karakterláncoknak vagy mindkét számnak kell lenniük. |
+| `['==', value, value]` | boolean | Visszaadja `true` , ha a bemeneti értékek egyenlőek, `false` ellenkező esetben. Az argumentumoknak karakterláncoknak vagy mindkét számnak kell lenniük. |
+| `['>', value, value]` | boolean | Azt adja vissza `true` , hogy az első bemenet szigorúan nagyobb-e, mint a második, `false` ellenkező esetben. Az argumentumoknak karakterláncoknak vagy mindkét számnak kell lenniük. |
+| `['>=' value, value]` | boolean | Akkor adja vissza `true` , ha az első bemenet nagyobb vagy egyenlő, mint a második, `false` ellenkező esetben. Az argumentumoknak karakterláncoknak vagy mindkét számnak kell lenniük. |
+| `['all', boolean, boolean, …]` | boolean | Visszaadja `true` , ha az összes bemenet `true` , `false` ellenkező esetben. |
+| `['any', boolean, boolean, …]` | boolean | Visszaadja `true` , ha a bemenetek bármelyike `true` , `false` ellenkező esetben. |
 
 ## <a name="conditional-expressions"></a>Feltételes kifejezések
 
@@ -399,11 +399,11 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 
 A Type kifejezések a különböző adattípusok (például karakterláncok, számok és logikai értékek) tesztelésére és átalakítására szolgáló eszközöket biztosítanak.
 
-| Kifejezés | Visszatérési típus | Leírás |
+| Expression | Visszatérési típus | Leírás |
 |------------|-------------|-------------|
 | `['literal', array]`<br/><br/>`['literal', object]` | tömb \| objektum | Egy konstans tömb vagy objektum értékét adja vissza. Ezzel a kifejezéssel megakadályozható, hogy egy tömb vagy objektum kifejezésként legyen kiértékelve. Erre akkor van szükség, ha egy tömböt vagy objektumot egy kifejezésnek kell visszaadnia. |
 | `['image', string]` | sztring | Ellenőrzi, hogy a megadott rendszerkép-azonosító be van-e töltve a Maps-rendszerkép sprite-ba. Ha igen, a rendszer visszaadja az azonosítót, ellenkező esetben null értéket ad vissza. |
-| `['to-boolean', value]` | logikai | A bemeneti értéket logikai értékre alakítja. Az eredmény az, `false` Ha a bemenet egy üres karakterlánc,,, `0` `false` `null` vagy `NaN` ;, ellenkező esetben a `true` . |
+| `['to-boolean', value]` | boolean | A bemeneti értéket logikai értékre alakítja. Az eredmény az, `false` Ha a bemenet egy üres karakterlánc,,, `0` `false` `null` vagy `NaN` ;, ellenkező esetben a `true` . |
 | `['to-color', value]`<br/><br/>`['to-color', value1, value2…]` | szín | Átalakítja a bemeneti értéket egy színre. Ha több érték van megadva, a rendszer mindegyiket kiértékeli, amíg meg nem történik az első sikeres konverzió. Ha a bemenetek egyike sem alakítható át, akkor a kifejezés hibát jelez. |
 | `['to-number', value]`<br/><br/>`['to-number', value1, value2, …]` | szám | Ha lehetséges, átalakítja a bemeneti értéket egy számra. Ha a bemenet `null` vagy a `false` , az eredmény 0. Ha a bemenet értéke `true` , az eredmény 1. Ha a bemenet egy karakterlánc, akkor a rendszer a ECMAScript nyelvi specifikáció [ToNumber](https://tc39.github.io/ecma262/#sec-tonumber-applied-to-the-string-type) string függvényével egy számra konvertálja. Ha több érték van megadva, a rendszer mindegyiket kiértékeli, amíg meg nem történik az első sikeres konverzió. Ha a bemenetek egyike sem alakítható át, akkor a kifejezés hibát jelez. |
 | `['to-string', value]` | sztring | A bemeneti értéket karakterlánccá alakítja. Ha a bemenet értéke `null` , az eredmény: `""` . Ha a bemenet logikai érték, az eredmény a `"true"` vagy a `"false"` . Ha a bemenet egy szám, a rendszer a ECMAScript nyelv specifikációjának [ToString](https://tc39.github.io/ecma262/#sec-tostring-applied-to-the-number-type) Number függvényét használva karakterlánccá alakítja át. Ha a bemenet szín, a rendszer átalakítja a CSS RGBA színkarakterlánccá `"rgba(r,g,b,a)"` . Ellenkező esetben a rendszer a bemenetet egy karakterlánccá alakítja át a ECMAScript nyelvi specifikációjának [JSON. stringify](https://tc39.github.io/ecma262/#sec-json.stringify) funkciója segítségével. |
@@ -435,7 +435,7 @@ A Type kifejezések a különböző adattípusok (például karakterláncok, sz�
 
 A színkifejezések egyszerűbbé teszik a színértékek létrehozását és kezelését.
 
-| Kifejezés | Visszatérési típus | Leírás |
+| Expression | Visszatérési típus | Leírás |
 |------------|-------------|-------------|
 | `['rgb', number, number, number]` | szín | Egy színértéket hoz létre a *vörös*, *zöld*és *kék* összetevőkből a és a között `0` `255` , és egy alfa-összetevőt `1` . Ha bármelyik összetevő tartományon kívül esik, a kifejezés hibát jelez. |
 | `['rgba', number, number, number, number]` | szín | Egy színértéket hoz létre a *vörös*, *zöld*és *kék* összetevők között, amelyeknek a és a közötti tartományba kell `0` `255` esnie, valamint egy alfa-összetevőt a és a tartományban `0` `1` . Ha bármelyik összetevő tartományon kívül esik, a kifejezés hibát jelez. |
@@ -463,7 +463,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 A karakterlánc-operátor kifejezései olyan karakterlánc-átalakítási műveleteket hajtanak végre, mint például az Összefűzés és az átalakítás. 
 
-| Kifejezés | Visszatérési típus | Description |
+| Expression | Visszatérési típus | Description |
 |------------|-------------|-------------|
 | `['concat', string, string, …]` | sztring | Több karakterlánc összefűzése egymással. Minden értéknek sztringnek kell lennie. Ha szükséges, használja a `to-string` Type kifejezést más típusú értékek karakterlánccá alakításához. |
 | `['downcase', string]` | sztring | A megadott karakterláncot kisbetűsre alakítja. |
@@ -861,7 +861,7 @@ var layer = new atlas.layer.HeatMapLayer(datasource, null, {
 
 Változó kötési kifejezések a számítások eredményeit tárolják egy változóban. Így a számítási eredmények több alkalommal is hivatkozhatnak egy kifejezésben máshol. Hasznos optimalizálás olyan kifejezések esetében, amelyek sok számítást tartalmaznak.
 
-| Kifejezés | Visszatérési típus | Leírás |
+| Expression | Visszatérési típus | Leírás |
 |--------------|---------------|--------------|
 | \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;"Let",<br/>&nbsp;&nbsp;&nbsp;&nbsp;name1: karakterlánc,<br/>&nbsp;&nbsp;&nbsp;&nbsp;érték1: bármely,<br/>&nbsp;&nbsp;&nbsp;&nbsp;name2: karakterlánc,<br/>&nbsp;&nbsp;&nbsp;&nbsp;érték2: bármely,<br/>&nbsp;&nbsp;&nbsp;&nbsp;…<br/>&nbsp;&nbsp;&nbsp;&nbsp;childExpression<br/>\] | | Egy vagy több értéket tárol változóként az `var` eredményt visszaadó gyermek kifejezésben szereplő kifejezés használatával. |
 | `['var', name: string]` | bármelyik | A kifejezés használatával létrehozott változóra hivatkozik `let` . |
@@ -894,7 +894,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az alábbi cikkekben további kódokat talál a kifejezések megvalósításához:
 

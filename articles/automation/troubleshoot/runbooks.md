@@ -2,19 +2,16 @@
 title: Azure Automation runbook kapcsolatos problémák elhárítása
 description: Ez a cikk a Azure Automation runbookok kapcsolatos hibák elhárítását és megoldását ismerteti.
 services: automation
-author: mgoedtel
-ms.author: magoedte
-ms.date: 01/24/2019
+ms.date: 07/28/2020
 ms.topic: conceptual
 ms.service: automation
-manager: carmonm
 ms.custom: has-adal-ref
-ms.openlocfilehash: e0665a6aa55b998d54d076013a25e2efadaa2b06
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 9bf04ae6985ac2ce0e20bf70b3d7c003bbddca69
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187183"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337296"
 ---
 # <a name="troubleshoot-runbook-issues"></a>Runbookkal kapcsolatos hibák elhárítása
 
@@ -511,6 +508,24 @@ Ha havonta több mint 500 perces feldolgozást szeretne használni, módosítsa 
 1. Válassza a **Beállítások**, majd a **díjszabás**lehetőséget.
 1. Kattintson az **Engedélyezés** elemre az oldal alján a fiók alapszintű szintre való frissítéséhez.
 
+## <a name="scenario-runbook-output-stream-greater-than-1-mb"></a><a name="output-stream-greater-1mb"></a>Forgatókönyv: az 1 MB-nál nagyobb kimeneti adatfolyam Runbook
+
+### <a name="issue"></a>Probléma
+
+Az Azure-beli homokozóban futó runbook a következő hibával meghiúsul:
+
+```error
+The runbook job failed due to a job stream being larger than 1MB, this is the limit supported by an Azure Automation sandbox.
+```
+
+### <a name="cause"></a>Ok
+
+Ez a hiba azért fordul elő, mert a runbook túl sok kivételi adatokat próbált meg írni a kimeneti adatfolyamba.
+
+### <a name="resolution"></a>Feloldás
+
+A feladatok kimeneti adatfolyamának 1 MB-os korlátja van. Győződjön meg arról, hogy a runbook egy végrehajtható vagy alfolyamathoz tartozó hívásokat csatol a `try` és a `catch` blokk használatával. Ha a műveletek kivételt jeleznek, a kódnak kell megírnia az üzenetet a kivételből egy Automation-változóba. Ezzel a technikával megakadályozható, hogy a rendszer beírja az üzenetet a feladatok kimeneti adatfolyamba. A hibrid Runbook-feldolgozói feladatok végrehajtásához a kimeneti adatfolyam 1 MB-ra csonkítva hibaüzenet nélkül jelenik meg.
+
 ## <a name="scenario-runbook-job-start-attempted-three-times-but-fails-to-start-each-time"></a><a name="job-attempted-3-times"></a>Forgatókönyv: a Runbook-feladatok megkezdése háromszor próbálkozott, de minden alkalommal nem indul el
 
 ### <a name="issue"></a>Probléma
@@ -526,20 +541,22 @@ The job was tried three times but it failed
 Ez a hiba az alábbi problémák egyike miatt fordul elő:
 
 * **Memória korlátja** Egy feladat meghiúsulhat, ha több mint 400 MB memóriát használ. A sandbox számára lefoglalt memória dokumentált korlátai az [Automation szolgáltatás korlátain](../../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits)találhatók. 
+
 * **Hálózati szoftvercsatornák.** Az Azure-beli munkaterületek 1 000 egyidejű hálózati szoftvercsatornára korlátozódnak. További információ: az [Automation szolgáltatás korlátai](../../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits).
+
 * **A modul nem kompatibilis.** Előfordulhat, hogy a modul függőségei nem megfelelőek. Ebben az esetben a runbook általában egy vagy egy `Command not found` üzenetet ad vissza `Cannot bind parameter` .
+
 * **Nincs hitelesítés Active Directory a homokozóban.** A runbook megpróbált meghívni egy Azure-beli homokozóban futó végrehajtható fájlt vagy alfolyamatot. A runbookok konfigurálása az Azure AD-val való hitelesítéshez az Azure Active Directory Authentication Library (ADAL) használatával nem támogatott.
-* **Túl sok kivételi érték.** A runbook túl sok kivételi adatokat próbált meg írni a kimeneti adatfolyamba.
 
 ### <a name="resolution"></a>Feloldás
 
 * **Memória korlátja, hálózati szoftvercsatorna.** A memória korlátain belüli munkaterhelések használatának javasolt módjai a munkaterhelés több runbookok közötti felosztása, a memóriában kevesebb adat feldolgozása, a felesleges kimenetek írása a runbookok, valamint a PowerShell-munkafolyamatok runbookok való beírásának gyakorisága. A Clear metódussal, például a paranccsal `$myVar.clear` törölheti a változókat, `[GC]::Collect` és azonnal futtathatja a szemetet. Ezek a műveletek csökkentik a runbook memória-lábnyomát futtatókörnyezet közben.
+
 * **A modul nem kompatibilis.** Frissítse az Azure-modulokat a [Azure Automation Azure PowerShell moduljainak frissítése](../automation-update-azure-modules.md)című témakör lépéseit követve.
+
 * **Nincs hitelesítés Active Directory a homokozóban.** Ha az Azure AD-t egy runbook hitelesíti, győződjön meg arról, hogy az Azure AD-modul elérhető az Automation-fiókjában. Ügyeljen arra, hogy a futtató fióknak meg kell adnia a szükséges engedélyeket a runbook automatizálható feladatok végrehajtásához.
 
   Ha a runbook nem hívhat meg egy Azure-beli homokozóban futó végrehajtható fájlt vagy alfolyamatot, használja a runbook [hibrid runbook-feldolgozón](../automation-hrw-run-runbooks.md). A hibrid feldolgozók nem korlátozódnak az Azure-beli munkaterületek által használt memória-és hálózati korlátokra.
-
-* **Túl sok kivételi érték.** A feladatok kimeneti adatfolyamának 1 MB-os korlátja van. Győződjön meg arról, hogy a runbook egy végrehajtható vagy alfolyamathoz tartozó hívásokat csatol a `try` és a `catch` blokk használatával. Ha a műveletek kivételt jeleznek, a kódnak kell megírnia az üzenetet a kivételből egy Automation-változóba. Ezzel a technikával megakadályozható, hogy a rendszer beírja az üzenetet a feladatok kimeneti adatfolyamba.
 
 ## <a name="scenario-powershell-job-fails-with-cannot-invoke-method-error-message"></a><a name="cannot-invoke-method"></a>Forgatókönyv: a PowerShell-feladatok meghiúsulnak "a metódus nem hívható meg" hibaüzenet jelenik meg
 

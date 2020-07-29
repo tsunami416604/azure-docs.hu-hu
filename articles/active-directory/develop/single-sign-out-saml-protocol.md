@@ -2,21 +2,22 @@
 title: Azure egyszeri kijelentkezési SAML protokoll
 description: Ez a cikk az egyszeri kijelentkezési SAML protokollt ismerteti Azure Active Directory
 services: active-directory
-author: rwike77
+author: kenwith
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/19/2017
-ms.author: ryanwi
+ms.author: kenwith
 ms.custom: aaddev
-ms.reviewer: hirsin
-ms.openlocfilehash: dbe21d020d5d01f24913b95587721403fa218cc8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.reviewer: paulgarn
+ms.openlocfilehash: c2673552638c1829b1640724634e365dc6595703
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80881265"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284421"
 ---
 # <a name="single-sign-out-saml-protocol"></a>Egyszeri kijelentkezési SAML protokoll
 
@@ -69,5 +70,5 @@ Az Azure AD ezt az értéket állítja be, ahol az az `https://login.microsofton
 
 Az elem értékének kiértékeléséhez `Issuer` használja az alkalmazás regisztrációja során megadott **alkalmazás-azonosító URI** azonosító értékét.
 
-### <a name="status"></a>Állapot
+### <a name="status"></a>status
 Az Azure AD az `StatusCode` `Status` elem eleme alapján jelzi a kijelentkezés sikerességét vagy sikertelenségét. Ha a kijelentkezési kísérlet sikertelen, `StatusCode` akkor az elem egyéni hibaüzeneteket is tartalmazhat.

@@ -3,12 +3,12 @@ title: Az alkalmazás tesztelése az Azure-ban | Microsoft Docs
 description: Megtudhatja, hogyan hozhat létre fájlmegosztást a laborban, és hogyan csatlakoztathatja a helyi gépre és egy virtuális gépre a laborban, majd telepíthet asztali/webalkalmazásokat a fájlmegosztást, és tesztelheti azokat.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 30e77e67a1674b2170c1d1782f1389274afa4c35
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b2dbbf349da4e352fe20a22db03cc9063d801990
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85476495"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282245"
 ---
 # <a name="test-your-app-in-azure"></a>Alkalmazás tesztelése az Azure-ban 
 Ez a cikk az alkalmazás Azure-beli DevTest Labs használatával történő tesztelésének lépéseit ismerteti. Először állítson be egy fájlmegosztást egy laborban, és csatlakoztassa meghajtóként a helyi fejlesztési gépen, illetve egy virtuális gépet egy laboron belül. Ezt követően a Visual Studio 2019 használatával helyezheti üzembe az alkalmazást a fájlmegosztást, így az alkalmazást a laborban futtathatja a virtuális gépen.  
@@ -18,7 +18,7 @@ Ez a cikk az alkalmazás Azure-beli DevTest Labs használatával történő tesz
 ## <a name="prerequisites"></a>Előfeltételek 
 1. [Hozzon létre egy Azure-előfizetést](https://azure.microsoft.com/free/) , ha még nem rendelkezik ilyennel, és jelentkezzen be [Azure Portalba](https://portal.azure.com).
 2. A [cikk](devtest-lab-create-lab.md) utasításait követve hozzon létre egy labort Azure DevTest Labs használatával. Rögzítse a labort az irányítópulton, hogy legközelebb megkeresse a következő bejelentkezés alkalmával. A Azure DevTest Labs lehetővé teszi, hogy gyorsan hozzon létre erőforrásokat az Azure-ban a hulladék minimalizálása és a költségek szabályozása érdekében. További információ a DevTest Labs szolgáltatásról: [Áttekintés](devtest-lab-overview.md). 
-3. Hozzon létre egy Azure Storage-fiókot a labor erőforráscsoporthoz a [Storage-fiók létrehozása](../storage/common/storage-create-storage-account.md) című cikk utasításait követve. A **Storage-fiók létrehozása** lapon válassza a **meglévő használata** az **erőforráscsoport**számára lehetőséget, és válassza ki a **labor erőforrás-csoportot**. 
+3. Hozzon létre egy Azure Storage-fiókot a labor erőforráscsoporthoz a [Storage-fiók létrehozása](../storage/common/storage-account-create.md) című cikk utasításait követve. A **Storage-fiók létrehozása** lapon válassza a **meglévő használata** az **erőforráscsoport**számára lehetőséget, és válassza ki a **labor erőforrás-csoportot**. 
 4. Hozzon létre egy fájlmegosztást az Azure Storage-ban a [fájlmegosztás létrehozása Azure Files](../storage/files/storage-how-to-create-file-share.md) cikkben található utasításokat követve. 
 
 ## <a name="mount-the-file-share-on-your-local-machine"></a>A fájlmegosztás csatlakoztatása a helyi gépen

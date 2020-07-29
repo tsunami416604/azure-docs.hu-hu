@@ -7,15 +7,15 @@ ms.author: laobri
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.date: 01/31/2020
-ms.custom: tracking-python
-ms.openlocfilehash: 90ad8cc87f1d6a1893b96f6201a4260c03c94fee
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.topic: conceptual
+ms.custom: how-to, tracking-python
+ms.openlocfilehash: 8aebcfc2a46de3922dbc41942e63e71844de6e83
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072203"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319745"
 ---
 # <a name="create-run-and-delete-azure-ml-resources-using-rest"></a>Azure ML-erőforrások létrehozása, futtatása és törlése a REST használatával
 
@@ -204,8 +204,8 @@ Figyelje meg, hogy az elérési úton megjelenő kísérletek listája a `histor
 
 |Terület|Elérési út|
 |-|-|
-|Artifacts|összetevő/v 2.0/|
-|Adattárolók|adattár/v 1.0/|
+|Artifacts|/rest/api/azureml|
+|Adattárolók|/azure/machine-learning/how-to-access-data|
 |Hiperparaméterek finomhangolása|HyperDrive/v 1.0/|
 |Modellek|modelmanagement/v 1.0/|
 |Előzmények|végrehajtás/v 1.0/és előzmények/v 1.0/|

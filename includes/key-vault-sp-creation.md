@@ -4,12 +4,12 @@ ms.service: key-vault
 ms.topic: include
 ms.date: 07/20/2020
 ms.author: msmbaldwin
-ms.openlocfilehash: 07f856994b57e415ece063050b76dcd891698943
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c6a9f17d46ef8feb571c0ecc7a0a93a169f74725
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87013109"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285550"
 ---
 A felhőalapú Python-alkalmazások hitelesítésének legegyszerűbb módja a felügyelt identitás; a részletekért tekintse meg a [app Service felügyelt identitás használata a Azure Key Vault eléréséhez](/azure/key-vault/general/managed-identity) című témakört. 
 
@@ -18,7 +18,7 @@ Az egyszerűség kedvéért azonban ez a rövid útmutató egy asztali alkalmaz�
 Hozzon létre egy egyszerű szolgáltatást az Azure CLI az [ad SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) parancs használatával:
 
 ```azurecli
-az ad sp create-for-rbac -n "http://&lt;my-unique-service-principal-name&gt;" --sdk-auth
+az ad sp create-for-rbac -n "http://<my-unique-service-principal-name>" --sdk-auth
 ```
 
 A művelet a kulcs/érték párok sorozatát fogja visszaadni.

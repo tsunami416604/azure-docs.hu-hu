@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/25/2020
 ms.author: trrwilson
-ms.openlocfilehash: c43194db6d1d629003079db7248223aee52ffa70
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 99540e8518aa31a2221844aa954ff665609d8217
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84609631"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87375770"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -25,7 +25,7 @@ Az első lépések előtt:
 A go. mod fájl frissítése a legújabb SDK-verzióra a sor hozzáadásával
 ```sh
 require (
-    github.com/Microsoft/cognitive-services-speech-sdk-go v1.12.1
+    github.com/Microsoft/cognitive-services-speech-sdk-go v1.13.0
 )
 ```
 
@@ -119,6 +119,6 @@ Most már beállította a projekt felépítését és a beszédfelismerés teszt
 > A Speech SDK alapértelmezés szerint az en-us nyelv használatával ismeri fel a nyelvet, a forrás nyelvének kiválasztásával kapcsolatos információkért lásd: nyelv [megadása a beszédhez szöveghez](../../../../how-to-specify-source-language.md) .
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [!INCLUDE [footer](./footer.md)]

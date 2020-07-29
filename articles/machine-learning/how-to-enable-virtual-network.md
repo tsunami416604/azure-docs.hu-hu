@@ -5,18 +5,18 @@ description: Egy elszigetelt Azure-Virtual Network Azure Machine Learning haszn�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 07/07/2020
-ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: fa99a5c78fb533d17cb7f70b3545aa9ef6439b32
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.topic: conceptual
+ms.custom: how-to, contperfq4, tracking-python
+ms.openlocfilehash: 79db00216ffb54b8c71ef78cc745ec37c353f1cc
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072613"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320170"
 ---
 # <a name="network-isolation-during-training--inference-with-private-virtual-networks"></a>Hálózati elkülönítés a betanítás során & privát virtuális hálózatokkal való következtetés
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -304,8 +304,8 @@ Ha nem szeretné az alapértelmezett kimenő szabályokat használni, és korlá
 - A kimenő internetkapcsolat megtagadása a NSG szabályok használatával.
 
 - __Számítási példány__ vagy __számítási fürt__esetén korlátozza a kimenő forgalmat a következő elemekre:
-   - Az Azure Storage a __Storage__ __szolgáltatás címkéjének__ használatával.
-   - Azure Container Registry a __AzureContainerRegistry__ __szolgáltatási címkéjének__ használatával.
+   - Azure Storage a __Storage. RegionName__ __szolgáltatási címkéjével__ . Ahol az `{RegionName}` egy Azure-régió neve.
+   - Azure Container Registry a __AzureContainerRegistry. RegionName__ __szolgáltatási címkéje__ segítségével. Ahol az `{RegionName}` egy Azure-régió neve.
    - Azure Machine Learning a __AzureMachineLearning__ __szolgáltatási címkéjének__ használatával
    - Azure Resource Manager a __AzureResourceManager__ __szolgáltatási címkéjének__ használatával
    - Azure Active Directory a __AzureActiveDirectory__ __szolgáltatási címkéjének__ használatával

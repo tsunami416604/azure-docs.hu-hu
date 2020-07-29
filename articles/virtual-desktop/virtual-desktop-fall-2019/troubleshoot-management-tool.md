@@ -1,6 +1,6 @@
 ---
-title: Windows rendszerű virtuális asztali felügyeleti eszköz – Azure
-description: A Windows rendszerű virtuális asztali felügyeleti eszközzel kapcsolatos problémák elhárítása.
+title: Windows rendszerű virtuális asztali (klasszikus) felügyeleti eszköz – Azure
+description: A Windows rendszerű virtuális asztali (klasszikus) felügyeleti eszközzel kapcsolatos problémák elhárítása.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: troubleshooting
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: bb9206d2c2c15c036b0cf1184b79ed126966eb3b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 442cdce2ebb6c1a3e38932411dfa2b081a44ef9f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82614797"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283367"
 ---
-# <a name="troubleshoot-the-windows-virtual-desktop-management-tool"></a>A Windows Virtual Desktop felügyeleti eszköz hibaelhárítása
+# <a name="troubleshoot-the-windows-virtual-desktop-classic-management-tool"></a>A Windows rendszerű virtuális asztali (klasszikus) felügyeleti eszköz hibáinak megoldása
 
 >[!IMPORTANT]
->Ez a tartalom a Fall 2019 kiadásra vonatkozik, amely nem támogatja a Windows rendszerű virtuális asztali objektumokat Azure Resource Manager.
+>Ez a tartalom a Windows rendszerű virtuális asztali (klasszikus) verzióra vonatkozik, amely nem támogatja Azure Resource Manager Windows rendszerű virtuális asztali objektumokat.
 
 Ez a cikk azokat a problémákat ismerteti, amelyek a Windows rendszerű virtuális asztali felügyeleti eszköz telepítésekor és a javításuk során fordulhatnak elő.
 
