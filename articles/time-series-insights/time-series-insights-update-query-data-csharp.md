@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.custom: seodec18
-ms.openlocfilehash: aa3faad88fb5474b34ff6855690882141b2e4843
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1057bb908e973c74b6dfb70931469e27f77512de
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87046302"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292668"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-gen2-environment-using-c"></a>Adatok lekérdezése a Azure Time Series Insights Gen2-környezetből C használatával #
 
@@ -39,9 +39,9 @@ Az alábbi mintakód a következő funkciókat mutatja be:
     * [Gen2 lekérdezési API](https://docs.microsoft.com/rest/api/time-series-insights/preview#query-apis)
         * Az [Events API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#getevents)beszerzése, a [Series API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#getseries)beolvasása és az [aggregált Series API beszerzése](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#aggregateseries)
     * [Idősorozat-modell API-k](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#aggregateseries)
-        * [Hierarchiák API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeserieshierarchies/get) -és [hierarchiáinak](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeserieshierarchies/executebatch) BEolvasása batch API
-        * [Get types API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/get) és [TYPEs batch API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/executebatch)
-        * [Példányok API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/get) -k és példányok beolvasása [Batch API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/executebatch)
+        * [Hierarchiák API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeserieshierarchies) -és [hierarchiáinak](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeserieshierarchies/executebatch) BEolvasása batch API
+        * [Get types API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes) és [TYPEs batch API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/executebatch)
+        * [Példányok API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances) -k és példányok beolvasása [Batch API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/executebatch)
 * Speciális [keresési](https://docs.microsoft.com/rest/api/time-series-insights/preview#search-features) és [TSX](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax) képességek.
 
 ## <a name="prerequisites-and-setup"></a>Előfeltételek és beállítás

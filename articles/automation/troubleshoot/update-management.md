@@ -5,12 +5,12 @@ services: automation
 ms.date: 06/30/2020
 ms.topic: conceptual
 ms.service: automation
-ms.openlocfilehash: 74250a54d7b835ceb37614450de07e9e3baefd83
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 1ec2aed0a2cceebe4685cf75c7007d1ce0785615
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86183154"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87293084"
 ---
 # <a name="troubleshoot-update-management-issues"></a>Az Update Management hibáinak elhárítása
 
@@ -150,7 +150,7 @@ Az Automation erőforrás-szolgáltató regisztrálásához hajtsa végre az al�
 
 1. A portál alján található Azure-szolgáltatások listájában válassza a **minden szolgáltatás**lehetőséget, majd válassza az **előfizetések** lehetőséget az általános szolgáltatás csoportban.
 
-2. Válassza ki az előfizetését.
+2. Válassza ki előfizetését.
 
 3. A **Beállítások**területen válassza az **erőforrás-szolgáltatók**elemet.
 
@@ -242,7 +242,7 @@ Az alábbi lépéseket követve ellenőrizheti, hogy a lekérdezések megfelelő
     | project id, location, name, tags
     ```
 
-   Például:
+   Alább bemutatunk egy példát:
 
     ```kusto
     where (subscriptionId in~ ("20780d0a-b422-4213-979b-6c919c91ace1", "af52d412-a347-4bc6-8cb7-4780fbb00490") and type =~ "microsoft.compute/virtualmachines" and properties.storageProfile.osDisk.osType == "Windows" and resourceGroup in~ ("testRG","withinvnet-2020-01-06-10-global-resources-southindia") and location in~ ("australiacentral","australiacentral2","brazilsouth") )
@@ -387,7 +387,7 @@ Ez a hiba a következő okok valamelyike miatt jelentkezhet:
 * A gép ki van kapcsolva, és nem érhető el.
 * A gép hálózati kapcsolattal rendelkezik, ezért a hibrid feldolgozó a gépen nem érhető el.
 * Frissült az MMA, amely megváltoztatta a forrásoldali számítógép AZONOSÍTÓját.
-* A frissítési kísérlet szabályozása megtörtént, ha elér egy Automation-fiók 2000 egyidejű feladatának korlátját. Az egyes központi telepítések feladatoknak minősülnek, és a frissítések központi telepítésének minden gépe feladatoknak számít. Az Automation-fiókban jelenleg futó egyéb automatizálási feladatok vagy frissítési üzembe helyezések az egyidejű feladatok korlátja felé mutatnak.
+* A frissítési kísérlet szabályozása megtörtént, ha elér egy Automation-fiók 200 egyidejű feladatának korlátját. Az egyes központi telepítések feladatoknak minősülnek, és a frissítések központi telepítésének minden gépe feladatoknak számít. Az Automation-fiókban jelenleg futó egyéb automatizálási feladatok vagy frissítési üzembe helyezések az egyidejű feladatok korlátja felé mutatnak.
 
 ### <a name="resolution"></a>Feloldás
 

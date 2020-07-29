@@ -7,15 +7,16 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 93043874db6076b26d0fefe447db7acd83547442
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 05bcbf8df695ba308a6eaff5e7401f0a6d638747
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84725584"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337602"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Az Azure Digital Twins Twin gráf lekérdezése
 
-Ez a cikk részletesen bemutatja, hogyan használhatja az [Azure Digital Twins Query Store nyelvet](concepts-query-language.md) , hogy lekérdezze a [Twin Graphot](concepts-twins-graph.md) az információkhoz. A Graph-lekérdezéseket az Azure Digital Twins [**lekérdezési API**](how-to-use-apis-sdks.md)-k használatával futtathatja.
+Ez a cikk példákat és részletesebb információkat tartalmaz az [Azure Digital Twins Query Store nyelvének](concepts-query-language.md) használatáról a [Twin gráf](concepts-twins-graph.md) adatainak lekérdezéséhez. A Graph-lekérdezéseket az Azure Digital Twins [**lekérdezési API**](how-to-use-apis-sdks.md)-k használatával futtathatja.
 
 ## <a name="query-syntax"></a>Lekérdezési szintaxis
 
@@ -40,6 +41,52 @@ AND T.roomSize > 50
 
 > [!TIP]
 > A Digital Twin AZONOSÍTÓját a rendszer a metaadatok mező használatával kérdezi le `$dtId` .
+
+### <a name="query-based-on-relationships"></a>Lekérdezés kapcsolatok alapján
+
+A digitális ikrek kapcsolatain alapuló lekérdezések esetén az Azure Digital Twins Query Store nyelvének speciális szintaxisa van.
+
+A kapcsolatok a záradék lekérdezési hatókörében vannak behúzva `FROM` . A "klasszikus" SQL-Type nyelvek egyik fontos különbsége, hogy az ebben a `FROM` záradékban szereplő kifejezések nem táblázatos jellegűek, a záradék pedig az `FROM` entitások közötti kapcsolat bejárását fejezi ki, és a (z) Azure digitális Twins-verziójával van írva `JOIN` . 
+
+Ne felejtse el, hogy az Azure Digital Twins [modell](concepts-models.md) képességeivel a kapcsolatok nem léteznek az ikrektől függetlenül. Ez azt jelenti, hogy az Azure Digital Twins Query Store nyelve `JOIN` egy kicsit eltér az általános SQL `JOIN` -től, mivel itt nem lehet egymástól függetlenül lekérdezni a kapcsolatokat, és egy Twin-hez kell kötni.
+A különbség befoglalásához a kulcsszó a `RELATED` `JOIN` kettős kapcsolatokra mutató hivatkozásokat használja a záradékban. 
+
+A következő szakasz több példát mutat be, hogy ez hogyan néz ki.
+
+> [!TIP]
+> Ez a funkció elméletileg a CosmosDB dokumentum-központú funkcióit utánozza, ahol a `JOIN` dokumentumon belüli gyermekobjektumok is elvégezhetők. A CosmosDB a `IN` kulcsszó használatával jelzi, hogy a az `JOIN` aktuális környezeti dokumentumban lévő tömb elemeinek megismétlésére szolgál.
+
+#### <a name="relationship-based-query-examples"></a>Kapcsolaton alapuló lekérdezési példák
+
+Ha olyan adatkészletet szeretne beolvasni, amely kapcsolatokat tartalmaz, használjon egyetlen `FROM` utasítást, amelyet N utasítások követnek `JOIN` , ahol a `JOIN` utasítások egy korábbi vagy egy utasítás eredményéhez kapcsolódnak `FROM` `JOIN` .
+
+Példa a kapcsolaton alapuló lekérdezésre. Ez a kódrészlet kiválasztja az összes olyan digitális ikreket, amelynek *ID* tulajdonsága "ABC", és az ezen digitális ikrekhez kapcsolódó összes digitális ikrek a következő kapcsolaton keresztül *szerepelnek* . 
+
+```sql
+SELECT T, CT
+FROM DIGITALTWINS T
+JOIN CT RELATED T.contains
+WHERE T.$dtId = 'ABC' 
+```
+
+>[!NOTE] 
+> A fejlesztőnek nem kell `JOIN` összekapcsolnia ezt a záradékban található kulcs értékével `WHERE` (vagy a definícióban szereplő kulcs értékének megadásával `JOIN` ). Ezt a korrelációt a rendszer automatikusan kiszámítja, mivel a kapcsolat tulajdonságai maguk határozzák meg a célként megadott entitást.
+
+#### <a name="query-the-properties-of-a-relationship"></a>Kapcsolat tulajdonságainak lekérdezése
+
+Hasonlóan ahhoz, ahogy a digitális ikrek rendelkeznek a DTDL-on keresztül leírt tulajdonságokkal, a kapcsolatok is rendelkezhetnek tulajdonságokkal. Az Azure Digital Twins Query Store nyelve lehetővé teszi a kapcsolatok szűrését és kivetítését azáltal, hogy a záradékon belül egy aliast rendel hozzá a kapcsolathoz `JOIN` . 
+
+Példaként vegyünk egy olyan *servicedBy* -kapcsolatot, amely *reportedCondition* tulajdonsággal rendelkezik. Az alábbi lekérdezésben ez a kapcsolat az "R" aliast kapja, hogy hivatkozzon a tulajdonságára.
+
+```sql
+SELECT T, SBT, R
+FROM DIGITALTWINS T
+JOIN SBT RELATED T.servicedBy R
+WHERE T.$dtId = 'ABC' 
+AND R.reportedCondition = 'clean'
+```
+
+A fenti példában látható, hogy a *reportedCondition* a *servicedBy* -kapcsolat egyik tulajdonsága (nem pedig egy olyan digitális iker, amely *servicedBy* -kapcsolattal rendelkezik).
 
 ## <a name="run-queries-with-an-api-call"></a>Lekérdezések futtatása API-hívással
 
@@ -75,53 +122,7 @@ catch (RequestFailedException e)
 }
 ```
 
-## <a name="query-based-on-relationships"></a>Lekérdezés kapcsolatok alapján
-
-A digitális ikrek kapcsolatain alapuló lekérdezések esetén az Azure Digital Twins Query Store nyelvének speciális szintaxisa van.
-
-A kapcsolatok a záradék lekérdezési hatókörében vannak behúzva `FROM` . A "klasszikus" SQL-Type nyelvek egyik fontos különbsége, hogy az ebben a `FROM` záradékban szereplő kifejezések nem táblázatos jellegűek, a záradék pedig az `FROM` entitások közötti kapcsolat bejárását fejezi ki, és a (z) Azure digitális Twins-verziójával van írva `JOIN` . 
-
-Ne felejtse el, hogy az Azure Digital Twins [modell](concepts-models.md) képességeivel a kapcsolatok nem léteznek az ikrektől függetlenül. Ez azt jelenti, hogy az Azure Digital Twins Query Store nyelve `JOIN` egy kicsit eltér az általános SQL `JOIN` -től, mivel itt nem lehet egymástól függetlenül lekérdezni a kapcsolatokat, és egy Twin-hez kell kötni.
-A különbség befoglalásához a kulcsszó a `RELATED` `JOIN` kettős kapcsolatokra mutató hivatkozásokat használja a záradékban. 
-
-A következő szakasz több példát mutat be, hogy ez hogyan néz ki.
-
-> [!TIP]
-> Ez a funkció elméletileg a CosmosDB dokumentum-központú funkcióit utánozza, ahol a `JOIN` dokumentumon belüli gyermekobjektumok is elvégezhetők. A CosmosDB a `IN` kulcsszó használatával jelzi, hogy a az `JOIN` aktuális környezeti dokumentumban lévő tömb elemeinek megismétlésére szolgál.
-
-### <a name="relationship-based-query-examples"></a>Kapcsolaton alapuló lekérdezési példák
-
-Ha olyan adatkészletet szeretne beolvasni, amely kapcsolatokat tartalmaz, használjon egyetlen `FROM` utasítást, amelyet N utasítások követnek `JOIN` , ahol a `JOIN` utasítások egy korábbi vagy egy utasítás eredményéhez kapcsolódnak `FROM` `JOIN` .
-
-Példa a kapcsolaton alapuló lekérdezésre. Ez a kódrészlet kiválasztja az összes olyan digitális ikreket, amelynek *ID* tulajdonsága "ABC", és az ezen digitális ikrekhez kapcsolódó összes digitális ikrek a következő kapcsolaton keresztül *szerepelnek* . 
-
-```sql
-SELECT T, CT
-FROM DIGITALTWINS T
-JOIN CT RELATED T.contains
-WHERE T.$dtId = 'ABC' 
-```
-
->[!NOTE] 
-> A fejlesztőnek nem kell `JOIN` összekapcsolnia ezt a záradékban található kulcs értékével `WHERE` (vagy a definícióban szereplő kulcs értékének megadásával `JOIN` ). Ezt a korrelációt a rendszer automatikusan kiszámítja, mivel a kapcsolat tulajdonságai maguk határozzák meg a célként megadott entitást.
-
-### <a name="query-the-properties-of-a-relationship"></a>Kapcsolat tulajdonságainak lekérdezése
-
-Hasonlóan ahhoz, ahogy a digitális ikrek rendelkeznek a DTDL-on keresztül leírt tulajdonságokkal, a kapcsolatok is rendelkezhetnek tulajdonságokkal. Az Azure Digital Twins Query Store nyelve lehetővé teszi a kapcsolatok szűrését és kivetítését azáltal, hogy a záradékon belül egy aliast rendel hozzá a kapcsolathoz `JOIN` . 
-
-Példaként vegyünk egy olyan *servicedBy* -kapcsolatot, amely *reportedCondition* tulajdonsággal rendelkezik. Az alábbi lekérdezésben ez a kapcsolat az "R" aliast kapja, hogy hivatkozzon a tulajdonságára.
-
-```sql
-SELECT T, SBT, R
-FROM DIGITALTWINS T
-JOIN SBT RELATED T.servicedBy R
-WHERE T.$dtId = 'ABC' 
-AND R.reportedCondition = 'clean'
-```
-
-A fenti példában látható, hogy a *reportedCondition* a *servicedBy* -kapcsolat egyik tulajdonsága (nem pedig egy olyan digitális iker, amely *servicedBy* -kapcsolattal rendelkezik).
-
-### <a name="query-limitations"></a>Lekérdezési korlátozások
+## <a name="query-limitations"></a>Lekérdezési korlátozások
 
 A példányban történt módosítások a lekérdezésekben akár 10 másodperces késéssel is rendelkezhetnek. Ha például olyan műveletet hajt végre, mint az ikrek létrehozása vagy törlése a DigitalTwins API-val, akkor előfordulhat, hogy az eredmény nem jelenik meg azonnal a lekérdezési API-kérelmekben. A rövid ideig tartó várakozásnak elegendőnek kell lennie a feloldáshoz.
 

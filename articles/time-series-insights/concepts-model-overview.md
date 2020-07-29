@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 07/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: 98951dc29b7c8504cbf1654a810ebba933fef3a1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 74a20e46858aada48151809c5bedf1f93076827e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86495380"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289960"
 ---
 # <a name="time-series-model-in-azure-time-series-insights-gen2"></a>Idősorozat-modell Azure Time Series Insights Gen2
 
@@ -24,7 +24,7 @@ Ez a cikk az idősorozat-modellt, a képességeket, valamint a saját modellek A
 > [!TIP]
 >
 > * Nyissa meg a [contoso szélerőműpark bemutató](https://insights.timeseries.azure.com/preview/samples) környezetét egy élő idősorozat-modellre példaként.
-> * Ismerje meg, [Hogyan dolgozhat az idősorozat-modellel](time-series-insights-update-how-to-tsm.md) a Azure Time Series Insights Gen2 Explorer használatával.
+> * Ismerje meg, [Hogyan dolgozhat az idősorozat-modellel](/azure/time-series-insights/how-to-edit-your-model) a Azure Time Series Insights Gen2 Explorer használatával.
 
 ## <a name="summary"></a>Összegzés
 
@@ -75,7 +75,7 @@ Ezek az összetevők össze vannak egyesítve egy idősorozat-modell megadásáh
 
 [![Idősorozat-modell áttekintő diagramja](media/v2-update-tsm/time-series-model-overview.png)](media/v2-update-tsm/time-series-model-overview.png#lightbox)
 
-Egy idősorozat-modell hozható létre és kezelhető a [Azure Time Series Insights Gen2 Explorerben](time-series-insights-update-how-to-tsm.md). Az idősorozat-modell beállításai a [Model Settings API](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#model-settings-api)használatával kezelhetők.
+Egy idősorozat-modell hozható létre és kezelhető a [Azure Time Series Insights Gen2 Explorerben](/azure/time-series-insights/concepts-model-overview). Az idősorozat-modell beállításai a [Model Settings API](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#model-settings-api)használatával kezelhetők.
 
 ## <a name="time-series-model-instances"></a>Idősorozat-modell példányai
 
@@ -283,12 +283,13 @@ A típusok megfelelnek a következő JSON-példának:
   ]
 }
 ```
+
 Az idősorozat-modell típusai számos változót tartalmazhatnak, amelyek a képleteket és számítási szabályokat határozzák meg az eseményeken. További információ az [idősorozat-modell változók definiálásáról](./concepts-variables.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- A modell API-kon keresztüli szerkesztésével kapcsolatos további információkért olvassa el a [Time Series Model](https://docs.microsoft.com/rest/api/time-series-insights/preview-model) Reference dokumentációját.
+* A modell API-kon keresztüli szerkesztésével kapcsolatos további információkért olvassa el a [Time Series Model](https://docs.microsoft.com/rest/api/time-series-insights/preview-model) Reference dokumentációját.
 
-- Az [idősorozat-modell változókkal](./concepts-variables.md) létrehozott képletek és számítások megismerése
+* Az [idősorozat-modell változókkal](./concepts-variables.md) létrehozott képletek és számítások megismerése
 
-- Tudnivalók az [adatlekérdezésről](concepts-query-overview.md) Azure Time Series Insights Gen2
+* Tudnivalók az [adatlekérdezésről](concepts-query-overview.md) Azure Time Series Insights Gen2

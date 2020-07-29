@@ -5,12 +5,12 @@ description: Megtudhatja, hogyan hozhat létre és használhat belső Load balan
 services: container-service
 ms.topic: article
 ms.date: 03/04/2019
-ms.openlocfilehash: 58aadc4fadb93a4f6eb47214f580f7a2bebdf49c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ec8fd1f1b32d5bba6dc4dc756e1f95f4a74f9a96
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87056822"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285883"
 ---
 # <a name="use-an-internal-load-balancer-with-azure-kubernetes-service-aks"></a>Belső terheléselosztó használata az Azure Kubernetes szolgáltatással (ak)
 
@@ -25,7 +25,9 @@ Ez a cikk feltételezi, hogy rendelkezik egy meglévő AK-fürttel. Ha AK-fürtr
 
 Szüksége lesz az Azure CLI 2.0.59 vagy újabb verziójára is, valamint a telepítésre és konfigurálásra.  `az --version`A verzió megkereséséhez futtassa a parancsot. Ha telepíteni vagy frissíteni szeretne, tekintse meg az [Azure CLI telepítését][install-azure-cli]ismertető témakört.
 
-Ha meglévő alhálózatot vagy erőforráscsoportot használ, a (z) alhálózati erőforrás-kezelőhöz a hálózati erőforrások kezeléséhez engedély szükséges. Általában rendelje hozzá a *hálózati közreműködő* szerepkört az egyszerű szolgáltatáshoz a delegált erőforrásokon. Egyszerű szolgáltatásnév helyett használhatja a rendszerhez rendelt felügyelt identitást az engedélyekhez. További információ: [felügyelt identitások használata](use-managed-identity.md). Az engedélyekkel kapcsolatos további információkért lásd: [AK-hozzáférés delegálása más Azure-erőforrásokhoz][aks-sp].
+Ha meglévő alhálózatot vagy erőforráscsoportot használ, a (z) alhálózati erőforrás-kezelőhöz a hálózati erőforrások kezeléséhez engedély szükséges. További információ: a [kubenet hálózatkezelés használata saját IP-címtartományok az Azure Kubernetes szolgáltatásban (ak)][use-kubenet] vagy [Az Azure CNI hálózatkezelés konfigurálása az Azure Kubernetes szolgáltatásban (ak)][advanced-networking]. Ha úgy konfigurálja a terheléselosztó-t, hogy egy [másik alhálózat IP-címét][different-subnet]használja, győződjön meg arról, hogy az AK-fürt egyszerű szolgáltatása olvasási hozzáféréssel is rendelkezik az adott alhálózathoz.
+
+Egyszerű szolgáltatásnév helyett használhatja a rendszerhez rendelt felügyelt identitást is az engedélyekhez. További információ: [felügyelt identitások használata](use-managed-identity.md). Az engedélyekkel kapcsolatos további információkért lásd: [AK-hozzáférés delegálása más Azure-erőforrásokhoz][aks-sp].
 
 ## <a name="create-an-internal-load-balancer"></a>Hozzon létre egy belső terheléselosztót
 
@@ -65,7 +67,7 @@ internal-app   LoadBalancer   10.0.248.59   10.240.0.7    80:30555/TCP   2m
 
 ## <a name="specify-an-ip-address"></a>IP-cím meghatározása
 
-Ha egy adott IP-címet szeretne használni a belső terheléselosztó számára, adja hozzá a *loadBalancerIP* tulajdonságot a terheléselosztó YAML jegyzékfájlhoz. A megadott IP-címnek ugyanabban az alhálózatban kell lennie, mint az AK-fürtnek, és nem kell erőforráshoz rendelni. Például ne használjon IP-címet a Kubernetes alhálózathoz kijelölt tartományban.
+Ha egy adott IP-címet szeretne használni a belső terheléselosztó számára, adja hozzá a *loadBalancerIP* tulajdonságot a terheléselosztó YAML jegyzékfájlhoz. Ebben az esetben a megadott IP-címnek ugyanabban az alhálózatban kell lennie, mint az AK-fürtnek, és még nem lehet erőforráshoz rendelni. Például ne használjon IP-címet a Kubernetes alhálózathoz kijelölt tartományban.
 
 ```yaml
 apiVersion: v1
@@ -91,6 +93,8 @@ $ kubectl get service internal-app
 NAME           TYPE           CLUSTER-IP     EXTERNAL-IP   PORT(S)        AGE
 internal-app   LoadBalancer   10.0.184.168   10.240.0.25   80:30225/TCP   4m
 ```
+
+A terheléselosztó másik alhálózatban való konfigurálásával kapcsolatos további információkért lásd: [másik alhálózat megadása][different-subnet]
 
 ## <a name="use-private-networks"></a>Magánhálózati hálózatok használata
 
@@ -153,3 +157,4 @@ További információ a Kubernetes Services szolgáltatásról a [Kubernetes Ser
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
 [install-azure-cli]: /cli/azure/install-azure-cli
 [aks-sp]: kubernetes-service-principal.md#delegate-access-to-other-azure-resources
+[different-subnet]: #specify-a-different-subnet

@@ -12,13 +12,13 @@ ms.workload: identity
 ms.date: 11/07/2019
 ms.author: sagonzal
 ms.reviewer: navyasri.canumalla
-ms.custom: aaddev
-ms.openlocfilehash: 150708e7d54e456e1a4e35cfe381e5de5d0f1e8c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: aaddev, devx-track-java
+ms.openlocfilehash: 6267c2118b7bac9befb42102d1118faac639bf49
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85479351"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87312554"
 ---
 # <a name="get-and-remove-accounts-from-the-token-cache-using-msal-for-java"></a>Fiókok beolvasása és eltávolítása a jogkivonat-gyorsítótárból a MSAL for Java használatával
 
@@ -51,6 +51,6 @@ IAccount accountToBeRemoved = accounts.stream().filter(
 pca.removeAccount(accountToBeRemoved).join();
 ```
 
-## <a name="learn-more"></a>Tudjon meg többet
+## <a name="learn-more"></a>Részletek
 
 Ha Java-MSAL használ, ismerkedjen meg az [Egyéni jogkivonat-gyorsítótár szerializálásával a MSAL for javában](msal-java-token-cache-serialization.md).

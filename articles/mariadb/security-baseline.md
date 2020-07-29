@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 09d2fb709e21b7c1251c2caf224f4d5c3ce6aea1
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: fd195fee513b2eed9049c7841f791d73a41b876b
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86026576"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87366833"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-mariadb"></a>Azure Database for MariaDB Azure biztonsági alapterve
 
@@ -296,7 +296,7 @@ Az Azure Sentinel előkészítése:https://docs.microsoft.com/azure/sentinel/qui
 
 A MariaDB hozzáférés-kezelésének megismerése:https://docs.microsoft.com/azure/mariadb/concepts-security#access-management
 
-Az Azure-előfizetések beépített RBAC szerepköreinek ismertetése:https://docs.microsoft.com/azure/role-based-access-control/built-in-roles
+Ismerje meg az Azure-előfizetések Azure-beli beépített szerepköreit:https://docs.microsoft.com/azure/role-based-access-control/built-in-roles
 
 
 **Azure Security Center figyelés**: igen

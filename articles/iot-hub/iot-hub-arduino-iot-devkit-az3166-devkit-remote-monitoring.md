@@ -9,11 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 02/02/2018
 ms.author: liydu
-ms.openlocfilehash: 598e361949b000724645c841910b1682a7bbb1a3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d75e7e7b4870f46c978fd70039441c8851844082
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81258456"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337959"
 ---
 # <a name="connect-mxchip-iot-devkit-to-azure-iot-remote-monitoring-solution-accelerator"></a>A MXChip IoT fejlesztői készlet és az Azure IoT távoli monitorozási megoldásának gyorsítása
 
@@ -21,7 +22,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan futtathat egy minta alkalmazást 
 
 A [MXChip IoT fejlesztői készlet](https://aka.ms/iot-devkit) egy all-in-One Arduino-kompatibilis tábla, amely gazdag perifériákkal és érzékelőkkel rendelkezik. Az Arduino-hez készült [Visual Studio Code-bővítmény](https://aka.ms/arduino)használatával fejlesztheti azt. Az egyre bővülő [projektek katalógusa](https://microsoft.github.io/azure-iot-developer-kit/docs/projects/) pedig a Microsoft Azure-szolgáltatások előnyeit kihasználó prototípus-eszközök internetes hálózata (IoT) megoldásokat ismerteti.
 
-## <a name="what-you-need"></a>Mi szükséges
+## <a name="what-you-need"></a>Amire szükség lesz
 
 Fejezze be a [első lépések útmutatót](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started) a következőre:
 
@@ -105,7 +106,7 @@ A VS Code terminalban egy interaktív parancssor végigvezeti a szükséges Azur
   
    ![Az Arduino-vázlat ellenőrzése és feltöltése](media/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring/arduino-upload.png)
 
-A fejlesztői készlet újraindul, és elindítja a kód futtatását.
+A DevKit újraindul, és elkezdi a kód futtatását.
 
 ## <a name="test-the-project"></a>A projekt tesztelése
 
@@ -133,7 +134,5 @@ Ha problémákba ütközik, tekintse meg [a IoT Developer Kit GYIK](https://micr
 Most, hogy megtanulta, hogyan csatlakoztatható egy fejlesztői készlet-eszköz az Azure IoT távoli figyelési megoldás-gyorsító szolgáltatáshoz, és Hogyan jeleníthető meg az érzékelők adatai, az alábbiakban a javasolt következő lépések láthatók:
 
 * [Az Azure IoT megoldás-gyorsítók áttekintése](https://docs.microsoft.com/azure/iot-suite/)
-
-* [MXChip-IoT fejlesztői készlet-eszköz csatlakoztatása az Azure IoT Central-alkalmazáshoz](/azure/iot-central/core/howto-connect-devkit)
 
 * [IoT fejlesztői csomag](https://microsoft.github.io/azure-iot-developer-kit/) 

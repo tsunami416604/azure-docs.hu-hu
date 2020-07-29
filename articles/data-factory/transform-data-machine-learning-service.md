@@ -10,12 +10,12 @@ ms.author: daperlov
 author: djpmsft
 manager: anandsub
 ms.date: 07/16/2020
-ms.openlocfilehash: 83a7f072af64b0fe8f7f3d7c982cf3466288f63e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7239c1516c4a04b57249ea4f39bff4aec9156d72
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87007197"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337687"
 ---
 # <a name="execute-azure-machine-learning-pipelines-in-azure-data-factory"></a>Azure Machine Learning folyamatok végrehajtása Azure Data Factory
 
@@ -27,7 +27,7 @@ Az alábbi videó a funkció hat perces bevezetését és bemutatóját tartalma
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/How-to-execute-Azure-Machine-Learning-service-pipelines-in-Azure-Data-Factory/player]
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>Szintaxis
 
 ```json
 {
@@ -52,16 +52,19 @@ Az alábbi videó a funkció hat perces bevezetését és bemutatóját tartalma
 
 Tulajdonság | Leírás | Megengedett értékek | Kötelező
 -------- | ----------- | -------------- | --------
-name | A folyamatban szereplő tevékenység neve | Sztring | Yes
-típus | A tevékenység típusa "AzureMLExecutePipeline". | Sztring | Yes
-linkedServiceName | Társított szolgáltatás Azure Machine Learning | Társított szolgáltatás leírása | Yes
-mlPipelineId | A közzétett Azure Machine Learning folyamat azonosítója | Karakterlánc (vagy resultType karakterláncot tartalmazó kifejezés) | Yes
-experimentName | A Machine Learning folyamat futtatási kísérletének neve | Karakterlánc (vagy resultType karakterláncot tartalmazó kifejezés) | No
-mlPipelineParameters | A közzétett Azure Machine Learning folyamat-végpontnak átadandó kulcs-érték párok. A kulcsoknak meg kell egyezniük a közzétett Machine Learningi folyamatban megadott folyamat-paraméterek neveivel. | Kulcs értékű párokkal (vagy resultType objektummal rendelkező kifejezéssel) rendelkező objektum | No
-mlParentRunId | A szülő Azure Machine Learning folyamat futtatási azonosítója | Karakterlánc (vagy resultType karakterláncot tartalmazó kifejezés) | No
+name | A folyamatban szereplő tevékenység neve | Sztring | Igen
+típus | A tevékenység típusa "AzureMLExecutePipeline". | Sztring | Igen
+linkedServiceName | Társított szolgáltatás Azure Machine Learning | Társított szolgáltatás leírása | Igen
+mlPipelineId | A közzétett Azure Machine Learning folyamat azonosítója | Karakterlánc (vagy resultType karakterláncot tartalmazó kifejezés) | Igen
+experimentName | A Machine Learning folyamat futtatási kísérletének neve | Karakterlánc (vagy resultType karakterláncot tartalmazó kifejezés) | Nem
+mlPipelineParameters | A közzétett Azure Machine Learning folyamat-végpontnak átadandó kulcs-érték párok. A kulcsoknak meg kell egyezniük a közzétett Machine Learningi folyamatban megadott folyamat-paraméterek neveivel. | Kulcs értékű párokkal (vagy resultType objektummal rendelkező kifejezéssel) rendelkező objektum | Nem
+mlParentRunId | A szülő Azure Machine Learning folyamat futtatási azonosítója | Karakterlánc (vagy resultType karakterláncot tartalmazó kifejezés) | Nem
 continueOnStepFailure | Annak megadása, hogy folytatja-e a Machine Learning folyamat más lépéseinek végrehajtását, ha egy lépés meghiúsul | boolean | Nem
 
-## <a name="next-steps"></a>Következő lépések
+> [!NOTE]
+> Machine Learning folyamat neve és azonosítója legördülő elemeinek feltöltéséhez a felhasználónak engedélyt kell kapnia a ML-folyamatok listázásához. Az ADF UX közvetlenül a bejelentkezett felhasználó hitelesítő adataival hívja meg a AzureMLService API-kat.  
+
+## <a name="next-steps"></a>További lépések
 A következő cikkekből megtudhatja, hogyan alakíthat át más módon az adatátalakítást:
 
 * [Adatfolyam-tevékenység végrehajtása](control-flow-execute-data-flow-activity.md)

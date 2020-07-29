@@ -5,11 +5,12 @@ author: nicolela
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: nicolela
-ms.openlocfilehash: 63b7a8c58bb6d277233268ed4fc0bc870fdd337f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f41ad80e0e39d66020d039d6229a4b0fc62627f1
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85443400"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286002"
 ---
 # <a name="set-up-a-lab-with-gpu-virtual-machines"></a>Tesztkörnyezet beállítása GPU virtuális gépekkel
 
@@ -27,13 +28,13 @@ Ebben a folyamatban lehetősége van a **vizualizációk** vagy a **számítási
 
 Az alábbi táblázatban leírtak szerint a *számítási* GPU-méret nagy számítási igényű alkalmazások számára készült.  A [természetes nyelvi feldolgozási osztály mély tanulása](./class-type-deep-learning-natural-language-processing.md) például a **kis GPU (számítási)** méretet használja.  A számítási GPU megfelelő az ilyen típusú osztályok számára, mivel a tanulók olyan mély tanulási keretrendszerek és eszközök használatát használják, amelyeket az [Data Science Virtual Machine-rendszerkép](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804) biztosít a nagy adatkészletekkel rendelkező mély tanulási modellek betanításához.
 
-| Méret | Cores | RAM | Description | 
+| Méret | Cores | RAM | Leírás | 
 | ---- | ----- | --- | ----------- | 
 | Kis GPU (számítás) | -&nbsp;6 &nbsp; mag<br>-&nbsp;56 &nbsp; GB &nbsp; RAM  | [Standard_NC6](https://docs.microsoft.com/azure/virtual-machines/nc-series) |Ez a méret a legmegfelelőbb a számítógép-igényes alkalmazások, például a mesterséges intelligencia (AI) és a Deep learning számára. |
 
-A *vizualizációs* GPU-méretek a nagy grafikai igényű alkalmazások számára készültek.  A [SolidWorks mérnöki osztályának típusa](./class-type-solidworks.md) például a **kis GPU (vizualizáció)** méretet mutatja.  A vizualizációs GPU alkalmas az ilyen típusú osztályok számára, mivel a tanulók a SolidWorks 3D számítógépes tervezési (CAD) környezetet használják a Solid Objects modellezéséhez és megjelenítéséhez.
+A *vizualizációs* GPU-méretek a nagy grafikai igényű alkalmazások számára készültek.  A [SOLIDWORKS mérnöki osztályának típusa](./class-type-solidworks.md) például a **kis GPU (vizualizáció)** méretet mutatja.  A vizualizációs GPU alkalmas az ilyen típusú osztályok számára, mivel a tanulók a SOLIDWORKS 3D számítógépes tervezési (CAD) környezetet használják a Solid Objects modellezéséhez és megjelenítéséhez.
 
-| Méret | Cores | RAM | Description | 
+| Méret | Cores | RAM | Leírás | 
 | ---- | ----- | --- | ----------- | 
 | Kis GPU (vizualizáció) | -&nbsp;6 &nbsp; mag<br>-&nbsp;56 &nbsp; GB &nbsp; RAM  | [Standard_NV6](https://docs.microsoft.com/azure/virtual-machines/nv-series) | Ez a méret a távoli vizualizációk, a folyamatos átvitel, a játékok és az OpenGL-t és a DirectX-t használó keretrendszereket használó kódoláshoz ideális. |
 | Közepes GPU (vizualizáció) | -&nbsp;12 &nbsp; mag<br>-&nbsp;112 &nbsp; GB &nbsp; RAM  | [Standard_NV12](https://docs.microsoft.com/azure/virtual-machines/nv-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | Ez a méret a távoli vizualizációk, a folyamatos átvitel, a játékok és az OpenGL-t és a DirectX-t használó keretrendszereket használó kódoláshoz ideális. |
@@ -44,7 +45,7 @@ A laboratóriumi virtuális gépek GPU-képességeinek kihasználásához győz�
 ![Képernyőkép az "új Laborról", amely a "GPU-illesztőprogramok telepítése" lehetőséget mutatja](./media/how-to-setup-gpu/lab-gpu-drivers.png)
 
 Ahogy az előző képen is látható, ez a beállítás alapértelmezés szerint engedélyezve van, amely biztosítja, hogy a *legújabb* illesztőprogramok telepítve legyenek a kiválasztott GPU-hoz és lemezképhez.
-- A *számítási* GPU méretének kiválasztásakor a labor virtuális gépeket az [NVIDIA Tesla K80](https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/tesla-product-literature/Tesla-K80-BoardSpec-07317-001-v05.pdf) GPU látja el.  Ebben az esetben a rendszer telepíti a legújabb [számítási egységesített architektúra-(CUDA-)](https://www.nvidia.com/object/io_69526.html) illesztőprogramokat, ami lehetővé teszi a nagy teljesítményű számítástechnikai eszközök használatát.
+- A *számítási* GPU méretének kiválasztásakor a labor virtuális gépeket az [NVIDIA Tesla K80](https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/tesla-product-literature/Tesla-K80-BoardSpec-07317-001-v05.pdf) GPU látja el.  Ebben az esetben a rendszer telepíti a legújabb [számítási egységesített architektúra-(CUDA-)](http://developer.download.nvidia.com/compute/cuda/2_0/docs/CudaReferenceManual_2.0.pdf) illesztőprogramokat, ami lehetővé teszi a nagy teljesítményű számítástechnikai eszközök használatát.
 - Ha kijelöl egy *vizualizációs* GPU-méretet, a labor virtuális gépeket az [NVIDIA Tesla M60](https://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) GPU és a [Grid technológia](https://www.nvidia.com/content/dam/en-zz/Solutions/design-visualization/solutions/resources/documents1/NVIDIA_GRID_vPC_Solution_Overview.pdf)látja el.  Ebben az esetben a legújabb GRID-illesztőprogramok települnek, ami lehetővé teszi a nagy teljesítményű alkalmazások használatát.
 
 ### <a name="install-the-drivers-manually"></a>Az illesztőprogramok manuális telepítése
@@ -112,7 +113,7 @@ Kövesse az [NVIDIA GPU-illesztőprogramok telepítése a Linux rendszerű N sor
 Lásd az alábbi cikkeket:
 
 - [Osztálytermi tesztkörnyezetek létrehozása és kezelése](how-to-manage-classroom-labs.md)
-- [SolidWorks – számítógéppel segített tervezési (CAD) osztály típusa](class-type-solidworks.md)
+- [SOLIDWORKS – számítógéppel segített tervezési (CAD) osztály típusa](class-type-solidworks.md)
 - [MATLAB (mátrix laboratórium) osztály típusa](class-type-matlab.md)
 
 

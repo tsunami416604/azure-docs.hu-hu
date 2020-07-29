@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 07/16/2020
+ms.date: 07/24/2020
 ms.author: jgao
-ms.openlocfilehash: fcdcf563cd88cbf6604877636432a406c1960cff
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: 4094e610bb290fc11656dc192f3d0a495f679dc5
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87117042"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291804"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>Telepítési parancsfájlok használata a sablonokban (előzetes verzió)
 
@@ -556,54 +556,13 @@ A telepítési parancsfájl végrehajtása egy idempotens művelet. Ha a deploym
 
 ## <a name="configure-development-environment"></a>A fejlesztési környezet konfigurálása
 
-Egy előre konfigurált Docker-tároló rendszerképet is használhat a telepítési parancsfájl fejlesztési környezete számára. A Docker telepítéséhez lásd: [Docker beolvasása](https://docs.docker.com/get-docker/).
-A fájlmegosztást úgy is be kell állítania, hogy csatlakoztassa a könyvtárat, amely tartalmazza a telepítési parancsfájlokat a Docker-tárolóba.
-
-1. Kérje le a telepítési parancsfájl tárolójának rendszerképét a helyi számítógépre:
-
-    ```command
-    docker pull mcr.microsoft.com/azuredeploymentscripts-powershell:az2.7
-    ```
-
-    A példa a PowerShell-2.7.0 verzióját használja.
-
-    CLI-rendszerkép lekérése Microsoft Container Registryról (MCR):
-
-    ```command
-    docker pull mcr.microsoft.com/azure-cli:2.0.80
-    ```
-
-    Ez a példa a CLI-2.0.80 verzióját használja. Az üzembe helyezési parancsfájl az [itt](https://hub.docker.com/_/microsoft-azure-cli)található alapértelmezett CLI-tárolók rendszerképeit használja.
-
-1. Futtassa helyileg a Docker-rendszerképet.
-
-    ```command
-    docker run -v <host drive letter>:/<host directory name>:/data -it mcr.microsoft.com/azuredeploymentscripts-powershell:az2.7
-    ```
-
-    Cserélje le a ** &lt; gazdagép illesztőprogramjának betűjelét>** és az ** &lt; állomásnév nevét>** egy meglévő mappát a megosztott meghajtón.  Leképezi a mappát a tároló **/Data** mappájába. Példák a D:\docker leképezésére:
-
-    ```command
-    docker run -v d:/docker:/data -it mcr.microsoft.com/azuredeploymentscripts-powershell:az2.7
-    ```
-
-    **– Ez azt jelenti, hogy** a tároló rendszerképét életben tartja.
-
-    Egy CLI-példa:
-
-    ```command
-    docker run -v d:/docker:/data -it mcr.microsoft.com/azure-cli:2.0.80
-    ```
-
-1. Az alábbi képernyőfelvételen egy PowerShell-szkript futtatását láthatja, mivel a megosztott meghajtón helloworld.ps1-fájl található.
-
-    ![Resource Manager-sablon üzembe helyezési parancsfájl Docker cmd](./media/deployment-script-template/resource-manager-deployment-script-docker-cmd.png)
+Egy előre konfigurált tároló-rendszerképet is használhat a telepítési parancsfájl fejlesztési környezete számára. További információ: a [fejlesztői környezet konfigurálása a sablonokban történő üzembe helyezési parancsfájlokhoz](./deployment-script-template-configure-dev.md).
 
 A parancsfájl sikeres tesztelése után a sablonban használható üzembe helyezési parancsfájlként.
 
 ## <a name="deployment-script-error-codes"></a>Üzembehelyezési parancsfájl hibakódai
 
-| Hibakód | Description |
+| Hibakód | Leírás |
 |------------|-------------|
 | DeploymentScriptInvalidOperation | Az üzembehelyezési parancsfájl erőforrás-definíciója a sablonban érvénytelen tulajdonságokat tartalmaz. |
 | DeploymentScriptResourceConflict | Nem terminálos állapotú központi telepítési parancsfájl-erőforrás nem törölhető, és a végrehajtás nem haladja meg az 1 órát. Vagy nem futtathatja újra ugyanazt az üzembe helyezési parancsfájlt ugyanazzal az erőforrás-azonosítóval (az előfizetés, az erőforráscsoport neve és az erőforrás neve), de a parancsfájl törzse egyszerre több tartalmat is tartalmaz. |
@@ -619,7 +578,7 @@ A parancsfájl sikeres tesztelése után a sablonban használható üzembe helye
 | DeploymentScriptStorageAccountInvalidAccessKeyFormat | A Storage-fiók kulcsának formátuma érvénytelen. Lásd: a [Storage-fiók elérési kulcsainak kezelése](../../storage/common/storage-account-keys-manage.md). |
 | DeploymentScriptExceededMaxAllowedTime | A telepítési parancsfájl végrehajtási ideje túllépte a telepítési parancsfájl erőforrás-definíciójában megadott időtúllépési értéket. |
 | DeploymentScriptInvalidOutputs | A telepítési parancsfájl kimenete nem érvényes JSON-objektum. |
-| DeploymentScriptContainerInstancesServiceLoginFailure | A felhasználó által hozzárendelt felügyelt identitás nem tudott bejelentkezni az 1 perces intervallummal 10 próbálkozás után. |
+| DeploymentScriptContainerInstancesServiceLoginFailure | A felhasználó által hozzárendelt felügyelt identitás nem tudott bejelentkezni az 1 perces intervallummal rendelkező 10 próbálkozás után. |
 | DeploymentScriptContainerGroupNotFound | Az üzembe helyezési parancsfájl szolgáltatás által létrehozott tároló csoportot egy külső eszköz vagy folyamat törölte. |
 | DeploymentScriptDownloadFailure | Nem sikerült letölteni egy támogató parancsfájlt. Lásd: [támogató parancsfájl használata](#use-supporting-scripts).|
 | DeploymentScriptError | A felhasználói parancsfájl hibát jelzett. |

@@ -3,12 +3,12 @@ title: Azure DevTest Labs egyéni rendszerkép létrehozása VHD-fájlból | Mic
 description: Megtudhatja, hogyan hozhat létre egyéni rendszerképeket Azure DevTest Labs egy VHD-fájlból a Azure Portal használatával
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: ba627421a43a8e4e7f193ad96da09da8934d028c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cac812a9c38fc1dedfd31659a626b122f9527e63
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85481272"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289400"
 ---
 # <a name="create-a-custom-image-from-a-vhd-file"></a>Egyéni rendszerkép létrehozása VHD-fájlból
 
@@ -69,7 +69,7 @@ Néhány perc elteltével létrejön az egyéni rendszerkép, amely a labor Stor
 
 ## <a name="related-blog-posts"></a>Kapcsolódó blogbejegyzések
 
-- [Egyéni lemezképek vagy képletek?](https://blogs.msdn.microsoft.com/devtestlab/2016/04/06/custom-images-or-formulas/)
+- [Egyéni lemezképek vagy képletek?](./devtest-lab-faq.md#blog-post)
 - [Egyéni rendszerképek másolása Azure DevTest Labs között](https://www.visualstudiogeeks.com/blog/DevOps/How-To-Move-CustomImages-VHD-Between-AzureDevTestLabs#copying-custom-images-between-azure-devtest-labs)
 
 ## <a name="next-steps"></a>További lépések

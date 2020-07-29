@@ -1,7 +1,7 @@
 ---
 title: Azure PowerShell parancsfájl-minta – IPv6-végpontok konfigurálása
 titlesuffix: Azure Virtual Network
-description: IPv6-végpontok engedélyezése a PowerShell használatával az Azure-ban Virtual Network
+description: Konfigurálja az IPv6-végpontokat a virtuális hálózatban egy Azure PowerShell parancsfájllal, és keresse meg a PowerShell-minta segítségét szolgáló, a parancsra vonatkozó dokumentációra mutató hivatkozásokat.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -12,12 +12,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 07/15/2019
 ms.author: kumud
-ms.openlocfilehash: 667cf9d8a902a329b6b0cfc0d183e4f229e59372
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 83153023d7d58f215d5e62d8502baa01b99ed2e1
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87068651"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291880"
 ---
 # <a name="configure-ipv6-endpoints-in-virtual-network-with-azure-powershell-script-sample-preview"></a>IPv6-végpontok konfigurálása virtuális hálózatban Azure PowerShell parancsfájl-mintával (előzetes verzió)
 

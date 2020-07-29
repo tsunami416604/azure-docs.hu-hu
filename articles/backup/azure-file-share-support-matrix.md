@@ -4,12 +4,12 @@ description: Az Azure-fájlmegosztás biztonsági mentésekor a támogatási be�
 ms.topic: conceptual
 ms.date: 5/07/2020
 ms.custom: references_regions
-ms.openlocfilehash: d0172ecab682b69f255eedb9270a6208b52dac45
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7d01f0f64fd183204fb7617040325e7d1b6e553e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86514550"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289511"
 ---
 # <a name="support-matrix-for-azure-file-share-backup"></a>Az Azure fájlmegosztás biztonsági mentésének támogatási mátrixa
 
@@ -20,10 +20,6 @@ Az Azure-fájlmegosztás biztonsági mentését a [Azure Backup szolgáltatássa
 ### <a name="ga-regions-for-azure-file-shares-backup"></a>Az Azure file shares biztonsági mentésének GA régiói
 
 Az Azure-fájlmegosztás biztonsági mentése minden régióban elérhető, **kivéve** a következőt: Németország középső régiója (szuverén), Északkelet-Németország (szuverén), Kelet-Kína, Kelet-Kína 2, Észak-Kína, Észak-Kína 2, US gov Iowa
-
-### <a name="supported-regions-for-accidental-delete-protection"></a>A véletlen törlés elleni védelem támogatott régiói
-
-USA nyugati középső régiója, Délkelet-Ausztrália, Közép-Kanada, USA nyugati középső régiója, Dél-India, az USA északi középső régiója, Kelet-Japán, Dél-Brazília, Kelet-Ausztrália, USA keleti régiója, USA 2. keleti régiója
 
 ## <a name="supported-storage-accounts"></a>Támogatott tárfiókok
 
@@ -85,7 +81,7 @@ USA nyugati középső régiója, Délkelet-Ausztrália, Közép-Kanada, USA nyu
 | Teljes megosztás visszaállítása | A teljes fájlmegosztást visszaállíthatja az eredeti vagy egy másik helyre. |
 | Elemszintű visszaállítás | Az egyes fájlokat és mappákat az eredetire vagy egy másik helyre állíthatja vissza |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ismerje meg, hogyan [készíthet biztonsági mentést az Azure file shares](backup-afs.md) -ről
 * Ismerje meg, hogyan [állíthatja vissza az Azure-fájlmegosztást](restore-afs.md)

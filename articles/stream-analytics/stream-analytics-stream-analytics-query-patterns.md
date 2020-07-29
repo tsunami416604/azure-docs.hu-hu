@@ -6,14 +6,14 @@ author: rodrigoaatmicrosoft
 ms.author: rodrigoa
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/18/2019
-ms.openlocfilehash: c79d810979641d1dc128c741c2124d9b5887aa3d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c22f028779090e735bf6f91d5ecc1fc572f190ab
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87020746"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87313642"
 ---
 # <a name="common-query-patterns-in-azure-stream-analytics"></a>Gyakori lekérdezési minták a Azure Stream Analytics
 
@@ -28,200 +28,6 @@ Ez a cikk a különböző gyakori lekérdezési mintákkal kapcsolatos megoldás
 A Azure Stream Analytics támogatja az események CSV-, JSON-és Avro-adatformátumokban való feldolgozását.
 
 A JSON és a Avro olyan összetett típusokat is tartalmazhat, mint például a beágyazott objektumok (rekordok) vagy a tömbök. Ezen összetett adattípusokkal kapcsolatos további információkért tekintse meg a [JSON-és AVRO-adatok elemzése](stream-analytics-parsing-json.md) című cikket.
-
-## <a name="simple-pass-through-query"></a>Egyszerű átmenő lekérdezés
-
-Egy egyszerű átmenő lekérdezéssel másolhatók a bemeneti adatfolyam-adatok a kimenetbe. Ha például egy valós idejű jármű adatait tartalmazó adatfolyamot kell menteni egy SQL-adatbázisban a levél elemzése céljából, egy egyszerű, áteresztő lekérdezés fogja elvégezni a feladatot.
-
-**Bemenet**:
-
-| Gyártó | Idő | Tömeg |
-| --- | --- | --- |
-| Make1 |2015-01-01T00:00:01.0000000 Z |"1000" |
-| Make1 |2015-01-01T00:00:02.0000000 Z |"2000" |
-
-**Kimenet**:
-
-| Gyártó | Idő | Tömeg |
-| --- | --- | --- |
-| Make1 |2015-01-01T00:00:01.0000000 Z |"1000" |
-| Make1 |2015-01-01T00:00:02.0000000 Z |"2000" |
-
-**Lekérdezés**:
-
-```SQL
-SELECT
-    *
-INTO Output
-FROM Input
-```
-
-A Select * lekérdezés a bejövő események összes mezőjét **kijelöli** , és elküldi őket a kimenetnek. Ugyanezt a módszert **választva** a csak a bemenetből kitöltendő mezőket is használhatja. Ebben a példában, ha a *járműnek* és az *időpontnak* csak a szükséges mezőket kell megadnia, ezek a mezők a **Select** utasításban adhatók meg.
-
-**Bemenet**:
-
-| Gyártó | Idő | Tömeg |
-| --- | --- | --- |
-| Make1 |2015-01-01T00:00:01.0000000 Z |1000 |
-| Make1 |2015-01-01T00:00:02.0000000 Z |2000 |
-| Make2 |2015-01-01T00:00:04.0000000 Z |1500 |
-
-**Kimenet**:
-
-| Gyártó | Idő |
-| --- | --- |
-| Make1 |2015-01-01T00:00:01.0000000 Z |
-| Make1 |2015-01-01T00:00:02.0000000 Z |
-| Make2 |2015-01-01T00:00:04.0000000 Z |
-
-**Lekérdezés**:
-
-```SQL
-SELECT
-    Make, Time
-INTO Output
-FROM Input
-```
-## <a name="data-aggregation-over-time"></a>Adatösszesítés az idő függvényében
-
-Az adatok egy adott időtartományon keresztüli kiszámításához összesítheti az adatokat. Ebben a példában a rendszer minden egyes autó esetében az elmúlt 10 másodpercben számítja ki a darabszámot.
-
-**Bemenet**:
-
-| Gyártó | Idő | Tömeg |
-| --- | --- | --- |
-| Make1 |2015-01-01T00:00:01.0000000 Z |1000 |
-| Make1 |2015-01-01T00:00:02.0000000 Z |2000 |
-| Make2 |2015-01-01T00:00:04.0000000 Z |1500 |
-
-**Kimenet**:
-
-| Gyártó | Darabszám |
-| --- | --- |
-| Make1 | 2 |
-| Make2 | 1 |
-
-**Lekérdezés**:
-
-```SQL
-SELECT
-    Make,
-    COUNT(*) AS Count
-FROM
-    Input TIMESTAMP BY Time
-GROUP BY
-    Make,
-    TumblingWindow(second, 10)
-```
-
-Ez az Összesítés csoportosítja az autókat úgy, *hogy* 10 másodpercenként megszámolja őket. A kimenetben az autópályadíjon áthaladó autók *száma és darabszáma* is *elérhető* .
-
-A TumblingWindow egy ablakkezelő-függvény, amely az események csoportosítására szolgál. Összesítést alkalmazhat az összes csoportosított eseményre. További információ: [ablakkezelő functions](stream-analytics-window-functions.md).
-
-Az összesítéssel kapcsolatos további információkért tekintse meg az [összesítő függvények](/stream-analytics-query/aggregate-functions-azure-stream-analytics)című témakört.
-
-## <a name="data-conversion"></a>Adatátalakítás
-
-Az adatátviteli **módszer használatával** valós időben lehet átadni az adatfeldolgozást. Például a **nvarchar (max)** típusról a **bigint** típusra konvertálható, és numerikus számításokban használható.
-
-**Bemenet**:
-
-| Gyártó | Idő | Tömeg |
-| --- | --- | --- |
-| Make1 |2015-01-01T00:00:01.0000000 Z |"1000" |
-| Make1 |2015-01-01T00:00:02.0000000 Z |"2000" |
-
-**Kimenet**:
-
-| Gyártó | Tömeg |
-| --- | --- |
-| Make1 |3000 |
-
-**Lekérdezés**:
-
-```SQL
-SELECT
-    Make,
-    SUM(CAST(Weight AS BIGINT)) AS Weight
-FROM
-    Input TIMESTAMP BY Time
-GROUP BY
-    Make,
-    TumblingWindow(second, 10)
-```
-
-Az adattípusának megadásához használjon **Cast** utasítást. Tekintse meg a támogatott adattípusok listáját az [adattípusokon (Azure stream Analytics)](/stream-analytics-query/data-types-azure-stream-analytics).
-
-További információ az [Adatátalakítási függvényekről](/stream-analytics-query/conversion-functions-azure-stream-analytics).
-
-## <a name="string-matching-with-like-and-not-like"></a>Karakterlánc-egyeztetés hasonló és nem hasonló
-
-**Hasonlóan** és **nem** , mint az, hogy egy adott mező megfelel-e egy adott mintának. Létrehozhat például egy szűrőt úgy, hogy csak az "A" betűvel kezdődő és a 9. számú licencet tartalmazó lemezeket küldje vissza.
-
-**Bemenet**:
-
-| Gyártó | License_plate | Idő |
-| --- | --- | --- |
-| Make1 |ABC-123 |2015-01-01T00:00:01.0000000 Z |
-| Make2 |AAA-999 |2015-01-01T00:00:02.0000000 Z |
-| Make3 |ABC-369 |2015-01-01T00:00:03.0000000 Z |
-
-**Kimenet**:
-
-| Gyártó | License_plate | Idő |
-| --- | --- | --- |
-| Make2 |AAA-999 |2015-01-01T00:00:02.0000000 Z |
-| Make3 |ABC-369 |2015-01-01T00:00:03.0000000 Z |
-
-**Lekérdezés**:
-
-```SQL
-SELECT
-    *
-FROM
-    Input TIMESTAMP BY Time
-WHERE
-    License_plate LIKE 'A%9'
-```
-
-A **Like** utasítás használatával ellenőrizhető a **License_plate** mező értéke. Az alkalmazásnak az "A" betűvel kell kezdődnie, majd a 9-es számú karakterláncot kell használnia.
-
-## <a name="specify-logic-for-different-casesvalues-case-statements"></a>Logika megadása különböző esetekhez/értékekhez (CASE utasítások)
-
-A **Case** utasítások különböző számításokat biztosíthatnak különböző mezőkhöz az adott feltétel alapján. Például rendelje hozzá az "A" sávot a *Make1* és a "B" Lane-hez bármely más gyártmányhoz.
-
-**Bemenet**:
-
-| Gyártó | Idő |
-| --- | --- |
-| Make1 |2015-01-01T00:00:01.0000000 Z |
-| Make2 |2015-01-01T00:00:02.0000000 Z |
-| Make2 |2015-01-01T00:00:03.0000000 Z |
-
-**Kimenet**:
-
-| Gyártó |Dispatch_to_lane | Idő |
-| --- | --- | --- |
-| Make1 |Egy |2015-01-01T00:00:01.0000000 Z |
-| Make2 |B |2015-01-01T00:00:02.0000000 Z |
-
-**Megoldás**:
-
-```SQL
-SELECT
-    Make
-    CASE
-        WHEN Make = "Make1" THEN "A"
-        ELSE "B"
-    END AS Dispatch_to_lane,
-    System.TimeStamp() AS Time
-FROM
-    Input TIMESTAMP BY Time
-```
-
-A **Case** kifejezés összehasonlítja egy kifejezést egy egyszerű kifejezésekkel, hogy meghatározza annak eredményét. Ebben a példában a *Make1* lévő járműveket az "A" sávban küldi el a rendszer, míg más gyártmányú járműveket a "B" sáv jelöl.
-
-További információkért tekintse meg a [Case kifejezést](/stream-analytics-query/case-azure-stream-analytics).
 
 ## <a name="send-data-to-multiple-outputs"></a>Adatokat küldhet több kimenetre
 
@@ -308,40 +114,91 @@ HAVING [Count] >= 3
 
 További információért lásd a [ **with** záradékot](/stream-analytics-query/with-azure-stream-analytics).
 
-## <a name="count-unique-values"></a>Egyedi értékek megszámlálása
+## <a name="simple-pass-through-query"></a>Egyszerű átmenő lekérdezés
 
-A **darabszám** és a **DISTINCT** érték az adatfolyamban megjelenő egyedi mezőértékek számának megszámlálására használható az adott időszakon belül. A rendszer létrehoz egy lekérdezést, amely kiszámítja *, hogy* a két másodperces ablakban hány egyedi módon halad át az autópályadíj-kezelő.
+Egy egyszerű átmenő lekérdezéssel másolhatók a bemeneti adatfolyam-adatok a kimenetbe. Ha például egy valós idejű jármű adatait tartalmazó adatfolyamot kell menteni egy SQL-adatbázisban a levél elemzése céljából, egy egyszerű, áteresztő lekérdezés fogja elvégezni a feladatot.
 
 **Bemenet**:
+
+| Gyártó | Idő | Tömeg |
+| --- | --- | --- |
+| Make1 |2015-01-01T00:00:01.0000000 Z |"1000" |
+| Make1 |2015-01-01T00:00:02.0000000 Z |"2000" |
+
+**Kimenet**:
+
+| Gyártó | Idő | Tömeg |
+| --- | --- | --- |
+| Make1 |2015-01-01T00:00:01.0000000 Z |"1000" |
+| Make1 |2015-01-01T00:00:02.0000000 Z |"2000" |
+
+**Lekérdezés**:
+
+```SQL
+SELECT
+    *
+INTO Output
+FROM Input
+```
+
+A Select * lekérdezés a bejövő események összes mezőjét **kijelöli** , és elküldi őket a kimenetnek. Ugyanezt a módszert **választva** a csak a bemenetből kitöltendő mezőket is használhatja. Ebben a példában, ha a *járműnek* és az *időpontnak* csak a szükséges mezőket kell megadnia, ezek a mezők a **Select** utasításban adhatók meg.
+
+**Bemenet**:
+
+| Gyártó | Idő | Tömeg |
+| --- | --- | --- |
+| Make1 |2015-01-01T00:00:01.0000000 Z |1000 |
+| Make1 |2015-01-01T00:00:02.0000000 Z |2000 |
+| Make2 |2015-01-01T00:00:04.0000000 Z |1500 |
+
+**Kimenet**:
 
 | Gyártó | Idő |
 | --- | --- |
 | Make1 |2015-01-01T00:00:01.0000000 Z |
 | Make1 |2015-01-01T00:00:02.0000000 Z |
-| Make2 |2015-01-01T00:00:01.0000000 Z |
-| Make2 |2015-01-01T00:00:02.0000000 Z |
-| Make2 |2015-01-01T00:00:03.0000000 Z |
+| Make2 |2015-01-01T00:00:04.0000000 Z |
 
-**Kimeneti**
-
-| Count_make | Idő |
-| --- | --- |
-| 2 |2015-01-01T00:00:02.000 Z |
-| 1 |2015-01-01T00:00:04.000 Z |
-
-**Lekérdezés**
+**Lekérdezés**:
 
 ```SQL
 SELECT
-     COUNT(DISTINCT Make) AS Count_make,
-     System.TIMESTAMP() AS Time
-FROM Input TIMESTAMP BY TIME
-GROUP BY 
-     TumblingWindow(second, 2)
+    Make, Time
+INTO Output
+FROM Input
 ```
 
-A **Count (DISTINCT do)** függvény a **make** oszlopban szereplő különböző értékek számát adja vissza egy időablakon belül.
-További információt a [ **Count** összesítő függvényben](/stream-analytics-query/count-azure-stream-analytics)találhat.
+## <a name="string-matching-with-like-and-not-like"></a>Karakterlánc-egyeztetés hasonló és nem hasonló
+
+**Hasonlóan** és **nem** , mint az, hogy egy adott mező megfelel-e egy adott mintának. Létrehozhat például egy szűrőt úgy, hogy csak az "A" betűvel kezdődő és a 9. számú licencet tartalmazó lemezeket küldje vissza.
+
+**Bemenet**:
+
+| Gyártó | License_plate | Idő |
+| --- | --- | --- |
+| Make1 |ABC-123 |2015-01-01T00:00:01.0000000 Z |
+| Make2 |AAA-999 |2015-01-01T00:00:02.0000000 Z |
+| Make3 |ABC-369 |2015-01-01T00:00:03.0000000 Z |
+
+**Kimenet**:
+
+| Gyártó | License_plate | Idő |
+| --- | --- | --- |
+| Make2 |AAA-999 |2015-01-01T00:00:02.0000000 Z |
+| Make3 |ABC-369 |2015-01-01T00:00:03.0000000 Z |
+
+**Lekérdezés**:
+
+```SQL
+SELECT
+    *
+FROM
+    Input TIMESTAMP BY Time
+WHERE
+    License_plate LIKE 'A%9'
+```
+
+A **Like** utasítás használatával ellenőrizhető a **License_plate** mező értéke. Az alkalmazásnak az "A" betűvel kell kezdődnie, majd a 9-es számú karakterláncot kell használnia.
 
 ## <a name="calculation-over-past-events"></a>Korábbi események kiszámítása
 
@@ -375,69 +232,6 @@ WHERE
 A **lag** használatával betekintést nyerhet a bemeneti streambe egy eseményre, lekérheti a *make* értéket, és összehasonlíthatja az aktuális esemény *make* értékével és az esemény kimenetével.
 
 További információkért tekintse meg a [**késést**](/stream-analytics-query/lag-azure-stream-analytics).
-
-## <a name="retrieve-the-first-event-in-a-window"></a>Az első esemény beolvasása egy ablakban
-
-A **IsFirst** az első esemény egy időablakban való lekérésére használható. Tegyük fel például, hogy az első autó adatait 10 percenként kell kiterjeszteni.
-
-**Bemenet**:
-
-| License_plate | Gyártó | Idő |
-| --- | --- | --- |
-| DXE 5291 |Make1 |2015-07-27T00:00:05.0000000 Z |
-| YZK 5704 |Make3 |2015-07-27T00:02:17.0000000 Z |
-| RMV 8282 |Make1 |2015-07-27T00:05:01.0000000 Z |
-| YHN 6970 |Make2 |2015-07-27T00:06:00.0000000 Z |
-| VFE 1616 |Make2 |2015-07-27T00:09:31.0000000 Z |
-| QYF 9358 |Make1 |2015-07-27T00:12:02.0000000 Z |
-| MDR 6128 |Make4 |2015-07-27T00:13:45.0000000 Z |
-
-**Kimenet**:
-
-| License_plate | Gyártó | Idő |
-| --- | --- | --- |
-| DXE 5291 |Make1 |2015-07-27T00:00:05.0000000 Z |
-| QYF 9358 |Make1 |2015-07-27T00:12:02.0000000 Z |
-
-**Lekérdezés**:
-
-```SQL
-SELECT 
-    License_plate,
-    Make,
-    Time
-FROM 
-    Input TIMESTAMP BY Time
-WHERE 
-    IsFirst(minute, 10) = 1
-```
-
-A **IsFirst** az adatparticionálást is elvégezheti, és az első eseményt kiszámíthatja minden *egyes autóra* 10 percenként.
-
-**Kimenet**:
-
-| License_plate | Gyártó | Idő |
-| --- | --- | --- |
-| DXE 5291 |Make1 |2015-07-27T00:00:05.0000000 Z |
-| YZK 5704 |Make3 |2015-07-27T00:02:17.0000000 Z |
-| YHN 6970 |Make2 |2015-07-27T00:06:00.0000000 Z |
-| QYF 9358 |Make1 |2015-07-27T00:12:02.0000000 Z |
-| MDR 6128 |Make4 |2015-07-27T00:13:45.0000000 Z |
-
-**Lekérdezés**:
-
-```SQL
-SELECT 
-    License_plate,
-    Make,
-    Time
-FROM 
-    Input TIMESTAMP BY Time
-WHERE 
-    IsFirst(minute, 10) OVER (PARTITION BY Make) = 1
-```
-
-További információkért tekintse meg a következőt: [**IsFirst**](/stream-analytics-query/isfirst-azure-stream-analytics).
 
 ## <a name="return-the-last-event-in-a-window"></a>Az utolsó esemény visszaadása egy ablakban
 
@@ -492,6 +286,89 @@ A **DATEDIFF** egy dátum-specifikus függvény, amely összehasonlítja és vis
 
 A streamek összekapcsolásával kapcsolatos további információkért lásd: [**Csatlakozás**](/stream-analytics-query/join-azure-stream-analytics).
 
+## <a name="data-aggregation-over-time"></a>Adatösszesítés az idő függvényében
+
+Az adatok egy adott időtartományon keresztüli kiszámításához összesítheti az adatokat. Ebben a példában a rendszer minden egyes autó esetében az elmúlt 10 másodpercben számítja ki a darabszámot.
+
+**Bemenet**:
+
+| Gyártó | Idő | Tömeg |
+| --- | --- | --- |
+| Make1 |2015-01-01T00:00:01.0000000 Z |1000 |
+| Make1 |2015-01-01T00:00:02.0000000 Z |2000 |
+| Make2 |2015-01-01T00:00:04.0000000 Z |1500 |
+
+**Kimenet**:
+
+| Gyártó | Darabszám |
+| --- | --- |
+| Make1 | 2 |
+| Make2 | 1 |
+
+**Lekérdezés**:
+
+```SQL
+SELECT
+    Make,
+    COUNT(*) AS Count
+FROM
+    Input TIMESTAMP BY Time
+GROUP BY
+    Make,
+    TumblingWindow(second, 10)
+```
+
+Ez az Összesítés csoportosítja az autókat úgy, *hogy* 10 másodpercenként megszámolja őket. A kimenetben az autópályadíjon áthaladó autók *száma és darabszáma* is *elérhető* .
+
+A TumblingWindow egy ablakkezelő-függvény, amely az események csoportosítására szolgál. Összesítést alkalmazhat az összes csoportosított eseményre. További információ: [ablakkezelő functions](stream-analytics-window-functions.md).
+
+Az összesítéssel kapcsolatos további információkért tekintse meg az [összesítő függvények](/stream-analytics-query/aggregate-functions-azure-stream-analytics)című témakört.
+
+## <a name="periodically-output-values"></a>Rendszeres kimeneti értékek
+
+Szabálytalan vagy hiányzó események esetén rendszeres időközi kimenet hozható létre a ritka adatbevitelből. Például állítson elő 5 másodpercenként egy eseményt, amely a legutóbb látott adatpontot jelenti.
+
+**Bemenet**:
+
+| Idő | Érték |
+| --- | --- |
+| "2014-01-01T06:01:00" |1 |
+| "2014-01-01T06:01:05" |2 |
+| "2014-01-01T06:01:10" |3 |
+| "2014-01-01T06:01:15" |4 |
+| "2014-01-01T06:01:30" |5 |
+| "2014-01-01T06:01:35" |6 |
+
+**Kimenet (első 10 sor)**:
+
+| Window_end | Last_event. Idő | Last_event. Érték |
+| --- | --- | --- |
+| 2014-01-01T14:01:00.000 Z |2014-01-01T14:01:00.000 Z |1 |
+| 2014-01-01T14:01:05.000 Z |2014-01-01T14:01:05.000 Z |2 |
+| 2014-01-01T14:01:10.000 Z |2014-01-01T14:01:10.000 Z |3 |
+| 2014-01-01T14:01:15.000 Z |2014-01-01T14:01:15.000 Z |4 |
+| 2014-01-01T14:01:20.000 Z |2014-01-01T14:01:15.000 Z |4 |
+| 2014-01-01T14:01:25.000 Z |2014-01-01T14:01:15.000 Z |4 |
+| 2014-01-01T14:01:30.000 Z |2014-01-01T14:01:30.000 Z |5 |
+| 2014-01-01T14:01:35.000 Z |2014-01-01T14:01:35.000 Z |6 |
+| 2014-01-01T14:01:40.000 Z |2014-01-01T14:01:35.000 Z |6 |
+| 2014-01-01T14:01:45.000 Z |2014-01-01T14:01:35.000 Z |6 |
+
+**Lekérdezés**:
+
+```SQL
+SELECT
+    System.Timestamp() AS Window_end,
+    TopOne() OVER (ORDER BY Time DESC) AS Last_event
+FROM
+    Input TIMESTAMP BY Time
+GROUP BY
+    HOPPINGWINDOW(second, 300, 5)
+```
+
+A lekérdezés 5 másodpercenként hoz létre eseményeket, és a korábban kapott utolsó eseményt adja eredményül. A **HOPPINGWINDOW** időtartama határozza meg, hogy a lekérdezés milyen mértékben keresi meg a legújabb eseményt.
+
+További információkért tekintse meg a [hopping ablakát](/stream-analytics-query/hopping-window-azure-stream-analytics).
 
 ## <a name="correlate-events-in-a-stream"></a>Események korrelációja egy adatfolyamban
 
@@ -565,142 +442,103 @@ WHERE
 
 Az **utolsó** függvény használatával lehet lekérni az utolsó eseményt egy adott feltételen belül. Ebben a példában a feltétel egy Start típusú esemény, amely a keresést **a felhasználó és a szolgáltatás szerint** particionálja. Így minden felhasználó és szolgáltatás egymástól függetlenül kezelhető a Start esemény keresésekor. A **korlát időtartama** a befejezési és a kezdési események között 1 órára korlátozza a keresést.
 
-## <a name="detect-the-duration-of-a-condition"></a>Feltétel időtartamának észlelése
+## <a name="count-unique-values"></a>Egyedi értékek megszámlálása
 
-A több eseményre kiterjedő feltételek esetén a **lag** függvény használatával azonosítható a feltétel időtartama. Tegyük fel például, hogy egy hiba az összes olyan autót eredményezett, amely nem megfelelő súlyozású (20 000 kilós), a hiba időtartamát pedig számításba kell venni.
+A **darabszám** és a **DISTINCT** érték az adatfolyamban megjelenő egyedi mezőértékek számának megszámlálására használható az adott időszakon belül. A rendszer létrehoz egy lekérdezést, amely kiszámítja *, hogy* a két másodperces ablakban hány egyedi módon halad át az autópályadíj-kezelő.
 
 **Bemenet**:
 
-| Gyártó | Idő | Tömeg |
+| Gyártó | Idő |
+| --- | --- |
+| Make1 |2015-01-01T00:00:01.0000000 Z |
+| Make1 |2015-01-01T00:00:02.0000000 Z |
+| Make2 |2015-01-01T00:00:01.0000000 Z |
+| Make2 |2015-01-01T00:00:02.0000000 Z |
+| Make2 |2015-01-01T00:00:03.0000000 Z |
+
+**Kimeneti**
+
+| Count_make | Idő |
+| --- | --- |
+| 2 |2015-01-01T00:00:02.000 Z |
+| 1 |2015-01-01T00:00:04.000 Z |
+
+**Lekérdezés**
+
+```SQL
+SELECT
+     COUNT(DISTINCT Make) AS Count_make,
+     System.TIMESTAMP() AS Time
+FROM Input TIMESTAMP BY TIME
+GROUP BY 
+     TumblingWindow(second, 2)
+```
+
+A **Count (DISTINCT do)** függvény a **make** oszlopban szereplő különböző értékek számát adja vissza egy időablakon belül.
+További információt a [ **Count** összesítő függvényben](/stream-analytics-query/count-azure-stream-analytics)találhat.
+
+## <a name="retrieve-the-first-event-in-a-window"></a>Az első esemény beolvasása egy ablakban
+
+A **IsFirst** az első esemény egy időablakban való lekérésére használható. Tegyük fel például, hogy az első autó adatait 10 percenként kell kiterjeszteni.
+
+**Bemenet**:
+
+| License_plate | Gyártó | Idő |
 | --- | --- | --- |
-| Make1 |2015-01-01T00:00:01.0000000 Z |2000 |
-| Make2 |2015-01-01T00:00:02.0000000 Z |25000 |
-| Make1 |2015-01-01T00:00:03.0000000 Z |26000 |
-| Make2 |2015-01-01T00:00:04.0000000 Z |25000 |
-| Make1 |2015-01-01T00:00:05.0000000 Z |26000 |
-| Make2 |2015-01-01T00:00:06.0000000 Z |25000 |
-| Make1 |2015-01-01T00:00:07.0000000 Z |26000 |
-| Make2 |2015-01-01T00:00:08.0000000 Z |2000 |
+| DXE 5291 |Make1 |2015-07-27T00:00:05.0000000 Z |
+| YZK 5704 |Make3 |2015-07-27T00:02:17.0000000 Z |
+| RMV 8282 |Make1 |2015-07-27T00:05:01.0000000 Z |
+| YHN 6970 |Make2 |2015-07-27T00:06:00.0000000 Z |
+| VFE 1616 |Make2 |2015-07-27T00:09:31.0000000 Z |
+| QYF 9358 |Make1 |2015-07-27T00:12:02.0000000 Z |
+| MDR 6128 |Make4 |2015-07-27T00:13:45.0000000 Z |
 
 **Kimenet**:
 
-| Start_fault | End_fault |
-| --- | --- |
-| 2015-01-01T00:00:02.000 Z |2015-01-01T00:00:07.000 Z |
+| License_plate | Gyártó | Idő |
+| --- | --- | --- |
+| DXE 5291 |Make1 |2015-07-27T00:00:05.0000000 Z |
+| QYF 9358 |Make1 |2015-07-27T00:12:02.0000000 Z |
 
 **Lekérdezés**:
 
 ```SQL
-WITH SelectPreviousEvent AS
-(
-SELECT
-    *,
-    LAG([time]) OVER (LIMIT DURATION(hour, 24)) as previous_time,
-    LAG([weight]) OVER (LIMIT DURATION(hour, 24)) as previous_weight
-FROM input TIMESTAMP BY [time]
-)
-
 SELECT 
-    LAG(time) OVER (LIMIT DURATION(hour, 24) WHEN previous_weight < 20000 ) [Start_fault],
-    previous_time [End_fault]
-FROM SelectPreviousEvent
-WHERE
-    [weight] < 20000
-    AND previous_weight > 20000
-```
-Az első SELECT utasítás az előző méréssel összekapcsolja az aktuális súlyozási mérést, és az aktuális méréssel együtt **kijelöli** . A második **lehetőség** arra az utolsó eseményre mutat vissza, ahol a *previous_weight* kisebb, mint 20000, ahol az aktuális súlyozás kisebb, mint 20000, és az aktuális esemény *previous_weight* nagyobb volt, mint 20000.
-
-A End_fault a jelenlegi nem hibás esemény, amelyben az előző esemény hibás volt, és a Start_fault az utolsó nem hibás esemény.
-
-## <a name="periodically-output-values"></a>Rendszeres kimeneti értékek
-
-Szabálytalan vagy hiányzó események esetén rendszeres időközi kimenet hozható létre a ritka adatbevitelből. Például állítson elő 5 másodpercenként egy eseményt, amely a legutóbb látott adatpontot jelenti.
-
-**Bemenet**:
-
-| Idő | Érték |
-| --- | --- |
-| "2014-01-01T06:01:00" |1 |
-| "2014-01-01T06:01:05" |2 |
-| "2014-01-01T06:01:10" |3 |
-| "2014-01-01T06:01:15" |4 |
-| "2014-01-01T06:01:30" |5 |
-| "2014-01-01T06:01:35" |6 |
-
-**Kimenet (első 10 sor)**:
-
-| Window_end | Last_event. Idő | Last_event. Érték |
-| --- | --- | --- |
-| 2014-01-01T14:01:00.000 Z |2014-01-01T14:01:00.000 Z |1 |
-| 2014-01-01T14:01:05.000 Z |2014-01-01T14:01:05.000 Z |2 |
-| 2014-01-01T14:01:10.000 Z |2014-01-01T14:01:10.000 Z |3 |
-| 2014-01-01T14:01:15.000 Z |2014-01-01T14:01:15.000 Z |4 |
-| 2014-01-01T14:01:20.000 Z |2014-01-01T14:01:15.000 Z |4 |
-| 2014-01-01T14:01:25.000 Z |2014-01-01T14:01:15.000 Z |4 |
-| 2014-01-01T14:01:30.000 Z |2014-01-01T14:01:30.000 Z |5 |
-| 2014-01-01T14:01:35.000 Z |2014-01-01T14:01:35.000 Z |6 |
-| 2014-01-01T14:01:40.000 Z |2014-01-01T14:01:35.000 Z |6 |
-| 2014-01-01T14:01:45.000 Z |2014-01-01T14:01:35.000 Z |6 |
-
-**Lekérdezés**:
-
-```SQL
-SELECT
-    System.Timestamp() AS Window_end,
-    TopOne() OVER (ORDER BY Time DESC) AS Last_event
-FROM
+    License_plate,
+    Make,
+    Time
+FROM 
     Input TIMESTAMP BY Time
-GROUP BY
-    HOPPINGWINDOW(second, 300, 5)
+WHERE 
+    IsFirst(minute, 10) = 1
 ```
 
-A lekérdezés 5 másodpercenként hoz létre eseményeket, és a korábban kapott utolsó eseményt adja eredményül. A **HOPPINGWINDOW** időtartama határozza meg, hogy a lekérdezés milyen mértékben keresi meg a legújabb eseményt.
-
-További információkért tekintse meg a [hopping ablakát](/stream-analytics-query/hopping-window-azure-stream-analytics).
-
-## <a name="process-events-with-independent-time-substreams"></a>Események feldolgozása független időponttal (alstreamek)
-
-Az események az esemény-előállítók közötti óra döntése, illetve a partíciók közötti időeltérések vagy a hálózati késések közötti időeltérések miatt megérkeznek.
-Például a 2. *TollID* eszköz órája öt másodperccel az 1. *TollID* mögött, a *TollID* 3 eszköz órája pedig tíz másodperccel az 1. *TollID* mögött. A számítások egymástól függetlenül is megtörténhetnek, mivel csak a saját óra-és időbélyeg-adatvesztést kell figyelembe venni.
-
-**Bemenet**:
-
-| LicensePlate | Gyártó | Idő | TollID |
-| --- | --- | --- | --- |
-| DXE 5291 |Make1 |2015-07-27T00:00:01.0000000 Z | 1 |
-| YHN 6970 |Make2 |2015-07-27T00:00:05.0000000 Z | 1 |
-| QYF 9358 |Make1 |2015-07-27T00:00:01.0000000 Z | 2 |
-| GXF 9462 |Make3 |2015-07-27T00:00:04.0000000 Z | 2 |
-| VFE 1616 |Make2 |2015-07-27T00:00:10.0000000 Z | 1 |
-| RMV 8282 |Make1 |2015-07-27T00:00:03.0000000 Z | 3 |
-| MDR 6128 |Make3 |2015-07-27T00:00:11.0000000 Z | 2 |
-| YZK 5704 |Make4 |2015-07-27T00:00:07.0000000 Z | 3 |
+A **IsFirst** az adatparticionálást is elvégezheti, és az első eseményt kiszámíthatja minden *egyes autóra* 10 percenként.
 
 **Kimenet**:
 
-| TollID | Darabszám |
-| --- | --- |
-| 1 | 2 |
-| 2 | 2 |
-| 1 | 1 |
-| 3 | 1 |
-| 2 | 1 |
-| 3 | 1 |
+| License_plate | Gyártó | Idő |
+| --- | --- | --- |
+| DXE 5291 |Make1 |2015-07-27T00:00:05.0000000 Z |
+| YZK 5704 |Make3 |2015-07-27T00:02:17.0000000 Z |
+| YHN 6970 |Make2 |2015-07-27T00:06:00.0000000 Z |
+| QYF 9358 |Make1 |2015-07-27T00:12:02.0000000 Z |
+| MDR 6128 |Make4 |2015-07-27T00:13:45.0000000 Z |
 
 **Lekérdezés**:
 
 ```SQL
-SELECT
-      TollId,
-      COUNT(*) AS Count
-FROM input
-      TIMESTAMP BY Time OVER TollId
-GROUP BY TUMBLINGWINDOW(second, 5), TollId
+SELECT 
+    License_plate,
+    Make,
+    Time
+FROM 
+    Input TIMESTAMP BY Time
+WHERE 
+    IsFirst(minute, 10) OVER (PARTITION BY Make) = 1
 ```
 
-Az **időbélyegzővel** ellátott záradék az egyes eszközök idővonalait a alstreamek egymástól független használatával vizsgálja. Az egyes *TollID* kimeneti eseményét a rendszer a számított módon hozza létre, ami azt jelenti, hogy az események sorrendben jelennek meg az egyes *TollID* , ahelyett, hogy az összes eszköz ugyanarra az időpontra van állítva.
-
-További információkért tekintse meg az [időbélyeget](/stream-analytics-query/timestamp-by-azure-stream-analytics#over-clause-interacts-with-event-ordering).
+További információkért tekintse meg a következőt: [**IsFirst**](/stream-analytics-query/isfirst-azure-stream-analytics).
 
 ## <a name="remove-duplicate-events-in-a-window"></a>Ismétlődő események eltávolítása egy ablakban
 
@@ -750,6 +588,168 @@ GROUP BY DeviceId,TumblingWindow(minute, 5)
 **Darabszám (eltérő idő)** : az időoszlopban lévő különböző értékek számát adja vissza az időtartományon belül. Az első lépés kimenete ezután felhasználható az eszközök átlagának kiszámítására az ismétlődések elvetésével.
 
 További információkért lásd: [darabszám (eltérő idő)](/stream-analytics-query/count-azure-stream-analytics).
+
+## <a name="specify-logic-for-different-casesvalues-case-statements"></a>Logika megadása különböző esetekhez/értékekhez (CASE utasítások)
+
+A **Case** utasítások különböző számításokat biztosíthatnak különböző mezőkhöz az adott feltétel alapján. Például rendelje hozzá az "A" sávot a *Make1* és a "B" Lane-hez bármely más gyártmányhoz.
+
+**Bemenet**:
+
+| Gyártó | Idő |
+| --- | --- |
+| Make1 |2015-01-01T00:00:01.0000000 Z |
+| Make2 |2015-01-01T00:00:02.0000000 Z |
+| Make2 |2015-01-01T00:00:03.0000000 Z |
+
+**Kimenet**:
+
+| Gyártó |Dispatch_to_lane | Idő |
+| --- | --- | --- |
+| Make1 |Egy |2015-01-01T00:00:01.0000000 Z |
+| Make2 |B |2015-01-01T00:00:02.0000000 Z |
+
+**Megoldás**:
+
+```SQL
+SELECT
+    Make
+    CASE
+        WHEN Make = "Make1" THEN "A"
+        ELSE "B"
+    END AS Dispatch_to_lane,
+    System.TimeStamp() AS Time
+FROM
+    Input TIMESTAMP BY Time
+```
+
+A **Case** kifejezés összehasonlítja egy kifejezést egy egyszerű kifejezésekkel, hogy meghatározza annak eredményét. Ebben a példában a *Make1* lévő járműveket az "A" sávban küldi el a rendszer, míg más gyártmányú járműveket a "B" sáv jelöl.
+
+További információkért tekintse meg a [Case kifejezést](/stream-analytics-query/case-azure-stream-analytics).
+
+## <a name="data-conversion"></a>Adatátalakítás
+
+Az adatátviteli **módszer használatával** valós időben lehet átadni az adatfeldolgozást. Például a **nvarchar (max)** típusról a **bigint** típusra konvertálható, és numerikus számításokban használható.
+
+**Bemenet**:
+
+| Gyártó | Idő | Tömeg |
+| --- | --- | --- |
+| Make1 |2015-01-01T00:00:01.0000000 Z |"1000" |
+| Make1 |2015-01-01T00:00:02.0000000 Z |"2000" |
+
+**Kimenet**:
+
+| Gyártó | Tömeg |
+| --- | --- |
+| Make1 |3000 |
+
+**Lekérdezés**:
+
+```SQL
+SELECT
+    Make,
+    SUM(CAST(Weight AS BIGINT)) AS Weight
+FROM
+    Input TIMESTAMP BY Time
+GROUP BY
+    Make,
+    TumblingWindow(second, 10)
+```
+
+Az adattípusának megadásához használjon **Cast** utasítást. Tekintse meg a támogatott adattípusok listáját az [adattípusokon (Azure stream Analytics)](/stream-analytics-query/data-types-azure-stream-analytics).
+
+További információ az [Adatátalakítási függvényekről](/stream-analytics-query/conversion-functions-azure-stream-analytics).
+
+## <a name="detect-the-duration-of-a-condition"></a>Feltétel időtartamának észlelése
+
+A több eseményre kiterjedő feltételek esetén a **lag** függvény használatával azonosítható a feltétel időtartama. Tegyük fel például, hogy egy hiba az összes olyan autót eredményezett, amely nem megfelelő súlyozású (20 000 kilós), a hiba időtartamát pedig számításba kell venni.
+
+**Bemenet**:
+
+| Gyártó | Idő | Tömeg |
+| --- | --- | --- |
+| Make1 |2015-01-01T00:00:01.0000000 Z |2000 |
+| Make2 |2015-01-01T00:00:02.0000000 Z |25000 |
+| Make1 |2015-01-01T00:00:03.0000000 Z |26000 |
+| Make2 |2015-01-01T00:00:04.0000000 Z |25000 |
+| Make1 |2015-01-01T00:00:05.0000000 Z |26000 |
+| Make2 |2015-01-01T00:00:06.0000000 Z |25000 |
+| Make1 |2015-01-01T00:00:07.0000000 Z |26000 |
+| Make2 |2015-01-01T00:00:08.0000000 Z |2000 |
+
+**Kimenet**:
+
+| Start_fault | End_fault |
+| --- | --- |
+| 2015-01-01T00:00:02.000 Z |2015-01-01T00:00:07.000 Z |
+
+**Lekérdezés**:
+
+```SQL
+WITH SelectPreviousEvent AS
+(
+SELECT
+    *,
+    LAG([time]) OVER (LIMIT DURATION(hour, 24)) as previous_time,
+    LAG([weight]) OVER (LIMIT DURATION(hour, 24)) as previous_weight
+FROM input TIMESTAMP BY [time]
+)
+
+SELECT 
+    LAG(time) OVER (LIMIT DURATION(hour, 24) WHEN previous_weight < 20000 ) [Start_fault],
+    previous_time [End_fault]
+FROM SelectPreviousEvent
+WHERE
+    [weight] < 20000
+    AND previous_weight > 20000
+```
+Az első SELECT utasítás az előző méréssel összekapcsolja az aktuális súlyozási mérést, és az aktuális méréssel együtt **kijelöli** . A második **lehetőség** arra az utolsó eseményre mutat vissza, ahol a *previous_weight* kisebb, mint 20000, ahol az aktuális súlyozás kisebb, mint 20000, és az aktuális esemény *previous_weight* nagyobb volt, mint 20000.
+
+A End_fault a jelenlegi nem hibás esemény, amelyben az előző esemény hibás volt, és a Start_fault az utolsó nem hibás esemény.
+
+## <a name="process-events-with-independent-time-substreams"></a>Események feldolgozása független időponttal (alstreamek)
+
+Az események az esemény-előállítók közötti óra döntése, illetve a partíciók közötti időeltérések vagy a hálózati késések közötti időeltérések miatt megérkeznek.
+Például a 2. *TollID* eszköz órája öt másodperccel az 1. *TollID* mögött, a *TollID* 3 eszköz órája pedig tíz másodperccel az 1. *TollID* mögött. A számítások egymástól függetlenül is megtörténhetnek, mivel csak a saját óra-és időbélyeg-adatvesztést kell figyelembe venni.
+
+**Bemenet**:
+
+| LicensePlate | Gyártó | Idő | TollID |
+| --- | --- | --- | --- |
+| DXE 5291 |Make1 |2015-07-27T00:00:01.0000000 Z | 1 |
+| YHN 6970 |Make2 |2015-07-27T00:00:05.0000000 Z | 1 |
+| QYF 9358 |Make1 |2015-07-27T00:00:01.0000000 Z | 2 |
+| GXF 9462 |Make3 |2015-07-27T00:00:04.0000000 Z | 2 |
+| VFE 1616 |Make2 |2015-07-27T00:00:10.0000000 Z | 1 |
+| RMV 8282 |Make1 |2015-07-27T00:00:03.0000000 Z | 3 |
+| MDR 6128 |Make3 |2015-07-27T00:00:11.0000000 Z | 2 |
+| YZK 5704 |Make4 |2015-07-27T00:00:07.0000000 Z | 3 |
+
+**Kimenet**:
+
+| TollID | Darabszám |
+| --- | --- |
+| 1 | 2 |
+| 2 | 2 |
+| 1 | 1 |
+| 3 | 1 |
+| 2 | 1 |
+| 3 | 1 |
+
+**Lekérdezés**:
+
+```SQL
+SELECT
+      TollId,
+      COUNT(*) AS Count
+FROM input
+      TIMESTAMP BY Time OVER TollId
+GROUP BY TUMBLINGWINDOW(second, 5), TollId
+```
+
+Az **időbélyegzővel** ellátott záradék az egyes eszközök idővonalait a alstreamek egymástól független használatával vizsgálja. Az egyes *TollID* kimeneti eseményét a rendszer a számított módon hozza létre, ami azt jelenti, hogy az események sorrendben jelennek meg az egyes *TollID* , ahelyett, hogy az összes eszköz ugyanarra az időpontra van állítva.
+
+További információkért tekintse meg az [időbélyeget](/stream-analytics-query/timestamp-by-azure-stream-analytics#over-clause-interacts-with-event-ordering).
 
 ## <a name="session-windows"></a>Munkamenet-ablakok
 
@@ -885,6 +885,7 @@ A sikeres és sikertelen művelet Return_Code értékkel van definiálva, és a 
 További információkért tekintse meg a [MATCH_RECOGNIZE](/stream-analytics-query/match-recognize-stream-analytics).
 
 ## <a name="geofencing-and-geospatial-queries"></a>Geokerítések és térinformatikai lekérdezések
+
 A Azure Stream Analytics beépített térinformatikai funkciókat biztosít, amelyek olyan forgatókönyvek megvalósítására használhatók, mint például a flotta-felügyelet, a Ride Sharing, a csatlakoztatott autók és az eszközök nyomon követése.
 A térinformatikai adatmennyiség GeoJSON vagy WKT formátumban is betölthető az esemény-adatfolyam vagy a hivatkozási adatforrások részeként.
 Például egy vállalat, amely a gépeket a Passportok nyomtatására, a gépeket a kormányoknak és a konzulátusoknak való bérletére specializálódott. A gépek helyét szigorúan úgy ellenőrzik, hogy elkerülje a Passportok hamisításának és lehetséges felhasználásának elkerülését. Az egyes gépek GPS-nyomkövetővel vannak ellátva, az információk továbbítása Azure Stream Analytics feladathoz történik.
@@ -928,7 +929,7 @@ A lekérdezés lehetővé teszi, hogy a gyártó automatikusan figyelje a gépek
 
 További információkért tekintse meg a [geokerítések és térinformatikai összesítési forgatókönyveket Azure stream Analytics](geospatial-scenarios.md) cikkben.
 
-## <a name="get-help"></a>Segítség kérése
+## <a name="get-help"></a>Segítségkérés
 
 További segítségért próbálja ki a [Microsoft Q&a Azure stream Analytics kérdéseit](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
 

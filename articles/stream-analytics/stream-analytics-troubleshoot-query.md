@@ -8,11 +8,12 @@ ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.date: 03/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: 7c83bc55a00774966681973b95d18cdc58dba19c
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: ead175cbcaa9467cb5263ad95100facdda096991
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86037205"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337806"
 ---
 # <a name="troubleshoot-azure-stream-analytics-queries"></a>Azure Stream Analytics lekérdezések hibáinak megoldása
 
@@ -27,9 +28,9 @@ Ez a cikk a Azure Stream Analytics lekérdezések fejlesztésével, a lekérdez�
     - Azure Portal a **lekérdezés** lapon válassza a **teszt**elemet. A letöltött mintaadatok használatával [tesztelheti a lekérdezést](stream-analytics-test-query.md). Vizsgálja meg a hibákat, és próbálja meg kijavítani azokat.   
     - [A lekérdezést helyileg is tesztelheti](stream-analytics-live-data-local-testing.md) a Visual studióhoz vagy a [Visual Studio Code](visual-studio-code-local-run-live-input.md)-hoz készült Azure stream Analytics eszközökkel. 
 
-2.  A [lekérdezések hibakeresése lépésről lépésre helyileg](debug-locally-using-job-diagram.md) , a Azure stream Analytics Tools for Visual Studio alkalmazásban a feladatütemezés használatával. A feladatütemezés azt mutatja be, hogy az adatok hogyan áramlanak be a bemeneti forrásokból (Event hub, IoT Hub stb.) több lekérdezési lépéssel, végül pedig a kimeneti mosogatók használatával. Minden lekérdezési lépés a parancsfájlban definiált ideiglenes eredményhalmaz számára van leképezve a WITH utasítás használatával. Megtekintheti az adatokat, valamint a metrikákat az egyes köztes eredményhalmaz-készletekben a probléma forrásának megállapításához.
+2.  A [lekérdezések hibakeresése lépésről lépésre helyileg](debug-locally-using-job-diagram-vs-code.md) , a Azure stream Analytics Tools for Visual Studio Code-ban található Job diagram használatával. A feladatütemezés azt mutatja be, hogy az adatok hogyan áramlanak be a bemeneti forrásokból (Event hub, IoT Hub stb.) több lekérdezési lépéssel, végül pedig a kimeneti mosogatók használatával. Minden lekérdezési lépés a parancsfájlban definiált ideiglenes eredményhalmaz számára van leképezve a WITH utasítás használatával. Megtekintheti az adatokat, valamint a metrikákat az egyes köztes eredményhalmaz-készletekben a probléma forrásának megállapításához.
 
-    ![A feladatütemezés előzetes verziójának eredménye](./media/debug-locally-using-job-diagram/preview-result.png)
+    ![A feladatütemezés előzetes verziójának eredménye](./media/debug-locally-using-job-diagram-vs-code/preview-result.png)
 
 3.  Ha [**időbélyegzőt**](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics)használ, ellenőrizze, hogy az események időbélyegei nagyobbak-e a [feladatok kezdési idejénél](stream-analytics-out-of-order-and-late-events.md).
 
@@ -100,7 +101,7 @@ Ezúttal a kimenetben lévő adatok formázása és feltöltése a várt módon 
 
 ![Utolsó táblázat Stream Analytics lekérdezés kiválasztása](./media/stream-analytics-select-into/stream-analytics-select-into-final-table.png)
 
-## <a name="get-help"></a>Segítség kérése
+## <a name="get-help"></a>Segítségkérés
 
 További segítségért próbálja ki a [Microsoft Q&a Azure stream Analytics kérdéseit](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
 

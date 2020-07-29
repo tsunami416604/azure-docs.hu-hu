@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.assetid: 63be271e-7c44-4d19-9897-c2913ee9599d
 ms.topic: how-to
 ms.date: 06/30/2017
-ms.openlocfilehash: 80edafb9cffa43f7163c1b75c9faaaefbb97c616
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 1c22aa9fb91b0a86704b95586afc1779023e85b6
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87127417"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288942"
 ---
 # <a name="u-sql-programmability-guide"></a>A U-SQL programozható útmutatója
 
@@ -125,7 +125,7 @@ További részletekért tekintse meg a [szerelvény regisztrációs utasításai
 
 
 ### <a name="use-assembly-versioning"></a>Szerelvény verziószámozásának használata
-Jelenleg az U-SQL a .NET-keretrendszer 4,5-es verzióját használja. Ügyeljen arra, hogy a saját szerelvényei kompatibilisek legyenek a futtatókörnyezet adott verziójával.
+Az U-SQL jelenleg a .NET-keretrendszer 4.7.2 verzióját használja. Ügyeljen arra, hogy a saját szerelvényei kompatibilisek legyenek a futtatókörnyezet adott verziójával.
 
 Ahogy korábban említettük, az U-SQL 64 bites (x64) formátumban futtatja a kódot. Ügyeljen arra, hogy a kód fordítása x64-re fusson. Ellenkező esetben helytelen formátumú hibaüzenetet kap.
 

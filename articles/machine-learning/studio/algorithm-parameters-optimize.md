@@ -1,6 +1,5 @@
 ---
-title: Algoritmusok optimalizálása
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (klasszikus): algoritmusok optimalizálása – Azure'
 description: A cikk azt ismerteti, hogyan választhatja ki az algoritmushoz beállított optimális paramétereket Azure Machine Learning Studio (klasszikus).
 services: machine-learning
 ms.service: machine-learning
@@ -10,13 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: 52853bb14b49d429100dabeffc46661289f55c84
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bc0e003e7c767fb3441e26787f5687473ac51f44
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711204"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292979"
 ---
-# <a name="choose-parameters-to-optimize-your-algorithms-in-azure-machine-learning-studio-classic"></a>Paraméterek kiválasztása az algoritmusok optimalizálásához Azure Machine Learning Studio (klasszikus)
+# <a name="choose-parameters-to-optimize-your-algorithms-in-machine-learning-studio-classic"></a>Paraméterek kiválasztása az algoritmusok optimalizálásához Machine Learning Studio (klasszikus)
+
+**a következőkre vonatkozik:** ![ nincs](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine learning](../overview-what-is-azure-ml.md) ![ Igen ](../../../includes/media/aml-applies-to-skus/yes.png) Machine learning Studio (klasszikus) 
 
 Ez a témakör azt ismerteti, hogyan választhatja ki a megfelelő hiperparaméter-készletet Azure Machine Learning Studio (klasszikus) algoritmushoz. A legtöbb gépi tanulási algoritmushoz paraméterek vannak beállítva. A modellek betanításakor meg kell adnia a paraméterek értékeit. A betanított modell hatékonysága a választott modell-paraméterektől függ. A paraméterek optimális készletének megkeresésének folyamata modell- *kiválasztás*néven ismert.
 

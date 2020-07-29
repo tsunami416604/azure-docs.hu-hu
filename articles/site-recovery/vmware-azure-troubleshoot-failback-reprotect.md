@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: a5b8ac3d46f21f299f3e56dab24a1b5f342fb4b6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d6640a6e807bdcc7a08476a18467745330742ee2
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84309951"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289277"
 ---
 # <a name="troubleshoot-failback-to-on-premises-from-azure"></a>Azure-ból helyszíni rendszerbe történő feladat-visszavétel hibaelhárítása
 
@@ -28,7 +29,7 @@ A feladat-visszavétel lényegében két fő lépést foglal magában. Az első 
 - Ha nem tudja elérni a konfigurációs kiszolgálót a folyamat-kiszolgálóról, a Telnet használatával ellenőrizze a 443-es porton futó konfigurációs kiszolgálóval létesített kapcsolatot. A konfigurációs kiszolgálót a Process Serverről is megpróbálhatja pingelni. A folyamat kiszolgálójának szívverése is lehet, ha a konfigurációs kiszolgálóhoz csatlakozik.
 - A fizikai helyszíni kiszolgálóként védett Windows Server 2008 R2 SP1-kiszolgálót nem lehet visszaadni az Azure-ból a helyszíni helyre.
 - A következő esetekben nem végezhető el a feladat-visszavétel:
-    - A gépeket áttelepítette az Azure-ba. [További információk](migrate-overview.md#what-do-we-mean-by-migration).
+    - A gépeket áttelepítette az Azure-ba. 
     - Áthelyezett egy virtuális gépet egy másik erőforráscsoporthoz.
     - Törölte az Azure-beli virtuális gépet.
     - Letiltotta a virtuális gép védelmét.
@@ -63,7 +64,7 @@ Ez a probléma akkor fordulhat elő, ha már létezik egy azonos nevű virtuáli
 A probléma megoldása:
 
 * Válasszon másik fő célkiszolgáló egy másik gazdagépen, hogy az ismételt védelem a gépet egy másik gazdagépen hozza létre, ahol a nevek nem ütköznek.
-* A vMotion használatával is áthelyezheti a fő célt egy másik gazdagépre, ahol a név ütközése nem történik meg. Ha a meglévő virtuális gép egy elkóborolt számítógép, nevezze át úgy, hogy az új virtuális gép ugyanazon ESXi-gazdagépen is létrehozható.
+* A VMotion használatával is áthelyezheti a fő célt egy másik gazdagépre, ahol a név ütközése nem történik meg. Ha a meglévő virtuális gép egy elkóborolt számítógép, nevezze át úgy, hogy az új virtuális gép ugyanazon ESXi-gazdagépen is létrehozható.
 
 
 ### <a name="error-code-78093"></a>78093-es hibakód
@@ -97,4 +98,4 @@ Ez a probléma akkor fordul elő, ha a helyszíni virtuális gép olyan gazdagé
 A probléma megoldása:
 
 * Több memória kiépítése az ESXi-gazdagépen.
-* Emellett a vMotion segítségével áthelyezheti a virtuális gépet egy másik ESXi-gazdagépre, amely elegendő memóriával rendelkezik a virtuális gép elindításához.
+* Emellett a VMotion segítségével áthelyezheti a virtuális gépet egy másik ESXi-gazdagépre, amely elegendő memóriával rendelkezik a virtuális gép elindításához.

@@ -1,5 +1,5 @@
 ---
-title: Példány és hitelesítés beállítása (megírt)
+title: Példány és hitelesítés beállítása (szkriptelt)
 titleSuffix: Azure Digital Twins
 description: 'Lásd: az Azure Digital Twins szolgáltatás egy példányának beállítása, beleértve a megfelelő hitelesítést. Parancsfájlban megadott verzió.'
 author: baanders
@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: c601d01589a89667b630d04ddb19dfbe190cca9f
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 522096b921faf34130f0c37f727d89c7bf95c530
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87125783"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337908"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-scripted"></a>Azure digitális Twins-példány és-hitelesítés beállítása (parancsfájlba foglalt)
 
@@ -49,7 +49,7 @@ Az üzembe helyezési parancsfájl Cloud Shell-ben való futtatásának lépése
     * A példány: a használni kívánt Azure-előfizetés *előfizetés-azonosítója*
     * A példány esetében: egy *hely* , ahová a példányt telepíteni szeretné. Ha szeretné megtekinteni, hogy mely régiók támogatják az Azure Digital Twins-t, látogasson el az [*Azure-termékek területre*](https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins).
     * A példány esetében: az *erőforráscsoport* neve. Használhat egy meglévő erőforráscsoportot, vagy megadhat egy új nevet a létrehozáshoz.
-    * A példány esetében: az Azure Digital Twins-példány *neve* . Az új példány nevének a régión belül egyedinek kell lennie (ami azt jelenti, hogy ha az adott régióban egy másik Azure Digital Twins-példány már használja a választott nevet, a rendszer kérni fogja, hogy válasszon másik nevet).
+    * A példány esetében: az Azure Digital Twins-példány *neve* . Az új példány nevének a régión belül egyedinek kell lennie az előfizetéshez (ami azt jelenti, hogy ha az előfizetés egy másik Azure Digital Twins-példánnyal rendelkezik abban a régióban, amely már használja a választott nevet), a rendszer kérni fogja, hogy válasszon másik nevet.
     * Az alkalmazás regisztrálása: az *Azure ad-alkalmazás megjelenített neve* , amely a regisztrációhoz társítva van. Az alkalmazás regisztrálása az [Azure Digital Twins API](how-to-use-apis-sdks.md)-khoz való hozzáférési engedélyek konfigurálására szolgál. Később az ügyfélalkalmazás hitelesíteni fogja az alkalmazás regisztrációját, és ennek eredményeképpen a konfigurált hozzáférési engedélyek lesznek elérhetők az API-khoz.
     * Az alkalmazás regisztrációja: *Azure ad-alkalmazás válaszának URL-címe* az Azure ad-alkalmazáshoz. Használhatja a t `http://localhost` .
 

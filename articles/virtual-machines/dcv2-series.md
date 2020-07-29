@@ -4,15 +4,15 @@ description: A DC sorozatú virtuális gépek specifikációi.
 author: susaxen
 ms.service: virtual-machines
 ms.subservice: sizes
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: jushiman
-ms.openlocfilehash: 88aaa10bf84d0195cc22d11d7fa1cfdcd639d475
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: c5074a81625f38cf94d5acd9751414bad4a9c3e8
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207426"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292466"
 ---
 # <a name="dcsv2-series"></a>DCsv2 sorozat
 
@@ -47,7 +47,7 @@ Memória-megőrzési frissítések: nem támogatott
 
 
 
-## <a name="other-sizes"></a>Egyéb méretek
+## <a name="other-sizes-and-information"></a>Egyéb méretek és információk
 
 - [Általános célú](sizes-general.md)
 - [Memóriaoptimalizált](sizes-memory.md)
@@ -55,6 +55,10 @@ Memória-megőrzési frissítések: nem támogatott
 - [GPU-optimalizált](sizes-gpu.md)
 - [Nagy teljesítményű számítás](sizes-hpc.md)
 - [Előző generációk](sizes-previous-gen.md)
+
+Árképzési kalkulátor: [árképzési kalkulátor](https://azure.microsoft.com/pricing/calculator/)
+
+További információ a lemezek típusairól: [lemezek típusai](https://docs.microsoft.com/azure/virtual-machines/linux/disks-types#ultra-ssd-preview/)
 
 ## <a name="next-steps"></a>További lépések
 

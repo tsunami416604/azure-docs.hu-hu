@@ -6,21 +6,21 @@ author: cweining
 ms.author: cweining
 ms.date: 11/08/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 8beb1d60ca8dcc18978ffeb523a7d63f90ca6c01
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f514dd7b54ac091535aeab43a8a7d2a645b50a09
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87049794"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87315825"
 ---
 # <a name="profile-web-apps-running-on-an-azure-virtual-machine-or-a-virtual-machine-scale-set-by-using-application-insights-profiler"></a>Azure-beli virtuális gépen vagy virtuálisgép-méretezési csoporton futó profil Web Apps Application Insights Profiler használatával
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 Az Azure Application Insights Profiler a következő szolgáltatásokon is üzembe helyezhető:
-* [Azure App Service](../../azure-monitor/app/profiler.md?toc=/azure/azure-monitor/toc.json)
+* [Azure App Service](./profiler.md?toc=%2fazure%2fazure-monitor%2ftoc.json)
 * [Azure Cloud Services](profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json)
-* [Azure Service Fabric](profiler-vm.md?toc=/azure/azure-monitor/toc.json)
+* [Azure Service Fabric](?toc=%2fazure%2fazure-monitor%2ftoc.json)
 
 ## <a name="deploy-profiler-on-a-virtual-machine-or-a-virtual-machine-scale-set"></a>A Profiler üzembe helyezése virtuális gépen vagy virtuálisgép-méretezési csoporton
 Ez a cikk bemutatja, hogyan érheti el az Azure-beli virtuális gépen (VM) vagy az Azure virtuálisgép-méretezési csoporton futó Application Insights Profiler. A Profiler a virtuális gépek Azure Diagnostics-bővítményével együtt települ. Konfigurálja a bővítményt a Profiler futtatásához, és hozza létre az Application Insights SDK-t az alkalmazásba.
@@ -67,7 +67,7 @@ Ez a cikk bemutatja, hogyan érheti el az Azure-beli virtuális gépen (VM) vagy
 
 1. Ha a kívánt alkalmazás az [IIS](https://www.microsoft.com/web/downloads/platform.aspx)-en keresztül fut, engedélyezze a `IIS Http Tracing` Windows-szolgáltatást.
 
-   a. Hozzon létre távoli hozzáférést a környezethez, majd használja a [Windows-szolgáltatások hozzáadása]( https://docs.microsoft.com/iis/configuration/system.webserver/tracing/) ablakot. Vagy futtassa a következő parancsot a PowerShellben (rendszergazdaként):  
+   a. Hozzon létre távoli hozzáférést a környezethez, majd használja a [Windows-szolgáltatások hozzáadása](/iis/configuration/system.webserver/tracing/) ablakot. Vagy futtassa a következő parancsot a PowerShellben (rendszergazdaként):  
 
     ```powershell
     Enable-WindowsOptionalFeature -FeatureName IIS-HttpTracing -Online -All
@@ -117,3 +117,4 @@ Nem tervezzük a helyszíni kiszolgálók Application Insights Profiler támogat
 [resourceexplorerput]: ./media/profiler-vm/resource-explorer-put.png
 [resourceexplorersinksconfig]: ./media/profiler-vm/resource-explorer-sinks-config.png
 [wadextension]: ./media/profiler-vm/wad-extension.png
+

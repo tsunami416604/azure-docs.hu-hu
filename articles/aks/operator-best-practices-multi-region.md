@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: thfalgou
 ms.custom: fasttrack-edit
-ms.openlocfilehash: e4e2a1fc08851e4e625bfc59419fc274ebbce1c8
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 578560eccb13ff4b9169e11b0674859acc1fc901
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86251196"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285866"
 ---
 # <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>Ajánlott eljárások az üzletmenet folytonosságához és a vész-helyreállításhoz az Azure Kubernetes szolgáltatásban (ak)
 
@@ -57,9 +57,9 @@ A Traffic Manager DNS-lekérdezéseket hajt végre, és visszaadja a felhasznál
 
 A végpontok és az Útválasztás beállításával kapcsolatos információkért lásd: [a földrajzi forgalom útválasztási módszerének konfigurálása Traffic Manager használatával](../traffic-manager/traffic-manager-configure-geographic-routing-method.md).
 
-### <a name="layer-7-application-routing-with-azure-front-door-service"></a>7. rétegbeli alkalmazás-útválasztás az Azure bejárati ajtó szolgáltatásával
+### <a name="application-routing-with-azure-front-door-service"></a>Alkalmazás-útválasztás az Azure bejárati ajtó szolgáltatásával
 
-A Traffic Manager a DNS (3. réteg) használatával alakítja át a forgalmat. Az [Azure bejárati ajtó szolgáltatás](../frontdoor/front-door-overview.md) egy HTTP/HTTPS (Layer 7) útválasztási lehetőséget biztosít. Az Azure bejárati ajtó szolgáltatás további funkciói közé tartozik a TLS-lezárás, az egyéni tartomány, a webalkalmazási tűzfal, az URL-cím újraírása és a munkamenet-affinitás. Tekintse át az alkalmazás forgalmának igényeit, hogy megértse, melyik megoldás a legmegfelelőbb.
+A Split TCP-alapú, az [Azure bejárati szolgáltatásának](../frontdoor/front-door-overview.md) használatával biztosíthatja, hogy a végfelhasználók azonnal kapcsolódjanak a legközelebbi bejárati pop-hoz (jelenléti pont). Az Azure bejárati ajtó szolgáltatás további funkciói közé tartozik a TLS-lezárás, az egyéni tartomány, a webalkalmazási tűzfal, az URL-cím újraírása és a munkamenet-affinitás. Tekintse át az alkalmazás forgalmának igényeit, hogy megértse, melyik megoldás a legmegfelelőbb.
 
 ### <a name="interconnect-regions-with-global-virtual-network-peering"></a>Összekapcsoló régiók globális virtuális hálózati társ-összevonással
 
@@ -130,7 +130,7 @@ A Kubernetes jelenleg nem biztosít natív implementációt az alkalmazás-alap�
 
 ![Alkalmazás-alapú aszinkron replikáció](media/operator-best-practices-bc-dr/aks-app-based-async-repl.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez a cikk az üzleti folytonossággal és a vész-helyreállítási megfontolásokkal foglalkozik az AK-fürtök esetében. Az AK-beli fürtök műveleteivel kapcsolatos további információkért tekintse meg az ajánlott eljárásokról szóló cikket:
 

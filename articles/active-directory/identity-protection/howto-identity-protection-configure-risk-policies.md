@@ -11,18 +11,19 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e134c2e49df5b53ed37acddd86e41af17f43a048
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 54a6c455f3702433398035a2eb6398c39b609ce9
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84464164"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337449"
 ---
 # <a name="how-to-configure-and-enable-risk-policies"></a>Útmutató: kockázatkezelési szabályzatok konfigurálása és engedélyezése
 
 Az előző cikkben megtanultuk, hogy az [Identity Protection-szabályzatok](concept-identity-protection-policies.md) két kockázati szabályzattal rendelkezünk, amelyeket a címtárban engedélyezünk. 
 
-- Bejelentkezési kockázati házirend
-- Felhasználói kockázati házirend
+- Bejelentkezési kockázati szabályzat
+- Felhasználói kockázati szabályzat
 
 ![Biztonsági Áttekintés lap a felhasználói és bejelentkezési kockázati házirendek engedélyezéséhez](./media/howto-identity-protection-configure-risk-policies/identity-protection-security-overview.png)
 
@@ -54,7 +55,7 @@ A felhasználói kockázat és a bejelentkezési kockázati házirendek engedél
 
 1. Navigáljon a [Azure Portal](https://portal.azure.com).
 1. Tallózással keresse meg **Azure Active Directory**  >  **biztonsági**  >  **azonosítók védelmének**  >  **áttekintését**.
-1. Válassza a **felhasználói kockázati házirend konfigurálása**lehetőséget.
+1. Válassza a **felhasználói kockázati házirend**elemet.
    1. A **hozzárendelések** alatt
       1. **Felhasználók** – válassza a **minden felhasználó** lehetőséget **, vagy válassza az egyének és csoportok lehetőséget,** ha korlátozza a bevezetést.
          1. Opcionálisan dönthet úgy is, hogy kizárja a felhasználókat a szabályzatból.
@@ -63,7 +64,7 @@ A felhasználói kockázat és a bejelentkezési kockázati házirendek engedél
       1. **Hozzáférés** – a Microsoft javaslata a **hozzáférés engedélyezése** és a **jelszó megkövetelése**.
    1. Szabályzat érvénybe **léptetése**  -  **Bekapcsolva**
    1. **Mentés** – ez a művelet visszaküldi az **Áttekintés** oldalra.
-1. Válassza a **bejelentkezési kockázati házirend konfigurálása**lehetőséget.
+1. Válassza **a bejelentkezési kockázati házirend**elemet.
    1. A **hozzárendelések** alatt
       1. **Felhasználók** – válassza a **minden felhasználó** lehetőséget **, vagy válassza az egyének és csoportok lehetőséget,** ha korlátozza a bevezetést.
          1. Opcionálisan dönthet úgy is, hogy kizárja a felhasználókat a szabályzatból.

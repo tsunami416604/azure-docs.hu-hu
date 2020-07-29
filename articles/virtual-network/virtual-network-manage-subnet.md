@@ -1,7 +1,7 @@
 ---
 title: Azure-beli virtuális hálózati alhálózat hozzáadása, módosítása vagy törlése
 titlesuffix: Azure Virtual Network
-description: Megtudhatja, hogyan adhat hozzá, módosíthat vagy törölhet egy virtuális hálózati alhálózatot az Azure-ban.
+description: Megtudhatja, hol találhat információt a virtuális hálózatokról, valamint arról, hogyan adhat hozzá, módosíthat vagy törölhet egy virtuális hálózati alhálózatot az Azure-ban.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/2020
 ms.author: kumud
-ms.openlocfilehash: b43fb027116d746a60c9cd4e690e63181fff4ade
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 15fe5d6d16948875253d65e70d9d440214a4a2e8
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711017"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286104"
 ---
 # <a name="add-change-or-delete-a-virtual-network-subnet"></a>Virtuális hálózat alhálózatának hozzáadása, módosítása vagy törlése
 
@@ -49,10 +50,10 @@ A fiókkal, amelybe bejelentkezik, vagy csatlakozik az Azure-hoz, hozzá kell re
 
     | Beállítás | Leírás |
     | --- | --- |
-    | **Name (Név)** | A névnek egyedinek kell lennie a virtuális hálózaton belül. A többi Azure-szolgáltatással való kompatibilitás érdekében javasoljuk, hogy használjon egy betűt a név első karaktere. Az Azure Application Gateway például nem fog olyan alhálózatba telepíteni, amelynek a neve egy számmal kezdődik. |
+    | **Név** | A névnek egyedinek kell lennie a virtuális hálózaton belül. A többi Azure-szolgáltatással való kompatibilitás érdekében javasoljuk, hogy használjon egy betűt a név első karaktere. Az Azure Application Gateway például nem fog olyan alhálózatba telepíteni, amelynek a neve egy számmal kezdődik. |
     | **Címtartomány** | <p>A tartománynak egyedinek kell lennie a virtuális hálózat címterület területén. A tartomány nem fedi át a virtuális hálózaton belüli többi alhálózati címtartományt. A címtartományt az osztály nélküli Inter-domain Routing (CIDR) jelöléssel kell megadni.</p><p>Ha például egy virtuális hálózatban a *10.0.0.0/16*címtartomány van megadva, akkor megadhatja a *10.0.0.0/22*alhálózati címtartományt. A legkisebb megadható tartomány a */29*, amely nyolc IP-címet biztosít az alhálózathoz. Az Azure fenntartja az egyes alhálózatok első és utolsó címeit a protokollok megfelelőségének megadásához. Három további cím van fenntartva az Azure-szolgáltatások használatára. Ennek eredményeképpen a */29* címtartományt tartalmazó alhálózat definiálása három használható IP-címet eredményez az alhálózatban.</p><p>Ha virtuális hálózatot szeretne csatlakozni egy VPN-átjáróhoz, létre kell hoznia egy átjáró-alhálózatot. További információ [az átjáró-alhálózatokkal kapcsolatos adott címtartomány-megfontolásokról](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub). Az alhálózat hozzáadása után a megadott feltételek szerint módosíthatja a címtartományt. Az alhálózati címtartomány módosításával kapcsolatos további információkért lásd: [alhálózat beállításainak módosítása](#change-subnet-settings).</p> |
     | **Hálózati biztonsági csoport** | Az alhálózat bejövő és kimenő hálózati forgalmának szűréséhez egy meglévő hálózati biztonsági csoportot is hozzárendelhet egy alhálózathoz. A hálózati biztonsági csoportnak ugyanabban az előfizetésben és helyen kell lennie, mint a virtuális hálózatnak. További információ a [hálózati biztonsági](security-overview.md) csoportokról és [a hálózati biztonsági csoportok létrehozásáról](tutorial-filter-network-traffic.md). |
-    | **Útválasztási táblázat** | A hálózati forgalom útválasztásának más hálózatokra való vezérléséhez szükség lehet egy meglévő útválasztási táblázat egy alhálózathoz való hozzárendelésére. Az útválasztási táblázatnak ugyanabban az előfizetésben és helyen kell lennie, mint a virtuális hálózatnak. További információ az [Azure útválasztásáról](virtual-networks-udr-overview.md) és az útválasztási [táblázat létrehozásáról](tutorial-create-route-table-portal.md). |
+    | **Útvonaltábla** | A hálózati forgalom útválasztásának más hálózatokra való vezérléséhez szükség lehet egy meglévő útválasztási táblázat egy alhálózathoz való hozzárendelésére. Az útválasztási táblázatnak ugyanabban az előfizetésben és helyen kell lennie, mint a virtuális hálózatnak. További információ az [Azure útválasztásáról](virtual-networks-udr-overview.md) és az útválasztási [táblázat létrehozásáról](tutorial-create-route-table-portal.md). |
     | **Szolgáltatásvégpontok** | <p>Egy alhálózat opcionálisan rendelkezhet egy vagy több, engedélyezett szolgáltatási végponttal. Egy szolgáltatás végpontjának engedélyezéséhez válassza ki azt a szolgáltatást vagy szolgáltatásokat, amely számára engedélyezni szeretné a szolgáltatás-végpontokat a **szolgáltatások** listájából. Az Azure egy végpont számára automatikusan konfigurálja a helyet. Alapértelmezés szerint az Azure konfigurálja a virtuális hálózat régiójához tartozó szolgáltatási végpontokat. A regionális feladatátvételi forgatókönyvek támogatása érdekében az Azure automatikusan konfigurálja a végpontokat az Azure-beli [párosított régiókba](../best-practices-availability-paired-regions.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-paired-regions) az Azure Storage-hoz.</p><p>Egy szolgáltatási végpont eltávolításához szüntesse meg a szolgáltatás végpontjának eltávolításához használni kívánt szolgáltatást. Ha többet szeretne megtudni a szolgáltatási végpontokról és azokról a szolgáltatásokról, amelyek számára engedélyezhető a szolgáltatás, tekintse meg a [virtuális hálózati szolgáltatás végpontjai](virtual-network-service-endpoints-overview.md)című témakört. Miután engedélyezte a szolgáltatási végpontot a szolgáltatáshoz, engedélyeznie kell az alhálózat hálózati hozzáférését is a szolgáltatással létrehozott erőforrásokhoz. Ha például engedélyezi a Service-végpontot a **Microsoft. Storage**szolgáltatáshoz, engedélyeznie kell a hálózati hozzáférést minden olyan Azure Storage-fiókhoz, amelyhez hálózati hozzáférést szeretne biztosítani. Ha engedélyezni szeretné a hálózati hozzáférést azon alhálózatokhoz, amelyeken a szolgáltatási végpont engedélyezve van, tekintse meg a szolgáltatás végpontját engedélyező egyéni szolgáltatás dokumentációját.</p><p>Annak ellenőrzéséhez, hogy a szolgáltatási végpont engedélyezve van-e az alhálózaton, tekintse meg az alhálózat bármely hálózati adapterének [érvényes útvonalait](diagnose-network-routing-problem.md) . A végpontok konfigurálásakor megjelenik egy *alapértelmezett* útvonal a szolgáltatás előtagjaival, és a **VirtualNetworkServiceEndpoint**következő ugrási típusa jelenik meg. További információ az útválasztásról: [virtuális hálózati forgalom útválasztása](virtual-networks-udr-overview.md).</p> |
     | **Alhálózat delegálása** | Egy alhálózat opcionálisan rendelkezhet egy vagy több delegálással. Az alhálózati delegálás explicit jogosultságokat biztosít a szolgáltatás számára, hogy a szolgáltatás telepítése során egyedi azonosítóval hozzon létre szolgáltatás-specifikus erőforrásokat az alhálózatban. Egy szolgáltatás delegálásához válassza ki azt a szolgáltatást, amelyet delegálni szeretne a **szolgáltatások** listájából. |
 
@@ -77,7 +78,7 @@ A fiókkal, amelybe bejelentkezik, vagy csatlakozik az Azure-hoz, hozzá kell re
 
 5. Az alhálózat lapon módosítsa a következő beállítások bármelyikét:
 
-    | Beállítás | Description |
+    | Beállítás | Leírás |
     | --- | --- |
     | **Címtartomány** | Ha az alhálózaton belül nincs erőforrás telepítve, módosíthatja a címtartományt. Ha bármilyen erőforrás létezik az alhálózatban, akkor az erőforrásokat át kell helyeznie egy másik alhálózatba, vagy először törölnie kell őket az alhálózatból. Az erőforrások áthelyezéséhez vagy törléséhez szükséges lépések az erőforrástól függően változnak. Az alhálózatokban található erőforrások áthelyezésének és törlésének megismeréséhez olvassa el az egyes erőforrástípusok dokumentációját. Tekintse meg az [alhálózat hozzáadása](#add-a-subnet)szakasz 4. lépésében a **címtartomány** korlátozásait. |
     | **Felhasználók** | Az alhálózathoz való hozzáférést beépített szerepkörök vagy saját egyéni szerepkörök használatával szabályozhatja. Ha többet szeretne megtudni a szerepkörök és a felhasználók az alhálózat eléréséhez való hozzárendeléséről, tekintse meg [a szerepkör-hozzárendelés hozzáadása](../role-based-access-control/role-assignments-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#add-a-role-assignment)című témakört. |
@@ -85,7 +86,7 @@ A fiókkal, amelybe bejelentkezik, vagy csatlakozik az Azure-hoz, hozzá kell re
     | **Szolgáltatásvégpontok** | <p>Lásd: szolgáltatási végpontok az [alhálózat hozzáadása](#add-a-subnet)szakasz 4. lépésében. Ha egy meglévő alhálózathoz engedélyez egy szolgáltatási végpontot, győződjön meg arról, hogy az alhálózat egyik erőforrásán sem futnak kritikus feladatok. A szolgáltatási végpontok az alhálózaton lévő összes hálózati adapter útvonalait átkapcsolják. A szolgáltatási végpontok az alapértelmezett útvonalat használják a *0.0.0.0/0* -címnek és a következő ugrási típusnak az *Internet*használatával, egy új útvonal használatára a szolgáltatás előtagjaival és a *VirtualNetworkServiceEndpoint*következő ugrási típusával.</p><p>A kapcsoló során előfordulhat, hogy a nyitott TCP-kapcsolatok megszakadnak. A szolgáltatási végpont nincs engedélyezve, amíg az összes hálózati adapter számára a szolgáltatás felé irányuló adatforgalom az új útvonallal frissül. További információ az útválasztásról: [virtuális hálózati forgalom útválasztása](virtual-networks-udr-overview.md).</p> |
     | **Alhálózat delegálása** | Lásd: szolgáltatási végpontok az [alhálózat hozzáadása](#add-a-subnet)szakasz 4. lépésében. Az alhálózat delegálása nulla vagy több, engedélyezett delegálásra módosítható. Ha egy szolgáltatás erőforrása már telepítve van az alhálózatban, akkor az alhálózati delegálás nem vehető fel és nem távolítható el, amíg el nem távolítja a szolgáltatás összes erőforrását. Egy másik szolgáltatás delegálásához válassza ki azt a szolgáltatást, amelyet delegálni szeretne a **szolgáltatások** listájából. |
 
-6. Kattintson a **Mentés** gombra.
+6. Válassza a **Mentés** lehetőséget.
 
 ### <a name="commands"></a>Parancsok
 
@@ -119,7 +120,7 @@ Csak akkor törölhet egy alhálózatot, ha nincsenek erőforrások az alhálóz
 
 Az alhálózatokon lévő feladatok elvégzéséhez a fiókját hozzá kell rendelni a [hálózati közreműködő szerepkörhöz](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) , vagy egy [Egyéni szerepkörhöz](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , amely a következő táblázatban szereplő megfelelő műveletekhez van rendelve:
 
-|Műveletek                                                                   |   Name                                       |
+|Művelet                                                                   |   Név                                       |
 |-----------------------------------------------------------------------  |   -----------------------------------------  |
 |Microsoft. Network/virtualNetworks/alhálózatok/olvasás                           |   Virtuális hálózat alhálózatának beolvasása              |
 |Microsoft. Network/virtualNetworks/alhálózatok/írás                          |   Virtuális hálózati alhálózat létrehozása vagy frissítése  |

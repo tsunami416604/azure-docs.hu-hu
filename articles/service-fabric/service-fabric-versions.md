@@ -3,16 +3,18 @@ title: Támogatott fürtözött verziók az Azure Service Fabric
 description: Ismerje meg az Azure Service Fabric-beli fürtök verzióit, beleértve a Service Fabric csapat blogján elérhető legújabb kiadásokra mutató hivatkozást is.
 ms.topic: troubleshooting
 ms.date: 06/15/2020
-ms.openlocfilehash: 211197ced52ca094d375d3ae212957fa25a523fc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d849b4471bf11183dc02735c7373f858f0c773be
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091640"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289320"
 ---
 # <a name="supported-service-fabric-versions"></a>Támogatott Service Fabric verziók
 
 Győződjön meg arról, hogy a fürt mindig támogatott Azure Service Fabric verziót futtat. Legalább 60 nappal azután, hogy bejelentjük a Service Fabric új verziójának kiadását, az előző verzió támogatása megszűnik. Az új kiadásokról a [Service Fabric csapat blogján](https://azure.microsoft.com/updates/?product=service-fabric)talál hirdetményeket.
+
+A Service Fabric futtatókörnyezet egy adott verziójához az SDK/NuGet csomagok megadott vagy régebbi verzióit használhatja. A csomagok újabb verziói nem támogatottak, és előfordulhat, hogy a régebbi fürtöket célzó problémák merülhetnek fel, mivel ezek a környezetek nem támogatják a szolgáltatás vagy a protokoll módosításait.
 
 A következő dokumentumokban tájékozódhat arról, hogyan tarthatja meg a fürt egy támogatott Service Fabric verzióját:
 

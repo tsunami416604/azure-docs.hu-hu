@@ -6,11 +6,12 @@ author: mamccrea
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.service: stream-analytics
-ms.openlocfilehash: 736fce1d4b347e36ad5c10ca89ad0627104a0232
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 70097ad02c17f8c23bd9613487a905ccd562635e
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80879842"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337551"
 ---
 # <a name="develop-and-debug-azure-stream-analytics-jobs-locally"></a>Azure Stream Analytics feladatok helyi fejlesztése és hibakeresése
 
@@ -22,9 +23,9 @@ A Stream Analytics feladatok helyi számítógépen való fejlesztésének módj
 
 A következő táblázat környezetei támogatják a helyi fejlesztést:
 
-|Környezet                              |Description    |
+|Környezet                              |Leírás    |
 |-----------------------------------------|------------|
-|[Visual Studio Code](visual-studio-code-explore-jobs.md)| A Visual Studio Code-hoz készült [Azure stream Analytics Tools bővítmény](https://marketplace.visualstudio.com/items?itemName=ms-bigdatatools.vscode-asa) lehetővé teszi a stream Analytics-feladatok helyben és a felhőben való létrehozását, kezelését és tesztelését, valamint a sokoldalú IntelliSense és a natív verziókövetés használatát. Támogatja a fejlesztést Linux, MacOS és Windows rendszeren. További információ: [Azure stream Analytics-feladatok létrehozása a Visual Studio Code-ban](quick-create-vs-code.md).|
+|[Visual Studio Code](visual-studio-code-explore-jobs.md)| A Visual Studio Code-hoz készült [Azure stream Analytics Tools bővítmény](https://marketplace.visualstudio.com/items?itemName=ms-bigdatatools.vscode-asa) lehetővé teszi a stream Analytics-feladatok helyi és a felhőben való létrehozását, kezelését, valamint a gazdag IntelliSense és a natív verziókövetés használatát. Támogatja a fejlesztést Linux, MacOS és Windows rendszeren. További információ: [Azure stream Analytics-feladatok létrehozása a Visual Studio Code-ban](quick-create-vs-code.md). A bővítmény támogatja a [Visual Studio Codespaces](https://visualstudio.microsoft.com/services/visual-studio-codespaces/) is, amely egy felhőben üzemeltetett fejlesztői környezet.|
 |[Visual Studio 2019](stream-analytics-tools-for-visual-studio-install.md) |A Stream Analytics-eszközök az Azure fejlesztési és adattárolási és-feldolgozási számítási feladatainak részét képezik a Visual Studióban. A Visual Studióval egyéni C# felhasználó által definiált függvények és deszerializálók írhatók. További információ: Azure Stream Analytics- [feladatok létrehozása a Visual Studio használatával](stream-analytics-quick-create-vs.md).|
 |[Parancssor vagy terminál](stream-analytics-tools-for-visual-studio-cicd.md)|A Azure Stream Analytics CI/CD NuGet-csomag eszközöket biztosít a Visual Studio Project buildhez, a helyi teszteléshez egy tetszőleges gépen. A Azure Stream Analytics CI/CD NPM-csomag eszközöket biztosít a Visual Studio Code Project buildek számára (amely létrehoz egy Azure Resource Manager sablont) egy tetszőleges gépen.|
 

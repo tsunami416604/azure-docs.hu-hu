@@ -4,23 +4,24 @@ description: Application Insights adatmodell a függőségi telemetria
 ms.topic: conceptual
 ms.date: 04/17/2017
 ms.reviewer: sergkanz
-ms.openlocfilehash: ba0d848904d1ba885dc53e2941953d8dfb4864cf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0f9fc96479569c3411024068ed614d422035ab17
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77671919"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87315971"
 ---
 # <a name="dependency-telemetry-application-insights-data-model"></a>Függőségi telemetria: Application Insights adatmodell
 
-A függőségi telemetria ( [Application Insights](../../azure-monitor/app/app-insights-overview.md)) a figyelt összetevő és egy távoli összetevő, például az SQL vagy egy http-végpont interakcióját jelöli.
+A függőségi telemetria ( [Application Insights](./app-insights-overview.md)) a figyelt összetevő és egy távoli összetevő, például az SQL vagy egy http-végpont interakcióját jelöli.
 
-## <a name="name"></a>Name
+## <a name="name"></a>Név
 
 A függőségi hívással kezdeményezett parancs neve. Alacsony kardinális érték. Ilyenek például a tárolt eljárás neve és az URL-cím elérési útja sablon.
 
 ## <a name="id"></a>ID
 
-A függőségi hívás példányának azonosítója. A függőségi híváshoz tartozó telemetria-elemmel való korrelációhoz használatos. További információ: [korrelációs](../../azure-monitor/app/correlation.md) oldal.
+A függőségi hívás példányának azonosítója. A függőségi híváshoz tartozó telemetria-elemmel való korrelációhoz használatos. További információ: [korrelációs](./correlation.md) oldal.
 
 ## <a name="data"></a>Adatok
 
@@ -32,7 +33,7 @@ Függőségi típus neve A függőségek logikai csoportosításának és más m
 
 ## <a name="target"></a>Cél
 
-A függőségi hívás célhelye. Ilyenek például a kiszolgáló neve, a gazdagép címe. További információ: [korrelációs](../../azure-monitor/app/correlation.md) oldal.
+A függőségi hívás célhelye. Ilyenek például a kiszolgáló neve, a gazdagép címe. További információ: [korrelációs](./correlation.md) oldal.
 
 ## <a name="duration"></a>Időtartam
 
@@ -42,7 +43,7 @@ Kérelem időtartama (formátum `DD.HH:MM:SS.MMMMMM` ):. Rövidebbnek kell lenni
 
 A függőségi hívás eredményének kódja. Ilyenek például az SQL-hibakódok és a HTTP-állapotkód.
 
-## <a name="success"></a>Sikeres
+## <a name="success"></a>Success
 
 A sikeres vagy sikertelen hívás megjelölése.
 
@@ -57,8 +58,9 @@ A sikeres vagy sikertelen hívás megjelölése.
 
 ## <a name="next-steps"></a>További lépések
 
-- Függőségi követés beállítása a [.net](../../azure-monitor/app/asp-net-dependencies.md)-hez.
-- A függőség nyomon követésének beállítása a [Javához](../../azure-monitor/app/java-agent.md).
-- [Egyéni függőségi telemetria írása](../../azure-monitor/app/api-custom-events-metrics.md#trackdependency)
+- Függőségi követés beállítása a [.net](./asp-net-dependencies.md)-hez.
+- A függőség nyomon követésének beállítása a [Javához](./java-agent.md).
+- [Egyéni függőségi telemetria írása](./api-custom-events-metrics.md#trackdependency)
 - Lásd: [adatmodell](data-model.md) Application Insights típusokhoz és adatmodellekhez.
-- Tekintse meg Application Insights által támogatott [platformokat](../../azure-monitor/app/platforms.md) .
+- Tekintse meg Application Insights által támogatott [platformokat](./platforms.md) .
+

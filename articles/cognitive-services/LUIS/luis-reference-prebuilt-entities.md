@@ -9,32 +9,40 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 10/03/2019
+ms.date: 07/20/2020
 ms.author: diberry
-ms.openlocfilehash: 831e766fbb10d616b3fbaf8f878228a9a51ece37
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7ec9cd8aade1edb7d2df2bab5cec8de445af7e44
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090943"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337976"
 ---
 # <a name="entities-per-culture-in-your-luis-model"></a>Entitások/kulturális elemek a LUIS-modellben
 
-Language Understanding (LUIS) előre összeépített entitásokat biztosít. Ha egy előre összeépített entitás szerepel az alkalmazásban, a LUIS tartalmazza a megfelelő entitás-előrejelzést a végpont válaszában. Az összes példa hosszúságú kimondott szöveg is címkével kell ellátni az entitással. Az előre elkészített entitások viselkedése **nem** módosítható. Ha másként nincs jelezve, az előre elkészített entitások az összes LUIS alkalmazás-területi beállításban (kulturális környezetekben) érhetők el. A következő táblázat az egyes kulturális környezetekben támogatott előre összeépített entitásokat tartalmazza.
+Language Understanding (LUIS) előre összeépített entitásokat biztosít.
 
-|Kultúra|Szubkultúrák|Jegyzetek|
+## <a name="entity-resolution"></a>Entitás feloldása
+Ha egy előre összeépített entitás szerepel az alkalmazásban, a LUIS a végponti válaszban tartalmazza a megfelelő entitás-feloldást. Az összes példa hosszúságú kimondott szöveg is címkével kell ellátni az entitással.
+
+Az előre elkészített entitások működése nem módosítható, de javíthatja a felbontást úgy, [hogy hozzáadja az előre elkészített entitást funkcióként egy gépi tanulási entitáshoz vagy alentitáshoz](luis-concept-entity-types.md#effective-prebuilt-entities).
+
+## <a name="availability"></a>Rendelkezésre állás
+Ha másként nincs jelezve, az előre elkészített entitások az összes LUIS alkalmazás-területi beállításban (kulturális környezetekben) érhetők el. A következő táblázat az egyes kulturális környezetekben támogatott előre összeépített entitásokat tartalmazza.
+
+|Kulturális környezet|Szubkultúrák|Jegyzetek|
 |--|--|--|
 |Kínai|[zh-CN](#chinese-entity-support)||
-|Holland|[nl-NL](#dutch-entity-support)||
-|Angol|[en-US (amerikai)](#english-american-entity-support)||
-|Francia|[fr-Ca (Kanada)](#french-canadian-entity-support), [fr-fr (Franciaország)](#french-france-entity-support), ||
-|Német|[de-DE](#german-entity-support)||
-|Olasz|[it-IT](#italian-entity-support)||
+|holland|[nl-NL](#dutch-entity-support)||
+|angol|[en-US (amerikai)](#english-american-entity-support)||
+|francia|[fr-Ca (Kanada)](#french-canadian-entity-support), [fr-fr (Franciaország)](#french-france-entity-support), ||
+|német|[de-DE](#german-entity-support)||
+|olasz|[it-IT](#italian-entity-support)||
 |Japán|[ja-JP](#japanese-entity-support)||
-|Koreai|[ko-KR](#korean-entity-support)||
-|Portugál|[PT-BR (Brazília)](#portuguese-brazil-entity-support)||
-|Spanyol|[es-es (Spanyolország)](#spanish-spain-entity-support), [es-MX (Mexikó)](#spanish-mexico-entity-support)||
-|Török|[török](#turkish-entity-support)|Nem támogatott előre elkészített entitások a török nyelven|
+|koreai|[ko-KR](#korean-entity-support)||
+|portugál|[PT-BR (Brazília)](#portuguese-brazil-entity-support)||
+|spanyol|[es-es (Spanyolország)](#spanish-spain-entity-support), [es-MX (Mexikó)](#spanish-mexico-entity-support)||
+|török|[török](#turkish-entity-support)|Nem támogatott előre elkészített entitások a török nyelven|
 
 ## <a name="prediction-endpoint-runtime"></a>Előrejelzési végpont futtatókörnyezete
 

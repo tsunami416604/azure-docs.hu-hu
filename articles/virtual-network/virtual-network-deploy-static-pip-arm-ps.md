@@ -1,6 +1,6 @@
 ---
 title: Statikus nyilvános IP-címmel rendelkező virtuális gép létrehozása – PowerShell | Microsoft Docs
-description: Megtudhatja, hogyan hozhat létre statikus nyilvános IP-címmel rendelkező virtuális gépet a PowerShell használatával.
+description: Hozzon létre egy virtuális gépet (VM) statikus nyilvános IP-címmel a PowerShell használatával. A statikus nyilvános IP-címek olyan címek, amelyek soha nem változnak.
 services: virtual-network
 documentationcenter: na
 author: asudbring
@@ -12,11 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/08/2018
 ms.author: allensu
-ms.openlocfilehash: 03a619a647da247347492076e9fd36414565bf33
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3ca83836771af8448f6510ab27d0ac5f2973b35c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84703145"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287697"
 ---
 # <a name="create-a-virtual-machine-with-a-static-public-ip-address-using-powershell"></a>Statikus nyilvános IP-címmel rendelkező virtuális gép létrehozása a PowerShell használatával
 
@@ -63,7 +64,7 @@ A következő lépéseket a helyi számítógépről vagy a Azure Cloud Shell ha
 > [!WARNING]
 > Ne módosítsa az IP-cím beállításait a virtuális gép operációs rendszerén belül. Az operációs rendszer nem ismeri az Azure nyilvános IP-címeit. Bár a magánhálózati IP-címek beállításait az operációs rendszerhez is hozzáadhatja, azt javasoljuk, hogy csak akkor hajtsa végre ezt, ha szükséges, és nem, amíg az olvasó nem [ad hozzá privát IP-címet az operációs rendszerhez](virtual-network-network-interface-addresses.md#private).
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs rá szükség, a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) használatával eltávolíthatja az erőforráscsoportot és a benne található összes erőforrást:
 
