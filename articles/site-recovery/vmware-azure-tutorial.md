@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 2ad06a7583789a9f4db974251e7c2e7387b72549
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 317cc5222b3444ae2ed242df694d317503c72a87
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076086"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290655"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms"></a>Az Azure-ba irányuló vészhelyreállítás beállítása helyszíni VMware virtuális gépekhez
 
@@ -84,7 +84,7 @@ Ezen összetevők mindegyike a *konfigurációs kiszolgálóként*ismert helysz�
 ## <a name="import-the-template-in-vmware"></a>A sablon importálása a VMware-ben
 
 
-1. Jelentkezzen be a VMware vCenter-kiszolgálóra vagy a vSphere ESXi-gazdagépre a VMware vSphere Client használatával.
+1. Jelentkezzen be a VMware vCenter-kiszolgálóra vagy a vSphere ESXi-gazdagépre a VMware vSphere-ügyféllel.
 2. A **fájl** menüben válassza a **OVF-sablon telepítése** lehetőséget a **OVF-sablon központi telepítése varázsló**elindításához.
 
      ![OVF-sablon](./media/vmware-azure-tutorial/vcenter-wizard.png)
@@ -113,7 +113,7 @@ Ha további hálózati adaptert szeretne hozzáadni a konfigurációs kiszolgál
 
 A konfigurációs kiszolgáló beállítása után regisztrálja a tárolóban.
 
-1. A VMWare vSphere Client-konzolon kapcsolja be a virtuális gépet.
+1. A VMware vSphere-ügyfél konzolon kapcsolja be a virtuális gépet.
 2. A virtuális gép a bekapcsolásakor egy Windows Server 2016 telepítési folyamatot indít el. Fogadja el a licencszerződést, és adjon meg egy rendszergazdai jelszót.
 3. A telepítés befejezése után jelentkezzen be rendszergazdaként a virtuális gépre.
 4. Az első bejelentkezés alkalmával néhány másodpercen belül elindul az Azure Site Recovery Configuration Tool.

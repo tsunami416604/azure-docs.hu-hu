@@ -3,12 +3,12 @@ title: Az Application Insightsban lévő események számlálói | Microsoft Doc
 description: A rendszer és az egyéni .NET/.NET Core EventCounters figyelése Application Insightsban.
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.openlocfilehash: 06bf15bf60b1ee5e2c301935a30b3981d5233a08
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 42140f68a5f383a2a60fe8327f5023754366e6b7
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539941"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324403"
 ---
 # <a name="eventcounters-introduction"></a>EventCounters bemutatása
 
@@ -124,7 +124,7 @@ customMetrics
 A többi telemetria hasonlóan a **customMetrics** is tartalmaz egy oszlopot, `cloud_RoleInstance` amely jelzi annak a gazdagép-példánynak az identitását, amelyen az alkalmazás fut. A fenti lekérdezés a számláló értékét jeleníti meg, és felhasználható a különböző kiszolgálói példányok teljesítményének összehasonlítására.
 
 ## <a name="alerts"></a>Riasztások
-Más mérőszámokhoz hasonlóan [riasztást is beállíthat](../../azure-monitor/platform/alerts-log.md) , amely figyelmezteti, ha egy esemény számlálója a megadott korláton kívül esik. Nyissa meg a riasztások ablaktáblát, és kattintson a riasztás hozzáadása lehetőségre.
+Más mérőszámokhoz hasonlóan [riasztást is beállíthat](../platform/alerts-log.md) , amely figyelmezteti, ha egy esemény számlálója a megadott korláton kívül esik. Nyissa meg a riasztások ablaktáblát, és kattintson a riasztás hozzáadása lehetőségre.
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
@@ -148,4 +148,5 @@ A EventCounter nem igényel speciális engedélyeket, és a .NET Core 3,0 össze
 
 ## <a name="next-steps"></a><a name="next"></a>További lépések
 
-* [Függőségek nyomon követése](../../azure-monitor/app/asp-net-dependencies.md)
+* [Függőségek nyomon követése](./asp-net-dependencies.md)
+

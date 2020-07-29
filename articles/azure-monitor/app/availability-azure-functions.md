@@ -5,16 +5,16 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/04/2020
-ms.openlocfilehash: 1808623821d71169ec35beab1d33d4eb2c32c189
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e2603d921973aefdcc1a6f4a76bdf70d69dcb68f
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87008404"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320629"
 ---
 # <a name="create-and-run-custom-availability-tests-using-azure-functions"></a>Egyéni rendelkezésre állási tesztek létrehozása és futtatása Azure Functions használatával
 
-Ez a cikk bemutatja, hogyan hozhat létre egy Azure-függvényt a TrackAvailability () használatával, amely rendszeres időközönként, a TimerTrigger függvényben megadott konfiguráció alapján, saját üzleti logikával fog futni. A teszt eredményét a rendszer elküldi a Application Insights-erőforrásnak, ahol a rendelkezésre állási eredmények adataira vonatkozó lekérdezéssel és riasztással kapcsolatos értesítéseket fog kapni. Ez lehetővé teszi, hogy a portálon a [rendelkezésre állási monitorozáshoz](../../azure-monitor/app/monitor-web-app-availability.md) hasonló testreszabott teszteket hozzon létre. A testreszabott tesztek lehetővé teszik összetettebb rendelkezésre állási tesztek megírását, mint amennyi a portál felhasználói felületén lehetséges, figyelheti az alkalmazást az Azure-VNET, módosíthatja a végponti címeket, vagy létrehozhat egy rendelkezésre állási tesztet, még akkor is, ha ez a funkció nem érhető el a régióban.
+Ez a cikk bemutatja, hogyan hozhat létre egy Azure-függvényt a TrackAvailability () használatával, amely rendszeres időközönként, a TimerTrigger függvényben megadott konfiguráció alapján, saját üzleti logikával fog futni. A teszt eredményét a rendszer elküldi a Application Insights-erőforrásnak, ahol a rendelkezésre állási eredmények adataira vonatkozó lekérdezéssel és riasztással kapcsolatos értesítéseket fog kapni. Ez lehetővé teszi, hogy a portálon a [rendelkezésre állási monitorozáshoz](./monitor-web-app-availability.md) hasonló testreszabott teszteket hozzon létre. A testreszabott tesztek lehetővé teszik összetettebb rendelkezésre állási tesztek megírását, mint amennyi a portál felhasználói felületén lehetséges, figyelheti az alkalmazást az Azure-VNET, módosíthatja a végponti címeket, vagy létrehozhat egy rendelkezésre állási tesztet, még akkor is, ha ez a funkció nem érhető el a régióban.
 
 > [!NOTE]
 > Ez a példa kizárólag arra szolgál, hogy megmutassa, hogyan működik a TrackAvailability () API-hívás egy Azure-függvényen belül. Nem kell megírnia a mögöttes HTTP-teszt kódját/üzleti logikáját, amely a teljes funkcionalitású rendelkezésre állási teszthez szükséges lenne. Ha ezt a példát mutatja be, alapértelmezés szerint létre fog hozni egy rendelkezésre állási tesztet, amely mindig hibát eredményez.
@@ -177,7 +177,7 @@ Ha mindent futtatott (üzleti logika hozzáadása nélkül), akkor a teszt siker
 
 ## <a name="query-in-logs-analytics"></a>Lekérdezés a naplókban (Analitika)
 
-A naplók (Analitika) használatával megtekintheti a rendelkezésre állási eredményeket, a függőségeket és egyebeket. A naplókról további információt a [log Query áttekintése című](../../azure-monitor/log-query/log-query-overview.md)témakörben találhat.
+A naplók (Analitika) használatával megtekintheti a rendelkezésre állási eredményeket, a függőségeket és egyebeket. A naplókról további információt a [log Query áttekintése című](../log-query/log-query-overview.md)témakörben találhat.
 
 >[!div class="mx-imgBorder"]
 >![Rendelkezésre állási eredmények](media/availability-azure-functions/availabilityresults.png)
@@ -187,5 +187,6 @@ A naplók (Analitika) használatával megtekintheti a rendelkezésre állási er
 
 ## <a name="next-steps"></a>További lépések
 
-- [Alkalmazástérkép](../../azure-monitor/app/app-map.md)
-- [Tranzakció diagnosztikája](../../azure-monitor/app/transaction-diagnostics.md)
+- [Alkalmazástérkép](./app-map.md)
+- [Tranzakció diagnosztikája](./transaction-diagnostics.md)
+

@@ -6,12 +6,12 @@ author: nikmd23
 ms.author: nimolnar
 ms.date: 09/17/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 9eb753981821a6b53d81b1d03e65abf68e0064dc
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 142daec93724fe4c25fd5c65dd387856dfb582c3
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539992"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324437"
 ---
 # <a name="what-is-distributed-tracing"></a>Mi az elosztott nyomkövetés?
 
@@ -52,8 +52,9 @@ A Application Insights SDK-k mellett Application Insights is támogatja az elosz
 
 A OpenCensus webhely a [Python](https://opencensus.io/api/python/trace/usage.html) és a [Go](https://godoc.org/go.opencensus.io)API-referenciájának dokumentációját, valamint a OpenCensus használatának különböző útmutatóit tartalmazza. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [OpenCensus Python használati útmutató](https://opencensus.io/api/python/trace/usage.html)
-* [Alkalmazás-hozzárendelés](./../../azure-monitor/app/app-map.md)
-* [Végpontok közötti teljesítmény figyelése](./../../azure-monitor/learn/tutorial-performance.md)
+* [Alkalmazás-hozzárendelés](./app-map.md)
+* [Végpontok közötti teljesítmény figyelése](../learn/tutorial-performance.md)
+

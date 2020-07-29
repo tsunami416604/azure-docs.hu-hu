@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 06/28/2020
 ms.custom: designer
-ms.openlocfilehash: 2922b5d3aa6cee0f1222c041a0e9728936754c21
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 4a925fb4352ac81e5879bb925ee1d743a77ffd5c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86200036"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290285"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>Oktatóanyag: az autó árának előrejelzése a tervezővel (előzetes verzió)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -27,7 +27,7 @@ Az oktatóanyag első részében az alábbiakkal fog elsajátítani:
 > [!div class="checklist"]
 > * Hozzon létre egy új folyamatot.
 > * Importálja az adatimportálást.
-> * Adatok előkészítése.
+> * Készítse elő az adatfeldolgozást.
 > * Gépi tanulási modell betanítása.
 > * A Machine learning-modell kiértékelése.
 
@@ -37,6 +37,8 @@ Az oktatóanyag [második részében](tutorial-designer-automobile-price-deploy.
 >Az oktatóanyag befejezett verziója minta folyamatként érhető el.
 >
 >A kereséshez nyissa meg a tervezőt a munkaterületen. Az **új folyamat** szakaszban válassza az **1. minta – regresszió: autó árának előrejelzése (alapszintű)** lehetőséget.
+
+[!INCLUDE [machine-learning-missing-ui](../../includes/machine-learning-missing-ui.md)]
 
 ## <a name="create-a-new-pipeline"></a>Új folyamat létrehozása
 
@@ -81,7 +83,7 @@ Beállíthatja a teljes folyamat **alapértelmezett számítási célját** , am
 
 1. Adja meg a számítási erőforrás nevét.
 
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
     > [!NOTE]
     > Számítási erőforrás létrehozása körülbelül öt percet vesz igénybe. Az erőforrás létrehozása után újra felhasználhatja azt, és kihagyhatja ezt a várakozási időt a jövőbeli futtatásokhoz.
@@ -321,7 +323,7 @@ Ugorja át ezt a szakaszt, ha folytatni szeretné az oktatóanyag 2. részét, �
 
 [!INCLUDE [aml-ui-cleanup](../../includes/aml-ui-cleanup.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A második részből megtudhatja, hogyan helyezheti üzembe a modellt valós idejű végpontként.
 

@@ -1,26 +1,19 @@
 ---
 title: Az Azure Linux VM-ügynök áttekintése
 description: Ismerje meg, hogyan telepítheti és konfigurálhatja a Linux-ügynököt (waagent) a virtuális gép Azure Fabric-vezérlővel való interakciójának kezeléséhez.
-services: virtual-machines-linux
-documentationcenter: ''
 author: axayjo
-manager: gwallace
-editor: ''
-tags: azure-service-management,azure-resource-manager
-ms.assetid: e41de979-6d56-40b0-8916-895bf215ded6
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 10/17/2016
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 560ae8d837cf57e471a9f39d5ccdcf152a156b1e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: fda228f6a24e981bb848fbb106709aaa3d8e8613
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87029076"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87269121"
 ---
 # <a name="understanding-and-using-the-azure-linux-agent"></a>Az Azure Linux-ügynök megismerése és használata
 
@@ -72,7 +65,7 @@ A platformról az ügynökre irányuló információáramlás két csatornán ke
 A következő rendszerek lettek tesztelve, és ismertek az Azure Linux-ügynökkel való együttműködésre:
 
 > [!NOTE]
-> Ez a lista eltérhet a Microsoft Azure platform támogatott rendszereinek hivatalos listájától, az itt leírtak szerint:[https://support.microsoft.com/kb/2805216](https://support.microsoft.com/kb/2805216)
+> Ez a lista a [támogatott disztribúciók](../linux/endorsed-distros.md)hivatalos listájától eltérő lehet.
 > 
 > 
 

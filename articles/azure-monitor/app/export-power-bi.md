@@ -3,19 +3,20 @@ title: Exportálás Power BI az Azure Application Insightsból | Microsoft Docs
 description: Az elemzési lekérdezések a Power BIban is megjeleníthetők.
 ms.topic: conceptual
 ms.date: 08/10/2018
-ms.openlocfilehash: 0e17ca6e07ec76f0a7a1cb04f7aa13619fb9970c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 51a553452643fc979846ab4604762f11c5b7ff68
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77663997"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324369"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>Hírcsatorna-Power BI Application Insights
-A [Power bi](https://www.powerbi.com/) egy olyan üzleti eszköz, amely megkönnyíti az adatok elemzését és az elemzések megosztását. A gazdag irányítópultok minden eszközön elérhetők. Több forrásból is egyesítheti az adatait, beleértve az [Azure Application Insightsból](../../azure-monitor/app/app-insights-overview.md)származó elemzési lekérdezéseket is.
+A [Power bi](https://www.powerbi.com/) egy olyan üzleti eszköz, amely megkönnyíti az adatok elemzését és az elemzések megosztását. A gazdag irányítópultok minden eszközön elérhetők. Több forrásból is egyesítheti az adatait, beleértve az [Azure Application Insightsból](./app-insights-overview.md)származó elemzési lekérdezéseket is.
 
 Az Application Insights-adatPower BIek exportálásának három módja van:
 
 * [**Elemzési lekérdezések exportálása**](#export-analytics-queries). Ez az elsődleges módszer. Írja le a kívánt lekérdezést, és exportálja Power BIba. Ezt a lekérdezést egy irányítópulton helyezheti el, valamint bármilyen más adattal.
-* [**Folyamatos exportálás és Azure stream Analytics**](../../azure-monitor/app/export-stream-analytics.md). Ez a módszer akkor hasznos, ha hosszú ideig szeretné tárolni az adatait. Ha nem rendelkezik kiterjesztett adatmegőrzési követelménnyel, használja az export Analytics lekérdezési módszert. A folyamatos exportálás és a Stream Analytics több munkaterhelést is magában foglal, és további tárterületet igényel.
+* [**Folyamatos exportálás és Azure stream Analytics**](./export-stream-analytics.md). Ez a módszer akkor hasznos, ha hosszú ideig szeretné tárolni az adatait. Ha nem rendelkezik kiterjesztett adatmegőrzési követelménnyel, használja az export Analytics lekérdezési módszert. A folyamatos exportálás és a Stream Analytics több munkaterhelést is magában foglal, és további tárterületet igényel.
 * **Power bi adapter**. A diagramok készlete előre definiálva van, de bármilyen más forrásból is hozzáadhat saját lekérdezéseket.
 
 > [!NOTE]
@@ -30,7 +31,7 @@ A Application Insights-lekérdezés importálásához használja a Power BI aszt
 Telepítse a [Power bi Desktop](https://powerbi.microsoft.com/en-us/desktop/).
 
 ### <a name="export-an-analytics-query"></a>Elemzési lekérdezés exportálása
-1. [Nyissa meg az elemzést, és írja le a lekérdezést](../../azure-monitor/log-query/get-started-portal.md).
+1. [Nyissa meg az elemzést, és írja le a lekérdezést](../log-query/get-started-portal.md).
 2. Tesztelje és pontosítsa a lekérdezést, amíg nem elégedett az eredményekkel. Exportálás előtt győződjön meg arról, hogy a lekérdezés megfelelően fut az Analyticsben.
 3. Az **Exportálás** menüben válassza a **Power bi (M)** lehetőséget. Mentse a szövegfájlt.
    
@@ -55,7 +56,7 @@ Telepítse a [Power bi Desktop](https://powerbi.microsoft.com/en-us/desktop/).
 8. Frissítse a jelentést manuálisan időközönként, vagy állítson be ütemezett frissítést a beállítások lapon.
 
 ### <a name="export-a-funnel"></a>Tölcsér exportálása
-1. [Készítse el a tölcsért](../../azure-monitor/app/usage-funnels.md).
+1. [Készítse el a tölcsért](./usage-funnels.md).
 2. Válassza a **Power bi**lehetőséget.
 
    ![Power BI gomb képernyőképe](./media/export-power-bi/button.png)
@@ -111,7 +112,7 @@ Ha az elemzési lekérdezésből származó adatkészlet csökkentése nem felel
  ```
 
 ## <a name="about-sampling"></a>Mintavételezés
-Az alkalmazás által küldött adatmennyiségtől függően érdemes lehet az adaptív mintavételezési funkciót használni, amely csak a telemetria egy adott százalékát küldi el. Ugyanez igaz, ha manuálisan állította be a mintavételezést az SDK-ban vagy a betöltéskor. [További információ a mintavételezésről](../../azure-monitor/app/sampling.md).
+Az alkalmazás által küldött adatmennyiségtől függően érdemes lehet az adaptív mintavételezési funkciót használni, amely csak a telemetria egy adott százalékát küldi el. Ugyanez igaz, ha manuálisan állította be a mintavételezést az SDK-ban vagy a betöltéskor. [További információ a mintavételezésről](./sampling.md).
 
 ## <a name="power-bi-adapter-deprecated"></a>Power BI adapter (elavult)
 Ez a metódus létrehoz egy teljes irányítópultot a telemetria. A kezdeti adatkészlet előre definiálva van, de további adatokat is hozzáadhat hozzá.
@@ -145,5 +146,5 @@ A kezdeti importálás után az irányítópult és a jelentések naponta friss�
 
 ## <a name="next-steps"></a>További lépések
 * [Power BI – Learn](https://www.powerbi.com/learning/)
-* [Elemzési oktatóanyag](../../azure-monitor/log-query/get-started-portal.md)
+* [Elemzési oktatóanyag](../log-query/get-started-portal.md)
 

@@ -5,20 +5,21 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 05/21/2019
+ms.date: 07/27/2020
 ms.author: cherylmc
-ms.openlocfilehash: 133a586612f8a5b864c84400ece63d9ba6ccb150
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3d51409baf9d5ca6ce90f1367ac128d7d47a9757
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84729242"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325253"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-cli"></a>Virtuális hálózat összekapcsolása egy ExpressRoute-áramkörrel a CLI használatával
 
 Ez a cikk segítséget nyújt a Virtual Networks (virtuális hálózatok) és az Azure ExpressRoute-áramkörök összekapcsolásához a CLI használatával. Az Azure CLI használatával való hivatkozáshoz a virtuális hálózatokat a Resource Manager-alapú üzemi modell használatával kell létrehozni. Lehetnek ugyanabban az előfizetésben vagy egy másik előfizetés részeként. Ha másik módszert szeretne használni a VNet ExpressRoute-áramkörhöz való összekapcsolásához, a következő listából választhat egy cikket:
 
 > [!div class="op_single_selector"]
-> * [Azure Portalra](expressroute-howto-linkvnet-portal-resource-manager.md)
+> * [Azure Portal](expressroute-howto-linkvnet-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-linkvnet-arm.md)
 > * [Azure CLI](howto-linkvnet-cli.md)
 > * [Videó – Azure Portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit)
@@ -152,7 +153,7 @@ az network vpn-connection update --name ERConnection --resource-group ExpressRou
 A *RoutingWeight* tartománya 0 és 32000 között van. Az alapértelmezett érték a 0.
 
 ## <a name="configure-expressroute-fastpath"></a>ExpressRoute-FastPath konfigurálása 
-Engedélyezheti a [ExpressRoute FastPath](expressroute-about-virtual-network-gateways.md) , ha a ExpressRoute-áramkör a [ExpressRoute Direct](expressroute-erdirect-about.md) szolgáltatásban van, és a virtuális newtork látogasson el-átjáró Ultra Performance vagy ErGw3AZ. A FastPath a helyszíni hálózat és a virtuális hálózat között a másodpercenkénti adatelérési utak, például a csomagok másodpercenkénti számát és a kapcsolatok másodpercenkénti számát javítja. 
+A [ExpressRoute FastPath](expressroute-about-virtual-network-gateways.md) is engedélyezheti, ha a virtuális hálózati átjáró Ultra Performance vagy ErGw3AZ. A FastPath a helyszíni hálózat és a virtuális hálózat között a másodpercenkénti adatelérési utak, például a csomagok másodpercenkénti számát és a kapcsolatok másodpercenkénti számát javítja. 
 
 **FastPath konfigurálása új kapcsolatban**
 

@@ -8,6 +8,8 @@
       href: overview.md
     - name: Üzenetküldő szolgáltatások összehasonlítása
       href: compare-messaging-services.md
+    - name: Kibocsátási megjegyzések
+      href: whats-new.md
 - name: Rövid útmutatók
   expanded: true
   items:

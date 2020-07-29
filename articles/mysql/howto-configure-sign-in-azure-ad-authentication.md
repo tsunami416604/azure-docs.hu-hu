@@ -5,13 +5,13 @@ author: lfittl-msft
 ms.author: lufittl
 ms.service: mysql
 ms.topic: how-to
-ms.date: 01/22/2019
-ms.openlocfilehash: ff5d2e5546c8b29ed486c587a555f47fa2c7e31b
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/23/2020
+ms.openlocfilehash: 6efe6392c32221f979a9ac319b4385b4b94b1235
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86101426"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171325"
 ---
 # <a name="use-azure-active-directory-for-authentication-with-mysql"></a>Azure Active Directory használata a MySQL-sel való hitelesítéshez
 
@@ -145,7 +145,7 @@ Ha Azure AD-felhasználót szeretne hozzáadni a Azure Database for MySQL-adatb�
 2. Jelentkezzen be az Azure Database for MySQL-példányba az Azure AD-rendszergazda felhasználóként.
 3. Felhasználó létrehozása `<user>@yourtenant.onmicrosoft.com` Azure Database for MySQLban.
 
-**Példa:**
+**Például**
 
 ```sql
 CREATE AADUSER 'user1@yourtenant.onmicrosoft.com';
@@ -166,7 +166,7 @@ CREATE AADUSER 'userWithLongName@yourtenant.onmicrosoft.com' as 'userDefinedShor
 
 Ha engedélyezni szeretné az Azure AD-csoport számára az adatbázishoz való hozzáférést, használja ugyanazt a mechanizmust, mint a felhasználók számára, hanem adja meg a csoport nevét:
 
-**Példa:**
+**Például**
 
 ```sql
 CREATE AADUSER 'Prod_DB_Readonly';
@@ -208,7 +208,7 @@ A legtöbb illesztőprogram támogatott, azonban győződjön meg arról, hogy a
 * Indítás
   * Go-SQL-illesztőprogram: támogatott, Hozzáadás `?tls=true&allowCleartextPasswords=true` a kapcsolódási karakterlánchoz
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Tekintse át a [Azure Active Directory hitelesítéssel](concepts-azure-ad-authentication.md) kapcsolatos általános fogalmakat Azure Database for MySQL
 

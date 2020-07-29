@@ -3,12 +3,12 @@ title: Exportálás az Azure Application Insights Stream Analytics használatáv
 description: Stream Analytics a Application Insightsból exportált adatok folyamatos átalakítását, szűrését és átirányítását is elvégezheti.
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: 70f952dcd6f8d942ac272afed58a7fe0f47d8a6e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d90b965ca65af0acf7032067c77591a2ac4d4b02
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539958"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324352"
 ---
 # <a name="use-stream-analytics-to-process-exported-data-from-application-insights"></a>Stream Analytics használata az exportált adatok feldolgozásához Application Insights
 A [Azure stream Analytics](https://azure.microsoft.com/services/stream-analytics/) ideális eszköz a [Application Insightsból exportált](export-telemetry.md)adatok feldolgozásához. A Stream Analytics különböző forrásokból származó adatok lekérésére használható. Átalakíthatja és szűrheti az adatmennyiséget, majd átirányíthatja azt különböző mosdók számára.
@@ -16,7 +16,7 @@ A [Azure stream Analytics](https://azure.microsoft.com/services/stream-analytics
 Ebben a példában egy olyan adaptert hozunk létre, amely Application Insights, átnevezi és feldolgozza a mezőket, és a Power BIba helyezi azokat.
 
 > [!WARNING]
-> A [Application Insights-adatPower BIek megjelenítésének](../../azure-monitor/app/export-power-bi.md )sokkal jobb és egyszerűbb módja is. Az itt látható elérési út szemlélteti az exportált adatfeldolgozás módját.
+> A [Application Insights-adatPower BIek megjelenítésének](./export-power-bi.md)sokkal jobb és egyszerűbb módja is. Az itt látható elérési út szemlélteti az exportált adatfeldolgozás módját.
 > 
 > 
 
@@ -55,7 +55,7 @@ A [folyamatos exportálás](export-telemetry.md) a Application Insights adatait 
 
     ![Eseménytípus kiválasztása](./media/export-stream-analytics/080.png)
 
-1. Némi adatmennyiséget is felhalmozhat. Dőljön hátra, és hagyja, hogy a felhasználók egy ideig használják az alkalmazást. A telemetria a következő helyen jelenik meg: statisztikai diagramok a [metrika-kezelőben](../../azure-monitor/platform/metrics-charts.md) és az egyes események a [diagnosztikai keresésben](../../azure-monitor/app/diagnostic-search.md). 
+1. Némi adatmennyiséget is felhalmozhat. Dőljön hátra, és hagyja, hogy a felhasználók egy ideig használják az alkalmazást. A telemetria a következő helyen jelenik meg: statisztikai diagramok a [metrika-kezelőben](../platform/metrics-charts.md) és az egyes események a [diagnosztikai keresésben](./diagnostic-search.md). 
    
     És az is, hogy az adatai exportálva lesznek a tárhelyre. 
 2. Vizsgálja meg az exportált adatgyűjtést. A Visual Studióban válassza a **Megtekintés/Cloud Explorer**lehetőséget, majd nyissa meg az Azure/Storage elemet. (Ha nem rendelkezik ezzel a menüponttal, telepítenie kell az Azure SDK-t: Nyissa meg az új projekt párbeszédpanelt, és nyissa meg a Visual C#/Cloud/Get Microsoft Azure SDK-t a .NET-hez.)
@@ -186,7 +186,7 @@ Várjon, amíg a feladatok futnak.
 
 ## <a name="see-results-in-power-bi"></a>Eredmények megtekintése Power BI
 > [!WARNING]
-> A [Application Insights-adatPower BIek megjelenítésének](../../azure-monitor/app/export-power-bi.md )sokkal jobb és egyszerűbb módja is. Az itt látható elérési út szemlélteti az exportált adatfeldolgozás módját.
+> A [Application Insights-adatPower BIek megjelenítésének](./export-power-bi.md)sokkal jobb és egyszerűbb módja is. Az itt látható elérési út szemlélteti az exportált adatfeldolgozás módját.
 > 
 > 
 
@@ -208,7 +208,8 @@ A Noam ben Zeev azt mutatja be, hogyan lehet az exportált adatfeldolgozást Str
 > 
 > 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Folyamatos exportálás](export-telemetry.md)
 * [Részletes adatmodell-referenciák a tulajdonságok típusaihoz és értékeihez.](export-data-model.md)
-* [Application Insights](../../azure-monitor/app/app-insights-overview.md)
+* [Application Insights](./app-insights-overview.md)
+

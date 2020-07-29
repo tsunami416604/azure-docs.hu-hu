@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/17/2020
-ms.openlocfilehash: 4c5290d9f5ec47969ae43e5986d31484927a0ac5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 195e606a66b1b49821fc1b46381fdc551f142a6a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081355"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325525"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>Adatok megjelenítése az Azure Monitorból
 Ez a cikk az Azure Monitorban tárolt napló-és metrikai adatok megjelenítéséhez használható módszerek összegzését tartalmazza.
@@ -19,7 +19,7 @@ Ez a cikk az Azure Monitorban tárolt napló-és metrikai adatok megjelenítés�
 A vizualizációk, például a diagramok és a diagramok segítségével elemezheti a figyelési adatait a problémák részletezése és a minták azonosítása érdekében. A használt eszköztől függően lehetősége van a vizualizációk megosztására is a szervezeten belül és kívül más felhasználókkal.
 
 ## <a name="workbooks"></a>Munkafüzetek
-A [munkafüzetek](../azure-monitor/platform/workbooks-overview.md) olyan interaktív dokumentumok, amelyek részletesen betekintést nyújtanak az adataiba, a nyomozásba és a csapaton belüli együttműködésbe. Konkrét példák, ahol a munkafüzetek hasznosak a hibaelhárítási útmutatók és az incidens utáni események.
+A [munkafüzetek](./platform/workbooks-overview.md) olyan interaktív dokumentumok, amelyek részletesen betekintést nyújtanak az adataiba, a nyomozásba és a csapaton belüli együttműködésbe. Konkrét példák, ahol a munkafüzetek hasznosak a hibaelhárítási útmutatók és az incidens utáni események.
 
 ![Munkafüzet](media/visualizations/workbook.png)
 
@@ -141,7 +141,7 @@ A naplózási és metrikai adatokban lévő adatokhoz a Azure Monitor API-n kere
 - Tudnivalók a [Azure monitor által gyűjtött adatokról](platform/data-platform.md).
 - Ismerje meg az [Azure-irányítópultokat](../azure-portal/azure-portal-dashboards.md).
 - A [Azure monitor nézeteinek](platform/view-designer.md)megismerése.
-- További tudnivalók a [munkafüzetek](../azure-monitor/platform/workbooks-overview.md)használatáról.
-- További információ a [naplózási adatainak az Power BIba való importálásáról](../azure-monitor/platform/powerbi.md).
-- Ismerkedjen meg a [Grafana Azure monitor adatforrás beépülő modullal](../azure-monitor/platform/grafana-plugin.md).
+- További tudnivalók a [munkafüzetek](./platform/workbooks-overview.md)használatáról.
+- További információ a [naplózási adatainak az Power BIba való importálásáról](./platform/powerbi.md).
+- Ismerkedjen meg a [Grafana Azure monitor adatforrás beépülő modullal](./platform/grafana-plugin.md).
 

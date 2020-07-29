@@ -7,12 +7,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/19/2017
 ms.custom: mvc
-ms.openlocfilehash: 317d5681ac3b09cb433cdc2bc3c83b6b1c8d37dc
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b656774762f5930c5665166a701bda7333940307
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86516362"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322431"
 ---
 # <a name="find-and-diagnose-run-time-exceptions-with-azure-application-insights"></a>Futásidejű kivételek észlelése és diagnosztizálása az Azure Application Insights segítségével
 
@@ -36,7 +36,7 @@ Az oktatóanyag elvégzéséhez:
     - Azure-fejlesztés
 - Töltse le és telepítse a [Visual Studio Snapshot Debugger](https://aka.ms/snapshotdebugger) alkalmazást.
 - Engedélyezze a [Visual Studio Snapshot Debugger](../app/snapshot-debugger.md) alkalmazást.
-- Telepítsen egy .NET-alkalmazást az Azure-hoz, és [engedélyezze az Application Insights SDK](../../azure-monitor/app/asp-net.md)-t. 
+- Telepítsen egy .NET-alkalmazást az Azure-hoz, és [engedélyezze az Application Insights SDK](../app/asp-net.md)-t. 
 - Ez az oktatóanyag az alkalmazásban történt kivétel azonosításának módszerét ismerteti, ezért módosítsa a kódot a fejlesztési vagy a tesztelési környezetben, hogy létrehozzon egy kivételt. 
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
@@ -63,7 +63,7 @@ Az Application Insights összegyűjti az alkalmazásában felmerült hibákat, �
 
     ![Sikertelen kérelmek mintái](media/tutorial-runtime-exceptions/failed-requests-search.png)
 
-6. A sikertelen kérés részleteit mutató oldal Gantt-diagramot jelenít meg, amely megmutatja, hogy két függőségi hiba történt ebben a tranzakcióban, amelyek együtt a teljes időtartam több mint 50%-át tették ki. Ez a felület az összes olyan telemetriát megjeleníti, amely ezen műveleti azonosítóhoz kötődő hozzárendelt alkalmazások alkotóelemeire vonatkozik. [További információ az új felületről](../../azure-monitor/app/transaction-diagnostics.md). Ha kiválasztja bármelyik elemet, a jobb oldalon megjelennek az elem részletei. 
+6. A sikertelen kérés részleteit mutató oldal Gantt-diagramot jelenít meg, amely megmutatja, hogy két függőségi hiba történt ebben a tranzakcióban, amelyek együtt a teljes időtartam több mint 50%-át tették ki. Ez a felület az összes olyan telemetriát megjeleníti, amely ezen műveleti azonosítóhoz kötődő hozzárendelt alkalmazások alkotóelemeire vonatkozik. [További információ az új felületről](../app/transaction-diagnostics.md). Ha kiválasztja bármelyik elemet, a jobb oldalon megjelennek az elem részletei. 
 
     ![Sikertelen kérelem részletei](media/tutorial-runtime-exceptions/failed-request-details.png)
 
@@ -108,8 +108,9 @@ Ha az Application Insights alkalmazást egy követőrendszerhez csatlakoztatja, 
 
     ![Új munkaelem](media/tutorial-runtime-exceptions/new-work-item.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Most már megtanulta, hogyan azonosíthatja a futásidejű kivételeket. Térjen át a következő oktatóanyagra, hogy megtanulja, hogyan azonosíthatja és diagnosztizálhatja a teljesítménybeli problémákat.
 
 > [!div class="nextstepaction"]
-> [Teljesítménybeli problémák azonosítása](../../azure-monitor/learn/tutorial-performance.md)
+> [Teljesítménybeli problémák azonosítása](./tutorial-performance.md)
+

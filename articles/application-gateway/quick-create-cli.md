@@ -8,13 +8,13 @@ ms.service: application-gateway
 ms.topic: quickstart
 ms.date: 03/05/2020
 ms.author: victorh
-ms.custom: mvc
-ms.openlocfilehash: f60b26756c0affffbd45c8596fdf73d11ffa8e81
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, devx-track-javascript
+ms.openlocfilehash: b36b5b1700df1767ad4323fed72ee05fdb05321f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80239515"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290962"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-cli"></a>Első lépések – A webes forgalom irányítása az Azure Application Gateway szolgáltatással – Azure CLI
 
@@ -33,7 +33,7 @@ A rövid útmutató [Azure PowerShell](quick-create-powershell.md) vagy a [Azure
 
 ## <a name="create-resource-group"></a>Erőforráscsoport létrehozása
 
-Az Azure-ban kapcsolódó erőforrásokat oszt ki egy erőforráscsoporthoz. Hozzon létre egy erőforráscsoportot a `az group create`használatával. 
+Az Azure-ban kapcsolódó erőforrásokat oszt ki egy erőforráscsoporthoz. Hozzon létre egy erőforráscsoportot a használatával `az group create` . 
 
 A következő példában létrehozunk egy *myResourceGroupAG* nevű erőforráscsoportot az *eastus* helyen.
 
@@ -45,7 +45,7 @@ az group create --name myResourceGroupAG --location eastus
 
 Ahhoz, hogy az Azure kommunikáljon a létrehozott erőforrások között, szüksége van egy virtuális hálózatra.  Az Application Gateway-alhálózat csak Application Gateway átjárókat tartalmazhat. Más erőforrások nem engedélyezettek.  Létrehozhat egy új alhálózatot Application Gatewayhoz, vagy használhat egy meglévőt is. Ebben a példában két alhálózatot hoz létre: egyet az Application Gateway számára, és egy másikat a háttér-kiszolgálók számára. A Application Gateway előtérbeli IP-címét a használati esetnek megfelelően lehet nyilvános vagy privátként beállítani. Ebben a példában egy nyilvános előtérbeli IP-címet választ.
 
-A virtuális hálózat és az alhálózat létrehozásához használja `az network vnet create`a következőt:. Futtassa `az network public-ip create` a parancsot a nyilvános IP-cím létrehozásához.
+A virtuális hálózat és az alhálózat létrehozásához használja a következőt: `az network vnet create` . Futtassa `az network public-ip create` a parancsot a nyilvános IP-cím létrehozásához.
 
 ```azurecli-interactive
 az network vnet create \
@@ -73,9 +73,9 @@ A háttérrendszer rendelkezhet hálózati adapterekkel, virtuálisgép-méretez
 
 #### <a name="create-two-virtual-machines"></a>Két virtuális gép létrehozása
 
-Telepítse az NGINX webkiszolgálót a virtuális gépeken annak ellenőrzéséhez, hogy az Application Gateway sikeresen létrejött-e. Egy Cloud-init konfigurációs fájllal telepítheti az NGINX-et, és futtathat egy ""Helló világ!"alkalmazás" Node. js-alkalmazást Linux rendszerű virtuális gépen. A Cloud-init szolgáltatással kapcsolatos további információkért lásd: [Cloud-init támogatás az Azure-beli virtuális gépekhez](../virtual-machines/linux/using-cloud-init.md).
+Telepítse az NGINX webkiszolgálót a virtuális gépeken annak ellenőrzéséhez, hogy az Application Gateway sikeresen létrejött-e. Egy Cloud-init konfigurációs fájllal telepítheti az NGINX-et, és futtathat egy ""Helló világ!"alkalmazás" Node.js alkalmazást Linux rendszerű virtuális gépen. A Cloud-init szolgáltatással kapcsolatos további információkért lásd: [Cloud-init támogatás az Azure-beli virtuális gépekhez](../virtual-machines/linux/using-cloud-init.md).
 
-A Azure Cloud Shell másolja és illessze be a következő konfigurációt egy *Cloud-init. txt*nevű fájlba. A fájl létrehozásához írja be a *Cloud-init. txt szerkesztőt* .
+A Azure Cloud Shell másolja és illessze be a következő konfigurációt egy *cloud-init.txt*nevű fájlba. Adja meg a *szerkesztő cloud-init.txt* a fájl létrehozásához.
 
 ```yaml
 #cloud-config
@@ -119,7 +119,7 @@ runcmd:
   - nodejs index.js
 ```
 
-Hozza létre a hálózati adaptereket `az network nic create`. A virtuális gépek létrehozásához használja `az vm create`a következőt:.
+Hozza létre a hálózati adaptereket `az network nic create` . A virtuális gépek létrehozásához használja a következőt: `az vm create` .
 
 ```azurecli-interactive
 for i in `seq 1 2`; do
@@ -141,7 +141,7 @@ done
 
 ## <a name="create-the-application-gateway"></a>Application Gateway létrehozása
 
-Hozzon létre egy Application `az network application-gateway create`Gateway-t a használatával. Amikor az Azure CLI-vel hoz létre egy Application Gateway-t, meg kell adnia a konfigurációs adatokat, például a kapacitást, az SKU-t és a HTTP-beállításokat. Az Azure Ezután hozzáadja a hálózati adapterek magánhálózati IP-címeit az Application Gateway háttérbeli készletében lévő kiszolgálóként.
+Hozzon létre egy Application Gateway-t a használatával `az network application-gateway create` . Amikor az Azure CLI-vel hoz létre egy Application Gateway-t, meg kell adnia a konfigurációs adatokat, például a kapacitást, az SKU-t és a HTTP-beállításokat. Az Azure Ezután hozzáadja a hálózati adapterek magánhálózati IP-címeit az Application Gateway háttérbeli készletében lévő kiszolgálóként.
 
 ```azurecli-interactive
 address1=$(az network nic show --name myNic1 --resource-group myResourceGroupAG | grep "\"privateIpAddress\":" | grep -oE '[^ ]+$' | tr -d '",')
@@ -169,7 +169,7 @@ Az Azure az Application Gateway létrehozásához akár 30 percet is igénybe ve
 
 ## <a name="test-the-application-gateway"></a>Az alkalmazásátjáró tesztelése
 
-Bár az Azure nem igényel NGINX-webkiszolgálót az Application Gateway létrehozásához, ezt a rövid útmutatóban telepítette annak ellenőrzéséhez, hogy az Azure sikeresen létrehozta-e az Application Gatewayt. Az új Application Gateway nyilvános IP-címének lekéréséhez használja `az network public-ip show`a következőt:. 
+Bár az Azure nem igényel NGINX-webkiszolgálót az Application Gateway létrehozásához, ezt a rövid útmutatóban telepítette annak ellenőrzéséhez, hogy az Azure sikeresen létrehozta-e az Application Gatewayt. Az új Application Gateway nyilvános IP-címének lekéréséhez használja a következőt: `az network public-ip show` . 
 
 ```azurecli-interactive
 az network public-ip show \

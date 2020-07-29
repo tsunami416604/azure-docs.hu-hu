@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: overview
 ms.date: 06/10/2020
 ms.author: victorh
-ms.openlocfilehash: a98a06dedf1d0ed9b92cc2028dfc208ff26df056
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 6ea0b28f5e0f23e0f8bb30e8fe2b0f792bce0709
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86517620"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287453"
 ---
 # <a name="whats-new-in-azure-application-gateway"></a>Az Azure Application Gateway újdonságai
 
@@ -27,7 +27,7 @@ Az Azure Application Gateway frissítése folyamatosan történik. A legfrissebb
 
 |Funkció  |Leírás  |Hozzáadás dátuma  |
 |---------|---------|---------|
-| Helyettesítő karakterek nevei a figyelőkben (előzetes verzió) | Mostantól megadhat helyettesítő neveket egy többhelyes figyelőben és legfeljebb 5 állomásnévvel. További információ: [helyettesítő karakterek nevei a figyelőben (előzetes verzió)](multiple-site-overview.md#wildcard-host-names-in-listener-preview) , és [több hely üzemeltetése egy Application Gateway a Azure Portal használatával](create-multiple-sites-portal.md) a Ste-by-Step útmutatót. | 2020. július |
+| Helyettesítő karakterek nevei a figyelőkben (előzetes verzió) | Mostantól megadhat helyettesítő neveket egy többhelyes figyelőben és legfeljebb 5 állomásnévvel. További információ: [helyettesítő karakterek nevei a figyelőben (előzetes verzió)](multiple-site-overview.md#wildcard-host-names-in-listener-preview) | 2020. július |
 | URL-újraírás (előzetes verzió) | Az URL-cím újraírásával mostantól újraírhatók az URL-címek és a lekérdezési karakterláncok paraméterei is. További információt a [HTTP-fejlécek és URL-cím átírása](rewrite-http-headers-url.md) című témakörben talál, amelyből megtudhatja, hogyan tekintheti át az [Application Gateway URL-címet](rewrite-url-portal.md) a lépésenkénti útmutató Azure Portal | 2020. július |
 | Egyéni port az állapot-mintavételhez | A Application Gateway v2 SKU mostantól lehetővé teszi egyéni port megadását az állapot mintavételi konfigurációjában. További információ: állapot-mintavételi [Áttekintés](application-gateway-probe-overview.md) | 2020. július |
 | Application Gateway inporting Controller (AGIC) AK-bővítmény (előzetes verzió) |A Application Gateway beléptetési vezérlő mostantól egy sorban, az Azure CLI-n keresztül is telepíthető natív AK-bővítményként. Az AK-bővítmény lehetővé teszi, hogy a AGIC teljes körűen felügyelt szolgáltatás legyen, miközben továbbra is fut az ügyfél AK-beli fürtjében. További információ: [AGIC-bővítmények különbségei](ingress-controller-overview.md#difference-between-helm-deployment-and-aks-add-on). |2020. június |
@@ -45,6 +45,6 @@ Az Azure Application Gateway frissítése folyamatosan történik. A legfrissebb
 |Egyéni hibalapok     |Az egyéni hibaüzenetek oldalain a webhely többi részének formátumán belüli hibaüzenetet hozhat létre. Ennek engedélyezéséhez tekintse meg az [egyéni hibaüzenetek Application Gateway létrehozása](custom-error.md)című témakört.|2018. szeptember|
 |Mérőszámok továbbfejlesztései     |Jobb áttekintést kaphat a Application Gateway állapotáról a továbbfejlesztett metrikákkal. A Application Gateway metrikáinak engedélyezéséhez tekintse meg a [háttér állapota, a diagnosztikai naplók és a metrikák Application Gatewayhoz](application-gateway-diagnostics.md)című témakört.|2018. június|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ az Azure Application Gatewayról: [Mi az az azure Application Gateway?](overview.md)

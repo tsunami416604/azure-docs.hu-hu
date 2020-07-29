@@ -416,6 +416,8 @@
                   href: how-to-custom-commands-add-interaction-rules.md
                 - name: Nyelvlétrehozási sablonok hozzáadása Speech-válaszokhoz
                   href: how-to-custom-commands-add-language-generation-templates.md
+                - name: A Custom Voice használata
+                  href: how-to-custom-commands-use-custom-voice.md
             - name: Integrálás
               items:
                 - name: Integrálás ügyfélalkalmazással a Speech SDK használatával
@@ -452,6 +454,8 @@
               href: faq-voice-assistants.md
             - name: Beszéd SDK
               href: speech-sdk.md
+            - name: Custom Commands – Inaktív adatok titkosítása
+              href: custom-commands-encryption-of-data-at-rest.md
     - name: Direct Line Speech
       items:
         - name: Mi az a Direct Line Speech?
@@ -638,7 +642,7 @@
       href: how-to-migrate-from-bing-speech.md
     - name: A Translator Speech API-ból
       href: how-to-migrate-from-translator-speech-api.md
-- name: További források
+- name: Források
   items:
     - name: Támogatás
       displayName: 'support,help,release notes,search,scoped search,azure support,github support,stack overflow,github issues,bugs,feedback,uservoice'

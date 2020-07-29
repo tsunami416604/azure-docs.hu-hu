@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 07/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 473e3d52b1757faebd60c14966b425e9390a2685
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 26be41361a861795a9897442d9a0cc8bb14c1450
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86248611"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292578"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Mit takar a Windows Virtual Desktop? 
 
@@ -143,9 +143,9 @@ Az elérhető automatizálási és üzembe helyezési lehetőségek attól függ
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ha a Windows rendszerű virtuális asztali számítógép 2019-as verzióját használja, megkezdheti az oktatóanyagot a [bérlő létrehozása a Windows rendszerű virtuális asztalon](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)című részében.
+Ha a Windows rendszerű virtuális asztalt (klasszikus) használja, megkezdheti az oktatóanyagot a [bérlő létrehozása a Windows rendszerű virtuális asztalon](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)című részében.
 
-Ha a Windows rendszerű virtuális asztali Spring 2020 kiadást használja, helyette létre kell hoznia egy gazdagép-készletet. Az első lépésekhez kövesse az alábbi oktatóanyagot.
+Ha a Windows rendszerű virtuális asztalt Azure Resource Manager integrációval használja, helyette létre kell hoznia egy gazdagép-készletet. Az első lépésekhez kövesse az alábbi oktatóanyagot.
 
 > [!div class="nextstepaction"]
 > [Gazdagépcsoport létrehozása az Azure Portalon](create-host-pools-azure-marketplace.md)

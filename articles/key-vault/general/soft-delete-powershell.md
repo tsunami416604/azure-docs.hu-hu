@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: d281b8a438710cc98307e41210c3435b26483acd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2b01d88a097b8b05188242109c27c696be179eb5
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87013368"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282228"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-powershell"></a>A Key Vault helyreállítható törlés funkciójának használata PowerShell-lel
 
@@ -40,7 +40,7 @@ A PowerShell-hez Key Vault konkrét referenciáért lásd: [Azure Key Vault Powe
 
 A Key Vault műveleteket a szerepköralapú hozzáférés-vezérlési (RBAC) engedélyekkel külön kezelik a következők szerint:
 
-| Művelet | Description | Felhasználói engedély |
+| Művelet | Leírás | Felhasználói engedély |
 |:--|:--|:--|
 |Lista|Felsorolja a törölt kulcstartókat.|Microsoft. kulcstartó/deletedVaults/olvasás|
 |Helyreállítás|Visszaállítja a törölt kulcstartót.|Microsoft. kulcstartó/tárolók/írás|
@@ -206,7 +206,7 @@ A kulcsokhoz hasonlóan a titkos kódok is a saját parancsaikkal kezelhetők:
 
 A tanúsítványokat az alábbi parancsokkal kezelheti:
 
-- SQLPassword nevű tanúsítvány törlése: 
+- Tanúsítvány törlése: 
   ```powershell
   Remove-AzKeyVaultCertificate -VaultName ContosoVault -Name 'MyCert'
   ```

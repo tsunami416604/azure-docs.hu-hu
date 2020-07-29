@@ -3,16 +3,16 @@ title: Application Insights API egyéni eseményekhez és mérőszámokhoz | Mic
 description: A használat és a problémák diagnosztizálásához helyezzen be néhány sornyi kódot az eszközön, az asztali alkalmazásban, a weblapon vagy a szolgáltatásban.
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: 43951a415256577144b93c7deea168e30e7a13ba
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d263c99af7793acbe1f939f64c5cc2dcadd3a054
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87014728"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323230"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Application Insights API egyéni eseményekhez és metrikákhoz
 
-Szúrjon be néhány sornyi kódot az alkalmazásban, hogy megtudja, mit csinálnak a felhasználók, vagy segíthetnek a problémák diagnosztizálásában. Telemetria az eszköz-és asztali alkalmazásokból, a webes ügyfelekből és a webkiszolgálókról is küldhet. Az [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) Core telemetria API használatával egyéni eseményeket és mérőszámokat küldhet, valamint a szabványos telemetria saját verzióit. Ez az API ugyanazt az API-t használja, mint a standard Application Insights adatgyűjtők.
+Szúrjon be néhány sornyi kódot az alkalmazásban, hogy megtudja, mit csinálnak a felhasználók, vagy segíthetnek a problémák diagnosztizálásában. Telemetria az eszköz-és asztali alkalmazásokból, a webes ügyfelekből és a webkiszolgálókról is küldhet. Az [Azure Application Insights](./app-insights-overview.md) Core telemetria API használatával egyéni eseményeket és mérőszámokat küldhet, valamint a szabványos telemetria saját verzióit. Ez az API ugyanazt az API-t használja, mint a standard Application Insights adatgyűjtők.
 
 ## <a name="api-summary"></a>API összefoglaló
 
@@ -37,11 +37,11 @@ Ha még nincs hivatkozása Application Insights SDK-ra:
 
 * Adja hozzá a Application Insights SDK-t a projekthez:
 
-  * [ASP.NET projekt](../../azure-monitor/app/asp-net.md)
-  * [ASP.NET Core projekt](../../azure-monitor/app/asp-net-core.md)
-  * [Java-projekt](../../azure-monitor/app/java-get-started.md)
-  * [Node.js projekt](../../azure-monitor/app/nodejs.md)
-  * [JavaScript az egyes weblapokon](../../azure-monitor/app/javascript.md) 
+  * [ASP.NET projekt](./asp-net.md)
+  * [ASP.NET Core projekt](./asp-net-core.md)
+  * [Java-projekt](./java-get-started.md)
+  * [Node.js projekt](./nodejs.md)
+  * [JavaScript az egyes weblapokon](./javascript.md) 
 * Az eszköz vagy a webkiszolgáló kódjában adja meg a következőt:
 
     *C#:*`using Microsoft.ApplicationInsights;`
@@ -107,7 +107,7 @@ Node.js-projektekben `new applicationInsights.TelemetryClient(instrumentationKey
 
 ## <a name="trackevent"></a>TrackEvent
 
-Application Insights egy *egyéni esemény* egy olyan adatpont, amelyet [Metrikaböngésző](../../azure-monitor/platform/metrics-charts.md) megadhat összesített számként, valamint a [diagnosztikai keresésben](../../azure-monitor/app/diagnostic-search.md) egyéni előfordulásként. (Nem kapcsolódik az MVC-hoz vagy más keretrendszer "eseményeihez".)
+Application Insights egy *egyéni esemény* egy olyan adatpont, amelyet [Metrikaböngésző](../platform/metrics-charts.md) megadhat összesített számként, valamint a [diagnosztikai keresésben](./diagnostic-search.md) egyéni előfordulásként. (Nem kapcsolódik az MVC-hoz vagy más keretrendszer "eseményeihez".)
 
 A `TrackEvent` különböző események számlálásához helyezzen be hívásokat a kódban. A felhasználók milyen gyakran választanak ki egy adott funkciót, milyen gyakran érnek el konkrét célokat, vagy hogy milyen gyakran használják bizonyos típusú hibákat.
 
@@ -147,11 +147,11 @@ telemetry.trackEvent({name: "WinGame"});
 
 A telemetria `customEvents` [Application Insights Analytics](../log-query/log-query-overview.md)táblázatában érhető el. Az egyes sorok az alkalmazásban meghívást jelentenek `trackEvent(..)` .
 
-Ha a [mintavételezés](../../azure-monitor/app/sampling.md) folyamatban van, a ItemCount tulajdonság 1-nél nagyobb értéket jelenít meg. Például a itemCount = = 10 érték azt jelenti, hogy a trackEvent () 10 hívása a mintavételezési folyamat csak az egyiket továbbítja. Az egyéni események helyes számának megszerzéséhez ezért kódokat kell használnia, például: `customEvents | summarize sum(itemCount)` .
+Ha a [mintavételezés](./sampling.md) folyamatban van, a ItemCount tulajdonság 1-nél nagyobb értéket jelenít meg. Például a itemCount = = 10 érték azt jelenti, hogy a trackEvent () 10 hívása a mintavételezési folyamat csak az egyiket továbbítja. Az egyéni események helyes számának megszerzéséhez ezért kódokat kell használnia, például: `customEvents | summarize sum(itemCount)` .
 
 ## <a name="getmetric"></a>GetMetric
 
-Ha szeretné megtudni, hogyan használhatja a GetMetric () hívást, hogy a helyileg előre összevont metrikákat rögzítsen a .NET-és .NET Core-alkalmazásokhoz, látogasson el a [GetMetric](../../azure-monitor/app/get-metric.md) dokumentációra.
+Ha szeretné megtudni, hogyan használhatja a GetMetric () hívást, hogy a helyileg előre összevont metrikákat rögzítsen a .NET-és .NET Core-alkalmazásokhoz, látogasson el a [GetMetric](./get-metric.md) dokumentációra.
 
 ## <a name="trackmetric"></a>TrackMetric
 
@@ -307,9 +307,9 @@ Azonban a kérelem küldésének ajánlott módja a telemetria, ahol a kérelem 
 
 ## <a name="operation-context"></a>Műveleti környezet
 
-A telemetria elemek összekapcsolhatók a műveleti környezettel való társítással. A standard szintű kérelem-követési modul ezt a kivételeket és a HTTP-kérelem feldolgozása közben elküldött egyéb eseményeket is végrehajtja. A [Search](../../azure-monitor/app/diagnostic-search.md) és az [Analytics szolgáltatásban](../log-query/log-query-overview.md)a művelet azonosítójának használatával könnyedén megtalálhatja a kérelemhez társított eseményeket.
+A telemetria elemek összekapcsolhatók a műveleti környezettel való társítással. A standard szintű kérelem-követési modul ezt a kivételeket és a HTTP-kérelem feldolgozása közben elküldött egyéb eseményeket is végrehajtja. A [Search](./diagnostic-search.md) és az [Analytics szolgáltatásban](../log-query/log-query-overview.md)a művelet azonosítójának használatával könnyedén megtalálhatja a kérelemhez társított eseményeket.
 
-A korrelációval kapcsolatos további részletekért tekintse meg a [telemetria korrelációját Application Insightsban](../../azure-monitor/app/correlation.md) .
+A korrelációval kapcsolatos további részletekért tekintse meg a [telemetria korrelációját Application Insightsban](./correlation.md) .
 
 A telemetria manuális nyomon követéséhez a legegyszerűbb módszer a telemetria korrelációjának biztosítása a következő minta használatával:
 
@@ -341,13 +341,13 @@ A Search (keresés) területen a **kapcsolódó elemek** listájának létrehoz�
 
 ![Kapcsolódó elemek](./media/api-custom-events-metrics/21.png)
 
-Az egyéni műveletek nyomon követésével kapcsolatos további információkért lásd: [Egyéni műveletek nyomon követése Application Insights .net SDK-val](../../azure-monitor/app/custom-operations-tracking.md) .
+Az egyéni műveletek nyomon követésével kapcsolatos további információkért lásd: [Egyéni műveletek nyomon követése Application Insights .net SDK-val](./custom-operations-tracking.md) .
 
 ### <a name="requests-in-analytics"></a>Az elemzési kérelmek
 
 [Application Insights elemzésekben](../log-query/log-query-overview.md)a kérelmek megjelennek a `requests` táblázatban.
 
-Ha a [mintavételezés](../../azure-monitor/app/sampling.md) folyamatban van, a ItemCount tulajdonság 1-nél nagyobb értéket fog megjeleníteni. Például a itemCount = = 10 érték azt jelenti, hogy a trackRequest () 10 hívása a mintavételezési folyamat csak az egyiket továbbítja. A kérelmek helyes számának és az átlagos időtartamnak a kérelmek nevei szerint szegmentált eléréséhez használja a következő kódot:
+Ha a [mintavételezés](./sampling.md) folyamatban van, a ItemCount tulajdonság 1-nél nagyobb értéket fog megjeleníteni. Például a itemCount = = 10 érték azt jelenti, hogy a trackRequest () 10 hívása a mintavételezési folyamat csak az egyiket továbbítja. A kérelmek helyes számának és az átlagos időtartamnak a kérelmek nevei szerint szegmentált eléréséhez használja a következő kódot:
 
 ```kusto
 requests
@@ -358,8 +358,8 @@ requests
 
 Kivételek küldése Application Insightsre:
 
-* A probléma gyakoriságának megjelölése, hogy [megszámolja őket](../../azure-monitor/platform/metrics-charts.md).
-* Az [egyes előfordulások vizsgálatához](../../azure-monitor/app/diagnostic-search.md).
+* A probléma gyakoriságának megjelölése, hogy [megszámolja őket](../platform/metrics-charts.md).
+* Az [egyes előfordulások vizsgálatához](./diagnostic-search.md).
 
 A jelentések tartalmazzák a verem nyomkövetését.
 
@@ -414,8 +414,8 @@ catch (ex)
 
 Az SDK-k sok kivételt kapnak automatikusan, így nem mindig explicit módon kell meghívnia a TrackException.
 
-* ASP.NET: [kód írása a Catch kivételekhez](../../azure-monitor/app/asp-net-exceptions.md).
-* Java EE: [a kivételek automatikusan kifoghatók](../../azure-monitor/app/java-get-started.md#exceptions-and-request-failures).
+* ASP.NET: [kód írása a Catch kivételekhez](./asp-net-exceptions.md).
+* Java EE: [a kivételek automatikusan kifoghatók](./java-get-started.md#exceptions-and-request-failures).
 * JavaScript: a kivételek automatikusan kifoghatók. Ha le szeretné tiltani az automatikus gyűjtést, adjon hozzá egy sort a weblapokon beszúrt kódrészlethez:
 
 ```javascript
@@ -429,7 +429,7 @@ Az SDK-k sok kivételt kapnak automatikusan, így nem mindig explicit módon kel
 
 [Application Insights elemzésekben](../log-query/log-query-overview.md)a kivételek megjelennek a `exceptions` táblázatban.
 
-Ha a [mintavétel](../../azure-monitor/app/sampling.md) folyamatban van, a `itemCount` tulajdonság 1-nél nagyobb értéket jelenít meg. Például a itemCount = = 10 érték azt jelenti, hogy a trackException () 10 hívása a mintavételezési folyamat csak az egyiket továbbítja. A kivételek típusával szegmentált kivételek helyes számának beszerzéséhez használja a következő kódot:
+Ha a [mintavétel](./sampling.md) folyamatban van, a `itemCount` tulajdonság 1-nél nagyobb értéket jelenít meg. Például a itemCount = = 10 érték azt jelenti, hogy a trackException () 10 hívása a mintavételezési folyamat csak az egyiket továbbítja. A kivételek típusával szegmentált kivételek helyes számának beszerzéséhez használja a következő kódot:
 
 ```kusto
 exceptions
@@ -452,11 +452,11 @@ exceptions
 
 ## <a name="tracktrace"></a>TrackTrace
 
-A TrackTrace segítségével diagnosztizálhatja a problémákat, ha a "morzsa Trail" üzenetet küld Application Insights. Elküldheti a diagnosztikai adatgyűjtés részleteit, és megvizsgálhatja azokat a [diagnosztikai keresésben](../../azure-monitor/app/diagnostic-search.md).
+A TrackTrace segítségével diagnosztizálhatja a problémákat, ha a "morzsa Trail" üzenetet küld Application Insights. Elküldheti a diagnosztikai adatgyűjtés részleteit, és megvizsgálhatja azokat a [diagnosztikai keresésben](./diagnostic-search.md).
 
-A .NET- [naplózási adapterek](../../azure-monitor/app/asp-net-trace-logs.md) ezt az API-t használják harmadik féltől származó naplók küldésére a portálon.
+A .NET- [naplózási adapterek](./asp-net-trace-logs.md) ezt az API-t használják harmadik féltől származó naplók küldésére a portálon.
 
-A Java [standard szintű naplózók (például a Log4J](../../azure-monitor/app/java-trace-logs.md) ) esetében a Logback Application Insights Log4J vagy Logback-hozzáfűzéset használ, hogy harmadik féltől származó naplókat küldjön a portálra.
+A Java [standard szintű naplózók (például a Log4J](./java-trace-logs.md) ) esetében a Logback Application Insights Log4J vagy Logback-hozzáfűzéset használ, hogy harmadik féltől származó naplókat küldjön a portálra.
 
 *C#*
 
@@ -518,13 +518,13 @@ properties.put("Database", db.ID);
 telemetry.trackTrace("Slow Database response", SeverityLevel.Warning, properties);
 ```
 
-A [Search](../../azure-monitor/app/diagnostic-search.md)szolgáltatásban egyszerűen kiszűrheti az adott adatbázishoz kapcsolódó adott súlyossági szint összes üzenetét.
+A [Search](./diagnostic-search.md)szolgáltatásban egyszerűen kiszűrheti az adott adatbázishoz kapcsolódó adott súlyossági szint összes üzenetét.
 
 ### <a name="traces-in-analytics"></a>Nyomkövetés az Analyticsben
 
 [Application Insights elemzésekben](../log-query/log-query-overview.md)a TrackTrace megjelenő hívások megjelennek a `traces` táblázatban.
 
-Ha a [mintavételezés](../../azure-monitor/app/sampling.md) folyamatban van, a ItemCount tulajdonság 1-nél nagyobb értéket jelenít meg. Például a itemCount = = 10 azt jelenti, hogy a 10 meghívása `trackTrace()` esetén a mintavételi folyamat csak az egyiket továbbítja. A nyomkövetési hívások helyes számának megszerzéséhez használja a következő kódot: `traces | summarize sum(itemCount)` .
+Ha a [mintavételezés](./sampling.md) folyamatban van, a ItemCount tulajdonság 1-nél nagyobb értéket jelenít meg. Például a itemCount = = 10 azt jelenti, hogy a 10 meghívása `trackTrace()` esetén a mintavételi folyamat csak az egyiket továbbítja. A nyomkövetési hívások helyes számának megszerzéséhez használja a következő kódot: `traces | summarize sum(itemCount)` .
 
 ## <a name="trackdependency"></a>TrackDependency
 
@@ -591,19 +591,19 @@ finally
 }
 ```
 
-Ne feledje, hogy a kiszolgálói SDK-k olyan [függőségi modult](../../azure-monitor/app/asp-net-dependencies.md) tartalmaznak, amely felkeresi és nyomon követi bizonyos függőségi hívásokat automatikusan – például az adatbázisok és a REST API-k számára. Telepítenie kell egy ügynököt a kiszolgálóra a modul működésének érdekében. 
+Ne feledje, hogy a kiszolgálói SDK-k olyan [függőségi modult](./asp-net-dependencies.md) tartalmaznak, amely felkeresi és nyomon követi bizonyos függőségi hívásokat automatikusan – például az adatbázisok és a REST API-k számára. Telepítenie kell egy ügynököt a kiszolgálóra a modul működésének érdekében. 
 
-A javában bizonyos függőségi hívásokat automatikusan nyomon követhetik a [Java Agent](../../azure-monitor/app/java-agent.md)használatával.
+A javában bizonyos függőségi hívásokat automatikusan nyomon követhetik a [Java Agent](./java-agent.md)használatával.
 
 Ezt a hívást akkor használja, ha nyomon szeretné követni, hogy az automatikus követés ne kapjon hívásokat, vagy ha nem szeretné telepíteni az ügynököt.
 
-A standard függőség-követési modul C# nyelven való kikapcsolásához szerkessze [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) , és törölje a hivatkozást a következőre: `DependencyCollector.DependencyTrackingTelemetryModule` . A Java-ban ne telepítse a Java-ügynököt, ha nem szeretné automatikusan gyűjteni a standard függőségeket.
+A standard függőség-követési modul C# nyelven való kikapcsolásához szerkessze [ApplicationInsights.config](./configuration-with-applicationinsights-config.md) , és törölje a hivatkozást a következőre: `DependencyCollector.DependencyTrackingTelemetryModule` . A Java-ban ne telepítse a Java-ügynököt, ha nem szeretné automatikusan gyűjteni a standard függőségeket.
 
 ### <a name="dependencies-in-analytics"></a>Az elemzés függőségei
 
 [Application Insights elemzésekben](../log-query/log-query-overview.md)a trackDependency-hívások megjelennek a `dependencies` táblázatban.
 
-Ha a [mintavételezés](../../azure-monitor/app/sampling.md) folyamatban van, a ItemCount tulajdonság 1-nél nagyobb értéket jelenít meg. Például a itemCount = = 10 érték azt jelenti, hogy a trackDependency () 10 hívása a mintavételezési folyamat csak az egyiket továbbítja. A cél összetevő által szegmentált függőségek helyes számának beszerzéséhez használja a következő kódot:
+Ha a [mintavételezés](./sampling.md) folyamatban van, a ItemCount tulajdonság 1-nél nagyobb értéket jelenít meg. Például a itemCount = = 10 érték azt jelenti, hogy a trackDependency () 10 hívása a mintavételezési folyamat csak az egyiket továbbítja. A cél összetevő által szegmentált függőségek helyes számának beszerzéséhez használja a következő kódot:
 
 ```kusto
 dependencies
@@ -649,7 +649,7 @@ Ideális esetben a flush () metódust kell használni az alkalmazás leállítá
 
 ## <a name="authenticated-users"></a>Hitelesített felhasználók
 
-Egy webalkalmazásban a felhasználók a [cookie-k által azonosított](../../azure-monitor/app/usage-segmentation.md#the-users-sessions-and-events-segmentation-tool)(alapértelmezés szerint). Előfordulhat, hogy egy felhasználó többször is megszámolható, ha egy másik gépről vagy böngészőből fér hozzá az alkalmazáshoz, vagy ha cookie-kat töröl.
+Egy webalkalmazásban a felhasználók a [cookie-k által azonosított](./usage-segmentation.md#the-users-sessions-and-events-segmentation-tool)(alapértelmezés szerint). Előfordulhat, hogy egy felhasználó többször is megszámolható, ha egy másik gépről vagy böngészőből fér hozzá az alkalmazáshoz, vagy ha cookie-kat töröl.
 
 Ha a felhasználók bejelentkeznek az alkalmazásba, pontosabban megadhatja a hitelesített felhasználói azonosító beállítását a böngésző kódjában:
 
@@ -689,9 +689,9 @@ Ha az alkalmazás a felhasználókat fiókokba csoportosítja, akkor a fiók azo
 appInsights.setAuthenticatedUserContext(validatedId, accountId);
 ```
 
-[Metrikaböngésző](../../azure-monitor/platform/metrics-charts.md)létrehozhat egy olyan diagramot, amely **felhasználói, hitelesített**és **felhasználói fiókokat**számol fel.
+[Metrikaböngésző](../platform/metrics-charts.md)létrehozhat egy olyan diagramot, amely **felhasználói, hitelesített**és **felhasználói fiókokat**számol fel.
 
-A megadott felhasználóneveket és fiókokat tartalmazó ügyfél-adatpontokat is [megkeresheti](../../azure-monitor/app/diagnostic-search.md) .
+A megadott felhasználóneveket és fiókokat tartalmazó ügyfél-adatpontokat is [megkeresheti](./diagnostic-search.md) .
 
 ## <a name="filtering-searching-and-segmenting-your-data-by-using-properties"></a><a name="properties"></a>Az adatai szűrése, keresése és szegmentálása tulajdonságok használatával
 
@@ -822,7 +822,7 @@ requests
 Figyelje meg, hogy:
 
 * Ha Kinyer egy értéket a customDimensions vagy a customMeasurements JSON-ból, dinamikus típussal rendelkezik, és ezért el kell azt tennie `tostring` `todouble` .
-* A [mintavétel](../../azure-monitor/app/sampling.md)lehetőségének figyelembevételéhez a következőt kell használnia: `sum(itemCount)` `count()` .
+* A [mintavétel](./sampling.md)lehetőségének figyelembevételéhez a következőt kell használnia: `sum(itemCount)` `count()` .
 
 ## <a name="timing-events"></a><a name="timed"></a>Időzítési események
 
@@ -919,19 +919,19 @@ Az egyes telemetria-hívások felülbírálják a tulajdonságok szótárában l
 
 *JavaScript-alapú webes ügyfelek*esetén használja a JavaScript telemetria inicializáló.
 
-*Ha tulajdonságokat szeretne hozzáadni az összes telemetria*, beleértve a standard gyűjtemények moduljaiból származó adatokkal is, [implementálja `ITelemetryInitializer` ](../../azure-monitor/app/api-filtering-sampling.md#add-properties).
+*Ha tulajdonságokat szeretne hozzáadni az összes telemetria*, beleértve a standard gyűjtemények moduljaiból származó adatokkal is, [implementálja `ITelemetryInitializer` ](./api-filtering-sampling.md#add-properties).
 
 ## <a name="sampling-filtering-and-processing-telemetry"></a>Telemetria mintavételezése, szűrése és feldolgozása
 
 Az SDK-ból való elküldése előtt kódot írhat a telemetria feldolgozásához. A feldolgozás a szabványos telemetria-modulokból, például a HTTP-kérelmek gyűjtésével és a függőségek gyűjtésével elküldett adatokra vonatkozik.
 
-[Adja hozzá](../../azure-monitor/app/api-filtering-sampling.md#add-properties) a telemetria tulajdonságokat a megvalósításhoz `ITelemetryInitializer` . Felveheti például a más tulajdonságok alapján számított verziószámokat vagy értékeket.
+[Adja hozzá](./api-filtering-sampling.md#add-properties) a telemetria tulajdonságokat a megvalósításhoz `ITelemetryInitializer` . Felveheti például a más tulajdonságok alapján számított verziószámokat vagy értékeket.
 
-A [szűrés](../../azure-monitor/app/api-filtering-sampling.md#filtering) módosíthatja vagy elvetheti a TELEMETRIA az SDK-ból való elküldésük előtt `ITelemetryProcessor` . Ön határozza meg, hogy mi történjen az elküldésen vagy elvetve, de a metrikák hatásait kell figyelembe vennie. Az elemek elvetésének módjától függően elveszítheti a kapcsolódó elemek közötti váltás lehetőségét.
+A [szűrés](./api-filtering-sampling.md#filtering) módosíthatja vagy elvetheti a TELEMETRIA az SDK-ból való elküldésük előtt `ITelemetryProcessor` . Ön határozza meg, hogy mi történjen az elküldésen vagy elvetve, de a metrikák hatásait kell figyelembe vennie. Az elemek elvetésének módjától függően elveszítheti a kapcsolódó elemek közötti váltás lehetőségét.
 
-A [mintavétel](../../azure-monitor/app/api-filtering-sampling.md) egy csomagolt megoldás, amely csökkenti az alkalmazásból a portálra továbbított adatok mennyiségét. Ez nem befolyásolja a megjelenített metrikákat. Ez azonban nem befolyásolja a problémák diagnosztizálását a kapcsolódó elemek, például a kivételek, a kérelmek és az oldalletöltések közötti navigálás során.
+A [mintavétel](./api-filtering-sampling.md) egy csomagolt megoldás, amely csökkenti az alkalmazásból a portálra továbbított adatok mennyiségét. Ez nem befolyásolja a megjelenített metrikákat. Ez azonban nem befolyásolja a problémák diagnosztizálását a kapcsolódó elemek, például a kivételek, a kérelmek és az oldalletöltések közötti navigálás során.
 
-[További információ](../../azure-monitor/app/api-filtering-sampling.md).
+[További információ](./api-filtering-sampling.md).
 
 ## <a name="disabling-telemetry"></a>Telemetria letiltása
 
@@ -951,7 +951,7 @@ TelemetryConfiguration.Active.DisableTelemetry = true;
 telemetry.getConfiguration().setTrackingDisabled(true);
 ```
 
-A *kiválasztott standard gyűjtők letiltása*– például TELJESÍTMÉNYSZÁMLÁLÓK, HTTP-kérelmek vagy függőségek – törölje vagy írja be a megfelelő sorokat a [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md). Ezt például akkor teheti meg, ha a saját TrackRequest-adatait szeretné elküldeni.
+A *kiválasztott standard gyűjtők letiltása*– például TELJESÍTMÉNYSZÁMLÁLÓK, HTTP-kérelmek vagy függőségek – törölje vagy írja be a megfelelő sorokat a [ApplicationInsights.config](./configuration-with-applicationinsights-config.md). Ezt például akkor teheti meg, ha a saját TrackRequest-adatait szeretné elküldeni.
 
 *Node.js*
 
@@ -1012,7 +1012,7 @@ telemetry.InstrumentationKey = "---my key---";
 
 ## <a name="dynamic-instrumentation-key"></a><a name="dynamic-ikey"></a>Dynamic Instrumentation-kulcs
 
-A fejlesztési, tesztelési és éles környezetek telemetria elkerülése érdekében [létrehozhat külön Application Insights erőforrásokat](../../azure-monitor/app/create-new-resource.md ) , és módosíthatja a kulcsokat a környezettől függően.
+A fejlesztési, tesztelési és éles környezetek telemetria elkerülése érdekében [létrehozhat külön Application Insights erőforrásokat](./create-new-resource.md) , és módosíthatja a kulcsokat a környezettől függően.
 
 Ahelyett, hogy a rendszerállapot-kulcsot beolvassa a konfigurációs fájlból, beállíthatja azt a kódban. Állítsa be a kulcsot egy inicializálási metódusban, például global.aspx.cs egy ASP.NET-szolgáltatásban:
 
@@ -1068,7 +1068,7 @@ A TelemetryClient rendelkezik egy környezeti tulajdonsággal, amely az összes 
 telemetry.Context.Operation.Name = "MyOperationName";
 ```
 
-Ha saját maga állítja be ezeket az értékeket, érdemes lehet eltávolítani a megfelelő sort a [ApplicationInsights.configból ](../../azure-monitor/app/configuration-with-applicationinsights-config.md), hogy az értékek és a standard értékek ne legyenek zavarosak.
+Ha saját maga állítja be ezeket az értékeket, érdemes lehet eltávolítani a megfelelő sort a [ApplicationInsights.configból ](./configuration-with-applicationinsights-config.md), hogy az értékek és a standard értékek ne legyenek zavarosak.
 
 * **Összetevő**: az alkalmazás és annak verziója.
 * **Eszköz**: azon eszközre vonatkozó információ, amelyen az alkalmazás fut. (A Web Apps szolgáltatásban ez az a kiszolgáló vagy ügyfél-eszköz, amelyről a telemetria küldték.)
@@ -1086,9 +1086,9 @@ Ha saját maga állítja be ezeket az értékeket, érdemes lehet eltávolítani
 
 [!INCLUDE [application-insights-limits](../../../includes/application-insights-limits.md)]
 
-Az adatsebességi korlát elérésének elkerüléséhez használja a [mintavételezést](../../azure-monitor/app/sampling.md).
+Az adatsebességi korlát elérésének elkerüléséhez használja a [mintavételezést](./sampling.md).
 
-Az adatok megőrzési időtartamának megállapításához tekintse meg az [adatmegőrzést és az adatvédelmet](../../azure-monitor/app/data-retention-privacy.md).
+Az adatok megőrzési időtartamának megállapításához tekintse meg az [adatmegőrzést és az adatvédelmet](./data-retention-privacy.md).
 
 ## <a name="reference-docs"></a>Dokumentációs dokumentumok
 
@@ -1112,9 +1112,10 @@ Az adatok megőrzési időtartamának megállapításához tekintse meg az [adat
     Nincsenek. A try-catch záradékokban nem kell becsomagolni őket. Ha az SDK problémákba ütközik, a hibakeresési konzol kimenetében üzeneteket fog naplózni, és – ha az üzenetek – a diagnosztikai keresés során jelentkeznek.
 * *Van REST API az adatok a portálról való lekéréséhez?*
 
-    Igen, az [adatelérési API](https://dev.applicationinsights.io/). Az adatok kinyerésének egyéb módjai közé tartozik az [elemzésből való exportálás Power bi](../../azure-monitor/app/export-power-bi.md ) és a [folyamatos exportálás](../../azure-monitor/app/export-telemetry.md).
+    Igen, az [adatelérési API](https://dev.applicationinsights.io/). Az adatok kinyerésének egyéb módjai közé tartozik az [elemzésből való exportálás Power bi](./export-power-bi.md) és a [folyamatos exportálás](./export-telemetry.md).
 
 ## <a name="next-steps"></a><a name="next"></a>További lépések
 
-* [Események és naplók keresése](../../azure-monitor/app/diagnostic-search.md)
+* [Események és naplók keresése](./diagnostic-search.md)
 * [Hibaelhárítás](../faq.md)
+

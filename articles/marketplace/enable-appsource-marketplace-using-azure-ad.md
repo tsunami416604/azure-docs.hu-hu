@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: keferna
 ms.author: keferna
-ms.date: 04/15/2020
-ms.openlocfilehash: eab7b556dc45d03bf440a3bc63aa6bf2d799face
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/24/2020
+ms.openlocfilehash: 4c700a61de80968b17585faf92e268fef8d86f0e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103623"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323264"
 ---
 # <a name="integrate-your-commercial-marketplace-listing-with-azure-active-directory"></a>A kereskedelmi Marketplace-lista integrálása a Azure Active Directory
 
@@ -33,17 +33,18 @@ A különböző kereskedelmi Piactéri [lehetőségek és az ajánlattételi tí
 
 | Csomag típusa    | Meg kell adnia az Azure AD SSO-t a kapcsolatfelvételhez?  | Azure AD SSO szükséges a próbaverzióhoz? | Azure AD SSO szükséges a test Drive-hoz?  | Azure AD SSO szükséges a Transacthoz |
 | :------------------- | :-------------------|:-------------------|:-------------------|:-------------------|
-| Virtuális gép | N.A. | Nem | Nem | Nem |
-| Azure-alkalmazások (megoldás-sablon)  | N.A. | N.A. | N.A. | N.A. |
-| Felügyelt alkalmazások  | N.A. | N.A. | N.A. | Nem |
+| Virtuális gép | n.a. | Nem | Nem | Nem |
+| Azure-alkalmazások (megoldás-sablon)  | n.a. | n.a. | n.a. | n.a. |
+| Felügyelt alkalmazások  | n.a. | n.a. | n.a. | Nem |
 | SaaS  | Nem | Igen | Igen | Igen |
-| Containers  | N.A. | N.A. | N.A. | Nem |
-| Tanácsadási szolgáltatások  | Nem | N.A. | N.A. | N.A. |
+| Containers  | n.a. | n.a. | n.a. | Nem |
+| Tanácsadási szolgáltatások  | Nem | n.a. | n.a. | n.a. |
 
-További információ a SaaS-technikai követelményekről: [SaaS-alkalmazások ajánlat közzétételi útmutatója](marketplace-saas-applications-technical-publishing-guide.md).
+A SaaS műszaki követelményeivel kapcsolatos további információkért lásd: [Az Azure ad és a transactd SaaS-ajánlatok a kereskedelmi piactéren](./azure-ad-saas.md).
 
 ## <a name="azure-ad-integration"></a>Azure AD-integráció
 
+- Az Azure AD szolgáltatáshoz szolgáltatott szoftveres (SaaS) ajánlatokhoz való integrálásával kapcsolatos további információkért lásd: [Az Azure ad és a transactd SaaS-ajánlatok a kereskedelmi piactéren](./azure-ad-saas.md).
 - További információ az egyszeri bejelentkezés engedélyezéséről az Azure AD-nek a listához való integrálásával: [Azure Active Directory for Developers](../active-directory/develop/index.yml).
 - Az Azure AD egyszeri bejelentkezéssel kapcsolatos részletekért tekintse meg [a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directory?](../active-directory/manage-apps/what-is-single-sign-on.md)című témakört.
 
@@ -84,7 +85,7 @@ Az Azure AD használata a következő műveletek egyikének támogatásához has
 - Felhasználónkénti tesztelési meghajtó fejlesztése.
 - Hozzon létre egy több-bérlős minta bemutató alkalmazást, amely egyszeri bejelentkezést használ.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha még nem tette meg, 
 

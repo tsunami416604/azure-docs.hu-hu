@@ -3,11 +3,12 @@ title: Java-webprojektek Application Insightsának hibáinak megoldása
 description: Hibaelhárítási útmutató – élő Java-alkalmazások figyelése Application Insightsokkal.
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: ecc9a298d122919138683b48527574a1ff3e5edc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 74b4bc009158d826955f851f22458e9570a58e7c
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84484798"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324148"
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java"></a>Hibaelhárítás, kérdések és válaszok: Application Insights Java-hoz
 [Az Azure Application Insights-][java]mel kapcsolatos kérdések és problémák Java-ban? Íme néhány tipp.
@@ -23,7 +24,7 @@ ms.locfileid: "84484798"
 * Várjon egy percet, és kattintson a frissítés gombra. A diagramok rendszeresen frissülnek, de manuálisan is frissítheti őket. A frissítési időköz a diagram időtartományának függvénye.
 * Győződjön meg arról, hogy rendelkezik a ApplicationInsights.xml fájlban (a projekt erőforrások mappájában) vagy környezeti változóként konfigurált kialakítási kulccsal.
 * Ellenőrizze, hogy nincs `<DisableTelemetry>true</DisableTelemetry>` -e csomópont az XML-fájlban.
-* Előfordulhat, hogy a tűzfalon meg kell nyitnia a 80-es és a 443-es TCP-portot a dc.services.visualstudio.com kimenő forgalmához. A [tűzfal-kivételek teljes listáját](../../azure-monitor/app/ip-addresses.md) lásd:
+* Előfordulhat, hogy a tűzfalon meg kell nyitnia a 80-es és a 443-es TCP-portot a dc.services.visualstudio.com kimenő forgalmához. A [tűzfal-kivételek teljes listáját](./ip-addresses.md) lásd:
 * A Microsoft Azure kezdőképernyőn tekintse meg a szolgáltatás állapotát jelző lapot. Ha vannak riasztási jelzések, várjon, amíg vissza nem tért az OK gombra, majd zárjunk be és nyissa meg újra a Application Insights alkalmazás paneljét.
 * A [naplózás bekapcsolásához](#debug-data-from-the-sdk) `<SDKLogger />` vegyen fel egy elemet a legfelső csomópont alatt a ApplicationInsights.xml fájlban (a projekt erőforrások mappájába), és keresse meg az AI: info/Warning/Error utasításban található bejegyzéseket a gyanús naplókhoz. 
 * Győződjön meg arról, hogy a Java SDK sikeresen betöltötte a helyes ApplicationInsights.xml fájlt, a "konfigurációs fájl sikeresen megtalálva" utasításban megtekintve a konzol kimeneti üzeneteit.
@@ -37,7 +38,7 @@ ms.locfileid: "84484798"
 * A megfelelő AI-erőforrást keresi? Adja meg az alkalmazás Rendszerállapotkulcsot az erőforráshoz, ahol a telemetria vár. Azonosnak kell lenniük.
 
 #### <a name="i-dont-see-all-the-data-im-expecting"></a>Nem látom az összes várt adatértéket
-* Nyissa meg a használati és becsült költségek lapot, és győződjön meg arról, hogy a [mintavételezés](../../azure-monitor/app/sampling.md) működik-e. (a 100%-os átviteli érték azt jelenti, hogy a mintavételezés nem működik.) A Application Insights szolgáltatás beállítható úgy, hogy csak az alkalmazásból érkező telemetria egy részét fogadja el. Ez segít megőrizni a telemetria havi kvótáját.
+* Nyissa meg a használati és becsült költségek lapot, és győződjön meg arról, hogy a [mintavételezés](./sampling.md) működik-e. (a 100%-os átviteli érték azt jelenti, hogy a mintavételezés nem működik.) A Application Insights szolgáltatás beállítható úgy, hogy csak az alkalmazásból érkező telemetria egy részét fogadja el. Ez segít megőrizni a telemetria havi kvótáját.
 * Be van kapcsolva az SDK-mintavétel? Ha igen, az adat mintavétele az összes vonatkozó típushoz megadott sebességgel történik.
 * A Java SDK egy régebbi verzióját futtatja? Az 2.0.1-es verziótól kezdődően a hibatűrési mechanizmust bevezetjük az időszakos hálózati és háttérbeli hibák kezelésére, valamint az adatmegőrzésre a helyi meghajtókon.
 * A túlságosan nagy telemetria miatt szabályozásra kerül? Ha bekapcsolja az információ-naplózást, megjelenik egy "alkalmazás szabályozása" üzenet. Aktuális korlátunk a 32k telemetria-elemek/másodperc.
@@ -186,17 +187,17 @@ Application Insights használja `org.apache.http` . Ez a névtér alatt Applicat
 * [Kód írása az alkalmazás használatának nyomon követéséhez][track]
 * [Diagnosztikai naplók rögzítése][javalogs]
 
-## <a name="get-help"></a>Segítség kérése
+## <a name="get-help"></a>Segítségkérés
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/ms-application-insights)
 * [Probléma fájl a GitHubon](https://github.com/Microsoft/ApplicationInsights-Java/issues)
 
 <!--Link references-->
 
-[availability]: ../../azure-monitor/app/monitor-web-app-availability.md
-[data]: ../../azure-monitor/app/data-retention-privacy.md
+[availability]: ./monitor-web-app-availability.md
+[data]: ./data-retention-privacy.md
 [java]: java-get-started.md
 [javalogs]: java-trace-logs.md
-[platforms]: ../../azure-monitor/app/platforms.md
-[track]: ../../azure-monitor/app/api-custom-events-metrics.md
+[platforms]: ./platforms.md
+[track]: ./api-custom-events-metrics.md
 [usage]: javascript.md
 

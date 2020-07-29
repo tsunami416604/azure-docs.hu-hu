@@ -3,12 +3,12 @@ title: Webalkalmazások teljesítményének monitorozása – Azure Application 
 description: Hogyan illeszkedik a Application Insights a devOps ciklusba
 ms.topic: conceptual
 ms.date: 12/21/2018
-ms.openlocfilehash: fa62e8840c14e87d24db029d6bb7a215124a0511
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d2c3326c3f655d4bdfeaa42ac272658b251b7f82
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87033682"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324488"
 ---
 # <a name="deep-diagnostics-for-web-apps-and-services-with-application-insights"></a>Webalkalmazások és szolgáltatások részletes diagnosztikája az Application Insights szolgáltatással
 ## <a name="why-do-i-need-application-insights"></a>Miért van szükség a Application Insightsre?
@@ -85,7 +85,7 @@ A Real Madrid a Power BI modult használja a telemetria megtekintéséhez.
 ![Application Insights telemetria Power BI nézete](./media/devops/080.png)
 
 ## <a name="smart-detection"></a>Intelligens észlelés
-A [proaktív diagnosztika](../../azure-monitor/app/proactive-diagnostics.md) egy közelmúltbeli szolgáltatás. A speciális beállítások nélkül a Application Insights automatikusan észleli és riasztást küld arról, hogy az alkalmazásban előforduló meghibásodási arányok szokatlanul növekednek. Elég okos ahhoz, hogy figyelmen kívül hagyják az alkalmi hibák hátterét, és a kérések növekedésével arányos mértékben is emelkedni lehessen. Így például, ha az egyik olyan szolgáltatás meghibásodik, amelytől függ, vagy ha az imént üzembe helyezett új Build nem működik megfelelően, akkor az e-mail-cím megkeresése után azonnal tudni fogja. (És vannak webhookok, amelyekkel más alkalmazásokat indíthat el.)
+A [proaktív diagnosztika](./proactive-diagnostics.md) egy közelmúltbeli szolgáltatás. A speciális beállítások nélkül a Application Insights automatikusan észleli és riasztást küld arról, hogy az alkalmazásban előforduló meghibásodási arányok szokatlanul növekednek. Elég okos ahhoz, hogy figyelmen kívül hagyják az alkalmi hibák hátterét, és a kérések növekedésével arányos mértékben is emelkedni lehessen. Így például, ha az egyik olyan szolgáltatás meghibásodik, amelytől függ, vagy ha az imént üzembe helyezett új Build nem működik megfelelően, akkor az e-mail-cím megkeresése után azonnal tudni fogja. (És vannak webhookok, amelyekkel más alkalmazásokat indíthat el.)
 
 A szolgáltatás egy másik aspektusa a telemetria naponta részletes elemzését végzi, amely a nehezen felderíthető, szokatlan teljesítményű mintákat keresi. Például megtalálhatja az adott földrajzi területhez tartozó lassú teljesítményt vagy egy adott böngésző verziószámát.
 
@@ -145,9 +145,9 @@ A hibakeresés során megtarthatja a telemetria a fejlesztői gépen, megtekinth
 Ha riasztást vált ki, Application Insights automatikusan létrehozhat egy munkaelemet a munkahelyi követési rendszeren.
 
 ## <a name="but-what-about"></a>De mi a helyzet...?
-* [Adatvédelem és tárolás](../../azure-monitor/app/data-retention-privacy.md) – a telemetria az Azure biztonságos kiszolgálókon tároljuk.
+* [Adatvédelem és tárolás](./data-retention-privacy.md) – a telemetria az Azure biztonságos kiszolgálókon tároljuk.
 * Teljesítmény – a hatás nagyon alacsony. A telemetria kötegelt.
-* [Díjszabás](../../azure-monitor/app/pricing.md) – megkezdheti az ingyenes használatot, ami továbbra is kis mennyiségű.
+* [Díjszabás](./pricing.md) – megkezdheti az ingyenes használatot, ami továbbra is kis mennyiségű.
 
 
 ## <a name="video"></a>Videó
@@ -157,6 +157,7 @@ Ha riasztást vált ki, Application Insights automatikusan létrehozhat egy munk
 ## <a name="next-steps"></a>További lépések
 A Application Insights első lépései egyszerűek. A fő lehetőségek a következők:
 
-* [IIS-kiszolgálók](../../azure-monitor/app/monitor-performance-live-website-now.md)és [Azure app Service](../../azure-monitor/app/app-insights-overview.md)esetén is.
-* A projekt fejlesztése a fejlesztés során. Ezt megteheti a [ASP.net](../../azure-monitor/app/asp-net.md) vagy [Java](../../azure-monitor/app/java-get-started.md) -alkalmazásokhoz, valamint a [Node.js](../../azure-monitor/app/nodejs.md) és [más típusú](../../azure-monitor/app/platforms.md)gépekhez is. 
-* [Bármely weblap](../../azure-monitor/app/javascript.md) egy rövid kódrészlet hozzáadásával.
+* [IIS-kiszolgálók](./monitor-performance-live-website-now.md)és [Azure app Service](./app-insights-overview.md)esetén is.
+* A projekt fejlesztése a fejlesztés során. Ezt megteheti a [ASP.net](./asp-net.md) vagy [Java](./java-get-started.md) -alkalmazásokhoz, valamint a [Node.js](./nodejs.md) és [más típusú](./platforms.md)gépekhez is. 
+* [Bármely weblap](./javascript.md) egy rövid kódrészlet hozzáadásával.
+

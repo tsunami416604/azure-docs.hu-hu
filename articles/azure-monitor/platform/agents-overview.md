@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
-ms.openlocfilehash: 75394768cc41d3ca73398c2691b9ec0feb8c17f8
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: a9786c1f596a9f59e63886fa503bddac58ee7a8e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86202560"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325338"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Azure Monitor ügynökök áttekintése
 
@@ -31,9 +31,9 @@ Az alábbi táblázatok a Windows és a Linux rendszerhez készült Azure Monito
 
 | | Diagnosztika<br>kiterjesztés (WAD) | Log Analytics<br>ügynök | Függőség<br>ügynök |
 |:---|:---|:---|:---|
-| **Támogatott környezetek** | Azure | Azure<br>Egyéb felhő<br>Helyszíni | Azure<br>Egyéb felhő<br>Helyszíni | 
-| **Ügynökre vonatkozó követelmények**  | Nincsenek | Nincsenek | Log Analytics-ügynököt igényel |
-| **Összegyűjtött adatok** | Eseménynaplók<br>ETW események<br>Teljesítmény<br>Fájl alapú naplók<br>IIS-naplók<br>.NET-alkalmazás naplói<br>összeomlási memóriaképek,<br>Ügynök diagnosztikai naplói | Eseménynaplók<br>Teljesítmény<IIS logs><br>Fájl alapú naplók<br>Bepillantást és megoldásokat<br>Egyéb szolgáltatások | Folyamat részletei és függőségei<br>Hálózati kapcsolatok metrikái |
+| **Támogatott környezetek** | Azure | Azure<br>Egyéb felhő<br>Helyszíni követelmények | Azure<br>Egyéb felhő<br>Helyszíni | 
+| **Ügynökre vonatkozó követelmények**  | Nincs | Nincs | Log Analytics-ügynököt igényel |
+| **Összegyűjtött adatok** | Eseménynaplók<br>ETW események<br>Teljesítmény<br>Fájl alapú naplók<br>IIS-naplók<br>.NET-alkalmazás naplói<br>Összeomlási memóriaképek<br>Ügynök diagnosztikai naplói | Eseménynaplók<br>Teljesítmény<IIS logs><br>Fájl alapú naplók<br>Bepillantást és megoldásokat<br>Egyéb szolgáltatások | Folyamat részletei és függőségei<br>Hálózati kapcsolatok metrikái |
 | **Adatküldés** | Azure Storage<br>Azure Monitor metrikák<br>Eseményközpont | Azure Monitor-naplók | Azure Monitor-naplók |
 
 
@@ -41,8 +41,8 @@ Az alábbi táblázatok a Windows és a Linux rendszerhez készült Azure Monito
 
 | | Diagnosztika<br>bővítmény (LAD) | Telegraf<br>ügynök | Log Analytics<br>ügynök | Függőség<br>ügynök |
 |:---|:---|:---|:---|:---|
-| **Támogatott környezetek** | Azure | Azure<br>Egyéb felhő<br>Helyszíni | Azure<br>Egyéb felhő<br>Helyszíni | Azure<br>Egyéb felhő<br>Helyszíni |
-| **Ügynökre vonatkozó követelmények**  | Nincsenek | Nincsenek | Nincsenek | Log Analytics-ügynököt igényel |
+| **Támogatott környezetek** | Azure | Azure<br>Egyéb felhő<br>Helyszíni követelmények | Azure<br>Egyéb felhő<br>Helyszíni követelmények | Azure<br>Egyéb felhő<br>Helyszíni |
+| **Ügynökre vonatkozó követelmények**  | Nincs | Nincs | Nincs | Log Analytics-ügynököt igényel |
 | **Összegyűjtött adatok** | Rendszernapló<br>Teljesítmény | Teljesítmény | Rendszernapló<br>Teljesítmény| Folyamat részletei és függőségei<br>Hálózati kapcsolatok metrikái |
 | **Adatküldés** | Azure Storage<br>Eseményközpont | Azure Monitor metrikák | Azure Monitor-naplók | Azure Monitor-naplók |
 
@@ -76,7 +76,7 @@ A [Azure Diagnostics-bővítmény](diagnostics-extension-overview.md) a vendég 
 Ha a következőkre van szüksége, használja az Azure diagnosztikai bővítményt:
 
 - Adatküldés az Azure Storage-ba archiválásra vagy elemzésre olyan eszközökkel, mint például a [Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md).
-- Adatokat küldhet [Azure monitor mérőszámoknak](data-platform-metrics.md) , hogy elemezze a [metrikák Explorerrel](metrics-getting-started.md) , és kihasználja az olyan funkciók előnyeit, mint a közel valós idejű [metrikus riasztások](../../azure-monitor/platform/alerts-metric-overview.md) és az [autoscale](autoscale-overview.md) (csak Windows).
+- Adatokat küldhet [Azure monitor mérőszámoknak](data-platform-metrics.md) , hogy elemezze a [metrikák Explorerrel](metrics-getting-started.md) , és kihasználja az olyan funkciók előnyeit, mint a közel valós idejű [metrikus riasztások](./alerts-metric-overview.md) és az [autoscale](autoscale-overview.md) (csak Windows).
 - Adatküldés harmadik féltől származó eszközökre az [Azure Event Hubs](diagnostics-extension-stream-event-hubs.md)használatával.
 - [Rendszerindítási diagnosztika](../../virtual-machines/troubleshooting/boot-diagnostics.md) gyűjtése a virtuális gépek rendszerindítási problémáinak vizsgálatához.
 
@@ -91,7 +91,7 @@ A [InfluxData-Grafi ügynök](collect-custom-metrics-linux-telegraf.md) a Linux 
 
 Ha a következőkre van szüksége, használja a-Graf Agent ügynököt:
 
-* Adatokat küldhet [Azure monitor mérőszámoknak](data-platform-metrics.md) , hogy elemezze a [metrikák Explorerrel](metrics-getting-started.md) , és kihasználja az olyan funkciók előnyeit, mint a közel valós idejű [metrikus riasztások](../../azure-monitor/platform/alerts-metric-overview.md) és az [autoscale](autoscale-overview.md) (csak Linux). 
+* Adatokat küldhet [Azure monitor mérőszámoknak](data-platform-metrics.md) , hogy elemezze a [metrikák Explorerrel](metrics-getting-started.md) , és kihasználja az olyan funkciók előnyeit, mint a közel valós idejű [metrikus riasztások](./alerts-metric-overview.md) és az [autoscale](autoscale-overview.md) (csak Linux). 
 
 
 
@@ -120,3 +120,4 @@ További részleteket az egyes ügynökökről a következő címen talál:
 - [A Log Analytics ügynök áttekintése](log-analytics-agent.md)
 - [Azure Diagnostics bővítmény áttekintése](diagnostics-extension-overview.md)
 - [Egyéni metrikák gyűjtése Linux rendszerű virtuális gépekhez a InfluxData-ben-Graf ügynökkel](collect-custom-metrics-linux-telegraf.md)
+

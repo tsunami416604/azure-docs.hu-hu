@@ -3,12 +3,12 @@ title: A Application Insights kibocsátási megjegyzései | Microsoft Docs
 description: Adja hozzá az üzembe helyezést, vagy készítsen jelölőket a metrikák Explorer diagramjaihoz Application Insights.
 ms.topic: conceptual
 ms.date: 07/01/2019
-ms.openlocfilehash: 8f6ffed8ae2039ec36ec8bd86518e6b359da65ec
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8e9e0cb49343524e8a45831566cf802b1c8c5d9b
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87093034"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320663"
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>Jegyzetek a metrikus diagramokon Application Insights
 
@@ -34,7 +34,7 @@ Csak egyszer kell telepítenie a bővítményt az Azure DevOps-szervezet számá
 
 Hozzon létre külön API-kulcsot az Azure-folyamatok egyes kiadási sablonjaihoz.
 
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és nyissa meg az alkalmazást figyelő Application Insights-erőforrást. Ha még nem rendelkezik ilyennel, [hozzon létre egy új Application Insights erőforrást](../../azure-monitor/app/app-insights-overview.md).
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és nyissa meg az alkalmazást figyelő Application Insights-erőforrást. Ha még nem rendelkezik ilyennel, [hozzon létre egy új Application Insights erőforrást](./app-insights-overview.md).
    
 1. Nyissa meg az **API-hozzáférés** lapot, és másolja a **Application Insights azonosítót**.
    
@@ -115,5 +115,6 @@ Módosíthatja a parancsfájlt, például a múltbeli jegyzetek létrehozásáho
 
 ## <a name="next-steps"></a>További lépések
 
-* [Munkaelemek létrehozása](../../azure-monitor/app/diagnostic-search.md#create-work-item)
-* [Automatizálás a PowerShell használatával](../../azure-monitor/app/powershell.md)
+* [Munkaelemek létrehozása](./diagnostic-search.md#create-work-item)
+* [Automatizálás a PowerShell használatával](./powershell.md)
+

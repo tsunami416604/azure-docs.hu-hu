@@ -6,15 +6,15 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/12/2020
-ms.openlocfilehash: 7baabe455128bf420a3c3e11ea83bb5357ed35c8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 2df7d8273b2b25cd0171b38e5cc0ada557ea9a2d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505159"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325355"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>ITSM-termékek/-szolgáltatások összekapcsolása IT Service Management-összekötővel
-Ez a cikk azt ismerteti, hogyan konfigurálható a ITSM terméke/szolgáltatása és a IT-szolgáltatásmenedzsmenti csatoló (ITSMC) közötti kapcsolat a munkaelemek központilag felügyelhető Log Analyticsban. További információ a ITSMC: [Áttekintés](../../azure-monitor/platform/itsmc-overview.md).
+Ez a cikk azt ismerteti, hogyan konfigurálható a ITSM terméke/szolgáltatása és a IT-szolgáltatásmenedzsmenti csatoló (ITSMC) közötti kapcsolat a munkaelemek központilag felügyelhető Log Analyticsban. További információ a ITSMC: [Áttekintés](./itsmc-overview.md).
 
 A következő ITSM-termékek/szolgáltatások támogatottak. Válassza ki a terméket a termék ITSMC való összekapcsolásával kapcsolatos részletes információk megtekintéséhez.
 
@@ -35,7 +35,7 @@ A következő szakaszokban részletesen ismertetjük, hogyan csatlakoztathatók 
 
 Győződjön meg arról, hogy teljesülnek az alábbi előfeltételek:
 
-- A ITSMC telepítve van. További információ: [a it-szolgáltatásmenedzsmenti csatoló megoldás hozzáadása](../../azure-monitor/platform/itsmc-overview.md#adding-the-it-service-management-connector-solution).
+- A ITSMC telepítve van. További információ: [a it-szolgáltatásmenedzsmenti csatoló megoldás hozzáadása](./itsmc-overview.md#adding-the-it-service-management-connector-solution).
 - A Service Manager webalkalmazás (Web App) telepítése és konfigurálása történik. A webalkalmazással kapcsolatos információk [itt](#create-and-deploy-service-manager-web-app-service)találhatóak.
 - A hibrid kapcsolatok létrehozása és konfigurálása megtörtént. További információ: [a hibrid kapcsolatok konfigurálása](#configure-the-hybrid-connection).
 - A Service Manager támogatott verziói: 2012 R2 vagy 2016.
@@ -64,7 +64,7 @@ A System Center Service Manager-példány ITSMC való összekapcsolásához köv
 | **Kapcsolat neve**   | Írja be annak a System Center Service Manager-példánynak a nevét, amelyhez csatlakozni szeretne a ITSMC.  Ezt a nevet később, a munkaelemek ebben a példányban való konfigurálásakor, illetve a részletes log Analytics megtekintésekor kell használni. |
 | **Partner típusa**   | Válassza a **System Center Service Manager**lehetőséget. |
 | **Kiszolgáló URL-címe**   | Írja be a Service Manager webalkalmazás URL-címét. Service Manager webalkalmazással kapcsolatos további információkért [tekintse meg a](#create-and-deploy-service-manager-web-app-service)következőt:.
-| **Ügyfél-azonosító**   | Írja be a generált ügyfél-azonosítót (az automatikus parancsfájl használatával) a webalkalmazás hitelesítéséhez. Az automatizált parancsfájlról további információt [itt talál.](../../azure-monitor/platform/itsmc-service-manager-script.md)|
+| **Ügyfél-azonosító**   | Írja be a generált ügyfél-azonosítót (az automatikus parancsfájl használatával) a webalkalmazás hitelesítéséhez. Az automatizált parancsfájlról további információt [itt talál.](./itsmc-service-manager-script.md)|
 | **Ügyfél titka**   | Adja meg az AZONOSÍTÓhoz generált ügyfél-titkot.   |
 | **Adatszinkronizálás**   | Válassza ki azokat a Service Manager munkaelemeket, amelyeket szinkronizálni szeretne a ITSMC-on keresztül.  Ezeket a munkaelemeket a rendszer a Log Analyticsba importálja. **Beállítások:**  Incidensek, módosítási kérelmek.|
 | **Adatszinkronizálási hatókör** | Adja meg az elmúlt napok számát, amelyből az adatok származnak. **Maximális korlát**: 120 nap. |
@@ -79,7 +79,7 @@ A System Center Service Manager-példány ITSMC való összekapcsolásához köv
 - Létrehozhat incidenseket Log Analytics riasztásokból, illetve a naplófájlokból, illetve az Azure-riasztásokból ebben a Service Manager-példányban.
 
 
-További információ: [ITSM-munkaelemek létrehozása az Azure-riasztásokból](../../azure-monitor/platform/itsmc-overview.md#create-itsm-work-items-from-azure-alerts).
+További információ: [ITSM-munkaelemek létrehozása az Azure-riasztásokból](./itsmc-overview.md#create-itsm-work-items-from-azure-alerts).
 
 ### <a name="create-and-deploy-service-manager-web-app-service"></a>Service Manager Web App Service létrehozása és üzembe helyezése
 
@@ -87,11 +87,11 @@ A helyszíni Service Manager Azure-beli ITSMC való összekapcsolásához a Micr
 
 A Service Manager ITSM-webalkalmazásának beállításához tegye a következőket:
 
-- **Telepítse a webalkalmazást** – telepítse a webalkalmazást, állítsa be a tulajdonságokat, és végezze el a hitelesítést az Azure ad szolgáltatásban. A webalkalmazást a Microsoft által biztosított [automatikus parancsfájl](../../azure-monitor/platform/itsmc-service-manager-script.md) használatával helyezheti üzembe.
+- **Telepítse a webalkalmazást** – telepítse a webalkalmazást, állítsa be a tulajdonságokat, és végezze el a hitelesítést az Azure ad szolgáltatásban. A webalkalmazást a Microsoft által biztosított [automatikus parancsfájl](./itsmc-service-manager-script.md) használatával helyezheti üzembe.
 - **A hibrid kapcsolatok konfigurálása**  -  [Konfigurálja manuálisan a](#configure-the-hybrid-connection)-t.
 
 #### <a name="deploy-the-web-app"></a>A webalkalmazás üzembe helyezése
-Az automatizált [parancsfájllal](../../azure-monitor/platform/itsmc-service-manager-script.md) telepítse a webalkalmazást, állítsa be a tulajdonságokat, és végezze el a hitelesítést az Azure ad-vel.
+Az automatizált [parancsfájllal](./itsmc-service-manager-script.md) telepítse a webalkalmazást, állítsa be a tulajdonságokat, és végezze el a hitelesítést az Azure ad-vel.
 
 Futtassa a szkriptet a következő szükséges részletek megadásával:
 
@@ -178,7 +178,7 @@ A következő szakaszokban részletesen ismertetjük, hogyan csatlakoztathatók 
 
 ### <a name="prerequisites"></a>Előfeltételek
 Győződjön meg arról, hogy teljesülnek az alábbi előfeltételek:
-- A ITSMC telepítve van. További információ: [a it-szolgáltatásmenedzsmenti csatoló megoldás hozzáadása](../../azure-monitor/platform/itsmc-overview.md#adding-the-it-service-management-connector-solution).
+- A ITSMC telepítve van. További információ: [a it-szolgáltatásmenedzsmenti csatoló megoldás hozzáadása](./itsmc-overview.md#adding-the-it-service-management-connector-solution).
 - ServiceNow támogatott verziók: New York, Madrid, London, Kingston, Jakarta, Isztambul, Helsinki, Genf.
 > [!NOTE]
 > A ITSMC csak a szolgáltatás hivatalos SaaS-ajánlatát támogatja. A szolgáltatás privát telepítései jelenleg nem támogatottak. 
@@ -247,7 +247,7 @@ ServiceNow-kapcsolatok létrehozásához kövesse az alábbi eljárást:
 
 - Incidenseket hozhat létre Log Analytics riasztásokból, illetve a naplóbejegyzésekből vagy az Azure-riasztásokból ebben az ServiceNow-példányban.
 
-További információ: [ITSM-munkaelemek létrehozása az Azure-riasztásokból](../../azure-monitor/platform/itsmc-overview.md#create-itsm-work-items-from-azure-alerts).
+További információ: [ITSM-munkaelemek létrehozása az Azure-riasztásokból](./itsmc-overview.md#create-itsm-work-items-from-azure-alerts).
 
 
 > [!NOTE]
@@ -303,7 +303,7 @@ A következő szakaszokban részletesen ismertetjük, hogyan csatlakoztatható a
 Győződjön meg arról, hogy teljesülnek az alábbi előfeltételek:
 
 
-- A ITSMC telepítve van. További információ: [a it-szolgáltatásmenedzsmenti csatoló megoldás hozzáadása](../../azure-monitor/platform/itsmc-overview.md#adding-the-it-service-management-connector-solution).
+- A ITSMC telepítve van. További információ: [a it-szolgáltatásmenedzsmenti csatoló megoldás hozzáadása](./itsmc-overview.md#adding-the-it-service-management-connector-solution).
 - Az Azure AD-ben regisztrálni kell az alkalmazást, és az ügyfél-azonosítót is elérhetővé kell tenni. Részletes információk: [az Active Directory-hitelesítés konfigurálása](../../app-service/configure-authentication-provider-aad.md).
 
 - Felhasználói szerepkör: rendszergazda.
@@ -345,7 +345,7 @@ A következő eljárással hozhat létre egy elővance-kapcsolatokat:
 
 - Az incidenseket Log Analytics riasztásokból, illetve a naplófájlokból, illetve az Azure-riasztásokból is létrehozhatja ebben a megtekintő példányban.
 
-További információ: [ITSM-munkaelemek létrehozása az Azure-riasztásokból](../../azure-monitor/platform/itsmc-overview.md#create-itsm-work-items-from-azure-alerts).
+További információ: [ITSM-munkaelemek létrehozása az Azure-riasztásokból](./itsmc-overview.md#create-itsm-work-items-from-azure-alerts).
 
 ## <a name="connect-cherwell-to-it-service-management-connector-in-azure"></a>Cherwell-IT-szolgáltatásmenedzsmenti csatoló összekötése az Azure-ban
 
@@ -355,7 +355,7 @@ A következő szakaszokban részletesen ismertetjük, hogyan csatlakoztathatók 
 
 Győződjön meg arról, hogy teljesülnek az alábbi előfeltételek:
 
-- A ITSMC telepítve van. További információ: [a it-szolgáltatásmenedzsmenti csatoló megoldás hozzáadása](../../azure-monitor/platform/itsmc-overview.md#adding-the-it-service-management-connector-solution).
+- A ITSMC telepítve van. További információ: [a it-szolgáltatásmenedzsmenti csatoló megoldás hozzáadása](./itsmc-overview.md#adding-the-it-service-management-connector-solution).
 - Ügyfél-azonosító létrehozva. További információ: [a Cherwell ügyfél-azonosítójának előállítása](#generate-client-id-for-cherwell).
 - Felhasználói szerepkör: rendszergazda.
 
@@ -397,7 +397,7 @@ A következő eljárással hozhat létre egy elővance-kapcsolatokat:
 
 - Incidenseket hozhat létre Log Analytics riasztásokból, illetve a naplóbejegyzésekből vagy az Azure-riasztásokból ebben az Cherwell-példányban.
 
-További információ: [ITSM-munkaelemek létrehozása az Azure-riasztásokból](../../azure-monitor/platform/itsmc-overview.md#create-itsm-work-items-from-azure-alerts).
+További információ: [ITSM-munkaelemek létrehozása az Azure-riasztásokból](./itsmc-overview.md#create-itsm-work-items-from-azure-alerts).
 
 ### <a name="generate-client-id-for-cherwell"></a>Ügyfél-azonosító előállítása a Cherwell
 
@@ -410,5 +410,6 @@ Az ügyfél-azonosító/-kulcs Cherwell való létrehozásához kövesse az alá
     ![Cherwell-felhasználói azonosító](media/itsmc-connections/itsmc-cherwell-client-id.png)
 
 
-## <a name="next-steps"></a>Következő lépések
- - [ITSM-munkaelemek létrehozása az Azure-riasztásokból](../../azure-monitor/platform/itsmc-overview.md#create-itsm-work-items-from-azure-alerts)
+## <a name="next-steps"></a>További lépések
+ - [ITSM-munkaelemek létrehozása az Azure-riasztásokból](./itsmc-overview.md#create-itsm-work-items-from-azure-alerts)
+

@@ -11,11 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 17312e44714c8bdb20e22ad9aeb950e46eb71e3e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 127d76bedafd4c857686e93f21d3cccdc36b98dd
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80755252"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87274663"
 ---
 # <a name="conditional-access-users-and-groups"></a>Feltételes hozzáférés: felhasználók és csoportok
 
@@ -29,7 +30,7 @@ A felhasználók ezen listája általában a feltételes hozzáférési szabály
 
 A feltételes hozzáférési szabályzat létrehozásakor a következő beállítások érhetők el.
 
-- None
+- Nincs
    - Nincs kijelölt felhasználó
 - Minden felhasználó
    - Minden olyan felhasználó, aki szerepel a címtárban, beleértve a B2B vendégeket is.
@@ -39,7 +40,10 @@ A feltételes hozzáférési szabályzat létrehozásakor a következő beállí
    - Címtárbeli szerepkörök
       - Lehetővé teszi a rendszergazdák számára, hogy kiválasszanak bizonyos Azure AD-címtárbeli szerepköröket a hozzárendelés meghatározásához. Előfordulhat például, hogy a szervezetek szigorúbb házirendet hoznak létre a globális rendszergazdai szerepkörrel rendelkező felhasználók számára.
    - Felhasználók és csoportok
-      - Engedélyezi a felhasználók meghatározott csoportjainak célzását. Például a szervezetek kiválaszthatnak egy csoportot, amely a HR-részleg összes tagját tartalmazza, ha egy HR-alkalmazás van kiválasztva a felhőalapú alkalmazásként. Egy csoport bármilyen típusú csoport lehet az Azure AD-ben, beleértve a dinamikus vagy a hozzárendelt biztonsági és terjesztési csoportokat is.
+      - Engedélyezi a felhasználók meghatározott csoportjainak célzását. Például a szervezetek kiválaszthatnak egy csoportot, amely a HR-részleg összes tagját tartalmazza, ha egy HR-alkalmazás van kiválasztva a felhőalapú alkalmazásként. Egy csoport bármilyen típusú csoport lehet az Azure AD-ben, beleértve a dinamikus vagy a hozzárendelt biztonsági és terjesztési csoportokat is. A házirend a beágyazott felhasználókra és csoportokra lesz alkalmazva.
+
+> [!WARNING]
+> Ha a felhasználók vagy csoportok tagjai több mint 2048 csoportnak, a hozzáférésük blokkolva lehet. Ez a korlátozás a közvetlen és a beágyazott csoporttagság is vonatkozik.
 
 ## <a name="exclude-users"></a>Felhasználók kizárása
 

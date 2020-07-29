@@ -4,19 +4,20 @@ description: Application Insights adatmodell a kérelem telemetria
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: 57cc9c95137facaaf2ddf5bb212121f88e150f5b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7a352f4ce3528d395599a91b53031c74b0873152
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85807655"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320561"
 ---
 # <a name="request-telemetry-application-insights-data-model"></a>Kérelem telemetria: Application Insights adatmodell
 
-A kérelem telemetria eleme ( [Application Insights](../../azure-monitor/app/app-insights-overview.md)) az alkalmazás külső kérelme által aktivált végrehajtás logikai sorozatot jelöli. Minden kérelem végrehajtását egyedi azonosítja, `ID` és `url` az összes végrehajtási paramétert tartalmazza. A kérelmeket logikusan csoportosíthatja `name` , és megadhatja a `source` kérést. A kód végrehajtása a vagy a szolgáltatáshoz vezethet `success` `fail` `duration` . A sikeres és a sikertelen végrehajtás is elvégezhető a további csoportosításával `resultCode` . A kérés telemetria megadott kezdési ideje.
+A kérelem telemetria eleme ( [Application Insights](./app-insights-overview.md)) az alkalmazás külső kérelme által aktivált végrehajtás logikai sorozatot jelöli. Minden kérelem végrehajtását egyedi azonosítja, `ID` és `url` az összes végrehajtási paramétert tartalmazza. A kérelmeket logikusan csoportosíthatja `name` , és megadhatja a `source` kérést. A kód végrehajtása a vagy a szolgáltatáshoz vezethet `success` `fail` `duration` . A sikeres és a sikertelen végrehajtás is elvégezhető a további csoportosításával `resultCode` . A kérés telemetria megadott kezdési ideje.
 
 A telemetria kérése támogatja a standard bővíthetőségi modellt a Custom és a használatával `properties` `measurements` .
 
-## <a name="name"></a>Name
+## <a name="name"></a>Név
 
 A kérelem neve a kérelem feldolgozásához a kód elérési útját jelöli. Alacsony kardinális érték a kérelmek jobb csoportosításának lehetővé tételéhez. HTTP-kérelmek esetén a a HTTP-metódust és az URL-cím elérési útját jelöli, mint `GET /values/{id}` a tényleges `id` érték nélkül.
 
@@ -26,7 +27,7 @@ Maximális hossz: 1024 karakter
 
 ## <a name="id"></a>ID
 
-Egy kérelem hívási példányának azonosítója. A kérelem és az egyéb telemetria elemek közötti korrelációhoz használatos. Az AZONOSÍTÓnak globálisan egyedinek kell lennie. További információ: [korrelációs](../../azure-monitor/app/correlation.md) oldal.
+Egy kérelem hívási példányának azonosítója. A kérelem és az egyéb telemetria elemek közötti korrelációhoz használatos. Az AZONOSÍTÓnak globálisan egyedinek kell lennie. További információ: [korrelációs](./correlation.md) oldal.
 
 Maximális hossz: 128 karakter
 
@@ -38,7 +39,7 @@ Maximális hossz: 2048 karakter
 
 ## <a name="source"></a>Forrás
 
-A kérelem forrása. Ilyenek például a hívó rendszerállapot-kulcsa vagy a hívó IP-címe. További információ: [korrelációs](../../azure-monitor/app/correlation.md) oldal.
+A kérelem forrása. Ilyenek például a hívó rendszerállapot-kulcsa vagy a hívó IP-címe. További információ: [korrelációs](./correlation.md) oldal.
 
 Maximális hossz: 1024 karakter
 
@@ -52,7 +53,7 @@ A kérelem végrehajtásának eredménye. A HTTP-kérelmek HTTP-állapotkódot. 
 
 Maximális hossz: 1024 karakter
 
-## <a name="success"></a>Sikeres
+## <a name="success"></a>Success
 
 A sikeres vagy sikertelen hívás megjelölése. A mező kitöltése kötelező. Ha nincs explicit módon beállítva a `false` – a kérelem sikeresnek tekintendő. Állítsa be ezt az értéket arra az `false` esetre, ha a művelet kivétel miatt megszakadt, vagy a hiba eredményének kódját adta vissza.
 
@@ -72,7 +73,8 @@ További információ: kérelem eredményének kódja és állapotkód a [blogbe
 
 ## <a name="next-steps"></a>További lépések
 
-- [Egyéni kérelem telemetria írása](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest)
+- [Egyéni kérelem telemetria írása](./api-custom-events-metrics.md#trackrequest)
 - Lásd: [adatmodell](data-model.md) Application Insights típusokhoz és adatmodellekhez.
-- Megtudhatja, hogyan [konfigurálhat ASP.net Core](../../azure-monitor/app/asp-net.md) alkalmazást Application Insights használatával.
-- Tekintse meg Application Insights által támogatott [platformokat](../../azure-monitor/app/platforms.md) .
+- Megtudhatja, hogyan [konfigurálhat ASP.net Core](./asp-net.md) alkalmazást Application Insights használatával.
+- Tekintse meg Application Insights által támogatott [platformokat](./platforms.md) .
+

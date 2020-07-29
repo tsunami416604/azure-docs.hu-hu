@@ -3,20 +3,20 @@ title: Riasztások beállítása a Application Insightsban a PowerShell használ
 description: Application Insights konfigurációjának automatizálása a metrikák változásairól szóló e-mailek lekéréséhez.
 ms.topic: conceptual
 ms.date: 07/23/2016
-ms.openlocfilehash: 00212aa8783a6bfc8e46d325a882781e33b7de51
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: 74d477b6660c0f7ec2ee32b34169bb85886936e5
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87117160"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322465"
 ---
 # <a name="use-powershell-to-set-alerts-in-application-insights"></a>A PowerShell használata riasztások beállításához az Application Insights szolgáltatásban
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-[Application Insightsban](../../azure-monitor/app/app-insights-overview.md)automatizálhatja a [riasztások](../../azure-monitor/platform/alerts-log.md) konfigurációját.
+[Application Insightsban](./app-insights-overview.md)automatizálhatja a [riasztások](../platform/alerts-log.md) konfigurációját.
 
-Emellett beállíthatja, [hogy a webhookok a riasztásra adott válaszokat automatizálják](../../azure-monitor/platform/alerts-webhooks.md).
+Emellett beállíthatja, [hogy a webhookok a riasztásra adott válaszokat automatizálják](../platform/alerts-webhooks.md).
 
 > [!NOTE]
 > Ha egy időben szeretné létrehozni az erőforrásokat és a riasztásokat, érdemes lehet [egy Azure Resource Manager sablont használni](powershell.md).
@@ -82,7 +82,7 @@ Add-AzMetricAlertRule -Name "slow responses" `
 ```
 
 ## <a name="example-2"></a>2\. példa
-Olyan alkalmazással rendelkezem, amelyben a [TrackMetric ()](../../azure-monitor/app/api-custom-events-metrics.md#trackmetric) kifejezést használjuk a "salesPerHour" nevű metrika jelentéséhez. E-mail küldése a munkatársainak, ha a "salesPerHour" a 100 alá esik, és 24 óra átlagot vesz igénybe.
+Olyan alkalmazással rendelkezem, amelyben a [TrackMetric ()](./api-custom-events-metrics.md#trackmetric) kifejezést használjuk a "salesPerHour" nevű metrika jelentéséhez. E-mail küldése a munkatársainak, ha a "salesPerHour" a 100 alá esik, és 24 óra átlagot vesz igénybe.
 
 ```azurepowershell
 Add-AzMetricAlertRule -Name "poor sales" `
@@ -98,10 +98,10 @@ Add-AzMetricAlertRule -Name "poor sales" `
   -RuleType Metric
 ```
 
-Ugyanez a szabály használható egy másik nyomkövetési hívás (például TrackEvent vagy trackPageView) [mérési paramétere](../../azure-monitor/app/api-custom-events-metrics.md#properties) használatával jelentett metrika esetében.
+Ugyanez a szabály használható egy másik nyomkövetési hívás (például TrackEvent vagy trackPageView) [mérési paramétere](./api-custom-events-metrics.md#properties) használatával jelentett metrika esetében.
 
 ## <a name="metric-names"></a>Metrikák nevei
-| Metrika neve | Képernyő neve | Description |
+| Metrika neve | Képernyő neve | Leírás |
 | --- | --- | --- |
 | `basicExceptionBrowser.count` |Böngészőkivételek |A böngészőben fellépő nem kezelt kivételek száma. |
 | `basicExceptionServer.count` |Kiszolgálói kivételek |Az alkalmazás által eldobott kezeletlen kivételek száma |
@@ -124,22 +124,23 @@ Ugyanez a szabály használható egy másik nyomkövetési hívás (például Tr
 | `request.rate` |Kérelmek gyakorisága |Az alkalmazásra irányuló kérelmek másodpercenkénti száma. |
 | `requestFailed.count` |Sikertelen kérelmek |A >= 400 hibakódot eredményező HTTP-kérelmek száma |
 | `view.count` |Lapok nézetei |Weblapokhoz tartozó ügyfél-felhasználói kérelmek száma. A szintetikus forgalom ki van szűrve. |
-| {az egyéni metrika neve} |{A metrika neve} |A [TrackMetric](../../azure-monitor/app/api-custom-events-metrics.md#trackmetric) által jelentett metrikai érték, vagy [egy nyomkövetési hívás mérési paraméterében](../../azure-monitor/app/api-custom-events-metrics.md#properties). |
+| {az egyéni metrika neve} |{A metrika neve} |A [TrackMetric](./api-custom-events-metrics.md#trackmetric) által jelentett metrikai érték, vagy [egy nyomkövetési hívás mérési paraméterében](./api-custom-events-metrics.md#properties). |
 
 A metrikákat különböző telemetria-modulok küldik:
 
 | Metrikai csoport | Gyűjtő modul |
 | --- | --- |
-| basicExceptionBrowser,<br/>clientPerformance,<br/>megtekintése |[Böngésző JavaScript](../../azure-monitor/app/javascript.md) |
-| performanceCounter |[Teljesítmény](../../azure-monitor/app/configuration-with-applicationinsights-config.md) |
-| remoteDependencyFailed |[Függőség](../../azure-monitor/app/configuration-with-applicationinsights-config.md) |
-| kérelem<br/>requestFailed |[Kiszolgálói kérelem](../../azure-monitor/app/configuration-with-applicationinsights-config.md) |
+| basicExceptionBrowser,<br/>clientPerformance,<br/>megtekintése |[Böngésző JavaScript](./javascript.md) |
+| performanceCounter |[Teljesítmény](./configuration-with-applicationinsights-config.md) |
+| remoteDependencyFailed |[Függőség](./configuration-with-applicationinsights-config.md) |
+| kérelem<br/>requestFailed |[Kiszolgálói kérelem](./configuration-with-applicationinsights-config.md) |
 
 ## <a name="webhooks"></a>Webhookok
-[A riasztásra adott válasz automatizálható](../../azure-monitor/platform/alerts-webhooks.md). Az Azure meghívja a választott webcímet, ha riasztást vált ki.
+[A riasztásra adott válasz automatizálható](../platform/alerts-webhooks.md). Az Azure meghívja a választott webcímet, ha riasztást vált ki.
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 * [Application Insights konfigurálására szolgáló parancsfájl](./create-new-resource.md#creating-a-resource-automatically)
 * [Application Insights-és webes tesztelési erőforrások létrehozása sablonokból](powershell.md)
 * [Összekapcsolási Microsoft Azure Diagnostics automatizálása Application Insights](powershell-azure-diagnostics.md)
-* [A riasztásra adott válasz automatizálása](../../azure-monitor/platform/alerts-webhooks.md)
+* [a riasztásra adott válasz automatizálása](../platform/alerts-webhooks.md)
+

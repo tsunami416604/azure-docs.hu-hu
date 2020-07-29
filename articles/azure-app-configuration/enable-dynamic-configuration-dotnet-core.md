@@ -14,16 +14,16 @@ ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 07/01/2019
 ms.author: abarora
-ms.openlocfilehash: af9d92c47982a58530a42a4ecdd41032196a9da9
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: fb55b5669c1be43b208a8d86b1676f163015f76f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85856486"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87278352"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-net-core-app"></a>Oktatóanyag: dinamikus konfiguráció használata .NET Core-alkalmazásokban
 
-Az App Configuration .NET Core ügyféloldali függvénytár támogatja az igény szerinti konfigurációs beállítások frissítését anélkül, hogy újra kellene indítani az alkalmazást. Ezt úgy teheti meg, hogy először beolvassa a `IConfigurationRefresher` konfigurációs szolgáltató beállításai közül a példányát, majd a `Refresh` kódban bárhol meghívja a példányt.
+Az App Configuration .NET Core ügyféloldali függvénytár támogatja az igény szerinti konfigurációs beállítások frissítését anélkül, hogy újra kellene indítani az alkalmazást. Ezt úgy teheti meg, hogy először beolvassa a `IConfigurationRefresher` konfigurációs szolgáltató beállításai közül a példányát, majd a `TryRefreshAsync` kódban bárhol meghívja a példányt.
 
 A beállítások frissítésének megtartásához és a konfigurációs tárolóhoz való túl sok hívás elkerüléséhez minden beállításhoz gyorsítótárat kell használni. Amíg a beállítás gyorsítótárazott értéke lejárt, a frissítési művelet nem frissíti az értéket, még akkor is, ha az érték módosult a konfigurációs tárolóban. Az egyes kérések alapértelmezett lejárati ideje 30 másodperc, de szükség esetén felül lehet bírálni.
 
@@ -45,7 +45,7 @@ Az oktatóanyag elvégzéséhez telepítse a [.net Core SDK](https://dotnet.micr
 
 ## <a name="reload-data-from-app-configuration"></a>Adatok újratöltése az alkalmazás konfigurációjától
 
-Nyissa meg a *program.cs* , és frissítse a fájlt, és adjon hozzá egy hivatkozást a `System.Threading.Tasks` névtérhez, és adja meg a frissítési konfigurációt a `AddAzureAppConfiguration` metódusban, valamint a manuális frissítést a `Refresh` metódus használatával.
+Nyissa meg a *program.cs* , és frissítse a fájlt, és adjon hozzá egy hivatkozást a `System.Threading.Tasks` névtérhez, és adja meg a frissítési konfigurációt a `AddAzureAppConfiguration` metódusban, valamint a manuális frissítést a `TryRefreshAsync` metódus használatával.
 
 ```csharp
 using System;
@@ -84,14 +84,14 @@ class Program
         // Wait for the user to press Enter
         Console.ReadLine();
 
-        await _refresher.Refresh();
+        await _refresher.TryRefreshAsync();
         Console.WriteLine(_configuration["TestApp:Settings:Message"] ?? "Hello world!");
     }
 }
 }
 ```
 
-A `ConfigureRefresh` metódussal adhatja meg azokat a beállításokat, amelyeket a konfigurációs adatainak az alkalmazás konfigurációs tárolójával való frissítéséhez használ a frissítési művelet elindításakor. A metódus `IConfigurationRefresher` Meghívási metódusával lekérhető egy példány `GetRefresher` `AddAzureAppConfiguration` , és az `Refresh` adott példány metódusa használható a kód bármely pontjára a frissítési művelet elindításához.
+A `ConfigureRefresh` metódussal adhatja meg azokat a beállításokat, amelyeket a konfigurációs adatainak az alkalmazás konfigurációs tárolójával való frissítéséhez használ a frissítési művelet elindításakor. A metódus `IConfigurationRefresher` Meghívási metódusával lekérhető egy példány `GetRefresher` `AddAzureAppConfiguration` , és az `TryRefreshAsync` adott példány metódusa használható a kód bármely pontjára a frissítési művelet elindításához.
     
 > [!NOTE]
 > A konfigurációs beállítás alapértelmezett gyorsítótár-lejárati ideje 30 másodperc, de felülbírálható úgy, hogy meghívja a metódust az `SetCacheExpiration` inicializálási beállítások argumentumként megadott metódusban `ConfigureRefresh` .
@@ -145,7 +145,7 @@ A `ConfigureRefresh` metódussal adhatja meg azokat a beállításokat, amelyeke
     > [!NOTE]
     > Mivel a gyorsítótár lejárati ideje 10 másodpercre van állítva a `SetCacheExpiration` metódusnak a frissítési művelethez való megadása során, a rendszer csak akkor frissíti a konfigurációs beállítás értékét, ha az adott beállítás utolsó frissítése óta legalább 10 másodperc eltelt.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 

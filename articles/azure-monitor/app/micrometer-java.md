@@ -3,14 +3,15 @@ title: A Mikrométer használata az Azure Application Insights Java SDK-val
 description: Részletes útmutató a Mikrométerek használatáról Application Insights Spring boot-és nem tavaszi rendszerindító alkalmazásaival.
 ms.topic: conceptual
 author: lgayhardt
+ms.custom: devx-track-java
 ms.author: lagayhar
 ms.date: 11/01/2018
-ms.openlocfilehash: da75498d6e4616b287ddb11c69df2469baaf2655
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2fbdf4e267e0f9a479a89d6f31e72f09d9e11bb0
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87067630"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322567"
 ---
 # <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk"></a>A Mikrométer használata az Azure Application Insights Java SDK-val
 A Mikrométer alkalmazás-figyelési mérőszámai a JVM-alapú alkalmazás kódjára vonatkoznak, és lehetővé teszi az adatok exportálását kedvenc megfigyelési rendszerbe. Ez a cikk bemutatja, hogyan használható a Mikrométer a Application Insights a Spring boot és a nem rugós rendszerindítási alkalmazásokhoz.
@@ -20,7 +21,7 @@ Adja hozzá a következő függőségeket a pom.xml vagy Build. gradle fájlhoz:
 * [Application Insights Spring-boot-Starter](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/azure-application-insights-spring-boot-starter) 2.5.0 vagy újabb verzió
 * Mikrométer Azure Registry 1.1.0 vagy újabb
 * A [mikrométer rugó örökölt](https://micrometer.io/docs/ref/spring/1.5) 1.1.0-es vagy újabb (ez a backports az automatikus konfigurációs kód a Spring Framework-ben).
-* [ApplicationInsights erőforrás](../../azure-monitor/app/create-new-resource.md )
+* [ApplicationInsights erőforrás](./create-new-resource.md)
 
 Lépések
 
@@ -58,7 +59,7 @@ Adja hozzá a következő függőségeket a pom.xml vagy Build. gradle fájlhoz:
 
 * Application Insights Spring-boot-Starter 2.1.2 vagy újabb verzió
 * Azure-Spring-boot-metrikák-kezdő 2.0.7 vagy újabb
-* [Erőforrás Application Insights](../../azure-monitor/app/create-new-resource.md )
+* [Erőforrás Application Insights](./create-new-resource.md)
 
 Lépések:
 
@@ -117,7 +118,7 @@ Adja hozzá a következő függőségeket a pom.xml vagy Build. gradle fájlhoz:
 
 * Application Insights web Auto 2.5.0 vagy újabb verzió
 * Mikrométer Azure Registry 1.1.0 vagy újabb
-* [Erőforrás Application Insights](../../azure-monitor/app/create-new-resource.md )
+* [Erőforrás Application Insights](./create-new-resource.md)
 
 Lépések:
 
@@ -272,3 +273,4 @@ Adja hozzá a következő kötési kódot a konfigurációs fájlhoz:
 
 * A mikrométersel kapcsolatos további tudnivalókért tekintse meg a hivatalos [mikrométer dokumentációját](https://micrometer.io/docs).
 * A Spring on Azure-ról az Azure-beli hivatalos [tavaszi dokumentációban](/java/azure/spring-framework/?view=azure-java-stable)olvashat bővebben.
+

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/09/2020
 ms.reviewer: andalmia
 ms.author: banders
-ms.openlocfilehash: 7fac201de2fd623058eb5771e194ae697f879ee8
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 20175e252d009620585e20cf76cdb634549b4f1d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224162"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323910"
 ---
 # <a name="programmatically-create-azure-subscriptions-preview"></a>Azure-előfizetések programozott létrehozása (előzetes verzió)
 
@@ -160,7 +160,7 @@ A válaszban a fejléc részeként `Location` egy URL-címet kap vissza, amelyet
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Először telepítse ezt az előzetes verziójú modult a futtatásával `Install-Module Az.Subscription -AllowPrerelease` . A `-AllowPrerelease` működésének biztosításához telepítse a PowerShellGet legújabb verzióját a [Get PowerShellGet modulból](/powershell/scripting/gallery/installing-psget).
+A parancsmagot tartalmazó modul legújabb verziójának telepítéséhez futtassa a `New-AzSubscription` parancsot `Install-Module Az.Subscription` . A PowerShellGet legújabb verziójának telepítéséhez tekintse meg a [PowerShellGet-modul beolvasása](/powershell/scripting/gallery/installing-psget)című témakört.
 
 Futtassa a [New-AzSubscription](/powershell/module/az.subscription) parancsot az alábbi parancsban, és cserélje le az `<enrollmentAccountObjectId>` `ObjectId` adatokat az első lépésben ( ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx``` ). Ha meg szeretné adni a tulajdonosokat, ismerkedjen meg [a felhasználói objektumok azonosítóinak beolvasásával](grant-access-to-create-subscription.md#userObjectId).
 
@@ -177,7 +177,8 @@ New-AzSubscription -OfferType MS-AZR-0017P -Name "Dev Team Subscription" -Enroll
 | `OwnerSignInName`    | Nem       | Sztring | Annak a felhasználónak az e-mail-címe, amelyet RBAC-tulajdonosként szeretne hozzáadni az előfizetéshez a létrehozásakor. Ezt a paramétert használhatja a helyett `OwnerObjectId` .|
 | `OwnerApplicationId` | Nem       | Sztring | Az előfizetésben a létrehozáskor RBAC-tulajdonosként hozzáadni kívánt egyszerű szolgáltatásnév alkalmazás-azonosítója. Ezt a paramétert használhatja a helyett `OwnerObjectId` . A paraméter használatakor az egyszerű szolgáltatásnak [olvasási hozzáféréssel kell rendelkeznie a címtárhoz](/powershell/azure/active-directory/signing-in-service-principal?view=azureadps-2.0#give-the-service-principal-reader-access-to-the-current-tenant-get-azureaddirectoryrole).|
 
-Az összes paraméter teljes listájának megtekintéséhez lásd: [New-AzSubscription](/powershell/module/az.subscription).
+Az összes paraméter teljes listájának megtekintéséhez lásd: [New-AzSubscription](/powershell/module/az.subscription/New-AzSubscription).
+
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 

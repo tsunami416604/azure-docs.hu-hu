@@ -8,11 +8,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 01/18/2019
 ms.author: junhan
-ms.openlocfilehash: 31a5d55d1067b9dd946c1667118d0bde5ee3d59e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom:
+- 'Role: Cloud Development'
+ms.openlocfilehash: b9d8f0c2a573ba1749b414a389cd7181ddd5f95a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81682504"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321683"
 ---
 # <a name="use-azure-iot-tools-for-visual-studio-code-to-send-and-receive-messages-between-your-device-and-iot-hub"></a>A Visual Studio Code-hoz készült Azure IoT Tools használata üzenetek küldéséhez és fogadásához az eszköz és a IoT Hub között
 
@@ -32,7 +35,7 @@ Megtudhatja, hogyan figyelheti az eszközről a felhőbe irányuló üzenetek é
 
 * A felhőből az eszközre irányuló üzenetek küldéséhez használja a Visual Studio Code-hoz készült Azure IoT Tools eszközt.
 
-## <a name="what-you-need"></a>Mi szükséges
+## <a name="what-you-need"></a>Amire szükség lesz
 
 * Aktív Azure-előfizetés.
 

@@ -1,25 +1,25 @@
 ---
-title: '3. Oktatóanyag: hitelkockázat-modell üzembe helyezése'
-titleSuffix: Azure Machine Learning Studio (classic)
+title: 'ML Studio (klasszikus) oktatóanyag 3: kredit kockázati modellek üzembe helyezése – Azure'
 description: Részletes oktatóanyag, amely bemutatja, hogyan hozhat létre a hitelkockázat értékelésére szolgáló prediktív elemzési megoldást Azure Machine Learning Studio (klasszikus). Ez az oktatóanyag egy háromrészes oktatóanyag-sorozat harmadik része. Bemutatja, hogyan helyezhet üzembe egy modellt webszolgáltatásként.
 keywords: hitelkockázat, prediktív elemzési megoldás, kockázatértékelés, üzembe helyezés, webszolgáltatás
-author: sdgilley
-ms.author: sgilley
+author: likebupt
+ms.author: keli19
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
-ms.date: 02/11/2019
-ms.openlocfilehash: 9fb0b59374edf322e5e2221b90e912ee2c665bac
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 07/27/2020
+ms.openlocfilehash: 21b2308fb931d1c0932184dcc7946e99d3551b13
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79204153"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324862"
 ---
 # <a name="tutorial-3-deploy-credit-risk-model---azure-machine-learning-studio-classic"></a>3. Oktatóanyag: kredit kockázati modell üzembe helyezése – Azure Machine Learning Studio (klasszikus)
 
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+**a következőkre vonatkozik:** ![ nincs](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine learning](../overview-what-is-azure-ml.md) ![ Igen ](../../../includes/media/aml-applies-to-skus/yes.png) Machine learning Studio (klasszikus) 
+
 
 Ez az oktatóanyag részletesen bemutatja a prediktív elemzési megoldások fejlesztésének folyamatát. Egy egyszerű modellt fejleszt Machine Learning Studio (klasszikus).  Ezután Azure Machine Learning webszolgáltatásként helyezheti üzembe a modellt.  Ez a központilag telepített modell új adatelemzést végezhet az előrejelzésekhez. Ez az oktatóanyag **egy háromrészes oktatóanyag-sorozat harmadik**része.
 
@@ -153,7 +153,7 @@ A kísérletből származtatott új webszolgáltatás üzembe helyezése:
 
 1. A díjszabáshoz kiválaszthat egy meglévő árképzési csomagot, vagy kiválaszthatja az "új létrehozása" **lehetőséget, és**megadhatja az új terv nevét, és kiválaszthatja a havi csomag beállítást. A csomag alapértelmezett értéke az alapértelmezett régió csomagjai, a webszolgáltatás pedig az adott régióban van üzembe helyezve.
 
-1. Kattintson a **telepítés**elemre.
+1. Kattintson az **Üzembe helyezés** gombra.
 
 Néhány perc elteltével megnyílik a webszolgáltatás rövid **útmutató lapja.**
 
@@ -227,7 +227,10 @@ Az oktatóanyag előző lépésében üzembe helyezett egy webszolgáltatást, a
 A webszolgáltatás egy Azure-webszolgáltatás, amely a REST API-k használatával képes fogadni és visszaadni az adatokhoz a következő két módszer egyikét:  
 
 * **Kérés/válasz** – a felhasználó egy vagy több hitelkeretet küld a szolgáltatásnak egy HTTP protokoll használatával, és a szolgáltatás egy vagy több eredménnyel válaszol.
-* **Kötegelt végrehajtás** – a felhasználó egy vagy több jóváírási adatokat tárol egy Azure-blobban, majd elküldi a blob helyét a szolgáltatásnak. A szolgáltatás a bemeneti blobban lévő összes sornyi adatot megjeleníti, az eredményeket egy másik blobban tárolja, és visszaadja a tároló URL-címét.  
+* **Kötegelt végrehajtás** – a felhasználó egy vagy több jóváírási adatokat tárol egy Azure-blobban, majd elküldi a blob helyét a szolgáltatásnak. A szolgáltatás a bemeneti blobban lévő összes sornyi adatot megjeleníti, az eredményeket egy másik blobban tárolja, és visszaadja a tároló URL-címét. 
+
+> [!NOTE]
+> A Studio (klasszikus) szolgáltatás oszlopainak neve **megkülönbözteti a kis-és nagybetűket**. Ügyeljen arra, hogy a webszolgáltatás meghívásához használt bemeneti adatok azonos oszlopnevek legyenek, mint a betanítási adatkészletben.
 
 További információ a webszolgáltatás eléréséről és használatáról: [Azure Machine learning webszolgáltatások felhasználása webalkalmazás-sablonnal](/azure/machine-learning/studio/consume-web-services).
 

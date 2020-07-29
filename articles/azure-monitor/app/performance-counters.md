@@ -3,12 +3,12 @@ title: Teljesítményszámlálók a Application Insightsban | Microsoft Docs
 description: A rendszer és az egyéni .NET-teljesítményszámlálók figyelése Application Insightsban.
 ms.topic: conceptual
 ms.date: 12/13/2018
-ms.openlocfilehash: e60663d9e767db020fc93eba1f4c1c6babb32294
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: eb5e20403cc826619eb1f67de2fc4179e17b5aa4
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87024418"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322516"
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Rendszerteljesítmény-számlálók a Application Insightsban
 
@@ -131,7 +131,7 @@ A többi telemetria hasonlóan a **performanceCounters** is tartalmaz egy oszlop
 
 * A *kivételek aránya* a rendszer teljesítményszámlálói. A CLR megszámlálja az összes kezelt és nem kezelt kivételt, és egy mintavételi intervallumban osztja el az összeget az intervallum hosszával. A Application Insights SDK ezt az eredményt gyűjti, és elküldi a portálnak.
 
-* A *kivételek* a diagram mintavételi intervallumában a portál által fogadott TrackException-jelentések száma. Csak azokat a kezelt kivételeket tartalmazza, amelyekben írásos TrackException-hívás szerepel a kódban, és nem tartalmazza az összes nem [kezelt kivételt](../../azure-monitor/app/asp-net-exceptions.md). 
+* A *kivételek* a diagram mintavételi intervallumában a portál által fogadott TrackException-jelentések száma. Csak azokat a kezelt kivételeket tartalmazza, amelyekben írásos TrackException-hívás szerepel a kódban, és nem tartalmazza az összes nem [kezelt kivételt](./asp-net-exceptions.md). 
 
 ## <a name="performance-counters-for-applications-running-in-azure-web-apps"></a>Teljesítményszámlálók az Azure-ban futó alkalmazások teljesítményszámlálói Web Apps
 
@@ -147,9 +147,10 @@ A teljesítményszámlálók támogatása ASP.NET Core korlátozott:
 * A 2.8.0 és újabb verziójú SDK-verziók támogatják a CPU-/memória-számlálót a Linux rendszerben. A Linux nem támogatja a többi számlálót. A Linux-(és más nem Windows-környezetekben található) rendszerszámlálók használatának ajánlott módja a [EventCounters](eventcounters.md) használata.
 
 ## <a name="alerts"></a>Riasztások
-Más mérőszámokhoz hasonlóan [riasztást is beállíthat](../../azure-monitor/platform/alerts-log.md) , amely figyelmezteti, ha a teljesítményszámláló a megadott korláton kívül esik. Nyissa meg a riasztások ablaktáblát, és kattintson a riasztás hozzáadása lehetőségre.
+Más mérőszámokhoz hasonlóan [riasztást is beállíthat](../platform/alerts-log.md) , amely figyelmezteti, ha a teljesítményszámláló a megadott korláton kívül esik. Nyissa meg a riasztások ablaktáblát, és kattintson a riasztás hozzáadása lehetőségre.
 
 ## <a name="next-steps"></a><a name="next"></a>További lépések
 
-* [Függőségek nyomon követése](../../azure-monitor/app/asp-net-dependencies.md)
-* [Kivétel követése](../../azure-monitor/app/asp-net-exceptions.md)
+* [Függőségek nyomon követése](./asp-net-dependencies.md)
+* [Kivétel követése](./asp-net-exceptions.md)
+

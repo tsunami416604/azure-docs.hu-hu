@@ -4,15 +4,15 @@ description: API a megadott ajánlat közzétételéhez.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-author: dsindona
-ms.author: dsindona
+author: mingshen-ms
+ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 1dede788242f858468c00e9f30f70ebdbe60cd1b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 60e75aff79913896bdf1dcdc8754b6ecf5620b06
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086404"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87272045"
 ---
 # <a name="publish-an-offer"></a>Ajánlat közzététele
 
@@ -46,7 +46,7 @@ Elindítja a közzétételi folyamatot a megadott ajánlathoz. Ez a hívás hoss
 ## <a name="body-example"></a>Példa szövegtörzsre
 ------------
 
-### <a name="request"></a>Kérelem
+### <a name="request"></a>Kérés
 
 ``` json
   { 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 877d1442c346b321562cb396a77224a6b40c7df2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7b7915e1b7779c4d0359b9ac190574c43a624cbe
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087237"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87276397"
 ---
 # <a name="azure-importexport-system-requirements"></a>Az Azure Import/Export rendszerkövetelményei
 
@@ -50,7 +50,7 @@ A Storage-fiókokkal kapcsolatos további információkért lásd: az [Azure Sto
 Az egyes feladatokhoz csak egy Storage-fiókból vagy azokból lehet adatátvitelt alkalmazni. Ez azt jelenti, hogy egyetlen importálási/exportálási feladattípus nem terjedhet több Storage-fiókra. További információ az új Storage-fiókok létrehozásáról: [Storage-fiók létrehozása](storage-account-create.md).
 
 > [!IMPORTANT]
-> Azon tárolási fiókok esetében, amelyeken engedélyezve van a [Virtual Network szolgáltatás-végpontok](../../virtual-network/virtual-network-service-endpoints-overview.md)   szolgáltatás, a **megbízható Microsoft-szolgáltatások engedélyezése...** beállítással [engedélyezheti az importálási/exportálási](/storage-network-security.md) szolgáltatást az Azure-ba irányuló adatok importálásához/exportálásához.
+> Azon tárolási fiókok esetében, amelyeken engedélyezve van a [Virtual Network szolgáltatás-végpontok](../../virtual-network/virtual-network-service-endpoints-overview.md)   szolgáltatás, a **megbízható Microsoft-szolgáltatások engedélyezése...** beállítással [engedélyezheti az importálási/exportálási](/azure/storage/common/storage-network-security) szolgáltatást az Azure-ba irányuló adatok importálásához/exportálásához.
 
 ## <a name="supported-storage-types"></a>Támogatott tárolótípusok
 

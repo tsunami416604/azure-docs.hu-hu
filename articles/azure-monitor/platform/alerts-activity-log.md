@@ -4,12 +4,12 @@ description: Hozzon létre műveletnapló-riasztásokat a Azure Portal, egy Azur
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 06/25/2019
-ms.openlocfilehash: 5019c3111a6e04dd9b7ba6ecbb9f62c7969075ed
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b202e3d47b98c5e395b3a8b525b9b8c0a04c0f76
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86516056"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322414"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-by-using-azure-monitor"></a>Műveletnapló-riasztások létrehozása, megtekintése és kezelése Azure Monitor használatával  
 
@@ -92,7 +92,7 @@ Használja az alábbi eljárást.
     - **Leírás**: az új riasztási szabály leírása.
     - **Riasztás mentése az erőforráscsoporthoz**: válassza ki azt az erőforráscsoportot, amelybe menteni szeretné ezt az új szabályt.
 
-5. A **Művelettípus**alatt, a legördülő menüből válassza ki azt a műveleti csoportot, amelyet hozzá szeretne rendelni ehhez az új riasztási szabályhoz. Vagy [hozzon létre egy új műveleti csoportot](../../azure-monitor/platform/action-groups.md) , és rendelje hozzá az új szabályhoz. Új csoport létrehozásához válassza az **+ új csoport**lehetőséget.
+5. A **Művelettípus**alatt, a legördülő menüből válassza ki azt a műveleti csoportot, amelyet hozzá szeretne rendelni ehhez az új riasztási szabályhoz. Vagy [hozzon létre egy új műveleti csoportot](./action-groups.md) , és rendelje hozzá az új szabályhoz. Új csoport létrehozásához válassza az **+ új csoport**lehetőséget.
 
 6. Ha a létrehozás után engedélyezni szeretné a szabályokat, válassza az **Igen** lehetőséget a **szabály engedélyezése a létrehozáskor** beállításnál.
 7. Válassza a **Riasztási szabály létrehozása** lehetőséget.
@@ -283,9 +283,10 @@ Az egyik műveletnapló riasztási szabály erőforrásának lekéréséhez hasz
 )paranccsal. Ha meg szeretné tekinteni az összes műveletnapló riasztási szabályának erőforrását egy erőforráscsoporthoz, használja az [az monitor Activity-log riasztások listáját](/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-list).
 A műveletnapló riasztási szabályának erőforrásai eltávolíthatók az Azure CLI-paranccsal az [monitor Activity-log riasztás törlése](/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-delete)lehetőséggel.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- További információ a [tevékenységi naplók webhook-sémájáról](../../azure-monitor/platform/activity-log-alerts-webhook.md).
-- Olvassa el [a Tevékenységnaplók áttekintését](../../azure-monitor/platform/activity-log-alerts.md).
-- További információ a [műveleti csoportokról](../../azure-monitor/platform/action-groups.md).  
+- További információ a [tevékenységi naplók webhook-sémájáról](./activity-log-alerts-webhook.md).
+- Olvassa el [a Tevékenységnaplók áttekintését](./activity-log-alerts.md).
+- További információ a [műveleti csoportokról](./action-groups.md).  
 - Tudnivalók a [szolgáltatás állapotával kapcsolatos értesítésekről](../../service-health/service-notifications.md).
+

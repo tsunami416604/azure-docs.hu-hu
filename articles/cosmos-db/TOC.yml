@@ -574,6 +574,9 @@
           href: role-based-access-control.md
         - href: cosmos-db-advanced-threat-protection.md
           name: Speciális fenyegetésvédelem
+        - name: Az Azure Policy biztonsági vezérlői
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
         - name: Biztonsági alapkonfiguráció
           href: security-baseline.md
     - name: Alkalmasság vállalati használatra
@@ -988,7 +991,7 @@
           href: how-to-manage-indexing-policy.md
         - name: Egyedi kulcsok meghatározása
           href: how-to-define-unique-keys.md
-    - name: Teljesítmény és hibaelhárítás
+    - name: Teljesítmény
       items:
         - name: Lekérdezés
           items:
@@ -996,28 +999,20 @@
               href: profile-sql-api-query.md
             - name: Lekérdezési teljesítmény hangolása
               href: sql-api-query-metrics.md
-            - name: Lekérdezési teljesítmény hibaelhárítása
-              href: troubleshoot-query-performance.md
         - name: .NET
           items:
             - name: Teljesítménnyel kapcsolatos tippek .NET SDK v3-hoz
               href: performance-tips-dotnet-sdk-v3-sql.md
             - name: Teljesítménnyel kapcsolatos tippek .NET SDK v2-höz
               href: performance-tips.md
-            - name: .NET SDK-hibák elhárítása
-              href: troubleshoot-dot-net-sdk.md
         - name: Java
           items:
             - name: Teljesítménnyel kapcsolatos tippek Java SDK v4-hez
               href: performance-tips-java-sdk-v4-sql.md
-            - name: Java SDK v4-hibák elhárítása
-              href: troubleshoot-java-sdk-v4-sql.md
             - name: Async Java SDK v2
               href: performance-tips-async-java.md
             - name: Sync Java SDK v2
               href: performance-tips-java.md
-            - name: Hibaelhárítás – Async Java SDK v2
-              href: troubleshoot-java-async-sdk.md
         - name: Teljesítményteszt – mintaalkalmazás
           href: performance-testing.md
         - name: Költséghatékony írások és olvasások
@@ -1026,6 +1021,36 @@
       items:
         - name: Migrálás Java V4 SDK-ba
           href: migrate-java-v4-sdk.md
+    - name: Hibaelhárítás
+      items:
+        - name: Gyakori hibák
+          items:
+            - name: Lekérdezési teljesítmény hibaelhárítása
+              href: troubleshoot-query-performance.md
+            - name: Szolgáltatáskérések időtúllépésének hibaelhárítása
+              href: troubleshoot-request-timeout.md
+            - name: Hibaelhárítás – Túl magas kérelemmennyiség
+              href: troubleshoot-request-rate-too-large.md
+            - name: Hibaelhárítás – Nem található
+              href: troubleshoot-not-found.md
+            - name: Hibaelhárítás – Nem engedélyezett
+              href: troubleshoot-unauthorized.md
+        - name: .NET
+          items:
+            - name: Általános hibaelhárítás – .NET SDK
+              href: troubleshoot-dot-net-sdk.md
+            - name: Hibaelhárítás – A kérelem fejléce túl nagy
+              href: troubleshoot-dot-net-sdk-request-header-too-large.md
+            - name: Hibaelhárítás – Kérelem időtúllépése
+              href: troubleshoot-dot-net-sdk-request-timeout.md
+            - name: Hibaelhárítás – A szolgáltatás nem érhető el
+              href: troubleshoot-service-unavailable.md
+        - name: .Java
+          items:
+            - name: Java SDK v4-hibák elhárítása
+              href: troubleshoot-java-sdk-v4-sql.md
+            - name: Hibaelhárítás – Async Java SDK v2
+              href: troubleshoot-java-async-sdk.md
     - name: Változáscsatorna
       items:
         - name: Az Azure Cosmos DB eseményindító-naplói

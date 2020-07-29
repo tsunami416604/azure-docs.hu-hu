@@ -6,18 +6,18 @@ author: lzchen
 ms.author: lechen
 ms.date: 10/15/2019
 ms.custom: tracking-python
-ms.openlocfilehash: c9d69c0f39d9cad52dc86c3ab33d202c88131ab0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6eae11e2157904b47582f78a601c8d2900e61247
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84753207"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324590"
 ---
 # <a name="track-incoming-requests-with-opencensus-python"></a>A beérkező kérelmek nyomon követése a OpenCensus Pythonban
 
 A beérkező kérések adatai a OpenCensus Python és annak különböző integrációi használatával gyűjthetők össze. Nyomon követheti a beérkező kérések adatait, amelyeket a népszerű webes keretrendszerekre épülő webalkalmazásoknak küldenek `django` `flask` `pyramid` . Ezután a rendszer elküldi az adat Application Insights Azure Monitor alatt `requests` telemetria.
 
-Először is a Python-alkalmazást a legújabb [OpenCensus PYTHON SDK](../../azure-monitor/app/opencensus-python.md)-val alakíthatja ki.
+Először is a Python-alkalmazást a legújabb [OpenCensus PYTHON SDK](./opencensus-python.md)-val alakíthatja ki.
 
 ## <a name="tracking-django-applications"></a>Django-alkalmazások nyomon követése
 
@@ -119,8 +119,9 @@ Először is a Python-alkalmazást a legújabb [OpenCensus PYTHON SDK](../../azu
 
 ## <a name="next-steps"></a>További lépések
 
-* [Alkalmazástérkép](../../azure-monitor/app/app-map.md)
-* [Rendelkezésre állás](../../azure-monitor/app/monitor-web-app-availability.md)
-* [Search](../../azure-monitor/app/diagnostic-search.md)
-* [Log (Analytics) lekérdezés](../../azure-monitor/log-query/log-query-overview.md)
-* [Tranzakció diagnosztikája](../../azure-monitor/app/transaction-diagnostics.md)
+* [Alkalmazástérkép](./app-map.md)
+* [Rendelkezésre állás](./monitor-web-app-availability.md)
+* [Search](./diagnostic-search.md)
+* [Log (Analytics) lekérdezés](../log-query/log-query-overview.md)
+* [Tranzakció diagnosztikája](./transaction-diagnostics.md)
+

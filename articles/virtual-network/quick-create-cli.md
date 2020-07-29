@@ -1,7 +1,7 @@
 ---
 title: Virtuális hálózat létrehozása – rövid útmutató – Azure CLI
 titlesuffix: Azure Virtual Network
-description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre virtuális hálózatot az Azure CLI használatával. A virtuális hálózatok lehetővé teszik az Azure-erőforrások, például a virtuális gépek, a magánjellegű kommunikációt és az internetet.
+description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre virtuális hálózatot az Azure CLI használatával. A virtuális hálózatok lehetővé teszik az Azure-erőforrások kommunikációját egymással és az internettel.
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 01/22/2019
 ms.author: kumud
-ms.openlocfilehash: 2a4c63aeaa303692fa0f2d115a3df0d80cfab0b1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ed535c76ae3c456c8aa7d2e14301b9cb9cb288be
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80235193"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283180"
 ---
 # <a name="quickstart-create-a-virtual-network-using-the-azure-cli"></a>Gyors útmutató: Virtuális hálózat létrehozása az Azure CLI-vel
 
@@ -28,7 +28,7 @@ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](h
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Ha az Azure CLI helyi telepítését és használatát választja, akkor ehhez a rövid útmutatóhoz az Azure CLI 2.0.28 verziójára vagy újabb verzióját kell használnia. A telepített verziójának megkereséséhez `az --version`futtassa a parancsot. További információ: az [Azure CLI telepítése](/cli/azure/install-azure-cli) a telepítéshez vagy a frissítéshez.
+Ha az Azure CLI helyi telepítését és használatát választja, akkor ehhez a rövid útmutatóhoz az Azure CLI 2.0.28 verziójára vagy újabb verzióját kell használnia. A telepített verziójának megkereséséhez futtassa a parancsot `az --version` . További információ: az [Azure CLI telepítése](/cli/azure/install-azure-cli) a telepítéshez vagy a frissítéshez.
 
 ## <a name="create-a-resource-group-and-a-virtual-network"></a>Erőforráscsoport és virtuális hálózat létrehozása
 
@@ -66,7 +66,7 @@ az vm create \
 
 ### <a name="create-the-second-vm"></a>A második virtuális gép létrehozása
 
-Mivel az előző lépésben `--no-wait` használt beállítást használta, a *myVm2*nevű második virtuális gépet is létrehozhatja.
+Mivel az `--no-wait` előző lépésben használt beállítást használta, a *myVm2*nevű második virtuális gépet is létrehozhatja.
 
 ```azurecli-interactive
 az vm create \
@@ -98,7 +98,7 @@ Jegyezze fel a **publicIpAddress** értékét. Ezt a lakcímet fogja használni 
 
 ## <a name="connect-to-a-vm-from-the-internet"></a>Kapcsolódás virtuális géphez az internetről
 
-Ebben a parancsban cserélje `<publicIpAddress>` le a parancsot a *myVm2* virtuális gép nyilvános IP-címére:
+Ebben a parancsban cserélje le a parancsot a `<publicIpAddress>` *myVm2* virtuális gép nyilvános IP-címére:
 
 ```bash
 ssh <publicIpAddress>

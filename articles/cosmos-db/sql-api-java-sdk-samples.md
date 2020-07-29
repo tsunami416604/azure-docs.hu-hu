@@ -6,13 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 05/20/2020
+ms.custom: devx-track-java
 ms.author: anfeldma
-ms.openlocfilehash: 6e52cf9add10191554fb1bb5393773f316ded539
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.openlocfilehash: 4f61dcfa37547fe46a582a4a7ebb28ac68fe6c74
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84666859"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87308678"
 ---
 # <a name="azure-cosmos-db-sql-api-java-sdk-v4-examples"></a>Azure Cosmos DB SQL API: Java SDK v4 példák
 
@@ -102,7 +103,7 @@ ahol a *sample. szinkron. MainClass* lehet
 ## <a name="database-examples"></a>Adatbázis-példák
 Az [adatbázis szifilisz-mintáinak](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/databasecrud/sync/DatabaseCRUDQuickstart.java) fájlja a következő feladatok elvégzését mutatja be. Ha az alábbi minták futtatása előtt szeretne többet megtudni az Azure Cosmos-adatbázisokról, olvassa el a következő témakört: [adatbázisok, tárolók és elemek](databases-containers-items.md) fogalmi cikkének használata. 
 
-| Tevékenység | API-referencia |
+| Feladat | API-referencia |
 | --- | --- |
 | [Adatbázis létrehozása](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/databasecrud/sync/DatabaseCRUDQuickstart.java#L77-L85) | CosmosClient. createDatabaseIfNotExists |
 | [Adatbázis beolvasása azonosító alapján](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/databasecrud/sync/DatabaseCRUDQuickstart.java#L88-L95) | CosmosClient. getDatabase |
@@ -112,7 +113,7 @@ Az [adatbázis szifilisz-mintáinak](https://github.com/Azure-Samples/azure-cosm
 ## <a name="collection-examples"></a>Gyűjtemény-példák
 A [gyűjteményi szifilisz mintáinak](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/CollectionCrudSamples.java) fájlja a következő feladatok elvégzését mutatja be. Ha az alábbi minták futtatása előtt szeretne többet megtudni az Azure Cosmos-gyűjteményekről, tekintse meg a következő témakört: [adatbázisok, tárolók és elemek](databases-containers-items.md) fogalmi cikkének használata.
 
-| Tevékenység | API-referencia |
+| Feladat | API-referencia |
 | --- | --- |
 | [Gyűjtemény létrehozása](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/containercrud/sync/ContainerCRUDQuickstart.java#L97-L112) | CosmosDatabase. Createcontainerifnotexists függvényt |
 | [Gyűjtemény konfigurált teljesítményének módosítása](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/containercrud/sync/ContainerCRUDQuickstart.java#L115-L123) | CosmosContainer.replaceProvisionedThroughput |
@@ -126,13 +127,13 @@ Ha többet szeretne megtudni a minták futtatása előtt, tekintse meg ezeket az
 
 Az [autoscale Database szifilisz Samples](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/autoscaledatabasecrud/sync/AutoscaleDatabaseCRUDQuickstart.java) fájl az alábbi feladatok végrehajtását mutatja be.
 
-| Tevékenység | API-referencia |
+| Feladat | API-referencia |
 | --- | --- |
 | [Adatbázis létrehozása a megadott autoscale Max átviteli sebességgel](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/autoscaledatabasecrud/sync/AutoscaleDatabaseCRUDQuickstart.java#L78-L89) | CosmosClient. createDatabase<br>ThroughputProperties.createAutoscaledThroughput |
 
 Az [autoscale Collection szifilisz-minták](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/autoscalecontainercrud/sync/AutoscaleContainerCRUDQuickstart.java) fájlja a következő feladatok elvégzését mutatja be. 
 
-| Tevékenység | API-referencia |
+| Feladat | API-referencia |
 | --- | --- |
 | [Gyűjtemény létrehozása a megadott autoscale Max átviteli sebességgel](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/autoscalecontainercrud/sync/AutoscaleContainerCRUDQuickstart.java#L97-L110) | CosmosDatabase. Createcontainerifnotexists függvényt |
 | [Egy gyűjtemény konfigurált autoskálázási maximális átviteli sebességének módosítása](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/autoscalecontainercrud/sync/AutoscaleContainerCRUDQuickstart.java#L113-L120) | CosmosContainer.replaceThroughput |
@@ -142,14 +143,14 @@ Az [autoscale Collection szifilisz-minták](https://github.com/Azure-Samples/azu
 
 Az [analitikai tár gyűjteményének szifilisz-mintái](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/analyticalcontainercrud/sync/AnalyticalContainerCRUDQuickstart.java) fájlja a következő feladatok elvégzését mutatja be. Ha az alábbi minták futtatása előtt szeretne többet megtudni az Azure Cosmos-gyűjteményekről, olvassa el a Azure Cosmos DB szinapszis és az analitikai tároló című témakört.
 
-| Tevékenység | API-referencia |
+| Feladat | API-referencia |
 | --- | --- |
 | [Gyűjtemény létrehozása](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/analyticalcontainercrud/sync/AnalyticalContainerCRUDQuickstart.java#L93-L108) | CosmosDatabase. Createcontainerifnotexists függvényt |
 
 ## <a name="document-examples"></a>Dokumentumpéldák
 A [Document szifilisz Samples](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/DocumentCrudSamples.java) fájl a következő feladatok elvégzését mutatja be. Ha az alábbi minták futtatása előtt szeretne többet megtudni az Azure Cosmos-dokumentumokról, olvassa el a következő témakört: [adatbázisok, tárolók és elemek](databases-containers-items.md) fogalmi cikkének használata.
 
-| Tevékenység | API-referencia |
+| Feladat | API-referencia |
 | --- | --- |
 | [Dokumentum létrehozása](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/documentcrud/sync/DocumentCRUDQuickstart.java#L133-L147) | CosmosContainer.createItem |
 | [Dokumentum olvasása ID (azonosító) alapján](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/documentcrud/sync/DocumentCRUDQuickstart.java#L179-L193) | CosmosContainer.readItem |
@@ -163,7 +164,7 @@ A [Document szifilisz Samples](https://github.com/Azure/azure-documentdb-java/bl
 ## <a name="indexing-examples"></a>Indexelési példák
 A [gyűjteményi szifilisz mintáinak](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/CollectionCrudSamples.java) fájlja a következő feladatok elvégzését mutatja be. A következő minták futtatása előtt a Azure Cosmos DB indexelésének megismeréséhez lásd: a [házirendek indexelése](index-policy.md), az [indexelési típusok](index-types.md)és az [indexelési útvonalak](index-paths.md) fogalmi cikkei. 
 
-| Tevékenység | API-referencia |
+| Feladat | API-referencia |
 | --- | --- |
 | Dokumentum kizárása az indexből | ExcludedIndex<br>IndexingPolicy |
 | Lusta indexelés használata | IndexingPolicy.IndexingMode |
@@ -180,7 +181,7 @@ További információ az indexelésről: [Azure Cosmos DB indexelési szabályza
 ## <a name="query-examples"></a>Lekérdezéspéldák
 A [lekérdezési minták](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/queries/sync/QueriesQuickstart.java) fájl a következő feladatokat mutatja be az SQL-lekérdezési nyelvtan használatával. Ha többet szeretne megtudni a Azure Cosmos DB SQL-lekérdezési referenciáról az alábbi minták futtatása előtt, tekintse meg a [Azure Cosmos db SQL-lekérdezési példákat](how-to-sql-query.md). 
 
-| Tevékenység | API-referencia |
+| Feladat | API-referencia |
 | --- | --- |
 | [Az összes dokumentum lekérdezése](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/queries/sync/QueriesQuickstart.java#L210-L214) | CosmosContainer.queryItems |
 | [Egyenlőség lekérdezése == használatával](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/queries/sync/QueriesQuickstart.java#L291-L295) | CosmosContainer.queryItems |
@@ -201,7 +202,7 @@ A [lekérdezési minták](https://github.com/Azure-Samples/azure-cosmos-java-sql
 ## <a name="change-feed-examples"></a>Változáscsatornák példái 
 A következő feladatok elvégzéséhez a [hírcsatorna-feldolgozó minta fájl módosítása](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/changefeed/SampleChangeFeedProcessor.java) látható. Ha a következő minták futtatása előtt szeretné megismerni a Azure Cosmos DB a hírcsatornát, tekintse meg az [olvasási Azure Cosmos db módosítási hírcsatorna](read-change-feed.md) és a [hírcsatorna-feldolgozó módosítása](change-feed-processor.md)című témakört.
 
-| Tevékenység | API-referencia |
+| Feladat | API-referencia |
 | --- | --- |
 | [Alapszintű módosítási hírcsatorna funkciói](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/changefeed/SampleChangeFeedProcessor.java#L124-L154) |ChangeFeedProcessor.changeFeedProcessorBuilder |
 | Változási hírcsatorna olvasása adott időpontból | ChangeFeedProcessor.changeFeedProcessorBuilder |
@@ -211,7 +212,7 @@ A következő feladatok elvégzéséhez a [hírcsatorna-feldolgozó minta fájl 
 
 A [tárolt eljárási minta](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/storedprocedure/sync/SampleStoredProcedure.java) fájl bemutatja, hogyan végezheti el a következő feladatokat. Ha többet szeretne megtudni a Azure Cosmos DB kiszolgálóoldali programozásáról a következő minták futtatása előtt, tekintse meg a [tárolt eljárások, eseményindítók és felhasználó által definiált függvények](stored-procedures-triggers-udfs.md)című témakört.
 
-| Tevékenység | API-referencia |
+| Feladat | API-referencia |
 | --- | --- |
 | [Tárolt eljárás létrehozása](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/storedprocedure/sync/SampleStoredProcedure.java#L132-L151) | CosmosScripts.createStoredProcedure |
 | [Tárolt eljárás végrehajtása](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/storedprocedure/sync/SampleStoredProcedure.java#L167-L181) | CosmosStoredProcedure.exearanyos |
@@ -220,7 +221,7 @@ A [tárolt eljárási minta](https://github.com/Azure-Samples/azure-cosmos-java-
 ## <a name="user-management-examples"></a>Felhasználókezelés példái
 A felhasználói felügyeleti minta fájl a következő feladatokat mutatja be:
 
-| Tevékenység | API-referencia |
+| Feladat | API-referencia |
 | --- | --- |
 | Felhasználó létrehozása | - |
 | Engedélyek beállítása gyűjteményen vagy dokumentumban | - |

@@ -1,6 +1,5 @@
 ---
-title: '2. Oktatóanyag: a kredit kockázati modelljeinek betanítása'
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (klasszikus) oktatóanyag 2: kredit kockázati modellek betanítása – Azure'
 description: Részletes oktatóanyag, amely bemutatja, hogyan hozhat létre a hitelkockázat értékelésére szolgáló prediktív elemzési megoldást Azure Machine Learning Studio (klasszikus). Ez az oktatóanyag egy háromrészes oktatóanyag-sorozat második része. Bemutatja, hogyan kell betanítani és kiértékelni a modelleket.
 keywords: hitelkockázat, prediktív elemzési megoldás,kockázatértékelés
 author: sdgilley
@@ -10,16 +9,17 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 8feca17f10bb891f0ca5577b2363f95901da4a46
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c88a7e2a74d4ad7b9ee353b24c46e36d4365db5e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79217868"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324879"
 ---
 # <a name="tutorial-2-train-credit-risk-models---azure-machine-learning-studio-classic"></a>2. Oktatóanyag: a kredit kockázati modelljeinek betanítása – Azure Machine Learning Studio (klasszikus)
 
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+**a következőkre vonatkozik:** ![ nincs](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine learning](../overview-what-is-azure-ml.md) ![ Igen ](../../../includes/media/aml-applies-to-skus/yes.png) Machine learning Studio (klasszikus) 
+
 
 Ez az oktatóanyag részletesen bemutatja a prediktív elemzési megoldások fejlesztésének folyamatát. Egy egyszerű modellt fejleszt Machine Learning Studio (klasszikus).  Ezután Azure Machine Learning webszolgáltatásként helyezheti üzembe a modellt.  Ez a központilag telepített modell új adatelemzést végezhet az előrejelzésekhez. Ez az oktatóanyag **egy háromrészes oktatóanyag-sorozat második része**.
 
@@ -84,7 +84,7 @@ Most meg kell adnia a [betanítási modell][train-model] modulját, amely alapj�
 
 1. Válassza ki a [Train Model][train-model] modult. A **Tulajdonságok** ablaktáblán kattintson az **oszlop kiválasztó indítása**elemre.
 
-1. Az **egyetlen oszlop kijelölése** párbeszédpanelen írja be a "hitelkockázat" kifejezést az **elérhető oszlopok**területen található Keresés mezőbe, válassza a "hitelkockázat" lehetőséget az alábbi listában, majd kattintson a jobbra mutató**>** nyílra () a "hitelkockázat" gombra a **kijelölt oszlopokra**. 
+1. Az **egyetlen oszlop kijelölése** párbeszédpanelen írja be a "hitelkockázat" kifejezést az **elérhető oszlopok**területen található Keresés mezőbe, válassza a "hitelkockázat" lehetőséget az alábbi listában, majd kattintson a jobbra mutató nyílra ( **>** ) a "hitelkockázat" gombra a **kijelölt oszlopokra**. 
 
     ![Válassza ki a betanítási modell moduljának hitelkockázat oszlopát](./media/tutorial-part2-credit-risk-train/train-model-select-column.png)
 

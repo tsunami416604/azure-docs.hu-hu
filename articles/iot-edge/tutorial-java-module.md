@@ -11,12 +11,13 @@ ms.service: iot-edge
 ms.custom:
 - mvc
 - mqtt
-ms.openlocfilehash: d8ea58dca8235b6dfc49c14c519dd44dabdf0592
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+- devx-track-java
+ms.openlocfilehash: d40ab7a7173265812483e29127e9f8fd919dc4a4
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81733083"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323332"
 ---
 # <a name="tutorial-develop-a-java-iot-edge-module-for-linux-devices"></a>Oktatóanyag: Java-IoT Edge modul létrehozása Linux-eszközökhöz
 
@@ -68,28 +69,28 @@ Az alábbi lépések egy IoT Edge modul-projektet hoznak létre, amely a Azure I
 
 Létrehozhat egy Java-megoldást, amelyet a saját kódjával testreszabhat.
 
-1. A Visual Studio Code-ban kattintson a**parancs paletta** **megtekintése** > elemre a vs Code parancs paletta megnyitásához.
+1. A Visual Studio Code-ban **View**kattintson  >  a**parancs paletta** megtekintése elemre a vs Code parancs paletta megnyitásához.
 
 2. A parancskatalógusban írja be és futtassa az **Azure IoT Edge: New IoT Edge solution** parancsot. Kövesse a parancskatalógusban található utasításokat a megoldás létrehozásához.
 
    | Mező | Érték |
    | ----- | ----- |
-   | Select folder (Mappa kiválasztása) | Válassza ki azt a helyet a fejlesztői gépen, ahol a VS Code létre fogja hozni a megoldásfájlokat. |
+   | Mappa kiválasztása | Válassza ki azt a helyet a fejlesztői gépen, ahol a VS Code létre fogja hozni a megoldásfájlokat. |
    | Provide a solution name (Megoldásnév megadása) | Adjon meg egy leíró nevet a megoldáshoz, vagy fogadja el az alapértelmezett **EdgeSolution**. |
    | Select module template (Modulsablon kiválasztása) | Válasszon **Java-modult**. |
    | Adja meg a groupId értékét | Adja meg a csoport AZONOSÍTÓjának értékét, vagy fogadja el az alapértelmezett **com. edgemodule**. |
    | Provide a module name (Modulnév megadása) | Nevezze el a modul **JavaModule**. |
-   | Provide Docker image repository for the module (Docker-rendszerkép adattárának megadása a modulhoz) | Egy rendszerképadattár a tárolóregisztrációs adatbázis nevét és a tárolórendszerkép nevét tartalmazza. A tároló képe előre fel van töltve az utolsó lépésben megadott névvel. Cserélje le a **localhost:5000** értéket az Azure-beli tárolóregisztrációs adatbázis bejelentkezési kiszolgálójának értékére. A bejelentkezési kiszolgálót a tárolóregisztrációs adatbázis Áttekintés lapján kérheti le az Azure Portalon. <br><br>A rendszerkép utolsó tárháza a \<következőhöz\>hasonló: beállításjegyzék neve. azurecr.IO/javamodule. |
+   | Provide Docker image repository for the module (Docker-rendszerkép adattárának megadása a modulhoz) | Egy rendszerképadattár a tárolóregisztrációs adatbázis nevét és a tárolórendszerkép nevét tartalmazza. A tároló képe előre fel van töltve az utolsó lépésben megadott névvel. Cserélje le a **localhost:5000** értéket az Azure-beli tárolóregisztrációs adatbázis bejelentkezési kiszolgálójának értékére. A bejelentkezési kiszolgálót a tárolóregisztrációs adatbázis Áttekintés lapján kérheti le az Azure Portalon. <br><br>A rendszerkép utolsó tárháza a következőhöz hasonlít: \<registry name\> . azurecr.IO/javamodule. |
 
    ![Docker-rendszerkép adattárának megadása](./media/tutorial-java-module/repository.png)
 
 Ha első alkalommal hoz létre Java-modult, a Maven-csomagok letöltése több percet is igénybe vehet. Ha a megoldás elkészült, a VS Code ablak betölti a IoT Edge megoldás munkaterületét. A megoldás munkaterület öt legfelső szintű összetevőt tartalmaz:
 
 * A **modulok** mappa tartalmazza a modulhoz tartozó Java-kódot és a Docker-fájlokat, hogy a modult tároló képként lehessen felépíteni.
-* Az ** \.env** -fájl tárolja a tároló beállításjegyzékbeli hitelesítő adatait.
+* Az ** \. env** -fájl tárolja a tároló beállításjegyzékbeli hitelesítő adatait.
 * A **deployment.template.json** fájl az IoT Edge-futtatókörnyezet által a modulok eszközön való üzembe helyezéséhez használt információkat tartalmazza.
-* A **Deployment. debug. template. JSON** fájl a modulok hibakeresési verzióját tárolók.
-* Ebben az oktatóanyagban nem módosítja a ** \.** ** \.vscode** mappát vagy a gitignore-fájlt.
+* A fájlok **deployment.debug.template.js** a modulok hibakeresési verzióját tárolják.
+* Ebben az oktatóanyagban nem módosítja a ** \. vscode** mappát vagy a ** \. gitignore** -fájlt.
 
 Ha nem adott meg tárolóregisztrációs adatbázist a megoldás létrehozásakor, de elfogadta az alapértelmezett localhost:5000 értéket, akkor nem lesz \.env fájlja.
 
@@ -111,7 +112,7 @@ A Visual Studio Code jelenleg a Linux AMD64 és Linux ARM32v7-eszközökhöz has
 
 ### <a name="update-the-module-with-custom-code"></a>A modul módosítása egyéni kóddal
 
-1. A vs Code Explorerben nyissa meg a **modulok** > **JavaModule** > **src** > **Main** > **Java** > **com** > **edgemodule** > **app. Java**.
+1. A vs Code Explorerben nyissa meg a **modulok**  >  **JavaModule**  >  **src**  >  **Main**  >  **Java**  >  **com**  >  **edgemodule**  >  **app. Java**.
 
 2. Adja hozzá az alábbi kódot a fájl elejéhez új hivatkozott osztályok importálásához.
 
@@ -214,7 +215,7 @@ A Visual Studio Code jelenleg a Linux AMD64 és Linux ARM32v7-eszközökhöz has
 
 7. Mentse az app. Java fájlt.
 
-8. A VS Code Explorerben nyissa meg az **üzembe helyezés. template. JSON** fájlt a IoT Edge megoldás munkaterületen.
+8. A VS Code Explorerben nyissa meg a IoT Edge megoldás munkaterületen található fájl **deployment.template.js** .
 
 9. Adja hozzá a **JavaModule** modul ikerdokumentumát az üzembehelyezési jegyzékhez. Szúrja be a következő JSON-tartalmat a **moduleContent** szakasz alján, az **$edgeHub** modul ikerdokumentuma után:
 
@@ -234,7 +235,7 @@ A Visual Studio Code jelenleg a Linux AMD64 és Linux ARM32v7-eszközökhöz has
 
 Az előző szakaszban létrehozott egy IoT Edge megoldást, és hozzáadta a kódot a **JavaModule** , hogy kiszűrje azokat az üzeneteket, amelyekben a jelentett gép hőmérséklete az elfogadható határérték alá esik. Most hozza létre a megoldást tároló képként, és küldje el a tároló-beállításjegyzékbe.
 
-1. Nyissa meg a vs Code integrált terminált a**terminál** **megtekintése** > lehetőség kiválasztásával.
+1. Nyissa meg a vs Code integrált terminált a terminál **megtekintése**lehetőség kiválasztásával  >  **Terminal**.
 
 1. Jelentkezzen be a Docker-be a következő parancs beírásával a terminálon. Jelentkezzen be a felhasználónévvel, a jelszóval és a bejelentkezési kiszolgálóval az Azure Container registryből. Ezeket az értékeket a beállításjegyzék **hozzáférési kulcsok** részéből kérheti le a Azure Portal.
 
@@ -242,15 +243,15 @@ Az előző szakaszban létrehozott egy IoT Edge megoldást, és hozzáadta a kó
    docker login -u <ACR username> -p <ACR password> <ACR login server>
    ```
 
-   Biztonsági figyelmeztetés jelenhet meg, `--password-stdin`amely a használatát javasolja. Habár az ajánlott eljárás az éles környezetekben javasolt, az oktatóanyag hatókörén kívül esik. További információkért lásd a [Docker bejelentkezési](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) referenciáját.
+   Biztonsági figyelmeztetés jelenhet meg, amely a használatát javasolja `--password-stdin` . Habár az ajánlott eljárás az éles környezetekben javasolt, az oktatóanyag hatókörén kívül esik. További információkért lásd a [Docker bejelentkezési](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) referenciáját.
 
 1. A VS Code Explorerben kattintson a jobb gombbal a **deployment.template.json** fájlra, és válassza a **Build and Push IoT Edge solution** (IoT Edge-megoldás összeállítása és leküldése) lehetőséget.
 
-   A build és a push parancs három műveletet indít el. Először létrehoz egy új mappát a **konfigurációban** , amely tartalmazza a teljes telepítési jegyzékfájlt, amely a központi telepítési sablonban és más megoldási fájlokban található információkból épül fel. Másodszor, futtatja `docker build` a tároló rendszerképét a célként megadott architektúra megfelelő Docker alapján. Ezután futtatja `docker push` , hogy leküldi a rendszerkép-tárházat a tároló-beállításjegyzékbe.
+   A build és a push parancs három műveletet indít el. Először létrehoz egy új mappát a **konfigurációban** , amely tartalmazza a teljes telepítési jegyzékfájlt, amely a központi telepítési sablonban és más megoldási fájlokban található információkból épül fel. Másodszor, futtatja `docker build` a tároló rendszerképét a célként megadott architektúra megfelelő Docker alapján. Ezután futtatja, `docker push` hogy leküldi a rendszerkép-tárházat a tároló-beállításjegyzékbe.
 
 ## <a name="deploy-modules-to-device"></a>Modulok üzembe helyezése az eszközön
 
-A Visual Studio Code Explorer és az Azure IoT Tools bővítmény használatával telepítse a modul-projektet a IoT Edge eszközre. Már van előkészítve egy üzembe helyezési jegyzékfájl a forgatókönyvhöz, a **telepítési. JSON** fájl a konfigurációs mappában. Most csak ki kell választania az üzemelő példányt fogadó eszközt.
+A Visual Studio Code Explorer és az Azure IoT Tools bővítmény használatával telepítse a modul-projektet a IoT Edge eszközre. Már rendelkezik egy, a forgatókönyvhöz előkészített üzembe helyezési jegyzékfájlval, a konfigurációs mappában található fájl **deployment.js** . Most csak ki kell választania az üzemelő példányt fogadó eszközt.
 
 Ellenőrizze, hogy a IoT Edge eszköz működik-e.
 
@@ -303,7 +304,7 @@ Ebben az oktatóanyagban létrehozott egy IoT Edge modult, amely a IoT Edge-eszk
 Folytassa a következő oktatóanyagokkal, amelyből megtudhatja, hogyan helyezheti üzembe az Azure Cloud Servicest az Azure IoT Edge a peremhálózat adatfeldolgozásához és elemzéséhez.
 
 > [!div class="nextstepaction"]
-> [Függvények](tutorial-deploy-function.md)
-> [Stream Analytics](tutorial-deploy-stream-analytics.md)stream Analytics
-> [Machine Learning](tutorial-deploy-machine-learning.md)Machine learning
-> [Custom Vision Service](tutorial-deploy-custom-vision.md)
+> [Függvények](tutorial-deploy-function.md) 
+>  [Stream Analytics](tutorial-deploy-stream-analytics.md) 
+>  [Machine learning](tutorial-deploy-machine-learning.md) 
+>  [Custom Vision Service](tutorial-deploy-custom-vision.md)

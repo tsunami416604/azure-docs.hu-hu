@@ -3,12 +3,12 @@ title: Az Azure Application Insights folyamatainak automatizálása Logic Apps h
 description: Megtudhatja, hogyan automatizálható a megismételhető folyamatok gyors automatizálásához, ha hozzáadja a Application Insights-összekötőt a logikai alkalmazáshoz.
 ms.topic: conceptual
 ms.date: 03/11/2019
-ms.openlocfilehash: 76a199023ef37fbda27be59fdf70f6ca5d8481bc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d023d774c130a9db513fbcf9452b05fa030a967a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079621"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323196"
 ---
 # <a name="automate-application-insights-processes-by-using-logic-apps"></a>Application Insights folyamatok automatizálása Logic Apps használatával
 
@@ -130,9 +130,10 @@ A logikai alkalmazás futtatásakor az e-mail-listán megadott címzettek a köv
 
 ## <a name="next-steps"></a>További lépések
 
-- További információ az [elemzési lekérdezések](../../azure-monitor/log-query/get-started-queries.md)létrehozásáról.
+- További információ az [elemzési lekérdezések](../log-query/get-started-queries.md)létrehozásáról.
 - További tudnivalók a [Logic Apps](../../logic-apps/logic-apps-overview.md) szolgáltatásról
 
 
 
 <!--Link references-->
+

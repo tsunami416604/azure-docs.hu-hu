@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/04/2018
-ms.openlocfilehash: bda1acde914aa068fe3a87d307a29583f87af34f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b9d27e602062ff2638d8eea23fe64497fd66512d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091181"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322907"
 ---
 # <a name="vmware-monitoring-deprecated-solution-in-azure-monitor"></a>VMware Monitoring (elavult) megoldás a Azure Monitor
 
@@ -27,7 +27,7 @@ A megoldás az ESXi-gazdagép natív syslog funkcióját használja az adat lek�
 ## <a name="install-and-configure-the-solution"></a>A megoldás telepítése és konfigurálása
 A megoldás telepítésekor és konfigurálásakor vegye figyelembe az alábbi információkat.
 
-* Adja hozzá a VMware Monitoring megoldást az előfizetéséhez a [figyelési megoldás telepítése](../insights/solutions.md#install-a-monitoring-solution)című témakörben ismertetett eljárás használatával.
+* Adja hozzá a VMware Monitoring megoldást az előfizetéséhez a [figyelési megoldás telepítése](./solutions.md#install-a-monitoring-solution)című témakörben ismertetett eljárás használatával.
 
 #### <a name="supported-vmware-esxi-hosts"></a>Támogatott VMware ESXi gazdagépek
 vSphere ESXi-gazdagép 5,5, 6,0 és 6,5
@@ -202,3 +202,4 @@ Több oka is lehet:
 * A részletes VMware-gazdagépek részleteinek megtekintéséhez használjon Log Analytics [naplózási lekérdezéseket](../log-query/log-query-overview.md) .
 * [Hozzon létre saját irányítópultokat a](../learn/tutorial-logs-dashboards.md) VMware-gazdagép adataival.
 * [Riasztások létrehozása](../platform/alerts-overview.md) , ha adott VMware-gazdagép eseményei történnek.
+

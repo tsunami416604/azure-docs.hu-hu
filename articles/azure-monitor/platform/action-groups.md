@@ -1,19 +1,19 @@
 ---
-title: Műveletcsoportok létrehozása és felügyelete az Azure Portalon
+title: Műveletcsoportok létrehozása és kezelése az Azure Portalon
 description: Megtudhatja, hogyan hozhat létre és kezelhet műveleti csoportokat a Azure Portalban.
 author: dkamstra
 ms.topic: conceptual
 ms.date: 07/15/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: e88d51e014244892fc3ac9e2cca242dacdfd9997
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0c090238192b49af00856f6fcd002e95d154d2c0
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86516175"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321853"
 ---
-# <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Műveletcsoportok létrehozása és felügyelete az Azure Portalon
+# <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Műveletcsoportok létrehozása és kezelése az Azure Portalon
 A műveleti csoport az Azure-előfizetés tulajdonosa által meghatározott értesítési beállítások gyűjteménye. Azure Monitor és Service Health riasztások használata műveleti csoportok segítségével értesíti a felhasználókat arról, hogy riasztást váltott ki. A különböző riasztások ugyanazt a műveleti csoportot vagy különböző műveleti csoportokat használhatják a felhasználó igényeitől függően. Egy előfizetésben akár 2 000 műveleti csoportot is beállíthat.
 
 Egy olyan műveletet konfigurálhat, amely e-mailben vagy SMS-ben értesíti a személyeket, és megerősíti, hogy hozzá lettek adva a műveleti csoporthoz.
@@ -26,7 +26,7 @@ Az egyes műveletek a következő tulajdonságokből állnak:
 * **Művelettípus**: a művelet végrehajtása megtörtént. Ilyenek például a hanghívások, SMS-üzenetek, e-mailek küldése, vagy különböző típusú automatizált műveletek elindítása. Lásd a cikk későbbi részében található típusokat.
 * **Részletek**: a *művelet típusa*szerint változó megfelelő részletek.
 
-További információ arról, hogyan használhatók Azure Resource Manager sablonok a műveleti csoportok konfigurálásához: [Action Group Resource Manager-sablonok](../../azure-monitor/platform/action-groups-create-resource-manager-template.md).
+További információ arról, hogyan használhatók Azure Resource Manager sablonok a műveleti csoportok konfigurálásához: [Action Group Resource Manager-sablonok](./action-groups-create-resource-manager-template.md).
 
 ## <a name="create-an-action-group-by-using-the-azure-portal"></a>Műveleti csoport létrehozása a Azure Portal használatával
 
@@ -86,12 +86,12 @@ A rendszer e-maileket küld a következő e-mail-címekről. Győződjön meg ar
 - azureemail-noreply@microsoft.com
 - alerts-noreply@mail.windowsazure.com
 
-A műveleti csoportban korlátozott számú e-mail művelet lehet. Tekintse meg a [díjszabási információkat](./../../azure-monitor/platform/alerts-rate-limiting.md) ismertető cikket.
+A műveleti csoportban korlátozott számú e-mail művelet lehet. Tekintse meg a [díjszabási információkat](./alerts-rate-limiting.md) ismertető cikket.
 
 ### <a name="email-azure-resource-manager-role"></a>Azure Resource Manager-szerepkör küldése e-mailben
 E-mail küldése az előfizetés szerepkörének tagjainak. A rendszer csak az **Azure ad-felhasználók** számára küld e-mailt a szerepkörhöz. Az Azure AD-csoportok és -szolgáltatásnevek nem kapják meg az e-mailt.
 
-A műveleti csoportban korlátozott számú e-mail művelet lehet. Tekintse meg a [díjszabási információkat](./../../azure-monitor/platform/alerts-rate-limiting.md) ismertető cikket.
+A műveleti csoportban korlátozott számú e-mail művelet lehet. Tekintse meg a [díjszabási információkat](./alerts-rate-limiting.md) ismertető cikket.
 
 ### <a name="function"></a>Függvény
 Meghívja a meglévő HTTP-trigger végpontját [Azure Functionsban](../../azure-functions/functions-create-first-azure-function.md#create-a-function-app).
@@ -99,7 +99,7 @@ Meghívja a meglévő HTTP-trigger végpontját [Azure Functionsban](../../azure
 A műveleti csoportban korlátozott számú Function művelet lehet.
 
 ### <a name="itsm"></a>ITSM
-A ITSM művelethez ITSM-kapcsolat szükséges. Megtudhatja, hogyan hozhat létre [ITSM-kapcsolatokat](../../azure-monitor/platform/itsmc-overview.md).
+A ITSM művelethez ITSM-kapcsolat szükséges. Megtudhatja, hogyan hozhat létre [ITSM-kapcsolatokat](./itsmc-overview.md).
 
 A műveleti csoportban korlátozott számú ITSM művelet lehet. 
 
@@ -109,8 +109,8 @@ A műveleti csoportban korlátozott számú Logic app-művelet lehet.
 ### <a name="secure-webhook"></a>Biztonságos webhook
 A műveleti csoportok webhook művelettel kihasználhatja a Azure Active Directory előnyeit a műveleti csoport és a védett webes API (webhook-végpont) közötti kapcsolat biztonságossá tételéhez. A funkció kihasználásának általános munkafolyamata alább olvasható. Az Azure AD-alkalmazások és-szolgáltatások áttekintését lásd: [Microsoft Identity platform (v 2.0) – áttekintés](../../active-directory/develop/v2-overview.md).
 
-1. Hozzon létre egy Azure AD-alkalmazást a védett webes API-hoz. Tekintse meg a [védett webes API: alkalmazás regisztrációja](https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-app-registration)című témakört.
-    - Beállíthatja, hogy a védett API-t [egy Daemon-alkalmazás hívja](https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-app-registration#if-your-web-api-is-called-by-a-daemon-app)meg.
+1. Hozzon létre egy Azure AD-alkalmazást a védett webes API-hoz. Tekintse meg a [védett webes API: alkalmazás regisztrációja](../../active-directory/develop/scenario-protected-web-api-app-registration.md)című témakört.
+    - Beállíthatja, hogy a védett API-t [egy Daemon-alkalmazás hívja](../../active-directory/develop/scenario-protected-web-api-app-registration.md#if-your-web-api-is-called-by-a-daemon-app)meg.
     
 2. Engedélyezze a műveleti csoportokat az Azure AD-alkalmazás használatához.
 
@@ -196,7 +196,7 @@ Write-Host $myApp.AppRoles
 ```
 
 ### <a name="sms"></a>SMS
-További fontos információk: az információk és az [SMS-riasztások viselkedésének](../../azure-monitor/platform/alerts-sms-behavior.md) [korlátozása](./../../azure-monitor/platform/alerts-rate-limiting.md) . 
+További fontos információk: az információk és az [SMS-riasztások viselkedésének](./alerts-sms-behavior.md) [korlátozása](./alerts-rate-limiting.md) . 
 
 A műveleti csoportban korlátozott számú SMS-művelet lehet.
 
@@ -207,7 +207,7 @@ A támogatott országok/régiók díjszabását a [Azure monitor díjszabási ol
   
 
 ### <a name="voice"></a>Hang
-További fontos viselkedésért tekintse meg a [díjszabási információkat](./../../azure-monitor/platform/alerts-rate-limiting.md) ismertető cikket.
+További fontos viselkedésért tekintse meg a [díjszabási információkat](./alerts-rate-limiting.md) ismertető cikket.
 
 A műveleti csoportban korlátozott számú hangművelet lehet.
 
@@ -247,10 +247,11 @@ Előfordulhat, hogy egy műveleti csoportban korlátozott számú webhook-művel
 
 
 
-## <a name="next-steps"></a>Következő lépések
-* További információ az [SMS-riasztás viselkedéséről](../../azure-monitor/platform/alerts-sms-behavior.md).  
-* Ismerkedjen meg [a tevékenység naplójának riasztása webhook sémával](../../azure-monitor/platform/activity-log-alerts-webhook.md).  
-* További információ a [ITSM-csatolóról](../../azure-monitor/platform/itsmc-overview.md).
-* További információ a riasztások [díjszabásának korlátozásáról](../../azure-monitor/platform/alerts-rate-limiting.md) .
-* [Tekintse át a tevékenységek naplójának riasztásait](../../azure-monitor/platform/alerts-overview.md), és Ismerje meg, hogyan fogadhat riasztásokat.  
+## <a name="next-steps"></a>További lépések
+* További információ az [SMS-riasztás viselkedéséről](./alerts-sms-behavior.md).  
+* Ismerkedjen meg [a tevékenység naplójának riasztása webhook sémával](./activity-log-alerts-webhook.md).  
+* További információ a [ITSM-csatolóról](./itsmc-overview.md).
+* További információ a riasztások [díjszabásának korlátozásáról](./alerts-rate-limiting.md) .
+* [Tekintse át a tevékenységek naplójának riasztásait](./alerts-overview.md), és Ismerje meg, hogyan fogadhat riasztásokat.  
 * Megtudhatja, hogyan [konfigurálhatja a riasztásokat, amikor egy szolgáltatás állapotáról értesítést küldenek](../../service-health/alerts-activity-log-service-notifications-portal.md).
+

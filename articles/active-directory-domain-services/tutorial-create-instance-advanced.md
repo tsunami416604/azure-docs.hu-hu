@@ -1,6 +1,6 @@
 ---
-title: Oktatóanyag – Azure AD DS felügyelt tartomány létrehozása speciális konfigurációval
-description: Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre és konfigurálhat egy Azure Active Directory Domain Services felügyelt tartományt, és hogyan adhat meg speciális konfigurációs beállításokat a Azure Portal használatával.
+title: Oktatóanyag – testreszabott Azure Active Directory Domain Services felügyelt tartomány létrehozása | Microsoft Docs
+description: Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre és konfigurálhat testreszabott Azure Active Directory Domain Services felügyelt tartományt, és hogyan adhat meg speciális konfigurációs beállításokat a Azure Portal használatával.
 author: iainfoulds
 manager: daveba
 ms.service: active-directory
@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: b8eece33e13fca9fdef6b860513368f6c47a4628
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ead20713752b4eb28700541b4314241d86b6cc27
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518521"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87278547"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-managed-domain-with-advanced-configuration-options"></a>Oktatóanyag: Azure Active Directory Domain Services felügyelt tartomány létrehozása és konfigurálása speciális konfigurációs beállításokkal
 
@@ -56,7 +56,7 @@ Ebben az oktatóanyagban a felügyelt tartományt a Azure Portal használatával
 
 A **Azure ad Domain Services engedélyezése** varázsló elindításához hajtsa végre a következő lépéseket:
 
-1. Az Azure Portal menüjében vagy a **Kezdőlapon** válassza az **Erőforrás létrehozása** elemet.
+1. Az Azure Portal menüjében vagy a **Kezdőlapon** lapon válassza az **Erőforrás létrehozása** elemet.
 1. Adja meg a *tartományi szolgáltatásokat* a keresési sávban, majd válassza a *Azure ad Domain Services* lehetőséget a keresési javaslatok közül.
 1. A Azure AD Domain Services lapon válassza a **Létrehozás**lehetőséget. Elindul a **Azure ad Domain Services engedélyezése** varázsló.
 1. Válassza ki azt az Azure- **előfizetést** , amelyben létre szeretné hozni a felügyelt tartományt.
@@ -131,7 +131,7 @@ A következő módon hajtsa végre a mezőket a *hálózat* ablakban:
     1. Ha úgy dönt, hogy létrehoz egy virtuális hálózatot, adjon meg egy nevet a virtuális hálózatnak (például *myVnet*), majd adjon meg egy címtartományt, például *10.0.1.0/24*.
     1. Hozzon létre egy dedikált alhálózatot egy tiszta névvel, például *DomainServices*. Adjon meg egy címtartományt, például *10.0.1.0/24*.
 
-    [![](./media/tutorial-create-instance-advanced/create-vnet.png "Create a virtual network and subnet for use with Azure AD Domain Services")](./media/tutorial-create-instance-advanced/create-vnet-expanded.png#lightbox)
+    [![Virtuális hálózat és alhálózat létrehozása a Azure ad Domain Services-vel való használatra](./media/tutorial-create-instance-advanced/create-vnet.png)](./media/tutorial-create-instance-advanced/create-vnet-expanded.png#lightbox)
 
     Ügyeljen arra, hogy olyan címtartományt válasszon, amely a magánhálózati IP-címtartomány része. Azok az IP-címtartományok, amelyek nem a nyilvános címtartomány alá tartoznak, hibákat okozhatnak az Azure AD DSon belül.
 
@@ -159,7 +159,7 @@ A varázsló automatikusan létrehozza az *HRE DC rendszergazdák* csoportot az 
 
 ## <a name="configure-synchronization"></a>A szinkronizálás konfigurálása
 
-Az Azure AD DS lehetővé teszi az Azure AD-ben elérhető *összes* felhasználó és csoport szinkronizálását, vagy csak bizonyos csoportok *hatókörön* belüli szinkronizálását. Ha úgy dönt, hogy az *összes* felhasználót és csoportot szinkronizálja, később nem dönthet úgy, hogy csak hatókörön belüli szinkronizálást hajt végre. A hatókörön belüli szinkronizálással kapcsolatos további információkért lásd: [Azure ad Domain Services hatókörön belüli szinkronizálás][scoped-sync].
+Az Azure AD DS lehetővé teszi az Azure AD-ben elérhető *összes* felhasználó és csoport szinkronizálását, vagy csak bizonyos csoportok *hatókörön* belüli szinkronizálását. A szinkronizálás hatókörét most vagy a felügyelt tartomány üzembe helyezése után is módosíthatja. További információ: [Azure ad Domain Services hatókörű szinkronizálás][scoped-sync].
 
 1. Ebben az oktatóanyagban válassza az **összes** felhasználó és csoport szinkronizálása lehetőséget. Ez a szinkronizálási lehetőség az alapértelmezett beállítás.
 

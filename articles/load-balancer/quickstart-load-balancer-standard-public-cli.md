@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 07/20/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 40af7a7d3bcc4584260735ddbcbf84ac0936ce15
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: aa0d29c5c2a4cf8eebbf530b42a25d8924e031bc
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87172103"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290274"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-azure-cli"></a>Rövid útmutató: Nyilvános Load Balancer létrehozása a virtuális gépek terhelésének elosztásához az Azure CLI használatával
 
@@ -418,11 +418,17 @@ A terheléselosztó kimenő szabályai a háttér-készletben lévő virtuális 
 
 A kimenő kapcsolatokról a [Kimenő kapcsolatok az Azure-ban](load-balancer-outbound-connections.md)című témakörben olvashat bővebben.
 
-### <a name="create-outbound-public-ip-address"></a>Kimenő nyilvános IP-cím létrehozása
+### <a name="create-outbound-public-ip-address-or-public-ip-prefix"></a>Hozzon létre kimenő nyilvános IP-címet vagy nyilvános IP-előtagot.
 
-Használja az [az Network Public-IP Create](https://docs.microsoft.com/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) to:
+Az [az Network Public-IP Create](https://docs.microsoft.com/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) paranccsal hozhat létre egyetlen IP-címet a kimenő kapcsolathoz.  
 
-* Hozzon létre egy szabványos, redundáns nyilvános IP-címet a **myPublicIPOutbound**néven.
+Az [az Network Public-IP előtag létrehozása](https://docs.microsoft.com/cli/azure/network/public-ip/prefix?view=azure-cli-latest#az-network-public-ip-prefix-create) paranccsal hozzon létre egy nyilvános IP-előtagot a kimenő kapcsolathoz.
+
+A kimenő NAT és a kimenő kapcsolatok skálázásával kapcsolatos további információkért lásd: [kimenő NAT méretezése több IP-címmel](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#scale).
+
+#### <a name="public-ip"></a>Nyilvános IP-cím
+
+* Elnevezett **myPublicIPOutbound**.
 * A **myresourcegrouplb erőforráscsoportban**.
 
 ```azurecli-interactive
@@ -441,9 +447,35 @@ Zóna nélküli redundáns nyilvános IP-cím létrehozása a 1. zónaban:
     --sku Standard \
     --zone 1
 ```
+#### <a name="public-ip-prefix"></a>Nyilvános IP-előtag
+
+* Elnevezett **myPublicIPPrefixOutbound**.
+* A **myresourcegrouplb erőforráscsoportban**.
+* Az előtag hossza **28**.
+
+```azurecli-interactive
+  az network public-ip prefix create \
+    --resource-group myResourceGroupLB \
+    --name myPublicIPPrefixOutbound \
+    --length 28
+```
+Az 1. zóna-ben a zóna nélküli nyilvános IP-előtag létrehozása:
+
+```azurecli-interactive
+  az network public-ip prefix create \
+    --resource-group myResourceGroupLB \
+    --name myPublicIPPrefixOutbound \
+    --length 28 \
+    --zone 1
+```
+
 ### <a name="create-outbound-frontend-ip-configuration"></a>Kimenő előtéri IP-konfiguráció létrehozása
 
 Új előtérbeli IP-konfiguráció létrehozása az [az Network LB frontend-IP Create ](https://docs.microsoft.com/cli/azure/network/lb/frontend-ip?view=azure-cli-latest#az-network-lb-frontend-ip-create)paranccsal:
+
+Válassza ki a nyilvános IP-cím vagy a nyilvános IP-előtag parancsait az előző lépésben hozott döntés alapján.
+
+#### <a name="public-ip"></a>Nyilvános IP-cím
 
 * Elnevezett **myFrontEndOutbound**.
 * Az erőforráscsoport **myresourcegrouplb erőforráscsoportban**.
@@ -456,6 +488,21 @@ Zóna nélküli redundáns nyilvános IP-cím létrehozása a 1. zónaban:
     --name myFrontEndOutbound \
     --lb-name myLoadBalancer \
     --public-ip-address myPublicIPOutbound 
+```
+
+#### <a name="public-ip-prefix"></a>Nyilvános IP-előtag
+
+* Elnevezett **myFrontEndOutbound**.
+* Az erőforráscsoport **myresourcegrouplb erőforráscsoportban**.
+* A nyilvános IP-előtag **myPublicIPPrefixOutbound**van társítva.
+* A terheléselosztó **myLoadBalancer**van társítva.
+
+```azurecli-interactive
+  az network lb frontend-ip create \
+    --resource-group myResourceGroupLB \
+    --name myFrontEndOutbound \
+    --lb-name myLoadBalancer \
+    --public-ip-prefix myPublicIPPrefixOutbound 
 ```
 
 ### <a name="create-outbound-pool"></a>Kimenő készlet létrehozása
@@ -498,7 +545,7 @@ Hozzon létre egy új kimenő szabályt a kimenő háttérrendszer-készlethez a
 ```
 ### <a name="add-virtual-machines-to-outbound-pool"></a>Virtuális gépek hozzáadása a kimenő készlethez
 
-Adja hozzá a virtuálisgép-hálózati adaptereket a terheléselosztó kimenő készletéhez az [az Network NIC IP-config cím-Pool Add](https://docs.microsoft.com/cli/azure/network/nic/ip-config/address-pool?view=azure-cli-latest#az-network-nic-ip-config-address-pool-add)paranccsal:
+Adja hozzá a virtuális gépeket a kimenő készlethez az [az Network NIC IP-config cím-Pool Add](https://docs.microsoft.com/cli/azure/network/nic/ip-config/address-pool?view=azure-cli-latest#az-network-nic-ip-config-address-pool-add)paranccsal:
 
 
 #### <a name="vm1"></a>VM1

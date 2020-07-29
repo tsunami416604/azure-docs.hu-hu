@@ -127,11 +127,11 @@
               href: ../common/storage-network-security.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
             - name: Biztonságos átvitel megkövetelése
               href: ../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
-            - name: Transport Layer Security (TLS) konfigurálása
+            - name: A Transport Layer Security (TLS) kezelése
               items:
-                - name: Minimális TLS-verzió konfigurálása a tárfiókhoz
+                - name: Minimális TLS-verzió kényszerítése a bejövő kérések esetében
                   href: ../common/transport-layer-security-configure-minimum-version.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
-                - name: TLS konfigurálása ügyfélalkalmazáshoz
+                - name: TLS-verzió konfigurálása ügyfélalkalmazáshoz
                   href: ../common/transport-layer-security-configure-client-version.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
     - name: Adatredundancia kezelése
       items:

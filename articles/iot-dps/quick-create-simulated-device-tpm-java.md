@@ -8,13 +8,13 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.devlang: java
-ms.custom: mvc
-ms.openlocfilehash: ce67b5e254a62def5f8b024e960cea7f8780e8b8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, devx-track-java
+ms.openlocfilehash: a51799334749963a4771108857f448c5d081e7ea
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77605492"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323094"
 ---
 # <a name="quickstart-create-and-provision-a-simulated-tpm-device-using-java-device-sdk-for-azure-iot-hub-device-provisioning-service"></a>Rövid útmutató: szimulált TPM-eszköz létrehozása és kiépítése az Azure-hoz készült Java Device SDK-val IoT Hub Device Provisioning Service
 
@@ -72,7 +72,7 @@ Ebben a rövid útmutatóban egy szimulált IoT-eszközt hoz létre egy Windows 
 
     ![Eszközkiépítési szolgáltatásra vonatkozó információk](./media/java-quick-create-simulated-device/extract-dps-endpoints.png)
 
-1. Módosítsa `src/main/java/samples/com/microsoft/azure/sdk/iot/ProvisioningTpmSample.java` az _azonosító hatókörét_ és a _kiépítési szolgáltatás globális végpontját_ a korábban feljegyzett értékre.  
+1. Módosítsa az `src/main/java/samples/com/microsoft/azure/sdk/iot/ProvisioningTpmSample.java` _azonosító hatókörét_ és a _kiépítési szolgáltatás globális végpontját_ a korábban feljegyzett értékre.  
 
     ```java
     private static final String idScope = "[Your ID scope here]";
@@ -81,7 +81,7 @@ Ebben a rövid útmutatóban egy szimulált IoT-eszközt hoz létre egy Windows 
     ```
     Mentse a fájlt.
 
-1. A projekt létrehozásához használja a következő parancsokat, navigáljon a célmappához, és hajtsa végre a létrehozott. jar fájlt. Cserélje le `version` a helyőrzőt a Java-verzióra.
+1. A projekt létrehozásához használja a következő parancsokat, navigáljon a célmappához, és hajtsa végre a létrehozott. jar fájlt. Cserélje le a `version` helyőrzőt a Java-verzióra.
 
     ```cmd/sh
     mvn clean install

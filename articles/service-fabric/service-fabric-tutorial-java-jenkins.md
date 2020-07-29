@@ -5,13 +5,13 @@ author: suhuruli
 ms.topic: tutorial
 ms.date: 08/27/2018
 ms.author: suhuruli
-ms.custom: mvc
-ms.openlocfilehash: 74c412ad4c62a5821890aa5602b521f3f63da925
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.custom: mvc, devx-track-java
+ms.openlocfilehash: 42efc13d37ccfdaf60896f338b1a38384ef06568
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594763"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320714"
 ---
 # <a name="tutorial-configure-a-jenkins-environment-to-enable-cicd-for-a-java-application-on-service-fabric"></a>Oktatóanyag: Jenkins-környezet konfigurálása a CI/CD engedélyezéséhez Service Fabric-fürtön lévő Java-alkalmazás számára
 
@@ -85,11 +85,11 @@ A Jenkinst egy Service Fabric-fürtben vagy azon kívül is beállíthatja. Az a
 
    a. Az általános beállításokban jelölje be a **GitHub project** (GitHub-projekt) jelölőnégyzetet, és adja meg a GitHub-projekt URL-címét. Ez az URL-cím üzemelteti azt a Service Fabric Java-alkalmazást, amelyet integrálni szeretne a Jenkins folyamatos integrációs és üzembe helyezési (CI/CD) folyamatával (például: ``https://github.com/testaccount/dev_test``).
 
-   b. A **Source Code Management** (Forráskódkezelés) szakaszban válassza a **Git** elemet. Itt adhatja meg azt az adattár-URL-címet, amely a Jenkins CI/CD folyamatával integrálni kívánt Service Fabric Java-alkalmazást *`https://github.com/testaccount/dev_test.git`* tartalmazza (például:). Itt adhatja meg azt is, hogy melyik ágat kívánja létrehozni, például: **/master**.
+   b. A **Source Code Management** (Forráskódkezelés) szakaszban válassza a **Git** elemet. Itt adhatja meg azt az adattár-URL-címet, amely a Jenkins CI/CD folyamatával integrálni kívánt Service Fabric Java-alkalmazást tartalmazza (például: *`https://github.com/testaccount/dev_test.git`* ). Itt adhatja meg azt is, hogy melyik ágat kívánja létrehozni, például: **/master**.
 
 1. Adja meg a *GitHub* beállítását (amelyiken az adattár üzemel), így létrejöhet a kommunikáció a Jenkinsszel. Ehhez a következő lépések szükségesek:
 
-   a. Nyissa meg a GitHub-adattár oldalát. Lépjen a **Beállítások** > **integrációk és szolgáltatások**menüpontra.
+   a. Nyissa meg a GitHub-adattár oldalát. Lépjen a **Beállítások**  >  **integrációk és szolgáltatások**menüpontra.
 
    b. Válassza az **Add Service** (Szolgáltatás hozzáadása) elemet, írja be a **Jenkins** kifejezést, majd válassza ki a **Jenkins-GitHub beépülő modult**.
 
@@ -115,7 +115,7 @@ A Jenkinst egy Service Fabric-fürtben vagy azon kívül is beállíthatja. Az a
     > Ha a Service Fabricet használja a Jenkins-tároló rendszerképének üzembe helyezéséhez, a fürtnek meg kell egyeznie azzal, ahol a Jenkins-tárolóalkalmazás található.
     >
 
-1. Kattintson a **Save** (Mentés) gombra.
+1. Kattintson a **Mentés** gombra.
 
 ## <a name="update-your-existing-application"></a>Meglévő alkalmazás frissítése
 
@@ -178,7 +178,7 @@ A Jenkinst egy Service Fabric-fürtben vagy azon kívül is beállíthatja. Az a
 
     ![Folyamatban lévő frissítés](./media/service-fabric-tutorial-create-java-app/upgradejava.png)
 
-1. A **http://\<Host-IP>:8080** megnyitásakor a szavazóalkalmazás minden funkciójával együtt elérhetővé válik.
+1. Ha a **http:// \<Host-IP> : 8080** -as verzióhoz fér hozzá, a teljes funkcionalitással rendelkező szavazási alkalmazás már működik.
 
     ![Szavazóalkalmazás – helyi](./media/service-fabric-tutorial-java-jenkins/votingv2.png)
 
