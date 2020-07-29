@@ -5,15 +5,16 @@ ms.subservice: sizes
 documentationcenter: ''
 author: sasha-melamed
 ms.service: virtual-machines
-ms.topic: article
+ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 028de173c5cda1e95de9dd64d6ccd2a6b0ad7eb2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 038433e3b83ba936c14142053b86e0a7b0ed9dc6
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84674313"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291076"
 ---
 # <a name="storage-optimized-virtual-machine-sizes"></a>Tárterületre optimalizált virtuálisgép-méretek
 
@@ -24,7 +25,7 @@ A [Lsv2 sorozat](lsv2-series.md) nagy átviteli sebességű, kis késleltetésű
 ## <a name="other-sizes"></a>Egyéb méretek
 
 - [Általános célú](sizes-general.md)
-- [Számításra optimalizált](sizes-compute.md)
+- [Számításoptimalizált](sizes-compute.md)
 - [Memóriaoptimalizált](sizes-memory.md)
 - [GPU-optimalizált](sizes-gpu.md)
 - [Nagy teljesítményű számítás](sizes-hpc.md)

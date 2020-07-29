@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: d01245a76c5210a1843307b543f98d4f1d59d2cc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e7f5b6f3685a94b5497784360f8f12b22fb95012
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80877826"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87298780"
 ---
 ## <a name="create-an-azure-kubernetes-service-cluster-resource"></a>Azure Kubernetes Service-fürt erőforrásának létrehozása
 
@@ -25,7 +25,7 @@ ms.locfileid: "80877826"
     |Beállítás|Érték|
     |--|--|
     |Előfizetés|Válassza ki a megfelelő előfizetést.|
-    |Erőforráscsoport|Válasszon ki egy rendelkezésre álló erőforráscsoportot.|
+    |Erőforráscsoport|Válasszon ki egy elérhető erőforráscsoportot.|
     |Kubernetes-fürt neve|Adjon meg egy nevet (kisbetűs).|
     |Régió|Válasszon egy közeli helyet.|
     |Kubernetes verziója|Bármilyen érték van megjelölve **(alapértelmezett)**.|
@@ -33,16 +33,16 @@ ms.locfileid: "80877826"
     |Csomópont mérete|Standard DS2 v2:<br>`2 vCPUs`, `7 GB`|
     |Csomópontok száma|Hagyja meg a csúszkát az alapértelmezett értéknél.|
 
-1. A **skála** lapon hagyja a **virtuális csomópontok** és a virtuálisgép- **méretezési** csoportok beállítást az alapértelmezett értékre.
+1. A **csomópont-készletek** lapon hagyja meg a **virtuális csomópontokat** és a virtuálisgép- **méretezési csoportokat** az alapértelmezett értékekre.
 1. A **hitelesítés** lapon hagyja változatlanul az **egyszerű szolgáltatásnév** beállítást, és **engedélyezze a RBAC** alapértelmezett értékre való beállítását.
 1. A **hálózatkezelés** lapon adja meg a következő beállításokat:
 
     |Beállítás|Érték|
     |--|--|
     |HTTP-alkalmazások útválasztása|Nem|
-    |Hálózati konfiguráció|Basic|
+    |Hálózati konfiguráció|Alapszintű|
 
-1. A **figyelés** lapon győződjön meg arról, hogy a **tárolók figyelésének engedélyezése** beállítás az **Igen**értékre van állítva, és hagyja meg **log Analytics munkaterület** alapértelmezett értékeként.
+1. Az **integrációk** lapon győződjön meg arról, hogy a **tároló figyelése** **engedélyezve**értékre van állítva, és hagyja meg **log Analytics munkaterület** alapértelmezett értékeként.
 1. A **címkék** lapon hagyja üresen a név/érték párokat.
 1. Válassza **a felülvizsgálat és létrehozás**lehetőséget.
 1. Az érvényesítési fázisok után válassza a **Létrehozás**lehetőséget.

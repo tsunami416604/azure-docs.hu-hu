@@ -1,6 +1,6 @@
 ---
 title: DPDK egy Azure-beli linuxos virtuális gépen | Microsoft Docs
-description: Megtudhatja, hogyan telepítheti a DPDK Linux rendszerű virtuális gépeken.
+description: Ismerje meg az adatközpont-fejlesztési csomag (DPDK) előnyeit, valamint azt, hogyan állíthatja be a DPDK Linux rendszerű virtuális gépen.
 services: virtual-network
 documentationcenter: na
 author: laxmanrb
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/12/2020
 ms.author: labattul
-ms.openlocfilehash: ec117172a367d014f634106b5d2405892b80ffa7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 20f22825e6954f32d7f020dd160f36c3c1859c86
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84689265"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287713"
 ---
 # <a name="set-up-dpdk-in-a-linux-virtual-machine"></a>DPDK beállítása Linux rendszerű virtuális gépen
 
@@ -250,7 +251,7 @@ A következő parancsok időnként kinyomtatják a csomagokat másodpercenkénti
 
 Ha az előző parancsokat egy virtuális gépen futtatja, a fordítás előtt módosítsa *IP_SRC_ADDR* és *IP_DST_ADDR* , `app/test-pmd/txonly.c` hogy az megfeleljen a virtuális gépek tényleges IP-címének. Ellenkező esetben a rendszer eldobja a csomagokat, mielőtt elérné a továbbítót. Nem lesz lehetősége arra, hogy egy harmadik gép kapjon továbbított forgalmat, mert a *testpmd* -továbbító nem módosítja a 3. rétegbeli címeket, hacsak nem módosít valamilyen programkódot.
 
-## <a name="references"></a>Hivatkozások
+## <a name="references"></a>Referencia
 
 * [EAL-beállítások](https://dpdk.org/doc/guides/testpmd_app_ug/run_app.html#eal-command-line-options)
 * [Testpmd parancsok](https://dpdk.org/doc/guides/testpmd_app_ug/run_app.html#testpmd-command-line-options)

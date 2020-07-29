@@ -4,16 +4,16 @@ description: Ez a cikk útmutatást nyújt a Windows rendszerű virtuális gépe
 author: msmbaldwin
 ms.service: virtual-machines-windows
 ms.subservice: security
-ms.topic: article
+ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: edc52198208aa86772704bde7637a2801688da59
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8b2a8d552a2b9a1d6d3bb02bf02be95af031a5e4
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87036131"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291978"
 ---
 # <a name="azure-disk-encryption-scenarios-on-windows-vms"></a>Azure Disk Encryption-forgatókönyvek Windows rendszerű virtuális gépekhez
 
@@ -140,6 +140,33 @@ A következő táblázat a Resource Manager-sablon paramétereit sorolja fel a m
 | resizeOSDisk | Ha az operációsrendszer-partíciót át szeretné méretezni a teljes operációsrendszer-lemez elfoglalásához a rendszerkötet felosztása előtt. |
 | location | Az összes erőforrás helyei. |
 
+## <a name="enable-encryption-on-nvme-disks-for-lsv2-vms"></a>Titkosítás engedélyezése NVMe-lemezeken Lsv2 virtuális gépekhez
+
+Ez a forgatókönyv leírja, hogy a Lsv2 sorozatú virtuális gépek NVMe-lemezein hogyan engedélyezhető a Azure Disk Encryption.  A Lsv2 sorozat a helyi NVMe-tárolót is tartalmazza. A helyi NVMe-lemezek ideiglenesek, és a virtuális gép leállítása/felszabadítása után az adatvesztések megszakadnak (lásd: [Lsv2 sorozat](../lsv2-series.md)).
+
+Titkosítás engedélyezése a NVMe-lemezeken:
+
+1. Inicializálja a NVMe lemezeket, és hozzon létre NTFS-köteteket.
+1. Engedélyezze a titkosítást a virtuális gépen a VolumeType paraméterrel, amely az összes értékre van állítva. Ezzel engedélyezi az összes operációs rendszer és adatlemez titkosítását, beleértve a NVMe lemezek által támogatott köteteket is. További információ: [a titkosítás engedélyezése meglévő vagy Windows rendszerű virtuális gépen](#enable-encryption-on-an-existing-or-running-windows-vm).
+
+A titkosítás a következő esetekben marad a NVMe-lemezeken:
+- Virtuális gép újraindítása
+- VMSS-rendszerkép
+- Operációs rendszer cseréje
+
+A NVMe lemezek a következő helyzetekben nem lesznek inicializálva:
+
+- Virtuális gép elindítása a felszabadítás után
+- Szolgáltatás-javító
+- Backup
+
+Ezekben a forgatókönyvekben a NVMe lemezeket inicializálni kell a virtuális gép elindítása után. Ha engedélyezni szeretné a titkosítást a NVMe-lemezeken, futtassa a parancsot a Azure Disk Encryption újbóli engedélyezéséhez a NVMe lemezek inicializálását követően.
+
+A nem támogatott [forgatókönyvek](#unsupported-scenarios) szakaszban felsorolt forgatókönyvek mellett a NVMe lemezek titkosítása nem támogatott a következő esetekben:
+
+- Azure Disk Encryption rendszerrel titkosított virtuális gépek HRE (korábbi kiadás)
+- NVMe lemezek tárolása
+- NVMe-lemezzel rendelkező SKU-Azure Site Recovery (lásd: [támogatási mátrix az Azure-beli virtuális gépek vész-helyreállításához az Azure-régiók között: replikált gépek – tároló](../../site-recovery/azure-to-azure-support-matrix.md#replicated-machines---storage)).
 
 ## <a name="new-iaas-vms-created-from-customer-encrypted-vhd-and-encryption-keys"></a>Az ügyfél által titkosított VHD-és titkosítási kulcsokból létrehozott új IaaS virtuális gépek
 
@@ -236,7 +263,6 @@ A Azure Disk Encryption a következő forgatókönyvek, funkciók és technológ
 - Titkosított virtuális gépek áthelyezése másik előfizetésbe vagy régióba.
 - Egy titkosított virtuális gép rendszerképének vagy pillanatképének létrehozása, és annak használata további virtuális gépek telepítéséhez.
 - Gen2 virtuális gépek (lásd: [a 2. generációs virtuális gépek támogatása az Azure](generation-2.md#generation-1-vs-generation-2-capabilities)-ban)
-- Lsv2 sorozatú virtuális gépek (lásd: [Lsv2 sorozat](../lsv2-series.md))
 - Az M sorozatú virtuális gépek írásgyorsító lemezzel.
 - Az ADE alkalmazása olyan virtuális gépre, amely egy, az [ügyfél által felügyelt kulcsokkal](disk-encryption.md) (SSE + CMK) rendelkező, kiszolgálóoldali titkosítással titkosított adatlemezzel rendelkezik, vagy ha az az ade-vel titkosított virtuális gép adatlemezére ALKALMAZZA az SSE + CMK.
 - Az ADE-sel titkosított virtuális gépek áttelepítése az [ügyfél által felügyelt kulcsokkal rendelkező kiszolgálóoldali titkosításra](disk-encryption.md).

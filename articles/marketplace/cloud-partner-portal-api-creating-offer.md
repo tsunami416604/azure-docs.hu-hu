@@ -4,15 +4,15 @@ description: API új meglévő ajánlat létrehozásához vagy frissítéséhez.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-author: dsindona
-ms.author: dsindona
+author: mingshen-ms
+ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 249eb982ee701ea0a442121c02e55ad98e1f6fb9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 68416fa91f6b75fb3ef2b91c1297f13d84f2bdab
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87011991"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292949"
 ---
 <a name="create-or-modify-an-offer"></a>Ajánlat létrehozása vagy módosítása
 =========================
@@ -50,7 +50,7 @@ Ez a hívás egy adott ajánlatot frissít a közzétevő névterén belül, vag
 
 A következő példa egy ajánlatot hoz létre a offerID `contosovirtualmachine` .
 
-### <a name="request"></a>Kérelem
+### <a name="request"></a>Kérés
 
 ``` json
   {

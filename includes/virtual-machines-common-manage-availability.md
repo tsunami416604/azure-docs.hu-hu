@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 04a25b6b0b243744cc81c8b71a1f03e7c7375a68
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4ad0cdedfa28e5b46f77d5e87f5bd48e25f11cc4
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87102715"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292407"
 ---
 ## <a name="understand-vm-reboots---maintenance-vs-downtime"></a>A virtuális gépek újraindításának ismertetése – karbantartás és állásidő
 Az Azure-beli virtuális gépeket három forgatókönyv befolyásolja: nem tervezett hardveres karbantartás, váratlan leállás és tervezett karbantartás.
@@ -32,9 +32,9 @@ Az ilyen események okozta állásidő hatásainak csökkentése érdekében jav
 
 * [Több virtuális gép rendelkezésre állási csoportba konfigurálása a redundancia biztosítása érdekében]
 * [Felügyelt lemezek használata rendelkezésre állási csoporthoz tartozó virtuális gépekkel]
-* [Ütemezett események használatával proaktív módon válaszolhat a virtuális gépeket érintő eseményekre](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-scheduled-events)
+* [Ütemezett események használatával proaktív módon válaszolhat a virtuális gépeket érintő eseményekre](../articles/virtual-machines/linux/scheduled-events.md)
 * [Az egyes alkalmazások szintjeinek konfigurálása különálló rendelkezésre állási csoportokra]
-* [Terheléselosztók és rendelkezésre állási csoportok együttes alkalmazása]
+* [Load Balancer összevonása rendelkezésre állási csoportokkal]
 * [A rendelkezésre állási zónák használata az adatközponti szintű hibák elleni védelemhez]
 
 ## <a name="use-availability-zones-to-protect-from-datacenter-level-failures"></a>A rendelkezésre állási zónák használata az adatközponti szintű hibák elleni védelemhez
@@ -95,7 +95,7 @@ Ha nem felügyelt lemezekkel rendelkező virtuális gépeket szeretne használni
 
 ## <a name="use-scheduled-events-to-proactively-respond-to-vm-impacting-events"></a>Ütemezett események használatával proaktív módon válaszolhat a virtuális gépeket érintő eseményekre
 
-Az [ütemezett eseményekre](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-scheduled-events)való előfizetéskor a virtuális gép értesítést kap arról, hogy a közelgő karbantartási események milyen hatással lehetnek a virtuális gépre. Ha az ütemezett események engedélyezve vannak, a virtuális gép a karbantartási tevékenység végrehajtása előtt legalább annyi időt kap. Például a gazdagép operációs rendszerének azon frissítései, amelyek hatással lehetnek a virtuális gépre, olyan események, amelyek meghatározzák a hatást, valamint azt, hogy a karbantartás mikor történjen, ha nincs művelet. Az ütemezett események akkor is várólistára kerülnek, amikor az Azure olyan közvetlen hardverhiba-meghibásodást észlel, amely hatással lehet a virtuális gépre, ami lehetővé teszi, hogy eldöntse, mikor kell elvégezni a gyógyulást. A-ügyfelek az eseményt a karbantartás előtt is elvégezhetik, például az állapot mentése, a másodlagos feladatátvétel és így tovább. Miután elvégezte a logikát a karbantartási esemény zökkenőmentes kezeléséhez, jóváhagyhatja a függőben lévő ütemezett eseményt, hogy a platform folytassa a karbantartással.
+Az [ütemezett eseményekre](../articles/virtual-machines/linux/scheduled-events.md)való előfizetéskor a virtuális gép értesítést kap arról, hogy a közelgő karbantartási események milyen hatással lehetnek a virtuális gépre. Ha az ütemezett események engedélyezve vannak, a virtuális gép a karbantartási tevékenység végrehajtása előtt legalább annyi időt kap. Például a gazdagép operációs rendszerének azon frissítései, amelyek hatással lehetnek a virtuális gépre, olyan események, amelyek meghatározzák a hatást, valamint azt, hogy a karbantartás mikor történjen, ha nincs művelet. Az ütemezett események akkor is várólistára kerülnek, amikor az Azure olyan közvetlen hardverhiba-meghibásodást észlel, amely hatással lehet a virtuális gépre, ami lehetővé teszi, hogy eldöntse, mikor kell elvégezni a gyógyulást. A-ügyfelek az eseményt a karbantartás előtt is elvégezhetik, például az állapot mentése, a másodlagos feladatátvétel és így tovább. Miután elvégezte a logikát a karbantartási esemény zökkenőmentes kezeléséhez, jóváhagyhatja a függőben lévő ütemezett eseményt, hogy a platform folytassa a karbantartással.
 
 
 ## <a name="combine-a-load-balancer-with-availability-zones-or-sets"></a>Terheléselosztó kombinálása rendelkezésre állási zónákkal vagy készletekkel

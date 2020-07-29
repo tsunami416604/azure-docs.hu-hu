@@ -7,41 +7,24 @@ ms.author: cschorm
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 5a6f05835362dbcde36b1ab9cc3782b172b43f7c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5245e3740773c2be7973b26a4785982e0daa56c9
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079146"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291624"
 ---
-# <a name="dtdl-client-side-parser-library"></a>DTDL ügyféloldali elemző kódtár
+# <a name="parse-and-validate-models-with-the-dtdl-parser-library"></a>Modellek elemzése és ellenőrzése a DTDL Parser Library-vel
 
-Az Azure Digital Twins [modelljei](concepts-models.md) a JSON-ld-alapú digitális Twins Definition Language (DTDL) használatával vannak meghatározva. Olyan esetekben, ahol hasznos elemezni a modelleket, DTDL-elemzési függvénytár van megadva a NuGet.org ügyféloldali kódtárként: [Microsoft. Azure. DigitalTwins. Parser](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/).
+Az Azure Digital Twins [modelljei](concepts-models.md) a JSON-ld-alapú digitális Twins Definition Language (DTDL) használatával vannak meghatározva. **Javasoljuk, hogy az Azure Digital Twins-példányba való feltöltés előtt ellenőrizze a modelleket offline állapotba.**
 
-Ez a könyvtár modell-hozzáférést biztosít a DTDL-definícióhoz, amely lényegében a DTDL C#-reflexiójának megfelelő módon működik. Ez a könyvtár az [Azure Digital Twins SDK](how-to-use-apis-sdks.md)-val függetlenül is használható, különösen a DTDL érvényesítéséhez egy vizualizációban vagy szövegszerkesztőben. A modell-definíciós fájlok érvényességének biztosításához hasznos, mielőtt feltölti őket a szolgáltatásba.
-
-Az elemző függvénytár használatához a DTDL-dokumentumok készletét adja meg. Ezeket a modelleket általában a szolgáltatásból kell lekérnie, de előfordulhat, hogy helyileg is elérhetővé válik, ha az ügyfél felelős volt a szolgáltatásnak az első helyen való feltöltéséhez. 
-
-Itt látható az elemző használatának általános munkafolyamata:
-1. Egy vagy több DTDL-dokumentum beolvasása a szolgáltatásból.
-2. Adja át a visszaadott, memóriában tárolt DTDL-dokumentumokat az elemzőnek.
-3. Az elemző ellenőrzi az átadott dokumentumok készletét, és részletes hibaüzeneteket ad vissza. Ez a képesség szerkesztői helyzetekben hasznos.
-4. A dokumentumkészlet által tartalmazott modellek elemzésének folytatásához használja az elemző API-kat. 
-
-Az elemző képességei a következők:
-* Szerezze be az összes megvalósított modell felületét (az interfész `extends` szakaszának tartalmát).
-* A modellben deklarált összes tulajdonság, telemetria, parancs, összetevő és kapcsolat beolvasása. Ez a parancs a definíciókban szereplő összes metaadatot is beolvassa, és figyelembe veszi az öröklést ( `extends` szakaszt).
-* Az összes összetett modell definíciójának beolvasása.
-* Annak megállapítása, hogy egy modell kiosztható-e egy másik modellből.
-
-> [!NOTE]
-> A [IoT Plug and Play-(PNP-)](../iot-pnp/overview-iot-plug-and-play.md) eszközök kis szintaxist használnak a funkciók leírására. Ez a szintaxis az Azure digitális Ikrekben használt DTDL szemantikailag kompatibilis részhalmaza. Az elemző függvénytár használatakor nem kell tudnia, hogy melyik szintaxis-változatot használták a DTDL létrehozásához a digitális Twin számára. Alapértelmezés szerint az elemző a PnP és az Azure Digital Twins szintaxisának is ugyanazt a modellt fogja visszaadni.
+Ennek elvégzéséhez .NET ügyféloldali DTDL-elemzési függvénytár van megadva a következő NuGet: [**Microsoft. Azure. DigitalTwins. Parser**](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/). Az elemző függvénytárat közvetlenül a C#-kódban is használhatja, vagy használhatja a Language-agnosztikus kód minta projektjét, amely az elemző könyvtárra épül: [**DTDL validator minta**](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator).
 
 ## <a name="use-the-dtdl-validator-sample"></a>A DTDL-érvényesítő minta használata
 
-Létezik olyan mintakód, amely ellenőrizheti a modell dokumentumait, hogy a DTDL érvényes legyen. A DTDL-elemző könyvtárra épül, és nyelvtől független. Itt találja: [DTDL validator minta](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator).
+A [**DTDL-érvényesítő**](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator) olyan minta projekt, amely a DTDL érvényességének ellenőrzésére képes a modell dokumentumainak ellenőrzéséhez. A szolgáltatás a .NET Parser Library-re épül, és nyelvtől független. A minta hivatkozásnál a *zip letöltése* gombra kattintva kérheti le.
 
-Az érvényesítő minta parancssori segédprogramként használható a DTDL-fájlok címtár-fájának ellenőrzéséhez. Emellett interaktív módot is biztosít. A forráskód példákat mutat be az elemző függvénytár használatára.
+A forráskód példákat mutat be az elemző függvénytár használatára. Az érvényesítő mintát parancssori segédprogramként használhatja a DTDL-fájlok címtár-fájának ellenőrzéséhez. Emellett interaktív módot is biztosít.
 
 A DTDL-érvényesítő minta mappájába tekintse meg a *readme.MD* -fájlt, amely útmutatást nyújt a minta önálló végrehajtható fájlba való csomagolásához.
 
@@ -65,9 +48,30 @@ DTDLValidator -i
 
 A mintával kapcsolatos további információkért tekintse meg a forráskódot, vagy futtassa a parancsot `DTDLValidator --help` .
 
-## <a name="use-the-parser-library-in-code"></a>Az elemző függvénytár használata a kódban
+## <a name="use-the-net-parser-library"></a>A .NET Parser Library használata 
 
-Az elemző függvénytárat közvetlenül is használhatja olyan dolgokhoz, mint például a saját alkalmazásban található modellek ellenőrzése, vagy dinamikus, modell-vezérelt felhasználói felület, irányítópultok és jelentések létrehozása.
+A [**Microsoft. Azure. DigitalTwins. Parser**](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/) függvénytár modell hozzáférést biztosít a DTDL-definícióhoz, amely lényegében a DTDL C#-reflexiójának megfelelőként működik. Ez a könyvtár az [Azure Digital Twins SDK](how-to-use-apis-sdks.md)-val függetlenül is használható, különösen a DTDL érvényesítéséhez egy vizualizációban vagy szövegszerkesztőben. A modell-definíciós fájlok érvényességének biztosításához hasznos, mielőtt feltölti őket a szolgáltatásba.
+
+Az elemző függvénytár használatához a DTDL-dokumentumok készletét adja meg. Ezeket a modelleket általában a szolgáltatásból kell lekérnie, de előfordulhat, hogy helyileg is elérhetővé válik, ha az ügyfél felelős volt a szolgáltatásnak az első helyen való feltöltéséhez. 
+
+Itt látható az elemző használatának általános munkafolyamata:
+1. Egy vagy több DTDL-dokumentum beolvasása a szolgáltatásból.
+2. Adja át a visszaadott, memóriában tárolt DTDL-dokumentumokat az elemzőnek.
+3. Az elemző ellenőrzi az átadott dokumentumok készletét, és részletes hibaüzeneteket ad vissza. Ez a képesség szerkesztői helyzetekben hasznos.
+4. A dokumentumkészlet által tartalmazott modellek elemzésének folytatásához használja az elemző API-kat. 
+
+Az elemző képességei a következők:
+* Szerezze be az összes megvalósított modell felületét (az interfész `extends` szakaszának tartalmát).
+* A modellben deklarált összes tulajdonság, telemetria, parancs, összetevő és kapcsolat beolvasása. Ez a parancs a definíciókban szereplő összes metaadatot is beolvassa, és figyelembe veszi az öröklést ( `extends` szakaszt).
+* Az összes összetett modell definíciójának beolvasása.
+* Annak megállapítása, hogy egy modell kiosztható-e egy másik modellből.
+
+> [!NOTE]
+> A [IoT Plug and Play-(PNP-)](../iot-pnp/overview-iot-plug-and-play.md) eszközök kis szintaxist használnak a funkciók leírására. Ez a szintaxis az Azure digitális Ikrekben használt DTDL szemantikailag kompatibilis részhalmaza. Az elemző függvénytár használatakor nem kell tudnia, hogy melyik szintaxis-változatot használták a DTDL létrehozásához a digitális Twin számára. Alapértelmezés szerint az elemző a PnP és az Azure Digital Twins szintaxisának is ugyanazt a modellt fogja visszaadni.
+
+### <a name="code-with-the-parser-library"></a>Kód az elemző könyvtárral
+
+Az elemzési függvénytárat közvetlenül is használhatja olyan dolgokhoz, mint például a saját alkalmazásban lévő modellek ellenőrzése, vagy dinamikus, modell-vezérelt felhasználói felület, irányítópultok és jelentések létrehozása.
 
 Az alábbi elemzési kód támogatásához vegye fontolóra az Azure Digital Twins-példányban definiált több modellt:
 

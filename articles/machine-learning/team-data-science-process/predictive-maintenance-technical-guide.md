@@ -11,11 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: 6452a826cfb6f7ceb65e6e89cdd42d683ee463b1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9520369861623e60a0118baa20a7871437433a4b
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83682720"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290716"
 ---
 # <a name="technical-guide-to-the-solution-template-for-predictive-maintenance-in-aerospace"></a>Technikai útmutató a repülőgépipari prediktív karbantartás megoldási sablonja számára
 
@@ -57,7 +58,7 @@ Az [Azure Event hub](https://azure.microsoft.com/services/event-hubs/) szolgált
 A [Azure stream Analytics](https://azure.microsoft.com/services/stream-analytics/) segítségével közel valós idejű elemzéseket biztosíthat az [Azure Event hub](#azure-event-hub) szolgáltatásból származó bemeneti streamhez. Ezután közzéteheti az eredményeket egy [Power bi](https://powerbi.microsoft.com) irányítópulton, és archiválja az összes nyers bejövő eseményt az [Azure Storage](https://azure.microsoft.com/services/storage/) szolgáltatásba a [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/) szolgáltatás általi későbbi feldolgozás céljából.
 
 ### <a name="hdinsight-custom-aggregation"></a>Egyéni HDInsight összesítése
-A HDInsight használatával futtassa a [kaptár](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) -parancsfájlokat (Azure Data Factory) a Azure stream Analytics erőforrás használatával archivált nyers események összesítésének biztosításához.
+A HDInsight használatával futtassa a [kaptár](https://docs.microsoft.com/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) -parancsfájlokat (Azure Data Factory) a Azure stream Analytics erőforrás használatával archivált nyers események összesítésének biztosításához.
 
 ### <a name="azure-machine-learning"></a>Azure Machine Learning
 Készítse elő az előrejelzéseket egy adott repülőgép-motor hátralévő hasznos élettartamára (RUL) a [Azure Machine learning szolgáltatással](https://azure.microsoft.com/services/machine-learning/) kapott bemeneti adatok használatával (Azure Data Factory). 
@@ -112,22 +113,22 @@ Ez a szakasz a [Azure Data Factoryban](https://azure.microsoft.com/documentation
 
 ![Azure Data Factory](./media/predictive-maintenance-technical-guide/azure-data-factory.png)
 
-A gyár két folyamata tartalmazza az adatparticionálásra és-összesítésre használt [kaptár](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) -parancsfájlokat. Ha ezt megjegyezte, a parancsfájlok a telepítés során létrehozott [Azure Storage](https://azure.microsoft.com/services/storage/) -fiókban találhatók. A helyük a következő: maintenancesascript \\ \\ script \\ \\ kaptár \\ \\ (vagy https://[a megoldás neve]. blob. Core. Windows. net/maintenancesascript).
+A gyár két folyamata tartalmazza az adatparticionálásra és-összesítésre használt [kaptár](https://docs.microsoft.com/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) -parancsfájlokat. Ha ezt megjegyezte, a parancsfájlok a telepítés során létrehozott [Azure Storage](https://azure.microsoft.com/services/storage/) -fiókban találhatók. A helyük a következő: maintenancesascript \\ \\ script \\ \\ kaptár \\ \\ (vagy https://[a megoldás neve]. blob. Core. Windows. net/maintenancesascript).
 
-A [Azure stream Analytics](#azure-stream-analytics-1) lekérdezésekhez hasonlóan a [struktúra](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) parancsfájljai is implicit ismerettel rendelkeznek a bejövő adatformátummal kapcsolatban, és az adatformátuma alapján kell módosítani.
+A [Azure stream Analytics](#azure-stream-analytics-1) lekérdezésekhez hasonlóan a [struktúra](https://docs.microsoft.com/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) parancsfájljai is implicit ismerettel rendelkeznek a bejövő adatformátummal kapcsolatban, és az adatformátuma alapján kell módosítani.
 
 #### <a name="aggregateflightinfopipeline"></a>*AggregateFlightInfoPipeline*
-Ez [a folyamat](../../data-factory/concepts-pipelines-activities.md) egyetlen tevékenységet tartalmaz – egy [HDInsightHive](../../data-factory/transform-data-using-hadoop-hive.md) tevékenységet, amely egy [struktúra](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) parancsfájlt futtató [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) használ az [Azure Storage](https://azure.microsoft.com/services/storage/) -ban az [Azure stream Analytics](https://azure.microsoft.com/services/stream-analytics/) -feladatokban elhelyezett adatok particionálásához.
+Ez [a folyamat](../../data-factory/concepts-pipelines-activities.md) egyetlen tevékenységet tartalmaz – egy [HDInsightHive](../../data-factory/transform-data-using-hadoop-hive.md) tevékenységet, amely egy [struktúra](https://docs.microsoft.com/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) parancsfájlt futtató [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) használ az [Azure Storage](https://azure.microsoft.com/services/storage/) -ban az [Azure stream Analytics](https://azure.microsoft.com/services/stream-analytics/) -feladatokban elhelyezett adatok particionálásához.
 
-A [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) particionálási feladat ***AggregateFlightInfo. HQL***
+A [Hive](https://docs.microsoft.com/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) particionálási feladat ***AggregateFlightInfo. HQL***
 
 #### <a name="mlscoringpipeline"></a>*MLScoringPipeline*
 Ez a [folyamat](../../data-factory/concepts-pipelines-activities.md) több olyan tevékenységet tartalmaz, amelyek végeredménye az ehhez a megoldási sablonhoz társított [Azure Machine learning](https://azure.microsoft.com/services/machine-learning/) -kísérlet pontozásos előrejelzése.
 
 A benne foglalt tevékenységek a következők:
 
-* [HDInsightHive](../../data-factory/transform-data-using-hadoop-hive.md) -tevékenység olyan [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) használatával, amely egy [struktúra](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) -parancsfájlt futtat a [Azure Machine learning](https://azure.microsoft.com/services/machine-learning/) kísérlethez szükséges összesítések és funkciók tervezéséhez.
-  A [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) particionálási feladat ***PrepareMLInput. HQL***.
+* [HDInsightHive](../../data-factory/transform-data-using-hadoop-hive.md) -tevékenység olyan [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) használatával, amely egy [struktúra](https://docs.microsoft.com/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) -parancsfájlt futtat a [Azure Machine learning](https://azure.microsoft.com/services/machine-learning/) kísérlethez szükséges összesítések és funkciók tervezéséhez.
+  A [Hive](https://docs.microsoft.com/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) particionálási feladat ***PrepareMLInput. HQL***.
 * [Másolási](https://msdn.microsoft.com/library/azure/dn835035.aspx) tevékenység, amely áthelyezi az eredményeket a [HDInsightHive](../../data-factory/transform-data-using-hadoop-hive.md) tevékenységből egyetlen, az [AzureMLBatchScoring](https://msdn.microsoft.com/library/azure/dn894009.aspx) tevékenység által elérhető [Azure Storage](https://azure.microsoft.com/services/storage/) -blobba.
 * A [AzureMLBatchScoring](https://msdn.microsoft.com/library/azure/dn894009.aspx) tevékenység meghívja a [Azure Machine learning](https://azure.microsoft.com/services/machine-learning/) kísérletet, és egyetlen [Azure Storage](https://azure.microsoft.com/services/storage/) -blobba helyezi az eredményeket.
 

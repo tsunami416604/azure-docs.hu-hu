@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 76edc88f127d7e52514ab72539f7212ac982b5e4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6f8e20f97ae19a33674631e4dee18901d54462b3
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85204472"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291516"
 ---
 # <a name="set-up-msix-app-attach"></a>MSIX-alkalmazás csatolásának beállítása
 
@@ -29,7 +29,7 @@ Ebből a témakörből megtudhatja, hogyan állíthatja be a MSIX-alkalmazások 
 Mielőtt elkezdené, a következő lépésekkel kell konfigurálnia a MSIX-alkalmazás csatolását:
 
 - Hozzáférés a Windows Insider portálhoz a Windows 10 azon verziójának beszerzéséhez, amely támogatja a MSIX app Attach API-kat.
-- Működő Windowsos virtuális asztali telepítés. A Windows rendszerű virtuális asztali környezet 2019-es verziójának üzembe helyezésével kapcsolatos további információkért lásd: [bérlő létrehozása a Windows Virtual Desktopban](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md). A Windows rendszerű virtuális asztali 2020 kiadásának üzembe helyezéséről a következő témakörben talál további információt: [Host Pool létrehozása a Azure Portal](./create-host-pools-azure-marketplace.md).
+- Működő Windowsos virtuális asztali telepítés. A Windows rendszerű virtuális asztali gépek (klasszikus) központi telepítésének megismeréséhez tekintse meg [a bérlő létrehozása a Windows rendszerű virtuális asztalon](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)című témakört. A Windows rendszerű virtuális asztali Azure Resource Manager integrációs szolgáltatással való üzembe helyezésével kapcsolatos további információkért lásd: [gazdagép-készlet létrehozása a Azure Portal](./create-host-pools-azure-marketplace.md).
 - A MSIX-csomagoló eszköz.
 - Hálózati megosztás a Windows rendszerű virtuális asztali környezetben, ahol a MSIX-csomagot tárolja a rendszer.
 
@@ -207,14 +207,14 @@ Ha az alkalmazás olyan tanúsítványt használ, amely nem nyilvánosan megbíz
 5. Ha a telepítő megkérdezi, hogy engedélyezni szeretné-e az alkalmazásnak az eszköz módosítását, válassza az **Igen**lehetőséget.
 6. Válassza **a minden tanúsítvány tárolása a következő tárolóban**lehetőséget, majd válassza a **Tallózás**lehetőséget.
 7. Amikor megjelenik a tanúsítványtároló kiválasztása ablak, válassza a **Megbízható személyek**lehetőséget, majd kattintson **az OK gombra**.
-8. Válassza a **Befejezés** gombot.
+8. Válassza a **Befejezés** lehetőséget.
 
 ## <a name="prepare-powershell-scripts-for-msix-app-attach"></a>PowerShell-parancsfájlok előkészítése MSIX-alkalmazás csatolásához
 
 A MSIX-alkalmazás csatolása négy különböző fázist tartalmaz, amelyeket a következő sorrendben kell végrehajtani:
 
 1. Fázis
-2. Regisztráció
+2. Regisztráljon
 3. Képes
 4. Kilépés
 

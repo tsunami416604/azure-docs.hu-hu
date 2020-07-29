@@ -13,12 +13,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 03/23/2020
-ms.openlocfilehash: fbcec1ace45927561c56449cd8ca0c8d3306b3bd
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 8408025478e2776423b0d1f10cc70828e408f87e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85986283"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290106"
 ---
 # <a name="authorize-database-access-to-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>Adatbázis-hozzáférés engedélyezése SQL Database, SQL felügyelt példányhoz és az Azure szinapszis Analytics szolgáltatáshoz
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -110,7 +110,7 @@ A nem rendszergazda felhasználók számára a következő két módszer egyiké
   Hozzon létre egy SQL-bejelentkezést a Master adatbázisban. Ezután hozzon létre egy felhasználói fiókot minden adatbázisban, amelyhez a felhasználónak hozzáférésre van szüksége, és társítsa a felhasználói fiókot a bejelentkezéshez. Ez a megközelítés akkor javasolt, ha a felhasználónak több adatbázishoz is hozzá kell férnie, és meg szeretné tartani a jelszavak szinkronizálását. Azonban ez a megközelítés összetett, ha a földrajzi replikálást használja, mivel a bejelentkezést az elsődleges kiszolgálón és a másodlagos kiszolgálón is létre kell hozni. További információt a [geo-visszaállítási vagy feladatátvételi Azure SQL Database biztonságának konfigurálása és kezelése](active-geo-replication-security-configure.md)című témakörben talál.
 - **Felhasználói fiók létrehozása**
 
-  Hozzon létre egy felhasználói fiókot abban az adatbázisban, amelyhez a felhasználónak hozzáférésre van szüksége (más néven egy [tárolt felhasználónak](/sql/relational-databases/security/contained-database-users-making-your-database-portable)is).
+  Hozzon létre egy felhasználói fiókot abban az adatbázisban, amelyhez a felhasználónak hozzáférésre van szüksége (más néven [tárolt felhasználó](/sql/relational-databases/security/contained-database-users-making-your-database-portable)).
 
   - A SQL Database használatával mindig létrehozhat ilyen típusú felhasználói fiókot.
   - Az [Azure ad Server-rendszerbiztonsági tagokat](authentication-aad-configure.md#create-contained-users-mapped-to-azure-ad-identities)támogató SQL felügyelt példányok esetében felhasználói fiókokat hozhat létre az SQL felügyelt példányának hitelesítéséhez anélkül, hogy az adatbázis-felhasználók befoglalt adatbázis-felhasználóként jöjjenek létre.

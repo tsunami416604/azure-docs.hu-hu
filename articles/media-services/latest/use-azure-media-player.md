@@ -11,18 +11,18 @@ ms.workload: ''
 ms.topic: article
 ms.date: 07/17/2019
 ms.author: juliako
-ms.openlocfilehash: 63b05662e16dbcfd999788aa39c6c37eb12cf2c7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: bfc22862bc40679644d7dc9eddedf45fbacccab1
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86530405"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292883"
 ---
 # <a name="playback-with-azure-media-player"></a>Lejátszás Azure Media Player
 
 A Azure Media Player egy webvideós lejátszó, amely a Microsoft Azure Media Services különböző böngészők és eszközök által készített médiatartalom lejátszására készült. A Azure Media Player az iparági szabványokat, például a HTML5-t, a Media Source Extensions (MSE) és a titkosított adathordozó-bővítményeket (EME) használja a dúsított Adaptív átviteli élmény biztosításához. Ha ezek a szabványok nem érhetők el egy eszközön vagy böngészőben, Azure Media Player a Flash és a Silverlight protokollt használja tartalék technológiaként. A használt lejátszási technológiától függetlenül a fejlesztőknek egységes JavaScript-felülettel kell rendelkezniük az API-k eléréséhez. Ez lehetővé teszi, hogy a Azure Media Services által kiszolgált tartalmak a további erőfeszítések nélkül, széles körű eszközökön és böngészőkön keresztül legyenek játszhatók.
 
-Microsoft Azure Media Services lehetővé teszi, hogy a tartalmak a HLS, a DASH, a Smooth Streaming streaming formátumban legyenek kézbesítve a tartalmak lejátszásához. Azure Media Player a különböző formátumokat veszi figyelembe, és a platform/böngésző képességei alapján automatikusan a legjobb hivatkozást játssza le. A Media Services lehetővé teszi az eszközök dinamikus titkosítását PlayReady titkosítással vagy AES-128 bites boríték-titkosítással. A Azure Media Player lehetővé teszi a PlayReady és az AES-128 bites titkosított tartalom visszafejtését, ha az megfelelően van konfigurálva. 
+Microsoft Azure Media Services lehetővé teszi, hogy a tartalmak a HLS, a DASH, a Smooth Streaming streaming formátumban legyenek kézbesítve a tartalmak lejátszásához. Azure Media Player a különböző formátumokat veszi figyelembe, és a platform/böngésző képességei alapján automatikusan a legjobb hivatkozást játssza le. A Media Services lehetővé teszi az eszközök dinamikus titkosítását PlayReady titkosítással vagy AES-128 bites boríték-titkosítással. A Azure Media Player lehetővé teszi a PlayReady és az AES-128 bites titkosított tartalom visszafejtését, ha az megfelelően van konfigurálva.
 
 > [!NOTE]
 > A titkosított tartalom Widevine HTTPS-lejátszás szükséges.
@@ -41,19 +41,19 @@ A különböző lejátszási beállítások (például a technológia, a nyelv v
 
 ### <a name="monitor-diagnostics-of-a-video-stream"></a>Videó stream diagnosztika monitorozása
 
-A videó streamek diagnosztizálásának figyeléséhez használhatja a [Azure Media Player bemutató oldalt](https://aka.ms/azuremediaplayer) . 
+A videó streamek diagnosztizálásának figyeléséhez használhatja a [Azure Media Player bemutató oldalt](https://aka.ms/azuremediaplayer) .
 
 ![Azure Media Player diagnosztika](./media/azure-media-player/diagnostics.png)
 
 ## <a name="set-up-azure-media-player-in-your-html"></a>Azure Media Player beállítása a HTML-ben
 
-A Azure Media Player egyszerűen beállítható. Csak néhány percet vesz igénybe, hogy lekérje a médiatartalom alapszintű lejátszását a Media Services-fiókjából. A Azure Media Player beállításával és konfigurálásával kapcsolatos részletekért tekintse meg [Azure Media Player dokumentációját](https://aka.ms/ampdocs) . 
+A Azure Media Player egyszerűen beállítható. Csak néhány percet vesz igénybe, hogy lekérje a médiatartalom alapszintű lejátszását a Media Services-fiókjából. A Azure Media Player beállításával és konfigurálásával kapcsolatos részletekért tekintse meg [Azure Media Player dokumentációját](https://docs.microsoft.com/azure/media-services/azure-media-player/azure-media-player-overview) .
 
 ## <a name="additional-notes"></a>További megjegyzések
 
 * A Widevine a Google Inc által biztosított szolgáltatás, és a Google, Inc. szolgáltatási és adatvédelmi szabályzatának feltételei vonatkoznak rá.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [Az Azure Media Player dokumentációja](https://aka.ms/ampdocs)
-- [Azure Media Player-minták](https://aka.ms/ampsamples)
+* [Az Azure Media Player dokumentációja](https://docs.microsoft.com/azure/media-services/azure-media-player/azure-media-player-overview)
+* [Azure Media Player minták](https://github.com/Azure-Samples/azure-media-player-samples)

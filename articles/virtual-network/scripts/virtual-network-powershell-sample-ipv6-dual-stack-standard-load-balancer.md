@@ -1,7 +1,7 @@
 ---
 title: Azure PowerShell parancsfájl-minta – IPv6-felület konfigurálása standard Load Balancer (előzetes verzió)
 titlesuffix: Azure Virtual Network
-description: IPv6-végpontok engedélyezése a PowerShell használatával az Azure-ban Virtual Network
+description: Ismerje meg, hogyan konfigurálhatja az IPv6-előtérbeli felületet egy virtuális hálózati parancsfájl-mintában standard Load Balancer.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -11,12 +11,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 07/15/2019
 ms.author: kumud
-ms.openlocfilehash: 2de93f66bdb2647bcc612322d90eb9197e0ad63e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 24057c494d76cf9435ed60ecf2a13db4eab36fbf
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87068668"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291895"
 ---
 # <a name="configure-ipv6-frontend-in-virtual-network-script-sample-with-standard-load-balancerpreview"></a>IPv6-előtérbeli konfiguráció konfigurálása a Virtual Network script mintában standard Load Balancer (előzetes verzió)
 

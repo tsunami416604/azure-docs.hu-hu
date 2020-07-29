@@ -7,12 +7,12 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/20/2020
 tags: connectors
-ms.openlocfilehash: f4bca70fbec5cf847a6bb5c0b97ed3496d6c2f8c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 988d1efd348fe8e85dd33fbe35cc8dc9362c081b
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87039985"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290604"
 ---
 # <a name="get-started-with-the-oracle-database-connector"></a>Ismerkedés az Oracle Database-összekötővel
 
@@ -122,10 +122,11 @@ Megtekintheti a hencegés során definiált összes eseményindítót és művel
 
 ## <a name="get-some-help"></a>Segítség kérése
 
-A [Microsoft Q&egy kérdés oldal a Azure Logic apps](https://docs.microsoft.com/answers/topics/azure-logic-apps.html) számára, hogy kérdéseket tegyen fel, válaszoljon a kérdésekre, és megtekintheti a többi Logic apps-felhasználót. 
+A [Microsoft Q&egy kérdés oldal a Azure Logic apps](/answers/topics/azure-logic-apps.html) számára, hogy kérdéseket tegyen fel, válaszoljon a kérdésekre, és megtekintheti a többi Logic apps-felhasználót. 
 
 Segítheti a Logic Apps és összekötők fejlesztését a szavazással és az ötletek elküldésével [https://aka.ms/logicapps-wish](https://aka.ms/logicapps-wish) . 
 
 
 ## <a name="next-steps"></a>További lépések
 [Hozzon létre egy logikai alkalmazást](../logic-apps/quickstart-create-first-logic-app-workflow.md), és fedezze fel az elérhető összekötőket Logic apps API-k [listájában](apis-list.md).
+

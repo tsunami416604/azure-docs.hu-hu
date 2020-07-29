@@ -7,12 +7,12 @@ ms.date: 06/12/2020
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 108a7940084e99348dc8fdfa0143d5c6855599df
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 554079ddec3332ced2817d18ea55ce1260d68817
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87099214"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291619"
 ---
 # <a name="telemetry-property-and-command-payloads"></a>Telemetria, tulajdonság és parancs hasznos adatai
 
@@ -30,6 +30,9 @@ A cikk nem írja le az összes lehetséges telemetria, tulajdonságot és a para
 
 Mindegyik példa egy olyan kódrészletet mutat be az eszköz-képesség modelljéből (DCM), amely meghatározza a típust és a JSON-adattartalomot, hogy az eszköz hogyan működjön együtt a IoT Central alkalmazással.
 
+> [!NOTE]
+> IoT Central fogadja el az érvényes JSON-t, de csak vizualizációk esetében használható, ha az megfelel a DCM definíciójának. A definíciónak nem megfelelő adatexportálást a következő témakörben tekintheti meg: [IoT-információk exportálása célhelyekre az Azure-ban](howto-export-data.md).
+
 A DCM-et definiáló JSON-fájl a [Digital Twin Definition Language (DTDL) v1](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v1-preview/dtdlv1.md)protokollt használja. Ez a specifikáció tartalmazza a `@id` tulajdonság formátumának definícióját.
 
 A használatban lévő hasznos adattartalmakat bemutató minta-eszközhöz tekintse meg az [ügyfélalkalmazás létrehozása és csatlakoztatása azure IoT Central alkalmazáshoz (Node.js)](tutorial-connect-device-nodejs.md) című témakört, és [hozzon létre és csatlakoztasson egy ügyfélalkalmazás-alkalmazást az Azure IoT Central Application (Python)](tutorial-connect-device-python.md) oktatóanyagokhoz.
@@ -43,9 +46,8 @@ IoT Central segítségével megtekintheti a nyers adatokat, amelyeket az eszköz
 1. Válassza ki a **nyers** adatlapot:
 
     :::image type="content" source="media/concepts-telemetry-properties-commands/raw-data.png" alt-text="Nyers adatnézet":::
-    
-    Ebben a nézetben kiválaszthatja a megjelenítendő oszlopokat, és megadhatja a megtekinteni kívánt időtartományt. A nem **modellezett adatok** oszlop az eszköz azon adatait jeleníti meg, amelyek nem felelnek meg az eszköz sablonjának bármely tulajdonság-vagy telemetria-definíciójának.
 
+    Ebben a nézetben kiválaszthatja a megjelenítendő oszlopokat, és megadhatja a megtekinteni kívánt időtartományt. A nem **modellezett adatok** oszlop az eszköz azon adatait jeleníti meg, amelyek nem felelnek meg az eszköz sablonjának bármely tulajdonság-vagy telemetria-definíciójának.
 
 ## <a name="telemetry"></a>Telemetria
 
@@ -766,9 +768,9 @@ IoT Central az eszköztől az írható tulajdonságok frissítéseire választ v
 
 `ac`egy numerikus mező, amely az alábbi táblázatban szereplő értékeket használja:
 
-| Érték | Címke | Description |
+| Érték | Címke | Leírás |
 | ----- | ----- | ----------- |
-| `'ac': 200` | Befejeződött | A tulajdonság-módosítási művelet sikeresen befejeződött. |
+| `'ac': 200` | Befejezve | A tulajdonság-módosítási művelet sikeresen befejeződött. |
 | `'ac': 202`vagy`'ac': 201` | Függőben | A tulajdonság-módosítási művelet függőben van vagy folyamatban van |
 | `'ac': 4xx` | Hiba | A kért tulajdonság módosítása érvénytelen volt, vagy hiba történt. |
 | `'ac': 5xx` | Hiba | Az eszköz váratlan hibát észlelt a kért módosítás feldolgozása során. |

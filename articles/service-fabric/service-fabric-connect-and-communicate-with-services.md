@@ -5,12 +5,12 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 11/01/2017
 ms.author: vturecek
-ms.openlocfilehash: a873a32aa8c12b535c06711ea7dc7a4aa920a27f
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 5081ad813d871db0f60284bca4a0c53ee5bbf6b2
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86257762"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287756"
 ---
 # <a name="connect-and-communicate-with-services-in-service-fabric"></a>A Service Fabric-szolgáltatásokkal való kapcsolattartás és kommunikáció
 Service Fabric a szolgáltatás egy Service Fabric fürtön fut valahol, általában több virtuális gépen elosztva. Áthelyezhető az egyik helyről a másikra, akár a szolgáltatás tulajdonosa, akár a Service Fabric automatikusan. A szolgáltatások nem statikusan vannak társítva egy adott géphez vagy címhez.
@@ -58,7 +58,7 @@ A fordított proxy a fürtben olyan HTTP-végpontokat tesz elérhetővé, amelye
 További információ a fordított proxy szolgáltatás használatáról: [fordított proxy az Azure Service Fabric](service-fabric-reverseproxy.md) cikkben.
 
 ## <a name="connections-from-external-clients"></a>Külső ügyfelek kapcsolatai
-A fürtön belül egymáshoz csatlakozó szolgáltatások általában közvetlenül hozzáférhetnek más szolgáltatások végpontjait, mert a fürt csomópontjai ugyanazon a helyi hálózaton találhatók. Bizonyos környezetekben azonban előfordulhat, hogy egy fürt egy olyan terheléselosztó mögött található, amely a külső bejövő forgalmat a portok korlátozott készletén keresztül irányítja. Ezekben az esetekben a szolgáltatások továbbra is kommunikálhatnak egymással, és a elnevezési szolgáltatás használatával oldják fel a címeket, de további lépéseket kell végrehajtani ahhoz, hogy a külső ügyfelek csatlakozhassanak a szolgáltatásokhoz.
+A fürtön belül egymáshoz csatlakozó szolgáltatások általában közvetlenül hozzáférhetnek más szolgáltatások végpontjait, mert a fürt csomópontjai ugyanazon a helyi hálózaton találhatók. Bizonyos környezetekben azonban előfordulhat, hogy egy fürt egy olyan terheléselosztó mögött található, amely egy korlátozott számú porton keresztül irányítja át a forgalmat. Ezekben az esetekben a szolgáltatások továbbra is kommunikálhatnak egymással, és a elnevezési szolgáltatás használatával oldják fel a címeket, de további lépéseket kell végrehajtani ahhoz, hogy a külső ügyfelek csatlakozhassanak a szolgáltatásokhoz.
 
 ## <a name="service-fabric-in-azure"></a>Service Fabric az Azure-ban
 Az Azure-beli Service Fabric-fürt egy Azure Load Balancer mögé kerül. A fürtön lévő összes külső forgalomnak át kell haladnia a terheléselosztó használatával. A terheléselosztó automatikusan továbbítja a bejövő forgalmat egy adott porton egy véletlenszerű *csomópontra* , amelynek a portja meg van nyitva. A Azure Load Balancer csak a *csomópontokon*megnyitott portokat ismeri, nem ismeri az egyes *szolgáltatások*által megnyitott portokat.
@@ -169,7 +169,7 @@ A Reliable Services-keretrendszer számos előre elkészített kommunikációs l
 ## <a name="using-custom-protocols-and-other-communication-frameworks"></a>Egyéni protokollok és egyéb kommunikációs keretrendszerek használata
 A szolgáltatások bármilyen protokollt vagy keretrendszert használhatnak a kommunikációhoz, függetlenül attól, hogy ez egy egyéni bináris protokoll TCP-szoftvercsatornán keresztül, vagy az [azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) vagy az [Azure IoT hub](https://azure.microsoft.com/services/iot-hub/)használatával folyó események. A Service Fabric kommunikációs API-kat biztosít, amelyekkel összekapcsolhatja a kommunikációt. További részletekért tekintse meg ezt a cikket a [megbízható szolgáltatásokkal kapcsolatos kommunikációs modellről](service-fabric-reliable-services-communication.md) .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Tudjon meg többet a [Reliable Services kommunikációs modellben](service-fabric-reliable-services-communication.md)elérhető fogalmakról és API-król, majd a [szolgáltatás távelérésének](service-fabric-reliable-services-communication-remoting.md) gyors kezdéséhez, vagy részletesen megtudhatja, hogyan írhat egy kommunikációs figyelőt a [webes API-val a OWIN-alapú](./service-fabric-reliable-services-communication-aspnetcore.md)önkiszolgáló használatával.
 
 [1]: ./media/service-fabric-connect-and-communicate-with-services/serviceendpoints.png

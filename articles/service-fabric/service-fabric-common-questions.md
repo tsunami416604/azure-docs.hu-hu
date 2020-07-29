@@ -4,12 +4,12 @@ description: Gyakori kérdések a Service Fabricről, beleértve a képességeke
 ms.topic: troubleshooting
 ms.date: 08/18/2017
 ms.author: pepogors
-ms.openlocfilehash: 056ff2475e0ae8c78887e24e07a3e33f12d7df88
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 1655a8ed03b1f678cc5dba0a165e0bcca1d2517a
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258948"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292860"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Service Fabric – GYIK
 
@@ -36,7 +36,7 @@ Ha érdekli ezt a forgatókönyvet, javasoljuk, hogy vegye fel a kapcsolatot az 
 
 Néhány megfontolandó szempont: 
 
-1. Az Azure-beli Service Fabric fürterőforrás a mai régió, a virtuális gépek méretezési csoportjai pedig a fürtre épülnek. Ez azt jelenti, hogy regionális meghibásodás esetén előfordulhat, hogy a Azure Resource Manager vagy a Azure Portal segítségével szeretné kezelni a fürtöt. Ez akkor is előfordulhat, ha a fürt továbbra is fut, és közvetlenül kommunikálni tud vele. Ezen kívül az Azure jelenleg nem képes egyetlen, régión belül használható virtuális hálózat kialakítására. Ez azt jelenti, hogy az Azure-ban egy többrégiós fürtnek Nyilvános IP-címek kell lennie [a VM Scale sets vagy az](../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#public-ipv4-per-virtual-machine) [Azure VPN Gateway-](../vpn-gateway/vpn-gateway-about-vpngateways.md)beli virtuális gépekhez. Ezek a hálózatkezelési döntések eltérő hatással vannak a költségekre, a teljesítményre és a bizonyos fokú alkalmazások kialakítására, ezért alapos elemzésre és tervezésre van szükség, mielőtt felépítjük ezt a környezetet.
+1. Az Azure-beli Service Fabric fürterőforrás a mai régió, a virtuális gépek méretezési csoportjai pedig a fürtre épülnek. Ez azt jelenti, hogy regionális meghibásodás esetén előfordulhat, hogy a Azure Resource Manager vagy a Azure Portal segítségével szeretné kezelni a fürtöt. Ez akkor is előfordulhat, ha a fürt továbbra is fut, és közvetlenül kommunikálni tud vele. Ezen kívül az Azure jelenleg nem képes egyetlen, régión belül használható virtuális hálózat kialakítására. Ez azt jelenti, hogy az Azure-ban egy többrégiós fürtnek Nyilvános IP-címek kell lennie [a virtuálisgép-méretezési csoportokban](../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#public-ipv4-per-virtual-machine) vagy az [Azure VPN-átjárókban](../vpn-gateway/vpn-gateway-about-vpngateways.md)található minden virtuális géphez. Ezek a hálózatkezelési döntések eltérő hatással vannak a költségekre, a teljesítményre és a bizonyos fokú alkalmazások kialakítására, ezért alapos elemzésre és tervezésre van szükség, mielőtt felépítjük ezt a környezetet.
 2. Ezeknek a gépeknek a karbantartása, kezelése és monitorozása bonyolult lehet, különösen ha a különböző _típusú_ környezetek, például a különböző felhőalapú szolgáltatók, illetve a helyszíni erőforrások és az Azure közötti átfedések. Gondoskodni kell arról, hogy a frissítés, a monitorozás, a felügyelet és a diagnosztika a fürt és az alkalmazások számára is érthető legyen, mielőtt az éles számítási feladatokat egy ilyen környezetben futtatná. Ha már rendelkezik az Azure-ban vagy a saját adatközpontokban található problémák megoldásával, akkor valószínű, hogy ugyanezek a megoldások alkalmazhatók a Service Fabric-fürt kiépítésekor vagy futtatásakor is. 
 
 ### <a name="do-service-fabric-nodes-automatically-receive-os-updates"></a>Az Service Fabric-csomópontok automatikusan kapják meg az operációs rendszer frissítéseit?
@@ -59,7 +59,7 @@ A nagyméretű virtuálisgép-méretezési csoportokkal kapcsolatban más probl�
 
 Az éles munkaterheléseket futtató Service Fabric fürtök minimálisan támogatott mérete öt csomópont. A fejlesztői forgatókönyvek esetében támogatunk egy csomópontot (a Visual Studióban a gyors fejlesztési élményhez optimalizált) és öt csomópontos fürtöt.
 
-A következő három ok miatt legalább 5 csomóponttal rendelkező üzemi fürtöt igényelünk:
+A következő három ok miatt a termelési fürtnek legalább öt csomóponttal kell rendelkeznie:
 1. A Service Fabric-fürt állapot-nyilvántartó rendszerszolgáltatások készletét is futtatja, beleértve az elnevezési szolgáltatást és a Feladatátvevőfürt-kezelő szolgáltatást, még akkor is, ha nem fut felhasználói szolgáltatás. Ezek a rendszerszolgáltatások elengedhetetlenek ahhoz, hogy a fürt működőképes maradjon.
 2. A csomópontok egy-egy replikáját mindig elhelyezjük, így a fürt mérete a szolgáltatás (valójában partíció) replikáinak felső határa lehet.
 3. Mivel a fürt frissítése legalább egy csomópontot tartalmaz, legalább egy csomópont pufferét szeretnénk használni, ezért azt szeretnénk, hogy egy üzemi fürt legalább *két csomóponttal rendelkezzen a* minimálisan megengedettnél. A minimális érték egy rendszerszolgáltatás Kvórumának mérete, ahogy az alább is látható.  
@@ -84,7 +84,7 @@ Ebben a háttérben vizsgáljuk meg a lehetséges fürtkonfiguráció-konfigurá
 
 ### <a name="can-i-turn-off-my-cluster-at-nightweekends-to-save-costs"></a>Kikapcsolhatom a fürtöt éjjel/hétvégén a költségek megtakarítása érdekében?
 
-Általában nem. Service Fabric a helyi, ideiglenes lemezeken tárolja az állapotot, ami azt jelenti, hogy ha a virtuális gépet egy másik gazdagépre helyezi át, akkor az nem helyezi át azokat. Normál működés esetén ez nem jelent problémát, mivel az új csomópontot más csomópontok hozzák naprakészen. Ha azonban az összes csomópontot leállítja és később újraindítja, akkor jelentős lehetőség van arra, hogy a csomópontok többsége új gazdagépeken induljon el, és a rendszer nem állítható helyre.
+Általában nem. Service Fabric a helyi, ideiglenes lemezeken tárolja az állapotot, ami azt jelenti, hogy ha a virtuális gépet egy másik gazdagépre helyezi át, akkor az nem helyezi át azokat. Normál működés esetén ez nem probléma, mivel az új csomópontot más csomópontok is naprakészen tekintik. Ha azonban az összes csomópontot leállítja és később újraindítja, akkor jelentős lehetőség van arra, hogy a csomópontok többsége új gazdagépeken induljon el, és a rendszer nem állítható helyre.
 
 Ha fürtöket szeretne létrehozni az alkalmazás üzembe helyezése előtt, javasoljuk, hogy dinamikusan hozza létre ezeket a fürtöket a [folyamatos integráció/folyamatos üzembe helyezési folyamat](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)részeként.
 
@@ -122,11 +122,11 @@ Nem. Az alacsony prioritású virtuális gépek nem támogatottak.
 | FabricRM.exe |
 | FileStoreService.exe |
  
-### <a name="how-can-my-application-authenticate-to-keyvault-to-get-secrets"></a>Hogyan hitelesíthető az alkalmazás a kulcstartóban a titkok beszerzéséhez?
-Az alábbi módszer azt jelenti, hogy az alkalmazás a kulcstartóhoz való hitelesítéshez hitelesítő adatokat kér:
+### <a name="how-can-my-application-authenticate-to-key-vault-to-get-secrets"></a>Hogyan hitelesíthető az alkalmazásom Key Vault a titkok beszerzése érdekében?
+Az alábbiak azt jelentik, hogy az alkalmazás hitelesítő adatokat kapjon a Key Vault hitelesítéséhez:
 
-A. Az alkalmazások felépítési/csomagolási feladataként lekérhet egy tanúsítványt az SF alkalmazás adatcsomagjába, és ezzel hitelesítheti a kulcstartót.
-B. A virtuálisgép-méretezési csoport MSI-kompatibilis gazdagépei esetében létrehozhat egy egyszerű PowerShell-SetupEntryPoint az SF-alkalmazáshoz, amely [hozzáférési tokent kap az MSI-végponttól](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md), majd [lekéri a titkos kulcsokat](/powershell/module/azurerm.keyvault/get-azurekeyvaultsecret)a kulcstartóból.
+A. Az alkalmazások felépítési/csomagolási feladataként lekérhet egy tanúsítványt az SF alkalmazás adatcsomagjába, és ezzel hitelesítheti Key Vault.
+B. A virtuálisgép-méretezési csoport MSI-kompatibilis gazdagépei esetében létrehozhat egy egyszerű PowerShell-SetupEntryPoint az SF-alkalmazáshoz, amely [hozzáférési tokent kap az MSI-végponttól](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md), majd [lekéri a titkokat Key Vault](/powershell/module/azurerm.keyvault/get-azurekeyvaultsecret).
 
 ## <a name="application-design"></a>Alkalmazás kialakítása
 
@@ -155,7 +155,7 @@ Tegyük fel például, hogy megbízható gyűjteménye van egy 100-partícióval
 
 Ne feledje, hogy az egyes objektumokat háromszor kell tárolni (egy elsődleges és két replikát), ezért elegendő memória áll rendelkezésre a gyűjtemény körülbelül 35 000 000 objektumához, ha teljes kapacitással működik. Azt javasoljuk azonban, hogy legyen rugalmas a meghibásodási tartomány és a frissítési tartomány egyidejű elvesztése miatt, ami körülbelül 1/3 kapacitást képvisel, és a számot körülbelül 23 000 000-ra csökkentse.
 
-Vegye figyelembe, hogy ez a számítás a következőket is feltételezi:
+Ez a számítás azt is feltételezi, hogy:
 
 - Az adatok a partíciók közötti eloszlása nagyjából egységes, vagy a fürt erőforrás-kezelőjének betöltési mérőszámait jelenti. Alapértelmezés szerint a Service Fabric a replika száma alapján tölti be az egyenleget. Az előző példában 10 elsődleges replikát és 20 másodlagos replikát eredményezne a fürt mindegyik csomópontján. Ez jól működik olyan terhelés esetén, amely egyenletesen oszlik el a partíciók között. Ha a betöltés még nem áll fenn, be kell jelentenie a betöltést, hogy a Resource Manager több replikát is csomagoljon, és lehetővé tegye a nagyobb replikák számára, hogy több memóriát fogyasszanak egy adott csomóponton.
 
@@ -167,6 +167,12 @@ Vegye figyelembe, hogy ez a számítás a következőket is feltételezi:
 
 A megbízható szolgáltatásokhoz hasonlóan a actoring szolgáltatásban tárolható adatmennyiséget csak a fürt csomópontjain elérhető teljes lemezterület és memória korlátozza. Az egyes szereplők azonban a leghatékonyabb, ha a kis mennyiségű állam és az ahhoz kapcsolódó üzleti logika beágyazására használják őket. Általános szabályként az egyes színészeknek kilobájtban mért állapottal kell rendelkezniük.
 
+
+### <a name="where-does-azure-service-fabric-resource-provider-store-customer-data"></a>Hová tárolja az Azure Service Fabric erőforrás-szolgáltató az ügyféladatokat?
+
+Az Azure Service Fabric erőforrás-szolgáltatója nem helyezi át vagy nem tárolja az ügyféladatokat a-ben üzembe helyezett régióból.
+
+
 ## <a name="other-questions"></a>Egyéb kérdések
 
 ### <a name="how-does-service-fabric-relate-to-containers"></a>Hogyan kapcsolódik Service Fabric a tárolóhoz?
@@ -177,10 +183,10 @@ A tárolók egyszerű módszert biztosítanak a szolgáltatások és a függős�
 
 Nyílt forráskódú Service Fabric ([megbízható szolgáltatások keretrendszere](https://github.com/Azure/service-fabric-services-and-actors-dotnet), [megbízható szereplők keretrendszere](https://github.com/Azure/service-fabric-services-and-actors-dotnet), [ASP.net Core integrációs kódtárak](https://github.com/Azure/service-fabric-aspnetcore), [Service Fabric Explorer](https://github.com/Azure/service-fabric-explorer)és [Service Fabric CLI](https://github.com/Azure/service-fabric-cli)) találhatók a githubon, és közösségi hozzájárulásokat fogadhatnak ezekhez a projektekhez. 
 
-[Nemrég bejelentettük](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric) , hogy a Service Fabric futtatókörnyezet nyílt forráskódú. Ezen a ponton a GitHubon a Linux Build-és tesztelési eszközeivel is rendelkezünk a [Service Fabric](https://github.com/Microsoft/service-fabric/) -tárházban, ami azt jelenti, hogy a tárház klónozása, a Linux-alapú Service Fabric, az alapszintű tesztek futtatása, a nyílt problémák és a lekéréses kérelmek elküldése Keményen dolgozunk a Windows-Build környezet áttelepítésének és a teljes körű CI-környezetnek a beszerzésével.
+[Nemrég bejelentettük](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric) , hogy a Service Fabric futtatókörnyezet nyílt forráskódú. Ezen a ponton a GitHubon a Linux Build-és tesztelési eszközeivel is rendelkezünk a [Service Fabric](https://github.com/Microsoft/service-fabric/) -tárházban, ami azt jelenti, hogy a tárház klónozása, a Linux-alapú Service Fabric, az alapszintű tesztek futtatása, a nyílt problémák és a lekéréses kérelmek elküldése. Keményen dolgozunk a Windows-Build környezet áttelepítésének és a teljes körű CI-környezetnek a beszerzésével.
 
 További részletekért tekintse meg a [Service Fabric blogot](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric) .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerje meg az [alapszintű Service Fabric fogalmakat](service-fabric-technical-overview.md) és az [ajánlott eljárásokat](service-fabric-best-practices-overview.md)

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/16/2020
 ms.author: alsin
-ms.openlocfilehash: 01c9c4389e2c950fe68c8be171b4c50d3d6271c1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f4ebf433237193c0db7859b029bb224c72c92eae
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87052037"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291021"
 ---
 # <a name="red-hat-enterprise-linux-rhel-images-available-in-azure"></a>Az Azure-ban elérhető Red Hat Enterprise Linux-(RHEL-) rendszerképek
 Az Azure különféle RHEL-rendszerképeket kínál különböző használati esetekhez.
@@ -88,9 +88,17 @@ RHEL – SAP-HA   | 7.4          | LVM    | Linux-ügynök | RHEL 7,4 for SAP az
 RHEL – BYOS     |RHEL – lvm74| LVM    | Linux-ügynök | A RHEL 7,4 BYOS-lemezképek, amelyek nem kapcsolódnak a frissítések valamelyikéhez, nem számítanak fel RHEL prémium díjat.
 |             |RHEL – lvm75| LVM    | Linux-ügynök | A RHEL 7,5 BYOS-lemezképek, amelyek nem kapcsolódnak a frissítések valamelyikéhez, nem számítanak fel RHEL prémium díjat.
 |             |RHEL – lvm76| LVM    | Linux-ügynök | A RHEL 7,6 BYOS-lemezképek, amelyek nem kapcsolódnak a frissítések valamelyikéhez, nem számítanak fel RHEL prémium díjat.
+|             |RHEL-lvm76-Gen2| LVM    | Linux-ügynök | A RHEL 7,6 2. generációs BYOS-lemezképek, amelyek nem kapcsolódnak a frissítések valamelyik forrásához, nem számítanak fel RHEL prémium díjat.
 |             |RHEL – lvm77| LVM    | Linux-ügynök | A RHEL 7,7 BYOS-lemezképek, amelyek nem kapcsolódnak a frissítések valamelyikéhez, nem számítanak fel RHEL prémium díjat.
+|             |RHEL-lvm77-Gen2| LVM    | Linux-ügynök | A RHEL 7,7 2. generációs BYOS-lemezképek, amelyek nem kapcsolódnak a frissítések valamelyik forrásához, nem számítanak fel RHEL prémium díjat.
+|             |RHEL – lvm78| LVM    | Linux-ügynök | A RHEL 7,8 BYOS-lemezképek, amelyek nem kapcsolódnak a frissítések valamelyikéhez, nem számítanak fel RHEL prémium díjat.
+|             |RHEL-lvm78-Gen2| LVM    | Linux-ügynök | A RHEL 7,8 2. generációs BYOS-lemezképek, amelyek nem kapcsolódnak a frissítések valamelyik forrásához, nem számítanak fel RHEL prémium díjat.
 |             |RHEL – lvm8 | LVM    | Linux-ügynök | A RHEL 8,0 BYOS-lemezképek, amelyek nem kapcsolódnak a frissítések valamelyikéhez, nem számítanak fel RHEL prémium díjat.
+|             |RHEL-lvm8-Gen2 | LVM    | Linux-ügynök | A RHEL 8,0 2. generációs BYOS-lemezképek, amelyek nem kapcsolódnak a frissítések valamelyik forrásához, nem számítanak fel RHEL prémium díjat.
 |             |RHEL – lvm81 | LVM    | Linux-ügynök | A RHEL 8,1 BYOS-lemezképek, amelyek nem kapcsolódnak a frissítések valamelyikéhez, nem számítanak fel RHEL prémium díjat.
+|             |RHEL-lvm81-Gen2 | LVM    | Linux-ügynök | A RHEL 8,1 2. generációs BYOS-lemezképek, amelyek nem kapcsolódnak a frissítések valamelyik forrásához, nem számítanak fel RHEL prémium díjat.
+|             |RHEL – lvm82 | LVM    | Linux-ügynök | A RHEL 8,2 BYOS-lemezképek, amelyek nem kapcsolódnak a frissítések valamelyikéhez, nem számítanak fel RHEL prémium díjat.
+|             |RHEL-lvm82-Gen2 | LVM    | Linux-ügynök | A RHEL 8,2 2. generációs BYOS-lemezképek, amelyek nem kapcsolódnak a frissítések valamelyik forrásához, nem számítanak fel RHEL prémium díjat.
 
 > [!NOTE]
 > A RHEL-SAP-HANA-termék ajánlata a Red Hat által életbe lépésnek minősül. A meglévő telepítések továbbra is rendesen működnek, de a Red Hat azt ajánlja, hogy az ügyfelek a RHEL-SAP-HANA rendszerképekről a RHEL-SAP-if lemezképekre telepítsenek, beleértve a SAP HANA-tárházat és a HA-bővítményt. A Red Hat SAP felhőalapú ajánlatával kapcsolatos további részletek [itt](https://access.redhat.com/articles/3751271)érhetők el.

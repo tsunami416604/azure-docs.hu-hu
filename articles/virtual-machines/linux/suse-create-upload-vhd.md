@@ -5,15 +5,15 @@ author: gbowerman
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.workload: infrastructure-services
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/12/2018
 ms.author: guybo
-ms.openlocfilehash: ed14aee756456e35198a501df309fc9eb032898e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 73e07c612486d5f48b1ad3eca8044a561549092b
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080080"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292128"
 ---
 # <a name="prepare-a-sles-or-opensuse-virtual-machine-for-azure"></a>SLES- vagy openSUSE-alapú virtuális gép előkészítése az Azure-beli használatra
 
@@ -133,7 +133,7 @@ A saját virtuális merevlemez kiépítésének alternatívájaként a SUSE a BY
 2. Kattintson a **Kapcsolódás** gombra a virtuális gép ablakának megnyitásához.
 3. A rendszerhéjon futtassa a következő parancsot: " `zypper lr` ". Ha a parancs a következőhöz hasonló kimenetet ad vissza, akkor a Tárházak a várt módon lesznek konfigurálva – nincs szükség módosításra (vegye figyelembe, hogy a verziószámok száma változhat):
 
-   | # | Alias                 | Name                  | Engedélyezve | Frissítés
+   | # | Alias                 | Név                  | Engedélyezve | Frissítés
    | - | :-------------------- | :-------------------- | :------ | :------
    | 1 | Felhő: Tools_13.1      | Felhő: Tools_13.1      | Igen     | Igen
    | 2 | openSUSE_13.1_OSS     | openSUSE_13.1_OSS     | Igen     | Igen

@@ -3,12 +3,12 @@ title: Tesztkörnyezet-házirendek kezelése a Azure DevTest Labsban | Microsoft
 description: Megtudhatja, hogyan határozhat meg olyan labor-házirendeket, mint a virtuálisgép-méretek, a virtuális gépek maximális száma felhasználónként és a Leállítás automatizálása
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 95d91cfc70d603187543e308d2b1355c549c88f8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ab2e2b1905a515d3a85339099f02d93d8e5c0424
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483397"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290431"
 ---
 # <a name="manage-all-policies-for-a-lab-in-azure-devtest-labs"></a>A labor összes szabályzatának kezelése Azure DevTest Labs
 
@@ -29,7 +29,7 @@ Az engedélyezett virtuálisgép-méretek beállítására szolgáló szabályza
 
 1. Ha engedélyezi ezt a házirendet, válasszon ki egy vagy több virtuálisgép-méretet, amelyek a laborban hozhatók létre.
 
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 ## <a name="set-virtual-machines-per-user"></a>Virtuális gépek beállítása felhasználónként
 A **virtuális gépekre** vonatkozó házirend felhasználónként megadhatja, hogy az egyes felhasználók hány virtuális gépet hozhatnak létre. Ha a felhasználó egy virtuális gépet próbál létrehozni vagy igényelni, amikor a felhasználói korlát teljesült, egy hibaüzenet jelzi, hogy a virtuális gép nem hozható létre/nem igényelhető. 
@@ -42,7 +42,7 @@ A **virtuális gépekre** vonatkozó házirend felhasználónként megadhatja, h
 
 1. Válassza az **Igen** lehetőséget, ha korlátozni szeretné az SSD-t (SSD-t) használó virtuális gépek számát. Ha nem szeretné korlátozni az SSD-t használó virtuális gépek számát, válassza a **nem**lehetőséget. Ha az **Igen**lehetőséget választja, adjon meg egy értéket, amely az SSD használatával létrehozható virtuális gépek számát jelzi. 
 
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 ## <a name="set-virtual-machines-per-lab"></a>Virtuális gépek beállítása tesztkörnyezetben
 A **virtuális gépekre** vonatkozó szabályzat a laborban meghatározza az aktuális laborhoz létrehozható virtuális gépek számát. Ha a felhasználó egy virtuális gépet próbál létrehozni a labor korlátjának teljesülése esetén, a hibaüzenet azt jelzi, hogy a virtuális gép nem hozható létre. 
@@ -55,7 +55,7 @@ A **virtuális gépekre** vonatkozó szabályzat a laborban meghatározza az akt
 
 1. Válassza az **Igen** lehetőséget, ha korlátozni szeretné az SSD-t (SSD-t) használó virtuális gépek számát. Ha nem szeretné korlátozni az SSD-t használó virtuális gépek számát, válassza a **nem**lehetőséget. Ha az **Igen**lehetőséget választja, adjon meg egy értéket, amely az SSD használatával létrehozható virtuális gépek számát jelzi. 
 
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 ## <a name="set-auto-shutdown"></a>Automatikus leállítás beállítása
 Az automatikus leállítási szabályzat segít a laborban lévő virtuális gépek leállításának időpontjának meghatározásában.
@@ -70,9 +70,9 @@ Az automatikus leállítási szabályzat segít a laborban lévő virtuális gé
 
 1. Adja meg az **Igen** vagy a **nem** lehetőséget az értesítés 15 perccel a megadott automatikus leállítási idő előtti elküldéséhez. Ha az **Igen**lehetőséget választja, adjon meg egy WEBHOOK URL-végpontot vagy egy e-mail-címet, amely megadja, hogy hová szeretné közzétenni vagy elküldeni az értesítést. A felhasználó értesítést kap, és a Leállítás elhalasztására van lehetőség.
 
-   A webhookokkal kapcsolatos további információkért lásd: [webhook vagy API Azure-függvény létrehozása](../azure-functions/functions-create-a-web-hook-or-api-function.md). 
+   A webhookokkal kapcsolatos további információkért lásd: [webhook vagy API Azure-függvény létrehozása](../azure-functions/functions-bindings-http-webhook.md). 
 
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 Alapértelmezés szerint, ha engedélyezve van, ez a házirend az aktuális laborban található összes virtuális gépre vonatkozik. Ha egy adott virtuális gépről szeretné eltávolítani a beállítást, nyissa meg a virtuális gép felügyeleti paneljét, és módosítsa az **automatikus leállítás** beállítást.
 
@@ -111,7 +111,7 @@ Az automatikus indítási házirend segítségével megadhatja, hogy mikor indul
 
 3. Ha engedélyezi ezt a házirendet, határozza meg az ütemezett kezdési időpontot, az időzónát és a hét azon napját, amelyre az idő vonatkozik. 
 
-4. Kattintson a **Mentés** gombra.
+4. Válassza a **Mentés** lehetőséget.
 
 Ha engedélyezve van, a rendszer nem alkalmazza automatikusan a szabályzatot az aktuális laborban található virtuális gépekre. Ha egy adott virtuális gépre szeretné alkalmazni a beállítást, nyissa meg a virtuális gép felügyeleti paneljét, és módosítsa az **automatikus indítási** beállítást.
 
@@ -129,4 +129,3 @@ Miután meghatározta és alkalmazta a tesztkörnyezet különböző virtuálisg
 * [Egyéni rendszerkép létrehozása](devtest-lab-create-template.md) – virtuális gép létrehozásakor meg kell adnia egy alapot, amely lehet egyéni rendszerkép vagy Piactéri rendszerkép is. Ez a cikk bemutatja, hogyan hozhat létre egyéni rendszerképet egy VHD-fájlból.
 * [Marketplace-lemezképek konfigurálása](devtest-lab-configure-marketplace-images.md) – Azure DevTest Labs támogatja a virtuális gépek Azure Marketplace-lemezképek alapján történő létrehozását. Ez a cikk bemutatja, hogyan határozható meg, hogy mely, ha van ilyen, Azure Marketplace-lemezképeket használhat a virtuális gépek tesztkörnyezetben való létrehozásakor.
 * [Virtuális gép létrehozása laborban](devtest-lab-add-vm.md) – azt mutatja be, hogyan hozható létre virtuális gép egy alaprendszerképből (akár egyéni, akár piactér), és hogyan használhatók az összetevők a virtuális gépen.
-

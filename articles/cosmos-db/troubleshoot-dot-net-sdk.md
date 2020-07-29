@@ -8,11 +8,12 @@ ms.author: anfeldma
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 0eb5d9cd86be05e5ad69bc9543231987e3c1dd2c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1dd6bdc66146eb7dfe155e7d1091eee5cca450a0
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85799265"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290921"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-net-sdk"></a>Az Azure Cosmos DB .NET SDK használatakor felmerülő hibák diagnosztizálása és elhárítása
 
@@ -48,27 +49,40 @@ Ellenőrizze, hogy aktív-e a [GitHub-problémák szakasza](https://github.com/A
 * Az ügyfélszámítógépen lévő erőforrások hiánya miatt előfordulhat, hogy kapcsolati vagy rendelkezésre állási problémákba ütközik. Javasoljuk, hogy a CPU-kihasználtságot a Azure Cosmos DB-ügyfelet futtató csomópontokon figyelje, és ha nagy terhelésen futnak, fel kell skálázást.
 
 ### <a name="check-the-portal-metrics"></a>A portál metrikáinak megtekintése
-A [portál metrikáinak](monitor-accounts.md) ellenőrzése segít meghatározni, hogy az ügyféloldali probléma-e, vagy hogy van-e probléma a szolgáltatással. Ha például a mérőszámok nagy arányban korlátozott kérelmeket tartalmaznak (a 429-as HTTP-állapotkód), ami azt jelenti, hogy a kérést a rendszer lekéri, akkor ellenőrizze, hogy a [kérelem sebessége túl nagy] . 
+A [portál metrikáinak](monitor-accounts.md) ellenőrzése segít meghatározni, hogy az ügyféloldali probléma-e, vagy hogy van-e probléma a szolgáltatással. Ha például a mérőszámok nagy arányban korlátozott kérelmeket tartalmaznak (a 429-as HTTP-állapotkód), ami azt jelenti, hogy a kérést a rendszer lekéri, akkor ellenőrizze, hogy a [kérelem sebessége túl nagy](troubleshoot-request-rate-too-large.md) . 
 
-### <a name="requests-timeouts"></a><a name="request-timeouts"></a>Kérelmek időtúllépései
-A RequestTimeout általában a Direct/TCP használatakor fordul elő, de az átjáró módban is történhet. Ezek a hibák a leggyakoribb ismert okok, és javaslatok a probléma megoldására.
+## <a name="common-error-status-codes"></a>Gyakori hibák állapotkódok<a id="error-codes"></a>
 
-* A CPU-kihasználtság magas, ami késést és/vagy kérelmek időtúllépését okozhatja. Az ügyfél vertikális felskálázást végez a gazdagépen, hogy több erőforrást biztosítson, vagy ha a terhelés több gépen is elosztható.
-* A szoftvercsatorna/port rendelkezésre állása alacsony lehet. Az Azure-ban való futtatáskor a .NET SDK-t használó ügyfelek elérhetik az Azure SNAT (PAT) portjának kimerülését. Ha csökkenteni szeretné a probléma előfordulásának esélyét, használja a .NET SDK legújabb, 2. x vagy 3. x verzióját. Ez egy példa arra, hogy miért ajánlott mindig a legújabb SDK-verziót futtatni.
-* Több DocumentClient-példány létrehozása a kapcsolati és időtúllépési problémákhoz vezethet. Kövesse a [teljesítménnyel kapcsolatos tippeket](performance-tips.md), és használjon egyetlen DocumentClient-példányt egy teljes folyamaton belül.
-* A felhasználók időnként emelt szintű késést vagy kérelmek időtúllépését láthatják, mert a gyűjtemények nem megfelelő módon vannak kiépítve, a háttér-szabályozási kérelmek és az ügyfél belső újrapróbálkozások. Keresse meg a [portál metrikáit](monitor-accounts.md).
-* A Azure Cosmos DB a teljes kiosztott átviteli sebességet egyenletesen osztja el a fizikai partíciók között. Tekintse meg a portál metrikáit, és ellenőrizze, hogy a számítási feladatok egy gyors [partíciós kulcson](partition-data.md)futnak-e. Ez azt eredményezi, hogy az összesített felhasznált átviteli sebesség (RU/s) úgy tűnik, hogy a kiépített RUs alatt legyenek, de egyetlen partíción felhasznált átviteli sebesség (RU/s) túllépi a kiosztott átviteli sebességet. 
-* Emellett az 2,0 SDK a csatornák szemantikai feladását is hozzáadja a közvetlen/TCP-kapcsolatokhoz. Egy TCP-kapcsolatok egyszerre több kérelemhez használatosak. Ez két problémát eredményezhet bizonyos esetekben:
-    * A magas fokú párhuzamosság a csatornán való kivezetéshez vezethet.
-    * A nagyméretű kérelmek vagy válaszok a csatornán kívüli blokkolást okozhatnak a csatornán, és súlyosbítják a versengés mértékét, akár viszonylag alacsony fokú párhuzamosságtal is.
-    * Ha az eset mindkét kategóriába tartozik (vagy ha a magas CPU-kihasználtság gyanúja van), akkor ezek lehetséges enyhítések:
-        * Próbálja meg az alkalmazás felskálázását.
-        * Emellett a [nyomkövetési figyelővel](https://github.com/Azure/azure-cosmosdb-dotnet/blob/master/docs/documentdb-sdk_capture_etl.md) is rögzítheti az SDK-naplókat, így további részleteket érhet el.
+| Állapotkód | Leírás | 
+|----------|-------------|
+| 400 | Hibás kérés (a hibaüzenettől függ)| 
+| 401 | [Nincs engedélyezve](troubleshoot-unauthorized.md) | 
+| 404 | [Az erőforrás nem található](troubleshoot-not-found.md) |
+| 408 | [A kérelem időkorlátja lejárt](troubleshoot-dot-net-sdk-request-timeout.md) |
+| 409 | Ütközési hiba az, amikor egy meglévő erőforrás elvégezte egy írási művelethez megadott erőforrás AZONOSÍTÓját. A probléma megoldásához használjon másik azonosítót az erőforráshoz, mivel az AZONOSÍTÓnak egyedinek kell lennie az összes olyan dokumentumon belül, amelynek a partíciós kulcs értéke azonos. |
+| 410 | Megszűnt kivételek (átmeneti hiba, amely nem sértheti az SLA-t) |
+| 412 | Az előfeltétel meghibásodása esetén a művelet olyan eTag adott meg, amely eltér a kiszolgálón elérhető verziótól. Optimista egyidejűségi hiba történt. Az erőforrás legfrissebb verziójának beolvasása és a kérés eTagjének frissítése után próbálkozzon újra a kéréssel.
+| 413 | [A kérelem entitása túl nagy](concepts-limits.md#per-item-limits) |
+| 429 | [Túl sok kérelem](troubleshoot-request-rate-too-large.md) |
+| 449 | Átmeneti hiba, amely csak írási műveletekben fordul elő, és biztonságos az újrapróbálkozáshoz |
+| 500 | A művelet váratlan szolgáltatási hiba miatt nem sikerült. Vegye fel a kapcsolatot az ügyfélszolgálattal. Lásd: [Azure-támogatási probléma](https://aka.ms/azure-support)bejelentése. |
+| 503 | [A szolgáltatás nem érhető el](troubleshoot-service-unavailable.md) | 
+
+### <a name="azure-snat-pat-port-exhaustion"></a><a name="snat"></a>Az Azure SNAT (PAT) portjának kimerülése
+
+Ha az alkalmazás [nyilvános IP-cím nélküli Azure-Virtual Machines](../load-balancer/load-balancer-outbound-connections.md)van telepítve, alapértelmezés szerint az [Azure SNAT-portok](../load-balancer/load-balancer-outbound-connections.md#preallocatedports) kapcsolatot létesít a virtuális gépen kívüli végpontokkal. A virtuális gépről a Azure Cosmos DB végpont számára engedélyezett kapcsolatok számát az [Azure SNAT konfigurációja](../load-balancer/load-balancer-outbound-connections.md#preallocatedports)korlátozza. Ez a helyzet a kapcsolat szabályozásához, a kapcsolat bezárásához vagy a fent említett [kérelmek időtúllépéséhez](troubleshoot-dot-net-sdk-request-timeout.md)vezethet.
+
+ Az Azure SNAT-portokat csak akkor használja a rendszer, ha a virtuális gép magánhálózati IP-címmel csatlakozik egy nyilvános IP-címhez. Az Azure SNAT-korlátozás elkerülése érdekében két Áthidaló megoldás létezik (ha már egyetlen ügyfél-példányt használ a teljes alkalmazásban):
+
+* Adja hozzá Azure Cosmos DB szolgáltatási végpontját az Azure Virtual Machines Virtual Network alhálózatához. További információ: [Azure Virtual Network Service-végpontok](../virtual-network/virtual-network-service-endpoints-overview.md). 
+
+    Ha a szolgáltatási végpont engedélyezve van, a rendszer a kérelmeket már nem küldi el a nyilvános IP-címről Azure Cosmos DB. Ehelyett a rendszer elküldi a virtuális hálózatot és az alhálózati identitást. Ez a változás akkor okozhat tűzfalat, ha csak a nyilvános IP-címek engedélyezettek. Ha tűzfalat használ, a szolgáltatás végpontjának engedélyezésekor [Virtual Network ACL](../virtual-network/virtual-networks-acl.md)-EK használatával adjon hozzá egy alhálózatot a tűzfalhoz.
+* Rendeljen hozzá egy [nyilvános IP-címet az Azure-beli virtuális géphez](../load-balancer/troubleshoot-outbound-connection.md#assignilpip).
 
 ### <a name="high-network-latency"></a><a name="high-network-latency"></a>Nagy hálózati késés
 A hálózati késést a v2 SDK- [ban vagy a](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.responsemessage.diagnostics?view=azure-dotnet#Microsoft_Azure_Cosmos_ResponseMessage_Diagnostics) v3 SDK-ban lévő diagnosztika [diagnosztikai karakterláncának](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.resourceresponsebase.requestdiagnosticsstring?view=azure-dotnet) használatával lehet azonosítani.
 
-Ha nincsenek [időtúllépések](#request-timeouts) , és a diagnosztika egyetlen kérést mutat be, ahol a nagy késés nyilvánvaló a és a közötti különbségnél `ResponseTime` `RequestStartTime` (>300 ezredmásodperc ebben a példában):
+Ha nincsenek [időtúllépések](troubleshoot-dot-net-sdk-request-timeout.md) , és a diagnosztika egyetlen kérést mutat be, ahol a nagy késés nyilvánvaló a és a közötti különbségnél `ResponseTime` `RequestStartTime` (>300 ezredmásodperc ebben a példában):
 
 ```bash
 RequestStartTime: 2020-03-09T22:44:49.5373624Z, RequestEndTime: 2020-03-09T22:44:49.9279906Z,  Number of regions attempted:1
@@ -84,59 +98,18 @@ Ennek a késésnek több oka lehet:
     * [Gyorsított hálózatkezelés engedélyezése egy meglévő virtuális gépen](../virtual-network/create-vm-accelerated-networking-powershell.md#enable-accelerated-networking-on-existing-vms).
     * Érdemes lehet [magasabb végpontú virtuális gépet](../virtual-machines/windows/sizes.md)használni.
 
-### <a name="azure-snat-pat-port-exhaustion"></a><a name="snat"></a>Az Azure SNAT (PAT) portjának kimerülése
-
-Ha az alkalmazás [nyilvános IP-cím nélküli Azure-Virtual Machines](../load-balancer/load-balancer-outbound-connections.md)van telepítve, alapértelmezés szerint az [Azure SNAT-portok](../load-balancer/load-balancer-outbound-connections.md#preallocatedports) kapcsolatot létesít a virtuális gépen kívüli végpontokkal. A virtuális gépről a Azure Cosmos DB végpont számára engedélyezett kapcsolatok számát az [Azure SNAT konfigurációja](../load-balancer/load-balancer-outbound-connections.md#preallocatedports)korlátozza. Ez a helyzet a kapcsolat szabályozásához, a kapcsolat bezárásához vagy a fent említett [kérelmek időtúllépéséhez](#request-timeouts)vezethet.
-
- Az Azure SNAT-portokat csak akkor használja a rendszer, ha a virtuális gép magánhálózati IP-címmel csatlakozik egy nyilvános IP-címhez. Az Azure SNAT-korlátozás elkerülése érdekében két Áthidaló megoldás létezik (ha már egyetlen ügyfél-példányt használ a teljes alkalmazásban):
-
-* Adja hozzá Azure Cosmos DB szolgáltatási végpontját az Azure Virtual Machines Virtual Network alhálózatához. További információ: [Azure Virtual Network Service-végpontok](../virtual-network/virtual-network-service-endpoints-overview.md). 
-
-    Ha a szolgáltatási végpont engedélyezve van, a rendszer a kérelmeket már nem küldi el a nyilvános IP-címről Azure Cosmos DB. Ehelyett a rendszer elküldi a virtuális hálózatot és az alhálózati identitást. Ez a változás akkor okozhat tűzfalat, ha csak a nyilvános IP-címek engedélyezettek. Ha tűzfalat használ, a szolgáltatás végpontjának engedélyezésekor [Virtual Network ACL](../virtual-network/virtual-networks-acl.md)-EK használatával adjon hozzá egy alhálózatot a tűzfalhoz.
-* Rendeljen hozzá egy [nyilvános IP-címet az Azure-beli virtuális géphez](../load-balancer/troubleshoot-outbound-connection.md#assignilpip).
-
-### <a name="http-proxy"></a>HTTP-proxy
-Ha HTTP-proxyt használ, győződjön meg arról, hogy az képes támogatni az SDK-ban konfigurált kapcsolatok számát `ConnectionPolicy` .
-Ellenkező esetben a csatlakoztatási problémákkal szembesül.
-
-### <a name="request-rate-too-large"></a><a name="request-rate-too-large"></a>Túl nagy a kérelmek aránya
-"A kérelmek aránya túl nagy" vagy a 429-es hibakód azt jelzi, hogy a kérések szabályozása folyamatban van, mert a felhasznált átviteli sebesség (RU/s) túllépte a [kiosztott átviteli sebességet](set-throughput.md). Az SDK automatikusan újrapróbálkozik a kérelmekkel a megadott [újrapróbálkozási házirend](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.connectionpolicy.retryoptions?view=azure-dotnet)alapján. Ha ez a hiba gyakran előfordul, érdemes lehet növelni az átviteli sebességet a gyűjteményen. Tekintse [meg a portál metrikáit](use-metrics.md) , és ellenőrizze, hogy a 429-es hibát észlel-e. Tekintse át a [partíciós kulcsot](partitioning-overview.md#choose-partitionkey) , és győződjön meg arról, hogy a tárolók és a kérelmek mennyiségének egyenletes eloszlását eredményezi. 
-
 ### <a name="slow-query-performance"></a>Lassú lekérdezési teljesítmény
 A [lekérdezési metrikák](sql-api-query-metrics.md) segítenek meghatározni, hogy a lekérdezés hol tölti le a legtöbb időt. A lekérdezési mérőszámokból megtekintheti, hogy mennyi időt tölt a háttér és a-ügyfél.
 * Ha a háttérbeli lekérdezés gyorsan visszatér, és nagy időt tölt az ügyfélen, ellenőrizze a terhelést a gépen. Valószínű, hogy nincs elegendő erőforrás, és az SDK arra vár, hogy az erőforrások elérhetők legyenek a válasz kezelésére.
 * Ha a háttérbeli lekérdezés lassú, próbálkozzon [a lekérdezés optimalizálásával](optimize-cost-queries.md) , és tekintse meg az aktuális [indexelési házirendet](index-overview.md) 
 
-### <a name="http-401-the-mac-signature-found-in-the-http-request-is-not-the-same-as-the-computed-signature"></a>HTTP 401: a HTTP-kérelemben található MAC-aláírás nem egyezik meg a számított aláírással
-Ha a következő 401-es hibaüzenetet kapta: „A HTTP-kérelemben található MAC-aláírás nem egyezik meg a kiszámított aláírással.”, ezt a következő forgatókönyvek okozhatják.
+## <a name="next-steps"></a>További lépések
 
-1. Lecserélődött a kulcs, és a kulcsrotáció során nem követték az [ajánlott eljárásokat](secure-access-to-data.md#key-rotation). Általában ez a probléma kiváltó oka. A Cosmos DB-fiókkulcs rotációja néhány másodperctől akár több napig is tarthat, a Cosmos DB-fiók méretétől függően.
-   1. A kulcs lecserélődése után rövid időn belül megjelenik a MAC-aláírással kapcsolatos 401-es hiba, és végül magától megszűnik. 
-1. A kulcs helytelenül van konfigurálva az alkalmazásban, így nem egyezik a fiókkal.
-   1. A 401-es MAC-aláírási probléma az összes hívásnál jelentkezik
-1. Az alkalmazás csak [olvasható kulcsokat](secure-access-to-data.md#master-keys) használ az írási műveletekhez.
-   1. 401-es MAC-aláírási probléma csak akkor fordul elő, ha az alkalmazás írási kéréseket végez. Az olvasási kérések sikeresek lesznek.
-1. A tárolók létrehozásakor versenyhelyzet áll fenn. Egy alkalmazáspéldány megpróbál hozzáférni a tárolóhoz, még mielőtt a tároló létrehozása befejeződne. Ez leggyakrabban akkor fordul elő, ha az alkalmazás fut, és ezalatt törlik a tárolót, majd ugyanazzal a névvel újból létrehozzák. Az SDK megpróbálja használni az új tárolót, de a tároló létrehozása még folyamatban van, így még nem rendelkezik a kulcsokkal.
-   1. A 401-es MAC-aláírási probléma röviddel a tároló létrehozása után és csak a tároló létrehozásának befejezéséig jelentkezik.
- 
- ### <a name="http-error-400-the-size-of-the-request-headers-is-too-long"></a>400-es HTTP-hiba. A kérések fejlécének mérete túl hosszú.
- A fejléc mérete nagyra nőtt, és meghaladja a maximálisan megengedett méretet. A legújabb SDK-t mindig ajánlott használni. Ügyeljen arra, hogy legalább a [3. x](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/changelog.md) vagy [2. x](https://github.com/Azure/azure-cosmos-dotnet-v2/blob/master/changelog.md)verziót használja, amely hozzáadja a fejléc méretének nyomon követését a kivételt jelző üzenethez.
-
-Okoz
- 1. A munkamenet-jogkivonat túl nagyra nőtt. A munkamenet-jogkivonat nő, mint a partíciók számának növekedése a tárolóban.
- 2. A folytatási token nagyra nőtt. A különböző lekérdezések a folytatási tokenek különböző méreteit fogják tartalmazni.
- 3. Ezt a munkamenet-jogkivonat és a folytatási jogkivonat kombinációja okozza.
-
-Megoldás:
-   1. Kövesse a [teljesítménnyel kapcsolatos tippeket](performance-tips.md) , és alakítsa át az alkalmazást Direct + TCP-kapcsolatok módba. A Direct + TCP nem rendelkezik a fejléc méretére vonatkozó korlátozással, például a HTTP-vel, amely elkerüli ezt a problémát.
-   2. Ha a munkamenet-token az OK, akkor ideiglenes megoldás az alkalmazás újraindítása. Az alkalmazás-példány újraindítása a munkamenet-token alaphelyzetbe állítását állítja vissza. Ha a kivételek az újraindítás után leállnak, akkor megerősíti, hogy a munkamenet-token oka. A rendszer végül a kivételt okozó méretre nő vissza.
-   3. Ha az alkalmazás nem konvertálható a Direct + TCP értékre, és a munkamenet-token az OK, akkor a megoldás az ügyfél konzisztencia- [szintjének](consistency-levels.md)módosításával végezhető el. A munkamenet-jogkivonat csak a munkamenet-konzisztencia esetében használatos, amely a Cosmos DB alapértelmezett értéke. Bármely más konzisztencia-szint nem fogja használni a munkamenet-jogkivonatot. 
-   4. Ha az alkalmazás nem alakítható át a Direct + TCP értékre, és a folytatási token az OK, akkor próbálja meg beállítani a ResponseContinuationTokenLimitInKb beállítást. A beállítás a v2-es vagy a v3-as QueryRequestOptions FeedOptions érhető el.
+* A [.net v3](performance-tips-dotnet-sdk-v3-sql.md) és a [.NET v2](performance-tips.md) teljesítményével kapcsolatos irányelvek ismertetése
+* Tudnivalók a [reaktor-alapú Java SDK](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-pattern-guide.md) -k használatáról
 
  <!--Anchors-->
 [Common issues and workarounds]: #common-issues-workarounds
 [Enable client SDK logging]: #logging
-[Túl nagy a kérelmek aránya]: #request-rate-too-large
-[Request Timeouts]: #request-timeouts
 [Azure SNAT (PAT) port exhaustion]: #snat
 [Production check list]: #production-check-list

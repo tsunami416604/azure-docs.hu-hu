@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.date: 07/20/2020
 ms.author: amsriva
 ms.topic: conceptual
-ms.openlocfilehash: b3e6bc6d2dd5568dcc11a37c6ab44bd3b4089c66
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 23f76f18256ecadcbef59a498292222ea358008f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87067908"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290988"
 ---
 # <a name="application-gateway-multiple-site-hosting"></a>Application Gateway – több hely üzemeltetése
 
@@ -40,12 +40,8 @@ Ha helyettesítő karaktert használ az állomásnévben, több állomásnév is
 >[!NOTE]
 > Ez a funkció előzetes verzióban érhető el, és csak a Application Gateway Standard_v2 és WAF_v2 SKU-ban érhető el. Az előzetes verziókkal kapcsolatos további tudnivalókért tekintse meg [a használati feltételeket itt](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-A [Azure Portalban](create-multiple-sites-portal.md)megadhatja azokat külön szövegmezőben, ahogy az alábbi képernyőképen is látható.
-
-:::image type="content" source="./media/multiple-site-overview/wildcard-listener-example.png" alt-text="Helyettesítő karakteres figyelő – példa konfiguráció":::
-
 >[!NOTE]
->Ha új többhelyes figyelőt hoz létre, vagy egynél több állomásnevet ad hozzá a meglévő többhelyes figyelőhöz a Azure Portal, a rendszer alapértelmezés szerint hozzáadja a `HostNames` figyelő konfigurációjának paraméteréhez, amely további képességeket ad a `HostName` konfigurációban lévő meglévő paraméterhez.
+>Ez a funkció jelenleg csak [Azure PowerShell](tutorial-multiple-sites-powershell.md) és az [Azure CLI](tutorial-multiple-sites-cli.md)-n keresztül érhető el. A portál támogatása hamarosan elérhetővé válik.
 
 [Azure PowerShell](tutorial-multiple-sites-powershell.md)a `-HostNames` helyett a parancsot kell használnia `-HostName` . Az állomásnevek esetében legfeljebb 5 állomásnév adható meg vesszővel tagolt értékként, és helyettesítő karaktereket is használhat. Például: `-HostNames "*.contoso.com,*.fabrikam.com"`
 
@@ -77,7 +73,7 @@ Az [Azure CLI](tutorial-multiple-sites-cli.md)-ben a helyett a-t kell használni
 *   A "hostname" tulajdonság egy karakterláncot vesz fel bemenetként, ahol csak egy nem helyettesítő tartománynevet, a "hostnames" karakterláncot pedig bemenetként fogadja, ahol legfeljebb 5 helyettesítő tartománynevet lehet megemlíteni. De a tulajdonságok nem használhatók egyszerre.
 *   Olyan célzott figyelővel nem hozható létre [átirányítási](redirect-overview.md) szabály, amely helyettesítő karaktereket vagy több állomásnevet használ.
 
-A többhelyes figyelő helyettesítő karakteres állomásneve konfigurálásával kapcsolatos részletes útmutató a [többhelyes kiszolgálók létrehozása a Azure Portal használatával](create-multiple-sites-portal.md) vagy a [Azure PowerShell használatával](tutorial-multiple-sites-powershell.md) vagy az [Azure CLI használatával](tutorial-multiple-sites-cli.md) című témakörben található.
+A többhelyes figyelő helyettesítő karakteres állomásneve konfigurálásával kapcsolatos részletes útmutató a [többhelyes kiszolgálók létrehozása a Azure PowerShell használatával](tutorial-multiple-sites-powershell.md) vagy az [Azure CLI használatával](tutorial-multiple-sites-cli.md) című témakörben olvasható.
 
 ## <a name="host-headers-and-server-name-indication-sni"></a>Állomásfejléc és kiszolgálónév jelzése (SNI)
 
@@ -95,6 +91,9 @@ Az Application Gateway a HTTP 1.1-állomásfejlécek segítségével üzemeltet 
 
 ## <a name="next-steps"></a>További lépések
 
-Több hely üzemeltetésének megismerése után nyissa meg a [többhelyes létrehozás a Azure Portal használatával](create-multiple-sites-portal.md) vagy a [Azure PowerShell használatával](tutorial-multiple-sites-powershell.md) vagy az [Azure CLI használatával](tutorial-multiple-sites-cli.md) című témakört a több webhely üzemeltetéséhez szükséges Application Gateway létrehozásával kapcsolatos részletes útmutatóhoz.
+Megtudhatja, hogyan konfigurálhat több hely üzemeltetését Application Gateway
+* [Az Azure Portal használata](create-multiple-sites-portal.md)
+* [Az Azure PowerShell használata](tutorial-multiple-sites-powershell.md) 
+* [Az Azure parancssori felület használata](tutorial-multiple-sites-cli.md)
 
 A teljes körű sablonalapú telepítés leírását a [Resource Manager template using multiple site hosting](https://github.com/Azure/azure-quickstart-templates/blob/master/201-application-gateway-multihosting) (Többhelyes üzemeltetést használó Resource Manager-sablon) weboldalon találja.

@@ -6,12 +6,12 @@ ms.author: shresha
 ms.service: time-series-insights
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 86df87af44f5594fe09445f2cc85d2a2bc823200
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 73d5c3abb2edc940bee9727ce1f3b0c4e8e0a62e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87099097"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289941"
 ---
 # <a name="time-series-model-variables"></a>Idősorozat-modell változói
 
@@ -29,7 +29,7 @@ Az alábbi táblázat az egyes változókhoz tartozó tulajdonságokat mutatja b
 
 #### <a name="numeric-variables"></a>Numerikus változók
 
-| Változó tulajdonság | Description |
+| Változó tulajdonság | Leírás |
 | --- | ---|
 | Változó szűrő | A szűrők nem kötelező feltételes záradékok, amelyek korlátozzák a számításba veendő sorok számát. |
 | Változó értéke | Az eszközről vagy érzékelőkről származó számításhoz használt telemetria-értékek, vagy az idősorozat-kifejezések használatával alakíthatók át. A numerikus típusú változóknak *dupla*típusúnak kell lenniük.|
@@ -59,7 +59,7 @@ A változók megfelelnek a következő JSON-példának:
 
 #### <a name="categorical-variables"></a>Kategorikus változók
 
-| Változó tulajdonság | Description |
+| Változó tulajdonság | Leírás |
 | --- | ---|
 | Változó szűrő | A szűrők nem kötelező feltételes záradékok, amelyek korlátozzák a számításba veendő sorok számát. |
 | Változó értéke | Az eszközről vagy érzékelőkről származó számításhoz használt telemetria-értékek. A kategorikus típus változóinak vagy *hosszúnak* vagy *sztringnek*kell lenniük. |
@@ -87,7 +87,7 @@ A változók megfelelnek a következő JSON-példának:
       "label": "Good"
     },
     {
-      "values": [3],
+      "values": [4],
       "label": "Bad"
     }
   ],
@@ -99,7 +99,7 @@ A változók megfelelnek a következő JSON-példának:
 
 #### <a name="aggregate-variables"></a>Összesített változók
 
-| Változó tulajdonság | Description |
+| Változó tulajdonság | Leírás |
 | --- | ---|
 | Változó szűrő | A szűrők nem kötelező feltételes záradékok, amelyek korlátozzák a számításba veendő sorok számát. |
 | Változó összesítése | Számításokat hajthat végre a támogatott [összesítési függvényekben az összesített változó típusokhoz](https://docs.microsoft.com/rest/api/time-series-insights/preview#aggregate-variable-kind-1). |

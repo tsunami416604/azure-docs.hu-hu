@@ -7,16 +7,16 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 77b64f09b7fd1429eb23c4407c729dfc0aafdf2b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1b77eb136b8415e5a6e4596dc0b192ea426f378f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "60460978"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292830"
 ---
 # <a name="set-up-vmware-disaster-recovery-in-a-multi-tenancy-environment-with-the-cloud-solution-provider-csp-program"></a>A VMware vész-helyreállítás beállítása több-bérlős környezetben a Cloud Solution Provider (CSP) program keretében
 
-A [CSP program](https://partner.microsoft.com/en-US/cloud-solution-provider) a Microsoft Cloud Services – többek között az Office 365, a nagyvállalati mobilitási csomag és a Microsoft Azure – együttműködését segíti elő. A CSP-vel a partnerek a végpontok közötti kapcsolatot az ügyfelekkel, és az elsődleges kapcsolati kapcsolattartási pontként válnak. A partnerek telepíthetnek Azure-előfizetéseket az ügyfelek számára, és kombinálják az előfizetéseket saját hozzáadott értékekkel, testreszabott ajánlatokkal.
+A [CSP program](https://partner.microsoft.com/cloud-solution-provider) a Microsoft Cloud Services – többek között az Office 365, a nagyvállalati mobilitási csomag és a Microsoft Azure – együttműködését segíti elő. A CSP-vel a partnerek a végpontok közötti kapcsolatot az ügyfelekkel, és az elsődleges kapcsolati kapcsolattartási pontként válnak. A partnerek telepíthetnek Azure-előfizetéseket az ügyfelek számára, és kombinálják az előfizetéseket saját hozzáadott értékekkel, testreszabott ajánlatokkal.
 
 A [Azure site Recovery](site-recovery-overview.md)segítségével a partnerek közvetlenül a CSP-n keresztül kezelhetik a vész-helyreállítási felhasználókat. A CSP használatával Site Recovery környezeteket állíthat be, és lehetővé teheti, hogy az ügyfelek önkiszolgáló módon kezeljék saját vész-helyreállítási igényeiket. Mindkét esetben a partnerek a Site Recovery és az ügyfeleik közötti összekötők. A partnerek felhasználják az ügyfélkapcsolatot, és számlázzák ügyfeleit Site Recovery használatra.
 
