@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: f37109cc2677ad5ef18c5677bda9308a78cebccf
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 7d6c0928196c9e8e1abf6aa7f724a58753ce3d2a
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85851307"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289050"
 ---
 # <a name="add-interaction-rules"></a>Használati szabályok hozzáadása
 
-Ebben a cikkben az *interakciós szabályokról*olvashat. Ezek a további szabályok konkrétabb vagy összetettebb helyzeteket kezelnek. Saját egyéni interakciós szabályokat hozhat létre, de ebben a cikkben a következő célcsoportokra vonatkozó interakciós szabályok használatát végezheti el:
+Ebben a cikkben az **interakciós szabályokról**olvashat. Ezek a további szabályok az összetettebb vagy összetett helyzetek kezelésére szolgálnak. Habár ingyenes a saját egyéni interakciós szabályainak megalkotása, ebben a cikkben a következő célcsoportokra vonatkozó interakciós szabályokat használhatja:
 
 * Parancsok megerősítése
 * Egy lépésből álló korrekció hozzáadása parancsokhoz
@@ -30,8 +30,8 @@ Ha többet szeretne megtudni a kapcsolati szabályokról, ugorjon a [hivatkozás
 
 A következő cikkekben ismertetett lépéseket kell elvégezni:
 > [!div class="checklist"]
-> * [Alkalmazás létrehozása egyszerű parancsokkal](./how-to-custom-commands-create-application-with-simple-commands.md)
-> * [Paraméterek hozzáadása parancsokhoz](./how-to-custom-commands-add-parameters-to-commands.md)
+> * [Útmutató: alkalmazás létrehozása egyszerű parancsokkal](./how-to-custom-commands-create-application-with-simple-commands.md)
+> * [Útmutató: paraméterek hozzáadása parancsokhoz](./how-to-custom-commands-add-parameters-to-commands.md)
 
 ## <a name="add-confirmations-to-a-command"></a>Megerősítések hozzáadása parancshoz
 
@@ -40,7 +40,7 @@ Megerősítés hozzáadásához használja a **SetTemperature** parancsot. A meg
 1. Válassza ki a **SetTemperature** parancsot a bal oldali ablaktáblán.
 1. A középső ablaktáblán a **Hozzáadás** gombra kattintva vegyen fel kapcsolatitevékenység-szabályokat. Ezután válassza a **kapcsolati szabályok**  >  **megerősítése parancsot**.
 
-    Ez a művelet három interakciós szabályt hoz létre. Ez a szabály kéri a felhasználót, hogy erősítse meg a riasztás dátumát és időpontját, és megerősítse (igen/nem) a következő bekapcsoláshoz.
+    Ez a művelet három interakciós szabályt ad hozzá, amely arra kéri a felhasználót, hogy erősítse meg a riasztás dátumát és időpontját, és megerősítse (igen/nem) a következő bekapcsoláshoz.
 
     1. Módosítsa a **parancs megerősítése** beavatkozási szabályt a következő konfiguráció szerint:
         1. Nevezze át a **nevet** a **hőmérséklet megerősítéséhez**.
@@ -75,14 +75,14 @@ Megerősítés hozzáadásához használja a **SetTemperature** parancsot. A meg
 
 Válassza a betanítás lehetőséget, várjon, amíg befejeződik a betanítás, majd válassza a **teszt** **lehetőséget.**
 
-- **Bemenet**: állítsa be a hőmérsékletet 80 fok értékre.
-- **Kimenet**: ok 80?
-- **Bemenet**: nem.
+- **Bemenet**: hőmérséklet beállítása 80 fokos értékre
+- **Kimenet**: biztos, hogy 80 fokos hőmérsékletet kíván beállítani?
+- **Bemenet**: nem
 - **Kimenet**: nincs probléma. Milyen hőmérsékletet?
-- **Bemenet**: 83 fok.
-- **Kimenet**: ok 83?
-- **Bemenet**: igen.
-- **Kimenet**: ok, a hőmérséklet beállítása 83 fok.
+- **Bemenet**: 72 fok
+- **Kimenet**: biztos, hogy 72 fokos hőmérsékletet kíván beállítani?
+- **Bemenet**: igen
+- **Kimenet**: ok, hőmérséklet beállítása 83 fok
 
 
 ## <a name="implement-corrections-in-a-command"></a>Javítások implementálása egy parancsban

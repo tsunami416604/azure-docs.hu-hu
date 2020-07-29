@@ -12,12 +12,12 @@ ms.date: 03/28/2019
 ms.author: kenwith
 ms.reviewer: hpsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ae90a682ea2d1abb8159ec28ed02ed122494f512
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0f45cc2444a14fc138d201e3d7f81e687f53d3ac
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87019250"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285900"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>A bérlői korlátozások használata a SaaS-Felhőbeli alkalmazásokhoz való hozzáférés kezelésére
 
@@ -69,6 +69,11 @@ A következő konfiguráció szükséges a bérlői korlátozások a proxy-infra
 
 A login.microsoftonline.com, login.microsoft.com és login.windows.net minden bejövő kérelméhez helyezzen be két HTTP-fejlécet: *korlátozza a hozzáférés-bérlők* és a *hozzáférés-kontextus*korlátozását.
 
+> [!NOTE]
+> Az SSL-lehallgatások és a fejlécek befecskendezésének konfigurálásakor ügyeljen arra, hogy a https://device.login.microsoftonline.com kizárni kívánt forgalom kimaradjon. Ez az URL-cím használatos az eszközök hitelesítéséhez és a TLS-megszakítások és-ellenőrzés elvégzéséhez, ami zavarhatja az ügyféltanúsítvány-alapú hitelesítést, ami problémákat okozhat az eszközök regisztrációja és az eszközön alapuló feltételes hozzáférés esetén.
+
+
+
 A fejléceknek tartalmazniuk kell a következő elemeket:
 
 - A *hozzáférés és a bérlők korlátozásához*használja a értéket \<permitted tenant list\> , amely a bérlők vesszővel tagolt listája, amely számára engedélyezni szeretné a felhasználók számára a hozzáférést. A Bérlővel regisztrált bármely tartomány felhasználható a bérlő azonosítására ezen a listán. Például a contoso és a fabrikam bérlők elérésének engedélyezéséhez a név/érték párok a következőképpen néznek ki: `Restrict-Access-To-Tenants: contoso.onmicrosoft.com,fabrikam.onmicrosoft.com`
@@ -81,6 +86,9 @@ A fejléceknek tartalmazniuk kell a következő elemeket:
 Annak megakadályozása érdekében, hogy a felhasználók beillesszenak saját HTTP-fejlécet nem jóváhagyott bérlők számára, a proxynak le kell cserélnie a *korlátozás-hozzáférés – bérlői* fejlécet, ha az már szerepel a bejövő kérelemben.
 
 Az ügyfeleknek kényteleneknek kell lenniük arra, hogy a proxyt használják a login.microsoftonline.com, a login.microsoft.com és a login.windows.net vonatkozó összes kéréshez. Ha például a PAC-fájlok használatával irányítja az ügyfeleket a proxy használatára, a végfelhasználók nem tudják szerkeszteni vagy letiltani a PAC-fájlokat.
+
+> [!NOTE]
+> Ne vegyen fel altartományokat a *. login.microsoftonline.com alatt a proxy konfigurációjában. Ez magában foglalja a device.login.microsoftonline.com, és zavarhatja az ügyféltanúsítvány-alapú hitelesítést, amely az eszközök regisztrációjában és az eszközökön alapuló feltételes hozzáférési helyzetekben használatos. Konfigurálja úgy a proxykiszolgálót, hogy kizárja a TLS-device.login.microsoftonline.com és-ellenőrzésből származó és a fejléc-befecskendezést.
 
 ## <a name="the-user-experience"></a>A felhasználói élmény
 

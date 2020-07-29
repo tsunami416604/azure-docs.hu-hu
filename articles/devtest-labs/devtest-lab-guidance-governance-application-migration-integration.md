@@ -4,12 +4,12 @@ description: Ez a cikk útmutatást nyújt a Azure DevTest Labs-infrastruktúra 
 ms.topic: article
 ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: cebc32edf78df1fa6a72876f8c8e5d23525942b7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8d86728eefc46c74b49ac610e2207ce5e7ae6a9d
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85481578"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289346"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---application-migration-and-integration"></a>Azure DevTest Labs infrastruktúra irányítása – alkalmazások áttelepítése és integrációja
 A fejlesztési/tesztelési labor környezet létrehozása után a következő kérdésekre kell gondolnia:
@@ -50,14 +50,14 @@ A szoftvercsomag változásainak gyakorisága azonban egy további Megjegyzés. 
 Hogyan állíthatok be egy könnyen ismételhető folyamatot az egyéni szervezeti lemezképek DevTest Labs-környezetben való üzembe helyezéséhez?
 
 ### <a name="answer"></a>Válasz
-Tekintse [meg ezt a videót a rendszerkép-előállító mintán](https://blogs.msdn.microsoft.com/devtestlab/2017/04/17/video-custom-image-factory-with-azure-devtest-labs/). Ez a forgatókönyv egy speciális forgatókönyv, és a megadott parancsfájlok csak példaként használható parancsfájlok. Ha bármilyen módosításra van szükség, felügyelni és karbantartani kell a környezetben használt parancsfájlokat.
+Tekintse [meg ezt a videót a rendszerkép-előállító mintán](./devtest-lab-faq.md#blog-post). Ez a forgatókönyv egy speciális forgatókönyv, és a megadott parancsfájlok csak példaként használható parancsfájlok. Ha bármilyen módosításra van szükség, felügyelni és karbantartani kell a környezetben használt parancsfájlokat.
 
 Egyéni rendszerkép-folyamat létrehozása az Azure-folyamatokban a DevTest Labs használatával:
 
-- [Bevezetés: a virtuális gépek gyors üzembe helyezése a rendszerkép-előállító Azure DevTest Labs](https://blogs.msdn.microsoft.com/devtestlab/2016/09/14/introduction-get-vms-ready-in-minutes-by-setting-up-image-factory-in-azure-devtest-labs/)
-- [Rendszerkép-előállító – 2. rész! Az Azure-folyamatok és a Factory Lab beállítása virtuális gépek létrehozásához](https://blogs.msdn.microsoft.com/devtestlab/2017/10/25/image-factory-part-2-setup-vsts-to-create-vms-based-on-devtest-labs/)
-- [Image Factory – 3. rész: Egyéni rendszerképek mentése és terjesztés több laborba](https://blogs.msdn.microsoft.com/devtestlab/2018/01/10/image-factory-part-3-save-custom-images-and-distribute-to-multiple-labs/)
-- [Videó: egyéni rendszerkép-előállító Azure DevTest Labs](https://blogs.msdn.microsoft.com/devtestlab/2017/04/17/video-custom-image-factory-with-azure-devtest-labs/)
+- [Bevezetés: a virtuális gépek gyors üzembe helyezése a rendszerkép-előállító Azure DevTest Labs](./devtest-lab-faq.md#blog-post)
+- [Rendszerkép-előállító – 2. rész! Az Azure-folyamatok és a Factory Lab beállítása virtuális gépek létrehozásához](./devtest-lab-faq.md#blog-post)
+- [Image Factory – 3. rész: Egyéni rendszerképek mentése és terjesztés több laborba](./devtest-lab-faq.md#blog-post)
+- [Videó: egyéni rendszerkép-előállító Azure DevTest Labs](./devtest-lab-faq.md#blog-post)
 
 ## <a name="patterns-to-set-up-network-configuration"></a>A hálózati konfiguráció beállítására szolgáló minták
 

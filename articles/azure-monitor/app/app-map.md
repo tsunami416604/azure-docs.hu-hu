@@ -3,13 +3,14 @@ title: Alkalmazás-hozzárendelés az Azure Application Insightsban | Microsoft 
 description: Összetett alkalmazás-topológiák figyelése az alkalmazás-hozzárendeléssel
 ms.topic: conceptual
 ms.date: 03/15/2019
+ms.custom: devx-track-javascript
 ms.reviewer: sdash
-ms.openlocfilehash: 1f9f19ea9370b9da3e69d871e8b53ccf7f64a6a5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7e4035e382aaa3f8b5d2327054a50a5360c60bfa
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87008506"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87367010"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Alkalmazás-hozzárendelés: elosztott alkalmazások osztályozása
 
@@ -255,7 +256,7 @@ További információ arról, hogyan bírálható felül a Felhőbeli szerepkör
 
 Ha nem tudja, hogy az alkalmazás-hozzárendelés a várt módon működjön, próbálja meg a következő lépéseket:
 
-### <a name="general"></a>Általános kérdések
+### <a name="general"></a>Általános
 
 1. Győződjön meg róla, hogy hivatalosan támogatott SDK-t használ. Előfordulhat, hogy a nem támogatott/közösségi SDK-k nem támogatják a korrelációt.
 

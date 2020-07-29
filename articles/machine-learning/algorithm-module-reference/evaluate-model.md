@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 07/08/2020
-ms.openlocfilehash: fe0d3819701e062fa2253bc6dd0c3a28eaeaadfb
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.date: 07/27/2020
+ms.openlocfilehash: 7f37a598c31f340e66437a6478512fad1f79121f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171115"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285951"
 ---
 # <a name="evaluate-model-module"></a>Modell modul kiértékelése
 
@@ -65,7 +65,7 @@ Az alábbi ábrán például az azonos adatokra épülő két fürtözött model
 
 Mivel ez egy fürtözési modell, a kiértékelési eredmények eltérnek, mint ha két regressziós modellből származó pontszámokat hasonlítanak össze, vagy két besorolási modellel hasonlították össze. A teljes bemutató azonban ugyanaz. 
 
-## <a name="metrics"></a>Metrikák
+## <a name="metrics"></a>Mérőszámok
 
 Ez a szakasz a **kiértékelési modellel**használható, adott típusú modellek által visszaadott mérőszámokat ismerteti:
 
@@ -80,9 +80,9 @@ A következő metrikákat kell jelenteni a bináris besorolási modellek kiért�
   
 -   A **pontosság** a besorolási modell jóságát méri az igaz eredményeknek az összes esethez viszonyított arányában.  
   
--   A **pontosság** a valódi eredmények aránya az összes pozitív eredménynél.  
+-   A **pontosság** a valódi eredmények aránya az összes pozitív eredménynél. Precíziós = TP/(TP + FP)  
   
--   A **visszahívás** a modell által visszaadott összes helyes eredmény hányada.  
+-   A **visszahívás** a ténylegesen beolvasott érintett példányok teljes mennyisége. Visszahívás = TP/(TP + FN)  
   
 -   Az F1-es **pontszám** kiszámítása a pontosság súlyozott átlaga, a 0 és az 1 közötti visszahívás pedig az ideális F1-es pontszám értéke 1.  
   

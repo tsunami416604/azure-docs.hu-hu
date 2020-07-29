@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2018
 ms.author: terrylan
-ms.openlocfilehash: 9d44c1da27a1440e105ce76436bc284a537503c7
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 3b1a0d646c05be0de83837b33e77e34969c9254c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86054440"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287799"
 ---
 # <a name="azure-ddos-protection---designing-resilient-solutions"></a>Azure DDoS Protection – rugalmas megoldások tervezése
 
@@ -48,7 +48,7 @@ Fontos, hogy az alkalmazások elég rugalmasak legyenek ahhoz, hogy az alkalmaz�
 
 A méretezhetőség azt szemlélteti, hogy a rendszer milyen jól tudja kezelni a megnövekedett terhelést. Megtervezheti, hogy az alkalmazások [horizontálisan méretezhetők](/azure/architecture/guide/design-principles/scale-out) legyenek, hogy megfeleljenek egy felerősített terhelés igényének, különösen a DDOS-támadások esetén. Ha az alkalmazása egy szolgáltatás egyetlen példányán múlik, akkor az egyetlen meghibásodási pontot hoz létre. A több példány kiépítés révén a rendszerek rugalmasabbak és méretezhetők.
 
-[Azure app Service](/azure/app-service/app-service-value-prop-what-is)esetén válasszon ki egy olyan [app Service tervet](/azure/app-service/overview-hosting-plans) , amely több példányt is kínál. Az Azure Cloud Services esetében konfigurálja az egyes szerepköröket [több példány](/azure/cloud-services/cloud-services-choose-me)használatára. Az [Azure Virtual Machines](/azure/virtual-machines/virtual-machines-windows-about/?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)esetén győződjön meg arról, hogy a virtuális gép (VM) architektúrája több virtuális gépet tartalmaz, és hogy minden virtuális gép egy [rendelkezésre állási csoportba](/azure/virtual-machines/virtual-machines-windows-manage-availability)tartozik. Javasoljuk, hogy használjon [virtuálisgép-méretezési csoportokat](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-overview) az automatikus skálázási képességekhez.
+[Azure app Service](/azure/app-service/app-service-value-prop-what-is)esetén válasszon ki egy olyan [app Service tervet](/azure/app-service/overview-hosting-plans) , amely több példányt is kínál. Az Azure Cloud Services esetében konfigurálja az egyes szerepköröket [több példány](/azure/cloud-services/cloud-services-choose-me)használatára. Az [Azure Virtual Machines](../../virtual-machines/index.yml)esetén győződjön meg arról, hogy a virtuális gép (VM) architektúrája több virtuális gépet tartalmaz, és hogy minden virtuális gép egy [rendelkezésre állási csoportba](../../virtual-machines/windows/tutorial-availability-sets.md)tartozik. Javasoljuk, hogy használjon [virtuálisgép-méretezési csoportokat](../../virtual-machine-scale-sets/overview.md) az automatikus skálázási képességekhez.
 
 ### <a name="defense-in-depth"></a>Mélységi védelem
 

@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 02/22/2020
-ms.openlocfilehash: 279ba2ca5b82d7bad5b55736179f92a0146bdc84
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 07/28/2020
+ms.openlocfilehash: 904b3ce1c2d05d713ee1ae99662148217f2a358e
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87048149"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337823"
 ---
 # <a name="export-data-module"></a>Adatmodul exportálása
 
@@ -41,6 +41,9 @@ Az adatexportálás előtt először regisztrálnia kell egy adattárt a Azure M
 1. Válassza az **adatexportálás** lehetőséget a **Tulajdonságok** ablaktábla megnyitásához.
 
 1. Az **adattár**mezőben válasszon ki egy meglévő adattárt a legördülő listából. Létrehozhat egy új adattárt is. Tekintse át, hogyan [érheti el az Azure Storage-szolgáltatásokban tárolt Access-adatbázisokat](../how-to-access-data.md).
+
+    > [!NOTE]
+    > Bizonyos adattípusok egy másik adattípusként megadott SQL Database-oszlopba való exportálása nem támogatott.
 
 1. A **kimenet újragenerált**jelölőnégyzete határozza meg, hogy végrehajtja-e a modult a kimenet újralétrehozásához a futási időben. 
 

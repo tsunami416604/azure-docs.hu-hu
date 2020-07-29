@@ -1,6 +1,6 @@
 ---
 title: Mi az IP-168.63.129.16? | Microsoft Docs
-description: Ismerje meg az IP-168.63.129.16, valamint azt, hogy miként működik az erőforrásaival.
+description: Ismerje meg az IP-168.63.129.16, amelyekkel a kommunikációs csatornákat az Azure platform erőforrásainak használatával lehet elősegíteni.
 services: virtual-network
 documentationcenter: na
 author: genlin
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/15/2019
 ms.author: genli
-ms.openlocfilehash: bae1fbc89564ca17938e6a630146be5e5fb5b11f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0f0bfa693086a3a097df219132d696a1d04e6f56
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85550866"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286036"
 ---
 # <a name="what-is-ip-address-1686312916"></a>Mi az IP-168.63.129.16?
 

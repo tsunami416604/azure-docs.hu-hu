@@ -8,11 +8,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 03/19/2018
 ms.author: liydu
-ms.openlocfilehash: 6bebe8ac6b9869466938600d6267fd0062c84477
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dae797e73d52391288a5e8b7cf4a5c6ab2a122fc
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75977296"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337874"
 ---
 # <a name="door-monitor----using-azure-functions-and-sendgrid-send-email-when-a-door-is-opened"></a>Ajtó figyelője – a Azure Functions és a SendGrid használatával e-mail küldése az ajtó megnyitásakor           
 
@@ -29,7 +30,7 @@ Ebben a projektben a következőket tanulhatja meg:
 > - Egy mágnes csatlakoztatása egy ajtó széléhez.
 > - Csatlakoztassa a fejlesztői készlet az ajtó ajtófélfa a mágnes közelébe. Az ajtó megnyitása vagy bezárása elindítja az érzékelőt, így az eseményről értesítő e-mail-értesítést kap.
 
-## <a name="what-you-need"></a>Mi szükséges
+## <a name="what-you-need"></a>Amire szükség lesz
 
 Fejezze be a [első lépések útmutatót](iot-hub-arduino-iot-devkit-az3166-get-started.md) a következőre:
 
@@ -172,7 +173,7 @@ A VS Code ezután elkezdi ellenőrizni és feltölteni az Arduino-vázlatot a fe
 
 ![eszköz – feltöltés](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/device-upload.png)
 
-A fejlesztői készlet újraindul, és elindítja a kód futtatását.
+A DevKit újraindul, és elkezdi a kód futtatását.
 
 > [!NOTE]
 > Időnként előfordulhat, hogy a "hiba: AZ3166: ismeretlen csomag" hibaüzenet jelenik meg. Ez a hiba akkor fordul elő, ha a tábla csomagjának indexe nem frissül megfelelően. A hiba megoldásához tekintse meg a [IoT fejlesztői készlet – gyakori kérdések című témakör fejlesztés szakaszát](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#development).
@@ -196,7 +197,4 @@ Ha problémákba ütközik, tekintse meg a [IoT fejlesztői készlet kapcsolatos
 
 ## <a name="next-steps"></a>További lépések
 
-Megtanulta, hogyan csatlakoztatható egy fejlesztői készlet-eszköz az Azure IoT-alapú távoli monitorozási megoldáshoz, és a SendGrid szolgáltatás használatával küldjön e-mailt. Íme a javasolt következő lépések:
-
-* [Az Azure IoT távoli monitorozási megoldásának gyorsítása – áttekintés](https://docs.microsoft.com/azure/iot-suite/)
-* [MXChip-IoT fejlesztői készlet-eszköz csatlakoztatása az Azure IoT Central-alkalmazáshoz](/azure/iot-central/core/howto-connect-devkit)
+Megtanulta, hogyan csatlakoztatható egy fejlesztői készlet-eszköz az Azure IoT-alapú távoli monitorozási megoldáshoz, és a SendGrid szolgáltatás használatával küldjön e-mailt. Íme a javasolt következő lépés: az[Azure IoT távoli monitorozási megoldásának gyorsítása – áttekintés](https://docs.microsoft.com/azure/iot-suite/)

@@ -14,12 +14,12 @@ ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
-ms.openlocfilehash: aca2e0a878470a644aff3a42411b69da9096fc78
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: af554b2055102b12a8c0e89c6301400f76021ede
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87170510"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87313336"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Microsoft Identity platform azonosító tokenek
 
@@ -27,11 +27,11 @@ ms.locfileid: "87170510"
 
 ## <a name="using-the-id_token"></a>A id_token használata
 
-Az azonosító jogkivonatokat annak ellenőrzésére kell használni, hogy a felhasználó ki és milyen további hasznos információkat igényel róluk – a [hozzáférési jogkivonat](access-tokens.md)helyett nem használható. Az általa biztosított jogcímek az alkalmazásban, az adatbázis kulcsaiként és az ügyfélalkalmazás elérésének biztosítására használhatók.  A kulcsok adatbázishoz való létrehozásakor `idp` nem ajánlott használni, mert a vendég forgatókönyveket felzavarja.  A beírást egyedül kell elvégezni `sub` (amely mindig egyedi), az `tid` útválasztáshoz használt, ha szükséges.  Ha több szolgáltatás között is meg kell osztania az adatmegosztást, `oid` + `sub` + `tid` a működni fog, mivel az összes szolgáltatás ugyanaz lesz `oid` .
+Az azonosító jogkivonatokat annak ellenőrzésére kell használni, hogy a felhasználó ki és milyen további hasznos információkat igényel róluk – a [hozzáférési jogkivonat](access-tokens.md)helyett nem használható. Az általa biztosított jogcímek az alkalmazásban, az [adatbázis kulcsaiként](#using-claims-to-reliably-identify-a-user-subject-and-object-id)és az ügyfélalkalmazás elérésének biztosítására használhatók.  
 
 ## <a name="claims-in-an-id_token"></a>Jogcímek egy id_token
 
-`id_tokens`a Microsoft-identitások [JWTs](https://tools.ietf.org/html/rfc7519) (JSON webes jogkivonatok), ami azt jelenti, hogy egy fejlécből, adattartalomból és aláírásból álló részből állnak. A fejléc és az aláírás segítségével ellenőrizheti a jogkivonat hitelességét, míg a hasznos adatok tartalmazzák az ügyfél által kért felhasználó adatait. Ha nincs megadva, az itt felsorolt összes JWT-jogcím 1.0-s és v 2.0-tokenekben is megjelenik.
+`id_tokens`a [JWTs](https://tools.ietf.org/html/rfc7519) (JSON webes tokenek), ami azt jelenti, hogy fejlécből, adattartalomból és aláírásból álló részből állnak. A fejléc és az aláírás segítségével ellenőrizheti a jogkivonat hitelességét, míg a hasznos adatok tartalmazzák az ügyfél által kért felhasználó adatait. Ha nincs megadva, az itt felsorolt összes JWT-jogcím 1.0-s és v 2.0-tokenekben is megjelenik.
 
 ### <a name="v10"></a>1.0-s verzió
 
@@ -87,14 +87,25 @@ Ez a lista azokat a JWT jogcímeket jeleníti meg, amelyek alapértelmezés szer
 |`ver` | Karakterlánc, vagy 1,0 vagy 2,0 | Megadja a id_token verzióját. |
 
 > [!NOTE]
-> A 1.0-s és a 2.0-s verzió id_token a fenti példákban látható információk mennyiségétől függ. A verzió lényegében azt az Azure AD platform-végpontot határozza meg, ahonnan a kiadást adták. Az [Azure ad OAuth megvalósítása](about-microsoft-identity-platform.md) az évek során fejlődött. Jelenleg két különböző outh-végpont létezik az Azure AD-alkalmazásokhoz. Használhatja a v 2.0 vagy a v 1.0 kategóriába sorolt új végpontokat. Mindkét OAuth végpontja eltérő. A v 2.0-végpont újabb, és a rendszer áttelepíti a v 1.0 végpont funkcióit erre a végpontra. Az új fejlesztőknek a v 2.0-s végpontot kell használniuk.
+> A 1.0-s és a 2.0-s verzió id_token a fenti példákban látható információk mennyiségétől függ. A verzió a kért végponton alapul. Habár a meglévő alkalmazások valószínűleg az Azure AD-végpontot használják, az új alkalmazásoknak a v 2.0 "Microsoft Identity platform" végpontot kell használniuk.
 >
 > - 1.0-s verzió: Azure AD-végpontok:`https://login.microsoftonline.com/common/oauth2/authorize`
-> - v 2.0: Microsoft identitypPlatform-végpontok:`https://login.microsoftonline.com/common/oauth2/v2.0/authorize`
+> - v 2.0: Microsoft Identity platform-végpontok:`https://login.microsoftonline.com/common/oauth2/v2.0/authorize`
+
+### <a name="using-claims-to-reliably-identify-a-user-subject-and-object-id"></a>A felhasználók megbízható azonosítására szolgáló jogcímek használata (tárgy és objektumazonosító)
+
+Amikor azonosít egy felhasználót (például megkeresi őket egy adatbázisban, vagy eldönti, hogy milyen engedélyekkel rendelkeznek), fontos, hogy olyan információkat használjon, amelyek állandó és egyedi maradnak az idő során.  A régi alkalmazások időnként olyan mezőt használnak, mint az e-mail-cím, a telefonszám vagy az egyszerű felhasználónév.  Ezek az idő múlásával változhatnak, és idővel újra felhasználhatók, amikor egy alkalmazott megváltoztatja a nevét, vagy egy alkalmazott olyan e-mail-címet kap, amely megegyezik egy korábbi, már meglévő alkalmazottal. Ezért **fontos, hogy az** alkalmazás ne használjon emberi olvasásra alkalmas adatait, hogy azonosítsa a felhasználó által olvasható, általánosságban azt jelenti, hogy valaki el fogja olvasni, és módosítani szeretné.  Ehelyett használja a OIDC standard által biztosított jogcímeket, vagy a Microsoft által biztosított kiterjesztési jogcímeket, illetve a `sub` `oid` jogcímeket.
+
+Ha az adatokat felhasználónként szeretné tárolni, használjon `sub` vagy `oid` önállóan (amely egyedi GUID-azonosítók), és szükség esetén használja `tid` az útválasztást vagy a horizontális skálázást.  Ha a szolgáltatások között meg kell osztania az adatmegosztást, a `oid` + `tid` legjobb, ha az összes alkalmazás ugyanazokat `oid` és `tid` jogcímeket kap az adott felhasználó számára.  A `sub` Microsoft Identity platform jogcíme "pair-Wise" – a jogkivonat-címzett, a bérlő és a felhasználó kombinációja alapján egyedi.  Így az adott felhasználóhoz tartozó azonosító jogkivonatokat kérő alkalmazások különböző `sub` jogcímeket kapnak, de az adott `oid` felhasználóhoz tartozó jogcímeket is.
+
+>[!NOTE]
+> Ne használja a `idp` jogcímet a felhasználóval kapcsolatos adatok tárolására a bérlők közötti összekapcsolásra tett kísérlet során.  Ez nem fog működni, mivel a `oid` és a `sub` jogcímek a bérlők között megváltoznak, így biztosítva, hogy az alkalmazások ne tudják nyomon követni a felhasználókat a bérlők között.  
+>
+> A vendég forgatókönyvek, ahol egy felhasználó egy bérlőn van felhasználva, és a hitelesítés egy másikban történik, úgy kell kezelnie a felhasználót, mintha az új felhasználó legyen a szolgáltatásban.  A contoso-bérlő dokumentumai és jogosultságai nem alkalmazhatók a fabrikam-bérlőben. Ez azért fontos, hogy megakadályozza a véletlen adatszivárgást a bérlők között.
 
 ## <a name="validating-an-id_token"></a>Id_token ellenőrzése
 
-A egy `id_token` [hozzáférési jogkivonat érvényesítésének](access-tokens.md#validating-tokens) első lépése hasonlít a hitelesítéshez. az ügyfélnek ellenőriznie kell, hogy a megfelelő kiállító visszaküldte-e a tokent, és hogy nem módosították-e illetéktelenül. Mivel `id_tokens` a JWT-tokenek mindig a jogkivonatok érvényesítésére szolgálnak, ezért javasoljuk, hogy ezeket a tokeneket ne használja.
+A egy `id_token` [hozzáférési jogkivonat érvényesítésének](access-tokens.md#validating-tokens) első lépése hasonló, az ügyfél ellenőrizheti, hogy a megfelelő kiállító visszaküldte-e a tokent, és hogy nem módosították-e illetéktelenül. Mivel `id_tokens` a JWT-tokenek mindig a jogkivonatok érvényesítésére szolgálnak, ezért javasoljuk, hogy ezeket a tokeneket ne használja.  Vegye figyelembe, hogy csak a bizalmas ügyfelek (titkos kulcsokkal rendelkezők) ellenőrzik az azonosító jogkivonatokat.  Nyilvános alkalmazások (a teljes mértékben a nem vezérelt eszközön vagy hálózaton futó kód, például egy felhasználó böngészője vagy otthoni hálózata) nem jogosult az azonosító jogkivonat érvényesítésére, mivel a rosszindulatú felhasználó feltartóztathatja és szerkesztheti a jogkivonat érvényesítéséhez használt kulcsokat.
 
 A jogkivonat manuális érvényesítéséhez tekintse meg a [hozzáférési token érvényesítése](access-tokens.md#validating-tokens)című témakör lépéseit. A jogkivonat aláírásának ellenőrzése után a következő JWT jogcímeket érvényesíteni kell a id_tokenban (ezeket a jogkivonat-ellenőrzési kódtár is megteheti):
 

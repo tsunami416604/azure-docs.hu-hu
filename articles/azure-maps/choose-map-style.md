@@ -1,45 +1,51 @@
 ---
-title: A Térkép stílusának módosítása Azure Mapsban | Microsoft Azure térképek
-description: Ebben a cikkben megismerheti a Microsoft Azure Maps web SDK-ban elérhető stílussal kapcsolatos funkciókat.
+title: A Azure Maps webes térképkezelés stílusának módosítása
+description: Ebből a cikkből megismerheti a Azure Maps web stílusának funkcióit térképkezelés
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 07/29/2019
+ms.date: 07/27/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: timlt
-ms.openlocfilehash: 815b76f2a1c8872ff01439b126cb2ba1cdf27953
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+manager: philmea
+ms.custom: devx-track-javascript
+ms.openlocfilehash: a4c1629302c72d6f59f7f1fd10dc850d46cea5a7
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87133367"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285795"
 ---
 # <a name="change-the-style-of-the-map"></a>A térkép stílusának módosítása
 
-A Térkép több különböző [stílust](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.styleoptions) is támogat, amelyek akkor állíthatók be, ha a Térkép inicializálása vagy későbbi használata a Maps `setStyle` függvénnyel történik. Ez a cikk bemutatja, hogyan használhatja ezeket a stílusokat a térképek megjelenésének testreszabásához. Megtudhatja, hogyan állíthat be egy stílust a Térkép betöltésekor, és megtudhatja, hogyan állíthat be új leképezési stílust a Style Picker vezérlőelem használatával.
+A Térkép vezérlőelem több különböző térképi [stílust](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.styleoptions) és [alapszintű leképezési stílust](supported-map-styles.md)támogat. A Térkép vezérlőelem inicializálásakor minden stílus beállítható. A stílusokat a Térkép vezérlőelem funkciójának használatával is megadhatja `setStyle` . Ez a cikk bemutatja, hogyan használhatja ezeket a stílusokat a Térkép megjelenésének testreszabásához. Azt is megtudhatja, hogyan valósítja meg a Style Picker vezérlőelemet a térképen. A Style Picker vezérlőelem lehetővé teszi a felhasználó számára a különböző alapstílusok közötti váltást.
 
-## <a name="set-the-style-options"></a>A stílus beállításainak megadása 
+## <a name="set-map-style-options"></a>Térkép stílusa beállításainak megadása
 
-A stílusra vonatkozó beállítások átadhatók a térképnek, amikor a rendszer inicializálja vagy később frissíti a Maps `setStyle` függvény használatával.
+A stílus beállításai a webes vezérlők inicializálásakor állíthatók be. A stílus beállításait a Térkép vezérlőelem függvényének meghívásával is frissítheti `setStyle` . Az összes rendelkezésre álló stílus beállítás megjelenítéséhez lásd: [stílus beállításai](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.styleoptions).
 
 ```javascript
 //Set the style options when creating the map.
 var map = new atlas.Map('map', {
     renderWorldCopies: false,
-    showBuildingModels: true
+    showBuildingModels: false,
+    showLogo = true,
+    showFeedbackLink = true,
+    style='road'
 
     //Additional map options.
 };
 
-//Update the style options at anytime using setStyle function.
+//Update the style options at anytime using `setStyle` function.
 map.setStyle({
     renderWorldCopies: true,
-    showBuildingModels: false
+    showBuildingModels: true,
+    showLogo = false,
+    showFeedbackLink = false
 });
 ```
 
-Az alábbi eszköz azt mutatja be, hogy a különböző stílusú beállítások Hogyan változnak a Térkép megjelenítésének módjával. Ha szeretné megtekinteni a 3D-s épületeket, a nagyítást egy nagyobb városhoz közelítheti meg. 
+Az alábbi eszköz azt mutatja be, hogy a különböző stílusú beállítások Hogyan változnak a Térkép megjelenítésének módjával. Ha szeretné megtekinteni a 3D-s épületeket, a nagyítást egy nagyobb városhoz közelítheti meg.
 
 <br/>
 
@@ -47,20 +53,19 @@ Az alábbi eszköz azt mutatja be, hogy a különböző stílusú beállítások
 Tekintse meg a tollas <a href='https://codepen.io/azuremaps/pen/eYNMjPb'>Térkép stílusának beállításait</a> Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) alapján a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-## <a name="choose-a-base-map-style"></a>Alapszintű Térkép stílusának kiválasztása
+## <a name="set-a-base-map-style"></a>Alapszintű Térkép stílusának beállítása
 
-Az alapszintű Térkép stílusa az egyik leggyakoribb lehetőség a stílusának módosításához. [Azure Maps számos támogatott térképi stílusa](supported-map-styles.md) elérhető a web SDK-ban. 
+A Térkép vezérlőelemet a web SDK-ban elérhető [alaptérképi stílusok](supported-map-styles.md) egyikével is inicializálhatja. Ezután a `setStyle` függvény használatával frissítheti az alapstílust egy másik Térkép stílusa alapján.
 
-### <a name="set-base-map-style-on-map-load"></a>Alapszintű Térkép stílusának beállítása a Térkép betöltéséhez
+### <a name="set-a-base-map-style-on-initialization"></a>Alapszintű Térkép stílusának beállítása inicializáláskor
 
-
-A Térkép stílusát a beállítás beállításával lehet megadni a Térkép inicializálásakor `style` . A következő kódban a `style` Térkép beállítása az inicializálás beállításra van beállítva `grayscale_dark` .
+A Térkép vezérlőelem alapstílusai az inicializálás során állíthatók be. A következő kódban a `style` Térkép vezérlőelem beállítása az [ `grayscale_dark` alapszintű Térkép stílusára](supported-map-styles.md#grayscale_dark)van beállítva.  
 
 ```javascript
 var map = new atlas.Map('map', {
     style: 'grayscale_dark',
 
-    //Additiona map options
+    //Additional map options
 );
 ```
 
@@ -71,55 +76,42 @@ var map = new atlas.Map('map', {
 
 ### <a name="update-the-base-map-style"></a>Az alapszintű Térkép stílusának frissítése
 
- A Térkép stílusa a függvény használatával frissíthető `setStyle` , és beállítható a `style` kívánt Térkép stílusa.
+Az alapszintű Térkép stílusa a függvénnyel frissíthető, `setStyle` és beállíthatja, `style` hogy egy másik alapszintű térképi stílusra váltson, vagy további stílust adjon hozzá.
 
 ```javascript
 map.setStyle({ style: 'satellite' });
 ```
 
-A következő kódban a térképi példány betöltését követően a Térkép stílusa a `road` `satellite` [setStyle](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-maps-typescript-latest#setstyle-styleoptions-) függvény használatával frissül.
+A következő kódban a térképi példány betöltését követően a Térkép stílusa a `grayscale_dark` `satellite` [setStyle](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-maps-typescript-latest#setstyle-styleoptions-) függvény használatával frissül.
 
 <br/>
 
 <iframe height='500' scrolling='no' title='A stílus frissítése' src='//codepen.io/azuremaps/embed/yqXYzY/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a tollat a <a href='https://codepen.io/azuremaps/pen/yqXYzY/'>stílus frissítése</a> Azure Maps () használatával a <a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-### <a name="add-the-style-picker"></a>A Style Picker hozzáadása
+## <a name="add-the-style-picker-control"></a>A Style Picker vezérlőelem hozzáadása
 
-A Style Picker Control egy könnyen használható gomb, amely a felhasználó által a Térkép stílusa módosítására használható. A Style Picker két különböző elrendezési lehetőséggel rendelkezik. Alapértelmezés szerint a Style Picker az `icons` elrendezést használja, és az összes leképezési stílust az ikonok vízszintes soraként jeleníti meg. 
+A Style Picker Control egy könnyen használható gomb, amely a felhasználó által az alapstílusok közötti váltásra használható.
 
-<center>
+A Style Picker két különböző elrendezési lehetőséggel rendelkezik: `icon` és `list` . Emellett a Style Picker lehetővé teszi két különböző stílusú választó vezérlési lehetőség kiválasztását `style` : `light` és `dark` . Ebben a példában a Style Picker az `icon` elrendezést használja, és az alaptérképi stílusok kiválasztási listáját jeleníti meg az ikonok formájában. A Style Control választó a következő alapkészleteket tartalmazza: `["road", "grayscale_light", "grayscale_dark", "night", "road_shaded_relief"]` . A Style Picker vezérlési lehetőségeivel kapcsolatos további információkért lásd a [stílus-vezérlési beállítások](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.stylecontroloptions)című témakört.
 
-![Style Picker ikon elrendezése](media/choose-map-style/style-picker-icon-layout.png)</center>
+Az alábbi képen az elrendezésben megjelenő Style Picker vezérlőelem látható `icon` .
 
-A második elrendezési beállítás neve `list` , és megjeleníti a Térkép stílusainak görgethető listáját.  
+:::image type="content" source="./media/choose-map-style/style-picker-icon-layout.png" alt-text="Style Picker-lista elrendezése":::
 
-<center>
+Az alábbi képen az elrendezésben megjelenő Style Picker vezérlőelem látható `list` .
 
-![Style Picker-lista elrendezése](media/choose-map-style/style-picker-list-layout.png)</center>
+:::image type="content" source="./media/choose-map-style/style-picker-list-layout.png" alt-text="Style Picker-lista elrendezése":::
 
+> [!IMPORTANT]
+>Alapértelmezés szerint a Style Picker vezérlő felsorolja az Azure Maps S0 díjszabási szintjénél elérhető összes stílust. Ha csökkenteni szeretné a listában szereplő stílusok számát, adja át a listában megjeleníteni kívánt stílusok tömbjét a `mapStyle` Style Picker (stílus kiválasztása) lehetőséggel. Ha S1-et használ, és az összes elérhető stílust meg szeretné jeleníteni, állítsa a `mapStyles` Style Picker kapcsolót a következőre: `"all"` .
 
-A következő kód bemutatja, hogyan hozhat létre a Style Picker vezérlőelem egy példányát, és hogyan adhatja hozzá a Térkép jobb felső sarkában. A Style Picker úgy van beállítva, hogy sötét stílussal rendelkezzen, és megjelenítse a kiválasztott, néhány térképi stílust a lista réteg használatával.
-
-```javascript
-map.controls.add(new atlas.control.StyleControl({
-    mapStyles: ['road', 'night', 'grayscale_dark', 'grayscale_light'],
-    layout: 'list',
-    style: 'dark'
-}), {
-    position: 'top-right'
-}); 
-```
-
-A következő kód egy Style Picker vezérlőelemet helyez el az alapértelmezett beállításokkal a térképhez, így a felhasználó könnyedén válthat a különböző térképi stílusok között. A Térkép stílusa a jobb felső sarokban látható Térkép stílusa vezérlőelem használatával válthat.
+A következő kód bemutatja, hogyan bírálhatja felül az alapértelmezett `mapStyles` alapstílusok listáját. Ebben a példában a `mapStyles` Style Picker vezérlőelem által megjelenített alapstílusokat szeretnénk listázni.
 
 <br/>
 
 <iframe height='500' scrolling='no' title='A Style Picker hozzáadása' src='//codepen.io/azuremaps/embed/OwgyvG/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a tollat a <a href='https://codepen.io/azuremaps/pen/OwgyvG/'>Style Picker hozzáadásával</a> Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) használatával a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
-
-> [!TIP]
-> Alapértelmezés szerint a Azure Maps S0 díjszabási szintje használatakor a Style Picker vezérlő felsorolja az összes elérhető stílust. Ha csökkenteni szeretné a listában szereplő stílusok számát, adja át a listában megjeleníteni kívánt stílusok tömbjét a `mapStyle` Style Picker (stílus kiválasztása) lehetőséggel. Ha S1-et használ, és az összes elérhető stílust meg szeretné jeleníteni, állítsa a `mapStyles` Style Picker kapcsolót a következőre: `"all"` .
 
 ## <a name="next-steps"></a>További lépések
 

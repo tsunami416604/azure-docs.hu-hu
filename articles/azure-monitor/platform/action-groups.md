@@ -3,28 +3,26 @@ title: Műveletcsoportok létrehozása és kezelése az Azure Portalon
 description: Megtudhatja, hogyan hozhat létre és kezelhet műveleti csoportokat a Azure Portalban.
 author: dkamstra
 ms.topic: conceptual
-ms.date: 07/15/2020
+ms.date: 07/28/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 0c090238192b49af00856f6fcd002e95d154d2c0
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: a9d0fa9efaa07582212344e617d9a42f264b99ee
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321853"
+ms.locfileid: "87337744"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Műveletcsoportok létrehozása és kezelése az Azure Portalon
 A műveleti csoport az Azure-előfizetés tulajdonosa által meghatározott értesítési beállítások gyűjteménye. Azure Monitor és Service Health riasztások használata műveleti csoportok segítségével értesíti a felhasználókat arról, hogy riasztást váltott ki. A különböző riasztások ugyanazt a műveleti csoportot vagy különböző műveleti csoportokat használhatják a felhasználó igényeitől függően. Egy előfizetésben akár 2 000 műveleti csoportot is beállíthat.
-
-Egy olyan műveletet konfigurálhat, amely e-mailben vagy SMS-ben értesíti a személyeket, és megerősíti, hogy hozzá lettek adva a műveleti csoporthoz.
 
 Ebből a cikkből megtudhatja, hogyan hozhat létre és kezelhet műveleti csoportokat a Azure Portalban.
 
 Az egyes műveletek a következő tulajdonságokből állnak:
 
-* **Name (név**): a műveleti csoporton belüli egyedi azonosító.  
-* **Művelettípus**: a művelet végrehajtása megtörtént. Ilyenek például a hanghívások, SMS-üzenetek, e-mailek küldése, vagy különböző típusú automatizált műveletek elindítása. Lásd a cikk későbbi részében található típusokat.
-* **Részletek**: a *művelet típusa*szerint változó megfelelő részletek.
+* **Típus**: az értesítés vagy művelet elvégezve. Ilyenek például a hanghívások, SMS-üzenetek, e-mailek küldése, vagy különböző típusú automatizált műveletek elindítása. Lásd a cikk későbbi részében található típusokat.
+* **Name (név**): a műveleti csoporton belüli egyedi azonosító.
+* **Részletek**: a megfelelő részletek *típus*szerint változnak.
 
 További információ arról, hogyan használhatók Azure Resource Manager sablonok a műveleti csoportok konfigurálásához: [Action Group Resource Manager-sablonok](./action-groups-create-resource-manager-template.md).
 
@@ -32,33 +30,75 @@ További információ arról, hogyan használhatók Azure Resource Manager sablo
 
 1. A [Azure Portal](https://portal.azure.com)keresse meg és válassza a **figyelő**elemet. A **figyelő** ablaktábla egyetlen nézetben összesíti az összes figyelési beállítást és az adatait.
 
-1. Válassza a **Riasztások**, majd a **Műveletek kezelése** lehetőséget.
+1. Válassza a **riasztások**, majd a **műveletek kezelése**lehetőséget.
 
     ![Műveletek kezelése gomb](./media/action-groups/manage-action-groups.png)
     
-1. Válassza a **műveleti csoport hozzáadása**lehetőséget, és töltse ki a mezőket.
+1. Válassza a **műveleti csoport hozzáadása**lehetőséget, és töltse ki a megfelelő mezőket a varázsló felhasználói felületén.
 
-    ![A "műveleti csoport hozzáadása" parancs](./media/action-groups/add-action-group.png)
+    ![A "műveleti csoport hozzáadása" parancs](./media/action-groups/add-action-group.PNG)
+
+### <a name="configure-basic-action-group-settings"></a>Alapszintű műveleti csoport beállításainak konfigurálása
+
+A **Project details**:
+
+Válassza ki azt az **előfizetést** és **erőforráscsoportot** , amelyben a műveleti csoportot menti.
+
+A **példány részletei**területen:
+
+1. Adja meg a **műveleti csoport nevét**.
+
+1. Adja meg a **megjelenítendő nevet**. A megjelenített név a teljes műveleti csoport neve helyett használatos, ha az értesítéseket a csoport használatával küldi el a rendszer.
+
+      ![A műveleti csoport hozzáadása párbeszédpanel](./media/action-groups/action-group-1-basics.png)
+
+
+### <a name="configure-notifications"></a>Értesítések konfigurálása
+
+1. Kattintson a **Tovább: értesítések >** gombra az **értesítések** lapra való áttéréshez, vagy válassza a képernyő felső részén található **értesítések** fület.
+
+1. A riasztások indításakor küldendő értesítések listájának megadása. Minden értesítéshez adja meg a következőket:
+
+    a. **Értesítés típusa**: válassza ki az elküldeni kívánt értesítés típusát. Az alábbi lehetőségek közül választhat:
+      * E-mail-Azure Resource Manager szerepkör – e-mail küldése az egyes előfizetési szintű ARM-szerepkörökhöz rendelt felhasználóknak.
+      * E-mail/SMS/leküldés/hang – ezeket az értesítési típusokat megadott címzetteknek küldje el.
     
-1. Írjon be egy nevet a **műveleti csoport neve** mezőbe, és adjon meg egy nevet a **rövid név** mezőben. A rendszer a rövid nevet használja a műveletcsoport teljes neve helyett, amikor értesítéseket küld a csoport használatával.
+    b. **Név**: adjon meg egy egyedi nevet az értesítéshez.
 
-      ![A műveleti csoport hozzáadása párbeszédpanel](./media/action-groups/action-group-define.png)
-
-1. Az **előfizetés** mezője az aktuális előfizetéssel együtt kitölti az előfizetést. Ez az előfizetés az a művelet, amelyben a műveleti csoport mentve lett.
-
-1. Válassza ki azt az **erőforráscsoportot** , amelyben a műveleti csoportot menti.
-
-1. Adja meg a műveletek listáját. Minden művelethez adja meg a következőket:
-
-    1. **Név**: adjon meg egy egyedi azonosítót ehhez a művelethez.
-
-    1. **Művelettípus**: válassza az Automation Runbook, az Azure Function, az e-mailek Azure Resource Manager a szerepkör, a levelezés/SMS/leküldés/hang, a ITSM, a Logic apps, a biztonságos webhook és a webhook lehetőséget.
-
-    1. **Részletek**: a művelet típusa alapján adja meg a telefonszámot, az e-mail-címet, a webhook URI-ját, az Azure-alkalmazást, a ITSM-kapcsolat vagy az Automation-runbook. A ITSM művelethez emellett adja meg a **munkaelemet** és a ITSM eszköz által igényelt egyéb mezőket.
+    c. **Részletek**: a kiválasztott értesítési típus alapján írjon be egy e-mail-címet, telefonszámot stb.
     
-    1. **Gyakori riasztási séma**: engedélyezheti a [közös riasztási sémát](https://aka.ms/commonAlertSchemaDocs), amely lehetővé teszi, hogy egyetlen bővíthető és egységesített riasztási adattartalmat biztosítson a Azure monitor összes riasztási szolgáltatásában.
+    d. **Gyakori riasztási séma**: engedélyezheti a [közös riasztási sémát](https://aka.ms/commonAlertSchemaDocs), amely lehetővé teszi, hogy egyetlen bővíthető és egységesített riasztási adattartalmat biztosítson a Azure monitor összes riasztási szolgáltatásában.
 
-1. A műveleti csoport létrehozásához kattintson **az OK gombra** .
+    ![Az értesítések lap](./media/action-groups/action-group-2-notifications.png)
+    
+### <a name="configure-actions"></a>Műveletek konfigurálása
+
+1. Kattintson a **következőre: műveletek >** gombra a **műveletek** lapra való áthelyezéshez, vagy válassza a képernyő felső részén található **műveletek** fület.
+
+1. Megadhatja a riasztások aktiválásakor aktiválható műveletek listáját. Minden művelethez adja meg a következőket:
+
+    a. **Művelettípus**: válassza az Automation Runbook, az Azure Function, a ITSM, a Logic app, a Secure webhook és a webhook elemet.
+    
+    b. **Név**: adjon egyedi nevet a műveletnek.
+
+    c. **Részletek**: a Művelettípus alapján adjon meg egy webhook URI-t, egy Azure-alkalmazást, egy ITSM-kapcsolat vagy egy Automation-runbook. A ITSM művelethez emellett adja meg a **munkaelemet** és a ITSM eszköz által igényelt egyéb mezőket.
+    
+    d. **Gyakori riasztási séma**: engedélyezheti a [közös riasztási sémát](https://aka.ms/commonAlertSchemaDocs), amely lehetővé teszi, hogy egyetlen bővíthető és egységesített riasztási adattartalmat biztosítson a Azure monitor összes riasztási szolgáltatásában.
+    
+    ![A műveletek lap](./media/action-groups/action-group-3-actions.png)
+
+### <a name="create-the-action-group"></a>A műveleti csoport létrehozása
+
+1. Ha kívánja, végignézheti a **Címkék** lapot is. Ez lehetővé teszi a kulcs/érték párok hozzárendelését a kategorizáláshoz tartozó műveleti csoportba, és bármely Azure-erőforrás számára elérhető funkciót.
+
+    ![A címkék lap](./media/action-groups/action-group-4-tags.png)
+    
+1. A beállítások áttekintéséhez kattintson a **Felülvizsgálat + létrehozás** elemre. Ezzel gyorsan érvényesítheti a bemeneteket, így meggyőződhet arról, hogy az összes szükséges mező ki van választva. Ha valami hibádzik, az ezen a ponton megjelenik. Miután áttekintette a beállításokat, kattintson a **Létrehozás** elemre a műveleti csoport kiépítéséhez.
+    
+    ![A felülvizsgálat + Létrehozás lap](./media/action-groups/action-group-5-review.png)
+
+> [!NOTE]
+> Ha olyan műveletet konfigurál, amely e-mailben vagy SMS-ben értesíti a személyeket, a rendszer megerősítést küld, amely jelzi, hogy hozzá lettek adva a műveleti csoporthoz.
 
 ## <a name="manage-your-action-groups"></a>A műveleti csoportok kezelése
 

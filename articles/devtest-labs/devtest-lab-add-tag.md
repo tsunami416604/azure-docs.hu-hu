@@ -3,12 +3,12 @@ title: Címkék hozzáadása laborhoz a Azure DevTest Labsban | Microsoft Docs
 description: Megtudhatja, hogyan adhat hozzá címkét laborhoz Azure DevTest Labs
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: bf835cee705012fd175a3132edde1d241311c576
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 30f0f2ed4b8cc98985326db652371b8ceb16bfb4
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483006"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287587"
 ---
 # <a name="add-tags-to-a-lab-in-azure-devtest-labs"></a>Címkék hozzáadása laborhoz Azure DevTest Labs
 
@@ -52,7 +52,7 @@ Az alábbi korlátozások érvényesek a címkékre:
 * A címke neve legfeljebb 512 karakter, a címke értéke pedig legfeljebb 256 karakter hosszúságú lehet. A tárfiókok esetében a címke neve legfeljebb 128 karakter, a címke értéke pedig legfeljebb 256 karakter hosszúságú lehet.
 * Az egyes erőforráscsoportokra alkalmazott címkéket nem öröklik az adott erőforráscsoportba tartozó erőforrások.
 
-[Az Azure-erőforrások rendszerezéséhez címkék](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags) használatával részletesebb információkat talál a címkék Azure-ban való használatáról, beleértve a címkék a PowerShell vagy az Azure CLI használatával történő kezelését is.
+[Az Azure-erőforrások rendszerezéséhez címkék](../azure-resource-manager/management/tag-resources.md) használatával részletesebb információkat talál a címkék Azure-ban való használatáról, beleértve a címkék a PowerShell vagy az Azure CLI használatával történő kezelését is.
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 

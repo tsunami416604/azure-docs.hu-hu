@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/18/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 0e840a9f78a4d6a9fef83abd7b0f011b700f985f
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 3ce829a9fd58fb2940ee3265a66717af3dc9c0b5
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86231939"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289068"
 ---
 # <a name="performance-guidelines-for-sql-server-on-azure-virtual-machines"></a>Teljesítményre vonatkozó irányelvek az Azure-beli SQL Server Virtual Machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -108,13 +108,17 @@ A prémium SSD-ket támogató virtuális gépek esetében a TempDB olyan lemezen
       1. Az adattárház-számítási feladatokhoz a OLTP számítási feladatainak és a 256 KB 262 144 (65 536 bájt) értékének beállításával állítsa be az adattárolási munkaterhelések teljesítményének romlását, hogy elkerülje 64 a partíciók hibás igazítása miatti hatást. Ezt a PowerShell-lel kell beállítani.
       2. Oszlopok számának beállítása = fizikai lemezek száma. A PowerShell használata a több mint 8 lemez konfigurálásához (a Kiszolgálókezelő felhasználói felülete nem). 
 
-    A következő PowerShell például létrehoz egy új tárolót, amely az összevont méretet 64 KB-ra, az oszlopok száma pedig 2:
+    A következő PowerShell például létrehoz egy új tárolási készletet az összevont mérettel 64 KB értékre, és az oszlopok számát, amely a tárolási készlet fizikai lemezének mennyiségével egyenlő:
 
     ```powershell
-    $PoolCount = Get-PhysicalDisk -CanPool $True
     $PhysicalDisks = Get-PhysicalDisk | Where-Object {$_.FriendlyName -like "*2" -or $_.FriendlyName -like "*3"}
-
-    New-StoragePool -FriendlyName "DataFiles" -StorageSubsystemFriendlyName "Storage Spaces*" -PhysicalDisks $PhysicalDisks | New-VirtualDisk -FriendlyName "DataFiles" -Interleave 65536 -NumberOfColumns 2 -ResiliencySettingName simple –UseMaximumSize |Initialize-Disk -PartitionStyle GPT -PassThru |New-Partition -AssignDriveLetter -UseMaximumSize |Format-Volume -FileSystem NTFS -NewFileSystemLabel "DataDisks" -AllocationUnitSize 65536 -Confirm:$false 
+    
+    New-StoragePool -FriendlyName "DataFiles" -StorageSubsystemFriendlyName "Storage Spaces*" `
+        -PhysicalDisks $PhysicalDisks | New- VirtualDisk -FriendlyName "DataFiles" `
+        -Interleave 65536 -NumberOfColumns $PhysicalDisks .Count -ResiliencySettingName simple `
+        –UseMaximumSize |Initialize-Disk -PartitionStyle GPT -PassThru |New-Partition -AssignDriveLetter `
+        -UseMaximumSize |Format-Volume -FileSystem NTFS -NewFileSystemLabel "DataDisks" `
+        -AllocationUnitSize 65536 -Confirm:$false 
     ```
 
   * Windows 2008 R2 vagy korábbi verzió esetén a dinamikus lemezeket (operációsrendszer-csíkozott kötetek) is használhatja, és a sáv mérete mindig 64 KB. Ez a beállítás a Windows 8/Windows Server 2012 operációs rendszertől kezdve elavult. További információ: a virtuális lemez szolgáltatás támogatási nyilatkozata a [Windows Storage Management API-ra való áttérést](https://msdn.microsoft.com/library/windows/desktop/hh848071.aspx)ismerteti.

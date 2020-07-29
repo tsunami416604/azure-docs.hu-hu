@@ -1,234 +1,423 @@
 ---
 title: Fejlesztői útmutató – IoT Plug and Play előzetes verzió | Microsoft Docs
-description: A IoT Plug and Play fejlesztők számára készült eszközök modellezésének leírása
-author: dominicbetts
-ms.author: dobett
-ms.date: 12/26/2019
+description: A fejlesztők számára készült IoT-Plug and Play leírása
+author: rido-min
+ms.author: rmpablos
+ms.date: 07/16/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 5fda51e6d2f62b9cbef0fcac22d5bb2ea0df905b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ef221ea068f2786a4a84f20a29e80dd7176f06c6
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77605222"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337415"
 ---
-# <a name="iot-plug-and-play-preview-modeling-developer-guide"></a>IoT Plug and Play előzetes verzió modellezése – fejlesztői útmutató
+# <a name="iot-plug-and-play-preview-developer-guide"></a>IoT Plug and Play előzetes verziójának fejlesztői útmutatója
 
-A IoT Plug and Play Preview lehetővé teszi, hogy olyan eszközöket hozzon létre, amelyek az Azure IoT alkalmazásaiban hirdetik ki képességeiket. A IoT Plug and Play-eszközökhöz nincs szükség manuális konfigurálásra, ha az ügyfél a Plug and Play-kompatibilis alkalmazások IoT csatlakoztatja őket. IoT Central példa egy IoT Plug and Play-kompatibilis alkalmazásra.
+A IoT Plug and Play Preview lehetővé teszi, hogy olyan intelligens eszközöket hozzon létre, amelyek az Azure IoT alkalmazásaiban hirdetik ki képességeiket. A IoT Plug and Play-eszközökhöz nincs szükség manuális konfigurálásra, ha az ügyfél a Plug and Play-kompatibilis alkalmazások IoT csatlakoztatja őket.
 
-IoT Plug and Play eszköz létrehozásához létre kell hoznia egy eszköz leírását. A leírás a digitális Twins Definition Language (DTDL) nevű egyszerű definíciós nyelvvel történik.
+Ez az útmutató ismerteti azokat az alapvető lépéseket, amelyek szükségesek a [IoT Plug and Play konvenciókat](concepts-convention.md)követő eszközök létrehozásához, valamint az eszközkel való kommunikációhoz használható REST API-k létrehozásához.
 
-## <a name="device-capability-model"></a>Eszköz képességeinek modellje
+IoT Plug and Play-eszköz létrehozásához kövesse a tézisek lépéseit:
 
-A DTDL-mel létrehoz egy _eszköz-képesség modellt_ az eszköz részeinek leírásához. Egy tipikus IoT-eszköz a következőket alkotja:
+1. Győződjön meg arról, hogy az eszköz vagy a MQTT vagy a MQTT over WebSockets protokoll használatával csatlakozik az Azure IoT Hubhoz.
+1. Hozzon létre egy [digitális Twins Definition Language (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl) modellt az eszköz leírásához. További információ: [az összetevők megértése a IoT Plug and Play-modellekben](concepts-components.md).
+1. Frissítse eszközét, és jelentse be az `model-id` eszköz kapcsolatának részét.
+1. Telemetria, tulajdonságok és parancsok implementálása a [IoT Plug and Play konvenciók](concepts-convention.md) használatával
 
-- Egyéni részek, amelyek az eszköz egyedivé tételét teszik elérhetővé.
-- Szabványos részek, amelyek az összes eszközre jellemző dolgok.
+Ha az eszköz megvalósítása elkészült, az [Azure IoT Explorer](howto-use-iot-explorer.md) segítségével ellenőrizheti, hogy az eszköz követi-e a IoT Plug and Play konvenciókat.
 
-Ezeket a részeket _illesztőfelületeknek_ nevezzük az eszköz képességeinek modelljében. A felületek határozzák meg az eszköz által megvalósított egyes részek részleteit.
+> [!Tip]
+> A cikkben szereplő kódrészletek a C# nyelvet használják, de a fogalmak a C, a Python, a Node és a Java számára elérhető SDK-k bármelyikére alkalmazhatók.
 
-A következő példa egy termosztátos eszköz eszköz-képesség modelljét mutatja be:
+## <a name="model-id-announcement"></a>Modell AZONOSÍTÓjának bejelentése
 
-```json
-{
-  "@id": "urn:example:Thermostat_T_1000:1",
-  "@type": "CapabilityModel",
-  "implements": [
-    {
-      "name": "thermostat",
-      "schema": "urn:example:Thermostat:1"
-    },
-    {
-      "name": "urn_azureiot_deviceManagement_DeviceInformation",
-      "schema": "urn:azureiot:deviceManagement:DeviceInformation:1"
-    }
-  ],
-  "@context": "http://azureiot.com/v1/contexts/IoTModel.json"
-}
+A modell AZONOSÍTÓjának bejelentéséhez az eszköznek tartalmaznia kell azt a kapcsolódási adatok között:
+
+```csharp
+DeviceClient.CreateFromConnectionString(
+  connectionString,
+  TransportType.Mqtt,
+  new ClientOptions() { ModelId = modelId })
 ```
 
-A képesség-modellnek van néhány kötelező mezője:
+Az új `ClientOptions` túlterhelés a `DeviceClient` kapcsolatok inicializálásához használt összes módszernél elérhető.
 
-- `@id`: egyedi azonosító egyszerű egységes erőforrás-név formájában.
-- `@type`: kijelenti, hogy ez az objektum egy képességi modell.
-- `@context`: a képesség modellhez használt DTDL-verziót adja meg.
-- `implements`: az eszköz által megvalósított felületek felsorolása.
+A modell AZONOSÍTÓjának bejelentése az SDK-k következő verzióihoz lett hozzáadva
 
-A megvalósítások szakaszban található felületek listájának minden bejegyzése a következőket tartalmazza:
+|SDK|Verzió|
+|---|-------|
+|C – SDK|1.3.9|
+|.NET|1.27.0|
+|Java|1.14.0|
+|Csomópont|1.17.0|
+|Python|2.1.4|
 
-- `name`: az interfész programozási neve.
-- `schema`: az a felület, amelyet a képesség modell implementál.
+## <a name="implement-telemetry-properties-and-commands"></a>Telemetria, tulajdonságok és parancsok implementálása
 
-További választható mezőket is használhat, amelyekkel további részleteket adhat hozzá a képesség modelljéhez, például a megjelenítendő név és a Leírás mezőben. A képességi modellben deklarált felületek az eszköz összetevőiként is megtekinthetők. A nyilvános előzetes verzióban az illesztőfelületek listájának sémája csak egy bejegyzéssel rendelkezhet.
-
-## <a name="interface"></a>Interfész
-
-A DTDL segítségével az eszköz képességeit a felületek használatával írhatja le. A felületek leírják, hogy a _Tulajdonságok_, a _telemetria_és a _parancsok_ hogyan implementálják az eszköz részét:
-
-- `Properties`. A tulajdonságok olyan adatmezők, amelyek az eszköz állapotát jelölik. A tulajdonságok használatával az eszköz tartós állapotát, például egy Hűtőfolyadék-szivattyú on-off állapotát jelölheti ki. A tulajdonságok az alapszintű eszköz tulajdonságait is jelezhetik, például az eszköz belső vezérlőprogram-verzióját. A tulajdonságokat csak olvasható vagy írható módon deklarálhatja.
-- `Telemetry`. A telemetria mezők az érzékelők méréseit jelölik. Minden alkalommal, amikor az eszköz érzékelőt használ, egy telemetria eseményt kell küldenie, amely az érzékelő adatait tartalmazza.
-- `Commands`. A parancsok olyan metódusokat jelölnek, amelyeket az eszköz felhasználói futtathatnak az eszközön. Például egy alaphelyzetbe állítási parancs vagy egy, a ventilátor be-és kikapcsolására szolgáló parancs.
-
-A következő példa egy termosztátos eszköz felületét szemlélteti:
-
-```json
-{
-  "@id": "urn:example:Thermostat:1",
-  "@type": "Interface",
-  "contents": [
-    {
-      "@type": "Telemetry",
-      "name": "temperature",
-      "schema": "double"
-    }
-  ],
-  "@context": "http://azureiot.com/v1/contexts/IoTModel.json"
-}
-```
-
-Az illesztőfelületnek van néhány kötelező mezője:
-
-- `@id`: egyedi azonosító egyszerű egységes erőforrás-név formájában.
-- `@type`: kijelenti, hogy ez az objektum illesztőfelület.
-- `@context`: az illesztőfelülethez használt DTDL-verziót adja meg.
-- `contents`: az eszközt alkotó tulajdonságok, telemetria és parancsok felsorolása.
-
-Ebben az egyszerű példában csak egyetlen telemetria mező van. A mező minimális leírása a következőket tartalmazhatja:
-
-- `@type`: a képesség típusát adja meg: `Telemetry` , `Property` , vagy `Command` .
-- `name`: megadja a telemetria értékének nevét.
-- `schema`: a telemetria adattípusát adja meg. Ez az érték egyszerű típus lehet, például dupla, Integer, Boolean vagy string. Az összetett objektumtípusok, tömbök és leképezések is támogatottak.
-
-További választható mezők, például a megjelenítendő név és a leírás, lehetővé teszik további részletek hozzáadását az interfészhez és a képességekhez.
-
-### <a name="properties"></a>Tulajdonságok
-
-Alapértelmezés szerint a tulajdonságok csak olvashatók. A csak olvasható tulajdonságok azt jelentik, hogy az eszköz a IoT-hubhoz frissíti a tulajdonság értékét. Az IoT hub nem tudja beállítani a csak olvasható tulajdonság értékét.
-
-Egy tulajdonságot egy felületen írhatóként is megadhat. Az eszköz a IoT hub-ból származó írható tulajdonságra, valamint a központhoz tartozó tulajdonságértékek frissítéseire vonatkozó frissítést is képes fogadni.
-
-Az eszközöknek nem kell csatlakozniuk a tulajdonságértékek beállításához. A frissített értékek akkor lesznek átadva, amikor az eszköz a következőhöz csatlakozik a hubhoz. Ez a viselkedés a csak olvasható és írható tulajdonságokra is vonatkozik.
-
-Ne használjon tulajdonságokat a telemetria az eszközről való küldéséhez. Például egy írásvédett tulajdonság például `temperatureSetting=80` azt jelenti, hogy az eszköz hőmérséklete 80 értékre van állítva, és az eszköz megpróbál bejutni vagy maradni, ez a hőmérséklet.
-
-Az írható tulajdonságok esetében az eszköz a kívánt állapot kódját, verzióját és leírását adja vissza annak jelzésére, hogy a kapott és alkalmazta-e a tulajdonság értékét.
+A [IoT Plug and Play-modellek összetevőinek ismertetése](concepts-components.md)című témakörben leírtak szerint az eszköz-építőknek el kell dönteniük, hogy milyen összetevőket szeretnének használni az eszközeik leírásához. Az összetevők használatakor az eszközöknek az ebben a részben ismertetett szabályokat kell követniük.
 
 ### <a name="telemetry"></a>Telemetria
 
-Alapértelmezés szerint a IoT Hub az eszközökről érkező összes telemetria-üzenetet a [beépített szolgáltatáshoz kapcsolódó végpontra (**üzenetek/események**)](../iot-hub/iot-hub-devguide-messages-read-builtin.md) irányítja, amely kompatibilis a [Event Hubsval](https://azure.microsoft.com/documentation/services/event-hubs/).
+Az összetevők nélküli modellek nem igényelnek speciális tulajdonságot.
 
-A [IoT hub egyéni végpontok és útválasztási szabályok](../iot-hub/iot-hub-devguide-messages-d2c.md) segítségével telemetria küldhet más célhelyekre, például a blob Storage-ba vagy más esemény-hubokba. Az útválasztási szabályok az üzenet tulajdonságait használják az üzenetek kiválasztásához.
+Az összetevők használatakor az eszközöknek egy üzenet tulajdonságot kell megadniuk az összetevő nevével:
+
+```c#
+public async Task SendComponentTelemetryValueAsync(string componentName, string serializedTelemetry)
+{
+  var message = new Message(Encoding.UTF8.GetBytes(serializedTelemetry));
+  message.Properties.Add("$.sub", componentName);
+  message.ContentType = "application/json";
+  message.ContentEncoding = "utf-8";
+  await deviceClient.SendEventAsync(message);
+}
+```
+
+### <a name="read-only-properties"></a>Csak olvasható tulajdonságok
+
+Az összetevők nélküli modellek nem igényelnek különleges szerkezetet:
+
+```csharp
+TwinCollection reportedProperties = new TwinCollection();
+reportedProperties["maxTemperature"] = 38.7;
+await client.UpdateReportedPropertiesAsync(reportedProperties);
+```
+
+Az eszköz Twin a következő jelentett tulajdonsággal frissült:
+
+```json
+{
+  "reported": {
+      "maxTemperature" : 38.7
+  }
+}
+```
+
+Az összetevők használatakor a tulajdonságokat az összetevő nevén belül kell létrehozni:
+
+```csharp
+TwinCollection reportedProperties = new TwinCollection();
+TwinCollection component = new TwinCollection();
+component["maxTemperature"] = 38.7;
+component["__t"] = "c"; // marker to identify a component
+reportedProperties["thermostat1"] = component;
+await client.UpdateReportedPropertiesAsync(reportedProperties);
+```
+
+Az eszköz Twin a következő jelentett tulajdonsággal frissült:
+
+```json
+{
+  "reported": {
+    "thermostat1" : {  
+      "__t" : "c",  
+      "maxTemperature" : 38.7
+     } 
+  }
+}
+```
+
+### <a name="writable-properties"></a>Írható tulajdonságok
+
+Ezeket a tulajdonságokat beállíthatja az eszköz, vagy frissítheti a megoldás. Ha a megoldás frissíti a tulajdonságot, az ügyfél visszahívási értesítést kap a alkalmazásban `DeviceClient` . A IoT Plug and Play konvenciók követéséhez az eszköznek tájékoztatnia kell a szolgáltatást arról, hogy a tulajdonság sikeresen megérkezett.
+
+#### <a name="report-a-writable-property"></a>Írható tulajdonság jelentése
+
+Ha egy eszköz írható tulajdonságot jelent, tartalmaznia kell az `ack` egyezményekben definiált értékeket.
+
+Írható tulajdonság bejelentése összetevők nélkül:
+
+```csharp
+TwinCollection reportedProperties = new TwinCollection();
+TwinCollection ackProps = new TwinCollection();
+ackProps["value"] = 23.2;
+ackProps["ac"] = 200; // using HTTP status codes
+ackProps["av"] = 0; // not readed from a desired property
+ackProps["ad"] = "reported default value";
+reportedProperties["targetTemperature"] = ackProps;
+await client.UpdateReportedPropertiesAsync(reportedProperties);
+```
+
+Az eszköz Twin a következő jelentett tulajdonsággal frissült:
+
+```json
+{
+  "reported": {
+      "targetTemperature": {
+          "value": 23.2,
+          "ac": 200,
+          "av": 3,
+          "ad": "complete"
+      }
+  }
+}
+```
+
+Egy írható tulajdonság egy összetevőből való jelentéséhez a Twin elemnek tartalmaznia kell egy jelölőt:
+
+```csharp
+TwinCollection reportedProperties = new TwinCollection();
+TwinCollection component = new TwinCollection();
+TwinCollection ackProps = new TwinCollection();
+component["__t"] = "c"; // marker to identify a component
+ackProps["value"] = 23.2;
+ackProps["ac"] = 200; // using HTTP status codes
+ackProps["av"] = 0; // not read from a desired property
+ackProps["ad"] = "reported default value";
+component["targetTemperature"] = ackProps;
+reportedProperties["thermostat1"] = component;
+await client.UpdateReportedPropertiesAsync(reportedProperties);
+```
+
+Az eszköz Twin a következő jelentett tulajdonsággal frissült:
+
+```json
+{
+  "reported": {
+    "thermostat1": {
+      "__t" : "c",
+      "targetTemperature": {
+          "value": 23.2,
+          "ac": 200,
+          "av": 3,
+          "ad": "complete"
+      }
+    }
+  }
+}
+```
+
+#### <a name="subscribe-to-desired-property-updates"></a>Előfizetés a kívánt tulajdonság frissítéseire
+
+A szolgáltatások frissíthetik a csatlakoztatott eszközökön értesítést kiváltó kívánt tulajdonságokat. Ez az értesítés tartalmazza a frissített kívánt tulajdonságokat, beleértve a frissítést azonosító verziószámot is. Az eszközöknek a jelentett tulajdonságokkal megegyező üzenettel kell válaszolniuk `ack` .
+
+Az összetevők nélküli modellek egyetlen tulajdonságot látnak, és létrehozzák a jelentett `ack` verziót a kapott verzióval:
+
+```csharp
+await client.SetDesiredPropertyUpdateCallbackAsync(async (desired, ctx) => 
+{
+  JValue targetTempJson = desired["targetTemperature"];
+  double targetTemperature = targetTempJson.Value<double>();
+
+  TwinCollection reportedProperties = new TwinCollection();
+  TwinCollection ackProps = new TwinCollection();
+  ackProps["value"] = targetTemperature;
+  ackProps["ac"] = 200;
+  ackProps["av"] = desired.Version; 
+  ackProps["ad"] = "desired property received";
+  reportedProperties["targetTemperature"] = ackProps;
+
+  await client.UpdateReportedPropertiesAsync(reportedProperties);
+}, null);
+```
+
+Az eszköz Twin a kívánt és jelentett szakaszban található tulajdonságot jeleníti meg:
+
+```json
+{
+  "desired" : {
+    "targetTemperature": 23.2,
+    "$version" : 3
+  },
+  "reported": {
+      "targetTemperature": {
+          "value": 23.2,
+          "ac": 200,
+          "av": 3,
+          "ad": "complete"
+      }
+  }
+}
+```
+
+Az összetevőket tartalmazó modellek megkapják az összetevő nevével burkolt kívánt tulajdonságokat, és jelenteniük kell a `ack` jelentett tulajdonságot:
+
+```csharp
+await client.SetDesiredPropertyUpdateCallbackAsync(async (desired, ctx) =>
+{
+  JObject thermostatComponent = desired["thermostat1"];
+  JToken targetTempProp = thermostatComponent["targetTemperature"];
+  double targetTemperature = targetTempProp.Value<double>();
+
+  TwinCollection reportedProperties = new TwinCollection();
+  TwinCollection component = new TwinCollection();
+  TwinCollection ackProps = new TwinCollection();
+  component["__t"] = "c"; // marker to identify a component
+  ackProps["value"] = targetTemperature;
+  ackProps["ac"] = 200; // using HTTP status codes
+  ackProps["av"] = desired.Version; // not readed from a desired property
+  ackProps["ad"] = "desired property received";
+  component["targetTemperature"] = ackProps;
+  reportedProperties["thermostat1"] = component;
+
+  await client.UpdateReportedPropertiesAsync(reportedProperties);
+}, null);
+```
+
+Az eszközök Twin összetevője a kívánt és jelentett szakaszt mutatja a következőképpen:
+
+```json
+{
+  "desired" : {
+    "thermostat1" : {
+        "__t" : "c",
+        "targetTemperature": 23.2,
+    }
+    "$version" : 3
+  },
+  "reported": {
+    "thermostat1" : {
+        "__t" : "c",
+      "targetTemperature": {
+          "value": 23.2,
+          "ac": 200,
+          "av": 3,
+          "ad": "complete"
+      }
+    }
+  }
+}
+```
 
 ### <a name="commands"></a>Parancsok
 
-A parancsok szinkron vagy aszinkron jellegűek. A szinkron parancsoknak alapértelmezés szerint 30 másodpercen belül kell futniuk, és az eszköznek csatlakoztatva kell lennie a parancs megérkezése után. Ha az eszköz időben válaszol, vagy az eszköz nincs csatlakoztatva, akkor a parancs sikertelen lesz.
+Az összetevők nélküli modellek a parancs nevét kapják meg, ahogy azt a szolgáltatás meghívja.
 
-Használjon aszinkron parancsokat a hosszan futó műveletekhez. Az eszköz telemetria-üzenetek használatával küldi el a végrehajtási adatokat. Ezek az állapotjelző üzenetek a következő fejléc-tulajdonságokkal rendelkeznek:
+Az összetevőkkel rendelkező modellek megkapják az összetevővel és az `*` elválasztóval előtagozott parancsot.
 
-- `iothub-command-name`: a parancs neve, például `UpdateFirmware` .
-- `iothub-command-request-id`: a kiszolgáló oldalán generált kérelem-azonosító, amelyet a rendszer a kezdeti hívásban az eszköznek küld.
-- `iothub-interface-id`: Annak az adapternek az azonosítója, amelyhez ez a parancs van meghatározva (például `urn:example:AssetTracker:1` ).
- `iothub-interface-name`: az interfész példányának neve, például `myAssetTracker` .
-- `iothub-command-statuscode`: az eszközről visszaadott állapotkód, például `202` .
-
-## <a name="register-a-device"></a>Eszköz regisztrálása
-
-A IoT Plug and Play megkönnyíti az eszköz képességeinek reklámozását. Ha az eszköz IoT Hubhoz való csatlakozása után a IoT Plug and Play, regisztrálnia kell az eszköz képességeinek modelljét. A regisztráció lehetővé teszi az ügyfelek számára az eszköz IoT Plug and Play funkciójának használatát.
-
-Ez az útmutató bemutatja, hogyan regisztrálhat egy eszközt a C-hez készült Azure IoT Device SDK-val.
-
-Az eszköz által megvalósított minden egyes csatolóhoz létre kell hoznia egy felületet, és hozzá kell kötnie a megvalósításához.
-
-A korábban, a C SDK használatával bemutatott termosztát-interfészhez a termosztát-felületet a megvalósításához kell létrehoznia és összekapcsolásához:
-
-```c
-DIGITALTWIN_INTERFACE_HANDLE thermostatInterfaceHandle;
-
-DIGITALTWIN_CLIENT_RESULT result = DigitalTwin_InterfaceClient_Create(
-    "thermostat",
-    "urn:example:Thermostat:1",
-    null, null,
-    &thermostatInterfaceHandle);
-
-result = DigitalTwin_Interface_SetCommandsCallbacks(
-    thermostatInterfaceHandle,
-    commandsCallbackTable);
-
-result = DigitalTwin_Interface_SetPropertiesUpdatedCallbacks(
-    thermostatInterfaceHandle,
-    propertiesCallbackTable);
-
+```csharp
+await client.SetMethodHandlerAsync("themostat*reboot", (MethodRequest req, object ctx) =>
+{
+  Console.WriteLine("REBOOT");
+  return Task.FromResult(new MethodResponse(200));
+},
+null);
 ```
 
-Ismételje meg ezt a kódot minden, az eszköz által megvalósított csatolón.
+#### <a name="request-and-response-payloads"></a>Kérelmek és válaszok hasznos adatai
 
-Miután létrehozta a felületet, regisztrálja az eszköz képességeinek modelljét és felületeit az IoT hub-ban:
+A parancsok a kérelem és a válasz hasznos adatai meghatározására használják a típusokat. Az eszköznek deszerializálnia kell a bejövő bemeneti paramétert, és szerializálnia kell a választ. Az alábbi példa bemutatja, hogyan implementálhat egy olyan parancsot, amely a hasznos adatokban definiált komplex típusokat tartalmazza:
 
-```c
-DIGITALTWIN_INTERFACE_CLIENT_HANDLE interfaces[2];
-interfaces[0] = thermostatInterfaceHandle;
-interfaces[1] = deviceInfoInterfaceHandle;
-
-result = DigitalTwin_DeviceClient_RegisterInterfacesAsync(
-    digitalTwinClientHandle, // The handle for the connection to Azure IoT
-    "urn:example:Thermostat_T_1000:1",
-    interfaces, 2,
-    null, null);
+```json
+{
+  "@type": "Command",
+  "name": "start",
+  "request": {
+    "name": "startRequest",
+    "schema": {
+      "@type": "Object",
+      "fields": [
+        {
+          "name": "startPriority",
+          "schema": "integer"
+        },
+        {
+          "name": "startMessage",
+          "schema" : "string"
+        }
+      ]
+    }
+  },
+  "response": {
+    "name": "startReponse",
+    "schema": {
+      "@type": "Object",
+      "fields": [
+        {
+            "name": "startupTime",
+            "schema": "integer" 
+        },
+        {
+          "name": "startupMessage",
+          "schema": "string"
+        }
+      ]
+    }
+  }
+}
 ```
 
-## <a name="use-a-device"></a>Eszköz használata
+A következő kódrészletek azt mutatják be, hogyan valósítja meg egy eszköz a parancs definícióját, beleértve a szerializálás és a deszerializálás engedélyezéséhez használt típusokat is:
 
-A IoT Plug and Play lehetővé teszi olyan eszközök használatát, amelyek regisztrálták képességeiket az IoT hub-ban. Az eszköz tulajdonságait és parancsait például közvetlenül elérheti.
+```csharp
+class startRequest
+{
+  public int startPriority { get; set; }
+  public string startMessage { get; set; }
+}
 
-Ha az IoT hubhoz csatlakoztatott IoT Plug and Play eszközt kíván használni, használja a IoT Hub REST API vagy az egyik IoT nyelvi SDK-t. Az alábbi példák a IoT Hub REST API használják. Az API jelenlegi verziója: `2019-07-01-preview` . Hozzáfűzés `?api-version=2019-07-01-preview` a REST PI-hívásokhoz.
+class startResponse
+{
+  public int startupTime { get; set; }
+  public string startupMessage { get; set; }
+}
 
-Ha egy eszköz tulajdonság értékét (például a belső vezérlőprogram verzióját) szeretné lekérni a `fwVersion` `DeviceInformation` termosztát felületén, használja a digitális Twins REST API.
+// ... 
+
+await client.SetMethodHandlerAsync("start", (MethodRequest req, object ctx) =>
+{
+  var startRequest = JsonConvert.DeserializeObject<startRequest>(req.DataAsJson);
+  Console.WriteLine($"Received start command with priority ${startRequest.startPriority} and ${startRequest.startMessage}");
+
+  var startResponse = new startResponse
+  {
+    startupTime = 123,
+    startupMessage = "device started with message " + startRequest.startMessage
+  };
+
+  string responsePayload = JsonConvert.SerializeObject(startResponse);
+  MethodResponse response = new MethodResponse(Encoding.UTF8.GetBytes(responsePayload), 200);
+  return Task.FromResult(response);
+},null);
+```
+
+> [!Tip]
+> A kérelem és a válasz neve nem szerepel a dróton továbbított szerializált adattartalomban.
+
+## <a name="interact-with-the-device"></a>Az eszköz használata 
+
+A IoT Plug and Play lehetővé teszi, hogy olyan eszközöket használjon, amelyeken bejelentette a modell AZONOSÍTÓját az IoT hub-ban. Az eszköz tulajdonságait és parancsait például közvetlenül elérheti.
+
+Ha az IoT hubhoz csatlakoztatott IoT Plug and Play eszközt kíván használni, használja a IoT Hub REST API vagy az egyik IoT nyelvi SDK-t. Az alábbi példák a IoT Hub REST API használják. Az API jelenlegi verziója: `2020-05-31-preview` . Hozzáfűzés `?api-version=2020-05-31` a REST PI-hívásokhoz.
 
 Ha a termosztátos eszközt hívja meg `t-123` , az eszköz összes tulajdonságát egy REST API Get hívással érheti el:
 
 ```REST
-GET /digitalTwins/t-123/interfaces
+GET /digitalTwins/t-123
 ```
 
-Általánosságban az összes csatoló összes tulajdonsága elérhető ezzel a REST API sablonnal, ahol az az `{device-id}` eszköz azonosítója:
+Ez a hívás tartalmazza a JSON-tulajdonságot az `$metadata.$model` eszköz által bejelentett modell-azonosítóval.
+
+Az összes csatoló összes tulajdonsága a REST API sablonnal érhető el, ahol az az `GET /DigitalTwin/{device-id}` `{device-id}` eszköz azonosítója:
 
 ```REST
-GET /digitalTwins/{device-id}/interfaces
+GET /digitalTwins/{device-id}
 ```
 
-Ha ismeri az interfész nevét, például a `deviceInformation` , és szeretné lekérni az adott csatoló tulajdonságait, a hatókört a megadott csatolóra kell szűkíteni név szerint:
+Közvetlenül is meghívhatja a IoT Plug and Play eszköz parancsait. Ha az `Thermostat` `t-123` eszközön található összetevő rendelkezik `restart` paranccsal, meghívhatja REST API post hívással:
 
 ```REST
-GET /digitalTwins/t-123/interfaces/deviceInformation
-```
-
-Általánosságban az adott interfész tulajdonságai a REST API sablonon keresztül érhetők el, ahol az az `device-id` eszköz azonosítója, és az `{interface-name}` interfész neve:
-
-```REST
-GET /digitalTwins/{device-id}/interfaces/{interface-name}
-```
-
-Közvetlenül is meghívhatja a IoT Plug and Play eszköz parancsait. Ha az `Thermostat` `t-123` eszközön található felület rendelkezik `restart` paranccsal, meghívhatja REST API post hívással:
-
-```REST
-POST /digitalTwins/t-123/interfaces/thermostat/commands/restart
+POST /digitalTwins/t-123/components/Thermostat/commands/restart
 ```
 
 Általánosabban a parancsok a REST API sablonnal is meghívhatók:
 
 - `device-id`: az eszköz azonosítója.
-- `interface-name`: az eszköz képességei modellének megvalósítások szakaszában található felület neve.
+- `component-name`: az eszköz képességei modellének megvalósítások szakaszában található felület neve.
 - `command-name`: a parancs neve.
 
 ```REST
-/digitalTwins/{device-id}/interfaces/{interface-name}/commands/{command-name}
+/digitalTwins/{device-id}/components/{component-name}/commands/{command-name}
 ```
 
 ## <a name="next-steps"></a>További lépések
 
 Most, hogy megismerte az eszközök modellezését, íme néhány további erőforrás:
 
-- [Digital Twin Definition Language (DTDL)](https://aka.ms/DTDL)
+- [Digitális Twins-definíciós nyelv (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl)
 - [C eszköz SDK](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/)
 - [IoT REST API](https://docs.microsoft.com/rest/api/iothub/device)
+- [Modell összetevői](./concepts-components.md)

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: df56f53b64a35737700529b80c004efeb31eaabc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4da024eb4eb3747b8e0d6b291ca5b00df12aaeab
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80348660"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87367520"
 ---
 # <a name="azure-app-configuration-best-practices"></a>Az Azure app Configuration ajánlott eljárásai
 
@@ -81,7 +81,7 @@ Az alkalmazások konfigurálására irányuló túlzott kérelmek szabályozást
 
 * Egyetlen Sentinel- *kulcsot*tekinthet meg, és nem figyelheti az egyes kulcsokat. Az összes konfiguráció frissítése csak akkor, ha a Sentinel-kulcs módosul. Lásd: a [dinamikus konfiguráció használata egy ASP.net Core alkalmazásban](enable-dynamic-configuration-aspnet-core.md) példaként.
 
-* A Azure Event Grid használatával fogadhat értesítéseket, amikor a konfiguráció megváltozik, és nem mindig kérdezi le a módosításokat. További információk: az [Azure-alkalmazások konfigurációs eseményeinek átirányítása webes végpontra](./howto-app-configuration-event.md)
+* A Azure Event Grid használatával fogadhat értesítéseket, amikor a konfiguráció megváltozik, és nem mindig kérdezi le a módosításokat. További információ: az [Azure-alkalmazás konfigurációs eseményeinek átirányítása webes végpontra](./howto-app-configuration-event.md)
 
 ## <a name="importing-configuration-data-into-app-configuration"></a>Konfigurációs adatbázis importálása az alkalmazás-konfigurációba
 

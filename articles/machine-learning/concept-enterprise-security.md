@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 05/19/2020
-ms.openlocfilehash: 94724ea44b52ae885594fe55b67d74a03e339dab
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 723c30856593044c91220b4e3ab267ab140c5ffd
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87012881"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87366927"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Vállalati biztonsági Azure Machine Learning
 
@@ -42,7 +42,7 @@ További információ: [Azure Machine learning erőforrások és munkafolyamatok
 
 Azure Machine Learning a következő két hitelesítési módszert támogatja a webszolgáltatások esetében: kulcs és jogkivonat. Az egyes webszolgáltatások egyszerre csak egy hitelesítési űrlapot tudnak engedélyezni.
 
-|Hitelesítési módszer|Description|Azure Container Instances|AKS|
+|Hitelesítési módszer|Leírás|Azure Container Instances|AKS|
 |---|---|---|---|
 |Kulcs|A kulcsok statikusak, és nem kell frissíteni. A kulcsok újragenerálása manuálisan végezhető el.|Alapértelmezés szerint letiltva| Alapértelmezés szerint engedélyezett|
 |Jogkivonat|A tokenek a megadott időszak után lejárnak, és frissíteni kell őket.| Nem elérhető| Alapértelmezés szerint letiltva |
@@ -75,7 +75,7 @@ A következő táblázat a főbb Azure Machine Learning-műveleteit és az azoka
 | Modellek/lemezképek megtekintése | ✓ | ✓ | ✓ |
 | Webszolgáltatás hívása | ✓ | ✓ | ✓ |
 
-Ha a beépített szerepkörök nem felelnek meg az igényeinek, létrehozhat egyéni szerepköröket is. Az egyéni szerepkörök csak a munkaterületen lévő műveleteknél és Machine Learning Compute támogatottak. Az egyéni szerepkörök olvasási, írási és törlési engedélyekkel rendelkezhetnek a munkaterületen és a munkaterületen lévő számítási erőforráson. A szerepkört egy adott munkaterület-szinten, egy adott erőforráscsoport-szinten vagy egy adott előfizetési szinten is elérhetővé teheti. További információ: [felhasználók és szerepkörök kezelése Azure Machine learning munkaterületen](how-to-assign-roles.md).
+Ha a beépített szerepkörök nem felelnek meg az igényeinek, létrehozhat egyéni szerepköröket is. Az egyéni szerepkörök a munkaterületen belüli összes művelet szabályozására használhatók (például számítás létrehozása, Futtatás elküldése, adattár regisztrálása vagy modell üzembe helyezése). Az egyéni szerepkörök olvasási, írási és törlési engedélyekkel rendelkezhetnek a munkaterület különböző erőforrásaihoz, például a fürtökhöz, az adattárolóhoz, a modellekhez és a végpontokhoz. A szerepkört egy adott munkaterület-szinten, egy adott erőforráscsoport-szinten vagy egy adott előfizetési szinten is elérhetővé teheti. További információ: [felhasználók és szerepkörök kezelése Azure Machine learning munkaterületen](how-to-assign-roles.md).
 
 > [!WARNING]
 > A Azure Machine Learning Azure Active Directory vállalatok közötti együttműködésben támogatott, de jelenleg nem támogatott a Azure Active Directory vállalat – felhasználó együttműködésben.
@@ -154,10 +154,6 @@ Ha saját (ügyfél által felügyelt) kulcsokat kíván használni a Azure Cosm
 Az ügyfél által felügyelt kulcsokkal rendelkező Cosmos DB példány kiépítés engedélyezéséhez hajtsa végre a következő műveleteket:
 
 * Regisztrálja a Microsoft. MachineLearning és a Microsoft.DocumentDB erőforrás-szolgáltatót az előfizetésében, ha még nem tette meg.
-
-* Engedélyezze az előfizetéshez tartozó közreműködői engedélyekkel rendelkező Machine Learning alkalmazást (az identitás-és hozzáférés-kezelésben).
-
-    ![Az "Azure Machine Learning alkalmazás" engedélyezése a portálon az identitás-és hozzáférés-kezelésben](./media/concept-enterprise-security/authorize-azure-machine-learning.png)
 
 * A Azure Machine Learning munkaterület létrehozásakor használja a következő paramétereket. Mindkét paraméter kötelező és támogatott az SDK-ban, a CLI-ben, a REST API-kon és a Resource Manager-sablonokban.
 

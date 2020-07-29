@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/13/2018
 ms.author: terrylan
-ms.openlocfilehash: 413ec8b121838a4ffac4119421ec3266e141618b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: db6e25b6304ee9ac41ca95d5a3a6eac0e91eb41b
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80549253"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287773"
 ---
 # <a name="penetration-testing"></a>Behatolás tesztelése
 Az Azure az alkalmazások teszteléséhez és üzembe helyezéséhez való használatának egyik előnye, hogy gyorsan lekérheti a környezetek létrehozását. Nem kell aggódnia az igényléssel, a beszerzéssel és a saját helyszíni hardverek üzemeltetésével és halmozásával kapcsolatban.
@@ -41,8 +41,6 @@ A végrehajtható szabványos tesztek a következők:
 * Tesztek a végpontokon az [Open Web Application Security Project (OWASP) Top 10 biztonsági rések](https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project) felfedéséhez
 * A végpontok [fuzz Testing tesztelése](https://cloudblogs.microsoft.com/microsoftsecure/2007/09/20/fuzz-testing-at-microsoft-and-the-triage-process/)
 * A végpontok [portjának vizsgálata](https://en.wikipedia.org/wiki/Port_scanner)
-
-A nem hajtható végre egy olyan típusú teszt, amely valamilyen [szolgáltatásmegtagadási (DOS)](https://en.wikipedia.org/wiki/Denial-of-service_attack) támadás. Ez magában foglalja a DoS-támadás megindítását, vagy olyan kapcsolódó tesztek elvégzését, amelyek bármilyen típusú DoS-támadást meghatározhatnak vagy szimulálnak.
 
 ## <a name="next-steps"></a>További lépések
 

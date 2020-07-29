@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 04/27/2020
-ms.openlocfilehash: 3559ae5c246129aa369cb49e7749e499002f1dc6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 07/27/2020
+ms.openlocfilehash: 873f0d7d2aa4493e77a10f62b0646f4f8233f6b9
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87048180"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337840"
 ---
 # <a name="execute-r-script-module"></a>R-parancsfájl végrehajtása modul
 
@@ -119,6 +119,22 @@ A folyamat futásának befejezése után a rendszerképet a modul jobb oldali pa
 > [!div class="mx-imgBorder"]
 > ![Feltöltött rendszerkép előnézete](media/module/upload-image-in-r-script.png)
 
+## <a name="access-to-registered-dataset"></a>Hozzáférés a regisztrált adatkészlethez
+
+A következő mintakód a munkaterületén [regisztrált adatkészletekhez való hozzáféréshez](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets#access-datasets-in-your-script) használható:
+
+```R
+        azureml_main <- function(dataframe1, dataframe2){
+  print("R script run.")
+  run = get_current_run()
+  ws = run$experiment$workspace
+  dataset = azureml$core$dataset$Dataset$get_by_name(ws, "YOUR DATASET NAME")
+  dataframe2 <- dataset$to_pandas_dataframe()
+  # Return datasets as a Named List
+  return(list(dataset1=dataframe1, dataset2=dataframe2))
+}
+```
+
 ## <a name="how-to-configure-execute-r-script"></a>Az R-szkript végrehajtásának konfigurálása
 
 Az R-szkript végrehajtása modul olyan mintakód-kódot tartalmaz, amelyet kiindulási pontként használhat. Az R-parancsfájl végrehajtása modul konfigurálásához adja meg a futtatandó bemeneteket és kódokat.
@@ -178,11 +194,30 @@ A tervezőben tárolt adatkészletek automatikusan egy R-adatkeretre lesznek kon
     > [!NOTE]
     > Előfordulhat, hogy a meglévő R-kódnak kisebb módosításokat kell futtatnia a tervezői folyamatokban. Például a CSV formátumban megadott bemeneti adatokat explicit módon át kell alakítani egy adatkészletbe, mielőtt használni lehetne a kódban. Az R nyelvben használt adatok és oszlopok különböző módokon különböznek a tervezőben használt adatok és oszlopok típusaitól.
 
+    Ha a szkript nagyobb a 16KB-nál, a **parancsfájl** -létrehozási port használatával elkerülhető, hogy a commandline (például *a 16597 karakternél*hosszabb) legyen. 
+    
+    Csomagolja a szkriptet és más egyéni erőforrásokat egy zip-fájlba, és töltse fel a zip-fájlt **fájl-adatkészletként** a studióba. Ezután húzza az adatkészlet modult a *saját adatkészletek* listájából a tervező szerzői műveletek oldal bal oldali modul paneljén. Az adatkészlet moduljának csatlakoztatása az **R-parancsfájl végrehajtása** modul **parancsfájl-köteg** portjához.
+    
+    Az alábbi mintakód a szkriptet használja a parancsfájl-csomagban:
+
+    ```R
+    azureml_main <- function(dataframe1, dataframe2){
+    # Source the custom R script: my_script.R
+    source("./Script Bundle/my_script.R")
+
+    # Use the function that defined in my_script.R
+    dataframe1 <- my_func(dataframe1)
+
+    sample <- readLines("./Script Bundle/my_sample.txt")
+    return (list(dataset1=dataframe1, dataset2=data.frame("Sample"=sample)))
+    }
+    ```
+
 1.  **Véletlenszerű vetőmag**esetén adjon meg egy értéket, amelyet az R-környezetben a véletlenszerű mag értékeként kíván használni. Ez a paraméter egyenértékű az R-kódban való meghívással `set.seed(value)` .  
 
 1. A folyamat elküldése.  
 
-## <a name="results"></a>Results (Eredmények)
+## <a name="results"></a>Eredmények
 
 Az R-parancsfájl-modulok végrehajtása több kimenetet is képes visszaadni, de R-adatkeretként kell megadni őket. Az adatkereteket a rendszer automatikusan átalakítja a tervezőben lévő adatkészletekbe a más modulokkal való kompatibilitás érdekében.
 

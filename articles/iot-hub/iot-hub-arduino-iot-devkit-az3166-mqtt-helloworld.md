@@ -10,11 +10,12 @@ ms.tgt_pltfrm: arduino
 ms.date: 04/02/2018
 ms.author: liydu
 ms.custom: mqtt
-ms.openlocfilehash: 600e64ef5bc3329f0116359066bdcdaf42c13e2e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a3a8c065c226d1cc94d79b44d16f288fab205a56
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81733495"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337857"
 ---
 # <a name="send-messages-to-an-mqtt-server"></a>Üzenetek küldése egy MQTT-kiszolgálónak
 
@@ -28,7 +29,7 @@ Ebben a projektben a következőket tanulhatja meg:
 - A MQTT ügyféloldali kódtár használata üzenetek küldésére egy MQTT-közvetítőnek.
 - A MXChip IOT fejlesztői készlet konfigurálása MQTT-ügyfélként.
 
-## <a name="what-you-need"></a>Mi szükséges
+## <a name="what-you-need"></a>Amire szükség lesz
 
 Fejezze be a [első lépések útmutatót](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started) a következőre:
 
@@ -80,14 +81,11 @@ Ha problémákba ütközik, tekintse meg a [IoT fejlesztői készlet kapcsolatos
 * [Gitter.im](https://gitter.im/Microsoft/azure-iot-developer-kit)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/iot-devkit)
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 * [A IoT fejlesztői készlet AZ3166 összekötése az Azure IoT Hub a felhőben](iot-hub-arduino-iot-devkit-az3166-get-started.md)
 * [Shake, Shake for a tweet](iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message.md)
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy megtanulta, hogyan konfigurálhatja a MXChip IOT fejlesztői készlet MQTT-ügyfélként, és az MQTT-ügyfél kódtár használatával küldhet üzeneteket egy MQTT-közvetítőnek, a javasolt következő lépések:
-
-* [Az Azure IoT távoli monitorozási megoldásának gyorsítása – áttekintés](https://docs.microsoft.com/azure/iot-suite/)
-* [MXChip-IoT fejlesztői készlet-eszköz csatlakoztatása az Azure IoT Central-alkalmazáshoz](/azure/iot-central/core/howto-connect-devkit)
+Most, hogy megtanulta, hogyan konfigurálhatja a MXChip IOT fejlesztői készlet MQTT-ügyfélként, és az MQTT-ügyfél kódtár használatával küldhet üzeneteket egy MQTT-közvetítőnek, itt látható a következő lépés: az [Azure IOT távoli monitorozási megoldásának gyorsítása – áttekintés](https://docs.microsoft.com/azure/iot-suite/)

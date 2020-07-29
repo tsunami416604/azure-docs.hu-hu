@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 35fd95272530ed31f8ee197679e9368ca74ebef1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 852a8c8eb7e6a87739c58967eefd6c18e996b225
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089668"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87367401"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Az Azure Identity Management és a hozzáférés-vezérlés biztonsága – ajánlott eljárások
 
@@ -204,7 +204,7 @@ A kockázat felmérése és javítása érdekében a biztonsági csapatnak meg k
 A [RBAC](/azure/role-based-access-control/overview) segítségével engedélyeket rendelhet hozzá a felhasználókhoz, csoportokhoz és alkalmazásokhoz egy adott hatókörben. A szerepkörkiosztás hatóköre előfizetés, erőforráscsoport vagy egyetlen erőforrás is lehet.
 
 **Ajánlott eljárás**: elkülönítheti a feladatokat a csapaton belül, és csak a felhasználók számára biztosíthatja a feladatok elvégzéséhez szükséges hozzáférés mennyiségét. Ahelyett, hogy az Azure-előfizetésben vagy-erőforrásokban mindenki számára korlátlan jogosultságot adna, csak bizonyos műveleteket engedélyezzen egy adott hatókörben.
-**Részletek**: a [beépített RBAC-szerepkörök](/azure/role-based-access-control/built-in-roles) használata az Azure-ban a felhasználókhoz való jogosultságok kiosztásához.
+**Részletek**: az Azure [-ban beépített Azure-szerepkörök](/azure/role-based-access-control/built-in-roles) használatával jogosultságokat rendelhet a felhasználókhoz.
 
 > [!Note]
 > A konkrét engedélyek szükségtelen bonyolultságot és félreértéseket hoznak létre, és olyan "örökölt" konfigurációba halmozódnak, amely nehezen orvosolható, és nem kell mást tennie. Kerülje az erőforrás-specifikus engedélyeket. Ehelyett a vállalati szintű engedélyek és erőforráscsoportok felügyeleti csoportjait használhatja az előfizetéseken belüli engedélyekhez. Kerülje a felhasználó-specifikus engedélyeket. Inkább rendeljen hozzáférést csoportokhoz az Azure AD-ben.

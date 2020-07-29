@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/29/2019
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f93a25854bc8b93e9bd75ea71037f6363d143914
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 79d80a5b94a753b43715c1ccd8fc2059ff84cfca
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86145726"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87338027"
 ---
 # <a name="quickstart-add-an-application-to-your-azure-active-directory-azure-ad-tenant"></a>Gyors útmutató: alkalmazás hozzáadása a Azure Active Directory (Azure AD) bérlőhöz
 
@@ -53,7 +53,7 @@ Alkalmazás hozzáadása az Azure AD-bérlőhöz:
 6. Böngészhet a katalógusban a hozzáadni kívánt alkalmazáshoz, vagy megkeresheti az alkalmazást úgy, hogy beírja a nevét a keresőmezőbe. Ezután válassza ki az alkalmazást az eredmények közül. Az űrlapon szerkesztheti az alkalmazás nevét, hogy megfeleljen a szervezet igényeinek. Ebben a példában a GitHubot választottuk, és a nevet a **GitHub-test**értékre módosították.
     ![Bemutatja, hogyan adhat hozzá egy alkalmazást a katalógusból](media/add-application-portal/create-application.png)
     >[!TIP]
-    >Ha a keresett alkalmazás nem szerepel a katalógusban, akkor kattintson a **saját alkalmazás létrehozása**lehetőségre. A Microsoft már dolgozott számos alkalmazás-fejlesztővel, hogy előre konfigurálja őket az Azure AD-vel való együttműködéshez. Ezek azok az alkalmazások, amelyek megjelennek a katalógusban. Ha azonban a hozzáadni kívánt alkalmazás nem szerepel a listáján, létrehozhat egy új, általános, alkalmazást, és konfigurálhatja saját maga, vagy az azt létrehozó fejlesztő útmutatásával.
+    >Ha a keresett alkalmazás nem szerepel a katalógusban, akkor rákattinthat a **saját alkalmazás létrehozása** elemre, majd az **alkalmazással kapcsolatos teendők** lehetőségre. a gyűjteményben válassza a **bármely más alkalmazás integrálása**elemet. A Microsoft már dolgozott számos alkalmazás-fejlesztővel, hogy előre konfigurálja őket az Azure AD-vel való együttműködéshez. Ezek azok az alkalmazások, amelyek megjelennek a katalógusban. Ha azonban a hozzáadni kívánt alkalmazás nem szerepel a listáján, létrehozhat egy új, általános, alkalmazást, és konfigurálhatja saját maga, vagy az azt létrehozó fejlesztő útmutatásával.
 7. Válassza a **Létrehozás** lehetőséget. Megjelenik az első lépések lap, amelyen a beállításokkal konfigurálhatja az alkalmazást a vállalat számára.
 
 Elkészült egy alkalmazás hozzáadásával. A következő rövid útmutató bemutatja, hogyan módosíthatja az emblémát, és szerkesztheti az alkalmazás egyéb tulajdonságait.

@@ -9,16 +9,16 @@ ms.topic: how-to
 ms.date: 07/23/2020
 ms.author: tamram
 ms.reviewer: fryu
-ms.openlocfilehash: a153a3735bbc46dbbce7e58374e1015ac1ec0bfb
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: daf4eb4492f723b049dc62a16351e04ffc252337
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87133180"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289244"
 ---
 # <a name="configure-anonymous-public-read-access-for-containers-and-blobs"></a>Névtelen nyilvános olvasási hozzáférés konfigurálása a tárolók és a Blobok számára
 
-Az Azure Storage támogatja az opcionális névtelen nyilvános olvasási hozzáférést a tárolók és a Blobok számára. Alapértelmezés szerint a névtelen hozzáférés nem engedélyezett az adataihoz. Ha explicit módon engedélyezi a névtelen hozzáférést, a tárolóhoz és a blobhoz tartozó összes kérést Azure Active Directory (Azure AD) vagy megosztott kulcsos hitelesítéssel kell engedélyezni. Ha a tároló nyilvános hozzáférési szintjének beállítását a névtelen hozzáférés engedélyezésére konfigurálja, az ügyfelek a kérelem engedélyezése nélkül is olvashatják az adott tárolóban tárolt adatolvasást.
+Az Azure Storage támogatja az opcionális névtelen nyilvános olvasási hozzáférést a tárolók és a Blobok számára. Alapértelmezés szerint a névtelen hozzáférés nem engedélyezett az adataihoz. Ha explicit módon engedélyezi a névtelen hozzáférést, a tárolóra és a blobokra vonatkozó összes kérést engedélyezni kell. Ha a tároló nyilvános hozzáférési szintjének beállítását a névtelen hozzáférés engedélyezésére konfigurálja, az ügyfelek a kérelem engedélyezése nélkül is olvashatják az adott tárolóban tárolt adatolvasást.
 
 > [!WARNING]
 > Ha egy tároló nyilvános hozzáférésre van konfigurálva, akkor bármely ügyfél beolvashatja az adott tárolóban lévő összes ügyfelet. A nyilvános hozzáférés potenciális biztonsági kockázatot jelent, így ha a forgatókönyv nem igényli azt, a Microsoft azt javasolja, hogy ne engedélyezze azt a Storage-fiók esetében. További információ: a [Névtelen nyilvános olvasási hozzáférés megakadályozása a tárolók és a Blobok](anonymous-read-access-prevent.md)számára.
@@ -41,7 +41,7 @@ Az alábbi táblázat összefoglalja, hogy mindkét beállítás hogyan befolyá
 
 ## <a name="allow-or-disallow-public-read-access-for-a-storage-account"></a>Nyilvános olvasási hozzáférés engedélyezése vagy letiltása egy Storage-fiókhoz
 
-Alapértelmezés szerint a nyilvános hozzáférés engedélyezett a Storage-fiókokban lévő egyes tárolók esetében. Ha a nyilvános hozzáférés engedélyezve van, a megfelelő engedélyekkel rendelkező felhasználó módosíthatja a tároló nyilvános hozzáférési beállításait, hogy engedélyezze a névtelen nyilvános hozzáférést az adott tárolóban lévő információhoz.
+Alapértelmezés szerint a Storage-fiók úgy van konfigurálva, hogy lehetővé tegye a felhasználók számára a megfelelő engedélyeket a tárolóhoz való nyilvános hozzáférés engedélyezéséhez. Ha a nyilvános hozzáférés engedélyezve van, a megfelelő engedélyekkel rendelkező felhasználók módosíthatják a tároló nyilvános hozzáférési beállításait, hogy a névtelen hozzáférést engedélyezzék a tárolóban lévők számára. A blob-információk soha nem érhetők el a nyilvános hozzáféréshez, kivéve, ha a felhasználó a további lépéseket a tároló nyilvános hozzáférési beállításának explicit módon történő konfigurálásához.
 
 Ne feledje, hogy a tárolóhoz való nyilvános hozzáférés alapértelmezés szerint ki van kapcsolva, és explicit módon be kell állítani a névtelen kérelmek engedélyezését. A Storage-fiók beállításaitól függetlenül az adatai soha nem lesznek elérhetők nyilvános hozzáférésre, kivéve, ha egy megfelelő engedélyekkel rendelkező felhasználó ezt a további lépést teszi a nyilvános hozzáférés engedélyezésére a tárolón.
 

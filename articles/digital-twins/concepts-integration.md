@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/16/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: d82289366d79f44460b96d75781cac4fa50de53a
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 9c7c1000ed5229886d4a964161042eca6517c230
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87129729"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87367436"
 ---
 # <a name="integrate-azure-digital-twins-with-other-services"></a>Az Azure Digital Twins integrálása más szolgáltatásokkal
 
@@ -20,11 +20,11 @@ Az Azure digitális Twins jellemzően más szolgáltatásokkal együtt használh
 
 ## <a name="data-ingress"></a>Bejövő adatforgalom
 
-Az Azure Digital Twins IoT Hubból származó adatokkal is elvégezhető. Így telemetria gyűjthet a környezetében található fizikai eszközökről, és feldolgozhatja ezeket az adatokat a felhőben található Azure digitális Twins gráf használatával.
+Az Azure Digital Twins bármely szolgáltatás adataival és eseményeivel is elvégezhető – IoT Hub, Logic Apps, a saját egyéni szolgáltatása stb.). Így telemetria gyűjthet a környezetében található fizikai eszközökről, és feldolgozhatja ezeket az adatokat a felhőben található Azure digitális Twins gráf használatával.
 
 Az Azure digitális Twins nem rendelkezik beépített IoT Hub. Használhat egy meglévő IoT Hub, amelyet jelenleg éles környezetben, vagy üzembe helyezhet egy újat. Ez teljes hozzáférést biztosít a IoT Hub összes eszköz-felügyeleti képességeihez.
 
-Ha IoT Hubről szeretne adatot bevenni az Azure digitális Twinsba, használjon [Azure-függvényt](../azure-functions/functions-overview.md). További információ erről a mintázatról [*: telemetria beolvasása a IoT hubból*](how-to-ingest-iot-hub-data.md), vagy próbálja ki magát az Azure Digital Twins [*oktatóanyagában: teljes körű megoldás összekötése*](tutorial-end-to-end.md).
+Ha bármilyen forrásból szeretne adatot befogadni az Azure digitális Twinsba, használjon [Azure-függvényt](../azure-functions/functions-overview.md). További információ erről a mintázatról [*: telemetria beolvasása a IoT hubból*](how-to-ingest-iot-hub-data.md), vagy próbálja ki magát az Azure Digital Twins [*oktatóanyagában: teljes körű megoldás összekötése*](tutorial-end-to-end.md).
 
 ## <a name="data-egress-services"></a>Adatforgalom-szolgáltatások
 

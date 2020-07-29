@@ -10,13 +10,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 10/29/2019
 ms.author: kenwith
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8418a45c9eba596339999c2bddf937a516d3e2d9
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: eb4a150a1680dd4101249458894ded652cde15a0
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223346"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87338044"
 ---
 # <a name="quickstart-configure-properties-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>Gyors útmutató: alkalmazás tulajdonságainak konfigurálása a Azure Active Directory (Azure AD) bérlőben
 
@@ -41,15 +40,15 @@ Amikor befejezi az alkalmazás hozzáadását az Azure AD-bérlőhöz, megjeleni
 Az alkalmazás tulajdonságainak szerkesztése:
 
 1. Az Azure AD-portálon válassza a **vállalati alkalmazások**lehetőséget. Ezután keresse meg és válassza ki a konfigurálni kívánt alkalmazást.
-1. A **kezelés** szakaszban válassza a **Tulajdonságok** lehetőséget a **Tulajdonságok** ablaktábla szerkesztéshez való megnyitásához.
+2. A **kezelés** szakaszban válassza a **Tulajdonságok** lehetőséget a **Tulajdonságok** ablaktábla szerkesztéshez való megnyitásához.
 
     ![Képernyőfelvétel a tulajdonságok képernyőről, amely a szerkeszthető alkalmazás tulajdonságait jeleníti meg.](media/add-application-portal/edit-properties.png)
 
-1. Szánjon egy kis időt a konfiguráláshoz elérhető beállítások megismerésére:
+3. Szánjon egy kis időt a konfiguráláshoz elérhető beállítások megismerésére:
     - **Engedélyezve van a felhasználók számára a bejelentkezés?** meghatározza, hogy be tud-e jelentkezni az alkalmazáshoz hozzárendelt felhasználók.
     - **Felhasználói hozzárendelés szükséges?** meghatározza, hogy be tud-e jelentkezni az alkalmazáshoz nem rendelt felhasználók.
     - **Látható a felhasználók számára?** meghatározza, hogy az alkalmazáshoz rendelt felhasználók láthatják-e a [hozzáférési panelen](https://myapps.microsoft.com) és az Office 365 app launcherben. (Lásd az Office 365 vagy Microsoft 365 webhely bal felső sarkában található Waffle menüt.)
-1. Az alábbi táblázatok segítségével kiválaszthatja az igényeinek legmegfelelőbb beállításokat.
+4. Az alábbi táblázatok segítségével kiválaszthatja az igényeinek legmegfelelőbb beállításokat.
 
    - Működés *hozzárendelt* felhasználók esetében:
 
@@ -86,10 +85,10 @@ Az alkalmazás tulajdonságainak szerkesztése:
 Egyéni embléma használata:
 
 1. Hozzon létre egy 215-es, 215 képpont-os emblémát, és mentse. png formátumban.
-1. Az Azure AD-portálon válassza a **vállalati alkalmazások**lehetőséget. Ezután keresse meg és válassza ki a konfigurálni kívánt alkalmazást.
-1. A **kezelés** szakaszban válassza a **Tulajdonságok** lehetőséget a **Tulajdonságok** ablaktábla szerkesztéshez való megnyitásához. 
-1. Válassza ki az ikont az embléma feltöltéséhez.
-1. Ha elkészült, válassza a **Mentés**lehetőséget.
+2. Az Azure AD-portálon válassza a **vállalati alkalmazások**lehetőséget. Ezután keresse meg és válassza ki a konfigurálni kívánt alkalmazást.
+3. A **kezelés** szakaszban válassza a **Tulajdonságok** lehetőséget a **Tulajdonságok** ablaktábla szerkesztéshez való megnyitásához. 
+4. Válassza ki az ikont az embléma feltöltéséhez.
+5. Ha elkészült, válassza a **Mentés**lehetőséget.
 
     ![Képernyőkép a tulajdonságok képernyőről, amely bemutatja, hogyan módosíthatja az emblémát.](media/add-application-portal/change-logo.png)
 

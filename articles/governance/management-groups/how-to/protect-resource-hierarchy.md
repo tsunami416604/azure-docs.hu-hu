@@ -3,12 +3,12 @@ title: Az erőforrás-hierarchia elleni védelem – Azure-szabályozás
 description: Ismerje meg, hogyan védhető az erőforrás-hierarchia olyan hierarchia-beállításokkal, amelyek tartalmazzák az alapértelmezett felügyeleti csoport beállítását.
 ms.date: 05/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: 50b5ba1bccf3d603b6d273892d0c903d433786f3
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 2f8d3d7ff85552fe18a49137450aefe91d0d02c9
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87127996"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87366772"
 ---
 # <a name="how-to-protect-your-resource-hierarchy"></a>Az erőforrás-hierarchia elleni védelem
 
@@ -23,7 +23,7 @@ A hierarchia beállításainak konfigurálásához a következő két RBAC műve
 - `Microsoft.Management/managementgroups/settings/write`
 - `Microsoft.Management/managementgroups/settings/read`
 
-Ezek a műveletek csak a hierarchia beállításainak olvasását és frissítését teszik lehetővé a felhasználóknak. A műveletek nem biztosítanak semmilyen más hozzáférést a felügyeleti csoport hierarchiájának vagy erőforrásainak a hierarchiában. Mindkét művelet a beépített RBAC szerepkör- **hierarchia beállítások rendszergazdájánál**érhető el.
+Ezek a műveletek csak a hierarchia beállításainak olvasását és frissítését teszik lehetővé a felhasználóknak. A műveletek nem biztosítanak semmilyen más hozzáférést a felügyeleti csoport hierarchiájának vagy erőforrásainak a hierarchiában. Mindkét művelet az Azure beépített szerepkör- **hierarchiájának beállítások rendszergazdájánál**érhető el.
 
 ## <a name="setting---default-management-group"></a>Alapértelmezett felügyeleti csoport beállítása
 

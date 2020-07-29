@@ -1,6 +1,5 @@
 ---
-title: Egyéni R-modulok létrehozása & üzembe helyezése
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (klasszikus): létrehozás & egyéni R-modulok üzembe helyezése – Azure'
 description: Ismerje meg, hogyan hozhat létre és helyezhet üzembe egyéni R-modulokat ML Studio (klasszikus).
 services: machine-learning
 ms.service: machine-learning
@@ -10,13 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: 389290b01848d598ada9ca49bee932a764854088
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 4b4251a426d33c0a3b8cc7584d2bf6375dcd0f79
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85957324"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287238"
 ---
-# <a name="define-custom-r-modules-for-azure-machine-learning-studio-classic"></a>Egyéni R-modulok definiálása a Azure Machine Learning Studiohoz (klasszikus)
+# <a name="define-custom-r-modules-for-machine-learning-studio-classic"></a>Egyéni R-modulok definiálása a Machine Learning Studiohoz (klasszikus)
+
+**a következőkre vonatkozik:** ![ nincs](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine learning](../overview-what-is-azure-ml.md) ![ Igen ](../../../includes/media/aml-applies-to-skus/yes.png) Machine learning Studio (klasszikus) 
 
 Ez a témakör bemutatja, hogyan hozhat létre és helyezhet üzembe egyéni R studiót (klasszikus). Elmagyarázza, hogy milyen egyéni R-modulokat és milyen fájlokat használnak ezek definiálásához. Bemutatja, hogyan hozhat létre olyan fájlokat, amelyek meghatározzák a modult, és hogyan regisztrálhatják a modult az üzembe helyezéshez egy Machine Learning munkaterületen. Az egyéni modul definíciójában használt elemeket és attribútumokat a rendszer részletesebben ismerteti. A kiegészítő funkciók és a fájlok használata, valamint a több kimenet is megbeszélve. 
 
@@ -305,12 +307,12 @@ A modul paramétereit az XML-definíciós fájl **argumentumok** szakaszának **
     * Kategorikus
     * Sztring
     * Címke
-    * Szolgáltatás
+    * Funkció
     * Pontszám
     * Mind
   * **alapértelmezett** – az oszlop választójának alapértelmezett értékei a következők: 
     
-    * None
+    * Nincs
     * NumericFeature
     * NumericLabel
     * NumericScore

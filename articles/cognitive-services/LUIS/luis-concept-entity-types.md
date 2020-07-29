@@ -3,12 +3,12 @@ title: Entity types – LUIS
 description: Egy entitás kinyeri az adatait a felhasználótól az előrejelzési futtatókörnyezetben. Egy _opcionális_, másodlagos cél a szándék vagy más entitások előrejelzésének növelése az entitás szolgáltatásként való használatával.
 ms.topic: conceptual
 ms.date: 06/10/2020
-ms.openlocfilehash: 61dc0688cd304a672321f846a3ae5798c271345d
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: ced4a3e23b8e532b54d0b3cf974dab233b81b375
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84676488"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337619"
 ---
 # <a name="extract-data-with-entities"></a>Adatok kinyerése entitásokkal
 
@@ -30,7 +30,7 @@ Az entitásokat következetesen kell megcímkézni a modell minden egyes szánd�
 
  Megadhatja saját entitásait, vagy az előre elkészített entitások használatával időt takaríthat meg a gyakori fogalmak, például a [datetimeV2](luis-reference-prebuilt-datetimev2.md), a [sorszám](luis-reference-prebuilt-ordinal.md), az [e-mail](luis-reference-prebuilt-email.md)és a [telefonszámok](luis-reference-prebuilt-phonenumber.md)számára.
 
-|Kimondott szöveg|Entitás|Adatok|
+|Beszédelem|Entitás|Adatok|
 |--|--|--|
 |3 jegy vásárlása a New Yorkba|Előre elkészített szám<br>Cél|3<br>New York|
 
@@ -49,7 +49,7 @@ Az entitás egy adatkoncepciót képvisel _a teljes_kifejezésen belül. A cél 
 
 Vegye figyelembe a következő négy hosszúságú kimondott szöveg:
 
-|Kimondott szöveg|Előre jelzett szándék|Kinyert entitások|Magyarázat|
+|Beszédelem|Előre jelzett szándék|Kinyert entitások|Magyarázat|
 |--|--|--|--|
 |Súgó|segítség|-|Nincs kibontva.|
 |Küldés valami|sendSomething|-|Nincs kibontva. A modell nem rendelkezik a kinyeréséhez szükséges funkcióval `something` , és nincs megadva címzett.|
@@ -78,6 +78,12 @@ A gépi megtanult entitások hatékony felépítése:
 * Ha van olyan gép, amely alentitásokkal rendelkezik, győződjön meg arról, hogy az entitás és az alentitások különböző megrendelései és változatai jelennek meg a címkézett hosszúságú kimondott szöveg. A címkével ellátott példa hosszúságú kimondott szöveg tartalmaznia kell az összes érvényes űrlapot, és tartalmaznia kell azokat az entitásokat, amelyek megjelentek és hiányoznak, és a megjelölésen belül is megtalálhatók.
 * Kerülje az entitások egy nagyon rögzített készlethez való túlillesztését. Ha a modell nem jól általánosít, akkor a rendszer akkor is **megtörténik,** ha a gépi tanulási modellek gyakori problémát jelentenek. Ez azt jelenti, hogy az alkalmazás nem fog megfelelően működni az új adatmennyiségen. Viszont a címkével ellátott példa hosszúságú kimondott szöveg eltérőnek kell lennie, így az alkalmazás képes általánosítani az Ön által megadott példákon túl. A modell megváltozásakor a különböző alentitásoknak is változónak kell lennie, hogy csak a bemutatott példák helyett inkább a koncepciót gondolják.
 
+## <a name="effective-prebuilt-entities"></a>Érvényes előre összeépített entitások
+
+A gyakori adatok, például az [előre elkészített entitások](luis-reference-prebuilt-entities.md)által biztosított hatékony entitások létrehozásához a következő eljárást javasoljuk.
+
+Javíthatja az adatgyűjtést úgy, hogy a saját adatait szolgáltatásként hozza ki. Így az adatokban szereplő összes további címke megtudhatja, hogy hol találhatók a Személynevek az alkalmazásban.
+
 <a name="composite-entity"></a>
 <a name="list-entity"></a>
 <a name="patternany-entity"></a>
@@ -91,10 +97,10 @@ A szülő alentitásának gépi tanulási entitásnak kell lennie. Az alentitás
 
 Válassza ki az entitást az Adatkivonatok és a kinyerés utáni megjelenítésük alapján.
 
-|Entitástípus|Szerep|
+|Entitástípus|Cél|
 |--|--|
 |[**Gépi megtanult**](tutorial-machine-learned-entity.md)|Beágyazott, összetett adatok kinyerése a címkével ellátott példákból. |
-|[**Lista**](reference-entity-list.md)|A **pontos szöveges egyezéssel**kinyert elemek és szinonimáik listája.|
+|[**Listáját**](reference-entity-list.md)|A **pontos szöveges egyezéssel**kinyert elemek és szinonimáik listája.|
 |[**Minta. any**](#patternany-entity)|Nehéz megállapítani, hogy az entitás véget ért-e, mert az entitás szabad formátumú. Csak [mintákban](luis-concept-patterns.md)érhető el.|
 |[**Prebuilt**](luis-reference-prebuilt-entities.md)|Már betanítva bizonyos típusú adatok, például URL-cím vagy e-mailek kinyerésére. Ezen előre összeépített entitások némelyike a nyílt forráskódú [felismerők – Text](https://github.com/Microsoft/Recognizers-Text) projektben van meghatározva. Ha az adott kulturális környezet vagy entitás jelenleg nem támogatott, akkor hozzájárul a projekthez.|
 |[**Reguláris kifejezés**](reference-entity-regular-expression.md)|Reguláris kifejezést használ a **pontos szöveges egyeztetéshez**.|
@@ -141,7 +147,7 @@ A LUIS-portál azt mutatja be, hogy az entitás eltérő egyed-előrejelzéssel 
 * További [példa hosszúságú kimondott szöveg](luis-concept-utterance.md) és címke hozzáadása az entitáshoz
 * [Tekintse át az aktív tanulási javaslatokat](luis-concept-review-endpoint-utterances.md) az előrejelzési végponton fogadott bármely hosszúságú kimondott szöveg, amely segíthet az entitás koncepciójának azonosításában.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerje meg a jó [hosszúságú kimondott szöveg](luis-concept-utterance.md)kapcsolatos fogalmakat.
 

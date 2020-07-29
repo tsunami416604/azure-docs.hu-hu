@@ -13,12 +13,12 @@ ms.date: 05/19/2020
 ms.author: hirsin
 ms.reviewer: kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: 1478ee1396390e26d333230b0254578ec748ef6c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cc93f4062851f01dd127c108ca60bc240a1940e6
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85477260"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87311755"
 ---
 # <a name="handle-itp-in-safari-and-other-browsers-where-third-party-cookies-are-blocked"></a>Az ITP kezelése a Safariban és más böngészőkben, ahol a harmadik féltől származó cookie-k blokkolva vannak
 
@@ -46,7 +46,7 @@ A Microsoft Identity platformhoz a fürdők és a natív ügyfelek a hasonló pr
 
 A SPAs két további korlátozást tartalmaz:
 
-* [Az átirányítási URI-t típusként `spa` kell megjelölni](v2-oauth2-auth-code-flow.md#setup-required-for-single-page-apps) . a CORS engedélyezése a bejelentkezési végpontokon.
+* [Az átirányítási URI-t típusként `spa` kell megjelölni](v2-oauth2-auth-code-flow.md#redirect-uri-setup-required-for-single-page-apps) . a CORS engedélyezése a bejelentkezési végpontokon.
 * Az engedélyezési kód által az `spa` URI-k átirányításához kiadott tokenek frissítése 24 órás élettartammal, nem pedig 90 napos élettartammal történik.
 
 ![A SPA-alkalmazások kódjának folyamatábrája](media/v2-oauth-auth-code-spa/active-directory-oauth-code-spa.png)

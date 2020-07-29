@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: parthpandyaMSFT
 ms.author: parthp
 ms.date: 09/23/2019
-ms.openlocfilehash: 723690c29cd6ce77d7615fc613e50740ef2a45c7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: fbf76f846395d6bf0b02828ab1d6ad8b70c97784
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86520153"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289341"
 ---
 # <a name="how-to-migrate-your-account-from-cloud-partner-portal-to-partner-center"></a>Fiók áttelepítése Cloud Partner Portalról a partneri központba
 
@@ -59,7 +59,7 @@ A Microsofthoz csatlakozni kívánó vállalatoknak csatlakoztatnia kell a Micro
 
 Ha nem tagja a Microsoft Partner Networknek, [itt csatlakozhat](https://signup.microsoft.com/signup?sku=StoreForBusinessIW&origin=partnerdashboard&culture=en-us&ru=https://partner.microsoft.com/dashboard/account/v3/xpu/onboard?ru=/dashboard/account/v3/enrollment/companyprofile/basicpartnernetwork/new) az MPN-azonosítóhoz. Jegyezze fel az MPN-azonosítót, mert a fiók aktiválási folyamata során meg kell adnia.
 
-További információ a Microsoft Partner Networkről: [Csatlakozás a Microsoft Partner Network](https://partner.microsoft.com/en-US/membership) a partner webhelyén. Ha többet szeretne megtudni a Microsoft Partner Network ISV-előnyeiről, tekintse meg az [ISV erőforrás-hubot](https://partner.microsoft.com/isv-resource-hub).  
+További információ a Microsoft Partner Networkről: [Csatlakozás a Microsoft Partner Network](https://partner.microsoft.com/membership) a partner webhelyén. Ha többet szeretne megtudni a Microsoft Partner Network ISV-előnyeiről, tekintse meg az [ISV erőforrás-hubot](https://partner.microsoft.com/isv-resource-hub).  
 
 ## <a name="move-dynamics-365-and-powerapps-offers-to-partner-center"></a>Dynamics 365-és PowerApps-ajánlatok áthelyezése a partneri központba
 

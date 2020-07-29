@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: b3ed5d6605097b31dfaa58a2d37e71d3a6702bee
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f7e9a76309b4d9dcd010b85d1b55f340374be5c4
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537493"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337925"
 ---
 # <a name="about-the-query-language-for-azure-digital-twins"></a>Az Azure Digital Twins lekérdezési nyelvének ismertetése
 
@@ -28,7 +28,7 @@ Az Azure Digital Twins kiterjedt lekérdezési képességeket biztosít a Twin g
 > Az összes Azure digitális Twins lekérdezési művelet megkülönbözteti a kis-és nagybetűket.
 
 Az alábbi műveletek érhetők el az Azure Digital Twins Query Store nyelvén:
-* Az ikrek a digitális ikrek tulajdonságai között olvashatók be.
+* Az ikreket a digitális Twins tulajdonságai (beleértve a [címkéket](how-to-use-tags.md)is) alapján szerezheti be.
 * Az ikrek a digitális Twins-felületek használatával szerezhetők be.
 * Az ikrek a kapcsolati tulajdonságok alapján szerezhetők be.
 * Az ikrek több kapcsolati típust ( `JOIN` lekérdezéseket) kapnak. Az s megengedett számának korlátozásai érvényesek `JOIN` (egy szint a nyilvános előzetes verzió esetében).
@@ -38,6 +38,6 @@ Az alábbi műveletek érhetők el az Azure Digital Twins Query Store nyelvén:
 * A fentiek bármely kombinációját ( `AND` , `OR` , `NOT` operátor) használja.
 * A folytatás használata: a lekérdezési objektum egy Oldalméret (legfeljebb 100) használatával hozható létre. A digitális ikrek egy oldalát egyszerre is lekérheti, ha a folytatási tokent az API-ra irányuló további hívásokban is megadja.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Megtudhatja, hogyan írhat lekérdezéseket, és hogyan tekintheti meg az ügyféloldali kód példáit [*: a Twin gráf lekérdezése*](how-to-query-graph.md).
