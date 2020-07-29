@@ -4,12 +4,12 @@ description: Az Azure-beli riasztások áttekintése. Riasztások, klasszikus ri
 ms.subservice: alerts
 ms.topic: conceptual
 ms.date: 01/28/2018
-ms.openlocfilehash: 3c4432300319c02cd7b1e31dec566f6e65ea9580
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 37980f3cebdee2754a9741a8a45ec6932e7e98ce
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539567"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327123"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>A Microsoft Azure riasztásainak áttekintése 
 
@@ -52,11 +52,11 @@ A riasztási szabályok legfontosabb attribútumai a következők:
 - 3. szint = tájékoztató
 - 4. szint = részletes 
 
-**Művelet**: a riasztás indításakor végrehajtott művelet. További információ: [Action groups](../../azure-monitor/platform/action-groups.md).
+**Művelet**: a riasztás indításakor végrehajtott művelet. További információ: [Action groups](./action-groups.md).
 
 ## <a name="what-you-can-alert-on"></a>A riasztás bekapcsolása
 
-Az [adatforrások figyelése](../../azure-monitor/platform/data-sources.md)című témakörben leírtak szerint riasztást kaphat a mérőszámokról és naplókról. Ezeket a következőkben ismertetjük a teljesség igénye nélkül:
+Az [adatforrások figyelése](./data-sources.md)című témakörben leírtak szerint riasztást kaphat a mérőszámokról és naplókról. Ezeket a következőkben ismertetjük a teljesség igénye nélkül:
 
 - Metrika értékei
 - Naplóbeli keresési lekérdezések
@@ -69,7 +69,7 @@ Korábban Azure Monitor a metrikák, a Application Insights, a Log Analytics és
 | **Forrás figyelése** | **Jel típusa**  | **Leírás** |
 |-------------|----------------|-------------|
 | Szolgáltatás állapota | Tevékenységnapló  | Nem támogatott. Lásd: [műveletnapló riasztások létrehozása a szolgáltatási értesítéseken](../../service-health/alerts-activity-log-service-notifications-portal.md).  |
-| Application Insights | Webes rendelkezésre állási tesztek | Nem támogatott. Tekintse meg a [webes tesztek riasztásait](../../azure-monitor/app/monitor-web-app-availability.md). Minden olyan webhely számára elérhető, amely az adatküldés Application Insights. Értesítést kap, ha a webhely rendelkezésre állása vagy a válaszadás a vártnál kisebb. |
+| Application Insights | Webes rendelkezésre állási tesztek | Nem támogatott. Tekintse meg a [webes tesztek riasztásait](../app/monitor-web-app-availability.md). Minden olyan webhely számára elérhető, amely az adatküldés Application Insights. Értesítést kap, ha a webhely rendelkezésre állása vagy a válaszadás a vártnál kisebb. |
 
 ## <a name="manage-alerts"></a>Riasztások kezelése
 Beállíthatja egy riasztás állapotát, hogy meghatározza, hol található a megoldási folyamat. Ha a riasztási szabályban megadott feltételek teljesülnek, a rendszer riasztást hoz létre vagy tüzelt, és *új*állapottal rendelkezik. Megváltoztathatja az állapotot, amikor visszaigazolja a riasztást, és amikor bezárta. A rendszer az összes állapotjelzőt a riasztás előzményeiben tárolja.
@@ -80,7 +80,7 @@ A következő riasztási állapotok támogatottak.
 |:---|:---|
 | Új | A probléma nemrég észlelhető, és még nincs áttekintve. |
 | Nyugtázva | A rendszergazda áttekintette a riasztást, és megkezdte a munkát. |
-| Lezárt | A probléma megoldódott. A riasztások bezárása után újra megnyithatja azt egy másik állapotba való módosításával. |
+| Zárt | A probléma megoldódott. A riasztások bezárása után újra megnyithatja azt egy másik állapotba való módosításával. |
 
 A *riasztási állapot* különbözik, és független a *figyelő feltételtől*. A riasztási állapotot a felhasználó állítja be. A figyelő feltételét a rendszer állítja be. Riasztás esetén a riasztás figyelési feltétele az elindított állapotra van *állítva.* Ha az alapul szolgáló feltétel, amely miatt a riasztás tüzet töröl, a figyelő feltétele *megoldottra*van állítva. A riasztási állapot addig nem változik, amíg a felhasználó nem módosítja. Útmutató a [riasztások és az intelligens csoportok állapotának módosításához](https://aka.ms/managing-alert-smart-group-states).
 
@@ -137,9 +137,9 @@ Ebből a cikkből megtudhatja, hogyan hozhat létre új riasztási szabályt:
  
 Ez az egyszerűsített létrehozási folyamat már nem igényli az Azure-erőforrások kiválasztása előtt a támogatott megfigyelési forrás vagy jelek megismerését. A rendszer automatikusan szűri az elérhető jelek listáját a kiválasztott cél erőforrás alapján. Emellett a cél alapján végigvezeti a riasztási szabály automatikus logikájának meghatározásán.  
 
-További információt a riasztási szabályok létrehozásával kapcsolatban a [riasztások létrehozása, megtekintése és kezelése Azure monitor segítségével](../../azure-monitor/platform/alerts-metric.md)című témakörben olvashat.
+További információt a riasztási szabályok létrehozásával kapcsolatban a [riasztások létrehozása, megtekintése és kezelése Azure monitor segítségével](./alerts-metric.md)című témakörben olvashat.
 
-A riasztások több Azure monitoring-szolgáltatásban is elérhetők. További információ az egyes szolgáltatások használatának módjáról és használatáról: [Azure-alkalmazások és-erőforrások figyelése](../../azure-monitor/overview.md). 
+A riasztások több Azure monitoring-szolgáltatásban is elérhetők. További információ az egyes szolgáltatások használatának módjáról és használatáról: [Azure-alkalmazások és-erőforrások figyelése](../overview.md). 
 
 
 ## <a name="all-alerts-page"></a>Minden riasztás lap 
@@ -172,7 +172,7 @@ A riasztás részletei lapon a következő témakörök találhatók:
 
 | Section | Leírás |
 |:---|:---|
-| Összegzés | Megjeleníti a riasztás tulajdonságait és egyéb fontos információit. |
+| Összefoglalás | Megjeleníti a riasztás tulajdonságait és egyéb fontos információit. |
 | Előzmények | Felsorolja a riasztás által végrehajtott műveleteket és a riasztáson végrehajtott módosításokat. Jelenleg csak az állapot változásaira korlátozódik. |
 | Diagnosztika | Az intelligens csoportra vonatkozó információk, amelyekben a riasztás szerepel. A *riasztások* száma az intelligens csoportba tartozó riasztások számára utal. Az adott intelligens csoportban lévő, az elmúlt 30 napban létrehozott riasztásokat is tartalmazza, a riasztások listája lapon lévő időszűrőtől függetlenül. Válasszon ki egy riasztást a részletes adatok megtekintéséhez. |
 
@@ -205,10 +205,11 @@ A riasztásokat lekérdezheti az [alapvető](alerts-common-schema-definitions.md
 
 Az [Alert Management REST API](https://aka.ms/alert-management-api) segítségével további információkat kaphat az egyes riasztásokról, például a [riasztási környezet](alerts-common-schema-definitions.md#alert-context) mezőiről.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [További információ az intelligens csoportokról](https://aka.ms/smart-groups)
-- [A műveleti csoportok ismertetése](../../azure-monitor/platform/action-groups.md)
+- [A műveleti csoportok ismertetése](./action-groups.md)
 - [Riasztási példányok kezelése az Azure-ban](https://aka.ms/managing-alert-instances)
 - [Intelligens csoportok kezelése](https://aka.ms/managing-smart-groups)
 - [További információ az Azure-riasztások díjszabásáról](https://azure.microsoft.com/pricing/details/monitor/)
+

@@ -4,15 +4,15 @@ description: A nyeremények összegzése az ajánlatával kapcsolatban szerzett 
 ms.subservice: partnercenter-marketplace-publisher
 ms.service: marketplace
 ms.topic: article
-author: mingshen
+author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 087f7df8f8e3cc5e6e01ff023a88306d5fc4102d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0f19d63bd5f22dc7bc60ceb76ef5bdbeff717dbb
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86535960"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325729"
 ---
 # <a name="payout-summary-overview"></a>Fizetési összegzés áttekintése
 
@@ -31,7 +31,7 @@ A Transact Publishing beállítás összes jelentéskészítési és elemzési f
 
 Ezek a kifizetési jelentés eléréséhez szükséges szerepkörök és engedélyek:
 
-| Jelentések/lapok | Fióktulajdonos | Manager | Fejlesztő | Üzleti közreműködő | Pénzügyi közreműködő | Marketingszakértő |
+| Jelentések/lapok | Fióktulajdonos | Manager | Fejlesztői | Üzleti közreműködő | Pénzügyi közreműködő | Marketingszakértő |
 | --- | --- | --- | --- | --- | --- | --- |
 | Beszerzési jelentés (beleértve a közel valós idejű adatfeldolgozást) | Megtekinthető | Megtekinthető | Nincs hozzáférés | Nincs hozzáférés | Megtekinthető | Nincs hozzáférés |
 | Visszajelzési jelentés/válaszok | Megtekintheti és elküldheti a visszajelzést | Megtekintheti és elküldheti a visszajelzést | Megtekintheti és elküldheti a visszajelzést | Nincs hozzáférés | Nincs hozzáférés | Megtekintheti és elküldheti a visszajelzést |

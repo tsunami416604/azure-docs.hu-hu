@@ -8,13 +8,15 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.custom: amqp
-ms.openlocfilehash: a7ab796ddd35ebe9b9c43509d8e3c2f4c41625c8
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.custom:
+- amqp
+- 'Role: Cloud Development'
+ms.openlocfilehash: 941953c75c516a9eceff526a0ced0ec0910f1f1e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86083991"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327701"
 ---
 # <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>Az eszközről a felhőbe irányuló üzenetek beolvasása a beépített végpontról
 
@@ -23,7 +25,7 @@ Alapértelmezés szerint az üzenetek a beépített szolgáltatás felé irányu
 | Tulajdonság            | Leírás |
 | ------------------- | ----------- |
 | **Partíciók száma** | Állítsa ezt a tulajdonságot a Létrehozás gombra az eszközről a felhőbe irányuló események betöltéséhez szükséges [partíciók](../event-hubs/event-hubs-features.md#partitions) számának meghatározásához. |
-| **Megőrzési idő**  | Ez a tulajdonság határozza meg, hogy az üzenetek mennyi ideig maradnak meg a IoT Hub. Az alapértelmezett érték egy nap, de akár hét napig is megnövelhető. |
+| **Megőrzési időtartam**  | Ez a tulajdonság határozza meg, hogy az üzenetek mennyi ideig maradnak meg a IoT Hub. Az alapértelmezett érték egy nap, de akár hét napig is megnövelhető. |
 
 A IoT Hub legfeljebb 7 napig engedélyezi az adatok megőrzését a beépített Event Hubs. Megadhatja a megőrzési időt a IoT Hub létrehozásakor. Az adatmegőrzési idő IoT Hub az IoT hub szintjétől és az egység típusától függ. A méret szempontjából a beépített Event Hubs megtarthatja az üzenetek maximális mérete legfeljebb 24 órányi kvótát. Például az 1 S1 egység IoT Hub elegendő tárterületet biztosít ahhoz, hogy legalább 4k-os 400K-üzenetet őrizzen meg. Ha az eszközei kisebb üzeneteket küldenek, azok a tárterület méretétől függően (akár 7 napig) is megtarthatók. Garantáljuk, hogy a megadott megőrzési időre vonatkozó adatok minimálisan megmaradjanak. Az üzenetek lejárnak, és a megőrzési idő lejárta után nem lesznek elérhetők. 
 
@@ -51,7 +53,7 @@ Ha Event Hubs SDK-kat vagy olyan termék-integrációt használ, amely nem tud I
 
 A portálon az Event hub-kompatibilis végpont mező egy teljes Event Hubs kapcsolati karakterláncot tartalmaz, amely a következőképpen néz ki: **Endpoint = SB://abcd1234namespace.servicebus.Windows.net/; SharedAccessKeyName = iothubowner; SharedAccessKey = keykeykeykeykeykey =; EntityPath = iothub-eHub-ABCD-1234-123456**. Ha az Ön által használt SDK más értékeket igényel, akkor a következő lesz:
 
-| Name | Érték |
+| Név | Érték |
 | ---- | ----- |
 | Végpont | sb://abcd1234namespace.servicebus.windows.net/ |
 | Gazdanév | abcd1234namespace.servicebus.windows.net |

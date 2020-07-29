@@ -5,17 +5,17 @@ description: Ismerje meg, hogyan alakíthatja át az adatátalakítást a Python
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 author: peterclu
 ms.author: peterlu
 ms.date: 02/28/2020
-ms.custom: designer, tracking-python
-ms.openlocfilehash: 61086bf8c215a09e457e931ffed157559b339a9b
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.topic: conceptual
+ms.custom: how-to, designer, tracking-python
+ms.openlocfilehash: c798fa3bdb6754b2d8b955efe49e208ea954f80a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206809"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326970"
 ---
 # <a name="run-python-code-in-azure-machine-learning-designer"></a>Python-kód futtatása a Azure Machine Learning Designerben
 
@@ -26,6 +26,8 @@ A beépített Kódszerkesztő használatával gyorsan hozzáadhat egyszerű Pyth
 Az alapértelmezett végrehajtási környezet a Python anacondas eloszlását használja. Az előre telepített csomagok teljes listájáért tekintse meg a [Python-szkriptek moduljának végrehajtása](algorithm-module-reference/execute-python-script.md) című lapot.
 
 ![Python bemeneti térképének végrehajtása](media/how-to-designer-python/execute-python-map.png)
+
+[!INCLUDE [machine-learning-missing-ui](../../includes/machine-learning-missing-ui.md)]
 
 ## <a name="execute-python-written-in-the-designer"></a>A Designerben írt python végrehajtása
 

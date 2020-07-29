@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/15/2019
-ms.openlocfilehash: 013515e0608bf790ceef8dc13d9d547496306610
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ea060ec9ba755a197e2969c0bf58050eb1d62a03
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092847"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325967"
 ---
 # <a name="enable-azure-monitor-for-vms-for-a-hybrid-environment"></a>Hibrid környezetek Azure Monitor for VMsának engedélyezése
 
@@ -24,7 +24,7 @@ Mielőtt elkezdené, tekintse át az [előfeltételeket](vminsights-enable-overv
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
 >[!NOTE]
->A Azure Monitor for VMs Map-függőségi ügynök nem küld magába adatokat, és nem igényel semmilyen módosítást a tűzfalakon vagy a portokon. A leképezési adatokat mindig a Log Analytics ügynök továbbítja a Azure Monitor szolgáltatáshoz közvetlenül vagy az [Operations Management Suite-átjárón](../../azure-monitor/platform/gateway.md) keresztül, ha az informatikai biztonsági szabályzatok nem engedélyezik a hálózaton lévő számítógépek számára az internethez való kapcsolódást.
+>A Azure Monitor for VMs Map-függőségi ügynök nem küld magába adatokat, és nem igényel semmilyen módosítást a tűzfalakon vagy a portokon. A leképezési adatokat mindig a Log Analytics ügynök továbbítja a Azure Monitor szolgáltatáshoz közvetlenül vagy az [Operations Management Suite-átjárón](../platform/gateway.md) keresztül, ha az informatikai biztonsági szabályzatok nem engedélyezik a hálózaton lévő számítógépek számára az internethez való kapcsolódást.
 
 A feladat elvégzéséhez szükséges lépéseket a következőképpen összegzi:
 
@@ -145,7 +145,7 @@ configuration VMInsights {
 ## <a name="enable-performance-counters"></a>Teljesítményszámlálók engedélyezése
 
 Ha a megoldás által hivatkozott Log Analytics munkaterület még nincs konfigurálva a megoldáshoz szükséges teljesítményszámlálók összegyűjtéséhez, engedélyeznie kell azokat. Ezt kétféleképpen teheti meg:
-* Manuálisan, a [Windows és a Linux teljesítmény adatforrásai](../../azure-monitor/platform/data-sources-performance-counters.md) című témakörben leírtak szerint log Analytics
+* Manuálisan, a [Windows és a Linux teljesítmény adatforrásai](../platform/data-sources-performance-counters.md) című témakörben leírtak szerint log Analytics
 * A [Azure PowerShell](https://www.powershellgallery.com/packages/Enable-VMInsightsPerfCounters/1.1) -katalógusból elérhető PowerShell-szkript letöltésével és futtatásával
 
 ## <a name="deploy-azure-monitor-for-vms"></a>Azure Monitor for VMs üzembe helyezése
@@ -259,3 +259,4 @@ Most, hogy a figyelés engedélyezve van a virtuális gépek számára, ezek az 
 - A felderített alkalmazások függőségeinek megtekintéséhez lásd: [Azure monitor for VMS Térkép megtekintése](vminsights-maps.md).
 
 - Az Azure-beli [virtuális gépek teljesítményének megtekintése](vminsights-performance.md)a szűk keresztmetszetek és a virtuális gépek teljesítményének teljes kihasználtsága alapján:.
+

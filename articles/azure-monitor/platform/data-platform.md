@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: 68e88ec90625f34e5bc8ae1b70c75e3cfe9a53ad
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e87ddd243aa248b896a26e6389ac1a219579a06d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86515529"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325576"
 ---
 # <a name="azure-monitor-data-platform"></a>Azure Monitor adatplatform
 
@@ -36,7 +36,7 @@ A [metrikák](data-platform-metrics.md) olyan numerikus értékek, amelyek egy a
 
 A Azure Monitor metrikáit egy idősorozat-adatbázisban tárolják, amely az időbélyegzővel ellátott adatok elemzésére van optimalizálva. Ez a mérőszámok különösen a riasztások és a problémák gyors észlelésére alkalmasak. Megtudhatják, hogyan végzi a rendszer működését, de általában a naplók használatával kell összekapcsolni a problémák kiváltó okát.
 
-A metrikák interaktív elemzéshez érhetők el az [Azure Metrikaböngésző](../platform/metrics-getting-started.md)Azure Portal. Hozzáadhatók egy [Azure-irányítópulthoz](../learn/tutorial-app-dashboards.md) a vizualizációhoz, más adattal együtt, és közel valós idejű [riasztásokhoz](alerts-metric.md).
+A metrikák interaktív elemzéshez érhetők el az [Azure Metrikaböngésző](./metrics-getting-started.md)Azure Portal. Hozzáadhatók egy [Azure-irányítópulthoz](../learn/tutorial-app-dashboards.md) a vizualizációhoz, más adattal együtt, és közel valós idejű [riasztásokhoz](alerts-metric.md).
 
 További információ a Azure Monitor mérőszámokról, beleértve a [Azure monitor metrikájában](data-platform-metrics.md)lévő adatforrásokat.
 
@@ -85,8 +85,9 @@ Amellett, hogy az Azure-ban található eszközöket használja a figyelési ada
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a [Azure monitor metrikákkal](data-platform-metrics.md)kapcsolatban.
 - További információ a [Azure monitor naplóiról](data-platform-logs.md).
 - Ismerje meg az Azure különböző erőforrásaihoz [elérhető figyelési információkat](data-sources.md) .
+

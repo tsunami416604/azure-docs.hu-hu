@@ -2,17 +2,18 @@
 title: Az alkalmazás migrálása a Azure Cosmos DB Java SDK v4 (com. Azure. Cosmos) használatára
 description: Ismerje meg, hogyan frissítheti meglévő Java-alkalmazásait a régebbi Azure Cosmos DB Java SDK-k használatával az újabb Java SDK 4,0 (com. Azure. Cosmos csomag) for Core (SQL) API-hoz.
 author: anfeldma-ms
+ms.custom: devx-track-java
 ms.author: anfeldma
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 06/11/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 29b3ca267e22c8d1f349cb127efb7d2fd71e1477
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 24e9087a175385f8e5c347a1d2df3b2785868506
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85263500"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327854"
 ---
 # <a name="migrate-your-application-to-use-the-azure-cosmos-db-java-sdk-v4"></a>Az alkalmazás migrálása a Azure Cosmos DB Java SDK v4 használatára
 
@@ -109,7 +110,7 @@ Ez különbözik a Azure Cosmos DB Java SDK 3. x. x verziótól, amely egy Fluen
 
 ## <a name="code-snippet-comparisons"></a>Kódrészletek összehasonlítása
 
-### <a name="create-resources"></a>Erőforrások létrehozása
+### <a name="create-resources"></a>Az erőforrások létrehozása
 
 A következő kódrészlet a 4,0 és 3. x. x aszinkron API-k közötti erőforrások közötti különbségeket mutatja be:
 

@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: 2f82d5d4dcb29504abbfa6881fa825b6d8efce0d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b05007e2ea7815afbba2a7a71368686cf7c049fb
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87049536"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325610"
 ---
 # <a name="metrics-in-azure-monitor"></a>Metrikák az Azure Monitorban
 
@@ -29,10 +29,10 @@ A metrikák numerikus értékek, amelyek egy rendszer valamely elemét egy adott
 ## <a name="what-can-you-do-with-azure-monitor-metrics"></a>Mit tehet a Azure Monitor metrikákkal?
 A következő táblázat felsorolja azokat a különböző módszereket, amelyekkel a metrikai adatokat Azure Monitor használhatja.
 
-|  | Description |
+|  | Leírás |
 |:---|:---|
 | **Elemzés** | A [metrikák](metrics-charts.md) segítségével elemezheti a diagramon összegyűjtött mérőszámokat, és összehasonlíthatja a különböző erőforrások metrikáit. |
-| **Vizualizáció** | Diagram rögzítése a metrikák Intézőből egy Azure- [irányítópultra](../learn/tutorial-app-dashboards.md).<br>Hozzon létre egy [munkafüzetet](../platform/workbooks-overview.md) , amely kombinálható több adatkészlettel egy interaktív jelentésben. Egy lekérdezés eredményeinek exportálása a [Grafana](grafana-plugin.md) , hogy kihasználja az irányítópultot, és kombinálja más adatforrásokkal. |
+| **Vizualizáció** | Diagram rögzítése a metrikák Intézőből egy Azure- [irányítópultra](../learn/tutorial-app-dashboards.md).<br>Hozzon létre egy [munkafüzetet](./workbooks-overview.md) , amely kombinálható több adatkészlettel egy interaktív jelentésben. Egy lekérdezés eredményeinek exportálása a [Grafana](grafana-plugin.md) , hogy kihasználja az irányítópultot, és kombinálja más adatforrásokkal. |
 | **Riasztás** | Olyan [metrikai riasztási szabályt](alerts-metric.md) konfigurálhat, amely értesítést küld, vagy [automatizált műveletet hajt végre](action-groups.md) , ha a metrika értéke átlépi a küszöbértéket. |
 | **Automatizálás** |  Az [autoscale](autoscale-overview.md) használatával növelheti vagy csökkentheti az erőforrásokat egy küszöbértéket áthaladó metrika értéke alapján. |
 | **Exportálás** | [Átirányítja a metrikákat a naplókba](./resource-logs.md#send-to-azure-storage) , hogy Azure monitor mérőszámokban lévő adatokat elemezze Azure monitor-naplókba, és hogy a metrikus értékeket 93 napnál hosszabb ideig tárolja.<br>Stream-metrikák egy [Event hub](stream-monitoring-data-event-hubs.md) -hoz, hogy átirányítsa őket a külső rendszerekre. |
@@ -89,7 +89,7 @@ Az Azure Monitor által összegyűjtött mérőszámok három alapvető forrása
 
 A **platform metrikáit** az Azure-erőforrások hozzák létre, és megtekinthetik az állapotukat és a teljesítményt. Minden típusú erőforrás [külön mérőszámok készletét hozza létre, és](metrics-supported.md) nincs szükség konfigurációra. A platform metrikáit egyperces gyakorisággal gyűjtjük az Azure-erőforrásokból, kivéve, ha a mérőszám definíciójában másképp van megadva. 
 
-A vendég operációs rendszer **mérőszámait** egy virtuális gép vendég operációs rendszere gyűjti. Engedélyezze a vendég operációs rendszer metrikáit a Windows-alapú virtuális gépekhez [Windows diagnosztikai bővítménnyel (wad)](../platform/diagnostics-extension-overview.md) és a [InfluxData](https://www.influxdata.com/time-series-platform/telegraf/)-val rendelkező Linux rendszerű virtuális gépekhez.
+A vendég operációs rendszer **mérőszámait** egy virtuális gép vendég operációs rendszere gyűjti. Engedélyezze a vendég operációs rendszer metrikáit a Windows-alapú virtuális gépekhez [Windows diagnosztikai bővítménnyel (wad)](./diagnostics-extension-overview.md) és a [InfluxData](https://www.influxdata.com/time-series-platform/telegraf/)-val rendelkező Linux rendszerű virtuális gépekhez.
 
 Az **alkalmazás-metrikákat** Application Insights hozza létre a figyelt alkalmazásokhoz, és segít a teljesítménnyel kapcsolatos problémák észlelésében és a trendek nyomon követésében az alkalmazás használatának módjában. Ez olyan értékeket foglal magában, mint a _kiszolgáló válaszideje_ és a _böngésző kivételei_.
 
@@ -99,7 +99,7 @@ Az **Egyéni metrikák** olyan mérőszámok, amelyeket az automatikusan elérhe
 Az Azure-ban a legtöbb erőforrás esetében a metrikák 93 napig tárolódnak. Bizonyos kivételek:
 
 **Vendég operációs rendszer metrikái**
--   **Klasszikus vendég operációs rendszer metrikái**. Ezek a [Windows diagnosztikai bővítmény (wad)](../platform/diagnostics-extension-overview.md) vagy a [Linux diagnosztikai bővítmény (Lad)](../../virtual-machines/extensions/diagnostics-linux.md) által gyűjtött teljesítményszámlálók, és egy Azure Storage-fiókhoz irányíthatók. A metrikák megőrzése 14 nap.
+-   **Klasszikus vendég operációs rendszer metrikái**. Ezek a [Windows diagnosztikai bővítmény (wad)](./diagnostics-extension-overview.md) vagy a [Linux diagnosztikai bővítmény (Lad)](../../virtual-machines/extensions/diagnostics-linux.md) által gyűjtött teljesítményszámlálók, és egy Azure Storage-fiókhoz irányíthatók. A metrikák megőrzése 14 nap.
 -   **Azure monitor metrikáknak eljuttatott vendég operációs rendszer metrikái**. Ezek a [Windows diagnosztikai bővítmény (wad)](diagnostics-extension-overview.md) által gyűjtött teljesítményszámlálók, amelyeket a rendszer elküld a Azure monitor adatfogadónak, vagy a [InfluxData](https://www.influxdata.com/time-series-platform/telegraf/) - [alapú](diagnostics-extension-overview.md#data-destinations), a Linux rendszerű gépeken található. A metrikák megőrzése 93 nap.
 -   **Log Analytics ügynök által gyűjtött vendég operációsrendszer-metrikák**. Ezek a Log Analytics ügynök által gyűjtött és Log Analytics munkaterületre továbbított teljesítményszámlálók. A metrikák megőrzése 31 nap, és legfeljebb 2 évig bővíthető.
 
@@ -119,3 +119,4 @@ Az Azure-ban a legtöbb erőforrás esetében a metrikák 93 napig tárolódnak.
 - További információ a [Azure monitor adatplatformról](data-platform.md).
 - Tudnivalók a [Azure monitor naplózási adatainak](data-platform-logs.md)használatáról.
 - Ismerje meg az Azure különböző erőforrásaihoz [elérhető figyelési információkat](data-sources.md) .
+

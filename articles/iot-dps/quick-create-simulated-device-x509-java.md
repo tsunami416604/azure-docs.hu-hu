@@ -8,13 +8,13 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.devlang: java
-ms.custom: mvc
-ms.openlocfilehash: 5122726cbda2145d190e3dbeb10a3c5b4ae65947
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, devx-track-java
+ms.openlocfilehash: f16ace3e54db4d30f89da7335f00153191a7e226
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82588447"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326749"
 ---
 # <a name="quickstart-create-and-provision-a-simulated-x509-device-using-java-device-sdk-for-iot-hub-device-provisioning-service"></a>Rövid útmutató: szimulált X. 509 eszköz létrehozása és kiépítése a IoT Hub Device Provisioning Service Javához készült Java eszközoldali SDK-val
 
@@ -121,7 +121,7 @@ Ez a cikk az egyéni regisztrációkat mutatja be.
 
 3. Adja meg a kiépítési szolgáltatás és az X.509-identitás adatait a kódban. Ezt a rendszer a szimulált eszköz igazolásához használja az automatikus kiépítés során, mielőtt regisztrálná az eszközt:
 
-   - Szerkessze a `/src/main/java/samples/com/microsoft/azure/sdk/iot/ProvisioningX509Sample.java`fájlt, hogy tartalmazza az _azonosító hatókörét_ és a _kiépítési szolgáltatás globális végpontját_ a korábban feljegyzett módon. Adja hozzá a _Client Cert_ és a _Client Cert Private Key_ értéket is az előző szakaszban feljegyzett adatok alapján.
+   - Szerkessze a fájlt `/src/main/java/samples/com/microsoft/azure/sdk/iot/ProvisioningX509Sample.java` , hogy tartalmazza az _azonosító hatókörét_ és a _kiépítési szolgáltatás globális végpontját_ a korábban feljegyzett módon. Adja hozzá a _Client Cert_ és a _Client Cert Private Key_ értéket is az előző szakaszban feljegyzett adatok alapján.
 
       ```java
       private static final String idScope = "[Your ID scope here]";

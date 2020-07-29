@@ -1,6 +1,5 @@
 ---
-title: Webszolgáltatás paraméterei
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (klasszikus): webszolgáltatás-paraméterek – Azure'
 description: A Azure Machine Learning webszolgáltatás paramétereinek használata a modell működésének módosításához a webszolgáltatáshoz való hozzáféréskor.
 services: machine-learning
 author: likebupt
@@ -12,13 +11,17 @@ ms.subservice: studio
 ms.workload: data-services
 ms.topic: how-to
 ms.date: 01/12/2017
-ms.openlocfilehash: c274579e756b3c22920023d68501981d5b4a8b01
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: de3fb4a0dab08a13327c910d1e09ecbf0afcec8c
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84705865"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326256"
 ---
 # <a name="use-azure-machine-learning-studio-classic-web-service-parameters"></a>Azure Machine Learning Studio (klasszikus) webszolgáltatás paramétereinek használata
+
+**a következőkre vonatkozik:** ![ nincs](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine learning](../overview-what-is-azure-ml.md) ![ Igen ](../../../includes/media/aml-applies-to-skus/yes.png) Machine learning Studio (klasszikus) 
+
 
 A Azure Machine Learning webszolgáltatás egy olyan kísérlet közzétételével jön létre, amely konfigurálható paraméterekkel rendelkező modulokat tartalmaz. Bizonyos esetekben érdemes lehet módosítani a modul működését, amíg a webszolgáltatás fut. A *webszolgáltatás paraméterei* lehetővé teszik a feladat elvégzését. 
 
@@ -52,7 +55,7 @@ Tegyük fel például, hogy egy olyan [adatexportálási][writer] modullal kís�
    * A **kérjük, adja meg a hitelesítés típusát**területen válassza a "fiók" lehetőséget.
    * Adja meg az Azure Blob Storage-fiók adatait. 
 
-3. Kattintson az elérési út jobb oldalán lévő ikonra a **Container paraméterrel kezdődő blobra**. A következőképpen néz ki:
+3. Kattintson az elérési út jobb oldalán lévő ikonra a **Container paraméterrel kezdődő blobra**. Így néz ki:
    
    ![Webszolgáltatás paraméterének ikonja](./media/web-service-parameters/icon.png)
    
@@ -63,7 +66,7 @@ Tegyük fel például, hogy egy olyan [adatexportálási][writer] modullal kís�
 5. A webszolgáltatás paraméter alapértelmezett értékének megadásához kattintson a név jobb oldalán látható ikonra, válassza az "alapértelmezett érték megadása" lehetőséget, adjon meg egy értéket (például "container1/output1.csv"), és nyomja le az **ENTER** billentyűt.
    
    ![Webszolgáltatás paraméter](./media/web-service-parameters/parameter.png)
-6. Kattintson a **Futtatás**gombra. 
+6. Kattintson a **Futtatás** elemre. 
 7. Kattintson a webszolgáltatás **telepítése** lehetőségre, és válassza a **webszolgáltatás telepítése [klasszikus]** vagy a **webszolgáltatás telepítése [új]** lehetőséget a webszolgáltatás telepítéséhez.
 
 > [!NOTE] 

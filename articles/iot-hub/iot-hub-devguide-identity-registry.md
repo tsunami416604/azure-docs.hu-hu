@@ -11,11 +11,14 @@ ms.date: 08/29/2018
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: e9d5eae4ef926a5c05265b91526d03a17ca57781
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+- 'Role: Cloud Development'
+- 'Role: IoT Device'
+ms.openlocfilehash: 675f25107a2e4f0ddedf468dc06afea36ffc6151
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84674954"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327752"
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>Az IoT hub Identity Registry ismertetése
 
@@ -109,7 +112,7 @@ Tulajdonságok: az üzenetrendszer tulajdonságai előtaggal vannak ellátva a `
 
 Értesítési üzenet az eszközhöz:
 
-| Name | Érték |
+| Név | Érték |
 | --- | --- |
 |$content típusa | application/json |
 |$iothub – enqueuedtime |  Az értesítés elküldésének ideje |
@@ -121,7 +124,7 @@ Tulajdonságok: az üzenetrendszer tulajdonságai előtaggal vannak ellátva a `
 |operationTimestamp | A művelet ISO8601 időbélyege |
 |iothub – üzenet – séma | deviceLifecycleNotification |
 
-Törzs: Ez a szakasz JSON formátumú, és a létrehozott eszköz-identitás ikerét jelöli. Példa:
+Törzs: Ez a szakasz JSON formátumú, és a létrehozott eszköz-identitás ikerét jelöli. Például:
 
 ```json
 {
@@ -145,7 +148,7 @@ Törzs: Ez a szakasz JSON formátumú, és a létrehozott eszköz-identitás ike
 ```
 Értesítési üzenet a modulhoz:
 
-| Name | Érték |
+| Név | Érték |
 | --- | --- |
 $content típusa | application/json |
 $iothub – enqueuedtime |  Az értesítés elküldésének ideje |
@@ -157,7 +160,7 @@ moduleId | A modul azonosítója |
 operationTimestamp | A művelet ISO8601 időbélyege |
 iothub – üzenet – séma | moduleLifecycleNotification |
 
-Törzs: Ez a szakasz JSON formátumú, és a létrehozott modul-identitás ikerét jelöli. Példa:
+Törzs: Ez a szakasz JSON formátumú, és a létrehozott modul-identitás ikerét jelöli. Például:
 
 ```json
 {
@@ -185,7 +188,7 @@ Törzs: Ez a szakasz JSON formátumú, és a létrehozott modul-identitás iker�
 
 Az eszközök identitásai JSON-dokumentumokként jelennek meg a következő tulajdonságokkal:
 
-| Tulajdonság | Beállítások | Description |
+| Tulajdonság | Beállítások | Leírás |
 | --- | --- | --- |
 | deviceId |kötelező, csak olvasható a frissítésekben |Kis-és nagybetűket megkülönböztető karakterlánc (legfeljebb 128 karakter) ASCII 7 bites alfanumerikus karakterekből és bizonyos speciális karakterekből: `- . + % _ # * ? ! ( ) , : = @ $ '` . |
 | generationId |kötelező, csak olvasható |Egy IoT hub által generált, kis-és nagybetűket megkülönböztető karakterlánc legfeljebb 128 karakter hosszú lehet. Ez az érték az azonos **deviceId**-vel rendelkező eszközök megkülönböztetésére szolgál, ha azokat törölték és újra létrehozták. |
@@ -209,7 +212,7 @@ Az eszközök identitásai JSON-dokumentumokként jelennek meg a következő tul
 
 A modul identitásai JSON-dokumentumokként jelennek meg a következő tulajdonságokkal:
 
-| Tulajdonság | Beállítások | Description |
+| Tulajdonság | Beállítások | Leírás |
 | --- | --- | --- |
 | deviceId |kötelező, csak olvasható a frissítésekben |Kis-és nagybetűket megkülönböztető karakterlánc (legfeljebb 128 karakter) ASCII 7 bites alfanumerikus karakterekből és bizonyos speciális karakterekből: `- . + % _ # * ? ! ( ) , : = @ $ '` . |
 | moduleId |kötelező, csak olvasható a frissítésekben |Kis-és nagybetűket megkülönböztető karakterlánc (legfeljebb 128 karakter) ASCII 7 bites alfanumerikus karakterekből és bizonyos speciális karakterekből: `- . + % _ # * ? ! ( ) , : = @ $ '` . |

@@ -5,17 +5,17 @@ description: Megtudhatja, hogyan hozhat létre egy új Azure Machine Learning-mu
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
+ms.topic: conceptual
+ms.custom: how-to
 ms.author: larryfr
 author: Blackmist
-ms.date: 07/09/2020
-ms.custom: seoapril2019
-ms.openlocfilehash: 49a1b190ece4ae4e937757e88af325a29f4825c5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 07/27/2020
+ms.openlocfilehash: db0b87787e34796e9dd7c91d6e4b53738145a25a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87031116"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326375"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>Munkaterületek létrehozása Azure Machine Learninghez Azure Resource Manager sablon használatával
 
@@ -118,6 +118,9 @@ New-AzResourceGroupDeployment `
 ---
 
 Alapértelmezés szerint a sablon részeként létrehozott összes erőforrás új. Lehetősége van azonban meglévő erőforrások használatára is. Ha további paramétereket biztosít a sablonhoz, használhatja a meglévő erőforrásokat. Ha például egy meglévő Storage-fiókot szeretne használni, állítsa a **storageAccountOption** értéket **meglévő** értékre, és adja meg a Storage-fiók nevét a **storageAccountName** paraméterben.
+
+> [!IMPORTANT]
+> Ha meglévő Azure Storage-fiókot szeretne használni, akkor nem lehet prémium szintű fiók (Premium_LRS és Premium_GRS). Emellett nem lehet hierarchikus névtér (Azure Data Lake Storage Gen2). Sem a Premium Storage, sem a hierarchikus névtér nem támogatott a munkaterület alapértelmezett Storage-fiókjával.
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
@@ -374,7 +377,7 @@ Az adatai számára további konfigurációt adhat meg, ha a **confidential_data
 
 ### <a name="only-deploy-workspace-behind-private-endpoint"></a>Csak a munkaterület üzembe helyezése privát végpont mögött
 
-Ha a társított erőforrások nem egy virtuális hálózat mögött találhatók, a **privateEndpointType** paramétert beállíthatja úgy, hogy `AutoAproval` `ManualApproval` a munkaterületet egy privát végpont mögött helyezze üzembe.
+Ha a társított erőforrások nem egy virtuális hálózat mögött találhatók, a **privateEndpointType** paramétert beállíthatja úgy, hogy `AutoAproval` `ManualApproval` a munkaterületet egy privát végpont mögött helyezze üzembe. Ezt az új és a meglévő munkaterületek esetében is megteheti. Meglévő munkaterület frissítésekor adja meg a sablon paramétereit a meglévő munkaterületről származó információkkal.
 
 > [!IMPORTANT]
 > Az üzembe helyezés csak a privát végpontokat támogató régiókban érvényes.
@@ -753,3 +756,4 @@ A probléma elkerüléséhez a következő módszerek egyikét javasoljuk:
 
 * [Erőforrások üzembe helyezése Resource Manager-sablonokkal és Resource Manager-Rest APIokkal](../azure-resource-manager/templates/deploy-rest.md).
 * [Azure-erőforráscsoportok létrehozása és üzembe helyezése a Visual Studióval](../azure-resource-manager/templates/create-visual-studio-deployment-project.md).
+* [Az Azure Machine Learning kapcsolódó egyéb sablonokkal kapcsolatban lásd az Azure Gyorsindítás sablonok tárházát.](https://github.com/Azure/azure-quickstart-templates)

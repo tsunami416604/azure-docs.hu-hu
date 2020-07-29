@@ -5,18 +5,19 @@ description: Megtudhatja, hogyan hozhat létre Azure Machine Learning adatkészl
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
+ms.topic: conceptual
+ms.custom: how-to
 ms.author: sihhu
 author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 06/29/2020
-ms.openlocfilehash: c082c74ab448fda0926b5aab52088bf00fb719bf
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a220a7279cbb5ba75c8aa803cb4bd709442a52fe
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87031157"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326392"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Azure Machine Learning adatkészletek létrehozása
 
@@ -53,7 +54,7 @@ A fő tényező, hogy mekkora az adatkészlet memóriában lévő mérete, péld
  
 Ha a Pandat használja, nincs ok arra, hogy több mint 1 vCPU, mivel ez minden, amit használni fog. A Modin és a Dask/Ray használatával egyszerűen integrálással számos vCPU egyetlen Azure Machine Learning számítási példányon/csomóponton keresztül, és szükség esetén nagy méretű fürtre is kibővíthető, ha egyszerűen `import pandas as pd` változik `import modin.pandas as pd` . 
  
-Ha nem kap elég nagy méretű virtuálist az adatokhoz, két lehetőség közül választhat: például a Spark vagy a Dask keretrendszer használatával hajtsa végre a feldolgozást a memóriában lévő adatokon, azaz a dataframe a partíció és a feldolgozás során a RAM-partícióba kerül. Ha túl lassú, a Spark vagy a Dask lehetővé teszi a méretezést egy olyan fürtre, amely továbbra is interaktív módon használható. 
+Ha nem tud nagy mennyiségű virtuális gépet beolvasni az adatokhoz, két lehetőség közül választhat: például a Spark-vagy a Dask-keretrendszer használatával végezheti el a feldolgozást a "memóriából", azaz a dataframe a partíció és a feldolgozás során a RAM-partícióba tölti be, és a végső eredményt a végén gyűjti. Ha túl lassú, a Spark vagy a Dask lehetővé teszi a méretezést egy olyan fürtre, amely továbbra is interaktív módon használható. 
 
 ## <a name="dataset-types"></a>Adathalmaz-típusok
 
@@ -82,7 +83,7 @@ Adatkészletek létrehozása Azure- [adattárból](how-to-access-data.md) a Pyth
 
 #### <a name="create-a-tabulardataset"></a>TabularDataset létrehozása
 
-Az osztályban lévő metódus használatával olvassa be a [`from_delimited_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header-true--partition-format-none--support-multi-line-false-) `TabularDatasetFactory` . csv vagy a. TSV formátumú fájlokat, és hozzon létre egy nem regisztrált TabularDataset. Ha több fájlt olvas be, az eredmények egy táblázatos ábrázolásba lesznek összesítve. 
+Az osztályban lévő metódus használatával olvassa be a [`from_delimited_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory) `TabularDatasetFactory` . csv vagy a. TSV formátumú fájlokat, és hozzon létre egy nem regisztrált TabularDataset. Ha több fájlt olvas be, az eredmények egy táblázatos ábrázolásba lesznek összesítve. 
 
 A következő kód beolvassa a munkaterület meglévő munkaterületét és a kívánt adattárat név alapján. Ezután átadja az adattár és a fájl helyét a `path` paraméternek egy új TabularDataset létrehozásához `weather_ds` .
 
@@ -122,10 +123,10 @@ titanic_ds = Dataset.Tabular.from_delimited_files(path=web_path, set_column_type
 titanic_ds.take(3).to_pandas_dataframe()
 ```
 
-|Index|PassengerId|Túlélte|Pclass|Name|szex|Kor|SibSp|Parch|Ticket|Legnagyobb légitársasága|Kabin|Megkezdte
+|Index|PassengerId|Túlélte|Pclass|Név|szex|Kor|SibSp|Parch|Ticket|Legnagyobb légitársasága|Kabin|Megkezdte
 -|-----------|--------|------|----|---|---|-----|-----|------|----|-----|--------|
 0|1|Hamis|3|Braund, Mr. Owen Harris|male|22,0|1|0|A/5 21171|7,2500||S
-1|2|Igaz|1|Cumings, Mrs. John Bradley (Florence Briggs th...|female|38,0|1|0|PC 17599|71,2833|C85|C
+1|2|Igaz|1|Cumings, Mrs. John Bradley (Florence Briggs th...|female|38,0|1|0|PC 17599|71,2833|C85|C#
 2|3|Igaz|3|Heikkinen, Miss. Laina 's|female|26,0|0|0|STON/O2. 3101282|7,9250||S
 
 Ha adatkészletet szeretne létrehozni egy memóriából származó pandák dataframe, írja az adatokat egy helyi fájlba, például egy CSV-fájlba, és hozza létre az adatkészletet a fájlból. A következő kód mutatja be ezt a munkafolyamatot.
@@ -264,7 +265,7 @@ Válasszon ki egy adatkészletet a csempe kiválasztásával. (A keresősáv has
 
 ![Adatkészlet kiválasztása](./media/how-to-create-register-datasets/open-datasets-2.png)
 
-Válassza ki azt a nevet, amelyben regisztrálni kívánja az adatkészletet, és opcionálisan szűrheti az adatokat az elérhető szűrők használatával. Ebben az esetben a munkaszüneti adatkészletek esetében az időszakot egy évig, az országkód pedig csak az Egyesült Államokban szűri. Kattintson a **Létrehozás** gombra.
+Válassza ki azt a nevet, amelyben regisztrálni kívánja az adatkészletet, és opcionálisan szűrheti az adatokat az elérhető szűrők használatával. Ebben az esetben a munkaszüneti adatkészletek esetében az időszakot egy évig, az országkód pedig csak az Egyesült Államokban szűri. Válassza a **Létrehozás** lehetőséget.
 
 ![Adatkészlet-paraméterek beállítása és adatkészlet létrehozása](./media/how-to-create-register-datasets/open-datasets-3.png)
 
