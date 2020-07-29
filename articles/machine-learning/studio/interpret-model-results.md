@@ -1,6 +1,5 @@
 ---
-title: Modell eredményeinek értelmezése
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (klasszikus): a modell eredményeinek értelmezése – Azure'
 description: Válassza ki az algoritmushoz beállított optimális paramétert a pontszám-modell kimenetének használatával és megjelenítésével.
 services: machine-learning
 ms.service: machine-learning
@@ -9,19 +8,23 @@ ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.date: 11/29/2017
-ms.openlocfilehash: a99c1d71ed7e718d4d47ba55573a16466f62de5f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 77704750344df7ae24b7f81bde6088762a00c86d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84687769"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318589"
 ---
 # <a name="interpret-model-results-in-azure-machine-learning-studio-classic"></a>A modell eredményeinek értelmezése Azure Machine Learning Studio (klasszikus)
+
+**a következőkre vonatkozik:** ![ nincs](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine learning](../overview-what-is-azure-ml.md) ![ Igen ](../../../includes/media/aml-applies-to-skus/yes.png) Machine learning Studio (klasszikus) 
+
 
 Ez a témakör bemutatja, hogyan jelenítheti meg és értelmezheti az előrejelzési eredményeket Azure Machine Learning Studio (klasszikus). Miután betanított egy modellt, és elvégezte az előrejelzések megtételét ("a modell értékelése"), meg kell ismernie és el kell értelmezni az előrejelzés eredményét.
 
 A gépi tanulási modellek négy fő típusa Azure Machine Learning Studio (klasszikus):
 
-* Osztályozás
+* Besorolás
 * Fürtözés
 * Regresszió
 * Ajánló rendszerek
@@ -38,7 +41,7 @@ A modellek kiértékeléséről a [modell teljesítményének kiértékelését]
 
 Ha új ML Studio (klasszikus), [Ismerje meg, hogyan hozhat létre egy egyszerű kísérletet](create-experiment.md).
 
-## <a name="classification"></a>Osztályozás
+## <a name="classification"></a>Besorolás
 A besorolási problémák két alkategóriája van:
 
 * Problémák csak két osztállyal (kétosztályos vagy bináris besorolású)

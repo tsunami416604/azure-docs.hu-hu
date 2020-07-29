@@ -6,77 +6,37 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.date: 02/14/2020
+ms.date: 07/28/2020
 ms.topic: include
 ms.custom: include file
 ms.author: diberry
-ms.openlocfilehash: 2ba136cd479da0cd394b5e5afe6ebe7c22b539d5
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 4bf86c616420bb049e1d7a82ad0e942e6eb7b36f
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81732088"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87369260"
 ---
 A .NET-hez készült Language Understanding (LUIS) előrejelzési ügyféloldali kódtára a következőre használható:
 
 * Előrejelzés beolvasása tárolóhely alapján
 * Előrejelzés verziója szerint
 
-[Dokumentáció](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/languageunderstanding?view=azure-dotnet) | a[könyvtár forráskódjának](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Language.LUIS.Runtime) | [előrejelzési futtatókörnyezetének (NuGet) C#-](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/) | [mintáinak](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/dotnet/LanguageUnderstanding/predict-with-sdk-3x) ismertetése
+[Dokumentáció](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/languageunderstanding?view=azure-dotnet)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Language.LUIS.Runtime)  |  [Előrejelzési futtatókörnyezet csomagja (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/)  |  [C#-minták](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/dotnet/LanguageUnderstanding/predict-with-sdk-3x)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Language Understanding (LUIS) portál fiók – [hozzon létre egyet ingyen](https://www.luis.ai)
 * A [.net Core](https://dotnet.microsoft.com/download/dotnet-core)jelenlegi verziója.
-* A LUIS-alkalmazás azonosítója – használja a nyilvános IoT-alkalmazás `df67dcdb-c37d-46af-88e1-8b97951ca1c2`azonosítóját. A rövid útmutató kódjában használt felhasználói lekérdezés az adott alkalmazásra jellemző.
+* A LUIS-alkalmazás azonosítója – használja a nyilvános IoT-alkalmazás AZONOSÍTÓját `df67dcdb-c37d-46af-88e1-8b97951ca1c2` . A rövid útmutató kódjában használt felhasználói lekérdezés az adott alkalmazásra jellemző.
 
 ## <a name="setting-up"></a>Beállítás
-
-### <a name="create-an-environment-variable"></a>Környezeti változó létrehozása
-
-A kulcs és az erőforrás neve alapján hozzon létre két környezeti változót a hitelesítéshez:
-
-* `LUIS_PREDICTION_KEY`– A kérések hitelesítéséhez szükséges erőforrás-kulcs.
-* `LUIS_ENDPOINT_NAME`– A kulcshoz társított erőforrás neve.
-
-Használja az operációs rendszerének utasításait.
-
-#### <a name="windows"></a>[Windows](#tab/windows)
-
-```console
-setx LUIS_PREDICTION_KEY <replace-with-your-resource-key>
-setx LUIS_ENDPOINT_NAME <replace-with-your-resource-name>
-```
-
-A környezeti változó hozzáadása után indítsa újra a konzolablak ablakát.
-
-#### <a name="linux"></a>[Linux](#tab/linux)
-
-```bash
-export LUIS_PREDICTION_KEY=<replace-with-your-resource-key>
-export LUIS_ENDPOINT_NAME=<replace-with-your-resource-name>
-```
-
-A környezeti változó hozzáadását követően futtassa a `source ~/.bashrc` parancsot a konzolablakban a módosítások érvénybe léptetéséhez.
-
-#### <a name="macos"></a>[macOS](#tab/unix)
-
-Szerkessze `.bash_profile`a t, és adja hozzá a környezeti változót:
-
-```bash
-export LUIS_PREDICTION_KEY=<replace-with-your-resource-key>
-export LUIS_ENDPOINT_NAME=<replace-with-your-resource-name>
-```
-
-A környezeti változó hozzáadását követően futtassa a `source .bash_profile` parancsot a konzolablakban a módosítások érvénybe léptetéséhez.
-
----
 
 ### <a name="create-a-new-c-application"></a>Új C#-alkalmazás létrehozása
 
 Hozzon létre egy új .NET Core-alkalmazást az előnyben részesített szerkesztőben vagy az IDE-ben.
 
-1. A konzol ablakban (például cmd, PowerShell vagy bash) a DotNet `new` paranccsal hozzon létre egy új, a nevű `language-understanding-quickstart`Console-alkalmazást. Ez a parancs egy egyszerű ""Helló világ!"alkalmazás" C#-projektet hoz létre egyetlen forrásfájl használatával `Program.cs`:.
+1. A konzol ablakban (például cmd, PowerShell vagy bash) a DotNet `new` paranccsal hozzon létre egy új, a nevű Console-alkalmazást `language-understanding-quickstart` . Ez a parancs egy egyszerű ""Helló világ!"alkalmazás" C#-projektet hoz létre egyetlen forrásfájl használatával: `Program.cs` .
 
     ```dotnetcli
     dotnet new console -n language-understanding-quickstart
@@ -128,19 +88,13 @@ Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következőket a 
 
 ## <a name="add-the-dependencies"></a>Függőségek hozzáadása
 
-A projekt könyvtárában nyissa meg a *program.cs* fájlt az előnyben részesített szerkesztőben vagy az ide-ben. Cserélje le a `using` meglévő kódot a következő `using` irányelvekre:
+A projekt könyvtárában nyissa meg a *program.cs* fájlt az előnyben részesített szerkesztőben vagy az ide-ben. Cserélje le a meglévő `using` kódot a következő `using` irányelvekre:
 
 [!code-csharp[Using statements](~/cognitive-services-quickstart-code/dotnet/LanguageUnderstanding/predict-with-sdk-3x/Program.cs?name=snippet_using)]
 
 ## <a name="authenticate-the-client"></a>Az ügyfél hitelesítése
 
-1. Hozzon létre változókat a kulcshoz, a névhez és az alkalmazás-AZONOSÍTÓhoz:
-
-    Az előrejelzési kulcs egy nevű `LUIS_PREDICTION_KEY`környezeti változóból való kezelésére szolgáló változók. Ha az alkalmazás elindítása után hozta létre a környezeti változót, akkor a változó eléréséhez be kell zárnia és újra kell töltenie a szerkesztőt, az IDE-t vagy a shellt. A metódusok később lesznek létrehozva.
-
-    Hozzon létre egy változót az erőforrás `LUIS_ENDPOINT_NAME`nevének tárolásához.
-
-    Hozzon létre egy változót az alkalmazás-AZONOSÍTÓhoz egy `LUIS_APP_ID`nevű környezeti változóként. Állítsa a környezeti változót a nyilvános IoT alkalmazásra:
+1. Hozzon létre változókat a kulcshoz, az erőforrás nevéhez, az alkalmazás-AZONOSÍTÓhoz és a közzétételi tárolóhelyhez. Állítsa be az alkalmazás AZONOSÍTÓját a nyilvános IoT alkalmazásba:
 
     **`df67dcdb-c37d-46af-88e1-8b97951ca1c2`**
 
@@ -168,7 +122,7 @@ A következő fő módszer használatával összekapcsolhatja a változókat és
 
 ## <a name="run-the-application"></a>Az alkalmazás futtatása
 
-Futtassa az alkalmazást a paranccsal `dotnet run` az alkalmazás könyvtárából.
+Futtassa az alkalmazást a `dotnet run` paranccsal az alkalmazás könyvtárából.
 
 ```dotnetcli
 dotnet run

@@ -1,6 +1,6 @@
 ---
 title: Azure-beli virtuális hálózatok társításának létrehozása, módosítása vagy törlése | Microsoft Docs
-description: Megtudhatja, hogyan hozhat létre, módosíthat vagy törölhet virtuális hálózati társításokat.
+description: Virtuális hálózati társak létrehozása, módosítása vagy törlése. A virtuális hálózatok társításával azonos régióban és régiókban is csatlakoztathatók a virtuális hálózatok.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/01/2019
 ms.author: altambaw
-ms.openlocfilehash: d38b164e95b1791971f88f62e7eccfee8a59bd71
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eb59d30079c830ad7d6f3dbd5fb8d48e6cd06c67
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711102"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291863"
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>Virtuális hálózati társak létrehozása, módosítása vagy törlése
 
@@ -85,7 +86,7 @@ A társítás módosítása előtt Ismerkedjen meg a követelményekkel és a me
 3. A **Beállítások** **területen válassza a**társítások lehetőséget.
 4. Válassza ki a megtekinteni kívánt társítást, vagy módosítsa a beállításait.
 5. Módosítsa a megfelelő beállítást. Olvassa el a társítás létrehozása című [cikk 5. lépésében](#add-peering) található egyes beállítások lehetőségeit.
-6. Kattintson a **Mentés** gombra.
+6. Válassza a **Mentés** lehetőséget.
 
 **Parancsok**
 
@@ -145,7 +146,7 @@ A virtuális hálózati társítással való együttműködéshez használt fió
 
 Ha a fiókja nincs hozzárendelve az egyik korábbi szerepkörhöz, hozzá kell rendelnie egy [Egyéni szerepkörhöz](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , amely a következő táblázat szükséges műveleteihez van rendelve:
 
-| Műveletek                                                          | Name |
+| Művelet                                                          | Név |
 |---                                                              |---   |
 | Microsoft.Network/virtualNetworks/virtualNetworkPeerings/write  | Az A virtuális hálózatról a B virtuális hálózatra való társítás létrehozásához szükséges. A virtuális hálózatnak virtuális hálózatnak (Resource Manager) kell lennie.          |
 | Microsoft. Network/virtualNetworks/peer/Action                   | A (z) B virtuális hálózatról (Resource Manager) az A virtuális hálózatra való társítás létrehozásához szükséges                                                       |

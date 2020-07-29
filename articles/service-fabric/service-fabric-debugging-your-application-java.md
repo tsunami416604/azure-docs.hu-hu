@@ -4,13 +4,14 @@ description: A szolgáltatások megbízhatóságának és teljesítményének ja
 author: suhuruli
 ms.topic: conceptual
 ms.date: 11/02/2017
+ms.custom: devx-track-java
 ms.author: suhuruli
-ms.openlocfilehash: 6f2361bf76bd4f9d297fbe541b950840f13966cc
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 32472c6caafe62d629ee3a5ffb8c758624228efd
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86246401"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87316613"
 ---
 # <a name="debug-your-java-service-fabric-application-using-eclipse"></a>Java Service Fabric-alkalmazás hibakeresése az Eclipse használatával
 > [!div class="op_single_selector"]
@@ -39,7 +40,7 @@ ms.locfileid: "86246401"
 
 Ha az alkalmazás összeomlik, érdemes lehet engedélyezni a coredumps is. Hajtson végre `ulimit -c` egy rendszerhéjban, és ha 0 értéket ad vissza, akkor a coredumps nem engedélyezettek. A korlátlan coredumps engedélyezéséhez hajtsa végre a következő parancsot: `ulimit -c unlimited` . Az állapotot a parancs használatával is ellenőrizheti `ulimit -a` .  Ha szeretné frissíteni a coredump-létrehozási útvonalat, hajtsa végre a következőt: `echo '/tmp/core_%e.%p' | sudo tee /proc/sys/kernel/core_pattern` . 
 
-### <a name="next-steps"></a>Következő lépések
+### <a name="next-steps"></a>További lépések
 
 * [Naplók gyűjtése Linux Azure Diagnostics használatával](./service-fabric-diagnostics-event-aggregation-lad.md).
 * [A szolgáltatások helyi figyelése és diagnosztizálása](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md).

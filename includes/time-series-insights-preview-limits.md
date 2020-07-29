@@ -9,12 +9,12 @@ author: deepakpalled
 ms.author: dpalled
 manager: diviso
 ms.custom: include file
-ms.openlocfilehash: cd6ea6d4967e024ddf88fb9572d5efae8b7a7815
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 48080bb4d1e24f7f98d3dfe1fd63b65ba46df35e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86495336"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289913"
 ---
 ### <a name="property-limits"></a>Tulajdonságok korlátai
 
@@ -33,7 +33,7 @@ A példányok száma legfeljebb két eseményforrás esetén támogatott.
 * Ismerje meg, hogyan [adhat hozzá egy Event hub-forrást](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-eventhub).
 * [IoT hub-forrás](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-iothub)konfigurálása.
 
-Alapértelmezés szerint a Gen2-környezetek **felhasználónként 1 megabájt/másodperc (MB/s)** [sebességű bejövő forgalmat támogatnak](https://docs.microsoft.com/azure/time-series-insights/concepts-streaming-throughput-limitations) . Ha szükséges, az ügyfelek akár **16 MB/s** adatátviteli sebességet is igénybe vehetnek. A partíciós korlát **0,5 MB/s**.
+Alapértelmezés szerint a Gen2-környezetek **felhasználónként 1 megabájt/másodperc (MB/s)** [sebességű bejövő forgalmat támogatnak](https://docs.microsoft.com/azure/time-series-insights/concepts-streaming-ingress-throughput-limits) . Ha szükséges, az ügyfelek akár **16 MB/s** adatátviteli sebességet is igénybe vehetnek. A partíciós korlát **0,5 MB/s**.
 
 ### <a name="api-limits"></a>API-korlátok
 

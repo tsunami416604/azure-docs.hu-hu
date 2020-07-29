@@ -1,6 +1,6 @@
 ---
 title: Azure Virtual Network tárolóalapú hálózatkezelésének üzembe helyezése | Microsoft Docs
-description: Megtudhatja, hogyan helyezheti üzembe az Azure Virtual Network tárolóalapú hálózati adapterét a saját maga vagy az ACS-motor használatával üzembe helyezett Kubernetes-fürtökhöz, valamint a Docker-tárolókhoz.
+description: Ismerje meg, hogyan helyezheti üzembe az Azure Virtual Network Container Network Interface (CNI) beépülő modult a Kubernetes-fürtökhöz.
 services: virtual-network
 documentationcenter: na
 author: aanandr
@@ -16,11 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 9/18/2018
 ms.author: aanandr
 ms.custom: ''
-ms.openlocfilehash: 7cae4b579a933c03ec3a08a00ef032c57d15093f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 09a0574666441138c143932e843080e8745f1b40
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710014"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289585"
 ---
 # <a name="deploy-the-azure-virtual-network-container-network-interface-plug-in"></a>Az Azure Virtual Network tárolóalapú hálózati adaptere beépülő moduljának üzembe helyezése
 
@@ -30,7 +31,7 @@ Az Azure Virtual Network tárolóalapú hálózati adapterének beépülő modul
 
 Az ACS-motor üzembe helyez egy Kubernetes-fürtöt az Azure Resource Manager-sablon használatával A fürtkonfiguráció egy JSON-fájlban van meghatározva, amelyet a sablon létrehozásakor a rendszer továbbít az eszköznek. A támogatott fürtbeállítások teljes listájával és a beállítások leírásával kapcsolatos további részletekért tekintse meg a [Microsoft Azure Container Service Engine – Fürtdefiníció](https://github.com/Azure/acs-engine/blob/master/docs/clusterdefinition.md) című részt. Ez a beépülő modul az ACS-motor használatával létrehozott fürtök alapértelmezett hálózatkezelési beépülő modulja. A következő hálózatkonfigurációs beállítások fontosak a beépül modul konfigurálásakor:
 
-  | Beállítás                              | Description                                                                                                           |
+  | Beállítás                              | Leírás                                                                                                           |
   |--------------------------------------|------------------------------------------------------------------------------------------------------                 |
   | firstConsecutiveStaticIP             | A fő csomópontnak kiosztott IP-cím. Ez egy kötelező beállítás.                                     |
   | clusterSubnet a kubernetesConfig alatt | Annak a virtuális hálózati alhálózatnak a CIDR-je, amelyben a fürt üzembe lett helyezve, és amelyből az IP-címek ki lettek osztva a podok számára.   |
@@ -159,8 +160,8 @@ A CNI hálózati konfigurációs fájlja JSON formátumban van megadva. Alapért
 - **cniVersion**: az Azure Virtual Network CNI beépülő moduljai támogatják a [CNI specifikációjának](https://github.com/containernetworking/cni/blob/master/SPEC.md)a 0.3.0 és a 0.3.1 verzióját.
 - **name** (név): A hálózat neve. Ehhez a tulajdonsághoz bármilyen egyedi érték megadható.
 - **type** (típus): A hálózati beépülő modul neve. Állítsa az *azure-vnet* értékre.
-- **mode** (mód): Működési mód. A mező kitöltése nem kötelező. A „híd” az egyetlen támogatott mód. További információ: [működési módok](https://github.com/Azure/azure-container-networking/blob/master/docs/network.md).
-- **bridge** (híd): Azon híd neve, amellyel a tárolók és a virtuális hálózatok össze lesznek kötve. A mező kitöltése nem kötelező. Ha nincs megadva, a beépülő modul automatikusan választ egy egyedi nevet a fő felületindex alapján.
+- **mode** (mód): Működési mód. A mező nem kötelező. A „híd” az egyetlen támogatott mód. További információ: [működési módok](https://github.com/Azure/azure-container-networking/blob/master/docs/network.md).
+- **bridge** (híd): Azon híd neve, amellyel a tárolók és a virtuális hálózatok össze lesznek kötve. A mező nem kötelező. Ha nincs megadva, a beépülő modul automatikusan választ egy egyedi nevet a fő felületindex alapján.
 - **ipam type** (IPAM típusa): Az IPAM beépülő modul neve. Mindig az *azure-vnet-ipam* értékre van állítva.
 
 ## <a name="download-and-install-the-plug-in"></a>A beépülő modul letöltése és telepítése

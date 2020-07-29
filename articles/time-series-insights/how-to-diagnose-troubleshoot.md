@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: fcd73a5bb6de162fc258d93398b7d00044429588
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d9a4f7aa270aa4ed2b02e61da984e14379a241a9
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87099564"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289937"
 ---
 # <a name="diagnose-and-troubleshoot-an-azure-time-series-insights-gen2-environment"></a>Azure Time Series Insights Gen2-környezet diagnosztizálása és megoldása
 
@@ -121,7 +121,7 @@ Ha az időbélyegző tulajdonság nincs explicit módon megadva, az esemény IoT
 
 ## <a name="problem-all-my-instances-in-the-gen2-explorer-lack-a-parent"></a>Probléma: a Gen2 Explorerben a saját példányok nem rendelkeznek szülővel
 
-Ez a probléma akkor fordulhat elő, ha a környezet nem rendelkezik meghatározott idősorozat-modell hierarchiával. További információért olvassa el a [Time Series-modellek használata](./time-series-insights-update-how-to-tsm.md)című témakört.
+Ez a probléma akkor fordulhat elő, ha a környezet nem rendelkezik meghatározott idősorozat-modell hierarchiával. További információért olvassa el a [Time Series-modellek használata](/azure/time-series-insights/time-series-insights-overview)című témakört.
 
   [![A nem szülő példányok figyelmeztetést jelenítenek meg.](media/preview-troubleshoot/unparented-instances.png)](media/preview-troubleshoot/unparented-instances.png#lightbox)
 
@@ -135,7 +135,7 @@ Ez a probléma akkor fordulhat elő, ha nem a Power BI-összekötő legújabb ve
 
 ## <a name="next-steps"></a>További lépések
 
-- Olvassa el, hogyan [dolgozhat a Time Series-modellekkel](./time-series-insights-update-how-to-tsm.md).
+- Olvassa el, hogyan [dolgozhat a Time Series-modellekkel](/azure/time-series-insights/time-series-insights-overview).
 
 - További információ a [támogatott JSON-alakzatokról](./how-to-shape-query-json.md).
 

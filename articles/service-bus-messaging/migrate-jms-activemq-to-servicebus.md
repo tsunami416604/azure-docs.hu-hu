@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/07/2020
 ms.author: aschhab
-ms.openlocfilehash: 7926e3b8aedde63c3a1a5a57c42b3d4f29cb9797
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-java
+ms.openlocfilehash: 35e2e86f68e1f53febabc75fcc537dbdd4481882
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076233"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87369033"
 ---
 # <a name="migrate-existing-java-message-service-jms-20-applications-from-apache-activemq-to-azure-service-bus"></a>Meglévő Java Message Service (JMS) 2,0-alkalmazások migrálása Apache ActiveMQ-ből Azure Service Bus
 
@@ -83,10 +84,10 @@ A Service Bus támogatja a AMQP protokollon keresztüli kommunikációt. Erre a 
 
 ### <a name="set-up-enterprise-configurations"></a>Vállalati konfigurációk beállítása
 
-A Service Bus különböző vállalati biztonsági és magas rendelkezésre állású funkciókat tesz lehetővé. További információ: 
+A Service Bus különböző vállalati biztonsági és magas rendelkezésre állású funkciókat tesz lehetővé. További információkért lásd: 
 
   * [Virtuális hálózati szolgáltatásvégpontok](service-bus-service-endpoints.md)
-  * [Firewall](service-bus-ip-filtering.md)
+  * [Tűzfal](service-bus-ip-filtering.md)
   * [Szolgáltatás oldali titkosítás az ügyfél által felügyelt kulccsal (BYOK)](configure-customer-managed-key.md)
   * [Privát végpontok](private-link-service.md)
   * [Hitelesítés és engedélyezés](service-bus-authentication-and-authorization.md)

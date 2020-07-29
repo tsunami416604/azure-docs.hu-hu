@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: MeirMen
 ms.author: meirm
 ms.date: 02/03/2020
-ms.openlocfilehash: e49f9caaeb1b16daa49fabb217b6fc40fff17f53
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 766fb9fbe50f8a138eae020082680204872a653a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081474"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87315445"
 ---
 # <a name="azure-monitor-logs-for-service-providers"></a>Szolgáltatók Azure Monitor naplófájljai
 
@@ -19,7 +19,7 @@ Log Analytics munkaterületek Azure Monitor segíthetnek a felügyelt szolgálta
 
 A nagyvállalatok számos hasonlóságot biztosítanak a szolgáltatók számára, különösen akkor, ha van egy központosított informatikai csapat, amely számos különböző üzleti egységért felelős. Az egyszerűség kedvéért ez a dokumentum a *szolgáltató* kifejezést használja, de ugyanez a funkció a vállalatok és más ügyfelek számára is elérhető.
 
-A [Cloud Solution Provider (CSP)](https://partner.microsoft.com/en-US/membership/cloud-solution-provider) program részét képező partnerek és szolgáltatók esetében a log Analytics Azure monitor az Azure CSP-előfizetésekben elérhető Azure-szolgáltatások egyike.
+A [Cloud Solution Provider (CSP)](https://partner.microsoft.com/membership/cloud-solution-provider) program részét képező partnerek és szolgáltatók esetében a log Analytics Azure monitor az Azure CSP-előfizetésekben elérhető Azure-szolgáltatások egyike.
 
 A Azure Monitor Log Analyticst egy, az Azure-beli Azure-beli felügyelt erőforrás-kezelési képességgel rendelkező szolgáltató is használhatja az [Azure Lighthouse](../../lighthouse/overview.md)-ban.
 
@@ -36,7 +36,7 @@ Ebben az architektúrában egy munkaterületet helyezünk üzembe az ügyfél b�
 A szolgáltatói rendszergazdák kétféleképpen férhetnek hozzá egy Log Analytics munkaterülethez az ügyfél bérlője számára:
 
 - Az ügyfél [Azure Active Directory vendég felhasználóként (B2B)](../../active-directory/b2b/what-is-b2b.md)veheti fel az egyes felhasználókat a szolgáltatótól. A szolgáltató rendszergazdáinak be kell jelentkezniük az egyes ügyfelek könyvtárába a Azure Portal, hogy el tudják érni ezeket a munkaterületeket. Ehhez az is szükséges, hogy az ügyfelek az egyes szolgáltatók rendszergazdáinak egyéni hozzáférését kezeljék.
-- A jobb méretezhetőség és rugalmasság érdekében a szolgáltatók az [Azure világítótorony](../../lighthouse/overview.md) Azure-beli [delegált erőforrás-kezelési](../../lighthouse/concepts/azure-delegated-resource-management.md) funkciójának használatával érhetik el az ügyfél bérlőjét. Ezzel a módszerrel a szolgáltatói rendszergazdák egy Azure AD felhasználói csoportba tartoznak a szolgáltató bérlője számára, és ez a csoport a bevezetési folyamat során kap hozzáférést minden ügyfél számára. Ezek a rendszergazdák ezután hozzáférhetnek az egyes ügyfelek munkaterületeihez a saját szolgáltatói bérlőn belül, és nem kell egyenként bejelentkezniük az egyes ügyfelek bérlői számára. Az ügyfelek Log Analytics munkaterületek erőforrásainak ily módon való elérése csökkenti az ügyfél oldalán szükséges munkát, és megkönnyíti az adatok összegyűjtését és elemzését ugyanazon szolgáltató által felügyelt eszközökön keresztül, például [Azure monitor munkafüzetek](../..//azure-monitor/platform/workbooks-overview.md)használatával. További információ: az [ügyfelek erőforrásainak figyelése nagy méretekben](../../lighthouse/how-to/monitor-at-scale.md).
+- A jobb méretezhetőség és rugalmasság érdekében a szolgáltatók az [Azure világítótorony](../../lighthouse/overview.md) Azure-beli [delegált erőforrás-kezelési](../../lighthouse/concepts/azure-delegated-resource-management.md) funkciójának használatával érhetik el az ügyfél bérlőjét. Ezzel a módszerrel a szolgáltatói rendszergazdák egy Azure AD felhasználói csoportba tartoznak a szolgáltató bérlője számára, és ez a csoport a bevezetési folyamat során kap hozzáférést minden ügyfél számára. Ezek a rendszergazdák ezután hozzáférhetnek az egyes ügyfelek munkaterületeihez a saját szolgáltatói bérlőn belül, és nem kell egyenként bejelentkezniük az egyes ügyfelek bérlői számára. Az ügyfelek Log Analytics munkaterületek erőforrásainak ily módon való elérése csökkenti az ügyfél oldalán szükséges munkát, és megkönnyíti az adatok összegyűjtését és elemzését ugyanazon szolgáltató által felügyelt eszközökön keresztül, például [Azure monitor munkafüzetek](./workbooks-overview.md)használatával. További információ: az [ügyfelek erőforrásainak figyelése nagy méretekben](../../lighthouse/how-to/monitor-at-scale.md).
 
 Az elosztott architektúra előnyei a következők:
 
@@ -75,18 +75,19 @@ A harmadik architektúra a két lehetőség között van. Ez az első olyan elos
 
 A naplók központi helyen történő megvalósításának két lehetősége van:
 
-1. Központi munkaterület: a szolgáltató létrehozhat egy munkaterületet a bérlőben, és olyan parancsfájlt használhat, amely a [lekérdezési API](https://dev.loganalytics.io/) -t használja az [ADATgyűjtési API](../../azure-monitor/platform/data-collector-api.md) -val, hogy az adatok a különböző munkaterületekről a központi helyre kerüljenek. Egy másik lehetőség, amely nem parancsfájl, a [Azure Logic apps](../../logic-apps/logic-apps-overview.md)használatára szolgál.
+1. Központi munkaterület: a szolgáltató létrehozhat egy munkaterületet a bérlőben, és olyan parancsfájlt használhat, amely a [lekérdezési API](https://dev.loganalytics.io/) -t használja az [ADATgyűjtési API](./data-collector-api.md) -val, hogy az adatok a különböző munkaterületekről a központi helyre kerüljenek. Egy másik lehetőség, amely nem parancsfájl, a [Azure Logic apps](../../logic-apps/logic-apps-overview.md)használatára szolgál.
 
-2. Power BI központi helyként: Power BI a központi helyként működhet, ha a különböző munkaterületek az Log Analytics munkaterület és a [Power bi](../../azure-monitor/platform/powerbi.md)közötti integráció használatával exportálják az adataikat.
+2. Power BI központi helyként: Power BI a központi helyként működhet, ha a különböző munkaterületek az Log Analytics munkaterület és a [Power bi](./powerbi.md)közötti integráció használatával exportálják az adataikat.
 
 ## <a name="next-steps"></a>További lépések
 
 * Munkaterületek létrehozásának és konfigurálásának automatizálása [Resource Manager-sablonok](template-workspace-configuration.md) használatával
 
-* Munkaterületek létrehozásának automatizálása a [PowerShell](../../azure-monitor/platform/powershell-workspace-configuration.md) használatával
+* Munkaterületek létrehozásának automatizálása a [PowerShell](./powershell-workspace-configuration.md) használatával
 
-* [Riasztások](../../azure-monitor/platform/alerts-overview.md) használata a meglévő rendszerekkel való integrációhoz
+* [Riasztások](./alerts-overview.md) használata a meglévő rendszerekkel való integrációhoz
 
-* Összegző jelentések előállítása [Power bi](../../azure-monitor/platform/powerbi.md) használatával
+* Összegző jelentések előállítása [Power bi](./powerbi.md) használatával
 
 * Ügyfelek bevonása az Azure-beli [delegált erőforrás-felügyeletbe](../../lighthouse/concepts/azure-delegated-resource-management.md).
+

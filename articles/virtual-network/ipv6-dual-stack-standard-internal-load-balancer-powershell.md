@@ -13,18 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/14/2019
 ms.author: kumud
-ms.openlocfilehash: 67bc7994d2628790e84d3b3752f894a36486ca86
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c224332eec31b343bdc53564ef4075a0620ac340
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84707514"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289576"
 ---
 # <a name="deploy-an-ipv6-dual-stack-application-using-standard-internal-load-balancer-in-azure---powershell-preview"></a>IPv6-alapú kettős stack-alkalmazás üzembe helyezése standard belső Load Balancer az Azure-ban – PowerShell (előzetes verzió)
 
 Ebből a cikkből megtudhatja, hogyan helyezhet üzembe egy Dual stack (IPv4 + IPv6) alkalmazást az Azure-ban, amely egy kettős veremből álló virtuális hálózatot és alhálózatot tartalmaz, egy standard belső Load Balancer kettős (IPv4 + IPv6) előtér-konfigurációval, valamint két IP-konfigurációval, hálózati biztonsági csoporttal és nyilvános IP-címmel rendelkező virtuális gépekkel.
-
-> [!Important]
-> Az Azure Virtual Network IPv6-támogatása jelenleg nyilvános előzetes verzióban érhető el. Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. A részleteket lásd: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Az IPv6-kompatibilis belső Load Balancer létrehozásának eljárása majdnem azonos az internetre irányuló, az [itt](virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md)ismertetett ipv6-Load Balancer létrehozási folyamatával. A belső terheléselosztó létrehozásának egyetlen eltérése az előtér-konfigurációban látható, ahogyan az alábbi PowerShell-példa is mutatja:
 
@@ -64,7 +62,7 @@ A regisztráció befejeződése után futtassa a következő parancsot:
 Register-AzResourceProvider -ProviderNamespace Microsoft.Network
 ```
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 A kettős veremből álló virtuális hálózat létrehozása előtt létre kell hoznia egy erőforráscsoportot a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)használatával. A következő példában létrehozunk egy *dsStd_ILB_RG* nevű erőforráscsoportot az *USA keleti* régiójában:
 
@@ -338,7 +336,7 @@ Az IPv6 kettős verem virtuális hálózatát a következőképpen tekintheti me
 > [!NOTE]
 > Az Azure-beli virtuális hálózat IPv6-értéke csak olvashatóként érhető el a Azure Portal ebben az előzetes kiadásban.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs rá szükség, használhatja a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) parancsot az erőforráscsoport, a virtuális gép és az összes kapcsolódó erőforrás eltávolításához.
 

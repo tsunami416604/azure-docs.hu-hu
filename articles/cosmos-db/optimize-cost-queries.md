@@ -5,26 +5,29 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/01/2019
-ms.openlocfilehash: dd75ad4ed1024292868f113e474fe8b8b73679b0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/24/2020
+ms.openlocfilehash: e1c60542ec16ca19d26a77c1b9fb9676cf875e3d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75445133"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318266"
 ---
 # <a name="optimize-query-cost-in-azure-cosmos-db"></a>A lekérdezési költségek optimalizálása az Azure Cosmos DB-ben
 
-Az Azure Cosmos DB többféle olyan adatbázis-műveletet biztosít, amelyek a tárolókban lévő elemekre vonatkoznak, beleértve a relációs és hierarchikus lekérdezéseket is. Az egyes ilyen műveletekhez kapcsolódó költségek a művelet végrehajtásához szükséges CPU, IO és memória függvényében változnak. A hardveres erőforrások használata és kezelése helyett a kérelemegységet tekintheti a kérelmet kiszolgáló különböző adatbázis-műveletek erőforrásaira vonatkozó egyetlen mértékegységnek. Ez a cikk azt írja le, hogyan értékelhetők ki egy lekérdezés kérelemegység-költségei, és hogyan optimalizálható a lekérdezés a teljesítmény és a költség tekintetében. 
+Az Azure Cosmos DB többféle olyan adatbázis-műveletet biztosít, amelyek a tárolókban lévő elemekre vonatkoznak, beleértve a relációs és hierarchikus lekérdezéseket is. Az egyes ilyen műveletekhez kapcsolódó költségek a művelet végrehajtásához szükséges CPU, IO és memória függvényében változnak. A hardveres erőforrások használata és kezelése helyett a kérelemegységet tekintheti a kérelmet kiszolgáló különböző adatbázis-műveletek erőforrásaira vonatkozó egyetlen mértékegységnek. Ez a cikk azt írja le, hogyan értékelhetők ki egy lekérdezés kérelemegység-költségei, és hogyan optimalizálható a lekérdezés a teljesítmény és a költség tekintetében.
 
-A Azure Cosmos DB lekérdezéseit általában a leggyorsabb/leghatékonyabb értékről lassabb/kevésbé hatékonyra, a következőképpen kell megrendelni az átviteli sebesség tekintetében:  
+A (z) Azure Cosmos DB beolvasása általában a leggyorsabb/leghatékonyabb – lassabb/kevésbé hatékony, az átviteli sebesség szempontjából – a következőképpen történik:  
 
-* Művelet beolvasása egyetlen partíciós kulcs és egy elem kulcsa alapján.
+* Pont olvasása (kulcs/érték keresése egyetlen elem-AZONOSÍTÓn és partíciós kulcson).
 
 * Lekérdezés szűrő záradékkal egyetlen partíciós kulcson belül.
 
 * Lekérdezés egyenlőség vagy Range Filter záradék nélkül bármely tulajdonság esetében.
 
 * Lekérdezés szűrő nélkül.
+
+Mivel az elem AZONOSÍTÓjának kulcs/érték szerinti keresése a leghatékonyabb típusú olvasás, az elem AZONOSÍTÓjának értelmes értéket kell biztosítania.
 
 Az egy vagy több partícióból beolvasott lekérdezések nagyobb késéssel járnak, és nagyobb számú kérést használnak fel. Mivel minden partíció automatikus indexelést tartalmaz az összes tulajdonsághoz, a lekérdezés hatékonyan kiszolgálható az indexből. A párhuzamossági beállítások használatával több partíciót használó lekérdezéseket is készíthet. A particionálással és a partíciós kulcsokkal kapcsolatos további tudnivalókért lásd: [particionálás Azure Cosmos DBban](partitioning-overview.md).
 
@@ -35,7 +38,7 @@ Ha az Azure Cosmos-tárolókban tárolt néhány adattal, a lekérdezések létr
 Az SDK-k segítségével programozott módon is lekérheti a lekérdezések költségeit. Az olyan műveletek terhelésének méréséhez, mint például a létrehozás, az Update vagy a DELETE, a `x-ms-request-charge` REST API használatakor vizsgálja meg a fejlécet. Ha a .NET-et vagy a Java SDK-t használja, a `RequestCharge` tulajdonság az egyenértékű tulajdonság a kérési díj beszerzéséhez, és ez a tulajdonság a ResourceResponse vagy a FeedResponse belül szerepel.
 
 ```csharp
-// Measure the performance (request units) of writes 
+// Measure the performance (request units) of writes
 ResourceResponse<Document> response = await client.CreateDocumentAsync(collectionSelfLink, myDocument); 
 
 Console.WriteLine("Insert of an item consumed {0} request units", response.RequestCharge); 

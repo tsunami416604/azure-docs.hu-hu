@@ -1,6 +1,6 @@
 ---
-title: Delegált hozzáférés a Windows rendszerű virtuális asztalon 2019-Azure
-description: Felügyeleti képességek delegálása Windows rendszerű virtuális asztali környezetben, például példákkal.
+title: Delegált hozzáférés a Windows Virtual Desktopban (klasszikus) – Azure
+description: Felügyeleti képességek delegálása Windows rendszerű virtuális asztali (klasszikus) környezetben, példákat is beleértve.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 91be20de49f549f3530e6c817906f1abf8f106b6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: fbb8c6e100a9f72c20bcfaba7049b6724ee458b2
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86527557"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292527"
 ---
-# <a name="delegated-access-in-windows-virtual-desktop-fall-2019"></a>Delegált hozzáférés a Windows rendszerű virtuális asztalon 2019
+# <a name="delegated-access-in-windows-virtual-desktop-classic"></a>Delegált hozzáférés a Windows Virtual Desktopban (klasszikus)
 
 >[!IMPORTANT]
->Ez a tartalom a Fall 2019 kiadásra vonatkozik, amely nem támogatja a Windows rendszerű virtuális asztali objektumokat Azure Resource Manager. Ha a Spring 2020 Update szolgáltatásban bevezetett Azure Resource Manager Windows rendszerű virtuális asztali objektumokat szeretne felügyelni, tekintse meg [ezt a cikket](../delegated-access-virtual-desktop.md).
+>Ez a tartalom a Windows rendszerű virtuális asztali (klasszikus) verzióra vonatkozik, amely nem támogatja Azure Resource Manager Windows rendszerű virtuális asztali objektumokat. Ha Azure Resource Manager Windows rendszerű virtuális asztali objektumokat szeretne felügyelni, tekintse meg [ezt a cikket](../delegated-access-virtual-desktop.md).
 
 A Windows virtuális asztal olyan delegált hozzáférési modellel rendelkezik, amely lehetővé teszi, hogy egy adott felhasználó számára engedélyezett mennyiségű hozzáférést rendeljen hozzá egy szerepkörhöz. A szerepkör-hozzárendelés három összetevőből áll: rendszerbiztonsági tag, szerepkör-definíció és hatókör. A Windows rendszerű virtuális asztali delegált hozzáférési modell az Azure RBAC-modellen alapul. Ha többet szeretne megtudni az adott szerepkör-hozzárendelésekről és azok összetevőiről, tekintse meg [Az Azure szerepköralapú hozzáférés-vezérlés áttekintését](../../role-based-access-control/built-in-roles.md).
 
@@ -66,7 +66,7 @@ Az alapszintű három parancsmagot a következő paraméterekkel módosíthatja:
 * **SignInName**: a felhasználó e-mail-címe vagy egyszerű felhasználóneve.
 * **TenantName**: a távoli asztal bérlő neve.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az egyes szerepkörök által használható PowerShell-parancsmagok teljes listájáért tekintse meg a [PowerShell-referenciát](/powershell/windows-virtual-desktop/overview).
 

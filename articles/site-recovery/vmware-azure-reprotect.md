@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: mayg
-ms.openlocfilehash: 976888f57269cc9fe6107a38e30d78c73eb5c124
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8a78ed25be80cbf083467209f764109a26782278
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87037848"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292782"
 ---
 # <a name="reprotect-from-azure-to-on-premises"></a>Ismételt védelem – Azure-ból helyszíni rendszerbe
 
@@ -33,7 +33,7 @@ A helyszíni VMware virtuális gépek vagy fizikai kiszolgálók Azure-ba tört�
     - Ha az ESXi 5,5 Free Edition vagy a vSphere 6 hypervisor Free Edition verziót használja. Frissítsen egy másik verzióra.
     - Ha Windows Server 2008 R2 SP1 fizikai kiszolgálóval rendelkezik.
     - A VMware virtuális gépek nem tudnak visszavenni a Hyper-V-t.
-    - Az [áttelepített](migrate-overview.md#what-do-we-mean-by-migration)virtuális gépek.
+    - Az áttelepített virtuális gépek.
     - Egy másik erőforráscsoporthoz áthelyezett virtuális gép.
     - Egy olyan replika Azure-beli virtuális gép, amelyet töröltek.
     - Egy olyan replika Azure-beli virtuális gép, amely nincs védve (a helyszíni helyre replikálva).

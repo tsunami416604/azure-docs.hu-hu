@@ -7,11 +7,12 @@ ms.author: daviste
 ms.date: 03/17/2017
 ms.reviewer: mbullwin
 ms.custom: vs-azure
-ms.openlocfilehash: 151248f7cd6fe763643da42fc8edbe7c01a69cc7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 07848d0b1a2677595eba0da53402993103289d4f
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83744133"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318164"
 ---
 # <a name="analyzing-trends-in-visual-studio"></a>Trendek elemzése a Visual Studióban
 Az Application Insights Trends eszköze megjeleníti webalkalmazásai fontos telemetria-eseményeinek időbeli változásait, ezzel segítve a problémák és hibák gyors azonosítását. A Trends részletesebb diagnosztikai adatokhoz nyújt hozzáférést, amelyek révén javíthat alkalmazásai teljesítményén, megkeresheti a kivételek forrását, és mélyebb betekintést nyerhet az egyéni eseményekbe is.
@@ -20,7 +21,7 @@ Az Application Insights Trends eszköze megjeleníti webalkalmazásai fontos tel
 
 ## <a name="configure-your-web-app-for-application-insights"></a>A webapp konfigurálása az Application Insightshoz
 
-Ha még nem tette meg, [konfigurálja a webappot az Application Insightshoz](../../azure-monitor/app/app-insights-overview.md). Ez lehetővé teszi a webapp számára, hogy telemetriát küldjön az Application Insights portálra. A Trends eszköz innen olvassa be a telemetriát.
+Ha még nem tette meg, [konfigurálja a webappot az Application Insightshoz](./app-insights-overview.md). Ez lehetővé teszi a webapp számára, hogy telemetriát küldjön az Application Insights portálra. A Trends eszköz innen olvassa be a telemetriát.
 
 Az Application Insights Trends a Visual Studio 2015 Update 3 és újabb verziókban érhető el.
 
@@ -97,7 +98,7 @@ A Trends eszköz arra is képes, hogy megmutassa, mely eseménykörök számíta
 ## <a name="next-steps"></a><a name="next"></a>További lépések
 |  |  |
 | --- | --- |
-| **[Az Application Insights használata a Visual Studióban](../../azure-monitor/app/visual-studio.md)**<br/>Telemetriát kereshet, adatokat tekinthet meg a CodeLensben és konfigurálhatja az Application Insights alkalmazást. Mindezt a Visual Studión belül. |![Kattintson a jobb gombbal a projektre, és válassza az Application Insights, Keresés lehetőséget.](./media/visual-studio-trends/34.png) |
-| **[További adatok hozzáadása](../../azure-monitor/app/asp-net-more.md)**<br/>Figyelheti a használatot, az elérhetőséget, a függőségeket és a kivételeket. Integrálhatja a nyomkövetéseket naplózási keretrendszerekből. Egyéni telemetriát írhat. |![Visual Studio](./media/visual-studio-trends/64.png) |
-| **[Az Application Insights portál használata](../../azure-monitor/app/overview-dashboard.md)**<br/>Az irányítópultok, a hatékony diagnosztikai és elemző eszközök, riasztások, egy élő függőségi térkép az alkalmazásához, valamint a telemetria exportálása. |![Visual Studio](./media/visual-studio-trends/62.png) |
+| **[Az Application Insights használata a Visual Studióban](./visual-studio.md)**<br/>Telemetriát kereshet, adatokat tekinthet meg a CodeLensben és konfigurálhatja az Application Insights alkalmazást. Mindezt a Visual Studión belül. |![Kattintson a jobb gombbal a projektre, és válassza az Application Insights, Keresés lehetőséget.](./media/visual-studio-trends/34.png) |
+| **[További adatok hozzáadása](./asp-net-more.md)**<br/>Figyelheti a használatot, az elérhetőséget, a függőségeket és a kivételeket. Integrálhatja a nyomkövetéseket naplózási keretrendszerekből. Egyéni telemetriát írhat. |![Visual Studio](./media/visual-studio-trends/64.png) |
+| **[Az Application Insights portál használata](./overview-dashboard.md)**<br/>Az irányítópultok, a hatékony diagnosztikai és elemző eszközök, riasztások, egy élő függőségi térkép az alkalmazásához, valamint a telemetria exportálása. |![Visual Studio](./media/visual-studio-trends/62.png) |
 

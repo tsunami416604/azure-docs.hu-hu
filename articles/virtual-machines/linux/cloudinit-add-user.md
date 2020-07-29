@@ -3,14 +3,15 @@ title: A Cloud-init használatával hozzáadhat egy felhasználót egy Linux ren
 description: A Cloud-init használata felhasználó hozzáadása linuxos virtuális géphez az Azure CLI-vel való létrehozás során
 author: rickstercdn
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: f1782bfe0c14e3b44703f89ec7f78590c1bb74c5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 569ceb4c7158ba9dc08c99c234951fb4507b69f6
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78969240"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87370070"
 ---
 # <a name="use-cloud-init-to-add-a-user-to-a-linux-vm-in-azure"></a>Felhasználó hozzáadása Linux rendszerű virtuális géphez az Azure-ban a Cloud-init használatával
 Ez a cikk bemutatja, hogyan lehet a [Cloud-init](https://cloudinit.readthedocs.io) használatával felhasználókat felvenni egy virtuális GÉPRE (VM) vagy virtuálisgép-méretezési csoportokra (VMSS) az Azure üzembe helyezési ideje alatt. Ez a Cloud-init parancsfájl az első indításkor fut, ha az erőforrások kiépítve lettek az Azure-ban. További információ arról, hogyan működik a Cloud-init natív módon az Azure-ban és a támogatott Linux-disztribúciókban: [Cloud-init – áttekintés](using-cloud-init.md).

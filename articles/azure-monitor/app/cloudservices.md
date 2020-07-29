@@ -3,12 +3,12 @@ title: Azure Cloud Services-Application Insights | Microsoft Docs
 description: Webes és feldolgozói szerepkörök hatékony figyelése az Application Insightsszal
 ms.topic: conceptual
 ms.date: 09/05/2018
-ms.openlocfilehash: bf75bb145a3b0d7c861d3c92af972b39de11bcdf
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2adcdcdc36fdd41b1f871acbea386beb1d7a9451
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075428"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318436"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Azure Cloud Services-Application Insights
 A [Application Insights][start] képes figyelni az [Azure Cloud Service-alkalmazásokat](https://azure.microsoft.com/services/cloud-services/) a rendelkezésre állásra, a teljesítményre, a hibákra és a használatra, ha Application Insights SDK-ból származó adatokat egyesít a cloud servicesből származó [Azure Diagnostics](../platform/diagnostics-extension-overview.md) adatokkal. A széles körben elérhető módon működő alkalmazások teljesítményével és hatékonyságával kapcsolatos visszajelzések birtokában tájékozott döntéseket hozhat a fejlesztés irányát illetően az egyes fejlesztési fázisokban.
@@ -31,9 +31,9 @@ Ez a beállítás lehetővé teszi az alkalmazás futását, és megadja az öss
 
 Ha erre a lehetőségre van szüksége, készen áll. 
 
-A következő lépések az [alkalmazás mérőszámait tekintik át](../../azure-monitor/platform/metrics-charts.md), és az [adatokat az elemzéssel kérdezik](../log-query/log-query-overview.md)le. 
+A következő lépések az [alkalmazás mérőszámait tekintik át](../platform/metrics-charts.md), és az [adatokat az elemzéssel kérdezik](../log-query/log-query-overview.md)le. 
 
-Ha figyelni szeretné a teljesítményt a böngészőben, érdemes lehet a [rendelkezésre állási teszteket](../../azure-monitor/app/monitor-web-app-availability.md) is beállítania, és [kódokat hozzáadni a weblapokhoz](../../azure-monitor/app/javascript.md).
+Ha figyelni szeretné a teljesítményt a böngészőben, érdemes lehet a [rendelkezésre állási teszteket](./monitor-web-app-availability.md) is beállítania, és [kódokat hozzáadni a weblapokhoz](./javascript.md).
 
 A következő fejezetek a következő további lehetőségeket tárgyalják:
 
@@ -51,9 +51,9 @@ Az alkalmazás telemetria tárolása, elemzése és megjelenítése Application 
 Mindegyik erőforrás egy erőforráscsoportba tartozik. Az erőforráscsoportok a költségek kezelésére, a csoporttagok hozzáférésének biztosítására, valamint a frissítések egyetlen koordinált tranzakcióban történő központi telepítésére szolgálnak. [Írhat például egy parancsfájlt](../../azure-resource-manager/templates/deploy-powershell.md) egy Azure Cloud Service üzembe helyezéséhez és annak Application Insights figyelési erőforrásaihoz egy művelettel.
 
 ### <a name="resources-for-components"></a>Az összetevők erőforrásai
-Javasoljuk, hogy hozzon létre egy külön erőforrást az alkalmazás minden összetevőjéhez. Így minden webes szerepkörhöz és feldolgozói szerepkörhöz létre kell hoznia egy erőforrást. Az egyes összetevőket külön is elemezheti, de létrehozhat egy [irányítópultot](../../azure-monitor/app/overview-dashboard.md) , amely összefoglalja az összes összetevőből származó legfontosabb diagramokat, így egyetlen nézetben összehasonlíthatja és figyelheti azokat. 
+Javasoljuk, hogy hozzon létre egy külön erőforrást az alkalmazás minden összetevőjéhez. Így minden webes szerepkörhöz és feldolgozói szerepkörhöz létre kell hoznia egy erőforrást. Az egyes összetevőket külön is elemezheti, de létrehozhat egy [irányítópultot](./overview-dashboard.md) , amely összefoglalja az összes összetevőből származó legfontosabb diagramokat, így egyetlen nézetben összehasonlíthatja és figyelheti azokat. 
 
-Egy másik megoldás, ha a telemetria több szerepkörből ugyanarra az erőforrásra küldi, de [egy dimenzió tulajdonságot ad hozzá minden olyan telemetria-elemhez](../../azure-monitor/app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer) , amely azonosítja a forrás szerepkörét. Ebben a megközelítésben a mérőszám-diagramok, például a kivételek, általában a különböző szerepkörökből származó számlálások összesítését mutatják, de a diagramot szükség szerint a szerepkör-azonosító alapján is szegmentálhatja. A kereséseket ugyanezen dimenzió alapján is szűrheti. Ez a alternatíva megkönnyíti az összes adat megtekintését, de a szerepkörök közötti zavart is okozhat.
+Egy másik megoldás, ha a telemetria több szerepkörből ugyanarra az erőforrásra küldi, de [egy dimenzió tulajdonságot ad hozzá minden olyan telemetria-elemhez](./api-filtering-sampling.md#addmodify-properties-itelemetryinitializer) , amely azonosítja a forrás szerepkörét. Ebben a megközelítésben a mérőszám-diagramok, például a kivételek, általában a különböző szerepkörökből származó számlálások összesítését mutatják, de a diagramot szükség szerint a szerepkör-azonosító alapján is szegmentálhatja. A kereséseket ugyanezen dimenzió alapján is szűrheti. Ez a alternatíva megkönnyíti az összes adat megtekintését, de a szerepkörök közötti zavart is okozhat.
 
 A böngészőtelemetria általában ugyanabban az erőforrásban jelenik meg, mint a kiszolgálóoldali webes szerepköre.
 
@@ -68,7 +68,7 @@ A telemetria a megfelelő erőforrásokhoz való elküldéséhez beállíthatja 
 
 ## <a name="create-an-application-insights-resource-for-each-role"></a>Application Insights-erőforrás létrehozása mindegyik szerepkörhöz
 
-Ha úgy döntött, hogy külön erőforrást hoz létre minden egyes szerepkörhöz, és esetleg egy külön készletet az egyes Build-konfigurációkhoz, akkor a legegyszerűbb, ha mindegyiket a Application Insights portálon hozza létre. Ha sok erőforrást hoz létre, [automatizálhatja a folyamatot](../../azure-monitor/app/powershell.md).
+Ha úgy döntött, hogy külön erőforrást hoz létre minden egyes szerepkörhöz, és esetleg egy külön készletet az egyes Build-konfigurációkhoz, akkor a legegyszerűbb, ha mindegyiket a Application Insights portálon hozza létre. Ha sok erőforrást hoz létre, [automatizálhatja a folyamatot](./powershell.md).
 
 1. A [Azure Portal][portal]válassza az **új**  >  **fejlesztői szolgáltatások**  >  **Application Insights**lehetőséget.  
 
@@ -92,7 +92,7 @@ Ha úgy döntött, hogy külön Application Insights-erőforrást használ minde
 
 Ennek hatására be kell szúrni a Application Insights rendszerállapot-kulcsokat a ServiceConfiguration nevű fájlba *. \* cscfg*. Itt látható a [mintakód](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/AzureEmailService/ServiceConfiguration.Cloud.cscfg).
 
-Ha szeretné, hogy a Application Insights eljuttatott diagnosztikai információk szintje eltérő legyen, ezt a [ *. cscfg* fájlok közvetlen szerkesztésével](../../azure-monitor/platform/diagnostics-extension-to-application-insights.md)teheti meg.
+Ha szeretné, hogy a Application Insights eljuttatott diagnosztikai információk szintje eltérő legyen, ezt a [ *. cscfg* fájlok közvetlen szerkesztésével](../platform/diagnostics-extension-to-application-insights.md)teheti meg.
 
 ## <a name="install-the-sdk-in-each-project"></a><a name="sdk"></a>Az SDK telepítése az egyes projektekben
 Ezzel a beállítással egyéni üzleti telemetria adhat hozzá bármely szerepkörhöz. A beállítás részletesebb elemzést nyújt az alkalmazás használatáról és végrehajtásáról.
@@ -165,7 +165,7 @@ Erre a lépésre csak akkor van szükség, ha a .NET-keretrendszerben teljes SQL
 
 1. Nyissa meg a létrehozott Application Insights erőforrásokat.
 
-   Az egyes adatpontok a [keresésben][diagnostic]jelennek meg, és az összesített adatok megjelennek a [metrika Explorerben](../../azure-monitor/platform/metrics-charts.md).
+   Az egyes adatpontok a [keresésben][diagnostic]jelennek meg, és az összesített adatok megjelennek a [metrika Explorerben](../platform/metrics-charts.md).
 
 1. Vegyen fel további telemetria (lásd a következő részeket), majd tegye közzé az alkalmazást az élő diagnosztika és a használati visszajelzések beszerzéséhez. 
 
@@ -184,11 +184,11 @@ A [Azure Diagnostics](../platform/diagnostics-extension-overview.md) informáci�
 * A Windows eseménynaplók nyomkövetésekként és egyéni eseményekként jelennek meg.
 * Az alkalmazásnaplók, ETW-naplók és egyéb diagnosztikai infrastruktúra-naplók nyomkövetésként jelennek meg.
 
-A teljesítményszámlálók és az események számának megtekintéséhez nyissa meg [Metrikaböngésző](../../azure-monitor/platform/metrics-charts.md) és adja hozzá a következő diagramot:
+A teljesítményszámlálók és az események számának megtekintéséhez nyissa meg [Metrikaböngésző](../platform/metrics-charts.md) és adja hozzá a következő diagramot:
 
 ![Azure Diagnosticsi az adatgyűjtést](./media/cloudservices/23-wad.png)
 
-A Azure Diagnostics által eljuttatott nyomkövetési naplók közötti kereséshez használjon [keresési](../../azure-monitor/app/diagnostic-search.md) vagy [elemzési lekérdezést](../../azure-monitor/log-query/get-started-portal.md). Tegyük fel például, hogy van egy kezeletlen kivétel, amely egy szerepkör összeomlását és újrahasznosítását okozta. Ezek az információk a Windows eseménynaplójában, az Alkalmazás csatornában jelennek meg. A keresés használatával megtekintheti a Windows Eseménynapló hibáját, és lekérheti a kivétel teljes verem-nyomkövetését. Ennek segítségével megtalálhatja a probléma alapvető okát.
+A Azure Diagnostics által eljuttatott nyomkövetési naplók közötti kereséshez használjon [keresési](./diagnostic-search.md) vagy [elemzési lekérdezést](../log-query/get-started-portal.md). Tegyük fel például, hogy van egy kezeletlen kivétel, amely egy szerepkör összeomlását és újrahasznosítását okozta. Ezek az információk a Windows eseménynaplójában, az Alkalmazás csatornában jelennek meg. A keresés használatával megtekintheti a Windows Eseménynapló hibáját, és lekérheti a kivétel teljes verem-nyomkövetését. Ennek segítségével megtalálhatja a probléma alapvető okát.
 
 ![Azure Diagnostics keresés](./media/cloudservices/25-wad.png)
 
@@ -205,7 +205,7 @@ Tekintse meg a kérelmeket a következő két minta feldolgozói szerepkörrel:
 * [WorkerRoleB](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/WorkerRoleB)
 
 ## <a name="exceptions"></a>Kivételek
-A különböző webalkalmazások típusaitól származó nem kezelt kivételek gyűjtésével kapcsolatos további információkért lásd: [a kivételek figyelése Application Insightsban](../../azure-monitor/app/asp-net-exceptions.md).
+A különböző webalkalmazások típusaitól származó nem kezelt kivételek gyűjtésével kapcsolatos további információkért lásd: [a kivételek figyelése Application Insightsban](./asp-net-exceptions.md).
 
 A minta webes szerepkör MVC5 és Web API 2 vezérlőkkel rendelkezik. A két vezérlőtől származó nem kezelt kivételeket a rendszer a következő kezelőkkel rögzíti:
 
@@ -255,11 +255,11 @@ A böngészőalapú telemetria beszerzéséhez, például a lapok megtekintésé
 Győződjön meg arról, hogy az alkalmazás élőben és rugalmasan működik, és [Beállítja a webes teszteket][availability].
 
 ## <a name="display-everything-together"></a>Az összes elem együttes megjelenítése
-A rendszer átfogó képére a kulcsfontosságú figyelési diagramok is megjeleníthetők egyetlen [irányítópulton](../../azure-monitor/app/overview-dashboard.md). Például hozzáadhatja az egyes szerepkörök kérés- és hibaszámait. 
+A rendszer átfogó képére a kulcsfontosságú figyelési diagramok is megjeleníthetők egyetlen [irányítópulton](./overview-dashboard.md). Például hozzáadhatja az egyes szerepkörök kérés- és hibaszámait. 
 
 Ha a rendszer más Azure-szolgáltatásokat (például Stream Analytics) használ, vegye fel a figyelési diagramokat is. 
 
-Ha rendelkezik ügyfél-mobilalkalmazással, használja az [App Centert](../../azure-monitor/learn/mobile-center-quickstart.md). [Analytics](../log-query/log-query-overview.md)-lekérdezések létrehozásával megjelenítheti az események számát, és rögzítheti őket az irányítópulton.
+Ha rendelkezik ügyfél-mobilalkalmazással, használja az [App Centert](../learn/mobile-center-quickstart.md). [Analytics](../log-query/log-query-overview.md)-lekérdezések létrehozásával megjelenítheti az események számát, és rögzítheti őket az irányítópulton.
 
 ## <a name="example"></a>Példa
 [Ez a példa](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService) egy olyan szolgáltatást figyel, amely egy webes és két feldolgozói szerepkörrel rendelkezik.
@@ -272,18 +272,19 @@ A .NET 4.6-os verziójára készítette el az alkalmazást? A .NET 4,6 nem támo
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
 
 ## <a name="next-steps"></a>További lépések
-* [Azure Diagnostics-diagnosztikák Application Insightsba való küldésének konfigurálása](../../azure-monitor/platform/diagnostics-extension-to-application-insights.md)
-* [Application Insights erőforrások automatikus létrehozása](../../azure-monitor/app/powershell.md)
-* [Azure Diagnostics automatizálása](../../azure-monitor/app/powershell-azure-diagnostics.md)
+* [Azure Diagnostics-diagnosztikák Application Insightsba való küldésének konfigurálása](../platform/diagnostics-extension-to-application-insights.md)
+* [Application Insights erőforrások automatikus létrehozása](./powershell.md)
+* [Azure Diagnostics automatizálása](./powershell-azure-diagnostics.md)
 * [Azure Functions](https://github.com/christopheranderson/azure-functions-app-insights-sample)
 
-[api]: ../../azure-monitor/app/api-custom-events-metrics.md
-[availability]: ../../azure-monitor/app/monitor-web-app-availability.md
-[azure]: ../../azure-monitor/app/app-insights-overview.md
-[client]: ../../azure-monitor/app/javascript.md
-[diagnostic]: ../../azure-monitor/app/diagnostic-search.md
-[netlogs]: ../../azure-monitor/app/asp-net-trace-logs.md
+[api]: ./api-custom-events-metrics.md
+[availability]: ./monitor-web-app-availability.md
+[azure]: ./app-insights-overview.md
+[client]: ./javascript.md
+[diagnostic]: ./diagnostic-search.md
+[netlogs]: ./asp-net-trace-logs.md
 [portal]: https://portal.azure.com/
 [qna]: ../faq.md
-[redfield]: ../../azure-monitor/app/monitor-performance-live-website-now.md
-[start]: ../../azure-monitor/app/app-insights-overview.md
+[redfield]: ./monitor-performance-live-website-now.md
+[start]: ./app-insights-overview.md
+

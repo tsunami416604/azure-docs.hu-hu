@@ -8,11 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 12/17/2019
 ms.author: raynew
-ms.openlocfilehash: ea5893f45962d67f4b6f3e9a261c65aa0ec926bf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2994f68e4159c7c4aa7d82bef7a5891deb5055a0
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75497852"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292826"
 ---
 # <a name="fail-over-and-fail-back-physical-servers-replicated-to-azure"></a>Az Azure-ba replikált fizikai kiszolgálók feladatátvétele és feladatátvétele
 
@@ -83,7 +84,7 @@ Az Azure-ba való feladatátvételt követően az Azure-beli virtuális gépeket
 10. Ellenőrizze, hogy a következő helyzetekben nem lehet visszaadni a feladatokat:
     - Ha az ESXi 5,5 Free Edition vagy a vSphere 6 hypervisor Free Edition verziót használja. Frissítsen egy másik verzióra.
     - Ha Windows Server 2008 R2 SP1 fizikai kiszolgálóval rendelkezik.
-    - Az [áttelepített](migrate-overview.md#what-do-we-mean-by-migration)virtuális gépek.
+    - Az áttelepített virtuális gépek.
     - Egy másik erőforráscsoporthoz áthelyezett virtuális gép.
     - Egy olyan replika Azure-beli virtuális gép, amelyet töröltek.
     - Egy olyan replika Azure-beli virtuális gép, amely nincs védve (a helyszíni helyre replikálva).

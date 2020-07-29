@@ -4,12 +4,12 @@ description: A metrikák és a klasszikus API-k, más néven Azure Service Manag
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 11/19/2018
-ms.openlocfilehash: 65ce7a5c876c7a8e96f945d9d4db871c84f86a4e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 38a30f2adc0de7ccb9a9a3a4ba7ed53fd5fda3f7
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505431"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87317382"
 ---
 # <a name="azure-monitor-retirement-of-classic-deployment-model-apis-for-metrics-and-autoscale"></a>A klasszikus üzembe helyezési modell API-jai kiAzure Monitor a metrikák és az autoskálázás számára
 
@@ -21,7 +21,7 @@ Ugyanazokat a műveleteket a Azure Resource Manager-alapú API-k több mint egy 
 
 Ha a Azure Portalon, az [új Azure monitor SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/)-ban, a PowerShellben, a CLI-ben vagy a Resource Manager-sablonokban kezeli az autoskálázást, nincs szükség beavatkozásra.  
 
-Ha mérőszámokat használ a Azure Portal vagy különböző [figyelési partneri szolgáltatásokon](../../azure-monitor/platform/partners.md)keresztül, nincs szükség beavatkozásra. A Microsoft együttműködik a figyelési partnerekkel az új API-kra való Migrálás során.
+Ha mérőszámokat használ a Azure Portal vagy különböző [figyelési partneri szolgáltatásokon](./partners.md)keresztül, nincs szükség beavatkozásra. A Microsoft együttműködik a figyelési partnerekkel az új API-kra való Migrálás során.
 
 ## <a name="who-is-affected"></a>Ki érintett
 
@@ -85,7 +85,8 @@ A rendszer kivonulási értesítést küldött az e-mail-címekre a következő 
 
 Ha kérdése van, lépjen kapcsolatba velünk a következő címen: MonitorClassicAPIhelp@microsoft.com .  
 
-## <a name="references"></a>Hivatkozások
+## <a name="references"></a>Referencia
 
 - [Újabb REST API-k a Azure Monitorhoz](/rest/api/monitor/) 
 - [Újabb Azure Monitor SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/)
+

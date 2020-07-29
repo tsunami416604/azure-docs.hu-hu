@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 07/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 47b1a3a44c494560dde9ffdab004ea576f434ffe
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8a8f5cb792f524354754b4368c0b68d5f9d40699
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091300"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291372"
 ---
 # <a name="enable-azure-multi-factor-authentication-for-windows-virtual-desktop"></a>Az Azure Multi-Factor Authentication engedélyezése Windows Virtual Desktophoz
 
 >[!IMPORTANT]
-> Ha ezt az oldalt a Fall 2019 dokumentációjában látogatja meg, akkor a befejezést követően [térjen vissza a fall 2019 dokumentációba](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md) .
+> Ha ezt az oldalt a Windowsos virtuális asztal (klasszikus) dokumentációjában látogatja meg, akkor a befejezést követően [térjen vissza a Windows virtuális asztali (klasszikus) dokumentációba](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md) .
 
 A Windows rendszerű virtuális asztal Windows-ügyfele kiváló megoldás a Windows rendszerű virtuális asztalok helyi géppel való integrálására. Ha azonban a Windows rendszerű virtuális asztali fiókját a Windows-ügyfélre konfigurálja, bizonyos intézkedésekre van szükség, hogy a felhasználók biztonságban maradjanak.
 
@@ -50,10 +50,10 @@ Ebből a témakörből megtudhatja, hogyan hozhat létre olyan feltételes hozz�
 7. Válassza a **Kész** lehetőséget.
 8. A **Cloud apps vagy a műveletek**területen  >  **Include**válassza az **alkalmazások kiválasztása**lehetőséget.
 9. Válasszon egyet a következő alkalmazások közül, amelyek alapján a Windows rendszerű virtuális asztalnak a használt verzióját használja.
-   - Ha a Fall 2019 kiadást használja, válassza a következő két alkalmazást:
+   - Ha a Windowsos virtuális asztalt (klasszikus) használja, válassza a következő két alkalmazást:
        - **Windows rendszerű virtuális asztal** (alkalmazás-azonosító 5a0aa725-4958-4b0c-80a9-34562e23f3b7)
        - **Windows rendszerű virtuális asztali ügyfél** (alkalmazás-azonosító fa4345a4-a730-4230-84a8-7d9651b86739)
-   - Ha a Spring 2020 kiadást használja, válassza a következő két alkalmazást:
+   - Ha a Windows rendszerű virtuális asztalt használja, válassza a következő két alkalmazást:
        -  **Windows rendszerű virtuális asztal** (alkalmazás-azonosító 9cdead84-A844-4324-93f2-b2e6bb768d07)
        -  **Windows rendszerű virtuális asztali ügyfél** (alkalmazás-azonosító a85cf173-4192-42f8-81fa-777a763e6e2c)
 

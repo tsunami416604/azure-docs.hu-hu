@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 2/7/2019
 ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 5dc603a890a112cf475e6ceafb79145dec5a56ea
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2f8f1cceb5cfee4bf910674ecd50c7fba1d5c021
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077233"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318368"
 ---
 # <a name="unified-alerting--monitoring-in-azure-monitor-replaces-classic-alerting--monitoring"></a>Az egyesített riasztási & figyelése Azure Monitor helyettesíti a klasszikus riasztási & figyelését
 
@@ -28,7 +28,7 @@ Az Azure-beli új monitorozási és riasztási platformmal az Azure-riasztások 
 Javasoljuk, hogy kezdje el és hozza létre újra a riasztásokat az új platformon. A nagyszámú riasztással rendelkező ügyfelek esetében a [fázisokban](alerts-understand-migration.md#rollout-phases)egy [önkéntes áttelepítési eszköz](alerts-using-migration-tool.md) használható a meglévő klasszikus riasztások új riasztási rendszerbe való áthelyezésére, megszakítás vagy hozzáadott költségek nélkül.
 
 > [!IMPORTANT]
-> A tevékenység naplójában létrehozott klasszikus riasztási szabályok nem lesznek elavultak vagy migrálva. A tevékenység naplójában létrehozott klasszikus riasztási szabályok az új Azure Monitor-riasztásokból is elérhetők és használhatók. További információ: a [műveletnapló riasztások létrehozása, megtekintése és kezelése Azure monitor használatával](../../azure-monitor/platform/alerts-activity-log.md). Hasonlóképpen, a Service Health található riasztások elérhetők és használhatók az új Service Health szakaszból. Részletekért lásd: [riasztások a szolgáltatás állapotáról szóló értesítésekről](../../service-health/alerts-activity-log-service-notifications-portal.md).
+> A tevékenység naplójában létrehozott klasszikus riasztási szabályok nem lesznek elavultak vagy migrálva. A tevékenység naplójában létrehozott klasszikus riasztási szabályok az új Azure Monitor-riasztásokból is elérhetők és használhatók. További információ: a [műveletnapló riasztások létrehozása, megtekintése és kezelése Azure monitor használatával](./alerts-activity-log.md). Hasonlóképpen, a Service Health található riasztások elérhetők és használhatók az új Service Health szakaszból. Részletekért lásd: [riasztások a szolgáltatás állapotáról szóló értesítésekről](../../service-health/alerts-activity-log-service-notifications-portal.md).
 
 ## <a name="unified-metrics-and-alerts-in-application-insights"></a>Egyesített mérőszámok és riasztások a Application Insights
 
@@ -36,29 +36,29 @@ A Azure Monitor újabb metrikai platformja mostantól a Application Insightstól
 
 A Application Insights új egységes figyelési és riasztási feladatai a következőket foglalják magukban:
 
-- **Application Insights platform metrikák** – amely a Application Insights termék népszerű, előre összeépített metrikáit biztosítja. További információkért tekintse meg az [új Azure Monitor Application Insights platform metrikáinak](../../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#pre-aggregated-metrics)használatát ismertető cikket.
-- **Application Insights rendelkezésre állás és webes teszt** – lehetővé teszi a webalkalmazás vagy-kiszolgáló válaszadásának és rendelkezésre állásának felmérését. További információkért tekintse meg ezt a cikket a [rendelkezésre állási tesztek és riasztások használatáról az új Azure Monitor Application Insights](../../azure-monitor/app/monitor-web-app-availability.md).
-- **Application Insights egyéni metrikák** – lehetővé teszi saját mérőszámok meghatározását és kibocsátását a figyeléshez és a riasztásokhoz. További információkért tekintse meg ezt a cikket, [amely az egyéni metrika használatát ismerteti Application Insights új Azure monitor](../../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#custom-metrics-dimensions-and-pre-aggregation).
+- **Application Insights platform metrikák** – amely a Application Insights termék népszerű, előre összeépített metrikáit biztosítja. További információkért tekintse meg az [új Azure Monitor Application Insights platform metrikáinak](../app/pre-aggregated-metrics-log-metrics.md#pre-aggregated-metrics)használatát ismertető cikket.
+- **Application Insights rendelkezésre állás és webes teszt** – lehetővé teszi a webalkalmazás vagy-kiszolgáló válaszadásának és rendelkezésre állásának felmérését. További információkért tekintse meg ezt a cikket a [rendelkezésre állási tesztek és riasztások használatáról az új Azure Monitor Application Insights](../app/monitor-web-app-availability.md).
+- **Application Insights egyéni metrikák** – lehetővé teszi saját mérőszámok meghatározását és kibocsátását a figyeléshez és a riasztásokhoz. További információkért tekintse meg ezt a cikket, [amely az egyéni metrika használatát ismerteti Application Insights új Azure monitor](../app/pre-aggregated-metrics-log-metrics.md#custom-metrics-dimensions-and-pre-aggregation).
 - **Application Insights hibák rendellenességei (az intelligens észlelés része)** – amely automatikusan értesíti Önt közel valós időben, ha a webalkalmazás a sikertelen HTTP-kérelmek vagy függőségi hívások gyakoriságának rendellenes növekedését tapasztalja. További információkért tekintse meg ezt a cikket az [intelligens észlelés – meghibásodási rendellenességek](../app/proactive-failure-diagnostics.md)használata című cikkben.
 
 ## <a name="unified-metrics-and-alerts-for-other-azure-resources"></a>Egyesített mérőszámok és riasztások más Azure-erőforrásokhoz
 
-Március 2018 óta a riasztások és az Azure-erőforrások többdimenziós monitorozásának következő generációja rendelkezésre áll. Az újabb metrikus platform és a riasztások mostantól a közel valós idejű funkciókkal is gyorsabbak. Ennél is fontosabb, hogy az újabb mérőszámok platformjának riasztásai részletesebbek, mivel az újabb platform magában foglalja a méretek lehetőségét, ami lehetővé teszi, hogy egy adott érték kombinációjának, feltételének vagy műveletnek a szeletét és szűrését adja meg. Az új Azure Monitorban található összes riasztáshoz hasonlóan az újabb metrikai riasztások bővíthetők a ActionGroups használatával, így az értesítések kiterjeszthetők az e-mailek, a webhookok és az SMS, a hang, az Azure Function, az Automation Runbook és egyebek között. További információ: [metrikus riasztások létrehozása, megtekintése és kezelése Azure monitor használatával](../../azure-monitor/platform/alerts-metric.md).
+Március 2018 óta a riasztások és az Azure-erőforrások többdimenziós monitorozásának következő generációja rendelkezésre áll. Az újabb metrikus platform és a riasztások mostantól a közel valós idejű funkciókkal is gyorsabbak. Ennél is fontosabb, hogy az újabb mérőszámok platformjának riasztásai részletesebbek, mivel az újabb platform magában foglalja a méretek lehetőségét, ami lehetővé teszi, hogy egy adott érték kombinációjának, feltételének vagy műveletnek a szeletét és szűrését adja meg. Az új Azure Monitorban található összes riasztáshoz hasonlóan az újabb metrikai riasztások bővíthetők a ActionGroups használatával, így az értesítések kiterjeszthetők az e-mailek, a webhookok és az SMS, a hang, az Azure Function, az Automation Runbook és egyebek között. További információ: [metrikus riasztások létrehozása, megtekintése és kezelése Azure monitor használatával](./alerts-metric.md).
 Az Azure-erőforrások újabb mérőszámai az alábbiak szerint érhetők el:
 
-- **Standard szintű platform-metrikák Azure monitor** , amely a különböző Azure-szolgáltatásokból és-termékekből származó népszerű előre feltöltött mérőszámokat biztosít. További információkért tekintse meg a [Azure monitor támogatott mérőszámait](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported) , és [Azure monitor a metrikai riasztások támogatását](../../azure-monitor/platform/alerts-metric-overview.md#supported-resource-types-for-metric-alerts)ismertető cikket.
-- **Azure monitor egyéni metrikák** – amely a felhasználó által vezérelt forrásokból, például a Azure Diagnostics-ügynökből származó mérőszámokat biztosít. További információkért tekintse meg ezt a cikket a [Azure monitor egyéni metrikák](../../azure-monitor/platform/metrics-custom-overview.md)témakörében. Egyéni metrikák használatával közzéteheti a [Windows Azure Diagnostics Agent](../../azure-monitor/platform/collect-custom-metrics-guestos-resource-manager-vm.md) és a [InfluxData-Graf ügynök](../../azure-monitor/platform/collect-custom-metrics-linux-telegraf.md)által gyűjtött mérőszámokat is.
+- **Standard szintű platform-metrikák Azure monitor** , amely a különböző Azure-szolgáltatásokból és-termékekből származó népszerű előre feltöltött mérőszámokat biztosít. További információkért tekintse meg a [Azure monitor támogatott mérőszámait](./alerts-metric-near-real-time.md#metrics-and-dimensions-supported) , és [Azure monitor a metrikai riasztások támogatását](./alerts-metric-overview.md#supported-resource-types-for-metric-alerts)ismertető cikket.
+- **Azure monitor egyéni metrikák** – amely a felhasználó által vezérelt forrásokból, például a Azure Diagnostics-ügynökből származó mérőszámokat biztosít. További információkért tekintse meg ezt a cikket a [Azure monitor egyéni metrikák](./metrics-custom-overview.md)témakörében. Egyéni metrikák használatával közzéteheti a [Windows Azure Diagnostics Agent](./collect-custom-metrics-guestos-resource-manager-vm.md) és a [InfluxData-Graf ügynök](./collect-custom-metrics-linux-telegraf.md)által gyűjtött mérőszámokat is.
 
 ## <a name="retirement-of-classic-monitoring-and-alerting-platform"></a>A klasszikus monitorozási és riasztási platform kivonulása
 
-Ahogy azt korábban már említettük, a klasszikus monitorozási és riasztási platform jelenleg a Azure Portal [riasztások (klasszikus) szakasza](../../azure-monitor/platform/alerts-classic.overview.md) alapján megszűnik az elkövetkező hónapokban, mivel azokat az újabb rendszer váltotta fel.
+Ahogy azt korábban már említettük, a klasszikus monitorozási és riasztási platform jelenleg a Azure Portal [riasztások (klasszikus) szakasza](./alerts-classic.overview.md) alapján megszűnik az elkövetkező hónapokban, mivel azokat az újabb rendszer váltotta fel.
 A régebbi klasszikus monitorozási és riasztási funkciók a 2019. augusztus 31-én megszűnnek. beleértve a kapcsolódó API-k, Azure Portal felület és szolgáltatások bezárását is. Ezek a szolgáltatások elavultak lesznek:
 
-- Régebbi (klasszikus) mérőszámok és riasztások az Azure-erőforrásokról, amelyek jelenleg a Azure Portal [riasztások (klasszikus) szakaszán](../../azure-monitor/platform/alerts-classic.overview.md) keresztül elérhetők. elérhető [Microsoft. ininsights/alertrules-](/rest/api/monitor/alertrules) erőforrásként
-- A régebbi (klasszikus) platform és a Application Insights egyéni metrikái, valamint a Azure Portal [riasztások (klasszikus) szakasza](../../azure-monitor/platform/alerts-classic.overview.md) által jelenleg elérhetővé vált riasztások, valamint a [Microsoft. alertrules](/rest/api/monitor/alertrules) erőforrás
-- A régebbi (klasszikus) meghibásodási rendellenességek riasztása jelenleg a Azure Portal [Application Insightson belüli intelligens észlelésként](../../azure-monitor/app/proactive-diagnostics.md) érhető el; a Azure Portal [riasztások (klasszikus) szakaszában](../../azure-monitor/platform/alerts-classic.overview.md) látható riasztások vannak konfigurálva
+- Régebbi (klasszikus) mérőszámok és riasztások az Azure-erőforrásokról, amelyek jelenleg a Azure Portal [riasztások (klasszikus) szakaszán](./alerts-classic.overview.md) keresztül elérhetők. elérhető [Microsoft. ininsights/alertrules-](/rest/api/monitor/alertrules) erőforrásként
+- A régebbi (klasszikus) platform és a Application Insights egyéni metrikái, valamint a Azure Portal [riasztások (klasszikus) szakasza](./alerts-classic.overview.md) által jelenleg elérhetővé vált riasztások, valamint a [Microsoft. alertrules](/rest/api/monitor/alertrules) erőforrás
+- A régebbi (klasszikus) meghibásodási rendellenességek riasztása jelenleg a Azure Portal [Application Insightson belüli intelligens észlelésként](../app/proactive-diagnostics.md) érhető el; a Azure Portal [riasztások (klasszikus) szakaszában](./alerts-classic.overview.md) látható riasztások vannak konfigurálva
 
-A klasszikus figyelési és riasztási rendszerek, beleértve a megfelelő [API](/rest/api/monitor/alertrules)-t, a [PowerShellt](../../azure-monitor/platform/alerts-classic-portal.md), a [CLI](../../azure-monitor/platform/alerts-classic-portal.md)-t, a [Azure Portal lapot](../../azure-monitor/platform/alerts-classic-portal.md)és az [erőforrás-sablont](../../azure-monitor/platform/alerts-enable-template.md) , a 2019 augusztus végéig továbbra is használható 
+A klasszikus figyelési és riasztási rendszerek, beleértve a megfelelő [API](/rest/api/monitor/alertrules)-t, a [PowerShellt](./alerts-classic-portal.md), a [CLI](./alerts-classic-portal.md)-t, a [Azure Portal lapot](./alerts-classic-portal.md)és az [erőforrás-sablont](./alerts-enable-template.md) , a 2019 augusztus végéig továbbra is használható 
 
 2019 augusztus végén Azure Monitor:
 
@@ -75,7 +75,7 @@ Ez a cikk folyamatosan frissül az új Azure monitoring & riasztási funkciókka
 
 ## <a name="pricing-for-migrated-alert-rules"></a>Az áttelepített riasztási szabályok díjszabása
 
-Áttelepítési eszközt vezetünk be, amely segít áttelepíteni a Azure Monitor [klasszikus riasztásokat](../../azure-monitor/platform/alerts-classic.overview.md) az új riasztások felületére. Az áttelepített riasztási szabályok és a megfelelő áttelepített műveleti csoportok (e-mailek, webhookok vagy LogicApp-EK) díjmentesen maradnak. A klasszikus riasztásokkal rendelkező funkciók, beleértve a küszöbérték, az összesítési típus és az Összesítés részletességének módosítását is, továbbra is ingyenesen elérhetők lesznek az áttelepített riasztási szabállyal. Ha azonban az áttelepített riasztási szabályt úgy szerkeszti, hogy az új riasztási platform funkcióit, értesítéseket vagy műveleti típusokat használja, a megfelelő díjat kell fizetnie. További információ a riasztási szabályok és értesítések díjszabásáról: [Azure monitor díjszabása](https://azure.microsoft.com/pricing/details/monitor/).
+Áttelepítési eszközt vezetünk be, amely segít áttelepíteni a Azure Monitor [klasszikus riasztásokat](./alerts-classic.overview.md) az új riasztások felületére. Az áttelepített riasztási szabályok és a megfelelő áttelepített műveleti csoportok (e-mailek, webhookok vagy LogicApp-EK) díjmentesen maradnak. A klasszikus riasztásokkal rendelkező funkciók, beleértve a küszöbérték, az összesítési típus és az Összesítés részletességének módosítását is, továbbra is ingyenesen elérhetők lesznek az áttelepített riasztási szabállyal. Ha azonban az áttelepített riasztási szabályt úgy szerkeszti, hogy az új riasztási platform funkcióit, értesítéseket vagy műveleti típusokat használja, a megfelelő díjat kell fizetnie. További információ a riasztási szabályok és értesítések díjszabásáról: [Azure monitor díjszabása](https://azure.microsoft.com/pricing/details/monitor/).
 
 Az alábbiakban példákat talál arra az esetre, amikor díjat kell fizetnie a riasztási szabályhoz:
 
@@ -88,5 +88,6 @@ Az alábbiakban példákat talál arra az esetre, amikor díjat kell fizetnie a 
 
 ## <a name="next-steps"></a>További lépések
 
-* Ismerje meg az [új egységesített Azure monitor](../../azure-monitor/overview.md).
-* További információ az új [Azure-riasztásokról](../../azure-monitor/platform/alerts-overview.md).
+* Ismerje meg az [új egységesített Azure monitor](../overview.md).
+* További információ az új [Azure-riasztásokról](./alerts-overview.md).
+

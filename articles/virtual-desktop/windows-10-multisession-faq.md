@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 218ec6a5beab32729e106a7397d58ebaa2a30123
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: adc0d63a51535b27b42abbe0115ff25594eb2b4f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086925"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292482"
 ---
 # <a name="windows-10-enterprise-multi-session-faq"></a>A Windows 10 Enterprise több munkamenetes használata – gyakori kérdések
 
@@ -102,6 +102,6 @@ Az áruházbeli alkalmazás letiltása:
 
 További információ a Windows rendszerű virtuális asztali környezetről és a Windows 10-es nagyvállalati multi-session szolgáltatásról:
 
-- Olvassa el a [Windows rendszerű virtuális asztali előnézet dokumentációját](overview.md)
+- Olvassa el a [Windows rendszerű virtuális asztali dokumentációt](overview.md)
 - Látogasson el a [Windows rendszerű virtuális asztali TechCommunity](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop)
 - Windows rendszerű virtuális asztali környezet beállítása a [Windows rendszerű virtuális asztali oktatóanyagokkal](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)

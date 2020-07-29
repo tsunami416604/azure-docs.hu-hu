@@ -4,12 +4,12 @@ description: Ismerkedjen meg Azure Monitor partnereivel, és hogyan férhet hozz
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 05/29/2020
-ms.openlocfilehash: f40d38d182e1a8c233b15f711fd557a5d72e8f30
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 994dfe0d7e252fd2aea489c363e76f0956715048
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077333"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318334"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure Monitor partner-integrációk
 
@@ -138,7 +138,7 @@ A Focus **ArcSight** rendelkezik egy intelligens összekötővel Azure monitor E
 
 A fókusz **műveleti híd** automatikusan figyeli az összes hibrid it-erőforrást – bármilyen eszközt, operációs rendszert, adatbázist, alkalmazást vagy szolgáltatást, függetlenül attól, hogy hol fut, és alkalmazza a AIOps minden adattípusra – események, metrikák, naplók és függőségek. A szolgáltatás minőségének egyedi kombinációja, amely a részletes alkalmazás-állapot elemzésével párosul, és átfogó teljesítményt és rendelkezésre állást biztosít a Microsoft Azure-szolgáltatások számára. Az Operations Bridge lehetővé teszi, hogy az ügyfelek egyetlen panelt biztosítanak az összes böngészővel rendelkező eszközön, így mind az üzleti, mind az érintett felek megismerhetik.
 
-További információ
+Részletek
 - [Az OB Suite áttekintése](https://www.microfocus.com/products/operations-bridge-suite/overview)
 - [Letöltés](https://marketplace.microfocus.com/itom/content/obm-management-pack-for-microsoft-azure)
 - A [SiteScope](https://docs.microfocus.com/itom/SiteScope:2019.05/MSAzureMonitor) -SiteScope az Operations Bridge Suite egyik összetevője.
@@ -268,7 +268,7 @@ A Turbonomic a teljesítmény, a költséghatékonyság és a megfelelőség val
 
 ## <a name="next-steps"></a>További lépések
 
-- [További információ a Azure Monitor](../../azure-monitor/overview.md)
+- [További információ a Azure Monitor](../overview.md)
 - [Metrikák elérése a REST API használatával](rest-api-walkthrough.md)
 - [A tevékenység naplójának továbbítása nem Microsoft-szolgáltatásba](./activity-log.md#legacy-collection-methods)
 - [Erőforrás-naplók továbbítása nem Microsoft-szolgáltatásba](./resource-logs.md#send-to-azure-event-hubs)
@@ -281,13 +281,13 @@ A Turbonomic a teljesítmény, a költséghatékonyság és a megfelelőség val
 [atlassian-doc]: https://azure.microsoft.com/blog/automated-notifications-from-azure-monitor-for-atlassian-jira/
 [botmetric-doc]: https://www.botmetric.com/blog/announcing-botmetric-cost-governance-beta-microsoft-azure/ "Botmetric-bevezetés."
 [circonus-doc]: https://docs.circonus.com/circonus/agents/cloud-agent/azure/ 
-[cloudhealth-doc]: https://www.cloudhealthtech.com/azure
+[cloudhealth-doc]: https://www.cloudhealthtech.com/products/azure-management
 [cloudmonix-doc]: https://cloudmonix.com/features/azure-management/ "CloudMonix-bevezetés."
 [datadog-doc]: https://docs.datadoghq.com/integrations/azure/ "A datadoggal dokumentációja."
 [dynatrace-doc]: https://help.dynatrace.com/infrastructure-monitoring/paas/how-do-i-monitor-microsoft-azure-web-apps/ "A Dynatrace dokumentációja."
 [elastic-doc]: https://www.elastic.co/guide/en/logstash/master/azure-module.html "Rugalmas dokumentáció."
 [grafana-doc]: ./grafana-plugin.md "Azure Monitor Grafana-integráció."
-[influxdata-doc]: ./../../azure-monitor/platform/collect-custom-metrics-linux-telegraf.md "Azure Monitor Influx-adatközpont-integráció."
+[influxdata-doc]: ./collect-custom-metrics-linux-telegraf.md "Azure Monitor Influx-adatközpont-integráció."
 [logicmonitor-doc]: https://www.logicmonitor.com/lp/azure-monitoring/ "A Logic monitor dokumentációja."
 [moogsoft-doc]: https://www.moogsoft.com/partners/microsoft-azure "A Moogsoft dokumentációja."
 [newrelic-doc]: https://newrelic.com/azure "A NewRelic dokumentációja."
@@ -302,3 +302,4 @@ A Turbonomic a teljesítmény, a költséghatékonyság és a megfelelőség val
 [splunk-doc]: https://github.com/Microsoft/AzureMonitorAddonForSplunk/wiki/Azure-Monitor-Addon-For-Splunk "A splunk dokumentációja."
 [sumologic-doc]: https://www.sumologic.com/azure "A SumoLogic dokumentációja."
 [turbonomic-doc]: https://turbonomic.com/ "Turbonomic-bevezetés."
+

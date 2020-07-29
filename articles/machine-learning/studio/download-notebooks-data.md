@@ -1,6 +1,5 @@
 ---
-title: Jegyzetfüzetek (előzetes verzió) típusú letöltése
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (klasszikus): a jegyzetfüzetek (előzetes verzió) adatának letöltése – Azure'
 description: Jegyzetfüzetek (előzetes verzió) ML Studio (klasszikus) típusú letöltése.
 ms.service: machine-learning
 ms.subservice: studio
@@ -8,14 +7,16 @@ ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.date: 04/15/2020
-ms.openlocfilehash: 8a1de4ceb42ac86d8f945ec973eaa52d6ddec736
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cc12204c5eabf857fd1143e71df9b2b505d88a23
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82208465"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318657"
 ---
 # <a name="download-notebookspreview-data"></a>Jegyzetfüzetek (előzetes verzió) letöltése
+
+**a következőkre vonatkozik:** ![ nincs](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine learning](../overview-what-is-azure-ml.md) ![ Igen ](../../../includes/media/aml-applies-to-skus/yes.png) Machine learning Studio (klasszikus) 
 
 A jegyzetfüzetek (előzetes verzió) szolgáltatást *április 13 2020*-én eltávolították. A jegyzetfüzetek (előzetes verzió) és a felhasználói jegyzetfüzetek fájljainak eltávolítása jelenleg az Azure-régiókban zajlik világszerte.
 

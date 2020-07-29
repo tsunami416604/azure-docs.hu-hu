@@ -1,6 +1,5 @@
 ---
-title: Adatelemzés kezdőknek
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (klasszikus): adatelemzés kezdőknek – Azure'
 description: Az adatelemzés kezdőknek 5 rövid videóban alapfogalmakat tanítunk, és az adatelemzés 5 kérdésével kezdődik. Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
@@ -10,13 +9,15 @@ author: sdgilley
 ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
-ms.openlocfilehash: 350363641056802e09eea90c85b4ccf8e33d9051
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a0c99c05701c7f2d64fcfc2f70081f2d7475ce5f
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82930148"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318725"
 ---
 # <a name="data-science-for-beginners-video-1-the-5-questions-data-science-answers"></a>Adatelemzés kezdőknek – 1. videó: 5 kérdés, amelyre az adatelemzés választ ad
+
 Gyors bevezetést nyerhet az adatelemzésből az adatelemzésből a *kezdők számára* öt rövid videóban egy legfontosabb adattudóstól. Ezek a videók alapszintű, de hasznosak, függetlenül attól, hogy az adatelemzést vagy az adatszakértőkkel való munkát érdekli.
 
 Ez az első videó arról szól, hogy milyen típusú kérdésekre tud válaszolni az adatelemzés. Ha ki szeretné próbálni a sorozatot, tekintse meg őket. [Ugrás a videók listájára](#other-videos-in-this-series)
