@@ -6,17 +6,17 @@ manager: briz
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 08/08/2019
+ms.date: 07/22/2019
 ms.author: asrastog
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 4d33a47e0498c82dff967242cfbc12a89c94a3b5
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: dd2b88d923d0398dc42362242b94b978ccd24252
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327735"
+ms.locfileid: "87336718"
 ---
 # <a name="create-and-read-iot-hub-messages"></a>IoT Hub-üzenetek létrehozása és olvasása
 
@@ -61,6 +61,8 @@ További információ a különböző protokollok használatával elküldött ü
 | iothub – összekapcsolási modul azonosítója |Az eszközről a felhőbe irányuló üzenetekben IoT Hub által beállított azonosító. Az üzenetet küldő eszköz **moduleId** tartalmazza. | Nem | connectionModuleId |
 | iothub – kapcsolatok – hitelesítés – generálási azonosító |Az eszközről a felhőbe irányuló üzenetekben IoT Hub által beállított azonosító. Az üzenetet küldő eszköz **connectionDeviceGenerationId** (az [eszköz identitásának tulajdonságai](iot-hub-devguide-identity-registry.md#device-identity-properties)alapján) tartalmazza. | Nem |connectionDeviceGenerationId |
 | iothub – kapcsolatok – hitelesítés – módszer |Az eszközről a felhőbe irányuló üzenetekben IoT Hub által beállított hitelesítési módszer. Ez a tulajdonság az üzenetet küldő eszköz hitelesítéséhez használt hitelesítési módszerről tartalmaz információkat.| Nem | connectionAuthMethod |
+| DT – DataSchema | Ezt az értéket az IoT hub állítja be az eszközről a felhőbe irányuló üzenetekben. Ez tartalmazza az eszköz-kapcsolatban beállított eszköz-modell AZONOSÍTÓját. Ez a szolgáltatás a [IoT Plug and Play nyilvános előzetes](../iot-pnp/overview-iot-plug-and-play.md)verziójának részeként érhető el. | Nem | n.a. |
+| DT – tárgy | Annak az összetevőnek a neve, amely az eszközről a felhőbe irányuló üzeneteket küld. Ez a szolgáltatás a [IoT Plug and Play nyilvános előzetes](../iot-pnp/overview-iot-plug-and-play.md)verziójának részeként érhető el. | Igen | n.a. |
 
 ## <a name="system-properties-of-c2d-iot-hub-messages"></a>**C2D** IoT hub üzenetek rendszertulajdonságai
 
@@ -89,8 +91,9 @@ A Rendszertulajdonságok nevei attól függően változnak, hogy az üzenetek mi
 |contentType|Content-Type|contentType|ContentType|iothub – tartalomtípus|
 |contentEncoding|Content-Encoding|contentEncoding|ContentEncoding|iothub – tartalom kódolása|
 |iothub – enqueuedtime|iothub – enqueuedtime|enqueuedTime| n.a. |iothub – enqueuedtime|
-|iothub – csatoló neve|iothub – csatoló neve|interfaceName|Iothub – csatoló neve|iothub – csatoló neve|
 |CorrelationId|korrelációs azonosító|correlationId|CorrelationId|korrelációs azonosító|
+|DT – DataSchema|DT – DataSchema|DT – DataSchema|DT – DataSchema|DT – DataSchema|
+|DT – tárgy|DT – tárgy|DT – tárgy|DT – tárgy|DT – tárgy|
 
 ## <a name="message-size"></a>Üzenet mérete
 

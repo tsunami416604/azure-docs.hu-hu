@@ -12,16 +12,18 @@ ms.workload: identity
 ms.date: 05/19/2020
 ms.author: hahamil
 ms.custom: aaddev
-ms.openlocfilehash: 238bcc6c706f2fab969c98b73ca879d064498693
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: efd51e90bb14f3d97b76eb6ac45b384192bb8da0
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87026509"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87311568"
 ---
 # <a name="single-page-application-app-registration"></a>Egyoldalas alkalmazás: alkalmazás regisztrálása
 
 Ha egy egyoldalas alkalmazást (SPA) szeretne regisztrálni a Microsoft Identity platformon, hajtsa végre az alábbi lépéseket. A regisztrációs lépések eltérnek a MSAL.js 1,0 között, amely támogatja az implicit engedélyezési folyamatot, és MSAL.js 2,0, amely támogatja az engedélyezési kódot a PKCE.
+
+[!INCLUDE [MSAL.js 2.0 and Azure AD B2C temporary incompatibility notice](../../../includes/msal-b2c-cors-compatibility-notice.md)]
 
 ## <a name="create-the-app-registration"></a>Az alkalmazás regisztrációjának létrehozása
 
@@ -67,7 +69,7 @@ A következő lépésekkel adhat hozzá átirányítási URI-t egy egyoldalas al
 
 Ezzel befejezte az egyoldalas alkalmazás (SPA) regisztrációját, és konfigurált egy átirányítási URI-t, amelybe az ügyfél átirányítja az ügyfelet, és a rendszer minden biztonsági jogkivonatot elküld. Egy vagy több **azonosító token** és **hozzáférési jogkivonat**kiválasztásával engedélyezte az implicit engedélyezési folyamatot.
 
-További útmutatásért kövesse az [oktatóanyagot](tutorial-v2-javascript-spa.md) . 
+További útmutatásért kövesse az [oktatóanyagot](tutorial-v2-javascript-spa.md) .
 
 ## <a name="note-about-authorization-flows"></a>Megjegyzés az engedélyezési folyamatokról
 

@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/23/2020
-ms.openlocfilehash: 9c927015114bb0e7230dcb96cd16a81e7763f64d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: ad34195e003e0ca2d73000d3482cc79c3dbe3ee0
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325882"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372110"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Modell üzembe helyezése Azure Kubernetes Service-fürtön
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -34,6 +34,8 @@ Az Azure Kubernetes szolgáltatásba való üzembe helyezéskor a __munkaterüle
 
 * Hozza létre az AK-fürtöt az Azure Machine Learning SDK, a Machine Learning parancssori felület vagy a [Azure Machine learning Studio](https://ml.azure.com)használatával. Ez a folyamat automatikusan csatlakoztatja a fürtöt a munkaterülethez.
 * Csatoljon egy meglévő AK-fürtöt az Azure Machine Learning-munkaterülethez. A fürtök csatlakoztathatók a Azure Machine Learning SDK, Machine Learning CLI vagy a Azure Machine Learning Studio használatával.
+
+Az AK-fürt és a pénzmosás-munkaterület különböző erőforráscsoport lehet.
 
 > [!IMPORTANT]
 > A létrehozási vagy a mellékleti folyamat egy egyszeri feladat. Ha egy AK-fürt csatlakozik a munkaterülethez, használhatja azt az üzembe helyezésekhez. Ha már nincs szüksége rá, leválaszthatja vagy törölheti az AK-fürtöt. A leválasztást vagy törlést követően a továbbiakban nem fogja tudni telepíteni a fürtöt.
@@ -61,11 +63,28 @@ Az Azure Kubernetes szolgáltatásba való üzembe helyezéskor a __munkaterüle
 
 - A cikkben szereplő __CLI__ -kódrészletek azt feltételezik, hogy létrehozott egy `inferenceconfig.json` dokumentumot. A dokumentum létrehozásával kapcsolatos további információkért lásd: [how és How to Deploy models (modellek üzembe helyezése](how-to-deploy-and-where.md)).
 
+- Ha egy AK-fürtöt csatlakoztat, amelynek [engedélyezett IP-tartománya engedélyezve van az API-kiszolgáló eléréséhez](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges), engedélyezze a pénzmosás Contol sík IP-tartományait az AK-fürthöz. A pénzmosás-vezérlési sík a párosított régiókban van üzembe helyezve, és az AK-fürtön üzembe helyezett hüvelyeket helyez üzembe. Az API-kiszolgálóhoz való hozzáférés nélkül a következtetést nem lehet központilag telepíteni. A [párosított régiók]( https://docs.microsoft.com/azure/best-practices-availability-paired-regions) [IP-tartományait](https://www.microsoft.com/en-us/download/confirmation.aspx?id=56519) is használhatja, ha egy AK-fürtben engedélyezi az IP-tartományokat.
+ 
+ - A számítási névnek egyedinek kell lennie a munkaterületen belül
+   - A név megadása kötelező, és legfeljebb 3 – 24 karakter hosszúságú lehet.
+   - Az érvényes karakterek a kis-és nagybetűk, a számjegyek és a karakter.
+   - A névnek betűvel kell kezdődnie
+   - A névnek egyedinek kell lennie az Azure-régióban lévő összes számításban. Ha a választott név nem egyedi, akkor riasztás jelenik meg.
+   
+ - Ha a modelleket GPU-csomópontokra vagy FPGA-csomópontokra (vagy bármely konkrét SKU-ra) szeretné telepíteni, akkor létre kell hoznia egy fürtöt az adott SKU-val. Nem támogatott másodlagos csomópont-készlet létrehozása meglévő fürtben, valamint modellek üzembe helyezése a másodlagos csomópont-készletben.
+ 
+ - Ha egy alapszintű Load Balancer (BLB) helyett a fürtben telepített standard Load Balancerra (SLB) van szüksége, hozzon létre egy fürtöt az AK-portálon/CLI/SDK-ban, majd csatolja a pénzmosás-munkaterülethez. 
+
+
+
 ## <a name="create-a-new-aks-cluster"></a>Új AK-fürt létrehozása
 
-**Becsült idő**: körülbelül 20 perc.
+**Becsült idő**: körülbelül 10 perc.
 
 Egy AK-fürt létrehozása vagy csatolása egy egyszeri folyamat a munkaterülethez. Ezt a fürtöt több központi telepítéshez is felhasználhatja. Ha törli a fürtöt vagy az azt tartalmazó erőforráscsoportot, létre kell hoznia egy új fürtöt, amikor legközelebb telepítenie kell. A munkaterülethez több AK-alapú fürtök is tartozhatnak.
+ 
+A Azure Machine Learning mostantól támogatja az Azure Kubernetes szolgáltatás használatát, amelyhez engedélyezve van a privát kapcsolat.
+Privát AK-fürt létrehozásához kövesse az [itt](https://docs.microsoft.com/azure/aks/private-clusters) található dokumentumokat
 
 > [!TIP]
 > Ha Azure-Virtual Network használatával szeretné biztonságossá tenni az AK-fürtöt, először létre kell hoznia a virtuális hálózatot. További információ: [biztonságos kísérletezés és következtetés az Azure Virtual Network](how-to-enable-virtual-network.md#aksvnet).

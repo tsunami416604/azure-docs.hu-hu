@@ -2,15 +2,15 @@
 title: Az Azure Linux rendszerű virtuális gépek számítási teljesítményteszt-pontszámai
 description: Összehasonlíthatja a Linux rendszerű Azure-beli virtuális gépekhez tartozó, az összevetéssel kapcsolatos számítási teljesítménymutatókat
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/29/2020
 ms.reviewer: davberg
-ms.openlocfilehash: afe1bddd5822b506dcf2c177fc308b717ddc2129
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 61deac4c94902dc392a23f05674e2b1fb3f3cf87
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82580442"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373419"
 ---
 # <a name="compute-benchmark-scores-for-linux-vms"></a>A Linux rendszerű virtuális gépek számítási teljesítményteszt-pontszámai
 Az alábbi összehasonlító teljesítménytesztek eredményei az Azure nagy teljesítményű virtuálisgép-felállásának számítási teljesítményét mutatják be Ubuntu rendszeren. A számítási teljesítménytesztek pontszámai a [Windows rendszerű virtuális gépek](../windows/compute-benchmark-scores.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)esetében is elérhetők.
@@ -151,7 +151,7 @@ Az alábbi összehasonlító teljesítménytesztek eredményei az Azure nagy tel
 | Virtuális gép mérete | CPU | vCPU-k | NUMA-csomópontok | Memória (GiB) | Átlagos pontszám | STD dev | STD fejlesztői% | #Runs |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_D2_v3 | Intel (R) Xeon (R) CPU E5 – 2673 v3 @ 2.40 GHz | 2 | 1 | 7.8 | 20 359 | 799 | 3,93% | 154 |
-| Standard_D2_v3 | Intel (R) Xeon (R) CPU E5 – 2673 v4 @ 2.30 GHz | 2 | 1 | 7.8 | 20 737 | 1 422 | 6,86% | 546 |
+| Standard_D2_v3 | Intel (R) Xeon (R) CPU E5 – 2673 v4 @ 2.30 GHz | 2 | 1 | 7.8 | 20 737 | 1 422 | 6,86% | 546 |
 | Standard_D4_v3 | Intel (R) Xeon (R) CPU E5 – 2673 v3 @ 2.40 GHz | 4 | 1 | 15,7 | 40 095 | 1 501 | 3,74% | 147 |
 | Standard_D4_v3 | Intel (R) Xeon (R) CPU E5 – 2673 v4 @ 2.30 GHz | 4 | 1 | 15,7 | 41 147 | 2 706 | 6,58% | 546 |
 | Standard_D8_v3 | Intel (R) Xeon (R) CPU E5 – 2673 v3 @ 2.40 GHz | 8 | 1 | 31,4 | 80 383 | 1 486 | 1,85% | 133 |

@@ -4,15 +4,15 @@ description: További információ arról, hogyan van definiálva a virtuális g
 author: cynthn
 ms.service: virtual-machines-windows
 ms.workload: infrastructure
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/03/2019
 ms.author: cynthn
-ms.openlocfilehash: 1ac2e94e9c0213f14999d730027e118df6584519
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: cd96fe550a508e54c467ca52cd36322581029654
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87020202"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283231"
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Virtuális számítógépek egy Azure Resource Manager-sablonban
 

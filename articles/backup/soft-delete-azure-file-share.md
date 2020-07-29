@@ -4,18 +4,16 @@ description: Ismerje meg, hogy a törlés hogyan védhető meg az Azure-fájlmeg
 ms.topic: conceptual
 ms.date: 02/02/2020
 ms.custom: references_regions
-ms.openlocfilehash: 7070cb1ee3881fbec2c6f44eae18f3bc51f8051d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0ec2d3bf84aed19b608a92b6f21cd1674ba5b7cf
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87054368"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282704"
 ---
 # <a name="accidental-delete-protection-for-azure-file-shares-using-azure-backup"></a>Az Azure-fájlmegosztás véletlen törlésének védelme Azure Backup használatával
 
-A maihoz vagy a véletlen törlés elleni védelem biztosításához a rendszer a Storage-fiókban lévő összes fájlmegosztás esetében engedélyezi a [Soft delete](../storage/files/storage-files-prevent-file-share-deletion.md) használatát, amikor a megfelelő Storage-fiókban lévő fájlmegosztás biztonsági mentését konfigurálja. A helyreállítható törléssel, még akkor is, ha egy rosszindulatú szereplő törli a fájlmegosztást, a fájlmegosztás tartalmát és a helyreállítási pontokat (pillanatképeket) legalább 14 napig őrzi meg a rendszer, ami lehetővé teszi a fájlmegosztás adatvesztés nélküli helyreállítását.  
-
-A Soft delete csak a standard és a prémium szintű Storage-fiókok esetében támogatott, és jelenleg az [ezen régiók](azure-file-share-support-matrix.md)Azure Backup oldalán engedélyezhető.
+A maihoz vagy a véletlen törlés elleni védelem biztosításához a rendszer a Storage-fiókban lévő összes fájlmegosztás esetében engedélyezi a [Soft delete](../storage/files/storage-files-prevent-file-share-deletion.md) használatát, amikor a megfelelő Storage-fiókban lévő fájlmegosztás biztonsági mentését konfigurálja. A helyreállítható törléssel, még akkor is, ha egy rosszindulatú szereplő törli a fájlmegosztást, a fájlmegosztás tartalmát és a helyreállítási pontokat (pillanatképeket) legalább 14 napig őrzi meg a rendszer, ami lehetővé teszi a fájlmegosztás adatvesztés nélküli helyreállítását.  A Soft Delete a standard és a prémium szintű Storage-fiókok esetében támogatott, és a beállítást Azure Backup engedélyezi a fájlmegosztás biztonsági mentését futtató összes Storage-fiókhoz.
 
 A következő folyamatábra a biztonsági mentési elemek különböző lépéseit és állapotait mutatja be, ha a Storage-fiókban engedélyezve van a fájlmegosztás:
 

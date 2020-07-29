@@ -5,12 +5,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 06/10/2020
-ms.openlocfilehash: f501e84e988d340ba710e49d30caddbe56006c8a
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: mingshen-ms
+ms.author: mingshen
+ms.openlocfilehash: f40da30ff0d702078861367dea810cc8ca1ab91b
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86109416"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87305142"
 ---
 # <a name="saas-fulfillment-apis-version-2-in-microsoft-commercial-marketplace"></a>SaaS-teljesítési API-k 2-es verziója a Microsoft kereskedelmi piactéren
 
@@ -313,7 +315,7 @@ Lekéri az összes megvásárolt SaaS-előfizetés listáját a piactéren a kö
 
 Ez az API többoldalas eredményeket ad vissza. Az oldalméret 100.
 
-##### <a name="gethttpsmarketplaceapimicrosoftcomapisaassubscriptionsapi-versionapiversion"></a>Get`https://marketplaceapi.microsoft.com/api/saas/subscriptions?api-version=<ApiVersion>`
+##### <a name="gethttpsmarketplaceapimicrosoftcomapisaassubscriptionsapi-versionapiversion"></a>Lekérés`https://marketplaceapi.microsoft.com/api/saas/subscriptions?api-version=<ApiVersion>`
 
 *Lekérdezési paraméterek:*
 
@@ -972,7 +974,7 @@ A *terv módosítása*, a *mennyiség módosítása*és a *leiratkozási* művel
 A kiadói támogatási lehetőségekért lásd: [a kereskedelmi piactér program támogatása a partner Centerben](support.md) .
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A piactéren elérhető SaaS-ajánlatok további lehetőségeiért lásd: Marketplace- [mérési szolgáltatás API](marketplace-metering-service-apis.md) -k.
 

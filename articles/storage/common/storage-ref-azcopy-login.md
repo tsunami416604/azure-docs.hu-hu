@@ -4,16 +4,16 @@ description: Ez a cikk a azcopy login parancsra vonatkozó tudnivalókat tartalm
 author: normesta
 ms.service: storage
 ms.topic: reference
-ms.date: 10/16/2019
+ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 754baa66d79d169f830332f3c39660f1d71f608a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 98f8554d6313147c03d4a0bec74e36043cdce342
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86527914"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285271"
 ---
 # <a name="azcopy-login"></a>azcopy login
 
@@ -26,8 +26,6 @@ Az Azure Storage-erőforrások eléréséhez jelentkezzen be Azure Active Direct
 Az Azure Storage-fiókjának engedélyezéséhez hozzá kell rendelnie a **Storage blob-adatközreműködői** szerepkört a felhasználói fiókhoz a Storage-fiók, a szülő erőforráscsoport vagy a szülő-előfizetés kontextusában.
 
 Ez a parancs az operációs rendszer beépített mechanizmusaival gyorsítótárazza az aktuális felhasználó titkosított bejelentkezési adatait.
-
-További információért tekintse meg a példákat.
 
 > [!IMPORTANT]
 > Ha egy környezeti változót a parancssor használatával állít be, akkor ez a változó a parancssori előzményekben olvasható. Érdemes lehet a parancssori előzményekből származó hitelesítő adatokat tartalmazó változókat törölni. Ahhoz, hogy a változók megjelenjenek az előzményekben, egy parancsfájl használatával megkérheti a felhasználótól a hitelesítő adataikat, és beállíthatja a környezeti változót.
@@ -64,11 +62,11 @@ azcopy login --identity
 ```
 
 Jelentkezzen be a virtuális gép felhasználó által hozzárendelt identitásával és a szolgáltatás identitásának ügyfél-AZONOSÍTÓjának használatával:
-
+  
 ```azcopy
 azcopy login --identity --identity-client-id "[ServiceIdentityClientID]"
 ```
-
+ 
 Jelentkezzen be a virtuális gép felhasználó által hozzárendelt identitásával és a szolgáltatás identitásának azonosítójával:
 
 ```azcopy
@@ -76,51 +74,59 @@ azcopy login --identity --identity-object-id "[ServiceIdentityObjectID]"
 ```
 
 Jelentkezzen be a virtuális gép felhasználó által hozzárendelt identitásával és a szolgáltatás identitásának erőforrás-azonosítójával:
-
+ 
 ```azcopy
 azcopy login --identity --identity-resource-id "/subscriptions/<subscriptionId>/resourcegroups/myRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myID"
 ```
 
-Jelentkezzen be egyszerű szolgáltatásként egy ügyfél-titkos kulcs használatával. Állítsa a környezeti változót AZCOPY_SPA_CLIENT_SECRET a titkos kulcson alapuló egyszerű szolgáltatás hitelesítéséhez.
+Jelentkezzen be egyszerű szolgáltatásként egy ügyfél titkos kódjával: állítsa be a környezeti változót AZCOPY_SPA_CLIENT_SECRET a titkos kulcshoz tartozó egyszerű szolgáltatás hitelesítő adataihoz.
 
 ```azcopy
-azcopy login --service-principal --application-id "YOUR_APP_ID" --tenant-id "YOUR_TENANT_ID"
+azcopy login --service-principal --application-id <your service principal's application ID>
 ```
 
-Jelentkezzen be egyszerű szolgáltatásként tanúsítvány és jelszó használatával. Állítsa be a környezeti változót a tanúsítvány-alapú egyszerű szolgáltatás hitelesítéséhez AZCOPY_SPA_CERT_PASSWORD a tanúsítvány jelszavára.
+Jelentkezzen be egyszerű szolgáltatásként tanúsítvány és jelszó használatával:
+
+Állítsa a környezeti változót a tanúsítvány-alapú egyszerű szolgáltatásnév hitelesítéséhez AZCOPY_SPA_CERT_PASSWORD a tanúsítvány jelszavára:
 
 ```azcopy
-azcopy login --service-principal --certificate-path /path/to/my/cert
+azcopy login --service-principal --certificate-path /path/to/my/cert --application-id <your service principal's application ID>
 ```
 
-Ügyeljen arra, hogy a/Path/to/my/CERT a PEM-vagy PKCS12/pfx-profil-fájl elérési útjaként kezelje. A AzCopy nem éri el a rendszertanúsítvány-tárolót a tanúsítvány beszerzéséhez.
+A rendszer egy `/path/to/my/cert` PEM-vagy PKCS12/pfx-profil-fájl elérési útját kezeli. A AzCopy nem éri el a rendszertanúsítvány-tárolót a tanúsítvány beszerzéséhez.
 
---Certificate-Path megadása kötelező, ha a tanúsítvány alapú egyszerű szolgáltatás hitelesítését végzi.
+`--certificate-path`a tanúsítványon alapuló egyszerű szolgáltatás hitelesítése esetén kötelező.
 
 ## <a name="options"></a>Beállítások
 
-|Beállítás|Leírás|
-|--|--|
-|--HRE-végpont|A használandó Azure Active Directory végpont. Az alapértelmezett ( `https://login.microsoftonline.com` ) helyes a nyilvános Azure-felhőben. Adja meg ezt a paramétert a hitelesítéshez a nemzeti felhőben. Lásd: [Azure ad-hitelesítési végpontok](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud#azure-ad-authentication-endpoints).
-Ez a jelző nem szükséges a Managed Service Identityhoz.|
-|--Application-ID karakterlánc|A felhasználó által hozzárendelt identitás alkalmazás-azonosítója. Az egyszerű szolgáltatás hitelesítéséhez szükséges.|
-|--Certificate-Path karakterlánc|A tanúsítvány elérési útja az SPN-hitelesítéshez. A tanúsítványalapú szolgáltatásnév hitelesítéséhez szükséges.|
-|-h,-– Súgó|Súgótartalom megjelenítése a login parancshoz.|
-|--Identity|Jelentkezzen be a virtuális gép identitása, más néven felügyelt szolgáltatás identitása (MSI) használatával.|
-|--Identity-Client-ID karakterlánc|A felhasználó által hozzárendelt identitás ügyfél-azonosítója.|
-|--Identity-Object-ID karakterlánc|Felhasználó által hozzárendelt identitás objektum-azonosítója.|
-|--Identity-Resource-id karakterlánc|A felhasználó által hozzárendelt identitás erőforrás-azonosítója.|
-|--szolgáltatás – rendszerbiztonsági tag|Jelentkezzen be SPN-ben (egyszerű szolgáltatásnév) a tanúsítvány vagy a titkos kulcs használatával. Az ügyfél titkos vagy tanúsítványának jelszavát a megfelelő környezeti változóba kell helyezni. `AzCopy env`A környezeti változók nevének és leírásának megjelenítéséhez írja be a következőt:.|
-|--Bérlő-azonosító sztring| az OAuth-eszköz interaktív bejelentkezéséhez használandó Azure Active Directory-bérlői azonosító.|
+**--HRE-Endpoint** karakterlánc a használni kívánt Azure Active Directory végpont. Az alapértelmezett érték ( https://login.microsoftonline.com) megfelelő a globális Azure-felhőhöz. Adja meg ezt a paramétert a hitelesítéshez a nemzeti felhőben. Nem szükséges a Managed Service Identityhoz.
+
+**--** a felhasználó által hozzárendelt identitáshoz tartozó alkalmazás-azonosító karakterlánc-alkalmazás azonosítója. Az egyszerű szolgáltatás hitelesítéséhez szükséges.
+
+**--a tanúsítvány-elérésiút-** karakterlánc elérési útja az SPN-hitelesítéshez. A tanúsítványalapú szolgáltatásnév hitelesítéséhez szükséges.
+
+**– Súgó** a `azcopy login` parancshoz.
+
+**--Identity**   Jelentkezzen be a virtuális gép identitásával, más néven felügyelt szolgáltatás identitásával (MSI).
+
+**--Identity-ügyfél-azonosító** karakterlánc ügyfél-azonosító a felhasználó által hozzárendelt identitáshoz.
+
+**--Identity-Object-ID karakterlánc-** objektum azonosítója a felhasználó által hozzárendelt identitáshoz.
+
+**--Identity-Resource-id** karakterlánc-erőforrás azonosítója a felhasználó által hozzárendelt identitáshoz.
+
+**--szolgáltatás – rendszerbiztonsági tag**   Jelentkezzen be az egyszerű szolgáltatásnév (SPN) használatával egy tanúsítvány vagy egy titkos kód segítségével. Az ügyfél titkos vagy tanúsítványának jelszavát a megfelelő környezeti változóba kell helyezni. Írja be a AzCopy env nevet, és tekintse meg a környezeti változók nevét és leírását.
+
+**--bérlő-azonosító** sztring a OAuth-eszköz interaktív bejelentkezéshez használt Azure Active Directory bérlői azonosító.
 
 ## <a name="options-inherited-from-parent-commands"></a>A szülő parancsoktól örökölt beállítások
 
 |Beállítás|Leírás|
 |---|---|
-|--Cap-Mbps UInt32|Az adatátviteli sebesség (megabit/másodperc). A pillanatnyi átviteli sebesség a korláttól némileg eltérő lehet. Ha a beállítás értéke nulla, vagy nincs megadva, az átviteli sebesség nem lesz maximális.|
+|--Cap-Mbps lebegőpontos|Az adatátviteli sebesség (megabit/másodperc). A pillanatnyi átviteli sebesség a korláttól némileg eltérő lehet. Ha a beállítás értéke nulla, vagy nincs megadva, az átviteli sebesség nem lesz maximális.|
 |--output-Type karakterlánc|A parancs kimenetének formátuma. A lehetőségek a következők: Text, JSON. Az alapértelmezett érték a "text".|
 |--megbízható-Microsoft-utótagok karakterlánca   |További tartomány-utótagokat határoz meg, amelyekben Azure Active Directory bejelentkezési tokenek küldhetők.  Az alapértelmezett érték: "*. Core.Windows.net;*. core.chinacloudapi.cn; *. Core.cloudapi.de;*. core.usgovcloudapi.net '. Az itt felsorolt beállítások az alapértelmezett értékre kerülnek. A biztonság érdekében itt csak Microsoft Azure-tartományokat helyezhet el. Több bejegyzést pontosvesszővel kell elválasztani.|
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 - [azcopy](storage-ref-azcopy.md)

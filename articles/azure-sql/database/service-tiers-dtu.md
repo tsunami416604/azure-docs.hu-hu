@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 11/26/2019
-ms.openlocfilehash: 7ca106e076bc789e8435b9e67d6bffa20af8a635
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 901ad08440cf1cfbbbab4779a08a87c89a72cc59
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539176"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281497"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>A DTU-alapú vásárlási modell szolgáltatásszintjei
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -59,7 +59,7 @@ A szolgáltatási szint kiválasztása elsősorban az üzletmenet folytonossága
 
 A számítási méretek az önálló adatbázisok és a rugalmas adatbázis-tranzakciós egységek (Edtu-EK) adatbázis-tranzakciós egységei (DTU) alapján vannak kifejezve. A DTU és Edtu kapcsolatos további információkért lásd: [DTU-alapú vásárlási modell](purchasing-models.md#dtu-based-purchasing-model).
 
-|Alapszintű|Standard|Prémium|
+||Alapszintű|Standard|Prémium|
 | :-- | --: | --: | --: |
 | Maximális tárterület | 2 GB | 1 TB | 4 TB  |
 | Maximális DTU | 5 | 3000 | 4000 | 
@@ -70,7 +70,7 @@ A számítási méretek az önálló adatbázisok és a rugalmas adatbázis-tran
 
 ## <a name="elastic-pool-edtu-storage-and-pooled-database-limits"></a>Rugalmas készlet eDTU, tárolás és készletezett adatbázisok korlátai
 
-| **Basic** | **Standard** | **Prémium szintű** |
+|| **Basic** | **Standard** | **Prémium szintű** |
 | :-- | --: | --: | --: |
 | Tárterület maximális mérete adatbázison  | 2 GB | 1 TB | 1 TB |
 | Tárterület maximális mérete készlet szerint | 156 GB | 4 TB | 4 TB |
@@ -177,7 +177,7 @@ A teljesítményteszt fő mérőszámai az átviteli sebesség és a válaszidő
 | Standard |Percenkénti tranzakciók |90 százalék 1,0 másodpercnél |
 | Alapszintű |Tranzakció/óra |80th percentilis 2,0 másodpercnél |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Az önálló adatbázisok esetében elérhető számítási méretekről és a tárolási méretekről az önálló [adatbázisok SQL Database DTU-alapú erőforrás-korlátozásai](resource-limits-dtu-single-databases.md#single-database-storage-sizes-and-compute-sizes)című témakörben olvashat bővebben.
 - Az adott számítási méretek és a rugalmas készletekhez rendelkezésre álló tárolási méretek részleteiért lásd: [SQL Database DTU-alapú erőforrás-korlátok](resource-limits-dtu-elastic-pools.md#elastic-pool-storage-sizes-and-compute-sizes).

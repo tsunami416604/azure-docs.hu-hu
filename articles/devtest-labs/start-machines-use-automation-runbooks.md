@@ -3,12 +3,12 @@ title: Gépek elindítása a Azure DevTest Labs Automation runbookok használat�
 description: Megtudhatja, hogyan indíthatja el a virtuális gépeket Azure DevTest Labs tesztkörnyezetben Azure Automation runbookok használatával.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 72ce964b451fb6bcd1e93d75e6ae674c7608d63a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 231e79d594aab7c59fa21f9ee512abaa9ac67043
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85481901"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282262"
 ---
 # <a name="start-virtual-machines-in-a-lab-in-order-by-using-azure-automation-runbooks"></a>Virtuális gépek indítása tesztkörnyezetben Azure Automation runbookok használatával
 A DevTest Labs automatikus [indítási](devtest-lab-set-lab-policy.md#set-autostart) funkciója lehetővé teszi, hogy a virtuális gépek egy adott időpontban automatikusan induljon el. Ez a funkció azonban nem támogatja, hogy a gépek meghatározott sorrendben induljon el. Több esetben is hasznos lehet az ilyen típusú automatizálás.  Az egyik esetben, ha a laboron belül egy Jumpbox virtuális gépet először kell elindítani, a többi virtuális gép előtt, mivel a Jumpbox a többi virtuális géphez való hozzáférési pontként használják.  Ez a cikk bemutatja, hogyan állíthat be egy Azure Automation fiókot egy olyan PowerShell-runbook, amely egy parancsfájlt futtat. A szkript címkéket használ a virtuális gépeken a laborban, így lehetővé teszi az indítási sorrend szabályozását anélkül, hogy módosítani kellene a parancsfájlt.
@@ -20,7 +20,7 @@ Ebben a példában a laborban lévő virtuális gépeknek meg kell adni a címk�
 Hozzon létre egy Azure Automation fiókot a [cikk](../automation/automation-create-standalone-account.md)utasításait követve. A fiók létrehozásakor válassza a **futtató fiókok** lehetőséget. Az Automation-fiók létrehozása után nyissa meg a **modulok** lapot, és válassza az **Azure-modulok frissítése** elemet a menüsávon. Az alapértelmezett modulok több régebbi verziójúak, a frissítés nélkül pedig előfordulhat, hogy a parancsfájl nem működik.
 
 ## <a name="add-a-runbook"></a>Runbook hozzáadása
-Most, ha runbook szeretne hozzáadni az Automation-fiókhoz, válassza a bal oldali menü **runbookok** elemét. Válassza a **Runbook hozzáadása** lehetőséget a menüben, majd kövesse az utasításokat a [PowerShell-runbook létrehozásához](../automation/automation-first-runbook-textual-powershell.md).
+Most, ha runbook szeretne hozzáadni az Automation-fiókhoz, válassza a bal oldali menü **runbookok** elemét. Válassza a **Runbook hozzáadása** lehetőséget a menüben, majd kövesse az utasításokat a [PowerShell-runbook létrehozásához](../automation/learn/automation-tutorial-runbook-textual-powershell.md).
 
 ## <a name="powershell-script"></a>PowerShell-parancsprogram
 A következő szkript az előfizetés nevét, a labor nevét adja meg paraméterként. A szkript folyamata a laborban lévő összes virtuális gép lekérése, majd a címke adatainak elemzése a virtuális gépek nevének és indítási sorrendjének a létrehozásához. A szkript végigvezeti a virtuális gépeken, és elindítja a virtuális gépeket. Ha egy adott sorszám több virtuális gépet használ, a rendszer aszinkron módon indítja el a PowerShell-feladatokat. Azoknak a virtuális gépeknek, amelyek nem rendelkeznek címkével, állítsa be az indítási értéket az utolsó (10) értékre, alapértelmezés szerint a rendszer az utolsót fogja elindítani.  Ha a labor nem szeretné, hogy a virtuális gép automatikusan induljon el, állítsa a címke értéket 11-re, és figyelmen kívül hagyja a rendszer.

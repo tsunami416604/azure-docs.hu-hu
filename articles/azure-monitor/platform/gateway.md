@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/24/2019
-ms.openlocfilehash: 550b4fb7ba17d911618e0b60d16c0a9f9d1f2cfa
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 94c668e7ffaff81fed9c2e511bc38239069fa43e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077282"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87305210"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>Internet-hozzáférés nélküli számítógépek összekötése a Log Analytics átjáró használatával Azure Monitor
 
@@ -75,21 +75,21 @@ A Log Analytics átjáró a következő nyelveken érhető el:
 - Angol
 - Francia
 - Német
-- Magyar
+- magyar
 - Olasz
 - Japán
 - Koreai
-- Lengyel
+- lengyel
 - Portugál (Brazília)
 - Portugál (Portugália)
-- Orosz
+- orosz
 - Spanyol (nemzetközi)
 
 ### <a name="supported-encryption-protocols"></a>Támogatott titkosítási protokollok
 
 Az Log Analytics-átjáró csak Transport Layer Security (TLS) 1,0, 1,1 és 1,2 protokollt támogat.  Nem támogatja SSL (SSL) használatát.  A Log Analytics felé irányuló adatforgalom biztonsága érdekében konfigurálja az átjárót legalább TLS 1,2 használatára. A TLS vagy az SSL régebbi verziói sebezhetőek. Bár jelenleg lehetővé teszik a visszamenőleges kompatibilitást, ne használja őket.  
 
-További információkért tekintse át az [adatok biztonságos küldését a TLS 1,2 használatával](../../azure-monitor/platform/data-security.md#sending-data-securely-using-tls-12). 
+További információkért tekintse át az [adatok biztonságos küldését a TLS 1,2 használatával](./data-security.md#sending-data-securely-using-tls-12). 
 
 ### <a name="supported-number-of-agent-connections"></a>Az ügynökök kapcsolatainak támogatott száma
 
@@ -270,7 +270,7 @@ Az Log Analytics-integráció befejezése után távolítsa el a változást a f
 
    ![Képernyőkép a Operations Managerről, amely a proxykiszolgáló címeit jeleníti meg](./media/gateway/scom02.png)
 
-1. Válassza a **Befejezés** gombot. A Operations Manager felügyeleti csoport úgy van konfigurálva, hogy az átjáró-kiszolgálón keresztül kommunikáljon a Log Analytics szolgáltatással.
+1. Válassza a **Befejezés** lehetőséget. A Operations Manager felügyeleti csoport úgy van konfigurálva, hogy az átjáró-kiszolgálón keresztül kommunikáljon a Log Analytics szolgáltatással.
 
 ### <a name="configure-operations-manager-where-specific-agents-use-a-proxy-server"></a>Operations Manager konfigurálása, ahol az egyes ügynökök proxykiszolgálót használnak
 
@@ -285,7 +285,7 @@ Adott kiszolgálók vagy csoportok konfigurálása a Log Analytics átjárókisz
 1. Nyissa meg a Operations Manager konzolt, és válassza ki a **szerzői műveletek** munkaterületet.  
 1. A szerzői műveletek munkaterületen válassza a **szabályok**lehetőséget. 
 1. A Operations Manager eszköztáron kattintson a **hatókör** gombra. Ha a gomb nem érhető el, győződjön meg róla, hogy a **figyelés** ablaktáblán egy objektumot, nem pedig mappát jelölt ki. A **hatókör felügyeleti csomag objektumai** párbeszédpanel megjeleníti a közös megcélzott osztályok, csoportok vagy objektumok listáját. 
-1. A **Keresés** mezőben adja meg a **állapotfigyelő szolgáltatás** , majd válassza ki a listából. Kattintson az **OK** gombra.  
+1. A **Keresés** mezőben adja meg a **állapotfigyelő szolgáltatás** , majd válassza ki a listából. Válassza az **OK** lehetőséget.  
 1. Keresse meg az **Advisor proxy beállítási szabályát**. 
 1. A Operations Manager eszköztáron válassza a felülbírálások **elemet, majd a** **Rule\For felülbírálása a következő osztály egy adott objektumához: állapotfigyelő szolgáltatás** és válasszon ki egy objektumot a listából.  Vagy hozzon létre egy egyéni csoportot, amely tartalmazza azon kiszolgálók állapotfigyelő szolgáltatási objektumát, amelyekre alkalmazni kívánja ezt a felülbírálást. Ezután alkalmazza a felülbírálást az egyéni csoportra.
 1. A **felülbírálás tulajdonságai** párbeszédpanelen vegyen fel egy pipát a **felülbírálás** oszlopban a **WebProxyAddress** paraméter mellett.  A **felülbírálás értéke** mezőben adja meg az log Analytics átjárókiszolgáló URL-címét. Ügyeljen arra, hogy az előtaggal kezdődjön `http://` .  
@@ -388,4 +388,5 @@ Ha segítséget szeretne kérni, válassza a portál jobb felső sarkában láth
 
 ## <a name="next-steps"></a>További lépések
 
-[Adatforrások hozzáadásával](../../azure-monitor/platform/agent-data-sources.md) adatokat gyűjthet a csatlakoztatott forrásokból, és tárolhatja az adatokat a log Analytics munkaterületen.
+[Adatforrások hozzáadásával](./agent-data-sources.md) adatokat gyűjthet a csatlakoztatott forrásokból, és tárolhatja az adatokat a log Analytics munkaterületen.
+

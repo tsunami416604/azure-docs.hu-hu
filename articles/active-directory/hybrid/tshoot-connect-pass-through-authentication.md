@@ -12,15 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 4/15/2019
+ms.date: 07/27/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 36844c3c2fcfdbf016b3e2d148345e9ce31ea2b4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: baf3566e90802f73accdd27f1cd5435e4af7b9be
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85356151"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281820"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>Az Azure Active Directory átmenő hitelesítésének hibaelhárítása
 
@@ -43,7 +44,7 @@ Győződjön meg arról, hogy az átmenő hitelesítés funkció továbbra is **
 
 Ha a felhasználó nem tud bejelentkezni az átmenő hitelesítés használatával, akkor az Azure AD bejelentkezési képernyőjén a következő, felhasználó által megjelenített hibák egyike jelenhet meg: 
 
-|Hiba|Description|Megoldás:
+|Hiba|Leírás|Feloldás
 | --- | --- | ---
 |AADSTS80001|Nem lehet csatlakozni a Active Directory|Győződjön meg arról, hogy az ügynök-kiszolgálók ugyanahhoz az AD-erdőhöz tartoznak, mint azok a felhasználók, akiknek a jelszavát érvényesíteni kell, és képesek csatlakozni a Active Directoryhoz.  
 |AADSTS8002|Időtúllépés történt a Active Directoryhoz való csatlakozáskor|Győződjön meg arról, hogy a Active Directory elérhető, és válaszol az ügynökök kéréseire.
@@ -62,7 +63,7 @@ Annak ellenőrzéséhez, hogy ez a probléma, először ellenőrizze, hogy az á
 2. Importálja a PowerShell-modult az ügynök gépére:
  
  ```powershell
- Import-Module "C:\Program Files\Microsoft Azure AD Connect Authentication  Agent\Modules\PassthroughAuthPSModule\PassthroughAuthPSModule.psd1"
+ Import-Module "C:\Program Files\Microsoft Azure AD Connect Authentication Agent\Modules\PassthroughAuthPSModule\PassthroughAuthPSModule.psd1"
  ```
 3. Futtassa a PowerShell meghívása parancsot: 
 
@@ -86,7 +87,7 @@ Ha a bérlőhöz prémium szintű Azure AD licenc van társítva, akkor a [bejel
 
 **Azure Active Directory**  ->  **Jelentkezzen** be a [Azure Active Directory felügyeleti központban](https://aad.portal.azure.com/) , és kattintson egy adott felhasználó bejelentkezési tevékenységére. Keresse meg a **bejelentkezési hibakód** mezőt. Képezze le az adott mező értékét a hiba okának és feloldásának a következő táblázat használatával:
 
-|Bejelentkezési hibakód|Bejelentkezési hiba oka|Megoldás:
+|Bejelentkezési hibakód|Bejelentkezési hiba oka|Feloldás
 | --- | --- | ---
 | 50144 | A felhasználó Active Directory jelszava lejárt. | A felhasználó jelszavának alaphelyzetbe állítása a helyszíni Active Directoryban.
 | 80001 | Nem érhető el hitelesítési ügynök. | Hitelesítési ügynök telepítése és regisztrálása.

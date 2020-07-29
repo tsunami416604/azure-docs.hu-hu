@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 05/08/2020
-ms.openlocfilehash: 757dd7280867e9b31fdc0750fc0848de8f266770
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: fff44617a5621d4edd84bee8f9b1e6b6e6924cd8
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045620"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87305924"
 ---
 # <a name="use-managed-identities-to-access-azure-sql-database-from-an-azure-stream-analytics-job-preview"></a>Felügyelt identitások használata Azure SQL Database Azure Stream Analytics feladatokból való eléréséhez (előzetes verzió)
 
@@ -102,7 +102,7 @@ Ezután létre kell hoznia egy tárolt adatbázis-felhasználót a SQL Database,
 
 ## <a name="grant-stream-analytics-job-permissions"></a>Stream Analyticsi feladatok engedélyeinek megadása
 
-Miután létrehozott egy tárolt adatbázis-felhasználót, és hozzáférést kapott az Azure-szolgáltatásokhoz a portálon az előző szakaszban leírtak szerint, a Stream Analyticsi feladatnak rendelkeznie kell a felügyelt identitással való **kapcsolódáshoz** a SQL Database erőforráshoz a felügyelt identitáson keresztül. Javasoljuk, hogy adja meg a SELECT és INSERT engedélyeket a Stream Analytics-feladathoz, mivel a Stream Analytics munkafolyamatban később szükség lesz rájuk. A **Select** engedély lehetővé teszi a feladatoknak a SQL Database lévő táblához való kapcsolódásának tesztelését. Az **Insert** engedély lehetővé teszi a végpontok közötti stream Analytics lekérdezések tesztelését, miután konfigurálta a bemenetet és a SQL Database kimenetet. Ezeket az engedélyeket SQL Server Management Studio használatával adhatja meg a Stream Analytics feladatnak. További információért lásd a [Grant (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/grant-transact-sql?view=sql-server-ver15) referenciát.
+Miután létrehozott egy tárolt adatbázis-felhasználót, és hozzáférést kapott az Azure-szolgáltatásokhoz a portálon az előző szakaszban leírtak szerint, a Stream Analyticsi feladatnak rendelkeznie kell a felügyelt identitással való **kapcsolódáshoz** a SQL Database erőforráshoz a felügyelt identitáson keresztül. Javasoljuk, hogy adja meg a SELECT és INSERT engedélyeket a Stream Analytics-feladathoz, mivel a Stream Analytics munkafolyamatban később szükség lesz rájuk. A **Select** engedély lehetővé teszi a feladatoknak a SQL Database lévő táblához való kapcsolódásának tesztelését. Az **Insert** engedély lehetővé teszi a végpontok közötti stream Analytics lekérdezések tesztelését, miután konfigurálta a bemenetet és a SQL Database kimenetet. Ezeket az engedélyeket SQL Server Management Studio használatával adhatja meg a Stream Analytics feladatnak. További információért lásd a GRANT (Transact-SQL) referenciát.
 
 Ha csak egy adott táblához vagy objektumhoz kíván engedélyeket adni az adatbázisban, használja a következő T-SQL szintaxist, és futtassa a lekérdezést. 
 

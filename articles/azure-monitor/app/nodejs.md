@@ -3,16 +3,17 @@ title: A Node.js szolgáltatások figyelése az Azure Application Insights segí
 description: Teljesítmény figyelése és problémák diagnosztizálása a Node.js szolgáltatásokban az Application Insights segítségével.
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.openlocfilehash: 80b4c4336a3e253e38790520a7eb4458ca36ff30
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-javascript
+ms.openlocfilehash: c6a1a030829f128c4369e99efcd56a416390afc6
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87024384"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371617"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>A Node.js szolgáltatások és appok figyelése az Application Insights segítségével
 
-Az üzembe helyezést követően [Application Insights](../../azure-monitor/app/app-insights-overview.md) figyeli a háttérbeli szolgáltatásokat és összetevőket, hogy segítsen felderíteni és gyorsan diagnosztizálni a teljesítményt és egyéb problémákat. Az adatközpontban, az Azure-beli virtuális gépeken és a webalkalmazásokban, sőt más nyilvános felhőkben üzemeltetett Node.js-szolgáltatásokhoz Application Insights is használhatja.
+Az üzembe helyezést követően [Application Insights](./app-insights-overview.md) figyeli a háttérbeli szolgáltatásokat és összetevőket, hogy segítsen felderíteni és gyorsan diagnosztizálni a teljesítményt és egyéb problémákat. Az adatközpontban, az Azure-beli virtuális gépeken és a webalkalmazásokban, sőt más nyilvános felhőkben üzemeltetett Node.js-szolgáltatásokhoz Application Insights is használhatja.
 
 A megfigyelési adatok fogadásához, tárolásához és vizsgálatához építse be az SDK-t a programkódba, majd állítson be egy megfelelő Application Insights-erőforrást az Azure-ban. Az SDK ennek az erőforrásnak küldi az adatokat további elemzés és vizsgálat céljából.
 
@@ -80,8 +81,8 @@ Mivel az SDK kötegeli az adatokat az elküldéshez, az elemek késve jelenhetne
 
 * Folytassa az alkalmazás használatát. Végezzen el több műveletet, hogy több telemetria jöjjön létre.
 * Kattintson a **Frissítés** gombra a portál erőforrásnézetében. A diagramok adott időközönként maguktól frissülnek, de manuálisan azonnal is frissíthetők.
-* Ellenőrizze, hogy a [szükséges kimenő portok](../../azure-monitor/app/ip-addresses.md) nyitva vannak-e.
-* [Keressen rá](../../azure-monitor/app/diagnostic-search.md) bizonyos eseményekre.
+* Ellenőrizze, hogy a [szükséges kimenő portok](./ip-addresses.md) nyitva vannak-e.
+* [Keressen rá](./diagnostic-search.md) bizonyos eseményekre.
 * Tekintse meg a [gyakori kérdésekkel foglalkozó részt][FAQ].
 
 ## <a name="basic-usage"></a>Alapszintű használat
@@ -216,7 +217,7 @@ appInsights
 
 ## <a name="telemetryclient-api"></a>TelemetryClient API
 
-A TelemetryClient API részletes leírásával kapcsolatban lásd az [egyéni eseményekhez és a mérőszámokhoz rendelkezésre álló Application Insights API-t](../../azure-monitor/app/api-custom-events-metrics.md).
+A TelemetryClient API részletes leírásával kapcsolatban lásd az [egyéni eseményekhez és a mérőszámokhoz rendelkezésre álló Application Insights API-t](./api-custom-events-metrics.md).
 
 Az Application Insights Node.js SDK használatával bármilyen kérést, eseményt, mérőszámot vagy kivételt követhet. Az alábbi példakód a használható API-k közül mutat be néhányat.
 
@@ -414,10 +415,11 @@ Ezek a tulajdonságok az ügyfél-specifikusak, így a `appInsights.defaultClien
 
 ## <a name="next-steps"></a>További lépések
 
-* [A telemetria figyelése a portálon](../../azure-monitor/app/overview-dashboard.md)
-* [Analytics-lekérdezések írása a telemetrián](../../azure-monitor/log-query/get-started-portal.md)
+* [A telemetria figyelése a portálon](./overview-dashboard.md)
+* [Analytics-lekérdezések írása a telemetrián](../log-query/get-started-portal.md)
 
 <!--references-->
 
 [portal]: https://portal.azure.com/
 [FAQ]: ../faq.md
+

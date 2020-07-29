@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/15/2020
 ms.author: apimpm
-ms.openlocfilehash: 7ec89d985c025814d903ae9a16f9b0f5123b3571
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ef16339d9a584eb12c611a25d636a9287265953a
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87056438"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284336"
 ---
 # <a name="feature-based-comparison-of-the-azure-api-management-tiers"></a>Az Azure API Management szintjeinek szolgáltatáson alapuló összehasonlítása
 
@@ -26,22 +26,22 @@ Az egyes API Management [díjszabási szintjei](https://aka.ms/apimpricing) kül
 > [!IMPORTANT]
 > Vegye figyelembe, hogy a fejlesztői réteg nem üzemi célú használati esetekre és értékelésekre szolgál. Nem biztosít SLA-t.
 
-| Funkció                                                                                      | Használat | Fejlesztő | Alapszintű | Standard | Prémium |
+| Funkció                                                                                      | Használat | Fejlesztői | Alapszintű | Standard | Prémium |
 | -------------------------------------------------------------------------------------------- | ----------- | --------- | ----- | -------- | ------- |
-| Azure AD-integráció<sup>1</sup>                                                             | No          | Yes       | No    | Igen      | Igen     |
-| Virtual Network (VNet) támogatása                                                               | No          | Yes       | Nem    | Nem       | Yes     |
-| Többrégiós üzembe helyezés                                                                      | Nem          | Nem        | Nem    | Nem       | Yes     |
-| Több egyéni tartománynév                                                                 | Nem          | Nem        | Nem    | Nem       | Yes     |
-| Fejlesztői portál<sup>2</sup>                                                                 | No          | Igen       | Igen   | Igen      | Igen     |
-| Beépített gyorsítótár                                                                               | No          | Igen       | Igen   | Igen      | Igen     |
-| Beépített Analitika                                                                           | No          | Igen       | Igen   | Igen      | Igen     |
-| [Saját üzemeltetésű átjáró](self-hosted-gateway-overview.md)<sup>3</sup>                           | No          | Yes       | Nem    | Nem       | Yes     |
+| Azure AD-integráció<sup>1</sup>                                                             | Nem          | Igen       | Nem    | Igen      | Igen     |
+| Virtual Network (VNet) támogatása                                                               | Nem          | Igen       | Nem    | Nem       | Igen     |
+| Többrégiós üzembe helyezés                                                                      | Nem          | Nem        | Nem    | Nem       | Igen     |
+| Több egyéni tartománynév                                                                 | Nem          | Igen        | Nem    | Nem       | Igen     |
+| Fejlesztői portál<sup>2</sup>                                                                 | Nem          | Igen       | Igen   | Igen      | Igen     |
+| Beépített gyorsítótár                                                                               | Nem          | Igen       | Igen   | Igen      | Igen     |
+| Beépített Analitika                                                                           | Nem          | Igen       | Igen   | Igen      | Igen     |
+| [Saját üzemeltetésű átjáró](self-hosted-gateway-overview.md)<sup>3</sup>                           | Nem          | Igen       | Nem    | Nem       | Igen     |
 | [TLS-beállítások](api-management-howto-manage-protocols-ciphers.md)                             | Igen         | Igen       | Igen   | Igen      | Igen     |
 | [Külső gyorsítótár](https://aka.ms/apimbyoc)                                                    | Igen         | Igen       | Igen   | Igen      | Igen     |
 | [Ügyféltanúsítvány-alapú hitelesítés](api-management-howto-mutual-certificates-for-clients.md) | Igen         | Igen       | Igen   | Igen      | Igen     |
-| [Biztonsági mentés és helyreállítás](api-management-howto-disaster-recovery-backup-restore.md)               | No          | Igen       | Igen   | Igen      | Igen     |
-| [Felügyelet a git felett](api-management-configuration-repository-git.md)                        | No          | Igen       | Igen   | Igen      | Igen     |
-| Közvetlen felügyeleti API                                                                        | No          | Igen       | Igen   | Igen      | Igen     |
+| [Biztonsági mentés és helyreállítás](api-management-howto-disaster-recovery-backup-restore.md)               | Nem          | Igen       | Igen   | Igen      | Igen     |
+| [Felügyelet a git felett](api-management-configuration-repository-git.md)                        | Nem          | Igen       | Igen   | Igen      | Igen     |
+| Közvetlen felügyeleti API                                                                        | Nem          | Igen       | Igen   | Igen      | Igen     |
 | Naplók és mérőszámok Azure Monitor                                                               | Igen         | Igen       | Igen   | Igen      | Igen     |
 | Statikus IP-cím                                                                                    | Nem          | Igen       | Igen   | Igen      | Igen     |
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/10/2016
 ms.author: ricarlse
 ms.custom: seodec18
-ms.openlocfilehash: a3bd48f32dfcee1a666ff842cfcab2384a5459ec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5bf7a1e3cc2bfa8ccf42d05e199c58b8c9314fce
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67849265"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281701"
 ---
 # <a name="expressroute-for-cloud-solution-providers-csp"></a>ExpressRoute felhőszolgáltatók (CSP) számára
 A Microsoft hatalmas léptékű szolgáltatásokat kínál a hagyományos viszonteladók és forgalmazók (CSP) számára, hogy gyorsan láthassák el ügyfeleiket új szolgáltatásokat és megoldásokat anélkül, hogy be kellene fektetniük az új szolgáltatások fejlesztésébe. Ahhoz, hogy lehetővé tegye a felhőszolgáltatók (CSP) számára az új szolgáltatások közvetlen felügyeletét, a Microsoft olyan programokat és API-kat biztosít, amelyek segítségével a CSP-k ügyfeleik nevében felügyelhetik a Microsoft Azure-erőforrásokat. Ezeknek az erőforrásoknak az egyike az ExpressRoute. Az ExpressRoute lehetővé teszi, hogy a CSP meglévő ügyfélerőforrásait csatlakoztassa az Azure-szolgáltatásokhoz. Az ExpressRoute egy nagy sebességű privát kommunikációs kapcsolat az Azure-ban lévő szolgáltatásokhoz. 
@@ -130,5 +130,5 @@ A felhőszolgáltatói szolgáltatás segítségével anélkül növelheti az ü
 További információt az alábbi hivatkozásokat követve tekinthet meg:
 
 [Azure a felhőszolgáltatói programban](https://docs.microsoft.com/azure/cloud-solution-provider).  
-[Felkészülés a felhőszolgáltatóként kínált tranzakciók végrehajtására](https://partner.microsoft.com/en-us/solutions/cloud-reseller-pre-launch).  
-[A Microsoft felhőszolgáltatói erőforrásai](https://partner.microsoft.com/en-us/solutions/cloud-reseller-resources).
+[Felkészülés a felhőszolgáltatóként kínált tranzakciók végrehajtására](https://partner.microsoft.com/solutions/cloud-reseller-pre-launch).  
+[A Microsoft felhőszolgáltatói erőforrásai](https://partner.microsoft.com/solutions/cloud-reseller-resources).

@@ -1,6 +1,6 @@
 ---
-title: Windows rendszerű virtuális asztali gazdagépek terheléselosztása (2019) – Azure
-description: Ismerje meg a Windows rendszerű virtuális asztali (2019-es kiadási) környezethez tartozó gazdagépek terheléselosztási módszereit.
+title: Windows rendszerű virtuális asztali (klasszikus) gazdagép-készlet terheléselosztása – Azure
+description: Gazdagépek terheléselosztási módszerei a Windows rendszerű virtuális asztali környezetekhez.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 50819fc6b1e13aeb1c0eddf306ecdfbe8147a44f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3854471b2e74bd7c3315ae622a36588af0270d8c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87046263"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284999"
 ---
-# <a name="host-pool-load-balancing-methods-fall-2019-release"></a>Gazdagép-készlet terheléselosztási módszerei (2019-es kiadás)
+# <a name="host-pool-load-balancing-methods-in-windows-virtual-desktop-classic"></a>Gazdagépek terheléselosztási módszerei a Windows Virtual Desktopban (klasszikus)
 
 >[!IMPORTANT]
->Ez a tartalom a Fall 2019 kiadásra vonatkozik, amely nem támogatja a Windows rendszerű virtuális asztali objektumokat Azure Resource Manager. Ha a Spring 2020 Update szolgáltatásban bevezetett Azure Resource Manager Windows rendszerű virtuális asztali objektumokat szeretne felügyelni, tekintse meg [ezt a cikket](../host-pool-load-balancing.md).
+>Ez a tartalom a Windows rendszerű virtuális asztali (klasszikus) verzióra vonatkozik, amely nem támogatja Azure Resource Manager Windows rendszerű virtuális asztali objektumokat. Ha Azure Resource Manager Windows rendszerű virtuális asztali objektumokat szeretne felügyelni, tekintse meg [ezt a cikket](../host-pool-load-balancing.md).
 
 A Windows rendszerű virtuális asztali gépek két terheléselosztási módszert támogatnak. Az egyes módszerek határozzák meg, hogy melyik munkamenet-állomás fogja tárolni a felhasználó munkamenetét, amikor egy gazdagépen lévő erőforráshoz csatlakoznak.
 

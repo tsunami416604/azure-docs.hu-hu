@@ -6,12 +6,12 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 07/21/2020
-ms.openlocfilehash: 59d5c6c4a9c3af70eb08e9d5a05d516f4b8b8bdd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d85fe36bb948ae9a0c81fa25f87450c7f5fe93b7
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87099664"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337262"
 ---
 # <a name="azure-cache-for-redis-with-azure-private-link-preview"></a>Azure cache a Redis az Azure Private linkkel (előzetes verzió)
 Az Azure Private Endpoint egy olyan hálózati adapter, amely az Azure-beli privát kapcsolaton keresztül az Azure cache-hez biztosít privát és biztonságos Redis. 
@@ -45,7 +45,7 @@ Ebből a cikkből megtudhatja, hogyan hozhat létre Azure cache-t, egy Azure-bel
    | **Hely** | Legördülő menüből válassza ki a helyet. | Válasszon ki egy [régiót](https://azure.microsoft.com/regions/) a többi olyan szolgáltatás közelében, amely a gyorsítótárat fogja használni. |
    | **Tarifacsomag** | Legördülő menüből válassza ki a [díjszabási szintet](https://azure.microsoft.com/pricing/details/cache/). |  A tarifacsomag határozza meg a gyorsítótár méretét, teljesítményét és elérhető funkcióit. További információ: [Azure cache for Redis – áttekintés](cache-overview.md). |
    
-1. Kattintson a **Létrehozás** gombra. 
+1. Válassza a **Létrehozás** lehetőséget. 
    
     :::image type="content" source="media/cache-private-link/3-new-cache.png" alt-text="Azure cache létrehozása a Redis számára.":::
    
@@ -71,9 +71,9 @@ Ebben a szakaszban létre fog hozni egy virtuális hálózatot és alhálózatot
     |------------------|-----------------------------------------------------------------|
     | **Projekt részletei**  |                                                                 |
     | Előfizetés     | Legördülő menüből válassza ki az előfizetését.                                  |
-    | Resource Group (Erőforráscsoport)   | Válassza ki a legördülő listát, és válasszon ki egy erőforráscsoportot. |
+    | Erőforráscsoport   | Válassza ki a legördülő listát, és válasszon ki egy erőforráscsoportot. |
     | **Példány részletei** |                                                                 |
-    | Name             | Be**\<virtual-network-name>**                                    |
+    | Név             | Be**\<virtual-network-name>**                                    |
     | Régió           | Válassza**\<region-name>** |
 
 4. Válassza az **IP-címek** lapot, vagy válassza a **következő: IP-címek** gombot az oldal alján.
@@ -97,7 +97,7 @@ Ebben a szakaszban létre fog hozni egy virtuális hálózatot és alhálózatot
 
 9. Válassza a **felülvizsgálat + létrehozás** lapot, vagy kattintson a **felülvizsgálat + létrehozás** gombra.
 
-10. Kattintson a **Létrehozás** gombra.
+10. Válassza a **Létrehozás** lehetőséget.
 
 
 ## <a name="create-a-private-endpoint"></a>Privát végpont létrehozása 
@@ -124,7 +124,7 @@ Ebben a szakaszban létrehoz egy privát végpontot, és a korábban létrehozot
     | Előfizetés | Legördülő menüből válassza ki az előfizetését. |
     | Erőforráscsoport | Válassza ki a legördülő listát, és válasszon ki egy erőforráscsoportot. |
     | **PÉLDÁNY RÉSZLETEI** |  |
-    | Name |Adja meg a privát végpont nevét.  |
+    | Név |Adja meg a privát végpont nevét.  |
     | Régió |Legördülő menüből válassza ki a helyet. |
     |||
 
@@ -149,3 +149,9 @@ Ebben a szakaszban létrehoz egy privát végpontot, és a korábban létrehozot
 11. Válassza a **felülvizsgálat + létrehozás**lehetőséget. A **felülvizsgálat + létrehozás**   lapon az Azure ellenőrzi a konfigurációt.
 
 12. Amint megjelenik az **átadott zöld ellenőrzés** üzenet, válassza a **Létrehozás**lehetőséget.
+
+
+## <a name="next-steps"></a>Következő lépések
+
+Ha többet szeretne megtudni a privát hivatkozásokról, tekintse meg az [Azure Private link dokumentációját](https://docs.microsoft.com/azure/private-link/private-link-overview). 
+

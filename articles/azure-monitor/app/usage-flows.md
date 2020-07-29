@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 01/24/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 6583a2fe5abd0193f37502e07c7b3fa0ee58ba9d
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: a31ab24b96fa44787d08801a0680f94ff98bb5a2
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85963431"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87309269"
 ---
 # <a name="analyze-user-navigation-patterns-with-user-flows-in-application-insights"></a>Felhasználói navigációs mintázatok elemzése Felhasználókövetésekkel Application Insights
 
@@ -27,7 +27,7 @@ A Felhasználókövetés eszköz megjeleníti, hogyan navigálnak a felhasznál�
 A Felhasználókövetés eszköz a megadott kezdeti oldal nézetből, egyéni eseményből vagy kivételből indul el. A kezdeti esemény miatt Felhasználókövetés a felhasználói munkamenetek előtt és után megjelenő eseményeket jeleníti meg. A különböző vastagságú vonalak azt mutatják, hogy az egyes útvonalakat hány alkalommal követték a felhasználók. A speciális **munkamenet-elindított** csomópontok azt mutatják be, hogy a következő csomópontok mikor kezdték meg a munkamenetet A **munkamenet-befejező** csomópontok megmutatják, hány felhasználó nem adott meg oldalletöltések vagy egyéni eseményt az előző csomópont után, kiemelve, hogy a felhasználók valószínűleg otthagyták a helyet.
 
 > [!NOTE]
-> A Application Insights-erőforrásnak az Felhasználókövetés eszköz használatára vonatkozó oldalletöltések vagy egyéni események között kell szerepelnie. [Megtudhatja, hogyan állíthatja be az alkalmazást úgy, hogy automatikusan összegyűjtse a Application Insights JavaScript SDK-val](../../azure-monitor/app/javascript.md).
+> A Application Insights-erőforrásnak az Felhasználókövetés eszköz használatára vonatkozó oldalletöltések vagy egyéni események között kell szerepelnie. [Megtudhatja, hogyan állíthatja be az alkalmazást úgy, hogy automatikusan összegyűjtse a Application Insights JavaScript SDK-val](./javascript.md).
 >
 >
 
@@ -52,7 +52,7 @@ Ha olyan oldalletöltések vagy egyéni események hiányoznak, amelyeket a vizu
 * A **Szerkesztés** menüben keresse meg a **kizárt események** szakaszt.
 * A **többi** csomóponton található plusz gombokkal a vizualizációban ritkábban előforduló eseményeket is tartalmazhat.
 * Ha a felhasználók nem ritkán küldik el az oldal nézetét vagy a várt egyéni eseményt, próbálja meg növelni a vizualizáció időtartományát a **szerkesztési** menüben.
-* Győződjön meg arról, hogy a várt oldal nézet, egyéni esemény vagy kivétel úgy van beállítva, hogy az Application Insights SDK gyűjtsön a hely forráskódjában. [További információ az egyéni események összegyűjtéséről.](../../azure-monitor/app/api-custom-events-metrics.md)
+* Győződjön meg arról, hogy a várt oldal nézet, egyéni esemény vagy kivétel úgy van beállítva, hogy az Application Insights SDK gyűjtsön a hely forráskódjában. [További információ az egyéni események összegyűjtéséről.](./api-custom-events-metrics.md)
 
 Ha további lépéseket szeretne látni a vizualizációban, használja az **előző lépéseket** és a **következő lépések** legördülő listát a vizualizáció felett.
 
@@ -92,4 +92,5 @@ Használja a **Szerkesztés** menü **felosztás** lehetőségeit:
 * [A használat áttekintése](usage-overview.md)
 * [Felhasználók, munkamenetek és események](usage-segmentation.md)
 * [Megőrzés](usage-retention.md)
-* [Egyéni események hozzáadása az alkalmazáshoz](../../azure-monitor/app/api-custom-events-metrics.md)
+* [Egyéni események hozzáadása az alkalmazáshoz](./api-custom-events-metrics.md)
+

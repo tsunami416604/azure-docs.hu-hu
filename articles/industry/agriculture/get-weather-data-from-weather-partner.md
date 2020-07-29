@@ -5,12 +5,12 @@ author: sunasing
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: sunasing
-ms.openlocfilehash: 51a25b66968f43facddb9187a6793b2e39e0fdbd
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e6678eb2e738c206bbe67151361b594679d97b35
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536623"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281021"
 ---
 # <a name="get-weather-data-from-weather-partners"></a>Időjárási adatok beolvasása a partnerektől
 
@@ -26,7 +26,7 @@ Az időjárási idő beszerzéséhez győződjön meg arról, hogy [telepítette
 
 A FarmBeats-Datahub időjárási adatai beszerzésének megkezdéséhez:
 
-1. Nyissa meg a FarmBeats Datahub [hencegő](https://farmbeatswebsite-api.azurewebsites.net/swagger)programot.
+1. Nyissa meg a FarmBeats Datahub hencegő programot `https://farmbeatswebsite-api.azurewebsites.net/swagger` .
 
 2. Nyissa meg a/partner API-t, és tegye meg a POST kérelmet. Használja a következő bemeneti adattartalmat:
 
@@ -225,6 +225,6 @@ A feladatokkal kapcsolatos hibák elhárításához [Keresse meg a feladatok nap
 |  name   |   A partner kívánt neve a FarmBeats-rendszeren.   |
 |  leírás |  Leírás.   |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy lekérdezte az érzékelő adatait az Azure FarmBeats-példányról, Ismerje meg, hogyan [hozhatja](generate-maps-in-azure-farmbeats.md#generate-maps) ki a térképeket a farmokhoz.

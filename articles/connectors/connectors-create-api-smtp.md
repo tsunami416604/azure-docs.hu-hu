@@ -7,11 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 08/25/2018
 tags: connectors
-ms.openlocfilehash: 1cfc53dcd730262101c0e879e0419ba3f2db4d38
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9989d0ebd95bfe5ee49be2ba76b73e07630b519a
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80657006"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283945"
 ---
 # <a name="send-email-from-your-smtp-account-with-azure-logic-apps"></a>E-mail küldése az SMTP-fiókból Azure Logic Apps
 
@@ -50,12 +51,12 @@ A Azure Logic Apps és a Simple Mail Transfer Protocol (SMTP) összekötővel au
 
    | Tulajdonság | Kötelező | Leírás |
    |----------|----------|-------------|
-   | **Kapcsolat neve** | Yes | Az SMTP-kiszolgálóhoz való kapcsolódás neve | 
-   | **SMTP-kiszolgáló címe** | Yes | Az SMTP-kiszolgáló címe | 
-   | **Felhasználónév** | Yes | Az SMTP-fiókhoz tartozó Felhasználónév | 
-   | **Jelszó** | Yes | Az SMTP-fiók jelszava | 
-   | **SMTP-kiszolgáló portja** | No | Egy megadott port a használni kívánt SMTP-kiszolgálón | 
-   | **Engedélyezi az SSL használatát?** | No | A TLS/SSL titkosítás bekapcsolása vagy kikapcsolása. | 
+   | **Kapcsolat neve** | Igen | Az SMTP-kiszolgálóhoz való kapcsolódás neve | 
+   | **SMTP-kiszolgáló címe** | Igen | Az SMTP-kiszolgáló címe | 
+   | **Felhasználónév** | Igen | Az SMTP-fiókhoz tartozó Felhasználónév | 
+   | **Jelszó** | Igen | Az SMTP-fiók jelszava | 
+   | **SMTP-kiszolgáló portja** | Nem | Egy megadott port a használni kívánt SMTP-kiszolgálón | 
+   | **Engedélyezi az SSL használatát?** | Nem | A TLS/SSL titkosítás bekapcsolása vagy kikapcsolása. | 
    |||| 
 
 1. Adja meg a kiválasztott művelethez szükséges adatokat. 
@@ -64,7 +65,7 @@ A Azure Logic Apps és a Simple Mail Transfer Protocol (SMTP) összekötővel au
 
 ## <a name="connector-reference"></a>Összekötő-referencia
 
-Az összekötő részletes technikai részleteiről, például az eseményindítók, a műveletek és a korlátok az összekötő hencegő fájljában leírtak alapján: az [összekötő hivatkozási lapja](https://docs.microsoft.com/connectors/smtpconnector/).
+Az összekötő részletes technikai részleteiről, például az eseményindítók, a műveletek és a korlátok az összekötő hencegő fájljában leírtak alapján: az [összekötő hivatkozási lapja](/connectors/smtpconnector/).
 
 > [!NOTE]
 > Az [integrációs szolgáltatási környezet (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)logikai alkalmazásai esetében az összekötő ISE által címkézett verziója az [ISE-üzenetek korlátait](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) használja helyette.

@@ -1,6 +1,6 @@
 ---
 title: Microsoft Global Network – Azure
-description: Leírja, hogyan építi fel a Microsoft a gyors és megbízható globális hálózatot
+description: Ismerje meg, hogy a Microsoft hogyan építi fel és működteti a világ egyik legnagyobb gerinces hálózatát, és hogy miért fontos a nagy Felhőbeli élmény megvalósítása.
 services: networking
 documentationcenter: ''
 author: KumudD
@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 06/13/2019
 ms.author: kumud
 ms.reviewer: ypitsch
-ms.openlocfilehash: 5028417758bb8be38505d27d3dfb5e2fc055c3ca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9420d52cf7d88ff84fd23928f92cdc62e9627619
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85125821"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87280902"
 ---
 # <a name="microsoft-global-network"></a>Microsoft globális hálózat
 

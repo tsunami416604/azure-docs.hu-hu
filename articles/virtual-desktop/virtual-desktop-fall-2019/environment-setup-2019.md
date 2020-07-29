@@ -1,6 +1,6 @@
 ---
-title: Windows rendszerű virtuális asztali környezet (Fall 2019) – Azure
-description: Ismerje meg a Windows rendszerű virtuális asztali (2019-es kiadási) környezet alapvető elemeit, például a bérlőket és a gazdagépeket.
+title: Windows rendszerű virtuális asztali (klasszikus) környezet – Azure
+description: A Windows rendszerű virtuális asztali környezet (klasszikus) alapvető elemei.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 8cb41b4f94b14a94c79b490e38889825fd9d8d1a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2c019dd187c0ccd7a63f71c0373a0388135afda9
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082647"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285016"
 ---
-# <a name="windows-virtual-desktop-environment-fall-2019-release"></a>Windows rendszerű virtuális asztali környezet (2019-es kiadás)
+# <a name="windows-virtual-desktop-classic-environment"></a>Windows rendszerű virtuális asztali (klasszikus) környezet
 
 >[!IMPORTANT]
->Ez a tartalom a Fall 2019 kiadásra vonatkozik, amely nem támogatja a Windows rendszerű virtuális asztali objektumokat Azure Resource Manager. Ha a Spring 2020 Update szolgáltatásban bevezetett Azure Resource Manager Windows rendszerű virtuális asztali objektumokat szeretne felügyelni, tekintse meg [ezt a cikket](../environment-setup.md).
+>Ez a tartalom a Windows rendszerű virtuális asztali (klasszikus) verzióra vonatkozik, amely nem támogatja Azure Resource Manager Windows rendszerű virtuális asztali objektumokat. Ha Azure Resource Manager Windows rendszerű virtuális asztali objektumokat szeretne felügyelni, tekintse meg [ezt a cikket](../environment-setup.md).
 
 A Windows Virtual Desktop egy olyan szolgáltatás, amely egyszerű és biztonságos hozzáférést biztosít a felhasználóknak a virtualizált asztali számítógépekhez és a RemoteAppokhoz. Ez a témakör részletesen ismerteti a Windows rendszerű virtuális asztali környezet általános szerkezetét.
 

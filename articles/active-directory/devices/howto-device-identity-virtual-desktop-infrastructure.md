@@ -11,11 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b431cee3b8e5fc168dec2766442d6f6b9869d1e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 450f04c7de68bf6db282577fbc8e841f1f3c93fc
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74900371"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284404"
 ---
 # <a name="device-identity-and-desktop-virtualization"></a>Eszköz-identitás és asztali virtualizálási
 
@@ -42,20 +43,20 @@ Mielőtt az eszköz identitásait az Azure AD-ben konfigurálja a VDI-környezet
 
 | Eszköz identitásának típusa | Identitás-infrastruktúra | Windows rendszerű eszközök | VDI platform verziója | Támogatott |
 | --- | --- | --- | --- | --- |
-| csatlakozik a Hibrid Azure AD-hez | Összevont | Windows jelenlegi * * * és Windows Down-Level * * * * | Állandó | Yes |
-|   |   | Windows jelenlegi | Nem állandó | No |
-|   |   | Korábbi verziójú Windows | Nem állandó | Yes |
-|   | Felügyelt * * | Windows jelenlegi és Windows Down-Level | Állandó | Yes |
-|   |   | Windows jelenlegi | Nem állandó | No |
-|   |   | Korábbi verziójú Windows | Nem állandó | Yes |
-| Azure AD-hez csatlakoztatva | Összevont | Windows jelenlegi | Állandó | No |
-|   |   |   | Nem állandó | No |
-|   | Felügyelt | Windows jelenlegi | Állandó | No |
-|   |   |   | Nem állandó | No |
-| Az Azure AD-ban regisztrálva | Összevont | Windows jelenlegi | Állandó | No |
-|   |   |   | Nem állandó | No |
-|   | Felügyelt | Windows jelenlegi | Állandó | No |
-|   |   |   | Nem állandó | No |
+| csatlakozik a Hibrid Azure AD-hez | Összevont | Windows jelenlegi * * * és Windows Down-Level * * * * | Állandó | Igen |
+|   |   | Windows jelenlegi | Nem állandó | Nem |
+|   |   | Korábbi verziójú Windows | Nem állandó | Igen |
+|   | Felügyelt * * | Windows jelenlegi és Windows Down-Level | Állandó | Igen |
+|   |   | Windows jelenlegi | Nem állandó | Nem |
+|   |   | Korábbi verziójú Windows | Nem állandó | Igen |
+| Azure AD-hez csatlakoztatva | Összevont | Windows jelenlegi | Állandó | Nem |
+|   |   |   | Nem állandó | Nem |
+|   | Felügyelt | Windows jelenlegi | Állandó | Nem |
+|   |   |   | Nem állandó | Nem |
+| Az Azure AD-ban regisztrálva | Összevont | Windows jelenlegi | Állandó | Nem alkalmazható |
+|   |   |   | Nem állandó | Nem |
+|   | Felügyelt | Windows jelenlegi | Állandó | Nem alkalmazható |
+|   |   |   | Nem állandó | Nem |
 
 \*Az **összevont** identitás-infrastruktúra környezete olyan identitás-szolgáltatói környezetet képvisel, mint például a AD FS vagy más harmadik féltől származó identitásszolgáltató.
 

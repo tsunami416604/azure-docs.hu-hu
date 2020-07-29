@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/19/2016
-ms.openlocfilehash: 39f564bea8d300d2966afe27ff0239c527f038cf
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5af0eb20f9766369caa7351719b63b213c394e5d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092813"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87305805"
 ---
 # <a name="send-cloud-service-virtual-machine-or-service-fabric-diagnostic-data-to-application-insights"></a>A felhőalapú szolgáltatás, a virtuális gép vagy a Service Fabric diagnosztikai adatbázis küldése Application Insights
 A Cloud Services, a Virtual Machines, a Virtual Machine Scale Sets és a Service Fabric mind a Azure Diagnostics bővítményt használja az adatok gyűjtéséhez.  Az Azure Diagnostics adatokat küld az Azure Storage-táblákba.  Az Azure Diagnostics Extension 1,5-es vagy újabb verziójának használatával azonban az összes vagy egy részhalmazát is áthelyezheti más helyszínekre.
@@ -59,8 +59,8 @@ Példa a fogadó Application Insightsra való konfigurálására:
 - A **fogadó** *neve* attribútum egy karakterlánc-érték, amely egyedileg azonosítja a fogadót.
 
 - A **ApplicationInsights** elem határozza meg az Application ininsight-erőforrás rendszerállapot-kulcsát, ahol az Azure Diagnostics-adatait küldik.
-    - Ha nem rendelkezik meglévő Application Insights erőforrással, az erőforrások létrehozásával és a kialakítási kulcs beszerzésével kapcsolatos további információkért tekintse meg az [új Application Insights-erőforrás létrehozása](../../azure-monitor/app/create-new-resource.md ) című témakört.
-    - Ha felhőalapú szolgáltatást fejleszt az Azure SDK 2,8-as és újabb verzióival, a rendszer automatikusan kitölti ezt a kialakítási kulcsot. Az érték a Cloud Service-projekt csomagolásakor a **APPINSIGHTS_INSTRUMENTATIONKEY** szolgáltatás konfigurációs beállításán alapul. Lásd: [a Application Insights használata a Cloud Services](../../azure-monitor/app/cloudservices.md).
+    - Ha nem rendelkezik meglévő Application Insights erőforrással, az erőforrások létrehozásával és a kialakítási kulcs beszerzésével kapcsolatos további információkért tekintse meg az [új Application Insights-erőforrás létrehozása](../app/create-new-resource.md) című témakört.
+    - Ha felhőalapú szolgáltatást fejleszt az Azure SDK 2,8-as és újabb verzióival, a rendszer automatikusan kitölti ezt a kialakítási kulcsot. Az érték a Cloud Service-projekt csomagolásakor a **APPINSIGHTS_INSTRUMENTATIONKEY** szolgáltatás konfigurációs beállításán alapul. Lásd: [a Application Insights használata a Cloud Services](../app/cloudservices.md).
 
 - A **channels** elem egy vagy több csatorna **elemet tartalmaz** .
     - A *Name* attribútum egyedi módon hivatkozik erre a csatornára.
@@ -216,3 +216,4 @@ Az előző konfigurációban a következő sorok a következő jelentésekkel re
 * Megtudhatja, hogyan [tekintheti meg az Azure diagnosztikai adatait](../app/cloudservices.md) Application Insightsban.
 * A [PowerShell](../../cloud-services/cloud-services-diagnostics-powershell.md) használatával engedélyezze az Azure Diagnostics bővítményt az alkalmazáshoz.
 * A [Visual Studio](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines) használata az Azure Diagnostics bővítmény engedélyezéséhez az alkalmazáshoz
+

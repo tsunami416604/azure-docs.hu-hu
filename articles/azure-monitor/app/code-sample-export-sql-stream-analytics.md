@@ -3,12 +3,12 @@ title: Exportálás az Azure-ból az SQL-be Application Insights | Microsoft Doc
 description: Application Insights-SQL-adatbázis folyamatos exportálása a Stream Analytics használatával.
 ms.topic: conceptual
 ms.date: 09/11/2017
-ms.openlocfilehash: 4975d91cc20b81de302a1dd0cb7b3326878a96a1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9c559a61794b36ea1bc33abc14271151fbea9d4c
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86540094"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87311228"
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>Útmutató: exportálás az SQL rendszerbe Application Insights használatával Stream Analytics
 Ez a cikk bemutatja, hogyan helyezheti át a telemetria-adatait az [Azure Application Insightsból][start] a [folyamatos exportálás][export] és a [Azure stream Analytics](https://azure.microsoft.com/services/stream-analytics/)használatával Azure SQL Databaseba. 
@@ -24,9 +24,9 @@ Ebben a példában az oldal nézetét fogjuk használni, de ugyanezt a mintát e
 ## <a name="add-application-insights-to-your-application"></a>Application Insights hozzáadása az alkalmazáshoz
 Első lépések:
 
-1. [Application Insights beállítása a weblapok számára](../../azure-monitor/app/javascript.md). 
+1. [Application Insights beállítása a weblapok számára](./javascript.md). 
    
-    (Ebben a példában az ügyféloldali böngészők adatainak feldolgozására koncentrálunk, de Application Insightst is beállíthat a [Java](../../azure-monitor/app/java-get-started.md) -vagy [ASP.net](../../azure-monitor/app/asp-net.md) -alkalmazás kiszolgálói oldalára, és feldolgozhatja a kérelmeket, a függőségeket és az egyéb kiszolgálói telemetria.)
+    (Ebben a példában az ügyféloldali böngészők adatainak feldolgozására koncentrálunk, de Application Insightst is beállíthat a [Java](./java-get-started.md) -vagy [ASP.net](./asp-net.md) -alkalmazás kiszolgálói oldalára, és feldolgozhatja a kérelmeket, a függőségeket és az egyéb kiszolgálói telemetria.)
 2. Tegye közzé az alkalmazást, és tekintse meg a Application Insights-erőforrásban megjelenő telemetria-információkat.
 
 ## <a name="create-storage-in-azure"></a>Tároló létrehozása az Azure-ban
@@ -61,7 +61,7 @@ A folyamatos exportálás mindig az adatokat egy Azure Storage-fiókba exportál
     ![Eseménytípus kiválasztása](./media/code-sample-export-sql-stream-analytics/085-types.png)
 
 
-1. Némi adatmennyiséget is felhalmozhat. Dőljön hátra, és hagyja, hogy a felhasználók egy ideig használják az alkalmazást. A telemetria a következő helyen jelenik meg: statisztikai diagramok a [metrika-kezelőben](../../azure-monitor/platform/metrics-charts.md) és az egyes események a [diagnosztikai keresésben](../../azure-monitor/app/diagnostic-search.md). 
+1. Némi adatmennyiséget is felhalmozhat. Dőljön hátra, és hagyja, hogy a felhasználók egy ideig használják az alkalmazást. A telemetria a következő helyen jelenik meg: statisztikai diagramok a [metrika-kezelőben](../platform/metrics-charts.md) és az egyes események a [diagnosztikai keresésben](./diagnostic-search.md). 
    
     És az is, hogy az adatai exportálva lesznek a tárhelyre. 
 2. Vizsgálja meg az exportált adatait a portálon – válassza a **Tallózás**lehetőséget, válassza ki a Storage-fiókját, majd a **tárolók** lehetőséget, vagy a Visual Studióban. A Visual Studióban válassza a **Megtekintés/Cloud Explorer**lehetőséget, majd nyissa meg az Azure/Storage elemet. (Ha nem rendelkezik ezzel a menüponttal, telepítenie kell az Azure SDK-t: Nyissa meg az új projekt párbeszédpanelt, és nyissa meg a Visual C#/Cloud/Get Microsoft Azure SDK-t a .NET-hez.)
@@ -128,7 +128,7 @@ CREATE CLUSTERED INDEX [pvTblIdx] ON [dbo].[PageViewsTable]
 
 ![PageViewsTable létrehozása](./media/code-sample-export-sql-stream-analytics/34-create-table.png)
 
-Ebben a példában a lap nézeteiből származó adatok szerepelnek. Ha meg szeretné tekinteni az elérhető egyéb adatokat, ellenőrizze a JSON-kimenetét, és tekintse meg az [adatexportálási modellt](../../azure-monitor/app/export-data-model.md).
+Ebben a példában a lap nézeteiből származó adatok szerepelnek. Ha meg szeretné tekinteni az elérhető egyéb adatokat, ellenőrizze a JSON-kimenetét, és tekintse meg az [adatexportálási modellt](./export-data-model.md).
 
 ## <a name="create-an-azure-stream-analytics-instance"></a>Azure Stream Analytics példány létrehozása
 A [Azure Portal](https://portal.azure.com/)válassza ki a Azure stream Analytics szolgáltatást, és hozzon létre egy új stream Analytics feladatot:
@@ -165,7 +165,7 @@ Ebben a példában:
 
 * `webapplication27`a Application Insights erőforrás neve, amely az **összes kisbetűs**. 
 * `1234...`a Application Insights erőforrás rendszerállapot-kulcsát **eltávolították a kötőjelekkel**. 
-* `PageViews`az elemezni kívánt adattípus. A rendelkezésre álló típusok a folyamatos exportálásban beállított szűrőtől függenek. Vizsgálja meg az exportált adattípusokat, és tekintse meg az [adatmodell exportálása](../../azure-monitor/app/export-data-model.md)című témakört.
+* `PageViews`az elemezni kívánt adattípus. A rendelkezésre álló típusok a folyamatos exportálásban beállított szűrőtől függenek. Vizsgálja meg az exportált adattípusokat, és tekintse meg az [adatmodell exportálása](./export-data-model.md)című témakört.
 * `/{date}/{time}`egy, a szó szerint írt minta.
 
 A Application Insights-erőforrás nevének és Rendszerállapotkulcsot beszerzéséhez nyissa meg az Essentials szolgáltatást az Áttekintés lapon, vagy nyissa meg a beállításokat.
@@ -215,7 +215,7 @@ Cserélje le az alapértelmezett lekérdezést a alábbiakra:
 
 ```
 
-Figyelje meg, hogy az első néhány tulajdonság az oldal megtekintési adatára vonatkozik. Más telemetria-típusok exportálása különböző tulajdonságokkal fog rendelkezni. Tekintse [meg a tulajdonságok típusaira és értékeire vonatkozó részletes adatmodell-referenciát.](../../azure-monitor/app/export-data-model.md)
+Figyelje meg, hogy az első néhány tulajdonság az oldal megtekintési adatára vonatkozik. Más telemetria-típusok exportálása különböző tulajdonságokkal fog rendelkezni. Tekintse [meg a tulajdonságok típusaira és értékeire vonatkozó részletes adatmodell-referenciát.](./export-data-model.md)
 
 ## <a name="set-up-output-to-database"></a>Kimenet beállítása az adatbázisba
 Kimenetként válassza az SQL lehetőséget.
@@ -243,15 +243,16 @@ FROM [dbo].[PageViewsTable]
 ```
 
 ## <a name="related-articles"></a>Kapcsolódó cikkek
-* [Exportálás Power BI a Stream Analytics használatával](../../azure-monitor/app/export-power-bi.md )
-* [Részletes adatmodell-referenciák a tulajdonságok típusaihoz és értékeihez.](../../azure-monitor/app/export-data-model.md)
-* [Folyamatos exportálás Application Insights](../../azure-monitor/app/export-telemetry.md)
+* [Exportálás Power BI a Stream Analytics használatával](./export-power-bi.md)
+* [részletes adatmodell-referenciák a tulajdonságok típusaihoz és értékeihez.](./export-data-model.md)
+* [Folyamatos exportálás Application Insights](./export-telemetry.md)
 * [Application Insights](https://azure.microsoft.com/services/application-insights/)
 
 <!--Link references-->
 
-[diagnostic]: ../../azure-monitor/app/diagnostic-search.md
-[export]: ../../azure-monitor/app/export-telemetry.md
-[metrics]: ../../azure-monitor/platform/metrics-charts.md
+[diagnostic]: ./diagnostic-search.md
+[export]: ./export-telemetry.md
+[metrics]: ../platform/metrics-charts.md
 [portal]: https://portal.azure.com/
-[start]: ../../azure-monitor/app/app-insights-overview.md
+[start]: ./app-insights-overview.md
+

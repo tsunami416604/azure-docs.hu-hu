@@ -5,16 +5,17 @@ description: Ismerje meg, hogyan lehet a modelleket a Azure Machine Learning Des
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.author: keli19
 author: likebupt
 ms.date: 04/06/2020
-ms.custom: designer
-ms.openlocfilehash: c466684bf5c07b5e88e8052c29aa9fb0b8583a89
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.topic: conceptual
+ms.custom: how-to, designer
+ms.openlocfilehash: 181d79c6aef87999bc1b4242a70870edf60ad7df
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84430071"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319626"
 ---
 # <a name="retrain-models-with-azure-machine-learning-designer-preview"></a>Modellek újratanítása az Azure Machine Learning Designerrel (előzetes verzió)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -33,6 +34,8 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 * Azure Machine Learning munkaterület a vállalati SKU-val.
 * Fejezze be a How-to sorozat 1. részét, [alakítsa át az adatelemzést a tervezőben](how-to-designer-transform-data.md).
+
+[!INCLUDE [machine-learning-missing-ui](../../includes/machine-learning-missing-ui.md)]
 
 A cikk azt is feltételezi, hogy alapvető ismeretekkel rendelkezik a folyamatok létrehozásához a tervezőben. Az interaktív bevezetéshez végezze el az [oktatóanyagot](tutorial-designer-automobile-price-train-score.md). 
 
@@ -66,7 +69,7 @@ Folyamat paramétereinek létrehozása a változók dinamikus beállításához 
    > [!NOTE]
    > A folyamat paramétereinek vizsgálatához és szerkesztéséhez válassza a folyamat piszkozatának címe melletti **Beállítások** fogaskerék ikont. 
 
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 1. A folyamat futtatásának elküldése.
 
@@ -92,7 +95,7 @@ Egy folyamat közzététele egy folyamat végpontján, hogy a jövőben könnyed
    > [!NOTE]
    > Több folyamat is közzétehető egyetlen végponton. Egy adott végpont minden folyamata egy verziószámot kap, amelyet megadhat a folyamat végpontjának meghívásakor.
 
-1. Kattintson a **Közzététel** lehetőségre.
+1. Kattintson a **Publish** (Közzététel) elemre.
 
 ## <a name="retrain-your-model"></a>A modell újratanítása
 

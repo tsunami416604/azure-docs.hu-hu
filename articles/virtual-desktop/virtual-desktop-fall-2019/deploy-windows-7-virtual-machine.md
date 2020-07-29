@@ -1,6 +1,6 @@
 ---
-title: A Windows 7 rendszerű virtuális gépek üzembe helyezése a Windows rendszerű virtuális asztalon 2019 – Azure
-description: Windows 7 rendszerű virtuális gépek konfigurálása és központi telepítése Windows rendszerű virtuális asztalon.
+title: Windows 7 rendszerű virtuális gép üzembe helyezése (klasszikus) – Azure
+description: Windows 7 rendszerű virtuális gép konfigurálása és üzembe helyezése Windows rendszerű virtuális asztali Windows virtuális asztalon (klasszikus).
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 3d8ce67f129844c09a93b29c8100fe28096c520c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 99c82f63e88815edba13bf88ba23c18493649dd9
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87085877"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285084"
 ---
-# <a name="deploy-a-windows-7-virtual-machine-on-windows-virtual-desktop---fall-2019"></a>Windows 7 rendszerű virtuális gép üzembe helyezése Windows rendszerű virtuális asztalon – Fall 2019
+# <a name="deploy-a-windows-7-virtual-machine-on-windows-virtual-desktop-classic"></a>Windows 7 rendszerű virtuális gép üzembe helyezése Windowsos virtuális asztalon (klasszikus)
 
 >[!IMPORTANT]
->Ez a tartalom a Fall 2019 kiadásra vonatkozik, amely nem támogatja a Windows rendszerű virtuális asztali objektumokat Azure Resource Manager. Ha a Spring 2020 Update szolgáltatásban bevezetett Azure Resource Manager Windows rendszerű virtuális asztali objektumokat szeretne felügyelni, tekintse meg [ezt a cikket](../deploy-windows-7-virtual-machine.md).
+>Ez a tartalom a Windows rendszerű virtuális asztali (klasszikus) verzióra vonatkozik, amely nem támogatja Azure Resource Manager Windows rendszerű virtuális asztali objektumokat. Ha a Windows virtuális asztal jelenlegi verziójában bemutatott Azure Resource Manager Windows rendszerű virtuális asztali objektumokat szeretné felügyelni, tekintse meg [ezt a cikket](../deploy-windows-7-virtual-machine.md).
 
 Windows 7 rendszerű virtuális gép (VM) Windows rendszerű virtuális asztalon való üzembe helyezésének folyamata némileg eltér a Windows újabb verzióit futtató virtuális gépeknél. Ebből az útmutatóból megtudhatja, hogyan helyezheti üzembe a Windows 7 rendszert.
 

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 07/16/2020
 ms.author: surmb
-ms.openlocfilehash: 46cb4d0d099cd21db3ce51c337d3b059206bb425
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2ee34e1a7959aafa5db949b443fd58cca58719c6
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87099297"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281191"
 ---
 # <a name="rewrite-http-headers-and-url-with-application-gateway"></a>HTTP-fejlécek és URL-cím újraírása Application Gateway
 
@@ -104,30 +104,30 @@ A Application Gateway kiszolgálói változók használatával tárolja a kiszol
 
 Az Application Gateway a következő kiszolgálói változókat támogatja:
 
-|   Változó neve    |                   Description                                           |
+|   Változó neve    |                   Leírás                                           |
 | ------------------------- | ------------------------------------------------------------ |
 | add_x_forwarded_for_proxy | Az X-Forwarded-For Client Request fejléc mező a `client_ip` (z) változóval (lásd a táblázat későbbi részében) az IP1, a IP2, a IP3 stb. formátumban. Ha az X-Forwardd-for mező nem szerepel az ügyfél-igénylési fejlécben, `add_x_forwarded_for_proxy` akkor a változó egyenlő a `$client_ip` változóval.   Ez a változó különösen akkor hasznos, ha újra szeretné írni az X által továbbított fejlécet a Application Gateway, hogy a fejléc csak az IP-címet tartalmazza a port adatai nélkül. |
 | ciphers_supported         | Az ügyfél által támogatott titkosítások listája.               |
 | ciphers_used              | Egy létesített TLS-kapcsolatban használt titkosítási karakterlánc. |
-| client_ip                 | Annak az ügyfélnek az IP-címe, amelyről az Application Gateway fogadta a kérelmet. Ha van fordított proxy az Application Gateway és a kezdeményező ügyfél előtt, *client_ip* a fordított proxy IP-címét fogja visszaadni. |
+| client_ip                 | Annak az ügyfélnek az IP-címe, amelyről az Application Gateway fogadta a kérelmet. Ha fordított proxy van hátra az Application Gateway és a kezdeményező ügyfél előtt, a a `client_ip` fordított proxy IP-címét fogja visszaadni. |
 | client_port               | Az ügyfél portja.                                             |
 | client_tcp_rtt            | Az ügyfél TCP-kapcsolataival kapcsolatos információk. Az TCP_INFO socket beállítást támogató rendszereken érhető el. |
 | client_user               | A HTTP-hitelesítés használatakor a rendszer a hitelesítéshez megadott felhasználónevet adja meg. |
-| gazda                      | A sorrend sorrendjében: az állomásnév a kérelem sorából, az állomásnév a gazdagép-kérelem fejléce mezőből, vagy egy kérelemnek megfelelő kiszolgálónév. Példa: a kérelemben a *http://contoso.com:8080/article.aspx?id=123&title=fabrikam* gazdagép értéke *contoso.com* lesz. |
+| gazda                      | A sorrend sorrendjében: az állomásnév a kérelem sorából, az állomásnév a gazdagép-kérelem fejléce mezőből, vagy egy kérelemnek megfelelő kiszolgálónév. Példa: a kérelemben a `http://contoso.com:8080/article.aspx?id=123&title=fabrikam` Host érték lesz`contoso.com` |
 | cookie_*neve*             | A *név* cookie.                                           |
 | http_method               | Az URL-kérelem elvégzéséhez használt metódus. Például: GET vagy POST. |
 | http_status               | A munkamenet állapota. Például: 200, 400 vagy 403.           |
 | http_version              | A kérelem protokollja. Általában HTTP/1.0, HTTP/1.1 vagy HTTP/2.0. |
-| query_string              | A kért URL-cím "?" értékét követő változó/érték párok listája. Példa: a kérelemben *http://contoso.com:8080/article.aspx?id=123&title=fabrikam* QUERY_STRING érték *azonosító = 123&title = Fabrikam* |
+| query_string              | A kért URL-cím "?" értékét követő változó/érték párok listája. Példa: a kérelemben `http://contoso.com:8080/article.aspx?id=123&title=fabrikam` QUERY_STRING érték lesz`id=123&title=fabrikam` |
 | received_bytes            | A kérelem hossza (beleértve a kérelmek sorát, a fejlécet és a kérelem törzsét). |
 | request_query             | A kérés sorában szereplő argumentumok                           |
 | request_scheme            | A kérési séma: http vagy HTTPS.                           |
-| request_uri               | A teljes eredeti kérelem URI-ja (argumentumokkal). Példa: a kérelemben *http://contoso.com:8080/article.aspx?id=123&title=fabrikam* REQUEST_URI érték lesz a */Article.aspx? id = 123&title = Fabrikam* |
+| request_uri               | A teljes eredeti kérelem URI-ja (argumentumokkal). Példa: a kérelemben `http://contoso.com:8080/article.aspx?id=123&title=fabrikam*` REQUEST_URI érték lesz`/article.aspx?id=123&title=fabrikam` |
 | sent_bytes                | Az ügyfélnek eljuttatott bájtok száma.                        |
 | server_port               | A kérelmet fogadó kiszolgáló portja.              |
 | ssl_connection_protocol   | Egy létesített TLS-kapcsolat protokollja.               |
 | ssl_enabled               | "On", ha a kapcsolatok TLS módban működnek. Ellenkező esetben üres karakterláncot kell megadni. |
-| uri_path                  | Annak a gazdagépnek az adott erőforrását azonosítja, amelyet a webes ügyfél szeretne elérni. Ez az argumentumok nélküli kérelem URI-ja. Példa: a kérelemben *http://contoso.com:8080/article.aspx?id=123&title=fabrikam* uri_path érték lesz a */Article.aspx* |
+| uri_path                  | Annak a gazdagépnek az adott erőforrását azonosítja, amelyet a webes ügyfél szeretne elérni. Ez az argumentumok nélküli kérelem URI-ja. Példa: a kérelemben `http://contoso.com:8080/article.aspx?id=123&title=fabrikam` uri_path érték lesz`/article.aspx` |
 
  
 
@@ -230,7 +230,7 @@ Ha a felhasználó *contoso.com/Listing?category=any*kér, akkor a rendszer az a
 
 Vegyünk egy olyan forgatókönyvet, amelyben a felhasználó számára látható hivatkozás egyszerű és olvasható, de a háttér-kiszolgálónak a lekérdezési karakterlánc paramétereit kell megadnia a megfelelő tartalom megjelenítéséhez.
 
-Ebben az esetben Application Gateway rögzíthet paramétereket az URL-címről, és hozzáadhat lekérdezési karakterlánc kulcs-érték párokat az URL-címről. Tegyük fel például, hogy a felhasználó újra szeretné írni a- https://www.contoso.com/fashion/shirts https://www.contoso.com/buy.aspx?category=fashion&product=shirts t, a következő URL-írási konfiguráción keresztül.
+Ebben az esetben Application Gateway rögzíthet paramétereket az URL-címről, és hozzáadhat lekérdezési karakterlánc kulcs-érték párokat az URL-címről. Tegyük fel például, hogy a felhasználó újra szeretné írni a- `https://www.contoso.com/fashion/shirts` `https://www.contoso.com/buy.aspx?category=fashion&product=shirts` t, a következő URL-írási konfiguráción keresztül.
 
 **Feltétel** – ha a kiszolgálói változó `uri_path` megegyezik a mintázattal`/(.+)/(.+)`
 

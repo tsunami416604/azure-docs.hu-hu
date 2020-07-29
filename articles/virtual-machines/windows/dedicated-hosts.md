@@ -3,17 +3,17 @@ title: A Virtual Machines Azure dedikált gazdagépek áttekintése
 description: További információ arról, hogyan használhatók az Azure dedikált gazdagépek a virtuális gépek telepítéséhez.
 author: cynthn
 ms.service: virtual-machines-windows
-ms.topic: article
+ms.topic: conceptual
 ms.workload: infrastructure
 ms.date: 01/09/2020
 ms.author: cynthn
 ms.reviewer: zivr
-ms.openlocfilehash: 9709408f006cbcc5786a4e5a854abcd20affd693
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 327eebb4ea1804fc19c8f1b82a57dd0a9a994803
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82082832"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284574"
 ---
 # <a name="azure-dedicated-hosts"></a>Dedikált Azure-gazdagépek
 

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 5fe8d261cb6804ffdf2cbe4f543db29336c4c78b
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: c8cd789b16f839c60249b36f570ca1c945ef4e01
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656414"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337177"
 ---
 # <a name="what-is-azure-iot-central"></a>Mi az az Azure IoT Central?
 
@@ -63,11 +63,8 @@ Ez az eszköz a következőket tartalmazza:
 
 ### <a name="create-device-templates"></a>Eszközök sablonjainak létrehozása
 
-A [IoT Plug and Play (előzetes verzió)](../../iot-pnp/overview-iot-plug-and-play.md) lehetővé teszi, hogy a IoT Central beágyazott eszköz kódjának írása nélkül integrálja az eszközöket. A IoT Plug and Play (előzetes verzió) magja egy eszköz-képesség modell sémája, amely leírja az eszközök képességeit. IoT Central alkalmazásban az eszközök sablonjai ezeket a IoT Plug and Play (előzetes verzió) eszköz-képesség modelleket használják.
-
 Megoldás-szerkesztőként több lehetőség közül választhat az eszközök sablonjainak létrehozásához:
 
-- Importáljon egy eszköz-képességi modellt az [Azure Certified for IoT-Device Catalog eszközből](https://aka.ms/iotdevcat) , majd adja hozzá a IoT Central alkalmazás igényeinek megfelelő Felhőbeli tulajdonságokat, testreszabásokat és irányítópultokat.
 - Tervezze meg IoT Central az eszköz sablonját, majd implementálja az eszköz képességeinek modelljét az eszköz kódjában.
 - Hozzon létre egy eszköz-képesség modellt a Visual Studio Code használatával, és tegye közzé a modellt egy adattárban. Implementálja az eszköz kódját a modellből, és kapcsolja össze az eszközt a IoT Central alkalmazással. IoT Central megkeresi az eszköz képességeinek modelljét a tárházból, és létrehoz egy egyszerű eszközt a sablonhoz.
 - Eszköz-képesség modell létrehozása a Visual Studio Code használatával. Implementálja az eszköz kódját a modellből. Manuálisan importálja az eszköz képességeinek modelljét a IoT Central alkalmazásba, majd adja hozzá a IoT Central alkalmazás igényeinek megfelelő Felhőbeli tulajdonságokat, testreszabásokat és irányítópultokat.
@@ -145,20 +142,18 @@ Minden Azure-előfizetéshez tartozik alapértelmezett kvóta, amely hatással l
 - A GeoJSON jelenleg nem támogatott.
 - A Térkép csempe jelenleg nem támogatott.
 - A tömb sémájának típusai nem támogatottak.
-- A rendszer csak a C eszközoldali SDK-t és a Node. js-eszközt és a Service SDK-kat támogatja.
+- Csak a C eszközoldali SDK és a Node.js eszköz és a szolgáltatás SDK-k támogatottak.
 - IoT Central jelenleg a Egyesült Államok, Európa, Ázsia és a Csendes-óceáni térség, Ausztrália, Egyesült Királyság és Japán helyszíneken érhető el.
 - Az **egyéni alkalmazás (örökölt)** alkalmazás-sablon nem használható az Egyesült Királyság és Japán helyein.
 - Az eszköz képességeinek modelljeinek minden, ugyanabban a fájlban definiált illesztőfelülettel kell rendelkezniük.
-- A [IoT Plug and Play](../../iot-pnp/overview-iot-plug-and-play.md) támogatása előzetes verzióban érhető el, és csak a kiválasztott régiókban támogatott.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy áttekintette a IoT Centralt, néhány javasolt lépés:
 
 - Ismerje meg az elérhető [Azure-technológiákat és-szolgáltatásokat a IoT-megoldások létrehozásához](../../iot-fundamentals/iot-services-and-technologies.md).
 - Ismerkedés az [Azure IoT Central kezelőfelületével](overview-iot-central-tour.md).
 - [Egy Azure IoT Central-alkalmazás létrehozásának](quick-deploy-iot-central.md) első lépései.
-- További információ a [IoT Plug and Play (előzetes verzió)](../../iot-pnp/overview-iot-plug-and-play.md)szolgáltatásról.
 - Útmutató [Azure IoT Edge eszköz csatlakoztatásához](./tutorial-add-edge-as-leaf-device.md).
 - További információ az [Azure IoT technológiákról és szolgáltatásokról](../../iot-fundamentals/iot-services-and-technologies.md).
 

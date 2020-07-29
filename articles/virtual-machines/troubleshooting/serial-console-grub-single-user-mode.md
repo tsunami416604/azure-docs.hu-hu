@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/06/2019
 ms.author: alsin
-ms.openlocfilehash: e31a10b1086679b7c2493f5a6d6b62f75e363dd4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3b074bb1d439a6d20ac476f4e10b6a26b7107be8
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87036471"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284710"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>A soros konzol használata a GRUB és a single-user mód eléréséhez
 A virtuális gép (VM) rendszerindításakor a rendszer valószínűleg elsőként látja a GRand Unified bootloadert (GRUB). Mivel az operációs rendszer elindítása előtt megjelenik, a GRUB nem érhető el SSH-n keresztül. A GRUB-ban módosíthatja a rendszerindítási konfigurációt úgy, hogy az egyfelhasználós módba induljon, egyebek között.
@@ -241,7 +241,7 @@ Az egyfelhasználós üzemmód Oracle Linuxban való engedélyezéséhez kövess
 ## <a name="next-steps"></a>További lépések
 A soros konzolról további információt a következő témakörben talál:
 * [A Linux soros konzol dokumentációja](serial-console-linux.md)
-* [A GRUB engedélyezése a soros konzol használatával különböző disztribúciókban](/archive/blogs/linuxonazure/why-proactively-ensuring-you-have-access-to-grub-and-sysrq-in-your-linux-vm-could-save-you-lots-of-down-time)
+* [A GRUB engedélyezése a soros konzol használatával különböző disztribúciókban](http://linuxonazure.azurewebsites.net/why-proactively-ensuring-you-have-access-to-grub-and-sysrq-in-your-linux-vm-could-save-you-lots-of-down-time/)
 * [Soros konzol használata NMI-és SysRq-hívásokhoz](serial-console-nmi-sysrq.md)
 * [Soros konzol Windows rendszerű virtuális gépekhez](serial-console-windows.md)
 * [Rendszerindítási diagnosztika](boot-diagnostics.md)

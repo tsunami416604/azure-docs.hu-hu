@@ -7,11 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 09/19/2019
 tags: connectors
-ms.openlocfilehash: 50f43283d1113a5beb05b5898514623be37e5de9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 870ec6997b0abf5afc1c1bfa788bbca18c08ead7
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84141993"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283996"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>Exchange-üzenetek a felhőben Azure Logic Apps és Azure Service Bus használatával
 
@@ -155,7 +156,7 @@ Győződjön meg arról, hogy a logikai alkalmazás rendelkezik a Service Bus n�
 
 ## <a name="send-correlated-messages-in-order"></a>Korrelált üzenetek küldése sorrendben
 
-Ha a kapcsolódó üzeneteket egy adott sorrendben kell elküldeni, használhatja a [ *szekvenciális konvoj* mintát](https://docs.microsoft.com/azure/architecture/patterns/sequential-convoy) az [Azure Service Bus-összekötő](../connectors/connectors-create-api-servicebus.md)használatával. A korrelált üzenetek olyan tulajdonsággal rendelkeznek, amely meghatározza az üzenetek közötti kapcsolatot, például a [munkamenet](../service-bus-messaging/message-sessions.md) azonosítóját Service Busban.
+Ha a kapcsolódó üzeneteket egy adott sorrendben kell elküldeni, használhatja a [ *szekvenciális konvoj* mintát](/azure/architecture/patterns/sequential-convoy) az [Azure Service Bus-összekötő](../connectors/connectors-create-api-servicebus.md)használatával. A korrelált üzenetek olyan tulajdonsággal rendelkeznek, amely meghatározza az üzenetek közötti kapcsolatot, például a [munkamenet](../service-bus-messaging/message-sessions.md) azonosítóját Service Busban.
 
 Logikai alkalmazás létrehozásakor kiválaszthatja a **korrelált sorrend szerinti kézbesítést a Service Bus-munkamenetek** sablonnal, amely megvalósítja a szekvenciális konvojos mintát. További információ: [kapcsolódó üzenetek küldése sorrendben](../logic-apps/send-related-messages-sequential-convoy.md).
 
@@ -170,3 +171,4 @@ Az eseményindítókkal, műveletekkel és korlátokkal kapcsolatos egyéb techn
 ## <a name="next-steps"></a>További lépések
 
 * További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése
+

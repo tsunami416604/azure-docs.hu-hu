@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 07/20/2020
+ms.date: 07/27/2020
 ms.author: alkohli
-ms.openlocfilehash: 29ecd2e90812da533eb59db71a876b6d23f20918
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 018fe9b97b343bc07cf3c04a1d0e84edaf6cc7ac
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87067064"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283860"
 ---
 # <a name="return-your-azure-stack-edge-device"></a>Az Azure Stack Edge-eszköz visszaküldése
 
@@ -117,14 +117,14 @@ Az alábbi lépéseket követve ütemezhet egy felvételt.
 
 Miután az eszközt megkapta az Azure-adatközpontban, a rendszer megkeresi az eszközt a károsodás vagy az illetéktelen módosítás jeleinek ellenőrzéséhez.
 
-- Ha az eszköz érintetlenül érkezik, és jó állapotban van, akkor az adott erőforrás számlázási mérőszáma leáll. Microsoft ügyfélszolgálata felveszi Önnel a kapcsolatot, hogy erősítse meg az eszköz visszatérését. Ezután törölheti az eszközhöz társított erőforrást a Azure Portal.
+- Ha az eszköz érintetlenül érkezik, és jó állapotban van, akkor az adott erőforrás számlázási mérőszáma leáll. Azure Stack Edge Operations csapat felveszi Önnel a kapcsolatot, hogy erősítse meg az eszköz visszaadását. Ezután törölheti az eszközhöz társított erőforrást a Azure Portal.
 - Ha az eszköz jelentősen megsérült, a bírságok vonatkozhatnak. További részletekért tekintse [meg az elveszett vagy sérült eszköz](https://azure.microsoft.com/pricing/details/databox/edge/) és a [termék használati feltételeivel](https://www.microsoft.com/licensing/product-licensing/products)kapcsolatos gyakori kérdéseket.  
 
 
 Az eszközt törölheti a Azure Portalban:
 
 - Miután elvégezte a rendelést, és az eszközt a Microsoft előkészítette.
-- Miután visszaadta az eszközt a Microsoftnak, átadja a fizikai ellenőrzést az Azure-adatközpontban, és Microsoft ügyfélszolgálata hívásokat annak megerősítéséhez, hogy az eszköz vissza lett-e küldve.
+- Miután visszaadta az eszközt a Microsoftnak, átadja az Azure adatközpontjának fizikai vizsgálatát, és Azure Stack Edge műveleti csapatának hívásával ellenőrizheti, hogy az eszköz visszakapott-e.
 
 Ha aktiválta az eszközt egy másik előfizetéshez vagy helyhez, a Microsoft egy munkanapon belül áthelyezi a rendelését az új előfizetésre vagy helyre. A megrendelés áthelyezése után törölheti ezt az erőforrást.
 

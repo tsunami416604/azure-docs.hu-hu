@@ -3,12 +3,12 @@ title: Tekintse meg a havi becsült tesztkörnyezet Azure DevTest Labs
 description: Ez a cikk azt ismerteti, hogyan lehet nyomon követni a labor (havi becsült költség trend diagram) költségeit a Azure DevTest Labsban.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: b8bf8b1db82983cd7e1ecc5a45bf2d47a2787cc2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 220cbd1bc793e4bcfdf03a184d7463114506e6e0
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85482768"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283826"
 ---
 # <a name="track-costs-associated-with-a-lab-in-azure-devtest-labs"></a>Laborhoz kapcsolódó költségek nyomon követése Azure DevTest Labs
 Ez a cikk a labor díjszabásának nyomon követésére vonatkozó információkat tartalmaz. Bemutatja, hogyan tekintheti meg a tesztkörnyezet aktuális naptári hónapjának becsült költségeit. A cikk azt is bemutatja, hogyan tekintheti meg az erőforrásokra vonatkozó havi költségeket a laborban.
@@ -69,7 +69,7 @@ A DevTest Labs segítségével hatékonyabban kezelheti a laborban felmerülő k
      - Hasonlóképpen, ha megad egy webhook URL-címet, be kell állítania az **értesítéseket** **a be** értékre a Cost küszöbérték ablaktáblán.
      - Az itt való belépés előtt létre kell hoznia egy webhookot.  
 
-       A webhookokkal kapcsolatos további információkért lásd: [webhook vagy API Azure-függvény létrehozása](../azure-functions/functions-create-a-web-hook-or-api-function.md). 
+       A webhookokkal kapcsolatos további információkért lásd: [webhook vagy API Azure-függvény létrehozása](../azure-functions/functions-bindings-http-webhook.md). 
 
 ## <a name="view-cost-by-resource"></a>Ár megtekintése erőforrás szerint 
 A Labs havi költség trend szolgáltatásával megtekintheti, hogy mennyit költött el az aktuális naptári hónapban. Azt is mutatja, hogy a kiadások kivetítése a hónap végéig, az elmúlt hét napban megadott költségek alapján történik. Annak megismeréséhez, hogy a laborban töltött kiadások miért nem teljesítik a küszöbértékeket, használhatja a **Cost by Resource** funkciót, amely megjeleníti a tábla **erőforrásainak** havi költségeit.
@@ -93,4 +93,3 @@ A következő néhány dolgot érdemes kipróbálni:
 * [Egyéni rendszerkép létrehozása](devtest-lab-create-template.md) – virtuális gép létrehozásakor meg kell adnia egy alapot, amely lehet egyéni rendszerkép vagy Piactéri rendszerkép is. Ez a cikk bemutatja, hogyan hozhat létre egyéni rendszerképet egy VHD-fájlból.
 * [Marketplace-lemezképek konfigurálása](devtest-lab-configure-marketplace-images.md) – a DevTest Labs támogatja az Azure Marketplace-lemezképeken alapuló virtuális gépek létrehozását. Ez a cikk bemutatja, hogyan határozható meg, hogy mely, ha van ilyen, Azure Marketplace-lemezképeket használhat a virtuális gépek tesztkörnyezetben való létrehozásakor.
 * [Virtuális gép létrehozása laborban](devtest-lab-add-vm.md) – azt mutatja be, hogyan hozható létre virtuális gép egy alaprendszerképből (akár egyéni, akár piactér), és hogyan használhatók az összetevők a virtuális gépen.
-
