@@ -1,18 +1,18 @@
 ---
 title: Tanácsadási szolgáltatási ajánlat létrehozása – Microsoft kereskedelmi piactér
 description: Ismerje meg, hogyan tehet közzé egy tanácsadói szolgáltatási ajánlatot Microsoft AppSource vagy Azure Marketplace-en a partner Center használatával.
-author: anbene
-ms.author: mingshen
+author: Microsoft-BradleyWright
+ms.author: brwrigh
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: a06f0838f25e771a90fb6dc6f4fcd3bd9bdeda87
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 11f4091489a8ef8c980ece0589945c8e1c7dc8b8
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203803"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87317773"
 ---
 # <a name="create-a-consulting-service-offer"></a>Tanácsadási szolgáltatásajánlat létrehozása
 
@@ -100,15 +100,15 @@ Ezen a lapon állíthatja be azt az elsődleges terméket, amelyet a tanácsadá
 
     - Elemzés
     - Alkalmazások modernizálása
-    - Archív
-    - Mesterséges intelligencia és gépi tanulás
+    - Archívum
+    - AI + Machine Learning
     - Backup
     - Big Data
     - Adatplatform
     - Adatközpont-kezelés
     - DevOps
     - Vészhelyreállítás
-    - Identity
+    - Identitás
     - Eszközök internetes hálózata
     - Migrálás
     - Hálózatkezelés
@@ -138,7 +138,7 @@ Itt megadhatja a piactéren megjelenő ajánlat részleteit. Ebbe beletartozik a
 1. Embléma
 2. Ár
 3. Megoldási területek
-4. Ágazatok
+4. Iparágak
 5. Ajánlat neve
 6. Összegzés
 7. Leírás
@@ -153,7 +153,7 @@ Itt megadhatja a piactéren megjelenő ajánlat részleteit. Ebbe beletartozik a
 1. Embléma
 2. Ár
 3. Termékek
-4. Ágazatok
+4. Iparágak
 5. Ajánlat neve
 6. Összegzés
 7. Leírás

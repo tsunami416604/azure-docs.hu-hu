@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 4c9907555301c55cd5e55f421f27518fd4a9960d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4f5328bbe21bb5f4a7947d5a495f4a0c8759c8da
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87085057"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87315637"
 ---
 # <a name="profile-live-azure-app-service-apps-with-application-insights"></a>Profil élő Azure App Service alkalmazások Application Insights
 
@@ -19,9 +19,9 @@ A Profilert futtathatja a ASP.NET-on, és ASP.NET Core a Azure App Service-on fu
 
 ## <a name="enable-profiler-for-your-app"></a><a id="installation"></a>A Profiler engedélyezése az alkalmazáshoz
 A Profiler engedélyezéséhez kövesse az alábbi utasításokat. Ha más típusú Azure-szolgáltatást futtat, akkor a Profiler más támogatott platformokon való engedélyezésével kapcsolatban itt talál útmutatást:
-* [Felhőszolgáltatások](../../azure-monitor/app/profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json)
-* [Alkalmazások Service Fabric](../../azure-monitor/app/profiler-servicefabric.md?toc=/azure/azure-monitor/toc.json)
-* [Virtual Machines](../../azure-monitor/app/profiler-vm.md?toc=/azure/azure-monitor/toc.json)
+* [Felhőszolgáltatások](./profiler-cloudservice.md?toc=%2fazure%2fazure-monitor%2ftoc.json)
+* [Alkalmazások Service Fabric](./profiler-servicefabric.md?toc=%2fazure%2fazure-monitor%2ftoc.json)
+* [Virtual Machines](./profiler-vm.md?toc=%2fazure%2fazure-monitor%2ftoc.json)
 
 Application Insights Profiler az App Services futtatókörnyezet részeként előre telepítve van. Az alábbi lépések bemutatják, hogyan engedélyezheti a App Service számára. Kövesse az alábbi lépéseket még akkor is, ha felépítésekor az alkalmazás betekintő SDK-t is feltöltötte az alkalmazásba.
 
@@ -50,7 +50,7 @@ A Profiler engedélyezéséhez a következő beállítások szükségesek:
 |DiagnosticServices_EXTENSION_VERSION | ~ 3 |
 
 
-Ezeket az értékeket [Azure Resource Manager sablonok](../../azure-monitor/app/azure-web-apps.md#app-service-application-settings-with-azure-resource-manager), [Azure POWERSHELL](/powershell/module/az.websites/set-azwebapp)és [Azure CLI](/cli/azure/webapp/config/appsettings?view=azure-cli-latest)használatával állíthatja be.
+Ezeket az értékeket [Azure Resource Manager sablonok](./azure-web-apps.md#app-service-application-settings-with-azure-resource-manager), [Azure POWERSHELL](/powershell/module/az.websites/set-azwebapp)és [Azure CLI](/cli/azure/webapp/config/appsettings?view=azure-cli-latest)használatával állíthatja be.
 
 ### <a name="enabling-profiler-for-other-clouds-manually"></a>A Profiler engedélyezése más felhők számára manuálisan
 
@@ -79,3 +79,4 @@ A Profiler fájljai törölhető, ha a webalkalmazás használatával helyezi ü
 [Enablement UI]: ./media/profiler/Enablement_UI.png
 [profiler-app-setting]:./media/profiler/profiler-app-setting.png
 [disable-profiler-webjob]: ./media/profiler/disable-profiler-webjob.png
+

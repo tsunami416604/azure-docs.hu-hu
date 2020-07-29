@@ -5,14 +5,15 @@ services: virtual-machines
 ms.subservice: sizes
 author: ayshakeen
 ms.service: virtual-machines
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: ayshak
-ms.openlocfilehash: 6e7411f30ac0ef03ecd621f4cf6db5cd9350201b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e3a5d2228074ed358244b49bdf283c09f777ddee
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84678545"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292074"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>B sorozatú virtuális gépek méretei
 
@@ -134,14 +135,18 @@ Válasz **: igen**, az összes B sorozatú méret támogatja Premium Storage ada
 
 **A** : a B1ls csak a Linux-rendszerképeket támogatja, és ha egy másik operációsrendszer-lemezképet telepít, előfordulhat, hogy nem kapja meg a legjobb felhasználói élményt.
 
-## <a name="other-sizes"></a>Egyéb méretek
+## <a name="other-sizes-and-information"></a>Egyéb méretek és információk
 
 - [Általános célú](sizes-general.md)
-- [Számításra optimalizált](sizes-compute.md)
+- [Számításoptimalizált](sizes-compute.md)
 - [Memóriaoptimalizált](sizes-memory.md)
-- [Tárolásra optimalizált](sizes-storage.md)
+- [Tároptimalizált](sizes-storage.md)
 - [GPU-optimalizált](sizes-gpu.md)
 - [Nagy teljesítményű számítás](sizes-hpc.md)
+
+Árképzési kalkulátor: [árképzési kalkulátor](https://azure.microsoft.com/pricing/calculator/)
+
+További információ a lemezek típusairól: [lemezek típusai](https://docs.microsoft.com/azure/virtual-machines/linux/disks-types#ultra-ssd-preview/)
 
 ## <a name="next-steps"></a>További lépések
 

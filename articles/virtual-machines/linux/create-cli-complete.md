@@ -3,15 +3,15 @@ title: Linux-környezet létrehozása az Azure CLI-vel
 description: Hozzon létre egy tárolót, egy Linux virtuális gépet, egy virtuális hálózatot és egy alhálózatot, egy terheléselosztó, egy hálózati adapter, egy nyilvános IP-címet és egy hálózati biztonsági csoportot, amely az Azure CLI használatával az alapoktól kezdve.
 author: cynthn
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: how-to
 ms.date: 12/14/2017
 ms.author: cynthn
-ms.openlocfilehash: 5cc7a739b27d96eac01733b4f340d6d6d4dac265
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e9613cdf38eecd750eb8ca3e9f3046112c558ea2
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86511126"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87368336"
 ---
 # <a name="create-a-complete-linux-virtual-machine-with-the-azure-cli"></a>Teljes linuxos virtuális gép létrehozása az Azure CLI-vel
 Virtuális gép (VM) gyors létrehozásához az Azure-ban használhat egyetlen Azure CLI-parancsot, amely az alapértelmezett értékeket használja a szükséges támogatási erőforrások létrehozásához. A rendszer automatikusan létrehozza az erőforrásokat, például a virtuális hálózatot, a nyilvános IP-címet és a hálózati biztonsági csoport szabályait. A környezet éles környezetben való használatának szabályozása érdekében érdemes lehet előre létrehozni ezeket az erőforrásokat, majd hozzáadni a virtuális gépeket. Ez a cikk végigvezeti a virtuális gépek és az egyes támogatási erőforrások egyenkénti létrehozásán.
@@ -568,5 +568,5 @@ az group deployment create \
 
 Előfordulhat, hogy [további információra van szüksége a sablonokból való üzembe helyezésről](../../azure-resource-manager/templates/deploy-cli.md?toc=/azure/virtual-machines/linux/toc.json). További információ a környezetek növekményes frissítéséről, a Parameters fájl használatáról és a sablonok egyetlen tárolási helyről való eléréséről.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Most már készen áll a több hálózati összetevő és virtuális gép használatának megkezdésére. Ezzel a minta környezettel kiépítheti az alkalmazást az itt bemutatott alapvető összetevők használatával.

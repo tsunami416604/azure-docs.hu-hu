@@ -6,23 +6,23 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.date: 05/28/2020
+ms.date: 07/28/2020
 ms.topic: include
 ms.custom: include file
 ms.author: diberry
-ms.openlocfilehash: 504ba9106cc9d617858e8fad7ea421c8707707b3
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 19da911cbc662f47e7bbd16aaddf8803d4109d6a
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171274"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87369261"
 ---
-A Node. js-hez készült Language Understanding (LUIS) futásidejű ügyféloldali kódtár használatával:
+A Node.jshoz használja a Language Understanding (LUIS) futásidejű ügyféloldali kódtárat a következőhöz:
 
 * Előrejelzés tárolóhely alapján
 * Előrejelzés verziója szerint
 
-[Dokumentáció](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-runtime/?view=azure-node-latest)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-luis-runtime)  |  [Futtatókörnyezeti csomag (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-luis-runtime)  |  [Példák](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/LUIS/luis_prediction.js)
+[Dokumentáció](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-runtime/?view=azure-node-latest)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-luis-runtime)  |  [Futtatókörnyezeti csomag (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-luis-runtime)  |  [Példák](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/LUIS/node-sdk-authoring-prediction/luis_prediction.js)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -36,9 +36,7 @@ A Node. js-hez készült Language Understanding (LUIS) futásidejű ügyfélolda
 
 Szerezze be a [futásidejű kulcsot](../luis-how-to-azure-subscription.md) egy Luis Runtime-erőforrás létrehozásával. Tartsa a kulcsot és a kulcs végpontját a következő lépéshez.
 
-[!INCLUDE [Set up environment variables for prediction quickstart](sdk-prediction-environment-variables.md)]
-
-### <a name="create-a-new-javascript-nodejs-file"></a>Új JavaScript-fájl (node. js) létrehozása
+### <a name="create-a-new-javascript-nodejs-file"></a>Új JavaScript-fájl (Node.js) létrehozása
 
 Hozzon létre egy új JavaScript-fájlt az előnyben részesített szerkesztőben vagy az IDE nevű fájlban `luis_prediction.js` .
 
@@ -75,13 +73,11 @@ A projekt könyvtárában nyissa meg a `luis_prediction.js` fájlt az előnyben 
 
 1. Hozzon létre változókat a saját szükséges LUIS-adataihoz:
 
-    Adja hozzá a változókat az előrejelzési kulcs egy nevű környezeti változóból való kezeléséhez `LUIS_RUNTIME_KEY` . Ha az alkalmazás elindítása után hozta létre a környezeti változót, akkor a változó eléréséhez be kell zárnia és újra kell töltenie a szerkesztőt, az IDE-t vagy a shellt. A metódusok később lesznek létrehozva.
-
-    Hozzon létre egy változót az erőforrás nevének tárolásához `LUIS_RUNTIME_ENDPOINT` .
-
+    Adja hozzá a változókat az előrejelzési kulcs és a végpont kulcsának kezeléséhez. 
+    
     [!code-javascript [Azure resource variables](~/cognitive-services-quickstart-code/javascript/LUIS/node-sdk-authoring-prediction/luis_prediction.js?name=Variables)]
 
-1. Hozzon létre egy változót az alkalmazás-AZONOSÍTÓhoz egy nevű környezeti változóként `LUIS_APP_ID` . Állítsa a környezeti változót a nyilvános IoT alkalmazásra **`df67dcdb-c37d-46af-88e1-8b97951ca1c2`** . Hozzon létre egy változót a `production` közzétett tárolóhely beállításához.
+1. Hozzon létre egy változót a nevű alkalmazás-AZONOSÍTÓhoz `LUIS_APP_ID` . Állítsa a változót a nyilvános IoT alkalmazásra **`df67dcdb-c37d-46af-88e1-8b97951ca1c2`** . Hozzon létre egy változót a `production` közzétett tárolóhely beállításához.
 
     [!code-javascript [LUIS app variables](~/cognitive-services-quickstart-code/javascript/LUIS/node-sdk-authoring-prediction/luis_prediction.js?name=OtherVariables)]
 
@@ -106,7 +102,7 @@ A következő fő módszer használatával összekapcsolhatja a változókat és
 
 [!code-javascript [Main method and main call](~/cognitive-services-quickstart-code/javascript/LUIS/node-sdk-authoring-prediction/luis_prediction.js?name=Main)]
 
-## <a name="run-the-application"></a>Alkalmazás futtatása
+## <a name="run-the-application"></a>Az alkalmazás futtatása
 
 Futtassa az alkalmazást a `node luis_prediction.js` paranccsal az alkalmazás könyvtárából.
 
@@ -158,6 +154,6 @@ Az előrejelzési eredmény egy JSON-objektumot ad vissza:
 ```
 
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha elkészült a jóslatokkal, törölje a munkát ebből a rövid útmutatóból a fájl és az alkönyvtárak törlésével.

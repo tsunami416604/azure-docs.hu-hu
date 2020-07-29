@@ -1,7 +1,7 @@
 ---
 title: Azure-útválasztási táblázat létrehozása, módosítása vagy törlése
 titlesuffix: Azure Virtual Network
-description: Megtudhatja, hogyan hozhat létre, módosíthat vagy törölhet útválasztási táblázatot.
+description: Megtudhatja, hol talál információt a virtuális hálózati forgalom útválasztásáról, valamint arról, hogyan hozhat létre, módosíthat vagy törölhet útválasztási táblázatot.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -12,11 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/19/2020
 ms.author: kumud
-ms.openlocfilehash: e694f29bb6f8e7c78c36ad2b8ee90d507529444f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 664e3851370be812cd7a0e58cf9beb1fddb5d991
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708263"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290994"
 ---
 # <a name="create-change-or-delete-a-route-table"></a>Útválasztási táblázat létrehozása, módosítása vagy törlése
 
@@ -40,7 +41,7 @@ A fiókba, amelybe bejelentkezik, vagy az Azure-hoz csatlakozik, hozzá kell ren
 
 Az Azure-helyek és-előfizetések által létrehozható útválasztási táblázatok száma korlátozva van. Részletekért lásd: [hálózati korlátok – Azure Resource Manager](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
 
-1. A [Azure Portal](https://portal.azure.com) menüben vagy a **Kezdőlap** lapon válassza az **erőforrás létrehozása**lehetőséget.
+1. Az [Azure Portal](https://portal.azure.com) menüjében vagy a **Kezdőlapon** válassza az **Erőforrás létrehozása** elemet.
 
 1. A keresőmezőbe írja be az *útválasztási táblázat*kifejezést. Ha az **útválasztási tábla** megjelenik a keresési eredmények között, válassza ki.
 
@@ -87,7 +88,7 @@ Az általános Azure-beállításokkal kapcsolatos további tudnivalókért teki
 - [Tevékenységnapló](../azure-monitor/platform/platform-logs-overview.md)
 - [Hozzáférés-vezérlés (IAM)](../role-based-access-control/overview.md)
 - [Címkék](../azure-resource-manager/management/tag-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-- [Zárak](../azure-resource-manager/management/lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+- [Zárolások](../azure-resource-manager/management/lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [Automation-szkript](../azure-resource-manager/templates/export-template-portal.md)
 
 ### <a name="view-details-of-route-table---commands"></a>Útválasztási táblázat részleteinek megtekintése – parancsok
@@ -126,7 +127,7 @@ Az útválasztási táblázatot igény szerint hozzárendelheti egy alhálózath
 
 1. Az **útválasztási táblázatban**válassza ki azt az útválasztási táblázatot, amelyet az alhálózathoz kíván rendelni.
 
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 Ha a virtuális hálózat egy Azure VPN Gateway-átjáróhoz csatlakozik, ne társítson útválasztási táblázatot az [átjáró-alhálózathoz](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub) , amely tartalmazza a *0.0.0.0/0*rendeltetésű útvonalat. Ellenkező esetben előfordulhat, hogy az átjárószolgáltatás nem működik megfelelően. További információ a *0.0.0.0/0* útvonalon való használatáról: [virtuális hálózati forgalom útválasztása](virtual-networks-udr-overview.md#default-route).
 
@@ -151,7 +152,7 @@ Amikor alhálózatból választ ki egy útválasztási táblázatot, az Azure az
 
 1. Az **útválasztási táblázatban**válassza a **nincs**lehetőséget.
 
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 ### <a name="dissociate-a-route-table---commands"></a>Útválasztási táblázat leválasztása – parancsok
 
@@ -332,7 +333,7 @@ Rövid várakozás után az Azure megadja a következő ugrás típusát és a f
 
 A táblák és útvonalak útválasztási feladatainak elvégzéséhez a fiókját hozzá kell rendelni a [hálózati közreműködő szerepkörhöz](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) vagy egy [Egyéni szerepkörhöz](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , amely az alábbi táblázatban felsorolt megfelelő műveletekhez van rendelve:
 
-| Műveletek                                                          |   Name                                                  |
+| Művelet                                                          |   Név                                                  |
 |--------------------------------------------------------------   |   -------------------------------------------           |
 | Microsoft. Network/routeTables/READ                              |   Útválasztási táblázat beolvasása                                    |
 | Microsoft. Network/routeTables/Write                             |   Útválasztási táblázat létrehozása vagy frissítése                        |

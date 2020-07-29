@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: e8ab6e2e62bdcb08754d011a6b576cb615371a09
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 965118345a003aface0373bda7496243bcab8429
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076454"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290170"
 ---
 # <a name="azure-database-for-postgresql-single-server-data-encryption-with-a-customer-managed-key"></a>Egyetlen kiszolgálóból álló adattitkosítás Azure Database for PostgreSQL ügyfél által felügyelt kulccsal
 
@@ -22,7 +22,7 @@ Az ügyfél által felügyelt kulcsokkal rendelkező adattitkosítást Azure Dat
 A Key Vault egy felhőalapú, külső kulcsokat kezelő rendszer. Magas rendelkezésre állású, és méretezhető, biztonságos tárolást biztosít az RSA titkosítási kulcsokhoz, opcionálisan a FIPS 140-2 2-es szintű, ellenőrzött hardveres biztonsági modulok (HSM-k) által támogatottak. Nem engedélyezi a közvetlen hozzáférést egy tárolt kulcshoz, de biztosítja a titkosítási és visszafejtési szolgáltatásokat a jogosult entitások számára. Key Vault a kulcsot létrehozhatja, importálhatja, vagy [áthelyezheti egy helyszíni HSM-eszközről](../key-vault/key-Vault-hsm-protected-keys.md).
 
 > [!NOTE]
-> Ez a funkció minden olyan Azure-régióban elérhető, ahol Azure Database for PostgreSQL egyetlen kiszolgáló támogatja a "általános célú" és a "memória-optimalizálva" árképzési csomagokat.
+> Ez a funkció minden olyan Azure-régióban elérhető, ahol Azure Database for PostgreSQL egyetlen kiszolgáló támogatja a "általános célú" és a "memória-optimalizálva" árképzési csomagokat. Egyéb korlátozások esetén tekintse meg a [korlátozás](concepts-data-encryption-postgresql.md#limitations) szakaszt.
 
 ## <a name="benefits"></a>Előnyök
 

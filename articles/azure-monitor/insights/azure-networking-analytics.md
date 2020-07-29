@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/21/2018
-ms.openlocfilehash: 96df96fd6145d1c6e58eb5dfc672ec324da75202
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ccdf5885dd1199ff8ed8000e5feaf80662aae42a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87041607"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318062"
 ---
 # <a name="azure-networking-monitoring-solutions-in-azure-monitor"></a>Azure hálózatkezelési figyelési megoldások Azure Monitor
 
@@ -79,7 +79,7 @@ Az Application Gateway átjárók esetében a következő metrikák támogatotta
 ### <a name="install-and-configure-the-solution"></a>A megoldás telepítése és konfigurálása
 Az Azure Application Gateway Analytics megoldás telepítéséhez és konfigurálásához kövesse az alábbi utasításokat:
 
-1. Engedélyezze az Azure Application Gateway Analytics-megoldást az [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureAppGatewayAnalyticsOMS?tab=Overview) -en, vagy használja az [Solutions Gallery Azure monitor-megoldások hozzáadása](../../azure-monitor/insights/solutions.md)című témakörben leírt eljárást.
+1. Engedélyezze az Azure Application Gateway Analytics-megoldást az [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureAppGatewayAnalyticsOMS?tab=Overview) -en, vagy használja az [Solutions Gallery Azure monitor-megoldások hozzáadása](./solutions.md)című témakörben leírt eljárást.
 2. Engedélyezze a diagnosztikai naplózást a figyelni kívánt [Application Gateway átjárók](../../application-gateway/application-gateway-diagnostics.md) számára.
 
 #### <a name="enable-azure-application-gateway-diagnostics-in-the-portal"></a>Az Azure Application Gateway Diagnostics engedélyezése a portálon
@@ -150,7 +150,7 @@ Hálózati biztonsági csoportok esetén a következő naplók támogatottak:
 ### <a name="install-and-configure-the-solution"></a>A megoldás telepítése és konfigurálása
 Az Azure Networking Analytics megoldás telepítéséhez és konfigurálásához kövesse az alábbi utasításokat:
 
-1. Engedélyezze az Azure hálózati biztonsági csoport analitikai megoldását a [Solutions Gallery Azure monitor-megoldások hozzáadása](../../azure-monitor/insights/solutions.md)című témakörben ismertetett eljárással.
+1. Engedélyezze az Azure hálózati biztonsági csoport analitikai megoldását a [Solutions Gallery Azure monitor-megoldások hozzáadása](./solutions.md)című témakörben ismertetett eljárással.
 2. Engedélyezze a diagnosztikai naplózást a figyelni kívánt [hálózati biztonsági csoport](../../virtual-network/virtual-network-nsg-manage-log.md) erőforrásaihoz.
 
 ### <a name="enable-azure-network-security-group-diagnostics-in-the-portal"></a>Az Azure hálózati biztonsági csoport diagnosztika engedélyezése a portálon
@@ -230,3 +230,4 @@ A módosítás előtt gyűjtött adatok nem láthatók az új megoldásban. Tov�
 
 ## <a name="next-steps"></a>További lépések
 * Az Azure-diagnosztika részletes adatait [a Azure monitorban található naplók](../log-query/log-query-overview.md) használatával tekintheti meg.
+

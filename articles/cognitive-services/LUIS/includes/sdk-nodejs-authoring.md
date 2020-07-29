@@ -6,18 +6,18 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.date: 05/28/2020
+ms.date: 07/28/2020
 ms.topic: include
 ms.custom: include file
 ms.author: diberry
-ms.openlocfilehash: 6e240a0c5d5d77489c92862238c2e5041bdeabe3
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 6d805dfc15264a34abe1f177f688dae96d4a49f7
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171342"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87369431"
 ---
-A Node. js-hez készült ügyféloldali kódtár Language Understanding (LUIS) létrehozásához használja a következőt:
+A Node.js a következőhöz használhatja a Language Understanding (LUIS) authoring ügyféloldali függvénytárát:
 
 * Hozzon létre egy alkalmazást.
 * Leképezések, entitások és példa hosszúságú kimondott szöveg hozzáadása.
@@ -25,7 +25,7 @@ A Node. js-hez készült ügyféloldali kódtár Language Understanding (LUIS) l
 * Alkalmazás betanítása és közzététele.
 * Alkalmazás törlése
 
-[Dokumentáció](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/?view=azure-node-latest)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-luis-authoring)  |  [Szerzői csomag (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-luis-authoring), [futásidejű csomag (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-luis-runtime)  |  [minták](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/LUIS/luis_authoring_quickstart.js)
+[Dokumentáció](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/?view=azure-node-latest)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-luis-authoring)  |  [Szerzői csomag (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-luis-authoring), [futásidejű csomag (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-luis-runtime)  |  [minták](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/LUIS/node-sdk-authoring-prediction/luis_authoring_quickstart.js)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -36,46 +36,7 @@ A Node. js-hez készült ügyféloldali kódtár Language Understanding (LUIS) l
 
 ### <a name="get-your-language-understanding-luis-starter-key"></a>A Language Understanding (LUIS) indító kulcs beszerzése
 
-Hozza létre az [alapszintű kulcsot](../luis-how-to-azure-subscription.md#starter-key) egy Luis authoring-erőforrás létrehozásával. Tartsa a kulcsot és a kulcs végpontját a következő lépéshez.
-
-### <a name="create-an-environment-variable"></a>Környezeti változó létrehozása
-
-A kulcs és a kulcs régiójának használatával hozzon létre két környezeti változót a hitelesítéshez:
-
-* `LUIS_AUTHORING_KEY`– A kérések hitelesítéséhez szükséges erőforrás-kulcs.
-* `LUIS_AUTHORING_ENDPOINT`– A kulcshoz társított végpont.
-
-Használja az operációs rendszerének utasításait.
-
-#### <a name="windows"></a>[Windows](#tab/windows)
-
-```console
-setx LUIS_AUTHORING_KEY <replace-with-your-luis-authoring-key
-setx LUIS_AUTHORING_ENDPOINT <replace-with-your-luis-authoring-endpoint>
-```
-
-A környezeti változó hozzáadása után indítsa újra a konzolablak ablakát.
-
-#### <a name="linux"></a>[Linux](#tab/linux)
-
-```bash
-export LUIS_AUTHORING_KEY=<replace-with-your-luis-authoring-key>
-export LUIS_AUTHORING_ENDPOINT=<replace-with-your-luis-authoring-endpoint>
-```
-
-A környezeti változó hozzáadását követően futtassa a `source ~/.bashrc` parancsot a konzolablakban a módosítások érvénybe léptetéséhez.
-
-#### <a name="macos"></a>[macOS](#tab/unix)
-
-Szerkessze a t `.bash_profile` , és adja hozzá a környezeti változót:
-
-```bash
-export LUIS_AUTHORING_KEY=<replace-with-your-luis-authoring-key>
-export LUIS_AUTHORING_ENDPOINT=<replace-with-your-luis-authoring-endpoint>
-```
-
-A környezeti változó hozzáadását követően futtassa a `source .bash_profile` parancsot a konzolablakban a módosítások érvénybe léptetéséhez.
-***
+Hozzon létre egy [szerzői kulcsot](../luis-how-to-azure-subscription.md) egy Luis authoring-erőforrás létrehozásával. Tartsa meg a kulcsot és a kulcs végpontját, ezeket a karakterláncokat kell hozzáadnia a fájl elejéhez.
 
 ### <a name="install-the-npm-library-for-luis-authoring"></a>A NPM-könyvtár telepítése a LUIS authoring szolgáltatáshoz
 
@@ -102,7 +63,7 @@ Az ügyfél létrehozása után ezt az ügyfelet használhatja a következő fun
 
 ## <a name="code-examples"></a>Kódpéldák
 
-Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következőket a Node. js-hez készült Language Understanding (LUIS) authoring ügyféloldali kódtár használatával:
+Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következőket a Node.js Language Understanding (LUIS) létrehozási ügyféloldali kódtár használatával:
 
 * [Alkalmazás létrehozása](#create-a-luis-app)
 * [Entitások hozzáadása](#create-entities-for-the-app)
@@ -118,8 +79,6 @@ Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következőket a 
 Hozzon létre egy új szövegfájlt az előnyben részesített szerkesztőben vagy az IDE nevű fájlban `luis_authoring_quickstart.js` . Ezután adja hozzá a következő függőségeket.
 
 [!code-javascript[Create a new application in your preferred editor or IDE.](~/cognitive-services-quickstart-code/javascript/LUIS/node-sdk-authoring-prediction/luis_authoring_quickstart.js?name=Dependencies)]
-
-Hozzon létre változókat az erőforrás Azure-végpontjának és-kulcsának létrehozásához. Ha a környezeti változót az alkalmazás elindítása után hozta létre, akkor a változó eléréséhez be kell állítania és újra meg kell nyitnia a szerkesztőt, az IDE-t vagy a shellt.
 
 [!code-javascript[Create variables for your resource's Azure endpoint and key.](~/cognitive-services-quickstart-code/javascript/LUIS/node-sdk-authoring-prediction/luis_authoring_quickstart.js?name=Variables)]
 
@@ -163,7 +122,7 @@ Ha meg szeretné határozni a teljes szándékot, és kinyeri az entitásokat, a
 
 Adja hozzá például a hosszúságú kimondott szöveg egy [ExampleLabelObject](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/examplelabelobject?view=azure-node-latest) -objektumok listájának létrehozásával, amely minden egyes példa kiírásának egy objektumát tartalmazza. Mindegyik példa minden entitást megjelöl az entitás neve és az entitás értéke név/érték párokkal rendelkező szótárával. Az entitás értékének pontosan úgy kell lennie, ahogy a példa szövegében megjelenik.
 
-[Példákat](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/examples?view=azure-node-latest#batch-string--string--examplelabelobject----msrest-requestoptionsbase-) hívhat meg. a Batch az alkalmazás azonosítóját, a verziószámot és a példák listáját tartalmazza. A hívás az eredmények listájával válaszol. Ellenőriznie kell az egyes példák eredményeit, hogy biztosan hozzá lehessen adni a modellhez.
+Hívja meg [examples.batCH](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/examples?view=azure-node-latest#batch-string--string--examplelabelobject----msrest-requestoptionsbase-) -t az alkalmazás-azonosítóval, a verzió azonosítóval és a példák listájával. A hívás az eredmények listájával válaszol. Ellenőriznie kell az egyes példák eredményeit, hogy biztosan hozzá lehessen adni a modellhez.
 
 [!code-javascript[Add example utterance to intent](~/cognitive-services-quickstart-code/javascript/LUIS/node-sdk-authoring-prediction/luis_authoring_quickstart.js?name=AuthoringBatchAddUtterancesForIntent&highlight=52-56)]
 
@@ -199,7 +158,7 @@ A hangfelismerési kulcshoz társított alkalmazások listájának beolvasása
 
 [!code-javascript[Publish LUIS client app](~/cognitive-services-quickstart-code/javascript/LUIS/node-sdk-authoring-prediction/luis_authoring_quickstart.js?name=AuthoringListApps)]
 
-## <a name="run-the-application"></a>Alkalmazás futtatása
+## <a name="run-the-application"></a>Az alkalmazás futtatása
 
 Futtassa az alkalmazást a gyors üzembe helyezési `node luis_authoring_quickstart.js` fájlban található paranccsal.
 

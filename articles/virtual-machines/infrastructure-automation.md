@@ -3,16 +3,16 @@ title: Infrastruktúra-automatizálási eszközök használata
 description: Ismerje meg, hogyan hozhat létre és kezelhet virtuális gépeket az Azure-ban az infrastruktúra-automatizálási eszközök, például a Ansible, a Chef, a Puppet, a Terraform és a csomagoló használatával.
 author: cynthn
 ms.service: virtual-machines
-ms.topic: article
+ms.topic: conceptual
 ms.workload: infrastructure
 ms.date: 07/17/2020
 ms.author: cynthn
-ms.openlocfilehash: 31a0d9d4eac731836812c438a71541885863c8de
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5567274fd9ee2cfaf41f9ff4c6e71bb2faab7b1d
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87099227"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292380"
 ---
 # <a name="use-infrastructure-automation-tools-with-virtual-machines-in-azure"></a>Infrastruktúra-automatizálási eszközök használata az Azure-beli virtuális gépekkel
 

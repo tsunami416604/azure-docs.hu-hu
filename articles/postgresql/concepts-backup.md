@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.openlocfilehash: 92f35968156e787b844d28f866a832940cc8ef64
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: d3630b631944befaf8a8c3d32e90e775dd6d63fc
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87171609"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292874"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---single-server"></a>Biztonsági mentés és visszaállítás Azure Database for PostgreSQL – egyetlen kiszolgáló
 
@@ -32,19 +32,15 @@ Legfeljebb 4 TB-os maximális tárterületet támogató kiszolgálók esetén a 
 
 #### <a name="servers-with-up-to-16-tb-storage"></a>Legfeljebb 16 TB tárhellyel rendelkező kiszolgálók
 
-Az [Azure-régiók](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers#storage)egy részhalmazában az újonnan kiosztott kiszolgálók akár 16 TB-nyi tárhelyet is támogatnak. Ezen nagyméretű tároló kiszolgálókon a biztonsági másolatok pillanatkép-alapúak. Az első teljes pillanatkép biztonsági mentése a kiszolgáló létrehozása után azonnal ütemezve van. Az első teljes pillanatkép biztonsági mentése a kiszolgáló alapbiztonsági mentéseként marad. A pillanatképek következő biztonsági mentései csak különbözeti biztonsági másolatokat használnak. 
-
-A különbözeti Pillanatképek biztonsági mentései naponta legalább egyszer történnek. A különbözeti Pillanatképek biztonsági mentése rögzített ütemezés szerint nem történik meg. A különbözeti Pillanatképek biztonsági mentései 24 óránként történnek, kivéve, ha a tranzakciós napló (BinLog a MySQL-ben) meghaladja a 50 GB-ot a legutóbbi különbözeti biztonsági mentés óta. Egy nap alatt legfeljebb hat különbözeti pillanatkép engedélyezett. 
-
-A tranzakciós napló biztonsági mentései öt percenként történnek. 
+Az [Azure-régiók](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers#storage)egy részhalmazában az újonnan kiosztott kiszolgálók akár 16 TB-nyi tárhelyet is támogatnak. Ezen nagyméretű tároló kiszolgálókon a biztonsági másolatok pillanatkép-alapúak. Az első teljes pillanatkép biztonsági mentése a kiszolgáló létrehozása után azonnal ütemezve van. Az első teljes pillanatkép biztonsági mentése a kiszolgáló alapbiztonsági mentéseként marad. A pillanatképek következő biztonsági mentései csak különbözeti biztonsági másolatokat használnak. A különbözeti Pillanatképek biztonsági mentése rögzített ütemezés szerint nem történik meg. Egy nap alatt három különbözeti pillanatkép biztonsági mentése történik. A tranzakciós napló biztonsági mentései öt percenként történnek. 
 
 ### <a name="backup-retention"></a>Biztonsági mentés megőrzése
 
 A biztonsági mentések a kiszolgálón tárolt biztonsági másolatok megőrzési időszakának beállítása alapján őrződnek meg. 7 és 35 nap közötti megőrzési időtartamot választhat. Az alapértelmezett megőrzési időtartam 7 nap. A megőrzési időszakot a kiszolgáló létrehozásakor vagy később állíthatja be, ha a [Azure Portal](https://docs.microsoft.com/azure/postgresql/howto-restore-server-portal#set-backup-configuration) vagy az [Azure CLI](https://docs.microsoft.com/azure/postgresql/howto-restore-server-cli#set-backup-configuration)használatával frissíti a biztonsági mentési konfigurációt. 
 
 A biztonsági másolatok megőrzési időszaka azt szabályozza, hogy az adott időpontra visszamenőleges visszaállítás hogyan kérhető le, mert az elérhető biztonsági másolatokon alapul. A biztonsági mentés megőrzési időszaka helyreállítási perspektívában is kezelhető helyreállítási ablakként. A biztonsági másolatok megőrzési időszakán belül az időponthoz való visszaállításhoz szükséges összes biztonsági másolat megmarad a biztonságimásolat-tárolóban. Ha például a biztonsági másolat megőrzési időtartama 7 nap, a helyreállítási időszak az utolsó 7 nap lesz. Ebben a forgatókönyvben a kiszolgáló utolsó 7 napban történő visszaállításához szükséges összes biztonsági mentést megőrzi a rendszer. A biztonsági másolatok megőrzési ablaka hét nap:
-- A 4 TB-os tárolóval rendelkező örökölt kiszolgálók két teljes adatbázis biztonsági mentését, az összes különbözeti biztonsági mentést és a tranzakciónapló biztonsági mentését a legkorábbi teljes adatbázis biztonsági mentése óta hajtják végre.
--   A nagyméretű tárolóval rendelkező kiszolgálók (16 TB) megőrzik a teljes adatbázis-pillanatképet, az összes különbözeti pillanatképet és a tranzakciónapló biztonsági mentését az elmúlt 8 napban.
+- A legfeljebb 4 TB-os tárterülettel rendelkező kiszolgálók legfeljebb 2 teljes adatbázis-biztonsági mentést, az összes különbözeti biztonsági mentést és a tranzakciónapló biztonsági másolatait a legkorábbi teljes adatbázis biztonsági mentése óta hajtják végre.
+-   A legfeljebb 16 TB tárhellyel rendelkező kiszolgálók megőrzik a teljes adatbázis-pillanatképet, a különbözeti pillanatképeket és a tranzakciónapló biztonsági mentését az elmúlt 8 napban.
 
 ### <a name="backup-redundancy-options"></a>A Backup redundancia beállításai
 

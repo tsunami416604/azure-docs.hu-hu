@@ -3,15 +3,15 @@ title: Linuxos virtuális merevlemez letöltése az Azure-ból
 description: Töltsön le egy linuxos virtuális merevlemezt az Azure CLI és a Azure Portal használatával.
 author: cynthn
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/21/2019
 ms.author: cynthn
-ms.openlocfilehash: 14beeebe15193cbe2ef4684f97e4783810ad77a4
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 6254be55ae2a1ba6d178d330a41903585da2e50a
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86510551"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289779"
 ---
 # <a name="download-a-linux-vhd-from-azure"></a>Linuxos virtuális merevlemez letöltése az Azure-ból
 
@@ -75,7 +75,7 @@ A VHD-fájl letöltéséhez egy [közös hozzáférési aláírás (SAS)](../../
 
     ![Válassza a mentés lehetőséget a böngészőben](./media/download-vhd/export-save.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Megtudhatja, hogyan [tölthet fel és hozhat létre Linux rendszerű virtuális gépet egyéni lemezről az Azure CLI-vel](upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
 - [Azure-lemezek kezelése az Azure CLI](tutorial-manage-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)-vel.

@@ -3,12 +3,12 @@ title: Azure DevTest Labs GYIK | Microsoft Docs
 description: Ez a cikk a Azure DevTest Labs kapcsolatos gyakori kérdések (GYIK) néhány válaszát tartalmazza.
 ms.topic: article
 ms.date: 07/17/2020
-ms.openlocfilehash: 707b66fadab482a31ac02f10460d581997931a0b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 3f36b8238ccb69b3b1f14166b522e47d5debe54e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537485"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289375"
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure DevTest Labs GYIK
 Választ kaphat a Azure DevTest Labsával kapcsolatos leggyakoribb kérdésekre.
@@ -31,12 +31,12 @@ A kiesési frissítéseket a Twitter-leírónk használatával tesszük elérhet
 ### <a name="twitter"></a>Twitter
 A Twitter-leírónk:[@azlabservices](https://twitter.com/azlabservices)
 
-## <a name="general"></a>Általános kérdések
+## <a name="general"></a>Általános
 ### <a name="what-if-my-question-isnt-answered-here"></a>Mi a teendő, ha nem válaszolt a kérdésre?
 Ha a kérdés nem szerepel a listán, tudassa velünk, hogy segítsen megtalálni a választ.
 
 - Tegye fel kérdéseit a GYIK végén.
-- Ha szélesebb közönséget szeretne elérni, tegye fel kérdéseit a [Microsoft Q&a Azure DevTest Labs vonatkozó kérdés oldalára](https://docs.microsoft.com/answers/topics/azure-devtestlabs.html). Folytassa a Azure DevTest Labs csapatával és a Közösség többi tagjával.
+- Ha szélesebb közönséget szeretne elérni, tegye fel kérdéseit a [Microsoft Q&a Azure DevTest Labs vonatkozó kérdés oldalára](/answers/topics/azure-devtestlabs.html). Folytassa a Azure DevTest Labs csapatával és a Közösség többi tagjával.
 - A szolgáltatások kéréseinek elküldéséhez küldje el kérelmeit és ötleteit [Azure DevTest Labs felhasználói hangra](https://feedback.azure.com/forums/320373-azure-devtest-labs).
 
 ### <a name="what-is-a-microsoft-account"></a>Mi az a Microsoft-fiók?
@@ -175,7 +175,7 @@ Javasoljuk, hogy a megfelelő engedélyeket a labor szintjén állítsa be úgy,
 > [!NOTE]
 > Ha a tesztkörnyezet felhasználója olyan külső felhasználó, aki Microsoft-fiók rendelkezik, de nem tagja a szervezet Active Directory példányának, a felhasználó hibaüzenetet kap, amikor megpróbálnak hozzáférni a megosztott hivatkozáshoz. Ha egy külső felhasználó hibaüzenetet jelenít meg, kérje meg a felhasználót, hogy válassza ki a nevét a Azure Portal jobb felső sarkában. Ezután a menü címtár szakaszában a felhasználó kiválaszthatja azt a könyvtárat, ahol a labor létezik.
 
-## <a name="virtual-machines"></a>Virtuális gépek
+## <a name="virtual-machines"></a>Virtual machines (Virtuális gépek)
 
 ### <a name="why-cant-i-see-vms-on-the-virtual-machines-page-that-i-see-in-devtest-labs"></a>Miért nem látom a virtuális gépeket a DevTest Labs szolgáltatásban megjelenő Virtual Machines oldalon?
 Amikor létrehoz egy virtuális gépet a DevTest Labs szolgáltatásban, engedélyt kap a virtuális géphez való hozzáférésre. A virtuális gépet a Labs lapon és a **Virtual Machines** oldalon is megtekintheti. A **DevTest Labs tulajdonosi** szerepkörhöz hozzárendelt felhasználók a labor **összes Virtual Machines** oldalán a laborban létrehozott összes virtuális gépet megtekinthetik. Az **DevTest Labs felhasználói** szerepkörrel rendelkező felhasználók azonban nem kapnak automatikusan olvasási hozzáférést a többi felhasználó által létrehozott virtuálisgép-erőforrásokhoz. Így ezek a virtuális gépek nem jelennek meg a **Virtual Machines** oldalon.
@@ -337,7 +337,7 @@ A következő blogbejegyzések útmutatást és információkat nyújtanak az Az
 
 Más folyamatos integrációs (CI)/Continuous kézbesítési (CD) eszközlánccal esetében ugyanezeket a forgatókönyveket [Azure PowerShell-parancsmagok](../azure-resource-manager/templates/deploy-powershell.md) és [.net SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.DevTestLabs/)-k használatával, [Azure Resource Manager-sablonokkal](https://azure.microsoft.com/resources/templates/) is elérheti. A [DevTest Labs REST API](https://aka.ms/dtlrestapis) -jait is használhatja a toolchain való integráláshoz.
 
-## <a name="networking"></a>Hálózatkezelés
+## <a name="networking"></a>Hálózat
 
 ### <a name="when-should-i-create-a-new-virtual-network-for-my-devtest-labs-environment-vs-using-an-existing-virtual-network"></a>Mikor hozzon létre egy új virtuális hálózatot a DevTest Labs-környezethez és egy meglévő virtuális hálózat használatával?
 Ha a virtuális gépeknek kapcsolatba kell lépniük a meglévő infrastruktúrával, akkor érdemes lehet egy meglévő virtuális hálózatot használni a DevTest Labs-környezetben. Ha a ExpressRoute-t használja, érdemes lehet a virtuális hálózatok/alhálózatok számának minimalizálására, hogy az előfizetésekben használt IP-címtartomány ne legyen kiosztva.

@@ -2,15 +2,15 @@
 title: 'Rövid útmutató: Language Understanding (LUIS) az ügyféloldali kódtár készítése'
 description: Ismerkedjen meg a LUIS ügyféloldali függvénytárával ebben a rövid útmutatóban. Az alábbi lépéseket követve telepítheti a csomagot, és kipróbálhatja az alapszintű feladatokhoz tartozó példa kódját.
 ms.topic: quickstart
-ms.date: 05/28/2020
-ms.custom: tracking-python
+ms.date: 07/28/2020
+ms.custom: tracking-python, devx-track-javascript
 zone_pivot_groups: programming-languages-set-diberry-3core
-ms.openlocfilehash: c4f974935b5385b9df017af2f25b9f536ec5cddb
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: e5fc21ed42d3704cf102a820cebb64c09aff23ab
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84605748"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87369429"
 ---
 # <a name="quickstart-language-understanding-luis-authoring-client-library"></a>Rövid útmutató: Language Understanding (LUIS) az ügyféloldali kódtár készítése
 
@@ -28,12 +28,12 @@ Ismerkedjen meg a Language Understanding (LUIS) ügyféloldali kódtár használ
 [!INCLUDE [Get intent with Python SDK](./includes/sdk-python-authoring.md)]
 ::: zone-end
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 >[Az SDK használata az előrejelzési végpont lekérdezéséhez](sdk-query-prediction-endpoint.md)
 
 * [Mi a Language Understanding (LUIS) API?](what-is-luis.md)
-* [Mi újság?](whats-new.md)
+* [Újdonságok](whats-new.md)
 * [Szándékok](luis-concept-intent.md), [entitások](luis-concept-entity-types.md)és [példa hosszúságú kimondott szöveg](luis-concept-utterance.md)és [előre összeépített entitások](luis-reference-prebuilt-entities.md)
 * A minta forráskódja a [githubon](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/documentation-samples/quickstarts/LUIS/LUIS.cs)található.

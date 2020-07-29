@@ -7,11 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: e1ad4e53596b8228bdef5beb18aa250a9512c49f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b2f7e45c7f6092566314e6e4867bc0345683e4eb
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77659662"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318385"
 ---
 # <a name="troubleshooting-metrics-charts"></a>Metrikadiagramok hibaelhárítása
 
@@ -67,7 +68,7 @@ A [diagram y tengelye határainak zárolásával](metrics-charts.md#lock-boundar
 
 A **vendég operációs rendszerre** vonatkozó metrikák gyűjteményéhez konfigurálni kell az Azure Diagnostics bővítményt, vagy az erőforrás **Diagnosztikai beállítások** panelén kell azt engedélyezni.
 
-**Megoldás:** Ha a Azure Diagnostics bővítmény engedélyezve van, de továbbra sem tudja megtekinteni a metrikákat, kövesse az [Azure Diagnostics bővítmény hibaelhárítási útmutatójában](diagnostics-extension-troubleshooting.md#metric-data-doesnt-appear-in-the-azure-portal)ismertetett lépéseket. Lásd még: a [vendég operációs rendszer névterének és metrikáinak nem](metrics-troubleshoot.md#cannot-pick-guest-os-namespace-and-metrics) kiválasztására vonatkozó hibaelhárítási lépések
+**Megoldás:** Ha a Azure Diagnostics bővítmény engedélyezve van, de továbbra sem tudja megtekinteni a metrikákat, kövesse az [Azure Diagnostics bővítmény hibaelhárítási útmutatójában](diagnostics-extension-troubleshooting.md#metric-data-doesnt-appear-in-the-azure-portal)ismertetett lépéseket. Lásd még: a [vendég operációs rendszer névterének és metrikáinak nem](#cannot-pick-guest-os-namespace-and-metrics) kiválasztására vonatkozó hibaelhárítási lépések
 
 ## <a name="error-retrieving-data-message-on-dashboard"></a>"Hiba történt az adatok beolvasása közben" üzenet az irányítópulton
 
@@ -105,7 +106,7 @@ Alapértelmezés szerint a Vendég operációs rendszer típusú metrikákat az 
     > [!WARNING]
     > A [Log Analytics ügynök](agents-overview.md#log-analytics-agent) (más néven Microsoft Monitoring Agent, vagy MMA) használatával a **Vendég operációs rendszer** nem küldhető tárfiókba.
 
-1. Győződjön meg arról, hogy a **Microsoft. inbetekintés** erőforrás-szolgáltató [regisztrálva van az előfizetéséhez](metrics-troubleshoot.md#microsoftinsights-resource-provider-isnt-registered-for-your-subscription).
+1. Győződjön meg arról, hogy a **Microsoft. inbetekintés** erőforrás-szolgáltató [regisztrálva van az előfizetéséhez](#microsoftinsights-resource-provider-isnt-registered-for-your-subscription).
 
 1. Győződjön meg arról, hogy a tárfiókot nem védi a tűzfal. Az Azure Portalnak hozzá kell férnie a tárfiókhoz, hogy lekérhesse a metrikai adatokat és összeállíthassa a diagramokat.
 
@@ -117,3 +118,4 @@ Alapértelmezés szerint a Vendég operációs rendszer típusú metrikákat az 
 * [A metrika Explorer speciális funkcióinak megismerése](metrics-charts.md)
 * [Az Azure-szolgáltatásokhoz elérhető metrikák listájának megtekintése](metrics-supported.md)
 * [A konfigurált diagramok példáinak megtekintése](metric-chart-samples.md)
+

@@ -4,15 +4,15 @@ description: A kifizetési jelentések részletesen ismertetik az ajánlattal ka
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: mingshen
+author: mingshen-ms
 ms.author: mingshen
 ms.date: 04/24/2020
-ms.openlocfilehash: f524ef13af17054e52a94ac043546431b656203c
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: dc690e29129f5be68456e6a9dc075ba72f11b121
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120721"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318232"
 ---
 # <a name="payout-summaries"></a>Fizetési összegzések
 
@@ -51,7 +51,7 @@ Az ezen a lapon található összegek az összes, a programban részt vevő prog
 | Következő becsült fizetés | Az egyszeri következő fizetés Önhöz közeledik (még akkor is, ha hamarosan mások is érkeznek), USA dollárban |
 | Utolsó fizetés           | A legutóbbi fizetés összegét (USA-dollárban), a program nevét és programját           |
 | Kifizetések forrás szerint     | Az elmúlt 12 hónap során a program által képviselt kifizetések mennyisége (USA-dollárban)           |
-| Payments (Befizetések)               | Válassza a **kifizetett** vagy **függőben lévő** lehetőséget, majd a kívánt rendezést. Egy adott fizetésre vonatkozó további részletekért válassza a **nézet**lehetőséget. A fizetési átutalási utasítás másolatának letöltéséhez válassza a **Letöltés**lehetőséget. Mivel a tranzakciós előzmények adatai akár 24 órát is igénybe vehetnek, előfordulhat, hogy a kapcsolódó bevétel azonnal nem jelenik meg. |
+| Kifizetések               | Válassza a **kifizetett** vagy **függőben lévő** lehetőséget, majd a kívánt rendezést. Egy adott fizetésre vonatkozó további részletekért válassza a **nézet**lehetőséget. A fizetési átutalási utasítás másolatának letöltéséhez válassza a **Letöltés**lehetőséget. Mivel a tranzakciós előzmények adatai akár 24 órát is igénybe vehetnek, előfordulhat, hogy a kapcsolódó bevétel azonnal nem jelenik meg. |
 |||
 
 Az ezen a lapon lévő összes érték exportálásához válassza az **Exportálás** lehetőséget, és kövesse az adatexportálás lapon található utasításokat.
@@ -91,7 +91,7 @@ Az adatexportálás lap nem frissül a sajátján. Előfordulhat, hogy manuális
 
 Előfordulhat, hogy a szűrő **nem érhető** el az Adathiba miatt. Ez valószínűleg azt jelenti, hogy a kiválasztott alapértelmezett időszakot három hónapra hagyta, majd kiválasztott egy fizetési azonosítót az adott időszakon kívüli jövedelemszerzési szolgáltatásból. Bontsa ki az időtartamot, és próbálkozzon újra.
 
-## <a name="payments"></a>Payments (Befizetések)
+## <a name="payments"></a>Kifizetések
 
 ![Kifizetések exportálása](./media/pc-export-payments.png)
 

@@ -5,18 +5,18 @@ description: Ismerje meg, hogyan és hol helyezheti üzembe a Azure Machine Lear
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 07/08/2020
-ms.custom: seoapril2019, tracking-python
-ms.openlocfilehash: ee116d668b9c351ecf5b130a39e418a3da8fc053
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.topic: conceptual
+ms.custom: how-to, tracking-python
+ms.openlocfilehash: f592e265cafc3e56dc0616e6eeb748c851084c32
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536385"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87317875"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Modellek üzembe helyezése az Azure Machine Learninggel
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -31,6 +31,11 @@ A munkafolyamat a modell [üzembe helyezésének helyétől](#target) független
 1. Tesztelje az üzembe helyezett modellt, más néven webszolgáltatást.
 
 Az üzembe helyezési munkafolyamatban részt vevő fogalmakkal kapcsolatos további információkért lásd: [modellek kezelése, üzembe helyezése és figyelése Azure Machine Learningokkal](concept-model-management-and-deployment.md).
+
+> [!IMPORTANT]
+> Javasoljuk, hogy a webszolgáltatásba való üzembe helyezés előtt helyileg végezzen hibakeresést, további információ: [helyi hibakeresés](https://docs.microsoft.com/azure/machine-learning/how-to-troubleshoot-deployment#debug-locally)
+>
+> Azure Machine Learning- [központi telepítés helyi jegyzetfüzetre című témakört](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/deploy-to-local) is használhatja.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -1110,7 +1115,7 @@ A tároló leállításához használja a következő parancsot egy másik rends
 docker kill mycontainer
 ```
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Központilag telepített webszolgáltatás törléséhez használja a következőt: `service.delete()` .
 Regisztrált modell törléséhez használja a következőt: `model.delete()` .
@@ -1228,7 +1233,7 @@ def run(request):
 > Azure Machine Learning csak a POST és a GET kérelmeket irányítja a pontozási szolgáltatást futtató tárolók számára. Ez hibákhoz vezethet, mert a böngészők a CORS-kérelmekre vonatkozó beállításokat használnak.
 > 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Modell üzembe helyezése egyéni Docker-rendszerkép használatával](how-to-deploy-custom-docker-image.md)
 * [Üzembe helyezés hibaelhárítása](how-to-troubleshoot-deployment.md)

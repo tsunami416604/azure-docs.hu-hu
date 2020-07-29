@@ -3,12 +3,12 @@ title: Az Azure Red Hat OpenShift v3. x konfigurálása az Azure Monitor for con
 description: Ez a cikk azt ismerteti, hogyan konfigurálhatja a Kubernetes-fürtök figyelését az Azure Red Hat OpenShift 3-as vagy újabb verziójában üzemeltetett Azure Monitor használatával.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 438a0513b6aceb876df4f9e3d0f4510c7cf8235e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: aac70ccc40da15318dd2dece17e429bb091e1860
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092898"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87317977"
 ---
 # <a name="configure-azure-red-hat-openshift-v3-with-azure-monitor-for-containers"></a>Az Azure Red Hat OpenShift v3 konfigurálása a Azure Monitor for containers szolgáltatással
 
@@ -173,7 +173,7 @@ A következő lépések végrehajtásával engedélyezheti az Azure-ban üzembe 
     ![Nem figyelt fürtök figyelésének engedélyezése](./media/container-insights-onboard/kubernetes-onboard-brownfield-01.png)
 
     >[!NOTE]
-    >Ha új Log Analytics munkaterületet szeretne létrehozni a figyelési adatok fürtből való tárolásához, kövesse az [log Analytics munkaterület létrehozása](../../azure-monitor/learn/quick-create-workspace.md)című témakör utasításait. Ügyeljen arra, hogy a munkaterületet ugyanabban az előfizetésben hozza létre, amelyben a RedHat OpenShift-fürtöt telepítette.
+    >Ha új Log Analytics munkaterületet szeretne létrehozni a figyelési adatok fürtből való tárolásához, kövesse az [log Analytics munkaterület létrehozása](../learn/quick-create-workspace.md)című témakör utasításait. Ügyeljen arra, hogy a munkaterületet ugyanabban az előfizetésben hozza létre, amelyben a RedHat OpenShift-fürtöt telepítette.
 
 A figyelés engedélyezése után körülbelül 15 percet is igénybe vehet, mielőtt megtekintheti a fürthöz tartozó állapot mérőszámait.
 
@@ -244,3 +244,4 @@ Ha úgy dönt, hogy az Azure CLI-t használja, először telepítenie és haszn�
 - A Prometheus-metrikák a fürtből való beolvasásához és elemzéséhez tekintse át a [Prometheus-metrikák leselejtezésének konfigurálása](container-insights-prometheus-integration.md)
 
 - Ha meg szeretné tudni, hogyan állíthatja le a fürtöt a tárolók Azure Monitorával, tekintse meg [Az Azure Red Hat OpenShift-fürt figyelésének leállítása](./container-insights-optout-openshift-v3.md)című témakört.
+

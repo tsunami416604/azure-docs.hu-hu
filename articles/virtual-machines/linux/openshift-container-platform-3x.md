@@ -5,16 +5,16 @@ author: haroldwongms
 manager: mdotson
 ms.service: virtual-machines-linux
 ms.subservice: workloads
-ms.topic: article
+ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 04/05/2020
 ms.author: haroldw
-ms.openlocfilehash: bc30275b2ee24af7bb526b3b43618c706bc027ca
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0c60fdfda0c18f5a8feb11c3d9c5a386025670cd
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86502095"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87368149"
 ---
 # <a name="deploy-openshift-container-platform-311-in-azure"></a>A OpenShift Container platform 3,11 üzembe helyezése az Azure-ban
 
@@ -276,7 +276,7 @@ A különböző kiadások különböző paraméterekkel rendelkezhetnek, ezért 
 | `keyVaultName` | A létrehozott Key Vault neve |  |  |
 | `enableAzure` | Az Azure Cloud Provider engedélyezése | true <br> hamis | true |
 | `aadClientId` | Azure Active Directory ügyfél-azonosító más néven az egyszerű szolgáltatásnév alkalmazás-azonosítója |  |  |
-| `domainName` | A használni kívánt egyéni tartománynév neve (ha van ilyen). A "None" értékre van állítva, ha nincs teljesen privát fürt üzembe helyezése |  | Nincs |
+| `domainName` | A használni kívánt egyéni tartománynév neve (ha van ilyen). A "None" értékre van állítva, ha nincs teljesen privát fürt üzembe helyezése |  | nincs |
 | `masterClusterDnsType` | A OpenShift webkonzol tartományának típusa. az "default" a Master infra nyilvános IP-cím DNS-címkéjét fogja használni. az "egyéni" beállítással saját nevet adhat meg | alapértelmezett <br> egyéni | alapértelmezett |
 | `masterClusterDns` | A OpenShift webkonzolhoz való hozzáféréshez használt egyéni DNS-név, ha az "egyéni" lehetőséget választotta a következőhöz:`masterClusterDnsType` |  | console.contoso.com |
 | `routingSubDomainType` | Ha a "nipio" értékre van állítva, a `routingSubDomain` NIP.IO-t fogja használni.  Ha az útválasztáshoz használni kívánt saját tartományt használ, használja az "egyéni" lehetőséget. | nipio <br> egyéni | nipio |
@@ -336,7 +336,7 @@ Az üzembe helyezés befejezésekor a rendszer lekéri a kapcsolódást a közpo
 $ ssh clusteradmin@bastiondns4hawllzaavu6g.eastus.cloudapp.azure.com
 ```
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Az az [Group delete](/cli/azure/group) paranccsal távolítsa el az erőforráscsoportot, a OpenShift-fürtöt és az összes kapcsolódó erőforrást, ha már nincs rájuk szükség.
 
@@ -344,7 +344,7 @@ Az az [Group delete](/cli/azure/group) paranccsal távolítsa el az erőforrásc
 az group delete --name openshiftrg
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Üzembe helyezés utáni feladatok](./openshift-container-platform-3x-post-deployment.md)
 - [A OpenShift üzembe helyezésének hibája az Azure-ban](./openshift-container-platform-3x-troubleshooting.md)

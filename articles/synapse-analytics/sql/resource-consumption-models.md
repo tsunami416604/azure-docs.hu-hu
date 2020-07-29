@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: 364f1676740106d57e61f94beaec53682656ef40
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a358052d5f3959a236f29461890c989e77edb4dc
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089192"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87369016"
 ---
 # <a name="synapse-sql-resource-consumption"></a>Szinapszis SQL-erőforrások felhasználása
 
@@ -99,7 +99,7 @@ Az SQL Pool egy kibővíthető rendszer, amely nagy mennyiségű számítási é
 
 Az adatraktár-egységek módosításához az [Alter Database](/sql/t-sql/statements/alter-database-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)utasításban ismertetett engedélyek szükségesek.
 
-Az Azure-erőforrások, például az SQL-adatbázis közreműködői és SQL Server közreműködők beépített szerepkörei módosíthatják a DWU beállításait.
+Az Azure beépített szerepkörei, például az SQL-adatbázis közreműködői és SQL Server közreműködők módosíthatják a DWU beállításait.
 
 #### <a name="view-current-dwu-settings"></a>Aktuális DWU-beállítások megtekintése
 

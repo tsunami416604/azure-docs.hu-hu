@@ -9,12 +9,12 @@ ms.devlang: csharp
 ms.topic: how-to
 ms.date: 04/27/2020
 ms.author: avgupta
-ms.openlocfilehash: 6dd485adb71bf05be6499f2fc18572e8a28357d7
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 0b057172c822f893e602d60f77a285f0867cf368
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86209625"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87367759"
 ---
 # <a name="backup-app-configuration-stores-automatically"></a>A biztonsági mentési alkalmazás konfigurációs tárolói automatikusan
 
@@ -41,7 +41,7 @@ Ebben az oktatóanyagban másodlagos tárolót fog létrehozni a `centralus` ré
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Az erőforráscsoport egy olyan logikai gyűjtemény, amelyben a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
 
@@ -130,7 +130,7 @@ Annak érdekében, hogy megkönnyítse az adatai biztonsági mentését, tesztel
 Ha a fent megadott mintakód nem felel meg a követelményeknek, létrehozhat saját Azure Functions is. A biztonsági mentés befejezéséhez a függvénynek képesnek kell lennie a következő feladatok végrehajtására:
 - Rendszeresen olvassa el a tárolási várólista tartalmát, és ellenőrizze, hogy tartalmaz-e értesítéseket a Event Gridról. A megvalósítás részleteiért tekintse meg a [Storage ÜZENETSOR SDK](/azure/storage/queues/storage-quickstart-queues-dotnet) -t.
 - Ha a tárolási várólista [Event Gridból származó esemény-értesítéseket](/azure/azure-app-configuration/concept-app-configuration-event?branch=pr-en-us-112982#event-schema)tartalmaz, bontsa ki az összes egyedi <kulcsot, a címke> az esemény üzenetei közül. Az elsődleges tárolóban a kulcs-érték változások egyedi azonosítója a kulcs és a felirat kombinációja.
-- Az elsődleges tároló összes beállításának beolvasása. Csak azokat a beállításokat frissítse a másodlagos tárolóban, amelyeknek megfelelő eseményük van a tárolási várólistában. Törölje az összes olyan beállítást a másodlagos tárolóból, amely megtalálható a Storage-várólistában, de az elsődleges tárolóban nem. Kihasználhatja az [app CONFIGURATION SDK](https://github.com/Azure/AppConfiguration#sdks) -t, hogy programozott módon hozzáférhessen a konfigurációs áruházakhoz.
+- Az elsődleges tároló összes beállításának beolvasása. Csak azokat a beállításokat frissítse a másodlagos tárolóban, amelyek megfelelő eseménnyel rendelkeznek a tárolási várólistában. Törölje az összes olyan beállítást a másodlagos tárolóból, amely megtalálható a Storage-várólistában, de az elsődleges tárolóban nem. Kihasználhatja az [app CONFIGURATION SDK](https://github.com/Azure/AppConfiguration#sdks) -t, hogy programozott módon hozzáférhessen a konfigurációs áruházakhoz.
 - Üzenetek törlése a tárolási sorból, ha a feldolgozás során nem történt kivétel.
 - Győződjön meg arról, hogy az igényeinek megfelelően valósítja meg a hibakezelés megvalósítását. A fenti mintakód használatával megtekintheti az esetlegesen kezelni kívánt gyakori kivételeket.
 

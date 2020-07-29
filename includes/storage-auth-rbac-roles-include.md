@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: storage
 author: tamram
 ms.service: storage
@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 07/06/2020
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: b49d757067d8ee888bee52f3931c8d48d786c044
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: c0ca96d1829a73f856de021d1286e53007b03219
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86024892"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87368973"
 ---
-Az Azure a következő beépített RBAC-szerepköröket biztosítja a blob-és üzenetsor-információhoz való hozzáférés engedélyezéséhez az Azure AD és a OAuth használatával:
+Az Azure az alábbi Azure beépített szerepköröket biztosítja a blob-és üzenetsor-információhoz való hozzáférés engedélyezéséhez az Azure AD és a OAuth használatával:
 
 - [Storage blob-adattulajdonos](../articles/role-based-access-control/built-in-roles.md#storage-blob-data-owner): a használatával a Azure Data Lake Storage Gen2 számára biztosíthatja a tulajdonosi és a POSIX hozzáférés-vezérlést. További információ: [hozzáférés-vezérlés Azure Data Lake Storage Gen2ban](../articles/storage/blobs/data-lake-storage-access-control.md).
 - [Storage blob-adatközreműködői](../articles/role-based-access-control/built-in-roles.md#storage-blob-data-contributor): a használatával olvasási/írási/törlési engedélyeket adhat a blob Storage-erőforrásokhoz.
@@ -28,7 +28,7 @@ Az Azure a következő beépített RBAC-szerepköröket biztosítja a blob-és �
 
 Csak az adathozzáféréshez explicit módon definiált szerepköröknek kell megadniuk a rendszerbiztonsági tag számára a blob-vagy üzenetsor-adat elérését. A beépített szerepkörök, például a **tulajdonos**, a **közreműködő**és a **Storage-fiók közreműködői** lehetővé teszik a rendszerbiztonsági tag számára a Storage-fiókok kezelését, de nem biztosítanak hozzáférést az adott fiókon belüli blob-vagy ÜZENETSOR-információhoz az Azure ad-n keresztül. Ha azonban egy szerepkör tartalmazza a **Microsoft. Storage/storageAccounts/listkeys műveletének beolvasása/műveletet**, akkor a szerepkörhöz hozzárendelt felhasználó a fiók hozzáférési kulcsainak megosztott kulcson keresztüli engedélyezésével férhet hozzá a Storage-fiókban tárolt adathoz. További információ: [a Azure Portal használata a blob-vagy üzenetsor-adatok eléréséhez](../articles/storage/common/storage-access-blobs-queues-portal.md).
 
-Az Azure Storage-hoz készült beépített RBAC-szerepkörökről és az adatszolgáltatásokról, valamint a felügyeleti szolgáltatásról az Azure [RBAC beépített Azure-beli szerepkörök](../articles/role-based-access-control/built-in-roles.md#storage) **című részében** talál további információt. Emellett az Azure-ban engedélyeket biztosító szerepkörök különböző típusaival kapcsolatos információkért lásd: [klasszikus előfizetés-rendszergazdai szerepkörök, Azure RBAC-szerepkörök és Azure ad-szerepkörök](../articles/role-based-access-control/rbac-and-directory-admin-roles.md).
+Az Azure Storage-ban az adatszolgáltatások és a felügyeleti szolgáltatás Azure-beli beépített szerepköreivel kapcsolatos részletes információkért tekintse meg a **Storage** szakaszt az Azure [RBAC beépített Azure-beli szerepkörökben](../articles/role-based-access-control/built-in-roles.md#storage). Emellett az Azure-ban engedélyeket biztosító szerepkörök különböző típusaival kapcsolatos információkért lásd: [klasszikus előfizetés-rendszergazdai szerepkörök, Azure RBAC-szerepkörök és Azure ad-szerepkörök](../articles/role-based-access-control/rbac-and-directory-admin-roles.md).
 
 > [!IMPORTANT]
 > A RBAC szerepkör-hozzárendelések akár öt percet is igénybe vehetnek.

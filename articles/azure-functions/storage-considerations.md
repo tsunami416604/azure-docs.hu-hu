@@ -2,13 +2,13 @@
 title: A Azure Functions tárolási szempontjai
 description: Ismerje meg a Azure Functions tárolási követelményeit és a tárolt adat titkosítását.
 ms.topic: conceptual
-ms.date: 01/21/2020
-ms.openlocfilehash: 2efd583b319e3f3b1fa3db307ea4a3cf53710165
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 07/27/2020
+ms.openlocfilehash: aefd9a35235a09d94973f383603349f6862bbdd9
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079604"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318181"
 ---
 # <a name="storage-considerations-for-azure-functions"></a>A Azure Functions tárolási szempontjai
 
@@ -18,12 +18,12 @@ A Azure Functions egy Azure Storage-fiókot igényel a Function App-példány l�
 |Tárolási szolgáltatás  | Függvények használata  |
 |---------|---------|
 | [Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md)     | Kötések állapotának és funkcióbillentyűk megtartása.  <br/>[A Durable Functionsban a feladatok hubok](durable/durable-functions-task-hubs.md)is használják. |
-| [Azure Files](../storage/files/storage-files-introduction.md)  | A függvény alkalmazás kódjának a használati csomagban való tárolásához és futtatásához használt [fájlmegosztás.](functions-scale.md#consumption-plan) |
+| [Azure Files](../storage/files/storage-files-introduction.md)  | A Function app-kód tárolásához és futtatásához használt fájlmegosztás a használati [tervben](functions-scale.md#consumption-plan) és a [prémium csomagban](functions-scale.md#premium-plan). |
 | [Azure üzenetsor-tároló](../storage/queues/storage-queues-introduction.md)     | [A feladatok hubok használják Durable Functionsban](durable/durable-functions-task-hubs.md).   |
 | [Azure Table storage](../storage/tables/table-storage-overview.md)  |  [A feladatok hubok használják Durable Functionsban](durable/durable-functions-task-hubs.md).       |
 
 > [!IMPORTANT]
-> A használatalapú szolgáltatási csomag használatakor a rendszer az Azure File Storage a fő tárfiókjában tárolja a függvénykódot és a kötéskonfigurációs fájlokat. Ha törli ezt a fő tárfiókot, ez a tartalom is törlődik, és nem állítható helyre.
+> A fogyasztási/prémium szintű üzemeltetési csomag használatakor a rendszer a fő Storage-fiókban tárolja a függvény kódját és a kötési konfigurációs fájlokat az Azure file Storage-ban. Ha törli ezt a fő tárfiókot, ez a tartalom is törlődik, és nem állítható helyre.
 
 ## <a name="storage-account-requirements"></a>Storage-fiókra vonatkozó követelmények
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
-ms.openlocfilehash: a367e819ab9f12d9adcb448848c80eaeea73d113
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 095fd0b534c0dffaf80d2464fb9734f295335b84
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87008030"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87317178"
 ---
 # <a name="collect-data-from-azure-diagnostics-extension-to-azure-monitor-logs"></a>Adatok gyűjtése az Azure Diagnostics bővítményből Azure Monitor naplókba
 Az Azure Diagnostics bővítmény olyan [Azure monitor ügynöke](agents-overview.md) , amely az Azure-beli számítási erőforrások, például a virtuális gépek vendég operációs rendszerének figyelési adatait gyűjti. Ez a cikk azt ismerteti, hogyan gyűjtheti össze a diagnosztikai bővítmény által gyűjtött adatokat az Azure Storage-ból Azure Monitor naplókba.
@@ -24,13 +24,13 @@ Az Azure Diagnostics bővítmény egy Azure Storage-fiókban tárolja az adatait
 
 | Napló típusa | Erőforrás típusa | Hely |
 | --- | --- | --- |
-| IIS-naplók |Virtual Machines <br> Webes szerepkörök <br> Feldolgozói szerepkörök |wad-IIS-LogFiles (Blob Storage) |
-| Rendszernapló |Virtual Machines |LinuxsyslogVer2v0 (Table Storage) |
+| IIS-naplók |Virtuális gépek <br> Webes szerepkörök <br> Feldolgozói szerepkörök |wad-IIS-LogFiles (Blob Storage) |
+| Rendszernapló |Virtuális gépek |LinuxsyslogVer2v0 (Table Storage) |
 | Operatív események Service Fabric |Service Fabric csomópontok |WADServiceFabricSystemEventTable |
 | Megbízható Actors-események Service Fabric |Service Fabric csomópontok |WADServiceFabricReliableActorEventTable |
 | Megbízható szolgáltatási események Service Fabric |Service Fabric csomópontok |WADServiceFabricReliableServiceEventTable |
-| Windows-eseménynaplók |Service Fabric csomópontok <br> Virtual Machines <br> Webes szerepkörök <br> Feldolgozói szerepkörök |WADWindowsEventLogsTable (Table Storage) |
-| Windows ETW-naplók |Service Fabric csomópontok <br> Virtual Machines <br> Webes szerepkörök <br> Feldolgozói szerepkörök |WADETWEventTable (Table Storage) |
+| Windows-eseménynaplók |Service Fabric csomópontok <br> Virtuális gépek <br> Webes szerepkörök <br> Feldolgozói szerepkörök |WADWindowsEventLogsTable (Table Storage) |
+| Windows ETW-naplók |Service Fabric csomópontok <br> Virtuális gépek <br> Webes szerepkörök <br> Feldolgozói szerepkörök |WADETWEventTable (Table Storage) |
 
 ## <a name="data-types-not-supported"></a>Az adattípusok nem támogatottak
 
@@ -64,5 +64,6 @@ Körülbelül 30 percen belül megtekintheti a Storage-fiók adatait a Log Analy
 ## <a name="next-steps"></a>További lépések
 
 * [Naplók és mérőszámok gyűjtése az Azure-szolgáltatásokhoz](./resource-logs.md#send-to-log-analytics-workspace) a támogatott Azure-szolgáltatásokhoz.
-* [Lehetővé teszi](../../azure-monitor/insights/solutions.md) , hogy a megoldások betekintést nyújtsanak az adataiba.
-* Az adatelemzéshez [használjon keresési lekérdezéseket](../../azure-monitor/log-query/log-query-overview.md) .
+* [Lehetővé teszi](../insights/solutions.md) , hogy a megoldások betekintést nyújtsanak az adataiba.
+* Az adatelemzéshez [használjon keresési lekérdezéseket](../log-query/log-query-overview.md) .
+

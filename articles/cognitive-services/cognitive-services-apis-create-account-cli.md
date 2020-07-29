@@ -7,14 +7,14 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 10/04/2019
+ms.date: 07/27/2020
 ms.author: aahi
-ms.openlocfilehash: 72b00d78d19ed0e963b4dad01b82033c659e1efd
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: b77d69248059a494d823afcd149382dd52b0e49d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84704709"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87317127"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>Cognitive Services-erőforrás létrehozása az Azure parancssori felületének (CLI) használatával
 
@@ -76,7 +76,7 @@ az group create \
 
 ### <a name="multi-service"></a>Több szolgáltatás
 
-| Szolgáltatás                    | Erőforrás                      |
+| Szolgáltatás                    | Altípus                      |
 |----------------------------|---------------------------|
 | Több szolgáltatás. További részletekért tekintse meg a [díjszabási](https://azure.microsoft.com/pricing/details/cognitive-services/) oldalt.            | `CognitiveServices`     |
 
@@ -86,9 +86,9 @@ az group create \
 
 ### <a name="vision"></a>Látás
 
-| Szolgáltatás                    | Erőforrás                      |
+| Szolgáltatás                    | Altípus                      |
 |----------------------------|---------------------------|
-| Computer Vision            | `ComputerVision`          |
+| Számítógépes látástechnológia            | `ComputerVision`          |
 | Custom Vision – előrejelzés | `CustomVision.Prediction` |
 | Custom Vision – képzés   | `CustomVision.Training`   |
 | Arcfelismerés                       | `Face`                    |
@@ -97,24 +97,24 @@ az group create \
 
 ### <a name="search"></a>Keresés
 
-| Szolgáltatás            | Erőforrás                  |
+| Szolgáltatás            | Altípus                  |
 |--------------------|-----------------------|
-| Bing Autosuggest   | `Bing.Autosuggest.v7` |
-| Bing Custom Search | `Bing.CustomSearch`   |
-| Bing Entity Search | `Bing.EntitySearch`   |
-| Bing Search        | `Bing.Search.v7`      |
-| Bing Spell Check   | `Bing.SpellCheck.v7`  |
+| Bing – Automatikus kiegészítés   | `Bing.Autosuggest.v7` |
+| Bing – Egyéni keresés | `Bing.CustomSearch`   |
+| Bing – Entitáskeresés | `Bing.EntitySearch`   |
+| Bing kereső        | `Bing.Search.v7`      |
+| Bing – Helyesírás-ellenőrzés   | `Bing.SpellCheck.v7`  |
 
 ### <a name="speech"></a>Speech
 
-| Szolgáltatás            | Erőforrás                 |
+| Szolgáltatás            | Altípus                 |
 |--------------------|----------------------|
 | Beszédszolgáltatások    | `SpeechServices`     |
 | Beszédfelismerés | `SpeakerRecognition` |
 
 ### <a name="language"></a>Nyelv
 
-| Szolgáltatás            | Erőforrás                |
+| Szolgáltatás            | Altípus                |
 |--------------------|---------------------|
 | Űrlap megértése | `FormUnderstanding` |
 | LUIS               | `LUIS`              |
@@ -124,7 +124,7 @@ az group create \
 
 ### <a name="decision"></a>Döntés
 
-| Szolgáltatás           | Erőforrás               |
+| Szolgáltatás           | Altípus               |
 |-------------------|--------------------|
 | Anomáliadetektor  | `AnomalyDetector`  |
 | Tartalommoderátor | `ContentModerator` |
@@ -151,6 +151,8 @@ az cognitiveservices account create \
     --location westus2 \
     --yes
 ```
+
+[!INCLUDE [Register Azure resource for subscription](./includes/register-resource-subscription.md)]
 
 ## <a name="get-the-keys-for-your-resource"></a>Az erőforrás kulcsainak beolvasása
 
@@ -198,7 +200,7 @@ Az erőforráscsoport és a hozzá tartozó erőforrások eltávolításához ha
 az group delete --name cognitive-services-resource-group
 ```
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 * [Kérelmek hitelesítése az Azure Cognitive Services](authentication.md)
 * [Mi az Azure Cognitive Services?](Welcome.md)

@@ -3,16 +3,16 @@ title: Linuxos virtuális gép másolása az Azure CLI-vel
 description: Ismerje meg, hogyan hozhat létre másolatot az Azure Linux rendszerű virtuális gépről az Azure CLI és a Managed Disks használatával.
 author: cynthn
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: how-to
 ms.date: 10/17/2018
 ms.author: cynthn
 ms.custom: legacy
-ms.openlocfilehash: 8532c0da7d9977b12a4d1099e430584de1e17fe0
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ec8fd91dc768b44b027c96efead6924782eb0f75
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86502741"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87368608"
 ---
 # <a name="create-a-copy-of-a-linux-vm-by-using-azure-cli-and-managed-disks"></a>Linux rendszerű virtuális gép másolatának létrehozása az Azure CLI és a Managed Disks használatával
 
@@ -124,6 +124,6 @@ az vm create --resource-group myResourceGroup \
     --attach-os-disk myCopiedDisk
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Megtudhatja, hogyan kezelheti a virtuálisgép-lemezképeket a [megosztott képtárban](../shared-images-cli.md) .

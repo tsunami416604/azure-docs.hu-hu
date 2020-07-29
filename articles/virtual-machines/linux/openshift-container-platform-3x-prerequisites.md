@@ -5,16 +5,16 @@ author: haroldwongms
 manager: mdotson
 ms.service: virtual-machines-linux
 ms.subservice: workloads
-ms.topic: article
+ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 10/23/2019
 ms.author: haroldw
-ms.openlocfilehash: 244bea1aaf5457601ced9bac05c8dae43e5b9199
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 68bd748e890659e4b79d76e4ccab038f251a937a
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86527132"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87368183"
 ---
 # <a name="common-prerequisites-for-deploying-openshift-container-platform-311-in-azure"></a>A OpenShift Container platform 3,11 Azure-beli üzembe helyezésének gyakori előfeltételei
 
@@ -44,7 +44,7 @@ Ez az útmutató az előfeltételekhez társított összetevők létrehozását 
 > * Hozzon létre egy Key vaultot a OpenShift-fürt SSH-kulcsainak kezeléséhez.
 > * Hozzon létre egy egyszerű szolgáltatást az Azure Cloud Provider általi használatra.
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba 
 Jelentkezzen be az Azure-előfizetésbe az az [login](/cli/azure/reference-index) paranccsal, és kövesse a képernyőn megjelenő utasításokat, vagy kattintson a **kipróbálás** gombra a Cloud Shell használatához.
@@ -163,7 +163,7 @@ Hozza létre a titkokat az Azure CLI használatával. Alább látható egy péld
 az keyvault secret set --vault-name KeyVaultName -n mastercafile --file ~/certificates/masterca.pem
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez a cikk a következő témákat tárgyalta:
 > [!div class="checklist"]

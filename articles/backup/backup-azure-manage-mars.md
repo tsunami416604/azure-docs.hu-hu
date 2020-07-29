@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan kezelheti és figyelheti Microsoft Azure Recove
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: 376e2d53165ab822f75e635b42106e1fe13282a9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 096f47ba4a3d8d490c9cfaf43f4dafec4faf10f9
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87054989"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87317348"
 ---
 # <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>Microsoft Azure Recovery Services-(MARS-) ügynök biztonsági másolatainak kezelése a Azure Backup szolgáltatás használatával
 
@@ -112,7 +112,7 @@ A fájlok és mappák biztonsági mentése kétféleképpen állítható le:
 1. Az **ütemezett biztonsági mentés szüneteltetése**lapon tekintse át az információkat, majd kattintson a **Befejezés**gombra.
 
     ![Ütemezett biztonsági mentés módosítása vagy leállítása.](./media/backup-azure-manage-mars/pause-schedule-backup.png)
-1. A **biztonsági mentési folyamat módosítása**területen győződjön meg arról, hogy az ütemezett biztonsági mentés szüneteltetése sikeres állapotban van, majd a befejezéshez kattintson a **Bezárás** gombra.
+1. A **biztonsági mentés**állapotának módosítása területen győződjön meg arról, hogy az ütemezett biztonsági mentés szüneteltetése sikeres állapotban van, és a befejezéshez kattintson a **Bezárás** gombra.
 
 ### <a name="stop-protection-and-delete-backup-data"></a>Védelem leállítása és biztonsági másolatok törlése
 

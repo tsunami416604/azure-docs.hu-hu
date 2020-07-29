@@ -1,6 +1,6 @@
 ---
-title: A Windows rendszerű virtuális asztali kapcsolat hibáinak megoldása – Azure 2019
-description: Az ügyfélkapcsolatok Windows virtuális asztali bérlői környezetben való beállításakor felmerülő problémák megoldása.
+title: Windows rendszerű virtuális asztali kapcsolat – Azure
+description: Az ügyfélkapcsolatok Windowsos virtuális asztali (klasszikus) bérlői környezetben való beállításakor felmerülő problémák megoldása.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: troubleshooting
 ms.date: 05/20/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ad5e740a2874d398f3947fe755024bedc897ec73
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 213f7843e4896f8c7c9234e2c94433afbed1d565
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87085792"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292518"
 ---
-# <a name="troubleshoot-windows-virtual-desktop-service-connections"></a>A Windows rendszerű virtuális asztali szolgáltatások kapcsolatainak hibáinak megoldása
+# <a name="windows-virtual-desktop-classic-service-connections"></a>Windows rendszerű virtuális asztali (klasszikus) szolgáltatás kapcsolatai
 
 >[!IMPORTANT]
->Ez a tartalom a Fall 2019 kiadásra vonatkozik, amely nem támogatja a Windows rendszerű virtuális asztali objektumokat Azure Resource Manager. Ha a Spring 2020 Update szolgáltatásban bevezetett Azure Resource Manager Windows rendszerű virtuális asztali objektumokat szeretne felügyelni, tekintse meg [ezt a cikket](../troubleshoot-service-connection.md).
+>Ez a tartalom a Windows rendszerű virtuális asztali (klasszikus) verzióra vonatkozik, amely nem támogatja Azure Resource Manager Windows rendszerű virtuális asztali objektumokat. Ha Azure Resource Manager Windows rendszerű virtuális asztali objektumokat szeretne felügyelni, tekintse meg [ezt a cikket](../troubleshoot-service-connection.md).
 
 Ez a cikk a Windows rendszerű virtuális asztali ügyfélkapcsolatokkal kapcsolatos problémák megoldásához használható.
 

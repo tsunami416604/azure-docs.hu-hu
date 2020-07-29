@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 03/02/2019
 ms.author: aahi
-ms.openlocfilehash: 4cdf58974cd8fa9d7813df7e970caea260409225
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 79bbdd109d005b7c6de293aebf50433fb7ea1d91
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78251306"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291652"
 ---
 # <a name="external--community-content-for-the-text-analytics-cognitive-service"></a>Külső & közösségi tartalom a Text Analytics kognitív szolgáltatáshoz
 
@@ -23,7 +23,7 @@ ms.locfileid: "78251306"
 
 ## <a name="blogs"></a>Blogok
 
-+ [Text Analytics API eredeti hirdetmény (Azure blog)](https://blogs.technet.microsoft.com/machinelearning/2015/04/08/introducing-text-analytics-in-the-azure-ml-marketplace/)
++ [Text Analytics API eredeti hirdetmény (Azure blog)](https://azure.microsoft.com/blog/using-text-analytics-in-call-centers/)
 
 + [Text Analytics Key kifejezés használata Cognitive Services API-val a PowerShellből (AutomationNext blog)](https://automationnext.wordpress.com/tag/text-analytics/)
 
@@ -51,7 +51,7 @@ ms.locfileid: "78251306"
 
 Információra van szüksége a szolgáltatásról vagy a használati esetről, amelyet nem takarunk el? Érdemes lehet a [UserVoice](https://cognitive.uservoice.com/forums/555922-text-analytics)-on megkeresni vagy szavazni. 
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
  [StackOverflow: Azure Text Analytics API](https://stackoverflow.com/questions/tagged/text-analytics-api)   
  [StackOverflow: Azure Cognitive Services](https://stackoverflow.com/questions/tagged/microsoft-cognitive)

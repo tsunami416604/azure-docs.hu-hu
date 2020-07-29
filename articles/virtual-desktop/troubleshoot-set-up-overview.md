@@ -8,26 +8,23 @@ ms.topic: troubleshooting
 ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 1010f89057d83a11fb2e156f01509e909270b044
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4622e64b585d3d4795b11d29e7bffdf9991203c6
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083572"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292544"
 ---
 # <a name="troubleshooting-overview-feedback-and-support-for-windows-virtual-desktop"></a>Hibaelhárítás – áttekintés, visszajelzés és a Windows rendszerű virtuális asztalok támogatása
 
 >[!IMPORTANT]
->Ez a tartalom a Spring 2020 frissítésre vonatkozik Azure Resource Manager Windows rendszerű virtuális asztali objektumokkal. Ha a Windows rendszerű virtuális 2019 asztalt Azure Resource Manager objektumok nélkül használja, tekintse meg [ezt a cikket](./virtual-desktop-fall-2019/troubleshoot-set-up-overview-2019.md).
->
-> A Windows rendszerű virtuális asztali Spring 2020 frissítése jelenleg nyilvános előzetes verzióban érhető el. Ezt az előzetes verziót szolgáltatói szerződés nélkül biztosítjuk, és nem javasoljuk, hogy éles számítási feladatokhoz használja azt. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. 
-> További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+>Ez a tartalom a Windows rendszerű virtuális asztali Azure Resource Manager Windows virtuális asztali objektumokkal vonatkozik. Ha a Windowsos virtuális asztalt (klasszikus) Azure Resource Manager objektumok nélkül használja, tekintse meg [ezt a cikket](./virtual-desktop-fall-2019/troubleshoot-set-up-overview-2019.md).
 
 Ez a cikk áttekintést nyújt a Windows rendszerű virtuális asztali környezet beállítása során felmerülő problémákról, és a problémák megoldásához nyújt lehetőségeket.
 
-## <a name="report-issues-during-public-preview"></a>Problémák jelentése a nyilvános előzetes verzióban
+## <a name="report-issues"></a>Problémák bejelentése
 
-Ha a Spring 2020 kiadásban nyilvános előzetes verzióban szeretne problémákat jelenteni vagy javaslatokat készíteni, látogasson el a [Windows rendszerű virtuális asztali technikai Közösségbe](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop). A technikai Közösség segítségével megismerheti az ajánlott eljárásokat, illetve az új funkciókra vonatkozó javaslatokat és szavazhat. Ha a nyilvános előzetes kiadással kapcsolatos problémát jelent, ügyeljen arra, hogy a probléma típusát a **Spring 2020 Update (előzetes verzió)** címkével adja meg.
+Ha Azure Resource Manager-integrációval kapcsolatos problémákat szeretne jelenteni a Windows rendszerű virtuális asztali környezethez, látogasson el a [Windows rendszerű virtuális asztali technikai Közösségbe](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop). A technikai Közösség segítségével megismerheti az ajánlott eljárásokat, illetve az új funkciókra vonatkozó javaslatokat és szavazhat.
 
 Ha olyan bejegyzést tesz, amely segítséget kér vagy új szolgáltatást javasol, a lehető legrészletesebben írja le a témakört. A részletes információk segítséget nyújthatnak más felhasználóknak a kérdés megválaszolásához vagy az Ön által szavazásra javasolt funkció megismeréséhez.
 

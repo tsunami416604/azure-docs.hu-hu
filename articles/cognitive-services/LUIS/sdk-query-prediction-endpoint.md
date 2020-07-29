@@ -2,15 +2,15 @@
 title: 'Gyors útmutató: SDK-lekérdezések előrejelzési végpontja – LUIS'
 description: Ebből a rövid útmutatóból megtudhatja, hogyan küldhet el egy felhasználót az Azure Cognitive Services LUIS alkalmazásnak az SDK használatával, és hogyan kaphat előrejelzést.
 ms.topic: quickstart
-ms.date: 05/28/2020
-ms.custom: tracking-python
+ms.date: 07/28/2020
+ms.custom: tracking-python, devx-track-javascript
 zone_pivot_groups: programming-languages-set-diberry-3core
-ms.openlocfilehash: 27bf958e32402549e148e4b5d71391e8867bd4e4
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: c4929f73add9c5d9aabd8ddd3c4878e88c9a9b27
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84605575"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87369258"
 ---
 # <a name="quickstart-query-v3-prediction-endpoint-with-sdk"></a>Gyors útmutató: v3 előrejelzési végpont lekérdezése SDK-val
 
@@ -28,7 +28,7 @@ Használja az SDK-t, hogy a felhasználó teljes Language Understanding (LUIS) k
 [!INCLUDE [Get prediction with Python SDK](./includes/sdk-python-prediction.md)]
 ::: zone-end
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: a felhasználói szándékok meghatározására szolgáló LUIS-alkalmazás létrehozása](luis-quickstart-intents-only.md)

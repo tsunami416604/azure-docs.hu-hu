@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/20/2019
-ms.openlocfilehash: 939a2e67d6d2c215f7a575b6b9bd08660fc03b27
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3a6afd42c12a523523b45861b38b323fa680ecab
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87008200"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87317284"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>Az Azure Monitor-naplók üzembe helyezésének megtervezése
 
@@ -47,12 +47,12 @@ Az informatikai szervezetek jelenleg a következő modelleken alapulnak: közpon
 
 Ha a Log Analytics ügynököket használja az adatok gyűjtésére, az ügynök üzembe helyezésének megtervezéséhez a következőket kell megismernie:
 
-* A Windows-ügynököktől származó adatok összegyűjtéséhez beállíthatja, hogy az [egyes ügynökök egy vagy több munkaterületnek jelentsenek](../../azure-monitor/platform/agent-windows.md), még akkor is, ha System Center Operations Manager felügyeleti csoportnak jelentenek jelentést. A Windows-ügynök legfeljebb négy munkaterületet tud jelenteni.
+* A Windows-ügynököktől származó adatok összegyűjtéséhez beállíthatja, hogy az [egyes ügynökök egy vagy több munkaterületnek jelentsenek](./agent-windows.md), még akkor is, ha System Center Operations Manager felügyeleti csoportnak jelentenek jelentést. A Windows-ügynök legfeljebb négy munkaterületet tud jelenteni.
 * A Linux-ügynök nem támogatja a többsoros vezérlést, és csak egyetlen munkaterületre tud jelentést készíteni.
 
 Ha System Center Operations Manager 2012 R2 vagy újabb verziót használ:
 
-* Az egyes Operations Manager felügyeleti csoportok [csak egy munkaterülethez csatlakoztathatók](../platform/om-agents.md). 
+* Az egyes Operations Manager felügyeleti csoportok [csak egy munkaterülethez csatlakoztathatók](./om-agents.md). 
 * A felügyeleti csoportnak jelentést küldő linuxos számítógépeket úgy kell konfigurálni, hogy közvetlenül egy Log Analytics munkaterületre jelentsenek. Ha a Linux rendszerű számítógépek már közvetlenül egy munkaterületre vannak bejelentve, és Operations Manager szeretné figyelni őket, kövesse az alábbi lépéseket [egy Operations Manager felügyeleti csoportnak való jelentéskészítéshez](agent-manage.md#configure-agent-to-report-to-an-operations-manager-management-group). 
 * Telepítheti a Log Analytics Windows-ügynököt a Windows rendszerű számítógépre, és jelentést készíthet mind a munkaterülettel integrált Operations Manager, mind pedig egy másik munkaterületről.
 
@@ -62,7 +62,7 @@ A szerepköralapú hozzáférés-vezérlés (RBAC) segítségével a felhasznál
 
 A felhasználóhoz hozzáférő adatok az alábbi táblázatban felsorolt tényezők kombinációjával vannak meghatározva. Mindegyiket az alábbi szakasz ismerteti.
 
-| Szempont | Description |
+| Szempont | Leírás |
 |:---|:---|
 | [Hozzáférési mód](#access-mode) | A felhasználó által a munkaterület eléréséhez használt metódus.  Meghatározza az elérhető adatmennyiséget és az alkalmazott hozzáférés-vezérlési módot. |
 | [Hozzáférés-vezérlési mód](#access-control-mode) | A munkaterületre vonatkozó beállítás, amely meghatározza, hogy a rendszer az engedélyeket a munkaterületen vagy az erőforrás szintjén alkalmazza-e. |
@@ -166,3 +166,4 @@ A modellre való Migrálás megtervezése során vegye figyelembe a következők
 ## <a name="next-steps"></a>További lépések
 
 Az útmutatóban ajánlott biztonsági engedélyek és vezérlőelemek megvalósításához tekintse át a [naplók hozzáférésének kezelése](manage-access.md)című témakört.
+

@@ -4,12 +4,12 @@ description: A Azure Policy használatával méretezhető Azure Monitor szolgál
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: fbfc0cafe83f53bd7cab2b93899e9c2cb02d52e3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 043edae04c6de5d42849cf43b947b9646f12f489
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505210"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87317420"
 ---
 # <a name="deploy-azure-monitor-at-scale-using-azure-policy"></a>Azure Monitor üzembe helyezése méretezéssel Azure Policy használatával
 Néhány Azure Monitor funkció egyszer vagy korlátozott számú alkalommal van konfigurálva, másokat meg kell ismételni minden figyelni kívánt erőforrásnál. Ez a cikk azokat a módszereket ismerteti, amelyekkel a Azure Policy használatával méretezhetők a Azure Monitorek, így biztosítható, hogy az összes Azure-erőforrás monitorozása következetes legyen és pontosan legyen konfigurálva.
@@ -43,7 +43,7 @@ A figyeléshez kapcsolódó beépített szabályzat-definíciók megtekintéséh
 
 
 ## <a name="diagnostic-settings"></a>Diagnosztikai beállítások
-A [diagnosztikai beállítások](../platform/diagnostic-settings.md) erőforrás-naplókat és mérőszámokat gyűjtenek az Azure-erőforrásokból több helyre, jellemzően egy log Analytics munkaterületre, amely lehetővé teszi az adatok elemzését a [naplók lekérdezésével](../log-query/log-query-overview.md) és a [naplók riasztásával](alerts-log.md). A házirend használatával automatikusan létrehozhat egy diagnosztikai beállítást, valahányszor létrehoz egy erőforrást.
+A [diagnosztikai beállítások](./diagnostic-settings.md) erőforrás-naplókat és mérőszámokat gyűjtenek az Azure-erőforrásokból több helyre, jellemzően egy log Analytics munkaterületre, amely lehetővé teszi az adatok elemzését a [naplók lekérdezésével](../log-query/log-query-overview.md) és a [naplók riasztásával](alerts-log.md). A házirend használatával automatikusan létrehozhat egy diagnosztikai beállítást, valahányszor létrehoz egy erőforrást.
 
 Minden egyes Azure-erőforrástípus olyan egyedi kategóriákat tartalmaz, amelyeknek szerepelniük kell a diagnosztikai beállításban. Emiatt minden erőforrástípus külön házirend-definíciót igényel. Egyes erőforrástípusok beépített szabályzat-definíciókkal rendelkeznek, amelyeket módosítás nélkül rendelhet hozzá. Más erőforrástípusok esetén létre kell hoznia egy egyéni definíciót.
 
@@ -79,7 +79,7 @@ A [create-AzDiagPolicy](https://www.powershellgallery.com/packages/Create-AzDiag
    Create-AzDiagPolicy.ps1 -SubscriptionID xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -ResourceType Microsoft.Sql/servers/databases  -ExportLA -ExportEH -ExportDir ".\PolicyFiles"  
    ```
 
-5. A szkript külön mappákat hoz létre az egyes szabályzat-definíciók számára, amelyek mindegyike három, azurepolicy, JSON, azurepolicy.rules.json azurepolicy.parameters.jsnevű fájlt tartalmaz. Ha a házirendet manuálisan kívánja létrehozni a Azure Portalban, másolhatja és beillesztheti a azurepolicy.jstartalmát, mert az tartalmazza a teljes házirend-definíciót is. A másik két fájl PowerShell vagy CLI használatával hozza létre a házirend-definíciót a parancssorból.
+5. A szkript külön mappákat hoz létre az egyes szabályzat-definíciók számára, amelyek mindegyike a következő három fájlt tartalmazza: azurepolicy.json, azurepolicy.rules.jsbe, azurepolicy.parameters.js. Ha a házirendet manuálisan kívánja létrehozni a Azure Portalban, másolhatja és beillesztheti a azurepolicy.jstartalmát, mert az tartalmazza a teljes házirend-definíciót is. A másik két fájl PowerShell vagy CLI használatával hozza létre a házirend-definíciót a parancssorból.
 
     Az alábbi példák bemutatják, hogyan telepítheti a házirend-definíciót a PowerShell és a parancssori felületről. Minden olyan metaadatot tartalmaz **, amely a** beépített szabályzat-definíciókkal csoportosítja az új házirend-definíciót.
 
@@ -119,19 +119,65 @@ A kezdeményezés a létrehozott virtuális gépekre lesz érvényes. Egy [szerv
 ![Kezdeményezés szervizelése](media/deploy-scale/initiative-remediation.png)
 
 
-## <a name="azure-monitor-for-vms"></a>Azure Monitor virtuális gépekhez
-A [Azure monitor for VMS](../insights/vminsights-overview.md) a virtuális gépek figyelésére szolgáló Azure monitor elsődleges eszköze. A Azure Monitor for VMs engedélyezése a Log Analytics ügynököt és a függőségi ügynököt is telepíti. Ahelyett, hogy ezeket a feladatokat manuálisan hajtja végre, a Azure Policy használatával győződjön meg arról, hogy az egyes virtuális gépeket a létrehozáskor konfigurálta.
+## <a name="azure-monitor-for-vms-and-virtual-machine-agents"></a>Azure Monitor for VMs és virtuálisgép-ügynökök
+[Azure monitor for VMS](../insights/vminsights-overview.md) a virtuális gépek és a virtuálisgép-méretezési csoportok figyelésére szolgáló Azure monitor elsődleges eszköze. A Azure Monitor for VMs engedélyezéséhez telepítenie kell mind a Log Analytics ügynököt, mind a függőségi ügynököt az egyes ügyfeleken. Az Log Analytics-ügynököt saját maga is telepítheti más figyelési forgatókönyvek támogatásához. Ahelyett, hogy ezeket a feladatokat manuálisan hajtja végre, a Azure Policy használatával győződjön meg arról, hogy az egyes virtuális gépeket a létrehozáskor konfigurálta.
 
-A Azure Monitor for VMs két beépített kezdeményezést tartalmaz, amelyek az **Azure monitor for VMS engedélyezése** és **a Azure monitor engedélyezése Virtual Machine Scale sets**. Ezek a kezdeményezések olyan szabályzat-definíciókat tartalmaznak, amelyek szükségesek a Log Analytics-ügynök telepítéséhez, valamint a Azure Monitor for VMs engedélyezéséhez szükséges függőségi ügynökhöz. 
+> [!NOTE]
+> Azure Monitor for VMs tartalmaz egy **Azure monitor for VMS Policy lefedettség** nevű szolgáltatást, amely lehetővé teszi a nem megfelelő virtuális gépek felderítését és szervizelését a környezetben. Ezt a funkciót használhatja ahelyett, hogy közvetlenül a Azure Policy Azure-beli virtuális gépekhez, illetve az Azure arc-hoz csatlakoztatott hibrid virtuális gépekhez kellene dolgoznia. Az Azure-beli virtuálisgép-méretezési csoportokhoz Azure Policy használatával kell létrehoznia a hozzárendelést.
+ 
 
+Azure Monitor for VMs a következő beépített kezdeményezéseket tartalmazza, amelyek mindkét ügynököt telepítik teljes figyelésre. 
+
+|Név |Leírás |
+|:---|:---|
+|Azure Monitor for VMs engedélyezése | Telepíti a Log Analytics-ügynököt és a függőségi ügynököt az Azure-beli virtuális gépeken és az Azure arc-hoz csatlakoztatott hibrid virtuális gépeken |
+|Azure Monitor engedélyezése virtuálisgép-méretezési csoportokhoz | Telepíti az Log Analytics Agent ügynököt és a függőségi ügynököt az Azure virtuálisgép-méretezési csoporton. |
+
+
+### <a name="virtual-machines"></a>Virtual machines (Virtuális gépek)
 Ahelyett, hogy a Azure Policy felületen hozza létre a kezdeményezésekhez tartozó hozzárendeléseket, Azure Monitor for VMs tartalmaz egy olyan szolgáltatást, amely lehetővé teszi az egyes hatókörökben lévő virtuális gépek számának vizsgálatát annak megállapítására, hogy a kezdeményezés alkalmazása megtörtént-e. Ezután konfigurálhatja a munkaterületet, és létrehozhatja a szükséges hozzárendeléseket a csatoló használatával.
 
 A folyamat részleteiért lásd: [Azure monitor for VMS engedélyezése Azure Policy használatával](../insights/vminsights-enable-at-scale-policy.md).
 
 ![Azure Monitor for VMs házirend](../platform/media/deploy-scale/vminsights-policy.png)
 
+### <a name="virtual-machine-scale-sets"></a>Virtuálisgép-méretezési csoportok
+Ha Azure Policyt szeretne használni a virtuálisgép-méretezési csoportok figyelésének engedélyezéséhez, rendelje hozzá a **virtuálisgép-méretezési csoportok Azure monitor engedélyezése** az Azure felügyeleti csoportjához, az előfizetéshez vagy az erőforrás-csoporthoz a figyelni kívánt erőforrások körétől függően. A [felügyeleti csoport](../../governance/management-groups/overview.md) különösen akkor hasznos, ha a szervezet több előfizetéssel rendelkezik.
 
-## <a name="next-steps"></a>Következő lépések
+![Kezdeményezési hozzárendelés](media/deploy-scale/virtual-machine-scale-set-assign-initiative.png)
+
+Válassza ki azt a munkaterületet, amelybe az adatküldés történik. Ennek a munkaterületnek telepítve kell lennie a *VMInsights* -megoldásnak a következő témakörben leírt módon: []() .
+
+![Munkaterület kiválasztása](media/deploy-scale/virtual-machine-scale-set-workspace.png)
+
+Ha olyan meglévő virtuálisgép-méretezési csoporttal rendelkezik, amelyet ehhez a Szabályzathoz kell rendelni, hozzon létre egy szervizelési feladatot.
+
+![Szervizelési feladat](media/deploy-scale/virtual-machine-scale-set-remediation.png)
+
+### <a name="log-analytics-agent"></a>Log Analytics-ügynök
+Lehetnek olyan helyzetek, amikor telepíteni szeretné a Log Analytics ügynököt, de nem a függőségi ügynököt. Nincs olyan beépített kezdeményezés, amely csak az ügynökhöz tartozik, de a Azure Monitor for VMs által biztosított beépített szabályzat-definíciók alapján hozhatja létre a sajátját.
+
+> [!NOTE]
+> A függőségi ügynököt nem lehet saját maga telepíteni, mert a Log Analytics ügynöknek hozzá kell adni az adatAzure Monitorhoz.
+
+
+|Név |Leírás |
+|-----|------------|
+|Log Analytics ügynök üzembe helyezésének naplózása – a virtuálisgép-rendszerkép (operációs rendszer) fel van listázva |A virtuális gépeket nem megfelelőként jelenti, ha a virtuálisgép-rendszerkép (OS) nincs definiálva a listában, és az ügynök nincs telepítve. |
+|A Linux rendszerű virtuális gépek Log Analytics ügynökének üzembe helyezése |Telepítse Log Analytics-ügynököt Linux rendszerű virtuális gépekre, ha a virtuális gép lemezképe (OS) definiálva van a listában, és az ügynök nincs telepítve. |
+|Windows rendszerű virtuális gépek Log Analytics ügynökének üzembe helyezése |Log Analytics ügynök központi telepítése Windows rendszerű virtuális gépekre, ha a virtuális gép lemezképe (OS) definiálva van a listában, és az ügynök nincs telepítve. |
+| [Előzetes verzió]: Log Analytics ügynöknek telepítve kell lennie a linuxos Azure arc-gépeken |A hibrid Azure arc-gépeket nem megfelelőként jelenti Linux rendszerű virtuális gépeken, ha a virtuálisgép-rendszerkép (OS) definiálva van a listában, és az ügynök nincs telepítve. |
+| [Előzetes verzió]: Log Analytics ügynöknek telepítve kell lennie a Windows Azure arc-gépeken |A hibrid Azure arc-gépeket nem megfelelőként jelenti a Windows rendszerű virtuális gépeken, ha a listában a virtuálisgép-rendszerkép (OS) meg van határozva, és az ügynök nincs telepítve. |
+| [Előzetes verzió]: Log Analytics-ügynök üzembe helyezése Linux Azure arc-gépeken |Log Analytics-ügynök üzembe helyezése Linux hibrid Azure arc-gépeken, ha a virtuális gép lemezképe (OS) definiálva van a listában, és az ügynök nincs telepítve. |
+| [Előzetes verzió]: Log Analytics-ügynök üzembe helyezése Windows Azure arc-gépeken |Telepítse Log Analytics agentet a Windows hibrid Azure arc-gépekhez, ha a virtuális gép lemezképe (OS) definiálva van a listában, és az ügynök nincs telepítve. |
+|A függőségi ügynök üzembe helyezése a virtuálisgép-méretezési csoportokban – a virtuális gép rendszerképe (operációs rendszer) nincs listázva |A virtuálisgép-méretezési csoport nem megfelelőként való jelentése, ha a virtuális gép rendszerképe (OS) nincs definiálva a listában, és az ügynök nincs telepítve. |
+|Naplózás Log Analytics ügynök üzembe helyezése virtuálisgép-méretezési csoportokban – a virtuális gép rendszerképe (OS) nem listázva |A virtuálisgép-méretezési csoport nem megfelelőként való jelentése, ha a virtuális gép rendszerképe (OS) nincs definiálva a listában, és az ügynök nincs telepítve. |
+|A Linux rendszerű virtuálisgép-méretezési csoportokra vonatkozó Log Analytics-ügynök üzembe helyezése |A Linux rendszerű virtuálisgép-méretezési csoportokra vonatkozó Log Analytics-ügynök üzembe helyezése, ha a virtuális gép lemezképe (OS) definiálva van a listában, és az ügynök nincs telepítve. |
+|A Windows rendszerű virtuálisgép-méretezési csoportokhoz tartozó Log Analytics-ügynök üzembe helyezése |Telepítse a Windows rendszerű virtuálisgép-méretezési csoportokhoz Log Analytics Agent ügynököt, ha a virtuális gép lemezképe (OS) definiálva van a listában, és az ügynök nincs telepítve. |
+
+
+## <a name="next-steps"></a>További lépések
 
 - További információ a [Azure Policyról](../../governance/policy/overview.md).
 - További információ a [diagnosztikai beállításokról](diagnostic-settings.md).
+

@@ -4,16 +4,16 @@ description: A grub soros konzoljának használata az Azure Virtual Machines szo
 services: virtual-machines-linux
 author: asinn826
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: d594f4d8019a7c23da79506cd702adbe9f25038d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: da7e558464c82db9d71132c4b1f53f9892d2d653
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87028941"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292248"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>Serial Console használata a GRUB és az egyfelhasználós mód eléréséhez
 A GRUB a GRand Unified bootloader. A GRUB-ból a rendszerindítási konfigurációt úgy módosíthatja, hogy az egy felhasználói módba induljon, egyebek között.
