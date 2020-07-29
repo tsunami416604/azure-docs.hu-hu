@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 19b7962462e5cdb03bad0c6004b8c19f781ccc69
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 723b8cf7a71e5af672c8665040645d55645fe9f7
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87005276"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281854"
 ---
 # <a name="create-a-group-managed-service-account-gmsa-in-azure-active-directory-domain-services"></a>Csoportosan felügyelt szolgáltatásfiók (gMSA) létrehozása Azure Active Directory Domain Services
 
@@ -76,7 +76,7 @@ Most hozzon létre egy gMSA a [New-ADServiceAccount][New-ADServiceAccount] paran
 * **-A name** értéke *WebFarmSvc*
 * **-Path** paraméter adja meg az előző lépésben létrehozott gMSA tartozó egyéni szervezeti egységet.
 * A DNS-bejegyzések és egyszerű szolgáltatásnév *WebFarmSvc.aaddscontoso.com* vannak beállítva
-* A *AADDSCONTOSO-Server $* rendszerbiztonsági tag jogosult a jelszó beolvasására az identitás használatát.
+* A *AADDSCONTOSO-Server $* rendszerbiztonsági tag jogosult a jelszó beolvasására és az identitás használatára.
 
 Adja meg a saját nevét és tartományneveit.
 

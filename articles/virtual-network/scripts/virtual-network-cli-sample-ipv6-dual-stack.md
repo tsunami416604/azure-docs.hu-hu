@@ -1,7 +1,7 @@
 ---
 title: Azure CLI-parancsfájl mintája – IPv6-előtér konfigurálása
 titlesuffix: Azure Virtual Network
-description: IPv6-végpontok engedélyezése az Azure CLI használatával az Azure-ban Virtual Network
+description: Az Azure CLI-parancsfájl használatával IPv6-végpontokat konfigurálhat, és egy Dual stack (IPv4 + IPv6) alkalmazást helyezhet üzembe az Azure-ban.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -12,12 +12,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 04/23/2019
 ms.author: kumud
-ms.openlocfilehash: 1ef8742bc4f8de2d08d9bb4fc98b3df6f9420737
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5f5e741e972015820af2e0e33372eb41c9e78210
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80235031"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281599"
 ---
 # <a name="configure-ipv6-endpoints-in-virtual-network-script-sample-preview"></a>IPv6-végpontok konfigurálása a Virtual Network script Sample (előzetes verzió) szolgáltatásban
 
@@ -276,7 +276,7 @@ az group delete --name <resourcegroupname> --yes
 
 A szkript a következő parancsokat használja egy erőforráscsoport, egy virtuális gép, egy rendelkezésre állási csoport, egy terheléselosztó és minden kapcsolódó erőforrás létrehozásához. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
-| Parancs | Megjegyzések |
+| Parancs | Jegyzetek |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
 | [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet#az-network-vnet-create) | Létrehoz egy Azure-beli virtuális hálózatot és alhálózatot. |

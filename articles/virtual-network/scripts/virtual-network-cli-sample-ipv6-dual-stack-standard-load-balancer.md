@@ -1,7 +1,7 @@
 ---
 title: Azure CLI-parancsfájl mintája – IPv6-standard Load Balancer konfigurálása
 titlesuffix: Azure Virtual Network
-description: IPv6-végpontok engedélyezése az Azure CLI használatával az Azure-ban Virtual Network
+description: Megtudhatja, hogyan konfigurálhat IPv6-végpontokat egy virtuális hálózati parancsfájl-mintában standard Load Balancer használatával.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -12,12 +12,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 07/15/2019
 ms.author: kumud
-ms.openlocfilehash: 5f5856a89a04b58b138ee23a5f289ceff0915acf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2509034abb37c7dc90b65569d14f228eadb746c8
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80235039"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281616"
 ---
 # <a name="configure-ipv6-endpoints-in-virtual-network-script-sample-using-standard-load-balancerpreview"></a>IPv6-végpontok konfigurálása virtuális hálózati parancsfájlokban minta standard Load Balancer használatával (előzetes verzió)
 
@@ -302,7 +302,7 @@ az group delete --name <resourcegroupname> --yes
 
 A szkript a következő parancsokat használja egy erőforráscsoport, egy virtuális gép, egy rendelkezésre állási csoport, egy terheléselosztó és minden kapcsolódó erőforrás létrehozásához. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
-| Parancs | Megjegyzések |
+| Parancs | Jegyzetek |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
 | [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet#az-network-vnet-create) | Létrehoz egy Azure-beli virtuális hálózatot és alhálózatot. |

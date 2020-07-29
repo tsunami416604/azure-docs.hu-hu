@@ -228,6 +228,8 @@
           href: /azure/templates/microsoft.authorization/policysetdefinitions
 - name: További források
   items:
+    - name: Ismert problémák
+      href: 'https://github.com/azure/azure-policy#known-issues'
     - name: GitHub – Azure Policy-minták
       href: 'https://github.com/Azure/azure-policy'
     - name: GitHub – Közösségi szabályzatok adattára
@@ -246,8 +248,8 @@
           href: 'https://www.youtube.com/watch?v=fbZBaxcjA-Y'
         - name: Javítási feladat
           href: 'https://www.youtube.com/watch?v=URE4DUYMgmg'
-    - name: Videó – Build 2018
-      href: 'https://channel9.msdn.com/events/Build/2018/THR2030'
+    - name: Videó – Ignite 2019
+      href: 'https://myignite.techcommunity.microsoft.com/sessions/81584?source=sessions'
     - name: Azure-ütemterv
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Díjkalkulátor

@@ -169,6 +169,14 @@
               href: ./partner-center-portal/offer-creation-checklist.md
             - name: SaaS-ajánlat létrehozása
               href: ./partner-center-portal/create-new-saas-offer.md
+            - name: Azure AD-hitelesítés SaaS-hez
+              items:
+                - name: Az Azure AD és az SaaS áttekintése
+                  href: ./azure-ad-saas.md
+                - name: Lebonyolítható ajánlatok kezdőlapja
+                  href: ./azure-ad-transactable-saas-landing-page.md
+                - name: Ingyenes vagy próbaverziós ajánlatok kezdőlapja
+                  href: ./azure-ad-free-or-trial-landing-page.md
             - name: SaaS Fulfillment API-k
               href: ./partner-center-portal/pc-saas-fulfillment-apis.md
               items:

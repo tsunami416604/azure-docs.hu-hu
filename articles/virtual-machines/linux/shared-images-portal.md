@@ -5,17 +5,17 @@ author: cynthn
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
 ms.subservice: imaging
-ms.topic: article
+ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 28cdc96020d085c6f44c8b6818aa76dd7eb29891
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d49bbebe4d38783342170693bd06f0dfc645f34d
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82788991"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288401"
 ---
 # <a name="create-an-azure-shared-image-gallery-using-the-portal"></a>Azure közös rendszerkép-katalógus létrehozása a portál használatával
 
@@ -63,7 +63,7 @@ Most már létrehozhat egy vagy több új virtuális gépet. Ez a példa egy *my
 1. Miután a virtuális gép áthaladt az ellenőrzésen, válassza a **Létrehozás** lehetőséget a lap alján a telepítés elindításához.
 
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs rájuk szükség, törölheti az erőforráscsoportot, a virtuális gépet és az összes kapcsolódó erőforrást. Ehhez válassza ki a virtuális gép erőforráscsoportját, kattintson a **Törlés** elemre, majd erősítse meg a törölni kívánt erőforráscsoport nevét.
 

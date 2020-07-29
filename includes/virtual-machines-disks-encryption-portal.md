@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/23/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: a8702f14bfb9aed5a3595203dde1d86ea56a151b
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 950fd82e14902c3a7a94fddb44d50ac372ebe119
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/24/2020
-ms.locfileid: "87133847"
+ms.locfileid: "87177027"
 ---
 [!INCLUDE [virtual-machines-disks-encryption-create-key-vault-portal](virtual-machines-disks-encryption-create-key-vault-portal.md)]
 
@@ -42,7 +42,7 @@ A virtuális gép telepítési folyamata hasonló a normál telepítési folyama
 1. Navigáljon egy olyan virtuális gépre, amely ugyanabban a régióban található, mint az egyik lemezes titkosítási csoport.
 1. Nyissa meg a virtuális gépet, és válassza a **Leállítás**lehetőséget.
 
-    ![Képernyőkép a példaként szolgáló virtuális gép fő átfedéséről. A Leállítás gomb kiemelve](media/virtual-machines-disk-encryption-portal/server-side-encryption-stop-vm-to-encrypt-disk-fix.png)
+    ![Képernyőkép a példaként szolgáló virtuális gép fő átfedéséről, a Leállítás gomb kiemelve.](media/virtual-machines-disk-encryption-portal/server-side-encryption-stop-vm-to-encrypt-disk-fix.png)
 
 1. A virtuális gép leállítása után válassza a **lemezek** lehetőséget, majd válassza ki a titkosítani kívánt lemezt.
 
