@@ -8,15 +8,15 @@ ms.author: roastala
 ms.reviewer: nibaccam
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.date: 07/23/2020
-ms.custom: tracking-python
-ms.openlocfilehash: c7229aaeef8b756b244e55920263eb046ed87f13
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.topic: conceptual
+ms.custom: how-to, tracking-python
+ms.openlocfilehash: c1c146783d54bf2df25a130b73ab430c6edeaef7
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87129491"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319456"
 ---
 # <a name="create--use-software-environments-in-azure-machine-learning"></a>Hozzon létre & a szoftveres környezetek használatával Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -32,7 +32,7 @@ A cikkben szereplő példák a következőket mutatják be:
 * Oktatási környezet használata.
 * Környezet használata a webszolgáltatások telepítéséhez.
 
-A környezetek Azure Machine Learningban való működésének magas szintű áttekintését lásd: [Mi az a ml-környezet?](concept-environments.md).
+A környezetek Azure Machine Learningban való működésének magas szintű áttekintését lásd: [Mi az a ml-környezet?](concept-environments.md) További információ a fejlesztési környezetek konfigurálásáról: [itt](how-to-configure-environment.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 

@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 7/22/2020
 ms.author: baanders
-ms.openlocfilehash: 3f19674c0e25ebf5cddc2dfb45580a15d04fad46
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: dcc616dd8d30bfadb751df9ba24d71d72675428a
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87096899"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371454"
 ---
 >[!NOTE]
 >Ezeket a műveleteket egy, az Azure-előfizetéshez tartozó *tulajdonosi* szerepkörrel rendelkező felhasználó tölti ki. Bár egyes darabok ezen emelt szintű engedély nélkül is elvégezhető, a tulajdonos együttműködésére lesz szükség a felhasználható példány teljes beállításához. Tekintse meg a további információkat az [*Előfeltételek: szükséges engedélyek*](#prerequisites-permission-requirements) szakaszban alább.
@@ -38,6 +38,6 @@ Ha Ön a tulajdonosa, a `roleDefinitionName` kimenetben szereplő érték a *tul
 
 :::image type="content" source="../articles/digital-twins/media/how-to-set-up-instance/owner-role.png" alt-text="Cloud Shell ablak, amely az az role-hozzárendelési lista parancs kimenetét mutatja":::
 
-Ha úgy találja, hogy az érték *közreműködő* vagy más, mint a *tulajdonos*, lépjen kapcsolatba az előfizetés tulajdonosával, és folytassa az alábbi módszerek egyikével:
-* A jelen cikkben szereplő lépések végrehajtásának elvégzése a tulajdonostól az Ön nevében
-* Kérje meg, hogy a tulajdonos az előfizetés tulajdonosaként is megemelje a tulajdonost, így Ön is jogosult lesz a folytatásra. Attól függően, hogy ez megfelelő-e, a szervezettől és a benne lévő szerepkörtől függ.
+Ha úgy találja, hogy az érték *közreműködő* vagy valamilyen más, mint a *tulajdonos*, a következő módokon léphet tovább:
+* Lépjen kapcsolatba az előfizetés tulajdonosával, és kérje meg a tulajdonost, hogy hajtsa végre a cikkben szereplő lépéseket az Ön nevében.
+* Vegye fel a kapcsolatot az előfizetés tulajdonosával vagy valakivel a felhasználói hozzáférés rendszergazdai szerepkörrel az előfizetésben, és kérje meg, hogy az előfizetés tulajdonosaként emelje a tulajdonost az előfizetésben, hogy jogosult legyen a folytatásra. Attól függően, hogy ez megfelelő-e, a szervezettől és a benne lévő szerepkörtől függ.

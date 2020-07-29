@@ -4,11 +4,12 @@ description: Application Insights végpontok közötti tranzakciós diagnosztika
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.reviewer: sdash
-ms.openlocfilehash: 39c4c51a1bc84e06efac3674b1ee5b487f9e6729
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 552e80d6c90a18180ab41dce72e995b6804a91bc
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77671137"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318912"
 ---
 # <a name="unified-cross-component-transaction-diagnostics"></a>Egyesített ágazatközi tranzakciós diagnosztika
 
@@ -63,7 +64,7 @@ Ez az összecsukható ablaktábla a szűrési feltételeknek megfelelő egyéb e
 
 ## <a name="profiler-and-snapshot-debugger"></a>A Profiler és a Snapshot Debugger
 
-A [Application Insights Profiler](../../azure-monitor/app/profiler.md) vagy a [Snapshot Debugger](snapshot-debugger.md) segítséget nyújt a teljesítménnyel és a hibákkal kapcsolatos hibák diagnosztizálására. Ezzel a megoldással a Profiler-nyomkövetéseket és-pillanatképeket bármely összetevőből megtekintheti egyetlen kattintással.
+A [Application Insights Profiler](./profiler.md) vagy a [Snapshot Debugger](snapshot-debugger.md) segítséget nyújt a teljesítménnyel és a hibákkal kapcsolatos hibák diagnosztizálására. Ezzel a megoldással a Profiler-nyomkövetéseket és-pillanatképeket bármely összetevőből megtekintheti egyetlen kattintással.
 
 Ha nem tudja beolvasni a Profilert, forduljon a **serviceprofilerhelp \@ Microsoft.com**
 
@@ -94,3 +95,4 @@ Az időkeretek a tranzakciós diagramon az időeltérésekhez vannak igazítva. 
 *Miért hiányzik az új felület a kapcsolódó elemek legtöbb lekérdezésével?*
 
 Ez az elvárt működés. Az összes összetevőhöz kapcsolódó összes elem már elérhető a bal oldalon (a felső és az alsó részen). Az új felület két kapcsolódó elemet tartalmaz, amelyeket a bal oldalon nem fed le: az esemény előtt és után az összes telemetria öt perc múlva és a felhasználói idővonalon.
+

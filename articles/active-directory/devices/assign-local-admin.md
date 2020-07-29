@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a76d9ccbf7b83ea28de3ef5bb1d140caa7201ebd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f6b04a59da78abc81f7749300dfe34ca176c75c4
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85386368"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371175"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>A helyi Rendszergazdák csoport kezelése az Azure AD-hez csatlakoztatott eszközökön
 
@@ -66,6 +66,21 @@ Az eszközök rendszergazdái az összes Azure AD-hez csatlakoztatott eszközhö
 
 >[!NOTE]
 > A fenti műveletek nem alkalmazhatók azokra a felhasználókra, akik korábban nem jelentkezett be a megfelelő eszközre. Ebben az esetben a rendszergazdai jogosultságokat az eszközre való első bejelentkezés után azonnal alkalmazza a rendszer. 
+
+## <a name="manage-administrator-privileges-using-azure-ad-groups-preview"></a>Rendszergazdai jogosultságok kezelése Azure AD-csoportokkal (előzetes verzió)
+
+>[!NOTE]
+> Ez a szolgáltatás jelenleg előzetes kiadásban elérhető.
+
+A Windows 10 2004 Update-től kezdődően az Azure AD-csoportokkal rendszergazdai jogosultságokat kezelhet az Azure AD-hez csatlakoztatott eszközökön a [korlátozott csoportok] (Windows/ügyfél-felügyeleti/Mdm/Policy-CSP-restrictedgroups) MDM-házirenddel. Ez a szabályzat lehetővé teszi, hogy egyéni felhasználókat vagy Azure AD-csoportokat rendeljen hozzá a helyi rendszergazdák csoportjához egy Azure AD-hez csatlakoztatott eszközön, és így részletességgel konfigurálja a különböző rendszergazdákat az eszközök különböző csoportjaihoz. 
+
+Jelenleg nincs felhasználói felület az Intune-ban a szabályzat kezeléséhez, és az [egyéni OMA-URI beállítások] (mem/Intune/Configuration/Custom-Settings-Windows-10) használatával kell konfigurálni. Ehhez a Szabályzathoz a következő szempontokat kell figyelembe vennie: 
+
+- Az Azure AD-csoportok szabályzaton keresztüli hozzáadásához a csoport biztonsági azonosítóját a csoportok API végrehajtásával lehet megszerezni. A SID-t a groups API tulajdonsága határozza meg `securityIdentifier` .
+- A korlátozott csoportok házirendjének betartatásakor a rendszer a tagok listáján nem szereplő összes aktuális tagot eltávolítja. Ennek a szabályzatnak az új tagokkal vagy csoportokkal való érvényesítése eltávolítja a meglévő rendszergazdákat, azaz az eszközhöz csatlakozó felhasználót, az eszköz rendszergazdai szerepkörét és a globális rendszergazdai szerepkört az eszközről. A meglévő tagok eltávolításának elkerüléséhez konfigurálnia kell őket a korlátozott csoportok házirendjének tagok listájának részeként. 
+- Ez a szabályzat csak a következő jól ismert csoportok esetében alkalmazható a Windows 10-es eszközökön – rendszergazdák, felhasználók, vendégek, Kiemelt felhasználók, Távoli asztal felhasználók és távfelügyeleti felhasználók. 
+- A helyi rendszergazdák korlátozott csoportok használatával történő kezelése nem alkalmazható a hibrid Azure AD-hez csatlakoztatott vagy az Azure AD által regisztrált eszközökre.
+- Habár a Windows 10 2004 frissítése előtt már létezett a korlátozott csoportok házirend, az nem támogatja az Azure AD-csoportokat az eszköz helyi rendszergazdák csoportjának tagjaként. 
 
 ## <a name="manage-regular-users"></a>Normál felhasználók kezelése
 

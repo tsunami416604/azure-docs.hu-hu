@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 07/22/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: fa4610c925429ea59eae7399094230c1370bf2a0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6f5b6bfdb523a22fc4dd9593bfec556da7493aa9
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87096995"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371192"
 ---
 # <a name="tutorial-for-configuring-lexisnexis-with-azure-active-directory-b2c"></a>Oktatóanyag a LexisNexis konfigurálásához a Azure Active Directory B2C
 
@@ -49,7 +49,7 @@ A következő architektúra-diagram a megvalósítást mutatja be.
 
 ![képernyőkép a LexisNexis-Architecture-diagramról](media/partner-lexisnexis/lexisnexis-architecture-diagram.png)
 
-|Lépés | Description |
+|Lépés | Leírás |
 |:--------------|:-------------|
 |1. | A felhasználó egy bejelentkezési oldalon érkezik. A felhasználó a regisztráció gombra kattintva új fiókot hozhat létre, és beírhatja az adatokat az oldalra. A Azure AD B2C a felhasználói attribútumokat gyűjti.
 | 2. | Azure AD B2C meghívja a középső rétegbeli API-t, és átadja a felhasználói attribútumokat.
@@ -147,7 +147,7 @@ Tekintse meg ezt a [dokumentumot](https://docs.microsoft.com/azure/active-direct
 
 6. Bejelentkezési folyamat átugrása  
 
-7. A **folytatáshoz**a CrossCore-puzzle jelenik meg.
+7. A **folytatáshoz**a ThreatMetrix-puzzle jelenik meg.
 
 ## <a name="next-steps"></a>További lépések
 

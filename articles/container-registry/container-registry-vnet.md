@@ -3,11 +3,12 @@ title: Hozzáférés korlátozása szolgáltatás-végpont használatával
 description: Az Azure Container Registry elérésének korlátozása egy Azure-beli virtuális hálózat szolgáltatási végpontjának használatával. A szolgáltatás-végponti hozzáférés a prémium szintű szolgáltatási szint egyik funkciója.
 ms.topic: article
 ms.date: 05/04/2020
-ms.openlocfilehash: 0f320bb86549c801711cafdbce4500ff7737cb89
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a6a0702019cd11f26ea9fcdba8a74bf3e71df94b
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84509287"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371430"
 ---
 # <a name="restrict-access-to-a-container-registry-using-a-service-endpoint-in-an-azure-virtual-network"></a>Tároló-beállításjegyzékhez való hozzáférés korlátozása egy Azure-beli virtuális hálózat szolgáltatási végpontjának használatával
 
@@ -26,6 +27,7 @@ A beállításjegyzék-szolgáltatási végpontok konfigurálása a **Premium** 
 * Nem használhatja a Azure Portal a szolgáltatási végpontok konfigurálására a beállításjegyzékben.
 * Csak egy [Azure Kubernetes Service](../aks/intro-kubernetes.md) -fürt vagy Azure-beli [virtuális gép](../virtual-machines/linux/overview.md) használható gazdagépként egy tároló-beállításjegyzék eléréséhez szolgáltatási végpont használatával. *Más Azure-szolgáltatások, többek között a Azure Container Instances nem támogatottak.*
 * Mindegyik beállításjegyzék legfeljebb 100 hálózati hozzáférési szabályt támogat.
+* A Azure Container Registry szolgáltatásbeli végpontok nem támogatottak az Azure US government-felhőben vagy az Azure China Cloud-ban.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -169,7 +171,7 @@ Helyettesítse be a beállításjegyzék nevét a következő az [ACR Update][az
 az acr update --name myContainerRegistry --default-action Allow
 ```
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha az összes Azure-erőforrást ugyanabban az erőforráscsoporthoz hozta létre, és már nincs rájuk szükség, akkor az erőforrásokat egyetlen [az Group delete](/cli/azure/group) paranccsal törölheti:
 

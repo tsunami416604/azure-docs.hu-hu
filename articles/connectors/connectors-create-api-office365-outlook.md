@@ -3,15 +3,16 @@ title: Kapcsolódás az Office 365 Outlookhoz
 description: A levelezést, névjegyeket és naptárakat kezelő feladatokat és munkafolyamatokat automatizálhatja az Office 365 Outlookban Azure Logic Apps használatával
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: logicappspm
 ms.topic: article
-ms.date: 01/08/2020
+ms.date: 07/27/2020
 tags: connectors
-ms.openlocfilehash: b0f2b8b9c369fdb42c7e0e7f77fc090424ae3729
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aa5be3d58ee1a0a40d0b817e1f5999ccd4bc423d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75732689"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319235"
 ---
 # <a name="manage-email-contacts-and-calendars-in-office-365-outlook-by-using-azure-logic-apps"></a>E-mailek, partneradatok és naptárak kezelése az Office 365 Outlookban az Azure Logic Apps használatával
 
@@ -28,9 +29,9 @@ Bármely eseményindítóval elindíthatja a munkafolyamatot, például amikor �
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* [Office 365-fiók](https://www.office.com/)
+* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 
-* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/). 
+* [Office 365-fiók](https://www.office.com/)
 
 * Az a logikai alkalmazás, amelyhez el szeretné érni az Office 365 Outlook-fiókját. Ha a munkafolyamatot Office 365 Outlook-triggerrel szeretné elindítani, [üres logikai alkalmazásra](../logic-apps/quickstart-create-first-logic-app-workflow.md)van szükség. Ha Office 365 Outlook-műveletet szeretne hozzáadni a munkafolyamathoz, a logikai alkalmazásnak már rendelkeznie kell egy triggerrel.
 
@@ -45,6 +46,9 @@ Az [eseményindító](../logic-apps/logic-apps-overview.md#logic-app-concepts) e
    ![Válassza ki az triggert a logikai alkalmazás indításához](./media/connectors-create-api-office365-outlook/office365-trigger.png)
 
 1. Ha a rendszer kéri, hogy jelentkezzen be, adja meg az Office 365 hitelesítő adatait, hogy a logikai alkalmazás csatlakozhasson a fiókjához. Ellenkező esetben, ha a hálózat már létezik, adja meg az aktiváló tulajdonságok információit.
+
+   > [!NOTE]
+   > A szolgáltatás nem jár le a visszavonás előtt, még akkor is, ha módosítja a bejelentkezési hitelesítő adatait. További információ: [konfigurálható jogkivonatok élettartama Azure Active Directoryban](../active-directory/active-directory-configurable-token-lifetimes.md).
 
    Ez a példa kiválasztja azt a naptárat, amelyet a trigger ellenőriz, például:
 
@@ -76,6 +80,9 @@ A [művelet](../logic-apps/logic-apps-overview.md#logic-app-concepts) egy olyan 
 
 1. Ha a rendszer kéri, hogy jelentkezzen be, adja meg az Office 365 hitelesítő adatait, hogy a logikai alkalmazás csatlakozhasson a fiókjához. Ellenkező esetben, ha a kapcsolat már létezik, adja meg a művelet tulajdonságaira vonatkozó információkat.
 
+   > [!NOTE]
+   > A szolgáltatás nem jár le a visszavonás előtt, még akkor is, ha módosítja a bejelentkezési hitelesítő adatait. További információ: [konfigurálható jogkivonatok élettartama Azure Active Directoryban](../active-directory/active-directory-configurable-token-lifetimes.md).
+
    Ez a példa kiválasztja azt a Névjegytár mappát, ahol a művelet létrehozza az új kapcsolattartót, például:
 
    ![A művelet tulajdonságainak konfigurálása](./media/connectors-create-api-office365-outlook/select-contacts-folder.png)
@@ -84,9 +91,9 @@ A [művelet](../logic-apps/logic-apps-overview.md#logic-app-concepts) egy olyan 
 
 1. A tervező eszköztárán válassza a **Mentés**lehetőséget.
 
-## <a name="connector-specific-details"></a>Összekötő-specifikus részletek
+## <a name="connector-reference"></a>Összekötő-referencia
 
-Az eseményindítókkal, műveletekkel és korlátokkal kapcsolatos technikai részleteket az összekötők hencegő fájljában tekintheti meg. az [összekötő hivatkozási lapja](/connectors/office365connector/). 
+Az összekötővel kapcsolatos technikai részleteket, például az eseményindítókat, a műveleteket és a korlátozásokat az összekötő hencegő fájlja ismerteti, lásd az [összekötő hivatkozási oldalát](/connectors/office365/). 
 
 ## <a name="next-steps"></a>További lépések
 

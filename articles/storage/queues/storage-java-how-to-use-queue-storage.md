@@ -2,18 +2,19 @@
 title: A üzenetsor-tároló használata a Java-Azure Storage-ból
 description: Megtudhatja, hogyan hozhat létre és törölhet várólistákat az üzenetsor-tárolóval, illetve hogyan szúrhat be, kérhet le és törölhet üzeneteket a Javához készült Azure Storage ügyféloldali kódtár használatával.
 author: mhopkins-msft
+ms.custom: devx-track-java
 ms.author: mhopkins
 ms.date: 12/08/2016
 ms.service: storage
 ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
-ms.openlocfilehash: a0c94f3c9af9220bb3cf6476c50799d1f3313ffc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 17e5a542bc951df5b40144490f05e41aec1a09e8
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84809246"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319422"
 ---
 # <a name="how-to-use-queue-storage-from-java"></a>How to use Queue Storage from Java (A Queue Storage használata Javával)
 

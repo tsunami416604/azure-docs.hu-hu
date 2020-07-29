@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.date: 06/18/2020
-ms.openlocfilehash: 2fb1f22fd555e8ddbdc04842906cddb990956fb5
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 6d0a778dee31d93244479c08c7bb7b6f37cf49cb
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044515"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319354"
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-resource-logs"></a>Azure Stream Analyticsek hibakeresése erőforrás-naplók használatával
 
@@ -59,13 +59,13 @@ A Tevékenységnaplók alapértelmezés szerint be vannak kapcsolva, és magas s
 
 Az erőforrás-naplók bekapcsolása és a Azure Monitor naplókba való elküldése kifejezetten ajánlott. Alapértelmezés szerint **ki vannak kapcsolva** . A bekapcsolásához hajtsa végre az alábbi lépéseket:
 
-1.  Ha még nem rendelkezik ilyennel, [hozzon létre egy log Analytics munkaterületet](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace) . Azt javasoljuk, hogy a Log Analytics munkaterülete ugyanabban a régióban legyen, mint a Stream Analytics feladatokkal.
+1.  Ha még nem rendelkezik ilyennel, hozzon létre egy Log Analytics munkaterületet. Azt javasoljuk, hogy a Log Analytics munkaterülete ugyanabban a régióban legyen, mint a Stream Analytics feladatokkal.
 
 2.  Jelentkezzen be a Azure Portalba, és navigáljon a Stream Analytics feladatokhoz. A **figyelés**területen válassza a **diagnosztikai naplók**lehetőséget. Ezután kattintson **a diagnosztika bekapcsolása**elemre.
 
     ![Panel navigálás az erőforrás-naplókhoz](./media/stream-analytics-job-diagnostic-logs/diagnostic-logs-monitoring.png)  
 
-2.  Adjon meg egy **nevet** a **diagnosztikai beállítások nevében** **, és**keresse meg a **végrehajtáshoz** és a **szerzői** műveletekhez tartozó jelölőnégyzeteket a **AllMetrics** **alatt.** Ezután válassza a **küldés log Analytics** lehetőséget, és válassza ki a munkaterületet. Kattintson a **Save** (Mentés) gombra.
+2.  Adjon meg egy **nevet** a **diagnosztikai beállítások nevében** **, és**keresse meg a **végrehajtáshoz** és a **szerzői** műveletekhez tartozó jelölőnégyzeteket a **AllMetrics** **alatt.** Ezután válassza a **küldés log Analytics** lehetőséget, és válassza ki a munkaterületet. Kattintson a **Mentés** gombra.
 
     ![Az erőforrás-naplók beállításai](./media/stream-analytics-job-diagnostic-logs/logs-setup.png)
 
@@ -94,7 +94,7 @@ Azure Stream Analytics az erőforrás-naplók két kategóriáját rögzíti:
 
 Az összes napló JSON formátumban van tárolva. Mindegyik bejegyzés a következő általános karakterlánc-mezőket tartalmazhatja:
 
-Name | Description
+Név | Leírás
 ------- | -------
 time | A napló időbélyegzője (UTC).
 resourceId | Annak az erőforrásnak az azonosítója, amelyre a művelet bekerült, nagybetűvel. Magában foglalja az előfizetés-azonosítót, az erőforráscsoportot és a feladatnév nevét. Például: **/Subscriptions/6503D296-DAC1-4449-9B03-609A1F4A1C87/RESOURCEGROUPS/My-Resource-Group/Providers/Microsoft. STREAMANALYTICS/STREAMINGJOBS/MYSTREAMINGJOB**.
@@ -112,7 +112,7 @@ A végrehajtási naplók információkkal rendelkeznek a Stream Analytics felada
 
 Minden olyan hiba, amely akkor fordul elő, amikor a feladatsor az adatok feldolgozását végzi. Ezek a naplók leggyakrabban az adatok olvasási, szerializálási és írási műveletei során jönnek létre. Ezek a naplók nem tartalmaznak csatlakozási hibákat. A csatlakozási hibákat általános eseményekként kezeli a rendszer. További információt a különböző [bemeneti és kimeneti adatokkal kapcsolatos hibák](https://docs.microsoft.com/azure/stream-analytics/data-errors)okairól itt talál.
 
-Name | Description
+Név | Leírás
 ------- | -------
 Forrás | A feladathoz tartozó bemenet vagy kimenet neve, ahol a hiba történt.
 Üzenet | A hibához tartozó üzenet.
@@ -133,17 +133,14 @@ A **operationName** értékétől függően az adathibák a következő sémáva
 
 Az általános események minden mást lefedik.
 
-Name | Description
+Név | Leírás
 -------- | --------
 Hiba | választható Hiba adatai. Általában ez a kivételi információ, ha elérhető.
 Üzenet| A naplózási üzenet.
 Típus | Az üzenet típusa. Leképezés a hibák belső kategorizálására. Például: **JobValidationError** vagy **BlobOutputAdapterInitializationFailure**.
-Korrelációs azonosító | [GUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) , amely egyedileg azonosítja a feladatok végrehajtását. Az összes végrehajtási naplóbejegyzés abban az időponttól kezdve, amíg a feladatoknak nem kell megegyezniük a **korrelációs azonosító** értékével.
+Korrelációs azonosító | GUID, amely egyedileg azonosítja a feladatok végrehajtását. Az összes végrehajtási naplóbejegyzés abban az időponttól kezdve, amíg a feladatoknak nem kell megegyezniük a **korrelációs azonosító** értékével.
 
 ## <a name="next-steps"></a>További lépések
 
-* [Bevezetés a Stream Analyticsba](stream-analytics-introduction.md)
-* [Ismerkedés a Stream Analytics szolgáltatással](stream-analytics-real-time-fraud-detection.md)
-* [Stream Analytics-feladatok skálázása](stream-analytics-scale-jobs.md)
-* [Stream Analytics lekérdezés nyelvi referenciája](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [AdatStream Analyticsi hibák](https://docs.microsoft.com/azure/stream-analytics/data-errors)
+* [Stream Analytics lekérdezés nyelvi referenciája](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)

@@ -8,12 +8,15 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 06/25/2019
 ms.author: wesmc
-ms.custom: mqtt
-ms.openlocfilehash: 63fa7481b96f8a606893b76b66f8c414a54cdb82
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom:
+- mqtt
+- 'Role: Cloud Development'
+ms.openlocfilehash: c057944e2c6c511eee20007cc01e2222b38cce1b
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83714814"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319218"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>A IoT fejlesztői készlet AZ3166 összekapcsolásával az Azure IoT Hub
 
@@ -32,7 +35,7 @@ Még nincs fejlesztői készlet? Próbálja ki a [fejlesztői készlet szimulát
 
 A [Code Samples](https://docs.microsoft.com/samples/browse/?term=mxchip)katalógusból megtalálhatja az összes fejlesztői készlet-oktatóanyag forráskódját.
 
-## <a name="what-you-need"></a>Mi szükséges
+## <a name="what-you-need"></a>Amire szükség lesz
 
 * Egy MXChip IoT fejlesztői készlet-tábla Micro-USB-kábellel. [Töltse le most](https://aka.ms/iot-devkit-purchase).
 * Windows 10, macOS 10.10 + vagy Ubuntu 18.04 + rendszert futtató számítógép.
@@ -51,9 +54,9 @@ Csatlakoztassa a következő hardvert a számítógéphez:
 
 A fejlesztői készlet a számítógéphez való kapcsolódáshoz kövesse az alábbi lépéseket:
 
-1. Csatlakoztassa az USB-végpontot a számítógéphez.
+1. Csatlakoztassa az USB-kábelt a számítógéphez.
 
-2. Kapcsolja össze a Micro-USB-végpontot a fejlesztői készlet.
+2. Csatlakoztassa a Micro-USB-kábelt a DevKithez.
 
 3. Az energia zöld LED-je megerősíti a kapcsolódást.
 
@@ -98,7 +101,7 @@ Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozz
     az iot hub device-identity show-connection-string --hub-name YourIoTHubName --device-id MyNodeDevice --output table
     ```
 
-    Jegyezze fel az eszköz kapcsolati sztringjét, amely a következőképpen néz ki:
+    Jegyezze fel az eszközkapcsolati sztringet, amely az alábbihoz hasonlóan néz ki:
 
    `HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyNodeDevice;SharedAccessKey={YourSharedAccessKey}`
 
@@ -124,7 +127,7 @@ A fejlesztői készlet az IoT hub eszköz-specifikus végpontján csatlakozik, �
 
     ![AP mód beállítása](media/iot-hub-arduino-devkit-az3166-get-started/quickstarts/set-ap-mode.gif)
 
-1. Az előző lépésben megjelenő IoT fejlesztői készlet SSID-hez való csatlakozáshoz használjon webböngészőt egy másik Wi-Fi-kompatibilis eszközön (számítógép vagy mobiltelefon). Ha jelszót kér, hagyja üresen.
+1. Egy másik Wi-Fi-kompatibilis eszközön (számítógépen vagy mobiltelefonon) csatlakozzon egy webböngészővel az IoT DevKit SSID-jához. Ha jelszót kér, hagyja üresen.
 
     ![Összekötő SSID](media/iot-hub-arduino-devkit-az3166-get-started/quickstarts/connect-ssid.png)
 
@@ -142,7 +145,7 @@ A fejlesztői készlet az IoT hub eszköz-specifikus végpontján csatlakozik, �
     > [!NOTE]
     > A Wi-Fi konfigurálása után a hitelesítő adatai megmaradnak az eszközön a kapcsolathoz, még akkor is, ha az eszköz le van húzva.
 
-1. A IoT fejlesztői készlet néhány másodperc múlva újraindul. A fejlesztői készlet képernyőn láthatja, hogy a fejlesztői készlet IP-címe a telemetria-információ, beleértve a hőmérséklet és a páratartalom értékét, valamint az üzenetek száma az Azure IoT Hub.
+1. A IoT DevKit néhány másodperc múlva újraindul. A fejlesztői készlet képernyőn láthatja, hogy a fejlesztői készlet IP-címe a telemetria-információ, beleértve a hőmérséklet és a páratartalom értékét, valamint az üzenetek száma az Azure IoT Hub.
 
     ![WiFi IP](media/iot-hub-arduino-devkit-az3166-get-started/quickstarts/wifi-ip.jpg)
 
@@ -178,7 +181,7 @@ A következő lépésekkel készítheti elő a fejlesztési környezetet a fejle
     Vagy másolja ki és illessze be az URL-címet egy böngészőablakba:`vscode:extension/vsciot-vscode.azure-iot-tools`
 
     > [!NOTE]
-    > Az Azure IoT Tools Extension Pack tartalmazza az [Azure IoT Device workbencht](https://aka.ms/iot-workbench) , amely különböző IoT-fejlesztői készlet eszközök fejlesztésére és hibakeresésére szolgál. Az Azure [IoT hub-bővítmény](https://aka.ms/iot-toolkit)az Azure IoT Tools Extension Pack csomagban is megtalálható, amely az Azure IoT-hubok felügyeletére és kezelésére szolgál.
+    > Az Azure IoT Tools Extension Pack tartalmazza az [Azure IoT Device workbencht](https://aka.ms/iot-workbench) , amely különböző IoT-fejlesztői készlet eszközök fejlesztésére és hibakeresésére szolgál. A szintén az Azure IoT Tools bővítménycsomaggal elérhető [Azure IoT Hub-bővítménnyel](https://aka.ms/iot-toolkit) kezelheti és használatba veheti az Azure IoT Hub-központokat.
 
 5. Állítsa be a VS Code-ot az Arduino-beállításokkal.
 
@@ -186,7 +189,7 @@ A következő lépésekkel készítheti elő a fejlesztési környezetet a fejle
 
     ![Az Azure IoT-eszközök telepítése](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/user-settings-arduino.png)
 
-    Adja hozzá a következő sorokat az Arduino konfigurálásához a platformtól függően: 
+    Adja hozzá a következő sorokat, amelyekkel konfigurálható az Arduino. Vegye figyelembe, hogy milyen platformon dolgozik: 
 
     * **Windows**:
 
@@ -195,7 +198,7 @@ A következő lépésekkel készítheti elő a fejlesztési környezetet a fejle
         "arduino.additionalUrls": "https://raw.githubusercontent.com/VSChina/azureiotdevkit_tools/master/package_azureboard_index.json"
         ```
 
-    * **MacOS**:
+    * **macOS**:
 
         ```json
         "arduino.path": "/Applications",
@@ -217,11 +220,11 @@ A következő lépésekkel készítheti elő a fejlesztési környezetet a fejle
 
 ### <a name="install-st-link-drivers"></a>A ST-link illesztőprogramjainak telepítése
 
-A [St-link/v2](https://www.st.com/en/development-tools/st-link-v2.html) az USB-interfész, amelyet a IoT fejlesztői készlet használ a fejlesztői géppel folytatott kommunikációhoz. Telepítenie kell a Windows rendszerre, hogy a lefordított eszköz kódját a fejlesztői készlet. Kövesse az operációs rendszerre vonatkozó lépéseket, amelyekkel engedélyezheti a számítógép hozzáférését az eszközhöz.
+A [St-link/v2](https://www.st.com/en/development-tools/st-link-v2.html) az USB-interfész, amelyet a IoT fejlesztői készlet használ a fejlesztői géppel folytatott kommunikációhoz. Ezt telepítenie kell a Windowson, hogy a fordított eszközkódot a DevKiten frissíthesse. Engedélyezze a gépnek, hogy hozzáférjen az eszközhöz. Ehhez kövesse az egyes operációs rendszerek specifikus utasításait.
 
 * **Windows**: töltse le és telepítse az USB-illesztőprogramot a [STMicroelectronics webhelyről](https://www.st.com/en/development-tools/stsw-link009.html).
 * **MacOS**: nem szükséges illesztőprogram a MacOS-hez.
-* **Ubuntu**: futtassa a parancsokat a terminálon, és jelentkezzen ki, majd jelentkezzen be a csoport módosításának érvénybe léptetéséhez:
+* **Ubuntu**: Futtassa a parancsokat a terminálon, majd jelentkezzen ki, és jelentkezzen be újra, hogy a csoportmódosítások életbe léphessenek:
 
     ```bash
     # Copy the default rules. This grants permission to the group 'plugdev'
@@ -286,7 +289,7 @@ Az Azure IoT Hub és az eszköznek a Azure Portalból való kiépítése helyett
 
     ![IoT-eszköz kiépített kiválasztása](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/select-iot-device.png)
 
-1. Most már rendelkezik az Azure IoT Hub üzembe helyezésével és az eszköz létrehozásával. Az IoT-fejlesztői készlet később is konfigurálhatja a VS Code-ban az eszköz-csatlakoztatási karakterláncot.
+1. Most már rendelkezik egy kiépített Azure IoT Hubbal, és benne egy létrehozott eszközzel. Az IoT-fejlesztői készlet később is konfigurálhatja a VS Code-ban az eszköz-csatlakoztatási karakterláncot.
 
     ![Kiépítés kész](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/provision-done.png)
 
@@ -306,7 +309,7 @@ Az Azure IoT Hub és az eszköznek a Azure Portalból való kiépítése helyett
 
     ![Arduino-feltöltés](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/arduino-upload.png)
 
-A fejlesztői készlet újraindul, és elindítja a kód futtatását.
+A DevKit újraindul, és elkezdi a kód futtatását.
 
 > [!NOTE]
 > Ha hibák vagy megszakítások történnek, akkor a parancs ismételt futtatásával bármikor helyreállítható.

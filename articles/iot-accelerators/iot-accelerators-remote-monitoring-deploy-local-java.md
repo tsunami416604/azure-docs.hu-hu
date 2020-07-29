@@ -3,17 +3,18 @@ title: Távoli figyelési megoldás üzembe helyezése helyileg – IntelliJ IDE
 description: Ez a útmutató bemutatja, hogyan helyezheti üzembe a távoli figyelési megoldás gyorsítása a helyi gépen a IntelliJ használatával tesztelés és fejlesztés céljából.
 author: v-krghan
 manager: dominicbetts
+ms.custom: devx-track-java
 ms.author: v-krghan
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/24/2019
 ms.topic: conceptual
-ms.openlocfilehash: b201200ebf6807d7301dfd8c52e3137a29784eb9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f7554843db247ade1cddff78902430a5d84debe1
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82187211"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319167"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---intellij"></a>A távoli figyelési megoldás helyi telepítése – IntelliJ
 
@@ -199,7 +200,7 @@ A szolgáltatások állapotának eléréséhez nyissa meg a következő URL-cím
 
 A Stream Analytics feladat elindításához kövesse az alábbi lépéseket:
 
-1. Lépjen a [Azure Portal](https://portal.azure.com).
+1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
 1. Lépjen a megoldáshoz létrehozott **erőforráscsoporthoz** . Az erőforráscsoport neve az a név, amelyet a megoldáshoz választott a **Start. cmd** parancsfájl futtatásakor.
 1. Válassza ki a **stream Analytics feladatot** az erőforrások listájában.
 1. A Stream Analytics feladatok **Áttekintés** lapján kattintson a **Start** gombra, majd válassza a Start ( **Indítás** ) lehetőséget a feladatok elindításához.

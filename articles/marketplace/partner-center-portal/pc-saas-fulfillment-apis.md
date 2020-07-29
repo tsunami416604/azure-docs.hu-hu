@@ -5,12 +5,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: 218a0624f7e4adc1aa188dbd62db217bf79202f8
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: mingshen-ms
+ms.author: mingshen
+ms.openlocfilehash: d9413deb99ce938429d05f7c6348c5914e7dd2b1
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86109297"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87304139"
 ---
 # <a name="saas-fulfillment-apis-in-microsoft-commercial-marketplace"></a>SaaS-teljesítési API-k a Microsoft kereskedelmi piactéren
 
@@ -45,7 +47,7 @@ A viszonteladói (CSP) forgatókönyvben a CSP a végfelhasználó nevében vás
 
 Ehhez a forgatókönyvhöz nem szükséges az API-hívások különböző folyamatainak implementálása.
 
-A CSP-vel kapcsolatos további információkért tekintse meg a következőt: https://partner.microsoft.com/en-us/licensing .
+A CSP-vel kapcsolatos további információkért tekintse meg a következőt: https://partner.microsoft.com/licensing .
 
 >[!Warning]
 >Az API jelenlegi verziója 2. verzió, amelyet minden új SaaS-ajánlathoz használni kell. Az API 1. verziója elavult, és a rendszer fenntartja a meglévő ajánlatok támogatását.
@@ -53,6 +55,6 @@ A CSP-vel kapcsolatos további információkért tekintse meg a következőt: ht
 >[!Note]
 >A SaaS-teljesítési API-k csak a közzétevő háttér-szolgáltatásának meghívására szolgálnak. Az API-kkal való közvetlen integráció nem támogatott a közzétevő weblapján. Csak a szolgáltatás és a szolgáltatás közötti hitelesítési folyamat használható.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha még nem tette meg, regisztráljon az SaaS-alkalmazást a [Azure Portal](https://ms.portal.azure.com) az [Azure ad-alkalmazás regisztrálása](./pc-saas-registration.md)című részben leírtak szerint.  Ezt követően használja az interfész legújabb verzióját a fejlesztéshez: [SaaS beteljesülés API 2-es verziója](./pc-saas-fulfillment-api-v2.md).

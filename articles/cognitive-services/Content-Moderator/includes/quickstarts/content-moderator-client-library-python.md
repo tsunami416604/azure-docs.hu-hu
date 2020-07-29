@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: include
 ms.date: 01/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 8a925aab3fb864643a873433b6df4f2275cae365
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 9b246734e454e4ca93e0f3176c124cd8869bd015
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82187363"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87298758"
 ---
 Ismerkedés a Content Moderator a Pythonhoz készült ügyféloldali kódtáraval. Az alábbi lépéseket követve telepítheti a csomagot, és kipróbálhatja az alapszintű feladatokhoz tartozó példa kódját. A Content Moderator egy olyan kognitív szolgáltatás, amely potenciálisan sértő, kockázatos vagy egyéb módon nemkívánatos anyagokra ellenőrzi a szöveget, a képeket és a videó tartalmát. Ha ilyen anyagot talál, a szolgáltatás megfelelő címkéket (jelölőket) alkalmaz a tartalomra. Az alkalmazás ezután kezelheti a megjelölt tartalmakat, így betarthatja az előírásokat, és fenntarthatja a felhasználók számára kívánt környezetet.
 
@@ -27,11 +27,11 @@ A Pythonhoz készült Content Moderator ügyféloldali kódtára a következőre
 * [Egyéni rendszerkép-lista használata](#use-a-custom-image-list)
 * [Felülvizsgálat létrehozása](#create-a-review)
 
-[A dokumentációs](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/contentmoderator?view=azure-python) | [könyvtár forráskód](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-contentmoderator) | [-csomagjához (PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-contentmoderator/) | tartozó[minták](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)
+[Dokumentáció](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/contentmoderator?view=azure-python)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-contentmoderator)  |  [Csomag (PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-contentmoderator/)  |  [Példák](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
+* Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services/)
 * [Python 3.x](https://www.python.org/)
 
 ## <a name="setting-up"></a>Beállítás
@@ -40,14 +40,13 @@ A Pythonhoz készült Content Moderator ügyféloldali kódtára a következőre
 
 Az Azure Cognitive Services a-ra előfizetett Azure-erőforrások képviselik. Hozzon létre egy erőforrást Content Moderator a helyi gépen található [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) vagy az [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) használatával. További lehetőségek:
 
-* A [próbaverziós kulcs](https://azure.microsoft.com/try/cognitive-services/#decision) ingyenes hét napig érvényes. A regisztráció után elérhető lesz az [Azure webhelyén](https://azure.microsoft.com/try/cognitive-services/my-apis/).  
 * Az erőforrás megtekintése a [Azure Portal](https://portal.azure.com/)
 
-Miután megszerezte a kulcsot a próbaverziós előfizetésből vagy erőforrásból, [hozzon létre környezeti változókat](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a `CONTENT_MODERATOR_SUBSCRIPTION_KEY` kulcs `CONTENT_MODERATOR_ENDPOINT`és a végpont URL-címéhez, amelynek neve és.
+Miután megszerezte a kulcsot az erőforrásból, [hozzon létre környezeti változókat](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a kulcs és a végpont URL-címéhez `CONTENT_MODERATOR_SUBSCRIPTION_KEY` , illetve `CONTENT_MODERATOR_ENDPOINT`
  
 ### <a name="create-a-python-script"></a>Python-szkript létrehozása
 
-Hozzon létre egy új Python-szkriptet, és nyissa meg az előnyben részesített szerkesztőben vagy IDE-ben. Ezután adja hozzá a `import` következő utasításokat a fájl elejéhez.
+Hozzon létre egy új Python-szkriptet, és nyissa meg az előnyben részesített szerkesztőben vagy IDE-ben. Ezután adja hozzá a következő `import` utasításokat a fájl elejéhez.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_imports)]
 
@@ -70,7 +69,7 @@ pip install --upgrade azure-cognitiveservices-vision-contentmoderator
 
 A következő osztályok a Content Moderator Python ügyféloldali kódtár főbb funkcióit kezelik.
 
-|Name (Név)|Leírás|
+|Név|Leírás|
 |---|---|
 |[ContentModeratorClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.content_moderator_client.contentmoderatorclient?view=azure-python)|Ez az osztály minden Content Moderator funkcióhoz szükséges. Ezt az előfizetési adatok alapján hozza létre, és más osztályok példányainak előállítására használja.|
 |[ImageModerationOperations](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.imagemoderationoperations?view=azure-python)|Ez az osztály lehetővé teszi a képek elemzését a felnőtt tartalmak, a személyes adatok vagy az emberi arcok számára.|
@@ -99,7 +98,7 @@ Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következő felad
 
 ## <a name="moderate-text"></a>Mérsékelt szöveg
 
-A következő kód egy Content Moderator ügyfelet használ egy szöveg szövegtörzsének elemzésére és az eredmények a konzolra való kinyomtatására. Először hozzon létre egy **text_files/** mappát a projekt gyökérkönyvtárában, és vegyen fel egy *content_moderator_text_moderation. txt* fájlt. Adja hozzá saját szövegét a fájlhoz, vagy használja a következő mintaszöveg:
+A következő kód egy Content Moderator ügyfelet használ egy szöveg szövegtörzsének elemzésére és az eredmények a konzolra való kinyomtatására. Először hozzon létre egy **text_files/** mappát a projekt gyökérkönyvtárában, és adjon hozzá egy *content_moderator_text_moderation.txt* fájlt. Adja hozzá saját szövegét a fájlhoz, vagy használja a következő mintaszöveg:
 
 ```
 Is this a grabage email abcdef@abcd.com, phone: 4255550111, IP: 255.255.255.255, 1234 Main Boulevard, Panapolis WA 96555.
@@ -120,7 +119,7 @@ A következő kód bemutatja, hogyan kezelheti az egyéni kifejezések listájá
 
 ### <a name="get-sample-text"></a>Minta szövegének beolvasása
 
-A minta használatához létre kell hoznia egy **text_files/** mappát a projekt gyökérkönyvtárában, és hozzá kell adnia egy *content_moderator_term_list. txt* fájlt. Ennek a fájlnak tartalmaznia kell a feltételek listáján ellenőrizendő szerves szöveget. A következő mintaszöveg használható:
+A minta használatához létre kell hoznia egy **text_files/** mappát a projekt gyökérkönyvtárában, és hozzá kell adnia egy *content_moderator_term_list.txt* fájlt. Ennek a fájlnak tartalmaznia kell a feltételek listáján ellenőrizendő szerves szöveget. A következő mintaszöveg használható:
 
 ```
 This text contains the terms "term1" and "term2".
@@ -168,7 +167,7 @@ Az egyéni feltételek lista fő funkciója, hogy összehasonlítsa a szöveg t�
 
 ### <a name="remove-a-term-from-a-list"></a>Kifejezés eltávolítása egy listáról
 
-A következő kód eltávolítja a kifejezést `"term1"` a listából.
+A következő kód eltávolítja a kifejezést a `"term1"` listából.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_termslist_remove)]
 
@@ -225,7 +224,7 @@ Hozza létre a következő szöveges változókat az ebben a forgatókönyvben h
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_imagelistvars)]
 
 > [!NOTE]
-> Ez nem a megfelelő lista, hanem a kód `add images` szakaszában hozzáadott rendszerképek informális listája.
+> Ez nem a megfelelő lista, hanem a kód szakaszában hozzáadott rendszerképek informális listája `add images` .
 
 
 ### <a name="create-an-image-list"></a>Rendszerkép-lista létrehozása
@@ -333,7 +332,7 @@ Ha ebben a forgatókönyvben visszahívási végpontot használt, akkor a követ
 
 ## <a name="run-the-application"></a>Az alkalmazás futtatása
 
-Futtassa az alkalmazást a gyors `python` üzembe helyezési fájlban található paranccsal.
+Futtassa az alkalmazást a gyors üzembe helyezési `python` fájlban található paranccsal.
 
 ```console
 python quickstart-file.py

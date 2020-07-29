@@ -1,6 +1,5 @@
 ---
-title: Válaszok előrejelzése regressziós modellekkel
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (klasszikus): válaszok előrejelzése regressziós modellekkel – Azure'
 description: Egyszerű regressziós modell létrehozása az adatelemzési díj előrejelzéséhez a kezdők számára készült 4. videóban. Lineáris regressziót tartalmaz a célként megadott adattal.
 services: machine-learning
 ms.service: machine-learning
@@ -10,13 +9,16 @@ author: sdgilley
 ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
-ms.openlocfilehash: ac9f4262d614b1e413f4283d3c459e60fc6634e2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1cfe617ab424fbb29e2866cd98d4b8c390f306c9
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82930233"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318742"
 ---
 # <a name="predict-an-answer-with-a-simple-model"></a>Válasz előrejelzése egy egyszerű modell segítségével
+
+
 ## <a name="video-4-data-science-for-beginners-series"></a>4. videó: az adatelemzés kezdőknek sorozata
 Megtudhatja, hogyan hozhat létre egy egyszerű regressziós modellt, amely a kezdőknek szóló 4. videóban megjósolhatja a Diamond adatelemzési díját. Egy regressziós modellt rajzolunk a célként megadott adattal.
 

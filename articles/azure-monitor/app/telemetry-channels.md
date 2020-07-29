@@ -4,16 +4,16 @@ description: Telemetria-csatornák testreszabása az Azure Application Insights 
 ms.topic: conceptual
 ms.date: 05/14/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 6f9e93d477efeee7e1d8a0b0d8704f9c83d2a4f7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b5ae1ee1e4bf9f64eb4587f0ceb76972a4571b2e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539788"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318929"
 ---
 # <a name="telemetry-channels-in-application-insights"></a>Telemetria csatornák Application Insights
 
-A telemetria csatornák az [Azure Application Insights SDK](../../azure-monitor/app/app-insights-overview.md)-k szerves részét képezik. Kezelik a telemetria pufferelését és a Application Insights szolgáltatásba való átvitelét. Az SDK-k .NET-és .NET Core-verziói két beépített telemetria-csatornával rendelkeznek: `InMemoryChannel` és `ServerTelemetryChannel` . Ez a cikk részletesen ismerteti az egyes csatornákat, beleértve a csatornák viselkedésének testreszabását is.
+A telemetria csatornák az [Azure Application Insights SDK](./app-insights-overview.md)-k szerves részét képezik. Kezelik a telemetria pufferelését és a Application Insights szolgáltatásba való átvitelét. Az SDK-k .NET-és .NET Core-verziói két beépített telemetria-csatornával rendelkeznek: `InMemoryChannel` és `ServerTelemetryChannel` . Ez a cikk részletesen ismerteti az egyes csatornákat, beleértve a csatornák viselkedésének testreszabását is.
 
 ## <a name="what-are-telemetry-channels"></a>Mik azok a telemetria-csatornák?
 
@@ -39,7 +39,7 @@ A Application Insights .NET és .NET Core SDK-k két beépített csatornával re
 
 Telemetria-csatornát úgy konfigurálhat, hogy az aktív telemetria-konfigurációra állítja be. A ASP.NET alkalmazások esetében a konfiguráció magában foglalja a telemetria-csatorna példányának `TelemetryConfiguration.Active` vagy módosításának beállítását `ApplicationInsights.config` . ASP.NET Core alkalmazások esetében a konfiguráció magában foglalja a csatorna hozzáadását a függőségi injektálási tárolóhoz.
 
-A következő részekben példákat talál a `StorageFolder` csatorna beállításának konfigurálására különböző típusú alkalmazásokban. `StorageFolder`csak a konfigurálható beállítások egyike. A konfigurációs beállítások teljes listájáért tekintse meg a cikk későbbi, [a beállítások című szakaszát](telemetry-channels.md#configurable-settings-in-channels) .
+A következő részekben példákat talál a `StorageFolder` csatorna beállításának konfigurálására különböző típusú alkalmazásokban. `StorageFolder`csak a konfigurálható beállítások egyike. A konfigurációs beállítások teljes listájáért tekintse meg a cikk későbbi, [a beállítások című szakaszát](#configurable-settings-in-channels) .
 
 ### <a name="configuration-by-using-applicationinsightsconfig-for-aspnet-applications"></a>Konfigurálás ApplicationInsights.config használatával ASP.NET-alkalmazásokhoz
 
@@ -164,7 +164,8 @@ További információ az adatvédelem [és az adatvédelem terén](data-retentio
 ## <a name="open-source-sdk"></a>Nyílt forráskódú SDK
 A Application Insights összes SDK-hoz hasonlóan a csatornák is nyílt forráskódúak. Olvassa el és járuljon hozzá a kód vagy a jelentéssel kapcsolatos problémákhoz [a hivatalos GitHub](https://github.com/Microsoft/ApplicationInsights-dotnet)-tárházban.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Mintavételezés](../../azure-monitor/app/sampling.md)
-* [SDK – hibaelhárítás](../../azure-monitor/app/asp-net-troubleshoot-no-data.md)
+* [Mintavételezés](./sampling.md)
+* [SDK – hibaelhárítás](./asp-net-troubleshoot-no-data.md)
+

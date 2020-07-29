@@ -1,6 +1,5 @@
 ---
-title: Felteheti a kérdést, hogy válaszoljon
-titleSuffix: ML Studio (classic) - Azure
+title: Kérdések megválaszolása – ML Studio (klasszikus) – Azure
 description: Ismerje meg, hogyan alakíthat ki egy éles adatelemzési kérdést az adatelemzési szolgáltatásban a kezdőknek szóló 3. videóban. A besorolási és a regressziós kérdések összehasonlítását foglalja magában.
 services: machine-learning
 ms.service: machine-learning
@@ -9,11 +8,12 @@ ms.topic: conceptual
 author: sdgilley
 ms.author: sgilley
 ms.date: 03/22/2019
-ms.openlocfilehash: 3f0a92b86a2c18863052249d401e70fa36e17a12
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ff08af00649cf61134c3e27d07b329e40169ea66
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82930250"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318793"
 ---
 # <a name="ask-a-question-you-can-answer-with-data"></a>Adatokkal megválaszolható kérdések megfogalmazása
 ## <a name="video-3-data-science-for-beginners-series"></a>3. videó: az adatelemzés kezdőknek sorozata

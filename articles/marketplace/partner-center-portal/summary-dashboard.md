@@ -5,12 +5,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 39b963fe40d26d498e69b8fc9bbb62ce514bef39
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: mingshen-ms
+ms.author: mingshen
+ms.openlocfilehash: 8e58de7975bc7f5de1fe2ad71f97c02c901c0c21
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86109144"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87304122"
 ---
 # <a name="summary-dashboard-in-commercial-marketplace-analytics"></a>Az Összegzés irányítópult a kereskedelmi piactér-elemzésekben
 
@@ -111,7 +113,7 @@ A **Orders by munkaállomásonkénti/site** diagram alapján megjelenő rendelé
 
 Az **ingyenes próbaverziós SaaS Orders trend** diagram az ingyenes próbaverziós SaaS-ajánlatok megrendeléseinek trendjét mutatja be egy 30 napos próbaidőszakon belül.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A partner Center kereskedelmi piactéren elérhető analitikai jelentések áttekintését lásd: [a partner Center kereskedelmi piacának elemzései](./analytics.md).
 - További információ a megrendelésekről grafikus és letölthető formátumban: [Orders Dashboard a kereskedelmi piactér elemzésében](./orders-dashboard.md).

@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 03/09/2020
-ms.openlocfilehash: 4f27fc9542d6c4e9027c7a1a0d4daeb7cb079e81
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 9b81dbce9f73c76ceea0f7842d731d00f905fb01
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321549"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371515"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Idősorozat-előrejelzési modell automatikus betanítása
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -130,7 +130,7 @@ Az előrejelzési feladatokhoz az automatizált gépi tanulás az idősorozat-ad
 
 * Az idősorozat mintavételi gyakoriságának (például óránkénti, napi, heti) észlelése, és új rekordok létrehozása a hiányzó időpontokhoz, hogy a sorozat folyamatos legyen.
 * Hiányzó értékek bevonása a célhelyből (továbbítási kitöltéssel) és a funkció oszlopai (medián Column Values használatával)
-* Gabona-alapú szolgáltatások létrehozása a rögzített hatások engedélyezéséhez a különböző adatsorozatok között
+* Funkciók létrehozása idősorozat-azonosítók alapján a különböző adatsorozatok rögzített hatásainak engedélyezéséhez
 * Időalapú szolgáltatások létrehozása a szezonális minták tanulásának segítésére
 * Kategorikus változók kódolása numerikus mennyiségre
 
@@ -139,21 +139,21 @@ Az [`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl-c
 | Paraméter &nbsp; neve | Leírás | Kötelező |
 |-------|-------|-------|
 |`time_column_name`|A dátum-és idősorozatok létrehozásához használt bemeneti adatok datetime oszlopának megadására szolgál.|✓|
-|`grain_column_names`|Az egyes adatsorozat-csoportokat meghatározó nevek a bemeneti adatokban. Ha a gabona nincs meghatározva, a rendszer az adathalmazt egy idősorozatra feltételezi.||
-|`max_horizon`|Meghatározza a maximálisan kívánatos előrejelzési horizontot a Time-sorozat gyakoriságának egységében. Az egységek a betanítási adatokat tartalmazó időintervallumon alapulnak, például havi, heti rendszerességgel, amelyet az előrejelzésnek meg kell jósolnia.|✓|
+|`time_series_id_column_names`|Az oszlop neve (i), amely az azonos időbélyegzővel rendelkező több sorból álló adatsorozatok egyedi azonosítására szolgál. Ha az idősorozat-azonosítók nincsenek meghatározva, az adathalmazt a rendszer egy idősorozatként feltételezi.||
+|`forecast_horizon`|Meghatározza, hogy hány időszakot továbbítson az előrejelzéshez. A horizont az idősorozat gyakoriságának egységében van. Az egységek a betanítási adatokat tartalmazó időintervallumon alapulnak, például havi, heti rendszerességgel, amelyet az előrejelzésnek meg kell jósolnia.|✓|
 |`target_lags`|A megcélzott értékeket az adatok gyakorisága alapján késleltető sorok száma. A lag listaként vagy egyetlen egész számként jelenik meg. A késést akkor kell használni, ha a független változók és a függő változó közötti kapcsolat alapértelmezés szerint nem felel meg egymásnak. Ha például egy termék iránti keresletre próbál előrejelzést kérni, a havi igény bármelyik hónapra az adott árucikkek előző 3 hónapjának árával függ. Ebben a példában előfordulhat, hogy 3 hónap elteltével negatívan szeretné megtekinteni a célt (keresletet), hogy a modell a megfelelő kapcsolaton legyen betanítva.||
 |`target_rolling_window_size`|*n* korábbi időszakok, amelyeket az előre jelzett értékek előállítására használhat, <= betanítási készlet mérete. Ha nincs megadva, az *n* a teljes betanítási készlet mérete. Akkor válassza ezt a paramétert, ha csak bizonyos mennyiségű előzményt szeretne figyelembe venni a modell betanításakor.||
 |`enable_dnn`|Előrejelzési DNN engedélyezése.||
 
 További információt a [dokumentációban](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig) talál.
 
-Hozzon létre egy idősorozat-beállításokat szótár objektumként. Állítsa az értékét a `time_column_name` `day_datetime` mezőre az adatkészletben. Adja meg a `grain_column_names` paramétert annak biztosításához, hogy **két különálló idősorozat-csoport** legyen létrehozva az adathalmazhoz, egy pedig az a és a B tárolóhoz. végül állítsa a `max_horizon` 50-re a teljes tesztelési csoport előrejelzéséhez. Állítsa be az előrejelzési ablakot 10 időszakra a értékkel `target_rolling_window_size` , és egyetlen késést határozzon meg a megcélzott értékeken a paraméterrel megjelenő két időszakra vonatkozóan `target_lags` . Javasoljuk, hogy állítsa be `max_horizon` , `target_rolling_window_size` és `target_lags` az "Auto" értékre, amely automatikusan felismeri ezeket az értékeket. Az alábbi példában az "Auto" beállításokat használták a paraméterekhez. 
+Hozzon létre egy idősorozat-beállításokat szótár objektumként. Állítsa az értékét a `time_column_name` `day_datetime` mezőre az adatkészletben. Adja meg a `time_series_id_column_names` paramétert annak biztosításához, hogy **két különálló idősorozat-csoport** legyen létrehozva az adathalmazhoz, egy pedig az a és a B tárolóhoz. végül állítsa a `forecast_horizon` 50-re a teljes tesztelési csoport előrejelzéséhez. Állítsa be az előrejelzési ablakot 10 időszakra a értékkel `target_rolling_window_size` , és egyetlen késést határozzon meg a megcélzott értékeken a paraméterrel megjelenő két időszakra vonatkozóan `target_lags` . Javasoljuk, hogy állítsa be `forecast_horizon` , `target_rolling_window_size` és `target_lags` az "Auto" értékre, amely automatikusan felismeri ezeket az értékeket. Az alábbi példában az "Auto" beállításokat használták a paraméterekhez. 
 
 ```python
 time_series_settings = {
     "time_column_name": "day_datetime",
-    "grain_column_names": ["store"],
-    "max_horizon": "auto",
+    "time_series_id_column_names": ["store"],
+    "forecast_horizon": "auto",
     "target_lags": "auto",
     "target_rolling_window_size": "auto",
     "preprocess": True,
@@ -163,7 +163,7 @@ time_series_settings = {
 > [!NOTE]
 > Az automatizált gépi tanulás előfeldolgozásának lépései (a funkciók normalizálása, a hiányzó adatkezelés, a szöveg konvertálása a numerikus formátumba stb.) az alapul szolgáló modell részévé válnak. A modell előrejelzésekhez való használatakor a betanítás során alkalmazott azonos előfeldolgozási lépéseket a rendszer automatikusan alkalmazza a bemeneti adatokra.
 
-A `grain_column_names` fenti kódrészletben a AutoML két külön idősorozat-csoportot hoz létre, más néven több idősorozatot. Ha nincs megadva gabona, a AutoML azt feltételezi, hogy az adatkészlet egy egyidejű adatsorozat. Az egyidejű adatsorozatokkal kapcsolatos további tudnivalókért tekintse meg a [energy_demand_notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand).
+A `time_series_id_column_names` fenti kódrészletben a AutoML két külön idősorozat-csoportot hoz létre, más néven több idősorozatot. Ha nincs megadva idősorozat-azonosító, a AutoML azt feltételezi, hogy az adatkészlet egyetlen idősorozat. Az egyidejű adatsorozatokkal kapcsolatos további tudnivalókért tekintse meg a [energy_demand_notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand).
 
 Most hozzon létre egy standard `AutoMLConfig` objektumot, adja meg a `forecasting` feladattípust, és küldje el a kísérletet. A modell befejeződése után kérje le a legjobb futtatási iterációt.
 
@@ -221,6 +221,32 @@ A GPU-k által használt és a virtuális gépek méretével kapcsolatos tovább
 
 Tekintse meg az [üzemi előrejelzést tartalmazó jegyzetfüzetet](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-beer-remote/auto-ml-forecasting-beer-remote.ipynb) , amely egy részletes kód, például a DNN kihasználása.
 
+### <a name="customize-featurization"></a>Featurization testreszabása
+Testreszabhatja a featurization beállításait, így biztosíthatja, hogy a ML-modellek betanításához használt adatokat és szolgáltatásokat a megfelelő előrejelzések képezzék. 
+
+A featurizations testreszabásához adja meg `"featurization": FeaturizationConfig` az `AutoMLConfig` objektumot az objektumban. Ha a kísérlethez a Azure Machine Learning Studiot használja, tekintse meg a [útmutató cikket](how-to-use-automated-ml-for-ml-models.md#customize-featurization).
+
+A támogatott testreszabások a következők:
+
+|Testreszabás|Definíció|
+|--|--|
+|**Oszlop céljának frissítése**|Felülbírálja a megadott oszlop automatikusan észlelt funkciójának típusát.|
+|**A transzformátor paraméterének frissítése** |Frissítse a megadott átalakító paramétereit. Jelenleg támogatja az *imputált* (fill_value és medián).|
+|**Oszlopok eldobása** |Meghatározza az eldobni kívánt oszlopokat a featurized.|
+
+Hozza létre az `FeaturizationConfig` objektumot a featurization-konfigurációk definiálásával:
+```python
+featurization_config = FeaturizationConfig()
+# `logQuantity` is a leaky feature, so we remove it.
+featurization_config.drop_columns = ['logQuantitity']
+# Force the CPWVOL5 feature to be of numeric type.
+featurization_config.add_column_purpose('CPWVOL5', 'Numeric')
+# Fill missing values in the target column, Quantity, with zeroes.
+featurization_config.add_transformer_params('Imputer', ['Quantity'], {"strategy": "constant", "fill_value": 0})
+# Fill mising values in the `INCOME` column with median value.
+featurization_config.add_transformer_params('Imputer', ['INCOME'], {"strategy": "median"})
+```
+
 ### <a name="target-rolling-window-aggregation"></a>Cél gördülő ablak összesítése
 A legjobb információ gyakran a cél legutóbbi értéke lehet. A cél összesítő statisztikáinak létrehozása növelheti az előrejelzések pontosságát. A cél gördülő ablak összesítései lehetővé teszik, hogy az adatértékek folyamatos összesítését adja hozzá szolgáltatásként. Ha engedélyezni szeretné a cél működés közbeni Windows-t, állítsa be a kívánt `target_rolling_window_size` egész számú ablak méretét. 
 
@@ -271,7 +297,7 @@ rmse = sqrt(mean_squared_error(actual_labels, predict_labels))
 rmse
 ```
 
-Most, hogy a modell teljes pontossága meg lett határozva, a legreálisabb következő lépés a modell használata az ismeretlen jövőbeli értékek előrejelzésére. Adja meg az adathalmazt a tesztelési csoporttal megegyező formátumban `test_data` , de a jövőbeli dátum/idő értékkel, az eredményül kapott előrejelzési készlet pedig az egyes idősorozat-lépések előre jelzett értékei. Tegyük fel, hogy az adatkészletben az utolsó idősorozat rekord a 12/31/2018-es értékre van állítva. Ha a következő napra (vagy az előrejelzéshez szükséges számos időszakra, <=) szeretne előrejelzést `max_horizon` készíteni, hozzon létre egy egyidejű adatsorozat-rekordot a 01/01/2019-es tárolóhoz.
+Most, hogy a modell teljes pontossága meg lett határozva, a legreálisabb következő lépés a modell használata az ismeretlen jövőbeli értékek előrejelzésére. Adja meg az adathalmazt a tesztelési csoporttal megegyező formátumban `test_data` , de a jövőbeli dátum/idő értékkel, az eredményül kapott előrejelzési készlet pedig az egyes idősorozat-lépések előre jelzett értékei. Tegyük fel, hogy az adatkészletben az utolsó idősorozat rekord a 12/31/2018-es értékre van állítva. Ha a következő napra (vagy az előrejelzéshez szükséges számos időszakra, <=) szeretne előrejelzést `forecast_horizon` készíteni, hozzon létre egy egyidejű adatsorozat-rekordot a 01/01/2019-es tárolóhoz.
 
 ```output
 day_datetime,store,week_of_year
@@ -282,7 +308,7 @@ day_datetime,store,week_of_year
 Ismételje meg a szükséges lépéseket a jövőbeli adatok egy dataframe való betöltéséhez, majd futtassa a parancsot `best_run.predict(test_data)` a jövőbeli értékek előrejelzéséhez.
 
 > [!NOTE]
-> Nem lehet előre jelezni az értéknél nagyobb időszakok számát `max_horizon` . A modellt újra be kell tanítani, hogy az aktuális horizonton túli jövőbeli értékek előrejelzése nagyobb horizonton történjen.
+> Nem lehet előre jelezni az értéknél nagyobb időszakok számát `forecast_horizon` . A modellt újra be kell tanítani, hogy az aktuális horizonton túli jövőbeli értékek előrejelzése nagyobb horizonton történjen.
 
 ## <a name="next-steps"></a>További lépések
 

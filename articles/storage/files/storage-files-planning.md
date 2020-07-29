@@ -7,11 +7,12 @@ ms.topic: conceptual
 ms.date: 1/3/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: d1d36c6f6413a9438063c6fe30403af095ed9a6b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4e39ec197b0bbce5d963650abd5dc7811647fa01
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84659634"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87370359"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Az Azure Files üzembe helyezésének megtervezése
 [Azure Files](storage-files-introduction.md) kétféleképpen helyezhető üzembe: a kiszolgáló nélküli Azure-fájlmegosztás közvetlen csatlakoztatásával vagy az Azure-fájlmegosztás helyszíni gyorsítótárazásával Azure file Sync használatával. Az üzembe helyezési lehetőségek közül válassza ki azokat a beállításokat, amelyeket figyelembe kell vennie az üzemelő példány tervezésekor. 
@@ -75,7 +76,31 @@ További információ az átvitel közbeni titkosításról: [biztonságos átvi
 ### <a name="encryption-at-rest"></a>Titkosítás inaktív állapotban
 [!INCLUDE [storage-files-encryption-at-rest](../../../includes/storage-files-encryption-at-rest.md)]
 
-## <a name="storage-tiers"></a>Tárolási rétegek
+## <a name="data-protection"></a>Adatvédelem
+A Azure Files többrétegű megközelítést biztosít az adatok biztonsági mentésére, helyreállítására és a biztonsági fenyegetésekkel szembeni védelemre.
+
+### <a name="soft-delete"></a>Helyreállítható törlés
+A fájlmegosztás (előzetes verzió) helyreállítható törlése olyan tárolási fiók szintű beállítás, amely lehetővé teszi a fájlmegosztás helyreállítását véletlenül törölt állapotba. Egy fájlmegosztás törlésekor a rendszer a véglegesen törölt állapotba helyezi az átmeneti törlés helyett. Beállíthatja, hogy a rendszer a véglegesen törölt adatok mennyiségét helyreállítsa, és bármikor törölje a megosztást a megőrzési időszak alatt. 
+
+Javasoljuk, hogy a legtöbb fájlmegosztás esetében a Soft delete bekapcsolását javasolja. Ha olyan munkafolyamattal rendelkezik, amelyben a megosztás törlése gyakori és várt, akkor dönthet úgy, hogy nagyon rövid megőrzési időtartammal rendelkezik, vagy ha egyáltalán nem engedélyezte a törlést.
+
+A helyreállítható törléssel kapcsolatos további információkért lásd: a [véletlen adattörlés megakadályozása](https://docs.microsoft.com/azure/storage/files/storage-files-prevent-file-share-deletion).
+
+### <a name="backup"></a>Backup
+Az Azure-fájlmegosztás biztonsági mentését a megosztási [Pillanatképek](https://docs.microsoft.com/azure/storage/files/storage-snapshots-files)segítségével végezheti el, amelyek csak olvasható, a megosztás időponthoz tartozó példányai. A pillanatképek növekményes, ami azt jelenti, hogy csak annyi adatmennyiséget tartalmaznak, mint az előző pillanatkép óta. Fájlmegosztás esetén akár 200 pillanatképet is megadhat, és akár 10 évig is megtarthatja őket. Manuálisan is elvégezheti ezeket a pillanatképeket a Azure Portal, a PowerShell vagy a parancssori felület (CLI) segítségével, vagy használhatja a [Azure Backup](https://docs.microsoft.com/azure/backup/azure-file-share-backup-overview?toc=/azure/storage/files/toc.json). A pillanatképek tárolása a fájlmegosztás részeként történik, ami azt jelenti, hogy ha törli a fájlmegosztást, a pillanatképek is törlődni fognak. Ha a pillanatképek biztonsági mentését véletlen törléssel szeretné biztosítani, győződjön meg arról, hogy a megosztáshoz engedélyezve van-e a helyreállított törlés.
+
+Az [Azure-fájlmegosztás Azure Backup](https://docs.microsoft.com/azure/backup/azure-file-share-backup-overview?toc=/azure/storage/files/toc.json) kezeli a pillanatképek ütemezését és megőrzését. A nagyapa-Atya-Son (GFS) képességei azt jelentik, hogy napi, heti, havi és éves pillanatképeket készíthet, amelyek mindegyike saját eltérő megőrzési időtartammal rendelkezik. A Azure Backup a helyreállítható törlés engedélyezését is lehetővé teszi, és azonnal törli a Storage-fiók törlési zárolását, amint a benne lévő fájlmegosztás a biztonsági mentéshez van konfigurálva. Végül Azure Backup biztosít bizonyos kulcsfontosságú monitorozási és riasztási képességeket, amelyek lehetővé teszik, hogy az ügyfelek összevont képet készítsenek a biztonsági mentési hagyatékról.
+
+A Azure Portalban elemszintű és megosztási szintű visszaállításokat is végrehajthat a Azure Backup használatával. Mindössze annyit kell tennie, hogy kiválasztja a visszaállítási pontot (egy adott pillanatképet), az adott fájlt vagy könyvtárat, ha szükséges, majd azt a helyet (eredeti vagy másodlagos), amelyet vissza szeretne állítani. A biztonsági mentési szolgáltatás kezeli a pillanatkép-adatok másolását, és megjeleníti a visszaállítási folyamatot a portálon.
+
+További információ a biztonsági mentésről: [Tudnivalók az Azure-fájlmegosztás biztonsági mentéséről](https://docs.microsoft.com/azure/backup/azure-file-share-backup-overview?toc=/azure/storage/files/toc.json).
+
+### <a name="advanced-threat-protection-for-azure-files-preview"></a>A Azure Files komplex veszélyforrások elleni védelme (előzetes verzió)
+Az Azure Storage komplex veszélyforrások elleni védelme egy további biztonsági intelligenciát biztosít, amely riasztásokat biztosít, amikor rendellenes tevékenységeket észlel a Storage-fiókjában, például szokatlan kísérletet tesz a Storage-fiók elérésére. Az ATP a kártevő-kivonatok hírnevének elemzését is futtatja, és az ismert kártevő szoftver riasztást küld. Az ATP-t az előfizetések vagy a Storage-fiókok szintjén Azure Security Center használatával konfigurálhatja. 
+
+További információ: [Az Azure Storage komplex veszélyforrások elleni védelme](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection).
+
+## <a name="storage-tiers"></a>Tárolási szintek
 [!INCLUDE [storage-files-tiers-overview](../../../includes/storage-files-tiers-overview.md)]
 
 Általánosságban elmondható, hogy Azure Files szolgáltatások és a más szolgáltatásokkal való együttműködés azonos a prémium fájlmegosztás és a szabványos fájlmegosztás között, azonban néhány fontos különbség:
@@ -158,7 +183,7 @@ Az új fájlmegosztás a teljes számú Kredittel kezdődik a burst gyűjtőben.
 ## <a name="redundancy"></a>Redundancia
 [!INCLUDE [storage-files-redundancy-overview](../../../includes/storage-files-redundancy-overview.md)]
 
-## <a name="migration"></a>Áttelepítés
+## <a name="migration"></a>Migrálás
 Sok esetben nem fog létrehozni nettó új fájlmegosztást a szervezet számára, hanem inkább egy meglévő fájlmegosztást telepít át egy helyszíni fájlkiszolgálón vagy NAS-eszközről a Azure Filesra. A Migrálás sikerességéhez fontos a megfelelő áttelepítési stratégia és eszköz kiválogatása a forgatókönyvhöz. 
 
 Az [áttelepítést áttekintő cikk](storage-files-migration-overview.md) röviden ismerteti az alapokat, és tartalmaz egy táblázatot, amely a forgatókönyvét valószínűleg magában foglaló áttelepítési útmutatókba vezet.

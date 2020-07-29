@@ -5,12 +5,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 142e03ab8ae66e210bf572a7c640e19d17c38901
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: mingshen-ms
+ms.author: mingshen
+ms.openlocfilehash: 4a107b3175b7dddad3abb6401cbc12216ae843be
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86109229"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87304190"
 ---
 # <a name="ratings--reviews-analytics-dashboard-in-partner-center"></a>Értékelések & a partner Center Analytics-irányítópultjának értékelésével
 
@@ -24,7 +26,7 @@ Ez a cikk a partner Centerben található Ratings & Reviews irányítópultról 
 
 ## <a name="access-the-dashboard"></a>Az irányítópult elérése
 
-A partner Center [kereskedelmi piactér irányítópultján](https://partner.microsoft.com/en-us/dashboard/commercial-marketplace/overview) bontsa ki az **[elemzés](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** szakaszt, és válassza a **minősítések & felülvizsgálatok**lehetőséget.
+A partner Center [kereskedelmi piactér irányítópultján](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) bontsa ki az **[elemzés](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** szakaszt, és válassza a **minősítések & felülvizsgálatok**lehetőséget.
 
 Az irányítópult a következő felhasználói tevékenység grafikus megjelenítését jeleníti meg:
 
@@ -50,7 +52,7 @@ A felülvizsgálatok időrendi sorrendben jelennek meg a közzétételkor. Az al
 
 ![A partner Center elemzi a felülvizsgálati megjegyzéseket](./media/analyze-reviews.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A partner Center kereskedelmi piactéren elérhető analitikai jelentések áttekintését lásd: [a partner Center kereskedelmi piacának elemzései](./analytics.md).
 - Az ajánlathoz tartozó Piactéri tevékenységet összefoglaló összesített adatok grafikonok, trendek és értékek esetében lásd: [az összefoglaló irányítópult a kereskedelmi piactér elemzésében](./summary-dashboard.md).

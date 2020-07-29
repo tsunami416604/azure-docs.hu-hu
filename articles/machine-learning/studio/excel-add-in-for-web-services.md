@@ -1,6 +1,5 @@
 ---
-title: Excel-bővítmény webes szolgáltatásokhoz
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (klasszikus): Excel-bővítmény webes szolgáltatásokhoz – Azure'
 description: Hogyan használható a Azure Machine Learning webszolgáltatások használata közvetlenül az Excelben anélkül, hogy kódot kellene írnia.
 services: machine-learning
 ms.service: machine-learning
@@ -10,14 +9,17 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/01/2018
-ms.openlocfilehash: 8565e3c62ea1b74879f2e127abed772576563886
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ee4cb3bbbe743cef06ddf1f4ac5ffaf6374de0ce
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85211323"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318623"
 ---
 # <a name="excel-add-in-for-azure-machine-learning-studio-classic-web-services"></a>Azure Machine Learning Studio (klasszikus) webszolgáltatások Excel-bővítménye
+
+**a következőkre vonatkozik:** ![ nincs](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine learning](../overview-what-is-azure-ml.md) ![ Igen ](../../../includes/media/aml-applies-to-skus/yes.png) Machine learning Studio (klasszikus) 
+
 
 Az Excel megkönnyíti a webszolgáltatások közvetlen meghívását anélkül, hogy kódot kellene írnia.
 

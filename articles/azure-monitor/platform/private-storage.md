@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/20/2020
-ms.openlocfilehash: 78cdf1798d9176c9d3c7b3705a11dccde5e47e67
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a14f7ca3e5a7b291e430db6ea536edc5396b5448
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077108"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318895"
 ---
 # <a name="customer-owned-storage-accounts-for-log-ingestion-in-azure-monitor"></a>Felhasználói tulajdonban lévő Storage-fiókok a naplózás betöltéséhez Azure Monitor
 
@@ -54,7 +54,7 @@ A hivatkozások létrehozásához és eltávolításához csak a REST API haszn�
 ## <a name="command-line-and-rest-api"></a>Parancssor és REST API
 
 ### <a name="command-line"></a>Parancssor
-Csatolt Storage-fiókok létrehozásához és kezeléséhez használja [az az monitor log-Analytics Workspace csatolt-Storage](https://docs.microsoft.com/cli/azure/monitor/log-analytics/workspace/linked-storage)szolgáltatást. Ezzel a paranccsal a Storage-fiókokat összekapcsolhatja és leválaszthatja egy munkaterületről, és listázhatja a társított Storage-fiókokat.
+Csatolt Storage-fiókok létrehozásához és kezeléséhez használja [az az monitor log-Analytics Workspace csatolt-Storage](/cli/azure/monitor/log-analytics/workspace/linked-storage)szolgáltatást. Ezzel a paranccsal a Storage-fiókokat összekapcsolhatja és leválaszthatja egy munkaterületről, és listázhatja a társított Storage-fiókokat.
 
 ### <a name="request-and-cli-values"></a>Kérelem és CLI-értékek
 
@@ -236,3 +236,4 @@ Ha a munkaterület regisztrált Storage-fiókja egy másik régióban találhat�
 ## <a name="next-steps"></a>További lépések
 
 - A privát hivatkozások beállításával kapcsolatos további információkért lásd: az [Azure privát hivatkozás használata a hálózatok biztonságos csatlakoztatásához Azure monitor](private-link-security.md)
+

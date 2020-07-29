@@ -4,12 +4,14 @@ Description: Ha pénzt szeretne kapni a kereskedelmi piactéren elérhető aján
 ms.date: 12/10/2019
 ms.topic: conceptual
 ms.service: marketplace
-ms.openlocfilehash: 493043c43cf8dbac94bd33a907c91291fc51bf6c
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: mingshen-ms
+ms.author: mingshen
+ms.openlocfilehash: 9d75f210ed0547a001ad1dd35f8abfffd31c82a4
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86109127"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87304207"
 ---
 # <a name="set-up-your-payout-account-and-tax-forms"></a>Kifizetési számla és űrlapok beállítása
 
@@ -201,6 +203,6 @@ Ha úgy döntött, hogy bankszámlát használ a kifizetések fogadásához, a k
 5. Minden programban részt vevő programhoz ki kell választania egy fizetési profilt, de több program esetében ugyanazt a profilt használhatja.
 6. A módosítások mentéséhez kattintson a Submit (küldés) gombra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [A kereskedelmi piactér számlázása](billing-details.md)

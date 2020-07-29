@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 8d0e965360caab704bcf6c8f7d29e7bba421207e
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: d2d5ce0bc988badc6f25726206a953d87de7eaa2
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87125887"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371455"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-manual"></a>Azure digitális Twins-példány és-hitelesítés beállítása (manuális)
 
@@ -35,7 +35,7 @@ Ebben a szakaszban az **Azure Digital Twins új példányát fogja létrehozni**
     az group create --location <region> --name <name-for-your-resource-group>
     ```
 * Egy régió az üzemelő példányhoz. Ha szeretné megtekinteni, hogy mely régiók támogatják az Azure Digital Twins-t, látogasson el az [*Azure-termékek területre*](https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins).
-* A példány neve. Az új példány nevének a régión belül egyedinek kell lennie (ami azt jelenti, hogy ha az adott régióban egy másik Azure Digital Twins-példány már használja a választott nevet, a rendszer kérni fogja, hogy válasszon másik nevet).
+* A példány neve. Az új példány nevének a régión belül egyedinek kell lennie az előfizetéshez (ami azt jelenti, hogy ha az előfizetés egy másik Azure Digital Twins-példánnyal rendelkezik abban a régióban, amely már használja a választott nevet), a rendszer kérni fogja, hogy válasszon másik nevet.
 
 A példány létrehozásához használja ezeket az értékeket a következő parancsban:
 
@@ -68,9 +68,8 @@ Ebből a szakaszból megtudhatja, hogyan hozhat létre szerepkör-hozzárendelé
 
 Ahhoz, hogy a felhasználó engedélyeket nyújtson egy Azure Digital Twins-példány kezeléséhez, hozzá kell rendelnie az _**Azure Digital Twins tulajdonos (előzetes verzió)**_ szerepkört a példányon belül. 
 
-Vegye figyelembe, hogy ez a szerepkör eltér a következőtől:...
-* a *tulajdonosi* szerepkör a teljes Azure-előfizetésben. Az *Azure Digital Twins tulajdonosa (előzetes verzió)* az Azure digitális ikrek egyik szerepköre, és az egyes Azure digitális Twins-példányokra is kiterjed.
-* a *tulajdonosi* szerepkör az Azure digitális ikrekben. Ez két különböző Azure digitális Twins-felügyeleti szerepkör, és az *Azure Digital Twins tulajdonosa (előzetes verzió)* az előzetes verzióban való felügyelethez használt szerepkör.
+> [!NOTE]
+> Vegye figyelembe, hogy ez a szerepkör eltér az Azure AD *tulajdonosi* szerepkörtől, amely az Azure Digital Twins-példány hatókörében is kiosztható. Ez két különböző felügyeleti szerepkör, és az Azure AD- *tulajdonos* nem biztosít hozzáférést az *Azure Digital Twins-tulajdonossal (előzetes verzió)* biztosított adatközpont-funkciókhoz.
 
 A következő parancs használatával rendelje hozzá a szerepkört (az Azure-előfizetés tulajdonosának kell futnia):
 
@@ -100,7 +99,7 @@ Miután beállította az Azure digitális Twins-példányát, gyakran előfordul
 Az alkalmazás regisztrálása az [Azure Digital Twins API](how-to-use-apis-sdks.md)-khoz való hozzáférési engedélyek konfigurálására szolgál. Később az ügyfélalkalmazás hitelesíteni fogja az alkalmazás regisztrációját, és ennek eredményeképpen a konfigurált hozzáférési engedélyek lesznek elérhetők az API-khoz.
 
 >[!TIP]
-> Az előfizetés tulajdonosaként érdemes lehet új alkalmazás-regisztrációt beállítani minden új Azure Digital Twins-példányhoz, *vagy* csak egyszer végrehajtani, és egyetlen alkalmazás-regisztrációt létrehozni, amely az előfizetés összes Azure digitális Twins-példánya között meg lesz osztva. Így történik a Microsoft saját bérlőn belüli beszerzése.
+> Az előfizetés tulajdonosaként érdemes lehet új alkalmazás-regisztrációt beállítani minden új Azure Digital Twins-példányhoz, *vagy* csak egyszer végrehajtani, és egyetlen alkalmazás-regisztrációt létrehozni, amely az előfizetés összes Azure digitális Twins-példánya között meg lesz osztva.
 
 ### <a name="create-the-registration"></a>A regisztráció létrehozása
 

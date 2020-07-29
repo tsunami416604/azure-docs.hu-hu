@@ -3,12 +3,12 @@ title: Azure Service Bus gyakori kérdések (GYIK) | Microsoft Docs
 description: Ez a cikk a Azure Service Bus kapcsolatos gyakori kérdések (GYIK) néhány válaszát tartalmazza.
 ms.topic: article
 ms.date: 07/15/2020
-ms.openlocfilehash: 01d7869a158a3c2b5418f38f2a5d88fc161796c4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 04ff12d28be1dd232c5666b17d8a121f8020ca89
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083854"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371243"
 ---
 # <a name="azure-service-bus---frequently-asked-questions-faq"></a>Azure Service Bus – gyakran ismételt kérdések (GYIK)
 
@@ -78,7 +78,7 @@ Ha a zóna redundanciát használja a névtérhez, néhány további lépést is
 3. Futtassa az nslookupt mindegyikhez az S1, az S2 és az S3 utótaggal a három rendelkezésre állási zónában futó mindhárom példány IP-címeinek lekéréséhez. 
 
 ### <a name="where-can-i-find-the-ip-address-of-the-client-sendingreceiving-messages-tofrom-a-namespace"></a>Hol találhatom meg az ügyfél által a névtérbe küldött/fogadott üzenetek IP-címét? 
-Nem naplózjuk a névtérbe irányuló üzeneteket küldő vagy fogadó ügyfelek IP-címeit. Kulcsok újragenerálása, hogy az összes meglévő ügyfél ne végezzen hitelesítést és tekintse át a szerepköralapú hozzáférés-vezérlés ([RBAC](authenticate-application.md#built-in-rbac-roles-for-azure-service-bus)) beállításait annak biztosítására, hogy csak az engedélyezett felhasználók vagy alkalmazások férhessenek hozzá a névtérhez. 
+Nem naplózjuk a névtérbe irányuló üzeneteket küldő vagy fogadó ügyfelek IP-címeit. Kulcsok újragenerálása, hogy az összes meglévő ügyfél ne végezzen hitelesítést és tekintse át a szerepköralapú hozzáférés-vezérlés ([RBAC](authenticate-application.md#azure-built-in-roles-for-azure-service-bus)) beállításait annak biztosítására, hogy csak az engedélyezett felhasználók vagy alkalmazások férhessenek hozzá a névtérhez. 
 
 Ha **prémium** szintű névteret használ, használja az [IP-szűrést](service-bus-ip-filtering.md), a [virtuális hálózati szolgáltatási végpontokat](service-bus-service-endpoints.md)és a [magánhálózati végpontokat](private-link-service.md) a névtérhez való hozzáférés korlátozására. 
 

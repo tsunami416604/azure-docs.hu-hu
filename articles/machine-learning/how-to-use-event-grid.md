@@ -5,21 +5,22 @@ description: Eseményvezérelt alkalmazások, folyamatok vagy CI/CD gépi tanul�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
+ms.topic: conceptual
+ms.custom: how-to
 ms.author: shipatel
 author: shivp950
 ms.reviewer: larryfr
 ms.date: 05/11/2020
-ms.openlocfilehash: 5c4eae49b849b7dc5dbf7c27d50e241b2a4f36e4
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 3b6f115e27b5cf956a524bd1a610797c689b5d6c
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135965"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319490"
 ---
 # <a name="trigger-applications-processes-or-cicd-workflows-based-on-azure-machine-learning-events-preview"></a>Alkalmazások, folyamatok vagy CI/CD-munkafolyamatok elindítása Azure Machine Learning események alapján (előzetes verzió)
 
-Ebből a cikkből megtudhatja, hogyan állíthat be eseményvezérelt alkalmazásokat, folyamatokat vagy CI/CD-munkafolyamatokat Azure Machine Learning események alapján, például a sikertelen értesítési e-mailek vagy a ML-folyamatok futtatását, ha a [Azure Event Grid](https://docs.microsoft.com/azure/event-grid/)bizonyos feltételeket észlel. 
+Ebből a cikkből megtudhatja, hogyan állíthat be eseményvezérelt alkalmazásokat, folyamatokat vagy CI/CD-munkafolyamatokat Azure Machine Learning események alapján, például a sikertelen értesítési e-mailek vagy a ML-folyamatok futtatását, ha a [Azure Event Grid](https://docs.microsoft.com/azure/event-grid/)bizonyos feltételeket észlel.
 
 A Azure Machine Learning a gépi tanulási folyamat teljes életciklusát kezeli, beleértve a modellek betanítását, a modell üzembe helyezését és a figyelést. A Event Grid segítségével reagálhat Azure Machine Learning eseményekre, például a képzések befejezésére, a modellek regisztrálására és üzembe helyezésére, valamint az adateltolódás észlelésére a modern kiszolgáló nélküli architektúrák használatával. Ezután előfizethet és használhat olyan eseményeket, mint például a Futtatás állapota, a Futtatás befejezése, a modell regisztrálása, a modell üzembe helyezése és az adateltolódások észlelése egy munkaterületen belül.
 
@@ -243,7 +244,7 @@ Az Azure Machine Learning Model objektum olyan paramétereket tartalmaz, amelyek
 
 Példaként tekintse meg a [https://github.com/Azure-Samples/MachineLearningSamples-NoCodeDeploymentTriggeredByEventGrid](https://github.com/Azure-Samples/MachineLearningSamples-NoCodeDeploymentTriggeredByEventGrid) tárházat, és kövesse a **readme** fájlban található lépéseket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a Event Gridről és a Azure Machine Learning események megadásáról:
 

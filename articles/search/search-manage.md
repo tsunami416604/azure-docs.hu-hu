@@ -9,12 +9,12 @@ tags: azure-portal
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/24/2020
-ms.openlocfilehash: 45f9c56fce0c843d9f1ed069abf7d1ed6e2fa604
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 76eee4b0b029714a75b57e5d44e097a36de3181f
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85565902"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371413"
 ---
 # <a name="service-administration-for-azure-cognitive-search-in-the-azure-portal"></a>Szolgáltatás-felügyelet az Azure Cognitive Search a Azure Portal
 
@@ -123,7 +123,7 @@ Bár a lekérdezési átviteli sebesség a replikák hozzáadásakor leáll, a r
 
 Sokkal gyakoribb a replikák hozzáadása, de ha korlátozott a tárterület, hozzáadhat partíciókat, amelyekkel nagyobb kapacitást érhet el. A szolgáltatás kiépített szintje határozza meg, hogy a partíciók hozzáadhatók-e. Az alapszintű csomag egyetlen partíción van zárolva. A standard szintű csomagok és a fenti csomagok további partíciókat is támogatnak.
 
-A partíciók a 12 (pontosabb, 1, 2, 3, 4, 6 vagy 12) többszörösében lesznek hozzáadva. Ez egy horizontális skálázási összetevő. Az indexek 12 szegmensben jönnek létre, amelyek mindegyike 1 partíción tárolható, vagy egyenlően 2, 3, 4, 6 vagy 12 partícióra osztható (egy-egy szegmens/partíció).
+A partíciók 12 (konkrét, 1, 2, 3, 4, 6 vagy 12) osztóban lesznek hozzáadva. Ez egy horizontális skálázási összetevő. Az indexek 12 szegmensben jönnek létre, amelyek mindegyike 1 partíción tárolható, vagy egyenlően 2, 3, 4, 6 vagy 12 partícióra osztható (egy-egy szegmens/partíció).
 
 ### <a name="remove-replicas"></a>Replikák eltávolítása
 

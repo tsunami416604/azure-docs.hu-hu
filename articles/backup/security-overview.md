@@ -3,12 +3,12 @@ title: A biztonsági funkciók áttekintése
 description: Ismerkedjen meg Azure Backup biztonsági képességekkel, amelyek segítenek a biztonsági másolatok adatainak védelmében és a vállalat biztonsági igényeinek kielégítésében.
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: 750ad7b10969ef5f83e0b5058e350066d3f97351
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 944ef2e86ad8e56501692b29d0958bc4fc19bf0a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87062611"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319303"
 ---
 # <a name="overview-of-security-features-in-azure-backup"></a>A Azure Backup biztonsági funkcióinak áttekintése
 
@@ -38,17 +38,21 @@ Az Azure-beli virtuális gépekről készült biztonsági mentéshez a virtuáli
 
 ## <a name="private-endpoints-for-azure-backup"></a>Privát végpontok az Azure Backup szolgáltatáshoz
 
-Mostantól [privát végpontokat](../private-link/private-endpoint-overview.md) is használhat az adatok biztonságos biztonsági mentésére a virtuális hálózaton belüli kiszolgálókról a Recovery Services-tárolóba. A privát végpont egy IP-címet használ a tár VNET, így nem kell kiadnia a virtuális hálózatokat a nyilvános IP-címekhez. Az Azure-beli virtuális gépeken futó SQL-és SAP HANA-adatbázisok biztonsági mentésére és visszaállítására privát végpontok használhatók. A MARS-ügynököt használó helyszíni kiszolgálókhoz is használható.
+Mostantól [privát végpontokat](../private-link/private-endpoint-overview.md) is használhat az adatok biztonságos biztonsági mentésére a virtuális hálózaton belüli kiszolgálókról a Recovery Services-tárolóba. A privát végpont egy IP-címet használ a tár VNET, így nem kell közzétennie a virtuális hálózatokat a nyilvános IP-címekhez. Az Azure-beli virtuális gépeken futó SQL-és SAP HANA-adatbázisok biztonsági mentésére és visszaállítására privát végpontok használhatók. A MARS-ügynököt használó helyszíni kiszolgálókhoz is használható.
 
 További információ a Azure Backup privát végpontokról [itt](./private-endpoints.md)olvasható.
 
-## <a name="encryption-of-data-in-transit-and-at-rest"></a>Az átvitel és a nyugalmi állapotban lévő adatok titkosítása
+## <a name="encryption-of-data"></a>Adattitkosítás
 
-A titkosítás védi az adatait, és segít a szervezeti biztonsági és megfelelőségi kötelezettségek teljesítésében. Az Azure-on belül az Azure Storage és a tároló közötti adatátvitel HTTPS-védelemmel történik. Ezek az adatközpontok az Azure gerinc hálózatán maradnak.
+A titkosítás védi az adatait, és segít a szervezeti biztonsági és megfelelőségi kötelezettségek teljesítésében. Az adattitkosítás a Azure Backup számos fázisában történik:
 
-* A biztonsági mentési adatai automatikusan titkosítva vannak a Microsoft által felügyelt kulcsokkal. A felügyelt lemezes virtuális gépek biztonsági mentését a Recovery Services tárolóban is titkosíthatja a Azure Key Vault tárolt [ügyfelek által felügyelt kulcsok](backup-encryption.md#encryption-of-backup-data-using-customer-managed-keys) használatával. A titkosítás engedélyezéséhez nem szükséges explicit műveletet végrehajtania. Ez a Recovery Services-tárolóba mentett összes munkaterhelésre vonatkozik.
+* Az Azure-on belül az Azure Storage és a tároló közötti adatátvitel [https-védelemmel](backup-support-matrix.md#network-traffic-to-azure)történik. Ezek az adatközpontok az Azure gerinc hálózatán maradnak.
 
-* Azure Backup támogatja az olyan Azure-beli virtuális gépek biztonsági mentését és visszaállítását, amelyek az operációs rendszer/adatlemezei Azure Disk Encryption (ADE) titkosítással rendelkeznek. [További információ a titkosított Azure-beli virtuális gépekről és Azure Backupokról](./backup-azure-vms-encryption.md).
+* A biztonsági mentési adatai automatikusan titkosítva vannak a [Microsoft által felügyelt kulcsokkal](backup-encryption.md#encryption-of-backup-data-using-platform-managed-keys), és nem szükséges explicit műveletet végrehajtani az engedélyezéshez. A biztonsági másolatok adatait a Azure Key Vault tárolt [ügyfelek által felügyelt kulcsok](encryption-at-rest-with-cmk.md) használatával is titkosíthatja. Ez a Recovery Services-tárolóba mentett összes munkaterhelésre vonatkozik.
+
+* Azure Backup támogatja az olyan Azure-beli virtuális gépek biztonsági mentését és visszaállítását, amelyek az operációs rendszer/adatlemezei [Azure Disk Encryption (ADE)](backup-encryption.md#backup-of-vms-encrypted-using-ade) és a [CMK titkosított lemezekkel titkosított virtuális gépekkel](backup-encryption.md#backup-of-managed-disk-vms-encrypted-using-customer-managed-keys)rendelkeznek. További információért olvassa el a [titkosított Azure-beli virtuális gépek és a Azure Backup](./backup-azure-vms-encryption.md).
+
+* Ha az adatok biztonsági mentést végeznek a helyszíni kiszolgálókról a MARS-ügynökkel, az adatok titkosítva lesznek a jelszóval, és csak azután, hogy a rendszer letölti a Azure Backup, és visszafejti azt Azure Backup. További információ a [biztonsági funkciókról a hibrid biztonsági másolatok védelméhez](#security-features-to-help-protect-hybrid-backups).
 
 ## <a name="protection-of-backup-data-from-unintentional-deletes"></a>A véletlen törlésből származó biztonsági mentési adatok védelme
 
