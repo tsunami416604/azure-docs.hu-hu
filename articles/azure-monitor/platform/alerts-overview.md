@@ -4,12 +4,12 @@ description: Az Azure-beli riasztások áttekintése. Riasztások, klasszikus ri
 ms.subservice: alerts
 ms.topic: conceptual
 ms.date: 01/28/2018
-ms.openlocfilehash: 37980f3cebdee2754a9741a8a45ec6932e7e98ce
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e0741a23d7e5ece0898d83c53782afc353d9a7e5
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327123"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371600"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>A Microsoft Azure riasztásainak áttekintése 
 
@@ -178,7 +178,7 @@ A riasztás részletei lapon a következő témakörök találhatók:
 
 ## <a name="role-based-access-control-rbac-for-your-alert-instances"></a>Szerepköralapú hozzáférés-vezérlés (RBAC) a riasztási példányokhoz
 
-A riasztási példányok felhasználása és kezelése megköveteli, hogy a felhasználó rendelkezzen a [figyelési közreműködő](../../role-based-access-control/built-in-roles.md#monitoring-contributor) vagy [figyelő olvasó](../../role-based-access-control/built-in-roles.md#monitoring-reader)beépített RBAC szerepköreivel. Ezek a szerepkörök bármely Azure Resource Manager hatókörön támogatottak, az előfizetési szinttől kezdve a részletes hozzárendelésekhez az erőforrás szintjén. Ha például egy felhasználó csak a figyelés közreműködői hozzáférését használja a virtuális géphez `ContosoVM1` , a felhasználó csak a által generált riasztásokat használhatja és kezelheti `ContosoVM1` .
+A riasztási példányok felhasználása és kezelése megköveteli, hogy a felhasználó rendelkezzen az Azure beépített szerepköreivel a [figyelési közreműködő](../../role-based-access-control/built-in-roles.md#monitoring-contributor) vagy a [monitorozási olvasó](../../role-based-access-control/built-in-roles.md#monitoring-reader)számára. Ezek a szerepkörök bármely Azure Resource Manager hatókörön támogatottak, az előfizetési szinttől kezdve a részletes hozzárendelésekhez az erőforrás szintjén. Ha például egy felhasználó csak a figyelés közreműködői hozzáférését használja a virtuális géphez `ContosoVM1` , a felhasználó csak a által generált riasztásokat használhatja és kezelheti `ContosoVM1` .
 
 ## <a name="manage-your-alert-instances-programmatically"></a>Riasztási példányok programozott kezelése
 
@@ -212,4 +212,3 @@ Az [Alert Management REST API](https://aka.ms/alert-management-api) segítségé
 - [Riasztási példányok kezelése az Azure-ban](https://aka.ms/managing-alert-instances)
 - [Intelligens csoportok kezelése](https://aka.ms/managing-smart-groups)
 - [További információ az Azure-riasztások díjszabásáról](https://azure.microsoft.com/pricing/details/monitor/)
-

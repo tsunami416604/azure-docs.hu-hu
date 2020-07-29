@@ -11,12 +11,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Operations'
 - 'Role: Technical Support'
-ms.openlocfilehash: 675391a92c991f80faadf8b75abc79dcb4cd19d7
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: bee22391664250888816dc2b4bbb93622cab7942
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322958"
+ms.locfileid: "87335562"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Hivatkozás – IoT Hub kvóták és szabályozás
 
@@ -30,9 +30,9 @@ Minden Azure-előfizetés legfeljebb 50 IoT-hubhoz és legfeljebb 1 ingyenes kö
 
 A (z) szinten meghatározza azokat a szabályozási korlátokat is, amelyek az összes műveletre IoT Hub érvényesítenek.
 
-### <a name="iot-plug-and-play"></a>IoT Plug and Play
+## <a name="iot-plug-and-play"></a>IoT Plug and Play
 
-A nyilvános előzetes verzióban a IoT Plug and Play-eszközök külön üzeneteket küldenek egy felületen, ami növelheti az üzenetek számának az üzenet-kvótába való megszámlálását.
+A IoT Plug and Play-eszközök legalább egy telemetria-üzenetet küldenek minden egyes csatolóhoz, beleértve a gyökeret is, ami növelheti az üzenetek számának megszámlálását az üzenet kvótája felé.
 
 ## <a name="operation-throttles"></a>Műveletek szabályozása
 

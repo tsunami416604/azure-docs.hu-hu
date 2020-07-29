@@ -6,12 +6,12 @@ author: MS-jgol
 ms.author: jgol
 ms.date: 05/31/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: b9be0808d4edc9662c1d3a4144f3102242560564
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 234f772b4a77b780f0b0c1faf307c93847e5caf2
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075350"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87310718"
 ---
 # <a name="what-is-auto-instrumentation-or-codeless-attach---azure-monitor-application-insights"></a>Mi az Auto-Instrumentation vagy a kód-Azure Monitor Application Insights?
 
@@ -68,5 +68,6 @@ A sokoldalú Java önálló ügynök bármilyen környezetben működik, nincs s
 ## <a name="next-steps"></a>További lépések
 
 * [Application Insights áttekintése](./app-insights-overview.md)
-* [Alkalmazás-hozzárendelés](./../../azure-monitor/app/app-map.md)
-* [Végpontok közötti teljesítmény figyelése](./../../azure-monitor/learn/tutorial-performance.md)
+* [Alkalmazás-hozzárendelés](./app-map.md)
+* [Végpontok közötti teljesítmény figyelése](../learn/tutorial-performance.md)
+

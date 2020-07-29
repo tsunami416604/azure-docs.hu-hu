@@ -5,12 +5,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/21/2020
-ms.openlocfilehash: e24dcdc2de94fe73f6bb83dcc03bbd1139503784
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: mingshen-ms
+ms.author: mingshen
+ms.openlocfilehash: 42a76a2cf583a57ae5b38fe051ee48d16d705dd2
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120755"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319966"
 ---
 # <a name="marketplace-metering-service-authentication-strategies"></a>Marketplace-mérési szolgáltatás hitelesítési stratégiái
 
@@ -50,31 +52,31 @@ További információ ezekről a jogkivonatokról: [Azure Active Directory hozz�
 
 #### <a name="uri-parameter"></a>*URI-paraméter*
 
-|  **Paraméter neve** |  **Szükséges**  |  **Leírás**          |
+|  **Paraméter neve** |  **Kötelező**  |  **Leírás**          |
 |  ------------------ |--------------- | ------------------------  |
-|  `tenantId`         |   True (Igaz)         | A regisztrált Azure AD-alkalmazás bérlői azonosítója.   |
+|  `tenantId`         |   Igaz         | A regisztrált Azure AD-alkalmazás bérlői azonosítója.   |
 | | | |
 
 #### <a name="request-header"></a>*Kérelem fejléce*
 
-|  **Fejléc neve**    |  **Szükséges**  |  **Leírás**          |
+|  **Fejléc neve**    |  **Kötelező**  |  **Leírás**          |
 |  ------------------ |--------------- | ------------------------  |
-|  `Content-Type`     |   True (Igaz)         | A kérelemhez társított tartalomtípus. Az alapértelmezett érték `application/x-www-form-urlencoded`.  |
+|  `Content-Type`     |   Igaz         | A kérelemhez társított tartalomtípus. Az alapértelmezett érték `application/x-www-form-urlencoded`.  |
 | | | |
 
 #### <a name="request-body"></a>*Kérelem törzse*
 
-|  **Tulajdonság neve**  |  **Szükséges**  |  **Leírás**          |
+|  **Tulajdonság neve**  |  **Kötelező**  |  **Leírás**          |
 |  ------------------ |--------------- | ------------------------  |
-|  `Grant_type`       |   True (Igaz)         | Adja meg a típust. A `client_credentials` címet használja. |
-|  `Client_id`        |   True (Igaz)         | Az Azure AD-alkalmazáshoz társított ügyfél/alkalmazás-azonosító.|
-|  `client_secret`    |   True (Igaz)         | Az Azure AD-alkalmazáshoz társított titkos kulcs.  |
-|  `Resource`         |   True (Igaz)         | A célként megadott erőforrás, amelyre a tokent kérték. A `20e940b3-4c77-4b0b-9a53-9e16a1b010a7` címet használja. |
+|  `Grant_type`       |   Igaz         | Adja meg a típust. A `client_credentials` címet használja. |
+|  `Client_id`        |   Igaz         | Az Azure AD-alkalmazáshoz társított ügyfél/alkalmazás-azonosító.|
+|  `client_secret`    |   Igaz         | Az Azure AD-alkalmazáshoz társított titkos kulcs.  |
+|  `Resource`         |   Igaz         | A célként megadott erőforrás, amelyre a tokent kérték. A `20e940b3-4c77-4b0b-9a53-9e16a1b010a7` címet használja. |
 | | | |
 
 #### <a name="response"></a>*Válasz*
 
-|  **Name (Név)**    |  **Típus**  |  **Leírás**          |
+|  **Név**    |  **Típus**  |  **Leírás**          |
 |  ------------------ |--------------- | ----------------------  |
 |  `200 OK`     |   `TokenResponse`    | A kérelem sikeres volt.  |
 | | | |
@@ -151,7 +153,7 @@ Az alábbi lépéseket követve például Windows rendszerű virtuális gép has
 
 1. Használja a [piactér-mérési szolgáltatás API](./marketplace-metering-service-apis.md) -ját a használat kibocsátása érdekében.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Azure-alkalmazásajánlat létrehozása](./create-new-azure-apps-offer.md)
 * [Az SaaS-ajánlat létrehozása](./offer-creation-checklist.md)

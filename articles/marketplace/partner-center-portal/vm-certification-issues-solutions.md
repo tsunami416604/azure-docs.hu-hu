@@ -4,15 +4,15 @@ description: Ez a cikk a virtuálisgép-lemezképekkel kapcsolatos gyakori hiba�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: troubleshooting
-author: v-miegge
-ms.author: v-krmall
+author: iqshahmicrosoft
+ms.author: iqshah
 ms.date: 06/16/2020
-ms.openlocfilehash: e73ff612aa07016f69c717a74678d5d1923e87b8
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 594a47f397ca78476ed987ac0e06a3cacc79ec3b
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120653"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319898"
 ---
 # <a name="issues-and-solutions-during-virtual-machine-certification"></a>Problémák és megoldások a virtuális gépek minősítése során 
 
@@ -29,7 +29,7 @@ Ha olyan kérést küld, amely a rendszerkép frissítéssel való újbóli köz
 
 Ez a hiba akkor fordul elő, ha egy másik közzétevőhöz tartozó alaprendszerképet használ, és frissítette a rendszerképet. Ebben az esetben a rendszerkép közzététele nem engedélyezett.
 
-A probléma megoldásához kérje le a rendszerképet az Azure Marketplace-ről, és végezze el a módosítását. További információért tekintse át a következő cikkeket:
+A probléma megoldásához kérje le a rendszerképet az Azure Marketplace-ről, és végezze el a módosítását. További információkért tekintse át a következő cikkeket:
 
 - [Linux-rendszerképek](../../virtual-machines/linux/endorsed-distros.md?toc=/azure/virtual-machines/linux/toc.json)
 - [Windows-rendszerképek](create-azure-vm-technical-asset.md#create-a-vm-image-using-an-approved-base)
@@ -43,7 +43,7 @@ A virtuálisgép-bővítmények engedélyezéséhez tegye a következőket:
 1. Válassza ki a linuxos virtuális gépet.
 1. Lépjen a **diagnosztikai beállítások menüpontra**.
 1. Az alapmátrixok engedélyezéséhez frissítse a **Storage-fiókot**.
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
    ![Vendégszintű monitorozás engedélyezése](./media/vm-certification-issues-solutions-1.png)
 
@@ -315,6 +315,6 @@ Ha a Windows-rendszerképhez nincs engedélyezve a RDP protokoll (RDP) beállít
 
 Az RDP-hozzáférés engedélyezése a Windows-rendszerképekhez a beküldése előtt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha kérdése vagy visszajelzése van a fejlesztéssel kapcsolatban, forduljon a [partner Center ügyfélszolgálatához](https://partner.microsoft.com/support/v2/?stage=1).

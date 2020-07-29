@@ -7,15 +7,16 @@ ms.reviewer: jdaly, logicappspm
 ms.topic: conceptual
 ms.date: 05/08/2020
 tags: connectors
-ms.openlocfilehash: 98da7e959e4b59ad2d0f3f3f79364391b4ceddbd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8cce90a8a65a7f070459e220e6d92ef0be57e909
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82997099"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284115"
 ---
 # <a name="create-and-manage-records-in-common-data-service-by-using-azure-logic-apps"></a>Rekordok létrehozása és kezelése Common Data Serviceban Azure Logic Apps használatával
 
-A [Azure Logic apps](../logic-apps/logic-apps-overview.md) és az [Common Data Service-összekötővel](https://docs.microsoft.com/connectors/commondataservice/)olyan automatizált munkafolyamatokat hozhat létre, amelyek a [Common Data Service](https://docs.microsoft.com/powerapps/maker/common-data-service/data-platform-intro) -adatbázisban lévő rekordokat kezelik. Ezek a munkafolyamatok létrehozhatnak rekordokat, frissíthetik a rekordokat, és egyéb műveleteket végezhetnek el. A Common Data Service adatbázisból is kérhet információt, és a kimenet elérhetővé teheti a logikai alkalmazásban használható egyéb műveletek számára. Ha például egy rekord frissül a Common Data Service adatbázisban, az Office 365 Outlook Connector használatával küldhet e-mailt.
+A [Azure Logic apps](../logic-apps/logic-apps-overview.md) és az [Common Data Service-összekötővel](/connectors/commondataservice/)olyan automatizált munkafolyamatokat hozhat létre, amelyek a [Common Data Service](/powerapps/maker/common-data-service/data-platform-intro) -adatbázisban lévő rekordokat kezelik. Ezek a munkafolyamatok létrehozhatnak rekordokat, frissíthetik a rekordokat, és egyéb műveleteket végezhetnek el. A Common Data Service adatbázisból is kérhet információt, és a kimenet elérhetővé teheti a logikai alkalmazásban használható egyéb műveletek számára. Ha például egy rekord frissül a Common Data Service adatbázisban, az Office 365 Outlook Connector használatával küldhet e-mailt.
 
 Ez a cikk bemutatja, hogyan hozhat létre egy olyan logikai alkalmazást, amely egy új érdeklődői rekord létrehozásakor feladatsort hoz létre.
 
@@ -23,10 +24,10 @@ Ez a cikk bemutatja, hogyan hozhat létre egy olyan logikai alkalmazást, amely 
 
 * Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/).
 
-* Egy [Common Data Service-környezet](https://docs.microsoft.com/power-platform/admin/environments-overview), amely a szervezet által az üzleti és a Common Data Service adatbázis tárolására, kezelésére és megosztására szolgáló terület. További információkért tekintse meg a következő forrásokat:<p>
+* Egy [Common Data Service-környezet](/power-platform/admin/environments-overview), amely a szervezet által az üzleti és a Common Data Service adatbázis tárolására, kezelésére és megosztására szolgáló terület. További információkért tekintse meg a következő forrásokat:<p>
 
-  * [További információ: a Common Data Service első lépései](https://docs.microsoft.com/learn/modules/get-started-with-powerapps-common-data-service/)
-  * [Power platform – környezetek – áttekintés](https://docs.microsoft.com/power-platform/admin/environments-overview)
+  * [További információ: a Common Data Service első lépései](/learn/modules/get-started-with-powerapps-common-data-service/)
+  * [Power platform – környezetek – áttekintés](/power-platform/admin/environments-overview)
 
 * Alapszintű információ a Logic apps és a logikai alkalmazás [létrehozásáról](../logic-apps/quickstart-create-first-logic-app-workflow.md) , ahonnan a Common Data Service adatbázisban lévő rekordokhoz szeretne hozzáférni. Ha Common Data Service triggerrel szeretné elindítani a logikai alkalmazást, üres logikai alkalmazásra van szüksége. Ha most ismerkedik a Azure Logic Appsval, tekintse át a gyors útmutató [: az első munkafolyamat létrehozása a Azure Logic Apps használatával](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
@@ -50,9 +51,9 @@ Ebben a példában adja hozzá a Common Data Service eseményindítót, amely ú
 
    | Tulajdonság | Kötelező | Leírás |
    |----------|----------|-------------|
-   | **Környezet** | Yes | A figyelni kívánt környezet, például "Fabrikam Sales Production". További információ: [Power platform – környezetek – áttekintés](https://docs.microsoft.com/power-platform/admin/environments-overview). |
-   | **Entitás neve** | Yes | A figyelni kívánt entitás, például "leads" |
-   | **Hatókör** | Yes | Az új rekordot létrehozó forrás, például egy felhasználó a céges egységben vagy a szervezet bármely felhasználója. Ez a példa a "Business Unit" szolgáltatást használja. |
+   | **Környezet** | Igen | A figyelni kívánt környezet, például "Fabrikam Sales Production". További információ: [Power platform – környezetek – áttekintés](/power-platform/admin/environments-overview). |
+   | **Entitás neve** | Igen | A figyelni kívánt entitás, például "leads" |
+   | **Hatókör** | Igen | Az új rekordot létrehozó forrás, például egy felhasználó a céges egységben vagy a szervezet bármely felhasználója. Ez a példa a "Business Unit" szolgáltatást használja. |
    ||||
 
 ## <a name="add-common-data-service-action"></a>Common Data Service művelet hozzáadása
@@ -71,8 +72,8 @@ Most adjon hozzá egy Common Data Service műveletet, amely létrehoz egy új "l
 
    | Tulajdonság | Kötelező | Leírás |
    |----------|----------|-------------|
-   | **Szervezet neve** | Yes | Az a környezet, amelyben létre kívánja hozni a rekordot, és nem feltétlenül ugyanazt a környezetet kell megadnia az triggerben, de ebben a példában a "Fabrikam értékesítési termelés" szerepel. |
-   | **Entitás neve** | Yes | Az entitás, amelyben létre szeretné hozni a rekordot, például "feladatok" |
+   | **Szervezet neve** | Igen | Az a környezet, amelyben létre kívánja hozni a rekordot, és nem feltétlenül ugyanazt a környezetet kell megadnia az triggerben, de ebben a példában a "Fabrikam értékesítési termelés" szerepel. |
+   | **Entitás neve** | Igen | Az entitás, amelyben létre szeretné hozni a rekordot, például "feladatok" |
    | **Tárgy** | Igen, az ebben a példában kiválasztott entitás alapján | A feladat céljával kapcsolatos rövid leírás |
    ||||
 
@@ -86,7 +87,7 @@ Most adjon hozzá egy Common Data Service műveletet, amely létrehoz egy új "l
 
       ![Válassza ki a feladat rekordban használni kívánt trigger-kimeneteket](./media/connect-common-data-service/create-new-record-action-select-trigger-outputs.png)
 
-      | Trigger kimenete | Description |
+      | Trigger kimenete | Leírás |
       |----------------|-------------|
       | **Keresztnév** | Az első név a rekordban, amelyet elsődleges partnerként kíván használni a feladatban. |
       | **Vezetéknév** | A tevékenység rekordjában az elsődleges partnerként használandó utolsó név a vezető rekordban |
@@ -125,7 +126,7 @@ A rekordokat visszaadó műveletek, például a **rekordok listázása** művele
 
    ![Adja meg a rekordok szűrésére szolgáló ODATA-szűrési lekérdezést](./media/connect-common-data-service/list-records-action-filter-query-value.png)
 
-További információ a `$filter` rendszerlekérdezési lehetőségekről: [Common Data Service-Filter Results](https://docs.microsoft.com/powerapps/developer/common-data-service/webapi/query-data-web-api#filter-results).
+További információ a `$filter` rendszerlekérdezési lehetőségekről: [Common Data Service-Filter Results](/powerapps/developer/common-data-service/webapi/query-data-web-api#filter-results).
 
 ## <a name="list-records-based-on-an-order"></a>Rekordok listázása rendelés alapján
 
@@ -139,7 +140,7 @@ A rekordokat visszaadó műveletek, például a **rekordok listázása** művele
 
    ![Adja meg a ODATA szűrő lekérdezését a rekordok rendezéséhez](./media/connect-common-data-service/list-records-action-order-by-value.png)
 
-További információ a `$orderby` rendszerlekérdezési lehetőségekről: [Common Data Service Order Results](https://docs.microsoft.com/powerapps/developer/common-data-service/webapi/query-data-web-api#order-results).
+További információ a `$orderby` rendszerlekérdezési lehetőségekről: [Common Data Service Order Results](/powerapps/developer/common-data-service/webapi/query-data-web-api#order-results).
 
 ## <a name="field-data-types"></a>Mező adattípusai
 
@@ -147,7 +148,7 @@ Függetlenül attól, hogy manuálisan adott-e meg egy értéket, vagy kijelöl 
 
 Ez a táblázat néhány mezőtípus és azon adattípusok leírását írja le, amelyekre ezek a mezők az értékekhez szükségesek.
 
-| Mező | Adattípus | Description |
+| Mező | Adattípus | Leírás |
 |-------|-----------|-------------|
 | Szövegmező | Egysoros szöveg | Egy olyan szöveges vagy dinamikus tartalmat igényel, amely a szöveg adattípussal rendelkezik, például a következő tulajdonságokkal: <p><p>- **Leírás** <br>- **Kategória** |
 | Egész szám mező | Egész szám | Az egész szám adattípusú egész vagy dinamikus tartalmat igényel, például ezek a tulajdonságok: <p><p>- **Készültségi százalék** <br>- **Időtartama** |
@@ -165,7 +166,7 @@ Ez a példa azt szemlélteti, hogy az **új rekord létrehozása** művelet hogy
 
 ## <a name="connector-reference"></a>Összekötő-referencia
 
-Az összekötők kivágási leírásán alapuló technikai információk, például eseményindítók, műveletek, korlátok és egyéb részletek: az [összekötő hivatkozási lapja](https://docs.microsoft.com/connectors/commondataservice/).
+Az összekötők kivágási leírásán alapuló technikai információk, például eseményindítók, műveletek, korlátok és egyéb részletek: az [összekötő hivatkozási lapja](/connectors/commondataservice/).
 
 ## <a name="next-steps"></a>További lépések
 

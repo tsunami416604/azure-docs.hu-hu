@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/25/2018
-ms.openlocfilehash: b71c6d8e0890bde377fae761f4486803229ceff4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 97d7d21374062462248e1b86f2bde2fef2d25331
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87045684"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326052"
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>A környezet optimalizálása a System Center Operations Manager Health Check (előzetes verzió) megoldással
 
@@ -203,7 +203,7 @@ Minden javaslat tartalmaz útmutatást arról, hogy miért fontos. Ezzel az útm
 
 ## <a name="use-health-check-focus-area-recommendations"></a>Az állapot-ellenőrzési fókusz területtel kapcsolatos javaslatok használata
 
-Mielőtt állapot-ellenőrzési megoldást szeretne használni a Log Analyticsban, telepítenie kell a megoldást. A megoldások telepítésével kapcsolatos további információkért lásd: [felügyeleti megoldás telepítése](../../azure-monitor/insights/solutions.md). A telepítése után megtekintheti a javaslatok összefoglalását a Azure Portal munkaterületének **Áttekintés** lapján található System Center Operations Manager Health Check csempe használatával.
+Mielőtt állapot-ellenőrzési megoldást szeretne használni a Log Analyticsban, telepítenie kell a megoldást. A megoldások telepítésével kapcsolatos további információkért lásd: [felügyeleti megoldás telepítése](./solutions.md). A telepítése után megtekintheti a javaslatok összefoglalását a Azure Portal munkaterületének **Áttekintés** lapján található System Center Operations Manager Health Check csempe használatával.
 
 Tekintse meg az infrastruktúra összesített megfelelőségi értékeléseit, majd a részletes ajánlásokat.
 
@@ -229,7 +229,7 @@ Ha olyan javaslatok vannak, amelyeket figyelmen kívül szeretne hagyni, létreh
     ```
 
     >[!NOTE]
-    > Ha a munkaterülete frissítve lett az [új log Analytics lekérdezési nyelvre](../../azure-monitor/log-query/log-query-overview.md), akkor a fenti lekérdezés a következőre módosul.
+    > Ha a munkaterülete frissítve lett az [új log Analytics lekérdezési nyelvre](../log-query/log-query-overview.md), akkor a fenti lekérdezés a következőre módosul.
     >
     > `SCOMAssessmentRecommendationRecommendation | where RecommendationResult == "Failed" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
 
@@ -254,7 +254,7 @@ Ha olyan javaslatok vannak, amelyeket figyelmen kívül szeretne hagyni, létreh
     ```
 
     >[!NOTE]
-    > Ha a munkaterülete frissítve lett az [új log Analytics lekérdezési nyelvre](../../azure-monitor/log-query/log-query-overview.md), akkor a fenti lekérdezés a következőre módosul.
+    > Ha a munkaterülete frissítve lett az [új log Analytics lekérdezési nyelvre](../log-query/log-query-overview.md), akkor a fenti lekérdezés a következőre módosul.
     >
     > `SCOMAssessmentRecommendationRecommendation | where RecommendationResult == "Ignore" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
 
@@ -295,4 +295,5 @@ Ha olyan javaslatok vannak, amelyeket figyelmen kívül szeretne hagyni, létreh
 
 ## <a name="next-steps"></a>További lépések
 
-- A [naplókban](../../azure-monitor/log-query/log-query-overview.md) megtudhatja, hogyan elemezheti a részletes System Center Operations Manager Health Checki információkat és javaslatokat.
+- A [naplókban](../log-query/log-query-overview.md) megtudhatja, hogyan elemezheti a részletes System Center Operations Manager Health Checki információkat és javaslatokat.
+

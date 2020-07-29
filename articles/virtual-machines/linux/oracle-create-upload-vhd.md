@@ -4,15 +4,15 @@ description: Megtudhatja, hogyan hozhat létre és tölthet fel egy Oracle Linux
 author: gbowerman
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
-ms.topic: article
+ms.topic: how-to
 ms.date: 12/10/2019
 ms.author: guybo
-ms.openlocfilehash: 187362dcbb30c94425edc76724c042a0e4bc5045
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 97fd61614eff05ddc542dbe17cf199663ab4cf1b
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86510310"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371906"
 ---
 # <a name="prepare-an-oracle-linux-virtual-machine-for-azure"></a>Oracle Linux virtuális gép előkészítése az Azure-hoz
 
@@ -236,5 +236,5 @@ Egy Oracle Linux 7 virtuális gép Azure-hoz való előkészítése nagyon hason
 
 15. Kattintson a **művelet – > leállítás** a Hyper-V kezelőjében elemre. A linuxos virtuális merevlemez most már készen áll az Azure-ba való feltöltésre.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Most már készen áll a Oracle Linux. vhd fájl használatára az Azure-beli új virtuális gépek létrehozásához. Ha első alkalommal tölti fel a. vhd-fájlt az Azure-ba, tekintse meg a Linux rendszerű [virtuális gép létrehozása egyéni lemezről](upload-vhd.md#option-1-upload-a-vhd)című témakört.

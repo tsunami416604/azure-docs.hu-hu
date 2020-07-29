@@ -8,18 +8,18 @@ ms.subservice: iomt
 ms.topic: conceptual
 ms.date: 07/16/2020
 ms.author: jasteppe
-ms.openlocfilehash: e74e3475256858955a5ab0dc99e7b858548e2485
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: eff1272318413da7855134b0a8a44dd0a0711a6c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87099394"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285577"
 ---
-# <a name="iot-connector-preview-troubleshooting-guide-and-how-to"></a>IoT-összekötő (előzetes verzió) – hibaelhárítási útmutató és útmutató
+# <a name="iot-connector-preview-troubleshooting-guide"></a>IoT-összekötő (előzetes verzió) – hibaelhárítási útmutató
 
-Ebből a cikkből megtudhatja, hogyan lehet elhárítani a gyakori IoT-összekötő (előzetes verzió) hibaüzeneteit és feltételeit.
+Ez a cikk a gyakori IoT-összekötő (előzetes verzió) hibaüzenetek és feltételek hibaelhárításának lépéseit ismerteti.  
 
-Azt is megtudhatja, hogyan hozhatja létre a IoT-összekötő (előzetes verzió) JSON-leképezésének másolatait.
+Azt is megtudhatja, hogyan hozhat létre másolatot a IoT-összekötő (előzetes verzió) JSON-leképezési fájljairól a Azure Portalon kívüli szerkesztéshez és archiváláshoz.
 
 ## <a name="error-messages-and-fixes"></a>Hibaüzenetek és javítások
 
@@ -59,11 +59,11 @@ Azt is megtudhatja, hogyan hozhatja létre a IoT-összekötő (előzetes verzió
 > [!NOTE]
 > Ez a folyamat a **"FHIR-leképezés konfigurálása"** JSON-fájl tartalmának másolására és mentésére is használható.
 
-4. Válassza ki a JSON tartalmát, és hajtson végre egy másolási műveletet (például: válassza a CTRL + c billentyűkombinációt). 
+4. Válassza ki a JSON tartalmát, és végezze el a másolási műveletet (például: válassza a CTRL + c billentyűkombinációt). 
 
    :::image type="content" source="media/iot-troubleshoot/map-files-select-device-json-with-box.png" alt-text="IoT-összekötő" lightbox="media/iot-troubleshoot/map-files-select-device-json-with-box.png":::
 
-5. Hajtson végre egy beillesztési műveletet (például a CTRL + v billentyűkombinációt) egy szerkesztőben egy új fájlba (például: Visual Studio Code, notepad), és mentse a fájlt egy *. JSON kiterjesztéssel.
+5. Végezze el a beillesztési műveletet (például a CTRL + v billentyűkombinációt) egy új fájlba egy szerkesztőben (például: Visual Studio Code, notepad), és mentse a fájlt egy *. JSON kiterjesztéssel.
 
 > [!TIP]
 > Ha a IoT-összekötőhöz [Azure technikai támogatási](https://azure.microsoft.com/support/create-ticket/) jegyet nyit meg, ügyeljen arra, hogy a leképezési fájlok másolatait tartalmazza a hibaelhárítási folyamat segítése érdekében.

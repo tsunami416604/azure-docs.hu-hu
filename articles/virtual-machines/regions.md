@@ -4,15 +4,15 @@ description: Ismerje meg a virtuális gépek Azure-ban való futtatásának rég
 author: cynthn
 ms.author: cynthn
 ms.service: virtual-machines
-ms.topic: article
+ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 05/28/2019
-ms.openlocfilehash: 5cff97e7fea2cf9ef4da87e2d2ec700678d1d39b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 44370b378899228949aa1bddcc92570ad282fe92
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531628"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284727"
 ---
 # <a name="regions-for-virtual-machines-in-azure"></a>Az Azure-beli virtuális gépek régiói
 
@@ -94,6 +94,6 @@ Az árak a választott tárolótípus és rendelkezésre állás függvényében
 
 A különböző tártípusokhoz és rendelkezésre állási lehetőségekhez tartozó díjszabásról lásd: [Az Azure Storage szolgáltatás díjszabása](https://azure.microsoft.com/pricing/details/storage/).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ: Azure- [régiók](https://azure.microsoft.com/global-infrastructure/regions/).
