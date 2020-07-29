@@ -4,24 +4,24 @@ description: fájl belefoglalása
 services: cognitive-services
 author: diberry
 manager: nitinme
-ms.custom: include file
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.date: 02/14/2020
 ms.topic: include
 ms.author: diberry
-ms.openlocfilehash: 8aef4a5eeeec27bfb2ca3edf9ff6823b88431319
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 8901f107ca2af609059670a0b31184080849d2b6
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83591835"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87375493"
 ---
 A pattern.any entitás lehetővé teszi szabad formátumú adatok keresését olyankor, amikor az entitás szövegezése nehézzé teszi az entitás végének a kimondott szöveg fennmaradó részétől való elkülönítését.
 
 A humánerőforrás-alkalmazás segíti az alkalmazottakat A vállalati űrlapok megtalálásában.
 
-|Kimondott szöveg|
+|Beszédelem|
 |--|
 |Hol található a **HRF-123456**?|
 |Ki a szerzője ennek: **HRF-123234**?|
@@ -31,7 +31,7 @@ Ugyanakkor minden űrlapnak két neve van: egyrészt az előző táblázatban ha
 
 A könnyebb űrlapnévvel rendelkező kimondott szöveg a következőképpen néz ki:
 
-|Kimondott szöveg|
+|Beszédelem|
 |--|
 |Hol található a **2018-ban a vállalathoz került alkalmazott áthelyezési kérelme, 5. verzió**?|
 |Ki a szerzője ennek: **2018-ban a vállalathoz került alkalmazott áthelyezési kérelme, 5. verzió**?|

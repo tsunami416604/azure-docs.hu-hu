@@ -1,6 +1,6 @@
 ---
-title: Munkamenet-gazdagépek méretezése Azure Automation – Azure
-description: A Windows rendszerű virtuális asztali munkamenet-gazdagépek automatikus méretezése Azure Automation használatával.
+title: A munkamenet-gazdagépek méretezése Azure Automation Windows Virtual Desktop (klasszikus) – Azure
+description: A Windows rendszerű virtuális asztali (klasszikus) munkamenet-gazdagépek automatikus méretezése Azure Automation használatával.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 690f59c643f1fe8c8cfc74758a0f8f13b129f78a
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 4c09ce867a7d4dbc11c42485c39c40bd427fa451
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87172065"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288644"
 ---
-# <a name="scale-session-hosts-using-azure-automation"></a>A munkamenet-gazdagépek méretezése Azure Automation használatával
+# <a name="scale-windows-virtual-desktop-classic-session-hosts-using-azure-automation"></a>Windows rendszerű virtuális asztali (klasszikus) munkamenet-gazdagépek méretezése Azure Automation használatával
 
 >[!IMPORTANT]
->Ez a tartalom a Fall 2019 kiadásra vonatkozik, amely nem támogatja a Windows rendszerű virtuális asztali objektumokat Azure Resource Manager.
+>Ez a tartalom a Windows rendszerű virtuális asztali (klasszikus) verzióra vonatkozik, amely nem támogatja Azure Resource Manager Windows rendszerű virtuális asztali objektumokat.
 
 A virtuális gépek (VM-EK) skálázásával csökkentheti a Windows rendszerű virtuális asztali környezet teljes üzembe helyezési költségeit. Ez azt jelenti, hogy leállítja és felszabadítja a munkamenet-gazda virtuális gépeket a használaton kívüli órákban, majd visszakapcsolja őket a csúcsidőben, majd újra kiosztja őket.
 

@@ -1,14 +1,15 @@
 ---
 author: areddish
+ms.custom: devx-track-java
 ms.author: areddish
 ms.service: cognitive-services
 ms.date: 04/14/2020
-ms.openlocfilehash: efbfed5198620fc07b10354a5b74f6ddaf2cd4ab
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: f4d4075fae22c22e249a6891185c7b7fc9a572de
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82134137"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87375146"
 ---
 Ez a cikk bemutatja, hogyan kezdheti el a Custom Vision Java SDK-t a rendszerkép-besorolási modell létrehozásához. Miután elkészült, adhat hozzá címkéket, tölthet fel képeket, betaníthatja a projektet, megkaphatja a projekt alapértelmezett előrejelzési végpont URL-címét és ezt a végpontot felhasználhatja kép programozott tesztelésére. Ezt a példát használja sablonként saját Java-alkalmazása létrehozásához. Ha az osztályozási modell létrehozásának és használatának folyamatán kód használata _nélkül_ szeretne végighaladni, tekintse meg a [böngészőalapú módszer útmutatóját](../../getting-started-build-a-classifier.md).
 
@@ -46,7 +47,7 @@ $env:AZURE_CUSTOMVISION_PREDICTION_API_KEY ="<your prediction api key>"
 
 ## <a name="understand-the-code"></a>A kód értelmezése
 
-Töltse be a `Vision/CustomVision` projektet a Java IDE-be, majd nyissa meg a _CustomVisionSamples.java_ fájlt. Keresse meg a **runSample** metódust, és véleményezze a **ObjectDetection_Sample** metódus hívása&mdash;ez a metódus végrehajtja az objektum-észlelési forgatókönyvet, amely nem szerepel ebben az útmutatóban. Az **ImageClassification_Sample** metódus valósítja meg ennek a példának az elsődleges funkcióját – keresse meg a definícióját, és vizsgálja meg a kódot.
+Töltse be a `Vision/CustomVision` projektet a Java IDE-be, majd nyissa meg a _CustomVisionSamples.java_ fájlt. Keresse meg a **runSample** metódust, és véleményezze a **ObjectDetection_Sample** metódus hívása &mdash; Ez a metódus végrehajtja az objektum-észlelési forgatókönyvet, amely nem szerepel ebben az útmutatóban. Az **ImageClassification_Sample** metódus valósítja meg ennek a példának az elsődleges funkcióját – keresse meg a definícióját, és vizsgálja meg a kódot.
 
 ### <a name="create-a-custom-vision-service-project"></a>Custom Vision Service-projekt létrehozása
 

@@ -1,118 +1,117 @@
 ---
-title: Azure Storage-metrikák migrálása | Microsoft Docs
-description: Ismerje meg, hogyan telepítheti át a régi mérőszámokat az Azure Monitor által felügyelt új mérőszámokra.
+title: Áthelyezés Storage Analytics metrikák Azure Monitor metrikák számára | Microsoft Docs
+description: Megtudhatja, hogyan válthat a Storage Analytics metrikák (klasszikus metrikák) és a Azure Monitor metrikái között.
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/30/2018
+ms.date: 07/28/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: 10768ca4c6fbe4afc322fa9a7045c7cc4fe6f175
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 219d2b972089f9d3b7f84caa8b527474ac241c4f
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83681302"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87374167"
 ---
-# <a name="azure-storage-metrics-migration"></a>Azure Storage-metrikák migrálása
+# <a name="transition-to-metrics-in-azure-monitor"></a>Váltás a mérőszámokra Azure Monitor
 
-Az Azure Storage az Azure-beli monitorozási élmény egységesítésének stratégiájával összhangban integrálja a metrikákat a Azure Monitor platformra. A jövőben a régi mérőszámok szolgáltatásának a Azure Policy alapján történő korai értesítése megszűnik. Ha a régi tárolási mérőszámokat használja, át kell telepítenie a szolgáltatás befejezési dátuma előtt a metrikai adatok fenntartása érdekében.
+Az Azure Storage mostantól integrálja a metrikákat a Azure Monitor platformba. Az **2023-as augusztus 31-** én Storage Analytics metrikákat, más néven a *klasszikus metrikákat* is kivezetjük. Ha klasszikus metrikákat használ, ügyeljen arra, hogy az adott dátum előtt Azure Monitor metrikára térjen át. Ez a cikk segít az áttérésben.
 
-Ez a cikk bemutatja, hogyan telepíthet át a régi mérőszámokból az új mérőszámokra.
+## <a name="steps-to-complete-the-transition"></a>Az áttérés befejezésének lépései
 
-## <a name="understand-old-metrics-that-are-managed-by-azure-storage"></a>Az Azure Storage által felügyelt régi metrikák ismertetése
+A Azure Monitor mérőszámokra való áttéréshez a következő módszert ajánljuk.
 
-Az Azure Storage a régi metrikai értékeket gyűjti, és egy adott Storage-fiókban található $Metric-táblákban összesíti és tárolja őket. A Azure Portal használatával beállíthatja a figyelési diagramot. Az Azure Storage SDK-k segítségével is beolvashatja a sémán alapuló $Metric táblák adatait. További információ: [Storage Analytics](./storage-analytics.md).
+1. Ismerkedjen meg a klasszikus metrikák és a Azure Monitor a metrikák [főbb különbségei](#key-differences-between-classic-metrics-and-metrics-in-azure-monitor) között. 
 
-A régi mérőszámok csak az Azure Blob Storage-ban biztosítanak kapacitási metrikákat. A régi mérőszámok tranzakciós mérőszámokat biztosítanak a blob Storage, a Table Storage, a Azure Files és a várólista tárolásához.
+2. Lefordíthatja a jelenleg használt klasszikus metrikák listáját.
 
-A régi mérőszámok lapos sémában vannak kialakítva. A terv nulla metrikai értéket eredményez, ha nem rendelkezik a mérőszámot kiváltó forgalmi mintákkal. Például a **ServerTimeoutError** értéke 0 értékre van állítva $metric táblázatokban akkor is, ha nem kap kiszolgálói időtúllépési hibát az élő forgalomból egy Storage-fiókba.
+3. Határozza meg, hogy a [Azure monitor mely mérőszámai](#metrics-mapping-between-old-metrics-and-new-metrics) rendelkeznek ugyanazokkal az adatokkal, mint a jelenleg használt mérőszámok. 
+   
+4. [Diagramokat](https://docs.microsoft.com/learn/modules/gather-metrics-blob-storage/2-viewing-blob-metrics-in-azure-portal) és [irányítópultokat](https://docs.microsoft.com/learn/modules/gather-metrics-blob-storage/4-using-dashboards-in-the-azure-portal) hozhat létre a metrikai adatok megtekintéséhez.
 
-## <a name="understand-new-metrics-managed-by-azure-monitor"></a>Az Azure Monitor által felügyelt új metrikák ismertetése
+   > [!NOTE]
+   > A Azure Monitor metrikái alapértelmezés szerint engedélyezve vannak, ezért a metrikák rögzítésének megkezdéséhez semmit nem kell tennie. A metrikák megtekintéséhez azonban diagramokat vagy irányítópultokat kell létrehoznia. 
+ 
+5. Ha olyan riasztási szabályokat hozott létre, amelyek klasszikus tárolási metrikán alapulnak, akkor hozzon létre Azure Monitor mérőszámokon alapuló [riasztási szabályokat](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview) . 
 
-Az új tárolási metrikák esetében az Azure Storage a metrikus adatokat a Azure Monitor háttérbe bocsátja. A Azure Monitor egységes figyelési élményt nyújt, beleértve a portálon tárolt adatok, valamint az adatok betöltését. További részletekért tekintse meg ezt a [cikket](../../monitoring-and-diagnostics/monitoring-overview-metrics.md).
+6. Miután megtekintheti Azure Monitor összes mérőszámát, kikapcsolhatja a klasszikus naplózást. 
 
-Az új metrikák kapacitás-metrikákat és tranzakciós mérőszámokat biztosítanak a blob, a Table, a file, a üzenetsor és a Premium Storage szolgáltatásban.
+<a id="key-differences-between-classic-metrics-and-metrics-in-azure-monitor"></a>
 
-A többdimenziós funkció a Azure Monitor által biztosított szolgáltatások egyike. Az Azure Storage az új metrikai séma definiálásával alkalmazza a kialakítást. A metrikák támogatott méretei esetében az [Azure Storage-metrikák részleteit Azure monitorban](./storage-metrics-in-azure-monitor.md)találhatja meg. A többdimenziós kialakítás költséghatékonyságot biztosít a betöltéstől és a kapacitástól a metrikák tárolására szolgáló sávszélességtől. Következésképpen, ha a forgalom nem váltott ki kapcsolódó metrikákat, a kapcsolódó metrikai adatok nem lesznek létrehozva. Ha például a forgalom nem váltott ki időtúllépési hibát a kiszolgálókon, a Azure Monitor nem ad vissza adatokat, amikor lekérdezi a metrikus **tranzakciók** értékét a **ServerTimeoutError** **ResponseType** egyenlő dimenzióval.
+## <a name="classic-metrics-vs-metrics-in-azure-monitor"></a>Klasszikus metrikák és metrikák a Azure Monitor
 
-## <a name="metrics-mapping-between-old-metrics-and-new-metrics"></a>Metrikák leképezése a régi metrikák és az új metrikák között
+Ez a szakasz néhány fontos különbséget ismertet a két metrikai platform között.
 
-Ha programozott módon olvas be metrikus adatokat, a programokban el kell fogadnia az új metrikai sémát. A módosítások jobb megismeréséhez tekintse meg a következő táblázatban felsorolt leképezést:
+A fő különbség a metrikák kezelése. A klasszikus metrikákat az Azure Storage felügyeli, míg a Azure Monitor metrikáit Azure Monitor kezeli. A klasszikus metrikák esetében az Azure Storage metrikus értékeket gyűjt, összesíti őket, majd a Storage-fiókban található táblázatokban tárolja őket. Azure Monitor metrikáinak használatával az Azure Storage metrikai adatokat küld a Azure Monitor háttérbe. Azure Monitor egységes figyelési élményt nyújt, amely a Azure Portalból és a betöltött adatokból származó adatokkal is rendelkezik. 
 
-**Kapacitás metrikái**
+A metrikák támogatása érdekében a klasszikus metrikák csak az Azure Blob Storage-hoz biztosítanak **Kapacitási** metrikákat. A Azure Monitor metrikái a blob, a Table, a file, a üzenetsor és a Premium Storage kapacitási mérőszámait biztosítják. A klasszikus metrikák **tranzakciós** mérőszámokat biztosítanak a blob-, tábla-, Azure-fájl-és üzenetsor-tároláshoz. A Azure Monitor a prémium szintű Storage-t adja hozzá a listához.
 
-| Régi metrika | Új metrika |
+Ha a fiókban lévő tevékenység nem indít el mérőszámot, a klasszikus metrikák a nulla (0) értéket jelenítik meg az adott metrika esetében. A Azure Monitor metrikái teljes mértékben kihagyják az adatokat, ami tisztább jelentésekhez vezet. Például klasszikus metrikákkal, ha nem jelentettek időtúllépési hibát a rendszer, akkor a `ServerTimeoutError` metrikák tábla értéke 0. A Azure Monitor nem ad vissza adatokat, ha a mérőszám értékét a `Transactions` dimenzióval megegyező értékkel kérdezi le `ResponseType` `ServerTimeoutError` . 
+
+Ha többet szeretne megtudni a Azure Monitor metrikákkal kapcsolatban, tekintse meg a [Azure monitor mérőszámait](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics).
+
+<a id="metrics-mapping-between-old-metrics-and-new-metrics"></a>
+
+## <a name="map-classic-metrics-to-metrics-in-azure-monitor"></a>Klasszikus metrikák leképezése a metrikák Azure Monitor
+
+ Ezekkel a táblázatokkal azonosíthatja, hogy a Azure Monitor mely mérőszámok rendelkeznek ugyanazokkal az adatokkal, mint a jelenleg használt mérőszámok. 
+
+**Kapacitásmetrikák**
+
+| Klasszikus metrika | Metrika Azure Monitor |
 | ------------------- | ----------------- |
-| **Kapacitás**            | **BlobCapacity** a **BlobType** dimenzióval egyenlő a **BlockBlob** vagy a **PageBlob** |
-| **ObjectCount**        | **BlobCount** a **BlobType** dimenzióval egyenlő a **BlockBlob** vagy a **PageBlob** |
-| **ContainerCount**      | **ContainerCount** |
+| `Capacity`            | `BlobCapacity`a dimenzióval `BlobType` egyenlő `BlockBlob` vagy`PageBlob` |
+| `ObjectCount`        | `BlobCount`a dimenzióval `BlobType` egyenlő `BlockBlob` vagy`PageBlob` |
+| `ContainerCount`      | `ContainerCount` |
 
-A következő mérőszámok olyan új ajánlatok, amelyeket a régi mérőszámok nem támogatnak:
-* **TableCapacity**
-* **TableCount**
-* **TableEntityCount**
-* **QueueCapacity**
-* **QueueCount**
-* **QueueMessageCount**
-* **FileCapacity**
-* **FileCount**
-* **FileShareCount**
-* **UsedCapacity**
+> [!NOTE]
+> Több új kapacitási mérőszám is létezik, amelyek klasszikus metrikák nem voltak elérhetők. A teljes lista megtekintéséhez lásd: [mérőszámok](../common/monitor-storage-reference.md#metrics).
 
-**Tranzakciós metrikák**
+**Tranzakciómetrikák**
 
-| Régi metrika | Új metrika |
+| Klasszikus metrika | Metrika Azure Monitor |
 | ------------------- | ----------------- |
-| **AnonymousAuthorizationError** | A **AuthorizationError** és a dimenzió- **hitelesítéssel** egyenlő **ResponseType** rendelkező tranzakciók **névtelenek** |
-| **AnonymousClientOtherError** | A **ClientOtherError** és a dimenzió- **hitelesítéssel** egyenlő **ResponseType** rendelkező tranzakciók **névtelenek** |
-| **AnonymousClientTimeoutError** | A **ClientTimeoutError** és a dimenzió- **hitelesítéssel** egyenlő **ResponseType** rendelkező tranzakciók **névtelenek** |
-| **AnonymousNetworkError** | A **NetworkError** és a dimenzió- **hitelesítéssel** egyenlő **ResponseType** rendelkező tranzakciók **névtelenek** |
-| **AnonymousServerOtherError** | A **ServerOtherError** és a dimenzió- **hitelesítéssel** egyenlő **ResponseType** rendelkező tranzakciók **névtelenek** |
-| **AnonymousServerTimeoutError** | A **ServerTimeoutError** és a dimenzió- **hitelesítéssel** egyenlő **ResponseType** rendelkező tranzakciók **névtelenek** |
-| **AnonymousSuccess** | A dimenzióval rendelkező tranzakciók a **ResponseType** egyenlőek a **sikeres** és a **dimenzió-** **hitelesítéssel** . |
-| **AnonymousThrottlingError** | A dimenzió **ResponseType** rendelkező tranzakciók **ClientThrottlingError** vagy **ServerBusyError** , és a dimenzió **hitelesítésének** értéke **Névtelen** |
-| **AuthorizationError** | A **AuthorizationError** **ResponseType** egyenlő dimenzióval rendelkező tranzakciók |
-| **Rendelkezésre állás** | **Rendelkezésre állás** |
-| **AverageE2ELatency** | **SuccessE2ELatency** |
-| **AverageServerLatency** | **SuccessServerLatency** |
-| **ClientOtherError** | A **ClientOtherError** **ResponseType** egyenlő dimenzióval rendelkező tranzakciók |
-| **ClientTimeoutError** | A **ClientTimeoutError** **ResponseType** egyenlő dimenzióval rendelkező tranzakciók |
-| **NetworkError** | A **NetworkError** **ResponseType** egyenlő dimenzióval rendelkező tranzakciók |
-| **PercentAuthorizationError** | A **AuthorizationError** **ResponseType** egyenlő dimenzióval rendelkező tranzakciók |
-| **PercentClientOtherError** | A **ClientOtherError** **ResponseType** egyenlő dimenzióval rendelkező tranzakciók |
-| **Percentnetworkerror értéket mutatnak** | A **NetworkError** **ResponseType** egyenlő dimenzióval rendelkező tranzakciók |
-| **PercentServerOtherError** | A **ServerOtherError** **ResponseType** egyenlő dimenzióval rendelkező tranzakciók |
-| **PercentSuccess** | A dimenzió **ResponseType** rendelkező tranzakciók **sikerrel** egyenlőek |
-| **Percentthrottlingerror értéket mutatnak** | A **ClientThrottlingError** vagy ServerBusyError **ResponseType** egyenlő dimenzióval rendelkező **ServerBusyError** tranzakciók |
-| **Percenttimeouterror értéket mutatnak** | A **ServerTimeoutError** vagy ResponseType **ResponseType** egyenlő dimenzióval rendelkező **ResponseType** tranzakciók a **ClientTimeoutError** |
-| **SASAuthorizationError** | Az **AuthorizationError** és a dimenzió- **hitelesítéssel** egyenlő **ResponseType** rendelkező tranzakciók az **sas** -vel egyenlőek |
-| **SASClientOtherError** | Az **ClientOtherError** és a dimenzió- **hitelesítéssel** egyenlő **ResponseType** rendelkező tranzakciók az **sas** -vel egyenlőek |
-| **SASClientTimeoutError** | Az **ClientTimeoutError** és a dimenzió- **hitelesítéssel** egyenlő **ResponseType** rendelkező tranzakciók az **sas** -vel egyenlőek |
-| **SASNetworkError** | Az **NetworkError** és a dimenzió- **hitelesítéssel** egyenlő **ResponseType** rendelkező tranzakciók az **sas** -vel egyenlőek |
-| **SASServerOtherError** | Az **ServerOtherError** és a dimenzió- **hitelesítéssel** egyenlő **ResponseType** rendelkező tranzakciók az **sas** -vel egyenlőek |
-| **SASServerTimeoutError** | Az **ServerTimeoutError** és a dimenzió- **hitelesítéssel** egyenlő **ResponseType** rendelkező tranzakciók az **sas** -vel egyenlőek |
-| **SASSuccess** | A dimenzió **ResponseType** rendelkező tranzakciók a **sikeres** és a dimenzió- **hitelesítéssel** egyenlőek az **sas** -vel |
-| **SASThrottlingError** | A **ClientThrottlingError** vagy **ServerBusyError** és a **ResponseType** egyenlő **dimenzió-** **hitelesítéssel** rendelkező tranzakciók |
-| **ServerOtherError** | A **ServerOtherError** **ResponseType** egyenlő dimenzióval rendelkező tranzakciók |
-| **ServerTimeoutError** | A **ServerTimeoutError** **ResponseType** egyenlő dimenzióval rendelkező tranzakciók |
-| **Sikeres** | A dimenzió **ResponseType** rendelkező tranzakciók **sikerrel** egyenlőek |
-| **ThrottlingError** | A **ClientThrottlingError** vagy ServerBusyError **ResponseType** egyenlő dimenzióval rendelkező **ServerBusyError** **tranzakciók**|
-| **TotalBillableRequests** | **Tranzakciók** |
-| **TotalEgress** | **Kimenő forgalom** |
-| **TotalIngress** | **Bejövő forgalom** |
-| **TotalRequests** | **Tranzakciók** |
-
-## <a name="faq"></a>GYIK
-
-### <a name="how-should-i-migrate-existing-alert-rules"></a>Hogyan kell migrálni a meglévő riasztási szabályokat?
-
-Ha a régi tárolási mérőszámok alapján klasszikus riasztási szabályokat hozott létre, új riasztási szabályokat kell létrehoznia az új metrikai séma alapján.
-
-### <a name="is-new-metric-data-stored-in-the-same-storage-account-by-default"></a>Alapértelmezés szerint ugyanaz a Storage-fiók tárolja az új metrikai adatokat?
-
-Nem. A metrikai adatok Storage-fiókba való archiválásához használja a [Azure monitor diagnosztikai beállítás API](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings/createorupdate)-t.
+| `AnonymousAuthorizationError` | A dimenzióval egyenlő és a dimenzióval egyenlő értékű tranzakciók `ResponseType` `AuthorizationError` `Authentication``Anonymous` |
+| `AnonymousClientOtherError` | A dimenzióval egyenlő és a dimenzióval egyenlő értékű tranzakciók `ResponseType` `ClientOtherError` `Authentication``Anonymous` |
+| `AnonymousClientTimeoutError` | A dimenzióval egyenlő és a dimenzióval egyenlő értékű tranzakciók `ResponseType` `ClientTimeoutError` `Authentication``Anonymous` |
+| `AnonymousNetworkError` | A dimenzióval egyenlő és a dimenzióval egyenlő értékű tranzakciók `ResponseType` `NetworkError` `Authentication``Anonymous` |
+| `AnonymousServerOtherError` | A dimenzióval egyenlő és a dimenzióval egyenlő értékű tranzakciók `ResponseType` `ServerOtherError` `Authentication``Anonymous` |
+| `AnonymousServerTimeoutError` | A dimenzióval egyenlő és a dimenzióval egyenlő értékű tranzakciók `ResponseType` `ServerTimeoutError` `Authentication``Anonymous` |
+| `AnonymousSuccess` | A dimenzióval egyenlő és a dimenzióval egyenlő értékű tranzakciók `ResponseType` `Success` `Authentication``Anonymous` |
+| `AnonymousThrottlingError` | A dimenzióval `ResponseType` megegyező `ClientThrottlingError` vagy azzal `ServerBusyError` egyenlő dimenzióval rendelkező tranzakciók `Authentication``Anonymous` |
+| `AuthorizationError` | Egyenlő dimenzióval rendelkező tranzakciók `ResponseType``AuthorizationError` |
+| `Availability` | `Availability` |
+| `AverageE2ELatency` | `SuccessE2ELatency` |
+| `AverageServerLatency` | `SuccessServerLatency` |
+| `ClientOtherError` | Egyenlő dimenzióval rendelkező tranzakciók `ResponseType``ClientOtherError` |
+| `ClientTimeoutError` | Egyenlő dimenzióval rendelkező tranzakciók `ResponseType``ClientTimeoutError` |
+| `NetworkError` | Egyenlő dimenzióval rendelkező tranzakciók `ResponseType``NetworkError` |
+| `PercentAuthorizationError` | Egyenlő dimenzióval rendelkező tranzakciók `ResponseType``AuthorizationError` |
+| `PercentClientOtherError` | Egyenlő dimenzióval rendelkező tranzakciók `ResponseType``ClientOtherError` |
+| `PercentNetworkError` | Egyenlő dimenzióval rendelkező tranzakciók `ResponseType``NetworkError` |
+| `PercentServerOtherError` | Egyenlő dimenzióval rendelkező tranzakciók `ResponseType``ServerOtherError` |
+| `PercentSuccess` | Egyenlő dimenzióval rendelkező tranzakciók `ResponseType``Success` |
+| `PercentThrottlingError` | A dimenzióval `ResponseType` egyenlő `ClientThrottlingError` vagy`ServerBusyError` |
+| `PercentTimeoutError` | A dimenzióval `ResponseType` egyenlő `ServerTimeoutError` vagy `ResponseType` azzal egyenlő értékű tranzakciók`ClientTimeoutError` |
+| `SASAuthorizationError` | A dimenzióval egyenlő és a dimenzióval egyenlő értékű tranzakciók `ResponseType` `AuthorizationError` `Authentication``SAS` |
+| `SASClientOtherError` | A dimenzióval egyenlő és a dimenzióval egyenlő értékű tranzakciók `ResponseType` `ClientOtherError` `Authentication``SAS` |
+| `SASClientTimeoutError` | A dimenzióval egyenlő és a dimenzióval egyenlő értékű tranzakciók `ResponseType` `ClientTimeoutError` `Authentication``SAS` |
+| `SASNetworkError` | A dimenzióval egyenlő és a dimenzióval egyenlő értékű tranzakciók `ResponseType` `NetworkError` `Authentication``SAS` |
+| `SASServerOtherError` | A dimenzióval egyenlő és a dimenzióval egyenlő értékű tranzakciók `ResponseType` `ServerOtherError` `Authentication``SAS` |
+| `SASServerTimeoutError` | A dimenzióval egyenlő és a dimenzióval egyenlő értékű tranzakciók `ResponseType` `ServerTimeoutError` `Authentication``SAS` |
+| `SASSuccess` | A dimenzióval egyenlő és a dimenzióval egyenlő értékű tranzakciók `ResponseType` `Success` `Authentication``SAS` |
+| `SASThrottlingError` | A dimenzióval `ResponseType` megegyező `ClientThrottlingError` vagy azzal `ServerBusyError` egyenlő dimenzióval rendelkező tranzakciók `Authentication``SAS` |
+| `ServerOtherError` | Egyenlő dimenzióval rendelkező tranzakciók `ResponseType``ServerOtherError` |
+| `ServerTimeoutError` | Egyenlő dimenzióval rendelkező tranzakciók `ResponseType``ServerTimeoutError` |
+| `Success` | Egyenlő dimenzióval rendelkező tranzakciók `ResponseType``Success` |
+| `ThrottlingError` | `Transactions`a dimenzióval `ResponseType` egyenlő `ClientThrottlingError` vagy`ServerBusyError`|
+| `TotalBillableRequests` | `Transactions` |
+| `TotalEgress` | `Egress` |
+| `TotalIngress` | `Ingress` |
+| `TotalRequests` | `Transactions` |
 
 ## <a name="next-steps"></a>További lépések
 

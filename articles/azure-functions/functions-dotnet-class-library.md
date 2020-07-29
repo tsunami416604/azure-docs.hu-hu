@@ -2,13 +2,13 @@
 title: Azure Functions C# – fejlesztői dokumentáció
 description: Ismerje meg, hogyan fejlesztheti Azure Functions a C# használatával.
 ms.topic: conceptual
-ms.date: 09/12/2018
-ms.openlocfilehash: 9ecc2dad8d1d520b44972022d47c312f495d5c38
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 07/24/2020
+ms.openlocfilehash: 7c00dcd3648ef175d4e834fceef3444f7943e70b
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86506512"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288189"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Azure Functions C# – fejlesztői dokumentáció
 
@@ -31,7 +31,7 @@ A functions futtatókörnyezet verziói a .NET adott verziójával működnek. A
 | ---- | ---- |
 | Függvények 3. x | .NET Core 3,1 |
 | Functions 2.x | .NET Core 2.2 |
-| Functions 1.x | .NET-keretrendszer 4.6 |
+| Functions 1.x | .NET-keretrendszer 4,7 |
 
 További információ: [Azure functions Runtime-verziók áttekintése](functions-versions.md)
 
@@ -138,7 +138,7 @@ A létrehozási folyamat létrehoz egy *function.js* fájlt a Build mappában ta
 
 Ennek a fájlnak a célja, hogy információt szolgáltasson a méretezési vezérlő számára [a használati tervre vonatkozó döntések skálázásához](functions-scale.md#how-the-consumption-and-premium-plans-work). Emiatt a fájl csak trigger-információkkal, nem bemeneti vagy kimeneti kötésekkel rendelkezik.
 
-A fájlhoz generált *function.js* tartalmaz egy `configurationSource` tulajdonságot, amely azt jelzi, hogy a futtatókörnyezet .net-attribútumokat használ a kötésekhez ahelyett, hogy *function.jsa* konfiguráción. Bemutatunk egy példát:
+A fájlhoz generált *function.js* tartalmaz egy `configurationSource` tulajdonságot, amely azt jelzi, hogy a futtatókörnyezet .net-attribútumokat használ a kötésekhez ahelyett, hogy *function.jsa* konfiguráción. Íme egy példa:
 
 ```json
 {
@@ -429,7 +429,7 @@ public static class IBinderExampleMultipleAttributes
 
 [!INCLUDE [Supported triggers and bindings](../../includes/functions-bindings.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [További információ az eseményindítók és kötésekről](functions-triggers-bindings.md)

@@ -6,16 +6,16 @@ ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: conceptual
 ms.date: 06/05/2020
-ms.openlocfilehash: 384335898c7cd6b379c6107152b49e9931cf513a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b82b79d076871b961d5c496bc70beac1b5067b2d
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85194972"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288113"
 ---
 # <a name="data-security-and-privacy-policies-for-google-connectors-in-azure-logic-apps"></a>Adatbiztonsági és adatvédelmi szabályzatok a Google-összekötők számára Azure Logic Apps
 
-**2020. május 1-től**a Google [adatbiztonsági és adatvédelmi szabályzatai](https://www.blog.google/technology/safety-security/project-strobe/) miatti változások befolyásolhatják a [Gmail-összekötőt](https://docs.microsoft.com/connectors/gmail/)használó logikai alkalmazás-munkafolyamatokat. Ha a Logic apps a Gmail-összekötőt egy Gmail-beli felhasználói fiókkal (a vagy a-val végződő e-mail-címmel @gmail.com @googlemail.com ) használja, a Logic apps csak meghatározott [Google által jóváhagyott eseményindítókat, műveleteket és összekötőket](#approved-connectors)használhat.
+**2020. május 1-től**a Google [adatbiztonsági és adatvédelmi szabályzatai](https://www.blog.google/technology/safety-security/project-strobe/) miatti változások befolyásolhatják a [Gmail-összekötőt](/connectors/gmail/)használó logikai alkalmazás-munkafolyamatokat. Ha a Logic apps a Gmail-összekötőt egy Gmail-beli felhasználói fiókkal (a vagy a-val végződő e-mail-címmel @gmail.com @googlemail.com ) használja, a Logic apps csak meghatározott [Google által jóváhagyott eseményindítókat, műveleteket és összekötőket](#approved-connectors)használhat.
 
 > [!NOTE]
 > Ha a Logic apps a Gmail-összekötőt a G-Suite üzleti fiókkal (az egyéni tartománnyal rendelkező e-mail-címmel) használja, akkor a logikai alkalmazások nem érintik, és nem korlátozzák a Gmail-összekötő használatát.
@@ -62,7 +62,7 @@ Ebben a szabályzatban, ha egy Gmail fogyasztói fiókot használ, akkor a Gmail
 
   ![Nem megfelelő logikai alkalmazás – 3. példa](./media/connectors-google-data-security-privacy-policy/not-compliant-logic-app-3.png)
 
-A legfrissebb információkért tekintse [meg a Gmail-összekötő műszaki útmutatójának dokumentációját](https://docs.microsoft.com/connectors/gmail/).
+A legfrissebb információkért tekintse [meg a Gmail-összekötő műszaki útmutatójának dokumentációját](/connectors/gmail/).
 
 <a name="update-affected-workflows"></a>
 
@@ -74,11 +74,11 @@ Ha a Gmail-összekötőt egy Gmail-alapú felhasználói fiókkal és a Google �
 
 1. A Gmail-összekötőben használja az ügyfél-azonosítót és az ügyfél titkos értékét a Google-ügyfélprogramból.
 
-További információ: a Gmail- [összekötő műszaki útmutatója](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application).
+További információ: a Gmail- [összekötő műszaki útmutatója](/connectors/gmail/#authentication-and-bring-your-own-application).
 
 ### <a name="create-google-client-app"></a>Google ügyfélalkalmazás létrehozása
 
-Ha egy projektet szeretne beállítani az ügyfélalkalmazás számára, használja a [Google API Console varázslót](https://console.developers.google.com/start/api?id=gmail&credential=client_key) , és kövesse az utasításokat. A részletes lépésekért tekintse át a [Gmail-összekötő technikai dokumentációjában](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application)található utasításokat.
+Ha egy projektet szeretne beállítani az ügyfélalkalmazás számára, használja a [Google API Console varázslót](https://console.developers.google.com/start/api?id=gmail&credential=client_key) , és kövesse az utasításokat. A részletes lépésekért tekintse át a [Gmail-összekötő technikai dokumentációjában](/connectors/gmail/#authentication-and-bring-your-own-application)található utasításokat.
 
 Ha elkészült, a képernyő úgy néz ki, mint például a saját **Ügyfél-azonosítója** és az **ügyfél titkos** értékei, amelyeket később a logikai alkalmazásban használhat.
 
@@ -98,7 +98,7 @@ Az ügyfél-azonosító és az ügyfél titkos kódjának a Gmail-triggerben vag
 
    ![Adja meg a kapcsolatok adatait](./media/connectors-google-data-security-privacy-policy/authentication-type-bring-your-own.png)
 
-   | Tulajdonság | Érték | Description |
+   | Tulajdonság | Érték | Leírás |
    |----------|-------|-------------|
    | **Hitelesítés típusa** | **Saját alkalmazás használata** | Azt határozza meg, hogy a hitelesítéshez saját ügyfélalkalmazás fog használni. |
    | **Ügyfél-azonosító** | <*ügyfél-azonosító*> | A Google-ügyfélalkalmazás ügyfél-azonosítója |
@@ -117,4 +117,5 @@ Az ügyfél-azonosító és az ügyfél titkos kódjának a Gmail-triggerben vag
 
 ## <a name="next-steps"></a>További lépések
 
-További információ a [Gmail-összekötőről](https://docs.microsoft.com/connectors/gmail/)
+További információ a [Gmail-összekötőről](/connectors/gmail/)
+

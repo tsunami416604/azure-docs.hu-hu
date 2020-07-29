@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 65679c900baaf0f98a21e4b1f6b1d350c4b945c4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 28c5a3085d84b25deb7c5ee09a9c9cc4d7a06819
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074343"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87374065"
 ---
 # <a name="azure-serial-console"></a>Azure soros konzol
 
@@ -27,8 +27,7 @@ A Azure Portal soros konzolja hozzáférést biztosít a virtuális gépek (VM-E
 
 A soros konzol a virtuális gépek és a virtuálisgép-méretezési csoport példányai esetében is ugyanúgy működik. Ebben a doc-ban a virtuális gépekre vonatkozó összes említés implicit módon tartalmazza a virtuálisgép-méretezési csoport példányait, hacsak másként nincs megadva.
 
-> [!NOTE]
-> A soros konzol általánosan elérhető a globális Azure-régiókban és a nyilvános előzetes verzióban Azure Government. Az Azure China Cloud-ban még nem érhető el.
+A soros konzol általánosan elérhető a globális Azure-régiókban és a nyilvános előzetes verzióban Azure Government. Az Azure China Cloud-ban még nem érhető el.
 
 ## <a name="prerequisites-to-access-the-azure-serial-console"></a>Az Azure soros konzol elérésének előfeltételei
 A soros konzol virtuális gépen vagy virtuálisgép-méretezési csoport példányán való eléréséhez a következőkre lesz szüksége:
@@ -36,9 +35,10 @@ A soros konzol virtuális gépen vagy virtuálisgép-méretezési csoport péld�
 - A virtuális géphez engedélyezni kell a rendszerindítási diagnosztikát
 - A jelszó-hitelesítést használó felhasználói fióknak léteznie kell a virtuális gépen. Létrehozhat egy jelszó-alapú felhasználót a virtuálisgép-hozzáférési bővítmény [jelszó alaphelyzetbe állítása](../extensions/vmaccess.md#reset-password) funkciójával. Válassza a **jelszó alaphelyzetbe állítása** lehetőséget a **támogatás + hibaelhárítás** szakaszban.
 - A soros konzolhoz hozzáférő Azure-fióknak rendelkeznie kell [virtuálisgép-közreműködő szerepkörrel](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) mind a virtuális gép, mind a [rendszerindítási diagnosztika](boot-diagnostics.md) Storage-fiókhoz.
+- A klasszikus központi telepítések nem támogatottak. A virtuális gép vagy virtuálisgép-méretezési csoport példányának a Azure Resource Manager telepítési modellt kell használnia.
 
 > [!NOTE]
-> A klasszikus központi telepítések nem támogatottak. A virtuális gép vagy virtuálisgép-méretezési csoport példányának a Azure Resource Manager telepítési modellt kell használnia.
+> A soros konzol jelenleg nem kompatibilis egy felügyelt rendszerindítási diagnosztikai Storage-fiókkal. A soros konzol használatához győződjön meg arról, hogy egyéni Storage-fiókot használ.
 
 ## <a name="get-started-with-the-serial-console"></a>Ismerkedés a soros konzollal
 A virtuális gépek és a virtuálisgép-méretezési csoport soros konzolja csak a Azure Portal érhető el:

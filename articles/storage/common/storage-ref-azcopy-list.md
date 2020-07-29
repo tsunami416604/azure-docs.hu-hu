@@ -4,15 +4,16 @@ description: Ez a cikk a azcopy List parancsra vonatkozó tudnivalókat tartalma
 author: normesta
 ms.service: storage
 ms.topic: reference
-ms.date: 10/16/2019
+ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: db11a71cccee897a3b66e9ca95ded2dab62337b2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f4d54e4fd8ca0d43cf3d7087006bb51a15a97bcd
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84219974"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289218"
 ---
 # <a name="azcopy-list"></a>azcopy list
 
@@ -30,7 +31,7 @@ azcopy list [containerURL] [flags]
 
 - [Bevezetés az AzCopy használatába](storage-use-azcopy-v10.md)
 - [Adatok átvitele a AzCopy és a blob Storage szolgáltatással](storage-use-azcopy-blobs.md)
-- [Adatok átvitele a AzCopy és a file Storage szolgáltatással](storage-use-azcopy-files.md)
+- [Adatok átvitele az AzCopy használatával és fájltárolás](storage-use-azcopy-files.md)
 - [AzCopy konfigurálása, optimalizálása és megoldása](storage-use-azcopy-configure.md)
 
 ## <a name="examples"></a>Példák
@@ -41,7 +42,7 @@ azcopy list [containerURL]
 
 ## <a name="options"></a>Beállítások
 
-|Beállítás|Description|
+|Beállítás|Leírás|
 |--|--|
 |-h,-– Súgó|Súgótartalom megjelenítése a List parancshoz.|
 |– géppel olvasható|A fájlok mérete bájtban.|
@@ -50,12 +51,12 @@ azcopy list [containerURL]
 
 ## <a name="options-inherited-from-parent-commands"></a>A szülő parancsoktól örökölt beállítások
 
-|Beállítás|Description|
+|Beállítás|Leírás|
 |---|---|
-|--Cap-Mbps UInt32|Az adatátviteli sebesség (megabit/másodperc). A pillanatnyi átviteli sebesség a korláttól némileg eltérő lehet. Ha a beállítás értéke nulla, vagy nincs megadva, az átviteli sebesség nem lesz maximális.|
+|--Cap-Mbps lebegőpontos|Az adatátviteli sebesség (megabit/másodperc). A pillanatnyi átviteli sebesség a korláttól némileg eltérő lehet. Ha a beállítás értéke nulla, vagy nincs megadva, az átviteli sebesség nem lesz maximális.|
 |--output-Type karakterlánc|A parancs kimenetének formátuma. A lehetőségek a következők: Text, JSON. Az alapértelmezett érték a "text".|
 |--megbízható-Microsoft-utótagok karakterlánca   |További tartomány-utótagokat határoz meg, amelyekben Azure Active Directory bejelentkezési tokenek küldhetők.  Az alapértelmezett érték: "*. Core.Windows.net;*. core.chinacloudapi.cn; *. Core.cloudapi.de;*. core.usgovcloudapi.net '. Az itt felsorolt beállítások az alapértelmezett értékre kerülnek. A biztonság érdekében itt csak Microsoft Azure-tartományokat helyezhet el. Több bejegyzést pontosvesszővel kell elválasztani.|
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 - [azcopy](storage-ref-azcopy.md)

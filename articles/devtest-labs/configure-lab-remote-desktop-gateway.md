@@ -3,12 +3,12 @@ title: Tesztkörnyezet konfigurálása Távoli asztali átjáró használatára 
 description: Megtudhatja, hogyan konfigurálhat labort Azure DevTest Labs egy távoli asztali átjáróval, hogy biztosítsa a laboratóriumi virtuális gépek biztonságos elérését anélkül, hogy az RDP-portot fel kellene tenni.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 68cb830c765a71b06f9732c4062be23d9e7f67d0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bc45a0c2953f8f84289fa01d4af72bf98544bd7f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483839"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288082"
 ---
 # <a name="configure-your-lab-in-azure-devtest-labs-to-use-a-remote-desktop-gateway"></a>A labor konfigurálása Azure DevTest Labs távoli asztali átjáró használatához
 Azure DevTest Labs egy távoli asztali átjárót konfigurálhat a laborhoz, így biztosíthatja a labor virtuális gépek (VM-EK) biztonságos elérését anélkül, hogy az RDP-portot fel kellene tenni. A labor központi helyet biztosít a labor felhasználói számára az összes olyan virtuális gép megtekintésére és a hozzájuk való kapcsolódásra, amelyhez hozzáférése van. A **virtuális gép** oldalon a **Kapcsolódás** gomb egy, a géphez való kapcsolódáshoz megnyitható RDP-fájlt hoz létre. Az RDP-kapcsolatot tovább testreszabhatja és biztonságossá teheti úgy, hogy a labort egy távoli asztali átjáróhoz csatlakoztatja. 
@@ -36,7 +36,7 @@ A DevTest Labs-jogkivonat hitelesítési funkciójának használatakor az átjá
 ### <a name="requirements-for-remote-desktop-gateway-machines"></a>A távoli asztali átjáró gépekre vonatkozó követelmények
 - A HTTPS-forgalom kezeléséhez a TLS/SSL-tanúsítványt telepíteni kell az átjáró számítógépre. A tanúsítványnak meg kell egyeznie az átjáró-Farm terheléselosztó vagy a gép teljes TARTOMÁNYNEVÉnek teljes tartománynevével (FQDN), ha csak egy gép van. A Wild-Card TLS/SSL-tanúsítványok nem működnek.  
 - Az átjárót futtató számítógép (ek) re telepített aláíró tanúsítvány. Hozzon létre egy aláíró tanúsítványt [Create-SigningCertificate.ps1](https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/tools/Create-SigningCertificate.ps1) parancsfájl használatával.
-- Telepítse a távoli asztali átjáró jogkivonat-hitelesítését támogató [csatlakoztatható hitelesítési](https://code.msdn.microsoft.com/windowsdesktop/Remote-Desktop-Gateway-517d6273) modult. Ilyen modul például `RDGatewayFedAuth.msi` [System Center Virtual Machine Manager (VMM) rendszerképekből](/system-center/vmm/install-console?view=sc-vmm-1807)áll. A System centerrel kapcsolatos további információkért lásd: a [System Center dokumentációja](https://docs.microsoft.com/system-center/) és [díjszabása](https://www.microsoft.com/cloud-platform/system-center-pricing).  
+- Telepítse a távoli asztali átjáró jogkivonat-hitelesítését támogató [csatlakoztatható hitelesítési](https://code.msdn.microsoft.com/windowsdesktop/Remote-Desktop-Gateway-517d6273) modult. Ilyen modul például `RDGatewayFedAuth.msi` [System Center Virtual Machine Manager (VMM) rendszerképekből](/system-center/vmm/install-console?view=sc-vmm-1807)áll. A System centerrel kapcsolatos további információkért lásd: a [System Center dokumentációja](/system-center/) és [díjszabása](https://www.microsoft.com/cloud-platform/system-center-pricing).  
 - Az átjárókiszolgáló kezelheti a rendszerre irányuló kérelmeket `https://{gateway-hostname}/api/host/{lab-machine-name}/port/{port-number}` .
 
     Az átjáró-állomásnév az átjáró-Farm vagy a számítógép teljes tartománynevének teljes TARTOMÁNYNEVE, ha csak egy gép van. A annak a tesztkörnyezet-gépnek a neve, amelyhez `{lab-machine-name}` csatlakozni próbál, és az a `{port-number}` port, amelyen a kapcsolat létrejön.  Alapértelmezés szerint ez a port 3389.  Ha azonban a virtuális gép a DevTest Labs [megosztott IP-](devtest-lab-shared-ip.md) szolgáltatását használja, a port eltérő lesz.
@@ -159,5 +159,3 @@ Kövesse az alábbi lépéseket a távoli asztali átjáró farmhoz tartozó min
 
 ## <a name="next-steps"></a>További lépések
 A Távoli asztali szolgáltatások: [Távoli asztali szolgáltatások dokumentációjának](/windows-server/remote/remote-desktop-services/Welcome-to-rds) megismeréséhez tekintse meg a következő cikket.
-
-

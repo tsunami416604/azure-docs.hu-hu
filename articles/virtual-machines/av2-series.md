@@ -4,15 +4,15 @@ description: A Av2 sorozatú virtuális gépek specifikációi.
 author: migerdes
 ms.service: virtual-machines
 ms.subservice: sizes
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 1b5b77bb9bdf679fe0fd8bf73966dd45acc80155
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: cdcc26a8a22e9a1dc7af75667cdb33bb044c7858
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87085775"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288581"
 ---
 # <a name="av2-series"></a>Av2-sorozat
 
@@ -28,7 +28,6 @@ Premium Storage gyorsítótárazás: nem támogatott
 
 Memória megőrzésének frissítései: támogatott
 
-A kalkulátor és a régió elérhetőségi információi: <a href="https://azure.microsoft.com/en-us/pricing/calculator/">díjszabási kalkulátor</a>
 
 | Méret | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Maximális Temp Storage átviteli sebessége: IOPS/olvasási MBps/írási MBps | Adatlemezek maximális száma/átviteli sebesség: IOPS | Hálózati adapterek maximális száma | Várt hálózati sávszélesség (Mbps)
 |---|---|---|---|---|---|---|---|
@@ -51,9 +50,9 @@ A kalkulátor és a régió elérhetőségi információi: <a href="https://azur
 - [Nagy teljesítményű számítás](sizes-hpc.md)
 - [Előző generációk](sizes-previous-gen.md)
 
-A kalkulátor és a régió elérhetőségi információi: <a href="https://azure.microsoft.com/en-us/pricing/calculator/">díjszabási kalkulátor</a>
+Árképzési kalkulátor: [árképzési kalkulátor](https://azure.microsoft.com/pricing/calculator/)
 
-További információ a lemezek típusairól: <a href="https://docs.microsoft.com/en-us/azure/virtual-machines/linux/disks-types#ultra-ssd-preview/">lemezek típusai</a>
+További információ a lemezek típusairól: [lemezek típusai](https://docs.microsoft.com/azure/virtual-machines/linux/disks-types#ultra-ssd-preview/)
 
 ## <a name="next-steps"></a>További lépések
 

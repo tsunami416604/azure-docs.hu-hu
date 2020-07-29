@@ -6,14 +6,25 @@ ms.author: aul
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 02/07/2020
-ms.openlocfilehash: 234da921b4f0d1243ca8cfdb12ba2d851db2b43f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 977dcc71fd25b19e09cfa9126bf01d380f581aca
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77658693"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289111"
 ---
 # <a name="azure-monitor-view-designer-to-workbooks-transition-guide"></a>Azure Monitor a Designer és a munkafüzetek közötti áttérési útmutató megtekintése
 A [tervező](view-designer.md) a Azure monitor egyik funkciója, amely lehetővé teszi, hogy egyéni nézeteket hozzon létre, amelyek segítségével megjelenítheti a log Analytics-munkaterületen lévő, diagramokkal, listákkal és időpontokkal kapcsolatos adatait. A rendszer fokozatosan lecseréli azokat a munkafüzetekkel, amelyek további funkciókat biztosítanak. Ez a cikk áttekintést nyújt a meglévő nézetek munkafüzetekbe való átalakításának folyamatáról.
+
+## <a name="retirement-schedule"></a>Nyugdíjazási ütemterv
+
+| Módosítás | Ez azt jelenti, hogy | Várható dátum |
+|:---|:---|:---|
+| Tiltsa le a View Designer használatával létrehozott új nézetek létrehozását. | A továbbiakban nem hozhat létre és menthet új egyéni nézeteket a Azure Portal.| November 2020 |
+| Tiltsa le a szerkesztési funkciót a meglévő nézetekhez a Tervező nézetben. | Többé nem fogja tudni módosítani és menteni a meglévő egyéni nézetek módosításait. | November 2020 |
+| Nézetek telepítésének letiltása Log Analytics munkaterületekre | Az ARM használatával már nem telepíthet egyéni nézeteket Log Analytics munkaterületekre. | Március 2021 |
+| A tervező már nem érhető el a Azure Portal | A portál felhasználói felülete többé nem támogatja a View Designer használatát. | Június 2021 |
+| A munkaterület Összegzésből eltávolított egyéni nézetek | Többé nem fog tudni hozzáférni az egyéni nézet adataihoz. | December 2021 |
 
 ## <a name="workbooks-overview"></a>Munkafüzetek áttekintése
 A [munkafüzetek](../insights/vminsights-workbooks.md) szövegeket, [naplókat](../log-query/query-language.md), metrikákat és paramétereket egyesítenek gazdag interaktív jelentésekben. A csoporttagok ugyanazzal az Azure-erőforrásokkal való hozzáféréssel is szerkeszthetők a munkafüzetek.

@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: a30874a14a1c2c44ec04b17b9ebddb52a9e9fb58
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8433242ffe44b8deab62314af386f1a82e2e0017
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87020542"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87374116"
 ---
 # <a name="query-storage-files-using-sql-on-demand-preview-resources-within-synapse-sql"></a>Storage-fájlok lekérdezése az SQL on-demand (előzetes verzió) erőforrásain belül a szinapszis SQL-ben
 
@@ -54,7 +54,7 @@ A használati példákért tekintse át a [lekérdezési parketta fájljait](que
 
 ## <a name="query-csv-files"></a>CSV-fájlok lekérdezése
 
-A parketta-forrásadatok lekérdezéséhez használja a FORMAT = "CSV" formátumot. A CSV-fájl sémáját a függvény részeként is megadhatja a `OPENROWSET` CSV-fájlok lekérdezése során:
+CSV-forrásadatok lekérdezéséhez használja a FORMAT = "CSV" formátumot. A CSV-fájl sémáját a függvény részeként is megadhatja a `OPENROWSET` CSV-fájlok lekérdezése során:
 
 ```sql
 SELECT * FROM
@@ -248,7 +248,7 @@ A demo-adat a következő adatkészleteket tartalmazza:
 - Parketta-fájlok beágyazott oszlopokkal
 - Könyvek JSON formátumban
 
-| Mappa elérési útja                                                  | Description                                                  |
+| Mappa elérési útja                                                  | Leírás                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | CSV                                                        | CSV formátumú adatszülő mappa                         |
 | /csv/population/<br />/csv/population-unix/<br />/csv/population-unix-hdr/<br />/csv/population-unix-hdr-escape<br />/csv/population-unix-hdr-quoted | Különböző CSV formátumú adatfájlokkal rendelkező mappák. |

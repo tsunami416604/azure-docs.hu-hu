@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 271fd77e519ce9d78e2fa4e4837004a77cf73522
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: 8b35b281f6a70d5485004dc61563271132734a87
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86276056"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87374150"
 ---
 # <a name="quickstart-use-synapse-studio-preview"></a>Rövid útmutató: a szinapszis Studio használata (előzetes verzió)
 
@@ -49,7 +49,7 @@ Miután megnyitotta a szinapszis Studio alkalmazást, tallózással keresse meg 
 ## <a name="query-files-on-storage-account"></a>Fájlok lekérdezése a Storage-fiókban
 
 > [!IMPORTANT]
-> Ahhoz, hogy le `Storage Blob Reader` tudja kérdezni a fájlokat, a mögöttes tárolóban lévő szerepkör tagjának kell lennie. Megtudhatja, hogyan [rendelhet hozzá **Storage blob-adatolvasót** vagy **Storage blob-adatközreműködői** RBAC engedélyeket az Azure Storage-](../storage/common/storage-auth-aad-rbac-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#assign-a-built-in-rbac-role)ban.
+> Ahhoz, hogy le `Storage Blob Reader` tudja kérdezni a fájlokat, a mögöttes tárolóban lévő szerepkör tagjának kell lennie. Megtudhatja, hogyan [rendelhet hozzá **Storage blob-adatolvasót** vagy **Storage blob-adatközreműködői** RBAC engedélyeket az Azure Storage-](../storage/common/storage-auth-aad-rbac-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#assign-an-azure-built-in-role)ban.
 
 1. Töltsön fel néhány `PARQUET` fájlt.
 2. Válasszon ki egy vagy több fájlt, majd hozzon létre egy új SQL-szkriptet vagy egy Spark-jegyzetfüzetet a fájlok tartalmának megtekintéséhez. Ha létre szeretne hozni egy jegyzetfüzetet, létre kell hoznia egy [Apache Spark készletet a szinapszis-munkaterületeken](quickstart-create-apache-spark-pool-studio.md).
@@ -62,9 +62,9 @@ Miután megnyitotta a szinapszis Studio alkalmazást, tallózással keresse meg 
 
 4. A lekérdezés módosításával szűrheti és rendezheti az eredményeket. Megtalálhatja az SQL igény szerint elérhető nyelvi funkcióit az [SQL-funkciók áttekintésében](sql/overview-features.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- Az Azure AD-felhasználók számára lehetővé teszi fájlok lekérdezését [a **Storage blob-Adatolvasó** vagy a **Storage blob adatközreműködői** RBAC engedélyeinek hozzárendelésével az Azure Storage](../storage/common/storage-auth-aad-rbac-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#assign-a-built-in-rbac-role) szolgáltatásban
+- Az Azure AD-felhasználók számára lehetővé teszi fájlok lekérdezését [a **Storage blob-Adatolvasó** vagy a **Storage blob adatközreműködői** RBAC engedélyeinek hozzárendelésével az Azure Storage](../storage/common/storage-auth-aad-rbac-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#assign-an-azure-built-in-role) szolgáltatásban
 - [Fájlok lekérdezése az Azure Storage-ban az SQL igény szerinti használatával](sql/on-demand-workspace-overview.md)
 - [Apache Spark-készlet létrehozása az Azure Portal használatával](quickstart-create-apache-spark-pool-portal.md)
 - [Power BI jelentés létrehozása az Azure Storage-ban tárolt fájlokról](sql/tutorial-connect-power-bi-desktop.md)

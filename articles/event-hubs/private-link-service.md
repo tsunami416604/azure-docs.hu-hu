@@ -3,12 +3,12 @@ title: Az Azure Event Hubs integrálása az Azure Private link Service szolgált
 description: Ismerje meg, hogyan integrálható az Azure Event Hubs az Azure Private link Service használatával
 ms.date: 06/23/2020
 ms.topic: article
-ms.openlocfilehash: bfed3f8e4c19463e10b721006d742726cf916900
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a07204615c4d81373d744e83862e6de14c7f8165
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86512255"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287964"
 ---
 # <a name="integrate-azure-event-hubs-with-azure-private-link"></a>Az Azure Event Hubs integrálása az Azure Private-hivatkozással
 Az Azure Private link Service lehetővé teszi az Azure-szolgáltatások (például az Azure Event Hubs, az Azure Storage és a Azure Cosmos DB) és az Azure által üzemeltetett ügyfél/partner szolgáltatások elérését a virtuális hálózat **privát végpontján** keresztül.
@@ -26,9 +26,7 @@ További információ: [Mi az az Azure Private link?](../private-link/private-li
 > A megbízható Microsoft-szolgáltatások virtuális hálózatok használata esetén nem támogatottak.
 >
 > Olyan általános Azure-forgatókönyvek, amelyek nem működnek a virtuális hálózatokkal (vegye figyelembe, hogy a lista **nem** teljes) –
-> - Azure Monitor (diagnosztikai beállítás)
 > - Azure Stream Analytics
-> - Integráció a Azure Event Grid
 > - Azure IoT Hub útvonalak
 > - Azure IoT Device Explorer
 >
@@ -199,7 +197,7 @@ Négy kiépítési állapot létezik:
 
 | Szolgáltatási művelet | A szolgáltatás fogyasztói magánhálózati végpontjának állapota | Leírás |
 |--|--|--|
-| Egyik sem | Függőben | A kapcsolat manuálisan lett létrehozva, és jóváhagyásra vár a Private link erőforrás-tulajdonostól. |
+| Nincs | Függőben | A kapcsolat manuálisan lett létrehozva, és jóváhagyásra vár a Private link erőforrás-tulajdonostól. |
 | Jóváhagyás | Approved | A kapcsolódás automatikusan vagy manuálisan lett jóváhagyva, és készen áll a használatra. |
 | Elutasítás | Elutasítva | A magánhálózati kapcsolat erőforrásának tulajdonosa elutasította a kapcsolatot. |
 | Eltávolítás | Leválasztott | A kapcsolatot a privát kapcsolat erőforrás-tulajdonosa eltávolította, a magánhálózati végpont informatív lesz, és törölni kell a tisztításhoz. |
@@ -273,7 +271,7 @@ Aliases:  <event-hubs-namespace-name>.servicebus.windows.net
 
 További információ [: Azure Private link Service: korlátozások](../private-link/private-link-service-overview.md#limitations)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ az [Azure Private linkről](../private-link/private-link-service-overview.md)
 - További információ az [Azure Event Hubs](event-hubs-about.md)

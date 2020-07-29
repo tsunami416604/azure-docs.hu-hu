@@ -3,16 +3,16 @@ title: Kapcsolódás a virtuális gépekhez egy böngészőben – Azure | Micro
 description: Megtudhatja, hogyan csatlakozhat a virtuális gépekhez egy böngészőben.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: b1e50a15673199a4bf95956ae66e6b58d6d41d0e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 352fc5fd3ff53a00d9f62966ecf21417ad898706
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483737"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288064"
 ---
 # <a name="connect-to-your-virtual-machines-through-a-browser"></a>Kapcsolódás a virtuális gépekhez egy böngészőben 
 
-A DevTest Labs integrálható az [Azure Bastion](https://docs.microsoft.com/azure/bastion/)szolgáltatással, amely lehetővé teszi a virtuális gépekhez való kapcsolódást egy böngészőben. A funkció a DevTest Labs szolgáltatásban való engedélyezésével kapcsolatos további információkért lásd: [a böngészőalapú kapcsolatok engedélyezése a labor virtuális gépeken](enable-browser-connection-lab-virtual-machines.md).
+A DevTest Labs integrálható az [Azure Bastion](../bastion/index.yml)szolgáltatással, amely lehetővé teszi a virtuális gépekhez való kapcsolódást egy böngészőben. A funkció a DevTest Labs szolgáltatásban való engedélyezésével kapcsolatos további információkért lásd: [a böngészőalapú kapcsolatok engedélyezése a labor virtuális gépeken](enable-browser-connection-lab-virtual-machines.md).
 
 Ha a *böngésző kapcsolódása* engedélyezve van, a labor-felhasználók egy böngészőben érhetik el a virtuális gépeket.  
 

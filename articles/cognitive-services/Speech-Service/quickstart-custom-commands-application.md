@@ -10,26 +10,36 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: 2ea850acf0ef581ea66733b0293ba044c87bb3a0
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: 05b47a786fe845460177b66b5bd54cdb140c246e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85362142"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289417"
 ---
 # <a name="create-a-voice-assistant-using-custom-commands"></a>Hangvezérelt asszisztens létrehozása egyéni parancsokkal
 
 Ebben a rövid útmutatóban egy alapszintű egyéni parancsok alkalmazását hozza létre és teszteli a Speech Studio használatával. Ezt az alkalmazást egy Windows-ügyfélalkalmazás is elérheti. Az **egyéni parancsok** megkönnyítik a hangvezérelt hangvezérelt alkalmazások készítését a hang-első interakciós élményhez. Egységes szerzői élményt, automatikus üzemeltetési modellt és viszonylag alacsony bonyolultságot biztosít, amely segít a legjobb megoldás kialakításában a hangvezérelt forgatókönyvekhez.
 
+## <a name="region-availability"></a>Régió elérhetősége
+Jelenleg az egyéni parancsok támogatják a következő régiókban létrehozott beszédfelismerési előfizetéseket:
+* USA nyugati régiója
+* USA 2. nyugati régiója
+* USA keleti régiója
+* USA 2. keleti régiója
+* Észak-Európa
+* Nyugat-Európa
+* USA nyugati középső régiója
+* Közép-India
+* Kelet-Ázsia
+* Délkelet-Ázsia
+
 ## <a name="prerequisites"></a>Előfeltételek
 
 > [!div class="checklist"]
-> * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Hozzon létre egy Azure Speech-erőforrást egy olyan régióban, amely támogatja az egyéni parancsokat.<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+> * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Hozzon létre egy Azure Speech-erőforrást egy olyan régióban, amely támogatja az egyéni parancsokat.<span class="docon docon-navigate-external x-hidden-focus"></span></a> A támogatott régiók listájáért tekintse meg a **régió elérhetőségét** ismertető szakaszt.
 > * Töltse le a minta [Smart Room Lite](https://aka.ms/speech/cc-quickstart) JSON-fájlját.
 > * Töltse le a [Windows Voice Assistant-ügyfél](https://aka.ms/speech/va-samples-wvac)legújabb verzióját.
-
-> [!NOTE]
-> Jelenleg az egyéni parancsok csak a westus, a westus2 és a northeurope régiókban támogatja a beszédfelismerési előfizetéseket.
 
 ## <a name="go-to-the-speech-studio-for-custom-commands"></a>Ugrás a Speech Studio egyéni parancsaihoz
 
@@ -93,7 +103,7 @@ Ahhoz, hogy hozzáférhessen az alkalmazáshoz a Speech studión kívül, közz�
 
 1. Válassza a bal oldali ablaktábla **Beállítások** elemét, majd a középső ablaktáblán válassza a **Luis-erőforrások** lehetőséget.
 1. Válasszon előrejelzési erőforrást, vagy hozzon létre egyet az **új erőforrás létrehozása**lehetőség kiválasztásával.
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
     
     > [!div class="mx-imgBorder"]
     > ![LUIS-erőforrások beállítása](media/custom-commands/set-luis-resources.png)
@@ -109,7 +119,7 @@ Azt is megteheti, hogy ezeket az értékeket a **Beállítások**  >  **általá
 
 ### <a name="access-application-from-client"></a>Alkalmazás elérése az ügyféltől
 
-A jelen cikk hatókörében az előfeltételek részeként letöltött Windows Voice Assistant-ügyfelet fogjuk használni. Bontsa ki a mappát.
+A jelen cikk hatókörében az előfeltételek részeként letöltött Windows Voice Assistant-ügyfelet fogjuk használni. Csomagolja ki a mappát.
 1. **VoiceAssistantClient.exe**elindítása.
 1. Hozzon létre egy új közzétételi profilt, és adja meg a **kapcsolatprofil**értékét. Az **általános beállítások** szakaszban adja meg az értékek **előfizetési kulcsát** (ez ugyanaz, mint az alkalmazás közzétételekor mentett **beszédfelismerési erőforrás kulcsának** értéke), az **előfizetési kulcs régiója** és az **egyéni parancsok alkalmazás-azonosítója**.
     > [!div class="mx-imgBorder"]

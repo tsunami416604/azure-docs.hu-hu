@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/26/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 28ea1e68441a57d67fef1e78153e00eb1bd09211
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: dececd066597682e240e737727d3bcaf8f8f3619
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86143917"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87374898"
 ---
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>Szükség van a felhasználónak a hub és az SD-WAN/VPN-eszközök használatára az Azure Virtual WAN használatához?
 
@@ -233,9 +233,17 @@ Ha egy virtuális központ ugyanazokat az útvonalakat tanulja meg több távoli
 
 Az ER-to-ER továbbítása mindig globális elérhetőséggel történik. A Virtual hub-átjárók tartományvezérlő-vagy Azure-régiókban vannak telepítve. Ha két ExpressRoute-áramkör a globális elérhetőségen keresztül csatlakozik, nincs szükség arra, hogy a forgalom egészen a peremhálózati útválasztók és a virtuális központ TARTOMÁNYVEZÉRLŐje között ne legyenek elérhetők.
 
-### <a name="is-there-a-concept-of-weight-in-azure-virtual-wan-circuits-or-vpn-connections"></a>Létezik-e az Azure-beli virtuális WAN-áramkörök vagy VPN-kapcsolatok súlyozási koncepciója
+### <a name="is-there-a-concept-of-weight-in-azure-virtual-wan-expressroute-circuits-or-vpn-connections"></a>Létezik-e súlyozás az Azure Virtual WAN ExpressRoute-áramkörökben vagy a VPN-kapcsolatokban
 
 Ha több ExpressRoute-áramkör csatlakozik egy virtuális központhoz, a kapcsolat útválasztási súlyozása olyan mechanizmust biztosít a virtuális központban lévő ExpressRoute számára, amely előnyben részesíti az egyik áramkört a másikon. Nincs olyan mechanizmus, amellyel a súlyozást beállíthatja a VPN-kapcsolaton. Az Azure mindig egy ExpressRoute-kapcsolaton keresztül VPN-kapcsolaton keresztül csatlakozik egy adott központon belül.
+
+### <a name="does-virtual-wan-prefer-expressroute-over-vpn-for-traffic-egressing-azure"></a>A Virtual WAN előnyben részesített VPN-en keresztüli ExpressRoute az Azure-beli forgalom egressing
+
+Igen 
+
+### <a name="when-a-virtual-wan-hub-has-an-expressroute-circuit-and-a-vpn-site-connected-to-it-what-would-cause-a-vpn-connection-route-to-be-prefered-over-expressroute"></a>Ha egy virtuális WAN-hubhoz ExpressRoute-áramkör és VPN-hely van csatlakoztatva, mi okozhatja a VPN-kapcsolat útvonalát a ExpressRoute-en keresztül?
+
+Ha egy ExpressRoute áramkör csatlakozik a virtuális központhoz, a Microsoft Edge útválasztók jelentik az első csomópontot a helyszíni és az Azure közötti kommunikációhoz. Ezek a peremhálózati útválasztók a virtuális WAN ExpressRoute-átjárókkal kommunikálnak, amelyek a Virtual hub útválasztóból származó útvonalakat vezérlik, és a virtuális WAN-átjárók közötti összes útvonalat vezérlik. A Microsoft Edge-útválasztók feldolgozzák a virtuális központ ExpressRoute útvonalait, és magasabb prioritást élveznek a helyszíni környezetből beszerzett útvonalaknál. Ennek oka, hogy a VPN-kapcsolat a virtuális Központ elsődleges adathordozója lesz, hogy megismerjék az útvonalakat (például a ExpressRoute és a VPN közötti feladatátvételi forgatókönyvek között), kivéve, ha a VPN-hely hosszabb, mint az elérési út hossza, a virtuális központ továbbra is megosztani fogja a VPN-útvonalakat a ExpressRoute-átjáróval, így a Microsoft Edge-útválasztók a 
 
 ### <a name="when-two-hubs-hub-1-and-2-are-connected-and-there-is-an-expressroute-circuit-connected-as-a-bow-tie-to-both-the-hubs-what-is-the-path-for-a-vnet-connected-to-hub-1-to-reach-a-vnet-connected-in-hub-2"></a>Ha két hub (1. és 2. hub) csatlakoztatva van, és egy ExpressRoute áramkör van csatlakoztatva mindkét hubhoz, mi az az elérési út az 1. hubhoz csatlakozó VNet, hogy elérjen egy, a 2. hubhoz csatlakozó VNet?
 
@@ -244,6 +252,10 @@ A jelenlegi viselkedés az, hogy a ExpressRoute áramköri útvonalat a VNet és
 ### <a name="is-there-support-for-ipv6-in-virtual-wan"></a>Támogatja az IPv6-ot a virtuális WAN-ban?
 
 A Virtual WAN hub és az átjárók nem támogatják az IPv6 protokollt. Ha olyan VNet rendelkezik, amely IPv6-támogatással rendelkezik, és szeretné a VNet a virtuális WAN-hoz csatlakozni, ez a forgatókönyv jelenleg nem támogatott.
+
+### <a name="what-is-the-recommended-api-version-to-be-used-by-scripts-automating-various-virtual-wan-functionality-"></a>Mi a javasolt API-verzió, amelyet a parancsfájlok használnak a különböző virtuális WAN-funkciók automatizálásához?
+
+A 05-01-2020 (május 1 2020) minimális verzióját kötelező megadni. 
 
 ### <a name="what-are-the-differences-between-the-virtual-wan-types-basic-and-standard"></a>Mi a különbség a virtuális WAN-típusok (Basic és standard) között?
 

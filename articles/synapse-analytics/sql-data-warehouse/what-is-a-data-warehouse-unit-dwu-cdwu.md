@@ -11,12 +11,12 @@ ms.date: 11/22/2019
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: e96fc9af0aa4f362256a5f0fee9465441a1c3928
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 62b969ebde1ab5d52968189a6f0865fdb646f6b2
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85210623"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87374133"
 ---
 # <a name="data-warehouse-units-dwus"></a>Adatraktár-egységek (DWU)
 
@@ -100,7 +100,7 @@ Ha szeretné megtekinteni a skálázás valódi képességeit, különösen nagy
 
 Az adatraktár-egységek módosításához az [Alter Database](/sql/t-sql/statements/alter-database-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)utasításban ismertetett engedélyek szükségesek.
 
-Az Azure-erőforrások, például az SQL-adatbázis közreműködői és SQL Server közreműködők beépített szerepkörei módosíthatják a DWU beállításait.
+Az Azure beépített szerepkörei, például az SQL-adatbázis közreműködői és SQL Server közreműködők módosíthatják a DWU beállításait.
 
 ## <a name="view-current-dwu-settings"></a>Aktuális DWU-beállítások megtekintése
 
@@ -108,7 +108,7 @@ Az aktuális DWU-beállítás megtekintése:
 
 1. Nyissa meg SQL Server Object Explorer a Visual Studióban.
 2. Kapcsolódjon a logikai SQL-kiszolgálóhoz társított Master adatbázishoz.
-3. Válasszon a sys. database_service_objectives dinamikus felügyeleti nézetből. Például:
+3. Válasszon a sys. database_service_objectives dinamikus felügyeleti nézetből. Alább bemutatunk egy példát:
 
 ```sql
 SELECT  db.name [Database]
@@ -129,7 +129,7 @@ DWU módosítása:
 
 2. A **skála**alatt mozgassa a csúszkát balra vagy jobbra a DWU beállítás módosításához.
 
-3. Kattintson a **Save** (Mentés) gombra. Ekkor megjelenik egy megerősítő üzenet. Kattintson az **igen** gombra a megerősítéshez vagy a **nem** gombra az elvetéshez.
+3. Kattintson a **Mentés** gombra. Ekkor megjelenik egy megerősítő üzenet. Kattintson az **igen** gombra a megerősítéshez vagy a **nem** gombra az elvetéshez.
 
 #### <a name="powershell"></a>PowerShell
 

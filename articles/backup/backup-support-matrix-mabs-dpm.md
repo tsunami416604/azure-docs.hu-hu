@@ -3,12 +3,12 @@ title: MABS & System Center DPM támogatási mátrix
 description: Ez a cikk Azure Backup támogatást összegzi, ha Microsoft Azure Backup Servert (MABS) vagy System Center DPM használ a helyszíni és az Azure-beli virtuális gépek erőforrásainak biztonsági mentésére.
 ms.date: 02/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 476f1523eaf042576d38f5d2db283b525721389c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 938fb751de90112dc206779a36b88f95f1d7d508
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538666"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289461"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>Támogatási mátrix a Microsoft Azure Backup Server vagy System Center DPM való biztonsági mentéshez
 
@@ -24,7 +24,7 @@ A MABS a System Center DPM alapul, és hasonló funkciókat biztosít néhány k
 
 - A MABS futtatásához nincs szükség System Center-licencre.
 - A MABS és a DPM esetében az Azure hosszú távú biztonsági mentési tárolót biztosít. Emellett a DPM lehetővé teszi az adatok biztonsági mentését a szalagos hosszú távú tároláshoz. A MABS nem biztosítja ezt a funkciót.
-- Elsődleges DPM-kiszolgálóról biztonsági mentést készíthet egy másodlagos DPM-kiszolgálóval. A másodlagos kiszolgáló biztosítja az elsődleges kiszolgáló adatbázisának és az elsődleges kiszolgálón tárolt adatforrás-replikáknak a védelmét. Az elsődleges kiszolgáló meghibásodása esetén a másodlagos kiszolgáló folytathatja az elsődleges kiszolgáló által védett munkaterhelések védelmét, amíg az elsődleges kiszolgáló ismét elérhető nem lesz.  A MABS nem biztosítja ezt a funkciót.
+- [Elsődleges DPM-kiszolgálóról biztonsági mentést készíthet egy másodlagos DPM-kiszolgálóval](https://docs.microsoft.com/system-center/dpm/back-up-the-dpm-server?view=sc-dpm-2019). A másodlagos kiszolgáló biztosítja az elsődleges kiszolgáló adatbázisának és az elsődleges kiszolgálón tárolt adatforrás-replikáknak a védelmét. Az elsődleges kiszolgáló meghibásodása esetén a másodlagos kiszolgáló folytathatja az elsődleges kiszolgáló által védett munkaterhelések védelmét, amíg az elsődleges kiszolgáló ismét elérhető nem lesz.  A MABS nem biztosítja ezt a funkciót.
 
 A MABS a [Microsoft letöltőközpontból](https://www.microsoft.com/download/details.aspx?id=57520)töltheti le. Helyszíni vagy Azure-beli virtuális gépen is futtatható.
 
@@ -190,7 +190,7 @@ A Data Protection Managerrel védhető különböző kiszolgálókkal és munkat
 - A DPM/MABS által készített fürtözött munkaterheléseknek ugyanabban a tartományban kell lenniük, mint a DPM/MABS, vagy egy alárendelt/megbízható tartományban.
 - Az NTLM/tanúsítványalapú hitelesítés használatával biztonsági mentést készíthet a nem megbízható tartományokban vagy munkacsoportokban található adatvédelemről.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [További](backup-architecture.md#architecture-back-up-to-dpmmabs) információ a MABS architektúráról.
 - [Tekintse át](backup-support-matrix-mars-agent.md) a Mars-ügynök által támogatott tudnivalókat.

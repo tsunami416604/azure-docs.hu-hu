@@ -3,16 +3,16 @@ title: A koncepció igazolása – Azure DevTest Labs | Microsoft Docs
 description: Megtudhatja, hogyan teheti elérhetővé a koncepciót, hogy Azure DevTest Labs sikeresen beépíthető legyen egy vállalati környezetbe.
 ms.topic: article
 ms.date: 06/2/2020
-ms.openlocfilehash: b0178d412154de556f25ab71bb30eed7be5e9ba6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9c28cf9eebd8a39a2edce48e4fb8b96dc7608d80
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85481357"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288018"
 ---
 # <a name="deliver-a-proof-of-concept"></a>A koncepció igazolása 
 
-Azure DevTest Labs egyik fő forgatókönyve a Felhőbeli fejlesztési és tesztelési környezetek engedélyezése. Példák:
+Azure DevTest Labs egyik fő forgatókönyve a Felhőbeli fejlesztési és tesztelési környezetek engedélyezése. Erre példák a következők:
 
 * Fejlesztői asztalok létrehozása a felhőben.
 * Környezetek konfigurálása teszteléshez.
@@ -114,8 +114,8 @@ A következő összetevőkkel várjuk a megoldást:
 
 A teljes DevTest Labs-megoldás kiadása előtt fontos tervezési és kialakítási döntéseket kell hoznia. A megvalósíthatósági koncepció használatának tapasztalatai segíthetnek a döntések meghozatalában. A További szempontok a következők: 
 
-* **Előfizetési topológia**: az Azure-beli erőforrásokra vonatkozó vállalati szintű követelmények a rendelkezésre álló kvótán kívülre is kiterjedhetnek [egy adott előfizetésen belül](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits). Ehhez több Azure-előfizetésre és/vagy szolgáltatási kérelemre van szükség a kezdeti előfizetési korlátok növeléséhez. Fontos, hogy eldöntse, hogyan oszthat ki erőforrásokat az előfizetések között. Egy értékes erőforrás az [előfizetés döntési útmutatója](https://docs.microsoft.com/azure/architecture/cloud-adoption/decision-guides/subscriptions/) , mert nehéz áthelyezni az erőforrásokat egy másik előfizetésbe. Egy labort például nem lehet áthelyezni egy másik előfizetésbe a létrehozása után.  
-* **Hálózati topológia**: Előfordulhat, hogy a DevTest Labs által automatikusan létrehozott [alapértelmezett hálózati infrastruktúra](../app-service/networking-features.md) nem elegendő ahhoz, hogy megfeleljen a vállalati felhasználókra vonatkozó követelményeknek és korlátozásoknak. Gyakran előfordul, hogy az [Azure ExpressRoute csatlakoztatott virtuális hálózatokat](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/), [valamint](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) az előfizetések közötti kapcsolatot, valamint a helyszíni csatlakozás biztosítására [kényszerített útválasztást](../vpn-gateway/vpn-gateway-forced-tunneling-rm.md) is meg kell tekinteni. A DevTest Labs lehetővé teszi, hogy a meglévő virtuális hálózatok a laborhoz kapcsolódjanak, ha új virtuális gépeket hoz létre a laborban. 
+* **Előfizetési topológia**: az Azure-beli erőforrásokra vonatkozó vállalati szintű követelmények a rendelkezésre álló kvótán kívülre is kiterjedhetnek [egy adott előfizetésen belül](../azure-resource-manager/management/azure-subscription-service-limits.md). Ehhez több Azure-előfizetésre és/vagy szolgáltatási kérelemre van szükség a kezdeti előfizetési korlátok növeléséhez. Fontos, hogy eldöntse, hogyan oszthat ki erőforrásokat az előfizetések között. Egy értékes erőforrás az [előfizetés döntési útmutatója](/azure/architecture/cloud-adoption/decision-guides/subscriptions/) , mert nehéz áthelyezni az erőforrásokat egy másik előfizetésbe. Egy labort például nem lehet áthelyezni egy másik előfizetésbe a létrehozása után.  
+* **Hálózati topológia**: Előfordulhat, hogy a DevTest Labs által automatikusan létrehozott [alapértelmezett hálózati infrastruktúra](../app-service/networking-features.md) nem elegendő ahhoz, hogy megfeleljen a vállalati felhasználókra vonatkozó követelményeknek és korlátozásoknak. Gyakran előfordul, hogy az [Azure ExpressRoute csatlakoztatott virtuális hálózatokat](/azure/architecture/reference-architectures/hybrid-networking/), [valamint](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) az előfizetések közötti kapcsolatot, valamint a helyszíni csatlakozás biztosítására [kényszerített útválasztást](../vpn-gateway/vpn-gateway-forced-tunneling-rm.md) is meg kell tekinteni. A DevTest Labs lehetővé teszi, hogy a meglévő virtuális hálózatok a laborhoz kapcsolódjanak, ha új virtuális gépeket hoz létre a laborban. 
 * **Virtuális gépek távelérése**: számos lehetőség van a DevTest Labs szolgáltatásban található virtuális gépek távoli elérésére. A legegyszerűbb a nyilvános IP-címek vagy a megosztott nyilvános IP-címek használata. Ezek a [laborban elérhető beállítások](devtest-lab-shared-ip.md). Ha ezek a lehetőségek nem elegendőek, a távelérési átjáró használata is lehetőség. Ez a beállítás a [DevTest Labs nagyvállalati referenciájának architektúráján](devtest-lab-reference-architecture.md) látható, és a [DevTest Labs távoli asztali átjáró dokumentációjában](configure-lab-remote-desktop-gateway.md)olvashat bővebben. A vállalatok a ExpressRoute vagy a helyek közötti VPN-t is használhatják a laboratóriumok helyszíni hálózathoz való összekapcsolásához. Ez a beállítás lehetővé teszi a közvetlen távoli asztal vagy SSH-kapcsolatok használatát a virtuális gépeken a magánhálózati IP-címük alapján, az internettel való érintkezés nélkül. 
 * **Kezelési engedélyek**: a DevTest Labs szolgáltatásban gyakran használt két fő engedély a [tulajdonos és a labor felhasználó](devtest-lab-add-devtest-user.md). Fontos eldönteni, hogy a DevTest Labs széleskörű kivonása előtt a laborban minden egyes hozzáférési szinthez meg kell bíznia. A közös modell a költségvetés tulajdonosa (például a csapat vezetője), mint a labor tulajdonosa és a csapat tagjai labor felhasználóként. Ez a modell lehetővé teszi a költségvetésért felelős személy (csapat vezető) számára a házirend-beállítások módosítását és a csapat költségvetésen belüli megőrzését.  
 

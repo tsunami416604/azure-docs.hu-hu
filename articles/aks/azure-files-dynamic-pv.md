@@ -5,12 +5,12 @@ description: Megtudhatja, hogyan hozhat létre dinamikusan állandó kötetet Az
 services: container-service
 ms.topic: article
 ms.date: 07/01/2020
-ms.openlocfilehash: e6735bba4a84a694e4cf6a58f695f2d89afe8994
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5e9e686d8da420c650709d3bedc103d0043fa679
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87057273"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287103"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-files-in-azure-kubernetes-service-aks"></a>Állandó kötet létrehozása és használata Azure Files az Azure Kubernetes szolgáltatásban (ak)
 
@@ -186,6 +186,8 @@ parameters:
 ## <a name="next-steps"></a>További lépések
 
 A kapcsolódó ajánlott eljárásokért lásd: [ajánlott eljárások a tároláshoz és a biztonsági mentéshez az AK-ban][operator-best-practices-storage].
+
+A tárolási osztályok paramétereinek megtekintéséhez lásd: [dinamikus kiépítés](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/docs/driver-parameters.md#dynamic-provision).
 
 További információ az állandó kötetek Kubernetes Azure Files használatával.
 

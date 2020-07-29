@@ -7,13 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/05/2020
+ms.custom: devx-track-java
 ms.author: aahi
-ms.openlocfilehash: c204f8482d46d6586d490cb2bd3dd1a4cddac682
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 3723345b10524b2063b3ec8fe43608f49b5b279b
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78924887"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87375300"
 ---
 Az Bing Web Search ügyféloldali kódtár megkönnyíti a Bing Web Search integrálását a Java-alkalmazásba. Ebben a rövid útmutatóban elsajátíthatja a kérésküldésnek, a JSON-válaszok fogadásának, valamint az eredmények szűrésének és elemzésének módját.
 
@@ -292,6 +293,6 @@ Ha végzett ezzel a projekttel, ne felejtse el eltávolítani az előfizetői az
 > [!div class="nextstepaction"]
 > [Cognitive Services Java SDK-minták](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingWebSearch)
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 * [Azure Java SDK-referencia](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/bingwebsearchapi?view=azure-java-stable)

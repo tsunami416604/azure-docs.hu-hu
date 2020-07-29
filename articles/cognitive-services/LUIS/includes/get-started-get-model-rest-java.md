@@ -7,13 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 06/03/2020
+ms.custom: devx-track-java
 ms.author: diberry
-ms.openlocfilehash: f6fb3452f2c5540617a6d59f9c81421c7de2161f
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
+ms.openlocfilehash: a18cee5d6bfa13d377aa6900b0ea4a35c9edf4e8
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84416383"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87375582"
 ---
 [Dokumentáció](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5890b47c39e2bb052c5b9c45)  |  [Minta](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/LUIS/java-model-with-rest/Model.java)
 
@@ -42,7 +43,7 @@ ms.locfileid: "84416383"
 
 1. Cserélje le az értékeket a `YOUR-` saját értékeivel kezdődő értékekre.
 
-    |Információ|Szerep|
+    |Tájékoztatás|Cél|
     |--|--|
     |`YOUR-APP-ID`| A LUIS-alkalmazás azonosítója. |
     |`YOUR-AUTHORING-KEY`|Az 32 karakteres szerzői kulcs.|
@@ -155,7 +156,7 @@ ms.locfileid: "84416383"
 
 Ha elkészült a rövid útmutatóval, törölje a Project mappát a fájlrendszerből.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Ajánlott eljárások az alkalmazásokhoz](../luis-concept-best-practices.md)

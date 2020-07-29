@@ -5,12 +5,12 @@ author: mumian
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: ce3c0409ba077d81023188530b660eb210daf4d1
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 9cb5a9aa782017075a58737f8cb94569c2cc6288
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326800"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373300"
 ---
 # <a name="manage-azure-resources-by-using-azure-powershell"></a>Azure-erőforrások kezelése Azure PowerShell használatával
 
@@ -63,7 +63,7 @@ Létrehozhat egy erőforráscsoportot, és erőforrásokat telepíthet a csoport
 
 ## <a name="deploy-resources-to-multiple-subscriptions-or-resource-groups"></a>Erőforrások üzembe helyezése több előfizetéshez vagy erőforráscsoporthoz
 
-A sablonban lévő összes erőforrást általában egyetlen erőforráscsoporthoz kell telepíteni. Vannak azonban olyan forgatókönyvek, amelyekben különböző erőforrás-készleteket kíván üzembe helyezni, de más erőforráscsoportokbe vagy előfizetésbe helyezi őket. További információ: [Azure-erőforrások üzembe helyezése több előfizetésre vagy erőforráscsoporthoz](../templates/cross-resource-group-deployment.md).
+A sablonban lévő összes erőforrást általában egyetlen erőforráscsoporthoz kell telepíteni. Vannak azonban olyan forgatókönyvek, amelyekben különböző erőforrás-készleteket kíván üzembe helyezni, de más erőforráscsoportokbe vagy előfizetésbe helyezi őket. További információ: [Azure-erőforrások üzembe helyezése több előfizetésre vagy erőforráscsoporthoz](../templates/cross-scope-deployment.md).
 
 ## <a name="delete-resources"></a>Erőforrások törlése
 

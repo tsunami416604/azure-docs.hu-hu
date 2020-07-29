@@ -1,23 +1,23 @@
 ---
-title: A GPU konfigurálása a Windows rendszerű virtuális asztali környezethez 2019 – Azure
-description: A GPU-gyorsított renderelés és a kódolás engedélyezése a Windows Virtual Desktopban.
+title: A GPU konfigurálása a Windows rendszerű virtuális asztali környezethez (klasszikus) – Azure
+description: A GPU-gyorsított renderelés és a kódolás engedélyezése a Windows Virtual Desktopban (klasszikus).
 services: virtual-desktop
 author: gundarev
 ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: denisgun
-ms.openlocfilehash: bbb0985e309601562587f3f1b26427f46a4a8987
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e6c8fe95508937604c53d817d60dd637352fb6fa
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087169"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288697"
 ---
-# <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop-fall-2019"></a>Grafikus processzorral (GPU) kapcsolatos gyorsítás konfigurálása a Windows rendszerű virtuális asztali számítógépeken – Fall 2019
+# <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop-classic"></a>A grafikus processzor (GPU) gyorsításának konfigurálása a Windows rendszerű virtuális asztali környezethez (klasszikus)
 
 >[!IMPORTANT]
->Ez a tartalom a Fall 2019 kiadásra vonatkozik, amely nem támogatja a Windows rendszerű virtuális asztali objektumokat Azure Resource Manager. Ha a Spring 2020 Update szolgáltatásban bevezetett Azure Resource Manager Windows rendszerű virtuális asztali objektumokat szeretne felügyelni, tekintse meg [ezt a cikket](../configure-vm-gpu.md).
+>Ez a tartalom a Windows rendszerű virtuális asztali (klasszikus) verzióra vonatkozik, amely nem támogatja Azure Resource Manager Windows rendszerű virtuális asztali objektumokat. Ha Azure Resource Manager Windows rendszerű virtuális asztali objektumokat szeretne felügyelni, tekintse meg [ezt a cikket](../configure-vm-gpu.md).
 
 A Windows virtuális asztal támogatja a GPU-gyorsított renderelést és kódolást az alkalmazások teljesítményének és méretezhetőségének növelése érdekében. A GPU-gyorsítás különösen fontos a nagy grafikai igényű alkalmazások esetében.
 

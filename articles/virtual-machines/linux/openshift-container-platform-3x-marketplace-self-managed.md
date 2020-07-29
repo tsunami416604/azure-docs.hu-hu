@@ -5,17 +5,17 @@ author: haroldwongms
 manager: mdotson
 ms.service: virtual-machines-linux
 ms.subservice: workloads
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: 08d32e4b7806ec53f48389b127ab34371271cf07
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 36adf35c5fbfc3e88b7d9af425ebabc852707e69
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86527234"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87374099"
 ---
 # <a name="configure-prerequisites"></a>Előfeltételek konfigurálása
 
@@ -53,7 +53,7 @@ Kattintson az ajánlatra az ajánlat részleteinek megtekintéséhez. Az ajánla
    ![Ajánlat címe lap](media/openshift-marketplace-self-managed/ocp-titlepage.png)  
 <br>
 
-**Alapbeállítások**
+**Alapvető beállítások**
 
 Ha segítséget szeretne kérni bármelyik bemeneti paraméterről, vigye a kurzort ***a paraméter neve melletti*** fölé.
 
@@ -64,7 +64,7 @@ Adja meg a bemeneti paraméterek értékeit, majd kattintson **az OK**gombra.
 | Virtuális gép rendszergazdájának felhasználóneve | Az összes virtuálisgép-példányon létrehozandó rendszergazda felhasználó |
 | Nyilvános SSH-kulcs rendszergazdai felhasználóhoz | Virtuális gépre való bejelentkezéshez használt nyilvános SSH-kulcs – nem lehet hozzáférési kód |
 | Előfizetés | Azure-előfizetés a fürt üzembe helyezéséhez |
-| Resource Group (Erőforráscsoport) | Hozzon létre egy új erőforráscsoportot, vagy válasszon ki egy meglévő üres erőforráscsoportot a fürt erőforrásaihoz |
+| Erőforráscsoport | Hozzon létre egy új erőforráscsoportot, vagy válasszon ki egy meglévő üres erőforráscsoportot a fürt erőforrásaihoz |
 | Hely | Azure-régió a fürt üzembe helyezéséhez |
 
    ![Ajánlat alapjai panel](media/openshift-marketplace-self-managed/ocp-basics.png)  
@@ -191,7 +191,7 @@ Az üzembe helyezés befejezésekor a rendszer lekéri a kapcsolódást a közpo
 $ ssh clusteradmin@bastiondns4hawllzaavu6g.eastus.cloudapp.azure.com
 ```
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Az az [Group delete](/cli/azure/group) paranccsal távolítsa el az erőforráscsoportot, a OpenShift-fürtöt és az összes kapcsolódó erőforrást, ha már nincs rájuk szükség.
 
@@ -199,7 +199,7 @@ Az az [Group delete](/cli/azure/group) paranccsal távolítsa el az erőforrásc
 az group delete --name openshiftrg
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Üzembe helyezés utáni feladatok](./openshift-container-platform-3x-post-deployment.md)
 - [A OpenShift üzembe helyezésének hibája az Azure-ban](./openshift-container-platform-3x-troubleshooting.md)

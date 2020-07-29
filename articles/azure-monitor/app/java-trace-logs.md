@@ -3,12 +3,13 @@ title: Ismerkedés a Java-nyomkövetési naplókkal az Azure Application Insight
 description: Log4J-vagy Logback-nyomkövetés keresése a Application Insightsban
 ms.topic: conceptual
 ms.date: 05/18/2019
-ms.openlocfilehash: 417462da431d8fe2ba878c93c6f4b467bdde2670
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: devx-track-java
+ms.openlocfilehash: fca5c9b1bde8429d829ab6113804602c8baa2ebe
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324165"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87374269"
 ---
 # <a name="explore-java-trace-logs-in-application-insights"></a>Ismerkedjen meg a Java-nyomkövetési naplók Application Insights
 Ha a nyomkövetéshez Logback vagy Log4J (v 1.2 vagy v 2.0) használ, a nyomkövetési naplókat automatikusan elküldheti Application Insights ahol megtekintheti és megkeresheti őket.

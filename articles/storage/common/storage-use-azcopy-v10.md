@@ -4,15 +4,15 @@ description: A AzCopy egy parancssori segédprogram, amellyel az adatok átmáso
 author: normesta
 ms.service: storage
 ms.topic: how-to
-ms.date: 10/23/2019
+ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: bb18e2b0af6f04cee5b6be11afbb2d2aabdadb4b
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 08e70265399a67ee58ad66e06adffbfd30b20e10
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86143011"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289240"
 ---
 # <a name="get-started-with-azcopy"></a>Bevezetés az AzCopy használatába
 
@@ -57,7 +57,7 @@ Az egyes parancsok és parancsok paramétereit részletesen ismertető dokument�
 > [!NOTE] 
 > Az Azure Storage-fiók tulajdonosaként nem rendel automatikusan hozzáférési engedélyeket az adateléréshez. Mielőtt bármit is AzCopy, el kell döntenie, hogyan adja meg az engedélyezési hitelesítő adatokat a Storage szolgáltatás számára. 
 
-## <a name="choose-how-youll-provide-authorization-credentials"></a>Adja meg, hogyan adja meg az engedélyezési hitelesítő adatokat
+## <a name="choose-how-youll-provide-authorization-credentials"></a>Az engedélyezési hitelesítő adatok megadására szolgáló mód kiválasztása
 
 Az engedélyezési hitelesítő adatokat Azure Active Directory (AD) vagy közös hozzáférésű aláírási (SAS-) token használatával biztosíthatja.
 
@@ -65,8 +65,8 @@ A táblázat használata útmutatóként:
 
 | Tárolási típus | Jelenleg támogatott hitelesítési módszer |
 |--|--|
-|**Blob Storage** | Azure AD & SAS |
-|**BLOB Storage (hierarchikus névtér)** | Azure AD & SAS |
+|**Blob Storage** | Azure AD és SAS |
+|**BLOB Storage (hierarchikus névtér)** | Azure AD és SAS |
 |**File Storage** | Csak SAS |
 
 ### <a name="option-1-use-azure-active-directory"></a>1. lehetőség: a Azure Active Directory használata
@@ -111,7 +111,7 @@ Miután meggyőződött arról, hogy a felhasználói identitás megkapta a szü
 azcopy login
 ```
 
-Ha egynél több szervezethez tartozik, adja meg annak a szervezetnek a bérlői AZONOSÍTÓját, amelyhez a Storage-fiók tartozik.
+Ha hibaüzenetet kap, próbálja meg annak a szervezetnek a bérlői AZONOSÍTÓját, amelyhez a Storage-fiók tartozik.
 
 ```azcopy
 azcopy login --tenant-id=<tenant-id>

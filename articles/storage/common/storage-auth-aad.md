@@ -10,12 +10,12 @@ ms.date: 07/16/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 4eb3173700a0907f8195466b9e0d7ab1903cf93e
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: b5e75819fd018cda60bca4c992bc4c141b14a379
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87124782"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87374184"
 ---
 # <a name="authorize-access-to-blobs-and-queues-using-azure-active-directory"></a>Blobokhoz és várólistákhoz való hozzáférés engedélyezése Azure Active Directory használatával
 
@@ -43,15 +43,15 @@ Az Azure blobnak vagy Queue szolgáltatásnak kéréseket kérő natív alkalmaz
 
 ## <a name="assign-rbac-roles-for-access-rights"></a>Hozzáférési jogosultságok RBAC-szerepköreinek kiosztása
 
-Azure Active Directory (Azure AD) a [szerepköralapú hozzáférés-vezérlés (RBAC)](../../role-based-access-control/overview.md)segítségével engedélyezi a hozzáférési jogokat a biztonságos erőforrásokhoz. Az Azure Storage olyan beépített RBAC-szerepköröket határoz meg, amelyek a blob-és üzenetsor-adateléréshez használt engedélyek közös készleteit foglalják magukban. Egyéni szerepköröket is meghatározhat a blob-és üzenetsor-adataihoz való hozzáféréshez.
+Azure Active Directory (Azure AD) a [szerepköralapú hozzáférés-vezérlés (RBAC)](../../role-based-access-control/overview.md)segítségével engedélyezi a hozzáférési jogokat a biztonságos erőforrásokhoz. Az Azure Storage egy beépített Azure-beli szerepkört határoz meg, amely magában foglalja a blob-és üzenetsor-adateléréshez használt engedélyek közös készleteit. Egyéni szerepköröket is meghatározhat a blob-és üzenetsor-adataihoz való hozzáféréshez.
 
 Ha egy Azure AD-rendszerbiztonsági tag egy RBAC-szerepkört rendel hozzá, az Azure hozzáférést biztosít ezen rendszerbiztonsági tag erőforrásaihoz. A hozzáférés hatóköre az előfizetés, az erőforráscsoport, a Storage-fiók vagy egy adott tároló vagy várólista szintjére is kiterjed. Az Azure AD rendszerbiztonsági tag lehet egy felhasználó, egy csoport, egy egyszerű alkalmazás vagy egy [felügyelt identitás az Azure-erőforrásokhoz](../../active-directory/managed-identities-azure-resources/overview.md).
 
-### <a name="built-in-rbac-roles-for-blobs-and-queues"></a>A blobok és a várólisták beépített RBAC szerepkörei
+### <a name="azure-built-in-roles-for-blobs-and-queues"></a>Az Azure beépített szerepkörei a blobokhoz és a várólistákhoz
 
 [!INCLUDE [storage-auth-rbac-roles-include](../../../includes/storage-auth-rbac-roles-include.md)]
 
-Ha szeretné megtudni, hogyan rendeljen hozzá egy beépített RBAC-szerepkört egy rendszerbiztonsági tag számára, tekintse meg a következő cikkek egyikét:
+Ha szeretné megtudni, hogyan rendeljen hozzá egy Azure-beli beépített szerepkört egy rendszerbiztonsági tag számára, tekintse meg a következő cikkek egyikét:
 
 - [Hozzáférés biztosítása Azure-blobok és -üzenetsorok adataihoz RBAC használatával az Azure Portalon](storage-auth-aad-rbac-portal.md)
 - [Hozzáférés biztosítása Azure-blobok és -üzenetsorok adataihoz RBAC használatával az Azure CLI-vel](storage-auth-aad-rbac-cli.md)

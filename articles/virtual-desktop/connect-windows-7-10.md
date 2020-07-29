@@ -8,27 +8,24 @@ ms.topic: how-to
 ms.date: 07/16/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 1f813d0ada516f6090b97e5858cefab110636f90
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 88e325c5a743513baa5a580ae65005c545a07b78
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077603"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288791"
 ---
 # <a name="connect-with-the-windows-desktop-client"></a>Kapcsolódás a Windows asztali ügyféllel
 
 > A következőkre vonatkozik: Windows 7, Windows 10 és Windows 10 IoT Enterprise
 
 >[!IMPORTANT]
->Ez a tartalom a Spring 2020 frissítésre vonatkozik Azure Resource Manager Windows rendszerű virtuális asztali objektumokkal. Ha a Windows rendszerű virtuális 2019 asztalt Azure Resource Manager objektumok nélkül használja, tekintse meg [ezt a cikket](./virtual-desktop-fall-2019/connect-windows-7-10-2019.md).
->
-> A Windows rendszerű virtuális asztali Spring 2020 frissítése jelenleg nyilvános előzetes verzióban érhető el. Ezt az előzetes verziót szolgáltatói szerződés nélkül biztosítjuk, és nem javasoljuk, hogy éles számítási feladatokhoz használja azt. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
-> További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+>Ez a tartalom a Windows rendszerű virtuális asztali Azure Resource Manager Windows virtuális asztali objektumokkal vonatkozik. Ha a Windowsos virtuális asztalt (klasszikus) Azure Resource Manager objektumok nélkül használja, tekintse meg [ezt a cikket](./virtual-desktop-fall-2019/connect-windows-7-10-2019.md).
 
 A Windows rendszerű virtuális asztali erőforrásokat Windows 7, Windows 10 és Windows 10 IoT Enterprise rendszerű eszközökön érheti el a Windows asztali ügyfélprogram használatával. Az ügyfél nem támogatja a 8. vagy a Windows 8,1 rendszert.
 
 >[!NOTE]
->A Windows-ügyfél automatikusan alapértelmezésben a Windows rendszerű virtuális asztali verzió 2019-es kiadását adja meg. Ha azonban az ügyfél észleli, hogy a felhasználó Azure Resource Manager erőforrásokkal is rendelkezik, automatikusan hozzáadja az erőforrásokat, vagy értesíti a felhasználót, hogy elérhetők.
+>A Windows-ügyfél automatikusan alapértéke a Windows Virtual Desktop (klasszikus). Ha azonban az ügyfél észleli, hogy a felhasználó Azure Resource Manager erőforrásokkal is rendelkezik, automatikusan hozzáadja az erőforrásokat, vagy értesíti a felhasználót, hogy elérhetők.
 
 > [!IMPORTANT]
 > A Windows virtuális asztal nem támogatja a RemoteApp-és asztali kapcsolatok (RADC) ügyfelet vagy a Távoli asztali kapcsolat (MSTSC) ügyfelet.
@@ -66,8 +63,8 @@ A munkaterületekre kétféleképpen lehet előfizetni. Az ügyfél megpróbálh
 1. Az ügyfél főoldalán válassza az **előfizetés URL-lel**lehetőséget.
 2. Adja meg a munkaterület URL-címét vagy e-mail-címét:
    - Ha a **munkaterület URL-címét**használja, használja a rendszergazda által megadott címet. Ha a Windows virtuális asztalról fér hozzá az erőforrásokhoz, a következő URL-címek egyikét használhatja:
-     - Windows rendszerű virtuális asztali 2019:`https://rdweb.wvd.microsoft.com/api/feeddiscovery/webfeeddiscovery.aspx`
-     - Windows rendszerű virtuális asztali rugó 2020:`https://rdweb.wvd.microsoft.com/api/arm/feeddiscovery`
+     - Windowsos virtuális asztal (klasszikus):`https://rdweb.wvd.microsoft.com/api/feeddiscovery/webfeeddiscovery.aspx`
+     - Windows rendszerű virtuális asztal:`https://rdweb.wvd.microsoft.com/api/arm/feeddiscovery`
    - Ha ehelyett az **e-mail** mezőt használja, adja meg az e-mail-címét. Ez azt jelzi, hogy az ügyfél megkeresi az e-mail-címéhez tartozó URL-címet, ha a rendszergazda beállította az [e-mail felderítését](/windows-server/remote/remote-desktop-services/rds-email-discovery).
 3. Válassza a **Tovább** lehetőséget.
 4. Ha a rendszer kéri, jelentkezzen be a felhasználói fiókjával.

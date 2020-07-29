@@ -7,13 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/06/2020
+ms.custom: devx-track-java
 ms.author: aahi
-ms.openlocfilehash: 8c987aa14e922573d01aa35fab609edf01e109b4
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: f69b9b989a93949f9a0441676c81af7480fb968f
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79136773"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87375096"
 ---
 Ezzel a rövid útmutatóval megkezdheti az entitások keresését a Javához készült Bing Entity Search ügyféloldali kódtár használatával. Habár a Bing Entity Search REST API kompatibilis a legtöbb programozási nyelvvel, az ügyféloldali kódtár egyszerű módszert kínál a szolgáltatás integrálására az alkalmazásokba. A minta forráskódja a [githubon](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingEntitySearch)található.
 
@@ -63,7 +64,7 @@ Telepítse az Bing Entity Search ügyféloldali függvénytár-függőségeit Ma
 
 ## <a name="create-a-search-client"></a>Keresési ügyfél létrehozása
 
-1. Implementálja `dominantEntityLookup` az-ügyfelet, amely az API-végpontot és az `ServiceClientCredentials` osztály egy példányát igényli. Használhatja az alábbi globális végpontot, vagy az erőforráshoz tartozó Azure Portalban megjelenő [Egyéni altartomány](../../../../cognitive-services/cognitive-services-custom-subdomains.md) végpontot.
+1. Implementálja az- `dominantEntityLookup` ügyfelet, amely az API-végpontot és az osztály egy példányát igényli `ServiceClientCredentials` . Használhatja az alábbi globális végpontot, vagy az erőforráshoz tartozó Azure Portalban megjelenő [Egyéni altartomány](../../../../cognitive-services/cognitive-services-custom-subdomains.md) végpontot.
 
     ```java
     public static EntitySearchAPIImpl getClient(final String subscriptionKey) {
@@ -74,9 +75,9 @@ Telepítse az Bing Entity Search ügyféloldali függvénytár-függőségeit Ma
     )};
     ```
 
-    A megvalósításához `ServiceClientCredentials`kövesse az alábbi lépéseket:
+    A megvalósításához `ServiceClientCredentials` kövesse az alábbi lépéseket:
 
-   1. felülbírálja `applyCredentialsFilter()` a függvényt paraméterként egy `OkHttpClient.Builder` objektummal. 
+   1. felülbírálja a `applyCredentialsFilter()` függvényt `OkHttpClient.Builder` paraméterként egy objektummal. 
         
        ```java
        //...
@@ -88,7 +89,7 @@ Telepítse az Bing Entity Search ügyféloldali függvénytár-függőségeit Ma
        //...
        ```
     
-   2. A `applyCredentialsFilter()`-n `builder.addNetworkInterceptor()`belül hívja meg a t. Hozzon létre `Interceptor` egy új objektumot, és `intercept()` bírálja felül a `Chain` metódusát egy Interceptor objektum elvégzéséhez.
+   2. `applyCredentialsFilter()`A-n belül hívja meg a t `builder.addNetworkInterceptor()` . Hozzon létre egy új `Interceptor` objektumot, és bírálja felül a `intercept()` metódusát egy Interceptor objektum elvégzéséhez `Chain` .
 
        ```java
        //...
@@ -102,7 +103,7 @@ Telepítse az Bing Entity Search ügyféloldali függvénytár-függőségeit Ma
        ///...
        ```
 
-   3. A `intercept` függvényen belül hozzon létre változókat a kérelemhez. A `Request.Builder()` paranccsal felépítheti a kérést. Adja hozzá az előfizetési kulcsot `Ocp-Apim-Subscription-Key` a fejléchez, `chain.proceed()` és térjen vissza a kérelem objektumra.
+   3. A `intercept` függvényen belül hozzon létre változókat a kérelemhez. `Request.Builder()`A paranccsal felépítheti a kérést. Adja hozzá az előfizetési kulcsot a `Ocp-Apim-Subscription-Key` fejléchez, és térjen vissza a `chain.proceed()` kérelem objektumra.
             
        ```java
        //...
@@ -118,7 +119,7 @@ Telepítse az Bing Entity Search ügyféloldali függvénytár-függőségeit Ma
        ```
 ## <a name="send-a-request-and-receive-a-response"></a>Kérelem küldése és válasz fogadása
 
-1. Hozzon létre egy új példányt a keresési ügyfélhez az előfizetési kulccsal. a `client.entities().search()` használatával keresési kérelmet küldhet a keresési lekérdezéshez `satya nadella`, és választ kaphat. 
+1. Hozzon létre egy új példányt a keresési ügyfélhez az előfizetési kulccsal. a használatával `client.entities().search()` keresési kérelmet küldhet a keresési lekérdezéshez `satya nadella` , és választ kaphat. 
     
     ```java
     EntitySearchAPIImpl client = getClient(subscriptionKey);

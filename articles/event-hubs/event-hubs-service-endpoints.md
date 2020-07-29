@@ -3,12 +3,12 @@ title: Virtual Network szolgáltatási végpontok – Azure Event Hubs | Microso
 description: Ez a cikk azt ismerteti, hogyan adhat hozzá Microsoft. EventHub szolgáltatási végpontot egy virtuális hálózathoz.
 ms.topic: article
 ms.date: 07/16/2020
-ms.openlocfilehash: 134e310e0859bb6c0a50630f467513e07e6ff390
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5d1f6bb8e1160a328c30cfd6ef1726e3cf011aee
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87066704"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288010"
 ---
 # <a name="use-virtual-network-service-endpoints-with-azure-event-hubs"></a>Virtual Network szolgáltatási végpontok használata az Azure-Event Hubs
 
@@ -25,7 +25,6 @@ Az eredmény az alhálózathoz és a megfelelő Event Hubs névtérhez kötött 
 >
 > Olyan általános Azure-forgatókönyvek, amelyek nem működnek a virtuális hálózatokkal (vegye figyelembe, hogy a lista **nem** teljes) –
 > - Azure Stream Analytics
-> - Integráció a Azure Event Grid
 > - Azure IoT Hub útvonalak
 > - Azure IoT Device Explorer
 >
@@ -60,7 +59,7 @@ Ez a szakasz bemutatja, hogyan használható a Azure Portal virtuális hálózat
 2. A bal oldali menüben válassza a **hálózatkezelés** lehetőséget. Ha a **minden hálózat** lehetőséget választja, az Event hub bármely IP-címről fogad kapcsolatokat. Ez a beállítás egyenértékű egy olyan szabállyal, amely elfogadja a 0.0.0.0/0 IP-címtartományt. 
 
     ![Tűzfal – az összes hálózat lehetőség ki van választva](./media/event-hubs-firewall/firewall-all-networks-selected.png)
-1. Ahhoz, hogy restrct az adott hálózatokhoz való hozzáférést, válassza ki a **kijelölt hálózatok** lehetőséget az oldal tetején.
+1. Ha korlátozni szeretné a hozzáférést bizonyos hálózatokra, válassza ki a **kijelölt hálózatok** lehetőséget az oldal tetején.
 2. A lap **Virtual Network** szakaszában válassza a * * + meglévő virtuális hálózat hozzáadása * * * lehetőséget. Válassza az **+ új virtuális hálózat létrehozása** lehetőséget, ha új VNet szeretne létrehozni. 
 
     ![meglévő virtuális hálózat hozzáadása](./media/event-hubs-tutorial-vnet-and-firewalls/add-vnet-menu.png)
@@ -85,9 +84,9 @@ A következő Resource Manager-sablon lehetővé teszi egy virtuális hálózati
 
 Sablon paraméterei:
 
-* **namespacename tulajdonság**: Event Hubs névtér.
-* **vnetRuleName**: a létrehozandó Virtual Network szabály neve.
-* **virtualNetworkingSubnetId**: a virtuális hálózati alhálózat teljes erőforrás-kezelő útvonala; például `/subscriptions/{id}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnet}/subnets/default` egy virtuális hálózat alapértelmezett alhálózata esetében.
+* `namespaceName`: Event Hubs névtér.
+* `vnetRuleName`: A létrehozandó Virtual Network szabály neve.
+* `virtualNetworkingSubnetId`: Teljes körű erőforrás-kezelő útvonal a virtuális hálózat alhálózatához; például `/subscriptions/{id}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnet}/subnets/default` egy virtuális hálózat alapértelmezett alhálózata esetében.
 
 > [!NOTE]
 > Habár a megtagadási szabályok nem lehetségesek, a Azure Resource Manager sablon az **"engedélyezés"** értékre van állítva, amely nem korlátozza a kapcsolatokat.

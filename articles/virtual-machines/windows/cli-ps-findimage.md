@@ -4,16 +4,16 @@ description: A Azure PowerShell segítségével meghatározhatja a Piactéri vir
 author: cynthn
 ms.service: virtual-machines
 ms.subservice: imaging
-ms.topic: article
+ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 01/25/2019
 ms.author: cynthn
-ms.openlocfilehash: d2d37e20ada2d1128f04d2df822da996338e0e6e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 96b5e3770a3f5e08237d61eab05cfeafbc72a5db
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86500871"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288345"
 ---
 # <a name="find-and-use-vm-images-in-the-azure-marketplace-with-azure-powershell"></a>Virtuálisgép-lemezképek keresése és használata az Azure Marketplace-en Azure PowerShell
 
@@ -312,7 +312,7 @@ $vmConfig = Set-AzVMSourceImage -VM $vmConfig -PublisherName $publisherName -Off
 ```
 Ezután továbbítja a virtuális gép konfigurációját a hálózati konfigurációs objektumokkal együtt a `New-AzVM` parancsmaghoz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A virtuális gép `New-AzVM` egyszerű rendszerkép-információkkal történő gyors létrehozásával kapcsolatban lásd: [Windows rendszerű virtuális gép létrehozása a PowerShell](quick-create-powershell.md)használatával.
 

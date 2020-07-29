@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: storage
 author: roygara
 ms.service: storage
@@ -8,15 +8,15 @@ ms.topic: include
 ms.date: 09/15/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: f30518c3bfc9876cbddaf8295ff9e8b667a70200
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f0832672cc848495f3d95d308071e0a8359ae4f1
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74014560"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87375015"
 ---
 ## <a name="overview"></a>Áttekintés
-Az Azure Storage lehetővé teszi a Blobok Pillanatképek készítését. A pillanatképek az adott időpontban rögzítik a blob állapotát. Ebben a cikkben egy olyan forgatókönyvet ismertetünk, amelyben a virtuális gépek lemezeiről készített biztonsági mentések a pillanatképek használatával kezelhetők. Ezt a módszert akkor használhatja, ha úgy dönt, hogy nem használja a Azure Backup és a helyreállítási szolgáltatást, és egyéni biztonsági mentési stratégiát kíván létrehozni a virtuális gépek lemezeihez.
+Az Azure Storage lehetővé teszi a Blobok Pillanatképek készítését. A pillanatképek az adott időpontban rögzítik a blob állapotát. Ebben a cikkben egy olyan forgatókönyvet ismertetünk, amelyben a virtuális gépek lemezeiről készített biztonsági mentések a pillanatképek használatával kezelhetők. Ezt a módszert akkor használhatja, ha úgy dönt, hogy nem használja a Azure Backup és a helyreállítási szolgáltatást, és egyéni biztonsági mentési stratégiát kíván létrehozni a virtuális gépek lemezeihez. Az üzleti vagy kritikus fontosságú számítási feladatokat futtató virtuális gépek esetében ajánlott [Azure Backup](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction) használni a biztonsági mentési stratégia részeként.  
 
 Az Azure-beli virtuális gépek lemezeit az Azure Storage-ban az oldal blobként tárolja a rendszer. Mivel ebben a cikkben a virtuálisgép-lemezekre vonatkozó biztonsági mentési stratégiát ismertetjük, a pillanatképeket a Blobok kontextusában tekintjük át. A pillanatképekkel kapcsolatos további tudnivalókért tekintse meg a [blob pillanatképének létrehozását](https://docs.microsoft.com/rest/api/storageservices/Creating-a-Snapshot-of-a-Blob)ismertető témakört.
 
@@ -57,7 +57,8 @@ A következő feltételek teljesülnek,
 * A blobot Jan-1-2016 vagy újabb verzióban hozták létre.
 * A blob nem lett felülírva a [PutPage](https://docs.microsoft.com/rest/api/storageservices/Put-Page) vagy a [blob másolása](https://docs.microsoft.com/rest/api/storageservices/Copy-Blob) két pillanatkép között.
 
-**Megjegyzés**: Ez a funkció a prémium és standard szintű Azure-Blobok esetében érhető el.
+>[!NOTE]
+>Ez a funkció prémium és standard szintű Azure-Blobok esetén érhető el.
 
 Ha pillanatképeket használó egyéni biztonsági mentési stratégiával rendelkezik, a pillanatképek egy másik Storage-fiókból a másikba való másolása lassú lehet, és sok tárolóhelyet tud használni. Ahelyett, hogy a teljes pillanatképet egy biztonsági mentési Storage-fiókba másolja, megírhatja az egymást követő Pillanatképek közötti különbséget egy biztonsági mentési oldal blobba. Így a másolási idő és a biztonsági mentések tárolására szolgáló terület lényegesen csökken.
 

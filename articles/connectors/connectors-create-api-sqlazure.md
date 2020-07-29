@@ -7,26 +7,26 @@ ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 06/06/2020
 tags: connectors
-ms.openlocfilehash: ba8a6e5b53634850670a7d6b2fb55ef0e7b18d09
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e500f678d2066d24de12a04f28ccbdb3f76eda3a
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85255500"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288174"
 ---
 # <a name="automate-workflows-for-a-sql-database-by-using-azure-logic-apps"></a>Az SQL Database munkafolyamatainak automatizálása Azure Logic Apps használatával
 
-Ez a cikk bemutatja, hogyan érheti el az SQL Database-ben tárolt adatok egy logikai alkalmazásban az SQL Server-összekötő használatával. Így automatizálhatja az SQL-adatok és-erőforrások kezelésére szolgáló feladatokat, folyamatokat és munkafolyamatokat logikai alkalmazások létrehozásával. Az SQL Server-összekötő a [SQL Server](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation) , valamint a [Azure SQL Database](../azure-sql/database/sql-database-paas-overview.md) és az [Azure SQL felügyelt példányai](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md)esetében működik.
+Ez a cikk bemutatja, hogyan érheti el az SQL Database-ben tárolt adatok egy logikai alkalmazásban az SQL Server-összekötő használatával. Így automatizálhatja az SQL-adatok és-erőforrások kezelésére szolgáló feladatokat, folyamatokat és munkafolyamatokat logikai alkalmazások létrehozásával. Az SQL Server-összekötő a [SQL Server](/sql/sql-server/sql-server-technical-documentation) , valamint a [Azure SQL Database](../azure-sql/database/sql-database-paas-overview.md) és az [Azure SQL felügyelt példányai](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md)esetében működik.
 
 Létrehozhat olyan logikai alkalmazásokat, amelyek az SQL-adatbázisban vagy más rendszerekben, például a Dynamics CRM Online-ban indított események indításakor futnak. A logikai alkalmazások az SQL-lekérdezések és a tárolt eljárások futtatásával is lekérhetik, behelyezhetik és törölhetik az adatforrásokat. Létrehozhat például egy olyan logikai alkalmazást, amely automatikusan ellenőrzi az új rekordokat a Dynamics CRM Online-ban, elemeket ad hozzá az SQL-adatbázishoz bármely új rekordhoz, majd e-mail-riasztásokat küld a hozzáadott elemekről.
 
-Ha most ismerkedik a Logic apps szolgáltatással, tekintse át a [Mi az Azure Logic apps](../logic-apps/logic-apps-overview.md) és a gyors útmutató [: az első logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md)lehetőséget. Az összekötő-specifikus technikai információkkal, korlátozásokkal és ismert problémákkal kapcsolatban tekintse meg az [SQL Server-összekötő hivatkozását ismertető oldalt](https://docs.microsoft.com/connectors/sql/).
+Ha most ismerkedik a Logic apps szolgáltatással, tekintse át a [Mi az Azure Logic apps](../logic-apps/logic-apps-overview.md) és a gyors útmutató [: az első logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md)lehetőséget. Az összekötő-specifikus technikai információkkal, korlátozásokkal és ismert problémákkal kapcsolatban tekintse meg az [SQL Server-összekötő hivatkozását ismertető oldalt](/connectors/sql/).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés. Ha még nincs előfizetése, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/).
 
-* [SQL Server adatbázis](https://docs.microsoft.com/sql/relational-databases/databases/create-a-database), [Azure SQL Database](../azure-sql/database/single-database-create-quickstart.md)vagy [Azure SQL felügyelt példány](../azure-sql/managed-instance/instance-create-quickstart.md).
+* [SQL Server adatbázis](/sql/relational-databases/databases/create-a-database), [Azure SQL Database](../azure-sql/database/single-database-create-quickstart.md)vagy [Azure SQL felügyelt példány](../azure-sql/managed-instance/instance-create-quickstart.md).
 
   A tábláknak adatokkal kell rendelkezniük, hogy a logikai alkalmazás a műveletek meghívásakor eredményeket lehessen visszaadni. Ha Azure SQL Database használ, használhat példákat tartalmazó adatbázisokat is.
 
@@ -71,10 +71,10 @@ Amikor először ad hozzá egy [SQL-triggert](#add-sql-trigger) vagy egy [SQL-m�
 
 1. A **Hitelesítés típusa**mezőben válassza ki Azure SQL Database vagy az Azure SQL felügyelt példányán az adatbázishoz szükséges és engedélyezett hitelesítést:
 
-   | Hitelesítés | Description |
+   | Hitelesítés | Leírás |
    |----------------|-------------|
    | [**Azure AD-integráció**](../azure-sql/database/authentication-aad-overview.md) | -A nem ISE és ISE SQL Server összekötőt is támogatja. <p><p>– Az adatbázishoz hozzáféréssel rendelkező Azure Active Directory (Azure AD) érvényes identitást igényel. <p>További információt az alábbi témakörökben talál: <p>- [Az Azure SQL biztonsági áttekintése – hitelesítés](../azure-sql/database/security-overview.md#authentication) <br>- [Adatbázis-hozzáférés engedélyezése az Azure SQL-hitelesítéshez és engedélyezéshez](../azure-sql/database/logins-create-manage.md#authentication-and-authorization) <br>- [Azure SQL – Azure AD – integrált hitelesítés](../azure-sql/database/authentication-aad-overview.md) |
-   | [**SQL Server-hitelesítés**](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication) | -A nem ISE és ISE SQL Server összekötőt is támogatja. <p><p>– Az adatbázisban létrehozott és tárolt érvényes felhasználónevet és erős jelszót kell megadnia. <p>További információt az alábbi témakörökben talál: <p>- [Az Azure SQL biztonsági áttekintése – hitelesítés](../azure-sql/database/security-overview.md#authentication) <br>- [Adatbázis-hozzáférés engedélyezése az Azure SQL-hitelesítéshez és engedélyezéshez](../azure-sql/database/logins-create-manage.md#authentication-and-authorization) |
+   | [**SQL Server-hitelesítés**](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication) | -A nem ISE és ISE SQL Server összekötőt is támogatja. <p><p>– Az adatbázisban létrehozott és tárolt érvényes felhasználónevet és erős jelszót kell megadnia. <p>További információt az alábbi témakörökben talál: <p>- [Az Azure SQL biztonsági áttekintése – hitelesítés](../azure-sql/database/security-overview.md#authentication) <br>- [Adatbázis-hozzáférés engedélyezése az Azure SQL-hitelesítéshez és engedélyezéshez](../azure-sql/database/logins-create-manage.md#authentication-and-authorization) |
    |||
 
    Ez a példa az **Azure ad**-vel való integrációt folytatja:
@@ -87,9 +87,9 @@ Amikor először ad hozzá egy [SQL-triggert](#add-sql-trigger) vagy egy [SQL-m�
 
    | Tulajdonság | Kötelező | Leírás |
    |----------|----------|-------------|
-   | **Kiszolgáló neve** | Yes | Az SQL-kiszolgáló címe, például:`Fabrikam-Azure-SQL.database.windows.net` |
-   | **Adatbázis neve** | Yes | Az SQL-adatbázis neve, például:`Fabrikam-Azure-SQL-DB` |
-   | **Table name (Táblázat neve)** | Yes | A használni kívánt tábla, például:`SalesLT.Customer` |
+   | **Kiszolgálónév** | Igen | Az SQL-kiszolgáló címe, például:`Fabrikam-Azure-SQL.database.windows.net` |
+   | **Adatbázis neve** | Igen | Az SQL-adatbázis neve, például:`Fabrikam-Azure-SQL-DB` |
+   | **Tábla neve** | Igen | A használni kívánt tábla, például:`SalesLT.Customer` |
    ||||
 
    > [!TIP]
@@ -115,10 +115,10 @@ Amikor először ad hozzá egy [SQL-triggert](#add-sql-trigger) vagy egy [SQL-m�
 
 1. A **Hitelesítés típusa**mezőben válassza ki a SQL Server szükséges és engedélyezett hitelesítést:
 
-   | Hitelesítés | Description |
+   | Hitelesítés | Leírás |
    |----------------|-------------|
-   | [**Windows-hitelesítés**](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-windows-authentication) | – Csak a nem ISE SQL Server összekötőt támogatja, amelyhez a kapcsolathoz korábban az Azure-ban létrehozott adatátjáró-erőforrás szükséges, függetlenül attól, hogy több-bérlős Azure-t vagy ISE-t használ. <p><p>– Érvényes Windows-felhasználónevet és-jelszót kell megadnia az identitás Windows-fiókon keresztüli megerősítéséhez. <p>További információ: Windows- [hitelesítés](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-windows-authentication) |
-   | [**SQL Server-hitelesítés**](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication) | -A nem ISE és ISE SQL Server összekötőt is támogatja. <p><p>– A SQL Server létrehozott és tárolt érvényes felhasználónevet és erős jelszót igényel. <p>További információ: [SQL Server hitelesítés](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication). |
+   | [**Windows-hitelesítés**](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-windows-authentication) | – Csak a nem ISE SQL Server összekötőt támogatja, amelyhez a kapcsolathoz korábban az Azure-ban létrehozott adatátjáró-erőforrás szükséges, függetlenül attól, hogy több-bérlős Azure-t vagy ISE-t használ. <p><p>– Érvényes Windows-felhasználónevet és-jelszót kell megadnia az identitás Windows-fiókon keresztüli megerősítéséhez. <p>További információ: Windows- [hitelesítés](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-windows-authentication) |
+   | [**SQL Server-hitelesítés**](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication) | -A nem ISE és ISE SQL Server összekötőt is támogatja. <p><p>– A SQL Server létrehozott és tárolt érvényes felhasználónevet és erős jelszót igényel. <p>További információ: [SQL Server hitelesítés](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication). |
    |||
 
    Ez a példa a **Windows-hitelesítéssel**folytatódik:
@@ -129,12 +129,12 @@ Amikor először ad hozzá egy [SQL-triggert](#add-sql-trigger) vagy egy [SQL-m�
 
    | Tulajdonság | Kötelező | Leírás |
    |----------|----------|-------------|
-   | **SQL-kiszolgáló neve** | Yes | Az SQL-kiszolgáló címe, például:`Fabrikam-Azure-SQL.database.windows.net` |
-   | **SQL-adatbázis neve** | Yes | A SQL Server-adatbázis neve, például:`Fabrikam-Azure-SQL-DB` |
-   | **Username** | Yes | Az SQL Server és az adatbázis felhasználóneve |
-   | **Jelszó** | Yes | Az SQL Server és az adatbázis jelszava |
+   | **SQL-kiszolgáló neve** | Igen | Az SQL-kiszolgáló címe, például:`Fabrikam-Azure-SQL.database.windows.net` |
+   | **SQL-adatbázis neve** | Igen | A SQL Server-adatbázis neve, például:`Fabrikam-Azure-SQL-DB` |
+   | **Felhasználónév** | Igen | Az SQL Server és az adatbázis felhasználóneve |
+   | **Jelszó** | Igen | Az SQL Server és az adatbázis jelszava |
    | **Előfizetés** |  Igen, Windows-hitelesítéshez | A korábban az Azure-ban létrehozott adatátjáró-erőforráshoz tartozó Azure-előfizetés |
-   | **Összekötő átjáró** | Igen, Windows-hitelesítéshez | Az Azure-ban korábban létrehozott adatátjáró-erőforrás neve <p><p>**Tipp**: Ha az átjáró nem jelenik meg a listában, ellenőrizze, hogy megfelelően [állította-e be az átjárót](https://docs.microsoft.com/azure/logic-apps/logic-apps-gateway-connection). |
+   | **Összekötő átjáró** | Igen, Windows-hitelesítéshez | Az Azure-ban korábban létrehozott adatátjáró-erőforrás neve <p><p>**Tipp**: Ha az átjáró nem jelenik meg a listában, ellenőrizze, hogy megfelelően [állította-e be az átjárót](../logic-apps/logic-apps-gateway-connection.md). |
    |||
 
    > [!TIP]
@@ -171,7 +171,7 @@ Amikor először ad hozzá egy [SQL-triggert](#add-sql-trigger) vagy egy [SQL-m�
 
    Ez az trigger csak egy sort ad vissza a kijelölt táblából, és semmi más nem. Más feladatok végrehajtásához folytassa a műveletet egy SQL- [összekötő](#add-sql-action) vagy egy [másik művelet](../connectors/apis-list.md) hozzáadásával, amely a logikai alkalmazás munkafolyamatában kívánt következő feladatot hajtja végre.
    
-   Ha például meg szeretné tekinteni az ebben a sorban lévő adatok megjelenítését, hozzáadhat más műveleteket is, amelyek a visszaadott sorból származó mezőket tartalmazzák, majd e-mail-riasztásokat küldenek. Ha többet szeretne megtudni az összekötőhöz elérhető egyéb műveletekről, tekintse [meg az összekötő hivatkozási oldalát](https://docs.microsoft.com/connectors/sql/).
+   Ha például meg szeretné tekinteni az ebben a sorban lévő adatok megjelenítését, hozzáadhat más műveleteket is, amelyek a visszaadott sorból származó mezőket tartalmazzák, majd e-mail-riasztásokat küldenek. Ha többet szeretne megtudni az összekötőhöz elérhető egyéb műveletekről, tekintse [meg az összekötő hivatkozási oldalát](/connectors/sql/).
 
 1. A tervező eszköztárán válassza a **Mentés**lehetőséget.
 
@@ -201,7 +201,7 @@ Ebben a példában a logikai alkalmazás az [ismétlődési eseményindítóval]
 
    ![Válassza ki a táblanév nevet, és adja meg a sor AZONOSÍTÓját](./media/connectors-create-api-sqlazure/specify-table-row-id.png)
 
-   Ez a művelet csak egy sort ad vissza a kijelölt táblából, semmi más. Így az ebben a sorban lévő adatok megtekintéséhez hozzáadhat más műveleteket is, amelyek a visszaadott sorból származó mezőket tartalmazzák, és a fájlt egy felhőalapú Storage-fiókban tárolják. Ha többet szeretne megtudni az összekötőhöz elérhető egyéb műveletekről, tekintse [meg az összekötő hivatkozási oldalát](https://docs.microsoft.com/connectors/sql/).
+   Ez a művelet csak egy sort ad vissza a kijelölt táblából, semmi más. Így az ebben a sorban lévő adatok megtekintéséhez hozzáadhat más műveleteket is, amelyek a visszaadott sorból származó mezőket tartalmazzák, és a fájlt egy felhőalapú Storage-fiókban tárolják. Ha többet szeretne megtudni az összekötőhöz elérhető egyéb műveletekről, tekintse [meg az összekötő hivatkozási oldalát](/connectors/sql/).
 
 1. Ha elkészült, a tervező eszköztárán válassza a **Mentés**lehetőséget.
 
@@ -217,13 +217,13 @@ Időnként úgy kell dolgoznia az eredményhalmazt, hogy az összekötő ne adja
 
   Több sor beolvasása vagy beillesztése esetén a logikai [alkalmazás ezen](../logic-apps/logic-apps-limits-and-config.md)sorokon keresztül is megismételheti [*ezeket a sorokat*](../logic-apps/logic-apps-control-flow-loops.md#until-loop) . Ha azonban a logikai alkalmazásnak a rekordhalmazokkal együtt kell működnie, például több ezer vagy több millió sorból, akkor az adatbázis felé irányuló hívások költségeinek minimalizálására van szükség.
 
-  Az eredmények a kívánt módon történő rendezéséhez létrehozhat egy [*tárolt eljárást*](https://docs.microsoft.com/sql/relational-databases/stored-procedures/stored-procedures-database-engine) , amely az SQL-példányban fut, és a **Select-Order by** utasítást használja. Ez a megoldás az eredmények méretének és szerkezetének nagyobb mértékű szabályozását teszi lehetővé. A logikai alkalmazás meghívja a tárolt eljárást az SQL Server-összekötő által **tárolt eljárás végrehajtása** művelettel.
+  Az eredmények a kívánt módon történő rendezéséhez létrehozhat egy [*tárolt eljárást*](/sql/relational-databases/stored-procedures/stored-procedures-database-engine) , amely az SQL-példányban fut, és a **Select-Order by** utasítást használja. Ez a megoldás az eredmények méretének és szerkezetének nagyobb mértékű szabályozását teszi lehetővé. A logikai alkalmazás meghívja a tárolt eljárást az SQL Server-összekötő által **tárolt eljárás végrehajtása** művelettel.
 
   További megoldási részletekért tekintse meg a következő cikkeket:
 
   * [SQL-tördelés a tömeges adatátvitel Logic Apps](https://social.technet.microsoft.com/wiki/contents/articles/40060.sql-pagination-for-bulk-data-transfer-with-logic-apps.aspx)
 
-  * [SELECT-ORDER BY záradék](https://docs.microsoft.com/sql/t-sql/queries/select-order-by-clause-transact-sql)
+  * [SELECT-ORDER BY záradék](/sql/t-sql/queries/select-order-by-clause-transact-sql)
 
 ### <a name="handle-dynamic-bulk-data"></a>Dinamikus tömeges adatmennyiség kezelése
 
@@ -250,8 +250,9 @@ Ha tárolt eljárást hív meg az SQL Server-összekötő használatával, a vis
 
 ## <a name="connector-specific-details"></a>Összekötő-specifikus részletek
 
-Az összekötő eseményindítókkal, műveletekkel és korlátozásokkal kapcsolatos technikai információkért tekintse [meg az összekötő hivatkozási oldalát](https://docs.microsoft.com/connectors/sql/), amely a hencegés leírásában jön létre.
+Az összekötő eseményindítókkal, műveletekkel és korlátozásokkal kapcsolatos technikai információkért tekintse [meg az összekötő hivatkozási oldalát](/connectors/sql/), amely a hencegés leírásában jön létre.
 
 ## <a name="next-steps"></a>További lépések
 
 * További tudnivalók [a Azure Logic apps-összekötők](../connectors/apis-list.md) használatáról
+

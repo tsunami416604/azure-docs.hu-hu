@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/10/2020
 ms.author: erhopf
-ms.openlocfilehash: 53c9931e84a2338af2f51fc3a9937034e7f395a3
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 517b092f933bedae0f254461d9bfee4d4640db8b
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84609299"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87375084"
 ---
 Visual Studio-projekt C++ asztali fejlesztéshez való létrehozásához be kell állítania a Visual Studio fejlesztői beállításait, létre kell hoznia a projektet, ki kell választania a cél architektúrát, és telepítenie kell a Speech SDK-t.
 
@@ -29,7 +29,7 @@ A kezdéshez győződjön meg arról, hogy megfelelően van-e beállítva a Visu
 
 1. A **munkaterhelések** lapon, a **Windows**alatt keresse meg az **asztali fejlesztés C++** munkaterheléssel című részt. Ha a munkaterhelés melletti jelölőnégyzet még nincs kiválasztva, válassza ki.
 
-1. Az **egyes összetevők** lapon keresse meg a **Nuget csomagkezelő** jelölőnégyzetet. Ha a jelölőnégyzet nincs bejelölve, jelölje ki.
+1. Az **egyes összetevők** lapon keresse meg a **NuGet csomagkezelő** jelölőnégyzetet. Ha a jelölőnégyzet nincs bejelölve, jelölje ki.
 
 1. Kattintson a **Bezárás** vagy a **módosítás**gombra a sarokban. (A gomb neve attól függően változik, hogy van-e a telepítéshez kiválasztott szolgáltatások.) Ha a **módosítás**lehetőséget választja, a telepítés megkezdődik, ami eltarthat egy ideig.
 
@@ -73,8 +73,8 @@ Végül telepítse a [SPEECH SDK NuGet-csomagot](https://aka.ms/csspeech/nuget),
 
 1. A keresési eredmények melletti csomag állapota ablaktáblán válassza ki a **HelloWorld** -projektet.
 
-1. Válassza az **Install** (Telepítés) lehetőséget.
+1. Válassza a **Telepítés** lehetőséget.
 
 1. A **módosítások előnézete** párbeszédpanelen kattintson **az OK gombra**.
 
-1. A **licenc elfogadása** párbeszédpanelen tekintse meg a licencet, majd válassza az **Elfogadom**lehetőséget. A csomag telepítése megkezdődik, és amikor a telepítés befejeződött, a **kimenet** ablaktáblán a következő szöveghez hasonló üzenet jelenik meg: `Successfully installed 'Microsoft.CognitiveServices.Speech 1.12.1' to helloworld` .
+1. A **licenc elfogadása** párbeszédpanelen tekintse meg a licencet, majd válassza az **Elfogadom**lehetőséget. A csomag telepítése megkezdődik, és amikor a telepítés befejeződött, a **kimenet** ablaktáblán a következő szöveghez hasonló üzenet jelenik meg: `Successfully installed 'Microsoft.CognitiveServices.Speech 1.13.0' to helloworld` .

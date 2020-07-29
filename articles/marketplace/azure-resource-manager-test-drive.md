@@ -5,12 +5,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 06/19/2020
-ms.openlocfilehash: 401ffaaa0fa8c8e298a3a1891d93f2c9039d7820
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.author: keferna
+author: keferna
+ms.openlocfilehash: 92fd4d629585ed465e2891be2dce1c1bdc8c88e6
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86102939"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287949"
 ---
 # <a name="azure-resource-manager-test-drive"></a>Azure Resource Manager tesztelési meghajtó
 
@@ -102,7 +104,7 @@ Használja ezt a paramétert a sablonon belül, hogy bármely fájl URI-ját lé
 }
 ```
 
-#### <a name="username"></a>felhasználónév
+#### <a name="username"></a>username
 
 A test Drive inicializálja ezt a paramétert egy új véletlenszerű felhasználónévvel:
 
@@ -311,7 +313,7 @@ Az utolsó szakasz a tesztelési meghajtók automatikus üzembe helyezése az Az
    6. Válassza a **Létrehozás** lehetőséget.
    7. Az alkalmazás létrehozása után válassza a **Tulajdonságok**  >  **több-bérlős beállítást** , majd a **Mentés**lehetőséget.
 
-4. Kattintson a **Mentés** gombra.
+4. Válassza a **Mentés** lehetőséget.
 
 5. Másolja ki az alkalmazás AZONOSÍTÓját a regisztrált alkalmazáshoz, és illessze be a test Drive (teszt) mezőbe.
 
@@ -329,7 +331,7 @@ Az utolsó szakasz a tesztelési meghajtók automatikus üzembe helyezése az Az
 
       ![Engedélyek hozzáadása](media/test-drive/access-control-permissions.jpg)
 
-   1. Kattintson a **Mentés** gombra.
+   1. Válassza a **Mentés** lehetőséget.
 
 7. **Azure ad alkalmazás** hitelesítési kulcs létrehozása. A **kulcsok**területen adja meg a **kulcs leírását**, állítsa be az időtartamot, hogy **Soha ne járjon le** (a lejárt kulcs megszakítja a tesztelési meghajtót éles környezetben), majd válassza a **Mentés**lehetőséget. Másolja és illessze be ezt az értéket a szükséges tesztvezetés mezőjébe.
 
@@ -349,7 +351,7 @@ Ne törölje az ügyfelek számára kiépített tesztvezetés-példányokat. a t
 
 Ha már elégedett az előzetes verzió ajánlatával, itt az ideje, hogy **éljünk**! Végső felülvizsgálati folyamattal ellenőrizheti a teljes végpontok közötti élményt. Ha elutasítjuk az ajánlatot, elküldjük Önnek az ajánlat mérnöki kapcsolattartóját, amely elmagyarázza, mit kell rögzíteni.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ha követte az ajánlat a partner Centerben való létrehozásához szükséges utasításokat, a vissza nyílra kattintva térjen vissza ehhez a témakörhöz.
 - További információ a tesztelési meghajtók egyéb típusairól: [Mi a test Drive?](what-is-test-drive.md).

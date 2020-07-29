@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 34d2d96e28f90249ad25788f6994dac63f83b1f6
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 6a686f6915e332893f619e66944591999063a07c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261953"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288170"
 ---
-# <a name="add-a-bar-chart-layer"></a>Oszlopdiagram rétegének hozzáadása
+# <a name="add-a-bar-chart-layer"></a>Oszlopdiagram-réteg hozzáadása
 
-A **sávdiagram réteg** akkor hasznos, ha a következő dimenzióba helyezi az adatgyűjtést, mivel lehetővé teszi a helyadatok 3D sávokként vagy hengerként való megjelenítését a térképen. A buborék réteghez hasonlóan a diagram később is könnyedén megjelenítheti két mérőszámot a szín és a relatív magasság használatával. Ahhoz, hogy a sávok magassága meglegyenek, fel kell venni egy mértéket a **mezők** ablaktábla **méret** gyűjtőbe. Ha egy mérték nincs megadva, a **sáv alakzat** beállításától függően a rendszer nem tartalmaz magasság nélküli négyzeteket vagy köröket.
+A **sávdiagram réteg** akkor hasznos, ha a következő dimenzióba helyezi az adatgyűjtést, mivel lehetővé teszi a helyadatok 3D sávokként vagy hengerként való megjelenítését a térképen. A buborék réteghez hasonlóan a diagram később is könnyedén megjelenítheti két mérőszámot a szín és a relatív magasság használatával. Ahhoz, hogy a sávok magassága meglegyenek, fel kell venni egy mértéket a **mezők** ablaktábla **méret** gyűjtőbe. Ha nincs megadva mérték, a **sáv alakú alakzat** beállítástól függően a magasság nélküli sávok nem jelennek meg lapos négyzetként vagy körökként.
 
 > [!div class="mx-imgBorder"]
 > ![Térképi pont adatai a sávdiagram réteggel](media/power-bi-visual/bar-chart-layer-styled.png)
@@ -55,12 +55,12 @@ A következő beállítások szerepelnek a **sávdiagramok réteg** szakaszban e
 > [!NOTE]
 > Ha a sávoknál kis szélességű érték van letiltva, és a **Méretezés szélessége a nagyítási** beállításnál le van tiltva, akkor eltűnnek, ha a kinagyított szélessége nagyobb, mint a képpontnál kisebb méret. Ha azonban a **méretezési szélesség a nagyításkor** beállítás engedélyezve van, további számítások történnek, amikor a nagyítási szint megváltozik, ami hatással lehet a nagyméretű adathalmazok teljesítményére.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További környezet hozzáadása a térképhez:
 
 > [!div class="nextstepaction"]
-> [Hivatkozási réteg hozzáadása](power-bi-visual-add-reference-layer.md)
+> [Referenciaréteg hozzáadása](power-bi-visual-add-reference-layer.md)
 
 > [!div class="nextstepaction"]
 > [Mozaikréteg hozzáadása](power-bi-visual-add-tile-layer.md)

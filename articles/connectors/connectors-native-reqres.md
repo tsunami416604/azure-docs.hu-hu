@@ -7,12 +7,12 @@ ms.reviewers: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 05/29/2020
 tags: connectors
-ms.openlocfilehash: 25aafee59c7f5f7ae59aa2fd7871de8926907f68
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: ae34840c04c3a1d2fb3646046792c97ed6f521a0
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261372"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289441"
 ---
 # <a name="receive-and-respond-to-inbound-https-requests-in-azure-logic-apps"></a>Bejövő HTTPS-kérések fogadása és válasza Azure Logic Apps
 
@@ -24,7 +24,7 @@ A [Azure Logic apps](../logic-apps/logic-apps-overview.md) és a beépített ké
 
 * Egy másik logikai alkalmazástól érkező HTTPS-hívás fogadása és megválaszolása.
 
-A kérelem-trigger támogatja [Azure Active Directory nyílt hitelesítés](/azure/active-directory/develop/) (Azure ad OAuth) használatát a logikai alkalmazás bejövő hívásainak engedélyezéséhez. A hitelesítés engedélyezésével kapcsolatos további információkért tekintse [meg a biztonságos hozzáférés és adatok Azure Logic apps – Azure ad OAuth-hitelesítés engedélyezése](../logic-apps/logic-apps-securing-a-logic-app.md#enable-oauth)című témakört.
+A kérelem-trigger támogatja [Azure Active Directory nyílt hitelesítés](../active-directory/develop/index.yml) (Azure ad OAuth) használatát a logikai alkalmazás bejövő hívásainak engedélyezéséhez. A hitelesítés engedélyezésével kapcsolatos további információkért tekintse [meg a biztonságos hozzáférés és adatok Azure Logic apps – Azure ad OAuth-hitelesítés engedélyezése](../logic-apps/logic-apps-securing-a-logic-app.md#enable-oauth)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -36,7 +36,7 @@ A kérelem-trigger támogatja [Azure Active Directory nyílt hitelesítés](/azu
 
 ## <a name="transport-layer-security-tls"></a>Transport Layer Security (TLS)
 
-* A bejövő hívások *csak* TRANSPORT Layer Security (TLS) 1,2-es támogatást támogatják. Ha TLS-kézfogási hibákat kap, győződjön meg arról, hogy a TLS 1,2-et használja. További információ: [a TLS 1,0-probléma megoldása](https://docs.microsoft.com/security/solving-tls1-problem). A kimenő hívások a TLS 1,0, 1,1 és 1,2 protokollt támogatják a célként megadott végpont képességei alapján.
+* A bejövő hívások *csak* TRANSPORT Layer Security (TLS) 1,2-es támogatást támogatják. Ha TLS-kézfogási hibákat kap, győződjön meg arról, hogy a TLS 1,2-et használja. További információ: [a TLS 1,0-probléma megoldása](/security/solving-tls1-problem). A kimenő hívások a TLS 1,0, 1,1 és 1,2 protokollt támogatják a célként megadott végpont képességei alapján.
 
 * A bejövő hívások a következő titkosítási csomagokat támogatják:
 
@@ -181,7 +181,7 @@ Ez a beépített trigger egy manuálisan megadható HTTPS-végpontot hoz létre,
 
    | Tulajdonság neve | JSON-tulajdonság neve | Kötelező | Leírás |
    |---------------|--------------------|----------|-------------|
-   | **Módszer** | `method` | Nem | Az a módszer, amelyet a bejövő kérelemnek használnia kell a logikai alkalmazás meghívásához. |
+   | **Metódus** | `method` | Nem | Az a módszer, amelyet a bejövő kérelemnek használnia kell a logikai alkalmazás meghívásához. |
    | **Relatív elérési út** | `relativePath` | Nem | Annak a paraméternek a relatív elérési útja, amelyet a logikai alkalmazás végpontjának URL-címe el tud fogadni |
    |||||
 
@@ -284,6 +284,7 @@ A logikai alkalmazás csak [korlátozott ideig](../logic-apps/logic-apps-limits-
 
 1. Ha elkészült, mentse a logikai alkalmazást. A tervező eszköztárán válassza a **Mentés**lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Összekötők a Logic Apps számára](../connectors/apis-list.md)
+

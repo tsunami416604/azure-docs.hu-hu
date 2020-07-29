@@ -1,25 +1,19 @@
 ---
 title: A Trend Micro Deep Security telepítése virtuális gépen
 description: Ez a cikk bemutatja, hogyan telepítheti és konfigurálhatja a Trend Micro Security szolgáltatást a klasszikus üzembe helyezési modellel létrehozott virtuális gépeken az Azure-ban.
-services: virtual-machines-windows
-documentationcenter: ''
 author: axayjo
-manager: gwallace
-editor: ''
 tags: azure-service-management
-ms.assetid: e991b635-f1e2-483f-b7ca-9d53e7c22e2a
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-multiple
 ms.topic: article
 ms.date: 04/20/2018
 ms.author: akjosh
-ms.openlocfilehash: c4a4f641283a9a4771a236ba844cfe296b31c28c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bed1d567aa48a11c01ae952e6a4a2028e260e6e0
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082678"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288523"
 ---
 # <a name="how-to-install-and-configure-trend-micro-deep-security-as-a-service-on-a-windows-vm"></a>A Trend Micro Deep Security telepítése és konfigurálása Windows rendszerű virtuális gépen
 
@@ -100,4 +94,4 @@ Néhány percet vesz igénybe, amíg az ügynök elindul a telepítéskor. Ezt k
 
 <!-- Link references -->
 [Bejelentkezés Windows Servert futtató virtuális gépre]:../windows/classic/connect-logon.md
-[Azure-beli virtuálisgép-bővítmények és-funkciók]: https://go.microsoft.com/fwlink/p/?linkid=390493&clcid=0x409
+[Azure-beli virtuálisgép-bővítmények és-funkciók]: features-windows.md

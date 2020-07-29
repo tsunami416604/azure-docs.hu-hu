@@ -5,12 +5,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 02/20/2020
 ms.author: trbye
-ms.openlocfilehash: bae1ff0ff3bb7f81b2a56fb5cb9fa71c0e07885f
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: cc44b587bfa3b65b551df46bef025b461c8f6849
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84637581"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87374817"
 ---
 Ebből a rövid útmutatóból megtudhatja, hogyan használhatja a Linux Speech Devices SDK-t egy beszédfelismerésre alkalmas termék létrehozásához vagy [beszélgetéses átírási](../conversation-transcription-service.md) eszközként való használatához. Jelenleg csak az [Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/) támogatott.
 
@@ -76,11 +76,11 @@ Ha azt tervezi, hogy használja a leképezéseket, szüksége lesz egy [Language
 
 1. Az Eclipse menüsávban hozzon létre egy új projektet a **fájl**  >  **új**  >  **Java-projekt**lehetőség kiválasztásával. Ha nem érhető el, válassza a **projekt** , majd a **Java-projekt**lehetőséget.
 
-1. Elindul az **új Java-projekt** varázsló. **Tallózással keresse** meg a minta projekt helyét. Válassza a **Befejezés** gombot.
+1. Elindul az **új Java-projekt** varázsló. **Tallózással keresse** meg a minta projekt helyét. Válassza a **Befejezés** lehetőséget.
 
    ![A New Java Project varázsló képernyőképe](../media/speech-devices-sdk/eclipse-new-java-project-linux.png)
 
-1. A **Package Explorerben**kattintson a jobb gombbal a projektre. Válassza **Configure**  >  a helyi menü**Konvertálás a Maven-re projektre** parancsát. Válassza a **Befejezés** gombot.
+1. A **Package Explorerben**kattintson a jobb gombbal a projektre. Válassza **Configure**  >  a helyi menü**Konvertálás a Maven-re projektre** parancsát. Válassza a **Befejezés** lehetőséget.
 
    ![A Package Explorer képernyőképe](../media/speech-devices-sdk/eclipse-convert-to-maven.png)
 
@@ -100,7 +100,7 @@ Ha azt tervezi, hogy használja a leképezéseket, szüksége lesz egy [Language
         <dependency>
              <groupId>com.microsoft.cognitiveservices.speech</groupId>
              <artifactId>client-sdk</artifactId>
-             <version>1.12.1</version>
+             <version>1.13.0</version>
         </dependency>
     </dependencies>
    ```

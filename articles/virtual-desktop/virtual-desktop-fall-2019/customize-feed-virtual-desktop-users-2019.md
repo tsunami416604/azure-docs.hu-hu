@@ -1,6 +1,6 @@
 ---
-title: A Windows rendszerű virtuális asztal hírcsatornájának testreszabása a 2019 felhasználók számára – Azure
-description: A Windows rendszerű virtuális asztali felhasználók hírcsatornáinak testreszabása PowerShell-parancsmagokkal.
+title: Windows rendszerű virtuális asztali (klasszikus) felhasználók hírcsatornáinak testreszabása – Azure
+description: A Windows rendszerű virtuális asztali (klasszikus) felhasználók hírcsatornájának testreszabása PowerShell-parancsmagokkal.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 9c573fc1aa220b9301e51ef0ccb1190d9243250e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ab1206a8963d9ba3b556a48b2e973eea663c9cb8
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87011226"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288649"
 ---
-# <a name="customize-feed-for-windows-virtual-desktop-users"></a>Csatorna személyre szabása Windows Virtual Desktop-felhasználók számára
+# <a name="customize-feed-for-windows-virtual-desktop-classic-users"></a>A Windows rendszerű virtuális asztali (klasszikus) felhasználók hírcsatornáinak testreszabása
 
 >[!IMPORTANT]
->Ez a tartalom a Fall 2019 kiadásra vonatkozik, amely nem támogatja a Windows rendszerű virtuális asztali objektumokat Azure Resource Manager. Ha a Spring 2020 Update szolgáltatásban bevezetett Azure Resource Manager Windows rendszerű virtuális asztali objektumokat szeretne felügyelni, tekintse meg [ezt a cikket](../customize-feed-for-virtual-desktop-users.md).
+>Ez a tartalom a Windows rendszerű virtuális asztali (klasszikus) verzióra vonatkozik, amely nem támogatja Azure Resource Manager Windows rendszerű virtuális asztali objektumokat. Ha Azure Resource Manager Windows rendszerű virtuális asztali objektumokat szeretne felügyelni, tekintse meg [ezt a cikket](../customize-feed-for-virtual-desktop-users.md).
 
 Testreszabhatja a hírcsatornát, hogy a RemoteApp-és távoli asztali erőforrások felismerhető módon jelenjenek meg a felhasználók számára.
 

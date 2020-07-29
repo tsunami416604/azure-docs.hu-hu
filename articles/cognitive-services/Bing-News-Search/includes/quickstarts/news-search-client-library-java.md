@@ -7,13 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/12/2020
+ms.custom: devx-track-java
 ms.author: aahi
-ms.openlocfilehash: 76a752bc108158c998d13a548da535d5fb1d5ee2
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 2edf5634b56fdfa6e1ed7dad9ee443ca588db583
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79503873"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87374649"
 ---
 Ezzel a rövid útmutatóval megkezdheti a Java-hoz készült Bing News Search ügyféloldali kódtáraval kapcsolatos hírek keresését. Habár a Bing News Search REST API kompatibilis a legtöbb programozási nyelvvel, az ügyféloldali kódtár egyszerű módszert kínál a szolgáltatás integrálására az alkalmazásokba. A minta forráskódja a [githubon](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingNewsSearch)található.
 
@@ -52,7 +53,7 @@ import java.io.IOException;
 
 ## <a name="create-a-search-client-and-store-credentials"></a>Keresési ügyfél létrehozása és a hitelesítő adatok tárolása
 
-1. Hozzon létre egy `getClient()` nevű metódust, `NewsSearchAPIImpl` amely új keresési ügyfelet ad vissza. Adja hozzá a végpontot az új`NewsSearchAPIImpl` objektum első paramétereként, valamint egy új `ServiceClientCredentials` objektumot a hitelesítő adatok tárolásához. 
+1. Hozzon létre egy nevű metódust `getClient()` , amely új `NewsSearchAPIImpl` keresési ügyfelet ad vissza. Adja hozzá a végpontot az új objektum első paramétereként `NewsSearchAPIImpl` , valamint egy új `ServiceClientCredentials` objektumot a hitelesítő adatok tárolásához. 
 
     ```java
     public static NewsSearchAPIImpl getClient(final String subscriptionKey) {
@@ -62,7 +63,7 @@ import java.io.IOException;
     }
     ```
 
-2. Az `ServiceClientCredentials` objektum létrehozásához bírálja felül `applyCredentialsFilter()` a függvényt. `OkHttpClient.Builder` Adja át a metódust, és a Builder `addNetworkInterceptor()` metódusával hozza létre az ügyfél-függvénytár hívásához szükséges hitelesítő adatokat.
+2. Az objektum létrehozásához `ServiceClientCredentials` bírálja felül a `applyCredentialsFilter()` függvényt. Adja át `OkHttpClient.Builder` a metódust, és a Builder `addNetworkInterceptor()` metódusával hozza létre az ügyfél-függvénytár hívásához szükséges hitelesítő adatokat.
 
     ```java
     new ServiceClientCredentials() {
@@ -121,7 +122,7 @@ import java.io.IOException;
     
     ```
 
-2. Adja hozzá a keresési metódust `main()` egy metódushoz a kód végrehajtásához.
+2. Adja hozzá a keresési metódust egy `main()` metódushoz a kód végrehajtásához.
 
     ```java 
     public static void main(String[] args) {

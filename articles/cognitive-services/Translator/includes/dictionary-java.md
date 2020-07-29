@@ -3,13 +3,14 @@ author: erhopf
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
+ms.custom: devx-track-java
 ms.author: erhopf
-ms.openlocfilehash: 1d7e1156e55cec546bd620f0402ad0e5946002e4
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: f9fe8a6c055fa0e9a65ae32adf048b1b1e798170
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83587023"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87374929"
 ---
 [!INCLUDE [Prerequisites](prerequisites-java.md)]
 
@@ -154,7 +155,7 @@ public static void main(String[] args) {
 }
 ```
 
-## <a name="run-the-sample-app"></a>Mintaalkalmazás futtatása
+## <a name="run-the-sample-app"></a>A mintaalkalmazás futtatása
 
 Ekkor készen áll a minta alkalmazás futtatására. A parancssorból (vagy a terminál-munkamenetből) navigáljon a munkakönyvtár gyökeréhez, és futtassa a következőt:
 
@@ -234,4 +235,4 @@ gradle run
 Tekintse meg az API-referenciát, amely mindent megtudhat a fordítóval.
 
 > [!div class="nextstepaction"]
-> [API-referenciák](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)
+> [API-leírások](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

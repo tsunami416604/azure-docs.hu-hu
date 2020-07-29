@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: vikrambmsft
 ms.author: vikramb
 ms.date: 04/15/2020
-ms.openlocfilehash: 8e029d888b963fd10e7198486a973766755c9812
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 54b34b1900fd928ea45d586bcdf6acd7d9a8a441
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119514"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287836"
 ---
 # <a name="integrated-solutions-in-the-commercial-marketplace"></a>Integrált megoldások a kereskedelmi piactéren
 Az integrált megoldás a Microsoft partnerei által nyújtott legjobb technológiákat, valamint a szakértői szolgáltatások partnerei által biztosított konzultációt, üzembe helyezést és támogatást is magában foglal.
@@ -35,7 +35,7 @@ További információ: [integrált megoldás közzététele](./integrated-soluti
 
 A programban részt vevő partnereknek meg kell határozniuk más partnereket, akikkel dolgozni kívánnak. Az [integrált megoldások jelölési formáját](https://assetsprod.microsoft.com/mpn/integrated-solutions-partner-nomination.docx)kell végrehajtaniuk. Az integrált megoldási program csapata a jelölést a 10 munkanapon belül követi. A csapat jóváhagyást és további lépéseket is biztosít.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az alábbi értékes partnerekkel is felfedezheti az integrált megoldásokat:
 
@@ -44,7 +44,7 @@ Az alábbi értékes partnerekkel is felfedezheti az integrált megoldásokat:
 * [Hitel portfolió-elemzés](https://azuremarketplace.microsoft.com/marketplace/consulting-services/rcg-us.rcg-enable-credit-analytics)
 * [Egészségügyi Felhőbeli biztonsági verem](https://azuremarketplace.microsoft.com/marketplace/consulting-services/xentit.azure-xentit-trendmicro-qualys-hcss-12months)
 * [DevOps gyorsítási motor](https://azuremarketplace.microsoft.com/marketplace/consulting-services/sirrus7.sirrus7-devops-acceleration-engine?search=devops%20acceleration%20engine&page=1)
-* [A Windows Server támogatásának vége](https://azuremarketplace.microsoft.com/marketplace/consulting-services/new-signature.eos_appfactory)
+* [A Windows Server támogatásának vége](https://azuremarketplace.microsoft.com/marketplace/apps/stratum.eos_windows?tab=Overview)
 * [Gyors adatközpont-konszolidációs Jumpstart](https://azuremarketplace.microsoft.com/marketplace/consulting-services/rivermeadowsoftwareinc.rapid-datacenter-consolidation-jumpstart?flightCodes=100discovermigrate)
 * [DeviceTone IoT a csatlakoztatott mező szolgáltatáshoz](https://azuremarketplace.microsoft.com/marketplace/apps/marketplaceprodware.devicetone_iot_for_connected_field_service?tab=Overview)
 * [Egyszólamú: egységes marketing-kezelési megoldás](https://appsource.microsoft.com/marketplace/consulting-services/barhead_solutions.unison_p2p?pub_source=email&pub_status=success)

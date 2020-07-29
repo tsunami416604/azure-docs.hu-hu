@@ -3,12 +3,13 @@ title: Bármilyen környezetben futó Java-alkalmazások figyelése – Azure Mo
 description: Alkalmazások teljesítményének figyelése bármilyen környezetben futó Java-alkalmazásokhoz a Java önálló ügynökkel az alkalmazás kialakítása nélkül. Elosztott nyomkövetési és alkalmazás-hozzárendelés.
 ms.topic: conceptual
 ms.date: 04/16/2020
-ms.openlocfilehash: 6499fbc62a78cb333c623dbea8269144e623921c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-java
+ms.openlocfilehash: b1a23c01fdf8a0145c26b709f36709a7b710103f
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87014241"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87374303"
 ---
 # <a name="configuring-jvm-args-java-standalone-agent-for-azure-monitor-application-insights"></a>A JVM-argumentumok konfigurálása a Java önálló ügynöke Azure Monitor Application Insights
 

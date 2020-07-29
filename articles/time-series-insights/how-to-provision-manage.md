@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 07/08/2020
 ms.custom: seodec18
-ms.openlocfilehash: d067d4a7fff385deea946ffa5475e1eb83548a50
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e71c426fee62187bb680c7b8bd1af92d87e85274
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87098764"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288803"
 ---
 # <a name="provision-and-manage-azure-time-series-insights-gen2"></a>Azure Time Series Insights Gen2 kiépítése és kezelése
 
@@ -93,7 +93,7 @@ Azure Time Series Insights Gen2-környezetét a Azure Portal használatával kez
 
 * A Azure Portal a **configure (Konfigurálás** ) panel el lesz távolítva, mivel a skálázási egységek nem vonatkoznak Azure Time Series Insights Gen2 környezetekre. A **tárolási konfigurációval** azonban az újonnan bevezetett meleg tárolót is konfigurálhatja.
 
-* A Azure Portal **hivatkozási** adatpanelje el lett távolítva a Azure Time Series Insights Gen2, mert a hivatkozási adatkoncepciót a [Time Series Model (TSM)](./time-series-insights-update-how-to-tsm.md)váltotta fel.
+* A Azure Portal **hivatkozási** adatpanelje el lett távolítva a Azure Time Series Insights Gen2, mert a hivatkozási adatkoncepciót a [Time Series Model (TSM)](/azure/time-series-insights/concepts-model-overview)váltotta fel.
 
 [![Azure Time Series Insights Gen2-környezet a Azure Portal](media/v2-update-manage/create-and-manage-overview-confirm.png)](media/v2-update-manage/create-and-manage-overview-confirm.png#lightbox)
 

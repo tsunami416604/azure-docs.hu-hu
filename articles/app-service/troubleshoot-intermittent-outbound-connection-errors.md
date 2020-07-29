@@ -4,14 +4,15 @@ description: Az időszakos kapcsolati hibák és a kapcsolódó teljesítménnye
 author: v-miegge
 manager: barbkess
 ms.topic: troubleshooting
-ms.date: 03/24/2020
+ms.date: 07/24/2020
 ms.author: ramakoni
 ms.custom: security-recommendations
-ms.openlocfilehash: 704c6b026ab656ce52b34e5ac70ba7e2087ccbcd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4d337c9cff4b0d7dbfb18a7ba0cf213265286017
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85252440"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289147"
 ---
 # <a name="troubleshooting-intermittent-outbound-connection-errors-in-azure-app-service"></a>Az időszakos kimenő kapcsolatok hibáinak elhárítása a Azure App Serviceban
 
@@ -36,6 +37,8 @@ Ezen tünetek egyik fő oka, hogy az alkalmazás példánya nem tud új kapcsol�
 Amikor az alkalmazások és a függvények gyorsan megnyitnak egy új csatlakozást, gyorsan kihasználhatják az 128-es portok előre lefoglalt kvótáját. Ezután le lesznek tiltva, amíg egy új SNAT-port elérhetővé válik, vagy a további SNAT-portok dinamikusan kiosztásával, vagy egy visszaigényelt SNAT-port újbóli használatával. Azok az alkalmazások vagy függvények, amelyek nem tudnak új kapcsolatokat létrehozni, a jelen cikk a **jelenségek** című szakaszában ismertetett problémák valamelyikével kezdődnek.
 
 ## <a name="avoiding-the-problem"></a>A probléma elkerülése
+
+Ha a cél egy olyan Azure-szolgáltatás, amely támogatja a szolgáltatási végpontokat, az [VNet-integráció](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet) és a szolgáltatási végpontok segítségével elkerülheti a SNAT a portok kimerülésével kapcsolatos problémákat. Ha a VNet-integrációt és a szolgáltatási végpontokat használja az integrációs alhálózaton, az alkalmazás kimenő forgalma ezekre a szolgáltatásokra nem lesz kimenő SNAT.
 
 A SNAT-port problémájának elkerülése azt jelenti, hogy az új kapcsolatok ismételt létrehozását nem kell ismétlődő módon létrehozni ugyanahhoz a gazdagéphez és porthoz.
 
@@ -121,7 +124,7 @@ Más környezetek esetén tekintse át a szolgáltatót vagy az illesztőprogram
 
 A kimenő TCP-korlátok elkerülése könnyebben megoldható, mivel a korlátokat a feldolgozók mérete határozza meg. Megtekintheti a [homokozóban futó virtuális gépek numerikus korlátait – TCP-kapcsolatok](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#cross-vm-numerical-limits)
 
-|Korlát neve|Description|Kicsi (a1)|Közepes (a2)|Nagyméretű (a3)|Elkülönített rétegek|
+|Korlát neve|Leírás|Kicsi (a1)|Közepes (a2)|Nagyméretű (a3)|Elkülönített rétegek|
 |---|---|---|---|---|---|
 |Kapcsolatok|Kapcsolatok száma a teljes virtuális gépen|1920|3968|8064|16000|
 
@@ -153,7 +156,7 @@ A TCP-kapcsolatok és a SNAT portok nem közvetlenül kapcsolódnak egymáshoz. 
 * A TCP-kapcsolatok korlátja a feldolgozói példány szintjén történik. Az Azure hálózati kimeneti terheléselosztás nem használja a TCP-kapcsolatok metrikáját a SNAT-portok korlátozásához.
 * A TCP-kapcsolatok korlátozásait a [homokozóban futó virtuális gépek numerikus korlátai – TCP-kapcsolatok](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#cross-vm-numerical-limits) című cikk írja le.
 
-|Korlát neve|Description|Kicsi (a1)|Közepes (a2)|Nagyméretű (a3)|Elkülönített rétegek|
+|Korlát neve|Leírás|Kicsi (a1)|Közepes (a2)|Nagyméretű (a3)|Elkülönített rétegek|
 |---|---|---|---|---|---|
 |Kapcsolatok|Kapcsolatok száma a teljes virtuális gépen|1920|3968|8064|16000|
 

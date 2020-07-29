@@ -8,13 +8,14 @@ ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: include
 ms.date: 12/19/2019
+ms.custom: devx-track-java
 ms.author: pafarley
-ms.openlocfilehash: 6506dd0a0aea1957db85658e4f70aed4df72d071
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 295b87a8aca2a46da77e3ddc51ca54a09c0c04d9
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87102737"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87375470"
 ---
 <a name="HOLTop"></a>
 
@@ -238,7 +239,7 @@ Futtassa az alkalmazást a `gradle run` paranccsal:
 gradle run
 ```
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforrást vagy az erőforráscsoportot. Az erőforráscsoport törlésével a hozzá társított egyéb erőforrások is törlődnek.
 

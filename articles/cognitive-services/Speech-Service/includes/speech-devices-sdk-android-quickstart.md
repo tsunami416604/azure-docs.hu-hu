@@ -5,12 +5,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 02/20/2020
 ms.author: trbye
-ms.openlocfilehash: 04c31a12348fe0059bcfd417682647676dbc8948
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: abc9a42c7ced6a71f93c00968eb825f28f720843
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84637475"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87375581"
 ---
 Ebből a rövid útmutatóból megtudhatja, hogyan használhatja az Androidhoz készült Speech Devices SDK-t, hogy beszédfelismerésre alkalmas terméket hozzon létre, vagy [beszélgetéses átírási](../conversation-transcription-service.md) eszközként használja azt.
 
@@ -35,7 +35,7 @@ A Speech Devices SDK használatának megkezdése előtt a következőket kell te
 
 - Ha azt tervezi, hogy a Speech Service segítségével azonosítja a szándékokat (vagy műveleteket) a felhasználói hosszúságú kimondott szöveg, szüksége lesz egy [Language Understanding Service (Luis)](https://docs.microsoft.com/azure/cognitive-services/luis/azureibizasubscription) előfizetésre. Ha többet szeretne megtudni a LUIS és a szándék-felismerésről, tekintse meg a következőt: [beszédfelismerési szándékok felismerése Luis-vel, C#](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-recognize-intents-from-speech-csharp).
 
-  [Létrehozhat egy egyszerű Luis-modellt](https://docs.microsoft.com/azure/cognitive-services/luis/) , vagy használhatja a Luis-example. JSON-t. A LUIS-modell a [Speech Devices SDK letöltési webhelyéről](https://aka.ms/sdsdk-luis)érhető el. A modell JSON-fájljának a Luis- [portálra](https://www.luis.ai/home)való feltöltéséhez válassza az **új alkalmazás importálása**lehetőséget, majd válassza ki a JSON-fájlt.
+  [Létrehozhat egy egyszerű Luis-modellt](https://docs.microsoft.com/azure/cognitive-services/luis/) , vagy használhatja a (z) LUIS-example.jsLuis modellt is. A LUIS-modell a [Speech Devices SDK letöltési webhelyéről](https://aka.ms/sdsdk-luis)érhető el. A modell JSON-fájljának a Luis- [portálra](https://www.luis.ai/home)való feltöltéséhez válassza az **új alkalmazás importálása**lehetőséget, majd válassza ki a JSON-fájlt.
 
 - Telepítse a [Android Studio](https://developer.android.com/studio/) és a [Vysor](https://vysor.io/download/) a számítógépre.
 
@@ -58,7 +58,7 @@ A Speech Devices SDK használatának megkezdése előtt a következőket kell te
    >
    > ![Vysor fájl mappája](../media/speech-devices-sdk/qsg-10.png)
    >
-   > Válassza a **Beállítások**lehetőséget. Keressen rá a "MAC-címek" kifejezésre, majd válassza a **MAC-címek**  >  **speciális WLAN**lehetőséget. Jegyezze fel a párbeszédpanel alján megjelenő MAC-címeket.
+   > Válassza a **Beállítások** lehetőséget. Keressen rá a "MAC-címek" kifejezésre, majd válassza a **MAC-címek**  >  **speciális WLAN**lehetőséget. Jegyezze fel a párbeszédpanel alján megjelenő MAC-címeket.
    >
    > ![Vysor MAC-címe](../media/speech-devices-sdk/qsg-11.png)
    >
@@ -96,7 +96,7 @@ A fejlesztői csomag telepítésének ellenőrzéséhez hozza létre és telepí
     A **Build. gradle (modul: alkalmazás)** frissítéséhez adja hozzá ezt a sort a függőségek szakaszhoz. 
     
     ```xml
-    implementation'com.microsoft.cognitiveservices.speech:client-sdk:1.12.1'
+    implementation'com.microsoft.cognitiveservices.speech:client-sdk:1.13.0'
     ```
     
 1. Adja hozzá a beszédfelismerési előfizetéshez tartozó kulcsot a forráskódhoz. Ha szeretné kipróbálni a szándék felismerését, adja hozzá a [Language Understanding szolgáltatás](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) előfizetési kulcsát és az alkalmazás azonosítóját is.
@@ -124,7 +124,7 @@ A fejlesztői csomag telepítésének ellenőrzéséhez hozza létre és telepí
    > [!TIP]
    > [Egyéni kulcsszó is létrehozható](../speech-devices-sdk-create-kws.md).
 
-   Új kulcsszó használatához frissítse a következő két sort a `MainActivity.java` alkalmazásban, és másolja a kulcsszó-csomagot az alkalmazásba. Ha például a "Machine" kulcsszót szeretné használni a Kulcsszóválasztó csomag KWS-Machine. zip fájljában:
+   Új kulcsszó használatához frissítse a következő két sort a `MainActivity.java` alkalmazásban, és másolja a kulcsszó-csomagot az alkalmazásba. Ha például a "Machine" kulcsszót szeretné használni a Kulcsszóválasztó csomag kws-machine.zip:
 
    - Másolja a kulcsszó-csomagot a "C:\SDSDK\Android-Sample-Release\example\app\src\main\assets\" mappába.
    - Frissítse a `MainActivity.java` kulcsszót és a csomag nevét:
@@ -177,6 +177,6 @@ Ha nem tud csatlakozni a beszédfelismerési eszközhöz. Írja be a következő
 ```
 
 > [!NOTE]
-> Ez a parancs az androidos hibakeresési hidat használja, `adb.exe` amely a Android Studio telepítésének része. Ez az eszköz a C:\Users \[ Felhasználónév] \AppData\Local\Android\Sdk\platform-Tools. található. Ezt a könyvtárat hozzáadhatja az elérési úthoz, hogy kényelmesebb legyen a meghívása `adb` . Ellenkező esetben meg kell adnia az ADB. exe telepítésének teljes elérési útját minden meghívott parancsban `adb` .
+> Ez a parancs az androidos hibakeresési hidat használja, `adb.exe` amely a Android Studio telepítésének része. Ez az eszköz a C:\Users \[ Felhasználónév] \AppData\Local\Android\Sdk\platform-Tools. található. Ezt a könyvtárat hozzáadhatja az elérési úthoz, hogy kényelmesebb legyen a meghívása `adb` . Ellenkező esetben meg kell adnia a adb.exe telepítésének teljes elérési útját minden meghívott parancsban `adb` .
 >
 > Ha hibaüzenet jelenik meg, `no devices/emulators found` ellenőrizze, hogy az USB-kábel csatlakoztatva van-e, és hogy a rendszer kiváló minőségű kábelt használ-e.
