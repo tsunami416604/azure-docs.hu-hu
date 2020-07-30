@@ -1,7 +1,7 @@
 ---
 title: 'Oktatóanyag: több, magával ragadó olvasó erőforrásainak integrálása'
 titleSuffix: Azure Cognitive Services
-description: Ebben az oktatóanyagban egy Node. js-alkalmazást fog létrehozni, amely a sokrétű olvasót több, az olvasó erőforrásainak használatával indítja el.
+description: Ebben az oktatóanyagban létre fog hozni egy Node.js alkalmazást, amely a sokrétű olvasót több, az olvasó erőforrásainak használatával indítja el.
 author: skamal
 manager: nitinme
 ms.service: cognitive-services
@@ -9,22 +9,23 @@ ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 01/14/2020
 ms.author: skamal
-ms.openlocfilehash: d4fa61f8290f3bf9e2f065ec841fa94d8ecaaac1
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 214d6d614fcc54a532766854f2e72ac45dbfa8ad
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267205"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407200"
 ---
 # <a name="tutorial-integrate-multiple-immersive-reader-resources"></a>Oktatóanyag: több, magával ragadó olvasó erőforrásainak integrálása
 
-Az [Áttekintés](./overview.md)során megtanulta, hogy a magával ragadó olvasó Hogyan valósítja meg a bevált technikákat a nyelvtanulás, a feltörekvő olvasók és a tanulók tanulási különbségekkel való megismerésének javításához. A [Node. js](./quickstarts/client-libraries.md?pivots=programming-language-nodejs)rövid útmutatójában megtanulta, hogyan használhatja a lebilincselő olvasót egyetlen erőforrással. Ez az oktatóanyag azt ismerteti, hogyan integrálható egyszerre több, az olvasóhoz tartozó erőforrás ugyanabban az alkalmazásban. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az [Áttekintés](./overview.md)során megtanulta, hogy a magával ragadó olvasó Hogyan valósítja meg a bevált technikákat a nyelvtanulás, a feltörekvő olvasók és a tanulók tanulási különbségekkel való megismerésének javításához. A [Node.js](./quickstarts/client-libraries.md?pivots=programming-language-nodejs)rövid útmutatóban megtanulta, hogyan használhatja a lebilincselő olvasót egyetlen erőforrással. Ez az oktatóanyag azt ismerteti, hogyan integrálható egyszerre több, az olvasóhoz tartozó erőforrás ugyanabban az alkalmazásban. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Több alámerülés-olvasó erőforrás létrehozása egy meglévő erőforráscsoport alatt
 > * A sokrétű olvasó elindítása több erőforrás használatával
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -78,7 +79,7 @@ SUBDOMAIN_EUS={YOUR_EASTUS_SUBDOMAIN}
 
 Ügyeljen arra, hogy ne véglegesítse ezt a fájlt a verziókövetés során, mert olyan titkos kulcsokat tartalmaz, amelyeket nem kell nyilvánosságra hozni.
 
-A következő lépés a több erőforrás támogatásához létrehozott _routes\index.js_ -fájl módosítása. Cserélje le a tartalmát a következő kódra.
+Ezután módosítjuk a több erőforrás támogatására létrehozott _routes\index.js_ fájlt. Cserélje le a tartalmát a következő kódra.
 
 Ahogy korábban is, ez a kód olyan API-végpontot hoz létre, amely Azure AD-hitelesítési tokent vásárol az egyszerű szolgáltatásnév jelszavával. Ezúttal lehetővé teszi, hogy a felhasználó megadjon egy erőforrás-helyet, és lekérdezési paraméterként adja át azt. Ezután egy olyan objektumot ad vissza, amely tartalmazza a tokent és a megfelelő altartományt.
 
@@ -260,7 +261,7 @@ A **getimmersivereaderlaunchparams** API-végpontot biztonságossá kell tennie 
 
 4. Nyissa meg a böngészőt, és navigáljon a gombra `http://localhost:3000` . A fenti tartalomnak a lapon kell megjelennie. Kattintson a EastUS- **Megölelő olvasó** gombra vagy a **WestUS magával ragadó olvasó** gombra, hogy a megfelelő erőforrásokkal elindítsa a magával ragadó olvasót.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerkedjen meg a [magára az olvasói SDK](https://github.com/microsoft/immersive-reader-sdk) -val és az [olvasói SDK-referenciával](./reference.md)
 * Kód mintáinak megtekintése a [githubon](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/advanced-csharp)

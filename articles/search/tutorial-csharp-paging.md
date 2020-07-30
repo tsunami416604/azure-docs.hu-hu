@@ -8,18 +8,19 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 06/20/2020
-ms.openlocfilehash: ad57fe01313957c4f3d23ef44d0e02ad11ab3fa8
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 3fb77c147db0883dc1dc61040f916bcec88237c4
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85262174"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420617"
 ---
 # <a name="tutorial-add-paging-to-search-results-using-the-net-sdk"></a>Oktatóanyag: lapozás hozzáadása a keresési eredményekhez a .NET SDK használatával
 
 Megtudhatja, hogyan valósítható meg két különböző lapozófájl-rendszer, az első a oldalszámok alapján, a második pedig a végtelen görgetésen. A lapozás mindkét rendszerét széles körben használják, és a jobb gombbal kiválaszthatja az eredményekkel kapcsolatos felhasználói élményt. Ez az oktatóanyag létrehozza a lapozási rendszereket a [C# oktatóanyagban létrehozott projektbe: az első alkalmazás létrehozása – Azure Cognitive Search](tutorial-csharp-create-first-app.md) oktatóanyag.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
 > * Az alkalmazás kiterjesztése számozott lapozással
 > * Az alkalmazás kiterjesztése végtelen görgetéssel
@@ -596,7 +597,7 @@ Vegye figyelembe az alábbi elvihetőket a projektből:
 * Az ideiglenes tároló csak egy hívást tart fenn, és vissza kell állítania a további hívások túléléséhez.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A lapozás alapvető fontosságú az internetes keresésekhez. A lapozással jól érintett, a következő lépés a felhasználói élmény további javítása a típus-előre megadott keresések hozzáadásával.
 

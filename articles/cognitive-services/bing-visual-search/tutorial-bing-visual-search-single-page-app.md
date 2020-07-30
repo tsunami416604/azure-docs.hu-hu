@@ -10,12 +10,13 @@ ms.subservice: bing-visual-search
 ms.topic: tutorial
 ms.date: 03/27/2020
 ms.author: aahi
-ms.openlocfilehash: 83cdaecfb819fb1f4677b051f87e23e0e03daef2
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: devx-track-javascript
+ms.openlocfilehash: f1b32a72d81b42e7a349f92dcdc7a141a013312d
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80370103"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87404022"
 ---
 # <a name="tutorial-create-a-visual-search-single-page-web-app"></a>Oktatóanyag: Visual Search egyoldalas Webalkalmazás létrehozása
 
@@ -31,7 +32,7 @@ Az alkalmazás teljes forráskódja (miután kiterjeszti a Bing Visual Search AP
 
 ## <a name="call-the-bing-visual-search-api-and-handle-the-response"></a>A Bing Visual Search API meghívása és a válasz kezelése
 
-Szerkessze a Bing Image Search oktatóanyagot, és adja hozzá a következő kódot az `<script>` elem végéhez (és a `</script>` záró címke előtt). A következő kód egy vizuális keresési választ kezel az API-ból, megismétli az eredményeket, és megjeleníti őket:
+Szerkessze a Bing Image Search oktatóanyagot, és adja hozzá a következő kódot az `<script>` elem végéhez (és a záró `</script>` címke előtt). A következő kód egy vizuális keresési választ kezel az API-ból, megismétli az eredményeket, és megjeleníti őket:
 
 ``` javascript
 function handleVisualSearchResponse(){
@@ -63,7 +64,7 @@ function handleVisualSearchResponse(){
 }
 ```
 
-A következő kód egy keresési kérelmet küld az API-nak egy esemény-figyelő használatával `handleVisualSearchResponse()`:
+A következő kód egy keresési kérelmet küld az API-nak egy esemény-figyelő használatával `handleVisualSearchResponse()` :
 
 ```javascript
 function bingVisualSearch(insightsToken){
@@ -101,7 +102,7 @@ function bingVisualSearch(insightsToken){
 
 ## <a name="capture-insights-token"></a>Megállapítási jogkivonat rögzítése
 
-Adja hozzá a következő kódot az `searchItemsRenderer` objektumhoz. Ez a kód hozzáad egy **hasonló keresése** hivatkozást, amely meghívja a `bingVisualSearch` függvényt, ha rákattintanak. A függvény argumentumként `imageInsightsToken` fogadja a paramétert.
+Adja hozzá a következő kódot az `searchItemsRenderer` objektumhoz. Ez a kód hozzáad egy **hasonló keresése** hivatkozást, amely meghívja a `bingVisualSearch` függvényt, ha rákattintanak. A függvény argumentumként fogadja a `imageInsightsToken` paramétert.
 
 ``` javascript
 html.push("<a href='javascript:bingVisualSearch(\"" + item.imageInsightsToken + "\");'>find similar</a><br>");
@@ -120,7 +121,7 @@ Adja hozzá a következő HTML-kódot a 601. sorban. Ez a jelölő kód egy elem
 
 A rendelkezésre álló új JavaScript-kódok és HTML-elemek segítségével a keresési eredmények egy **hasonló keresése** hivatkozással jelennek meg. Kattintson a hivatkozásra a kiválasztott képhez hasonló képeket tartalmazó **Hasonló** szakasz feltöltéséhez. Lehetséges, hogy ki kell bontania a **Hasonló** szakaszt a képek megjelenítéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: kép körülvágása a C Bing Visual Search SDK-val #](tutorial-visual-search-crop-area-results.md)

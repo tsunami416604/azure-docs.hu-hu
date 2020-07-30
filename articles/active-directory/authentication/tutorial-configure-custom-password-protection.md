@@ -10,12 +10,12 @@ ms.author: iainfou
 author: iainfoulds
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 642082b3fe23e0d007e21409062fe8e777728cc3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a5b2f3a61e2167067bd6e61ee2a36bb1d22950d8
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518539"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419665"
 ---
 # <a name="tutorial-configure-custom-banned-passwords-for-azure-active-directory-password-protection"></a>Oktatóanyag: egyéni tiltott jelszavak konfigurálása Azure Active Directory jelszavas védelemhez
 
@@ -32,7 +32,7 @@ Ezen oktatóanyag segítségével megtanulhatja a következőket:
 
 Az oktatóanyag elvégzéséhez a következő erőforrásokra és jogosultságokra van szüksége:
 
-* Egy működő Azure AD-bérlő, legalább próbaverziós licenccel.
+* Egy működő Azure AD-bérlő legalább egy prémium szintű Azure AD P1 vagy próbaverziós licenccel.
     * Ha szükséges, [hozzon létre egyet ingyen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * *Globális rendszergazdai* jogosultságokkal rendelkező fiók.
 * Egy nem rendszergazda felhasználó, aki ismeri a jelszót, például *tesztfelhasználó*. Ebben az oktatóanyagban ezt a fiókot használja a jelszó-módosítási esemény teszteléséhez.
@@ -77,7 +77,7 @@ Ha engedélyezni szeretné az egyéni tiltott jelszavak listáját, és hozzá s
 
     Adja meg saját egyéni jelszavait a tiltáshoz, ahogy az a következő példában látható
 
-    [![](media/tutorial-configure-custom-password-protection/enable-configure-custom-banned-passwords-cropped.png "Modify the custom banned password list under Authentication Methods in the Azure portal")](media/tutorial-configure-custom-password-protection/enable-configure-custom-banned-passwords.png#lightbox)
+    [![Módosítsa az egyéni tiltott jelszavak listáját a hitelesítési módszerek területen a Azure Portal ](media/tutorial-configure-custom-password-protection/enable-configure-custom-banned-passwords-cropped.png)](media/tutorial-configure-custom-password-protection/enable-configure-custom-banned-passwords.png#lightbox)
 
 1. Hagyja **meg a Windows Serveren a jelszavas védelem engedélyezése beállítást Active Directory** a *nem*értékre.
 1. Az egyéni tiltott jelszavak és a bejegyzések engedélyezéséhez válassza a **Mentés**lehetőséget.
@@ -104,7 +104,7 @@ Ha szeretné megtekinteni az egyéni tiltott jelszavak listáját a műveletben,
 
     ![Hibaüzenet jelenik meg, ha olyan jelszót próbál használni, amely az egyéni tiltott jelszavak listáján szerepel](media/tutorial-configure-custom-password-protection/password-change-error.png)
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nem szeretné használni az oktatóanyag részeként konfigurált egyéni tiltott jelszavak listáját, hajtsa végre a következő lépéseket:
 

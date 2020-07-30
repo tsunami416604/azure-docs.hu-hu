@@ -1,5 +1,5 @@
 ---
-title: Node. js-alkalmazás létrehozása a MongoDB Azure Cosmos DB API-jával
+title: Node.js-alkalmazás létrehozása Azure Cosmos DB API-MongoDB használatával
 description: Egy oktatóanyag, amely létrehoz egy online adatbázist a Azure Cosmos DB API-MongoDB való használatával.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
@@ -8,14 +8,15 @@ ms.topic: sample
 ms.date: 12/26/2018
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: 28ee64f70cd281a2563a855fb1fca91f229ec7bd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-javascript
+ms.openlocfilehash: deb0ca935cd01a0d86eea007711f65e439d4da00
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "61330598"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421977"
 ---
-# <a name="build-an-app-using-nodejs-and-azure-cosmos-dbs-api-for-mongodb"></a>Alkalmazás létrehozása a Node. js és a Azure Cosmos DB API-MongoDB használatával 
+# <a name="build-an-app-using-nodejs-and-azure-cosmos-dbs-api-for-mongodb"></a>Alkalmazások készítése a MongoDB Node.js és Azure Cosmos DB API-ját használva 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-get-started.md)
 > * [.NET Core](sql-api-dotnetcore-get-started.md)
@@ -24,7 +25,7 @@ ms.locfileid: "61330598"
 > * [Node.js](sql-api-nodejs-get-started.md)
 >
 
-Ebből a példából megtudhatja, hogyan hozhat létre egy Console-alkalmazást a Node. js és a Azure Cosmos DB API-MongoDB használatával.
+Ebből a példából megtudhatja, hogyan hozhat létre egy Node.js és Azure Cosmos DB API-MongoDB használó konzolos alkalmazást.
 
 A példa használatához a következőket kell tennie:
 
@@ -169,7 +170,7 @@ A példa használatához a következőket kell tennie:
      
 3. Nyissa meg kedvenc terminálját, futtassa az **npm install mongodb --save** parancsot, majd futtassa alkalmazását a **node app.js** paranccsal.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg, hogyan [használhatja a Studio 3T](mongodb-mongochef.md) Azure Cosmos db API-ját a MongoDB.
 - Ismerje meg, hogyan [használhatja a Robo 3T](mongodb-robomongo.md) -t a Azure Cosmos db API-MongoDB.

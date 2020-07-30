@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Node. js-modul fejlesztése Linux rendszerhez – Azure IoT Edge | Microsoft Docs'
+title: 'Oktatóanyag: Node.js modul fejlesztése Linux rendszeren – Azure IoT Edge | Microsoft Docs'
 description: Az oktatóanyag bemutatja, hogyan hozhat létre IoT Edge-modult Node.js-kóddal, és hogyan helyezheti üzembe azt peremhálózati eszközökön
 services: iot-edge
 author: shizn
@@ -8,19 +8,19 @@ ms.author: xshi
 ms.date: 01/04/2019
 ms.topic: tutorial
 ms.service: iot-edge
-ms.custom: mvc, tracking-python
-ms.openlocfilehash: 7e17da94ba124c3b20fdede93ad6b4716247c6ba
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.custom: mvc, tracking-python, devx-track-javascript
+ms.openlocfilehash: 01c7973efd2619a37ea77dfe4dad131b14144991
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84610117"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420141"
 ---
-# <a name="tutorial-develop-and-deploy-a-nodejs-iot-edge-module-for-linux-devices"></a>Oktatóanyag: Node. js IoT Edge modul fejlesztése és üzembe helyezése Linux-eszközökhöz
+# <a name="tutorial-develop-and-deploy-a-nodejs-iot-edge-module-for-linux-devices"></a>Oktatóanyag: Node.js IoT Edge modul fejlesztése és üzembe helyezése Linux-eszközökhöz
 
-Használja a Visual Studio Code-ot a Node. js-kódok fejlesztéséhez, és telepítse azt egy Azure IoT Edge rendszert futtató linuxos eszközre.
+A Visual Studio Code segítségével fejlesztheti Node.js kódot, és telepítheti azt egy Azure IoT Edge rendszert futtató linuxos eszközre.
 
-Az IoT Edge-modulokkal olyan kódot helyezhet üzembe, amely közvetlenül az IoT Edge-eszközökön implementálja az üzleti logikát. Ez az oktatóanyag végigvezeti az érzékelőktől kapott adatokat szűrő IoT Edge-modul létrehozásának és üzembe helyezésének lépésein. A rövid útmutatókban létrehozott szimulált IoT Edge-eszközt fogja használni. Az oktatóanyag a következőket ismerteti:
+Az IoT Edge-modulokkal olyan kódot helyezhet üzembe, amely közvetlenül az IoT Edge-eszközökön implementálja az üzleti logikát. Ez az oktatóanyag végigvezeti az érzékelőktől kapott adatokat szűrő IoT Edge-modul létrehozásának és üzembe helyezésének lépésein. A rövid útmutatókban létrehozott szimulált IoT Edge-eszközt fogja használni. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 >
@@ -35,14 +35,14 @@ Az ebben az oktatóanyagban létrehozott IoT Edge-modul szűri az eszköze álta
 
 ## <a name="solution-scope"></a>Megoldás hatóköre
 
-Ez az oktatóanyag bemutatja, hogyan fejleszthet egy modult a **Node. js** -ben a **Visual Studio Code**használatával, és hogyan telepítheti azt egy **Linux-eszközre**. A IoT Edge nem támogatja a Windows-eszközökhöz készült Node. js-modulokat.
+Ez az oktatóanyag bemutatja, hogyan fejleszthet egy modult **Node.js** a **Visual Studio Code**használatával, és hogyan telepítheti azt egy **Linux-eszközre**. A IoT Edge nem támogatja Node.js modulokat Windows-eszközökhöz.
 
-A következő táblázat segítségével megismerheti a Node. js-modulok fejlesztésének és üzembe helyezésének lehetőségeit:
+A következő táblázat segítségével megismerheti a Node.js modulok fejlesztésének és üzembe helyezésének lehetőségeit:
 
 | Node.js | Visual Studio Code | Visual Studio 2017/2019 |
 | - | ------------------ | ------------------ |
-| **Linux AMD64** | ![A VS Code használata Node. js-modulokhoz Linux AMD64 rendszeren](./media/tutorial-c-module/green-check.png) |  |
-| **Linux ARM32** | ![A VS Code használata a Linux ARM32 futó Node. js-moduloknál](./media/tutorial-c-module/green-check.png) |  |
+| **Linux AMD64** | ![A VS Code használata a Linux AMD64 Node.js moduljaihoz](./media/tutorial-c-module/green-check.png) |  |
+| **Linux ARM32** | ![A VS Code használata a Linux ARM32 Node.js moduljaihoz](./media/tutorial-c-module/green-check.png) |  |
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -54,13 +54,13 @@ Az oktatóanyag megkezdése előtt el kellett volna végeznie az előző oktató
 * A [Visual Studio Code](https://code.visualstudio.com/) az [Azure IoT-eszközökkel](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)van konfigurálva.
 * A [Docker CE](https://docs.docker.com/install/) Linux-tárolók futtatására van konfigurálva.
 
-Ha IoT Edge modult szeretne fejleszteni a Node. js-ben, telepítse a következő további előfeltételeket a fejlesztői gépre:
+Node.js IoT Edge moduljának fejlesztéséhez telepítse a következő további előfeltételeket a fejlesztői gépre:
 
-* [Node. js és NPM](https://nodejs.org). Az npm csomag a Node.js részeként érhető el, ami azt jelenti, hogy a Node.js letöltésével az npm is automatikusan települ a számítógépre.
+* [Node.js és NPM](https://nodejs.org). Az npm csomag a Node.js részeként érhető el, ami azt jelenti, hogy a Node.js letöltésével az npm is automatikusan települ a számítógépre.
 
 ## <a name="create-a-module-project"></a>Modul-projekt létrehozása
 
-A következő lépések bemutatják, hogyan hozhat létre IoT Edge Node. js-modult a Visual Studio Code és az Azure IoT Tools használatával.
+A következő lépések bemutatják, hogyan hozhat létre IoT Edge Node.js modult a Visual Studio Code és az Azure IoT Tools használatával.
 
 ### <a name="create-a-new-project"></a>Új projekt létrehozása
 
@@ -82,9 +82,9 @@ Az **npm** használatával létrehozhat egy Node.js-megoldást, amelyre majd ép
 
    | Mező | Érték |
    | ----- | ----- |
-   | Select folder (Mappa kiválasztása) | Válassza ki azt a helyet a fejlesztői gépen, ahol a VS Code létre fogja hozni a megoldásfájlokat. |
+   | Mappa kiválasztása | Válassza ki azt a helyet a fejlesztői gépen, ahol a VS Code létre fogja hozni a megoldásfájlokat. |
    | Provide a solution name (Megoldásnév megadása) | Adjon meg egy leíró nevet a megoldáshoz, vagy fogadja el az alapértelmezett **EdgeSolution**. |
-   | Select module template (Modulsablon kiválasztása) | Válassza ki a **Node. js-modult**. |
+   | Select module template (Modulsablon kiválasztása) | Válassza **Node.js modult**. |
    | Provide a module name (Modulnév megadása) | A modulnak adja a **NodeModule** nevet. |
    | Provide Docker image repository for the module (Docker-rendszerkép adattárának megadása a modulhoz) | Egy rendszerképadattár a tárolóregisztrációs adatbázis nevét és a tárolórendszerkép nevét tartalmazza. A tároló képe előre fel van töltve az utolsó lépésben megadott névvel. Cserélje le a **localhost:5000** értéket az Azure-beli tárolóregisztrációs adatbázis bejelentkezési kiszolgálójának értékére. A bejelentkezési kiszolgálót a tárolóregisztrációs adatbázis Áttekintés lapján kérheti le az Azure Portalon. <br><br>A rendszerkép utolsó tárháza a következőhöz hasonlít: \<registry name\> . azurecr.IO/nodemodule. |
 
@@ -100,7 +100,7 @@ A környezeti fájl tárolja a tárolóadattár hitelesítő adatait, és megosz
 
 ### <a name="select-your-target-architecture"></a>Válassza ki a cél architektúrát
 
-A Visual Studio Code jelenleg a Linux AMD64 és a Linux ARM32v7-eszközökhöz készült Node. js-modulokat képes fejleszteni. Ki kell választania, hogy melyik architektúrát célozza meg az egyes megoldásokkal, mivel a tárolót az egyes architektúrák típusainál eltérően építették és futtatják. Az alapértelmezett érték a Linux AMD64.
+A Visual Studio Code jelenleg a Linux AMD64 és Linux ARM32v7-eszközökön Node.js modulokat fejleszthet. Ki kell választania, hogy melyik architektúrát célozza meg az egyes megoldásokkal, mivel a tárolót az egyes architektúrák típusainál eltérően építették és futtatják. Az alapértelmezett érték a Linux AMD64.
 
 1. Nyissa meg a parancssort, és keressen rá **Azure IoT Edge: állítsa be az alapértelmezett cél platformot az Edge megoldáshoz**, vagy válassza a parancsikon ikont az ablak alján található oldalsó sávban.
 
@@ -110,7 +110,7 @@ A Visual Studio Code jelenleg a Linux AMD64 és a Linux ARM32v7-eszközökhöz k
 
 Minden sablonhoz tartozik egy mintakód, amely a **SimulatedTemperatureSensor** modul szimulált érzékelő adatait veszi át, és átirányítja IoT hub. Ebben a szakaszban kódot adunk hozzá, amely elemzi az üzeneteket azok elküldése előtt.
 
-1. A vs Code Explorerben nyissa meg a **modules**  >  **NodeModule**  >  **app. js fájlt**.
+1. A vs Code Explorerben nyissa meg a **modulok**  >  **NodeModule**  >  **app.js**.
 
 2. Adjon hozzá egy hőmérsékleti határértéket tároló változót a szükséges csomópontmodulok alá. A hőmérsékleti határérték azt az értéket állítja be, amelyet a mért hőmérsékletnek túl kell lépnie ahhoz, hogy a rendszer elküldje az adatokat az IoT Hubnak.
 
@@ -165,7 +165,7 @@ Minden sablonhoz tartozik egy mintakód, amely a **SimulatedTemperatureSensor** 
 
 6. Mentse az app.js fájlt.
 
-7. A VS Code Explorerben nyissa meg az **üzembe helyezés. template. JSON** fájlt a IoT Edge megoldás munkaterületen.
+7. A VS Code Explorerben nyissa meg a IoT Edge megoldás munkaterületen található fájl **deployment.template.js** .
 
 8. Adja hozzá a NodeModule ikermodult az üzembehelyezési jegyzékhez. Szúrja be a következő JSON-tartalmat a `moduleContent` szakasz alján, az `$edgeHub` modul ikerdokumentuma után:
 
@@ -201,7 +201,7 @@ Az előző szakaszban létrehozott egy IoT Edge megoldást, és hozzáadta a kó
 
 ## <a name="deploy-modules-to-device"></a>Modulok üzembe helyezése az eszközön
 
-A Visual Studio Code Explorer és az Azure IoT Tools bővítmény használatával telepítse a modul-projektet a IoT Edge eszközre. Már van előkészítve egy üzembe helyezési jegyzékfájl a forgatókönyvhöz, a **telepítési. JSON** fájl a konfigurációs mappában. Most csak ki kell választania az üzemelő példányt fogadó eszközt.
+A Visual Studio Code Explorer és az Azure IoT Tools bővítmény használatával telepítse a modul-projektet a IoT Edge eszközre. Már rendelkezik egy, a forgatókönyvhöz előkészített üzembe helyezési jegyzékfájlval, a konfigurációs mappában található fájl **deployment.js** . Most csak ki kell választania az üzemelő példányt fogadó eszközt.
 
 Ellenőrizze, hogy a IoT Edge eszköz működik-e.
 
@@ -239,7 +239,7 @@ A NodeModule modult az üzembe helyezési jegyzékben használta, hogy 25 fokos 
 
 6. A bejövő eszközről a felhőbe irányuló üzenetek figyelése. Ekkor az új hőmérsékleti küszöb eléréséig az üzenetek leállnak.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha azt tervezi, hogy a következő ajánlott cikkel folytatja, megtarthatja és újból felhasználhatja a létrehozott erőforrásokat és konfigurációkat. Azt is megteheti, hogy ugyanezt az IoT Edge-eszközt használja teszteszközként.
 
