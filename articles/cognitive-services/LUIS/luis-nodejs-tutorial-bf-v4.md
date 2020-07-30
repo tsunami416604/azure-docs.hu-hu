@@ -3,12 +3,13 @@ title: 'Oktatóanyag: Language Understanding robot Node.js v4'
 description: A Node.js használatával az oktatóanyagban a Language Understanding (LUIS) szolgáltatással integrált csevegési robotot hozhat létre. Ez csevegőrobot a Human Resources app használatával rövid idő alatt megvalósít egy robotmegoldást. A robot összeállításához a Bot Framework 4-es verzióját és az Azure webalkalmazás-robotot használja.
 ms.topic: tutorial
 ms.date: 06/23/2020
-ms.openlocfilehash: 0f726034f18f834dcaf9b202ffbf03a45e5b6ce7
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 522502a043778d6f482c1756506063dfa6515ca3
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85443543"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87405024"
 ---
 # <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-nodejs"></a>Oktatóanyag: Language Understanding használatával engedélyezett webalkalmazás-robot használata Node.js
 
@@ -31,32 +32,32 @@ A Language Understanding (LUIS) használatával integrált csevegési robot lét
 
 1. Az [Azure Portalon](https://portal.azure.com) válassza az **Új erőforrás létrehozása** lehetőséget.
 
-1. A keresőmezőben keresse meg, majd válassza ki a **Webalkalmazás-robot** elemet. Kattintson a **Létrehozás** gombra.
+1. A keresőmezőben keresse meg, majd válassza ki a **Webalkalmazás-robot** elemet. Válassza a **Létrehozás** lehetőséget.
 
 1. A **Bot Service** szolgáltatásban adja meg a szükséges adatokat:
 
-    |Beállítás|Cél|Javasolt beállítás|
+    |Beállítás|Rendeltetés|Javasolt beállítás|
     |--|--|--|
     |Bot-fogantyú|Erőforrás neve|`luis-nodejs-bot-` + `<your-name>`, például: `luis-nodejs-bot-johnsmith`|
     |Előfizetés|Az előfizetés, amelyben létre szeretné hozni a robotot.|Az Ön elsődleges előfizetése.
     |Erőforráscsoport|Az Azure-erőforrások logikai csoportja|Hozzon létre új csoportot a robothoz használt erőforrások tárolására. A csoport neve legyen: `luis-nodejs-bot-resource-group`.|
     |Hely|Azure-régió – Nem kell a LUIS létrehozási vagy közzétételi régiójával azonosnak lennie.|`westus`|
     |Tarifacsomag|Szolgáltatáskérési korlátokhoz és számlázáshoz használható.|Az `F0` az ingyenes szint.
-    |App neve|A név lesz az altartomány a robot felhőbeli üzembe helyezésekor (például humanresourcesbot.azurewebsites.net).|`luis-nodejs-bot-` + `<your-name>`, például: `luis-nodejs-bot-johnsmith`|
+    |Alkalmazás neve|A név lesz az altartomány a robot felhőbeli üzembe helyezésekor (például humanresourcesbot.azurewebsites.net).|`luis-nodejs-bot-` + `<your-name>`, például: `luis-nodejs-bot-johnsmith`|
     |Robotsablon|A Bot Framework beállításai – lásd a következő táblázatot|
     |A LUIS-app helye|Egyeznie kell a LUIS-erőforrás régiójával|`westus`|
-    |App Service-csomag/Hely|Ne módosítsa a megadott alapértelmezett értéket.|
+    |App Service-csomag/hely|Ne módosítsa a megadott alapértelmezett értéket.|
     |Application Insights|Ne módosítsa a megadott alapértelmezett értéket.|
     |Microsoft-alkalmazás azonosítója és jelszava|Ne módosítsa a megadott alapértelmezett értéket.|
 
 1. A **bot-sablonban**válassza ki a következőt, majd a beállítások területen válassza a **kiválasztás** gombot:
 
-    |Beállítás|Cél|Kiválasztás|
+    |Beállítás|Rendeltetés|Kiválasztás|
     |--|--|--|
     |SDK nyelve|Robot programozási nyelve|**Node.js**|
     |Bot|Robot típusa|**Alapszintű robot**|
 
-1. Kattintson a **Létrehozás** gombra. Ezzel létrehozza a robotszolgáltatást, és üzembe helyezi azt az Azure-ban. A folyamat egyik része egy `luis-nodejs-bot-XXXX` nevű LUIS-appot hoz létre. Ez a név a/Azure bot Service-alkalmazás nevén alapul.
+1. Válassza a **Létrehozás** lehetőséget. Ezzel létrehozza a robotszolgáltatást, és üzembe helyezi azt az Azure-ban. A folyamat egyik része egy `luis-nodejs-bot-XXXX` nevű LUIS-appot hoz létre. Ez a név a/Azure bot Service-alkalmazás nevén alapul.
 
     > [!div class="mx-imgBorder"]
     > [![Webalkalmazás-robot létrehozása](./media/bfv4-nodejs/create-web-app-service.png)](./media/bfv4-nodejs/create-web-app-service.png#lightbox)
@@ -74,7 +75,7 @@ A bot Service létrehozási folyamata egy új LUIS-alkalmazást is létrehoz a s
 |Repülőjegy|`Travel to Paris`|
 |Mégse|`bye`|
 |GetWeather|`what's the weather like?`|
-|None|Az app tartományán kívül bármi.|
+|Nincs|Az app tartományán kívül bármi.|
 
 ## <a name="test-the-bot-in-web-chat"></a>A robot tesztelése a webes csevegésben
 
@@ -387,7 +388,7 @@ Kérdezze meg a robotot a könyv repülési szándékáról.
 
 [!INCLUDE [Bot Information](../../../includes/cognitive-services-qnamaker-luis-bot-info.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További [mintákat](https://github.com/microsoft/botframework-solutions) tekinthet meg a társalgási robotokkal.
 

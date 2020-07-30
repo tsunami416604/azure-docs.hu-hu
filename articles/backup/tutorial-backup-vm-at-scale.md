@@ -4,12 +4,12 @@ description: Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre Recove
 ms.date: 07/26/2020
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: af1a869c9253a9037c5ee38313de60311acb1e10
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 7a8849bba51939a0c40cba81925e1b4b4a6e3826
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87277991"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372552"
 ---
 # <a name="use-azure-portal-to-back-up-multiple-virtual-machines"></a>Több virtuális gép biztonsági mentése az Azure Portalon
 
@@ -98,7 +98,7 @@ A helyreállítási tár létrehozása után a következő lépés a tároló ko
 
      A biztonsági mentési szabályzat létrehozása után társítsa a szabályzatot a virtuális gépekkel.
 
-1. A **Virtual Machines**területen válassza a * * Hozzáadás lehetőséget.
+1. A **Virtual Machines**területen válassza a **Hozzáadás**lehetőséget.
 
      ![Virtuális gépek hozzáadása](./media/tutorial-backup-vm-at-scale/add-virtual-machines.png)
 
@@ -189,7 +189,7 @@ Ha azt tervezi, hogy az ezt követő oktatóanyagokkal dolgozik tovább, akkor n
 
     A tár törlése után visszatérhet a Recovery Services-tárolók listájához.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban a következőket végezte el az Azure Portalon:
 

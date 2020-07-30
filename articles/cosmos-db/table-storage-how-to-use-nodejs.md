@@ -8,12 +8,13 @@ ms.topic: sample
 ms.date: 07/23/2020
 author: sakash279
 ms.author: akshanka
-ms.openlocfilehash: 2abe23de5fbd2feada6ac8ff0a827b8575bcb28b
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 9404232533ae86e14f9b87c65fdd086f84e8aebb
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87171999"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87414003"
 ---
 # <a name="how-to-use-azure-table-storage-or-the-azure-cosmos-db-table-api-from-nodejs"></a>Az Azure Table Storage és az Azure Cosmos DB Table API használata a Node.js segítségével
 
@@ -476,7 +477,7 @@ Miután beállította az ACL-t, létrehozzon egy SAS-t egy szabályzat azonosít
 tableSAS = tableSvc.generateSharedAccessSignature('hometasks', { Id: 'user2' });
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információkért lásd a következő forrásanyagokat.
 

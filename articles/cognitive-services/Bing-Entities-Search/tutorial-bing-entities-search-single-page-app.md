@@ -10,12 +10,13 @@ ms.subservice: bing-entity-search
 ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: 53731540c4a2861c77c02b1a4b25b60fd0e23872
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.custom: devx-track-javascript
+ms.openlocfilehash: d14681e07518188deabd9f48a04b80a489d858b8
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86184140"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407931"
 ---
 # <a name="tutorial-single-page-web-app"></a>Oktatóanyag: Egyoldalas webalkalmazás
 
@@ -141,7 +142,7 @@ A `<body>` HTML-címke tartalmaz egy `onload` attribútumot, amely a lap betölt
 
 A HTML-űrlap a következő vezérlőket tartalmazza:
 
-| Szabályozás | Leírás |
+| Vezérlés | Leírás |
 |-|-|
 |`where`|Legördülő menü a kereséshez használt piac (hely és nyelv) kiválasztásához.|
 |`query`|Szövegmező a keresőkifejezések megadásához.|
@@ -411,7 +412,7 @@ Végül A `sidebar` a kiegészítő keresési eredményeket jelenti. Ezeket megj
 
 A `rankingResponse` gyűjtemények minden eleme a valós keresési eredményekre mutat két különböző, de egyenértékű módon.
 
-| Item | Leírás |
+| Elem | Leírás |
 |-|-|
 |`id`|Az `id` úgy néz ki, mint egy URL, de nem célszerű hivatkozásokhoz használni. A rangsoroló eredmények `id` típusa megegyezik egy válaszgyűjtemény keresési eredményeinek eleméhez *vagy* egy teljes válaszgyűjteményhez (mint például `Entities`) tartozó `id` típussal.
 |`answerType`<br>`resultIndex`|Az `answerType` azt a legfelső szintű válaszgyűjteményt jelenti, amely az eredményt tartalmazza (például `Entities`). A `resultIndex` az eredmény adott gyűjteményen belüli indexét jelenti. Ha a `resultIndex` kimarad, a rangsorolási eredmény az egész gyűjteményre vonatkozik.

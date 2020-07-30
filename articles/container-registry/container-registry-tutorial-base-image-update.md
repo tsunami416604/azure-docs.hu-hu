@@ -3,13 +3,13 @@ title: Oktatóanyag – rendszerkép-Build kiépítése az alapszintű rendszerk
 description: Ebből az oktatóanyagból megtudhatja, hogyan konfigurálhat egy Azure Container Registry feladatot úgy, hogy automatikusan aktiválja a tároló rendszerképét a felhőben, amikor egy alaprendszerkép frissül ugyanabban a beállításjegyzékben.
 ms.topic: tutorial
 ms.date: 01/22/2020
-ms.custom: seodec18, mvc
-ms.openlocfilehash: 4797dd1f1fe19b98ab94c4743ad4af3c43ce0627
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: seodec18, mvc, devx-track-javascript
+ms.openlocfilehash: 0efac34d05dfaf8877efec2e66f1f95a19ca95be
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78402853"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407999"
 ---
 # <a name="tutorial-automate-container-image-builds-when-a-base-image-is-updated-in-an-azure-container-registry"></a>Oktatóanyag: a tároló rendszerképének automatizálása, amikor egy alaprendszerkép frissül egy Azure Container registryben 
 
@@ -51,7 +51,7 @@ Ha még nem tette meg, a folytatás előtt végezze el a következő oktatóanya
 
 Láss el ezeket a rendszerhéj-környezeti változókat a környezetnek megfelelő értékekkel. Ez a lépés nem feltétlenül szükséges, de némileg könnyebbé teszi az oktatóanyagban lévő többsoros Azure CLI-parancsok végrehajtását. Ha nem tölti fel ezeket a környezeti változókat, manuálisan kell lecserélnie az egyes értékeket, bárhol is megjelenjenek a példában szereplő parancsokban.
 
-[![Beágyazás elindítása](https://shell.azure.com/images/launchcloudshell.png "Az Azure Cloud Shell indítása")](https://shell.azure.com)
+[![Beágyazás elindítása](https://shell.azure.com/images/launchcloudshell.png "Az Azure Cloud Shell elindítása")](https://shell.azure.com)
 
 ```console
 ACR_NAME=<registry-name>        # The name of your Azure container registry
@@ -97,7 +97,7 @@ az acr task create \
     --git-access-token $GIT_PAT
 ```
 
-Ez a feladat hasonló az [előző oktatóanyagban](container-registry-tutorial-build-task.md)létrehozott feladathoz. A feladat utasítja az ACR Tasksot egy rendszerkép-összeállítás aktiválására, amikor a rendszer leküld egy véglegesítést a `--context` által megadott adattárba. Míg az előző oktatóanyagban a rendszerkép létrehozásához használt Docker meghatározza a nyilvános alaprendszerképet (`FROM node:9-alpine`), a Docker ebben a feladatban, [Docker-app][dockerfile-app], egy alaprendszerképet ad meg ugyanabban a beállításjegyzékben:
+Ez a feladat hasonló az [előző oktatóanyagban](container-registry-tutorial-build-task.md)létrehozott feladathoz. A feladat utasítja az ACR Tasksot egy rendszerkép-összeállítás aktiválására, amikor a rendszer leküld egy véglegesítést a `--context` által megadott adattárba. Míg az előző oktatóanyagban a rendszerkép létrehozásához használt Docker meghatározza a nyilvános alaprendszerképet ( `FROM node:9-alpine` ), a Docker ebben a feladatban, [Docker-app][dockerfile-app], egy alaprendszerképet ad meg ugyanabban a beállításjegyzékben:
 
 ```dockerfile
 FROM ${REGISTRY_NAME}/baseimages/node:9-alpine
@@ -125,7 +125,7 @@ Először hitelesítse magát a Container registryben az [az ACR login][az-acr-l
 az acr login --name $ACR_NAME
 ```
 
-Futtassa helyileg a tárolót a `docker run` paranccsal. Cserélje le ** \<a Run\> -ID azonosítót** az előző lépés kimenetében található futtatási azonosítóra (például: "DA6"). Ez a példa a tárolót `myapp` nevezi `--rm` el, és tartalmazza azt a paramétert, amellyel el szeretné távolítani a tárolót, amikor leállítja.
+Futtassa helyileg a tárolót a `docker run` paranccsal. Cserélje le az **\<run-id\>** elemet az előző lépés kimenetében található futtatási azonosítóra (például: "DA6"). Ez a példa a tárolót nevezi `myapp` el, és tartalmazza azt a `--rm` paramétert, amellyel el szeretné távolítani a tárolót, amikor leállítja.
 
 ```bash
 docker run -d -p 8080:80 --name myapp --rm $ACR_NAME.azurecr.io/helloworld:<run-id>
@@ -223,7 +223,7 @@ A tároló leállításához és eltávolításához futtassa a következő para
 docker stop updatedapp
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag azt mutatta be, hogyan használhatók a feladatok a tárolórendszerképek összeállításának automatikus aktiválására a rendszerkép alapként szolgáló rendszerképének frissítése esetén. Most lépjen a következő oktatóanyagra, amelyből megtudhatja, hogyan indíthat el műveleteket egy meghatározott ütemterven.
 

@@ -10,12 +10,13 @@ ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 06/10/2020
 ms.author: dylankil
-ms.openlocfilehash: 8418e2d7a4b3800742bc4ecc777222ebca07aee2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-java
+ms.openlocfilehash: f8420a42b87481b5e51b383ace1ba8a510d2a6a7
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076888"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87366738"
 ---
 # <a name="tutorial-start-the-immersive-reader-using-the-android-java-code-sample"></a>Oktatóanyag: a lebilincselő olvasó elindítása az Android Java code minta használatával
 
@@ -26,7 +27,7 @@ Az [Áttekintés](./overview.md)során megtanulta, hogy a magával ragadó olvas
 > * Hozzáférési jogkivonat beszerzése.
 > * A részletes olvasót a minta tartalmával indíthatja el.
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -52,7 +53,7 @@ Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fi
 
 Válasszon egy eszköz-emulátort a AVD-kezelőből, és futtassa a projektet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Fedezze fel az [olvasói SDK](https://github.com/microsoft/immersive-reader-sdk) -t és a [magára ejtő olvasó SDK-referenciát](./reference.md).
 * Kód mintáinak megtekintése a [githubon](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/).

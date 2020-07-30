@@ -1,7 +1,7 @@
 ---
-title: 'Oktatóanyag: a részletes olvasó elindítása a Node. js használatával'
+title: 'Oktatóanyag: a magától megjelenő olvasó elindítása Node.js használatával'
 titleSuffix: Azure Cognitive Services
-description: Ebben az oktatóanyagban létre fog hozni egy Node. js-alkalmazást, amely elindítja a magával ragadó olvasót.
+description: Ebben az oktatóanyagban létre fog hozni egy Node.js alkalmazást, amely elindítja a lebilincselő olvasót.
 services: cognitive-services
 author: metanMSFT
 manager: nitinme
@@ -10,36 +10,37 @@ ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 01/14/2020
 ms.author: metan
-ms.openlocfilehash: 139dd2ebdabbc91a6de3b0a1eb921b110d47c3f3
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: devx-track-javascript
+ms.openlocfilehash: c64fc95c44aad81087cada23639e3b13bf478056
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76842027"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407183"
 ---
-# <a name="tutorial-launch-the-immersive-reader-nodejs"></a>Oktatóanyag: a lebilincselő olvasó elindítása (node. js)
+# <a name="tutorial-launch-the-immersive-reader-nodejs"></a>Oktatóanyag: a lebilincselő olvasó elindítása (Node.js)
 
-Az [Áttekintés](./overview.md)során megtanulta, hogy a magával ragadó olvasó Hogyan valósítja meg a bevált technikákat a nyelvtanulás, a feltörekvő olvasók és a tanulók tanulási különbségekkel való megismerésének javításához. Ez az oktatóanyag azt ismerteti, hogyan hozhat létre egy olyan Node. js-webalkalmazást, amely elindítja az olvasót. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az [Áttekintés](./overview.md)során megtanulta, hogy a magával ragadó olvasó Hogyan valósítja meg a bevált technikákat a nyelvtanulás, a feltörekvő olvasók és a tanulók tanulási különbségekkel való megismerésének javításához. Ez az oktatóanyag bemutatja, hogyan hozhat létre egy olyan Node.js webalkalmazást, amely elindítja az olvasót. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Node. js-alapú Webalkalmazás létrehozása az Express-szel
+> * Node.js Webalkalmazás létrehozása Expressből
 > * Hozzáférési jogkivonat beszerzése
 > * A részletes olvasó a minta tartalmának elindítása
 > * Adja meg a tartalom nyelvét
 > * A lebilincselő olvasó felület nyelvének meghatározása
 > * A lebilincselő olvasó elindítása matematikai tartalommal
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * A Azure Active Directory hitelesítéshez konfigurált, magával ragadó olvasó erőforrás. A beállításhoz kövesse az [alábbi utasításokat](./how-to-create-immersive-reader.md) . A környezeti tulajdonságok konfigurálásakor itt létrehozott értékek némelyikére szüksége lesz. Mentse a munkamenet kimenetét szövegfájlba későbbi használatra.
-* [Node. js](https://nodejs.org/) és [fonal](https://yarnpkg.com)
+* [Node.js](https://nodejs.org/) és [fonal](https://yarnpkg.com)
 * IDE, például a [Visual Studio Code](https://code.visualstudio.com/)
 
-## <a name="create-a-nodejs-web-app-with-express"></a>Node. js-alapú Webalkalmazás létrehozása az Express-szel
+## <a name="create-a-nodejs-web-app-with-express"></a>Node.js Webalkalmazás létrehozása Expressből
 
-Hozzon létre egy Node. js-webalkalmazást az `express-generator` eszközzel.
+Hozzon létre egy Node.js webalkalmazást az `express-generator` eszközzel.
 
 ```bash
 npm install express-generator -g
@@ -47,7 +48,7 @@ express --view=pug myapp
 cd myapp
 ```
 
-Telepítse a fonal-függőségeket, `request` és `dotenv`adja hozzá a függőségeket, amelyeket később az oktatóanyagban fog használni.
+Telepítse a fonal-függőségeket, és adja hozzá a függőségeket, `request` `dotenv` amelyeket később az oktatóanyagban fog használni.
 
 ```bash
 yarn
@@ -79,7 +80,7 @@ SUBDOMAIN={YOUR_SUBDOMAIN}
 
 Ügyeljen arra, hogy ne véglegesítse ezt a fájlt a verziókövetés során, mert olyan titkos kulcsokat tartalmaz, amelyeket nem kell nyilvánosságra hozni.
 
-Ezután nyissa meg az _app. js_ fájlt, és adja hozzá a következőt a fájl elejéhez. Ezzel betölti a. env fájlban definiált tulajdonságokat környezeti változókként a csomópontba.
+Ezután nyissa meg _app.js_ , és adja hozzá a következőt a fájl elejéhez. Ezzel betölti a. env fájlban definiált tulajdonságokat környezeti változókként a csomópontba.
 
 ```javascript
 require('dotenv').config();
@@ -132,7 +133,7 @@ A **getimmersivereaderlaunchparams** API-végpontot biztonságossá kell tennie 
 
 ## <a name="launch-the-immersive-reader-with-sample-content"></a>A részletes olvasó a minta tartalmának elindítása
 
-1. Nyissa meg a _views\layout.PUG_, és adja hozzá a `head` következő kódot a címke `body` alatt a címke előtt. Ezek `script` a címkék a [magával ragadó olvasó SDK](https://github.com/microsoft/immersive-reader-sdk) -t és a jQuery-t töltik be.
+1. Nyissa meg a _views\layout.PUG_, és adja hozzá a következő kódot a címke alatt a `head` `body` címke előtt. Ezek `script` a címkék a [magával RAGADÓ olvasó SDK](https://github.com/microsoft/immersive-reader-sdk) -t és a jQuery-t töltik be.
 
     ```pug
     script(src='https://contentstorage.onenote.office.net/onenoteltir/immersivereadersdk/immersive-reader-sdk.0.0.2.js')
@@ -189,19 +190,19 @@ A **getimmersivereaderlaunchparams** API-végpontot biztonságossá kell tennie 
     npm start
     ```
 
-4. Nyissa meg a böngészőt _http://localhost:3000_, és navigáljon a gombra. A fenti tartalomnak a lapon kell megjelennie. Kattintson a **magára az olvasó** gombra, hogy elindítsa a magával ragadó olvasót a tartalommal.
+4. Nyissa meg a böngészőt, és navigáljon a gombra _http://localhost:3000_ . A fenti tartalomnak a lapon kell megjelennie. Kattintson a **magára az olvasó** gombra, hogy elindítsa a magával ragadó olvasót a tartalommal.
 
 ## <a name="specify-the-language-of-your-content"></a>Adja meg a tartalom nyelvét
 
 A lebilincselő olvasó számos különböző nyelvet támogat. A tartalom nyelvét az alábbi lépésekkel adhatja meg.
 
-1. Nyissa meg a _views\index.PUG_ , és adja hozzá `p(id=content)` az alábbi kódot az előző lépésben hozzáadott címke alá. Ez a kód egy spanyol tartalmat hoz létre a laphoz.
+1. Nyissa meg a _views\index.PUG_ , és adja hozzá az alábbi kódot az `p(id=content)` előző lépésben hozzáadott címke alá. Ez a kód egy spanyol tartalmat hoz létre a laphoz.
 
     ```pug
     p(id='content-spanish') El estudio de las formas terrestres de la Tierra se llama geografía física. Los accidentes geográficos pueden ser montañas y valles. También pueden ser glaciares, lagos o ríos.
     ```
 
-2. A JavaScript-kódban adja hozzá a következőt a hívásához `ImmersiveReader.launchAsync`. Ez a kód továbbítja a spanyol tartalmat a magával ragadó olvasónak.
+2. A JavaScript-kódban adja hozzá a következőt a hívásához `ImmersiveReader.launchAsync` . Ez a kód továbbítja a spanyol tartalmat a magával ragadó olvasónak.
 
     ```pug
     content.chunks.push({
@@ -216,7 +217,7 @@ A lebilincselő olvasó számos különböző nyelvet támogat. A tartalom nyelv
 
 Alapértelmezés szerint a magával ragadó olvasó felület nyelve megegyezik a böngésző nyelvi beállításaival. Megadhatja a magával ragadó olvasó felületének nyelvét is a következő kóddal.
 
-1. A _views\index.PUG_cserélje le a hívást `ImmersiveReader.launchAsync(token, subdomain, content)` az alábbi kódra.
+1. A _views\index.PUG_cserélje le a hívást az `ImmersiveReader.launchAsync(token, subdomain, content)` alábbi kódra.
 
     ```javascript
     const options = {
@@ -225,13 +226,13 @@ Alapértelmezés szerint a magával ragadó olvasó felület nyelve megegyezik a
     ImmersiveReader.launchAsync(token, subdomain, content, options);
     ```
 
-2. Navigáljon _http://localhost:3000_a következőhöz:. A lebilincselő olvasó indításakor a felület francia nyelven jelenik meg.
+2. Navigáljon a következőhöz: _http://localhost:3000_ . A lebilincselő olvasó indításakor a felület francia nyelven jelenik meg.
 
 ## <a name="launch-the-immersive-reader-with-math-content"></a>A lebilincselő olvasó elindítása matematikai tartalommal
 
 A [MathML](https://developer.mozilla.org/en-US/docs/Web/MathML)használatával a lebilincselő olvasóban matematikai tartalmakat is hozzáadhat.
 
-1. Módosítsa a _views\index.PUG_ úgy, hogy a következő kódot tartalmazza a `ImmersiveReader.launchAsync`hívása felett:
+1. Módosítsa a _views\index.PUG_ úgy, hogy a következő kódot tartalmazza a hívása felett `ImmersiveReader.launchAsync` :
 
     ```javascript
     const mathML = '<math xmlns="https://www.w3.org/1998/Math/MathML" display="block"> \
@@ -256,9 +257,9 @@ A [MathML](https://developer.mozilla.org/en-US/docs/Web/MathML)használatával a
     });
     ```
 
-2. Navigáljon _http://localhost:3000_a következőhöz:. Amikor elindítja a lebilincselő olvasót, és görgessen az aljára, megjelenik a matematikai képlet.
+2. Navigáljon a következőhöz: _http://localhost:3000_ . Amikor elindítja a lebilincselő olvasót, és görgessen az aljára, megjelenik a matematikai képlet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerkedjen meg a [magára az olvasói SDK](https://github.com/microsoft/immersive-reader-sdk) -val és az [olvasói SDK-referenciával](./reference.md)
 * Kód mintáinak megtekintése a [githubon](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/advanced-csharp)

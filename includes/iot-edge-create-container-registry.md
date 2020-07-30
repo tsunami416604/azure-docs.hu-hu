@@ -4,12 +4,12 @@ ms.service: iot-edge
 ms.topic: include
 ms.date: 12/30/2019
 ms.author: kgremban
-ms.openlocfilehash: f8cb734e8a57e3b0ee114ae20f454d0034e9cdc9
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 0c43c6dcced94225e9ab9ae903535ce74286ad9a
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387615"
+ms.locfileid: "87406714"
 ---
 ## <a name="create-a-container-registry"></a>Tárolóregisztrációs adatbázis létrehozása
 
@@ -33,7 +33,7 @@ Ha még nem rendelkezik tároló-beállításjegyzékkel, kövesse az alábbi l�
 
 3. Válassza a **Létrehozás** lehetőséget.
 
-4. Miután létrehozta a tároló-beállításjegyzéket, tallózással keresse meg, majd a bal oldali panelen válassza a **hozzáférési kulcsok** lehetőséget a **Beállítások**területen található menüből.
+4. Miután létrehozta a tároló-beállításjegyzéket, tallózással keresse meg, majd a bal oldali panelen válassza a **hozzáférési kulcsok** lehetőséget a **Beállítások**területen található menüből. 
 
 5. Ide kattintva engedélyezheti a rendszergazda felhasználó számára a tároló-beállításjegyzék **felhasználónevének** és **jelszavának** megtekintését.
 

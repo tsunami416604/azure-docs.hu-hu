@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 995ca20ed264d78e93e04a6f54e4f691ec551e84
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 61e2d4607ebe1b688b2874220a170b2539a2226e
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86024859"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87404174"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Oktatóanyag: biztonságos LDAP konfigurálása Azure Active Directory Domain Services felügyelt tartományhoz
 
@@ -110,6 +110,7 @@ A biztonságos LDAP használatához a hálózati forgalom a nyilvános kulcsokra
 * A rendszer a felügyelt tartományra alkalmazza a **titkos** kulcsot.
     * Ez a titkos kulcs a biztonságos LDAP-forgalom *visszafejtésére* szolgál. A titkos kulcsot csak a felügyelt tartományra kell alkalmazni, és nem kell széles körben terjeszteni az ügyfélszámítógépekre.
     * A titkos kulcsot tartalmazó tanúsítvány a-t használja *. PFX* -fájlformátum.
+    * A tanúsítvány titkosítási algoritmusának *TripleDES-SHA1*értékűnek kell lennie.
 * A rendszer egy **nyilvános** kulcsot alkalmaz az ügyfélszámítógépekre.
     * Ez a nyilvános kulcs a biztonságos LDAP-forgalom *titkosítására* szolgál. A nyilvános kulcs terjeszthető az ügyfélszámítógépekre.
     * A titkos kulcs nélküli tanúsítványok a-t használják *. CER* -fájlformátum.
@@ -149,7 +150,7 @@ Ahhoz, hogy az előző lépésben létrehozott digitális tanúsítványt a fel�
 
 1. Mivel ez a tanúsítvány az adatvisszafejtéshez használatos, alaposan meg kell határoznia a hozzáférést. A tanúsítvány használatához jelszó használható. A megfelelő jelszó nélkül nem alkalmazható a tanúsítvány a szolgáltatásra.
 
-    A **Biztonság** lapon válassza a **jelszó megadását** a védelméhez *. PFX* -tanúsítványfájl. Adja meg és erősítse meg a jelszót, majd kattintson a **tovább**gombra. Ezt a jelszót a következő szakaszban lehet használni a felügyelt tartomány biztonságos LDAP-szolgáltatásának engedélyezéséhez.
+    A **Biztonság** lapon válassza a **jelszó megadását** a védelméhez *. PFX* -tanúsítványfájl. A titkosítási algoritmusnak *TripleDES-SHA1*értékűnek kell lennie. Adja meg és erősítse meg a jelszót, majd kattintson a **tovább**gombra. Ezt a jelszót a következő szakaszban lehet használni a felügyelt tartomány biztonságos LDAP-szolgáltatásának engedélyezéséhez.
 1. Az **exportálandó fájl** lapon adja meg a fájl nevét és helyét, ahová exportálni szeretné a tanúsítványt, például *C:\Users\accountname\azure-AD-DS.pfx*. Jegyezze fel a jelszavát és helyét *. *A következő lépésekben a pfx-fájlnak ezt az információt kell megadnia.
 1. Az Áttekintés lapon válassza a **Befejezés** lehetőséget a tanúsítvány exportálásához *. PFX* -tanúsítványfájl. A tanúsítvány sikeres exportálását megerősítő párbeszédpanel jelenik meg.
 1. Hagyja nyitva az MMC-t a következő szakaszban való használatra.
@@ -210,7 +211,7 @@ Megjelenik egy értesítés arról, hogy a biztonságos LDAP konfigurálva van a
 
 A felügyelt tartomány biztonságos LDAP-szolgáltatásának engedélyezése néhány percet vesz igénybe. Ha az Ön által megadott biztonságos LDAP-tanúsítvány nem felel meg a szükséges feltételeknek, a felügyelt tartomány biztonságos LDAP-hitelesítésének művelete meghiúsul.
 
-A hiba gyakori oka, hogy a tartománynév helytelen, vagy a tanúsítvány hamarosan lejár, vagy már lejárt. Újra létrehozhatja a tanúsítványt érvényes paraméterekkel, majd engedélyezheti a biztonságos LDAP használatát a frissített tanúsítvánnyal.
+A hiba gyakori okai a következők: Ha a tartománynév helytelen, a tanúsítvány titkosítási algoritmusa nem *TripleDES-SHA1*, vagy a tanúsítvány hamarosan lejár, vagy már lejárt. Újra létrehozhatja a tanúsítványt érvényes paraméterekkel, majd engedélyezheti a biztonságos LDAP használatát a frissített tanúsítvánnyal.
 
 ## <a name="lock-down-secure-ldap-access-over-the-internet"></a>Biztonságos LDAP-hozzáférés zárolása az interneten keresztül
 
@@ -228,12 +229,12 @@ Hozzon létre egy szabályt, amely engedélyezi a bejövő biztonságos LDAP-hoz
     | Forrás                            | IP-címek |
     | Forrás IP-címeinek/CIDR tartományai | Érvényes IP-cím vagy tartomány a környezet számára |
     | Forrásporttartományok                | *            |
-    | Cél                       | Bármelyik          |
+    | Cél                       | Bármely          |
     | Célporttartományok           | 636          |
     | Protokoll                          | TCP          |
-    | Műveletek                            | Engedélyezés        |
+    | Művelet                            | Engedélyezés        |
     | Prioritás                          | 401          |
-    | Name                              | AllowLDAPS   |
+    | Név                              | AllowLDAPS   |
 
 1. Ha elkészült, kattintson a **Hozzáadás** gombra a szabály mentéséhez és alkalmazásához.
 
@@ -279,7 +280,7 @@ A felügyelt tartományban tárolt objektumok megtekintéséhez:
 
 Egy adott tároló közvetlen lekérdezéséhez a **nézet > fa** menüjében megadhat egy **BaseDN** , például *ou = AADDC-felhasználók, DC = AADDSCONTOSO, DC = com* vagy *ou = AADDC számítógépek, DC = AADDSCONTOSO, DC = com*. További információ a lekérdezések formázásáról és létrehozásáról: az [LDAP-lekérdezés alapjai][ldap-query-basics].
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha a számítógép helyi gazdagépek fájljához hozzáadott egy DNS-bejegyzést az oktatóanyag kapcsolatának teszteléséhez, távolítsa el ezt a bejegyzést, és adjon hozzá egy formális rekordot a DNS-zónához. Ha el szeretné távolítani a bejegyzést a helyi gazdagépek fájljából, hajtsa végre a következő lépéseket:
 
