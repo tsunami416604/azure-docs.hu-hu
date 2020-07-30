@@ -10,12 +10,12 @@ ms.author: iainfou
 author: iainfoulds
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ac13dc669ed20df58f05c672926b7bee55dbc90
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6b6fe3238a2ad602b388ff24faaee3a200084ae0
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87035026"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419478"
 ---
 # <a name="tutorial-enable-users-to-unlock-their-account-or-reset-passwords-using-azure-active-directory-self-service-password-reset"></a>Oktatóanyag: a felhasználók számára lehetővé teszi a fiók zárolásának feloldását vagy a jelszavak alaphelyzetbe állítását Azure Active Directory önkiszolgáló jelszó-visszaállítás használatával
 
@@ -37,7 +37,7 @@ Ezen oktatóanyag segítségével megtanulhatja a következőket:
 
 Az oktatóanyag elvégzéséhez a következő erőforrásokra és jogosultságokra van szüksége:
 
-* Egy működő Azure AD-bérlő, legalább próbaverziós licenccel.
+* Egy működő Azure AD-bérlő legalább egy prémium szintű Azure AD P1 vagy próbaverziós licenccel.
     * Ha szükséges, [hozzon létre egyet ingyen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * *Globális rendszergazdai* jogosultságokkal rendelkező fiók.
 * Egy nem rendszergazda felhasználó, aki ismeri a jelszót, például *tesztfelhasználó*. Ebben az oktatóanyagban tesztelheti a végfelhasználói SSPR felhasználói élményét.
@@ -60,7 +60,7 @@ Ebben az oktatóanyagban egy SSPR tartozó felhasználók készletét konfigurá
 1. A **Tulajdonságok** lapon, az *önkiszolgáló jelszó-visszaállítás engedélyezése*lehetőségnél válassza a **csoport kiválasztása** lehetőséget.
 1. Keresse meg és válassza ki az Azure AD-csoportot, például *SSPR-test-Group*, majd válassza a *kiválasztás*lehetőséget.
 
-    [![](media/tutorial-enable-sspr/enable-sspr-for-group-cropped.png "Select a group in the Azure portal to enable for self-service password reset")](media/tutorial-enable-sspr/enable-sspr-for-group.png#lightbox)
+    [![Válasszon ki egy csoportot a Azure Portal, hogy engedélyezze az önkiszolgáló jelszó-visszaállítást ](media/tutorial-enable-sspr/enable-sspr-for-group-cropped.png)](media/tutorial-enable-sspr/enable-sspr-for-group.png#lightbox)
 
 1. A SSPR engedélyezéséhez válassza a **Mentés**lehetőséget.
 
@@ -127,7 +127,7 @@ Ha a SSPR engedélyezve és konfigurálva van, tesztelje a SSPR folyamatot egy o
 
 1. A jelszó alaphelyzetbe állításához kövesse az ellenőrzési lépéseket. Ha elkészült, kapnia kell egy e-mailt arról, hogy a jelszó alaphelyzetbe állt.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ebben a sorozatban a következő oktatóanyagban konfigurálhatja a jelszó visszaírási. Ez a szolgáltatás az Azure AD-SSPR visszaadott jelszavakat egy helyszíni AD-környezetbe írja. Ha továbbra is ezt az oktatóanyag-sorozatot szeretné használni a jelszó-visszaírási konfigurálásához, ne tiltsa le a SSPR.
 
@@ -138,7 +138,7 @@ Ha már nem szeretné használni az oktatóanyag részeként konfigurált SSPR f
 1. A **Tulajdonságok** lapon, az *önkiszolgáló jelszó-visszaállítás engedélyezése*lehetőségnél válassza a **nincs**lehetőséget.
 1. A SSPR módosításának alkalmazásához válassza a **Mentés**lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban engedélyezte az Azure AD önkiszolgáló jelszó-visszaállítását egy kiválasztott felhasználói csoport számára. Megtanulta végrehajtani az alábbi műveleteket:
 

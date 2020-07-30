@@ -9,12 +9,12 @@ ms.subservice: monitoring
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: 385b06dd7756c3bebf6557f9ea0b518473a37d49
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7676f4aeeb9485ce5e3a702027884bc54d79a863
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075902"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387319"
 ---
 # <a name="use-synapse-studio-to-monitor-your-workspace-pipeline-runs"></a>A szinapszis Studio használata a munkaterület-feldolgozási folyamatok figyeléséhez
 
@@ -22,7 +22,7 @@ Az Azure szinapszis Analytics segítségével összetett folyamatokat hozhat lé
 
 Ez a cikk ismerteti, hogyan figyelheti meg a folyamat futásait, így nyomon követheti a folyamatok legújabb állapotát, problémáit és előrehaladását.
 
-## <a name="access-the-list-of-pipeline-runs"></a>A folyamat-futtatások listájának elérése
+## <a name="access-pipeline-runs-list"></a>Hozzáférési folyamat futtatási listája
 
 A munkaterületen futó folyamatok listájának megtekintéséhez először [nyissa meg a szinapszis Studio](https://web.azuresynapse.net/) alkalmazást, és válassza ki a munkaterületet.
 
@@ -36,7 +36,7 @@ Válassza a **folyamat futtatása** lehetőséget a folyamat-futtatások listáj
 
 ![Folyamat futtatásának kiválasztása](./media/how-to-monitor-pipeline-runs/monitor-hub-nav-pipelineruns.png)
 
-## <a name="filtering-your-pipeline-runs"></a>A folyamat futtatásának szűrése
+## <a name="filter-your-pipeline-runs"></a>A folyamat futtatásának szűrése
 
 A folyamatok listájának szűrésével megtekintheti azokat, amelyekre kíváncsi. A képernyő felső részén található szűrők segítségével megadhat egy mezőt, amely alapján szűrni szeretne.
 
@@ -46,10 +46,10 @@ A nézetet szűrheti például úgy, hogy csak a "Holiday" nevű folyamathoz tar
 
 ![Minta szűrő](./media/how-to-monitor-pipeline-runs/filter-example.png)
 
-## <a name="viewing-details-about-a-specific-pipeline-run"></a>Adott folyamat futtatási részleteinek megtekintése
+## <a name="view-details-about-a-specific-pipeline-run"></a>Adott folyamat futtatási részleteinek megtekintése
 
 A folyamat futtatásával kapcsolatos részletek megtekintéséhez válassza ki a folyamat futtatását. Ezután tekintse meg a folyamat futtatásához társított tevékenységek futtatását. Ha a folyamat továbbra is fut, nyomon követheti a folyamatot. 
   
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az alkalmazások figyelésével kapcsolatos további tudnivalókért tekintse meg a [Apache Spark alkalmazások figyelése](how-to-monitor-spark-applications.md) című cikket. 

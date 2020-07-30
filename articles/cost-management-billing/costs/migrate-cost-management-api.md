@@ -3,16 +3,16 @@ title: EA migrálása Microsoft Customer Agreement API-kra – Azure
 description: Ez a cikk a Microsoft Nagyvállalati Szerződések (EA) Microsoft Ügyfélszerződésbe való migrálásának következményeit ismerteti.
 author: bandersmsft
 ms.author: banders
-ms.date: 02/12/2020
+ms.date: 07/24/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
-ms.openlocfilehash: 397e0a21b1ba11b3bdd74c2030ff358c1ce159d8
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 1c556f2371ffba239ceee64fd4180143ae9b9230
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77201033"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290042"
 ---
 # <a name="migrate-from-enterprise-agreement-to-microsoft-customer-agreement-apis"></a>Migrálás Nagyvállalati Szerződésről Microsoft Customer Agreement API-kra
 
