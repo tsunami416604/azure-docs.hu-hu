@@ -3,12 +3,13 @@ title: Oktatóanyag – rendszerkép-Build kiváltása privát alaprendszerkép-
 description: Ebben az oktatóanyagban egy Azure Container Registry feladat konfigurálásával automatikusan elindítja a tároló rendszerképét a felhőben, ha egy másik privát Azure Container registryben található alaprendszerkép frissül.
 ms.topic: tutorial
 ms.date: 01/22/2020
-ms.openlocfilehash: e8aae8a91288d470c801dc4d82cfa6b44369d832
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-javascript
+ms.openlocfilehash: e28dc65f44f3d9997a59e6204451cc84b0e41e40
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77617701"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407132"
 ---
 # <a name="tutorial-automate-container-image-builds-when-a-base-image-is-updated-in-another-private-container-registry"></a>Oktatóanyag: a tároló rendszerképének automatizálása, amikor egy alaprendszerkép frissül egy másik privát tároló beállításjegyzékében 
 
@@ -102,7 +103,7 @@ az acr task create \
 ```
 
 
-Ez a feladat hasonló az [előző oktatóanyagban](container-registry-tutorial-build-task.md)létrehozott feladathoz. A feladat utasítja az ACR Tasksot egy rendszerkép-összeállítás aktiválására, amikor a rendszer leküld egy véglegesítést a `--context` által megadott adattárba. Míg az előző oktatóanyagban a rendszerkép létrehozásához használt Docker megadja a nyilvános alaprendszerképet (`FROM node:9-alpine`), a Docker ebben a feladatban, [Docker-app][dockerfile-app], alaprendszerképet ad meg az alaprendszerkép beállításjegyzékében:
+Ez a feladat hasonló az [előző oktatóanyagban](container-registry-tutorial-build-task.md)létrehozott feladathoz. A feladat utasítja az ACR Tasksot egy rendszerkép-összeállítás aktiválására, amikor a rendszer leküld egy véglegesítést a `--context` által megadott adattárba. Míg az előző oktatóanyagban a rendszerkép létrehozásához használt Docker megadja a nyilvános alaprendszerképet ( `FROM node:9-alpine` ), a Docker ebben a feladatban, [Docker-app][dockerfile-app], alaprendszerképet ad meg az alaprendszerkép beállításjegyzékében:
 
 ```Dockerfile
 FROM ${REGISTRY_NAME}/baseimages/node:9-alpine
@@ -132,7 +133,7 @@ az role assignment create \
 
 ## <a name="add-target-registry-credentials-to-the-task"></a>Cél beállításjegyzékbeli hitelesítő adatok hozzáadása a feladathoz
 
-Futtassa az [ACR Task hitelesítőadat-Hozzáadás][az-acr-task-credential-add] parancsot a hitelesítő adatok a feladathoz való hozzáadásához. Adja át `--use-identity [system]` a paramétert annak jelzésére, hogy a feladat rendszer által hozzárendelt felügyelt identitása hozzáférhet a hitelesítő adatokhoz.
+Futtassa az [ACR Task hitelesítőadat-Hozzáadás][az-acr-task-credential-add] parancsot a hitelesítő adatok a feladathoz való hozzáadásához. Adja át a `--use-identity [system]` paramétert annak jelzésére, hogy a feladat rendszer által hozzárendelt felügyelt identitása hozzáférhet a hitelesítő adatokhoz.
 
 ```azurecli-interactive
 az acr task credential add \
@@ -162,7 +163,7 @@ Először hitelesítse magát a Container registryben az [az ACR login][az-acr-l
 az acr login --name $ACR_NAME
 ```
 
-Futtassa helyileg a tárolót a `docker run` paranccsal. Cserélje le ** \<a Run\> -ID azonosítót** az előző lépés kimenetében található futtatási azonosítóra (például: "DA6"). Ez a példa a tárolót `myapp` nevezi `--rm` el, és tartalmazza azt a paramétert, amellyel el szeretné távolítani a tárolót, amikor leállítja.
+Futtassa helyileg a tárolót a `docker run` paranccsal. Cserélje le az **\<run-id\>** elemet az előző lépés kimenetében található futtatási azonosítóra (például: "DA6"). Ez a példa a tárolót nevezi `myapp` el, és tartalmazza azt a `--rm` paramétert, amellyel el szeretné távolítani a tárolót, amikor leállítja.
 
 ```bash
 docker run -d -p 8080:80 --name myapp --rm $ACR_NAME.azurecr.io/helloworld:<run-id>
@@ -264,7 +265,7 @@ A tároló leállításához és eltávolításához futtassa a következő para
 docker stop updatedapp
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag azt mutatta be, hogyan használhatók a feladatok a tárolórendszerképek összeállításának automatikus aktiválására a rendszerkép alapként szolgáló rendszerképének frissítése esetén. Most lépjen a következő oktatóanyagra, amelyből megtudhatja, hogyan indíthat el műveleteket egy meghatározott ütemterven.
 

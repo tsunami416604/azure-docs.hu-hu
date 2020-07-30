@@ -3,12 +3,12 @@ title: Sablon létrehozása a csatolt sablonokkal
 description: Útmutató sablon létrehozásához csatolt sablonokkal.
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: c2648cb8a71be709406f314d02a226ed097be6f0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b952baa465092fef19ad2feb11a43328a6177d1c
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87096683"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387863"
 ---
 # <a name="tutorial-create-a-template-spec-with-linked-templates-preview"></a>Oktatóanyag: spec sablon létrehozása csatolt sablonokkal (előzetes verzió)
 
@@ -33,7 +33,7 @@ A csatolt sablon neve **linkedTemplate.json**, és a fő sablon tárolási útvo
 - `/artifacts/linkedTemplate.json`
 - `artifacts/linkedTemplate.json`
 
-Ha a (z) és a (z) linkedTemplate.json és a linkedTemplate2.json egy másik linkedTemplate2.jstalálható, akkor a (z) linkedTemplate.json megadott relativePath **linkedTemplate2.js**.
+A `relativePath` tulajdonság mindig ahhoz a sablonhoz viszonyítva van `relativePath` , ahol a be van jelentve, így ha van egy másik linkedTemplate2.js, amelyről a linkedTemplate.jsbe van kapcsolva, és a linkedTemplate2.jsa on ugyanazon összetevők almappában vannak tárolva, a linkedTemplate.json megadott relativePath csak `linkedTemplate2.json` .
 
 1. Hozza létre a fő sablont a következő JSON-val. Mentse a fősablont **azuredeploy.jsa** helyi számítógépre. Ez az oktatóanyag feltételezi, hogy mentett egy elérési útra **c:\Templates\linkedTS\azuredeploy.js** , de bármilyen elérési utat használhat.
 
@@ -199,6 +199,6 @@ New-AzResourceGroupDeployment `
   -ResourceGroupName webRG
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha szeretne többet megtudni a sablon specifikációjának csatolt sablonként való üzembe helyezéséről, tekintse meg a következő [oktatóanyagot: a sablon specifikációjának telepítése csatolt sablonként](template-specs-deploy-linked-template.md).

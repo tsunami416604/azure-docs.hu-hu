@@ -66,6 +66,8 @@
           href: how-to-create-azure-function.md
         - name: Az ikergráf lekérdezése
           href: how-to-query-graph.md
+        - name: Metrikák megtekintése az Azure Monitorban
+          href: how-to-view-metrics.md
     - name: Bemenet csatlakoztatása
       items:
         - name: Telemetria betöltése az IoT Hubról
@@ -80,6 +82,8 @@
           href: how-to-integrate-time-series-insights.md
     - name: Hibaelhárítás
       items:
+        - name: Diagnosztikai naplók engedélyezése
+          href: troubleshoot-diagnostics.md
         - name: Ismert problémák
           href: troubleshoot-known-issues.md
         - name: Problémamegoldás

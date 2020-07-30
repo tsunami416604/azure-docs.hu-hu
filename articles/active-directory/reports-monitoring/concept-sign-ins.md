@@ -17,12 +17,12 @@ ms.date: 03/24/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2910933e2c57a8bc80a220726462b02915c4a8eb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 81daa7696c645c1353cdd5e6d3cbca90ac4f03da
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80246517"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87388118"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Bejelentkezési tevékenységre vonatkozó jelentések az Azure Active Directory portálon
 
@@ -117,7 +117,7 @@ Először Szűkítse le a jelentett adathalmazt egy olyan szintre, amely az Ön 
  
 **Állapot** – a bejelentkezési állapot, amely érdekli:
 
-- Sikeres
+- Success
 
 - Hiba
 
@@ -128,7 +128,7 @@ Először Szűkítse le a jelentett adathalmazt egy olyan szintre, amely az Ön 
 
 A **hely** – a hálózatról kezdeményezett hely:
 
-- Város
+- Település
 
 - Állam/megye
 
@@ -146,7 +146,7 @@ A **hely** – a hálózatról kezdeményezett hely:
 ![Ügyfélalkalmazás-szűrő](./media/concept-sign-ins/client-app-filter.png)
 
 
-|Name|Modern hitelesítés|Leírás|
+|Név|Modern hitelesítés|Leírás|
 |---|:-:|---|
 |Hitelesített SMTP| |Az e-mail-üzenetek küldéséhez használja a POP és az IMAP-ügyfél.|
 |Automatikus észlelési| |Az Outlook és az EAS-ügyfelek használják a postaládák keresésére és az Exchange Online-ban való kapcsolódására.|
@@ -184,7 +184,7 @@ A **hely** – a hálózatról kezdeményezett hely:
 
 - **Sikeres**: egy vagy több, a felhasználóra és alkalmazásra alkalmazott feltételes hozzáférési szabályzat (de nem feltétlenül a többi feltétel) a bejelentkezés során. 
 
-- **Hiba**: a rendszer egy vagy több feltételes hozzáférési házirendet alkalmazott, és nem volt elégedett a bejelentkezés során.
+- **Hiba**: a bejelentkezés megfelelt legalább egy feltételes hozzáférési házirend felhasználói és alkalmazási feltételének, és a vezérlők nem teljesülnek, vagy a hozzáférés letiltására van beállítva.
 
 
 
@@ -240,7 +240,7 @@ Az elemekre kattintva részletes információk érhetők el a bejelentkezési m�
 - IP-cím
 - Dátum
 - Az MFA megadása kötelező
-- Bejelentkezési állapot
+- Bejelentkezés állapota
 
 > [!NOTE]
 > Az IP-címek oly módon vannak kiadva, hogy az IP-cím és az azt tartalmazó számítógép fizikailag ne legyen végleges kapcsolat. Az IP-címek leképezése az a tény, hogy a mobilszolgáltatók és a VPN-ek olyan központi készletekből származó IP-címeket adnak ki, amelyek gyakran nagyon távol vannak az ügyfél eszközének tényleges használatáról. Jelenleg az Azure AD-jelentésekben az IP-címek fizikai helyre konvertálása a legjobb megoldás a Nyomkövetések, a beállításjegyzék-adatok, a fordított irányú keresés és egyéb információk alapján.
@@ -279,7 +279,7 @@ Az Office 365-tevékenységek naplóit a [Microsoft 365 felügyeleti központbó
 
 Az Office 365-tevékenység naplóit programozott módon is elérheti az [office 365 felügyeleti API](https://docs.microsoft.com/office/office-365-management-api/office-365-management-apis-overview)-k használatával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Bejelentkezési tevékenység jelentésének hibakódja](reference-sign-ins-error-codes.md)
 * [Az Azure AD adatmegőrzési szabályzatai](reference-reports-data-retention.md)

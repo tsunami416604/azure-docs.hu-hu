@@ -10,12 +10,13 @@ ms.subservice: bing-spell-check
 ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: 1c3cb862ee40c62ba3c22f9019abae3db2368652
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 71dca130fa20fd1887d9c80582997bf274dd475e
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85603077"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87405109"
 ---
 # <a name="tutorial-build-a-web-page-spell-check-client"></a>Oktatóanyag: Spell Check-ügyfél weboldalának létrehozása
 
@@ -323,7 +324,7 @@ Nyissa meg a weboldalt a böngészőben. Ha a rendszer kéri, adja meg a Bing Sp
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Követelmények használata és megjelenítése](../UseAndDisplayRequirements.md)

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/23/2020
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 0058c250c2d1d29061ac7a4130dffedbcf62a249
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 4fabaed28ca186f3ca091107e51ed3900168ba41
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87294179"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387727"
 ---
 # <a name="ephemeral-os-disks-for-azure-vms"></a>Ideiglenes operációsrendszer-lemezek Azure-beli virtuális gépekhez
 
@@ -35,7 +35,7 @@ Az állandó és az elmúló operációsrendszer-lemezek közötti fő különbs
 |                             | Állandó operációsrendszer-lemez                          | Rövid élettartamú operációsrendszer-lemez                              |
 |-----------------------------|---------------------------------------------|------------------------------------------------|
 | **OPERÁCIÓSRENDSZER-lemezre vonatkozó méretkorlát**      | 2 tebibájt                                                                                        | A virtuális gép méretének vagy 2TiB a gyorsítótár mérete, attól függően, hogy melyik a kisebb. A **GIB gyorsítótár-méretének**megtekintéséhez lásd [: DS](sizes-general.md), [es](sizes-memory.md), [M](sizes-memory.md), [FS](sizes-compute.md)és [GS](sizes-previous-gen.md#gs-series)              |
-| **Támogatott VM-méretek**          | Mind                                                                                          | A Premium Storage-t támogató virtuálisgép-méretek, például DSv1, DSv2, DSv3, Esv3, FS, FsV2, GS, LSv2, M                                               |
+| **Támogatott VM-méretek**          | Mind                                                                                          | A Premium Storage-t támogató virtuálisgép-méretek, például DSv1, DSv2, DSv3, Esv3, FS, FsV2, GS, M                                               |
 | **Lemez típusának támogatása**           | Felügyelt és nem felügyelt operációsrendszer-lemez                                                                | Csak felügyelt operációsrendszer-lemez                                                               |
 | **Régiós támogatás**              | Minden régió                                                                                  | Minden régió                              |
 | **Adatmegőrzés**            | Az operációsrendszer-lemezre írt operációsrendszer-lemezeket az Azure Storage tárolja                                  | Az operációsrendszer-lemezre írt adatkészleteket a rendszer a helyi virtuálisgép-tárolóba tárolja, és nem őrzi meg az Azure Storage szolgáltatásban. |
@@ -244,5 +244,5 @@ A: az ideiglenes lemezek nem támogatják A következőket:
 - Azure Site Recovery  
 - OPERÁCIÓSRENDSZER-lemez cseréje 
  
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az [Azure CLI](/cli/azure/vm#az-vm-create)használatával létrehozhat egy ideiglenes operációsrendszer-lemezzel ellátott virtuális gépet.
