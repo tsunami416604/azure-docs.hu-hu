@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 007763d65021b0730c6e4e81ada33790d3cf4c02
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b80cd2e40e54837682e72837cf0d1a9058f3a7fc
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87025778"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87428385"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>Oktatóanyag: Az Azure Active Directoryhoz csatlakoztatott hibrid eszközök manuális konfigurálása
 
@@ -59,6 +59,9 @@ Győződjön meg arról, hogy az alábbi URL-címek elérhetők a szervezet hál
 * `https://login.microsoftonline.com`
 * `https://device.login.microsoftonline.com`
 * A szervezet STS-je (összevont tartományok esetében), amelyet a felhasználó helyi intranetes beállításaiban kell szerepeltetni
+
+> [!WARNING]
+> Ha a szervezet olyan proxykiszolgálót használ, amelyek az SSL-forgalmat az adatveszteség-megelőzési vagy az Azure AD-bérlői korlátozások miatt észlelik, ügyeljen arra, hogy a (z) "" forgalom ne legyen https://device.login.microsoftonline.com kizárva a TLS-megszakítás és-vizsgálat alól. A (z) "" kizárása az https://device.login.microsoftonline.com ügyféltanúsítvány-alapú hitelesítés zavarásával járhat, ami problémákat okoz az eszközök regisztrációja és az eszközön alapuló feltételes hozzáférés miatt.
 
 Ha a szervezete a zökkenőmentes SSO használatát tervezi, a következő URL-címnek elérhetőnek kell lennie a szervezeten belüli számítógépekről. Emellett hozzá kell adni a felhasználó helyi intranet zónához is.
 
@@ -112,7 +115,7 @@ A következő Windows PowerShell-parancsfájllal ellenőrizheti az objektum lét
    $scp.Keywords;
    ```
 
-A **$SCP. A kulcsszavak** kimenete az Azure ad-bérlő információit jeleníti meg. Bemutatunk egy példát:
+A **$SCP. A kulcsszavak** kimenete az Azure ad-bérlő információit jeleníti meg. Íme egy példa:
 
    ```
    azureADName:microsoft.com
@@ -615,7 +618,7 @@ Ha a tartományhoz csatlakoztatott Windows-eszközök hibrid Azure AD-csatlakoz�
 - [Az Azure Active Directoryhoz csatlakoztatott hibrid eszközök hibaelhárítása](troubleshoot-hybrid-join-windows-current.md)
 - [A hibrid Azure Active Directory csatlakoztatása a régebbi verziójú eszközökhöz](troubleshoot-hybrid-join-windows-legacy.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az Azure Active Directory eszközkezelésének alapjai](overview.md)
 

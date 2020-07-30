@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 10/28/2019
 ms.author: curtand
-ms.openlocfilehash: 0b3b0d686ae10f9b376c977bf165eccddda32239
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 738e6507a1642a1ab76938eeaf3294668bcea964
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83744514"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422290"
 ---
 # <a name="view-and-search-your-recent-sign-in-activity-from-the-my-sign-ins-preview-page"></a>A legutóbbi bejelentkezési tevékenység megtekintése és keresése a saját bejelentkezések (előzetes verzió) lapról
 
@@ -62,7 +62,7 @@ A legutóbbi bejelentkezési tevékenységeit bármely elérhető információ a
 
     ![Közelmúltbeli tevékenység lap, a Kiemelt keresősáv, a Keresés gomb és az eredmények megjelenítése](media/my-account-portal/my-account-portal-sign-ins-page-search.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A legutóbbi bejelentkezési tevékenység megtekintése után a következőket teheti:
 
@@ -73,3 +73,5 @@ A legutóbbi bejelentkezési tevékenység megtekintése után a következőket 
 - A [szervezetek](my-account-portal-organizations-page.md)megtekintése és kezelése.
 
 - Megtekintheti, hogy a szervezet hogyan [használja az adatvédelmet érintő adatokat](my-account-portal-privacy-page.md).
+
+- A fiókom [portál beállításainak](my-account-portal-settings.md) módosítása

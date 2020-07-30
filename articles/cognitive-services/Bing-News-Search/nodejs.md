@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: Hírek keresése a Node. js-ben – Bing News Search REST API'
+title: 'Gyors útmutató: Hírek keresése Node.js-Bing News Search REST API'
 titleSuffix: Azure Cognitive Services
-description: Ezzel a rövid útmutatóval kérelmet küldhet a Bing News Search REST API Node. js használatával, és egy JSON-választ kap.
+description: Ezzel a rövid útmutatóval kérést küldhet a Bing News Search REST API Node.js használatával, és JSON-választ kap.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,19 +10,19 @@ ms.subservice: bing-news-search
 ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: aahi
-ms.custom: seodec2018
-ms.openlocfilehash: 24dd1e719b9eb401038d47c4d1c42139258f36f9
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.custom: seodec2018, devx-track-javascript
+ms.openlocfilehash: d0ed69aecf03e5c8e3a65e3ac532c02c89b65ba8
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83872048"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406605"
 ---
-# <a name="quickstart-perform-a-news-search-using-nodejs-and-the-bing-news-search-rest-api"></a>Gyors útmutató: Hírek keresése a Node. js és a Bing News Search használatával REST API
+# <a name="quickstart-perform-a-news-search-using-nodejs-and-the-bing-news-search-rest-api"></a>Rövid útmutató: a Node.js és a Bing News Search használatával végezheti el a hírek keresését REST API
 
 Ezzel a rövid útmutatóval megteheti az első hívást a Bing News Search API. Ez az egyszerű JavaScript-alkalmazás keresési lekérdezést küld az API-nak, és megjeleníti a JSON-választ.
 
-Bár ez az alkalmazás JavaScriptben van megírva, és a Node. js-ben fut, az API egy REST-alapú webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel.
+Bár ez az alkalmazás JavaScript nyelven íródott, és Node.jsban fut, az API egy REST-alapú webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel.
 
 A minta forráskódja elérhető a [githubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingNewsSearchv7.js).
 
@@ -183,7 +183,7 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Egyoldalas webalkalmazás létrehozása](tutorial-bing-news-search-single-page-app.md)

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 10/28/2019
+ms.date: 07/29/2020
 ms.author: curtand
-ms.openlocfilehash: a93ee781648440a6e656ff8fd948b2eb9e96bd43
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d1191fdd757b4614eca543660eccddea5c20d033
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83735939"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422511"
 ---
 # <a name="change-your-work-or-school-account-password-from-the-change-password-page"></a>Munkahelyi vagy iskolai fiók jelszavának módosítása a jelszó módosítása lapról
 
@@ -41,7 +41,7 @@ A **saját fiók** portál **jelszó módosítása** lapja segítséget nyújt a
 
     A jelszó módosítva lesz, és a rendszer kérni fogja, hogy jelentkezzen be újra a munkahelyi vagy iskolai fiókjába.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A jelszó módosítása után a következőket teheti:
 
@@ -54,3 +54,5 @@ A jelszó módosítása után a következőket teheti:
 - A [bejelentkezési tevékenység](my-account-portal-sign-ins-page.md)megtekintése.
 
 - Megtekintheti, hogy a szervezet hogyan [használja az adatvédelmet érintő adatokat](my-account-portal-privacy-page.md).
+
+- A fiókom [portál beállításainak](my-account-portal-settings.md) módosítása

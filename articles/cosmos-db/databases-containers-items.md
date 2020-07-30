@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/24/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 257d7a2e374867f6ff14aeaa633d95521b7ca39e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e1718ac9a7b7fcaab096595ea7341fcc90c2ddd6
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85114758"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422334"
 ---
 # <a name="work-with-databases-containers-and-items-in-azure-cosmos-db"></a>Adatbázisok, tárolók és elemek használata Azure Cosmos DBban
 
@@ -74,7 +74,7 @@ Az Azure Cosmos-tárolók API-specifikus entitásokra vannak kialakítva, az al�
 
 | Azure Cosmos-entitás | SQL API | Cassandra API | MongoDB-hez készült Azure Cosmos DB API | Gremlin API | Table API |
 | --- | --- | --- | --- | --- | --- |
-|Azure Cosmos-tároló | Tároló | Tábla | Gyűjtemény | Graph | Táblázat |
+|Azure Cosmos-tároló | Tároló | Tábla | Gyűjtemény | Graph | Tábla |
 
 > [!NOTE]
 > Tárolók létrehozásakor ügyeljen arra, hogy ne hozzon létre két tárolót ugyanazzal a névvel, de a különböző burkolattal. Ennek az az oka, hogy az Azure-platform egyes részei nem megkülönböztetik a kis-és nagybetűket, így az ilyen nevű tárolók telemetria és műveleteinek összekeveredését és ütközését okozhatják.
@@ -83,7 +83,7 @@ Az Azure Cosmos-tárolók API-specifikus entitásokra vannak kialakítva, az al�
 
 Az Azure Cosmos-tárolók rendszer által definiált tulajdonságokkal rendelkeznek. Attól függően, hogy melyik API-t használja, előfordulhat, hogy bizonyos tulajdonságok nem lesznek közvetlenül kitéve. A következő táblázat ismerteti a rendszerszintű tulajdonságok listáját:
 
-| Rendszerszintű tulajdonság | Rendszer által generált vagy felhasználó által konfigurálható | Szerep | SQL API | Cassandra API | MongoDB-hez készült Azure Cosmos DB API | Gremlin API | Table API |
+| Rendszerszintű tulajdonság | Rendszer által generált vagy felhasználó által konfigurálható | Cél | SQL API | Cassandra API | MongoDB-hez készült Azure Cosmos DB API | Gremlin API | Table API |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 |\_rid | Rendszer által generált | Tároló egyedi azonosítója | Yes | Nem | Nem | Nem | Nem |
 |\_ETAG | Rendszer által generált | Optimista Egyidejűség-vezérléshez használt entitás címkéje | Yes | Nem | Nem | Nem | Nem |
@@ -113,13 +113,13 @@ Attól függően, hogy melyik API-t használja, egy Azure Cosmos-elem a gyűjtem
 
 | Cosmos-entitás | SQL API | Cassandra API | MongoDB-hez készült Azure Cosmos DB API | Gremlin API | Table API |
 | --- | --- | --- | --- | --- | --- |
-|Azure Cosmos-tétel | Dokumentum | Sor | Dokumentum | Csomópont vagy peremhálózati | Item |
+|Azure Cosmos-tétel | Item | Sor | Dokumentum | Csomópont vagy peremhálózati | Item |
 
 ### <a name="properties-of-an-item"></a>Egy tétel tulajdonságai
 
 Minden Azure Cosmos-eleme a következő, rendszerszintű tulajdonságokkal rendelkezik. Attól függően, hogy melyik API-t használja, előfordulhat, hogy néhányat nem lehet közvetlenül feltenni.
 
-| Rendszerszintű tulajdonság | Rendszer által generált vagy felhasználó által konfigurálható| Szerep | SQL API | Cassandra API | MongoDB-hez készült Azure Cosmos DB API | Gremlin API | Table API |
+| Rendszerszintű tulajdonság | Rendszer által generált vagy felhasználó által konfigurálható| Cél | SQL API | Cassandra API | MongoDB-hez készült Azure Cosmos DB API | Gremlin API | Table API |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 |\_rid | Rendszer által generált | Az objektum egyedi azonosítója | Yes | Nem | Nem | Nem | Nem |
 |\_ETAG | Rendszer által generált | Optimista Egyidejűség-vezérléshez használt entitás címkéje | Yes | Nem | Nem | Nem | Nem |

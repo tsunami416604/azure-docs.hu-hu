@@ -1,5 +1,5 @@
 ---
-title: Azure-beli erőforrás-szolgáltatók műveletei
+title: Azure erőforrás-szolgáltatói műveletek
 description: Felsorolja az Azure-erőforrás-szolgáltatók műveleteit.
 services: active-directory
 ms.service: role-based-access-control
@@ -8,14 +8,14 @@ ms.workload: identity
 author: rolyon
 ms.author: rolyon
 ms.date: 07/16/2020
-ms.openlocfilehash: 0fc2039805b155535eeac1d653fc9ecb9e576d5d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d28f852ad4159472b7fcb3289a322db54be8af1e
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496944"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387387"
 ---
-# <a name="azure-resource-providers-operations"></a>Azure-beli erőforrás-szolgáltatók műveletei
+# <a name="azure-resource-provider-operations"></a>Azure erőforrás-szolgáltatói műveletek
 
 Ez a szakasz a beépített szerepkörökben használt Azure-erőforrás-szolgáltatók műveleteit sorolja fel. Ezeket a műveleteket saját [Egyéni Azure-szerepköreiben](custom-roles.md) használhatja az Azure-beli erőforrások részletes hozzáférés-vezérlésének biztosításához. Az erőforrás-szolgáltatói műveletek folyamatosan fejlődnek. A legújabb műveletek beszerzéséhez használja a [Get-AzProviderOperation](/powershell/module/az.resources/get-azprovideroperation) vagy [az az Provider Operation List műveletet](/cli/azure/provider/operation#az-provider-operation-list).
 
@@ -23,7 +23,7 @@ A műveletek listájának megtekintéséhez kattintson az erőforrás-szolgálta
 
 ## <a name="all"></a>Mind
 
-| Általános kérdések |
+| Általános |
 | --- |
 | [Microsoft. addons](#microsoftaddons) |
 | [Microsoft. Marketplace](#microsoftmarketplace) |
@@ -158,7 +158,7 @@ A műveletek listájának megtekintéséhez kattintson az erőforrás-szolgálta
 | [Microsoft. BingMaps](#microsoftbingmaps) |
 
 
-## <a name="general"></a>Általános kérdések
+## <a name="general"></a>Általános
 
 ### <a name="microsoftaddons"></a>Microsoft. addons
 
@@ -1290,7 +1290,7 @@ Azure-szolgáltatás [: Application Gateway](../application-gateway/index.yml), 
 > | Microsoft. Network/vpnsites/delete | Törli a VPN-hely erőforrását. |
 > | Microsoft. Network/vpnSites/vpnSiteLinks/READ | VPN-hely hivatkozásának beolvasása |
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Tárolás
 
 ### <a name="microsoftclassicstorage"></a>Microsoft. ClassicStorage
 

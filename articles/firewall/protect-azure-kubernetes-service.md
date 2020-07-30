@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: how-to
-ms.date: 07/02/2020
+ms.date: 07/29/2020
 ms.author: victorh
-ms.openlocfilehash: 81d65954197c0ebe0de77dc2fea63239d4c3f17b
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 602671f1052de2d9446f32946271cea2f9995044
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86056667"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87412949"
 ---
 # <a name="use-azure-firewall-to-protect-azure-kubernetes-service-aks-deployments"></a>Az Azure Kubernetes Service (ak) üzembe helyezésének biztosítása Azure Firewall
 
@@ -50,7 +50,9 @@ Azure Firewall a konfiguráció leegyszerűsítése érdekében egy AK FQDN-cím
       A részletekért lásd: **. HCP. <location> . azmk8s.io* és címek a következő táblázatban.
    - Az 123-es UDP-port a Network Time Protocol (NTP) időszinkronizálásához (Linux-csomópontok).
    - A DNS esetében a 53-es UDP-portra akkor is szükség van, ha közvetlenül az API-kiszolgálóhoz fér hozzá.
-- Konfigurálja a AzureMonitor és a Storage szolgáltatás címkéit. Azure Monitor fogadja a log Analytics-adatgyűjtést. 
+
+   További információ: a [kimenő forgalom szabályozása a fürtcsomópontok számára az Azure Kubernetes szolgáltatásban (ak)](../aks/limit-egress-traffic.md).
+- Konfigurálja a AzureMonitor és a Storage szolgáltatás címkéit. Azure Monitor fogadja a log Analytics-adatgyűjtést.
 
    A munkaterület URL-címét külön is engedélyezheti: `<worksapceguid>.ods.opinsights.azure.com` és `<worksapceguid>.oms.opinsights.azure.com` . Ezt a következő módszerek egyikével kezelheti:
 
@@ -66,6 +68,6 @@ Azure Firewall a konfiguráció leegyszerűsítése érdekében egy AK FQDN-cím
    ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ az Azure Kubernetes Service-ről: [Az Azure Kubernetes Service (ak) Kubernetes alapvető fogalmai](../aks/concepts-clusters-workloads.md).

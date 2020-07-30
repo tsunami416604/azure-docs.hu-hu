@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/27/2020
 ms.author: allensu
-ms.openlocfilehash: 0b025b3e017c8a7702b411e9d91cbdf22f915aba
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 983a3e04921bb3d8e804430948013a1b51802727
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85549635"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87424068"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources"></a>Virtuális hálózatok tervezése NAT Gateway-erőforrásokkal
 
@@ -28,7 +28,7 @@ A NAT-átjáró erőforrásai [Virtual Network NAT](nat-overview.md) részét k�
 
 
 <p align="center">
-  <img src="media/nat-overview/flow-direction1.svg" width="256" title="NAT Virtual Network az internet felé">
+  <img src="media/nat-overview/flow-direction1.svg" alt="Figure depicts a NAT gateway resource that consumes all IP addresses for a public IP prefix and directs that traffic to and from two subnets of virtual machines and a virtual machine scale set." width="256" title="NAT Virtual Network az internet felé">
 </p>
 
 *Ábra: Virtual Network NAT a kimenő internethez*
@@ -54,7 +54,7 @@ Az erőforrás úgy lett kialakítva, hogy egyszerű legyen, mint az alábbi Azu
 A következő ábrán a különböző Azure Resource Manager erőforrások közötti írható hivatkozások láthatók.  A nyíl a hivatkozás irányát jelzi, amelyből az írható. Áttekintés 
 
 <p align="center">
-  <img src="media/nat-overview/flow-map.svg" width="256" title="NAT-objektummodell Virtual Network">
+  <img src="media/nat-overview/flow-map.svg" alt="Figure depicts a NAT receiving traffic from internal subnets and directing it to a public IP and an IP prefix." width="256" title="NAT-objektummodell Virtual Network">
 </p>
 
 *Ábra: Virtual Network NAT-objektummodell*
@@ -96,7 +96,7 @@ Tekintse át ezt a szakaszt, és ismerkedjen meg a virtuális hálózatok NAT-be
 1. [Cost Optimization](#cost-optimization)
 1. [A bejövő és a kimenő együttes létezése](#coexistence-of-inbound-and-outbound)
 2. [Alapszintű erőforrások kezelése](#managing-basic-resources)
-3. [Availability Zones](#availability-zones)
+3. [Rendelkezésre állási zónák](#availability-zones)
 
 ### <a name="cost-optimization"></a>Költségoptimalizálás
 
@@ -119,7 +119,7 @@ A NAT-átjáró kompatibilis a rel:
 Új üzemelő példány fejlesztésekor a standard SKU-val kell kezdeni.
 
 <p align="center">
-  <img src="media/nat-overview/flow-direction1.svg" width="256" title="NAT Virtual Network az internet felé">
+  <img src="media/nat-overview/flow-direction1.svg" alt="Figure depicts a NAT gateway that supports outbound traffic to the internet from a virtual network." width="256" title="NAT Virtual Network az internet felé">
 </p>
 
 *Ábra: Virtual Network NAT a kimenő internethez*
@@ -129,7 +129,7 @@ A NAT-átjáró által biztosított internetes kimenő forgatókönyvek kiterjes
 #### <a name="nat-and-vm-with-instance-level-public-ip"></a>NAT és virtuális gép példány szintű nyilvános IP-címmel
 
 <p align="center">
-  <img src="media/nat-overview/flow-direction2.svg" width="300" title="Virtual Network NAT és virtuális gép példány szintű nyilvános IP-címmel">
+  <img src="media/nat-overview/flow-direction2.svg" alt="Figure depicts a NAT gateway that supports outbound traffic to the internet from a virtual network and inbound traffic with an instance-level public IP." width="300" title="Virtual Network NAT és virtuális gép példány szintű nyilvános IP-címmel">
 </p>
 
 *Ábra: Virtual Network NAT és virtuális gép példány szintű nyilvános IP-címmel*
@@ -144,7 +144,7 @@ A virtuális gép a NAT-átjárót fogja használni a kimenő forgalomhoz.  A be
 #### <a name="nat-and-vm-with-public-load-balancer"></a>NAT és virtuális gép nyilvános Load Balancer
 
 <p align="center">
-  <img src="media/nat-overview/flow-direction3.svg" width="350" title="Virtual Network NAT és virtuális gép nyilvános Load Balancer">
+  <img src="media/nat-overview/flow-direction3.svg" alt="Figure depicts a NAT gateway that supports outbound traffic to the internet from a virtual network and inbound traffic with a public load balancer." width="350" title="Virtual Network NAT és virtuális gép nyilvános Load Balancer">
 </p>
 
 *Ábra: Virtual Network NAT és virtuális gép nyilvános Load Balancer*
@@ -159,7 +159,7 @@ Egy terheléselosztási szabály vagy kimenő szabályok kimenő konfigurációj
 #### <a name="nat-and-vm-with-instance-level-public-ip-and-public-load-balancer"></a>NAT és virtuális gép példány-szintű nyilvános IP-címmel és nyilvános Load Balancer
 
 <p align="center">
-  <img src="media/nat-overview/flow-direction4.svg" width="425" title="Virtual Network NAT és virtuális gép példány szintű nyilvános IP-címmel és nyilvános Load Balancer">
+  <img src="media/nat-overview/flow-direction4.svg" alt="Figure depicts a NAT gateway that supports outbound traffic to the internet from a virtual network and inbound traffic with an instance-level public IP and a public load balancer." width="425" title="Virtual Network NAT és virtuális gép példány szintű nyilvános IP-címmel és nyilvános Load Balancer">
 </p>
 
 *Ábra: Virtual Network NAT és virtuális gép példány szintű nyilvános IP-címmel és nyilvános Load Balancer*
@@ -182,7 +182,7 @@ A NAT-átjárók elsőbbséget élveznek az alhálózat kimenő eseteivel szembe
 #### <a name="zone-isolation-with-zonal-stacks"></a>Zónák elkülönítése a többzónás készletekkel
 
 <p align="center">
-  <img src="media/nat-overview/az-directions.svg" width="425" title="Virtual Network NAT a zónák elkülönítésével, több létrehozása "zonal stacks"">
+  <img src="media/nat-overview/az-directions.svg" alt="Figure depicts three zonal stacks, each of which contains a NAT gateway and a subnet." width="425" title="Virtual Network NAT a zónák elkülönítésével, több létrehozása "zonal stacks"">
 </p>
 
 *Ábra: Virtual Network NAT a zónák elkülönítésével, több "zónákhoz tartozó verem létrehozása"*
@@ -210,7 +210,7 @@ Ha a forgatókönyvben bejövő végpontokra van szükség, két lehetőség kö
 #### <a name="cross-zone-outbound-scenarios-not-supported"></a>A zónák közötti kimenő forgatókönyvek nem támogatottak
 
 <p align="center">
-  <img src="media/nat-overview/az-directions2.svg" width="425" title="Virtual Network NAT nem kompatibilis a zóna-átívelő alhálózattal">
+  <img src="media/nat-overview/az-directions2.svg" alt="Figure depicts three zonal stacks, each of which contains a NAT gateway and a subnet, with the connections between to of the gateways and their subnets broken." width="425" title="Virtual Network NAT nem kompatibilis a zóna-átívelő alhálózattal">
 </p>
 
 *Ábra: Virtual Network NAT nem kompatibilis a zóna-átívelő alhálózattal*
@@ -268,7 +268,7 @@ A NAT által biztosított SNAT számos szempontból eltér a [Load Balancer](../
 A NAT igény szerinti SNAT-portokat biztosít az új kimenő forgalom forgalmához. A leltárban lévő összes elérhető SNAT-portot a NAT-nal konfigurált alhálózatokon található bármely virtuális gép használja. 
 
 <p align="center">
-  <img src="media/nat-overview/lb-vnnat-chart.svg" width="550" title="Virtual Network NAT igény szerinti kimenő SNAT">
+  <img src="media/nat-overview/lb-vnnat-chart.svg" alt="Figure depicts inventory of all available SNAT ports used by any virtual machine on subnets configured with N A T." width="550" title="Virtual Network NAT igény szerinti kimenő SNAT">
 </p>
 
 *Ábra: Virtual Network NAT igény szerinti kimenő SNAT*
@@ -276,7 +276,7 @@ A NAT igény szerinti SNAT-portokat biztosít az új kimenő forgalom forgalmáh
 A virtuális gépek bármely IP-konfigurációja szükség szerint képes kimenő folyamatokat létrehozni igény szerint.  Az előzetes kiosztást, az egyes példányok esetében a legrosszabb esetek túlzott kiépítését, nem kötelező.  
 
 <p align="center">
-  <img src="media/nat-overview/exhaustion-threshold.svg" width="550" title="Különbségek a kimerülési forgatókönyvekben">
+  <img src="media/nat-overview/exhaustion-threshold.svg" alt="Figure depicts inventory of all available SNAT ports used by any virtual machine on subnets configured with N A T with exhaustion threshold." width="550" title="Különbségek a kimerülési forgatókönyvekben">
 </p>
 
 *Ábra: különbségek a kimerülési forgatókönyvekben*
@@ -329,7 +329,7 @@ A SNAT-portok 5 másodperc elteltével újra felhasználhatók ugyanarra a cél 
 
 Szeretnénk tudni, hogyan lehet javítani a szolgáltatást. Hiányzik egy képesség? Tegyük fel, hogy mi a következő lépés a [UserVoice for NAT](https://aka.ms/natuservoice)esetében.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További tudnivalók a [Virtual Network NAT](nat-overview.md)-ról.
 * Tudnivalók a [NAT-átjáró erőforrásaira vonatkozó mérőszámokról és riasztásokról](nat-metrics.md).

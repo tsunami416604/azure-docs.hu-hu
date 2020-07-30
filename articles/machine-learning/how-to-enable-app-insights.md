@@ -11,12 +11,12 @@ author: blackmist
 ms.date: 07/23/2020
 ms.topic: conceptual
 ms.custom: how-to, tracking-python
-ms.openlocfilehash: 2bc3eb72ff0c5d29fd72de848abf87dfe84e2a01
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 88a122a9af4a5edac45a3189df5ffb78fb2ce271
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320221"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423813"
 ---
 # <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>A ML webszolgáltatás-végpontokról származó adatok figyelése és gyűjtése
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -128,6 +128,8 @@ Ha egyéni nyomkövetést szeretne naplózni, kövesse a normál üzembe helyez�
 
 3. Hozzon létre egy rendszerképet, és telepítse azt [AK-ra vagy ACI-](how-to-deploy-and-where.md)ra.
 
+A naplózással és az adatok gyűjtésével kapcsolatos további információkért tekintse meg a [naplózás engedélyezése Azure Machine learning](how-to-enable-logging.md) és az [adatok gyűjtése az éles modellből](how-to-enable-data-collection.md)című témakört.
+
 ### <a name="disable-tracking-in-python"></a>A nyomkövetés letiltása a Pythonban
 
 Az Azure Application Insights letiltásához használja a következő kódot:
@@ -166,7 +168,7 @@ A megtekintéshez:
 
     [![Application Insights URL-cím keresése](./media/how-to-enable-app-insights/appinsightsloc.png)](././media/how-to-enable-app-insights/appinsightsloc.png#lightbox)
 
-1. Az Application Isights, a bal oldali lista **Áttekintés** lapján vagy a __figyelés__ szakaszban válassza a __naplók__lehetőséget.
+1. Application Insights az **Áttekintés** lapon vagy a bal oldali listában a __figyelés__ szakaszban válassza a __naplók__lehetőséget.
 
     [![A figyelés áttekintése lap](./media/how-to-enable-app-insights/overview.png)](./media/how-to-enable-app-insights/overview.png#lightbox)
 
@@ -200,7 +202,7 @@ Az [enable-app-Insight-in-producting-Service. ipynb](https://github.com/Azure/Ma
  
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-clone-for-examples.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Lásd: [modell üzembe helyezése Azure Kubernetes Service-fürtön](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-azure-kubernetes-service) vagy [modell üzembe](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-azure-container-instance) helyezése Azure Container instances a modellek webszolgáltatás-végpontokra való üzembe helyezéséhez, valamint az Azure-Application Insights engedélyezése az adatgyűjtés és a végpontok figyeléséhez
 * Tekintse meg a [MLOps: modellek kezelése, üzembe helyezése és monitorozása a Azure Machine learning](https://docs.microsoft.com/azure/machine-learning/concept-model-management-and-deployment) segítségével további információ az éles modellekben gyűjtött adatok kihasználásáról. Ezek az adatkezelési lehetőségek segíthetnek a gépi tanulási folyamat folyamatos fejlesztésében

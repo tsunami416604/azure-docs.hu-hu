@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/19/2018
 ms.author: memildin
-ms.openlocfilehash: 236153612f6056e90cb9b5af128f49ed550e3fe9
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 2ef2cc86b3e12149977fa819a7e54ee9a1c0d7ac
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86080873"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423983"
 ---
 # <a name="gain-tenant-wide-visibility-for-azure-security-center"></a>A Azure Security Center teljes bérlőre kiterjedő láthatóságának megszerzése
 Ez a cikk bemutatja, hogyan kezelheti a szervezete biztonsági állapotát a Azure Active Directory bérlőhöz kapcsolódó összes Azure-előfizetésre vonatkozó biztonsági szabályzatok alkalmazásával.
@@ -26,7 +26,7 @@ Ez a cikk bemutatja, hogyan kezelheti a szervezete biztonsági állapotát a Azu
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="management-groups"></a>Felügyeleti csoportok
-Az Azure felügyeleti csoportjai hatékonyan kezelhetik a hozzáférést, a szabályzatokat és a jelentéskészítést az előfizetések csoportjaira vonatkozóan, valamint hatékonyan kezelhetik a teljes Azure-birtokot a gyökérszintű felügyeleti csoport műveleteinek végrehajtásával. Minden egyes Azure AD-bérlő egyetlen legfelső szintű felügyeleti csoportot kap, amelynek neve a gyökérszintű felügyeleti csoport. Ez a gyökérszintű felügyeleti csoport úgy épül be a hierarchiába, hogy minden felügyeleti csoport és előfizetés fölött legyen. Ez a csoport lehetővé teszi, hogy a globális házirendek és a RBAC-hozzárendelések a címtár szintjén legyenek alkalmazva. 
+Az Azure felügyeleti csoportjai hatékonyan kezelhetik a hozzáférést, a szabályzatokat és a jelentéskészítést az előfizetések csoportjaira vonatkozóan, valamint hatékonyan kezelhetik a teljes Azure-birtokot a gyökérszintű felügyeleti csoport műveleteinek végrehajtásával. Minden egyes Azure AD-bérlő egyetlen legfelső szintű felügyeleti csoportot kap, amelynek neve a gyökérszintű felügyeleti csoport. Ez a gyökérszintű felügyeleti csoport úgy épül be a hierarchiába, hogy minden felügyeleti csoport és előfizetés fölött legyen. Ez a csoport lehetővé teszi, hogy a globális házirendek és az Azure-beli szerepkör-hozzárendelések a címtár szintjén legyenek alkalmazva. 
 
 A felügyeleti csoport automatikusan létrejön, ha az alábbi műveletek bármelyikét végrehajtja: 
 1. Az Azure felügyeleti csoportok használatának engedélyezése a [Azure Portal](https://portal.azure.com) **Management groups** való navigálással.
@@ -49,7 +49,7 @@ Az előfizetéseket felügyeleti csoportokba rendezheti, és az irányítási sz
     - A megjelenítendő név mező a Azure Portal belül megjelenő név. A felügyeleti csoport létrehozásakor egy külön megjelenítendő név nem választható mező, és bármikor módosítható.  
 
       ![Létrehozás](./media/security-center-management-groups/create_context_menu.png)  
-5.  Válassza a **Mentés** lehetőséget.
+5.  Válassza a **Mentés** lehetőséget
 
 ### <a name="view-management-groups-in-the-azure-portal"></a>Felügyeleti csoportok megtekintése a Azure Portal
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
@@ -185,7 +185,7 @@ Előfizetéseket adhat hozzá a létrehozott felügyeleti csoporthoz. Ezek a lé
    > [!NOTE]
    > A felügyeleti csoportok előfizetéseket és alárendelt felügyeleti csoportokat is tartalmazhatnak. Amikor RBAC-szerepkört rendel a fölérendelt felügyeleti csoporthoz, a gyermek-felügyeleti csoport előfizetései öröklik a hozzáférést. A szülő felügyeleti csoportban beállított házirendeket a gyermekek is öröklik. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebből a cikkből megtudhatta, hogyan szerezhet Azure Security Center bérlői szintű láthatóságot. A Security Centerrel kapcsolatos további információkért olvassa el a következő cikkeket:
 
 > [!div class="nextstepaction"]
@@ -193,4 +193,3 @@ Ebből a cikkből megtudhatta, hogyan szerezhet Azure Security Center bérlői s
 
 > [!div class="nextstepaction"]
 > [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](security-center-managing-and-responding-alerts.md)
-

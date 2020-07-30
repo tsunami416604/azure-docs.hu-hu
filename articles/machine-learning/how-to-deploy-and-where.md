@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 07/08/2020
 ms.topic: conceptual
 ms.custom: how-to, tracking-python
-ms.openlocfilehash: f592e265cafc3e56dc0616e6eeb748c851084c32
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: fb23893f176a2b51e5917ea5bbcb0e52faa64bf3
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87317875"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423439"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Modellek üzembe helyezése az Azure Machine Learninggel
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -219,6 +219,8 @@ myenv = Environment.from_conda_specification(name = 'myenv',
 myenv.register(workspace=ws)
 ```
 
+A Python-környezetek Azure Machine Learning használatával történő használatának és testreszabásának részletes ismertetését a következő témakörben tekintheti meg: [& szoftveres környezetek használata a Azure Machine learning](how-to-use-environments.md)
+
 ### <a name="2-define-scoring-code"></a><a id="script"></a>2. pontozási kód definiálása
 
 A bejegyzés parancsfájlja fogadja az üzembe helyezett webszolgáltatásnak küldött adatokat, majd továbbítja azokat a modellnek. Ezután a modell által visszaadott választ visszaküldi az ügyfélnek. *A szkript a modellre jellemző*. Ismernie kell a modell által várt és visszaadott adatok értékét.
@@ -241,7 +243,7 @@ AZUREML_MODEL_DIR a szolgáltatás telepítése során létrehozott környezeti 
 
 A következő táblázat a telepített modellek számától függően AZUREML_MODEL_DIR értékét ismerteti:
 
-| Üzembe helyezés | Környezeti változó értéke |
+| Telepítés | Környezeti változó értéke |
 | ----- | ----- |
 | Egyetlen modell | A modellt tartalmazó mappa elérési útja. |
 | Több modell | Az összes modellt tartalmazó mappa elérési útja. A modellek a mappa neve és verziója szerint találhatók ( `$MODEL_NAME/$VERSION` ) |
@@ -613,13 +615,13 @@ A modell telepítése során előfordulhat, hogy a szolgáltatás állapota megv
 
 Az alábbi táblázat a különböző szolgáltatás-állapotokat ismerteti:
 
-| Webszolgáltatás állapota | Leírás | Végső állapot?
+| Webszolgáltatás állapota | Description | Végső állapot?
 | ----- | ----- | ----- |
-| Transitioning | A szolgáltatás üzembe helyezési folyamatban van. | Nem |
-| Nem kifogástalan | A szolgáltatás telepítve van, de jelenleg nem érhető el.  | Nem |
-| Unschedulable | A szolgáltatás jelenleg nem telepíthető az erőforrások hiánya miatt. | Nem |
-| Sikertelen | Hiba vagy összeomlás miatt nem sikerült telepíteni a szolgáltatást. | Igen |
-| Kifogástalan | A szolgáltatás kifogástalan állapotban van, és a végpont elérhető. | Igen |
+| Transitioning | A szolgáltatás üzembe helyezési folyamatban van. | No |
+| Nem kifogástalan | A szolgáltatás telepítve van, de jelenleg nem érhető el.  | No |
+| Unschedulable | A szolgáltatás jelenleg nem telepíthető az erőforrások hiánya miatt. | No |
+| Sikertelen | Hiba vagy összeomlás miatt nem sikerült telepíteni a szolgáltatást. | Yes |
+| Kifogástalan | A szolgáltatás kifogástalan állapotban van, és a végpont elérhető. | Yes |
 
 ### <a name="compute-instance-web-service-devtest"></a><a id="notebookvm"></a>Számítási példány webszolgáltatás (dev/test)
 
@@ -636,7 +638,7 @@ Lásd: [üzembe helyezés az Azure Kubernetes szolgáltatásban](how-to-deploy-a
 ### <a name="ab-testing-controlled-rollout"></a>A/B tesztelés (vezérelt bevezetés)
 További információ: ML- [modellek szabályozott bevezetése](how-to-deploy-azure-kubernetes-service.md#deploy-models-to-aks-using-controlled-rollout-preview) további információkhoz.
 
-## <a name="consume-web-services"></a>Webszolgáltatások felhasználása
+## <a name="inference-using-web-services"></a>Következtetés webszolgáltatások használatával
 
 Minden üzembe helyezett webszolgáltatás REST-végpontot biztosít, így bármilyen programozási nyelven létrehozhat ügyfélalkalmazások.
 Ha engedélyezte a szolgáltatás kulcs-alapú hitelesítését, meg kell adnia egy szolgáltatási kulcsot a kérelem fejlécében lévő jogkivonatként.
@@ -1233,7 +1235,7 @@ def run(request):
 > Azure Machine Learning csak a POST és a GET kérelmeket irányítja a pontozási szolgáltatást futtató tárolók számára. Ez hibákhoz vezethet, mert a böngészők a CORS-kérelmekre vonatkozó beállításokat használnak.
 > 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Modell üzembe helyezése egyéni Docker-rendszerkép használatával](how-to-deploy-custom-docker-image.md)
 * [Üzembe helyezés hibaelhárítása](how-to-troubleshoot-deployment.md)

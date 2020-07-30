@@ -6,12 +6,13 @@ ms.topic: quickstart
 description: Ez a rövid útmutató bemutatja, hogyan használható az Azure dev Spaces és a parancssor egy olyan alkalmazás fejlesztéséhez, amely egy meglévő Helm-diagrammal rendelkezik az Azure Kubernetes Service-ben
 keywords: Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: c37ea0b04e99cf1bba555e098bdf33b8a8558cfa
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 7d1d782203401607d3909d79d1f0f3a499712c32
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996680"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87414309"
 ---
 # <a name="quickstart-develop-an-application-with-an-existing-helm-chart-on-kubernetes---azure-dev-spaces"></a>Gyors útmutató: alkalmazás fejlesztése meglévő Helm-diagrammal a Kubernetes-ben – Azure dev Spaces
 Ebből az útmutatóból a következőket tudhatja meg:
@@ -38,7 +39,7 @@ az aks create -g MyResourceGroup -n MyAKS --location eastus --generate-ssh-keys
 A `use-dev-spaces` parancs használatával engedélyezze a fejlesztői szóközöket az AK-fürtön, és kövesse az utasításokat. Az alábbi parancs lehetővé teszi a dev Spaces használatát a *MyAKS* -fürtön a *MyResourceGroup* csoportban, és létrehoz egy *dev*nevű fejlesztői helyet.
 
 > [!NOTE]
-> A `use-dev-spaces` parancs az Azure dev SPACEs CLI-t is telepíti, ha még nincs telepítve. Az Azure dev Spaces CLI nem telepíthető a Azure Cloud Shell.
+> A `use-dev-spaces` parancs az Azure dev Spaces CLI-t is telepíti, ha még nincs telepítve. Az Azure dev Spaces CLI nem telepíthető a Azure Cloud Shell.
 
 ```azurecli
 az aks use-dev-spaces -g MyResourceGroup -n MyAKS --space dev --yes
@@ -57,7 +58,7 @@ cd dev-spaces/samples/python/getting-started/webfrontend
 
 ## <a name="prepare-the-application"></a>Az alkalmazás előkészítése
 
-Ahhoz, hogy alkalmazást futtasson az Azure dev Spaces szolgáltatásban, szüksége lesz egy Docker és egy Helm-diagramra. Bizonyos nyelveken (például a [Java][java-quickstart], a [.net Core][netcore-quickstart]és a [Node. js][nodejs-quickstart]esetében) az Azure dev Spaces Client Tooling az összes szükséges eszközt képes létrehozni. Számos más nyelv, például a go, a PHP és a Python esetében az ügyfél-eszközkészlet létrehozhatja a Helm diagramot, feltéve, hogy érvényes Docker ad meg. Ebben az esetben a minta alkalmazásnak van egy meglévő Docker és Helm diagramja
+Ahhoz, hogy alkalmazást futtasson az Azure dev Spaces szolgáltatásban, szüksége lesz egy Docker és egy Helm-diagramra. Bizonyos nyelveken (például a [Java][java-quickstart], a [.net core][netcore-quickstart]és a [Node.js][nodejs-quickstart]esetében) az Azure dev Spaces-ügyfél-eszközkészlet képes az összes szükséges eszköz előállítására. Számos más nyelv, például a go, a PHP és a Python esetében az ügyfél-eszközkészlet létrehozhatja a Helm diagramot, feltéve, hogy érvényes Docker ad meg. Ebben az esetben a minta alkalmazásnak van egy meglévő Docker és Helm diagramja
 
 Az alkalmazás Azure dev Spaces-sel való futtatásához szükséges konfiguráció előállítása a meglévő Helm diagrammal és Docker a `azds prep` paranccsal:
 
@@ -65,14 +66,14 @@ Az alkalmazás Azure dev Spaces-sel való futtatásához szükséges konfigurác
 azds prep --enable-ingress --chart webfrontend/
 ```
 
-A `prep` parancsot a *dev-Spaces/Samples/Python/első lépések/webfrontend* könyvtárból kell futtatnia, és meg kell adnia a Helm- `--chart`diagram helyét a használatával.
+A `prep` parancsot a *dev-Spaces/Samples/Python/első lépések/webfrontend* könyvtárból kell futtatnia, és meg kell adnia a Helm-diagram helyét a használatával `--chart` .
 
 > [!NOTE]
-> Előfordulhat, hogy a figyelmeztetés: *Figyelmeztetés: a Docker nem hozható létre a nem támogatott nyelv miatt.* futtatásakor `azds prep`. A `azds prep` parancs megkísérli [egy Docker és egy Helm-diagram](how-dev-spaces-works-prep.md#prepare-your-code) létrehozását a projekthez, de nem írja felül a meglévő Dockerfiles vagy Helm-diagramokat.
+> Előfordulhat, hogy a figyelmeztetés: *Figyelmeztetés: a Docker nem hozható létre a nem támogatott nyelv miatt.* futtatásakor `azds prep` . A `azds prep` parancs megkísérli [egy Docker és egy Helm-diagram](how-dev-spaces-works-prep.md#prepare-your-code) létrehozását a projekthez, de nem írja felül a meglévő Dockerfiles vagy Helm-diagramokat.
 
 ## <a name="build-and-run-code-in-kubernetes"></a>Kód létrehozása és futtatása Kubernetesben
 
-Hozza létre és futtassa a kódot az AK- `azds up` ban a parancs használatával:
+Hozza létre és futtassa a kódot az AK-ban a `azds up` parancs használatával:
 
 ```cmd
 $ azds up
@@ -96,10 +97,10 @@ Press Ctrl+C to detach
 ...
 ```
 
-A szolgáltatás futtatásához nyissa meg a `azds up` parancs kimenetében megjelenő nyilvános URL-címet. Ebben a példában a nyilvános URL-cím `http://dev.service.1234567890abcdef1234.eus.azds.io/`a következő:.
+A szolgáltatás futtatásához nyissa meg a parancs kimenetében megjelenő nyilvános URL-címet `azds up` . Ebben a példában a nyilvános URL-cím a következő: `http://dev.service.1234567890abcdef1234.eus.azds.io/` .
 
 > [!NOTE]
-> Ha a futás közben navigál a szolgáltatáshoz `azds up`, a rendszer a HTTP-kérelmek nyomkövetését is megjeleníti a `azds up` parancs kimenetében. Ezek a Nyomkövetések segítenek a szolgáltatás hibaelhárításában és hibakeresésében. Ezeket a nyomkövetéseket letilthatja `--disable-http-traces` a futtatásakor `azds up`.
+> Ha a futás közben navigál a szolgáltatáshoz `azds up` , a rendszer a HTTP-kérelmek nyomkövetését is megjeleníti a parancs kimenetében `azds up` . Ezek a Nyomkövetések segítenek a szolgáltatás hibaelhárításában és hibakeresésében. Ezeket a nyomkövetéseket letilthatja a `--disable-http-traces` futtatásakor `azds up` .
 
 Ha a `azds up` *CTRL + c billentyűkombinációval*állítja le a parancsot, a szolgáltatás továbbra is az AK-ban fog futni, és a nyilvános URL-cím továbbra is elérhető marad.
 
@@ -115,7 +116,7 @@ A szolgáltatás frissített verziójának üzembe helyezéséhez frissítheti a
     ```
 
 1. Mentse a módosításokat.
-1. Futtassa újra `azds up` a parancsot:
+1. Futtassa újra a `azds up` parancsot:
 
     ```cmd
     $ azds up
@@ -127,7 +128,7 @@ A szolgáltatás frissített verziójának üzembe helyezéséhez frissítheti a
     ```
 
 1. Navigáljon a futó szolgáltatáshoz, és figyelje meg a módosításokat.
-1. Nyomja le a *CTRL + c* billentyűkombinációt a `azds up` parancs leállításához.
+1. Nyomja le a *CTRL + c* billentyűkombinációt a parancs leállításához `azds up` .
 
 ## <a name="clean-up-your-azure-resources"></a>Azure-erőforrások karbantartása
 
@@ -135,7 +136,7 @@ A szolgáltatás frissített verziójának üzembe helyezéséhez frissítheti a
 az group delete --name MyResourceGroup --yes --no-wait
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogy az Azure dev Spaces hogyan segíti az összetettebb alkalmazások fejlesztését több tárolóban, és hogyan egyszerűsítheti az együttműködésen alapuló fejlesztést, ha a kód különböző verzióival vagy ágaival dolgozik a különböző helyeken.
 

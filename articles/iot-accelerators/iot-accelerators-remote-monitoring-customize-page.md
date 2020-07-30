@@ -8,12 +8,13 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/02/2018
 ms.topic: conceptual
-ms.openlocfilehash: c90f4166bf88a8df18a93e84903c93461b904d2c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 8101c01762749c2ceb085516936fa0c421fdb5f3
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82187262"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422708"
 ---
 # <a name="add-a-custom-page-to-the-remote-monitoring-solution-accelerator-web-ui"></a>Egyéni lap hozzáadása a távoli figyelési megoldás gyorsító webes felhasználói felületéhez
 
@@ -187,7 +188,7 @@ Igény szerint a webes felhasználói felület helyi futó példányát a felhő
     REACT_APP_BASE_SERVICE_URL=https://{your solution name}.azurewebsites.net/
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a cikkből megtudhatta, hogyan szabhatja testre a webes felhasználói felületet a távoli figyelési megoldás-gyorsító segítségével.
 

@@ -7,12 +7,13 @@ ms.service: static-web-apps
 ms.topic: how-to
 ms.date: 05/08/2020
 ms.author: buhollan
-ms.openlocfilehash: 71748959f8b5350a4bd34349eefedbf9d99c76e5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 33a40e7a0e7e3be4433b3cbd4ba7a8e09a84e689
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083616"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87428050"
 ---
 # <a name="configure-application-settings-for-azure-static-web-apps-preview"></a>Alkalmazásbeállítások konfigurálása az Azure statikus Web Apps előzetes verziójának beállításához
 
@@ -49,7 +50,7 @@ A környezeti változók JavaScript-keretrendszerrel vagy-könyvtárral történ
 
 - [Angular](https://angular.io/guide/build#configuring-application-environments)
 - [React](https://create-react-app.dev/docs/adding-custom-environment-variables/)
-- [Karcsú](https://linguinecode.com/post/how-to-add-environment-variables-to-your-svelte-js-app)
+- [Svelte](https://linguinecode.com/post/how-to-add-environment-variables-to-your-svelte-js-app)
 - [Vue](https://cli.vuejs.org/guide/mode-and-env.html)
 
 ### <a name="static-site-generators"></a>Statikus hely generátorai
@@ -164,7 +165,7 @@ Az Alkalmazásbeállítások az Azure CLI-n keresztül tekinthetők meg.
    az rest --method post --uri "/subscriptions/<YOUR_SUBSCRIPTION_ID>/resourceGroups/<YOUR_RESOURCE_GROUP_NAME>/providers/Microsoft.Web/staticSites/<YOUR_STATIC_SITE_NAME>/listFunctionAppSettings?api-version=2019-12-01-preview"
    ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Helyi fejlesztés beállítása](local-development.md)

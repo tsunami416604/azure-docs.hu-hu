@@ -3,12 +3,12 @@ title: Biztonsági mentési adatai titkosítása az ügyfél által felügyelt k
 description: Megtudhatja, hogyan titkosíthatja a biztonsági mentési adatait az ügyfél által felügyelt kulcsokkal (CMK) a Azure Backup segítségével.
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: c26466582cbe5a10610f6766160c2b0bc51a4828
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1586a40d115a591c474c3bc8c1fed5448eb90bcd
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091096"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387999"
 ---
 # <a name="encryption-of-backup-data-using-customer-managed-keys"></a>Biztonsági mentési adatai titkosítása az ügyfél által felügyelt kulcsokkal
 
@@ -92,7 +92,7 @@ Most engedélyeznie kell a Recovery Services-tárolónak a titkosítási kulcsot
 
 ### <a name="enable-soft-delete-and-purge-protection-on-the-azure-key-vault"></a>A Azure Key Vault eltávolításának és törlésének engedélyezése
 
-Engedélyeznie kell a **Soft delete és Purge Protection** szolgáltatást a titkosítási kulcsot tároló Azure Key Vault. Ezt az alább látható Azure Key Vault felhasználói felületen végezheti el. (Másik lehetőségként ezek a tulajdonságok a Key Vault létrehozásakor is megadhatók.) További információt ezekről a Key Vault tulajdonságokról [itt](../key-vault/general/overview-soft-delete.md)talál.
+Engedélyeznie kell a **Soft delete és Purge Protection** szolgáltatást a titkosítási kulcsot tároló Azure Key Vault. Ezt az alább látható Azure Key Vault felhasználói felületen végezheti el. (Másik lehetőségként ezek a tulajdonságok a Key Vault létrehozásakor is megadhatók.) További információt ezekről a Key Vault tulajdonságokról [itt](../key-vault/general/soft-delete-overview.md)talál.
 
 ![A Soft delete és a Purge Protection engedélyezése](./media/encryption-at-rest-with-cmk/soft-delete-purge-protection.png)
 
@@ -258,6 +258,6 @@ Nem követi a cikkben szereplő lépéseket, és az elemek védelemmel való ell
 
 A CMK titkosítás használata a biztonsági mentéshez nem jár további költségekkel. Azonban továbbra is felmerülhetnek a költségek arra, hogy a Azure Key Vault, ahol a kulcsot tárolják.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A Azure Backup biztonsági funkcióinak áttekintése](security-overview.md)

@@ -1,19 +1,18 @@
 ---
 title: A Linux rendszerű virtuális gépek alkalmazás-konzisztens biztonsági mentései
 description: A Linux rendszerű virtuális gépek alkalmazás-konzisztens biztonsági másolatait az Azure-ba hozhatja létre. Ez a cikk a parancsfájl-keretrendszer konfigurálását ismerteti az Azure-ban üzembe helyezett Linux virtuális gépek biztonsági mentéséhez. Ez a cikk hibaelhárítási információkat is tartalmaz.
-ms.reviewer: anuragm
 ms.topic: conceptual
 ms.date: 01/12/2018
-ms.openlocfilehash: 8d578df45235b3bef314245e4eb7a0976c4d48d6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1ebf1b4148c43b07c0fddee67970abe8381e4c30
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87054843"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407098"
 ---
 # <a name="application-consistent-backup-of-azure-linux-vms"></a>Azure-beli linuxos virtuális gépek alkalmazáskonzisztens biztonsági mentése
 
-A virtuális gépek biztonsági mentési pillanatképének készítésekor az alkalmazás konzisztenciája azt jelenti, hogy az alkalmazások akkor kezdődnek, amikor a virtuális gépek a visszaállítás után indulnak. Ahogy az is elképzelhető, hogy az alkalmazások konzisztenciája rendkívül fontos. Annak érdekében, hogy a Linux rendszerű virtuális gépek konzisztensek legyenek, az alkalmazással konzisztens biztonsági mentéseket használhat a Linux előtti és utáni parancsfájl-keretrendszer használatával. A pre-script és a parancsfájl utáni keretrendszer támogatja a Azure Resource Manager telepített linuxos virtuális gépeket. Az alkalmazás-konzisztencia parancsfájljai nem támogatják Service Manager telepített virtuális gépeket vagy Windowsos virtuális gépeket.
+A virtuális gépek biztonsági mentési pillanatképének készítésekor az alkalmazás konzisztenciája azt jelenti, hogy az alkalmazások akkor kezdődnek, amikor a virtuális gépek a visszaállítás után indulnak. Ahogy az is elképzelhető, hogy az alkalmazások konzisztenciája rendkívül fontos. Annak érdekében, hogy a Linux rendszerű virtuális gépek konzisztensek legyenek, az alkalmazással konzisztens biztonsági mentéseket használhat a Linux előtti és utáni parancsfájl-keretrendszer használatával. A pre-script és a parancsfájl utáni keretrendszer támogatja a Azure Resource Manager telepített linuxos virtuális gépeket. Az alkalmazások konzisztenciájához tartozó parancsfájlok nem támogatják Service Manager telepített virtuális gépeket vagy Windows rendszerű virtuális gépeket.
 
 ## <a name="how-the-framework-works"></a>A keretrendszer működése
 
@@ -59,7 +58,7 @@ A parancsfájl-előkészítők natív Application API-kat indítanak, amelyek fo
 
     - **timeoutInSeconds**: adjon meg egyedi időtúllépést a parancsfájl előtti és a parancsfájl utáni (maximális érték 1800).
 
-    - **continueBackupOnFailure**: állítsa **igaz** értékre, ha azt szeretné, hogy a Azure Backup a fájlrendszer konzisztens/összeomlásos konzisztens biztonsági mentésére térjen vissza, ha az előzetes parancsfájl vagy a parancsfájl utáni hiba meghiúsul. Ha ezt a beállítást **hamis** értékre állítja, akkor a parancsfájl meghibásodása esetén sikertelen lesz a biztonsági mentés (kivéve, ha olyan egylemezes virtuális géppel rendelkezik, amely a beállítástól függetlenül visszaesik az összeomlás-konzisztens biztonsági mentésre).
+    - **continueBackupOnFailure**: állítsa **igaz** értékre, ha azt szeretné, hogy a Azure Backup a fájlrendszer konzisztens/összeomlásos konzisztens biztonsági mentésére térjen vissza, ha az előzetes parancsfájl vagy a parancsfájl utáni hiba meghiúsul. Ha ez a beállítás sikertelen, a biztonsági **Mentés sikertelen lesz, ha** parancsfájl-meghibásodás történik (kivéve, ha egyetlen lemezből álló virtuális gép van, amely a beállítástól függetlenül visszaesik az összeomlás-konzisztens biztonsági mentésre). Ha a **continueBackupOnFailure** értéke false (hamis) értékre van állítva, ha a biztonsági mentés sikertelen, a rendszer megkísérli a biztonsági mentési műveletet a szolgáltatásban lévő újrapróbálkozási logika alapján (a megadott számú próbálkozás esetében).
 
     - **fsFreezeEnabled**: azt határozza meg, hogy a rendszer meghívhatja-e a Linux-fsfreeze, amikor a virtuális gép pillanatképét a fájlrendszer konzisztenciájának biztosítására kéri. Azt javasoljuk, hogy ezt a beállítást állítsa **igaz** értékre, kivéve, ha az alkalmazás nem függ a fsfreeze letiltásával.
 
@@ -84,6 +83,6 @@ Győződjön meg arról, hogy a megfelelő naplózást adja hozzá a parancsfáj
 | Előzetes ScriptTimeout | Az alkalmazás-konzisztens biztonsági mentés előzetes parancsfájljának végrehajtása időtúllépés miatt megszakítva. | Keresse meg a parancsfájlt, és növelje a **VMSnapshotScriptPluginConfig.js** a **/etc/Azure**címen található fájlban lévő időkorlátot. |
 | ScriptTimeout utáni | Az alkalmazás-konzisztens biztonsági mentési parancsfájl végrehajtása időtúllépés miatt megszakítva. | Keresse meg a parancsfájlt, és növelje a **VMSnapshotScriptPluginConfig.js** a **/etc/Azure**címen található fájlban lévő időkorlátot. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Virtuális gép biztonsági mentésének konfigurálása Recovery Services-tárolóra](./backup-azure-vms-first-look-arm.md)

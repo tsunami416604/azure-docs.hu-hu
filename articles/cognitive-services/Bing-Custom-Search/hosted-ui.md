@@ -10,12 +10,13 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
-ms.openlocfilehash: 7ec407b7f6baf56f0a2fe724089826d8f9303b85
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 857195e0befb95035572b5b52a01d151b332518e
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186843"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406350"
 ---
 # <a name="configure-your-hosted-ui-experience"></a>Üzemeltetett felhasználói felület konfigurálása
 
@@ -88,7 +89,7 @@ Az üzemeltetett felhasználói felületet a következő módokon használhatja:
 
 Ha további információkat szeretne, például az egyéni konfiguráció AZONOSÍTÓját, ugorjon a **végpontok** elemre az **éles** lapon.
 
-## <a name="configuration-options"></a>Konfigurációs lehetőségek
+## <a name="configuration-options"></a>Beállítási lehetőségek
 
 Az üzemeltetett felhasználói felület működésének konfigurálásához kattintson a **további konfigurációk**lehetőségre, és adjon meg értékeket. Ezek a beállítások nem kötelezőek. Ha szeretné megtekinteni, hogy milyen hatással van a alkalmazásra vagy eltávolításra, tekintse meg a jobb oldali előnézet ablaktáblát. 
 
@@ -144,7 +145,7 @@ A következő konfigurációk csak akkor érvényesek, ha a futtatott felhaszná
 - Embléma URL-címe
 - Faviicon URL-címe  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Díszítő jelölők használata szövegkiemeléshez](../bing-web-search/hit-highlighting.md)
 - [Weboldalak lapozása](./page-webpages.md)

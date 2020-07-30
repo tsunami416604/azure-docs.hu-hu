@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 04/13/2020
-ms.openlocfilehash: 69458a7a3f2555a301c1266addfe7c49cb111ef6
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 532a2ce429899d3674a8f6d8308188e9b1f737b1
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87317756"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407948"
 ---
 # <a name="create-your-azure-virtual-machine-technical-assets"></a>Azure-beli virtuális gépek technikai eszközeinek létrehozása
 
@@ -276,10 +276,10 @@ A következő folyamat általánosít egy Linux rendszerű virtuális gépet, é
     1. A Azure Portal válassza ki az erőforráscsoportot (RG) és a virtuális gép lefoglalását.
     2. A VHD-fájl már általánosítva van, és létrehozhat egy új virtuális gépet a virtuális merevlemez használatával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha nehézségekbe ütközött az új Azure-alapú virtuális merevlemez létrehozása során, tekintse meg a [gyakori problémák a VHD létrehozása során](common-issues-during-vhd-creation.md)című témakört.
 
 Egyéb esetben:
 
-* [Tanúsítsa a](get-sas-uri.md) virtuálisgép-rendszerképet, amely bemutatja, hogyan lehet tesztelni és elküldeni egy virtuálisgép-rendszerképet az Azure Marketplace minősítéshez, beleértve az *Azure Certified eszköz minősítési teszt eszközét* és annak használatát a virtuálisgép-rendszerkép hitelesítéséhez.
+* A [VHD-ről üzembe helyezett virtuális gép (VM)](azure-vm-image-certification.md) kifejti, hogyan lehet tesztelni és elküldeni egy virtuálisgép-lemezképet az Azure Marketplace minősítéshez, beleértve az *Azure Certified eszköz minősítési teszt eszközét* , valamint a virtuálisgép-lemezképek hitelesítésének módját.

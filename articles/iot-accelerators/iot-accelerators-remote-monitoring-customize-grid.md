@@ -8,12 +8,13 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/04/2018
 ms.topic: conceptual
-ms.openlocfilehash: e27c1c4303129467c0bd05152570e26f129585a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 0eab7d743823109ed138ce19f35cea0ffb143422
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82186288"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422725"
 ---
 # <a name="add-a-custom-grid-to-the-remote-monitoring-solution-accelerator-web-ui"></a>Egyéni rács hozzáadása a távoli figyelési megoldás gyorsított webes felhasználói felületéhez
 
@@ -277,7 +278,7 @@ Ha a felhasználónak csak egyetlen sorban kell működnie, a **columnDefs**egy 
     }
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a cikkből megtudhatta, hogyan adhat hozzá vagy szabhat testre lapokat a webes felhasználói felületen a távoli figyelési megoldás-gyorsító segítségével.
 

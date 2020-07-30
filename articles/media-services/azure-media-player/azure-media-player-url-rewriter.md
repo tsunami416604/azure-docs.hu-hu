@@ -6,12 +6,13 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
 ms.date: 04/20/2020
-ms.openlocfilehash: f238a2a3c499cf1e36f5e7c40e087375b7db0a70
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-javascript
+ms.openlocfilehash: c8497d50f86155ef7df0de995864e74753542750
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81726458"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422623"
 ---
 # <a name="url-rewriter"></a>URL-átíró #
 
@@ -23,7 +24,7 @@ Alapértelmezés szerint a Azure Media Player egy adott URL-címet ír a Azure M
     </video>
 ```
 
-Ha azonban nem kívánja használni az URL-újraíró használatát, ezt a `disableUrlRewriter` tulajdonság paraméterrel való hozzáadásával teheti meg. Ez azt jelenti, hogy a forrásoknak átadott összes információ módosítása nélkül, közvetlenül a lejátszónak lesz átadva.  Íme egy példa arra, hogyan lehet két forrást hozzáadni a lejátszóhoz, KÖTŐJELen és egy SMOOTH Streamingen.
+Ha azonban nem kívánja használni az URL-újraíró használatát, ezt a tulajdonság paraméterrel való hozzáadásával teheti meg `disableUrlRewriter` . Ez azt jelenti, hogy a forrásoknak átadott összes információ módosítása nélkül, közvetlenül a lejátszónak lesz átadva.  Íme egy példa arra, hogyan lehet két forrást hozzáadni a lejátszóhoz, KÖTŐJELen és egy SMOOTH Streamingen.
 
 ```html
     <video id="vid1" class="azuremediaplayer amp-default-skin">
@@ -41,7 +42,7 @@ vagy
     ]);
 ```
 
-Ha szeretné, megadhatja azokat a folyamatos átviteli formátumokat, amelyeket Azure Media Player szeretne újraírni a `streamingFormats` (z) paraméter használatával. A lehetőségek `DASH`a `SMOOTH`következők `HLSv3`: `HLSv4`, `HLS`,,,. A HLS és a HLSv3 & v4 közötti különbség az, hogy a HLS formátuma támogatja a FairPlay-tartalmak lejátszását. a v3 és a v4 nem támogatja a FairPlay. Ez akkor hasznos, ha nincs elérhető kézbesítési házirend egy adott protokollhoz.  Íme egy példa arra, ha egy kötőjel protokoll nincs engedélyezve az adategységben.
+Ha szeretné, megadhatja azokat a folyamatos átviteli formátumokat, amelyeket Azure Media Player szeretne újraírni a (z `streamingFormats` ) paraméter használatával. A lehetőségek a következők:,, `DASH` `SMOOTH` `HLSv3` , `HLSv4` , `HLS` . A HLS és a HLSv3 & v4 közötti különbség az, hogy a HLS formátuma támogatja a FairPlay-tartalmak lejátszását. a v3 és a v4 nem támogatja a FairPlay. Ez akkor hasznos, ha nincs elérhető kézbesítési házirend egy adott protokollhoz.  Íme egy példa arra, ha egy kötőjel protokoll nincs engedélyezve az adategységben.
 
 ```html
     <video id="vid1" class="azuremediaplayer amp-default-skin">
@@ -62,6 +63,6 @@ A fenti kettő kombinálható egymással az adott eszközön alapuló több kör
 > [!NOTE]
 > A Widevine-védelmi információk csak a kötőjel protokollon maradnak meg.
 
-## <a name="next-steps"></a>További lépések ##
+## <a name="next-steps"></a>Következő lépések ##
 
 - [Azure Media Player rövid útmutató](azure-media-player-quickstart.md)

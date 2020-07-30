@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8b5dbf26bc636107576af15a0217eb16302f63f4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5022dfc5811f3db59774a46a7034ff14c4dcf4a8
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85601632"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87428030"
 ---
 # <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app-preview"></a>Jelszó nélküli bejelentkezés engedélyezése a Microsoft Authenticator alkalmazással (előzetes verzió)
 
@@ -45,7 +45,7 @@ A jelszóval nem rendelkező hitelesítési módszerek regisztrációs funkciói
 
 ### <a name="enable-passwordless-phone-sign-in-authentication-methods"></a>Jelszó nélküli telefonos bejelentkezési hitelesítési módszerek engedélyezése
 
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com)
+1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) **globális rendszergazdai** fiókkal.
 1. Keresse meg és válassza ki az *Azure Active Directoryt*. Válassza a **biztonsági**  >  **hitelesítési módszerek**  >  **hitelesítési módszer házirend (előzetes verzió) lehetőséget.**
 1. A **jelszó nélküli telefonos bejelentkezés**területen válassza a következő beállításokat
    1. **Engedélyezés** – igen vagy nem
@@ -101,7 +101,7 @@ A Mobile Application Management (MAM)-t igénylő szabályzat hatálya alá eső
 > [!NOTE]
 > Az eszköz regisztrálása nem ugyanaz, mint az Eszközkezelő vagy a "MDM". A szolgáltatás csak az eszköz AZONOSÍTÓját és egy felhasználói azonosítót társít az Azure AD-címtárban.  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Ismerje meg, hogyan működik a jelszavas hitelesítés](concept-authentication-passwordless.md)
 

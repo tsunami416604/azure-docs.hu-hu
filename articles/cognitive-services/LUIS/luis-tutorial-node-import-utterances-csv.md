@@ -5,18 +5,18 @@ description: A LUIS authoring API használatával megtudhatja, hogyan hozhat lé
 services: cognitive-services
 author: diberry
 manager: nitinme
-ms.custom: seodec18
+ms.custom: seodec18, devx-track-javascript
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 09/05/2019
 ms.author: diberry
-ms.openlocfilehash: 69eb6c5e5d0139049e252b0a22fefad747429068
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 669c5f1ae6b667073e885a0077e9f3130ba3c4f0
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057738"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87405976"
 ---
 # <a name="build-a-luis-app-programmatically-using-nodejs"></a>A LUIS-alkalmazások programozott módon történő létrehozása Node.js
 
@@ -27,7 +27,7 @@ A LUIS egy programozott API-t biztosít, amely mindent tesz a [Luis](luis-refere
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Jelentkezzen be a [Luis](luis-reference-regions.md) webhelyre, és keresse meg a [szerzői kulcsot](luis-how-to-azure-subscription.md#authoring-key) a Fiókbeállítások menüpontban. Ezt a kulcsot használja a szerzői API-k meghívásához.
-* Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 * Ez a cikk CSV-vel kezdődik a feltételezett vállalati naplófájlok felhasználói kérésekhez. Töltse le [itt](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/IoT.csv).
 * Telepítse a legújabb Node.jst a NPM. Töltse le innen [.](https://nodejs.org/en/download/)
 * **[Ajánlott]** A Visual Studio Code az IntelliSense és a hibakeresés szolgáltatáshoz ingyenesen [letölthető innen.](https://code.visualstudio.com/)
@@ -186,7 +186,7 @@ Miután a szkript befejeződik, bejelentkezhet a [luisba](luis-reference-regions
 ![TurnOn szándék](./media/luis-tutorial-node-import-utterances-csv/imported-utterances-661.png)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Az alkalmazás tesztelése és betanítása a LUIS webhelyén](luis-interactive-test.md)

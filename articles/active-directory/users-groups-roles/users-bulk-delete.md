@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3fc393279aaa6b293c2eb29099be45385ad08d9a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 82304052d6ed0c0169c24c19c58d53548b4479cc
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84731499"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423592"
 ---
 # <a name="bulk-delete-users-in-azure-active-directory"></a>Felhasználók tömeges törlése Azure Active Directory
 
@@ -68,7 +68,7 @@ Ha hibák léptek fel, letöltheti és megtekintheti az eredményeket tartalmaz�
 
 Az összes függőben lévő tömeges kérelem állapotát a **tömeges művelet eredményei** lapon tekintheti meg.
 
-   [![](media/users-bulk-delete/bulk-center.png "Check delete status in the Bulk Operations Results page")](media/users-bulk-delete/bulk-center.png#lightbox)
+   [![A tömeges műveletek eredményei lapon található törlés állapotának ellenőrzését.](media/users-bulk-delete/bulk-center.png)](media/users-bulk-delete/bulk-center.png#lightbox)
 
 Ezután ellenőrizze, hogy a törölt felhasználók szerepelnek-e az Azure AD-szervezetben vagy a Azure Portal vagy a PowerShell használatával.
 
@@ -89,7 +89,7 @@ Get-AzureADUser -Filter "UserType eq 'Member'"
 
 Győződjön meg arról, hogy a törölt felhasználók már nem szerepelnek a felsorolásban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Felhasználók tömeges hozzáadása](users-bulk-add.md)
 - [Felhasználók listájának letöltése](users-bulk-download.md)

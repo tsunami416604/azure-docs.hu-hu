@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 10/28/2019
+ms.date: 07/29/2020
 ms.author: curtand
-ms.openlocfilehash: 9badda1663947587b078c6bb808f4efdf2e10579
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e150143e726c75d96372b11fb3d451f0dc9956bc
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83735956"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422478"
 ---
 # <a name="manage-your-connected-devices-from-the-devices-page"></a>A csatlakoztatott eszközök kezelése az eszközök lapról
 
@@ -64,7 +64,7 @@ Ha kizárta az eszközét, vagy végzetes hibát észlel, lépjen egy másik esz
 
 2. Válassza a **BitLocker-kulcsok megtekintése** a zárolt eszközhöz lehetőséget, és jegyezze fel a zárolt eszköz BitLocker-kulcsát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A csatlakoztatott eszközök megtekintése után a következőket teheti:
 
@@ -75,6 +75,8 @@ A csatlakoztatott eszközök megtekintése után a következőket teheti:
 - A [bejelentkezési tevékenység](my-account-portal-sign-ins-page.md)megtekintése.
 
 - Megtekintheti, hogy a szervezet hogyan [használja az adatvédelmet érintő adatokat](my-account-portal-privacy-page.md).
+
+- A fiókom [portál beállításainak](my-account-portal-settings.md) módosítása
 
 ## <a name="related-office-content"></a>Kapcsolódó Office-tartalom
 

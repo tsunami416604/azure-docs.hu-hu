@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: eliotgra
-ms.openlocfilehash: c2dcba05e3b1fc5cfc32d6f1b38c22b811b73626
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: f212143d90b6a6bf9c8f1f597c276b9ab4100617
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87352952"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406260"
 ---
 # <a name="iot-plug-and-play-preview-refresh"></a>IoT Plug and Play előzetes verziójának frissítése
 
@@ -86,7 +86,7 @@ A Service SDK [Node.js](https://github.com/Azure/azure-iot-sdk-node/blob/digital
 
 Az [Azure IoT Device Workbench](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-iot-workbench) bővítmény szerzői támogatást biztosít a DTDL V1-hez, a modell adattárának korábbi verziójához való integrációhoz és a kód generálásához.
 
-Ha a VS Code-ban DTDL v2 authoring támogatásra van szüksége, telepítse az új [DTDL-bővítményt](https://github.com/azure/vscode-dtdl) a vs Code-ban. A bővítmény nem biztosít integrációt a modell adattárával vagy a kód generálásával. Mostantól [webes felhasználói felületen](https://aka.ms/iotmodelrepo)keresztül végezheti el a modellek kezelését a tárházban.
+Ha a VS Code-ban DTDL v2 authoring támogatásra van szüksége, telepítse az új [DTDL-bővítményt](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-dtdl) a vs Code-ban. A bővítmény nem biztosít integrációt a modell adattárával vagy a kód generálásával. Mostantól [webes felhasználói felületen](https://aka.ms/iotmodelrepo)keresztül végezheti el a modellek kezelését a tárházban.
 
 ## <a name="digital-twin-service-side-rest-apis"></a>Digitális dupla szolgáltatási oldali REST API-k
 
@@ -98,7 +98,7 @@ A [Digital Twin szolgáltatás-oldali REST API](https://docs.microsoft.com/rest/
 
 Ebben a kiadásban a meglévő REST API-k továbbra is támogatottak.
 
-## <a name="model-repository"></a>Modell tárháza
+## <a name="model-repository"></a>Modelladattár
 
 Most már létezik egy, a nyilvános és a RBAC által védett céges modelleket is tartalmazó modell tárház. Minden modell egyedi azonosítóval rendelkezik, és a létrehozása után nem változtathatók meg.
 

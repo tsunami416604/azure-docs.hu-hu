@@ -12,12 +12,13 @@ ms.date: 06/16/2017
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: a1e0e3623692321e5c69e4b9c5a26ff82a1c47a0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+- devx-track-javascript
+ms.openlocfilehash: 2d5baf0f1c4298d597b620f02f3e463a05203f5a
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81732351"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87424034"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-nodejs"></a>A felhőből az eszközre irányuló üzenetek küldése IoT Hub (Node.js)
 
@@ -190,7 +191,7 @@ Most már készen áll az alkalmazások futtatására.
    > Az egyszerűség kedvéért ez az oktatóanyag nem valósít meg újrapróbálkozási házirendet. Az éles kódban az újrapróbálkozási szabályzatokat (például az exponenciális leállítási) kell megvalósítani, ahogy azt a cikkben is ismertetjük, az [átmeneti hibák kezelésére](/azure/architecture/best-practices/transient-faults).
    >
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan küldhet és fogadhat üzeneteket a felhőből az eszközre.
 

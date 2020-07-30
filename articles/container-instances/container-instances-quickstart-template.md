@@ -4,14 +4,14 @@ description: Ebben a rövid útmutatóban egy Azure Resource Manager sablon hasz
 services: azure-resource-manager
 ms.service: azure-resource-manager
 ms.topic: quickstart
-ms.custom: subject-armqs
+ms.custom: subject-armqs, devx-track-javascript
 ms.date: 04/30/2020
-ms.openlocfilehash: 64f86611e8a60cd3d1463cd2845c034551277bb2
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: d09cc1b1dbefa906e938a3721308222d4f63e131
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118460"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87408050"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-an-arm-template"></a>Gyors útmutató: tároló-példány üzembe helyezése az Azure-ban ARM-sablon használatával
 
@@ -19,7 +19,7 @@ A Azure Container Instances használatával a kiszolgáló nélküli Docker-tár
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonok használatát, válassza az **üzembe helyezés az Azure** -ban gombot. A sablon megnyílik a Azure Portalban.
+Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonokat, kattintson az **Üzembe helyezés az Azure-ban** gombra. A sablon az Azure Portalon fog megnyílni.
 
 [![Üzembe helyezés az Azure-ban](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-aci-linuxcontainer-public-ip%2Fazuredeploy.json)
 
@@ -29,7 +29,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
 
 ## <a name="review-the-template"></a>A sablon áttekintése
 
-Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablonjaiból](https://azure.microsoft.com/resources/templates/101-aci-linuxcontainer-public-ip/)származik.
+Az ebben a gyorsútmutatóban használt sablon az [Azure-gyorssablonok](https://azure.microsoft.com/resources/templates/101-aci-linuxcontainer-public-ip/) közül származik.
 
 :::code language="json" source="~/quickstart-templates/101-aci-linuxcontainer-public-ip/azuredeploy.json" range="1-107" highlight="61-100":::
 
@@ -87,7 +87,7 @@ A tároló naplóinak megtekintéséhez a **Beállítások**területen válassza
 
 ![Tárolónaplók az Azure Portalon](media/container-instances-quickstart-template/aci-logs.png)
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha elkészült a tárolóval, a tároló példányának **Áttekintés** lapján válassza a **Törlés**lehetőséget. A rendszer kérésére erősítse meg a törlést.
 

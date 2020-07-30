@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 07/23/2020
 ms.author: inhenkel
-ms.openlocfilehash: 3c04009da67ad7c0b0b09278c25d75c678e23960
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 5882b79232e858bbc8ad7e0da94ad4b04f5165ca
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87294356"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422980"
 ---
 # <a name="how-to-use-the-shaka-player-with-azure-media-services"></a>A Azure Media Services használatával
 
@@ -145,7 +146,7 @@ player.configure('drm.advanced.com\\.apple\\.fps\\.1_0.serverCertificate', new U
 
 További információkért lásd a a következő témakört: a a a a [Windows Media Player DRM Protection dokumentációja](https://shaka-player-demo.appspot.com/docs/api/tutorial-drm-config.html)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A Azure Media Player használata](../azure-media-player/azure-media-player-overview.md)
 * [Gyors útmutató: tartalom titkosítása](encrypt-content-quickstart.md)

@@ -2,13 +2,13 @@
 title: Sablon exportálása Azure Portal
 description: A Azure Portal használatával exportálhat egy Azure Resource Manager sablont az előfizetése erőforrásaiból.
 ms.topic: conceptual
-ms.date: 12/12/2019
-ms.openlocfilehash: dbdcaa6e6db4a7a4a958f1be2e9977a14e092663
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.date: 07/29/2020
+ms.openlocfilehash: 0262517df11f0d91920fd7e44f96ff532ffbe63f
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057704"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423235"
 ---
 # <a name="single-and-multi-resource-export-to-a-template-in-azure-portal"></a>Egy-és többerőforrásos exportálás Azure Portal sablonba
 
@@ -52,6 +52,8 @@ Egy erőforráscsoport vagy erőforrás exportálásakor az exportált sablon az
 A sablon exportálása funkció nem támogatja Azure Data Factory erőforrások exportálását. A Data Factory-erőforrások exportálásával kapcsolatos további tudnivalókért lásd: az [adatfeldolgozó másolása vagy klónozása Azure Data Factory-ben](https://aka.ms/exportTemplateViaAdf).
 
 A klasszikus üzemi modellel létrehozott erőforrások exportálásához [át kell telepítenie azokat a Resource Manager](https://aka.ms/migrateclassicresourcetoarm)-alapú üzemi modellbe.
+
+Ha egy olyan sablon exportálásakor figyelmeztető üzenet jelenik meg, amely azt jelzi, hogy az erőforrás típusa nem lett exportálva, akkor továbbra is felderítheti az adott erőforrás tulajdonságait. Az erőforrás-tulajdonságok megtekintésének különböző lehetőségeiről további információt az [Erőforrás-tulajdonságok felderítése](view-resources.md)című témakörben talál. Az erőforrás típusa az [Azure REST API](/rest/api/azure/) is megtekinthető.
 
 ## <a name="export-template-from-a-resource-group"></a>Sablon exportálása erőforráscsoporthoz
 
@@ -117,7 +119,7 @@ Exportálhatja a meglévő erőforrások üzembe helyezéséhez használt sablon
 
    ![Sablon kiválasztása](./media/export-template-portal/show-template-from-history.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg, hogyan exportálhat sablonokat az [Azure CLI](../management/manage-resource-groups-cli.md#export-resource-groups-to-templates), a [Azure PowerShell](../management/manage-resource-groups-powershell.md#export-resource-groups-to-templates)vagy a [REST API](/rest/api/resources/resourcegroups/exporttemplate)használatával.
 - A Resource Manager-sablon szintaxisának megismeréséhez tekintse meg [Azure Resource Manager sablonok struktúrájának és szintaxisának megismerése](template-syntax.md)című témakört.

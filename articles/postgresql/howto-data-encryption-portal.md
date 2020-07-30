@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 01/13/2020
-ms.openlocfilehash: 00fd6ff9d79a59421a13d02ad4bafcf3f0a964fa
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 1cff2b56e529e0f52b23f225f7eb492300447ea1
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119667"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387931"
 ---
 # <a name="data-encryption-for-azure-database-for-postgresql-single-server-by-using-the-azure-portal"></a>Adattitkosítás Azure Database for PostgreSQL önálló kiszolgáló számára a Azure Portal használatával
 
@@ -22,13 +22,13 @@ Ebből a témakörből megtudhatja, hogyan állíthatja be és kezelheti a Azure
 * Rendelkeznie kell egy Azure-előfizetéssel, és rendszergazdának kell lennie az előfizetésben.
 * A Azure Key Vault-ban hozzon létre egy Key vaultot és egy kulcsot, amelyet az ügyfél által felügyelt kulcshoz szeretne használni.
 * A Key vaultnak a következő tulajdonságokkal kell rendelkeznie az ügyfél által felügyelt kulcsként való használathoz:
-  * [Helyreállítható törlés](../key-vault/general/overview-soft-delete.md)
+  * [Helyreállítható törlés](../key-vault/general/soft-delete-overview.md)
 
     ```azurecli-interactive
     az resource update --id $(az keyvault show --name \ <key_vault_name> -test -o tsv | awk '{print $1}') --set \ properties.enableSoftDelete=true
     ```
 
-  * [Védett kiürítés](../key-vault/general/overview-soft-delete.md#purge-protection)
+  * [Védett kiürítés](../key-vault/general/soft-delete-overview.md#purge-protection)
 
     ```azurecli-interactive
     az keyvault update --name <key_vault_name> --resource-group <resource_group_name>  --enable-purge-protection true

@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
-ms.date: 12/04/2018
-ms.openlocfilehash: 6a8770cfaf5acedcf3549d92f1365948acda8bc7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/28/2020
+ms.openlocfilehash: a23330bb00fb06a3ed9d3dfe28666e8f27dae4fa
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84344645"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87405041"
 ---
 # <a name="designing-globally-available-services-using-azure-sql-database"></a>Globálisan elérhető szolgáltatások tervezése Azure SQL Database használatával
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -58,7 +58,13 @@ Ha áramkimaradás történik a B régióban, az elsődleges és a másodlagos a
 > A vész-helyreállítás érdekében javasoljuk, hogy az alkalmazás központi telepítésének konfigurációját két régióra korlátozzák. Ennek az az oka, hogy az Azure-beli földrajzi területek többsége csak két régióval rendelkezik. Ez a konfiguráció nem biztosítja az alkalmazás egyidejű katasztrofális meghibásodását mindkét régióban. Egy ilyen hiba valószínűtlen eseménye esetén a [geo-visszaállítási művelet](disaster-recovery-guidance.md#recover-using-geo-restore)használatával helyreállíthatja az adatbázisokat egy harmadik régióban.
 >
 
- A leállás csökkentése után a másodlagos adatbázis automatikusan újraszinkronizálja az elsődlegest. A szinkronizálás során az elsődleges teljesítmény is hatással lehet. Az adott hatás a feladatátvétel óta az új elsődleges adatmennyiségtől függ. A következő ábra a másodlagos régió kimaradását szemlélteti:
+ A leállás csökkentése után a másodlagos adatbázis automatikusan újraszinkronizálja az elsődlegest. A szinkronizálás során az elsődleges teljesítmény is hatással lehet. Az adott hatás a feladatátvétel óta az új elsődleges adatmennyiségtől függ. 
+
+> [!NOTE]
+> A leállás csökkentése után Traffic Manager megkezdi a kapcsolatok útválasztását az A régióban található alkalmazáshoz magasabb prioritású végpontként. Ha egy ideig kívánja megőrizni az elsődlegest a B régióban, akkor ennek megfelelően módosítania kell a prioritási táblázatot a forgalom Manager-profilban. 
+>
+ 
+ A következő ábra a másodlagos régió kimaradását szemlélteti:
 
 ![1. forgatókönyv Konfiguráció áramkimaradás után a másodlagos régióban.](./media/designing-cloud-solutions-for-disaster-recovery/scenario1-c.png)
 
@@ -161,7 +167,7 @@ Az adott Felhőbeli vész-helyreállítási stratégia kombinálhatja vagy kiter
 ||Olvasási és írási hozzáférés = nulla | Olvasási és írási hozzáférés = hiba észlelési ideje + türelmi időszak adatvesztéssel |
 |||
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az üzletmenet folytonosságának áttekintése és forgatókönyvei: az [üzletmenet folytonosságának áttekintése](business-continuity-high-availability-disaster-recover-hadr-overview.md)
 * Az aktív geo-replikációval kapcsolatos információkért lásd: [aktív földrajzi replikálás](active-geo-replication-overview.md).

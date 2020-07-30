@@ -3,12 +3,12 @@ title: Az erőforrás-hierarchia elleni védelem – Azure-szabályozás
 description: Ismerje meg, hogyan védhető az erőforrás-hierarchia olyan hierarchia-beállításokkal, amelyek tartalmazzák az alapértelmezett felügyeleti csoport beállítását.
 ms.date: 05/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2f8d3d7ff85552fe18a49137450aefe91d0d02c9
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: cdaad59d136e89c595a6a42a9760c73523a977c0
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/29/2020
-ms.locfileid: "87366772"
+ms.locfileid: "87422827"
 ---
 # <a name="how-to-protect-your-resource-hierarchy"></a>Az erőforrás-hierarchia elleni védelem
 
@@ -29,7 +29,7 @@ Ezek a műveletek csak a hierarchia beállításainak olvasását és frissíté
 
 Alapértelmezés szerint a rendszer a bérlőn belül hozzáadott új előfizetést adja hozzá a gyökérszintű felügyeleti csoport tagjaként. Ha a szabályzat-hozzárendelések, a szerepköralapú hozzáférés-vezérlés (RBAC) és más irányítási szerkezetek hozzá vannak rendelve a legfelső szintű felügyeleti csoporthoz, azonnal érvénybe lépnek az új előfizetések. Emiatt számos szervezet nem alkalmazza ezeket a szerkezeteket a legfelső szintű felügyeleti csoportba, még akkor is, ha ez a kívánt hely a hozzárendeléshez. Más esetekben az új előfizetések esetében szigorúbban korlátozó vezérlőkre van szükség, de az összes előfizetéshez nem rendelhető hozzá. Ez a beállítás mindkét használati esetet támogatja.
 
-Azáltal, hogy lehetővé teszi az új előfizetések alapértelmezett felügyeleti csoportjának meghatározását, a szervezeti szintű irányítási szerkezetek alkalmazhatók a legfelső szintű felügyeleti csoportra, és egy külön felügyeleti csoport, amelynek a szabályzat-hozzárendelései vagy az új előfizetéshez jobban illeszkedő RBAC-hozzárendelések is meghatározhatók.
+Azáltal, hogy lehetővé teszi az új előfizetések alapértelmezett felügyeleti csoportjának meghatározását, a szervezeti szintű irányítási szerkezetek alkalmazhatók a legfelső szintű felügyeleti csoportra, és egy külön felügyeleti csoport, amelynek a szabályzat-hozzárendelései vagy egy új előfizetéshez jobban illeszkedő Azure-szerepkör-hozzárendelések adhatók meg.
 
 A beállítás konfigurálásához a [hierarchia beállításait](/rest/api/resources/hierarchysettings) REST API végpontot nevezzük. Ehhez használja a következő REST API URI és szövegtörzs formátumot. Cserélje le a `{rootMgID}` értéket a gyökér felügyeleti csoportjának azonosítójával, és a `{defaultGroupID}` felügyeleti csoport azonosítójának használatával az alapértelmezett felügyeleti csoport lesz:
 
@@ -75,7 +75,7 @@ A beállítás konfigurálásához a [hierarchia beállításait](/rest/api/reso
 
 Ha vissza szeretné kapcsolni a beállítást, használja ugyanazt a végpontot, és állítsa a **requireAuthorizationForGroupCreation** értéket **hamis**értékre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A felügyeleti csoportokkal kapcsolatos további tudnivalókért lásd:
 

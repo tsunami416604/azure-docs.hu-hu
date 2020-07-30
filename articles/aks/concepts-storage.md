@@ -4,12 +4,12 @@ description: Ismerje meg az Azure Kubernetes szolgáltatás (ak) tárolóját, b
 services: container-service
 ms.topic: conceptual
 ms.date: 03/01/2019
-ms.openlocfilehash: 643d25e99bef191bfce77f092a9f2218c891a442
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5cf52cb608061498c8e613a3bf1064997acaa128
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84171378"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406962"
 ---
 # <a name="storage-options-for-applications-in-azure-kubernetes-service-aks"></a>Az Azure Kubernetes szolgáltatásban (ak) lévő alkalmazások tárolási lehetőségei
 
@@ -76,6 +76,9 @@ parameters:
   kind: Managed
 ```
 
+> [!NOTE]
+> Az AK összehangolja az alapértelmezett tárolási osztályokat, és felülírja a tárolási osztályokon végrehajtott módosításokat.
+
 ## <a name="persistent-volume-claims"></a>Tartóskötet-jogcímek
 
 A PersistentVolumeClaim egy adott StorageClass, elérési módra és méretre vonatkozó lemez-vagy file Storage-t kér. A Kubernetes API-kiszolgáló dinamikusan kiépítheti a mögöttes tárolási erőforrást az Azure-ban, ha nincs meglévő erőforrás a jogcím teljesítéséhez a definiált StorageClass alapján. A pod definíciója tartalmazza a kötet csatlakoztatását, ha a kötet csatlakoztatva van a pod-hoz.
@@ -120,7 +123,7 @@ spec:
         claimName: azure-managed-disk
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A kapcsolódó ajánlott eljárásokért lásd: [ajánlott eljárások a tároláshoz és a biztonsági mentéshez az AK-ban][operator-best-practices-storage].
 

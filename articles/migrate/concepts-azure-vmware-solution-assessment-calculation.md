@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 06/25/2020
 ms.author: mahain
-ms.openlocfilehash: a4d2e810144e7c3d36545cb1e965aec40980c1d2
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 84798dbcd158b62ce6714bf73494a9e85bf932a8
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118817"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387948"
 ---
 # <a name="avs-assessments-in-azure-migrate-server-assessment"></a>AVS-értékelések Azure Migrateban: kiszolgáló értékelése
 
@@ -119,7 +119,7 @@ A kiszolgáló értékelése során a következő, az AVS-értékelés részét 
 | **Tulajdonság** | **Részletek** 
 | - | - 
 | **Célhely** | Megadja azt az AVS saját Felhőbeli helyet, amelyre az áttelepítést szeretné végezni.<br/><br/> A Server Assessment szolgáltatásban az AVS Assessment jelenleg a következő célcsoportokat támogatja: USA keleti régiója, Nyugat-Európa, USA nyugati régiója. 
-| **Tárolás típusa** | Megadja az AVS-ben használni kívánt tárolási motort.<br/><br/> Az AVS-értékelések csak a vSAN támogatják alapértelmezett tárolási típusként. 
+| **Tárolási típus** | Megadja az AVS-ben használni kívánt tárolási motort.<br/><br/> Az AVS-értékelések csak a vSAN támogatják alapértelmezett tárolási típusként. 
 **Fenntartott példányok (RIs)** | Ez a tulajdonság segít a fenntartott példányok megadásában az AVS-ben. A RIs jelenleg nem támogatott az AVS-csomópontok esetében. 
 **Csomópont típusa** | Megadja a helyszíni virtuális gépek leképezéséhez használt [AVS-csomópont típusát](../azure-vmware/concepts-private-clouds-clusters.md) . Az alapértelmezett csomópont típusa AV36. <br/><br/> Azure Migrate a virtuális gépek AVS-re való áttelepítéséhez szükséges csomópontok számát javasolja. 
 **TRANZAKCIÓs beállítás, RAID-szint** | Meghatározza a megfelelő meghibásodást az eltűriés és a RAID-kombinációk esetében. A helyszíni virtuálisgép-lemezre vonatkozó követelményekkel együtt a kiválasztott TRANZAKCIÓs beállítás határozza meg az AVS-ben szükséges teljes vSAN-tárolót. 
@@ -128,7 +128,7 @@ A kiszolgáló értékelése során a következő, az AVS-értékelés részét 
 **Százalékos kihasználtság** | Meghatározza a jobb méretezéshez beállított teljesítményi minta százalékos értékét. Ez a tulajdonság csak akkor alkalmazható, ha a méretezés teljesítmény-alapú.
 **Kényelmi faktor** | Azure Migrate kiszolgáló értékelése az értékelés során egy puffert (komfort faktor) tekint. Ezt a puffert a rendszer a virtuális gépek gépkihasználtsági adatai (CPU, memória, lemez és hálózat) mellett alkalmazza. A kényelmi faktor áll az olyan problémák mögött, mint a szezonális használat, a rövid teljesítményelőzmények és a jövőbeli használat várható növekedése.<br/><br/> Például egy 10 magos virtuális gép 20%-os kihasználtsággal normál esetben egy 2 magos virtuális gépnek felel meg. 2.0x-es kényelmi faktorral azonban az eredmény ehelyett egy 4 magos virtuális gép. 
 **Ajánlat** | Megjeleníti a regisztrált [Azure-ajánlatot](https://azure.microsoft.com/support/legal/offer-details/) . Az Azure Migrate ez alapján becsüli meg a költségeket.
-**Currency (Pénznem)** | A fiók számlázási pénznemét jeleníti meg. 
+**Pénznem** | A fiók számlázási pénznemét jeleníti meg. 
 **Kedvezmény (%)** | Felsorolja az Azure-ajánlaton keresztül kapott előfizetés-specifikus kedvezményeket. Az alapértelmezett beállítás 0%. 
 **Azure Hybrid Benefit** | Megadja, hogy rendelkezik-e frissítési garanciával, és jogosult-e a [Azure Hybrid Benefitre](https://azure.microsoft.com/pricing/hybrid-use-benefit/). Bár a node-alapú díjszabás miatt nem befolyásolja az Azure VMware-megoldások díjszabását, az ügyfelek továbbra is alkalmazhatják a helyszíni OS-licenceket (Microsoft-alapú) az AVS-ben az Azure Hybrid Benefits használatával. Más szoftveres operációs rendszer-gyártóknak meg kell adniuk a saját licencelési feltételeit, például a RHEL. 
 **vCPU-előfizetések** | Megadja a virtuális magok számának az AVS-csomópontban egy fizikai maghoz kötött arányát. A számítások alapértelmezett értéke 4 vCPU: 1 fizikai mag az AVS-ben. <br/><br/> Az API-felhasználók egész számként állíthatja be ezt az értéket. Vegye figyelembe, hogy a vCPU-előfizetések > 4:1 a CPU-használattól függően befolyásolhatják a számítási feladatokat. 
@@ -152,7 +152,7 @@ A kiszolgáló értékelése a helyszíni virtuális gép következő tulajdons�
 
 | **Tulajdonság** | **Részletek** | **AVS-készültségi állapot** 
 | - | - | - 
-| **Internet Protocol** | Az AVS jelenleg nem támogatja az IPv6-alapú internetes címzést.<br/><br/> Forduljon a helyi MSFT AVS GBB-csapathoz, és kérje meg a szervizeléssel kapcsolatos útmutatást, ha a gép IPv6-ot észlelt.| Feltételesen kész Internet Protocol
+| **Internet Protocol** | Az AVS jelenleg nem támogatja az IPv6-alapú internetcímeket.<br/><br/> Ha a rendszer azt észleli, hogy a gép IPv6-ot használ, forduljon a helyi MSFT AVS GBB-csapathoz segítségért.| Feltételesen kész Internet Protocol
 
 
 ### <a name="guest-operating-system"></a>Vendég operációs rendszer
@@ -172,15 +172,15 @@ Miután egy gép az AVS-re készként van megjelölve, a kiszolgáló értékel�
 
 ### <a name="ftt-sizing-parameters"></a>Pénzügyi tranzakció méretezési paraméterei
 
-Az AVS-ben használt vSAN. a vSAN tárolási házirendjei a virtuális gépek tárolási követelményeit határozzák meg. Ezek a szabályzatok garantálják a virtuális gépek szükséges szolgáltatási szintjét, mivel meghatározzák, hogy a tároló hogyan legyen lefoglalva a virtuális géphez. Az elérhető pénzügyi tranzakciós-RAID-kombinációk a következők: 
+Az AVS-ben használt vSAN. a vSAN tárolási házirendjei a virtuális gépek tárolási követelményeit határozzák meg. Ezek a szabályzatok garantálják a virtuális gépek szükséges szolgáltatásszintjét, mivel meghatározzák, hogy a tároló hogyan legyen lefoglalva a virtuális gépnek. Az elérhető pénzügyi tranzakciós-RAID-kombinációk a következők: 
 
-**Tolerálható (TRANZAKCIÓs) hibák** | **RAID-konfiguráció** | **Minimálisan szükséges gazdagépek** | **Méretezési szempont**
+**Megengedhető hibák (FTT)** | **RAID-konfiguráció** | **Minimálisan szükséges gazdagépek száma** | **Méretezési szempontok**
 --- | --- | --- | --- 
-1 | RAID-1 (Tükrözés) | 3 | A 100 GB virtuális gép A 200GB-t használja.
-1 | RAID-5 (kitörlési kódolás) | 4 | A 100 GB virtuális gép A 133.33 GB-ot fogja használni
-2 | RAID-1 (Tükrözés) | 5 | A 100 GB virtuális gép A 300GB-t használja.
-2 | RAID-6 (kitörlési kódolás) | 6 | A 100 GB virtuális gép A 150GB-t használja.
-3 | RAID-1 (Tükrözés) | 7 | A 100 GB virtuális gép A 400GB-t használja.
+1 | RAID-1 (tükrözés) | 3 | Egy 100 GB-os virtuális gép 200 GB-ot használna fel.
+1 | RAID-5 (törléskódolás) | 4 | Egy 100 GB-os virtuális gép 133,33 GB-ot használna fel.
+2 | RAID-1 (tükrözés) | 5 | Egy 100 GB-os virtuális gép 300 GB-ot használna fel.
+2 | RAID-6 (törléskódolás) | 6 | Egy 100 GB-os virtuális gép 150 GB-ot használna fel.
+3 | RAID-1 (tükrözés) | 7 | Egy 100 GB-os virtuális gép 400 GB-ot használna fel.
 
 ### <a name="performance-based-sizing"></a>Teljesítmény-alapú méretezés
 
@@ -197,11 +197,11 @@ A tényleges kihasználtsági érték meghatározása után a tároló, a háló
 
 **Tárolási méretezés**: Azure Migrate a helyszíni virtuális gép teljes lemezterületét használja számítási paraméterként az AVS vSAN Storage-követelmények meghatározásához az ügyfél által választott tranzakciós beállítás mellett. Pénzügyi adó – az elviselni kívánt hibák, valamint a minimálisan szükséges csomópontok száma a TRANZAKCIÓs szolgáltatásokra vonatkozóan beállítás határozza meg a virtuálisgép-lemezre vonatkozó követelménysel összevont teljes vSAN-tárolást.
 
-**Hálózati méretezés**: a kiszolgáló értékelése jelenleg nem veszi figyelembe a hálózati beállításokat az AVS-felmérések esetében.
+**Hálózat méretezése**: A Server Assessment jelenleg nem veszi figyelembe a hálózati beállításokat az AVS-értékelések során.
 
 **Számítási méretezés**: a tárolási követelmények kiszámítását követően a kiszolgáló értékelése a processzor-és memória-követelmények alapján határozza meg, hogy hány csomópont szükséges az AVS-hez a csomópont típusa szerint.
 
-- A méretezési feltételek alapján a kiszolgáló értékelése vagy a teljesítmény-alapú virtuálisgép-vagy a helyszíni virtuális gép konfigurációja szerint néz ki. A Comfort Factor beállítás lehetővé teszi a fürt növekedési tényezőjének megadását. Alapértelmezés szerint a feleznie engedélyezve van, így a 36-es fő csomópontok 72 virtuális mag lesznek. 4 a virtuális mag a CPU-küszöbértékek meghatározására használják a VMware standard, amely nem haladja meg a 80%-os kihasználtságot, hogy lehetővé váljon a karbantartás vagy a hibák kezelése a fürt rendelkezésre állásának veszélyeztetése nélkül. Jelenleg nem érhető el felülbírálás a túljegyzési értékek módosításához, és lehetséges, hogy ez a későbbi verziókban van.
+- A méretezési feltételek alapján a kiszolgáló értékelése vagy a teljesítmény-alapú virtuálisgép-vagy a helyszíni virtuális gép konfigurációja szerint néz ki. A Comfort Factor beállítás lehetővé teszi a fürt növekedési tényezőjének megadását. A hiperszálkezelés jelenleg alapértelmezés szerint engedélyezett, így a 36 maggal rendelkező csomópontok 72 virtuális magot fognak tartalmazni. A rendszer fizikai magonként 4 virtuális magot használ a fürtönkénti processzor-küszöbértékek meghatározására a VMware követelményének használatával, amely szerint a kihasználtság nem haladhatja meg a 80%-ot, hogy lehetővé tegye a karbantartást vagy a hibák kezelését a fürt rendelkezésre állásának veszélyeztetése nélkül. Jelenleg nem érhető el felülbírálás a túljegyzési értékek módosításához, és lehetséges, hogy ez a későbbi verziókban van.
 
 ### <a name="as-on-premises-sizing"></a>Helyszíni méretezés
 
@@ -255,9 +255,9 @@ Vegye figyelembe, hogy mivel az Azure VMware-megoldás (AVS) előzetes verzióba
 
 ## <a name="migration-tool-guidance"></a>Áttelepítési eszköz – útmutató
 
-Az Azure VMware megoldással (AVS) kapcsolatos Azure-készültségi jelentésekben a következő javasolt eszközök láthatók: 
-- **VMware HCX vagy Enterprise**: VMware-es gépek esetén a VMware Hybrid Cloud Extension (HCX) megoldás a javasolt áttelepítési eszköz, amellyel áttelepítheti a helyszíni számítási feladatokat az Azure VMware-megoldás (AVS) privát felhőbe. [További információ](../azure-vmware/hybrid-cloud-extension-installation.md).
-- **Ismeretlen**: a CSV-fájlon keresztül importált gépek esetében az alapértelmezett áttelepítési eszköz ismeretlen. A VMware-es gépek esetében azonban ajánlott a VMWare Hybrid Cloud Extension (HCX) megoldás használata.
+Az Azure VMware Solution- (AVS-) értékelés Azure-kompatibilitási jelentésében a következő ajánlott eszközök szerepelnek: 
+- **VMware HCX vagy Enterprise**: VMware-es gépek esetén a VMware Hybrid Cloud Extension (HCX) megoldás a javasolt áttelepítési eszköz, amellyel áttelepítheti a helyszíni számítási feladatokat az Azure VMware-megoldás (AVS) privát felhőbe. [További információk](../azure-vmware/hybrid-cloud-extension-installation.md).
+- **Ismeretlen**: A CSV-fájllal importált gépek esetében az alapértelmezett migrálási eszköz ismeretlen. A VMware-es gépek esetében azonban ajánlott a VMware Hybrid Cloud Extension (HCX) megoldás használata.
 
 ## <a name="next-steps"></a>Következő lépések
 
