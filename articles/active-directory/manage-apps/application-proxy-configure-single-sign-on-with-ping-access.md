@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 53f644203b494e5baf087241e2a4fe669b7db07b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 512aed93906968b14f7c6a13e08f74bbeb2f5f31
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85077896"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87431075"
 ---
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>Fejléc-alapú hitelesítés egyszeri bejelentkezéshez alkalmazásproxy és PingAccess
 
@@ -121,6 +121,11 @@ Ezután ellenőrizze, hogy az átirányítási URL-cím be van-e állítva a kü
 1. Válassza ki az alkalmazást.
 1. Válassza az **átirányítási URI**-k elem melletti hivatkozást, amely megjeleníti a webes és a nyilvános ügyfelek számára beállított átirányítási URI-k számát. Megjelenik a ** \<application name> -Authentication** lap.
 1. Győződjön meg arról, hogy az alkalmazáshoz hozzárendelt külső URL-cím az **átirányítási URI** -k listájában van-e. Ha nem, adja hozzá a külső URL-címet most a **webes**ÁTirányítási URI-típus használatával, majd válassza a **Mentés**lehetőséget.
+
+A külső URL-címen kívül az átirányítási URI-k listájához fel kell venni Azure Active Directory a külső URL-címen található engedélyezési végpontot is.
+
+`https://*.msappproxy.net/pa/oidc/cb`
+`https://*.msappproxy.net/`
 
 Végül állítsa be a helyszíni alkalmazást úgy, hogy a felhasználók olvasási hozzáféréssel rendelkezzenek, és más alkalmazásokhoz írási/olvasási hozzáférésük van:
 
@@ -226,7 +231,7 @@ Ezek a lépések segítséget nyújtanak a PingAccess telepítéséhez és egy P
 
 Az összes lépés elvégzése után az alkalmazásnak futnia kell. A teszteléshez nyisson meg egy böngészőt, és navigáljon arra a külső URL-címre, amelyet az alkalmazás Azure-ban való közzétételekor hozott létre. Jelentkezzen be az alkalmazáshoz rendelt tesztelési fiókkal.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A PingAccess konfigurálása az Azure AD-hoz a Microsoft Azure AD alkalmazásproxy használatával közzétett alkalmazások védelemmel való ellátásához](https://support.pingidentity.com/s/document-item?bundleId=pingaccess-52&topicId=agents/azure/pa_c_PAAzureSolutionOverview.html)
 - [Egyszeri bejelentkezés a Azure Active Directory alkalmazásaiba](what-is-single-sign-on.md)

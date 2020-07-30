@@ -10,15 +10,15 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.workload: identity
 ms.topic: how-to
-ms.date: 10/22/2019
+ms.date: 07/29/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: 00f9e4c1ebd162883f62280e753b6e0c4c13a21d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 29dc03d663d590c13a1948411ed597388750c1d7
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87027172"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87428005"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Útmutató: a jogkivonatokban kibocsátott jogcímek testreszabása egy adott alkalmazáshoz a bérlőben (előzetes verzió)
 
@@ -436,6 +436,9 @@ A jogcím-hozzárendelési szabályzatok csak egyszerű szolgáltatásnév-objek
 
 Az Azure AD-ben számos forgatókönyv lehetséges, ha testre szabhatja a jogkivonatokban kibocsátott jogcímeket az adott egyszerű szolgáltatásokhoz. Ebben a szakaszban néhány olyan gyakori forgatókönyvet ismertetünk, amelyek segítségével megtudhatja, hogyan használhatja a jogcím-hozzárendelési házirend típusát.
 
+> [!NOTE]
+> Jogcím-hozzárendelési házirend létrehozásakor jogcímeket is kibocsáthat a tokenekben található Directory sémakezelő bővítmény attribútumból. A *ExtensionID* használja a bővítmény attribútumhoz a elemben lévő *azonosító* helyett `ClaimsSchema` .  További információ a bővítmény attribútumairól: a [címtár-séma bővítmény attribútumainak használata](active-directory-schema-extensions.md).
+
 #### <a name="prerequisites"></a>Előfeltételek
 
 Az alábbi példákban létrehozhat, frissíthet, csatolhat és törölhet házirendeket az egyszerű szolgáltatásokhoz. Ha még nem ismeri az Azure AD-t, javasoljuk, hogy Ismerje meg, [hogyan szerezhet be Azure ad-bérlőt](quickstart-create-new-tenant.md) , mielőtt folytatja ezeket a példákat.
@@ -527,4 +530,5 @@ Ebben a példában egy olyan házirendet hoz létre, amely egy "JoinedData" egy�
 
 ## <a name="see-also"></a>Lásd még
 
-Ha szeretné megtudni, hogyan szabhatja testre az SAML-jogkivonatban kiállított jogcímeket a Azure Portalon keresztül, tekintse meg a következő témakört [: útmutató: az SAML-jogkivonatban kiállított](active-directory-saml-claims-customization.md)
+- Ha szeretné megtudni, hogyan szabhatja testre az SAML-jogkivonatban kiállított jogcímeket a Azure Portalon keresztül, tekintse meg a következő témakört [: útmutató: az SAML-jogkivonatban kiállított](active-directory-saml-claims-customization.md)
+- További információ a bővítmény attribútumairól: a [jogcímek címtár-séma bővítmény attribútumainak használata](active-directory-schema-extensions.md).

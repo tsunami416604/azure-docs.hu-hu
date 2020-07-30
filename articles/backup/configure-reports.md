@@ -3,12 +3,12 @@ title: Azure Backup-jelentések konfigurálása
 description: Azure Backup jelentések konfigurálása és megtekintése Log Analytics és Azure-munkafüzetek használatával
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 5d1c7d628a61e550aa9dc4a5265ae16c5ed5336a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 248fcdc8d57ca2408ada01db4ecf3b8ee7712e4d
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513625"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87388054"
 ---
 # <a name="configure-azure-backup-reports"></a>Azure Backup-jelentések konfigurálása
 
@@ -70,28 +70,63 @@ Válassza ezt a hivatkozást a biztonsági mentési jelentés munkafüzetének m
 
 A jelentés különböző lapokat tartalmaz:
 
-- **Összefoglalás**: ezen a lapon magas szintű áttekintést kaphat a Backup-hagyatékról. Gyorsan áttekintheti a biztonsági másolati elemek teljes számát, a felhasznált Felhőbeli tárterületet, a védett példányok számát, valamint a feladat sikerességi arányát a munkaterhelés típusától függően. Az adott biztonsági mentési összetevő típusával kapcsolatos részletesebb információkért nyissa meg a megfelelő lapokat.
+##### <a name="summary"></a>Összefoglalás
+Ezen a lapon magas szintű áttekintést kaphat a Backup-hagyatékról. Gyorsan áttekintheti a biztonsági másolati elemek teljes számát, a felhasznált Felhőbeli tárterületet, a védett példányok számát, valamint a feladat sikerességi arányát a munkaterhelés típusától függően. Az adott biztonsági mentési összetevő típusával kapcsolatos részletesebb információkért nyissa meg a megfelelő lapokat.
 
    ![Összegzés lap](./media/backup-azure-configure-backup-reports/summary.png)
 
-- **Biztonsági másolati elemek**: ezen a lapon megtekintheti a biztonsági mentési elem szintjén felhasznált Felhőbeli tárolással kapcsolatos információkat és trendeket. Ha például az SQL-t használja egy Azure-beli virtuális gép biztonsági mentésében, megtekintheti a biztonsági mentés alatt álló SQL-adatbázisokhoz felhasznált felhőalapú tárhelyet. Azt is megteheti, hogy megtekinti az adott védelmi állapot biztonsági másolati elemeinek adatait. Ha például a lap tetején található **védelem leállított** csempét választja, a rendszer az összes widgetet kiszűri, hogy csak a védelem leállított állapotának biztonsági mentési elemeire vonatkozó adatokat jelenítse meg.
+##### <a name="backup-items"></a>Biztonsági másolati elemei
+Ezen a lapon megtekintheti a Felhőbeli tárterület biztonsági mentési elem szintjén felhasznált információit és trendjét. Ha például az SQL-t használja egy Azure-beli virtuális gép biztonsági mentésében, megtekintheti a biztonsági mentés alatt álló SQL-adatbázisokhoz felhasznált felhőalapú tárhelyet. Azt is megteheti, hogy megtekinti az adott védelmi állapot biztonsági másolati elemeinek adatait. Ha például a lap tetején található **védelem leállított** csempét választja, a rendszer az összes widgetet kiszűri, hogy csak a védelem leállított állapotának biztonsági mentési elemeire vonatkozó adatokat jelenítse meg.
 
    ![Biztonsági másolati elemek lap](./media/backup-azure-configure-backup-reports/backup-items.png)
 
-- **Használat**: ezen a lapon megtekintheti a biztonsági másolatok legfontosabb számlázási paramétereit. Az ezen a lapon megjelenő információk számlázási entitás (védett tároló) szintjén találhatók. Ha például egy DPM-kiszolgáló az Azure-ba készít biztonsági mentést, akkor megtekintheti a védett példányok és a DPM-kiszolgáló által felhasznált Felhőbeli tárterület trendjét. Hasonlóképpen, ha az SQL-t használja Azure Backup vagy SAP HANA a Azure Backupban, ezen a lapon a használattal kapcsolatos információk jelennek meg a virtuális gép szintjén, amelyben ezeket az adatbázisokat tartalmazza.
+##### <a name="usage"></a>Használat
+Ezen a lapon megtekintheti a biztonsági másolatok legfontosabb számlázási paramétereit. Az ezen a lapon megjelenő információk számlázási entitás (védett tároló) szintjén találhatók. Ha például egy DPM-kiszolgáló az Azure-ba készít biztonsági mentést, akkor megtekintheti a védett példányok és a DPM-kiszolgáló által felhasznált Felhőbeli tárterület trendjét. Hasonlóképpen, ha az SQL-t használja Azure Backup vagy SAP HANA a Azure Backupban, ezen a lapon a használattal kapcsolatos információk jelennek meg a virtuális gép szintjén, amelyben ezeket az adatbázisokat tartalmazza.
 
    ![Használat lap](./media/backup-azure-configure-backup-reports/usage.png)
 
 > [!NOTE]
 > A DPM számítási feladatokhoz a felhasználók egy kis eltérést (20 MB-os sorrendet) látnak a jelentésekben megjelenített használati értékek között az összesített használati értékhez képest, ahogy azt a Recovery Services-tároló áttekintése lapon is láthatja. Ezt a különbséget azzal a ténnyel kell figyelembe venni, hogy minden biztonsági mentéshez regisztrált DPM-kiszolgáló társítva van egy "metaadatok" adatforrással, amely nem szerepel a jelentéskészítési összetevőként.
 
-- **Feladatok**: ezen a lapon megtekintheti a feladatok hosszan futó trendjét, például a sikertelen feladatok számát napi bontásban, valamint a feladat meghibásodásának leggyakoribb okait. Ezeket az információkat összesített szinten és biztonsági mentési elemszintű szinten is megtekintheti. A rács egy adott biztonsági másolati elemének kiválasztásával megtekintheti a kijelölt időtartományban a biztonsági mentési elemen aktivált összes feladatra vonatkozó részletes információkat.
+##### <a name="jobs"></a>Feladatok
+Ezen a lapon megtekintheti a feladatok hosszan futó trendjét, például a sikertelen feladatok számát naponta, valamint a feladat meghibásodásának leggyakoribb okait. Ezeket az információkat összesített szinten és biztonsági mentési elemszintű szinten is megtekintheti. A rács egy adott biztonsági másolati elemének kiválasztásával megtekintheti a kijelölt időtartományban a biztonsági mentési elemen aktivált összes feladatra vonatkozó részletes információkat.
 
    ![Feladatok lap](./media/backup-azure-configure-backup-reports/jobs.png)
 
-- **Szabályzatok**: ezen a lapon megtekintheti az összes aktív házirend adatait, például a társított elemek számát, valamint az adott házirendben biztonsági mentés alatt álló elemek által felhasznált teljes felhőalapú tárterületet. Válasszon ki egy olyan házirendet, amellyel megtekintheti az egyes kapcsolódó biztonsági másolati elemekkel kapcsolatos információkat.
+##### <a name="policies"></a>Házirendek
+Ezen a lapon megtekintheti az összes aktív házirend adatait, például a társított elemek számát, valamint az adott házirendben biztonsági mentés alatt álló elemek által felhasznált teljes felhőalapú tárterületet. Válasszon ki egy olyan házirendet, amellyel megtekintheti az egyes kapcsolódó biztonsági másolati elemekkel kapcsolatos információkat.
 
    ![Házirendek lap](./media/backup-azure-configure-backup-reports/policies.png)
+
+##### <a name="optimize"></a>Optimalizálás
+Ezen a lapon betekintést nyerhet a biztonsági mentések lehetséges, költséghatékony optimalizációs lehetőségeibe. Az alábbi forgatókönyvek az optimalizálás lapon jelenleg a következő eredményeket biztosítják:
+
+###### <a name="inactive-resources"></a>Inaktív erőforrások
+A nézet használatával azonosíthatja azokat a biztonsági másolati elemeket, amelyeknek a biztonsági mentése jelentős ideig nem volt sikeres. Ez azt is jelentheti, hogy a mögöttes gép, amelyről biztonsági mentés készül, már nem létezik (és így sikertelen biztonsági mentéseket eredményez), vagy ha van probléma a számítógépen, amely megakadályozza a biztonsági másolatok megbízhatóként való elvégzését. 
+
+Az inaktív erőforrások megtekintéséhez navigáljon az **optimalizálás** lapra, és kattintson az **inaktív erőforrások** csempére. A csempére kattintva megjelenítheti a kiválasztott hatókörben található összes inaktív erőforrás részleteit tartalmazó rácsot. Alapértelmezés szerint a rács olyan elemeket jelenít meg, amelyek nem rendelkeznek helyreállítási ponttal az elmúlt 7 napban. Egy másik időtartomány inaktív erőforrásainak megkereséséhez módosíthatja az **időtartomány** szűrőt a lap tetején.
+
+Ha azonosított egy inaktív erőforrást, a probléma további vizsgálatához lépjen a biztonsági mentési elem irányítópultra vagy az adott erőforráshoz tartozó Azure-erőforrás panelre (ahol alkalmazható). A forgatókönyvtől függően dönthet úgy, hogy leállítja a gép biztonsági mentését (ha az már nem létezik), így a védett példányok költségeit is megtakaríthatja, vagy javíthatja a számítógép hibáit a biztonsági mentések megbízhatóvé tételének biztosításához.
+
+![Optimalizálás lap – inaktív erőforrások](./media/backup-azure-configure-backup-reports/optimize-inactive-resources.png)
+
+###### <a name="backup-items-with-a-large-retention-duration"></a>Nagy adatmegőrzési időtartammal rendelkező biztonsági másolati elemek
+Ezen nézet használatával azonosíthatja azokat az elemeket, amelyeken a biztonsági másolatok hosszabb ideig tartanak, mint a szervezete számára szükségesek. 
+
+Ha a **házirend-optimalizálások** csempére kattint, a **megőrzési optimalizálások** csempe pedig az összes olyan biztonsági mentési elemet tartalmazó rácsot jeleníti meg, amelynél a napi, heti, havi vagy éves adatmegőrzési pont (RP) megtartása nagyobb, mint a megadott érték. Alapértelmezés szerint a rács az összes biztonsági mentési elemet megjeleníti a kijelölt hatókörben. A szűrőket használhatja a napi, heti, havi és éves RP-megőrzéshez a rács szűréséhez, és azonosíthatja azokat az elemeket, amelyek esetében előfordulhat, hogy a biztonsági mentési tárolási költségek miatt csökkenhet a megőrzés.
+
+Vegye figyelembe, hogy az adatbázis-munkaterhelések, például az SQL és a SAP HANA esetében a rácsban megjelenő megőrzési időszakok megfelelnek a teljes biztonsági mentési pontok megőrzési idejének, és nem a különbözeti biztonsági mentési pontoknak. Ugyanez vonatkozik az adatmegőrzési szűrőkre is.  
+
+![A TAB-megőrzés optimalizálásának optimalizálása](./media/backup-azure-configure-backup-reports/optimize-retention.png)
+
+###### <a name="databases-configured-for-daily-full-backup"></a>A napi teljes biztonsági mentéshez konfigurált adatbázisok
+Ebben a nézetben azonosíthatja a napi teljes biztonsági mentéshez konfigurált adatbázis-munkaterheléseket. A napi különbözeti biztonsági mentést és a heti teljes biztonsági mentést gyakran költséghatékonyan használhatja. 
+
+A házirend- **optimalizálások** csempére kattintva, majd a **biztonsági mentési ütemterv optimalizálása** csempén egy, a napi teljes biztonsági mentési házirenddel rendelkező összes adatbázist tartalmazó rács jelenik meg. Dönthet úgy is, hogy egy adott biztonsági mentési elemre navigál, és módosítja a szabályzatot a napi különbözeti biztonsági mentés heti teljes biztonsági mentéssel való használatára.
+
+Vegye figyelembe, hogy a lap tetején található **biztonságimásolat-kezelési típus** szűrőnek az **Azure VM-ben az SQL-** t kell használnia, és **be kell SAP HANAa az Azure VM** -be, hogy a rács a várt módon tudja megjeleníteni az adatbázis-munkaterheléseket.
+
+![Optimalizálás lap – biztonsági mentési ütemterv optimalizálása](./media/backup-azure-configure-backup-reports/optimize-backup-schedule.png)
 
 ## <a name="export-to-excel"></a>Exportálás Excelbe
 

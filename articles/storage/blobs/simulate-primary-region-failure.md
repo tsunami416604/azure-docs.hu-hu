@@ -10,12 +10,13 @@ ms.topic: tutorial
 ms.date: 04/16/2020
 ms.author: tamram
 ms.reviewer: artek
-ms.openlocfilehash: f7a792eea28c6a6d05c4f295241291fdf2449467
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.custom: devx-track-javascript
+ms.openlocfilehash: a9aa58ec990170df99f330f67991fff7b61c2b49
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82859038"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87429838"
 ---
 # <a name="tutorial-simulate-a-failure-in-reading-data-from-the-primary-region"></a>Oktatóanyag: hiba szimulálása az adatoknak az elsődleges régióból való beolvasása során
 
@@ -23,7 +24,7 @@ Ez az oktatóanyag egy sorozat második része. Ebben az útmutatóban megismerh
 
 A hiba szimulálása érdekében [statikus útválasztást](#simulate-a-failure-with-an-invalid-static-route) vagy [hegedűst](#simulate-a-failure-with-fiddler)is használhat. Mindkét módszer lehetővé teszi, hogy szimulálja a kéréseket az [olvasási hozzáférésű geo-redundáns](../common/storage-redundancy.md) (ra-GZRS) Storage-fiók elsődleges végpontján, így helyette az alkalmazásnak a másodlagos végpontról való olvasását fogja eredményezni.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 A sorozat második részében az alábbiakkal fog megismerkedni:
 
@@ -52,7 +53,7 @@ Az [előző oktatóanyag][previous-tutorial] utasításait követve elindíthatj
 
 Amíg az alkalmazás szüneteltetve van, nyisson meg egy parancssort a Windows rendszergazdaként, vagy futtassa a terminált Linux rendszeren root-ként.
 
-A Storage-fiók elsődleges végpontjának tartományával kapcsolatos információk lekéréséhez írja be a következő parancsot egy parancssorba `STORAGEACCOUNTNAME` vagy terminálba, és cserélje le a nevet a Storage-fiók nevére.
+A Storage-fiók elsődleges végpontjának tartományával kapcsolatos információk lekéréséhez írja be a következő parancsot egy parancssorba vagy terminálba, `STORAGEACCOUNTNAME` és cserélje le a nevet a Storage-fiók nevére.
 
 ```
 nslookup STORAGEACCOUNTNAME.blob.core.windows.net
@@ -62,7 +63,7 @@ A későbbi lépésekhez másolja a tárfiók IP-címét egy szövegszerkesztőb
 
 A helyi gazdagép IP-címének lekéréséhez írja be az `ipconfig` parancsot a Windows-parancssorba vagy az `ifconfig` parancsot a Linux-terminálba.
 
-Ha statikus útvonalat szeretne hozzáadni a cél gazdagéphez, írja be a következő parancsot egy Windows-parancssorba vagy Linux-terminálba, majd cserélje `<destination_ip>` le a Storage `<gateway_ip>` -fiók IP-címére és a helyi gazdagép IP-címére.
+Ha statikus útvonalat szeretne hozzáadni a cél gazdagéphez, írja be a következő parancsot egy Windows-parancssorba vagy Linux-terminálba, `<destination_ip>` majd cserélje le a Storage-fiók IP-címére és `<gateway_ip>` a helyi gazdagép IP-címére.
 
 #### <a name="linux"></a>Linux
 
@@ -108,9 +109,9 @@ Nyissa meg a Fiddlert, és válassza a **Rules** (Szabályok), majd a **Cutomize
 
 ![Fiddler-szabályok testreszabása](media/simulate-primary-region-failure/figure1.png)
 
-A Hegedűs ScriptEditor elindítja és megjeleníti a **SampleRules. js** fájlt. Ezzel a fájllal szabható testre a Fiddler.
+A Hegedűs ScriptEditor elindítja és megjeleníti a **SampleRules.js** fájlt. Ezzel a fájllal szabható testre a Fiddler.
 
-Illessze be a következő kódrészletet a `OnBeforeResponse` függvénybe, `STORAGEACCOUNTNAME` és cserélje le a nevet a Storage-fiók nevére. A mintától függően előfordulhat, hogy a lecserélni kívánt `HelloWorld` teszt fájl (vagy egy előtag, például `sampleFile`) nevét is le kell cserélni. Az új kód megjegyzésbe kerül, hogy a szolgáltatás ne fusson azonnal.
+Illessze be a következő kódrészletet a `OnBeforeResponse` függvénybe, és cserélje `STORAGEACCOUNTNAME` le a nevet a Storage-fiók nevére. A mintától függően előfordulhat, hogy a lecserélni kívánt `HelloWorld` teszt fájl (vagy egy előtag, például) nevét is le kell cserélni `sampleFile` . Az új kód megjegyzésbe kerül, hogy a szolgáltatás ne fusson azonnal.
 
 Ha elkészült, válassza a **fájl** és **Mentés** lehetőséget a módosítások mentéséhez. Hagyja nyitva a ScriptEditor ablakot a következő lépésekben való használatra.
 
@@ -138,7 +139,7 @@ Az [előző oktatóanyag][previous-tutorial] utasításait követve elindíthatj
 
 ### <a name="simulate-failure"></a>Hibaszimuláció
 
-Amíg az alkalmazás szüneteltetve van, váltson vissza a Hegedűsre, és írja be a megjegyzésbe a `OnBeforeResponse` függvényben mentett egyéni szabályt. Ügyeljen arra, hogy a **fájl** és **Mentés** lehetőség kiválasztásával mentse a módosításokat, így a szabály érvénybe lép. Ez a kód az RA-GZRS Storage-fiókra irányuló kéréseket keres, és ha az elérési út tartalmazza a minta fájl nevét, a `503 - Service Unavailable`a válasz kódját adja vissza.
+Amíg az alkalmazás szüneteltetve van, váltson vissza a Hegedűsre, és írja be a megjegyzésbe a függvényben mentett egyéni szabályt `OnBeforeResponse` . Ügyeljen arra, hogy a **fájl** és **Mentés** lehetőség kiválasztásával mentse a módosításokat, így a szabály érvénybe lép. Ez a kód az RA-GZRS Storage-fiókra irányuló kéréseket keres, és ha az elérési út tartalmazza a minta fájl nevét, a a válasz kódját adja vissza `503 - Service Unavailable` .
 
 A futó mintát tartalmazó ablakban folytassa az alkalmazást, vagy nyomja le a megfelelő kulcsot a minta fájl letöltéséhez, és ellenőrizze, hogy az a másodlagos tárolóból származik-e. Ezután szüneteltetheti a mintát, vagy megvárhatja a kérést.
 
@@ -148,7 +149,7 @@ A Hegedűsben távolítsa el, vagy véleményezze az egyéni szabályt. A **fáj
 
 A futó mintát tartalmazó ablakban folytassa az alkalmazást, vagy nyomja le a megfelelő kulcsot a minta fájl letöltéséhez, és győződjön meg arról, hogy az elsődleges tárolóból származik. Ezután kilép a mintából.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A sorozat második részében megtanulta, hogyan szimulálhatja az olvasási hozzáférés földrajzi redundáns tárolásának tesztelési hibáját.
 

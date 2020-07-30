@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6238e89b3941668f831f3128bb0e723a4097e48
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 88270d51bf50b2b175d9d8761685a8a2a8ae19b1
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87027512"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87428275"
 ---
 # <a name="add-an-api-connector-to-a-user-flow"></a>API-összekötő hozzáadása felhasználói folyamathoz
 
@@ -42,9 +42,16 @@ Az API- [Összekötők](api-connectors-overview.md)használatához először lé
 8. Válassza ki azokat a jogcímeket, amelyeket el szeretne küldeni az API-nak.
 9. Válassza ki azokat a jogcímeket, amelyeket vissza szeretne kapni az API-ból.
 
-   ![API-összekötő jogcímeinek beállítása](./media/self-service-sign-up-add-api-connector/api-connector-claims.png)
+   <!-- ![Set API connector claims](./media/self-service-sign-up-add-api-connector/api-connector-claims.png) -->
 
-10. Válassza a **Mentés** lehetőséget.
+10. Kattintson a **Mentés** gombra.
+
+### <a name="selection-of-claims-to-send-and-claims-to-receive"></a>A küldendő jogcímek és a fogadott jogcímek kiválasztása
+> [!IMPORTANT]
+> Az alapértelmezés szerint kiválasztott összes jogcímet láthatja az alábbi ábrán látható módon. Az összes API-összekötő úgy lesz frissítve, hogy így viselkedjen. Az API megkapja az összes rendelkezésre álló jogcímet, és bármilyen támogatott jogcím visszaküldését anélkül, hogy az API-összekötő definíciójában konfigurálja őket. 
+
+![API-összekötő jogcímeinek beállítása](./media/self-service-sign-up-add-api-connector/api-connector-claims-new.png)
+
 
 ## <a name="enable-the-api-connector-in-a-user-flow"></a>API-összekötő engedélyezése felhasználói folyamatokban
 
@@ -61,7 +68,7 @@ Az alábbi lépéseket követve hozzáadhat egy API-összekötőt egy önkiszolg
 
    ![API-k hozzáadása a felhasználói folyamathoz](./media/self-service-sign-up-add-api-connector/api-connectors-user-flow-select.png)
 
-6. Válassza a **Mentés** lehetőséget.
+6. Kattintson a **Mentés** gombra.
 
 Útmutató az [API-összekötők felhasználói folyamatokban való engedélyezéséhez](api-connectors-overview.md#where-you-can-enable-an-api-connector-in-a-user-flow).
 
@@ -204,7 +211,7 @@ Content-type: application/json
 ### <a name="integration-with-azure-functions"></a>Integrálás az Azure Functionszel
 A Azure Functions HTTP-triggert egyszerűen létrehozhat egy API-t az API-összekötővel való használatra. Az Azure-függvényt használhatja [például](code-samples-self-service-sign-up.md#api-connector-azure-function-quickstarts)az érvényesítési logikára, és meghatározott tartományokra korlátozza a bejelentkezéseket. Más webes API-kat, felhasználói tárolókat és más felhőalapú szolgáltatásokat is hívhat és hívhat meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 <!-- - Learn [where you can enable an API connector](api-connectors-overview.md#where-you-can-enable-an-api-connector-in-a-user-flow) -->
 - Ismerje meg, hogyan [adhat hozzá egyéni jóváhagyási munkafolyamatot önkiszolgáló regisztrációhoz](self-service-sign-up-add-approvals.md)

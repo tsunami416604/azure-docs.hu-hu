@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 author: iqshahmicrosoft
 ms.author: iqshah
-ms.date: 07/14/2020
-ms.openlocfilehash: f3589fb9ae176e04f727f516cca7c18c87dad9e0
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 07/29/2020
+ms.openlocfilehash: 3c5c86f89882654e44f924ce0a19d4d71713144d
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87317501"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87431664"
 ---
 # <a name="get-shared-access-signature-uri-for-your-vm-image"></a>A virtuálisgép-rendszerkép közös hozzáférésű aláírási URI-azonosítójának beolvasása
 
@@ -31,17 +31,15 @@ Ha SAS URI-ket hoz létre a virtuális merevlemezekhez, kövesse az alábbi köv
 
 A SAS-cím (URL) létrehozásához két gyakori eszköz használható:
 
-* **Microsoft Storage Explorer** – grafikus eszköz, amely Windows, MacOS és Linux rendszerekhez érhető el.
+* **Microsoft Storage Explorer** – a Azure Portal elérhető grafikus eszköz.
 * **Microsoft Azure CLI** – ajánlott nem Windows operációs rendszerekhez, valamint automatizált vagy folyamatos integrációs környezetekhez.
 
 ### <a name="use-microsoft-storage-explorer"></a>A Microsoft Storage Explorer használata
 
-1. [Microsoft Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)letöltése és telepítése.
-2. Nyissa meg a Explorert, és a bal oldali menüben válassza a **fiók hozzáadása**lehetőséget. Megjelenik a **Kapcsolódás az Azure Storage-hoz** párbeszédpanel.
-3. Válassza **Az Azure-fiók hozzáadása** lehetőséget, majd **Jelentkezzen**be. Fejezze be az Azure-fiókjába való bejelentkezéshez szükséges lépéseket.
-4. A bal**oldali ablaktábla** ablaktábláján lépjen a Storage- **fiókok** elemre, és bontsa ki a csomópontot.
-5. Kattintson a jobb gombbal a virtuális merevlemezre, majd válassza a **megosztási hozzáférés aláírásának beolvasása**elemet.
-6. Megjelenik a **megosztott hozzáférés aláírása** párbeszédpanel. Hajtsa végre a következő mezőket:
+1. Nyissa meg a Storage-fiókját a Azure Portal.
+2. Nyissa meg a **Storage Explorer** (előzetes verzió) eszközt a bal oldali Explorer ablaktáblán.
+3. Kattintson a jobb gombbal a virtuális merevlemezre, majd válassza a **közös hozzáférési aláírás beolvasása**elemet.
+4. Megjelenik a **megosztott hozzáférés aláírása** párbeszédpanel. Hajtsa végre a következő mezőket:
 
     * **Kezdési idő** – a VHD-hozzáférés engedélyének kezdő dátuma. Adja meg azt a dátumot, amely egy nappal az aktuális dátum előtt van.
     * **Lejárati idő** – a VHD-hozzáférés engedélyének lejárati dátuma. Olyan dátumot adjon meg, amely legalább három héttel az aktuális dátumon túl van.
@@ -50,20 +48,11 @@ A SAS-cím (URL) létrehozásához két gyakori eszköz használható:
 
         :::image type="content" source="media/create-sas-uri-storage-explorer.png" alt-text="A közös hozzáférésű aláírás párbeszédpanel megjelenítése":::
 
-7. Ha a társított SAS URI-t szeretné létrehozni ehhez a VHD-hez, válassza a **Létrehozás**lehetőséget. A párbeszédpanel frissül, és megjeleníti a művelet részleteit.
-8. Másolja ki az **URI** -t, és mentse a fájlt egy biztonságos helyen lévő szövegfájlba.
+5. Ha a társított SAS URI-t szeretné létrehozni ehhez a VHD-hez, válassza a **Létrehozás**lehetőséget. A párbeszédpanel frissül, és megjeleníti a művelet részleteit.
+6. Másolja ki az **URI** -t, és mentse a fájlt egy biztonságos helyen lévő szövegfájlba.
 
     :::image type="content" source="media/create-sas-uri-shared-access-signature-details.png" alt-text="Szemlélteti a közös hozzáférési aláírás részleteit tartalmazó mezőt":::
-
-    Ez a generált SAS URI a tároló szintű hozzáféréshez szükséges. Ha szeretné, a szövegfájl szerkesztésével adja hozzá a VHD-nevet (következő lépés).
-
-9. Szúrja be a VHD-nevet a SAS URI-ban lévő VHD-karakterlánc után (adja meg a perjelet). A végső SAS URI-nak így kell kinéznie:
-
-    `<blob-service-endpoint-url> + /vhds/ + <vhd-name>? + <sas-connection-string>`Ha például a VDH neve `TestRGVM2.vhd` , akkor az eredményül kapott sas URI a következő lesz:
-
-    `https://catech123.blob.core.windows.net/vhds/TestRGVM2.vhd?st=2018-05-06T07%3A00%3A00Z&se=2019-08-02T07%3A00%3A00Z&sp=rl&sv=2017-04-17&sr=c&sig=wnEw9RfVKeSmVgqDfsDvC9IHhis4x0fc9Hu%2FW4yvBxk%3D`
-
-10. Ismételje meg ezeket a lépéseket a közzétenni kívánt csomagok minden virtuális merevlemezén.
+7. Ismételje meg ezeket a lépéseket a közzétenni kívánt csomagok minden virtuális merevlemezén.
 
 ### <a name="using-azure-cli"></a>Az Azure parancssori felület használata
 

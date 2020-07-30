@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: tracking-python, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/12/2019
-ms.openlocfilehash: 2652e3b5be108985557427b99fa7841b88bf28ef
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e938e7a8595b6d6b5b94dd265cb466b3e8719230
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318606"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432498"
 ---
 # <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio-classic"></a>Python Machine learning-parancsfájlok végrehajtása Azure Machine Learning Studio (klasszikus)
 
-**a következőkre vonatkozik:** ![ nincs](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine learning](../overview-what-is-azure-ml.md) ![ Igen ](../../../includes/media/aml-applies-to-skus/yes.png) Machine learning Studio (klasszikus) 
+**a következőkre vonatkozik:** ![ igen ](../../../includes/media/aml-applies-to-skus/yes.png) Machine learning Studio (klasszikus) ![ nincs](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine learning](../compare-azure-ml-to-studio-classic.md)  
 
 
 A Python egy értékes eszköz, amely számos adatszakértőkből álló eszközben található. Ez a szokásos gépi tanulási munkafolyamatok minden szakaszában használatos, beleértve az adatfeltárást, a szolgáltatások kinyerését, a modellek betanítását és az érvényesítést, valamint a telepítést.
@@ -181,7 +181,7 @@ A Python belépési pontja csak egy adatkeret kimenetként való visszaküldés�
 
 Jelenleg az egyéni Python-modulok hozzáadásának egyetlen módja a korábban ismertetett zip-fájl mechanizmuson keresztül. Habár ez a kis modulok esetében is lehetséges, nehézkes a nagyméretű modulok (különösen a natív DLL-eket tartalmazó modulok) vagy nagy számú modul használata esetén.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ: [Python fejlesztői központ](https://azure.microsoft.com/develop/python/).
 

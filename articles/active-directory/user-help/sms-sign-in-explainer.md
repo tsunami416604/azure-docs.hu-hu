@@ -12,12 +12,12 @@ ms.date: 04/14/2020
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 361e8c63dc036443e527d1027fe3fd0cca784d9a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 864225238c10ab2fda96e95448790201cc8a16ae
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83747211"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422997"
 ---
 # <a name="use-your-phone-number-as-a-user-name-preview"></a>Telefonszám használata felhasználónévként (előzetes verzió)
 
@@ -52,11 +52,11 @@ Ha már használ telefonszámot egy szervezettel, és a telefonszámát használ
 
 1. Ha az SMS-bejelentkezés elérhető, megjelenik egy szalagcím, amely arra kéri, hogy engedélyezze a telefonszámot az SMS-bejelentkezéshez:
 
-    [![](media/sms-sign-in-explainer/sms-sign-in-banner.png "Banner to enable SMS sign-in for a phone number")](media/sms-sign-in-explainer/sms-sign-in-banner.png#lightbox)
+    [![A szalagcím lehetővé teszi az SMS-bejelentkezést a telefonszámhoz.](media/sms-sign-in-explainer/sms-sign-in-banner.png)](media/sms-sign-in-explainer/sms-sign-in-banner.png#lightbox)
 
 1. Emellett az **enable (Engedélyezés** ) gomb is megjelenik, ha a kurzort a telefonos módszer csempén választja:
 
-    [![](media/sms-sign-in-explainer/sms-sign-in-phone-method.png "Banner to enable SMS sign-in for a phone number")](media/sms-sign-in-explainer/sms-sign-in-phone-method.png#lightbox)
+    [![A szalagcím lehetővé teszi az SMS-bejelentkezést a telefonszámhoz.](media/sms-sign-in-explainer/sms-sign-in-phone-method.png)](media/sms-sign-in-explainer/sms-sign-in-phone-method.png#lightbox)
 
 1. A metódus engedélyezéséhez válassza az **Engedélyezés**lehetőséget. A rendszer felszólítja, hogy erősítse meg a műveletet:
 
@@ -68,7 +68,7 @@ Ha már használ telefonszámot egy szervezettel, és a telefonszámát használ
 
 1. A telefonszám törléséhez kattintson a Delete (Törlés) gombra az SMS bejelentkezési telefon módszer csempén.
 
-    [![](media/sms-sign-in-explainer/sms-sign-in-delete-method.png "Banner to delete SMS sign-in for a phone number")](media/sms-sign-in-explainer/sms-sign-in-delete-method.png#lightbox)
+    [![A telefonszámhoz tartozó SMS-bejelentkezés törlésére szolgáló szalagcím.](media/sms-sign-in-explainer/sms-sign-in-delete-method.png)](media/sms-sign-in-explainer/sms-sign-in-delete-method.png#lightbox)
 
 2. Amikor a rendszer kéri, hogy erősítse meg a műveletet, kattintson **az OK gombra**.
 

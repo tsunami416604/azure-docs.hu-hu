@@ -9,12 +9,13 @@ ms.subservice: immersive-reader
 ms.topic: conceptual
 ms.date: 01/14/2020
 ms.author: metan
-ms.openlocfilehash: e652aa29b1c1935fcc4887dbe13ef9b683a8bd05
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 70173e1904ce9d7a159532c8962932765060e4d9
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75946165"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406945"
 ---
 # <a name="how-to-cache-the-authentication-token"></a>A hitelesítési jogkivonat gyorsítótárazása
 
@@ -22,7 +23,7 @@ Ez a cikk bemutatja, hogyan gyorsítótárazhatja a hitelesítési tokent az alk
 
 ## <a name="using-aspnet"></a>A ASP.NET használata
 
-Importálja a **Microsoft. IdentityModel. clients. ActiveDirectory** NuGet-csomagot, amely a jogkivonat beszerzésére szolgál. Ezután a következő kód használatával szerezzen be egy `AuthenticationResult`alkalmazást, amely a [magával ragadó olvasó erőforrás létrehozásakor](./how-to-create-immersive-reader.md)kapott hitelesítési értékeket használja.
+Importálja a **Microsoft. IdentityModel. clients. ActiveDirectory** NuGet-csomagot, amely a jogkivonat beszerzésére szolgál. Ezután a következő kód használatával szerezzen be egy `AuthenticationResult` alkalmazást, amely a [magával ragadó olvasó erőforrás létrehozásakor](./how-to-create-immersive-reader.md)kapott hitelesítési értékeket használja.
 
 ```csharp
 private async Task<AuthenticationResult> GetTokenAsync()
@@ -34,9 +35,9 @@ private async Task<AuthenticationResult> GetTokenAsync()
 }
 ```
 
-Az `AuthenticationResult` objektumhoz tartozik `AccessToken` egy olyan tulajdonság, amely a valós token, amelyet a rendszer az SDK használatával fog használni. Emellett van egy `ExpiresOn` tulajdonsága is, amely azt jelzi, hogy mikor jár le a jogkivonat. A lebilincselő olvasó elindítása előtt megtekintheti, hogy a jogkivonat lejárt-e, és csak akkor szerezzen be egy új jogkivonatot, ha lejárt.
+Az `AuthenticationResult` objektumhoz tartozik egy olyan `AccessToken` tulajdonság, amely a valós token, amelyet a rendszer az SDK használatával fog használni. Emellett van egy tulajdonsága is, amely azt jelzi, hogy `ExpiresOn` mikor jár le a jogkivonat. A lebilincselő olvasó elindítása előtt megtekintheti, hogy a jogkivonat lejárt-e, és csak akkor szerezzen be egy új jogkivonatot, ha lejárt.
 
-## <a name="using-nodejs"></a>A Node. JS használata
+## <a name="using-nodejs"></a>Node.JS használata
 
 Adja hozzá a [**kérelem**](https://www.npmjs.com/package/request) NPM-csomagját a projekthez. A következő kód használatával szerezheti be a jogkivonatot, és használhatja azokat a hitelesítési értékeket, amelyeket [az olvasói erőforrás létrehozásakor](./how-to-create-immersive-reader.md)kapott.
 
@@ -75,6 +76,6 @@ async function getToken() {
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerje meg az [olvasói SDK-referenciát](./reference.md)

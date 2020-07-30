@@ -3,16 +3,16 @@ title: Földrajzi Elérhetőség és pénznemek támogatása a Microsoft kereske
 description: A földrajzi Elérhetőség és a pénznemek támogatása a kereskedelmi piactéren lebonyolított tranzakciók esetében
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: reference
 author: keferna
 ms.author: keferna
 ms.date: 01/29/2020
-ms.openlocfilehash: 57d1564c155a553571499a47a5c1d83c80c074b3
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 7041221b015465e9db2d67d8dd7760d644c34f0c
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120007"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387438"
 ---
 # <a name="geographic-availability-and-currency-support-for-commercial-marketplace"></a>Földrajzi Elérhetőség és pénznemek támogatása a kereskedelmi piactéren
 
@@ -43,9 +43,9 @@ A kereskedelmi Piactéri ajánlatok az ügyfél számlázási címe által megha
 | Brazília                              | BR        | BRL\*        |
 | Brunei                              | BN        | USD          |
 | Bulgária                            | BG        | EUR          |
+| Cabo Verde                          | CV        | USD          |
 | Kamerun                            | CM        | USD          |
 | Kanada                              | CA        | CAD          |
-| Cabo Verde                          | CV        | USD          |
 | Kajmán-szigetek                      | KY        | USD          |
 | Chile                               | CL        | USD          |
 | Kína\**                            | CN        | N.A.          |
@@ -110,8 +110,8 @@ A kereskedelmi Piactéri ajánlatok az ügyfél számlázási címe által megha
 | Namíbia                             | NA        | USD          |
 | Nepál                               | NP        | USD          |
 | Hollandia                         | NL        | EUR          |
-| Nicaragua                           | NI        | USD          |
 | Új-Zéland                         | NZ        | NZD          |
+| Nicaragua                           | NI        | USD          |
 | Nigéria                             | NG        | USD          |
 | Norvégia                              | NO        | NOK          |
 | Omán                                | OM        | USD          |
@@ -148,15 +148,15 @@ A kereskedelmi Piactéri ajánlatok az ügyfél számlázási címe által megha
 | Tunézia                             | TN        | USD          |
 | Törökország                              | TR        | USD          |
 | Türkmenisztán                        | TM        | USD          |
-| Vatikáni Városállam (Szentszék)             | VA        | EUR          |
-| A Egyesült Államok Virgin-szigetek | VI        | USD          |
 | Uganda                              | UG        | USD          |
 | Ukrajna                             | UA        | USD          |
 | Egyesült Arab Emírségek                | AE        | USD          |
 | Egyesült Királyság                      | GB        | GBP          |
 | Egyesült Államok                       | USA        | USD          |
+| Amerikai Virgin-szigetek                 | VI        | USD          |
 | Uruguay                             | UY        | USD          |
 | Üzbegisztán                          | UZ        | USD          |
+| Vatikáni Városállam (Szentszék)             | VA        | EUR          |
 | Venezuela                           | VE        | USD          |
 | Vietnam                             | VN        | USD          |
 | Jemen                               | TI        | USD          |

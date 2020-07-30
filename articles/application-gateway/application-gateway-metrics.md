@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 06/06/2020
 ms.author: absha
-ms.openlocfilehash: bf02bdc4d824a47bdaad4821ffc9562b9fe2dd40
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ce349a0539986d88f689c53fc2099877df8030bf
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84482629"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87424392"
 ---
 # <a name="metrics-for-application-gateway"></a>Application Gateway metrikái
 
@@ -117,7 +117,7 @@ Application Gateway esetén a következő metrikák érhetők el:
 
    Application Gateway által visszaadott HTTP-válasz állapota. A válasz állapotkód-eloszlása tovább kategorizálható a válaszok megjelenítéséhez a 2xx, a 3xx, a 4xx és a 5xx kategóriákban.
 
-- **Teljesítmény**
+- **Átviteli sebesség**
 
    A Application Gateway által kiszolgált bájtok másodpercenkénti száma
 
@@ -168,7 +168,7 @@ Application Gateway esetén a következő metrikák érhetők el:
 
   Application Gateway által visszaadott HTTP-válasz állapota. A válasz állapotkód-eloszlása tovább kategorizálható a válaszok megjelenítéséhez a 2xx, a 3xx, a 4xx és a 5xx kategóriákban.
 
-- **Teljesítmény**
+- **Átviteli sebesség**
 
   A Application Gateway által kiszolgált bájtok másodpercenkénti száma
 
@@ -198,7 +198,7 @@ Tallózással keresse meg az Application Gatewayt a **figyelés** kiválasztása
 
 Az alábbi képen egy példa látható három mérőszámmal az elmúlt 30 percben:
 
-[![](media/application-gateway-diagnostics/figure5.png "Metric view")](media/application-gateway-diagnostics/figure5-lb.png#lightbox)
+:::image type="content" source="media/application-gateway-diagnostics/figure5.png" alt-text="Metrika nézet." lightbox="media/application-gateway-diagnostics/figure5-lb.png":::
 
 A metrikák aktuális listájának megjelenítéséhez tekintse meg a [támogatott metrikák a Azure Monitorkal](../azure-monitor/platform/metrics-supported.md)című témakört.
 
@@ -234,7 +234,7 @@ A riasztási értesítésekről további információt a [Riasztási értesíté
 
 Ha többet szeretne megtudni a webhookokról, és arról, hogyan használhatja őket riasztásokkal, látogasson el [a webhook konfigurálása Azure metrikai riasztásra](../azure-monitor/platform/alerts-webhooks.md)című témakörben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Számlálók és Eseménynaplók megjelenítése [Azure monitor naplók](../azure-monitor/insights/azure-networking-analytics.md)használatával.
 * [Jelenítse meg az Azure-beli tevékenység naplóját Power bi](https://powerbi.microsoft.com/blog/monitor-azure-audit-logs-with-power-bi/) blogbejegyzésben.

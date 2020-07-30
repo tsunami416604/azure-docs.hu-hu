@@ -6,12 +6,13 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: how-to
 ms.date: 04/20/2020
-ms.openlocfilehash: 7902dfdf81d8e44921a5218d56effc90f433f02d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-javascript
+ms.openlocfilehash: da827b994685e95baf28e3ad34072642c24fa510
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82857405"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422606"
 ---
 # <a name="writing-plugins-for-azure-media-player"></a>Beépülő modulok írása Azure Media Playerhoz #
 
@@ -89,6 +90,6 @@ A beépülő [modulok](azure-media-player-plugin-gallery.md) létrehozásával k
 
 A [bővítmények](https://aka.ms/ampplugins) katalógusában számos beépülő modul található, amelyekkel a Közösség már hozzájárult olyan funkciókhoz, mint az idővonal-jelölők, a nagyítás, az elemzés és egyebek. A lap hozzáférést biztosít a beépülő modulhoz, valamint útmutatást nyújt a beállításához, valamint egy bemutatót, amely bemutatja a beépülő modult működés közben. Ha olyan remek beépülő modult hoz létre, amelyet a katalógusba szeretne foglalni, nyugodtan elküldheti, hogy bejelentkezzen.
 
-## <a name="next-steps"></a>További lépések ##
+## <a name="next-steps"></a>Következő lépések ##
 
 - [Azure Media Player rövid útmutató](azure-media-player-quickstart.md)

@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/23/2020
-ms.openlocfilehash: ad34195e003e0ca2d73000d3482cc79c3dbe3ee0
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 58a8bd6b8e5594f36bf27a3ad76bee137fdd1160
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372110"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87433222"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Modell üzembe helyezése Azure Kubernetes Service-fürtön
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -63,7 +63,11 @@ Az AK-fürt és a pénzmosás-munkaterület különböző erőforráscsoport leh
 
 - A cikkben szereplő __CLI__ -kódrészletek azt feltételezik, hogy létrehozott egy `inferenceconfig.json` dokumentumot. A dokumentum létrehozásával kapcsolatos további információkért lásd: [how és How to Deploy models (modellek üzembe helyezése](how-to-deploy-and-where.md)).
 
+- Ha egy alapszintű Load Balancer (BLB) helyett a fürtben telepített standard Load Balancerra (SLB) van szüksége, hozzon létre egy fürtöt az AK-portálon/CLI/SDK-ban, majd csatolja a pénzmosás-munkaterülethez.
+
 - Ha egy AK-fürtöt csatlakoztat, amelynek [engedélyezett IP-tartománya engedélyezve van az API-kiszolgáló eléréséhez](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges), engedélyezze a pénzmosás Contol sík IP-tartományait az AK-fürthöz. A pénzmosás-vezérlési sík a párosított régiókban van üzembe helyezve, és az AK-fürtön üzembe helyezett hüvelyeket helyez üzembe. Az API-kiszolgálóhoz való hozzáférés nélkül a következtetést nem lehet központilag telepíteni. A [párosított régiók]( https://docs.microsoft.com/azure/best-practices-availability-paired-regions) [IP-tartományait](https://www.microsoft.com/en-us/download/confirmation.aspx?id=56519) is használhatja, ha egy AK-fürtben engedélyezi az IP-tartományokat.
+
+__A Authroized IP-címtartományok csak standard Load Balancer használhatók.__
  
  - A számítási névnek egyedinek kell lennie a munkaterületen belül
    - A név megadása kötelező, és legfeljebb 3 – 24 karakter hosszúságú lehet.
@@ -73,7 +77,7 @@ Az AK-fürt és a pénzmosás-munkaterület különböző erőforráscsoport leh
    
  - Ha a modelleket GPU-csomópontokra vagy FPGA-csomópontokra (vagy bármely konkrét SKU-ra) szeretné telepíteni, akkor létre kell hoznia egy fürtöt az adott SKU-val. Nem támogatott másodlagos csomópont-készlet létrehozása meglévő fürtben, valamint modellek üzembe helyezése a másodlagos csomópont-készletben.
  
- - Ha egy alapszintű Load Balancer (BLB) helyett a fürtben telepített standard Load Balancerra (SLB) van szüksége, hozzon létre egy fürtöt az AK-portálon/CLI/SDK-ban, majd csatolja a pénzmosás-munkaterülethez. 
+ 
 
 
 
@@ -258,6 +262,30 @@ A VS Code használatával kapcsolatos információkért lásd: [üzembe helyezé
 > [!IMPORTANT]
 > A VS code-on keresztül történő üzembe helyezéshez az AK-fürt létrehozása vagy a munkaterülethez való csatolása szükséges.
 
+### <a name="understand-the-deployment-processes"></a>Az üzembe helyezési folyamatok ismertetése
+
+Az "üzemelő példány" szó mind a Kubernetes, mind a Azure Machine Learning esetében használatos. Az "üzemelő példány" nagyon különböző jelentésekkel rendelkezik ebben a két kontextusban. A Kubernetes-ben a a egy `Deployment` konkrét entitás, amely egy DEKLARATÍV YAML-fájllal van megadva. A Kubernetes `Deployment` meghatározott életciklussal és konkrét kapcsolatokkal rendelkezik más Kubernetes-entitásokkal, például a és a szolgáltatással `Pods` `ReplicaSets` . Megtudhatja, hogyan Kubernetes a docs és a videók a [Kubernetes?](https://aka.ms/k8slearning)című témakörben.
+
+Azure Machine Learning az "üzembe helyezés" a projekt erőforrásainak elérhetővé tételéhez és tisztításához szükséges általánosabb értelemben használatos. Az üzembe helyezés részét Azure Machine Learning lépések a következők:
+
+1. A Project mappában lévő fájlok tömörítése, figyelmen kívül hagyva a. amlignore vagy. gitignore fájlban megadott fájlokat.
+1. A számítási fürt vertikális felskálázása (a Kubernetes-re vonatkozik)
+1. A Docker kiépítése vagy letöltése a számítási csomópontra (a Kubernetes-re vonatkozik)
+    1. A rendszer a következőképpen számítja ki a kivonatot: 
+        - A kiinduló rendszerkép 
+        - Egyéni Docker-lépések (lásd: [modell üzembe helyezése egyéni Docker-rendszerkép használatával](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-custom-docker-image))
+        - A Conda-definíció YAML (lásd: [létrehozás & a szoftveres környezetek használata Azure Machine learning](https://docs.microsoft.com/azure/machine-learning/how-to-use-environments))
+    1. A rendszer ezt a kivonatot használja a munkaterület Azure Container Registry (ACR) keresésének kulcsaként.
+    1. Ha nem található, akkor a globális ACR-beli egyezést keresi
+    1. Ha nem található, a rendszer létrehoz egy új rendszerképet (amely gyorsítótárazza és regisztrálva lesz a munkaterület ACR-ben)
+1. A tömörített projektfájl letöltése a számítási csomóponton lévő ideiglenes tárhelyre
+1. Projektfájl kicsomagolása
+1. A számítási csomópont végrehajtása`python <entry script> <arguments>`
+1. A `./outputs` munkaterülethez társított Storage-fiókba írt naplók, modellező fájlok és egyéb fájlok mentése
+1. A számítási felskálázás, beleértve az ideiglenes tárolók eltávolítását (a Kubernetes-re vonatkozik)
+
+Ha AK-t használ, a számítási felskálázás és a lefelé történő méretezés a Kubernetes által vezérelt, a fent ismertetett Docker használatával. 
+
 ## <a name="deploy-models-to-aks-using-controlled-rollout-preview"></a>Modellek üzembe helyezése az AK-ban vezérelt bevezetéssel (előzetes verzió)
 
 A modell verzióinak elemzése és előléptetése vezérelt módon, végpontok használatával. Akár hat verziót is üzembe helyezhet egyetlen végpont mögött. A végpontok a következő képességeket biztosítják:
@@ -399,7 +427,7 @@ print(token)
 
 [!INCLUDE [aml-update-web-service](../../includes/machine-learning-update-web-service.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Biztonságos kísérletezés és következtetés egy virtuális hálózaton](how-to-enable-virtual-network.md)
 * [Modell üzembe helyezése egyéni Docker-rendszerkép használatával](how-to-deploy-custom-docker-image.md)

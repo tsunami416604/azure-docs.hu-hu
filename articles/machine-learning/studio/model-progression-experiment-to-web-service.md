@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 03/20/2017
-ms.openlocfilehash: 6a02ac6db7e560fcb90a87b7bc96284c279c1654
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 1b659335d09ed26b6556ccb7937094d90e1c5f1e
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324998"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87428407"
 ---
 # <a name="how-a-machine-learning-studio-classic-model-progresses-from-an-experiment-to-a-web-service"></a>Hogyan halad egy Machine Learning Studio (klasszikus) modell egy kísérletből a webszolgáltatásba
 
-**a következőkre vonatkozik:** ![ nincs](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine learning](../overview-what-is-azure-ml.md) ![ Igen ](../../../includes/media/aml-applies-to-skus/yes.png) Machine learning Studio (klasszikus) 
+**a következőkre vonatkozik:** ![ igen ](../../../includes/media/aml-applies-to-skus/yes.png) Machine learning Studio (klasszikus) ![ nincs](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine learning](../compare-azure-ml-to-studio-classic.md)  
 
 
 A Azure Machine Learning Studio (klasszikus) egy interaktív vászon, amely lehetővé teszi egy prediktív elemzési modellt jelölő ***kísérlet*** fejlesztését, futtatását, tesztelését és megismétlését. Számos különböző modul érhető el, amelyek a következőket tehetik:
@@ -107,7 +107,7 @@ Ha szeretné megőrizni a gépi tanulási modellt, de az új adataival szeretné
 
 Ha módosítani kívánja az eredeti prediktív kísérletet, például egy másik gépi tanulási algoritmus kiválasztásával, egy másik betanítási módszer kipróbálásával, majd a modell átképzéséhez a fentebb ismertetett második eljárást kell követnie: Nyissa meg a betanítási kísérletet, kattintson a **Mentés másként** lehetőségre a másoláshoz, majd indítsa el a modell fejlesztésének új útvonalát, hozza létre a prediktív kísérletet és telepítse a webszolgáltatást. Ezzel egy új webszolgáltatás fog létrejönni, amely nem kapcsolódik az eredetihöz – eldöntheti, hogy melyik vagy mindkettőt használja a működés folytatásához.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A fejlesztés és kísérletezés folyamatával kapcsolatos további részletekért tekintse meg a következő cikkeket:
 
 * a kísérlet átalakítása – a [modell előkészítése a Azure Machine learning Studio (klasszikus) üzembe helyezéséhez](convert-training-experiment-to-scoring-experiment.md)

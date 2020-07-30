@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: videók keresése a REST API és a Node. js használatával – Bing Video Search'
+title: 'Gyors útmutató: videók keresése a REST API és a Node.js használatával – Bing Video Search'
 titleSuffix: Azure Cognitive Services
 description: Ezzel a rövid útmutatóval kereshet a Bing Video Search REST API a JavaScript használatával.
 services: cognitive-services
@@ -10,22 +10,23 @@ ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: aahi
-ms.openlocfilehash: 693b8209498f07928c811fd084eaf259bcbcb5ff
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 9658d488fac187e63d04ca435c9233629407ac07
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849637"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87408101"
 ---
-# <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-nodejs"></a>Gyors útmutató: videók keresése a Bing Video Search REST API és Node. js használatával
+# <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-nodejs"></a>Gyors útmutató: videók keresése a Bing Video Search REST API és Node.js használatával
 
-Ezzel a rövid útmutatóval megteheti az első hívást a Bing Video Search API. Ez az egyszerű JavaScript-alkalmazás HTTP-keresési lekérdezést küld az API-nak, és megjeleníti a JSON-választ. Bár ez az alkalmazás JavaScript nyelven íródott, és a Node. js-t használja, az API egy REST-alapú webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel. 
+Ezzel a rövid útmutatóval megteheti az első hívást a Bing Video Search API. Ez az egyszerű JavaScript-alkalmazás HTTP-keresési lekérdezést küld az API-nak, és megjeleníti a JSON-választ. Bár ez az alkalmazás JavaScript nyelven íródott, és Node.js használ, az API egy REST-alapú webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel. 
 
 A minta forráskódja további hibakezeléssel és kódmegjegyzésekkel együtt elérhető a [GitHubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingVideoSearchv7.js).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* [Node. js](https://nodejs.org/en/download/)-fájl.
+* [Node.js](https://nodejs.org/en/download/).
 
 * A JavaScript kérési modulja. Telepítse ezt a modult a használatával `npm install request` .
 
@@ -207,7 +208,7 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Egyoldalas webalkalmazás készítése](../tutorial-bing-video-search-single-page-app.md)

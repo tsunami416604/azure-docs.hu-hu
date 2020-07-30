@@ -11,12 +11,13 @@ ms.topic: conceptual
 ms.date: 03/10/2020
 ms.author: trbye
 zone_pivot_groups: programming-languages-set-two-with-js
-ms.openlocfilehash: ed2c59a92f348812afac3e39719d3814f0720621
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 82ff34b945e93ffbf43e3a264a09e0af7b8660e5
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86023040"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87405092"
 ---
 # <a name="choose-a-speech-recognition-mode"></a>Beszédfelismerési mód kiválasztása
 
@@ -251,7 +252,7 @@ További nyelvek: [beszédfelismerési SDK-dokumentáció](speech-to-text.md#spe
 
 ::: zone-end
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [További beszédfelismerési SDK-minták megismerése a GitHubon](https://aka.ms/csspeech/samples)

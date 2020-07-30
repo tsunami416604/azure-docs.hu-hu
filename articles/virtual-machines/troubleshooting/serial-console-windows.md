@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: 4778ea7781d181a89e7a6b2d6c4ad5d474e9b5c9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c30999a5f0239e60c842084b60b44c165fb7182e
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87005939"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87424000"
 ---
 # <a name="azure-serial-console-for-windows"></a>Windows rendszerhez készült Azure soros konzol
 
@@ -26,10 +26,12 @@ A Azure Portal soros konzolja hozzáférést biztosít a Windows rendszerű virt
 
 A soros konzol a virtuális gépek és a virtuálisgép-méretezési csoport példányai esetében is ugyanúgy működik. Ebben a doc-ban a virtuális gépekre vonatkozó összes említés implicit módon tartalmazza a virtuálisgép-méretezési csoport példányait, hacsak másként nincs megadva.
 
+A soros konzol általánosan elérhető a globális Azure-régiókban és a nyilvános előzetes verzióban Azure Government. Az Azure China Cloud-ban még nem érhető el.
+
 A Linux soros konzoljának dokumentációját a [Linux rendszerhez készült Azure soros konzolon](serial-console-linux.md)találja.
 
 > [!NOTE]
-> A soros konzol általánosan elérhető a globális Azure-régiókban és a nyilvános előzetes verzióban Azure Government. Az Azure China Cloud-ban még nem érhető el.
+> A soros konzol jelenleg nem kompatibilis egy felügyelt rendszerindítási diagnosztikai Storage-fiókkal. A soros konzol használatához győződjön meg arról, hogy egyéni Storage-fiókot használ.
 
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -161,7 +163,7 @@ Ha egy felhasználó csatlakozik a soros konzolhoz, és egy másik felhasználó
 ## <a name="accessibility"></a>Akadálymentesség
 A kisegítő lehetőségek az Azure soros konzol egyik fő témája. Ebből a célból biztosítjuk, hogy a soros konzol elérhető legyen a látássérültek számára, vagy akik nagyothallók, illetve akik esetleg nem tudják használni az egeret.
 
-### <a name="keyboard-navigation"></a>Navigáció a billentyűzeten
+### <a name="keyboard-navigation"></a>Navigálás billentyűzettel
 A billentyűzet **Tab** billentyűjét használva navigáljon a soros konzol felületén a Azure Portal. A hely ki lesz emelve a képernyőn. A soros konzol ablakának fókuszának elhagyásához nyomja le a **CTRL F6 billentyűt**a + **F6** billentyűzeten.
 
 ### <a name="use-the-serial-console-with-a-screen-reader"></a>A soros konzol használata képernyőolvasóval
@@ -216,7 +218,7 @@ A. A rendszerkép valószínűleg helytelenül van konfigurálva a soros konzolh
 
 A. igen! Lásd [a Virtual Machine Scale sets soros konzolját](./serial-console-overview.md#serial-console-for-virtual-machine-scale-sets)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * A Windows SAC szolgáltatásban használható CMD-és PowerShell-parancsok részletes útmutatója [: Windows-parancsok: cmd és PowerShell](serial-console-cmd-ps-commands.md).
 * A soros konzol [Linux](serial-console-linux.md) rendszerű virtuális gépekhez is elérhető.
 * További információ a [rendszerindítási diagnosztika](boot-diagnostics.md)szolgáltatásról.

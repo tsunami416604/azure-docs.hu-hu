@@ -10,12 +10,12 @@ ms.date: 12/18/2019
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: f245b1baddad52f18f66e99fa98d9ec5f73c8011
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 99d8ab3b7edc2d32e580ec8de9132fef3ea3503a
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87130902"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87424341"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-powershell"></a>Felhasználói delegálási SAS létrehozása tárolóhoz vagy blobhoz a PowerShell használatával
 
@@ -162,9 +162,9 @@ Revoke-AzStorageAccountUserDelegationKeys -ResourceGroupName <resource-group> `
 ```
 
 > [!IMPORTANT]
-> A felhasználói delegálási kulcs és a RBAC szerepkör-hozzárendeléseket az Azure Storage gyorsítótárazza, így a visszavonás folyamata és a meglévő felhasználói delegálási SAS érvénytelenné válik.
+> A felhasználói delegálási kulcsot és az Azure-szerepkörök hozzárendeléseit is gyorsítótárazza az Azure Storage, így a visszavonás folyamata és a meglévő felhasználói delegálási SAS érvénytelenné válik.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Felhasználói delegálási SAS létrehozása (REST API)](/rest/api/storageservices/create-user-delegation-sas)
 - [Felhasználói delegálási kulcs műveletének beolvasása](/rest/api/storageservices/get-user-delegation-key)

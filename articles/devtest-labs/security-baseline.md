@@ -3,12 +3,12 @@ title: Azure DevTest Labs Azure biztonsági alapterve
 description: Azure DevTest Labs Azure biztonsági alapterve
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: 47adca5867fef1d41ccfec2455acc6932269842d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 7f0dc1fb18740e2b0611b5954821a5ceda2d2657
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282279"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387829"
 ---
 # <a name="azure-security-baseline-for-azure-devtest-labs"></a>Azure DevTest Labs Azure biztonsági alapterve
 
@@ -547,7 +547,7 @@ Ha az Azure Disk Encryption szolgáltatást használja, visszaállíthatja az Az
 **Útmutató:** A felügyelt lemezek Azure Backup-val történő biztonsági mentésekor a virtuális gépek Storage Service Encryption (SSE) inaktív állapotban vannak titkosítva. A Azure Backup a Azure Disk Encryption használatával titkosított Azure-beli virtuális gépek biztonsági mentését is elvégezheti. A Azure Disk Encryption a BitLocker titkosítási kulcsaival (BEKs) integrálható, amelyek titkos kulccsal rendelkeznek a Key vaultban. A Azure Disk Encryption Azure Key Vault kulcs-titkosítási kulcsokkal (KEK) is integrálva van. A kulcsok véletlen vagy rosszindulatú törléssel szembeni védelemének engedélyezéséhez engedélyezze a Key Vault törlését.
 
 - [Soft Delete a virtuális gépekhez](../backup/soft-delete-virtual-machines.md)
-- [Azure Key Vault – nem kötelező törlés – áttekintés](../key-vault/general/overview-soft-delete.md)
+- [Azure Key Vault – nem kötelező törlés – áttekintés](../key-vault/general/soft-delete-overview.md)
 
 **Azure Security Center figyelés:** igen
 
@@ -631,7 +631,7 @@ Azure Security Center figyelés: * * * * nem alkalmazható
 
 **Felelősség:** Megosztott
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Tekintse meg a következő cikket:
 
 - [Biztonsági riasztások a Azure DevTest Labs környezetekben](environment-security-alerts.md)

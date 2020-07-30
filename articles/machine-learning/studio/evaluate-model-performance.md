@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: d2308b57859a7f8eb0aa6519246fbb52ffdf9e81
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e811d921d28ce33d7dbc9f2bb7996557838178ad
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318640"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87429858"
 ---
 # <a name="evaluate-model-performance-in-azure-machine-learning-studio-classic"></a>Modell teljesítményének kiértékelése Azure Machine Learning Studio (klasszikus)
 
-**a következőkre vonatkozik:** ![ nincs](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine learning](../overview-what-is-azure-ml.md) ![ Igen ](../../../includes/media/aml-applies-to-skus/yes.png) Machine learning Studio (klasszikus) 
+**a következőkre vonatkozik:** ![ igen ](../../../includes/media/aml-applies-to-skus/yes.png) Machine learning Studio (klasszikus) ![ nincs](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine learning](../compare-azure-ml-to-studio-classic.md)  
 
 
 Ebből a cikkből megtudhatja, hogyan figyelheti a modell teljesítményének figyeléséhez használható mérőszámokat Azure Machine Learning Studio (klasszikus).  A modell teljesítményének kiértékelése az adatelemzési folyamat egyik alapvető fázisa. Azt jelzi, hogy egy adatkészlethez tartozó pontozási (előrejelzések) hogyan lett kiképezve egy betanított modellből. A Azure Machine Learning Studio (klasszikus) a modell kiértékelését két fő gépi tanulási modulon keresztül támogatja: 

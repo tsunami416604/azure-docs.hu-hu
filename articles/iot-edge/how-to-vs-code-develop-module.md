@@ -8,12 +8,13 @@ ms.author: xshi
 ms.date: 08/07/2019
 ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: 10c8008d73390174c44ec503f708c1e2c0011e09
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 848f617aaf74960aeecd856016321ac7607eca00
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78944300"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422895"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-modules-for-azure-iot-edge"></a>Modulok fejlesztése és hibakeresése a Visual Studio Code használatával Azure IoT Edge
 
@@ -363,7 +364,7 @@ Az SSH-kapcsolatok támogatásához a Docker és a Moby Engine legújabb változ
 
 További információért és részletes utasításokért tekintse meg ezt a [IoT fejlesztői blogbejegyzését](https://devblogs.microsoft.com/iotdev/easily-build-and-debug-iot-edge-modules-on-your-remote-device-with-azure-iot-edge-for-vs-code-1-9-0/) .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A modul létrehozása után megtudhatja, hogyan [helyezhet üzembe Azure IoT Edge modulokat a Visual Studio Code-ból](how-to-deploy-modules-vscode.md).
 

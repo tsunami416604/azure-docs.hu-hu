@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/14/2020
 ms.author: allensu
-ms.openlocfilehash: 80e2ba8df9c81d2a34f63b2f1bc943ee5d731bae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 93ce3b02ef8963a33e485b6560516e1d2b9c1ef5
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85549581"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87424017"
 ---
 # <a name="what-is-virtual-network-nat"></a>Mi az Virtual Network NAT?
 
@@ -32,7 +32,7 @@ Virtual Network NAT (hálózati címfordítás) egyszerűbbé teszi a csak kimen
 -->
 
 <p align="center">
-  <img src="./media/nat-overview/flow-map.svg" width="256" title="Virtual Network NAT">
+  <img src="./media/nat-overview/flow-map.svg" alt="Figure depicts a NAT receiving traffic from internal subnets and directing it to a public IP and an IP prefix." width="256" title="Virtual Network NAT">
 </p>
 
 
@@ -74,7 +74,7 @@ A NAT és a kompatibilis szabványos SKU-funkciók tisztában vannak a folyamat 
 ![Virtual Network NAT flow direction](./media/nat-overview/flow-direction4.svg)
 -->
 <p align="center">
-  <img src="./media/nat-overview/flow-direction4.svg" width="512" title="Virtual Network NAT-folyamat iránya">
+  <img src="./media/nat-overview/flow-direction4.svg" alt="Figure depicts a NAT gateway that supports outbound traffic to the internet from a virtual network and inbound traffic with an instance-level public IP and a public load balancer." width="512" title="Virtual Network NAT-folyamat iránya">
 </p>
 
 *Ábra: Virtual Network NAT flow iránya*
@@ -103,7 +103,7 @@ A NAT alapértelmezés szerint regionális. A [rendelkezésre állási zónák](
 -->
 
 <p align="center">
-  <img src="./media/nat-overview/az-directions.svg" width="512" title="NAT Virtual Network rendelkezésre állási zónákkal">
+  <img src="./media/nat-overview/az-directions.svg" alt="Figure depicts three zonal stacks, each of which contains a NAT gateway and a subnet." width="512" title="NAT Virtual Network rendelkezésre állási zónákkal">
 </p>
 
 *Ábra: Virtual Network NAT és rendelkezésre állási zónák*
@@ -156,7 +156,7 @@ Szeretnénk tudni, hogyan lehet javítani a szolgáltatást. Javasolja és szava
 * A NSG folyamat naplózása nem támogatott a NAT használata esetén.
 * A NAT nem tud több virtuális hálózatot kifogni.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a [NAT-átjáró erőforrásáról](./nat-gateway-resource.md).
 * [Ossza meg velünk a következőt Virtual Network NAT UserVoice-ben való létrehozásához](https://aka.ms/natuservoice).

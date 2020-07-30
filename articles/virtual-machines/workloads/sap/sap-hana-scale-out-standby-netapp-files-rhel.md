@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/15/2020
 ms.author: radeltch
-ms.openlocfilehash: e17dcf02c920dc1a824a165fb3d667833267cac7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e018f2320b505a174850472d85ec2ebd59310560
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86507505"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406571"
 ---
 # <a name="deploy-a-sap-hana-scale-out-system-with-standby-node-on-azure-vms-by-using-azure-netapp-files-on-red-hat-enterprise-linux"></a>SAP HANA kibővíthető rendszer üzembe helyezése készenléti csomóponttal Azure-beli virtuális gépeken Azure NetApp Files használatával Red Hat Enterprise Linux 
 
@@ -251,7 +251,7 @@ A következő utasítások feltételezik, hogy már létrehozta az erőforráscs
 
     d. Válassza a **hálózatkezelés**lehetőséget, majd csatlakoztassa a hálózati adaptert. A **hálózati adapter csatolása** legördülő listában válassza ki a már létrehozott hálózati adaptereket és az `storage` `hana` alhálózatokat.  
     
-    e. Válassza a **Mentés** lehetőséget. 
+    e. Kattintson a **Mentés** gombra. 
  
     f. Ismételje meg a b – e lépéseket a fennmaradó virtuális gépek esetében (példánkban a **hanadb2** és a **hanadb3**).
  
@@ -361,7 +361,7 @@ Konfigurálja és készítse elő az operációs rendszert a következő lépés
     <pre><code>
     vi /etc/sysctl.d/ms-az.conf
     # Add the following entries in the configuration file
-    ipv6.conf.all.disable_ipv6 = 1
+    net.ipv6.conf.all.disable_ipv6 = 1
     net.ipv4.tcp_max_syn_backlog = 16348
     net.ipv4.ip_local_port_range = 40000 65300
     net.ipv4.conf.all.rp_filter = 0

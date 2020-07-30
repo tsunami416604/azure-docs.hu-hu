@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/15/2019
-ms.openlocfilehash: ac5fa2a4eb534a4cc6e7bf9542bfb250f216401c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 31c426ffa85d4eb78a8420d56cce93132b4b7539
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282500"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432854"
 ---
 # <a name="create-endpoints-for-deployed-azure-machine-learning-studio-classic-web-services"></a>Végpontok létrehozása központilag telepített Azure Machine Learning Studio (klasszikus) webszolgáltatásokhoz
 
-**a következőkre vonatkozik:** ![ nincs](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine learning](../overview-what-is-azure-ml.md) ![ Igen ](../../../includes/media/aml-applies-to-skus/yes.png) Machine learning Studio (klasszikus) 
+**a következőkre vonatkozik:** ![ igen ](../../../includes/media/aml-applies-to-skus/yes.png) Machine learning Studio (klasszikus) ![ nincs](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine learning](../compare-azure-ml-to-studio-classic.md)  
 
 
 > [!NOTE]
@@ -51,6 +51,6 @@ Ne feledje, hogy a magas egyidejűségek használata hátrányos lehet, ha nem h
 
 A szinkron API-kat jellemzően olyan helyzetekben használják, ahol alacsony késésre van szükség. A késés itt azt jelenti, hogy az API-nak egy kérést kell végrehajtania, és nem veszi figyelembe a hálózati késéseket. Tegyük fel, hogy van egy API-val egy 50-MS késéssel. Ahhoz, hogy teljes mértékben felhasználja a rendelkezésre álló kapacitást a magas szintű és a maximális párhuzamos hívásokkal: 20, meg kell hívnia ezt az API-t 20 * 1000/50 = 400-szor másodpercenként. Ezen túlmenően az 200-es maximális egyidejű hívások lehetővé teszik a 4000-os API-k meghívását másodpercenként, a 50 – MS késést feltételezve.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Azure Machine learning webszolgáltatás felhasználása](consume-web-services.md).

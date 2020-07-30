@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: ayshak
-ms.openlocfilehash: e3a5d2228074ed358244b49bdf283c09f777ddee
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: d8ac2a8317343b1bc172eefa17c6eb0074c5c21f
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292074"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432625"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>B sorozatú virtuális gépek méretei
 
@@ -92,18 +92,21 @@ Egy olyan D16s_v3 esetében, amely 16 vCPU és 64 GiB memóriával rendelkezik, 
 
 ## <a name="q--a"></a>Kérdések és válaszok
 
+### <a name="q-what-happens-if-the-credits-run-out"></a>K: mi történik, ha a kreditek kifogynak?
+**A**: a kreditek kimerítése után a virtuális gép az alapkonfiguráció teljesítményére tér vissza.
+
 ### <a name="q-how-do-you-get-135-baseline-performance-from-a-vm"></a>K: hogyan szerezhet be 135%-os alapteljesítményt egy virtuális gépről?
 
 **A**: a 135% meg van osztva a 8 vCPU között, amelyek a virtuális gép méretét alkotják. Ha például az alkalmazás a 8 mag használatát használja a Batch-feldolgozásban, és mindegyik 4 vCPU 30%-os kihasználtsággal fut, akkor a virtuális gép CPU-teljesítményének teljes mennyisége 120%-kal egyenlő lenne.  Azt jelenti, hogy a virtuális gép a kiindulási teljesítménytől számított 15%-os különbözet alapján felépíti a kredit időt.  Ez azt is jelenti, hogy ha vannak olyan kreditek, amelyekkel ugyanazon virtuális gép 100%-át használhatja mind a 8 vCPU, így a virtuális gép maximális CPU-teljesítménye 800%.
 
 
-### <a name="q-how-can-i-monitor-my-credit-balance-and-consumption"></a>K: Hogyan figyelhető meg a kredit egyenlege és a felhasználásom
+### <a name="q-how-can-i-monitor-my-credit-balance-and-consumption"></a>K: Hogyan figyelhető meg a kreditek egyenlege és a fogyasztásom?
 
 Válasz **: két**új metrikát fogunk bevezetni az elkövetkező hetekben, a **jóváírási** metrika lehetővé teszi, hogy megtekintse, hány kredit van a virtuális gépen, és a **ConsumedCredit** metrika megmutatja, hogy hány CPU-kreditet használ a virtuális gép a banktól.    Ezeket a metrikákat a portál mérőszámok paneljéről vagy programozott módon, a Azure Monitor API-kon keresztül tekintheti meg.
 
 További információ az Azure mérőszámok adatainak eléréséről: [a Microsoft Azure metrikáinak áttekintése](../azure-monitor/platform/data-platform.md).
 
-### <a name="q-how-are-credits-accumulated"></a>K: Hogyan halmozódnak fel a kreditek?
+### <a name="q-how-are-credits-accumulated-and-consumed"></a>K: Hogyan történik a kreditek felhalmozódása és felhasználása?
 
 **A**: a virtuális gépek felhalmozódása és a használati díjak úgy vannak beállítva, hogy egy virtuális gép, amely pontosan az alapszintű teljesítmény szintjén fut, sem a nettó, sem a feltört kreditek számától függ.  Ha a virtuális gép az alapteljesítményi szint alatt fut, a kreditek nettó növekedését fogja tartalmazni, amikor a virtuális gép a CPU-t az alapszintnél nagyobb mértékben használja fel.
 
@@ -148,6 +151,6 @@ Válasz **: igen**, az összes B sorozatú méret támogatja Premium Storage ada
 
 További információ a lemezek típusairól: [lemezek típusai](https://docs.microsoft.com/azure/virtual-machines/linux/disks-types#ultra-ssd-preview/)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ arról, hogy az [Azure számítási egységei (ACU)](acu.md) hogyan segíthetnek az Azure SKU-ban a számítási teljesítmény összehasonlításában.

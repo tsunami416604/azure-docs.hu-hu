@@ -6,12 +6,13 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: reference
 ms.date: 04/20/2020
-ms.openlocfilehash: 9ab79a60f55fad6a45fadb6bf8890d2879caac62
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 2b7acb1ad6fbe0beb4d79ee2a833561f0829664c
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87043585"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423031"
 ---
 # <a name="options"></a>Beállítások #
 
@@ -146,6 +147,6 @@ A True beállítás lehetővé teszi az élő CEA-feliratok élő streamekben é
 
 Ez a beállítás csak Azure Media Player 2.1.1-es és újabb verzióiban érhető el.
 
-## <a name="next-steps"></a>További lépések ##
+## <a name="next-steps"></a>Következő lépések ##
 
 - [Azure Media Player rövid útmutató](azure-media-player-quickstart.md)

@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: azfuncdf
-ms.openlocfilehash: afee79aecaad97ec4b441df0758166073b2413cf
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 26234039c77601bc1d29beeebd3fcb8461d6d6c9
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083106"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432700"
 ---
 # <a name="task-hubs-in-durable-functions-azure-functions"></a>Durable Functions (Azure Functions) feladat-hubok
 
@@ -110,12 +110,12 @@ A következő kód azt mutatja be, hogyan írhat olyan függvényt, amely a beá
 [FunctionName("HttpStart")]
 public static async Task<HttpResponseMessage> Run(
     [HttpTrigger(AuthorizationLevel.Function, methods: "post", Route = "orchestrators/{functionName}")] HttpRequestMessage req,
-    [OrchestrationClient(TaskHub = "%MyTaskHub%")] IDurableOrchestrationClient starter,
+    [DurableClient(TaskHub = "%MyTaskHub%")] IDurableOrchestrationClient starter,
     string functionName,
     ILogger log)
 {
     // Function input comes from the request content.
-    dynamic eventData = await req.Content.ReadAsAsync<object>();
+    object eventData = await req.Content.ReadAsAsync<object>();
     string instanceId = await starter.StartNewAsync(functionName, eventData);
 
     log.LogInformation($"Started orchestration with ID = '{instanceId}'.");
@@ -167,7 +167,7 @@ A bővítmény-verziók közötti különbségekről a [Durable functions verzi�
 > [!NOTE]
 > A név az, ami megkülönbözteti az egyik feladatot a másiktól, ha egy megosztott Storage-fiókban több Task hub található. Ha több Function-alkalmazás osztozik egy megosztott Storage-fiókkal, explicit módon konfigurálnia kell az egyes feladatok központjának különböző nevét a fájlok *host.js* . Ellenkező esetben a több függvényt használó alkalmazások versenyeznek egymással az üzeneteknél, ami nem definiált viselkedést eredményezhet, beleértve az előkészítést, amely váratlanul "ragadt" a `Pending` vagy `Running` állapotban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Megtudhatja, hogyan kezelheti a hangszerelési verziószámozást](durable-functions-versioning.md)

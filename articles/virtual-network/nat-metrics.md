@@ -15,19 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/04/2020
 ms.author: allensu
-ms.openlocfilehash: 75e20a4fb91b73bc353d347f0b34f9be8f7a8a58
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e3c47a60a6cda074eba7b5c3292577c29f50c2ab
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84709946"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87424051"
 ---
 # <a name="azure-virtual-network-nat-metrics"></a>Azure Virtual Network NAT-metrikák
 
 Az Azure Virtual Network NAT-átjáró erőforrásai több dimenziós mérőszámokat biztosítanak. Ezekkel a metrikákkal megfigyelheti a műveletet, és [hibaelhárítást](troubleshoot-nat.md)hajthat meg.  A riasztások olyan kritikus fontosságú problémákhoz konfigurálhatók, mint például a SNAT-kimerültség.
 
 <p align="center">
-  <img src="media/nat-overview/flow-direction1.svg" width="256" title="NAT Virtual Network az internet felé">
+  <img src="media/nat-overview/flow-direction1.svg" alt="Figure depicts a NAT gateway resource that consumes all IP addresses for a public IP prefix and directs that traffic to and from two subnets of virtual machines and a virtual machine scale set." width="256" title="NAT Virtual Network az internet felé">
 </p>
 
 *Ábra: Virtual Network NAT a kimenő internethez*
@@ -36,7 +36,7 @@ Az Azure Virtual Network NAT-átjáró erőforrásai több dimenziós mérőszá
 
 A NAT-átjáró erőforrásai a következő többdimenziós mérőszámokat biztosítják a Azure Monitorban:
 
-| Metric | Leírás | Ajánlott összesítés | Dimenziók |
+| Metrika | Leírás | Ajánlott összesítés | Dimenziók |
 |---|---|---|---|
 | Bájt | Bejövő és kimenő bájtok feldolgozott száma | Összeg | Irány (a; Kimenő), protokoll (6 TCP; 17 UDP) |
 | Csomagok | A bejövő és kimenő csomagok feldolgozása folyamatban | Összeg | Irány (a; Kimenő), protokoll (6 TCP; 17 UDP) |
@@ -53,7 +53,7 @@ A metrikákkal kapcsolatos riasztások az összes korábbi [metrika](#metrics)es
 
 A Resource Health nem támogatott.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Tudnivalók a [Virtual Network NAT](nat-overview.md) -ról
 * Tudnivalók a [NAT-átjáró erőforrásáról](nat-gateway-resource.md)

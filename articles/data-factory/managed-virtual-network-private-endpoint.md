@@ -10,17 +10,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/26/2020
-ms.openlocfilehash: f6868e3a77cbc4b262180b47ed3b387840062969
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 07/15/2020
+ms.openlocfilehash: a4594ca1a992f158522eccb4ffa6e846a1f4f605
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87096671"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406282"
 ---
 # <a name="azure-data-factory-managed-virtual-network-preview"></a>Azure Data Factory felügyelt Virtual Network (előzetes verzió)
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Ez a cikk ismerteti a felügyelt Virtual Network és a felügyelt privát végpontokat a Azure Data Factoryban.
 
@@ -82,6 +82,7 @@ Az alábbi adatforrások az ADF által felügyelt Virtual Networkon keresztüli 
 - Azure SQL Data Warehouse
 - Azure CosmosDB SQL
 - Azure Key Vault
+- Azure Private Link
 
 ### <a name="outbound-communications-through-public-endpoint-from-adf-managed-virtual-network"></a>Kimenő kommunikáció nyilvános végponton keresztül, felügyelt Virtual Network
 - A kimenő kommunikációhoz csak az 443-es port van megnyitva.
@@ -91,7 +92,7 @@ Az alábbi adatforrások az ADF által felügyelt Virtual Networkon keresztüli 
 A CosmosDB-kapcsolat hibakeresési futtatása nem működik, beleértve a adatfolyam hibakeresését és a folyamat hibakeresését is.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Oktatóanyag: [másolási folyamat létrehozása felügyelt Virtual Network és privát végpontok használatával](tutorial-copy-data-portal-private.md) 
 - Oktatóanyag: [leképezési adatfolyam folyamat létrehozása felügyelt Virtual Network és privát végpontok használatával](tutorial-data-flow-private.md)

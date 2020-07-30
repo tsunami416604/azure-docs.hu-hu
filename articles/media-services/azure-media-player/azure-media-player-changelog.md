@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
 ms.date: 07/27/2020
-ms.openlocfilehash: 113249f56c1f5f9c035ec2ff6ccb7309dd355763
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 9642f6d1090ef358cf86241640255c647dea52eb
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281344"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432672"
 ---
 # <a name="changelog"></a>Változásnapló #
 
@@ -57,13 +57,13 @@ ms.locfileid: "87281344"
 
 ### <a name="changes-234"></a>A 2.3.4 módosítása
 
-- Üres felirat/műsorszám eltávolítva az iOS-és MacOS-Safari-HLS lejátszásakor
+- Üres felirat/műsorszám eltávolítva az iOS-és macOS-Safari-HLS lejátszásakor
 - A IMSC1-feliratok 412s számának csökkentése
 - Kimeneti figyelmeztetés a konzolon 10 egymást követő üres IMSC1 – az élő hibakeresést segítő feliratokra adott válaszok
 
 ## <a name="232-official-update-october-9-2019"></a>2.3.2 (hivatalos frissítés, október 9 2019)
 
-### <a name="features"></a>Szolgáltatások
+### <a name="features-232"></a>A 2.3.2 funkció
 
 -PlayReady-támogatás hozzáadva a Chromium Edge böngészőhöz készült DASH lejátszáshoz
 
@@ -101,7 +101,7 @@ ms.locfileid: "87281344"
 
 - Amikor beolvas egy segmentDecryptError, és a lejátszó már az élő szélén van, a lejátszó most frissíti a jegyzékfájlt a következő szegmens kipróbálása helyett
 - További naplózás hozzáadása a diagnosztika szolgáltatáshoz
-- Frissített dokumentáció az iOS Safari foglalja FairPlay támogatásához
+- Frissített dokumentáció, amely tartalmazza az iOS Safari FairPlay-támogatását
 - Példa hozzáadva a "srclang" IMSC1-beállításhoz
 - Hozzáadott kitöltés, textPadding, boxShadow felülbírálások a szöveges sávokhoz.
 - Egy errorcode (0x0020025B) hozzáadásával megkülönböztetheti, hogy a szegmens letöltése nem sikerült, mert nem csak dobta a 0x00200259
@@ -228,7 +228,7 @@ ms.locfileid: "87281344"
 
 ### <a name="changes-218"></a>2.1.8 módosítása ###
 
-- Módosítása Frissítve lett a 0x0600001-előállítással, ha az AES-tartalmat a Flash 30 használatával játssza le, mivel jelenleg nem támogatott. További részletekért tekintse meg az [ismert problémákat](azure-media-player-known-issues.md)
+- Módosítása Frissített 0x0600001-hiba, amely akkor jelenik meg, ha az AES-tartalmat a Flash 30-as verziójával együtt játssza le, mert jelenleg nem támogatott. További részletekért tekintse meg az [ismert problémákat](azure-media-player-known-issues.md)
 - Módosítása További újrapróbálkozások lettek hozzáadva élő forgatókönyvekhez, amikor a 404-es jegyzékfájl-kérés vagy üres jegyzékfájlt ad vissza.
 
 ## <a name="217-official-update"></a>2.1.7 (hivatalos frissítés) ##
@@ -727,6 +727,6 @@ ms.locfileid: "87281344"
 
 Kezdeti előzetes kiadás
 
-## <a name="next-steps"></a>További lépések ##
+## <a name="next-steps"></a>Következő lépések ##
 
 - [Azure Media Player rövid útmutató](azure-media-player-quickstart.md)

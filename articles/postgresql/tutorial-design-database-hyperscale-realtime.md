@@ -8,12 +8,12 @@ ms.subservice: hyperscale-citus
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 05/14/2019
-ms.openlocfilehash: f4eeb646de8b68c2c8d30586d0c75cece5317e40
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: db3cd95c5a833b299ee85c1e68b15644ae0e0226
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76716327"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387574"
 ---
 # <a name="tutorial-design-a-real-time-analytics-dashboard-by-using-azure-database-for-postgresql--hyperscale-citus"></a>Oktatóanyag: valós idejű elemzési irányítópult tervezése Azure Database for PostgreSQL – nagy kapacitású (Citus) használatával
 
@@ -86,12 +86,14 @@ Az újonnan létrehozott táblákat a következő psql paranccsal tekintheti meg
 
 A nagy kapacitású központi telepítése a különböző csomópontokon lévő táblázat sorait egy felhasználó által kijelölt oszlop értéke alapján tárolja. Ez a "terjesztési oszlop" azt jelzi, hogy az adatszegmensek hogyan oszlanak el a csomópontok között.
 
-Állítsa be a terjesztési oszlopot, hogy a hely\_azonosítója, a Szilánk kulcsa legyen. A psql-ben futtassa a következő függvényeket:
+Állítsa be a terjesztési oszlopot, hogy a hely \_ azonosítója, a Szilánk kulcsa legyen. A psql-ben futtassa a következő függvényeket:
 
   ```sql
 SELECT create_distributed_table('http_request',      'site_id');
 SELECT create_distributed_table('http_request_1min', 'site_id');
 ```
+
+[!INCLUDE [azure-postgresql-hyperscale-dist-alert](../../includes/azure-postgresql-hyperscale-dist-alert.md)]
 
 ## <a name="generate-sample-data"></a>Mintaadatok létrehozása
 
@@ -122,7 +124,7 @@ DO $$
 END $$;
 ```
 
-A lekérdezés másodpercenként körülbelül nyolc sort szúr be. A sorok tárolása különböző munkavégző csomópontokon történik, `site_id`a terjesztési oszlop által irányított módon.
+A lekérdezés másodpercenként körülbelül nyolc sort szúr be. A sorok tárolása különböző munkavégző csomópontokon történik, a terjesztési oszlop által irányított módon `site_id` .
 
    > [!NOTE]
    > Hagyja meg a futó adatlétrehozási lekérdezést, és nyisson meg egy második psql-kapcsolatokat az oktatóanyag többi parancsához.
@@ -155,7 +157,7 @@ Az előző lekérdezés a korai fázisokban jól működik, de a teljesítménye
 
 Biztosítjuk, hogy az irányítópulton gyorsan maradjon a nyers adatokat összesítő táblázatba. Kísérletezhet az összesítési időtartammal. Egy percenkénti összesítési táblázatot használunk, de az adatmennyiség 5, 15 vagy 60 percre megszakítható.
 
-Ha könnyebben szeretné futtatni ezt a összesítést, egy plpgsql-függvénybe tesszük. Futtassa ezeket a parancsokat a psql a `rollup_http_request` függvény létrehozásához.
+Ha könnyebben szeretné futtatni ezt a összesítést, egy plpgsql-függvénybe tesszük. Futtassa ezeket a parancsokat a psql a függvény létrehozásához `rollup_http_request` .
 
 ```sql
 -- initialize to a time long ago
@@ -220,7 +222,7 @@ DELETE FROM http_request_1min WHERE ingest_time < now() - interval '1 month';
 
 Az előző lépésekben Azure-erőforrásokat hozott létre egy kiszolgálócsoport számára. Ha nem várható, hogy a jövőben szüksége lesz ezekre az erőforrásokra, törölje a kiszolgálót. A kiszolgálócsoport *Áttekintés* lapján kattintson a *Törlés* gombra. Amikor a rendszer rákérdez egy előugró oldalra, erősítse meg a kiszolgálócsoport nevét, és kattintson a végleges *Törlés* gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből az oktatóanyagból megtudhatta, hogyan építhet ki egy nagy kapacitású-(Citus-) kiszolgáló csoportot. Csatlakoztatta azt a psql-hoz, létrehozott egy sémát és egy elosztott adatkészletet. Megtanulta, hogyan lehet adatokat lekérdezni a nyers űrlapon, rendszeresen összesíti az adatokat, lekérdezni az összesített táblákat, és lejárati a régi adatokat.
 

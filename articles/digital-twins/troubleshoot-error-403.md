@@ -6,12 +6,12 @@ author: baanders
 ms.author: baanders
 ms.topic: troubleshooting
 ms.date: 7/20/2020
-ms.openlocfilehash: 95372d69f58249afc946f12ec74696507429e5c6
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: a971291dd423894e4d04158abe873a7222f9802c
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87125291"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87405588"
 ---
 # <a name="service-request-failed-status-403-forbidden"></a>A szolgáltatási kérelem sikertelen. Állapot: 403 (tiltott)
 
@@ -57,7 +57,7 @@ Ha Ön az előfizetés tulajdonosa, saját maga is futtathatja ezt a parancsot. 
 az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<your-Azure-AD-email>" --role "Azure Digital Twins Owner (Preview)"
 ```
 
-További információ erről a szerepkör-követelményről és a hozzárendelési folyamatról: a [ *felhasználó hozzáférési engedélyeinek beállítása* szakasz](how-to-set-up-instance-manual.md#set-up-your-users-access-permissions) , *útmutató: példány és hitelesítés beállítása (manuális)*.
+További információ erről a szerepkör-követelményről és a hozzárendelési folyamatról: a [ *felhasználó hozzáférési engedélyeinek beállítása* szakasz](how-to-set-up-instance-CLI.md#set-up-user-access-permissions) , *útmutató: példány és hitelesítés beállítása (CLI vagy portál)*.
 
 Ha már rendelkezik ezzel a szerepkör-hozzárendeléssel, és továbbra is a 403-es problémát tapasztalja, folytassa a következő megoldással.
 
@@ -75,12 +75,12 @@ Először ellenőrizze, hogy az Azure Digital Twins engedélyeinek beállítása
 
 #### <a name="fix-issues"></a>Hibák elhárítása
 
-Ha bármelyike másképp jelenik meg, mint a leírás, kövesse az alkalmazások regisztrálásának beállítása az [ *ügyfélalkalmazások hozzáférési engedélyeinek beállítása* című szakaszban](how-to-set-up-instance-manual.md#set-up-access-permissions-for-client-applications) ismertetett útmutatást *: példány és hitelesítés beállítása (manuális)*.
+Ha ezek bármelyike másképp jelenik meg, mint a leírtak között, kövesse az alkalmazások regisztrálásának beállítása című témakör útmutatását az [ *ügyfélalkalmazások hozzáférési engedélyeinek beállítása* című szakaszban](how-to-set-up-instance-cli.md#set-up-access-permissions-for-client-applications) , *útmutató: példány és hitelesítés beállítása (parancssori felület vagy portál)*.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Olvassa el a telepítési lépéseket az új Azure Digital Twins-példány létrehozásához és hitelesítéséhez:
-* [*Útmutató: példány és hitelesítés beállítása (manuális)*](how-to-set-up-instance-manual.md)
+* [*Útmutató: példány és hitelesítés beállítása (CLI)*](how-to-set-up-instance-cli.md)
 
 További információ az Azure Digital Twins biztonságáról és engedélyeiről:
 * [*Fogalmak: az Azure Digital Twins-megoldások biztonsága*](concepts-security.md)

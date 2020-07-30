@@ -7,12 +7,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 03/15/2020
 ms.author: mihansen
-ms.openlocfilehash: a8c1b36d6a439297dfb0bbcb34efe059349fc5a2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8aa454e272e0dbf4c69941c35a63ee036c16f78f
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84871909"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422572"
 ---
 # <a name="configure-local-rbac-for-fhir"></a>A FHIR helyi RBAC konfigurálása 
 
@@ -63,10 +63,9 @@ A szükséges objektumazonosítók megadása után kattintson a **Mentés** gomb
 
 A FHIR készült Azure API akár 5 percig is gyorsítótárazza a döntéseket. Ha hozzáférést biztosít a FHIR-kiszolgálóhoz az engedélyezett objektumazonosítók listájához való hozzáadásával, vagy eltávolíthatja őket a listáról, akkor várhatóan akár öt percet is igénybe vehet, amíg a módosítások érvénybe lépnek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a cikkből megtudhatta, hogyan rendelhet hozzá FHIR adatsíkok-hozzáférést külső (másodlagos) Azure Active Directory bérlő használatával. További információ a FHIR készült Azure API további beállításairól:
  
 >[!div class="nextstepaction"]
 >[További beállítások Azure API a FHIR-hez](azure-api-for-fhir-additional-settings.md)
-

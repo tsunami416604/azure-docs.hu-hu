@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan szabhatja testre a hitelesítési és engedély
 ms.topic: article
 ms.date: 07/08/2020
 ms.custom: seodec18
-ms.openlocfilehash: 5b217bb1052a16ded205ac216878945fb960d32d
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 747729b7cbb3dcce72eb36704b5965e8427b59e1
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86205570"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87424256"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>A hitelesítés és az engedélyezés speciális használata Azure App Service
 
@@ -413,7 +413,8 @@ Az alábbi kimeríti a fájl lehetséges konfigurációs beállításait:
                 },
                 "login": {
                     "nameClaimType": "<name of claim containing name>",
-                    "loginScopes": [
+                    "scope": [
+                        "openid",
                         "profile",
                         "email"
                     ],
@@ -468,7 +469,7 @@ Az alábbi kimeríti a fájl lehetséges konfigurációs beállításait:
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: felhasználók teljes körű hitelesítése és engedélyezése (Windows)](app-service-web-tutorial-auth-aad.md) 

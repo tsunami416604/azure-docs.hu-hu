@@ -1,14 +1,14 @@
 ---
 title: A felhőszolgáltatói program megfontolandó szempontjai
 description: A CSP-partnerek esetében az Azure-beli delegált erőforrás-kezelés a részletes engedélyek engedélyezésével segíti a biztonságot és a szabályozást.
-ms.date: 07/06/2020
+ms.date: 07/29/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8dd40c5c4f7131554dcc3249777de9f0d92c35bb
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 0ae7ef0b78f2f37708c6b442a9591fcbcce25646
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86131515"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87429448"
 ---
 # <a name="azure-lighthouse-and-the-cloud-solution-provider-program"></a>Az Azure Lighthouse és a Cloud Solution Provider program
 
@@ -32,6 +32,9 @@ Az Azure Lighthouse használatával különböző csoportokat rendelhet hozzá k
 A CSP programon keresztül létrehozott előfizetés bevezetése az [előfizetés Azure Lighthouse-be történő](../how-to/onboard-customer.md)bevezetésének lépéseit követi. A bérlő rendszergazdai ügynök szerepkörrel rendelkező felhasználója elvégezheti ezt a bevezetést.
 
 ![Bérlői felügyelet az AOBO és az Azure által delegált erőforrás-kezelés használatával](../media/csp-2.jpg)
+
+> [!TIP]
+> A [felügyelt szolgáltatási ajánlatok](managed-services-offers.md) privát csomagokkal nem támogatottak a Cloud Solution Provider (CSP) program viszonteladóján keresztül létesített előfizetésekkel. Ezeket az előfizetéseket az Azure Lighthouse-be [Azure Resource Manager sablonok használatával](../how-to/onboard-customer.md)is előkészítheti.
 
 > [!NOTE]
 > A [Azure Portal **saját ügyfelek** lapján](../how-to/view-manage-customers.md) már szerepel a **Cloud Solution Provider (előzetes verzió)** szakasz, amely megjeleníti a számlázási adatokat és erőforrásokat a [Microsoft ügyfél-szerződést (MCA) aláírt](/partner-center/confirm-customer-agreement) CSP-ügyfelek számára, és [Az Azure-csomag alatt](/partner-center/azure-plan-get-started)található. További információ: Ismerkedés a [Microsoft partneri szerződés számlázási fiókjával](../../cost-management-billing/understand/mpa-overview.md).

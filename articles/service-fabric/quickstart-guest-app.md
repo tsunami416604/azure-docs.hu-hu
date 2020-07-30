@@ -3,12 +3,13 @@ title: Meglévő alkalmazás gyors üzembe helyezése fürtön
 description: Meglévő Node.js-alkalmazás üzemeltetése egy Azure Service Fabric-fürtön a Visual Studio használatával.
 ms.topic: conceptual
 ms.date: 12/06/2017
-ms.openlocfilehash: 9153fc4cd60cb892532db49bf4339b517320b1a6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 9b39e14b18a784274f1bac12072f4fa39de2bb87
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75614842"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87430728"
 ---
 # <a name="host-a-nodejs-application-on-azure-service-fabric"></a>Node.js-alkalmazás üzemeltetése az Azure Service Fabricban
 
@@ -125,7 +126,7 @@ Navigáljon erre a címre, ahol megjelenik a `HELLO WORLD` válasz.
 
 Ne felejtse el törölni az ehhez a rövid útmutatóhoz létrehozott összes erőforrást, mivel ezekért az erőforrásokért kell fizetnie.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információk a [futtatható vendégalkalmazásokról](service-fabric-guest-executables-introduction.md).
 
 <!-- Image References -->

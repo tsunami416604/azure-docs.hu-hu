@@ -1,7 +1,7 @@
 ---
-title: 'Rövid útmutató: a Bing Custom Search végpont meghívása a Node. js használatával | Microsoft Docs'
+title: 'Gyors útmutató: az Bing Custom Search-végpont meghívása Node.js használatával | Microsoft Docs'
 titleSuffix: Azure Cognitive Services
-description: Ezzel a rövid útmutatóval megkezdheti a Bing Custom Search-példány keresési eredményeinek a Node. js használatával történő kérését.
+description: Ezzel a rövid útmutatóval megkezdheti a Bing Custom Search-példány keresési eredményeinek kérését Node.js használatával.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,14 +10,15 @@ ms.subservice: bing-custom-search
 ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: aahi
-ms.openlocfilehash: 34d64db9caefd26adc91471ed67e528a6e3196dc
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.custom: devx-track-javascript
+ms.openlocfilehash: dcfb5ed0b7a7fe2ec004ef5ceebf9ee51112c67c
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83199843"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406452"
 ---
-# <a name="quickstart-call-your-bing-custom-search-endpoint-using-nodejs"></a>Rövid útmutató: a Bing Custom Search végpont meghívása a Node. js használatával
+# <a name="quickstart-call-your-bing-custom-search-endpoint-using-nodejs"></a>Gyors útmutató: az Bing Custom Search-végpont meghívása Node.js használatával
 
 Ebből a rövid útmutatóból megtudhatja, hogyan kérheti le a Bing Custom Search-példány keresési eredményeit. Bár ez az alkalmazás JavaScript nyelven íródott, a Bing Custom Search API egy REST-alapú webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel. A minta forráskódja elérhető a [githubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingCustomSearchv7.js).
 
@@ -25,7 +26,7 @@ Ebből a rövid útmutatóból megtudhatja, hogyan kérheti le a Bing Custom Sea
 
 - Egy Bing Custom Search példány. További információ: gyors útmutató [: az első Bing Custom Search példány létrehozása](quick-start.md).
 
-- [A Node. js JavaScript futtatókörnyezete](https://www.nodejs.org/).
+- [A Node.js JavaScript futtatókörnyezet](https://www.nodejs.org/).
 
 - A [JavaScript-kérelem könyvtára](https://github.com/request/request).
 
@@ -74,7 +75,7 @@ Ebből a rövid útmutatóból megtudhatja, hogyan kérheti le a Bing Custom Sea
             }
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Egyéni keresési Webalkalmazás létrehozása](./tutorials/custom-search-web-page.md)

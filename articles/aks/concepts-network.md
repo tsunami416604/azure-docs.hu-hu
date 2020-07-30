@@ -4,12 +4,12 @@ description: Ismerje meg a hálózatkezelést az Azure Kubernetes szolgáltatás
 ms.topic: conceptual
 ms.date: 06/11/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: d0e2c193e626b2d82fc57ef0699a2558ec3a9629
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: dacb14664b21412df1b1d48c023017378cf364c9
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86244650"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387761"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Az Azure Kubernetes Service-ben (ak) futó alkalmazások hálózati fogalmai
 
@@ -105,7 +105,7 @@ A kubenet és az Azure CNI között a következő viselkedési különbségek l�
 | Kubernetes-szolgáltatások közzététele terheléselosztó szolgáltatás, app Gateway vagy bejövő adatkezelő használatával | Támogatott | Támogatott |
 | Alapértelmezett Azure DNS és privát zónák                                                          | Támogatott | Támogatott |
 
-A DNS-sel kapcsolatban a CoreDNS, az kubenet és az Azure CNI beépülő modul DNS-t is kínál, amely egy AK-ban futó démon. A Kubernetes CoreDNS kapcsolatos további információkért lásd: a [DNS-szolgáltatás testreszabása](https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/). A CoreDNS alapértelmezés szerint úgy van konfigurálva, hogy ismeretlen tartományokat továbbítson a csomópont DNS-kiszolgálóira, vagyis az Azure Virtual Network DNS-funkcióit, amelyeken az AK-fürt telepítve van. Ezért a Azure DNS és a privát zónák az AK-ban futó hüvelyek esetében működnek.
+A DNS-t illetően a kubenet és az Azure CNI beépülő modul DNS-t is kínáljuk a CoreDNS, az AK-ban futó üzemelő példányok a saját autoskálázásával. A Kubernetes CoreDNS kapcsolatos további információkért lásd: a [DNS-szolgáltatás testreszabása](https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/). A CoreDNS alapértelmezés szerint úgy van konfigurálva, hogy ismeretlen tartományokat továbbítson a csomópont DNS-kiszolgálóira, vagyis az Azure Virtual Network DNS-funkcióit, amelyeken az AK-fürt telepítve van. Ezért a Azure DNS és a privát zónák az AK-ban futó hüvelyek esetében működnek.
 
 ### <a name="support-scope-between-network-models"></a>A hálózati modellek közötti hatókör támogatása
 

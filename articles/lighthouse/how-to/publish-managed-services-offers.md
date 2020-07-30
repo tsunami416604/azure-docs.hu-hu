@@ -1,14 +1,14 @@
 ---
 title: Felügyelt szolgáltatás ajánlatának közzététele az Azure Marketplace-en
 description: Megtudhatja, hogyan tehet közzé egy felügyelt szolgáltatási ajánlatot, amely az ügyfeleket az Azure Lighthouse-be.
-ms.date: 05/04/2020
+ms.date: 07/28/2020
 ms.topic: how-to
-ms.openlocfilehash: 19364164617a32a561140e985c8723f8deafe1a7
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: e86cec16cc377470f255c8b677d7462dee6b3573
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86133316"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407064"
 ---
 # <a name="publish-a-managed-service-offer-to-azure-marketplace"></a>Felügyelt szolgáltatás ajánlatának közzététele az Azure Marketplace-en
 
@@ -34,7 +34,7 @@ Az általános közzétételi folyamattal kapcsolatos további információkért
 Ha egy ügyfél felveszi az ajánlatot, egy vagy több előfizetést vagy erőforráscsoportot is delegálhat, amelyek ezután bekerülnek [Az Azure világítótoronyba](#the-customer-onboarding-process).
 
 > [!IMPORTANT]
-> A felügyelt szolgáltatási ajánlat minden csomagja tartalmaz egy **jegyzékfájl részleteit** tartalmazó szakaszt, ahol megadhatja a bérlő azon Azure Active Directory (Azure ad) entitásait, amelyek hozzáférnek a megvásárolt erőforrásokhoz és/vagy előfizetésekhez a tervet megvásárló ügyfelek számára. Fontos megjegyezni, hogy az Ön által belefoglalt bármely csoport (vagy felhasználó vagy szolgáltatásnév) ugyanazokkal az engedélyekkel fog rendelkezni minden olyan ügyfélnél, aki megvásárolja a csomagot. Ha különböző csoportokat szeretne hozzárendelni az egyes ügyfelekkel való munkához, egy külön [privát csomagot](../../marketplace/private-offers.md) kell közzétennie, amely kizárólag az egyes ügyfelekre vonatkozik.
+> A felügyelt szolgáltatási ajánlat minden csomagja tartalmaz egy **jegyzékfájl részleteit** tartalmazó szakaszt, ahol megadhatja a bérlő azon Azure Active Directory (Azure ad) entitásait, amelyek hozzáférnek a megvásárolt erőforrásokhoz és/vagy előfizetésekhez a tervet megvásárló ügyfelek számára. Fontos megjegyezni, hogy az Ön által belefoglalt bármely csoport (vagy felhasználó vagy szolgáltatásnév) ugyanazokkal az engedélyekkel fog rendelkezni minden olyan ügyfélnél, aki megvásárolja a csomagot. Ha különböző csoportokat szeretne hozzárendelni az egyes ügyfelekkel való munkához, közzétehet egy külön [privát csomagot](../../marketplace/private-offers.md) , amely kizárólag az egyes ügyfelek számára érhető el. Ne feledje, hogy a Private-csomagok nem támogatottak a Cloud Solution Provider (CSP) program viszonteladóján keresztül létrehozott előfizetésekkel.
 
 ## <a name="publish-your-offer"></a>Ajánlat közzététele
 

@@ -6,12 +6,12 @@ ms.author: magoedte
 ms.topic: conceptual
 ms.date: 07/09/2020
 ms.subservice: ''
-ms.openlocfilehash: a7ff659eb6fc204208c84146a2fc33c8278f7154
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: c81d9774dccf8c02d2eab7b1ebbb69e6671869e8
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207285"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423796"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-automation-preview"></a>Hálózatok biztonságos csatlakoztatása az Azure privát hivatkozásával Azure Automation (előzetes verzió)
 
@@ -85,7 +85,7 @@ Ebben a szakaszban egy privát végpontot fog létrehozni az Automation-fiókhoz
     | Előfizetés | Válassza ki előfizetését. |
     | Erőforráscsoport | Válassza a **myResourceGroup**lehetőséget. Ezt az előző szakaszban hozta létre.  |
     | **PÉLDÁNY RÉSZLETEI** |  |
-    | Név | Adja meg a *PrivateEndpoint*. |
+    | Name | Adja meg a *PrivateEndpoint*. |
     | Régió | Válassza a **YourRegion**lehetőséget. |
     |||
 
@@ -116,7 +116,7 @@ Ebben a szakaszban egy privát végpontot fog létrehozni az Automation-fiókhoz
     |saját DNS zóna |Select *(New) privatelink. Azure – Automation.net* |
     |||
 
-8. Válassza az **Áttekintés + létrehozás** lehetőséget. A **felülvizsgálat + létrehozás** oldalon az Azure ellenőrzi a konfigurációt.
+8. Válassza a **Felülvizsgálat és létrehozás** lehetőséget. A **felülvizsgálat + létrehozás** oldalon az Azure ellenőrzi a konfigurációt.
 
 9. Amikor megjelenik az **átadott üzenet ellenőrzése** lehetőség, válassza a **Létrehozás**lehetőséget.
 
@@ -132,15 +132,15 @@ Ha a szolgáltatás felhasználója rendelkezik RBAC engedélyekkel az Automatio
 
 ## <a name="set-public-network-access-flags"></a>Nyilvános hálózati hozzáférési jelzők beállítása
 
-Beállíthat egy Automation-fiókot az összes nyilvános konfiguráció megtagadásához, és a hálózati biztonság növelése érdekében csak privát végpontokon keresztüli kapcsolatokat engedélyezhet. Ha az Automation-fiókhoz való hozzáférést csak a VNet belül szeretné korlátozni, és nem engedélyezi a hozzáférést a nyilvános internetről, a tulajdonságot beállíthatja a következőre: `publicNetworkAccess` `$true` .
+Beállíthat egy Automation-fiókot az összes nyilvános konfiguráció megtagadásához, és a hálózati biztonság növelése érdekében csak privát végpontokon keresztüli kapcsolatokat engedélyezhet. Ha az Automation-fiókhoz való hozzáférést csak a VNet belül szeretné korlátozni, és nem engedélyezi a hozzáférést a nyilvános internetről, a tulajdonságot beállíthatja a következőre: `publicNetworkAccess` `$false` .
 
-Ha a **nyilvános hálózati hozzáférés megtagadása** beállítás értéke `true` , csak a magánhálózati végpontokon keresztüli kapcsolatok engedélyezettek, és az összes nyilvános végponton keresztüli kapcsolat elutasítása hibaüzenetet kap.
+Ha a **nyilvános hálózati hozzáférés** beállítás értéke `$false` , csak a magánhálózati végpontokon keresztüli kapcsolatok engedélyezettek, és az összes nyilvános végponton keresztüli kapcsolat megtagadva egy unathorized hibaüzenettel és a 401-es http-állapottal. 
 
 A következő PowerShell-szkript bemutatja, hogyan `Get` és `Set` a **nyilvános hálózati hozzáférés** tulajdonságot az Automation-fiók szintjén:
 
 ```powershell
 $account = Get-AzResource -ResourceType Microsoft.Automation/automationAccounts -ResourceGroupName "<resourceGroupName>" -Name "<automationAccountName>" -ApiVersion "2020-01-13-preview"
-$account.Properties | Add-Member -Name 'publicNetworkAccess' -Type NoteProperty -Value $true
+$account.Properties | Add-Member -Name 'publicNetworkAccess' -Type NoteProperty -Value $false
 $account | Set-AzResource -Force -ApiVersion "2020-01-13-preview"
 ```
 
@@ -160,6 +160,6 @@ A következő beállításokkal konfigurálhatja a magánhálózati végpontok D
 
 További információ: [Azure Private Endpoint DNS-konfiguráció](../../private-link/private-endpoint-dns.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a privát végpontról: [Mi az az Azure Private Endpoint?](../../private-link/private-endpoint-overview.md).

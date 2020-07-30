@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 06/21/2018
 ms.author: allensu
-ms.openlocfilehash: 702ea4e76f1fb13a3c7935f131da4ef11d369813
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d716b026159311c12341c30a8c32d5a9ecc6fa3f
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87002998"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432742"
 ---
 # <a name="using-azure-cdn-with-sas"></a>A Azure CDN használata SAS használatával
 
@@ -96,7 +96,7 @@ Ez a beállítás csak a **Verizon-profilokból származó Azure CDN Premium** e
    `https://sasstoragedemo.azureedge.net/container1/demo.jpg`
        
 
-3. A gyorsítótár időtartamának finomhangolásához használja a gyorsítótárazási szabályokat, vagy adja hozzá `Cache-Control` a fejléceket a forráskiszolgálón. Mivel a Azure CDN egyszerű lekérdezési karakterláncként kezeli az SAS-tokent, ajánlott eljárásként olyan gyorsítótárazási időtartamot kell beállítania, amely a SAS lejárati idején vagy azt megelőzően lejár. Ellenkező esetben, ha egy fájl gyorsítótárazása hosszabb ideig tart, mint az SAS aktív, előfordulhat, hogy a fájl elérhető lesz a Azure CDN a forráskiszolgáló lejárati idejének lejárta után. Ha ez a helyzet bekövetkezik, és a gyorsítótárazott fájl nem érhető el, el kell végeznie egy törlési műveletet a fájlon, hogy törölje azt a gyorsítótárból. A gyorsítótár időtartamának Azure CDNon való beállításával kapcsolatos további információkért lásd: [Azure CDN gyorsítótárazási viselkedés szabályozása gyorsítótárazási szabályokkal](cdn-caching-rules.md).
+3. A gyorsítótár időtartamának finomhangolásához használja a gyorsítótárazási szabályokat, vagy adja hozzá `Cache-Control` a fejléceket a forráskiszolgálón. Mivel a Azure CDN egyszerű lekérdezési karakterláncként kezeli az SAS-tokent, ajánlott eljárásként olyan gyorsítótárazási időtartamot kell beállítania, amely a SAS lejárati idején vagy azt megelőzően lejár. Ellenkező esetben, ha egy fájl gyorsítótárazása hosszabb ideig tart, mint az SAS aktív, előfordulhat, hogy a fájl elérhető lesz a Azure CDN végpontból, miután a SAS lejárati ideje eltelt. Ha ez a helyzet bekövetkezik, és a gyorsítótárazott fájl nem érhető el, el kell végeznie egy törlési műveletet a fájlon, hogy törölje azt a gyorsítótárból. A gyorsítótár időtartamának Azure CDNon való beállításával kapcsolatos további információkért lásd: [Azure CDN gyorsítótárazási viselkedés szabályozása gyorsítótárazási szabályokkal](cdn-caching-rules.md).
 
 ### <a name="option-3-using-cdn-security-token-authentication-with-a-rewrite-rule"></a>3. lehetőség: a CDN biztonsági jogkivonat hitelesítésének használata Újraírási szabállyal
 
@@ -141,7 +141,7 @@ Mivel a SAS-paraméterek nem láthatók a Azure CDN számára, Azure CDN a ráju
 | Engedélyezett IP-címek | Választható. Ha a **verizon Azure CDNt**használja, ezt a paramétert beállíthatja a [Verizon Edge Server IP-címtartományok Azure CDN](/azure/cdn/cdn-pop-list-api)által meghatározott tartományokra. Ha **Azure CDNt**használ a Akamai-ból, az IP-címtartományok paraméter nem állítható be, mert az IP-címek nem statikusak.|
 | Engedélyezett protokollok | A fiók SAS-fiókjával végzett kérelem számára engedélyezett protokoll (ok). A HTTPS-beállítás ajánlott.|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az SAS-vel kapcsolatos további információkért tekintse meg a következő cikkeket:
 - [Közös hozzáférésű jogosultságkódok (SAS) használata](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)

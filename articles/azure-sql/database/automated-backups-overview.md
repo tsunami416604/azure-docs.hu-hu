@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 ms.date: 07/20/2020
-ms.openlocfilehash: 0eea1b696d8eae8606c0b6009f248a215d12db57
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ed3f23b13920a9c3220a030059fdc8471f350d28
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86515118"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87428219"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>Automatikus biztonsági mentések – Azure SQL Database & SQL felügyelt példánya
 
@@ -161,6 +161,9 @@ A biztonsági másolatok tárolási költségeinek megismeréséhez lépjen a **
 Adjon hozzá egy szűrőt a **szolgáltatás neveként**, majd válassza az **SQL Database** elemet a legördülő listából. A **mérési alkategória** szűrővel válassza ki a szolgáltatás számlázási számlálóját. Önálló adatbázis vagy rugalmas adatbázis-készlet esetén válassza a **pitr egy-egy vagy rugalmas készletet**. Felügyelt példány esetén válassza a **mi pitr biztonsági mentési tár**lehetőséget. A **tárolási** és a **számítási** alkategóriák is hasznosak lehetnek, de nem a biztonsági másolatok tárolási költségeihez vannak társítva.
 
 ![A biztonsági mentési tár költséghatékonyságának elemzése](./media/automated-backups-overview/check-backup-storage-cost-sql-mi.png)
+
+  >[!NOTE]
+  > A mérőórák csak a jelenleg használatban lévő számlálók számára láthatók. Ha a számláló nem érhető el, akkor valószínű, hogy a kategória jelenleg nincs használatban. Például a felügyelt példányok számlálói nem lesznek jelen azon ügyfelek számára, akik nem rendelkeznek felügyelt példánnyal. Hasonlóképpen, a tárolási számlálók nem lesznek láthatók a tárolót nem használó erőforrások esetében. 
 
 ## <a name="encrypted-backups"></a>Titkosított biztonsági másolatok
 

@@ -8,12 +8,13 @@ ms.author: normesta
 ms.reviewer: dineshm
 ms.date: 05/14/2020
 ms.subservice: blobs
-ms.openlocfilehash: ccad51d18a5e76f68633103af64e9ba6cc3f19c0
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.custom: devx-track-javascript
+ms.openlocfilehash: b8864201fc5bf86a5451c790a51141cee46bffeb
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203366"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432508"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Statikus webhely üzemeltetés az Azure Storage-ban
 
@@ -107,13 +108,13 @@ Ha fejléceket kíván használni a gyorsítótárazás vezérléséhez, tekints
 
 A statikus webhelyek üzemeltetése díjmentesen engedélyezhető. Csak a hely által használt BLOB Storage-hoz és az üzemeltetési költségekhez kell fizetnie. Az Azure Blob Storage áraival kapcsolatos további információkért tekintse meg az [azure blob Storage díjszabási oldalát](https://azure.microsoft.com/pricing/details/storage/blobs/).
 
-## <a name="metrics"></a>Metrikák
+## <a name="metrics"></a>Mérőszámok
 
 A metrikák a statikus webhelyek oldalain is engedélyezhetők. A metrikák engedélyezése után a **$web** tárolóban található fájlokra vonatkozó forgalmi statisztikát a metrikák irányítópultján kell jelenteni.
 
 A mérőszámok statikus webhely oldalain való engedélyezéséhez tekintse [meg a metrikák engedélyezése statikus webhelyeken](storage-blob-static-website-how-to.md#metrics)című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Statikus webhely üzemeltetése az Azure Storage-ban](storage-blob-static-website-how-to.md)
 * [Egyéni tartomány leképezése egy Azure Blob Storage-végpontra](storage-custom-domain-name.md)

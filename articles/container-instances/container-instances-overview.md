@@ -4,18 +4,18 @@ description: A Azure Container Instances szolgáltatás az elkülönített táro
 ms.topic: overview
 ms.date: 04/25/2019
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 261e5d0159b4201aab0e8aad1e05fa320cc76a14
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 572557860f5d715d6c708acb640acc24e1dd4a35
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259503"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87424154"
 ---
 # <a name="what-is-azure-container-instances"></a>Mi az az Azure Container Instances?
 
 Egyre többen használják a tárolókat felhőalapú alkalmazások csomagolásához, üzembe helyezéséhez és felügyeletéhez. Az Azure Container Instances a tárolók Azure-ban való futtatásának leggyorsabb és legegyszerűbb módját nyújtja anélkül, hogy virtuális gépeket kellene kezelnie vagy magasabb szintű szolgáltatást kellene alkalmaznia.
 
-Az Azure Container Instances ideális megoldás minden olyan forgatókönyv esetében, amely elkülönített tárolókban valósulhat meg, beleértve az egyszerű alkalmazásokat, a tevékenységek automatizálását és a buildfeladatokat. Az olyan forgatókönyvek esetében, amelyekhez teljes mértékű tárolóvezénylés szükséges, beleértve a több tárolón végzett szolgáltatásészlelést, az automatikus skálázást és az alkalmazások koordinált frissítését, az [Azure Kubernetes Service (AKS)](../aks/index.yml) használatát javasoljuk.
+Az Azure Container Instances ideális megoldás minden olyan forgatókönyv esetében, amely elkülönített tárolókban valósulhat meg, beleértve az egyszerű alkalmazásokat, a tevékenységek automatizálását és a buildfeladatokat. Olyan forgatókönyvek esetén, ahol teljes tároló-előkészítésre van szükség, beleértve a szolgáltatások felderítését több tárolóban, az automatikus skálázást és az alkalmazások koordinált frissítését, javasoljuk, hogy az [Azure Kubernetes Service (ak) szolgáltatást](../aks/index.yml).
 
 ## <a name="fast-startup-times"></a>Rövid indítási idők
 
@@ -68,7 +68,7 @@ Az Azure Container Instances támogatja az olyan [több tárolóból álló csop
 
 ## <a name="virtual-network-deployment"></a>Virtuális hálózat központi telepítése
 
-Az Azure-régiók egy részében jelenleg az éles számítási feladatokhoz érhető el, Azure Container Instances ez a szolgáltatás lehetővé teszi [a Container instances üzembe helyezését egy Azure-beli virtuális hálózatban](container-instances-vnet.md). Ha a tárolópéldányokat a virtuális hálózat egyik alhálózatában helyezi üzembe, biztonságosan tudnak majd kommunikálni a virtuális hálózat más erőforrásaival, így a helyszíniekkel is (a [VPN Gateway-en](../vpn-gateway/vpn-gateway-about-vpngateways.md) vagy az [ExpressRoute-on](../expressroute/expressroute-introduction.md) keresztül).
+Azure Container Instances lehetővé teszi [a Container instances üzembe helyezését egy Azure-beli virtuális hálózatban](container-instances-vnet.md). A virtuális hálózatban lévő alhálózatba való üzembe helyezéskor a tároló példányai biztonságosan kommunikálhatnak a virtuális hálózatban lévő más erőforrásokkal, beleértve a helyszíni ( [VPN-átjárón](../vpn-gateway/vpn-gateway-about-vpngateways.md) vagy [ExpressRoute](../expressroute/expressroute-introduction.md)) keresztül elérhető erőforrásokat is.
 
 ## <a name="next-steps"></a>Következő lépések
 

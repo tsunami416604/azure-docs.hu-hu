@@ -5,23 +5,24 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/13/2020
 ms.topic: how-to
-ms.openlocfilehash: 90653db4c572877a728964851a99beebf2e823a4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2e9cb216c100f1732230a90572284bd3f8462584
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80681479"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87433146"
 ---
 # <a name="override-materials-during-model-conversion"></a>Anyagok felülírása a modellátalakítás során
 
-Az átalakítás során a rendszer a forrás modell anyag-beállításait használja a megjelenítő által használt [pbr-anyagok](../../overview/features/pbr-materials.md) definiálásához.
+A forrás modell anyag-beállításai a megjelenítő által használt pbr- [anyagok](../../overview/features/pbr-materials.md) meghatározására szolgálnak.
 Előfordulhat, hogy az [alapértelmezett konverzió](../../reference/material-mapping.md) nem adja meg a kívánt eredményeket, és módosítania kell a módosításokat.
 Ha egy modellt az Azure Remote rendering szolgáltatásban való használatra konvertál, megadhat egy anyag-felülbírálási fájlt, amellyel testreszabhatja, hogy a rendszer milyen módon végezze el az anyag-átalakítást.
 A [modell átalakításának konfigurálásáról](configure-model-conversion.md) szóló szakasz útmutatást nyújt az anyag felülbírálási fájlnevének deklarálása során.
 
 ## <a name="the-override-file-used-during-conversion"></a>Az átalakítás során használt felülbírálási fájl
 
-Egyszerű Példaként tegyük fel, hogy egy box-modell egyetlen, "default" nevű anyagot tartalmaz. A albedó színét az ARR-ben való használatra kell beállítani.
+Egyszerű Példaként tegyük fel, hogy egy box-modell egyetlen, "default" nevű anyagot tartalmaz.
+Emellett tegyük fel, hogy a albedó színét az ARR-ben való használathoz módosítani kell.
 Ebben az esetben a `box_materials_override.json` következő módon hozhat létre egy fájlt:
 
 ```json
@@ -38,7 +39,7 @@ Ebben az esetben a `box_materials_override.json` következő módon hozhat létr
 ]
 ```
 
-A `box_materials_override.json` fájlt a rendszer a bemeneti tárolóba helyezi, a `ConversionSettings.json` pedig a mellé kerül `box.fbx` , amely megadja, hogy hol található a felülbírálási fájl (lásd: [a modell átalakításának konfigurálása](configure-model-conversion.md)):
+A `box_materials_override.json` fájlt a rendszer a bemeneti tárolóba helyezi, a `box.ConversionSettings.json` pedig a mellé kerül `box.fbx` , amely megadja, hogy hol található a felülbírálási fájl (lásd: [a modell átalakításának konfigurálása](configure-model-conversion.md)):
 
 ```json
 {
@@ -51,7 +52,7 @@ A modell átalakításakor az új beállítások lesznek érvényesek.
 ### <a name="color-materials"></a>Színes anyagok
 
 A [színanyag](../../overview/features/color-materials.md) modell egy állandóan árnyékolt felületet ír le, amely független a megvilágítástől.
-Ez a photogrammetry algoritmusok által készített eszközök esetében hasznos, például:.
+A színanyagok a photogrammetry algoritmusok által készített eszközök esetében hasznosak, például:.
 Az anyag-felülbírálási fájlokban egy anyag beállítható úgy, hogy a következőre van beállítva: `unlit` `true` .
 
 ```json
@@ -170,7 +171,7 @@ Az anyagokhoz tartozó fájlok teljes JSON-sémája itt van megadva. A és a ese
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Színes anyagok](../../overview/features/color-materials.md)
 * [PBR-anyagok](../../overview/features/pbr-materials.md)

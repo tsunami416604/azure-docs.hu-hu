@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/08/2019
 ms.author: robinsh
-ms.openlocfilehash: 496b890cc49b6b6b9f15213a48472447f801b1c9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aef468d919e6f09722045f98c68383785d10b137
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76045115"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423082"
 ---
 # <a name="azure-iot-device-sdks-platform-support"></a>Azure IoT Device SDK-platform támogatása
 
@@ -124,7 +124,7 @@ Ha nem tudja használni az IoT Hub eszköz SDK-kat, közvetlenül is csatlakozha
 
 ## <a name="support-and-other-resources"></a>Támogatás és egyéb forrásanyagok
 
-Ha problémák merülnek fel az Azure IoT-eszközök SDK-k használata során, többféleképpen is kérhet támogatást. Kipróbálhatja a következő csatornák egyikét:
+Ha az Azure IoT Device SDK-k használata során problémákba ütközik, többféleképpen is megkeresheti az alább összefoglalt támogatást. Az összes támogatási lehetőségről az [Azure IoT támogatási és súgójában](https://aka.ms/iothelp)talál további információt. 
 
 **Hibajelentések** – az eszköz SDK-k hibáit a megfelelő GitHub-projekt problémák lapján lehet jelenteni. Gyorsan megtörténik a javítások a projektből a termékek frissítéseibe való beüzemelése.
 
@@ -138,11 +138,13 @@ Ha problémák merülnek fel az Azure IoT-eszközök SDK-k használata során, t
 
 * [Azure IoT Hub Python SDK-problémák](https://github.com/Azure/azure-iot-sdk-python/issues)
 
+**Technikai kérdések** – technikai kérdéseket tehet fel mind a [Microsoft Q&a](https://docs.microsoft.com/answers/topics/azure-iot-sdk.html) , mind a [stack overflow](https://stackoverflow.com/questions/tagged/azure-iot-sdk) az *Azure-IOT-SDK*címke használatával.
+
 A **Microsoft ügyfélszolgálati csapata** – a [támogatási csomaggal](https://azure.microsoft.com/support/plans/) rendelkező felhasználók a Microsoft ügyfélszolgálati csapatával új támogatási kérést hozhatnak létre közvetlenül a [Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
 
 **Szolgáltatásra vonatkozó kérelmek** – az Azure IoT szolgáltatásra vonatkozó kérelmeket a termék [felhasználói hangja oldalon](https://feedback.azure.com/forums/321918-azure-iot)követheti nyomon.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Eszköz és szolgáltatás SDK-k](iot-hub-devguide-sdks.md)
 * [A Porting útmutatója](https://github.com/Azure/azure-c-shared-utility/blob/master/devdoc/porting_guide.md)

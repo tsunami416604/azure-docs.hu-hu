@@ -6,12 +6,13 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
 ms.date: 04/20/2020
-ms.openlocfilehash: 85eaa04836774b838da67e073017f4af3d2fe179
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 56fd644e43b704eced4f5a97b82e4b07ab1b4db9
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81726486"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87424085"
 ---
 # <a name="playback-technology-tech"></a>Lejátszási technológia ("Tech") #
 
@@ -25,7 +26,7 @@ A lejátszási technológia a videó vagy Hang lejátszásához használt konkr�
 
 ## <a name="tech-order"></a>Technikai sorrend ##
 
-Annak biztosítása érdekében, hogy az eszköz a legkülönbözőbb eszközökön legyen lejátszható, a következő technikai sorrend ajánlott, és az alapértelmezett, ha: `techOrder: ["azureHtml5JS", "flashSS", "html5FairPlayHLS","silverlightSS", "html5"]` , és a beállításokban közvetlenül a `<video>` vagy a programozott módon is beállítható:
+Annak biztosítása érdekében, hogy az eszköz a legkülönbözőbb eszközökön legyen lejátszható, a következő technikai sorrend ajánlott, és az alapértelmezett, ha: `techOrder: ["azureHtml5JS", "flashSS", "html5FairPlayHLS","silverlightSS", "html5"]` , és a beállításokban közvetlenül a vagy a programozott módon is beállítható `<video>` :
 
 `<video data-setup='{"techOrder": ["azureHtml5JS", "flashSS", "html5FairPlayHLS, "silverlightSS", "html5"]}`
 
@@ -68,6 +69,6 @@ Az ajánlott technikai sorrend az Azure Media Services-ból származó tartalom 
 > [!NOTE]
 > Ha a várt technikai beállításhoz egy beépülő modult kell telepíteni, például a Flash-t, amely nincs telepítve a felhasználó számítógépén, az AMP továbbra is a következő Tech képességeit fogja ellenőriznie a forrás típusaival és a védelmi információkkal együtt a tech listáról. Ha például egy nem védett, igény szerinti adatfolyamot próbál meg megtekinteni a Safari 8-as verziójában az OS X Yosemite-on, és a Flash és a Silverlight is nincs telepítve, az AMP a natív Html5 Tech for lejátszást fogja kiválasztani.<br/><br/>Az új böngésző-technológiák naponta jelentkeznek, és ez hatással lehet erre a mátrixra.
 
-## <a name="next-steps"></a>További lépések ##
+## <a name="next-steps"></a>Következő lépések ##
 
 - [Azure Media Player rövid útmutató](azure-media-player-quickstart.md)

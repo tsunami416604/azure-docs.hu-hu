@@ -1,25 +1,26 @@
 ---
 title: Azure Storage-minták JavaScript használatával | Microsoft Docs
-description: Mintakód és alkalmazások megtekintése, letöltése és futtatása az Azure Storage-ban. A JavaScript/Node. js Storage ügyféloldali kódtárak használatával megismerheti a Blobok, várólisták, táblák és fájlok első lépéseket bemutató mintáit.
+description: Mintakód és alkalmazások megtekintése, letöltése és futtatása az Azure Storage-ban. A JavaScript/Node.js Storage ügyféloldali kódtárak használatával megismerheti a Blobok, várólisták, táblák és fájlok első lépéseket bemutató mintáit.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 02/19/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: 1d6b4d37a3d7c4accc3e407fb6cf841600ac1c16
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 466a1318dbe0a9299eebb9259ef8e0fe9bbbc0e7
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77485845"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87433083"
 ---
 # <a name="azure-storage-samples-using-v12-javascript-client-libraries"></a>Azure Storage-minták a V12-es JavaScript ügyféloldali kódtárak használatával
 
 A következő táblázatok áttekintést nyújtanak a minták tárházáról és az egyes mintákban szereplő forgatókönyvekről. A hivatkozásokra kattintva megtekintheti a megfelelő mintakód-kódot a GitHubon.
 
 > [!NOTE]
-> Ezek a minták a legújabb Azure Storage JavaScript V12 könyvtárat használják. Örökölt v11-kódok: [első lépések az Azure Blob Service-ben](https://github.com/Azure-Samples/storage-blob-node-getting-started) a GitHub-tárházban a Node. js-ben.
+> Ezek a minták a legújabb Azure Storage JavaScript V12 könyvtárat használják. Az örökölt v11-kódokért lásd: [első lépések az Azure Blob Service-ben Node.js](https://github.com/Azure-Samples/storage-blob-node-getting-started) a GitHub-tárházban.
 
 ## <a name="blob-samples"></a>BLOB-minták
 
@@ -304,7 +305,7 @@ A következő táblázatok áttekintést nyújtanak a minták tárházáról és
    :::column-end:::
 :::row-end:::
 
-### <a name="queue"></a>Várólista
+### <a name="queue"></a>Üzenetsor
 
 :::row:::
    :::column span="":::
@@ -420,7 +421,7 @@ A következő útmutatókból megtudhatja, hogyan telepítheti az Azure Storage 
 * [Első lépések az Azure üzenetsor-kezelési szolgáltatással a JavaScriptben](../queues/storage-quickstart-queues-nodejs.md)
 * [Első lépések az Azure Table Service-szel a JavaScriptben](../../cosmos-db/table-storage-how-to-use-nodejs.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a mintákról más nyelveken:
 

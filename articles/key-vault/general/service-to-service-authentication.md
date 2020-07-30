@@ -9,17 +9,17 @@ ms.date: 06/30/2020
 ms.topic: conceptual
 ms.service: key-vault
 ms.subservice: general
-ms.openlocfilehash: 83c4a48f8c177cf84078966bae32126102b45c3b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: bfbe67c20fdec292dca0d6e07a05f2ff27637396
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86521020"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87427979"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>Szolgáltatások közötti hitelesítés Azure Key Vault .NET használatával
 
 > [!NOTE]
-> A cikkben dokumentált hitelesítési módszerek már nem tekinthetők az ajánlott eljárásoknak. Javasoljuk, hogy fogadja el a frissített hitelesítési módszereket a [Azure Key Vault való hitelesítéshez](authentication.md).
+> A **Microsoft. Azure. Services. AppAuthentication** elavult. A rendszer felváltotta az új Azure Identity Library **DefaultAzureCredentials** .net-, Java-, írógéppel-és Python-szolgáltatásokhoz, és minden új fejlesztéshez használható. További információt itt talál: [hitelesítés és az Azure SDK](https://azure.github.io/azure-sdk/posts/2020-02-25/defaultazurecredentials.html).
 
 A Azure Key Vault való hitelesítéshez szüksége van egy Azure Active Directory (Azure AD) hitelesítő adatra, vagy egy közös titkos kulcsra vagy egy tanúsítványra.
 

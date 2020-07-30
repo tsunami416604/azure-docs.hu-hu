@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 07/20/2020
 ms.author: absha
-ms.openlocfilehash: 892ace66c4994f4c2e263d529d69e505ed9c1c1f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 20d1dfea251fdfd0bd6e8432d1ea0c7af7284cb5
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87068019"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87428180"
 ---
 # <a name="application-gateway-configuration-overview"></a>Application Gateway konfiguráció áttekintése
 
@@ -55,7 +55,7 @@ Application Gateway a hálózati biztonsági csoportok (NSG-EK) támogatottak. V
   - Ne távolítsa el az alapértelmezett kimenő szabályokat.
   - Ne hozzon létre más kimenő szabályokat, amelyek megtagadják a kimenő kapcsolatokat.
 
-- A **AzureLoadBalancer** címkétől érkező forgalmat engedélyezni kell.
+- A **AzureLoadBalancer** címke és a célként megadott alhálózat közötti forgalomnak engedélyezettnek **kell** lennie.
 
 #### <a name="allow-application-gateway-access-to-a-few-source-ips"></a>Application Gateway hozzáférés engedélyezése néhány forrás IP-cím számára
 
@@ -74,7 +74,7 @@ Ebben a forgatókönyvben a Application Gateway alhálózat NSG használja. A k�
 
 - **v1**
 
-   A v1 SKU esetében a felhasználó által megadott útvonalak (UDR-EK) a Application Gateway alhálózat esetében támogatottak, feltéve, hogy nem változtatják meg a végpontok közötti kérés/válasz kommunikációt. Beállíthat például egy UDR a Application Gateway alhálózatban úgy, hogy egy tűzfal-berendezésre mutasson a csomagok ellenőrzéséhez. Azonban győződjön meg arról, hogy a csomag a vizsgálat után is elérheti a kívánt célját. Ennek elmulasztása helytelen állapot-mintavételi vagy forgalom-útválasztási viselkedést eredményezhet. Ebbe beletartoznak a megtanult útvonalak vagy az alapértelmezett 0.0.0.0/0 útvonalak, amelyeket a virtuális hálózat Azure ExpressRoute vagy VPN-átjárói továbbítanak.
+   A v1 SKU esetében a felhasználó által megadott útvonalak (UDR-EK) a Application Gateway alhálózat esetében támogatottak, feltéve, hogy nem változtatják meg a végpontok közötti kérés/válasz kommunikációt. Beállíthat például egy UDR a Application Gateway alhálózatban úgy, hogy egy tűzfal-berendezésre mutasson a csomagok ellenőrzéséhez. Azonban győződjön meg arról, hogy a csomag a vizsgálat után is elérheti a kívánt célját. Ennek elmulasztása helytelen állapot-mintavételi vagy forgalom-útválasztási viselkedést eredményezhet. Ebbe beletartoznak a megtanult útvonalak vagy az alapértelmezett 0.0.0.0/0 útvonalak, amelyeket a virtuális hálózat Azure ExpressRoute vagy VPN-átjárói továbbítanak. Ha a rendszer a 0.0.0.0/0 helyszíni (kényszerített bújtatást használó) átirányítását végzi, a v1 nem támogatja a helyzetet.
 
 - **v2**
 
@@ -279,7 +279,7 @@ További információ az átirányítással kapcsolatban:
 - [Forgalom átirányítása egy külső helyre a PowerShell használatával](redirect-external-site-powershell.md)
 - [Forgalom átirányítása egy külső helyre a parancssori felület használatával](redirect-external-site-cli.md)
 
-### <a name="rewrite-http-headers-and-url"></a>HTTP-fejlécek és URL-cím újraírása
+### <a name="rewrite-http-headers-and-url"></a>HTTP-fejlécek és URL átírása
 
 Az Újraírási szabályok használatával a HTTP (S) kérések és válaszok fejléceit, valamint az URL-cím és a lekérdezési karakterlánc paramétereit is hozzáadhatja, eltávolíthatja vagy frissítheti, mivel a kérelmek és válaszok csomagjai az Application Gateway segítségével az ügyfél és a háttérbeli készletek között mozognak.
 
@@ -395,7 +395,7 @@ Az Application Gateway alapértelmezés szerint figyeli az összes erőforrás �
 > [!NOTE]
 > Az egyéni állapotú mintavétel létrehozása után hozzá kell rendelnie azt egy háttérbeli HTTP-beállításhoz. Az egyéni mintavétel nem figyeli a háttér-készlet állapotát, kivéve, ha a megfelelő HTTP-beállítás explicit módon van társítva egy figyelővel egy szabály használatával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy már ismeri a Application Gateway összetevőket, a következőket teheti:
 

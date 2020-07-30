@@ -7,12 +7,13 @@ ms.custom:
 - seo-python-october2019
 - seodec18
 - mvc
-ms.openlocfilehash: e5cad7d9141963e5062423545f7e5b94f0575152
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+- devx-track-javascript
+ms.openlocfilehash: 88d051d980f905ae241200b29f4e79d76461c116
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78252187"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87408033"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-cli"></a>Gyors útmutató: tároló-példány üzembe helyezése az Azure-ban az Azure CLI használatával
 
@@ -22,13 +23,13 @@ Ebben a rövid útmutatóban az Azure CLI használatával telepít egy elkülön
 
 ![Böngészőbe Azure Container Instances üzembe helyezett alkalmazás megtekintése][aci-app-browser]
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot][azure-account] .
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot][azure-account], mielőtt hozzákezd.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 A rövid útmutató teljesítéséhez használhatja az Azure Cloud Shellt vagy az Azure CLI helyileg telepített példányát. Ha helyileg szeretné használni, a 2.0.55 vagy újabb verzió használata javasolt. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli-install].
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Az Azure Container Instancest – mint minden Azure-erőforrást – egy erőforráscsoportban kell üzembe helyezni. Az erőforráscsoportok lehetővé teszik az egymáshoz kapcsolódó Azure-erőforrások rendszerezését és kezelését.
 
@@ -40,11 +41,11 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-a-container"></a>Tároló létrehozása
 
-Most, hogy rendelkezik egy erőforráscsoporttal, futtathat egy tárolót az Azure-ban. Egy tárolópéldány Azure CLI-vel való létrehozásához adjon meg egy erőforráscsoport-nevet, egy tárolópéldánynevet és egy Docker-tárolórendszerképet az [az container create][az-container-create] parancsban. Ebben a rövid útmutatóban a nyilvános `mcr.microsoft.com/azuredocs/aci-helloworld` rendszerképet használhatja. Ez a rendszerkép egy statikus HTML-oldalt kiszolgáló, Node. js-ben írt kisméretű webalkalmazást csomagol.
+Most, hogy rendelkezik egy erőforráscsoporttal, futtathat egy tárolót az Azure-ban. Egy tárolópéldány Azure CLI-vel való létrehozásához adjon meg egy erőforráscsoport-nevet, egy tárolópéldánynevet és egy Docker-tárolórendszerképet az [az container create][az-container-create] parancsban. Ebben a rövid útmutatóban a nyilvános `mcr.microsoft.com/azuredocs/aci-helloworld` rendszerképet használhatja. Ez a rendszerkép egy olyan kisméretű webalkalmazást csomagol, amely a statikus HTML-lapokat Node.js.
 
 Közzéteheti a tárolókat az interneten egy vagy több port megnyitásával, egy DNS-névcímke megadásával, vagy mindkettővel. Ebben a rövid útmutatóban egy DNS-név címkével rendelkező tárolót helyez üzembe, hogy a webalkalmazás nyilvánosan elérhető legyen.
 
-Egy tároló-példány elindításához a következőhöz hasonló parancsot kell végrehajtania. Olyan `--dns-name-label` értéket állítson be, amely egyedi azon az Azure-régión belül, ahol létrehozza a példányt. Ha „DNS-névcímke nem érhető el” hibaüzenetet kap, próbálkozzon másik DNS-névcímkével.
+Egy tároló-példány elindításához a következőhöz hasonló parancsot kell végrehajtania. Olyan értéket állítson be `--dns-name-label` , amely egyedi azon az Azure-régión belül, ahol létrehozza a példányt. Ha „DNS-névcímke nem érhető el” hibaüzenetet kap, próbálkozzon másik DNS-névcímkével.
 
 ```azurecli-interactive
 az container create --resource-group myResourceGroup --name mycontainer --image mcr.microsoft.com/azuredocs/aci-helloworld --dns-name-label aci-demo --ports 80
@@ -140,7 +141,7 @@ Ha végzett a *myResourceGroup* erőforráscsoporttal és az abban lévő erőfo
 az group delete --name myResourceGroup
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozott egy Azure Container-példányt egy nyilvános Microsoft-rendszerkép használatával. Ha szeretne létrehozni és üzembe helyezni egy tárolórendszerképet egy privát Azure-tárolóregisztrációs adatbázisból, lépjen tovább az Azure Container Instances oktatóanyagára.
 

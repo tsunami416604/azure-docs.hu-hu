@@ -1,17 +1,14 @@
 ---
 title: Azure Functions integrálása Azure-beli virtuális hálózattal
 description: Lépésenkénti oktatóanyag, amely bemutatja, hogyan csatlakoztatható egy függvény egy Azure-beli virtuális hálózathoz
-author: alexkarcher-msft
 ms.topic: article
 ms.date: 4/23/2020
-ms.author: alkarche
-ms.reviewer: glenga
-ms.openlocfilehash: e1babfa188a29e79cb52cd14af19d552123345f1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f50c923104fdfcf26f400f20f0de66a82eb3d245
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83122668"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387523"
 ---
 # <a name="tutorial-integrate-functions-with-an-azure-virtual-network"></a>Oktatóanyag: függvények integrálása Azure-beli virtuális hálózattal
 
@@ -75,7 +72,7 @@ Következő lépésként hozzon létre egy előre konfigurált virtuális GÉPET
 
     | Beállítás      | Ajánlott érték  | Leírás      |
     | ------------ | ---------------- | ---------------- |
-    | **Name (Név)** | myResourceGroup – vnet | A virtuális hálózathoz generált alapértelmezett nevet használhatja. |
+    | **Név** | myResourceGroup – vnet | A virtuális hálózathoz generált alapértelmezett nevet használhatja. |
     | **Címtartomány** | 10.10.0.0/16 | Használjon egyetlen címtartományt a virtuális hálózathoz. |
     | **Alhálózat neve** | Oktatóanyag – net | Az alhálózat neve. |
     | **Címtartomány** (alhálózat) | 10.10.1.0/24   | Az alhálózat mérete határozza meg, hogy hány csatolót lehet hozzáadni az alhálózathoz. Ezt az alhálózatot a WordPress webhely használja.  Az `/24` alhálózat 254 gazdagép-címet biztosít. |
@@ -86,7 +83,7 @@ Következő lépésként hozzon létre egy előre konfigurált virtuális GÉPET
 
 1. Válassza a **felügyelet** fület, majd a **diagnosztika Storage-fiók**területen válassza ki a Function alkalmazással létrehozott Storage-fiókot.
 
-1. Válassza az **Áttekintés + létrehozás** lehetőséget. Az érvényesítés befejezése után válassza a **Létrehozás**lehetőséget. A virtuális gép létrehozási folyamata néhány percet vesz igénybe. A létrehozott virtuális gép csak a virtuális hálózat elérésére használható.
+1. Válassza a **Felülvizsgálat és létrehozás** lehetőséget. Az érvényesítés befejezése után válassza a **Létrehozás**lehetőséget. A virtuális gép létrehozási folyamata néhány percet vesz igénybe. A létrehozott virtuális gép csak a virtuális hálózat elérésére használható.
 
 1. A virtuális gép létrehozása után válassza az **erőforrás keresése** lehetőséget az új virtuális gép oldalának megtekintéséhez, majd válassza a **hálózatkezelés** lehetőséget a **Beállítások**területen.
 
@@ -136,7 +133,7 @@ Ha a VNet-integráció engedélyezve van, létrehozhat egy proxyt a Function alk
 
     | Beállítás  | Ajánlott érték  | Leírás      |
     | -------- | ---------------- | ---------------- |
-    | **Name (Név)** | Üzem | A név tetszőleges érték lehet. A proxy azonosítására szolgál. |
+    | **Név** | Üzem | A név tetszőleges érték lehet. A proxy azonosítására szolgál. |
     | **Útvonal sablonja** | /plant | Egy VM-erőforráshoz hozzárendelt útvonal. |
     | **Háttér-URL** | http://<YOUR_VM_IP>/wp-content/themes/twentyseventeen/assets/images/header.jpg | Cserélje le a helyére `<YOUR_VM_IP>` a korábban létrehozott WordPress-virtuális gép IP-címét. Ez a leképezés egyetlen fájlt ad vissza a helyről. |
 
@@ -154,7 +151,7 @@ A Function alkalmazás csatlakozik az internethez és a virtuális hálózathoz 
 
 [!INCLUDE [clean-up-section-portal](../../includes/clean-up-section-portal.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban a WordPress-webhely olyan API-ként szolgál, amely a Function alkalmazásban proxy használatával lett meghívva. Ez a forgatókönyv jó oktatóanyagot tesz lehetővé, hiszen egyszerűen beállítható és megjeleníthető. Bármely más, a virtuális hálózaton belül üzembe helyezett API-t használhat. Létrehozhat egy olyan kóddal rendelkező függvényt is, amely meghívja a virtuális hálózaton belül üzembe helyezett API-kat. A reálisabb forgatókönyv egy olyan függvény, amely adatügyfél-API-kat használ a virtuális hálózatban üzembe helyezett SQL Server példány meghívásához.
 

@@ -1,36 +1,37 @@
 ---
-title: 'Oktatóanyag: kiszolgáló üzembe helyezése a következő. js-alapú webhelyeken az Azure statikus Web Apps'
-description: A Next. js dinamikus helyek előállítása és üzembe helyezése az Azure statikus Web Appsával.
+title: 'Oktatóanyag: kiszolgáló által megjelenített Next.js webhelyek üzembe helyezése az Azure statikus Web Apps'
+description: Next.js dinamikus helyek előállítása és üzembe helyezése az Azure statikus Web Apps.
 services: static-web-apps
 author: christiannwamba
 ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: chnwamba
-ms.openlocfilehash: fe139921cb73ee0e224c995e2dd5eb5fc50f3979
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 80a38c069f937783b60ede46bc4319253798ff44
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83599852"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87431650"
 ---
-# <a name="deploy-server-rendered-nextjs-websites-on-azure-static-web-apps-preview"></a>Kiszolgáló által megjelenített következő. js-webhelyek üzembe helyezése az Azure statikus Web Apps előzetes verziójában
+# <a name="deploy-server-rendered-nextjs-websites-on-azure-static-web-apps-preview"></a>Kiszolgáló által megjelenített Next.js webhelyek üzembe helyezése az Azure statikus Web Apps előzetes verziójában
 
-Ebből az oktatóanyagból megtudhatja, hogyan helyezhet üzembe egy [Next. js](https://nextjs.org) által generált statikus webhelyet az [Azure statikus Web Apps](overview.md). Megtudhatja, hogyan állíthatja be, konfigurálhatja és helyezheti üzembe a következő. js-alkalmazást. A folyamat során megismerheti azokat a gyakori kihívásokat is, amelyek gyakran szembesülnek a statikus lapok Next. js-sel való létrehozásakor
+Ebből az oktatóanyagból megtudhatja, hogyan helyezhet üzembe egy [Next.js](https://nextjs.org) generált statikus webhelyet az [Azure statikus Web Apps](overview.md). A kezdéshez megtudhatja, hogyan állíthat be, konfigurálhat és helyezhet üzembe egy Next.js alkalmazást. A folyamat során megtudhatja, hogyan kezelheti azokat a gyakori kihívásokat, amelyekkel gyakran szembesülnek statikus lapok Next.js használatával történő létrehozásakor
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/).
 - Egy GitHub-fiók. [Hozzon létre egy fiókot ingyenesen](https://github.com/join).
-- Telepített [Node.js](https://nodejs.org).
+- [Node.js](https://nodejs.org) telepítve.
 
-## <a name="set-up-a-nextjs-app"></a>Következő. js-alkalmazás beállítása
+## <a name="set-up-a-nextjs-app"></a>Next.js alkalmazás beállítása
 
-Ahelyett, hogy a következő. js CLI-t használja egy alkalmazás létrehozásához, használhat egy meglévő következő. js-alkalmazást tartalmazó indító tárházat. Ez a tárház egy Next. js alkalmazást tartalmaz dinamikus útvonalakkal, amely általános telepítési problémát mutat be. A dinamikus útvonalaknak további telepítési konfigurációra van szükségük, amelyet egy pillanat alatt többet is megtudhat.
+Ahelyett, hogy az Next.js CLI-t használja egy alkalmazás létrehozásához, használhat egy meglévő Next.js alkalmazást tartalmazó indító tárházat. Ez a tárház egy Next.js alkalmazást tartalmaz dinamikus útvonalakkal, amely általános telepítési problémát mutat be. A dinamikus útvonalaknak további telepítési konfigurációra van szükségük, amelyet egy pillanat alatt többet is megtudhat.
 
 Első lépésként hozzon létre egy új tárházat a GitHub-fiókjában egy sablon adattárból. 
 
-1. Navigáljon a<http://github.com/staticwebdev/nextjs-starter/generate>
+1. Navigáljon ide: <http://github.com/staticwebdev/nextjs-starter/generate>
 1. A tárház **nextjs neve – kezdő**
 1. Ezután klónozott az új tárházat a gépre. Ügyeljen rá, hogy a helyére a `<YOUR_GITHUB_ACCOUNT_NAME>` fiók nevét írja.
 
@@ -38,7 +39,7 @@ Első lépésként hozzon létre egy új tárházat a GitHub-fiókjában egy sab
     git clone http://github.com/<YOUR_GITHUB_ACCOUNT_NAME>/nextjs-starter
     ```
 
-1. Navigáljon az újonnan klónozott Next. js-alkalmazáshoz:
+1. Navigáljon az újonnan klónozott Next.js alkalmazáshoz:
 
    ```bash
    cd nextjs-starter
@@ -50,7 +51,7 @@ Első lépésként hozzon létre egy új tárházat a GitHub-fiókjában egy sab
     npm install
     ```
 
-1. Indítsa el a Next. js alkalmazást a fejlesztés során:
+1. Next.js alkalmazás elindítása a fejlesztés során:
 
     ```bash
     npm run dev
@@ -58,17 +59,17 @@ Első lépésként hozzon létre egy új tárházat a GitHub-fiókjában egy sab
 
 <http://localhost:3000>Nyissa meg az alkalmazást az alkalmazás megnyitásához, ahol a következő webhelyet kell megnyitnia az előnyben részesített böngészőben:
 
-:::image type="content" source="media/deploy-nextjs/start-nextjs-app.png" alt-text="A Next. js-alkalmazás elindítása":::
+:::image type="content" source="media/deploy-nextjs/start-nextjs-app.png" alt-text="Next.js alkalmazás elindítása":::
 
 Ha a keretrendszerre vagy a könyvtárra kattint, megjelenik a kijelölt elem részleteit tartalmazó oldal:
 
 :::image type="content" source="media/deploy-nextjs/start-nextjs-details.png" alt-text="Részletek lap":::
 
-## <a name="generate-a-static-website-from-nextjs-build"></a>Statikus webhely létrehozása a következő. js buildből
+## <a name="generate-a-static-website-from-nextjs-build"></a>Statikus webhely létrehozása Next.js buildből
 
-Amikor egy következő. js-webhelyet hoz létre `npm run build` a használatával, az alkalmazás hagyományos webalkalmazásként, nem pedig statikus helyként van felépítve. Statikus hely létrehozásához használja a következő alkalmazás-konfigurációt.
+Next.js-hely a használatával történő létrehozásakor `npm run build` az alkalmazás hagyományos webalkalmazásként, nem pedig statikus helyként van felépítve. Statikus hely létrehozásához használja a következő alkalmazás-konfigurációt.
 
-1. A statikus útvonalak konfigurálásához hozzon létre egy _Next. config. js_ nevű fájlt a projekt gyökérkönyvtárában, és adja hozzá a következő kódot.
+1. A statikus útvonalak konfigurálásához hozzon létre egy _next.config.js_ nevű fájlt a projekt gyökérkönyvtárában, és adja hozzá a következő kódot.
 
     ```javascript
     module.exports = {
@@ -81,9 +82,9 @@ Amikor egy következő. js-webhelyet hoz létre `npm run build` a használatáva
     };
     ```
     
-      Ez a konfiguráció az `/` útvonalhoz kiszolgált következő. js oldalra mutat `/` , amely a _Pages/index. js_ lapozófájl.
+      Ez a konfiguráció az `/` útvonalhoz kiszolgált Next.js lapra mutat `/` , amely a _pages/index.js_ lapozófájl.
 
-1. Frissítse a _Package. JSON_felépítési szkriptjét, hogy a létrehozás után is létrehoz egy statikus helyet a `next export` parancs használatával. A `export` parancs létrehoz egy statikus helyet.
+1. Frissítse a _package.jsa_Build parancsfájlban, hogy a létrehozás után is létrehoz egy statikus helyet a `next export` parancs használatával. A `export` parancs létrehoz egy statikus helyet.
 
     ```json
     "scripts": {
@@ -133,10 +134,10 @@ Az alábbi lépések bemutatják, hogyan lehet összekapcsolni a GitHubra lekül
 
 ### <a name="create-a-static-app"></a>Statikus alkalmazás létrehozása
 
-1. Lépjen az [Azure Portalra](https://portal.azure.com)
-1. Kattintson **az erőforrás létrehozása** elemre.
-1. **Statikus Web Apps** keresése
-1. Kattintson a **statikus Web Apps (előzetes verzió)** elemre.
+1. Navigáljon a [Azure Portal](https://portal.azure.com)
+1. Kattintson az **Erőforrás létrehozása** gombra
+1. Keressen rá a **Static Web Apps** kifejezésre
+1. Kattintson a **Static Web Apps (előzetes verzió)** lehetőségre
 1. Kattintson a **Létrehozás** gombra
 
 1. Válasszon egy előfizetést az *előfizetés* legördülő listából, vagy használja az alapértelmezett értéket.
@@ -149,14 +150,14 @@ Az alábbi lépések bemutatják, hogyan lehet összekapcsolni a GitHubra lekül
 
 ### <a name="add-a-github-repository"></a>GitHub-adattár hozzáadása
 
-Az új statikus Web Apps fióknak hozzá kell férnie a tárházhoz a következő. js-alkalmazással, hogy a rendszer automatikusan telepítse a véglegesítő műveleteket.
+Az új statikus Web Apps fióknak hozzá kell férnie a tárházhoz a Next.js alkalmazással, hogy automatikusan üzembe lehessen helyezni a commit.
 
 1. Kattintson a **Bejelentkezés a GitHub gombra**
-1. Válassza ki azt a **szervezetet** , amelyben létrehozta a tárházat a következő. js projekthez, amely lehet a GitHub-felhasználóneve.
+1. Válassza ki azt a **szervezetet** , amelyben létrehozta a tárházat a Next.js projekthez, amely lehet a GitHub-felhasználóneve.
 1. Keresse meg és válassza ki a korábban létrehozott adattár nevét.
 1. Válassza a **főkiszolgáló** elemet a *ág* legördülő menüből.
 
-   :::image type="content" source="media/deploy-nextjs/connect-github.png" alt-text="A GitHub összekötése":::
+   :::image type="content" source="media/deploy-nextjs/connect-github.png" alt-text="A GitHub csatlakoztatása":::
 
 ### <a name="configure-the-build-process"></a>A létrehozási folyamat konfigurálása
 
@@ -196,11 +197,11 @@ Navigáljon az újonnan telepített webhelyre, és kattintson az egyik keretrend
 
 :::image type="content" source="media/deploy-nextjs/404-in-production.png" alt-text="404 dinamikus útvonalakon":::
 
-Ennek a hibának az oka az, hogy a Next. js csak az alkalmazás konfigurációja alapján hozta létre a kezdőlapot.
+Ennek a hibának az oka az, hogy Next.js csak az alkalmazás konfigurációja alapján hozta létre a kezdőlapot.
 
 ## <a name="generate-static-pages-from-dynamic-routes"></a>Statikus lapok előállítása a dinamikus útvonalakból
 
-1. Frissítse a _Next. config. js_ fájlt, hogy a következő. js az összes rendelkezésre álló adattal listát használja a statikus lapok létrehozásához minden egyes keretrendszerhez/könyvtárhoz:
+1. Frissítse a _next.config.js_ fájlt, hogy a Next.js az összes rendelkezésre álló adattal listát használja az egyes keretrendszerekhez/könyvtárakhoz tartozó statikus lapok létrehozásához:
 
    ```javascript
    const data = require('./utils/projectsData');

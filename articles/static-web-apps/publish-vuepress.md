@@ -7,12 +7,13 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
-ms.openlocfilehash: cc1bf52190cb47bc4ffd6efe159ed88cac560e02
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 6f5e05e9bfea6b14e46bbde8d17fba2d2a3b7b07
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84297996"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87429497"
 ---
 # <a name="tutorial-publish-a-vuepress-site-to-azure-static-web-apps-preview"></a>Oktatóanyag: VuePress-webhely közzététele az Azure statikus Web Apps előzetes verziójában
 
@@ -30,7 +31,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 - Aktív előfizetéssel rendelkező Azure-fiók. Ha még nem rendelkezik ilyennel, [ingyenes fiókot hozhat létre](https://azure.microsoft.com/free/).
 - Egy GitHub-fiók. Ha még nem rendelkezik ilyennel, [ingyenes fiókot hozhat létre](https://github.com/join).
-- Telepített [Node.js](https://nodejs.org).
+- [Node.js](https://nodejs.org) telepítve.
 
 ## <a name="create-a-vuepress-app"></a>VuePress-alkalmazás létrehozása
 
@@ -48,7 +49,7 @@ VuePress-alkalmazás létrehozása a parancssori felületen (CLI):
    echo '# Hello From VuePress' > README.md
    ```
 
-1. Inicializálja a _Package. JSON_ fájlt.
+1. A _package.js_ inicializálása fájlon.
 
    ```bash
    npm init -y
@@ -60,7 +61,7 @@ VuePress-alkalmazás létrehozása a parancssori felületen (CLI):
    npm install --save-dev vuepress
    ```
 
-1. Nyissa meg a _Package. JSON_ fájlt egy szövegszerkesztőben, és adjon hozzá egy Build parancsot a [`scripts`](https://docs.npmjs.com/cli-commands/run-script.html) szakaszhoz.
+1. Nyissa meg a _package.js_ fájlt egy szövegszerkesztőben, és adjon hozzá egy Build parancsot a [`scripts`](https://docs.npmjs.com/cli-commands/run-script.html) szakaszhoz.
 
    ```json
    ...
@@ -108,10 +109,10 @@ A következő lépések bemutatják, hogyan hozhat létre új statikus Web Apps 
 
 ### <a name="create-the-application"></a>Az alkalmazás létrehozása
 
-1. Lépjen az [Azure Portalra](https://portal.azure.com)
-1. Kattintson **az erőforrás létrehozása** elemre.
-1. **Statikus Web Apps** keresése
-1. Kattintson a **statikus Web Apps (előzetes verzió)** elemre.
+1. Navigáljon a [Azure Portal](https://portal.azure.com)
+1. Kattintson az **Erőforrás létrehozása** gombra
+1. Keressen rá a **Static Web Apps** kifejezésre
+1. Kattintson a **Static Web Apps (előzetes verzió)** lehetőségre
 1. Kattintson a **Létrehozás** gombra
 
    :::image type="content" source="./media/publish-vuepress/create-in-portal.png" alt-text="Statikus Web Apps (előzetes verzió) létrehozása a portálon":::
@@ -138,11 +139,11 @@ A következő lépések bemutatják, hogyan hozhat létre új statikus Web Apps 
 
    :::image type="content" source="./media/publish-vuepress/completed-github-info.png" alt-text="Elkészült GitHub-információ":::
 
-### <a name="build"></a>Felépítés
+### <a name="build"></a>Build
 
 Ezután adja hozzá azokat a konfigurációs beállításokat, amelyeket a létrehozási folyamat az alkalmazás létrehozásához használ. Az alábbi beállítások a GitHub-művelet munkafolyamat-fájlját konfigurálja.
 
-1. Kattintson a **következőre: build >** gombra a Build konfigurációjának szerkesztéséhez
+1. Kattintson a **Tovább: Létrehozás >** gombra a létrehozási konfiguráció szerkesztéséhez
 
 1. Az _alkalmazás helyének_ beállítása a következőre: **/** .
 
@@ -168,7 +169,7 @@ Az API-k _helyének_ értéke nem szükséges, mivel jelenleg nem TELEPÍTenek A
 
 [!INCLUDE [cleanup-resource](../../includes/static-web-apps-cleanup-resource.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Egyéni tartomány hozzáadása](custom-domain.md)

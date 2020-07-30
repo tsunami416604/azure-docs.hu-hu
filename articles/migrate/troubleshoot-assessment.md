@@ -7,12 +7,12 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/02/2020
-ms.openlocfilehash: 61afc3ec0f37f5d8b1030818d21b7daabb7fce40
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: b47c6c7d2137737021766f239fdb6ab1c64bd12f
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121673"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422861"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>Értékelés/függőségek vizualizációjának hibaelhárítása
 
@@ -23,7 +23,7 @@ Ez a cikk segítséget nyújt az értékeléssel és a függőségi vizualizáci
 
 Javítsa ki az értékelés készültségi problémáit az alábbiak szerint:
 
-**Probléma** | **Hibajavítás**
+**Probléma** | **Javítás**
 --- | ---
 Nem támogatott rendszerindítási típus | Az Azure nem támogatja az EFI rendszerindítási típussal rendelkező virtuális gépeket. Javasoljuk, hogy az áttelepítés futtatása előtt alakítsa át a rendszerindítási típust BIOS-ra. <br/><br/>Az ilyen virtuális gépek áttelepítésének kezeléséhez Azure Migrate kiszolgáló áttelepítését használhatja. Az áttelepítés során a rendszer a virtuális gép rendszerindítási típusát a BIOS-ba konvertálja.
 Feltételesen támogatott Windows operációs rendszer | Az operációs rendszer elérte a támogatás befejezési dátumát, és az [Azure-támogatáshoz](https://aka.ms/WSosstatement)egyéni támogatási szerződés (CSA) szükséges. Az Azure-ba való Migrálás előtt érdemes lehet frissíteni.
@@ -52,7 +52,7 @@ Feltételesen kész Internet Protocol | Csak az Azure VMware Solution (AVS) ért
 
 ## <a name="suggested-migration-tool-in-import-based-avs-assessment-marked-as-unknown"></a>Javasolt áttelepítési eszköz az importálási alapú AVS-felmérésben ismeretlenként megjelölve
 
-A CSV-fájlon keresztül importált gépek esetében ismeretlen az alapértelmezett áttelepítési eszköz és az AVS Assessment. A VMware-gépek esetében azonban ajánlott a VMWare Hybrid Cloud Extension (HCX) megoldás használata. [További információ](../azure-vmware/hybrid-cloud-extension-installation.md).
+A CSV-fájlon keresztül importált gépek esetében ismeretlen az alapértelmezett áttelepítési eszköz és az AVS Assessment. A VMware-gépek esetében azonban ajánlott a VMware Hybrid Cloud Extension (HCX) megoldás használata. [További információk](../azure-vmware/hybrid-cloud-extension-installation.md).
 
 ## <a name="linux-vms-are-conditionally-ready-in-an-azure-vm-assessment"></a>A Linux rendszerű virtuális gépek feltételesen készen állnak egy Azure-beli virtuális gép értékelésére
 
@@ -112,7 +112,7 @@ Azure Migrate a kiszolgáló értékelése jelenleg csak Windows rendszerű gép
 A Server Assessment folyamatosan gyűjti a helyszíni gépek teljesítményadatait, és ezek alapján tesz javaslatot az Azure-beli virtuálisgép- és lemez-termékváltozatra. [Ismerje meg](concepts-assessment-calculation.md#calculate-sizing-performance-based) a teljesítmény-alapú adatok gyűjtésének módját.
 
 ## <a name="why-is-my-assessment-showing-a-warning-that-it-was-created-with-an-invalid-combination-of-reserved-instances-vm-uptime-and-discount-"></a>Miért van az értékelésem arra utaló figyelmeztetést mutat, hogy a fenntartott példányok érvénytelen kombinációjával lett létrehozva, a virtuális gép üzemidő és a kedvezmény (%)?
-Ha a "fenntartott példányok" lehetőséget választja, a "kedvezmény (%)" és a virtuális gép üzemidő tulajdonságai nem alkalmazhatók. Mivel az értékelés a tulajdonságok érvénytelen kombinációjával lett létrehozva, a Szerkesztés és az újraszámolás gomb le lesz tiltva. Hozzon létre egy új értékelést. [További információk](https://go.microsoft.com/fwlink/?linkid=2131554).
+Ha a "fenntartott példányok" lehetőséget választja, a "kedvezmény (%)" és a virtuális gép üzemidő tulajdonságai nem alkalmazhatók. Mivel az értékelés a tulajdonságok érvénytelen kombinációjával lett létrehozva, a Szerkesztés és az újraszámolás gomb le lesz tiltva. Hozzon létre egy új értékelést. [További információ](https://go.microsoft.com/fwlink/?linkid=2131554).
 
 ## <a name="i-do-not-see-performance-data-for-some-network-adapters-on-my-physical-servers"></a>Nem látok teljesítményadatokat a fizikai kiszolgálókon lévő egyes hálózati adapterekhez
 
@@ -180,6 +180,9 @@ Miután az Azure-ba engedélyezte a függőségi vizualizációval rendelkező g
 
 ## <a name="dependencies-export-csv-shows-unknown-process"></a>A CSV-exportálási függőségek az "ismeretlen folyamat" kifejezést mutatják
 Az ügynök nélküli függőségek elemzésében a folyamat neveit a rendszer a legjobb erőfeszítést követően rögzíti. Bizonyos helyzetekben, bár a forrás-és a célkiszolgáló neve és a célport is rögzítve van, nem valósítható meg a függőségek mindkét végén található folyamat neve. Ilyen esetekben a folyamat "ismeretlen folyamat" jelöléssel van megjelölve.
+
+## <a name="my-log-analytics-workspace-is-not-listed-when-trying-to-configure-the-workspace-in-server-assessment"></a>A Log Analytics munkaterület nem szerepel a munkaterületnek a kiszolgáló értékelése során való konfigurálására tett kísérlet során
+Az Azure Migrate jelenleg csak a következő régiókban támogatja OMS-munkaterületek létrehozását: az USA keleti régiója, Délkelet-Ázsia és Nyugat-Európa. Ha a munkaterületet a Azure Migrateon kívül más régióban hozza létre, akkor jelenleg nem rendelhető hozzá Azure Migrate projekthez.
 
 
 ## <a name="capture-network-traffic"></a>Hálózati forgalom rögzítése

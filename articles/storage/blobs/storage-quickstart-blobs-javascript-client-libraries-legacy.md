@@ -3,18 +3,18 @@ title: 'Gyors útmutató: Azure Blob Storage a JavaScript v10-hez a böngészőb
 description: A HTML-lapokon a JavaScript v10 SDK használatával megtudhatja, hogyan tölthet fel, listázhat és törölhet blobokat.
 services: storage
 author: mhopkins-msft
-ms.custom: mvc
+ms.custom: mvc, devx-track-javascript
 ms.service: storage
 ms.author: mhopkins
 ms.date: 07/24/2020
 ms.topic: quickstart
 ms.subservice: blobs
-ms.openlocfilehash: 0db110d02211323f64e7ffe795f72e3a5003ec91
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 3982e54d06f2e84c4e8e8703e70e9a26773c389a
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282041"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87429218"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
@@ -64,7 +64,7 @@ A böngészőben futó kód a közös hozzáférésű jogosultságkóddal (SAS) 
 
 Létrehozhat egy SAS-t az Azure CLI használatával az Azure Cloud shellben vagy a Azure Portal vagy Azure Storage Explorer. A következő táblázat azokat a paramétereket ismerteti, amelyekkel a rendszernek értékeket kell megadnia a parancssori felülettel való SAS létrehozásához.
 
-| Paraméter      |Leírás  | Helyőrző |
+| Paraméter      |Description  | Helyőrző |
 |----------------|-------------|-------------|
 | *lejárta*       | A hozzáférési jogkivonat lejárati dátuma ÉÉÉÉ-HH-NN formátumban. Írja be a holnapi dátumot ehhez a rövid útmutatóhoz. | *FUTURE_DATE* |
 | *fiók neve* | A tárfiók neve. Használja a korábbi lépésben félretett nevet. | *YOUR_STORAGE_ACCOUNT_NAME* |
@@ -359,7 +359,7 @@ Ezen a ponton elindíthatja a lapot, és kísérletet tehet a blob Storage műk�
 
 A rövid útmutató során létrehozott erőforrások törléséhez nyissa meg a [Azure Portal](https://portal.azure.com) , és törölje az előfeltételek szakaszban létrehozott erőforráscsoportot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozott egy egyszerű webhelyet, amely hozzáfér a blob Storage-hoz a böngésző alapú JavaScriptből. Ha szeretné megtudni, hogyan üzemeltetheti a webhelyeket a blob Storage szolgáltatásban, folytassa a következő oktatóanyaggal:
 

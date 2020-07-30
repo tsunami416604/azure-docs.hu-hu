@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 02/01/2019
-ms.openlocfilehash: b04c9c1796491622a76e2c2a2fbfcdcc0c624dda
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: c13c394f518482853762a3a5bf9a1a2a42ca658a
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318538"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432414"
 ---
 # <a name="import-your-training-data-into-azure-machine-learning-studio-classic-from-various-data-sources"></a>Betanítási adatok importálása Azure Machine Learning Studioba (klasszikus) különböző adatforrásokból
 
-**a következőkre vonatkozik:** ![ nincs](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine learning](../overview-what-is-azure-ml.md) ![ Igen ](../../../includes/media/aml-applies-to-skus/yes.png) Machine learning Studio (klasszikus) 
+**a következőkre vonatkozik:** ![ igen ](../../../includes/media/aml-applies-to-skus/yes.png) Machine learning Studio (klasszikus) ![ nincs](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine learning](../compare-azure-ml-to-studio-classic.md)  
 
 
 Ha Machine Learning Studio (klasszikus) használatával szeretne saját adatait használni a prediktív elemzési megoldások fejlesztéséhez és betanításához, a következő adatok használhatók: 
@@ -157,7 +157,7 @@ A támogatott online adatforrások az alábbi táblázatban vannak részletezve.
 ### <a name="supported-online-data-sources"></a>Támogatott online adatforrások
 A Azure Machine Learning Studio (klasszikus) **adatimportálási** modul a következő adatforrásokat támogatja:
 
-| Adatforrás | Leírás | Paraméterek |
+| Adatforrás | Description | Paraméterek |
 | --- | --- | --- |
 | Webes URL-cím HTTP-n keresztül |A vesszővel tagolt értékek (CSV), tabulátorral tagolt értékek (TSV), attribútum-kapcsolati fájlformátum (ARFF) és a SVM-formátumok támogatása a HTTP-t használó bármely webes URL-címről |<b>URL</b>: a fájl teljes nevét adja meg, beleértve a webhely URL-címét és a fájlnevet bármilyen kiterjesztéssel. <br/><br/><b>Adatformátum</b>: a támogatott adatformátumok egyikét adja meg: CSV, TSV, ARFF vagy SVM. Ha az adatsorok fejléctel rendelkeznek, az oszlopnevek hozzárendelésére szolgál. |
 | Hadoop/HDFS |Beolvassa az adatokat a Hadoop-ben lévő elosztott tárolóból. A HiveQL, egy SQL-szerű lekérdezési nyelvet használva adhatja meg a kívánt adatértékeket. A HiveQL az adatok összesítéséhez és az Adatszűrés végrehajtásához is használható, mielőtt hozzáadja az adatokat a studióhoz (klasszikus). |<b>Struktúra adatbázis-lekérdezése</b>: megadja az adatlétrehozáshoz használt kaptár-lekérdezést.<br/><br/><b>HCatalog-kiszolgáló URI-ja</b> : a fürt nevét a fürt neve * &lt; &gt; . azurehdinsight.net* formátumban adja meg.<br/><br/><b>Hadoop felhasználói fiók neve</b>: a fürt kiépítéséhez használt Hadoop-felhasználói fiók nevét adja meg.<br/><br/><b>Hadoop felhasználói fiók jelszava</b> : a fürt kiépítés során használt hitelesítő adatokat adja meg. További információ: [Hadoop-fürtök létrehozása a HDInsight-ben](/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters).<br/><br/><b>Kimeneti adatforgalom helye</b>: Megadja, hogy az adatokat egy Hadoop elosztott fájlrendszerben (HDFS) vagy az Azure-ban tárolja-e a rendszer. <br/><ul>Ha a kimeneti adatokat a HDFS tárolja, adja meg a HDFS-kiszolgáló URI azonosítóját. (Ügyeljen arra, hogy a HDInsight-fürt nevét a HTTPS://előtag nélkül használja.) <br/><br/>Ha a kimeneti adatokat az Azure-ban tárolja, meg kell adnia az Azure Storage-fiók nevét, a tárterület-hozzáférési kulcsot és a tároló nevét.</ul> |
@@ -178,7 +178,7 @@ Időnként előfordulhat, hogy egy kísérletből közbenső eredményt szeretne
 
 A Mentés befejeződése után az adatkészlet elérhető lesz a munkaterületen lévő bármilyen kísérletben. Ez a modul paletta **mentett adatkészletek** listájában található.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Az Adatimportálási és adatexportálási modulokat használó Azure Machine Learning Studio webszolgáltatások üzembe helyezése](web-services-that-use-import-export-modules.md)
 

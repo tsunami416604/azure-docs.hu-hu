@@ -7,12 +7,12 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: dekapur
-ms.openlocfilehash: dbe64bdcbff5592d271c773eff1d5c99c585fcd7
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 03b9cce0d8e4666630aa6568597e08d1f13386ff
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86248016"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422810"
 ---
 # <a name="overview-of-service-fabric-clusters-on-azure"></a>Az Azure-beli Service Fabric-fürtök áttekintése
 A Service Fabric-fürt olyan virtuális vagy fizikai gépek hálózathoz csatlakoztatott készlete, amelybe a rendszer üzembe helyezi és kezeli a szolgáltatásait. A fürt részét képező számítógépet vagy virtuális gépet fürtcsomópont-csomópontnak nevezzük. A fürtök több ezer csomópontra is méretezhetők. Ha új csomópontokat ad hozzá a fürthöz, Service Fabric a csomópontok számának megnövekedésével kiegyensúlyozza a szolgáltatás partíciójának replikáit és példányait. Az alkalmazások teljes teljesítményének növelése és a memória-hozzáférés csökkentése. Ha a fürt csomópontjait nem használják hatékonyan, csökkentheti a fürt csomópontjainak számát. Service Fabric újra kiegyenlíti a partíciók replikáit és példányait a csomópontok számának csökkenésével, hogy jobban használhassa a hardvert az egyes csomópontokon.
@@ -30,7 +30,7 @@ Az Azure-beli Service Fabric-fürtök olyan Azure-erőforrások, amelyek más Az
 
 ![Service Fabric fürt][Image]
 
-### <a name="virtual-machine"></a>Virtuális gép
+### <a name="virtual-machine"></a>virtuális gép
 A fürt részét képező [virtuális gépeket](../virtual-machines/index.yml) a rendszer egy csomópontnak nevezi, azonban a fürtcsomópont egy Service Fabric futtatókörnyezeti folyamat. Minden csomóponthoz hozzá van rendelve egy csomópontnév (egy sztring). A csomópontok jellemzői, például [elhelyezési tulajdonságok](service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints). Mindegyik gépen vagy virtuális gépen van egy automatikus indítási szolgáltatás, *FabricHost.exe*, amely indításkor elindul, majd elindítja a csomópontot alkotó két végrehajtható fájl, *Fabric.exe* és *FabricGateway.exe*. Az éles üzembe helyezés fizikai vagy virtuális gépenként egy csomópont. Tesztelési forgatókönyvek esetén több csomópontot is tárolhat egyetlen számítógépen vagy virtuális gépen a *Fabric.exe* és *FabricGateway.exe*több példányának futtatásával.
 
 Minden virtuális gép egy virtuális hálózati adapterrel (NIC) van társítva, és minden hálózati adapterhez magánhálózati IP-cím van hozzárendelve.  A virtuális gépeket a hálózati ADAPTERen keresztül egy virtuális hálózathoz és egy helyi Balancerhez rendeli a rendszer.
@@ -105,6 +105,7 @@ A következő operációs rendszereket futtató virtuális gépeken hozhat létr
 | Windows Server 1809 | 6.4.654.9590 |
 | Windows Server 2019 | 6.4.654.9590 |
 | Linux Ubuntu 16,04 | 6.0 |
+| Linux Ubuntu 18,04 | 7.1 |
 
 További információ: [támogatott fürtözött verziók az Azure-ban](./service-fabric-versions.md#supported-operating-systems)
 

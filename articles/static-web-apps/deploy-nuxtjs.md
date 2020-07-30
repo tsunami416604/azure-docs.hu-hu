@@ -1,35 +1,36 @@
 ---
-title: 'Oktatóanyag: kiszolgáló által megjelenített Nuxt. js-webhelyek üzembe helyezése az Azure statikus Web Apps'
-description: Nuxt. js-alapú dinamikus helyek előállítása és üzembe helyezése az Azure statikus Web Appsával.
+title: 'Oktatóanyag: kiszolgáló által megjelenített Nuxt.js webhelyek üzembe helyezése az Azure statikus Web Apps'
+description: Nuxt.js dinamikus helyek előállítása és üzembe helyezése az Azure statikus Web Apps.
 services: static-web-apps
 author: christiannwamba
 ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: chnwamba
-ms.openlocfilehash: 8a4fb581b884d28c8366cbf9a50e001eadd027d9
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 9c7e03f5e658b8e15dcae1c5314b73dfbfdf0206
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83599822"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87430289"
 ---
-# <a name="deploy-server-rendered-nuxtjs-websites-on-azure-static-web-apps-preview"></a>Kiszolgáló által megjelenített Nuxt. js-webhelyek üzembe helyezése az Azure statikus Web Apps előzetes verziójában
+# <a name="deploy-server-rendered-nuxtjs-websites-on-azure-static-web-apps-preview"></a>Kiszolgáló által megjelenített Nuxt.js webhelyek üzembe helyezése az Azure statikus Web Apps előzetes verziójában
 
-Ebből az oktatóanyagból megtudhatja, hogyan helyezhet üzembe egy [Nuxt. js](https://nuxtjs.org) által generált statikus webhelyet az [Azure statikus Web Apps](overview.md). Első lépésként megismerheti a Nuxt. js-alkalmazások beállítását, konfigurálását és üzembe helyezését. A folyamat során megismerheti azokat a gyakori kihívásokat is, amelyek gyakran szembesülnek a statikus lapok Nuxt. js-sel való létrehozásakor
+Ebből az oktatóanyagból megtudhatja, hogyan helyezhet üzembe egy [Nuxt.js](https://nuxtjs.org) generált statikus webhelyet az [Azure statikus Web Apps](overview.md). A kezdéshez megtudhatja, hogyan állíthat be, konfigurálhat és helyezhet üzembe egy Nuxt.js alkalmazást. A folyamat során megtudhatja, hogyan kezelheti azokat a gyakori kihívásokat, amelyekkel gyakran szembesülnek statikus lapok Nuxt.js használatával történő létrehozásakor
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/).
 - Egy GitHub-fiók. [Hozzon létre egy fiókot ingyenesen](https://github.com/join).
-- Telepített [Node.js](https://nodejs.org).
+- [Node.js](https://nodejs.org) telepítve.
 
-## <a name="set-up-a-nuxtjs-app"></a>Nuxt. js-alkalmazás beállítása
+## <a name="set-up-a-nuxtjs-app"></a>Nuxt.js alkalmazás beállítása
 
-Beállíthat egy új Nuxt. js-projektet a használatával `create-nuxt-app` . Új projekt helyett ebben az oktatóanyagban egy meglévő tárház klónozásával kezdődik. Ez a tárház úgy van beállítva, hogy bemutassa, hogyan helyezhet üzembe egy dinamikus Nuxt. js-alkalmazást statikus helyként.
+Beállíthat egy új Nuxt.js projektet a használatával `create-nuxt-app` . Új projekt helyett ebben az oktatóanyagban egy meglévő tárház klónozásával kezdődik. Ez a tárház úgy van beállítva, hogy bemutassa, hogyan helyezhet üzembe egy dinamikus Nuxt.js alkalmazást statikus helyként.
 
 1. Hozzon létre egy új tárházat a GitHub-fiókjában egy sablon adattárból.
-1. Navigáljon a<http://github.com/staticwebdev/nuxtjs-starter/generate>
+1. Navigáljon ide: <http://github.com/staticwebdev/nuxtjs-starter/generate>
 1. A tárház **nuxtjs neve – kezdő**
 1. Ezután klónozott az új tárházat a gépre. Ügyeljen rá, hogy a fiók nevével <YOUR_GITHUB_ACCOUNT_NAME> cserélje le.
 
@@ -37,7 +38,7 @@ Beállíthat egy új Nuxt. js-projektet a használatával `create-nuxt-app` . Ú
     git clone http://github.com/<YOUR_GITHUB_ACCOUNT_NAME>/nuxtjs-starter
     ```
 
-1. Navigáljon az újonnan klónozott Nuxt. js-alkalmazáshoz:
+1. Navigáljon az újonnan klónozott Nuxt.js alkalmazáshoz:
 
    ```bash
    cd nuxtjs-starter
@@ -49,7 +50,7 @@ Beállíthat egy új Nuxt. js-projektet a használatával `create-nuxt-app` . Ú
     npm install
     ```
 
-1. Indítsa el a Nuxt. js alkalmazást a fejlesztésben:
+1. Nuxt.js alkalmazás elindítása a fejlesztés során:
 
     ```bash
     npm run dev
@@ -57,17 +58,17 @@ Beállíthat egy új Nuxt. js-projektet a használatával `create-nuxt-app` . Ú
 
 <http://localhost:3000>Nyissa meg az alkalmazást az alkalmazás megnyitásához, ahol a következő webhelyet kell megnyitnia az előnyben részesített böngészőben:
 
-:::image type="content" source="media/deploy-nuxtjs/start-nuxtjs-app.png" alt-text="Nuxt. js-alkalmazás elindítása":::
+:::image type="content" source="media/deploy-nuxtjs/start-nuxtjs-app.png" alt-text="Nuxt.js alkalmazás elindítása":::
 
 Ha a keretrendszerre vagy a könyvtárra kattint, megjelenik a kijelölt elem részleteit tartalmazó oldal:
 
 :::image type="content" source="media/deploy-nuxtjs/start-nuxtjs-details.png" alt-text="Részletek lap":::
 
-## <a name="generate-a-static-website-from-nuxtjs-build"></a>Statikus webhely létrehozása a Nuxt. js buildből
+## <a name="generate-a-static-website-from-nuxtjs-build"></a>Statikus webhely létrehozása Nuxt.js buildből
 
-Egy Nuxt. js-hely a használatával történő létrehozásakor `npm run build` az alkalmazás hagyományos webalkalmazásként, nem pedig statikus helyként jön létre. Statikus hely létrehozásához használja a következő alkalmazás-konfigurációt.
+Nuxt.js-hely a használatával történő létrehozásakor `npm run build` az alkalmazás hagyományos webalkalmazásként, nem pedig statikus helyként van felépítve. Statikus hely létrehozásához használja a következő alkalmazás-konfigurációt.
 
-1. Frissítse a _Package. JSON_felépítési parancsfájlját, hogy csak statikus helyet hozzon létre a `nuxt generate` paranccsal:
+1. Frissítse a _package.jsa_Build parancsfájlban, hogy csak statikus helyet hozzon létre a `nuxt generate` parancs használatával:
 
     ```json
     "scripts": {
@@ -84,7 +85,7 @@ Egy Nuxt. js-hely a használatával történő létrehozásakor `npm run build` 
     npm run build
     ```
 
-    A Nuxt. js létrehozza a statikus helyet, és átmásolja a munkakönyvtár gyökerének egyik _dist_ mappájába.
+    A Nuxt.js létrehozza a statikus helyet, és átmásolja a munkakönyvtár gyökerének egyik _dist_ mappájába.
 
     > [!NOTE]
     > Ez a mappa a _. gitignore_ fájlban jelenik meg, mert az üzembe helyezéskor CI/CD-vel kell létrehoznia.
@@ -117,10 +118,10 @@ Az alábbi lépések bemutatják, hogyan lehet összekapcsolni a GitHubra lekül
 
 ### <a name="create-an-azure-static-web-apps-preview-resource"></a>Azure statikus Web Apps előzetes verzió erőforrásának létrehozása
 
-1. Lépjen az [Azure Portalra](https://portal.azure.com)
-1. Kattintson **az erőforrás létrehozása** elemre.
-1. **Statikus Web Apps** keresése
-1. Kattintson a **statikus Web Apps (előzetes verzió)** elemre.
+1. Navigáljon a [Azure Portal](https://portal.azure.com)
+1. Kattintson az **Erőforrás létrehozása** gombra
+1. Keressen rá a **Static Web Apps** kifejezésre
+1. Kattintson a **Static Web Apps (előzetes verzió)** lehetőségre
 1. Kattintson a **Létrehozás** gombra
 
 1. Válasszon egy előfizetést az *előfizetés* legördülő listából, vagy használja az alapértelmezett értéket.
@@ -133,14 +134,14 @@ Az alábbi lépések bemutatják, hogyan lehet összekapcsolni a GitHubra lekül
 
 ### <a name="add-a-github-repository"></a>GitHub-adattár hozzáadása
 
-Az új statikus Web Apps fióknak hozzá kell férnie a tárházhoz a Nuxt. js-alkalmazással, hogy az automatikusan üzembe lehessen helyezni a commit.
+Az új statikus Web Apps fióknak hozzá kell férnie a tárházhoz a Nuxt.js alkalmazással, hogy automatikusan üzembe lehessen helyezni a commit.
 
 1. Kattintson a **Bejelentkezés a GitHub gombra**
-1. Válassza ki azt a **szervezetet** , amelyben létrehozta a tárházat a Nuxt. js projekthez, amely lehet a GitHub-felhasználóneve.
+1. Válassza ki azt a **szervezetet** , amelyben létrehozta a tárházat a Nuxt.js projekthez, amely lehet a GitHub-felhasználóneve.
 1. Keresse meg és válassza ki a korábban létrehozott adattár nevét.
 1. Válassza a **főkiszolgáló** elemet a *ág* legördülő menüből.
 
-   :::image type="content" source="media/deploy-nuxtjs/connect-github.png" alt-text="A GitHub összekötése":::
+   :::image type="content" source="media/deploy-nuxtjs/connect-github.png" alt-text="A GitHub csatlakoztatása":::
 
 ### <a name="configure-the-build-process"></a>A létrehozási folyamat konfigurálása
 
@@ -179,13 +180,13 @@ Navigáljon az újonnan telepített webhelyre, és kattintson az egyik keretrend
 
 :::image type="content" source="media/deploy-nuxtjs/404-in-production.png" alt-text="404 dinamikus útvonalakon":::
 
-Ennek az az oka, hogy a Nuxt. js létrehozta a statikus helyet, csak a kezdőlapon. A Nuxt. js egyenértékű statikus fájlokat tud előállítani `.html` minden `.vue` lapozófájlhoz, de kivétel történt. 
+Ennek az az oka, Nuxt.js a statikus helyet generálta, csak a kezdőlapon. A Nuxt.js minden lapozófájlhoz egyenértékű statikus fájlokat tud előállítani `.html` `.vue` , de kivétel történt. 
 
 Ha az oldal egy dinamikus lap, például `_id.vue` nem rendelkezik elegendő információval ahhoz, hogy statikus HTML-t lehessen készíteni az adott dinamikus lapról. Explicit módon meg kell adnia a dinamikus útvonalak lehetséges elérési útját.
 
 ## <a name="generate-static-pages-from-dynamic-routes"></a>Statikus lapok előállítása a dinamikus útvonalakból
 
-1. Frissítse a _nuxt. config. js_ fájlt úgy, hogy a nuxt. js az összes rendelkezésre álló adattal listát használja az egyes keretrendszerek/könyvtárak számára statikus lapok létrehozásához:
+1. Frissítse a _nuxt.config.js_ fájlt, hogy a Nuxt.js az összes rendelkezésre álló adattal listát használja az egyes keretrendszerekhez/könyvtárakhoz tartozó statikus lapok létrehozásához:
 
    ```javascript
      import { projects } from "./utils/projectsData";

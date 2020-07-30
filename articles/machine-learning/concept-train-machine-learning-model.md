@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.custom: tracking-python
-ms.openlocfilehash: da437f830a452a57ea1290b3d85a3faa92895bcd
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: b35f971d90f8cd74e2f5a60e34864d8e55a743c4
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86147054"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87431919"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>Modellek betanítása Azure Machine Learning
 
@@ -23,7 +23,7 @@ A Azure Machine Learning számos lehetőséget kínál a modellek betanításár
 
 + [Pythonhoz készült Azure Machine learning SDK](#python-sdk): a Python SDK számos módszert kínál a különböző képességekkel rendelkező modellek betanításához.
 
-    | Betanítási módszer | Leírás |
+    | Betanítási módszer | Description |
     | ----- | ----- |
     | [Konfiguráció futtatása](#run-configuration) | A **modellek betanításának általános módja** egy képzési parancsfájl használata és a konfiguráció futtatása. A futtatási konfiguráció biztosítja a modell betanításához használt képzési környezet konfigurálásához szükséges információkat. Elvégezheti a futtatási konfigurációt, a betanítási szkriptet és a számítási célt (a képzési környezetet) és a betanítási feladatot. |
     | [Automatizált gépi tanulás](#automated-machine-learning) | Az automatizált gépi tanulás lehetővé teszi a **modellek széles körű adatelemzési és programozási ismeretek nélküli tanítását**. Az adatelemzési és-programozási hátterű felhasználók számára lehetővé teszi az idő és az erőforrások megtakarítását az algoritmus kiválasztásának és a hiperparaméter hangolásának automatizálásával. Az automatizált gépi tanulás használatakor nem kell aggódnia a futtatási konfiguráció definiálásával kapcsolatban. |
@@ -92,9 +92,31 @@ A gépi tanulási folyamatok használhatják a korábban említett tanítási m�
 * [Példák: folyamat automatikus gépi tanulással](https://aka.ms/pl-automl)
 * [Példák: folyamat becslések-mel](https://aka.ms/pl-estimator)
 
+### <a name="understand-what-happens-when-you-submit-a-training-job"></a>Megtudhatja, mi történik a betanítási feladatok elküldésekor
+
+Az Azure betanítási életciklusa a következőkből áll:
+
+1. A Project mappában lévő fájlok tömörítése, figyelmen kívül hagyva a _. amlignore_ vagy _. gitignore_ fájlban megadott fájlokat.
+1. A számítási fürt méretezése 
+1. A Docker kiépítése vagy letöltése a számítási csomópontra 
+    1. A rendszer a következőképpen számítja ki a kivonatot: 
+        - A kiinduló rendszerkép 
+        - Egyéni Docker-lépések (lásd: [modell üzembe helyezése egyéni Docker-rendszerkép használatával](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-custom-docker-image))
+        - A Conda-definíció YAML (lásd: [létrehozás & a szoftveres környezetek használata Azure Machine learning](https://docs.microsoft.com/azure/machine-learning/how-to-use-environments))
+    1. A rendszer ezt a kivonatot használja a munkaterület Azure Container Registry (ACR) keresésének kulcsaként.
+    1. Ha nem található, akkor a globális ACR-beli egyezést keresi
+    1. Ha nem található, a rendszer létrehoz egy új rendszerképet (amely gyorsítótárazza és regisztrálva lesz a munkaterület ACR-ben)
+1. A tömörített projektfájl letöltése a számítási csomóponton lévő ideiglenes tárhelyre
+1. Projektfájl kicsomagolása
+1. A számítási csomópont végrehajtása`python <entry script> <arguments>`
+1. A `./outputs` munkaterülethez társított Storage-fiókba írt naplók, modellező fájlok és egyéb fájlok mentése
+1. A számítási felskálázás, beleértve az ideiglenes tárolók eltávolítását is 
+
+Ha úgy dönt, hogy a helyi gépen ("konfigurálás helyi futtatásként") van betanítva, nem szükséges a Docker használata. Ha úgy dönt, hogy helyileg használja a Docker-t (lásd a következő szakaszt: [ml folyamat konfigurálása](https://docs.microsoft.com/azure/machine-learning/how-to-debug-pipelines#configure-ml-pipeline ) példaként).
+
 ## <a name="r-sdk"></a>R SDK
 
-Az R SDK lehetővé teszi az R nyelv használatát a Azure Machine Learning. Az SDK a reticulate csomagot használja a Azure Machine Learning Python SDK-hoz való kötéshez. Ez lehetővé teszi a Python SDK-ban megvalósított alapvető objektumok és módszerek elérését bármely R-környezetből.
+Az R SDK lehetővé teszi az R nyelv használatát a Azure Machine Learning. Az SDK a reticulate csomagot használja a Azure Machine Learning Python SDK-hoz való kötéshez. Ez hozzáférést biztosít a Python SDK-ban megvalósított alapvető objektumokhoz és módszerekhez bármilyen R-környezetből.
 
 További információkért tekintse át a következő cikkeket:
 
@@ -136,6 +158,6 @@ A Machine learning parancssori felület egy bővítmény az Azure CLI-hez. Platf
 
 A VS Code bővítmény használatával futtathatja és kezelheti a betanítási feladatokat. További információt a [vs Code erőforrás-kezelési útmutatója](how-to-manage-resources-vscode.md#experiments) című témakörben talál.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan [állíthat be képzési környezeteket](how-to-set-up-training-targets.md).

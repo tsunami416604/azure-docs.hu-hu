@@ -3,12 +3,12 @@ title: Jupyter-jegyzetfüzet klónozása a GitHubról Azure Notebooks előzetes 
 description: Gyorsan klónozott Jupyter notebookot egy GitHub-adattárból, és futtathatja a Azure Notebooks-fiókjában.
 ms.topic: quickstart
 ms.date: 12/04/2018
-ms.openlocfilehash: 35352e74a8db071a2f85bd71857d47f3af1953e2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 267e79e7d4bf108ac3b2c72d64cee5a07ba638be
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85833086"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87424477"
 ---
 # <a name="quickstart-clone-a-notebook-in-azure-notebooks-preview"></a>Gyors útmutató: jegyzetfüzet klónozása Azure Notebooks előzetes verzióban
 
@@ -49,7 +49,7 @@ Nincsenek.
 
 1. A klónozás befejezése után Azure Notebooks viszi az új projektbe, ahol megtekintheti az összes fájl másolatát.
 
-    [![](media/quickstarts/completed-clone.png "View of a completed clone")](media/quickstarts/completed-clone.png#lightbox)
+    :::image type="content" source="media/quickstarts/completed-clone.png" alt-text="Egy befejezett klón nézete." lightbox="media/quickstarts/completed-clone.png":::
 
 ## <a name="share-a-notebook"></a>Jegyzetfüzet megosztása
 
@@ -71,7 +71,7 @@ Nincsenek.
 
 1. A jegyzetfüzetek kivételével a fájlok szerkesztéséhez kattintson a jobb gombbal a fájlra a projektben, és válassza a **fájl szerkesztése** (billentyűparancs: i) elemet. Az alapértelmezett művelet, **Futtatás** (billentyűparancs: r), csak a fájl tartalmát jeleníti meg, és nem teszi lehetővé a szerkesztést.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: Jupyter-jegyzetfüzet létrehozása és futtatása lineáris regresszióhoz](tutorial-create-run-jupyter-notebook.md)

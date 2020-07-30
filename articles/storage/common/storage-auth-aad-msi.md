@@ -10,12 +10,12 @@ ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 2434c5b80fedb7fd5ae61357cadf5d23f9b00934
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 6571f4351fb3410d1c10079a41b7041eb85ee5e3
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87127179"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423762"
 ---
 # <a name="authorize-access-to-blob-and-queue-data-with-managed-identities-for-azure-resources"></a>Hozzáférés engedélyezése a blob-és üzenetsor-szolgáltatásokhoz az Azure-erőforrások felügyelt identitásával
 
@@ -87,7 +87,7 @@ A `az ad sp create-for-rbac` parancs JSON formátumban adja vissza a szolgáltat
 ```
 
 > [!IMPORTANT]
-> A RBAC szerepkör-hozzárendelések eltartása néhány percet is igénybe vehet.
+> Az Azure-beli szerepkör-hozzárendelések eltartása néhány percet is igénybe vehet.
 
 #### <a name="set-environment-variables"></a>Környezeti változók beállítása
 
@@ -160,7 +160,7 @@ async static Task CreateBlockBlobAsync(string accountName, string containerName,
 > [!NOTE]
 > Az Azure AD-vel a blob-vagy üzenetsor-adatkérések engedélyezéséhez HTTPS protokollt kell használnia a kérelmekhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A tárolási és a RBAC közötti hozzáférési jogosultságok kezelése](storage-auth-aad-rbac.md).
 - [Használja az Azure ad-t a Storage-alkalmazásokhoz](storage-auth-aad-app.md).

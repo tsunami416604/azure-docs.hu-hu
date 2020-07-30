@@ -11,32 +11,34 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 10/28/2019
 ms.author: curtand
-ms.openlocfilehash: 0e74ea4a3204efb35fa6113504356e87c85aa0dd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ec050f3dfd2537f8cffde353772d61c32cb9d676
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83742099"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422366"
 ---
 # <a name="view-how-your-organization-uses-your-privacy-related-data"></a>Annak megtekintése, hogy a szervezet hogyan használja az adatvédelmet érintő adatokat
 
-Megtekintheti, hogyan használja a **szervezet az adatokat a fiókom portál** **Adatvédelem** oldaláról.
+Megtekintheti, hogyan használja a **szervezet az adatokat a fiókom portál** **Beállítások & adatvédelem** lapján.
 
 ## <a name="view-your-privacy-related-info"></a>Adatvédelemmel kapcsolatos információk megtekintése
 
 1. Jelentkezzen be a munkahelyi vagy iskolai fiókjába, majd lépjen a https://myaccount.microsoft.com/ lapra.
 
-2. Válassza az **Adatvédelem** lehetőséget a bal oldali navigációs ablaktáblán, **vagy az adatvédelmi blokkban** válassza az adatvédelem **áttekintése** hivatkozást.
+2. Válassza a **beállítások & adatvédelem** lehetőséget a bal oldali navigációs ablaktáblán, vagy válassza a beállítások **megtekintése és az adatvédelem** hivatkozását a **Beállítások & adatvédelmi** blokk menüpontban.
 
-    ![Fiókom oldal, Kiemelt adatvédelmi hivatkozások megjelenítése](media/my-account-portal/my-account-portal-privacy.png)
+    ![Fiókom oldal, Kiemelt beállítások megjelenítése & adatvédelmi hivatkozás](media/my-account-portal/my-account-portal-privacy.png)
 
-3. Tekintse át az információkat, beleértve a következőket:
+3. Válassza az **Adatvédelem**lehetőséget, ahogy az alábbi képernyőképen is látható, majd tekintse át az információkat, beleértve a következőket:
+
+    ![Beállítások & Adatvédelem lap Kiemelt adatvédelem lapjának megjelenítése](media/my-account-portal/my-account-portal-privacy-tab.png)
 
     - **Services.** A munkahelyi vagy iskolai fiókkal összekapcsolt online szolgáltatások listája.
 
     - **Használati feltételek**. A szervezet használati feltételei.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Miután megtekintette, hogy a szervezet hogyan használja az adatait, a következőket teheti:
 
@@ -47,5 +49,7 @@ Miután megtekintette, hogy a szervezet hogyan használja az adatait, a követke
 - A [szervezetek](my-account-portal-organizations-page.md)megtekintése és kezelése.
 
 - A [bejelentkezési tevékenység](my-account-portal-sign-ins-page.md)megtekintése.
+
+- A fiókom [portál beállításainak](my-account-portal-settings.md) módosítása
 
 - A Microsoft Office kapcsolatos kapcsolattartási és adatvédelmi tudnivalókat az [Office portálon, a biztonsági & adatvédelmi oldalon](https://portal.office.com/account/#security)is megtekintheti.

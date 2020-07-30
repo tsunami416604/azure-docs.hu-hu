@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Language Understanding (LUIS) lehetővé teszi a végponti kérelmek kvótájának növelését egy adott kulcs kvótája után. Ezt úgy teheti meg, hogy több kulcsot hoz létre a LUIS számára, és hozzáadja őket a LUIS-alkalmazáshoz az **erőforrások és kulcsok** szakasz **Közzététel** lapján.
 author: diberry
 manager: nitinme
-ms.custom: seodec18
+ms.custom: seodec18, devx-track-javascript
 services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 08/20/2019
 ms.author: diberry
-ms.openlocfilehash: 7726219076aee0c25c59f57003967cf2220d531f
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: f509d5f6f6e794adeee67fe632518a89882c945c
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344169"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407914"
 ---
 # <a name="use-microsoft-azure-traffic-manager-to-manage-endpoint-quota-across-keys"></a>A végpontok kvótájának kezelése Microsoft Azure Traffic Manager használatával a kulcsok között
 Language Understanding (LUIS) lehetővé teszi a végponti kérelmek kvótájának növelését egy adott kulcs kvótája után. Ezt úgy teheti meg, hogy több kulcsot hoz létre a LUIS számára, és hozzáadja őket a LUIS-alkalmazáshoz az **erőforrások és kulcsok** szakasz **Közzététel** lapján.
@@ -340,7 +340,7 @@ traffic-manager-east    6/7/2018 19:20  {"query":"traffic-manager-east","intents
 ### <a name="validate-dns-response-from-traffic-manager-works"></a>A Traffic Manager Works DNS-válaszának ellenőrzése
 Annak ellenőrzéséhez, hogy a DNS-válasz LUIS-végpontot ad vissza, a DNS-ügyfél függvénytárának használatával kérje meg a forgalmat a szülő profil DNS szolgáltatásával. A szülő profil DNS-neve: `luis-dns-parent.trafficmanager.net` .
 
-A következő Node. js-kód egy kérelmet készít a szülő profilhoz, és egy LUIS-végpontot ad vissza:
+A következő Node.js kód egy kérést küld a szülő profilhoz, és egy LUIS-végpontot ad vissza:
 
 ```javascript
 const dns = require('dns');
