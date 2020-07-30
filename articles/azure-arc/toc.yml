@@ -14,6 +14,13 @@
           href: ./kubernetes/policy-samples.md
         - name: Arc-kompatibilis kiszolgálók
           href: ./servers/policy-samples.md
+- name: Alapelvek
+  items:
+    - name: Biztonság
+      items:
+        - name: Az Azure Policy biztonsági vezérlői
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./servers/security-controls-policy.md
 - name: Útmutatók
   items:
     - name: Arc-kompatibilis Kubernetes

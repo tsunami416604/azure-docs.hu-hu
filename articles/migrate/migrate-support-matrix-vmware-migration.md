@@ -3,12 +3,12 @@ title: VMware-Migrálás támogatása Azure Migrateban
 description: További információ a VMware virtuális gépek áttelepítésének támogatásáról Azure Migrateban.
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 5b53ae811786b1712ccd833ff155c408010d4fa4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9de0609361e67d5251b25df798b61a4ab13e432c
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87022735"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387421"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>A VMware-Migrálás támogatási mátrixa
 
@@ -74,7 +74,7 @@ A táblázat összefoglalja a VMware virtuális gépek ügynök nélküli áttel
 
 ### <a name="appliance-requirements-agentless"></a>Berendezésre vonatkozó követelmények (ügynök nélküli)
 
-Az ügynök nélküli áttelepítés a [Azure Migrate készüléket](migrate-appliance.md)használja. A készüléket VMWare virtuális gépként is telepítheti egy PETESEJT-sablonnal, amely a vCenter Serverba lett importálva, vagy egy [PowerShell-parancsfájl](deploy-appliance-script.md)használatával.
+Az ügynök nélküli áttelepítés a [Azure Migrate készüléket](migrate-appliance.md)használja. A készüléket VMware virtuális gépként is telepítheti egy PETESEJT-sablonnal, amely a vCenter Serverba lett importálva, vagy egy [PowerShell-parancsfájl](deploy-appliance-script.md)használatával.
 
 - A VMware-es [készülékekre vonatkozó követelmények](migrate-appliance.md#appliance---vmware) ismertetése.
 - Ismerje meg azokat az URL-címeket, amelyekhez a készüléknek [nyilvános](migrate-appliance.md#public-cloud-urls) és [kormányzati](migrate-appliance.md#government-cloud-urls) felhőkben kell hozzáférnie.
@@ -172,6 +172,6 @@ Kapcsolat az áttelepítés után – Windows | Kapcsolódás a Windows rendszer
 Kapcsolat Migrálás után – Linux | Kapcsolódás az Azure-beli virtuális gépekhez az SSH használatával történő áttelepítés után:<br/><br/> Az áttelepítés előtt a helyszíni gépen győződjön meg arról, hogy a Secure Shell szolgáltatás indításra van beállítva, és hogy a tűzfalszabályok engedélyezik az SSH-kapcsolatokat.<br/><br/> A feladatátvételt követően az Azure-beli virtuális gépen engedélyezze az SSH-porthoz való bejövő kapcsolatokat a hálózati biztonsági csoportra vonatkozó szabályokra vonatkozóan a feladatátvételen átesett virtuális gépen, valamint azt az Azure-alhálózatot, amelyhez csatlakoztatva van.<br/><br/> Továbbá adjon hozzá egy nyilvános IP-címet a virtuális géphez.  
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Válassza ki](server-migrate-overview.md) a VMware áttelepítési lehetőséget.

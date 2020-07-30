@@ -52,9 +52,13 @@
     - name: Hozzáférés és identitás
       href: concepts-identity.md
     - name: Biztonság
-      href: concepts-security.md
-      items: null
-    - name: Hálózatkezelés
+      items:
+        - name: Alkalmazás- és fürtbiztonság
+          href: concepts-security.md
+        - name: Az Azure Policy biztonsági vezérlői
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
+    - name: Hálózat
       href: concepts-network.md
     - name: Tárolás
       href: concepts-storage.md
