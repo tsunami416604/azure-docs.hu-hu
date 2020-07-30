@@ -3,24 +3,19 @@ title: Az Azure-beli virtuális gépek használatának ismertetése
 description: A virtuális gépek használati adatainak megismerése
 services: virtual-machines
 documentationcenter: ''
-author: mmccrory
-manager: gwallace
-editor: ''
-tags: azure-virtual-machine
-ms.assetid: ''
+author: mimckitt
+ms.author: mimckitt
 ms.service: virtual-machines-linux
-ms.devlang: ''
 ms.topic: how-to
 ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
-ms.date: 12/04/2017
-ms.author: memccror
-ms.openlocfilehash: 9abb6948a91545439b429316dc2b71c14a1792d2
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.date: 07/28/2020
+ms.openlocfilehash: 30d665cc1d573ec47681599f2bde6a40864796c9
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284829"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387710"
 ---
 # <a name="understanding-azure-virtual-machine-usage"></a>Az Azure-beli virtuális gépek használatának ismertetése
 Az Azure-beli használati adatok elemzésével hatékony fogyasztási adatokat nyerhetnek ki – olyan elemzéseket készíthet, amelyek lehetővé teszik a szervezeten belüli jobb költséghatékonyságot és kiosztást. Ez a dokumentum részletesen ismerteti az Azure-beli számítási felhasználás részleteit. Az Azure általános használatának részletes ismertetését a [számla megismerése](../../cost-management-billing/understand/review-individual-bill.md)című rész ismerteti.
@@ -29,87 +24,86 @@ Az Azure-beli használati adatok elemzésével hatékony fogyasztási adatokat n
 A kezdéshez [töltse le a használati adatokat](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md#download-usage-in-azure-portal). Az alábbi táblázat a Azure Resource Manager használatával üzembe helyezett Virtual Machines használatának definícióját és példáit tartalmazza. Ez a dokumentum nem tartalmaz részletes információkat a klasszikus modellen keresztül üzembe helyezett virtuális gépekről.
 
 
-| Mezők             | Értelmezés                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | Példa értékek                                                                                                                                                                                                                                                                                                                                                   |
-|--------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Usage Date (Használat dátuma)         | Az erőforrás használatának dátuma.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |  "11/23/2017"                                                                                                                                                                                                                                                                                                                                                     |
-| Meter ID           | Meghatározza azt a legfelső szintű szolgáltatást, amelynek a használata a következőhöz tartozik:.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | "Virtual Machines"                                                                                                                                                                                                                                                                                                                                               |
-| Meter Sub-Category | A kiszámlázott mérő azonosítója. <ul><li>A számítási órák használata esetén a rendszer minden virtuálisgép-mérethez (Windows, nem Windows) és régióhoz tartozó mérőszámot használ.</li><li>A prémium szintű szoftverek használata esetén minden egyes szoftver esetében van egy mérőszám. A prémium szintű szoftverek többsége minden alapmérethez különböző mérőszámokat tartalmaz. További információért látogasson el a [számítási díjszabást ismertető oldalra.](https://azure.microsoft.com/pricing/details/virtual-machines/)</li></ul>                                                                                                                                                                                                                                                                                                                                         | "2005544f-659d-49c9-9094-8e0aea1be3a5"                                                                                                                                                                                                                                                                                                                           |
-| Meter Name         | Ez az egyes Azure-szolgáltatásokra jellemző. A számítási feladatokhoz mindig "Üzemóra".                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | "Üzemóra"                                                                                                                                                                                                                                                                                                                                                  |
-| Meter Region       | Az igénybe vett vagy üzemeltető adatközpont elhelyezkedése, ha a szolgáltatás díjszabása az adatközpontok elhelyezkedésétől is függ.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |  "JA Kelet"                                                                                                                                                                                                                                                                                                                                                       |
-| Egység               | A szolgáltatás számlázási egységét jelöli. A számítási erőforrások számlázása óránként történik.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | Óra                                                                                                                                                                                                                                                                                                                                                          |
-| Consumed (Felhasznált mennyiség)           | Az adott napra felhasznált erőforrás mennyisége. A számítási feladatokhoz minden percben a virtuális gép egy adott órában futott (legfeljebb 6 tizedesjegy pontossággal).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |    "1", "0,5"                                                                                                                                                                                                                                                                                                                                                    |
-| Resource Location  | Az az adatközpont, amelyen az erőforrás fut.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | "JA Kelet"                                                                                                                                                                                                                                                                                                                                                        |
-| Consumed Service   | Az Azure platform szolgáltatás, amelyet használt.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | "Microsoft. számítás"                                                                                                                                                                                                                                                                                                                                              |
-| Erőforráscsoport     | Az az erőforráscsoport, amelyben az üzembe helyezett erőforrás fut. További információ: [Azure Resource Manager Overview (áttekintés).]()                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |    MyRG                                                                                                                                                                                                                                                                                                                                                        |
-| Instance ID        | Az erőforrás azonosítója. Az azonosító tartalmazza az erőforrás számára a létrehozáskor megadott nevet. A virtuális gépek esetében a példány azonosítója a SubscriptionId, a ResourceGroupName és a VMName (vagy a méretezési csoportnak a méretezési csoport használatának nevét) fogja tartalmazni.                                                                                                                                                                                                                                                                                                                                                                                                                    | "/Subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyRG/Providers/Microsoft. számítás/virtualMachines/MyVM1"<br><br>vagy<br><br>"/Subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyRG/Providers/Microsoft. számítás/virtualMachineScaleSets/MyVMSS1"                                                                                           |
-| Címkék               | Az erőforráshoz hozzárendelt címke. Címkék használatával csoportosíthatja a számlázási rekordokat. Megtudhatja, hogyan [címkézheti Virtual machines.](tag.md) Ez csak Resource Manager-alapú virtuális gépek esetén érhető el.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | "{" myDepartment ":" RD "," myUser ":" myName "}"                                                                                                                                                                                                                                                                                                                        |
-| Additional Info (További információ)    | Szolgáltatásspecifikus metaadatok. Virtuális gépek esetén a további információ mezőben a következő adatokat töltjük fel: <ul><li>Képtípusra jellemző rendszerkép, amelyet futtatott. A támogatott sztringek teljes listáját megtalálja a képtípusok alatt.</li><li>Szolgáltatás típusa: a telepített méret.</li><li>VMName: a virtuális gép neve. Ez a mező csak a méretezési csoport virtuális gépei esetében van kitöltve. Ha szüksége van a virtuális gép nevére a méretezési csoport virtuális gépei számára, akkor azt a fenti AZONOSÍTÓJÚ példányban találja.</li><li>Usagetype értékre: Ez határozza meg az ezt jelképező használati típust.<ul><li>A ComputeHR az alapul szolgáló virtuális gép számítási óradíjának használata, például Standard_D1_v2.</li><li>ComputeHR_SW a prémium szintű szoftverek díja, ha a virtuális gép prémium szintű szoftvert használ, például Microsoft R Server.</li></ul></li></ul>    | Virtual Machines {"ImageType": "canonical", "ServiceType": "Standard_DS1_v2", "VMName": "", "Usagetype értékre": "ComputeHR"}<br><br>Virtual Machine Scale Sets {"ImageType": "canonical", "ServiceType": "Standard_DS1_v2", "VMName": "myVM1", "Usagetype értékre": "ComputeHR"}<br><br>Prémium szoftver {"ImageType": "", "ServiceType": "Standard_DS1_v2", "VMName": "", "Usagetype értékre": "ComputeHR_SW"} |
+| Mezők | Értelmezés | Példa értékek | 
+|---|---|---|
+| Usage Date (Használat dátuma) | Az erőforrás használatának dátuma | `11/23/2017` |
+| Meter ID | Meghatározza azt a legfelső szintű szolgáltatást, amelynek a használata a következőhöz tartozik:| `Virtual Machines`|
+| Meter Sub-Category | A kiszámlázott mérő azonosítója. <br><br> A számítási órák használata esetén a rendszer minden virtuálisgép-mérethez (Windows, nem Windows) és régióhoz tartozó mérőszámot használ. <br><br> A prémium szintű szoftverek használata esetén minden egyes szoftver esetében van egy mérőszám. A prémium szintű szoftverek többsége minden alapmérethez különböző mérőszámokat tartalmaz. További információért látogasson el a [számítási díjszabás oldalára](https://azure.microsoft.com/pricing/details/virtual-machines/) .</li></ul>| `2005544f-659d-49c9-9094-8e0aea1be3a5`|
+| Meter Name| Ez az egyes Azure-szolgáltatásokra jellemző. A számítási feladatokhoz mindig "Üzemóra".| `Compute Hours`|
+| Meter Region| Az igénybe vett vagy üzemeltető adatközpont elhelyezkedése, ha a szolgáltatás díjszabása az adatközpontok elhelyezkedésétől is függ.|  `JA East`|
+| Egység| A szolgáltatás számlázási egységét jelöli. A számítási erőforrások számlázása óránként történik.| `Hours`|
+| Consumed (Felhasznált mennyiség)| Az adott napra felhasznált erőforrás mennyisége. A számítási feladatokhoz minden percben a virtuális gép egy adott órában futott (legfeljebb 6 tizedesjegy pontossággal).| `1, 0.5`|
+| Resource Location  | Az az adatközpont, amelyen az erőforrás fut.| `JA East`|
+| Consumed Service | Az Azure platform szolgáltatás, amelyet használt.| `Microsoft.Compute`|
+| Erőforráscsoport | Az az erőforráscsoport, amelyben az üzembe helyezett erőforrás fut. További információ: [Azure Resource Manager Overview (áttekintés).](https://docs.microsoft.com/azure/azure-resource-manager/management/overview)|`MyRG`|
+| Instance ID | Az erőforrás azonosítója. Az azonosító tartalmazza az erőforrás számára a létrehozáskor megadott nevet. A virtuális gépek esetében a példány azonosítója a SubscriptionId, a ResourceGroupName és a VMName (vagy a méretezési csoportnak a méretezési csoport használatának nevét) fogja tartalmazni.| `/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/ resourceGroups/MyRG/providers/Microsoft.Compute/virtualMachines/MyVM1`<br><br>vagy<br><br>`/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/ resourceGroups/MyRG/providers/Microsoft.Compute/virtualMachineScaleSets/MyVMSS1`|
+| Címkék| Az erőforráshoz hozzárendelt címke. Címkék használatával csoportosíthatja a számlázási rekordokat. Megtudhatja, hogyan [címkézheti Virtual machines.](tag.md) Ez csak Resource Manager-alapú virtuális gépek esetén érhető el.| `{"myDepartment":"RD","myUser":"myName"}`|
+| Additional Info (További információ) | Szolgáltatásspecifikus metaadatok. Virtuális gépek esetén a további információ mezőben a következő adatokat töltjük fel: <br><br> Képtípusra jellemző rendszerkép, amelyet futtatott. A támogatott sztringek teljes listáját megtalálja a képtípusok alatt.<br><br> Szolgáltatás típusa: a telepített méret.<br><br> VMName: a virtuális gép neve. Ez a mező csak a méretezési csoport virtuális gépei esetében van kitöltve. Ha szüksége van a virtuális gép nevére a méretezési csoport virtuális gépei számára, akkor azt a fenti AZONOSÍTÓJÚ példányban találja.<br><br> Usagetype értékre: Ez határozza meg az ezt jelképező használati típust.<br><br> A ComputeHR az alapul szolgáló virtuális gép számítási óradíjának használata, például Standard_D1_v2.<br><br> ComputeHR_SW a prémium szintű szoftverek díja, ha a virtuális gép prémium szintű szoftvert használ, például Microsoft R Server. | Virtual Machines<br>`{"ImageType":"Canonical","ServiceType":"Standard_DS1_v2","VMName":"", "UsageType":"ComputeHR"}`<br><br>Virtual Machine Scale Sets<br> `{"ImageType":"Canonical","ServiceType":"Standard_DS1_v2","VMName":"myVM1", "UsageType":"ComputeHR"}`<br><br>Prémium szintű szoftver<br> `{"ImageType":"","ServiceType":"Standard_DS1_v2","VMName":"", "UsageType":"ComputeHR_SW"}` |
 
 ## <a name="image-type"></a>Rendszerkép típusa
 Az Azure-katalógusban található egyes rendszerképeknél a kép típusa a további információ mezőben lesz kitöltve. Ez lehetővé teszi a felhasználók számára, hogy megértsék és nyomon kövessék, mire vannak telepítve a virtuális gépen. A következő értékek, amelyek az üzembe helyezett lemezkép alapján jelennek meg ebben a mezőben:
-  - BitRock 
-  - Canonical 
-  - FreeBSD 
-  - Logika megnyitása 
-  - Oracle 
-  - SLES az SAP-hoz 
-  - SQL Server 14 előzetes verzió a Windows Server 2012 R2 előzetes verziójában 
-  - SUSE
-  - SUSE prémium
-  - StorSimple Cloud Appliance 
-  - Red Hat
-  - Red Hat az SAP Business Applications     
-  - Red Hat SAP HANA 
-  - Windows-ügyfél BYOL 
-  - Windows Server BYOL 
-  - Windows Server előzetes verzió 
+- BitRock 
+- Kanonikus FreeBSD 
+- Logika megnyitása 
+- Oracle 
+- SLES az SAP-hoz 
+- SQL Server 14 előzetes verzió a Windows Server 2012 R2 előzetes verziójában 
+- SUSE
+- SUSE prémium
+- StorSimple Cloud Appliance 
+- Red Hat
+- Red Hat az SAP Business Applications     
+- Red Hat SAP HANA 
+- Windows-ügyfél BYOL 
+- Windows Server BYOL 
+- Windows Server előzetes verzió 
 
 ## <a name="service-type"></a>Szolgáltatástípus
-A további információ mezőben a szolgáltatás típusa mező a telepített virtuális gép méretének felel meg. A Premium Storage virtuális gépek (SSD-alapú) és a nem prémium szintű Storage-beli virtuális gépek (HDD-alapú) díjszabása azonos. Ha SSD-alapú méretet (például standard \_ DS2 \_ v2) telepít, a nem SSD méretet ("standard \_ D2 \_ v2 virtuális gép") a mérőszám alkategóriája oszlopban és az SSD-Size ("standard \_ DS2 \_ v2") a további információ mezőben tekintheti meg.
+A további információ mezőben a szolgáltatás típusa mező a telepített virtuális gép méretének felel meg. A Premium Storage virtuális gépek (SSD-alapú) és a nem prémium szintű Storage-beli virtuális gépek (HDD-alapú) díjszabása azonos. Ha SSD-alapú méretet (például standard \_ DS2 \_ v2) helyez üzembe, a nem SSD méret () érték jelenik meg a `Standard\_D2\_v2 VM` mérési alkategória OSZLOPBAN és az SSD-Size ( `Standard\_DS2\_v2` ) a további információ mezőben.
 
 ## <a name="region-names"></a>Régiók nevei
 A használati adatok erőforrás helye mezőjében kitöltött régió neve eltér a Azure Resource Manager használt régió nevétől. Itt látható a régiók értékei közötti leképezés:
 
-|    **Resource Manager-régió neve**       |    **Erőforrás helye a használat részleteiben**    |
-|--------------------------|------------------------------------------|
-|    australiaeast         |    Ausztrália keleti régiója                               |
-|    australiasoutheast    |    Délkelet-Ausztrália                          |
-|    brazilsouth           |    Dél-Brazília                              |
-|    CanadaCentral         |    Közép-Kanada                            |
-|    CanadaEast            |    Kelet-Kanada                               |
-|    CentralIndia          |    Közép-India                            |
-|    centralus             |    USA középső régiója                            |
-|    chinaeast             |    Kelet-Kína                            |
-|    chinanorth            |    Észak-Kína                           |
-|    eastasia              |    Kelet-Ázsia                             |
-|    eastus                |    USA keleti régiója                               |
-|    eastus2               |    USA 2. keleti régiója                             |
-|    GermanyCentral        |    Közép-Németország                            |
-|    GermanyNortheast      |    Északkelet-Németország                          |
-|    japaneast             |    Kelet-Japán                               |
-|    japanwest             |    Nyugat-Japán                               |
-|    KoreaCentral          |    Korea középső régiója                            |
-|    KoreaSouth            |    Korea déli régiója                              |
-|    northcentralus        |    USA északi középső régiója                      |
-|    northeurope           |    Észak-Európa                          |
-|    southcentralus        |    USA déli középső régiója                      |
-|    southeastasia         |    Délkelet-Ázsia                        |
-|    SouthIndia            |    Dél-India                              |
-|    UKNorth               |    USA északi régiója                              |
-|    uksouth               |    Az Egyesült Királyság déli régiója                              |
-|    UKSouth2              |    Az Egyesült Királyság 2. déli régiója                            |
-|    ukwest                |    Az Egyesült Királyság nyugati régiója                               |
-|    USDoDCentral          |    US DoD – Középső régió                        |
-|    USDoDEast             |    US DoD – Kelet                           |
-|    USGovArizona          |    USGov Arizona                         |
-|    usgoviowa             |    USGov Iowa                            |
-|    USGovTexas            |    USGov Texas                           |
-|    usgovvirginia         |    USGov Virginia                        |
-|    USA nyugati középső régiója         |    USA nyugati középső régiója                       |
-|    westeurope            |    Nyugat-Európa                           |
-|    WestIndia             |    Nyugat-India                               |
-|    westus                |    USA nyugati régiója                               |
-|    westus2               |    USA 2. nyugati régiója                             |
+| **Resource Manager-régió neve** | **Erőforrás helye a használat részleteiben** |
+|---|---|
+| australiaeast |Ausztrália keleti régiója|
+| australiasoutheast | Délkelet-Ausztrália|
+| brazilsouth | Dél-Brazília|
+| CanadaCentral | Közép-Kanada|
+| CanadaEast | Kelet-Kanada|
+| CentralIndia | Közép-India|
+| centralus | USA középső régiója|
+| chinaeast | Kelet-Kína|
+| chinanorth | Észak-Kína|
+| eastasia | Kelet-Ázsia|
+| eastus | USA keleti régiója|
+| eastus2 | USA 2. keleti régiója|
+| GermanyCentral | Közép-Németország|
+| GermanyNortheast | Északkelet-Németország|
+| japaneast | Kelet-Japán|
+| japanwest | Nyugat-Japán|
+| KoreaCentral | Korea középső régiója|
+| KoreaSouth | Korea déli régiója|
+| northcentralus | USA északi középső régiója|
+| northeurope | Észak-Európa|
+| southcentralus | USA déli középső régiója|
+| southeastasia | Délkelet-Ázsia|
+| SouthIndia | Dél-India|
+| UKNorth | USA északi régiója|
+| uksouth | Az Egyesült Királyság déli régiója|
+| UKSouth2 | Az Egyesült Királyság 2. déli régiója|
+| ukwest | Az Egyesült Királyság nyugati régiója|
+| USDoDCentral | US DoD – Középső régió|
+| USDoDEast | US DoD – Kelet|
+| USGovArizona | USGov Arizona|
+| usgoviowa | USGov Iowa|
+| USGovTexas | USGov Texas|
+| usgovvirginia | USGov Virginia|
+| USA nyugati középső régiója | USA nyugati középső régiója|
+| westeurope | Nyugat-Európa|
+| WestIndia | Nyugat-India|
+| westus | USA nyugati régiója|
+| westus2 | USA 2. nyugati régiója|
 
 
 ## <a name="virtual-machine-usage-faq"></a>Virtuális gépek használata – gyakori kérdések
@@ -142,5 +136,5 @@ A klasszikus modellben az erőforrások számlázása a Cloud Service szintjén 
 ### <a name="why-is-pricing-not-available-for-dsfsgsls-sizes-on-the-pricing-page"></a>Miért nem érhető el az árképzés a DS/FS/GS/LS méretekhez a díjszabási oldalon?
 A Premium Storage-kompatibilis virtuális gépek számlázása ugyanolyan sebességgel történik, mint a nem prémium szintű Storage-kompatibilis virtuális gépek. Csak a tárolási költségek különböznek. További információért látogasson el a [Storage díjszabási oldalára](https://azure.microsoft.com/pricing/details/storage/unmanaged-disks/) .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A használati adatokkal kapcsolatos további információkért lásd: [Microsoft Azure számlájának ismertetése.](../../cost-management-billing/understand/review-individual-bill.md)

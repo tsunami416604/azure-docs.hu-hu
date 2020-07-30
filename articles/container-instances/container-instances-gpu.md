@@ -2,13 +2,13 @@
 title: GPU-t használó Container-példány üzembe helyezése
 description: Ismerje meg, hogyan helyezhet üzembe az Azure Container instances szolgáltatásban nagy számítási igényű tároló-alkalmazásokat GPU-erőforrásokkal.
 ms.topic: article
-ms.date: 07/02/2020
-ms.openlocfilehash: 3ddeb7da2667b774724fe05227cefeec5227101a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 07/22/2020
+ms.openlocfilehash: 19240560baa0cebdb6777d7b63d8c91832b12e1a
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076862"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387089"
 ---
 # <a name="deploy-container-instances-that-use-gpu-resources"></a>GPU-erőforrásokat használó tároló-példányok üzembe helyezése
 
@@ -33,9 +33,6 @@ A további régiók támogatása az idő múlásával történik.
 
 ## <a name="about-gpu-resources"></a>Tudnivalók a GPU-erőforrásokról
 
-> [!IMPORTANT]
-> A GPU-erőforrások csak kérés esetén érhetők el. Ha hozzáférést szeretne kérni a GPU-erőforrásokhoz, küldjön egy [Azure-támogatási kérést][azure-support].
-
 ### <a name="count-and-sku"></a>Darabszám és SKU
 
 Ha a GPU-t egy Container-példányban szeretné használni, egy *GPU-erőforrást* kell megadnia a következő információkkal:
@@ -52,6 +49,9 @@ Ha a GPU-t egy Container-példányban szeretné használni, egy *GPU-erőforrás
 [!INCLUDE [container-instances-gpu-limits](../../includes/container-instances-gpu-limits.md)]
 
 A GPU-erőforrások üzembe helyezése során állítsa be a számítási feladatokhoz megfelelő CPU-és memória-erőforrásokat az előző táblázatban látható maximális értékig. Ezek az értékek jelenleg nagyobbak, mint a CPU-és memória-erőforrások, amelyek GPU-erőforrások nélküli tároló-csoportokban érhetők el.  
+
+> [!IMPORTANT]
+> A GPU-erőforrások alapértelmezett [előfizetési korlátai](container-instances-quotas.md) (kvótái) az SKU-ban különböznek. A P100 és az V100 SKU-ra vonatkozó alapértelmezett CPU-korlátok kezdetben 0 értékre vannak állítva. Egy elérhető régió növelésének igényléséhez küldjön egy [Azure-támogatási kérést][azure-support].
 
 ### <a name="things-to-know"></a>Tudnivalók
 
@@ -207,7 +207,7 @@ Accuracy at step 990: 0.969
 Adding run metadata for 999
 ```
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Mivel a GPU-erőforrások használata költséges lehet, gondoskodjon arról, hogy a tárolók ne fussanak váratlanul hosszú ideig. Figyelje a tárolókat a Azure Portalban, vagy ellenőrizze egy tároló csoport állapotát az az [Container show][az-container-show] paranccsal. Például:
 
@@ -222,7 +222,7 @@ az container delete --resource-group myResourceGroup --name gpucontainergroup -y
 az container delete --resource-group myResourceGroup --name gpucontainergrouprm -y
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a Container Group [YAML-fájl](container-instances-multi-container-yaml.md) vagy [Resource Manager-sablon](container-instances-multi-container-group.md)használatával történő üzembe helyezéséről.
 * További információ a GPU-ra optimalizált virtuálisgép- [méretekről](../virtual-machines/sizes-gpu.md) az Azure-ban.

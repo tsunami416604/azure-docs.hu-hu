@@ -9,12 +9,13 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 08/17/2017
 ms.author: tagore
-ms.openlocfilehash: 25cde21d72de49c5a4f51121f2aa4295319899ac
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 33006463ed826d1efe32f8beee361eb211e9d709
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87049206"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386554"
 ---
 # <a name="build-and-deploy-a-nodejs-application-to-an-azure-cloud-service"></a>Node.js-alkalmazás létrehozása és telepítése egy Azure-felhőszolgáltatásban
 
@@ -171,7 +172,7 @@ A **Publish-AzureServiceProject**-parancsmag az alábbi lépéseket végzi el:
    > [!NOTE]
    > A szolgáltatás törlésével nem törlődik a szolgáltatás első közzétételekor létrehozott tárfiók, ezért továbbra is fizetnie kell a felhasznált tárterület után. Ha a tárterületet semmi más nem használja, megfontolhatja a törlését.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információk: [Node.js fejlesztői központ].
 
 <!-- URL List -->

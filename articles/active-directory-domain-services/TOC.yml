@@ -49,6 +49,8 @@
       href: synchronization.md
     - name: A jelszókivonat-szinkronizálás működése
       href: ../active-directory/hybrid/how-to-connect-password-hash-synchronization.md?context=/azure/active-directory-domain-services/context/azure-ad-ds-context
+    - name: Virtuális hálózatokkal kapcsolatos szempontok
+      href: network-considerations.md
     - name: A klasszikus üzemi modellű migrálás előnyei
       href: concepts-migration-benefits.md
     - name: Mi az az Azure Active Directory?
@@ -65,10 +67,6 @@
           href: create-ou.md
         - name: Csoportosan felügyelt szolgáltatásfiók (gMSA) létrehozása
           href: create-gmsa.md
-    - name: Azure AD DS tervezése
-      items:
-        - name: Virtuális hálózatokkal kapcsolatos szempontok
-          href: network-considerations.md
     - name: Azure AD DS kezelése
       items:
         - name: Csoportházirend-felügyelet

@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/03/2018
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: ae08589785d8a482801c71ce3641ba0d66d11133
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 441d830c7512b7d06c5d4f3e64dc59844b764453
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84782262"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387166"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Az Azure AD felhasználói kiépítési szolgáltatás SCIM 2,0-es protokoll-megfelelőségének ismert problémái és megoldásai
 
@@ -33,16 +33,16 @@ Ez a cikk az Azure AD-felhasználó kiépítési szolgáltatásának az SCIM 2,0
 
 | **SCIM 2,0 megfelelőségi probléma** |  **Rögzített?** | **Javítás dátuma**  |  
 |---|---|---|
-| Az Azure AD-nek a "/scim" értéknek kell lennie az alkalmazás SCIM végpont URL-címének gyökerében.  | Yes  |  December 18., 2018 | 
-| A bővítmény attribútumai a "." jelölést használják az attribútumok neve előtt a kettőspont ":" jelölése helyett |  Yes  | December 18., 2018  | 
-|  A többértékű attribútumok javítására vonatkozó kérelmek érvénytelen elérésiút-szűrési szintaxist tartalmaznak. | Yes  |  December 18., 2018  | 
-|  A csoportos létrehozási kérelmek érvénytelen séma-URI-t tartalmaznak | Yes  |  December 18., 2018  |  
+| Az Azure AD-nek a "/scim" értéknek kell lennie az alkalmazás SCIM végpont URL-címének gyökerében.  | Igen  |  December 18., 2018 | 
+| A bővítmény attribútumai a "." jelölést használják az attribútumok neve előtt a kettőspont ":" jelölése helyett |  Igen  | December 18., 2018  | 
+|  A többértékű attribútumok javítására vonatkozó kérelmek érvénytelen elérésiút-szűrési szintaxist tartalmaznak. | Igen  |  December 18., 2018  | 
+|  A csoportos létrehozási kérelmek érvénytelen séma-URI-t tartalmaznak | Igen  |  December 18., 2018  |  
 
 ## <a name="were-the-services-fixes-described-automatically-applied-to-my-pre-existing-scim-app"></a>A szolgáltatási javítások automatikusan érvénybe lépnek a meglévő SCIM-alkalmazáson?
 
 Nem. Mivel a régi viselkedéssel való együttműködéshez kódolt SCIM-alkalmazások esetében nem történt változás, a módosítások nem lettek automatikusan alkalmazva a meglévő alkalmazásokra.
 
-A módosítások a javítás után a Azure Portal konfigurált összes új, nem katalógusba [scim](../manage-apps/configure-single-sign-on-non-gallery-applications.md) alkalmazásra érvényesek.
+A módosítások a javítás után a Azure Portal konfigurált összes új, nem katalógusba SCIM alkalmazásra érvényesek.
 
 A következő szakaszban talál információt arról, hogyan telepítheti át a meglévő felhasználó-kiépítési feladatot a legújabb javítások befoglalására.
 
@@ -107,6 +107,6 @@ Igen. Ha az alkalmazást a javítások előtt meglévő régi viselkedéshez kó
 7. A szokásos módon végezze el a felhasználó kiépítési konfigurációját.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [További információ az SaaS-alkalmazásokhoz való kiépítés és kiépítés ellen](user-provisioning.md)
 

@@ -1,19 +1,19 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: iot-central
 author: dominicbetts
 ms.service: iot-central
 ms.topic: include
-ms.date: 03/12/2020
+ms.date: 07/07/2020
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 0381418f20e126f94060b9f495fe1fe8b54e713b
-ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
+ms.openlocfilehash: b32465091f82fec0aeae288ee9bfd5540bfe8b9d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85378424"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87002046"
 ---
 ## <a name="create-a-device-template"></a>Eszközsablon létrehozása
 
@@ -79,13 +79,12 @@ Az Azure IoT Central alkalmazásban adjon hozzá egy valós eszközt az előző 
 
 1. Az **eszközök** lapon válassza ki a **környezeti érzékelő** eszköz sablonját.
 
-    > [!TIP]
-    > Ügyeljen arra, hogy a **+ új**létrehozása előtt válassza ki a használni kívánt sablont, ellenkező esetben nem társított eszközt kell létrehoznia.
+1. Válassza a **+ Új** lehetőséget.
 
-1. Válassza az **+ új**lehetőséget.
+1. Az **új eszköz létrehozása** párbeszédpanelen győződjön meg arról, hogy a **környezeti érzékelő** a sablon típusa, és hogy **szimulálja ezt az eszközt?** a **nem**értékre van állítva.
 
-1. Győződjön meg arról, hogy a **szimulált** érték **ki van kapcsolva**. Ezután kattintson a **Létrehozás** elemre.
+1. Ezután válassza a **Létrehozás** elemet.
 
 Kattintson az eszköz nevére, majd válassza a **Csatlakoztatás**lehetőséget. Jegyezze fel az eszköz csatlakoztatására vonatkozó információkat az eszköz **csatlakoztatása** lapon – **azonosító hatókör**, **eszköz azonosítója**és **elsődleges kulcs**. Ezekre az értékekre szüksége lesz az eszköz kódjának létrehozásakor:
 
-![Eszköz csatlakoztatási adatai](./media/iot-central-add-environmental-sensor/device-connection.png)
+![Eszközkapcsolati adatok](./media/iot-central-add-environmental-sensor/device-connection.png)
