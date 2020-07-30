@@ -220,7 +220,7 @@ $twin.tags.deploymentLocation.floor = 1
 
 A szövegtörzsön vagy eszközön lévő, a hasznos adattartalomban vagy a tulajdonság nevében lévő időszakra vonatkozó útválasztási lekérdezés nem támogatott.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Tudnivalók az [üzenetek útválasztásáról](iot-hub-devguide-messages-d2c.md).
 * Próbálja ki az [üzenet-útválasztási oktatóanyagot](tutorial-routing.md).

@@ -106,6 +106,6 @@ a **--Mode** karakterlánc határozza meg, hogy a Azcopy kell-e tesztelni a felt
 **--a megbízható-Microsoft-utótagok** karakterlánca további tartomány-utótagokat határoz meg, amelyekben Azure Active Directory bejelentkezési tokenek küldhetők.  Az alapértelmezett érték: "*. Core.Windows.net;*. core.chinacloudapi.cn; *. Core.cloudapi.de;*. core.usgovcloudapi.net '. Az itt felsorolt beállítások az alapértelmezett értékre kerülnek. A biztonság érdekében itt csak Microsoft Azure-tartományokat helyezhet el. Több bejegyzést pontosvesszővel kell elválasztani.
 
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 - [azcopy](storage-ref-azcopy.md)

@@ -108,7 +108,7 @@ A MXChip IoT fejlesztői készlet csatlakozik a számítógéphez:
 > [!NOTE]
 > A Azure Portal: IoT hub- \> IoT Devices- \> *\<your device\>*  - \> Device Twin-eszközökön láthatók a Twin eszközök nyers adatkészletei.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Megtanulta a következőket:
 - Csatlakoztasson egy MXChip-IoT fejlesztői készlet-eszközt az Azure IoT távoli figyelési megoldásának gyorsító eszközéhez.

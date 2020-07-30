@@ -1,9 +1,9 @@
 ### YamlMime:Landing
-title: Az IoT Plug and Play előzetes verziójának dokumentációja
-summary: Az IoT Plug and Play előzetes verziójának használatával egy olyan eszközmodellt határozhat meg, amely lehetővé teszi a felhőmegoldások számára az eszköz automatikus megértését és a vele történő kommunikáció megkezdését – mindezt eszközkód írása nélkül.
+title: Az IoT Plug and Play előzetes verziójának frissítési dokumentációja
+summary: Az IoT Plug and Play használatával egy olyan eszközmodellt határozhat meg, amely lehetővé teszi a felhőmegoldások számára az eszköz automatikus megértését és a vele történő kommunikáció megkezdését.
 metadata:
-  title: Az IoT Plug and Play előzetes verziójának dokumentációja
-  description: Az IoT Plug and Play előzetes verziójának használatával egy olyan eszközmodellt határozhat meg, amely lehetővé teszi a felhőmegoldások számára az eszköz automatikus megértését és a vele történő kommunikáció megkezdését – mindezt eszközkód írása nélkül.
+  title: Az IoT Plug and Play előzetes verziójának architektúrája
+  description: Az IoT Plug and Play előzetes verziójával a megoldáskészítők manuális konfigurálás nélkül integrálhatnak eszközöket egy megoldásba. Ez a cikk bemutatja a legfontosabb architektúraelemeket, amelyek ezt lehetővé teszik.
   services: iot-pnp
   ms.service: iot-pnp
   ms.topic: landing-page
@@ -11,12 +11,12 @@ metadata:
   ms.author: dobett
   manager: philmea
   ms.date: 10/31/2019
-  ms.openlocfilehash: 9469adb901c2da5f814088aa8eb59121889a0b78
-  ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+  ms.openlocfilehash: 6fe77d059974bcc37fb0b0bbc6a171d371a93478
+  ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 04/09/2020
-  ms.locfileid: "80998291"
+  ms.lasthandoff: 07/28/2020
+  ms.locfileid: "87337364"
 landingContent:
 - title: Az IoT Plug and Play ismertetése
   linkLists:
@@ -24,51 +24,41 @@ landingContent:
     links:
     - text: Mi az IoT Plug and Play?
       url: overview-iot-plug-and-play.md
-  - linkListType: video
-    links:
-    - text: Az IoT Plug and Play bemutatása
-      url: https://channel9.msdn.com/Shows/Internet-of-Things-Show/Introduction-to-IoT-Plug-and-Play/player
-- title: Eszközök fejlesztése
+    - text: Az előzetes verzió 2020-as frissítésének újdonságai
+      url: overview-iot-plug-and-play-preview-updates.md
+- title: Eszközök felépítése
   linkLists:
   - linkListType: quickstart
     links:
-    - text: Mintaeszköz csatlakoztatása az IoT Hubhoz
-      url: quickstart-connect-pnp-device-c-windows.md
-    - text: Mintaeszköz csatlakoztatása az IoT Centralhoz
-      url: ../iot-central/core/tutorial-connect-pnp-device.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
-    - text: Eszközképesség-modell használata eszköz létrehozásához
-      url: quickstart-create-pnp-device-windows.md
-  - linkListType: tutorial
-    links:
-    - text: Eszközképesség-modell létrehozása és tesztelése a Visual Studio Code-dal
-      url: tutorial-pnp-visual-studio-code.md
-    - text: Minősítésre kész eszköz létrehozása
-      url: tutorial-build-device-certification.md
-    - text: Eszköz minősítése
-      url: tutorial-certification-test.md
-  - linkListType: how-to-guide
-    links:
-    - text: Azure IoT-eszközök használata a Visual Studio Code-hoz
-      url: howto-develop-with-vs-vscode.md
-    - text: Regisztráció az Azure Certified for IoT-portálon
-      url: howto-onboard-portal.md
+    - text: Mintaeszköz csatlakoztatása az IoT Hubhoz (C)
+      url: quickstart-connect-device-c.md
+    - text: Mintaeszköz csatlakoztatása az IoT Hubhoz (C#)
+      url: quickstart-connect-device-csharp.md
+    - text: Mintaeszköz csatlakoztatása az IoT Hubhoz (Java)
+      url: quickstart-connect-device-java.md
+    - text: Mintaeszköz csatlakoztatása az IoT Hubhoz (Node.js)
+      url: quickstart-connect-device-node.md
+    - text: Mintaeszköz csatlakoztatása az IoT Hubhoz (Python)
+      url: quickstart-connect-device-python.md
   - linkListType: concept
     links:
-    - text: Gyakori felületek
-      url: concepts-common-interfaces.md
+    - text: Fejlesztői útmutató
+      url: concepts-developer-guide.md
+    - text: Az IoT Plug and Playhez kapcsolódó konvenciók
+      url: concepts-convention.md
+    - text: Összetevők
+      url: concepts-components.md
 - title: Megoldások kiépítése
   linkLists:
   - linkListType: quickstart
     links:
-    - text: Kommunikáció a megoldáshoz csatlakozó eszközzel
-      url: quickstart-connect-pnp-device-solution-node.md
+    - text: Kommunikáció egy eszközzel a megoldásból (Node.js)
+      url: quickstart-service-node.md
+    - text: Kommunikáció egy eszközzel a megoldásból (Python)
+      url: quickstart-service-python.md
   - linkListType: concept
     links:
-    - text: Modellfelderítés
-      url: concepts-model-discovery.md
-    - text: Gyakori felületek
-      url: concepts-common-interfaces.md
-  - linkListType: how-to-guide
-    links:
-    - text: Csatlakozás eszközökhöz a megoldásból
-      url: howto-develop-solution.md
+    - text: Architektúra
+      url: concepts-architecture.md
+    - text: Digital Twins
+      url: concepts-digital-twin.md

@@ -3,7 +3,7 @@ title: A SQL Server always on rendelkezésre állási csoportok áttekintése
 description: Ez a cikk SQL Server always on rendelkezésre állási csoportokat mutatja be az Azure Virtual Machines-on.
 services: virtual-machines
 documentationCenter: na
-author: MikeRayMSFT
+author: MashaMSFT
 editor: monicar
 tags: azure-service-management
 ms.assetid: 601eebb1-fc2c-4f5b-9c05-0e6ffd0e5334
@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/13/2017
-ms.author: mikeray
+ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 50be33bf0cb89c7baff58e5f8e4a2a23b9a1ecef
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0e676e1c97c0039490137aa12b06fc88e457646f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073276"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286816"
 ---
 # <a name="introducing-sql-server-always-on-availability-groups-on-azure-virtual-machines"></a>SQL Server always on rendelkezésre állási csoportok bemutatása az Azure-on Virtual Machines
 
@@ -75,6 +75,6 @@ Saját maga is létrehozhatja a virtuális gépeket a sablon nélkül. Először
 
 - [Always On rendelkezésre állási csoport létrehozása a rendelkezésre állás és a vész-helyreállítás javítása érdekében](availability-group-manually-configure-tutorial.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [SQL Server always on rendelkezésre állási csoport konfigurálása az Azure Virtual Machines különböző régiókban](availability-group-manually-configure-multiple-regions.md)

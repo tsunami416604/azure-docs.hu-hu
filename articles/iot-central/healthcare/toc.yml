@@ -22,8 +22,6 @@
       href: howto-health-data-triage.md
     - name: Eszközök csatlakoztatása
       items:
-        - name: MXChip IoT DevKit előkészítése és csatlakoztatása
-          href: ../core/howto-connect-devkit.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
         - name: Rigado Cascade 500 előkészítése és csatlakoztatása
           href: ../core/howto-connect-rigado-cascade-500.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
         - name: Eszközkapcsolatok monitorozása az Azure CLI-vel
