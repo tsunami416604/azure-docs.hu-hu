@@ -10,12 +10,12 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 10/25/2019
-  ms.openlocfilehash: f244a01815962febf4a9ba8165b1687f500587b9
-  ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
+  ms.openlocfilehash: a036b23d460fc5c638f36ff0dbca9bcda11cd39c
+  ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 04/22/2020
-  ms.locfileid: "82024744"
+  ms.lasthandoff: 07/28/2020
+  ms.locfileid: "87335922"
 landingContent:
 - title: Kormányzati megoldások létrehozása
   linkLists:
@@ -38,13 +38,9 @@ landingContent:
     - text: Eszközsablon beállítása
       url: ../core/howto-set-up-template.md
     - text: Eszköz csatlakoztatása
-      url: ../core/tutorial-connect-device-nodejs.md
-    - text: IoT Plug and Play-eszköz (előzetes verzió) csatlakoztatása
-      url: ../core/tutorial-connect-pnp-device.md
+      url: ../core/tutorial-connect-device.md
   - linkListType: how-to-guide
     links:
-    - text: MX Chip IoT DevKit előkészítése és csatlakoztatása
-      url: ../core/howto-connect-devkit.md
     - text: Más IoT-felhők csatlakoztatása
       url: ../core/howto-build-iotc-device-bridge.md
 - title: A kapcsolat fenntartása
