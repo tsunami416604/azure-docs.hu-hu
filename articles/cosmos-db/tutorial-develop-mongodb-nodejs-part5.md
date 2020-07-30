@@ -8,14 +8,14 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 12/26/2018
 ms.author: jopapa
-ms.custom: seodec18
+ms.custom: seodec18, devx-track-javascript
 ms.reviewer: sngun
-ms.openlocfilehash: f77c20faa87adf28a2dda43412a59867309c7cf8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4c64502ac1fa4837d6052fd399fd2c44b6ab4a09
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87066920"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423881"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---use-mongoose-to-connect-to-cosmos-db"></a>Szögletes alkalmazás létrehozása Azure Cosmos DB API-jával a MongoDB-hoz való kapcsolódáshoz a mongúz használatával Cosmos DB
 
@@ -238,7 +238,7 @@ Ezután futtassa az alkalmazást az alábbi lépések végrehajtásával:
 
 Az alkalmazásban még nincsenek hősök tárolva. Az oktatóanyag következő részében a Put, a push és a DELETE funkciókat vesszük fel. Ezt követően hozzáadhat, frissíthet és törölhet hősöket a felhasználói felületen az Azure Cosmos-adatbázishoz tartozó mongúz-kapcsolatok használatával. 
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs szüksége az erőforrásokra, törölheti az erőforráscsoportot, Azure Cosmos DB fiókot és az összes kapcsolódó erőforrást. Az erőforráscsoport törléséhez kövesse az alábbi lépéseket:
 
@@ -246,7 +246,7 @@ Ha már nincs szüksége az erőforrásokra, törölheti az erőforráscsoportot
  1. Válassza az **Erőforráscsoport törlése** elemet.
  1. Erősítse meg a törölni kívánt erőforráscsoport nevét, majd válassza a **Törlés**lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Folytassa az oktatóanyag 6. részével, hogy hozzáadja a post, Put és DELETE függvényeket az alkalmazáshoz:
 

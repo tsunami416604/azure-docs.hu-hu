@@ -9,12 +9,12 @@ ms.subservice: metadata
 ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
-ms.openlocfilehash: c41c3346d04dd1fc00a7ddb9e7fea66f619995e6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c11a0ccb08f03775a07716e6c547d849cda347dd
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496054"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387336"
 ---
 # <a name="azure-synapse-analytics-shared-metadata"></a>Azure szinapszis Analytics megosztott metaadatok
 
@@ -40,7 +40,7 @@ A megosztott metaadat-modell a következő módon támogatja a modern adattárh�
 
 Az objektum szinkronizálása aszinkron módon történik. Az objektumok csak néhány másodperc elteltével fognak megjelenni az SQL-környezetben. Amint megjelentek, lekérdezheti, de nem frissítheti és nem változtathatja meg azokat az SQL-motorokat, amelyek hozzáférnek hozzájuk.
 
-## <a name="which-metadata-objects-are-shared"></a>Mely metaadat-objektumok vannak megosztva
+## <a name="shared-metadata-objects"></a>Megosztott metaadat-objektumok
 
 A Spark segítségével adatbázisok, külső táblák, felügyelt táblák és nézetek hozhatók létre. Mivel a Spark-nézetek megkövetelik, hogy a Spark-motor feldolgozza a definiált Spark SQL-utasítást, és nem dolgozható fel egy SQL-motor, csak az adatbázisok és a bennük tárolt külső és felügyelt táblák vannak megosztva a munkaterület SQL Engine használatával. A Spark-nézetek csak a Spark Pool-példányok között vannak megosztva.
 

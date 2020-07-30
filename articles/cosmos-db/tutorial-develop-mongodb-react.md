@@ -1,5 +1,5 @@
 ---
-title: MongoDB, reakciós és Node. js-oktatóanyag az Azure-hoz
+title: MongoDB, reagálás és Node.js oktatóanyag az Azure-hoz
 description: Ebben a videóalapú oktatóanyag-sorozatban megtudhatja, hogyan hozhat létre MongoDB-alkalmazásokat Azure Cosmos DB adatbázison React és Node.js használatával a MongoDB-hez használt API-kkal.
 author: johnpapa
 ms.service: cosmos-db
@@ -9,12 +9,13 @@ ms.topic: tutorial
 ms.date: 09/05/2018
 ms.author: jopapa
 ms.reviewer: sngun
-ms.openlocfilehash: 4efaa90281ddcebf1b800e1016578e38c24be651
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 8fbf06d6bd93de578039959d9f0235f1f55d448e
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "69614115"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87424273"
 ---
 # <a name="create-a-mongodb-app-with-react-and-azure-cosmos-db"></a>MongoDB-alkalmazás létrehozása a React és az Azure Cosmos DB használatával  
 
@@ -25,7 +26,7 @@ A [Azure Cosmos db](https://azure.microsoft.com/services/cosmos-db/) támogatja 
 Ez a többrészes oktatóanyag a következő feladatokon vezet végig:
 
 > [!div class="checklist"]
-> * Introduction (Bevezetés)
+> * Bevezetés
 > * A projekt beállítása
 > * A felhasználói felület létrehozása a React használatával
 > * Azure Cosmos DB-fiók létrehozása az Azure Portal használatával
@@ -40,7 +41,7 @@ Ugyanezt az alkalmazást szeretné felépíteni az Angular használatával? Lás
 ### <a name="finished-project"></a>Befejezett projekt
 Töltse le a befejezett alkalmazást a [GitHubról](https://github.com/Azure-Samples/react-cosmosdb).
 
-## <a name="introduction"></a>Introduction (Bevezetés) 
+## <a name="introduction"></a>Bevezetés 
 
 Ebben a videóban Burke Holland bevezeti az Azure Cosmos DB használatába, és végigvezeti a videósorozat során létrehozott alkalmazáson. 
 
@@ -92,7 +93,7 @@ Ha az alkalmazást már nem használja, a következő lépések használatával 
 1. Az Azure Portal bal oldali menüjében kattintson az **Erőforráscsoportok** lehetőségre, majd kattintson a létrehozott erőforrás nevére. 
 2. Az erőforráscsoport oldalán kattintson a **Törlés** elemre, írja be a törölni kívánt erőforrás nevét a szövegmezőbe, majd kattintson a **Törlés** gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 

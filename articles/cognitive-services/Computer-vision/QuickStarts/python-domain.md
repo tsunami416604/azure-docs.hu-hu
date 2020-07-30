@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
 ms.custom: seodec18, tracking-python
-ms.openlocfilehash: 1869dbd7d6c323feaed849b3d26a360e28b4f509
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.openlocfilehash: a470166d0ed172d95e80fadeb26139a702f40bb2
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84985782"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387455"
 ---
 # <a name="quickstart-use-a-domain-model-using-the-rest-api-and-python-in-computer-vision"></a>Rövid útmutató: Tartománymodell használata a REST és a Python használatával a Computer Visionben
 
@@ -90,6 +90,7 @@ image = Image.open(BytesIO(requests.get(image_url).content))
 plt.imshow(image)
 plt.axis("off")
 _ = plt.title(landmark_name, size="x-large", y=-0.1)
+plt.show()
 ```
 
 ## <a name="examine-the-response-for-the-landmarks-sample"></a>A nevezetességminta válaszainak vizsgálata
@@ -167,6 +168,7 @@ image = Image.open(BytesIO(requests.get(image_url).content))
 plt.imshow(image)
 plt.axis("off")
 _ = plt.title(celebrity_name, size="x-large", y=-0.1)
+plt.show()
 ```
 
 ## <a name="examine-the-response-for-the-celebrities-sample"></a>A hírességminta válaszainak vizsgálata
@@ -199,11 +201,11 @@ A rendszer JSON formátumban adja vissza a sikeres választ. A mintawebhely kiel
 }
 ```
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs rá szükség, törölje mindkét minta fájljait.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ezután Ismerkedjen meg egy olyan Python-alkalmazással, amely a Computer Visiont használja az optikai karakterfelismerés (OCR) végrehajtásához. intelligens vágású miniatűrök létrehozása; a képek vizuális funkcióinak felismerése, kategorizálása, címkézése és leírása.
 

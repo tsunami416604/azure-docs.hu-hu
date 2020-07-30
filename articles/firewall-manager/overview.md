@@ -7,12 +7,12 @@ services: firewall-manager
 ms.topic: overview
 ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: 8b457198655af50427545a0e93e2cfe6903131c8
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 37cbc3737b826060e96524528b065bc8d711bd8b
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85563739"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87384769"
 ---
 # <a name="what-is-azure-firewall-manager"></a>Mi az az Azure Firewall Manager?
 
@@ -76,15 +76,15 @@ A Azure Firewall házirendek a régiók között is használhatók. Létrehozhat
 
 Azure Firewall Manager a következő ismert problémákkal rendelkezik:
 
-|Probléma  |Leírás  |Kezelés  |
+|Probléma  |Leírás  |Kockázatcsökkentés  |
 |---------|---------|---------|
 |A forgalom felosztása jelenleg nem támogatott.|Az Office 365 és az Azure nyilvános Pásti forgalom felosztása jelenleg nem támogatott. Így például a V2I vagy a B2I harmadik féltől származó szolgáltatójának kiválasztásával az összes Azure nyilvános és az Office 365-alapú forgalmat a partneri szolgáltatáson keresztül küldi el.|A forgalom felosztásának kivizsgálása a központban.
 |Egy biztonságos virtuális központ régiónként.|Régiónként legfeljebb egy biztonságos virtuális központ lehet.|Több virtuális WAN-t hozhat létre egy régióban.|
 |Az alapházirendeknek ugyanabban a régióban kell lenniük, mint a helyi házirendnek.|Hozza létre az összes helyi házirendet az alapházirenddel azonos régióban. Továbbra is alkalmazhat egy olyan házirendet, amely egy másik régióban található biztonságos központ egyik régiójában lett létrehozva.|Kivizsgálás|
-|A csomópontok közötti kommunikáció nem működik a biztonságos virtuális hubhoz|A biztonságos virtuális központ védett virtuális hubhoz való kommunikációja még nem támogatott.|Kivizsgálás|
+|Helyközi kommunikáció nem a biztonságos virtuális központon keresztül történik|A biztonságos virtuális központ védett virtuális hubhoz való kommunikációja még nem támogatott, azonban a hub és a hub közötti kommunikáció továbbra is működni fog.|Kivizsgálás|
 |Az azonos virtuális WAN-t megosztó biztonságos virtuális huboknak ugyanabban az erőforráscsoporthoz kell tartoznia.|Ez a viselkedés a virtuális WAN-Hubokkal van összhangban ma.|Hozzon létre több virtuális WAN-t, amely lehetővé teszi, hogy a biztonságos virtuális hubok különböző erőforráscsoportok jöjjenek létre.|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse át a [Azure Firewall Manager üzembe helyezésének áttekintését](deployment-overview.md)
 - A [biztonságos virtuális hubok](secured-virtual-hub.md)megismerése.
