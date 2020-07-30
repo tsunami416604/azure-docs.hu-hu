@@ -40,7 +40,7 @@ A véletlen törlés megelőzése érdekében javasoljuk, hogy először állít
 
 A [diagnosztikai naplózást](data-lake-store-diagnostic-logs.md) is engedélyezheti egy Data Lake Storage Gen1-fiókhoz az adathozzáférés naplózási nyomvonalának gyűjtéséhez. A naplózási információk arról tájékoztatnak, hogy ki vagy módosított egy fájlt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Ismerkedés a Data Lake Storage Gen1](data-lake-store-get-started-portal.md)
 * [Az adatok védelme az 1. generációs Data Lake Storage-ban](data-lake-store-secure-data.md)

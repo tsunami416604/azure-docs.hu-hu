@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/29/2020
 ms.author: martinco
-ms.openlocfilehash: 7e8e12c3e10243e2e8adb23527683813f33a75a4
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: d05670d55d8a4f9ad7ab691da3f05f1c3e0cd177
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86084375"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386146"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Öt lépés a személyazonossági infrastruktúra biztonságossá tételéhez
 
@@ -35,7 +35,7 @@ Ez az ellenőrzőlista segítséget nyújt a kritikus fontosságú ajánlott mű
 Győződjön meg róla, hogy nyomon követheti, hogy mely funkciók és lépések állnak készen az ellenőrzőlista elolvasása során.
 
 > [!NOTE]
-> A jelen dokumentumban szereplő javaslatok többsége csak olyan alkalmazásokra vonatkozik, amelyek a Azure Active Directory identitás-szolgáltatóként való használatára vannak konfigurálva. Az alkalmazások egyszeri bejelentkezéshez való konfigurálása biztosítja a hitelesítő adatokra vonatkozó házirendek, a veszélyforrások észlelése, a naplózás, a naplózás és az alkalmazásokhoz hozzáadott egyéb szolgáltatások előnyeit. Az [Azure Active Directoryon keresztüli egyszeri bejelentkezés](../../active-directory/manage-apps/configure-single-sign-on-non-gallery-applications.md) az alapja – az összes javaslat alapja.
+> A jelen dokumentumban szereplő javaslatok többsége csak olyan alkalmazásokra vonatkozik, amelyek a Azure Active Directory identitás-szolgáltatóként való használatára vannak konfigurálva. Az alkalmazások egyszeri bejelentkezéshez való konfigurálása biztosítja a hitelesítő adatokra vonatkozó házirendek, a veszélyforrások észlelése, a naplózás, a naplózás és az alkalmazásokhoz hozzáadott egyéb szolgáltatások előnyeit. Az [Azure ad-alkalmazás-felügyelet](../../active-directory/manage-apps/what-is-application-management.md) az a Foundation, amelyen az összes javaslat alapul.
 
 Az ebben a dokumentumban ismertetett javaslatok az Azure AD-bérlő identitás-biztonsági konfigurációjának automatizált értékelésével vannak összhangban az [identitás biztonságos pontszámával](../../active-directory/fundamentals/identity-secure-score.md). A szervezetek az Azure AD-portálon az Identitáskezelés biztonságos pontszám lapon megtalálhatják az aktuális biztonsági konfigurációban mutatkozó hézagokat, így biztosítva, hogy az aktuális Microsoft [ajánlott biztonsági eljárásokat](identity-management-best-practices.md) követik. Az egyes javaslatok a biztonságos pontszám lapon való megvalósítása növeli a pontszámát, és lehetővé teszi az előrehaladás nyomon követését, valamint segít összehasonlítani a megvalósítást más hasonló méretű szervezetekkel vagy iparágával.
 
@@ -211,7 +211,7 @@ A biztonságos identitás-infrastruktúrának számos aspektusa van, de ez az ö
 
 Nagyra értékeljük, hogy milyen komolyan vesszük a személyazonossági biztonságot, és reméljük, hogy ez a dokumentum hasznos útiterv a szervezete számára biztonságosabb testhelyzethez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha segítségre van szüksége a javaslatok megtervezéséhez és üzembe helyezéséhez, tekintse meg az [Azure ad projekt üzembe helyezési terveit](https://aka.ms/deploymentplans) .
 

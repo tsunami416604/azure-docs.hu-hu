@@ -4,12 +4,13 @@ description: Az Azure-beli többtagú konzorcium Ethereum üzembe helyezéséhez
 ms.date: 07/23/2020
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: d75b5348c49728d2a796257fa4000f6c3a36831d
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.custom: devx-track-javascript
+ms.openlocfilehash: f0b7d056d37ffb11945a5c50e2705b5d74402007
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87124925"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386112"
 ---
 # <a name="deploy-ethereum-proof-of-authority-consortium-solution-template-on-azure"></a>Ethereum proof-of-Authority Consortium megoldási sablon üzembe helyezése az Azure-ban
 
@@ -83,11 +84,11 @@ A [Azure Portal](https://portal.azure.com)válassza az **erőforrás létrehozá
 
 Válassza a **Blockchain**  >  **Ethereum-szolgáltatói konzorcium (előzetes verzió)** lehetőséget.
 
-### <a name="basics"></a>Alapbeállítások
+### <a name="basics"></a>Alapvető beállítások
 
 Az **alapértékek területen minden**központi telepítéshez meg kell adnia a szabványos paraméterek értékét.
 
-![Alapbeállítások](./media/ethereum-poa-deployment/basic-blade.png)
+![Alapvető beállítások](./media/ethereum-poa-deployment/basic-blade.png)
 
 Paraméter | Leírás | Példaérték
 ----------|-------------|--------------
@@ -97,10 +98,10 @@ Virtuális gép felhasználóneve | Az egyes telepített virtuális gépek rends
 Hitelesítéstípus | A virtuális géphez való hitelesítés módszere. | Jelszó
 Jelszó | Az egyes telepített virtuális gépek rendszergazdai fiókjának jelszava. Az összes virtuális gép kezdetben ugyanazzal a jelszóval rendelkezik. A jelszót a kiépítés után módosíthatja. | 12-72 karakter 
 Előfizetés | Az előfizetés, amelyre a konzorcium-hálózatot telepíteni kell |
-Resource Group (Erőforráscsoport)| Az az erőforráscsoport, amelyre a konzorcium-hálózatot telepíteni kell. | myResourceGroup
+Erőforráscsoport| Az az erőforráscsoport, amelyre a konzorcium-hálózatot telepíteni kell. | myResourceGroup
 Hely | Az erőforráscsoport Azure-régiója. | USA 2. nyugati régiója
 
-Kattintson az **OK** gombra.
+Válassza az **OK** lehetőséget.
 
 ### <a name="deployment-regions"></a>Központi telepítési régiók
 
@@ -114,7 +115,7 @@ Régió (k) száma|A konzorcium-hálózat üzembe helyezéséhez szükséges ré
 Első régió | A konzorcium-hálózat üzembe helyezésének első régiója | USA 2. nyugati régiója
 Második régió | A konzorcium-hálózat üzembe helyezésének második régiója. A további régiók akkor is láthatók, ha a régiók száma kettő vagy nagyobb. | USA 2. keleti régiója
 
-Kattintson az **OK** gombra.
+Válassza az **OK** lehetőséget.
 
 ### <a name="network-size-and-performance"></a>Hálózati méret és teljesítmény
 
@@ -136,7 +137,7 @@ F1|Standard SSD|alacsony|alacsony|magas
 D2_v3|Standard SSD|közepes|közepes|közepes
 F16s|Prémium SSD|magas|magas|alacsony
 
-Kattintson az **OK** gombra.
+Válassza az **OK** lehetőséget.
 
 ### <a name="ethereum-settings"></a>Ethereum-beállítások
 
@@ -149,13 +150,13 @@ Paraméter | Leírás | Példaérték
 Konzorciumi tag azonosítója | A konzorciumi hálózaton résztvevő egyes tagokhoz tartozó azonosító. Az ütközések elkerülése érdekében az IP-címtartomány konfigurálására szolgál. Magánhálózat esetén a tagok AZONOSÍTÓjának egyedinek kell lennie az ugyanazon a hálózaton lévő különböző szervezetek között.  Egyedi tag AZONOSÍTÓra van szükség, még akkor is, ha ugyanaz a szervezet több régióban is üzembe helyezi. Jegyezze fel ennek a paraméternek az értékét, mert meg kell osztania a többi csatlakozó taggal, hogy ne legyen ütközés. Az érvényes tartomány 0 és 255 között van. | 0
 Hálózati azonosító | Az üzembe helyezett konzorcium Ethereum hálózati azonosítója. Mindegyik Ethereum-hálózat saját hálózati AZONOSÍTÓval rendelkezik, és 1 a nyilvános hálózat azonosítója. Az érvényes tartomány 5 – 999 999 999 | 10101010
 Rendszergazdai Ethereum címe | A PoA-irányításban való részvételhez használt Ethereum-fiók címe. A MetaMask használatával létrehozhat egy Ethereum-címeket. |
-Speciális beállítások | Speciális beállítások a Ethereum beállításaihoz | Engedélyezés
+Speciális beállítások | Speciális beállítások a Ethereum beállításaihoz | Bekapcsolás
 Üzembe helyezés nyilvános IP-cím használatával | Ha a privát VNet van kiválasztva, a hálózat egy VNet-átjáró mögött van telepítve, és eltávolítja a társ-hozzáférési hozzáférést. A privát VNet esetében az összes tagnak VNet-átjárót kell használnia ahhoz, hogy a kapcsolódás kompatibilis legyen. | Nyilvános IP-cím
 Gáz korlátjának letiltása | A hálózat indítási blokkjának gáz-korlátja. | 50000000
 Visszazárási időszak blokkolása (mp) | Az üres blokkok létrehozásának gyakorisága, ha nincsenek tranzakciók a hálózaton. A magasabb szintű gyakoriság gyorsabb lesz, de nagyobb a tárolási költségek. | 15
 Tranzakciós engedély szerződése | A tranzakció bytecode vonatkozó szerződés. Az intelligens szerződések üzembe helyezésének és végrehajtásának korlátozása a Ethereum-fiókok engedélyezett listájára. |
 
-Kattintson az **OK** gombra.
+Válassza az **OK** lehetőséget.
 
 ### <a name="monitoring"></a>Figyelés
 
@@ -165,15 +166,15 @@ A figyelés lehetővé teszi a hálózati naplózási erőforrás konfigurálás
 
 Paraméter | Leírás | Példaérték
 ----------|-------------|--------------
-Figyelés | A figyelés engedélyezésének lehetősége | Engedélyezés
+Figyelés | A figyelés engedélyezésének lehetősége | Bekapcsolás
 Kapcsolódás meglévő Azure Monitor naplókhoz | Lehetőség új Azure Monitor naplók példányának létrehozására vagy meglévő példányhoz való csatlakozásra | Új létrehozása
 Hely | Az új példányt telepítő régió | USA keleti régiója
 Meglévő log Analytics-munkaterület azonosítója (Csatlakozás meglévő Azure Monitor naplókhoz = csatlakozás meglévőhöz)|A meglévő Azure Monitor naplók példányának munkaterület-azonosítója||NA
 Meglévő log Analytics elsődleges kulcs (Csatlakozás meglévő Azure Monitor naplókhoz = csatlakozás meglévőhöz)|A meglévő Azure Monitor naplók példányához való kapcsolódáshoz használt elsődleges kulcs||NA
 
-Kattintson az **OK** gombra.
+Válassza az **OK** lehetőséget.
 
-### <a name="summary"></a>Összegzés
+### <a name="summary"></a>Összefoglalás
 
 Az összefoglalás segítségével tekintse át a megadott bemeneteket, és futtassa az alapszintű telepítés előtti ellenőrzést. A telepítése előtt letöltheti a sablont és a paramétereket.
 
@@ -330,7 +331,7 @@ Biztonsági okokból az SSH-port elérését alapértelmezés szerint egy háló
 
     ![SSH engedélyezése engedélyezése](./media/ethereum-poa-deployment/ssh-enable-allow.png)
 
-1. Válassza a **Mentés** lehetőséget. A módosítások alkalmazása eltarthat néhány percig.
+1. Kattintson a **Mentés** gombra. A módosítások alkalmazása eltarthat néhány percig.
 
 A megadott rendszergazdai felhasználónévvel és jelszóval/SSH-kulccsal távolról csatlakozhat az érvényesítő csomópontok virtuális gépei számára az SSH-n keresztül. Az első érvényesítő csomópont elérésére szolgáló SSH-parancs megjelenik a sablon központi telepítési kimenetében. Például:
 
@@ -738,6 +739,6 @@ Folytassa a Microsoft-mérnökökkel és az Azure Blockchain közösségi szaké
 * [A Microsoft technikai közössége](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-blockchain-workbench)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További Azure Blockchain-megoldásokért tekintse meg az [Azure Blockchain dokumentációját](../index.yml).

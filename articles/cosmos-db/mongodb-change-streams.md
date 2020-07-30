@@ -7,12 +7,13 @@ ms.subservice: cosmosdb-mongo
 ms.topic: how-to
 ms.date: 06/04/2020
 ms.author: srchi
-ms.openlocfilehash: 2028a8048830587195271675997bf4c880a3fae1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 845398744637d0e0092934248d4eb4533d7b9344
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85260763"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87415533"
 ---
 # <a name="change-streams-in-azure-cosmos-dbs-api-for-mongodb"></a>Adatfolyamok módosítása Azure Cosmos DB API-MongoDB
 
@@ -167,7 +168,7 @@ A Change streamek használatakor a következő hibakódok és üzenetek támogat
 
 * **NamespaceNotFound (OperationType-érvénytelenítés)** – ha nem létező gyűjteményen futtatja a Change streamet, vagy ha a gyűjtemény el van dobva, a `NamespaceNotFound` rendszer hibát ad vissza. Mivel a `operationType` tulajdonság nem adható vissza a kimeneti dokumentumban a hiba helyett, `operationType Invalidate` a `NamespaceNotFound` rendszer a hibát adja vissza.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A MongoDB Azure Cosmos DB API-ban való használatának ideje az élettartam lejáratára](mongodb-time-to-live.md)
 * [Indexelés Azure Cosmos DB API-MongoDB](mongodb-indexing.md)

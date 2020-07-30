@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/01/2019
 ms.author: altambaw
-ms.openlocfilehash: eb59d30079c830ad7d6f3dbd5fb8d48e6cd06c67
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 4f94c3e643e372d96a6e9d100773ccd8929e4c8b
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291863"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87416502"
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>Virtuális hálózati társak létrehozása, módosítása vagy törlése
 
@@ -86,7 +86,7 @@ A társítás módosítása előtt Ismerkedjen meg a követelményekkel és a me
 3. A **Beállítások** **területen válassza a**társítások lehetőséget.
 4. Válassza ki a megtekinteni kívánt társítást, vagy módosítsa a beállításait.
 5. Módosítsa a megfelelő beállítást. Olvassa el a társítás létrehozása című [cikk 5. lépésében](#add-peering) található egyes beállítások lehetőségeit.
-6. Válassza a **Mentés** lehetőséget.
+6. Kattintson a **Mentés** gombra.
 
 **Parancsok**
 
@@ -118,7 +118,7 @@ Ha azt szeretné, hogy a virtuális hálózatok időnként kommunikáljanak, de 
 - Globális társítások létrehozásakor a kihelyezett virtuális hálózatok bármely Azure-beli nyilvános Felhőbeli régióban, illetve a kínai Felhőbeli régiókban vagy kormányzati Felhőbeli régiókban létezhetnek. A felhők között nem lehet egyenrangú. Az Azure-beli nyilvános felhőben lévő VNet például nem lehet egy Azure China Cloud-beli VNet.
 - Az egyes virtuális hálózatok erőforrásai nem kommunikálhatnak a globálisan társított virtuális hálózat alapszintű, belső terheléselosztóinak előtérbeli IP-címével. Az alapszintű terheléselosztó csak ugyanabban a régióban támogatott. A standard terheléselosztó mindkettőhöz támogatott, a virtuális hálózatok közötti és a globális virtuális hálózatok közötti társviszonyhoz is. Az alapszintű Load balancert használó olyan szolgáltatások, amelyek nem fognak működni a globális VNet-társítással, itt vannak dokumentálva [.](virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)
 - Távoli átjárókat használhat, vagy engedélyezheti az átjárók átvitelét a globálisan működő virtuális hálózatokban és a helyileg létrehozott virtuális hálózatokban.
-- A virtuális hálózatok lehetnek azonos vagy eltérő előfizetésekben. Ha különböző előfizetésekben lévő egyenrangú virtuális hálózatokkal rendelkezik, mindkét előfizetés ugyanahhoz vagy különböző Azure Active Directory bérlőhöz is társítható. Ha még nem rendelkezik AD-Bérlővel, [létrehozhat egyet](../active-directory/develop/quickstart-create-new-tenant.md?toc=%2fazure%2fvirtual-network%2ftoc.json-a-new-azure-ad-tenant). A portálon nem érhető el a virtuális hálózatok közötti, a különböző Azure Active Directory bérlőhöz társított előfizetések közötti társítás támogatása. Használhatja a CLI-t, a PowerShellt vagy a sablonokat.
+- A virtuális hálózatok lehetnek azonos vagy eltérő előfizetésekben. Ha különböző előfizetésekben lévő egyenrangú virtuális hálózatokkal rendelkezik, mindkét előfizetés ugyanahhoz vagy különböző Azure Active Directory bérlőhöz is társítható. Ha még nem rendelkezik AD-Bérlővel, [létrehozhat egyet](../active-directory/develop/quickstart-create-new-tenant.md?toc=%2fazure%2fvirtual-network%2ftoc.json-a-new-azure-ad-tenant).
 - A társ virtuális hálózatoknak nem átfedésben lévő IP-címekkel kell rendelkezniük.
 - Ha a virtuális hálózat egy másik virtuális hálózattal van társítva, nem adhat hozzá címtartományt a virtuális hálózat címterület-tartományához, vagy törölheti a címtartományt. Címtartományok hozzáadásához vagy eltávolításához törölje a társítást, vegye fel vagy távolítsa el a címtartományt, majd hozza létre újra a társítást. Ha címtartományt szeretne hozzáadni a virtuális hálózatokból, vagy eltávolítja a címtartományt, tekintse meg a [virtuális hálózatok kezelése](manage-virtual-network.md)című témakört.
 - A Resource Manageren keresztül központilag telepített két virtuális hálózatot, illetve a Resource Manageren keresztül üzembe helyezett virtuális hálózatokat a klasszikus üzemi modellen keresztül telepített virtuális hálózattal használhatja. A klasszikus üzembe helyezési modellel létrehozott két virtuális hálózat nem használható. Ha még nem ismeri az Azure üzembe helyezési modelljeit, olvassa el az [Azure Deployment models ismertetése](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json) című cikket. A [VPN Gateway](../vpn-gateway/design.md?toc=%2fazure%2fvirtual-network%2ftoc.json#V2V) használatával összeköthető két, a klasszikus üzembehelyezési modellel létrehozott virtuális hálózat.
@@ -146,7 +146,7 @@ A virtuális hálózati társítással való együttműködéshez használt fió
 
 Ha a fiókja nincs hozzárendelve az egyik korábbi szerepkörhöz, hozzá kell rendelnie egy [Egyéni szerepkörhöz](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , amely a következő táblázat szükséges műveleteihez van rendelve:
 
-| Művelet                                                          | Név |
+| Művelet                                                          | Name |
 |---                                                              |---   |
 | Microsoft.Network/virtualNetworks/virtualNetworkPeerings/write  | Az A virtuális hálózatról a B virtuális hálózatra való társítás létrehozásához szükséges. A virtuális hálózatnak virtuális hálózatnak (Resource Manager) kell lennie.          |
 | Microsoft. Network/virtualNetworks/peer/Action                   | A (z) B virtuális hálózatról (Resource Manager) az A virtuális hálózatra való társítás létrehozásához szükséges                                                       |
@@ -154,7 +154,7 @@ Ha a fiókja nincs hozzárendelve az egyik korábbi szerepkörhöz, hozzá kell 
 | Microsoft. Network/virtualNetworks/virtualNetworkPeerings/READ   | Virtuális hálózati társak beolvasása   |
 | Microsoft. Network/virtualNetworks/virtualNetworkPeerings/delete | Virtuális hálózati társak törlése |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A virtuális hálózatok közötti társviszony az azonos vagy eltérő előfizetésekben lévő, azonos vagy eltérő üzembehelyezési modelleken keresztül létrehozott virtuális hálózatok között jön létre. Végezzen el egy oktatóanyagot a következő forgatókönyvek egyikéhez:
 

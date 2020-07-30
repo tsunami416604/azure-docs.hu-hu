@@ -17,12 +17,12 @@ ms.date: 12/12/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: d8aa6cc7894b13789fe196e32c401128572346bf
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9b97edeb34e5d245d3bcf9018399f18b096b56f4
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87019063"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420498"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Az Azure-erőforrások felügyelt identitásával kapcsolatos gyakori kérdések és ismert problémák
 
@@ -76,7 +76,7 @@ Az identitás biztonsági határa az az erőforrás, amelyhez hozzá van rendelv
 
 ### <a name="will-managed-identities-be-recreated-automatically-if-i-move-a-subscription-to-another-directory"></a>A felügyelt identitások automatikusan újra létrejönnek, ha egy előfizetést másik könyvtárba helyezek át?
 
-Nem. Ha egy előfizetést másik könyvtárba helyez át, akkor manuálisan újra létre kell hoznia őket, és újra meg kell adnia az Azure RBAC szerepkör-hozzárendeléseket.
+Nem. Ha egy előfizetést másik könyvtárba helyez át, akkor manuálisan újra létre kell hoznia őket, és újra meg kell adnia az Azure szerepkör-hozzárendeléseket.
 - A rendszerhez rendelt felügyelt identitások esetében: letiltás és újbóli engedélyezés. 
 - A felhasználóhoz rendelt felügyelt identitások esetében: törölje, hozza létre újra, majd csatolja újra a szükséges erőforrásokhoz (például virtuális gépekhez)
 

@@ -3,12 +3,13 @@ title: Az Azure Relay Node API-k áttekintése | Microsoft Docs
 description: Ez a cikk áttekintést nyújt a Azure Relay szolgáltatás Node.js API-ról. Azt is bemutatja, hogyan használható a HYCO-ws Node-csomag.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 71faa2ee143488483aff4300152aab6d1e2b2a88
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 67d818a95d63b3097f81f799a287fb4c48a1cfb7
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85316730"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386248"
 ---
 # <a name="relay-hybrid-connections-node-api-overview"></a>Relay Hibrid kapcsolatok Node API – áttekintés
 
@@ -197,7 +198,7 @@ WebSocket.relayedConnect(
 );
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha többet szeretne megtudni a Azure Relayről, tekintse meg a következő hivatkozásokat:
-* [Mi az az Azure Relay?](relay-what-is-it.md)
+* [Mi az Azure Relay?](relay-what-is-it.md)
 * [Elérhető Relay API-k](relay-api-overview.md)

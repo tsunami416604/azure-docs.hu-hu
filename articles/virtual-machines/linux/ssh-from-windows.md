@@ -117,7 +117,7 @@ Ha telepítette a [Putty letöltési csomagot](https://www.chiark.greenend.org.u
 
 4. Kattintson a **Megnyitás** gombra a virtuális géphez való kapcsolódáshoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az SSH-kulcsok használatának részletes lépéseiről, lehetőségeiről és speciális példáit az [SSH-kulcspár létrehozásának részletes lépései](create-ssh-keys-detailed.md)című cikkben tekintheti meg.
 

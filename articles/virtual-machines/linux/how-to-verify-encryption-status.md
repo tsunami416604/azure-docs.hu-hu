@@ -353,6 +353,6 @@ Továbbá megtekintheti, hogy mely **DM** -eszközök szerepelnek **Crypt**-kén
 dmsetup ls --target crypt
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure Disk Encryption – hibaelhárítás](disk-encryption-troubleshooting.md)

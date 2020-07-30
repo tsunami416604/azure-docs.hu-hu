@@ -83,6 +83,6 @@ Az alábbi kódrészlet rögzíti a folyamatot, amikor az Azure-felhasználó le
 
 ![Ügyfél lemondása a Microsoft kirakatában](media/saas-metering-service-integration-flow-e.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Marketplace metering service API-k](./marketplace-metering-service-apis.md)

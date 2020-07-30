@@ -7,14 +7,15 @@ author: mgblythe
 ms.author: mblythe
 ms.date: 01/08/2020
 ms.topic: how-to
+ms.custom: devx-track-javascript
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 338135561a462fec3b0bfc619a3518cb420908f0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d19809df7f79f1d1fa84a90d552dbe5bf2449ea5
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763992"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386894"
 ---
 # <a name="use-a-markdown-tile-on-azure-dashboards-to-show-custom-content"></a>Markdown csempe használata az Azure-irányítópultokon egyéni tartalom megjelenítéséhez
 
@@ -61,6 +62,6 @@ A Markdown csempén bármilyen egyszerű szöveg, Markdown szintaxis és HTML-ta
 * iframe elemek – `<iframe>` a címkék el lesznek távolítva.
 * Style – `<style>` a címkék el lesznek távolítva. A HTML-elemekben található beágyazott stílusú attribútumok nem támogatottak hivatalosan. Előfordulhat, hogy néhány beágyazott stílusú elem működik Önnek, de ha a portál elrendezését zavarja, bármikor leállíthatja a munkát. A Markdown csempe olyan alapszintű, statikus tartalomhoz készült, amely a portál alapértelmezett stílusait használja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Egyéni irányítópult létrehozásához tekintse meg [az irányítópultok létrehozása és megosztása a Azure Portal](../azure-portal/azure-portal-dashboards.md)

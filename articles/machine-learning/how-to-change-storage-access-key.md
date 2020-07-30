@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 06/19/2020
-ms.openlocfilehash: 1cb9600393fe50226da1efcef550cbb8b26f7f14
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: c6b8f9d7f99d49f65a45d0e09623ef2f0e1217f2
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321593"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387064"
 ---
 # <a name="regenerate-storage-account-access-keys"></a>A Storage-fiók elérési kulcsainak újragenerálása
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -26,7 +26,7 @@ Megtudhatja, hogyan módosíthatja a Azure Machine Learning által használt Azu
 Biztonsági okokból előfordulhat, hogy módosítania kell egy Azure Storage-fiók hozzáférési kulcsait. A hozzáférési kulcs újralétrehozásakor a Azure Machine Learning frissíteni kell az új kulcs használatához. A Azure Machine Learning a Storage-fiókot is használhatja mind a Model Storage, mind pedig adattárként.
 
 > [!IMPORTANT]
-> Az adattárolókkal nyilvántartó hitelesítő adatokat a rendszer a munkaterülethez társított Azure Key Vault menti. Ha a Key Vault a [Törlés](https://docs.microsoft.com/azure/key-vault/general/overview-soft-delete) engedélyezve van, ügyeljen arra, hogy a hitelesítő adatok frissítéséhez kövesse ezt a cikket. Az adattár regisztrációjának törlése és az ugyanazon a néven való újbóli regisztrálása sikertelen lesz.
+> Az adattárolókkal nyilvántartó hitelesítő adatokat a rendszer a munkaterülethez társított Azure Key Vault menti. Ha a Key Vault a [Törlés](https://docs.microsoft.com/azure/key-vault/general/soft-delete-overview) engedélyezve van, ügyeljen arra, hogy a hitelesítő adatok frissítéséhez kövesse ezt a cikket. Az adattár regisztrációjának törlése és az ugyanazon a néven való újbóli regisztrálása sikertelen lesz.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -139,6 +139,6 @@ Az új kulcs használatára Azure Machine Learning frissítéséhez kövesse az 
         
             Ha frissíti az **alapértelmezett adattár**hitelesítő adatait, hajtsa végre ezt a lépést, és ismételje meg a 2B. lépést, hogy újraszinkronizálja az új kulcsot a munkaterület alapértelmezett adattárával. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az adattárolók regisztrálásával kapcsolatos további információkért tekintse meg az [`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py) osztály referenciáját.

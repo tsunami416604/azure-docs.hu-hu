@@ -87,7 +87,7 @@ Használja a **Szerkesztés** menü **felosztás** lehetőségeit:
 1. Válassza ki azt az eseményt, amelyet le szeretne bontani az **esemény** menüjében.
 2. Válasszon egy dimenziót a **dimenzió** menüben. Ha például egy "gomb rákattintáskor" nevű eseményre van szüksége, próbálja ki a "gomb neve" nevű egyéni tulajdonságot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A használat áttekintése](usage-overview.md)
 * [Felhasználók, munkamenetek és események](usage-segmentation.md)

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/05/2020
 ms.author: allensu
-ms.openlocfilehash: 1c8acd2d8055359288608f7bd2e5f54f8c4f6cc3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 351307132e231f1fc6639333e6839848ac933337
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84809194"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420906"
 ---
 # <a name="azure-monitor-logs-for-public-basic-load-balancer"></a>Az Azure Monitor naplózza a nyilvános Alapszintű Load Balancert
 
@@ -39,8 +39,8 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Ha még nem rende
 
 1. A portálon kattintson az **erőforráscsoportok**elemre.
 2. Válassza ki **\<resource-group-name>** a terheléselosztó helyét.
-3. Válassza ki a Load balancert.
-4. Válassza a **figyelés**  >  **diagnosztikai beállítások**lehetőséget.
+3. Válassza ki a terheléselosztót.
+4. Válassza a **műveletnapló**  >  **diagnosztikai beállítások**lehetőséget.
 5. A **diagnosztika beállításai** ablaktábla **diagnosztika beállításai**területén válassza a **+ diagnosztikai beállítás hozzáadása**elemet.
 6. A **diagnosztikai beállítások** létrehozása panelen adja meg a **MyLBDiagnostics** nevet a **név** mezőben.
 7. A **diagnosztikai beállításoknak**három lehetősége van.  A követelmények közül választhat egyet, kettőt vagy mindháromat, és konfigurálhatja a következőt:
@@ -173,6 +173,6 @@ Ha a diagnosztikai adatokat egy esemény központba továbbítják, akkor a köz
 ## <a name="send-to-log-analytics"></a>Küldés a Log Analyticsnek
 Az Azure-beli erőforrásokhoz közvetlenül egy Log Analytics munkaterületre küldhetnek diagnosztikai adatokat, ahol az összetett lekérdezéseket a hibaelhárítás és az elemzés érdekében az információk alapján lehet futtatni.  További információ: az [Azure-erőforrás-naplók gyűjtése log Analytics munkaterületen Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-workspace)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [A Load Balancer vizsgálatok ismertetése](load-balancer-custom-probe-overview.md)

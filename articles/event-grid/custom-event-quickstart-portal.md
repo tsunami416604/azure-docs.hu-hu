@@ -3,12 +3,12 @@ title: 'Gyors útmutató: egyéni események küldése webes végpontra – Even
 description: 'Gyors útmutató: Azure Event Grid és Azure Portal használata egyéni témakör közzétételéhez és az adott témakör eseményeire való előfizetéshez. Az eseményeket egy webalkalmazás kezeli.'
 ms.date: 07/07/2020
 ms.topic: quickstart
-ms.openlocfilehash: 21c3d043925d328c671de19444b0fed1c6950bf1
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 592e2d6b7393da8cb55a457b022d6c2358048cfe
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86115230"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421042"
 ---
 # <a name="quickstart-route-custom-events-to-web-endpoint-with-the-azure-portal-and-event-grid"></a>Gyors útmutató: egyéni események továbbítása webes végponthoz a Azure Portal és Event Grid
 
@@ -44,7 +44,8 @@ Az Event Grid-témakörök egy felhasználó által meghatározott végpontot bi
 5. Miután az üzembe helyezés sikeres volt, írja be újra **Event Grid témaköröket** a keresősávba, és válassza a **Event Grid témakörök** lehetőséget a legördülő listából, ahogy korábban tette. 
 6. Válassza ki a listából létrehozott témakört. 
 
-    :::image type="content" source="./media/custom-event-quickstart-portal/select-event-grid-topic.png" alt-text="Válassza ki a témakört a listából":::  
+    :::image type="content" source="./media/custom-event-quickstart-portal/select-event-grid-topic.png" alt-text="Válassza ki a témakört a listából":::
+
 7. Megjelenik a témakör **Event Grid témakör** lapja. A lap nyitva tartása. Később a rövid útmutatóban is használhatja. 
 
     :::image type="content" source="./media/custom-event-quickstart-portal/event-grid-topic-home-page.png" alt-text="Event Grid témakör kezdőlapja":::
@@ -54,7 +55,7 @@ Mielőtt létrehoz egy előfizetést az egyéni témakörhöz, hozzon létre egy
 
 1. A cikk lapon válassza az **üzembe helyezés az Azure** -ban lehetőséget a megoldás előfizetésre való telepítéséhez. Az Azure Portalon adjon meg értékeket a paraméterekhez.
 
-   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
+   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"  alt="Button to Deploy to Aquent." /></a>
 1. Az üzembe helyezés befejezése eltarthat néhány percig. A sikeres üzembe helyezést követően tekintse meg a webalkalmazást, hogy meggyőződjön annak működéséről. Egy webböngészőben navigáljon a következő helyre: `https://<your-site-name>.azurewebsites.net`.
 
     Ha a telepítés sikertelen, ellenőrizze a hibaüzenetet. Ennek az lehet az oka, hogy a webhely neve már használatban van. Telepítse újra a sablont, és válasszon másik nevet a hely számára. 
@@ -179,7 +180,7 @@ A második példa a PowerShell használatával végez hasonló lépéseket.
 
 :::image type="content" source="./media/custom-event-quickstart-portal/event-grid-viewer-end.png" alt-text="Event Grid megjelenítője":::
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 Ha tovább kívánja használni az eseményt, akkor ne törölje a cikkben létrehozott erőforrásokat. Ellenkező esetben törölje a cikkben létrehozott erőforrásokat.
 
 1. Válassza az **erőforráscsoportok** lehetőséget a bal oldali menüben. Ha nem látja a bal oldali menüben, válassza a **minden szolgáltatás** lehetőséget a bal oldali menüben, és válassza az **erőforráscsoportok**lehetőséget. 

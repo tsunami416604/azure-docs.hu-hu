@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rateller
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 55e64fad910aba25354d8d7829fc1189b744ca16
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8360eae71ddd41d3105dbd037f273139262727ad
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85550488"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419563"
 ---
 # <a name="configure-and-enable-users-for-sms-based-authentication-using-azure-active-directory-preview"></a>Felhasználók konfigurálása és engedélyezése SMS-alapú hitelesítéshez Azure Active Directory használatával (előzetes verzió)
 
@@ -65,7 +65,7 @@ Először is engedélyezzük az SMS-alapú hitelesítést az Azure AD-bérlő sz
 1. Keresse meg és válassza ki az **Azure Active Directoryt**.
 1. A Azure Active Directory ablak bal oldali navigációs menüjében válassza a **biztonsági > hitelesítési módszerek > a hitelesítési módszer házirendje (előzetes verzió)** lehetőséget.
 
-    [![](media/howto-authentication-sms-signin/authentication-method-policy-cropped.png "Browse to and select the Authentication method policy (preview) window in the Azure portal")](media/howto-authentication-sms-signin/authentication-method-policy.png#lightbox)
+    [![Tallózással keresse meg és válassza ki a hitelesítési módszer házirend (előzetes verzió) ablakot a Azure Portal.](media/howto-authentication-sms-signin/authentication-method-policy-cropped.png)](media/howto-authentication-sms-signin/authentication-method-policy.png#lightbox)
 
 1. Az elérhető hitelesítési módszerek listájából válassza a **szöveges üzenet**lehetőséget.
 1. Állítsa az **Engedélyezés** beállítást *Igen*értékre.
@@ -81,7 +81,7 @@ Ha az SMS-alapú hitelesítés engedélyezve van az Azure AD-bérlőben, most v�
 1. A szöveges üzenet hitelesítési házirendje ablakban állítsa a **cél** *elemet a felhasználók kiválasztásához*.
 1. Válassza a **felhasználók vagy csoportok hozzáadása**lehetőséget, majd válasszon ki egy teszt felhasználót vagy csoportot, például *contoso felhasználói* vagy *contoso SMS-felhasználókat*.
 
-    [![](media/howto-authentication-sms-signin/add-users-or-groups-cropped.png "Choose users or groups to enable for SMS-based authentication in the Azure portal")](media/howto-authentication-sms-signin/add-users-or-groups.png#lightbox)
+    [![Válassza ki azokat a felhasználókat vagy csoportokat, akik számára engedélyezni szeretné az SMS-alapú hitelesítést a Azure Portalban.](media/howto-authentication-sms-signin/add-users-or-groups-cropped.png)](media/howto-authentication-sms-signin/add-users-or-groups.png#lightbox)
 
 1. Ha kiválasztotta a felhasználókat vagy csoportokat, válassza a **kiválasztás**lehetőséget, majd **mentse** a frissített hitelesítési módszer házirendet.
 
@@ -144,7 +144,7 @@ Ha hibaüzenet jelenik meg, amikor a Azure Portal egy felhasználói fiókhoz pr
 1. Győződjön meg arról, hogy a telefonszám nem használatos a bérlő más részén.
 1. Győződjön meg arról, hogy a fiókhoz nincs beállítva hangszám. Ha a hangszám be van állítva, törölje a telefonszámot, és próbálkozzon újra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure AD-ba való bejelentkezés további módjai jelszó nélkül, például a Microsoft Authenticator alkalmazás-vagy FIDO2 biztonsági kulcsainak használata: az [Azure ad-hez készült jelszó nélküli hitelesítési beállítások][concepts-passwordless].
 

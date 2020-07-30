@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 2b01d88a097b8b05188242109c27c696be179eb5
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 9b9a7a5b3d92833a0f24f6bc646b19110dcfd66a
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282228"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386078"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-powershell"></a>A Key Vault helyreállítható törlés funkciójának használata PowerShell-lel
 
@@ -40,7 +40,7 @@ A PowerShell-hez Key Vault konkrét referenciáért lásd: [Azure Key Vault Powe
 
 A Key Vault műveleteket a szerepköralapú hozzáférés-vezérlési (RBAC) engedélyekkel külön kezelik a következők szerint:
 
-| Művelet | Leírás | Felhasználói engedély |
+| Művelet | Description | Felhasználói engedély |
 |:--|:--|:--|
 |Lista|Felsorolja a törölt kulcstartókat.|Microsoft. kulcstartó/deletedVaults/olvasás|
 |Helyreállítás|Visszaállítja a törölt kulcstartót.|Microsoft. kulcstartó/tárolók/írás|
@@ -285,5 +285,5 @@ Set-AzResource -resourceid $resource.ResourceId -Properties $resource.Properties
 
 ## <a name="other-resources"></a>Egyéb erőforrások
 
-- A Key Vault-törlési funkció áttekintését lásd: Azure Key Vault- [Törlés – áttekintés](overview-soft-delete.md)).
+- A Key Vault-törlési funkció áttekintését lásd: Azure Key Vault- [Törlés – áttekintés](soft-delete-overview.md)).
 - A Azure Key Vault használatának általános áttekintését lásd: [Mi az a Azure Key Vault?](overview.md)).

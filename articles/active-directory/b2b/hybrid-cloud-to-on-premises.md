@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b510326b6683ae48b6521483118367f36e0dc58
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 159a14b30113a251c6ac61c4c04a2a3c4d69d3e5
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85387014"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87385211"
 ---
 # <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>B2B-felhasználók engedélyezése az Azure AD-ben a helyszíni alkalmazásokhoz való hozzáféréshez
 
@@ -28,7 +28,7 @@ Ha a helyszíni alkalmazás SAML-alapú hitelesítést használ, egyszerűen el�
 
 A következőket kell tennie:
 
-- Integrálja az SAML-alkalmazást a nem katalógusból származó alkalmazás sablonnal, az [egyszeri bejelentkezés konfigurálása olyan alkalmazásokba, amelyek nem szerepelnek a Azure Active Directory alkalmazás-gyűjteményben](../manage-apps/configure-single-sign-on-non-gallery-applications.md). Ügyeljen arra, hogy a **bejelentkezési URL-cím** értékének milyen értékét kell használnia.
+- Integrálja az alkalmazást az SAML használatával az [SAML-alapú egyszeri bejelentkezés konfigurálása](../manage-apps/configure-saml-single-sign-on.md)című cikkben leírtak szerint. Ügyeljen arra, hogy a **bejelentkezési URL-cím** értékének milyen értékét kell használnia.
 -  Az Azure AD Application Proxy használatával tegye közzé a helyszíni alkalmazást a hitelesítési forrásként konfigurált **Azure Active Directory** . Útmutatásért lásd: [alkalmazások közzététele az Azure ad Application proxy használatával](../manage-apps/application-proxy-publish-azure-portal.md). 
 
    A **belső URL-cím** beállításakor használja a nem katalógus alkalmazás sablonjában megadott bejelentkezési URL-címet. Így a felhasználók a szervezet határain kívülről is hozzáférhetnek az alkalmazáshoz. Az alkalmazásproxy végrehajtja a helyszíni alkalmazás SAML-alapú egyszeri bejelentkezését.
@@ -82,7 +82,7 @@ A szkript használata előtt győződjön meg arról, hogy áttekinti az előfel
 
 Győződjön meg arról, hogy rendelkezik a megfelelő ügyféllicencekkel a külső vendég felhasználók számára, akik hozzáférnek a helyszíni alkalmazásokhoz. További információ: az [ügyfél-hozzáférési licencek és a felügyeleti licencek](https://www.microsoft.com/licensing/product-licensing/client-access-license.aspx)"külső összekötők" szakasza. Forduljon a Microsoft képviselőjéhez vagy a helyi viszonteladóhoz az adott licencelési igényekkel kapcsolatban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure Active Directory B2B-együttműködés hibrid szervezeteknél](hybrid-organizations.md)
 

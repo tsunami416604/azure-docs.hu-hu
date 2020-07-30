@@ -3,12 +3,12 @@ title: 'GYIK: Azure Files biztonsági mentése'
 description: Ebből a cikkből megismerheti az Azure-fájlmegosztás Azure Backup szolgáltatással való védelemmel kapcsolatos gyakori kérdésekre adott válaszokat.
 ms.date: 04/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 134d9520a3c2348b23ec27c6e14eb56468f2002d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6c2ef95a6303fd061b1ce486e893ba9812b83e14
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87054976"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87382712"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Kérdések az Azure Files biztonsági mentéséről
 
@@ -34,13 +34,13 @@ Igen. A szinkronizálási csoportokhoz csatlakozó Azure-fájlmegosztás védelm
 
 Amikor megkísérli a biztonsági mentést, válassza ki azt a Storage-fiókot, amellyel a fájlmegosztást fel szeretné deríteni, regisztrálja a Storage-fiókot azzal a tárolóval, amelyről ez történik. Ha úgy dönt, hogy egy másik tárolóval gondoskodik a fájlmegosztás megosztásáról, akkor szüntesse meg a kiválasztott Storage-fiók [regisztrációját](manage-afs-backup.md#unregister-a-storage-account) ebből a tárból.
 
+### <a name="why-cant-i-change-the-vault-to-configure-backup-for-the-file-share"></a>Miért nem változtathatom meg a tárolót a fájlmegosztás biztonsági mentésének konfigurálásához?
+
+Ha a Storage-fiók már regisztrálva van egy tárolóban, vagy a Storage-fiókban lévő más fájlmegosztás is védelemmel van ellátva, akkor nincs lehetőség arra, hogy megváltoztassa, mivel a Storage-fiókban lévő összes fájlmegosztást csak ugyanazon tár tudja védeni. Ha módosítani kívánja a [tárolót, le kell állítania a Storage-fiókban lévő összes fájlmegosztás védelmét](manage-afs-backup.md#stop-protection-on-a-file-share) a csatlakoztatott tárból, [törölni](manage-afs-backup.md#unregister-a-storage-account) kell a Storage-fiókot, majd választania kell egy másik tárolót a védelemhez.
+
 ### <a name="can-i-change-the-vault-to-which-i-back-up-my-file-shares"></a>Módosíthatom azt a tárolót, amelyre biztonsági másolatot készítek a fájlmegosztást?
 
 Igen. Azonban [le kell állítania a fájlmegosztás védelmét](manage-afs-backup.md#stop-protection-on-a-file-share) a csatlakoztatott tárolóból, törölni kell a Storage-fiók [regisztrációját](manage-afs-backup.md#unregister-a-storage-account) , majd egy másik tárból kell védelemmel ellátnia.
-
-### <a name="how-many-azure-file-shares-can-i-protect-in-a-vault"></a>Hány Azure-fájlmegosztást védhetek meg egy tárban?
-
-Az Azure-fájlmegosztás akár 50 Storage-fiókkal is védhető. Ezenkívül egyetlen tárban akár 200 Azure-fájlmegosztást is megóvhat.
 
 ### <a name="can-i-protect-two-different-file-shares-from-the-same-storage-account-to-different-vaults"></a>Biztosíthatok védelmet két különböző fájlmegosztás számára ugyanabból a Storage-fiókból különböző tárolókba?
 
@@ -155,6 +155,6 @@ Amikor új házirendet alkalmaznak a fájlmegosztás esetében, az összes jöv�
 >[!NOTE]
 >A házirend módosítása csak az ütemezett biztonsági mentés részeként létrehozott helyreállítási pontokra lesz hatással. Igény szerinti biztonsági mentések esetén a megőrzési időtartamot a biztonsági mentés során megadott **megőrzési** érték határozza meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure-fájlmegosztás biztonsági mentése során felmerülő problémák elhárítása](troubleshoot-azure-files.md)

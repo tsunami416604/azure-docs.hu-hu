@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 08/20/2019
-ms.openlocfilehash: 02207f8b5cf8628c3b2bbb72ab8d38ca9a4a5731
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0e6229e38674651f3db068d30f68ef4c7e293c0a
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86504220"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386843"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Mi az Azure-SQL-adatszinkronizálás?
 
@@ -78,12 +78,12 @@ Az adatszinkronizálás nem az előnyben részesített megoldás a következő e
 
 ## <a name="compare-with-transactional-replication"></a>Összehasonlítás tranzakciós replikációval
 
-| Adatszinkronizálás | Tranzakciós replikáció |
+| | Adatszinkronizálás | Tranzakciós replikáció |
 |---|---|---|
-| Előnyök | – Aktív-aktív támogatás<br/>– A helyszíni és a Azure SQL Database közötti kétirányú irányítás | – Alacsonyabb késés<br/>– Tranzakciós konzisztencia<br/>-Meglévő topológia újrafelhasználása az áttelepítés után <br/>– Az Azure SQL felügyelt példányának támogatása |
-| Hátrányok | – 5 perc vagy több késés<br/>– Nincs tranzakciós konzisztencia<br/>– Nagyobb teljesítményre gyakorolt hatás | -Nem lehet közzétenni Azure SQL Database <br/>– Magas karbantartási díj |
+| **Előnyök** | – Aktív-aktív támogatás<br/>– A helyszíni és a Azure SQL Database közötti kétirányú irányítás | – Alacsonyabb késés<br/>– Tranzakciós konzisztencia<br/>-Meglévő topológia újrafelhasználása az áttelepítés után <br/>– Az Azure SQL felügyelt példányának támogatása |
+| **Hátrányok** | – 5 perc vagy több késés<br/>– Nincs tranzakciós konzisztencia<br/>– Nagyobb teljesítményre gyakorolt hatás | -Nem lehet közzétenni Azure SQL Database <br/>– Magas karbantartási díj |
 
-## <a name="get-started"></a>Első lépések 
+## <a name="get-started"></a>Bevezetés 
 
 ### <a name="set-up-data-sync-in-the-azure-portal"></a>Adatszinkronizálás beállítása a Azure Portal
 

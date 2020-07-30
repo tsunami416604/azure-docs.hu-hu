@@ -186,7 +186,7 @@ Egy entitás törléséhez használja a **delete_table()** metódust, majd adja 
 azure_table_service.delete_table("testtable")
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) egy ingyenes, önálló alkalmazás, amelynek segítségével vizuálisan dolgozhat Azure Storage-adatokkal Windows, macOS és Linux rendszereken.
 * [Ruby fejlesztői központ](https://azure.microsoft.com/develop/ruby/)

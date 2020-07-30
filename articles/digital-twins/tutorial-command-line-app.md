@@ -309,7 +309,7 @@ az ad app delete --id <your-application-ID>
 
 Végezetül törölje a helyi gépre letöltött Project Sample mappát.
 
-## <a name="next-steps"></a>További lépések 
+## <a name="next-steps"></a>Következő lépések 
 
 Ebben az oktatóanyagban megkezdte az Azure Digital Twins használatát egy példány és egy ügyfélalkalmazás beállításával a példánnyal való interakcióhoz. Az ügyfélalkalmazás felhasználta az Azure digitális ikrek felfedezését, a modellek, a digitális ikrek és a kapcsolatok létrehozását. Néhány lekérdezést is futtatott a megoldással kapcsolatban, hogy megtudja, milyen kérdésekre ad választ az Azure Digital Twins a környezetről.
 

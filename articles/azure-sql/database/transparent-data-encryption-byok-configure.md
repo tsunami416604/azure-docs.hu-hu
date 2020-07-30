@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: ac72e3e232ec17c4c4d810f6d2c7fed6fa84fd02
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 84166e5523cdbdb9ccebf9a0cbfc5e4dee0eb9e8
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85981328"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387132"
 ---
 # <a name="powershell-and-the-azure-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>PowerShell és az Azure CLI: transzparens adattitkosítás engedélyezése az ügyfél által felügyelt kulccsal Azure Key Vault
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -32,7 +32,7 @@ Ez a cikk bemutatja, hogyan használhatja a Azure Key Vault for transzparens ada
 - Hozzon létre egy Azure Key Vault és egy kulcsot a TDE használatához.
   - [Útmutató a hardveres biztonsági modul (HSM) és a Key Vault használatához](../../key-vault/keys/hsm-protected-keys.md)
     - A Key vaultnak a következő tulajdonságot kell használnia a TDE:
-  - a védelem eltávolítása és [törlése](../../key-vault/general/overview-soft-delete.md)
+  - a védelem eltávolítása és [törlése](../../key-vault/general/soft-delete-overview.md)
 - A kulcsnak a következő attribútumokkal kell rendelkeznie a TDE való használathoz:
   - Nincs lejárati dátum
   - Nincs letiltva
@@ -121,7 +121,7 @@ Get-AzSqlDatabaseTransparentDataEncryptionActivity -ResourceGroupName <SQLDataba
    -ServerName <LogicalServerName> -DatabaseName <DatabaseName>  
 ```
 
-# <a name="the-azure-cli"></a>[Az Azure CLI](#tab/azure-cli)
+# <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Az Azure CLI (2,0-es vagy újabb verzió) szükséges verziójának telepítéséhez és az Azure-előfizetéshez való kapcsolódáshoz lásd: [Az Azure platformfüggetlen parancssori 2,0 felületének telepítése és konfigurálása](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
@@ -207,7 +207,7 @@ az sql db tde show --database <dbname> --server <servername> --resource-group <r
    Remove-AzSqlServerKeyVaultKey -KeyId <KeyVaultKeyId> -ServerName <LogicalServerName> -ResourceGroupName <SQLDatabaseResourceGroupName>
    ```
 
-# <a name="the-azure-cli"></a>[Az Azure CLI](#tab/azure-cli)
+# <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 - Az adatbázis általános beállításai: [az SQL](/cli/azure/sql).
 
@@ -229,7 +229,7 @@ Ha probléma merül fel, ellenőrizze a következőket:
    Get-AzSubscription -SubscriptionId <SubscriptionId>
    ```
 
-   # <a name="the-azure-cli"></a>[Az Azure CLI](#tab/azure-cli)
+   # <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
    ```powershell
    az account show - s <SubscriptionId>
@@ -241,7 +241,7 @@ Ha probléma merül fel, ellenőrizze a következőket:
    - A kulcs nem rendelkezhet lejárati dátummal
    - A kulcsnak engedélyezve kell lennie a *Get*, a *wrap Key*és a *dewrap Key* műveletnek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Megtudhatja, hogyan forgathatja el egy kiszolgáló TDE-védelmezőjét a biztonsági követelményeknek való megfelelés érdekében: [a transzparens adattitkosítás Protector elforgatása a PowerShell használatával](transparent-data-encryption-byok-key-rotation.md).
 - Biztonsági kockázat esetén Ismerje meg, hogyan távolíthat el egy potenciálisan sérült TDE-védőt: [távolítson el egy potenciálisan feltört kulcsot](transparent-data-encryption-byok-remove-tde-protector.md).

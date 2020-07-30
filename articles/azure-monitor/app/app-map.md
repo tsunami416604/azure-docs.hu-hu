@@ -3,14 +3,13 @@ title: Alkalmazás-hozzárendelés az Azure Application Insightsban | Microsoft 
 description: Összetett alkalmazás-topológiák figyelése az alkalmazás-hozzárendeléssel
 ms.topic: conceptual
 ms.date: 03/15/2019
-ms.custom: devx-track-javascript
 ms.reviewer: sdash
-ms.openlocfilehash: 7e4035e382aaa3f8b5d2327054a50a5360c60bfa
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: b99998a7b1bcb2348a1a73696661de7cf8b44b85
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/29/2020
-ms.locfileid: "87367010"
+ms.locfileid: "87421297"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Alkalmazás-hozzárendelés: elosztott alkalmazások osztályozása
 
@@ -82,9 +81,12 @@ Az aktív riasztások és a riasztások indítását kiváltó alapul szolgáló
 
 ![Képernyőkép az elemzési élményről](media/app-map/alerts-view.png)
 
-## <a name="set-cloud-role-name"></a>Felhőbeli szerepkör nevének megadása
+## <a name="set-or-override-cloud-role-name"></a>Felhőbeli szerepkör nevének beállítása vagy felülbírálása
 
-Az alkalmazás-hozzárendelés a **Felhőbeli szerepkör neve** tulajdonságot használja a térképen található összetevők azonosítására. A Application Insights SDK automatikusan hozzáadja a Felhőbeli szerepkör neve tulajdonságot az összetevők által kibocsátott telemetria. Az SDK például hozzáadja a webhely nevét vagy a szolgáltatási szerepkör nevét a Felhőbeli szerepkör neve tulajdonsághoz. Vannak azonban olyan esetek, amikor érdemes lehet felülbírálni az alapértelmezett értéket. A felhő szerepkör nevének felülbírálásához és az alkalmazás-hozzárendelésben megjelenített elemek módosításához:
+Az alkalmazás-hozzárendelés a **Felhőbeli szerepkör neve** tulajdonságot használja a térképen található összetevők azonosítására. A Felhőbeli szerepkör nevének manuális beállítása vagy felülbírálása, valamint az alkalmazás-hozzárendelésben megjelenített elemek módosítása:
+
+> [!NOTE]
+> Az Application Insights SDK vagy az ügynök automatikusan hozzáadja a Cloud role Name tulajdonságot egy Azure App Service-környezetben található összetevők által kibocsátott telemetria.
 
 # <a name="netnetcore"></a>[.NET/. NetCore](#tab/net)
 
@@ -266,7 +268,7 @@ Ha nem tudja, hogy az alkalmazás-hozzárendelés a várt módon működjön, pr
 
 3. Ha a C# használatával Azure Functionst használ, frissítsen a [functions v2](../../azure-functions/functions-versions.md)-re.
 
-4. Ellenőrizze, hogy a [Felhőbeli szerepkör neve](#set-cloud-role-name) helyesen van-e konfigurálva.
+4. Ellenőrizze, hogy a [Felhőbeli szerepkör neve](#set-or-override-cloud-role-name) helyesen van-e konfigurálva.
 
 5. Ha valamelyik függőség hiányzik, ellenőrizze, hogy az [automatikusan gyűjtött függőségek](./auto-collect-dependencies.md) listájában szerepel-e. Ha nem, manuálisan úgy is nyomon követheti egy [függőségek nyomon követése hívással](./api-custom-events-metrics.md#trackdependency).
 
@@ -282,7 +284,7 @@ A probléma megoldásához módosítania kell a kialakítást, hogy megfelelően
 
 * A függőségi típusnak a függőség logikai típusát kell képviselnie. Például a HTTP, az SQL vagy az Azure Blob jellemző függőségi típusok. Nem tartalmazhat egyedi azonosítókat.
 
-* A Felhőbeli szerepkör nevét a [fenti szakasz](#set-cloud-role-name)ismerteti.
+* A Felhőbeli szerepkör nevét a [fenti szakasz](#set-or-override-cloud-role-name)ismerteti.
 
 ## <a name="portal-feedback"></a>Portál visszajelzése
 
@@ -290,7 +292,7 @@ A visszajelzések megadásához használja a visszajelzés lehetőséget.
 
 ![MapLink – 1 rendszerkép](./media/app-map/14-updated.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ha többet szeretne megtudni a korreláció működéséről Application Insights tekintse meg a [telemetria korrelációs cikkét](correlation.md).
 * A [végpontok közötti tranzakció diagnosztikai felülete](transaction-diagnostics.md) összekapcsolja az összes Application Insights figyelt összetevőből származó kiszolgálóoldali telemetria egyetlen nézetbe.

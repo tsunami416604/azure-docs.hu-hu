@@ -142,6 +142,6 @@ MANAGE_ACCOUNTS
 
 Most az Identity SDK automatikusan megosztja a hitelesítő adatokat az alkalmazásokban, és meghívja a közvetítőt, ha az eszközön van.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Tudnivalók az [egyszeri bejelentkezéses SAML protokollról](../develop/single-sign-on-saml-protocol.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)

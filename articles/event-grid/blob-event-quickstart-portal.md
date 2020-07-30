@@ -3,12 +3,12 @@ title: 'Gyors útmutató: blob Storage-események küldése a webes végpontnak 
 description: 'Gyors útmutató: Azure Event Grid és Azure Portal használatával hozzon létre blob Storage-fiókot, és regisztrálja az eseményeit. Küldje el az eseményeket egy webhookba.'
 ms.date: 07/07/2020
 ms.topic: quickstart
-ms.openlocfilehash: fe942a4daa877088bd354352aa994e4e283f9be5
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 46cd88558334239a1a9971c63b8b2608def3c4d3
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103636"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421603"
 ---
 # <a name="quickstart-route-blob-storage-events-to-web-endpoint-with-the-azure-portal"></a>Gyors útmutató: blob Storage-események átirányítása webes végpontra a Azure Portal
 
@@ -36,7 +36,7 @@ A folyamat végén látni fogja, hogy a rendszer elküldte az eseményadatokat a
     1. Válassza ki az Azure-előfizetését. 
     2. **Erőforráscsoport**esetén hozzon létre egy új erőforráscsoportot, vagy válasszon ki egy meglévőt. 
     3. Adja meg a tárfiók nevét. 
-    4. Válassza az **Áttekintés + létrehozás** lehetőséget. 
+    4. Válassza a **Felülvizsgálat és létrehozás** lehetőséget. 
 
        ![Kezdeti lépések](./media/blob-event-quickstart-portal/provide-blob-values.png)    
     5. A **felülvizsgálat + létrehozás** oldalon tekintse át a beállításokat, majd kattintson a **Létrehozás**gombra. 
@@ -50,7 +50,7 @@ A Blob Storage-eseményekre való feliratkozás előtt hozzuk létre az esemény
 
 1. A megoldásnak az előfizetésébe való telepítéséhez válassza az **Üzembe helyezés az Azure-ban** lehetőséget. 
 
-   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
+   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png" alt="Button to Deploy to Aquent." /></a>
 2. Az **Egyéni telepítés** oldalon hajtsa végre a következő lépéseket: 
     1. Az **erőforráscsoport**mezőben válassza ki a Storage-fiók létrehozásakor létrehozott erőforráscsoportot. Az oktatóanyag törlésével megkönnyíti a tisztítást, miután az erőforráscsoportot törli.  
     2. A **hely neve**mezőben adja meg a webalkalmazás nevét.
@@ -131,7 +131,7 @@ A Blob Storage-hoz egy eseményt egy fájl feltöltésével aktiválhat. A fájl
 
    ![BLOB létrehozott esemény](./media/blob-event-quickstart-portal/blob-created-event.png)
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha tovább kívánja használni az eseményt, akkor ne törölje a cikkben létrehozott erőforrásokat. Ellenkező esetben törölje a cikkben létrehozott erőforrásokat.
 

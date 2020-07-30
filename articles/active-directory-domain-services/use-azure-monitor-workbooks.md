@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 879138d882913b8ab43c5689ff72a40e6987c104
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 7d1cd032f6042f57a096c5c8e7624f66a4b01355
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223040"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419597"
 ---
 # <a name="review-security-audit-events-in-azure-active-directory-domain-services-using-azure-monitor-workbooks"></a>Biztonsági naplózási események áttekintése Azure Active Directory Domain Services Azure Monitor munkafüzetek használatával
 
@@ -75,7 +75,7 @@ A biztonsági áttekintés jelentés munkafüzet-sablonjának eléréséhez hajt
 
 1. A diagram alatti biztonsági áttekintés jelentés alsó részében a kiválasztott tevékenységtípus megszakad. A jobb oldalon lévő felhasználónevek alapján szűrheti, ahogy az alábbi példában is látható:
 
-    [![](./media/use-azure-monitor-workbooks/account-lockout-details-cropped.png "Details of account lockouts in Azure Monitor Workbooks")](./media/use-azure-monitor-workbooks/account-lockout-details.png#lightbox)
+    [![Azure Monitor-munkafüzetekben lévő fiókzárolási adatok részletei.](./media/use-azure-monitor-workbooks/account-lockout-details-cropped.png)](./media/use-azure-monitor-workbooks/account-lockout-details.png#lightbox)
 
 ## <a name="use-the-account-activity-report-workbook"></a>A fiók tevékenységi jelentés munkafüzetének használata
 
@@ -93,7 +93,7 @@ A fiók tevékenységi jelentéshez tartozó munkafüzet-sablon eléréséhez ha
 
     Az alábbi példában látható módon szűrheti a **fiók felhasználónevét**, például a *Felix*nevet:
 
-    [![](./media/use-azure-monitor-workbooks/account-activity-report-cropped.png "Account activity report in Azure Monitor Workbooks")](./media/use-azure-monitor-workbooks/account-activity-report.png#lightbox)
+    [![Fiók tevékenységi jelentése Azure Monitor munkafüzetekben.](./media/use-azure-monitor-workbooks/account-activity-report-cropped.png)](./media/use-azure-monitor-workbooks/account-activity-report.png#lightbox)
 
     A diagram alatti rész az egyes bejelentkezési eseményeket mutatja be, valamint olyan információkat, mint például a tevékenység eredménye és a forrás munkaállomás. Ezek az információk segíthetnek meghatározni a bejelentkezési események ismételt forrásait, amelyek a fiókok zárolását okozhatják, vagy potenciális támadást jelezhetnek.
 
@@ -108,7 +108,7 @@ Az Azure AD DS által biztosított két sablonos munkafüzet jó kiindulópont a
 
 Azure Monitor munkafüzetek összes diagramja és táblázata Kusto lekérdezések használatával jön létre. A saját lekérdezések létrehozásával kapcsolatos további információkért lásd: [Azure monitor log-lekérdezések][azure-monitor-queries] és [Kusto-lekérdezések oktatóanyaga][kusto-queries].
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha módosítania kell a jelszó-és a zárolási házirendeket, tekintse [meg a felügyelt tartományokra vonatkozó jelszó-és fiókzárolási házirendeket][password-policy].
 

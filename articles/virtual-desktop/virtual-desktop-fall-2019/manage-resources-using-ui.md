@@ -112,6 +112,6 @@ Az eszköz elindításához kövesse az alábbi utasításokat:
 
 Ha a felügyeleti eszközzel vagy más Windowsos virtuális asztali eszközökkel kapcsolatos problémákba ütközik, kövesse az [Azure Resource Manager-távoli asztali szolgáltatások sablonok](https://github.com/Azure/RDS-Templates/blob/master/README.md) című témakör utasításait a githubon való jelentéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte, hogyan helyezheti üzembe és csatlakozhat a felügyeleti eszközhöz, megtudhatja, hogyan használhatja az Azure szolgáltatás súgóját a szolgáltatással kapcsolatos problémák és az egészségügyi tanácsadók figyelésére. További információ: [set up Service riasztások oktatóanyaga](set-up-service-alerts-2019.md).

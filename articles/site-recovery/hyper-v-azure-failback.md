@@ -2,18 +2,18 @@
 title: A Hyper-V virtuális gépek feladatátvétele az Azure-ból Azure Site Recovery
 description: A Hyper-V virtuális gépek feladatátvétele egy helyszíni helyre az Azure-ból Azure Site Recovery használatával.
 services: site-recovery
-author: rajani-janaki-ram
-manager: gauravd
+author: Rajeswari-Mamilla
+manager: gaggupta
 ms.service: site-recovery
 ms.topic: article
 ms.date: 09/12/2019
-ms.author: rajanaki
-ms.openlocfilehash: 4b005ae308576db6fd26fcf079161430b266ec3f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: ramamill
+ms.openlocfilehash: a31a28728dd0521262bd0518cc49a385f4314302
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710252"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87416230"
 ---
 # <a name="run-a-failback-for-hyper-v-vms"></a>Feladat-visszavétel futtatása Hyper-V rendszerű virtuális gépekhez
 
@@ -29,7 +29,7 @@ Ez a cikk a Hyper-V virtuális gépek helyszíni helyről az Azure-ba történő
 2. Győződjön meg arról, hogy az Azure-beli virtuális gépek Storage-fiókot és nem felügyelt lemezeket használnak. A felügyelt lemezek használatával replikált Hyper-V virtuális gépek feladat-visszavétele nem támogatott.
 3. Ellenőrizze, hogy fut-e a helyszíni Hyper-V-gazdagép (vagy a System Center VMM-kiszolgáló, ha a Site Recovery használatával működik), és csatlakozik az Azure-hoz. 
 4. Győződjön meg arról, hogy a feladatátvétel és a végrehajtás befejeződött a virtuális gépek számára. Nem kell beállítania a Hyper-V virtuális gépek Azure-ból történő feladat-visszavételéhez szükséges konkrét Site Recovery-összetevőket.
-5. Az adatok szinkronizálásának befejezéséhez és a helyszíni virtuális gép elindításához szükséges idő számos tényezőtől függ. Az adatletöltés felgyorsításához beállíthatja, hogy a Microsoft Recovery Services-ügynök több szálat használjon a letöltés integrálással. [További információk](https://support.microsoft.com/help/3056159/how-to-manage-on-premises-to-azure-protection-network-bandwidth-usage).
+5. Az adatok szinkronizálásának befejezéséhez és a helyszíni virtuális gép elindításához szükséges idő számos tényezőtől függ. Az adatletöltés felgyorsításához beállíthatja, hogy a Microsoft Recovery Services-ügynök több szálat használjon a letöltés integrálással. [További információ](https://support.microsoft.com/help/3056159/how-to-manage-on-premises-to-azure-protection-network-bandwidth-usage).
 
 
 ## <a name="fail-back-to-the-original-location"></a>Feladat-visszavétel az eredeti helyre
@@ -81,5 +81,5 @@ A következő lépésekkel térhet vissza egy másik helyre:
     > Ha megszakítja a feladat-visszavételi feladatot az adatszinkronizálás során, a helyszíni virtuális gép sérült állapotban lesz. Ennek az az oka, hogy az adatszinkronizálás az Azure VM-lemezek legújabb adatait a helyszíni adatlemezekre másolja, és a szinkronizálás befejezéséig a lemez adatainak nem konzisztens állapotban vannak. Ha a helyszíni virtuális gép elindul az adatszinkronizálás megszakítása után, előfordulhat, hogy a rendszer nem indul el. Ebben az esetben futtassa újra a feladatátvételt az adatszinkronizálás befejezéséhez.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Miután a helyszíni virtuális gép az Azure-ba replikálódik, igény szerint [futtathat egy másik feladatátvételt](site-recovery-failover.md) az Azure-ban.

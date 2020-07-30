@@ -16,12 +16,12 @@ ms.date: 08/06/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 68372dde1cc8d124f21c83b0c67d7077a1db1a42
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4f9e52dc28d2834b479ac0580ff990119a56772a
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84743052"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422028"
 ---
 # <a name="update-or-remove-an-assigned-azure-ad-custom-role-in-privileged-identity-management"></a>Hozzárendelt Azure AD egyéni szerepkör frissítése vagy eltávolítása Privileged Identity Management
 
@@ -33,7 +33,7 @@ Ez a cikk azt ismerteti, hogyan lehet a Privileged Identity Management (PIM) has
 > [!NOTE]
 > Az Azure AD egyéni szerepkörei nincsenek integrálva az előzetes verzióban a beépített címtárbeli szerepkörökbe. Miután a képesség általánosan elérhetővé válik, a szerepkör-kezelés a beépített szerepkörök felületén történik. Ha a következő szalagcím jelenik meg, ezeket a szerepköröket [a beépített szerepkörökkel kapcsolatos felhasználói élményben](pim-how-to-add-role-to-user.md) kell kezelni, és ez a cikk nem alkalmazható:
 >
-> [![](media/pim-how-to-add-role-to-user/pim-new-version.png "Select Azure AD > Privileged Identity Management")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
+> [![Válassza az Azure AD > Privileged Identity Management lehetőséget.](media/pim-how-to-add-role-to-user/pim-new-version.png)](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
 
 ## <a name="update-or-remove-an-assignment"></a>Hozzárendelés frissítése vagy eltávolítása
 
@@ -54,7 +54,7 @@ Az alábbi lépéseket követve frissítheti vagy eltávolíthatja a meglévő e
 
     ![Válassza az Eltávolítás vagy a frissítés lehetőséget a jogosult szerepkör-hozzárendelésben](./media/azure-ad-custom-roles-update-remove/remove-update.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Egyéni Azure AD-szerepkör aktiválása](azure-ad-custom-roles-assign.md)
 - [Egyéni Azure AD-szerepkör kiosztása](azure-ad-custom-roles-assign.md)

@@ -6,25 +6,28 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 07/21/2020
-ms.openlocfilehash: d85fe36bb948ae9a0c81fa25f87450c7f5fe93b7
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 5db756b60330cdac4e43e13bfe29d9397f87af50
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337262"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421654"
 ---
 # <a name="azure-cache-for-redis-with-azure-private-link-preview"></a>Azure cache a Redis az Azure Private linkkel (előzetes verzió)
 Az Azure Private Endpoint egy olyan hálózati adapter, amely az Azure-beli privát kapcsolaton keresztül az Azure cache-hez biztosít privát és biztonságos Redis. 
 
 Ebből a cikkből megtudhatja, hogyan hozhat létre Azure cache-t, egy Azure-beli virtuális hálózatot és egy privát végpontot a Azure Portal használatával.  
 
+> [!IMPORTANT]
+> Ez az előzetes verzió szolgáltatói szerződés nélkül érhető el, és éles számítási feladatokhoz nem ajánlott. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei.](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) 
+> 
+
 ## <a name="prerequisites"></a>Előfeltételek
 * Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
 
 > [!NOTE]
-  > Ez a funkció jelenleg előzetes verzióban érhető el – [lépjen kapcsolatba velünk](mailto:azurecache@microsoft.com) , ha érdeklik.
-  >
-
+> Ez a funkció jelenleg előzetes verzióban érhető el – [lépjen kapcsolatba velünk](mailto:azurecache@microsoft.com) , ha érdeklik.
+>
 
 ## <a name="create-a-cache"></a>Gyorsítótár létrehozása
 1. Gyorsítótár létrehozásához jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és válassza az **erőforrás létrehozása**lehetőséget. 
@@ -73,7 +76,7 @@ Ebben a szakaszban létre fog hozni egy virtuális hálózatot és alhálózatot
     | Előfizetés     | Legördülő menüből válassza ki az előfizetését.                                  |
     | Erőforráscsoport   | Válassza ki a legördülő listát, és válasszon ki egy erőforráscsoportot. |
     | **Példány részletei** |                                                                 |
-    | Név             | Be**\<virtual-network-name>**                                    |
+    | Name             | Be**\<virtual-network-name>**                                    |
     | Régió           | Válassza**\<region-name>** |
 
 4. Válassza az **IP-címek** lapot, vagy válassza a **következő: IP-címek** gombot az oldal alján.
@@ -93,7 +96,7 @@ Ebben a szakaszban létre fog hozni egy virtuális hálózatot és alhálózatot
     | Alhálózat neve | Be**\<subnet-name>** |
     | Alhálózati címtartomány | Be**\<subnet-address-range>**
 
-8. Válassza a **Mentés** lehetőséget.
+8. Kattintson a **Mentés** gombra.
 
 9. Válassza a **felülvizsgálat + létrehozás** lapot, vagy kattintson a **felülvizsgálat + létrehozás** gombra.
 
@@ -124,7 +127,7 @@ Ebben a szakaszban létrehoz egy privát végpontot, és a korábban létrehozot
     | Előfizetés | Legördülő menüből válassza ki az előfizetését. |
     | Erőforráscsoport | Válassza ki a legördülő listát, és válasszon ki egy erőforráscsoportot. |
     | **PÉLDÁNY RÉSZLETEI** |  |
-    | Név |Adja meg a privát végpont nevét.  |
+    | Name |Adja meg a privát végpont nevét.  |
     | Régió |Legördülő menüből válassza ki a helyet. |
     |||
 

@@ -10,12 +10,12 @@ ms.date: 02/26/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: b4af9c23e2599ad666908763720a5f01303b8d50
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1e0b3890c50a476e4c3b3247db435c6032bf9bbc
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84805481"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87417301"
 ---
 # <a name="authorize-access-to-blob-or-queue-data-with-azure-cli"></a>Hozzáférés engedélyezése a blobhoz vagy az üzenetsor-kezeléshez az Azure CLI-vel
 
@@ -57,7 +57,7 @@ Az alábbi példa bemutatja, hogyan hozhat létre tárolót az Azure CLI-vel az 
 1. A tároló létrehozása előtt rendelje hozzá a [Storage blob adatközreműködői](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor) szerepkört saját magának. Annak ellenére, hogy Ön a fiók tulajdonosa, explicit engedélyekkel kell rendelkeznie az adatműveletek elvégzéséhez a Storage-fiókon. A RBAC-szerepkörök hozzárendelésével kapcsolatos további információkért lásd: [hozzáférés biztosítása az Azure blobhoz és üzenetsor-adatokhoz a Azure Portal RBAC](storage-auth-aad-rbac.md)használatával.
 
     > [!IMPORTANT]
-    > A RBAC szerepkör-hozzárendelések eltartása néhány percet is igénybe vehet.
+    > Az Azure-beli szerepkör-hozzárendelések eltartása néhány percet is igénybe vehet.
 
 1. Az Azure [az storage container create](/cli/azure/storage/container#az-storage-container-create) ad-beli `--auth-mode` `login` hitelesítő adataival hozza létre a tárolót az az Storage Container Create paranccsal, és állítsa a paramétert az értékre. Ne felejtse el lecserélni a helyőrző értékeket a saját értékeire a szögletes zárójelekben:
 
@@ -105,7 +105,7 @@ A környezeti változókban megadhatja az engedélyezési paramétereket, így e
 |    AZURE_STORAGE_SAS_TOKEN            |    Közös hozzáférésű aláírási (SAS) jogkivonat. Ezt a változót a Storage-fiók nevével együtt kell használni.                                                                                                                                                                                                                                                            |
 |    AZURE_STORAGE_AUTH_MODE            |    Az engedélyezési mód, amellyel a parancsot futtatni kívánja. A megengedett értékek a következők: `login` (ajánlott) vagy `key` . Ha megadja `login` , az Azure CLI az Azure ad hitelesítő adatait használja az adatok műveletének engedélyezéséhez. Ha az örökölt módot adta meg `key` , az Azure CLI megkísérli lekérdezni a fiók hozzáférési kulcsát, és engedélyezi a parancsot a kulccsal.    |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure CLI használata RBAC-szerepkör hozzárendeléséhez a blob-és üzenetsor-adathoz való hozzáféréshez](storage-auth-aad-rbac-cli.md)
 - [Hozzáférés engedélyezése a blob-és üzenetsor-szolgáltatásokhoz az Azure-erőforrások felügyelt identitásával](storage-auth-aad-msi.md)

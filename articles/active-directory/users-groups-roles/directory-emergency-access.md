@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0339d9d47752c194eeda96cd2df4859d6b97518b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e9d4f293f3835e26def97aa2f52dd0c42d9137c7
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85338286"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421722"
 ---
 # <a name="manage-emergency-access-accounts-in-azure-ad"></a>Vészhelyzeti hozzáférési fiókok kezelése az Azure AD-ben
 
@@ -56,7 +56,7 @@ A segélyhívó fiókok közül legalább egy nem rendelkezhet ugyanazzal a töb
 
 ### <a name="exclude-at-least-one-account-from-conditional-access-policies"></a>Válasszon ki legalább egy fiókot a feltételes hozzáférési házirendből
 
-Vészhelyzet esetén nem szeretné, hogy a házirend ne tiltsa le a probléma megoldásához szükséges hozzáférést. Legalább egy vészhelyzeti hozzáférési fiókot ki kell zárni az összes feltételes hozzáférési szabályzatból. Ha engedélyezte az alapkonfigurációt [, kizárhatja a](../conditional-access/baseline-protection.md)vészhelyzeti hozzáférési fiókokat.
+Vészhelyzet esetén nem szeretné, hogy a házirend ne tiltsa le a probléma megoldásához szükséges hozzáférést. Legalább egy vészhelyzeti hozzáférési fiókot ki kell zárni az összes feltételes hozzáférési szabályzatból.
 
 ## <a name="federation-guidance"></a>Összevonási útmutató
 
@@ -109,14 +109,14 @@ A szervezeteknek figyelniük kell a bejelentkezési és a naplózási tevékenys
 
         ![riasztási logika](./media/directory-emergency-access/alert-image2.png)
 
-    1. Válassza a **Done** (Kész) lehetőséget. Most már megtekintheti a riasztás becsült havi költségét.
+    1. Válassza a **Kész** lehetőséget. Most már megtekintheti a riasztás becsült havi költségét.
 1. Válassza ki a riasztás által bejelentendő felhasználók műveleti csoportját. Ha létre szeretne hozni egyet, tekintse meg [a műveleti csoport létrehozása](#create-an-action-group)című témakört.
 1. Ha testre szeretné szabni a műveleti csoport tagjainak küldött e-mailes értesítést, a műveletek **testreszabása**területen válassza a műveletek lehetőséget.
 1. A **riasztás részletei**területen adja meg a riasztási szabály nevét, és adjon hozzá egy opcionális leírást.
 1. Az esemény **súlyossági szintjének** beállítása. Javasoljuk, hogy a kritikus értékre **(0.)** állítsa be.
 1. A **szabály engedélyezése a létrehozáskor**területen hagyja a beállítást **Igen**értékre állítva.
 1. Ha egy ideig ki szeretné kapcsolni a riasztásokat, jelölje be a **riasztások mellőzése** jelölőnégyzetet, és adja meg a várakozási időtartamot a riasztás újbóli kikapcsolása előtt, majd válassza a **Mentés**lehetőséget.
-1. Kattintson a **riasztási szabály létrehozása**elemre.
+1. Kattintson a **Riasztási szabály létrehozása** lehetőségre.
 
 ### <a name="create-an-action-group"></a>Műveleti csoport létrehozása
 
@@ -150,7 +150,7 @@ Ezeket a lépéseket rendszeres időközönként és a legfontosabb változások
 - Ha a közelmúltban módosult az informatikai személyzet, például a feladatok változása, a távozás vagy egy új bérlet
 - Ha a szervezet Azure AD-előfizetései megváltoztak
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Emelt szintű hozzáférés biztosítása Azure AD hibrid- és felhőkörnyezetekhez](directory-admin-roles-secure.md)
 - [Felhasználók hozzáadása az Azure ad használatával](../fundamentals/add-users-azure-active-directory.md) és [az új felhasználó társítása a globális rendszergazdai szerepkörhöz](../fundamentals/active-directory-users-assign-role-azure-portal.md)

@@ -8,12 +8,13 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 06/05/2019
 ms.author: lbosq
-ms.openlocfilehash: 9365a71d7e5bab86b5c1d58a32510b9c5c5f15d1
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.custom: devx-track-javascript
+ms.openlocfilehash: f1e619468ecbcd533c8cda725cb316d1e2a0e256
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964532"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420430"
 ---
 # <a name="quickstart-build-a-nodejs-application-by-using-azure-cosmos-db-gremlin-api-account"></a>Gyors útmutató: Node.js-alkalmazás létrehozása Azure Cosmos DB Gremlin API-fiók használatával
 
@@ -204,7 +205,7 @@ A szűrő teszteléséhez hajtsa végre a `g.V()` függvényt a következővel: 
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta, hogyan hozhat létre egy Azure Cosmos DB fiókot, hogyan hozhat létre egy gráfot Adatkezelő használatával, és hogyan futtathat egy Node.js alkalmazást a gráfhoz való adatfelvételhez. Mostantól a Gremlin használatával összetettebb lekérdezéseket is létrehozhat, és hatékony gráfbejárási logikákat implementálhat. 
 

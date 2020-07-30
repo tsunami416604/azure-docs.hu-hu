@@ -29,7 +29,7 @@ Az **elemzés** menü **letöltések** irányítópultján minden olyan letölt�
 
 Egy előugró értesítést és e-mailt fog kapni, amely tartalmazza a **letöltések** irányítópultra mutató hivatkozást, ha több mint 1000 sornyi adatra vonatkozó letöltést kér. Ezek az adatletöltések egy 30 napos időszakra lesznek elérhetők, majd törlődnek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A partner Center kereskedelmi piactéren elérhető analitikai jelentések áttekintését lásd: [a partner Center kereskedelmi piacának elemzései](./analytics.md).
 - Az ajánlathoz tartozó Piactéri tevékenységet összefoglaló összesített adatok grafikonok, trendek és értékek esetében lásd: [az összefoglaló irányítópult a kereskedelmi piactér elemzésében](./summary-dashboard.md).

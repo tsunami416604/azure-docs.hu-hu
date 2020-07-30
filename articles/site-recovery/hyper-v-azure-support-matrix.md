@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 7/14/2020
 ms.author: raynew
-ms.openlocfilehash: 268d8f3b43809e02476757cfe36b1ee52d4eaef1
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 53967ab0bec9488691ff60cdabb8fedbb6b9730e
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87317484"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386707"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>A helyszíni Hyper-V virtuális gépek Azure-ba való vész-helyreállításának támogatási mátrixa
 
@@ -32,8 +32,8 @@ Hyper-V Virtual Machine Manager nélkül | A nem a Virtual Machine Manager álta
 
 **Kiszolgáló** | **Követelmények** | **Részletek**
 --- | --- | ---
-Hyper-V (Virtual Machine Manager nélkül fut) |  Windows Server 2019, Windows Server 2016, Windows Server 2012 R2 a legújabb frissítésekkel (beleértve az operációs rendszerek Server Core telepítését) | Ha már konfigurálta a Windows Server 2012 R2-t a/vagy a SCVMM 2012 R2-vel Azure Site Recovery és tervezi az operációs rendszer frissítését, kövesse az útmutató [dokumentációját.](upgrade-2012R2-to-2016.md)
-Hyper-V (fut Virtual Machine Manager) | Virtual Machine Manager 2019, Virtual Machine Manager 2016, Virtual Machine Manager 2012 R2 (beleértve az ezen operációs rendszerek Server Core telepítését, kivéve Virtual Machine Manager 2019) | Ha Virtual Machine Manager van használatban, a Windows Server 2019-gazdagépeket Virtual Machine Manager 2019-ben kell felügyelni. Hasonlóképpen, a Windows Server 2016-gazdagépeket Virtual Machine Manager 2016-ben kell felügyelni.
+Hyper-V (Virtual Machine Manager nélkül fut) |  Windows Server 2019, Windows Server 2016, Windows Server 2012 R2 a legújabb frissítésekkel <br/><br/> **Megjegyzés:** Ezen operációs rendszerek Server Core telepítése is támogatott. | Ha már konfigurálta a Windows Server 2012 R2-t a/vagy a SCVMM 2012 R2-vel Azure Site Recovery és tervezi az operációs rendszer frissítését, kövesse az útmutató [dokumentációját.](upgrade-2012R2-to-2016.md)
+Hyper-V (fut Virtual Machine Manager) | Virtual Machine Manager 2019, Virtual Machine Manager 2016, Virtual Machine Manager 2012 R2 <br/><br/> **Megjegyzés:** Ezen operációs rendszerek Server Core telepítése is támogatott.  | Ha Virtual Machine Manager van használatban, a Windows Server 2019-gazdagépeket Virtual Machine Manager 2019-ben kell felügyelni. Hasonlóképpen, a Windows Server 2016-gazdagépeket Virtual Machine Manager 2016-ben kell felügyelni.
 
 > [!NOTE]
 > Győződjön meg arról, hogy a .NET-keretrendszer 4.6.2 vagy újabb verziója megtalálható a helyszíni kiszolgálón.
@@ -198,5 +198,5 @@ Microsoft Azure Recovery Services-ügynök | A Hyper-V virtuális gépek és az 
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ismerje meg, hogyan [készítheti elő az Azure](tutorial-prepare-azure.md) -t a helyszíni Hyper-V virtuális gépek vész-helyreállításához.

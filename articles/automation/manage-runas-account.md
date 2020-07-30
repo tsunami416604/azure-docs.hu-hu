@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 06/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: 84f2ef1fc318e53914b1510870d0399cfbfa87e9
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: a3f48c9f15d12fbfc41ac8baf589f8579f259377
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86185279"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421484"
 ---
 # <a name="manage-an-azure-automation-run-as-account"></a>Azure Automation futtató fiók kezelése
 
@@ -174,7 +174,8 @@ Megadhatja, hogy a futtató fiók által használt egyszerű szolgáltatásnév 
 2. Válassza az Azure-beli **futtató fiók**lehetőséget. 
 3. Válassza ki a **szerepkört** a használatban lévő szerepkör-definíció megkereséséhez.
 
-[![](media/manage-runas-account/verify-role.png "Verify the Run As Account role")](media/manage-runas-account/verify-role-expanded.png#lightbox)
+:::image type="content" source="media/manage-runas-account/verify-role.png" alt-text="Ellenőrizze a futtató fiók szerepkört." lightbox="media/manage-runas-account/verify-role-expanded.png":::
+
 
 A futtató fiókok által használt szerepkör-definíciót több előfizetés vagy Automation-fiók esetében is meghatározhatja. Ezt a PowerShell-galéria [Check-AutomationRunAsAccountRoleAssignments.ps1](https://aka.ms/AA5hug5) parancsfájljának használatával teheti meg.
 
@@ -208,7 +209,7 @@ The Run As account is incomplete. Either one of these was deleted or not created
 
 A futtató fiókkal kapcsolatos hasonló problémákat gyorsan elháríthatja a fiók törlésével és ismételt létrehozásával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Alkalmazás-objektumok és egyszerű szolgáltatások objektumai](../active-directory/develop/app-objects-and-service-principals.md).
 * [Az Azure Cloud Services tanúsítványok áttekintése](../cloud-services/cloud-services-certs-create.md).

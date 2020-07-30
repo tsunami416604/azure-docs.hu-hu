@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: e0fd3a6bc62feeb3728fa88b4aad56c8713bce11
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 6dfa162de02174ac4a1a8251457249bd5ea4d766
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134930"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87416332"
 ---
 # <a name="hyper-v-to-azure-disaster-recovery-architecture"></a>Hyper-V-ről Azure-ba történő vészhelyreállítás architektúrája
 
@@ -55,6 +55,23 @@ A következő táblázat és ábra áttekintést nyújt az Azure-ba irányuló H
 
 ![Összetevők](./media/hyper-v-azure-architecture/arch-onprem-onprem-azure-vmm.png)
 
+## <a name="set-up-outbound-network-connectivity"></a>Kimenő hálózati kapcsolat beállítása
+
+Ahhoz, hogy a Site Recovery a várt módon működjön, módosítania kell a kimenő hálózati kapcsolatot, hogy a környezet replikálása engedélyezve legyen.
+
+> [!NOTE]
+> A Site Recovery nem támogatja a hitelesítési proxy használatát a hálózati kapcsolat vezérléséhez.
+
+### <a name="outbound-connectivity-for-urls"></a>Kimenő kapcsolat URL-címek esetén
+
+Ha URL-alapú tűzfal-proxyt használ a kimenő kapcsolatok vezérléséhez, engedélyezze az alábbi URL-címek elérését:
+
+| **Név**                  | **Kereskedelmi**                               | **Államigazgatás**                                 | **Leírás** |
+| ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
+| Tárolás                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`              | Lehetővé teszi az adatok írását a virtuális gépről a forrásrégió gyorsítótárjának tárfiókjába. |
+| Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | Hitelesítést és engedélyezést biztosít a Site Recovery szolgáltatás URL-címeihez. |
+| Replikáció               | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`   | Lehetővé teszi a virtuális gép és a Site Recovery szolgáltatás közötti kommunikációt. |
+| Service Bus               | `*.servicebus.windows.net`                 | `*.servicebus.usgovcloudapi.net`             | Lehetővé teszi a virtuális gép számára a Site Recovery monitorozási és diagnosztikai adatainak írását. |
 
 
 ## <a name="replication-process"></a>Replikációs folyamat

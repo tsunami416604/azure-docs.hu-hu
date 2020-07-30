@@ -100,7 +100,7 @@ Az Kube-Advisor eszköz jelentést készíthet az erőforrás-kérésekről, val
 
 A sok fejlesztői csapatot és alkalmazást üzemeltető AK-fürtben nehéz lehet a hüvelyek nyomon követése az erőforrás-kérelmek és a korlátok beállítása nélkül. Ajánlott eljárásként rendszeresen futtasson `kube-advisor` az AK-fürtökön.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az ajánlott eljárási cikk a fürt és a számítási feladatok fürtözési perspektívából való futtatására koncentrál. További információ az ajánlott felügyeleti gyakorlatokról: a [cluster operátor ajánlott eljárásai az elkülönítéshez és az erőforrás-kezeléshez az Azure Kubernetes szolgáltatásban (ak)][operator-best-practices-isolation].
 

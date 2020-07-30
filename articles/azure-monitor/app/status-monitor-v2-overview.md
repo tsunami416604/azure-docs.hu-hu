@@ -72,7 +72,7 @@ Ezeket a beállításokat a [részletes utasítások](status-monitor-v2-detailed
       union * | summarize count() by cloud_RoleName, cloud_RoleInstance
       ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A telemetriai adatok megtekintése:
 

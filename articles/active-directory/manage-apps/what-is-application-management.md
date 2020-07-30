@@ -12,12 +12,12 @@ ms.date: 07/01/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 53c4e3e3e3b6aaca2f861a8c5aba528541dc4854
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 28b04828bc778a2b9076c9ea1970ce80f231fbe3
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322193"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386010"
 ---
 # <a name="what-is-application-management"></a>Mi az alkalmazáskezelés?
 
@@ -63,7 +63,7 @@ A **nagyvállalati alkalmazásokhoz** és az Azure ad-vel való felügyelethez n
 
 - **Testreszabott alkalmazások** – a saját üzletági alkalmazásai kiépítésekor az egyszeri bejelentkezés támogatásához integrálhatja őket az Azure ad-vel. Az alkalmazás Azure AD-vel való regisztrálásával szabályozhatja az alkalmazás hitelesítési házirendjét. További információ: [útmutató a fejlesztőknek](developer-guidance-for-integrating-applications.md).
 
-- **Galérián kívüli alkalmazások** – saját alkalmazások használata Az Azure AD-be való felvételsel más alkalmazásokhoz is támogathatja az egyszeri bejelentkezést. Az alkalmazások integrálásának többféle módja van, ezek némelyike alább látható. További információ: [az egyszeri bejelentkezés konfigurálása nem katalógusbeli alkalmazásokhoz](configure-single-sign-on-non-gallery-applications.md).
+- **Galérián kívüli alkalmazások** – saját alkalmazások használata Az Azure AD-be való felvételsel más alkalmazásokhoz is támogathatja az egyszeri bejelentkezést. Az alkalmazások integrálásának többféle módja van, ezek némelyike alább látható. További információ: [SAML egyszeri bejelentkezés konfigurálása](configure-saml-single-sign-on.md).
 
 >[!TIP]
 >Az Azure AD-t az alkalmazással is integrálhatja, még akkor is, ha az még nincs előre konfigurálva, és az alkalmazás-katalógusban. Az **Azure ad-t a következők bármelyikével integrálhatja**
@@ -91,8 +91,8 @@ Az Azure AD-re történő átállással költségeket takarít meg és megszabad
 
 Az emberi erőforrások célzott alkalmazásai, illetve a felhasználók nagy készletével rendelkező más alkalmazások esetében az alkalmazások kiépítésének automatizálásával automatizálható a felhasználók kiépítésének és megszüntetésének folyamata, lásd: [Mi az Application kiépítés?](../app-provisioning/user-provisioning.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Az Azure AD-ben futó app Managemement gyors üzembe helyezési sorozata](view-applications-portal.md)
+- [A gyors üzembe helyezési sorozat az alkalmazások kezelésében az Azure AD-ben](view-applications-portal.md)
 - [Ismerkedés az alkalmazások integrálásával](plan-an-application-integration.md)
 - [Útmutató a kiépítés automatizálásához](../app-provisioning/user-provisioning.md)

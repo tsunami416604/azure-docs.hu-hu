@@ -25,7 +25,7 @@ ms.locfileid: "87373470"
 
 A Text Analytics for Health egy olyan tárolós szolgáltatás, amely a strukturálatlan szövegektől, például az orvos megjegyzései, a mentesítési összefoglalók, a klinikai dokumentumok és az elektronikus egészségügyi jelentések alapján kinyeri és felcímkézi a kapcsolódó egészségügyi adatokat.  
 
-## <a name="features"></a>Szolgáltatások
+## <a name="features"></a>Funkciók
 
 Az állapot-tároló Text Analyticsa jelenleg elnevezett entitások felismerése, kapcsolat kibontása, entitások kivonása és az angol nyelvű szöveghez kapcsolódó entitások összekapcsolása a saját fejlesztési környezetében, amely megfelel az adott biztonsági és adatirányítási követelményeknek.
 
@@ -404,7 +404,7 @@ A következő JSON példa az állapot API-válasz törzsének Text Analytics:
     ...
 ```
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 * [A Text Analytics áttekintése](../overview.md)
 * [Elnevezett entitások kategóriái](../named-entity-types.md)

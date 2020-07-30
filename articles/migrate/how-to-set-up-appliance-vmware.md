@@ -3,12 +3,12 @@ title: Azure Migrate készülék beállítása a VMware-hez
 description: Ismerje meg, hogyan állíthat be egy Azure Migrate készüléket a VMware virtuális gépek felméréséhez és áttelepítéséhez.
 ms.topic: article
 ms.date: 04/16/2020
-ms.openlocfilehash: 272481640db739a458a19a2c9383ff45b54974b5
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 24ba978d776da375b417fb67823651727836cb22
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86112816"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386741"
 ---
 # <a name="set-up-an-appliance-for-vmware-vms"></a>Készülék beállítása VMware virtuális gépekhez
 
@@ -34,7 +34,7 @@ Ha a készüléket a következő PETESEJT-sablonnal szeretné beállítani:
 ## <a name="download-the-ova-template"></a>A petesejtek sablon letöltése
 
 1. Az **áttelepítési célok**  >  **kiszolgálói**  >  **Azure Migrate: kiszolgáló értékelése**, kattintson a **felderítés**gombra.
-2. A **felderítési gépeken**a  >  **gépek virtualizáltak?**, kattintson **az igen, a VMware vSphere hypervisor**lehetőségre.
+2. A **felderítési gépek**a  >  **gépek virtualizáltak?**, kattintson **az igen, VMware vSphere hypervisor**.
 3. Kattintson a **Letöltés** gombra az .OVA sablonfájl letöltéséhez.
 
   ![A PETESEJT-fájlok letöltésének kiválasztása](./media/tutorial-assess-vmware/download-ova.png)
@@ -89,7 +89,7 @@ Győződjön meg arról, hogy a készülék virtuális gépe tud csatlakozni az 
         - Csak a HTTP-proxyk használata támogatott.
     - **Idő szinkronizálása**: az idő ellenőrzése megtörtént. A készüléken az idő, hogy a felderítés megfelelően működjön, szinkronizálva kell lennie az internettel.
     - **Frissítések telepítése**: Azure Migrate ellenőrzi, hogy telepítve vannak-e a legújabb készülék frissítései.
-    - A **VDDK telepítése**: Azure Migrate ellenőrzi, hogy telepítve van-e a VMware vSphere Virtual Disk Development Kit (VDDK).
+    - A **VDDK telepítése**: Azure Migrate ellenőrzi, hogy telepítve van-e a VMware vSphere virtuális lemez fejlesztői készlete (VDDK).
         - Az Azure áttelepítése a VDDK használatával replikálja a gépeket az Azure-ba való áttelepítés során.
         - Töltse le a VDDK 6,7-et a VMware-ből, és bontsa ki a letöltött zip-tartalmat a készülék megadott helyére.
 
@@ -111,7 +111,7 @@ A készüléknek csatlakoznia kell a vCenter Serverhoz a virtuális gépek konfi
 
 ### <a name="specify-vcenter-server-details"></a>A vCenter Server adatainak megadása
 1. A **vCenter Server részletek megadása lapon**adja meg a vCenter Server nevét (FQDN) vagy IP-címét. Meghagyhatja az alapértelmezett portot, vagy megadhat egy egyéni portot, amelyen a vCenter Server figyeli.
-2. A **Felhasználónév** és a **jelszó**mezőben adja meg a írásvédett fiók hitelesítő adatait, amelyet a berendezés a vCenter-kiszolgálón lévő virtuális gépek felderítéséhez használ majd. A felderítést a vCenter-fiókhoz való hozzáférés korlátozásával szűkítheti. [További információk](set-discovery-scope.md).
+2. A **Felhasználónév** és a **jelszó**mezőben adja meg a írásvédett fiók hitelesítő adatait, amelyet a berendezés a vCenter-kiszolgálón lévő virtuális gépek felderítéséhez használ majd. A felderítést a vCenter-fiókhoz való hozzáférés korlátozásával szűkítheti. [További információ](set-discovery-scope.md).
 3. Kattintson a **kapcsolat ellenőrzése** elemre, és győződjön meg arról, hogy a készülék csatlakozhat vCenter Serverhoz.
 
 ### <a name="specify-vm-credentials"></a>Virtuális gép hitelesítő adatainak megadása

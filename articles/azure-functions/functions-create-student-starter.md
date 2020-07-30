@@ -2,16 +2,14 @@
 title: Függvény létrehozása az Azure diákoknak kezdőknek
 description: Ismerje meg, hogyan hozhat létre Azure-függvényt egy Azure-beli Student Starter-előfizetés keretében
 Customer intent: As a student, I want to be able to create an HTTP triggered Function App within the Student Starter plan so that I can easily add APIs to any project.
-author: alexkarcher-msft
 ms.topic: how-to
 ms.date: 04/29/2020
-ms.author: alkarche
-ms.openlocfilehash: ffb6378d3dc4cc3fb23ea62157aad393d8ae6642
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ecb2cc20bec602101d683dbfdd3f82a2e199aa16
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83122847"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386962"
 ---
 # <a name="create-a-function-using-azure-for-students-starter"></a>Függvény létrehozása az Azure diákoknak kezdőknek
 
@@ -31,7 +29,7 @@ Az Azure Functions lehetővé teszi a kód [kiszolgáló nélküli](https://azur
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Jelentkezzen be az [Azure Portalba](https://portal.azure.com) az Azure-fiókjával.
+Jelentkezzen be az [Azure Portalra](https://portal.azure.com) az Azure-fiókjával.
 
 ## <a name="create-a-function-app"></a>Függvényalkalmazás létrehozása
 
@@ -77,7 +75,7 @@ Ezután létrehozhat egy függvényt az új függvényalkalmazásban.
 
    ![A függvények naplómegtekintője az Azure Portalon.](./media/functions-create-student-starter/function-view-logs.png)
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 [!INCLUDE [Clean-up resources](../../includes/functions-quickstart-cleanup.md)]
 
@@ -97,7 +95,7 @@ Az Azure diákoknak kezdők számára a Azure Functions futtatókörnyezet legt�
 * Csak a functions futtatókörnyezet [2. x vagy újabb verziója](functions-versions.md) támogatott.
 * Az összes fejlesztői szerszámozás támogatott szerkesztési és közzétételi függvények esetén. Ide tartozik a VS Code, a Visual Studio, az Azure CLI és a Azure Portal. Ha a portálon kívül bármilyen más eszközt szeretne használni, először létre kell hoznia egy alkalmazást a portálon, majd az alkalmazást központi telepítési célként kell kiválasztania az előnyben részesített eszközön.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ezzel befejezte a Function app létrehozását egy egyszerű HTTP-trigger függvénnyel. Ezután megismerheti a helyi eszközöket, a több nyelvet, a figyelést és az integrációt.
 

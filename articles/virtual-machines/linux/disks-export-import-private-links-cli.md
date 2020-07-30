@@ -8,12 +8,12 @@ ms.date: 07/15/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 9184dc78f0f9f8d7997e0bb64bc4521e19364cfe
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5df11e704987098d61ced7afbff5e6234d4d5f04
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86535757"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420284"
 ---
 # <a name="azure-cli---restrict-importexport-access-for-managed-disks-with-private-links-preview"></a>Azure CLI – a felügyelt lemezek importálási/exportálási hozzáférésének korlátozása privát hivatkozásokkal (előzetes verzió)
 
@@ -31,17 +31,13 @@ A NetworkAccessPolicy tulajdonságot beállíthatja úgy `DenyAll` , hogy megaka
 
 [!INCLUDE [virtual-machines-disks-private-links-regions](../../../includes/virtual-machines-disks-private-links-regions.md)]
 
-## <a name="prerequisites"></a>Előfeltételek
-
-Ha privát végpontokat szeretne használni a felügyelt lemezek exportálásához és importálásához, akkor az előfizetésén engedélyezve kell lennie a szolgáltatásnak. Küldjön egy e-mailt a. com-ra az mdprivatelinks@microsoft előfizetési azonosítókkal, hogy a funkció engedélyezve legyen az előfizetésekhez.
-
 ## <a name="log-in-into-your-subscription-and-set-your-variables"></a>Jelentkezzen be az előfizetésbe, és állítsa be a változókat
 
 ```azurecli-interactive
 
 subscriptionId=yourSubscriptionId
 resourceGroupName=yourResourceGroupName
-region=CentralUSEUAP
+region=northcentralus
 diskAccessName=yourDiskAccessForPrivateLinks
 vnetName=yourVNETForPrivateLinks
 subnetName=yourSubnetForPrivateLinks
@@ -63,7 +59,7 @@ az account set --subscription $subscriptionId
 ## <a name="create-a-disk-access-using-azure-cli"></a>Lemezes hozzáférés létrehozása az Azure CLI-vel
 ```azurecli-interactive
 az group deployment create -g $resourceGroupName \
---template-uri "https://raw.githubusercontent.com/ramankumarlive/manageddisksprivatelinks/master/CreateDiskAccess.json" \
+--template-uri "https://raw.githubusercontent.com/Azure-Samples/managed-disks-powershell-getting-started/master/privatelinks/CreateDiskAccess.json" \
 --parameters "region=$region" "diskAccessName=$diskAccessName"
 
 diskAccessId=$(az resource show -n $diskAccessName -g $resourceGroupName --namespace Microsoft.Compute --resource-type diskAccesses --query [id] -o tsv)
@@ -121,13 +117,43 @@ az network private-endpoint dns-zone-group create \
    --private-dns-zone "privatelink.blob.core.windows.net" \
    --zone-name disks
 ```
+
+## <a name="create-a-disk-protected-with-private-links"></a>Privát hivatkozásokkal védett lemez létrehozása
+  ```cli
+    resourceGroupName=yourResourceGroupName
+    region=northcentralus
+    diskAccessName=yourDiskAccessName
+    diskName=yourDiskName
+    diskSkuName=Standard_LRS
+    diskSizeGB=128
+
+    diskAccessId=$(az resource show -n $diskAccessName -g $resourceGroupName --namespace Microsoft.Compute --resource-type diskAccesses --query [id] -o tsv)
+
+    az group deployment create -g $resourceGroupName \
+       --template-uri "https://raw.githubusercontent.com/Azure-Samples/managed-disks-powershell-getting-started/master/privatelinks/CreateDisksWithExportViaPrivateLink.json" \
+       --parameters "diskName=$diskName" \
+       "diskSkuName=$diskSkuName" \
+       "diskSizeGB=$diskSizeGB" \
+       "diskAccessId=$diskAccessId" \
+       "region=$region" \
+       "networkAccessPolicy=AllowPrivate"
+```
+
 ## <a name="create-a-snapshot-of-a-disk-protected-with-private-links"></a>Privát hivatkozásokkal védett lemez pillanatképének létrehozása
    ```cli
-   diskId=$(az disk show -n $sourceDiskName -g $resourceGroupName --query [id] -o tsv)
+    resourceGroupName=yourResourceGroupName
+    region=northcentralus
+    diskAccessName=yourDiskAccessName
+    sourceDiskName=yourSourceDiskForSnapshot
+    snapshotNameSecuredWithPL=yourSnapshotName
+
+    diskId=$(az disk show -n $sourceDiskName -g $resourceGroupName --query [id] -o tsv)
    
-   az group deployment create -g $resourceGroupName \
-      --template-uri "https://raw.githubusercontent.com/ramankumarlive/manageddisksprivatelinks/master/CreateSnapshotWithExportViaPrivateLink.json" \
-      --parameters "snapshotNameSecuredWithPL=$snapshotNameSecuredWithPL" \
+    diskAccessId=$(az resource show -n $diskAccessName -g $resourceGroupName --namespace Microsoft.Compute --resource-type diskAccesses --query [id] -o tsv)
+   
+    az group deployment create -g $resourceGroupName \
+      --template-uri "https://raw.githubusercontent.com/Azure-Samples/managed-disks-powershell-getting-started/master/privatelinks/CreateSnapshotWithExportViaPrivateLink.json" \
+      --parameters "snapshotName=$snapshotNameSecuredWithPL" \
       "sourceResourceId=$diskId" \
       "diskAccessId=$diskAccessId" \
       "region=$region" \
@@ -137,4 +163,4 @@ az network private-endpoint dns-zone-group create \
 ## <a name="next-steps"></a>Következő lépések
 
 - [GYIK a privát hivatkozásokról](faq-for-disks.md#private-links-for-securely-exporting-and-importing-managed-disks)
-- [Felügyelt Pillanatképek exportálása/másolása virtuális merevlemezként egy másik régióban lévő Storage-fiókba a PowerShell használatával](../scripts/virtual-machines-windows-powershell-sample-copy-snapshot-to-storage-account.md)
+- [Felügyelt pillanatképek a CLI használatával történő exportálása/másolása virtuális merevlemezként egy másik régióban lévő tárfiókba](../scripts/virtual-machines-linux-cli-sample-copy-managed-disks-vhd.md)

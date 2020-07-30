@@ -71,7 +71,7 @@ A gazdagép-készlet bővítése virtuális gépek hozzáadásával:
 
 12. Válassza a **felülvizsgálat + létrehozás** lapot. tekintse át a beállításokat, és ha mindent jól néz ki, válassza a **Létrehozás**lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy kibontotta a meglévő gazdagép-készletet, bejelentkezhet egy Windows rendszerű virtuális asztali ügyfélbe, és tesztelheti őket egy felhasználói munkamenet részeként. Csatlakozhat egy munkamenethez a következő ügyfelek bármelyikével:
 

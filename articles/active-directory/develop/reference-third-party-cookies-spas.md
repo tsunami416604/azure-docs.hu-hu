@@ -79,7 +79,7 @@ A frissítési jogkivonatok böngészőbe való kiállítása biztonsági probl�
 
 Ez a korlátozott élettartamú frissítési jogkivonat-minta a biztonság és a csökkentett teljesítményű UX rendszer közötti egyensúlyként lett kiválasztva. A frissítési tokenek vagy a harmadik féltől származó cookie-k nélkül az engedélyezési kód folyamata (ahogy azt a [OAuth Security aktuális gyakorlatainak tervezete](https://tools.ietf.org/html/draft-ietf-oauth-security-topics-14)javasolja) megterheli, ha új vagy további tokenekre van szükség. Minden egyes jogkivonat esetében teljes oldal-átirányítás vagy előugró ablak szükséges, minden token lejáratakor (óránként általában a Microsoft Identity platform jogkivonatai esetében).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az [engedélyezési kód folyamatáról](v2-oauth2-auth-code-flow.md).
 

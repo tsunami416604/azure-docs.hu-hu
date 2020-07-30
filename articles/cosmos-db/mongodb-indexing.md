@@ -8,12 +8,13 @@ ms.topic: how-to
 ms.date: 06/16/2020
 author: timsander1
 ms.author: tisande
-ms.openlocfilehash: e0b14eefcc0b484c92faf1148ae2972f51b04d31
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 473bc8677c5369833928eb4648f32bb146e83e65
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85260695"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420651"
 ---
 # <a name="manage-indexing-in-azure-cosmos-dbs-api-for-mongodb"></a>Az indexelés kezelése Azure Cosmos DB API-MongoDB
 
@@ -23,7 +24,7 @@ A MongoDB Azure Cosmos DB API-ját kihasználhatja Azure Cosmos DB alapvető ind
 
 A MongoDB Server 3,6-es verziójának Azure Cosmos DB API-je automatikusan indexeli a `_id` mezőt, amely nem lehet eldobni. Automatikusan kikényszeríti a mező egyediségét `_id` . A Azure Cosmos DB API-MongoDB a horizontális felskálázás és az indexelés külön fogalmakat mutat be. Nem kell indexelni a Szilánk-kulcsot. Azonban a dokumentumban lévő többi tulajdonsághoz hasonlóan, ha ez a tulajdonság a lekérdezésekben gyakran használt szűrő, javasoljuk, hogy indexelje a Szilánk kulcsát.
 
-További mezők indexeléséhez alkalmazza a MongoDB index-Management parancsait. Ahogy a MongoDB-ben, Azure Cosmos DB API-ját a MongoDB automatikusan indexeli a `_id` mezőt. Ez az alapértelmezett indexelési házirend eltér a Azure Cosmos DB SQL API-tól, amely alapértelmezés szerint indexeli az összes mezőt.
+További mezők indexeléséhez a MongoDB indexkezelési parancsait használja. Ahogy a MongoDB-ben, Azure Cosmos DB API-ját a MongoDB automatikusan indexeli a `_id` mezőt. Ez az automatikus indexelési szabályzat különbözik az Azure Cosmos DB SQL API-tól, amely alapértelmezés szerint az összes mezőt indexeli.
 
 A rendezés lekérdezésre való alkalmazásához létre kell hoznia egy indexet a rendezési műveletben használt mezőkön.
 
@@ -134,7 +135,7 @@ A fejlesztés megkezdése során hasznos lehet a helyettesítő karakteres index
 A helyettesítő karakteres indexek nem támogatják a következő típusú indexeket vagy tulajdonságokat:
 
 - Összetett
-- Élettartam
+- TTL
 - Egyedi
 
 A **MongoDB-től eltérően**Azure Cosmos db API-ját a MongoDB esetében **nem** használhat helyettesítő indexeket a következőhöz:
@@ -349,7 +350,7 @@ Az összetett indexek egy dokumentum több mezőjére vonatkozó hivatkozásokat
 
 Ha helyettesítő karaktert szeretne létrehozni, frissítsen a 3,6-es verzióra egy [támogatási kérelem](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)bejelentésével.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Indexelés az Azure Cosmos DB-ben](../cosmos-db/index-policy.md)
 * [Az Azure Cosmos DB automatikusan lejár az idő az élettartammal](../cosmos-db/time-to-live.md)

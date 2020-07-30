@@ -71,7 +71,7 @@ Miután a felügyelt lemez virtuális merevlemezét használni szeretné, a virt
 12. Ha a virtuális gép konfigurációja ellenőrzi az ellenőrzést, válassza a **Létrehozás** lehetőséget a telepítés elindításához.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A PowerShell használatával is [feltöltheti a VHD-t az Azure-ba, és létrehozhat egy speciális virtuális gépet](create-vm-specialized.md).
 

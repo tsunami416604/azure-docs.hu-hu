@@ -92,7 +92,7 @@ Az üzenetek dúsításának kipróbálásához tekintse meg az [üzenet gazdag�
 
 Az üzenetek dúsítása díjmentesen elérhető. Jelenleg akkor számítunk fel díjat, amikor üzenetet küld egy IoT Hubnak. Erre az üzenetre csak egyszer kell fizetnie, még akkor is, ha az üzenet több végpontra is érvényes.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse meg ezeket a cikkeket, ha további információt szeretne arról, hogyan lehet útválasztási üzeneteket IoT Hub:
 

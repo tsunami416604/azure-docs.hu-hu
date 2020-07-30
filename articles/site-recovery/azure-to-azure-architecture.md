@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 3/13/2020
 ms.author: raynew
-ms.openlocfilehash: 5d0808b93d0c9c7b49d1fd394d2b776c008bc594
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: e5daf318088cb71b6a1819db71e3c597a9fa94db
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135854"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421450"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Az Azure-ból Azure-ba történő vészhelyreállítás architektúrája
 
@@ -128,14 +128,14 @@ Az Azure-beli virtuális gépek replikálásának engedélyezésekor a következ
 
 Ha a virtuális gépek kimenő hozzáférése URL-címekkel van vezérelve, engedélyezze ezeket az URL-címeket.
 
-| **URL-cím** | **Részletek** |
-| ------- | ----------- |
-| *.blob.core.windows.net | Lehetővé teszi az adatok írását a virtuális gépről a forrásrégió gyorsítótárjának tárfiókjába. |
-| login.microsoftonline.com | Hitelesítést és engedélyezést biztosít a Site Recovery szolgáltatás URL-címeihez. |
-| *.hypervrecoverymanager.windowsazure.com | Lehetővé teszi a virtuális gép és a Site Recovery szolgáltatás közötti kommunikációt. |
-| *.servicebus.windows.net | Lehetővé teszi a virtuális gép számára a Site Recovery monitorozási és diagnosztikai adatainak írását. |
-| *.vault.azure.net | Lehetővé teszi a hozzáférést az ADE-kompatibilis virtuális gépek replikálásának engedélyezéséhez a portálon keresztül
-| *. automation.ext.azure.com | Lehetővé teszi a mobilitási ügynöknek a portálon keresztüli replikált elemek automatikus frissítésének engedélyezését
+| **Név**                  | **Kereskedelmi**                               | **Államigazgatás**                                 | **Leírás** |
+| ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
+| Tárolás                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`               | Lehetővé teszi az adatok írását a virtuális gépről a forrásrégió gyorsítótárjának tárfiókjába. |
+| Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | Hitelesítést és engedélyezést biztosít a Site Recovery szolgáltatás URL-címeihez. |
+| Replikáció               | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`     | Lehetővé teszi a virtuális gép és a Site Recovery szolgáltatás közötti kommunikációt. |
+| Service Bus               | `*.servicebus.windows.net`                 | `*.servicebus.usgovcloudapi.net`             | Lehetővé teszi a virtuális gép számára a Site Recovery monitorozási és diagnosztikai adatainak írását. |
+| Key Vault                 | `*.vault.azure.net`                        | `*.vault.usgovcloudapi.net`                  | Lehetővé teszi a hozzáférést az ADE-kompatibilis virtuális gépek replikálásának engedélyezéséhez a portálon keresztül |
+| Azure Automation          | `*.automation.ext.azure.com`               | `*.azure-automation.us`                      | Lehetővé teszi a mobilitási ügynöknek a portálon keresztüli replikált elemek automatikus frissítésének engedélyezését |
 
 ### <a name="outbound-connectivity-for-ip-address-ranges"></a>Kimenő kapcsolat az IP-címtartományokhoz
 

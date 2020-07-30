@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.date: 03/20/2020
 author: timsander1
 ms.author: tisande
-ms.custom: seodec18
-ms.openlocfilehash: 6332e74ec46454a4df70c40f4b4dfbbc6260bc39
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.custom: seodec18, devx-track-javascript
+ms.openlocfilehash: eb91b6108cedd12299fcb3cfa89bf2cc91bcd69f
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281429"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422011"
 ---
 # <a name="connect-a-nodejs-mongoose-application-to-azure-cosmos-db"></a>Node.js mongúz-alkalmazás összekötése Azure Cosmos DB
 
@@ -320,7 +320,7 @@ Amint láthatja, a Mongoose diszkriminátorok könnyen használhatók. Tehát ha
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg, hogyan [használhatja a Studio 3T](mongodb-mongochef.md) Azure Cosmos db API-ját a MongoDB.
 - Ismerje meg, hogyan [használhatja a Robo 3T](mongodb-robomongo.md) -t a Azure Cosmos db API-MongoDB.

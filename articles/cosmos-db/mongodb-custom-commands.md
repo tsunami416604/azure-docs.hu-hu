@@ -6,12 +6,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/28/2020
 ms.author: lbosq
-ms.openlocfilehash: 7879793cbbb029468e84b14f8e8eee793cf4c530
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 7b0ac1e301705b24d706638deb3ee0a15d49c87b
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85260729"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87415091"
 ---
 # <a name="use-mongodb-extension-commands-to-manage-data-stored-in-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB-bővítményi parancsok használata a Azure Cosmos DB API-MongoDB tárolt adatkezeléshez 
 
@@ -210,7 +211,7 @@ A gyűjtemény létrehozása bővítmény parancs egy új MongoDB-gyűjteményt 
 
 A következő táblázat a parancson belüli paramétereket ismerteti:
 
-| **Mező** | **Típus** | **Szükséges** | **Leírás** |
+| **Mező** | **Típus** | **Kötelező** | **Leírás** |
 |---------|---------|---------|---------|
 | `customAction` | `string` | Kötelező | Az egyéni parancs neve. A következőnek kell lennie: "CreateCollection".|
 | `collection` | `string` | Kötelező | A gyűjtemény neve. Nem engedélyezettek speciális karakterek vagy szóközök.|
@@ -428,7 +429,7 @@ Például:
 { "ok" : 1 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ezután folytassa a következő Azure Cosmos DB fogalmak megismerésével: 
 

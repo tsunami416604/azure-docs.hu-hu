@@ -3,12 +3,12 @@ title: VMware Assessment-támogatás a Azure Migrate
 description: Ismerkedjen meg a VMware virtuális gépek felmérésének támogatásával Azure Migrate kiszolgáló értékelésével.
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 9c981306b7e026dcc811618302ecbd3e80b6486d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 9c9b1f7687d1ab1af36ac603501ecbaa7affd9b6
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321428"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387030"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>A VMware Assessment támogatási mátrixa 
 
@@ -82,7 +82,7 @@ A függőségek [elemzése](concepts-dependency-visualization.md) segít azonos�
 
 **Követelmény** | **Részletek**
 --- | --- 
-**Üzembe helyezés előtt** | Rendelkeznie kell egy Azure Migrate-projekttel, és a kiszolgáló-értékelési eszközzel hozzáadva a projekthez.<br/><br/>  A függőségi vizualizációt egy Azure Migrate berendezés beállítása után telepítheti a helyszíni VMWare-gépek felderítése érdekében.<br/><br/> [Ismerje meg, hogyan](create-manage-projects.md) hozhat létre egy projektet első alkalommal.<br/> [Megtudhatja, hogyan](how-to-assess.md) adhat hozzá egy értékelési eszközt egy meglévő projekthez.<br/> [Ismerje meg, hogyan](how-to-set-up-appliance-vmware.md) állíthatja be a Azure Migrate berendezést a VMWare virtuális gépek kiértékeléséhez.
+**Üzembe helyezés előtt** | Rendelkeznie kell egy Azure Migrate-projekttel, és a kiszolgáló-értékelési eszközzel hozzáadva a projekthez.<br/><br/>  A függőségi vizualizációt egy Azure Migrate berendezés beállítása után telepítheti a helyszíni VMware-gépek felderítése érdekében.<br/><br/> [Ismerje meg, hogyan](create-manage-projects.md) hozhat létre egy projektet első alkalommal.<br/> [Megtudhatja, hogyan](how-to-assess.md) adhat hozzá egy értékelési eszközt egy meglévő projekthez.<br/> [Ismerje meg, hogyan](how-to-set-up-appliance-vmware.md) állíthatja be a Azure Migrate berendezést a VMWare virtuális gépek kiértékeléséhez.
 **Támogatott gépek** | Jelenleg csak a VMware virtuális gépek esetében támogatott.
 **Windows rendszerű virtuális gépek** | Windows Server 2016<br/> Windows Server 2012 R2<br/> Windows Server 2012<br/> Windows Server 2008 R2 (64 bites).
 **hitelesítő adatok vCenter Server** | A függőségi vizualizációhoz egy vCenter Server fiókra van szükség, amely csak olvasási hozzáféréssel rendelkezik, és Virtual Machines > vendég műveletekhez engedélyezett jogosultságokkal rendelkezik.
@@ -114,7 +114,7 @@ A függőségek [elemzése](concepts-dependency-visualization.md) segít azonos�
 **Azure Government** | Az ügynök-alapú függőség elemzése nem támogatott.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Tekintse át](best-practices-assessment.md) az értékelések létrehozásával kapcsolatos ajánlott eljárásokat.
 - [Felkészülés a VMware](tutorial-prepare-vmware.md) -értékelésre.

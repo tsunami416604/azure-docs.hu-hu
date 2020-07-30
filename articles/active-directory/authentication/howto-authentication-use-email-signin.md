@@ -10,12 +10,12 @@ ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: scottsta
-ms.openlocfilehash: af410310e3866b547b8c898a1cc4f91f4f851bc7
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 084c50a67fe332751a3679da4c97f67d414ebb94
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223023"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419529"
 ---
 # <a name="sign-in-to-azure-active-directory-using-email-as-an-alternate-login-id-preview"></a>Bejelentkezés Azure Active Directory az e-mail-cím használata másodlagos bejelentkezési AZONOSÍTÓként (előzetes verzió)
 
@@ -159,6 +159,8 @@ Az előzetes verzió ideje alatt a PowerShell használatával jelenleg csak az e
     Get-AzureADPolicy | where-object {$_.Type -eq "HomeRealmDiscoveryPolicy"} | fl *
     ```
 
+A házirend alkalmazása esetén akár egy órát is igénybe vehet, hogy a felhasználók bejelentkezhetnek az alternatív bejelentkezési AZONOSÍTÓjuk használatával.
+
 ## <a name="test-user-sign-in-with-email"></a>Felhasználói bejelentkezés tesztelése e-mailben
 
 Annak ellenőrzéséhez, hogy a felhasználók bejelentkezhetnek-e e-mail-címmel, az [https://myprofile.microsoft.com][my-profile] e-mail-címük alapján egy felhasználói fiókkal, például a (z `balas@fabrikam.com` ), nem pedig az egyszerű felhasználónévvel is bejelentkezhetnek `balas@contoso.com` . A bejelentkezési élménynek ugyanúgy kell kinéznie, mint az UPN-alapú bejelentkezési eseménnyel.
@@ -175,7 +177,7 @@ Ha a felhasználók az e-mail-címükkel ütköznek a bejelentkezési események
     Get-AzureADPolicy | where-object {$_.Type -eq "HomeRealmDiscoveryPolicy"} | fl *
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni a hibrid identitásról, például a Azure AD alkalmazás proxyról vagy Azure AD Domain Servicesról, tekintse [meg az Azure ad hibrid identitást a helyszíni számítási feladatok eléréséhez és kezeléséhez][hybrid-overview].
 

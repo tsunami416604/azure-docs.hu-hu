@@ -16,12 +16,12 @@ ms.date: 05/12/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 818528ae193209e23424998421ebe2fb0c2b24b3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 35aa75fcbd579c3e2c587b370b0926393b4e58c1
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83199378"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87383766"
 ---
 # <a name="frequently-asked-questions-around-azure-active-directory-reports"></a>Gyakori kérdések Azure Active Directory jelentésekről
 
@@ -145,7 +145,7 @@ Ez a cikk a Azure Active Directory (Azure AD) jelentéskészítéssel kapcsolato
 
 * **Nincs alkalmazva**: Ez azt jelenti, hogy a hatókörben nem található a felhasználóval és az alkalmazással kapcsolatos hitelesítésszolgáltatói házirend. 
 * **Sikeres**: Ez azt jelenti, hogy a hatókörben és a CA-szabályzatokban a felhasználóval és az alkalmazással kapcsolatos hitelesítésszolgáltatói házirend sikeresen teljesült. 
-* **Hiba**: Ez azt jelenti, hogy a hatókörben és a CA-házirendekben a felhasználóval és az alkalmazással kapcsolatos hitelesítésszolgáltatói házirend nem teljesült. 
+* **Hiba**: a bejelentkezés megfelelt legalább egy feltételes hozzáférési házirend felhasználói és alkalmazási feltételének, és a vezérlők nem teljesülnek, vagy a hozzáférés letiltására van beállítva.
     
 **K: mi a feltételes hozzáférési szabályzat eredményének lehetséges értékei?**
 

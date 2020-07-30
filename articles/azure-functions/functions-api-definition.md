@@ -1,16 +1,14 @@
 ---
 title: OpenAPI-metaadatok a Azure Functionsban
 description: A Azure Functions OpenAPI-támogatásának áttekintése
-author: alexkarcher-msft
 ms.topic: conceptual
 ms.date: 03/23/2017
-ms.author: alkarche
-ms.openlocfilehash: 59425456d6d8f4dc426a20deef7b866b3eaa1df4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 499d4f685e3802fcc37c8a3050ae367207f192d2
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083068"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87385823"
 ---
 # <a name="openapi-20-metadata-support-in-azure-functions-preview"></a>OpenAPI 2,0 metaadat-támogatás a Azure Functionsban (előzetes verzió)
 A OpenAPI 2,0 (korábban hencegés) metaadatainak támogatása Azure Functions egy előzetes funkció, amellyel OpenAPI 2,0-definíciót írhat a Function alkalmazásban. Ezt a fájlt ezután a Function alkalmazás használatával futtathatja.
@@ -75,7 +73,7 @@ A következő táblázat a Azure Portal beállításokat és a function.jsmegfel
 
 A tárházban swagger.jsmódosításait mostantól az API-definíció URL-címe és az 1. c lépésben feljegyzett kulcs alapján hajtja végre a függvény alkalmazás.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Első lépések oktatóanyag](./functions-openapi-definition.md). Próbálja ki a bemutatót egy OpenAPI-definíció működés közbeni megtekintéséhez.
 * [Azure functions GitHub-tárház](https://github.com/Azure/Azure-Functions/). Tekintse meg a functions tárházat, és küldjön visszajelzést az API-definíció támogatásának előzetes verziójáról. Hozzon fel GitHub-problémát minden, amit frissíteni szeretne.
 * [Azure functions fejlesztői referenciája](functions-reference.md). A kódolási függvények ismertetése és az eseményindítók és kötések meghatározása.

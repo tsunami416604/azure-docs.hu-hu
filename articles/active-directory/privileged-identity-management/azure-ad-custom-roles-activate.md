@@ -16,12 +16,12 @@ ms.date: 08/06/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f389bfe19eb6dde5416d8cba0b67d964e69bc860
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 398db465a6cc383f8869c549761afc0947e7ed03
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84743167"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421161"
 ---
 # <a name="activate-an-azure-ad-custom-role-in-privileged-identity-management"></a>Egyéni Azure AD-szerepkör aktiválása Privileged Identity Management
 
@@ -30,7 +30,7 @@ A Azure Active Directory (Azure AD) Privileged Identity Management mostantól t�
 > [!NOTE]
 > Az Azure AD egyéni szerepkörei nincsenek integrálva az előzetes verzióban a beépített címtárbeli szerepkörökbe. Miután a képesség általánosan elérhetővé válik, a szerepkör-kezelés a beépített szerepkörök felületén történik. Ha a következő szalagcím jelenik meg, ezeket a szerepköröket [a beépített szerepkörökkel kapcsolatos felhasználói élményben](pim-how-to-activate-role.md) kell kezelni, és ez a cikk nem alkalmazható:
 >
-> [![](media/pim-how-to-add-role-to-user/pim-new-version.png "Select Azure AD > Privileged Identity Management")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
+> :::image type="content" source="media/pim-how-to-add-role-to-user/pim-new-version.png" alt-text="Privileged Identity Management kiválasztása az Azure AD-ben." lightbox="media/pim-how-to-add-role-to-user/pim-new-version.png":::
 
 ## <a name="activate-a-role"></a>Szerepkör aktiválása
 
@@ -44,7 +44,7 @@ Ha egy egyéni Azure AD-szerepkört kell aktiválnia, az aktiválás kéréséhe
    ![Tekintse meg a jogosult Azure AD egyéni szerepkör-hozzárendelések listáját](./media/azure-ad-custom-roles-activate/view-preview-roles.png)
 
 > [!Note] 
->  A szerepkör kiosztása előtt létre kell hoznia vagy konfigurálnia kell egy szerepkört. A HRE egyéni szerepköreinek konfigurálásával kapcsolatos további információkért lásd: [ide] (https://docs.microsoft.com/azure/active-directory/privileged-identity-management/azure-ad-custom-roles-configure)
+> A szerepkör kiosztása előtt létre kell hoznia vagy konfigurálnia kell egy szerepkört. A HRE egyéni szerepköreinek konfigurálásával kapcsolatos további információkért lásd: [Az Azure ad egyéni szerepköreinek konfigurálása Privileged Identity Managementban](azure-ad-custom-roles-configure.md).
 
 1. Az **Azure ad Custom roles (előzetes verzió)** lapon keresse meg a szükséges hozzárendelést.
 1. Válassza a **szerepkör aktiválása** lehetőséget az **aktiválás** lap megnyitásához.
@@ -62,7 +62,7 @@ Ha a szerepkörhöz nem szükséges jóváhagyás, a beállításoknak megfelel�
 
 Ha a szerepkör jóváhagyást igényel az aktiváláshoz, egy Azure-értesítés jelenik meg, amely tájékoztatja arról, hogy a kérelem jóváhagyása függőben van.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Egyéni Azure AD-szerepkör kiosztása](azure-ad-custom-roles-assign.md)
 - [Egyéni Azure AD-szerepkör-hozzárendelés eltávolítása vagy frissítése](azure-ad-custom-roles-update-remove.md)

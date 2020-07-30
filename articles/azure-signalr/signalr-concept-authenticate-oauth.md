@@ -6,12 +6,13 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: cb99a0690e1d07f058572b188ae0b76995f48504
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.custom: devx-track-javascript
+ms.openlocfilehash: eb770dab33e1ec0e1a35f7ebcb6e620fc93692aa
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85961795"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87383001"
 ---
 # <a name="azure-signalr-service-authentication"></a>Azure SignalR szolgáltatás – hitelesítés
 
@@ -562,7 +563,7 @@ A legutolsó dolog, amit el kell végeznie, az a GitHub OAuth-alkalmazás **Home
 
     ![Azure-ban üzemeltetett teljes OAuth-hitelesítés](media/signalr-concept-authenticate-oauth/signalr-oauth-complete-azure.png)
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha azt tervezi, hogy a következő oktatóanyaggal folytatja, megtarthatja és a következő oktatóanyagban újból felhasználhatja az ebben a rövid útmutatóban létrehozott erőforrásokat.
 
@@ -581,7 +582,7 @@ A rendszer az erőforráscsoport törlésének megerősítését fogja kérni. A
 
 A rendszer néhány pillanaton belül törli az erőforráscsoportot és a benne foglalt erőforrásokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban OAuth-hitelesítést adott hozzá az alkalmazáshoz, hogy jobb hitelesítési megoldást biztosítson az Azure SignalR Service szolgáltatással. Ha többet szeretne megtudni az Azure SignalR Server használatáról, lépjen tovább a SignalR Service Azure CLI-mintáira.
 

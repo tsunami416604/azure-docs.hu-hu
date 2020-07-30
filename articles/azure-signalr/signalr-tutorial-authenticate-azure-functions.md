@@ -6,12 +6,13 @@ ms.service: signalr
 ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: zhshang
-ms.openlocfilehash: dfa17720b34962611d240aa7c35ba8092bf99082
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 72f6cee18664f63e36c38499e77f4c0ba7177c96
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74158145"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386860"
 ---
 # <a name="tutorial-azure-signalr-service-authentication-with-azure-functions"></a>Oktatóanyag: Azure SignalR Service-hitelesítés az Azure Functions segítségével
 
@@ -19,7 +20,7 @@ Részletes oktatóanyag arról, hogyan kell egy hitelesítési és privát üzen
 
 ## <a name="introduction"></a>Introduction (Bevezetés)
 
-### <a name="technologies-used"></a>Alkalmazott technológiák
+### <a name="technologies-used"></a>A használt technológiák
 
 * [Azure Functions](https://azure.microsoft.com/services/functions/?WT.mc_id=serverlesschatlab-tutorial-antchu) – Felhasználók hitelesítésére és csevegőüzenetek küldésére szolgáló háttérrendszeri API
 * [Azure SignalR Service](https://azure.microsoft.com/services/signalr-service/?WT.mc_id=serverlesschatlab-tutorial-antchu) – Új üzenetek küldése a csatlakoztatott csevegőügyfeleknek
@@ -45,22 +46,22 @@ Az [Azure Portalon](https://portal.azure.com/) jelentkezzen be a hitelesítő ad
 
 Azure Functions-alkalmazását helyileg fogja összeállítani és tesztelni. Az alkalmazás hozzá fog férni egy SignalR Service-példányhoz az Azure-ban, amelyet előre létre kell hozni.
 
-1. Az új Azure-erőforrások létrehozásához**+** kattintson az **erőforrás létrehozása** () gombra.
+1. Az új Azure-erőforrások létrehozásához kattintson az **erőforrás létrehozása** ( **+** ) gombra.
 
-1. Keresse meg és válassza ki a **SignalR Service** elemet. Kattintson a **Létrehozás**gombra.
+1. Keresse meg és válassza ki a **SignalR Service** elemet. Kattintson a **Létrehozás** lehetőségre.
 
     ![Új SignalR Service](media/signalr-tutorial-authenticate-azure-functions/signalr-quickstart-new.png)
 
 1. Adja meg a következő információkat:
 
-    | Name (Név) | Érték |
+    | Name | Érték |
     |---|---|
     | Erőforrás neve | A SignalR Service-példány egyedi neve |
     | Erőforráscsoport | Új erőforráscsoport létrehozása egyedi névvel |
     | Hely | Válasszon ki egy Önhöz közel eső helyet |
     | Tarifacsomag | Ingyenes |
 
-1. Kattintson a **Létrehozás**gombra.
+1. Kattintson a **Létrehozás** lehetőségre.
 
 1. A példány üzembe helyezése után nyissa meg a portálon, és keresse meg a beállítások lapot. Módosítsa a szolgáltatás mód beállítását *kiszolgáló*nélkülire.
 
@@ -85,7 +86,7 @@ Azure Functions-alkalmazását helyileg fogja összeállítani és tesztelni. Az
 
 Ebben az oktatóanyagban Azure Functions-kötésekkel lépünk interakcióba az Azure SignalR Service-szel. A legtöbb más kötéshez hasonlóan a SignalR Service kötései is bővítményként érhetők el, amelyeket használat előtt az Azure Functions Core Tools CLI-vel telepíteni kell.
 
-1. Nyisson meg egy terminált a VS Code-ban. Ehhez válassza a menü **> terminál nézetét** (CTRL-\`).
+1. Nyisson meg egy terminált a VS Code-ban. Ehhez válassza a menü **> terminál nézetét** (CTRL- \` ).
 
 1. Gondoskodjon róla, hogy a projekt főmappája legyen az aktuális mappa.
 
@@ -124,7 +125,7 @@ Az Azure Functions futtatókörnyezetének helyi futtatása és hibakeresése so
    * A `Host` szakasz a helyi Functions-gazdagép port- és CORS-beállításait konfigurálja (Azure-beli futtatáskor nincs hatása).
 
        > [!NOTE]
-       > Az élő kiszolgáló általában a tartalom kiszolgálására van `http://127.0.0.1:5500`konfigurálva. Ha úgy találja, hogy más URL-címet használ, vagy más HTTP-kiszolgálót használ, módosítsa a `CORS` beállítást úgy, hogy az tükrözze a megfelelő forrást.
+       > Az élő kiszolgáló általában a tartalom kiszolgálására van konfigurálva `http://127.0.0.1:5500` . Ha úgy találja, hogy más URL-címet használ, vagy más HTTP-kiszolgálót használ, módosítsa a `CORS` beállítást úgy, hogy az tükrözze a megfelelő forrást.
 
      ![SignalR Service-kulcs megkeresése](media/signalr-tutorial-authenticate-azure-functions/signalr-get-key.png)
 
@@ -137,24 +138,24 @@ Az Azure Functions futtatókörnyezetének helyi futtatása és hibakeresése so
 Amikor a csevegőalkalmazás először nyílik meg a böngészőben, szüksége lesz a kapcsolat hitelesítő adataira ahhoz, hogy kapcsolódhasson az Azure SignalR Service-hez. A kapcsolódási adatok visszaküldéséhez hozzon létre egy *egyeztető* nevű http által aktivált függvényt a Function alkalmazásban.
 
 > [!NOTE]
-> Ennek a függvénynek a neve *egyeztetésnek* kell lennie, mivel a signaler- `/negotiate`ügyfélnek olyan végpontra van szüksége, amely befejeződik.
+> Ennek a függvénynek a neve *egyeztetésnek* kell lennie, mivel a signaler-ügyfélnek olyan végpontra van szüksége, amely befejeződik `/negotiate` .
 
 1. Nyissa meg a VS Code parancskatalógusát (`Ctrl-Shift-P`, macOS: `Cmd-Shift-P`).
 
-1. Keresse meg és válassza ki az **Azure Functions: Create Function** (Azure Functions: Függvény létrehozása) parancsot.
+1. Keresse meg és válassza ki az **Azure Functions: Create Function** (parancs létrehozása) parancsot.
 
-1. Adja meg az alábbi információkat:
+1. Ha a rendszer kéri, adja meg az alábbi információkat.
 
-    | Name (Név) | Érték |
+    | Name | Érték |
     |---|---|
     | Function app folder (Függvényalkalmazás mappája) | Válassza ki a projekt főmappáját |
-    | Sablon | HTTP-trigger |
-    | Name (Név) | negotiate |
-    | Authorization level (Engedélyszint) | Névtelen |
+    | Sablon | HTTP-eseményindító |
+    | Név | negotiate |
+    | Engedélyszint | Névtelen |
 
     Létrejön egy **egyeztető** nevű mappa, amely tartalmazza az új függvényt.
 
-1. A függvényhez tartozó kötések konfigurálásához nyissa meg a **Negotiate/function. JSON** fájlt. Módosítsa a fájl tartalmát az alábbiak szerint. Ez létrehoz egy bemeneti kötést, amely képes lesz olyan érvényes hitelesítő adatokat létrehozni, amelyekkel az ügyfél csatlakozhat a `chat` nevű Azure SignalR Service-központhoz.
+1. A függvényhez tartozó kötések konfigurálásához nyissa meg az **egyeztetés/function.json** lehetőséget. Módosítsa a fájl tartalmát az alábbiak szerint. Ez létrehoz egy bemeneti kötést, amely képes lesz olyan érvényes hitelesítő adatokat létrehozni, amelyekkel az ügyfél csatlakozhat a `chat` nevű Azure SignalR Service-központhoz.
 
     ```json
     {
@@ -184,7 +185,7 @@ Amikor a csevegőalkalmazás először nyílik meg a böngészőben, szüksége 
 
     A rendszer a `signalRConnectionInfo` kötés `userId` tulajdonságának felhasználásával hoz létre hitelesített SignalR Service-kapcsolatot. Mivel helyi fejlesztésről van szó, a tulajdonság értékét hagyja üresen. Akkor lesz rá szükség, amikor a függvényalkalmazást az Azure-ban telepíti.
 
-1. Nyissa meg a **Negotiate/index. js fájlt** a függvény törzsének megtekintéséhez. Módosítsa a fájl tartalmát az alábbiak szerint.
+1. Nyissa meg az **egyeztetés/index.js** lehetőséget a függvény törzsének megtekintéséhez. Módosítsa a fájl tartalmát az alábbiak szerint.
 
     ```javascript
     module.exports = async function (context, req, connectionInfo) {
@@ -200,16 +201,16 @@ A webalkalmazásnak egy HTTP API-ra is szüksége lesz, hogy csevegőüzeneteket
 
 1. Nyissa meg a VS Code parancskatalógusát (`Ctrl-Shift-P`, macOS: `Cmd-Shift-P`).
 
-1. Keresse meg és válassza ki az **Azure Functions: Create Function** (Azure Functions: Függvény létrehozása) parancsot.
+1. Keresse meg és válassza ki az **Azure Functions: Create Function** (parancs létrehozása) parancsot.
 
-1. Adja meg az alábbi információkat:
+1. Ha a rendszer kéri, adja meg az alábbi információkat.
 
-    | Name (Név) | Érték |
+    | Név | Érték |
     |---|---|
     | Function app folder (Függvényalkalmazás mappája) | válassza ki a projekt főmappáját |
-    | Sablon | HTTP-trigger |
-    | Name (Név) | SendMessage |
-    | Authorization level (Engedélyszint) | Névtelen |
+    | Sablon | HTTP-eseményindító |
+    | Név | SendMessage |
+    | Engedélyszint | Névtelen |
 
     Létrejön egy, az új függvényt tartalmazó, **SendMessage** nevű mappa.
 
@@ -244,7 +245,7 @@ A webalkalmazásnak egy HTTP API-ra is szüksége lesz, hogy csevegőüzeneteket
     ```
     Az eredeti függvény két helyen változik meg:
     * Az útvonal `messages` értékre változik, és a HTTP-trigger a **POST** HTTP-metódusra korlátozódik.
-    * Hozzáadja a Signaler szolgáltatás kimeneti kötését, amely a függvény által visszaadott üzenetet küld az összes olyan ügyfélnek, amely egy nevű `chat`Signal Service hub-hubhoz csatlakozik.
+    * Hozzáadja a Signaler szolgáltatás kimeneti kötését, amely a függvény által visszaadott üzenetet küld az összes olyan ügyfélnek, amely egy nevű Signal Service hub-hubhoz csatlakozik `chat` .
 
 1. Mentse a fájlt.
 
@@ -309,20 +310,20 @@ Eddig mind a függvényalkalmazást, mind a csevegőalkalmazást helyileg futtat
 
 Az Azure-ban futó Function alkalmazásnak Azure Storage-fiókra van szüksége. A csevegés felhasználói felületének weblapját az Azure Storage statikus webhelyek funkciójának használatával is üzemeltetheti.
 
-1. A Azure Portal kattintson az **erőforrás létrehozása** (**+**) gombra egy új Azure-erőforrás létrehozásához.
+1. A Azure Portal kattintson az **erőforrás létrehozása** ( **+** ) gombra egy új Azure-erőforrás létrehozásához.
 
 1. Válassza ki a **tárolási** kategóriát, majd válassza a **Storage-fiók**lehetőséget.
 
 1. Adja meg a következő információkat:
 
-    | Name (Név) | Érték |
+    | Név | Érték |
     |---|---|
     | Előfizetés | Válassza ki a Signaler Service-példányt tartalmazó előfizetést. |
     | Erőforráscsoport | Azonos erőforráscsoport kiválasztása |
     | Erőforrás neve | A Storage-fiók egyedi neve |
     | Hely | Válassza ki ugyanazt a helyet, mint a többi erőforrást |
     | Teljesítmény | Standard |
-    | Fióktípus | StorageV2 (általános célú v2) |
+    | Fiók altípusa | StorageV2 (általános célú v2) |
     | Replikáció | Helyileg redundáns tárolás (LRS) |
     | Hozzáférési szintek | Gyakori |
 
@@ -336,9 +337,9 @@ Az Azure-ban futó Function alkalmazásnak Azure Storage-fiókra van szüksége.
 
 1. Válassza az **engedélyezve** lehetőséget a statikus webhely funkció engedélyezéséhez.
 
-1. Az **index dokumentum neve**mezőbe írja be az *index. html*nevet.
+1. Az **index dokumentum neve**mezőbe írja be *index.html*értéket.
 
-1. Kattintson a **Save** (Mentés) gombra.
+1. Kattintson a **Mentés** gombra.
 
 1. Megjelenik egy **elsődleges végpont** . Jegyezze fel ezt az értéket. A Function alkalmazás konfigurálására lesz szükség.
 
@@ -348,7 +349,7 @@ Eddig a csevegőalkalmazás névtelenül működött. Az Azure-ban az [App Servi
 
 Az alkalmazás eldöntheti, hogy az egyes üzeneteket minden csatlakoztatott ügyfélnek, vagy csak az adott felhasználó esetében hitelesített ügyfeleknek küldje-e el.
 
-1. A VS Code-ban nyissa meg a **Negotiate/function. JSON**fájlt.
+1. A VS Code-ban nyissa meg az **egyeztetés/function.jsa**következőn:.
 
 1. A*SignalRConnectionInfo* kötés *userId* tulajdonságában adjon meg egy [kötési kifejezést](https://docs.microsoft.com/azure/azure-functions/functions-triggers-bindings): `{headers.x-ms-client-principal-name}`. Ez az értéket a hitelesített felhasználó felhasználónevére állítja be. Az attribútumnak most így kell kinéznie:
 
@@ -369,14 +370,14 @@ Az alkalmazás eldöntheti, hogy az egyes üzeneteket minden csatlakoztatott üg
 
 1. Nyissa meg a VS Code parancskatalógusát (`Ctrl-Shift-P`, macOS: `Cmd-Shift-P`) majd válassza ki az **Azure Functions: Deploy to Function App** (Azure Functions: Üzembe helyezés a függvényalkalmazásban) parancsot.
 
-1. Adja meg az alábbi információkat:
+1. Ha a rendszer kéri, adja meg az alábbi információkat.
 
-    | Name (Név) | Érték |
+    | Név | Érték |
     |---|---|
     | Folder to deploy (Üzembe helyezni kívánt mappa) | Válassza ki a projekt főmappáját |
-    | Előfizetés | Válassza ki előfizetését. |
+    | Előfizetés | Az előfizetés kiválasztása |
     | Függvényalkalmazás | Válassza ki a **Create New Function App** (Új függvényalkalmazás létrehozása) elemet |
-    | Function app name (Függvényalkalmazás neve) | Adjon meg egy egyedi nevet |
+    | Függvényalkalmazás neve | Adjon meg egy egyedi nevet |
     | Erőforráscsoport | Azt az erőforráscsoportot válassza ki, amelyikbe a SignalR Service-példány is tartozik. |
     | Tárfiók | Válassza ki a korábban létrehozott Storage-fiókot |
 
@@ -388,12 +389,12 @@ Az alkalmazás eldöntheti, hogy az egyes üzeneteket minden csatlakoztatott üg
 
 1. Keresse meg és válassza ki az **Azure Functions: Upload local settings** (Azure Functions: Helyi beállítások feltöltése) parancsot.
 
-1. Adja meg az alábbi információkat:
+1. Ha a rendszer kéri, adja meg az alábbi információkat.
 
-    | Name (Név) | Érték |
+    | Név | Érték |
     |---|---|
     | Local settings file (Helyi beállításfájl) | local.settings.json |
-    | Előfizetés | Válassza ki előfizetését. |
+    | Előfizetés | Az előfizetés kiválasztása |
     | Függvényalkalmazás | Válassza ki az előbb telepített függvényalkalmazást |
 
 A rendszer feltölti a helyi beállításokat az Azure-beli függvényalkalmazásba. A **Yes to all** (Igen, mindet) lehetőséggel írhatja felül a létező beállításokat, ha szükség van rá.
@@ -445,13 +446,13 @@ A webalkalmazást az Azure Blob Storage statikuswebhely-szolgáltatásával fogj
 
 1. Nyissa meg a VS Code parancskatalógusát (`Ctrl-Shift-P`, macOS: `Cmd-Shift-P`).
 
-1. Keresse meg és válassza ki az **Azure Storage-t: telepítse a statikus webhely** parancsra.
+1. Keresse meg és válassza ki az **Azure Storage: Üzembe helyezés statikus webhelyre** parancsot.
 
 1. Írja be a következő értékeket:
 
-    | Name (Név) | Érték |
+    | Név | Érték |
     |---|---|
-    | Előfizetés | Válassza ki előfizetését. |
+    | Előfizetés | Az előfizetés kiválasztása |
     | Tárfiók | Válassza ki a korábban létrehozott Storage-fiókot |
     | Folder to deploy (Üzembe helyezni kívánt mappa) | Válassza a **Tallózás** lehetőséget, és válassza ki a *tartalom* mappát. |
 
@@ -467,7 +468,7 @@ Bár a **local.settings.json** fájlban lehetőség van a CORS beállítására,
 
     ![A CORS helye](media/signalr-tutorial-authenticate-azure-functions/signalr-find-cors.png)
 
-1. Az *engedélyezett eredetek* szakaszban adjon hozzá egy bejegyzést a statikus webhely *elsődleges végpontja* értékként (a záró eltávolítása */*).
+1. Az *engedélyezett eredetek* szakaszban adjon hozzá egy bejegyzést a statikus webhely *elsődleges végpontja* értékként (a záró eltávolítása */* ).
 
 1. Ahhoz, hogy a Signaler JavaScript SDK meghívja a Function alkalmazást egy böngészőben, engedélyezni kell a hitelesítő adatok támogatását a CORS. Jelölje be a "hozzáférés-vezérlés engedélyezése – hitelesítő adatok engedélyezése" jelölőnégyzetet.
 
@@ -493,9 +494,9 @@ Gratulálunk! Üzembe helyezett egy valós idejű, kiszolgáló nélküli cseveg
 
 Ha törölni szeretné a jelen oktatóanyag elvégzése során létrehozott erőforrásokat, törölje az erőforráscsoportot az Azure Portalon.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből az oktatóanyagból elsajátította, hogyan használható az Azure Functions az Azure SignalR Service szolgáltatással. További információkat is találhat arról, hogyan lehet valós idejű, kiszolgáló nélküli alkalmazásokat létrehozni az Azure Functions SignalR Service-kötéseivel.
 
 > [!div class="nextstepaction"]
-> [Valós idejű alkalmazások összeállítása Azure Functions-függvényekkel](signalr-concept-azure-functions.md)
+> [Valós idejű alkalmazások létrehozása Azure Functions](signalr-concept-azure-functions.md)

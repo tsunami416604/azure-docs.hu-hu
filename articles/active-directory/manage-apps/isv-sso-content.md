@@ -12,12 +12,12 @@ ms.date: 05/22/2019
 ms.author: kenwith
 ms.reviewer: jeeds
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 26fa2b82b89c7b9ce1e05062718f2c4d0c93197c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cabcaacbdc7e3e94e62c8fb45274c4d4f9390ddd
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763278"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87273405"
 ---
 # <a name="enable-single-sign-on-for-your-multi-tenant-application"></a>Egyszeri bejelentkezés engedélyezése a több-bérlős alkalmazáshoz  
 
@@ -61,4 +61,4 @@ Számos előnnyel jár az egyszeri bejelentkezés engedélyezése a több-bérl�
 1. [Az Azure-bérlő létrehozása](isv-tenant-multi-tenant-app.md) és az alkalmazás tesztelése
 1. [SSO-dokumentáció létrehozása és közzététele a webhelyen](isv-create-sso-documentation.md).
 1. [Küldje el alkalmazásait](https://microsoft.sharepoint.com/teams/apponboarding/Apps/SitePages/Default.aspx) a Microsoft webhelyéről, és ossza meg a Microsofttal.
-1. [Csatlakozzon a Microsoft partner Networkhoz (ingyenes), és hozzon létre egy piacra lépési tervet](https://partner.microsoft.com/en-us/explore/commercial#gtm).
+1. [Csatlakozzon a Microsoft partner Networkhoz (ingyenes), és hozzon létre egy piacra lépési tervet](https://partner.microsoft.com/explore/commercial#gtm).

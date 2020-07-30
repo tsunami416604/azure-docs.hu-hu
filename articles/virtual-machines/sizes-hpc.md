@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: c347f637083d8dfdf39cbd032df97bc52973465f
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: c02b0d63db3a761f52c9ea15e6fc6ba3356cd4be
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372569"
+ms.locfileid: "87421365"
 ---
 # <a name="high-performance-computing-vm-sizes"></a>Nagy teljesítményű számítástechnikai VM-méretek
 
@@ -46,9 +46,9 @@ Ez az interfész lehetővé teszi, hogy a RDMA-kompatibilis példányok InfiniBa
 
 - **InfiniBand-és RDMA-illesztőprogramok** – a InfiniBand-kompatibilis virtuális gépeken a megfelelő illesztőprogramok szükségesek a RDMA engedélyezéséhez. Linux rendszeren a piactéren elérhető CentOS-HPC virtuálisgép-lemezképek előre konfigurálva vannak a megfelelő illesztőprogramokkal. Az Ubuntu-alapú virtuálisgép-lemezképek a megfelelő illesztőprogramokkal konfigurálhatók az [itt leírt utasítások](https://techcommunity.microsoft.com/t5/azure-compute/configuring-infiniband-for-ubuntu-hpc-and-gpu-vms/ba-p/1221351)alapján. Az SR-IOV-kompatibilis H-és N-sorozatú virtuális gépeken a InfiniBandDriverLinux virtuálisgép- [bővítmény](./extensions/hpc-compute-infiniband-linux.md) használatával telepítheti a Mellanox OFED-illesztőprogramokat, és engedélyezheti a InfiniBand. További információ a InfiniBand engedélyezéséről a RDMA-kompatibilis virtuális gépeken, SAT [HPC-Munkaterheléseken](./workloads/hpc/overview.md).
 
-Windows rendszeren a InfiniBandDriverWindows virtuálisgép- [bővítmény](./extensions/hpc-compute-infiniband-windows.md) telepíti a Windows Network Direct-illesztőprogramokat (nem SR-IOV virtuális gépeken) vagy a Mellanox OFED-ILLESZTŐPROGRAMOKAT (SR-IOV virtuális gépeken) a RDMA-kapcsolathoz. Az A8-as és A9-es példányok bizonyos telepítései esetében a HpcVmDrivers-bővítmény automatikusan hozzáadódik. Vegye figyelembe, hogy a HpcVmDrivers VM-bővítmény elavult; nem lesz frissítve.
+   Windows rendszeren a InfiniBandDriverWindows virtuálisgép- [bővítmény](./extensions/hpc-compute-infiniband-windows.md) telepíti a Windows Network Direct-illesztőprogramokat (nem SR-IOV virtuális gépeken) vagy a Mellanox OFED-ILLESZTŐPROGRAMOKAT (SR-IOV virtuális gépeken) a RDMA-kapcsolathoz. Az A8-as és A9-es példányok bizonyos telepítései esetében a HpcVmDrivers-bővítmény automatikusan hozzáadódik. Vegye figyelembe, hogy a HpcVmDrivers VM-bővítmény elavult; nem lesz frissítve.
 
-A virtuálisgép-bővítmény virtuális géphez való hozzáadásához [Azure PowerShell](/powershell/azure/) parancsmagokat használhat. További információ: [virtuálisgép-bővítmények és-szolgáltatások](./extensions/overview.md). A [klasszikus üzemi modellben](/previous-versions/azure/virtual-machines/windows/classic/agents-and-extensions-classic)üzembe helyezett virtuális gépek bővítményei is használhatók.
+   A virtuálisgép-bővítmény virtuális géphez való hozzáadásához [Azure PowerShell](/powershell/azure/) parancsmagokat használhat. További információ: [virtuálisgép-bővítmények és-szolgáltatások](./extensions/overview.md). A [klasszikus üzemi modellben](/previous-versions/azure/virtual-machines/windows/classic/agents-and-extensions-classic)üzembe helyezett virtuális gépek bővítményei is használhatók.
 
 - **MPI** – az SR-IOV engedélyezett virtuálisgép-méretek az Azure-ban (HBV2, HB, HC, NCv3, NDv2) lehetővé teszik szinte bármely MPI-íz használatát a Mellanox OFED.
 A nem SR-IOV-kompatibilis virtuális gépeken támogatott MPI-implementációk a Microsoft Network Direct (ND) felületet használják a virtuális gépek közötti kommunikációhoz. Ezért csak a Microsoft MPI (MS-MPI) 2012 R2 vagy újabb, illetve az Intel MPI 5. x verziói támogatottak. Az Intel MPI runtime library újabb verziói (2017, 2018) vagy esetleg nem kompatibilisek az Azure RDMA-illesztőprogramokkal.
@@ -96,8 +96,8 @@ Az Azure számos lehetőséget kínál a RDMA-hálózattal kommunikáló Windows
 - [GPU-optimalizált](sizes-gpu.md)
 - [Előző generációk](sizes-previous-gen.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- További információ az Azure-hoz készült HPC-alkalmazás optimalizálásáról és néhány példa a [HPC-Munkaterhelésekre](./workloads/hpc/overview.md) 
+- További információ a HPC-alkalmazások Azure-hoz való optimalizálásáról és néhány példa a [HPC-Munkaterhelésekre](./workloads/hpc/overview.md).
 
-- További információ arról, hogy az [Azure számítási egységei (ACU)](acu.md) hogyan segíthetnek az Azure SKU-ban a számítási teljesítmény összehasonlításában.
+- Olvassa el a legújabb bejelentéseket és néhány HPC-példát, valamint az eredményeket az [Azure számítási technikai Közösség blogjában](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).

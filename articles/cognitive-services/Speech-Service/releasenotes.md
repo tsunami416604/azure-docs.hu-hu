@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 152907908f12a41679b3161e0c4b39348926399e
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: f2aebee24c4de8a1bd92ad3db8e5d110184cbaee
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373793"
+ms.locfileid: "87415023"
 ---
 # <a name="speech-service-release-notes"></a>Beszédfelismerési szolgáltatás kibocsátási megjegyzései
 
@@ -28,20 +28,20 @@ ms.locfileid: "87373793"
 - **C#**: az aszinkron beszélgetések átírásának támogatása. [Itt](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-async-conversation-transcription)találja a dokumentációt.  
 - **JavaScript**: a [böngésző](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/browser/speaker-recognition) és a [node.js](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/node/speaker-recognition)Speaker Recognition támogatását is felvettük.
 - **JavaScript**: az automatikus nyelvfelismerés/nyelvi azonosító támogatása. [Itt](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-automatic-language-detection?pivots=programming-language-javascript)találja a dokumentációt.
-- **Objective-C**: a többeszközes beszélgetések és a beszélgetés átírásának támogatása. 
+- **Objective-C**: a [többeszközes beszélgetések](https://docs.microsoft.com/azure/cognitive-services/speech-service/multi-device-conversation) és a [beszélgetés átírásának](https://docs.microsoft.com/azure/cognitive-services/speech-service/conversation-transcription)támogatása. 
 - **Python**: bővített hangtámogatás a Pythonhoz Windows és Linux rendszeren. [Itt](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-codec-compressed-audio-input-streams)találja a dokumentációt. 
 
 **Hibajavítások**
 - **Összes**: kijavított egy olyan problémát, amely miatt a KeywordRecognizer nem mozdult el a streamek továbbítása után.
 - **Összes**: kijavított egy hibát, amely a KeywordRecognitionResult beszerzett adatfolyamot okozta, hogy ne tartalmazza a kulcsszót.
 - **Összes**: kijavított egy hibát, amely szerint a SendMessageAsync nem küldi el az üzenetet a dróton keresztül, miután a felhasználók befejeztek a várakozást.
-- **Mind**: javítva Speaker Recognition API-k összeomlása, amikor a felhasználók több VoiceProfileClient indítanak el:: SpeakerRecEnrollProfileAsync, és nem vártak a befejezéshez.
+- **Összes**: javítva Speaker Recognition API-k összeomlása, amikor a felhasználók többször is meghívja a VoiceProfileClient:: SpeakerRecEnrollProfileAsync metódust, és nem várja meg a hívások befejezését.
 - **Összes**: a VoiceProfileClient és a SpeakerRecognizer osztályokban a fájlok naplózásának engedélyezése rögzített.
 - **JavaScript**: [probléma](https://github.com/microsoft/cognitive-services-speech-sdk-js/issues/74) javítva a szabályozással a böngésző méretének csökkentése érdekében.
 - **JavaScript**: [probléma](https://github.com/microsoft/cognitive-services-speech-sdk-js/issues/78) javítva a streamek memóriavesztés esetén.
 - **JavaScript**: a NodeJS-ből származó OCSP-válaszok gyorsítótárazása hozzáadva.
 - **Java**: kijavított egy problémát, amely BigInteger-mezőket eredményezett, így mindig 0 értéket ad vissza.
-- **iOS**: kijavítva és [probléma](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/702) az iOS App Store-ban a Speech SDK-alapú alkalmazások közzétételekor.
+- **iOS**: [probléma](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/702) javítva a Speech SDK-alapú alkalmazások iOS App Store-ban való közzétételekor.
 
 **Példák**
 - **C++** [: Speaker Recognitionhoz](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/cpp/windows/console/samples/speaker_recognition_samples.cpp)hozzáadott mintakód.
@@ -98,7 +98,7 @@ Egészségesek maradjanak!
 * Pénznem olvasása
     * Kijavítottuk a és a pénznem beolvasásával kapcsolatos problémát `es-ES``es-MX`
      
-    | Nyelv | Input (Bemenet) | Fejlesztés utáni kiolvasás |
+    | Nyelv | Bevitel | Fejlesztés utáni kiolvasás |
     |---|---|---|
     | `es-MX` | $1,58 | un peso cincuenta y Ocho centavos |
     | `es-ES` | $1,58 | un dólar cincuenta y Ocho centavos |

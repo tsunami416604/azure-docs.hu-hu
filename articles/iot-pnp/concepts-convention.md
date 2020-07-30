@@ -14,7 +14,7 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 07/28/2020
 ms.locfileid: "87352278"
 ---
-# <a name="iot-plug-and-play-conventions"></a>IoT Plug and Play konvenciók
+# <a name="iot-plug-and-play-conventions"></a>Az IoT Plug and Playhez kapcsolódó konvenciók
 
 Az IoT Plug and Play az előnézeti eszközöknek az IoT hub-vel való üzenetváltáskor követendő konvenciókat kell követniük. A IoT Plug and Play Preview-eszközök a MQTT protokollt használják a IoT Hub való kommunikációhoz.
 
@@ -257,7 +257,7 @@ Az összetevő-illesztőfelületek nem a parancs nevét használják előtag né
 
 Egy eszközön több összetevő-illesztőfelület is a következő formátumú parancsokat használja: `componentName*commandName` .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte a IoT Plug and Play konvenciókat, néhány további erőforrást is talál:
 

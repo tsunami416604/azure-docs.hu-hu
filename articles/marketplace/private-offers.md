@@ -7,12 +7,12 @@ ms.topic: article
 author: vikrambmsft
 ms.author: vikramb
 ms.date: 07/01/2020
-ms.openlocfilehash: aea093cbbb59824973c351f6df23113e1b51ab69
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 7e93772a77ac1edb88c8e1a56c8db216c6e9fbd3
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319864"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420107"
 ---
 # <a name="private-offers-in-the-microsoft-commercial-marketplace"></a>Privát ajánlatok a Microsoft kereskedelmi piactéren
 
@@ -43,6 +43,9 @@ A Private-csomagok egy ajánlat összetevői, és csak a megtervezett ügyfelek 
 
 Az olyan *új ajánlatok esetében, amelyek csak privát csomagokat foglalnak magukban*, a kiadók az ajánlatokat bármely más ajánlatként hozhatják létre, majd megjelölik magánjellegűként a terveket. Azok az ajánlatok, amelyek csak privát csomagokkal rendelkeznek, nem lesznek felderíthetők vagy elérhetők a Microsoft kereskedelmi piactéren, illetve az ajánlathoz nem társított ügyfelek által [Azure Portal](https://azure.microsoft.com/features/azure-portal/) .
 
+>[!NOTE]
+>A csak privát csomagokat tartalmazó ajánlat nem jelenik meg a nyilvános Azure piactéren vagy AppSource.
+
 ## <a name="targeting-customers-with-private-offers"></a>Ügyfelek célzása privát ajánlatokkal
 
 A kiadók az új és a meglévő privát ajánlatok esetében is megcélozhatja az ügyfeleket az előfizetés-azonosítók használatával. A virtuális gépet vagy Azure-alkalmazási ajánlatot használó közzétevők egy egyéni Azure-előfizetés-AZONOSÍTÓra korlátozhatja a privát csomag rendelkezésre állását, vagy akár 20 000 Azure-előfizetési azonosítóval rendelkező CSV-t is feltölthet. A SaaS-alkalmazások privát ajánlatának használata során a kiadók hozzárendelhet egy bérlői azonosítót, hogy korlátozzák a privát csomag rendelkezésre állását a manuális vagy CSV-feltöltési módszer használatával.
@@ -61,6 +64,7 @@ A privát ajánlatok is megjelennek a keresési eredmények között. Csak keres
 
 >[!Note]
 >A nyilvános ajánlatok nem támogatottak a Cloud Solution Provider (CSP) program viszonteladóján keresztül létesített előfizetésekkel.
+
 
 <!---
 ## Next steps

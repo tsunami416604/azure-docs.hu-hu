@@ -6,12 +6,13 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: antchu
-ms.openlocfilehash: dbacb6a5bbdead52750935c476f453423647fc0f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-javascript
+ms.openlocfilehash: e25a874af66b73f5f75a07a5df65c155a16c9f01
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84457133"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387149"
 ---
 # <a name="azure-functions-development-and-configuration-with-azure-signalr-service"></a>Az Azure Functions fejlesztése és konfigurálása az Azure SignalR szolgáltatással
 
@@ -133,7 +134,7 @@ SignalRConnectionInfo Negotiate(string userId = null, IList<Claim> claims = null
 
 Ez a funkció a felhasználó által testre szabható `userId` vagy `claims` a függvény végrehajtása közben testreszabható.
 
-## <a name="use-signalrfilterattribute"></a>A(z) `SignalRFilterAttribute` használata
+## <a name="use-signalrfilterattribute"></a>A `SignalRFilterAttribute` használata
 
 A felhasználó örökölheti és implementálhatja az absztrakt osztályt `SignalRFilterAttribute` . Ha kivételeket vált ki `FilterAsync` , a `403 Forbidden` rendszer visszaküldi az ügyfeleknek.
 
@@ -318,6 +319,6 @@ public static Task SendMessage(
 
 Más nyelvekkel kapcsolatos információkért tekintse meg az [Azure signaler szolgáltatás kötéseit](../azure-functions/functions-bindings-signalr-service.md) Azure functions-referenciához.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta, hogyan fejlesztheti és konfigurálhatja a kiszolgáló nélküli Signal Service-alkalmazásokat Azure Functions használatával. Hozzon létre egy alkalmazást saját maga a [signaler szolgáltatás áttekintés lapján](index.yml)található gyors indítás vagy oktatóanyag használatával.

@@ -8,12 +8,13 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 05/11/2020
 ms.author: anfeldma
-ms.openlocfilehash: 67b85c34c72d8c4b4dc7cecaeb74a9b164133702
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 64bc8e76a4dcce963251219528bd93dd786f01cf
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85391961"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419614"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Node.js SDK for SQL API: kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
@@ -36,7 +37,7 @@ ms.locfileid: "85391961"
 |---------|---------|
 |SDK letöltése  |   [NPM](https://www.npmjs.com/package/@azure/cosmos) 
 |API-dokumentáció  |  [A JavaScript SDK dokumentációja](https://docs.microsoft.com/javascript/api/%40azure/cosmos/?view=azure-node-latest)
-|SDK telepítési utasítások  |  [Telepítési utasítások](https://github.com/Azure/azure-cosmos-js#installation)
+|SDK telepítési utasítások  |  [Telepítési utasítások](https://github.com/Azure/azure-sdk-for-js)
 |Közreműködés az SDK-val | [GitHub](https://github.com/Azure/azure-cosmos-js/tree/master)
 | Példák | [Node.js kód mintái](sql-api-nodejs-samples.md)
 | Útmutató az első lépésekhez | [Ismerkedés a JavaScript SDK-val](sql-api-nodejs-get-started.md)

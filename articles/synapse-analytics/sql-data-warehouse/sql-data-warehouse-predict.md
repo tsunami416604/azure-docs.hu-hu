@@ -91,6 +91,6 @@ FROM PREDICT(MODEL = (SELECT Model FROM Models WHERE Id = 1),
 DATA = dbo.mytable AS d) WITH (Score float) AS p;
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a PREDIKTÍV függvényről: [előrejelzés (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest).

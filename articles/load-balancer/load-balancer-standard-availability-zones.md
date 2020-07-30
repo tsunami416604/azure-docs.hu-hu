@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/07/2020
 ms.author: allensu
-ms.openlocfilehash: e6f788689b4e817aae6dc84f66703f4f88b8d44a
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 55a86eeee4f819955e3f8adfcc0f55f24d58bed0
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027562"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420311"
 ---
 # <a name="standard-load-balancer-and-availability-zones"></a>A Standard Load Balancer és a rendelkezésre állási zónák
 
@@ -51,7 +51,7 @@ Egyetlen előtéri IP-cím fogja túlélni A zóna meghibásodását. Az előté
 A frontend IP-címét egyszerre több független infrastruktúra-telepítés is szolgálja, több rendelkezésre állási zónában. Az újrapróbálkozások és az újralétesítések a zóna meghibásodása által nem érintett más zónákban is sikeresek lesznek. 
 
 <p align="center">
-  <img src="./media/az-zonal/zone-redundant-lb-1.svg" width="512" title="Virtual Network NAT">
+  <img src="./media/az-zonal/zone-redundant-lb-1.svg" alt="Figure depicts a zone-redundant standard load balancer directing traffic in three different zones to three different subnets in a zone redundant configuration." width="512" title="Virtual Network NAT">
 </p>
 
 *Ábra: a zóna redundáns Load Balancer*
@@ -64,7 +64,7 @@ Ezen kívül az egyes zónákon belüli elosztott terhelésű végpontok esetén
 
 
 <p align="center">
-  <img src="./media/az-zonal/zonal-lb-1.svg" width="512" title="Virtual Network NAT">
+  <img src="./media/az-zonal/zonal-lb-1.svg" alt="Figure depicts three zonal standard load balancers each directing traffic in a zone to three different subnets in a zonal configuration." width="512" title="Virtual Network NAT">
 </p>
 
 *Ábra: a Zona redundáns Load Balancer*
@@ -153,7 +153,7 @@ A sikertelenül nem érintett zónák erőforrásai elérhetők lesznek. A szolg
 
 Tekintse át az [Azure Cloud design-mintákat](https://docs.microsoft.com/azure/architecture/patterns/) az alkalmazás meghibásodási forgatókönyvek rugalmasságának javítása érdekében.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - További információ a [Availability Zones](../availability-zones/az-overview.md)
 - További tudnivalók a [Standard Load Balancerről](load-balancer-standard-overview.md)
 - Ismerje meg, hogyan oszthatja meg a [virtuális gépeket egy zónán belül egy olyan standard Load Balancer használatával,](load-balancer-standard-public-zonal-cli.md) amely egy zóna-előtérben található.

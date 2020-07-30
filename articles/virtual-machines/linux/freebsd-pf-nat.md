@@ -21,7 +21,7 @@ Ez a cikk bemutatja, hogyan helyezhet üzembe egy NAT-tűzfalat a FreeBSD Packer
 ## <a name="what-is-pf"></a>Mi az a PF?
 A PF (csomagszűrő, szintén írásos PF) egy BSD licenccel rendelkező állapot-nyilvántartó csomagszűrő, egy központi szoftver a tűzfalak számára. A PF azóta gyorsan fejlődött, és mostantól számos előnnyel jár a többi elérhető tűzfallal szemben. A hálózati címfordítás (NAT) a PF-ben van, mivel az első nap, majd a csomagütemező és az aktív üzenetsor-kezelés integrálva lett a PF-ba, a ALTQ integrálásával és a PF konfigurációján keresztül történő konfigurálásával. Az olyan funkciók, mint például a pfsync segítségével és a CARP a feladatátvételhez és a redundancia, a munkamenet-hitelesítés Authpf, valamint az FTP-proxy a nehéz FTP protokoll tűzfalának megkönnyítéséhez, a PF-t is kiterjesztette. Röviden, a PF egy hatékony és sokoldalú tűzfal. 
 
-## <a name="get-started"></a>Bevezetés
+## <a name="get-started"></a>Első lépések
 Ha szeretne egy biztonságos tűzfalat beállítani a felhőben a webkiszolgálók számára, akkor kezdjük. A Azure Resource Manager sablonban használt parancsfájlokat alkalmazhatja a hálózati topológia beállításához is.
 A Azure Resource Manager sablon egy olyan FreeBSD-alapú virtuális gépet állít be, amely a PF-t és két virtuális gépet a telepített és konfigurált Nginx-webkiszolgálón keresztül hajtja végre a NAT-/Redirection. A NAT-ot a két webkiszolgáló kimenő forgalmán kívül a NAT/átirányítási virtuális gép elfogja a HTTP-kéréseket, és átirányítja őket a két webkiszolgálóra ciklikus multiplexelés esetén. A VNet a privát, nem irányítható IP-címtartomány 10.0.0.2/24-et használja, és módosíthatja a sablon paramétereit. A Azure Resource Manager sablon egy útválasztási táblázatot is definiál a teljes VNet, amely az Azure-beli alapértelmezett útvonalaknak a cél IP-cím alapján való felülbírálásához használt egyes útvonalak gyűjteménye. 
 
@@ -48,7 +48,7 @@ Körülbelül öt perc elteltével a következő információkat kapja: `"provis
 az network public-ip list --resource-group myResourceGroup
 ```
     
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Be szeretné állítani saját NAT-adatait az Azure-ban? Nyílt forráskódú, ingyenes, de hatékony? Ezt követően a PF jó választás. A "PF-FreeBSD-Setup" sablon használatával mindössze öt percet kell beállítania a NAT-tűzfal ciklikus időszeleteléses terheléselosztással történő beállításához az Azure-beli FreeBSD PF használatával a gyakori webkiszolgálói forgatókönyvhöz. 
 
 Ha szeretné megismerni a FreeBSD Azure-beli ajánlatát, tekintse meg az Azure-beli [FreeBSD bemutatása](freebsd-intro-on-azure.md)című témakört.

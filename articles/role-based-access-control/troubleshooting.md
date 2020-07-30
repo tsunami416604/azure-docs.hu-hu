@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 07/24/2020
+ms.date: 07/28/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: bf8fa174611c7173c957ded49ff9135f90cebc08
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 839662e496a61ff9a90a6250b417688b91ccaed1
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287218"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87382576"
 ---
 # <a name="troubleshoot-azure-rbac"></a>Az Azure RBAC hibáinak megoldása
 
@@ -61,7 +61,7 @@ $ras.Count
 
     Ha a "nem megfelelő jogosultságok a művelet végrehajtásához" hibaüzenet jelenik meg, akkor valószínű, hogy az Azure CLI megpróbálja megkeresni a megbízott identitást az Azure AD-ben, és az egyszerű szolgáltatásnév alapértelmezés szerint nem tudja beolvasni az Azure AD-t.
 
-    Ez a hiba kétféleképpen oldható fel. Első lépésként rendelje hozzá a [címtár-olvasók](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers) szerepkört az egyszerű szolgáltatáshoz, hogy az képes legyen az információk olvasására a címtárban. A címtárat is megadhatja [. olvassa el a Microsoft Graph összes engedélyét](https://docs.microsoft.com/graph/permissions-reference) .
+    Ez a hiba kétféleképpen oldható fel. Első lépésként rendelje hozzá a [címtár-olvasók](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers) szerepkört az egyszerű szolgáltatáshoz, hogy az képes legyen az információk olvasására a címtárban.
 
     A hiba megoldásának második módja, ha a szerepkör-hozzárendelést a (z `--assignee-object-id` ) helyett a paraméter használatával hozza létre `--assignee` . A használatával `--assignee-object-id` Az Azure CLI kihagyja az Azure ad-keresést. Meg kell kérnie annak a felhasználónak, csoportnak vagy alkalmazásnak az AZONOSÍTÓját, amelyhez hozzá szeretné rendelni a szerepkört. További információ: [Azure-beli szerepkör-hozzárendelések hozzáadása vagy eltávolítása az Azure CLI használatával](role-assignments-cli.md#new-service-principal).
 
@@ -239,7 +239,7 @@ A [Azure functions](../azure-functions/functions-overview.md) egyes funkcióinak
 
 Egy olvasó rákattinthat a **platform szolgáltatásai** lapra, majd a **minden beállítás** elemre kattintva megtekintheti a Function alkalmazáshoz kapcsolódó beállításokat (a webalkalmazáshoz hasonlóan), de ezek a beállítások nem módosíthatók. A szolgáltatások eléréséhez szüksége lesz a [közreműködő](built-in-roles.md#contributor) szerepkörre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A vendég felhasználókkal kapcsolatos hibák](role-assignments-external-users.md#troubleshoot)
 - [Azure-beli szerepkör-hozzárendelések hozzáadása vagy eltávolítása a Azure Portal használatával](role-assignments-portal.md)

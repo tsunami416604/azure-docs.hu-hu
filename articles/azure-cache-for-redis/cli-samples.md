@@ -1,20 +1,20 @@
 ---
-title: Azure CLI Azure cache Redis-mintákhoz
-description: 'Azure CLI-minták az Azure cache-hez a Redis-hez: gyorsítótár létrehozása, gyorsítótár törlése, gyorsítótár adatainak beolvasása, állomásnév, portok és kulcsok, webalkalmazás csatlakoztatása.'
+title: Azure cache kezelése az Azure CLI-vel való Redis
+description: 'Azure CLI-minták az Azure cache Redis való kezeléséhez: gyorsítótár létrehozása, gyorsítótár törlése, gyorsítótár részleteinek, állomásnév, portok és kulcsok összekapcsolása, webalkalmazások csatlakoztatása.'
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 04/14/2017
-ms.openlocfilehash: 43a986f884d621f257de2e9c305a0bcc59092d3d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 345fd0272e0cfe9b4d7329f004e628ea7820c2d9
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87033665"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421240"
 ---
-# <a name="azure-cli-samples-for-azure-cache-for-redis"></a>Azure CLI-minták az Azure cache Redis-hez
+# <a name="manage-azure-cache-for-redis-with-azure-cli"></a>Azure cache kezelése az Azure CLI-vel való Redis
 
 A következő táblázat az Azure CLI használatával létrehozott bash parancsfájlokra mutató hivatkozásokat tartalmaz.
 

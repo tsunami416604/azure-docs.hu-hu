@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 06/27/2020
-ms.openlocfilehash: c794b87a88cec20b75923e1f251c1e309a43ef1c
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 861fcabbfca07cb342fda42ea2425fa290a1598e
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319592"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386452"
 ---
 # <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>Jupyter-jegyzetfüzetek futtatása a munkaterületen
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -185,11 +185,20 @@ Ezek a műveletek alaphelyzetbe állítják a jegyzetfüzet állapotát, és a j
 A jegyzetfüzet automatikusan megkeresi a csatlakoztatott számítási példányra telepített összes Jupyter-kernelt.  Kernel hozzáadása a számítási példányhoz:
 
 1. A jegyzetfüzet eszköztárán válassza a [**terminál megnyitása**](#terminal) lehetőséget.
-1. Hozzon létre egy új környezetet a terminálablak használatával.
+1. Hozzon létre egy új környezetet a terminálablak használatával.  Az alábbi kód például a következőt hozza létre `newenv` :
+    ```shell
+    conda create --name newenv
+    ```
 1. Aktiválja a környezetet.  Például a létrehozása után `newenv` :
 
     ```shell
-    source activate newenv
+    conda activate newenv
+    ```
+1. Telepítse a pip és a ipykernel csomagot az új környezetbe, és hozzon létre egy kernelt az adott Conda env számára
+
+    ```shell
+    conda install pip
+    conda install ipykernel
     python -m ipykernel install --user --name newenv --display-name "Python (newenv)"
     ```
 
@@ -218,7 +227,7 @@ A **kernel** legördülő lista melletti kijelző megjeleníti az állapotát.
 
 A számítási példányok részleteit a [Studióban](https://ml.azure.com), a **számítási** oldalon találhatja meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az első kísérlet futtatása](tutorial-1st-experiment-sdk-train.md)
 * [A file Storage biztonsági mentése pillanatképekkel](../storage/files/storage-snapshots-files.md)

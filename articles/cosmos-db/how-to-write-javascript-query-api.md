@@ -6,12 +6,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/07/2020
 ms.author: tisande
-ms.openlocfilehash: 620b05b306622a0102a4fd932c013bdb9574c35c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 2182e77ee673ea655762c765e2cfccb3decbe6af
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85262854"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420175"
 ---
 # <a name="how-to-write-stored-procedures-and-triggers-in-azure-cosmos-db-by-using-the-javascript-query-api"></a>Tárolt eljárások és triggerek írása a Azure Cosmos DBban a JavaScript lekérdezési API használatával
 
@@ -78,7 +79,7 @@ function insertDocumentAndUpdateMetadata(item) {
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő cikkekből megtudhatja, hogyan használhatók a tárolt eljárások, eseményindítók és a felhasználó által definiált függvények a Azure Cosmos DBban:
 

@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/18/2020
-ms.openlocfilehash: 507253fcddddf7331ff51c71904c2cdd8e7e5dfd
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: cf0fec1f081a232abc88941e3dd785fb7617fb57
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86514721"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387115"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Azure SQL transzparens adattitkosítás ügyfél által kezelt kulccsal
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -78,7 +78,7 @@ A rendszernaplók a Azure Monitor használatával ellenőrizhetik a Key Vault Au
 
 - A Key vaultnak és a SQL Database/felügyelt példánynak ugyanahhoz a Azure Active Directory bérlőhöz kell tartoznia. A több-bérlős kulcstartó és a kiszolgáló közötti interakciók nem támogatottak. Ha ezt követően szeretné áthelyezni az erőforrásokat, újra kell konfigurálni a TDE a AKV. További információ az [erőforrások áthelyezéséről](../../azure-resource-manager/management/move-resource-group-and-subscription.md).
 
-- A Key vaulton engedélyezni kell a [Soft delete](../../key-vault/general/overview-soft-delete.md) funkciót, hogy az adatvesztést okozó véletlen kulcs (vagy Key Vault) törlésével védve legyen. A Soft-Deleted erőforrásokat 90 napig őrzi meg a rendszer, kivéve, ha az ügyfél nem állítja helyre vagy nem törli őket addig. A *helyreállítás* és *Törlés* műveletekhez saját engedélyek tartoznak a Key Vault hozzáférési házirendjében. A Soft-delete funkció alapértelmezés szerint ki van kapcsolva, és a [PowerShell](../../key-vault/general/soft-delete-powershell.md#enabling-soft-delete) vagy [a CLI](../../key-vault/general/soft-delete-cli.md#enabling-soft-delete)használatával engedélyezhető. Nem engedélyezhető a Azure Portalon keresztül.  
+- A Key vaulton engedélyezni kell a [Soft delete](../../key-vault/general/soft-delete-overview.md) funkciót, hogy az adatvesztést okozó véletlen kulcs (vagy Key Vault) törlésével védve legyen. A Soft-Deleted erőforrásokat 90 napig őrzi meg a rendszer, kivéve, ha az ügyfél nem állítja helyre vagy nem törli őket addig. A *helyreállítás* és *Törlés* műveletekhez saját engedélyek tartoznak a Key Vault hozzáférési házirendjében. A Soft-delete funkció alapértelmezés szerint ki van kapcsolva, és a [PowerShell](../../key-vault/general/soft-delete-powershell.md#enabling-soft-delete) vagy [a CLI](../../key-vault/general/soft-delete-cli.md#enabling-soft-delete)használatával engedélyezhető. Nem engedélyezhető a Azure Portalon keresztül.  
 
 - Adja meg a kiszolgáló vagy a felügyelt példány hozzáférését a Key vaulthoz (get, wrapKey, unwrapKey) a saját Azure Active Directory identitásának használatával. A Azure Portal használatakor az Azure AD-identitás automatikusan létrejön. A PowerShell vagy a parancssori felület használatakor az Azure AD-identitást explicit módon létre kell hozni, és ellenőrizni kell a befejezést. Lásd: a TDE és a [BYOK](transparent-data-encryption-byok-configure.md) konfigurálása, valamint a TDE és a [BYOK konfigurálása az SQL felügyelt példányához](../managed-instance/scripts/transparent-data-encryption-byok-powershell.md) , részletes útmutatást nyújt a PowerShell használatakor.
 

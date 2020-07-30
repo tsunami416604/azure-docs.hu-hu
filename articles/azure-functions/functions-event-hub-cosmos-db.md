@@ -5,12 +5,13 @@ author: KarlErickson
 ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: karler
-ms.openlocfilehash: d93d11f32ba5db9b0be38757d0f1456fc137a9ef
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-java
+ms.openlocfilehash: ef2b774195f522be3520850d2e6e7193e70dd4fb
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083055"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372450"
 ---
 # <a name="tutorial-create-a-function-in-java-with-an-event-hub-trigger-and-an-azure-cosmos-db-output-binding"></a>Oktatóanyag: függvény létrehozása javában Event hub-eseményindítóval és Azure Cosmos DB kimeneti kötéssel
 
@@ -435,7 +436,7 @@ A függvények mostantól az Azure-ban futnak, és továbbra is felhalmoznak egy
 
 ![Application Insights teljesítmény panel](media/functions-event-hub-cosmos-db/application-insights-performance.png)
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha végzett az oktatóanyagban létrehozott Azure-erőforrásokkal, az alábbi parancs használatával törölheti őket:
 
@@ -443,7 +444,7 @@ Ha végzett az oktatóanyagban létrehozott Azure-erőforrásokkal, az alábbi p
 az group delete --name $RESOURCE_GROUP
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan hozhat létre egy Azure-függvényt, amely az Event hub-eseményeket kezeli, és frissíti a Cosmos DB. További információ: [Azure functions Java fejlesztői útmutató](./functions-reference-java.md). A használt megjegyzésekkel kapcsolatos információkért tekintse meg a következőt: [com. microsoft. Azure. functions. Megjegyzés](/java/api/com.microsoft.azure.functions.annotation) leírása.
 

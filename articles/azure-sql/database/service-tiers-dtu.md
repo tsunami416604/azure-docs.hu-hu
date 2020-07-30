@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 11/26/2019
-ms.openlocfilehash: 901ad08440cf1cfbbbab4779a08a87c89a72cc59
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: b7354a921950daec5cc429fa07318213c8924264
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281497"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87382695"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>A DTU-alapú vásárlási modell szolgáltatásszintjei
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -36,15 +36,14 @@ A szolgáltatási szint kiválasztása elsősorban az üzletmenet folytonossága
 
 ||Alapszintű|Standard|Prémium|
 | :-- | --: |--:| --:|
-|Cél munkaterhelés|Fejlesztés és gyártás|Fejlesztés és gyártás|Fejlesztés és gyártás|
-|Rendelkezésre állási SLA|99,99%|99,99%|99,99%|
-|Biztonsági másolatok maximális megőrzése|7 nap|35 nap|35 nap|
-|CPU|Alacsony|Alacsony, közepes és magas|Közepes, magas|
-|IO-átviteli sebesség (hozzávetőleges) |1-5 IOPS/DTU| 1-5 IOPS/DTU | 25 IOPS/DTU|
-|IO-késés (hozzávetőleges)|5 MS (olvasás), 10 MS (írás)|5 MS (olvasás), 10 MS (írás)|2 MS (olvasás/írás)|
-|Oszlopcentrikus indexelése |n.a.|S3 és újabb verziók|Támogatott|
-|Memóriabeli OLTP|n.a.|n.a.|Támogatott|
-|||||
+|**Cél munkaterhelés**|Fejlesztés és gyártás|Fejlesztés és gyártás|Fejlesztés és gyártás|
+|**Rendelkezésre állási SLA**|99,99%|99,99%|99,99%|
+|**Biztonsági másolatok maximális megőrzése**|7 nap|35 nap|35 nap|
+|**CPU**|Alacsony|Alacsony, közepes és magas|Közepes, magas|
+|**IO-átviteli sebesség (hozzávetőleges)** |1-5 IOPS/DTU| 1-5 IOPS/DTU | 25 IOPS/DTU|
+|**IO-késés (hozzávetőleges)**|5 MS (olvasás), 10 MS (írás)|5 MS (olvasás), 10 MS (írás)|2 MS (olvasás/írás)|
+|**Oszlopcentrikus indexelése** |N.A.|S3 és újabb verziók|Támogatott|
+|**Memóriabeli OLTP**|N.A.|N.A.|Támogatott|
 
 > [!IMPORTANT]
 > Az alapszintű, standard S0, S1 és S2 szolgáltatási szintek kevesebb mint egy virtuális mag (CPU) biztosítanak.  A CPU-igényes számítási feladatokhoz az S3 vagy nagyobb szolgáltatási réteg ajánlott. 
@@ -61,9 +60,8 @@ A számítási méretek az önálló adatbázisok és a rugalmas adatbázis-tran
 
 ||Alapszintű|Standard|Prémium|
 | :-- | --: | --: | --: |
-| Maximális tárterület | 2 GB | 1 TB | 4 TB  |
-| Maximális DTU | 5 | 3000 | 4000 | 
-|||||
+| **Maximális tárterület** | 2 GB | 1 TB | 4 TB  |
+| **Maximális DTU** | 5 | 3000 | 4000 |
 
 > [!IMPORTANT]
 > Bizonyos körülmények között előfordulhat, hogy az adatbázist fel kell zsugorodnia a fel nem használt területek visszaigényléséhez. További információ: [a tárterület kezelése Azure SQL Databaseban](file-space-manage.md).
@@ -72,12 +70,11 @@ A számítási méretek az önálló adatbázisok és a rugalmas adatbázis-tran
 
 || **Basic** | **Standard** | **Prémium szintű** |
 | :-- | --: | --: | --: |
-| Tárterület maximális mérete adatbázison  | 2 GB | 1 TB | 1 TB |
-| Tárterület maximális mérete készlet szerint | 156 GB | 4 TB | 4 TB |
-| Edtu maximális száma | 5 | 3000 | 4000 |
-| Edtu maximális száma | 1600 | 3000 | 4000 |
-| Adatbázisok maximális száma készlet szerint | 500  | 500 | 100 |
-|||||
+| **Tárterület maximális mérete adatbázison**  | 2 GB | 1 TB | 1 TB |
+| **Tárterület maximális mérete készlet szerint** | 156 GB | 4 TB | 4 TB |
+| **Edtu maximális száma** | 5 | 3000 | 4000 |
+| **Edtu maximális száma** | 1600 | 3000 | 4000 |
+| **Adatbázisok maximális száma készlet szerint** | 500  | 500 | 100 |
 
 > [!IMPORTANT]
 > A prémium szinten több mint 1 TB tárterület érhető el az összes régióban, kivéve a következőket: Kelet-Kína, Észak-Kína, Közép-Németország, Németország északkeleti régiója, az USA nyugati középső régiója, US DoD régiók és az USA kormányzati központja. Ezekben a régiókban a prémium szintű Storage Max 1 TB-ra van korlátozva.  További információ: [P11-P15 current korlátozások](single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb).  
@@ -177,7 +174,7 @@ A teljesítményteszt fő mérőszámai az átviteli sebesség és a válaszidő
 | Standard |Percenkénti tranzakciók |90 százalék 1,0 másodpercnél |
 | Alapszintű |Tranzakció/óra |80th percentilis 2,0 másodpercnél |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az önálló adatbázisok esetében elérhető számítási méretekről és a tárolási méretekről az önálló [adatbázisok SQL Database DTU-alapú erőforrás-korlátozásai](resource-limits-dtu-single-databases.md#single-database-storage-sizes-and-compute-sizes)című témakörben olvashat bővebben.
 - Az adott számítási méretek és a rugalmas készletekhez rendelkezésre álló tárolási méretek részleteiért lásd: [SQL Database DTU-alapú erőforrás-korlátok](resource-limits-dtu-elastic-pools.md#elastic-pool-storage-sizes-and-compute-sizes).

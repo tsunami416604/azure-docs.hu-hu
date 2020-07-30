@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: damendo
-ms.openlocfilehash: f8743f19d6cd262ad140659be55a4fc57e842564
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d31240cad709a156d7235f116c9cd2c8fb698b03
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76840553"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421144"
 ---
 # <a name="role-based-access-control-permissions-required-to-use-network-watcher-capabilities"></a>A Network Watcher képességek használatához szükséges szerepköralapú hozzáférés-vezérlési engedélyek
 
@@ -25,7 +25,7 @@ Az Azure szerepköralapú hozzáférés-vezérlés (RBAC) lehetővé teszi, hogy
 
 ## <a name="network-watcher"></a>Network Watcher
 
-| Műveletek                                                              | Description                                                           |
+| Művelet                                                              | Leírás                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft. Network/networkWatchers/READ                              | Network Watcher beszerzése                                          |
 | Microsoft. Network/networkWatchers/Write                             | Network Watcher létrehozása vagy frissítése                             |
@@ -33,14 +33,14 @@ Az Azure szerepköralapú hozzáférés-vezérlés (RBAC) lehetővé teszi, hogy
 
 ## <a name="nsg-flow-logs"></a>NSG-folyamat-naplók
 
-| Műveletek                                                              | Description                                                           |
+| Művelet                                                              | Leírás                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft. Network/networkWatchers/configureFlowLog/Action           | Folyamat naplójának konfigurálása                                           |
 | Microsoft. Network/networkWatchers/queryFlowLogStatus/Action         | Folyamat naplójának lekérdezési állapota                                    |
 
 ## <a name="connection-troubleshoot"></a>Kapcsolati hibaelhárító
 
-| Műveletek                                                              | Description                                                           |
+| Művelet                                                              | Leírás                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft. Network/networkWatchers/connectivityCheck/Action          | A kapcsolatok hibakeresési tesztelésének kezdeményezése
 | Microsoft. Network/networkWatchers/queryTroubleshootResult/Action    | Kapcsolatok hibakeresési tesztelési eredményeinek lekérdezése                |
@@ -48,7 +48,7 @@ Az Azure szerepköralapú hozzáférés-vezérlés (RBAC) lehetővé teszi, hogy
 
 ## <a name="connection-monitor"></a>Csatlakozáskezelő
 
-| Műveletek                                                              | Description                                                           |
+| Művelet                                                              | Leírás                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft. Network/networkWatchers/connectionMonitors/Start/művelet   | Csatlakozáskezelő indítása                                     |
 | Microsoft. Network/networkWatchers/connectionMonitors/leállítás/művelet    | Csatlakozáskezelő leállítása                                      |
@@ -57,9 +57,9 @@ Az Azure szerepköralapú hozzáférés-vezérlés (RBAC) lehetővé teszi, hogy
 | Microsoft. Network/networkWatchers/connectionMonitors/Write          | Kapcsolatfigyelő létrehozása                                    |
 | Microsoft. Network/networkWatchers/connectionMonitors/delete         | Csatlakozáskezelő törlése                                    |
 
-## <a name="packet-capture"></a>Csomagrögzítés
+## <a name="packet-capture"></a>Csomagrögzítő
 
-| Műveletek                                                              | Description                                                           |
+| Művelet                                                              | Leírás                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft. Network/networkWatchers/packetCaptures/queryStatus/művelet | A csomagok rögzítési állapotának lekérdezése                           |
 | Microsoft. Network/networkWatchers/packetCaptures/leállítás/művelet        | Csomagok rögzítésének leállítása                                          |
@@ -67,33 +67,33 @@ Az Azure szerepköralapú hozzáférés-vezérlés (RBAC) lehetővé teszi, hogy
 | Microsoft. Network/networkWatchers/packetCaptures/Write              | Csomag rögzítésének létrehozása                                        |
 | Microsoft. Network/networkWatchers/packetCaptures/delete             | Csomagok rögzítésének törlése                                        |
 
-## <a name="ip-flow-verify"></a>IP-forgalom ellenőrzése
+## <a name="ip-flow-verify"></a>IP-forgalomellenőrző
 
-| Műveletek                                                              | Description                                                           |
+| Művelet                                                              | Leírás                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft. Network/networkWatchers/ipFlowVerify/Action               | IP-forgalom ellenőrzése                                              |
 
 ## <a name="next-hop"></a>Következő ugrás
 
-| Műveletek                                                              | Description                                                           |
+| Művelet                                                              | Leírás                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft. Network/networkWatchers/nextHop/Action                    | Virtuális gép következő ugrásának beolvasása                                     |
 
 ## <a name="network-security-group-view"></a>Hálózati biztonsági csoport nézet
 
-| Műveletek                                                              | Description                                                           |
+| Művelet                                                              | Leírás                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft. Network/networkWatchers/securityGroupView/Action          | Biztonsági csoportok megtekintése                                           |
 
 ## <a name="topology"></a>Topológia
 
-| Műveletek                                                              | Description                                                           |
+| Művelet                                                              | Leírás                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft. Network/networkWatchers/topológia/művelet                   | Topológia beolvasása                                                   |
 
 ## <a name="reachability-report"></a>Elérhetőségi jelentés
 
-| Műveletek                                                              | Description                                                           |
+| Művelet                                                              | Leírás                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft. Network/networkWatchers/azureReachabilityReport/Action    | Azure-beli elérhetőségi jelentés beszerzése                               |
 
@@ -104,7 +104,7 @@ Network Watcher képességekhez a következő műveletek is szükségesek:
 
 | Művelet (ek)                                                           | Description                                                    |
 | ---------                                                           | -------------                                                  |
-| Microsoft. Authorization/ \* /READ                                     | RBAC szerepkör-hozzárendelések és szabályzat-definíciók beolvasásához használatos          |
+| Microsoft. Authorization/ \* /READ                                     | Azure-beli szerepkör-hozzárendelések és szabályzat-definíciók beolvasásához használatos          |
 | Microsoft. Resources/Subscriptions/resourceGroups/READ               | Egy előfizetésben lévő összes erőforráscsoport enumerálására használatos    |
 | Microsoft. Storage/storageAccounts/olvasás                              | A megadott Storage-fiók tulajdonságainak beolvasására szolgál   |
 | Microsoft. Storage/storageAccounts/listServiceSas/művelet, </br> Microsoft. Storage/storageAccounts/listAccountSas/művelet, <br> Microsoft. Storage/storageAccounts/Listkeys műveletének beolvasása/művelet| A [Storage-fiók biztonságos elérését](https://docs.microsoft.com/azure/storage/common/storage-sas-overview) és a Storage-fiókba való írást lehetővé tévő közös hozzáférésű aláírások (SAS) beolvasására szolgál. |

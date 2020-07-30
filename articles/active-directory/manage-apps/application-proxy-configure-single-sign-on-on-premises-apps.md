@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f9b6753a0aa9e79624b9b972264611fd31f2bba8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2c706de8a7638c16f3778d0d5295069c13b79d98
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84764825"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387268"
 ---
 # <a name="saml-single-sign-on-for-on-premises-applications-with-application-proxy"></a>SAML egyszeri bejelentkezés a helyszíni alkalmazásokhoz alkalmazásproxy használatával
 
@@ -47,7 +47,7 @@ Az alábbi protokollok a szolgáltató által kezdeményezett (SP által kezdem�
 
 4. Válassza az **SAML** lehetőséget az egyszeri bejelentkezési módszerként.
 
-5. Először állítsa be az SAML SSO-t, hogy működjön a vállalati hálózaton. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon nyissa meg az **alapszintű SAML-konfiguráció** fejlécét, és válassza ki annak **szerkesztési** ikonját (egy ceruza). Az alkalmazás SAML-alapú hitelesítésének konfigurálásához kövesse az [alapszintű SAML-konfiguráció megadása](configure-single-sign-on-non-gallery-applications.md#step-1-edit-the-basic-saml-configuration) című témakör lépéseit.
+5. Először állítsa be az SAML SSO-t a vállalati hálózaton való működésre, és tekintse meg az SAML- [alapú egyszeri bejelentkezés konfigurálását](configure-saml-single-sign-on.md) ismertető alapszintű SAML-konfiguráció szakaszt az SAML-alapú hitelesítés konfigurálásához az alkalmazáshoz.
 
 6. Adjon hozzá legalább egy felhasználót az alkalmazáshoz, és győződjön meg arról, hogy a teszt fiók hozzáfér az alkalmazáshoz. Ha csatlakozik a vállalati hálózathoz, a tesztelési fiók használatával ellenőrizheti, hogy van-e egyszeri bejelentkezés az alkalmazásba. 
 
@@ -95,7 +95,7 @@ Az összes lépés elvégzése után az alkalmazásnak futnia kell. Az alkalmaz�
 1. Nyisson meg egy böngészőt, és navigáljon arra a **külső URL-címre** , amelyet az alkalmazás közzétételekor hozott létre. 
 1. Jelentkezzen be az alkalmazáshoz hozzárendelt tesztelési fiókkal. Képesnek kell lennie az alkalmazás betöltésére és az egyszeri bejelentkezésre az alkalmazásba.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Hogyan biztosítja az Azure AD Application Proxy az egyszeri bejelentkezést?](application-proxy-single-sign-on.md)
 - [Alkalmazásproxyval kapcsolatos hibaelhárítás](application-proxy-troubleshoot.md)

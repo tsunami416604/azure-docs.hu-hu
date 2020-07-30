@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 860616cbea598e40494155e250254b3c607c1173
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2bd688a9e488c1206b0c8531698b061f650e2afe
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87027495"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87417930"
 ---
 # <a name="enable-per-user-azure-multi-factor-authentication-to-secure-sign-in-events"></a>Az Azure Multi-Factor Authentication felhasználónkénti engedélyezése a bejelentkezési események biztonságossá tételéhez
 
@@ -55,7 +55,7 @@ A következő lépésekkel érheti el a Azure Portal oldalt, amelyen megtekinthe
 
 1. Jelentkezzen be rendszergazdaként a [Azure Portalba](https://portal.azure.com) .
 1. Keresse meg és válassza ki *Azure Active Directory*, majd válassza a **felhasználók**  >  **minden felhasználó**lehetőséget.
-1. Válassza a **Multi-Factor Authentication** lehetőséget. Előfordulhat, hogy a menüpontra kell görgetni a jobb oldalon. Válassza az alábbi képernyőképet a teljes Azure Portal ablak és menü helyének megtekintéséhez:[![](media/howto-mfa-userstates/selectmfa-cropped.png "Multi-Factor Authentication kiválasztása az Azure AD felhasználók ablakában")](media/howto-mfa-userstates/selectmfa.png#lightbox)
+1. Válassza a **Multi-Factor Authentication** lehetőséget. Előfordulhat, hogy a menüpontra kell görgetni a jobb oldalon. Válassza az alábbi képernyőképet a teljes Azure Portal ablak és a menü helyének megtekintéséhez: [ ![ válassza a multi-Factor Authentication lehetőséget az Azure ad felhasználók ablakában.](media/howto-mfa-userstates/selectmfa-cropped.png)](media/howto-mfa-userstates/selectmfa.png#lightbox)
 1. Megnyílik egy új lap, amely megjeleníti a felhasználói állapotot, ahogy az az alábbi példában is látható.
    ![Képernyőkép az Azure-beli felhasználói állapotadatokat bemutató Multi-Factor Authentication](./media/howto-mfa-userstates/userstate1.png)
 
@@ -179,7 +179,7 @@ Get-MsolUser -All | Set-MfaState -State Disabled
 > [!NOTE]
 > Ha a többtényezős hitelesítés engedélyezve van egy olyan felhasználói objektumon, amely már rendelkezik regisztrációs adatokkal, például telefonon vagy e-mailben, akkor a rendszergazdáknak Azure Portal vagy PowerShell használatával újra regisztrálniuk kell az MFA-t. Ha a felhasználó nem regisztrálja újra a regisztrációt, az MFA-állapota nem lesz *engedélyezve* az MFA felügyeleti felhasználói felületén való *kikényszerített* állapotra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure Multi-Factor Authentication beállításainak konfigurálásával kapcsolatban lásd: az [azure multi-Factor Authentication beállításainak konfigurálása](howto-mfa-mfasettings.md).
 

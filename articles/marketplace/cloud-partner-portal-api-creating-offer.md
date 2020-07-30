@@ -6,16 +6,15 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 author: mingshen-ms
 ms.author: mingshen
-ms.date: 07/14/2020
-ms.openlocfilehash: 68416fa91f6b75fb3ef2b91c1297f13d84f2bdab
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.date: 07/29/2020
+ms.openlocfilehash: dba47073a6676b17c091af048f583ca3e7712999
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292949"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420226"
 ---
-<a name="create-or-modify-an-offer"></a>Ajánlat létrehozása vagy módosítása
-=========================
+# <a name="create-or-modify-an-offer"></a>Ajánlat létrehozása vagy módosítása
 
 > [!NOTE]
 > A Cloud Partner Portal API-k integrálva vannak a-vel, és továbbra is működnek a partner Centerben. Az áttérés kis változásokat mutat be. Tekintse át a [Cloud Partner Portal API-hivatkozásban](./cloud-partner-portal-api-overview.md) felsorolt módosításokat, hogy a kód továbbra is működőképes legyen a partneri központba való áttérés után. A CPP API-kat csak olyan meglévő termékekhez szabad használni, amelyek már integrálva lettek a partneri központba való áttérés előtt. az új termékeknek a partner Center beküldési API-kat kell használniuk.
@@ -24,9 +23,7 @@ Ez a hívás egy adott ajánlatot frissít a közzétevő névterén belül, vag
 
   `PUT https://cloudpartner.azure.com/api/publishers/<publisherId>/offers/<offerId>?api-version=2017-10-31`
 
-
-<a name="uri-parameters"></a>URI-paraméterek
---------------
+## <a name="uri-parameters"></a>URI-paraméterek
 
 |  **Név**         |  **Leírás**                      |  **Adattípus**  |
 |  --------         |  ----------------                     |  -------------  |
@@ -35,8 +32,7 @@ Ez a hívás egy adott ajánlatot frissít a közzétevő névterén belül, vag
 | api-verzió       |  Az API legújabb verziója            |   Dátum           |
 |  |  |  |
 
-<a name="header"></a>Fejléc
-------
+## <a name="header"></a>Fejléc
 
 |  **Név**        |  **Érték**               |
 |  ---------       |  ----------              | 
@@ -44,9 +40,7 @@ Ez a hívás egy adott ajánlatot frissít a közzétevő névterén belül, vag
 | Engedélyezés    | `Bearer YOUR_TOKEN`      |
 |  |  |
 
-
-<a name="body-example"></a>Példa szövegtörzsre
-------------
+## <a name="body-example"></a>Példa szövegtörzsre
 
 A következő példa egy ajánlatot hoz létre a offerID `contosovirtualmachine` .
 
@@ -143,7 +137,6 @@ A következő példa egy ajánlatot hoz létre a offerID `contosovirtualmachine`
       "version": 5
   }
 ```
-
 
 ### <a name="response"></a>Reagálás
 
@@ -268,7 +261,6 @@ A következő példa egy ajánlatot hoz létre a offerID `contosovirtualmachine`
 > [!NOTE]
 > Az ajánlat módosításához adjon hozzá egy **IF-Match** fejlécet * értékre a fenti kérelemhez. Használja ugyanazt a kérési törzset, mint a fentieket, de szükség szerint módosítsa az értékeket. 
 
-
 ### <a name="response-status-codes"></a>Válasz-állapotkódok
 
 | **Kód**  |  **Leírás**                                                                            |
@@ -281,8 +273,275 @@ A következő példa egy ajánlatot hoz létre a offerID `contosovirtualmachine`
 |  412      | A kiszolgáló nem felel meg a kérelmező által a kérelemben megadott előfeltételek egyikének. Az ügyfélnek ellenőriznie kell a kéréssel ellátott ETAG. |
 |  |  |
 
-
-<a name="uploading-artifacts"></a>Összetevők feltöltése
--------------------
+## <a name="uploading-artifacts"></a>Összetevők feltöltése
 
 Az összetevők, például a képek és az emblémák megosztását úgy kell megosztani, hogy feltölti őket egy elérhető helyre a weben, majd a PUT kérelemben szereplő URI-t is beleértve, a fenti példában látható módon. A rendszer felismeri, hogy ezek a fájlok nem jelennek meg az Azure piactér-tárolóban, és nem tölthetik le ezeket a fájlokat a tárolóba.  Ennek eredményeképpen azt tapasztalhatja, hogy a jövőbeli GET-kérések az Azure piactér szolgáltatás URL-címét fogják visszaadni ezekhez a fájlokhoz.
+
+## <a name="categories-and-industries"></a>Kategóriák és iparágak
+
+Új ajánlat létrehozásakor meg kell adnia egy kategóriát az ajánlathoz a piactéren. Bizonyos ajánlati típusok esetében lehetőség van az iparágak megadására is. Az ajánlat típusa alapján adja meg az ajánlathoz tartozó kategóriákat/iparágakat a következő táblázatokból származó adott kulcs értékekkel.
+
+### <a name="azure-marketplace-categories"></a>Azure Marketplace-kategóriák
+
+Ezek a kategóriák és a hozzájuk tartozó kulcsok az Azure-alkalmazások, a Virtual Machines, a Core Virtual Machines, a tárolók, a Container apps, a IoT Edge modulok és az SaaS-ajánlatok típusaira alkalmazhatók. A félkövér dőlt (például ***analitikai***) elemek a kategóriák és a szabványos szöveges elemek (például az adatelemzések) a következő alkategóriákba tartoznak. A pontos kulcs értékeket a térköz vagy a nagybetűk módosítása nélkül használhatja.
+
+| Kategória | SaaS-kulcsok | Azure-alkalmazások kulcsai | Virtuális gépek, tárolók, Container apps, IoT Edge modul, alapszintű virtuálisgép-kulcsok |
+| --- | --- | --- | --- |
+| ***Elemzés*** | ***Analytics*** | ***elemzés – Azure-alkalmazások*** | ***Analitika – amp*** |
+| Adatelemzések | adatelemzések | adatelemzések | adatelemzések |
+| Adatelemzés | adatelemzés | adatelemzés | adatelemzés |
+| Big Data | Big-az adatmennyiség | bigData | Big-az adatmennyiség |
+| Prediktív elemzés | prediktív elemzés | prediktív elemzés | prediktív elemzés |
+| Valós idejű/adatfolyam-elemzés | valós idejű adatfolyam-elemzés | valós idejű adatfolyam-elemzés | valós idejű adatfolyam-elemzés |
+| Egyéb | egyéb | egyéb – analitikai | egyéb |
+| ***Mesterséges intelligencia és gépi tanulás*** | ***ArtificialIntelligence*** | ***AI-Plus-Machine-learning*** | ***AI-Plus-Machine-learning*** |
+| Bot Services | robot – szolgáltatások | robot – szolgáltatások | robot – szolgáltatások |
+| Cognitive Services | kognitív szolgáltatások | kognitív szolgáltatások | kognitív szolgáltatások |
+| ML szolgáltatás | ml – szolgáltatás | ml – szolgáltatás | ml – szolgáltatás |
+| Automatizált ML | automatizált – ml | automatizált – ml | automatizált – ml |
+| Üzleti/Robotos folyamatok automatizálása | üzleti – robot – folyamat – automatizálás | üzleti – robot – folyamat – automatizálás | üzleti – robot – folyamat – automatizálás |
+| Adatfelirat | adatfelirat | adatfelirat | adatfelirat |
+| Adatelőkészítés | adatfeldolgozás | adatfeldolgozás | adatfeldolgozás |
+| Tudás bányászata | tudás – bányászat | tudás – bányászat | tudás – bányászat |
+| ML-műveletek | ml – műveletek | ml – műveletek | ml – műveletek |
+| Egyéb | egyéb-AI-Plus-Machine-learning | egyéb | egyéb |
+| ***Blockchain*** | ***blockchain*** | ***blockchain*** | ***blockchain*** |
+| Alkalmazás-gyorsítók | alkalmazások – gyorssegédek | alkalmazások – gyorssegédek | alkalmazások – gyorssegédek |
+| Egycsomópontos Főkönyv | egycsomópontos Főkönyv | egycsomópontos Főkönyv | egycsomópontos Főkönyv |
+| Több csomópontos Főkönyv | több csomópontos Főkönyv | több csomópontos Főkönyv | több csomópontos Főkönyv |
+| Eszközök | tools | tools | tools |
+| Egyéb | egyéb | egyéb | egyéb |
+| ***Számítás*** | ***számítás – Saas*** | ***számítás – Azure-alkalmazások*** | ***számítási*** |
+| Alkalmazás-infrastruktúra | appInfra | appInfrastructure | alkalmazás – infrastruktúra |
+| Operációs rendszerek | clientOS | clientOS | operációs rendszerek |
+| Gyorsítótár | cache | cache | cache |
+| Egyéb | egyéb – számítás | egyéb – számítás | egyéb |
+| ***Containers*** | ***konténerek*** | ***konténerek*** | ***konténerek*** |
+| Tároló alkalmazások | tároló – alkalmazások | tároló – alkalmazások | tároló – alkalmazások |
+| Tároló lemezképei | tároló – lemezképek | tároló – lemezképek | tároló – lemezképek |
+| Ismerkedés a tárolókkal | első lépések – tárolók | első lépések – tárolók | első lépések – tárolók |
+| Egyéb | egyéb | egyéb | egyéb |
+| ***Adatbázisok*** | ***adatbázisok – Saas*** | ***adatbázis*** | ***adatbázisok*** |
+| NoSQL-adatbázisok | NoSQL – adatbázisok | NoSQL – adatbázisok | NoSQL – adatbázisok |
+| Relációs adatbázisok | kapcsolatok – adatbázisok | kapcsolatok – adatbázisok | kapcsolatok – adatbázisok |
+| Főkönyv/Blockchain-adatbázisok | Főkönyv – blockchain – adatbázisok | Főkönyv – blockchain – adatbázisok | Főkönyv – blockchain – adatbázisok |
+| Adattavak | adattavak | adattavak | adattavak |
+| -adatraktár | adatraktár | adatraktár | adatraktár |
+| Egyéb | egyéb adatbázisok | egyéb adatbázisok | egyéb |
+| ***Fejlesztői eszközök*** | ***fejlesztői-eszközök-Saas*** | ***fejlesztői – eszközök – Azure-alkalmazások*** | ***fejlesztői – eszközök*** |
+| Eszközök | eszközök – fejlesztői-eszközök | eszközök – fejlesztői-eszközök | eszközök – fejlesztői-eszközök |
+| Scripts | parancsfájlok | parancsfájlok | parancsfájlok |
+| Fejlesztői szolgáltatás | devService | devService | fejlesztő – szolgáltatás |
+| Egyéb | egyéb – fejlesztői – eszközök | egyéb – fejlesztői – eszközök | egyéb |
+| ***DevOps*** | ***devops*** | ***devops*** | ***devops*** |
+| Egyéb | egyéb | egyéb | egyéb |
+| ***Identitás*** | ***identitás*** | ***identitás*** | ***identitás*** |
+| Hozzáférés-kezelés | hozzáférés-kezelés | hozzáférés-kezelés | hozzáférés-kezelés |
+| Egyéb | egyéb | egyéb | egyéb |
+| ***Integráció*** | ***integrációs*** | ***integrációs*** | ***integrációs*** |
+| Üzenetkezelés | üzenetek | üzenetek | üzenetek |
+| Egyéb | egyéb | egyéb | egyéb |
+| ***Eszközök internetes hálózata*** | ***IoT*** | ***Internet-of-Things – Azure-apps*** | ***a dolgok internete*** |
+| IoT Core-szolgáltatások | N.A. | IOT-Core-Services | IOT-Core-Services |
+| IoT Edge modulok | N.A. | IOT – Edge – modulok | IOT – Edge – modulok |
+| IoT-megoldások | IOT – megoldások | IOT – megoldások | IOT – megoldások |
+| Adatelemzési & vizualizáció | az adatelemzés és a vizualizáció | az adatelemzés és a vizualizáció | az adatelemzés és a vizualizáció |
+| IoT-kapcsolat | IOT – kapcsolat | IOT – kapcsolat | IOT – kapcsolat |
+| Egyéb | egyéb-Internet-of-Things | egyéb-Internet-of-Things | egyéb |
+| ***IT & felügyeleti eszközök*** | ***ITandAdministration*** | ***IT-és-felügyeleti eszközök – Azure-alkalmazások*** | ***informatikai és felügyeleti eszközök*** |
+| Felügyeleti megoldások | felügyelet – megoldások | felügyelet – megoldások | felügyelet – megoldások |
+| Üzleti alkalmazások | businessApplication | businessApplication | üzleti alkalmazások |
+| Egyéb | egyéb it-felügyeleti eszközök | egyéb it-felügyeleti eszközök | egyéb |
+| ***& diagnosztika figyelése*** | ***monitorozás és diagnosztika*** | ***monitorozás és diagnosztika*** | ***monitorozás és diagnosztika*** |
+| Egyéb | egyéb | egyéb | egyéb |
+| ***Média*** | ***Media*** | ***Media*** | ***Media*** |
+| Media Services | media-services | media-services | media-services |
+| Content Protection | tartalomvédelem | tartalomvédelem | tartalomvédelem |
+| Igény szerinti streaming élő & | élő és igény szerinti közvetítés | élő és igény szerinti közvetítés | élő és igény szerinti közvetítés |
+| Egyéb | egyéb | egyéb | egyéb |
+| ***Migrálás*** | ***áttelepítési*** | ***áttelepítési*** | ***áttelepítési*** |
+| Adatok áttelepítése | adatáttelepítés | adatáttelepítés | adatáttelepítés |
+| Egyéb | egyéb | egyéb | egyéb |
+| ***Vegyes valóság*** | ***vegyes – valóság*** | ***vegyes – valóság*** | ***vegyes – valóság*** |
+| Egyéb | egyéb | egyéb | egyéb |
+| ***Hálózat*** | ***hálózati*** | ***hálózati*** | ***hálózati*** |
+| Berendezések kezelői | berendezés – vezetők | berendezés – vezetők | berendezés – vezetők |
+| Kapcsolatok | kapcsolatok | kapcsolatok | kapcsolatok |
+| Tűzfalak | tűzfalak | tűzfalak | tűzfalak |
+| Terheléselosztók | terheléselosztó | terheléselosztó | terheléselosztó |
+| Egyéb | egyéb | egyéb | egyéb |
+| ***Biztonság*** | ***biztonsági*** | ***biztonsági*** | ***biztonsági*** |
+| Identitás & hozzáférés-kezelés | identitás-és hozzáférés-kezelés | identitás-és hozzáférés-kezelés | identitás-és hozzáférés-kezelés |
+| Veszélyforrások elleni védelem | veszélyforrások elleni védelem | veszélyforrások elleni védelem | veszélyforrások elleni védelem |
+| Information Protection | információ – védelem | információ – védelem | információ – védelem |
+| Egyéb | egyéb | egyéb | egyéb |
+| ***Storage-fiók*** | ***Storage – Saas*** | ***tárolás – Azure-apps*** | ***Storage*** |
+| Biztonsági mentés & helyreállítás | biztonsági mentés | biztonsági mentés | biztonsági mentés és helyreállítás |
+| Vállalati hibrid tárolás | nagyvállalati hibrid – tárterület | nagyvállalati hibrid – tárterület | nagyvállalati hibrid – tárterület |
+| Fájlmegosztás | fájlmegosztás | fájlmegosztás | fájlmegosztás |
+| Az adatéletciklus-kezelés | adatéletciklus – felügyelet | adatéletciklus – felügyelet | adatéletciklus – felügyelet |
+| Egyéb | egyéb – tárterület | egyéb – tárterület | egyéb |
+| ***Web*** | ***Web*** | ***Web*** | ***Web*** |
+| Blogok & CMSs | Blogok és CMSS | Blogok és CMSS | Blogok és CMSS |
+| Kezdő Web Apps | Starter – Web-Apps | Starter – Web-Apps | Starter – Web-Apps |
+| ECommerce | eCommerce | eCommerce | eCommerce |
+| Web Apps keretrendszerek | webes alkalmazások – keretrendszerek | webes alkalmazások – keretrendszerek | webes alkalmazások – keretrendszerek |
+| Web Apps | webalkalmazások | webalkalmazások | webalkalmazások |
+| Egyéb | egyéb | egyéb | egyéb |
+||||
+
+### <a name="microsoft-appsource-categories"></a>Microsoft AppSource kategóriák
+
+Ezek a kategóriák és a hozzájuk tartozó kulcsok a SaaS, a PowerBI alkalmazás, a Dynamics 365 Business Central, a Dynamics 365 for Customer engagement és a Dynamics 365 for Operations-típusok esetében alkalmazhatók. A félkövér dőlt (például az ***analitikai***) elemek a kategóriák és a szabványos szöveges elemek (például a speciális elemzések) alá tartoznak. A pontos kulcs értékeket a térköz vagy a nagybetűk módosítása nélkül használhatja.
+
+| Kategória | SaaS-kulcsok | Dynamics 365 Business Central, Dynamics 365 for Customer engagement, Dynamics 365 műveleti kulcsokhoz | PowerBI |
+| --- | --- | --- | --- |
+| ***Elemzés*** | ***Analytics*** | ***Elemzés*** | ***Elemzés*** |
+| Bővített analitika | Advanced-Analytics | Advanced-Analytics | Advanced-Analytics |
+| Vizualizáció & jelentéskészítés | vizualizáció – jelentéskészítés | vizualizáció – jelentéskészítés | vizualizáció – jelentéskészítés |
+| Egyéb | egyéb | egyéb – analitikai | egyéb – analitikai |
+| ***Mesterséges intelligencia és gépi tanulás*** | ***ArtificialIntelligence*** | ***AI-Plus-Machine-learning-Dynamics*** | ***AI-Plus-Machine-learning-appsource*** |
+| AI vállalatoknak | AI-for-Business | AI-for-Business | AI-for-Business |
+| Bot-alkalmazások | robot – alkalmazások | robot – alkalmazások | robot – alkalmazások |
+| Egyéb | egyéb-AI-Plus-Machine-learning | egyéb-AI-Plus-Machine-learning | egyéb-AI-Plus-Machine-learning |
+| ***Együttműködés*** | ***Együttműködés*** | ***Együttműködés*** | ***együttműködés*** |
+| Kapcsolatfelvétel & személyekkel | Kapcsolatfelvétel – személyek | Kapcsolatfelvétel – személyek | Kapcsolatfelvétel és személyek |
+| Értekezletek kezelése | értekezletek kezelése | értekezletek kezelése | értekezletek kezelése |
+| Hely kialakításának & kezelése | hely – kialakítás – felügyelet | hely – kialakítás – felügyelet | hely – tervezés és felügyelet |
+| Feladat & projektmenedzsment | feladat – projekt – felügyelet | feladat – projekt – felügyelet | feladat-és projektmenedzsment |
+| Hang & videokonferencia | hang-videó-konferencia | hang-videó-konferencia | hang-és video-konferencia |
+| Egyéb | egyéb – együttműködés | egyéb – együttműködés | egyéb |
+| ***Megfelelőség & jogi*** | ***betartásának*** | ***betartásának*** | ***megfelelőség – és jogi*** |
+| Adózási & naplózása | adózás – naplózás | adózás – naplózás | adó-és audit |
+| Jogi tudnivalók | Jogi tudnivalók | Jogi tudnivalók | jogi |
+| Adatok, irányítási & adatvédelem | adatkezelés – adatvédelem | adatkezelés – adatvédelem | adatkezelés és adatvédelem |
+| Állapot & biztonság | állapot – biztonság | állapot – biztonság | állapot és biztonság |
+| Egyéb | egyéb megfelelőség – jogi | egyéb megfelelőség – jogi | egyéb |
+| ***Customer Service*** | ***CustomerService*** | ***CustomerService*** | ***ügyfél – szolgáltatás*** |
+| Kapcsolattartási központ | Contact-Center | Contact-Center | Contact-Center |
+| Szembenézés a Face szolgáltatással | Face-to-Face-Service | Face-to-Face-Service | Face-to-Face-Service |
+| Office & Employee Service | Back-Office – alkalmazott – szolgáltatás | Back-Office – alkalmazott – szolgáltatás | Back-Office-és-Employee-Service |
+| Knowledge & – ügyvitel | tudás – eset – felügyelet | tudás – eset – felügyelet | ismeretek és esetek kezelése |
+| Közösségi média & Omnichannel engagement | közösségi média – omnichannel – engagement | közösségi média – omnichannel – engagement | közösségi – média-és omnichannel – engagement |
+| Egyéb | egyéb – ügyfél-szolgáltatás | egyéb – ügyfél-szolgáltatás | egyéb |
+| ***Pénzügy*** | ***Pénzügy*** | ***Pénzügy*** | ***pénzügyi*** |
+| Könyvelés | könyvelés | könyvelés | könyvelés |
+| Asset Management (Eszközkezelés) | eszköz – felügyelet | eszköz – felügyelet | eszköz – felügyelet |
+| Elemzés, konszolidáció & jelentéskészítés | elemzés – konszolidáció – jelentéskészítés | elemzés – konszolidáció – jelentéskészítés | elemzés – konszolidáció és jelentéskészítés |
+| Kredit & gyűjtemények | kreditek gyűjteményei | kreditek gyűjteményei | kreditek és gyűjtemények |
+| Megfelelőség & kockázatkezelés | megfelelőség – kockázatkezelés | megfelelőség – kockázatkezelés | megfelelőség – kockázatkezelés |
+| Egyéb | egyéb – Pénzügy | egyéb – Pénzügy | egyéb |
+| ***Human Resources*** | ***Emberierőforrások*** | ***Emberierőforrások*** | ***emberi erőforrások*** |
+| Tehetség megszerzése | tehetség – beszerzés | tehetség – beszerzés | tehetség – beszerzés |
+| Tehetségek kezelése | Talent – felügyelet | Talent – felügyelet | Talent – felügyelet |
+| HR-műveletek | HR – műveletek | HR – műveletek | HR – műveletek |
+| A munkaerő megtervezése & Analitika | munkaerő – tervezés – elemzés | munkaerő – tervezés – elemzés | munkaerő – tervezés és elemzés |
+| Egyéb | egyéb – emberi erőforrások | egyéb – emberi erőforrások | egyéb |
+| ***Eszközök internetes hálózata*** | ***IoT*** | ***Internet-of-Things – Dynamics*** | ***appsource-alapú internet*** |
+| Asset Management & műveletek | eszköz – felügyelet – műveletek | eszköz – felügyelet – műveletek | Asset-Management-and-Operations |
+| Csatlakoztatott termékek | csatlakoztatott termékek | csatlakoztatott termékek | csatlakoztatott termékek |
+| Intelligens ellátási lánc | intelligens ellátási lánc | intelligens ellátási lánc | intelligens ellátási lánc |
+| Prediktív karbantartás | prediktív karbantartás | prediktív karbantartás | prediktív karbantartás |
+| Távoli monitorozás | távoli figyelés | távoli figyelés | távoli figyelés |
+| Biztonsági & biztonság | biztonság – biztonság | biztonság – biztonság | biztonság és biztonság |
+| Intelligens infrastruktúra-& erőforrások | intelligens infrastruktúra – erőforrások | intelligens infrastruktúra – erőforrások | intelligens infrastruktúra és erőforrások |
+| Járművek & mobilitás | járművek – mobilitás | járművek – mobilitás | járművek – mobilitás |
+| Egyéb | egyéb-Internet-of-Things | egyéb-Internet-of-Things | egyéb |
+| ***IT & felügyeleti eszközök*** | ***ITandAdministration*** | ***ITandAdministration*** | ***informatikai és felügyeleti eszközök*** |
+| Felügyeleti megoldások | felügyelet – megoldások | felügyelet – megoldások | felügyelet – megoldások |
+| Üzleti alkalmazások | businessApplication | businessApplication | üzleti alkalmazások |
+| Egyéb | egyéb it-felügyeleti eszközök | egyéb it-felügyeleti eszközök | egyéb |
+| ***Marketing*** | ***Marketing*** | ***Marketing*** | ***marketing*** |
+| Hirdetmény | hirdetmény | hirdetmény | hirdetmény |
+| Elemzés | elemzés – marketing | elemzés – marketing | elemzés – marketing |
+| Kampány-felügyeleti & Automation | kampány – felügyelet – automatizálás | kampány – felügyelet – automatizálás | kampány – felügyelet és automatizálás |
+| E-mail marketing | e-mail – marketing | e-mail – marketing | e-mail – marketing |
+| L2 – események & erőforrás-kezelés | események – erőforrás-kezelés | események – erőforrás-kezelés | események és erőforrások kezelése |
+| Kutatási & elemzése | kutatás – elemzés | kutatás – elemzés | kutatás és elemzés |
+| Közösségi média | közösségi média | közösségi média | közösségi média |
+| Egyéb | egyéb – marketing | egyéb – marketing | egyéb |
+| ***Műveleti & ellátási lánc*** | ***OperationsSupplyChain*** | ***OperationsSupplyChain*** | ***műveletek és ellátási lánc*** |
+| Eszköz & üzemi felügyelet | eszköz – éles üzem – felügyelet | eszköz – éles üzem – felügyelet | eszköz-és-gyártás – felügyelet |
+| Igény-előrejelzés | igény-előrejelzés | igény-előrejelzés | igény-előrejelzés |
+| Information Management & kapcsolat | információkezelés – kapcsolat | információkezelés – kapcsolat | információ – felügyelet és kapcsolat |
+| & jelentéskészítés tervezése, beszerzése | tervezés – beszerzés – jelentéskészítés | tervezés – beszerzés – jelentéskészítés | tervezés – beszerzés és jelentéskészítés |
+| Minőségi & szolgáltatások kezelése | minőség – szolgáltatás-felügyelet | minőség – szolgáltatás-felügyelet | minőség-és szolgáltatás-felügyelet |
+| Értékesítési & rendelés kezelése | értékesítési rendelés – felügyelet | értékesítési rendelés – felügyelet | értékesítés és rendelés – felügyelet |
+| Szállítás & Warehouse Management | szállítás – raktár – felügyelet | szállítás – raktár – felügyelet | szállítás és raktározás – felügyelet |
+| Egyéb | egyéb műveletek – ellátási lánc | egyéb műveletek – ellátási lánc | egyéb |
+| ***Hatékonyság*** | ***Hatékonyság*** | ***Hatékonyság*** | ***hatékonyságnövelő*** |
+| Tartalom létrehozása & kezelése | tartalom létrehozása – felügyelet | tartalom létrehozása – felügyelet | tartalom létrehozása és kezelése |
+| Nyelvi & fordítás | nyelv – fordítás | nyelv – fordítás | nyelv és fordítás |
+| Dokumentumkezelés | Dokumentumkezelés | Dokumentumkezelés | Dokumentumkezelés |
+| E-mailek kezelése | e-mailek kezelése | e-mailek kezelése | e-mailek kezelése |
+| Keresési & referenciája | Keresés – hivatkozás | Keresés – hivatkozás | Keresés és hivatkozás |
+| Egyéb | egyéb – termelékenység | egyéb – termelékenység | egyéb |
+| Játékossá tétel | Játékossá tétel | Játékossá tétel | gamification |
+| ***Sales*** | ***Sales*** | ***Sales*** | ***Sales*** |
+| Telesales | telesales | telesales | telesales |
+| Konfigurálás, Ár, árajánlat (CPQ) | az árajánlat konfigurálása | az árajánlat konfigurálása | az árajánlat konfigurálása |
+| Szerződések kezelése | szerződések kezelése | szerződések kezelése | szerződések kezelése |
+| CRM | crm | crm | crm |
+| E-kereskedelmi | e-kereskedelmi | e-kereskedelmi | e-kereskedelmi |
+| Üzleti adatelemzés | üzleti – adatelemzés | üzleti – adatelemzés | üzleti – adatelemzés |
+| Értékesítés engedélyezése | értékesítés – engedélyezés | értékesítés – engedélyezés | értékesítés – engedélyezés |
+| Egyéb | egyéb – értékesítés | egyéb – értékesítés | egyéb – értékesítés |
+| ***Térinformatikai*** | ***térinformatikai*** | ***térinformatikai*** | ***térinformatikai*** |
+| Maps | maps | maps | maps |
+| Hírek & Időjárás | Hírek és időjárás | Hírek és időjárás | Hírek és időjárás |
+| Egyéb | egyéb földrajzi hely | egyéb földrajzi hely | egyéb földrajzi hely |
+||||
+
+### <a name="microsoft-appsource-industries"></a>Microsoft AppSource Industries
+
+Ezek az iparágak és a hozzájuk tartozó kulcsok az SaaS, a PowerBI app, a Dynamics 365 Business Central, a Dynamics 365 for Customer engagement és a Dynamics 365 for Operations-típusok esetében alkalmazhatók. A félkövér dőlt (például ***autóipari***) elemek a kategóriák és a szabványos szöveges elemek (például a AutomotiveL2) a következő alkategóriákba tartoznak. A pontos kulcs értékeket a térköz vagy a nagybetűk módosítása nélkül használhatja.
+
+| Iparág | SaaS, Dynamics 365 Business Central, Dynamics 365 for Customer engagement, Dynamics 365 műveleti kulcsokhoz | PowerBI-alkalmazások kulcsai |
+| --- | --- | --- |
+| ***Autóipar*** | ***Autóipar*** | ***autóipar*** |
+| Autóipar | AutomotiveL2 | AutomotiveL2 |
+| ***Mezőgazdaság*** | ***Mezőgazdaság*** | ***mezőgazdaság*** |
+| Egyéb – nem szegmentált | Mezőgazdaság \_ OtherUnsegmented | egyéb – nem szegmentált |
+| ***Disztribúció*** | ***Disztribúció*** | ***terjesztési*** |
+| Nagykereskedelem | Nagykereskedelem | nagykereskedelem |
+| Parcella & csomag szállítása | ParcelAndPackageShipping | csomagok és csomagok szállítása |
+| ***Education*** | ***Education*** | ***oktatás*** |
+| Felsőoktatás | HigherEducation | magasabb szintű oktatás |
+| Elsődleges & középfokú oktatás/K-12 | PrimaryAndSecondaryEducationK12 | elsődleges és másodlagos – oktatás |
+| Könyvtárak & múzeumok | LibrariesAndMuseums | könyvtárak és múzeumok |
+| ***Pénzügyi szolgáltatások*** | ***FinancialServices*** | ***pénzügyi szolgáltatások*** |
+| Banki & tőkepiacok | BankingAndCapitalMarkets | banki szolgáltatások és tőkepiacok |
+| Biztosítási | Biztosítási | biztosítási |
+| ***Államigazgatás*** | ***Államigazgatás*** | ***kormány*** |
+| Védelmi & intelligencia | DefenseAndIntelligence | védelem és intelligencia |
+| Közbiztonság & igazságszolgáltatás | PublicSafetyAndJustice | nyilvános biztonság és jogérvényesülés |
+| Polgári kormányzat | CivilianGovernment | civil kormány |
+| ***Egészségügy*** | ***HealthCareandLifeSciences*** | ***egészségügyi*** |
+| Állapot költségviselő | HealthPayor | állapot – költségviselő |
+| Állapot szolgáltatója | HealthProvider | állapotfigyelő szolgáltató |
+| Gyógyszerek | Gyógyszerek | gyógyszerek |
+| ***Gyártási & erőforrások*** | ***Gyártás*** | ***gyártás és erőforrások*** |
+| Kémiai & Agrokémiai | ChemicalAndAgrochemical | kémiai és Agrokémiai |
+| Diszkrét gyártás | DiscreteManufacturing | diszkrét – gyártás |
+| Energia | Energia | energy |
+| ***Lakossági & fogyasztási cikkek*** | ***RetailandConsumerGoods*** | ***kereskedelmi és fogyasztási cikkek*** |
+| Fogyasztási cikkek | ConsumerGoods | fogyasztó – termékek |
+| Kiskereskedők | Kiskereskedők | kiskereskedők |
+| ***Média & kommunikáció*** | ***MediaAndCommunications*** | ***média és kommunikáció*** |
+| Media & Entertainment | MediaandEntertainment | média és szórakoztatás |
+| Távközlés | Távközlés | távközlési |
+| ***Professzionális szolgáltatások*** | ***ProfessionalServices*** | ***professzionális szolgáltatások*** |
+| Jogi tudnivalók | Jogi tudnivalók | jogi |
+| Partneri szakmai szolgáltatások | PartnerProfessionalServices | partner-Professional – szolgáltatások |
+| ***Architektúra & építése*** | ***ArchitectureAndConstruction*** | ***architektúra és építés*** |
+| Egyéb – nem szegmentált | ArchitectureAndConstruction \_ OtherUnsegmented | egyéb – nem szegmentált |
+| ***Vendéglátás & utazás*** | ***HospitalityandTravel*** | ***vendéglátás és utazás*** |
+|    Hotelek & szabadidő | HotelsAndLeisure | szállodák és szabadidő |
+| Utazási & szállítás | TravelAndTransportation | utazás és szállítás |
+| Éttermek & Food Services | RestaurantsAndFoodServices | éttermek és élelmiszer-szolgáltatások |
+| ***Más állami szektorbeli iparágak*** | ***OtherPublicSectorIndustries*** | ***egyéb – állami szektor – iparágak*** |
+| Erdészeti & horgászat | ForestryAndFishing | erdészet és halászat |
+| Nonprofit szervezeteknek | Nonprofit szervezeteknek | nonprofit szervezeteknek |
+| ***Ingatlan*** | ***RealEstate*** | ***Real-Estate*** |
+| Egyéb – nem szegmentált | RealEstate \_ OtherUnsegmented | egyéb – nem szegmentált |
+|||

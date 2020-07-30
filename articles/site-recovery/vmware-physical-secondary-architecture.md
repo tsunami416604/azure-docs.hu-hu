@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: b0a46dcf8fe298494a53713f122b1bda8ce07e5e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9b16a0edc1549a1b4d8ef5ba53d8b795f6d74e07
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73954577"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87418321"
 ---
 # <a name="architecture-for-vmwarephysical-server-replication-to-a-secondary-on-premises-site"></a>Architektúra a VMware/fizikai kiszolgálók replikálásához egy másodlagos helyszíni helyre
 
@@ -31,6 +31,24 @@ Ez a cikk a vész-helyreállítási replikáció, a feladatátvétel és a helys
 **VMware ESX/ESXi- és vCenter-kiszolgáló** |  A virtuális gépek ESX-/ESXi-gazdagépeken futnak. A gazdagépeket egy vCenter-kiszolgáló felügyeli | A VMware virtuális gépek replikálásához VMware-infrastruktúrára van szükség.
 **Virtuális gépek/fizikai kiszolgálók** |  A replikálni kívánt VMware virtuális gépeken és fizikai kiszolgálókon telepített Unified Agent. | Ez az ügynök valósítja meg az összetevők közötti kommunikációt.
 
+## <a name="set-up-outbound-network-connectivity"></a>Kimenő hálózati kapcsolat beállítása
+
+Ahhoz, hogy a Site Recovery a várt módon működjön, módosítania kell a kimenő hálózati kapcsolatot, hogy a környezet replikálása engedélyezve legyen.
+
+> [!NOTE]
+> A Site Recovery nem támogatja a hitelesítési proxy használatát a hálózati kapcsolat vezérléséhez.
+
+### <a name="outbound-connectivity-for-urls"></a>Kimenő kapcsolat URL-címek esetén
+
+Ha URL-alapú tűzfal-proxyt használ a kimenő kapcsolatok vezérléséhez, engedélyezze az alábbi URL-címek elérését:
+
+| **Név**                  | **Kereskedelmi**                               | **Államigazgatás**                                 | **Leírás** |
+| ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
+| Tárolás                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`              | Lehetővé teszi az adatok írását a virtuális gépről a forrásrégió gyorsítótárjának tárfiókjába. |
+| Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | Hitelesítést és engedélyezést biztosít a Site Recovery szolgáltatás URL-címeihez. |
+| Replikáció               | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`   | Lehetővé teszi a virtuális gép és a Site Recovery szolgáltatás közötti kommunikációt. |
+| Service Bus               | `*.servicebus.windows.net`                 | `*.servicebus.usgovcloudapi.net`             | Lehetővé teszi a virtuális gép számára a Site Recovery monitorozási és diagnosztikai adatainak írását. |
+
 ## <a name="replication-process"></a>Replikációs folyamat
 
 1. Állítsa be mindkét oldalon az összetevőkiszolgálókat (konfigurációs, folyamat- és fő célkiszolgáló), majd telepítse a replikálni kívánt gépekre a Unified Agent ügynököt.
@@ -43,6 +61,6 @@ Ez a cikk a vész-helyreállítási replikáció, a feladatátvétel és a helys
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A VMware virtuális gépek és a fizikai kiszolgálók vész-helyreállításának [beállítása](vmware-physical-secondary-disaster-recovery.md) másodlagos helyre.

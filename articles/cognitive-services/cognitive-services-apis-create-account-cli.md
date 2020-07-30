@@ -88,7 +88,7 @@ az group create \
 
 | Szolgáltatás                    | Altípus                      |
 |----------------------------|---------------------------|
-| Számítógépes látástechnológia            | `ComputerVision`          |
+| Computer Vision            | `ComputerVision`          |
 | Custom Vision – előrejelzés | `CustomVision.Prediction` |
 | Custom Vision – képzés   | `CustomVision.Training`   |
 | Arcfelismerés                       | `Face`                    |
@@ -99,7 +99,7 @@ az group create \
 
 | Szolgáltatás            | Altípus                  |
 |--------------------|-----------------------|
-| Bing – Automatikus kiegészítés   | `Bing.Autosuggest.v7` |
+| Bing Autosuggest   | `Bing.Autosuggest.v7` |
 | Bing – Egyéni keresés | `Bing.CustomSearch`   |
 | Bing – Entitáskeresés | `Bing.EntitySearch`   |
 | Bing kereső        | `Bing.Search.v7`      |
@@ -200,7 +200,7 @@ Az erőforráscsoport és a hozzá tartozó erőforrások eltávolításához ha
 az group delete --name cognitive-services-resource-group
 ```
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 * [Kérelmek hitelesítése az Azure Cognitive Services](authentication.md)
 * [Mi az Azure Cognitive Services?](Welcome.md)

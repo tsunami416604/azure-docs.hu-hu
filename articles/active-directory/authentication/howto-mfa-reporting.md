@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c9bf76729c3b5844918659283a65eeb347c4237d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c8584ca84efc889afebe6758e254bda845912316
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83639843"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87418236"
 ---
 # <a name="use-the-sign-ins-report-to-review-azure-multi-factor-authentication-events"></a>A bejelentkezések jelentés használata az Azure Multi-Factor Authentication eseményeinek áttekintéséhez
 
@@ -44,7 +44,7 @@ Ha meg szeretné tekinteni a bejelentkezési tevékenység jelentését a [Azure
 
     Az *események részletei* vagy *feltételes hozzáférés* lapján megjelenik az állapotkód, vagy az a házirend, amely az MFA-kérést aktiválta.
 
-    [![](media/howto-mfa-reporting/sign-in-report-cropped.png "Screenshot of example Azure Active Directory sign-ins report in the Azure portal")](media/howto-mfa-reporting/sign-in-report.png#lightbox)
+    [![Képernyőkép – példa Azure Active Directory bejelentkezési jelentésre a Azure Portal](media/howto-mfa-reporting/sign-in-report-cropped.png)](media/howto-mfa-reporting/sign-in-report.png#lightbox)
 
 Ha elérhető, a hitelesítés látható, például szöveges üzenet, Microsoft Authenticator alkalmazás értesítése vagy telefonhívás.
 
@@ -177,6 +177,6 @@ A következő további információk és jelentések érhetők el az MFA-esemén
 | Megkerülő felhasználói előzmények | Azure AD > Security > MFA > egyszeri Mellőzés | Az MFA-kiszolgálói kérelmek előzményeit jeleníti meg a felhasználók számára az MFA megkerülése érdekében. |
 | Kiszolgáló állapota | Azure AD > Security > MFA > kiszolgáló állapota | Megjeleníti a fiókjához társított MFA-kiszolgálók állapotát. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a cikk áttekintést nyújt a bejelentkezési tevékenységek jelentéséről. További információ arról, hogy a jelentés mit tartalmaz és hogyan értelmezi az adatokat, lásd: [bejelentkezési tevékenységek jelentései az Azure ad-ben](../reports-monitoring/concept-sign-ins.md).

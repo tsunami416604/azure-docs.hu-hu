@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan hozhat létre gyorsan Kubernetes-fürtöt, hogy
 services: container-service
 ms.topic: article
 ms.date: 07/16/2020
-ms.openlocfilehash: 5baa4f807002cc39428eb46e5a86cf59bd022cb2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ff7fc00c8de5b4d577770c140d356d7f9da1b7e7
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87015629"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421229"
 ---
 # <a name="create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>Windows Server-tároló létrehozása Azure Kubernetes szolgáltatásbeli (ak) fürtön az Azure CLI használatával
 
@@ -19,7 +19,7 @@ Az Azure Kubernetes Service (ak) egy felügyelt Kubernetes szolgáltatás, amely
 
 Ez a cikk azt feltételezi, hogy alapvető ismereteket Kubernetes a fogalmakról. További információ: [Az Azure Kubernetes Service (ak) Kubernetes alapfogalmai][kubernetes-concepts].
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -94,8 +94,7 @@ az aks create \
 ```
 
 > [!NOTE]
-> Ha jelszó-érvényesítési hibát kap, próbálja meg létrehozni az erőforráscsoportot egy másik régióban.
-> Ezután próbálja meg létrehozni a fürtöt az új erőforrás-csoporttal.
+> Ha jelszó-érvényesítési hibát kap, ellenőrizze, hogy a *Windows-admin-password* paraméter megfelel-e a [Windows Server jelszó követelményeinek][windows-server-password]. Ha a Jelszó megfelel a követelményeknek, próbálja meg létrehozni az erőforráscsoportot egy másik régióban. Ezután próbálja meg létrehozni a fürtöt az új erőforrás-csoporttal.
 
 Néhány perc elteltével a parancs befejeződik, és a fürthöz tartozó JSON-formátumú adatokat adja vissza. A fürt esetenként több percig is eltarthat. Ezekben az esetekben akár 10 percet is igénybe vehet.
 
@@ -250,7 +249,7 @@ az group delete --name myResourceGroup --yes --no-wait
 > [!NOTE]
 > A fürt törlésekor az AKS-fürt által használt Azure Active Directory-szolgáltatásnév nem lesz eltávolítva. A szolgáltatásnév eltávolításának lépéseiért lásd [az AKS-szolgáltatásnevekre vonatkozó szempontokat és a szolgáltatásnevek törlését][sp-delete] ismertető cikket. Felügyelt identitás használata esetén az identitást a platform felügyeli, és nem szükséges az eltávolítás.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben üzembe helyezett egy Kubernetes-fürtöt, és telepített egy ASP.NET-minta alkalmazást egy Windows Server-tárolóban. Nyissa meg az imént létrehozott fürthöz tartozó [Kubernetes webes irányítópultot][kubernetes-dashboard] .
 

@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, carlrab
-ms.date: 04/09/2020
-ms.openlocfilehash: 5a246288eb3c4063a85935c20abec5c86467d340
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.date: 07/28/2020
+ms.openlocfilehash: 33f87bf6f030adb48f2c4f8eb45027c1b298d812
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86042373"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419716"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-databases-in-azure-sql-database"></a>A rugalmas készletek segítségével több adatbázist kezelhet és méretezheti Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -35,16 +35,16 @@ A rugalmas készletek a probléma megoldásához biztosítják, hogy az adatbáz
 > [!IMPORTANT]
 > Rugalmas készletekhez nem tartozik adatbázis-díj. Minden órában, a legmagasabb eDTU vagy virtuális mag, a használattól függetlenül, illetve azt, hogy a készlet egy óránál kevesebb ideig volt-e aktív.
 
-A rugalmas készletek lehetővé teszik, hogy a fejlesztő erőforrásokat vásároljon egy több adatbázis által megosztott készlet számára, hogy az egyes adatbázisok előre nem látható használati időszakait is kielégítse. A készlethez a [DTU-alapú vásárlási modellen](service-tiers-dtu.md) vagy a [virtuális mag-alapú vásárlási modellen](service-tiers-vcore.md)alapuló erőforrásokat is konfigurálhat. A készletre vonatkozó erőforrás-követelményt az adatbázisainak összesített kihasználtsága határozza meg. A készlet számára elérhető erőforrások mennyiségét a fejlesztői költségvetés vezérli. A fejlesztő egyszerűen hozzáadja az adatbázisokat a készlethez, beállítja az adatbázisok minimális és maximális erőforrásait (a minimális és a maximális DTU, illetve a minimális vagy maximális virtuális mag, attól függően, hogy milyen újrabeszerzési modellt választ), majd a készlet erőforrásait a költségvetésük alapján állítja be. A készletek segítségével a fejlesztő zökkenőmentesen és fokozatosan növelheti szolgáltatásának teljesítményét a korlátozott erőforrásokkal bíró startupok szintjéről az érett vállalkozások szintjére.
+A rugalmas készletek lehetővé teszik, hogy a fejlesztő erőforrásokat vásároljon egy több adatbázis által megosztott készlet számára, hogy az egyes adatbázisok előre nem látható használati időszakait is kielégítse. A készlethez a [DTU-alapú vásárlási modellen](service-tiers-dtu.md) vagy a [virtuális mag-alapú vásárlási modellen](service-tiers-vcore.md)alapuló erőforrásokat is konfigurálhat. A készletre vonatkozó erőforrás-követelményt az adatbázisainak összesített kihasználtsága határozza meg. A készlet számára elérhető erőforrások mennyiségét a fejlesztői költségvetés vezérli. A fejlesztő egyszerűen adatbázisokat ad hozzá a készlethez, opcionálisan beállítja az adatbázisok minimális és maximális erőforrásait (a minimális és a maximális DTU, illetve a minimális vagy maximális virtuális mag, attól függően, hogy melyik újrahasznosítási modellt választja), majd a készlet erőforrásait a költségvetésük alapján állítja be. A készletek segítségével a fejlesztő zökkenőmentesen és fokozatosan növelheti szolgáltatásának teljesítményét a korlátozott erőforrásokkal bíró startupok szintjéről az érett vállalkozások szintjére.
 
-A készleten belül az önálló adatbázisok az automatikus méretezés rugalmasságával rendelkeznek. A nagy terhelés alatt az adatbázisok több erőforrást is felhasználhatnak az igények kielégítése érdekében. A világos terhelésű adatbázisok kevesebbet használnak, és a terhelés nélküli adatbázisok nem használnak fel erőforrásokat. Az erőforrásoknak az egyes adatbázisok helyett a teljes készlet számára hozzáférhetővé tétele jelentősen leegyszerűsíti a felügyeleti feladatokat. Emellett kiszámítható költségvetést is biztosít a készlethez. Az adatbázis leállása nélküli meglévő készletekhez további erőforrások is hozzáadhatók, azzal a különbséggel, hogy az adatbázisokat át kell helyezni az új eDTU-foglalás további számítási erőforrásainak biztosításához. Hasonlóképpen, ha már nincs szükség további erőforrásokra, a meglévő készletből bármikor eltávolítható. Ezenfelül a készlethez adatbázisok adhatók hozzá vagy vonhatók ki belőle. Ha egy adatbázis kiszámítható módon nem használja ki az erőforrásokat, helyezze át az adatbázist.
+A készleten belül az önálló adatbázisok az automatikus méretezés rugalmasságával rendelkeznek. A nagy terhelés alatt az adatbázisok több erőforrást is felhasználhatnak az igények kielégítése érdekében. A világos terhelésű adatbázisok kevesebbet használnak, és a terhelés nélküli adatbázisok nem használnak fel erőforrásokat. Az erőforrásoknak az egyes adatbázisok helyett a teljes készlet számára hozzáférhetővé tétele jelentősen leegyszerűsíti a felügyeleti feladatokat. Emellett kiszámítható költségvetést is biztosít a készlethez. A minimális állásidővel rendelkező meglévő készletekhez további erőforrások is hozzáadhatók. Hasonlóképpen, ha már nincs szükség további erőforrásokra, a meglévő készletből bármikor eltávolítható. És hozzáadhat vagy eltávolíthat adatbázisokat a készletből. Ha egy adatbázis kiszámítható módon nem használja ki az erőforrásokat, helyezze át az adatbázist.
 
 > [!NOTE]
 > Az adatbázisok rugalmas készletbe vagy onnan történő áthelyezésekor nincs leállás, kivéve a művelet végén lévő rövid időtartamot (másodpercben) az adatbázis-kapcsolatok eldobásakor.
 
 ## <a name="when-should-you-consider-a-sql-database-elastic-pool"></a>Mikor érdemes figyelembe vennie SQL Database rugalmas készletet
 
-A készleteket kifejezetten a nagy számú, speciális felhasználási mintákkal rendelkező adatbázisokhoz tervezték. Az egyes adatbázisok mintáit átlagosan alacsony, és viszonylag rendszertelen időközönkénti hirtelen megugró kihasználtság jellemzi.
+A készleteket kifejezetten a nagy számú, speciális felhasználási mintákkal rendelkező adatbázisokhoz tervezték. Az egyes adatbázisok mintáit átlagosan alacsony, és viszonylag rendszertelen időközönkénti hirtelen megugró kihasználtság jellemzi. Ezzel szemben a tartós közepes kihasználtságú adatbázisok nem helyezhetők ugyanahhoz a rugalmas készletbe.
 
 Minél több adatbázist tud hozzáadni egy készlethez, annál többet takaríthat meg. Az alkalmazás kihasználtsági mintája alapján megtekintheti a megtakarítást akár két S3-adatbázis között.
 
@@ -82,16 +82,13 @@ A következő, az adatbázis-használattal és az adatbázis-kihasználtsággal 
 
 Ha az önálló adatbázisok erőforrásainak összesített mennyisége több mint 1,5 x a készlethez szükséges erőforrások száma, akkor a rugalmas készlet költséghatékonyabb.
 
-***Példa a DTU-alapú vásárlási modellre***<br>
-Legalább két S3-adatbázis vagy legalább 15 S0-adatbázis szükséges ahhoz, hogy egy 100 eDTU-készlet költséghatékonyabb legyen, mint az önálló adatbázisok számítási méreteinek használata.
+***Példa a DTU-alapú vásárlási modellre*** Legalább két S3-adatbázis vagy legalább 15 S0-adatbázis szükséges ahhoz, hogy egy 100 eDTU-készlet költséghatékonyabb legyen, mint az önálló adatbázisok számítási méreteinek használata.
 
 ### <a name="maximum-number-of-concurrently-peaking-databases"></a>Egyidejűleg kiugró kihasználtságú adatbázisok maximális száma
 
 Az erőforrások megosztásával a készletben lévő összes adatbázis nem tud egyidejűleg erőforrásokat használni az önálló adatbázisok számára elérhető korlátig. Minél kevesebb adatbázis van, amely egyidejűleg meghaladja a maximális értéket, annál kisebb a készlet erőforrásai, és a készlet költséghatékonyabb lesz. Általánosságban nem több mint 2/3 (vagy 67%) a készletben lévő adatbázisoknak egyidejűleg kell megjelenniük a maximális erőforrás-korlátot.
 
-***Példa a DTU-alapú vásárlási modellre***
-
-Ha csökkenteni szeretnénk három S3-adatbázis költségét egy 200 eDTU-s készletben, akkor a háromból egyszerre legfeljebb kettő működhet kiugró kihasználtsággal. Ha ebből a három S3-adatbázisból több mint kettő működik egyszerre kiugró kihasználtsággal, akkor a készletnek több mint 200 eDTU-t kellene tartalmaznia. Ha a készlet átméretezése több mint 200 Edtu, a készlethez több S3-adatbázist kell hozzáadni, hogy a költségek kevesebbek legyenek, mint az önálló adatbázisok számítási méretei.
+***Példa a DTU-alapú vásárlási modellre*** A három S3-adatbázis költségeinek a 200 eDTU-készletben való csökkentése érdekében ezen adatbázisok közül legfeljebb kettőnél lehet a maximális kihasználtsága. Ha ebből a három S3-adatbázisból több mint kettő működik egyszerre kiugró kihasználtsággal, akkor a készletnek több mint 200 eDTU-t kellene tartalmaznia. Ha a készlet átméretezése több mint 200 Edtu, a készlethez több S3-adatbázist kell hozzáadni, hogy a költségek kevesebbek legyenek, mint az önálló adatbázisok számítási méretei.
 
 Vegye figyelembe, hogy ez a példa nem veszi figyelembe a készletben lévő más adatbázisok kihasználtságát. Ha egy adott időpontban minden adatbázis használatban van valamilyen szinten, akkor az adatbázisok kevesebb mint kétharmad része (vagy 67%-a) működhet egyszerre kiugró kihasználtsággal.
 
@@ -99,13 +96,13 @@ Vegye figyelembe, hogy ez a példa nem veszi figyelembe a készletben lévő má
 
 Az adatbázisok kiugró és átlagos kihasználtsága közötti lényeges különbség a hosszú, alacsony kihasználtságú és a rövid magas kihasználtságú időszakokban mutatkozik meg. Ilyen felhasználási minta esetén ideális az erőforrások adatbázisok közötti megosztása. Az adatbázis készletben való használatát akkor érdemes megfontolni, ha a kiugró mértékű kihasználtsága hozzávetőlegesen másfélszer nagyobb az átlagos kihasználtságánál.
 
-**DTU-alapú vásárlási modell**: egy olyan S3-adatbázis, amely 100 DTU-ra és átlagosan 67 DTU vagy annál kevesebb értékre mutat, jó választás a edtu egy készletben való megosztásához. Ha pedig egy 20 DTU-s kiugró kihasználtsággal működő S1-adatbázis átlagosan legfeljebb 13 DTU-t használ, akkor jó jelöltnek számít egy készlethez.
+***Példa a DTU-alapú vásárlási modellre*** Az 100 DTU-ra és átlagosan 67 DTU-ra vagy annál kevesebbre mutató S3-adatbázis jó jelölt a Edtu megosztásához a készletben. Ha pedig egy 20 DTU-s kiugró kihasználtsággal működő S1-adatbázis átlagosan legfeljebb 13 DTU-t használ, akkor jó jelöltnek számít egy készlethez.
 
 ## <a name="how-do-i-choose-the-correct-pool-size"></a>Hogyan a megfelelő készlet méretének kiválasztása
 
 A készletek legjobb mérete a készletben lévő összes adatbázishoz szükséges összesített erőforrásoktól függ. Ez a következők meghatározását foglalja magában:
 
-- A készletben lévő összes adatbázis által felhasznált erőforrások maximális száma (a maximális DTU vagy a maximális virtuális mag a választott újrabeszerzési modelltől függően).
+- A készletben lévő összes adatbázis által felhasznált erőforrások maximális száma (a maximális DTU vagy a maximális virtuális mag a választott beszerzési modelltől függően).
 - A készletben szereplő összes adatbázis által használt maximális tárterület (bájtban).
 
 Az egyes erőforrás-modellekhez elérhető szolgáltatási rétegek és korlátok esetében tekintse meg a [DTU-alapú vásárlási modellt](service-tiers-dtu.md) vagy a [virtuális mag-alapú vásárlási modellt](service-tiers-vcore.md).
@@ -114,11 +111,13 @@ Az alábbi lépések segítségével megbecsülheti, hogy a készlet költségha
 
 1. Becsülje meg a készlethez szükséges Edtu vagy virtuális mag a következőképpen:
 
-   A DTU-alapú vásárlási modell esetében: MAX (<*adatbázisok* *átlagos DTU-kihasználtsága/db*>,<br>  
-   <*A kiugró kihasználtsággal egyszerre működő adatbázisok száma* X *Az egyes adatbázisok kiugró DTU-használata*)
+DTU-alapú vásárlási modell esetén:
 
-   A virtuális mag-alapú vásárlási modell esetében: MAX (<*adatbázisok* *átlagos virtuális mag-kihasználtsága/db*>,<br>  
-   <*Egyidejű csúcsérték-kiugró adatbázisok száma* X *csúcsérték-virtuális mag kihasználtsága/db*)
+MAX (<*adatbázisok* *átlagos DTU-kihasználtsága (db* ->), <*száma egyidejű, maximális méretű adatbázisok* maximális DTU- *kihasználtsága/db*)
+
+Virtuális mag-alapú vásárlási modell esetén:
+
+MAX (<*adatbázisok* *átlagos virtuális mag-kihasználtsága (db* ->), <*száma egyidejű, maximális méretű adatbázisok* maximális virtuális mag- *kihasználtsága/db*)
 
 2. A készlethez szükséges tárterület méretének becsléséhez adja össze a készlet egyes adatbázisaihoz szükséges bájtok számát. Ezután határozza meg a szükséges tárhelyet biztosító eDTU-készlet méretét.
 3. A DTU-alapú vásárlási modell esetében az 1. és a 2. lépésben szereplő eDTU-becslések nagyobb mennyiségét kell megbecsülni. A virtuális mag-alapú vásárlási modell esetében az 1. lépés alapján végezze el a virtuális mag becslését.
@@ -220,7 +219,7 @@ További információ: [SQL Database riasztások létrehozása Azure Portalokban
 
    A Daxko/CSI rugalmas készleteket használ Azure SQL Database a fejlesztési ciklus felgyorsításához, valamint az ügyfelek szolgáltatásainak és teljesítményének növeléséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A díjszabással kapcsolatos információkért lásd a [rugalmas készlet díjszabását](https://azure.microsoft.com/pricing/details/sql-database/elastic).
 - Rugalmas készletek méretezése: [rugalmas készletek skálázása](elastic-pool-scale.md) és [rugalmas készlet méretezése – mintakód](scripts/monitor-and-scale-pool-powershell.md)

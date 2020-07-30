@@ -1,6 +1,6 @@
 ---
-title: Gyors útmutató – szimulált TPM-eszköz kiépítése az Azure-IoT Hub a Node. js használatával
-description: Rövid útmutató – szimulált TPM-eszköz létrehozása és kiépítése az Azure-IoT Hub Device Provisioning Servicehoz készült Node. js eszközoldali SDK-val (DPS). Ez a rövid útmutató egyéni regisztrációkat használ.
+title: Gyors útmutató – szimulált TPM-eszköz kiépítése az Azure-IoT Hub Node.js használatával
+description: Rövid útmutató – szimulált TPM-eszköz létrehozása és kiépítése az Azure IoT Hub Device Provisioning Service (DPS) Node.js Device SDK-val. Ez a rövid útmutató egyéni regisztrációkat használ.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2018
@@ -11,25 +11,26 @@ ms.custom:
 - mvc
 - amqp
 - mqtt
-ms.openlocfilehash: 45e6fac971d7ccf57d6f9bae96a08ccaee023df3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+- devx-track-javascript
+ms.openlocfilehash: 58adb3e8216fdda1f276760b103e02bf7de6e12e
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81687247"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422130"
 ---
-# <a name="quickstart-create-and-provision-a-simulated-tpm-device-using-nodejs-device-sdk-for-iot-hub-device-provisioning-service"></a>Rövid útmutató: szimulált TPM-eszköz létrehozása és kiépítése a IoT Hub Device Provisioning Service Node. js eszközoldali SDK-val
+# <a name="quickstart-create-and-provision-a-simulated-tpm-device-using-nodejs-device-sdk-for-iot-hub-device-provisioning-service"></a>Rövid útmutató: szimulált TPM-eszköz létrehozása és kiépítése a IoT Hub Device Provisioning Service Node.js eszközoldali SDK-val
 
 [!INCLUDE [iot-dps-selector-quick-create-simulated-device-tpm](../../includes/iot-dps-selector-quick-create-simulated-device-tpm.md)]
 
-Ebben a rövid útmutatóban egy szimulált IoT-eszközt hoz létre egy Windows rendszerű számítógépen. A szimulált eszköz hardveres biztonsági modulként (HSM) tartalmazza a TPM-szimulátort. A szimulált eszköz és az IoT hub között az eszköz kiépítési szolgáltatásával (DPS) való egyéni regisztráció használatával csatlakoztathatja az eszköz minta Node. js-kódját.
+Ebben a rövid útmutatóban egy szimulált IoT-eszközt hoz létre egy Windows rendszerű számítógépen. A szimulált eszköz hardveres biztonsági modulként (HSM) tartalmazza a TPM-szimulátort. A szimulált eszköz és az IoT hub között az eszköz kiépítési szolgáltatásával (DPS) való egyéni regisztráció használatával csatlakoztathatja ezt a szimulált eszközt az eszközhöz Node.js kódot használva.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Az [automatikus kiépítési fogalmak](concepts-auto-provisioning.md)áttekintése.
 - [A IoT hub Device Provisioning Service beállításának befejezése a Azure Portal](./quick-setup-auto-provision.md).
 - Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egyet ingyen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-- [Node. js v 4.0 +](https://nodejs.org).
+- [Node.js v 4.0 +](https://nodejs.org).
 - [Git](https://git-scm.com/download/).
 
 [!INCLUDE [IoT Device Provisioning Service basic](../../includes/iot-dps-basic.md)]
@@ -261,7 +262,7 @@ Ha azt tervezi, hogy folytatja a munkát, és megkeresi az eszköz ügyféloldal
 1. A Azure Portal bal oldali menüjében válassza a **minden erőforrás** lehetőséget, majd válassza ki az IoT hubot. Nyissa meg a **IoT-eszközök** panelt, jelölje be az ebben a rövid útmutatóban regisztrált eszköz *azonosítója* melletti jelölőnégyzetet, majd kattintson a panel tetején található **Törlés** gombra.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozott egy TPM-mel szimulált eszközt a gépen, és kiosztotta azt az IoT hubhoz a IoT Hub Device Provisioning Service használatával. A TPM-eszköz programozott módon történő regisztrálásának megismeréséhez folytassa a TPM-eszköz programozott beléptetését bemutató rövid útmutatóval. 
 

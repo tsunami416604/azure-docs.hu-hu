@@ -149,7 +149,7 @@ Támogatja az angol ( `en` ), a japán (), a `ja` kínai egyszerűsített ( `zh-
 > [!div class="nextstepaction"]
 > [További információ a Hangulatelemzés v3-ról](how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Mi a Text Analytics API?](overview.md)  
 * [Példa felhasználói forgatókönyvek](text-analytics-user-scenarios.md)

@@ -8,12 +8,13 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/18/2020
-ms.openlocfilehash: 21f91c15adb5e950f5ed9cc20449387ddcf6504f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 6ab32a2ccb4c7eb79309798c2b53d326723ad6ea
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080828"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420073"
 ---
 # <a name="collect-telemetry-data-for-search-traffic-analytics"></a>Telemetria-adatok gyűjtése a keresési forgalom elemzéséhez
 
@@ -233,7 +234,7 @@ Az alábbi képernyőfelvételen látható, hogy a beépített jelentések hogya
 
 ![Power BI irányítópult az Azure Cognitive Search](./media/search-traffic-analytics/azuresearch-powerbi-dashboard.png "Power BI irányítópult az Azure Cognitive Search")
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A keresési alkalmazás hatékony és átgondolt adatainak beszerzése a keresési szolgáltatással.
 

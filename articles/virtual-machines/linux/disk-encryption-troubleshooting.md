@@ -131,7 +131,7 @@ A Azure Disk Encryption PowerShell-lel való letiltásához használja a [disabl
 
 A CLI-vel való Azure Disk Encryption letiltásához használja [az az VM encryption disable](/cli/azure/vm/encryption)parancsot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a dokumentumban többet is megtudhat a Azure Disk Encryption és a problémák elhárításával kapcsolatos gyakori problémákról. A szolgáltatással és képességeivel kapcsolatos további információkért tekintse meg a következő cikkeket:
 

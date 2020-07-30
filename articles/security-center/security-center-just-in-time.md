@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: 78f5a34b64736808ac03771dcd8b5380482ab341
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a077e1dfd166051ad1cf16e42d11e8eeb61d2c91
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089778"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419852"
 ---
 # <a name="secure-your-management-ports-with-just-in-time-access"></a>A felügyeleti portok védelme az igény szerinti hozzáféréssel
 
@@ -35,7 +35,8 @@ Ezen az oldalon megtudhatja, hogyan veheti fel a JIT-t a biztonsági programba. 
 - Díjszabás: **standard szint**. [További információk a díjszabásról](/azure/security-center/security-center-pricing).
 - Szükséges szerepkörök és engedélyek:
     - Az **olvasó** -és **SecurityReader** szerepkörök egyaránt megtekinthetik a JIT-állapotot és a paramétereket.
-    - Az JIT-sel használható egyéni szerepkörök létrehozásához tekintse meg a [Mi szükséges engedélyeket a JIT konfigurálásához és használatához?](just-in-time-explained.md#what-permissions-are-needed-to-configure-and-use-jit)című témakörben.
+    - Az JIT-sel használható egyéni szerepkörök létrehozásához tekintse meg a [Mi szükséges engedélyeket a JIT konfigurálásához és használatához?](just-in-time-explained.md#what-permissions-are-needed-to-configure-and-use-jit) című témakörben.
+    - Ha olyan felhasználók számára szeretne legkevesebb jogosultsági szintű szerepkört létrehozni, akiknek JIT-hozzáférést kell kérniük egy virtuális géphez, és nem kell más JIT-műveletet végezniük, használja a Security Center GitHub közösségi oldalain található [set-JitLeastPrivilegedRole szkriptet](https://github.com/Azure/Azure-Security-Center/tree/master/Powershell%20scripts/JIT%20Custom%20Role) .
 - Támogatott virtuális gépek: 
     - ✔ Azure Resource Manager használatával üzembe helyezett virtuális gépek.
     - A klasszikus üzembe helyezési modellel üzembe helyezett ✘ virtuális gépek. [További információ ezekről a telepítési modellekről](../azure-resource-manager/management/deployment-models.md).
@@ -369,7 +370,7 @@ A naplóbeli kereséssel betekintést nyerhet a virtuális gépek tevékenysége
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a cikkből megtudhatta, hogyan telepítheti és használhatja az igény szerinti virtuális gépekhez való hozzáférést. A JIT használatának okának megismeréséhez olvassa el a következő témakört:
 

@@ -9,139 +9,165 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 5d02736e9cb0a612e434dc5a79a73d7a62785728
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8b95f6b6eca0f1464a7d09d2810aa66836d76f8f
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85207651"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386639"
 ---
 # <a name="query-json-files-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>JSON-fájlok lekérdezése az SQL on-demand (előzetes verzió) használatával az Azure szinapszis Analyticsben
 
-Ebből a cikkből megtudhatja, hogyan írhat egy lekérdezést az SQL on-demand (előzetes verzió) használatával az Azure szinapszis Analytics szolgáltatásban. A lekérdezés célja, hogy beolvassa a JSON-fájlokat. A támogatott formátumok a [OpenRowset](develop-openrowset.md)-ben vannak felsorolva.
+Ebből a cikkből megtudhatja, hogyan írhat egy lekérdezést az SQL on-demand (előzetes verzió) használatával az Azure szinapszis Analytics szolgáltatásban. A lekérdezés célja, hogy beolvassa a JSON-fájlokat a [OpenRowset](develop-openrowset.md)használatával. 
+- Szabványos JSON-fájlok, amelyek több JSON-dokumentumot is tárolnak JSON-tömbként.
+- Sor-tagolt JSON-fájlok, ahol a JSON-dokumentumok a New-line karakterrel vannak elválasztva. Az ilyen típusú fájlok általános bővítményei:, `jsonl` `ldjson` és `ndjson` .
 
-## <a name="prerequisites"></a>Előfeltételek
+## <a name="reading-json-documents"></a>JSON-dokumentumok olvasása
 
-Első lépésként létre kell **hoznia egy adatbázist** , amelyen végre fogja hajtani a lekérdezéseket. Ezután inicializálja az objektumokat a [telepítési parancsfájl](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) végrehajtásával az adatbázison. Ez a telepítési parancsfájl létrehozza az adatforrásokat, az adatbázis-hatókörrel rendelkező hitelesítő adatokat, valamint az ezekben a mintákban használt külső fájlformátumokat.
+A JSON-fájl tartalmának megtekintésének legegyszerűbb módja a fájl URL-címének `OPENROWSET` megadásához, a CSV megadása `FORMAT` , valamint `0x0b` a és a értékének beállítása `fieldterminator` `fieldquote` . Ha el kell olvasnia a sorokra tagolt JSON-fájlokat, akkor ez elég. Ha klasszikus JSON-fájllal rendelkezik, meg kell adnia a értékeit `0x0b` `rowterminator` . `OPENROWSET`a függvény a JSON-t elemzi, és az összes dokumentumot a következő formátumban fogja visszaadni:
 
-## <a name="sample-json-files"></a>JSON-fájlok mintája
+| doc |
+| --- |
+|{"date_rep": "2020-07-24", "nap": 24, "hónap": 7, "év": 2020, "Cases": 3, "halálesetek": 0, "geo_id": "AF"}|
+|{"date_rep": "2020-07-25", "nap": 25, "hónap": 7, "év": 2020, "Cases": 7, "halálesetek": 0, "geo_id": "AF"}|
+|{"date_rep": "2020-07-26", "nap": 26, "hónap": 7, "év": 2020, "Cases": 4, "halálesetek": 0, "geo_id": "AF"}|
+|{"date_rep": "2020-07-27", "nap": 27, "hónap": 7, "év": 2020, "Cases": 8, "halálesetek": 0, "geo_id": "AF"}|
 
-Az alábbi szakasz példákat tartalmaz a JSON-fájlok olvasásához. A fájlok *JSON* -tárolóban, *címjegyzékekben*tárolódnak, és a következő szerkezettel rendelkező egyetlen könyvből állhatnak:
+Ha a fájl nyilvánosan elérhető, vagy ha az Azure AD-identitása hozzáfér ehhez a fájlhoz, akkor az alábbi példákban látható módon láthatja a fájl tartalmát.
+
+### <a name="read-json-files"></a>JSON-fájlok olvasása
+
+A következő minta lekérdezés a JSON-és a sortöréses JSON-fájlokat olvassa be, és minden dokumentumot külön sorként ad vissza.
+
+```sql
+select top 10 *
+from openrowset(
+        bulk 'https://pandemicdatalake.blob.core.windows.net/public/curated/covid-19/ecdc_cases/latest/ecdc_cases.jsonl',
+        format = 'csv',
+        fieldterminator ='0x0b',
+        fieldquote = '0x0b'
+    ) with (doc nvarchar(max)) as rows
+go
+select top 10 *
+from openrowset(
+        bulk 'https://pandemicdatalake.blob.core.windows.net/public/curated/covid-19/ecdc_cases/latest/ecdc_cases.json',
+        format = 'csv',
+        fieldterminator ='0x0b',
+        fieldquote = '0x0b',
+        rowterminator = '0x0b' --> You need to override rowterminator to read classic JSON
+    ) with (doc nvarchar(max)) as rows
+```
+
+Ez a lekérdezés minden JSON-dokumentumot az eredményhalmaz külön soraként ad vissza. Győződjön meg arról, hogy el tudja érni ezt a fájlt. Ha a fájlt SAS-kulccsal vagy egyéni identitással védi, akkor az [SQL-bejelentkezéshez a kiszolgálói szintű hitelesítő adatokat](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential)kell beállítania. 
+
+### <a name="using-data-source"></a>Adatforrás használata
+
+Az előző példa a fájl teljes elérési útját használja. Alternatív megoldásként létrehozhat egy külső adatforrást is, amely a tároló gyökérkönyvtárára mutat, és ezt az adatforrást és a fájl relatív elérési útját használja a következő `OPENROWSET` függvényben:
+
+```sql
+create external data source covid
+with ( location = 'https://pandemicdatalake.blob.core.windows.net/public/curated/covid-19/ecdc_cases' );
+go
+select top 10 *
+from openrowset(
+        bulk 'latest/ecdc_cases.jsonl',
+        data_source = 'covid',
+        format = 'csv',
+        fieldterminator ='0x0b',
+        fieldquote = '0x0b'
+    ) with (doc nvarchar(max)) as rows
+go
+select top 10 *
+from openrowset(
+        bulk 'latest/ecdc_cases.json',
+        data_source = 'covid',
+        format = 'csv',
+        fieldterminator ='0x0b',
+        fieldquote = '0x0b',
+        rowterminator = '0x0b' --> You need to override rowterminator to read classic JSON
+    ) with (doc nvarchar(max)) as rows
+```
+
+Ha egy adatforrás SAS-kulccsal vagy egyéni identitással védett, az [adatforrást adatbázis-hatókörű hitelesítő adatokkal](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#database-scoped-credential)is konfigurálhatja.
+
+A következő részekben láthatja, hogyan lehet lekérdezni a JSON-fájlok különböző típusait.
+
+## <a name="parse-json-documents"></a>JSON-dokumentumok elemzése
+
+Az előző példákban található lekérdezések minden JSON-dokumentumot egyetlen sztringként adnak vissza az eredményhalmaz külön sorában. A függvények segítségével `JSON_VALUE` `OPENJSON` elemezheti a JSON-dokumentumok értékeit, és a következő példában látható módon visszaküldheti őket viszonyítási értékként.
+
+| dátum \_ rep | esetekben | földrajzi \_ azonosító |
+| --- | --- | --- |
+| 2020-07-24 | 3 | AF |
+| 2020-07-25 | 7 | AF |
+| 2020-07-26 | 4 | AF |
+| 2020-07-27 | 8| AF |
+
+### <a name="sample-json-document"></a>JSON-dokumentum mintája
+
+A lekérdezés példákkal olvassa be a dokumentumokat tartalmazó *JSON* -fájlokat a következő szerkezettel:
 
 ```json
 {
-   "_id":"ahokw88",
-   "type":"Book",
-   "title":"The AWK Programming Language",
-   "year":"1988",
-   "publisher":"Addison-Wesley",
-   "authors":[
-      "Alfred V. Aho",
-      "Brian W. Kernighan",
-      "Peter J. Weinberger"
-   ],
-   "source":"DBLP"
+    "date_rep":"2020-07-24",
+    "day":24,"month":7,"year":2020,
+    "cases":13,"deaths":0,
+    "countries_and_territories":"Afghanistan",
+    "geo_id":"AF",
+    "country_territory_code":"AFG",
+    "continent_exp":"Asia",
+    "load_date":"2020-07-25 00:05:14",
+    "iso_country":"AF"
 }
 ```
 
-## <a name="read-json-files"></a>JSON-fájlok olvasása
-
-A JSON-fájlok JSON_VALUE és [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)használatával történő feldolgozásához a JSON-fájlt egyetlen oszlopként kell beolvasnia a tárterületről. A következő parancsfájl egyetlen oszlopként olvassa *be abook1.js* fájlt:
-
-```sql
-SELECT
-    *
-FROM
-    OPENROWSET(
-        BULK 'json/books/book1.json',
-        DATA_SOURCE = 'SqlOnDemandDemo',
-        FORMAT='CSV',
-        FIELDTERMINATOR ='0x0b',
-        FIELDQUOTE = '0x0b',
-        ROWTERMINATOR = '0x0b'
-    )
-    WITH (
-        jsonContent varchar(8000)
-    ) AS [r];
-```
-
 > [!NOTE]
-> A teljes JSON-fájlt egyetlen sorra vagy oszlopba olvassa. Így a FIELDTERMINATOR, a FIELDQUOTE és a ROWTERMINATOR értéke 0x0b.
+> Ha ezeket a dokumentumokat sortöréssel elválasztott JSON-ként tárolja, be kell állítania és 0x0b kell lennie `FIELDTERMINATOR` `FIELDQUOTE` . Ha szabványos JSON-formátummal rendelkezik, a 0x0b értékre kell állítania `ROWTERMINATOR` .
 
-## <a name="query-json-files-using-json_value"></a>JSON-fájlok lekérdezése JSON_VALUE használatával
+### <a name="query-json-files-using-json_value"></a>JSON-fájlok lekérdezése JSON_VALUE használatával
 
-Az alábbi lekérdezés azt mutatja be, hogyan használhatók a [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) a skaláris értékek (title, kiadó) egy olyan könyvből való lekéréséhez, amely egy *valószínűségi és statisztikai metódusokat tartalmaz a Cryptology-ben, a kiválasztott témakörök bemutatása*:
-
-```sql
-SELECT
-    JSON_VALUE(jsonContent, '$.title') AS title,
-    JSON_VALUE(jsonContent, '$.publisher') as publisher,
-    jsonContent
-FROM
-    OPENROWSET(
-        BULK 'json/books/*.json',
-        DATA_SOURCE = 'SqlOnDemandDemo',
-        FORMAT='CSV',
-        FIELDTERMINATOR ='0x0b',
-        FIELDQUOTE = '0x0b',
-        ROWTERMINATOR = '0x0b'
-    )
-    WITH (
-        jsonContent varchar(8000)
-    ) AS [r]
-WHERE
-    JSON_VALUE(jsonContent, '$.title') = 'Probabilistic and Statistical Methods in Cryptology, An Introduction by Selected Topics';
-```
-
-## <a name="query-json-files-using-json_query"></a>JSON-fájlok lekérdezése JSON_QUERY használatával
-
-A következő lekérdezés azt mutatja be, hogyan használhatók a [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) egy olyan könyvben lévő objektumok és tömbök (szerzők) lekéréséhez *, amelyek valószínűségi és statisztikai módszerei a Cryptology-ben, a kiválasztott témakörök bemutatása*:
+Az alábbi lekérdezés azt mutatja be, hogyan használhatók a [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) a skaláris értékek (cím, KÖZZÉTEVŐ) JSON-dokumentumokból való lekéréséhez:
 
 ```sql
-SELECT
-    JSON_QUERY(jsonContent, '$.authors') AS authors,
-    jsonContent
-FROM
-    OPENROWSET(
-        BULK 'json/books/*.json',
-        DATA_SOURCE = 'SqlOnDemandDemo',
-        FORMAT='CSV',
-        FIELDTERMINATOR ='0x0b',
-        FIELDQUOTE = '0x0b',
-        ROWTERMINATOR = '0x0b'
-    )
-    WITH (
-        jsonContent varchar(8000)
-    ) AS [r]
-WHERE
-    JSON_VALUE(jsonContent, '$.title') = 'Probabilistic and Statistical Methods in Cryptology, An Introduction by Selected Topics';
+select
+    JSON_VALUE(doc, '$.date_rep') AS date_reported,
+    JSON_VALUE(doc, '$.countries_and_territories') AS country,
+    JSON_VALUE(doc, '$.cases') as cases,
+    doc
+from openrowset(
+        bulk 'latest/ecdc_cases.jsonl',
+        data_source = 'covid',
+        format = 'csv',
+        fieldterminator ='0x0b',
+        fieldquote = '0x0b'
+    ) with (doc nvarchar(max)) as rows
+order by JSON_VALUE(doc, '$.geo_id') desc
 ```
 
-## <a name="query-json-files-using-openjson"></a>JSON-fájlok lekérdezése a OPENJSON UTASÍTÁSSAL használatával
+### <a name="query-json-files-using-openjson"></a>JSON-fájlok lekérdezése a OPENJSON UTASÍTÁSSAL használatával
 
-A következő lekérdezés a [openjson utasítással](/sql/t-sql/functions/openjson-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)-t használja. Az objektumok és tulajdonságok lekérése egy, a *Cryptology-ben a valószínűségi és statisztikai módszerekkel foglalkozó könyvben, a kiválasztott témakörök bemutatása*:
+A következő lekérdezés a [openjson utasítással](/sql/t-sql/functions/openjson-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)-t használja. A szolgáltatás lekéri a szerbiai COVID-statisztikát:
 
 ```sql
-SELECT
-    j.*
-FROM
-    OPENROWSET(
-        BULK 'json/books/*.json',
-        DATA_SOURCE = 'SqlOnDemandDemo',
-        FORMAT='CSV',
-        FIELDTERMINATOR ='0x0b',
-        FIELDQUOTE = '0x0b',
-        ROWTERMINATOR = '0x0b'
-    )
-    WITH (
-        jsonContent NVARCHAR(max) -- Use appropriate length. Make sure JSON fits. 
-    ) AS [r]
-CROSS APPLY OPENJSON(jsonContent) AS j
-WHERE
-    JSON_VALUE(jsonContent, '$.title') = 'Probabilistic and Statistical Methods in Cryptology, An Introduction by Selected Topics';
+select
+    *
+from openrowset(
+        bulk 'latest/ecdc_cases.jsonl',
+        data_source = 'covid',
+        format = 'csv',
+        fieldterminator ='0x0b',
+        fieldquote = '0x0b'
+    ) with (doc nvarchar(max)) as rows
+    cross apply openjson (doc)
+        with (  date_rep datetime2,
+                cases int,
+                fatal int '$.deaths',
+                country varchar(100) '$.countries_and_territories')
+where country = 'Serbia'
+order by country, date_rep desc;
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A sorozat következő cikkei a következőket szemléltetik:
 

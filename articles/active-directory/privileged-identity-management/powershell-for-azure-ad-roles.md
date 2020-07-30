@@ -16,12 +16,12 @@ ms.date: 05/11/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e3791da8f8a990f62de0052e1662fd6037e936b
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 6792fdc405d539a662c8dc20c04b2891fd036704
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85849281"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421909"
 ---
 # <a name="powershell-for-azure-ad-roles-in-privileged-identity-management"></a>PowerShell Azure AD-szerepkörökhöz Privileged Identity Management
 
@@ -140,7 +140,7 @@ Get-AzureADMSPrivilegedRoleSetting -ProviderId 'aadRoles' -Filter "ResourceId eq
 
 A beállításban négy fő objektum található. A PIM jelenleg csak három objektumot használ. A UserMemberSettings az aktiválási beállítások, a AdminEligibleSettings a jogosult hozzárendelések hozzárendelési beállításai, a AdminmemberSettings pedig az aktív hozzárendelések hozzárendelési beállításai.
 
-[![](media/powershell-for-azure-ad-roles/get-update-role-settings-result.png "Get and update role settings")](media/powershell-for-azure-ad-roles/get-update-role-settings-result.png#lightbox)
+[![Szerepkör-beállítások beolvasása és frissítése.](media/powershell-for-azure-ad-roles/get-update-role-settings-result.png)](media/powershell-for-azure-ad-roles/get-update-role-settings-result.png#lightbox)
 
 A szerepkör-beállítás frissítéséhez be kell szereznie egy adott szerepkör meglévő beállítási objektumát, és módosítania kell azt:
 
@@ -155,7 +155,7 @@ Ezután előre elvégezheti a beállítást, és alkalmazhatja egy adott szerepk
 Set-AzureADMSPrivilegedRoleSetting -ProviderId 'aadRoles' -Id 'ff518d09-47f5-45a9-bb32-71916d9aeadf' -ResourceId '3f5887ed-dd6e-4821-8bde-c813ec508cf9' -RoleDefinitionId '2387ced3-4e95-4c36-a915-73d803f93702' -UserMemberSettings $setting 
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Egyéni Azure AD-szerepkör kiosztása](azure-ad-custom-roles-assign.md)
 - [Egyéni Azure AD-szerepkör-hozzárendelés eltávolítása vagy frissítése](azure-ad-custom-roles-update-remove.md)

@@ -3,12 +3,12 @@ title: A felderítéssel, értékeléssel és függőségi elemzéssel kapcsolat
 description: Választ kaphat a felderítéssel, értékeléssel és függőségi elemzéssel kapcsolatos gyakori kérdésekre Azure Migrateban.
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: 7b26d4442f9a84375205e7778ae037b565f53438
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: e2aa0f5c2dae33cd995b30d84e7406da9b501e8f
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118834"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87385721"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>Felderítés, értékelés és függőségek elemzése – gyakori kérdések
 
@@ -29,30 +29,30 @@ Tekintse át a [nyilvános](migrate-support-matrix.md#supported-geographies-publ
 
 Akár 10 000 VMware virtuális gépet, akár 5 000 Hyper-V virtuális gépet és akár 1000 fizikai kiszolgálót is felderítheti egyetlen készülék használatával. Ha több géppel rendelkezik, olvassa el a [Hyper-V felmérés skálázását](scale-hyper-v-assessment.md), [a VMware-értékelés méretezését](scale-vmware-assessment.md)vagy [a fizikai kiszolgáló értékelésének](scale-physical-assessment.md)méretezését ismertető cikkét.
 
-## <a name="how-do-i-choose-the-assessment-type"></a>Hogyan válassza ki az értékelés típusát?
+## <a name="how-do-i-choose-the-assessment-type"></a>Hogyan választhatom ki az értékelési típust?
 
 - Az **Azure-beli virtuális gépek felméréseit** az Azure-beli virtuális gépekre való áttelepítéshez használni kívánt helyszíni [VMWare virtuális gépek](how-to-set-up-appliance-vmware.md), [Hyper-V virtuális gépek](how-to-set-up-appliance-hyper-v.md)és [fizikai kiszolgálók](how-to-set-up-appliance-physical.md) értékeléséhez használhatja. [További információ](concepts-assessment-calculation.md)
 
 - Ha a helyszíni [VMWare virtuális gépeket](how-to-set-up-appliance-vmware.md) szeretné felmérni az [Azure VMware-megoldásba (AVS)](../azure-vmware/introduction.md) való áttelepítéshez, használja az **Azure VMware Solution (AVS)** értékeléseit. [További információ](concepts-azure-vmware-solution-assessment-calculation.md)
 
-- A VMware-gépekkel közös csoportot csak mindkét típusú értékelés futtatására használhat. Vegye figyelembe, hogy ha első alkalommal futtatja az AVS-értékeléseket Azure Migrate, célszerű létrehozni a VMware-gépek új csoportját.
+- A VMware rendszerű gépekkel közös csoportot csak akkor használhat, ha mindkét típusú értékelést futtatni kívánja. Vegye figyelembe, hogy ha először futtat AVS-értékeléseket az Azure Migrate-ben, akkor érdemes létrehozni egy új csoportot VMware rendszerű gépekből.
 
 ## <a name="i-cant-see-some-groups-when-i-am-creating-an-azure-vmware-solution-avs-assessment"></a>Nem látok egyes csoportokat, amikor létrehozok egy Azure VMware-megoldás (AVS) felmérését
 
-- Az AVS-értékelés olyan csoportokon hajtható végre, amelyeken csak VMware-gépek találhatók. Ha AVS-értékelést szeretne végezni, távolítsa el a nem VMware-es gépet a csoportból.
-- Ha első alkalommal futtatja az AVS-értékeléseket Azure Migrate, célszerű létrehozni a VMware-gépek új csoportját.
+- Az AVS-értékelés olyan csoportokon hajtható végre, amelyekben csak VMware rendszerű gépek találhatók. Ha AVS-értékelést szeretne végezni, távolítson el minden nem VMware rendszerű gépet a csoportból.
+- Ha először futtat AVS-értékeléseket az Azure Migrate-ben, akkor érdemes létrehozni egy új csoportot VMware rendszerű gépekből.
 
 ## <a name="how-do-i-select-ftt-raid-level-in-avs-assessment"></a>Hogyan válassza a TRANZAKCIÓs-RAID szintet az AVS Assessment-ben?
 
-Az AVS-ben használt vSAN. a vSAN tárolási házirendek meghatározzák a virtuális gépek tárolási követelményeit. Ezek a szabályzatok garantálják a virtuális gépek szükséges szolgáltatási szintjét, mivel meghatározzák, hogy a tároló hogyan legyen lefoglalva a virtuális géphez. Ezek az elérhető TRANZAKCIÓs és RAID-kombinációk: 
+Az AVS-ben használt vSAN. A vSAN tárolási szabályzatai határozzák meg a virtuális gépek tárolási követelményeit. Ezek a szabályzatok garantálják a virtuális gépek szükséges szolgáltatásszintjét, mivel meghatározzák, hogy a tároló hogyan legyen lefoglalva a virtuális gépnek. Az elérhető FTT-RAID-kombinációk a következők: 
 
-**Tolerálható (TRANZAKCIÓs) hibák** | **RAID-konfiguráció** | **Minimálisan szükséges gazdagépek** | **Méretezési szempont**
+**Megengedhető hibák (FTT)** | **RAID-konfiguráció** | **Minimálisan szükséges gazdagépek száma** | **Méretezési szempontok**
 --- | --- | --- | --- 
-1 | RAID-1 (Tükrözés) | 3 | A 100 GB virtuális gép A 200GB-t használja.
-1 | RAID-5 (kitörlési kódolás) | 4 | A 100 GB virtuális gép A 133.33 GB-ot fogja használni
-2 | RAID-1 (Tükrözés) | 5 | A 100 GB virtuális gép A 300GB-t használja.
-2 | RAID-6 (kitörlési kódolás) | 6 | A 100 GB virtuális gép A 150GB-t használja.
-3 | RAID-1 (Tükrözés) | 7 | A 100 GB virtuális gép A 400GB-t használja.
+1 | RAID-1 (tükrözés) | 3 | Egy 100 GB-os virtuális gép 200 GB-ot használna fel.
+1 | RAID-5 (törléskódolás) | 4 | Egy 100 GB-os virtuális gép 133,33 GB-ot használna fel.
+2 | RAID-1 (tükrözés) | 5 | Egy 100 GB-os virtuális gép 300 GB-ot használna fel.
+2 | RAID-6 (törléskódolás) | 6 | Egy 100 GB-os virtuális gép 150 GB-ot használna fel.
+3 | RAID-1 (tükrözés) | 7 | Egy 100 GB-os virtuális gép 400 GB-ot használna fel.
 
 ## <a name="i-cant-see-some-vm-types-in-azure-government"></a>Nem látok néhány virtuálisgép-típust Azure Government
 
@@ -113,12 +113,12 @@ Az importálási alapú Azure-beli VM-értékelések olyan, a Azure Migrateba im
 
 ## <a name="why-is-the-suggested-migration-tool-in-import-based-avs-assessment-marked-as-unknown"></a>Miért van a javasolt áttelepítési eszköz az importálási alapú AVS-felmérésben ismeretlenként megjelölve?
 
-CSV-fájlon keresztül importált gépek esetén az AVS-felmérésben az alapértelmezett áttelepítési eszköz ismeretlen. A VMware-gépek esetében azonban ajánlott a VMWare Hybrid Cloud Extension (HCX) megoldás használata. [További információ](../azure-vmware/hybrid-cloud-extension-installation.md).
+CSV-fájlon keresztül importált gépek esetén az AVS-felmérésben az alapértelmezett áttelepítési eszköz ismeretlen. A VMware-gépek esetében azonban ajánlott a VMware Hybrid Cloud Extension (HCX) megoldás használata. [További információk](../azure-vmware/hybrid-cloud-extension-installation.md).
 
 
 ## <a name="what-is-dependency-visualization"></a>Mi a függőségi vizualizáció?
 
-A függőségi vizualizáció segíthet felmérni a virtuális gépek csoportjait, hogy nagyobb megbízhatósággal legyenek áttelepítve. A függőségi vizualizációk átvizsgálják a számítógép függőségeit az értékelés futtatása előtt. Így biztosítható, hogy semmi sincs hátra, és segít elkerülni a váratlan kimaradásokat az Azure-ba való Migrálás során. Azure Migrate a függőségi vizualizáció engedélyezéséhez a Azure Monitor Service Map megoldását használja. [További információk](concepts-dependency-visualization.md).
+A függőségi vizualizáció segíthet felmérni a virtuális gépek csoportjait, hogy nagyobb megbízhatósággal legyenek áttelepítve. A függőségi vizualizációk átvizsgálják a számítógép függőségeit az értékelés futtatása előtt. Így biztosítható, hogy semmi sincs hátra, és segít elkerülni a váratlan kimaradásokat az Azure-ba való Migrálás során. Azure Migrate a függőségi vizualizáció engedélyezéséhez a Azure Monitor Service Map megoldását használja. [További információ](concepts-dependency-visualization.md).
 
 > [!NOTE]
 > Az ügynök-alapú függőség elemzése nem érhető el Azure Governmentban. Az ügynök nélküli függőségek elemzését is használhatja
@@ -132,7 +132,7 @@ Az ügynök nélküli vizualizáció és az ügynök-alapú vizualizáció köz�
 Támogatás | Ez a beállítás jelenleg előzetes verzióban érhető el, és csak a VMware virtuális gépekhez használható. [Tekintse át](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless) a támogatott operációs rendszereket. | Általánosan elérhető (GA).
 Ügynök | Nem kell telepítenie az ügynököket az áttekinteni kívánt gépekre. | Az elemezni kívánt helyszíni gépekre telepítendő ügynökök: a [Microsoft monitoring Agent (MMA)](../azure-monitor/platform/agent-windows.md)és a [függőségi ügynök](../azure-monitor/platform/agents-overview.md#dependency-agent). 
 Előfeltételek | [Tekintse át](concepts-dependency-visualization.md#agentless-analysis) az előfeltételeket és az üzembe helyezésre vonatkozó követelményeket. | [Tekintse át](concepts-dependency-visualization.md#agent-based-analysis) az előfeltételeket és az üzembe helyezésre vonatkozó követelményeket.
-Log Analytics | Nem kötelező. | A Azure Migrate a [Service Map](../azure-monitor/insights/service-map.md) megoldást használja [Azure monitor naplókban](../azure-monitor/log-query/log-query-overview.md) a függőségi vizualizációhoz. [További információk](concepts-dependency-visualization.md#agent-based-analysis).
+Log Analytics | Nem kötelező. | A Azure Migrate a [Service Map](../azure-monitor/insights/service-map.md) megoldást használja [Azure monitor naplókban](../azure-monitor/log-query/log-query-overview.md) a függőségi vizualizációhoz. [További információ](concepts-dependency-visualization.md#agent-based-analysis).
 Működés | Rögzíti a TCP-kapcsolatok mennyiségét a függőségi vizualizációhoz engedélyezett gépeken. A felderítést követően öt percen belül gyűjti az adatokat. | A gépen telepített Service Map ügynökök gyűjtenek adatokat a TCP-folyamatokról és a bejövő/kimenő kapcsolatokról az egyes folyamatokhoz.
 Adatok | Forrásoldali gép kiszolgálójának neve, folyamata, alkalmazás neve.<br/><br/> Célszámítógép kiszolgálójának neve, folyamat, alkalmazás neve és port. | Forrásoldali gép kiszolgálójának neve, folyamata, alkalmazás neve.<br/><br/> Célszámítógép kiszolgálójának neve, folyamat, alkalmazás neve és port.<br/><br/> A kapcsolatok száma, a késés és az adatátviteli adatok összegyűjtése és Log Analytics lekérdezések számára elérhetők. 
 Vizualizáció | Az önálló kiszolgálók függőségi térképe egy óra és 30 nap közötti időtartamon belül megtekinthető. | Egyetlen kiszolgáló függőségi térképe.<br/><br/> A Térkép csak egy órán át jeleníthető meg.<br/><br/> Kiszolgálók egy csoportjának függőségi térképe.<br/><br/> Kiszolgálók hozzáadása és eltávolítása a Térkép nézetből.

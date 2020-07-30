@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 588e63e630caa4746b493d4530e301f72e5ccb5f
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: b3dcb3a74e9341981af7e6eddb4be7454aaf429b
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282942"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419784"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Bejelentkezés az Azure-beli Windows rendszerű virtuális gépre Azure Active Directory hitelesítéssel (előzetes verzió)
 
@@ -69,7 +69,7 @@ Ha engedélyezni szeretné az Azure AD-hitelesítést az Azure-beli Windows rend
 
 ## <a name="enabling-azure-ad-login-in-for-windows-vm-in-azure"></a>Azure AD-bejelentkezés engedélyezése a Windows rendszerű virtuális gépeken az Azure-ban
 
-Ha Azure AD-bejelentkezést szeretne használni a Windows rendszerű virtuális gépeken az Azure-ban, először engedélyeznie kell az Azure AD bejelentkezési lehetőséget a Windows rendszerű virtuális gépen, majd konfigurálnia kell a RBAC szerepkör-hozzárendeléseket azon felhasználók számára, akik jogosultak a virtuális gépre való bejelentkezésre.
+Ha Azure AD-bejelentkezést szeretne használni a Windows rendszerű virtuális gépeken az Azure-ban, először engedélyeznie kell az Azure AD bejelentkezési lehetőséget a Windows rendszerű virtuális gépen, majd konfigurálnia kell az Azure szerepkör-hozzárendeléseket azon felhasználók számára, akik jogosultak a virtuális gépre való bejelentkezésre.
 A Windows rendszerű virtuális gépekhez több módon is engedélyezheti az Azure AD-bejelentkezést:
 
 - Windows rendszerű virtuális gép létrehozásakor a Azure Portal élmény használata
@@ -365,6 +365,6 @@ Ha még nem telepítette a vállalati Windows Hello szolgáltatást, és ha ez n
 
 Ossza meg visszajelzését erről az előzetes verziójú szolgáltatásról, vagy jelentse a problémát az [Azure ad visszajelzési fórumának](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032)használatával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Azure Active Directoryről: [Mi az Azure Active Directory](/azure/active-directory/fundamentals/active-directory-whatis)

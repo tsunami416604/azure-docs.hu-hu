@@ -5,13 +5,14 @@ ms.topic: conceptual
 author: timothymothra
 ms.author: tilee
 ms.date: 01/17/2020
+ms.custom: devx-track-javascript
 ms.reviewer: mbullwin
-ms.openlocfilehash: 56438389ea8a371335facd3cfd0b2d4161b421c3
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 375929a983c5dfea01a88fb64fd5ab19bf105c0c
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326562"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87383630"
 ---
 # <a name="connection-strings"></a>Kapcsolati sztringek
 
@@ -57,7 +58,7 @@ A kapcsolatok maximális hossza 4096 karakter.
 
 A kapcsolatok karakterlánca a kulcs-érték párokat tartalmazó, pontosvesszővel elválasztott beállítások listájából áll:`key1=value1;key2=value2;key3=value3`
 
-#### <a name="syntax"></a>Szintaxis
+#### <a name="syntax"></a>Syntax
 
 - `InstrumentationKey`(pl.: 00000000-0000-0000-0000-000000000000)  A kapcsolatok karakterlánca mező **kitöltése kötelező** .
 - `Authorization`(pl.: rendszerállapotkulcsot) (Ez a beállítás nem kötelező, mert ma már csak a rendszerállapotkulcsot-hitelesítés támogatott.)
@@ -270,7 +271,7 @@ tracer = Tracer(exporter=AzureExporter(connection_string='InstrumentationKey=000
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Első lépések futtatáskor:
 

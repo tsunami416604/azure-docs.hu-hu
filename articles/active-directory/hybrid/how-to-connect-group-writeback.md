@@ -11,12 +11,12 @@ ms.date: 06/11/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7992563bdfb318867e963ed4f371998bafbbbcdb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8c8fb54261f51d74f02b7b79c27f7a2043426686
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87019913"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87385143"
 ---
 # <a name="azure-ad-connect-group-writeback"></a>Azure AD Connect csoport visszaírási
 
@@ -40,7 +40,7 @@ A csoport visszaírási engedélyezéséhez kövesse az alábbi lépéseket:
 6. A **visszaírási lapon**válasszon ki egy Active Directory szervezeti egységet (OU-t) az Office 365-ből a helyszíni szervezetbe szinkronizált objektumok tárolásához, majd kattintson a **tovább**gombra.
 7. A konfigurálásra **kész** lapon kattintson a **Konfigurálás**elemre.
 8. A varázsló befejezése után kattintson a **Kilépés** elemre a konfiguráció befejezése lapon.
-9. Nyissa meg a Windows PowerShellt a Azure Active Directory Connect-kiszolgálón, és futtassa a következő parancsokat.
+9. Nyissa meg a Windows PowerShellt rendszergazdaként a Azure Active Directory Connect-kiszolgálón, és futtassa a következő parancsokat.
 
 ```Powershell
 $AzureADConnectSWritebackAccountDN =  <MSOL_ account DN>
@@ -67,5 +67,5 @@ A csoport visszaírási letiltásához kövesse az alábbi lépéseket:
  >[!NOTE]
  > A csoport visszaírási letiltásával a teljes importálási és teljes szinkronizációs jelzőket "true" értékre állítja be az Azure Active Directory-összekötőn, így a szabály a következő szinkronizálási cikluson keresztül propagálja a szabályt, és törli azokat a csoportokat, amelyek korábban visszaírásra kerültek a Active Directory.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md).

@@ -3,12 +3,12 @@ title: A Hyper-V értékelésének támogatása a Azure Migrateban
 description: Ismerkedjen meg a Hyper-V felmérés támogatásával Azure Migrate kiszolgáló értékelésével
 ms.topic: conceptual
 ms.date: 06/14/2020
-ms.openlocfilehash: 2cf13904a3642b8b91d61c84bb1c51cbb97f0846
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 563a98162a2453ac1c96baf9f04500ee880e0ce5
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324811"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420957"
 ---
 # <a name="support-matrix-for-hyper-v-assessment"></a>A Hyper-V felmérés támogatási mátrixa
 
@@ -34,7 +34,7 @@ A Hyper-V virtuális gép értékelésének beállításához létre kell hoznia
 
 | **Támogatás**                | **Részletek**               
 | :-------------------       | :------------------- |
-| **Hyper-V gazdagép**       | A Hyper-V-gazdagép önálló vagy fürtben is üzembe helyezhető.<br/><br/> A Hyper-V-gazdagép a Windows Server 2019, a Windows Server 2016 vagy a Windows Server 2012 R2 rendszert futtathatja.<br/> A Windows Server 2012-t futtató Hyper-V-gazdagépeken található virtuális gépeket nem lehet értékelni.
+| **Hyper-V gazdagép**       | A Hyper-V-gazdagép önálló vagy fürtben is üzembe helyezhető.<br/><br/> A Hyper-V-gazdagép a Windows Server 2019, a Windows Server 2016 vagy a Windows Server 2012 R2 rendszert futtathatja. A Windows Server 2016 és a Windows Server 2012 R2 Server Core telepítése is támogatott. <br/>A Windows Server 2012-t futtató Hyper-V-gazdagépeken található virtuális gépeket nem lehet értékelni.
 | **Engedélyek**           | Rendszergazdai engedélyekkel kell rendelkeznie a Hyper-V-gazdagépen. <br/> Ha nem szeretne rendszergazdai jogosultságokat rendelni, hozzon létre egy helyi vagy tartományi felhasználói fiókot, és adja hozzá a felhasználói fiókot ezekhez a csoportokhoz – a távfelügyeleti felhasználók, a Hyper-V-rendszergazdák és a Teljesítményfigyelő felhasználói számára. |
 | **PowerShell távoli eljáráshívás**   | A [PowerShell-távelérést](/powershell/module/microsoft.powershell.core/enable-psremoting?view=powershell-7) minden Hyper-V-gazdagépen engedélyezni kell. |
 | **Hyper-V replika**       | Ha a Hyper-V replikát használja (vagy több virtuális GÉPET ugyanazzal a virtuálisgép-azonosítóval), és az eredeti és a replikált virtuális gépeket Azure Migrate használatával észleli, előfordulhat, hogy a Azure Migrate által létrehozott értékelés nem pontos. |
@@ -81,6 +81,6 @@ A függőségek [elemzése](concepts-dependency-visualization.md) segít azonos�
 **Internetkapcsolat** | Ha a gépek nem kapcsolódnak az internethez, akkor telepítenie kell a Log Analytics átjárót.
 **Azure Government** | Az ügynök-alapú függőség elemzése nem támogatott.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Felkészülés a Hyper-V virtuális gépek felmérésére](tutorial-prepare-hyper-v.md)

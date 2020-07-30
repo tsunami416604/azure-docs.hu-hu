@@ -163,7 +163,7 @@ Hozza létre a titkokat az Azure CLI használatával. Alább látható egy péld
 az keyvault secret set --vault-name KeyVaultName -n mastercafile --file ~/certificates/masterca.pem
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a cikk a következő témákat tárgyalta:
 > [!div class="checklist"]

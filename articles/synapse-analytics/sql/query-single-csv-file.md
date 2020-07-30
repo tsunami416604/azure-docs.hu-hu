@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 628631fb7fddbc07dcb865e3d3badbfb608ad097
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1d033a904087bf8ff32721372209820a64090502
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85214451"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87383885"
 ---
 # <a name="query-csv-files"></a>CSV-fájlok lekérdezése
 
@@ -26,6 +26,72 @@ Ebből a cikkből megtudhatja, hogyan kérdezheti le egyetlen CSV-fájlt az SQL 
 - Nem idézett és idézett értékek, valamint Escape-karakterek
 
 Az alábbiakban az összes fenti változatot tárgyaljuk.
+
+## <a name="quickstart-example"></a>Rövid útmutató – példa
+
+`OPENROWSET`a függvény lehetővé teszi a CSV-fájl tartalmának olvasását a fájl URL-címének megadásával.
+
+### <a name="reading-csv-file"></a>CSV-fájl olvasása
+
+A fájl tartalmának megtekintésére a legegyszerűbb módszer, `CSV` Ha a fájl URL-címét megadja a `OPENROWSET` függvénynek, a CSV-t és a 2,0-et adja meg `FORMAT` `PARSER_VERSION` . Ha a fájl nyilvánosan elérhető, vagy ha az Azure AD-identitása hozzáfér ehhez a fájlhoz, akkor az alábbi példában látható módon láthatja a fájl tartalmát:
+
+```sql
+select top 10 *
+from openrowset(
+    bulk 'https://pandemicdatalake.blob.core.windows.net/public/curated/covid-19/ecdc_cases/latest/ecdc_cases.csv',
+    format = 'csv',
+    parser_version = '2.0',
+    firstrow = 2 ) as rows
+```
+
+Ezzel a beállítással lehet `firstrow` kihagyni a CSV-fájl első olyan sorát, amely ebben az esetben a fejlécet jelöli. Győződjön meg arról, hogy el tudja érni ezt a fájlt. Ha a fájlt SAS-kulccsal vagy egyéni identitással védi, a [kiszolgáló szintű hitelesítő adatokat kell beállítania az SQL-bejelentkezéshez](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential).
+
+### <a name="using-data-source"></a>Adatforrás használata
+
+Az előző példa a fájl teljes elérési útját használja. Alternatív megoldásként létrehozhat egy külső adatforrást is, amelynek a helye a tároló gyökérkönyvtárára mutat:
+
+```sql
+create external data source covid
+with ( location = 'https://pandemicdatalake.blob.core.windows.net/public/curated/covid-19/ecdc_cases' );
+```
+
+Miután létrehozta az adatforrást, használhatja azt az adatforrást és a fájl relatív elérési útját a következő `OPENROWSET` függvényben:
+
+```sql
+select top 10 *
+from openrowset(
+        bulk 'latest/ecdc_cases.csv',
+        data_source = 'covid',
+        format = 'csv',
+        parser_version ='2.0',
+        firstrow = 2
+    ) as rows
+```
+
+Ha egy adatforrás SAS-kulccsal vagy egyéni identitással védett, az [adatforrást adatbázis-hatókörű hitelesítő](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#database-scoped-credential)adatokkal is konfigurálhatja.
+
+### <a name="explicitly-specify-schema"></a>Séma explicit meghatározása
+
+`OPENROWSET`lehetővé teszi explicit módon megadhatja, hogy mely oszlopokat szeretné beolvasni a fájlból a `WITH` záradék használatával:
+
+```sql
+select top 10 *
+from openrowset(
+        bulk 'latest/ecdc_cases.csv',
+        data_source = 'covid',
+        format = 'csv',
+        parser_version ='2.0',
+        firstrow = 2
+    ) with (
+        date_rep date 1,
+        cases int 5,
+        geo_id varchar(6) 8
+    ) as rows
+```
+
+A záradékban szereplő adattípusú számok a `WITH` CSV-fájlban lévő oszlop indexét jelölik.
+
+A következő részekben láthatja, hogyan lehet lekérdezni különböző típusú CSV-fájlokat.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -267,7 +333,7 @@ WITH (
 ) AS [r]
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő cikkek a következőkre mutatnak:
 

@@ -9,13 +9,13 @@ services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 04/26/2018
-ms.custom: amqp
-ms.openlocfilehash: 8e1599b1bd5db5e410e8bbd76fffbe0beb5f066e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: amqp, devx-track-javascript
+ms.openlocfilehash: 214c0533e6aefcfa496533359221f7a3061031b8
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81732302"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420736"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-nodejs"></a>Ismerkedés a IoT Hub modul identitásával és moduljával (Node.js)
 
@@ -211,7 +211,7 @@ Ebben a szakaszban egy Node.js alkalmazást hoz létre a szimulált eszközön, 
    twin state reported
    ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További bevezetés az IoT Hub használatába, valamint egyéb IoT-forgatókönyvek megismerése:
 

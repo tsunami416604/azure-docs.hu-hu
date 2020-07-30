@@ -267,7 +267,7 @@ Létre kell hoznia a saját szűrő paramétereit, `application.properties` és 
 
 * Győződjön meg arról, hogy érvényes paraméter-értékeket adott meg. Például az időtartamoknak egész számnak kell lenniük. Az értékek érvénytelenek, mert a szűrő figyelmen kívül lesz hagyva. Ha az egyéni szűrő kivételt okoz a konstruktorból vagy a set metódusból, a rendszer figyelmen kívül hagyja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Mintavételezés](./sampling.md) – vegye fontolóra a mintavételezést olyan Alternatív megoldásként, amely nem rontja a metrikákat.
 

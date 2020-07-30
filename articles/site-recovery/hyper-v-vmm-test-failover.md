@@ -1,18 +1,18 @@
 ---
 title: NHyper-V vész-helyreállítási gyakorlat futtatása másodlagos helyre Azure Site Recovery
 description: Ismerje meg, hogyan futtathat VMM-felhőkben futó Hyper-V virtuális gépekre vonatkozó DR-részletezést egy másodlagos helyszíni adatközpontban Azure Site Recovery használatával.
-author: rajani-janaki-ram
-manager: rochakm
+author: sideeksh
+manager: gaggupta
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
-ms.author: rajanaki
-ms.openlocfilehash: 0b6055cdf930c93ba096a21ebc0b74c204540a79
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.author: sideeksh
+ms.openlocfilehash: 569af28f5773d843f49dd9c8143b45e308ae142e
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076069"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420413"
 ---
 # <a name="run-a-dr-drill-for-hyper-v-vms-to-a-secondary-site"></a>A Hyper-V virtuális gépekhez tartozó DR-részletezés futtatása másodlagos helyre
 
@@ -143,7 +143,7 @@ Azt javasoljuk, hogy ne futtasson feladatátvételi tesztet a hálózati leképe
 * A teszteléshez hasonlóan az éles környezetbeli alkalmazás leállásához vezet. Kérje meg az alkalmazás felhasználóit, hogy ne használják az alkalmazást, amikor a DR-részletezés folyamatban van.  
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A DR-részletezés sikeres futtatása után [futtathatja a teljes feladatátvételt](site-recovery-failover.md).
 
 

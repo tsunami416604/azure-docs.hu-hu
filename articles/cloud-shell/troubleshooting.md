@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
-ms.openlocfilehash: b06deadae15a8176a49bed88a53884df2b71e473
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0e538299dfc9c9406b519d888d1a92c5c643bb03
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82189462"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421739"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>A Azure Cloud Shell korlátozásának hibaelhárítása &
 
@@ -141,26 +141,6 @@ Legyen körültekintő, ha szerkeszti a. bashrc, így váratlan hibákat okozhat
 ### <a name="preview-version-of-azuread-module"></a>A AzureAD modul előzetes verziója
 
 Jelenleg `AzureAD.Standard.Preview` a .NET Standard-alapú modul előzetes verziója érhető el. Ez a modul ugyanazokat a funkciókat biztosítja, mint a `AzureAD` .
-
-### <a name="sqlserver-module-functionality"></a>`SqlServer`modul funkciói
-
-A `SqlServer` Cloud Shell részét képező modul csak a PowerShell Core támogatásának előzetes kiadását támogatja. Különösen a `Invoke-SqlCmd` még nem érhető el.
-
-### <a name="default-file-location-when-created-from-azure-drive"></a>Alapértelmezett fájl helye az Azure Drive-ból való létrehozáskor
-
-A PowerShell-parancsmagok használatával a felhasználók nem hozhatnak létre fájlokat az Azure meghajtón. Ha a felhasználók más eszközökkel, például a Vim vagy a nano eszközzel hoznak létre új fájlokat, a rendszer alapértelmezés szerint menti a fájlokat `$HOME` .
-
-### <a name="tab-completion-can-throw-psreadline-exception"></a>A TAB befejezési PSReadline kivételt okozhat
-
-Ha a felhasználó PSReadline-EditMode az Emacs értékre van beállítva, a felhasználó az összes lehetőséget a TAB befejezésével próbálja megjeleníteni, és az ablak mérete túl kicsi az összes lehetőség megjelenítéséhez, a PSReadline nem kezelt kivételt fog kidobni.
-
-### <a name="large-gap-after-displaying-progress-bar"></a>Nagy közök a folyamatjelző sáv megjelenítése után
-
-Ha egy parancs vagy felhasználói művelet folyamatjelző sávot jelenít meg, a meghajtón a lap befejezése `Azure:` után a kurzor nem megfelelően van beállítva, és egy hézag jelenik meg, ahol a folyamatjelző sáv korábban volt.
-
-### <a name="random-characters-appear-inline"></a>A véletlenszerű karakterek beágyazottként jelennek meg
-
-A kurzor pozíciójának sorszáma például `5;13R` megjelenhet a felhasználói bevitelben. A karaktereket manuálisan is eltávolíthatja.
 
 ## <a name="personal-data-in-cloud-shell"></a>Személyes adatCloud Shell
 

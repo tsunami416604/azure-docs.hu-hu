@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/21/2020
+ms.date: 07/29/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
-ms.openlocfilehash: af554b2055102b12a8c0e89c6301400f76021ede
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e242e6ce59c715cf3a9ca95523a9a9eda274407a
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87313336"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87418916"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Microsoft Identity platform azonosító tokenek
 
@@ -51,7 +51,7 @@ Tekintse meg ezt a v 2.0 minta tokent a [JWT.MS](https://jwt.ms/#id_token=eyJ0eX
 
 ### <a name="header-claims"></a>Fejléc jogcímei
 
-|Jogcím | Formátum | Leírás |
+|Jogcím | Formátum | Description |
 |-----|--------|-------------|
 |`typ` | String – mindig "JWT" | Azt jelzi, hogy a token egy JWT token.|
 |`alg` | Sztring | Meghatározza a jogkivonat aláírásához használt algoritmust. Példa: "RS256" |
@@ -62,7 +62,7 @@ Tekintse meg ezt a v 2.0 minta tokent a [JWT.MS](https://jwt.ms/#id_token=eyJ0eX
 
 Ez a lista azokat a JWT jogcímeket jeleníti meg, amelyek alapértelmezés szerint a legtöbb id_tokensban szerepelnek (kivéve, ha van ilyen).  Az alkalmazás azonban [választható jogcímeket](active-directory-optional-claims.md) is használhat a ID_TOKEN további JWT jogcímek igényléséhez.  Ezek a jogcím alapján a `groups` felhasználó nevével kapcsolatos információkra terjedhetnek.
 
-|Jogcím | Formátum | Leírás |
+|Jogcím | Formátum | Description |
 |-----|--------|-------------|
 |`aud` |  Karakterlánc, alkalmazás-azonosító URI | Azonosítja a jogkivonat kívánt címzettjét. A-ben a célközönség az alkalmazáshoz `id_tokens` hozzárendelt alkalmazás azonosítója a Azure Portal. Az alkalmazásnak ellenőriznie kell ezt az értéket, és el kell utasítania a jogkivonatot, ha az érték nem egyezik. |
 |`iss` |  Karakterlánc, STS URI | Azonosítja azt a biztonságijogkivonat-szolgáltatást (STS), amely létrehozza és visszaadja a tokent, valamint azt az Azure AD-bérlőt, amelyben a felhasználó hitelesítése megtörtént. Ha a jogkivonatot a v 2.0-végpont adta ki, akkor az URI-ja befejeződik `/v2.0` .  Az a GUID, amely azt jelzi, hogy a felhasználó egy Microsoft-fiók vásárló felhasználója `9188040d-6c67-4c5b-b112-36a304b66dad` . Az alkalmazásnak a jogcím GUID részét kell használnia, hogy korlátozza azon bérlők készletét, amelyek be tudnak jelentkezni az alkalmazásba, ha vannak ilyenek. |
@@ -71,7 +71,7 @@ Ez a lista azokat a JWT jogcímeket jeleníti meg, amelyek alapértelmezés szer
 |`nbf` |  int, egy UNIX timestamp | A "NBF" (nem korábban) jogcím azt az időpontot határozza meg, ameddig a JWT nem fogadható el a feldolgozáshoz.|
 |`exp` |  int, egy UNIX timestamp | Az "exp" (lejárati idő) jogcím azt a lejárati időt azonosítja, amely után a JWT nem fogadható el feldolgozásra.  Fontos megjegyezni, hogy egy erőforrás még a token elutasítása előtt is elutasítja a jogkivonatot – Ha például a hitelesítés változására van szükség, vagy a rendszer jogkivonat-visszavonást észlelt. |
 | `c_hash`| Sztring |A kód kivonata csak akkor szerepel az azonosító jogkivonatokban, ha az azonosító jogkivonatot egy OAuth 2,0-es engedélyezési kóddal adják ki. Az engedélyezési kódok hitelességének ellenőrzéséhez használható. Az érvényesítés végrehajtásáról az [OpenID Connect specifikációjában](https://openid.net/specs/openid-connect-core-1_0.html)olvashat bővebben. |
-|`at_hash`| Sztring |A hozzáférési jogkivonat kivonata csak akkor szerepel az azonosító jogkivonatokban, ha az azonosító jogkivonatot egy OAuth 2,0 hozzáférési jogkivonat adja ki. A hozzáférési token hitelességének ellenőrzéséhez használható. Az érvényesítés végrehajtásáról az [OpenID Connect specifikációjában](https://openid.net/specs/openid-connect-core-1_0.html)olvashat bővebben. |
+|`at_hash`| Sztring |A hozzáférési jogkivonat kivonata csak akkor szerepel az azonosító jogkivonatokban, ha az azonosító jogkivonatot a `/authorize` OAuth 2,0 hozzáférési jogkivonattal adja ki a végpontból. A hozzáférési token hitelességének ellenőrzéséhez használható. Az érvényesítés végrehajtásáról az [OpenID Connect specifikációjában](https://openid.net/specs/openid-connect-core-1_0.html#HybridIDToken)olvashat bővebben. Ez a végpont nem ad vissza azonosító jogkivonatokat `/token` . |
 |`aio` | Átlátszatlan karakterlánc | Az Azure AD által az adatok a jogkivonat újrafelhasználásához használt belső jogcímek. Figyelmen kívül kell hagyni.|
 |`preferred_username` | Sztring | A felhasználót jelölő elsődleges Felhasználónév. Ez lehet egy e-mail-cím, telefonszám vagy egy általános Felhasználónév megadott formátum nélkül. Az értéke változtatható, és idővel változhat. Mivel ez az érték változhat, nem használható az engedélyezési döntések elvégzéséhez. `profile`Ennek a jogcímnek a fogadásához a hatókörre van szükség.|
 |`email` | Sztring | A jogcímek `email` alapértelmezés szerint az e-mail-címmel rendelkező vendég fiókok esetében jelennek meg.  Az alkalmazás kérheti az e-mail-jogcímet a felügyelt felhasználók számára (az erőforrással megegyező bérlőtől) a `email` [választható jogcím](active-directory-optional-claims.md)használatával.  A v 2.0-s végponton az alkalmazás az `email` OpenID Connect hatókörét is kérheti – nem kell megadnia mind a választható jogcímet, mind a hatókört a jogcím beszerzéséhez.  Az e-mail-jogcím csak a felhasználó profiljának adataiból származó címezhető leveleket támogatja. |
@@ -113,7 +113,7 @@ A jogkivonat manuális érvényesítéséhez tekintse meg a [hozzáférési toke
 * Célközönség: a `aud` jogcímnek meg kell egyeznie az alkalmazáshoz tartozó alkalmazás-azonosítóval.
 * Alkalom: az `nonce` adattartalomban szereplő jogcímnek meg kell egyeznie a/Authorize-végpontnak a kezdeti kérelem során átadott egyszeres paraméterrel.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Tudnivalók a [hozzáférési tokenekről](access-tokens.md)
 * A JWT jogcímek testreszabása a id_token [választható jogcímek](active-directory-optional-claims.md)használatával.

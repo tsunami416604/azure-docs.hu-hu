@@ -148,7 +148,7 @@ Jelenleg csak egy új kötetre állíthatja vissza a pillanatképet.
     Az új kötet ugyanazt a protokollt használja, mint amelyet a pillanatkép használ.   
     Az új kötet, amelybe a pillanatkép vissza lett állítva, megjelenik a kötetek panelen.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az Azure NetApp Files tárhely-hierarchiájának ismertetése](azure-netapp-files-understand-storage-hierarchy.md)
 * [Az Azure NetApp Files erőforráskorlátai](azure-netapp-files-resource-limits.md)

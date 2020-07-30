@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 2edf1574784ec93448495086fdd05c988a3e55a7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4c28299758150f56e3f47156382d8a6245a0cf52
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090535"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386214"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Az Azure Key Vault fejlesztői útmutatója
 
@@ -122,7 +122,7 @@ Ezek a cikkek olyan egyéb forgatókönyvekkel és szolgáltatásokkal kapcsolat
 
 ## <a name="key-vault-overviews-and-concepts"></a>Key Vault áttekintések és fogalmak
 
-- [Key Vault-törlési viselkedés](overview-soft-delete.md)) egy olyan funkciót ismertet, amely lehetővé teszi a törölt objektumok helyreállítását, függetlenül attól, hogy a törlés véletlen vagy szándékos volt-e.
+- [Key Vault-törlési viselkedés](soft-delete-overview.md)) egy olyan funkciót ismertet, amely lehetővé teszi a törölt objektumok helyreállítását, függetlenül attól, hogy a törlés véletlen vagy szándékos volt-e.
 - [Key Vault az ügyfelek szabályozása](overview-throttling.md) a szabályozás alapvető fogalmait, és az alkalmazás megközelítését kínálja.
 - [Key Vault Storage-fiók kulcsainak áttekintése](../secrets/overview-storage-keys.md)) ismerteti a Key Vault integrációs Azure Storage-fiókok kulcsait.
 - [Key Vault biztonsági világok](overview-security-worlds.md) ismertetik a régiók és a biztonsági területek közötti kapcsolatokat.

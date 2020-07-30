@@ -12,13 +12,13 @@ ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 03/24/2020
 ms.author: angrobe
-ms.custom: mvc
-ms.openlocfilehash: 7db4fa2a780a3a1f53ecd73a40c247583cb6a79a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: mvc, devx-track-javascript
+ms.openlocfilehash: 5453677826e1490977257fd75e10308ee45df00a
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82233842"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421756"
 ---
 # <a name="create-a-cicd-pipeline-in-azure-pipelines-for-nodejs-with-azure-devops-starter"></a>CI/CD-folyamat létrehozása Azure-folyamatokban Node.js Azure DevOps Starter-vel
 
@@ -186,11 +186,11 @@ Az előző két lépésben hozzáadott egy Gatsby létrehozott PWA a git-tárhá
 
 3. Néhány perc elteltével a létrehozási és kiadási folyamatokat be kell fejezni, és a PWA üzembe kell helyezni egy tárolón. Kattintson az **alkalmazás-végpont** hivatkozásra a fenti irányítópulton, és egy Gatsby Starter-projektet kell megjelennie a blogokhoz.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Törölheti Azure App Service és az egyéb kapcsolódó erőforrásokat, amelyeket akkor hozott létre, amikor már nincs szüksége az erőforrásokra. Használja a **delete** funkciót a DevOps Starter irányítópultján.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A CI/CD folyamat konfigurálásakor a rendszer automatikusan létrehozza a létrehozási és kiadási folyamatokat. Ezeket a build és kiadási folyamatokat a csapat igényeinek megfelelően módosíthatja. A CI/CD folyamattal kapcsolatos további tudnivalókért tekintse meg a következőt:
 

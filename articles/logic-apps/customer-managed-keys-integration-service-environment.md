@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, rarayudu, logicappspm
 ms.topic: conceptual
 ms.date: 03/11/2020
-ms.openlocfilehash: 7e1432cf74dc741a6e2f5d561e9dc203df95007c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a7cc135555db2673225d857bf6a21e57de3e3f6b
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072691"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386163"
 ---
 # <a name="set-up-customer-managed-keys-to-encrypt-data-at-rest-for-integration-service-environments-ises-in-azure-logic-apps"></a>Ügyfél által felügyelt kulcsok beállítása az integrációs szolgáltatási környezetek (ISEs-EK) Azure Logic Apps-beli inaktív adatok titkosításához
 
@@ -39,7 +39,7 @@ Ebből a témakörből megtudhatja, hogyan állíthatja be és adhatja meg sajá
 
 * Egy olyan Azure Key Vault, amely rendelkezik a helyreállítható **törléssel** , és **nem** törölheti az engedélyezett tulajdonságokat
 
-  További információ ezekről a tulajdonságokról: [Azure Key Vault a Soft-delete áttekintése](../key-vault/general/overview-soft-delete.md) és [az ügyfél által felügyelt kulcsok konfigurálása a Azure Key Vault](../storage/common/storage-encryption-keys-portal.md). Ha még nem ismeri a Azure Key Vaultt, megtudhatja, [hogyan hozhat létre kulcstartót](../key-vault/secrets/quick-create-portal.md#create-a-vault) a Azure Portal használatával vagy a [new-AzKeyVault](/powershell/module/az.keyvault/new-azkeyvault)Azure PowerShell parancs használatával.
+  További információ ezekről a tulajdonságokról: [Azure Key Vault a Soft-delete áttekintése](../key-vault/general/soft-delete-overview.md) és [az ügyfél által felügyelt kulcsok konfigurálása a Azure Key Vault](../storage/common/storage-encryption-keys-portal.md). Ha még nem ismeri a Azure Key Vaultt, megtudhatja, [hogyan hozhat létre kulcstartót](../key-vault/secrets/quick-create-portal.md#create-a-vault) a Azure Portal használatával vagy a [new-AzKeyVault](/powershell/module/az.keyvault/new-azkeyvault)Azure PowerShell parancs használatával.
 
 * A Key vaultban a következő tulajdonság-értékekkel létrehozott kulcs:
 
@@ -227,6 +227,6 @@ Ehhez a feladathoz használhatja a Azure PowerShell [set-AzKeyVaultAccessPolicy]
 
 További információ: [Key Vault hitelesítés biztosítása felügyelt identitással](../key-vault/general/managed-identity.md#grant-your-app-access-to-key-vault).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a [Azure Key Vault](../key-vault/general/overview.md)

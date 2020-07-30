@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: arthii, divswa, logicappspm
 ms.topic: article
 ms.date: 07/28/2020
-ms.openlocfilehash: a9ebc6b0cdbaa05c36383fa5126c2672fb19b69c
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 675d4bdb0b8c0aa8e034d5a85dc027f642705fa9
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/29/2020
-ms.locfileid: "87370954"
+ms.locfileid: "87386180"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Csatlakozás helyszíni adatforrásokhoz az Azure Logic Appsből
 
@@ -52,13 +52,13 @@ Azure Logic Apps támogatja az olvasási és írási műveleteket az adatátjár
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Már [telepítette a helyszíni adatátjárót egy helyi számítógépen](../logic-apps/logic-apps-gateway-install.md).
+* Már [telepítette a helyszíni adatátjárót egy helyi számítógépen](../logic-apps/logic-apps-gateway-install.md). Az átjáró telepítése csak akkor szükséges, ha olyan átjáró-erőforrást hoz létre, amely erre a telepítésre hivatkozik.
 
-* [Ugyanazzal az Azure-fiókkal és-előfizetéssel](../logic-apps/logic-apps-gateway-install.md#requirements) rendelkezik, amelyet az átjáró telepítéséhez használt. Az Azure-fióknak csak egyetlen [Azure Active Directory (Azure ad) bérlőhöz vagy címtárhoz](../active-directory/fundamentals/active-directory-whatis.md#terminology)kell tartoznia. Ugyanarra az Azure-fiókra és-előfizetésre van szüksége, amely az átjáró erőforrását az Azure-ban hozza létre, mert csak az átjáró rendszergazdája hozhatja létre az átjáró-erőforrást az Azure Az egyszerű szolgáltatások jelenleg nem támogatottak.
+* [Ugyanazzal az Azure-fiókkal és-előfizetéssel](../logic-apps/logic-apps-gateway-install.md#requirements) rendelkezik, amelyet az átjáró telepítéséhez használt. Az Azure-fióknak csak egyetlen [Azure Active Directory (Azure ad) bérlőhöz vagy címtárhoz](../active-directory/fundamentals/active-directory-whatis.md#terminology)kell tartoznia. Ugyanazt az Azure-fiókot és-előfizetést kell használnia az átjáró-erőforrás létrehozásához az Azure-ban, mert csak az átjáró rendszergazdája hozhatja létre az átjáró-erőforrást az Azure-ban. Az egyszerű szolgáltatások jelenleg nem támogatottak.
 
-  * Amikor átjáró-erőforrást hoz létre az Azure-ban, ki kell választania egy átjáró-telepítést, amelyet az átjáró-erőforrással kíván használni, és csak az átjáró erőforrását. Mindegyik átjáró-erőforrás csak egy átjáró-telepítésre tud hivatkozni, amely csak egy Azure-fiókra és-előfizetésre mutathat. Ezért nem választhat olyan átjáró-telepítést, amely már társítva van egy másik átjáró-erőforráshoz.
+  * Amikor átjáró-erőforrást hoz létre az Azure-ban, ki kell választania egy átjáró-telepítést, amely az átjáró-erőforráshoz és csak az átjáró erőforrásához kapcsolódik. Minden átjáró-erőforrás csak egy átjáró-telepítéshez tud kapcsolódni. Nem választhat olyan átjáró-telepítést, amely már hozzá van rendelve egy másik átjáró-erőforráshoz.
   
-  * A logikai alkalmazásnak és az átjáró erőforrásnak nem kell ugyanabban az Azure-előfizetésben léteznie. A helyszíni adatforrásokhoz hozzáférő eseményindítókban és műveletekben az előfizetések hozzáférését is elvégezheti, ha különböző Azure-előfizetések közül választhat, amelyek mindegyike egy másik átjáró erőforráshoz van társítva.
+  * A logikai alkalmazásnak és az átjáró erőforrásnak nem kell ugyanabban az Azure-előfizetésben léteznie. A helyszíni adatforrásokhoz hozzáférő eseményindítókban és műveletekben olyan Azure-előfizetéseket is választhat, amelyek rendelkeznek átjáró-erőforrásokkal.
 
 <a name="create-gateway-resource"></a>
 
@@ -175,7 +175,7 @@ Egy másik átjáró-erőforrás létrehozásához csatolja az átjáró telepí
 
 [!INCLUDE [existing-gateway-location-changed](../../includes/logic-apps-existing-gateway-location-changed.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A logikai alkalmazások védelme](./logic-apps-securing-a-logic-app.md)
 * [Gyakori példák és forgatókönyvek logikai alkalmazásokhoz](./logic-apps-examples-and-scenarios.md)

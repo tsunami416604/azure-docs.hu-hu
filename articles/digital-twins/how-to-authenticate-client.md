@@ -1,5 +1,5 @@
 ---
-title: Alkalmazás-hitelesítési kód írása
+title: Alkalmazáshitelesítési kód írása
 titleSuffix: Azure Digital Twins
 description: 'Lásd: hitelesítési kód írása ügyfélalkalmazás'
 author: baanders
@@ -7,12 +7,13 @@ ms.author: baanders
 ms.date: 4/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 4d235280ae4a600994eb93ec08c7a13630f9682f
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 1eebacefa2e91970263c301de4ff160ea7c9f2eb
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131582"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420345"
 ---
 # <a name="write-client-app-authentication-code"></a>Ügyfél-alkalmazás hitelesítési kódjának írása
 
@@ -193,7 +194,7 @@ Ne feledje, hogy ha a fenti kód megkeresi az ügyfél-azonosítót, a bérlői 
 
 A MSAL számos további lehetőség közül választhat, amelyek olyan dolgok megvalósítására használhatók, mint a gyorsítótárazás és más hitelesítési folyamatok. Erről további információt a [*Microsoft Authentication Library (MSAL) áttekintése*](../active-directory/develop/msal-overview.md)című témakörben talál.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ arról, hogyan működik a biztonság az Azure digitális Twinsban:
 * [*Fogalmak: az Azure Digital Twins-megoldások biztonsága*](concepts-security.md)

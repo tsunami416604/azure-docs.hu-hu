@@ -9,12 +9,12 @@ tags: azure-portal
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/24/2020
-ms.openlocfilehash: 76eee4b0b029714a75b57e5d44e097a36de3181f
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 721848b996bc4887370b77404e3d571975815624
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371413"
+ms.locfileid: "87421892"
 ---
 # <a name="service-administration-for-azure-cognitive-search-in-the-azure-portal"></a>Szolgáltatás-felügyelet az Azure Cognitive Search a Azure Portal
 
@@ -58,7 +58,7 @@ A végponthoz való hozzáférés tekintetében bárki hozzáférhet a szolgált
 
 A szolgáltatás kiépítési berendezéséhez szükséges jogosultságokat a szerepkör-hozzárendelések biztosítják. A [szerepköralapú hozzáférés (RBAC)](../role-based-access-control/overview.md) az Azure-erőforrások kiépítésére [Azure Resource Manager](../azure-resource-manager/management/overview.md) épülő engedélyezési rendszer. 
 
-Az Azure Cognitive Search környezetében a [RBAC szerepkör-hozzárendelések](search-security-rbac.md) határozzák meg, hogy ki végezhet el feladatokat, függetlenül attól, hogy a [portált](search-manage.md), a [PowerShellt](search-manage-powershell.md)vagy a [felügyeleti REST API-kat](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api)használják:
+Az Azure Cognitive Search kontextusában az [Azure szerepkör-hozzárendelések](search-security-rbac.md) határozzák meg, hogy ki végezhet el feladatokat, függetlenül attól, hogy a [portált](search-manage.md), a [PowerShellt](search-manage-powershell.md)vagy a [felügyeleti REST API-kat](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api)használják:
 
 * Szolgáltatás létrehozása vagy törlése
 * A szolgáltatás skálázása
@@ -137,7 +137,7 @@ Nincs olyan észlelési módszer, amely közli, hogy mely indexek vannak tárolv
 
 Ha segítségre van szüksége a jövőbeli tervezéssel kapcsolatban, érdemes lehet megtekinteni a tárterületet (az [indexek statisztikájának lekérése](https://docs.microsoft.com/rest/api/searchservice/Get-Index-Statistics)használatával), hogy megtekintse, mennyit használt 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Automatizálás a [PowerShell](search-manage-powershell.md) -lel
 

@@ -6,12 +6,13 @@ ms.suite: integration
 ms.reviewer: deli, logicappspm
 ms.topic: article
 ms.date: 05/14/2019
-ms.openlocfilehash: f7a134fd026b42d1666b8310b3fb0c10642c7bb0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-javascript
+ms.openlocfilehash: a1c3828a4b1899ff4b22c0a9520f676add21fe02
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75453496"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420124"
 ---
 # <a name="add-and-run-code-snippets-by-using-inline-code-in-azure-logic-apps"></a>Kódrészletek hozzáadása és futtatása beágyazott kód használatával Azure Logic Apps
 
@@ -260,10 +261,10 @@ Ha a **műveletek**lehetőséget választja, a rendszer kéri, hogy adja meg a h
 
 1. Egy másik művelet hozzáadásához válassza az **új elem hozzáadása**lehetőséget.
 
-## <a name="reference"></a>Hivatkozás
+## <a name="reference"></a>Referencia
 
 További információ a JavaScript- **kód végrehajtása** művelet szerkezetéről és szintaxisáról a logikai alkalmazás mögöttes munkafolyamat-definíciójában a munkafolyamat-definíciós nyelv használatával: Ez a művelet [hivatkozási szakasza](../logic-apps/logic-apps-workflow-actions-triggers.md#run-javascript-code).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az [Azure Logic apps-összekötők számára](../connectors/apis-list.md)

@@ -12,21 +12,21 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 05/04/2020
+ms.date: 07/28/2020
 ms.author: b-juche
-ms.openlocfilehash: 713a72b0a406d2038d56dc6fcc41e169d02c54eb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 14c97fdea57fa50faf8b73275ec406ea36fbf552
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483618"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420396"
 ---
 # <a name="delegate-a-subnet-to-azure-netapp-files"></a>Alhálózat delegálása az Azure NetApp Fileshoz 
 
 Az alhálózatot Azure NetApp Filesre kell delegálni.   Kötet létrehozásakor meg kell adnia a delegált alhálózatot.
 
 ## <a name="considerations"></a>Megfontolandó szempontok
-* A varázsló egy új alhálózat alapértelmezett értékének egy/24 hálózati maszkban való létrehozására szolgál, amely 251 elérhető IP-címekkel rendelkezik. A/28 hálózati maszk használatával, amely 16 használható IP-címet biztosít, elegendő a szolgáltatáshoz.
+* A varázsló egy új alhálózat alapértelmezett értékének egy/24 hálózati maszkban való létrehozására szolgál, amely 251 elérhető IP-címekkel rendelkezik. A/28 hálózati maszk használatával, amely 11 felhasználható IP-címet biztosít, elegendő a szolgáltatáshoz.
 * Minden egyes Azure-Virtual Network (VNet) esetében csak egy alhálózat delegálható Azure NetApp Fileshoz.   
    Az Azure lehetővé teszi, hogy több delegált alhálózatot hozzon létre egy VNet.  Az új kötetek létrehozására tett kísérletek azonban sikertelenek lesznek, ha egynél több delegált alhálózatot használ.  
    Egy VNet csak egyetlen delegált alhálózat tartozhat. A NetApp-fiókok több virtuális hálózatok is telepíthetnek köteteket, amelyek mindegyike saját delegált alhálózattal rendelkezik.  
@@ -48,7 +48,7 @@ Az alhálózatot Azure NetApp Filesre kell delegálni.   Kötet létrehozásakor
     
 Létrehozhat és delegálhat egy alhálózatot is, amikor [kötetet hoz létre a Azure NetApp Fileshoz](azure-netapp-files-create-volumes.md). 
 
-## <a name="next-steps"></a>További lépések  
+## <a name="next-steps"></a>Következő lépések  
 * [Kötet létrehozása az Azure NetApp Files számára](azure-netapp-files-create-volumes.md)
 * [Ismerje meg az Azure-szolgáltatások virtuális hálózati integrációját](https://docs.microsoft.com/azure/virtual-network/virtual-network-for-azure-services)
 

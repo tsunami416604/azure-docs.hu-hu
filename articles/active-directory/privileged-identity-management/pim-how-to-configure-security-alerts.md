@@ -14,12 +14,12 @@ ms.date: 03/05/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6273a5b62e5b84e53d5e54fdb840f32646939066
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 258e05b135195004fec628936bb458ea8f1dc7b1
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84743898"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419988"
 ---
 # <a name="configure-security-alerts-for-azure-ad-roles-in-privileged-identity-management"></a>Azure AD-szerepkörökhöz tartozó biztonsági riasztások konfigurálása Privileged Identity Management
 
@@ -32,7 +32,7 @@ A 2019-es verziótól kezdődően a Privileged Identity Management Azure AD-szer
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com/) egy olyan felhasználóval, aki tagja a [Kiemelt szerepkörű rendszergazda](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) szerepkörnek.
 1. Nyissa meg **Azure ad Privileged Identity Management**. Ha az Áttekintés oldal tetején található egy szalagcím, kövesse a jelen cikk **új verzió** lapján található utasításokat. Ellenkező esetben kövesse az **előző verzió** lapon megjelenő utasításokat.
 
-  [![](media/pim-how-to-add-role-to-user/pim-new-version.png "Select Azure AD > Privileged Identity Management")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
+  [![Válassza az Azure AD > Privileged Identity Management lehetőséget.](media/pim-how-to-add-role-to-user/pim-new-version.png)](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
 
 Kövesse a cikkben ismertetett lépéseket az Azure AD-szerepkörökhöz tartozó biztonsági riasztások vizsgálatához.
 
@@ -93,7 +93,7 @@ Ez a szakasz felsorolja az Azure AD-szerepkörökkel kapcsolatos összes biztons
 
 | | |
 | --- | --- |
-| **Súlyosság** | Magasság |
+| **Súlyosság** | Magas |
 | **Miért kapok ez a riasztás?** | A Privileged Identity Managementon kívül végrehajtott Kiemelt szerepkör-hozzárendelések nincsenek megfelelően figyelve, és az aktív támadásra utalhatnak. |
 | **Hogyan lehet javítani?** | Tekintse át a listában szereplő felhasználókat, és távolítsa el őket a Privileged Identity Managementon kívül hozzárendelt Kiemelt szerepkörökből. |
 | **Megelőzés** | Vizsgálja meg, hogy a felhasználók mikor kapnak jogosultsági szintű szerepköröket a Privileged Identity Managementon kívül, és nem tilthatják meg a jövőbeli hozzárendeléseket. |
@@ -192,7 +192,7 @@ Ez a szakasz felsorolja az Azure AD-szerepkörökkel kapcsolatos összes biztons
 
 | | |
 | --- | --- |
-| **Súlyosság** | Magasság |
+| **Súlyosság** | Magas |
 | **Miért kapok ez a riasztás?** | A Privileged Identity Managementon kívül végrehajtott Kiemelt szerepkör-hozzárendelések nincsenek megfelelően figyelve, és az aktív támadásra utalhatnak. |
 | **Hogyan lehet javítani?** | Tekintse át a listában szereplő felhasználókat, és távolítsa el őket a Privileged Identity Managementon kívül hozzárendelt Kiemelt szerepkörökből. |
 | **Megelőzés** | Vizsgálja meg, hogy a felhasználók mikor kapnak jogosultsági szintű szerepköröket a Privileged Identity Managementon kívül, és nem tilthatják meg a jövőbeli hozzárendeléseket. |
@@ -242,6 +242,6 @@ A Privileged Identity Management a biztonsági riasztások némelyikét testresz
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure AD-szerepkör beállításainak konfigurálása Privileged Identity Management](pim-how-to-change-default-settings.md)

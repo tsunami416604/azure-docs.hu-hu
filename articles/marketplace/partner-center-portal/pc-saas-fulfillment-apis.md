@@ -55,6 +55,6 @@ A CSP-vel kapcsolatos további információkért tekintse meg a következőt: ht
 >[!Note]
 >A SaaS-teljesítési API-k csak a közzétevő háttér-szolgáltatásának meghívására szolgálnak. Az API-kkal való közvetlen integráció nem támogatott a közzétevő weblapján. Csak a szolgáltatás és a szolgáltatás közötti hitelesítési folyamat használható.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha még nem tette meg, regisztráljon az SaaS-alkalmazást a [Azure Portal](https://ms.portal.azure.com) az [Azure ad-alkalmazás regisztrálása](./pc-saas-registration.md)című részben leírtak szerint.  Ezt követően használja az interfész legújabb verzióját a fejlesztéshez: [SaaS beteljesülés API 2-es verziója](./pc-saas-fulfillment-api-v2.md).

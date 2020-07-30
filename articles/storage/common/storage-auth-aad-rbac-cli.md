@@ -136,7 +136,7 @@ az role assignment create \
     --scope "/subscriptions/<subscription>"
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure-erőforrásokhoz való hozzáférés kezelése a RBAC és a Azure PowerShell használatával](../../role-based-access-control/role-assignments-powershell.md)
 - [Hozzáférés biztosítása az Azure Blob-és üzenetsor-adataihoz a RBAC használatával Azure PowerShell](storage-auth-aad-rbac-powershell.md)

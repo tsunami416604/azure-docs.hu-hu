@@ -1,17 +1,15 @@
 ---
 title: Gyakori kérdések a hálózatkezeléssel kapcsolatban Azure Functions
 description: Válaszok a Azure Functions-vel való hálózatkezeléssel kapcsolatos leggyakoribb kérdésekre és forgatókönyvekre.
-author: alexkarcher-msft
 ms.topic: troubleshooting
 ms.date: 4/11/2019
-ms.author: alkarche
 ms.reviewer: glenga
-ms.openlocfilehash: 7d3493cc76dfb05cca3c89114b279b99ab49bac2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 52e0a6f9261d89ecd7c660be118162a898988526
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081644"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87385908"
 ---
 # <a name="frequently-asked-questions-about-networking-in-azure-functions"></a>Gyakori kérdések a hálózatkezeléssel kapcsolatban Azure Functions
 
@@ -59,7 +57,7 @@ A App Service Environment való üzembe helyezés az egyetlen módszer egy olyan
 
 Olyan helyzetekben, ahol csak egyirányú hozzáférésre van szükség a virtuális hálózati erőforrásokhoz vagy kevésbé átfogó hálózati elkülönítéshez, tekintse meg a [függvények hálózatkezelésének áttekintése](functions-networking-options.md)című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a hálózatkezelésről és a függvényekről: 
 

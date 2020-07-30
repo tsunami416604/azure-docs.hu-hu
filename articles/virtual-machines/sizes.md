@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 07/21/2020
 ms.author: jushiman
-ms.openlocfilehash: f6ed5fee8e6d4f1f0575df733b8b95d1d6990513
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 99419a73386f39492d78ee93aeb61f432ac9c690
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289689"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421059"
 ---
 # <a name="sizes-for-virtual-machines-in-azure"></a>Virtuális gépek méretei az Azure-ban
 
@@ -22,7 +22,7 @@ Ez a cikk az alkalmazások és munkaterhelések futtatásához használható Azu
 | Típus | Méretek | Leírás |
 |------|-------|-------------|
 | [Általános célú](sizes-general.md)   | B, Dsv3, Dv3, Dasv4, Dav4, DSv2, Dv2, Av2, DC, DCv2, DV4, Dsv4, Ddv4, Ddsv4  | Kiegyensúlyozott processzor-memória arány. Ideális választások a teszteléshez és a fejlesztéshez, a kicsi és közepes adatbázisokhoz, illetve az alacsony és közepes forgalmú webkiszolgálókhoz. |
-| [Számításoptimalizált](sizes-compute.md) | Fsv2 | Magas processzor-memória arány. Jó a közepes forgalmú webkiszolgálók, a hálózati berendezések, a kötegelt folyamatok és az alkalmazáskiszolgáló számára. |
+| [Számításoptimalizált](sizes-compute.md) | F, FS, Fsv2 | Magas processzor-memória arány. Jó a közepes forgalmú webkiszolgálók, a hálózati berendezések, a kötegelt folyamatok és az alkalmazáskiszolgáló számára. |
 | [Memóriaoptimalizált](sizes-memory.md) | Esv3, Ev3, Easv4, Eav4, Ev4, Esv4, Edv4, Edsv4, Mv2, M, DSv2, Dv2 | Magas memória-CPU arány. Ideális választások a relációs adatbázisok kiszolgálóihoz, a közepes és nagy gyorsítótárakhoz, valamint a memóriában végzett elemzésekhez.                 |
 | [Tároptimalizált](sizes-storage.md) | Lsv2 | A nagy adatátviteli sebesség és az i/o ideális megoldás a Big Database, az SQL, a NoSQL adatbázisok, az adattárházak és a nagy tranzakciós adatbázisok számára.  |
 | [GPU](sizes-gpu.md) | NC, NCv2, NCv3, ND, NDv2 (előzetes verzió), NV, NVv3, NVv4 | A speciális virtuális gépek nagy grafikai renderelést és videoszerkesztőt céloznak meg, valamint a képzési és következtetési (ND) modellek mély tanulással. Elérhető egy vagy több GPU-val. |
@@ -31,9 +31,7 @@ Ez a cikk az alkalmazások és munkaterhelések futtatásához használható Azu
 - A különböző méretek díjszabásával kapcsolatos információkért tekintse meg a [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/#Linux) vagy a [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows)díjszabási oldalait.
 - Az Azure-régiókban található virtuálisgép-méretek elérhetőségét lásd: [régiók által elérhető termékek](https://azure.microsoft.com/regions/services/).
 - Az Azure-beli virtuális gépekre vonatkozó általános korlátokat lásd: [Azure-előfizetések és-szolgáltatások korlátai, kvótái és megkötései](../azure-resource-manager/management/azure-subscription-service-limits.md).
-
-> [!NOTE]
-  > További információ arról, hogyan nevezi át az Azure a virtuális gépeket: az Azure-beli [virtuálisgép-méretek elnevezési konvenciói](https://docs.microsoft.com/azure/virtual-machines/vm-naming-conventions).
+- További információ arról, hogy az Azure Hogyan nevezi el a virtuális gépeket: az [Azure virtuálisgép-méretek elnevezési konvenciói](https://docs.microsoft.com/azure/virtual-machines/vm-naming-conventions).
 
 ## <a name="rest-api"></a>REST API
 
@@ -57,7 +55,7 @@ További információ a Windows rendszerű virtuális gépek számítási teljes
 
 [!INCLUDE [cost-management-horizontal](../../includes/cost-management-horizontal.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a rendelkezésre álló különböző virtuálisgép-méretekről:
 

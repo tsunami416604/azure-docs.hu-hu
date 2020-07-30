@@ -214,7 +214,7 @@ Az e-mailek elküldése mellett emailform.jsp a felhasználó eredményét is me
 
 ![E-mail eredményének küldése][emailresult]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Telepítse az alkalmazást a Compute Emulatorre, és egy böngészőben futtassa emailform.jsp-t, írja be az értékeket az űrlapba, kattintson az **E-mail küldése**elemre, majd tekintse meg az eredményeket sendemail.jsp.
 
 Ez a kód azt mutatja be, hogy miként használható a SendGrid az Azure-ban Java-ban. Mielőtt éles környezetben üzembe helyezi az Azure-t, érdemes lehet további hibakezelés vagy más funkciókat hozzáadnia. Például: 

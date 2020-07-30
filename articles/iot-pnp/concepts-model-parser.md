@@ -92,6 +92,6 @@ Az érvényesíteni kívánt modell a JSON-fájlokban leírt egy vagy több csat
     }
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A cikkben áttekintett Model Parser API számos forgatókönyvet tesz lehetővé a DTDL-modelltől függő feladatok automatizálásához és érvényesítéséhez. Például dinamikusan hozhat létre felhasználói felületet a modellben található információk alapján.

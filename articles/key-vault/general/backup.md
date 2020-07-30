@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: sudbalas
-ms.openlocfilehash: 76ceba11ffeb5569e250fab6bc47fe8faf019361
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 668154b5e54ed4d496d272e33e8fc7f378e75e8a
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86521105"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386265"
 ---
 # <a name="azure-key-vault-backup"></a>Azure Key Vault biztonsági mentés
 
@@ -27,7 +27,7 @@ A Azure Key Vault automatikusan biztosít olyan funkciókat, amelyek segítenek 
 
 Key Vault megtartja a rendelkezésre állást a katasztrófa-forgatókönyvekben, és a felhasználó beavatkozása nélkül automatikusan felveszi a kéréseket egy párosított régióba. További információ: [Azure Key Vault rendelkezésre állás és redundancia](https://docs.microsoft.com/azure/key-vault/general/disaster-recovery-guidance).
 
-Ha a titkos kódok véletlen vagy rosszindulatú törlésével szembeni védelmet szeretne védeni, konfigurálja a Key vaulton a helyreállítható törlési és kiürítő védelmi funkciókat. További információ: [Azure Key Vault Soft-delete áttekintése](https://docs.microsoft.com/azure/key-vault/general/overview-soft-delete).
+Ha a titkos kódok véletlen vagy rosszindulatú törlésével szembeni védelmet szeretne védeni, konfigurálja a Key vaulton a helyreállítható törlési és kiürítő védelmi funkciókat. További információ: [Azure Key Vault Soft-delete áttekintése](https://docs.microsoft.com/azure/key-vault/general/soft-delete-overview).
 
 ## <a name="limitations"></a>Korlátozások
 
@@ -84,7 +84,7 @@ Az ebben a szakaszban ismertetett lépéseket követve biztonsági másolatot k�
     ![Képernyőfelvétel: a biztonsági mentés visszaállításának helye a kulcstartóban.](../media/backup-4.png)
     
 5. Lépjen arra a helyre, ahol a titkosított blobot tárolta.
-6. Kattintson az **OK** gombra.
+6. Válassza az **OK** lehetőséget.
 
 ## <a name="back-up-and-restore-from-the-azure-cli"></a>Biztonsági mentés és visszaállítás az Azure CLI-vel
 

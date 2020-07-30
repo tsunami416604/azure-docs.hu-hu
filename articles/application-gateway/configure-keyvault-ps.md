@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 05/26/2020
 ms.author: victorh
-ms.openlocfilehash: 5e0cb1a5c5c115aa1aaf9697e19631e2142853a3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4a872bc63be33ebed0a8ba9d89383cdfc9feef28
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84808068"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386282"
 ---
 # <a name="configure-tls-termination-with-key-vault-certificates-using-azure-powershell"></a>A TLS-megszakítás konfigurálása Key Vault tanúsítványokkal a Azure PowerShell használatával
 
@@ -25,7 +25,7 @@ Ez a cikk bemutatja, hogyan használható egy Azure PowerShell parancsfájl a ku
 
 Ehhez a cikkhez Azure PowerShell-modul 1.0.0-es vagy újabb verziójára van szükség. A verzió megkereséséhez futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. A cikkben szereplő parancsok futtatásához a futtatásával is létre kell hoznia egy, az Azure-nal való kapcsolódást `Connect-AzAccount` .
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -73,7 +73,7 @@ $certificate = Get-AzKeyVaultCertificate -VaultName $kv -Name "cert1"
 $secretId = $certificate.SecretId.Replace($certificate.Version, "")
 ```
 > [!NOTE]
-> A-EnableSoftDelete jelzőt a TLS-megszakítás megfelelő működéséhez kell használni. Ha [Key Vault-törlést a portálon keresztül](../key-vault/general/overview-soft-delete.md#soft-delete-behavior)konfigurálja, a megőrzési időtartamot 90 napon belül meg kell őrizni, az alapértelmezett értéket. A Application Gateway még nem támogatja az eltérő megőrzési időtartamot. 
+> A-EnableSoftDelete jelzőt a TLS-megszakítás megfelelő működéséhez kell használni. Ha [Key Vault-törlést a portálon keresztül](../key-vault/general/soft-delete-overview.md#soft-delete-behavior)konfigurálja, a megőrzési időtartamot 90 napon belül meg kell őrizni, az alapértelmezett értéket. A Application Gateway még nem támogatja az eltérő megőrzési időtartamot. 
 
 ### <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
 
@@ -144,6 +144,6 @@ $appgw = New-AzApplicationGateway -Name $appgwName -Identity $appgwIdentity -Res
   -SslCertificates $sslCert01 -AutoscaleConfiguration $autoscaleConfig
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [További információ a TLS-lezárásról](ssl-overview.md)

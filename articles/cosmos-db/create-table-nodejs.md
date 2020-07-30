@@ -8,12 +8,13 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 05/28/2020
 ms.author: sngun
-ms.openlocfilehash: bbb6ac60c28635371760987b7a55ae7344dd73fb
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 2243ff73f72666013fa4d01cbc6b1cabe02c8c41
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85115037"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87418661"
 ---
 # <a name="quickstart-build-a-table-api-app-with-nodejs-and-azure-cosmos-db"></a>Gyors útmutató: Table API-alkalmazás felépítése a Node.js és az Azure Cosmos DB használatával
 
@@ -184,7 +185,7 @@ Ezzel frissítette az alkalmazást az összes olyan információval, amely az Az
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre egy Azure Cosmos DB fiókot, hogyan hozhat létre egy táblázatot a Adatkezelő használatával, és hogyan futtathat Node.js alkalmazást a tábla adatai hozzáadásához.  Most már le tudja kérdezni adatait a Table API segítségével.  
 

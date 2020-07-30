@@ -24,7 +24,7 @@ A **biztonsági vezérlők** beépített moduljait egyenként is hozzárendelhet
 
 [!INCLUDE [azure-policy-compliancecontrols-adls](../../../includes/policy/standards/byrp/microsoft.datalakestore.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [Azure Policy szabályozási megfelelőségről](../../governance/policy/concepts/regulatory-compliance.md).
 - A beépített elemek megtekintése az [Azure Policy GitHub-adattárában](https://github.com/Azure/azure-policy).

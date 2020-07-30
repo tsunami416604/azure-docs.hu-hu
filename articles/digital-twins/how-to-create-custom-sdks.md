@@ -7,12 +7,13 @@ ms.author: baanders
 ms.date: 4/24/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: e7533b87e28fa2bb95aaaddd31f7871e8ccdb600
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.custom: devx-track-javascript
+ms.openlocfilehash: a93e0b6d29bb10e5e71f48134916cac9cd563fb2
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285611"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420039"
 ---
 # <a name="create-custom-sdks-for-azure-digital-twins-using-autorest"></a>Egyéni SDK-k létrehozása az Azure Digital Twins-hoz az autorest használatával
 
@@ -188,7 +189,7 @@ try
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Végigvezeti egy ügyfélalkalmazás létrehozásának lépésein, ahol az SDK-t használhatja:
 * [*Oktatóanyag: ügyfélalkalmazás kódolása*](tutorial-code.md)

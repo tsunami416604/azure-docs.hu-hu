@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2019
-ms.openlocfilehash: 5a454d04701160492539f5c9caba57c9e617401e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: dca320168805e9f7c8f6336b39c4f9394255f9b8
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87067488"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87416315"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>Naplók optimalizálása Azure Monitorban
 Azure Monitor naplók az [Azure adatkezelő (ADX)](/azure/data-explorer/) használatával tárolják a naplófájlokat, és lekérdezéseket futtatnak az adatok elemzéséhez. Létrehozza, kezeli és karbantartja a ADX-fürtöket, és optimalizálja azokat a log Analysis számítási feladatokhoz. Amikor lekérdezést futtat, az optimalizált, és a munkaterület-adatok tárolására szolgáló megfelelő ADX-fürtre irányítja. A Azure Monitor-naplók és az Azure Adatkezelő számos automatikus lekérdezés-optimalizálási mechanizmust használ. Míg az automatikus optimalizálások jelentős lökést nyújtanak, bizonyos esetekben jelentősen növelheti a lekérdezési teljesítményt. Ez a cikk ismerteti a teljesítménnyel kapcsolatos szempontokat és számos technikát a kijavításához.
@@ -98,14 +98,14 @@ Például a következő lekérdezések pontosan ugyanazt az eredményt eredmény
 Heartbeat 
 | extend IPRegion = iif(RemoteIPLongitude  < -94,"WestCoast","EastCoast")
 | where IPRegion == "WestCoast"
-| summarize count() by Computer
+| summarize count(), make_set(IPRegion) by Computer
 ```
 ```Kusto
 //more efficient
 Heartbeat 
 | where RemoteIPLongitude  < -94
 | extend IPRegion = iif(RemoteIPLongitude  < -94,"WestCoast","EastCoast")
-| summarize count() by Computer
+| summarize count(), make_set(IPRegion) by Computer
 ```
 
 ### <a name="use-effective-aggregation-commands-and-dimensions-in-summarize-and-join"></a>Hatékony aggregációs parancsok és méretek használata az összegzésben és a csatlakozáshoz
@@ -433,11 +433,11 @@ A párhuzamosságot csökkentő lekérdezési viselkedések például a követke
 - Szerializálási és ablakos függvények, például a [szerializálási operátor](/azure/kusto/query/serializeoperator), a [Next ()](/azure/kusto/query/nextfunction), a [Prev ()](/azure/kusto/query/prevfunction)és a [Row](/azure/kusto/query/rowcumsumfunction) függvények használata. Ezekben az esetekben a Time Series és a User Analytics functions is használható. A nem hatékony szerializálás akkor is előfordulhat, ha a következő operátorok nem a lekérdezés végén vannak használatban: [Range](/azure/kusto/query/rangeoperator), [sort](/azure/kusto/query/sortoperator), [Order](/azure/kusto/query/orderoperator), [Top](/azure/kusto/query/topoperator), [Top-ütős](/azure/kusto/query/tophittersoperator), [GetSchema](/azure/kusto/query/getschemaoperator).
 -    A [DCount ()](/azure/kusto/query/dcount-aggfunction) aggregációs függvény használata azt kényszeríti, hogy a rendszeren a különböző értékek központi másolata legyen. Ha az adatok terjedelme magas, érdemes lehet a DCount függvényt a választható paraméterekkel csökkenteni a pontosság csökkentése érdekében.
 -    Sok esetben a [JOIN](/azure/kusto/query/joinoperator?pivots=azuremonitor) operátor csökkenti az általános párhuzamosságot. A teljesítménnyel kapcsolatos probléma megoldásakor vizsgálja meg a shuffle illesztést.
--    Az erőforrás-hatókörű lekérdezésekben a végrehajtás előtti RBAC-ellenőrzések olyan helyzetekben merülhetnek fel, amikor nagyon nagy számú RBAC-hozzárendelés van. Ez több ellenőrzéshez vezethet, ami alacsonyabb párhuzamosságot eredményezhet. Egy lekérdezés például egy olyan előfizetésen történik, ahol több ezer erőforrás van, és az egyes erőforrások számos szerepkör-hozzárendeléssel rendelkeznek az erőforrás szintjén, nem az előfizetéshez vagy az erőforráscsoporthoz.
+-    Az erőforrás-hatókörű lekérdezésekben a végrehajtás előtti RBAC-ellenőrzések olyan helyzetekben merülhetnek fel, amikor nagyon nagy számú Azure-szerepkör-hozzárendelés van. Ez több ellenőrzéshez vezethet, ami alacsonyabb párhuzamosságot eredményezhet. Egy lekérdezés például egy olyan előfizetésen történik, ahol több ezer erőforrás van, és az egyes erőforrások számos szerepkör-hozzárendeléssel rendelkeznek az erőforrás szintjén, nem az előfizetéshez vagy az erőforráscsoporthoz.
 -    Ha egy lekérdezés kis adattömböket dolgoz fel, a párhuzamossága alacsony lesz, mivel a rendszer nem fogja elosztani számos számítási csomópont között.
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A Kusto lekérdezési nyelvét ismertető dokumentáció](/azure/kusto/query/).
