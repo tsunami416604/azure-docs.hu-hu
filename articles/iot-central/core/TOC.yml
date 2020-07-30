@@ -43,8 +43,6 @@
           href: tutorial-connect-device-nodejs.md
         - name: Eszköz csatlakoztatása (Python)
           href: tutorial-connect-device-python.md
-        - name: Plug and Play-eszköz (előzetes verzió) csatlakoztatása
-          href: tutorial-connect-pnp-device.md
         - name: Átjáró-eszközsablon létrehozása
           href: tutorial-define-gateway-device-type.md
         - name: IoT Edge-eszköz csatlakoztatása
@@ -79,8 +77,6 @@
       items:
         - name: Eszközsablon beállítása
           href: howto-set-up-template.md
-        - name: MXChip IoT DevKit előkészítése és csatlakoztatása
-          href: howto-connect-devkit.md
         - name: Azure Sphere DevKit előkészítése és csatlakoztatása
           href: howto-connect-sphere.md
         - name: RuuviTag eszköz előkészítése és csatlakoztatása

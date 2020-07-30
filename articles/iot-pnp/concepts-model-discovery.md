@@ -108,10 +108,10 @@ A megoldás a modell feloldásával fér hozzá a modell AZONOSÍTÓját alkotó
 - A megoldások úgy is dönthetnek, hogy egy helyi mappában található fájlként tárolják ezeket a csatolókat. 
 - A megoldások használhatják a [modell tárházát](concepts-model-repository.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte a Model Discovery egy IoT-megoldását, további információkat tudhat meg az [Azure IoT platformról](overview-iot-plug-and-play.md) a megoldás más képességeinek kihasználásához.
 
-- [Eszköz használata a megoldásból](quickstart-service-node.md)
+- [Kommunikáció egy eszközzel a megoldásból](quickstart-service-node.md)
 - [IoT Digital Twin REST API](https://docs.microsoft.com/rest/api/iothub/service/digitaltwin)
 - [Azure IoT Explorer](howto-use-iot-explorer.md)

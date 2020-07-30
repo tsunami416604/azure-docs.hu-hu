@@ -22,7 +22,7 @@ Ez a cikk ismerteti a nyilvános előzetes verzióban alkalmazandó, Plug and Pl
 
 A nyilvános előzetes verzió esetében a következő korlátozások és kvóták érvényesek egy IoT hub-ra:
 
-| Korlátok, korlátozások és szabályozások | Érték | Jegyzetek |
+| Korlátok, korlátozások és szabályozások | Érték | Megjegyzések |
 |-----|-----|-----|
 | A központ által regisztrálható felületek száma | 1500 ||
 | Az összetevő nevének maximális mérete | 1-64 karakter | Engedélyezett karakterek: a-z, A-Z, 0-9 (nem az első karakter), és az aláhúzás (nem az első vagy az utolsó karakter). |
@@ -35,6 +35,6 @@ A nyilvános előzetes verzió esetében a következő korlátozások és kvót�
 
 Az elemző könyvtár a [digitális Twins-definíciós nyelvre](https://github.com/Azure/opendigitaltwins-dtdl)vonatkozó korlátokat követi.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A javasolt következő lépés a [IoT Plug and Play architektúra](concepts-architecture.md)áttekintése.

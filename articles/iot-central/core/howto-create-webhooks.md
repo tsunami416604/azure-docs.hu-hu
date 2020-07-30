@@ -156,6 +156,6 @@ Jelenleg nincs programozási mód a webhookok API-n keresztül történő előfi
 
 Ha Ötletei vannak a funkció fejlesztéséhez, tegye a javaslatait a [felhasználói hangalapú fórumba](https://feedback.azure.com/forums/911455-azure-iot-central).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte a webhookok beállítását és használatát, a javasolt következő lépés az [Azure monitor műveleti csoportok konfigurálásának](howto-use-action-groups.md)megismerése.

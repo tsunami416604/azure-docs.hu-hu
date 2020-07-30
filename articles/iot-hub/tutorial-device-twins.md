@@ -13,12 +13,13 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: fe93344005e2676046bd6b73f9d51b617100a961
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+- devx-track-javascript
+ms.openlocfilehash: f3dad81a5cba9dd817e0d4e75590d374fe059358
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325899"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87424103"
 ---
 <!-- **TODO** Update publish config with repo paths before publishing! -->
 
@@ -259,7 +260,7 @@ Ha szeretné, a CLI-t is használhatja:
 az group delete --name tutorial-iot-hub-rg
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag azt ismertette, hogyan szinkronizálhatja az állapotinformációkat az eszközök és az IoT Hub között. Folytassa a következő oktatóanyaggal, ha azt szeretné megtudni, hogyan implementálható ikereszközökkel egy belső vezérlőprogram frissítési folyamata.
 

@@ -4,87 +4,75 @@
   items:
     - name: Mi az IoT Plug and Play?
       href: overview-iot-plug-and-play.md
+    - name: Az előzetes verzió frissítésének újdonságai
+      href: overview-iot-plug-and-play-preview-updates.md
 - name: Rövid útmutatók
   expanded: true
   items:
-    - name: Eszköz létrehozása
-      items:
-        - name: C Linux
-          href: quickstart-create-pnp-device-linux.md
-        - name: C Windows
-          href: quickstart-create-pnp-device-windows.md
     - name: Eszköz csatlakoztatása az IoT Hubhoz
       items:
-        - name: C Linux
-          href: quickstart-connect-pnp-device-c-linux.md
-        - name: C Windows
-          href: quickstart-connect-pnp-device-c-windows.md
         - name: C#
-          href: quickstart-connect-pnp-device-csharp.md
-        - name: Java
-          href: quickstart-connect-pnp-device-java.md
+          href: quickstart-connect-device-c.md
         - name: Node.js
-          href: quickstart-connect-pnp-device-node.md
-    - name: Eszköz csatlakoztatása az IoT Centralhoz
-      href: ../iot-central/core/tutorial-connect-pnp-device.md
-    - name: Csatlakozás a megoldásban található eszközhöz
+          href: quickstart-connect-device-node.md
+        - name: Python
+          href: quickstart-connect-device-python.md
+        - name: C#
+          href: quickstart-connect-device-csharp.md
+        - name: Java
+          href: quickstart-connect-device-java.md
+    - name: Kommunikáció egy eszközzel a megoldásból
       items:
-        - name: C#
-          href: quickstart-connect-pnp-device-solution-csharp.md
-        - name: Java
-          href: quickstart-connect-pnp-device-solution-java.md
         - name: Node.js
-          href: quickstart-connect-pnp-device-solution-node.md
+          href: quickstart-service-node.md
+        - name: Python
+          href: quickstart-service-python.md
 - name: Oktatóanyagok
   items:
-    - name: Eszköz létrehozása a VS Code használatával
-      href: tutorial-pnp-visual-studio-code.md
-    - name: Minősítésre kész eszköz létrehozása
-      href: tutorial-build-device-certification.md
-    - name: Eszköz minősítése
-      href: tutorial-certification-test.md
+    - name: Több összetevőből álló eszköz csatlakoztatása (C#)
+      href: tutorial-multiple-components-csharp.md
+    - name: Több összetevőből álló eszköz csatlakoztatása (Java)
+      href: tutorial-multiple-components-java.md
+    - name: Több összetevőből álló eszköz csatlakoztatása (Node.js)
+      href: tutorial-multiple-components-node.md
+    - name: Több összetevőből álló eszköz csatlakoztatása (Python)
+      href: tutorial-multiple-components-python.md
 - name: Alapelvek
   items:
-    - name: Szószedet
-      href: iot-plug-and-play-glossary.md
+    - name: Architektúra
+      href: concepts-architecture.md
     - name: Fejlesztői útmutató
       href: concepts-developer-guide.md
-    - name: Gyakori felületek
-      href: concepts-common-interfaces.md
+    - name: Összetevők
+      href: concepts-components.md
+    - name: Az IoT Plug and Playhez kapcsolódó konvenciók
+      href: concepts-convention.md
+    - name: Digital Twins
+      href: concepts-digital-twin.md
+    - name: Modelladattár
+      href: concepts-model-repository.md
     - name: Modellfelderítés
       href: concepts-model-discovery.md
+    - name: Modellelemző
+      href: concepts-model-parser.md
     - name: Korlátok és kvóták
       href: concepts-limits-quotas.md
+    - name: Szószedet
+      href: iot-plug-and-play-glossary.md
 - name: Útmutatók
   items:
-    - name: Fejlesztés a Visual Studio és a Visual Studio Code használatával
-      href: howto-develop-with-vs-vscode.md
-    - name: Az IoT-kezelő telepítése
-      href: howto-install-iot-explorer.md
-    - name: Az Azure CLI-bővítmény telepítése
-      href: howto-install-pnp-cli.md
-    - name: Regisztráció az IoT-portálon
-      href: howto-onboard-portal.md
-    - name: Modellek kezelése
-      href: howto-manage-models.md
-    - name: 'Csatlakozás eszközhöz, illetve kommunikáció az eszközzel'
-      href: howto-develop-solution.md
+    - name: IoT Explorer telepítése és használata
+      href: howto-use-iot-explorer.md
+    - name: Azure IoT CLI-bővítmény telepítése és használata
+      href: howto-use-iot-pnp-cli.md
+    - name: Digitális ikereszközök kezelése
+      href: howto-manage-digital-twin.md
 - name: Referencia
   items:
     - name: Kódtárak és SDK-k
       href: libraries-sdks.md
-    - name: REST API
-      items:
-        - name: Digital Twin
-          href: 'https://docs.microsoft.com/rest/api/iothub/digitaltwinmodel/digitaltwin'
-        - name: Digital Twin szolgáltatás
-          href: 'https://docs.microsoft.com/rest/api/iothub/digitaltwinmodel/service'
-        - name: Digital Twin modelladattár
-          href: 'https://docs.microsoft.com/rest/api/iothub/digitaltwinmodelrepositoryservice/createorupdatemodel'
-        - name: REST biztonsági jogkivonat létrehozása
-          href: howto-generate-sas-token.md
-- name: Referencia
-  items:
+    - name: Digital Twin REST API
+      href: 'https://aka.ms/iot-pnp-preview-rest'
     - name: Azure CLI
       href: /cli/azure/azure-cli-reference-for-IoT
 - name: További források

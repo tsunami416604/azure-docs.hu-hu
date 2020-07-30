@@ -5,12 +5,13 @@ ms.date: 11/21/2018
 ms.topic: tutorial
 description: Ez az oktatóanyag bemutatja, hogyan használható az Azure dev Spaces és a Visual Studio Code egy több szolgáltatásból álló Java-alkalmazás hibakereséséhez az Azure Kubernetes szolgáltatásban
 keywords: Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s
-ms.openlocfilehash: beab91964cab9938a5d63584089326bb408f6efc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-java
+ms.openlocfilehash: 95bcc0b25ba937b8db96f006adf80226dee99968
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75438331"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87374252"
 ---
 # <a name="running-multiple-dependent-services-java-and-visual-studio-code-with-azure-dev-spaces"></a>Több függő szolgáltatás futtatása: Java és Visual Studio Code az Azure dev Spaces-szel
 
@@ -65,17 +66,17 @@ Az előző példakód továbbítja az `azds-route-as` fejlécet a bejövő kére
 
 ### <a name="debug-across-multiple-services"></a>Hibakeresés több szolgáltatásban
 1. Ezen a ponton a `mywebapi` elvileg még mindig fut a hozzácsatolt hibakeresővel. Ha nem fut, nyomja le az F5 billentyűt a `mywebapi` projektben.
-1. Állítsa be a töréspontot `index()` a `mywebapi` projekt metódusában a (z) [19 `Application.java` . sorban](https://github.com/Azure/dev-spaces/blob/master/samples/java/getting-started/mywebapi/src/main/java/com/ms/sample/mywebapi/Application.java#L19)
+1. Állítsa be a töréspontot a `index()` projekt metódusában a (z) `mywebapi` [ `Application.java` 19. sorban](https://github.com/Azure/dev-spaces/blob/master/samples/java/getting-started/mywebapi/src/main/java/com/ms/sample/mywebapi/Application.java#L19)
 1. A `webfrontend` projektben állítson be egy töréspontot a `try` kezdetű sorban, mielőtt a projekt GET-kérést küld a `mywebapi` felé.
 1. A `webfrontend` projektben nyomja le az F5 billentyűt (vagy indítsa újra a hibakeresőt, ha már fut).
 1. Hívja meg a webalkalmazást, és tekintse át a kódot mindkét szolgáltatásban.
 1. A webalkalmazás About (Információ) oldalán a két szolgáltatás által összefűzött üzenet jelenik meg: „Hello from webfrontend and Hello from mywebapi.”
 
-### <a name="well-done"></a>Remek!
+### <a name="well-done"></a>Szép munka!
 Most már rendelkezik egy többtárolós alkalmazással, ahol az egyes tárolók külön-külön fejleszthetők és helyezhetők üzembe.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Ismerkedjen meg a fejlesztői Spaces fejlesztőivel](team-development-java.md)
