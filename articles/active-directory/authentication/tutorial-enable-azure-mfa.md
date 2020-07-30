@@ -10,12 +10,12 @@ ms.author: iainfou
 author: iainfoulds
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1df88e26284dc868267cbc79e27df6f0e25f1250
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5aa84faea43846a2f930373529769e62f76e5bbf
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87035060"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419546"
 ---
 # <a name="tutorial-secure-user-sign-in-events-with-azure-multi-factor-authentication"></a>Oktatóanyag: felhasználói bejelentkezési események biztonságossá tétele az Azure Multi-Factor Authentication
 
@@ -39,7 +39,7 @@ Ezen oktatóanyag segítségével megtanulhatja a következőket:
 
 Az oktatóanyag elvégzéséhez a következő erőforrásokra és jogosultságokra van szüksége:
 
-* Egy prémium szintű Azure AD-vagy próbaverziós licenccel rendelkező Azure AD-bérlő használata.
+* Egy működő Azure AD-bérlő legalább egy prémium szintű Azure AD P1 vagy próbaverziós licenccel.
     * Ha szükséges, [hozzon létre egyet ingyen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * *Globális rendszergazdai* jogosultságokkal rendelkező fiók.
 * Egy nem rendszergazda felhasználó, aki ismeri a jelszót, például *tesztfelhasználó*. Ebben az oktatóanyagban tesztelheti a végfelhasználói Azure Multi-Factor Authentication élményt ebben a fiókban.
@@ -65,7 +65,7 @@ Először hozzon létre egy feltételes hozzáférési szabályzatot, és rendel
 1. Jelölje be a **felhasználók és csoportok**jelölőnégyzetet, majd **válassza ki** az elérhető Azure ad-felhasználók és-csoportok tallózását.
 1. Keresse meg és válassza ki az Azure AD-csoportot, például *MFA-test-Group*, majd válassza a **kiválasztás**lehetőséget.
 
-    [![](media/tutorial-enable-azure-mfa/select-group-for-conditional-access-cropped.png "Select your Azure AD group to use with the Conditional Access policy")](media/tutorial-enable-azure-mfa/select-group-for-conditional-access.png#lightbox)
+    [![Válassza ki a feltételes hozzáférési szabályzattal ](media/tutorial-enable-azure-mfa/select-group-for-conditional-access-cropped.png) használandó Azure ad-csoportot](media/tutorial-enable-azure-mfa/select-group-for-conditional-access.png#lightbox)
 
 1. Ha alkalmazni szeretné a csoportra vonatkozó feltételes hozzáférési szabályzatot, válassza a **kész**lehetőséget.
 
@@ -114,7 +114,7 @@ Most jelentkezzen be a Azure Portalba. Mivel a Azure Portal a feltételes hozzá
 
 1. Zárja be a böngészőablakot.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha nem szeretné, hogy a feltételes hozzáférési szabályzattal engedélyezze az Azure Multi-Factor Authentication konfigurálását az oktatóanyag részeként, törölje a szabályzatot a következő lépésekkel:
 
@@ -123,7 +123,7 @@ Ha nem szeretné, hogy a feltételes hozzáférési szabályzattal engedélyezze
 1. Válassza a **feltételes hozzáférés**lehetőséget, majd válassza ki a létrehozott szabályzatot, például *MFA Pilot*
 1. Válassza a **Törlés**lehetőséget, majd erősítse meg, hogy törölni kívánja a szabályzatot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban engedélyezte az Azure Multi-Factor Authentication használatát a kiválasztott felhasználói csoportok feltételes hozzáférési házirendjeivel. Megtanulta végrehajtani az alábbi műveleteket:
 

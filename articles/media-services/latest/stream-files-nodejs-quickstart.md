@@ -10,15 +10,15 @@ keywords: azure media services, stream
 ms.service: media-services
 ms.workload: media
 ms.topic: tutorial
-ms.custom: mvc
+ms.custom: mvc, devx-track-javascript
 ms.date: 08/19/2019
 ms.author: juliako
-ms.openlocfilehash: 5e4c50b4b66d164ba2e89cfc537d9dd8593c4f57
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1c96c538826de696de531aff79ce601bc01a239d
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092031"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87414071"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---nodejs"></a>Oktatóanyag: távoli fájl kódolása URL-cím alapján és stream a videón – Node.js
 
@@ -89,7 +89,7 @@ Ebben a cikkben az Azure Media Playert használjuk a streamelés teszteléséhez
 
 Az Azure Media Player használható tesztelésre, az éles környezetben való használata azonban nem ajánlott. 
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs szüksége az erőforráscsoport egyik erőforrására sem, beleértve az oktatóanyaghoz létrehozott Media Services-és Storage-fiókokat, törölje az erőforráscsoportot.
 
@@ -99,11 +99,11 @@ Hajtsa végre a következő CLI-parancsot:
 az group delete --name amsResourceGroup
 ```
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 [Feladattípus](/rest/api/media/jobs/get#joberrorcode)-hibakódok.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Media Services fogalmak](concepts-overview.md)

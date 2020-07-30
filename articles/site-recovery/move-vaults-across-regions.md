@@ -2,18 +2,18 @@
 title: Azure Site Recovery-tároló áthelyezése egy másik régióba
 description: Útmutató Recovery Services-tároló (Azure Site Recovery) másik Azure-régióba való áthelyezéséhez
 services: site-recovery
-author: rajani-janaki-ram
+author: Sharmistha-Rai
 ms.service: site-recovery
 ms.topic: tutorial
 ms.date: 07/31/2019
-ms.author: rajanaki
+ms.author: sharrai
 ms.custom: MVC
-ms.openlocfilehash: 32dff9a165125ab1949560ce36438ae266cd3036
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a8cb5ec782b5932c13e321b2ba2d6513597fef52
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74090300"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422640"
 ---
 # <a name="move-a-recovery-services-vault-and-azure-site-recovery-configuration-to-another-azure-region"></a>Recovery Services-tároló áthelyezése és Azure Site Recovery konfigurálása egy másik Azure-régióba
 
@@ -45,7 +45,7 @@ Ebben a dokumentumban a következőket fogja megtekinteni:
 ## <a name="identify-the-resources-that-were-used-by-azure-site-recovery"></a>Az Azure Site Recovery által használt erőforrások azonosítása
 Javasoljuk, hogy ezt a lépést a következőre való továbblépés előtt végezze el. A virtuális gépek replikálásakor könnyebb azonosítani a kapcsolódó erőforrásokat.
 
-Minden replikált Azure-beli virtuális gép esetében lépjen a **védett elemek** > **replikált** > elemek**tulajdonságaiba** , és azonosítsa a következő erőforrásokat:
+Minden replikált Azure-beli virtuális gép esetében lépjen a **védett elemek**  >  **replikált**elemek  >  **tulajdonságaiba** , és azonosítsa a következő erőforrásokat:
 
 - Cél erőforráscsoport
 - Gyorsítótáras Storage-fiók
@@ -56,7 +56,7 @@ Minden replikált Azure-beli virtuális gép esetében lépjen a **védett eleme
 ## <a name="disable-the-existing-disaster-recovery-configuration"></a>A vész-helyreállítási meglévő konfiguráció letiltása
 
 1. Nyissa meg a Recovery Services-tárolót.
-2. A **védett elemek** > **replikált elemek**területen kattintson a jobb gombbal a gépre, és válassza a **replikáció letiltása**lehetőséget.
+2. A **védett elemek**  >  **replikált elemek**területen kattintson a jobb gombbal a gépre, és válassza a **replikáció letiltása**lehetőséget.
 3. Ismételje meg ezt a lépést minden olyan virtuális gép esetében, amelyet át szeretne helyezni.
 
 > [!NOTE]
