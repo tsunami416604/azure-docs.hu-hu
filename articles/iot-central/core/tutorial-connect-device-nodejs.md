@@ -7,13 +7,13 @@ ms.date: 07/07/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.custom: mqtt
-ms.openlocfilehash: 08df3bce9d1ecce4d4b0cdfc3034355feef6a4ba
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: mqtt, devx-track-javascript
+ms.openlocfilehash: 92b28b89d181de368ef1e39eb695be2e1fad6c37
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87003372"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423522"
 ---
 # <a name="tutorial-create-and-connect-a-client-application-to-your-azure-iot-central-application-nodejs"></a>Oktatóanyag: ügyfélalkalmazás létrehozása és összekötése az Azure IoT Central alkalmazással (Node.js)
 
@@ -43,7 +43,7 @@ A cikkben leírt lépések elvégzéséhez a következőkre lesz szüksége:
 
 [!INCLUDE [iot-central-add-environmental-sensor](../../../includes/iot-central-add-environmental-sensor.md)]
 
-### <a name="create-a-nodejs-application"></a>Node.js-alkalmazás létrehozása
+### <a name="create-a-nodejs-application"></a>Node.js alkalmazás létrehozása
 
 A következő lépések bemutatják, hogyan hozhat létre olyan Node.js ügyfélalkalmazás, amely az alkalmazáshoz hozzáadott valódi eszközhöz csatlakozik. Ez a Node.js alkalmazás egy valós eszköz viselkedését szimulálja.
 
@@ -333,11 +333,10 @@ Láthatja, hogy az eszköz hogyan válaszol a parancsokra és a tulajdonságokra
 
 [!INCLUDE [iot-central-monitor-environmental-sensor-raw-data](../../../includes/iot-central-monitor-environmental-sensor-raw-data.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte, hogyan hozhat létre egy eszközt a Node.js használatával, néhány javasolt következő lépés:
 
-* Ismerje meg, hogyan csatlakoztatható valódi eszköz a IoT Centralhoz a [MXChip IoT fejlesztői készlet-eszköz csatlakoztatása az Azure IoT Central-alkalmazáshoz](./howto-connect-devkit.md) útmutató című cikkben.
 * Olvassa el a [Mi az eszközök sablonjai?](./concepts-device-templates.md) további információ az eszközök sablonjainak szerepéről az eszköz kódjának megvalósításakor.
 * Olvassa el az [Azure IoT Centralhoz való csatlakozást](./concepts-get-connected.md) ismertető témakört, amelyből megtudhatja, hogyan regisztrálhat eszközöket a IoT Central, és hogyan IoT Central biztonságossá teszi az eszközök kapcsolatait.
 

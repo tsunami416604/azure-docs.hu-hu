@@ -3,16 +3,16 @@ title: Kanadai szövetségi PBMM terv minta vezérlők
 description: A kanadai szövetségi PBMM tervrajzi mintáinak leképezése. Mindegyik vezérlő egy vagy több olyan Azure-szabályzatra van leképezve, amely segítséget nyújt az értékeléshez.
 ms.date: 05/08/2020
 ms.topic: sample
-ms.openlocfilehash: e9153972938a572f8d37610e5721f7b0a578157c
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 65fcd016c749a66fbfca1c5edc9d425216545341
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085633"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419699"
 ---
 # <a name="control-mapping-of-the-canada-federal-pbmm-blueprint-sample"></a>A Kanada szövetségi PBMM tervezetének vezérlési mintája
 
-A következő cikk azt ismerteti, hogyan történik az Azure-tervezetek kanadai szövetségi védett B, közepes integritású, közepes rendelkezésre állású (PBMM) tervrajza a Kanada szövetségi PBMM-vezérlőinek. További információ a vezérlőelemekről: [Kanada szövetségi PBMM](https://www.canada.ca/en/government/system/digital-government/modern-emerging-technologies/cloud-services/government-canada-security-control-profile-cloud-based-it-services.html#toc4).
+A következő cikk azt ismerteti, hogyan történik az Azure-tervezetek kanadai szövetségi védett B, közepes integritású, közepes rendelkezésre állású (PBMM) tervrajza a Kanada szövetségi PBMM-vezérlőinek. További információ a vezérlőelemekről: [Kanada szövetségi PBMM](https://www.canada.ca/en/government/system/digital-government/digital-government-innovations/cloud-services/government-canada-security-control-profile-cloud-based-it-services.html).
 
 A következő leképezések a **Kanada szövetségi PBMM** -vezérlői. A jobb oldali navigációs sávon közvetlenül egy adott vezérlőelem-megfeleltetésre ugorhat. A leképezett vezérlők számos [Azure Policy](../../../policy/overview.md) kezdeményezéssel valósulnak meg. A teljes kezdeményezés áttekintéséhez nyissa meg a **szabályzatot** a Azure Portalban, és válassza a **definíciók** lapot. Ezt követően keresse meg és válassza ki az ** \[ előnézetet \] : az audit Canada Federal PBMM Controls** beépített Policy Initiative.
 
