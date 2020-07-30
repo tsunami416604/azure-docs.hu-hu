@@ -6,13 +6,13 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.custom: tracking-python
-ms.openlocfilehash: e5fb5819c1f88cab959be0d1256584174db5c57a
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: tracking-python, devx-track-javascript
+ms.openlocfilehash: 51b0e8b0518f9ba32c8954fce601bdd1d59b6f70
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118613"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87413935"
 ---
 # <a name="how-to-connect-applications-to-azure-database-for-mysql"></a>Alkalmazások csatlakoztatása az Azure Database for MySQL-adatbázishoz
 Ez a témakör felsorolja a Azure Database for MySQL által támogatott, a sablonokkal és példákkal együtt támogatott kapcsolatok karakterlánc-típusokat. Előfordulhat, hogy a kapcsolatok karakterláncában különböző paraméterek és beállítások vannak.

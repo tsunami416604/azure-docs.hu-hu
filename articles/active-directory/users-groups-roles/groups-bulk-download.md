@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00fdd94e8a8cd4b8769260cd595dfee5ff898039
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 46c0fccf965f4a4c9d05d82601d75e314aba7d73
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84732618"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421688"
 ---
 # <a name="bulk-download-a-list-of-groups-in-azure-active-directory"></a>Csoportok listájának tömeges letöltése Azure Active Directory
 
@@ -36,13 +36,13 @@ A Azure Active Directory (Azure AD) portál használatával tömegesen letölthe
 
 Az összes függőben lévő tömeges kérelem állapotát a **tömeges művelet eredményei** lapon tekintheti meg.
 
-[![](media/groups-bulk-download/bulk-center.png "Check status in the Bulk Operations Results page")](media/groups-bulk-download/bulk-center.png#lightbox)
+[![A tömeges műveletek eredményei lapon található állapot keresése.](media/groups-bulk-download/bulk-center.png)](media/groups-bulk-download/bulk-center.png#lightbox)
 
 ## <a name="bulk-download-service-limits"></a>Szolgáltatási korlátok tömeges letöltése
 
 A csoportok listájának letöltésére szolgáló összes tömeges tevékenység legfeljebb egy óráig futhat. Ez lehetővé teszi, hogy legalább 300 000 csoportból álló listát töltsön le.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Csoporttagok tömeges eltávolítása](groups-bulk-remove-members.md)
 - [Csoport tagjainak letöltése](groups-bulk-download-members.md)

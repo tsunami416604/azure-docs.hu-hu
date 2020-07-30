@@ -5,12 +5,12 @@ author: tugup
 ms.topic: conceptual
 ms.date: 05/1/2020
 ms.author: tugup
-ms.openlocfilehash: b106061805ea5485893df292c40974d3ee9bcadb
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: a39aecf16d1c3303c0a590b389ba2aa69d4472f2
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258816"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87405126"
 ---
 # <a name="azure-service-fabric-hosting-lifecycle"></a>Azure Service Fabric üzemeltetési életciklus
 Ez a cikk áttekintést nyújt azokról az eseményekről, amelyek akkor történnek, amikor egy alkalmazás aktiválva van egy csomóponton, és különböző fürtkonfiguráció van használatban a viselkedés szabályozására.
@@ -83,7 +83,7 @@ Service Fabric mindig lineáris biztonsági mentést használ, ha a letöltés s
 
 * Ha a CodePackage megtartja a összeomlik és a biztonsági mentést, a ServiceType le lesz tiltva. Ha azonban az aktiválások konfigurációja olyan, hogy gyorsan újraindul, akkor a CodePackage néhány alkalommal elérheti a ServiceType letiltását. Például: tegyük fel, hogy a CodePackage megérkezik, regisztrálja Service Fabric, majd összeomlik a ServiceType. Ebben az esetben az **ServiceTypeDisableGraceInterval** időszak megszakadása esetén a rendszer megszakítja a regisztráció típusát. Ez pedig megismételhető, amíg a CodePackage a **ServiceTypeDisableGraceInterval** -nál nagyobb értékre vált, majd a ServiceType le lesz tiltva a csomóponton. Ezért előfordulhat, hogy a ServiceType a csomóponton való letiltása előtt egy ideig lehet.
 
-* Aktiválások esetén, amikor Service Fabric rendszernek replikát kell elhelyeznie egy csomóponton, az RA (ReconfigurationAgent) megkérdezi az alrendszert, hogy aktiválja az alkalmazást, és 15 másodpercenként (**RAPMessageRetryInterval**) újrapróbálkozik az aktiválási kéréssel. Ha Service Fabric rendszer tudni szeretné, hogy a ServiceType le lett tiltva, az üzemeltetési aktiválási műveletnek hosszabb ideig kell élnie, mint az újrapróbálkozási időköz és a **ServiceTypeDisableGraceInterval**. Tegyük fel például, hogy a fürtben a konfigurációk **ActivationMaxFailureCount** 5 értékre van állítva, és a **ActivationRetryBackoffInterval** értéke 1 MP. Ez azt jelenti, hogy az aktiválási művelet a következő után fog megjelenni: (0 + 1 + 2 + 3 + 4) = 10 mp (az első újrapróbálkozás azonnali), és ezt követően a gazdagép újrapróbálkozik. Ebben az esetben az aktiválási művelet befejezve lesz, és 15 másodperc elteltével nem próbálkozik újra. Ez azért történt, mert a Service Fabric 15 másodpercen belül kimerítette az összes újrapróbálkozást. Így a ReconfigurationAgent minden újrapróbálkozása új aktiválási műveletet hoz létre az alrendszer üzemeltetése során, és a minta megőrzi az ismétlődést, és a ServiceType soha nem lesz letiltva a csomóponton. Mivel a ServiceType nem fog letiltani az SF rendszer Component FM-összetevőjének (FailoverManager), nem helyezi át a replikát egy másik csomópontra.
+* Aktiválások esetén, amikor Service Fabric rendszernek replikát kell elhelyeznie egy csomóponton, az RA (ReconfigurationAgent) megkérdezi az alrendszert, hogy aktiválja az alkalmazást, és 15 másodpercenként (**RAPMessageRetryInterval**) újrapróbálkozik az aktiválási kéréssel. Ha Service Fabric rendszer tudni szeretné, hogy a ServiceType le lett tiltva, az üzemeltetési aktiválási műveletnek hosszabb ideig kell élnie, mint az újrapróbálkozási időköz és a **ServiceTypeDisableGraceInterval**. Tegyük fel például, hogy a fürtben a konfigurációk **ActivationMaxFailureCount** 5 értékre van állítva, és a **ActivationRetryBackoffInterval** értéke 1 MP. Ez azt jelenti, hogy az aktiválási művelet a következő után fog megjelenni: (0 + 1 + 2 + 3 + 4) = 10 mp (az első újrapróbálkozás azonnali), és ezt követően a gazdagép újrapróbálkozik. Ebben az esetben az aktiválási művelet befejezve lesz, és 15 másodperc elteltével nem próbálkozik újra. Ez azért történt, mert a Service Fabric 15 másodpercen belül kimerítette az összes újrapróbálkozást. Így a ReconfigurationAgent minden újrapróbálkozása új aktiválási műveletet hoz létre az alrendszer üzemeltetése során, és a minta megőrzi az ismétlődést, és a ServiceType soha nem lesz letiltva a csomóponton. Mivel a ServiceType nem fog letiltani a csomóponton, az SF rendszer Component FM (FailoverManager) nem helyezi át a replikát egy másik csomópontra.
 > 
 
 ## <a name="deactivation"></a>Inaktiválása

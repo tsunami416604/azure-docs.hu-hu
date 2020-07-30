@@ -6,18 +6,18 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: 7a6105e8742a4cb3d2f113c6ef723f6171baf4d9
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: ccf4ad960abfd737a9a05d8fdc77a8bb1ea92d2d
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87328295"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87417114"
 ---
 # <a name="enable-azure-monitor-for-vms-for-a-hybrid-virtual-machine"></a>Hibrid virtuális gépek Azure Monitor for VMsának engedélyezése
 Ez a cikk azt ismerteti, hogyan engedélyezhető a Azure Monitor for VMs az Azure-on kívüli virtuális gépekhez, beleértve a helyszíni és más felhőalapú környezeteket is.
 
 > [!IMPORTANT]
-> A hibrid virtuális gépek engedélyezésének ajánlott módja az [Azure-arc](/azure-arc/servers/overview.md) engedélyezése a kiszolgálókhoz, hogy a virtuális gépek engedélyezve legyenek Azure monitor for VMS az Azure-beli virtuális gépekhez hasonló folyamatok használatával. Ez a cikk a hibrid virtuális gépek előkészítését ismerteti, ha úgy dönt, hogy nem használja az Azure-ívet.
+> A hibrid virtuális gépek engedélyezésének ajánlott módja az [Azure-arc](../../azure-arc/servers/overview.md) engedélyezése a kiszolgálókhoz, hogy a virtuális gépek engedélyezve legyenek Azure monitor for VMS az Azure-beli virtuális gépekhez hasonló folyamatok használatával. Ez a cikk a hibrid virtuális gépek előkészítését ismerteti, ha úgy dönt, hogy nem használja az Azure-ívet.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -31,7 +31,7 @@ Az Azure-on kívüli virtuális gépekhez azonos Log Analytics ügynökre és f�
 A Log Analytics ügynök telepítésével kapcsolatos részletekért lásd: [Windows rendszerű számítógépek Összekapcsolása Azure monitor](../platform/agent-windows.md) vagy Linux rendszerű [számítógépek összekapcsolása Azure monitor](../platform/agent-linux.md) . A függőségi ügynök részletei ebben a cikkben találhatók. 
 
 ## <a name="firewall-requirements"></a>A tűzfalra vonatkozó követelmények
-A Log Analytics ügynökre vonatkozó tűzfalszabályok a [log Analytics ügynök áttekintése című témakörben](..//platform/log-analytics-agent.md#network-requirements)találhatók. A Azure Monitor for VMs Map-függőségi ügynök nem küld magába adatokat, és nem igényel semmilyen módosítást a tűzfalakon vagy a portokon. A leképezési adatokat mindig a Log Analytics ügynök továbbítja a Azure Monitor szolgáltatáshoz közvetlenül vagy az [Operations Management Suite-átjárón](../../azure-monitor/platform/gateway.md) keresztül, ha az informatikai biztonsági szabályzatok nem engedélyezik a hálózaton lévő számítógépek számára az internethez való kapcsolódást.
+A Log Analytics ügynökre vonatkozó tűzfalszabályok a [log Analytics ügynök áttekintése című témakörben](../platform/log-analytics-agent.md#network-requirements)találhatók. A Azure Monitor for VMs Map-függőségi ügynök nem küld magába adatokat, és nem igényel semmilyen módosítást a tűzfalakon vagy a portokon. A leképezési adatokat mindig a Log Analytics ügynök továbbítja a Azure Monitor szolgáltatáshoz közvetlenül vagy az [Operations Management Suite-átjárón](../../azure-monitor/platform/gateway.md) keresztül, ha az informatikai biztonsági szabályzatok nem engedélyezik a hálózaton lévő számítógépek számára az internethez való kapcsolódást.
 
 
 ## <a name="dependency-agent"></a>Függőségi ügynök
@@ -175,7 +175,7 @@ Ha látja a kiszolgálót a térképen, de nem rendelkezik folyamat-vagy adatszo
 Ellenőrizze a C:\Program Files\Microsoft Dependency Agent\logs\wrapper.log fájlt (Windows) vagy a /var/opt/microsoft/dependency-agent/log/service.log fájlt (Linux). A fájl utolsó sorai jelzik, hogy a kernel miért nem töltődött be. Előfordulhat például, hogy a Linux nem támogatja a kernelt, ha frissítette a kernelt.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy a figyelés engedélyezve van a virtuális gépek számára, ezek az információk a Azure Monitor for VMssal való elemzéshez érhetők el.
 

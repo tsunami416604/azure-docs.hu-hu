@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan frissíti Azure App Service az operációs rend
 ms.topic: article
 ms.date: 02/02/2018
 ms.custom: seodec18
-ms.openlocfilehash: 597964914f4022899ab027b735ec6932105497b4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 93716ab36bc475b092542d1eef40cfe9d75ad819
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78273640"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87414938"
 ---
 # <a name="os-and-runtime-patching-in-azure-app-service"></a>Operációs rendszer és futtatókörnyezet javítása Azure App Service
 
@@ -78,7 +78,7 @@ Az alábbi táblázat bemutatja, hogyan használhatók a Windows és az alkalmaz
 | Információ | Hol található | 
 |-|-|
 | Windows-verzió | Lásd: `https://<appname>.scm.azurewebsites.net/Env.cshtml` (a Rendszerinformáció területen) |
-| .NET-verzió | A `https://<appname>.scm.azurewebsites.net/DebugConsole` alkalmazásban futtassa a következő parancsot a parancssorban: <br>`powershell -command "gci 'Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Net Framework Setup\NDP\CDF'"` |
+| .NET-verzió | A `https://<appname>.scm.azurewebsites.net/DebugConsole` alkalmazásban futtassa a következő parancsot a parancssorban: <br>`reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full"` |
 | .NET Core-verzió | A `https://<appname>.scm.azurewebsites.net/DebugConsole` alkalmazásban futtassa a következő parancsot a parancssorban: <br> `dotnet --version` |
 | PHP-verzió | A `https://<appname>.scm.azurewebsites.net/DebugConsole` alkalmazásban futtassa a következő parancsot a parancssorban: <br> `php --version` |
 | Alapértelmezett Node.js verziója | A [Cloud Shell](../cloud-shell/overview.md)futtassa a következő parancsot: <br> `az webapp config appsettings list --resource-group <groupname> --name <appname> --query "[?name=='WEBSITE_NODE_DEFAULT_VERSION']"` |

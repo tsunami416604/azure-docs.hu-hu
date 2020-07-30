@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f6b04a59da78abc81f7749300dfe34ca176c75c4
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 5d3082e3dc45102bc8700c7d1285ef832d09712a
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371175"
+ms.locfileid: "87419818"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>A helyi Rendszergazdák csoport kezelése az Azure AD-hez csatlakoztatott eszközökön
 
@@ -72,9 +72,9 @@ Az eszközök rendszergazdái az összes Azure AD-hez csatlakoztatott eszközhö
 >[!NOTE]
 > Ez a szolgáltatás jelenleg előzetes kiadásban elérhető.
 
-A Windows 10 2004 Update-től kezdődően az Azure AD-csoportokkal rendszergazdai jogosultságokat kezelhet az Azure AD-hez csatlakoztatott eszközökön a [korlátozott csoportok] (Windows/ügyfél-felügyeleti/Mdm/Policy-CSP-restrictedgroups) MDM-házirenddel. Ez a szabályzat lehetővé teszi, hogy egyéni felhasználókat vagy Azure AD-csoportokat rendeljen hozzá a helyi rendszergazdák csoportjához egy Azure AD-hez csatlakoztatott eszközön, és így részletességgel konfigurálja a különböző rendszergazdákat az eszközök különböző csoportjaihoz. 
+A Windows 10 2004 Update-től kezdődően az Azure AD-csoportok használatával felügyelheti az Azure AD-hez csatlakoztatott eszközök rendszergazdai jogosultságait a [korlátozott csoportok](/windows/client-management/mdm/policy-csp-restrictedgroups) Mdm házirenddel. Ez a szabályzat lehetővé teszi, hogy egyéni felhasználókat vagy Azure AD-csoportokat rendeljen hozzá a helyi rendszergazdák csoportjához egy Azure AD-hez csatlakoztatott eszközön, és így részletességgel konfigurálja a különböző rendszergazdákat az eszközök különböző csoportjaihoz. 
 
-Jelenleg nincs felhasználói felület az Intune-ban a szabályzat kezeléséhez, és az [egyéni OMA-URI beállítások] (mem/Intune/Configuration/Custom-Settings-Windows-10) használatával kell konfigurálni. Ehhez a Szabályzathoz a következő szempontokat kell figyelembe vennie: 
+Jelenleg nincs felhasználói felület az Intune-ban a szabályzat kezeléséhez, és [Egyéni OMA-URI beállításokkal](/mem/intune/configuration/custom-settings-windows-10)kell konfigurálni. Ehhez a Szabályzathoz a következő szempontokat kell figyelembe vennie: 
 
 - Az Azure AD-csoportok szabályzaton keresztüli hozzáadásához a csoport biztonsági azonosítóját a csoportok API végrehajtásával lehet megszerezni. A SID-t a groups API tulajdonsága határozza meg `securityIdentifier` .
 - A korlátozott csoportok házirendjének betartatásakor a rendszer a tagok listáján nem szereplő összes aktuális tagot eltávolítja. Ennek a szabályzatnak az új tagokkal vagy csoportokkal való érvényesítése eltávolítja a meglévő rendszergazdákat, azaz az eszközhöz csatlakozó felhasználót, az eszköz rendszergazdai szerepkörét és a globális rendszergazdai szerepkört az eszközről. A meglévő tagok eltávolításának elkerüléséhez konfigurálnia kell őket a korlátozott csoportok házirendjének tagok listájának részeként. 
@@ -108,7 +108,7 @@ Az eszközök rendszergazdái az összes Azure AD-hez csatlakoztatott eszközhö
 
 Ha eltávolítja a felhasználókat az eszköz rendszergazdai szerepkörből, akkor továbbra is a helyi rendszergazdai jogosultsággal rendelkezik az eszközön, amíg be van jelentkezve. A rendszer visszavonja a jogosultságot a következő bejelentkezéskor, amikor új elsődleges frissítési jogkivonatot állít ki. Ez a visszavonás a jogosultság megemeléséhez hasonlóan akár 4 órát is igénybe vehet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információk az eszközök Azure Portalon végzett felügyeletéről: [Eszközfelügyelet az Azure Portalon](device-management-azure-portal.md).
 - Ha többet szeretne megtudni az eszközökön alapuló feltételes hozzáférésről, tekintse meg [Azure Active Directory eszközön alapuló feltételes hozzáférési szabályzatok konfigurálása](../conditional-access/require-managed-devices.md)című témakört.

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 02/26/2020
 ms.author: martinco
-ms.openlocfilehash: 5075ae57df6a7306f0c860690931c846e52c2a89
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 31fde1b80a1646a92688a0fcc1fa221cf01ba0a9
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78926902"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87418865"
 ---
 # <a name="compare-active-directory-to-azure-active-directory"></a>Active Directory összehasonlítása Azure Active Directory
 
@@ -42,11 +42,11 @@ A legtöbb rendszergazda ismeri a Active Directory tartományi szolgáltatások 
 | Mid-szintű/Daemon-szolgáltatások|A helyszíni környezetekben futó szolgáltatások általában az AD-szolgáltatásfiókok vagy a csoportosan felügyelt szolgáltatásfiókok (gMSA) használatával futnak. Ezek az alkalmazások ezután öröklik a szolgáltatásfiók engedélyeit.| Az Azure AD [felügyelt identitásokat](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/index) biztosít más számítási feladatok futtatásához a felhőben. Ezen identitások életciklusát az Azure AD kezeli, és az erőforrás-szolgáltatóhoz van kötve, nem használható más célra a Backdoor-hozzáférés eléréséhez.|
 | **Eszközök**|||
 | Mobil|A Active Directory nem támogatja natív módon a mobileszközök külső megoldások nélküli használatát.| A Microsoft mobileszköz-kezelési megoldása (Microsoft Intune) integrálva van az Azure AD-vel. A Microsoft Intune eszköz állapotadatokat biztosít az identitásrendszer számára a hitelesítés során kiértékeléshez. |
-| Windows rendszerű asztali számítógépek|Active Directory lehetővé teszi a Windows-eszközök tartományhoz való csatlakoztatását Csoportházirend, System Center Configuration Manager vagy más, harmadik féltől származó megoldások használatával.|A Windows-eszközök csatlakoztathatók [Az Azure ad-hez](https://docs.microsoft.com/azure/active-directory/devices/). A feltételes hozzáférés segítségével ellenőrizhető, hogy egy eszköz csatlakozik-e az Azure AD-hez a hitelesítési folyamat részeként. A Windows-eszközök a [Microsoft Intune](https://docs.microsoft.com/intune/what-is-intune)használatával is kezelhetők. Ebben az esetben a feltételes hozzáférés azt mérlegeli, hogy az eszköznek van-e panasza (például naprakész biztonsági javítások és vírus-aláírások), mielőtt engedélyezi a hozzáférést az alkalmazásokhoz.|
+| Windows rendszerű asztali számítógépek|Active Directory lehetővé teszi a Windows-eszközök tartományhoz való csatlakoztatását Csoportházirend, System Center Configuration Manager vagy más, harmadik féltől származó megoldások használatával.|A Windows-eszközök csatlakoztathatók [Az Azure ad-hez](https://docs.microsoft.com/azure/active-directory/devices/). A feltételes hozzáférés segítségével ellenőrizhető, hogy egy eszköz csatlakozik-e az Azure AD-hez a hitelesítési folyamat részeként. A Windows-eszközök a [Microsoft Intune](https://docs.microsoft.com/intune/what-is-intune)használatával is kezelhetők. Ebben az esetben a feltételes hozzáférés azt mérlegeli, hogy az eszköz megfelelő-e (például naprakész biztonsági javítások és vírus-aláírások), mielőtt engedélyezi a hozzáférést az alkalmazásokhoz.|
 | Windows-kiszolgálók| A Active Directory Csoportházirend vagy más felügyeleti megoldásokkal erős felügyeleti képességeket biztosít a helyszíni Windows-kiszolgálók számára.| A Windows Server rendszerű virtuális gépek az Azure-ban kezelhetők [Azure ad Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/)használatával. A [felügyelt identitások](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/index) akkor használhatók, ha a virtuális gépeknek hozzáférésre van szükségük az Identity System könyvtárához vagy erőforrásaihoz.|
 | Linux/UNIX rendszerű számítási feladatok|A Active Directory nem támogatja natív módon a nem Windows rendszerek használatát külső megoldások nélkül, bár a Linux rendszerű gépek úgy konfigurálhatók, hogy Kerberos-tartományként hitelesítsék magukat a Active Directory használatával.|A Linux/UNIX rendszerű virtuális gépek [felügyelt identitásokat](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/index) használhatnak az identitásrendszer vagy erőforrások eléréséhez. Néhány szervezet áttelepíti ezeket a számítási feladatokat a Felhőbeli tároló technológiákba, amelyek felügyelt identitásokat is használhatnak.|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Mi az az Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis)
 - [Az önállóan felügyelt Active Directory tartományi szolgáltatások, Azure Active Directory és felügyelt Azure Active Directory Domain Services összehasonlítása](https://docs.microsoft.com/azure/active-directory-domain-services/compare-identity-solutions)

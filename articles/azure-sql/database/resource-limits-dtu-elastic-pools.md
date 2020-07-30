@@ -4,19 +4,19 @@ description: Ez az oldal néhány gyakori DTU-erőforrás-korlátot ismertet a r
 services: sql-database
 ms.service: sql-database
 ms.subservice: elastic-pools
-ms.custom: references_regions
+ms.custom: seo-lt-2019 sqldbrb=1 references_regions
 ms.devlang: ''
 ms.topic: conceptual
 author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: carlrab
-ms.date: 04/17/2020
-ms.openlocfilehash: 4377be82dfdb66ab7186d4472c8b1f5453b47809
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 07/28/2020
+ms.openlocfilehash: 0fd875b2c02f5d61663339ac523fd6733732ad01
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325117"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420991"
 ---
 # <a name="resources-limits-for-elastic-pools-using-the-dtu-purchasing-model"></a>A rugalmas készletek DTU beszerzési modell használatával történő korlátozása
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -38,9 +38,11 @@ Azure SQL Database rugalmas készletek esetében az alábbi táblázatok az egye
 > [!IMPORTANT]
 > A méretezéssel kapcsolatos útmutatást és szempontokat lásd: [rugalmas készlet](elastic-pool-scale.md) skálázása
 
+A rugalmas készletekben található különálló adatbázisok erőforrás-korlátai általában ugyanazok, mint a készleteken kívüli önálló adatbázisok esetében a DTU és a szolgáltatási réteg alapján. Például az S2-adatbázisok maximális egyidejű feldolgozói 120 feldolgozók. Így a standard szintű készletben lévő adatbázisok maximálisan egyidejű feldolgozói is 120 feldolgozók, ha a készletben lévő adatbázis Max DTU 50 DTU (amely az S2-vel egyenértékű).
+ 
+A rugalmas készlethez megadott erőforrások meghaladják a rugalmas készleten kívüli, azonos számú DTU rendelkező önálló adatbázisok számára biztosított erőforrásokat. Ez azt jelenti, hogy egy rugalmas készlet eDTU-kihasználtsága kevesebb, mint a készletben lévő adatbázisok DTU-kihasználtságának összesítése, a számítási feladatok mintája alapján. Például egy olyan szélsőséges esetben, ha egy rugalmas készletben csak egy adatbázis van, ahol az adatbázis DTU kihasználtsága 100%, a készlet eDTU kihasználtsága bizonyos számítási feladatok esetében 50% lehet. Ez akkor is előfordulhat, ha az adatbázishoz nincs beállítva explicit maximális DTU. Ebben az esetben a készletezett adatbázis DTU-fogyasztása ugyanúgy van korlátozva, mint egy önálló adatbázis DTU való felhasználása.
+
 > [!NOTE]
-> A rugalmas készletekben található különálló adatbázisok erőforrás-korlátai általában ugyanazok, mint a készleteken kívüli önálló adatbázisok esetében a DTU és a szolgáltatási réteg alapján. Például az S2-adatbázisok maximális egyidejű feldolgozói 120 feldolgozók. Így a standard szintű készletben lévő adatbázisok maximálisan egyidejű feldolgozói is 120 feldolgozók, ha a készletben lévő adatbázis Max DTU 50 DTU (amely az S2-vel egyenértékű).
->
 > A tárolási erőforrások maximális száma az alábbi táblázatokban nem tartalmazza a tempdb és a log Storage-t.
 
 ### <a name="basic-elastic-pool-limits"></a>Alapszintű rugalmas készletek korlátai
@@ -49,7 +51,7 @@ Azure SQL Database rugalmas készletek esetében az alábbi táblázatok az egye
 |:---|---:|---:|---:| ---: | ---: | ---: | ---: | ---: |
 | Foglalt tárterület/készlet (GB) | 5 | 10 | 20 | 29 | 39 | 78 | 117 | 156 |
 | Maximális tárterület készletenként (GB) | 5 | 10 | 20 | 29 | 39 | 78 | 117 | 156 |
-| Memóriában tárolt OLTP-tárolók maximális száma (GB) | n.a. | n.a. | n.a. | n.a. | n.a. | n.a. | n.a. | n.a. |
+| Memóriában tárolt OLTP-tárolók maximális száma (GB) | N.A. | N.A. | N.A. | N.A. | N.A. | N.A. | N.A. | N.A. |
 | Adatbázisok maximális száma <sup>1</sup> . készletben | 100 | 200 | 500 | 500 | 500 | 500 | 500 | 500 |
 | Egyidejű feldolgozók (kérelmek) maximális száma a <sup>2</sup> . készletben | 100 | 200 | 400 | 600 | 800 | 1600 | 2400 | 3200 |
 | Egyidejű munkamenetek maximális száma/készlet <sup>2</sup> | 30000 | 30000 | 30000 | 30000 |30000 | 30000 | 30000 | 30000 |
@@ -68,7 +70,7 @@ Azure SQL Database rugalmas készletek esetében az alábbi táblázatok az egye
 |:---|---:|---:|---:| ---: | ---: | ---: |
 | Készletbe foglalt tárterület (GB) <sup>1</sup> | 50 | 100 | 200 | 300 | 400 | 800 |
 | Maximális tárterület készletenként (GB) | 500 | 750 | 1024 | 1280 | 1536 | 2048 |
-| Memóriában tárolt OLTP-tárolók maximális száma (GB) | n.a. | n.a. | n.a. | n.a. | n.a. | n.a. |
+| Memóriában tárolt OLTP-tárolók maximális száma (GB) | N.A. | N.A. | N.A. | N.A. | N.A. | N.A. |
 | Adatbázisok maximális száma ( <sup>2</sup> . készlet) | 100 | 200 | 500 | 500 | 500 | 500 |
 | Egyidejű feldolgozók (kérelmek) maximális száma a <sup>3</sup> . készletben | 100 | 200 | 400 | 600 | 800 | 1600 |
 | Egyidejű munkamenetek maximális száma ( <sup>3</sup> ) | 30000 | 30000 | 30000 | 30000 | 30000 | 30000 |
@@ -89,7 +91,7 @@ Azure SQL Database rugalmas készletek esetében az alábbi táblázatok az egye
 |:---|---:|---:|---:| ---: | ---: |
 | Készletbe foglalt tárterület (GB) <sup>1</sup> | 1200 | 1600 | 2000 | 2500 | 3000 |
 | Maximális tárterület készletenként (GB) | 2560 | 3072 | 3584 | 4096 | 4096 |
-| Memóriában tárolt OLTP-tárolók maximális száma (GB) | n.a. | n.a. | n.a. | n.a. | n.a. |
+| Memóriában tárolt OLTP-tárolók maximális száma (GB) | N.A. | N.A. | N.A. | N.A. | N.A. |
 | Adatbázisok maximális száma ( <sup>2</sup> . készlet) | 500 | 500 | 500 | 500 | 500 |
 | Egyidejű feldolgozók (kérelmek) maximális száma a <sup>3</sup> . készletben | 2400 | 3200 | 4000 | 5000 | 6000 |
 | Egyidejű munkamenetek maximális száma ( <sup>3</sup> ) | 30000 | 30000 | 30000 | 30000 | 30000 |
@@ -165,7 +167,7 @@ A következő táblázat a készletezett adatbázisok tulajdonságait ismerteti.
 | Tárterület maximális száma adatbázison |A felhasználó által a készletben lévő adatbázis számára beállított maximális adatbázis-méret. A készletezett adatbázisok azonban megosztják a lefoglalt készlet tárterületét. Még akkor is, ha az *adatbázis* teljes tárterülete úgy van beállítva, hogy nagyobb legyen, mint a *készlet*teljes rendelkezésre álló tárolóhelye, az összes adatbázis által ténylegesen felhasznált terület teljes mérete nem haladhatja meg a rendelkezésre álló készlet korlátját. Az adatbázisok maximális mérete az adatfájlok maximális méretére vonatkozik, de nem tartalmazza a naplófájlok által használt területet. |
 |||
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Egyetlen adatbázis virtuális mag erőforrás-korlátaival kapcsolatban lásd: [önálló adatbázisok erőforrás-korlátai a virtuális mag beszerzési modell használatával](resource-limits-vcore-single-databases.md)
 * Egyetlen adatbázis DTU erőforrás-korlátaival kapcsolatban lásd: [önálló adatbázisok erőforrás-korlátai a DTU beszerzési modell használatával](resource-limits-dtu-single-databases.md)

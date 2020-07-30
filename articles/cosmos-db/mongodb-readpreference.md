@@ -8,19 +8,20 @@ ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: how-to
 ms.date: 02/26/2019
-ms.openlocfilehash: afdbd1c44170344be6edee8b8b2ee38c9853f81c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 22530e79a2bcf34a88ea857bda56b6f424894461
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85263075"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421994"
 ---
 # <a name="how-to-globally-distribute-reads-using-azure-cosmos-dbs-api-for-mongodb"></a>Olvasási műveletek globális elosztása a Azure Cosmos DB API-MongoDB
 
 Ez a cikk bemutatja, hogyan terjeszthetők globálisan az olvasási műveletek a [MongoDB olvasási](https://docs.mongodb.com/manual/core/read-preference/) beállításokkal a Azure Cosmos db API-MongoDB használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt. 
 [!INCLUDE [cosmos-db-emulator-mongodb](../../includes/cosmos-db-emulator-mongodb.md)]
 
 [Ebben a](tutorial-global-distribution-mongodb.md) rövid útmutatóban megtudhatja, hogyan állíthatja be a Azure Portal egy globális eloszlású Cosmos-fiók beállításához, majd hogyan csatlakozhat hozzá.
@@ -42,7 +43,7 @@ Az alábbi parancsok futtatásával klónozza a mintatárházat. A saját platfo
 git clone <sample repo url>
 ```
 
-## <a name="run-the-application"></a>Alkalmazás futtatása
+## <a name="run-the-application"></a>Az alkalmazás futtatása
 
 A használt platformtól függően telepítse a szükséges csomagokat, és indítsa el az alkalmazást. A függőségek telepítéséhez kövesse a minta alkalmazás-tárházban található README fájlt. A NodeJS minta alkalmazásban például a következő parancsokkal telepítheti a szükséges csomagokat, és elindíthatja az alkalmazást.
 
@@ -161,14 +162,14 @@ Tekintse át a megfelelő példákat a más platformokra, például a [.net](htt
 
 Ebből a cikkből megtudhatta, hogyan oszthat meg globálisan olvasási műveleteket az olvasási beállításokkal az Azure Cosmos DB API-MongoDB való használatával.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha nem folytatja az alkalmazás használatát, törölje a jelen cikk által létrehozott összes erőforrást a Azure Portal a következő lépésekkel:
 
 1. Az Azure Portal bal oldali menüjében kattintson az **Erőforráscsoportok** lehetőségre, majd kattintson a létrehozott erőforrás nevére. 
 2. Az erőforráscsoport oldalán kattintson a **Törlés** elemre, írja be a törölni kívánt erőforrás nevét a szövegmezőbe, majd kattintson a **Törlés** gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [MongoDB adatok importálása az Azure Cosmos DB-be](mongodb-migrate.md)
 * [Globálisan elosztott adatbázis beállítása Azure Cosmos DB API-MongoDB](tutorial-global-distribution-mongodb.md)

@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: keresési lekérdezések javaslata a Bing Autosuggest REST API és Node. js-sel'
+title: 'Gyors útmutató: a Bing Autosuggest REST API és Node.js keresési lekérdezéseket javasol'
 titleSuffix: Azure Cognitive Services
 description: Megtudhatja, hogyan kezdheti el gyorsan a keresési kifejezések javaslatait valós időben a Bing Autosuggest API.
 services: cognitive-services
@@ -10,16 +10,17 @@ ms.subservice: bing-autosuggest
 ms.topic: quickstart
 ms.date: 05/06/2020
 ms.author: aahi
-ms.openlocfilehash: 0d63bd0fc745a3305b9d2f8906a09626668d091b
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 6a78c2ae4145a65739d5db56a70dca498d7d6a82
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82930267"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406486"
 ---
-# <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-nodejs"></a>Gyors útmutató: keresési lekérdezések javaslata a Bing Autosuggest REST API és Node. js-sel
+# <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-nodejs"></a>Gyors útmutató: a Bing Autosuggest REST API és Node.js keresési lekérdezéseket javasol
 
-Ebből a rövid útmutatóból megtudhatja, hogyan indíthat hívásokat a Bing Autosuggest API, és hogyan olvashatja el a JSON-választ. Ez az egyszerű Node. js-alkalmazás részleges keresési lekérdezést küld az API-nak, és a keresésekre vonatkozó javaslatokat ad vissza. Az alkalmazás JavaScriptben való megírásakor az API egy REST-alapú webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel. A minta forráskódja elérhető a [githubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingAutosuggestv7.js)
+Ebből a rövid útmutatóból megtudhatja, hogyan indíthat hívásokat a Bing Autosuggest API, és hogyan olvashatja el a JSON-választ. Ez az egyszerű Node.js alkalmazás részleges keresési lekérdezést küld az API-nak, és a keresésekre vonatkozó javaslatokat ad vissza. Az alkalmazás JavaScriptben való megírásakor az API egy REST-alapú webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel. A minta forráskódja elérhető a [githubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingAutosuggestv7.js)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -186,7 +187,7 @@ A successful response is returned in JSON, as shown in the following example:
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Egyoldalas webalkalmazás létrehozása](../tutorials/autosuggest.md)

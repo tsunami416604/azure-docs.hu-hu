@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 03/25/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 40a907cdeb4934b4518fb6b1923d69a004f14d8d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 1d0aebffa5f3d27a77928c2a1c7461384bf99ce8
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291478"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387880"
 ---
 # <a name="connect-to-windows-virtual-desktop-with-the-android-client"></a>Kapcsolódás a Windows rendszerű virtuális asztalhoz az Android-ügyféllel
 
@@ -21,9 +21,6 @@ ms.locfileid: "87291478"
 
 >[!IMPORTANT]
 >Ez a tartalom a Windows rendszerű virtuális asztali Azure Resource Manager Windows virtuális asztali objektumokkal vonatkozik. Ha a Windowsos virtuális asztalt (klasszikus) Azure Resource Manager objektumok nélkül használja, tekintse meg [ezt a cikket](./virtual-desktop-fall-2019/connect-android-2019.md).
-
->[!NOTE]
-> A Windows rendszerű virtuális asztali erőforrások az Android-ügyfélről való elérésének lehetősége jelenleg előzetes verzióban érhető el.
 
 A Windows rendszerű virtuális asztali erőforrásokat elérhetővé teheti az Android-eszközről a letölthető ügyféllel. Az Android-ügyfelet a Google Play Áruház támogató Chromebook-eszközökön is használhatja. Ebből az útmutatóból megtudhatja, hogyan állíthatja be az Android-ügyfelet.
 
@@ -51,6 +48,6 @@ A feliratkozást követően a kapcsolatok középpontjában meg kell jelennie a 
 
 Miután előfizetett egy hírcsatornára, a hírcsatorna tartalma automatikusan frissülni fog. A rendszergazda által végrehajtott módosítások alapján hozzáadhatók, módosíthatók vagy eltávolíthatók az erőforrások.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni az Android-ügyfél használatáról, tekintse meg [az Android-ügyfél használatának első lépéseit](/windows-server/remote/remote-desktop-services/clients/remote-desktop-android/)ismertető témakört.

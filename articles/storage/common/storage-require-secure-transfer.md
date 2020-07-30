@@ -10,12 +10,12 @@ ms.date: 04/21/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 125f4188ed3f12f366c619af9efe3aa203987c19
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 668b8d714c4d6c146d9b279d9e6a49599c04775c
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81870517"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423507"
 ---
 # <a name="require-secure-transfer-to-ensure-secure-connections"></a>Biztonságos átvitel szükséges a biztonságos kapcsolatok biztosításához
 
@@ -51,7 +51,7 @@ A **biztonságos átvitel szükséges** tulajdonság bekapcsolható, amikor lét
 
 ## <a name="require-secure-transfer-from-code"></a>Biztonságos átvitel megkövetelése a kódból
 
-Ha programozottan szeretné megkövetelni a biztonságos átvitelt, állítsa be a _supportsHttpsTrafficOnly_ tulajdonságot a Storage-fiókra. Ezt a tulajdonságot a Storage erőforrás-szolgáltató REST API, az ügyféloldali kódtárak vagy az eszközök használatával állíthatja be:
+Ha programozottan szeretné megkövetelni a biztonságos átvitelt, állítsa a _enableHttpsTrafficOnly_ tulajdonságot _true_ értékre a Storage-fiókon. Ezt a tulajdonságot a Storage erőforrás-szolgáltató REST API, az ügyféloldali kódtárak vagy az eszközök használatával állíthatja be:
 
 * [REST API](/rest/api/storagerp/storageaccounts)
 * [PowerShell](/powershell/module/az.storage/set-azstorageaccount)
@@ -123,6 +123,6 @@ az storage account update -g {ResourceGroupName} -n {StorageAccountName} --https
 
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Biztonsági javaslatok a blob Storage-hoz](../blobs/security-recommendations.md)

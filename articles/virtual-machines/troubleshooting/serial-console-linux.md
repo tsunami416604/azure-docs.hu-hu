@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: a9c2cee1478bc64c63b0d7ad09eec386b59678ae
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: cacb517c783416994fa95bd0f6a6d15a95a52ab4
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86509018"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423456"
 ---
 # <a name="azure-serial-console-for-linux"></a>Azure soros konzol Linuxhoz
 
@@ -26,11 +26,12 @@ A Azure Portal soros konzolja hozzáférést biztosít a linuxos virtuális gép
 
 A soros konzol a virtuális gépek és a virtuálisgép-méretezési csoport példányai esetében is ugyanúgy működik. Ebben a doc-ban a virtuális gépekre vonatkozó összes említés implicit módon tartalmazza a virtuálisgép-méretezési csoport példányait, hacsak másként nincs megadva.
 
+A soros konzol általánosan elérhető a globális Azure-régiókban és a nyilvános előzetes verzióban Azure Government. Az Azure China Cloud-ban még nem érhető el.
+
 A Windows soros konzoljának dokumentációját lásd: [a Windows soros konzolja](./serial-console-windows.md).
 
 > [!NOTE]
-> A soros konzol általánosan elérhető a globális Azure-régiókban és a nyilvános előzetes verzióban Azure Government. Az Azure China Cloud-ban még nem érhető el.
-
+> A soros konzol jelenleg nem kompatibilis egy felügyelt rendszerindítási diagnosztikai Storage-fiókkal. A soros konzol használatához győződjön meg arról, hogy egyéni Storage-fiókot használ.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -98,7 +99,7 @@ A soros konzolhoz való hozzáférés csak azokra a felhasználókra korlátozó
 ### <a name="channel-security"></a>Csatorna biztonsága
 A visszaadott és oda továbbított összes adatforgalom titkosítva van a huzalon.
 
-### <a name="audit-logs"></a>Auditnaplók
+### <a name="audit-logs"></a>Naplók
 A soros konzolhoz való összes hozzáférés jelenleg a virtuális gép [rendszerindítási diagnosztikai](./boot-diagnostics.md) naplóiban van naplózva. A naplókhoz való hozzáférést az Azure-beli virtuális gép rendszergazdája birtokolja és felügyeli.
 
 > [!CAUTION]
@@ -113,7 +114,7 @@ Ha egy felhasználó csatlakozik a soros konzolhoz, és egy másik felhasználó
 ## <a name="accessibility"></a>Akadálymentesség
 A kisegítő lehetőségek az Azure soros konzol egyik fő témája. Ennek érdekében biztosítjuk, hogy a soros konzol teljes mértékben elérhető legyen.
 
-### <a name="keyboard-navigation"></a>Navigáció a billentyűzeten
+### <a name="keyboard-navigation"></a>Navigálás billentyűzettel
 A billentyűzet **Tab** billentyűjét használva navigáljon a soros konzol felületén a Azure Portal. A hely ki lesz emelve a képernyőn. A soros konzol ablakának fókuszának elhagyásához nyomja le a **CTRL F6 billentyűt**a + **F6** billentyűzeten.
 
 ### <a name="use-serial-console-with-a-screen-reader"></a>Soros konzol használata képernyőolvasóval

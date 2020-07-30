@@ -4,14 +4,14 @@ description: Ez a cikk azt ismerteti, hogyan adhat hozzá Microsoft. ServiceBus 
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 48d7f1783f197804e12a8c2d20a0c46b6efd2160
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4518f7faedb44631c76c6d8b42ff9cca0dc3e08c
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87071332"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422946"
 ---
-# <a name="configure-virtual-network-service-endpoints-for-azure-service-bus"></a>Virtuális hálózati szolgáltatási végpontok konfigurálása Azure Service Bushoz
+# <a name="allow-access-to-azure-service-bus-namespace-from-specific-virtual-networks"></a>Azure Service Bus névtér elérésének engedélyezése adott virtuális hálózatokból
 
 Service Bus és [Virtual Network (VNet) szolgáltatás-végpontok][vnet-sep] integrációja lehetővé teszi az üzenetkezelési funkciók biztonságos elérését olyan munkaterhelések esetén, mint a virtuális hálózatokhoz kötött virtuális gépek, és a hálózati forgalom elérési útja mindkét végén védett.
 
@@ -58,11 +58,20 @@ A virtuális hálózati szabály a Service Bus névtér egy virtuális hálózat
 Ez a szakasz bemutatja, hogyan használható a Azure Portal virtuális hálózati szolgáltatásbeli végpont hozzáadására. A hozzáférés korlátozásához integrálnia kell a virtuális hálózati szolgáltatás végpontját ehhez a Event Hubs névtérhez.
 
 1. Navigáljon a **Service Bus névtérhez** a [Azure Portal](https://portal.azure.com).
-2. A bal oldali menüben válassza a **hálózatkezelés** lehetőséget. Alapértelmezés szerint a **minden hálózat** beállítás van kiválasztva. A névtér bármely IP-címről fogad kapcsolatokat. Ez az alapértelmezett beállítás egyenértékű egy olyan szabállyal, amely elfogadja a 0.0.0.0/0 IP-címtartományt. 
+2. A bal oldali menüben válassza a **hálózatkezelés** lehetőséget a **Beállítások**területen.  
 
-    ![Tűzfal – az összes hálózat lehetőség ki van választva](./media/service-endpoints/firewall-all-networks-selected.png)
-1. Válassza ki a **kijelölt hálózatok** lehetőséget az oldal tetején.
-2. A lap **Virtual Network** szakaszában válassza a **+ meglévő virtuális hálózat hozzáadása**elemet. 
+    > [!NOTE]
+    > A **hálózatkezelés** lap csak a **prémium** szintű névterek esetében jelenik meg.  
+    
+    Alapértelmezés szerint a **kiválasztott hálózatok** lehetőség van kiválasztva. Ha nem ad hozzá legalább egy IP-tűzfalszabály vagy virtuális hálózat ezen a lapon, a névtér a nyilvános interneten keresztül érhető el (a hozzáférési kulcs használatával).
+
+    :::image type="content" source="./media/service-bus-ip-filtering/default-networking-page.png" alt-text="Hálózatkezelés lap – alapértelmezett" lightbox="./media/service-bus-ip-filtering/default-networking-page.png":::
+    
+    Ha a **minden hálózat** lehetőséget választja, akkor a Service Bus névtér bármely IP-címről fogad kapcsolatokat. Ez az alapértelmezett beállítás egyenértékű egy olyan szabállyal, amely elfogadja a 0.0.0.0/0 IP-címtartományt. 
+
+    ![Tűzfal – az összes hálózat lehetőség ki van választva](./media/service-bus-ip-filtering/firewall-all-networks-selected.png)
+2. Ha az adott virtuális hálózatokhoz való hozzáférést szeretné korlátozni, válassza a **kiválasztott hálózatok** lehetőséget, ha még nincs kiválasztva.
+1. A lap **Virtual Network** szakaszában válassza a **+ meglévő virtuális hálózat hozzáadása**elemet. 
 
     ![meglévő virtuális hálózat hozzáadása](./media/service-endpoints/add-vnet-menu.png)
 3. Jelölje ki a virtuális hálózatot a virtuális hálózatok listájából, majd válassza ki az **alhálózatot**. Engedélyeznie kell a szolgáltatás végpontját, mielőtt hozzáadja a virtuális hálózatot a listához. Ha a szolgáltatási végpont nincs engedélyezve, akkor a portál felszólítja, hogy engedélyezze.
@@ -78,6 +87,9 @@ Ez a szakasz bemutatja, hogyan használható a Azure Portal virtuális hálózat
 6. A beállítások mentéséhez kattintson a **Save (Mentés** ) gombra az eszköztáron. Várjon néhány percet, amíg a megerősítés megjelenik a portál értesítéseiben. A **Save (Mentés** ) gombot le kell tiltani. 
 
     ![Hálózat mentése](./media/service-endpoints/save-vnet.png)
+
+    > [!NOTE]
+    > A megadott IP-címekről vagy tartományokról való hozzáférés engedélyezésével kapcsolatos utasításokért lásd: [hozzáférés engedélyezése adott IP-címekről vagy tartományokból](service-bus-ip-filtering.md).
 
 ## <a name="use-resource-manager-template"></a>Resource Manager-sablon használata
 A következő Resource Manager-sablon lehetővé teszi egy virtuális hálózati szabály hozzáadását egy meglévő Service Bus névtérhez.
@@ -204,7 +216,7 @@ Sablon:
 
 A sablon üzembe helyezéséhez kövesse az [Azure Resource Manager][lnk-deploy]utasításait.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A virtuális hálózatokkal kapcsolatos további információkért tekintse meg az alábbi hivatkozásokat:
 

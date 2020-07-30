@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 41329f2f5500db35ee76c9880bdbef984413004b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6f603623e2b47a8ac1a8530880e10c919f63b66c
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87057890"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423609"
 ---
 # <a name="bulk-create-users-in-azure-active-directory"></a>Felhasználók tömeges létrehozása Azure Active Directory
 
@@ -60,7 +60,7 @@ A letöltött CSV-sablon sorai a következők:
 
 1. Nyissa meg a CSV-fájlt, és adjon hozzá egy sort minden létrehozni kívánt felhasználóhoz. Az egyetlen szükséges érték a **név**, a **egyszerű felhasználónév**, a **kezdeti jelszó** és a **blokkolási bejelentkezés (igen/nem)**. Ezután mentse a fájlt.
 
-   [![](media/users-bulk-add/add-csv-file.png "The CSV file contains names and IDs of the users to create")](media/users-bulk-add/add-csv-file.png#lightbox)
+   [![A CSV-fájl a létrehozandó felhasználók nevét és azonosítóit tartalmazza](media/users-bulk-add/add-csv-file.png)](media/users-bulk-add/add-csv-file.png#lightbox)
 
 1. A **felhasználó tömeges létrehozása** lapon a CSV-fájl feltöltése területen keresse meg a fájlt. Ha kijelöli a fájlt, majd a **Küldés**gombra kattint, a CSV-fájl érvényesítése elindul.
 1. A fájl tartalmának ellenőrzése után a **fájl feltöltése sikeresen**megtörténik. Ha hibák léptek fel, ezeket a feladatok elküldése előtt ki kell javítania.
@@ -73,7 +73,7 @@ Ha hibák léptek fel, letöltheti és megtekintheti az eredményeket tartalmaz�
 
 Az összes függőben lévő tömeges kérelem állapotát a **tömeges művelet eredményei** lapon tekintheti meg.
 
-   [![](media/users-bulk-add/bulk-center.png "Check create status in the Bulk Operations Results page")](media/users-bulk-add/bulk-center.png#lightbox)
+   [![A tömeges műveletek eredményei lapon lévő létrehozási állapot megtekintése](media/users-bulk-add/bulk-center.png)](media/users-bulk-add/bulk-center.png#lightbox)
 
 Ezután ellenőrizze, hogy a létrehozott felhasználók szerepelnek-e az Azure AD-szervezetben vagy a Azure Portal vagy a PowerShell használatával.
 
@@ -98,7 +98,7 @@ Látnia kell, hogy a létrehozott felhasználók szerepelnek a listáján.
 
 A felhasználók létrehozásához minden tömeges tevékenység akár egy óráig is futhat. Ez legalább 50 000 felhasználó tömeges létrehozását teszi lehetővé.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Felhasználók tömeges törlése](users-bulk-delete.md)
 - [Felhasználók listájának letöltése](users-bulk-download.md)

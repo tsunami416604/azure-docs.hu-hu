@@ -7,12 +7,12 @@ ms.date: 05/27/2020
 ms.author: mahender
 ms.reviewer: yevbronsh
 ms.custom: tracking-python
-ms.openlocfilehash: e6965cef0257ee472c08b19e3a9b1c2ec2860128
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: e97671e9722051674e3760f11e784ab3291283c7
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87116907"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87415040"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Felügyelt identitások használata App Service és Azure Functions
 
@@ -176,6 +176,15 @@ A hely létrehozásakor a következő tulajdonságokkal rendelkezik:
 ```
 
 A tenantId tulajdonság azt határozza meg, hogy az identitás melyik Azure AD-bérlőhöz tartozik. A principalId az alkalmazás új identitásának egyedi azonosítója. Az Azure AD-n belül az egyszerű szolgáltatásnév neve megegyezik a App Service vagy Azure Functions példányával.
+
+Ha ezeket a tulajdonságokat a sablon egy későbbi szakaszában kell megadnia, ezt megteheti a [ `reference()` sablon függvény](../azure-resource-manager/templates/template-functions-resource.md#reference) használatával a `'Full'` jelölővel, ahogy az alábbi példában látható:
+
+```json
+{
+    "tenantId": "[reference(resourceId('Microsoft.Web/sites', variables('appName')), '2018-02-01', 'Full').identity.tenantId]",
+    "objectId": "[reference(resourceId('Microsoft.Web/sites', variables('appName')), '2018-02-01', 'Full').identity.principalId]",
+}
+```
 
 ## <a name="add-a-user-assigned-identity"></a>Felhasználó által hozzárendelt identitás hozzáadása
 
@@ -511,7 +520,7 @@ Update-AzFunctionApp -Name $functionAppName -ResourceGroupName $resourceGroupNam
 > [!NOTE]
 > Van olyan Alkalmazásbeállítás is, amely beállítható, WEBSITE_DISABLE_MSI, amely egyszerűen letiltja a helyi jogkivonat-szolgáltatást. Azonban elhagyja az identitást, és az eszközök továbbra is a felügyelt identitást "be" vagy "engedélyezve" állapotba helyezik. Ennek eredményeképpen a beállítás használata nem ajánlott.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Biztonságos hozzáférés SQL Database felügyelt identitás használatával](app-service-web-tutorial-connect-msi.md)

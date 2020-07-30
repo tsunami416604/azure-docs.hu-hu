@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: képelemzések beolvasása a REST API és a Node. js használatával – Bing Visual Search'
+title: 'Gyors útmutató: a REST API és a Node.js segítségével bemutatjuk a képelemzéseket Bing Visual Search'
 titleSuffix: Azure Cognitive Services
 description: Megtudhatja, hogyan tölthet fel képet a Bing Visual Search API, és hogyan szerezhet be információkat.
 services: cognitive-services
@@ -10,14 +10,15 @@ ms.subservice: bing-visual-search
 ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: scottwhi
-ms.openlocfilehash: 7dfb3adb5d7bf5b005beb7e7b75fb339d456cd15
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 1e5594fab6e4b1758e8e3cd722c053b9d3d301ce
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83872613"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87404012"
 ---
-# <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-nodejs"></a>Gyors útmutató: képelemzések beolvasása a Bing Visual Search REST API és Node. js használatával
+# <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-nodejs"></a>Gyors útmutató: a Bing Visual Search REST API és a Node.js
 
 Ezzel a rövid útmutatóval megteheti az első hívást a Bing Visual Search API. Ez az egyszerű JavaScript-alkalmazás feltölt egy rendszerképet az API-ba, és megjeleníti a róluk visszaadott adatokat. Bár ez az alkalmazás JavaScript nyelven íródott, az API egy REST-alapú webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel.
 
@@ -88,7 +89,7 @@ Ezzel a rövid útmutatóval megteheti az első hívást a Bing Visual Search AP
     });
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Visual Search egyoldalas Webalkalmazás létrehozása](../tutorial-bing-visual-search-single-page-app.md)

@@ -10,14 +10,14 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 07/27/2020
 ms.author: aahi
-ms.custom: tracking-python
+ms.custom: tracking-python, devx-track-javascript
 zone_pivot_groups: programming-languages-text-analytics
-ms.openlocfilehash: f31ac8b36134548c3a7ecc4b0bf37d28a8ab7e4b
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 4aba103bcb3593d9baef256ce04a9ab6754ed900
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291685"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407667"
 ---
 # <a name="quickstart-use-the-text-analytics-client-library"></a>Gyors útmutató: az Text Analytics ügyféloldali kódtár használata
 
@@ -83,7 +83,7 @@ Ha erre a lapra kattintott, valószínűleg nem jelenik meg egy rövid útmutat�
 | Nyelv | Elérhető verzió | 
 |----------|------------------------|
 | Ruby     | [2,1-es verzió](ruby-sdk.md) | 
-| Indítás       | [2,1-es verzió](go-sdk.md) | 
+| Go       | [2,1-es verzió](go-sdk.md) | 
 
 ::: zone-end
 
@@ -94,7 +94,7 @@ Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforr�
 * [Portál](../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Megoldás megismerése](../text-analytics-user-scenarios.md#analyze-recorded-inbound-customer-calls)

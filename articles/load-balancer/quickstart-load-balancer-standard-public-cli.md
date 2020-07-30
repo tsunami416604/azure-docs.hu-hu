@@ -15,13 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/20/2020
 ms.author: allensu
-ms.custom: mvc
-ms.openlocfilehash: aa0d29c5c2a4cf8eebbf530b42a25d8924e031bc
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.custom: mvc, devx-track-javascript
+ms.openlocfilehash: f3dd4280ddea076b5e9febbc36dd323c0705ef0e
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290274"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423371"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-azure-cli"></a>Rövid útmutató: Nyilvános Load Balancer létrehozása a virtuális gépek terhelésének elosztásához az Azure CLI használatával
 
@@ -988,7 +988,7 @@ Ha már nincs rá szükség, az az [Group delete](https://docs.microsoft.com/cli
     --name myResourceGroupLB
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben a rövid útmutatóban
 
 * Létrehozta a standard vagy a nyilvános terheléselosztó

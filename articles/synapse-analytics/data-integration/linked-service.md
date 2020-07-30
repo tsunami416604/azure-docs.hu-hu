@@ -1,6 +1,6 @@
 ---
 title: Társított szolgáltatás biztonságossá tétele
-description: Ismerje meg, hogyan hozhat létre és biztosíthat biztonságossá egy társított szolgáltatást a felügyelt vnet
+description: Ismerje meg, hogyan hozhat létre és biztosíthat biztonságossá egy társított szolgáltatást a felügyelt VNet
 services: synapse-analytics
 author: acomet
 ms.service: synapse-analytics
@@ -9,14 +9,14 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7c7cf8ec7297b3c0ef855936becc3c06a5120a38
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 1ce127dbfd9984b3fb18e518701cbbd3a87f5988
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496077"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387241"
 ---
-# <a name="securing-a-linked-service-with-private-links"></a>Társított szolgáltatás biztonságossá tétele privát hivatkozásokkal 
+# <a name="secure-a-linked-service-with-private-links"></a>Társított szolgáltatás biztonságossá tétele privát hivatkozásokkal 
 
 Ebből a cikkből megtudhatja, hogyan védheti egy társított szolgáltatást a Szinapszisban egy privát végponttal.
 
@@ -52,7 +52,7 @@ Abban az esetben, ha a fenti kapcsolat tesztelésekor nem kattintott a hiperhiva
 1. Kattintson a **Létrehozás** elemre.
 1. Néhány másodperc várakozás után kell megjelennie, hogy a privát kapcsolat létrehozása jóváhagyást igényel.
 
-## <a name="approval-of-a-private-link"></a>Privát hivatkozás jóváhagyása
+## <a name="private-link-approval"></a>Privát hivatkozás jóváhagyása
 1. Válassza ki a fent létrehozott privát végpontot. Megtekintheti azt a hiperhivatkozást, amely lehetővé teszi a magánhálózati végpont jóváhagyását a Storage-fiók szintjén. *Egy másik lehetőség, hogy közvetlenül a Azure Portal Storage-fiókba lép, és bemegy a **privát Endpoint Connections** panelre.*
 1. Jelölje be a stúdióban létrehozott privát végpontot, és válassza a **jóváhagyás**lehetőséget.
 1. Adja meg a leírást, és kattintson az **Igen** gombra.

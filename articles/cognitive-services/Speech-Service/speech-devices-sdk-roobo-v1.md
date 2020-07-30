@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 9add5b063b67ddcc4cd5bf93e7f5b570b004e5ca
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1a32e485dfc9cd465f6dd6d50abdb166737dc3aa
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74815587"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387982"
 ---
 # <a name="device-roobo-smart-audio-dev-kit"></a>Eszköz: Roobo Smart audio dev Kit
 
@@ -52,9 +52,9 @@ Ez a cikk a Roobo Smart audio dev Kit eszközre vonatkozó információkat tarta
    ```
 
     > [!NOTE]
-    > Ezek a parancsok az androidos hibakeresési `adb.exe`hidat használják, amely a Android Studio telepítésének részét képezi. Ez az eszköz a C:\Users\[Felhasználónév] \AppData\Local\Android\Sdk\platform-Tools. található. Ezt a könyvtárat hozzáadhatja az elérési úthoz, hogy kényelmesebb legyen a meghívása `adb`. Ellenkező esetben meg kell adnia az ADB. exe telepítésének teljes elérési útját minden meghívott parancsban `adb`.
+    > Ezek a parancsok az androidos hibakeresési hidat használják, `adb.exe` amely a Android Studio telepítésének részét képezi. Ez az eszköz a C:\Users \[ Felhasználónév] \AppData\Local\Android\Sdk\platform-Tools. található. Ezt a könyvtárat hozzáadhatja az elérési úthoz, hogy kényelmesebb legyen a meghívása `adb` . Ellenkező esetben meg kell adnia a adb.exe telepítésének teljes elérési útját minden meghívott parancsban `adb` .
     >
-    > Ha hibaüzenet `no devices/emulators found` jelenik meg, ellenőrizze, hogy az USB-kábel csatlakoztatva van-e, és kiváló minőségű kábel-e. A használatával `adb devices` ellenőrizhető, hogy a számítógép tud-e kommunikálni a fejlesztői csomaggal, mert az eszközök listáját fogja visszaadni.
+    > Ha hibaüzenet jelenik meg, `no devices/emulators found` ellenőrizze, hogy az USB-kábel csatlakoztatva van-e, és kiváló minőségű kábel-e. A használatával `adb devices` ellenőrizhető, hogy a számítógép tud-e kommunikálni a fejlesztői csomaggal, mert az eszközök listáját fogja visszaadni.
     >
     > [!TIP]
     > A számítógép mikrofonjának és hangszórójának elnémításával győződjön meg arról, hogy dolgozik a fejlesztői csomag mikrofonjában. Így nem fogja véletlenül elindítani az eszközt a számítógép hangján.
@@ -69,8 +69,8 @@ További fejlesztési információk: [Roobo fejlesztői útmutató](http://dwn.r
 
 ## <a name="audio"></a>Hang
 
-A Roobo olyan eszközt biztosít, amely rögzíti az összes hang-és flash-memóriát. Hasznos lehet a hangproblémák elhárításában. Az eszköz egy verzióját az egyes fejlesztői csomagokhoz tartozó konfigurációkhoz biztosítjuk. A [Roobo oldalon](https://ddk.roobo.com/)válassza ki az eszközt, majd kattintson a lap alján található **Roobo-eszközök** hivatkozásra.
+A Roobo olyan eszközt biztosít, amely rögzíti az összes hang-és flash-memóriát. Hasznos lehet a hangproblémák elhárításában. Az eszköz egy verzióját az egyes fejlesztői csomagokhoz tartozó konfigurációkhoz biztosítjuk. A [Roobo oldalon](http://ddk.roobo.com/)válassza ki az eszközt, majd kattintson a lap alján található **Roobo-eszközök** hivatkozásra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az Android-minta alkalmazás futtatása](speech-devices-sdk-android-quickstart.md)

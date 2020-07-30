@@ -73,6 +73,6 @@ Ha egy meglévő virtuális hálózatot központi virtuális hálózatra alakít
 - Ha a virtuális hálózat meglévő Azure Firewall rendelkezik, válasszon ki egy, a meglévő tűzfallal társítandó tűzfal-házirendet. A tűzfal-kiépítési állapot frissülni fog, miközben a tűzfal házirendje lecseréli a tűzfalszabályok szabályait. A kiépítési állapot során a tűzfal folytatja a forgalom feldolgozását, és nincs leállás. A meglévő szabályokat a Firewall Manager vagy a Azure PowerShell használatával importálhatja a tűzfal házirendjébe.
 - Ha a virtuális hálózat nem rendelkezik társított Azure Firewallval, a rendszer tűzfalat helyez üzembe, és a tűzfal-házirend társítva van az új tűzfallal.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Oktatóanyag: a felhőalapú hálózat védelme a Azure Firewall Managerrel a Azure Portal használatával](secure-cloud-network.md)

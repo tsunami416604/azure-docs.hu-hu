@@ -222,7 +222,7 @@ if ( file.deleteIfExists() ) {
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha többet szeretne megtudni az Azure Storage API-król, kövesse az alábbi hivatkozásokat.
 
 * [Azure Java-fejlesztőknek](/java/azure)/)

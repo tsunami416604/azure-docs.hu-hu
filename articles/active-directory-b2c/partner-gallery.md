@@ -38,7 +38,7 @@ Az ISV-partneri hálózat kibővíti a megoldási képességeiket a zökkenőmen
 | ![embléma](./media/partner-gallery/twilio-logo.png) | A [Twilio ellenőrzi](./partner-twilio.md) , hogy az alkalmazás több megoldást biztosít a többtényezős hitelesítés (MFA) SMS egyszeri jelszó (OTP), az időalapú egyszeri jelszó (TOTP) és a leküldéses értesítések, valamint a Payment Services-irányelv 2 (PSD2) direktíva követelményeinek teljesítéséhez.|
 | ![embléma](./media/partner-gallery/typingdna-logo.png) | A [TypingDNA](./partner-typingdna.md) egy, a felhasználó gépelési mintáján alapuló személyazonosság-ellenőrzési megoldás, amely a többtényezős hitelesítést kényszeríti, és segít megfelelni a 2. szintű Payment Services-irányelv (PSD2) SCA-követelményeinek. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Válasszon egy partnert a fenti táblázatban, hogy megtudja, hogyan integrálhatja megoldásait a Azure AD B2Cával.
 

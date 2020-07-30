@@ -205,7 +205,7 @@ Az MPN-azonosító nem lett megadva a kérelem törzsében, vagy a kérelem tart
 
 Ez a funkció Microsoft fogyasztói fiókok esetén nem támogatott. Csak az Azure AD-beli Azure AD-felhasználó által regisztrált alkalmazások támogatottak. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha áttekintette az összes korábbi információt, és továbbra is a Microsoft Graph hibaüzenetet kap, gyűjtsön annyit az alábbi információk közül, amennyire csak lehetséges, és [forduljon a Microsoft ügyfélszolgálatához](developer-support-help-options.md#open-a-support-request).
 

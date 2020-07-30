@@ -3,12 +3,12 @@ title: Azure Active Directoryval való hozzáférés engedélyezése
 description: Ez a cikk a Azure Active Directory használatával történő Event Hubs erőforrásokhoz való hozzáférés engedélyezésére vonatkozó információkat tartalmaz.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: cb55a716498bc50dff72c0d98943de407a367d4a
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: c6d1be2825ea716c72d70cd38babbb2d95083198
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371498"
+ms.locfileid: "87413391"
 ---
 # <a name="authorize-access-to-event-hubs-resources-using-azure-active-directory"></a>Hozzáférés engedélyezése Event Hubs erőforrásokhoz a Azure Active Directory használatával
 Az Azure Event Hubs támogatja a Azure Active Directory (Azure AD) használatát, hogy engedélyezze a kérelmeket Event Hubs erőforrásoknak. Az Azure AD-vel szerepköralapú hozzáférés-vezérlés (RBAC) használatával adhat meg engedélyeket egy rendszerbiztonsági tag számára, amely lehet egy felhasználó vagy egy egyszerű alkalmazás. További információ a szerepkörökről és a szerepkör-hozzárendelésekről: [a különböző szerepkörök megismerése](../role-based-access-control/overview.md).
@@ -49,7 +49,7 @@ Az alábbi lista azokat a szinteket ismerteti, amelyekkel a Event Hubs erőforr�
 - **Előfizetés**: a szerepkör-hozzárendelés az előfizetés összes erőforrás-csoportjának összes Event Hubs erőforrására vonatkozik.
 
 > [!NOTE]
-> - Ne feledje, hogy a RBAC szerepkör-hozzárendelések akár öt percet is igénybe vehetnek. 
+> - Ne feledje, hogy az Azure-szerepkör-hozzárendelések akár öt percet is igénybe vehetnek. 
 > - Ez a tartalom a Apache Kafka Event Hubs és Event Hubs is vonatkozik. A Kafka-támogatás Event Hubsáról további információt a [Event Hubs a Kafka-biztonság és hitelesítés](event-hubs-for-kafka-ecosystem-overview.md#security-and-authentication)című témakörben talál.
 
 
@@ -67,7 +67,7 @@ További információ a beépített szerepkörök meghatározásáról: a [szere
 - [Event Hubs a Kafka-OAuth mintákhoz](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth). 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - Ismerje meg, hogyan rendeljen hozzá egy beépített RBAC szerepkört egy rendszerbiztonsági tag számára, lásd: [hozzáférés hitelesítése Event Hubs erőforrásokhoz Azure Active Directory használatával](authenticate-application.md).
 - Ismerje meg, [hogyan hozhat létre egyéni szerepköröket a RBAC használatával](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac/CustomRole).
 - Ismerje meg [, hogyan használhatja a Azure Active Directoryt az Eh használatával](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac/AzureEventHubsSDK)

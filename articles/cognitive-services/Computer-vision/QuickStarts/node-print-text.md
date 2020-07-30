@@ -10,13 +10,13 @@ ms.subservice: computer-vision
 ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.custom: seodec18
-ms.openlocfilehash: 9c245ed91d710ae4bb77e45d8b9c3cceaedc252a
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.custom: seodec18, devx-track-javascript
+ms.openlocfilehash: 1e90e2bfa91a4c72ca2e2e7ae366ca1ea42020fe
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84986740"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87405891"
 ---
 # <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-nodejs"></a>Gyors útmutató: nyomtatott szöveg (OCR) kinyerése a Computer Vision REST API és Node.js használatával
 
@@ -29,7 +29,7 @@ Ebben a rövid útmutatóban az optikai karakterfelismerés (OCR) segítségéve
 
 * Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services/)
 * [Node.js](https://nodejs.org) 4. x vagy újabb 
-* [NPM](https://www.npmjs.com/) 
+* [npm](https://www.npmjs.com/) 
 * Ha már rendelkezik Azure-előfizetéssel, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" hozzon létre egy Computer Vision erőforrást, "  target="_blank"> és hozzon létre egy Computer Vision-erőforrást <span class="docon docon-navigate-external x-hidden-focus"></span> </a> a Azure Portal a kulcs és a végpont beszerzéséhez. Az üzembe helyezést követően kattintson **az erőforrás keresése**elemre.
     * Szüksége lesz a létrehozott erőforrás kulcsára és végpontra az alkalmazás Computer Vision szolgáltatáshoz való összekapcsolásához. A kulcsot és a végpontot a rövid útmutató későbbi részében található kódra másolja.
     * Az ingyenes díjszabási csomag () segítségével `F0` kipróbálhatja a szolgáltatást, és később is frissítheti az éles környezetben futó fizetős szintre.
@@ -41,7 +41,7 @@ A minta létrehozásához és futtatásához az alábbi lépéseket kell végreh
 
 1. Telepítse a NPM [`request`](https://www.npmjs.com/package/request) csomagot.
    1. Nyissa meg a parancssori ablakot rendszergazdaként.
-   1. Futtassa az alábbi parancsot:
+   1. Futtassa a következő parancsot:
 
       ```console
       npm install request
@@ -199,12 +199,12 @@ A rendszer JSON formátumban adja vissza a sikeres választ. A minta elemzi és 
 }
 ```
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs rá szükség, törölje a fájlt, majd távolítsa el az npm `request` csomagot. A csomag eltávolításához hajtsa végre a következő lépéseket:
 
 1. Nyissa meg a parancssori ablakot rendszergazdaként.
-2. Futtassa az alábbi parancsot:
+2. Futtassa a következő parancsot:
 
    ```console
    npm uninstall request
@@ -212,7 +212,7 @@ Ha már nincs rá szükség, törölje a fájlt, majd távolítsa el az npm `req
 
 3. A csomag sikeres eltávolítása után zárja be a parancssori ablakot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ezután Ismerkedjen meg a rendszerképek elemzéséhez használt Computer Vision API-kkal, a hírességek és tereptárgyak észlelésével, a miniatűr létrehozásával, valamint a nyomtatott és a kézírásos szöveg kinyerésével.
 

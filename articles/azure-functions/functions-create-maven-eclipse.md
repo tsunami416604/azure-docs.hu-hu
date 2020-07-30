@@ -86,7 +86,7 @@ Az üzembe helyezés végén megjelenik az URL-cím, amellyel bejelentkezhet az 
 [INFO] ------------------------------------------------------------------------
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha további információra van szüksége a Java-függvények létrehozásával kapcsolatban, tekintse át a [Java-függvények fejlesztői útmutatóját](functions-reference-java.md).
 - Adjon hozzá különböző triggereket használó további funkciókat a projekthez az `azure-functions:add` Maven-cél használatával.

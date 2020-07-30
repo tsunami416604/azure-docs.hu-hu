@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/14/2020
-ms.openlocfilehash: 80ad9475eb9b3724e09fb450787adfa079896bed
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 40f688d6acd1714999210e67567d25faa14c5d6e
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075324"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87384854"
 ---
 # <a name="send-log-data-to-azure-monitor-with-the-http-data-collector-api-public-preview"></a>Naplóbejegyzések küldése a Azure Monitornak a HTTP-adatgyűjtő API-val (nyilvános előzetes verzió)
 Ez a cikk azt mutatja be, hogyan lehet a HTTP-adatgyűjtő API használatával elküldeni a naplófájlokat a Azure Monitor REST API-ügyfélről.  Ismerteti, hogyan lehet a parancsfájl vagy alkalmazás által gyűjtött adatokat formázni, belefoglalni egy kérelembe, és hogy az Azure Monitor által jóváhagyott kérést.  Ilyenek például a PowerShell, a C# és a Python.
@@ -21,7 +21,7 @@ Ez a cikk azt mutatja be, hogyan lehet a HTTP-adatgyűjtő API használatával e
 > [!NOTE]
 > A Azure Monitor HTTP-adatgyűjtő API nyilvános előzetes verzióban érhető el.
 
-## <a name="concepts"></a>Fogalmak
+## <a name="concepts"></a>Alapelvek
 A HTTP-adatgyűjtő API-val elküldheti a naplózási adatait egy Log Analytics munkaterületre Azure Monitor bármely olyan ügyféltől, amely képes REST API meghívására.  Ez lehet egy olyan runbook, amely Azure Automation az Azure-ból vagy egy másik felhőből származó felügyeleti adatokat gyűjt, vagy olyan alternatív felügyeleti rendszer, amely Azure Monitor használ a naplózási adatok összesítésére és elemzésére.
 
 A Log Analytics munkaterületen lévő összes adat egy adott bejegyzéstípusú rekordként van tárolva.  Az adatokat úgy formázhatja, hogy a HTTP-adatgyűjtő API-nak több, a JSON-beli rekordként küldje el.  Az adatok elküldésekor a rendszer egy egyedi rekordot hoz létre a tárházban a kérelem hasznos adataiban található minden egyes rekordhoz.
@@ -135,7 +135,7 @@ A tulajdonság adattípusának azonosításához Azure Monitor hozzáadja az ut�
 | Tulajdonság adattípusa | Utótag |
 |:--- |:--- |
 | Sztring |_s |
-| Logikai érték |_b |
+| Logikai |_b |
 | Dupla |_d |
 | Dátum/idő |_t |
 | GUID (karakterláncként tárolva) |_g |
@@ -210,7 +210,7 @@ A következő részekben példákat talál arra, hogyan küldhet adatokat a Azur
 Az egyes mintákhoz az alábbi lépéseket követve állíthatja be az engedélyezési fejléc változóit:
 
 1. A Azure Portal keresse meg Log Analytics munkaterületét.
-2. Válassza a **Speciális beállítások** , majd a **csatlakoztatott források**elemet.
+2. Válassza az **ügynökök kezelése**lehetőséget.
 2. A **munkaterület-azonosító**jobb oldalán válassza a másolás ikont, majd illessze be az azonosítót az **ügyfél-azonosító** változó értékeként.
 3. Az **elsődleges kulcs**jobb oldalán válassza a másolás ikont, majd illessze be az azonosítót a **Shared Key** változó értékeként.
 
@@ -562,7 +562,7 @@ Habár az adatgyűjtő API-nak le kell fednie a legtöbb szükséges adatot a sz
 | [Azure Data Explorer](/azure/data-explorer/ingest-data-overview) | Az Azure Adatkezelő (ADX) az adatplatform, amely Application Insights elemzési és Azure Monitor naplókra épül. A már általánosan elérhető ("GA") az adatplatform nyers formájában való használata biztosítja a teljes rugalmasságot (de a felügyelet terhelését igényli) a fürtön (RBAC, megőrzési arány, séma stb.). A ADX számos betöltési [lehetőséget](/azure/data-explorer/ingest-data-overview#ingestion-methods) biztosít, többek között a [CSV-, a TSV-és a JSON](/azure/kusto/management/mappings?branch=master) -fájlokat. | <ul><li> Olyan adat, amely nem felel meg a Application Insights vagy a naplók alatt lévő többi adatnak. </li><li> Olyan speciális betöltési vagy feldolgozási képességeket igénylő adatfeldolgozási funkciók, amelyek jelenleg nem érhetők el Azure Monitor naplókban. </li></ul> |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - Az Log Analytics munkaterületről származó adatok lekérdezéséhez használja a [log Search API](../log-query/log-query-overview.md) -t.
 
 - További információ arról, hogyan [hozhat létre adatfolyamatot az adatgyűjtő API-val az](create-pipeline-datacollector-api.md) Logic apps munkafolyamattal Azure monitor.

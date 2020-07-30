@@ -8,12 +8,13 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 05/11/2020
 ms.author: anfeldma
-ms.openlocfilehash: e40dc59cf1e8fe3302c59f1067c285bc37141465
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 8ec5562af254aa1bcdb030057f61db496a17826b
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85115208"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423388"
 ---
 # <a name="quickstart-use-nodejs-to-connect-and-query-data-from-azure-cosmos-db-sql-api-account"></a>Rövid útmutató: a Node.js használata az adatok Azure Cosmos DB SQL API-fiókból való összekapcsolásához és lekérdezéséhez
 
@@ -66,13 +67,13 @@ Most már használhatja a Azure Portal Adatkezelő eszközét egy adatbázis és
    | Beállítás           | Ajánlott érték | Leírás                                                                                                                                                                                                                                                                                                                                                                           |
    | ----------------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
    | **Adatbázis-azonosító**   | Feladatok           | Az új adatbázisnak adja a _Feladatok_ nevet. Az adatbázis nevének 1 és 255 karakter közöttinek kell lennie, és nem tartalmazhat `/, \\, #, ?` szóközt. Tekintse meg az **adatbázis átviteli sebességének** kiosztása lehetőséget, amellyel megoszthatja az adatbázison belül kiosztott átviteli sebességet az adatbázis összes tárolóján. Ez a lehetőség a költségmegtakarítást is segíti. |
-   | **Teljesítmény**    | 400             | Az átviteli sebesség 400 adategység/másodperc (RU/s) esetén. Később lehetősége lesz növelni az átviteli sebességet a késés csökkentése érdekében.                                                                                                                                                                                                                                                    |
+   | **Átviteli sebesség**    | 400             | Az átviteli sebesség 400 adategység/másodperc (RU/s) esetén. Később lehetősége lesz növelni az átviteli sebességet a késés csökkentése érdekében.                                                                                                                                                                                                                                                    |
    | **Tároló azonosítója**  | Elemek           | Adja meg az _elemeket_ az új tároló neveként. A tárolóazonosítók nevére ugyanazok a karakterkorlátozások vonatkoznak, mint az adatbázisnevekre.                                                                                                                                                                                                                                                               |
    | **Partíciókulcs** | /kategória       | A cikkben ismertetett minta a _/category_ használja a partíciós kulcsként.                                                                                                                                                                                                                                                                                                           |
 
    Az előző beállításokon kívül opcionálisan hozzáadhat **egyedi kulcsokat** a tárolóhoz. Ebben a példában az erre szolgáló mezőt hagyja üresen. Az egyedi kulcsok lehetőséget nyújtanak a fejlesztők számára, hogy adatintegritási réteget adjanak az adatbázishoz. A tárolók létrehozásakor egyedi kulcsokra vonatkozó szabályzat létrehozásával biztosíthatja, hogy a partíciós kulcs egy vagy több értéke egyedi legyen. További információt az [Azure Cosmos DB-ben egyedi kulcsaival](unique-keys.md) kapcsolatos cikkben talál.
 
-   Válassza az **OK** lehetőséget. Az Adatkezelő megjeleníti az új adatbázist és tárolót.
+   Kattintson az **OK** gombra. Az Adatkezelő megjeleníti az új adatbázist és tárolót.
 
 ## <a name="add-sample-data"></a>Mintaadatok hozzáadása
 
@@ -149,7 +150,7 @@ Az alábbi kódrészletek mind a _app.js_ fájlból származnak.
   const { resource: createdItem } = await container.items.create(newItem);
   ```
 
-- Egy tétel frissítése
+- Elem módosítása
 
   ```javascript
   const { id, category } = createdItem;
@@ -201,7 +202,7 @@ Ezzel a minta-alkalmazással folytathatja a kísérletet, vagy visszatérhet az 
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre egy Azure Cosmos DB fiókot, hogyan hozhat létre egy tárolót a Adatkezelő használatával, és hogyan futtathat Node.js alkalmazást. Így már további adatokat importálhat az Azure Cosmos DB-fiókba.
 

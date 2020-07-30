@@ -6,13 +6,13 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
-ms.date: 05/06/2019
-ms.openlocfilehash: 04ebb4298f8a5398b0aa9921d740e3eaacfd8e11
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/28/2020
+ms.openlocfilehash: af743ca56572f507091db01f11d3283294a9e3d5
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74974002"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87382797"
 ---
 # <a name="nodes-in-azure-database-for-postgresql--hyperscale-citus"></a>Csomópontok Azure Database for PostgreSQL – nagy kapacitású (Citus)
 
@@ -22,7 +22,9 @@ A nagy kapacitású (Citus) üzemeltetési típusa lehetővé teszi, hogy Azure 
 
 Minden kiszolgálócsoport rendelkezik egy koordinátori csomóponttal és több feldolgozóval. Az alkalmazások a koordinátori csomópontba küldik a lekérdezéseket, amelyek továbbítják az érintett munkavállalóknak, és felhalmozzák eredményeiket. Az alkalmazások nem tudnak közvetlenül csatlakozni a feldolgozókhoz.
 
-Az egyes lekérdezésekhez a koordinátor vagy egyetlen munkavégző csomópontra irányítja, vagy parallelizes azt attól függően, hogy a szükséges adat egyetlen vagy több csomóponton van-e. A koordinátor eldönti, hogy mi a teendő a metaadatokkal folytatott konzultációk során. Ezek a táblák nyomon követik a munkavégző csomópontok DNS-neveit és állapotát, valamint az adateloszlást a csomópontok között.
+A nagy kapacitású (Citus) lehetővé teszi, hogy az adatbázis rendszergazdája a különböző munkavégző csomópontokon lévő különböző sorok tárolására szolgáló táblákat *terjesszen* . Az elosztott táblák a teljesítmény nagy kapacitású kulcsa. A táblázatok nem terjeszthetők ki teljes mértékben a koordinátor csomóponton, és nem tudják kihasználni a több gépen történő párhuzamosságot.
 
-## <a name="next-steps"></a>További lépések
-- Ismerje meg, hogyan tárolják a csomópontok [az elosztott információkat](concepts-hyperscale-distributed-data.md)
+Az elosztott táblákon lévő összes lekérdezés esetében a koordinátor vagy egyetlen munkavégző csomópontra irányítja, vagy parallelizes azt attól függően, hogy a szükséges adat egyetlen vagy több csomóponton van-e. A koordinátor eldönti, hogy mi a teendő a metaadatokkal folytatott konzultációk során. Ezek a táblák nyomon követik a munkavégző csomópontok DNS-neveit és állapotát, valamint az adateloszlást a csomópontok között.
+
+## <a name="next-steps"></a>Következő lépések
+- További információ az [elosztott táblákról](concepts-hyperscale-distributed-data.md)

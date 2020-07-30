@@ -9,12 +9,12 @@ ms.subservice: metadata
 ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
-ms.openlocfilehash: 42c6ad7f77d1b42c02f57f161874eadb75387dc2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 196577741ae1560232f8ae193aacd51a446431c8
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496009"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87385534"
 ---
 # <a name="azure-synapse-analytics-shared-database"></a>Az Azure szinapszis Analytics megosztott adatbázisa
 
@@ -34,7 +34,7 @@ A Spark segítségével kezelheti a Spark által létrehozott adatbázisokat. P�
 
 Ha az SQL on-demand használatával hoz létre objektumokat egy Spark által létrehozott adatbázisban, vagy megpróbálja eldobni az adatbázist, a művelet sikeres lesz. Az eredeti Spark-adatbázis azonban nem módosul.
 
-## <a name="handling-of-name-conflicts"></a>A nevek ütközésének feldolgozása
+## <a name="how-name-conflicts-are-handled"></a>A névütközés kezelésének módja
 
 Ha egy Spark-adatbázis neve ütközik egy meglévő SQL on-demand adatbázis nevével, a rendszer az SQL igény szerinti utótagot adja hozzá a Spark-adatbázishoz. Az SQL igény szerinti utótagja a következő: `_<workspace name>-ondemand-DefaultSparkConnector` .
 
@@ -57,7 +57,7 @@ Ha egy rendszerbiztonsági tag lehetővé teszi objektumok létrehozását vagy 
 
 ## <a name="examples"></a>Példák
 
-### <a name="create--connect-to-spark-database---sql-on-demand"></a>Hozzon létre & csatlakozni a Spark-adatbázishoz – SQL igény szerint
+### <a name="create-and-connect-to-spark-database-with-sql-on-demand"></a>A Spark-adatbázis létrehozása és kapcsolódás az SQL on-demand használatával
 
 Először hozzon létre egy nevű új Spark `mytestdb` -adatbázist egy olyan Spark-fürt használatával, amelyet már létrehozott a munkaterületen. Ezt például a Spark C# jegyzetfüzet és a következő .NET for Spark-utasítás használatával érheti el:
 

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9861e8e8be39781ad1b256b9939df3ab03e74be6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 49c389170e9d586a2001009226c6542d4d152f7f
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87027529"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87418219"
 ---
 # <a name="manage-user-settings-for-azure-multi-factor-authentication"></a>Az Azure Multi-Factor Authentication felhasználói beállításainak kezelése
 
@@ -47,12 +47,12 @@ A felhasználók alkalmazási jelszavának törléséhez hajtsa végre a követk
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. A bal oldali oldalon válassza **Azure Active Directory**  >  **felhasználók**  >  **minden felhasználó**lehetőséget.
-1. Válassza a **Multi-Factor Authentication** lehetőséget. Előfordulhat, hogy a menüpontra kell görgetni a jobb oldalon. Válassza az alábbi képernyőképet a teljes Azure Portal ablak és menü helyének megtekintéséhez:[![](media/howto-mfa-userstates/selectmfa-cropped.png "Multi-Factor Authentication kiválasztása az Azure AD felhasználók ablakában")](media/howto-mfa-userstates/selectmfa.png#lightbox)
+1. Válassza a **Multi-Factor Authentication** lehetőséget. Előfordulhat, hogy a menüpontra kell görgetni a jobb oldalon. Válassza az alábbi képernyőképet a teljes Azure Portal ablak és a menü helyének megtekintéséhez: [ ![ válassza a multi-Factor Authentication lehetőséget az Azure ad felhasználók ablakában.](media/howto-mfa-userstates/selectmfa-cropped.png)](media/howto-mfa-userstates/selectmfa.png#lightbox)
 1. Jelölje be a felügyelni kívánt felhasználó vagy felhasználók melletti jelölőnégyzetet. A jobb oldalon megjelenik a gyors lépésre vonatkozó beállítások listája.
 1. Válassza a **felhasználói beállítások kezelése**lehetőséget, majd jelölje be a **kijelölt felhasználók által létrehozott összes meglévő alkalmazás jelszavának törlése**jelölőnégyzetet az alábbi példában látható módon: az ![ összes meglévő alkalmazás jelszavának törlése](./media/howto-mfa-userdevicesettings/deleteapppasswords.png)
 1. Válassza a **Mentés**, majd a **Bezárás**lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a cikk az egyéni felhasználói beállítások konfigurálását mutatja be. Az Azure Multi-Factor Authentication szolgáltatás általános beállításainak konfigurálásával kapcsolatban lásd: az [azure multi-Factor Authentication beállításainak konfigurálása](howto-mfa-mfasettings.md).
 

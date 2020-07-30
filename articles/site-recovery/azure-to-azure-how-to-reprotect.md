@@ -2,18 +2,18 @@
 title: Az Azure-beli virtuális gépek ismételt védetté Azure Site Recoveryával az elsődleges régióban | Microsoft Docs
 description: Ismerteti, hogyan lehet az Azure-beli virtuális gépeket a feladatátvétel után, a másodlagosról az elsődleges régióba Azure Site Recovery használatával újra védelemmel ellátni.
 services: site-recovery
-author: rajani-janaki-ram
-manager: gauravd
+author: Rajeswari-Mamilla
+manager: gaggupta
 ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
-ms.author: rajanaki
-ms.openlocfilehash: 9883065993f35054338079c8b9647a8420574414
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: ramamill
+ms.openlocfilehash: da740909cedb8e2bb78f5f70e062481395a5c181
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82738065"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422079"
 ---
 # <a name="reprotect-failed-over-azure-vms-to-the-primary-region"></a>Az Azure-beli virtuális gépek ismételt védetté váltása az elsődleges régióba
 
@@ -33,7 +33,7 @@ Ha az Azure-beli virtuális gépeket az egyik régióból a másikba [Azure site
 
    ![Ismételt védelme](./media/site-recovery-how-to-reprotect-azure-to-azure/reprotect.png)
 
-1. Tekintse át az erőforráscsoportot, a hálózatot, a tárterületet és a rendelkezésre állási készleteket. Ezt követően kattintson az **OK** gombra. Ha van olyan erőforrás, amely újként van megjelölve, akkor az ismételt védelmi folyamat részeként jön létre.
+1. Tekintse át az erőforráscsoportot, a hálózatot, a tárterületet és a rendelkezésre állási készleteket. Ezután kattintson az **OK** gombra. Ha van olyan erőforrás, amely újként van megjelölve, akkor az ismételt védelmi folyamat részeként jön létre.
 1. A védelmi feladatsor a legfrissebb adatokkal magot a célhelyre. A feladatok befejeződése után a különbözeti replikáció zajlik. Ezután visszatérhet az elsődleges helyre. Kiválaszthatja a Storage-fiókot vagy azt a hálózatot, amelyet az ismételt védelem során használni szeretne, a Testreszabás lehetőség használatával.
 
    ![Testreszabási lehetőség](./media/site-recovery-how-to-reprotect-azure-to-azure/customize.png)
@@ -44,7 +44,7 @@ Az ismételt védelem során a cél virtuális gép alábbi tulajdonságait szab
 
 ![Testreszabás](./media/site-recovery-how-to-reprotect-azure-to-azure/customizeblade.png)
 
-|Tulajdonság |Megjegyzések  |
+|Tulajdonság |Jegyzetek  |
 |---------|---------|
 |Cél erőforráscsoport | Módosítsa a célként megadott erőforráscsoportot, amelyben a virtuális gép létrejött. Az ismételt védelem részeként a cél virtuális gép törlődik. Kiválaszthat egy új erőforráscsoportot, amely alatt a virtuális gépet a feladatátvételt követően hozza létre. |
 |Célként megadott virtuális hálózat | A célként megadott hálózat nem módosítható az újravédelemi feladatokban. A hálózat módosításához ismételje meg a hálózati leképezést. |
@@ -98,10 +98,6 @@ Ha a virtuális gépet az elsődleges régióba való visszalépést követően 
 
 Ha a virtuális gépet a DR régióból az elsődleges régióba újra védik, a régi elsődleges virtuális gépet és a hozzá tartozó NIC-t nem törli.
 
-Ha a virtuális gépet az elsődleges régióba való visszalépést követően újra védeni kell (azaz ha a virtuális gépet az elsődleges régióból a DR régióba kívánja védeni), a rendszer törli a célként megadott virtuális gépet és a hozzá tartozó hálózati adaptereket (ka) t. 
-
-Ha a virtuális gépet a DR régióból az elsődleges régióba újra védik, a régi elsődleges virtuális gépet és a hozzá tartozó NIC-t nem törli.
-
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A virtuális gép védelme után kezdeményezheti a feladatátvételt. A feladatátvétel leállítja a virtuális gépet a másodlagos régióban, és létrehozza és elindítja a virtuális gépet az elsődleges régióban, rövid állásidővel a folyamat során. Javasoljuk, hogy válasszon ki egy megfelelő időpontot a folyamathoz, és futtasson feladatátvételi tesztet, mielőtt teljes feladatátvételt kezdeményez az elsődleges helyre. [További](site-recovery-failover.md) információ a Azure site Recovery feladatátvételről.

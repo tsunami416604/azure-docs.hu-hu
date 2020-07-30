@@ -1,25 +1,25 @@
 ---
-title: Kapcsolódjon a Node. js használatával – Azure Database for MySQL
+title: Kapcsolat Node.js-Azure Database for MySQL használatával
 description: Ez a rövid útmutató számos Node.js-mintakódot biztosít, amelyekkel csatlakozhat a MySQL-hez készült Azure-adatbázishoz, illetve adatokat kérdezhet le róla.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
-ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
+ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-track-javascript
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 5/26/2020
-ms.openlocfilehash: 38ac57ca49608a528b8f810dac7967562f83d7d0
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 9d3e2d744c4800c06503483c6e7270ad1ca60e2c
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83870159"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423184"
 ---
-# <a name="quickstart-use-nodejs-to-connect-and-query-data-in-azure-database-for-mysql"></a>Rövid útmutató: a Node. js használatával kapcsolódhat és lekérdezheti Azure Database for MySQL
+# <a name="quickstart-use-nodejs-to-connect-and-query-data-in-azure-database-for-mysql"></a>Gyors útmutató: Node.js használata az adatAzure Database for MySQLhoz való kapcsolódáshoz és adatlekérdezéshez
 
-Ebben a rövid útmutatóban a Node. js használatával csatlakozik egy Azure Database for MySQLhoz. Ezután SQL-utasításokkal adatokat lehet lekérdezni, beszúrni, frissíteni és törölni az adatbázisban a Mac, Ubuntu Linux és Windows platformokról. 
+Ebben a rövid útmutatóban Node.js használatával csatlakozik egy Azure Database for MySQLhoz. Ezután SQL-utasításokkal adatokat lehet lekérdezni, beszúrni, frissíteni és törölni az adatbázisban a Mac, Ubuntu Linux és Windows platformokról. 
 
-Ez a témakör azt feltételezi, hogy már ismeri a Node. js használatával végzett fejlesztést, de most ismerkedik a Azure Database for MySQLával.
+Ez a témakör azt feltételezi, hogy már ismeri a fejlesztést a Node.js használatával, de most ismerkedik a Azure Database for MySQLval.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -31,7 +31,7 @@ Ez a témakör azt feltételezi, hogy már ismeri a Node. js használatával vé
 
 ## <a name="install-nodejs-and-the-mysql-connector"></a>A Node.js és a MySQL-összekötő telepítése
 
-A [Node. js](https://nodejs.org)telepítéséhez kövesse a megfelelő szakaszban található utasításokat a platformtól függően. A NPM használatával telepítse a [MySQL](https://www.npmjs.com/package/mysql) -csomagot és annak függőségeit a projekt mappájába.
+A platformtól függően kövesse a megfelelő szakaszban található utasításokat a [Node.js](https://nodejs.org)telepítéséhez. A NPM használatával telepítse a [MySQL](https://www.npmjs.com/package/mysql) -csomagot és annak függőségeit a projekt mappájába.
 
 ### <a name="windows"></a>**Windows**
 
@@ -321,7 +321,7 @@ function deleteData(){
 };
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Adatbázis migrálása exportálással és importálással](./concepts-migrate-import-export.md)

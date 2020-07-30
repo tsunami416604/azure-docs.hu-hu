@@ -8,12 +8,12 @@ ms.subservice: hyperscale-citus
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 05/14/2019
-ms.openlocfilehash: 02e009e6fff2e717693d1579d409199ab179d941
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4ff80330ab6244bc9d108b7f5a1d4e4e0dbd4feb
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79241513"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387404"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql---hyperscale-citus-in-the-azure-portal"></a>Gyors útmutató: Azure Database for PostgreSQL-nagy kapacitású (Citus) létrehozása a Azure Portal
 
@@ -71,12 +71,14 @@ CREATE INDEX event_type_index ON github_events (event_type);
 CREATE INDEX payload_index ON github_events USING GIN (payload jsonb_path_ops);
 ```
 
-Ezután ezeket a postgres táblázatokat a koordinátori csomóponton fogjuk kiadni, és megmondjuk, hogy nagy kapacitású a feldolgozók között. Ehhez le kell futtatni egy lekérdezést minden olyan táblára vonatkozóan, amely megadja, hogy a kulcs a szegmensbe kerüljön. Az aktuális példában az eseményeket és a felhasználók táblát is a következőre fogjuk bemutatni `user_id`:
+Ezután ezeket a postgres táblázatokat a koordinátori csomóponton fogjuk kiadni, és megmondjuk, hogy nagy kapacitású a feldolgozók között. Ehhez le kell futtatni egy lekérdezést minden olyan táblára vonatkozóan, amely megadja, hogy a kulcs a szegmensbe kerüljön. Az aktuális példában az eseményeket és a felhasználók táblát is a következőre fogjuk bemutatni `user_id` :
 
 ```sql
 SELECT create_distributed_table('github_events', 'user_id');
 SELECT create_distributed_table('github_users', 'user_id');
 ```
+
+[!INCLUDE [azure-postgresql-hyperscale-dist-alert](../../includes/azure-postgresql-hyperscale-dist-alert.md)]
 
 Készen áll az betöltésre. A psql továbbra is kipróbálhatja a fájlok letöltését:
 
@@ -113,9 +115,9 @@ GROUP BY hour
 ORDER BY hour;
 ```
 
-Eddig a lekérdezések kizárólag a GitHub\_-eseményeket érintették, de ezeket az információkat a GitHub\_-felhasználókkal kombináljuk. Mivel a felhasználókat és az eseményeket ugyanazon az azonosítón (`user_id`) osztottuk fel, a megfelelő felhasználói azonosítókkal rendelkező táblák sorai ugyanazon adatbázis-csomópontokon [helyezkednek](https://docs.citusdata.com/en/stable/sharding/data_modeling.html#colocation) el, és könnyedén csatlakoztathatók.
+Eddig a lekérdezések kizárólag a GitHub \_ -eseményeket érintették, de ezeket az információkat a GitHub- \_ felhasználókkal kombináljuk. Mivel a felhasználókat és az eseményeket ugyanazon az azonosítón () osztottuk fel `user_id` , a megfelelő felhasználói azonosítókkal rendelkező táblák sorai ugyanazon adatbázis-csomópontokon [helyezkednek](https://docs.citusdata.com/en/stable/sharding/data_modeling.html#colocation) el, és könnyedén csatlakoztathatók.
 
-Ha csatlakozik a `user_id`szolgáltatáshoz, a nagy kapacitású a munkavégző csomópontokon párhuzamosan hajthatja végre a csatlakozás végrehajtását a szegmensekben. Például keresse meg a legtöbb tárházat létrehozó felhasználókat:
+Ha csatlakozik a `user_id` szolgáltatáshoz, a nagy kapacitású a munkavégző csomópontokon párhuzamosan hajthatja végre a csatlakozás végrehajtását a szegmensekben. Például keresse meg a legtöbb tárházat létrehozó felhasználókat:
 
 ```sql
 SELECT gu.login, count(*)
@@ -132,7 +134,7 @@ SELECT gu.login, count(*)
 
 Az előző lépésekben Azure-erőforrásokat hozott létre egy kiszolgálócsoport számára. Ha nem várható, hogy a jövőben szüksége lesz ezekre az erőforrásokra, törölje a kiszolgálót. A kiszolgálócsoport **Áttekintés** lapján kattintson a **Törlés** gombra. Amikor a rendszer rákérdez egy előugró oldalra, erősítse meg a kiszolgálócsoport nevét, és kattintson a végleges **Törlés** gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a rövid útmutatóból megtudhatta, hogyan építhet ki egy nagy kapacitású-(Citus-) kiszolgáló csoportot. Csatlakoztatta azt a psql-hoz, létrehozott egy sémát és egy elosztott adatkészletet.
 

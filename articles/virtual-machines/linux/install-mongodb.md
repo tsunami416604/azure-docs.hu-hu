@@ -207,7 +207,7 @@ az group deployment show \
     --output tsv
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ezekben a példákban helyileg csatlakozik a MongoDB-példányhoz a virtuális gépről. Ha másik virtuális gépről vagy hálózatról szeretne csatlakozni a MongoDB-példányhoz, győződjön meg arról, hogy a megfelelő [hálózati biztonsági csoportra vonatkozó szabályok jönnek létre](nsg-quickstart.md).
 
 Ezek a példák a központi MongoDB környezetet telepítik fejlesztési célokra. Alkalmazza a környezetéhez szükséges biztonsági konfigurációs beállításokat. További információt a [MongoDB biztonsági dokumentációjában](https://docs.mongodb.com/manual/security/)talál.

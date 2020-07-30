@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 03/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 16828435dc8913fff8da4717ee7f77cc701504ed
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 93ada332fdf9179cf0f582195779afc085416e1a
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213074"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386231"
 ---
 # <a name="best-practices-to-use-key-vault"></a>Ajánlott eljárások a Key Vault használatához
 
@@ -56,5 +56,5 @@ A [naplózás bekapcsolása](logging.md) a tárolóban. Riasztásokat is beáll�
 
 ## <a name="turn-on-recovery-options"></a>Helyreállítási beállítások bekapcsolása
 
-1. A helyreállítható [Törlés](overview-soft-delete.md)bekapcsolása.
+1. A helyreállítható [Törlés](soft-delete-overview.md)bekapcsolása.
 2. Ha azt szeretné, hogy a rendszer a törlés után is bekapcsolja a titkos kulcs vagy tár kényszerített törlését, kapcsolja be a védelem kiürítését.

@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: 5f159ffcea0aa88f354ae503be96a5c571c10adb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 26df3c49e44dd79d87a1e0a982ceb8133f425447
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85806832"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423320"
 ---
 # <a name="partitioning-in-azure-cosmos-db-cassandra-api"></a>Particionálás Azure Cosmos DB Cassandra API
 
@@ -31,7 +31,7 @@ Az Apache Cassandra 100 MB-os korlátot javasol a partíciókban tárolható ada
 
 Azure Cosmos DB minden fizikai partíció replikák, más néven replika-készletből áll, és partíciók legalább 4 replikával rendelkeznek. Ez ellentétben áll az Apache Cassandra-vel, ahol az 1 replikációs tényező beállítása lehetséges. Ez azonban alacsony rendelkezésre állást eredményez, ha az egyetlen csomópont, amelyen az adat leáll. Cassandra API mindig a 4-es replikációs tényező (3 kvórum). A Azure Cosmos DB automatikusan kezeli a replikákat, és ezeket az Apache Cassandra különböző eszközeivel kell karbantartani. 
 
-Az Apache Cassandra a tokenek fogalmát képezi, amely a partíciós kulcsok kivonata. A tokenek egy murmur3 64 bájtos kivonaton alapulnak, és a-2 ^ 63 – 2 ^ 63-1 értéktől kezdve. Ezt a tartományt általában "Token Ring"-ként nevezik az Apache Cassandra-ban. A jogkivonat-gyűrű a jogkivonat-tartományokban van elosztva, és ezek a tartományok a natív Apache Cassandra-fürtben lévő csomópontok között oszlanak meg. A Azure Cosmos DB particionálása hasonló módon valósul meg, kivéve, ha más kivonatoló algoritmust használ, és nagyobb jogkivonat-gyűrűvel rendelkezik. 
+Az Apache Cassandra a tokenek fogalmát képezi, amely a partíciós kulcsok kivonata. A tokenek egy murmur3 64 bájtos kivonaton alapulnak, és a-2 ^ 63 – 2 ^ 63-1 értéktől kezdve. Ezt a tartományt általában "Token Ring"-ként nevezik az Apache Cassandra-ban. A jogkivonat-gyűrű a jogkivonat-tartományokban van elosztva, és ezek a tartományok a natív Apache Cassandra-fürtben lévő csomópontok között oszlanak meg. A Azure Cosmos DB particionálása hasonló módon valósul meg, kivéve, ha más kivonatoló algoritmust használ, és nagyobb belső jogkivonat-gyűrűvel rendelkezik. Külsőleg azonban ugyanaz a jogkivonat-tartomány lesz elérhető, mint az Apache Cassandra, azaz – 2 ^ 63 – 2 ^ 63 – 1.
 
 
 ## <a name="primary-key"></a>Elsődleges kulcs
@@ -110,7 +110,7 @@ CREATE TABLE uprofile.user (
    PRIMARY KEY ((firstname, lastname), id) );
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Tudnivalók a [particionálásról és a horizontális skálázásról Azure Cosmos db](partition-data.md).
 * További információ [a kiépített átviteli sebességről Azure Cosmos db](request-units.md).

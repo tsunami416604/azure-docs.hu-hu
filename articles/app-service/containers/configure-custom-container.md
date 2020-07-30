@@ -3,12 +3,12 @@ title: Egyéni Linux-tároló konfigurálása
 description: Megtudhatja, hogyan konfigurálhat egyéni Linux-tárolókat a Azure App Serviceban. Ez a cikk a leggyakoribb konfigurációs feladatokat ismerteti.
 ms.topic: article
 ms.date: 03/28/2019
-ms.openlocfilehash: df766c289ac9ece4c1dc1fbdc65d49ae1306a592
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9a3e360270ac388d0f8434a9184d39d602c98e9e
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87008591"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422776"
 ---
 # <a name="configure-a-custom-linux-container-for-azure-app-service"></a>Egyéni Linux-tároló konfigurálása Azure App Servicehoz
 
@@ -156,13 +156,9 @@ Az alábbi listában a támogatott és nem támogatott Docker-összeállítási 
 > [!NOTE]
 > A rendszer figyelmen kívül hagyja a nem kifejezetten kinevezett egyéb beállításokat a nyilvános előzetes verzióban.
 
-## <a name="configure-vnet-integration"></a>VNet-integráció konfigurálása
-
-Ha egyéni tárolót használ a VNet-integrációval, további tároló-konfigurációra lehet szükség. Lásd: [az alkalmazás integrálása Azure-Virtual Networkokkal](../web-sites-integrate-with-vnet.md).
-
 [!INCLUDE [robots933456](../../../includes/app-service-web-configure-robots933456.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: üzembe helyezés Private Container adattárból](tutorial-custom-docker-image.md)

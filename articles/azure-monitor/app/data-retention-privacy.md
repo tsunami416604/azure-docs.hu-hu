@@ -214,7 +214,7 @@ Nem ajánlott explicit módon beállítani az alkalmazást úgy, hogy csak a TLS
 | Windows Server 2012 – 2016 | Támogatott, és alapértelmezés szerint engedélyezve van. | Annak ellenőrzése, hogy továbbra is az [alapértelmezett beállításokat](/windows-server/security/tls/tls-registry-settings) használja-e |
 | Windows 7 SP1 és Windows Server 2008 R2 SP1 | Támogatott, de alapértelmezés szerint nincs engedélyezve. | Az engedélyezésével kapcsolatos részletekért tekintse meg a [Transport Layer Security (TLS) beállításjegyzék-beállítások](/windows-server/security/tls/tls-registry-settings) lapját.  |
 | Windows Server 2008 SP2 | A TLS 1,2 támogatásához frissítés szükséges. | Lásd: [frissítés a TLS 1,2 támogatásának hozzáadásához](https://support.microsoft.com/help/4019276/update-to-add-support-for-tls-1-1-and-tls-1-2-in-windows-server-2008-s) a Windows Server 2008 SP2-ben. |
-|Windows Vista | Nem támogatott. | n.a.
+|Windows Vista | Nem támogatott. | N.A.
 
 ### <a name="check-what-version-of-openssl-your-linux-distribution-is-running"></a>Győződjön meg arról, hogy az OpenSSL milyen verziója fut a Linux-disztribúcióban
 

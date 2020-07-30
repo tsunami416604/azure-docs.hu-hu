@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: bd6157f2775b2496e489cfbf03b35f49fb6f5442
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 0231070e73c5b38562e8d110d80a2fba3c28724d
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87124714"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87385483"
 ---
 # <a name="azure-security-baseline-for-linux-virtual-machines"></a>Linux Virtual Machines Azure biztonsági alapterve
 
@@ -1096,7 +1096,7 @@ Az Azure Disk Encryption használata esetén visszaállíthatja az Azure-beli vi
 
 * [Soft Delete a virtuális gépekhez](../../backup/soft-delete-virtual-machines.md)
 
-* [Azure Key Vault: a helyreállítható törlés áttekintése](../../key-vault/general/overview-soft-delete.md)
+* [Azure Key Vault: a helyreállítható törlés áttekintése](../../key-vault/general/soft-delete-overview.md)
 
 **Azure Security Center figyelés**: igen
 
@@ -1190,7 +1190,7 @@ Az Azure Disk Encryption használata esetén visszaállíthatja az Azure-beli vi
 
 **Felelősség**: megosztott
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Lásd az [Azure biztonsági teljesítménytesztét](../../security/benchmarks/overview.md)
 - További információ az [Azure biztonsági alaptervekről](../../security/benchmarks/security-baselines-overview.md)

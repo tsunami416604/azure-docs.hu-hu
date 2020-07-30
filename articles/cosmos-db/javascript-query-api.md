@@ -7,12 +7,13 @@ ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: tisande
 ms.reviewer: sngun
-ms.openlocfilehash: 785c430347bc62a00eee80c977f2d6ce440c08db
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 56fbcc3950a739c4c9fc3df86468301e2e2ff4d8
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82982275"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421127"
 ---
 # <a name="javascript-query-api-in-azure-cosmos-db"></a>JavaScript lekérdezési API a Azure Cosmos DB
 
@@ -60,7 +61,7 @@ Az alábbi táblázat különböző SQL-lekérdezéseket és a kapcsolódó Java
 |SELECT<br>&nbsp;&nbsp;&nbsp;docs.id,<br>&nbsp;&nbsp;&nbsp;docs. Message AS msg<br>A docs-ból<br>WHERE<br>&nbsp;&nbsp;&nbsp;docs. id = "X998_Y998"|__. Chain ()<br>&nbsp;&nbsp;&nbsp;&nbsp;. Filter (függvény (doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;visszatérési doc.id = = = "X998_Y998";<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>&nbsp;&nbsp;&nbsp;&nbsp;. map (függvény (doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;visszatérési<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;azonosító: doc.id,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;msg: doc. Message<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>. Value ();|A dokumentumok lekérdezése predikátummal, azonosító = "X998_Y998", majd a projekt az azonosító és az üzenet (msg-ben alias).|
 |ÉRTÉK címke kiválasztása<br>A docs-ból<br>JOIN tag a docs-ban. Címkék<br>ORDER BY docs. _ts|__. Chain ()<br>&nbsp;&nbsp;&nbsp;&nbsp;. Filter (függvény (doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bizonylat visszaküldése Címkék && Array. isArray (doc). Címkék);<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>&nbsp;&nbsp;&nbsp;&nbsp;. sortBy (Function (doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bizonylat visszaküldése _ts;<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>&nbsp;&nbsp;&nbsp;&nbsp;. összeszed ("címkék")<br>&nbsp;&nbsp;&nbsp;&nbsp;. simítsa ()<br>&nbsp;&nbsp;&nbsp;&nbsp;. Value ()|A Array tulajdonsággal rendelkező dokumentumok szűrői, a címkék és az eredményül kapott dokumentumok rendezése a _ts timestamp System tulajdonsággal, majd a projects + lelapul a címkék tömbjét.|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További fogalmak és útmutató: tárolt eljárások, eseményindítók és felhasználó által definiált függvények írása és használata Azure Cosmos DBban:
 

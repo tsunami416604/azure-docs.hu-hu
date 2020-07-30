@@ -31,7 +31,7 @@ Az átirányítási URI-vagy válasz-URL-cím az a hely, amelyet az engedélyez�
 
 A következő táblázat az alkalmazás regisztrálásakor felvehető átirányítási URI-k maximális számát mutatja.
 
-| Bejelentkezett fiókok | Átirányítási URI-k maximális száma | Leírás |
+| Bejelentkezett fiókok | Átirányítási URI-k maximális száma | Description |
 |--------------------------|---------------------------------|-------------|
 | Microsoft munkahelyi vagy iskolai fiókok bármely szervezet Azure Active Directory (Azure AD) bérlőben | 256 | `signInAudience`az alkalmazás jegyzékfájljában lévő mező beállítása *AzureADMyOrg* vagy *AzureADMultipleOrgs* |
 | Személyes Microsoft-fiókok és munkahelyi és iskolai fiókok | 100 | `signInAudience`az alkalmazás jegyzékfájljának mezője *AzureADandPersonalMicrosoftAccount* értékre van állítva |
@@ -89,6 +89,6 @@ Ebben a megközelítésben:
 > [!NOTE]
 > Ez a módszer lehetővé teszi a feltört ügyfél számára, hogy módosítsa az állapot paraméterében eljuttatott további paramétereket, így átirányítja a felhasználót egy másik URL-címre, amely az RFC 6819-ben leírt [nyílt átirányító fenyegetés](https://tools.ietf.org/html/rfc6819#section-4.2.4) . Ezért az ügyfélnek védenie kell ezeket a paramétereket az állapot titkosításával vagy más módon történő ellenőrzésével, például az átirányítási URI-azonosítóban lévő tartománynév érvényesítésével.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az [alkalmazás jegyzékfájljának](reference-app-manifest.md) megismerése

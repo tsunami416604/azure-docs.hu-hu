@@ -594,6 +594,6 @@ A közzétételi folyamat **manuális érvényesítési** lépése az ajánlat �
 
 Ha a közzétételi lépések közül egy vagy több hibát tartalmaz, javítsa ki azokat az ajánlat ismételt közzététele előtt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Meglévő ajánlat frissítése a kereskedelmi piactéren](./update-existing-offer.md)

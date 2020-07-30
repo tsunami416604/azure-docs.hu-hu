@@ -3,12 +3,13 @@ title: Az aktív tanulás javasolt kérdései – QnA Maker
 description: Az aktív tanulással javíthatja a Tudásbázis minőségét. Áttekintheti, elfogadhatja vagy elutasíthatja a meglévő kérdések eltávolítása vagy módosítása nélkül.
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: bb95ddc40e122e2589d0396b94f0de921aab9350
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-javascript
+ms.openlocfilehash: fc7aebc3df2d14c78230d112e3e807d8d98fb047
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87053941"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406979"
 ---
 # <a name="accept-active-learning-suggested-questions-in-the-knowledge-base"></a>Az aktív tanulás javasolt kérdéseinek elfogadása a Tudásbázisban
 
@@ -338,7 +339,7 @@ Ha újraimportálja az alkalmazást, az aktív tanulás továbbra is gyűjti az 
 
 Az aktív tanulás használata esetén ajánlott eljárások: [ajánlott eljárások](../Concepts/best-practices.md#active-learning).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Metaadatok használata a GenerateAnswer API-val](metadata-generateanswer-usage.md)

@@ -5,12 +5,12 @@ ms.assetid: 94af2caf-a2ec-4415-a097-f60694b860b3
 ms.topic: overview
 ms.date: 04/30/2020
 ms.custom: mvc, seodec18
-ms.openlocfilehash: f4b42f2ed43da68daabb3bd334a362071202be42
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 619b5f16f5a913a4ec9bb1ebe2e7060fcac28d7d
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073725"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421807"
 ---
 # <a name="app-service-overview"></a>Az App Service áttekintése
 
@@ -31,13 +31,13 @@ A App Service főbb jellemzői:
 * **Csatlakozás SaaS-platformokhoz és helyszíni adatokhoz** – Több mint 50, nagyvállalati rendszerekhez (például SAP), SaaS-szolgáltatásokhoz (például Salesforce), valamint internetes szolgáltatásokhoz (többek között a Facebookhoz) készült [összekötő](../connectors/apis-list.md) közül választhat. Hozzáférhet helyszíni adatokhoz a [Hibrid kapcsolatok](app-service-hybrid-connections.md) és az [Azure virtuális hálózatok](web-sites-integrate-with-vnet.md) segítségével.
 * **Biztonság és megfelelőség** - Az App Service megfelel az [ISO, SOC és PCI szabványoknak](https://www.microsoft.com/en-us/trustcenter). [Azure Active Directory](configure-authentication-provider-aad.md) vagy közösségi bejelentkezés ([Google](configure-authentication-provider-google.md), [Facebook](configure-authentication-provider-facebook.md), [Twitter](configure-authentication-provider-twitter.md), és [Microsoft](configure-authentication-provider-microsoft.md)) használatával hitelesítheti a felhasználókat. [IP-címkorlátozásokat](app-service-ip-restrictions.md) hozhat létre és [kezelheti a szolgáltatásidentitásokat](overview-managed-identity.md).
 * **Alkalmazássablonok** – Az [Azure Marketplace](https://azure.microsoft.com/marketplace/) alkalmazássablon-listájának széles kínálatából választhat, például a WordPresst, a Joomlát vagy a Drupalt.
-* **Visual Studio-integráció** – A Visual Studio dedikált eszközei leegyszerűsítik a létrehozás, telepítés és hibakeresés folyamatát.
+* A **Visual Studio és a Visual Studio Code Integration** – dedikált eszközök a Visual Studióban és a Visual Studio Code-ban egyszerűsíthető a létrehozás, az üzembe helyezés és a hibakeresés.
 * Az **API-és mobil funkciók** – app Service kulcsrakész CORS-támogatást biztosít a REST API-forgatókönyvekhez, és egyszerűbbé teszi a Mobile apps-forgatókönyveket a hitelesítés, az offline adatszinkronizálás, a leküldéses értesítések és egyebek engedélyezésével.
 * **Kiszolgáló nélküli kód** – Kódrészleteteket vagy szkripteket futtathat igény szerint anélkül, hogy kifejezetten felügyelnie vagy kezelnie kellene az infrastruktúrát, és csak a kódja által ténylegesen használt számítási időért kell fizetnie (további információ: [Azure Functions](/azure/azure-functions/)).
 
-App Service mellett az Azure más szolgáltatásokat is kínál, amelyek a webhelyek és a webalkalmazások üzemeltetésére használhatók. A legtöbb esetben App Service a legjobb választás.  A mikroszolgáltatási architektúra esetében fontolja meg a [Service Fabric](https://azure.microsoft.com/documentation/services/service-fabric) használatát. Ha a kódot futtató virtuális gépek nagyobb mértékű felügyeletére van szüksége, akkor érdemes megfontolnia az [Azure Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/) használatát. További információ az Azure-szolgáltatások közötti választással kapcsolatban: [Az Azure App Service, a Virtual Machines, a Service Fabric és a Cloud Services összehasonlítása](overview-compare.md).
+App Service mellett az Azure más szolgáltatásokat is kínál, amelyek a webhelyek és a webalkalmazások üzemeltetésére használhatók. A legtöbb esetben App Service a legjobb választás.  A Service architektúrához az [Azure Spring-Cloud Service](/azure/spring-cloud/) -t vagy [Service Fabric](https://azure.microsoft.com/documentation/services/service-fabric)kell figyelembe venni.  Ha nagyobb mértékű vezérlésre van szüksége a kódot futtató virtuális gépek felett, vegye fontolóra az [Azure Virtual Machinesét](https://azure.microsoft.com/documentation/services/virtual-machines/). További információ az Azure-szolgáltatások közötti választással kapcsolatban: [Az Azure App Service, a Virtual Machines, a Service Fabric és a Cloud Services összehasonlítása](overview-compare.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Hozza létre első webalkalmazását.
 

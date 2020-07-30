@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/17/2020
 ms.custom: how-to, tracking-python
-ms.openlocfilehash: 75e2ffcad4caeb6500f05ce3801797084c18a043
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 63e2ba93ecdc1131be6bd291fe436b42a2a2d19c
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321649"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407030"
 ---
 # <a name="use-workspace-behind-azure-firewall-for-azure-machine-learning"></a>Azure Firewall mögötti munkaterület használata Azure Machine Learning
 
@@ -60,9 +60,9 @@ Az ebben a szakaszban található gazdagépek a Python-csomagok telepítéséhez
 
 | **Állomásnév** | **Cél** |
 | ---- | ---- |
-| **anaconda.com** | Conda-csomagok telepítésekor használatos |
-| **pypi.org** | Pip-csomagok telepítésekor használatos |
-
+| **anaconda.com** | Az alapértelmezett csomagok telepítéséhez használatos. |
+| **\*. anaconda.org** | A tárház-adatgyűjtéshez használatos. |
+| **pypi.org** | Az alapértelmezett indexből származó függőségek listázására használatos, és az indexet a felhasználói beállítások nem írják felül. Ha a rendszer felülírja az indexet, a ** \* . pythonhosted.org**is engedélyeznie kell. |
 
 ## <a name="r-hosts"></a>R-gazdagépek
 
@@ -75,7 +75,7 @@ A jelen szakaszban található gazdagépek az R-csomagok telepítéséhez haszn�
 | ---- | ---- |
 | **cloud.r-project.org** | A CRAN-csomagok telepítésekor használatos. |
 
-További lépések
+Következő lépések
 
 * [[Azure Firewall üzembe helyezése és konfigurálása](../firewall/tutorial-firewall-deploy-portal.md)]
 * [Egy Azure-Virtual Networkon belül biztonságossá teheti az Azure ML-kísérletezést és a feladatok következtetéseit](how-to-enable-virtual-network.md)

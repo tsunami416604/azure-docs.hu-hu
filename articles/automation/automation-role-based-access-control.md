@@ -6,12 +6,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 07/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: a970122c5f034e6215d2e829657c9eec99f14371
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: c7051cca9029283b150eea0519aa7432d6a9c937
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87279882"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420481"
 ---
 # <a name="manage-role-permissions-and-security"></a>Szerepköri engedélyek és biztonság kezelése
 
@@ -338,7 +338,7 @@ NotActions       : {}
 AssignableScopes : {/}
 ```
 
-A [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment?view=azps-3.7.0) felsorolja az Azure ad-RBAC szerepkör-hozzárendeléseket a megadott hatókörben. Paraméterek nélkül ez a parancsmag az előfizetés keretében végrehajtott összes szerepkör-hozzárendelést visszaadja. A `ExpandPrincipalGroups` paraméter használatával listázhatja a megadott felhasználóhoz tartozó hozzáférési hozzárendeléseket, valamint azokat a csoportokat, amelyekhez a felhasználó tartozik.
+A [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment?view=azps-3.7.0) felsorolja az Azure szerepkör-hozzárendeléseket a megadott hatókörben. Paraméterek nélkül ez a parancsmag az előfizetés keretében végrehajtott összes szerepkör-hozzárendelést visszaadja. A `ExpandPrincipalGroups` paraméter használatával listázhatja a megadott felhasználóhoz tartozó hozzáférési hozzárendeléseket, valamint azokat a csoportokat, amelyekhez a felhasználó tartozik.
 
 **Példa:** A következő parancsmag használatával listázhatja az összes felhasználót és azok szerepkörét egy Automation-fiókon belül.
 
@@ -431,7 +431,7 @@ Ha a Runbook hatókörében az Automation-operátori szerepkörhöz hozzárendel
 
 ![Csak az indításhoz van hozzáférése](media/automation-role-based-access-control/automation-only-start.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További PowerShell-RBAC a következő témakörben talál: [RBAC kezelése a Azure PowerShell](../role-based-access-control/role-assignments-powershell.md)használatával.
 * A runbookok típusaival kapcsolatos részletekért lásd: [Azure Automation runbook-típusok](automation-runbook-types.md).

@@ -9,12 +9,12 @@ ms.subservice: metadata
 ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
-ms.openlocfilehash: d9efafdbc3545bebb3b90b3f64c14f45d8be82e6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 28f666fe295b2b49fb6795306e9fad489c867517
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496026"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387217"
 ---
 # <a name="azure-synapse-analytics-shared-metadata-tables"></a>Az Azure szinapszis Analytics megosztott metaadatait tartalmazó táblái
 
@@ -24,7 +24,7 @@ Az Azure szinapszis Analytics lehetővé teszi, hogy a különböző munkaterül
 
 Miután létrehozta az adatbázist egy Spark-feladatokkal, a Sparkban létrehozhat olyan táblákat, amelyek tárolási formátumként használják a parketta-t. Ezek a táblák azonnal elérhetővé válnak az Azure szinapszis-munkaterület Spark-készletei bármelyikének lekérdezéséhez. Ezek bármelyik Spark-feladatból is felhasználhatók, az engedélyek alá tartoznak.
 
-A Spark által létrehozott, felügyelt és külső táblákat külső táblákként is elérhetővé teszi a megfelelő szinkronizált adatbázisban az SQL igény szerint. Az [SQL-ben a Spark-táblázat](#exposing-a-spark-table-in-sql) további részleteket tartalmaz a tábla szinkronizálásával kapcsolatban.
+A Spark által létrehozott, felügyelt és külső táblákat külső táblákként is elérhetővé teszi a megfelelő szinkronizált adatbázisban az SQL igény szerint. Az [SQL-ben a Spark-táblázat](#expose-a-spark-table-in-sql) további részleteket tartalmaz a tábla szinkronizálásával kapcsolatban.
 
 Mivel a táblákat aszinkron módon szinkronizálják az SQL-be, a rendszer késést okoz, amíg meg nem jelenik.
 
@@ -34,9 +34,9 @@ A Spark segítségével kezelheti a Spark által létrehozott adatbázisokat. P�
 
 Ha ilyen adatbázisban hoz létre objektumokat az SQL on-demand vagy az adatbázis eldobására, akkor a művelet sikeres lesz, de az eredeti Spark-adatbázis nem módosul.
 
-## <a name="exposing-a-spark-table-in-sql"></a>Egy Spark-táblázat kimutatása az SQL-ben
+## <a name="expose-a-spark-table-in-sql"></a>Spark-táblázat közzététele az SQL-ben
 
-### <a name="which-spark-tables-are-shared"></a>Mely Spark-táblázatok vannak megosztva
+### <a name="shared-spark-tables"></a>Megosztott Spark-táblák
 
 A Spark kétféle táblázatot biztosít az Azure szinapszisok számára az SQL automatikus elérhetővé tétele érdekében:
 
@@ -50,7 +50,7 @@ A Spark kétféle táblázatot biztosít az Azure szinapszisok számára az SQL 
 
 Az Azure szinapszis jelenleg csak azokat a felügyelt és külső Spark-táblákat osztja meg, amelyek az SQL-motorokkal együtt tárolják az adattárakat. A más formátumok által támogatott táblákat a rendszer nem szinkronizálja automatikusan. Előfordulhat, hogy ezeket a táblákat saját SQL-adatbázisában lévő külső táblázatként is szinkronizálja, ha az SQL-motor támogatja a tábla alapjául szolgáló formátumot.
 
-### <a name="how-are-spark-tables-shared"></a>Hogyan történik a Spark-táblázatok megosztása?
+### <a name="share-spark-tables"></a>Spark-táblázatok megosztása
 
 Az SQL-motorban az alábbi tulajdonságokkal rendelkező, megosztható felügyelt és külső Spark-táblák külső táblákként jelennek meg:
 
@@ -96,7 +96,7 @@ A mappákra és fájlokra vonatkozó engedélyek beállításával kapcsolatos t
 
 ### <a name="create-a-managed-table-backed-by-parquet-in-spark-and-query-from-sql-on-demand"></a>Hozzon létre egy felügyelt táblázatot a parketta használatával a Sparkban, és kérdezze le az SQL igény szerinti lekérdezését
 
-Ebben az esetben egy nevű Spark-adatbázissal rendelkezik `mytestdb` . Lásd: [létrehozás & kapcsolódás a Spark-adatbázishoz – SQL igény szerint](database.md#create--connect-to-spark-database---sql-on-demand).
+Ebben az esetben egy nevű Spark-adatbázissal rendelkezik `mytestdb` . Lásd: [Létrehozás és kapcsolódás egy Spark-adatbázishoz SQL-igény szerint](database.md#create-and-connect-to-spark-database-with-sql-on-demand).
 
 Hozzon létre egy felügyelt Spark-táblázatot a SparkSQL a következő parancs futtatásával:
 
@@ -153,7 +153,7 @@ id | name | birthdate
 1 | Alice | 2010-01-01
 ```
 
-### <a name="creating-an-external-table-backed-by-parquet-in-spark-and-querying-it-from-sql-on-demand"></a>Külső tábla létrehozása a Sparkban, és az SQL igény szerinti lekérdezése
+### <a name="create-an-external-table-backed-by-parquet-in-spark-and-query-from-sql-on-demand"></a>Külső tábla létrehozása a Sparkban, és az SQL igény szerinti lekérdezése
 
 Ebben a példában hozzon létre egy külső Spark-táblázatot a kezelt tábla előző példájában létrehozott parketta-adatfájlok felett.
 

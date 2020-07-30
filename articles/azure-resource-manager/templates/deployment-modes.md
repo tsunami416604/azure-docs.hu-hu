@@ -124,7 +124,7 @@ A következő példa egy olyan csatolt sablont mutat be, amely növekményes üz
 ]
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A Resource Manager-sablonok létrehozásával kapcsolatos további információkért lásd: [Azure Resource Manager-sablonok](template-syntax.md)készítése.
 * További információ az erőforrások üzembe helyezéséről: [alkalmazások központi telepítése Azure Resource Manager sablonnal](deploy-powershell.md).

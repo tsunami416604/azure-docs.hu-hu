@@ -27,7 +27,7 @@ Ez a cikk azt feltételezi, hogy már létrehozott egy virtuális gépet. Ha sz�
 
 Most már távolról is csatlakozhat a virtuális géphez a következő DNS-névvel, például: `ssh azureuser@mydns.westus.cloudapp.azure.com` .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Most, hogy a virtuális gép rendelkezik egy nyilvános IP-címmel és egy DNS-névvel, üzembe helyezhet olyan általános alkalmazás-keretrendszereket vagy szolgáltatásokat, mint például az Nginx, a MongoDB, a Docker stb.
 
 További információt a [Resource Manager használatával](../../azure-resource-manager/management/overview.md) kapcsolatban az Azure-beli üzembe helyezések létrehozásával kapcsolatos tippekhez is találhat.

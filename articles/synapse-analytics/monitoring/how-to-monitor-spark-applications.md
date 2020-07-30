@@ -9,12 +9,12 @@ ms.subservice: monitoring
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: a4dc2604dbd62da1baa4278ff3463f41337886bf
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b5ad9e6a448747ac8f33829b1137b1af434e7a9c
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87052498"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87385585"
 ---
 # <a name="use-synapse-studio-preview-to-monitor-your-apache-spark-applications"></a>A szinapszis Studio (előzetes verzió) használata a Apache Spark-alkalmazások figyelésére
 
@@ -22,7 +22,7 @@ Az Azure szinapszis Analytics segítségével a Spark használatával jegyzetfü
 
 Ez a cikk ismerteti, hogyan figyelheti meg Apache Spark-alkalmazásait, így nyomon követheti a legújabb állapotot, problémákat és előrehaladást.
 
-## <a name="accessing-the-list-of-apache-spark-applications"></a>Apache Spark alkalmazások listájának elérése
+## <a name="access-apache-spark-applications-list"></a>Hozzáférési Apache Spark alkalmazások listája
 
 A munkaterületen lévő Apache Spark alkalmazások listájának megtekintéséhez először [nyissa meg a szinapszis studiót](https://web.azuresynapse.net/) , és válassza ki a munkaterületet.
 
@@ -36,7 +36,7 @@ Válassza **Apache Spark alkalmazások** lehetőséget Apache Spark alkalmazáso
 
  ![Spark-alkalmazások kiválasztása](./media/how-to-monitor-spark-applications/monitor-hub-nav-sparkapplications.png)
 
-## <a name="filtering-your-apache-spark-applications"></a>Apache Spark alkalmazások szűrése
+## <a name="filter-your-apache-spark-applications"></a>Apache Spark-alkalmazások szűrése
 
 A Apache Spark-alkalmazások listáját szűrheti azokra, akikre kíváncsi. A képernyő felső részén található szűrők segítségével megadhat egy mezőt, amely alapján szűrni szeretne.
 
@@ -46,11 +46,11 @@ Például szűrheti a nézetet úgy, hogy csak a "Sales" nevet tartalmazó Apach
 
 ![Minta szűrő](./media/how-to-monitor-spark-applications/filter-example.png)
 
-## <a name="viewing-details-about-a-specific-apache-spark-application"></a>Adott Apache Spark alkalmazás részleteinek megtekintése
+## <a name="view-details-about-a-specific-apache-spark-application"></a>Adott Apache Spark alkalmazás részleteinek megtekintése
 
 Ha meg szeretné tekinteni az egyik Apache Spark alkalmazás részleteit, válassza ki a Apache Spark alkalmazást, és tekintse meg a részleteket. Ha a Apache Spark alkalmazás még fut, nyomon követheti a folyamatot. [További információk](apache-spark-applications.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A folyamatok figyelésével kapcsolatos további információkért tekintse meg a [folyamatok figyelése a szinapszis Studio](how-to-monitor-pipeline-runs.md) -ban című cikket. 
 

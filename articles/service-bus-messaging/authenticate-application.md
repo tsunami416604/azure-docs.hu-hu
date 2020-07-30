@@ -3,12 +3,12 @@ title: Alkalmazás hitelesítése Azure Service Bus entitásokhoz való hozzáf�
 description: Ez a cikk a Azure Service Bus entitások (várólisták, témakörök stb.) eléréséhez Azure Active Directoryekkel való hitelesítéssel kapcsolatos információkat tartalmaz.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 3f94f17a538fc86615f4ffeb8f351beb99e0cb33
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 6191534bbc7cad6815072099b8c7a847a712365d
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372348"
+ms.locfileid: "87423167"
 ---
 # <a name="authenticate-and-authorize-an-application-with-azure-active-directory-to-access-azure-service-bus-entities"></a>Alkalmazás hitelesítése és engedélyezése Azure Active Directory használatával Azure Service Bus entitások eléréséhez
 Azure Service Bus támogatja a Azure Active Directory (Azure AD) használatát a Service Bus entitások (várólisták, témakörök, előfizetések vagy szűrők) kérésének engedélyezéséhez. Az Azure AD-vel szerepköralapú hozzáférés-vezérlés (RBAC) használatával adhat meg engedélyeket egy rendszerbiztonsági tag számára, amely lehet egy felhasználó, egy csoport vagy egy egyszerű szolgáltatásnév. További információ a szerepkörökről és a szerepkör-hozzárendelésekről: [a különböző szerepkörök megismerése](../role-based-access-control/overview.md).
@@ -49,7 +49,7 @@ Az alábbi lista azokat a szinteket ismerteti, amelyekkel a Service Bus erőforr
 - **Előfizetés**: a szerepkör-hozzárendelés az előfizetés összes erőforrás-csoportjának összes Service Bus erőforrására vonatkozik.
 
 > [!NOTE]
-> Ne feledje, hogy a RBAC szerepkör-hozzárendelések akár öt percet is igénybe vehetnek. 
+> Ne feledje, hogy az Azure-szerepkör-hozzárendelések akár öt percet is igénybe vehetnek. 
 
 További információ a beépített szerepkörök meghatározásáról: a [szerepkör-definíciók ismertetése](../role-based-access-control/role-definitions.md#management-and-data-operations). Az egyéni Azure-szerepkörök létrehozásával kapcsolatos információkért lásd: [Azure egyéni szerepkörök](../role-based-access-control/custom-roles.md).
 
@@ -149,9 +149,9 @@ A minta futtatása előtt szerkessze a **app.config** fájlt, és a forgatókön
 A konzol alkalmazás futtatásakor a rendszer kéri, hogy válasszon ki egy forgatókönyvet. A szám beírásával és az ENTER billentyű lenyomásával válassza az **interaktív felhasználói bejelentkezés** lehetőséget. Az alkalmazás egy bejelentkezési ablakot jelenít meg, amely kéri a Service Bus elérését, majd a szolgáltatás használatával futtatja a küldési/fogadási forgatókönyvet a bejelentkezési identitás használatával.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - További információ a RBAC: [Mi az az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../role-based-access-control/overview.md)?
-- A következő cikkekből megtudhatja, hogyan rendelhet hozzá és kezelhet RBAC szerepkör-hozzárendeléseket Azure PowerShell, az Azure CLI vagy a REST API használatával:
+- Az Azure-beli szerepkör-hozzárendelések Azure PowerShell, az Azure CLI vagy a REST API használatával történő hozzárendeléséről és kezeléséről a következő cikkekben talál további információt:
     - [Szerepköralapú hozzáférés-vezérlés (RBAC) kezelése Azure PowerShell](../role-based-access-control/role-assignments-powershell.md)  
     - [Szerepköralapú hozzáférés-vezérlés (RBAC) kezelése az Azure CLI-vel](../role-based-access-control/role-assignments-cli.md)
     - [Szerepköralapú hozzáférés-vezérlés (RBAC) kezelése a REST API](../role-based-access-control/role-assignments-rest.md)

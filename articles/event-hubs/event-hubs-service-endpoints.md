@@ -2,15 +2,15 @@
 title: Virtual Network szolgáltatási végpontok – Azure Event Hubs | Microsoft Docs
 description: Ez a cikk azt ismerteti, hogyan adhat hozzá Microsoft. EventHub szolgáltatási végpontot egy virtuális hálózathoz.
 ms.topic: article
-ms.date: 07/16/2020
-ms.openlocfilehash: 5d1f6bb8e1160a328c30cfd6ef1726e3cf011aee
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.date: 07/29/2020
+ms.openlocfilehash: 15778c85f28300df3d5af34e2940b3854d814c66
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87288010"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420454"
 ---
-# <a name="use-virtual-network-service-endpoints-with-azure-event-hubs"></a>Virtual Network szolgáltatási végpontok használata az Azure-Event Hubs
+# <a name="allow-access-to-azure-event-hubs-namespaces-from-specific-virtual-networks"></a>Azure Event Hubs-névterek elérésének engedélyezése adott virtuális hálózatokból 
 
 Event Hubs és [Virtual Network (VNet) szolgáltatás-végpontok][vnet-sep] integrációja lehetővé teszi az üzenetkezelési funkciók biztonságos elérését olyan munkaterhelések esetén, mint például a virtuális hálózatokhoz kötött virtuális gépek, és a hálózati forgalom elérési útja mindkét végén védett.
 
@@ -56,10 +56,19 @@ A virtuális hálózati szabály a Event Hubs névtér egy virtuális hálózati
 Ez a szakasz bemutatja, hogyan használható a Azure Portal virtuális hálózati szolgáltatásbeli végpont hozzáadására. A hozzáférés korlátozásához integrálnia kell a virtuális hálózati szolgáltatás végpontját ehhez a Event Hubs névtérhez.
 
 1. Navigáljon a **Event Hubs névtérhez** a [Azure Portal](https://portal.azure.com).
-2. A bal oldali menüben válassza a **hálózatkezelés** lehetőséget. Ha a **minden hálózat** lehetőséget választja, az Event hub bármely IP-címről fogad kapcsolatokat. Ez a beállítás egyenértékű egy olyan szabállyal, amely elfogadja a 0.0.0.0/0 IP-címtartományt. 
+4. A bal oldali menü **Beállítások** területén válassza a **hálózatkezelés** lehetőséget. 
+
+    > [!NOTE]
+    > A **hálózatkezelés** lap csak a **standard** vagy a **dedikált** névtér esetében jelenik meg. 
+
+    Alapértelmezés szerint a **kiválasztott hálózatok** lehetőség van kiválasztva. Ha nem ad meg IP-tűzfalszabály-szabályt, vagy nem ad hozzá virtuális hálózatot ezen a lapon, a névtér az összes hálózatról elérhető, beleértve a nyilvános internetet is (a hozzáférési kulccsal). 
+
+    :::image type="content" source="./media/event-hubs-firewall/selected-networks.png" alt-text="Hálózatok lap – kiválasztott hálózatok lehetőség" lightbox="./media/event-hubs-firewall/selected-networks.png":::    
+
+    Ha a **minden hálózat** lehetőséget választja, az Event hub bármely IP-címről fogad kapcsolatokat (a hozzáférési kulccsal). Ez a beállítás egyenértékű egy olyan szabállyal, amely elfogadja a 0.0.0.0/0 IP-címtartományt. 
 
     ![Tűzfal – az összes hálózat lehetőség ki van választva](./media/event-hubs-firewall/firewall-all-networks-selected.png)
-1. Ha korlátozni szeretné a hozzáférést bizonyos hálózatokra, válassza ki a **kijelölt hálózatok** lehetőséget az oldal tetején.
+1. Ha az adott hálózatokhoz való hozzáférést szeretné korlátozni, válassza a **kijelölt hálózatok** lehetőséget a lap tetején, ha még nincs kiválasztva.
 2. A lap **Virtual Network** szakaszában válassza a * * + meglévő virtuális hálózat hozzáadása * * * lehetőséget. Válassza az **+ új virtuális hálózat létrehozása** lehetőséget, ha új VNet szeretne létrehozni. 
 
     ![meglévő virtuális hálózat hozzáadása](./media/event-hubs-tutorial-vnet-and-firewalls/add-vnet-menu.png)
@@ -77,6 +86,8 @@ Ez a szakasz bemutatja, hogyan használható a Azure Portal virtuális hálózat
 
     ![Hálózat mentése](./media/event-hubs-tutorial-vnet-and-firewalls/save-vnet.png)
 
+    > [!NOTE]
+    > A megadott IP-címekre vagy tartományokra való hozzáférés korlátozásához tekintse meg a [hozzáférés engedélyezése adott IP-címekről vagy tartományokról](event-hubs-ip-filtering.md)című témakört.
 
 ## <a name="use-resource-manager-template"></a>Resource Manager-sablon használata
 
@@ -203,7 +214,7 @@ Sablon paraméterei:
 
 A sablon üzembe helyezéséhez kövesse az [Azure Resource Manager][lnk-deploy]utasításait.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A virtuális hálózatokkal kapcsolatos további információkért tekintse meg az alábbi hivatkozásokat:
 

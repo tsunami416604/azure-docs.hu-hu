@@ -9,20 +9,22 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: 244cdf5329e26fc7d928998b734a539f086051ad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 374b8bb094a93c6c608d6bf95d2b074f661c4a6a
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85193379"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87384735"
 ---
-# <a name="what-is-delta-lake"></a>Mi a Delta Lake?
+# <a name="what-is-delta-lake"></a>Mi az a Delta Lake?
 
 Az Azure szinapszis Analytics kompatibilis a Linux Foundation Delta Lake-szel. A Delta Lake egy nyílt forráskódú tárolási réteg, amely sav (atomi, konzisztencia, elkülönítés és tartósság) tranzakciókat hoz Apache Spark és big data munkaterhelések számára.
 
+Az Azure szinapszis által tartalmazott Delta Lake aktuális verziója a Scala, a PySpark és a .NET nyelvi támogatását tartalmazza. A lap alján található hivatkozások részletesebb példákkal és dokumentációval rendelkeznek.
+
 ## <a name="key-features"></a>A legfontosabb jellemzők
 
-| Szolgáltatás | Description |
+| Funkció | Leírás |
 | --- | --- |
 | **SAVAS tranzakciók** | Az adattavak jellemzően több folyamaton és folyamaton keresztül vannak feltöltve, amelyek némelyike az olvasással párhuzamosan ír adatokat. A Delta Lake és a tranzakciók hozzáadását megelőzően az adatmérnököknek az adatok integritásának biztosítására szolgáló manuális hiba miatt kellett átesniük. A Delta Lake ismerős savas tranzakciókat biztosít az adattavak számára. Szerializált, az elkülönítési szint legerősebb szintjét biztosítja. Ismerkedjen meg [a Delta Lake-be: a tranzakciónapló kicsomagolásával](https://databricks.com/blog/2019/08/21/diving-into-delta-lake-unpacking-the-transaction-log.html).|
 | **Méretezhető metaadatok kezelésére** | A big data még a metaadatok is lehetnek "big data". A Delta Lake az adatokhoz hasonlóan kezeli a metaadatokat, és kihasználja a Spark elosztott feldolgozási teljesítményét az összes metaadatának kezeléséhez. Ennek eredményeképpen a Delta Lake könnyedén kezelheti a több milliárd partíciót és fájlt tartalmazó petabyte táblázatokat. |
@@ -32,14 +34,14 @@ Az Azure szinapszis Analytics kompatibilis a Linux Foundation Delta Lake-szel. A
 | **Séma kényszerítése** | A séma kényszerítése révén biztosítható, hogy az adattípusok helyesek és kötelező oszlopok legyenek, ami megakadályozza, hogy az adatok inkonzisztenciát okozzanak. További információkért lásd [: a változás a Delta Lake-ben: a séma kényszerítése & evolúciója](https://databricks.com/blog/2019/09/24/diving-into-delta-lake-schema-enforcement-evolution.html) |
 | **Séma-evolúció** | A Delta Lake lehetővé teszi egy olyan táblázatos séma módosítását, amely automatikusan alkalmazható, anélkül, hogy az áttelepítési DDL-t kellene írnia. További információkért lásd [: a változás a Delta Lake-ben: a séma kényszerítése & evolúciója](https://databricks.com/blog/2019/09/24/diving-into-delta-lake-schema-enforcement-evolution.html) |
 | **Naplózási előzmények** | A Delta Lake Transaction napló rögzíti a módosítások teljes naplózási nyomvonalát biztosító adatokon végrehajtott összes módosítás részleteit. |
-| **Frissítések és törlések** | A Delta Lake számos funkció esetében támogatja a Scala/Java/Python és az SQL API-kat. Az egyesítési, frissítési és törlési műveletek támogatása segíti a megfelelőségi követelmények teljesítését. További információkért lásd: [a Delta Lake 0.4.0 kiadásának bejelentése](https://delta.io/news/delta-lake-0-4-0-released/) , valamint az [egyszerű, megbízható upsert és a a Python API-k használatával történő törlése a Delta Lake-táblázatokban](https://databricks.com/blog/2019/10/03/simple-reliable-upserts-and-deletes-on-delta-lake-tables-using-python-apis.html), beleértve a DML-parancsok egyesítéséhez, frissítéséhez és törléséhez szükséges kódrészleteket. |
+| **Frissítések és törlések** | A Delta Lake számos funkció esetében támogatja a Scala/Java/Python és az SQL API-kat. Az egyesítési, frissítési és törlési műveletek támogatása segíti a megfelelőségi követelmények teljesítését. További információkért lásd: [a Delta Lake 0.6.1 kiadásának bejelentése](https://delta.io/news/delta-lake-0-6-1-released/), [bejelenti a Delta Lake 0,7 kiadását](https://delta.io/news/delta-lake-0-7-0-released/) és [egyszerű, megbízható Upsert, és törli a különbözeti Lake-táblákat a Python API](https://databricks.com/blog/2019/10/03/simple-reliable-upserts-and-deletes-on-delta-lake-tables-using-python-apis.html)-k használatával, amely tartalmazza a DML-parancsok egyesítéséhez, frissítéséhez és törléséhez szükséges kódrészleteket. |
 | **100%-kompatibilis a Apache Spark API-val** | A fejlesztők a meglévő adatfolyamatokkal és a meglévő Spark-implementációkkal teljes mértékben kompatibilis módon használhatják a Delta Lake-et. |
 
 A teljes dokumentációért lásd a [Delta Lake dokumentációs oldalát](https://docs.delta.io/latest/delta-intro.html) .
 
-További információ: [Delta Lake Project](https://lfprojects.org).
+További információ: [Delta Lake Project](https://github.com/delta-io/delta).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [.NET Apache Spark dokumentációhoz](/dotnet/spark?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 - [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics)

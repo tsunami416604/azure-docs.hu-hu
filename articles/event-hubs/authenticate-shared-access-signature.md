@@ -3,12 +3,13 @@ title: Az Azure Event Hubshoz való hozzáférés hitelesítése közös hozzáf
 description: Ez a cikk bemutatja, hogyan hitelesítheti Event Hubs erőforrásokhoz való hozzáférést közös hozzáférési aláírások használatával.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: ed389460cf3461df060df79fb756e73711f693f0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 5397cd746f33fc82ee63cc7d2a1f396ba704f334
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85318045"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423099"
 ---
 # <a name="authenticate-access-to-event-hubs-resources-using-shared-access-signatures-sas"></a>Hozzáférés hitelesítése Event Hubs erőforrásokhoz megosztott hozzáférési aláírások (SAS) használatával
 A közös hozzáférésű aláírás (SAS) részletesen szabályozza az Ön által a közös hozzáférési aláírással rendelkező ügyfelek számára biztosított hozzáférés típusát. Íme néhány, a SAS-ben beállítható vezérlő: 
@@ -217,7 +218,7 @@ Ha például az engedélyezési szabályok hatókörét úgy szeretné meghatár
 ## <a name="authenticating-event-hubs-consumers-with-sas"></a>Event Hubs ügyfelek hitelesítése SAS használatával 
 A Event Hubs gyártók által generált adatokból felhasznált háttérbeli alkalmazások hitelesítéséhez Event Hubs jogkivonat-hitelesítéshez az szükséges, hogy az ügyfelek rendelkezzenek a **felügyeleti jogokkal vagy** a Event Hubs névtér vagy az Event hub-példányhoz vagy a témakörhöz rendelt **figyelési** jogosultságokkal. Az adatok felhasználása Event Hubs fogyasztói csoportok használatával történik. Míg a SAS-szabályzat részletes hatókört biztosít, ez a hatókör csak az entitás szintjén van meghatározva, és nem a fogyasztói szinten. Ez azt jelenti, hogy a névtér szintjén vagy az Event hub-példányon vagy a témakör szintjén megadott jogosultságok az adott entitás fogyasztói csoportjaira lesznek alkalmazva.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Lásd az alábbi cikkeket:
 
 - [Engedélyezés SAS használatával](authenticate-shared-access-signature.md)

@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00dfac7c3036c4fd457c5d3a6bb4eb7bd4e56998
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cb119ef0ffd4da4dc524c9d3c0a88b94e2251142
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84731324"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423558"
 ---
 # <a name="download-a-list-of-users-in-azure-active-directory-portal"></a>Felhasználók listájának letöltése Azure Active Directory portálon
 
@@ -72,13 +72,13 @@ A felhasználók listájának az Azure AD felügyeleti központból való letöl
 
 A függőben lévő tömeges kérelmek állapotát a **tömeges művelet eredményei** lapon tekintheti meg.
 
-[![](media/users-bulk-download/bulk-center.png "Check status in the Bulk Operations Results page")](media/users-bulk-download/bulk-center.png#lightbox)
+[![A tömeges műveletek eredményei lapon található állapot keresése.](media/users-bulk-download/bulk-center.png)](media/users-bulk-download/bulk-center.png#lightbox)
 
 ## <a name="bulk-download-service-limits"></a>Szolgáltatási korlátok tömeges letöltése
 
 A felhasználók listájának létrehozásához minden tömeges tevékenység akár egy óráig is futhat. Ez lehetővé teszi, hogy legalább 500 000 felhasználóból álló listát hozzanak létre és töltsenek le.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Felhasználók tömeges hozzáadása](users-bulk-add.md)
 - [Felhasználók tömeges törlése](users-bulk-delete.md)

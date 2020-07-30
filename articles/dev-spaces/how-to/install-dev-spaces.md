@@ -5,18 +5,18 @@ ms.date: 07/24/2019
 ms.topic: conceptual
 description: Ismerje meg, hogyan engedélyezheti az Azure dev Spaces szolgáltatást egy AK-fürtön, és hogyan telepítheti az ügyféloldali eszközöket.
 keywords: Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s
-ms.openlocfilehash: b62c4a4861529c19363f159b8cc64a32a0ba11e8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ac010a466f7db7b829cc3d6f0687dbdbefdd7b6c
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83996261"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407897"
 ---
 # <a name="enable-azure-dev-spaces-on-an-aks-cluster-and-install-the-client-side-tools"></a>Az Azure dev-helyek engedélyezése egy AK-fürtön és az ügyféloldali eszközök telepítése
 
 Ebből a cikkből megtudhatja, hogyan engedélyezheti az Azure dev Spaces szolgáltatást egy AK-fürtön, valamint telepítheti az ügyféloldali eszközöket.
 
-## <a name="enable-or-remove-azure-dev-spaces-using-the-cli"></a>Azure dev-helyek engedélyezése vagy eltávolítása a parancssori felület használatával
+## <a name="enable-azure-dev-spaces-using-the-cli"></a>Az Azure dev Spaces használatának engedélyezése a parancssori felületről
 
 Ahhoz, hogy a parancssori felületről engedélyezzék a dev Spaces használatát, a következőkre lesz szüksége:
 * Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, létrehozhat egy [ingyenes fiókot][az-portal-create-account].
@@ -49,17 +49,6 @@ Managed Kubernetes cluster 'myAKSCluster' in resource group 'myResourceGroup' is
 
 A `use-dev-spaces` parancs az Azure dev Spaces CLI-t is telepíti.
 
-Ha el szeretné távolítani az Azure dev-helyeket az AK-fürtből, használja az `azds remove` parancsot. Például:
-
-```azurecli
-$ azds remove -g MyResourceGroup -n MyAKS
-Azure Dev Spaces Controller 'MyAKS' in resource group 'MyResourceGroup' that targets resource 'MyAKS' in resource group 'MyResourceGroup' will be deleted. This will remove Azure Dev Spaces instrumentation from the target resource for new workloads. Continue? (y/N): y
-
-Deleting Azure Dev Spaces Controller 'MyAKS' in resource group 'MyResourceGroup' that targets resource 'MyAks' in resource group 'MyResourceGroup' (takes a few minutes)...
-```
-
-A fenti parancs eltávolítja az Azure dev Spaces elemet a *MyAKS* -fürtről a *MyResourceGroup*-ben. Az Azure dev Spaces szolgáltatással létrehozott névterek a számítási feladatokkal együtt maradnak, de ezekben a névterekben az új munkaterhelések nem lesznek kialakítva az Azure dev Spaces szolgáltatással. Továbbá, ha újraindítja az Azure dev Spaces szolgáltatással létrehozott meglévő hüvelyeket, hibákat tapasztalhat. Ezeket a hüvelyeket az Azure dev Spaces-eszközök nélkül kell újratelepíteni. Ha teljes mértékben el szeretné távolítani az Azure dev-helyeket a fürtből, törölje az összes olyan névtér összes hüvelyét, amelyben az Azure dev Spaces engedélyezve volt.
-
 ## <a name="install-the-client-side-tools"></a>Az ügyféloldali eszközök telepítése
 
 Az Azure dev Spaces ügyféloldali eszközeivel a helyi gépről a fejlesztői tereket egy AK-fürtön keresztül használhatja. Az ügyféloldali eszközök több módon is telepíthetők:
@@ -68,7 +57,26 @@ Az Azure dev Spaces ügyféloldali eszközeivel a helyi gépről a fejlesztői t
 * A [Visual Studio 2019][visual-studio]-es verziójában telepítse az Azure-fejlesztési számítási feladatot.
 * Töltse le és telepítse a [Windows][cli-win], [Mac][cli-mac]vagy [Linux][cli-linux] parancssori felületet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="remove-azure-dev-spaces-using-the-cli"></a>Az Azure dev Spaces eltávolítása a parancssori felületről
+
+Ha el szeretné távolítani az Azure dev-helyeket az AK-fürtből, használja az `azds remove` parancsot.
+
+```azurecli
+azds remove -g MyResourceGroup -n MyAKS
+```
+
+Az alábbi példában a kimenetben az Azure dev Spaces eltávolítása látható a *MyAKS* -fürtből.
+
+```azurecli
+$ azds remove -g MyResourceGroup -n MyAKS
+Azure Dev Spaces Controller 'MyAKS' in resource group 'MyResourceGroup' that targets resource 'MyAKS' in resource group 'MyResourceGroup' will be deleted. This will remove Azure Dev Spaces instrumentation from the target resource for new workloads. Continue? (y/N): y
+
+Deleting Azure Dev Spaces Controller 'MyAKS' in resource group 'MyResourceGroup' that targets resource 'MyAks' in resource group 'MyResourceGroup' (takes a few minutes)...
+```
+
+Az Azure dev Spaces szolgáltatással létrehozott névterek a számítási feladatokkal együtt maradnak, de ezekben a névterekben az új munkaterhelések nem lesznek kialakítva az Azure dev Spaces szolgáltatással. Továbbá, ha újraindítja az Azure dev Spaces szolgáltatással létrehozott meglévő hüvelyeket, hibákat tapasztalhat. Ezeket a hüvelyeket az Azure dev Spaces-eszközök nélkül kell újratelepíteni. Ha teljes mértékben el szeretné távolítani az Azure dev-helyeket a fürtből, törölje az összes olyan névtér összes hüvelyét, amelyben az Azure dev Spaces engedélyezve volt.
+
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogy az Azure dev Spaces hogyan segíti az összetettebb alkalmazások fejlesztését több tárolóban, és hogyan egyszerűsítheti az együttműködésen alapuló fejlesztést, ha a kód különböző verzióival vagy ágaival dolgozik a különböző helyeken.
 

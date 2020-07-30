@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: Microsoft-BradleyWright
 ms.author: brwrigh
 ms.date: 07/07/2020
-ms.openlocfilehash: 193781e078f12dec553d98c15699c7e665966a87
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 8546e5fde51ddc8a29a852a2c5dbcd25fffad287
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326621"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87405245"
 ---
 # <a name="create-a-managed-service-offer"></a>Felügyelt szolgáltatásra vonatkozó ajánlat létrehozása
 
@@ -90,7 +90,7 @@ Az alábbi példa bemutatja, hogyan jelennek meg az ajánlati információk a Az
 3. Hasznos hivatkozások
 4. Képernyőképek
 
-### <a name="name"></a>Név
+### <a name="name"></a>Name
 
 Az itt megadott név jelenik meg az ügyfelek számára az ajánlati lista címének megfelelően. Ez a mező előre fel van töltve az ajánlat- **aliashoz** megadott szöveggel az ajánlat létrehozásakor, de ez az érték módosítható. Ez a név lehet védjeggyel ellátott (és előfordulhat, hogy védjegyeket vagy szerzői jogi szimbólumokat is tartalmaz). A név nem lehet hosszabb 50 karakternél, és nem tartalmazhat hangulatjelek.
 
@@ -102,7 +102,7 @@ Adja meg az ajánlat rövid leírását (legfeljebb 100 karakter), amelyet a pia
 
 Adja meg az ajánlat hosszabb leírását (legfeljebb 256 karakter). Ez a hosszú összefoglalás a piactér keresési eredményei között is felhasználható.
 
-### <a name="description"></a>Leírás
+### <a name="description"></a>Description
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -195,6 +195,9 @@ Jelenleg csak egy díjszabási modell használható a felügyelt szolgáltatási
 
 A **terv láthatósága** szakaszban megadhatja, hogy a tervnek [privátnak](../../marketplace/private-offers.md)kell lennie. Ha nem jelöli **be a jelölőnégyzetet, a csomag** nem lesz korlátozva meghatározott ügyfelekre (vagy adott számú ügyfélre).
 
+> [!NOTE]
+> A Private-csomagok nem támogatottak a Cloud Solution Provider (CSP) program viszonteladóján keresztül létesített előfizetésekkel.
+
 Ha ezt a csomagot csak bizonyos ügyfelek számára szeretné elérhetővé tenni, válassza az **Igen**lehetőséget. Ha így tesz, azonosítania kell az ügyfeleket az előfizetési azonosítók megadásával. Ezek megadhatók egyenként (legfeljebb 10 előfizetés esetén) vagy egy. csv-fájl feltöltésével (legfeljebb 10 000 előfizetésre az összes csomag esetében). Ügyeljen arra, hogy a saját előfizetéseit is tartalmazza, hogy tesztelje és érvényesítse az ajánlatot.
 
 > [!IMPORTANT]
@@ -263,7 +266,7 @@ Amikor egy ügyfél üzembe helyezi az ajánlatot, az Azure-beli [delegált erő
 
 Bármikor [közzéteheti az ajánlat frissített verzióját](update-existing-offer.md) . Előfordulhat például, hogy új szerepkör-definíciót szeretne hozzáadni egy korábban közzétett ajánlathoz. Ha így tesz, a már hozzáadott ügyfelek egy ikont láthatnak a Azure Portal [**szolgáltatók**](../../lighthouse/how-to/view-manage-service-providers.md) lapján, amely lehetővé teszi, hogy a frissítés elérhető legyen. Minden ügyfél áttekintheti a módosításokat, és eldöntheti, hogy szeretné-e frissíteni az új verzióra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Meglévő ajánlat frissítése a kereskedelmi piactéren](./update-existing-offer.md)
 - [További tudnivalók az Azure Lighthouse-ról](../../lighthouse/overview.md)

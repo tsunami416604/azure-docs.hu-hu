@@ -8,14 +8,14 @@ ms.topic: overview
 ms.date: 07/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 26be41361a861795a9897442d9a0cc8bb14c1450
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 6ff1f20314d79c507c696325d19c83e10ec4513f
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292578"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386573"
 ---
-# <a name="what-is-windows-virtual-desktop"></a>Mit takar a Windows Virtual Desktop? 
+# <a name="what-is-windows-virtual-desktop"></a>Mit takar a Windows Virtual Desktop?
 
 A Windows virtuális asztal egy felhőben futó asztali és app Virtualization szolgáltatás.
 
@@ -78,7 +78,7 @@ Az infrastruktúrának a következő dolgokra van szüksége a Windows rendszer�
   * Azure AD Connect (hibrid szervezetekhez)
   * Azure AD Domain Services (hibrid vagy Felhőbeli szervezetekhez)
 * Olyan Azure-előfizetés, amely egy olyan virtuális hálózatot tartalmaz, amely vagy amely a Windows Serverhez csatlakozik, vagy amely kapcsolódik a Active Directory
-  
+
 A Windows rendszerű virtuális asztali környezethez létrehozott Azure-beli virtuális gépeknek a következőknek kell lenniük:
 
 * [Szabványos tartományhoz csatlakoztatott](../active-directory-domain-services/active-directory-ds-comparison.md) vagy [hibrid ad-csatlakozás](../active-directory/devices/hybrid-azuread-join-plan.md). A virtuális gépek nem csatlakoztathatók Azure AD-hez.
@@ -105,7 +105,7 @@ A következő Távoli asztal-ügyfelek támogatják a Windows rendszerű virtuá
 * [Web](connect-web.md)
 * [macOS](connect-macos.md)
 * [iOS](connect-ios.md)
-* [Android (előzetes verzió)](connect-android.md)
+* [Android](connect-android.md)
 
 > [!IMPORTANT]
 > A Windows virtuális asztal nem támogatja a RemoteApp-és asztali kapcsolatok (RADC) ügyfelet vagy a Távoli asztali kapcsolat (MSTSC) ügyfelet.
@@ -128,18 +128,18 @@ A Windows rendszerű virtuális asztali szolgáltatás a következő x64 operác
 
 A Windows virtuális asztal nem támogatja az x86-os (32 bites), a Windows 10 Enterprise N vagy a Windows 10 Enterprise KN-lemezképek használatát. A Windows 7 szintén nem támogatja a felügyelt Azure Storage-ban üzemeltetett VHD-vagy VHDX-alapú profilokat az adott szektor méretének korlátozása miatt.
 
-Az elérhető automatizálási és üzembe helyezési lehetőségek attól függnek, hogy melyik operációs rendszerre és verzióra van kiválasztva, ahogy az a következő táblázatban látható: 
+Az elérhető automatizálási és üzembe helyezési lehetőségek attól függnek, hogy melyik operációs rendszerre és verzióra van kiválasztva, ahogy az a következő táblázatban látható:
 
 |Operációs rendszer|Azure képtára|VIRTUÁLIS gépek manuális üzembe helyezése|Azure Resource Manager sablonok integrációja|Gazdagép-készletek kiépítése az Azure piactéren|
 |--------------------------------------|:------:|:------:|:------:|:------:|
 |Windows 10 multi-session, 1903-es verzió|Igen|Igen|Igen|Igen|
-|Windows 10 multi-session, 1809-es verzió|Igen|Igen|Nem|Nem|
+|Windows 10 multi-session, 1809-es verzió|Igen|Igen|No|Nem|
 |Windows 10 Enterprise, 1903-es verzió|Igen|Igen|Igen|Igen|
-|Windows 10 Enterprise, 1809-es verzió|Igen|Igen|Nem|Nem|
-|Windows 7 Enterprise|Igen|Igen|Nem|Nem|
-|Windows Server 2019|Igen|Igen|Nem|Nem|
+|Windows 10 Enterprise, 1809-es verzió|Igen|Igen|No|Nem|
+|Windows 7 Enterprise|Igen|Igen|No|Nem|
+|Windows Server 2019|Igen|Igen|No|Nem|
 |Windows Server 2016|Igen|Igen|Igen|Igen|
-|Windows Server 2012 R2|Igen|Igen|Nem|Nem|
+|Windows Server 2012 R2|Igen|Igen|No|Nem|
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -1,26 +1,29 @@
 ---
-title: Helymeghatározáshoz lefedettség | Microsoft Azure térképek
-description: A hely címe szélességi és hosszúsági koordinátákra történő átalakításának folyamata helymeghatározáshoz néven ismert. Ebben a cikkben megismerheti a helymeghatározáshoz-lefedettséggel rendelkező régiókat Microsoft Azure Maps-ben.
+title: A helymeghatározáshoz lefedettsége Microsoft Azure Maps keresési szolgáltatásban
+description: Ebből a cikkből megtudhatja, hogy Microsoft Azure Maps helymeghatározáshoz lefedettsége különböző országokban/régiókban.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 12/31/2019
+ms.date: 07/28/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: timlt
-ms.openlocfilehash: 52c6cda800b535109d906fd6e6ae1aa8c709f23f
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+manager: philmea
+ms.openlocfilehash: 6014cb4dda18a68b9149206adf034536161eb08e
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132806"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386911"
 ---
 # <a name="azure-maps-geocoding-coverage"></a>Azure Maps helymeghatározáshoz lefedettsége
 
-Ha Azure Mapskal rendelkező helyet keres, a keresési szolgáltatás, például a [keresési címek lekérése](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress), a keresési kifejezéseket veszi át, és visszaadja a szélességi és hosszúsági koordinátákat. Ezt a folyamatot helymeghatározáshoz nevezzük. Azure Maps azonban az összes régió és ország esetében nem rendelkezik azonos szintű információval és pontossággal. Ebből a cikkből megtudhatja, hogy milyen típusú helyszíneket megbízhatóan kereshet az egyes régiókban. 
+A Azure Maps [Search szolgáltatás](https://docs.microsoft.com/rest/api/maps/search) támogatja a helymeghatározáshoz, ami azt jelenti, hogy az API-kérés tartalmazhat keresési kifejezéseket, például egy lakcímet vagy egy hely nevét, és visszaadja az eredményt szélességi és hosszúsági koordinátákként. Például a Azure Maps [keresési címek API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress) fogadja a helyadatok tárolására szolgáló lekérdezéseket, és az eredményeket szélességi és hosszúsági koordinátákként adja vissza.
 
-Az országokban/régiókban való geocode a közúti adatlefedettségtől és a helymeghatározáshoz szolgáltatás helymeghatározáshoz pontosságtól függ. A következő kategorizálási szintek határozzák meg, hogy az egyes országokban/régiókban milyen szintű helymeghatározáshoz-támogatás van érvényben.
-* **Címterület** – az adatcímek feloldhatók egy szélességi/hosszúsági koordinátákra a cím parcelláján (a tulajdonság határán) belül. Más néven "tetőtéri" pontosnak kell lennie. Ez a legmagasabb szintű pontosság a címek számára. 
+A Azure Maps [keresési szolgáltatás](https://docs.microsoft.com/rest/api/maps/search) azonban nem rendelkezik azonos szintű információkkal és pontossággal minden régió és ország tekintetében. Ebből a cikkből megtudhatja, hogy milyen típusú helyszíneket megbízhatóan kereshet az egyes régiókban.
+
+Az országokban/régiókban való geocode az helymeghatározáshoz szolgáltatás közúti adatlefedettsége és helymeghatározáshoz pontossága függ. A következő kategorizálással határozható meg az egyes országok/régiók helymeghatározáshoz-támogatásának szintje.
+
+* **Címterület** – a címtartomány (a tulajdonság határán) belüli szélességi/hosszúsági koordinátákhoz is feloldhatók. A címeket gyakran "tetőtéri" pontosságnak nevezik, amely a címek számára elérhető legmagasabb szintű pontosság.
 * **Házszámok** – a címek az utca szélességi/hosszúsági koordinátáihoz vannak interpolált.
 * **Utca szintű** – a címek a címet tartalmazó utca szélességi/hosszúsági koordinátáihoz vannak feloldva. Lehetséges, hogy a házszám nem dolgozható fel.
 * A **városi szintű** nevek támogatottak.
@@ -214,7 +217,6 @@ Az országokban/régiókban való geocode a közúti adatlefedettségtől és a 
 | Üzbegisztán                                          |                 |                |              |      ✓     |          ✓         |
 | Vatikán                                        |                 |                |       ✓      |      ✓     |          ✓         |
 
-
 ## <a name="middle-east-and-africa"></a>Közel-Kelet és Afrika
 
 | Ország/régió                                      | Címzési pontok |Házszámok | Utca szintje | Városi szint | Érdekes pontok |
@@ -295,11 +297,8 @@ Az országokban/régiókban való geocode a közúti adatlefedettségtől és a 
 | Zambia                                              |                 |                |       ✓      |      ✓     |          ✓         |
 | Zimbabwe                                            |                 |                |       ✓      |      ✓     |          ✓         |
 
+## <a name="next-steps"></a>Következő lépések
 
-
-## <a name="next-steps"></a>További lépések
-
-Azure Maps helymeghatározáshoz kapcsolatos további információkért tekintse meg a [keresési](https://docs.microsoft.com/rest/api/maps/search) segédletek oldalain.
-
-Ismerje meg a [Maps Traffic szolgáltatás lefedettségi területeit](traffic-coverage.md). 
-
+További információ a Azure Maps helymeghatározáshoz:
+> [!div class="nextstepaction"]
+> [Azure Maps keresési szolgáltatás](https://docs.microsoft.com/rest/api/maps/search)

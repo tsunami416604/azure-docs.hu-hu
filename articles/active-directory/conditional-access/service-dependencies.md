@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00b23a845002f5a92128917d81fdadf5a647d798
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 578f1e97c8a53604edca7b803933139362a763a7
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253188"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419733"
 ---
 # <a name="what-are-service-dependencies-in-azure-active-directory-conditional-access"></a>Mi a szolgáltatás függőségei Azure Active Directory feltételes hozzáférésben? 
 
@@ -51,6 +51,7 @@ Az alábbi táblázat felsorolja azokat a szolgáltatási függőségeket, amely
 |                     | SharePoint                                  | Korai kötésű |
 | Microsoft Teams     | Exchange                                    | Korai kötésű |
 |                     | MS Planner                                  | Késői kötés  |
+|                     | Microsoft Stream                            | Késői kötés  |
 |                     | SharePoint                                  | Korai kötésű |
 |                     | Skype Vállalati online verzió                   | Korai kötésű |
 | Office-portál       | Exchange                                    | Késői kötés  |
@@ -66,6 +67,6 @@ Az alábbi táblázat felsorolja azokat a szolgáltatási függőségeket, amely
 |                     | SharePoint                                  | Korai kötésű |
 | Microsoft To-Do     | Exchange                                    | Korai kötésű |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha meg szeretné tudni, hogyan valósítható meg a feltételes hozzáférés a környezetben, tekintse meg [a feltételes hozzáférés Megtervezése Azure Active Directoryban](plan-conditional-access.md)című témakört.

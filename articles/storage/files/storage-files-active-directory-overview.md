@@ -143,7 +143,7 @@ Azure Files támogatja az adatok Azure-fájlmegosztásba való másolásakor a c
 ## <a name="pricing"></a>Díjszabás
 A Storage-fiókjában nem található további szolgáltatás, amely lehetővé teszi az identitás-alapú hitelesítés használatát az SMB protokollon keresztül. A díjszabással kapcsolatos további információkért tekintse meg a [Azure Files díjszabását](https://azure.microsoft.com/pricing/details/storage/files/) és a [Azure ad Domain Services díjszabását](https://azure.microsoft.com/pricing/details/active-directory-ds/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az SMB-en keresztüli Azure Files-és identitás-alapú hitelesítéssel kapcsolatos további információkért tekintse meg a következő forrásokat:
 
 - [Azure Files üzembe helyezésének tervezése](storage-files-planning.md)

@@ -14,12 +14,13 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - 'Role: Operations'
-ms.openlocfilehash: be63cc2280691e85584ba4d6dd30fe751505a672
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+- devx-track-javascript
+ms.openlocfilehash: 223ec01165922702f8f8fa17b09e530b16fa79e5
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325457"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423473"
 ---
 # <a name="control-access-to-iot-hub"></a>IoT Hub-hozzáférés szabályozása
 
@@ -464,7 +465,7 @@ A IoT Hub Fejlesztői útmutatóban található további témakörök a követke
 
 * [RFC 5246 – a Transport Layer Security (TLS) protokoll 1,2-es verziója](https://tools.ietf.org/html/rfc5246/) további információkat nyújt a TLS-hitelesítésről.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte a hozzáférési IoT Hub vezérlését, az alábbi IoT Hub fejlesztői útmutató témaköreiben találhat további információt:
 

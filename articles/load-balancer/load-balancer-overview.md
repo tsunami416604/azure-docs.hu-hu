@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 1/14/2020
 ms.author: allensu
-ms.openlocfilehash: 08f7554ed9648df8b225fe9f205ee13b0f693c44
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 898f63cbfba082f8c268587bcd2ea7f575d07f81
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170564"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420328"
 ---
 # <a name="what-is-azure-load-balancer"></a>Mi az az Azure Load Balancer?
 
@@ -32,7 +32,7 @@ A **[nyilvános terheléselosztó](./components.md#frontend-ip-configurations)**
 A **[belső (vagy magánhálózati)](./components.md#frontend-ip-configurations)** terheléselosztó akkor használatos, ha a magánhálózati IP-címekre csak a frontenden van szükség. A belső terheléselosztó a virtuális hálózaton belüli forgalom elosztására szolgál. A terheléselosztó felülete hibrid forgatókönyv esetén a helyszíni hálózatról is elérhető.
 
 <p align="center">
-  <img src="./media/load-balancer-overview/load-balancer.svg" width="512" title="Azure Load Balancer">
+  <img src="./media/load-balancer-overview/load-balancer.svg" alt="Figure depicts both public and internal load balancers directing traffic to port 80 on multiple servers on a Web tier and port 443 on multiple servers on a business tier." width="512" title="Azure Load Balancer">
 </p>
 
 *Ábra: többrétegű alkalmazások terheléselosztása nyilvános és belső Load Balancer használatával*
@@ -75,7 +75,7 @@ Standard Load Balancer díjszabási információkért lásd: [Load Balancer díj
 Az Alapszintű Load Balancer használata ingyenes.
 Lásd: [Load Balancer SLA](https://aka.ms/lbsla)-ja. Az alapszintű Load Balancer nem biztosít SLA-t.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Lásd: [Alapszintű Load Balancer frissítése](upgrade-basic-standard.md) az alapszintű Load Balancer frissítéséhez standard Load Balancerre.
 
 A Load Balancer használatának első lépéseiért tekintse meg [a nyilvános standard Load Balancer létrehozását](quickstart-load-balancer-standard-public-portal.md) ismertető témakört.

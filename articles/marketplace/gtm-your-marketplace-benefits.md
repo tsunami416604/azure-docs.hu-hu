@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/06/2020
 author: keferna
 ms.author: keferna
-ms.openlocfilehash: 029883ea1ac85bdd1ea256caaa711d6537c06a76
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 8aa9fa1701f41c6fd1adacc264b811e0d9849ab5
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287895"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87408118"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>A kereskedelmi piactér előnyei
 
@@ -106,9 +106,15 @@ A [lista-és próbaverzió](determine-your-listing-type.md) -közzétevők az aj
 A Microsoft fenntartja a jogot arra, hogy visszavonja és leállítsa a Marketplace jutalmazási előnyeit a kiadók számára, akik: 
 
 * A Piactéri lista használatával illegális tevékenységeket végezhet.
+* Olyan vásárlást kap, amely ismert vagy vélhetően hamis.
 * Nem szerepelnek a kereskedelmi piactéren. 
 * A szerzői jogi vagy a védjegyekre vonatkozó törvényeket sértő, marketinget vagy egyéb tartalmakat bemutató ajánlatunk.
 * Megsértheti az [Azure szponzorálási program](https://azure.microsoft.com/offers/ms-azr-0036p/)szabályzatait, beleértve a saját belső műveletei vagy Bitcoin-adatbányászata esetében az Azure szponzorálási támogatását.
+
+A Microsoft fenntartja a jogot a Piactéri jutalmak visszavonására és megszüntetésére a következő esetekben:
+
+* A vásárlást elvégező ügyfél véletlenül, és meg kívánja szüntetni a vásárlást. 
+* Az ügyfél a partner termékének használata előtt megszakítja a szolgáltatást.
 
 ### <a name="offer-availability"></a>Ajánlat elérhetősége
 
@@ -116,7 +122,7 @@ Ezt az ajánlatot angol nyelven, az Azure Marketplace-en vagy Microsoft AppSourc
 
 A megtévesztőnek bizonyuló tranzakciók nem számítanak bele a kiadó által számlázott értékesítési program szintjébe, ahogy azt a [lista, a próbaverzió, a Consulting](#list-trial-and-consulting-benefits) szakasz és a [Transact partner előnyei](#marketplace-rewards-for-transact-partners) című szakasz tartalmazza. A csalás eltávolítását követően a Microsoft kiosztja a partnereket a jogosultsági szintek szerint a tényleges számlázott értékesítések alapján.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az ajánlat létrehozásához vagy konfigurálásához jelentkezzen be a [partner Centerben](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) .
 

@@ -10,18 +10,19 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 2ca95731cc2d85675545591d8ef38e461484c6e9
-ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 0c893609d81abbe1ea1bdfab2d3d0c6e49bf98f4
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85368022"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406656"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-nodejs"></a>Rövid útmutató: az arcok észlelése egy képpel a Face REST API és Node.js használatával
 
 Ebben a rövid útmutatóban az Azure Face REST API és az Node.js használatával azonosíthatja az emberi arcokat egy képen.
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -112,7 +113,7 @@ A módosítások elvégzése után nyisson meg egy parancssort, és futtassa a f
 node facedetection.js
 ```
 
-Itt találja a teljes JSON-adatforrást `response.data` . Példa:
+Itt találja a teljes JSON-adatforrást `response.data` . Például:
 
 ```json
 [

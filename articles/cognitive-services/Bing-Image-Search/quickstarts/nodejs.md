@@ -11,13 +11,13 @@ ms.subservice: bing-image-search
 ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: aahi
-ms.custom: seodec2018
-ms.openlocfilehash: 2c411a0c8ba838bdac8c0e487e5dcc54db522311
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.custom: seodec2018, devx-track-javascript
+ms.openlocfilehash: f9737eb42552ef102a9a970c5d5ee28a781a1fea
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85603400"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406112"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-nodejs"></a>Gyors útmutató: rendszerképek keresése a Bing Image Search REST API és Node.js használatával
 
@@ -153,7 +153,7 @@ A Bing Image Search API válaszai JSON formátumban érkeznek vissza. A mintavá
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Egyoldalas alkalmazás létrehozása](../tutorial-bing-image-search-single-page-app.md)

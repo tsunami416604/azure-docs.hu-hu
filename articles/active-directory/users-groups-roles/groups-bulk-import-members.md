@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 755e59a029b0a12e51db53c6c7d3bb00358af635
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 89b8097aa288be710e95e835bb66904ef2c6ab56
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84742012"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421671"
 ---
 # <a name="bulk-add-group-members-in-azure-active-directory"></a>Csoporttagok tömeges hozzáadása Azure Active Directory
 
@@ -69,7 +69,7 @@ A letöltött CSV-sablon sorai a következők:
 
 Az összes függőben lévő tömeges kérelem állapotát a **tömeges művelet eredményei** lapon tekintheti meg.
 
-[![](media/groups-bulk-import-members/bulk-center.png "Check status in the Bulk Operations Results page")](media/groups-bulk-import-members/bulk-center.png#lightbox)
+[![A tömeges műveletek eredményei lapon található állapot keresése.](media/groups-bulk-import-members/bulk-center.png)](media/groups-bulk-import-members/bulk-center.png#lightbox)
 
 A tömeges műveletben szereplő egyes sorokra vonatkozó részletekért válassza ki a **# sikeres**, **# sikertelen**vagy az **összes kérelem** oszlopban szereplő értékeket. Ha hiba történt, a hiba okai lesznek felsorolva.
 
@@ -77,7 +77,7 @@ A tömeges műveletben szereplő egyes sorokra vonatkozó részletekért válass
 
 A csoporttagok listájának importálására szolgáló tömeges tevékenységek akár egy óráig is futhatnak. Ez lehetővé teszi, hogy legalább 40 000 tagból álló listát importáljon.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Csoporttagok tömeges eltávolítása](groups-bulk-remove-members.md)
 - [Csoport tagjainak letöltése](groups-bulk-download-members.md)

@@ -8,12 +8,13 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/05/2018
 ms.topic: conceptual
-ms.openlocfilehash: 694cc83ffce20a8744d7452a8f6d67c9ce23641c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 207e5b8d9735004b6dc1a9662a3f66fbed8c2307
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82187228"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422691"
 ---
 # <a name="add-a-custom-panel-to-the-dashboard-in-the-remote-monitoring-solution-accelerator-web-ui"></a>Egyéni panel hozzáadása az irányítópulthoz a távoli figyelési megoldás gyorsító webes FELÜLETén
 
@@ -92,7 +93,7 @@ npm start
 
 Az előző parancs helyileg futtatja a felhasználói felületet `http://localhost:3000/dashboard` . Az új panel megtekintéséhez navigáljon az **irányítópult** lapra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a cikkből megtudhatta, hogy milyen erőforrások érhetők el az irányítópultok webes felhasználói felületen való hozzáadásához és testreszabásához a távoli figyelési megoldás-gyorsító segítségével.
 

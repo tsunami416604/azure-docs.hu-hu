@@ -1,14 +1,14 @@
 ---
 title: Felügyelt szolgáltatási ajánlatok az Azure Marketplace-en
 description: A felügyelt szolgáltatás lehetővé teszi, hogy a szolgáltatók erőforrás-kezelési ajánlatokat értékesítsenek az ügyfeleknek az Azure piactéren.
-ms.date: 05/04/2020
+ms.date: 07/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: 119ecc8d15ef93a265cb5419404840496aaa1572
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 4f3813b7e2adabe5caaf0c7a5cbe8b15ed084730
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121588"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406860"
 ---
 # <a name="managed-service-offers-in-azure-marketplace"></a>Felügyelt szolgáltatási ajánlatok az Azure Marketplace-en
 
@@ -24,7 +24,10 @@ Ezt követően a szervezet felhasználóinak az Azure-beli [delegált erőforrá
 
 A felügyelt szolgáltatások minden ajánlata egy vagy több csomagot tartalmaz. A csomagok lehetnek magán-vagy nyilvánosak is.
 
-Ha korlátozni szeretné az ajánlatát bizonyos ügyfeleknek, közzétehet egy privát csomagot. Ha így tesz, a terv csak az Ön által megadott előfizetés-azonosítók esetében vásárolható meg. További információ: [privát ajánlatok](../../marketplace/private-offers.md).
+Ha korlátozni szeretné az ajánlatát bizonyos ügyfeleknek, közzétehet egy privát csomagot. Ha így tesz, a terv csak az Ön által megadott előfizetési azonosítók esetében vásárolható meg. További információ: [privát ajánlatok](../../marketplace/private-offers.md).
+
+> [!NOTE]
+> A nyilvános ajánlatok nem támogatottak a Cloud Solution Provider (CSP) program viszonteladóján keresztül létesített előfizetésekkel.
 
 A nyilvános csomagok lehetővé teszik a szolgáltatások új ügyfelekhez való előléptetését. Ezek általában megfelelőbbek, ha csak korlátozott hozzáférésre van szüksége az ügyfél bérlője számára. Ha kapcsolatot létesített egy ügyféllel, ha úgy dönt, hogy további hozzáférést biztosítanak a szervezetnek, akkor ezt akár egy új privát csomag közzétételével is megteheti, akár [Azure Resource Manager-sablonok használatával történő további hozzáféréshez](../how-to/onboard-customer.md).
 

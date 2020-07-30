@@ -5,17 +5,18 @@ description: Ebben a rövid útmutatóban arcokat fog felismerni egy képről a 
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
+ms.custom: devx-track-javascript
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: e94dc53fa5c0a6f44417324c9a7d7c1496d18f17
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.openlocfilehash: 15b9c78a1ca24077ce88c77759519cc08076abd5
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84986616"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87405942"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-javascript"></a>Rövid útmutató: Arcfelismerés egy képen a REST API és a JavaScript használatával
 
@@ -231,7 +232,7 @@ A következő szöveg egy sikeres JSON-válasz példáját szemlélteti.
 ]
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban egy JavaScript-parancsfájlt írt, amely meghívja az Azure Face Service-t, hogy felderítse a képekben lévő arcokat, és visszaadja az attribútumait További információért olvassa el a Face API dokumentációját.
 

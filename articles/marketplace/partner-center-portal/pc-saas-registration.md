@@ -111,6 +111,6 @@ Példa a válaszra:
 
 A `"access_token"` válaszban szereplő mező értéke az, amelyet a rendszer az `<access_token>` összes SaaS-beteljesülés és a Marketplace-mérési API-k meghívásakor ad át engedélyezési paraméterként.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure AD-védelemmel ellátott alkalmazás mostantól használhatja a [SaaS-teljesítési API 2-es verzióját](./pc-saas-fulfillment-api-v2.md).

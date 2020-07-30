@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 06/22/2020
 ms.author: rogarana
-ms.openlocfilehash: 4c374e62c0807269d1457bfe46d3df4260acd45c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e2f38daea40f89e73422ca8115f2425758be81a4
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85510467"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87413102"
 ---
 # <a name="part-one-enable-ad-ds-authentication-for-your-azure-file-shares"></a>Első rész: az Azure-fájlmegosztás AD DS hitelesítésének engedélyezése 
 
@@ -53,7 +53,7 @@ Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser
 #Import AzFilesHybrid module
 Import-Module -Name AzFilesHybrid
 
-#Login with an Azure AD credential that has either storage account owner or contributer RBAC assignment
+#Login with an Azure AD credential that has either storage account owner or contributer Azure role assignment
 Connect-AzAccount
 
 #Define parameters
@@ -85,7 +85,7 @@ Ha a `Join-AzStorageAccountForAuth` fenti szkriptet már sikeresen végrehajtott
 
 ### <a name="checking-environment"></a>Környezet ellenőrzése
 
-Először ellenőriznie kell a környezet állapotát. Pontosabban ellenőriznie kell, hogy telepítve van-e a [Active Directory PowerShell](https://docs.microsoft.com/powershell/module/addsadministration/?view=win10-ps) , és hogy a rendszerhéj rendszergazdai jogosultságokkal van-e végrehajtva. Ezután ellenőrizze, hogy az az [. Storage 2,0 modul](https://www.powershellgallery.com/packages/Az.Storage/2.0.0) telepítve van-e, és ha nem, akkor telepítse. Az ellenőrzések elvégzése után ellenőrizze a AD DS, hogy van-e olyan [számítógépfiók](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) (alapértelmezett) vagy [szolgáltatás-bejelentkezési fiók](https://docs.microsoft.com/windows/win32/ad/about-service-logon-accounts) , amely már létrehozva van SPN/UPN néven "CIFS/a-Storage-Account-Name-here. file. Core. Windows. net". Ha a fiók nem létezik, hozzon létre egyet a következő szakaszban leírtak szerint.
+Először ellenőriznie kell a környezet állapotát. Pontosabban ellenőriznie kell, hogy telepítve van-e a [Active Directory PowerShell](https://docs.microsoft.com/powershell/module/addsadministration/?view=win10-ps) , és hogy a rendszerhéj rendszergazdai jogosultságokkal van-e végrehajtva. Ezután ellenőrizze, hogy az [Az.Storage 2.0 modul](https://www.powershellgallery.com/packages/Az.Storage/2.0.0) telepítve van-e, és ha nincs, telepítse. Az ellenőrzések elvégzése után ellenőrizze a AD DS, hogy van-e olyan [számítógépfiók](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) (alapértelmezett) vagy [szolgáltatás-bejelentkezési fiók](https://docs.microsoft.com/windows/win32/ad/about-service-logon-accounts) , amely már létrehozva van SPN/UPN néven "CIFS/a-Storage-Account-Name-here. file. Core. Windows. net". Ha a fiók nem létezik, hozzon létre egyet a következő szakaszban leírtak szerint.
 
 ### <a name="creating-an-identity-representing-the-storage-account-in-your-ad-manually"></a>Az AD-ben manuálisan létrehozott Storage-fiókot jelölő identitás létrehozása
 
@@ -151,7 +151,7 @@ $storageAccount.AzureFilesIdentityBasedAuth.DirectoryServiceOptions
 $storageAccount.AzureFilesIdentityBasedAuth.ActiveDirectoryProperties
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ezzel sikeresen engedélyezte a szolgáltatást a Storage-fiókjában. A szolgáltatás használatához hozzá kell rendelnie a megosztási szintű engedélyeket. Folytassa a következő szakasszal.
 

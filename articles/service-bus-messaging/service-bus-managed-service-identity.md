@@ -3,12 +3,12 @@ title: Felügyelt identitások az Azure-erőforrásokhoz Service Bus
 description: Ez a cikk azt ismerteti, hogyan használhatók a felügyelt identitások Azure Service Bus entitások (várólisták, témakörök és előfizetések) elérésére.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 01fe6c59ad878276619a96666e2da82b6a1b1fe9
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 7fbf0ec36f54f9ba5f8593094dbb0231881cbaef
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371226"
+ms.locfileid: "87423133"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-azure-service-bus-resources"></a>Felügyelt identitás hitelesítése Azure Active Directory használatával Azure Service Bus erőforrások eléréséhez
 Az [Azure-erőforrások felügyelt identitásai](../active-directory/managed-identities-azure-resources/overview.md) egy Azure-beli szolgáltatás, amely lehetővé teszi, hogy az alkalmazás kódjának futtatásához használt központi telepítéshez tartozó biztonságos identitást hozzon létre. Ezután társíthatja az identitást hozzáférés-vezérlési szerepkörökkel, amelyek egyéni engedélyeket biztosítanak az alkalmazás által igényelt egyes Azure-erőforrások eléréséhez.
@@ -58,7 +58,7 @@ Az alábbi lista azokat a szinteket ismerteti, amelyekkel a Service Bus erőforr
 - **Előfizetés**: a szerepkör-hozzárendelés az előfizetés összes erőforrás-csoportjának összes Service Bus erőforrására vonatkozik.
 
 > [!NOTE]
-> Ne feledje, hogy a RBAC szerepkör-hozzárendelések akár öt percet is igénybe vehetnek. 
+> Ne feledje, hogy az Azure-szerepkör-hozzárendelések akár öt percet is igénybe vehetnek. 
 
 További információ a beépített szerepkörök meghatározásáról: a [szerepkör-definíciók ismertetése](../role-based-access-control/role-definitions.md#management-and-data-operations). Az egyéni Azure-szerepkörök létrehozásával kapcsolatos információkért lásd: [Azure egyéni szerepkörök](../role-based-access-control/custom-roles.md).
 
@@ -108,7 +108,7 @@ Ha egy szerepkört Service Bus névtérhez szeretne rendelni, akkor navigáljon 
 4.  A **szerepkör-hozzárendelés hozzáadása** lapon válassza ki a hozzárendelni kívánt Azure Service Bus-szerepköröket. Ezután keresse meg a szerepkör hozzárendeléséhez regisztrált szolgáltatás identitását.
     
     ![Szerepkör-hozzárendelési lap hozzáadása](./media/service-bus-managed-service-identity/add-role-assignment-page.png)
-5.  Válassza a **Mentés** lehetőséget. Az az identitás, akihez a szerepkört hozzárendelte, megjelenik az adott szerepkör alatt. Az alábbi képen például látható, hogy a szolgáltatás identitása Azure Service Bus adattulajdonost tartalmaz.
+5.  Kattintson a **Mentés** gombra. Az az identitás, akihez a szerepkört hozzárendelte, megjelenik az adott szerepkör alatt. Az alábbi képen például látható, hogy a szolgáltatás identitása Azure Service Bus adattulajdonost tartalmaz.
     
     ![Szerepkörhöz rendelt identitás](./media/service-bus-managed-service-identity/role-assigned.png)
 
@@ -134,7 +134,7 @@ A módosítások elvégzése után tegye közzé és futtassa az alkalmazást. A
 > 
 > - A felügyelt identitások jelenleg nem működnek App Service üzembe helyezési pontokkal.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Service Bus üzenetkezeléssel kapcsolatos további tudnivalókért tekintse meg a következő témaköröket:
 

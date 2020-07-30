@@ -12,12 +12,12 @@ ms.date: 12/03/2019
 ms.author: kenwith
 ms.reviewer: arvindh, japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7b2a75bff21825a47f4364a8936ee7d5f122c1a
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 5b641437b7e15334d59c544b95d5be0f20f2a8df
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223890"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387540"
 ---
 # <a name="what-is-single-sign-on-sso"></a>Mi az az egyszeri bejelentkezés (SSO)?
 
@@ -46,7 +46,7 @@ Az alábbi táblázat összefoglalja az egyszeri bejelentkezés módszereit, és
 | [SAML](#saml-sso) | Felhőbeli és helyszíni | Válassza ki az SAML-t, amikor lehetséges olyan meglévő alkalmazások esetében, amelyek nem használnak OpenID connectet vagy OAuth. Az SAML olyan alkalmazások esetében működik, amelyek az egyik SAML protokoll használatával végzik a hitelesítést.|
 | [Jelszó-alapú](#password-based-sso) | Felhőbeli és helyszíni | Válassza a jelszó-alapú lehetőséget, ha az alkalmazás hitelesíti magát a felhasználónévvel és a jelszóval. A jelszó-alapú egyszeri bejelentkezés lehetővé teszi a biztonságos alkalmazások jelszavainak tárolását és a visszajátszás használatát webböngészős bővítmény vagy mobil alkalmazás használatával. Ez a módszer az alkalmazás által biztosított meglévő bejelentkezési folyamatot használja, de lehetővé teszi a rendszergazdák számára a jelszavak kezelését. |
 | [Csatolt](#linked-sign-on) | Felhőbeli és helyszíni | Válassza a csatolt bejelentkezés lehetőséget, ha az alkalmazás az egyszeri bejelentkezéshez van konfigurálva egy másik identitás-szolgáltatói szolgáltatásban. Ez a beállítás nem ad hozzá egyszeri bejelentkezést az alkalmazáshoz. Előfordulhat azonban, hogy az alkalmazás már rendelkezik egy másik szolgáltatás, például Active Directory összevonási szolgáltatások (AD FS) használatával történő egyszeri bejelentkezéssel.|
-| [Letiltva](#disabled-sso) | Felhőbeli és helyszíni | Válassza a letiltott egyszeri bejelentkezés lehetőséget, ha az alkalmazás nem áll készen az egyszeri bejelentkezésre való konfigurálásra. Ez az alapértelmezett mód az alkalmazás létrehozásakor.|
+| [Disabled](#disabled-sso) | Felhőbeli és helyszíni | Válassza a letiltott egyszeri bejelentkezés lehetőséget, ha az alkalmazás nem áll készen az egyszeri bejelentkezésre való konfigurálásra. Ez az alapértelmezett mód az alkalmazás létrehozásakor.|
 | [Integrált Windows-hitelesítés (IWA)](#integrated-windows-authentication-iwa-sso) | csak helyszíni | Az [integrált Windows-hitelesítést (IWA)](/aspnet/web-api/overview/security/integrated-windows-authentication)vagy jogcímbarát alkalmazásokat használó alkalmazások esetében válassza az IWA egyszeri bejelentkezés lehetőséget. A IWA esetében az alkalmazásproxy-összekötők a Kerberos által korlátozott delegálás (KCD) használatával hitelesítik a felhasználókat az alkalmazásban. |
 | [Fejléc-alapú](#header-based-sso) | csak helyszíni | A fejléc-alapú egyszeri bejelentkezést akkor használja, ha az alkalmazás fejléceket használ a hitelesítéshez. A fejléc-alapú egyszeri bejelentkezéshez az Azure AD PingAccess van szükség. Az alkalmazásproxy az Azure AD használatával hitelesíti a felhasználót, majd az összekötő szolgáltatáson keresztül továbbítja a forgalmat.  |
 
@@ -71,9 +71,9 @@ Az SAML-alapú egyszeri bejelentkezés a következő protokollok bármelyikét h
 - SAML 2.0
 - WS-Federation
 
-Az SAML-alapú egyszeri bejelentkezéshez használható SaaS-alkalmazás konfigurálásával kapcsolatban lásd: [SAML-alapú egyszeri bejelentkezés konfigurálása](configure-single-sign-on-non-gallery-applications.md). Emellett számos szoftveres (SaaS) alkalmazás rendelkezik egy [alkalmazásspecifikus oktatóanyaggal](../saas-apps/tutorial-list.md) , amely VÉGIGVEZETI az SAML-alapú egyszeri bejelentkezés konfigurációjának lépésein.
+Az SAML-alapú egyszeri bejelentkezéshez használható SaaS-alkalmazás konfigurálásával kapcsolatban lásd: [SAML-alapú egyszeri bejelentkezés konfigurálása](configure-saml-single-sign-on.md). Emellett számos szoftveres (SaaS) alkalmazás rendelkezik egy [alkalmazásspecifikus oktatóanyaggal](../saas-apps/tutorial-list.md) , amely VÉGIGVEZETI az SAML-alapú egyszeri bejelentkezés konfigurációjának lépésein.
 
-A WS-Federation alkalmazás konfigurálásához kövesse ugyanezt az útmutatást az alkalmazás SAML-alapú egyszeri bejelentkezéshez való konfigurálásához: [SAML-alapú egyszeri bejelentkezés konfigurálása](configure-single-sign-on-non-gallery-applications.md). Az alkalmazás Azure AD használatára való konfigurálásának lépéséhez le kell cserélnie a WS-Federation végpont Azure AD bejelentkezési URL-címét `https://login.microsoftonline.com/<tenant-ID>/wsfed` .
+A WS-Federation alkalmazás konfigurálásához kövesse ugyanezt az útmutatót az alkalmazás SAML-alapú egyszeri bejelentkezéshez való konfigurálásához. Az alkalmazás Azure AD használatára való konfigurálásának lépéséhez le kell cserélnie a WS-Federation végpont Azure AD bejelentkezési URL-címét `https://login.microsoftonline.com/<tenant-ID>/wsfed` .
 
 A helyszíni alkalmazások SAML-alapú egyszeri bejelentkezéshez való konfigurálásáról lásd: [SAML egyszeri bejelentkezés a helyszíni alkalmazásokhoz alkalmazásproxy](application-proxy-configure-single-sign-on-on-premises-apps.md)használatával.
 
@@ -198,8 +198,8 @@ Mivel ez a forgatókönyv az Azure AD és a PingAccess közötti partneri kapcso
 További információ: [Azure Active Directory kiadások](../fundamentals/active-directory-whatis.md).
 
 ## <a name="related-articles"></a>Kapcsolódó cikkek
+* [Gyorsindítás sorozat az alkalmazás-kezelésben](view-applications-portal.md)
 * [Oktatóanyagok SaaS-alkalmazások az Azure Active Directoryval való integrálásához](../saas-apps/tutorial-list.md)
-* [SAML-alapú egyszeri bejelentkezés konfigurálása](configure-single-sign-on-non-gallery-applications.md)
 * [Jelszó alapú egyszeri bejelentkezés konfigurálása](configure-password-single-sign-on-non-gallery-applications.md)
 * [Csatolt bejelentkezés konfigurálása](configure-linked-sign-on.md)
 * [Az alkalmazásokhoz való hozzáférés kezelésének bemutatása](what-is-access-management.md)

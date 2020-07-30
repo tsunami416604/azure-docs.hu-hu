@@ -125,7 +125,7 @@ Az automatikus hangolás használatához a felhasználónak való megadáshoz mi
 
 Lásd az [e-mail értesítések automatikus finomhangolása](automatic-tuning-email-notifications-configure.md) útmutatót.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az automatikus hangolással kapcsolatos további információkért olvassa el az automatikus finomhangolásról szóló [cikket](automatic-tuning-overview.md) , és azt, hogy miként segíthet a teljesítmény javításában.
 - Tekintse meg a teljesítményre vonatkozó [javaslatokat](database-advisor-implement-performance-recommendations.md) a Azure SQL Database teljesítményével kapcsolatos javaslatok áttekintéséhez.

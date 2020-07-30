@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.date: 06/17/2020
 ms.topic: conceptual
-ms.custom: how-to, has-adal-ref
-ms.openlocfilehash: 653ca578e9fafd245c22bcfd7db038d5c23da016
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: how-to, has-adal-ref, devx-track-javascript
+ms.openlocfilehash: 867babcf7160ce6e589197be0a3186e5a2156238
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326953"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423575"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Azure Machine Learning erőforrások és munkafolyamatok hitelesítésének beállítása
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -378,7 +378,7 @@ print(token)
 >
 > Továbbá minél nagyobb a távolság a fürt régiója és a munkaterület régiója között, annál hosszabb ideig tart a token beolvasása.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A [titkok használata a képzésben](how-to-use-secrets-in-runs.md).
 * [Rendszerkép-besorolási modell betanítása és üzembe helyezése](tutorial-train-models-with-aml.md).

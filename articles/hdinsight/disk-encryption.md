@@ -7,12 +7,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: 732709dbcb5ebe54025a963379128f1a1e74183e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a8bb9dc5aa6ebbd4ef7fb1b9550670a3c6298333
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81536301"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387846"
 ---
 # <a name="customer-managed-key-disk-encryption"></a>Ügyfél által felügyelt kulcson alapuló lemeztitkosítás
 
@@ -30,7 +30,7 @@ A fürt minden egyes csomópontján található erőforrás-lemez és felügyelt
 
 Ha a Key Vault-tűzfal engedélyezve van azon a kulcstartón, amelyen a lemez titkosítási kulcsa tárolva van, a HDInsight regionális erőforrás-szolgáltatói IP-címeit hozzá kell adni ahhoz a régióhoz, ahol a fürtöt telepíteni kívánja. Erre azért van szükség, mert a HDInsight nem megbízható Azure Key Vault-szolgáltatás.
 
-A Key vaultban lévő kulcsok biztonságos elforgatásához használhatja a Azure Portal vagy az Azure CLI-t is. Ha egy kulcs forog, a HDInsight-fürt perceken belül megkezdi az új kulcs használatát. A ransomware-forgatókönyvek és a véletlen törlés elleni védelem érdekében engedélyezze a kulcs nélküli [törlési](../key-vault/general/overview-soft-delete.md) funkciók védelmét. A védelmi funkciót nem támogató kulcstartók nem támogatottak.
+A Key vaultban lévő kulcsok biztonságos elforgatásához használhatja a Azure Portal vagy az Azure CLI-t is. Ha egy kulcs forog, a HDInsight-fürt perceken belül megkezdi az új kulcs használatát. A ransomware-forgatókönyvek és a véletlen törlés elleni védelem érdekében engedélyezze a kulcs nélküli [törlési](../key-vault/general/soft-delete-overview.md) funkciók védelmét. A védelmi funkciót nem támogató kulcstartók nem támogatottak.
 
 |Fürt típusa |OPERÁCIÓSRENDSZER-lemez (felügyelt lemez) |Adatlemez (felügyelt lemez) |Ideiglenes adatlemez (helyi SSD) |
 |---|---|---|---|
@@ -397,7 +397,7 @@ Igen. A felskálázás során a fürtnek hozzá kell férnie a Key vaultban lév
 
 A HDInsight ügyfél által felügyelt kulcsok az összes nyilvános felhőkben és az országos felhőkben is elérhetők.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a Azure Key Vaultről: [Mi az Azure Key Vault](../key-vault/general/overview.md).
 * [A vállalati biztonság áttekintése az Azure HDInsight-ben](./domain-joined/hdinsight-security-overview.md).

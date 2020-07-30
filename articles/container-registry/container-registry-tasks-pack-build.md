@@ -3,12 +3,13 @@ title: Rendszerkép létrehozása Felhőbeli natív Buildpack
 description: Az az ACR Pack Build paranccsal hozzon létre egy tároló-rendszerképet egy alkalmazásból, és leküldheti Azure Container Registryra anélkül, hogy Docker használ.
 ms.topic: article
 ms.date: 10/24/2019
-ms.openlocfilehash: c42bde6bbab5973094302a2d41f004d7600bdf9e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 1892f4c20eb75e5e95140c829c49a708a81c2184
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79087072"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87408016"
 ---
 # <a name="build-and-push-an-image-from-an-app-using-a-cloud-native-buildpack"></a>Rendszerkép létrehozása és elküldése egy Felhőbeli natív Buildpack használatával
 
@@ -93,7 +94,7 @@ docker run --rm -p 8080:8080 myregistry.azurecr.io/java-app:runid
 Tallózással keresse meg `localhost:8080` kedvenc böngészőjét, és tekintse meg a minta webalkalmazást. Nyomja le `[Ctrl]+[C]` a gombot a tároló leállításához.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Miután létrehozta és leküldte a tároló lemezképét a `az acr pack build` használatával, bármilyen képhez telepítheti azt egy tetszőleges célra. Az Azure-beli üzembe helyezési lehetőségek közé tartozik a [app Service](../app-service/containers/tutorial-custom-docker-image.md) vagy az [Azure Kubernetes Service](../aks/tutorial-kubernetes-deploy-cluster.md)-ben való futtatás, egyebek között.
 

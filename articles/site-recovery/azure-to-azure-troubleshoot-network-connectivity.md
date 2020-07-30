@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 04/06/2020
-ms.openlocfilehash: 71176c87ee805eb4a634dd6c2f344922fc13c4f3
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 8396ffa958e41e12e9258766483310baef0cabbe
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86132721"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421433"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-network-connectivity-issues"></a>Az Azure – Azure virtuálisgép-hálózat csatlakozási problémáinak elhárítása
 
@@ -18,12 +18,12 @@ Ez a cikk a hálózati kapcsolattal kapcsolatos gyakori problémákat ismerteti,
 
 Ahhoz, hogy Site Recovery replikáció működjön, az adott URL-címekhez vagy IP-tartományokhoz kimenő kapcsolat szükséges a virtuális gépről. Ha a virtuális gép tűzfal mögött van, vagy hálózati biztonsági csoport (NSG) szabályok használatával vezérli a kimenő kapcsolatot, akkor előfordulhat, hogy ezek egyike a probléma.
 
-| URL-cím | Részletek |
-|---|---|
-| `*.blob.core.windows.net` | Kötelező megadni, hogy az adatok a virtuális gépről származó forrás régióban lévő cache Storage-fiókba írhatók legyenek. Ha ismeri a virtuális gépekhez tartozó összes gyorsítótár-tárolási fiókot, használhat egy engedélyezési listát az adott Storage-fiók URL-címeihez. Például a `cache1.blob.core.windows.net` és `cache2.blob.core.windows.net` a helyett `*.blob.core.windows.net` . |
-| `login.microsoftonline.com` | Az engedélyezéshez és a hitelesítéshez szükséges a Site Recovery szolgáltatás URL-címeihez. |
-| `*.hypervrecoverymanager.windowsazure.com` | Szükséges, hogy a Site Recovery szolgáltatás kommunikációja a virtuális gépről is megtörténjen. A megfelelő _site Recovery IP-címet_ használhatja, ha a tűzfal proxyja támogatja az IP-címeket. |
-| `*.servicebus.windows.net` | Szükséges, hogy a Site Recovery monitorozási és diagnosztikai adatok a virtuális gépről is írhatók legyenek. Ha a tűzfal proxyja támogatja az IP-címeket, használhatja a megfelelő _site Recovery figyelési IP-címet_ . |
+| **Név**                  | **Kereskedelmi**                               | **Államigazgatás**                                 | **Leírás** |
+| ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
+| Tárolás                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`              | Kötelező megadni, hogy az adatok a virtuális gépről származó forrás régióban lévő cache Storage-fiókba írhatók legyenek. Ha ismeri a virtuális gépekhez tartozó összes gyorsítótár-tárolási fiókot, használhat egy engedélyezési listát az adott Storage-fiók URL-címeihez. Például a `cache1.blob.core.windows.net` és `cache2.blob.core.windows.net` a helyett `*.blob.core.windows.net` . |
+| Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | Az engedélyezéshez és a hitelesítéshez szükséges a Site Recovery szolgáltatás URL-címeihez. |
+| Replikáció               | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`   | Szükséges, hogy a Site Recovery szolgáltatás kommunikációja a virtuális gépről is megtörténjen. A megfelelő _site Recovery IP-címet_ használhatja, ha a tűzfal proxyja támogatja az IP-címeket. |
+| Service Bus               | `*.servicebus.windows.net`                 | `*.servicebus.usgovcloudapi.net`             | Szükséges, hogy a Site Recovery monitorozási és diagnosztikai adatok a virtuális gépről is írhatók legyenek. Ha a tűzfal proxyja támogatja az IP-címeket, használhatja a megfelelő _site Recovery figyelési IP-címet_ . |
 
 ## <a name="outbound-connectivity-for-site-recovery-urls-or-ip-ranges-error-code-151037-or-151072"></a>Kimenő kapcsolat Site Recovery URL-címekhez vagy IP-tartományokhoz (hibakód: 151037 vagy 151072)
 
@@ -33,7 +33,7 @@ Ahhoz, hogy Site Recovery replikáció működjön, az adott URL-címekhez vagy 
 
 A tartománynévrendszer (DNS) feloldási hibája miatt nem lehet kapcsolódni Site Recovery végpontokhoz. Ez a probléma gyakoribb a virtuális gép feladatátvétele során, de a DNS-kiszolgáló nem érhető el a vész-helyreállítási (DR) régióból.
 
-#### <a name="resolution"></a>Megoldás:
+#### <a name="resolution"></a>Feloldás
 
 Ha egyéni DNS-t használ, győződjön meg arról, hogy a DNS-kiszolgáló elérhető a vész-helyreállítási régióból.
 
@@ -57,7 +57,7 @@ Próbálja meg elérni a DNS-kiszolgálót a virtuális gépről. Ha a DNS-kiszo
 
 Nem hozhatók összefüggésbe az Office 365-hitelesítés és az Identity IP4-végpontok.
 
-#### <a name="resolution"></a>Megoldás:
+#### <a name="resolution"></a>Feloldás
 
 - A Azure Site Recovery hozzáférést igényel az Office 365 IP-tartományokhoz a hitelesítéshez.
 - Ha az Azure hálózati biztonsági csoport (NSG) szabályait/tűzfal proxyját használja a kimenő hálózati kapcsolat vezérléséhez a virtuális gépen, ügyeljen arra, hogy az Office 365 IP-tartományokhoz való kommunikációt engedélyezze. Hozzon létre egy [Azure Active Directory (Azure ad) Service tag](../virtual-network/security-overview.md#service-tags) -alapú NSG-szabályt, amely lehetővé teszi az Azure ad-nek megfelelő összes IP-cím elérését.
@@ -112,7 +112,7 @@ Ebben a példában ezek a NSG szabályok szükségesek ahhoz, hogy a replikáci�
 
 Nem lehet kapcsolódni Azure Site Recovery szolgáltatási végpontokhoz.
 
-#### <a name="resolution"></a>Megoldás:
+#### <a name="resolution"></a>Feloldás
 
 Az Azure Site Recoverynek hozzá kell férnie a [Site Recovery IP-címtartományaihoz](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags), a régiónak megfelelően. Győződjön meg arról, hogy a szükséges IP-címtartományok elérhetők a virtuális gépről.
 
@@ -122,7 +122,7 @@ Az Azure Site Recoverynek hozzá kell férnie a [Site Recovery IP-címtartomány
 
 Az egyéni proxybeállítások érvénytelenek, és a Azure Site Recovery mobilitási szolgáltatás ügynöke nem ismeri fel automatikusan a proxybeállításokat az Internet Explorerben (IE).
 
-#### <a name="resolution"></a>Megoldás:
+#### <a name="resolution"></a>Feloldás
 
 1. A mobilitási szolgáltatás ügynöke észleli a proxybeállításokat az IE-ből a Windows és `/etc/environment` Linux rendszeren.
 1. Ha inkább a proxyt szeretné beállítani Azure Site Recovery mobilitási szolgáltatáshoz, a proxy részleteit a _ProxyInfo. conf fájlban_ találja a következő helyen:

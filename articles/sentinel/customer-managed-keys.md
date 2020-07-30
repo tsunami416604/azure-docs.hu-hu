@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/19/2020
 ms.author: yelevin
-ms.openlocfilehash: ded28ef872bbc3147793ea3d68c94f8dde35f74e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 44a2c0c1b4bc9b4e6fc1247497640b261d1d0fa1
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83674178"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387914"
 ---
 # <a name="set-up-azure-sentinel-customer-managed-key"></a>Az Azure Sentinel ügyfél által felügyelt kulcsának beállítása
 
@@ -64,9 +64,9 @@ A CMK kiépítéséhez kövesse az alábbi lépéseket: 
 
 1.  [Helyreállítási beállítások bekapcsolása:](../key-vault/general/best-practices.md#turn-on-recovery-options)
 
-    -   Győződjön meg arról, hogy a [Soft delete](../key-vault/general/overview-soft-delete.md) be van kapcsolva.
+    -   Győződjön meg arról, hogy a [Soft delete](../key-vault/general/soft-delete-overview.md) be van kapcsolva.
 
-    -   A [védelem kiürítésének](../key-vault/general/overview-soft-delete.md#purge-protection) bekapcsolásával megvédheti a titkos kulcs/tár kényszerített törlését a Soft delete után is.
+    -   A [védelem kiürítésének](../key-vault/general/soft-delete-overview.md#purge-protection) bekapcsolásával megvédheti a titkos kulcs/tár kényszerített törlését a Soft delete után is.
 
 ### <a name="step-2-enable-cmk-on-your-log-analytics-workspace"></a>2. lépés: a CMK engedélyezése a Log Analytics munkaterületen
 
@@ -128,7 +128,7 @@ A kulcs előző verzióját 24 óra elteltével letilthatja, vagy azt követően
 
 Ha ugyanazt a kulcsot használja az Azure Sentinel-ben és a Log Analytics-ben, akkor szükség van a kulcs elforgatására, explicit módon frissítenie kell a fürterőforrás Log Analytics az új Azure Key Vault kulcs verzióját. További információ: [Azure monitor CMK forgatása](../azure-monitor/platform/customer-managed-keys.md#cmk-kek-rotation).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebből a dokumentumból megtudhatta, hogyan állíthat be egy ügyfél által felügyelt kulcsot az Azure Sentinelben. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 - Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
 - Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats.md).

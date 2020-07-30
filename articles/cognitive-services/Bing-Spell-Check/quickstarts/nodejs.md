@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: helyesírás ellenőrzése a REST API és a Node. js-Bing Spell Check'
+title: 'Gyors útmutató: helyesírás ellenőrzése a REST API és Node.js-Bing Spell Check'
 titleSuffix: Azure Cognitive Services
 description: Ismerkedjen meg a Bing Spell Check REST API használatával a helyesírás és a nyelvtan ellenőrzéséhez ezzel a rövid útmutatóval.
 services: cognitive-services
@@ -10,14 +10,15 @@ ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 05/21/2020
 ms.author: aahi
-ms.openlocfilehash: f35c2ebc4cd6e31fe59ad715d4f317e650bca52e
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.custom: devx-track-javascript
+ms.openlocfilehash: aaaa571928556a6972d3136ef4cacaa3bd4cb798
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83995955"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87405007"
 ---
-# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-nodejs"></a>Gyors útmutató: helyesírás ellenőrzése a Bing Spell Check REST API és Node. js-sel
+# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-nodejs"></a>Gyors útmutató: helyesírás ellenőrzése a Bing Spell Check REST API és Node.js
 
 Ezzel a rövid útmutatóval megteheti az első hívást a Bing Spell Check REST API. Ez az egyszerű JavaScript-alkalmazás egy kérelmet küld az API-nak, és a javasolt javítások listáját adja vissza. 
 
@@ -25,7 +26,7 @@ Bár ez az alkalmazás JavaScript nyelven íródott, az API egy REST-alapú webs
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* [Node. js 6](https://nodejs.org/en/download/) vagy újabb.
+* [Node.js 6](https://nodejs.org/en/download/) vagy újabb.
 
 [!INCLUDE [cognitive-services-bing-spell-check-signup-requirements](../../../../includes/cognitive-services-bing-spell-check-signup-requirements.md)]
 
@@ -104,7 +105,7 @@ req.end ();
 ```
 
 
-## <a name="run-the-application"></a>Alkalmazás futtatása
+## <a name="run-the-application"></a>Az alkalmazás futtatása
 
 1. Hozza létre és futtassa a projektet.
 
@@ -157,7 +158,7 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Egyoldalas webalkalmazás létrehozása](../tutorials/spellcheck.md)

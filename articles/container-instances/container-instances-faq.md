@@ -4,18 +4,18 @@ description: A Azure Container Instances szolgáltatással kapcsolatos gyakori k
 author: dkkapur
 ms.topic: article
 ms.date: 06/02/2020
-ms.openlocfilehash: 21643ccfb6bb256e29114435ccb39a009d1b8dae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 95190496df4037a973207e14292911225094782e
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85806601"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421280"
 ---
 # <a name="frequently-asked-questions-about-azure-container-instances"></a>Gyakori kérdések a Azure Container Instances
 
 Ez a cikk a Azure Container Instancesával kapcsolatos gyakori kérdéseket tárgyalja.
 
-## <a name="deployment"></a>Üzembe helyezés
+## <a name="deployment"></a>Telepítés
 
 ### <a name="how-large-can-my-container-image-be"></a>Mekkora méretű lehet a tároló képe?
 
@@ -89,7 +89,7 @@ Jelenleg a méretezés nem érhető el a tárolók és a tárolók csoportjai sz
 
 ### <a name="what-features-are-available-to-instances-running-in-a-custom-vnet"></a>Milyen funkciók érhetők el az egyéni VNet futó példányok számára?
 
-A [tároló csoportokat üzembe helyezheti egy tetszőleges Azure-beli virtuális hálózatban](container-instances-vnet.md) , és delegálhatja a privát IP-címeket a VNet az Azure-erőforrások közötti forgalom irányításához. A tárolók csoportjának virtuális hálózatra történő telepítése jelenleg az Azure-régiók egy részhalmazában érhető el az éles számítási feladatokhoz.
+A [tároló csoportokat üzembe helyezheti egy tetszőleges Azure-beli virtuális hálózatban](container-instances-vnet.md) , és delegálhatja a privát IP-címeket a VNet az Azure-erőforrások közötti forgalom irányításához. A hálózatkezelési forgatókönyvek és a Azure Container Instancesekkel kapcsolatos korlátozások: [virtuális hálózati forgatókönyvek és erőforrások](container-instances-virtual-network-concepts.md).
 
 ## <a name="pricing"></a>Díjszabás
 
@@ -101,7 +101,7 @@ A tároló csoport időtartamát a rendszer az első tároló rendszerképének 
 
 A mérőműszer leállítása a teljes tároló csoport leállítása után leáll. Ha a tároló csoport egyik tárolója fut, akkor az erőforrásokat abban az esetben tartjuk, ha újra el szeretné indítani a tárolókat. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [További](container-instances-overview.md) információ a Azure Container Instancesról.
 * Azure Container Instances [gyakori problémáinak elhárítása](container-instances-troubleshooting.md) .

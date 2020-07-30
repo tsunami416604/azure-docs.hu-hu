@@ -3,12 +3,12 @@ title: Fizikai kiszolgáló vész-helyreállítási architektúrája Azure Site 
 description: Ez a cikk áttekintést nyújt azokról az összetevőkről és architektúráról, amelyeket a helyszíni fizikai kiszolgálók az Azure-ba történő, a Azure Site Recovery szolgáltatással történő helyreállításakor használtak.
 ms.topic: conceptual
 ms.date: 02/11/2020
-ms.openlocfilehash: 089d981284986a2b6eb0ee7f1dbd401fc7ce4fcd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f2184654a8169cb353fb40fa76f0a7fe9b3df6f6
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77162837"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422657"
 ---
 # <a name="physical-server-to-azure-disaster-recovery-architecture"></a>Fizikai kiszolgálókról Azure-ba történő vészhelyreállítás architektúrája
 
@@ -28,6 +28,25 @@ Az alábbi táblázat és ábra áttekintést nyújt az Azure-ba való fizikai k
 **Fizikairól Azure-ra architektúra**
 
 ![Összetevők](./media/physical-azure-architecture/arch-enhanced.png)
+
+## <a name="set-up-outbound-network-connectivity"></a>Kimenő hálózati kapcsolat beállítása
+
+Ahhoz, hogy a Site Recovery a várt módon működjön, módosítania kell a kimenő hálózati kapcsolatot, hogy a környezet replikálása engedélyezve legyen.
+
+> [!NOTE]
+> A Site Recovery nem támogatja a hitelesítési proxy használatát a hálózati kapcsolat vezérléséhez.
+
+### <a name="outbound-connectivity-for-urls"></a>Kimenő kapcsolat URL-címek esetén
+
+Ha URL-alapú tűzfal-proxyt használ a kimenő kapcsolatok vezérléséhez, engedélyezze az alábbi URL-címek elérését:
+
+| **Név**                  | **Kereskedelmi**                               | **Államigazgatás**                                 | **Leírás** |
+| ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
+| Tárolás                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`               | Lehetővé teszi az adatok írását a virtuális gépről a forrásrégió gyorsítótárjának tárfiókjába. |
+| Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | Hitelesítést és engedélyezést biztosít a Site Recovery szolgáltatás URL-címeihez. |
+| Replikáció               | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`   | Lehetővé teszi a virtuális gép és a Site Recovery szolgáltatás közötti kommunikációt. |
+| Service Bus               | `*.servicebus.windows.net`                 | `*.servicebus.usgovcloudapi.net`             | Lehetővé teszi a virtuális gép számára a Site Recovery monitorozási és diagnosztikai adatainak írását. |
+
 
 ## <a name="replication-process"></a>Replikációs folyamat
 
@@ -73,6 +92,6 @@ A replikáció beállítása után a vész-helyreállítási gyakorlat (feladat�
 
 ![Feladat-visszavétel](./media/physical-azure-architecture/enhanced-failback.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A fizikai kiszolgálók Azure-ba való vész [-](physical-azure-disaster-recovery.md)helyreállításának beállításához tekintse meg a útmutató útmutatását.

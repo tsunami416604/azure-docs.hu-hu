@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: 648ec2d9fea3e4e112e65cec44a0518b653ddbea
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 8694b766d98c6240d7745b814d13358debe714e8
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119973"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387047"
 ---
 # <a name="best-practices-for-creating-assessments"></a>Ajánlott eljárások az értékelések létrehozásához
 
@@ -67,15 +67,15 @@ Kövesse az alábbi ajánlott eljárásokat a Azure Migrate-ba importált kiszol
  
 ### <a name="ftt-sizing-parameters-for-avs-assessments"></a>Az adó-méretezési paraméterek az AVS-értékelésekhez
 
-Az AVS-ben használt vSAN. a vSAN tárolási házirendek meghatározzák a virtuális gépek tárolási követelményeit. Ezek a szabályzatok garantálják a virtuális gépek szükséges szolgáltatási szintjét, mivel meghatározzák, hogy a tároló hogyan legyen lefoglalva a virtuális géphez. Ezek az elérhető TRANZAKCIÓs és RAID-kombinációk: 
+Az AVS-ben használt vSAN. A vSAN tárolási szabályzatai határozzák meg a virtuális gépek tárolási követelményeit. Ezek a szabályzatok garantálják a virtuális gépek szükséges szolgáltatásszintjét, mivel meghatározzák, hogy a tároló hogyan legyen lefoglalva a virtuális gépnek. Az elérhető FTT-RAID-kombinációk a következők: 
 
-**Tolerálható (TRANZAKCIÓs) hibák** | **RAID-konfiguráció** | **Minimálisan szükséges gazdagépek** | **Méretezési szempont**
+**Megengedhető hibák (FTT)** | **RAID-konfiguráció** | **Minimálisan szükséges gazdagépek száma** | **Méretezési szempontok**
 --- | --- | --- | --- 
-1 | RAID-1 (Tükrözés) | 3 | A 100 GB virtuális gép A 200GB-t használja.
-1 | RAID-5 (kitörlési kódolás) | 4 | A 100 GB virtuális gép A 133.33 GB-ot fogja használni
-2 | RAID-1 (Tükrözés) | 5 | A 100 GB virtuális gép A 300GB-t használja.
-2 | RAID-6 (kitörlési kódolás) | 6 | A 100 GB virtuális gép A 150GB-t használja.
-3 | RAID-1 (Tükrözés) | 7 | A 100 GB virtuális gép A 400GB-t használja.
+1 | RAID-1 (tükrözés) | 3 | Egy 100 GB-os virtuális gép 200 GB-ot használna fel.
+1 | RAID-5 (törléskódolás) | 4 | Egy 100 GB-os virtuális gép 133,33 GB-ot használna fel.
+2 | RAID-1 (tükrözés) | 5 | Egy 100 GB-os virtuális gép 300 GB-ot használna fel.
+2 | RAID-6 (törléskódolás) | 6 | Egy 100 GB-os virtuális gép 150 GB-ot használna fel.
+3 | RAID-1 (tükrözés) | 7 | Egy 100 GB-os virtuális gép 400 GB-ot használna fel.
 
 
 ## <a name="best-practices-for-confidence-ratings"></a>Ajánlott eljárások a megbízhatósági minősítéshez
@@ -131,9 +131,9 @@ Előfordulhat, hogy az értékelés számos okból nem rendelkezik az összes ad
 
 ### <a name="migration-tool-guidance-for-avs-assessments"></a>Áttelepítési eszköz – útmutató az AVS-értékelésekhez
 
-Az Azure VMware megoldással (AVS) kapcsolatos Azure-készültségi jelentésekben a következő javasolt eszközök láthatók: 
-- **VMware HCX vagy Enterprise**: VMware-es gépek esetén a VMware Hybrid Cloud Extension (HCX) megoldás a javasolt áttelepítési eszköz, amellyel áttelepítheti a helyszíni számítási feladatokat az Azure VMware-megoldás (AVS) privát felhőbe. [További információ](../azure-vmware/hybrid-cloud-extension-installation.md).
-- **Ismeretlen**: a CSV-fájlon keresztül importált gépek esetében az alapértelmezett áttelepítési eszköz ismeretlen. A VMware-gépek esetében azonban ajánlott a VMWare Hybrid Cloud Extension (HCX) megoldás használata.
+Az Azure VMware Solution- (AVS-) értékelés Azure-kompatibilitási jelentésében a következő ajánlott eszközök szerepelnek: 
+- **VMware HCX vagy Enterprise**: VMware-es gépek esetén a VMware Hybrid Cloud Extension (HCX) megoldás a javasolt áttelepítési eszköz, amellyel áttelepítheti a helyszíni számítási feladatokat az Azure VMware-megoldás (AVS) privát felhőbe. [További információk](../azure-vmware/hybrid-cloud-extension-installation.md).
+- **Ismeretlen**: A CSV-fájllal importált gépek esetében az alapértelmezett migrálási eszköz ismeretlen. A VMware-gépek esetében azonban ajánlott a VMware Hybrid Cloud Extension (HCX) megoldás használata.
 
 
 ## <a name="next-steps"></a>Következő lépések

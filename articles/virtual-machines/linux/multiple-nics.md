@@ -241,7 +241,7 @@ Ellenőrizze, hogy a hozzáadott útvonal megmarad-e az újraindítások közöt
 ping bing.com -c 4 -I eth1
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Tekintse át a Linux rendszerű [virtuális gépek méretét](sizes.md) , amikor több hálózati adapterrel rendelkező virtuális gépet próbál létrehozni. Ügyeljen arra, hogy az egyes VM-méretek hány hálózati adaptert támogatnak.
 
 A virtuális gépek további biztonságossá tételéhez használja az igény szerinti virtuálisgép-hozzáférést. Ez a szolgáltatás a hálózati biztonsági csoportra vonatkozó szabályokat nyitja meg az SSH-forgalomhoz, ha szükséges, és egy meghatározott ideig. További információk: [Manage virtual machine access using just in time](../../security-center/security-center-just-in-time.md) (A virtuális gépekhez való hozzáférés kezelése igény szerinti hozzáférés használata esetén).

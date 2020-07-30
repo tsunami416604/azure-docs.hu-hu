@@ -2,19 +2,19 @@
 title: Azure Functions bemelegedési trigger
 description: Megtudhatja, hogyan használhatja a bemelegedési triggert Azure Functionsban.
 documentationcenter: na
-author: alexkarcher-msft
+author: craigshoemaker
 manager: gwallace
 keywords: Azure functions, functions, Event Processing, bemelegedési, Cold Start, Premium, dinamikus számítás, kiszolgáló nélküli architektúra
 ms.service: azure-functions
 ms.topic: reference
 ms.date: 11/08/2019
-ms.author: alkarche
-ms.openlocfilehash: 013001eebeec232cc60e31f1a850aeab4fd6c905
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: cshoe
+ms.openlocfilehash: dade31fd9a5a75c875274ea45607fea81a2de027
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82982241"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87383715"
 ---
 # <a name="azure-functions-warm-up-trigger"></a>Azure Functions bemelegítő trigger
 
@@ -229,7 +229,7 @@ Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított k
 |function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
 |---------|---------|----------------------|
 | **típusa** | n.a.| Kötelező – a következőre kell beállítani: `warmupTrigger` . |
-| **direction** | n.a.| Kötelező – a következőre kell beállítani: `in` . |
+| **irányba** | n.a.| Kötelező – a következőre kell beállítani: `in` . |
 | **név** | n.a.| Kötelező – a függvény kódjában használt változó neve.|
 
 ## <a name="trigger---usage"></a>Trigger – használat
@@ -243,6 +243,6 @@ A meghívásakor a bemelegedési által aktivált függvények nem kapnak továb
 * A bemelegedési eseményindító nem hívható meg, ha egy példány már fut.
 * Function App-alkalmazásban csak egy bemelegedési trigger függvény adható meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [További információ az Azure functions-eseményindítók és-kötésekről](functions-triggers-bindings.md)

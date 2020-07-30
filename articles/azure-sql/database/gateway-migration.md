@@ -51,7 +51,7 @@ Az új SQL Gateway-átjárók a következő régiókban lesznek hozzáadva:
 
 Ezek az SQL-átjárók az ügyfelek forgalmának elfogadását az 2020. augusztus 10-én megkezdik. 
 
-# <a name="completed"></a>[Befejezve](#tab/completed-ip)
+# <a name="completed"></a>[Befejeződött](#tab/completed-ip)
 
 A következő átjárók áttelepítése befejeződött: 
 
@@ -95,6 +95,6 @@ Az alkalmazásból a 4,0-es verziónál régebbi Microsoft JDBC illesztőprogram
 
 Ha a fenti megoldás nem működik, a következő URL-cím használatával kérjen SQL Database vagy SQL felügyelt példányra vonatkozó támogatási kérelmet:https://aka.ms/getazuresupport
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ az [Azure SQL kapcsolati architektúráról](connectivity-architecture.md)

@@ -3,12 +3,13 @@ title: 'Rövid útmutató: az első JavaScript-lekérdezés'
 description: Ebben a rövid útmutatóban a következő lépéseket követve engedélyezheti az erőforrás-gráf függvénytárát a JavaScripthez, és futtathatja az első lekérdezést.
 ms.date: 06/23/2020
 ms.topic: quickstart
-ms.openlocfilehash: 6b2c8e17bb92dfcc91e8a65e5c113c0a72021a41
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.custom: devx-track-javascript
+ms.openlocfilehash: fc9809dbe615950b4f5c9e4dc66cefcd054f5ebf
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85323533"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87415924"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-javascript"></a>Rövid útmutató: az első Resource Graph-lekérdezés futtatása JavaScript használatával
 
@@ -125,7 +126,7 @@ Ha el szeretné távolítani a telepített kódtárakat az alkalmazásból, futt
 npm uninstall @azure/arm-resourcegraph @azure/ms-rest-nodeauth yargs
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban felvette az erőforrás-gráf kódtárait a JavaScript-környezetbe, és futtatta az első lekérdezést. Ha többet szeretne megtudni az erőforrás-gráf nyelvéről, folytassa a lekérdezés nyelvének részletei lapon.
 

@@ -14,12 +14,12 @@ ms.date: 07/06/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 433ccecdc5eee5314114d020571761ee82afd6b9
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: cb1041cb5fc4aa7503f5ae9de6ffc74ba72052b8
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86024101"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421399"
 ---
 # <a name="activate-my-azure-ad-roles-in-pim"></a>Saját Azure AD-szerepkörök aktiválása a PIM-ben
 
@@ -36,7 +36,7 @@ A 2019-es verziótól kezdődően a Privileged Identity Management Azure AD-szer
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com/) a [Kiemelt szerepkörű rendszergazda](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) szerepkörrel.
 1. Nyissa meg **Azure ad Privileged Identity Management**. Ha az Áttekintés oldal tetején található egy szalagcím, kövesse a jelen cikk **új verzió** lapján található utasításokat. Ellenkező esetben kövesse az **előző verzió** lapon megjelenő utasításokat.
 
-    [![](media/pim-how-to-add-role-to-user/pim-new-version.png "Select Azure AD > Privileged Identity Management")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
+    [![Válassza az Azure AD > Privileged Identity Management lehetőséget.](media/pim-how-to-add-role-to-user/pim-new-version.png)](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
 
 # <a name="new-version"></a>[Új verzió](#tab/new)
 
@@ -226,6 +226,6 @@ Amikor Privileged Identity Managementban aktiválja a szerepkört, előfordulhat
 
  ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure AD-szerepkörök aktiválása Privileged Identity Management](pim-how-to-activate-role.md)

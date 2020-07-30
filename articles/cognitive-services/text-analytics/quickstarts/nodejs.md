@@ -10,13 +10,13 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 07/06/2020
 ms.author: aahi
-ms.custom: seo-javascript-september2019
-ms.openlocfilehash: 0cdd837f6c618846587878fac5145cb846dd8d36
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.custom: seo-javascript-september2019, devx-track-javascript
+ms.openlocfilehash: fe9877649d850796b03e9f1c3554a1b9aa7344c3
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027975"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407744"
 ---
 # <a name="quickstart-use-nodejs-to-call-the-text-analytics-cognitive-service"></a>Gyors útmutató: Node.js használata a Text Analytics kognitív szolgáltatás meghívásához  
 <a name="HOLTop"></a>
@@ -466,5 +466,5 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 
 ## <a name="see-also"></a>Lásd még 
 
- [Text Analytics áttekintése](../overview.md)  
+ [A Text Analytics áttekintése](../overview.md)  
  [Gyakori kérdések (GYIK)](../text-analytics-resource-faq.md)

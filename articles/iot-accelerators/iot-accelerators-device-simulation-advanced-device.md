@@ -12,18 +12,19 @@ ms.custom:
 - mvc
 - amqp
 - mqtt
-ms.openlocfilehash: c568dddcbbf57ebd6ed5906bb83af01a84dafa41
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+- devx-track-javascript
+ms.openlocfilehash: b424ea01d8283963c49d899a97120c9132d862f8
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81683831"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422538"
 ---
 # <a name="create-an-advanced-device-model"></a>Speciális eszközmodell létrehozása
 
 Ez a útmutató az egyéni eszköz modelljét definiáló JSON-és JavaScript-fájlokat ismerteti. A cikk néhány minta típusú eszköz-definíciós fájlt tartalmaz, és bemutatja, hogyan töltheti fel őket az eszköz szimulációs példányára. Speciális eszköz-modelleket hozhat létre, amelyek reális eszköz-viselkedést szimulálnak a teszteléshez.
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -167,7 +168,7 @@ A sémában felsorolt mezők a következő típusokból állhatnak:
 * Szöveg
 * Logikai
 * Egész szám
-* Double
+* Dupla
 * DateTime
 
 ### <a name="supported-methods"></a>Támogatott módszerek
@@ -517,6 +518,6 @@ Ha a fájlok ellenőrzése sikeres, kattintson a **Save (Mentés** ) gombra, és
 
 ![Mentés](media/iot-accelerators-device-simulation-advanced-device/validated.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a útmutatóban megismerte az eszköz-szimulációban használt eszköz-modell fájljait, valamint a speciális eszköz modell létrehozását. Következő lépésként érdemes megvizsgálni, hogyan [használhatók a Time Series Insights az eszköz-szimulációs megoldás-gyorssegédből eljuttatott telemetria megjelenítéséhez](https://docs.microsoft.com/azure/iot-accelerators/iot-accelerators-device-simulation-time-series-insights).

@@ -4,12 +4,12 @@ description: Gyorsan létrehozhat és futtathat Jupyter notebookot Azure Noteboo
 ms.topic: quickstart
 ms.date: 12/04/2018
 ms.custom: tracking-python
-ms.openlocfilehash: 809cb006e1ea40e31d079b40febee6a09714731f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ec1a03cb1c05248458a47ec4b22a0243b31bafcd
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85832100"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423286"
 ---
 # <a name="quickstart-create-and-share-a-notebook-in-azure-notebooks-preview"></a>Rövid útmutató: jegyzetfüzet létrehozása és megosztása Azure Notebooks előzetes verzióban
 
@@ -43,7 +43,7 @@ Nincsenek.
 
 1. Néhány pillanat elteltével Azure Notebooks navigál az új projekthez. Vegyen fel egy jegyzetfüzetet a projektbe úgy, hogy kijelöli az **+ új** legördülő listát (amely csak a következőt jeleníti meg **+** ), majd a **Jegyzetfüzet**lehetőséget választja:
 
-    [![](media/quickstarts/empty-project-new-notebook-button.png "A new, empty project and add notebook command")](media/quickstarts/empty-project-new-notebook-button.png#lightbox)
+    :::image type="content" source="media/quickstarts/empty-project-new-notebook-button.png" alt-text="Egy új, üres projekt és a notebook parancs hozzáadása." lightbox="media/quickstarts/empty-project-new-notebook-button.png":::
 
 1. A megjelenő **új jegyzetfüzet létrehozása** előugró ablakban adja meg a jegyzetfüzet fájlnevét, például *HelloWorldInPython. ipynb* (*. ipynb* , IronPython (Jupyter) notebook), és válassza a **Python 3,6** nyelvet (más néven *kernel*):
 

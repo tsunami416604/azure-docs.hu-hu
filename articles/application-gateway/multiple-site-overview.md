@@ -89,7 +89,7 @@ Application Gateway több, különböző portokon figyelt alkalmazást támogat,
 
 Az Application Gateway a HTTP 1.1-állomásfejlécek segítségével üzemeltet egynél több webhelyet ugyanarról a nyilvános IP-címről és portról. Az Application Gateway-ben üzemeltetett helyek támogatják a TLS-kiszervezést is Kiszolgálónév jelzése (SNI) TLS-bővítmény használatával. Ebben az esetben az RFC 6066 szabványban meghatározottak szerint az ügyfélböngészőnek és a háttérwebfarmnak támogatnia kell a HTTP/1.1-et és a TLS-bővítményt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Megtudhatja, hogyan konfigurálhat több hely üzemeltetését Application Gateway
 * [Az Azure Portal használata](create-multiple-sites-portal.md)

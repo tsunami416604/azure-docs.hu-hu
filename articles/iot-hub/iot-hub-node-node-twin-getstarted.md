@@ -8,13 +8,13 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: elioda
-ms.custom: mqtt
-ms.openlocfilehash: e65c781bd5cb62bdaa693b854caafd5f91fd497e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: mqtt, devx-track-javascript
+ms.openlocfilehash: 874e9dd0454fa4f0a0877d949a34058baa711b83
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81732280"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420719"
 ---
 # <a name="get-started-with-device-twins-nodejs"></a>Ismerkedés az eszközök ikrekkel (Node.js)
 
@@ -227,7 +227,7 @@ Ebben a szakaszban egy olyan Node.js Console-alkalmazást hoz létre, amely a **
 
     ![MyDeviceId megjelenítése mindkét lekérdezési eredményben](media/iot-hub-node-node-twin-getstarted/service2.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban egy új IoT Hubot konfigurált az Azure-portálon, majd létrehozott egy eszközidentitást az IoT Hub identitásjegyzékében. Az eszköz metaadatait címkékként adta hozzá egy háttérbeli alkalmazáshoz, és írt egy szimulált eszközt, amely az eszköz kapcsolati adatait jelenti a Twin-ben. Azt is megtanulta, hogyan lehet lekérdezni ezeket az adatokat az SQL-Like IoT Hub lekérdezési nyelv használatával.
 

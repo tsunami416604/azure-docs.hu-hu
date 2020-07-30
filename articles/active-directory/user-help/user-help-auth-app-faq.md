@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 07/15/2020
+ms.date: 07/16/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 4e21edd662649238b16cf7e7df9d9904f3f17752
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 34720a10796a1a215d541baef9f2c225857d3bc0
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87015901"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423626"
 ---
 # <a name="frequently-asked-questions-faq-about-the-microsoft-authenticator-app"></a>Gyakran ismételt kérdések (GYIK) a Microsoft Authenticator alkalmazásról
 
@@ -30,6 +30,7 @@ Az Microsoft Authenticator alkalmazás felváltotta a Azure Authenticator alkalm
 | Kérdés | Válasz |
 | -------- | ------ |
 | Az eszköz regisztrálása egyetért a vállalat vagy a szolgáltatás hozzáférésének megadásával az eszközön? | Az eszköz regisztrálása biztosítja az eszköz hozzáférését a szervezet szolgáltatásaihoz, és nem teszi lehetővé a szervezet számára az eszköz hozzáférését. |
+| Mi az az App Lock, és hogyan használhatom, hogy segítsenek a biztonságban? | Az alkalmazás zárolásával biztonságosabbá teheti az egyszeri PIN-kódot, az alkalmazás adatait és az alkalmazás beállításait. Ha az alkalmazás zárolása engedélyezve van, az eszköz PIN-kódjának vagy a biometrikus adatoknak a hitelesítő minden megnyitásakor meg kell adnia a hitelesítést. Az alkalmazás-zárolás azt is lehetővé teszi, hogy Ön az egyetlen, aki jóváhagyhatja az értesítéseket a PIN-kód vagy a biometrikus adatoknak a bejelentkezési értesítések jóváhagyásakor történő megadásával. Az alkalmazás-zárolás be-és kikapcsolása a hitelesítő beállítások oldalon végezhető el. Alapértelmezés szerint az alkalmazás zárolása be van kapcsolva az eszközön található PIN-kód vagy biometrika beállításakor.<br><br>Sajnos nincs garancia arra, hogy az alkalmazás zárolása leállítja valakinek a hitelesítő számára való hozzáférését. Ennek az az oka, hogy az eszköz regisztrációja a hitelesítő kívül más helyekre is megtörténhet, például az Android-Fiókbeállítások vagy a céges portál alkalmazásban. |
 | Windows Mobile-eszközem van, és a Windows Mobile rendszerű Microsoft Authenticator elavultak. Folytatható a hitelesítés az alkalmazás használatával? | A Windows Mobile Microsoft Authenticatort használó összes hitelesítés 2020. július 15-én megszűnik. Azt javasoljuk, hogy használjon egy alternatív hitelesítési módszert a fiókok zárolásának elkerülése érdekében.<br>A vállalati felhasználók alternatív lehetőségei a következők:<br><ul><li>Az [Android](https://play.google.com/store/apps/details?id=com.azure.authenticator) vagy [iOS](https://apps.apple.com/app/microsoft-authenticator/id983156458)rendszerhez készült Microsoft Authenticator beállítása.</li><li>Az [SMS beállítása](multi-factor-authentication-setup-phone-number.md) az ellenőrző kódok fogadására.</li><li>A telefonszám beállítása a telefonhívások fogadására az [identitásuk ellenőrzéséhez](multi-factor-authentication-setup-office-phone.md).</li></ul><br>A személyes Microsoft-fiók felhasználók alternatív beállításai a következők:<br><ul><li>Az [Android](https://play.google.com/store/apps/details?id=com.azure.authenticator) vagy [iOS](https://apps.apple.com/app/microsoft-authenticator/id983156458)rendszerhez készült Microsoft Authenticator beállítása.</li><li>Alternatív bejelentkezési módszer (SMS vagy e-mail) beállítása a biztonsági adatok [Microsoft-fiók biztonsága lapról](https://account.microsoft.com/security/)történő frissítésével.</li></ul> |
 | Képernyőképeket készíthetek az egyszeri jelszavas (OTP) kódokról az Android-hitelesítő szolgáltatásban? | A hitelesítő Android kiadási 6.2003.1704 kezdődően alapértelmezés szerint minden egyszeri jelszavas kód rejtve marad a hitelesítő képernyőképének elkészítésekor. Ha szeretné megtekinteni az OTP-kódokat a képernyőképeken, vagy más alkalmazások számára is lehetővé teszi a hitelesítő képernyő rögzítését, akkor a következőt teheti:. Csak kapcsolja be a **Screen Capture** beállítást a hitelesítő eszközben, és indítsa újra az alkalmazást. |
 | Milyen adattárakat tárol a hitelesítő az Ön nevében, és hogyan törölhetem? | A hitelesítő alkalmazás háromféle típusú információt gyűjt:<ul><li>A fiók hozzáadásakor megadott fiókadatok. Ezeket az adatvesztést a fiók eltávolításával távolíthatja el.</li><li>A csak az alkalmazásban maradó diagnosztikai naplófájlok, amíg be nem jelöli a **naplók küldése** lehetőséget az alkalmazás **Súgó** menüjében a naplók a Microsoftnak való elküldéséhez. Ezek a naplók személyes, például e-mail-címeket, kiszolgálói címeket vagy IP-címeket is tartalmazhatnak. Tartalmazhatnak olyan eszközöket is, mint az eszköz neve és az operációs rendszer verziója. A gyűjtött személyes adatok az alkalmazással kapcsolatos problémák elhárításához szükséges információkra korlátozódnak. Ezeket a naplófájlokat bármikor megtekintheti az alkalmazásban az összegyűjtött adatok megtekintéséhez. A naplófájlok elküldésekor a hitelesítési alkalmazás-mérnökök csak az ügyfél által jelentett problémák megoldására használják azokat.</li><li>Nem személyes azonosításra alkalmas használati adatok, például "a fiók hozzáadása a folyamathoz/sikeres Hozzáadás fiókhoz" vagy "értesítés jóváhagyva". Ezek az adatai a mérnöki döntések szerves részét képezik. A használat segít megállapítani, hogy hol javíthatjuk az alkalmazásokat az Ön számára fontos módokon. Ezt az adatgyűjtési értesítést akkor láthatja, amikor első alkalommal használja az alkalmazást. Ezt követően tájékoztatja, hogy az alkalmazás **Beállítások** lapján ki lehet kapcsolni. Ezt a beállítást bármikor be-és kikapcsolhatja.</li></ul> |
@@ -57,7 +58,7 @@ Az Microsoft Authenticator alkalmazás felváltotta a Azure Authenticator alkalm
 | Az egyszeri jelszavas (OTP) kódok nem működnek. Mit tegyek? | Győződjön meg arról, hogy az eszközön megadott dátum és idő megfelelő, és hogy a rendszer automatikusan szinkronizálja őket. Ha a dátum és az idő helytelen, vagy nincs szinkronban, a kód nem fog működni. |
 | A Windows 10 Mobile operációs rendszer elavulttá vált a 2019 decemberében. A Windows Mobile operációs rendszerek Microsoft Authenticator is elavulttá válik? | A hitelesítő minden Windows Mobile operációs rendszeren a 2020. február 28. után nem lesz támogatott. A felhasználók nem jogosultak arra, hogy a fenti dátum után új frissítéseket kapjanak az alkalmazásnak. Február 28. után a 2020-es Microsoft-szolgáltatások, amelyek jelenleg támogatják a Microsoft Authenticator összes Windows Mobile operációs rendszeren történő hitelesítését, megkezdik a támogatásuk kivonását. A Microsoft-szolgáltatásokban való hitelesítéshez határozottan javasoljuk, hogy minden felhasználó számára a jelen dátum előtt váltson át egy másik hitelesítési mechanizmusra. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha nem sikerül beszereznie a személyes Microsoft-fiók ellenőrzési kódját, tekintse meg az **ellenőrző kód problémáinak elhárítása** című szakaszt a [Microsoft-fiók biztonsági adatok & ellenőrző kódok](https://support.microsoft.com/help/12428/microsoft-account-security-info-verification-codes) című cikkben.
 

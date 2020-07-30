@@ -9,13 +9,13 @@ services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 08/16/2019
-ms.custom: mqtt
-ms.openlocfilehash: d7f9ce37ad85d39388eea90af263f59ce312a6b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: mqtt, devx-track-javascript
+ms.openlocfilehash: 16e6c72f9fbb710524752c2d220d442735d809b7
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81732270"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420770"
 ---
 # <a name="schedule-and-broadcast-jobs-nodejs"></a>Feladatok ütemezett és szórása (Node.js)
 
@@ -294,7 +294,7 @@ Most már készen áll az alkalmazások futtatására.
 
    ![A szimulált eszköz alkalmazásának futtatása](./media/iot-hub-node-node-schedule-jobs/schedule-job-service.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban egy olyan feladatot használt, amely egy közvetlen metódust ütemez egy eszközre, és az eszköz Twin tulajdonságainak frissítését.
 

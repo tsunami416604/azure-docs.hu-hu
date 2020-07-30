@@ -3,12 +3,13 @@ title: Események küldése vagy fogadása az Azure Event Hubs a JavaScript hasz
 description: Ez a cikk egy olyan JavaScript-alkalmazás létrehozásához nyújt útmutatást, amely az Azure Event Hubs a régi Azure/Event-hubok 2-es verziójú csomag használatával küld/fogad eseményeket.
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: 548276b4bcbdd514c37a19375154923ad9f3f9a4
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.custom: devx-track-javascript
+ms.openlocfilehash: ffa6b821d617731bd6ee5cbb9bec8bd6d856a7a6
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85314508"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87414122"
 ---
 # <a name="quickstart-send-events-to-or-receive-events-from-azure-event-hubs-using-javascript-azureevent-hubs-version-2"></a>Gyors útmutató: események küldése vagy fogadása az Azure Event Hubs a JavaScript használatával ( @azure/event-hubs 2. verzió)
 Ez a rövid útmutató bemutatja, hogyan hozhatók létre JavaScript-alkalmazások események küldésére és fogadására az Event hub-ból az Azure/Event-hubok 2. verziójú JavaScript-csomag használatával. 
@@ -182,7 +183,7 @@ Ez a szakasz bemutatja, hogyan fogadhat eseményeket egy Event hub-ból az Azure
 
 Gratulálunk! Az Event hub eseményeit az Event Processor Host használatával fogadta el. Ez a művelet az Event hub alapértelmezett fogyasztói csoportjának összes partíciójának eseményeit fogadja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Olvassa el a következő cikkeket:
 
 - [EventProcessorHost](event-hubs-event-processor-host.md)

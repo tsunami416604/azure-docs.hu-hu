@@ -3,19 +3,34 @@ title: Hibaelhárítás Azure Cosmos DB HTTP 408 vagy időtúllépési hibák a 
 description: .NET SDK-kérelmek időtúllépési kivételének diagnosztizálása és kijavítása
 author: j82w
 ms.service: cosmos-db
-ms.date: 07/13/2020
+ms.date: 07/29/2020
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 29b0c6237ae04ea5da9ec496498fc7c20890b173
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 3d6fed539581b2d1add87ade92e34bcf2e1913e8
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87294395"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87417607"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-net-sdk-request-timeout"></a>Azure Cosmos DB .NET SDK-kérelem időtúllépésének diagnosztizálása és megoldása
 A HTTP 408-hiba akkor fordul elő, ha az SDK nem tudta befejezni a kérelmet az időtúllépési korlát megkezdése előtt.
+
+## <a name="customizing-the-timeout-on-the-azure-cosmos-net-sdk"></a>Az időtúllépés testreszabása az Azure Cosmos .NET SDK-ban
+
+Az SDK két különböző alternatívát tartalmaz az időtúllépések szabályozására, amelyek mindegyike eltérő hatókörrel rendelkezik.
+
+### <a name="requesttimeout"></a>RequestTimeout
+
+Az `CosmosClientOptions.RequestTimeout` (vagy `ConnectionPolicy.RequestTimeout` az SDK v2) konfigurálásával az egyes hálózati kérelmeket érintő időtúllépést állíthat be.  Egy felhasználó által elindított művelet több hálózati kérésre is kiterjedhet (például lehetséges a szabályozás), és ez a konfiguráció az újrapróbálkozáskor minden hálózati kérelem esetében érvényes lesz. Ez nem egy végpontok közötti műveletre vonatkozó kérelem időtúllépése.
+
+### <a name="cancellationtoken"></a>CancellationToken
+
+Az SDK-ban az összes aszinkron művelethez választható CancellationToken paraméter tartozik. Ez a [CancellationToken](https://docs.microsoft.com/dotnet/standard/threading/how-to-listen-for-cancellation-requests-by-polling) a teljes művelet során, az összes hálózati kérelemben használatos. A hálózati kérelmek között előfordulhat, hogy a CancellationToken be van jelölve, és egy művelet megszakadt, ha a kapcsolódó jogkivonat lejárt. A CancellationToken meg kell adni a művelet hatókörében várhatóan várt időtúllépést.
+
+> [!NOTE]
+> A CancellationToken olyan mechanizmus, amelyben a könyvtár a lemondást fogja ellenőriznie, ha [nem okoz érvénytelen állapotot](https://devblogs.microsoft.com/premier-developer/recommended-patterns-for-cancellationtoken/). Előfordulhat, hogy a művelet nem szakítja meg pontosan, ha a megszakítás során megadott idő fel van állítva, hanem az idő megtelte után a rendszer megszakítja a műveletet, ha ez a beállítás biztonságos.
 
 ## <a name="troubleshooting-steps"></a>Hibaelhárítási lépések
 Az alábbi lista a kérelmek időtúllépési kivételeinek ismert okait és megoldásait tartalmazza.
@@ -66,6 +81,6 @@ Az alkalmazásnak képesnek kell lennie az átmeneti hibák kezelésére, és sz
 ### <a name="8-failure-rate-is-violating-the-cosmos-db-sla"></a>8. a meghibásodási arány sérti a Cosmos DB SLA-t
 Vegye fel a kapcsolatot az Azure ügyfélszolgálatával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * A Azure Cosmos DB .NET SDK használatakor felmerülő problémák [diagnosztizálása és hibaelhárítása](troubleshoot-dot-net-sdk.md)
 * A [.net v3](performance-tips-dotnet-sdk-v3-sql.md) és a [.NET v2](performance-tips.md) teljesítményével kapcsolatos irányelvek ismertetése

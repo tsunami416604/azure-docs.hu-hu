@@ -111,7 +111,7 @@ Az előzetes verzió ideje alatt a Storage-fiókban tárolt adatokra ugyanazon a
 
 Az előzetes verzióban nem számítunk fel tranzakciót. A tranzakciók díjszabása változhat, és akkor lesz meghatározva, ha általánosan elérhető.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Első lépésként tekintse [meg a blob Storage csatlakoztatása Linux rendszeren a hálózati fájlrendszer (NFS) 3,0 protokoll (előzetes verzió) használatával](network-file-system-protocol-support-how-to.md)című témakört.
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/14/2020
-ms.openlocfilehash: 0da3a0bec79ab6f60b1e69c490124e95a4b7c365
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e8e900e410f1a41c8c98f5cec00631cfb5f275de
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86497641"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407693"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Integrációs modul az Azure Data Factoryban 
 
@@ -45,13 +45,10 @@ Az alábbi táblázat ismerteti az integrációs modulok egyes típusainak képe
 
 Integrációs modul típusa | Nyilvános hálózat | Magánhálózat
 ------- | -------------- | ---------------
-Azure | Adatfolyam<br/>Adatáthelyezés<br/>Tevékenység küldése | &nbsp;
+Azure | Adatfolyam<br/>Adatáthelyezés<br/>Tevékenység küldése | Adatfolyam<br/>Adatáthelyezés<br/>Tevékenység küldése
 Saját üzemeltetésű | Adatáthelyezés<br/>Tevékenység küldése | Adatáthelyezés<br/>Tevékenység küldése
 Azure SSIS | SSIS-csomag végrehajtása | SSIS-csomag végrehajtása
 
-Az alábbi diagram bemutatja, hogyan használhatók a különböző integrációs modulok kombinálva, hogy változatos adatintegrációs képességeket és hálózati támogatást nyújtsanak:
-
-![Különböző típusú integrációs modulok](media/concepts-integration-runtime/different-integration-runtimes.png)
 
 ## <a name="azure-integration-runtime"></a>Azure-beli integrációs modul
 
@@ -63,7 +60,7 @@ Az Azure Integration Runtime a következőket teheti:
 
 ### <a name="azure-ir-network-environment"></a>Azure-beli integrációs modul hálózati környezete
 
-Azure Integration Runtime támogatja az adattárakhoz való csatlakozást és a nyilvános elérhetőségű végpontokkal rendelkező számítási szolgáltatásokat. Használhat saját üzemeltetésű integrációs modult az Azure Virtual Network-környezethez.
+Azure Integration Runtime támogatja az adattárakhoz való csatlakozást és a nyilvános elérhetőségű végpontokkal rendelkező számítási szolgáltatásokat. A felügyelt Virtual Network engedélyezése Azure Integration Runtime támogatja az adattárakhoz való kapcsolódást magánhálózati környezetben a Private link Service használatával.
 
 ### <a name="azure-ir-compute-resource-and-scaling"></a>Azure-beli integrációs modul számítási erőforrásai és skálázása
 Az Azure-beli integrációs modul teljesen felügyelt, kiszolgáló nélküli számítást biztosít az Azure-ban.  Nem kell aggódnia az infrastruktúra kiépítésével, a Szoftvertelepítés, a javítások vagy a kapacitás skálázásával kapcsolatban.  Ráadásul csak a tényleges használat időtartamára fizet.
@@ -136,7 +133,7 @@ Az integrációs modul helye meghatározza a háttérszámítások helyét és a
 
 Beállíthat egy Azure IR adott helyét, amely esetben a tevékenység végrehajtása vagy a feladás az adott régióban fog történni.
 
-Ha úgy dönt, hogy az automatikus feloldási Azure IR használja, amely az alapértelmezett,
+Ha úgy dönt, hogy az automatikus feloldás Azure IR a nyilvános hálózaton, amely az alapértelmezett,
 
 - Másolási tevékenység esetén az ADF a legjobb erőfeszítést tesz a fogadó adattár helyének automatikus észleléséhez, majd az IR-t az azonos régióban, ha van ilyen, vagy a legközelebbi ugyanazon a földrajzi helyen; Ha a fogadó adattárának régiója nem észlelhető, a rendszer Alternatív megoldásként az adatfeldolgozó régióban lévő IR-t használja.
 
@@ -154,6 +151,8 @@ Ha úgy dönt, hogy az automatikus feloldási Azure IR használja, amely az alap
 
   > [!TIP] 
   > Jó gyakorlat lenne annak biztosítása, hogy az adatforgalom ugyanabban a régióban fusson, mint a megfelelő adattárak (ha lehetséges). Ezt megteheti a Azure IR automatikus feloldásával (ha az adattár helye megegyezik a Data Factory helyével), vagy egy új Azure IR példány létrehozásával ugyanabban a régióban, ahol az adattár található, majd végrehajtja az adatfolyamot. 
+
+Ha engedélyezte a felügyelt Virtual Network a Azure IR automatikus feloldásához, az ADF a következőt használja: az adatgyár régiójában. 
 
 A folyamattevékenységek monitorozása nézetben a felhasználói felületen vagy a tevékenységfigyelés hasznos adatainál figyelemmel követheti, melyik integrációs modul lép életbe a tevékenység végrehajtása során.
 

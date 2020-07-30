@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 07/21/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 406b122fd3f4d5ab13e9747a29bb4f6e4d2a4174
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: a5ec79538ef4358552405eb4357c6304c4f8a675
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87294761"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87388152"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-blogin"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a BlogIn
 
@@ -82,7 +82,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-1. Ha a **identitásszolgáltató** által kezdeményezett módban szeretné konfigurálni az alkalmazást, az **ALAPszintű SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
+1. Az **alapszintű SAML-konfiguráció** szakaszban, ha az alkalmazást **identitásszolgáltató** kezdeményezett módban szeretné konfigurálni, adja meg a következő mezők értékeit:
 
     a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<SUBDOMAIN>.blogin.co/`
 
@@ -93,7 +93,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
     A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<SUBDOMAIN>.blogin.co/`
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. Az értékek lekéréséhez forduljon a BlogIn ügyfélszolgálati [csapatához](mailto:support@blogin.co) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. Ezeknek a mezőknek a pontos értékeit a BlogIn **Beállítások** lapján érheti el (a**felhasználói ATHENTICATION** lapon az **SSO-t és a felhasználó-kiépítés konfigurálását**>). Másik lehetőségként kapcsolatba léphet az BlogIn ügyfélszolgálati [csapatával](mailto:support@blogin.co) az értékek beszerzéséhez. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
 1. A BlogIn alkalmazás egy adott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható.
 
@@ -101,7 +101,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A fentiek mellett a BlogIn alkalmazás néhány további attribútumot vár az SAML-válaszban, amelyek alább láthatók. Ezek az attribútumok előre fel vannak töltve, de a követelményeinek megfelelően áttekintheti őket.
     
-    | Név | Forrás attribútum |
+    | Name | Forrás attribútum |
     | ------ | --------- |
     | cím |User. beosztás |
     
@@ -142,7 +142,18 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 ## <a name="configure-blogin-sso"></a>BlogIn SSO konfigurálása
 
-Az egyszeri bejelentkezés **BlogIn** -oldalon való konfigurálásához el kell küldenie az **alkalmazás-összevonási metaadatok URL-címét** a [BlogIn támogatási csapatának](mailto:support@blogin.co). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
+Ha be szeretné állítani az egyszeri bejelentkezést a **BlogIn** oldalon, jelentkezzen be a BlogIn-fiókjába, és kövesse az alábbi lépéseket:
+
+1. Válassza a **Beállítások**  >  **felhasználói hitelesítés**  >  **SSO & felhasználó kiépítés konfigurálása**lehetőséget.
+2. A következő képernyőn módosítsa az egyszeri bejelentkezés állapotát **a** be értékre, és válasszon egy egyéni nevet a bejelentkezési képernyőn megjelenő egyszeri bejelentkezéshez.
+
+3. Ha mentette az **alkalmazás-összevonási metaadatok URL-címét** az előző szakasz utolsó lépéseként, válassza a konfigurációs módszer **metaadat-URL-címét** , és illessze be az alkalmazás- **összevonási metaadatok URL-** címét a metaadatok URL-címe mezőbe. Ellenkező esetben módosítsa a konfigurációs módszert **manuálisra**, manuálisan töltse fel az **Identity Provider egyszeri bejelentkezési URL-címét (bejelentkezési URL-címét)** és az **identitás-szolgáltató kiállítóját (Entity ID)**, és töltse fel az Azure ad-ből kapott **tanúsítványt (Base64)**   .
+
+4. Válassza ki az alapértelmezett felhasználói szerepkört, amellyel az új felhasználók az SSO használatával csatlakoznak a BlogIn-hez.
+
+5. Válassza a **Módosítások mentése** lehetőséget.
+
+Az egyszeri bejelentkezés BlogIn-on való beállításának részletes ismertetését lásd: [SSO beállítása Microsoft Azure ADhoz a BlogIn-on](https://blogin.co/blog/how-to-set-up-single-sign-on-sso-for-microsoft-azure-active-directory-azure-ad-267/). Ha bármilyen kérdése van, vagy segítségre van szüksége, vegye fel a kapcsolatot a [BlogIn támogatási csapatával](mailto:support@blogin.co) .
 
 ### <a name="create-blogin-test-user"></a>BlogIn-tesztelési felhasználó létrehozása
 

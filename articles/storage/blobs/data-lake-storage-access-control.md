@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 5d478723af7d13cc3480f6c2a80bf9b76ba4b84f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4b52fe22e455f5b0ebce6960b40bcc80c46079c3
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091351"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421348"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Hozzáférés-vezérlés a 2. generációs Azure Data Lake Storage-ben
 
@@ -21,7 +21,7 @@ Azure Data Lake Storage Gen2 olyan hozzáférés-vezérlési modellt valósít m
 
 <a id="azure-role-based-access-control-rbac"></a>
 
-## <a name="role-based-access-control"></a>Szerepköralapú hozzáférés-vezérlés
+## <a name="role-based-access-control"></a>Szerepkör alapú hozzáférés-vezérlés
 
 A RBAC szerepkör-hozzárendelésekkel hatékonyan alkalmazza a *rendszerbiztonsági tag*engedélyeinek készleteit. A *rendszerbiztonsági tag* egy olyan objektum, amely az Azure-erőforrásokhoz való hozzáférést kérő Azure Active Directory (ad) által meghatározott felhasználó, csoport, szolgáltatásnév vagy felügyelt identitást jelöl.
 
@@ -34,9 +34,9 @@ Ha szeretné megtudni, hogyan rendeljen hozzá szerepköröket rendszerbiztonsá
 
 ### <a name="the-impact-of-role-assignments-on-file-and-directory-level-access-control-lists"></a>A szerepkör-hozzárendelések hatása a fájl-és könyvtár szintű hozzáférés-vezérlési listára
 
-A RBAC szerepkör-hozzárendelések használata egy hatékony mechanizmus a hozzáférési engedélyek szabályozására, ez egy nagyon durva módszer a hozzáférés-vezérlési listákhoz képest. A RBAC legkisebb részletessége a tároló szintjén van, ezért a rendszer az ACL-ekkel magasabb prioritással értékeli. Ezért ha egy szerepkört egy rendszerbiztonsági tag számára rendel hozzá egy tároló hatókörében, a rendszerbiztonsági tag az adott szerepkörhöz tartozó összes könyvtárra és fájlra vonatkozó engedélyezési szinttel rendelkezik, függetlenül az ACL-hozzárendeléstől.
+Az Azure szerepkör-hozzárendelések használata egy hatékony mechanizmus a hozzáférési engedélyek szabályozására, és ez egy nagyon durva módszer a hozzáférés-vezérlési listákhoz képest. A RBAC legkisebb részletessége a tároló szintjén van, ezért a rendszer az ACL-ekkel magasabb prioritással értékeli. Ezért ha egy szerepkört egy rendszerbiztonsági tag számára rendel hozzá egy tároló hatókörében, a rendszerbiztonsági tag az adott szerepkörhöz tartozó összes könyvtárra és fájlra vonatkozó engedélyezési szinttel rendelkezik, függetlenül az ACL-hozzárendeléstől.
 
-Ha egy rendszerbiztonsági tag egy [beépített szerepkörön](https://docs.microsoft.com/azure/storage/common/storage-auth-aad?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#built-in-rbac-roles-for-blobs-and-queues)vagy egy egyéni szerepkörön keresztül kap RBAC-adatengedélyeket, akkor ezeket az engedélyeket először a kérelem engedélyezése után értékeli ki a rendszer. Ha a kért műveletet a rendszerbiztonsági tag RBAC-hozzárendelései engedélyezik, akkor az engedélyezés azonnal megoldódik, és a rendszer nem végez további ACL-ellenőrzéseket. Ha a rendszerbiztonsági tag nem rendelkezik RBAC-hozzárendeléssel, vagy a kérelem művelete nem felel meg a hozzárendelt engedélynek, akkor az ACL-ellenőrzések végrehajtásával megállapíthatja, hogy a rendszerbiztonsági tag jogosult-e a kért művelet végrehajtására.
+Ha egy rendszerbiztonsági tag egy [beépített szerepkörön](https://docs.microsoft.com/azure/storage/common/storage-auth-aad?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#built-in-rbac-roles-for-blobs-and-queues)vagy egy egyéni szerepkörön keresztül kap RBAC-adatengedélyeket, akkor ezeket az engedélyeket először a kérelem engedélyezése után értékeli ki a rendszer. Ha a kért műveletet a rendszerbiztonsági tag Azure szerepkör-hozzárendelései engedélyezik, akkor az engedélyezés azonnal megoldódik, és a rendszer nem végez további ACL-ellenőrzéseket. Ha a rendszerbiztonsági tag nem rendelkezik Azure-szerepkör-hozzárendeléssel, vagy a kérelem művelete nem felel meg a hozzárendelt engedélynek, akkor az ACL-ellenőrzések végrehajtásával megállapíthatja, hogy a rendszerbiztonsági tag jogosult-e a kért művelet végrehajtására.
 
 > [!NOTE]
 > Ha a rendszerbiztonsági tag a Storage blob-adatok tulajdonosának beépített szerepkör-hozzárendelését rendelte hozzá, akkor a rendszerbiztonsági tag egy *felügyelőnek* tekintendő, és teljes hozzáférést kap az összes mutációs művelethez, beleértve a címtár vagy fájl tulajdonosának beállítását, valamint a könyvtárak és fájlok hozzáférés-vezérlési listáihoz tartozó ACL-eket, amelyekhez nem a tulajdonos. A felügyelői hozzáférés csak az erőforrás tulajdonosának módosítására jogosult.
@@ -333,7 +333,7 @@ Ha a szolgáltatásnév helyes OID-je van, lépjen a Storage Explorer a **hozzá
 
 ### <a name="does-data-lake-storage-gen2-support-inheritance-of-acls"></a>Támogatja Data Lake Storage Gen2 az ACL-ek öröklését?
 
-Az Azure RBAC-hozzárendelések öröklik. A hozzárendelések az előfizetés, az erőforráscsoport és a Storage-fiók erőforrásaiból származnak a tároló-erőforráshoz.
+Az Azure szerepkör-hozzárendelések öröklik. A hozzárendelések az előfizetés, az erőforráscsoport és a Storage-fiók erőforrásaiból származnak a tároló-erőforráshoz.
 
 Az ACL-ek nem öröklik az öröklést. Az alapértelmezett ACL-ek azonban az alárendelt alkönyvtárakhoz és a szülő könyvtár alatt létrehozott fájlokhoz tartozó ACL-ek beállítására is használhatók. 
 

@@ -40,7 +40,7 @@ A Digital Twin-ben a tulajdonság jelenlegi és kívánt állapotának egységes
 
 Ha JSON-objektumként jelenik meg, a digitális Twin a következő mezőket tartalmazza:
 
-| Mező neve | Leírás |
+| Mező neve | Description |
 | --- | --- |
 | `$dtId` | Egy felhasználó által megadott karakterlánc, amely az eszköz digitális Twin AZONOSÍTÓját jelöli |
 | `{propertyName}` | A JSON-tulajdonság értéke |
@@ -374,11 +374,11 @@ content-encoding:utf-8
 ]
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte a digitális ikreket, íme néhány további erőforrás:
 
 - [A IoT Plug and Play Digital Twin API-k használata](howto-manage-digital-twin.md)
-- [Eszköz használata a megoldásból](quickstart-service-node.md)
+- [Kommunikáció egy eszközzel a megoldásból](quickstart-service-node.md)
 - [IoT Digital Twin REST API](https://docs.microsoft.com/rest/api/iothub/service/digitaltwin)
 - [Azure IoT Explorer](howto-use-iot-explorer.md)

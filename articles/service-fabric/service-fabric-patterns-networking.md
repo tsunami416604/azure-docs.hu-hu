@@ -3,12 +3,12 @@ title: Az Azure Service Fabric hálózatkezelési mintái
 description: Ismerteti a Service Fabric általános hálózati mintáit, valamint azt, hogyan lehet fürtöt létrehozni az Azure hálózatkezelési funkciói segítségével.
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: 0c3664d1890fd318aa1bff508a51cb227bdcc01d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 20bd5e931307725016c3e2ad69dae91214b2caab
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258537"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421467"
 ---
 # <a name="service-fabric-networking-patterns"></a>Service Fabric hálózati minták
 Az Azure Service Fabric-fürtöt más Azure hálózati szolgáltatásokkal is integrálhatja. Ebben a cikkben bemutatjuk, hogyan hozhat létre olyan fürtöket, amelyek a következő szolgáltatásokat használják:
@@ -99,6 +99,8 @@ A cikkben szereplő példákban a Service Fabric template.jst használjuk. A sab
                 "defaultValue": "10.0.0.0/24"
             },*/
     ```
+
+   Emellett a "virtualNetworkName" nevű paramétert is megadhatja, így nem fogja kérni a virtuális hálózat nevének megadását a Azure Portal fürt üzembe helyezés paneljén.
 
 2. A Megjegyzés ki `nicPrefixOverride` attribútuma `Microsoft.Compute/virtualMachineScaleSets` , mivel meglévő alhálózatot használ, és ezt a változót az 1. lépésben letiltotta.
 

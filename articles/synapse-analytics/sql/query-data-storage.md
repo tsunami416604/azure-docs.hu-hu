@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 8433242ffe44b8deab62314af386f1a82e2e0017
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 7ef7a771442dba5c7f82196a13b77cb28b0d1ed8
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/29/2020
-ms.locfileid: "87374116"
+ms.locfileid: "87386656"
 ---
 # <a name="query-storage-files-using-sql-on-demand-preview-resources-within-synapse-sql"></a>Storage-fájlok lekérdezése az SQL on-demand (előzetes verzió) erőforrásain belül a szinapszis SQL-ben
 
@@ -186,7 +186,7 @@ Alapértelmezés szerint a `OPENROWSET` függvény megegyezik a forrás mező ne
 - Ha a tulajdonság nem található a megadott column_name, a függvény hibát ad vissza.
 - Ha a tulajdonság nem található a megadott column_pathban, az [elérési út módjától](/sql/relational-databases/json/json-path-expressions-sql-server?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#PATHMODE)függően, a függvény hibát ad vissza, ha a szigorú vagy a null értéket adja meg LAX módban.
 
-A lekérdezési minták esetében tekintse át a beágyazott oszlopok hozzáférési elemeit a [lekérdezési parketta beágyazott típusai](query-parquet-nested-types.md#access-elements-from-nested-columns) című cikkben.
+A lekérdezési minták esetében tekintse át a beágyazott oszlopok hozzáférési elemeit a [lekérdezési parketta beágyazott típusai](query-parquet-nested-types.md#read-properties-from-nested-object-columns) című cikkben.
 
 #### <a name="access-elements-from-repeated-columns"></a>Elemek elérése ismétlődő oszlopokból
 
@@ -248,7 +248,7 @@ A demo-adat a következő adatkészleteket tartalmazza:
 - Parketta-fájlok beágyazott oszlopokkal
 - Könyvek JSON formátumban
 
-| Mappa elérési útja                                                  | Leírás                                                  |
+| Mappa elérési útja                                                  | Description                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | CSV                                                        | CSV formátumú adatszülő mappa                         |
 | /csv/population/<br />/csv/population-unix/<br />/csv/population-unix-hdr/<br />/csv/population-unix-hdr-escape<br />/csv/population-unix-hdr-quoted | Különböző CSV formátumú adatfájlokkal rendelkező mappák. |
@@ -260,7 +260,7 @@ A demo-adat a következő adatkészleteket tartalmazza:
 | /json/books/                                                 | Könyvekből származó JSON-fájlok                                   |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A különböző fájltípusok lekérdezésével, valamint a nézetek létrehozásával és használatával kapcsolatos további információkért tekintse meg a következő cikkeket:
 

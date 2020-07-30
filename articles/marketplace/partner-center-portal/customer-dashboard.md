@@ -110,7 +110,7 @@ Az **ügyfelek oldal** szűrői az ügyfelek oldal szintjén lesznek alkalmazva.
 >[!NOTE]
 > Az ügyfél rácsa, az oldal szűrői és a lehetséges kijelölések részletes definíciói az alább található GYIK-cikkben találhatók.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A partner Center kereskedelmi piactéren elérhető analitikai jelentések áttekintését lásd: [a partner Center kereskedelmi piacának elemzései](./analytics.md).
 - Az ajánlathoz tartozó Piactéri tevékenységet összefoglaló összesített adatok grafikonok, trendek és értékek esetében lásd: [az összefoglaló irányítópult a kereskedelmi piactér elemzésében](./summary-dashboard.md).

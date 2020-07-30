@@ -11,12 +11,12 @@ author: aashishb
 ms.date: 07/07/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, tracking-python
-ms.openlocfilehash: 79db00216ffb54b8c71ef78cc745ec37c353f1cc
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: df819f5ff641af014750d6501c8b168e54917318
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320170"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420532"
 ---
 # <a name="network-isolation-during-training--inference-with-private-virtual-networks"></a>Hálózati elkülönítés a betanítás során & privát virtuális hálózatokkal való következtetés
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -57,9 +57,6 @@ Az [Azure privát hivatkozását is engedélyezheti](how-to-configure-private-li
 > [!WARNING]
 > 
 > Azure Machine Learning számítási példányok előzetes verziója nem támogatott olyan munkaterületen, amelyben engedélyezve van a magánhálózati hivatkozás.
->
-> A Azure Machine Learning nem támogatja olyan Azure Kubernetes-szolgáltatás használatát, amelyen engedélyezve van a privát kapcsolat. Ehelyett használhatja az Azure Kubernetes szolgáltatást egy virtuális hálózaton. További információkért lásd: [Azure-beli Virtual Network biztonságossá tétele és következtetések](how-to-enable-virtual-network.md)elvégzése az Azure-on belül.
-
 
 <a id="amlcompute"></a>
 
@@ -449,9 +446,6 @@ Ha az Azure Kubernetes Service (ak) szolgáltatást egy virtuális hálózatban 
 >
 > Az AK-példánynak és az Azure-beli virtuális hálózatnak ugyanabban a régióban kell lennie. Ha a virtuális hálózatban a munkaterület által használt Azure Storage-fiók (oka) t védi, azoknak ugyanabban a virtuális hálózatban kell lenniük, mint az AK-példány.
 
-> [!WARNING]
-> A Azure Machine Learning nem támogatja olyan Azure Kubernetes-szolgáltatás használatát, amelyen engedélyezve van a privát kapcsolat.
-
 1. Jelentkezzen be [Azure Machine learning studióba](https://ml.azure.com/), majd válassza ki az előfizetést és a munkaterületet.
 
 1. Válassza a bal oldali __számítás__ lehetőséget.
@@ -826,7 +820,7 @@ Ha egy virtuális gépet vagy Azure HDInsight-fürtöt szeretne használni a mun
 1. Csatlakoztassa a virtuális gépet vagy a HDInsight-fürtöt a Azure Machine Learning munkaterülethez. További információ: [számítási célok beállítása a modell betanításához](how-to-set-up-training-targets.md).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Betanítási környezetek beállítása](how-to-set-up-training-targets.md)
 * [Privát végpontok beállítása](how-to-configure-private-link.md)

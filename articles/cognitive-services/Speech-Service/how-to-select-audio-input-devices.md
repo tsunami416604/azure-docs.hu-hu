@@ -10,16 +10,17 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: chlandsi
-ms.openlocfilehash: 9891cdb59c757035afd17339b052d5587ac99b0c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 80671a40b5933a89962fa07b267d7e99e475657f
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74109975"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406690"
 ---
 # <a name="how-to-select-an-audio-input-device-with-the-speech-sdk"></a>Útmutató: hangbemeneti eszköz kiválasztása a Speech SDK-val
 
-A Speech SDK 1.3.0 verziója bevezet egy API-t a hangbemenet kiválasztásához. Ez a cikk a rendszerhez csatlakoztatott hangeszközök azonosítóinak beszerzését ismerteti. Ezek ezután a Speech SDK-ban használhatók a hangeszköz `AudioConfig` objektumon keresztüli konfigurálásával:
+A Speech SDK 1.3.0 verziója bevezet egy API-t a hangbemenet kiválasztásához. Ez a cikk a rendszerhez csatlakoztatott hangeszközök azonosítóinak beszerzését ismerteti. Ezek ezután a Speech SDK-ban használhatók a hangeszköz objektumon keresztüli konfigurálásával `AudioConfig` :
 
 ```C++
 audioConfig = AudioConfig.FromMicrophoneInput("<device id>");
@@ -46,7 +47,7 @@ audioConfig = AudioConfiguration.fromMicrophoneInput("<device id>");
 ```
 
 > [!Note]
-> A mikrofon használata nem érhető el a Node. js-ben futó JavaScripthez
+> A mikrofon használata nem érhető el a Node.jsban futó JavaScriptek esetében
 
 ## <a name="audio-device-ids-on-windows-for-desktop-applications"></a>Hangeszközök azonosítói Windows asztali alkalmazásokhoz
 
@@ -171,11 +172,11 @@ namespace ConsoleApp
 }
 ```
 
-A minta eszköz azonosítója: `{0.0.1.00000000}.{5f23ab69-6181-4f4a-81a4-45414013aac8}`.
+A minta eszköz azonosítója: `{0.0.1.00000000}.{5f23ab69-6181-4f4a-81a4-45414013aac8}` .
 
 ## <a name="audio-device-ids-on-uwp"></a>Hangeszközök azonosítói a UWP
 
-A Univerzális Windows-platform (UWP) hangbeviteli eszközöket a megfelelő `Id()` [`DeviceInformation`](/uwp/api/windows.devices.enumeration.deviceinformation) objektum tulajdonságának használatával lehet beszerezni.
+A Univerzális Windows-platform (UWP) hangbeviteli eszközöket a `Id()` megfelelő objektum tulajdonságának használatával lehet beszerezni [`DeviceInformation`](/uwp/api/windows.devices.enumeration.deviceinformation) .
 
 A következő mintakód bemutatja, hogyan végezheti el ezt a C++ és a C# nyelvben:
 
@@ -222,22 +223,22 @@ namespace helloworld {
 }
 ```
 
-A minta eszköz azonosítója: `\\\\?\\SWD#MMDEVAPI#{0.0.1.00000000}.{5f23ab69-6181-4f4a-81a4-45414013aac8}#{2eef81be-33fa-4800-9670-1cd474972c3f}`.
+A minta eszköz azonosítója: `\\\\?\\SWD#MMDEVAPI#{0.0.1.00000000}.{5f23ab69-6181-4f4a-81a4-45414013aac8}#{2eef81be-33fa-4800-9670-1cd474972c3f}` .
 
 ## <a name="audio-device-ids-on-linux"></a>Audio-eszközök azonosítói Linuxon
 
 Az eszközök azonosítói a szabványos ALSA-eszközök azonosítói alapján vannak kiválasztva.
 
-A rendszerhez csatolt bemenetek azonosítói a parancs `arecord -L`kimenetében találhatók.
+A rendszerhez csatolt bemenetek azonosítói a parancs kimenetében találhatók `arecord -L` .
 Azt is megteheti, hogy az [ALSA C könyvtár](https://www.alsa-project.org/alsa-doc/alsa-lib/)használatával szerzi be őket.
 
-A minták azonosítói a következők `hw:1,0` : és `hw:CARD=CC,DEV=0`.
+A minták azonosítói a következők: `hw:1,0` és `hw:CARD=CC,DEV=0` .
 
 ## <a name="audio-device-ids-on-macos"></a>Hangeszközök azonosítói macOS rendszeren
 
 Az Objective-C-ben implementált következő függvény a Mac számítógéphez csatlakoztatott hangeszközök neveinek és azonosítóinak listáját hozza létre.
 
-A `deviceUID` karakterlánc a MacOS-hez készült Speech SDK-ban található eszköz azonosítására szolgál.
+A `deviceUID` karakterlánc a MacOS-hez készült SPEECH SDK-ban található eszköz azonosítására szolgál.
 
 ```objc
 #import <Foundation/Foundation.h>
@@ -361,11 +362,11 @@ CFArrayRef CreateInputDeviceArray()
 }
 ```
 
-A beépített mikrofonhoz tartozó UID például a következő: `BuiltInMicrophoneDevice`.
+A beépített mikrofonhoz tartozó UID például a következő: `BuiltInMicrophoneDevice` .
 
 ## <a name="audio-device-ids-on-ios"></a>Hangeszközök azonosítói az iOS-en
 
-A Speech SDK-val a hangeszköz kiválasztása nem támogatott iOS rendszeren. Az SDK-t használó alkalmazások azonban befolyásolhatják a [`AVAudioSession`](https://developer.apple.com/documentation/avfoundation/avaudiosession?language=objc) keretrendszeren keresztüli hang-útválasztást.
+A Speech SDK-val a hangeszköz kiválasztása nem támogatott iOS rendszeren. Az SDK-t használó alkalmazások azonban befolyásolhatják a keretrendszeren keresztüli hang-útválasztást [`AVAudioSession`](https://developer.apple.com/documentation/avfoundation/avaudiosession?language=objc) .
 
 Például az utasítás
 
@@ -378,9 +379,9 @@ engedélyezi a Bluetooth-fejhallgató használatát egy beszédfelismerést tám
 
 ## <a name="audio-device-ids-in-javascript"></a>Hangeszközök azonosítói a JavaScriptben
 
-A JavaScriptben a [MediaDevices. enumerateDevices ()](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/enumerateDevices) metódus használatával enumerálhatja az adathordozó eszközöket, és megkeresheti a továbbítani kívánt eszköz azonosítóját `fromMicrophone(...)`.
+A JavaScriptben a [MediaDevices. enumerateDevices ()](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/enumerateDevices) metódus használatával enumerálhatja az adathordozó eszközöket, és megkeresheti a továbbítani kívánt eszköz azonosítóját `fromMicrophone(...)` .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [A GitHubon található minták megismerése](https://aka.ms/csspeech/samples)

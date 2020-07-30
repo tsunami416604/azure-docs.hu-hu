@@ -10,12 +10,12 @@ ms.date: 12/30/2019
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 80ca5b63a91da31a5b226a589e15fb202eabd4ad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b7e93f54c1aa0eaa5edf3b3fcbfbf8bd9a6442d7
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84805777"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87417539"
 ---
 # <a name="run-powershell-commands-with-azure-ad-credentials-to-access-blob-or-queue-data"></a>PowerShell-parancsok futtatása Azure AD-beli hitelesítő adatokkal a blob-vagy üzenetsor-adatok eléréséhez
 
@@ -71,7 +71,7 @@ Az alábbi példa bemutatja, hogyan hozhat létre egy tárolót egy új Storage-
 1. A tároló létrehozása előtt rendelje hozzá a [Storage blob adatközreműködői](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor) szerepkört saját magának. Annak ellenére, hogy Ön a fiók tulajdonosa, explicit engedélyekkel kell rendelkeznie az adatműveletek elvégzéséhez a Storage-fiókon. A RBAC-szerepkörök hozzárendelésével kapcsolatos további információkért lásd: [hozzáférés biztosítása az Azure blobhoz és üzenetsor-adatokhoz a Azure Portal RBAC](storage-auth-aad-rbac.md)használatával.
 
     > [!IMPORTANT]
-    > A RBAC szerepkör-hozzárendelések eltartása néhány percet is igénybe vehet.
+    > Az Azure-beli szerepkör-hozzárendelések eltartása néhány percet is igénybe vehet.
 
 1. Hozzon létre egy tárolót a [New-AzStorageContainer](/powershell/module/az.storage/new-azstoragecontainer)hívásával. Mivel ez a hívás az előző lépésekben létrehozott környezetet használja, a tároló az Azure AD-beli hitelesítő adataival jön létre.
 
@@ -80,7 +80,7 @@ Az alábbi példa bemutatja, hogyan hozhat létre egy tárolót egy új Storage-
     New-AzStorageContainer -Name $containerName -Context $ctx
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A PowerShell használata RBAC-szerepkör hozzárendeléséhez a blob-és üzenetsor-adathoz való hozzáféréshez](storage-auth-aad-rbac-powershell.md)
 - [Hozzáférés engedélyezése a blob-és üzenetsor-szolgáltatásokhoz az Azure-erőforrások felügyelt identitásával](storage-auth-aad-msi.md)

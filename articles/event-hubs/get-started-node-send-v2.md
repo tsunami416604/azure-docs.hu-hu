@@ -3,12 +3,13 @@ title: Események küldése vagy fogadása az Azure Event Hubs a JavaScript hasz
 description: Ez a cikk egy olyan JavaScript-alkalmazás létrehozásának bemutatóját ismerteti, amely az Azure-Event Hubs a legújabb Azure/Event-hubok 5-ös verziójának használatával küld/fogad eseményeket.
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: 7ec97d07843a9844387ad1038c075ed55e304a2c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 098e9e4ff6da199c48acf8956049336049e8a58c
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86521887"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421212"
 ---
 # <a name="send-events-to-or-receive-events-from-event-hubs-by-using-javascript--azureevent-hubs-version-5"></a>Események küldése vagy fogadása az Event hubokból a JavaScript használatával (Azure/Event-hubok 5-ös verzió)
 Ez a rövid útmutató bemutatja, hogyan lehet eseményeket küldeni és fogadni az Event hub eseményeiről az **Azure/Event-hubok 5. verziójú JavaScript-** csomag használatával. 
@@ -112,7 +113,7 @@ Ebben a szakaszban egy esemény-központból származó eseményeket kap egy Azu
 ### <a name="create-an-azure-storage-account-and-a-blob-container"></a>Azure Storage-fiók és blob-tároló létrehozása
 Hozzon létre egy Azure Storage-fiókot és egy BLOB-tárolót a következő műveletekkel:
 
-1. [Azure-tárfiók létrehozása](../storage/common/storage-account-create.md?tabs=azure-portal)  
+1. [Azure Storage-fiók létrehozása](../storage/common/storage-account-create.md?tabs=azure-portal)  
 2. [BLOB-tároló létrehozása a Storage-fiókban](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)  
 3. [A Storage-fiókhoz tartozó kapcsolódási karakterlánc lekérése](../storage/common/storage-configure-connection-string.md)
 

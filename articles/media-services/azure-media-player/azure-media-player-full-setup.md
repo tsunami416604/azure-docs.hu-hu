@@ -6,12 +6,13 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: how-to
 ms.date: 04/20/2020
-ms.openlocfilehash: 62d4e26d5a0d3d86cc58421dab4167d5d9d2562d
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.custom: devx-track-javascript
+ms.openlocfilehash: d7e6d3c1554f70ea14e097ff2fe6df47987b5927
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85961779"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423048"
 ---
 # <a name="azure-media-player-full-setup"></a>Az Azure Media Player teljes telepítése #
 
@@ -118,6 +119,6 @@ Az elem AZONOSÍTÓjának használata helyett az elemre mutató hivatkozást is 
     myPlayer.src([{ src: "//example/path/to/myVideo.ism/manifest", type: "application/vnd.ms-sstr+xml"]);
 ```
 
-## <a name="next-steps"></a>További lépések ##
+## <a name="next-steps"></a>Következő lépések ##
 
 - [Azure Media Player rövid útmutató](azure-media-player-quickstart.md)

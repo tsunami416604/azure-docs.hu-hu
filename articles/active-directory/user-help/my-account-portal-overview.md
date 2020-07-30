@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 04/20/2020
+ms.date: 07/29/2020
 ms.author: curtand
-ms.openlocfilehash: 878fbb81e05db058aa015f8b4a7eae42e8cfea2e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: da00d77138eb3ff737c26d7fa52ab0bb56ec6ae4
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83742207"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422410"
 ---
 # <a name="what-is-the-my-account-portal"></a>Mi az a Saját fiók portál?
 
@@ -33,9 +33,9 @@ A fiókom **-portálon** (a https://myaccount.microsoft.com) következő böngé
 ![Saját fiók portál, áttekintő lap](media/my-account-portal/my-account-portal-overview.png)
 
 >[!Important]
->Ez a cikk azoknak a felhasználóknak készült, akik a fiókom portálon szeretnék frissíteni a biztonsági adataikat, az eszköz adatait, a jelszavukat, a csatlakoztatott szervezeteket, az adatvédelmet vagy az előző bejelentkezési adatokat. Ha Ön rendszergazda, aki a hitelesítés és az egyéb Azure Active Directory (Azure AD) funkcióinak bekapcsolását kéri az alkalmazottak és más alkalmazások számára, tekintse meg a [rendszergazdák Azure ad-dokumentációját](https://docs.microsoft.com/azure/active-directory/).
+>Ez a cikk azoknak a felhasználóknak készült, akik a saját fiók portálon szeretnék frissíteni a biztonsági adataikat, az eszköz adatait, a jelszavukat, a csatlakoztatott szervezeteket, a nyelvi beállításokat, az adatvédelmet vagy az előző bejelentkezési adatokat. Ha Ön rendszergazda, aki a hitelesítés és az egyéb Azure Active Directory (Azure AD) funkcióinak bekapcsolását kéri az alkalmazottak és más alkalmazások számára, tekintse meg a [rendszergazdák Azure ad-dokumentációját](https://docs.microsoft.com/azure/active-directory/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Válassza ki a [biztonsági adatok](user-help-security-info-overview.md) megtekintéséhez vagy kezeléséhez
 
@@ -46,6 +46,8 @@ A fiókom **-portálon** (a https://myaccount.microsoft.com) következő böngé
 - [Bejelentkezési tevékenység](my-account-portal-sign-ins-page.md) megtekintése
 
 - Annak megtekintése, hogy a szervezet hogyan [használja az adatvédelmet érintő adatokat](my-account-portal-privacy-page.md)
+
+- A fiókom [portál beállításainak](my-account-portal-settings.md) módosítása
 
 ## <a name="related-microsoft-office-content"></a>Kapcsolódó Microsoft Office tartalom
 

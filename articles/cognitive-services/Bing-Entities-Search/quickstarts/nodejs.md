@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: keresési kérelem küldése a REST API Node. js használatával – Bing Entity Search'
+title: 'Gyors útmutató: keresési kérelem küldése a REST APInak Node.js-Bing Entity Search használatával'
 titleSuffix: Azure Cognitive Services
 description: Ezzel a rövid útmutatóval kérést küldhet a Bing Entity Search REST API C# használatával, és JSON-választ kap.
 services: cognitive-services
@@ -10,14 +10,15 @@ ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: aahi
-ms.openlocfilehash: 194368acd6be65da6a800ad1394ac156a6654b50
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 82bdd8f3890f1685aa442463287fe72bde08d518
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650245"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87405959"
 ---
-# <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-nodejs"></a>Gyors útmutató: keresési kérelem küldése a Bing Entity Search REST API Node. js használatával
+# <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-nodejs"></a>Gyors útmutató: keresési kérelem küldése a Bing Entity Search REST API a Node.js használatával
 
 Ezzel a rövid útmutatóval elvégezheti az első hívását a Bing Entity Search API, és megtekintheti a JSON-választ. Ez az egyszerű JavaScript-alkalmazás egy Hírek keresési lekérdezést küld az API-nak, és megjeleníti a választ. A minta forráskódja elérhető a [githubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingEntitySearchv7.js).
 

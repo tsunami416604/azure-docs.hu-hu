@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 75e3f7fc98072957f571937a1627247cdc4a9e7e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0ee138ac41557554ae4b8fde8c9178336fd8d5db
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85374441"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387778"
 ---
 # <a name="plan-a-single-sign-on-deployment"></a>Egyszeri bejelentkezés üzembe helyezésének tervezése
 
@@ -55,7 +55,7 @@ Kétféleképpen engedélyezheti a felhasználók számára az alkalmazások egy
 ### <a name="considerations-for-federation-based-sso"></a>Az összevonási alapú SSO szempontjai
 
 - Az **OpenID Connect és a OAuth használata** – ha a csatlakoztatni kívánt alkalmazás támogatja azt, használja az OIDC/OAuth 2,0 metódust, hogy engedélyezze az egyszeri bejelentkezést az adott alkalmazáshoz. Ez a módszer kevesebb konfigurálást igényel, és gazdagabb felhasználói élményt tesz lehetővé. További információ: [OAuth 2,0](../develop/v2-oauth2-auth-code-flow.md), [OpenID Connect 1,0](../develop/v2-protocols-oidc.md)és [Azure Active Directory fejlesztői útmutató](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide).
-- Az **SAML-alapú SSO végpont-konfigurációi** – ha SAML-t használ, a fejlesztőknek az alkalmazás konfigurálása előtt egyedi információkra van szükségük. További információ: [az alapszintű SAML-konfiguráció szerkesztése](configure-single-sign-on-non-gallery-applications.md).
+- Az **SAML-alapú SSO végpont-konfigurációi** – ha SAML-t használ, a fejlesztőknek az alkalmazás konfigurálása előtt egyedi információkra van szükségük. További információ: [SAML-alapú egyszeri bejelentkezés konfigurálása](configure-saml-single-sign-on.md).
 - **Tanúsítványkezelő az SAML-alapú egyszeri bejelentkezéshez** – Ha engedélyezi az összevont SSO-t az alkalmazáshoz, az Azure ad alapértelmezés szerint három évig érvényes tanúsítványt hoz létre. Ha szükséges, testreszabhatja a tanúsítvány lejárati dátumát. Győződjön meg arról, hogy a tanúsítványok megújításához szükséges folyamatok vannak érvényben a lejárat előtt. További információ: [Azure ad-tanúsítványok kezelése](https://docs.microsoft.com/azure/active-directory/active-directory-sso-certs).
 
 ### <a name="considerations-for-password-based-sso"></a>A jelszó-alapú egyszeri bejelentkezés szempontjai
@@ -235,11 +235,11 @@ Mindig a legkevesebb engedélyekkel rendelkező szerepkört használja a szüks�
 
 | Persona| Szerepkörök | Azure AD-szerepkör (ha szükséges) |
 |--------|-------|-----------------------------|
-| Ügyfélszolgálati rendszergazda | 1. szintű támogatás | None |
+| Ügyfélszolgálati rendszergazda | 1. szintű támogatás | Nincs |
 | Identity admin | Konfigurálás és hibakeresés az Azure AD-t érintő problémák esetén | Globális rendszergazda |
-| Alkalmazás-rendszergazda | Felhasználói igazolás az alkalmazásban, az engedélyekkel rendelkező felhasználók konfigurációja | None |
+| Alkalmazás-rendszergazda | Felhasználói igazolás az alkalmazásban, az engedélyekkel rendelkező felhasználók konfigurációja | Nincs |
 | Infrastruktúra-rendszergazdák | Tanúsítvány-átváltási tulajdonos | Globális rendszergazda |
-| Üzleti tulajdonos/érintett fél | Felhasználói igazolás az alkalmazásban, az engedélyekkel rendelkező felhasználók konfigurációja | None |
+| Üzleti tulajdonos/érintett fél | Felhasználói igazolás az alkalmazásban, az engedélyekkel rendelkező felhasználók konfigurációja | Nincs |
 
 Javasoljuk, hogy az [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure) (PIM) használatával kezelje a szerepköröket, hogy további naplózási, vezérlési és hozzáférési felülvizsgálatot nyújtson a felhasználók számára a címtár-jogosultságokkal.
 
@@ -303,7 +303,7 @@ A következő hivatkozások hibaelhárítási forgatókönyveket mutatnak be. El
 
 - [Probléma az összevont egyszeri bejelentkezéssel az Azure Application Galleryben nem szereplő alkalmazásokhoz](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-problem-federated-sso-non-gallery)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [SAML-alapú SSO hibakeresése](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-debugging)
 

@@ -9,12 +9,13 @@ ms.subservice: immersive-reader
 ms.topic: conceptual
 ms.date: 01/14/2020
 ms.author: pasta
-ms.openlocfilehash: e01cc9e8cedb6c38da0b56e04419c706d5d0566e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 6bde75fe0fb856633d7849173faf21db76edc950
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75946121"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406911"
 ---
 # <a name="how-to-display-math-in-the-immersive-reader"></a>A matematika megjelenítése a lebilincselő olvasóban
 
@@ -22,7 +23,7 @@ A magával ragadó olvasó matematikai Markup Language ([MathML](https://develop
 A MIME-típus a magától megtekinthető olvasó [chunk](../reference.md#chunk)adattömbökön állítható be. További információ: [támogatott MIME-típusok](../reference.md#supported-mime-types) .
 
 ## <a name="send-math-to-the-immersive-reader"></a>Matematikai küldése a magára olvasónak
-Ha matematikai küldést szeretne küldeni a lebilincselő olvasónak, adjon meg egy MathML tartalmazó adathalmazt, és állítsa a ```application/mathml+xml```MIME-típust a következőre:;
+Ha matematikai küldést szeretne küldeni a lebilincselő olvasónak, adjon meg egy MathML tartalmazó adathalmazt, és állítsa a MIME-típust a következőre: ```application/mathml+xml``` ;
 
 Például ha a tartalom a következő volt:
 
@@ -71,6 +72,6 @@ A lebilincselő olvasó indításakor a következőket kell látnia:
 
 ![Matematika a lebilincselő olvasóban](../media/how-tos/1-math.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerkedjen meg a [magára az olvasói SDK](https://github.com/microsoft/immersive-reader-sdk) -val és az [olvasói SDK-referenciával](../reference.md)

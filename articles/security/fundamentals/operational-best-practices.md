@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: ec4d91d90a952805781d6d38a0fc8a8fcef84f39
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 496d99b3d871c66e2557e1f384bb4480cd8b0831
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283469"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423150"
 ---
 # <a name="azure-operational-security-best-practices"></a>Az Azure működési biztonságának ajánlott eljárásai
 Ez a cikk az Azure-ban tárolt adatok, alkalmazások és egyéb eszközök védelmére vonatkozó ajánlott eljárásokat ismerteti.
@@ -55,7 +55,7 @@ Az Azure beléptetési portálon gondoskodhat arról, hogy a rendszergazdai kapc
 ## <a name="organize-azure-subscriptions-into-management-groups"></a>Azure-előfizetések rendszerezése felügyeleti csoportokba
 Ha a cég több előfizetéssel rendelkezik, szüksége lehet egy hatékony módszerre az előfizetések hozzáférésének, szabályzatainak és megfelelőségének kezelésére. Az [Azure felügyeleti csoportjai](/azure/governance/management-groups/create) magasabb szintű hatókört biztosítanak az előfizetésekhez. Az előfizetéseket a felügyeleti csoportok nevű tárolóba szervezheti, és a felügyeleti csoportokra alkalmazhatja az irányítási feltételeit. A felügyeleti csoporton belüli összes előfizetés automatikusan örökli a felügyeleti csoportra alkalmazott feltételeket.
 
-A felügyeleti csoportok és előfizetések rugalmas struktúráját létrehozhatja egy könyvtárba. Minden címtár egyetlen legfelső szintű felügyeleti csoportot kap, amelynek neve a gyökérszintű felügyeleti csoport. Ez a gyökérszintű felügyeleti csoport úgy épül be a hierarchiába, hogy minden felügyeleti csoport és előfizetés fölött legyen. A gyökérszintű felügyeleti csoport lehetővé teszi, hogy a globális házirendek és a RBAC-hozzárendelések a címtár szintjén legyenek alkalmazva.
+A felügyeleti csoportok és előfizetések rugalmas struktúráját létrehozhatja egy könyvtárba. Minden címtár egyetlen legfelső szintű felügyeleti csoportot kap, amelynek neve a gyökérszintű felügyeleti csoport. Ez a gyökérszintű felügyeleti csoport úgy épül be a hierarchiába, hogy minden felügyeleti csoport és előfizetés fölött legyen. A felügyeleti csoport lehetővé teszi, hogy a globális házirendek és az Azure-beli szerepkör-hozzárendelések a címtár szintjén legyenek alkalmazva.
 
 Íme néhány ajánlott eljárás a felügyeleti csoportok használatához:
 
@@ -221,7 +221,7 @@ További információ: [házirendek létrehozása és kezelése a megfelelőség
 ## <a name="monitor-azure-ad-risk-reports"></a>Azure AD kockázati jelentések figyelése
 A biztonsági rések túlnyomó többsége akkor kerül sor, amikor a támadók a felhasználó identitásának ellopásával hozzáférnek a környezetekhez. A feltört identitások feltárása nem egyszerű feladat. Az Azure AD adaptív gépi tanulási algoritmusokat és heurisztikus műveleteket használ a felhasználói fiókokhoz kapcsolódó gyanús műveletek észlelésére. A rendszer minden észlelt gyanús műveletet egy [kockázati észlelésnek](../../active-directory/reports-monitoring/concept-risk-events.md)nevezett rekordban tárol. A kockázati észlelések az Azure AD biztonsági jelentéseiben vannak rögzítve. További információért olvassa el a [veszélyeztetett felhasználókról szóló jelentést](../../active-directory/reports-monitoring/concept-user-at-risk.md) , valamint a [kockázatos bejelentkezések biztonsági jelentését](../../active-directory/reports-monitoring/concept-risky-sign-ins.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az Azure-beli felhőalapú megoldások tervezésekor, üzembe helyezése és kezelése során ajánlott biztonsági eljárásokat az [Azure biztonsági eljárásaival és modelljeivel](best-practices-and-patterns.md) foglalkozó témakörben talál.
 
 Az Azure-biztonsággal és a kapcsolódó Microsoft-szolgáltatásokkal kapcsolatos általános információk az alábbi forrásokból érhetők el:

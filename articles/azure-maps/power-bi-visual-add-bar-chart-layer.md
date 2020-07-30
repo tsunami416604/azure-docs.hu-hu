@@ -55,7 +55,7 @@ A következő beállítások szerepelnek a **sávdiagramok réteg** szakaszban e
 > [!NOTE]
 > Ha a sávoknál kis szélességű érték van letiltva, és a **Méretezés szélessége a nagyítási** beállításnál le van tiltva, akkor eltűnnek, ha a kinagyított szélessége nagyobb, mint a képpontnál kisebb méret. Ha azonban a **méretezési szélesség a nagyításkor** beállítás engedélyezve van, további számítások történnek, amikor a nagyítási szint megváltozik, ami hatással lehet a nagyméretű adathalmazok teljesítményére.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További környezet hozzáadása a térképhez:
 

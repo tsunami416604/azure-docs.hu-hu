@@ -1,18 +1,18 @@
 ---
 title: Azure-beli virtuális gépek ajánlatának létrehozása az Azure Marketplace-en
-description: Megtudhatja, hogyan hozhat létre virtuálisgép-ajánlatot az Azure Marketplace-en a szükséges csomaggal.
+description: Ismerje meg, hogyan tehet közzé egy virtuálisgép-ajánlatot az Azure Marketplace-en.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
-author: iqshahmicrosoft
-ms.author: iqshah
-ms.date: 07/17/2020
-ms.openlocfilehash: 8da76650f9cc3da0ff8f79a9d3df7a00cdd01a24
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.topic: how-to
+author: emuench
+ms.author: mingshen
+ms.date: 07/28/2020
+ms.openlocfilehash: 9db6fbe002492c0db6e9e0e5e0a23ca1946759a5
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324692"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386435"
 ---
 # <a name="create-an-azure-virtual-machine-offer-on-azure-marketplace"></a>Azure-beli virtuális gépek ajánlatának létrehozása az Azure Marketplace-en
 
@@ -180,7 +180,7 @@ Az **ajánlati lista** lapon megadhatja az ajánlat részleteit, például az aj
 
 ### <a name="marketplace-details"></a>Piactér – részletek
 
-#### <a name="name"></a>Név
+#### <a name="name"></a>Name
 
 Az itt megadott név jelenik meg az ügyfelek számára az ajánlati lista címeként. Ez a mező az ajánlat **aliasa** mezőben megadott névvel van feltöltve az ajánlat létrehozásakor. A nevet később módosíthatja. A név:
 
@@ -196,7 +196,7 @@ Adja meg az ajánlat rövid leírását, amely az Azure Marketplace keresési er
 
 Adja meg az ajánlatát, hogy megjelenjen az Azure Marketplace keresési eredményei között. Akár 256 karaktert is tartalmazhat.
 
-#### <a name="description"></a>Leírás
+#### <a name="description"></a>Description
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -226,7 +226,7 @@ Adja meg a támogatási webhelyet, ahol az ügyfelek elérheti a támogatási cs
 
 Adja meg a Microsoft-partnerek számára a támogatási jegy megnyitásakor használandó kapcsolattartási adatokat. Ez az információ nem szerepel az Azure Marketplace-en.
 
-- Név
+- Name
 - E-mail
 - Telefon
 
@@ -234,7 +234,7 @@ Adja meg a Microsoft-partnerek számára a támogatási jegy megnyitásakor hasz
 
 Adja meg a Microsoft számára az ajánlattal kapcsolatos problémák esetén használandó kapcsolattartási adatokat, beleértve a minősítéssel kapcsolatos problémákat is. Ez az információ nem szerepel az Azure Marketplace-en.
 
-- Név
+- Name
 - E-mail
 - Telefon
 
@@ -352,7 +352,7 @@ Ebben a szakaszban a csomag listázási részleteit konfigurálja. Ez a panel a 
 
 #### <a name="plan-name"></a>Csomag neve
 
-Ez a mező a létrehozáskor a tervhez megadott névvel van feltöltve. Ez a név jelenik meg az Azure Marketplace-en a csomag címeként. Legfeljebb 100 karakter hosszú lehet.
+A rendszer automatikusan kitölti ezt a mezőt azzal a névvel, amelyet a tervének létrehozásakor adott meg. Ez a név jelenik meg az Azure Marketplace-en a csomag címeként. Legfeljebb 100 karakter hosszú lehet.
 
 #### <a name="plan-summary"></a>Csomag összegzése
 
@@ -368,7 +368,7 @@ A folytatás előtt válassza a **Piszkozat mentése** lehetőséget.
 
 Ezen az ablaktáblán a következőket konfigurálja:
 
-- Azok a piacok, ahol ez a csomag elérhető.
+- Azok a piacok, ahol ez a csomag elérhető. Minden csomagnak legalább egy [piacon](../marketplace-geo-availability-currencies.md)elérhetőnek kell lennie.
 - Az óránkénti díj.
 - Azt határozza meg, hogy a terv mindenki számára elérhető legyen-e, vagy csak bizonyos ügyfelek számára (privát közönség számára).
 
@@ -534,7 +534,7 @@ Az alábbi példa bemutatja, hogyan jelennek meg az ajánlati információk az A
 4. használati feltételei
 5. Adatvédelmi szabályzat címe (hivatkozás)
 6. Ajánlat neve
-7. Leírás
+7. Description
 8. Hasznos hivatkozások
 9. Képernyőképek/videók
 

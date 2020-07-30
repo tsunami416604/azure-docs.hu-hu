@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 06/12/2020
-ms.openlocfilehash: 234217b6571307db04941cc0b9989d3438cde1b7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bb213776d41c07238fcaba1ccdd4e06f5d5bbb5f
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090178"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420889"
 ---
 # <a name="train-wide--deep-recommender"></a>Széles körű & a mély ajánló
 Ez a cikk azt ismerteti, hogyan használható a Azure Machine Learning Designer (előzetes verzió) teljes **körű & Deep ajánló** modulja egy javaslati modell betanításához. Ez a modul a Google által javasolt széles körű & mély tanuláson alapul.
@@ -105,7 +105,7 @@ Például az elemek egy tipikus készlete a következőhöz hasonló lehet:
 
     Ez a hiperparaméter határozza meg az egyes betanítási lépések lépésének méretét, miközben a minimális veszteség függvény felé mozdul. A túl nagy tanulási sebesség miatt előfordulhat, hogy a tanulás átugorja a minimumokat, míg egy túl kicsi tanulási arány a konvergencia-problémát okozhatja.
 
-7.  Átadott **szolgáltatás dimenzió**: írja be a keresztezett felhasználói azonosítók és az objektumazonosítók funkció dimenzióját. 
+7.  Átadott **szolgáltatás dimenzió**: írja be a dimenziót a kívánt felhasználói azonosítók és az elem-azonosító funkciók beírásával. 
 
     A Wide & részletes ajánlója alapértelmezés szerint a felhasználói azonosító és az elem-azonosító funkcióinak több termékre kiterjedő átalakítását végzi. Ennek a számnak a alapján a rendszer a dimenziót biztosítja.
 
@@ -144,6 +144,6 @@ A Wide & a nagy lineáris modelleket és a mély neurális hálózatokat kombin�
 A Wide & Deep ajánló implementációjában a modul egy alapértelmezett modell-struktúrát használ. A széles összetevő a felhasználói beágyazásokat, az elemek beágyazását, valamint a felhasználói azonosítók és az elem-azonosítók a terméken belüli átalakítását adja meg bemenetként. A modell mély részét képező beágyazási vektort minden egyes kategorikus funkció esetében megtanultuk. Más numerikus funkciós vektorokkal együtt ezek a vektorok a Deep feed-Forward neurális hálózatba kerülnek. A széles rész és a mélyebb rész összevonásával összefoglalja a végső kimeneti naplóbeli szorzókat, amelyek a közös képzések esetében egy közös adatvesztési funkciót mutatnak.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg Azure Machine learning elérhető modulok készletét](module-reference.md) . 

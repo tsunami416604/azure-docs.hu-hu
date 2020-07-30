@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 072fa659d6f5cf55da4dfc99cfed38220be70812
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: c3933e9165160c16a9e533bf8bf95f1533dff1cc
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337347"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386690"
 ---
 # <a name="deploy-azure-file-sync"></a>Az Azure File Sync üzembe helyezése
 A Azure File Sync segítségével központilag kezelheti a szervezete fájlmegosztást Azure Filesban, miközben megőrizheti a helyszíni fájlkiszolgáló rugalmasságát, teljesítményét és kompatibilitását. Az Azure File Sync a Windows Servert az Azure-fájlmegosztás gyors gyorsítótárává alakítja át. A Windows Serveren elérhető bármely protokollt használhatja a fájlok helyi eléréséhez (pl.: SMB, NFS vagy FTPS). Tetszőleges számú gyorsítótárral rendelkezhet a világ minden tájáról.
@@ -218,6 +218,13 @@ A Windows Server regisztrálásával a Társzinkronizálási szolgáltatásra me
 
 A kiszolgálót regisztráló rendszergazdának a megadott Storage Sync szolgáltatás felügyeleti szerepkörök **tulajdonosa** vagy **közreműködője** tagjának kell lennie. Ez a Storage Sync szolgáltatás Azure Portal **Access Control (iam)** alatt konfigurálható.
 
+Az is előfordulhat, hogy a rendszergazdák számára lehetővé teszi a kiszolgálók regisztrálását, amelyek lehetővé teszik, hogy a szinkronizálást a Storage Sync szolgáltatásban is konfigurálják. Ahhoz, hogy létre kellene hoznia egy egyéni szerepkört, amely felsorolja azokat a rendszergazdákat, akik csak a kiszolgálók regisztrálására jogosultak, és az egyéni szerepkört a következő engedélyekkel ruházhatja fel:
+
+* "Microsoft. StorageSync/storageSyncServices/registeredServers/Write"
+* "Microsoft. StorageSync/storageSyncServices/Read"
+* "Microsoft. StorageSync/storageSyncServices/munkafolyamatok/olvasás"
+* "Microsoft. StorageSync/storageSyncServices/munkafolyamatok/műveletek/olvasás"
+
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 A kiszolgáló regisztrációjának felhasználói felületének automatikusan meg kell nyílnia a Azure File Sync ügynök telepítése után. Ha nem, akkor manuálisan is megnyithatja, a fájl helye: C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe. Amikor megnyílik a kiszolgáló regisztrációjának felhasználói felülete, a kezdéshez válassza a **Bejelentkezés** lehetőséget.
 
@@ -245,6 +252,8 @@ A Felhőbeli végpont egy Azure-fájlmegosztás mutatója. Minden kiszolgálói 
 
 > [!Important]  
 > A szinkronizálási csoportban bármilyen Felhőbeli végpontot vagy kiszolgálói végpontot módosíthat, és a fájlok szinkronizálva vannak a szinkronizálási csoport többi végpontján. Ha közvetlenül módosítja a Felhőbeli végpontot (Azure-fájlmegosztás), a módosításokat először egy Azure File Sync változás-észlelési feladatokkal kell felderíteni. A változás-észlelési feladatok csak 24 óránként egyszer indíthatók el egy Felhőbeli végponton. További információ: [Azure Files gyakori kérdések](storage-files-faq.md#afs-change-detection).
+
+A Felhőbeli végpontot létrehozó rendszergazdának a felügyeleti szerepkör **tulajdonosának** kell lennie ahhoz a Storage-fiókhoz, amely tartalmazza azt az Azure-fájlmegosztást, amelyre a felhő végpontja mutat. Ez a Storage-fiókhoz tartozó Azure Portal **Access Control (iam)** lehetőséggel konfigurálható.
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 Egy szinkronizálási csoport létrehozásához nyissa meg a [Azure Portal](https://portal.azure.com/)a Storage Sync Service-t, majd válassza a **+ szinkronizálás csoport**:
@@ -460,7 +469,7 @@ DFS-R központi telepítésének áttelepítése Azure File Syncre:
 
 További információ: [Azure file Sync együttműködés elosztott fájlrendszer (DFS)](storage-sync-files-planning.md#distributed-file-system-dfs)szolgáltatással.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Azure File Sync kiszolgáló-végpont hozzáadása vagy eltávolítása](storage-sync-files-server-endpoint.md)
 - [Kiszolgáló regisztrálása vagy törlése Azure File Sync](storage-sync-files-server-registration.md)
 - [Az Azure File Sync monitorozása](storage-sync-files-monitoring.md)

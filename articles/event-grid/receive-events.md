@@ -3,12 +3,13 @@ title: Események fogadása Azure Event Gridról egy HTTP-végpontra
 description: Útmutató HTTP-végpontok érvényesítéséhez, majd az események fogadásához és deszerializálásához Azure Event Grid
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 460efc15c7b85821f422c9964eb246df883a849f
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 3e79d292dfcbed9f572c88e913bc76d47e6ee37f
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86108192"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87415108"
 ---
 # <a name="receive-events-to-an-http-endpoint"></a>Események fogadása HTTP-végponton
 
