@@ -11,12 +11,12 @@ author: iainfoulds
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 70a73cb1f855840831f2e1107baa94dfd54868a5
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f4687a98bfb58db8ed5e8a853fa0db2207f435e8
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518487"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419648"
 ---
 # <a name="tutorial-enable-azure-active-directory-self-service-password-reset-writeback-to-an-on-premises-environment"></a>Oktatóanyag: Azure Active Directory önkiszolgáló jelszó-visszaállítási visszaírási engedélyezése helyszíni környezetbe
 
@@ -40,7 +40,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 Az oktatóanyag elvégzéséhez a következő erőforrásokra és jogosultságokra van szüksége:
 
-* Egy működő Azure AD-bérlő, amely legalább egy prémium szintű Azure AD P1 próbaverziós licenccel rendelkezik.
+* Egy működő Azure AD-bérlő legalább egy prémium szintű Azure AD P1 vagy próbaverziós licenccel.
     * Ha szükséges, [hozzon létre egyet ingyen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
     * További információ: [licencelési követelmények az Azure ad SSPR](concept-sspr-licensing.md).
 * *Globális rendszergazdai* jogosultságokkal rendelkező fiók.
@@ -81,7 +81,7 @@ A jelszó visszaírási vonatkozó megfelelő engedélyek beállításához hajt
     * **LockoutTime írása**
     * **PwdLastSet írása**
 
-    [![](media/tutorial-enable-sspr-writeback/set-ad-ds-permissions-cropped.png "Set the appropriate permissions in Active Users and Computers for the account that is used by Azure AD Connect")](media/tutorial-enable-sspr-writeback/set-ad-ds-permissions.png#lightbox)
+    [A ![ megfelelő engedélyek beállítása az aktív felhasználók és számítógépek számára az Azure ad Connect ](media/tutorial-enable-sspr-writeback/set-ad-ds-permissions-cropped.png) által használt fiókhoz](media/tutorial-enable-sspr-writeback/set-ad-ds-permissions.png#lightbox)
 
 1. Ha elkészült, kattintson az **alkalmaz/OK gombra** a módosítások alkalmazásához és a megnyitott párbeszédpanelek bezárásához.
 
@@ -127,7 +127,7 @@ A jelszó visszaírási a SSPR-ben való engedélyezéséhez hajtsa végre a kö
 
 1. Ha elkészült, válassza a **Mentés**lehetőséget.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nem szeretné használni az oktatóanyag részeként konfigurált SSPR visszaírási funkciót, hajtsa végre a következő lépéseket:
 

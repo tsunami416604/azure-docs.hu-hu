@@ -8,14 +8,15 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 04/20/2020
 ms.author: dech
-ms.openlocfilehash: 5d41f467efafa42bd73fce258ca97e4412a7cf48
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.custom: devx-track-javascript
+ms.openlocfilehash: e86f79a286c10c45b2586dd1aa4d3aed035fc450
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86026848"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421858"
 ---
-# <a name="tutorial-build-a-nodejs-console-app-with-the-javascript-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>Oktatóanyag: Node.js Console-alkalmazás létrehozása a JavaScript SDK-val Azure Cosmos DB SQL API-beli adatkezeléshez
+# <a name="tutorial-build-a-nodejs-console-app-with-the-javascript-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>Oktatóanyag: Node.js-konzolalkalmazás létrehozása a JavaScript SDK-val az Azure Cosmos DB SQL API-adatok kezeléséhez
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-get-started.md)
@@ -148,7 +149,7 @@ Egy tétel a osztály Create függvényével hozható létre `Items` . Az SQL AP
 
    :::code language="javascript" source="~/cosmosdb-nodejs-get-started/app.js" id="CreateItem":::
 
-## <a name="update-an-item"></a><a id="ReplaceItem"></a>Egy tétel frissítése
+## <a name="update-an-item"></a><a id="ReplaceItem"></a>Elem módosítása
 
 Azure Cosmos DB támogatja az elemek tartalmának cseréjét. Másolja és illessze be a következő kódot *app.js* fájlba. Ez a kód beolvas egy elemet a tárolóból, és frissíti a *isComplete* mezőt igaz értékre.
 
@@ -213,11 +214,11 @@ Majd a terminálban keresse meg az ```app.js``` fájlt, és futtassa az alábbi 
 node app.js 
 ```
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha ezekre az erőforrásokra már nincs szükség, törölheti az erőforráscsoportot, Azure Cosmos DB fiókot és az összes kapcsolódó erőforrást. Ehhez válassza ki a Azure Cosmos DB fiókhoz használt erőforráscsoportot, válassza a **Törlés**lehetőséget, majd erősítse meg a törölni kívánt erőforráscsoport nevét.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Azure Cosmos DB fiók figyelése](monitor-accounts.md)

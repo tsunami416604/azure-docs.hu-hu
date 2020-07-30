@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/05/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7460a3c4a942194a66e585fed2b65be77b46b33e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 607148bcbc0078b5e430eea1fe38a56ea6663777
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87034143"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420702"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-confluence-saml-sso-by-microsoft"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Microsoft által a torkolatánál SAML SSO-val
 
@@ -68,7 +68,7 @@ Mostantól a torkolatánál következő verziói támogatottak:
 
 - Összefolyásánál: 5,0 – 5,10
 - Torkolatánál: 6.0.1 – 6.15.9
-- Torkolatánál: 7.0.1 – 7.4.0
+- Torkolatánál: 7.0.1 – 7.6.1
 
 > [!NOTE]
 > Vegye figyelembe, hogy az összefolyásánál beépülő modul az Ubuntu 16,04-es verzióján is működik

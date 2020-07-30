@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 07/1/2020
 ms.author: inhenkel
-ms.openlocfilehash: 81c83cd8dcea5f8746b67a7bd52ea52a09c8a711
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-javascript
+ms.openlocfilehash: ad50b29dbda7c09c9312ebb4a01ebc5da568f3da
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87001400"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422096"
 ---
 # <a name="tutorial-end-to-end-content-protection-using-azure-ad"></a>Oktatóanyag: végpontok közötti tartalomvédelem az Azure AD használatával
 
@@ -341,7 +342,7 @@ if (tokenClaims != null && tokenClaims.Length > 0)
 
 A *groups* jogcím egy [korlátozott jogcímek készletének](../../active-directory/develop/active-directory-claims-mapping.md#claim-sets) tagja az Azure ad-ben.
 
-#### <a name="test"></a>Teszt
+#### <a name="test"></a>Tesztelés
 
 1. Jelentkezzen be a *premium_user* -fiókkal. Képesnek kell lennie a védett tartalom lejátszására.
 1. Jelentkezzen be a *basic_user* -fiókkal. Olyan hibaüzenetet kap, amely jelzi, hogy a videó titkosított, de nincs kulcs a visszafejtéshez. Ha megtekinti az eseményeket, a hibákat és a letöltéseket a lejátszó diagnosztikai átfedésének alján lévő legördülő listáról, akkor a hibaüzenetnek jeleznie kell, hogy az Azure AD-jogkivonat végpontja által kiállított JWT esetében a hiányzó jogcím értéke miatt sikertelen volt a licenc.
@@ -371,12 +372,12 @@ Az ügyfél ezután megkeresheti a beállításokat, bejelentkezhet a vendég fi
 
 Előfordulhat, hogy a Microsoft-előfizetéssel rendelkező Microsoft-bérlőben vagy a Microsoft-előfizetéssel rendelkező egyéni bérlőn belül a mintaoldat is be van állítva. Az Azure Media Service-példány a Bérlővel egy másik előfizetésből is származhat.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 > [!WARNING]
 > Ha nem folytatja az alkalmazás használatát, törölje az oktatóanyag követése során létrehozott erőforrásokat. Ellenkező esetben fizetni kell rájuk.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Gyors útmutató: tartalom titkosítása](encrypt-content-quickstart.md)

@@ -3,12 +3,12 @@ title: A Azure Event Grid egyéni témaköreinek vész-helyreállítási követk
 description: Ez az oktatóanyag végigvezeti az eseményvezérelt architektúra beállításának lépésein, ha a Event Grid szolgáltatás nem Kifogástalan állapotba kerül egy régióban.
 ms.topic: tutorial
 ms.date: 07/07/2020
-ms.openlocfilehash: 1ee9c9566a70ba104f6c12866a631061672cb0c0
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: da796a9ac4d03f7ad6999b8fa4530fddfb60cbfe
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86115080"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420260"
 ---
 # <a name="build-your-own-disaster-recovery-for-custom-topics-in-event-grid"></a>Hozzon létre saját vész-helyreállítást a Event Grid egyéni témaköreihez
 A vész-helyreállítási funkció az alkalmazások jelentős elvesztése miatti helyreállításra összpontosít. Ebből az oktatóanyagból megtudhatja, hogyan állíthatja be az eseményvezérelt architektúrát, ha a Event Grid szolgáltatás nem Kifogástalan állapotba kerül egy adott régióban.
@@ -26,7 +26,7 @@ A tesztelés egyszerűsítése érdekében helyezzen üzembe egy [előre elkész
 
 1. A megoldásnak az előfizetésébe való telepítéséhez válassza az **Üzembe helyezés az Azure-ban** lehetőséget. Az Azure Portalon adjon meg értékeket a paraméterekhez.
 
-   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
+   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png" alt="Button to Deploy to Aquent." /></a>
 
 1. Az üzembe helyezés befejezése eltarthat néhány percig. A sikeres üzembe helyezést követően tekintse meg a webalkalmazást, hogy meggyőződjön annak működéséről. Egy webböngészőben navigáljon a következő helyre: `https://<your-site-name>.azurewebsites.net`.
 Jegyezze fel ezt az URL-címet, mert később szüksége lesz rá.

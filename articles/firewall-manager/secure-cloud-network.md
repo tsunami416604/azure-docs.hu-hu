@@ -5,14 +5,14 @@ services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: tutorial
-ms.date: 07/17/2020
+ms.date: 07/29/2020
 ms.author: victorh
-ms.openlocfilehash: 7634effd5d1ac46955addd723ee7c992eb820a57
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 458ebe14e77c7b190a5c4cdd9b408396589d5d27
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084704"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420821"
 ---
 # <a name="tutorial-secure-your-virtual-hub-using-azure-firewall-manager"></a>Oktatóanyag: virtuális központ biztonságossá tétele a Azure Firewall Managerrel
 
@@ -80,7 +80,7 @@ Hozza létre a biztonságos virtuális hubot a Firewall Manager használatával.
 5. Válassza a Next (tovább) lehetőséget **: Azure Firewall**.
 6. Fogadja el az alapértelmezett **Azure Firewall** **engedélyezve** beállítást, majd válassza a **Tovább: megbízható biztonsági partner**lehetőséget.
 7. Fogadja el az alapértelmezett **megbízható biztonsági partner** **letiltott** beállítást, majd kattintson a **Tovább gombra: felülvizsgálat + létrehozás**.
-8. Kattintson a **Létrehozás** gombra. A telepítés körülbelül 30 percet vesz igénybe.
+8. Válassza a **Létrehozás** lehetőséget. A telepítés körülbelül 30 percet vesz igénybe.
 
 Most már lekérheti a tűzfal nyilvános IP-címét.
 
@@ -102,13 +102,13 @@ Most már elvégezheti a hub és a küllős virtuális hálózatok összevonás�
 5. **Hubok**esetében válassza a **hub-01**elemet.
 6. Az **erőforráscsoport**területen válassza az **FW-Manager**lehetőséget.
 7. **Virtuális hálózat**esetén válassza a **küllő-01**elemet.
-8. Kattintson a **Létrehozás** gombra.
+8. Válassza a **Létrehozás** lehetőséget.
 
 Ismételje meg a **küllő-02** virtuális hálózat csatlakoztatását: kapcsolat neve- **hub-küllő-02**
 
 ### <a name="configure-the-hub-and-spoke-routing"></a>A hub és a küllős útválasztás konfigurálása
 
-A Azure Portal nyisson meg egy Cloud Shell, és futtassa a következő Azure PowerShell a szükséges hub és küllős útválasztás konfigurálásához.
+A Azure Portal nyisson meg egy Cloud Shell, és futtassa a következő Azure PowerShell a szükséges hub és küllős útválasztás konfigurálásához. A társ küllő/ág kapcsolatainak **nincs**értékre kell állítani a propagálást. Ez megakadályozza a küllők közötti kommunikációt, és ehelyett az alapértelmezett útvonal használatával irányítja a forgalmat a tűzfalra.
 
 ```azurepowershell
 $noneRouteTable = Get-AzVHubRouteTable -ResourceGroupName fw-manager `
@@ -271,7 +271,7 @@ Most tesztelje a hálózati szabályt.
 Most ellenőrizte, hogy a tűzfal hálózati szabálya működik-e:
 * A távoli asztal egy másik virtuális hálózatban található kiszolgálóhoz is csatlakoztatható.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [További információ a megbízható biztonsági partnerekről](trusted-security-partners.md)

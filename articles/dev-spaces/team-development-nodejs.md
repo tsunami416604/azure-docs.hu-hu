@@ -5,12 +5,13 @@ ms.date: 07/09/2018
 ms.topic: tutorial
 description: Ebből az oktatóanyagból megtudhatja, hogyan használható az Azure dev Spaces és a Visual Studio Code az Azure Kubernetes szolgáltatásban Node.js alkalmazáson való csoportmunka-fejlesztéshez
 keywords: 'Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s '
-ms.openlocfilehash: aa168921f212f96f6e40ed062d2665e49202e86c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 851ba1aa6fa6a90fb4f659f1173818946a3e82d3
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87013592"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420362"
 ---
 # <a name="team-development-using-nodejs-and-visual-studio-code-with-azure-dev-spaces"></a>Csoportmunka-fejlesztés Node.js és Visual Studio Code használatával az Azure dev Spaces segítségével
 
@@ -156,7 +157,7 @@ Elvégezte az első lépéseket ismertető útmutatót! Megtanulta végrehajtani
 
 Most, hogy már megvizsgálta az Azure fejlesztői tárhelyeit, [megoszthatja a fejlesztői területét egy csapattagtal](how-to/share-dev-spaces.md) , és megkezdheti az együttműködését.
 
-## <a name="clean-up"></a>A feleslegessé vált elemek eltávolítása
+## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
 Ha egy fürt egy Azure Dev Spaces-példányát teljesen, az összes Dev Spaces-térrel és benne futó szolgáltatással együtt törölni szeretné, használja az `az aks remove-dev-spaces` parancsot. Tartsa észben, hogy ez a művelet nem vonható vissza. Újra hozzáadhat Azure Dev Spaces-támogatást a fürtön, de azt a rendszer úgy kezeli, mintha elölről kezdené a folyamatot. A régi szolgáltatások és a tárolóhelyek nem állíthatók vissza.
 
 Az alábbi példa listázza az aktív előfizetése Azure Dev Spaces-vezérlőit, majd törli a myaks-rg erőforráscsoportban lévő myaks AKS-fürthöz társított Azure Dev Spaces-vezérlőt.

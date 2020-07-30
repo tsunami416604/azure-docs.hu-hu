@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 06/22/2020
-ms.openlocfilehash: fa39fe3e065c230f7e06ee443d2aa56227dc6f31
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: fb81405e85d6e2653e0cf6c007c363493992161a
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965700"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419971"
 ---
 # <a name="networking-in-azure-red-hat-on-openshift-4"></a>Hálózatkezelés az Azure Red Hat-on a OpenShift 4
 
@@ -70,7 +70,7 @@ Az alábbi lista az Azure Red Hat OpenShift-fürtök fontos végpontait ismertet
         * Csak olvasható.
         * A beállításjegyzék kapcsolatai a szolgáltatási végponton keresztül történnek (az Azure-szolgáltatások közötti belső kapcsolat).
         * Ez a belső beállításjegyzék alapértelmezés szerint nem érhető el a fürtön kívül.
-* **Private Link**
+* **Privát kapcsolat**
     * Engedélyezi a hálózati kapcsolatot a felügyeleti síkon a fürtszolgáltatás fürtbe.
     * A Microsoft és a Red Hat site megbízhatósági mérnökök segítenek a fürt felügyeletében.
 
@@ -101,8 +101,8 @@ A következő hálózati beállítások érhetők el az Azure Red Hat OpenShift 
     * A "nyilvános" útvonalak alapértelmezett értéke a nyilvános Azure standard Load Balancer (ez módosítható).
     * A "privát" útvonalak alapértelmezett értéke a belső terheléselosztó (ez módosítható).
 
-## <a name="network-security-groups"></a>Network security groups (Hálózati biztonsági csoportok)
-A hálózati biztonsági csoportok a (z) zárolt csomópontok erőforráscsoporthoz lesznek létrehozva. A hálózati biztonsági csoportok közvetlenül a csomópont hálózati adapterén található alhálózatokhoz vannak rendelve. A hálózati biztonsági csoportok nem változtathatók meg, ami azt jelenti, hogy nincs engedélye a módosítására. 
+## <a name="network-security-groups"></a>Hálózati biztonsági csoportok
+A hálózati biztonsági csoportok a csomópont erőforráscsoport-csoportjában lesznek létrehozva, amely zárolva van. A hálózati biztonsági csoportok közvetlenül az alhálózatokhoz vannak rendelve, nem a csomópont hálózati adapterén. A hálózati biztonsági csoportok nem változtathatók meg, ami azt jelenti, hogy nincs engedélye a módosítására. 
 
 Nyilvánosan látható API-kiszolgálóval azonban nem hozhat létre hálózati biztonsági csoportokat, és hozzárendelheti azokat a hálózati adapterekhez.
 
