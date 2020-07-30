@@ -54,7 +54,7 @@ Ha például a TLS 1,0-es minimális beállítás értéke a TLS, azt jelenti, h
 
 Ha meg szeretné tudni, hogyan állíthatja be a TLS-beállítást a Azure Database for MariaDBhoz, tekintse meg a [TLS-beállítás konfigurálását](howto-tls-configurations.md)ismertető témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - További információ a [kiszolgáló tűzfalszabályok szabályairól](concepts-firewall-rules.md)
 - Ismerje meg, hogyan [konfigurálhatja az SSL](howto-configure-ssl.md) -t
 - Útmutató a [TLS konfigurálásához](howto-tls-configurations.md)

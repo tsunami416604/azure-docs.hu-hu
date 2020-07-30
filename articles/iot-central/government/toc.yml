@@ -4,7 +4,7 @@
   items:
     - name: Kormányzati megoldások létrehozása az Azure IoT Centrallal
       href: overview-iot-central-government.md
-- name: oktatóanyagokat
+- name: Oktatóanyagok
   items:
     - name: Összekapcsolt hulladékgazdálkodási alkalmazás létrehozása
       href: tutorial-connected-waste-management.md
@@ -26,8 +26,6 @@
       href: how-to-configure-connected-field-services.md
     - name: Eszközök csatlakoztatása
       items:
-        - name: MXChip IoT DevKit előkészítése és csatlakoztatása
-          href: ../core/howto-connect-devkit.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
         - name: Rigado Cascade 500 előkészítése és csatlakoztatása
           href: ../core/howto-connect-rigado-cascade-500.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
         - name: Eszközkapcsolatok monitorozása az Azure CLI-vel
@@ -54,7 +52,7 @@
           href: ../core/howto-create-custom-rules.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
         - name: Egyéni elemzések létrehozása a Databricksszel
           href: ../core/howto-create-custom-analytics.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
-    - name: Adminisztráció
+    - name: Felügyelet
       items:
         - name: Alkalmazásbeállítások módosítása
           href: ../core/howto-administer.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
@@ -90,7 +88,7 @@
       items:
         - name: IoT Hub
           href: /azure/iot-hub
-        - name: IoT Hub eszközkiépítési szolgáltatás
+        - name: IoT Hub Device Provisioning Service
           href: /azure/iot-dps
         - name: IoT-központ
           href: 'https://docs.microsoft.com/microsoft-iot-central/'
@@ -107,9 +105,9 @@
     - name: Azure IoT SDK-k
       items:
         - name: IoT szolgáltatásoldali SDK-k
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
         - name: IoT eszközoldali SDK-k
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
     - name: Támogatási és súgólehetőségek
       href: /azure/iot-fundamentals/iot-support-help
     - name: Ügyfelek adatkérései
