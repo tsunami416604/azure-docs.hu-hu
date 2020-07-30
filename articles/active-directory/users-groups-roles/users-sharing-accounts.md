@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 204809031bf0d32a998d8bcc435fe2500a025fc5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 206f87e45377287217b4895b8d481e14618c888c
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84730934"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386945"
 ---
 # <a name="sharing-accounts-with-azure-ad"></a>Fiókok megosztása az Azure AD-vel
 
@@ -51,7 +51,7 @@ A felhasználók a szervezeti fiókjával egyszer jelentkeznek be. Ez a fiók ug
 
 A megosztott fiókok nemcsak növelik a felügyeleti és a használhatóságot, hanem javítják a biztonságot. A hitelesítő adatok használatára vonatkozó engedélyekkel rendelkező felhasználók nem látják a megosztott jelszót, hanem lekérik az engedélyeket, hogy egy előkészített hitelesítési folyamat részeként használják a jelszót. Emellett egyes jelszó-SSO-alkalmazások lehetővé teszi, hogy az Azure AD-vel rendszeres időközönként felváltási (frissítési) jelszavakat használjanak. A rendszer nagyméretű, összetett jelszavakat használ, ami növeli a fiókok biztonságát. A rendszergazda egyszerűen engedélyezheti vagy visszavonhatja a hozzáférést egy alkalmazáshoz, tudja, hogy ki férhet hozzá a fiókhoz, és hogy ki is fér hozzá a múltban.
 
-Az Azure AD támogatja a megosztott fiókokat bármely nagyvállalati mobilitási csomag (EMS) vagy prémium szintű Azure AD licencelési csomag esetében, az összes jelszó-egyszeri bejelentkezési alkalmazás esetében. Az alkalmazás-katalógusban több ezer előre integrált alkalmazás fiókját is megoszthatja, és hozzáadhat saját jelszavas hitelesítést használó alkalmazást [Egyéni SSO](../manage-apps/configure-single-sign-on-non-gallery-applications.md)-alkalmazásokhoz.
+Az Azure AD támogatja a megosztott fiókokat bármely nagyvállalati mobilitási csomag (EMS) vagy prémium szintű Azure AD licencelési csomag esetében, az összes jelszó-egyszeri bejelentkezési alkalmazás esetében. Az alkalmazás-katalógusban több ezer előre integrált alkalmazás fiókját is megoszthatja, és hozzáadhat saját jelszavas hitelesítést használó alkalmazást [Egyéni SSO](../manage-apps/what-is-single-sign-on.md)-alkalmazásokhoz.
 
 A fiókok megosztását engedélyező Azure AD-funkciók a következők:
 
@@ -74,7 +74,7 @@ Ha az Azure AD-t egy fiók megosztására szeretné használni, a következőket
 
 A megosztott fiókot Multi-Factor Authentication (MFA) biztonságosabbá teheti (További információ az [alkalmazások az Azure ad-vel való biztonságossá](../authentication/concept-mfa-whichversion.md)tételéről), és delegálhatja azt a képességet, hogy az [Azure ad](groups-self-service-management.md) önkiszolgáló csoport kezelésével Hogyan férhet hozzá az alkalmazáshoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Alkalmazáskezelés az Azure Active Directory használatával](../manage-apps/what-is-application-management.md)
 * [Alkalmazások védelme feltételes hozzáféréssel](../active-directory-conditional-access-azure-portal.md)
