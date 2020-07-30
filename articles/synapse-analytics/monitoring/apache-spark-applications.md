@@ -9,12 +9,12 @@ ms.subservice: monitoring
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: ecc34b84e5be2d0470cc5a58a71a70e9ffcab1b6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4d6c50436ddf68e2610aeb10ddfaaab0a5d060f3
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87052557"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387353"
 ---
 # <a name="use-synapse-studio-to-monitor-your-apache-spark-applications"></a>A szinapszis Studio használata a Apache Spark-alkalmazások figyelésére
 
@@ -39,7 +39,7 @@ Mielőtt nekilát az oktatóanyagnak, ellenőrizze, hogy megfelel-e a következ�
 
 ## <a name="monitor-running-apache-spark-application"></a>Futó Apache Spark-alkalmazás figyelése
 
-Nyissa meg a **monitort**, majd válassza **Apache Spark alkalmazások**elemet. A futó Apache Spark alkalmazások részleteinek megtekintéséhez válassza a beküldés Apache Spark alkalmazást, és tekintse meg a részleteket. Ha a Apache Spark alkalmazás még fut, nyomon követheti a folyamatot.
+Nyissa meg a **monitort**, majd válassza **Apache Spark alkalmazások**elemet. A Apache Spark futó alkalmazások részleteinek megtekintéséhez válassza a beküldés Apache Spark alkalmazást, és tekintse meg a részleteket. Ha a Apache Spark alkalmazás még fut, nyomon követheti a folyamatot.
 
   ![futó feladatok kiválasztása](./media/how-to-monitor-spark-applications/select-running-job.png)
 
@@ -145,6 +145,6 @@ Nyissa meg a **monitort**, majd válassza **Apache Spark alkalmazások**elemet. 
 
    ![Sikertelen feladatok adatai](./media/how-to-monitor-spark-applications/failed-job-info.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A folyamatok figyelésével kapcsolatos további információkért tekintse meg a [folyamatok figyelése a szinapszis Studio használatával](how-to-monitor-pipeline-runs.md) című cikket.  
