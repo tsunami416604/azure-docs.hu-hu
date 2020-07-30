@@ -5,7 +5,6 @@ services: virtual-network
 documentationcenter: na
 author: asudbring
 manager: KumudD
-editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-network
@@ -14,57 +13,69 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/08/2020
+ms.date: 07/29/2020
 ms.author: allensu
-ms.openlocfilehash: 0f71f845ef3209146ead79cafae2f3aa5c8c6d7d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 53dd6d2dda762b3cbf53f4aaec6cd3692a9656e9
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82144510"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432585"
 ---
 # <a name="public-ip-address-prefix"></a>Nyilvános IP-cím előtagja
 
-A nyilvános IP-cím előtag az Azure-beli nyilvános végpontok IP-címeinek fenntartott tartománya. Az Azure a megadott számon alapuló címtartományt foglal le az előfizetéshez. Ha még nem ismeri a nyilvános címeket, tekintse meg a [nyilvános IP-címek](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses) című témakört.
+A nyilvános IP-cím előtag az IP-címek fenntartott tartománya az Azure-ban. Az Azure a megadott számon alapuló címtartományt biztosít az előfizetéshez. 
+
+Ha még nem ismeri a nyilvános címeket, tekintse meg a [nyilvános IP-címek](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses) című témakört.
 
 A nyilvános IP-címek az egyes Azure-régiók címeinek egy készletéhez vannak rendelve. Az egyes régiókban az Azure által használt tartományok listáját is [letöltheti](https://www.microsoft.com/download/details.aspx?id=56519) . Például a 40.121.0.0/16 az egyik az USA keleti régiójában az Azure által használt 100-tartomány. A tartomány tartalmazza a 40.121.0.1-40.121.255.254 használható címét.
 
-Egy nyilvános IP-cím előtagot hoz létre egy Azure-régióban és-előfizetésben egy név megadásával, valamint azt, hogy az előtag hány címet tartalmazzon. Ha például a/28 nyilvános IP-cím előtagját hozza létre, az Azure 16 címet foglal le az egyik tartományában. Nem tudja, hogy az Azure melyik tartományhoz lesz hozzárendelve, amíg létre nem hozza a tartományt, de a címek folytonos. A nyilvános IP-címek előtagjai díjkötelesek. Részletekért lásd: [nyilvános IP-címek díjszabása](https://azure.microsoft.com/pricing/details/ip-addresses).
+Egy nyilvános IP-cím előtagot hoz létre egy Azure-régióban és-előfizetésben egy név megadásával, valamint azt, hogy az előtag hány címet tartalmazzon. 
+
+A nyilvános IP-címtartományok a választott előtaggal vannak társítva. Ha/28 előtagot hoz létre, az Azure 16 IP-címet ad meg az egyik tartományból.
+
+Nem tudja, hogy az Azure melyik tartományhoz lesz hozzárendelve, amíg létre nem hozza a tartományt, de a címek folytonos. 
+
+A nyilvános IP-címek előtagjainak díja, további információ: [nyilvános IP-cím díjszabása](https://azure.microsoft.com/pricing/details/ip-addresses).
 
 ## <a name="why-create-a-public-ip-address-prefix"></a>Miért érdemes létrehozni egy nyilvános IP-cím előtagot?
 
-Nyilvános IP-cím erőforrások létrehozásakor az Azure egy elérhető nyilvános IP-címet rendel a régióban használt bármely tartományból. Miután az Azure hozzárendeli a címet, tudja, mi a címe, de amíg az Azure nem rendeli hozzá a címet, nem tudja, hogy melyik címet lehet hozzárendelni. Ez problémás lehet, ha például Ön vagy az Ön üzleti partnere, beállíthatja az adott IP-címeket engedélyező tűzfalszabályok beállításait. Minden alkalommal, amikor új nyilvános IP-címet rendel egy erőforráshoz, a címet fel kell venni a tűzfalszabálybe. Ha a nyilvános IP-cím előtagból oszt ki címeket az erőforrásokhoz, a tűzfalszabályok nem frissülnek minden alkalommal, amikor az egyik címet hozzárendeli, mert a teljes tartományt hozzá lehet adni egy szabályhoz.
+Nyilvános IP-cím erőforrások létrehozásakor az Azure egy elérhető nyilvános IP-címet rendel az adott régióban használt bármely tartományból. 
+
+Amíg az Azure nem rendeli hozzá az IP-címet, nem fogja tudni a pontos IP-címet. Ez a folyamat problémát okozhat, ha adott IP-címeket engedélyező tűzfalszabályok hozhatók létre. Minden hozzáadott IP-cím esetében hozzá kell adni egy megfelelő tűzfalszabály-szabályt.
+
+Ha a nyilvános IP-cím előtagból oszt ki címeket az erőforrásokhoz, a tűzfalszabályok frissítései nem szükségesek. A rendszer hozzáadja a teljes tartományt a szabályhoz.
 
 ## <a name="benefits"></a>Előnyök
 
-- A nyilvános IP-címek erőforrásait ismert tartományból lehet létrehozni.
-- Ön vagy az üzleti partnerei létrehozhatnak olyan tűzfalszabályok olyan tartományokkal, amelyek tartalmazzák a jelenleg hozzárendelt nyilvános IP-címeket, valamint a még nem hozzárendelt címeket. Így nincs szükség a tűzfalszabályok módosítására, amikor IP-címeket rendel hozzá az új erőforrásokhoz.
+- Nyilvános IP-címek erőforrásainak létrehozása ismert tartományból.
+- Tűzfalszabály-konfiguráció olyan tartományokkal, amelyek tartalmazzák a jelenleg hozzárendelt nyilvános IP-címeket, valamint azokat a címeket, amelyekhez még nincs hozzárendelve. Ezzel a konfigurációval nem szükséges módosítani a tűzfalszabályok új erőforrások IP-címeinek hozzárendelésével.
 - A létrehozható tartomány alapértelmezett mérete/28 vagy 16 IP-cím.
-- Az Azure-előfizetésekben lévő statikus nyilvános IP-címek maximális száma korlátozott, de a létrehozott tartományoknak nincs korlátai. Ennek eredményeképpen a létrehozott tartományok száma nem terjedhet ki több statikus nyilvános IP-címre, mint amennyit az előfizetésében lehet. További információ: Azure- [korlátok](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
+- A létrehozott tartományok száma nem korlátozott. Az Azure-előfizetésekben elérhető statikus nyilvános IP-címek maximális száma korlátozott. A létrehozott tartományok száma nem terjedhet ki több statikus nyilvános IP-címre, mint amennyit az előfizetésében lehet. További információ: Azure- [korlátok](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
 - Az előtagból származó címek használatával létrehozott címek bármely olyan Azure-erőforráshoz hozzárendelhetők, amelyhez nyilvános IP-címet rendelhet hozzá.
-- Könnyen megtekintheti, hogy mely IP-címek vannak lefoglalva, és a tartományon belül még nem vannak lefoglalva.
+- Egyszerűen megtekintheti, hogy mely IP-címek legyenek megadva, és hogy a tartományon belül ne legyenek megadva.
 
 ## <a name="scenarios"></a>Forgatókönyvek
 A következő erőforrásokat a statikus nyilvános IP-címekhez rendelheti hozzá egy előtagból:
 
-|Erőforrás|Eset|Lépések|
+|Erőforrás|Forgatókönyv|Lépések|
 |---|---|---|
-|Virtual Machines| A nyilvános IP-címek az Azure-beli virtuális gépekhez való társítása csökkenti a felügyeleti terhelést, amikor az IP-címek engedélyezve vannak a tűzfalon. Egyszerűen engedélyezheti a teljes előtagot egyetlen tűzfalszabály használatával. Az Azure-beli virtuális gépekkel való skálázás során az IP-címeket ugyanahhoz az előtagokhoz társíthatja, így a költségek, az idő és a felügyelet terhelése is megtakarítható.| IP-címek hozzárendelése egy előtagból a virtuális géphez: 1. [Hozzon létre egy előtagot.](manage-public-ip-address-prefix.md) 2. [Hozzon létre egy IP-címet az előtagból.](manage-public-ip-address-prefix.md) 3. [Rendelje hozzá az IP-címet a virtuális gép hálózati adapteréhez.](virtual-network-network-interface-addresses.md#add-ip-addresses) [Az IP-címeket egy virtuálisgép-méretezési csoporthoz is hozzárendelheti](https://azure.microsoft.com/resources/templates/101-vmms-with-public-ip-prefix/).
-| Standard Load Balancer | Nyilvános IP-címek társítása előtagból az előtérbeli IP-konfigurációba vagy egy Load Balancer kimenő szabálya biztosítja az Azure nyilvános IP-címtartomány egyszerűsítését. Egyszerűsítheti a forgatókönyvet úgy, hogy a kimenő kapcsolatok ápolása a nyilvános IP-előtag által meghatározott összefüggő IP-címekből származik. | IP-címek hozzárendelése előtagból a terheléselosztó számára: 1. [Hozzon létre egy előtagot.](manage-public-ip-address-prefix.md) 2. [Hozzon létre egy IP-címet az előtagból.](manage-public-ip-address-prefix.md) 3. A Load Balancer létrehozásakor válassza ki vagy frissítse a fenti 2. lépésben létrehozott IP-címet a Load Balancer előtér-IP-címével. |
-| Azure Firewall | A kimenő SNAT előtagjaként nyilvános IP-címet is használhat. Ez azt jelenti, hogy az összes kimenő virtuális hálózati forgalom a [Azure Firewall](../firewall/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) nyilvános IP-címére van lefordítva. Mivel ez az IP-cím egy előre meghatározott előtagból származik, nagyon könnyen megtudhatja, hogy az Azure-beli nyilvános IP-lábnyom milyen módon fog kinézni. | 1. [hozzon létre egy előtagot.](manage-public-ip-address-prefix.md) 2. [Hozzon létre egy IP-címet az előtagból.](manage-public-ip-address-prefix.md) 3. [Az Azure tűzfal telepítésekor](../firewall/tutorial-firewall-deploy-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-the-firewall)ügyeljen arra, hogy kiválassza az előtagja által korábban lefoglalt IP-címet.|
-| Application Gateway v2 | A nyilvános IP-címet az automatikus skálázás és a Zone-redundáns Application Gateway v2 előtaggal is használhatja. Mivel ez az IP-cím egy előre meghatározott előtagból származik, nagyon könnyen megtudhatja, hogy az Azure-beli nyilvános IP-lábnyom milyen módon fog kinézni. | 1. [hozzon létre egy előtagot.](manage-public-ip-address-prefix.md) 2. [Hozzon létre egy IP-címet az előtagból.](manage-public-ip-address-prefix.md) 3. [A Application Gateway központi telepítésekor](../application-gateway/quick-create-portal.md#create-an-application-gateway)ügyeljen arra, hogy az előtagja által korábban lefoglalt IP-címet válassza ki.|
+|Virtual machines (Virtuális gépek)| A nyilvános IP-címek az Azure-beli virtuális gépekhez való társítása csökkenti a felügyeleti terhelést, amikor IP-címeket ad hozzá a tűzfal engedélyezési listájához. Egyetlen tűzfalszabály használatával teljes előtagot adhat hozzá. Az Azure-beli virtuális gépekkel való skálázás során az IP-címeket ugyanahhoz az előtagokhoz társíthatja, így a költségek, az idő és a felügyelet terhelése is megtakarítható.| IP-címek hozzárendelése egy előtagból a virtuális géphez: </br> 1. [hozzon létre egy előtagot.](manage-public-ip-address-prefix.md) </br> 2. [hozzon létre egy IP-címet az előtagból.](manage-public-ip-address-prefix.md) </br> 3. [rendelje hozzá az IP-címet a virtuális gép hálózati adapteréhez.](virtual-network-network-interface-addresses.md#add-ip-addresses) </br> [Az IP-címeket egy virtuálisgép-méretezési csoporthoz is hozzárendelheti](https://azure.microsoft.com/resources/templates/101-vmms-with-public-ip-prefix/).
+| Standard Load Balancer | A nyilvános IP-címek egy előtagból az előtérbeli IP-konfigurációba való társítása vagy a terheléselosztó kimenő szabálya biztosítja az Azure nyilvános IP-címtartomány egyszerűsítését. Egyszerűsítse a forgatókönyvet, ha a kimenő kapcsolatokat számos összefüggő IP-címről szeretné kiszolgálni. | IP-címek hozzárendelése egy előtagból a terheléselosztó számára: </br> 1. [hozzon létre egy előtagot.](manage-public-ip-address-prefix.md) </br> 2. [hozzon létre egy IP-címet az előtagból.](manage-public-ip-address-prefix.md) </br> 3. a terheléselosztó létrehozásakor válassza ki vagy frissítse a fenti 2. lépésben létrehozott IP-címet a terheléselosztó előtérbeli IP-címével. |
+| Azure Firewall | A kimenő SNAT előtagjaként nyilvános IP-címet is használhat. Minden kimenő virtuális hálózati forgalom a [Azure Firewall](../firewall/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) nyilvános IP-címére van lefordítva. | IP-cím hozzárendelése egy előtagból a tűzfalhoz: </br> 1. [hozzon létre egy előtagot.](manage-public-ip-address-prefix.md) </br> 2. [hozzon létre egy IP-címet az előtagból.](manage-public-ip-address-prefix.md) </br> 3. [Az Azure tűzfal telepítésekor](../firewall/tutorial-firewall-deploy-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-the-firewall)ügyeljen arra, hogy az előtagja által korábban megadott IP-címet válassza ki.|
+| Application Gateway v2 | A nyilvános IP-címet az automatikus skálázás és a Zone-redundáns Application Gateway v2 előtaggal is használhatja. | IP-cím hozzárendelése egy előtagból az átjáróhoz: </br> 1. [hozzon létre egy előtagot.](manage-public-ip-address-prefix.md) </br> 2. [hozzon létre egy IP-címet az előtagból.](manage-public-ip-address-prefix.md) </br> 3. [a Application Gateway központi telepítésekor](../application-gateway/quick-create-portal.md#create-an-application-gateway)ügyeljen arra, hogy az előtagja által korábban megadott IP-címet válassza ki.|
 
 ## <a name="constraints"></a>Korlátozások
 
-- Nem adhatja meg az előtaghoz tartozó IP-címeket. Az Azure a megadott méret alapján foglalja le az előtaghoz tartozó IP-címeket.
+- Nem adhatja meg az előtaghoz tartozó IP-címeket. Az Azure a megadott méret alapján adja meg az előtag IP-címeit.
 - Alapértelmezés szerint legfeljebb 16 IP-cím vagy/28 előtagot hozhat létre. További információkért tekintse át a [hálózati korlátokat a kérések](https://docs.microsoft.com/azure/azure-portal/supportability/networking-quota-requests) és az [Azure-korlátok](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) növelésével.
 - A tartomány nem módosítható, miután létrehozta az előtagot.
 - Csak a standard SKU-val létrehozott statikus nyilvános IP-címek rendelhetők hozzá az előtag tartományához. Ha többet szeretne megtudni a nyilvános IP-címekről, tekintse meg a [nyilvános IP-cím](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)című témakört.
 - A tartomány címei csak Azure Resource Manager erőforrásokhoz rendelhetők hozzá. A klasszikus üzemi modellben nem lehet címeket hozzárendelni az erőforrásokhoz.
-- Az előtagból létrehozott összes nyilvános IP-címnek ugyanabban az Azure-régióban és-előfizetésben kell lennie, mint az előtag, és hozzá kell rendelni az azonos régióhoz és előfizetéshez tartozó erőforrásokhoz.
+- Az előtagból létrehozott összes nyilvános IP-címnek ugyanabban az Azure-régióban és előfizetésben kell lennie, mint az előtagja. A címeket ugyanahhoz a régióhoz és előfizetéshez tartozó erőforrásokhoz kell rendelni.
 - Egy előtag nem törölhető, ha az ahhoz tartozó címek hozzá vannak rendelve egy erőforráshoz társított nyilvános IP-címek erőforrásaihoz. Szüntesse meg az összes olyan nyilvános IP-cím-erőforrást, amely először az előtaghoz rendelt IP-címet.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Nyilvános IP-cím előtagjának [létrehozása](manage-public-ip-address-prefix.md)

@@ -1,22 +1,22 @@
 ---
-title: 'Rövid útmutató: QnA Maker REST API-kkal a Node. js-hez'
-description: Ez a rövid útmutató bemutatja, hogyan kezdheti el a Node. js-hez készült QnA Maker REST API-k használatának első lépéseit. Az alábbi lépéseket követve telepítheti a csomagot, és kipróbálhatja az alapszintű feladatokhoz tartozó példa kódját.  A QnA Maker lehetővé teszi egy kérdés-válasz szolgáltatás működtetését olyan félig strukturált tartalomból, mint a GYIK-dokumentumok, URL-címek és termékútmutatók.
+title: 'Gyors útmutató: QnA Maker REST API-kkal Node.js'
+description: Ez a rövid útmutató bemutatja, hogyan kezdheti el a Node.js QnA Maker REST API-jait. Az alábbi lépéseket követve telepítheti a csomagot, és kipróbálhatja az alapszintű feladatokhoz tartozó példa kódját.  A QnA Maker lehetővé teszi egy kérdés-válasz szolgáltatás működtetését olyan félig strukturált tartalomból, mint a GYIK-dokumentumok, URL-címek és termékútmutatók.
 ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
-ms.custom: RESTCURL2020FEB27
+ms.custom: RESTCURL2020FEB27, devx-track-javascript
 ms.topic: how-to
-ms.openlocfilehash: b42bc3be0d425a84da8bb545ebb29e261a6b0780
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 18ccec5332e3751a86225ab087a1f68b0577cf96
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84342731"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406095"
 ---
-# <a name="quickstart-qna-maker-rest-apis-for-nodejs"></a>Rövid útmutató: QnA Maker REST API-k a Node. js-hez
+# <a name="quickstart-qna-maker-rest-apis-for-nodejs"></a>Gyors útmutató: QnA Maker REST API-k Node.js
 
-Ismerkedjen meg a Node. js-hez készült QnA Maker REST API-kkal. Az alábbi lépéseket követve próbálja ki az alapszintű feladatokhoz tartozó példa kódját.  A QnA Maker lehetővé teszi egy kérdés-válasz szolgáltatás működtetését olyan félig strukturált tartalomból, mint a GYIK-dokumentumok, URL-címek és termékútmutatók.
+Ismerkedjen meg a Node.js QnA Maker REST API-kkal. Az alábbi lépéseket követve próbálja ki az alapszintű feladatokhoz tartozó példa kódját.  A QnA Maker lehetővé teszi egy kérdés-válasz szolgáltatás működtetését olyan félig strukturált tartalomból, mint a GYIK-dokumentumok, URL-címek és termékútmutatók.
 
-Használja az QnA Maker REST API-kat a Node. js-hez a következőhöz:
+Használja a QnA Maker REST API-kat a Node.jshoz:
 
 * Tudásbázis létrehozása
 * Tudásbázis cseréje
@@ -25,14 +25,14 @@ Használja az QnA Maker REST API-kat a Node. js-hez a következőhöz:
 * Tudásbázis letöltése
 * Művelet állapotának beolvasása
 
-[Dokumentáció](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase)  |  [Node. js-minták](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/tree/master/documentation-samples/quickstarts/rest-api)
+[Dokumentáció](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase)  |  [Node.js minták](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/tree/master/documentation-samples/quickstarts/rest-api)
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
-* A [Node. js](https://nodejs.org)jelenlegi verziója.
+* A [Node.js](https://nodejs.org)aktuális verziója.
 * Rendelkeznie kell [QnA Maker-szolgáltatással](../How-To/set-up-qnamaker-service-azure.md) is. Ha le szeretné kérni a kulcsot és a végpontot (amely tartalmazza az erőforrás nevét), válassza az erőforráshoz tartozó **Gyorsindítás** lehetőséget a Azure Portal.
 
 ## <a name="setting-up"></a>Beállítás
@@ -65,7 +65,7 @@ npm install requestretry request --save
 
 ## <a name="code-examples"></a>Kódpéldák
 
-Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következőket a Node. js-hez készült QnA Maker REST API-kkal:
+Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következőket a Node.js QnA Maker REST API-kkal:
 
 * [Tudásbázis létrehozása](#create-a-knowledge-base)
 * [Tudásbázis cseréje](#replace-a-knowledge-base)

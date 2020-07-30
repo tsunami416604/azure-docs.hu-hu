@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2019
 ms.author: anavin
-ms.openlocfilehash: 237361c6a519fea4dde7f1fe85f91d97ce0365b1
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: db3eae5cd31fff0db465389ea4a09b1666453634
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281582"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386996"
 ---
 # <a name="what-is-azure-virtual-network"></a>Mi az Azure Virtual Network?
 
@@ -27,7 +27,7 @@ Az Azure Virtual Network (VNet) az Azure-beli magánhálózat alapvető építő
 ## <a name="vnet-concepts"></a>VNet fogalmak
 
 - **Címterület:** VNet létrehozásakor egyéni magánhálózati IP-címtartományt kell megadnia nyilvános és magánhálózati (RFC 1918) címek használatával. Az Azure magánhálózati IP-címet rendel hozzá a virtuális hálózatokon belüli erőforrásokhoz a hozzárendelt címtérből. Ha például egy virtuális gépet központilag telepít egy VNet, a 10.0.0.0/16, a virtuális gép egy magánhálózati IP-címet (például 10.0.0.4) fog rendelni.
-- **Alhálózatok:** Az alhálózatok lehetővé teszik a virtuális hálózat egy vagy több alhálózatra való felosztását, és a virtuális hálózat címterület egy részének lefoglalását az egyes alhálózatokra. Ezután üzembe helyezheti az Azure-erőforrásokat egy adott alhálózaton. A hagyományos hálózatokhoz hasonlóan az alhálózatok is lehetővé teszik, hogy a VNet-címtartomány a szervezet belső hálózatának megfelelő szegmensekre legyen felosztva. Ez javítja a címek kiosztásának hatékonyságát is. Az alhálózatokon belüli erőforrásokat hálózati biztonsági csoportokkal is biztonságossá teheti. További információ: [biztonsági csoportok](security-overview.md).
+- **Alhálózatok:** Az alhálózatok lehetővé teszik a virtuális hálózat egy vagy több alhálózatra való felosztását, és a virtuális hálózat címterület egy részének lefoglalását az egyes alhálózatokra. Ezután üzembe helyezheti az Azure-erőforrásokat egy adott alhálózaton. A hagyományos hálózatokhoz hasonlóan az alhálózatok is lehetővé teszik, hogy a VNet-címtartomány a szervezet belső hálózatának megfelelő szegmensekre legyen felosztva. Ez javítja a címek kiosztásának hatékonyságát is. Az alhálózatokon belüli erőforrásokat hálózati biztonsági csoportokkal is biztonságossá teheti. További információ: [hálózati biztonsági csoportok](security-overview.md).
 - **Régiók**: a VNet egyetlen régióra/helyre vonatkozik; azonban a különböző régiókban található több virtuális hálózat összekapcsolható Virtual Network-társítással.
 - **Előfizetés:** A VNet hatóköre egy előfizetés. Több virtuális hálózatot is megvalósíthat az egyes Azure-[előfizetéseken](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) és Azure-[régiókon](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#region) belül.
 
@@ -67,7 +67,7 @@ Az alábbiak bármely kombinációjával csatlakoztathatja helyszíni számító
 
 A hálózati forgalom alhálózatok közötti szűrése az alábbi lehetőségek egyikével vagy akár mindkettővel elvégezhető:
 
-- **Biztonsági csoportok:** A hálózati biztonsági csoportok és az alkalmazás biztonsági csoportjai több bejövő és kimenő biztonsági szabályt is tartalmazhatnak, amelyekkel a forrás és a cél IP-címe, portja és protokollja alapján szűrheti a forgalmat és az erőforrásokat. További információ: [hálózati biztonsági csoportok](security-overview.md#network-security-groups) vagy [alkalmazás biztonsági csoportjai](security-overview.md#application-security-groups).
+- **Hálózati biztonsági csoportok:** A hálózati biztonsági csoportok és az alkalmazás biztonsági csoportjai több bejövő és kimenő biztonsági szabályt is tartalmazhatnak, amelyekkel a forrás és a cél IP-címe, portja és protokollja alapján szűrheti a forgalmat és az erőforrásokat. További információ: [hálózati biztonsági csoportok](security-overview.md#network-security-groups) vagy [alkalmazás biztonsági csoportjai](security-overview.md#application-security-groups).
 - **Hálózati virtuális berendezések:** A hálózati virtuális berendezések olyan virtuális gépek, amelyek egy hálózati funkciót látnak el, például tűzfal, WAN-optimalizáció vagy egyéb hálózati funkciók. A virtuális hálózatokban üzembe helyezhető hálózati virtuális berendezések listáját az [Azure Marketplace-en](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking?page=1&subcategories=appliances) találja.
 
 ## <a name="route-network-traffic"></a>Hálózati forgalom továbbítása
@@ -94,6 +94,6 @@ Bizonyos korlátozások vonatkoznak az üzembe helyezhető Azure-erőforrások s
 
 Az Azure VNet díjmentesen vehető igénybe. A standard díjak olyan erőforrásokra vonatkoznak, mint a Virtual Machines (VM) és más termékek. További információ: a [VNet díjszabása](https://azure.microsoft.com/pricing/details/virtual-network/) és az Azure [díjszabásának kalkulátora](https://azure.microsoft.com/pricing/calculator/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
  A virtuális hálózatok használatának megkezdéséhez hozzon létre egyet, helyezzen üzembe rajta néhány virtuális gépet, majd létesítsen kommunikációt a virtuális gépek között. Ennek ismertetéséhez tekintse meg a [Virtuális hálózat létrehozása](quick-create-portal.md) című rövid útmutatót.

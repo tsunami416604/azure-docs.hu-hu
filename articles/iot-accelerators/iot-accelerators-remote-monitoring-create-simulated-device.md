@@ -8,13 +8,13 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
-ms.custom: mqtt
-ms.openlocfilehash: d31e520dac1c7e2a13fbd9e24a0cd3167f69e904
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: mqtt, devx-track-javascript
+ms.openlocfilehash: c0aac897d85cd96d537238bc81cbc89d3626a07c
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81682009"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422759"
 ---
 # <a name="create-and-test-a-new-simulated-device"></a>Új szimulált eszköz létrehozása és tesztelése
 
@@ -33,7 +33,7 @@ A második forgatókönyvben a contoso egy új intelligens villanykörte-eszköz
 
 | Name                     | Értékek                      |
 | ------------------------ | --------------------------- |
-| Szín                    | Fehér, piros, kék            |
+| Szín (Color)                    | Fehér, piros, kék            |
 | Fényerő               | 0 – 100                    |
 | Becsült hátralévő élettartam | Visszaszámlálás 10 000 órával |
 
@@ -43,7 +43,7 @@ Az alábbi táblázat azokat az adatstream-jelentéseket mutatja be, amelyeket a
 
 | Name   | Értékek      |
 | ------ | ----------- |
-| Állapot | "on", "off" |
+| status | "on", "off" |
 | Hőmérséklet | Fok F |
 | online | igaz, hamis |
 
@@ -73,7 +73,7 @@ Az alábbi táblázat az eszköz kezdeti állapotát mutatja be:
 
 A jelen útmutató lépéseinek végrehajtásához aktív Azure-előfizetésre van szükség.
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -493,13 +493,13 @@ A szimuláció konfigurálása és futtatása:
 
 A szimuláció leállításához jelölje ki a **Szimuláció leállítására** irányuló kérelmet a Poster alkalmazásban, és kattintson a **Küldés**gombra.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 A két helyileg futó Service-t leállíthatja a Visual Studio Code-példányaiban (**hibakeresés > hibakeresés leállítása**).
 
 Ha már nincs szüksége a IoT Hubra és Cosmos DB példányokra, törölje azokat az Azure-előfizetésből a szükségtelen költségek elkerülése érdekében.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az útmutató bemutatja, hogyan hozhat létre egyéni szimulált eszközöket, és hogyan tesztelheti őket az eszköz-szimulációs szolgáltatás helyi futtatásával.
 

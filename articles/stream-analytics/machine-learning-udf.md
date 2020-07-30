@@ -7,12 +7,13 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/19/2020
-ms.openlocfilehash: 50d6bebd1e38149096b865ad3654a9604d685f5d
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 30e70e56eb54815c26521829e4baf82dce574e43
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86141948"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432598"
 ---
 # <a name="integrate-azure-stream-analytics-with-azure-machine-learning-preview"></a>Azure Stream Analytics integrálása Azure Machine Learning (előzetes verzió)
 
@@ -49,7 +50,7 @@ Az alábbi táblázat a Stream Analytics Azure ML Service functions egyes tulajd
 |Függvény aliasa|Adjon meg egy nevet a függvény meghívásához a lekérdezésben.|
 |Előfizetés|Azure-előfizetése...|
 |Azure ML-munkaterület|A modell webszolgáltatásként való üzembe helyezéséhez használt Azure Machine Learning munkaterület.|
-|Központi telepítés|A modellt működtető webszolgáltatás.|
+|Üzemelő példányok|A modellt működtető webszolgáltatás.|
 |Függvény aláírása|A webszolgáltatás aláírása az API sémájának specifikációja alapján lett kikövetkeztetve. Ha az aláírás nem töltődik be, ellenőrizze, hogy a pontozási parancsfájlban megadott minta bemenetet és kimenetet adott-e meg a séma automatikus létrehozásához.|
 |Párhuzamos kérelmek száma partíción|Ez egy speciális konfiguráció a nagy léptékű átviteli sebesség optimalizálása érdekében. Ez a szám a feladat egyes partíciói által a webszolgáltatásba küldött egyidejű kérelmeket jelöli. A hat folyamatos átviteli egységgel (SU) és eggyel alacsonyabb szintű feladatokhoz egy partíció tartozik. A 12 SUs-vel rendelkező feladatok két partícióval rendelkeznek, a 18 SUs pedig három partíciót és így tovább.<br><br> Ha például a feladatainak két partíciója van, és ezt a paramétert négyre állítja, a feladatokból nyolc egyidejű kérelem lesz a webszolgáltatásnak. A nyilvános előzetes verzióban ez az érték alapértelmezés szerint 20, és nem frissíthető.|
 |Kötegek maximális száma|Ez egy speciális konfiguráció a nagy léptékű átviteli sebesség optimalizálásához. Ez a szám azt jelöli, hogy az események maximális száma a webszolgáltatásnak elküldhető egyetlen kérelemben legyen egyesítve.|
@@ -163,7 +164,7 @@ Optimális skálázás esetén a Stream Analyticsi feladatnak több párhuzamos 
 
 Az ilyen késések elkerülése érdekében győződjön meg arról, hogy az Azure Kubernetes szolgáltatás (ak) fürtjének [megfelelő számú csomóponttal és replikával](../machine-learning/how-to-deploy-azure-kubernetes-service.md#using-the-cli)lett kiépítve. Fontos, hogy a webszolgáltatás nagy rendelkezésre állású legyen, és sikeres válaszokat ad vissza. Ha a feladat egy szolgáltatás nem érhető el választ (503) kap a webszolgáltatástól, a rendszer folyamatosan újrapróbálkozik az exponenciális visszalépéssel. Ha a sikertől (200) és a szolgáltatástól (503) nem érhető el válasz, a művelet sikertelen állapotba kerül.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Oktatóanyag: Az Azure Stream Analytics felhasználói JavaScript-függvényei](stream-analytics-javascript-user-defined-functions.md)
 * [Stream Analytics-feladat skálázása Azure Machine Learning Studio (klasszikus) függvénnyel](stream-analytics-scale-with-machine-learning-functions.md)

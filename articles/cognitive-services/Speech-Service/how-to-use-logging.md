@@ -10,23 +10,24 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: amishu
-ms.openlocfilehash: 707a0f801a739a7a91cee19635e609305cd8f021
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 21f4494bedd824cef373a391c5635e35ec2600d0
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74805790"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406877"
 ---
 # <a name="enable-logging-in-the-speech-sdk"></a>Naplózás engedélyezése a Speech SDK-ban
 
-A fájlba való naplózás a Speech SDK választható funkciója. A fejlesztési naplózás során további információkat és diagnosztikát biztosít a Speech SDK alapvető összetevőiből. Ezt úgy engedélyezheti, ha egy beszéd `Speech_LogFilename` konfigurációs objektum tulajdonságát a naplófájl helyére és nevére állítja be. A naplózást a rendszer globálisan aktiválja, ha a rendszer létrehoz egy felismerőt ebből a konfigurációból, és ezt követően nem lehet letiltani. A naplófájlok neve nem módosítható egy futó naplózási munkamenet során.
+A fájlba való naplózás a Speech SDK választható funkciója. A fejlesztési naplózás során további információkat és diagnosztikát biztosít a Speech SDK alapvető összetevőiből. Ezt úgy engedélyezheti, `Speech_LogFilename` Ha egy beszéd konfigurációs objektum tulajdonságát a naplófájl helyére és nevére állítja be. A naplózást a rendszer globálisan aktiválja, ha a rendszer létrehoz egy felismerőt ebből a konfigurációból, és ezt követően nem lehet letiltani. A naplófájlok neve nem módosítható egy futó naplózási munkamenet során.
 
 > [!NOTE]
 > A naplózás elérhető a Speech SDK verziójának 1.4.0 az összes támogatott Speech SDK programozási nyelvben, a JavaScript kivételével.
 
 ## <a name="sample"></a>Sample
 
-A naplófájl neve egy konfigurációs objektumon van megadva. Tekintse `SpeechConfig` át a példát, és feltételezve, hogy létrehozott egy nevű `config`példányt:
+A naplófájl neve egy konfigurációs objektumon van megadva. `SpeechConfig`Tekintse át a példát, és feltételezve, hogy létrehozott egy nevű példányt `config` :
 
 ```csharp
 config.SetProperty(PropertyId.Speech_LogFilename, "LogfilePathAndName");
@@ -51,7 +52,7 @@ config.set_property(speechsdk.PropertyId.Speech_LogFilename, "LogfilePathAndName
 A konfigurációs objektumból létrehozhat egy felismerőt. Ez lehetővé teszi az összes felismerő naplózását.
 
 > [!NOTE]
-> Ha a `SpeechSynthesizer` -t a konfigurációs objektumból hozza létre, az nem teszi lehetővé a naplózást. Ha a naplózás engedélyezve van, akkor a-től is megkapja a `SpeechSynthesizer`diagnosztikát.
+> Ha `SpeechSynthesizer` a-t a konfigurációs objektumból hozza létre, az nem teszi lehetővé a naplózást. Ha a naplózás engedélyezve van, akkor a-től is megkapja a diagnosztikát `SpeechSynthesizer` .
 
 ## <a name="create-a-log-file-on-different-platforms"></a>Naplófájl létrehozása különböző platformokon
 
@@ -79,9 +80,9 @@ File logFile = new File(dir, "logfile.txt");
 config.setProperty(PropertyId.Speech_LogFilename, logFile.getAbsolutePath());
 ```
 
-A fenti kód egy alkalmazásspecifikus könyvtár gyökerében lévő külső tárolóba menti a naplófájlt. A felhasználók a fájlkezelővel (általában a verzióban `Android/data/ApplicationName/logfile.txt`) férhetnek hozzá a fájlhoz. A rendszer törli a fájlt az alkalmazás eltávolításakor.
+A fenti kód egy alkalmazásspecifikus könyvtár gyökerében lévő külső tárolóba menti a naplófájlt. A felhasználók a fájlkezelővel (általában a verzióban) férhetnek hozzá a fájlhoz `Android/data/ApplicationName/logfile.txt` . A rendszer törli a fájlt az alkalmazás eltávolításakor.
 
-A jegyzékfájlban is engedélyt `WRITE_EXTERNAL_STORAGE` kell kérnie:
+`WRITE_EXTERNAL_STORAGE`A jegyzékfájlban is engedélyt kell kérnie:
 
 ```xml
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="...">
@@ -104,7 +105,7 @@ NSString *filePath = [
 [speechConfig setPropertyTo:filePath byId:SPXSpeechLogFilename];
 ```
 
-Egy létrehozott fájl eléréséhez adja hozzá az alábbi tulajdonságokat az alkalmazás `Info.plist` tulajdonságainak listájához:
+Egy létrehozott fájl eléréséhez adja hozzá az alábbi tulajdonságokat az `Info.plist` alkalmazás tulajdonságainak listájához:
 
 ```xml
 <key>UIFileSharingEnabled</key>
@@ -115,7 +116,7 @@ Egy létrehozott fájl eléréséhez adja hozzá az alábbi tulajdonságokat az 
 
 További információ az iOS fájlrendszerről [itt](https://developer.apple.com/library/archive/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/FileSystemOverview/FileSystemOverview.html)érhető el.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [A GitHubon található minták megismerése](https://aka.ms/csspeech/samples)

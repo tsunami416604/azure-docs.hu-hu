@@ -4,14 +4,14 @@ description: Ismerje meg az Azure Cosmos DB Cassandra API-fiók méretezésének
 author: TheovanKraay
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 01/13/2020
+ms.date: 07/29/2020
 ms.author: thvankra
-ms.openlocfilehash: c9517b6d48f21a2ac2c4b92e68c788a33897511b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 447744f0436cb29e849a52694a02600183fd357a
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85119154"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432817"
 ---
 # <a name="elastically-scale-an-azure-cosmos-db-cassandra-api-account"></a>Azure Cosmos DB Cassandra API fiók rugalmas skálázása
 
@@ -46,7 +46,7 @@ Ennek a módszernek az az előnye, hogy ez egy egyszerű kulcsrakész módszer a
 
 ## <a name="use-the-control-plane"></a><a id="use-control-plane"></a>A vezérlési sík használata
 
-A Cassandra Azure Cosmos DB API-ját lehetővé teszi az átviteli sebesség programozott módon történő módosítását a különböző vezérlő-sík funkciók használatával. Útmutatásért és példákért tekintse meg a [Azure Resource Manager](manage-cassandra-with-resource-manager.md), a [PowerShell](powershell-samples-cassandra.md)és az [Azure CLI](cli-samples-cassandra.md) -cikkeket.
+A Cassandra Azure Cosmos DB API-ját lehetővé teszi az átviteli sebesség programozott módon történő módosítását a különböző vezérlő-sík funkciók használatával. Útmutatásért és példákért tekintse meg a [Azure Resource Manager](manage-cassandra-with-resource-manager.md), a [PowerShell](powershell-samples-cassandra.md)és az [Azure CLI](cli-samples.md) -cikkeket.
 
 Ennek a módszernek az az előnye, hogy automatizálhatja az erőforrások vertikális fel-vagy leskálázását egy időzítő alapján a csúcsérték-tevékenységhez vagy az alacsony aktivitású időszakokhoz. Tekintse meg [a mintát a Azure functions és a PowerShell](https://github.com/Azure-Samples/azure-cosmos-throughput-scheduler) használatával.
 
@@ -80,6 +80,6 @@ create table <keyspace name>.<table name> (pk int PRIMARY KEY, ck int) WITH cosm
 alter table <keyspace name>.<table name> WITH cosmosdb_autoscale_max_throughput=4000;
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerkedés a [Cassandra API-fiókok, -adatbázisok és -táblák létrehozásával](create-cassandra-api-account-java.md) Java-alkalmazás használatával

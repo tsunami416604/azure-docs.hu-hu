@@ -8,12 +8,13 @@ ms.topic: tutorial
 ms.date: 06/24/2020
 ms.author: mhopkins
 ms.reviewer: dineshm
-ms.openlocfilehash: e8caf6af0b30809857fd59d88fd57e5e43010ae2
-ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 15d18372b9123602e6d6f05b9259e50a74f7eb39
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85368345"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87433281"
 ---
 # <a name="tutorial-upload-image-data-in-the-cloud-with-azure-storage"></a>Oktatóanyag: képadatok feltöltése a felhőbe az Azure Storage szolgáltatással
 
@@ -48,7 +49,7 @@ Az oktatóanyag elvégzéséhez szüksége lesz egy Azure-előfizetésre. Mielő
 
 A parancssori felület helyi telepítéséhez és használatához futtassa az Azure CLI 2.0.4 vagy újabb verzióját. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket. 
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.  
 

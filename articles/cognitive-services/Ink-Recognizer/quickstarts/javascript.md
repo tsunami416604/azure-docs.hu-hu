@@ -10,12 +10,13 @@ ms.subservice: ink-recognizer
 ms.topic: quickstart
 ms.date: 06/30/2020
 ms.author: aahi
-ms.openlocfilehash: aa16f0cca5e60608518ff914a89a48fa8b8899c5
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 59cd4711ec3604779e57434af72460534b378af4
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85980015"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407047"
 ---
 # <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-javascript"></a>Gyors útmutató: Digitális tinta felismerése a kézírás-felismerő REST API és a JavaScripttel
 
@@ -161,7 +162,7 @@ Ennek a rövid útmutatónak a forráskódja a [githubon](https://go.microsoft.c
 
 Ez az alkalmazás a böngészőben is futtatható. A sikeres válaszokat JSON formátumban adja vissza a rendszer. A JSON-válasz a [githubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/javascript/InkRecognition/quickstart/example-response.json)is megtalálható:
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [REST API-referencia](https://go.microsoft.com/fwlink/?linkid=2089907)

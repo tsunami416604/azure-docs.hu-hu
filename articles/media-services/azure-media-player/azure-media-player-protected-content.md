@@ -6,20 +6,21 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
 ms.date: 04/20/2020
-ms.openlocfilehash: 64414d3ec31e8763b7c576af93374bf514141fd4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-javascript
+ms.openlocfilehash: da79556b466e3511845724e969c76477ad2ba0a8
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81726493"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423014"
 ---
 # <a name="protected-content"></a>Védett tartalom #
 
-A Azure Media Player jelenleg támogatja az AES-128 bites borítékok titkosított tartalmait és közös titkosított tartalmait (PlayReady és Widevine) vagy titkosított tartalmat a FairPlay-en keresztül. A védett tartalom megfelelő lejátszásához meg kell adnia Azure Media Player a `protectionInfo`következőt:. Ez az információ forrásként szerepel, és közvetlenül a címkén `<source>` keresztül vehető fel `data-setup`a címkébe.  Ha dinamikusan állítja be a `protectionInfo` forrást, a közvetlenül paramétert is hozzáadhatja.
+A Azure Media Player jelenleg támogatja az AES-128 bites borítékok titkosított tartalmait és közös titkosított tartalmait (PlayReady és Widevine) vagy titkosított tartalmat a FairPlay-en keresztül. A védett tartalom megfelelő lejátszásához meg kell adnia Azure Media Player a következőt: `protectionInfo` . Ez az információ forrásként szerepel, és közvetlenül a `<source>` címkén keresztül vehető fel a címkébe `data-setup` .  `protectionInfo`Ha dinamikusan állítja be a forrást, a közvetlenül paramétert is hozzáadhatja.
 
 `protectionInfo`elfogad egy JSON-objektumot, és a következőket tartalmazza:
 
-- `type`: `AES` vagy `PlayReady` `Widevine` vagy`FairPlay`
+- `type`: `AES` vagy `PlayReady` vagy `Widevine``FairPlay`
 - `certificateUrl`: az üzemeltetett FairPlay tanúsítvány közvetlen hivatkozásának kell lennie
 
 - `authenticationToken`: ez egy választható mező, amely nem kódolt hitelesítési tokent ad hozzá
@@ -27,7 +28,7 @@ A Azure Media Player jelenleg támogatja az AES-128 bites borítékok titkosíto
 > [!IMPORTANT]
 > A **certificateUrl** objektumra csak a Fairplay DRM esetében van szükség. * * *
 >[!NOTE]
-> Az alapértelmezett techOrder úgy módosult, hogy megfeleljen az új technológiának `html5FairPlayHLS` – kifejezetten a Fairplay-tartalmak natív módon történő lejátszásához az azt támogató böngészőkön (Safari on OSX 8 +). Ha FairPlay tartalommal rendelkezik, **és** módosította az alapértelmezett techOrder egy egyénire az alkalmazásban, akkor ezt az új technológiát hozzá kell adnia a techOrder objektumhoz. Azt javasoljuk, hogy a Silverlight előtt vegye fel azt, hogy a tartalom ne legyen lejátszás a PlayReady-n keresztül.
+> Az alapértelmezett techOrder úgy módosult, hogy megfeleljen az új technológiának – `html5FairPlayHLS` kifejezetten a Fairplay-tartalmak natív módon történő lejátszásához az azt támogató böngészőkön (Safari on OSX 8 +). Ha FairPlay tartalommal rendelkezik, **és** módosította az alapértelmezett techOrder egy egyénire az alkalmazásban, akkor ezt az új technológiát hozzá kell adnia a techOrder objektumhoz. Azt javasoljuk, hogy a Silverlight előtt vegye fel azt, hogy a tartalom ne legyen lejátszás a PlayReady-n keresztül.
 
 ## <a name="code-sample"></a>Kódminta ##
 
@@ -83,6 +84,6 @@ vagy több DRM-mel
 > [!IMPORTANT]
 > A lejátszóba átadott jogkivonat biztonságos tartalomra van kialakítva, és csak hitelesített felhasználók számára használható. Feltételezzük, hogy az alkalmazás SSL-t vagy más biztonsági mértéket használ. Emellett a végfelhasználónak megbízhatónak kell lennie, hogy ne assummed a jogkivonatot; Ha ez nem igaz, vonja be biztonsági szakértőit.
 
-## <a name="next-steps"></a>További lépések ##
+## <a name="next-steps"></a>Következő lépések ##
 
 - [Azure Media Player rövid útmutató](azure-media-player-quickstart.md)

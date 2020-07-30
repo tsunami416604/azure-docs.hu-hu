@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: cedb5899b392cb111f9c1bb76949e940ef837252
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 4ca6d6647882e81dbf20a0dd39b1ae659b6a6ab6
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284812"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432985"
 ---
 # <a name="lsv2-series"></a>Lsv2 sorozat
 
@@ -52,7 +52,7 @@ Memória-megőrzési frissítések: nem támogatott
 
 <sup>3</sup> a Hyper-V NVMe Direct technológiája nem szabályozott hozzáférést biztosít a helyi NVMe-meghajtókhoz, amelyek biztonságosan vannak leképezve a vendég virtuális gép területére.  A maximális teljesítmény eléréséhez a legújabb WS2019 Build vagy Ubuntu 18,04 vagy 16,04 használatával kell használnia az Azure Marketplace-en.  Az írási teljesítmény az IO-méret, a meghajtó terhelése és a kapacitás kihasználtsága alapján változhat.
 
-<sup>4</sup> a Lsv2 sorozatú virtuális gépek nem biztosítanak gazdagép-gyorsítótárat az adatlemez számára, mivel az nem használja ki a Lsv2 számítási feladatait.  A Lsv2 virtuális gépek azonban az Azure ideiglenes VM operációsrendszer-lemezének beállítását (legfeljebb 30 GiB) tudják kezelni.
+<sup>4</sup> a Lsv2 sorozatú virtuális gépek nem biztosítanak gazdagép-gyorsítótárat az adatlemez számára, mivel az nem használja ki a Lsv2 számítási feladatait.
 
 <sup>5</sup> a Lsv2 sorozatú virtuális gépek egyszerre akár 30 [percig is elérhetik a lemez](linux/disk-bursting.md) teljesítményét. 
 
@@ -90,6 +90,6 @@ Memória-megőrzési frissítések: nem támogatott
 További információ a lemezek típusairól: [lemezek típusai](https://docs.microsoft.com/azure/virtual-machines/linux/disks-types#ultra-ssd-preview/)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ arról, hogy az [Azure számítási egységei (ACU)](acu.md) hogyan segíthetnek az Azure SKU-ban a számítási teljesítmény összehasonlításában.

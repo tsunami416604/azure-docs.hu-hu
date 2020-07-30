@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 01/06/2017
-ms.openlocfilehash: f85ef90520049aef2cb39da9c360013d6f11aca0
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 8195d310de708e48b27b5a2d81023d02792be1d3
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318708"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87429461"
 ---
 # <a name="deploy-an-azure-machine-learning-studio-classic-web-service"></a>Azure Machine Learning Studio (klasszikus) webszolgáltatás üzembe helyezése
 
-**a következőkre vonatkozik:** ![ nincs](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine learning](../overview-what-is-azure-ml.md) ![ Igen ](../../../includes/media/aml-applies-to-skus/yes.png) Machine learning Studio (klasszikus) 
+**a következőkre vonatkozik:** ![ igen ](../../../includes/media/aml-applies-to-skus/yes.png) Machine learning Studio (klasszikus) ![ nincs](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine learning](../compare-azure-ml-to-studio-classic.md)  
 
 
 A Azure Machine Learning Studio (klasszikus) lehetővé teszi prediktív elemzési megoldások készítését és tesztelését. Ezután webszolgáltatásként üzembe helyezheti a megoldást.
@@ -284,7 +284,7 @@ Mivel korábban már üzembe helyezte ezt a kísérletet, a rendszer megkérdezi
 
 A webszolgáltatás frissítésének egyik lehetősége a modell programozott módon történő újratanítása. További információ: [Machine learning Studio (klasszikus) modellek programozott módon történő átképzése](/azure/machine-learning/studio/retrain-machine-learning-model).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az üzembe helyezés módjával kapcsolatos további technikai részletekért lásd: [how a Machine learning Studio (klasszikus) modell egy kísérletből egy működőképes webszolgáltatásba halad](model-progression-experiment-to-web-service.md).
 

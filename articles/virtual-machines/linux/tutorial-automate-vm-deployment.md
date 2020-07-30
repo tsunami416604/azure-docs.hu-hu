@@ -13,13 +13,13 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/12/2019
 ms.author: cynthn
-ms.custom: mvc
-ms.openlocfilehash: d2a6568b0d62c880a688160cf981fb33083ae02e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, devx-track-javascript
+ms.openlocfilehash: 2a07480bf5b3defb4176437d99274e9ecfb4ba13
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81461480"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87433024"
 ---
 # <a name="tutorial---how-to-use-cloud-init-to-customize-a-linux-virtual-machine-in-azure-on-first-boot"></a>Oktatóanyag – Cloud-init használata az Azure-ban először induló linuxos virtuális gépek testreszabásához
 
@@ -41,7 +41,7 @@ A cloud-init különböző disztribúciókon is működik. Például nem kell az
 
 A partnereinkkel dolgozunk rajta, hogy egyre több általuk biztosított Azure-rendszerkép tartalmazza a cloud-init eszközt. Az alábbi táblázat a cloud-init jelenlegi elérhetőségét ismerteti az Azure-platformrendszerképeken:
 
-| Közzétevő | Ajánlat | SKU | Verzió | Cloud-init Ready |
+| Publisher | Ajánlat | Termékváltozat | Verzió | Cloud-init Ready |
 |:--- |:--- |:--- |:--- |:--- |
 |Canonical |UbuntuServer |18,04 – LTS |legújabb |igen | 
 |Canonical |UbuntuServer |16.04-LTS |legújabb |igen | 
@@ -55,7 +55,7 @@ A partnereinkkel dolgozunk rajta, hogy egyre több általuk biztosított Azure-r
 ## <a name="create-cloud-init-config-file"></a>Cloud-init konfigurációs fájl létrehozása
 A cloud-init működés közbeni megtekintéséhez hozzon létre egy virtuális gépet, amely telepíti az NGINX-et, és egy egyszerű „Hello World” Node.js-alkalmazást futtat. Az alábbi cloud-init konfiguráció telepíti a szükséges csomagokat, létrehoz egy Node.js-alkalmazást, majd inicializálja és elindítja azt.
 
-A bash-parancssorban vagy a Cloud Shell hozzon létre egy *Cloud-init. txt* nevű fájlt, és illessze be a következő konfigurációt. Írja be `sensible-editor cloud-init.txt` például a következőt: a fájl létrehozásához és az elérhető szerkesztők listájának megtekintéséhez. Ügyeljen arra, hogy megfelelően másolja ki a teljes cloud-init-fájlt, különösen az első sort:
+A bash-parancssorban vagy a Cloud Shell hozzon létre egy *cloud-init.txt* nevű fájlt, és illessze be a következő konfigurációt. Írja be például a következőt `sensible-editor cloud-init.txt` : a fájl létrehozásához és az elérhető szerkesztők listájának megtekintéséhez. Ügyeljen arra, hogy megfelelően másolja ki a teljes cloud-init-fájlt, különösen az első sort:
 
 ```bash
 #cloud-config
@@ -129,7 +129,7 @@ az vm open-port --port 80 --resource-group myResourceGroupAutomate --name myAuto
 ```
 
 ## <a name="test-web-app"></a>Webalkalmazás tesztelése
-Most nyisson meg egy webböngészőt, és írja be a következőt *: http:\/\/\<publicIpAddress>* a címsorban. Adja meg a saját nyilvános IP-címét, amelyet a virtuális gép létrehozásakor kapott. A Node.js-alkalmazás a következő példához hasonlóan jelenik meg:
+Most nyisson meg egy webböngészőt, és írja be a *http: \/ \/ \<publicIpAddress> * értéket a címsorba. Adja meg a saját nyilvános IP-címét, amelyet a virtuális gép létrehozásakor kapott. A Node.js-alkalmazás a következő példához hasonlóan jelenik meg:
 
 ![Futó NGINX-webhely megtekintése](./media/tutorial-automate-vm-deployment/nginx.png)
 
@@ -183,7 +183,7 @@ vm_secret=$(az vm secret format --secret "$secret" --output json)
 ### <a name="create-cloud-init-config-to-secure-nginx"></a>Cloud-init konfiguráció létrehozása az NGINX védelméhez
 Virtuális gép létrehozásakor a tanúsítványokat és a kulcsokat a védett */var/lib/waagent/* könyvtár tárolja. A tanúsítvány virtuális géphez való hozzáadásának automatizálásához és az NGINX konfigurálásához használhat egy frissített cloud-init konfigurációt az előző példából.
 
-Hozzon létre egy *cloud-init-secured.txt* nevű fájlt, és illessze be a következő konfigurációt. Ha a Cloud Shell használja, hozza létre a Cloud-init konfigurációs fájlt, és ne a helyi gépen. Írja be `sensible-editor cloud-init-secured.txt` például a következőt: a fájl létrehozásához és az elérhető szerkesztők listájának megtekintéséhez. Ügyeljen arra, hogy megfelelően másolja ki a teljes cloud-init-fájlt, különösen az első sort:
+Hozzon létre egy *cloud-init-secured.txt* nevű fájlt, és illessze be a következő konfigurációt. Ha a Cloud Shell használja, hozza létre a Cloud-init konfigurációs fájlt, és ne a helyi gépen. Írja be például a következőt `sensible-editor cloud-init-secured.txt` : a fájl létrehozásához és az elérhető szerkesztők listájának megtekintéséhez. Ügyeljen arra, hogy megfelelően másolja ki a teljes cloud-init-fájlt, különösen az első sort:
 
 ```yaml
 #cloud-config
@@ -260,7 +260,7 @@ az vm open-port \
 ```
 
 ### <a name="test-secure-web-app"></a>A biztonságos webalkalmazás tesztelése
-Most nyisson meg egy webböngészőt, és írja be a következőt *: https:\/\/\<publicIpAddress>* a címsorban. Adja meg a saját nyilvános IP-címét, amelyet az előző virtuálisgép-létrehozási folyamat kimeneteként kapott. Fogadja el a biztonsági figyelmeztetést, ha önaláírt tanúsítványt használt:
+Most nyisson meg egy webböngészőt, és írja be a *https: \/ \/ \<publicIpAddress> * értéket a címsorba. Adja meg a saját nyilvános IP-címét, amelyet az előző virtuálisgép-létrehozási folyamat kimeneteként kapott. Fogadja el a biztonsági figyelmeztetést, ha önaláírt tanúsítványt használt:
 
 ![Webböngésző biztonsági figyelmeztetésének elfogadása](./media/tutorial-automate-vm-deployment/browser-warning.png)
 
@@ -269,8 +269,8 @@ Ekkor a biztonságos NGINX-webhely és a Node.js-alkalmazás a következő péld
 ![Futó biztonságos NGINX-webhely megtekintése](./media/tutorial-automate-vm-deployment/secured-nginx.png)
 
 
-## <a name="next-steps"></a>További lépések
-Ebben az oktatóanyagban virtuális gépeket konfigurált az első rendszerindításkor a cloud-init használatával. Megismerte, hogyan végezheti el az alábbi műveleteket:
+## <a name="next-steps"></a>Következő lépések
+Ebben az oktatóanyagban virtuális gépeket konfigurált az első rendszerindításkor a cloud-init használatával. Megtanulta végrehajtani az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Cloud-init konfigurációs fájl létrehozása

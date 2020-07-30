@@ -1,54 +1,42 @@
 ---
 title: Meglévő modellek használata és üzembe helyezése
 titleSuffix: Azure Machine Learning
-description: Megtudhatja, hogyan használhatja a Azure Machine Learningt a szolgáltatáson kívül betanított modellekkel. Regisztrálhatja a Azure Machine Learningon kívül létrehozott modelleket, majd webszolgáltatásként vagy Azure IoT Edge modulként is telepítheti őket.
+description: Ismerje meg, hogyan hozhatja ki a helyileg betanított ML-modelleket az Azure-felhőbe Azure Machine Learning használatával.  Regisztrálhatja a Azure Machine Learningon kívül létrehozott modelleket, majd webszolgáltatásként vagy Azure IoT Edge modulként is telepítheti őket.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 03/17/2020
+ms.date: 07/17/2020
 ms.topic: conceptual
 ms.custom: how-to, tracking-python
-ms.openlocfilehash: 7dc58540cf78356021f1fa2d33dd498381f1da7c
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e9177fdbac6173040145ff6d84dda8a579ee1d9e
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325831"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87429418"
 ---
-# <a name="use-an-existing-model-with-azure-machine-learning"></a>Meglévő modell használata Azure Machine Learning
+# <a name="deploy-your-existing-model-with-azure-machine-learning"></a>A meglévő modell üzembe helyezése Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Megtudhatja, hogyan használhat meglévő gépi tanulási modellt Azure Machine Learning használatával.
+Ebből a cikkből megtudhatja, hogyan regisztrálhatja és helyezheti üzembe a Azure Machine Learningon kívül betanított gépi tanulási modellt. Webszolgáltatásként vagy IoT Edge eszközként is üzembe helyezhető.  A telepítés után nyomon követheti a modellt, és felderítheti az adateltolódást Azure Machine Learningban. 
 
-Ha Azure Machine Learningon kívül betanított gépi tanulási modellel rendelkezik, továbbra is használhatja a szolgáltatást a modell webszolgáltatásként való üzembe helyezésére vagy egy IoT Edge eszközre. 
-
-> [!TIP]
-> Ez a cikk a meglévő modellek regisztrálásával és üzembe helyezésével kapcsolatos alapvető információkat tartalmazza. A üzembe helyezést követően Azure Machine Learning a modell figyelését teszi lehetővé. Lehetővé teszi az üzembe helyezéshez továbbított bemeneti adatok tárolását is, amelyek adatdrift-elemzéshez vagy a modell új verzióinak betanításához használhatók.
->
-> Az itt használt fogalmakkal és kifejezésekkel kapcsolatos további információkért lásd: [gépi tanulási modellek kezelése, üzembe helyezése és figyelése](concept-model-management-and-deployment.md).
->
-> Az üzembe helyezési folyamattal kapcsolatos általános információkért lásd: [modellek üzembe helyezése Azure Machine Learningsal](how-to-deploy-and-where.md).
+A cikkben szereplő fogalmakkal és kifejezésekkel kapcsolatos további információkért lásd: [gépi tanulási modellek kezelése, üzembe helyezése és figyelése](concept-model-management-and-deployment.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Egy Azure Machine Learning-munkaterület. További információ: [Munkaterület létrehozása](how-to-manage-workspace.md).
+* [Azure Machine Learning munkaterület](how-to-manage-workspace.md)
+  + A Python-példák azt feltételezik, hogy a `ws` változó a Azure Machine learning munkaterületre van beállítva.
+  
+  + A CLI-példák a és a helyőrzőit használják `myworkspace` `myresourcegroup` , amelyeket a munkaterület nevével és az azt tartalmazó erőforráscsoporthoz kell cserélni.
 
-    > [!TIP]
-    > A cikkben szereplő Python-példák azt feltételezik, hogy a `ws` változó a Azure Machine learning munkaterületre van beállítva.
-    >
-    > A CLI-példák a és a helyőrzőjét használják `myworkspace` `myresourcegroup` . Cserélje le ezeket a munkaterület nevére és az azt tartalmazó erőforráscsoporthoz.
-
-* A [Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).  
+* A [Azure Machine learning PYTHON SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)-t.  
 
 * Az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) és a [Machine learning CLI bővítmény](reference-azure-machine-learning-cli.md).
 
-* Egy betanított modell. A modellt a fejlesztői környezet egy vagy több fájljába kell megőrizni.
-
-    > [!NOTE]
-    > Egy Azure Machine Learningon kívül betanított modell regisztrálásának bemutatásához a jelen cikkben szereplő kódrészletek a Paolo Ripamonti Twitter hangulat-elemzési projekt által létrehozott modelleket használják: [https://www.kaggle.com/paoloripamonti/twitter-sentiment-analysis](https://www.kaggle.com/paoloripamonti/twitter-sentiment-analysis) .
+* Egy betanított modell. A modellt a fejlesztői környezet egy vagy több fájljába kell megőrizni. <br><br>A betanított modell regisztrálásának bemutatásához a cikkben szereplő példa kód a [Paolo Ripamonti Twitter hangulat-elemzési projekt](https://www.kaggle.com/paoloripamonti/twitter-sentiment-analysis)modelljeit használja.
 
 ## <a name="register-the-models"></a>A modell (ek) regisztrálása
 
@@ -82,7 +70,7 @@ A modell-regisztrációval kapcsolatos további információkért lásd: [gépi 
 
 A következtetési konfiguráció határozza meg az üzembe helyezett modell futtatásához használt környezetet. A következtetési konfiguráció a következő entitásokra hivatkozik, amelyek a modellnek a telepítésekor történő futtatására szolgálnak:
 
-* Egy bejegyzésparancsfájl. Ez a fájl (nevű `score.py` ) betölti a modellt a telepített szolgáltatás indításakor. Emellett az adatfogadásért, a modellbe való átadásért, majd a válasz visszaküldéséhez is felelős.
+* Egy nevű bejegyzési parancsfájl `score.py` betölti a modellt a központilag telepített szolgáltatás indításakor. Ez a szkript az adatfogadásra, a modellbe való átadásra, majd a válasz visszaküldésére is felelős.
 * Azure Machine Learning [környezet](how-to-use-environments.md). A környezet a modell és a bejegyzési parancsfájl futtatásához szükséges szoftver-függőségeket határozza meg.
 
 Az alábbi példa azt szemlélteti, hogyan használható az SDK egy környezet létrehozásához, majd egy következtetési konfiguráció használatával:
@@ -145,7 +133,7 @@ dependencies:
 
 További információ a konfigurációval kapcsolatban: [modellek üzembe helyezése Azure Machine Learningsal](how-to-deploy-and-where.md).
 
-### <a name="entry-script"></a>Bejegyzési parancsfájl
+### <a name="entry-script-scorepy"></a>Bejegyzési parancsfájl (score.py)
 
 A bejegyzési parancsfájlnak csak két kötelező funkciója van, `init()` és `run(data)` . Ezekkel a függvényekkel inicializálhatja a szolgáltatást indításkor, és futtathatja a modellt az ügyfél által átadott kérelem-adatok használatával. A parancsfájl többi része kezeli a modell (ek) betöltését és futtatását.
 
@@ -305,9 +293,8 @@ print(response.json())
 
 Az üzembe helyezett szolgáltatás használatáról további információt az [ügyfél létrehozása](how-to-consume-web-service.md)című témakörben talál.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A Azure Machine Learning modellek monitorozása a Application Insights](how-to-enable-app-insights.md)
 * [Adatok gyűjtése a termelési modellekhez](how-to-enable-data-collection.md)
-* [Modellek üzembe helyezésének módja és helye](how-to-deploy-and-where.md)
 * [Ügyfél létrehozása központilag telepített modellhez](how-to-consume-web-service.md)

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 07/05/2020
-ms.openlocfilehash: 3835046e50180e1d1091f5083f276c7c1ad56612
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: eec056cbe246f129fb78e15faa0027846c271181
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87117362"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87382950"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Monitor ügyfél által felügyelt kulcs 
 
@@ -187,8 +187,8 @@ Hozzon létre vagy használjon olyan Azure Key Vault, amelyet már létre kell h
 
 Ezek a beállítások a CLI-vel és a PowerShell-lel is frissíthetők:
 
-- [Helyreállítható törlés](../../key-vault/general/overview-soft-delete.md)
-- A [védelem kiürítése](../../key-vault/general/overview-soft-delete.md#purge-protection) a titkos vagy a tár kényszerített törlésével, a törlést követően is
+- [Helyreállítható törlés](../../key-vault/general/soft-delete-overview.md)
+- A [védelem kiürítése](../../key-vault/general/soft-delete-overview.md#purge-protection) a titkos vagy a tár kényszerített törlésével, a törlést követően is
 
 ### <a name="create-cluster-resource"></a>*Fürterőforrás* létrehozása
 
@@ -706,8 +706,8 @@ A konfiguráció után a rendszer minden új riasztási lekérdezést ment a tá
 - A CMK titkosítás a CMK-konfiguráció után az újonnan betöltött adatmennyiségre vonatkozik. A CMK-konfiguráció előtt betöltött adatmennyiség továbbra is titkosítva marad a Microsoft-kulccsal. A CMK konfigurálása zökkenőmentesen és után is lekérdezheti az adatfeldolgozást.
 
 - A Azure Key Vault helyreállítható kell konfigurálni. Ezek a tulajdonságok alapértelmezés szerint nincsenek engedélyezve, és a CLI vagy a PowerShell használatával kell konfigurálni:<br>
-  - [Helyreállítható törlés](../../key-vault/general/overview-soft-delete.md)
-  - A [védelem kiürítését](../../key-vault/general/overview-soft-delete.md#purge-protection) be kell kapcsolni ahhoz, hogy védelmet biztosítson a titkos/tár kényszerített törlése után is.
+  - [Helyreállítható törlés](../../key-vault/general/soft-delete-overview.md)
+  - A [védelem kiürítését](../../key-vault/general/soft-delete-overview.md#purge-protection) be kell kapcsolni ahhoz, hogy védelmet biztosítson a titkos/tár kényszerített törlése után is.
 
 - A *fürterőforrás* más erőforráscsoporthoz vagy előfizetéshez való áthelyezése jelenleg nem támogatott.
 
@@ -763,7 +763,7 @@ A konfiguráció után a rendszer minden új riasztási lekérdezést ment a tá
   -  400 – a fürt törlési állapotban van. Az aszinkron művelet folyamatban van. A fürtnek a frissítési művelet végrehajtása előtt el kell végeznie a műveletet.
   -  400 – a KeyVaultProperties nem üres, de helytelen formátumú. Lásd a [kulcs-azonosító frissítését](#update-cluster-resource-with-key-identifier-details).
   -  400 – nem sikerült érvényesíteni a kulcsot a Key Vaultban. Oka lehet az engedélyek hiánya, vagy ha a kulcs nem létezik. Ellenőrizze, hogy a [kulcs-és hozzáférési szabályzatot](#grant-key-vault-permissions) Key Vaultban állította-e be.
-  -  400 – a kulcs nem helyreállítható. A Key Vaultt a Soft-delete és a Purge-Protection értékre kell beállítani. Lásd: [Key Vault dokumentáció](../../key-vault/general/overview-soft-delete.md)
+  -  400 – a kulcs nem helyreállítható. A Key Vaultt a Soft-delete és a Purge-Protection értékre kell beállítani. Lásd: [Key Vault dokumentáció](../../key-vault/general/soft-delete-overview.md)
   -  400 – a művelet most nem hajtható végre. Várjon, amíg az aszinkron művelet befejeződik, és próbálkozzon újra.
   -  400 – a fürt törlési állapotban van. Várjon, amíg az aszinkron művelet befejeződik, és próbálkozzon újra.
 

@@ -1,21 +1,21 @@
 ---
 title: Tároló létrehozása az Azure Cosmos DB-ben
-description: Megtudhatja, hogyan hozhat létre tárolót Azure Cosmos DBban Azure Portal, .net, Java, Python, Node.js és más SDK-k használatával.
+description: Megtudhatja, hogyan hozhat létre tárolót Azure Cosmos DBban Azure Portal, .NET, Java, Python, Node.js és más SDK-k használatával.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 04/24/2020
+ms.date: 07/29/2020
 ms.author: mjbrown
-ms.openlocfilehash: 22c51497a9c9a331f1337134fbaf7c781b9c8ba7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 761789b36e85b16f0b4482cef12645e673c73be7
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85390890"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87429703"
 ---
 # <a name="create-an-azure-cosmos-container"></a>Azure Cosmos-tároló létrehozása
 
-Ez a cikk az Azure Cosmos-tárolók (gyűjtemény, tábla vagy gráf) létrehozásának különböző módszereit ismerteti. Ehhez használhatja a Azure Portal, az Azure CLI vagy a támogatott SDK-kat is. Ez a cikk bemutatja, hogyan hozhat létre tárolót, hogyan adhatja meg a partíciós kulcsot, és hogyan lehet kiépíteni az átviteli sebességet.
+Ez a cikk bemutatja, hogyan hozhat létre egy Azure Cosmos-tárolót (gyűjtemény, tábla vagy gráf) a Azure Portal, az Azure CLI, a PowerShell vagy a támogatott SDK-k használatával. Ez a cikk bemutatja, hogyan hozhat létre tárolót, hogyan adhatja meg a partíciós kulcsot, és hogyan lehet kiépíteni az átviteli sebességet.
 
 > [!NOTE]
 > Tárolók létrehozásakor ügyeljen arra, hogy ne hozzon létre két tárolót ugyanazzal a névvel, de a különböző burkolattal. Ennek az az oka, hogy az Azure-platform egyes részei nem megkülönböztetik a kis-és nagybetűket, így az ilyen nevű tárolók telemetria és műveleteinek összekeveredését és ütközését okozhatják.
@@ -111,7 +111,7 @@ Ez a cikk az Azure Cosmos-tárolók (gyűjtemény, tábla vagy gráf) létrehoz�
 
 Az alábbi hivatkozások bemutatják, hogyan hozhat létre Azure Cosmos DB tároló-erőforrásokat az Azure CLI használatával.
 
-Az összes Azure Cosmos DB API-val kapcsolatos összes Azure CLI-minta listáját lásd: [SQL API](cli-samples.md), [CASSANDRA API](cli-samples-cassandra.md), [MongoDB api](cli-samples-mongodb.md), [Gremlin API](cli-samples-gremlin.md)és [Table API](cli-samples-table.md)
+Az összes Azure Cosmos DB API-val kapcsolatos összes Azure CLI-minta listáját lásd: [Azure CLI-minták a Azure Cosmos DBhoz](cli-samples.md).
 
 * [Tároló létrehozása az Azure CLI-vel](manage-with-cli.md#create-a-container)
 * [Azure Cosmos DB gyűjtemény létrehozása a MongoDB API-hoz az Azure CLI-vel](./scripts/cli/mongodb/create.md)
@@ -123,7 +123,7 @@ Az összes Azure Cosmos DB API-val kapcsolatos összes Azure CLI-minta listájá
 
 Az alábbi hivatkozások bemutatják, hogyan hozhat létre Azure Cosmos DB tároló-erőforrásokat a PowerShell használatával.
 
-Az összes Azure Cosmos DB API-val kapcsolatos összes Azure CLI-minta listáját lásd: [SQL API](powershell-samples-sql.md), [CASSANDRA API](powershell-samples-cassandra.md), [MongoDB api](powershell-samples-mongodb.md), [Gremlin API](powershell-samples-gremlin.md)és [Table API](powershell-samples-table.md)
+Az összes Azure Cosmos DB API-val kapcsolatos PowerShell-minta listázásához tekintse meg az [SQL API](powershell-samples-sql.md), a [Cassandra API](powershell-samples-cassandra.md), a [MONGODB API](powershell-samples-mongodb.md), a [Gremlin API](powershell-samples-gremlin.md)és a [Table API](powershell-samples-table.md)
 
 * [Tároló létrehozása a PowerShell-lel](manage-with-powershell.md#create-container)
 * [Azure Cosmos DB gyűjtemény létrehozása a MongoDB API-hoz a PowerShell-lel](./scripts/powershell/mongodb/ps-mongodb-create.md)
@@ -169,7 +169,7 @@ session.Execute(CREATE TABLE myKeySpace.myTable(
     lastName text) WITH cosmosdb_provisioned_throughput=1000);
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Particionálás az Azure Cosmos DB-ben](partitioning-overview.md)
 * [Az Azure Cosmos DB kérelemegységei](request-units.md)

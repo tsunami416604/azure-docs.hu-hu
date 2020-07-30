@@ -86,7 +86,7 @@ Ezzel a funkcióval egyszerűen azonosíthatók azok az erőforrások, amelyek a
 
 Az [automatikus leállítási szabályzat](devtest-lab-set-lab-policy.md?#set-auto-shutdown-policy) segít csökkenteni a költségeket azáltal, hogy a nap adott időpontjában leállítja a labor virtuális gépeket. A labor felhasználó azonban letilthatja a leállítási szabályzatot, ami növeli a virtuális gép futtatásának költségeit. Kiválaszthat egy virtuális gépet a táblázatban, hogy megtudja, van-e kiválasztva az automatikus leállítási házirendből. Ebben az esetben a virtuális gép tulajdonosával megtudhatja, miért választotta ki a virtuális gépet a szabályzatból.
  
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A következő néhány dolgot érdemes kipróbálni:
 
 * [Tesztkörnyezet-házirendek meghatározása](devtest-lab-set-lab-policy.md) – útmutató a tesztkörnyezet és a virtuális gépek használatának szabályozásához használt különböző szabályzatok beállításához. 

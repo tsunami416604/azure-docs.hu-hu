@@ -6,12 +6,12 @@ ms.author: lcozzens
 ms.date: 02/18/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: bcafdbdfd07456a01d956b622d9c5e6ed4b0b6f2
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 8942c93b7346613b8cfdc97d9afe09f1c473fb10
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371855"
+ms.locfileid: "87384871"
 ---
 # <a name="use-customer-managed-keys-to-encrypt-your-app-configuration-data"></a>Az alkalmazás konfigurációs adatai titkosítása az ügyfél által felügyelt kulcsok használatával
 Az Azure-alkalmazás konfigurációja [titkosítja a bizalmas adatokat a nyugalmi](../security/fundamentals/encryption-atrest.md)állapotban. Az ügyfél által felügyelt kulcsok használata fokozott adatvédelmet biztosít, mivel lehetővé teszi a titkosítási kulcsok kezelését.  A felügyelt kulcs titkosításának használatakor az alkalmazás konfigurációjában található összes bizalmas információ titkosítása egy felhasználó által megadott Azure Key Vault kulccsal történik.  Ez lehetővé teszi a titkosítási kulcs igény szerinti elforgatását.  Emellett lehetővé teszi az Azure-alkalmazások konfigurációjának bizalmas adatokhoz való hozzáférésének visszavonását azáltal, hogy visszavonja az alkalmazás konfigurációs példányának kulcshoz való hozzáférését.
@@ -20,7 +20,7 @@ Az Azure-alkalmazás konfigurációja [titkosítja a bizalmas adatokat a nyugalm
 Az Azure-alkalmazás konfigurációja a Microsoft által biztosított 256 bites AES-titkosítási kulccsal titkosítja a bizalmas adatokat a nyugalmi állapotban. Minden alkalmazás-konfigurációs példány saját titkosítási kulccsal rendelkezik, amelyet a szolgáltatás kezel, és a bizalmas adatok titkosítására szolgál. A bizalmas adatok tartalmazzák a kulcs-érték párokban található értékeket.  Ha az ügyfél által felügyelt kulcs funkció engedélyezve van, az alkalmazás konfigurációja egy felügyelt identitást használ, amelyet az alkalmazás konfigurációs példányához rendeltek, hogy a hitelesítés a Azure Active Directory használatával történjen. A felügyelt identitás ezután meghívja a Azure Key Vault és becsomagolja az alkalmazás konfigurációs példányának titkosítási kulcsát. Ekkor a rendszer tárolja a burkolt titkosítási kulcsot, és a kicsomagolt titkosítási kulcsot egy órára gyorsítótárazza az alkalmazás konfigurációjában. Az alkalmazás konfigurációja óránként frissíti az alkalmazás-konfigurációs példány titkosítási kulcsának nem burkolt verzióját. Ez a szokásos üzemi körülmények között biztosítja a rendelkezésre állást. 
 
 >[!IMPORTANT]
-> Ha az alkalmazás-konfigurációs példányhoz rendelt identitás már nem jogosult a példány titkosítási kulcsának kicsomagolására, vagy ha a felügyelt kulcs véglegesen törlődik, akkor többé nem lehet visszafejteni az alkalmazás konfigurációs példányában tárolt bizalmas adatokat. Azure Key Vault [Soft delete](../key-vault/general/overview-soft-delete.md) függvényének használata csökkenti a titkosítási kulcs véletlen törlésének esélyét.
+> Ha az alkalmazás-konfigurációs példányhoz rendelt identitás már nem jogosult a példány titkosítási kulcsának kicsomagolására, vagy ha a felügyelt kulcs véglegesen törlődik, akkor többé nem lehet visszafejteni az alkalmazás konfigurációs példányában tárolt bizalmas adatokat. Azure Key Vault [Soft delete](../key-vault/general/soft-delete-overview.md) függvényének használata csökkenti a titkosítási kulcs véletlen törlésének esélyét.
 
 Ha a felhasználók engedélyezik az ügyfél által felügyelt kulcs funkcióját az Azure-alkalmazás konfigurációs példányán, akkor a szolgáltatás képes a bizalmas adatokhoz való hozzáférésre. A felügyelt kulcs a gyökér titkosítási kulcsaként szolgál. A felhasználó visszavonhatja az alkalmazás konfigurációs példányának hozzáférését a felügyelt kulcshoz a Key Vault hozzáférési házirendjének módosításával. A hozzáférés visszavonása után az alkalmazás konfigurációja elvész a felhasználói adat egy órán belüli visszafejtésének lehetősége. Ezen a ponton az alkalmazás konfigurációs példánya tiltja az összes hozzáférési kísérletet. Ez a helyzet helyreállítható azáltal, hogy ismét megadja a szolgáltatás hozzáférését a felügyelt kulcshoz.  Egy órán belül az alkalmazás konfigurációja visszafejtheti a felhasználói adatait, és normál körülmények között működhet.
 

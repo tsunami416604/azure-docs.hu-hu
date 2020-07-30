@@ -4,14 +4,14 @@ description: Az Azure CLI használatával kezelheti Azure Cosmos DB-fiókját, a
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 06/03/2020
+ms.date: 07/29/2020
 ms.author: mjbrown
-ms.openlocfilehash: 97b5118f74cbd098beea804c312ed08f1a152873
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0ae29039702a6f73a33f73afc366532077aa4b71
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87067178"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432828"
 ---
 # <a name="manage-azure-cosmos-resources-using-azure-cli"></a>Azure Cosmos-erőforrások kezelése az Azure CLI-vel
 
@@ -19,7 +19,7 @@ Az alábbi útmutató az Azure Cosmos DB-fiókok, -adatbázisok és -tárolók f
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez a témakörhöz az Azure CLI 2.6.0 vagy újabb verziójának kell futnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
+Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez a témakörhöz az Azure CLI 2.9.1 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
 
 ## <a name="azure-cosmos-accounts"></a>Azure Cosmos-fiókok
 
@@ -308,6 +308,7 @@ az lock delete --ids $lockid
 Az alábbi részben bemutatjuk, hogyan kezelheti a Azure Cosmos DB tárolót, beleértve a következőket:
 
 * [Tároló létrehozása](#create-a-container)
+* [Tároló létrehozása az autoscale paranccsal](#create-a-container-with-autoscale)
 * [Hozzon létre egy olyan tárolót, amelynek ÉLETTARTAMa engedélyezve van](#create-a-container-with-ttl)
 * [Egyéni index-házirenddel rendelkező tároló létrehozása](#create-a-container-with-a-custom-index-policy)
 * [Tároló átviteli sebességének módosítása](#change-container-throughput)
@@ -330,6 +331,25 @@ az cosmosdb sql container create \
     -a $accountName -g $resourceGroupName \
     -d $databaseName -n $containerName \
     -p $partitionKey --throughput $throughput
+```
+
+### <a name="create-a-container-with-autoscale"></a>Tároló létrehozása az autoscale paranccsal
+
+Hozzon létre egy Cosmos-tárolót az alapértelmezett index-házirenddel, a partíciós kulccsal és az 4000-es Automatikus méretezéssel.
+
+```azurecli-interactive
+# Create a SQL API container
+resourceGroupName='MyResourceGroup'
+accountName='mycosmosaccount'
+databaseName='database1'
+containerName='container1'
+partitionKey='/myPartitionKey'
+maxThroughput=4000
+
+az cosmosdb sql container create \
+    -a $accountName -g $resourceGroupName \
+    -d $databaseName -n $containerName \
+    -p $partitionKey --max-throughput $maxThroughput
 ```
 
 ### <a name="create-a-container-with-ttl"></a>Hozzon létre egy tárolót az ÉLETTARTAMmal
@@ -464,7 +484,7 @@ lockid=$(az lock show --name $containerLockName \
 az lock delete --ids $lockid
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure CLI-vel kapcsolatos további információkért lásd:
 

@@ -13,12 +13,12 @@ ms.custom:
 - 'role: System Architecture'
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: b5b92de195e4ff4d5b00de041f5b021ee75f9800
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: cde9d8614883168c3fbb3ab8219cdbef6087c9d0
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87307692"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87428973"
 ---
 # <a name="what-is-azure-iot-hub"></a>Mi az Azure IoT Hub?
 
@@ -68,7 +68,7 @@ Az IoT Hub integrálható más Azure-szolgáltatásokkal teljes, végpontok köz
 
 * Az [Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/) az üzleti folyamatok automatizálására használható.
 
-* Az [Azure Machine Learninggel](https://docs.microsoft.com/azure/machine-learning/) gépi tanulást és mesterségesintelligencia-modelleket adhat a megoldáshoz.
+* Az [Azure Machine Learninggel](iot-hub-weather-forecast-machine-learning.md) gépi tanulást és mesterségesintelligencia-modelleket adhat a megoldáshoz.
 
 * Az [Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/) használatával valós idejű elemző számításokat futtathat az adatstreameken az eszközökről.
 
@@ -120,7 +120,7 @@ Minden Azure-előfizetésre alapértelmezett kvótakorlátozások vonatkoznak, a
 
 * [Az IoT Hub szabályozása és Ön](https://azure.microsoft.com/blog/iot-hub-throttling-and-you/)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A végpontok közötti IoT-megoldás kipróbálásához tekintse meg az IoT Hub rövid útmutatóit:
 

@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 04/04/2017
-ms.openlocfilehash: 9cb5b0b87b1d6adb8e0e5cda06049cfddba3d950
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 744b8e3ecf067e6f5986dde4fbf8abbe3a4c6224
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283537"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87431979"
 ---
 # <a name="create-multiple-web-service-endpoints-from-one-experiment-with-ml-studio-classic-and-powershell"></a>Több webszolgáltatás-végpont létrehozása egy kísérletből ML Studio (klasszikus) és a PowerShell használatával
 
-**a következőkre vonatkozik:** ![ nincs](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine learning](../overview-what-is-azure-ml.md) ![ Igen ](../../../includes/media/aml-applies-to-skus/yes.png) Machine learning Studio (klasszikus) 
+**a következőkre vonatkozik:** ![ igen ](../../../includes/media/aml-applies-to-skus/yes.png) Machine learning Studio (klasszikus) ![ nincs](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine learning](../compare-azure-ml-to-studio-classic.md)  
 
 Íme egy gyakori gépi tanulási probléma: több olyan modellt szeretne létrehozni, amely azonos képzési munkafolyamattal rendelkezik, és ugyanazt az algoritmust használja. Azonban azt szeretné, hogy a különböző betanítási adatkészletek bemenetként legyenek kiválasztva. Ebből a cikkből megtudhatja, hogyan végezheti el ezt a méretezést Azure Machine Learning Studio (klasszikus) használatával csupán egyetlen kísérlettel.
 

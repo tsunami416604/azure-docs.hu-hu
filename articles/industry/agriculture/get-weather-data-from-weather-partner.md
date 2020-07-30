@@ -5,16 +5,20 @@ author: sunasing
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: sunasing
-ms.openlocfilehash: e6678eb2e738c206bbe67151361b594679d97b35
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 35acf4e9bd338a0e67b046a59d8884df0626e516
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281021"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87429267"
 ---
 # <a name="get-weather-data-from-weather-partners"></a>Időjárási adatok beolvasása a partnerektől
 
-Az Azure FarmBeats egy Docker-alapú összekötő-keretrendszer segítségével teszi lehetővé az időjárási adatok beküldését az időjárási adatszolgáltatókból. Ezen keretrendszer használatával az időjárási adatszolgáltatók olyan Docker-t valósítanak meg, amely integrálható a FarmBeats. Jelenleg csak a [DTN](https://www.dtn.com/dtn-content-integration/) időjárási adatszolgáltatója támogatott.
+Az Azure FarmBeats egy Docker-alapú összekötő-keretrendszer segítségével teszi lehetővé az időjárási adatok beküldését az időjárási adatszolgáltatókból. Ezen keretrendszer használatával az időjárási adatszolgáltatók olyan Docker-t valósítanak meg, amely integrálható a FarmBeats. Jelenleg a következő időjárási adatszolgáltató támogatott:
+
+  ![FarmBeats-partnerek](./media/get-sensor-data-from-sensor-partner/dtn-logo.png)
+  
+   [DTN](https://www.dtn.com/dtn-content-integration/)
 
 Az időjárási információk használhatók a gyakorlatban hasznosítható elemzések létrehozásához és AI-vagy ML-modellek FarmBeats való létrehozásához.
 
@@ -225,6 +229,6 @@ A feladatokkal kapcsolatos hibák elhárításához [Keresse meg a feladatok nap
 |  name   |   A partner kívánt neve a FarmBeats-rendszeren.   |
 |  leírás |  Leírás.   |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy lekérdezte az érzékelő adatait az Azure FarmBeats-példányról, Ismerje meg, hogyan [hozhatja](generate-maps-in-azure-farmbeats.md#generate-maps) ki a térképeket a farmokhoz.

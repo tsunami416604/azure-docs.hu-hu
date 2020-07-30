@@ -8,16 +8,16 @@ ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.date: 10/27/2016
-ms.openlocfilehash: 47f72e1844f6fe34f129d40130a3dba0383dd094
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 1f577c43b6602a78dd585d1b998110c708aa54b0
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326290"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432104"
 ---
 # <a name="application-lifecycle-management-in-azure-machine-learning-studio-classic"></a>Az alkalmazások életciklusának kezelése Azure Machine Learning Studio (klasszikus)
 
-**a következőkre vonatkozik:** ![ nincs](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine learning](../overview-what-is-azure-ml.md) ![ Igen ](../../../includes/media/aml-applies-to-skus/yes.png) Machine learning Studio (klasszikus) 
+**a következőkre vonatkozik:** ![ igen ](../../../includes/media/aml-applies-to-skus/yes.png) Machine learning Studio (klasszikus) ![ nincs](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine learning](../compare-azure-ml-to-studio-classic.md)  
 
 
 A Azure Machine Learning Studio (klasszikus) az Azure Cloud platformon üzemelő gépi tanulási kísérletek fejlesztésére szolgáló eszköz. Olyan, mint a Visual Studio IDE és a skálázható felhőalapú szolgáltatás egyetlen platformba egyesítve. A standard szintű alkalmazás-életciklus-kezelési (ALM) eljárásokat beépítheti a különböző eszközökről az automatikus végrehajtásra és üzembe helyezésre Azure Machine Learning Studio (klasszikus). Ez a cikk néhány lehetőséget és megközelítést ismertet.
@@ -96,7 +96,7 @@ A ALM fontos aspektusa, hogy automatizálja az alkalmazás végrehajtási és ü
 9. [Webszolgáltatás üzembe helyezése](https://github.com/hning86/azuremlps#new-amlwebservice) a prediktív kísérletből.
 10. Tesztelje a webszolgáltatás [erőforrásrekordok](https://github.com/hning86/azuremlps#invoke-amlwebservicerrsendpoint) vagy [BES](https://github.com/hning86/azuremlps#invoke-amlwebservicebesendpoint) végpontját.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Töltse le a [Azure Machine learning Studio (klasszikus) PowerShell](https://aka.ms/amlps) -modult, és kezdje meg a Alm-feladatok automatizálását.
 * Megtudhatja, hogyan [hozhat létre és kezelhet nagy mennyiségű ml-modellt egyetlen kísérlettel](create-models-and-endpoints-with-powershell.md) a PowerShell és az API átképzése segítségével.
 * További információ a [Azure Machine learning webszolgáltatások üzembe helyezéséről](deploy-a-machine-learning-web-service.md).

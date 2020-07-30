@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/13/2020
-ms.openlocfilehash: b7f58c13181c9ec966d548096ffc2756d5d333e3
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: ac083f842bf10adcbb23e3e1c1157383e11f3af9
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87124890"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432419"
 ---
 # <a name="monitor-and-alert-data-factory-by-using-azure-monitor"></a>Data Factory figyelése és riasztása Azure Monitor használatával
 
@@ -82,7 +82,7 @@ Hozzon létre vagy adjon hozzá diagnosztikai beállításokat az adatai-előál
     > [!NOTE]
     > Mivel az Azure-tábla nem rendelkezhet több mint 500 oszloppal **, javasoljuk, hogy az** _erőforrás-specifikus módot_válassza. További információ: [log Analytics ismert korlátozások](../azure-monitor/platform/resource-logs-collect-workspace.md#column-limit-in-azurediagnostics).
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 Néhány pillanat elteltével az új beállítás megjelenik az adat-előállító beállításainak listájában. A rendszer a diagnosztikai naplókat az adott munkaterületre továbbítja, amint új esemény-adatforrások jönnek létre. Akár 15 percig is eltarthat egy esemény kibocsátása, és amikor megjelenik a Log Analyticsban.
 
@@ -111,8 +111,8 @@ Ez a megoldás a Data Factory általános állapotának összegzését jeleníti
 Ennek a megoldásnak a telepítése a kiválasztott Log Analytics munkaterület munkafüzetek részén található nézetek alapértelmezett nézeteit hozza létre. Ennek eredményeképpen a következő metrikák válnak elérhetővé:
 
 * ADF-futtatások – 1) a folyamat futása Data Factory
-* ADF-futtatások – 2) az adattényező által futtatott tevékenységek
-* ADF-futtatások – 3) a triggerek az adattényező szerint futnak
+* ADF-futtatások – 2) a tevékenységek Data Factory
+* ADF-futtatások – 3) a triggerek Data Factory
 * ADF-hibák – 1) az első 10 folyamat hibája Data Factory
 * ADF-hibák – 2) az első 10 tevékenység fut Data Factory
 * ADF-hibák – 3) az első 10 kiváltó hibát Data Factory
@@ -214,7 +214,7 @@ Diagnosztikai beállítások használatával konfigurálhatja a nem számítási
 
 #### <a name="create-or-update-a-diagnostics-setting-in-the-monitor-rest-api"></a>Diagnosztikai beállítás létrehozása vagy frissítése a figyelő REST API
 
-##### <a name="request"></a>Kérelem
+##### <a name="request"></a>Kérés
 
 ```
 PUT
@@ -278,7 +278,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 | **naplók**| Összetett típus| Az erőforrástípus diagnosztikai-naplózási kategóriájának neve. Az erőforráshoz tartozó diagnosztikai naplók listájának beszerzéséhez hajtsa végre a diagnosztikai beállítások beolvasása műveletet. |
 | **Kategória**| Sztring| Naplózási kategóriák és adatmegőrzési szabályzatok tömbje. |
 | **timeGrain** | Sztring | A metrikák részletessége ISO 8601 időtartam formátumban rögzítve. A tulajdonság értékének a értéket kell tartalmaznia `PT1M` , amely egy percet ad meg. |
-| **engedélyezve**| Logikai érték | Meghatározza, hogy engedélyezve van-e a metrika vagy a napló kategóriájának gyűjteménye ehhez az erőforráshoz. |
+| **engedélyezve**| Logikai | Meghatározza, hogy engedélyezve van-e a metrika vagy a napló kategóriájának gyűjteménye ehhez az erőforráshoz. |
 | **retentionPolicy**| Összetett típus| A metrika vagy a napló kategóriájának adatmegőrzési szabályát ismerteti. Ez a tulajdonság csak a Storage-fiókok esetében használatos. |
 |**nap**| Int| A metrikák vagy naplók megtartására szolgáló napok száma. Ha a tulajdonság értéke 0, a naplók örökre megmaradnak. Ez a tulajdonság csak a Storage-fiókok esetében használatos. |
 
@@ -334,7 +334,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 
 #### <a name="get-information-about-diagnostics-settings-in-the-monitor-rest-api"></a>A figyelő diagnosztikai beállításaival kapcsolatos információk beolvasása REST API
 
-##### <a name="request"></a>Kérelem
+##### <a name="request"></a>Kérés
 
 ```
 GET
@@ -907,5 +907,5 @@ Ha a SSIS-csomag végrehajtási naplóit kérdezi le a naplók Analytics szolgá
 
 ![SSIS-csomag-végrehajtási naplók lekérdezése Log Analytics](media/data-factory-monitor-oms/log-analytics-query2.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Folyamatok programozott figyelése és kezelése](monitor-programmatically.md)

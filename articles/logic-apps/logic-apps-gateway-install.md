@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: arthii, logicappspm
 ms.topic: article
 ms.date: 05/15/2020
-ms.openlocfilehash: 7c52e8dfa3cda40cc663b5d7f27b67c7d2ad0b60
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9e50cdb16ee6acbdb903681984dcfbd7bfe170fa
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87078646"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386129"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Helyszíni adatátjáró telepítése az Azure Logic Appshez
 
@@ -28,21 +28,20 @@ Ez a cikk bemutatja, hogyan töltheti le, telepítheti és állíthatja be a hel
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-fiók és -előfizetés. Ha nem rendelkezik előfizetéssel rendelkező Azure-fiókkal, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/).
+* Azure-fiók és -előfizetés. Ha nem rendelkezik előfizetéssel rendelkező Azure-fiókkal, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-  * Az Azure-fióknak egyetlen [Azure Active Directory (Azure ad) bérlőhöz vagy címtárhoz](../active-directory/fundamentals/active-directory-whatis.md#terminology)kell tartoznia. Az átjáró helyi számítógépen való telepítéséhez és felügyeletéhez ugyanazt az Azure-fiókot kell használnia.
-
-  * Az átjáró telepítése során jelentkezzen be az Azure-fiókjával, amely összekapcsolja az átjáró telepítését az Azure-fiókjával, és csak ezt a fiókot. Később, az Azure Portalban ugyanazt az Azure-fiókot és Azure AD-bérlőt kell használnia, amikor olyan Azure Gateway-erőforrást hoz létre, amely regisztrálja és állítja be az átjáró telepítését. Azure Logic Apps a helyszíni eseményindítók és műveletek a helyszíni adatforrásokhoz való kapcsolódáshoz az átjáró-erőforrást használják.
+  * Az Azure-fióknak munkahelyi vagy iskolai fióknak kell lennie, ami így néz ki `username@contoso.com` . Nem használhat Azure B2B-(vendég-) fiókokat vagy személyes Microsoft-fiókokat, például @hotmail.com vagy @outlook.com .
 
     > [!NOTE]
-    > Egy átjárót és egy Azure Gateway-erőforrást is összekapcsolhat egymással. Ugyanahhoz az átjáróhoz tartozó telepítést nem lehet több Azure-fiókhoz vagy Azure Gateway-erőforráshoz kapcsolni. Az Azure-fiókok azonban több átjáró-telepítéshez és Azure Gateway-erőforrásokhoz is csatolhatók. Helyszíni trigger vagy művelet esetén választhat a különböző Azure-előfizetések közül, majd kiválaszthat egy társított átjáró-erőforrást.
+    > Ha regisztrált az Office 365-ajánlatra, és nem adta meg a munkahelyi e-mail-címét, előfordulhat, hogy a címe hasonlít `username@domain.onmicrosoft.com` . A fiókját egy Azure AD-bérlő tárolja. A legtöbb esetben az Azure-fiókjához tartozó egyszerű felhasználónév (UPN) megegyezik az e-mail-címével.
 
-  * Be kell jelentkeznie munkahelyi fiókkal vagy iskolai fiókkal, más néven *szervezeti* fiókkal, amely a következőképpen néz ki: `username@contoso.com` . Nem használhat Azure B2B-(vendég-) fiókokat vagy személyes Microsoft-fiókokat, például @hotmail.com vagy @outlook.com .
+    Ha egy Microsoft-fiókhoz társított [Visual Studio standard-előfizetést](https://visualstudio.microsoft.com/vs/pricing/) szeretne használni, először [hozzon létre egy Azure ad-bérlőt](../active-directory/develop/quickstart-create-new-tenant.md) , vagy használja az alapértelmezett könyvtárat. Adjon hozzá egy jelszót tartalmazó felhasználót a címtárhoz, majd adja meg a felhasználónak az Azure-előfizetését. Ezt a felhasználónevet és jelszót használva az átjáró telepítése közben is bejelentkezhet.
 
-    > [!TIP]
-    > Ha regisztrált az Office 365-ajánlatra, és nem adta meg a munkahelyi e-mail-címét, előfordulhat, hogy a címe hasonlít `username@domain.onmicrosoft.com` . A fiókját egy Azure Active Directory (Azure AD) bérlőn belül tárolja a rendszer. A legtöbb esetben az Azure AD-fiókhoz tartozó egyszerű felhasználónév (UPN) megegyezik az e-mail-címével.
-    >
-    > Ha egy Microsoft-fiókhoz csatolt [Visual Studio standard-előfizetést](https://visualstudio.microsoft.com/vs/pricing/) szeretne használni, először [hozzon létre egy bérlőt az Azure ad-ben](../active-directory/develop/quickstart-create-new-tenant.md) , vagy használja az alapértelmezett könyvtárat. Adjon hozzá egy jelszót tartalmazó felhasználót a címtárhoz, majd adja meg a felhasználónak az Azure-előfizetését. Ezt a felhasználónevet és jelszót használva az átjáró telepítése közben is bejelentkezhet.
+  * Az Azure-fióknak csak egyetlen [Azure Active Directory (Azure ad) bérlőhöz vagy címtárhoz](../active-directory/fundamentals/active-directory-whatis.md#terminology)kell tartoznia. Ugyanazt az Azure-fiókot kell használnia az átjáró telepítéséhez és felügyeletéhez a helyi számítógépen.
+
+  * Az átjáró telepítésekor jelentkezzen be az Azure-fiókjával, amely összekapcsolja az átjáró telepítését az Azure-fiókjával és csak az adott fiókkal. Ugyanahhoz az átjáróhoz tartozó telepítést nem lehet több Azure-fiókhoz vagy Azure AD-bérlőhöz kapcsolni.
+
+  * A Azure Portal később ugyanazt az Azure-fiókot kell használnia ahhoz, hogy létrehozzon egy Azure Gateway-erőforrást, amely az átjáró telepítésére hivatkozik. Egy átjárót és egy Azure Gateway-erőforrást is összekapcsolhat egymással. Azure-fiókja azonban az Azure Gateway-erőforrásokhoz társított különböző átjáró-példányokhoz is hivatkozhat. A Logic apps ezt az átjáró-erőforrást az eseményindítókban és a helyszíni adatforrásokhoz hozzáférő műveletekben is használhatja.
 
 * A helyi számítógépekre vonatkozó követelmények:
 
@@ -265,7 +264,7 @@ Az alábbi módokon lehet megfelelni a helyszíni Active Directory-fiókoknak az
 * [A helyszíni adatátjáró hibaelhárítása](/data-integration/gateway/service-gateway-tshoot)
 * [Átjáró teljesítményének monitorozása és optimalizálása](/data-integration/gateway/service-gateway-performance)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Kapcsolódás a helyszíni adatokhoz a Logic appsből](../logic-apps/logic-apps-gateway-connection.md)
 * [Vállalati integrációs funkciók](../logic-apps/logic-apps-enterprise-integration-overview.md)

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/04/2020
 ms.author: allensu
-ms.openlocfilehash: 7aa0889ab95cdac37f9fe0735c7ad58569621059
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: bf9e403fb8691f378558ef5f0403d132214ed187
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86205403"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421773"
 ---
 # <a name="azure-load-balancer-components"></a>Összetevők Azure Load Balancer
 
@@ -75,7 +75,7 @@ Load Balancer szabály segítségével határozható meg, hogy a rendszer hogyan
 Használjon például egy terheléselosztási szabályt az 80-es porthoz, hogy a felületi IP-cím forgalmát a háttérbeli példányok 80-es portjára irányítsa.
 
 <p align="center">
-  <img src="./media/load-balancer-components/lbrules.svg" width="512" title="Terheléselosztási szabályok">
+  <img src="./media/load-balancer-components/lbrules.svg" alt= "Figure depicts how Azure Load Balancer directs frontend port 80 to three instances of backend port 80." width="512" title="Terheléselosztási szabályok">
 </p>
 
 *Ábra: terheléselosztási szabályok*
@@ -99,7 +99,7 @@ A terheléselosztási döntés egy folyamaton alapul. Ez a művelet a következ�
 A HA-portok terheléselosztási szabályai segítenek a kritikus forgatókönyvek, például a magas rendelkezésre állás és a virtuális hálózatokon belüli hálózati virtuális berendezések (NVA-EK) méretezése terén. A funkció segíthet, ha nagy számú portot kell terheléselosztással elválasztani.
 
 <p align="center">
-  <img src="./media/load-balancer-components/harules.svg" width="512" title="HA portok szabályai">
+  <img src="./media/load-balancer-components/harules.svg" alt="Figure depicts how Azure Load Balancer directs all frontend ports to three instances of all backend ports" width="512" title="HA portok szabályai">
 </p>
 
 *Ábra: HA portok szabályai*
@@ -113,7 +113,7 @@ A bejövő NAT-szabály továbbítja a bejövő forgalmat az IP-cím és a port 
 Ha például az RDP protokoll (RDP) vagy a Secure Shell (SSH) munkameneteket szeretné elkülöníteni a háttérbeli készletben lévő virtuálisgép-példányokat. Több belső végpont is rendelhető ugyanahhoz a előtér-IP-címhez tartozó portokhoz. Az előtérbeli IP-címek használatával távolról felügyelheti a virtuális gépeket egy további Jump Box nélkül.
 
 <p align="center">
-  <img src="./media/load-balancer-components/inboundnatrules.svg" width="512" title="Bejövő NAT-szabályok">
+  <img src="./media/load-balancer-components/inboundnatrules.svg" alt="Figure depicts how Azure Load Balancer directs frontend ports 3389, 443, and 80 to backend ports with the same values on separate servers." width="512" title="Bejövő NAT-szabályok">
 </p>
 
 *Ábra: bejövő NAT-szabályok*
@@ -128,7 +128,7 @@ További információ a [kimenő kapcsolatokról és a szabályokról](load-bala
 
 Az alapszintű Load Balancer nem támogatja a kimenő szabályokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A Load Balancer használatának első lépéseiért tekintse meg [a nyilvános standard Load Balancer létrehozását](quickstart-load-balancer-standard-public-portal.md) ismertető témakört.
 - További információ a [Azure Load Balancerról](load-balancer-overview.md).

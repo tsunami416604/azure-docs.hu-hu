@@ -5,13 +5,13 @@ author: suhuruli
 ms.topic: tutorial
 ms.date: 09/01/2018
 ms.author: suhuruli
-ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 0e1723854d18172f28a43aacb86ab9c29656cf0d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java, devx-track-javascript
+ms.openlocfilehash: a4b5f98a4cb8a437a235f956a556745837f5d564
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322244"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432368"
 ---
 # <a name="tutorial-create-an-application-with-a-java-api-front-end-service-and-a-stateful-back-end-service-on-azure-service-fabric"></a>Oktatóanyag: alkalmazás létrehozása Java API előtér-szolgáltatással és állapot-visszaállítási szolgáltatással az Azure Service Fabric
 
@@ -904,7 +904,7 @@ Ezen a ponton az alkalmazás készen áll egy helyi Service Fabric-fürtön val�
 5. Az **alkalmazás közzététele** ablakban válassza a legördülő menüből a **Local.js** lehetőséget, majd válassza a **Közzététel**lehetőséget.
 6. Nyissa meg a webböngészőjét, és nyissa meg a http: \/ /localhost: 8080 webhelyet, és tekintse meg a futó alkalmazást a helyi Service Fabric fürtön. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az oktatóanyag jelen részében megismerkedhetett a következőkkel:
 

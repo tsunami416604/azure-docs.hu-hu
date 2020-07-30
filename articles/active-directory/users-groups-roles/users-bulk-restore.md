@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2800119f1a88172ea7c329fc53359bf1565a0705
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4fe5cacfec6ee85a5d61204ffce38c856b0d1baf
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84731273"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423337"
 ---
 # <a name="bulk-restore-deleted-users-in-azure-active-directory"></a>Törölt felhasználók tömeges visszaállítása Azure Active Directory
 
@@ -68,7 +68,7 @@ Ha hibák léptek fel, letöltheti és megtekintheti az eredményeket tartalmaz�
 
 Az összes függőben lévő tömeges kérelem állapotát a **tömeges művelet eredményei** lapon tekintheti meg.
 
-[![](media/users-bulk-restore/bulk-center.png "Check status in the Bulk Operations Results page")](media/users-bulk-restore/bulk-center.png#lightbox)
+[![A tömeges műveletek eredményei lapon található állapot keresése.](media/users-bulk-restore/bulk-center.png)](media/users-bulk-restore/bulk-center.png#lightbox)
 
 Ezután ellenőrizze, hogy a visszaállított felhasználók szerepelnek-e az Azure AD-szervezetben vagy a Azure Portal vagy a PowerShell használatával.
 
@@ -81,7 +81,7 @@ Ezután ellenőrizze, hogy a visszaállított felhasználók szerepelnek-e az Az
 
 ### <a name="view-users-with-powershell"></a>Felhasználók megtekintése a PowerShell-lel
 
-Futtassa az alábbi parancsot:
+Futtassa a következő parancsot:
 
 ``` PowerShell
 Get-AzureADUser -Filter "UserType eq 'Member'"
@@ -89,7 +89,7 @@ Get-AzureADUser -Filter "UserType eq 'Member'"
 
 Ekkor megjelenik a visszaállított felhasználók listája.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Felhasználók tömeges importálása](users-bulk-add.md)
 - [Felhasználók tömeges törlése](users-bulk-delete.md)

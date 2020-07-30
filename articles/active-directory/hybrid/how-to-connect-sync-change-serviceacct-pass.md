@@ -17,12 +17,12 @@ ms.date: 05/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cfb6e0608609a3940affd83a0aa235a2ef7c041c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ce4c64f0be61c2fe28a102674929333235ee29c8
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85357562"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87385092"
 ---
 # <a name="changing-the-adsync-service-account-password"></a>A ADSync-szolgáltatásfiók jelszavának módosítása
 Ha módosítja a ADSync-szolgáltatásfiók jelszavát, a szinkronizálási szolgáltatás nem fog megfelelően elindulni, amíg el nem hagyta a titkosítási kulcsot, és újra nem inicializálta a ADSync-szolgáltatásfiók jelszavát. 
@@ -52,7 +52,7 @@ Annak érdekében, hogy ne kapja meg ezeket a hibákat, kövesse a [AdSync-szolg
  
 ## <a name="abandoning-the-adsync-service-account-encryption-key"></a>A ADSync szolgáltatás fiókjának titkosítási kulcsának megszüntetése
 >[!IMPORTANT]
->Az alábbi eljárások csak Azure AD Connect build 1.1.443.0 vagy régebbi verzióra vonatkoznak.
+>Az alábbi eljárások csak Azure AD Connect build 1.1.443.0 vagy régebbi verzióra vonatkoznak. Ez nem használható a Azure AD Connect újabb verzióihoz.
 
 A titkosítási kulcs megszüntetéséhez kövesse az alábbi eljárásokat.
 
@@ -119,7 +119,7 @@ Most, hogy a szinkronizálási szolgáltatásnak van hozzáférése a titkosít�
 1. Nyissa meg a Windows Service Control Managert (START → szolgáltatások).
 2. Válassza a **Microsoft Azure ad szinkronizálás** lehetőséget, majd kattintson az Újraindítás gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 **Áttekintő témakörök**
 
 * [Azure AD Connect szinkronizálás: a szinkronizálás megismerése és testreszabása](how-to-connect-sync-whatis.md)

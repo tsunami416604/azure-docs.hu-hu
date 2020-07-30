@@ -7,12 +7,13 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
-ms.openlocfilehash: 24d5ee132444f19118613f6b1b798fd763e46e3c
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 192e939d21cae3b67cafe190e32e7202cd8bdb20
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84299314"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87429679"
 ---
 # <a name="tutorial-publish-a-gatsby-site-to-azure-static-web-apps-preview"></a>Oktatóanyag: Gatsby-webhely közzététele az Azure statikus Web Apps előzetes verziójában
 
@@ -32,7 +33,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 - Aktív előfizetéssel rendelkező Azure-fiók. Ha még nem rendelkezik ilyennel, [ingyenes fiókot hozhat létre](https://azure.microsoft.com/free/).
 - Egy GitHub-fiók. Ha még nem rendelkezik ilyennel, [ingyenes fiókot hozhat létre](https://github.com/join).
-- Telepített [Node.js](https://nodejs.org).
+- [Node.js](https://nodejs.org) telepítve.
 
 ## <a name="create-a-gatsby-app"></a>Gatsby-alkalmazás létrehozása
 
@@ -83,10 +84,10 @@ A következő lépések bemutatják, hogyan hozhat létre egy új statikus webhe
 
 ### <a name="create-the-application"></a>Az alkalmazás létrehozása
 
-1. Lépjen az [Azure Portalra](https://portal.azure.com)
-1. Kattintson **az erőforrás létrehozása** elemre.
-1. **Statikus Web Apps** keresése
-1. Kattintson a **statikus Web Apps (előzetes verzió)** elemre.
+1. Navigáljon a [Azure Portal](https://portal.azure.com)
+1. Kattintson az **Erőforrás létrehozása** gombra
+1. Keressen rá a **Static Web Apps** kifejezésre
+1. Kattintson a **Static Web Apps (előzetes verzió)** lehetőségre
 1. Kattintson a **Létrehozás** gombra
 
    :::image type="content" source="./media/publish-gatsby/create-in-portal.png" alt-text="Statikus Web Apps (előzetes verzió) létrehozása a portálon":::
@@ -113,11 +114,11 @@ A következő lépések bemutatják, hogyan hozhat létre egy új statikus webhe
 
    :::image type="content" source="./media/publish-gatsby/completed-github-info.png" alt-text="Elkészült GitHub-információ":::
 
-### <a name="build"></a>Felépítés
+### <a name="build"></a>Build
 
 Ezután adja hozzá a konfigurációs beállításokat, amelyeket a létrehozási folyamat az alkalmazás létrehozásához használ.
 
-1. Kattintson a **következőre: build >** gombra a Build konfigurációjának szerkesztéséhez
+1. Kattintson a **Tovább: Létrehozás >** gombra a létrehozási konfiguráció szerkesztéséhez
 
 1. A GitHub-műveletekben a lépés beállításainak konfigurálásához állítsa az _alkalmazás helyét_ a következőre: **/** .
 
@@ -143,7 +144,7 @@ Ezután adja hozzá a konfigurációs beállításokat, amelyeket a létrehozás
 
 [!INCLUDE [cleanup-resource](../../includes/static-web-apps-cleanup-resource.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Egyéni tartomány hozzáadása](custom-domain.md)

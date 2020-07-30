@@ -8,12 +8,13 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/29/2018
 ms.topic: conceptual
-ms.openlocfilehash: c39ca0a018bd22844cf7e5350e6d3586319aac16
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 4840363b2f6645fceca80f6dd57ece64fb2c8163
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73890849"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419920"
 ---
 # <a name="implement-the-device-model-behavior"></a>Az eszköz modellje működésének megvalósítása
 
@@ -256,7 +257,7 @@ Ha szintaktikai hiba történt, a értelmező hibát jelez, és egy `Jint.Runtim
 
 A [szolgáltatás helyi futtatása](https://github.com/Azure/device-simulation-dotnet#running-the-service-locally-eg-for-development-tasks) a githubon című cikk bemutatja, hogyan futtathatja helyileg az eszköz-szimulációs szolgáltatást. A szolgáltatás helyi futtatása megkönnyíti a szimulált eszközök hibakeresését a felhőbe való üzembe helyezés előtt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a cikk azt ismerteti, hogyan határozható meg a saját egyéni szimulált eszköz modellje. Ez a cikk a következőket mutatja be:
 

@@ -3,13 +3,13 @@ title: Rövid útmutató – Docker-tároló üzembe helyezése tároló példá
 description: Ebben a rövid útmutatóban a Docker CLI használatával gyorsan üzembe helyezhet egy elkülönített Azure Container-példányban futó tároló-webalkalmazást
 ms.topic: quickstart
 ms.date: 07/16/2020
-ms.custom: ''
-ms.openlocfilehash: 684bb3537d26b60afb0fc0796a94e1a134aa50c8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 0e4569904ef6aee304518ce012889d10dc2ecbce
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87102060"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87408084"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-the-docker-cli"></a>Gyors útmutató: tároló-példány üzembe helyezése az Azure-ban a Docker CLI használatával
 
@@ -19,7 +19,7 @@ Ebben a rövid útmutatóban natív Docker CLI-parancsokat használ a Docker-tá
 
 :::image type="content" source="media/container-instances-quickstart-docker-cli/view-application-running-in-an-azure-container-instance.png" alt-text="Az Azure Container Instances használatával üzembe helyezett alkalmazás képe a böngészőben":::
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot][azure-account].
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot][azure-account], mielőtt hozzákezd.
 
 Ebben a rövid útmutatóban telepítenie kell a Docker Desktop Edge verziójának 2.3.2.0 vagy újabb verzióját, amely Windows vagy [MacOS](https://desktop.docker.com/mac/edge/Docker.dmg) [rendszeren](https://desktop.docker.com/win/edge/Docker%20Desktop%20Installer.exe) érhető el. Vagy telepítse a [Docker ACI Integration CLI for Linux](https://docs.docker.com/engine/context/aci-integration/#install-the-docker-aci-integration-cli-on-linux) (Beta) rendszert. 
 
@@ -115,7 +115,7 @@ listening on port 80
 ```
 
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha elkészült a tárolóval, futtassa a parancsot `docker rm` az eltávolításához. Ez a parancs leállítja és törli az Azure Container-példányt.
 
@@ -124,7 +124,7 @@ docker rm hungry-kirch
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozott egy Azure Container-példányt egy nyilvános rendszerképből a Docker és az Azure közötti integráció használatával. További információ az integrációs forgatókönyvekről a [Docker dokumentációjában](https://docs.docker.com/engine/context/aci-integration/). 
 

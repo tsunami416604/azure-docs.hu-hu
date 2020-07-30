@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 04/16/2020
 ms.author: tamram
 ms.reviewer: artek
-ms.custom: mvc, tracking-python
+ms.custom: mvc, tracking-python, devx-track-javascript
 ms.subservice: blobs
-ms.openlocfilehash: f7c3ebb1a68d671f63e3239794266c8c24f5906a
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 60829e7755c31fdc5204b74c278b8eed21946c60
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84553204"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432641"
 ---
 # <a name="tutorial-build-a-highly-available-application-with-blob-storage"></a>Oktatóanyag: kiválóan elérhető alkalmazás létrehozása blob Storage-val
 
@@ -26,7 +26,7 @@ Az oktatóanyag elvégzése után egy olyan konzol-alkalmazás fog rendelkezni, 
 
 Az Azure Storage-ban a Geo-redundancia aszinkron módon replikálja a tranzakciókat egy elsődleges régióból egy olyan másodlagos régióba, amely több száz mérföld távolságra van. A replikációs folyamat garantálja a másodlagos régió adatainak végső konzisztenciáját. A konzol alkalmazás az [áramkör-megszakító](/azure/architecture/patterns/circuit-breaker) mintával határozza meg, hogy melyik végponthoz kell csatlakoznia, a végpontok közötti automatikus váltás a hibák és a helyreállítások szimulálása.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 A sorozat első részében a következőkkel ismerkedhet meg:
 
@@ -52,7 +52,7 @@ Az oktatóanyag elvégzéséhez:
 
 # <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
-* Telepítse a [Node. js](https://nodejs.org)-t.
+* Telepítse a [Node.js](https://nodejs.org).
 
 ---
 
@@ -74,10 +74,10 @@ Az alábbi lépéseket követve hozzon létre egy olvasási hozzáférésű geo-
    | ------------ | ------------------ | ------------------------------------------------- |
    | **Előfizetés** | *Saját előfizetés* | Az előfizetései részleteivel kapcsolatban lásd az [előfizetéseket](https://account.azure.com/Subscriptions) ismertető cikket. |
    | **ResourceGroup** | *myResourceGroup* | Az érvényes erőforráscsoport-nevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](/azure/architecture/best-practices/resource-naming) ismertető cikket. |
-   | **Name (Név)** | *mystorageaccount* | A Storage-fiók egyedi neve. |
+   | **Név** | *mystorageaccount* | A Storage-fiók egyedi neve. |
    | **Hely** | *USA keleti régiója* | Válassza ki a helyet. |
    | **Teljesítmény** | *Standard* | A standard szintű teljesítmény jó megoldás a példaként szolgáló forgatókönyvhöz. |
-   | **Fiók típusa** | *StorageV2* | Az általános célú v2 Storage-fiók használata ajánlott. További információ az Azure Storage-fiókok típusairól: a [Storage-fiók áttekintése](../common/storage-account-overview.md). |
+   | **Fiók altípusa** | *StorageV2* | Az általános célú v2 Storage-fiók használata ajánlott. További információ az Azure Storage-fiókok típusairól: a [Storage-fiók áttekintése](../common/storage-account-overview.md). |
    | **Replikáció**| *Olvasási hozzáférés – földrajzi zóna – redundáns tárolás (RA-GZRS)* | Az elsődleges régió a zóna redundáns, és egy másodlagos régióba replikálódik, és olvasási hozzáféréssel rendelkezik a másodlagos régióhoz. |
    | **Hozzáférési szint**| *Gyakori* | A gyakran használt adatokhoz használja a gyors elérésű szintet. |
 
@@ -103,7 +103,7 @@ git clone https://github.com/Azure-Samples/storage-python-circuit-breaker-patter
 
 # <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
-[Töltse le a minta projektet](https://github.com/Azure-Samples/storage-node-v10-ha-ra-grs) , és bontsa ki a fájlt. A [git](https://git-scm.com/) használatával is letöltheti az alkalmazás egy másolatát a fejlesztői környezetbe. A minta projekt egy alapszintű Node. js-alkalmazást tartalmaz.
+[Töltse le a minta projektet](https://github.com/Azure-Samples/storage-node-v10-ha-ra-grs) , és bontsa ki a fájlt. A [git](https://git-scm.com/) használatával is letöltheti az alkalmazás egy másolatát a fejlesztői környezetbe. A minta projekt egy alapszintű Node.js alkalmazást tartalmaz.
 
 ```bash
 git clone https://github.com/Azure-Samples/storage-node-v10-ha-ra-grs
@@ -194,7 +194,7 @@ A letöltés előtt a szolgáltatás objektum [retry_callback](https://docs.micr
 
 A minta futtatásához nyisson meg egy parancssort, lépjen a minta mappájába, majd írja be a következőt: `node index.js` .
 
-A minta létrehoz egy tárolót a blob Storage-fiókban, feltölti a **HelloWorld. png** -t a tárolóba, majd ismételten ellenőrzi, hogy a tároló és a rendszerkép replikálva lett-e a másodlagos régióba. A replikálást követően a rendszer felszólítja, hogy a letöltéshez vagy a kilépéshez adja meg a **D** vagy a **Q** értéket (majd írja be). A kimenetnek az alábbi példához hasonlóan kell kinéznie:
+A minta létrehoz egy tárolót a blob Storage-fiókban, feltölti **HelloWorld.png** a tárolóba, majd ismételten ellenőrzi, hogy a tároló és a rendszerkép replikálva lett-e a másodlagos régióba. A replikálást követően a rendszer felszólítja, hogy a letöltéshez vagy a kilépéshez adja meg a **D** vagy a **Q** értéket (majd írja be). A kimenetnek az alábbi példához hasonlóan kell kinéznie:
 
 ```
 Created container successfully: newcontainer1550799840726
@@ -317,7 +317,7 @@ def response_callback(response):
 
 ### <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
-A Node. js v10 SDK-val a visszahívási kezelők nem szükségesek. A minta Ehelyett egy újrapróbálkozási lehetőségekkel és egy másodlagos végponttal konfigurált folyamatot hoz létre. Ez lehetővé teszi, hogy az alkalmazás automatikusan átváltson a másodlagos folyamatra, ha nem sikerül elérnie az adatait az elsődleges folyamaton keresztül.
+A Node.js v10 SDK-val a visszahívási kezelők nem szükségesek. A minta Ehelyett egy újrapróbálkozási lehetőségekkel és egy másodlagos végponttal konfigurált folyamatot hoz létre. Ez lehetővé teszi, hogy az alkalmazás automatikusan átváltson a másodlagos folyamatra, ha nem sikerül elérnie az adatait az elsődleges folyamaton keresztül.
 
 ```javascript
 const accountName = process.env.AZURE_STORAGE_ACCOUNT_NAME;

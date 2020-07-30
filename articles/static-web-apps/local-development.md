@@ -7,12 +7,13 @@ ms.service: static-web-apps
 ms.topic: how-to
 ms.date: 05/08/2020
 ms.author: buhollan
-ms.openlocfilehash: a7215790a7f052227b08f51dcd7ad5dd337bb4e9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-javascript
+ms.openlocfilehash: d9988adea8e4d2dab39de64f9fd155a9d0b02cae
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84259269"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432976"
 ---
 # <a name="set-up-local-development-for-azure-static-web-apps-preview"></a>Helyi fejlesztés beállítása az Azure statikus Web Apps előzetes verziójához
 
@@ -46,7 +47,7 @@ A webhelyek felépítésének módjától függően előfordulhat, hogy egy hely
 
 ### <a name="javascript-frameworks-and-libraries"></a>JavaScript-keretrendszerek és-kódtárak
 
-- [Szögletes CLI](https://angular.io/cli)
+- [Angular CLI](https://angular.io/cli)
 - [Vue parancssori felület](https://cli.vuejs.org/guide/creating-a-project.html)
 - [CLI-reagálás](https://create-react-app.dev/)
 
@@ -70,7 +71,7 @@ A Visual Studio Code-hoz készült Live Server-bővítmény egy helyi fejleszté
 
 1. Nyissa meg a Visual Studio Code-ot.
 
-1. Nyomja meg az **F1** billentyűt a parancs paletta megnyitásához.
+1. Nyissa meg a Parancskatalógust az **F1** billentyűvel.
 
 1. A keresőmezőbe írja be a **klón** kifejezést, majd válassza a **git: Clone**lehetőséget.
 
@@ -92,7 +93,7 @@ A Visual Studio Code megnyitja a klónozott projektet a szerkesztőben.
 
 ### <a name="run-the-website-locally-with-live-server"></a>A webhely helyi futtatása az élő kiszolgálóval
 
-1. Nyomja meg az **F1** billentyűt a parancs paletta megnyitásához.
+1. Nyissa meg a Parancskatalógust az **F1** billentyűvel.
 
 1. Írja be a **Live Server** kifejezést a keresőmezőbe, és válassza az **élő kiszolgáló: Megnyitás élő** kiszolgálóval lehetőséget.
 
@@ -193,7 +194,7 @@ Az előtér-JavaScript-keretrendszerek és-kódtárak környezeti fájljainak ko
 
     :::image type="content" source="media/local-development/stop-live-server.png" alt-text="Az élő kiszolgáló parancs leállítása a Visual Studio Command paletta-ban":::
 
-1. Nyomja meg az **F1** billentyűt a parancs paletta megnyitásához.
+1. Nyissa meg a Parancskatalógust az **F1** billentyűvel.
 
 1. Írja be az élő **kiszolgáló** elemet, és válassza **az élő kiszolgáló: Megnyitás élő kiszolgálóval**lehetőséget.
 
@@ -201,7 +202,7 @@ Az előtér-JavaScript-keretrendszerek és-kódtárak környezeti fájljainak ko
 
     :::image type="content" source="media/local-development/hello-from-api.png" alt-text="Hello a böngészőben megjelenő API-ból":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Alkalmazásbeállítások konfigurálása](application-settings.md)

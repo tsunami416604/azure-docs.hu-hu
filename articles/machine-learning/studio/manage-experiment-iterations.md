@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 03/20/2017
-ms.openlocfilehash: cc7858010ea43f676a43f8bf16e228c8248805bf
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: c8935be1261b693cfb4033a9d16c868e11b1fa68
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318521"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432392"
 ---
 # <a name="manage-experiment-runs-in-azure-machine-learning-studio-classic"></a>A kísérletek kezelése Azure Machine Learning Studio (klasszikus)
 
-**a következőkre vonatkozik:** ![ nincs](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine learning](../overview-what-is-azure-ml.md) ![ Igen ](../../../includes/media/aml-applies-to-skus/yes.png) Machine learning Studio (klasszikus) 
+**a következőkre vonatkozik:** ![ igen ](../../../includes/media/aml-applies-to-skus/yes.png) Machine learning Studio (klasszikus) ![ nincs](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine learning](../compare-azure-ml-to-studio-classic.md)  
 
 
 A prediktív elemzési modell kialakítása egy iterációs folyamat – ahogy módosítja a kísérlet különböző funkcióit és paramétereit, az eredmények konvergálnak, amíg nem meggyőződött arról, hogy Ön rendelkezik egy betanított, hatékony modellel. A folyamat kulcsa a kísérlet paramétereinek és konfigurációinak különböző ismétléseit követi nyomon.

@@ -6,14 +6,14 @@ ms.author: rodrigoa
 ms.service: stream-analytics
 ms.topic: tutorial
 ms.reviewer: mamccrea
-ms.custom: mvc
+ms.custom: mvc, devx-track-javascript
 ms.date: 06/16/2020
-ms.openlocfilehash: c9767942c893017e98e3013f92022f058524e13c
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: ff4af372fa0ec1b6b24698184eb3f52449e28d46
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85079003"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87430811"
 ---
 # <a name="javascript-user-defined-functions-in-azure-stream-analytics"></a>Felhasználó által definiált JavaScript-függvények Azure Stream Analytics
  
@@ -132,7 +132,7 @@ FROM
     input PARTITION BY PARTITIONID
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [UDF Machine Learning](https://docs.microsoft.com/azure/stream-analytics/machine-learning-udf)
 * [C# UDF](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-edge-csharp-udf-methods)

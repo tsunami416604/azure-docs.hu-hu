@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/05/2018
-ms.openlocfilehash: fe117dfcb474b2797e026d6fadc3cdec144d34c3
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: d3ea40d092feb9d1ae6eb3c06aab765f109b088f
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318674"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432762"
 ---
 # <a name="deploy-azure-machine-learning-studio-classic-workspace-using-azure-resource-manager"></a>Azure Machine Learning Studio (klasszikus) munkaterület üzembe helyezése Azure Resource Manager használatával
 
-**a következőkre vonatkozik:** ![ nincs](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine learning](../overview-what-is-azure-ml.md) ![ Igen ](../../../includes/media/aml-applies-to-skus/yes.png) Machine learning Studio (klasszikus) 
+**a következőkre vonatkozik:** ![ igen ](../../../includes/media/aml-applies-to-skus/yes.png) Machine learning Studio (klasszikus) ![ nincs](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine learning](../compare-azure-ml-to-studio-classic.md)  
 
 Egy Azure Resource Manager telepítési sablon használatával időt takaríthat meg azáltal, hogy méretezhető módon telepíti az összekapcsolt összetevőket egy érvényesítési és újrapróbálkozási mechanizmussal. Azure Machine Learning Studio (klasszikus) munkaterületek beállításához például először be kell állítania egy Azure Storage-fiókot, majd telepítenie kell a munkaterületet. Képzelje el ezt manuálisan a több száz munkaterülethez. Egyszerűbb alternatíva egy Azure Resource Manager sablon használata Studio (klasszikus) munkaterület és annak összes függőségének üzembe helyezéséhez. Ez a cikk végigvezeti a folyamat lépésein. A Azure Resource Manager nagyszerű áttekintését az [Azure Resource Manager áttekintése](../../azure-resource-manager/management/overview.md)című témakörben tekintheti meg.
 
@@ -140,7 +140,7 @@ Get-AzResource |? { $_.ResourceType -Like "*MachineLearning/workspaces*"} |ForEa
 ```
 A munkaterület kiépítés után számos Azure Machine Learning Studio (klasszikus) feladatot is automatizálhat [Azure Machine learning Studio (klasszikus) PowerShell-modul](https://aka.ms/amlps)használatával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a [Azure Resource Manager-sablonok létrehozásáról](../../azure-resource-manager/templates/template-syntax.md).
 * Tekintse meg az [Azure Gyorsindítás sablonok tárházát](https://github.com/Azure/azure-quickstart-templates).

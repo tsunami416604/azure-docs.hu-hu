@@ -202,6 +202,6 @@ A OSBA a OpenShift-on való telepítéséhez kövesse az itt található utasít
 > [!NOTE]
 > Csak a OpenShift-projekt sablonjának lépéseit kell végrehajtania, nem a teljes telepítés szakaszt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [OpenShift-tároló platform – első lépések](https://docs.openshift.com)

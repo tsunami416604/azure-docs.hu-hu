@@ -234,7 +234,7 @@ Ha már nincs szüksége egy táblára vagy a benne található entitásokra, h�
 table_service.delete_table('tasktable')
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A Table API-val történő fejlesztéshez kapcsolódó gyakori kérdések](https://docs.microsoft.com/azure/cosmos-db/faq)
 * [Az Azure Cosmos DB SDK Pythonhoz API-referenciája](https://docs.microsoft.com/python/api/overview/azure/cosmosdb?view=azure-python)

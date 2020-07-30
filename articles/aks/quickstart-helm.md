@@ -4,14 +4,14 @@ description: Az alkalmazás-tárolók fürtben való kicsomagolásához és futt
 services: container-service
 author: zr-msft
 ms.topic: article
-ms.date: 04/20/2020
+ms.date: 07/28/2020
 ms.author: zarhoads
-ms.openlocfilehash: 1f67605918e093e9ab28aa88be777d27acd831ef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0ca2d7ccc863e2208db1212ef3d3f10fa709d069
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82169568"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407115"
 ---
 # <a name="quickstart-develop-on-azure-kubernetes-service-aks-with-helm"></a>Gyors útmutató: fejlesztés az Azure Kubernetes Service-ben (ak) a Helmtal
 
@@ -23,11 +23,10 @@ Ebből a cikkből megtudhatja, hogyan használhatja a Helm csomagot és futtatha
 
 * Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free).
 * Az [Azure CLI telepítve van](/cli/azure/install-azure-cli?view=azure-cli-latest).
-* A Docker telepítése és konfigurálása megtörtént. A Docker csomagokat biztosít, amelyekkel a Docker [Mac][docker-for-mac], [Windows][docker-for-windows] vagy [Linux][docker-for-linux] rendszereken konfigurálható.
 * A [Helm v3 telepítve van][helm-install].
 
 ## <a name="create-an-azure-container-registry"></a>Azure Container Registry létrehozása
-Ha a Helm használatával szeretné futtatni az alkalmazást az AK-fürtben, szüksége lesz egy Azure Container Registry a tároló lemezképének tárolására. Az alábbi példa az [az ACR Create][az-acr-create] paranccsal hoz létre egy *MyHelmACR* nevű ACR-t a *MyResourceGroup* -erőforráscsoporthoz az *alapszintű* SKU használatával. Adja meg a saját egyedi regisztrációs nevét. A beállításjegyzék nevének egyedinek kell lennie az Azure rendszerben, és 5–50 alfanumerikus karaktert kell tartalmaznia. Az *Alapszintű* termékváltozat költséghatékony, fejlesztési célú belépési pontként szolgál, és kiegyenlített tárolási kapacitást és teljesítményt biztosít.
+Ha a Helm használatával szeretné futtatni az alkalmazást az AK-fürtben, szüksége lesz egy Azure Container Registry a tároló lemezképének tárolására. Az alábbi példa az [az ACR Create][az-acr-create] paranccsal hoz létre egy *MyHelmACR* nevű ACR-t a *MyResourceGroup* -erőforráscsoporthoz az *alapszintű* SKU használatával. Adja meg a saját egyedi regisztrációs nevét. A tárolóregisztrációs adatbázis nevének egyedinek kell lennie az Azure-ban, és 5–50 alfanumerikus karaktert kell tartalmaznia. Az *Alapszintű* termékváltozat költséghatékony, fejlesztési célú belépési pontként szolgál, és kiegyenlített tárolási kapacitást és teljesítményt biztosít.
 
 ```azurecli
 az group create --name MyResourceGroup --location eastus
@@ -57,14 +56,6 @@ A kimenet a következő példához hasonló. Jegyezze fel az ACR *lekéréséhez
   "type": "Microsoft.ContainerRegistry/registries"
 }
 ```
-
-Az ACR-példány használatához először be kell jelentkeznie. A bejelentkezéshez használja az az [ACR login][az-acr-login] parancsot. Az alábbi példa egy *MyHelmACR*nevű ACR-be fog bejelentkezni.
-
-```azurecli
-az acr login --name MyHelmACR
-```
-
-A parancs a *Bejelentkezés sikeres* üzenetet adja vissza, ha befejeződött.
 
 ## <a name="create-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes Service-fürt létrehozása
 
@@ -122,18 +113,12 @@ CMD ["node","server.js"]
 
 ## <a name="build-and-push-the-sample-application-to-the-acr"></a>A minta alkalmazás létrehozása és leküldése az ACR-be
 
-Szerezze be a bejelentkezési kiszolgáló nevét az az [ACR List][az-acr-list] paranccsal, és kérdezze le a *lekéréséhez*:
+Az az [ACR Build][az-acr-build] paranccsal hozzon létre és küldjön le egy rendszerképet a beállításjegyzékbe az előző Docker használatával. A `.` parancs végén adja meg a Docker helyét, ebben az esetben az aktuális könyvtárat.
 
 ```azurecli
-az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
-```
-
-A Docker használatával felépítheti, címkézheti és leküldheti a minta alkalmazás-tárolóját az ACR-be:
-
-```console
-docker build -t webfrontend:latest .
-docker tag webfrontend <acrLoginServer>/webfrontend:v1
-docker push <acrLoginServer>/webfrontend:v1
+az acr build --image webfrontend:v1 \
+  --registry MyHelmACR \
+  --file Dockerfile .
 ```
 
 ## <a name="create-your-helm-chart"></a>A Helm-diagram létrehozása
@@ -144,9 +129,9 @@ A Helm-diagramot a parancs használatával hozhatja ki `helm create` .
 helm create webfrontend
 ```
 
-Végezze el a következő frissítéseket a *webfrontend/Values. YAML*:
+Végezze el a következő frissítéseket a *webfrontend/Values. YAML*. Helyettesítse be a beállításjegyzék egy korábbi lépésben feljegyzett lekéréséhez, például a *myhelmacr.azurecr.IO*:
 
-* Módosítás `image.repository` ide`<acrLoginServer>/webfrontend`
+* Módosítás `image.repository` ide`<loginServer>/webfrontend`
 * Módosítás `service.type` ide`LoadBalancer`
 
 Például:
@@ -159,7 +144,7 @@ Például:
 replicaCount: 1
 
 image:
-  repository: <acrLoginServer>/webfrontend
+  repository: *myhelmacr.azurecr.io*/webfrontend
   pullPolicy: IfNotPresent
 ...
 service:
@@ -211,23 +196,18 @@ az group delete --name MyResourceGroup --yes --no-wait
 > [!NOTE]
 > A fürt törlésekor az AKS-fürt által használt Azure Active Directory-szolgáltatásnév nem lesz eltávolítva. A szolgáltatásnév eltávolításának lépéseiért lásd [az AKS-szolgáltatásnevekre vonatkozó szempontokat és a szolgáltatásnevek törlését][sp-delete] ismertető cikket. Felügyelt identitás használata esetén az identitást a platform felügyeli, és nem szükséges az eltávolítás.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Helm használatával kapcsolatos további információkért tekintse meg a Helm dokumentációját.
 
 > [!div class="nextstepaction"]
 > [A Helm dokumentációja][helm-documentation]
 
-[az-acr-login]: /cli/azure/acr#az-acr-login
 [az-acr-create]: /cli/azure/acr#az-acr-create
-[az-acr-list]: /cli/azure/acr#az-acr-list
+[az-acr-build]: /cli/azure/acr#az-acr-build
 [az-group-delete]: /cli/azure/group#az-group-delete
 [az aks get-credentials]: /cli/azure/aks#az-aks-get-credentials
 [az aks install-cli]: /cli/azure/aks#az-aks-install-cli
-
-[docker-for-linux]: https://docs.docker.com/engine/installation/#supported-platforms
-[docker-for-mac]: https://docs.docker.com/docker-for-mac/
-[docker-for-windows]: https://docs.docker.com/docker-for-windows/
 [example-nodejs]: https://github.com/Azure/dev-spaces/tree/master/samples/nodejs/getting-started/webfrontend
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
 [helm]: https://helm.sh/

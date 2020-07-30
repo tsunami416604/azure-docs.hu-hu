@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 03/06/2020
 ms.topic: how-to
-ms.openlocfilehash: e3be1f9ec900655f4dae45abd402ff8e6a56e283
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9ddf4641cfba2fb9704c2354e01299df368eb2ac
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84147943"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432016"
 ---
 # <a name="configure-the-model-conversion"></a>A modellátalakítás konfigurálása
 
@@ -18,7 +18,8 @@ Ez a fejezet a modell átalakításának lehetőségeit dokumentálja.
 
 ## <a name="settings-file"></a>Beállítási fájl
 
-Ha egy nevű fájl `ConversionSettings.json` megtalálható a bemeneti tárolóban a bemeneti modell mellett, akkor a rendszer a modell átalakítási folyamatának további konfigurációját használja.
+Ha egy nevű fájl található a bemeneti `<modelName>.ConversionSettings.json` tárolóban a bemeneti modell mellett `<modelName>.<ext>` , akkor a rendszer a modell átalakítási folyamatának további konfigurációját fogja használni.
+Például a `box.ConversionSettings.json` konvertáláskor használható `box.gltf` .
 
 A fájl tartalmának meg kell felelnie a következő JSON-sémának:
 
@@ -54,7 +55,7 @@ A fájl tartalmának meg kell felelnie a következő JSON-sémának:
 }
 ```
 
-Lehetséges például, `ConversionSettings.json` hogy a fájl:
+Lehetséges például, `box.ConversionSettings.json` hogy a fájl:
 
 ```json
 {
@@ -66,15 +67,18 @@ Lehetséges például, `ConversionSettings.json` hogy a fájl:
 
 ### <a name="geometry-parameters"></a>Geometriai paraméterek
 
-* `scaling`– Ez a paraméter egységesen méretezi a modellt. A skálázás felhasználható egy modell növelésére vagy összekapcsolására, például egy kiépítési modell megjelenítésére egy tábla tetején. Mivel a renderelési motor a mérőszámok hosszának meghatározására vár, a paraméter egy másik fontos használata akkor fordul elő, ha a modell különböző egységekben van definiálva. Ha például egy modell centiméterben van definiálva, akkor a 0,01-es méret alkalmazása esetén a modellt a megfelelő méretben kell megjeleníteni.
+* `scaling`– Ez a paraméter egységesen méretezi a modellt. A skálázás felhasználható egy modell növelésére vagy összekapcsolására, például egy kiépítési modell megjelenítésére egy tábla tetején.
+A skálázás akkor is fontos, ha a modell a mérőműszertől eltérő egységben van definiálva, mivel a renderelési motor mérőszámokat vár.
+Ha például egy modell centiméterben van definiálva, akkor a 0,01-es méret alkalmazása esetén a modellt a megfelelő méretben kell megjeleníteni.
 Bizonyos forrásadatok formátuma (például. FBX) egy egység skálázási mutatót biztosít, amely esetben az átalakítás implicit módon méretezi a modellt a mérő egységekre. A forrás formátuma által biztosított implicit skálázás a skálázási paraméter tetején lesz alkalmazva.
 A végső skálázási tényező a geometriai csúcspontokra és a Scene Graph-csomópontok helyi átalakítására lesz alkalmazva. A gyökérszintű entitás átalakításának skálázása változatlan marad.
 
 * `recenterToOrigin`– Azt állítja be, hogy egy modellt át kell alakítani, hogy a határolókeret középpontba kerüljön a forráson.
-A középpontba helyezés akkor fontos, ha a forrás modellt a forrástól távol helyezik el, mivel ebben az esetben a lebegőpontos pontossággal kapcsolatos hibák okozhatnak megjelenítési összetevőket.
+Ha a forrás modell a forrástól távol esik, a lebegőpontos pontossággal kapcsolatos hibák okozhatnak megjelenítési összetevőket.
+A modell középpontba való benyújtása segíthet ebben a helyzetben.
 
 * `opaqueMaterialDefaultSidedness`– A renderelési motor azt feltételezi, hogy az átlátszatlan anyagok kétoldalasak.
-Ha ez nem a kívánt viselkedés, a paramétert "SingleSided" értékre kell beállítani. További információ: [ :::no-loc text="single sided"::: rendering](../../overview/features/single-sided-rendering.md).
+Ha a feltételezés nem igaz egy adott modell esetében, akkor ezt a paramétert "SingleSided" értékre kell beállítani. További információ: [ :::no-loc text="single sided"::: rendering](../../overview/features/single-sided-rendering.md).
 
 ### <a name="material-overrides"></a>Anyagok felülbírálása
 
@@ -102,7 +106,7 @@ Ha a modell a gamma szóköz használatával van definiálva, akkor ezeket a be�
   * `static`: Az összes objektum elérhető az API-ban, de nem alakítható át egymástól függetlenül.
   * `none`: A jelenet gráf egyetlen objektumba van összecsukva.
 
-Az egyes üzemmódok különböző futásidejű teljesítménnyel rendelkeznek. A `dynamic` módban a teljesítmény a gráfban lévő [entitások](../../concepts/entities.md) számával lineárisan méretezhető, még akkor is, ha egyetlen rész sem kerül áthelyezésre. Ezt csak akkor érdemes használni, ha az alkalmazáshoz szükség van a részek áthelyezésére, például egy "Alábontás nézet" animációra.
+Az egyes üzemmódok különböző futásidejű teljesítménnyel rendelkeznek. A `dynamic` módban a teljesítmény a gráfban lévő [entitások](../../concepts/entities.md) számával lineárisan méretezhető, még akkor is, ha egyetlen rész sem kerül áthelyezésre. A `dynamic` módot csak akkor használja, ha külön kell áthelyeznie a részeket, például egy "Alábontás nézet" animációhoz.
 
 A `static` mód exportálja a teljes jelenet gráfot, de az ebben a gráfban található részek állandó átalakítóval rendelkeznek a gyökérszintű részhez képest. Az objektum legfelső szintű csomópontja azonban továbbra is áthelyezhető, elforgatható vagy méretezhető, és nincs jelentős teljesítménybeli díj. Emellett a [térbeli lekérdezések](../../overview/features/spatial-queries.md) az egyes részeket adják vissza, és az egyes részeket az [állapot felülbírálásai](../../overview/features/override-hierarchical-state.md)segítségével lehet módosítani. Ebben a módban az objektum futásidejű terhelése elhanyagolható. Ideális olyan nagy méretű jeleneteknél, ahol továbbra is szükség van az objektumon belüli ellenőrzésre, de az objektum-átalakítás nem változik.
 
@@ -279,7 +283,12 @@ Ezekben a használati esetekben a modellek gyakran nagyon nagy részletességgel
 * A Ray-öntvények általában az alkalmazás szerves részét képezik, ezért az ütközési hálókat kell létrehozni.
 * A kivágott síkok jobban kitűnnek a `opaqueMaterialDefaultSidedness` jelzővel.
 
-## <a name="next-steps"></a>További lépések
+## <a name="deprecated-features"></a>Elavult funkciók:
+
+A nem modellre jellemző fájlnevet használó beállítások `conversionSettings.json` továbbra is támogatottak, de elavultak.
+Ehelyett használja a modell-specifikus fájlnevet `<modelName>.ConversionSettings.json` .
+
+## <a name="next-steps"></a>Következő lépések
 
 * [Modell átalakítása](model-conversion.md)
 * [Színes anyagok](../../overview/features/color-materials.md)

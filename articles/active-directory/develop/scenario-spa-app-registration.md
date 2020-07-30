@@ -79,7 +79,7 @@ Ahogy korábban említettük, a MSAL.js 1,3-et használó egylapos alkalmazások
 
 Ha az alkalmazás regisztrációja által képviselt összes éles üzemi egyoldalas alkalmazás a MSAL.js 2,0 és az engedélyezési kód folyamatát használja, törölje a jelet az alkalmazás regisztrációjának hitelesítése ablaktáblán a Azure Portal az implicit engedélyezési beállítások **jelölőnégyzetből** . Az MSAL.js 1. x és az implicit folyamat használatával folytatott alkalmazások továbbra is működhetnek, azonban ha az implicit folyamat engedélyezve van (be van jelölve).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ezután konfigurálja az alkalmazás kódját az előző lépésekben létrehozott alkalmazás-regisztráció használatára:.
 

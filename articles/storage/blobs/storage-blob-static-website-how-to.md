@@ -7,12 +7,13 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.author: normesta
 ms.date: 03/04/2020
-ms.openlocfilehash: 1fb4e7cf589d63e9e595a35c34a2728d564b309b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-javascript
+ms.openlocfilehash: bac476cfbe78ad6fcf73b6a2319581cc60524a57
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84609930"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432556"
 ---
 # <a name="host-a-static-website-in-azure-storage"></a>Statikus webhely üzemeltetése az Azure Storage-ban
 
@@ -42,7 +43,7 @@ A statikus webhely üzemeltetése olyan szolgáltatás, amelyet engedélyeznie k
 
    Az alapértelmezett hiba lap akkor jelenik meg, ha a felhasználó olyan oldalra próbál navigálni, amely nem szerepel a statikus webhelyén.
 
-7. Kattintson a **Save** (Mentés) gombra. A Azure Portal mostantól megjeleníti a statikus webhely végpontját. 
+7. Kattintson a **Mentés** gombra. A Azure Portal mostantól megjeleníti a statikus webhely végpontját. 
 
     ![Statikus webhely üzemeltetésének engedélyezése Storage-fiókhoz](media/storage-blob-static-website-host/enable-static-website-hosting.png)
 
@@ -272,7 +273,7 @@ A metrikák engedélyezése után a **$web** tárolóban található fájlokra v
    >[!NOTE]
    > A **GetWebContent** jelölőnégyzet csak akkor jelenik meg, ha az API-tag egy adott időkereten belül volt használva. A portál csak az adott időkereten belül használt API-tagokat jeleníti meg, hogy csak az adatvisszaadó tagokra összpontosítsanak. Ha nem talál egy adott API-tagot ebben a listában, bontsa ki az időkeretet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Megtudhatja, hogyan konfigurálhat egy egyéni tartományt a statikus webhellyel. Lásd: [egyéni tartomány leképezése egy Azure Blob Storage-végpontra](storage-custom-domain-name.md).
 
