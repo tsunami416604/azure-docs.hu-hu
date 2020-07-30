@@ -17,7 +17,7 @@ Lehetséges, hogy a szervezete az előfizetések tulajdonosainak további művel
 Íme néhány gyakori lehetséges tevékenység, amelyet a tulajdonosnak esetleg kell végrehajtania. Ezek és egyéb műveletek a Azure Portal [*Azure ad alkalmazás regisztrációk*](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps) oldaláról is elvégezhetők.
 * Adja meg a rendszergazdai jóváhagyást az alkalmazás regisztrálásához. Előfordulhat, hogy a szervezete *rendszergazdai* jogosultságokkal rendelkezik, globálisan be van kapcsolva az Azure ad-ben az előfizetésben lévő összes alkalmazás regisztrálásához. Ha igen, a tulajdonosnak be kell jelölnie ezt a gombot a vállalat számára az alkalmazás regisztrációjának *API-engedélyei* oldalon, hogy az alkalmazás regisztrációja érvényes legyen:
 
-    :::image type="content" source="../articles/digital-twins/media/how-to-set-up-instance/grant-admin-consent.png" alt-text="A "rendszergazdai jóváhagyás megadása" gomb portál nézete az API-engedélyek alatt":::
+    :::image type="content" source="../articles/digital-twins/media/how-to-set-up-instance/grant-admin-consent.png" alt-text="A rendszergazdai jóváhagyás megadása gomb portál nézete az API-engedélyek alatt":::
   - Ha a beleegyező engedély megadása sikeres volt, az Azure Digital Twins bejegyzésének meg kell jelenítenie a _ **(vállalata)** számára engedélyezett_ *állapotinformációkat* .
    
     :::image type="content" source="../articles/digital-twins/media/how-to-set-up-instance/granted-admin-consent.png" alt-text="A vállalat számára az API-engedélyek alatt megadott rendszergazdai engedély portál nézete":::
