@@ -14,20 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 0e477b95f43c091bf17ec54d2fef9f971d5f6986
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 761a508543af79f3a242bfa2133e22a00b0ca689
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87000160"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87439608"
 ---
 # <a name="encrypting-your-content-with-storage-encryption"></a>A tartalom titkosítása a Storage encryption szolgáltatással 
 
 > [!NOTE]
 > Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).   > nem kerül be új funkciók vagy funkciók a Media Services v2-be. <br/>Tekintse meg a legújabb, [Media Services v3](../latest/index.yml)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
->   
-
-Javasoljuk, hogy helyileg Titkosítsa a tartalmakat AES-256 bites titkosítással, majd töltse fel azt az Azure Storage-ba, ahol a tárolása titkosított állapotban van.
+>
 
 Ez a cikk áttekintést nyújt az AMS Storage-titkosításról, és bemutatja, hogyan tölthetők fel a Storage titkosított tartalma:
 
@@ -203,7 +201,7 @@ A tartalmi kulcs létrehozásakor beállított értékek egyike a típus. A tár
 
 Az alábbi példa bemutatja, hogyan hozhat létre egy **ContentKey** egy **ContentKeyType** készlettel ("1") és a **ProtectionKeyType** "0" értékre állítva, hogy JELEZZE, hogy a védelmi kulcs azonosítója az X. 509 tanúsítvány ujjlenyomata.  
 
-Kérelem
+Kérés
 
 ```console
 POST https://media.windows.net/api/ContentKeys HTTP/1.1

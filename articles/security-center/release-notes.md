@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/01/2020
 ms.author: memildin
-ms.openlocfilehash: 17b54eb747e3ddd3b381659031171bc795b61f54
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: bf503cf90df7b08e5a957416d66eae2f1a599bed
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/30/2020
-ms.locfileid: "87430451"
+ms.locfileid: "87438950"
 ---
 # <a name="whats-new-in-azure-security-center"></a>A Azure Security Center újdonságai
 
@@ -32,11 +32,11 @@ Ez az oldal rendszeresen frissül, ezért gyakran újra felkeresik. Ha hat hóna
 ## <a name="july-2020"></a>2020. július
 
 A júliusban elérhető frissítések a következők:
-- A [virtuális gépek sebezhetőségi felmérése mostantól elérhető a nem Marketplace-lemezképek](#vulnerability-assessment-for-virtual-machines-is-now-available-for-non-marketplace-images)automatikus        
+- [A virtuális gépek sebezhetőségi felmérése mostantól nem Piactéri rendszerképekhez érhető el](#vulnerability-assessment-for-virtual-machines-is-now-available-for-non-marketplace-images)
 - [Az Azure Storage veszélyforrások elleni védelme kibővült Azure Files és Azure Data Lake Storage Gen2 (előzetes verzió)](#threat-protection-for-azure-storage-expanded-to-include-azure-files-and-azure-data-lake-storage-gen2-preview)
 - [Nyolc új javaslat a veszélyforrások elleni védelem funkcióinak engedélyezéséhez](#eight-new-recommendations-to-enable-threat-protection-features)
 - [A tároló biztonsági fejlesztése – a beállításjegyzék gyorsabb vizsgálata és a frissített dokumentáció](#container-security-improvements---faster-registry-scanning-and-refreshed-documentation)
-- [Új javaslat az adaptív alkalmazás-vezérlők szabályainak frissítéséhez](#new-recommendation-to-update-your-adaptive-application-controls-rules)
+- [Az adaptív alkalmazások vezérlői új javaslattal frissültek, és támogatják a helyettesítő karaktereket az elérésiút-szabályokban](#adaptive-application-controls-updated-with-a-new-recommendation-and-support-for-wildcards-in-path-rules)
 - [Hat házirend a speciális SQL-adatbiztonsághoz – elavult](#six-policies-for-sql-advanced-data-security-deprecated)
 
 
@@ -115,11 +115,16 @@ A Security Center tárolójának biztonságáról a következő cikkekben tájé
 
 
 
-### <a name="new-recommendation-to-update-your-adaptive-application-controls-rules"></a>Új javaslat az adaptív alkalmazás-vezérlők szabályainak frissítéséhez
+### <a name="adaptive-application-controls-updated-with-a-new-recommendation-and-support-for-wildcards-in-path-rules"></a>Az adaptív alkalmazások vezérlői új javaslattal frissültek, és támogatják a helyettesítő karaktereket az elérésiút-szabályokban
 
-Az adaptív alkalmazás-vezérlők funkció folyamatosan figyeli a konfigurált csoportokba tartozó gépek tevékenységeit. Erről a frissítésről értesítést kap arról a vélhetően legitim viselkedésről, amelyet korábban nem engedélyeztek, és amely hamis pozitív riasztásokat okozhat.
+Az adaptív alkalmazás-vezérlők funkció két jelentős frissítést kapott:
 
-Az **adaptív alkalmazás-vezérlési házirend új javaslata, engedélyezési szabályai frissülnek**, és új szabályok hozzáadását kéri a meglévő szabályzathoz, hogy csökkentse a hamis pozitív állapotok számát az adaptív alkalmazás-vezérlők megsértésével kapcsolatos riasztásokban.
+- Egy új javaslat azonosítja a korábban nem engedélyezett, potenciálisan legitim viselkedést. Az **adaptív alkalmazás-vezérlési házirend új javaslata, engedélyezési szabályai frissülnek**, és új szabályok hozzáadását kéri a meglévő szabályzathoz, hogy csökkentse a hamis pozitív állapotok számát az adaptív alkalmazás-vezérlők megsértésével kapcsolatos riasztásokban.
+
+- Az elérésiút-szabályok mostantól támogatják a helyettesítő karaktereket. Ebből a frissítésből a helyettesítő karakterek használatával konfigurálhatja az engedélyezett elérésiút-szabályokat. Két támogatott forgatókönyv létezik:
+
+    - Az elérési út végén található helyettesítő karakter használata a mappában és az almappákban található összes végrehajtható fájl engedélyezéséhez
+    - Egy elérési út közepén lévő helyettesítő karakter használatával engedélyezheti egy ismert végrehajtható név módosítását a mappanév (például személyes felhasználói mappák ismert végrehajtható fájlokkal, automatikusan létrehozott mappanevek stb.). 
 
 [További információ az adaptív alkalmazások vezérlőinek használatáról](security-center-adaptive-application.md).
 

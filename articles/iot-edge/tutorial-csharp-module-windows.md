@@ -11,12 +11,12 @@ ms.service: iot-edge
 ms.custom:
 - mvc
 - amqp
-ms.openlocfilehash: b71db71ac61e0dcd65a2546b2164610e618dab18
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 105dbed66b67f16b305cea74b9761abbef64d5fd
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81733509"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87439776"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>Oktatóanyag: C# IoT Edge modul fejlesztése Windows-eszközökhöz
 
@@ -83,7 +83,7 @@ A Azure IoT Edge-eszközök a Visual Studióban a támogatott IoT Edge modul ös
    | ----- | ----- |
    | Sablon kiválasztása | Válassza a **C# modul**lehetőséget. |
    | Modul projekt neve | A modulnak adja a **CSharpModule** nevet. |
-   | Docker-rendszerkép tárháza | Egy rendszerképadattár a tárolóregisztrációs adatbázis nevét és a tárolórendszerkép nevét tartalmazza. A tároló képe előre fel van töltve a modul projekt neve értékből. Cserélje le a **localhost:5000** értéket az Azure-beli tárolóregisztrációs adatbázis bejelentkezési kiszolgálójának értékére. A bejelentkezési kiszolgálót a tárolóregisztrációs adatbázis Áttekintés lapján kérheti le az Azure Portalon. <br><br> A rendszerkép utolsó tárháza a \<következőhöz\>hasonló: beállításjegyzék neve. azurecr.IO/csharpmodule. |
+   | Docker-rendszerkép tárháza | Egy rendszerképadattár a tárolóregisztrációs adatbázis nevét és a tárolórendszerkép nevét tartalmazza. A tároló képe előre fel van töltve a modul projekt neve értékből. Cserélje le a **localhost: 5000** értéket a **bejelentkezési kiszolgáló** értékére az Azure Container registryben. A bejelentkezési kiszolgálót a tároló beállításjegyzékének áttekintés lapjáról kérheti le a Azure Portal. <br><br> A rendszerkép utolsó tárháza a következőhöz hasonlít: \<registry name\> . azurecr.IO/csharpmodule. |
 
    ![A projekt konfigurálása a céleszköz, a modul típusa és a tároló-beállításjegyzék számára](./media/tutorial-csharp-module-windows/add-application-and-module.png)
 
@@ -93,7 +93,7 @@ A Azure IoT Edge-eszközök a Visual Studióban a támogatott IoT Edge modul ös
 
 Az üzembe helyezési jegyzék megosztja a tároló beállításjegyzékének hitelesítő adatait a IoT Edge futtatókörnyezettel. A futtatókörnyezetnek szüksége van ezekre a hitelesítő adatokra a privát rendszerképek letöltéséhez az IoT Edge-eszközre. Használja az Azure Container Registry **hozzáférési kulcsok** szakaszának hitelesítő adatait.
 
-1. A Visual Studio Solution Explorerben nyissa meg a **Deployment. template. JSON** fájlt.
+1. A Visual Studio Solution Explorerben nyissa meg a **deployment.template.js** fájlt.
 
 2. Keresse meg a **registryCredentials** tulajdonságot a $edgeAgent kívánt tulajdonságban. A szolgáltatásnak a projekt létrehozásakor megadott információk alapján kell kitöltenie a beállításjegyzékbeli címeket, majd a Felhasználónév és a jelszó mezőben a változók nevét kell tartalmaznia. Például:
 
@@ -107,7 +107,7 @@ Az üzembe helyezési jegyzék megosztja a tároló beállításjegyzékének hi
    }
    ```
 
-3. Nyissa meg a **. env** fájlt a modul-megoldásban. (Alapértelmezés szerint rejtett a Megoldáskezelőban, ezért előfordulhat, hogy az **összes fájl megjelenítése** gombra kell kattintania a megjelenítéséhez.) A. env fájlnak ugyanazt a Felhasználónév és jelszó változót kell tartalmaznia, amelyet a Deployment. template. JSON fájlban látott.
+3. Nyissa meg a **. env** fájlt a modul-megoldásban. (Alapértelmezés szerint rejtett a Megoldáskezelőban, ezért előfordulhat, hogy az **összes fájl megjelenítése** gombra kell kattintania a megjelenítéséhez.) A. env fájlnak ugyanazt a Felhasználónév és jelszó változót kell tartalmaznia, amelyet a fájl deployment.template.jsban látott.
 
 4. Adja hozzá a **Felhasználónév** és a **jelszó** értékét az Azure Container registryből.
 
@@ -117,7 +117,7 @@ Az üzembe helyezési jegyzék megosztja a tároló beállításjegyzékének hi
 
 Az alapértelmezett modul kódja üzeneteket fogad egy bemeneti várólistán, és egy kimeneti várólistán keresztül továbbítja azokat. Vegyünk fel néhány további kódot, hogy a modul feldolgozza az üzeneteket a peremen, mielőtt továbbítaná őket a IoT Hubba. Frissítse a modult úgy, hogy az minden üzenetben elemezze a hőmérsékleti adatokat, és csak akkor küldje el az üzenetet IoT Hub, ha a hőmérséklet meghaladja az adott küszöbértéket.
 
-1. A Visual Studióban nyissa meg a **CSharpModule** > **program.cs**.
+1. A Visual Studióban nyissa meg a **CSharpModule**  >  **program.cs**.
 
 2. A **CSharpModule** névtér tetején adjon hozzá három **using** utasítást a későbbiekben használt típusokhoz:
 
@@ -275,7 +275,7 @@ Az alapértelmezett modul kódja üzeneteket fogad egy bemeneti várólistán, �
 
 8. Mentse a Program.cs fájlt.
 
-9. Nyissa meg az **üzembe helyezés. template. JSON** fájlt a IoT Edge-megoldásban. Ez a fájl közli a IoT Edge-ügynökkel, hogy mely modulokat kívánja telepíteni, ebben az esetben a **SimulatedTemperatureSensor** és a **CSharpModule**, és közli a IoT Edge hub-val, hogyan irányítja az üzeneteket közöttük.
+9. Nyissa meg a **deployment.template.jst** a IoT Edge-megoldás fájljában. Ez a fájl közli a IoT Edge-ügynökkel, hogy mely modulokat kívánja telepíteni, ebben az esetben a **SimulatedTemperatureSensor** és a **CSharpModule**, és közli a IoT Edge hub-val, hogyan irányítja az üzeneteket közöttük.
 
 10. Adja hozzá a **CSharpModule** modul ikerdokumentumát az üzembehelyezési jegyzékhez. Szúrja be a következő JSON-tartalmat a **modulesContent** szakasz alján, az **$edgeHub** modul ikerdokumentuma után:
 
@@ -301,17 +301,19 @@ Az előző szakaszban létrehozott egy IoT Edge-megoldást, és hozzáadott egy 
    docker login -u <ACR username> -p <ACR password> <ACR login server>
    ```
 
-   Biztonsági figyelmeztetés jelenhet meg, `--password-stdin`amely a használatát javasolja. Habár az ajánlott eljárás az éles környezetekben javasolt, az oktatóanyag hatókörén kívül esik. További információkért lásd a [Docker bejelentkezési](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) referenciáját.
+   Biztonsági figyelmeztetés jelenhet meg, amely a használatát javasolja `--password-stdin` . Habár az ajánlott eljárás az éles környezetekben javasolt, az oktatóanyag hatókörén kívül esik. További információkért lásd a [Docker bejelentkezési](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) referenciáját.
 
 2. A Visual Studio Solution Explorerben kattintson a jobb gombbal a létrehozni kívánt projekt nevére. Az alapértelmezett név a **AzureIotEdgeApp1** , és a Windows-modul létrehozása óta a bővítménynek **Windows. Amd64**-nek kell lennie.
 
 3. Válassza ki **az IoT Edge-modulok kiépítése és leküldése**lehetőséget.
 
-   A build és a push parancs három műveletet indít el. Először létrehoz egy új mappát a **konfigurációban** , amely tartalmazza a teljes telepítési jegyzékfájlt, kiépítve a telepítési sablonban és más megoldási fájlokban található információkat. Másodszor, futtatja `docker build` a tároló rendszerképét a célként megadott architektúra megfelelő Docker alapján. Ezután futtatja `docker push` , hogy leküldi a rendszerkép-tárházat a tároló-beállításjegyzékbe.
+   A build és a push parancs három műveletet indít el. Először létrehoz egy új mappát a **konfigurációban** , amely tartalmazza a teljes telepítési jegyzékfájlt, kiépítve a telepítési sablonban és más megoldási fájlokban található információkat. Másodszor, futtatja `docker build` a tároló rendszerképét a célként megadott architektúra megfelelő Docker alapján. Ezután futtatja, `docker push` hogy leküldi a rendszerkép-tárházat a tároló-beállításjegyzékbe.
+
+   Ez a folyamat az első alkalommal több percet is igénybe vehet, de gyorsabb a parancsok következő futtatásakor.
 
 ## <a name="deploy-modules-to-device"></a>Modulok üzembe helyezése az eszközön
 
-A Visual Studio Cloud Explorer és a Azure IoT Edge Tools bővítmény használatával telepítse a modul-projektet a IoT Edge eszközre. Már van előkészítve egy üzembe helyezési jegyzékfájl a forgatókönyvhöz, a **telepítési. JSON** fájl a konfigurációs mappában. Most csak ki kell választania az üzemelő példányt fogadó eszközt.
+A Visual Studio Cloud Explorer és a Azure IoT Edge Tools bővítmény használatával telepítse a modul-projektet a IoT Edge eszközre. Már rendelkezik egy, a forgatókönyvhöz előkészített üzembe helyezési jegyzékfájlval, a konfigurációs mappában található fájl **deployment.windows-amd64.js** . Most csak ki kell választania az üzemelő példányt fogadó eszközt.
 
 Ellenőrizze, hogy a IoT Edge eszköz működik-e.
 
@@ -321,7 +323,7 @@ Ellenőrizze, hogy a IoT Edge eszköz működik-e.
 
 3. Válassza a **központi telepítés létrehozása**lehetőséget.
 
-4. A Fájlkezelőben válassza ki a **Deployment. Windows-amd64** fájlt a megoldás konfigurációs mappájába.
+4. A Fájlkezelőben válassza ki a **deployment.windows-amd64.js** fájlt a megoldás konfigurációs mappájába.
 
 5. Frissítse a Cloud Explorert, és tekintse meg az eszköz alatt felsorolt telepített modulokat.
 
@@ -343,11 +345,11 @@ A IoT Edge Tools bővítmény használatával megtekintheti az üzeneteket, ahog
 
 A 2. CSharpModule modult használtuk a hőmérsékleti küszöbérték 25 fokos beállításához. A Twin modul használatával módosíthatja a funkciót anélkül, hogy frissítenie kellene a modul kódját.
 
-1. A Visual Studióban nyissa meg a **Deployment. Windows-amd64. JSON** fájlt. (Nem a Deployment. template fájl. Ha nem látja a telepítési jegyzékfájlt a konfigurációs fájlban a megoldás Explorerben, jelölje be az **összes fájl megjelenítése** ikont az Explorer eszköztárán.)
+1. A Visual Studióban nyissa meg a **deployment.windows-amd64.js** fájlt. (Nem a Deployment. template fájl. Ha nem látja a telepítési jegyzékfájlt a konfigurációs fájlban a megoldás Explorerben, jelölje be az **összes fájl megjelenítése** ikont az Explorer eszköztárán.)
 
 2. Keresse meg a CSharpModule Twin értéket, és módosítsa a **temperatureThreshold** paraméter értékét egy új 5 fokos hőmérsékletre, a legutóbbi jelentett hőmérsékletnél 10 fokkal magasabbra.
 
-3. Mentse a **Deployment. Windows-amd64. JSON** fájlt.
+3. Mentse a **deployment.windows-amd64.js** fájlt.
 
 4. Kövesse az üzembe helyezési lépéseket, és alkalmazza a frissített üzembe helyezési jegyzéket az eszközre.
 
@@ -361,14 +363,14 @@ Ellenkező esetben törölheti a cikkben használt helyi konfigurációkat és a
 
 [!INCLUDE [iot-edge-clean-up-cloud-resources](../../includes/iot-edge-clean-up-cloud-resources.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban IoT Edge-modult hozott létre olyan kóddal, amely szűri az IoT Edge-eszköz által létrehozott nyers adatokat. Ha készen áll a saját modulok létrehozására, többet is megtudhat a [saját IoT Edge moduljainak fejlesztéséről](module-development.md) , illetve a [Visual Studióval történő modulok fejlesztéséről](how-to-visual-studio-develop-module.md). IoT Edge modulokra, például a szimulált hőmérsékleti modulra példaként lásd: [IoT Edge modul minták](https://github.com/Azure/iotedge/tree/master/edge-modules).
 
 Folytassa a következő oktatóanyagokkal, amelyből megtudhatja, hogyan hozhatja Azure IoT Edge az Azure Cloud Services üzembe helyezését az adathordozón lévő adatfeldolgozás és-elemzés során.
 
 > [!div class="nextstepaction"]
-> [Függvények](tutorial-deploy-function.md)
-> [Stream Analytics](tutorial-deploy-stream-analytics.md)stream Analytics
-> [Machine Learning](tutorial-deploy-machine-learning.md)Machine learning
-> [Custom Vision Service](tutorial-deploy-custom-vision.md)
+> [Függvények](tutorial-deploy-function.md) 
+>  [Stream Analytics](tutorial-deploy-stream-analytics.md) 
+>  [Machine learning](tutorial-deploy-machine-learning.md) 
+>  [Custom Vision Service](tutorial-deploy-custom-vision.md)

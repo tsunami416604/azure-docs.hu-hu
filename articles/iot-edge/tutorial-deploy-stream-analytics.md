@@ -3,16 +3,16 @@ title: Oktatóanyag – Stream Analytics az Edge használatával Azure IoT Edge
 description: Ebben az oktatóanyagban üzembe helyezi Azure Stream Analytics modulként egy IoT Edge eszközön
 author: kgremban
 ms.author: kgremban
-ms.date: 11/11/2019
+ms.date: 07/29/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 62ee95db0e3b35c996cb4ee68d772a21c00778fb
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: c259e913a8ee5181bc58aea651af62324cf01fcb
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220275"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87439403"
 ---
 # <a name="tutorial-deploy-azure-stream-analytics-as-an-iot-edge-module"></a>Oktatóanyag: Azure Stream Analytics üzembe helyezése IoT Edge modulként
 
@@ -68,7 +68,7 @@ Amikor Azure Stream Analytics-feladatot hoz létre egy IoT Edge-eszköz futtatá
    | ----- | ----- |
    | Előfizetés | Válassza ugyanazt az előfizetést, mint az IoT Hub esetében. |
    | Erőforráscsoport | Azt javasoljuk, hogy az IoT Edge rövid útmutatók és oktatóanyagok esetében ugyanazt az erőforráscsoportot használja az összes tesztelési erőforráshoz. Például: **IoTEdgeResources**. |
-   | Name (Név) | Adja meg a tárfiók egyedi nevét. |
+   | Name | Adja meg a tárfiók egyedi nevét. |
    | Hely | Válassza ki az Önhöz legközelebb eső helyet. |
 
 1. Tartsa meg a többi mező alapértelmezett értékeit, és válassza a **felülvizsgálat + létrehozás**lehetőséget.
@@ -89,7 +89,7 @@ Amikor Azure Stream Analytics-feladatot hoz létre egy IoT Edge-eszköz futtatá
    | Hely | Válassza ki az Önhöz legközelebb eső helyet. |
    | Üzemeltetési környezet | Válassza az **Edge** lehetőséget. |
 
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
 ### <a name="configure-your-job"></a>A feladat konfigurálása
 
@@ -107,7 +107,7 @@ Ebben a szakaszban három elem (bemenet, kimenet és lekérdezés) használatáv
 
 1. Az **Új bemenet** panelen adja meg a **temperature** (hőmérséklet) nevet a bemenet aliasaként.
 
-1. Fogadja el az alapértelmezett értékeket a többi mezőben, és válassza a **Mentés** lehetőséget.
+1. Hagyja változatlanul a többi mező értékét, és válassza a **Mentés** lehetőséget.
 
 1. A **Feladattopológia** területen nyissa meg a **Kimenetek** pontot, és válassza a **Hozzáadás** elemet.
 
@@ -117,9 +117,9 @@ Ebben a szakaszban három elem (bemenet, kimenet és lekérdezés) használatáv
 
 1. Az **Új kimenet** panelen adja meg az **alert** (riasztás) nevet a kimenet aliasaként.
 
-1. Fogadja el az alapértelmezett értékeket a többi mezőben, és válassza a **Mentés** lehetőséget.
+1. Hagyja változatlanul a többi mező értékét, és válassza a **Mentés** lehetőséget.
 
-1. A **Feladattopológia** területen válassza a **Lekérdezés** lehetőséget.
+1. A **feladatok topológiája**területen válassza a **lekérdezés**lehetőséget.
 
 1. Cserélje le az alapértelmezett szöveget a következő lekérdezésre. Az SQL-kód visszaállítás parancsot küld a riasztás kimenetének, ha az átlagos géphőmérséklet bármely 30 másodperces időablakban eléri a 70 fokot. A visszaállítás parancs előre be van programozva az érzékelőbe elvégezhető műveletként.
 
@@ -134,7 +134,7 @@ Ebben a szakaszban három elem (bemenet, kimenet és lekérdezés) használatáv
     HAVING Avg(machine.temperature) > 70
     ```
 
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **lekérdezés mentése**lehetőséget.
 
 ### <a name="configure-iot-edge-settings"></a>Az IoT Edge-beállítások konfigurálása
 
@@ -189,7 +189,7 @@ Ebben az oktatóanyagban két modult helyezhet üzembe. Az első a **SimulatedTe
 
 1. Válassza a **frissítés** vagy a **Mégse**lehetőséget.
 
-1. Jegyezze fel Stream Analytics moduljának nevét, mert a következő lépésben szüksége lesz rá, majd válassza a **Tovább: útvonalak** a folytatáshoz lehetőséget.
+1. Jegyezze fel Stream Analytics moduljának nevét, mert a következő lépésben szüksége lesz rá. Ezután válassza a **Tovább: útvonalak** a folytatáshoz lehetőséget.
 
 1. Az **útvonalak** lapon megadhatja, hogyan adja át az üzeneteket a modulok és a IoT hub között. Az üzenetek név/érték párokkal vannak kiépítve. Cserélje le az alapértelmezett `route` és a `upstream` nevet és az értékeket az alábbi táblázatban szereplő párokra, a következő név/érték párokat, a _{moduleName}_ példányait pedig a Azure stream Analytics modul nevére cseréli.
 
@@ -246,7 +246,7 @@ Ellenkező esetben törölheti a cikkben használt helyi konfigurációkat és a
 
 [!INCLUDE [iot-edge-clean-up-cloud-resources](../../includes/iot-edge-clean-up-cloud-resources.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban egy Azure Stream Analytics-feladatot hozott létre az IoT Edge-eszközből származó adatok elemzéséhez. Ezután letöltötte az Azure Stream Analytics-modult az IoT Edge-eszközre, hogy helyileg lehessen feldolgozni és megválaszolni a hőmérséklet-növekedési adatokat, valamint az összesített adatstreamet a felhőbe feltölteni. A többi oktatóanyagra tovább lépve megtudhatja, hogyan lehet az Azure IoT Edge használatával egyéb üzleti megoldásokat létrehozni.
 

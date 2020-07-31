@@ -4,15 +4,15 @@ description: Megtudhatja, hogyan telepíthet és konfigurálhat helyszíni adat�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/17/2020
+ms.date: 07/29/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: f6218b32fb9574adf62384d2a6ee5a62f3788de8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1d090070dd7b2afe5ea1ece9b5da8b8b5b7b0780
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77062149"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87438968"
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>Helyszíni adatátjáró telepítése és konfigurálása
 
@@ -22,12 +22,12 @@ Ha többet szeretne megtudni arról, hogy a Azure Analysis Services hogyan műk�
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-**Rendszerkövetelmények:**
+**Minimális követelmények:**
 
 * .NET-keretrendszer 4.5-ös verziója
 * a Windows 8/Windows Server 2012 R2 64 bites verziója (vagy újabb)
 
-**Ajánlott:**
+**Ajánlott**
 
 * 8 magos processzor
 * 8 GB memória
@@ -44,11 +44,11 @@ Ha többet szeretne megtudni arról, hogy a Azure Analysis Services hogyan műk�
 * Jelentkezzen be az Azure-ba egy Azure AD-fiókkal ugyanahhoz a [bérlőhöz](/previous-versions/azure/azure-services/jj573650(v=azure.100)#what-is-an-azure-ad-tenant) , amelyhez az átjárót regisztrálja. Az Azure B2B-(vendég-) fiókok nem támogatottak átjáró telepítésekor és regisztrálása esetén.
 * Ha az adatforrások egy Azure Virtual Networkon (VNet) vannak, akkor konfigurálnia kell a [AlwaysUseGateway](analysis-services-vnet-gateway.md) -kiszolgáló tulajdonságát.
 
-## <a name="download"></a><a name="download"></a>Letöltés
+## <a name="download"></a>Letöltés
 
  [Az átjáró letöltése](https://go.microsoft.com/fwlink/?LinkId=820925&clcid=0x409)
 
-## <a name="install"></a><a name="install"></a>Telepítés
+## <a name="install"></a>Telepítés
 
 1. Futtassa a telepítőt.
 
@@ -67,7 +67,7 @@ Ha többet szeretne megtudni arról, hogy a Azure Analysis Services hogyan műk�
    > [!NOTE]
    > Ha tartományi fiókkal jelentkezik be, az Azure AD-ben a szervezeti fiókjához van hozzárendelve. A szervezeti fiókját az átjáró rendszergazdája használja.
 
-## <a name="register"></a><a name="register"></a>Regisztráció
+## <a name="register"></a>Regisztráció
 
 Az Azure-beli átjáró-erőforrások létrehozásához regisztrálnia kell az átjáró Cloud Service-ben telepített helyi példányt. 
 
@@ -83,7 +83,7 @@ Az Azure-beli átjáró-erőforrások létrehozásához regisztrálnia kell az �
    ![Regisztráció](media/analysis-services-gateway-install/aas-gateway-register-name.png)
 
 
-## <a name="create-an-azure-gateway-resource"></a><a name="create-resource"></a>Azure Gateway-erőforrás létrehozása
+## <a name="create-an-azure-gateway-resource"></a>Azure Gateway-erőforrás létrehozása
 
 Az átjáró telepítése és regisztrálása után létre kell hoznia egy átjáró-erőforrást az Azure-ban. Jelentkezzen be az Azure-ba ugyanazzal a fiókkal, amelyet az átjáró regisztrálásakor használt.
 
@@ -107,7 +107,12 @@ Az átjáró telepítése és regisztrálása után létre kell hoznia egy átj�
 
      Ha elkészült, kattintson a **Létrehozás**gombra.
 
-## <a name="connect-servers-to-the-gateway-resource"></a><a name="connect-servers"></a>Kiszolgálók összekötése az átjáró erőforrásával
+## <a name="connect-gateway-resource-to-server"></a>Átjáró erőforrásának összekötése a kiszolgálóval
+
+> [!NOTE]
+> Ha egy másik előfizetésben lévő átjáró-erőforráshoz csatlakozik a-kiszolgálóról, a portálon nem támogatott, de a PowerShell használatával támogatott.
+
+# <a name="portal"></a>[Portál](#tab/azure-portal)
 
 1. A Azure Analysis Services-kiszolgáló áttekintésében kattintson **a helyszíni adatátjáró**elemre.
 
@@ -125,10 +130,31 @@ Az átjáró telepítése és regisztrálása után létre kell hoznia egy átj�
 
     ![A kiszolgáló és az átjáró erőforrásának összekötése sikeres](media/analysis-services-gateway-install/aas-gateway-connect-success.png)
 
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+A [Get-AzResource](https://docs.microsoft.com/powershell/module/az.resources/get-azresource) használatával szerezze be az átjáró ResourceId. Ezután a **-GatewayResourceID** a [set-AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/set-azanalysisservicesserver) vagy a [New-AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/new-azanalysisservicesserver)érték megadásával kapcsolja össze az átjáró erőforrását egy meglévő vagy egy új kiszolgálóval.
+
+Az átjáró erőforrás-AZONOSÍTÓjának lekérése:
+
+```azurepowershell-interactive
+Connect-AzAccount -Tenant $TenantId -Subscription $subscriptionIdforGateway -Environment "AzureCloud"
+$GatewayResourceId = $(Get-AzResource -ResourceType "Microsoft.Web/connectionGateways" -Name $gatewayName).ResourceId  
+
+```
+
+Meglévő kiszolgáló konfigurálása:
+
+```azurepowershell-interactive
+Connect-AzAccount -Tenant $TenantId -Subscription $subscriptionIdforAzureAS -Environment "AzureCloud"
+Set-AzAnalysisServicesServer -ResourceGroupName $RGName -Name $servername -GatewayResourceId $GatewayResourceId
+
+```
+---
+
 Ennyi az egész. Ha portok megnyitására vagy hibaelhárításra van szüksége, mindenképpen tekintse [meg a helyszíni adatátjárót](analysis-services-gateway.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az Analysis Services felügyelete](analysis-services-manage.md)   
-* [Adatok lekérése Azure Analysis Servicesról](analysis-services-connect.md)   
+* [Adatlekérdezés az Azure Analysis Servicesből](analysis-services-connect.md)   
 * [Átjáró használata az adatforrásokhoz egy Azure-beli virtuális hálózaton](analysis-services-vnet-gateway.md)

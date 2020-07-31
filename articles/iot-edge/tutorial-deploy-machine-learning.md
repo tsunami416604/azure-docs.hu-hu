@@ -4,17 +4,17 @@ description: Ebben az oktatóanyagban létrehoz egy Azure Machine Learning model
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/11/2019
+ms.date: 07/29/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 5bfbf4a432f720b683ded4c85530135d86b24eba
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ae76fab6359675a87ad252a08ebb199bf724f129
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76773000"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87439378"
 ---
 # <a name="tutorial-deploy-azure-machine-learning-as-an-iot-edge-module-preview"></a>Oktatóanyag: Az Azure Machine Learning üzembe helyezése IoT Edge-modulként (előzetes verzió)
 
@@ -30,10 +30,10 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 >
-> * Azure Machine Learning-modul létrehozása
-> * Modultároló leküldése egy Azure-beli tárolóregisztrációs adatbázisba
-> * Azure Machine Learning-modul üzembe helyezése az IoT Edge-eszközön
-> * A létrejött adatok megtekintése
+> * Hozzon létre egy Azure Machine Learning modult.
+> * Egy modul tárolójának leküldése egy Azure Container registrybe.
+> * Helyezzen üzembe egy Azure Machine Learning modult a IoT Edge eszközön.
+> * A létrejött adatok megtekintése.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -59,7 +59,7 @@ Ebben a szakaszban a betanított gépi tanulási modell fájljait és egy Azure 
 
 2. Válassza a GitHub-tárház **feltöltése**lehetőséget.
 
-3. Adja meg a következő GitHub-tárház `Azure/ai-toolkit-iot-edge`nevét:. Ha meg szeretné őrizni a saját projektet, törölje a **nyilvános** mezőt. Kattintson az **Importálás** gombra.
+3. Adja meg a következő GitHub-tárház nevét: `Azure/ai-toolkit-iot-edge` . Ha meg szeretné őrizni a saját projektet, törölje a **nyilvános** mezőt. Válassza az **Importálás** lehetőséget.
 
 4. Az importálás befejezése után navigáljon az új **AI-Toolkit-IOT-Edge** projekthez, és nyissa meg a **IoT Edge anomália észlelése oktatóanyag** mappát.
 
@@ -67,7 +67,7 @@ Ebben a szakaszban a betanított gépi tanulási modell fájljait és egy Azure 
 
    ![Futtatás ingyenes számítási feladatokban](./media/tutorial-deploy-machine-learning/run-on-free-compute.png)
 
-6. Nyissa meg a **aml_config/config.JSON** fájlt.
+6. Nyissa meg a **aml_config/config.js** fájlt.
 
 7. Szerkessze a konfigurációs fájlt, hogy tartalmazza az Azure-előfizetés AZONOSÍTÓjának, az előfizetéshez tartozó erőforráscsoport, valamint a Azure Machine Learning munkaterület nevét. Ezek az értékek az Azure-beli munkaterület **Áttekintés** szakaszában olvashatók be.
 
@@ -79,7 +79,7 @@ Ebben a szakaszban a betanított gépi tanulási modell fájljait és egy Azure 
 
 11. Szerkessze a jegyzetfüzet első celláját a megjegyzések részben leírtak szerint. Használja ugyanazt az erőforráscsoportot, az előfizetés AZONOSÍTÓját és a munkaterület nevét, amelyet a konfigurációs fájlhoz adott hozzá.
 
-12. Futtassa a cellákat a jegyzetfüzetben, és válassza ki **Run** őket, és `Shift + Enter`válassza a Futtatás vagy a lenyomva lehetőséget.
+12. Futtassa a cellákat a jegyzetfüzetben, és válassza ki őket, és válassza a **Futtatás** vagy a lenyomva lehetőséget `Shift + Enter` .
 
     >[!TIP]
     >Az anomália-észlelési oktatóanyagban található jegyzetfüzetek némelyike nem kötelező, mert olyan erőforrásokat hoz létre, amelyeket egyes felhasználók még nem használhatnak, mint például egy IoT Hub. Ha az első cellába helyezi a meglévő erőforrásadatokat, hibaüzeneteket fog kapni, ha olyan cellákat futtat, amelyek új erőforrásokat hoznak létre, mert az Azure nem hoz létre duplikált erőforrásokat. Ez rendben van, így figyelmen kívül hagyhatja a hibákat, vagy kihagyhatja a választható szakaszt.
@@ -94,15 +94,15 @@ Győződjön meg arról, hogy a tároló rendszerképének létrehozása és tá
 
 2. Az **Áttekintés** szakasz a munkaterület részleteit, valamint a hozzájuk tartozó erőforrásokat sorolja fel. Válassza ki a **beállításazonosító** értékét, amelynek a munkaterület nevét, majd a véletlenszerűen megadott számokat kell megadnia.
 
-3. A tároló beállításjegyzékében válassza a **tárolók**lehetőséget. Meg kell jelennie egy **tempanomalydetection** nevű tárháznak, amelyet a korábbi szakaszban futtatott jegyzetfüzetből hoztak létre.
+3. A tároló-beállításjegyzék **szolgáltatások**területén válassza a **tárolók**lehetőséget. Meg kell jelennie egy **tempanomalydetection** nevű tárháznak, amelyet a korábbi szakaszban futtatott jegyzetfüzetből hoztak létre.
 
 4. Válassza a **tempanomalydetection**lehetőséget. Látnia kell, hogy az adattárnak van egy címkéje: **1**.
 
-   Most, hogy már ismeri a beállításjegyzék nevét, a tárház nevét és a címkét, ismeri a tároló teljes rendszerképének elérési útját. A képelérési utak úgy néznek ki, mint ** \<a\>registry_name. azurecr.IO/tempanomalydetection:1**. A rendszerkép elérési útja segítségével telepítheti a tárolót IoT Edge eszközökre.
+   Most, hogy már ismeri a beállításjegyzék nevét, a tárház nevét és a címkét, ismeri a tároló teljes rendszerképének elérési útját. A képelérési utak a következőképpen néznek ki: ** \<registry_name\> . azurecr.IO/tempanomalydetection:1**. A lemezkép elérési útjával üzembe helyezheti a tárolót IoT Edge-eszközökön.
 
-5. A tároló beállításjegyzékében válassza a **hozzáférési kulcsok**elemet. Meg kell jelennie a hozzáférési hitelesítő adatok számának, beleértve a **bejelentkezési kiszolgálót** , valamint a **felhasználónevet**és a **jelszót** a rendszergazda felhasználó számára.
+5. A tároló beállításjegyzékének **Beállítások**területén válassza a **hozzáférési kulcsok**elemet. Meg kell jelennie a hozzáférési hitelesítő adatok számának, beleértve a **bejelentkezési kiszolgálót** , valamint a **felhasználónevet**és a **jelszót** a rendszergazda felhasználó számára.
 
-   Ezek a hitelesítő adatok az üzembe helyezési jegyzékben is szerepelhetnek, így biztosítható, hogy a IoT Edge eszköz hozzáférjen a tárolók rendszerképeihez a beállításjegyzékből.
+   Ezeket a hitelesítő adatokat belefoglalhatja az üzembe helyezési jegyzékbe, az IoT Edge-eszköznek így hozzáférése lesz a regisztrációs adatbázis tárolólemezképeihez.
 
 Most már tudja, hol tárolja a Machine Learning tároló képét. A következő szakasz végigvezeti a IoT Edge eszközön modulként futó tároló megtekintésének lépésein.
 
@@ -114,7 +114,7 @@ Megtekintheti az egyes IoT Edge-modulok által létrehozott üzeneteket, és meg
 
 IoT Edge-eszközén megtekintheti az egyes modulok által küldött üzeneteket.
 
-Előfordulhat, hogy a parancsok `sudo` futtatásához `iotedge` emelt szintű engedélyeket kell használnia. A kijelentkezés és a visszajelentkezés az eszközre automatikusan frissíti az engedélyeket.
+Előfordulhat, hogy `sudo` a parancsok futtatásához emelt szintű engedélyeket kell használnia `iotedge` . A kijelentkezés és a visszajelentkezés az eszközre automatikusan frissíti az engedélyeket.
 
 1. Tekintse meg az összes modult az IoT Edge-eszközön.
 
@@ -134,17 +134,11 @@ Megtekintheti az IoT hub által a [Visual Studio Code](https://marketplace.visua
 
 A következő lépések azt mutatják be, hogyan állítható be a Visual Studio Code az IoT-központba érkező, eszközről a felhőbe küldött üzenetek monitorozására.
 
-1. A Visual Studio Code-ban válassza az **IoT Hub-eszközök** elemet.
+1. A Visual Studio Code Explorer **Azure IoT hub** szakasza alatt bontsa ki az **eszközök** elemet a IoT-eszközök listájának megtekintéséhez.
 
-2. Ezt követően válassza a **...**, majd az **IoT Hub kapcsolati sztring beállítása** lehetőséget a menüben.
+2. Kattintson a jobb gombbal a IoT Edge eszköz nevére, és válassza a **figyelés beépített esemény végpontjának elindítása**lehetőséget.
 
-   ![IoT Hub-kapcsolatok karakterláncának beállítása](./media/tutorial-deploy-machine-learning/set-connection.png)
-
-3. Az oldal tetején megnyíló szövegmezőben adja meg a saját IoT Hubjához tartozó iothubowner kapcsolati sztringet. IoT Edge-eszközének ekkor meg kell jelennie az IoT Hub-eszközök listájában.
-
-4. Válassza a **...** újra lehetőséget, majd válassza a **figyelés a beépített esemény végpontjának megkezdése**lehetőséget.
-
-5. Figyelje meg a tempSensor felől öt másodpercenként érkező üzeneteket. Az üzenettörzs egy **anomália**nevű tulajdonságot tartalmaz, amelyet a machinelearningmodule igaz vagy hamis értékkel rendelkezik. Az **AzureMLResponse** tulajdonság „OK” értéket tartalmaz, ha a modell sikeresen lefutott.
+3. Figyelje meg a tempSensortól érkező üzeneteket öt másodpercenként. Az üzenettörzs tartalmaz egy **anomaly** nevű tulajdonságot, amelyet a machinelearningmodule igaz vagy hamis értékkel ad meg. Az **AzureMLResponse** tulajdonság az „OK” értéket tartalmazza, ha a modell sikeresen lefutott.
 
    ![Azure Machine Learning válasz az üzenet törzsében](./media/tutorial-deploy-machine-learning/ml-output.png)
 
@@ -156,7 +150,7 @@ Ellenkező esetben a díjak elkerülése érdekében törölheti a jelen cikkben
 
 [!INCLUDE [iot-edge-clean-up-cloud-resources](../../includes/iot-edge-clean-up-cloud-resources.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban üzembe helyezett egy, az Azure Machine Learning által működtetett IoT Edge-modult. Továbbléphet bármely másik oktatóanyagra, és megtudhatja, milyen más módokon alakíthatja jelentőséggel bíró üzleti információkká ezeket az adatokat a peremhálózaton az Azure IoT Edge segítségével.
 

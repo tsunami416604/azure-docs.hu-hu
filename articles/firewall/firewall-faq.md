@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 07/23/2020
+ms.date: 07/30/2020
 ms.author: victorh
-ms.openlocfilehash: bd849a413d718ba5a25839c50c63ec2ad39be440
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 3f2b844163abce0946dc5df29c3121691e83035b
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87128097"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87439221"
 ---
 # <a name="azure-firewall-faq"></a>Azure Firewall GYIK
 
@@ -168,7 +168,9 @@ Azure Firewall kezdeti átviteli kapacitása 2,5 – 3 GB/s, amely 30 GB/s-ig m�
 
 ## <a name="how-long-does-it-take-for-azure-firewall-to-scale-out"></a>Mennyi időt vesz igénybe a Azure Firewall felskálázása?
 
-A Azure Firewall fokozatosan méretezhető, ha az átlagos átviteli sebesség vagy a CPU-felhasználás 60%-on. A vertikális felskálázás öt – hét percet vesz igénybe. A teljesítmény tesztelésekor győződjön meg arról, hogy legalább 10 – 15 percig teszteli a tesztet, és új kapcsolatokat indít el, hogy kihasználhassa az újonnan létrehozott tűzfal-csomópontok előnyeit.
+A Azure Firewall fokozatosan méretezhető, ha az átlagos átviteli sebesség vagy a CPU-felhasználás 60%-on. Az alapértelmezett üzemelő példány maximális átviteli sebessége körülbelül 2,5 – 3 GB/s, és megkezdi a skálázást, amikor eléri az adott szám 60%-át. A vertikális felskálázás öt – hét percet vesz igénybe. 
+
+A teljesítmény tesztelésekor győződjön meg arról, hogy legalább 10 – 15 percig teszteli a tesztet, és új kapcsolatokat indít el, hogy kihasználhassa az újonnan létrehozott tűzfal-csomópontok előnyeit.
 
 ## <a name="does-azure-firewall-allow-access-to-active-directory-by-default"></a>Alapértelmezés szerint a Azure Firewall engedélyezi a Active Directory hozzáférését?
 
@@ -219,4 +221,4 @@ Nem, jelenleg a Azure Firewall nyilvános IP-címmel kell telepíteni.
 
 ## <a name="where-does-azure-firewall-store-customer-data"></a>Hol tárolja Azure Firewall az ügyféladatokat?
 
-Azure Firewall nem helyezi át és nem tárolja az ügyféladatokat a-ben üzembe helyezett régióból.
+Azure Firewall nem helyezi át és nem tárolja az ügyféladatokat a szolgáltatásban üzembe helyezett régióból.

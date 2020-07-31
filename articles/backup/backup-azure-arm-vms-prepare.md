@@ -3,12 +3,12 @@ title: Azure-beli virtuális gépek biztonsági mentése egy Recovery Services-t
 description: Ismerteti, hogyan lehet biztonsági másolatot készíteni az Azure-beli virtuális gépekről egy Recovery Services-tárolóban a Azure Backup használatával
 ms.topic: conceptual
 ms.date: 07/28/2020
-ms.openlocfilehash: c4fbafc63ce063159d0524ddf26bb936c53328df
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: b9d57449e56fb50bfbfddb627a1d6bb379710da4
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373937"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87439719"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Azure-beli virtuális gépek biztonsági mentése egy Recovery Services-tárolóban
 
@@ -88,7 +88,7 @@ s ![ az új tároló tárolási konfigurációjának beállítása](./media/back
      !["Virtuális gépek kiválasztása" panel](./media/backup-azure-arm-vms-prepare/select-vms-to-backup.png)
 
     >[!NOTE]
-    > Az ugyanabban a régióban és előfizetésben lévő összes virtuális gép elérhető a biztonsági mentés konfigurálásához. A biztonsági mentés konfigurálásakor megkeresheti a virtuális gép nevét és az erőforráscsoportot, még akkor is, ha nem rendelkezik a szükséges engedélyekkel ezekhez a virtuális gépekhez.  
+    > Az ugyanabban a régióban és előfizetésben lévő összes virtuális gép elérhető a biztonsági mentés konfigurálásához. A biztonsági mentés konfigurálásakor megkeresheti a virtuális gép nevét és az erőforráscsoportot, még akkor is, ha nem rendelkezik a szükséges engedélyekkel ezekhez a virtuális gépekhez. Ha a virtuális gép lágyan törölt állapotban van, akkor nem jelenik meg a listában. Ha újra kell védetté tenni a virtuális gépet, meg kell várnia, amíg a helyreállított törlési időszak lejár, vagy visszavonja a virtuális gép törlését a nem kötelezően törölt listából. További információkért lásd [a virtuális gépek Soft delete szolgáltatását ismertető cikket](soft-delete-virtual-machines.md#soft-delete-for-vms-using-azure-portal).
 
 1. A **biztonsági mentés**területen válassza a **biztonsági mentés engedélyezése**lehetőséget. Ezzel telepíti a szabályzatot a tárolóba és a virtuális gépekre, és telepíti a biztonsági mentési bővítményt az Azure-beli virtuális gépen futó virtuálisgép-ügynökön.
 
@@ -147,10 +147,10 @@ A feladatok állapota a következő esetektől függően változhat:
 
 **Pillanatkép** | **Adatok átvitele a tárba** | **Feladatok állapota**
 --- | --- | ---
-Befejezve | Folyamatban | Folyamatban
-Befejezve | Kimarad | Befejezve
-Befejezve | Befejezve | Befejezve
-Befejezve | Sikertelen | Figyelmeztetéssel fejeződött be
+Befejeződött | Folyamatban | Folyamatban
+Befejeződött | Kimarad | Befejeződött
+Befejeződött | Befejeződött | Befejeződött
+Befejeződött | Sikertelen | Figyelmeztetéssel fejeződött be
 Sikertelen | Sikertelen | Sikertelen
 
 Ezzel a képességgel ugyanezen a virtuális gépen két biztonsági mentés futtatható párhuzamosan, de mindkét fázisban (pillanatkép, adatok átvitele a tárba) csak egy Alfeladat futhat. Így olyan helyzetekben, amikor egy folyamatban lévő biztonsági mentési feladat a következő nap biztonsági mentését eredményezte, a rendszer ezt a leválasztási funkciót fogja elkerülni. A következő napok biztonsági mentései a pillanatképet elvégezték, az **adatok a tárolóba való átvitele** pedig kimarad, ha egy korábbi nap biztonsági mentési feladata folyamatban van.
@@ -174,7 +174,7 @@ Azure Backup biztonsági mentést készít az Azure-beli virtuális gépekről a
 >
 >Az előzetes verzióra való feliratkozáshoz írjon nekünk a következőt:AskAzureBackupTeam@microsoft.com
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az [Azure VM-ügynökökkel](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md) vagy az [Azure-beli virtuális gépek biztonsági mentésével](backup-azure-vms-troubleshoot.md)kapcsolatos problémák elhárítása.
 * [Visszaállítás](backup-azure-arm-restore-vms.md) Azure-beli virtuális gépek.

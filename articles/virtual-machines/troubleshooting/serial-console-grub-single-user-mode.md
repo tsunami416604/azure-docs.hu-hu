@@ -13,19 +13,19 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/06/2019
 ms.author: alsin
-ms.openlocfilehash: 3b074bb1d439a6d20ac476f4e10b6a26b7107be8
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 5341cc62a7d02c3072df90becf893dec18427ac2
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284710"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87439540"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>A soros konzol használata a GRUB és a single-user mód eléréséhez
 A virtuális gép (VM) rendszerindításakor a rendszer valószínűleg elsőként látja a GRand Unified bootloadert (GRUB). Mivel az operációs rendszer elindítása előtt megjelenik, a GRUB nem érhető el SSH-n keresztül. A GRUB-ban módosíthatja a rendszerindítási konfigurációt úgy, hogy az egyfelhasználós módba induljon, egyebek között.
 
 Az egyfelhasználós mód minimális funkcionalitással rendelkező minimális környezet. Hasznos lehet a rendszerindítási problémák, fájlrendszeri problémák vagy hálózati problémák kivizsgálásához. Kevesebb szolgáltatás futhat a háttérben, és a runlevel függően előfordulhat, hogy a fájlrendszer még nem lesz automatikusan csatlakoztatva.
 
-Az egyfelhasználós mód olyan helyzetekben is hasznos, amikor a virtuális gép úgy van konfigurálva, hogy csak az SSH-kulcsokat fogadja a bejelentkezéshez. Ebben az esetben előfordulhat, hogy az egyfelhasználós mód használatával jelszót használó fiókot hozhat létre. 
+Az egyfelhasználós mód olyan helyzetekben is hasznos, amikor a virtuális gép úgy van konfigurálva, hogy csak az SSH-kulcsokat fogadja a bejelentkezéshez. Ebben az esetben előfordulhat, hogy az egyfelhasználós mód használatával jelszót használó fiókot hozhat létre.
 
 > [!NOTE]
 > A soros konzol szolgáltatás csak *közreműködő* vagy magasabb szintű jogosultsággal rendelkező felhasználókat engedélyez a virtuális gépek soros konzoljának eléréséhez.
@@ -66,6 +66,9 @@ A RHEL a GRUB engedélyezve van a dobozból. A GRUB megadásához futtassa újra
 
 **RHEL 8**
 
+>[!NOTE]
+> A Red Hat azt javasolja, hogy a kivágás használatával konfigurálja a kernel parancssori paramétereit a RHEL 8 +-ban. Jelenleg nem lehet frissíteni a grub-időtúllépést és a terminál paramétereit a piszkos használatával. Ha módosítani szeretné az összes rendszerindítási bejegyzés GRUB_CMDLINE_LINUX argumentumának frissítését, futtassa a parancsot `grubby --update-kernel=ALL --args="console=ttyS0,115200 console=tty1 console=ttyS0 earlyprintk=ttyS0 rootdelay=300"` . További részletek [itt](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/managing_monitoring_and_updating_the_kernel/configuring-kernel-command-line-parameters_managing-monitoring-and-updating-the-kernel)érhetők el.
+
 ```
 GRUB_TIMEOUT=5
 GRUB_TERMINAL="serial console"
@@ -90,8 +93,7 @@ A legfelső szintű felhasználó alapértelmezés szerint le van tiltva. A RHEL
 1. Váltson a gyökérre.
 1. Engedélyezze a legfelső szintű felhasználó jelszavát a következő módon:
     * Futtatás `passwd root` (erős legfelső szintű jelszó beállítása).
-1. Győződjön meg arról, hogy a legfelső szintű felhasználó csak a ttyS0 keresztül tud bejelentkezni a következő módon:  
-    a. Futtassa a parancsot `edit /etc/ssh/sshd_config` , és győződjön meg arról, hogy a PermitRootLogIn beállítása `no` .  
+1. Győződjön meg arról, hogy a legfelső szintű felhasználó csak a ttyS0 keresztül tud bejelentkezni a következő módon: a. Futtassa a parancsot `edit /etc/ssh/sshd_config` , és győződjön meg arról, hogy a PermitRootLogIn beállítása `no` .
     b. Futtassa `edit /etc/securetty file` a parancsot, hogy csak a ttyS0 használatával engedélyezze a bejelentkezést.
 
 Ha a rendszer egyfelhasználós módban indul, bejelentkezhet a legfelső szintű jelszóval.
@@ -106,7 +108,7 @@ Ha a fenti utasítások alapján beállította a GRUB-és a gyökérszintű hozz
 1. A kernel vonalának megkeresése. Az Azure-ban a *linux16*-vel kezdődik.
 1. Nyomja le a CTRL + E billentyűkombinációt a sor végére való ugráshoz.
 1. A sor végén adja hozzá a *systemed. Unit = Rescue. Target*parancsot.
-    
+
     Ez a művelet egy egyfelhasználós módba kerül. Ha vészhelyzeti módot szeretne használni, vegyen fel *systemed. Unit = Emergency. Target* értéket a sor végére (a *systemed. Unit = Rescue. Target*helyett).
 
 1. Nyomja le a CTRL + X billentyűkombinációt az alkalmazott beállításokkal való kilépéshez és az újraindításhoz.
@@ -130,11 +132,11 @@ Ha nem engedélyezte a legfelső szintű felhasználót a korábbi utasítások 
     Ez a művelet megszakítja a rendszerindítási folyamatot, mielőtt a rendszer átadja a vezérlőt a rendszernek `initramfs` `systemd` a [Red Hat dokumentációjában](https://aka.ms/rhel7rootpassword)leírtaknak megfelelően.
 1. Nyomja le a CTRL + X billentyűkombinációt az alkalmazott beállításokkal való kilépéshez és az újraindításhoz.
 
-   Az újraindítást követően a rendszer a csak olvasható fájlrendszerrel rendelkező vészhelyzeti módban van. 
-   
+   Az újraindítást követően a rendszer a csak olvasható fájlrendszerrel rendelkező vészhelyzeti módban van.
+
 1. A rendszerhéjban írja be, `mount -o remount,rw /sysroot` hogy az olvasási/írási engedélyekkel csatlakoztassa újra a rendszerindító fájlrendszert.
 1. Az egyfelhasználós üzemmódba történő rendszerindítás után írja be a `chroot /sysroot` kapcsolót a `sysroot` börtönbe.
-1. Most már a root-on. A legfelső szintű jelszót a következő utasítások beírásával állíthatja alaphelyzetbe `passwd` , majd megadhatja az egyfelhasználós üzemmódot. 
+1. Most már a root-on. A legfelső szintű jelszót a következő utasítások beírásával állíthatja alaphelyzetbe `passwd` , majd megadhatja az egyfelhasználós üzemmódot.
 1. Ha elkészült, adja meg `reboot -f` az újraindítást.
 
 ![Egy parancssori felületet bemutató animált kép. A felhasználó kiválaszt egy kiszolgálót, megkeresi a kernel vonalának végét, és belép a megadott parancsokra.](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-emergency-mount-no-root.gif)
@@ -238,7 +240,7 @@ A Oracle Linux a GRUB engedélyezve van a dobozból. A GRUB megadásához futtas
 ### <a name="single-user-mode-in-oracle-linux"></a>Egyfelhasználós mód a Oracle Linuxban
 Az egyfelhasználós üzemmód Oracle Linuxban való engedélyezéséhez kövesse a RHEL korábbi utasításait.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A soros konzolról további információt a következő témakörben talál:
 * [A Linux soros konzol dokumentációja](serial-console-linux.md)
 * [A GRUB engedélyezése a soros konzol használatával különböző disztribúciókban](http://linuxonazure.azurewebsites.net/why-proactively-ensuring-you-have-access-to-grub-and-sysrq-in-your-linux-vm-could-save-you-lots-of-down-time/)

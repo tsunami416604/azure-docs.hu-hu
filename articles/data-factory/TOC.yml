@@ -167,8 +167,6 @@
       href: concepts-pipeline-execution-triggers.md
     - name: Integrációs modul
       href: concepts-integration-runtime.md
-    - name: Felügyelt virtuális hálózat
-      href: managed-virtual-network-private-endpoint.md
     - name: Biztonság
       items:
         - name: Biztonsági alapkonfiguráció
@@ -588,6 +586,8 @@
           href: data-factory-service-identity.md
         - name: Ügyfél által felügyelt kulcstitkosítás
           href: enable-customer-managed-key.md
+        - name: Felügyelt virtuális hálózat
+          href: managed-virtual-network-private-endpoint.md
     - name: Monitorozás és kezelés
       items:
         - name: Vizuális megfigyelés
@@ -732,6 +732,8 @@
           href: connector-troubleshoot-guide.md
         - name: Adatfolyamok
           href: data-flow-troubleshoot-guide.md
+        - name: Adatok másolása eszköz
+          href: copy-data-tool-troubleshoot-guide.md
         - name: Helyi integrációs futtatókörnyezetek
           href: self-hosted-integration-runtime-troubleshoot-guide.md
         - name: Azure-SSIS integrációs modul

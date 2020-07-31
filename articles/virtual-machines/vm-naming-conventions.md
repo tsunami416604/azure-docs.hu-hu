@@ -1,5 +1,5 @@
 ---
-title: Az Azure VM-méretek elnevezési konvenciói
+title: Azure-beli virtuálisgép-méretek elnevezési konvenciói
 description: Ismerteti az Azure-beli virtuális gépek méreteihez használt elnevezési konvenciókat
 ms.service: virtual-machines
 subservice: sizes
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 7/22/2020
 ms.author: mimckitt
 ms.custom: sttsinar
-ms.openlocfilehash: 2059c6f374e4cd5c2518e2fc0ac0da5858b99825
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 3af4387723f74c1e09597564bc5330183fe1df69
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131718"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87439454"
 ---
 # <a name="azure-virtual-machine-sizes-naming-conventions"></a>Az Azure-beli virtuális gépek méretei elnevezési konvenciói
 
@@ -29,7 +29,7 @@ Ez az oldal az Azure-beli virtuális gépekhez használt elnevezési konvenciók
 | Family (Család) | A virtuálisgép-család adatsorozatát jelzi.| 
 | * Alárendelt család | Kizárólag a speciális virtuálisgép-megkülönböztetésekhez használatos|
 | vCPU száma| A virtuális gép vCPU számát jelöli. |
-| Adalékanyag-funkciók | Egy vagy több kisbetű az adalékanyag funkcióit jelöli, például: <br> a = AMD-alapú processzor <br> d = lemez (a helyi Temp lemez megtalálható); Ez az újabb Azure-beli virtuális gépek esetén: [Ddv4 és Ddsv4 sorozat](./ddv4-ddsv4-series.md) <br> h = hibernálásra alkalmas <br> i = elkülönített <br> l = kevés a memória <br> m = intenzív memória <br> t = apró memória <br> r = RDMA <br> s = Premium Storage képes, beleértve a [Ultra SSD](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#ultra-disk) lehetséges használatát is (Megjegyzés: a s attribútum nélküli néhány újabb méret továbbra is támogatja Premium Storage például M128, M64 stb.).<br> |
+| Adalékanyag-funkciók | Egy vagy több kisbetű az adalékanyag funkcióit jelöli, például: <br> a = AMD-alapú processzor <br> d = lemez (a helyi Temp lemez megtalálható); Ez az újabb Azure-beli virtuális gépek esetén: [Ddv4 és Ddsv4 sorozat](./ddv4-ddsv4-series.md) <br> h = hibernálásra alkalmas <br> i = elkülönített méret <br> l = kevés a memória; a memória méretének megfelelőnél kevesebb memóriát igényel <br> m = intenzív memória; a legnagyobb mennyiségű memória egy adott méretben <br> t = kis memória; egy adott méretű memória legkisebb mennyisége <br> r = RDMA-kompatibilis <br> s = Premium Storage képes, beleértve a [Ultra SSD](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#ultra-disk) lehetséges használatát is (Megjegyzés: a s attribútum nélküli néhány újabb méret továbbra is támogatja Premium Storage például M128, M64 stb.).<br> |
 | * Gyorssegéd típusa | A speciális/GPU SKU-ban lévő hardveres gyorssegéd típusát jelöli. A (z) 2020-es Q3-ből indított új speciális/GPU-SKU-ra csak a hardveres gyorssegéd lesz a névben. |
 | Verzió | A virtuálisgép-család adatsorozatának verzióját jelöli. |
 
@@ -67,6 +67,6 @@ Ez az oldal az Azure-beli virtuális gépekhez használt elnevezési konvenciók
 | Gyorssegéd típusa | T4 |
 | Verzió | v3 |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az elérhető virtuálisgép- [méretekről](https://docs.microsoft.com/azure/virtual-machines/windows/sizes) az Azure-ban. 

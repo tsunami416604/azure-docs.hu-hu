@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: df318fea4960601dcbfa84149fdc47bedc9104a2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f2a1a5f3eaf79a345b0d33f43d260fe6aa15236b
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079825"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87439248"
 ---
 # <a name="troubleshoot-an-rdp-general-error-in-azure-vm"></a>Az RDP általános hibáinak megoldása az Azure-beli virtuális gépen
 
@@ -81,7 +81,7 @@ Az alábbi lépések elvégzése előtt készítsen pillanatképet az érintett 
 1. Ellenőrizze, hogy az RDP le van-e tiltva a csoportba tartozó házirendek alapján.
 
     ```
-    REM Get the group policy 
+    REM Get the group policy setting
     reg query "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fDenyTSConnections
     ```
     Ha a csoportházirend tiltja, hogy az RDP le van tiltva (a fDenyTSConnections értéke 0x1), futtassa a következő parancsot a TermService szolgáltatás engedélyezéséhez. Ha a beállításkulcs nem található, nincs olyan csoportházirend konfigurálva, amely letiltja az RDP-t. A következő lépésre léphet.

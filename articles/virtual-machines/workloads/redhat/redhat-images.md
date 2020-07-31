@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: de7ead8acd059d957673b2f063dd3d330cf473f5
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9aa0ca41f63da94e2dedaffe65ea518b8adff0dc
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525500"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87439468"
 ---
 # <a name="overview-of-red-hat-enterprise-linux-images"></a>Red Hat Enterprise Linux rendszerképek áttekintése
 
@@ -100,6 +100,9 @@ A RHEL 7. x rendszerképek esetében van néhány különböző képtípus. Az a
 
 ## <a name="rhel-8-image-types"></a>RHEL 8 Képtípus
 
+>[!NOTE]
+> A Red Hat azt javasolja, hogy a kivágás használatával konfigurálja a kernel parancssori paramétereit a RHEL 8 +-ban. További részletek [itt](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/managing_monitoring_and_updating_the_kernel/configuring-kernel-command-line-parameters_managing-monitoring-and-updating-the-kernel)érhetők el.
+
 A RHEL 8 képtípusának részletei alább láthatók.
 
 |Publisher | Ajánlat | SKU-érték | Verzió | Részletek
@@ -142,12 +145,12 @@ Az alábbi táblázatban szereplő információk a EUS-tárakhoz kapcsolódó RH
 >
 > További információ a RHEL-EUS rendelkezésre állásáról: [Red Hat Enterprise Linux életciklusa](https://access.redhat.com/support/policy/updates/errata).
 
-Másodlagos verzió |EUS-rendszerkép – példa              |EUS állapota                                                   |
+Alverzió |EUS-rendszerkép – példa              |EUS állapota                                                   |
 :-------------|:------------------------------|:------------------------------------------------------------|
 RHEL 7,4      |RedHat: RHEL: 7.4:7.4.2019041718 | Az április 2019-es és újabb verzióiban közzétett lemezképek alapértelmezés szerint EUS.|
 RHEL 7.5      |RedHat: RHEL: 7.5:7.5.2019060305 | A 2019-es és újabb verziókon közzétett lemezképek alapértelmezés szerint EUS. |
 RHEL 7,6      |RedHat: RHEL: 7.6:7.6.2019052206 | A 2019-es és újabb verzióiban közzétett rendszerképek alapértelmezés szerint EUS. |
-RHEL 8,0      |n.a.                            | A Red Hat nem érhető el EUS.                               |
+RHEL 8,0      |N.A.                            | A Red Hat nem érhető el EUS.                               |
 
 ### <a name="update-services-for-sap"></a>SAP-szolgáltatások frissítése
 
