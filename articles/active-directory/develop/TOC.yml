@@ -512,6 +512,8 @@
           href: active-directory-claims-mapping.md
         - name: Nem kötelező jogcímek konfigurálása
           href: active-directory-optional-claims.md
+        - name: Könyvtárséma bővítményattribútumainak használata jogcímekben
+          href: active-directory-schema-extensions.md
         - name: A jogkivonatok élettartamának beállítása
           href: active-directory-configurable-token-lifetimes.md
         - name: SameSite-cookie-k változásainak kezelése a Chrome böngészőben

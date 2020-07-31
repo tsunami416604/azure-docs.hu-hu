@@ -29,30 +29,36 @@
           href: cache-python-get-started.md
 - name: Oktatóanyagok
   items:
+    - name: ASP.NET
+      items:
+        - name: Munkamenetállapot-szolgáltató használata
+          href: cache-aspnet-session-state-provider.md
+        - name: Kimeneti gyorsítótár-szolgáltató használata
+          href: cache-aspnet-output-cache-provider.md
+    - name: Java Spring
+      items:
+        - name: A Spring Boot Initializer használata
+          href: cache-java-spring-boot-initializer-with-redis-cache.md
     - name: A gyorsítótárazás és a ranglisták együttes használata
       href: cache-web-app-cache-aside-leaderboard.md
-- name: Példák
-  items:
-    - name: Azure Cache for Redis-minták
-      href: cache-redis-samples.md
-    - name: Azure
+    - name: Azure PowerShell
       href: cache-how-to-manage-redis-cache-powershell.md
     - name: Azure CLI
       href: cli-samples.md
-    - name: Az Azure Policy beépített elemei
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: Alapelvek
   items:
-    - name: Biztonság
-      items:
-        - name: Biztonsági alapkonfiguráció
-          href: security-baseline.md
     - name: Feladatátvétel és javítás
       href: cache-failover.md
     - name: Ajánlott eljárások
       href: cache-best-practices.md
-    - name: Architektúra ajánlott eljárásai gyorsítótárazáshoz
+    - name: Biztonság
+      items:
+        - name: Az Azure Policy biztonsági vezérlői
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
+        - name: Biztonsági alapkonfiguráció
+          href: security-baseline.md
+    - name: Gyorsítótárazási architektúra
       href: 'https://docs.microsoft.com/azure/architecture/best-practices/caching?toc=%2Fazure%2Fredis-cache%2Ftoc.json'
 - name: Útmutatók
   items:
@@ -86,18 +92,6 @@
           href: cache-redis-cache-arm-provision.md
         - name: Webalkalmazás létrehozása Azure Cache for Redisszel
           href: cache-web-app-arm-with-redis-cache-provision.md
-    - name: Integrálás alkalmazással
-      items:
-        - name: ASP.NET
-          items:
-            - name: Munkamenetállapot-szolgáltató használata
-              href: cache-aspnet-session-state-provider.md
-            - name: Kimeneti gyorsítótár-szolgáltató használata
-              href: cache-aspnet-output-cache-provider.md
-        - name: Java Spring
-          items:
-            - name: A Spring Boot Initializer használata
-              href: cache-java-spring-boot-initializer-with-redis-cache.md
     - name: Kezelés
       items:
         - name: Konfigurálás az Azure Portalon
@@ -136,35 +130,37 @@
           href: cache-how-to-premium-clustering.md
 - name: Referencia
   items:
-    - name: Kódminták
-      href: 'https://azure.microsoft.com/resources/samples/?service=redis-cache'
-    - name: Azure PowerShell
-      href: /powershell/module/az.rediscache
-    - name: Azure CLI
-      href: /cli/azure/redis
+    - name: Azure Cache for Redis-minták
+      href: cache-redis-samples.md
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.redis
     - name: Java
       href: /java/api/com.microsoft.azure.management.redis.rediscache
     - name: Redis ügyfelek
       href: 'https://redis.io/clients'
-    - name: Redis parancsok
-      href: 'https://redis.io/commands#'
+    - name: Azure PowerShell
+      href: /powershell/module/az.rediscache
+    - name: Azure CLI
+      href: /cli/azure/redis
     - name: REST
       href: 'https://docs.microsoft.com/rest/api/redis/'
     - name: Resource Manager-sablon
       href: /azure/templates/microsoft.cache/allversions
+    - name: Az Azure Policy beépített elemei
+      href: ./policy-samples.md
+    - name: Redis parancsok
+      href: 'https://redis.io/commands#'
 - name: További források
   items:
-    - name: Fejlessze a készségeit a Microsoft Learnnel
-      href: /learn/browse/?products=azure-redis-cache
-    - name: Azure-ütemterv
-      href: 'https://azure.microsoft.com/roadmap/?category=databases'
-    - name: Díjszabás
-      href: 'https://azure.microsoft.com/pricing/details/cache/'
     - name: Azure Cache for Redis – Gyakori kérdések
       href: cache-faq.md
     - name: Videók
       href: 'https://www.youtube.com/results?search_query=azure+redis+cache'
     - name: Microsoft Q&A kérdések oldala
       href: 'https://docs.microsoft.com/answers/topics/azure-cache-redis.html'
+    - name: Díjszabás
+      href: 'https://azure.microsoft.com/pricing/details/cache/'
+    - name: Fejlessze a készségeit a Microsoft Learnnel
+      href: /learn/browse/?products=azure-redis-cache
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/roadmap/?category=databases'

@@ -68,7 +68,9 @@
       href: my-account-portal-privacy-page.md
     - name: A legutóbbi bejelentkezési tevékenység megtekintése
       href: my-account-portal-sign-ins-page.md
-- name: Biztonsági adatok (előzetes verzió) súgója
+    - name: A portálbeállítások módosítása
+      href: my-account-portal-settings.md
+- name: Biztonsági adatok súgója
   items:
     - name: Biztonsági adatok hozzáadása bejelentkezéskor
       href: security-info-setup-signin.md

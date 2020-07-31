@@ -42,6 +42,8 @@
   items:
     - name: A Form Recognizer használata a Cognitive Searchcsel
       href: 'https://docs.microsoft.com/azure/search/cognitive-search-custom-skill-form'
+    - name: A Form Recognizer használata AI Builderrel
+      href: tutorial-ai-builder.md
 - name: Útmutatók
   items:
     - name: Betanítási adathalmaz létrehozása

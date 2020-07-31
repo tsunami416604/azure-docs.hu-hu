@@ -304,6 +304,8 @@
               items:
                 - name: Foglalások és kihasználtság megtekintése
                   href: reservations/view-reservations.md?toc=/azure/cost-management-billing/toc.json
+                - name: Foglalások megtekintése CSP-ként
+                  href: reservations/how-to-view-csp-reservations.md?toc=/azure/cost-management-billing/toc.json
                 - name: Foglalások kezelése
                   href: reservations/manage-reserved-vm-instance.md?toc=/azure/cost-management-billing/toc.json
                 - name: Cserére és visszatérítésre vonatkozó foglalások

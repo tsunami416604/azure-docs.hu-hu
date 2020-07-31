@@ -206,11 +206,11 @@
           href: event-hubs-management-libraries.md
     - name: Biztonságos
       items:
-        - name: IP-tűzfal konfigurálása
+        - name: Hozzáférés engedélyezése meghatározott IP-címekről
           href: event-hubs-ip-filtering.md
-        - name: Virtuális hálózati szolgáltatásvégpontok konfigurálása
+        - name: Hozzáférés engedélyezése meghatározott virtuális hálózatokról
           href: event-hubs-service-endpoints.md
-        - name: Privát végpontok konfigurálása
+        - name: Hozzáférés engedélyezése privát végpontokon keresztül
           href: private-link-service.md
         - name: Ügyfél által felügyelt kulcsok konfigurálása
           href: configure-customer-managed-key.md

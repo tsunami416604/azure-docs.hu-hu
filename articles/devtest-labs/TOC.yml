@@ -232,6 +232,10 @@
           href: devtest-lab-mandatory-artifacts.md
         - name: Összetevők alkalmazásával kapcsolatos hibák elhárítása
           href: devtest-lab-troubleshoot-apply-artifacts.md
+    - name: Laborok által használt tároló-és operációsrendszer-lemezek titkosítása
+      items:
+        - name: Labor által tárolók titkosítása
+          href: encrypt-storage.md
     - name: Integrálás a CI/CD-vel
       items:
         - name: Tesztkörnyezetek integrálása az Azure Pipelines CI/CD-folyamatába

@@ -220,11 +220,11 @@
               href: service-bus-resource-manager-namespace-topic-with-rule.md
     - name: Biztonságos
       items:
-        - name: Tűzfalak konfigurálása
+        - name: Hozzáférés engedélyezése meghatározott IP-címekről
           href: service-bus-ip-filtering.md
-        - name: Virtuális hálózati szolgáltatásvégpontok konfigurálása
+        - name: Hozzáférés engedélyezése meghatározott virtuális hálózatokról
           href: service-bus-service-endpoints.md
-        - name: Privát végpontok konfigurálása
+        - name: Hozzáférés engedélyezése privát végpontokon keresztül
           href: private-link-service.md
         - name: Ügyfél által felügyelt kulcsok konfigurálása
           href: configure-customer-managed-key.md

@@ -42,8 +42,10 @@
           href: how-to-use-cli.md
         - name: Példány és hitelesítés beállítása (szkriptelt)
           href: how-to-set-up-instance-scripted.md
-        - name: Példány és hitelesítés beállítása (manuális)
-          href: how-to-set-up-instance-manual.md
+        - name: Példány és hitelesítés beállítása (parancssori felület)
+          href: how-to-set-up-instance-cli.md
+        - name: Példány és hitelesítés beállítása (portál)
+          href: how-to-set-up-instance-portal.md
         - name: Alkalmazáshitelesítési kód írása
           href: how-to-authenticate-client.md
     - name: Tervezési modellek

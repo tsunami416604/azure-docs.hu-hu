@@ -12,9 +12,13 @@
   items:
     - name: Virtuális gép létrehozása a portálon
       href: ../virtual-machines/windows/quick-create-portal.md?toc=/azure/azure-portal/toc.json&bc=/azure/azure-portal/breadcrumb/toc.json
-    - name: Irányítópult létrehozása – ARM-sablon
-      displayName: Resource Manager
-      href: quick-create-template.md
+    - name: Irányítópult létrehozása
+      items:
+        - name: Azure PowerShell
+          href: quickstart-portal-dashboard-powershell.md
+        - name: ARM-sablon
+          displayName: Resource Manager
+          href: quick-create-template.md
 - name: Alapelvek
   items:
     - name: Irányítópultok megosztása szerepköralapú hozzáférés-vezérléssel

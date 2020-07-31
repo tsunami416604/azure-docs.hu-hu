@@ -4,6 +4,8 @@
   items:
     - name: Tudnivalók az Azure App Configurationről
       href: overview.md
+    - name: Ajánlott eljárások
+      href: howto-best-practices.md
     - name: GYIK
       href: faq.md
 - name: Rövid útmutatók
@@ -34,26 +36,32 @@
           href: quickstart-feature-flag-spring-boot.md
 - name: Oktatóanyagok
   items:
-    - name: Dinamikus konfiguráció engedélyezése az ASP.NET Core-ban
-      href: enable-dynamic-configuration-aspnet-core.md
-    - name: Dinamikus konfiguráció engedélyezése .NET Core-alkalmazásban
-      href: enable-dynamic-configuration-dotnet-core.md
-    - name: Dinamikus konfiguráció engedélyezése a .NET-keretrendszerben
-      href: enable-dynamic-configuration-dotnet.md
-    - name: Dinamikus konfiguráció engedélyezése az Azure Functionsben
-      href: enable-dynamic-configuration-azure-functions-csharp.md
-    - name: Dinamikus konfiguráció engedélyezése a Spring Bootban
-      href: enable-dynamic-configuration-java-spring-app.md
-    - name: Funkciójelölők használata .NET Core-alkalmazásokban
-      href: use-feature-flags-dotnet-core.md
-    - name: Funkciójelölők használata Spring Boot-alkalmazásokban
-      href: use-feature-flags-spring-boot.md
+    - name: Dinamikus konfiguráció engedélyezése
+      items:
+        - name: ASP.NET-mag
+          href: enable-dynamic-configuration-aspnet-core.md
+        - name: .NET Core
+          href: enable-dynamic-configuration-dotnet-core.md
+        - name: .NET-keretrendszer
+          href: enable-dynamic-configuration-dotnet.md
+        - name: Azure Functions
+          href: enable-dynamic-configuration-azure-functions-csharp.md
+        - name: Spring Boot
+          href: enable-dynamic-configuration-java-spring-app.md
+    - name: Funkciójelzők használata
+      items:
+        - name: .NET Core
+          href: use-feature-flags-dotnet-core.md
+        - name: Spring Boot
+          href: use-feature-flags-spring-boot.md
     - name: Funkciójelölők kezelése
       href: manage-feature-flags.md
-    - name: Key Vault-hivatkozások használata az ASP.NET Core-ban
-      href: use-key-vault-references-dotnet-core.md
-    - name: Key Vault-hivatkozások használata a Spring Bootban
-      href: use-key-vault-references-spring-boot.md
+    - name: Key Vault-referenciák használata
+      items:
+        - name: ASP.NET-mag
+          href: use-key-vault-references-dotnet-core.md
+        - name: Spring Boot
+          href: use-key-vault-references-spring-boot.md
     - name: Integráció CI-/CD-folyamattal
       href: integrate-ci-cd-pipeline.md
     - name: Integrálás Kubernetes-telepítéssel a Helm használatával
@@ -105,8 +113,6 @@
       href: howto-app-configuration-event.md
     - name: A konfigurációs tár automatikus biztonsági mentése
       href: howto-backup-config-store.md
-    - name: Ajánlott eljárások
-      href: howto-best-practices.md
 - name: Referencia
   items:
     - name: Konfiguráció

@@ -7,8 +7,6 @@
 - name: Rövid útmutatók
   expanded: true
   items:
-    - name: Kapcsolatfigyelő (előzetes verzió)
-      href: connection-monitor-preview.md
     - name: Virtuális gép forgalomszűrési problémáinak diagnosztizálása – Portal
       href: diagnose-vm-network-traffic-filtering-problem.md
     - name: Virtuális gép forgalomszűrési problémáinak diagnosztizálása – PowerShell
@@ -27,6 +25,8 @@
       href: network-watcher-nsg-flow-logging-portal.md
 - name: Alapelvek
   items:
+    - name: Kapcsolatfigyelő (előzetes verzió)
+      href: connection-monitor-preview.md
     - name: Virtuális gép hálózati forgalmi problémáinak diagnosztizálása
       href: network-watcher-ip-flow-verify-overview.md
     - name: A virtuális gép útválasztási problémáinak diagnosztizálása
@@ -162,6 +162,10 @@
       href: view-relative-latencies.md
     - name: Hálózati teljesítmény monitorozása
       href: ../log-analytics/log-analytics-network-performance-monitor.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json
+    - name: Erőforrások áthelyezése
+      items:
+        - name: A Network Watcher erőforrásainak áthelyezése
+          href: resource-move.md
 - name: Referencia
   items:
     - name: Azure CLI
