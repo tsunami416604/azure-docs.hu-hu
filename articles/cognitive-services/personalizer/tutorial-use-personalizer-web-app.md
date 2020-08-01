@@ -3,12 +3,12 @@ title: Webalkalmazás használata – személyre szabás
 description: A C# .NET-webalkalmazások személyre szabási hurokkal való testreszabásával a megfelelő tartalom biztosítható a felhasználók számára a műveletek (szolgáltatások) és a környezeti funkciók alapján.
 ms.topic: tutorial
 ms.date: 06/10/2020
-ms.openlocfilehash: b8b5c005f7003f9b0d9ac228c5a5961c80c85599
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 6e3373ef8ace401ff40b3d48026fc46b96f1ad79
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87133129"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446361"
 ---
 # <a name="tutorial-add-personalizer-to-a-net-web-app"></a>Oktatóanyag: személyre szabás hozzáadása egy .NET-webalkalmazáshoz
 
@@ -41,7 +41,7 @@ Ebben az oktatóanyagban a műveletek élelmiszeripari típusok:
 * kávét
 * leves
 
-Ha segítségre van kíváncsi a személyre szabott műveletek megismeréséhez, küldje el a_funkciók_ és a _környezeti funkciók_ együttesét is.
+Ha segítségre van kíváncsi a személyre szabott műveletekről, az egyes rangsorolt API-kérelmekkel mindkét műveletet elküldheti a _funkciókkal_ és a _környezeti funkciókkal_ .
 
 A modell egyik **funkciója** azon művelet vagy környezet információja, amely összesíthető (csoportosított) a webalkalmazás felhasználói bázisának tagjai között. Egy szolgáltatás _nem_ egyedi (például felhasználói azonosító) vagy kifejezetten specifikus (például pontos napszak).
 
@@ -579,7 +579,7 @@ Többek között a következő további beállítások játszhatók le:
 * Kutatási százalék
 
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha elkészült ezzel az Oktatóanyaggal, törölje a következő erőforrásokat:
 

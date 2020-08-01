@@ -6,13 +6,13 @@ ms.author: nimoolen
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 06/02/2020
-ms.openlocfilehash: 27de2d3926a1f03cbd9169216e8f68c8ca81f2a5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/29/2020
+ms.openlocfilehash: d28cd7a7edd5d6405761bf21ee87ec39dc9ec9cb
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84298601"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448545"
 ---
 # <a name="data-flow-script-dfs"></a>Adatfolyam-parancsfájl (DFS)
 
@@ -195,13 +195,21 @@ Aggregate1 derive(string_agg = toString(string_agg)) ~> DerivedColumn2
 ```
 
 ### <a name="count-number-of-updates-upserts-inserts-deletes"></a>Frissítések száma, upsert, beszúrások, törlés
-Módosítási sor átalakításának használatakor érdemes lehet megszámolni a frissítések számát, a upsert, a lapkákat, és törli a módosítási sor házirendjeiből származó eredményeket. Vegyen fel egy összesített átalakítást az Alter (módosítás) sor után, és illessze be az adatfolyamati parancsfájlt az összesített definícióba az alábbi számokhoz:
+Módosítási sor átalakításának használatakor érdemes lehet megszámolni a frissítések számát, a upsert, a lapkákat, és törli a módosítási sor házirendjeiből származó eredményeket. Vegyen fel egy összesített átalakítást az Alter (módosítás) sor után, és illessze be ezt az adatfolyam-parancsfájlt az összesített definícióba.
 
 ```
 aggregate(updates = countIf(isUpdate(), 1),
         inserts = countIf(isInsert(), 1),
         upserts = countIf(isUpsert(), 1),
         deletes = countIf(isDelete(),1)) ~> RowCount
+```
+
+### <a name="distinct-row-using-all-columns"></a>Különálló sor az összes oszlop használatával
+Ez a kódrészlet egy új összesített átalakítást ad hozzá az adatfolyamathoz, amely minden bejövő oszlopot végrehajt, és egy olyan kivonatot hoz létre, amelyet a rendszer a duplikált elemek kiiktatásához használ, majd adja meg az egyes duplikált elemek első előfordulását kimenetként. Nem kell explicit módon megadnia az oszlopokat, ezeket a rendszer automatikusan létrehozza a bejövő adatfolyamból.
+
+```
+aggregate(groupBy(mycols = sha2(256,columns())),
+    each(match(true()), $$ = first($$))) ~> DistinctRows
 ```
 
 ## <a name="next-steps"></a>További lépések

@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: overview
 ms.date: 07/07/2020
 ms.author: anavin
-ms.openlocfilehash: 8b44dc230dbee1b29b9889a1b81e35ebe25f6b97
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 24c5133b9c012b628e43e956c56d5112e1ad4649
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87078684"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447022"
 ---
 # <a name="whats-new-in-azure-load-balancer"></a>A Azure Load Balancer újdonságai
 
@@ -34,6 +34,16 @@ Itt megtalálhatja a legújabb Azure Load Balancer frissítéseket, és feliratk
 | Érvényesítés | A HA-portok érvényesítésének hozzáadása | Az érvényesítés hozzá lett adva annak biztosításához, hogy ha a lebegőpontos IP-cím engedélyezve van, akkor a HA portra vonatkozó szabályok és a nem szükséges portszabályok nem konfigurálhatók. Korábban ez a konfiguráció áthalad, de nem a kívánt módon működik. Nem történt változás a funkcionalitásban. További információt [itt](load-balancer-ha-ports-overview.md#limitations) talál| 2020. június |
 | Funkció| IPv6-támogatás a Azure Load Balancerhoz (általánosan elérhető) | Az Azure Load Balancer előtérben az IPv6-címek is megadhatók. Itt megtudhatja, hogyan [hozhat létre Dual stack-alkalmazást](../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md) |2020. április|
 | Funkció| A TCP alaphelyzetbe állítása üresjárati időkorláton (általánosan elérhető)| A TCP-visszaállítók használatával kiszámítható alkalmazások viselkedése hozható létre. [További információ](load-balancer-tcp-reset.md)| 2020. február |
+
+## <a name="known-issues"></a>Ismert problémák
+
+A termékcsoport aktívan dolgozik a következő ismert problémák megoldásán:
+
+|Probléma |Leírás  |Kockázatcsökkentés  |
+| ---------- |---------|---------|
+| Log Analytics exportálás | Log Analytics nem exportálhatja a standard Load Balancer metrikáit és az alapszintű Load Balancerhoz tartozó állapot-mintavételi eseménynaplókat.  | [Használja Azure monitor a többdimenziós metrikák számára a standard Load Balancer](load-balancer-standard-diagnostics.md). Habár nem tudja használni a Log Analytics a figyeléshez, Azure Monitor a többdimenziós metrikák gazdag készletének vizualizációját biztosítja. Az előre konfigurált mérőszámok irányítópultot a Load Balancer elemzések alpaneljén keresztül is kihasználhatja. Ha az alapszintű Load Balancer az üzemi szintű mérőszámok figyelése standard szintre való [frissítését](upgrade-basic-standard.md) használja.
+
+  
 
 ## <a name="next-steps"></a>További lépések
 

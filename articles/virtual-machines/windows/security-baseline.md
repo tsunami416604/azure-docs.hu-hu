@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 10802cd141e0b10e30cb01d3d1dc385aedf7fc1e
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 11b532b5ece10c8a9ac6dad61e4ca64a9f19f901
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387013"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87445210"
 ---
 # <a name="azure-security-baseline-for-windows-virtual-machines"></a>Windows Virtual Machines Azure biztonsági alapterve
 
@@ -620,9 +620,9 @@ A Microsoft a Transport Layer Security (TLS) protokollt használja az adatvédel
 
 **Útmutató**: az Azure Update Management megoldás használatával kezelheti a virtuális gépek frissítéseit és javításait. A Update Management a helyileg konfigurált frissítési tárházra támaszkodik a támogatott Windows-rendszerek javításához. Az olyan eszközök, mint a System Center Updates Publisher (a frissítések közzétevője) lehetővé teszik egyéni frissítések közzétételét Windows Server Update Services (WSUS) szolgáltatásban. Ez a forgatókönyv lehetővé teszi, hogy Update Management a harmadik féltől származó szoftverrel rendelkező frissítési adattárként Configuration Manager használó gépeket.
 
-* [Update Management megoldás az Azure-ban](../../automation/automation-update-management.md)
+* [Update Management megoldás az Azure-ban](../../automation/update-management/update-mgmt-overview.md)
 
-* [Azure-beli virtuális gépek frissítéseinek és javításának kezelése](../../automation/automation-tutorial-update-management.md)
+* [A virtuális gépek frissítéseinek és javításának kezelése](../../automation/update-management/update-mgmt-manage-updates-for-vm.md)
 
 **Azure Security Center figyelés**: igen
 
@@ -632,9 +632,9 @@ A Microsoft a Transport Layer Security (TLS) protokollt használja az adatvédel
 
 **Útmutató**: külső gyártótól származó javítási felügyeleti megoldás használata is lehetséges. Az Azure Update Management megoldással kezelheti a virtuális gépek frissítéseit és javításait. A Update Management a helyileg konfigurált frissítési tárházra támaszkodik a támogatott Windows-rendszerek javításához. Az olyan eszközök, mint a System Center Updates Publisher (a frissítések közzétevője) lehetővé teszik egyéni frissítések közzétételét Windows Server Update Services (WSUS) szolgáltatásban. Ez a forgatókönyv lehetővé teszi, hogy Update Management a harmadik féltől származó szoftverrel rendelkező frissítési adattárként Configuration Manager használó gépeket.
 
-* [Update Management megoldás az Azure-ban](../../automation/automation-update-management.md)
+* [Update Management megoldás az Azure-ban](../../automation/update-management/update-mgmt-overview.md)
 
-* [Azure-beli virtuális gépek frissítéseinek és javításának kezelése](../../automation/automation-tutorial-update-management.md)
+* [A virtuális gépek frissítéseinek és javításának kezelése](../../automation/update-management/update-mgmt-manage-updates-for-vm.md)
 
 **Azure Security Center figyelés**: nem érhető el
 
@@ -1187,7 +1187,7 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 **Felelősség**: megosztott
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Lásd az [Azure biztonsági teljesítménytesztét](../../security/benchmarks/overview.md)
 - További információ az [Azure biztonsági alaptervekről](../../security/benchmarks/security-baselines-overview.md)

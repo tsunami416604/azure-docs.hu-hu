@@ -16,12 +16,12 @@ ms.topic: reference
 ms.date: 03/20/2019
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ace8d170a5ba48c00775c3b376df8bb70a337d5d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 31388f27eddcef2c75d4ad4d2030655b35f6aa1c
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76897033"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446966"
 ---
 # <a name="azure-ad-connect-health-version-release-history"></a>Azure AD Connect Health: Version History (Az Azure AD Connect Health verzióelőzményei)
 A Azure Active Directory csapat rendszeresen frissíti Azure AD Connect Health új szolgáltatásokkal és funkciókkal. Ez a cikk felsorolja a kiadott verziókat és szolgáltatásokat.  
@@ -109,7 +109,7 @@ A szinkronizálás Azure AD Connect Health integrálva van Azure AD Connect tele
   1. Gyorsjavítás az ügynök memóriájának kezeléséhez és a kapcsolódó riasztásokhoz, kifejezetten a 3.0.244.0 verzióhoz
 
 
-## <a name="may-2018"></a>2018. máj.
+## <a name="may-2018"></a>2018. május
 **Ügynök frissítése:**
 * AD DS-ügynök Azure AD Connect Health (verzió: 3.0.244.0)
   1. Ügynök adatvédelem fejlesztése  
@@ -217,7 +217,7 @@ A szinkronizálás Azure AD Connect Health integrálva van Azure AD Connect tele
 ## <a name="november-2015"></a>2015. november
 **Új funkciók:**
 
-* Szerepkör- [alapú Access Control](how-to-connect-health-operations.md#manage-access-with-role-based-access-control) támogatása
+* [Azure szerepköralapú hozzáférés-vezérlés támogatása (Azure RBAC)](how-to-connect-health-operations.md#manage-access-with-role-based-access-control)
 
 **Új előzetes verziójú funkciók:**
 
@@ -253,4 +253,3 @@ A szinkronizálás Azure AD Connect Health integrálva van Azure AD Connect tele
 
 ## <a name="next-steps"></a>További lépések
 További információ a helyszíni [identitás-infrastruktúra és a szinkronizálási szolgáltatások Felhőbeli figyeléséről](whatis-hybrid-identity-health.md).
-

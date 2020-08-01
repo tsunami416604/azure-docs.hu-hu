@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: rogarana
-ms.openlocfilehash: 48441a48fe6f72e88e080967451d9904c3e586b2
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 65d7845763b60a66f396d9081f3c9c6e1d04c1bc
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372321"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447251"
 ---
 # <a name="overview-of-azure-files-identity-based-authentication-options-for-smb-access"></a>Az SMB-hozzáférésre vonatkozó Azure Files identitás-alapú hitelesítési beállítások áttekintése
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -44,7 +44,7 @@ Hasznos megérteni az Azure AD tartományi szolgáltatás hitelesítésével kap
 
     A helyszíni Active Directory tartományi szolgáltatások (AD DS) Azure Files integrációja biztosítja a címtáradatok tárolásának módszereit, miközben elérhetővé teszi a hálózati felhasználók és a rendszergazdák számára. A biztonság integrálva van AD DS a bejelentkezési hitelesítéssel és a címtárban található objektumok hozzáférés-vezérlésével. A rendszergazdák egyetlen hálózati bejelentkezéssel kezelhetik a címtáradatokat és a szervezetet a hálózaton belül, és a jogosult hálózati felhasználók hozzáférhetnek az erőforrásokhoz a hálózat bármely pontján. A AD DS általában a helyszíni környezetben működő vállalatok fogadják el, és AD DS hitelesítő adatokat használják a hozzáférés-vezérlés identitásának. További információ: [Active Directory tartományi szolgáltatások Overview (áttekintés](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview)).
 
--   **Azure-beli szerepköralapú Access Control (RBAC)**
+-   **Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)**
 
     Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) lehetővé teszi a részletes hozzáférés-kezelést az Azure-hoz. A RBAC használatával kezelheti az erőforrásokhoz való hozzáférést azáltal, hogy a felhasználóknak a feladatok végrehajtásához szükséges legkevesebb jogosultságot biztosítanak. További információ a RBAC: [Mi az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) az Azure-ban?](../../role-based-access-control/overview.md).
 
@@ -143,7 +143,7 @@ Azure Files támogatja az adatok Azure-fájlmegosztásba való másolásakor a c
 ## <a name="pricing"></a>Díjszabás
 A Storage-fiókjában nem található további szolgáltatás, amely lehetővé teszi az identitás-alapú hitelesítés használatát az SMB protokollon keresztül. A díjszabással kapcsolatos további információkért tekintse meg a [Azure Files díjszabását](https://azure.microsoft.com/pricing/details/storage/files/) és a [Azure ad Domain Services díjszabását](https://azure.microsoft.com/pricing/details/active-directory-ds/).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az SMB-en keresztüli Azure Files-és identitás-alapú hitelesítéssel kapcsolatos további információkért tekintse meg a következő forrásokat:
 
 - [Azure Files üzembe helyezésének tervezése](storage-files-planning.md)

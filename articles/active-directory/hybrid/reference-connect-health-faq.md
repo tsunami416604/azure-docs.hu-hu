@@ -16,12 +16,12 @@ ms.topic: reference
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0c6484f46731e0ff2d16d00cb0038202511d193
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 427a09f3855d44af0206ebf1fd6183099da75f19
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80331084"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446973"
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Azure AD Connect Health gyakori kérdések
 Ez a cikk válaszokat tartalmaz a Azure Active Directory (Azure AD) kapcsolati állapotával kapcsolatos gyakori kérdésekre (GYIK). Ezek a gyakori kérdések a szolgáltatás használatával kapcsolatos kérdéseket foglalják magukban, beleértve a számlázási modellt, a képességeket, a korlátozásokat és a támogatást.
@@ -135,7 +135,7 @@ Az állapotfigyelő ügynök a következő lehetséges okok miatt nem tud regisz
 
 * Az ügynök nem tud kommunikálni a szükséges végpontokkal, mert a tűzfal blokkolja a forgalmat. Ez különösen gyakori a webalkalmazás-proxy kiszolgálókon. Győződjön meg arról, hogy engedélyezett-e a kimenő kommunikáció a szükséges végpontokkal és portokkal. Részletekért tekintse meg a [követelmények szakaszt](how-to-connect-health-agent-install.md#requirements) .
 * A kimenő kommunikációra a hálózati réteg TLS-ellenőrzése vonatkozik. Ez azt eredményezi, hogy az ügynök által használt tanúsítvány lecserélhető az ellenőrzési kiszolgáló/entitás számára, és az ügynök regisztrációjának befejezéséhez szükséges lépések sikertelenek lesznek.
-* A felhasználónak nincs hozzáférése az ügynök regisztrációjának elvégzéséhez. A globális rendszergazdák alapértelmezés szerint rendelkeznek hozzáféréssel. A [szerepkörön alapuló Access Control](how-to-connect-health-operations.md#manage-access-with-role-based-access-control) használatával delegálhatja a hozzáférést más felhasználóknak.
+* A felhasználónak nincs hozzáférése az ügynök regisztrációjának elvégzéséhez. A globális rendszergazdák alapértelmezés szerint rendelkeznek hozzáféréssel. Az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](how-to-connect-health-operations.md#manage-access-with-role-based-access-control) használatával delegálhatja a hozzáférést más felhasználóknak.
 
 **K: értesítést kapok arról, hogy "Állapotfigyelő szolgáltatás adatok nem naprakészek." Hogyan a probléma megoldásához?**
 

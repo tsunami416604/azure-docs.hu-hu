@@ -12,12 +12,12 @@ ms.reviewer: nibaccam
 ms.date: 04/20/2020
 ms.topic: conceptual
 ms.custom: how-to, tracking-python
-ms.openlocfilehash: d22afd60d4c89c842d78d5803b4d04965eca6fda
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 47dec238474558869d6c8f7fc876e72bb5be6ff5
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320850"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87457651"
 ---
 # <a name="train-with-datasets-in-azure-machine-learning"></a>Betanítás Azure Machine Learning-adatkészletekkel
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -191,14 +191,24 @@ y_train = load_data(y_train_path, True).reshape(-1)
 y_test = load_data(y_test, True).reshape(-1)
 ```
 
+## <a name="accessing-source-code-during-training"></a>Forráskód elérése a betanítás során
+
+Az Azure Blob Storage nagyobb átviteli sebességgel rendelkezik, mint egy Azure-fájlmegosztás, és nagy mennyiségű, párhuzamosan elindított feladatra fog méretezni. Ezért javasoljuk, hogy a futtatások konfigurálásával blob Storage-t használjon a forráskód-fájlok átviteléhez.
+
+A következő kódrészlet a futtatási konfigurációt adja meg, amely a blob-adatforgalomhoz használandó blob-adattár.
+
+```python 
+# workspaceblobstore is the default blob storage
+run_config.source_directory_data_store = "workspaceblobstore" 
+```
 
 ## <a name="mount-vs-download"></a>Csatlakoztatás vs Letöltés
 
 Az Azure Blob Storage, Azure Files, Azure Data Lake Storage Gen1, Azure Data Lake Storage Gen2, Azure SQL Database és Azure Database for PostgreSQL által létrehozott adatkészletek esetében bármilyen formátumú fájlok csatlakoztatása vagy letöltése támogatott. 
 
-Adatkészlet csatlakoztatásakor az adatkészlet által hivatkozott fájlokat csatolja egy könyvtárhoz (csatlakoztatási ponthoz), és elérhetővé teszi azt a számítási célra. A csatlakoztatás Linux-alapú számításokhoz, többek között Azure Machine Learning számításokhoz, virtuális gépekhez és HDInsight támogatott. 
+Adatkészlet **csatlakoztatásakor** az adatkészlet által hivatkozott fájlokat csatolja egy könyvtárhoz (csatlakoztatási ponthoz), és elérhetővé teszi azt a számítási célra. A csatlakoztatás Linux-alapú számításokhoz, többek között Azure Machine Learning számításokhoz, virtuális gépekhez és HDInsight támogatott. 
 
-Adatkészlet letöltésekor a rendszer az adatkészlet által hivatkozott összes fájlt letölti a számítási célra. A letöltés minden számítási típus esetében támogatott. 
+Adatkészlet letöltésekor a rendszer az adatkészlet által hivatkozott összes fájlt **letölti** a számítási célra. A letöltés minden számítási típus esetében támogatott. 
 
 Ha a szkript feldolgozza az adatkészlet által hivatkozott összes fájlt, és a számítási lemez elfér a teljes adatkészletben, a letöltés javasolt a tárolási szolgáltatásokból származó adatok átvitelének elkerülése érdekében. Ha az adatok mérete meghaladja a számítási lemez méretét, a letöltés nem lehetséges. Ebben a forgatókönyvben javasoljuk a csatlakoztatást, mivel csak a parancsfájl által használt adatfájlok töltődnek be a feldolgozás során.
 
@@ -228,4 +238,4 @@ Az [adatkészlet jegyzetfüzetei](https://aka.ms/dataset-tutorial) bemutatják �
 
 * [Képosztályozási modellek betanítása](https://aka.ms/filedataset-samplenotebook) a FileDatasets.
 
-* [Adatkészletek betanítása a folyamatok használatával](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/pipeline-with-datasets/pipeline-for-image-classification.ipynb).
+* [Adatkészletek betanítása a folyamatok használatával](how-to-create-your-first-pipeline.md).

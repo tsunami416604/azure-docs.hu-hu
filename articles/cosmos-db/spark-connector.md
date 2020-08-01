@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/21/2019
 ms.author: ramkris
-ms.openlocfilehash: ef2691f63d7bb8c468d065b82c9726e8f7740c20
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: ce017d1ac92e3aabe7ad0e36b2e8b87dc04b34f6
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203165"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87445940"
 ---
 # <a name="accelerate-big-data-analytics-by-using-the-apache-spark-to-azure-cosmos-db-connector"></a>Gyorsítsa fel big data elemzést az Azure Cosmos DB Connector Apache Spark használatával
 
@@ -95,7 +95,7 @@ writeConfig = {
 }
 
 # Write to Cosmos DB from the flights DataFrame
-flights.write.format("com.microsoft.azure.cosmosdb.spark").options(
+flights.write.mode("overwrite").format("com.microsoft.azure.cosmosdb.spark").options(
     **writeConfig).save()
 ```
 
@@ -309,7 +309,7 @@ További információ a `azure-cosmosdb-spark` [wikiben](https://github.com/Azur
 * [Hírcsatorna-bemutatók módosítása](https://github.com/Azure/azure-cosmosdb-spark/wiki/Change-Feed-demos)
 * [Strukturált stream-bemutatók](https://github.com/Azure/azure-cosmosdb-spark/wiki/Structured-Stream-demos)
 
-### <a name="monitoring"></a>Monitorozás
+### <a name="monitoring"></a>Figyelés
 
 * [Spark-feladatok figyelése az Application bepillantást](https://github.com/Azure/azure-cosmosdb-spark/tree/2.3/samples/monitoring)
 

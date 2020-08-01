@@ -7,13 +7,14 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 07/16/2020
-ms.openlocfilehash: c0a397ac71c7c466145357093b6c22f78e627d1c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 07/29/2020
+ms.custom: generated
+ms.openlocfilehash: edf0d0085a8f1f9446e9c699c15b1eebb0a2d004
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86511585"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448896"
 ---
 # <a name="azure-built-in-roles"></a>Beépített Azure-szerepkörök
 
@@ -112,7 +113,7 @@ Az alábbi táblázat egy rövid leírást és az egyes beépített szerepkörö
 > | [HDInsight tartományi szolgáltatások közreműködője](#hdinsight-domain-services-contributor) | Elolvashatja, létrehozhatja, módosíthatja és törölheti a HDInsight kapcsolatos tartományi szolgáltatásokat Enterprise Security Package | 8d8d5a11-05d3-4bda-a417-a08778121c7c |
 > | [Log Analytics közreműködő](#log-analytics-contributor) | Log Analytics közreműködő képes olvasni az összes figyelési és szerkesztési beállítást. A figyelési beállítások szerkesztése magában foglalja a virtuálisgép-bővítmény virtuális gépekhez való hozzáadását. a Storage-fiók kulcsainak beolvasása az Azure Storage-ból származó naplók gyűjtésének konfigurálásához; Automation-fiókok létrehozása és konfigurálása; megoldások hozzáadása; és az Azure Diagnostics konfigurálása az összes Azure-erőforráshoz. | 92aaf0da-9dab-42b6-94a3-d43ce8d16293 |
 > | [Log Analytics olvasó](#log-analytics-reader) | Log Analytics olvasó megtekintheti és megkeresheti az összes figyelési adatait, valamint megtekintheti a figyelési beállításokat, beleértve az Azure Diagnostics konfigurációjának megtekintését az összes Azure-erőforráson. | 73c42c96-874c-492b-b04d-ab87d138a893 |
-> | **Blockchain** |  |  |
+> | **Blokklánc** |  |  |
 > | [Blockchain-hozzáférés (előzetes verzió)](#blockchain-member-node-access-preview) | Engedélyezi a hozzáférést a Blockchain-tagok csomópontjaihoz | 31a002a1-acaf-453e-8a5b-297c9ca1ea24 |
 > | **AI és gépi tanulás** |  |  |
 > | [Cognitive Services közreműködő](#cognitive-services-contributor) | Lehetővé teszi Cognitive Services kulcsainak létrehozását, olvasását, frissítését, törlését és kezelését. | 25fbc0a9-bd7c-42a3-aa1a-3b75d497ee68 |
@@ -149,9 +150,9 @@ Az alábbi táblázat egy rövid leírást és az egyes beépített szerepkörö
 > | [Felügyelt identitás közreműködői](#managed-identity-contributor) | Felhasználóhoz rendelt identitás létrehozása, olvasása, frissítése és törlése | e40ec5ca-96e0-45a2-b4ff-59039f2c2b59 |
 > | [Felügyelt identitás operátora](#managed-identity-operator) | Felhasználóhoz rendelt identitás olvasása és hozzárendelése | f1a07417-d97a-45cb-824c-7a7467783830 |
 > | **Biztonság** |  |  |
-> | [Azure Sentinel közreműködő](#azure-sentinel-contributor) | Azure Sentinel közreműködő | ab8e14d6-4a74-4a29-9ba8-549422addade |
-> | [Azure Sentinel-olvasó](#azure-sentinel-reader) | Azure Sentinel-olvasó | 8d289c81-5878-46d4-8554-54e1e3d8b5cb |
-> | [Azure Sentinel-válaszadó](#azure-sentinel-responder) | Azure Sentinel-válaszadó | 3e150937-b8fe-4cfb-8069-0eaf05ecd056 |
+> | [Azure Sentinel Contributor](#azure-sentinel-contributor) | Azure Sentinel Contributor | ab8e14d6-4a74-4a29-9ba8-549422addade |
+> | [Azure Sentinel Reader](#azure-sentinel-reader) | Azure Sentinel Reader | 8d289c81-5878-46d4-8554-54e1e3d8b5cb |
+> | [Azure Sentinel Responder](#azure-sentinel-responder) | Azure Sentinel Responder | 3e150937-b8fe-4cfb-8069-0eaf05ecd056 |
 > | [Key Vault közreműködő](#key-vault-contributor) | Lehetővé teszi a kulcstartók kezelését, de azokhoz való hozzáférés nélkül. | f25e0fa2-a7c8-4377-a976-54943a77a395 |
 > | [Biztonsági rendszergazda](#security-admin) | Security Center engedélyeinek megtekintése és frissítése. Ugyanazok az engedélyek, mint a biztonsági olvasó szerepkör, és a biztonsági szabályzatot is frissíthetik, és elérhetik a riasztásokat és a javaslatokat. | fb1c8493-542b-48eb-b624-b4c8fea62acd |
 > | [Biztonsági értékelő közreműködő](#security-assessment-contributor) | Lehetővé teszi az értékelések leküldését Security Center | 612c2aa1-cb24-443b-ac28-3ab7272de6f5 |
@@ -180,6 +181,7 @@ Az alábbi táblázat egy rövid leírást és az egyes beépített szerepkörö
 > | [Cost Management közreműködő](#cost-management-contributor) | Megtekintheti a költségeket és kezelheti a költségek konfigurációját (pl. költségvetés, exportálás) | 434105ed-43f6-45c7-a02f-909b2ba83430 |
 > | [Cost Management olvasó](#cost-management-reader) | Megtekintheti a költségeket és a konfigurációt (például a költségvetést, az exportot) | 72fafb9e-0641-4937-9268 – a91bfd8191a3 |
 > | [Hierarchia-beállítások rendszergazdája](#hierarchy-settings-administrator) | Lehetővé teszi a felhasználóknak a hierarchia beállításainak szerkesztését és törlését | 350f8d15-c687-4448-8ae1-157740a3936d |
+> | [Kubernetes-fürt – Azure arc bevezetése](#kubernetes-cluster---azure-arc-onboarding) | Szerepkör-definíció bármely felhasználó/szolgáltatás engedélyezéséhez connectedClusters-erőforrás létrehozásához | 34e09817-6cbe-4d01-b1a2-e0eac5743d41 |
 > | [Felügyelt alkalmazás közreműködői szerepköre](#managed-application-contributor-role) | Lehetővé teszi a felügyelt alkalmazások erőforrásainak létrehozását. | 641177b8-a67a-45b9-a033-47bc880bb21e |
 > | [Felügyelt alkalmazás operátori szerepköre](#managed-application-operator-role) | Lehetővé teszi műveletek olvasását és végrehajtását a felügyelt alkalmazás erőforrásain | c7393b34-138c-406f-901b-d8cf2b17e6ae |
 > | [Felügyelt alkalmazások olvasója](#managed-applications-reader) | Lehetővé teszi az erőforrások olvasását egy felügyelt alkalmazásban, valamint a JIT-hozzáférés kérését. | b9331d33-8a36-4f8c-b097-4f54124fdb44 |
@@ -200,7 +202,7 @@ Az alábbi táblázat egy rövid leírást és az egyes beépített szerepkörö
 > | [Ütemező – feladattípusok közreműködői](#scheduler-job-collections-contributor) | Lehetővé teszi a Scheduler-feladatok összegyűjtését, de nem fér hozzájuk. | 188a0f2f-5c9e-469b-ae67-2aa5ce574b94 |
 
 
-## <a name="general"></a>Általános kérdések
+## <a name="general"></a>Általános
 
 
 ### <a name="contributor"></a>Közreműködő
@@ -666,7 +668,7 @@ Tekintse meg Virtual Machines a portálon, és jelentkezzen be normál felhaszn�
 }
 ```
 
-## <a name="networking"></a>Hálózatkezelés
+## <a name="networking"></a>Hálózat
 
 
 ### <a name="cdn-endpoint-contributor"></a>CDN-végpont közreműködői
@@ -2567,7 +2569,7 @@ Azure Storage-várólisták és üzenetsor-üzenetek olvasása és listázása. 
 }
 ```
 
-## <a name="web"></a>Webes
+## <a name="web"></a>Web
 
 
 ### <a name="azure-maps-data-reader"></a>Adatolvasó Azure Maps
@@ -2774,7 +2776,7 @@ Lehetővé teszi a webhelyek (nem webes csomagok) kezelését, de nem fér hozz�
 }
 ```
 
-## <a name="containers"></a>Tárolók
+## <a name="containers"></a>Containers
 
 
 ### <a name="acrdelete"></a>AcrDelete
@@ -3097,7 +3099,7 @@ Fürt felhasználói hitelesítő adatainak listázása. [További információ]
 
 ### <a name="azure-kubernetes-service-contributor-role"></a>Az Azure Kubernetes szolgáltatás közreműködői szerepköre
 
-Hozzáférést biztosít az Azure Kubernetes Service-fürtök olvasásához és írásához
+Hozzáférést biztosít az Azure Kubernetes Service-fürtök olvasásához és írásához. [További információ](../aks/concepts-identity.md)
 
 > [!div class="mx-tableFixed"]
 > | Műveletek | Leírás |
@@ -3140,7 +3142,7 @@ Hozzáférést biztosít az Azure Kubernetes Service-fürtök olvasásához és 
 
 ### <a name="azure-kubernetes-service-rbac-admin"></a>Az Azure Kubernetes Service RBAC rendszergazdája
 
-Lehetővé teszi a fürt/névtér területen lévő összes erőforrás felügyeletét, kivéve az erőforrás-kvóták és-névterek frissítését vagy törlését. [További információ](../aks/concepts-identity.md)
+Lehetővé teszi a fürt/névtér területen lévő összes erőforrás felügyeletét, kivéve az erőforrás-kvóták és-névterek frissítését vagy törlését. [További információ](../aks/manage-azure-rbac.md)
 
 > [!div class="mx-tableFixed"]
 > | Műveletek | Leírás |
@@ -3203,7 +3205,7 @@ Lehetővé teszi a fürt/névtér területen lévő összes erőforrás felügye
 
 ### <a name="azure-kubernetes-service-rbac-cluster-admin"></a>Azure Kubernetes Service RBAC-fürt rendszergazdája
 
-Lehetővé teszi a fürt összes erőforrásának kezelését. [További információ](../aks/concepts-identity.md)
+Lehetővé teszi a fürt összes erőforrásának kezelését. [További információ](../aks/manage-azure-rbac.md)
 
 > [!div class="mx-tableFixed"]
 > | Műveletek | Leírás |
@@ -3258,7 +3260,7 @@ Lehetővé teszi a fürt összes erőforrásának kezelését. [További inform�
 
 ### <a name="azure-kubernetes-service-rbac-reader"></a>Azure Kubernetes Service RBAC-olvasó
 
-Lehetővé teszi a fürt/névtér összes erőforrásának megtekintését, a titkok kivételével. [További információ](../aks/concepts-identity.md)
+Lehetővé teszi a fürt/névtér összes erőforrásának megtekintését, a titkok kivételével. [További információ](../aks/manage-azure-rbac.md)
 
 > [!div class="mx-tableFixed"]
 > | Műveletek | Leírás |
@@ -3319,7 +3321,7 @@ Lehetővé teszi a fürt/névtér összes erőforrásának megtekintését, a ti
 
 ### <a name="azure-kubernetes-service-rbac-writer"></a>Az Azure Kubernetes Service RBAC-írója
 
-Lehetővé teszi a fürt/névtér összes adatának frissítését, kivéve az erőforrás-kvótákat, a névtereket, a pod biztonsági házirendeket, a tanúsítvány-aláírási kéréseket, a fürt szerepköreit és a fürt szerepkör kötéseit. [További információ](../aks/concepts-identity.md)
+Lehetővé teszi a fürt/névtér összes adatának frissítését, kivéve az erőforrás-kvótákat, a névtereket, a pod biztonsági házirendeket, a tanúsítvány-aláírási kéréseket, a fürt szerepköreit és a fürt szerepkör kötéseit. [További információ](../aks/manage-azure-rbac.md)
 
 > [!div class="mx-tableFixed"]
 > | Műveletek | Leírás |
@@ -4494,7 +4496,7 @@ Log Analytics olvasó megtekintheti és megkeresheti az összes figyelési adata
 }
 ```
 
-## <a name="blockchain"></a>Blockchain
+## <a name="blockchain"></a>Blokklánc
 
 
 ### <a name="blockchain-member-node-access-preview"></a>Blockchain-hozzáférés (előzetes verzió)
@@ -6063,7 +6065,7 @@ A felhasználóhoz rendelt identitás olvasása és hozzárendelése [További i
 ## <a name="security"></a>Biztonság
 
 
-### <a name="azure-sentinel-contributor"></a>Azure Sentinel közreműködő
+### <a name="azure-sentinel-contributor"></a>Azure Sentinel Contributor
 
 [További információ](../sentinel/roles.md) az Azure Sentinel közreműködőről
 
@@ -6128,7 +6130,7 @@ A felhasználóhoz rendelt identitás olvasása és hozzárendelése [További i
 }
 ```
 
-### <a name="azure-sentinel-reader"></a>Azure Sentinel-olvasó
+### <a name="azure-sentinel-reader"></a>Azure Sentinel Reader
 
 Azure Sentinel-olvasó [További információ](../sentinel/roles.md)
 
@@ -6197,7 +6199,7 @@ Azure Sentinel-olvasó [További információ](../sentinel/roles.md)
 }
 ```
 
-### <a name="azure-sentinel-responder"></a>Azure Sentinel-válaszadó
+### <a name="azure-sentinel-responder"></a>Azure Sentinel Responder
 
 [További információ](../sentinel/roles.md) az Azure Sentinel válaszadóról
 
@@ -6486,12 +6488,12 @@ Security Center engedélyeinek megtekintése. Megtekintheti a javaslatokat, a ri
 > | Műveletek | Leírás |
 > | --- | --- |
 > | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/READ | Szerepkörök és szerepkör-hozzárendelések olvasása |
-> | [Microsoft.](resource-provider-operations.md#microsoftinsights)/alertRules/* | Klasszikus metrikai riasztás létrehozása és kezelése |
+> | [Microsoft.](resource-provider-operations.md#microsoftinsights)/alertRules/READ | Klasszikus metrikai riasztás beolvasása |
 > | [Microsoft. operationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/*/READ | Log Analytics-adatértékek megtekintése |
-> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Központi telepítés létrehozása és kezelése |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/*/READ |  |
 > | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/READ | Erőforráscsoportok beolvasása vagy felsorolása. |
 > | [Microsoft. Security](resource-provider-operations.md#microsoftsecurity)/*/READ | Biztonsági összetevők és szabályzatok olvasása |
-> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Támogatási jegy létrehozása és frissítése |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/*/READ |  |
 > | [Microsoft. Management](resource-provider-operations.md#microsoftmanagement)/managementGroups/READ | Felügyeleti csoportok listázása a hitelesített felhasználó számára. |
 > | **NotActions** |  |
 > | *nincs* |  |
@@ -6512,12 +6514,12 @@ Security Center engedélyeinek megtekintése. Megtekintheti a javaslatokat, a ri
     {
       "actions": [
         "Microsoft.Authorization/*/read",
-        "Microsoft.Insights/alertRules/*",
+        "Microsoft.Insights/alertRules/read",
         "Microsoft.operationalInsights/workspaces/*/read",
-        "Microsoft.Resources/deployments/*",
+        "Microsoft.Resources/deployments/*/read",
         "Microsoft.Resources/subscriptions/resourceGroups/read",
         "Microsoft.Security/*/read",
-        "Microsoft.Support/*",
+        "Microsoft.Support/*/read",
         "Microsoft.Management/managementGroups/read"
       ],
       "notActions": [],
@@ -6688,7 +6690,7 @@ Lehetővé teszi, hogy új laborokat hozzon létre az Azure Lab-fiókjaiban. [To
 }
 ```
 
-## <a name="monitor"></a>Monitor
+## <a name="monitor"></a>Figyelés
 
 
 ### <a name="application-insights-component-contributor"></a>Application Insights összetevő közreműködője
@@ -7641,6 +7643,61 @@ Lehetővé teszi a felhasználóknak a hierarchia beállításainak szerkesztés
     }
   ],
   "roleName": "Hierarchy Settings Administrator",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="kubernetes-cluster---azure-arc-onboarding"></a>Kubernetes-fürt – Azure arc bevezetése
+
+Szerepkör-definíció a connectedClusters [-erőforrások](../azure-arc/kubernetes/connect-cluster.md) létrehozásához szükséges felhasználók vagy szolgáltatások engedélyezéséhez
+
+> [!div class="mx-tableFixed"]
+> | Műveletek | Leírás |
+> | --- | --- |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/READ | Szerepkörök és szerepkör-hozzárendelések olvasása |
+> | [Microsoft.](resource-provider-operations.md#microsoftinsights)/alertRules/* | Klasszikus metrikai riasztás létrehozása és kezelése |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/Write | Egy központi telepítés létrehozása vagy frissítése. |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/operationresults/READ | Az előfizetési művelet eredményeinek beolvasása. |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/READ | Az előfizetések listájának beolvasása. |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/READ | Erőforráscsoportok beolvasása vagy felsorolása. |
+> | [Microsoft. Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/Write | ConnectedClusters írása |
+> | [Microsoft. Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/READ | ConnectedClusters olvasása |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Támogatási jegy létrehozása és frissítése |
+> | **NotActions** |  |
+> | *nincs* |  |
+> | **DataActions** |  |
+> | *nincs* |  |
+> | **NotDataActions** |  |
+> | *nincs* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Role definition to authorize any user/service to create connectedClusters resource",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/34e09817-6cbe-4d01-b1a2-e0eac5743d41",
+  "name": "34e09817-6cbe-4d01-b1a2-e0eac5743d41",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Insights/alertRules/*",
+        "Microsoft.Resources/deployments/write",
+        "Microsoft.Resources/subscriptions/operationresults/read",
+        "Microsoft.Resources/subscriptions/read",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Kubernetes/connectedClusters/Write",
+        "Microsoft.Kubernetes/connectedClusters/read",
+        "Microsoft.Support/*"
+      ],
+      "notActions": [],
+      "dataActions": [],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Kubernetes Cluster - Azure Arc Onboarding",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
@@ -8644,7 +8701,7 @@ Lehetővé teszi a Scheduler-feladatok összegyűjtését, de nem fér hozzájuk
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Erőforrás-szolgáltató egyeztetése a szolgáltatással](../azure-resource-manager/management/azure-services-resource-providers.md)
 - [Egyéni Azure-szerepkörök](custom-roles.md)

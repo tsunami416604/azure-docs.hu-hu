@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: b1e550fde0d43b4d2c7bd1a64856edeac607cab3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 14beaf4fc0f207abe652a9ed62c974f7ab4b8e79
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "86999088"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87449095"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager-in-windows"></a>IaaS-erőforrások klasszikusról Azure Resource Managerra való áttelepítésének megtervezése Windows rendszeren
 
@@ -197,7 +197,7 @@ Megfontolandó szempontok:
 
 Legyen céltudatos, hogy milyen szolgáltatásokat szeretne engedélyezni a Azure Resource Manager.  Számos ügyfél az alábbi lenyűgöző Azure-környezeteket keresi:
 
-- [Szerepkör-alapú Access Control](../../role-based-access-control/overview.md).
+- [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../../role-based-access-control/overview.md).
 - [Azure Resource Manager sablonokat egyszerűbb és hatékonyabban felügyelt központi telepítéshez](../../azure-resource-manager/templates/overview.md).
 - [Címkék](../../azure-resource-manager/management/tag-resources.md).
 - [Tevékenység-vezérlés](../../azure-resource-manager/management/view-activity-logs.md)

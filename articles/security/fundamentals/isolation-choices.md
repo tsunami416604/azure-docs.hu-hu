@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: TomSh
-ms.openlocfilehash: 0bcc67e80861df2827237298444175c3abdb6602
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3195c27351ba6110c784ddd8a10ea9ddfb0d903a
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084048"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447356"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Elkülönítés az Azure nyilvános felhőben
 
@@ -76,7 +76,7 @@ Az Azure RBAC három alapvető szerepkörrel rendelkezik, amelyek minden erőfor
 
 - Az **olvasó** megtekintheti a meglévő Azure-erőforrásokat.
 
-![Azure szerepköralapú hozzáférés-vezérlés](./media/isolation-choices/azure-isolation-fig3.png)
+![Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](./media/isolation-choices/azure-isolation-fig3.png)
 
 Az Azure további RBAC szerepkörei lehetővé teszik bizonyos Azure-erőforrások kezelését. Például a Virtuális gépek közreműködője szerepkör virtuális gépek létrehozását és kezelését teszi lehetővé. Nem biztosít számukra hozzáférést az Azure Virtual Network vagy az alhálózathoz, amelyhez a virtuális gép csatlakozik.
 
@@ -219,7 +219,7 @@ Az átvitel közbeni titkosítás egy olyan mechanizmus, amely az adatok védelm
 - [Vezetékes titkosítás](../../storage/blobs/security-recommendations.md), például SMB 3,0 titkosítás az Azure-fájlmegosztás számára.
 - [Ügyféloldali titkosítás](../../storage/blobs/security-recommendations.md), amely a tárterületre való átvitel előtt titkosítja az adatátvitelt, és visszafejti az adatmennyiséget a tárterületről való átadást követően.
 
-#### <a name="encryption-at-rest"></a>Titkosítás inaktív állapotban
+#### <a name="encryption-at-rest"></a>Titkosítás nyugalmi állapotban
 
 Számos szervezet esetében az [adattitkosítás](isolation-choices.md) az adatok védelme, a megfelelőség és az adatok szuverenitása szempontjából kötelező lépés. Három Azure-szolgáltatás áll rendelkezésre, amelyek a "nyugalmi állapotban" lévő adatok titkosítását teszik lehetővé:
 

@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: raynew
-ms.openlocfilehash: 98675b0f986ecb78ff122ed052a01d521aac1f6f
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 40dd81b9eb7ff2b20abb1bf3ea4337b63fb2a831
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86114210"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447083"
 ---
 # <a name="assess-servers-by-using-imported-data"></a>Kiszolgálók felmérése importált adatai alapján
 
@@ -32,7 +32,7 @@ Vegye figyelembe a következő pontokat:
 - A kiszolgálói információk több alkalommal is feltölthetők a kiszolgálói felmérésbe CSV használatával.
 - Az alkalmazásadatok összegyűjtése hasznos a helyszíni környezet áttelepítésre való kiértékeléséhez. A kiszolgáló értékelése azonban jelenleg nem hajtja végre az alkalmazás szintű értékelést, vagy az értékelés létrehozásakor figyelembe veszi az alkalmazásokat.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
 > * Azure Migrate projekt beállítása.
 > * Töltsön ki egy CSV-fájlt a kiszolgáló adataival.
@@ -42,7 +42,7 @@ Az oktatóanyag a következőket ismerteti:
 > [!NOTE]
 > Az oktatóanyagok bemutatják a forgatókönyvek legegyszerűbb telepítési útvonalát, így gyorsan beállítható a koncepció igazolása. Az oktatóanyagok az alapértelmezett beállításokat használják, ahol lehetséges, és nem jelennek meg az összes lehetséges beállítás és elérési út. Részletes utasításokért tekintse át a útmutatók című témakört.
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/), mielőtt hozzákezd.
 
 ## <a name="set-azure-permissions-for-azure-migrate"></a>Azure-engedélyek beállítása Azure Migratehoz
 
@@ -105,10 +105,10 @@ A következő táblázat összefoglalja a kitöltendő fájl mezőket:
 
 **Mezőnév** | **Kötelező** | **Részletek**
 --- | --- | ---
-**Kiszolgáló neve** | Igen | Javasoljuk, hogy adja meg a teljes tartománynevet (FQDN).
+**Kiszolgálónév** | Igen | Javasoljuk, hogy adja meg a teljes tartománynevet (FQDN).
 **IP-cím** | Nem | Kiszolgáló címe.
 **Cores** | Igen | A kiszolgáló számára lefoglalt processzor-magok száma.
-**Memory (Memória)** | Igen | A kiszolgálóhoz lefoglalt összes memória (MB).
+**Memória** | Igen | A kiszolgálóhoz lefoglalt összes memória (MB).
 **Operációs rendszer neve** | Igen | Kiszolgálói operációs rendszer. <br/> Az értékelés felismeri azokat az operációs rendszerek neveit, amelyek megfelelnek vagy tartalmazzák [a listában szereplő](#supported-operating-system-names) neveket.
 **Operációs rendszer verziója** | Nem | Kiszolgáló operációs rendszerének verziója.
 **Operációs rendszer architektúrája** | Nem | Kiszolgálói operációs rendszer architektúrája <br/> Az érvényes értékek: x64, x86, amd64, 32 bites vagy 64 bites
@@ -152,7 +152,7 @@ Ha például egy második lemez összes mezőjét meg szeretné adni, adja hozz�
 Miután hozzáadta az adatokat a CSV-sablonhoz, importálja a kiszolgálókat az értékelésbe.
 
 1. Azure Migrate a **gépek felderítése**területen lépjen a befejezett sablonra.
-2. Kattintson az **Importálás** gombra.
+2. Válassza az **Importálás** lehetőséget.
 3. Megjelenik az importálás állapota.
     - Ha figyelmeztetések jelennek meg az állapotában, megjavíthatja őket, vagy folytathatja a kezelés nélkül.
     - Az értékelés pontosságának javítása érdekében a figyelmeztetésekben javasolt módon javítsa a kiszolgáló adatait.
@@ -182,7 +182,7 @@ A kiszolgálók értékelése során két típusú értékelést hozhat létre.
 
 **Értékelés típusa** | **Részletek**
 --- | --- 
-**Azure VM** | Értékelések a helyszíni kiszolgálók Azure-beli virtuális gépekre való átköltöztetéséhez. <br/><br/> A helyszíni [VMWare virtuális gépeket](how-to-set-up-appliance-vmware.md), a [Hyper-V virtuális gépeket](how-to-set-up-appliance-hyper-v.md)és a [fizikai kiszolgálókat](how-to-set-up-appliance-physical.md) felhasználhatja az Azure-ba való áttelepítéshez ezzel az értékelési típussal. (concepts-assessment-calculation.md)
+**Azure VM** | Értékelések a helyszíni kiszolgálók Azure-beli virtuális gépekre való átköltöztetéséhez. <br/><br/> A helyszíni [VMWare virtuális gépeket](how-to-set-up-appliance-vmware.md), a [Hyper-V virtuális gépeket](how-to-set-up-appliance-hyper-v.md)és a [fizikai kiszolgálókat](how-to-set-up-appliance-physical.md) felhasználhatja az Azure-ba való áttelepítéshez ezzel az értékelési típussal.
 **Azure VMware Solution (AVS)** | A helyszíni kiszolgálók [Azure VMware-megoldásba (AVS)](../azure-vmware/introduction.md)való átköltöztetésének felmérése. <br/><br/> A helyszíni [VMWare virtuális gépeket](how-to-set-up-appliance-vmware.md) az értékelés típusának használatával értékelheti az Azure VMware-megoldásba (AVS) való áttelepítésre. [További információ](concepts-azure-vmware-solution-assessment-calculation.md)
 
 ### <a name="sizing-criteria"></a>Méretezési feltételek
@@ -424,7 +424,7 @@ A CSV-fájlban megadott operációsrendszer-neveknek egyezniük kell, vagy tarta
    :::column-end:::
 :::row-end:::
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 

@@ -3,12 +3,12 @@ title: Azure DevTest Labs Azure biztonsági alapterve
 description: Azure DevTest Labs Azure biztonsági alapterve
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: 7f0dc1fb18740e2b0611b5954821a5ceda2d2657
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: b392af17a24b0a5aabdd245af236caa743762244
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387829"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448973"
 ---
 # <a name="azure-security-baseline-for-azure-devtest-labs"></a>Azure DevTest Labs Azure biztonsági alapterve
 
@@ -275,7 +275,7 @@ A Microsoft a Azure DevTest Labst támogató mögöttes erőforrásokon hajtja v
 ### <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5,2: az operációs rendszer automatikus javításának felügyeleti megoldásának telepítése
 **Útmutató:** Az Azure Update Management használatával biztosíthatja, hogy a legújabb biztonsági frissítések telepítve legyenek a DevTest Labs szolgáltatásban üzemeltetett Windows-és Linux-alapú virtuális gépekre. Windows rendszerű virtuális gépek esetén győződjön meg arról, hogy Windows Update engedélyezve van, és automatikus frissítésre van beállítva. Ez a beállítás jelenleg nem érhető el a DevTest Labs szolgáltatáson keresztül történő konfiguráláshoz, azonban a laboratóriumi rendszergazda/előfizetés-rendszergazda konfigurálhatja ezt a beállítást az előfizetése mögöttes számítási virtuális gépeken. 
 
-- [Virtuális gépek Update Management konfigurálása az Azure-ban](../automation/automation-update-management.md)
+- [Virtuális gépek Update Management konfigurálása az Azure-ban](../automation/update-management/update-mgmt-overview.md)
 - [A Security Center által figyelt Azure biztonsági házirendek ismertetése](../security-center/security-center-policy-definitions.md)
 
 **Azure Security Center figyelés:** Nem alkalmazható
@@ -289,8 +289,8 @@ További információ a [DevTest Labs Image factoryről](image-factory-create.md
 
 Előfizetés-rendszergazdaként használhatja az Azure Update Management megoldást is a DevTest Labs-beli virtuális gépek frissítéseinek és javításának kezelésére. A Update Management a helyileg konfigurált frissítési tárházra támaszkodik a támogatott Windows-rendszerek javításához. Az olyan eszközök, mint a System Center Updates Publisher (a frissítések közzétevője) lehetővé teszik egyéni frissítések közzétételét Windows Server Update Services (WSUS) szolgáltatásban. Ez a forgatókönyv lehetővé teszi, hogy Update Management a harmadik féltől származó szoftverrel rendelkező frissítési adattárként Configuration Manager használó gépeket.
 
-- [Update Management megoldás az Azure-ban](../automation/automation-update-management.md)
-- [Azure-beli virtuális gépek frissítéseinek és javításának kezelése](../automation/automation-tutorial-update-management.md)
+- [Update Management megoldás az Azure-ban](../automation/update-management/update-mgmt-overview.md)
+- [A virtuális gépek frissítéseinek és javításának kezelése](../automation/update-management/update-mgmt-overview.md)
 
 **Azure Security Center figyelés:** Nem alkalmazható
 
@@ -631,7 +631,7 @@ Azure Security Center figyelés: * * * * nem alkalmazható
 
 **Felelősség:** Megosztott
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Tekintse meg a következő cikket:
 
 - [Biztonsági riasztások a Azure DevTest Labs környezetekben](environment-security-alerts.md)

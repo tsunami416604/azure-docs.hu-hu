@@ -10,12 +10,12 @@ ms.date: 06/12/2020
 ms.topic: conceptual
 manager: carmonm
 ms.custom: references_regions
-ms.openlocfilehash: a8b5f14147ee748f5d32d794f51d5437eeddfb51
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4e5cad25c80661f9e707f545929e6ffcb00a1e42
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85261188"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447853"
 ---
 # <a name="supported-regions-for-linked-log-analytics-workspace"></a>A társított Log Analytics-munkaterület esetében támogatott régiók
 
@@ -78,11 +78,11 @@ A funkciók eltávolítva az Automation-fiók összekapcsolásának megszüntet�
 
 Azt is megteheti, hogy leválasztja a munkaterületet az Automation-fiókjából a munkaterületen belül.
 
-1. A munkaterületen válassza az **Automation-fiók** lehetőséget a **kapcsolódó erőforrások**területen. 
+1. A munkaterületen válassza az **Automation-fiók** lehetőséget a **kapcsolódó erőforrások**területen.
 2. Az Automation-fiók lapon válassza a **fiók megszüntetése**lehetőséget.
 
 ## <a name="next-steps"></a>További lépések
 
-* Ismerkedjen meg Update Management [Update Management áttekintésében](../automation-update-management.md).
+* Ismerkedjen meg Update Management [Update Management áttekintésében](../update-management/update-mgmt-overview.md).
 * Ismerkedjen meg a Change Tracking és a leltárral [change Tracking és leltár áttekintésében](../change-tracking.md).
 * Ismerkedjen meg Start/Stop VMs during off-hours [Start/Stop VMS During off-hours áttekintésében](../automation-solution-vm-management.md).

@@ -8,12 +8,12 @@ ms.author: rogarana
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: e609e755f02d4321664804bfbb90f979c1c06ead
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 413ca677bc778069b92def043bf35ab7bb87b038
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87133061"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448937"
 ---
 # <a name="server-side-encryption-of-azure-disk-storage"></a>Azure Disk Storage kiszolgálóoldali titkosítása
 
@@ -34,7 +34,7 @@ A következő szakaszok részletesebben ismertetik a kulcskezelő lehetőségeit
 
 ### <a name="platform-managed-keys"></a>Platform által felügyelt kulcsok
 
-Alapértelmezés szerint a felügyelt lemezek platform által felügyelt titkosítási kulcsokat használnak. 2017. június 10-én a meglévő felügyelt lemezekre írt összes új felügyelt lemez, pillanatkép, kép és új adatok automatikusan titkosítva vannak a platform által felügyelt kulcsokkal.
+Alapértelmezés szerint a felügyelt lemezek platform által felügyelt titkosítási kulcsokat használnak. Az összes felügyelt lemez, pillanatkép, lemezkép és a meglévő felügyelt lemezekre írt adatok automatikusan titkosítva vannak a platform által felügyelt kulcsokkal.
 
 ### <a name="customer-managed-keys"></a>Felhasználó által kezelt kulcsok
 

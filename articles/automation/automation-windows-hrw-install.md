@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 31c769039009889559b6aa05bb76139d63c42feb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 634f200280a85ff865741cd03905101ff1e5c19f
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87015017"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448045"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Windows Hybrid Runbook Worker üzembe helyezése
 
@@ -28,7 +28,7 @@ A hibrid Runbook-feldolgozói szerepkör a szerepkör telepítéséhez és konfi
 
 Ha nem rendelkezik Azure Monitor Log Analytics munkaterülettel, tekintse át a [Azure monitor log tervezési útmutatót](../azure-monitor/platform/design-logs-deployment.md) a munkaterület létrehozása előtt.
 
-Ha van munkaterülete, de nem kapcsolódik az Automation-fiókjához, az automatizálási funkció lehetővé teszi a Azure Automation funkcióinak hozzáadását, beleértve a hibrid Runbook-feldolgozó támogatását is. Ha engedélyezi a Log Analytics munkaterület Azure Automation funkciójának egyikét, különösen a [Update Management](automation-update-management.md) vagy a [change Tracking és a leltárt](change-tracking.md), a rendszer automatikusan leküldi a munkavégző összetevőket az ügynök számítógépére.
+Ha van munkaterülete, de nem kapcsolódik az Automation-fiókjához, az automatizálási funkció lehetővé teszi a Azure Automation funkcióinak hozzáadását, beleértve a hibrid Runbook-feldolgozó támogatását is. Ha engedélyezi a Log Analytics munkaterület Azure Automation funkciójának egyikét, különösen a [Update Management](update-management/update-mgmt-overview.md) vagy a [change Tracking és a leltárt](change-tracking.md), a rendszer automatikusan leküldi a munkavégző összetevőket az ügynök számítógépére.
 
    A Update Management szolgáltatás munkaterülethez való hozzáadásához futtassa a következő PowerShell-parancsmagot:
 
@@ -77,7 +77,7 @@ A hibrid Runbook-feldolgozók további hálózati követelményeinek eléréséh
 Az Automation-fiókban felveheti a munkavégző gépet egy hibrid Runbook Worker-csoportba. Vegye figyelembe, hogy az Automation runbookok is támogatnia kell, ha ugyanazt a fiókot használja, mint a Azure Automation funkció és a hibrid Runbook Worker csoport tagsága. Ez a funkció a hibrid runbook-feldolgozó 7.2.12024.0-s verziójától érhető el.
 
 >[!NOTE]
->A Azure Automation [Update Management](automation-update-management.md) engedélyezése lehetővé teszi, hogy a log Analytics munkaterülethez csatlakoztatott Windows-gépeket a hibrid Runbook-feldolgozóként automatikusan konfigurálja az operációs rendszer frissítéseinek kezeléséhez. Ez a feldolgozó azonban nincs regisztrálva az Automation-fiókban már definiált hibrid Runbook-feldolgozói csoportokkal.
+>A Azure Automation [Update Management](update-management/update-mgmt-overview.md) engedélyezése lehetővé teszi, hogy a log Analytics munkaterülethez csatlakoztatott Windows-gépeket a hibrid Runbook-feldolgozóként automatikusan konfigurálja az operációs rendszer frissítéseinek kezeléséhez. Ez a feldolgozó azonban nincs regisztrálva az Automation-fiókban már definiált hibrid Runbook-feldolgozói csoportokkal.
 
 ## <a name="enabling-machines-for-management-with-azure-automation-state-configuration"></a>Gépek Azure Automation állapot-konfigurációval való felügyeletének engedélyezése
 
@@ -169,7 +169,7 @@ Heartbeat
 
 A keresési eredmények között meg kell jelennie a gép szívverési rekordjainak, ami azt jelzi, hogy csatlakoztatva van, és a szolgáltatáshoz jelent jelentést. Alapértelmezés szerint minden ügynök egy szívverési rekordot továbbít a hozzárendelt munkaterülethez. Az ügynök telepítésének és telepítésének befejezéséhez kövesse az alábbi lépéseket.
 
-1. Engedélyezze a szolgáltatásnak az ügynök számítógép hozzáadását. Update Management-és Azure-beli virtuális gépek esetében lásd: Azure-beli [virtuális gépek engedélyezése](automation-onboard-solutions-from-automation-account.md#enable-azure-vms)és nem Azure-beli virtuális gépek esetén lásd: [számítógépek engedélyezése a munkaterületen](automation-onboard-solutions-from-automation-account.md#enable-machines-in-the-workspace). Change Tracking-és Azure-beli virtuális gépek esetében lásd: Azure-beli [virtuális gépek engedélyezése](automation-enable-changes-from-auto-acct.md#enable-azure-vms)és nem Azure-beli virtuális gépek esetén lásd: [számítógépek engedélyezése a munkaterületen](automation-enable-changes-from-auto-acct.md#enable-machines-in-the-workspace).
+1. Engedélyezze a szolgáltatásnak az ügynök számítógép hozzáadását. Update Management-és Azure-beli virtuális gépek esetében lásd: az [Automation-fiók Update Managementának engedélyezése](update-management/update-mgmt-enable-automation-account.md), [a Update Management a Azure Portal böngészésével](update-management/update-mgmt-enable-portal.md), a [Update Management runbook engedélyezése](update-management/update-mgmt-enable-runbook.md)vagy az [Azure-beli virtuális gépről való Update Management engedélyezése](update-management/update-mgmt-enable-vm.md). Change Tracking-és Azure-beli virtuális gépek esetében lásd: Azure-beli [virtuális gépek engedélyezése](automation-enable-changes-from-auto-acct.md#enable-azure-vms)és nem Azure-beli virtuális gépek esetén lásd: [számítógépek engedélyezése a munkaterületen](automation-enable-changes-from-auto-acct.md#enable-machines-in-the-workspace).
 
 2. A hibrid Runbook-feldolgozó verziójának megerősítéséhez keresse meg `C:\Program Files\Microsoft Monitoring Agent\Agent\AzureAutomation\` és jegyezze fel a **verzió** almappát.
 

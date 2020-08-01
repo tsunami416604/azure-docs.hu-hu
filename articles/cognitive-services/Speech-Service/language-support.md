@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: eb9e0f126a25bfb0f2db18074bd7200e1a7c2001
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 8e3f33e8f453ffd6eedaeb75a041af7ec11b4e39
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087146"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87457804"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Beszédfelismerési szolgáltatás nyelvi és hangalapú támogatása
 
@@ -38,33 +38,59 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 
 | Területi beállítás  | Nyelv                          | Testreszabások                                    |
 |---------|-----------------------------------|---------------------------------------------------|
-| `ar-AE` | Arab (UAE)                      | No                                                |
+| `ar-AE` | Arab (UAE)                      | Nem                                                |
 | `ar-BH` | Arab (Bahrein), modern standard | Nyelvi modell                                    |
 | `ar-EG` | Arab (Egyiptom)                    | Nyelvi modell                                    |
-| `ar-IL` | Arab (Izrael)                   | No                                                |
-| `ar-JO` | Arab (Jordánia)                   | No                                                |
-| `ar-KW` | Arab (Kuvait)                   | No                                                |
-| `ar-LB` | Arab (Libanon)                  | No                                                |
-| `ar-PS` | Arab (Palesztina)                | No                                                |
-| `ar-QA` | Arab (Katar)                    | No                                                |
-| `ar-SA` | Arab (Szaúd-Arábia)             | No                                                |
+| `ar-IL` | Arab (Izrael)                   | Nem                                                |
+| `ar-JO` | Arab (Jordánia)                   | Nem                                                |
+| `ar-KW` | Arab (Kuvait)                   | Nem                                                |
+| `ar-LB` | Arab (Libanon)                  | Nem                                                |
+| `ar-PS` | Arab (Palesztina)                | Nem                                                |
+| `ar-QA` | Arab (Katar)                    | Nem                                                |
+| `ar-SA` | Arab (Szaúd-Arábia)             | Nem                                                |
 | `ar-SY` | Arab (Szíria)                    | Nyelvi modell                                    |
 | `ca-ES` | Katalán                           | Nyelvi modell                                    |
+| `cs-CZ` | Cseh (Cseh Köztársaság)            | Nyelvi modell                                    | 
 | `da-DK` | Dán (Dánia)                  | Nyelvi modell                                    |
 | `de-DE` | Német (Németország)                  | Akusztikai modell<br>Nyelvi modell<br>Kiejtése |
 | `en-AU` | Angol (Ausztrália)               | Akusztikai modell<br>Nyelvi modell                  |
 | `en-CA` | Angol (Kanada)                  | Akusztikai modell<br>Nyelvi modell                  |
 | `en-GB` | angol (Egyesült Királyság)          | Akusztikai modell<br>Nyelvi modell<br>Kiejtése |
+| `en-HK` | Angol (Hongkong)               | Nyelvi modell                                    | 
+| `en-IE` | Angol (Írország)                 | Nyelvi modell                                    | 
 | `en-IN` | Angol (India)                   | Akusztikai modell<br>Nyelvi modell                  |
 | `en-NZ` | Angol (Új-Zéland)             | Akusztikai modell<br>Nyelvi modell                  |
+| `en-PH` | Angol (Fülöp-szigetek)             | Nyelvi modell                                    | 
+| `en-SG` | Angol (Szingapúr)               | Nyelvi modell                                    | 
 | `en-US` | angol (Egyesült Államok)           | Akusztikai modell<br>Nyelvi modell<br>Kiejtése |
+| `en-ZA` | Angol (Dél-Afrika)            | Nyelvi modell                                    | 
+| `es-AR` | Spanyol (Argentína)               | Nyelvi modell                                    | 
+| `es-BO` | Spanyol (Bolívia)                 | Nyelvi modell                                    | 
+| `es-CL` | Spanyol (Chile)                   | Nyelvi modell                                    | 
+| `es-CO` | Spanyol (Kolumbia)                | Nyelvi modell                                    | 
+| `es-CR` | Spanyol (Costa Rica)              | Nyelvi modell                                    | 
+| `es-CU` | Spanyol (Kuba)                    | Nyelvi modell                                    | 
+| `es-DO` | Spanyol (Dominikai Köztársaság)      | Nyelvi modell                                    | 
+| `es-EC` | Spanyol (Ecuador)                 | Nyelvi modell                                    | 
 | `es-ES` | Spanyol (Spanyolország)                   | Akusztikai modell<br>Nyelvi modell                  |
+| `es-GT` | Spanyol (Guatemala)               | Nyelvi modell                                    | 
+| `es-HN` | Spanyol (Honduras)                | Nyelvi modell                                    | 
 | `es-MX` | Spanyol (Mexikó)                  | Akusztikai modell<br>Nyelvi modell                  |
+| `es-NI` | Spanyol (Nicaragua)               | Nyelvi modell                                    | 
+| `es-PA` | Spanyol (Panama)                  | Nyelvi modell                                    | 
+| `es-PE` | Spanyol (perui)                    | Nyelvi modell                                    | 
+| `es-PR` | Spanyol (Puerto Rico)             | Nyelvi modell                                    | 
+| `es-PY` | Spanyol (Paraguay)                | Nyelvi modell                                    | 
+| `es-SV` | Spanyol (Salvador)             | Nyelvi modell                                    | 
+| `es-US` | Spanyol (USA)                     | Nyelvi modell                                    | 
+| `es-UY` | Spanyol (Uruguay)                 | Nyelvi modell                                    | 
+| `es-VE` | Spanyol (Venezuela)               | Nyelvi modell                                    | 
 | `fi-FI` | Finn (Finnország)                 | Nyelvi modell                                    |
 | `fr-CA` | Francia (Kanada)                   | Akusztikai modell<br>Nyelvi modell                  |
 | `fr-FR` | Francia (Franciaország)                   | Akusztikai modell<br>Nyelvi modell<br>Kiejtése |
 | `gu-IN` | Gudzsaráti (indiai)                 | Nyelvi modell                                    |
 | `hi-IN` | Hindi (India)                     | Akusztikai modell<br>Nyelvi modell                  |
+| `hu-HU` | Magyar (Magyarország)               | Nyelvi modell                                    | 
 | `it-IT` | Olasz (Olaszország)                   | Akusztikai modell<br>Nyelvi modell<br>Kiejtése |
 | `ja-JP` | Japán (Japán)                  | Nyelvi modell                                    |
 | `ko-KR` | Koreai (Dél-Korea)                    | Nyelvi modell                                    |
@@ -78,7 +104,7 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | `sv-SE` | Svéd (Svédország)                  | Nyelvi modell                                    |
 | `ta-IN` | Tamil (India)                     | Nyelvi modell                                    |
 | `te-IN` | Telugu (India)                    | Nyelvi modell                                    |
-| `th-TH` | Thai (Thaiföld)                   | No                                                |
+| `th-TH` | Thai (Thaiföld)                   | Nem                                                |
 | `tr-TR` | Török (Törökország)                  | Nyelvi modell                                    |
 | `zh-CN` | Kínai (mandarin, egyszerűsített)    | Akusztikai modell<br>Nyelvi modell                  |
 | `zh-HK` | Kínai (kantoni, hagyományos)  | Nyelvi modell                                    |
@@ -101,42 +127,42 @@ További információ a regionális elérhetőségről: [régiók](regions.md#st
 
 |Területi beállítás  | Nyelv            | Nem | Hang neve | Stílus támogatása |
 |--|--|--|--|--|
-| `ar-EG` | Arab (Egyiptom)                  | Nő | `ar-EG-SalmaNeural`      | Általános kérdések |
-| `ar-SA` | Arab (Szaúd-Arábia)           | Nő | `ar-SA-ZariyahNeura`     | Általános kérdések |
-| `ca-ES` | Katalán (Spanyolország)                 | Nő | `ca-ES-AlbaNeural`       | Általános kérdések |
-| `da-DK` | Dán (Dánia)                | Nő | `da-DK-ChristelNeural`   | Általános kérdések |
-| `de-DE` | Német (Németország)                | Nő | `de-DE-KatjaNeural`      | Általános kérdések |
-| `en-AU` | Angol (Ausztrália)             | Nő | `en-AU-NatashaNeural`    | Általános kérdések |
-| `en-CA` | Angol (Kanada)                | Nő | `en-CA-ClaraNeural`      | Általános kérdések |
-| `en-GB` | Angol (Egyesült Királyság)                    | Nő | `en-GB-LibbyNeural`      | Általános kérdések |
-|         |                                 | Nő | `en-GB-MiaNeural`        | Általános kérdések |
-| `en-IN` | Angol (India)                 | Nő | `en-IN-NeerjaNeural`     | Általános kérdések |
+| `ar-EG` | Arab (Egyiptom)                  | Nő | `ar-EG-SalmaNeural`      | Általános |
+| `ar-SA` | Arab (Szaúd-Arábia)           | Nő | `ar-SA-ZariyahNeura`     | Általános |
+| `ca-ES` | Katalán (Spanyolország)                 | Nő | `ca-ES-AlbaNeural`       | Általános |
+| `da-DK` | Dán (Dánia)                | Nő | `da-DK-ChristelNeural`   | Általános |
+| `de-DE` | Német (Németország)                | Nő | `de-DE-KatjaNeural`      | Általános |
+| `en-AU` | Angol (Ausztrália)             | Nő | `en-AU-NatashaNeural`    | Általános |
+| `en-CA` | Angol (Kanada)                | Nő | `en-CA-ClaraNeural`      | Általános |
+| `en-GB` | Angol (Egyesült Királyság)                    | Nő | `en-GB-LibbyNeural`      | Általános |
+|         |                                 | Nő | `en-GB-MiaNeural`        | Általános |
+| `en-IN` | Angol (India)                 | Nő | `en-IN-NeerjaNeural`     | Általános |
 | `en-US` | Angol (US)                    | Nő | `en-US-AriaNeural`       | Általános, több hangstílus érhető el |
-|         |                                 | Férfi   | `en-US-GuyNeural`        | Általános kérdések |
-| `es-ES` | Spanyol (Spanyolország)                 | Nő | `es-ES-ElviraNeural`     | Általános kérdések |
-| `es-MX` | Spanyol (Mexikó)                | Nő | `es-MX-DaliaNeural`      | Általános kérdések |
-| `fi-FI` | Finn (Finnország)               | Nő | `fi-FI-NooraNeural`      | Általános kérdések |
-| `fr-CA` | Francia (Kanada)                 | Nő | `fr-CA-SylvieNeural`     | Általános kérdések |
-| `fr-FR` | Francia (Franciaország)                 | Nő | `fr-FR-DeniseNeural`     | Általános kérdések |
-| `hi-IN` | Hindi (India)                   | Nő | `hi-IN-SwaraNeural`      | Általános kérdések |
-| `it-IT` | Olasz (Olaszország)                 | Nő | `it-IT-ElsaNeural`       | Általános kérdések |
-| `ja-JP` | Japán                        | Nő | `ja-JP-NanamiNeural`     | Általános kérdések |
-| `ko-KR` | Koreai                          | Nő | `ko-KR-SunHiNeural`      | Általános kérdések |
-| `nb-NO` | Norvég                       | Nő | `nb-NO-IselinNeural`     | Általános kérdések |
-| `nl-NL` | Holland (Hollandia)              | Nő | `nl-NL-ColetteNeural`    | Általános kérdések |
-| `pl-PL` | Lengyel (Lengyelország)                 | Nő | `pl-PL-ZofiaNeural`      | Általános kérdések |
+|         |                                 | Férfi   | `en-US-GuyNeural`        | Általános |
+| `es-ES` | Spanyol (Spanyolország)                 | Nő | `es-ES-ElviraNeural`     | Általános |
+| `es-MX` | Spanyol (Mexikó)                | Nő | `es-MX-DaliaNeural`      | Általános |
+| `fi-FI` | Finn (Finnország)               | Nő | `fi-FI-NooraNeural`      | Általános |
+| `fr-CA` | Francia (Kanada)                 | Nő | `fr-CA-SylvieNeural`     | Általános |
+| `fr-FR` | Francia (Franciaország)                 | Nő | `fr-FR-DeniseNeural`     | Általános |
+| `hi-IN` | Hindi (India)                   | Nő | `hi-IN-SwaraNeural`      | Általános |
+| `it-IT` | Olasz (Olaszország)                 | Nő | `it-IT-ElsaNeural`       | Általános |
+| `ja-JP` | Japán                        | Nő | `ja-JP-NanamiNeural`     | Általános |
+| `ko-KR` | Koreai                          | Nő | `ko-KR-SunHiNeural`      | Általános |
+| `nb-NO` | Norvég                       | Nő | `nb-NO-IselinNeural`     | Általános |
+| `nl-NL` | Holland (Hollandia)              | Nő | `nl-NL-ColetteNeural`    | Általános |
+| `pl-PL` | Lengyel (Lengyelország)                 | Nő | `pl-PL-ZofiaNeural`      | Általános |
 | `pt-BR` | Portugál (Brazília)             | Nő | `pt-BR-FranciscaNeural`  | Általános, több hangstílus érhető el |
-| `tr-TR` | Török                         | Nő | `tr-TR-EmelNeural`       | Általános kérdések |
-| `pt-PT` | Portugál (Portugália)           | Nő | `pt-PT-FernandaNeural`   | Általános kérdések |
-| `ru-RU` | Orosz (Oroszország)                | Nő | `ru-RU-DariyaNeural`     | Általános kérdések |
-| `sv-SE` | Svéd (Svédország)                | Nő | `sv-SE-HilleviNeural`    | Általános kérdések |
-| `th-TH` | Thai (Thaiföld)                 | Nő | `th-TH-AcharaNeural`     | Általános kérdések |
+| `tr-TR` | Török                         | Nő | `tr-TR-EmelNeural`       | Általános |
+| `pt-PT` | Portugál (Portugália)           | Nő | `pt-PT-FernandaNeural`   | Általános |
+| `ru-RU` | Orosz (Oroszország)                | Nő | `ru-RU-DariyaNeural`     | Általános |
+| `sv-SE` | Svéd (Svédország)                | Nő | `sv-SE-HilleviNeural`    | Általános |
+| `th-TH` | Thai (Thaiföld)                 | Nő | `th-TH-AcharaNeural`     | Általános |
 | `zh-CN` | Kínai (mandarin, egyszerűsített)  | Nő | `zh-CN-XiaoxiaoNeural`   | Általános, több hangstílus érhető el |
 |         |                                 | Nő | `zh-CN-XiaoyouNeural`    | A szövegegység elbeszéléséhez optimalizált, gyerek hang |
 |         |                                 | Férfi   | `zh-CN-YunyangNeural`    | A hírek olvasására optimalizált, több hangstílus érhető el |
 |         |                                 | Férfi   | `zh-CN-YunyeNeural`      | A történet elbeszéléséhez optimalizált |
-| `zh-HK` | Kínai (kantoni, tranditional)   | Nő | `zh-HK-HiuGaaiNeural`| Általános kérdések |
-| `zh-TW` | Kínai (tajvani mandarin)   | Nő | `zh-TW-HsiaoYuNeural`    | Általános kérdések |
+| `zh-HK` | Kínai (kantoni, tranditional)   | Nő | `zh-HK-HiuGaaiNeural`| Általános |
+| `zh-TW` | Kínai (tajvani mandarin)   | Nő | `zh-TW-HsiaoYuNeural`    | Általános |
 
 > [!IMPORTANT]
 > A hang a következőre `en-US-JessaNeural` változott: `en-US-AriaNeural` . Ha korábban a "Jessa" kifejezést használta, váltson át az "aria" kifejezésre.
@@ -328,7 +354,7 @@ A **Speech Translation** API különböző nyelveket támogat a beszédfelismer�
 | walesi                   | `cy`          |
 | Yucatec Maya            | `yua`         |
 
-## <a name="speaker-recognition"></a>Beszélőfelismerés
+## <a name="speaker-recognition"></a>Speaker Recognition
 
 A különböző Speaker Recognition API-khoz támogatott nyelveket a következő táblázat tartalmazza. További információ a Speaker Recognitionról: [Áttekintés](speaker-recognition-overview.md) .
 

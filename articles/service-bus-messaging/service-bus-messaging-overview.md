@@ -3,12 +3,12 @@ title: Az Azure Service Bus-üzenetkezelés áttekintése | Microsoft Docs
 description: Ez a cikk átfogó áttekintést nyújt a Azure Service Busről, amely egy teljes körűen felügyelt Enterprise Integration Message Broker.
 ms.topic: overview
 ms.date: 06/23/2020
-ms.openlocfilehash: 8583996cde23b056261662a0640aa310e63d45a9
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.openlocfilehash: 5adcdf10898a7b0ee2d551a3a24b9f80195d645f
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85341662"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87449121"
 ---
 # <a name="what-is-azure-service-bus"></a>Mi az Azure Service Bus?
 
@@ -31,7 +31,7 @@ A névtér az összes üzenetküldési összetevő tárolója. Több várólista
 
 Az üzenetek az *üzenetsorokba* érkeznek be, és onnan küldi ki őket a rendszer. A várólisták üzeneteket tárolnak, amíg a fogadó alkalmazás elérhetővé válik a fogadáshoz és a feldolgozáshoz.
 
-![Várólista](./media/service-bus-messaging-overview/about-service-bus-queue.png)
+![Üzenetsor](./media/service-bus-messaging-overview/about-service-bus-queue.png)
 
 A várólistákban lévő üzenetek megrendelése és időbélyege az érkezéskor. Az üzenet elfogadása után azt a rendszer egy redundáns tárolóban helyezi biztonságba. Az üzenetek *lekéréses* módban lesznek kézbesítve, csak az üzenetek kézbesítését kérik.
 
@@ -92,7 +92,7 @@ Egy hiba miatt előfordulhat, hogy az ügyfél kétségbe vonja a küldési műv
 ### <a name="security-protocols"></a>Biztonsági protokollok
 <a name="sas-rbac-and-managed-identities-for-azure-resources"></a>
 
-A Service Bus támogatja az olyan biztonsági protokollokat, mint a [közös hozzáférésű jogosultságkód](service-bus-sas.md) (SAS), a [szerepköralapú hozzáférés-vezérlés](authenticate-application.md) (RBAC) és az [Azure-erőforrások felügyelt identitásai](service-bus-managed-service-identity.md).
+Service Bus támogatja a biztonsági protokollok, például a [közös hozzáférésű aláírások](service-bus-sas.md) (SAS), az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](authenticate-application.md) (RBAC) és [Az Azure-erőforrások felügyelt identitásait](service-bus-managed-service-identity.md).
 
 ### <a name="geo-disaster-recovery"></a>Geo-vészhelyreállítás
 

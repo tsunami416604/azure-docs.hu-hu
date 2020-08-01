@@ -69,8 +69,6 @@
           href: application-provisioning-config-problem-wrong-users-provisioned.md
         - name: Hiányzó forrásattribútum
           href: user-provisioning-sync-attributes-for-mapping.md
-        - name: Az átadási feladat túl lassú
-          href: application-provisioning-when-will-provisioning-finish.md
         - name: Üzembehelyezési naplók
           href: /azure/active-directory/reports-monitoring/concept-provisioning-logs?context=azure/active-directory/app-provisioning/context/app-provisioning-context
     - name: SCIM-végpont létrehozása és az üzembe helyezés konfigurálása

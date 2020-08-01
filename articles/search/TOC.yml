@@ -110,6 +110,11 @@
           href: knowledge-store-projection-overview.md
         - name: Növekményes bővítés
           href: cognitive-search-incremental-indexing-conceptual.md
+    - name: Biztonság
+      items:
+        - name: Az Azure Policy biztonsági vezérlői
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
 - name: Útmutatók
   items:
     - name: Indexek és szerkezetek létrehozása

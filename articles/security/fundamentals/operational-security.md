@@ -15,15 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 34c0c52945abc6e0ab74b1cb180581c76464bee8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c2a49c76e6fdb7f957c026e8f8220cd29a7b35d8
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75749956"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448378"
 ---
 # <a name="azure-operational-security"></a>Azure-beli működési biztonság
-## <a name="introduction"></a>Introduction (Bevezetés)
+## <a name="introduction"></a>Bevezetés
 
 ### <a name="overview"></a>Áttekintés
 Tudjuk, hogy a biztonság az egyik a felhőben, és mennyire fontos, hogy pontos és kellő időben tájékozódjon az Azure biztonságáról. Az Azure alkalmazásokhoz és szolgáltatásokhoz való használatának egyik legjobb oka az, hogy kihasználja az elérhető biztonsági eszközök és képességek széles körét. Ezek az eszközök és képességek segítik a biztonságos megoldások létrehozását a biztonságos Azure platformon. A Windows Azure-nak biztosítania kell az ügyféladatok titkosságát, integritását és rendelkezésre állását, ugyanakkor az átlátható elszámoltathatóságot is lehetővé teszi.
@@ -37,7 +37,7 @@ Ha a-ra épít, vagy áttelepíti az IT-eszközöket, egy nyilvános felhőalap�
 
 Az Azure infrastruktúráját úgy alakították ki, hogy a létesítményből egyszerre több millió ügyfelet üzemeltető alkalmazások számára biztosítson egy megbízható alapot, amely alapján a vállalatok megfelelnek a biztonsági követelményeknek. Emellett az Azure a konfigurálható biztonsági beállítások széles körét biztosítja, és lehetővé teszi, hogy a biztonság testre szabható legyen, hogy megfeleljen a szervezete üzembe helyezésének egyedi követelményeinek. Ez a dokumentum segít megérteni, hogy az Azure biztonsági képességei hogyan segíthetnek a követelmények teljesítésében.
 
-### <a name="abstract"></a>Abstract
+### <a name="abstract"></a>Kivonat
 Az Azure Operational Security a felhasználók számára elérhető szolgáltatásokat, vezérlőket és szolgáltatásokat jelenti a Microsoft Azureban tárolt adatok, alkalmazások és egyéb eszközök védelmére. Az Azure Operational Security olyan keretrendszerre épül, amely magában foglalja a Microsoft számára egyedi, a Microsoft biztonsági fejlesztési életciklus (SDL), a Microsoft Security Response Center program, valamint a kiberbiztonsági fenyegetések tájképének részletes ismerete révén szerzett ismereteket.
 
 Ez a tanulmány a Microsoft Azure-beli működési biztonságának megközelítését ismerteti a Microsoft Azure Cloud platformon belül, és a következő szolgáltatásokat nyújtja:
@@ -66,7 +66,7 @@ A Azure Monitor-naplók segítségével bármilyen Felhőbeli példányt kezelhe
 
 Azure Monitor naplók alapvető funkcióit az Azure-ban futó szolgáltatások biztosítják. Mindegyik szolgáltatás egy adott felügyeleti funkciót biztosít, és a szolgáltatások kombinálásával különféle felügyeleti forgatókönyvek valósíthatók meg.
 
-| Szolgáltatás  | Description|
+| Szolgáltatás  | Leírás|
 | :------------- | :-------------|
 | Azure Monitor-naplók | Figyeli és elemzi a különféle erőforrások, köztük a fizikai és virtuális gépek rendelkezésre állását és teljesítményét. |
 |Automation | Automatizálja a manuális folyamatokat, és érvényesíti a fizikai és virtuális gépekre vonatkozóan megadott konfigurációkat. |
@@ -108,7 +108,7 @@ A [felügyeleti megoldások](../../monitoring/monitoring-solutions.md) előre cs
 
 ![Felügyeleti megoldások](./media/operational-security/azure-operational-security-fig4.png)
 
-Egy olyan megoldás jó példája, amely több szolgáltatást használ, hogy további funkciókkal lássa el a [Update Management megoldást](../../automation/automation-update-management.md). Ez a megoldás a Windows és Linux rendszerhez készült [Azure monitor naplók](../../log-analytics/log-analytics-queries.md) ügynökével gyűjti össze az egyes ügynökök szükséges frissítéseivel kapcsolatos információkat. Ezt az adatot a Azure Monitor naplók tárházba írja, ahol elemezheti azt egy befoglalt irányítópulttal.
+Egy olyan megoldás jó példája, amely több szolgáltatást használ, hogy további funkciókkal lássa el a [Update Management megoldást](../../automation/update-management/update-mgmt-overview.md). Ez a megoldás a Windows és Linux rendszerhez készült [Azure monitor naplók](../../log-analytics/log-analytics-queries.md) ügynökével gyűjti össze az egyes ügynökök szükséges frissítéseivel kapcsolatos információkat. Ezt az adatot a Azure Monitor naplók tárházba írja, ahol elemezheti azt egy befoglalt irányítópulttal.
 
 Központi telepítés létrehozásakor a rendszer a szükséges frissítések telepítéséhez a [Azure Automation](../../automation/automation-intro.md) runbookok használja. A teljes folyamatot a portálon felügyelheti, és nem kell foglalkoznia a mögöttes részletekkel.
 
@@ -154,7 +154,7 @@ Az Azure Security Center biztonsággal kapcsolatos adatokat gyűjt és dolgoz fe
 
 -   **Az adatok felhasználása**: a Microsoft a különböző bérlőknél észlelt mintákat és fenyegetésre vonatkozó intelligenciát használ a megelőzési és észlelési funkcióihoz, és ezt az [adatvédelmi nyilatkozatában](https://www.microsoft.com/en-us/privacystatement/OnlineServices/) ismertetett adatvédelmi kötelezettségeinek megfelelően teszi.
 
-### <a name="data-location"></a>Az adatok helye
+### <a name="data-location"></a>Az adatok tárolási helye
 
 Az Azure Security Center ideiglenes másolatokat gyűjt az összeomlási memóriaképek fájljairól, és elemzi ezeket a biztonsági réseket kihasználó támadások és a sikeres feltörések nyomai után kutatva. Az Azure Security Center az elemzéseket ugyanazon a földrajzi helyen végzi el, ahol a munkaterület található, és az elemzés után törli az ideiglenes másolatokat. A gépösszetevők tárolása központilag történik, ugyanabban a régióban, ahol a virtuális gép is található.
 
@@ -267,7 +267,7 @@ A rendszer naplózza a következő típusú hitelesített és névtelen kérelme
 
 | Hitelesített  | Névtelen|
 | :------------- | :-------------|
-| Sikeres kérelmek | Sikeres kérelmek |
+| Sikeres kérések | Sikeres kérések |
 |Sikertelen kérések, köztük az időtúllépések, torlódások, valamint a hálózati, hitelesítési és egyéb hibák | Közös hozzáférésű aláírást (SAS) használó kérelmek, beleértve a sikertelen és sikeres kérelmeket |
 | Közös hozzáférésű aláírást (SAS) használó kérelmek, beleértve a sikertelen és sikeres kérelmeket |Ügyfél- és kiszolgálóoldali időtúllépési hibák |
 |   Elemzési adatokhoz kapcsolódó kérelmek |    304-es (Nincs módosítva) hibakóddal ellátott sikertelen GET-kérések |
@@ -308,7 +308,7 @@ Az Azure AD-naplózási jelentésben szereplő események 180 napig őrződnek m
 
 Azon ügyfelek számára, akik a [naplózási események](../../active-directory/active-directory-reporting-activity-audit-logs.md) hosszabb megőrzési időtartamokra való tárolását érdeklik, a JELENTÉSKÉSZÍTÉSi API-val rendszeresen lehívhatja a naplózási eseményeket egy különálló adattárba.
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 Ez a cikk az adatvédelmet és az adatok védelmét, valamint a szervezet informatikai infrastruktúrájának kezelését segítő szoftvereket és szolgáltatásokat nyújt. A Microsoft felismeri, hogy amikor másoknak bízzák meg az adatvédelmet, a megbízhatóság szigorú biztonságot igényel. A Microsoft szigorú megfelelőségi és biztonsági szabályokat követ, a kódolástól kezdve egészen a szolgáltatások üzemeltetéséig. Az adatok biztonságossá tétele és védelme a Microsoft legfontosabb prioritása.
 

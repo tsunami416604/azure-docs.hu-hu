@@ -4,12 +4,12 @@ description: Ismerteti, Hogyan oldhatók fel a gyakori hibák, amikor erőforrá
 tags: top-support-issue
 ms.topic: troubleshooting
 ms.date: 06/25/2020
-ms.openlocfilehash: 652e4ec3c7f0de982b973733d75d736949b97bcc
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: dad80cf4230c3c6b4d7d97b21d155f6e755c2ab9
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373997"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446606"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Gyakori Azure-beli üzembe helyezési hibák elhárítása az Azure Resource Managerrel
 
@@ -27,7 +27,7 @@ Ha egy hibakódra vonatkozó információt keres, és ez a cikk nem tartalmaz in
 | AccountPropertyCannotBeSet | Keresse meg a rendelkezésre álló Storage-fiók tulajdonságait. | [storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |
 | AllocationFailed | A fürt vagy a régió nem rendelkezik elérhető erőforrásokkal, vagy nem támogatja a kért virtuálisgép-méretet. Ismételje meg a kérést később, vagy igényeljen egy másik virtuálisgép-méretet. | A Linux, a [kiépítési és a foglalási problémák](../../virtual-machines/troubleshooting/troubleshoot-deployment-new-vm-windows.md) kiosztása [és lefoglalása](../../virtual-machines/troubleshooting/troubleshoot-deployment-new-vm-linux.md)a Windows rendszerhez és a foglalási [hibák elhárítása](../../virtual-machines/troubleshooting/allocation-failure.md)|
 | AnotherOperationInProgress | Várjon, amíg az egyidejű művelet befejeződik. | |
-| AuthorizationFailed | A fiók vagy az egyszerű szolgáltatásnév nem rendelkezik megfelelő hozzáféréssel az üzemelő példány befejezéséhez. Győződjön meg arról, hogy a fiókja a szerepkörhöz tartozik, valamint a központi telepítési hatókörhöz való hozzáférése.<br><br>Ez a hiba akkor jelenhet meg, ha egy szükséges erőforrás-szolgáltató nincs regisztrálva. | [Azure szerepköralapú Access Control](../../role-based-access-control/role-assignments-portal.md)<br><br>[Regisztráció feloldása](error-register-resource-provider.md) |
+| AuthorizationFailed | A fiók vagy az egyszerű szolgáltatásnév nem rendelkezik megfelelő hozzáféréssel az üzemelő példány befejezéséhez. Győződjön meg arról, hogy a fiókja a szerepkörhöz tartozik, valamint a központi telepítési hatókörhöz való hozzáférése.<br><br>Ez a hiba akkor jelenhet meg, ha egy szükséges erőforrás-szolgáltató nincs regisztrálva. | [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md)<br><br>[Regisztráció feloldása](error-register-resource-provider.md) |
 | BadRequest | Olyan központi telepítési értékeket küldtünk, amelyek nem egyeznek a Resource Manager által várttal. A hibaelhárítással kapcsolatos segítségért olvassa el a belső állapotjelző üzenetet. | A [sablon referenciája](/azure/templates/) és a [támogatott helyszínek](resource-location.md) |
 | Ütközés | Olyan műveletet kér, amely nem engedélyezett az erőforrás jelenlegi állapotában. Például a lemezek átméretezése csak a virtuális gép létrehozásakor vagy a virtuális gép kiosztása esetén engedélyezett. | |
 | DeploymentActiveAndUneditable | Várjon, amíg a rendszer végrehajtja az adott erőforráscsoport egyidejű üzembe helyezését. | |

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 3b86c249630f7bfa5c2d319577c66d750b0f6268
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 948ada46085d83c8cf453cdde23cb407ea2dd2d8
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87045912"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447701"
 ---
 # <a name="azure-security-baseline-for-automation"></a>Azure biztonsági alapkonfiguráció automatizáláshoz
 
@@ -220,7 +220,7 @@ Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel va
 
 * [A társított Log Analytics-munkaterület esetében támogatott régiók](./how-to/region-mappings.md)
 
-* [Update Management naplók lekérdezése](./automation-update-management-query-logs.md)
+* [Update Management naplók lekérdezése](./update-management/update-mgmt-query-logs.md)
 
 **Azure Security Center figyelés**: igen
 
@@ -646,9 +646,9 @@ Hibrid Runbook-feldolgozók használata esetén a virtuális gépek virtuális l
 
 Ha az Azure Virtual Machines által támogatott hibrid Runbook-feldolgozókat használ, az Azure Update Management segítségével kezelheti a virtuális gépek frissítéseit és javításait. A Update Management a helyileg konfigurált frissítési tárházra támaszkodik a támogatott Windows-rendszerek javításához. Az olyan eszközök, mint a System Center Updates Publisher (a frissítések közzétevője) lehetővé teszik egyéni frissítések közzétételét Windows Server Update Services (WSUS) szolgáltatásban. Ez a forgatókönyv lehetővé teszi, hogy Update Management a harmadik féltől származó szoftverrel rendelkező frissítési adattárként Configuration Manager használó gépeket.
 
-* [Update Management az Azure-ban](./automation-update-management.md)
+* [Update Management az Azure-ban](./update-management/update-mgmt-overview.md)
 
-* [Azure-beli virtuális gépek frissítéseinek és javításának kezelése](./automation-tutorial-update-management.md)
+* [A virtuális gépek frissítéseinek és javításának kezelése](./update-management/update-mgmt-manage-updates-for-vm.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -660,9 +660,9 @@ Ha az Azure Virtual Machines által támogatott hibrid Runbook-feldolgozókat ha
 
 Ha az Azure Virtual Machines által támogatott hibrid Runbook-feldolgozókat használ, az Azure Update Management segítségével kezelheti a virtuális gépek frissítéseit és javításait. A Update Management a helyileg konfigurált frissítési tárházra támaszkodik a támogatott Windows-rendszerek javításához. Az olyan eszközök, mint a System Center Updates Publisher (a frissítések közzétevője) lehetővé teszik egyéni frissítések közzétételét Windows Server Update Services (WSUS) szolgáltatásban. Ez a forgatókönyv lehetővé teszi, hogy Update Management a harmadik féltől származó szoftverrel rendelkező frissítési adattárként Configuration Manager használó gépeket.
 
-* [Update Management megoldás az Azure-ban](./automation-update-management.md)
+* [Update Management megoldás az Azure-ban](./update-management/update-mgmt-overview.md)
 
-* [Azure-beli virtuális gépek frissítéseinek és javításának kezelése](./automation-tutorial-update-management.md)
+* [Azure-beli virtuális gépek frissítéseinek és javításának kezelése](./update-management/update-mgmt-manage-updates-for-vm.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 

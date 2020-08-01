@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 07/24/2020
 ms.author: ramakoni
 ms.custom: security-recommendations
-ms.openlocfilehash: 4d337c9cff4b0d7dbfb18a7ba0cf213265286017
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 5e1f2108c5607917c77330f362952f960e57e03a
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289147"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447905"
 ---
 # <a name="troubleshooting-intermittent-outbound-connection-errors-in-azure-app-service"></a>Az időszakos kimenő kapcsolatok hibáinak elhárítása a Azure App Serviceban
 
@@ -38,7 +38,7 @@ Amikor az alkalmazások és a függvények gyorsan megnyitnak egy új csatlakoz�
 
 ## <a name="avoiding-the-problem"></a>A probléma elkerülése
 
-Ha a cél egy olyan Azure-szolgáltatás, amely támogatja a szolgáltatási végpontokat, az [VNet-integráció](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet) és a szolgáltatási végpontok segítségével elkerülheti a SNAT a portok kimerülésével kapcsolatos problémákat. Ha a VNet-integrációt és a szolgáltatási végpontokat használja az integrációs alhálózaton, az alkalmazás kimenő forgalma ezekre a szolgáltatásokra nem lesz kimenő SNAT.
+Ha a cél egy olyan Azure-szolgáltatás, amely támogatja a szolgáltatási végpontokat, az SNAT-portok kimerülésével kapcsolatos problémákat a [regionális VNet integrációs](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet) és szolgáltatási végpontok vagy privát végpontok használatával lehet elkerülni. Ha regionális VNet-integrációt használ, és az integrációs alhálózaton helyezi el a szolgáltatási végpontokat, az alkalmazás kimenő forgalma ezen szolgáltatásokhoz nem lesz kimenő SNAT-korlátozás. Hasonlóképpen, ha regionális VNet-integrációt és privát végpontokat használ, akkor nem lesz kimenő SNAT portja az adott célhelyre. 
 
 A SNAT-port problémájának elkerülése azt jelenti, hogy az új kapcsolatok ismételt létrehozását nem kell ismétlődő módon létrehozni ugyanahhoz a gazdagéphez és porthoz.
 

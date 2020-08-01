@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 07/16/2020
 ms.topic: conceptual
-ms.openlocfilehash: 69680fbb442b4e636b72f480ed21f36924362a13
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4d29979e28140b728478d405db934cb41783f4b0
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87024826"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448074"
 ---
 # <a name="hybrid-runbook-worker-overview"></a>Hibrid runbook-feldolgozó – áttekintés
 
@@ -90,13 +90,13 @@ Azure Automation Hybrid Runbook Worker Azure Government használható a követke
 
 ## <a name="update-management-on-hybrid-runbook-worker"></a>Update Management hibrid Runbook-feldolgozón
 
-Ha Azure Automation [Update Management](automation-update-management.md) engedélyezve van, az log Analytics munkaterülethez csatlakoztatott összes gép automatikusan hibrid Runbook-feldolgozóként van konfigurálva. Az egyes feldolgozók támogatják az runbookok megcélozni kívánt frissítéseket.
+Ha Azure Automation [Update Management](update-management/update-mgmt-overview.md) engedélyezve van, az log Analytics munkaterülethez csatlakoztatott összes gép automatikusan hibrid Runbook-feldolgozóként van konfigurálva. Az egyes feldolgozók támogatják az runbookok megcélozni kívánt frissítéseket.
 
 Az ily módon konfigurált gépek nincsenek regisztrálva az Automation-fiókban már definiált hibrid Runbook-feldolgozói csoportokkal. Felveheti a gépet egy hibrid Runbook Worker-csoportba, de ugyanazt a fiókot kell használnia a Update Management és a hibrid Runbook Worker csoport tagságához is. Ez a funkció a hibrid Runbook-feldolgozók verziójának 7.2.12024.0 lett hozzáadva.
 
 ### <a name="update-management-addresses-for-hybrid-runbook-worker"></a>A hibrid Runbook-feldolgozók Update Management címei
 
-A hibrid Runbook-feldolgozó számára szükséges szabványos címek és portok felett Update Management a [hálózati tervezés](automation-update-management.md#ports) szakaszban ismertetett további hálózati konfigurációs követelmények is szerepelnek.
+A hibrid Runbook-feldolgozó számára szükséges szabványos címek és portok felett Update Management a [hálózati tervezés](update-management/update-mgmt-overview.md#ports) szakaszban ismertetett további hálózati konfigurációs követelmények is szerepelnek.
 
 ## <a name="azure-automation-state-configuration-on-a-hybrid-runbook-worker"></a>Állapot-konfiguráció Azure Automation hibrid Runbook-feldolgozón
 

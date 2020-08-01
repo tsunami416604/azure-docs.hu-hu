@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/22/2019
-ms.openlocfilehash: b33bd5ba20e21d757e412e9dac7c474308c4561d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9c4e9676208a5d2cfa8c0c04a97675a3c634e3d5
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077153"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446797"
 ---
 # <a name="oms-portal-moving-to-azure"></a>OMS-portál áthelyezése az Azure-ba
 
@@ -32,7 +32,7 @@ Az alábbi módosítások a OMS-portál elavult változatával lesznek bejelentv
 - A [OMS Mobile alkalmazás](#oms-mobile-app) elavult. 
 - Az [NSG-megoldás cseréje](#azure-network-security-group-analytics) Traffic Analytics megoldáson keresztül elérhető továbbfejlesztett funkciókkal történik.
 - A System Center Operations Manager új kapcsolatainak Log Analytics a [frissített felügyeleti csomagokat](#system-center-operations-manager)kell megkövetelniük.
-- A [Update Management](../../automation/automation-update-management.md)változásairól további információt a [OMS-frissítés telepítése az Azure-](../../automation/migrate-oms-update-deployments.md) ban című témakörben talál.
+- A [Update Management](../../automation/update-management/update-mgmt-overview.md)változásairól további információt a [OMS-frissítés telepítése az Azure-](../../automation/migrate-oms-update-deployments.md) ban című témakörben talál.
 
 
 ## <a name="what-should-i-do-now"></a>Mit tegyek most?

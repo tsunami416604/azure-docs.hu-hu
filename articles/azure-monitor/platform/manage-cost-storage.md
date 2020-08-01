@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 07/20/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: bba634fa20c3bab6e3763f6cedcbeb77f4546098
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: bbc6b4c1317ac31d6262892ac32e2d45cf4863db
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327871"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87449089"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>A használat és a költségek kezelése Azure Monitor naplókkal    
 
@@ -579,7 +579,7 @@ Ha riasztást szeretne kapni, ha az elmúlt 24 órában betöltött számlázhat
 - A **riasztási feltétel megadásával** határozza meg a célerőforrásként használt Log Analytics-munkaterületet.
 - A **Riasztási feltételek** résznél az alábbiakat adja meg:
    - A **Jel neve** legyen **Egyéni naplókeresés**
-   - **Lekérdezés keresése** a következőre: `Usage | where IsBillable | summarize DataGB = sum(Quantity / 1000.) | where DataGB > 50` . Ha differetn szeretne 
+   - **Lekérdezés keresése** a következőre: `Usage | where IsBillable | summarize DataGB = sum(Quantity / 1000.) | where DataGB > 50` . 
    - A **Riasztási logika****alapja legyen az ** *eredmények száma*, a **Feltétel** pedig legyen *nagyobb mint* a következő **küszöbérték **: *0*
    - A *1440* perc **és a** **riasztások gyakorisága** naponta egyszer fut minden *1440* minutesto.
 - **Határozza meg a riasztás részleteit** az alábbiak megadásával:

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/17/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: dd5248996661be6d4ace81afd7ab942ab70eb4ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cecea24fe002ee64d54052635a6d7dec982aeee2
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84781633"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87445655"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>Automatikus felhasználóátadást használó üzembe helyezés tervezése
 
@@ -50,7 +50,7 @@ Az Azure AD bármely alkalmazás önkiszolgáló integrálását teszi lehetőv�
 
 Szüksége lesz az automatikusan kiépíteni kívánt alkalmazás (ok) megfelelő licencére. Beszélje meg az alkalmazás tulajdonosait, hogy az alkalmazáshoz rendelt felhasználók rendelkeznek-e a megfelelő licenccel az alkalmazás szerepköreihez. Ha az Azure AD a szerepkörök alapján felügyeli az automatikus kiosztást, az Azure AD-ben hozzárendelt szerepköröket az alkalmazás-licencekhez kell igazítani. Az alkalmazásban található helytelen licencek hibát okozhatnak a felhasználó üzembe helyezése/frissítése során.
 
-### <a name="terms"></a>Kifejezések
+### <a name="terms"></a>Fogalmak
 
 Ez a cikk a következő kifejezéseket használja:
 
@@ -66,7 +66,7 @@ Ez a cikk a következő kifejezéseket használja:
 
 ### <a name="training-resources"></a>Erőforrások betanítása
 
-| Erőforrások| Hivatkozás és leírás |
+| További források| Hivatkozás és leírás |
 | - | - |
 | Igény szerinti webináriumok| [Vállalati alkalmazások kezelése az Azure AD-vel](https://info.microsoft.com/CO-AZUREPLAT-WBNR-FY18-03Mar-06-ManageYourEnterpriseApplicationsOption1-MCW0004438_02OnDemandRegistration-ForminBody.html)<br>Ismerje meg, hogyan segítheti az Azure AD az egyszeri bejelentkezést a vállalati SaaS-alkalmazásokhoz és a hozzáférés szabályozására vonatkozó ajánlott eljárásokhoz. |
 | Videók| [Mi a felhasználók üzembe helyezése az aktív Azure-címtárban?](https://youtu.be/_ZjARPpI6NI) <br> [A felhasználók üzembe helyezésének központi telepítése az Active Directory Azure-címtárban](https://youtu.be/pKzyts6kfrw) <br> [A Salesforce integrálása az Azure AD-vel: a felhasználók üzembe helyezésének automatizálása](https://azure.microsoft.com/resources/videos/integrating-salesforce-with-azure-ad-how-to-automate-user-provisioning/) |
@@ -256,7 +256,7 @@ Válassza ki a megoldás követelményeihez igazodó lépéseket.
 
 Amikor az Azure AD-létesítési szolgáltatás első alkalommal fut, a forrásrendszer és a célrendszer kezdeti ciklusa minden felhasználói objektumról pillanatképet készít az egyes célszámítógépeken.
 
-Az alkalmazások automatikus kiosztásának engedélyezésekor a kezdeti ciklus akár 20 perctől akár több óráig is eltarthat. Az időtartam az Azure AD-címtár méretétől és a kiépítés hatókörében lévő felhasználók számától függ. Lásd: [a kiépítési teljesítmény javítása](../app-provisioning/application-provisioning-when-will-provisioning-finish.md).
+Az alkalmazások automatikus kiosztásának engedélyezésekor a kezdeti ciklus akár 20 perctől akár több óráig is eltarthat. Az időtartam az Azure AD-címtár méretétől és a kiépítés hatókörében lévő felhasználók számától függ.
 
 A kiépítési szolgáltatás mindkét rendszer állapotát a kezdeti ciklus után, a későbbi növekményes ciklusok teljesítményének növelésével tárolja.
 
@@ -300,8 +300,6 @@ A kiépítés során esetlegesen felmerülő problémák elhárításához tekin
 
 * [Egy attribútum szinkronizálása a helyszíni Active Directory az Azure AD-be az alkalmazásba való kiépítéshez](../app-provisioning/user-provisioning-sync-attributes-for-mapping.md)
 
-* [Az Azure AD Gallery alkalmazásba történő felhasználói üzembe helyezése órákat vesz igénybe](../app-provisioning/application-provisioning-when-will-provisioning-finish.md)
-
 * [Probléma a rendszergazdai hitelesítő adatok mentésekor, miközben a felhasználók üzembe helyezését egy Azure Active Directory Gallery-alkalmazáshoz konfigurálja](../app-provisioning/application-provisioning-config-problem-storage-limit.md)
 
 * [Egyetlen felhasználó sincs kiépítve egy Azure AD Gallery-alkalmazásba](../app-provisioning/application-provisioning-config-problem-no-users-provisioned.md)
@@ -318,7 +316,7 @@ A kiépítés során esetlegesen felmerülő problémák elhárításához tekin
 
 * [Azure AD Connect kiépítési ügynök: verziók kiadásának előzményei](provisioning-agent-release-version-history.md)
 
-#### <a name="resources"></a>Erőforrások
+#### <a name="resources"></a>További források
 
 * [Termékkel kapcsolatos visszajelzés küldése](https://feedback.azure.com/forums/169401-azure-active-directory)
 

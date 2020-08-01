@@ -1,5 +1,5 @@
 ---
-title: Helyi szerepköralapú Access Control (RBAC) konfigurálása a FHIR készült Azure API-hoz
+title: Helyi szerepköralapú hozzáférés-vezérlés (helyi RBAC) konfigurálása a FHIR készült Azure API-hoz
 description: Ez a cikk azt ismerteti, hogyan konfigurálható az Azure API a FHIR számára külső Azure AD-bérlő használatához adatsíkon
 author: hansenms
 ms.service: healthcare-apis
@@ -7,12 +7,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 03/15/2020
 ms.author: mihansen
-ms.openlocfilehash: 8aa454e272e0dbf4c69941c35a63ee036c16f78f
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 11e7d31385140206070e3b415224ccca725d110f
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422572"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446915"
 ---
 # <a name="configure-local-rbac-for-fhir"></a>A FHIR helyi RBAC konfigurálása 
 
@@ -63,7 +63,7 @@ A szükséges objektumazonosítók megadása után kattintson a **Mentés** gomb
 
 A FHIR készült Azure API akár 5 percig is gyorsítótárazza a döntéseket. Ha hozzáférést biztosít a FHIR-kiszolgálóhoz az engedélyezett objektumazonosítók listájához való hozzáadásával, vagy eltávolíthatja őket a listáról, akkor várhatóan akár öt percet is igénybe vehet, amíg a módosítások érvénybe lépnek.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebből a cikkből megtudhatta, hogyan rendelhet hozzá FHIR adatsíkok-hozzáférést külső (másodlagos) Azure Active Directory bérlő használatával. További információ a FHIR készült Azure API további beállításairól:
  

@@ -3,12 +3,12 @@ title: Azure-Blob Storage Event Grid forrásként
 description: A blob Storage-eseményekhez megadott tulajdonságokat ismerteti Azure Event Grid
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 792e4b24df5eb374d1e3589629fa8628d6680cf8
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: a914edbb6f624617766c77b277d7ee8e6ad08bd9
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371277"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87458943"
 ---
 # <a name="azure-blob-storage-as-an-event-grid-source"></a>Azure-Blob Storage Event Grid forrásként
 
@@ -25,7 +25,7 @@ Ez a cikk a blob Storage-események tulajdonságait és sémáját ismerteti.Az 
 Ezek az események akkor aktiválódnak, ha egy ügyfél a blob REST API-k meghívásával létrehozza, lecseréli vagy törli a blobot.
 
 > [!NOTE]
-> Az elosztott fájlrendszerbeli végpont használata nem *`(abfss://URI) `* hierarchikus névtér-kompatibilis fiókok esetén nem fog eseményeket készíteni. Ilyen fiókok esetében csak a blob-végpont *`(wasb:// URI)`* fog eseményeket készíteni.
+> A `$logs` és a `$blobchangefeed` tárolók nincsenek integrálva a Event Gridba, ezért a tárolókban lévő tevékenységek nem hoznak majd fel eseményeket. Emellett az elosztott fájlrendszerbeli végpont használata nem *`(abfss://URI) `* hierarchikus névtérrel rendelkező fiókok esetében nem hoz majd eseményeket, de a blob-végpont *`(wasb:// URI)`* eseményeket fog eredményezni.
 
  |Esemény neve |Leírás|
  |----------|-----------|
@@ -33,7 +33,7 @@ Ezek az események akkor aktiválódnak, ha egy ügyfél a blob REST API-k megh�
  |**Microsoft. Storage. BlobDeleted** |A blob törlésekor aktiválódik. <br>Ez az esemény akkor aktiválódik, ha az ügyfelek a `DeleteBlob` Blob Rest APIban elérhető műveletet hívják meg. |
 
 > [!NOTE]
-> Ha biztosítani szeretné, hogy a **Microsoft. Storage. BlobCreated** esemény csak akkor legyen aktiválva, ha egy blokk blobja teljesen véglegesítve van, akkor szűrje a `CopyBlob` , és a `PutBlob` `PutBlockList` REST API hívások eseményeit. Ezek az API-hívások csak azt követően indítják el a **Microsoft. Storage. BlobCreated** eseményt, hogy az adatgyűjtés teljes mértékben véglegesítve lett egy blokk blobban. A szűrők létrehozásával kapcsolatos további információkért lásd: [Event Grid események szűrése](https://docs.microsoft.com/azure/event-grid/how-to-filter-events).
+> Ha biztosítani szeretné, hogy a **Microsoft. Storage. BlobCreated** esemény csak akkor legyen aktiválva, ha egy blokk blobja teljesen véglegesítve van, akkor szűrje a `CopyBlob` , és a `PutBlob` `PutBlockList` REST API hívások eseményeit. Ezek az API-hívások csak azt követően indítják el a **Microsoft. Storage. BlobCreated** eseményt, hogy az adatgyűjtés teljes mértékben véglegesítve lett egy blokk blobban. A szűrők létrehozásával kapcsolatos további információkért lásd: [Event Grid események szűrése](./how-to-filter-events.md).
 
 ### <a name="list-of-the-events-for-azure-data-lake-storage-gen-2-rest-apis"></a>Azure Data Lake Storage 2. generációs REST API-k eseményeinek listája
 
@@ -49,7 +49,7 @@ Ezek az események akkor aktiválódnak, ha egy hierarchikus névteret engedély
 |**Microsoft. Storage. DirectoryDeleted**|Egy könyvtár törlésekor aktiválódik. <br>Ez az esemény akkor aktiválódik, ha az ügyfelek a `DeleteDirectory` Azure Data Lake Storage Gen2 REST API elérhető műveletet használják.|
 
 > [!NOTE]
-> Ha biztosítani szeretné, hogy a **Microsoft. Storage. BlobCreated** esemény csak akkor legyen aktiválva, ha egy blokk blobja teljesen véglegesítve van, akkor szűrje az eseményt a `FlushWithClose` REST API híváshoz. Ez az API-hívás csak azt követően indítja el a **Microsoft. Storage. BlobCreated** eseményt, hogy az adathalmaz teljes mértékben véglegesítve lett egy blokk blobban. A szűrők létrehozásával kapcsolatos további információkért lásd: [Event Grid események szűrése](https://docs.microsoft.com/azure/event-grid/how-to-filter-events).
+> Ha biztosítani szeretné, hogy a **Microsoft. Storage. BlobCreated** esemény csak akkor legyen aktiválva, ha egy blokk blobja teljesen véglegesítve van, akkor szűrje az eseményt a `FlushWithClose` REST API híváshoz. Ez az API-hívás csak azt követően indítja el a **Microsoft. Storage. BlobCreated** eseményt, hogy az adathalmaz teljes mértékben véglegesítve lett egy blokk blobban. A szűrők létrehozásával kapcsolatos további információkért lásd: [Event Grid események szűrése](./how-to-filter-events.md).
 
 <a name="example-event"></a>
 ### <a name="the-contents-of-an-event-response"></a>Egy eseményre adott válasz tartalma
@@ -307,8 +307,8 @@ Az adatobjektum a következő tulajdonságokkal rendelkezik:
 | Tulajdonság | Típus | Description |
 | -------- | ---- | ----------- |
 | api | sztring | Az eseményt kiváltó művelet. |
-| ügyfélkérelem | sztring | ügyfél által megadott kérelem azonosítója a tárolási API-művelethez. Ez az azonosító használható az Azure Storage diagnosztikai naplóinak az "ügyfél-kérelem-azonosító" mezővel való összekapcsolására a naplókban, és az "x-MS-Client-Request-id" fejléc használatával megadható az ügyfelek kérései. Lásd: [naplózási formátum](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format). |
-| Kérelemazonosító | sztring | A szolgáltatás által generált kérelem azonosítója a tárolási API-művelethez. Felhasználható az Azure Storage diagnosztikai naplóinak a naplók "Request-ID-header" mezővel való összekapcsolására, és a rendszer az "x-MS-Request-id" fejlécben az API-hívás kezdeményezését adja vissza. Lásd: [naplózási formátum](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format). |
+| ügyfélkérelem | sztring | ügyfél által megadott kérelem azonosítója a tárolási API-művelethez. Ez az azonosító használható az Azure Storage diagnosztikai naplóinak az "ügyfél-kérelem-azonosító" mezővel való összekapcsolására a naplókban, és az "x-MS-Client-Request-id" fejléc használatával megadható az ügyfelek kérései. Lásd: [naplózási formátum](/rest/api/storageservices/storage-analytics-log-format). |
+| Kérelemazonosító | sztring | A szolgáltatás által generált kérelem azonosítója a tárolási API-művelethez. Felhasználható az Azure Storage diagnosztikai naplóinak a naplók "Request-ID-header" mezővel való összekapcsolására, és a rendszer az "x-MS-Request-id" fejlécben az API-hívás kezdeményezését adja vissza. Lásd: [naplózási formátum](/rest/api/storageservices/storage-analytics-log-format). |
 | eTag | sztring | Az az érték, amelyet a műveletek feltételes végrehajtásához használhat. |
 | contentType | sztring | A blobhoz megadott tartalomtípus. |
 | contentLength | egész szám | A blob mérete bájtban megadva. |

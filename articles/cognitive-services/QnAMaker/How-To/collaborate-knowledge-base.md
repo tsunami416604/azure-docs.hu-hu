@@ -1,14 +1,14 @@
 ---
 title: Együttműködés a Tudásbázisban – QnA Maker
-description: QnA Maker lehetővé teszi, hogy több személy is működjenek együtt a Tudásbázisban. Ez a szolgáltatás az Azure szerepköralapú Access Control biztosít.
+description: QnA Maker lehetővé teszi, hogy több személy is működjenek együtt a Tudásbázisban. Ez a szolgáltatás az Azure szerepköralapú hozzáférés-vezérléssel (Azure RBAC) van ellátva.
 ms.topic: conceptual
 ms.date: 07/13/2020
-ms.openlocfilehash: 4c550a36dd045873df4bc4a382e1c884466f95ad
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 20eb58f346322cb78bff85af3d6a0d366090763d
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87054081"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446950"
 ---
 # <a name="collaboration-with-authors-and-editors"></a>Együttműködés a szerzőkkel és a szerkesztővel
 

@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: 1063f7189de4bdf1aaca4a6d72c979476433c32f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 493c77a8f875018627bfe3167e66addeaf65d089
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87097006"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87445789"
 ---
 # <a name="frequently-asked-questions---azure-key-vault-certificate-import"></a>Gyakori kérdések – Azure Key Vault tanúsítvány importálása
 
@@ -64,6 +64,9 @@ Igen, a tanúsítványok bármely HITELESÍTÉSSZOLGÁLTATÓTÓL importálhatók
 
 ### <a name="if-i-import-a-certificate-from-a-partner-ca-will-the-auto-renew-feature-still-work"></a>Ha importálok egy tanúsítványt egy partner HITELESÍTÉSSZOLGÁLTATÓTÓL, akkor is működik az automatikus megújítás funkció?
 Igen, meg kell győződnie arról, hogy a feltöltés után meg kell adnia az autorotációt a tanúsítvány kiállítási házirendjében. A módosításokat a rendszer a következő ciklus vagy tanúsítvány verziójának megfelelően is megjeleníti.
+
+### <a name="unable-to-see-the-app-service-certificate-imported-to-key-vault"></a>Nem látható a Key Vaultba importált App Service-tanúsítvány? 
+Ha sikeresen importálta a tanúsítványt, tekintse át a titkok panel alatt.
 
 
 ## <a name="next-steps"></a>További lépések

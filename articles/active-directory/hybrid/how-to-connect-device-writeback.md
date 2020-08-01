@@ -16,12 +16,12 @@ ms.date: 05/08/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 043c30af6d28e61a532c8030dabdc17b73303e7a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3b139441adb02f5fb33ae8c4a70aaa9b423f0d0e
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85360129"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447089"
 ---
 # <a name="azure-ad-connect-enabling-device-writeback"></a>Azure AD Connect: az eszköz visszaírási engedélyezése
 > [!NOTE]
@@ -61,7 +61,7 @@ Azure AD Connect telepítése egyéni vagy expressz beállítások használatáv
 
     a. **Vállalati rendszergazdai hitelesítő adatok megadása**: Ha a vállalati rendszergazda hitelesítő adatai megtalálhatók az erdőben, ahol az eszközöket vissza kell írni, Azure ad Connect automatikusan előkészíti az erdőt az eszköz visszaírási konfigurálása során.
 
-    b. **Töltse le a PowerShell-szkriptet**: Azure ad Connect automatikusan létrehoz egy PowerShell-parancsfájlt, amely előkészíti az Active Directoryt az eszközök visszaírási. Ha a vállalati rendszergazda hitelesítő adatai nem adhatók meg Azure AD Connectban, a rendszer azt javasolja, hogy töltse le a PowerShell-szkriptet. Adja meg a letöltött PowerShell-parancsfájlt a **CreateDeviceContainer. PSQ** azon erdő vállalati rendszergazdájához, ahol az eszközök vissza lesznek írva.
+    b. **Töltse le a PowerShell-szkriptet**: Azure ad Connect automatikusan létrehoz egy PowerShell-parancsfájlt, amely előkészíti az Active Directoryt az eszközök visszaírási. Ha a vállalati rendszergazda hitelesítő adatai nem adhatók meg Azure AD Connectban, a rendszer azt javasolja, hogy töltse le a PowerShell-szkriptet. Adja meg a letöltött PowerShell-parancsfájlt annak az erdőnek a vállalati rendszergazdájához **CreateDeviceContainer.ps1** , amelyben az eszközök vissza lesznek írva.
     ![Az Active Directory-erdő előkészítése](./media/how-to-connect-device-writeback/devicecontainercreds.png)
     
     Az Active Directory-erdő előkészítéséhez a következő műveletek végezhetők el:

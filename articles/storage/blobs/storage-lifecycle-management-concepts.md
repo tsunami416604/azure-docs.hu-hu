@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
-ms.openlocfilehash: 6285c25c44b7b8c5b2c1d9c148424fc36912b57c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 624b8e18f8c0fb523c27c41ce9c10af93c8b6190
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86528703"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446676"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Az Azure Blob Storage-életciklus felügyelete
 
@@ -124,7 +124,7 @@ Két módon adhat hozzá házirendet a Azure Portalon keresztül.
    }
    ```
 
-5. Válassza a **Mentés** lehetőséget.
+5. Kattintson a **Mentés** gombra.
 
 6. A JSON-példával kapcsolatos további információkért tekintse meg a [szabályzatok](#policy) és [szabályok](#rules) szakaszt.
 
@@ -235,7 +235,7 @@ A szabályzaton belüli szabályok több paraméterrel rendelkeznek:
 | Paraméter neve | Paraméter típusa | Jegyzetek | Kötelező |
 |----------------|----------------|-------|----------|
 | `name`         | Sztring |A szabály neve legfeljebb 256 alfanumerikus karaktert tartalmazhat. A szabály neve megkülönbözteti a kis-és nagybetűket.  Egy szabályzaton belül egyedinek kell lennie. | Igaz |
-| `enabled`      | Logikai érték | Egy nem kötelező logikai érték, amely lehetővé teszi egy szabály ideiglenes letiltását. Az alapértelmezett érték igaz, ha nincs beállítva. | Hamis | 
+| `enabled`      | Logikai | Egy nem kötelező logikai érték, amely lehetővé teszi egy szabály ideiglenes letiltását. Az alapértelmezett érték igaz, ha nincs beállítva. | Hamis | 
 | `type`         | Enumerálási érték | A jelenlegi érvényes típus: `Lifecycle` . | Igaz |
 | `definition`   | Az életciklus-szabályt meghatározó objektum | Mindegyik definíció egy szűrő készletből és egy műveleti készletből áll. | Igaz |
 
@@ -248,7 +248,8 @@ Mindegyik szabály definíciója tartalmaz egy szűrőt és egy műveleti készl
 A következő minta szabály úgy szűri a fiókot, hogy a műveleteit a-ben és a-ben létező objektumokon futtassa `container1` `foo` .  
 
 >[!NOTE]
->Az életciklus-kezelés csak a blob típusának használatát támogatja.  
+>- Az életciklus-kezelés csak a blob típusának használatát támogatja.<br>
+>- Az életciklus-kezelés nem érinti a rendszertárolókat, például a $logs és a $web.
 
 - Rétegbeli blob – a legutolsó módosítás után 30 nappal a lehűtési szintig
 - Szintű blob az archiválási szintre 90 nappal az utolsó módosítás után
@@ -483,7 +484,7 @@ A frissített szabályzat akár 24 óráig is eltarthat. Ha a házirend érvény
 **Manuálisan rehidratáltam egy archivált blobot, hogyan tudom megakadályozni, hogy átmenetileg visszakerüljön az archiválási szintre?**  
 Ha egy blobot egy hozzáférési rétegből egy másikba helyez át, az utolsó módosítás időpontja nem változik. Ha az archivált blobokat manuálisan rehidratálja a gyors szintre, az életciklus-kezelő motor vissza fogja helyezni az archiválási szintre. Tiltsa le az ezt a blobot érintő szabályt ideiglenesen annak megakadályozása érdekében, hogy az archiválható legyen. Engedélyezze újra a szabályt, ha a blob biztonságosan visszahelyezhető az archiválási szintre. Azt is megteheti, hogy a blobot egy másik helyre másolja, ha a gyors vagy lassú elérésű szinten kell maradni.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Megtudhatja, hogyan állíthatja helyre az adatokat a véletlen törlés után:
 

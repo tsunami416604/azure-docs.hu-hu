@@ -9,12 +9,12 @@ ms.reviewer: dseven
 ms.author: mihansen
 author: hansenms
 ms.date: 02/07/2019
-ms.openlocfilehash: 684f85042fd09c14621801ec017fea0e632f2598
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: f6c3b1f4c24ad2bce68c1cff7b22f0059d3534a2
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "84872676"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446053"
 ---
 # <a name="access-azure-api-for-fhir-with-postman"></a>Az Azure API elérése a Poster FHIR
 
@@ -108,7 +108,7 @@ Ha a hozzáférési jogkivonatot egy hasonló eszközzel vizsgálja meg [https:/
 }
 ```
 
-Hibaelhárítási helyzetekben a megfelelő célközönség ( `aud` jogcím) ellenőrzése jó kiindulópont. Ha a token a megfelelő kibocsátótól ( `iss` jogcím) származik, és rendelkezik a megfelelő célközönséggel ( `aud` jogcím), de továbbra sem tudja elérni a FHIR API-t, akkor valószínű, hogy a felhasználó vagy az egyszerű szolgáltatásnév ( `oid` jogcím) nem fér hozzá a FHIR adatsíkon. Javasoljuk, hogy az [Azure szerepkör-alapú Access Control használatával](configure-azure-rbac.md) rendeljen adatsíkok-szerepköröket a felhasználókhoz. Ha külső, másodlagos Azure Active Directory-bérlőt használ az adatsíkon, akkor [konfigurálnia kell a helyi RBAC-hozzárendeléseket](configure-local-rbac.md).
+Hibaelhárítási helyzetekben a megfelelő célközönség ( `aud` jogcím) ellenőrzése jó kiindulópont. Ha a token a megfelelő kibocsátótól ( `iss` jogcím) származik, és rendelkezik a megfelelő célközönséggel ( `aud` jogcím), de továbbra sem tudja elérni a FHIR API-t, akkor valószínű, hogy a felhasználó vagy az egyszerű szolgáltatásnév ( `oid` jogcím) nem fér hozzá a FHIR adatsíkon. Javasoljuk, hogy az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával](configure-azure-rbac.md) rendeljen adatsíkok-szerepköröket a felhasználókhoz. Ha külső, másodlagos Azure Active Directory-bérlőt használ az adatsíkon, akkor [konfigurálnia kell a helyi RBAC-hozzárendeléseket](configure-local-rbac.md).
 
 Az Azure CLI-vel a [FHIR készült Azure API-hoz is kaphat tokent](get-healthcare-apis-access-token-cli.md). Ha az Azure CLI-vel kapott tokent használ, használja a "tulajdonosi jogkivonat" engedélyezési típust, majd illessze be a jogkivonatot közvetlenül.
 

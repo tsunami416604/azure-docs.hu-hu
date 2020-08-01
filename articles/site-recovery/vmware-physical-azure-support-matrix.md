@@ -3,12 +3,12 @@ title: Támogatási mátrix a VMware/fizikai vész-helyreállításhoz Azure Sit
 description: Összefoglalja a VMware virtuális gépek és a fizikai kiszolgálók vész-helyreállításának támogatását az Azure-ban Azure Site Recovery használatával.
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: c7eebfee771a9c65901bd89336e49c026a944a65
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 56c86993e4e98764bc7e3ce04180f9e870cc612d
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86528859"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87458025"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>A VMware virtuális gépek és fizikai kiszolgálók Azure-ba való vész-helyreállítási mátrixának támogatása
 
@@ -91,7 +91,7 @@ Linux: CentOS | 5,2 – 5,11</b><br/> 6,1 – 6,10</b><br/> 7,0 – 7,8<br/> <br
 Ubuntu | Ubuntu 14,04 LTS [-kiszolgáló (a támogatott kernel-verziók áttekintése)](#ubuntu-kernel-versions)<br/><br/>Ubuntu 16,04 LTS [-kiszolgáló (a támogatott kernel-verziók áttekintése)](#ubuntu-kernel-versions) </br> Ubuntu 18,04 LTS [-kiszolgáló (a támogatott kernel-verziók áttekintése)](#ubuntu-kernel-versions)
 Debian | Debian 7/Debian 8 (tartalmazza az összes 7 támogatását). *x*, 8. *x* verziók) [(a támogatott kernel-verziók áttekintése)](#debian-kernel-versions)
 SUSE Linux | SUSE Linux Enterprise Server 12 SP1, SP2, SP3, SP4, [SP5](https://support.microsoft.com/help/4570609) [(támogatott kernel-verziók áttekintése)](#suse-linux-enterprise-server-12-supported-kernel-versions) <br/> SUSE Linux Enterprise Server 15, 15 SP1 [(a támogatott kernel-verziók áttekintése)](#suse-linux-enterprise-server-15-supported-kernel-versions)<br/> SUSE Linux Enterprise Server 11 SP3, SUSE Linux Enterprise Server 11 SP4<br/> Nem támogatottak a replikált gépek SUSE Linux Enterprise Server 11 SP3 szervizcsomagról SP4 verzióra való frissítése. A frissítéshez tiltsa le a replikációt, majd engedélyezze újra a frissítést.
-Oracle Linux | 6,4, 6,5, 6,6, 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, [7,5, 7,6](https://support.microsoft.com/help/4573888/) , [7,7](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery) [7,8](https://support.microsoft.com/help/4573888/), [8,0](https://support.microsoft.com/help/4573888/), [8,1](https://support.microsoft.com/help/4573888/), 8,2 <br/><br/> A Red hat-kompatibilis kernel vagy a nem törhető vállalati kernel kiadásának futtatása 3, 4 & 5 (UEK3, UEK4, UEK5)
+Oracle Linux | 6,4, 6,5, 6,6, 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, 7,6, [7,7](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery), [7,8](https://support.microsoft.com/help/4573888/), [8,0](https://support.microsoft.com/help/4573888/), [8,2](https://support.microsoft.com/help/4573888/)  <br/> A Red hat-kompatibilis kernel vagy a nem törhető vállalati kernel kiadásának futtatása 3, 4 & 5 (UEK3, UEK4, UEK5)<br/><br/>[8.1](https://support.microsoft.com/help/4573888/)<br/>Az összes UEK kernel és a RedHat kernel <= 3.10.0-1062. * támogatott. A RedHat-kernelek további támogatását az augusztus végéig elvárt 9,36-es verzióban érheti el.
 
 > [!Note]
 > Az egyes Windows-verziók esetében Azure Site Recovery csak a [hosszú távú karbantartási csatorna (LTSC)](/windows-server/get-started-19/servicing-channels-19#long-term-servicing-channel-ltsc) buildeket támogatja.  A [féléves csatorna](/windows-server/get-started-19/servicing-channels-19#semi-annual-channel) kiadásai jelenleg nem támogatottak.
@@ -335,7 +335,7 @@ Mobility szolgáltatás | A replikálni kívánt VMware virtuális gépen vagy f
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Ismerje meg, hogyan](tutorial-prepare-azure.md) készítheti elő az Azure-t a VMWare virtuális gépek vész-helyreállításához.
 
 [9.32 UR]: https://support.microsoft.com/en-in/help/4538187/update-rollup-44-for-azure-site-recovery

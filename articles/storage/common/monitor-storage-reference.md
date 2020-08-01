@@ -9,12 +9,12 @@ ms.date: 05/01/2020
 ms.author: normesta
 ms.subservice: logs
 ms.custom: monitoring
-ms.openlocfilehash: fa8838dd5eca03d9dd85e424f0163eb9ca8ed5e2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 28a127b4debeacd2562867008bc594897558d50d
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077854"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446833"
 ---
 # <a name="azure-storage-monitoring-data-reference"></a>Az Azure Storage figyelési adatreferenciája
 
@@ -102,9 +102,9 @@ Az Azure Storage a következő tranzakciós mérőszámokat biztosítja Azure Mo
 
 Az Azure Storage a Azure Monitor metrikáinak következő dimenzióit támogatja.
 
-| Dimenzió neve | Description |
+| Dimenzió neve | Leírás |
 | ------------------- | ----------------- |
-| **BlobType** | A blob típusa csak a blob-metrikák esetében. A támogatott értékek a következők: **BlockBlob**, **PageBlob**és **Azure Data Lake Storage**. A hozzáfűző blobot a BlockBlob tartalmazza. |
+| **BlobType** | A blob típusa csak a blob-metrikák esetében. A támogatott értékek a következők: **BlockBlob**, **PageBlob**és **Azure Data Lake Storage**. A hozzáfűző blobokat a **BlockBlob**tartalmazza. |
 | **BlobTier** | Az Azure Storage különböző hozzáférési szinteket kínál, amelyek lehetővé teszik a blob-objektumok-adattárolást a legköltséghatékonyabb módon. További információ az [Azure Storage blob-szintjéről](../blobs/storage-blob-storage-tiers.md). A támogatott értékek a következők: <br/> <li>**Gyors**: gyors elérésű szint</li> <li>**Cool**: lassú szint</li> <li>**Archive**: archiválási szint</li> <li>**Premium**: prémium szint a blob blokkhoz</li> <li>**P4/P6/P10/P15/P20/P30/P40/P50/P60**: szintű prémium oldal blob</li> <li>**Standard**: a standard oldal blobjának típusa</li> <li>Nem **rétegű**: az általános célú v1-es Storage-fiók típusa</li> |
 | **GeoType** | Az elsődleges vagy a másodlagos fürtből származó tranzakció. Az elérhető értékek közé tartozik az **elsődleges** és a **másodlagos**. Az olvasási hozzáférés földrajzi redundáns tárolási (RA-GRS) szolgáltatásra vonatkozik, amikor objektumokat olvas a másodlagos bérlőről. |
 | **ResponseType** | Tranzakció válaszának típusa Az elérhető értékek közé a következők tartoznak: <br/><br/> <li>**ServerOtherError**: Minden egyéb kiszolgálóoldali hiba, kivéve az ismertetett hibákat </li> <li>**ServerBusyError**: Hitelesített kérés, amely HTTP 503-as állapotkódot adott vissza. </li> <li>**ServerTimeoutError**: Hitelesített kérés, amely túllépte az időkorlátot, és HTTP 500-as állapotkódot adott vissza. Az időtúllépés egy kiszolgálóhiba miatt lépett fel. </li> <li>**AuthorizationError**: Hitelesített kérés, amely jogosulatlan adathozzáférés vagy egy engedélyezési hiba miatt hiúsult meg. </li> <li>**NetworkError**: Hitelesített kérés, amely hálózati hibák miatt hiúsult meg. Leggyakrabban akkor fordul elő, ha egy ügyfél idő előtt, az időkorlát letelte előtt zár be egy kapcsolatot. </li><li>**ClientAccountBandwidthThrottlingError**: a kérés sávszélességét a rendszer a [tárolási fiók skálázhatósági korlátainak](scalability-targets-standard-account.md)túllépése miatt szabályozza.</li><li>**ClientAccountRequestThrottlingError**: a kérést a rendszer a [tárolási fiók skálázhatósági korlátait](scalability-targets-standard-account.md)meghaladó kérések díjszabása szerint szabályozza.<li>**ClientThrottlingError**: más ügyféloldali sávszélesség-szabályozási hiba. A ClientAccountBandwidthThrottlingError és a ClientAccountRequestThrottlingError ki vannak zárva.</li> <li>**ClientTimeoutError**: Hitelesített kérés, amely túllépte az időkorlátot, és HTTP 500-as állapotkódot adott vissza. Ha az ügyfél hálózati időkorlátja vagy a kérés időkorlátja a tárolási szolgáltatás által várt értéknél alacsonyabbra van állítva, akkor ez egy várt időtúllépés. Máskülönben a rendszer ServerTimeoutError hibát jelent. </li> <li>**ClientOtherError**: Minden egyéb ügyféloldali hiba, kivéve az ismertetett hibákat. </li> <li>**Success**: Sikeres kérés</li> <li> **SuccessWithThrottling**: sikeres kérés, ha az SMB-ügyfél az első kísérlet (ek) során leszabályozza az újrapróbálkozásokat, de az újrapróbálkozások után sikeres lesz.</li> |
@@ -275,7 +275,7 @@ A következő táblázat felsorolja az Azure Storage-beli erőforrás-naplók tu
 |**smbCommandMajor UInt32** | Érték a **SMB2_HEADER. parancsban**. Jelenleg ez egy 0 és 18 közötti szám. Például: `0x6` |
 |**smbCommandMinor** | A **SmbCommandMajor**alosztálya, ahol szükséges. Például: `DirectoryCloseAndDelete` |
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 - Az Azure Storage figyelésének leírását lásd: az [Azure Storage figyelése](monitor-storage.md) .
 - Az Azure-erőforrások figyelésével kapcsolatos részletekért lásd: az [Azure-erőforrások figyelése Azure monitorokkal](../../azure-monitor/insights/monitor-azure-resource.md) .

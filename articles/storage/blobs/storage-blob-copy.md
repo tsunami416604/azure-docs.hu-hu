@@ -8,12 +8,12 @@ ms.date: 08/20/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
-ms.openlocfilehash: f4e6e2f2732d1c90e8fe669788d82692c8016fd6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ce0c16d43e6de9bada5d747949e370eb83f85826
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84463450"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446859"
 ---
 # <a name="copy-a-blob-with-net"></a>BLOB másolása .NET-tel
 
@@ -23,7 +23,7 @@ Ez a cikk bemutatja, hogyan másolhat egy blobot egy Azure Storage-fiókkal. Azt
 
 Amikor ugyanabba a Storage-fiókba másol egy blobot, ez egy szinkron művelet. A fiókok közötti másolás aszinkron művelet. A [StartCopy](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopy?view=azure-dotnet) és a [StartCopyAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopyasync?view=azure-dotnet) metódus az állapot vizsgálatára, illetve a másolási művelet megszakítására szolgáló másolati azonosító értéket ad vissza.
 
-A másolási műveletekhez tartozó forrás blob lehet egy blokkos blob, egy hozzáfűző blob, egy oldal blobja vagy egy pillanatkép. Ha a cél blob már létezik, a forrás-blobtal megegyező típusú blobnak kell lennie. A rendszer felülírja a meglévő cél blobokat. 
+A másolási műveletekhez tartozó forrás blob lehet egy blokkos blob, egy hozzáfűző blob, egy oldal blobja vagy egy pillanatkép. Ha a cél blob már létezik, a forrás-blobtal megegyező típusú blobnak kell lennie. A rendszer felülírja a meglévő cél blobot.
 
 A cél blob nem módosítható, amíg folyamatban van egy másolási művelet. A cél blob csak egy függőben lévő másolási blob művelettel rendelkezhet. Más szóval a blob nem lehet a több függőben lévő másolási művelet célja.
 
@@ -35,18 +35,18 @@ A másolási művelet állapotának lekéréséhez a cél blobban található [C
 
 A másolási művelet a következő formák bármelyikét elvégezheti:
 
-  - A forrás blobokat átmásolhatja egy másik névvel ellátott cél blobba. A cél blob lehet ugyanazon blob típusú (blokk, Hozzáfűzés vagy lap) meglévő blobja, vagy a másolási művelet által létrehozott új blob is lehet.
-  - A forrás blobot a cél blobba másolhatja ugyanazzal a névvel, és így gyakorlatilag lecserélheti a cél blobot. A másolási művelet eltávolítja a nem véglegesített blokkokat, és felülírja a cél blob metaadatait.
-  - A forrásfájl az Azure file Service-ben egy cél blobba másolható. A cél blob lehet egy meglévő blokk-blob, vagy lehet egy új, a másolási művelet által létrehozott blokk-blob. A fájlok másolása az oldal blobokra vagy a hozzáfűzési Blobok nem támogatottak.
-  - A pillanatképek az alap blobon keresztül másolhatók. Egy pillanatképnek az alap blob pozícióba való előléptetésével a blob egy korábbi verzióját állíthatja vissza.
-  - A pillanatképeket átmásolhatja egy másik néven megadott cél blobba. Az eredményül kapott cél blob egy írható blob, nem pillanatkép.
+- A forrás blobokat átmásolhatja egy másik névvel ellátott cél blobba. A cél blob lehet ugyanazon blob típusú (blokk, Hozzáfűzés vagy lap) meglévő blobja, vagy a másolási művelet által létrehozott új blob is lehet.
+- A forrás blobot a cél blobba másolhatja ugyanazzal a névvel, és így gyakorlatilag lecserélheti a cél blobot. A másolási művelet eltávolítja a nem véglegesített blokkokat, és felülírja a cél blob metaadatait.
+- A forrásfájl az Azure file Service-ben egy cél blobba másolható. A cél blob lehet egy meglévő blokk-blob, vagy lehet egy új, a másolási művelet által létrehozott blokk-blob. A fájlok másolása az oldal blobokra vagy a hozzáfűzési Blobok nem támogatottak.
+- A pillanatképek az alap blobon keresztül másolhatók. Egy pillanatképnek az alap blob pozícióba való előléptetésével a blob egy korábbi verzióját állíthatja vissza.
+- A pillanatképeket átmásolhatja egy másik néven megadott cél blobba. Az eredményül kapott cél blob egy írható blob, nem pillanatkép.
 
 ## <a name="copy-a-blob"></a>BLOB másolása
 
 BLOB másolásához hívja a következő módszerek egyikét:
 
- - [StartCopy](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopy?view=azure-dotnet)
- - [StartCopyAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopyasync?view=azure-dotnet)
+- [StartCopy](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopy?view=azure-dotnet)
+- [StartCopyAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopyasync?view=azure-dotnet)
 
 A következő kódrészlet egy korábban létrehozott blobra mutató hivatkozást kap, és egy új blobba másolja azt ugyanabban a tárolóban:
 

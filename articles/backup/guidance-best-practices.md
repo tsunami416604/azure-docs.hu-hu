@@ -1,14 +1,14 @@
 ---
-title: Útmutató és ajánlott eljárások
+title: Útmutatás és ajánlott eljárások
 description: Ismerje meg a Felhőbeli és a helyszíni számítási feladatok felhőbe történő biztonsági mentésének ajánlott eljárásait és útmutatását.
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: 4a5f7e1f55eb5b4a68ee889ef6e1378eb573a6a5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d0ce7877ebd33385deb98977c9439bf8a05b5325
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87099184"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447279"
 ---
 # <a name="backup-cloud-and-on-premises-workloads-to-cloud"></a>Felhőbeli és helyszíni számítási feladatok biztonsági mentése a felhőbe
 
@@ -137,7 +137,7 @@ A biztonsági mentési adatok védelme és a vállalata biztonsági igényeinek 
 
 ### <a name="authentication-and-authorization"></a>Hitelesítés és engedélyezés
 
-* Az Azure szerepköralapú Access Control (RBAC) lehetővé teszi a részletes hozzáférés-kezelést, a feladatok elkülönítését a csapaton belül, és csak a feladataik elvégzéséhez szükséges felhasználók számára biztosít hozzáférést. [További információ itt](backup-rbac-rs-vault.md).
+* Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) lehetővé teszi a részletes hozzáférés-kezelést, a feladatok elkülönítését a csapaton belül, és csak a feladataik elvégzéséhez szükséges felhasználók számára biztosít hozzáférést. [További információ itt](backup-rbac-rs-vault.md).
 
 * A Azure Backup három beépített szerepkört biztosít a biztonságimásolat-kezelési műveletek vezérléséhez: a biztonsági mentési közreműködők, a kezelők és az olvasók. [További információ itt](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions).
 

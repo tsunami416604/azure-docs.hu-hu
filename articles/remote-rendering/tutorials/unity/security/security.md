@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: 4eee6aeaff045264c8d23276ac91a83592ddc601
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 297241c5f939ae15fc77b29614b55d9b2bd63c84
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207810"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87445910"
 ---
 # <a name="tutorial-securing-azure-remote-rendering-and-model-storage"></a>Oktatóanyag: az Azure távoli renderelés és a modell tárterületének védelme
 
@@ -143,7 +143,7 @@ Módosítsa a **RemoteRenderingCoordinator** egy egyéni modell betöltéséhez 
     }
     ```
 
-    Ez a kód három további karakterlánc-változót hoz létre a **RemoteRenderingCoordinator** összetevőhöz. \
+    Ez a kód három további karakterlánc-változót hoz létre a **RemoteRenderingCoordinator** összetevőhöz.
     ![Csatolt modell](./media/storage-account-linked-model.png)
 
 1. Adja hozzá az értékeket a **RemoteRenderingCoordinator** összetevőhöz. Miután követte a [modell átalakításának](../../../quickstarts/convert-model.md)gyors útmutatóját, a következő értékeket kell megadni:
@@ -156,7 +156,7 @@ Módosítsa a **RemoteRenderingCoordinator** egy egyéni modell betöltéséhez 
     > Ha [a **Conversion.ps1** ](../../../quickstarts/convert-model.md#run-the-conversion) parancsfájlt a "-UseContainerSas" argumentum nélkül futtatja, a parancsfájl az SAS-token helyett a fenti értékeket fogja kiadni. ![Csatolt modell](./media/converted-output.png)
 1. Az idő alatt távolítsa el vagy tiltsa le a GameObject **TestModel**, hogy helyet szabadítson fel az egyéni modell betöltéséhez.
 1. Próbálja ki a jelenetet, és kapcsolódjon egy távoli munkamenethez.
-1. Kattintson a jobb gombbal a **RemoteRenderingCoordinator** , és válassza a **társított egyéni modell betöltése**lehetőséget. \
+1. Kattintson a jobb gombbal a **RemoteRenderingCoordinator** , és válassza a **társított egyéni modell betöltése**lehetőséget.
     ![Csatolt modell betöltése](./media/load-linked-model.png)
 
 Ezek a lépések megnövelték az alkalmazás biztonságát azáltal, hogy eltávolítják az SAS-jogkivonatot a helyi alkalmazásból.
@@ -176,16 +176,13 @@ A **RemoteRenderingCoordinator** parancsfájlhoz tartozik egy **ARRCredentialGet
 1. Kövesse a következő [témakört: az üzembe helyezett alkalmazások hitelesítési](../../../how-tos/authentication.md#authentication-for-deployed-applications)hitelesítésének konfigurálása, pontosabban követheti az Azure térbeli horgonyok dokumentációjában az [Azure ad felhasználói hitelesítésben](https://docs.microsoft.com/azure/spatial-anchors/concepts/authentication?tabs=csharp#azure-ad-user-authentication)felsorolt utasításokat. Ebbe beletartozik egy új Azure Active Directory alkalmazás regisztrálása és az ARR-példányhoz való hozzáférés konfigurálása.
 1. Miután konfigurálta az új HRE alkalmazást, tekintse meg a HRE-alkalmazást az alábbi képekkel:
 
-    **HRE alkalmazás – > hitelesítés**\
-    ![Alkalmazás-hitelesítés](./media/app-authentication-public.png)
+    **HRE alkalmazás – > hitelesítés** ![ Alkalmazás-hitelesítés](./media/app-authentication-public.png)
 
-    **HRE alkalmazás – > API-engedélyek**\
-    ![Alkalmazás API-k](./media/request-api-permissions-step-five.png)
+    **HRE alkalmazás – > API-engedélyek** ![ Alkalmazás API-k](./media/request-api-permissions-step-five.png)
 
 1. A távoli renderelési fiók konfigurálása után a konfiguráció a következő képhez hasonlóan néz ki:
 
-    **Éves tevékenység – > AccessControl (IAM)**\
-    ![ARR-szerepkör](./media/azure-remote-rendering-role-assignment-complete.png)
+    **Éves tevékenység – > AccessControl (iam)** ![ ARR-szerepkör](./media/azure-remote-rendering-role-assignment-complete.png)
 
     >[!NOTE]
     > A *tulajdonosi* szerepkör nem elegendő a munkamenetek kezeléséhez az ügyfélalkalmazás használatával. Minden olyan felhasználó számára, aki számára engedélyezni szeretné a munkamenetek kezelését, meg kell adnia a szerepkör **távoli renderelési ügyfelét**. Minden, a munkameneteket kezelő és a modellek átalakítására szolgáló felhasználó számára meg kell adnia a szerepkör **távoli renderelési rendszergazdáját**.
@@ -356,10 +353,8 @@ Ha a HRE-hitelesítés aktív, az Unity Editorban az alkalmazás indításakor m
 
 1. Kattintson a Play (lejátszás) gombra az Unity Editorban, és a munkamenet futtatásához.
     Mivel a **AADAuthentication** összetevő rendelkezik egy nézet-vezérlővel, az automatikusan összekapcsolva jelenik meg a munkamenet-engedélyezési modális panel utáni rákérdezéssel.
-1. Kövesse a panel jobb oldalán található utasításokat a **AppMenu**. \
-    A következőhöz hasonlónak kell lennie: \
-    ![HRE-hitelesítési összetevő](./media/device-flow-instructions.png)\
-    Miután megadta a megadott kódolást a másodlagos eszközön (vagy ugyanazon az eszközön található böngészőn), és bejelentkezik a hitelesítő adataival, a rendszer egy hozzáférési jogkivonatot ad vissza a kérelmező alkalmazásnak, ebben az esetben az Unity Editorban.
+1. Kövesse a panelen található utasításokat a **AppMenu**jobb oldalán.
+    Ehhez hasonlónak kell lennie a következőhöz: ![ HRE hitelesítési összetevő ](./media/device-flow-instructions.png) a másodlagos eszközön (vagy ugyanazon az eszközön lévő böngészőn) való belépés után, valamint a hitelesítő adatokkal való bejelentkezéskor a rendszer egy hozzáférési jogkivonatot ad vissza a kérelmező alkalmazásnak, ebben az esetben az Unity Editorban.
 1. Ezen pont után az alkalmazás minden elemének a szokásos módon kell megjelennie. Ha nem halad a várt módon, ellenőrizze az Unity-konzolt.
 
 ## <a name="build-to-device"></a>Kiépítés eszközre
@@ -383,7 +378,7 @@ Ha MSAL használatával hoz létre alkalmazást, a projekt **eszközök** mappá
 
 Kövesse a rövid [útmutatóban található lépéseket: Unity minta üzembe helyezése HoloLens – a HoloLens való kiépítéshez](../../../quickstarts/deploy-to-hololens.md#build-the-sample-project).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az oktatóanyag hátralévő része elméleti témákat tartalmaz az Azure távoli renderelést használó, éles használatra kész alkalmazások létrehozásához.
 

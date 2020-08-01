@@ -1,6 +1,6 @@
 ---
-title: Támogatás hozzáadása hosszú adattípushoz | Microsoft Docs
-description: Hosszú adattípus támogatása
+title: Hosszú adattípusok támogatása a Azure Time Series Insights Gen2 | Microsoft Docs
+description: Hosszú adattípus támogatása Azure Time Series Insights Gen2.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -10,44 +10,65 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.custom: dpalled
-ms.openlocfilehash: c31ca7fd3eca89159d583b8a51b59a7bd6b8ed67
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 34cf770a8ac75c2516480ec3136e61da15f4e4ff
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531425"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446628"
 ---
-# <a name="adding-support-for-long-data-type"></a>Hosszú adattípus támogatásának hozzáadása
+# <a name="adding-support-for-long-data-type-in-azure-time-series-insights-gen2"></a>Hosszú adattípusok támogatásának hozzáadása a Azure Time Series Insights Gen2
 
-Ezek a módosítások csak a Gen2-környezetekre lesznek alkalmazva. Ha Gen1-környezettel rendelkezik, figyelmen kívül hagyhatja ezeket a módosításokat.
+A hosszú adattípusok támogatásának kiegészítése befolyásolja, hogy a numerikus adatok csak Azure Time Series Insights Gen2-környezetekben legyenek tárolva és indexelve. Ha Gen1-környezettel rendelkezik, figyelmen kívül hagyhatja ezeket a módosításokat.
 
-Módosítjuk, hogyan tároljuk és indexeljük a numerikus értékeket Azure Time Series Insights Gen2, amelyek hatással lehetnek a szolgáltatásra. Ha az alábbi esetek bármelyikét érinti, végezze el a szükséges módosításokat a lehető leghamarabb. Az adatai a régiótól függően a hosszú és a kétszeres, valamint a 2020. június 29. és 30. között eltelt időre lesznek indexelve. Ha bármilyen kérdése vagy problémája van a változással kapcsolatban, küldjön egy támogatási jegyet a Azure Portal és megemlítjük ezt a kommunikációt.
+Az 2020-tól június 29-én vagy június 30-án kezdődően a régiótól függően az adatai **hosszúak** és **kétszeresak**lesznek indexelve.  Ha bármilyen kérdése vagy problémája van a változással kapcsolatban, küldjön egy támogatási jegyet a Azure Portal és megemlítjük ezt a kommunikációt.
 
-Ez a változás a következő esetekben van hatással:
+Ha a következő esetek valamelyikét érinti, végezze el az ajánlott módosításokat:
 
-1. Ha jelenleg idősorozat-modell változókat használ, és csak a telemetria-adataiban található szerves adattípusokat küldi el.
-1. Ha jelenleg használja az idősorozat-modell változóit, és a telemetria-adataiban is elküldheti az integrált és a nem integrált adattípusokat.
-1. Ha kategorikus változókat használ az egész értékek kategóriákra való leképezéséhez.
-1. Ha a JavaScript SDK-t használja egyéni előtér-alkalmazás létrehozásához.
-1. Ha a (z) a 1 000-tulajdonságnév korlátját a meleg tárolóban (WS) kívánja megkeresni, és az integrált és a nem integrált adatokat is el szeretné küldeni, a tulajdonságok száma a [Azure Portal](https://portal.azure.com/)metrikaként tekinthető meg.
+- **1. eset**: jelenleg az idősorozat-modell változóit használja, és csak a telemetria-adataiban található szerves adattípusokat küldi el.
+- **2. eset**: jelenleg az idősorozat-modell változóit használja, és a telemetria-adataiban is elküldheti az integrált és a nem integrált adattípusokat.
+- **3. eset**: kategorikus változók használata az egész értékek kategóriákra való leképezéséhez.
+- **4. eset**: a JavaScript SDK használatával hozzon létre egy egyéni előtér-alkalmazást.
+- **5. eset**: közel van a 1 000-tulajdonságnév korlátja a meleg tárolóban, és mind az integrált, mind a nem integrált adatküldés. A tulajdonságok száma metrikaként is megtekinthető a [Azure Portalban](https://portal.azure.com/).
 
-Ha a fenti esetek bármelyike Önre vonatkozik, módosítania kell a modellt, hogy megfeleljen a változásnak. Frissítse az idősorozat-kifejezést a változó definíciójában a Azure Time Series Insights Gen2 Explorerben és bármely egyéni ügyfélen az API-k használatával az ajánlott változtatásokkal. Részletekért lásd alább.
+Ha bármelyik eset Önre vonatkozik, módosítsa a modellt. Frissítse az idősorozat-kifejezést (TSX) a változó definíciójában a javasolt módosításokkal. Mindkettő frissítése:
 
-A IoT-megoldástól és a megkötéstől függően előfordulhat, hogy nem látja el a Azure Time Series Insights Gen2-környezetbe küldött adatmegjelenítést. Ha nem biztos abban, hogy az adatai csak a belső és a nem integrált módon vannak integrálva, akkor néhány lehetőség közül választhat. Megvárhatja, hogy a szolgáltatás fel legyen szabadítva, majd vizsgálja meg a nyers eseményeket az Explorer felhasználói felületén, hogy megtudja, mely tulajdonságok lettek mentve két különálló oszlopban. Az alábbi módosításokat megelőző jelleggel teheti az összes numerikus címkével, vagy az események egy részhalmazát átmenetileg átirányíthatja a tárolóba a séma jobb megismerése és megismerése érdekében. Az események tárolásához kapcsolja be a Event Hubs az [esemény-rögzítést](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview) , vagy az IoT hub az Azure Blob Storage-be [irányítsa](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c#azure-storage) . Az adatkezelés az [Event hub Explorerben](https://marketplace.visualstudio.com/items?itemName=Summer.azure-event-hub-explorer)vagy az [Event Processor Host](https://docs.microsoft.com/azure/event-hubs/event-hubs-dotnet-standard-getstarted-send#receive-events)használatával is megfigyelhető. Ha IoT Hub használ, tekintse meg a beépített végpont elérését [ismertető dokumentációt](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-read-builtin) .
+- Azure Time Series Insights Gen2 Explorer
+- Az API-kat használó egyéni ügyfelek
 
-Vegye figyelembe, hogy ha ezeket a módosításokat a fenti dátumok alapján nem tudja elvégezni, akkor előfordulhat, hogy a lekérdezési API-kon keresztül elért érintett idősorozat-változók vagy a Time Series Insights Explorer *Null értéket* ad vissza (azaz nem jeleníti meg az adatkezelőt).
+A IoT-megoldástól és a megkötéstől függően előfordulhat, hogy nem láthatók a Azure Time Series Insights Gen2-környezetbe elküldett adatai. Ha nem biztos abban, hogy az adatai csak integráltak, vagy mind az integrált, sem a nem integrált, néhány lehetőség közül választhat:
+
+- Megvárhatja a funkció felszabadítását. Ezután vizsgálja meg a nyers eseményeit az Explorer felhasználói felületén, és ismerkedjen meg a két különálló oszlopba mentett tulajdonságokkal.
+- A javasolt módosításokat megelőző jelleggel teheti az összes numerikus címkén.
+- Az események egy részhalmazát ideiglenesen átirányíthatja a tárolóba a séma jobb megismerése és megismerése érdekében.
+
+Az események tárolásához kapcsolja be az Azure Event Hubs az [esemény-rögzítést](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview) , vagy a IoT hub az Azure Blob Storage-ba [irányítsa](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c#azure-storage) .
+
+Az adatkezelés az [Event hub Explorerben](https://marketplace.visualstudio.com/items?itemName=Summer.azure-event-hub-explorer)vagy az [Event Processor Host](https://docs.microsoft.com/azure/event-hubs/event-hubs-dotnet-standard-getstarted-send#receive-events)használatával is megfigyelhető.
+
+Ha IoT Hub használ, ugorjon az [eszközről a felhőbe irányuló üzenetek olvasására a beépített végpontról](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-read-builtin) a beépített végpont eléréséhez.
+
+> [!NOTE]
+> Ha nem hajtja végre az ajánlott módosításokat, előfordulhat, hogy a rendszer megszakítja a folyamatot. Például a lekérdezési API-kon keresztül elért érintett Time Series Insights változók, vagy a Time Series Insights Explorer **Null értéket** ad vissza (azaz nem jeleníti meg az adatkezelőt).
 
 ## <a name="recommended-changes"></a>Ajánlott módosítások
 
-1. & 2. eset: **az Idősorozat-modell változóinak használata, és csak az integrált adattípusok küldése, illetve az telemetria-adatokban az integrált és a nem integrált típusok küldése.**
+### <a name="case-1-using-time-series-model-variables-and-sending-only-integral-data-types-in-telemetry-data"></a>1. eset: idősorozat-modell változók használata és csak az telemetria-adatokban található szerves adattípusok küldése
 
-Ha jelenleg egész telemetria adatokat küld, az adatok két oszlopba lesznek osztva: "propertyValue_double" és "propertyValue_long".
+Az 1. eset esetében a javasolt módosítások megegyeznek a 2. esettel. Kövesse a 2. eset című szakasz utasításait.
 
-Az egész számú adatot a rendszer a "propertyValue_long" értékre írja, amikor a változások életbe lépnek, és a korábban betöltött (és a jövőbeli betöltött) numerikus adatpropertyValue_double mennyiséget nem másolja át a rendszer.
+### <a name="case-2-using-time-series-model-variables-and-sending-both-integral-and-nonintegral-types-in-telemetry-data"></a>2. eset: az idősorozat-modell változóinak használata, valamint az integrált és a nem integrált típusok küldése a telemetria-adatokban
 
-Ha a "Tulajdonságérték" tulajdonsághoz tartozó két oszlop adatait szeretné lekérdezni, akkor az *Egyesítés ()* skaláris függvényt kell használnia a TSX. A függvény elfogadja ugyanazt az adattípust, és az első nem null értéket adja vissza az argumentumok listájában (További információ [a használatról](https://docs.microsoft.com/rest/api/time-series-insights/preview#other-functions)).
+Ha jelenleg az egész telemetria adatait küldi el, az adatai két oszlopba lesznek osztva:
 
-### <a name="variable-definition-in-time-series-explorer---numeric"></a>Változó definíciója a Time Series Explorerben – numerikus
+- **propertyValue_double**
+- **propertyValue_long**
+
+Az egész számú adatot a **propertyValue_longba**írja. A korábban betöltött (és a jövőben betöltött) numerikus adatot **propertyValue_double** nem másolja át a rendszer.
+
+Ha a **tulajdonságérték** tulajdonság ezen két oszlopán keresztül szeretné lekérdezni az adatait, akkor az **Egyesítés ()** skaláris függvényt kell használnia a TSX. A függvény elfogadja az azonos **adattípusú** argumentumokat, és az első nem null értéket adja vissza az argumentumok listájában. További információ: [Azure Time Series Insights Gen2 adatelérési fogalmai](https://docs.microsoft.com/rest/api/time-series-insights/preview#other-functions).
+
+#### <a name="variable-definition-in-tsx---numeric"></a>Változó definíciója a TSX – numerikus
 
 *Előző változó definíciója:*
 
@@ -57,9 +78,9 @@ Ha a "Tulajdonságérték" tulajdonsághoz tartozó két oszlop adatait szeretn�
 
 [![Új változó definíciója](media/time-series-insights-long-data-type/var-def.png)](media/time-series-insights-long-data-type/var-def.png#lightbox)
 
-Az *"egyesítés ($Event. tulajdonságérték. Double, toDouble ($Event. tulajdonságérték. Long)")* az egyéni [idősorozat kifejezésként](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax) is használható.
+Az **Egyesítés ($Event. tulajdonságérték. Double, a toDouble ($Event. tulajdonságérték. Long))** is használható az egyéni [Idősorozat-kifejezésként](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax).
 
-### <a name="inline-variable-definition-using-time-series-query-apis---numeric"></a>Beágyazott változó definíciója a Time Series lekérdezési API-k használatával – numerikus
+#### <a name="inline-variable-definition-using-tsx-query-apis---numeric"></a>Beágyazott változó definíciója a TSX lekérdezési API-k használatával – numerikus
 
 *Előző változó definíciója:*
 
@@ -105,16 +126,16 @@ Az *"egyesítés ($Event. tulajdonságérték. Double, toDouble ($Event. tulajdo
 }
 ```
 
-Az *"egyesítés ($Event. tulajdonságérték. Double, toDouble ($Event. tulajdonságérték. Long)")* az egyéni [idősorozat kifejezésként](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax) is használható.
+Az **Egyesítés ($Event. tulajdonságérték. Double, a toDouble ($Event. tulajdonságérték. Long))** is használható az egyéni [Idősorozat-kifejezésként](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax).
 
 > [!NOTE]
-> Azt javasoljuk, hogy minden olyan helyen frissítse ezeket a változókat, amelyek használhatók (idősorozat-modell, mentett lekérdezések Power BI összekötő-lekérdezések).
+> Azt javasoljuk, hogy minden olyan helyen frissítse ezeket a változókat, amelyeket érdemes használni. Ezen helyek közé tartozik a Time Series-modell, a mentett lekérdezések és az Power BI-összekötő lekérdezései.
 
-3. eset: **kategorikus változók használata egész értékek kategóriákra való leképezéséhez**
+### <a name="case-3-using-categorical-variables-to-map-integer-values-to-categories"></a>3. eset: kategorikus változók használata egész értékek kategóriákra való leképezéséhez
 
-Ha jelenleg olyan kategorikus változókat használ, amelyek egész értékeket rendelnek a kategóriákhoz, valószínűleg a toLong függvényt használja az adatok dupla típusról hosszú típusra való átalakításához. A fenti esetekben hasonlóan meg kell egyesíteni a dupla és a hosszú adattípusú oszlopokat.
+Ha jelenleg olyan kategorikus változókat használ, amelyek egész értékeket rendelnek a kategóriákhoz, valószínű, hogy a **toLong** függvényt használja az adatok **dupla** típusról **hosszú** típusra való átalakításához. Az 1. és a 2. esetekhez hasonlóan egyesíteni kell a **dupla** és a **hosszú** **adattípusú** oszlopokat.
 
-### <a name="variable-definition-in-time-series-explorer---categorical"></a>Változó definíciója a Time Series Explorerben – kategorikus
+#### <a name="variable-definition-in-time-series-explorer---categorical"></a>Változó definíciója a Time Series Explorerben – kategorikus
 
 *Előző változó definíciója:*
 
@@ -124,11 +145,11 @@ Ha jelenleg olyan kategorikus változókat használ, amelyek egész értékeket 
 
 [![Új változó definíciója](media/time-series-insights-long-data-type/var-def-cat.png)](media/time-series-insights-long-data-type/var-def-cat.png#lightbox)
 
-Az *"egyesítés ($Event. tulajdonságérték. Double, toDouble ($Event. tulajdonságérték. Long)")* az egyéni [idősorozat kifejezésként](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax) is használható.
+Az **Egyesítés ($Event. tulajdonságérték. Double, a toDouble ($Event. tulajdonságérték. Long))** is használható az egyéni [Idősorozat-kifejezésként](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax).
 
-A kategorikus változók esetében az értéknek egész típusúnak kell lennie. Az egyesítés () összes argumentumának adattípusa csak hosszú lehet az egyéni [Idősorozat kifejezésében.](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax)
+A kategorikus változók esetében az értéknek egész típusúnak kell lennie. Az **Egyesítés ()** összes argumentumának **adattípusa** csak **hosszú** lehet az egyéni [idősorozat kifejezésében.](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax)
 
-### <a name="inline-variable-definition-using-time-series-query-apis---categorical"></a>Beágyazott változó definíciója a Time Series lekérdezési API-k használatával – kategorikus
+#### <a name="inline-variable-definition-using-tsx-query-apis---categorical"></a>Beágyazott változó definíciója a TSX Query API-k használatával – kategorikus
 
 *Előző változó definíciója:*
 
@@ -206,19 +227,19 @@ A kategorikus változók esetében az értéknek egész típusúnak kell lennie.
 }
 ```
 
-A kategorikus változók esetében az értéknek egész típusúnak kell lennie. Az egyesítés () összes argumentumának adattípusa csak hosszú lehet az egyéni [Idősorozat kifejezésében.](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax)
+A kategorikus változók esetében az értéknek egész típusúnak kell lennie. Az **Egyesítés ()** összes argumentumának **adattípusa** csak **hosszú** lehet az egyéni [idősorozat kifejezésében](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax).
 
 > [!NOTE]
-> Azt javasoljuk, hogy minden olyan helyen frissítse ezeket a változókat, amelyek használhatók (idősorozat-modell, mentett lekérdezések Power BI összekötő-lekérdezések).
+> Azt javasoljuk, hogy minden olyan helyen frissítse ezeket a változókat, amelyeket érdemes használni. Ezen helyek közé tartozik a Time Series-modell, a mentett lekérdezések és az Power BI-összekötő lekérdezései.
 
-4. eset: **a JavaScript SDK használatával hozzon létre egy egyéni előtér-alkalmazást**
+### <a name="case-4-using-the-javascript-sdk-to-build-a-custom-front-end-application"></a>4. eset: a JavaScript SDK használatával hozzon létre egy egyéni előtér-alkalmazást
 
-Ha a fenti 1-3-es és egyéni alkalmazásokat felépítő esetek érintettek, frissítenie kell a lekérdezéseket az *Egyesítés ()* függvény használatára, ahogyan az a fenti példákban is látható.
+Ha az 1 – 3. eset által érintett és egyéni alkalmazásokat készít, frissítenie kell a lekérdezéseket az **Egyesítés ()** függvény használatára, ahogy az az előző példákban is látható.
 
-5. eset: a **meleg tároló 1 000-es tulajdonságának korlátozása**
+### <a name="case-5-nearing-warm-store-1000-property-limit"></a>5. eset: a meleg tároló 1 000-es tulajdonságának korlátozása
 
-Ha nagy mennyiségű tulajdonsággal rendelkező, melegen tárolt felhasználó, és úgy véli, hogy ez a változás a 1 000 WS tulajdonság-név korláton keresztül küldi el a környezetet, küldjön támogatási jegyet a Azure Portal és megemlítjük ezt a kommunikációt.
+Ha nagy mennyiségű tulajdonsággal rendelkező meleg áruházbeli felhasználó, és úgy gondolja, hogy ez a változás az 1 000-es meleg áruházbeli tulajdonság-név korlátot fogja leküldeni a környezetbe, küldjön támogatási jegyet a Azure Portal és megemlítjük ezt a kommunikációt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* A támogatott adattípusok teljes listájának megtekintéséhez tekintse meg a [támogatott adattípusok](concepts-supported-data-types.md) című témakört.
+- A [támogatott adattípusok](concepts-supported-data-types.md)teljes listájának megtekintése.

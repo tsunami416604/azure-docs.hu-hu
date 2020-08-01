@@ -11,7 +11,7 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 07/02/2020
 ms.locfileid: "67178825"
 ---
-|Paraméter neve| Típus | Description| Lehetséges értékek|
+|Paraméter neve| Típus | Leírás| Lehetséges értékek|
 |-|-|-|-|
 | /ServerMode|Kötelező|Megadja, hogy a konfigurációs és folyamatkiszolgálót is, vagy csak a folyamatkiszolgálót kell-e telepíteni.|CS<br>PS|
 |/InstallLocation|Kötelező|Az összetevők telepítési mappája| A számítógép bármely mappája|

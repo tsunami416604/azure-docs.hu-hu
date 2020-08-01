@@ -3,12 +3,12 @@ title: A delegált erőforrások nagy léptékű figyelése
 description: Megtudhatja, hogyan használhatja hatékonyan a Azure Monitor-naplókat a felügyelt ügyfél-bérlők méretezhető módjában.
 ms.date: 07/15/2020
 ms.topic: how-to
-ms.openlocfilehash: 758437fdc7a32fd5937434ce10f16a8c792423d3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5cace0396c5a1f430ce10ba29ee051b5e432c125
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072723"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448954"
 ---
 # <a name="monitor-delegated-resources-at-scale"></a>A delegált erőforrások nagy léptékű figyelése
 
@@ -38,7 +38,7 @@ A szabályzatok üzembe helyezése után a rendszer az egyes ügyfelek bérlői 
 
 ## <a name="next-steps"></a>További lépések
 
-- Ismerje meg ezt az [MVP-alapú minta-munkafüzetet](https://github.com/scautomation/Azure-Automation-Update-Management-Workbooks), amely nyomon követi a javítási megfelelőségi jelentéskészítést Update Management naplók több log Analytics munkaterületen való [lekérdezésével](../../automation/automation-update-management-query-logs.md) . 
+- Ismerje meg ezt az [MVP-alapú minta-munkafüzetet](https://github.com/scautomation/Azure-Automation-Update-Management-Workbooks), amely nyomon követi a javítási megfelelőségi jelentéskészítést Update Management naplók több log Analytics munkaterületen való [lekérdezésével](../../automation/update-management/update-mgmt-query-logs.md) . 
 - A [Azure monitor](../../azure-monitor/index.yml)megismerése.
 - Ismerkedjen meg [Azure monitor naplókkal](../../azure-monitor/platform/data-platform-logs.md).
 - További információ a [bérlők közötti felügyeleti élményekről](../concepts/cross-tenant-management-experience.md).

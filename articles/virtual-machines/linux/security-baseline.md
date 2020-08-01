@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 0231070e73c5b38562e8d110d80a2fba3c28724d
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: b0e8de797d66b875b65c1b6b593852707c587e6e
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87385483"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446552"
 ---
 # <a name="azure-security-baseline-for-linux-virtual-machines"></a>Linux Virtual Machines Azure biztonsági alapterve
 
@@ -628,9 +628,9 @@ A Microsoft a Transport Layer Security (TLS) protokollt használja az adatvédel
 
 **Útmutató**: az Azure Update Management megoldás használatával kezelheti a virtuális gépek frissítéseit és javításait. A Update Management a helyileg konfigurált frissítési adattárra támaszkodik a támogatott rendszerek javításához.
 
-* [Update Management megoldás az Azure-ban](../../automation/automation-update-management.md)
+* [Update Management megoldás az Azure-ban](../../automation/update-management/update-mgmt-overview.md)
 
-* [Azure-beli virtuális gépek frissítéseinek és javításának kezelése](../../automation/automation-tutorial-update-management.md)
+* [A virtuális gépek frissítéseinek és javításának kezelése](../../automation/update-management/update-mgmt-manage-updates-for-vm.md)
 
 **Azure Security Center figyelés**: igen
 
@@ -640,9 +640,9 @@ A Microsoft a Transport Layer Security (TLS) protokollt használja az adatvédel
 
 **Útmutató**: külső gyártótól származó javítási felügyeleti megoldás használata is lehetséges. Az Azure Update Management megoldással kezelheti a virtuális gépek frissítéseit és javításait. A Update Management a helyileg konfigurált frissítési adattárra támaszkodik a támogatott rendszerek javításához.
 
-* [Update Management megoldás az Azure-ban](../../automation/automation-update-management.md)
+* [Update Management megoldás az Azure-ban](../../automation/update-management/update-mgmt-overview.md)
 
-* [Azure-beli virtuális gépek frissítéseinek és javításának kezelése](../../automation/automation-tutorial-update-management.md)
+* [A virtuális gépek frissítéseinek és javításának kezelése](../../automation/update-management/update-mgmt-manage-updates-for-vm.md)
 
 **Azure Security Center figyelés**: nem érhető el
 
@@ -1190,7 +1190,7 @@ Az Azure Disk Encryption használata esetén visszaállíthatja az Azure-beli vi
 
 **Felelősség**: megosztott
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Lásd az [Azure biztonsági teljesítménytesztét](../../security/benchmarks/overview.md)
 - További információ az [Azure biztonsági alaptervekről](../../security/benchmarks/security-baselines-overview.md)

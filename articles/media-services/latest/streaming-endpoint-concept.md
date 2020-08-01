@@ -12,12 +12,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 02/13/2020
 ms.author: juliako
-ms.openlocfilehash: 030a10e9138af32ee848009a14216c37567d9d2d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6d725ed8a69e2dfed6f5197db731f4adac57e2e2
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091997"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446214"
 ---
 # <a name="streaming-endpoints-origin-in-azure-media-services"></a>Streaming-végpontok (forrás) Azure Media Services
 
@@ -47,9 +47,11 @@ Az alapértelmezett folyamatos átviteli végpont használatakor `servicename` a
 
 Kétféle **adatfolyam-végpont** létezik: **standard** (előzetes verzió) és **prémium**. A típust az `scaleUnits` adatfolyam-végpont számára lefoglalt méretezési egységek () száma határozza meg.
 
+A folyamatos átviteli egység maximális korlátja általában 10. Lépjen kapcsolatba [velünk,](https://azure.microsoft.com/support/create-ticket/) hogy növelje a fiók korlátját.
+
 A táblázat a típusokat írja le:
 
-|Típus|Skálázási egységek|Description|
+|Típus|Skálázási egységek|Leírás|
 |--------|--------|--------|  
 |**Standard**|0|Az alapértelmezett folyamatos átviteli végpont egy **szabványos** típus, amely módosítható a prémium típusra `scaleUnits` .|
 |**Prémium szintű**|>0|**Prémium** szintű A streaming-végpontok speciális számítási feladatokhoz és dedikált és skálázható sávszélesség-kapacitás biztosításához alkalmasak. A **prémium** típusra a `scaleUnits` (folyamatos átviteli egységek) beállításával léphet be. `scaleUnits`dedikált kimenő kapacitást kínál, amely 200 Mbps-os növekményekben vásárolható meg. A **prémium** típus használata esetén minden engedélyezett egység további sávszélesség-kapacitást biztosít az alkalmazás számára. |
@@ -163,7 +165,7 @@ Lásd az alábbi cikkeket:
 
 Tekintse meg a [Azure Media Services közösségi](media-services-community.md) cikket, amely különböző módokon jelenítheti meg a kérdéseket, visszajelzéseket küldhet, és frissítéseket kaphat a Media Servicesról.
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 [Dinamikus csomagolás](dynamic-packaging-overview.md)
 

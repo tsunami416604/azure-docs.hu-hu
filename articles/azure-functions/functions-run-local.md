@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 611cb5b94ee2ad458fa00a61af673696d7e7a212
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ae83d8f68b78a3b13f9ebafe3c7cedd18a29de53
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87085146"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87449141"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Az Azure Functions Core Tools használata
 
@@ -33,18 +33,19 @@ A functions a helyi számítógépen való fejlesztése és az Azure-ba való k�
 
 A Azure Functions Core Tools három verziója létezik. A használt verzió a helyi fejlesztési környezettől, a [választott nyelvtől](supported-languages.md)és a szükséges támogatási szinttől függ:
 
-+ **1. x verzió**: a Azure functions futtatókörnyezet 1. x verzióját támogatja. Az eszközök ezen verziója csak Windows rendszerű számítógépeken támogatott, és egy NPM- [csomagból](https://www.npmjs.com/package/azure-functions-core-tools)van telepítve.
-
 + [**3. x/2. x verzió**](#v2): [a Azure functions futtatókörnyezet 3. x vagy 2. x verzióját](functions-versions.md)támogatja. Ezek a verziók támogatják a Windows, a [MacOS](?tabs=macos#v2)és a [Linux](?tabs=linux#v2) [rendszert](?tabs=windows#v2), és platform-specifikus csomagkezelő vagy NPM használatával telepíthetők.
 
++ **1. x verzió**: a Azure functions futtatókörnyezet 1. x verzióját támogatja. Az eszközök ezen verziója csak Windows rendszerű számítógépeken támogatott, és egy NPM- [csomagból](https://www.npmjs.com/package/azure-functions-core-tools)van telepítve.
+
 Ha másként nincs jelezve, a cikkben szereplő példák a 3. x verzióra vonatkoznak.
+
+## <a name="prerequisites"></a>Előfeltételek
+
+A Azure Functions Core Tools jelenleg az Azure CLI-vel függ az Azure-fiókkal való hitelesítéshez. Ez azt jelenti, hogy [Az Azure CLI](/cli/azure/install-azure-cli) -t helyileg kell telepíteni az Azure-ba való [közzétételhez](#publish) Azure functions Core Toolsról. 
 
 ## <a name="install-the-azure-functions-core-tools"></a>Az Azure Functions Core Tools telepítése
 
 [Azure functions Core Tools] tartalmaz egy olyan verziót, amely a helyi fejlesztési számítógépen futtatható Azure functions futtatókörnyezetet is felhasználja. Emellett parancsokat is biztosít a függvények létrehozásához, az Azure-hoz való kapcsolódáshoz és a functions-projektek üzembe helyezéséhez.
-
->[!IMPORTANT]
->Az Azure [CLI](/cli/azure/install-azure-cli) -t helyileg kell telepíteni ahhoz, hogy közzé lehessen tenni az Azure-ban Azure functions Core Tools.  
 
 ### <a name="version-3x-and-2x"></a><a name="v2"></a>3. x és 2. x verzió
 
@@ -55,27 +56,12 @@ Az eszközök 3. x/2. x verziója a .NET Core-ra épülő Azure Functions futtat
 
 # <a name="windows"></a>[Windows](#tab/windows)
 
-A következő lépések a NPM segítségével telepítik a Windows rendszerhez tartozó alapvető eszközöket. A [csokit](https://chocolatey.org/)is használhatja. További információ: [alapvető eszközök – fontos](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#windows)információk.
+A következő lépések a Windows Installer (MSI) használatával telepítik a v3. x alapszintű eszközöket. További információ az alapeszközök v2. x verziójának telepítéséhez szükséges egyéb Package-alapú telepítőről: [alapvető eszközök – fontos](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#windows)információk.
 
-1. Telepítse a [Node.jst ], amely tartalmazza a NPM.
-    - Az eszközök 3. x verziójában csak Node.js 10 és újabb verziók támogatottak.
-    - Az eszközök 2. x verziójának használata esetén csak Node.js 8,5-es és újabb verziók támogatottak.
+1. Töltse le és futtassa a Core Tools telepítőjét a Windows-verziótól függően:
 
-1. Telepítse a Core Tools csomagot:
-
-    ##### <a name="v3x-recommended"></a>v3. x (ajánlott)
-
-    ```cmd
-    npm install -g azure-functions-core-tools@3
-    ```
-
-    ##### <a name="v2x"></a>v2. x
-
-    ```cmd
-    npm install -g azure-functions-core-tools@2
-    ```
-
-   A NPM letöltése és telepítése eltarthat néhány percig.
+    - [v3. x – Windows 64-bit](https://go.microsoft.com/fwlink/?linkid=2135274) (ajánlott. A [Visual Studio Code-hibakereséshez](functions-develop-vs-code.md#debugging-functions-locally) 64 bites szükséges.)
+    - [v3. x – Windows 32 bites](https://go.microsoft.com/fwlink/?linkid=2135275)
 
 1. Ha nem tervezi a [bővítmények](functions-bindings-register.md#extension-bundles)használatát, telepítse a [Windowshoz készült .net Core 3. x SDK](https://dotnet.microsoft.com/download)-t.
 
@@ -303,7 +289,7 @@ Writing C:\myfunctions\myMyFunctionProj\MyQueueTrigger\function.json
 
 Ezeket a beállításokat a paranccsal is megadhatja a következő argumentumok használatával:
 
-| Argumentum     | Description                            |
+| Argumentum     | Leírás                            |
 | ------------------------------------------ | -------------------------------------- |
 | **`--csx`** | (2. x vagy újabb verzió.) Ugyanazokat a C#-szkripteket (. CSX) hozza létre, amelyek az 1. x verzióban és a portálon használatosak. |
 | **`--language`**, **`-l`**| A sablon programozási nyelve, például C#, F # vagy JavaScript. Ez a beállítás az 1. x verzióban szükséges. A 2. x vagy újabb verziókban ne használja ezt a kapcsolót, vagy válasszon olyan nyelvet, amely megfelel a munkavégző futtatókörnyezetnek. |

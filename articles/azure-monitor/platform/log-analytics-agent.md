@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/04/2020
-ms.openlocfilehash: 409a119804354b85e3af380d33a4801549ef8133
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 36b94f53d3a9113c3980c94c3b8eff0713f11814
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325287"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446531"
 ---
 # <a name="log-analytics-agent-overview"></a>Log Analytics-ügynök áttekintése
 Az Azure Log Analytics Agent a Felhőbeli, a helyszíni gépeken és a [System Center Operations Manager](/system-center/scom/)által felügyelt virtuális gépek teljes körű felügyeletére lett kifejlesztve. A Windows-és Linux-ügynökök különböző forrásokból származó összegyűjtött adatokat küldenek a Log Analytics munkaterületre Azure Monitor, valamint a figyelési megoldásban meghatározott egyedi naplókat vagy metrikákat. A Log Analytics ügynök az Azure Monitor, például a [Azure monitor for VMS](../insights/vminsights-enable-overview.md), a [Azure Security Center](../../security-center/index.yml)és a [Azure Automation](../../automation/automation-intro.md)által nyújtott bepillantást és egyéb szolgáltatásokat is támogatja.
@@ -51,7 +51,7 @@ A következő táblázat felsorolja azokat az adattípusokat, amelyekkel a Log A
 A Log Analytics ügynök adatokat küld egy Log Analytics munkaterületre Azure Monitor. A Windows-ügynök többkiszolgálós lehet, hogy több munkaterületre és System Center Operations Manager felügyeleti csoportokra küldje az adatküldést. A Linux-ügynök csak egyetlen célhelyre tud küldeni.
 
 ## <a name="other-services"></a>Egyéb szolgáltatások
-A Linux és a Windows rendszerhez készült ügynök nem csak a Azure Monitorhoz való csatlakozáshoz használható, Azure Automation a hibrid Runbook-feldolgozói szerepkör és más szolgáltatások, például a [change Tracking](../../automation/change-tracking.md), a [Update Management](../../automation/automation-update-management.md)és a [Azure Security Center](../../security-center/security-center-intro.md)üzemeltetéséhez. További információ a hibrid Runbook feldolgozói szerepkörről: [Azure Automation Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md).  
+A Linux és a Windows rendszerhez készült ügynök nem csak a Azure Monitorhoz való csatlakozáshoz használható, Azure Automation a hibrid Runbook-feldolgozói szerepkör és más szolgáltatások, például a [change Tracking](../../automation/change-tracking.md), a [Update Management](../../automation/update-management/update-mgmt-overview.md)és a [Azure Security Center](../../security-center/security-center-intro.md)üzemeltetéséhez. További információ a hibrid Runbook feldolgozói szerepkörről: [Azure Automation Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md).  
 
 ## <a name="installation-and-configuration"></a>Telepítés és konfigurálás
 

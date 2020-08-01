@@ -11,12 +11,12 @@ ms.author: nigup
 author: nishankgu
 ms.date: 07/24/2020
 ms.custom: how-to, seodec18
-ms.openlocfilehash: 2e787bb494c1e919a235b762b4d8c5250c8cda61
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 6a49497cbe71dddb8ab6e76be9b3679dd62b0cee
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321615"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87449040"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Azure Machine Learning munkaterület elérésének kezelése
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -369,7 +369,7 @@ Ezek az [erőforrás-szolgáltatói műveletek](/azure/role-based-access-control
 
 ### <a name="q-what-are-some-common-gotchas-when-using-azure-rbac"></a>K. Melyek az Azure RBAC használatának gyakori megtartása?
 
-Íme néhány tudnivaló az Azure szerepköralapú hozzáférés-vezérlés használata közben:
+Íme néhány tudnivaló az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használata során:
 
 - Ha az Azure-ban hoz létre egy erőforrást, mondjuk egy munkaterületet, nem közvetlenül a munkaterület tulajdonosa. A szerepkör örökölt a legmagasabb hatókörű szerepkörtől, amelyet az adott előfizetésben engedélyez. Például ha Ön hálózati rendszergazda, és rendelkezett a Machine Learning munkaterület létrehozásához szükséges engedélyekkel, akkor a hálózati rendszergazda szerepkört a munkaterülethez kell rendelni, nem pedig a tulajdonosi szerepkörhöz.
 - Ha ugyanahhoz a HRE-felhasználóhoz két szerepkör-hozzárendelés van társítva a műveletek/kizárások ütköző fejezeteivel, akkor előfordulhat, hogy az egyik szerepkörben felsorolt műveletek nem lépnek érvénybe, ha egy másik szerepkörben is műveletként szerepelnek. Ha többet szeretne megtudni arról, hogy az Azure hogyan elemzi a szerepkör-hozzárendeléseket, olvassa el, [hogyan határozza meg, hogy a felhasználó rendelkezik-e erőforrás-hozzáféréssel az Azure RBAC](/azure/role-based-access-control/overview#how-azure-rbac-determines-if-a-user-has-access-to-a-resource)

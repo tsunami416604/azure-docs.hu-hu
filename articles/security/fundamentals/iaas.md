@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 49a40d78b4ba3bc1e90bb341cca90bece0b998a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 03258bf204491afce4635828b3a33a06886aca2d
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81450015"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448401"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Ajánlott biztonsági eljárások IaaS számítási feladatokhoz az Azure-ban
 Ez a cikk a virtuális gépek és operációs rendszerek ajánlott biztonsági eljárásait ismerteti.
@@ -84,7 +84,7 @@ Az üzembe helyezéshez és a beépített észlelésekhez (riasztások és incid
 Az Azure-beli virtuális gépeket, például az összes helyszíni virtuális gépet, a felhasználók felügyelik. Ezekre az Azure nem küldi le a Windows-frissítéseket. A virtuális gép frissítéseit kell kezelnie.
 
 **Ajánlott eljárás**: a virtuális gépek naprakészen tartása.   
-**Részletek**: a Azure Automation [Update Management](../../automation/automation-update-management.md) megoldásával kezelheti az Azure-ban, a helyszíni környezetekben vagy más felhőalapú szolgáltatókban üzembe helyezett Windows-és Linux-számítógépek operációs rendszerének frissítéseit. Az elérhető frissítések állapota minden ügynökszámítógépen egyszerűen felmérhető, és felügyelhető a kiszolgálók szükséges frissítéseinek telepítése is.
+**Részletek**: a Azure Automation [Update Management](../../automation/update-management/update-mgmt-overview.md) megoldásával kezelheti az Azure-ban, a helyszíni környezetekben vagy más felhőalapú szolgáltatókban üzembe helyezett Windows-és Linux-számítógépek operációs rendszerének frissítéseit. Az elérhető frissítések állapota minden ügynökszámítógépen egyszerűen felmérhető, és felügyelhető a kiszolgálók szükséges frissítéseinek telepítése is.
 
 A Frissítéskezelés által kezelt számítógépek a következő konfigurációk használatával hajtják végre a felméréseket és frissítik az üzemelő példányokat:
 

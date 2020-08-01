@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/15/2020
-ms.openlocfilehash: 1f76966b0ed82ae3d4b32e54627a28e99b0dba2f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c59e8c9e4c756a44d7507fca328aa691ecb184da
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505720"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447320"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Mi figyeli a Azure Monitor?
 Ez a cikk a Azure Monitor által figyelt különböző alkalmazásokat és szolgáltatásokat ismerteti. 
@@ -87,7 +87,7 @@ A következő táblázat az Azure-szolgáltatásokat és a Azure Monitorbe gyűj
 |Container Registry | Igen | Igen | Nem |  |
 |Content Delivery Network (CDN) | Nem | Igen | Nem |  |
 |Cosmos DB | Igen | Igen | [Igen](insights/cosmosdb-insights-overview.md) |  |
-|Költségkezelés | Nem | Nem | Nem |  |
+|Cost Management | Nem | Nem | Nem |  |
 |Data Box | Nem | Nem | Nem |  |
 |Data Catalog Gen2 | Nem | Nem | Nem |  |
 |Data Explorer | Igen | Igen | Nem |  |
@@ -109,14 +109,14 @@ A következő táblázat az Azure-szolgáltatásokat és a Azure Monitorbe gyűj
 |Event Grid | Igen | Nem | Nem |  |
 |Event Hubs | Igen | Igen | Nem |  |
 |ExpressRoute | Igen | Igen | Nem |  |
-|Tűzfal | Igen | Igen | Nem |  |
+|Firewall | Igen | Igen | Nem |  |
 |Front Door | Igen | Igen | Nem |  |
-|Függvények | Igen | Igen | Nem |  |
+|Functions | Igen | Igen | Nem |  |
 |HDInsight | Nem | Igen | Nem |  |
 |HPC Cache | Nem | Nem | Nem |  |
 |Information Protection | Nem | Igen | Nem |  |
 |Intune | Nem | Igen | Nem |  |
-|IoT Central | Nem | Nem | Nem |  |
+|IoT-központ | Nem | Nem | Nem |  |
 |IoT Hub | Igen | Igen | Nem |  |
 |Key Vault | Igen | Igen | [Igen](./insights/key-vault-insights-overview.md) |  |
 |Kubernetes Service (AKS) | Nem | Nem | [Igen](insights/container-insights-overview.md)  |  |
@@ -131,14 +131,14 @@ A következő táblázat az Azure-szolgáltatásokat és a Azure Monitorbe gyűj
 |Microsoft PowerApps | Nem | Nem | Nem |  |
 |Microsoft Social Engagement | Nem | Nem | Nem |  |
 |Microsoft Stream | Igen | Igen | Nem |  |
-|Migrate | Nem | Nem | Nem |  |
+|Migrate (Áttelepítés) | Nem | Nem | Nem |  |
 |Multi-Factor Authentication | Nem | Igen | Nem |  |
 |Network Watcher | Igen | Igen | Nem |  |
 |Notification Hubs | Igen | Nem | Nem |  |
 |Open Datasets | Nem | Nem | Nem |  |
 |Szabályzat | Nem | Nem | Nem |  |
 |Power BI Embedded | Igen | Igen | Nem |  |
-|Privát kapcsolat | Nem | Nem | Nem |  |
+|Private Link | Nem | Nem | Nem |  |
 |Projekt-várólista kommunikációs platformja | Nem | Nem | Nem |  |
 |Red Hat OpenShift | Nem | Nem | Nem |  |
 |Redis Cache | Igen | Igen | [Igen](insights/redis-cache-insights-overview.md) | |
@@ -168,7 +168,7 @@ A következő táblázat az Azure-szolgáltatásokat és a Azure Monitorbe gyűj
 |Virtual Network | Igen | Igen | [Igen](insights/network-insights-overview.md) |  |
 |Virtual Network – NSG folyamatok naplói | Nem | Igen | Nem |  |
 |VPN Gateway | Igen | Igen | Nem |  |
-|Windows Virtual Desktop | Nem | Nem | Nem |  |
+|Windows virtuális asztal | Nem | Nem | Nem |  |
 
 
 ## <a name="product-integrations"></a>Termék-integrációk
@@ -176,7 +176,7 @@ Az alábbi táblázatban szereplő szolgáltatások és megoldások egy Log Anal
 
 | Termék/szolgáltatás | Leírás |
 |:---|:---|
-| [Azure Automation](../automation/index.yml) | Az operációs rendszer frissítéseinek kezelése és a változások nyomon követése Windows és Linux rendszerű számítógépeken. Lásd: [change Tracking](../automation/change-tracking.md) és [Update Management](../automation/automation-update-management.md). |
+| [Azure Automation](../automation/index.yml) | Az operációs rendszer frissítéseinek kezelése és a változások nyomon követése Windows és Linux rendszerű számítógépeken. Lásd: [change Tracking](../automation/change-tracking.md) és [Update Management](../automation/update-management/update-mgmt-overview.md). |
 | [Azure Information Protection](/azure/information-protection/) | A dokumentumok és e-mailek besorolása és opcionális védelemmel való ellátása. Lásd: [Azure Information Protection központi jelentéskészítése](/azure/information-protection/reports-aip#configure-a-log-analytics-workspace-for-the-reports). |
 | [Azure Security Center](../security-center/index.yml) | A biztonsági események összegyűjtése és elemzése, valamint a fenyegetések elemzésének elvégzése. Adatgyűjtés [Azure Security Center](../security-center/security-center-enable-data-collection.md) |
 | [Azure Sentinel](../sentinel/index.yml) | Különböző forrásokhoz, például az Office 365-hez és a Amazon Web Services Cloud Trailhez csatlakozik. Lásd: [az adatforrások összekötése](../sentinel/connect-data-sources.md). |
@@ -220,12 +220,12 @@ A Azure Monitor az Azure-on kívüli erőforrásokból is gyűjthet adatokat az 
 | Erőforrás | Metódus |
 |:---|:---|
 | Alkalmazások | Webalkalmazások monitorozása az Azure-on kívül Application Insights használatával. Lásd: [Mi az Application Insights?](./app/app-insights-overview.md) |
-| Virtuális gépek | A Log Analytics ügynök használatával adatokat gyűjthet a virtuális gépek vendég operációs rendszeréről más felhőalapú környezetekben vagy helyszíni környezetben. Lásd: [a naplózási adatok összegyűjtése a log Analytics ügynökkel](platform/log-analytics-agent.md). |
+| Virtual machines (Virtuális gépek) | A Log Analytics ügynök használatával adatokat gyűjthet a virtuális gépek vendég operációs rendszeréről más felhőalapú környezetekben vagy helyszíni környezetben. Lásd: [a naplózási adatok összegyűjtése a log Analytics ügynökkel](platform/log-analytics-agent.md). |
 | Ügyfél REST API | A különböző API-k képesek adatokat írni Azure Monitor naplókba és metrikába bármilyen REST API ügyfélről. Lásd: [naplófájlok küldésének Azure monitor a http](platform/data-collector-api.md) -adatgyűjtő API-val a naplókhoz, és [Egyéni metrikák küldése egy Azure-erőforrásnak a Azure monitor metrika-tárolóba](platform/metrics-store-custom-rest-api.md) a metrikák REST API használatával. |
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Tudjon meg többet a [Azure monitor adatplatformról, amely az elemzések és megoldások által gyűjtött naplókat és mérőszámokat tárolja](platform/data-platform.md).
 - Az [Azure-erőforrások figyelésével kapcsolatos oktatóanyag](learn/tutorial-resource-logs.md)elvégzése.

@@ -3,12 +3,12 @@ title: Azure Machine Learning Event Grid forrásként
 description: A Machine Learning-munkaterület eseményekhez megadott tulajdonságokat ismerteti Azure Event Grid
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: e256dbcef8c4e4a1354455843e4466d666c7d7b6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: fb8cd76829622962b642580bbda7f2a655604c2f
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090671"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87458042"
 ---
 # <a name="azure-machine-learning-as-an-event-grid-source"></a>Azure Machine Learning Event Grid forrásként
 
@@ -257,11 +257,11 @@ Az adatobjektum minden eseménytípus esetében a következő tulajdonságokkal 
 ## <a name="tutorials-and-how-tos"></a>Oktatóanyagok és útmutatók
 | Cím | Leírás |
 | ----- | ----- |
-| [Azure Machine Learning események felhasználása](../machine-learning/concept-event-grid-integration.md) | A Azure Machine Learning és a Event Grid integrálásának áttekintése. |
+| [Azure Machine Learning események felhasználása](../machine-learning/how-to-use-event-grid.md) | A Azure Machine Learning és a Event Grid integrálásának áttekintése. |
 
 ## <a name="next-steps"></a>További lépések
 
 * A Azure Event Grid bemutatása: [Mi az Event Grid?](overview.md)
 * Azure Event Grid-előfizetés létrehozásával kapcsolatos további információkért lásd: [Event Grid előfizetési séma](subscription-creation-schema.md)
-* A Azure Event Grid és a Azure Machine Learning használatának bemutatása: [Azure Machine learning események felhasználása](/azure/machine-learning/concept-event-grid-integration)
-* A Azure Event Grid és a Azure Machine Learning használatát bemutató példát az [Event Driven Machine learning-munkafolyamatok létrehozása](/azure/machine-learning/how-to-use-event-grid) című témakörben talál.
+* A Azure Event Grid és a Azure Machine Learning használatának bemutatása: [Azure Machine learning események felhasználása](../machine-learning/how-to-use-event-grid.md)
+* A Azure Event Grid és a Azure Machine Learning használatát bemutató példát az [Event Driven Machine learning-munkafolyamatok létrehozása](../machine-learning/how-to-use-event-grid.md) című témakörben talál.

@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 12/13/2019
 ms.author: rogardle
 ms.custom: ''
-ms.openlocfilehash: dd5e3cf8ce9e52768c28598a819a28ad1ec4413c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 4be24d645d2145ee07f9b9a4696b825a26dcf5c9
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525517"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448766"
 ---
 # <a name="reference-architectures-for-oracle-database-enterprise-edition-on-azure"></a>Az Azure-beli Oracle Database Enterprise Edition hivatkozási architektúrái
 
@@ -211,7 +211,7 @@ A kezdeti kérelem során az alkalmazáskiszolgáló csatlakozik a saját régi�
 
 Az Oracle számítási feladatainak az Azure-ba történő üzembe helyezése során a Microsoft gondoskodik a gazdagép operációsrendszer-szintű javításáról. A tervezett karbantartást az ügyfélnek előre kell tájékoztatni az ügyfelek számára. Két különböző Availability Zones kiszolgáló egyidejű kijavítása nem történik meg egyszerre. A virtuális gépek karbantartásával és javításával kapcsolatos további információkért lásd: [virtuális gépek rendelkezésre állásának kezelése](../../../virtual-machines/linux/manage-availability.md) . 
 
-A virtuális gép operációs rendszerének javítását [Azure Automation](../../../automation/automation-tutorial-update-management.md)használatával lehet automatizálni. Az Oracle-adatbázis javítása és karbantartása automatizálható és ütemezhető az [Azure-folyamatok](/azure/devops/pipelines/get-started/what-is-azure-pipelines?view=azure-devops) vagy a [Azure Automation](../../../automation/automation-tutorial-update-management.md) használatával az állásidő csökkentése érdekében. Tekintse meg a [folyamatos szállítást és a kék/zöld üzembe helyezést](/azure/devops/learn/what-is-continuous-delivery) , hogy megtudja, hogyan használható az Oracle-adatbázisok kontextusában.
+A virtuális gépi operációs rendszer javítása [Azure Automation Update Management](../../../automation/update-management/update-mgmt-overview.md)használatával automatizálható. Az Oracle-adatbázis javítása és karbantartása automatizálható és ütemezhető az [Azure-folyamatok](/azure/devops/pipelines/get-started/what-is-azure-pipelines?view=azure-devops) vagy a [Azure Automation Update Management](../../../automation/update-management/update-mgmt-overview.md) használatával az állásidő csökkentése érdekében. Tekintse meg a [folyamatos szállítást és a kék/zöld üzembe helyezést](/azure/devops/learn/what-is-continuous-delivery) , hogy megtudja, hogyan használható az Oracle-adatbázisok kontextusában.
 
 ## <a name="architecture-and-design-considerations"></a>Architektúra és kialakítási szempontok
 
@@ -226,7 +226,7 @@ A virtuális gép operációs rendszerének javítását [Azure Automation](../.
 - Az [Azure-folyamatokkal](/azure/devops/pipelines/get-started/what-is-azure-pipelines) az adatbázis javításait és frissítéseit leállás nélkül kezelheti.
 - A Felhőbeli natív mintázatok, például az [újrapróbálkozási minta](/azure/architecture/patterns/retry), az [áramkör-megszakító mintázata](/azure/architecture/patterns/circuit-breaker)és a [Felhőbeli tervezési minták útmutatójában](/azure/architecture/patterns/) definiált egyéb minták hozzáadásával az alkalmazáshoz tartozó kód finomhangolása is rugalmasabb lehet.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse át a forgatókönyvre vonatkozó alábbi Oracle-hivatkozási cikkeket.
 

@@ -5,12 +5,12 @@ ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.topic: article
 ms.date: 04/14/2020
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: c3892cfe3f8bd6966f5bd00c0747590eef3bc50d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5d5348f8abe8d30c7f23882974b8c121af39636c
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83860519"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448145"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-azure-ad-login"></a>App Service vagy Azure Functions alkalmazás konfigurálása az Azure AD-bejelentkezés használatára
 
@@ -78,7 +78,7 @@ Hajtsa végre a következő lépéseket:
 1. Az **átirányítási URI**-ban válassza a **webes** és típus lehetőséget `<app-url>/.auth/login/aad/callback` . Például: `https://contoso.azurewebsites.net/.auth/login/aad/callback`.
 1. Válassza a **Létrehozás** lehetőséget.
 1. Az alkalmazás regisztrációjának létrehozása után másolja az **alkalmazás (ügyfél) azonosítóját** és a **címtár (bérlő) azonosítóját** később.
-1. Válassza a **hitelesítés**lehetőséget. Az **implicit támogatás**lehetőségnél engedélyezze az **azonosító jogkivonatokat** az OpenID Connect felhasználói bejelentkezések app Serviceból való engedélyezéséhez.
+1. Válassza a **Hitelesítés** lehetőséget. Az **implicit támogatás**lehetőségnél engedélyezze az **azonosító jogkivonatokat** az OpenID Connect felhasználói bejelentkezések app Serviceból való engedélyezéséhez.
 1. Választható Válassza a **branding**elemet. A **Kezdőlap URL-címe**mezőben adja meg app Service alkalmazásának URL-címét, majd válassza a **Mentés**lehetőséget.
 1. Válasszon ki **egy API**-  >  **készletet**. Egybérlős alkalmazás esetén illessze be a App Service alkalmazás URL-címét, majd válassza a **Mentés** és a több-bérlős alkalmazás lehetőséget, illessze be az URL-címet, amely a bérlő által ellenőrzött tartományok egyikén alapul, majd válassza a **Mentés**lehetőséget.
 
@@ -100,10 +100,10 @@ Hajtsa végre a következő lépéseket:
 1. A **hitelesítésszolgáltatók**területen válassza a **Azure Active Directory**lehetőséget.
 1. **Felügyeleti módban**válassza a **speciális** lehetőséget, és konfigurálja app Service hitelesítést az alábbi táblázatnak megfelelően:
 
-    |Mező|Description|
+    |Mező|Leírás|
     |-|-|
     |Ügyfél-azonosító| Használja az **alkalmazás regisztrációjának alkalmazás-(ügyfél-) azonosítóját** . |
-    |Kiállító URL-címe| A `<authentication-endpoint>/<tenant-id>/v2.0` és a helyett használja a *\<authentication-endpoint>* felhőalapú környezet (például "" globális Azure-hoz) [hitelesítési végpontját](../active-directory/develop/authentication-national-cloud.md#azure-ad-authentication-endpoints) is, és cserélje le https://login.microsoft.com *\<tenant-id>* azt a **címtár-(bérlői) azonosítóra** , amelyben az alkalmazás regisztrálása létrejött. Ez az érték a felhasználók megfelelő Azure AD-bérlőre való átirányítására, valamint a megfelelő metaadatok letöltésére szolgál a megfelelő jogkivonat-aláíró kulcsok és jogkivonat-kiállítói jogcím értékének meghatározásához. A `/v2.0` szakasz elhagyható az HRE v1-t használó alkalmazások esetében. |
+    |Kiállító URL-címe| A `<authentication-endpoint>/<tenant-id>/v2.0` és a helyett használja a *\<authentication-endpoint>* felhőalapú környezet (például "" globális Azure-hoz) [hitelesítési végpontját](../active-directory/develop/authentication-national-cloud.md#azure-ad-authentication-endpoints) is, és cserélje le https://login.microsoft.com *\<tenant-id>* azt a **címtár-(bérlői) azonosítóra** , amelyben az alkalmazás regisztrálása létrejött. Ez az érték a felhasználók megfelelő Azure AD-bérlőre való átirányítására, valamint a megfelelő metaadatok letöltésére szolgál a megfelelő jogkivonat-aláíró kulcsok és jogkivonat-kiállítói jogcím értékének meghatározásához. Az Azure AD v1-t és Azure Functions alkalmazásokat használó alkalmazások esetében hagyja `/v2.0` ki az URL-címet.|
     |Ügyfél titka (nem kötelező)| Használja az alkalmazás regisztrációjában létrehozott ügyfél-titkos kulcsot.|
     |Engedélyezett jogkivonat-célközönségek| Ha ez egy Felhőbeli vagy kiszolgálóalkalmazás-alkalmazás, és engedélyezni szeretné a hitelesítési jogkivonatokat egy webalkalmazásból, adja hozzá a webalkalmazás **alkalmazás-azonosító URI-ját** itt. A konfigurált **ügyfél** -azonosító *mindig* implicit módon engedélyezett célközönségnek tekintendő. |
 
@@ -160,4 +160,4 @@ Ezzel konfigurált egy Daemon ügyfélalkalmazás-alkalmazást, amely a saját i
 * [Oktatóanyag: Felhasználók hitelesítése és engedélyezése végpontok között az Azure App Service-ben](app-service-web-tutorial-auth-aad.md)
 <!-- URLs. -->
 
-[Azure Portalra]: https://portal.azure.com/
+[Azure Portal]: https://portal.azure.com/

@@ -13,12 +13,12 @@ ms.date: 09/24/2018
 ms.author: kkrishna
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: da09f78817e1271832397b4a130195385207645f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6e20b2f8c0e12fdb23668d16e2cbd7936cc4e48c
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85477787"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87445459"
 ---
 # <a name="how-to-restrict-your-azure-ad-app-to-a-set-of-users-in-an-azure-ad-tenant"></a>Útmutató: az Azure AD-alkalmazás korlátozása egy Azure AD-bérlőben lévő felhasználók köré
 
@@ -26,7 +26,7 @@ Az Azure Active Directory (Azure AD) bérlőben regisztrált alkalmazások alap�
 
 Hasonlóképpen, a [több-bérlős](howto-convert-app-to-be-multi-tenant.md) alkalmazások esetében az Azure ad-bérlő minden olyan felhasználója hozzáférhet az alkalmazáshoz, amikor sikeresen hitelesítik magukat a megfelelő bérlőn.
 
-A bérlői rendszergazdák és a fejlesztők gyakran rendelkeznek olyan követelményekkel, amelyekben az alkalmazásnak egy adott felhasználói csoportra kell korlátozódnia. A fejlesztők ugyanúgy tudják elérni a népszerű engedélyezési mintákat, mint a szerepköralapú Access Control (RBAC), de ez a megközelítés jelentős mennyiségű munkát igényel a fejlesztő részéről.
+A bérlői rendszergazdák és a fejlesztők gyakran rendelkeznek olyan követelményekkel, amelyekben az alkalmazásnak egy adott felhasználói csoportra kell korlátozódnia. A fejlesztők ugyanúgy használhatják a népszerű engedélyezési mintákat, mint az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC), de ez a megközelítés jelentős mennyiségű munkát igényel a fejlesztő részéről.
 
 A bérlői rendszergazdák és fejlesztők az Azure AD ezen beépített funkciójának használatával korlátozhatják az alkalmazásokat a bérlőben lévő felhasználók vagy biztonsági csoportok meghatározott csoportjára is.
 

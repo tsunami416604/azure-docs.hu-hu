@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 03/09/2020
 ms.author: juliako
-ms.openlocfilehash: 091a5d33e49e2abe811bf3cc250d04d69506165d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: dfbe1e7fdfca6f9959218f47d903301cb4b6d899
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87011634"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448391"
 ---
 # <a name="media-services-v2-vs-v3"></a>Media Services v2 és v3
 
@@ -83,7 +83,8 @@ A V3 API a v2 API-val kapcsolatos következő szolgáltatásbeli réseket tartal
     * Csendes hangsávok beszúrása, ha a bemenet nem rendelkezik hanggal
     * Videós műsorszám beszúrása, ha a bemenet nem tartalmaz videót
 * Az átkódolást használó élő események jelenleg nem támogatják az adatfolyam-beszúrási közép-és az ad-jelölő beszúrását API-hívás használatával. 
- 
+* A `https://github.com/Azure-Samples/media-services-v2-dotnet-core-restsharp-sample.git` V2 REST API on használatával kapcsolatos ajánlott eljárásokért és mintákért tekintse meg a mintakód című témakört. NETCore SDK.
+
 ## <a name="asset-specific-changes"></a>Eszköz-specifikus változások
 
 ### <a name="map-v3-asset-properties-to-v2"></a>V3-eszköz tulajdonságainak hozzárendelése v2-re
@@ -107,7 +108,7 @@ A következő táblázat azt mutatja be, hogy az adategység tulajdonságai hogy
 
 Az adategységek védelméhez az eszközöket a tárolási oldal titkosításával kell titkosítani. A következő táblázat bemutatja, hogyan működik a tárolási oldal titkosítása Media Servicesban:
 
-|Titkosítási beállítás|Description|Media Services v2|Media Services v3|
+|Titkosítási beállítás|Leírás|Media Services v2|Media Services v3|
 |---|---|---|---|
 |Media Services Storage-titkosítás|AES-256 titkosítás, Media Services által felügyelt kulcs.|Támogatott<sup>(1)</sup>|Nem támogatott<sup>(2)</sup>|
 |[Inaktív adatok Storage Service Encryption](../../storage/common/storage-service-encryption.md)|Az Azure Storage által kínált kiszolgálóoldali titkosítás, amelyet az Azure vagy az ügyfél kezel.|Támogatott|Támogatott|

@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 12/06/2019
 ms.author: cynthn
-ms.openlocfilehash: d956ce273a7ea630bfdcf900fbbba5e8be30b254
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 940a24aedb8592d0e809bc79dc1c8977bc3abd38
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87288454"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448984"
 ---
 # <a name="quick-steps-create-and-use-an-ssh-public-private-key-pair-for-linux-vms-in-azure"></a>Gyors lépések: nyilvános SSH-kulcspár létrehozása és használata az Azure-ban Linux rendszerű virtuális gépekhez
 
@@ -37,10 +37,10 @@ Az alábbi parancs egy SSH-kulcspárt hoz létre RSA-titkosítással és 4096-es
 ssh-keygen -m PEM -t rsa -b 4096
 ```
 
-Ha az [Azure CLI](/cli/azure) használatával hozza létre a virtuális gépet az az [VM Create](/cli/azure/vm#az-vm-create) paranccsal, lehetősége van az SSH nyilvános és titkos kulcs fájljainak megadására a `--generate-ssh-keys` lehetőség használatával. A kulcs fájljait a ~/.ssh könyvtárban tárolja a rendszer, hacsak másként nincs megadva a `--ssh-dest-key-path` kapcsoló. A `--generate-ssh-keys` beállítás nem írja felül a létező kulcsokat, hanem hibát ad vissza. A következő parancsban cserélje le a *VMname* és a *RGname* értéket a saját értékeire:
+Ha az [Azure CLI](/cli/azure) használatával hozza létre a virtuális gépet az az [VM Create](/cli/azure/vm#az-vm-create) paranccsal, lehetősége van az SSH nyilvános és titkos kulcs fájljainak megadására a `--generate-ssh-keys` lehetőség használatával. A kulcs fájljait a ~/.ssh könyvtárban tárolja a rendszer, hacsak másként nincs megadva a `--ssh-dest-key-path` kapcsoló. Ha egy SSH-kulcspár már létezik, és a `--generate-ssh-keys` kapcsolót használja, a rendszer nem generál új kulcspárt, hanem a meglévő kulcspárt fogja használni. A következő parancsban cserélje le a *VMname* és a *RGname* értéket a saját értékeire:
 
 ```azurecli
-az vm create --name VMname --resource-group RGname --generate-ssh-keys 
+az vm create --name VMname --resource-group RGname --image UbuntuLTS --generate-ssh-keys 
 ```
 
 ## <a name="provide-an-ssh-public-key-when-deploying-a-vm"></a>Nyilvános SSH-kulcs megadása virtuális gép telepítésekor

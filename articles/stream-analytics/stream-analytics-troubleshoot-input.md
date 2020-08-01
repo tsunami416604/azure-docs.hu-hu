@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.date: 05/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: 3cac20e33ff865058ce41799ae8841a05716edc9
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: f4f79a28dbe8a49e608ca6fae1781a1e19646619
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045076"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448874"
 ---
 # <a name="troubleshoot-input-connections"></a>Bemeneti kapcsolatok hibaelhárítása
 
@@ -71,7 +71,7 @@ AzureStreamAnalytics_c4b65e4a-f572-4cfc-b4e2-cf237f43c6f0_1.
 
 Ha új fogyasztói csoportot szeretne hozzáadni a Event Hubs-példányban, kövesse az alábbi lépéseket:
 
-1. Jelentkezzen be az Azure portálra.
+1. Jelentkezzen be az Azure Portalra.
 
 2. Keresse meg az Event hub-t.
 
@@ -118,7 +118,7 @@ FROM inputEventHub
 …
 ```
 
-A lekérdezés használata:
+Használja a következőt:
 
 ```SQL
 WITH data AS (
@@ -161,7 +161,11 @@ SELECT foo FROM DataTwo
 
 ```
 
-## <a name="get-help"></a>Segítség kérése
+## <a name="readers-per-partition-exceeds-iot-hub-limit"></a>Az olvasók/partíciók száma meghaladja IoT Hub korlátot
+
+Stream Analytics feladatok a IoT Hub beépített [Event hub-kompatibilis végpontját](../iot-hub/iot-hub-devguide-messages-read-builtin.md) használják a IoT hub-ból való kapcsolódáshoz és olvasáshoz. Ha az olvasás/partíció meghaladja a IoT Hub korlátait, az [Event hub megoldásait](#readers-per-partition-exceeds-event-hubs-limit) használhatja a megoldásához. Létrehozhat egy fogyasztói csoportot a beépített végponthoz IoT Hub portál végpont-munkamenetben vagy a [IOT hub SDK](https://docs.microsoft.com/rest/api/iothub/IotHubResource/CreateEventHubConsumerGroup)-n keresztül.
+
+## <a name="get-help"></a>Segítségkérés
 
 További segítségért próbálja ki a [Microsoft Q&a Azure stream Analytics kérdéseit](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
 

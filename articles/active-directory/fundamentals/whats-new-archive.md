@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e27adde84f62f8c8d79389e1de4e867439d5a3be
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 111453b30a0c2fd7c0b2a2077b31b2cf16ebda06
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87034737"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87445672"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Archiválja a Azure Active Directory újdonságait?
 
@@ -32,6 +32,86 @@ A Azure Active Directory újdonságai a kibocsátási megjegyzések a alábbiakr
 - Elavult funkciók
 - A változtatások tervei
 
+---
+ 
+## <a name="january-2020"></a>2020. január
+ 
+### <a name="the-new-my-apps-portal-is-now-generally-available"></a>Az új My apps portál már általánosan elérhető
+
+**Írja be a következőt:** Tervezze meg a változást  
+**Szolgáltatás kategóriája:** Saját alkalmazások  
+A **termék képességei:** Végfelhasználói élmények
+ 
+Frissítse szervezetét az új My apps portálra, amely már általánosan elérhető! További információ az új portálról és gyűjteményekről: [gyűjtemények létrehozása a saját alkalmazások portálon](https://docs.microsoft.com/azure/active-directory/manage-apps/access-panel-collections).
+
+---
+ 
+### <a name="workspaces-in-azure-ad-have-been-renamed-to-collections"></a>Az Azure AD-munkaterületek a gyűjteményeknek lettek átnevezve
+
+**Írja be a következőt:** Módosított funkció  
+**Szolgáltatás kategóriája:** Saját alkalmazások   
+A **termék képességei:** Végfelhasználói élmények
+ 
+A munkaterületek, a szűrők rendszergazdák konfigurálhatják a felhasználók alkalmazásai rendszerezését, mostantól gyűjteményekként lesznek hivatkozva. További információ arról, hogyan konfigurálhatja őket a [gyűjtemények létrehozása a saját alkalmazások portálon](https://docs.microsoft.com/azure/active-directory/manage-apps/access-panel-collections)című témakörben.
+
+---
+ 
+### <a name="azure-ad-b2c-phone-sign-up-and-sign-in-using-custom-policy-public-preview"></a>Azure AD B2C telefonos regisztráció és bejelentkezés egyéni szabályzattal (nyilvános előzetes verzió)
+
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** B2C – fogyasztói identitások kezelése  
+A **termék képességei:** B2B/B2C
+ 
+A telefonos regisztrációval és bejelentkezéssel a fejlesztők és a vállalatok lehetővé tehetik ügyfeleiknek, hogy regisztráljanak, és jelentkezzenek be a felhasználó telefonszámára SMS-ben eljuttatott egyszeri jelszó használatával. Ez a funkció azt is lehetővé teszi, hogy az ügyfél megváltoztassa a telefonszámát, ha elvesztik a telefonjára való hozzáférést. Az egyéni szabályzatok erejével a telefonos regisztráció és bejelentkezés lehetővé teszi a fejlesztők és a vállalatok számára, hogy az oldal testreszabásával kommunikáljanak a márkájuk használatával. Megtudhatja, hogyan [állíthatja be a telefonos regisztrációt, és hogyan jelentkezhet be a Azure ad B2C egyéni házirendjeivel](https://docs.microsoft.com/azure/active-directory-b2c/phone-authentication).
+ 
+---
+ 
+### <a name="new-provisioning-connectors-in-the-azure-ad-application-gallery---january-2020"></a>Új kiépítési összekötők az Azure AD Application Galleryben – január 2020
+
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Vállalati alkalmazások  
+**Termék képesség:** harmadik féltől származó integráció
+ 
+Mostantól automatizálhatja az újonnan integrált alkalmazások felhasználói fiókjainak létrehozását, frissítését és törlését:
+
+- [Promapp]( https://docs.microsoft.com/azure/active-directory/saas-apps/promapp-provisioning-tutorial)
+- [Zscaler Private Access](https://docs.microsoft.com/azure/active-directory/saas-apps/zscaler-private-access-provisioning-tutorial)
+
+Ha többet szeretne megtudni arról, hogyan javíthatja a szervezetét a felhasználói fiókok automatikus kiépítésével, tekintse meg a felhasználók kiépítésének [automatizálása SaaS-alkalmazásokhoz az Azure ad](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)használatával című témakört.
+
+---
+ 
+### <a name="new-federated-apps-available-in-azure-ad-app-gallery---january-2020"></a>Új összevont alkalmazások érhetők el Azure AD alkalmazás-katalógusban – január 2020
+
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Vállalati alkalmazások  
+**Termék képesség:** harmadik féltől származó integráció
+ 
+Január 2020-én ezeket a 33 új alkalmazásokat az alkalmazás-katalógushoz való összevonási támogatással bővítettük: 
+
+[Josa](https://docs.microsoft.com/azure/active-directory/saas-apps/josa-tutorial), [gyors Edge Cloud](https://docs.microsoft.com/azure/active-directory/saas-apps/fastly-edge-cloud-tutorial), [Terraform Enterprise](https://docs.microsoft.com/azure/active-directory/saas-apps/terraform-enterprise-tutorial), [Spintr SSO](https://docs.microsoft.com/azure/active-directory/saas-apps/spintr-sso-tutorial), [Abibot Netlogistik](https://azuremarketplace.microsoft.com/marketplace/apps/aad.abibotnetlogistik), [SkyKick](https://login.skykick.com/login?state=g6Fo2SBTd3M5Q0xBT0JMd3luS2JUTGlYN3pYTE1remJQZnR1c6N0aWTZIDhCSkwzYVQxX2ZMZjNUaWxNUHhCSXg2OHJzbllTcmYto2NpZNkgM0h6czk3ZlF6aFNJV1VNVWQzMmpHeFFDbDRIMkx5VEc&client=3Hzs97fQzhSIWUMUd32jGxQCl4H2LyTG&protocol=oauth2&audience=https://papi.skykick.com&response_type=code&redirect_uri=https://portal.skykick.com/callback&scope=openid%20profile%20offline_access), [,](https://docs.microsoft.com/azure/active-directory/saas-apps/upshotly-tutorial) [LEAVEBOT](https://leavebot.io/#home), [DataCamp](https://docs.microsoft.com/azure/active-directory/saas-apps/datacamp-tutorial) [, TripActions,](https://docs.microsoft.com/azure/active-directory/saas-apps/tripactions-tutorial) [SmartWork,](https://www.intumit.com/english/SmartWork.html) [dotcom-monitor](https://docs.microsoft.com/azure/active-directory/saas-apps/dotcom-monitor-tutorial), [SSOGEN-Azure ad SSO Gateway for Oracle E-Business Suite-EBS, PeopleSoft és JDE](https://docs.microsoft.com/azure/active-directory/saas-apps/ssogen-tutorial), [üzemeltetett MyCirqa SSO](https://docs.microsoft.com/azure/active-directory/saas-apps/hosted-mycirqa-sso-tutorial), [Yuhu Property Management platform](https://docs.microsoft.com/azure/active-directory/saas-apps/yuhu-property-management-platform-tutorial), [LumApps](https://sites.lumapps.com/login), munkavégző [vállalat](https://docs.microsoft.com/azure/active-directory/saas-apps/upwork-enterprise-tutorial), [Talentsoft](https://docs.microsoft.com/azure/active-directory/saas-apps/talentsoft-tutorial), [SmartDB a Microsoft Teams](http://teams.smartdb.jp/login/), [PressPage](https://docs.microsoft.com/azure/active-directory/saas-apps/presspage-tutorial), [ContractSafe egy saml2 SSO](https://docs.microsoft.com/azure/active-directory/saas-apps/contractsafe-saml2-sso-tutorial), Maxient- [kezelő szoftver](https://docs.microsoft.com/azure/active-directory/saas-apps/maxient-conduct-manager-software-tutorial), [Helpshift](https://docs.microsoft.com/azure/active-directory/saas-apps/helpshift-tutorial), [PortalTalk 365](https://www.portaltalk.com/), [Áttekintés](https://portal.coreview.com/), [leverni Cloud Office 365 Connector](https://laxmi.squelch.io/login), [PingFlow hitelesítés](https://app-staging.pingview.io/), PrinterLogic [SaaS](https://docs.microsoft.com/azure/active-directory/saas-apps/printerlogic-saas-tutorial), Taskize [Csatlakozás](https://docs.microsoft.com/azure/active-directory/saas-apps/taskize-connect-tutorial), Sandwai, EZRentOut [, AssetSonar](https://app.sandwai.com/) [,](https://docs.microsoft.com/azure/active-directory/saas-apps/assetsonar-tutorial) [akari virtuális asszisztens](https://akari.io/akari-virtual-assistant/) [EZRentOut](https://docs.microsoft.com/azure/active-directory/saas-apps/ezrentout-tutorial)
+
+Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS-alkalmazások integrálása Azure Active Directoryokkal](https://aka.ms/appstutorial). Az alkalmazás Azure AD-katalógusban való listázásával kapcsolatos további információkért tekintse [meg az alkalmazás listázása a Azure Active Directory Application Galleryben](https://aka.ms/azureadapprequest)című témakört.
+
+---
+
+### <a name="two-new-identity-protection-detections"></a>Két új Identity Protection-észlelés
+
+**Írja be a következőt:** Új funkció  
+**Szolgáltatás kategóriája:** Identity Protection  
+A **termék képességei:** Identitás-biztonsági & védelme
+ 
+Két új bejelentkezési típust adtunk hozzá a személyazonosság védelme érdekében: a gyanús beérkezett fájlok manipulációs szabályait és a lehetetlen utazást. Ezeket az offline észleléseket Microsoft Cloud App Security (MCAS) észleli, és a felhasználók és a bejelentkezési kockázat befolyásolása az Identity Protectionben. További információ ezekről az észlelésekről: [bejelentkezési kockázati típusok](https://docs.microsoft.com/azure/active-directory/identity-protection/concept-identity-protection-risks#sign-in-risk).
+ 
+---
+ 
+### <a name="breaking-change-uri-fragments-will-not-be-carried-through-the-login-redirect"></a>Megszakítási változás: az URI-töredékek nem lesznek végrehajtva a bejelentkezési átirányítás során
+
+**Írja be a következőt:** Módosított funkció  
+**Szolgáltatás kategóriája:** Hitelesítések (bejelentkezések)  
+A **termék képességei:** Felhasználói hitelesítés
+ 
+<a name="starting-on-february-8-2020-when-a-request-is-sent-to-loginmicrosoftonlinecom-to-sign-in-a-user-the-service-will-append-an-empty-fragment-to-the-request--this-prevents-a-class-of-redirect-attacks-by-ensuring-that-the-browser-wipes-out-any-existing-fragment-in-the-request-no-application-should-have-a-dependency-on-this-behavior-for-more-information-see-breaking-changes-in-the-microsoft-identity-platform-documentation"></a>2020. február 8-án kezdődően, amikor egy felhasználó egy kérést küld a login.microsoftonline.com egy felhasználónak való bejelentkezéshez, a szolgáltatás hozzáfűz egy üres töredéket a kéréshez.  Ezzel megakadályozza, hogy a böngésző kitörölje a kérésben szereplő összes töredéket. Ehhez a viselkedéshez egyetlen alkalmazásnak sincs függősége. További [információkért lásd: a Microsoft](https://docs.microsoft.com/azure/active-directory/develop/reference-breaking-changes#february-2020) Identity platform dokumentációjában.
 ---
 
 ## <a name="december-2019"></a>2019. december

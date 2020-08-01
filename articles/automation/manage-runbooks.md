@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: eb5eb18351f6411a8049e962deed35e5d8f181d9
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 62b60afb7dc4adb70a0963984ee7848ab056e823
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86185245"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447820"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>Runbookok kezelése Azure Automation
 
@@ -226,7 +226,7 @@ Egyéni parancsfájl használata:
 
 1. Hozzon létre egy Automation-fiókot, és szerezzen be [közreműködői szerepkört](automation-role-based-access-control.md).
 2. [Kapcsolja össze a fiókot az Azure-munkaterülettel](../security-center/security-center-enable-data-collection.md).
-3. [Hibrid Runbook Worker](automation-hybrid-runbook-worker.md), [Update Management](automation-update-management.md)vagy más automatizálási funkció engedélyezése. 
+3. [Hibrid Runbook Worker](automation-hybrid-runbook-worker.md), [Update Management](update-management/update-mgmt-overview.md)vagy más automatizálási funkció engedélyezése. 
 4. Ha Linux-gépen van szüksége, magas szintű engedélyekkel kell rendelkeznie. Jelentkezzen be az [aláírás-ellenőrzések kikapcsolásához](automation-linux-hrw-install.md#turn-off-signature-validation).
 
 ## <a name="test-a-runbook"></a>Runbook tesztelése

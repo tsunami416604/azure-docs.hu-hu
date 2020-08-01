@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 04/28/2020
-ms.openlocfilehash: bdf5d006cf47f4552684aac8af4a759ed1761c93
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 10c0d3d5f043d31454810b55e808cd6df01467a4
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087953"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448742"
 ---
 # <a name="creating-and-using-active-geo-replication---azure-sql-database"></a>Active geo-Replication-Azure SQL Database létrehozása és használata
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -238,14 +238,14 @@ Annak érdekében, hogy az elsődleges adatbázison végrehajtott, a másodlagos
 
 ## <a name="programmatically-managing-active-geo-replication"></a>Az aktív földrajzi replikáció programozott kezelése
 
-Amint azt korábban már említettük, az aktív geo-replikáció programozott módon felügyelhető Azure PowerShell és a REST API használatával is. A következő táblázatok ismertetik az elérhető parancsok készletét. Az aktív geo-replikálás Azure Resource Manager API-kat tartalmaz a felügyelethez, beleértve a [Azure SQL Database REST API](https://docs.microsoft.com/rest/api/sql/) és [Azure PowerShell parancsmagokat](https://docs.microsoft.com/powershell/azure/). Ezek az API-k az erőforráscsoportok használatát igénylik, és támogatják a szerepköralapú biztonságot (RBAC). A hozzáférési szerepkörök megvalósításával kapcsolatos további információkért lásd: [Azure szerepköralapú Access Control](../../role-based-access-control/overview.md).
+Amint azt korábban már említettük, az aktív geo-replikáció programozott módon felügyelhető Azure PowerShell és a REST API használatával is. A következő táblázatok ismertetik az elérhető parancsok készletét. Az aktív geo-replikálás Azure Resource Manager API-kat tartalmaz a felügyelethez, beleértve a [Azure SQL Database REST API](https://docs.microsoft.com/rest/api/sql/) és [Azure PowerShell parancsmagokat](https://docs.microsoft.com/powershell/azure/). Ezek az API-k az erőforráscsoportok használatát igénylik, és támogatják a szerepköralapú biztonságot (RBAC). A hozzáférési szerepkörök megvalósításával kapcsolatos további információkért lásd: [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../../role-based-access-control/overview.md).
 
 ### <a name="t-sql-manage-failover-of-single-and-pooled-databases"></a>T-SQL: az önálló és a készletezett adatbázisok feladatátvételének kezelése
 
 > [!IMPORTANT]
 > Ezek a Transact-SQL-parancsok csak az aktív földrajzi replikálásra vonatkoznak, és nem vonatkoznak a feladatátvételi csoportokra. Ennek megfelelően az SQL felügyelt példány példányaira sem vonatkoznak, mivel csak a feladatátvételi csoportokat támogatják.
 
-| Parancs | Description |
+| Parancs | Leírás |
 | --- | --- |
 | [ADATBÁZIS MÓDOSÍTÁSA](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |Másodlagos adatbázis hozzáadása egy meglévő adatbázishoz, és az adatreplikálás elindításához használja a másodlagos kiszolgáló hozzáadása argumentumot. |
 | [ADATBÁZIS MÓDOSÍTÁSA](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |Feladatátvétel vagy FORCE_FAILOVER_ALLOW_DATA_LOSS használatával váltson át másodlagos adatbázist elsődlegesre a feladatátvétel indításához |
@@ -276,7 +276,7 @@ Amint azt korábban már említettük, az aktív geo-replikáció programozott m
 
 ### <a name="rest-api-manage-failover-of-single-and-pooled-databases"></a>REST API: önálló és készletezett adatbázisok feladatátvételének kezelése
 
-| API | Description |
+| API | Leírás |
 | --- | --- |
 | [Adatbázis létrehozása vagy frissítése (createMode = Restore)](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) |Egy elsődleges vagy egy másodlagos adatbázis létrehozása, frissítése vagy visszaállítása. |
 | [Adatbázis-létrehozási vagy-frissítési állapot beolvasása](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) |Az állapotot adja vissza egy létrehozási művelet során. |

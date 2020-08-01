@@ -8,12 +8,12 @@ ms.subservice: iomt
 ms.topic: tutorial
 ms.date: 06/27/2020
 ms.author: punagpal
-ms.openlocfilehash: aeed0c90eeecd59e23a1d87a3ebc1e1a836a84ec
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: d606cd4f5c4b901c060c97d73524997b94eaf225
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87116837"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446302"
 ---
 # <a name="tutorial-receive-device-data-through-azure-iot-hub"></a>Oktatóanyag: eszközre vonatkozó adatfogadás az Azure IoT Hub
 
@@ -48,7 +48,7 @@ Ez a lépés egy olyan végpontot határoz meg, amelybe a IoT Hub átirányítja
 
 Itt látható a végpont létrehozásához a paranccsal használandó paraméterek listája:
 
-|PowerShell-paraméter|CLI-paraméter|Description|
+|PowerShell-paraméter|CLI-paraméter|Leírás|
 |---|---|---|
 |ResourceGroupName|resource-group|Az IoT Hub erőforrás erőforráscsoport-neve.|
 |Name|hub neve|A IoT Hub erőforrás neve.|
@@ -63,7 +63,7 @@ Ez a lépés egy üzenet útvonalát határozza meg a fent létrehozott végpont
 
 Itt látható a végpont létrehozásához a paranccsal használandó paraméterek listája:
 
-|PowerShell-paraméter|CLI-paraméter|Description|
+|PowerShell-paraméter|CLI-paraméter|Leírás|
 |---|---|---|
 |ResourceGroupName|g|Az IoT Hub erőforrás erőforráscsoport-neve.|
 |Name|hub neve|A IoT Hub erőforrás neve.|
@@ -96,7 +96,7 @@ Az eszköz (valós vagy szimulált) használatával elküldheti az alábbi minta
 A IoT-összekötő által létrehozott FHIR-megfigyelési erőforrás (oka) t a Poster használatával tekintheti meg a FHIR készült Azure API-ban. Állítsa be a [Poster-t, hogy hozzáférjen az Azure API-hoz a FHIR-hez](access-fhir-postman-tutorial.md) , és `GET` kérést küldjön a `https://your-fhir-server-url/Observation?code=http://loinc.org|8867-4` megfigyelési FHIR-erőforrások megtekintésére a fenti mintában elküldött pulzusszám értékkel.
 
 > [!TIP]
-> Győződjön meg arról, hogy a felhasználó megfelelő hozzáféréssel rendelkezik az Azure API-hoz a FHIR adatsíkon. Az [Azure szerepköralapú Access Control](configure-azure-rbac.md) használatával rendelje hozzá a szükséges adatsíkok-szerepköröket.
+> Győződjön meg arról, hogy a felhasználó megfelelő hozzáféréssel rendelkezik az Azure API-hoz a FHIR adatsíkon. Az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](configure-azure-rbac.md) használatával rendelje hozzá a szükséges adatsíkok-szerepköröket.
 
 
 ## <a name="next-steps"></a>További lépések
@@ -114,4 +114,3 @@ Ismerje meg, hogyan konfigurálhatja az IoT-összekötőt eszköz-és FHIR-leké
 >[IoT-összekötő leképezési sablonjai](iot-mapping-templates.md)
 
 Az FHIR a HL7 bejegyzett védjegye, amelynek felhasználását a HL7 engedélyezte.
-

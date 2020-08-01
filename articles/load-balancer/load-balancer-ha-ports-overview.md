@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2019
 ms.author: allensu
-ms.openlocfilehash: da776c679d5ded6f53cd0d224828fffee058d37d
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 62c3dad980b65c3e8cfc64c98ba173f667e0b5fe
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85920609"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447067"
 ---
 # <a name="high-availability-ports-overview"></a>Magas rendelkezésre állású portok – áttekintés
 
@@ -99,5 +99,5 @@ Ha a forgatókönyve megköveteli, hogy egynél több portot kell konfigurálnia
 
 ## <a name="next-steps"></a>További lépések
 
-- Megtudhatja, hogyan konfigurálhat HA portokat a ILB a portálon keresztül (tutorial-Load-Balancer-standard-Internal-Portal. mdl # Create-a-Load-Balancer-rule), [PowerShell](load-balancer-get-started-ilb-arm-ps.md#create-the-configuration-rules-probe-and-load-balancer), [CLI](load-balancer-get-started-ilb-arm-cli.md#create-the-load-balancer-rule)vagy [sablonok](load-balancer-get-started-ilb-arm-template.md).
+- [Megtudhatja, hogyan konfigurálhat ha portokat a ILB a portálon](tutorial-load-balancer-standard-internal-portal.md#create-a-load-balancer-rule), a [powershellen](load-balancer-get-started-ilb-arm-ps.md#create-the-configuration-rules-probe-and-load-balancer), a [CLI](load-balancer-get-started-ilb-arm-cli.md#create-the-load-balancer-rule)-n vagy a [sablonokon](load-balancer-get-started-ilb-arm-template.md)keresztül.
 - [Tudnivalók a standard Load Balancer](load-balancer-standard-overview.md)

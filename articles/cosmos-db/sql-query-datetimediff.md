@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/09/2020
 ms.author: tisande
 ms.custom: query-reference
-ms.openlocfilehash: db037668cec736bc3060b1cd3bb9651ee860a39b
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: b90b45072128252e8abc22d3422c84c813808119
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86262093"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446385"
 ---
 # <a name="datetimediff-azure-cosmos-db"></a>DateTimeDiff (Azure Cosmos DB)
 
@@ -21,7 +21,7 @@ A megadott DateTimePart határait (aláírt egész értékként) adja vissza a m
 ## <a name="syntax"></a>Szintaxis
   
 ```sql
-DateTimeAdd (<DateTimePart> , <StartDate> , <EndDate>)
+DateTimeDiff (<DateTimePart> , <StartDate> , <EndDate>)
 ```
 
 ## <a name="arguments"></a>Argumentumok
@@ -31,12 +31,12 @@ DateTimeAdd (<DateTimePart> , <StartDate> , <EndDate>)
 
 | DateTimePart | rövidítéseket        |
 | ------------ | -------------------- |
-| Year (év)         | "Year", "yyyy", "éé" |
-| Month (hónap)        | "hónap", "PP", "m"   |
+| Év         | "Year", "yyyy", "éé" |
+| Hónap        | "hónap", "PP", "m"   |
 | Nap          | "Day", "dd", "d"     |
 | Óra         | "Hour", "hh"         |
-| Perc       | "minute", "mi", "n"  |
-| Második       | "Second", "ss", "s"  |
+| Minute       | "minute", "mi", "n"  |
+| Second       | "Second", "ss", "s"  |
 | Ezredmásodperces  | "ezredmásodperc", "MS"  |
 | Mikromásodperces  | "második", "MCS" |
 | NS   | "NS", "NS"   |
@@ -118,7 +118,7 @@ SELECT DateTimeDiff("hh", "2020-01-01T01:00:00.1234527Z", "2020-01-01T01:59:59.1
 ]
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Dátum és idő függvények Azure Cosmos DB](sql-query-date-time-functions.md)
 - [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)

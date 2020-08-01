@@ -6,12 +6,12 @@ ms.author: harelbr
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.subservice: alerts
-ms.openlocfilehash: b8e2f580bb21d2f432ce5dcbc3e06c15ba6f380b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 7085dd601499004a91fc77a9181f0b097d0b543a
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327208"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446181"
 ---
 # <a name="create-metric-alerts-for-logs-in-azure-monitor"></a>Metrikai riasztások létrehozása a naplókhoz Azure Monitor
 
@@ -25,7 +25,7 @@ Metrikai riasztásokat használhat a mutatóként kinyert népszerű Log Analyti
 
 - [Teljesítményszámlálók](./data-sources-performance-counters.md) Windows & Linux rendszerű gépekhez
 - [Szívverési rekordok Agent Health](../insights/solution-agenthealth.md)
-- [Felügyeleti rekordok frissítése](../../automation/automation-update-management.md)
+- [Felügyeleti rekordok frissítése](../../automation/update-management/update-mgmt-overview.md)
 - [Esemény](./data-sources-windows-events.md) -adatnaplók
 
 Az Azure-ban a lekérdezésen alapuló [naplózási riasztásokra](./alerts-log.md) **vonatkozó mérőszám-riasztások** használatának számos előnye van. Némelyikük alább látható:
@@ -55,7 +55,7 @@ A Log Analytics-adatokon összegyűjtött naplók metrikája előtt be kell áll
 
 1. **Aktív log Analytics munkaterület**: egy érvényes és aktív log Analytics munkaterület jelen kell lennie. További információ: [log Analytics munkaterület létrehozása a Azure Portalban](../learn/quick-create-workspace.md).
 2. Az **ügynök konfigurálva van log Analytics munkaterületre**: az ügynököt az Azure-beli virtuális gépekhez (és/vagy) a helyszíni virtuális gépekhez kell konfigurálni, hogy az adatküldés a korábbi lépésben használt log Analytics munkaterületre történjen. További információ: [log Analytics – ügynök áttekintése](./agents-overview.md).
-3. A **támogatott log Analytics megoldások telepítve**vannak: a log Analytics megoldást konfigurálni kell, és adatokat kell elküldeni log Analytics munkaterület által támogatott megoldásokba a [teljesítményszámlálók a Windows & Linux](./data-sources-performance-counters.md), [szívverési rekordok a Agent Health, az](../insights/solution-agenthealth.md) [Update Management](../../automation/automation-update-management.md)és az [Event adatok](./data-sources-windows-events.md)számára.
+3. A **támogatott log Analytics megoldások telepítve**vannak: a log Analytics megoldást konfigurálni kell, és adatokat kell elküldeni log Analytics munkaterület által támogatott megoldásokba a [teljesítményszámlálók a Windows & Linux](./data-sources-performance-counters.md), [szívverési rekordok a Agent Health, az](../insights/solution-agenthealth.md) [Update Management](../../automation/update-management/update-mgmt-overview.md)és az [Event adatok](./data-sources-windows-events.md)számára.
 4. **Naplók küldésére konfigurált log Analytics megoldások**: a log Analytics megoldásnak rendelkeznie kell az [log Analytics munkaterületek által támogatott mérőszámokhoz](./metrics-supported.md#microsoftoperationalinsightsworkspaces) tartozó szükséges naplókkal/adatokkal. A *(z)% rendelkezésre álló memória* számlálójának esetében például először a [teljesítményszámlálók](./data-sources-performance-counters.md) megoldásban kell konfigurálni.
 
 ## <a name="configuring-metric-alert-for-logs"></a>Metrikai riasztás konfigurálása a naplókhoz

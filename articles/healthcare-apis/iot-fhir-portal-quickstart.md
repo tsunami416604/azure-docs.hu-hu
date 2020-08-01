@@ -8,12 +8,12 @@ ms.subservice: iomt
 ms.topic: quickstart
 ms.date: 05/11/2020
 ms.author: punagpal
-ms.openlocfilehash: bc85765666ba3baeae7ec795118f615f6b4b4368
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 95f5b5f13401c224ccf67c5f013deedf00379de7
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87102191"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446809"
 ---
 # <a name="quickstart-deploy-iot-connector-preview-using-azure-portal"></a>Rövid útmutató: a IoT-összekötő (előzetes verzió) üzembe helyezése Azure Portal használatával
 
@@ -181,9 +181,9 @@ Miután telepítette a IoT Central alkalmazást, a két beépített szimulált e
 A IoT-összekötő által létrehozott FHIR-alapú megfigyelési erőforrás (oka) t a Poster használatával tekintheti meg a FHIR készült Azure API-ban. Állítsa be a [Poster-t, hogy hozzáférjen az Azure API-hoz a FHIR-hez](access-fhir-postman-tutorial.md) , és `GET` kérjen kérelmet a `https://your-fhir-server-url/Observation?code=http://loinc.org|8867-4` megfigyelési FHIR erőforrásainak a pulzusszám értékkel való megtekintéséhez. 
 
 > [!TIP]
-> Győződjön meg arról, hogy a felhasználó megfelelő hozzáféréssel rendelkezik az Azure API-hoz a FHIR adatsíkon. Az [Azure szerepköralapú Access Control](configure-azure-rbac.md) használatával rendelje hozzá a szükséges adatsíkok-szerepköröket.
+> Győződjön meg arról, hogy a felhasználó megfelelő hozzáféréssel rendelkezik az Azure API-hoz a FHIR adatsíkon. Az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](configure-azure-rbac.md) használatával rendelje hozzá a szükséges adatsíkok-szerepköröket.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs rá szükség, törölheti az IoT-összekötő egy példányát a társított erőforráscsoport, vagy a FHIR szolgáltatáshoz társított Azure API vagy a IoT-összekötő példányának eltávolításával. 
 

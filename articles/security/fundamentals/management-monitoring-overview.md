@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 7ad7a29a92d25556190b4cf44f4e48158a6f0952
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7e6fe4f0db31687d402f960f2752fe021d3ec9d3
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73162744"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448349"
 ---
 # <a name="azure-security-management-and-monitoring-overview"></a>Az Azure biztonsági felügyeletének és figyelésének áttekintése
 Ez a cikk áttekintést nyújt az Azure által biztosított biztonsági szolgáltatásokról és szolgáltatásokról az Azure Cloud Services és a Virtual Machines felügyeletének és figyelésének támogatásához.
@@ -32,7 +32,7 @@ A szerepköralapú Access Control (RBAC) részletes hozzáférés-kezelést bizt
 További információ:
 
 * [Active Directory csapat blogja a RBAC-on](https://cloudblogs.microsoft.com/enterprisemobility/?product=azure-active-directory)
-* [Azure szerepköralapú Access Control](../../role-based-access-control/role-assignments-portal.md)
+* [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md)
 
 ## <a name="antimalware"></a>Kártevőirtó
 

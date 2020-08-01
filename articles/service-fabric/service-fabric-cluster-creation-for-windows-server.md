@@ -5,12 +5,12 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 2/21/2019
 ms.author: dekapur
-ms.openlocfilehash: ba6474751913b4994ae840f77577b3c1db6c5f73
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 6fa27008ea22e1a2bd9a83ce3888370cf2213935
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259289"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87458076"
 ---
 # <a name="create-a-standalone-cluster-running-on-windows-server"></a>Windows Serveren futó különálló fürt létrehozása
 Az Azure Service Fabric használatával Service Fabric-fürtöket hozhat létre a Windows Servert futtató virtuális gépeken vagy számítógépeken. Ez azt jelenti, hogy Service Fabric alkalmazásokat bármely olyan környezetben telepítheti és futtathatja, amely összekapcsolt Windows Server-számítógépeket, illetve helyszíni vagy bármilyen felhőalapú szolgáltatót tartalmaz. A Service Fabric egy önálló Windows Server-csomagot tartalmazó Service Fabric-fürtök létrehozására szolgáló telepítőcsomagot biztosít. Az Azure-beli hagyományos Service Fabric-fürtök felügyelt szolgáltatásként érhetők el, míg a különálló Service Fabric-fürtök önkiszolgáló szolgáltatások. További információ a különbségekről: az [Azure és az önálló Service Fabric-fürtök összehasonlítása](./service-fabric-deploy-anywhere.md).
@@ -128,7 +128,7 @@ Connect-ServiceFabricCluster -ConnectionEndpoint <*IPAddressofaMachine*>:<Client
 
 Például:
 ```powershell
-Connect-ServiceFabricCluster -ConnectionEndpoint 192.13.123.2345:19000
+Connect-ServiceFabricCluster -ConnectionEndpoint 192.13.123.234:19000
 ```
 
 A fürtökhöz való csatlakozást bemutató egyéb példákért lásd: [Csatlakozás biztonságos fürthöz](service-fabric-connect-to-secure-cluster.md). Miután csatlakozott a fürthöz, a [Get-ServiceFabricNode](/powershell/module/servicefabric/get-servicefabricnode?view=azureservicefabricps) parancsmaggal listázza a fürtben lévő csomópontokat és az egyes csomópontok állapotinformációit. A **HealthState** tulajdonságnak *OK* értékűnek kell lennie minden csomópont esetében.
@@ -211,7 +211,7 @@ Nincsenek.
 > 
 > 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Alkalmazások telepítése és eltávolítása a PowerShell használatával](service-fabric-deploy-remove-applications.md)
 * [Önálló Windows-fürt konfigurációs beállításai](service-fabric-cluster-manifest.md)
 * [Csomópontok hozzáadása vagy eltávolítása önálló Service Fabric-fürthöz](service-fabric-cluster-windows-server-add-remove-nodes.md)

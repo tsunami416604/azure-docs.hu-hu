@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: f8e84e845910b8f84a9b3f84ad414f2ecdd250a5
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 4f75b9af6e9b2f92818fd8ec16d59db2f1bd0075
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223788"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446876"
 ---
 # <a name="soft-delete-for-blob-storage"></a>A blob Storage-hoz készült Soft delete
 
@@ -85,7 +85,7 @@ A következő táblázat részletesen ismerteti a Soft delete bekapcsolásakor e
 
 | REST API művelet | Erőforrás típusa | Leírás | Változás a viselkedésben |
 |--------------------|---------------|-------------|--------------------|
-| [Szabályzat](/rest/api/storagerp/StorageAccounts/Delete) | Fiók | Törli a Storage-fiókot, beleértve a benne található összes tárolót és blobot.                           | Nincs változás. A törölt fiókban lévő tárolók és Blobok nem lesznek helyreállítva. |
+| [Törlés](/rest/api/storagerp/StorageAccounts/Delete) | Fiók | Törli a Storage-fiókot, beleértve a benne található összes tárolót és blobot.                           | Nincs változás. A törölt fiókban lévő tárolók és Blobok nem lesznek helyreállítva. |
 | [Tároló törlése](/rest/api/storageservices/delete-container) | Tároló | Törli a tárolót, beleértve a benne található összes blobot is. | Nincs változás. A törölt tárolóban lévő Blobok nem lesznek helyreállítva. |
 | [Put Blob](/rest/api/storageservices/put-blob) | Blobok letiltása, hozzáfűzése és lapja | Új blob létrehozása vagy egy meglévő blob cseréje egy tárolón belül | Ha egy meglévő blob cseréjét használja, a rendszer automatikusan létrehoz egy pillanatképet a blob állapotáról a hívás előtt. Ez egy korábban eltávolított blobra is vonatkozik, ha az és csak akkor, ha az azonos típusú blobtal (blokk, Hozzáfűzés vagy lap) van lecserélve. Ha egy másik típusú blob váltja fel, az összes meglévő helyreállított törlési érték véglegesen lejár. |
 | [Delete Blob](/rest/api/storageservices/delete-blob) | Blobok letiltása, hozzáfűzése és lapja | A törléshez a blob vagy a blob pillanatképét jelöli. A blob vagy pillanatkép később törlődik a Garbage gyűjtemény során | Ha egy blob-pillanatkép törlésére használatos, a pillanatképet a rendszer a törlésre kijelöltként jelöli meg. Ha egy blob törlésére használatos, a blob törlésre kerül. |

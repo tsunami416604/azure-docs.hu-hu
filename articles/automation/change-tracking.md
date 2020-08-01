@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 06/08/2020
 ms.topic: conceptual
-ms.openlocfilehash: 192fd0fe73a34ca4d6ffc49badeac7ca8a080793
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: ca96f817407aaef808fa10fbedec7af7b5912dc8
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86185585"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447926"
 ---
 # <a name="change-tracking-and-inventory-overview"></a>A Change Tracking és a leltár áttekintése
 
@@ -80,7 +80,7 @@ A módosításra vagy eseményre kattintva megtekintheti annak részleteit. Az e
 
 - Események
 - Démonok
-- Fájlok
+- Files
 - Regisztrációs adatbázis
 - Szoftverek
 - Microsoft-szolgáltatások
@@ -164,7 +164,7 @@ A következő táblázat a nyomon követett elemek korlátozásait mutatja gépe
 
 | **Erőforrás** | **Korlát** |
 |---|---|---|
-|Fájl|500|
+|File|500|
 |Regisztrációs adatbázis|250|
 |Windows-szoftver (nem tartalmazza a gyorsjavításokat) |250|
 |Linux-csomagok|1250|
@@ -203,7 +203,7 @@ Az Change Tracking és a leltár kulcsfontosságú funkciója, hogy a hibrid kö
 
 - A szolgáltatás Automation-fiókból való engedélyezéséhez lásd: [change Tracking és leltár engedélyezése Automation-fiókból](automation-enable-changes-from-auto-acct.md).
 
-- Ha engedélyezni szeretné a szolgáltatást a Azure Portal tallózásával, tekintse meg a [change Tracking és a leltár engedélyezése a Azure Portalből](automation-onboard-solutions-from-browse.md)című témakört.
+- Ha engedélyezni szeretné a szolgáltatást a Azure Portal tallózásával, tekintse meg a [change Tracking és a leltár engedélyezése a Azure Portalből](automation-enable-changes-from-browse.md)című témakört.
 
 - Ha engedélyezni szeretné a szolgáltatást egy runbook, tekintse meg a következőt: [change Tracking és leltár engedélyezése runbook](automation-enable-changes-from-runbook.md).
 

@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: b08670c51b56f01ad1193d2729ecc77821242a19
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: ae3d0ac6fb332fa17fbe938572b94c51e0785089
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86200746"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87449018"
 ---
 # <a name="tutorial-interfaces-and-custom-models"></a>Oktatóanyag: felületek és egyéni modellek
 
@@ -75,14 +75,14 @@ Most hozzáadhatja a panel **AppMenu** a jelenethez az aktuális munkamenet-áll
 1. Keresse meg a **AppMenu** panelt az *eszközök/RemoteRenderingTutorial/előregyártott/AppMenu*
 1. Húzza a **AppMenu** panelt a jelenetbe.
 1. Valószínűleg megjelenik egy párbeszédpanel a tmp- **importőr**számára, mivel ez az első alkalom, hogy a jelenetben a *text Mesh Pro* -eszközök is szerepelnek. Kövesse az utasításokat a **tmp Essentials importálásához**. Ezután az importáló párbeszédpanel bezárásához a példák és az extrák nem szükségesek.
-1. A **AppMenu** úgy van konfigurálva, hogy automatikusan összekapcsoljon, és biztosítson egy munkamenethez való csatlakozáshoz szükséges modális lehetőséget, így törölheti a korábban megkerülő megkerülő beállítást. A **RemoteRenderingCoordinator** -GameObject távolítsa el a korábban megvalósított engedélyezés mellőzését az **engedélyezést kérő** esemény "-" gombjának megnyomásával. \
- ![A Mellőzés eltávolítása ](./media/remove-bypass-event.png) . \
+1. A **AppMenu** úgy van konfigurálva, hogy automatikusan összekapcsoljon, és biztosítson egy munkamenethez való csatlakozáshoz szükséges modális lehetőséget, így törölheti a korábban megkerülő megkerülő beállítást. A **RemoteRenderingCoordinator** -GameObject távolítsa el a korábban megvalósított engedélyezés mellőzését az **engedélyezést kérő** esemény "-" gombjának megnyomásával.
+ ![A Mellőzés eltávolítása ](./media/remove-bypass-event.png) .
 1. Tesztelje a nézet vezérlőjét a **Play (lejátszás** ) megnyomásával az Unity Editorban.
 1. A szerkesztőben most, hogy a MRTK konfigurálva van, a WASD billentyűk használatával módosíthatja a nézet pozícióját, és a jobb oldali egérgomb + az egér mozgatásával módosíthatja a nézet irányát. Próbálja ki a "vezetést" a jelenet körül egy kicsit, hogy kedve legyen a vezérlők számára.
 1. Az eszközön felveheti a tenyerét, hogy meghívja a **AppMenu**, az Unity Editorban használja a gyorsbillentyűt.
 1. Ha elvesztette a menüt, nyomja le az 'M billentyűt a menü megidézéséhez. Az egyszerű interakcióhoz a menü a kamera közelében lesz elhelyezve.
-1. Az engedélyezés mostantól a **AppMenu**jobb oldalán megjelenő kérelemként fog megjelenni, ezzel engedélyezi az alkalmazás számára a távoli renderelési munkamenetek kezelését. \
- ![Felhasználói felület engedélyezése](./media/authorize-request-ui.png)\
+1. Az engedélyezés mostantól a **AppMenu**jobb oldalán megjelenő kérelemként fog megjelenni, ezzel engedélyezi az alkalmazás számára a távoli renderelési munkamenetek kezelését.
+ ![Felhasználói felület engedélyezése](./media/authorize-request-ui.png)
 1. Állítsa le az egységet a lejátszásból, és folytassa az oktatóanyagot.
 
 ## <a name="manage-model-state"></a>Modell állapotának kezelése
@@ -255,11 +255,11 @@ A **RemoteRenderedModel** a legalapvetőbb feltételek szerint tárolja a modell
 Tesztelje az új szkriptet a test Model ismételt betöltésével. Hozzunk létre egy Game objektumot, amely tartalmazza a szkriptet, és szülőnek kell lennie a tesztelési modellnek.
 
 1. Hozzon létre egy új, üres játék objektumot a jelenetben, és nevezze el **TestModel**.
-1. Adja hozzá a *RemoteRenderedModel* parancsfájlt a **TestModel**. \
+1. Adja hozzá a *RemoteRenderedModel* parancsfájlt a **TestModel**.
 ![RemoteRenderedModel-összetevő hozzáadása](./media/add-remote-rendered-model-script.png)
-1. Töltse ki a `Model Display Name` és a kifejezést az `Model Path` "*TestModel*" és a "*Builtin://Engine*" értékkel. \
+1. Töltse ki a `Model Display Name` és a kifejezést az `Model Path` "*TestModel*" és a "*Builtin://Engine*" értékkel.
 ![Modell részleteinek megadása](./media/add-model-script.png)
-1. Helyezze a **TestModel** objektumot a kamera elé, a pozíció **x = 0, y = 0, z = 3**. \
+1. Helyezze a **TestModel** objektumot a kamera elé, az **x = 0, y = 0, z = 3**pozícióban.
 ![Objektum elhelyezése](./media/test-model-position.png)
 1. Győződjön meg arról, hogy a **AutomaticallyLoad** be van kapcsolva.
 1. Az alkalmazás teszteléséhez kattintson a **Play (lejátszás** ) gombra az Unity Editorban.
@@ -280,7 +280,7 @@ Kövesse a rövid útmutatóban megadott lépéseket [: modell átalakítása re
 ## <a name="load-and-rendering-a-custom-model"></a>Egyéni modell betöltése és megjelenítése
 
 1. Hozzon létre egy új üres GameObject a jelenetben, és nevezze el az egyéni modellhez hasonló nevet.
-1. Adja hozzá a *RemoteRenderedModel* parancsfájlt az újonnan létrehozott GameObject. \
+1. Adja hozzá a *RemoteRenderedModel* parancsfájlt az újonnan létrehozott GameObject.
  ![RemoteRenderedModel-összetevő hozzáadása](./media/add-remote-rendered-model-script.png)
 1. Töltse ki a `Model Display Name` megfelelő nevet a modellnek.
 1. Töltse ki az `Model Path` elemet a modellben a fenti betöltési lépések során létrehozott *megosztott hozzáférés-aláírási (SAS)* URI-val.
@@ -292,7 +292,7 @@ Kövesse a rövid útmutatóban megadott lépéseket [: modell átalakítása re
 
 1. Távolítsa el az egyéni modell objektumot a jelenetből. Ennek az oktatóanyagnak a legjobb tapasztalata a tesztelési modell használata. Noha az ARR-ben több modell is támogatott, ez az oktatóanyag a lehető legjobb támogatás egyetlen távoli modellhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most már betöltheti saját modelljeit az Azure Remote rendering szolgáltatásba, és megtekintheti őket az alkalmazásban. Ezután végigvezeti Önt a modelljeinek kezelésén.
 

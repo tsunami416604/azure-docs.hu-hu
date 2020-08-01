@@ -12,12 +12,12 @@ ms.date: 05/20/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 72acf60bd9bc5baeba37d8ccffa79fe597954f16
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 04f97dc7296dd2ca9e9f869373cbf82838aa79f5
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86230383"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87445330"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Az Azure AD Connect verziókiadásai
 A Azure Active Directory (Azure AD) csapata rendszeresen frissíti Azure AD Connect új szolgáltatásokkal és funkciókkal. Nem minden kiegészítés alkalmazható minden célközönségre.
@@ -47,6 +47,20 @@ Nem minden Azure AD Connect-kiadás lesz elérhető az automatikus frissítéshe
 >Ha engedélyezte a Azure AD Connect for Sync szolgáltatást, hamarosan automatikusan megkezdi az olyan állapotadatok fogadását, amelyek figyelmeztetik a közelgő elavult verziókra, amikor az egyik régebbi verziót futtatja.
 >
 >[Ebben a cikkben](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-upgrade-previous-version) további információt talál arról, hogyan frissítheti Azure ad Connect a legújabb verzióra.
+
+## <a name="15450"></a>1.5.45.0
+
+### <a name="release-status"></a>Kiadás állapota
+07/29/2020: kiadva a letöltéshez
+
+### <a name="functional-changes"></a>Funkcionális változások
+Ez egy hibajavítási kiadás. Ebben a kiadásban nincsenek funkcionális változások.
+
+### <a name="fixed-issues"></a>Megoldott problémák
+
+- Kijavítva a hiba, ahol a rendszergazda nem tudja engedélyezni a "zökkenőmentes egyszeri bejelentkezést", ha a AZUREADSSOACC számítógépfiók már szerepel a "Active Directory".
+- Kijavított egy problémát, amely átmeneti hibát okozott a v2 API-különbözeti importálás során egy olyan ütköző objektum esetében, amely az állapotfigyelő portálon keresztül lett kijavíthatva.
+- Javítva lett egy probléma az importálási/exportálási konfigurációban, ahol a letiltott egyéni szabály engedélyezve lett importálva.
 
 ## <a name="15420"></a>1.5.42.0
 
@@ -231,8 +245,8 @@ Kijavítottunk egy hibát a szinkronizálási hibák tömörítése segédprogra
 > Ennek megoldásához importálnia kell a **AdSync** modult, majd futtatnia kell a `Set-ADSyncDirSyncConfiguration` PowerShell-parancsmagot a Azure ad Connect kiszolgálón.  A következő lépéseket hajthatja végre:
 >
 >1. Nyissa meg a PowerShellt administator módban.
->2. Futtassa a `Import-Module "ADSync"` parancsot.
->3. Futtassa a `Set-ADSyncDirSyncConfiguration -AnchorAttribute ""` parancsot.
+>2. Futtassa az `Import-Module "ADSync"` parancsot.
+>3. Futtassa az `Set-ADSyncDirSyncConfiguration -AnchorAttribute ""` parancsot.
  
 ### <a name="release-status"></a>Kiadás állapota 
 
@@ -585,7 +599,7 @@ Zárja le a AD DS fiók hozzáférését a helyszíni AD-ben a következő enged
 *   Távolítsa el az összes Ace-t az adott objektumon, kivéve az önmagukhoz tartozó Ace-ket. Azt szeretnénk, hogy az alapértelmezett engedélyek érintetlenek maradjanak, ha önmagukban is megmaradnak.
 *   Rendelje hozzá ezeket a konkrét engedélyeket:
 
-Típus     | Név                          | Hozzáférés               | Érvényesség
+Típus     | Name                          | Access               | Érvényesség
 ---------|-------------------------------|----------------------|--------------|
 Engedélyezés    | RENDSZER                        | Teljes hozzáférés         | Ez az objektum  |
 Engedélyezés    | Vállalati rendszergazdák             | Teljes hozzáférés         | Ez az objektum  |
@@ -1186,7 +1200,7 @@ Kiadás dátuma: augusztus 2016
 
 * A szinkronizálási időköz módosításai csak a következő szinkronizálási ciklus befejeződése után lépnek érvénybe.
 * Azure AD Connect varázsló nem fogad el olyan Azure AD-fiókot, amelynek a felhasználóneve aláhúzásjel () karakterrel kezdődik \_ .
-* Azure AD Connect varázsló nem tudja hitelesíteni az Azure AD-fiókot, ha a fiók jelszava túl sok speciális karaktert tartalmaz. Hibaüzenet: "nem sikerült érvényesíteni a hitelesítő adatokat. Váratlan hiba történt. " visszaadva.
+* Azure AD Connect varázsló nem tudja hitelesíteni az Azure AD-fiókot, ha a fiók jelszava túl sok speciális karaktert tartalmaz. Hibaüzenet: "nem sikerült érvényesíteni a hitelesítő adatokat. Váratlan hiba történt. " részében talál.”
 * Az átmeneti kiszolgáló eltávolításával letiltja a jelszó-szinkronizálást az Azure AD-bérlőben, és a jelszó-szinkronizálást nem sikerül az Active Serverrel.
 * A jelszó-szinkronizálás nem gyakori esetekben sikertelen, ha a felhasználó nem tárol jelszó-kivonatot.
 * Ha Azure AD Connect kiszolgáló átmeneti üzemmódra van beállítva, a jelszó visszaírási nem átmenetileg le van tiltva.

@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.author: sudbalas
-ms.openlocfilehash: 4c888fe0f2f4df722948cc6d22e1ef50fd1a3d42
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 463ebf429889968474af5630eb99c41a06916d01
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090501"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448613"
 ---
 # <a name="secure-access-to-a-key-vault"></a>Biztonságos hozzáférés a kulcstartóhoz
 
@@ -59,7 +59,7 @@ A következő táblázat a felügyeleti és adatsíkok végpontját mutatja be.
 
 ## <a name="management-plane-and-rbac"></a>Felügyeleti sík és RBAC
 
-A felügyeleti síkon a RBAC (szerepköralapú Access Control) segítségével engedélyezheti a hívó által végrehajtható műveleteket. A RBAC-modellben minden Azure-előfizetés egy Azure AD-példánnyal rendelkezik. Hozzáférést biztosít a felhasználóknak, csoportoknak és alkalmazásoknak ebben a címtárban. A hozzáférés a Azure Resource Manager üzemi modellt használó Azure-előfizetés erőforrásainak kezeléséhez van megadva. A hozzáférés megadásához használja a [Azure Portal](https://portal.azure.com/), az [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest), a [Azure PowerShell](/powershell/azure/)vagy a [Azure Resource Manager REST API-kat](https://msdn.microsoft.com/library/azure/dn906885.aspx).
+A felügyeleti síkon a RBAC (Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)) segítségével engedélyezheti a hívó által végrehajtható műveleteket. A RBAC-modellben minden Azure-előfizetés egy Azure AD-példánnyal rendelkezik. Hozzáférést biztosít a felhasználóknak, csoportoknak és alkalmazásoknak ebben a címtárban. A hozzáférés a Azure Resource Manager üzemi modellt használó Azure-előfizetés erőforrásainak kezeléséhez van megadva. A hozzáférés megadásához használja a [Azure Portal](https://portal.azure.com/), az [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest), a [Azure PowerShell](/powershell/azure/)vagy a [Azure Resource Manager REST API-kat](https://msdn.microsoft.com/library/azure/dn906885.aspx).
 
 Hozzon létre egy kulcstartót egy erőforráscsoporthoz, és kezelje a hozzáférést az Azure AD használatával. A felhasználók vagy csoportok számára engedélyezheti az erőforráscsoport kulcstárolóinak kezelését. A hozzáférést adott hatóköri szinten kell megadni a megfelelő RBAC-szerepkörök hozzárendelésével. Ahhoz, hogy hozzáférést biztosítson egy felhasználónak a kulcstartók kezeléséhez, egy előre meghatározott `key vault Contributor` szerepkört kell hozzárendelni a felhasználóhoz egy adott hatókörben. A következő hatókörökhöz rendelhet hozzá RBAC-szerepköröket:
 
@@ -129,9 +129,9 @@ A következő táblázat összefoglalja a szerepkörök és alkalmazások hozzá
 | Szerepkör | Felügyeleti sík engedélyei | Adatsík engedélyei |
 | --- | --- | --- |
 | Biztonsági csapat | Key Vault közreműködő | Kulcsok: biztonsági mentése, létrehozása, törlése, beolvasása, importálása, listázása, visszaállítása<br>Titkok: minden művelet |
-| Fejlesztők és &nbsp; operátorok | Key Vault üzembe helyezési engedély<br><br> **Megjegyzés**: ez az engedély lehetővé teszi, hogy a telepített virtuális gépek a kulcstartóból beolvassák a titkos kulcsokat. | Nincs |
-| Ellenőrök | Nincs | Kulcsok: listája<br>Titkos kulcsok: listája<br><br> **Megjegyzés**: ez az engedély lehetővé teszi, hogy a könyvvizsgálók megvizsgálják a naplókban nem kibocsátott kulcsok és titkos kódok attribútumait (címkéket, aktiválási dátumokat, lejárati dátumokat). |
-| Alkalmazás | Nincs | Kulcsok: aláírása<br>Titkos kulcsok: beolvasása |
+| Fejlesztők és &nbsp; operátorok | Key Vault üzembe helyezési engedély<br><br> **Megjegyzés**: ez az engedély lehetővé teszi, hogy a telepített virtuális gépek a kulcstartóból beolvassák a titkos kulcsokat. | Nincsenek |
+| Ellenőrök | Nincsenek | Kulcsok: listája<br>Titkos kulcsok: listája<br><br> **Megjegyzés**: ez az engedély lehetővé teszi, hogy a könyvvizsgálók megvizsgálják a naplókban nem kibocsátott kulcsok és titkos kódok attribútumait (címkéket, aktiválási dátumokat, lejárati dátumokat). |
+| Alkalmazás | Nincsenek | Kulcsok: aláírása<br>Titkos kulcsok: beolvasása |
 
 A három csoport szerepköreinek más erőforrásokhoz való hozzáférésre van szükségük Key Vault engedélyekkel együtt. A virtuális gépek (vagy a Azure App Service Web Apps funkciójának üzembe helyezéséhez) a fejlesztőknek és a kezelőknek `Contributor` hozzá kell férniük az ilyen típusú erőforrásokhoz. A könyvvizsgálóknak olvasási hozzáféréssel kell rendelkezniük ahhoz a Storage-fiókhoz, ahol a Key Vault-naplókat tárolják.
 

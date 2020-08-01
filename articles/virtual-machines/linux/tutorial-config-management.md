@@ -15,16 +15,16 @@ ms.workload: infrastructure
 ms.date: 09/27/2019
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: fe53f400c1e03f0f3bb9d5e85891769d58320d84
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 31a8457b4b1ac069cafbfd9713f15fdad7142d10
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86501942"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87445809"
 ---
 # <a name="tutorial-monitor-changes-and-update-a-linux-virtual-machine-in-azure"></a>Oktatóanyag: a változások monitorozása és a Linux rendszerű virtuális gépek frissítése az Azure-ban
 
-Az Azure [change Tracking](../../automation/change-tracking.md) segítségével könnyedén azonosíthatja a módosításokat, és [Update Management](../../automation/automation-update-management.md) lehetővé teszi az operációs rendszer frissítéseinek kezelését az Azure Linux rendszerű virtuális gépekhez.
+Az Azure [change Tracking](../../automation/change-tracking.md) segítségével könnyedén azonosíthatja a módosításokat, és [Update Management](../../automation/update-management/update-mgmt-overview.md) lehetővé teszi az operációs rendszer frissítéseinek kezelését az Azure Linux rendszerű virtuális gépekhez.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -115,10 +115,10 @@ A frissítések telepítéséhez ütemezzen egy olyan telepítést, amely megfel
 | --- | --- |
 | Név |A frissítéstelepítést beazonosító egyedi név. |
 |Operációs rendszer| Linux vagy Windows|
-| Frissítendő csoportok |Azure-gépek esetén az előfizetés, az erőforráscsoportok, a helyszínek és a címkék kombinációja alapján hozzon létre egy lekérdezést az üzembe helyezéshez felvenni kívánt Azure-beli virtuális gépek dinamikus csoportjának létrehozásához. </br></br>Nem Azure-beli gépek esetén válasszon ki egy meglévő mentett keresést, és válasszon ki egy olyan csoportot, amely nem Azure-beli gépeket tartalmaz az üzembe helyezéshez. </br></br>További információ: [dinamikus csoportok](../../automation/automation-update-management-groups.md)|
+| Frissítendő csoportok |Azure-gépek esetén az előfizetés, az erőforráscsoportok, a helyszínek és a címkék kombinációja alapján hozzon létre egy lekérdezést az üzembe helyezéshez felvenni kívánt Azure-beli virtuális gépek dinamikus csoportjának létrehozásához. </br></br>Nem Azure-beli gépek esetén válasszon ki egy meglévő mentett keresést, és válasszon ki egy olyan csoportot, amely nem Azure-beli gépeket tartalmaz az üzembe helyezéshez. </br></br>További információ: [dinamikus csoportok](../../automation/update-management/update-mgmt-groups.md)|
 | Frissítendő gépek |Válasszon ki egy mentett keresést, importált csoportot, vagy válasszon gépet a legördülő listából, és válassza az egyes gépek lehetőséget. Ha a **Gépek** lehetőséget választotta, a gép állapota az **ÜGYNÖK KÉSZÜLTSÉGÉNEK FRISSÍTÉSE** oszlopban látható.</br> A számítógépcsoportok Azure Monitor-naplókban való létrehozásának különböző módszereiről a következő témakörben talál további információt: [számítógépcsoportok Azure monitor-naplókban](../../azure-monitor/platform/computer-groups.md) |
 |Frissítési besorolások|Válassza ki az összes szükséges frissítési besorolást|
-|Frissítések belefoglalása/kizárása|Ekkor megnyílik a **Belefoglalás/kizárás** oldal. A belefoglalandó vagy kizárandó frissítések külön lapokon jelennek meg. További információ a bevonások kezeléséről: a [frissítések központi telepítésének ütemezett időpontja](../../automation/automation-tutorial-update-management.md#schedule-an-update-deployment) |
+|Frissítések belefoglalása/kizárása|Ekkor megnyílik a **Belefoglalás/kizárás** oldal. A belefoglalandó vagy kizárandó frissítések külön lapokon jelennek meg. További információ a bevonások kezeléséről: a [frissítések központi telepítésének ütemezett időpontja](../../automation/update-management/update-mgmt-deploy-updates.md#schedule-an-update-deployment) |
 |Ütemezett beállítások|Válassza ki a kezdéshez szükséges időt, és válasszon egyszer vagy ismétlődő lehetőséget az ismétlődéshez|
 | Parancsfájlok előtti + parancsfájlok utáni|Válassza ki az üzembe helyezés előtt és után futtatandó parancsfájlokat|
 | Karbantartási időszak |A frissítések számára beállított percek száma. Az érték nem lehet kevesebb, mint 30 perc, legfeljebb 6 óra |
@@ -193,7 +193,7 @@ A virtuális gép leállítása és elindítása egy-egy eseményt rögzít a te
 
 A diagram az eltelt idő alatt bekövetkezett változásokat mutatja. A Tevékenységnapló-kapcsolat hozzáadása után a felül látható vonaldiagramon az Azure tevékenységnapló eseményei jelennek meg. A sávdiagramok minden egyes sora más-más követhető változástípust jelenít meg. Ezek a típusok lehetnek Linux-démonok, fájlok és szoftverek. A Változások lapon jelennek meg a vizualizációban látható változások részletei a változás bekövetkezte szerinti fordított időrendben (vagyis a legutóbbi van legelöl).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban konfigurálta és ellenőrizte Change Tracking és Update Management a virtuális géphez. Megtanulta végrehajtani az alábbi műveleteket:
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 11/22/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: 09ecaf327b2030a77f8a91d99f291cebb0281235
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8dd108e8c2877c7fe459819bf01b0e5b206cd9c0
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84781599"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87445558"
 ---
 # <a name="plan-cloud-hr-application-to-azure-active-directory-user-provisioning"></a>A Cloud HR-alkalmazás megtervezése Azure Active Directory a felhasználók üzembe helyezéséhez
 
@@ -56,7 +56,7 @@ A Felhőbeli HR-alkalmazás integrációja az Azure AD-vel – a felhasználók 
 
 A felhasználók üzembe helyezése létrehoz egy alapot a folyamatos identitás-irányításhoz. Fokozza a mérvadó személyazonossági adatokra támaszkodó üzleti folyamatok minőségét.
 
-### <a name="terms"></a>Kifejezések
+### <a name="terms"></a>Fogalmak
 
 Ez a cikk a következő kifejezéseket használja:
 
@@ -404,7 +404,6 @@ A kiépítés során esetlegesen felmerülő problémák elhárításához tekin
 
 - [Hiba történt a felhasználók Azure AD Gallery-alkalmazásba való konfigurálásának beállításakor](application-provisioning-config-problem.md)
 - [Egy attribútum szinkronizálása a helyszíni Active Directory az Azure AD-be az alkalmazásba való kiépítéshez](user-provisioning-sync-attributes-for-mapping.md)
-- [Az Azure AD Gallery alkalmazásba történő felhasználói üzembe helyezése órákat vesz igénybe](application-provisioning-when-will-provisioning-finish.md)
 - [Probléma a rendszergazdai hitelesítő adatok mentésekor, miközben a felhasználók üzembe helyezését egy Azure Active Directory Gallery-alkalmazáshoz konfigurálja](application-provisioning-config-problem-storage-limit.md)
 - [Egyetlen felhasználó sincs kiépítve egy Azure AD Gallery-alkalmazásba](application-provisioning-config-problem-no-users-provisioned.md)
 - [Helytelenek a felhasználók egy Azure AD Gallery-alkalmazásban való üzembe helyezése](application-provisioning-config-problem-wrong-users-provisioned.md)

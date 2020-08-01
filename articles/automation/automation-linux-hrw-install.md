@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0fc7951411f1c8956b4816f9031a8b7c26594b42
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 7f19aec65ed2616d757718116ac948473dd4b0ed
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85856133"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448016"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Linux Hybrid Runbook Worker üzembe helyezése
 
@@ -28,7 +28,7 @@ A hibrid Runbook-feldolgozói szerepkör a szerepkör telepítéséhez és konfi
 
 Ha nem rendelkezik Azure Monitor Log Analytics munkaterülettel, tekintse át a [Azure monitor log tervezési útmutatót](../azure-monitor/platform/design-logs-deployment.md) a munkaterület létrehozása előtt.
 
-Ha van munkaterülete, de nem kapcsolódik az Automation-fiókjához, az automatizálási funkció lehetővé teszi a Azure Automation funkcióinak hozzáadását, beleértve a hibrid Runbook-feldolgozó támogatását is. Ha engedélyezi a Log Analytics munkaterület Azure Automation funkciójának egyikét, különösen a [Update Management](automation-update-management.md) vagy a [change Tracking és a leltárt](change-tracking.md), a rendszer automatikusan leküldi a munkavégző összetevőket az ügynök számítógépére.
+Ha van munkaterülete, de nem kapcsolódik az Automation-fiókjához, az automatizálási funkció lehetővé teszi a Azure Automation funkcióinak hozzáadását, beleértve a hibrid Runbook-feldolgozó támogatását is. Ha engedélyezi a Log Analytics munkaterület Azure Automation funkciójának egyikét, különösen a [Update Management](update-management/update-mgmt-overview.md) vagy a [change Tracking és a leltárt](change-tracking.md), a rendszer automatikusan leküldi a munkavégző összetevőket az ügynök számítógépére.
 
 A Update Management szolgáltatás munkaterülethez való hozzáadásához futtassa a következő PowerShell-parancsmagot:
 
@@ -82,11 +82,11 @@ A linuxos hibrid Runbook-feldolgozók korlátozott számú Runbook-típust támo
 
 |Runbook típusa | Támogatott |
 |-------------|-----------|
-|Python 2 |Yes |
+|Python 2 |Igen |
 |PowerShell |Igen<sup>1</sup> |
-|PowerShell-munkafolyamat |No |
-|Grafikus |No |
-|Grafikus PowerShell-munkafolyamat |No |
+|PowerShell-munkafolyamat |Nem |
+|Grafikus |Nem |
+|Grafikus PowerShell-munkafolyamat |Nem |
 
 <sup>1</sup> A PowerShell-runbookok a PowerShell Core-t kell telepíteni a Linux rendszerű gépen. A telepítésének megismeréséhez lásd: [a PowerShell Core telepítése Linux rendszeren](/powershell/scripting/install/installing-powershell-core-on-linux) .
 

@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5e067e8d56f8a928f952648fc76cd5d6b7a1afe7
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: fea05ada52ba4281acb3451769446d7f0bad790d
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86221273"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448719"
 ---
 # <a name="view-and-assign-administrator-roles-in-azure-active-directory"></a>Rendszergazdai szerepkörök megtekintése és kiosztása Azure Active Directory
 
@@ -56,6 +56,12 @@ Ha Ön globális rendszergazda vagy Kiemelt szerepkörű rendszergazda, egyszer�
 A szerepkör tagjainak megtekintésekor válassza a **Leírás** lehetőséget a szerepkör-hozzárendelés által biztosított engedélyek teljes listájának megtekintéséhez. A lap a kapcsolódó dokumentációra mutató hivatkozásokat tartalmaz, amelyek segítséget nyújtanak a címtár szerepköreinek kezelésében.
 
 ![rendszergazdai szerepkör engedélyeinek listája](./media/directory-manage-roles-portal/role-description.png)
+
+## <a name="download-role-assignments"></a>Szerepkör-hozzárendelések letöltése
+
+Egy adott szerepkör összes hozzárendelésének letöltéséhez a **szerepkörök és rendszergazdák** lapon válasszon ki egy szerepkört, majd válassza a **szerepkör-hozzárendelések letöltése**lehetőséget. Egy CSV-fájl, amely felsorolja a szerepkör összes hatókörében lévő hozzárendeléseket.
+
+![szerepkör összes hozzárendelésének letöltése](./media/directory-manage-roles-portal/download-role-assignments.png)
 
 ## <a name="assign-a-role"></a>Szerepkör kiosztása
 

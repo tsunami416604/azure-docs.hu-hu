@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
-ms.openlocfilehash: a9786c1f596a9f59e63886fa503bddac58ee7a8e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: c6aea3be5782c967c5816a1e40dc5443306671b3
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325338"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87445297"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Azure Monitor ügynökök áttekintése
 
@@ -32,7 +32,7 @@ Az alábbi táblázatok a Windows és a Linux rendszerhez készült Azure Monito
 | | Diagnosztika<br>kiterjesztés (WAD) | Log Analytics<br>ügynök | Függőség<br>ügynök |
 |:---|:---|:---|:---|
 | **Támogatott környezetek** | Azure | Azure<br>Egyéb felhő<br>Helyszíni követelmények | Azure<br>Egyéb felhő<br>Helyszíni | 
-| **Ügynökre vonatkozó követelmények**  | Nincs | Nincs | Log Analytics-ügynököt igényel |
+| **Ügynökre vonatkozó követelmények**  | Nincsenek | Nincsenek | Log Analytics-ügynököt igényel |
 | **Összegyűjtött adatok** | Eseménynaplók<br>ETW események<br>Teljesítmény<br>Fájl alapú naplók<br>IIS-naplók<br>.NET-alkalmazás naplói<br>Összeomlási memóriaképek<br>Ügynök diagnosztikai naplói | Eseménynaplók<br>Teljesítmény<IIS logs><br>Fájl alapú naplók<br>Bepillantást és megoldásokat<br>Egyéb szolgáltatások | Folyamat részletei és függőségei<br>Hálózati kapcsolatok metrikái |
 | **Adatküldés** | Azure Storage<br>Azure Monitor metrikák<br>Eseményközpont | Azure Monitor-naplók | Azure Monitor-naplók |
 
@@ -42,7 +42,7 @@ Az alábbi táblázatok a Windows és a Linux rendszerhez készült Azure Monito
 | | Diagnosztika<br>bővítmény (LAD) | Telegraf<br>ügynök | Log Analytics<br>ügynök | Függőség<br>ügynök |
 |:---|:---|:---|:---|:---|
 | **Támogatott környezetek** | Azure | Azure<br>Egyéb felhő<br>Helyszíni követelmények | Azure<br>Egyéb felhő<br>Helyszíni követelmények | Azure<br>Egyéb felhő<br>Helyszíni |
-| **Ügynökre vonatkozó követelmények**  | Nincs | Nincs | Nincs | Log Analytics-ügynököt igényel |
+| **Ügynökre vonatkozó követelmények**  | Nincsenek | Nincsenek | Nincsenek | Log Analytics-ügynököt igényel |
 | **Összegyűjtött adatok** | Rendszernapló<br>Teljesítmény | Teljesítmény | Rendszernapló<br>Teljesítmény| Folyamat részletei és függőségei<br>Hálózati kapcsolatok metrikái |
 | **Adatküldés** | Azure Storage<br>Eseményközpont | Azure Monitor metrikák | Azure Monitor-naplók | Azure Monitor-naplók |
 
@@ -62,7 +62,7 @@ Ha a következőkre van szüksége, használja a Log Analytics-ügynököt:
 * Adatküldés egy Log Analytics munkaterületre, hogy kihasználhassa a [Azure monitor naplók](data-platform-logs.md#what-can-you-do-with-azure-monitor-logs) , például a [naplózási lekérdezések](../log-query/log-query-overview.md)által támogatott funkciókat.
 * A [Azure monitor for VMS](../insights/vminsights-overview.md) használata lehetővé teszi a virtuális gépek méretezését, és figyeli a folyamatokat és a függőségeket más erőforrásokra és külső folyamatokra.  
 * A virtuális gépek biztonságának kezelése [Azure Security Center](../../security-center/security-center-intro.md) vagy [Azure Sentinel](../../sentinel/overview.md)használatával.
-* Az Azure-beli virtuális gépek teljes körű felügyeletének biztosításához használja [Azure Automation Update managementet](../../automation/automation-update-management.md), [Azure Automation az állapot konfigurációját](../../automation/automation-dsc-overview.md), vagy [Azure Automation Change Tracking és leltárt](../../automation/change-tracking.md) .
+* Az Azure-beli virtuális gépek teljes körű felügyeletének biztosításához használja [Azure Automation Update managementet](../../automation/update-management/update-mgmt-overview.md), [Azure Automation az állapot konfigurációját](../../automation/automation-dsc-overview.md), vagy [Azure Automation Change Tracking és leltárt](../../automation/change-tracking.md) .
 * Különböző [megoldásokat](../monitor-reference.md#insights-and-core-solutions) használhat egy adott szolgáltatás vagy alkalmazás figyelésére.
 
 A Log Analytics-ügynök korlátai a következők:

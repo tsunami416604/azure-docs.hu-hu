@@ -3,12 +3,12 @@ title: Erőforrások rendszerezése felügyeleti csoportokkal – Azure-irányí
 description: Megismerheti a felügyeleti csoportokat és azok használatának módját, valamint a hozzájuk tartozó engedélyek működését.
 ms.date: 07/06/2020
 ms.topic: overview
-ms.openlocfilehash: 8c8c254b2156a6f710c7130503b7c2a18d7168b0
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 7c6d5d752886f47da1321289696feb4261abe7e5
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420515"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447108"
 ---
 # <a name="what-are-azure-management-groups"></a>Mik azok az Azure felügyeleti csoportok?
 
@@ -82,7 +82,7 @@ Ha kérdése van a visszatöltési folyamatot illetően, lépjen kapcsolatba vel
   
 ## <a name="management-group-access"></a>Hozzáférés a felügyeleti csoportokhoz
 
-Az Azure felügyeleti csoportjai támogatják az [Azure szerepkör-alapú hozzáférés-vezérlést (RBAC)](../../role-based-access-control/overview.md) minden erőforrás-hozzáféréshez és szerepkör-definícióhoz.
+Az Azure felügyeleti csoportok támogatják az [Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC)](../../role-based-access-control/overview.md) minden erőforrás-hozzáféréshez és szerepkör-definícióhoz.
 Ezeket az engedélyeket a hierarchiában található összes gyermek erőforrás örökli. Bármely RBAC-szerepkör hozzárendelhető egy olyan felügyeleti csoporthoz, amely örökölni fogja a hierarchiát az erőforrásokhoz. A virtuálisgép-közreműködői RBAC-szerepkör például hozzárendelhető a felügyeleti csoporthoz. Ez a szerepkör nem végez műveletet a felügyeleti csoporton, de a csoport alá tartozó összes virtuális gép örökli.
 
 Az alábbi ábrán a felügyeleti csoportokkal kapcsolatos szerepkörök és támogatott műveletek listája látható.
@@ -193,7 +193,7 @@ A felügyeleti csoportok támogatottak az [Azure-tevékenységnaplóban](../../a
 
 Az Azure Portalon kívüli felügyeleti csoportok lekérdezésekor a felügyeleti csoportok célhatóköre a következőhöz hasonlóan néz ki: **"/ providers/Microsoft.Management/managementGroups/{yourMgID}"**.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A felügyeleti csoportokkal kapcsolatos további tudnivalókért lásd:
 

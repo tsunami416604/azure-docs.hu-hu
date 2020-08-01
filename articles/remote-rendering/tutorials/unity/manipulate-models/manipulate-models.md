@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: 4928938c38df8a1ed0f1e31c73e755a4f7f6c371
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: ea951943c3f48443e4348d633c16ed61303f7aa8
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87367630"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87449047"
 ---
 # <a name="tutorial-manipulating-models"></a>Oktatóanyag: modellek módosítása
 
@@ -332,18 +332,14 @@ Ha a **RemoteRayCastPointerHandler**sikeresen elvégezte a Ray-castot, a rendsze
 
 2. A korábban létrehozott **TestModel** -GameObject adja hozzá a **RemoteRayCastPointerHandler** összetevőt és a **RemoteEntityHelper** összetevőt is.
 1. Rendelje hozzá a `EntityToDebugLog` metódust az `OnRemoteEntityClicked` eseményhez. Ha az esemény kimeneti típusa és típusa megegyezik, használhatjuk az egység dinamikus esemény-összekapcsolása értéket, amely automatikusan átadja az esemény értékét a metódusnak.
-    1. Új visszahívási mező létrehozása \
-    ![Visszahívás hozzáadása](./media/add-callback-remote-entity-clicked.png)
-    1. Húzza a **távoli entitás segítő** összetevőt az Object (objektum) mezőbe a szülő GameObject való hivatkozáshoz.
-    ![Objektum kiosztása](./media/assign-object.png)
-    1. Az `EntityToDebugLog` as visszahívás társítása
-    ![Visszahívás kiosztása](./media/remote-entity-event.png)
+    1. Új visszahívási mező létrehozása ![ visszahívás hozzáadása](./media/add-callback-remote-entity-clicked.png)
+    1. Húzza a **távoli entitás segítő** összetevőt az objektum mezőbe, hogy a szülő GameObject- ![ hozzárendelési objektumra hivatkozzon.](./media/assign-object.png)
+    1. A `EntityToDebugLog` visszahívás ![ hozzárendelésének visszahívása](./media/remote-entity-event.png)
 1. A jelenet elindításához nyomja le a play gombot az Unity Editorban, és kapcsolódjon egy távoli munkamenethez, és töltse be a teszt modellt.
 1. A MRTK Hand szimulációjának használatával nyomja le és tartsa nyomva a bal oldali SHIFT billentyűt.
 1. Kormányozza a szimulált kezet, hogy a Hand Ray a teszt modelljére mutasson.
 1. Hosszú kattintással szimulálhatja a levegőt, és végrehajthatja az `OnPointerClicked` eseményt.
-1. Figyelje meg, hogy az Unity-konzolon be van jelölve a alárendelt entitás neve. Például: \
-![Példa alárendelt entitásra](./media/child-entity-example.png)
+1. Figyelje meg, hogy az Unity-konzolon be van jelölve a alárendelt entitás neve. Példa: ![ alárendelt entitás – példa](./media/child-entity-example.png)
 
 ## <a name="synchronizing-the-remote-object-graph-into-the-unity-hierarchy"></a>A távoli objektum gráfjának szinkronizálása az Unity-hierarchiába
 
@@ -351,9 +347,9 @@ Eddig csak egyetlen helyi GameObject láttunk, amely a teljes modellt jelképezi
 
 1. Indítsa el a jelenetet, és töltse be a teszt modellt.
 1. Bontsa ki a **TestModel** GameObject gyermekeit az egység hierarchiájában, és válassza ki a **TestModel_Entity** GameObject.
-1. Az Ellenőrben kattintson a *gyermekek megjelenítése* gombra. \
+1. Az Ellenőrben kattintson a *gyermekek megjelenítése* gombra.
 ![Gyermekek megjelenítése](./media/show-remote-children.png)
-1. Folytassa a hierarchiában lévő gyermekek kibontását, és kattintson a *gyermekek megjelenítése* gombra, amíg a rendszer nem jeleníti meg a gyermekek nagy listáját. \
+1. Folytassa a hierarchiában lévő gyermekek kibontását, és kattintson a *gyermekek megjelenítése* gombra, amíg meg nem jelenik a gyerekek nagy listája.
 ![Minden gyermek](./media/test-model-children.png)
 
 A több tucat entitások listája most már feltölti a hierarchiát. Ha kiválasztja az egyiket, a rendszer megjeleníti a `Transform` és az `RemoteEntitySyncObject` összetevőket az ellenőrben. Alapértelmezés szerint az egyes entitások nem szinkronizálják automatikusan az összes keretet, így a helyi módosítások `Transform` nem szinkronizálhatók a kiszolgálóval. Megtekintheti az *összes képkockát* , majd áthelyezheti, méretezheti vagy elforgathatja az átalakítást a jelenet nézetben, nem fogja látni a megjelenített modellt a jelenet nézetben
@@ -371,13 +367,13 @@ Ugyanez a folyamat programozott módon is elvégezhető, és az adott távoli en
     }
     ```
 
-1. Adjon hozzá egy további visszahívást a **RemoteRayCastPointerHandler** eseményhez `OnRemoteEntityClicked` , és állítsa be a következőre: `MakeSyncedGameObject` . \
+1. Adjon hozzá egy további visszahívást a **RemoteRayCastPointerHandler** eseményhez `OnRemoteEntityClicked` , és állítsa be a következőre: `MakeSyncedGameObject` .
 ![További visszahívás](./media/additional-callback.png)
 1. A MRTK Hand szimulációjának használatával nyomja le és tartsa nyomva a bal oldali SHIFT billentyűt.
 1. Kormányozza a szimulált kezet, hogy a Hand Ray a teszt modelljére mutasson.
 1. Hosszú kattintással szimulálhatja a levegőt, és végrehajthatja az `OnPointerClicked` eseményt.
-1. Ellenőrizze és bontsa ki a hierarchiát egy új gyermekobjektum megjelenítéséhez, amely a rákattintott entitást jelképezi. \
-![GameObject-ábrázolás](./media/gameobject-representing-entity.png)\
+1. Ellenőrizze és bontsa ki a hierarchiát egy új gyermekobjektum megjelenítéséhez, amely a rákattintott entitást jelképezi.
+![GameObject-ábrázolás](./media/gameobject-representing-entity.png)
 1. A tesztelést követően távolítsa el a visszahívását `MakeSyncedGameObject` , mivel később más effektusok részeként is beépítjük ezt.
 
 > [!NOTE]
@@ -385,7 +381,7 @@ Ugyanez a folyamat programozott módon is elvégezhető, és az adott távoli en
 
 Egy helyi példány létrehozása és az automatikus szinkronizálás beállítása az alentitások manipulálása első lépése. Ugyanazokat a technikákat használjuk, amelyekkel a modell teljes egészében kezelhető az alentitásokon is. Például egy entitás szinkronizált helyi példányának létrehozása után lekérdezheti a határait, és felveheti a manipulációs kezelőket, hogy az a felhasználó által áthelyezhető legyen.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most már kezelhet és kezelhet távolról renderelt modelleket! A következő oktatóanyagban az anyagok módosítására, a világítás módosítására és a hatások a távolról renderelt modellekre való alkalmazására fogunk vonatkozni.
 

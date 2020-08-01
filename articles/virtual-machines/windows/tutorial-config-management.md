@@ -8,16 +8,16 @@ ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: cf01e4baf96e4403dae443fa6c98f74c571641a8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 2b88c053e1f9029f916d9a180221a3bb58629608
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86508317"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448867"
 ---
 # <a name="tutorial-monitor-changes-and-update-a-windows-virtual-machine-in-azure"></a>Oktatóanyag: változások figyelése és Windowsos virtuális gépek frissítése az Azure-ban
 
-Az Azure [change Tracking](../../automation/change-tracking.md) és [Update Management](../../automation/automation-update-management.md)segítségével könnyedén azonosíthatja a Windows rendszerű virtuális gépek változásait az Azure-ban, és kezelheti az operációs rendszer frissítéseit ezekhez a virtuális gépekhez.
+Az Azure [change Tracking](../../automation/change-tracking.md) és [Update Management](../../automation/update-management/update-mgmt-overview.md)segítségével könnyedén azonosíthatja a Windows rendszerű virtuális gépek változásait az Azure-ban, és kezelheti az operációs rendszer frissítéseit ezekhez a virtuális gépekhez.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -112,10 +112,10 @@ A virtuális gép új központi telepítésének megadásához válassza a friss
 | --- | --- |
 | **Név** |Adjon meg egy egyedi nevet a frissítés központi telepítésének azonosításához. |
 |**Operációs rendszer**| Válassza a **Linux** vagy a **Windows**lehetőséget.|
-| **Frissítendő csoportok** |Az Azure-ban üzemeltetett virtuális gépek esetében az előfizetés, az erőforráscsoportok, a helyszínek és a címkék kombinációján alapuló lekérdezést adhat meg. Ez a lekérdezés az Azure által üzemeltetett virtuális gépek dinamikus csoportjait hozza létre, amelyek beletartoznak a központi telepítésbe. </br></br>Az Azure-ban nem üzemeltetett virtuális gépek esetén válasszon ki egy meglévő mentett keresést. Ezzel a kereséssel kiválaszthatja a központi telepítésbe felvenni kívánt virtuális gépek egy csoportját. </br></br> További információ: [dinamikus csoportok](../../automation/automation-update-management-groups.md).|
+| **Frissítendő csoportok** |Az Azure-ban üzemeltetett virtuális gépek esetében az előfizetés, az erőforráscsoportok, a helyszínek és a címkék kombinációján alapuló lekérdezést adhat meg. Ez a lekérdezés az Azure által üzemeltetett virtuális gépek dinamikus csoportjait hozza létre, amelyek beletartoznak a központi telepítésbe. </br></br>Az Azure-ban nem üzemeltetett virtuális gépek esetén válasszon ki egy meglévő mentett keresést. Ezzel a kereséssel kiválaszthatja a központi telepítésbe felvenni kívánt virtuális gépek egy csoportját. </br></br> További információ: [dinamikus csoportok](../../automation/update-management/update-mgmt-groups.md).|
 | **Frissítendő gépek** |Válassza a **mentett keresés**, **importált csoport**vagy **gépek**lehetőséget.<br/><br/>Ha a **gépek**lehetőséget választja, a legördülő listából választhat egyes gépeket. Az egyes gépek készültsége a tábla **frissítési ügynök készültségi** oszlopában látható.</br></br> A számítógépcsoportok Azure Monitor-naplókban való létrehozásának különböző módszereiről a következő témakörben talál további információt: [számítógépcsoportok Azure monitor-naplókban](../../azure-monitor/platform/computer-groups.md) |
 |**Frissítési besorolások**|Válassza ki az összes szükséges frissítési besorolást.|
-|**Frissítések belefoglalása/kizárása**|Válassza ezt a lehetőséget a **Belefoglalás/kizárás** ablaktábla megnyitásához. A szerepeltetni kívánt frissítések és a kizárandó módosítások külön lapokon találhatók. További információ a bevonások kezeléséről: a [frissítések központi telepítésének ütemezett időpontja](../../automation/automation-tutorial-update-management.md#schedule-an-update-deployment). |
+|**Frissítések belefoglalása/kizárása**|Válassza ezt a lehetőséget a **Belefoglalás/kizárás** ablaktábla megnyitásához. A szerepeltetni kívánt frissítések és a kizárandó módosítások külön lapokon találhatók. További információ a bevonások kezeléséről: a [frissítések központi telepítésének ütemezett időpontja](../../automation/update-management/update-mgmt-deploy-updates.md#schedule-an-update-deployment). |
 |**Ütemezett beállítások**|Válassza ki a kezdéshez szükséges időt, és válassza az **egyszer** vagy az **ismétlődő**lehetőséget.|
 | **Parancsfájlok előtti + parancsfájlok utáni**|Válassza ki az üzembe helyezés előtt és után futtatandó szkripteket.|
 | **Karbantartási időszak** | Adja meg a frissítések számára beállított percek számát. Az érvényes értékek 30 és 360 perc közé esnek. |
@@ -199,7 +199,7 @@ Az előző diagramon az idő múlásával történt változások láthatók. Miu
 
 A sávdiagramok minden sora egy másik, nyomon követhető módosítás típusát jelöli. Ezek a típusok a Linux-démonok, a fájlok, a Windows-beállításkulcsok, a szoftverek és a Windows-szolgáltatások. A **módosítás lap a változás** részleteit jeleníti meg. A változások az egyes előfordulások sorrendjében jelennek meg, és a legutóbbi változás látható először.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban konfigurálta és ellenőrizte Change Tracking és Update Management a virtuális géphez. Megtanulta végrehajtani az alábbi műveleteket:
 

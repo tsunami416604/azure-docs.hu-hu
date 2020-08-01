@@ -3,12 +3,12 @@ title: 'Oktatóanyag: egyéni események küldése hibrid kapcsolatok számára 
 description: 'Oktatóanyag: a Azure Event Grid és az Azure CLI használatával tehet közzé egy témakört, és feliratkozhat erre az eseményre. Végpontként egy hibrid kapcsolatot használunk.'
 ms.date: 07/07/2020
 ms.topic: tutorial
-ms.openlocfilehash: 208d8584736a0d7ff591c3a8ed7a08bcbf6dcba4
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: acb3f3021722a612d6f07ec83d344f4be62c60f3
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86114873"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87459470"
 ---
 # <a name="tutorial-route-custom-events-to-azure-relay-hybrid-connections-with-azure-cli-and-event-grid"></a>Oktatóanyag: egyéni események irányítása Azure Relay Hibrid kapcsolatok az Azure CLI-vel és Event Grid
 
@@ -16,14 +16,14 @@ Az Azure Event Grid egy felhőalapú eseménykezelési szolgáltatás. A hibrid 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez a cikk feltételezi, hogy már rendelkezik egy hibrid kapcsolattal és egy figyelőalkalmazással. A hibrid kapcsolatok használatbavételéhez tekintse át a [Bevezetés a hibrid Relay-kapcsolatok használatába – .NET](../service-bus-relay/relay-hybrid-connections-dotnet-get-started.md) vagy a [Bevezetés a hibrid Relay-kapcsolatok használatába – Node](../service-bus-relay/relay-hybrid-connections-node-get-started.md) című témakört.
+Ez a cikk feltételezi, hogy már rendelkezik egy hibrid kapcsolattal és egy figyelőalkalmazással. A hibrid kapcsolatok használatbavételéhez tekintse át a [Bevezetés a hibrid Relay-kapcsolatok használatába – .NET](/azure/azure-relay/relay-hybrid-connections-dotnet-get-started) vagy a [Bevezetés a hibrid Relay-kapcsolatok használatába – Node](/azure/azure-relay/relay-hybrid-connections-node-get-started) című témakört.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 > [!NOTE]
 > Ha az Azure CLI-t használja a helyi gépen, használja az Azure CLI 2.0.56 vagy újabb verzióját. Az Azure CLI legújabb verziójának telepítésével kapcsolatos utasításokért lásd: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Az Event Grid-témakörök Azure-erőforrások, amelyeket egy Azure-erőforráscsoportba kell helyezni. Az erőforráscsoport egy olyan logikai gyűjtemény, amelyben a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
 
@@ -104,14 +104,14 @@ curl -X POST -H "aeg-sas-key: $key" -d "$event" $endpoint
 
 A figyelőalkalmazásnak meg kell kapnia az eseményüzenetet.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 Ha tovább kívánja használni az eseményt, akkor ne törölje a cikkben létrehozott erőforrásokat. Ellenkező esetben a következő paranccsal törölheti a cikkben létrehozott erőforrásokat.
 
 ```azurecli-interactive
 az group delete --name gridResourceGroup
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy megismerkedett vele, hogyan hozhat létre témaköröket és eseményfeliratkozásokat, bővebben is tájékozódhat arról, hogy miben nyújthat segítséget az Event Grid:
 

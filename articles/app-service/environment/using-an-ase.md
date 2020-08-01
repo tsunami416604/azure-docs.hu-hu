@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 5/10/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: f9bfd601642ff9d6b5b5c5a1c2c508d1821e19c7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 64798e22a893c87a17e3f17077860537c7694c40
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87042193"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448198"
 ---
 # <a name="use-an-app-service-environment"></a>App Service-környezet használata
 
@@ -126,15 +126,15 @@ Ha külső beadást használ, a szolgáltatón keresztül készített alkalmazá
 
 A DNS konfigurálása a saját DNS-kiszolgálójában a ILB-alapú központtal:
 
-1. zóna létrehozása a <ASE name> . appserviceenvironment.net
+1. hozzon létre egy zónát a benyújtó &lt; neve számára &gt; . appserviceenvironment.net
 1. hozzon létre egy olyan rekordot az adott zónában, amely * a ILB IP-címére mutat.
 1. hozzon létre egy olyan rekordot az adott zónában, amely a @-t a ILB IP-címére mutat.
-1. zóna létrehozása a <ASE name> . appserviceenvironment.net, SCM néven
+1. hozzon létre egy zónát a központhoz tartozó &lt; név &gt; . appserviceenvironment.net neve: SCM
 1. hozzon létre egy olyan rekordot az SCM-zónában, amely * a ILB IP-címére mutat.
 
 A DNS konfigurálása Azure DNS privát zónában:
 
-1. hozzon létre egy appserviceenvironment.net nevű Azure DNS privát zónát <ASE name>
+1. hozzon létre egy Azure DNS privát zónát, amely &lt; neve &gt; . appserviceenvironment.net
 1. hozzon létre egy olyan rekordot az adott zónában, amely * a ILB IP-címére mutat.
 1. hozzon létre egy olyan rekordot az adott zónában, amely a @-t a ILB IP-címére mutat.
 1. hozzon létre egy olyan rekordot az adott zónában, amely a *. SCM-t a ILB IP-címére mutat.
@@ -161,7 +161,7 @@ További változtatások nélkül az internetalapú CI-rendszerek (például a G
 
 Az ILB ASE alkalmazásainak közzétételi végpontjai az ILB ASE létrehozásakor megadott tartományt használják. Megtekintheti az alkalmazás közzétételi profiljában és az alkalmazás portál paneljén (az **Áttekintés**  >  **alapjai** és a **Tulajdonságok**területen is).
 
-## <a name="storage"></a>Tárolás
+## <a name="storage"></a>Storage
 
 A kiegészítő csomag 1 TB tárterülettel rendelkezik a központhoz tartozó összes alkalmazáshoz. Az elkülönített díjszabási SKU-ban App Service csomag 250 GB-os korláttal rendelkezik. Egy előállítók esetében 250 GB tárterület kerül App Service csomagba az 1 TB-os korlátig. Több App Service terv is lehet, mint négy, de az 1 TB-os korláton túl nincs több tárterület.
 

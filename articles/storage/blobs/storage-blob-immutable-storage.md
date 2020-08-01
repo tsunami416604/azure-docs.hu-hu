@@ -9,12 +9,12 @@ ms.date: 11/18/2019
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: 69c921ba67159d28a913173cee5e90fb04dcbf0a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 54014a0d76130b82788a1ae432e42baec28df2c2
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85561040"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448343"
 ---
 # <a name="store-business-critical-blob-data-with-immutable-storage"></a>Üzleti szempontból kritikus fontosságú blob-alapú adattárolás tárolása a nem módosítható tárolóval
 
@@ -76,9 +76,9 @@ Az adatmegőrzési szabályokra az alábbi korlátozások vonatkoznak:
 
 ### <a name="allow-protected-append-blobs-writes"></a>Védett hozzáfűző Blobok írásának engedélyezése
 
-A hozzáfűző Blobok adatblokkokból állnak, és a naplózási és naplózási forgatókönyvekhez szükséges adathozzáfűzési műveletekre vannak optimalizálva. A hozzáfűző Blobok csak az új blokkoknak a blob végéhez való hozzáadását teszik lehetővé. A módosíthatatlansági függetlenül a meglévő blokkok módosítása vagy törlése alapvetően nem engedélyezett a hozzáfűző blobokban. A Blobok hozzáfűzésével kapcsolatos további tudnivalókért tekintse meg [a hozzáfűző Blobok](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs)című témakört.
+A hozzáfűző Blobok adatblokkokból állnak, és a naplózási és naplózási forgatókönyvekhez szükséges adathozzáfűzési műveletekhez vannak optimalizálva. A hozzáfűző Blobok csak az új blokkoknak a blob végéhez való hozzáadását teszik lehetővé. A módosíthatatlansági függetlenül a meglévő blokkok módosítása vagy törlése alapvetően nem engedélyezett a hozzáfűző blobokban. A Blobok hozzáfűzésével kapcsolatos további tudnivalókért tekintse meg [a hozzáfűző Blobok](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs)című témakört.
 
-Csak az időalapú adatmegőrzési házirendek rendelkeznek olyan `allowProtectedAppendWrites` beállítással, amely lehetővé teszi, hogy új blokkokat írjon egy hozzáfűzési blobhoz a módosíthatatlansági-védelem és a megfelelőség megőrzése mellett. Ha engedélyezve van, létrehozhat egy hozzáfűzési blobot közvetlenül a szabályzat által védett tárolóban, és továbbra is hozzáadhat új adatblokkokat a meglévő hozzáfűzési Blobok végéhez a *AppendBlock* API használatával. Csak új blokkok vehetők fel, és minden meglévő blokk nem módosítható és nem törölhető. Az időmegőrzés módosíthatatlansági védelme továbbra is érvényes, így megelőzhető a hozzáfűző blob törlése, amíg a tényleges megőrzési időszak el nem telik. A beállítás engedélyezése nem befolyásolja a Blobok vagy módosíthatatlansági viselkedését.
+Csak az időalapú adatmegőrzési házirendek rendelkeznek olyan `allowProtectedAppendWrites` beállítással, amely lehetővé teszi, hogy új blokkokat írjon egy hozzáfűzési blobhoz a módosíthatatlansági-védelem és a megfelelőség megőrzése mellett. Ha ez a beállítás engedélyezve van, létrehozhat egy hozzáfűzési blobot közvetlenül a szabályzat által védett tárolóban, és továbbra is hozzáadhat új adatblokkokat a meglévő hozzáfűzési Blobok végéhez a *AppendBlock* API használatával. Csak új blokkok vehetők fel, és minden meglévő blokk nem módosítható és nem törölhető. Az időmegőrzés módosíthatatlansági védelme továbbra is érvényes, így megelőzhető a hozzáfűző blob törlése, amíg a tényleges megőrzési időszak el nem telik. A beállítás engedélyezése nem befolyásolja a Blobok vagy módosíthatatlansági viselkedését.
 
 Mivel ez a beállítás egy időalapú adatmegőrzési szabályzat részét képezi, a hozzáfűző Blobok továbbra is megváltoztathatatlan állapotban maradnak a *hatályos* megőrzési időtartam alatt. Mivel az új adatok hozzáfűzhető a hozzáfűző blob kezdeti létrehozása után, némi különbség van a megőrzési időszak meghatározásakor. A tényleges megőrzés a blob **utolsó módosításának** és a felhasználó által megadott megőrzési időtartamnak a különbsége. Hasonlóképpen, ha a megőrzési időtartam ki van bővítve, a nem módosítható tároló a felhasználó által megadott megőrzési időtartam legutóbbi értékét használja a tényleges megőrzési időtartam kiszámításához.
 
