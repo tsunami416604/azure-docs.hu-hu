@@ -7,17 +7,19 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: 9be758c286e072b0fbefc5f8b20b7accc4e6741b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ff77d6cad60b459b1fe6a4f83641c7aebe204dfa
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79256964"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460099"
 ---
 # <a name="manage-the-mobility-agent"></a>A Mobility-ügynök kezelése 
 
 Ha Azure Site Recoveryt használ a VMware virtuális gépek és a fizikai kiszolgálók Azure-ba történő helyreállításához, akkor a mobilitási ügynököt a kiszolgálón kell beállítania. A mobilitási ügynök koordinálja a védett számítógép, a konfigurációs kiszolgáló/kibővíthető folyamat kiszolgálója közötti kommunikációt, és kezeli az adatreplikációt. Ez a cikk összefoglalja a mobilitási ügynök telepítés utáni általános feladatait.
 
+>[!TIP]
+>Egy adott OS/Linux-disztribúcióhoz tartozó telepítő letöltéséhez tekintse meg az útmutatást [itt](vmware-physical-mobility-service-overview.md#locate-installer-files). A portálról történő automatikus frissítéshez nem kell letöltenie a telepítőt. Az [ASR automatikusan beolvassa a telepítőt a konfigurációs kiszolgálóról, és frissíti az ügynököt](#update-mobility-service-from-azure-portal).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -29,11 +31,11 @@ Ha Azure Site Recoveryt használ a VMware virtuális gépek és a fizikai kiszol
 
      ![Replikált elemek ablak](./media/vmware-azure-install-mobility-service/replicated-item-notif.png)
 
-4. Kattintson az értesítésre, majd az **ügynök frissítése**területen válassza ki azokat a gépeket, amelyeken frissíteni kívánja a mobilitási szolgáltatást. Ezt követően kattintson az **OK** gombra.
+4. Kattintson az értesítésre, majd az **ügynök frissítése**területen válassza ki azokat a gépeket, amelyeken frissíteni kívánja a mobilitási szolgáltatást. Ezután kattintson az **OK** gombra.
 
      ![Replikált elemek virtuálisgép-listája](./media/vmware-azure-install-mobility-service/update-okpng.png)
 
-5. A mobilitási szolgáltatás frissítése feladata minden kiválasztott gépen elindul.
+5. A mobilitási szolgáltatás frissítése feladata minden kiválasztott gépen elindul. A mobilitási ügynök frissítve lett a konfigurációs kiszolgáló verziójára. Ha például a konfigurációs kiszolgáló a 9,33-es verzióban található, a védett virtuális gépen lévő mobilitási ügynök a 9,33-es verzióra is frissül.
 
 ## <a name="update-mobility-service-through-powershell-script-on-windows-server"></a>Mobilitási szolgáltatás frissítése PowerShell-parancsfájllal a Windows Serveren
 

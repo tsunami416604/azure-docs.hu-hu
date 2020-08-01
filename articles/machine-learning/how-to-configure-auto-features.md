@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 05/28/2020
-ms.openlocfilehash: b01d6c36b31ef4f03522d03ca327439cfa31be8d
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 1c26164ed7a2b7c335d3977e143fcef28c8955db
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373742"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475821"
 ---
 # <a name="featurization-in-automated-machine-learning"></a>Featurization az automatizált gépi tanulásban
 
@@ -64,7 +64,7 @@ Az alábbi táblázat összefoglalja az adataira automatikusan alkalmazott techn
 | ------------- | ------------- |
 |**A nagyfokú és a variancia nélküli funkciók eldobása*** |Ezeket a funkciókat a betanítási és az ellenőrzési készletekből dobja el. Az összes hiányzó értékkel rendelkező szolgáltatásokra vonatkozik, amelyek az összes sorban azonos értékkel rendelkeznek, vagy magas fokú (például kivonatok, azonosítók vagy GUID azonosítók).|
 |**Hiányzó értékek imputált értéke*** |Numerikus funkciók esetében az érték az oszlopban szereplő értékek átlagát tartalmazza.<br/><br/>A kategorikus funkciók esetében a leggyakoribb értékkel kell eltulajdonítani a bevonást.|
-|**További funkciók előállítása*** |A DateTime funkciók esetében: év, hónap, nap, hét napja, év napja, negyedév, év hete, óra, perc, másodperc.<br/><br/>A szöveges funkciókhoz: unigrams, bigrams és Trigrams alapuló kifejezés gyakorisága. További információ arról, [hogy ez hogyan történik a bertban.](#bert-integration)|
+|**További funkciók előállítása*** |A DateTime funkciók esetében: év, hónap, nap, hét napja, év napja, negyedév, év hete, óra, perc, másodperc.<br><br> *Az előrejelzési feladatokhoz* a következő datetime-funkciók jönnek létre: ISO év, félév, naptári hónap karakterláncként, hét, hét napja karakterláncként, negyedév napja, év napja, AM/PM (0 Ha az óra délig (12 PM), 1 egyébként), AM/PM karakterlánc, óra (12hr) alapján<br/><br/>A szöveges funkciókhoz: unigrams, bigrams és Trigrams alapuló kifejezés gyakorisága. További információ arról, [hogy ez hogyan történik a bertban.](#bert-integration)|
 |**Átalakítás és kódolás***|A több egyedi értékkel rendelkező numerikus funkciók átalakítása kategorikus funkciókba.<br/><br/>A kis-és nagymértékű kategorikus funkciók esetében egy gyors kódolást használunk. A rendszer egy-egy gyors kivonatoló kódolást használ a magas fokú, kategorikus funkciókhoz.|
 |**Word-beágyazások**|A szöveges Képtulajdonság egy előképzésen alapuló modell használatával alakítja át a szöveges tokenek vektorait a mondatokra. Az egyes Word-dokumentumok beágyazási vektora a többivel együtt a dokumentum-szolgáltatás vektorának előállítására szolgál.|
 |**Cél kódolások**|A kategorikus funkciók esetében ez a lépés leképezi az egyes kategóriákat a regressziós problémák átlagos céljával, valamint az osztályok valószínűségét az egyes osztályok számára a besorolási problémák esetében. A rendszer a gyakoriságon alapuló súlyozást és a k-fold kereszt-ellenőrzést alkalmazza, hogy csökkentse a ritka adatkategóriák által okozott leképezés és zaj túlillesztését.|
@@ -163,9 +163,11 @@ text_transformations_used
 
 3. A szolgáltatás-elsöprő lépésekben a AutoML összehasonlítja a BERTt az adatok egy mintáján (a szavak és a megjelenő Word-beágyazások), és meghatározza, hogy a BERT pontos előrelépést eredményezne-e. Ha azt állapítja meg, hogy a BERT jobb, mint az alapterv, a AutoML ezt követően a BERTt használja a Text featurization, amely az optimális featurization stratégia, és a teljes adatok featurizing folytatja. Ebben az esetben a "PretrainedTextDNNTransformer" a végső modellben jelenik meg.
 
+A BERT általában hosszabb ideig fut a legtöbb más featurizers. Felgyorsulhat, ha több számítási feltételt biztosít a fürtben. A AutoML több csomóponton is terjeszti a BERTs-képzést, ha elérhetők (legfeljebb 8 csomópontot). Ezt úgy teheti meg, ha a [max_concurrent_iterations](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py) értéke nagyobb, mint 1. A jobb teljesítmény érdekében javasoljuk, hogy használjon RDMA képességekkel rendelkező SKU-ket (például "STANDARD_NC24r" vagy "STANDARD_NC24rs_V3")
+
 A AutoML jelenleg 100 nyelvet támogat, és az adatkészlet nyelvétől függően a AutoML kiválasztja a megfelelő BERT modellt. Német nyelven a német BERT modellt használjuk. Angol nyelven az angol BERT modellt használjuk. Minden más nyelven a többnyelvű BERT modellt használjuk.
 
-A következő kódban a német BERT modellt indítja el a rendszer, mivel az adatkészlet nyelve "DEU", az [ISO besorolása](https://iso639-3.sil.org/code/hbs)szerint a német nyelvhez tartozó 3 betűs nyelvkód:
+A következő kódban a német BERT modellt indítja el a rendszer, mivel az adatkészlet nyelve "DEU", az [ISO besorolása](https://iso639-3.sil.org/code/deu)szerint a német nyelvhez tartozó 3 betűs nyelvkód:
 
 ```python
 from azureml.automl.core.featurization import FeaturizationConfig

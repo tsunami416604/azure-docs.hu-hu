@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: nibaccam
 ms.topic: conceptual
 ms.date: 06/26/2020
-ms.openlocfilehash: b0badd92a3156f76f99bf1f48fca2093a2bca2f5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f95c4256f4a0a3fdf410efecf9c22d578d1963a2
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87012637"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461799"
 ---
 # <a name="optimize-data-processing-with-azure-machine-learning"></a>Az adatfeldolgozás optimalizálása Azure Machine Learning
 
@@ -51,7 +51,7 @@ Több virtuális processzor esetében ne feledje, hogy egy partíciónak kényel
 
 Ha nem ad hozzá több RAM memóriát a géphez, a következő módszerekkel csökkentheti a processzor-munkaterheléseket, és optimalizálhatja a feldolgozási időt. Ezek az ajánlások az önálló és az elosztott rendszerekre egyaránt vonatkoznak.
 
-Módszer | Description
+Módszer | Leírás
 ----|----
 Tömörítés | Az adataihoz eltérő ábrázolást használhat, így kevesebb memóriát használ, és nem befolyásolja jelentősen a számítás eredményét.<br><br>*Példa:* Ahelyett, hogy a bejegyzéseket karakterláncként, körülbelül 10 bájt vagy több bejegyzést tartalmazó sztringként tárolja, tárolja őket logikai, igaz vagy hamis értékként, amelyet 1 bájtban tárolhat.
 Dobogás | Betöltheti a memóriába az adathalmazokat (darabokat), az adathalmazok feldolgozását, vagy párhuzamosan több részhalmazt is. Ez a módszer akkor működik a legjobban, ha fel kell dolgoznia az összes adatmennyiséget, de egyszerre nem kell betölteni az összes adatmennyiséget a memóriába. <br><br>*Példa:* A teljes éves adatmennyiséget egyszerre csak egy hónappal kell betölteni és feldolgozni.
@@ -70,7 +70,7 @@ Ha az előző javaslatok nem elégek, és nem tud beolvasni egy olyan virtuális
 
 Az alábbi táblázat a kód-preferencia vagy az adatméret alapján Azure Machine Learningba integrált elosztott keretrendszerek használatát javasolja.
 
-Élmény vagy adatméret | Javaslat
+Élmény vagy adatméret | Ajánlás
 ------|------
 Ha már ismeri a`Pandas`| `Modin`vagy `Dask` dataframe
 Ha szeretné`Spark` | `PySpark`
@@ -82,4 +82,4 @@ Létrehozhat `Dask` fürtöket az Azure ml számítási fürtön a [dask-cloudpr
 ## <a name="next-steps"></a>További lépések
 
 * [Adatfeldolgozási lehetőségek Azure Machine Learningsal](concept-data-ingestion.md).
-* [Adatfeldolgozás Azure Data Factorysal](how-to-data-ingest-adf.md).
+* [Adatkészletek létrehozása és regisztrálása](how-to-create-register-datasets.md).

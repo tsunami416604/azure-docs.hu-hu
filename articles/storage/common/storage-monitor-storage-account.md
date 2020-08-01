@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: 6f53d5ec2d73c9edbb7e24c24107b2a6d6deb167
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 46ff6fb26cf568474b24d941e4a174b425bf5207
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83684677"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87474359"
 ---
 # <a name="monitor-a-storage-account-in-the-azure-portal"></a>Tárfiók monitorozása az Azure Portalon
 
@@ -139,9 +139,9 @@ A blob-, tábla-és üzenetsor-szolgáltatásokhoz tartozó olvasási, írási �
 1. Győződjön **meg**arról, hogy az **állapot** beállítás be értékre van állítva, majd válassza ki azokat a **szolgáltatásokat** , amelyeknek engedélyezni szeretné a naplózást.
 
     ![Konfigurálja a naplózást a Azure Portalban.](./media/storage-monitor-storage-account/enable-diagnostics.png)
-1. Kattintson a **Save** (Mentés) gombra.
+1. Kattintson a **Mentés** gombra.
 
-A diagnosztikai naplókat a rendszer egy *$logs* nevű blob-tárolóba menti a Storage-fiókjában. A naplófájlokat a [Microsoft Storage Explorerhoz](https://storageexplorer.com)hasonló Storage Explorerrel, vagy programozott módon, a Storage ügyféloldali kódtár vagy a PowerShell használatával tekintheti meg.
+A diagnosztikai naplókat a rendszer egy *$logs* nevű blob-tárolóba menti a Storage-fiókjában. A naplófájlokat a Storage Explorer, például a [Microsoft Azure Storage Explorer](https://storageexplorer.com)használatával tekintheti meg, vagy programozott módon a Storage ügyféloldali kódtár vagy a PowerShell használatával.
 
 További információ a $logs tároló eléréséről: [Storage Analytics naplózása](storage-analytics-logging.md).
 

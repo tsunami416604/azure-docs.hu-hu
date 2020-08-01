@@ -10,12 +10,12 @@ ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2f547aa900c1b8dbea27eceff7ac7ebc86a83e33
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d582db4bd7ef99d86602f49bc9046aadb8c3e8f0
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87019828"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460609"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>Migrálás felhőalapú hitelesítésre előkészített bevezetéssel (előzetes verzió)
 
@@ -50,6 +50,8 @@ A funkció áttekintéséhez tekintse meg ezt a "Azure Active Directory: mi a sz
 -   A szakaszos bevezetési funkció használatához globális rendszergazdának kell lennie a bérlőn.
 
 -   A *zökkenőmentes egyszeri bejelentkezés* engedélyezéséhez egy adott Active Directory erdőben tartományi rendszergazdának kell lennie.
+
+-  Ha hibrid Azure AD-t vagy Azure AD-csatlakozást telepít, frissítenie kell a Windows 10 1903 Update verzióra.
 
 
 ## <a name="supported-scenarios"></a>Támogatott esetek

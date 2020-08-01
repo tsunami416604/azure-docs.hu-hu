@@ -2,14 +2,14 @@
 title: Kimeneti adatokat az Azure Storage-ba a Batch Service API-val
 description: Megtudhatja, hogyan használhatja a Batch szolgáltatás API-ját a Batch-feladatok és a feladat-kimeneti adatok Azure Storage-ba való megőrzéséhez.
 ms.topic: how-to
-ms.date: 03/05/2019
+ms.date: 07/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: 24e9f242b3c71965984534ac986031757bbc8420
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 964ffea2ed1536dc1851aefc03c735cb08ba7ed7
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86143507"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475617"
 ---
 # <a name="persist-task-data-to-azure-storage-with-the-batch-service-api"></a>Tevékenységadatok megőrzése az Azure Storage-ban a Batch szolgáltatás API-val
 
@@ -19,6 +19,9 @@ A Batch szolgáltatás API támogatja a kimeneti adatok Azure Storage-ba való m
 
 A Batch szolgáltatás API-ját a feladat kimenetének megőrzésére használhatja, így nem kell módosítania az alkalmazást, amelyen a feladat fut. Ehelyett az ügyfélalkalmazás néhány módosításával megtarthatja a feladat kimenetét a feladatot létrehozó kódból.
 
+> [!IMPORTANT]
+> A Batch Service API-val a feladat adatai az Azure Storage-ba való megőrzése nem működik a [2018. február 1](https://github.com/Azure/Batch/blob/master/changelogs/nodeagent/CHANGELOG.md#1204). előtt létrehozott készletekkel.
+
 ## <a name="when-do-i-use-the-batch-service-api-to-persist-task-output"></a>Mikor kell használni a Batch szolgáltatás API-ját a feladat kimenetének megőrzéséhez?
 
 Azure Batch több módszert biztosít a feladat kimenetének megőrzéséhez. A Batch szolgáltatás API-ját a legmegfelelőbb módszer a következő forgatókönyvek esetén:
@@ -26,7 +29,7 @@ Azure Batch több módszert biztosít a feladat kimenetének megőrzéséhez. A 
 - Kódot szeretne írni a feladat kimenetének megtartásához az ügyfélalkalmazás alapján, a feladat által futtatott alkalmazás módosítása nélkül.
 - A virtuális gép konfigurációjával létrehozott készletekben szeretné megőrizni a Batch-feladatok és a Feladatkezelő-feladatok kimenetét.
 - Egy tetszőleges nevű Azure Storage-tárolóban szeretné megőrizni a kimenetet.
-- Meg szeretné őrizni a kimenetet egy nevű Azure Storage-tárolóba a [Batch file Conventions standard](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/batch/Microsoft.Azure.Batch.Conventions.Files)utasításnak megfelelően. 
+- Meg szeretné őrizni a kimenetet egy nevű Azure Storage-tárolóba a [Batch file Conventions standard](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/batch/Microsoft.Azure.Batch.Conventions.Files)utasításnak megfelelően.
 
 Ha a forgatókönyv eltér a fent felsorolttól, előfordulhat, hogy más megközelítést kell figyelembe vennie. A Batch szolgáltatás API-je például jelenleg nem támogatja az Azure Storage-ba történő adatfolyam-továbbítást, amíg a feladat fut. A kimenet továbbításához érdemes lehet a .NET-hez elérhető batch file Conventions könyvtárat használni. Más nyelveken a saját megoldását kell megvalósítani. A tevékenységek kimenetének megőrzésével kapcsolatos további információkért lásd: [feladatok és tevékenységek kimenetének megőrzése az Azure Storage](batch-task-output.md)-ban.
 
@@ -88,6 +91,9 @@ new CloudTask(taskId, "cmd /v:ON /c \"echo off && set && (FOR /L %i IN (1,1,1000
             uploadCondition: OutputFileUploadCondition.TaskCompletion)),
 }
 ```
+
+> [!NOTE]
+> Ha a jelen példában a Linux-t használja, ügyeljen arra, hogy a perjeleket a perjelek értékre módosítsa.
 
 ### <a name="specify-a-file-pattern-for-matching"></a>A megfelelő fájl mintázatának megadása
 
@@ -169,7 +175,7 @@ Ha a C# nyelvtől eltérő nyelvet fejleszt, saját maga is végre kell hajtania
 
 ## <a name="code-sample"></a>Kódminta
 
-A [PersistOutputs][github_persistoutputs] minta projekt a githubon lévő [Azure batch Code-minták][github_samples] egyike. Ez a Visual Studio-megoldás bemutatja, hogyan használható a Batch ügyféloldali kódtára a .NET-hez a feladat kimenetének tartós tárterületre való megőrzéséhez. A minta futtatásához kövesse az alábbi lépéseket:
+A [PersistOutputs](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/PersistOutputs) minta projekt a githubon lévő [Azure batch Code-minták](https://github.com/Azure/azure-batch-samples) egyike. Ez a Visual Studio-megoldás bemutatja, hogyan használható a Batch ügyféloldali kódtára a .NET-hez a feladat kimenetének tartós tárterületre való megőrzéséhez. A minta futtatásához kövesse az alábbi lépéseket:
 
 1. Nyissa meg a projektet a **Visual Studio 2019**-ben.
 2. Adja hozzá a Batch és a Storage- **fiók hitelesítő adatait** a **AccountSettings. Settings** Microsoft.Azure.BatCH. Samples. Common projektben.
@@ -181,8 +187,5 @@ A [PersistOutputs][github_persistoutputs] minta projekt a githubon lévő [Azure
 
 ## <a name="next-steps"></a>További lépések
 
-- További információk a feladatok kimenetének a .NET-hez készült file Conventions Library-vel való [megőrzéséről: feladatok és feladatok adatainak megőrzése az Azure Storage szolgáltatásban a .net-hez készült batch file Conventions Library használatával](batch-task-output-file-conventions.md).
-- További információ a Azure Batch kimeneti adatainak megőrzésével kapcsolatos egyéb módszerekről: [feladatok és tevékenységek kimenetének megőrzése az Azure Storage](batch-task-output.md)-ban.
-
-[github_persistoutputs]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/PersistOutputs
-[github_samples]: https://github.com/Azure/azure-batch-samples
+- Ha többet szeretne megtudni arról, hogy a rendszer hogyan őrzi meg a feladatokat a .NET-hez készült file Conventions Library használatával, tekintse meg [a feladatok és feladatok adatainak megőrzése az Azure Storage-ba a .net-hez készült batch file Conventions](batch-task-output-file-conventions.md)
+- Ha többet szeretne megtudni a Azure Batch kimeneti adatainak megőrzésével kapcsolatos egyéb megközelítésekről, tekintse meg a [feladatok és tevékenységek kimenetének megőrzése az Azure Storage](batch-task-output.md)-ba című témakört.

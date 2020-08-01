@@ -9,12 +9,12 @@ ms.date: 07/16/2020
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 61c2b2b8bce676bd7032eb65fcf48b5ad07092ad
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d45b792c655820b771ba956721e9169750c39fbd
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87070668"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475413"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Azure Storage-tűzfalak és virtuális hálózatok konfigurálása
 
@@ -120,7 +120,7 @@ A Storage-fiókokat úgy is konfigurálhatja, hogy csak bizonyos alhálózatokr�
 
 Engedélyezzen egy [szolgáltatási végpontot](/azure/virtual-network/virtual-network-service-endpoints-overview) az Azure Storage-hoz a VNet belül. A szolgáltatási végpont az Azure Storage szolgáltatás optimális elérési útján irányítja át a forgalmat a VNet. Az alhálózat és a virtuális hálózat identitásait is továbbítjuk az egyes kérésekhez. A rendszergazdák ezután konfigurálhatják a Storage-fiók hálózati szabályait, amelyek lehetővé teszik a kérelmek fogadását egy adott alhálózatról egy VNet. Azok az ügyfelek, akik ezen hálózati szabályokon keresztül kaptak hozzáférést, továbbra is meg kell felelniük a Storage-fiók engedélyezési követelményeinek az adat eléréséhez.
 
-Az egyes Storage-fiókok akár 100 virtuális hálózati szabályt is támogatnak, amelyek az [IP-hálózati szabályokkal](#grant-access-from-an-internet-ip-range)kombinálhatók.
+Az egyes Storage-fiókok akár 200 virtuális hálózati szabályt is támogatnak, amelyek az [IP-hálózati szabályokkal](#grant-access-from-an-internet-ip-range)kombinálhatók.
 
 ### <a name="available-virtual-network-regions"></a>Elérhető virtuális hálózati régiók
 

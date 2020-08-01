@@ -3,16 +3,16 @@ title: Exchange-üzenetek Azure Service Bus
 description: Automatikus feladatok és munkafolyamatok létrehozása, amelyek üzeneteket küldenek és fogadnak a Azure Logic Apps Azure Service Bus használatával
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: logicappspm
 ms.topic: conceptual
-ms.date: 09/19/2019
+ms.date: 07/31/2020
 tags: connectors
-ms.openlocfilehash: 870ec6997b0abf5afc1c1bfa788bbca18c08ead7
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 768186d4b1cf9ac62d4ffdb0af8fdb3df04e9b19
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283996"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461608"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>Exchange-üzenetek a felhőben Azure Logic Apps és Azure Service Bus használatával
 
@@ -31,7 +31,7 @@ Olyan eseményindítókat is használhat, amelyek Service Bus válaszokat kapnak
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/).
+* Azure-fiók és -előfizetés. Ha nem rendelkezik Azure-előfizetéssel, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/).
 
 * Egy Service Bus névtér és üzenetküldési entitás, például egy üzenetsor. Ezeknek az elemeknek és a logikai alkalmazásnak ugyanazt az Azure-előfizetést kell használnia. Ha nem rendelkezik ezekkel az elemekkel, megtudhatja, hogyan [hozhatja létre a Service Bus névteret és a várólistát](../service-bus-messaging/service-bus-create-namespace-portal.md).
 
@@ -45,7 +45,7 @@ Olyan eseményindítókat is használhat, amelyek Service Bus válaszokat kapnak
 
 Győződjön meg arról, hogy a logikai alkalmazás rendelkezik a Service Bus névtér eléréséhez szükséges engedélyekkel.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. A [Azure Portal](https://portal.azure.com)jelentkezzen be az Azure-fiókjával.
 
 1. Lépjen a Service Bus *névtérhez*. A névtér lap **Beállítások**területén válassza a **megosztott elérési házirendek**elemet. A **jogcímek**területen győződjön meg arról, hogy rendelkezik az adott névtérhez **tartozó jogosultságokkal** .
 
@@ -54,7 +54,7 @@ Győződjön meg arról, hogy a logikai alkalmazás rendelkezik a Service Bus n�
 1. A Service Bus névtérhez tartozó kapcsolatok karakterláncának beolvasása. Erre a karakterláncra akkor van szükség, amikor megadja a kapcsolódási adatokat a logikai alkalmazásban.
 
    1. A **megosztott hozzáférési házirendek** panelen válassza a **RootManageSharedAccessKey**lehetőséget.
-   
+
    1. Az elsődleges kapcsolódási karakterlánc mellett kattintson a Másolás gombra. Mentse a kapcsolatok karakterláncát későbbi használatra.
 
       ![Service Bus névtérbeli kapcsolatok karakterláncának másolása](./media/connectors-create-api-azure-service-bus/find-service-bus-connection-string.png)
@@ -171,4 +171,3 @@ Az eseményindítókkal, műveletekkel és korlátokkal kapcsolatos egyéb techn
 ## <a name="next-steps"></a>További lépések
 
 * További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése
-

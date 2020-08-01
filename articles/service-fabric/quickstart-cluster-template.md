@@ -6,13 +6,13 @@ ms.service: service-fabric
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: edoyle
-ms.date: 04/24/2020
-ms.openlocfilehash: 70b5387e5e58bd30aa61feefc1bf4e5e98af9b1d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.date: 07/29/2020
+ms.openlocfilehash: 359b527733ee8eebf7e1e7d12c40a0c74ec1c9bd
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259345"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460303"
 ---
 # <a name="quickstart-create-a-service-fabric-cluster-using-arm-template"></a>Rövid útmutató: Service Fabric-fürt létrehozása ARM-sablonnal
 
@@ -22,7 +22,7 @@ Az Azure Service Fabric egy elosztott rendszerplatform, amely megkönnyíti a sk
 
 Ez az öt csomópontos Windows-fürt egy önaláírt tanúsítvánnyal van ellátva, ezért csak az éles számítási feladatokhoz (nem pedig éles számítási feladatokhoz) készült. A sablon üzembe helyezéséhez Azure PowerShell fogunk használni. A Azure PowerShellon kívül használhatja a Azure Portal, az Azure CLI és a REST API is. További információ az üzembe helyezési módszerekről: [sablonok üzembe helyezése](../azure-resource-manager/templates/deploy-portal.md).
 
-Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonok használatát, válassza az **üzembe helyezés az Azure** -ban gombot. A sablon megnyílik a Azure Portalban.
+Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonokat, kattintson az **Üzembe helyezés az Azure-ban** gombra. A sablon az Azure Portalon fog megnyílni.
 
 [![Üzembe helyezés az Azure-ban](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fservice-fabric-secure-cluster-5-node-1-nodetype%2Fazuredeploy.json)
 
@@ -42,7 +42,7 @@ A rövid útmutató elvégzéséhez a következőket kell tennie:
 
 A [Azure Resource Manager Gyorsindítás sablonok](https://github.com/Azure/azure-quickstart-templates) tárházának klónozása vagy letöltése. Másik lehetőségként másolja le helyileg a következő fájlokat, amelyeket a *Service-Fabric-Secure-cluster-5-Node-1-NodeType* mappából fogunk használni:
 
-* [New-ServiceFabricClusterCertificate.ps1](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/service-fabric-secure-cluster-5-node-1-nodetype/New-ServiceFabricClusterCertificate.ps1)
+* [New-ServiceFabricClusterCertificate.ps1](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/service-fabric-secure-cluster-5-node-1-nodetype/scripts/New-ServiceFabricClusterCertificate.ps1)
 * [azuredeploy.jsbekapcsolva](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/service-fabric-secure-cluster-5-node-1-nodetype/azuredeploy.json)
 * [azuredeploy.parameters.jsbekapcsolva](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/service-fabric-secure-cluster-5-node-1-nodetype/azuredeploy.parameters.json)
 
@@ -68,10 +68,10 @@ $keyVaultName = "SFQuickstartKV"
 New-AzResourceGroup -Name $resourceGroupName -Location SouthCentralUS
 
 # Create a Key Vault enabled for deployment
-New-AzKeyVault -VaultName $KeyVaultName -ResourceGroupName $resourceGroupName -Location SouthCentralUS -EnabledForDeployment
+New-AzKeyVault -VaultName $keyVaultName -ResourceGroupName $resourceGroupName -Location SouthCentralUS -EnabledForDeployment
 
 # Generate a certificate and upload it to Key Vault
-.\New-ServiceFabricClusterCertificate.ps1
+.\scripts\New-ServiceFabricClusterCertificate.ps1
 ```
 
 A szkript felszólítja az alábbiakra (Ügyeljen rá, hogy módosítsa a *CertDNSName* és a *KeyVaultName* az alábbi példák alapján):
@@ -91,7 +91,7 @@ $certThumbprint = "<Certificate Thumbprint>"
 
 ## <a name="review-the-template"></a>A sablon áttekintése
 
-Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablonjaiból](https://azure.microsoft.com/resources/templates/service-fabric-secure-cluster-5-node-1-nodetype/)származik. A cikk sablonja túl hosszú ahhoz, hogy megjelenjen itt. A sablon megtekintéséhez tekintse meg a [azuredeploy.js](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/service-fabric-secure-cluster-5-node-1-nodetype/azuredeploy.json) fájlt.
+Az ebben a gyorsútmutatóban használt sablon az [Azure-gyorssablonok](https://azure.microsoft.com/resources/templates/service-fabric-secure-cluster-5-node-1-nodetype/) közül származik. A cikk sablonja túl hosszú ahhoz, hogy megjelenjen itt. A sablon megtekintéséhez tekintse meg a [azuredeploy.js](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/service-fabric-secure-cluster-5-node-1-nodetype/azuredeploy.json) fájlt.
 
 Több Azure-erőforrás van definiálva a sablonban:
 
@@ -180,7 +180,19 @@ Remove-AzResourceGroup -Name $resourceGroupName
 Write-Host "Press [ENTER] to continue..."
 ```
 
-## <a name="next-steps"></a>Következő lépések
+Ezután távolítsa el a fürt tanúsítványát a helyi tárolóból. Telepített tanúsítványok listázása a fürt ujjlenyomatának megkereséséhez:
+
+```powershell
+Get-ChildItem Cert:\CurrentUser\My\
+```
+
+Ezután távolítsa el a tanúsítványt:
+
+```powershell
+Get-ChildItem Cert:\CurrentUser\My\{THUMBPRINT} | Remove-Item
+```
+
+## <a name="next-steps"></a>További lépések
 
 Ha szeretné megtudni, hogyan hozhat létre egyéni Azure Service Fabric-fürtöt, tekintse meg a következőt:
 

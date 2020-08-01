@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 04/24/2020
-ms.openlocfilehash: b78364cef6bfd6cf91e6edf81fd57fa5912125db
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: be04b690add70468335ac694e3be54fa55a94249
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260680"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475651"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-4-cluster"></a>Oktatóanyag: Azure Red Hat OpenShift 4 fürt létrehozása
 
@@ -33,42 +33,12 @@ Azure Red Hat OpenShift-fürt létrehozásához ellenőrizze az alábbi engedél
 |**Felhasználói hozzáférés adminisztrátora**|X|X| |
 |**Közreműködő**|X|X|X|
 
-### <a name="install-the-az-aro-extension"></a>A `az aro` bővítmény telepítése
-A `az aro` bővítmény lehetővé teszi, hogy közvetlenül a parancssorból az Azure CLI használatával hozza létre, elérje és törölje az Azure Red Hat OpenShift-fürtöket.
-
-A bővítmény telepítéséhez futtassa a következő parancsot `az aro` .
-
-```azurecli-interactive
-az extension add -n aro --index https://az.aroapp.io/stable
-```
-
-Ha már telepítette a bővítményt, a következő parancs futtatásával frissítheti azt.
-
-```azurecli-interactive
-az extension update -n aro --index https://az.aroapp.io/stable
-```
-
 ### <a name="register-the-resource-provider"></a>Az erőforrás-szolgáltató regisztrálása
 
 Ezután regisztrálnia kell az `Microsoft.RedHatOpenShift` erőforrás-szolgáltatót az előfizetésében.
 
 ```azurecli-interactive
 az provider register -n Microsoft.RedHatOpenShift --wait
-```
-
-Ellenőrizze, hogy a bővítmény regisztrálva van-e.
-
-```azurecli-interactive
-az -v
-```
-
-  Az alábbihoz hasonló kimenetet kell kapnia.
-
-```output
-...
-Extensions:
-aro                                1.0.0
-...
 ```
 
 ### <a name="get-a-red-hat-pull-secret-optional"></a>Red Hat pull-titok beolvasása (nem kötelező)

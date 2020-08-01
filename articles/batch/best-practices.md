@@ -1,14 +1,14 @@
 ---
 title: Ajánlott eljárások
 description: Ismerje meg az ajánlott eljárásokat és hasznos tippeket a Azure Batch megoldás fejlesztéséhez.
-ms.date: 07/14/2020
+ms.date: 07/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 32610f54cc41bd5d7feb965b9a82903acc23c33c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 535deebd0ba683d9387408ad081d165a504c91d1
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86497777"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87474903"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch ajánlott eljárások
 
@@ -56,6 +56,10 @@ A készlet-foglalási hibák az első kiosztáskor vagy az azt követő átmére
 Lehetséges, hogy a Batch-készletek az Azure-ban leállási eseményeket tapasztalnak. Ne feledje, hogy a Batch-forgatókönyvek vagy munkafolyamatok tervezésekor és fejlesztésekor vegye figyelembe a problémát.
 
 Abban az esetben, ha egy csomópont meghibásodik, a Batch automatikusan megkísérli helyreállítani ezeket a számítási csomópontokat az Ön nevében. Ez a helyreállított csomóponton futó feladatok újraütemezését eredményezheti. A megszakított feladatokkal kapcsolatos további tudnivalókért tekintse meg [az újrapróbálkozások tervezése](#design-for-retries-and-re-execution) című témakört.
+
+### <a name="third-party-images"></a>Harmadik féltől származó rendszerképek
+
+A készleteket az Azure Marketplace-en közzétett harmadik féltől származó rendszerképek használatával hozhatja létre. A felhasználói előfizetés módú batch-fiókok esetében előfordulhat, hogy a "kiosztási hiba a piactér-vásárlási jogosultság ellenőrzése miatt" hibaüzenet jelenik meg, ha a készletet bizonyos harmadik féltől származó rendszerképekkel hozza létre. A hiba megoldásához fogadja el a rendszerkép közzétevője által beállított feltételeket. Ezt az [Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.marketplaceordering/set-azurermmarketplaceterms?view=azurermps-6.13.0) vagy az [Azure CLI](https://docs.microsoft.com/cli/azure/vm/image/terms?view=azure-cli-latest)használatával teheti meg.
 
 ### <a name="azure-region-dependency"></a>Azure region-függőség
 

@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 07/28/2020
-ms.openlocfilehash: 904b3ce1c2d05d713ee1ae99662148217f2a358e
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: d0fd11ce5b25b8796b07176a4ba83091a8f7cc0b
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337823"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461017"
 ---
 # <a name="export-data-module"></a>Adatmodul exportálása
 
@@ -26,8 +26,8 @@ Ez a modul támogatja az adatexportálást a következő felhőalapú adatszolg�
 
 - Azure Blob-tároló
 - Azure-fájlmegosztás
-- Azure Data Lake
-- Azure Data Lake Gen2
+- 1. generációs Azure Data Lake Storage
+- 2. generációs Azure Data Lake Storage
 - Azure SQL-adatbázis
 
 Az adatexportálás előtt először regisztrálnia kell egy adattárt a Azure Machine Learning munkaterületen. További információ: [hozzáférés az Azure Storage-szolgáltatásokban tárolt adatokhoz](../how-to-access-data.md).
@@ -43,7 +43,7 @@ Az adatexportálás előtt először regisztrálnia kell egy adattárt a Azure M
 1. Az **adattár**mezőben válasszon ki egy meglévő adattárt a legördülő listából. Létrehozhat egy új adattárt is. Tekintse át, hogyan [érheti el az Azure Storage-szolgáltatásokban tárolt Access-adatbázisokat](../how-to-access-data.md).
 
     > [!NOTE]
-    > Bizonyos adattípusok egy másik adattípusként megadott SQL Database-oszlopba való exportálása nem támogatott.
+    > Bizonyos adattípusok egy másik adattípusként megadott SQL Database-oszlopba való exportálása nem támogatott. A célként megadott táblának nem kell elsőként létezni.
 
 1. A **kimenet újragenerált**jelölőnégyzete határozza meg, hogy végrehajtja-e a modult a kimenet újralétrehozásához a futási időben. 
 
@@ -58,6 +58,6 @@ Az adatexportálás előtt először regisztrálnia kell egy adattárt a Azure M
  
 1. A folyamat elküldése.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

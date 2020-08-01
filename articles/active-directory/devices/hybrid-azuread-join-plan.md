@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 16203ab972f6117cec41e43ee5dd89cda7e95ede
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4c4b9ae0ed682d6b34099c8eff941f1d0b6cabad
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87025695"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461765"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Útmutató: a hibrid Azure Active Directory JOIN implementációjának megtervezése
 
@@ -122,6 +122,9 @@ A felügyelt környezetek a [jelszó kivonatos szinkronizálásával (PHS)](/azu
 
 Ezekhez a forgatókönyvekhez nem szükséges összevonási kiszolgálót konfigurálni a hitelesítéshez.
 
+> [!NOTE]
+> A lépcsőzetes bevezetést [használó felhőalapú hitelesítés](/hybrid/how-to-connect-staged-rollout) csak a Windows 10 1903 frissítésének megkezdése után támogatott
+
 ### <a name="federated-environment"></a>Összevont környezet
 
 Az összevont környezetnek rendelkeznie kell egy olyan identitás-szolgáltatóval, amely a következő követelményeket támogatja. Ha Active Directory összevonási szolgáltatások (AD FS) (AD FS) használatával összevont környezettel rendelkezik, az alábbi követelmények már támogatottak.
@@ -159,7 +162,7 @@ Előfordulhat, hogy a helyszíni AD-felhasználók UPN-felhasználónevei eltér
 
 Az alábbi táblázat részletesen ismerteti ezen helyszíni AD UPN-ket a Windows 10 hibrid Azure AD JOIN szolgáltatásban
 
-| A helyszíni AD UPN típusa | Alkalmazási tartomány típusa | Windows 10 verzió | Description |
+| A helyszíni AD UPN típusa | Alkalmazási tartomány típusa | Windows 10 verzió | Leírás |
 | ----- | ----- | ----- | ----- |
 | Irányítható | Összevont | 1703-es kiadásból | Általánosan elérhető |
 | Nem irányítható | Összevont | 1803-es kiadásból | Általánosan elérhető |

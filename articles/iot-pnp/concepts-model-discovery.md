@@ -1,83 +1,48 @@
 ---
-title: A IoT megvalósítása Plug and Play előnézeti modell felderítése | Microsoft Docs
-description: Megoldás-szerkesztőként megismerheti, hogyan valósítható meg a IoT Plug and Play modell felderítése a megoldásban.
-author: prashmo
-ms.author: prashmo
+title: IoT-Plug and Play modellek használata a megoldásban | Microsoft Docs
+description: Megoldás-szerkesztőként megismerheti, hogyan használhatja a IoT Plug and Play modelleket a IoT-megoldásban.
+author: arunmannengal
+ms.author: arunmann
 ms.date: 07/23/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 364b85a8ead09858b97d5d7e6ca8c130b9960b2c
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 4cdd6f63c9e5e717a533b88702b2886387fe3e39
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337381"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475243"
 ---
-# <a name="implement-iot-plug-and-play-preview-model-discovery-in-an-iot-solution"></a>A IoT Plug and Play előnézeti modell felderítésének implementálása egy IoT-megoldásban
+# <a name="use-iot-plug-and-play-models-in-an-iot-solution"></a>IoT-Plug and Play modellek használata IoT-megoldásokban
 
-Ez a cikk azt ismerteti, hogyan lehet megvalósítani a IoT Plug and Play előnézeti modell felderítését egy IoT-megoldásban. A modell felderítése a következőket ismerteti:
+Ez a cikk azt ismerteti, hogyan lehet egy IoT-megoldásban azonosítani egy IoT Plug and Play eszköz modell-AZONOSÍTÓját, majd beolvasni a modell definícióját.
 
-- IoT Plug and Play-eszközök regisztrálják a modell AZONOSÍTÓját.
-- Az IoT-megoldás az eszköz által megvalósított interfészeket kérdezi le.
+Egy IoT-megoldásnak két széles kategóriája van:
 
-A IoT-megoldásnak két nagy kategóriája van:
+- Egy *erre a célra készült megoldás* a IoT Plug and Play eszközök ismert modelljeivel működik, amelyek a megoldáshoz fognak csatlakozni. Ezeket a modelleket a megoldás fejlesztésekor használhatja.
 
-- A *IoT-megoldás* egy ismert IoT Plug and Play-modellel működik.
+- A *modellen alapuló* megoldás bármilyen IoT Plug and Play eszköz modelljét képes működni. A modellen alapuló megoldás létrehozása összetettebb, de az előnye, hogy a megoldás minden olyan eszközzel működik, amelyet később is hozzáadhat. A modellen alapuló IoT-megoldások lekérik a modelleket, és az eszköz által megvalósított telemetria, tulajdonságokat és parancsokat határozzák meg.
 
-- A *modellen alapuló IoT-megoldások* bármilyen IoT Plug and Play eszközzel működhetnek. A modellen alapuló megoldás létrehozása összetettebb, de az előnye, hogy a megoldás a jövőben hozzáadott eszközökkel működik.
+IoT Plug and Play-modell használatához IoT-megoldás:
 
-    A modellre épülő IoT-megoldás létrehozásához létre kell hoznia egy logikát a IoT Plug and Play felületi primitívek esetében: telemetria, Properties és parancsok. A megoldás logikája olyan eszközt képvisel, amely több telemetria, tulajdonságot és parancs-képességet egyesít.
+1. A megoldáshoz csatlakoztatott IoT Plug and Play eszköz által megvalósított modell AZONOSÍTÓját azonosítja.
 
-Ez a cikk bemutatja, hogyan valósítható meg a modell felderítése mindkét típusú megoldásban.
+1. A modell AZONOSÍTÓjának használatával kéri le a csatlakoztatott eszköz modell-definícióját egy modell-adattárból vagy egy egyéni tárolóból.
 
-## <a name="model-discovery"></a>Modellfelderítés
+## <a name="identify-model-id"></a>Modell AZONOSÍTÓjának azonosítása
 
-Az eszköz által megvalósított modell felderítéséhez a megoldás az eseményvezérelt felderítés vagy a Twin-based Discovery használatával tudja lekérni a modell AZONOSÍTÓját:
+Amikor egy IoT Plug and Play-eszköz csatlakozik a IoT Hubhoz, regisztrálja az általa megvalósított modell AZONOSÍTÓját a IoT Hub használatával.
 
-### <a name="event-based-discovery"></a>Eseményvezérelt felderítés
+IoT Hub értesíti a megoldást az eszköz modell-azonosítójával az eszköz kapcsolati folyamatának részeként.
 
-Amikor egy IoT Plug and Play eszköz csatlakozik IoT Hubhoz, regisztrálja az általa megvalósított modellt. Ez a regisztráció egy [digitális kettős változási eseményről](concepts-digital-twin.md#digital-twin-change-events) szóló értesítést eredményez. Ha meg szeretné tudni, hogyan engedélyezheti az útválasztást a digitális kettős események esetében, tekintse meg az [eszközről a felhőbe irányuló üzenetek különböző végpontokra való küldéséhez IoT hub üzenet-útválasztás használata](../iot-hub/iot-hub-devguide-messages-d2c.md#non-telemetry-events)témakört
+A megoldás a következő három módszer egyikének használatával kérheti le a IoT Plug and Play eszköz modell-AZONOSÍTÓját:
 
-A megoldás az alábbi kódrészletben látható eseményt követve megismerheti a IoT Plug and Play eszközt, amely a csatlakozáshoz és a modell AZONOSÍTÓjának lekéréséhez használható:
+### <a name="get-device-twin-api"></a>Eszköz – Twin API beszerzése
 
-```json
-iothub-connection-device-id:sample-device
-iothub-enqueuedtime:7/22/2020 8:02:27 PM
-iothub-message-source:digitalTwinChangeEvents
-correlation-id:100f322dc2c5
-content-type:application/json-patch+json
-content-encoding:utf-8
-[
-  {
-    "op": "replace",
-    "path": "/$metadata/$model",
-    "value": "dtmi:com:example:TemperatureController;1"
-  }
-]
-```
+A megoldás a IoT Plug and Play eszköz modell-AZONOSÍTÓjának lekéréséhez használhatja az [eszköz Twin](https://docs.microsoft.com/rest/api/iothub/service/twin/getdevicetwin) API-t.
 
-Ez az esemény akkor aktiválódik, amikor az eszköz modell-AZONOSÍTÓját hozzáadja vagy frissíti.
-
-### <a name="twin-based-discovery"></a>Twin-alapú felderítés
-
-Ha a megoldás egy adott eszköz képességeiről szeretne többet megtudni, használhatja a [digitális Twin](https://docs.microsoft.com/rest/api/iothub/service/digitaltwin/getdigitaltwin) API lekérése lehetőséget az információk lekéréséhez.
-
-A következő digitális kettős kódrészletben `$metadata.$model` a IoT Plug and Play eszköz modell-azonosítóját tartalmazza:
-
-```json
-{
-    "$dtId": "sample-device",
-    "$metadata": {
-        "$model": "dtmi:com:example:TemperatureController;1",
-        "serialNumber": {
-            "lastUpdateTime": "2020-07-17T06:10:31.9609233Z"
-        }
-    }
-}
-```
-
-A megoldás a **Get Twin** paranccsal is lekérheti a modell azonosítóját az eszköz Twin-ből, ahogy az a következő kódrészletben látható:
+A következő eszköz Twin Response kódrészletben `modelId` a IoT Plug and Play eszköz modell-azonosítóját tartalmazza:
 
 ```json
 {
@@ -101,16 +66,79 @@ A megoldás a **Get Twin** paranccsal is lekérheti a modell azonosítóját az 
 }
 ```
 
-## <a name="model-resolution"></a>Modell feloldása
+### <a name="get-digital-twin-api"></a>Digitális Twin API beszerzése
 
-A megoldás a modell feloldásával fér hozzá a modell AZONOSÍTÓját alkotó interfészekhez. 
+A megoldás az IoT Plug and Play eszköz által megvalósított modell AZONOSÍTÓjának lekéréséhez a [Digital Twin](https://docs.microsoft.com/rest/api/iothub/service/digitaltwin/getdigitaltwin) API beolvasása lehetőséget használhatja.
 
-- A megoldások úgy is dönthetnek, hogy egy helyi mappában található fájlként tárolják ezeket a csatolókat. 
-- A megoldások használhatják a [modell tárházát](concepts-model-repository.md).
+A következő digitális kettős válasz kódrészletben `$metadata.$model` a IoT Plug and Play eszköz modell-azonosítóját tartalmazza:
 
-## <a name="next-steps"></a>Következő lépések
+```json
+{
+    "$dtId": "sample-device",
+    "$metadata": {
+        "$model": "dtmi:com:example:TemperatureController;1",
+        "serialNumber": {
+            "lastUpdateTime": "2020-07-17T06:10:31.9609233Z"
+        }
+    }
+}
+```
 
-Most, hogy megismerte a Model Discovery egy IoT-megoldását, további információkat tudhat meg az [Azure IoT platformról](overview-iot-plug-and-play.md) a megoldás más képességeinek kihasználásához.
+### <a name="digital-twin-change-event-notification"></a>Digitális kettős változási eseményről szóló értesítés
+
+Az eszköz kapcsolata egy [digitális kettős változási eseményről](concepts-digital-twin.md#digital-twin-change-events) szóló értesítést eredményez. A megoldásnak erre az eseményre vonatkozó értesítésre kell előfizetnie. Ha meg szeretné tudni, hogyan engedélyezheti az útválasztást a digitális kettős események esetében, tekintse meg az [eszközről a felhőbe irányuló üzenetek különböző végpontokra való küldéséhez IoT hub üzenet-útválasztás használata](../iot-hub/iot-hub-devguide-messages-d2c.md#non-telemetry-events)témakört
+
+A megoldás az alábbi kódrészletben látható eseményt követve megismerheti a IoT Plug and Play eszközt, amely a csatlakozáshoz és a modell AZONOSÍTÓjának lekéréséhez használható:
+
+```json
+iothub-connection-device-id:sample-device
+iothub-enqueuedtime:7/22/2020 8:02:27 PM
+iothub-message-source:digitalTwinChangeEvents
+correlation-id:100f322dc2c5
+content-type:application/json-patch+json
+content-encoding:utf-8
+[
+  {
+    "op": "replace",
+    "path": "/$metadata/$model",
+    "value": "dtmi:com:example:TemperatureController;1"
+  }
+]
+```
+
+## <a name="retrieve-a-model-definition"></a>Modell definíciójának beolvasása
+
+Egy megoldás a fentebb azonosított modell-azonosítót használja a megfelelő modell definíciójának lekéréséhez.
+
+A megoldás a következő lehetőségek egyikének használatával kérheti le a modell definícióját:
+
+### <a name="model-repository"></a>Modelladattár
+
+A megoldások a [modell tárházát](concepts-model-repository.md) használhatják modellek beolvasására. Az eszközök építői vagy a megoldás-építők előre fel kell tölteniük a modelljeiket a tárházba, így a megoldás lekérheti őket.
+
+Miután azonosította a modell AZONOSÍTÓját egy új eszköz kapcsolataihoz, kövesse az alábbi lépéseket:
+
+1. Kérje le a modell definícióját a modell-adattárból a modell AZONOSÍTÓjának használatával. További információ: [Get models (modellek beolvasása](https://docs.microsoft.com/rest/api/iothub/digitaltwinmodelrepositoryservice/getmodelasync/getmodelasync)).
+
+1. A csatlakoztatott eszköz modell-definíciójának használatával enumerálhatja az eszköz képességeit.
+
+1. Az eszköz enumerálási képességeinek használatával lehetővé teheti a felhasználók számára [az eszköz interakcióját](quickstart-service-node.md).
+
+### <a name="custom-store"></a>Egyéni tároló
+
+A megoldások tárolhatják ezeket a modell-definíciókat egy helyi fájlrendszerben, egy nyilvános fájlkiszolgálón, vagy egyéni implementációt is használhatnak.
+
+Miután azonosította a modell AZONOSÍTÓját egy új eszköz kapcsolataihoz, kövesse az alábbi lépéseket:
+
+1. Kérje le a modell definícióját a modell AZONOSÍTÓjának használatával az egyéni tárolóból.
+
+1. A csatlakoztatott eszköz modell-definíciójának használatával enumerálhatja az eszköz képességeit. 
+
+1. Az eszköz enumerálási képességeinek használatával lehetővé teheti a felhasználók számára [az eszköz interakcióját](quickstart-service-node.md).  
+
+## <a name="next-steps"></a>További lépések
+
+Most, hogy megismerte, hogyan integrálhatja a IoT Plug and Play modelleket egy IoT-megoldásba, néhány javasolt következő lépés:
 
 - [Kommunikáció egy eszközzel a megoldásból](quickstart-service-node.md)
 - [IoT Digital Twin REST API](https://docs.microsoft.com/rest/api/iothub/service/digitaltwin)

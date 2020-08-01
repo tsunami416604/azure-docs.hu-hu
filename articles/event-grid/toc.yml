@@ -93,7 +93,7 @@
     - name: Resource Manager-sablonok
       href: template-samples.md
     - name: Kódminták
-      href: 'https://docs.microsoft.com/samples/browse/?term=Event%20Grid'
+      href: /samples/browse/?term=Event+Grid
     - name: Az Azure Policy beépített elemei
       href: ./policy-samples.md
 - name: Alapelvek

@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 05/11/2020
 ms.author: anfeldma
-ms.openlocfilehash: 679f3113cddbfe13370483f2678154f4dd1f8ab2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b2c846298fecdc771dd5d9831a558b99c74b2737
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392063"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461068"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET Change feed Processor SDK: letöltési és kibocsátási megjegyzések
 
@@ -48,7 +48,11 @@ ms.locfileid: "85392063"
 
 ### <a name="v2-builds"></a>v2 – buildek
 
-### <a name="230"></a><a name="2.3.0"></a>2.3.0
+### <a name="231"></a><a name="2.3.1"/>2.3.1
+* Kijavítva egy esetet `FeedProcessing.ChangeFeedObserverCloseReason.Unknown` , ha a Bezárás oka `FeedProcessing.IChangeFeedObserver.CloseAsync` nem található, vagy ha a cél replika nem naprakész az olvasási munkamenettel. Ezekben az esetekben `FeedProcessing.ChangeFeedObserverCloseReason.ResourceGone` és a `FeedProcessing.ChangeFeedObserverCloseReason.ReadSessionNotAvailable` Bezárás oka már használatban van.
+* Új bezárási ok lett hozzáadva, `FeedProcessing.ChangeFeedObserverCloseReason.ReadSessionNotAvailable` amely a változási hírcsatorna megfigyelője bezárására szolgál, ha a célként megadott replika nem naprakész az olvasási munkamenettel.
+
+### <a name="230"></a><a name="2.3.0"/>2.3.0
 * Új metódus és a `ChangeFeedProcessorBuilder.WithCheckpointPartitionProcessorFactory` hozzá tartozó nyilvános felület lett hozzáadva `ICheckpointPartitionProcessorFactory` . Ez lehetővé teszi az interfész megvalósítását a `IPartitionProcessor` beépített ellenőrzőpont-mechanizmus használatára. Az új gyár hasonló a meglévőhöz `IPartitionProcessorFactory` , azzal a különbséggel, hogy a `Create` metódus is a `ILeaseCheckpointer` paramétert is alkalmazza.
 * Ugyanahhoz a példányhoz csak a két módszer egyikét lehet `ChangeFeedProcessorBuilder.WithPartitionProcessorFactory` `ChangeFeedProcessorBuilder.WithCheckpointPartitionProcessorFactory` használni `ChangeFeedProcessorBuilder` .
 
@@ -178,16 +182,16 @@ ms.locfileid: "85392063"
 
 ## <a name="release--retirement-dates"></a>Kiadási & nyugdíjazási dátumok
 
-A Microsoft legalább **12 hónappal** korábban értesítést küld az SDK kivonásáról, hogy zökkenőmentes legyen az áttérés egy újabb/támogatott verzióra.
+A Microsoft legalább **12 hónappal** korábban értesítést küld az SDK kivonásáról, hogy zökkenőmentes legyen az áttérés egy újabb/támogatott verzióra. Az új funkciók és funkciók és optimalizálás csak a jelenlegi SDK-hoz adódik hozzá, ezért azt javasoljuk, hogy a lehető leghamarabb frissítsen a legújabb SDK-verzióra.
 
-Az új funkciók és funkciók és optimalizálás csak a jelenlegi SDK-hoz adódik hozzá, ezért azt javasoljuk, hogy a lehető leghamarabb frissítsen a legújabb SDK-verzióra. 
-
-A szolgáltatás elutasítja a kivont SDK-val Cosmos DBre irányuló kéréseket.
+> [!WARNING]
+> 2022. augusztus 31-ig a Azure Cosmos DB többé nem javít, új funkciókat ad hozzá, és támogatást nyújt a Azure Cosmos DB .NET vagy az SQL API .NET Core SDKjának 1. x verziójához. Ha nem szeretné frissíteni, az SDK 1. x verziójában küldött kérelmeket a Azure Cosmos DB szolgáltatás továbbra is kiszolgálja.
 
 <br/>
 
 | Verzió | Kiadás dátuma | Kivonás dátuma |
 | --- | --- | --- |
+| [2.3.1](#2.3.1) |Július 30., 2020 |--- |
 | [2.3.0](#2.3.0) |2020. április 2. |--- |
 | [2.2.8](#2.2.8) |Október 28., 2019 |--- |
 | [2.2.7](#2.2.7) |Május 14., 2019 |--- |
@@ -209,6 +213,6 @@ A szolgáltatás elutasítja a kivont SDK-val Cosmos DBre irányuló kéréseket
 
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 További információ a Cosmos DBről: [Microsoft Azure Cosmos db](https://azure.microsoft.com/services/cosmos-db/) szolgáltatás lapja.

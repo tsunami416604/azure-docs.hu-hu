@@ -7,12 +7,12 @@ ms.service: data-lake-analytics
 ms.topic: troubleshooting
 ms.workload: big-data
 ms.date: 10/10/2019
-ms.openlocfilehash: 54524b0528f94ca9386c2d0d45ba4393c965fa88
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 39b4a3bc5e5f70a5699f4fd84ec86dc61cf21483
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87128811"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475260"
 ---
 # <a name="learn-how-to-troubleshoot-u-sql-runtime-failures-due-to-runtime-changes"></a>Ismerje meg, hogy miként lehet elhárítani a futásidejű változások miatti U-SQL futásidejű hibákat
 
@@ -46,11 +46,6 @@ release_YYYYMMDD_adl_buildno [_modifier]
 
 Például release_20190318_adl_3394512_2 azt jelenti, hogy a Build 3394512-es verziójának második, 18 2019-es és release_20190318_adl_3394512_private-es verzióját jelenti, és az ugyanazon kiadás privát buildje. Megjegyzés: a dátum ahhoz kapcsolódik, hogy mikor került sor az adott kiadás utolsó beadására, és nem feltétlenül a hivatalos kiadási dátumra.
 
-A jelenleg elérhető futásidejű verziók a következők.
-
-- release_20190318_adl_3394512
-- a jelenlegi alapértelmezett release_20190318_adl_5832669
-- release_20190703_adl_4713356
 
 ## <a name="troubleshooting-u-sql-runtime-version-issues"></a>Az U-SQL futásidejű verziójának hibáinak elhárítása
 
@@ -60,7 +55,7 @@ A futásidejű verziók két lehetséges problémája merülhet fel:
 
 2. Nem alapértelmezett futtatókörnyezetet használ explicit módon vagy implicit módon, amikor a fiókjában rögzítette, és a futtatókörnyezetet némi idő múlva eltávolították. Ha hiányzó futtatókörnyezetekkel találkozik, frissítse a parancsfájlokat az aktuális alapértelmezett futtatókörnyezettel való futtatáshoz. Ha további időre van szüksége, vegye fel a kapcsolatot Microsoft ügyfélszolgálata
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 - [Azure Data Lake Analytics áttekintése](data-lake-analytics-overview.md)
 - [Azure Data Lake Analytics kezelése Azure Portal használatával](data-lake-analytics-manage-use-portal.md)

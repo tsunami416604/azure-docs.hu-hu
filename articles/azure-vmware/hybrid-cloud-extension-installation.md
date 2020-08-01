@@ -3,12 +3,12 @@ title: Hibrid felhőalapú bővítmény (HCX) telepítése
 description: A VMware Hybrid Cloud Extension (HCX) megoldás beállítása az Azure VMware-megoldás (AVS) privát felhőhöz
 ms.topic: how-to
 ms.date: 07/15/2020
-ms.openlocfilehash: b897a44fb6811c4e3564c59a8ab2c064506f0a4f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ea968cb21812f7273af342763d307c2faba1eea6
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539159"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475447"
 ---
 # <a name="install-hcx-for-azure-vmware-solution"></a>Az Azure VMware-megoldás HCX telepítése
 
@@ -19,7 +19,7 @@ A HCX Advanced, az alapértelmezett telepítés legfeljebb három vCenter támog
 
 Először alaposan [áttekintheti](#before-you-begin)a [szoftver verziójának követelményeit](#software-version-requirements)és [előfeltételeit](#prerequisites) . 
 
-Ezután az összes szükséges eljárást bemutatjuk:
+Ezután az összes szükséges eljáráson át fogunk járni:
 
 > [!div class="checklist"]
 > * Helyszíni HCX-petesejtek üzembe helyezése
@@ -31,10 +31,10 @@ A telepítés befejezése után kövesse a cikk végén elérhető, javasolt kö
 
 ## <a name="before-you-begin"></a>Előkészületek
     
-* Tekintse át az alapszintű AVS szoftverrel definiált adatközpont (SDDC) [oktatóanyag-sorozatot](tutorial-network-checklist.md)
-* Tekintse át és hivatkozzon a [VMware HCX dokumentációra](https://docs.vmware.com/en/VMware-HCX/index.html) , beleértve a HCX felhasználói útmutatóját
-* A VMware docs [Virtual Machines áttelepítése VMware HCX](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-D0CD0CC6-3802-42C9-9718-6DA5FEC246C6.html?hWord=N4IghgNiBcIBIGEAaACAtgSwOYCcwBcMB7AOxAF8g)
-* A [VMware HCX üzembe helyezési szempontjainak](https://docs.vmware.com/en/VMware-HCX/services/install-checklist/GUID-C0A0E820-D5D0-4A3D-AD8E-EEAA3229F325.html) opcionális áttekintése
+* Tekintse át az alapszintű AVS szoftverrel definiált adatközpont (SDDC) [oktatóanyag-sorozatot](tutorial-network-checklist.md).
+* Tekintse át és hivatkozzon a [VMware HCX dokumentációra](https://docs.vmware.com/en/VMware-HCX/index.html) , beleértve a HCX felhasználói útmutatóját.
+* Tekintse át [a VMware docs Virtual Machines áttelepítését a VMware HCX](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-D0CD0CC6-3802-42C9-9718-6DA5FEC246C6.html?hWord=N4IghgNiBcIBIGEAaACAtgSwOYCcwBcMB7AOxAF8g).
+* Igény szerint áttekintheti a [VMware HCX üzembe helyezési szempontjait](https://docs.vmware.com/en/VMware-HCX/services/install-checklist/GUID-C0A0E820-D5D0-4A3D-AD8E-EEAA3229F325.html).
 * Ha szeretné áttekinteni a kapcsolódó VMware-anyagokat a HCX-on, mint például a VMware vSphere [blog sorozat](https://blogs.vmware.com/vsphere/2019/10/cloud-migration-series-part-2.html) a HCX. 
 * Az AVS HCX Enterprise aktiválása AVS-támogatási csatornákon keresztül történik.
 
@@ -47,12 +47,12 @@ Az infrastruktúra-összetevőknek a szükséges minimális verziót kell futtat
 | --- | --- | --- |
 | vCenter Server   | 5.1<br/><br/>Ha 5,5 U1-es vagy korábbi verzióját használ, használja az önálló HCX felhasználói felületet a HCX műveletekhez.  | 6,0 U2 és újabb verziók   |
 | ESXi   | 5.0    | ESXi 6,0 és újabb verziók   |
-| NSX    | A logikai kapcsolók HCX hálózati kiterjesztése a következő forrásnál: NSXv 6.2 + vagy NSX-T 2.4 +   | NSXv 6.2 + vagy NSX-T 2.4 +<br/><br/>A HCX közelségének útválasztásához: NSXv 6.4 + (a közelségi útválasztás nem támogatott a NSX-T-vel) |
+| NSX    | A logikai kapcsolók HCX hálózati kiterjesztése a következő forrásnál: NSXv 6.2 + vagy NSX-T 2.4 +   | NSXv 6.2 + vagy NSX-T 2.4 +<br/><br/>A HCX közelségének útválasztásához: NSXv 6.4 + (a közelségi útválasztás nem támogatott a NSX-T esetében) |
 | vCloud igazgató   | Nem kötelező – nincs együttműködés a vCloud igazgatóval a forrás helyén | A cél környezet vCloud-igazgatóval való integrálásakor a minimális érték a 9.1.0.2.  |
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A globális elérhetőséget a helyszíni és az AVS SDDC ER áramkörök között kell konfigurálni.
+* A ExpressRoute Global Reach a helyszíni és az AVS SDDC ExpressRoute-áramkörök között kell konfigurálni.
 
 * Az összes szükséges portot nyitva kell lennie a helyszíni és az AVS-SDDC között (lásd a [VMware HCX dokumentációját](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-E456F078-22BE-494B-8E4B-076EF33A9CF4.html)).
 
@@ -273,6 +273,6 @@ A készülék állapotának vizsgálatához válassza az **összekötő**  >  **
       
 ![Berendezés állapota](./media/hybrid-cloud-extension-installation/appliance-status.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha a készülék összekötő **alagútjának állapota** felfelé és zöldre van **állítva** , készen áll az AVS virtuális gépek áttelepítésére és védelemre a HCX használatával. Tekintse meg a VMware [HCX dokumentációját](https://docs.vmware.com/en/VMware-HCX/index.html) és a VMware [HCX átVirtual Machines telepítését](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-D0CD0CC6-3802-42C9-9718-6DA5FEC246C6.html?hWord=N4IghgNiBcIBIGEAaACAtgSwOYCcwBcMB7AOxAF8g) a VMware technikai dokumentációjában.

@@ -3,12 +3,12 @@ title: Bevezető Azure Event Grid partnerként
 description: Azure Event Grid partneri témakör beírása. Ismerje meg az erőforrás-modellt és a közzétételi folyamatot a partneri témakörökben.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 8003e3e6a28b0e6a05d553be01c171029e244d74
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: bf4534849ae29d89524a877ca410d25c74637c94
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86116114"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461255"
 ---
 # <a name="onboard-as-an-azure-event-grid-partner"></a>Bevezető Azure Event Grid partnerként
 
@@ -142,21 +142,21 @@ A CloudEvents 1,0 séma használatával teheti közzé az eseményeket a Azure E
 
 A partnerNamespace-végpontra való közzététel után választ kap. A válasz egy szabványos HTTP-válasz kódja. Néhány gyakori Válasz:
 
-| Eredmény                             | Válasz              |
+| Eredmény                             | Reagálás              |
 |------------------------------------|-----------------------|
-| Sikeres                            | 200 OK                |
-| Az esemény adatformátuma helytelen formátumú    | 400 hibás kérelem       |
-| Érvénytelen hozzáférési kulcs                 | 401 jogosulatlan      |
+| Success                            | 200 OK                |
+| Az esemény adatformátuma helytelen formátumú    | 400 Hibás kérés       |
+| Érvénytelen hozzáférési kulcs                 | 401 Nem engedélyezett      |
 | Helytelen végpont                 | 404 Nem található         |
 | Tömb vagy esemény meghaladja a méretkorlátot | 413 túl nagy a hasznos adat |
 
-## <a name="references"></a>Referencia
+## <a name="references"></a>Hivatkozások
 
   * [Swagger](https://github.com/ahamad-MS/azure-rest-api-specs/blob/master/specification/eventgrid/resource-manager/Microsoft.EventGrid/preview/2020-04-01-preview/EventGrid.json)
   * [ARM-sablon](https://docs.microsoft.com/azure/templates/microsoft.eventgrid/allversions)
   * [ARM-sablon sémája](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2020-04-01-preview/Microsoft.EventGrid.json)
-  * [REST API-k](https://docs.microsoft.com/rest/api/eventgrid/version2020-04-01-preview/partnernamespaces)
-  * [CLI-bővítmény](https://docs.microsoft.com/cli/azure/ext/eventgrid/?view=azure-cli-latest)
+  * [REST API-k](/rest/api/eventgrid/version2020-04-01-preview/partnernamespaces)
+  * [CLI-bővítmény](/cli/azure/ext/eventgrid/?view=azure-cli-latest)
 
 ### <a name="sdks"></a>SDK-k
   * [.NET](https://www.nuget.org/packages/Microsoft.Azure.Management.EventGrid/5.3.1-preview)
@@ -167,7 +167,7 @@ A partnerNamespace-végpontra való közzététel után választ kap. A válasz 
   * [Ugrás](https://github.com/Azure/azure-sdk-for-go)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [A partneri témakörök áttekintése](partner-topics-overview.md)
 - [Partneri témakörök bevezetésének űrlapja](https://aka.ms/gridpartnerform)
 - [Auth0-partneri témakör](auth0-overview.md)

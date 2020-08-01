@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 04/04/2019
+ms.date: 07/30/2020
 ms.author: apimpm
-ms.openlocfilehash: 43dc0020f64a80e10f179fd194c4878f2fec41ad
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: e7f2fb966aa323063220bc798706c8401745ba20
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86243205"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461000"
 ---
 # <a name="how-to-delegate-user-registration-and-product-subscription"></a>A felhasználói regisztráció és a termék-előfizetés delegálása
 
@@ -49,8 +49,6 @@ Most létre kell hoznia a **delegálási végpontot**. Számos műveletet kell v
 1. Kérelem fogadása a következő formában:
    
    > *http: \/ /www.yourwebsite.com/apimdelegation?operation=SignIn&returnUrl = {forrás lap URL-címe} &Salt = {string} &SIG = {string}*
-   > 
-   > 
    
     A bejelentkezési/regisztrációs eset lekérdezési paraméterei:
    
@@ -84,6 +82,7 @@ A **bejelentkezési** műveleten kívül az előző lépések végrehajtásával
 * **ChangePassword**
 * **ChangeProfile**
 * **CloseAccount**
+* **Kijelentkezés**
 
 A következő lekérdezési paramétereket kell átadnia a fiókkezelés műveleteihez.
 
@@ -93,6 +92,7 @@ A következő lekérdezési paramétereket kell átadnia a fiókkezelés művele
 * **SIG**: a saját számított kivonathoz való összehasonlításhoz használt számított biztonsági kivonat
 
 ## <a name="delegating-product-subscription"></a><a name="delegate-product-subscription"> </a>A termék-előfizetés delegálása
+
 A termék-előfizetés delegálása hasonlóan működik a felhasználói bejelentkezés delegálásakor. Az utolsó munkafolyamat a következő lesz:
 
 1. A fejlesztő kiválaszt egy terméket a API Management fejlesztői portálon, és rákattint az Előfizetés gombra.
@@ -114,9 +114,9 @@ Ezután győződjön meg arról, hogy a delegálási végpont a következő műv
      * "Előfizetés": a felhasználó egy adott termékre való előfizetésére vonatkozó kérelem a megadott AZONOSÍTÓval (lásd alább)
      * "Leiratkozás": egy termék felhasználójának lemondására vonatkozó kérelem
      * "Megújítás": az előfizetés megújítására vonatkozó kérelem (például lejáró lehet)
-   * **Termékkód**: annak a terméknek az azonosítója, amelyre az előfizetést kérte
+   * **Termékkód**: *előfizetéskor* – annak a terméknek az azonosítója, amelyre az előfizetést kérte
    * **subscriptionId**: *lemondás* és *megújítás* – a termék-előfizetés azonosítója
-   * **felhasználóazonosító**: annak a felhasználónak az azonosítója, akinek a kérelmét elvégezték
+   * **felhasználóazonosító**: *előfizetés* – a KÉRÉSt kérő felhasználó azonosítója
    * **Salt**: a biztonsági kivonatok feldolgozásához használt speciális sós sztring
    * **SIG**: a saját számított kivonathoz való összehasonlításhoz használt számított biztonsági kivonat
 
@@ -177,7 +177,7 @@ var signature = digest.toString('base64');
 > [!IMPORTANT]
 > A delegálási módosítások életbe léptetéséhez újra közzé kell tennie [a fejlesztői portált](api-management-howto-developer-portal-customize.md#publish) .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A delegálással kapcsolatos további információkért tekintse meg a következő videót:
 
 > [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Delegating-User-Authentication-and-Product-Subscription-to-a-3rd-Party-Site/player]

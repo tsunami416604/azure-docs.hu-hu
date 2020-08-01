@@ -7,12 +7,12 @@ ms.date: 07/22/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 7d88ac62d9117df9d24c6d865e684a0972c87dae
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: d8efec0517cd0b4bdcba643a0936b474593d58c4
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337313"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475464"
 ---
 # <a name="glossary-of-terms-for-iot-plug-and-play-preview"></a>A IoT használati feltételeinek szószedete Plug and Play előzetes verzió
 
@@ -95,19 +95,15 @@ A IoT Hub lekérdezési nyelv több célra szolgál. Használhatja például a n
 
 A IoT Plug and Play-eszközök általában egy kis méretű, önálló számítástechnikai eszköz, amely adatokat gyűjt, vagy más eszközöket irányít, valamint az [eszköz modelljét](#device-model)implementáló szoftvert vagy belső vezérlőprogramot futtat.  Például egy IoT Plug and Play eszköz lehet környezeti figyelő eszköz vagy egy intelligens mezőgazdasági öntözési rendszer vezérlője. Felhőalapú IoT-megoldást is írhat a IoT Plug and Play eszközökről származó adatok parancsára, vezérlésére és fogadására.
 
-## <a name="iot-plug-and-play-conventions"></a>IoT Plug and Play konvenciók
+## <a name="iot-plug-and-play-conventions"></a>Az IoT Plug and Playhez kapcsolódó konvenciók
 
 A IoT Plug and Play- [eszközöknek](#iot-plug-and-play-device) a megoldással való adatcserére vonatkozó [konvenciókat](concepts-convention.md) kell követniük.
-
-## <a name="model-discovery"></a>Modellfelderítés
-
-Amikor egy [IoT Plug and Play-eszköz](#iot-plug-and-play-device) csatlakozik egy IoT-megoldáshoz, a megoldás az eszköz [modelljének](#device-model)megkeresésével képes észlelni az eszköz képességeit. A megoldás az eszköz modelljét a [modell adattárában](#model-repository) vagy más helyen találhatja meg.
 
 ## <a name="model-id"></a>Modellazonosító
 
 Ha egy IoT Plug and Play eszköz csatlakozik egy IoT Hubhoz, akkor az általa megvalósított [DTDL](#digital-twins-definition-language) modell **azonosítóját** küldi el. Ez lehetővé teszi, hogy a megoldás megtalálja az eszköz modelljét.
 
-## <a name="model-repository"></a>Modell tárháza
+## <a name="model-repository"></a>Modelladattár
 
 A [modell tárháza](concepts-model-repository.md) az [eszközök modelljeit](#device-model) és [felületeit](#interface)tárolja.
 

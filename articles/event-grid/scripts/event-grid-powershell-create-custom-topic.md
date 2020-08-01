@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2020
 ms.author: tomfitz
-ms.openlocfilehash: 900f31ff87e6a588fc1d1e3efd854437d2c8c1b9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 915b8e13adaa440063f5db62b72fa39e1035d576
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76719942"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460779"
 ---
 # <a name="create-event-grid-custom-topic-with-powershell"></a>Egyéni Event Grid-témakör létrehozása a PowerShell-lel
 
@@ -34,11 +34,11 @@ Ez a szkript létrehoz egy egyéni Event Grid-témakört.
 
 A szkript a következő parancsot használja az egyéni témakör létrehozásához. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
-| Parancs | Megjegyzések |
+| Parancs | Jegyzetek |
 |---|---|
-| [Új – AzEventGridTopic](https://docs.microsoft.com/powershell/module/az.eventgrid/new-azeventgridtopic) | Egyéni Event Grid-témakör létrehozása. |
+| [Új – AzEventGridTopic](/powershell/module/az.eventgrid/new-azeventgridtopic) | Egyéni Event Grid-témakör létrehozása. |
 
 ## <a name="next-steps"></a>További lépések
 
 * A felügyelt alkalmazásokra vonatkozó részleteket az [Azure felügyelt alkalmazásokat áttekintő](../overview.md) cikk ismerteti.
-* A PowerShell-lel kapcsolatos további tudnivalókért tekintse meg az [Azure PowerShell dokumentációját](https://docs.microsoft.com/powershell/azure/get-started-azureps).
+* A PowerShell-lel kapcsolatos további tudnivalókért tekintse meg az [Azure PowerShell dokumentációját](/powershell/azure/get-started-azureps).

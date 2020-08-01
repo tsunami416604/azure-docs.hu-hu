@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 07/08/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: fc50934b4c301b4eea509ecc22e00c62ca091d75
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 273c41a523de8b2776982e5229c5a8b618b82c19
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87056555"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475192"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Az Azure Kubernetes Service-ben (AKS) támogatott Kubernetes-verziók
 
@@ -91,6 +91,14 @@ New Supported Version List
 1.17.*9*, 1.17.*8*, 1.16.*11*, 1.16.*10*
 ```
 
+### <a name="supported-kubectl-versions"></a>Támogatott `kubectl` verziók
+
+A `kubectl` *Kube-apiserver* verziójához viszonyítva egy régebbi vagy újabb verziójú alverziót is használhat, amely összhangban van a [kubectl Kubernetes-támogatási szabályzatával](https://kubernetes.io/docs/setup/release/version-skew-policy/#kubectl).
+
+Ha például a *Kube-apiserver* értéke *1,17*, akkor a *1,18* *1,16* -es verzióit használhatja a következővel: `kubectl` *Kube-apiserver*.
+
+A verziójának telepítéséhez vagy frissítéséhez futtassa a következőt: `kubectl` `az aks install-cli` .
+
 ## <a name="release-and-deprecation-process"></a>Kiadási és elavult folyamat
 
 A következő verziókra vonatkozó kiadásokat és elavultkat az [AK Kubernetes kiadási naptárban](#aks-kubernetes-release-calendar)is hivatkozhat.
@@ -120,7 +128,6 @@ Ha szeretné megtudni, hogy az előfizetéshez és a régióhoz jelenleg milyen 
 ```azurecli-interactive
 az aks get-versions --location eastus --output table
 ```
-
 
 ## <a name="aks-kubernetes-release-calendar"></a>AK Kubernetes kiadási naptár
 

@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 05/11/2020
 ms.author: anfeldma
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 64bc8e76a4dcce963251219528bd93dd786f01cf
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: ddbbb9f39dd17daf5c500bf582c100b4e1754a15
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87419614"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461357"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Node.js SDK for SQL API: kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
@@ -410,17 +410,8 @@ Nem mindig a leglátványosabb változások, de segítünk a csapatnak jobb kód
 * GA SDK.
 
 ## <a name="release--retirement-dates"></a>Kiadási & nyugdíjazási dátumok
-A Microsoft legalább **12 hónappal** korábban értesítést küld az SDK kivonásáról, hogy zökkenőmentes legyen az áttérés egy újabb/támogatott verzióra.
 
-Az új funkciók és funkciók és optimalizálás csak a jelenlegi SDK-hoz adódik hozzá, ezért azt javasoljuk, hogy a lehető leghamarabb frissítsen a legújabb SDK-verzióra.
-
-A szolgáltatás elutasítja a kivont SDK-val Cosmos DBre irányuló kéréseket.
-
-> [!WARNING]
-> Az SQL API-hoz készült Node Client SDK **1. x** verziójának összes verziója **2020 augusztus 30-** án megszűnik. Ez csak az ügyféloldali csomópont-SDK-ra vonatkozik, és nem érinti a kiszolgálóoldali parancsfájlokat (tárolt eljárások, eseményindítók és UDF).
-> 
->
-<br/>
+A Microsoft legalább **12 hónappal** korábban értesítést küld az SDK kivonásáról, hogy zökkenőmentes legyen az áttérés egy újabb/támogatott verzióra. Az új funkciók és funkciók és optimalizálás csak a jelenlegi SDK-hoz adódik hozzá, ezért azt javasoljuk, hogy a lehető leghamarabb frissítsen a legújabb SDK-verzióra.
 
 | Verzió | Kiadás dátuma | Kivonás dátuma |
 | --- | --- | --- |
@@ -480,6 +471,6 @@ A szolgáltatás elutasítja a kivont SDK-val Cosmos DBre irányuló kéréseket
 ## <a name="faq"></a>GYIK
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 További információ a Cosmos DBről: [Microsoft Azure Cosmos db](https://azure.microsoft.com/services/cosmos-db/) szolgáltatás lapja.
 

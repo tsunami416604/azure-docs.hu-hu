@@ -2,16 +2,14 @@
 title: Azure-Application Insights JavaScript-alapú webalkalmazásokhoz
 description: Megtekintheti az oldal nézetét és a munkamenetek számát, a webes ügyfél adatait, az egyoldalas alkalmazásokat (SPA) és a használati mintákat. Kivételeket és teljesítményproblémákat észlelhet a JavaScript weblapokon.
 ms.topic: conceptual
-author: Dawgfan
-ms.author: mmcc
 ms.date: 09/20/2019
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 8cd0c7c73ac4f5c531d91d7e458300ab1b0ad1af
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 063d648c68431dd84fd1aeb88b85bc68f2acbe62
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371481"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475753"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights weblapokhoz
 
@@ -154,7 +152,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 ## <a name="configuration"></a>Konfiguráció
 A legtöbb konfigurációs mező neve úgy van elnevezve, hogy a hamis értékre legyenek kiválasztva. Az összes mező megadása nem kötelező, kivéve a következőt: `instrumentationKey` .
 
-| Név | Alapértelmezett | Leírás |
+| Name | Alapértelmezett | Leírás |
 |------|---------|-------------|
 | instrumentationKey | null | **Kötelező**<br>A Azure Portaltól beszerzett kialakítási kulcs. |
 | accountId | null | Egy nem kötelező fiókazonosító, ha az alkalmazás a felhasználókat fiókokba csoportosítja. Nincsenek szóközök, vesszők, pontosvesszők, egyenlők vagy függőleges sávok |
@@ -342,7 +340,9 @@ Ez nem jelenti azt, hogy csak a legkisebb közös funkciókat fogjuk támogatni,
 
 ## <a name="open-source-sdk"></a>Nyílt forráskódú SDK
 
-A Application Insights JavaScript SDK nyílt forráskódú a forráskód megtekintéséhez vagy a projekthez való hozzájáruláshoz, látogasson el a [hivatalos GitHub-tárházba](https://github.com/Microsoft/ApplicationInsights-JS).
+A Application Insights JavaScript SDK nyílt forráskódú a forráskód megtekintéséhez vagy a projekthez való hozzájáruláshoz, látogasson el a [hivatalos GitHub-tárházba](https://github.com/Microsoft/ApplicationInsights-JS). 
+
+A legújabb frissítések és hibajavítások [olvassa el a kibocsátási megjegyzéseket](./release-notes.md).
 
 ## <a name="next-steps"></a><a name="next"></a>További lépések
 * [Használat követése](usage-overview.md)

@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/09/2020
-ms.openlocfilehash: e8efb43ac0711bac1324ac2c9e3b59373ce59419
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 850879675d4554329f24c86f2ac28660b303084c
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84635125"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475566"
 ---
 # <a name="what-are-mapping-data-flows"></a>Mik azok a leképezési adatfolyamok?
 
@@ -93,41 +93,9 @@ Az egyes átalakítások konfigurációs paneljének első lapja az adott átala
 
 #### <a name="optimize"></a>Optimalizálás
 
-Az **optimalizálás** lap a particionálási sémák konfigurálásához szükséges beállításokat tartalmazza.
+Az **optimalizálás** lap a particionálási sémák konfigurálásához szükséges beállításokat tartalmazza. Az adatfolyamatok optimalizálásával kapcsolatos további tudnivalókért tekintse meg az [adatfolyamok teljesítményének feltérképezése című útmutatót](concepts-data-flow-performance.md).
 
-![Optimalizálás](media/data-flow/optimize1.png "Optimalizálás")
-
-Az alapértelmezett beállítás az **aktuális particionálást használja**, amely arra utasítja a Azure Data Factoryot, hogy a Spark-on futó adatfolyamatok natív particionálási sémáját használják. A legtöbb esetben ezt a beállítást javasoljuk.
-
-Vannak olyan példányok, amelyekben érdemes lehet módosítani a particionálást. Ha például az átalakításokat egyetlen fájlba szeretné exportálni a-tóban, válassza ki a **különálló partíciót** egy fogadó átalakításban.
-
-Egy másik eset, amikor a particionálási sémákat a teljesítmény optimalizálása érdekében érdemes szabályozni. A particionálás beállítása lehetővé teszi az adatok elosztását a számítási csomópontok és az adatkörnyezet-optimalizálások között, amelyek mind pozitív, mind negatív hatással lehetnek a teljes adatfolyam-teljesítményre. További információ: az [adatfolyam teljesítményének útmutatója](concepts-data-flow-performance.md).
-
-Ha módosítani szeretné a particionálást bármely transzformáción, válassza az **optimalizálás** fület, és válassza a **particionálás beállítása** választógombot. A particionálási lehetőségek sorozatát mutatjuk be. A particionálás legjobb módja az adatmennyiségek, a jelölt kulcsok, a null értékek és a kardinális alapján változhat. 
-
-Az ajánlott eljárás az alapértelmezett particionálás, majd a különböző particionálási beállítások kipróbálása. Tesztelheti a folyamat hibakeresési futtatását, és megtekintheti az egyes átalakítási csoportok végrehajtási idejét és a partíciók használatát a figyelés nézetből. További információ: [az adatfolyamatok figyelése](concepts-data-flow-monitoring.md).
-
-A következő particionálási beállítások érhetők el.
-
-##### <a name="round-robin"></a>Ciklikus multiplexelés 
-
-A ciklikus multiplexelés egy egyszerű partíció, amely automatikusan elosztja az adategységeket a partíciók között. Ciklikus multiplexelés használata, ha nem rendelkezik megfelelő kulcsfontosságú jelöltekkel a szilárd, intelligens particionálási stratégia megvalósításához. Megadhatja a fizikai partíciók számát.
-
-##### <a name="hash"></a>Kivonat
-
-Azure Data Factory az oszlopok kivonatát állítja elő, hogy egységes partíciókat hozzon létre, például a hasonló értékekkel rendelkező sorok ugyanabba a partícióba esnek. Ha a kivonatoló kapcsolót használja, tesztelje a lehetséges partíciók döntését. Megadhatja a fizikai partíciók számát.
-
-##### <a name="dynamic-range"></a>Dinamikus tartomány
-
-A dinamikus tartomány Spark dinamikus tartományokat használ az Ön által megadott oszlopok vagy kifejezések alapján. Megadhatja a fizikai partíciók számát. 
-
-##### <a name="fixed-range"></a>Rögzített tartomány
-
-Hozzon létre egy olyan kifejezést, amely rögzített tartományt biztosít a particionált adatoszlopokban lévő értékek számára. Ha el szeretné kerülni a partíciók eldöntését, érdemes megismernie az adatait, mielőtt ezt a beállítást használja. A kifejezéshez megadott értékek a Partition függvény részeként használatosak. Megadhatja a fizikai partíciók számát.
-
-##### <a name="key"></a>Kulcs
-
-Ha jól ismeri az Ön adatait, a kulcsfontosságú particionálás jó stratégia lehet. A kulcs particionálásával az oszlop minden egyedi értékéhez partíciók jönnek létre. A partíciók száma nem állítható be, mert a szám az adatok egyedi értékein alapul.
+![Optimalizálás](media/data-flow/optimize.png "Optimalizálás")
 
 #### <a name="inspect"></a>Vizsgálata
 

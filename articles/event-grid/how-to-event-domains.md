@@ -3,12 +3,12 @@ title: Események közzététele esemény-tartományokkal Azure Event Grid
 description: Bemutatja, hogyan kezelheti a témakörök nagy csoportjait a Azure Event Gridban, és hogyan teheti közzé az eseményeket az esemény-tartományok használatával.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: eae467c1c4cc1257e7a5205dd5efda40490f7908
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: ce1cc9c2b09dd6b0c9508ad6b0597428bd355d4b
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423643"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460558"
 ---
 # <a name="manage-topics-and-publish-events-using-event-domains"></a>Témakörök kezelése és események közzététele az Event Domain használatával
 
@@ -78,7 +78,7 @@ Vegye figyelembe, `endpoint` hogy a és a szükséges a `id` tartomány kezelés
 
 ## <a name="manage-access-to-topics"></a>Témakörökhöz való hozzáférés kezelése
 
-A témakörökhöz való hozzáférés kezelése [szerepkör-hozzárendelés](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)használatával történik. A szerepkör-hozzárendelés szerepköralapú hozzáférés-vezérléssel korlátozza az Azure-erőforrások műveleteit egy bizonyos hatókörön belüli jogosult felhasználók számára.
+A témakörökhöz való hozzáférés kezelése [szerepkör-hozzárendelés](../role-based-access-control/role-assignments-cli.md)használatával történik. A szerepkör-hozzárendelés szerepköralapú hozzáférés-vezérléssel korlátozza az Azure-erőforrások műveleteit egy bizonyos hatókörön belüli jogosult felhasználók számára.
 
 A Event Grid két beépített szerepkörrel rendelkezik, amelyek segítségével adott felhasználókhoz rendelhet hozzá különböző témaköröket a tartományon belül. Ezek a szerepkörök `EventGrid EventSubscription Contributor (Preview)` , amelyek lehetővé teszik az előfizetések létrehozását és törlését, és `EventGrid EventSubscription Reader (Preview)` amelyek csak az esemény-előfizetések listázását teszik lehetővé.
 
@@ -208,6 +208,6 @@ Get-AzureRmEventGridDomainKey `
 
 Ezt követően pedig kedvenc metódusával teheti közzé az eseményeket a Event Grid tartományában.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információ az Event-tartományok magas szintű fogalmakról és azok hasznos okairól: az esemény- [tartományok fogalmi áttekintése](event-domains.md).

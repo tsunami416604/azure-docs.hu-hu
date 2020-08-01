@@ -1,6 +1,6 @@
 ---
 title: 'Gyors útmutató: iOS-alkalmazás létrehozása'
-description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre egy iOS-alkalmazást térbeli horgonyok használatával.
+description: Megtudhatja, hogyan hozhat létre iOS-alkalmazást az Azure térbeli horgonyok használatával programozott módon a Swift-ben vagy a Objective-C-ben.
 author: craigktreasure
 manager: vriveras
 services: azure-spatial-anchors
@@ -9,12 +9,12 @@ ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
 ms.custom: has-adal-ref
-ms.openlocfilehash: 542b5168bb70d876d91f8a747a230f2b754568e9
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 99f3b5bc763c6ffb43fd143cf394be9157b2c83f
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873103"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460269"
 ---
 # <a name="quickstart-create-an-ios-app-with-azure-spatial-anchors-in-either-swift-or-objective-c"></a>Gyors útmutató: iOS-alkalmazás létrehozása Azure térbeli Horgonyokkal Swift vagy Objective-C nyelven
 
@@ -146,7 +146,7 @@ brew link --overwrite cocoapods
 
 Ha IOS-alapú 10.3.1 helyez üzembe egy személyes létesítési profilból/fejlesztői fiókból, a következő hibaüzenet jelenhet meg: `Library not loaded: @rpath/ADAL...` . 
 
-A probléma megoldásához:
+A hiba megoldása érdekében:
 
 - Olyan létesítési profilt használjon, amely nem személyes csapat profilja (fizetős fejlesztői fiók).
 - Az alkalmazás üzembe helyezése iOS 13,3 vagy korábbi rendszerű iOS-eszközön, vagy az iOS 13,4 bétaverziójának vagy a kiadási verziójának futtatásával.

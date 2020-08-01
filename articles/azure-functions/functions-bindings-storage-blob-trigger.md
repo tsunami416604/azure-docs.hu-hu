@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
 ms.custom: tracking-python
-ms.openlocfilehash: 6b9cf3f76afecb1e6f7ad00a18eb7290b8decb5f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 06c4ecd92368487af3110e84391ec721700a95aa
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87056040"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461170"
 ---
 # <a name="azure-blob-storage-trigger-for-azure-functions"></a>Azure Blob Storage-trigger Azure Functions
 
@@ -203,7 +203,7 @@ A [C# osztályok könyvtáraiban](functions-dotnet-class-library.md)használja a
 
 * [BlobTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.Storage/Blobs/BlobTriggerAttribute.cs)
 
-  Az attribútum konstruktora egy elérésiút-karakterláncot vesz fel, amely jelzi a tárolót, és opcionálisan egy [blob-nevet](#blob-name-patterns). Bemutatunk egy példát:
+  Az attribútum konstruktora egy elérésiút-karakterláncot vesz fel, amely jelzi a tárolót, és opcionálisan egy [blob-nevet](#blob-name-patterns). Íme egy példa:
 
   ```csharp
   [FunctionName("ResizeImage")]
@@ -275,7 +275,7 @@ Az `@BlobTrigger` attribútummal hozzáférést biztosíthat a függvényt kivá
 
 Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `BlobTrigger` .
 
-|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
 |**típusa** | n.a. | Értékre kell állítani `blobTrigger` . Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban.|
 |**irányba** | n.a. | Értékre kell állítani `in` . Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban. A kivételek a [használat](#usage) szakaszban vannak feltüntetve. |
@@ -331,7 +331,7 @@ Az alábbi példa csak a tárolóban lévő blobokat indítja `input` el, amelye
 "path": "input/original-{name}",
 ```
 
-Ha a blob neve *original-Blob1.txt*, a `name` függvény kódjában található változó értéke `Blob1` .
+Ha a blob neve *original-Blob1.txt*, a `name` függvény kódjában található változó értéke `Blob1.txt` .
 
 ### <a name="filter-on-file-type"></a>Szűrés fájltípus alapján
 

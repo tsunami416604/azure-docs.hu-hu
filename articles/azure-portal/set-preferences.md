@@ -5,22 +5,23 @@ services: azure-portal
 keywords: beállítások, időtúllépés, nyelv, regionális
 author: mgblythe
 ms.author: mblythe
-ms.date: 12/19/2019
+ms.date: 07/30/2020
 ms.topic: how-to
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: d4c675ab18a7a9231229ce0c7de9a7450dc1baa8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a8ce638bf61c69fb732d94d537218aabaeaa9a7c
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763958"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461932"
 ---
 # <a name="set-your-azure-portal-preferences"></a>Az Azure Portal-beállítások megadása
 
 Módosíthatja a Azure Portal alapértelmezett beállításait, hogy azok megfeleljenek a saját preferenciáinak. Az alábbiakban felsorolt beállítások mindegyike módosítható:
 
 * [Inaktív munkamenet időkorlátja](#change-the-idle-duration-for-inactive-sign-out)
+* [Alapértelmezett előfizetés](#choose-your-default-subscription)
 * [Alapértelmezett nézet](#choose-your-default-view)
 * [Portál menü mód](#choose-a-portal-menu-mode)
 * [Szín és kontrasztos téma](#choose-a-theme)
@@ -55,9 +56,21 @@ Ha a rendszergazda engedélyezte a tétlenségi időtúllépési házirendet, je
 > Ha Ön rendszergazda, és szeretné kényszeríteni a Azure Portal összes felhasználójának inaktív időtúllépési beállítását, tekintse meg a következő témakört: [a könyvtár szintű inaktivitás időkorlátjának beállítása a Azure Portal felhasználói](admin-timeout.md) számára.
 >
 
+### <a name="choose-your-default-subscription"></a>Válassza ki az alapértelmezett előfizetést
+
+A Azure Portalba való bejelentkezéskor alapértelmezés szerint megnyithatja az előfizetést. Ez akkor hasznos, ha rendelkezik egy elsődleges előfizetéssel, de alkalmanként másokat használ. 
+
+:::image type="content" source="media/set-preferences/filter-subscription-default-view.png" alt-text="Erőforrások listájának szűrése előfizetés alapján.":::
+
+1. Válassza ki a címtár és előfizetés szűrő ikont a felső navigációs sávon.
+1. A portál indításakor válassza ki az alapértelmezett előfizetésként használni kívánt előfizetéseket. 
+
+    :::image type="content" source="media/set-preferences/default-directory-subscription-filter.png" alt-text="A portál indításakor válassza ki az alapértelmezett előfizetésként használni kívánt előfizetéseket."::: 
+
+
 ### <a name="choose-your-default-view"></a>Válassza ki az alapértelmezett nézetet 
 
-A Azure Portalba való bejelentkezéskor alapértelmezés szerint megnyithatja az oldalt.
+A Azure Portalba való bejelentkezéskor alapértelmezés szerint a megnyíló lap is módosítható.
 
    ![Képernyőfelvétel – az alapértelmezett nézettel Azure Portal beállítások megjelenítése](./media/set-preferences/default-view.png)
 

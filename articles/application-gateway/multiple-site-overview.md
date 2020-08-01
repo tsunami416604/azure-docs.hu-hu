@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.date: 07/20/2020
-ms.author: amsriva
+ms.author: surmb
 ms.topic: conceptual
-ms.openlocfilehash: 23f76f18256ecadcbef59a498292222ea358008f
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 53f6f37454de886934a483b40daad24204958baf
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290988"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87474325"
 ---
 # <a name="application-gateway-multiple-site-hosting"></a>Application Gateway – több hely üzemeltetése
 
@@ -42,6 +42,7 @@ Ha helyettesítő karaktert használ az állomásnévben, több állomásnév is
 
 >[!NOTE]
 >Ez a funkció jelenleg csak [Azure PowerShell](tutorial-multiple-sites-powershell.md) és az [Azure CLI](tutorial-multiple-sites-cli.md)-n keresztül érhető el. A portál támogatása hamarosan elérhetővé válik.
+> Vegye figyelembe, hogy mivel a portál támogatása nem teljes mértékben elérhető, ha csak a HostNames paramétert használja, a figyelő alapszintű figyelőként fog megjelenni a portálon, és a figyelő listanézet oszlopa nem jeleníti meg a konfigurált állomásnevek nevét. A helyettesítő karakteres figyelő bármilyen módosítása esetén győződjön meg arról, hogy az Azure PowerShell vagy a CLI-t használja, amíg a portálon nem támogatott.
 
 [Azure PowerShell](tutorial-multiple-sites-powershell.md)a `-HostNames` helyett a parancsot kell használnia `-HostName` . Az állomásnevek esetében legfeljebb 5 állomásnév adható meg vesszővel tagolt értékként, és helyettesítő karaktereket is használhat. Például: `-HostNames "*.contoso.com,*.fabrikam.com"`
 
@@ -89,7 +90,7 @@ Application Gateway több, különböző portokon figyelt alkalmazást támogat,
 
 Az Application Gateway a HTTP 1.1-állomásfejlécek segítségével üzemeltet egynél több webhelyet ugyanarról a nyilvános IP-címről és portról. Az Application Gateway-ben üzemeltetett helyek támogatják a TLS-kiszervezést is Kiszolgálónév jelzése (SNI) TLS-bővítmény használatával. Ebben az esetben az RFC 6066 szabványban meghatározottak szerint az ügyfélböngészőnek és a háttérwebfarmnak támogatnia kell a HTTP/1.1-et és a TLS-bővítményt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Megtudhatja, hogyan konfigurálhat több hely üzemeltetését Application Gateway
 * [Az Azure Portal használata](create-multiple-sites-portal.md)

@@ -7,16 +7,16 @@ ms.date: 07/20/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 3699213fe61c64d7677ba026a8df54ccbbfe4b33
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: dadb1f044547acd6e5f0d274143123e89d7dae46
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87352230"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475481"
 ---
 # <a name="install-and-use-the-azure-iot-extension-for-the-azure-cli"></a>Az Azure IoT bővítmény telepítése és használata az Azure CLI-hez
 
-[Az Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) egy nyílt forráskódú, többplatformos parancssori eszköz az Azure-erőforrások, például a IoT hub kezelésére. Az Azure CLI Windows, Linux és MacOS rendszeren érhető el. Az Azure CLI-t a [Azure Cloud Shell](https://shell.azure.com)is előre telepíti. Az Azure CLI-vel a bővítmények telepítése nélkül kezelheti az Azure IoT Hub erőforrásait, az eszközök kiépítési szolgáltatásának példányait és a társított hubokat.
+[Az Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) egy nyílt forráskódú, többplatformos parancssori eszköz az Azure-erőforrások, például a IoT hub kezelésére. Az Azure CLI Windows, Linux és macOS rendszeren érhető el. Az Azure CLI-vel a bővítmények telepítése nélkül kezelheti az Azure IoT Hub erőforrásait, az eszközök kiépítési szolgáltatásának példányait és a társított hubokat.
 
 Az Azure CLI-hez készült Azure IoT-bővítmény parancssori eszköz a IoT Plug and Play előnézeti eszközökhöz való interakcióhoz és teszteléshez. A bővítmény a következőre használható:
 
@@ -51,9 +51,6 @@ Ha be szeretné jelentkezni az Azure-előfizetésbe, futtassa a következő para
 ```azurecli
 az login
 ```
-
-> [!NOTE]
-> Ha az Azure Cloud shellt használja, automatikusan bejelentkezik, és nem kell futtatnia az előző parancsot.
 
 Az Azure CLI-hez készült Azure IoT-bővítmény használatához a következők szükségesek:
 
@@ -109,6 +106,65 @@ Az összes IoT figyelése egy adott eszközről és felületről Plug and Play d
 az iot hub monitor-events -n {iothub_name} -d {device_id} -i {interface_id}
 ```
 
+### <a name="manage-models-in-the-model-repository"></a>Modellek kezelése a modell adattárában
+
+Az Azure CLI Model repository parancsaival kezelheti az adattár modelljeit.
+
+#### <a name="create-model-repository"></a>Modell adattárának létrehozása
+
+Hozzon létre egy új IoT Plug and Play vállalati tárházat a bérlőhöz, ha Ön a bérlő első felhasználója:
+
+```azurecli
+az iot pnp repo create
+```
+
+#### <a name="manage-model-repository-tenant-roles"></a>Modell-adattár bérlői szerepköreinek kezelése
+
+Hozzon létre egy szerepkör-hozzárendelést egy felhasználó vagy egy egyszerű szolgáltatásnév számára egy adott erőforráshoz.
+
+Adja meg például a user@consoso.com bérlő **ModelsCreator** szerepkörét:
+
+```azurecli
+az iot pnp role-assignment create --resource-id {tenant_id} --resource-type Tenant --subject-id {user@contoso.com} --subject-type User --role ModelsCreator
+```
+
+Vagy adja user@consoso.com meg a **ModelAdministrator** szerepkörét egy adott modellhez:
+
+```azurecli
+az iot pnp role-assignment create --resource-id {model_id} --resource-type Model --subject-id {user@contoso.com} --subject-type User --role ModelAdministrator
+```
+
+#### <a name="create-a-model"></a>Modell létrehozása
+
+Hozzon létre egy új modellt a vállalati adattárban:
+
+```azurecli
+az iot pnp model create --model {model_json or path_to_file}
+```
+
+#### <a name="search-a-model"></a>Keresés a modellben
+
+Adott kulcsszónak megfelelő modellek listázása:
+
+```azurecli
+az iot pnp model list -q {search_keyword}
+```
+
+#### <a name="publish-a-model"></a>Modell közzététele
+
+Tegye közzé a vállalati tárházban található eszköz modelljét a nyilvános tárházban.
+
+Tegyük fel például, hogy a modellt a következő AZONOSÍTÓval hozza nyilvánosságra `dtmi:com:example:ClimateSensor;1` :
+
+```azurecli
+az iot pnp model publish --dtmi "dtmi:com:example:ClimateSensor;1"
+```
+
+Modell közzétételéhez a következő követelményeknek kell teljesülniük:
+
+- A vállalat vagy szervezet bérlője csak Microsoft-partner lehet. 
+- A felhasználónak vagy egyszerű szolgáltatásnak az adattár bérlője **közzétevő** szerepkörének tagjának kell lennie.
+
 ## <a name="next-steps"></a>További lépések
 
-Ebben a útmutatóban megtanulta, hogyan telepítheti és használhatja az Azure CLI-hez készült Azure IoT-bővítményt az Plug and Play-eszközökkel való kommunikációhoz. A következő lépés azt ismerteti, hogyan használható az [Azure IoT Explorer az eszközeivel](./howto-use-iot-explorer.md).
+Ebben a útmutatóban megtanulta, hogyan telepítheti és használhatja az Azure CLI-hez készült Azure IoT-bővítményt, hogy együttműködjön a IoT Plug and Play eszközeivel. A következő lépés azt ismerteti, hogyan használható az [Azure IoT Explorer az eszközeivel](./howto-use-iot-explorer.md).

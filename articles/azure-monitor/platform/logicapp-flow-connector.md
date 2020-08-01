@@ -7,15 +7,15 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/13/2020
-ms.openlocfilehash: 6048b5f0a3702e95cef9175933041fe36f2f07bb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2ef7095d186902425adb5065c470325be1283023
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081559"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475736"
 ---
-# <a name="azure-monitor-logs-connector-for-logic-apps-and-flow"></a>Azure Monitor a naplók összekötőjét a Logic Apps és a flow számára
-A [Azure Logic apps](../../logic-apps/index.yml) és a [Power automatizálása](https://ms.flow.microsoft.com) lehetővé teszi, hogy több száz műveletet használó automatizált munkafolyamatokat hozzon létre különböző szolgáltatásokhoz. A Azure Monitor naplók összekötővel olyan munkafolyamatokat hozhat létre, amelyek egy Log Analytics-munkaterületről vagy egy Application Insights alkalmazásból kérik le az adatok lekérését Azure Monitor. Ez a cikk az összekötőhöz tartozó műveleteket ismerteti, és útmutatást nyújt a munkafolyamatok ezen az adatain keresztül történő létrehozásához.
+# <a name="azure-monitor-logs-connector-for-logic-apps-and-power-automate"></a>Azure Monitor a naplók összekötőjét Logic Apps és a teljesítmény automatizálásához
+A [Azure Logic apps](../../logic-apps/index.yml) és a [Power automatizálása](https://flow.microsoft.com) lehetővé teszi, hogy több száz műveletet használó automatizált munkafolyamatokat hozzon létre különböző szolgáltatásokhoz. A Azure Monitor naplók összekötővel olyan munkafolyamatokat hozhat létre, amelyek egy Log Analytics-munkaterületről vagy egy Application Insights alkalmazásból kérik le az adatok lekérését Azure Monitor. Ez a cikk az összekötőhöz tartozó műveleteket ismerteti, és útmutatást nyújt a munkafolyamatok ezen az adatain keresztül történő létrehozásához.
 
 Létrehozhat például egy logikai alkalmazást, amellyel Azure Monitor naplózhatja az adatait az Office 365 e-mail értesítésében, létrehozhat egy hibát az Azure DevOps, vagy közzétehet egy Slack-üzenetet.  A munkafolyamatot egy egyszerű vagy egy csatlakoztatott szolgáltatás egyes műveleteiből is elindíthatja, például e-mail vagy Tweet érkezésekor. 
 
@@ -126,4 +126,4 @@ Ha a logikai alkalmazás befejeződik, tekintse meg a megadott címzett e-mail-c
 
 - További információ a [Azure monitor lévő naplók lekérdezéséről](../log-query/log-query-overview.md).
 - További információ a [Logic apps](../../logic-apps/index.yml)
-- További információ a [Microsoft Flowról](https://ms.flow.microsoft.com).
+- További információ az [energiagazdálkodás automatizálásáról](https://flow.microsoft.com).

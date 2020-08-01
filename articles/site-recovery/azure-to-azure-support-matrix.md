@@ -4,12 +4,12 @@ description: Összefoglalja az Azure-beli virtuális gépek vész-helyreállít�
 ms.topic: article
 ms.date: 07/14/2020
 ms.author: raynew
-ms.openlocfilehash: 8b931519abb1af48ce139193366649ad3f355569
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 49e005d67702013b77d688d346860a217a13c561
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87172025"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460116"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Támogatási mátrix az Azure-beli virtuális gépek Azure-régiók közötti vész-helyreállításához
 
@@ -109,7 +109,7 @@ SUSE Linux Enterprise Server 12 | SP1, SP2, SP3, SP4, SP5 [(támogatott kernel-v
 SUSE Linux Enterprise Server 15 | 15 és 15 SP1. [(Támogatott kernel-verziók)](#supported-suse-linux-enterprise-server-15-kernel-versions-for-azure-virtual-machines)
 SUSE Linux Enterprise Server 11 | SP3<br/><br/> A replikáló gépek SP3-ről SP4-re való frissítése nem támogatott. Ha egy replikált gépet frissítettek, le kell tiltania a replikálást, és újra engedélyeznie kell a replikálást a frissítés után.
 SUSE Linux Enterprise Server 11 | SP4
-Oracle Linux | 6,4, 6,5, 6,6, 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, 7,6, [7,7](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery), [7,8](https://support.microsoft.com/help/4573888/), [8,0](https://support.microsoft.com/help/4573888/), [8,1](https://support.microsoft.com/help/4573888/) <br/><br/> A Red hat-kompatibilis kernel vagy a nem törhető vállalati kernel kiadásának futtatása 3, 4 & 5 (UEK3, UEK4, UEK5)
+Oracle Linux | 6,4, 6,5, 6,6, 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, 7,6, [7,7](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery), [7,8](https://support.microsoft.com/help/4573888/), [8,0](https://support.microsoft.com/help/4573888/)  <br/> A Red hat-kompatibilis kernel vagy a nem törhető vállalati kernel kiadásának futtatása 3, 4 & 5 (UEK3, UEK4, UEK5)<br/><br/>[8.1](https://support.microsoft.com/help/4573888/)<br/>Az összes UEK kernel és a RedHat kernel <= 3.10.0-1062. * támogatott. A RedHat-kernelek további támogatását az augusztus végéig elvárt 9,36-es verzióban érheti el.
 
 * * Megjegyzés: a legújabb Linux-kernelek a kiadástól számított 30 napon belül történő támogatásához Azure Site Recovery a legújabb mobilitási ügynök verziójának tetején kidobjuk a gyors javítást. Ez a javítás két fő verzió közötti kiadásban érhető el. Ha frissíteni szeretné a mobilitási ügynök legújabb verziójára (beleértve a gyors javítást is), kövesse az [ebben a cikkben](service-updates-how-to.md#azure-vm-disaster-recovery-to-azure)említett lépéseket. Ez a javítás jelenleg az Azure-ban az Azure DR-ben használt mobilitási ügynökök számára készült.
 

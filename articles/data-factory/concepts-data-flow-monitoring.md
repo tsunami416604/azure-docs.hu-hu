@@ -1,19 +1,19 @@
 ---
-title: Adatfolyamok vizuális figyelésének leképezése
-description: Azure Data Factory adatfolyamatok vizuális monitorozása
+title: Figyelési leképezési adatfolyamok
+description: A leképezési adatfolyamatok vizuális figyelése Azure Data Factory
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
+ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/03/2020
-ms.openlocfilehash: 1126f73b4d2e51e952a7cf971363020242838c34
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: ad5fb077596b6cc444c1c4df81af32cbcfa7c1db
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85958896"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475549"
 ---
 # <a name="monitor-data-flows"></a>Adatfolyamatok figyelése
 
@@ -27,7 +27,7 @@ A folyamat végrehajtásakor nyomon követheti a folyamatot és az összes olyan
 
 Ezen a szinten láthatja a statisztikát is, beleértve a futtatási időpontokat és az állapotot. A futtatási azonosító a tevékenység szintjén eltér a folyamat szintjén lévő futtatási AZONOSÍTÓtól. A futtatási azonosító az előző szinten a folyamathoz szükséges. A szemüvegek kiválasztásával részletes információkhoz jutunk az adatfolyamok végrehajtásáról.
 
-![Adatfolyam-figyelés](media/data-flow/mon002.png "Adatfolyam-figyelés")
+![Adatfolyam-figyelés](media/data-flow/monitoring-details.png "Adatfolyam-figyelés")
 
 Ha a grafikus csomópont figyelési nézetében van, az Adatfolyam-diagram egyszerűsített, csak megtekintésre kész verzióját láthatja.
 

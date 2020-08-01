@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/23/2020
 ms.topic: conceptual
 ms.custom: how-to, tracking-python
-ms.openlocfilehash: c1c146783d54bf2df25a130b73ab430c6edeaef7
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: d39b5f414b1998a4c0eacbbf8fd792d27c70309c
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319456"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87474580"
 ---
 # <a name="create--use-software-environments-in-azure-machine-learning"></a>Hozzon létre & a szoftveres környezetek használatával Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -262,7 +262,8 @@ myenv.docker.enabled = True
 
 Alapértelmezés szerint az újonnan létrehozott Docker-rendszerkép megjelenik a munkaterülethez társított tároló-beállításjegyzékben.  Az adattár neve *azureml/azureml_ \<uuid\> *formátumú. A név egyedi azonosítója (*UUID*) a környezeti konfiguráció alapján számított kivonatnak felel meg. Ez a levelezés lehetővé teszi, hogy a szolgáltatás meghatározhatja, hogy az adott környezethez tartozó rendszerkép már létezik-e az újrafelhasználáshoz.
 
-Emellett a szolgáltatás automatikusan a Ubuntu Linux-alapú [alaplemezképek](https://github.com/Azure/AzureML-Containers)egyikét használja. Telepíti a megadott Python-csomagokat. Az alaprendszerkép processzor-és GPU-verziókkal rendelkezik. Azure Machine Learning automatikusan észleli, hogy melyik verziót kell használni. [Egyéni Docker-alaprendszerkép](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-custom-docker-image#create-a-custom-base-image)is használható.
+### <a name="use-a-custom-docker-image-or-dockerfile"></a>Egyéni Docker-rendszerkép vagy Docker használata 
+A szolgáltatás automatikusan a Ubuntu Linux-alapú [alaplemezképek](https://github.com/Azure/AzureML-Containers)egyikét használja. Telepíti a megadott Python-csomagokat. Az alaprendszerkép processzor-és GPU-verziókkal rendelkezik. Azure Machine Learning automatikusan észleli, hogy melyik verziót kell használni. [Egyéni Docker-alaprendszerkép](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-custom-docker-image#create-a-custom-base-image)is használható.
 
 ```python
 # Specify custom Docker base image and registry, if you don't want to use the defaults
@@ -407,7 +408,9 @@ service = Model.deploy(
     deployment_config = deployment_config)
 ```
 
-## <a name="example-notebooks"></a>Példajegyzetfüzetek
+## <a name="notebooks"></a>Notebooks
+
+Ez a [cikk](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#add-new-kernels) azt ismerteti, hogyan telepíthető a Conda-környezet kernelként egy jegyzetfüzetben.
 
 Ez a [példa](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training/using-environments) a jelen cikkben ismertetett fogalmakat és metódusokat mutatja be.
 

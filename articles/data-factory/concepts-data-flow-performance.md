@@ -6,171 +6,277 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
-ms.date: 07/06/2020
-ms.openlocfilehash: 9f420b37bd44a46d4149e89cf5876d8e8b712581
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/27/2020
+ms.openlocfilehash: 55483b93b770687703b381366d48edbc7d48f26e
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86114380"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475329"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Adatfolyamatok teljesítményének és hangolási útmutatójának leképezése
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-A Azure Data Factory adatforgalmának leképezése egy kód nélküli felületet biztosít az adatátalakítások méretekben történő megtervezéséhez, üzembe helyezéséhez és előkészítéséhez. Ha nem ismeri a leképezési adatfolyamatokat, tekintse meg a [leképezési adatfolyam áttekintése](concepts-data-flow-overview.md)című témakört.
+A Azure Data Factory adatforgalmának leképezése kód nélküli felületet biztosít az adatátalakítások nagy léptékű kialakításához és futtatásához. Ha nem ismeri a leképezési adatfolyamatokat, tekintse meg a [leképezési adatfolyam áttekintése](concepts-data-flow-overview.md)című témakört. Ez a cikk az adatfolyamatok hangolásának és optimalizálásának különböző módjait mutatja be, hogy azok megfeleljenek a teljesítményre vonatkozó referenciaértékeknek.
 
-Az ADF UX-ből származó adatfolyamatok tervezésekor és tesztelésekor ügyeljen arra, hogy a hibakeresési módot váltson át úgy, hogy valós időben hajtsa végre az adatfolyamatokat anélkül, hogy a fürt bemelegítésére kellene várnia. További információ: [hibakeresési mód](concepts-data-flow-debug-mode.md).
+Tekintse meg az alábbi videót, amelyből megtudhatja, hogyan alakíthat át adatfolyamatokat az adatáramlásokkal.
 
-Ebből a videóból megtekintheti az adatfolyamatokkal való adatátalakítással kapcsolatos néhány minta időzítést:
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4rNxM]
+
+## <a name="testing-data-flow-logic"></a>Adatfolyam-logika tesztelése
+
+Az ADF UX-ből származó adatfolyamatok tervezésekor és tesztelésekor a hibakeresési mód lehetővé teszi az interaktív tesztelést egy élő Spark-fürtön. Ez lehetővé teszi az adatelemzést és az adatfolyamatok végrehajtását anélkül, hogy a fürt bemelegítésére kellene várnia. További információ: [hibakeresési mód](concepts-data-flow-debug-mode.md).
 
 ## <a name="monitoring-data-flow-performance"></a>Az adatfolyam teljesítményének figyelése
 
-A leképezési adatfolyamatok tervezésekor az egyes átalakításokat egységesen tesztelheti a konfigurációs panel adatelőnézet lapjára kattintva. Miután ellenőrizte a logikát, tesztelje az adatfolyamatot egy folyamat tevékenységében. Vegyen fel egy végrehajtási adatfolyam-tevékenységet, és használja a hibakeresés gombot az adatfolyam teljesítményének teszteléséhez. Az adatfolyam végrehajtási tervének és teljesítmény-profiljának megnyitásához kattintson a "műveletek" alatt található szemüvegek ikonra a folyamat kimenet lapján.
+Miután a hibakeresési mód használatával ellenőrizte az átalakítási logikát, az adatfolyamatot végpontok között futtathatja tevékenységként egy folyamaton belül. Az adatfolyamatok egy folyamat során működnek, az [adatfolyamok végrehajtása tevékenység](control-flow-execute-data-flow-activity.md)használatával. Az adatfolyam-tevékenység egyedi figyelési felülettel rendelkezik, mint a többi Azure Data Factory tevékenység, amely az átalakítási logika részletes végrehajtási tervét és teljesítményét jeleníti meg. Az adatfolyamok részletes figyelési információinak megtekintéséhez kattintson a tevékenység futtatása művelet kimenetében található szemüveg ikonra. További információ: a [leképezési adatok forgalmának figyelése](concepts-data-flow-monitoring.md).
 
-![Adatfolyam-figyelő](media/data-flow/mon002.png "Adatfolyam-figyelő 2")
+![Adatfolyam-figyelő](media/data-flow/monitoring-details.png "Adatfolyam-figyelő 2")
 
- Ezekkel az adatokkal megbecsülheti az adatáramlás teljesítményét a különböző méretű adatforrások esetében. További információ: a [leképezési adatok forgalmának figyelése](concepts-data-flow-monitoring.md).
+Az adatfolyamok teljesítményének figyelése során négy lehetséges szűk keresztmetszetet talál a következő esetekben:
 
-![Adatfolyam-figyelés](media/data-flow/mon003.png "Adatfolyam-figyelő 3")
+* Fürt indítási ideje
+* Olvasás forrásból
+* Átalakítási idő
+* Írás egy fogadóba 
 
- A folyamat-hibakeresési műveletek esetében körülbelül egy percen belül üzembe helyezési idő szükséges a teljes teljesítmény-számításokban a meleg fürthöz. Az alapértelmezett Azure Integration Runtime inicializálásakor a Felpörgetési idő körülbelül 4 percet vesz igénybe.
+![Adatfolyam-figyelés](media/data-flow/monitoring-performance.png "Adatfolyam-figyelő 3")
 
-## <a name="increasing-compute-size-in-azure-integration-runtime"></a>Azure Integration Runtime számítási méretének növelése
+A fürt indítási ideje az Apache Spark-fürt felgyorsításához szükséges idő. Ez az érték a figyelési képernyő jobb felső sarkában található. Az adatfolyamatok egy igény szerinti modellen futnak, ahol az egyes feladatok elkülönített fürtöt használnak. Ez az indítási idő általában 3-5 percet vesz igénybe. Szekvenciális feladatokhoz ez a művelet csökkentheti az élettartam értékét. További információ: [a Azure Integration Runtime optimalizálása](#ir).
 
-A több magot tartalmazó Integration Runtime növeli a Spark számítási környezetekben lévő csomópontok számát, és nagyobb feldolgozási teljesítményt biztosít az adatok olvasásához, írásához és átalakításához. Az ADF-adatfolyamatok a Sparkot használják a számítási motorhoz. A Spark-környezet nagyon jól működik a memóriára optimalizált erőforrásokon.
+Az adatforgalom olyan Spark-optimalizáló használ, amely a lehető leggyorsabban végrehajtja az üzleti logikát a "fázisokban". A figyelési kimenet az egyes adatfolyamatok esetében az egyes transzformációs szakaszok időtartamát, valamint az adatfogadóba való íráshoz szükséges időt listázza. Az idő, amely a legnagyobb, valószínűleg az adatáramlás szűk keresztmetszetét jelenti. Ha a legnagyobb Adatátalakítási fázisban a forrás szerepel, érdemes megtekinteni az olvasási idő további optimalizálását. Ha egy átalakítás hosszú időt vesz igénybe, akkor előfordulhat, hogy újra kell particionálnia vagy meg kell emelnie az integrációs modul méretét. Ha a fogadó feldolgozási ideje nagy, lehet, hogy fel kell méreteznie az adatbázist, vagy ellenőriznie kell, hogy nincs-e egyetlen fájlra kiterjesztve.
 
-Javasoljuk, hogy a legtöbb számítási feladathoz **optimalizált memóriát** használjon. A memóriában több adattal is tárolhatók, és a memóriában lévő hibák csökkenthetők. Az optimalizált memória magasabb árat mutat, mint a számítási optimalizált érték, de valószínűleg gyorsabb átalakítási sebességet és sikeres folyamatokat eredményez. Ha az adatfolyamatok végrehajtása során a memóriával kapcsolatos hibákat tapasztal, váltson a memóriára optimalizált Azure IR konfigurációra.
+Miután azonosította az adatáramlás szűk keresztmetszetét, az alábbi optimalizálási stratégiák használatával növelheti a teljesítményt.
 
-A **számításra optimalizált számítási** funkció elegendő a korlátozott számú adatsor hibakereséséhez és adatmegjelenítéséhez. A számítási feladatokra optimalizált számítások valószínűleg nem lesznek végrehajtva az éles munkaterhelések esetében is.
+## <a name="optimize-tab"></a>Optimalizálás lap
 
-![Új IR](media/data-flow/ir-new.png "Új IR")
+Az **optimalizálás** lap a Spark-fürt particionálási sémájának konfigurálásához szükséges beállításokat tartalmazza. Ez a lap az adatfolyam minden átalakításában megtalálható, és megadja, hogy az átalakítás befejeződése **után** szeretné-e újraparticionálni az adatparticionálást. A particionálás beállítása lehetővé teszi az adatok elosztását a számítási csomópontok és az adatkörnyezet-optimalizálások között, amelyek mind pozitív, mind negatív hatással lehetnek a teljes adatfolyam-teljesítményre.
+
+![Optimalizálás](media/data-flow/optimize.png "Optimalizálás")
+
+Alapértelmezés szerint a *jelenlegi particionálás használata* beállítás van kiválasztva, amely arra utasítja Azure Data Factory az átalakítás aktuális kimeneti particionálását. Ahogy az adatok újraparticionálása időt vesz igénybe, a legtöbb esetben ajánlott a *jelenlegi particionálás használata* . Olyan forgatókönyvek, amelyekben érdemes lehet az adatok újraparticionálása olyan összesítések és illesztések után, amelyek jelentősen elferdítik az adatokat, vagy ha az SQL-ADATBÁZISon alapuló forrás-particionálást használnak.
+
+Ha módosítani szeretné a particionálást bármely transzformáción, válassza az **optimalizálás** fület, és válassza a **particionálás beállítása** választógombot. A particionálási lehetőségek sorozatát mutatjuk be. A particionálás legjobb módja az adatmennyiségek, a jelölt kulcsok, a null értékek és a kardinális alapján változhat. 
+
+> [!IMPORTANT]
+> Egyetlen partíció egyesíti az összes elosztott adatait egyetlen partícióban. Ez egy nagyon lassú művelet, amely szintén jelentősen befolyásolja az összes alsóbb rétegbeli átalakítást és írást. A Azure Data Factory nagy mértékben ajánljuk ezt a lehetőséget, hacsak nincs kifejezetten üzleti oka.
+
+A következő particionálási lehetőségek érhetők el minden átalakításban:
+
+### <a name="round-robin"></a>Ciklikus multiplexelés 
+
+A ciklikus multiplexelés a partíciók között egyenlően osztja el az adatelosztást. Ciklikus multiplexelés használata, ha nem rendelkezik megfelelő kulcsfontosságú jelöltekkel a szilárd, intelligens particionálási stratégia megvalósításához. Megadhatja a fizikai partíciók számát.
+
+### <a name="hash"></a>Kivonat
+
+Azure Data Factory az oszlopok kivonatát állítja elő, hogy egységes partíciókat hozzon létre, például a hasonló értékekkel rendelkező sorok ugyanabba a partícióba esnek. Ha a kivonatoló kapcsolót használja, tesztelje a lehetséges partíciók döntését. Megadhatja a fizikai partíciók számát.
+
+### <a name="dynamic-range"></a>Dinamikus tartomány
+
+A dinamikus tartomány Spark dinamikus tartományokat használ az Ön által megadott oszlopok vagy kifejezések alapján. Megadhatja a fizikai partíciók számát. 
+
+### <a name="fixed-range"></a>Rögzített tartomány
+
+Hozzon létre egy olyan kifejezést, amely rögzített tartományt biztosít a particionált adatoszlopokban lévő értékek számára. Ha el szeretné kerülni a partíciók eldöntését, érdemes megismernie az adatait, mielőtt ezt a beállítást használja. A kifejezéshez megadott értékek a Partition függvény részeként használatosak. Megadhatja a fizikai partíciók számát.
+
+### <a name="key"></a>Kulcs
+
+Ha jól ismeri az Ön adatait, a kulcsfontosságú particionálás jó stratégia lehet. A kulcs particionálásával az oszlop minden egyedi értékéhez partíciók jönnek létre. A partíciók száma nem állítható be, mert a szám az adatok egyedi értékein alapul.
+
+> [!TIP]
+> A particionálási séma manuális beállítása átrendezi az adatmennyiséget, és ellensúlyozza a Spark-optimalizáló előnyeit. A legjobb megoldás, ha nem kell manuálisan beállítania a particionálást.
+
+## <a name="optimizing-the-azure-integration-runtime"></a><a name="ir"></a>A Azure Integration Runtime optimalizálása
+
+Az adatfolyamatok olyan Spark-fürtökön futnak, amelyek futás közben forognak. A használt fürt konfigurációja a tevékenység Integration Runtime (IR) szolgáltatásában van definiálva. Az integrációs modul definiálásakor három teljesítménnyel kapcsolatos szempontot kell figyelembe venni: a fürt típusa, a fürt mérete és az élettartam.
 
 Integration Runtime létrehozásával kapcsolatos további információkért lásd: [Integration Runtime Azure Data Factory](concepts-integration-runtime.md).
 
-### <a name="increase-the-size-of-your-debug-cluster"></a>A hibakeresési fürt méretének növeléséhez
+### <a name="cluster-type"></a>Fürt típusa
 
-Alapértelmezés szerint a hibakeresés bekapcsolása az alapértelmezett Azure Integration runtimet fogja használni, amely minden egyes adatfeldolgozó esetében automatikusan létrejön. Ez az alapértelmezett Azure IR nyolc mag, egy illesztőprogram-csomópont esetében négy, a munkavégző csomópont esetében négy pedig az általános számítási tulajdonságok használatával van beállítva. Ha nagyobb mennyiségű adattesztet használ, a hibakeresési fürt méretének növeléséhez hozzon létre egy Azure IR nagyobb konfigurációval, és válassza ezt az új Azure IR a hibakeresési lehetőség bekapcsolásakor. Ennek hatására az ADF ezt a Azure IR használja az adatelemzési és folyamat-hibakereséshez az adatfolyamatokkal.
+Három elérhető lehetőség áll rendelkezésre a Spark-fürt felskálázásának típusára: általános célú, memóriára optimalizált és a számítás optimalizált.
 
-### <a name="decrease-cluster-compute-start-up-time-with-ttl"></a>A fürt számítási indítási idejének csökkentése ÉLETTARTAMmal
+Az **általános célú** fürtök az alapértelmezettek, és a legtöbb adatáramlási számítási feladathoz ideálisak lesznek. Ezek általában a teljesítmény és a költséghatékonyság legjobb egyensúlya.
 
-Az adatáramlás tulajdonságainál az Azure IR egy tulajdonsága, amely lehetővé teszi, hogy a gyári számítási erőforrások készletét elbírja a gyár számára. Ezzel a készlettel szekvenciálisan elküldheti az adatfolyam-tevékenységeket a végrehajtáshoz. A készlet létrehozása után minden további teendő 1-2 percet vesz igénybe, hogy az igény szerinti Spark-fürt végrehajtsa a feladatot. Az erőforráskészlet kezdeti beállítása körülbelül 4 percet vesz igénybe. Itt adhatja meg, hogy mennyi ideig kívánja fenntartani az erőforráskészletet az élettartam (TTL) beállításban.
+Ha az adatfolyam számos illesztéssel és keresési lehetőséggel rendelkezik, érdemes lehet **memóriát használó optimalizált** fürtöt használni. A memóriára optimalizált fürtök több memóriát tárolhatnak a memóriában, és az esetlegesen fellépő memóriabeli hibákat is csökkenthetik. A memóriára optimalizált memória a legmagasabb árat eredményezi, de általában még sikeres folyamatokat is eredményezhet. Ha az adatfolyamatok végrehajtása során a memóriával kapcsolatos hibák merülnek fel, váltson át a memóriára optimalizált Azure IR konfigurációra. 
 
-## <a name="optimizing-for-azure-sql-database-and-azure-sql-data-warehouse-synapse"></a>Optimalizálás Azure SQL Database és Azure SQL Data Warehouse szinapszis számára
+Az **optimalizált számítások** nem ideálisak az ETL-munkafolyamatokhoz, és a Azure Data Factory csapata nem javasolja a legtöbb éles számítási feladathoz. Az egyszerűbb, memórián kívüli, intenzív adatátalakítások, például adatok szűrése vagy származtatott oszlopok hozzáadása esetén a számítási optimalizált fürtök olcsóbb áron használhatók.
 
-### <a name="partitioning-on-source"></a>Particionálás a forráson
+### <a name="cluster-size"></a>Fürt mérete
 
-1. Lépjen az **optimalizálás** lapra, és válassza a **particionálás beállítása** lehetőséget.
-1. Válassza a **forrás**lehetőséget.
-1. A **partíciók száma**területen állítsa be a kapcsolatok maximális számát az Azure SQL-adatbázishoz. Nagyobb beállítást is kipróbálhat, ha párhuzamos kapcsolatot szeretne létesíteni az adatbázissal. Bizonyos esetekben azonban előfordulhat, hogy a gyorsabb teljesítmény korlátozott számú kapcsolattal jár.
-1. Válassza ki, hogy egy adott tábla vagy lekérdezés alapján kívánja-e particionálni.
-1. Ha az **oszlop**lehetőséget választotta, válassza ki a partíció oszlopot.
-1. Ha a **lekérdezés**lehetőséget választotta, adjon meg egy olyan lekérdezést, amely megfelel az adatbázis-tábla particionálási sémájának. Ez a lekérdezés lehetővé teszi, hogy a forrás-adatbázis motorja kihasználja a partíciók eltávolítását. A forrás-adatbázis táblái nem szükségesek particionálni. Ha a forrás még nincs particionálva, az ADF továbbra is az adatparticionálást fogja használni a Spark átalakítási környezetben a forrás-átalakításban kiválasztott kulcs alapján.
+Az adatfolyamatok egy Spark-fürt különböző csomópontjain keresztül terjesztik az adatfeldolgozást, hogy párhuzamosan hajtsák végre a műveleteket. Egy több magot tartalmazó Spark-fürt növeli a számítási környezet csomópontjainak számát. Több csomópont fokozza az adatfolyam feldolgozási erejét. A fürt méretének növelése gyakran egyszerű módja a feldolgozási idő csökkentésének.
 
-![Forrás része](media/data-flow/sourcepart3.png "Forrás része")
+Az alapértelmezett fürt mérete négy illesztőprogram-csomópont és négy munkavégző csomópont.  Az adatfeldolgozás során nagyobb fürtök használata javasolt. Alább láthatók a lehetséges Méretezési lehetőségek:
+
+| Munkavégző magok | Illesztőprogram-magok | Magok száma összesen | Jegyzetek |
+| ------------ | ------------ | ----------- | ----- |
+| 4 | 4 | 8 | Nem érhető el a számításhoz optimalizált |
+| 8 | 8 | 16 | |
+| 16 | 16 | 32 | |
+| 32 | 16 | 48 | |
+| 64 | 16 | 80 | |
+| 128 | 16 | 144 | |
+| 256 | 16 | 272 | |
+
+Az adatfolyamatok díjszabása virtuális mag-óra, ami azt jelenti, hogy a fürt mérete és a végrehajtási idő tényezője is. A vertikális felskálázás során a fürt percenkénti díja növekedni fog, de a teljes idő csökken.
+
+> [!TIP]
+> A fürt méretétől függ, hogy mekkora a mérete egy adott adatfolyam teljesítményének. Az adatmérettől függően a fürt méretének növelésével leáll a teljesítmény javítása. Ha például több csomóponttal rendelkezik, mint az adatpartíciók, további csomópontok hozzáadása nem segít. Az ajánlott eljárás a kis-és a vertikális felskálázás, hogy megfeleljen a teljesítmény igényeinek. 
+
+### <a name="time-to-live"></a>Élettartam
+
+Alapértelmezés szerint minden adatfolyam-tevékenység egy új fürtöt indít el az IR-konfiguráció alapján. A fürt indítási ideje néhány percet vesz igénybe, és az adatfeldolgozás nem kezdődhet egészen addig, amíg be nem fejeződik. Ha a folyamatok több **szekvenciális** adatfolyamatot tartalmaznak, akkor engedélyezheti az élettartam (TTL) értékét. Az élő érték megadásával a fürt a végrehajtás befejeződése után bizonyos ideig életben marad. Ha egy új feladatot az élettartam ideje alatt az IR használatával kezdi meg, a rendszer újra felhasználja a meglévő fürtöt, és a kezdési idő perc helyett másodpercben lesz. A második művelet befejezése után a fürt ismét életben marad a TTL-idő alatt.
+
+Egyszerre csak egy feladatot lehet futtatni egyetlen fürtön. Ha van elérhető fürt, de két adatfolyam indul el, csak egy fogja használni az élő fürtöt. A második feladatot a saját elszigetelt fürtje fogja felkészíteni.
+
+Ha a legtöbb adatfolyamat párhuzamosan fut, nem ajánlott engedélyezni az ÉLETTARTAMot. 
 
 > [!NOTE]
-> Egy jó útmutató a forráshoz tartozó partíciók számának kiválasztásához a Azure Integration Runtime számára beállított magok száma alapján, és az érték szorzása öt értékkel. Így például, ha a ADLS-mappákban több fájlt alakít át, és egy 32 Magos Azure IR fog használni, a célként megadott partíciók száma 32 x 5 = 160 partíció.
+> Az integrációs modul automatikus feloldása esetén az élettartam nem érhető el
 
-### <a name="source-batch-size-input-and-isolation-level"></a>Forrás köteg mérete, bemenete és elkülönítési szintje
+## <a name="optimizing-sources"></a>Források optimalizálása
 
-A forrás-átalakítás **forrás beállításai** területen a következő beállítások befolyásolhatják a teljesítményt:
+A Azure SQL Database kivételével minden forrás esetében ajánlott az **aktuális particionálást** a kijelölt értékként használni. Az adatforgalom az összes többi forrásból való olvasáskor az adatok mérete alapján automatikusan particionálja az adatok mennyiségét. A rendszer minden 128 MB-nyi adattal létrehoz egy új partíciót. Az adatméret növekedésével a partíciók száma növekszik.
 
-* A Batch-méret arra utasítja az ADF-et, hogy a Spark-memóriában lévő készletekben tárolja az adatsorokat a soron belüli sorok helyett. A köteg mérete választható beállítás, és a számítási csomópontokon kifogyhat az erőforrások, ha nem megfelelően vannak kiválasztva. Ha ezt a tulajdonságot nem állítja be, akkor a Spark cache batch alapértelmezett értékeit fogja használni.
-* A lekérdezés beállítása lehetővé teszi a sorok szűrését a forrásban, mielőtt az adatfolyamot megérkeznek a feldolgozáshoz. Ez gyorsabbá teheti a kezdeti adatgyűjtést. Ha lekérdezést használ, hozzáadhat opcionális lekérdezési mutatókat az Azure SQL-ADATBÁZIShoz, például az olvasás nem véglegesített műveletekhez.
-* A nem véglegesített olvasási művelet gyorsabb lekérdezési eredményeket biztosít a forrás átalakításakor
+Az egyéni particionálás a Spark beolvasása *után* következik be az adatokat, és negatív hatással lesz az adatfolyam teljesítményére. Mivel az információk egyenletesen particionálva vannak az olvasáskor, ez nem ajánlott. 
 
-![Forrás](media/data-flow/source4.png "Forrás")
+> [!NOTE]
+> Az olvasási sebességet a forrásrendszer átviteli sebessége korlátozhatja.
 
-### <a name="sink-batch-size"></a>Fogadó köteg mérete
+### <a name="azure-sql-database-sources"></a>Azure SQL Database források
 
-Az adatfolyamatok soron belüli feldolgozásának elkerüléséhez állítsa be a **Batch-méretet** az Azure SQL db és az Azure SQL DW mosogatók beállítások lapján. Ha a köteg mérete be van állítva, az ADF a megadott méret alapján dolgozza fel a kötegekben lévő adatbázis-írási műveleteket. Ha ezt a tulajdonságot nem állítja be, akkor a Spark cache batch alapértelmezett értékeit fogja használni.
+Azure SQL Database rendelkezik egy "forrás" particionálás nevű egyedi particionálási lehetőséggel. A forrás-particionálás engedélyezése javíthatja az Azure SQL-adatbázis olvasási idejét a párhuzamos kapcsolatok engedélyezésével a forrásrendszer használatával. Adja meg a partíciók számát és az adatai particionálásának módját. Használjon egy nagy fokú kihasználható partíciós oszlopot. Megadhat egy olyan lekérdezést is, amely megfelel a forrástábla particionálási sémájának.
 
-![Sink (Fogadó)](media/data-flow/sink4.png "Sink (Fogadó)")
+> [!TIP]
+> A forrás particionálás esetén a SQL Server I/O-értéke a szűk keresztmetszet. Ha túl sok partíciót ad hozzá, a forrás-adatbázis felmerülhet. A kapcsoló használata esetén általában négy vagy öt partíció ideális.
 
-### <a name="partitioning-on-sink"></a>Particionálás a fogadón
+![Forrás particionálás](media/data-flow/sourcepart3.png "Forrás particionálás")
 
-Még ha nincs is particionálva az adatai a célhelyen, a javasolt, hogy az adatai particionálva legyenek a fogadó átalakításban. A particionált adatmennyiség gyakran gyorsabb betöltést eredményez, így az összes kapcsolat egyetlen csomópont/partíció használatára van kényszerítve. Nyissa meg a fogadó optimalizálás lapját, és válassza a *ciklikus multiplexelés* particionálása lehetőséget a fogadóba írni kívánt partíciók ideális számának kiválasztásához.
+#### <a name="isolation-level"></a>Elkülönítési szint
 
-### <a name="disable-indexes-on-write"></a>Indexek letiltása íráskor
+Egy Azure SQL-forrás rendszer olvasásának elkülönítési szintje hatással van a teljesítményre. A "nem véglegesített olvasás" lehetőség kiválasztásával biztosíthatja a leggyorsabb teljesítményt, és megakadályozhatja az adatbázisok zárolását. Az SQL elkülönítési szintjeivel kapcsolatos további tudnivalókért tekintse meg az [elkülönítési szintek ismertetése](https://docs.microsoft.com/sql/connect/jdbc/understanding-isolation-levels?view=sql-server-ver15)című témakört.
 
-A folyamat során adjon hozzá egy [tárolt eljárási tevékenységet](transform-data-using-stored-procedure.md) az adatfolyam tevékenysége előtt, amely letiltja a fogadóban írt céltábla indexeit. Az adatfolyam tevékenysége után adjon hozzá egy másik tárolt eljárási tevékenységet, amely engedélyezi ezeket az indexeket. Az adatbázis-fogadóban az előfeldolgozási és a feldolgozás utáni parancsfájlokat is használhatja.
+#### <a name="read-using-query"></a>Olvasás a lekérdezés használatával
 
-### <a name="increase-the-size-of-your-azure-sql-db-and-dw"></a>Az Azure SQL-adatbázis és a DW méretének növeléséhez
+Azure SQL Database a tábla vagy SQL-lekérdezés használatával olvashatja el. Ha SQL-lekérdezést hajt végre, a lekérdezésnek el kell végeznie az átalakítás megkezdése előtt. Az SQL-lekérdezések hasznosak lehetnek olyan műveletek leküldésére, amelyek gyorsabban futnak, és csökkenthetik a SQL Server beolvasott adatok mennyiségét, például SELECT, WHERE és JOIN utasítások. A műveletek lenyomásakor elvész az átalakítások nyomon követése és teljesítménye, mielőtt az adatok bekerülnek az adatfolyamba.
+
+### <a name="azure-synapse-analytics-sources"></a>Azure szinapszis analitikai források
+
+Az Azure szinapszis Analytics használatakor a forrás beállításai között az **átmeneti engedélyezés** nevű beállítás található. Ez lehetővé teszi, hogy az [ADF-ből a szinapszis használatával tudjon](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide?view=sql-server-ver15)olvasni, ami jelentősen javítja az olvasási teljesítményt. A Gen2 engedélyezéséhez meg kell adnia egy Azure-Blob Storage vagy Azure Data Lake Storage-előkészítési helyet az adatfolyam tevékenységi beállításai között.
+
+![Előkészítés engedélyezése](media/data-flow/enable-staging.png "Előkészítés engedélyezése")
+
+### <a name="file-based-sources"></a>Fájl alapú források
+
+Míg az adatfolyamatok többféle fájltípust támogatnak, a Azure Data Factory a Spark-natív parketta formátum használatát javasolja az optimális olvasási és írási időpontokhoz.
+
+Ha ugyanazokat az adatfolyamatokat futtatja egy adott fájlon, azt javasoljuk, hogy egy mappából, helyettesítő elérési utak használatával vagy a fájlok listájából olvasson be egy fájlt. Egyetlen adatfolyam-tevékenység futtatásával feldolgozhatja az összes fájlt a Batch szolgáltatásban. A beállítások megadásával kapcsolatos további információkért tekintse meg az összekötők dokumentációját, például az [Azure Blob Storage](connector-azure-blob-storage.md#source-transformation).
+
+Ha lehetséges, kerülje a for-each tevékenység használatát, hogy adatfolyamatokat futtasson a fájlok egy adott készletén. Ennek hatására a for-each minden egyes iterációja saját Spark-fürtöt hoz létre, ami gyakran nem szükséges, és költséges lehet. 
+
+## <a name="optimizing-sinks"></a>A mosogatók optimalizálása
+
+Amikor az adatfolyamatok elsüllyednek, az egyéni particionálások azonnal megtörténnek az írás előtt. A forráshoz hasonlóan a legtöbb esetben azt javasoljuk, hogy a **jelenlegi particionálást használja** a kiválasztott partíciós beállításként. A particionált adatai jelentősen gyorsabban fognak megjelenni, mint a nem particionált adatértékek, még a cél sincs particionálva. Az alábbiakban láthatók a különböző fogadó típusok egyedi szempontjai. 
+
+### <a name="azure-sql-database-sinks"></a>Azure SQL Database mosogatók
+
+A Azure SQL Database esetében az alapértelmezett particionálásnak a legtöbb esetben működnie kell. Előfordulhat, hogy a fogadó túl sok partícióval rendelkezik az SQL-adatbázis kezeléséhez. Ha ezt a szolgáltatást futtatja, csökkentse a SQL Database fogadó által kiosztott partíciók számát.
+
+#### <a name="disabling-indexes-using-a-sql-script"></a>Indexek letiltása SQL-parancsfájl használatával
+
+Az indexek letiltásával az SQL-adatbázisok terhelése jelentősen javíthatja a tábla írásának teljesítményét. Futtassa az alábbi parancsot az SQL-gyűjtőbe való írás előtt.
+
+`ALTER INDEX ALL ON dbo.[Table Name] DISABLE`
+
+Az írás befejezése után építse újra az indexeket a következő paranccsal:
+
+`ALTER INDEX ALL ON dbo.[Table Name] REBUILD`
+
+Ezek az Azure SQL DB-ben vagy a szinapszis-tárolón belül, az adatfolyamatok leképezése során egyaránt natív módon hajthatók végre.
+
+![Indexek letiltása](media/data-flow/disable-indexes-sql.png "Indexek letiltása")
+
+> [!WARNING]
+> Az indexek letiltásakor az adatfolyam gyakorlatilag nem veszi át az adatbázis irányítását, és a lekérdezések nem valószínű, hogy sikeresek lesznek. Ennek eredményeképpen számos ETL-feladat aktiválva lesz az éjszaka közepén, hogy elkerülje ezt az ütközést. További információ az [indexek letiltásának korlátozásait](https://docs.microsoft.com/sql/relational-databases/indexes/disable-indexes-and-constraints?view=sql-server-ver15) ismerteti.
+
+#### <a name="scaling-up-your-database"></a>Az adatbázis vertikális felskálázása
 
 Ütemezze a forrás átméretezését, és az Azure SQL DB-t és a DW-t a folyamat futtatása előtt, növelje az átviteli sebességet, és csökkentse az Azure-szabályozást a DTU korlátainak elérése után. A folyamat befejezése után méretezze át az adatbázisokat a normál futtatási sebességre.
 
-* Az SQL DB forrásoldali tábla 887k-sorokkal és 74-oszlopokkal, egyetlen származtatott oszlop-átalakítással rendelkező SQL DB-táblázattal körülbelül 3 percet vesz igénybe a memória optimalizált 80-Core debug Azure IRs használatával.
+### <a name="azure-synapse-analytics-sinks"></a>Azure szinapszis Analytics-mosogatók
 
-### <a name="azure-synapse-sql-dw-only-use-staging-to-load-data-in-bulk-via-polybase"></a>[Csak az Azure szinapszis SQL DW esetében] Adatok tömeges betöltésének használata az átmeneti használatával
+Az Azure szinapszis Analyticsbe való íráskor győződjön meg arról, hogy az **előkészítés engedélyezése** True (igaz) értékre van állítva. Ez lehetővé teszi, hogy az ADF olyan [albase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) használatával legyen írható, amely hatékonyan betölti az adatok tömeges betöltését. Egy Azure Data Lake Storage Gen2 vagy Azure Blob Storage-fiókra kell hivatkoznia, amely az adatok előkészítését teszi elérhetővé a Base használatakor.
 
-Ha el szeretné kerülni a sorok közötti beszúrást a DW-be, jelölje be az **előkészítés engedélyezése** a fogadó beállításaiban lehetőséget, hogy az ADF a következőt használja: [autobase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide). A Base lehetővé teszi az ADF számára az adatok tömeges betöltését.
-* Amikor egy folyamatból hajtja végre az adatfolyam-tevékenységet, ki kell választania egy blobot vagy ADLS Gen2 tárolóhelyet az adatoknak a tömeges betöltés során történő előkészítéséhez.
+A kiindulási módszertől eltérő módon ugyanazok az ajánlott eljárások érvényesek az Azure szinapszis Analyticsre Azure SQL Databaseként.
 
-* Az 74 oszlopokat tartalmazó 421Mb-fájl forrása egy szinapszis-táblához, és egy származtatott oszlop transzformációja körülbelül 4 percet vesz igénybe a memória optimalizált 80-Core debug Azure IRs használatával.
+### <a name="file-based-sinks"></a>Fájl alapú mosogatók 
 
-## <a name="optimizing-for-files"></a>Fájlok optimalizálása
+Míg az adatfolyamatok többféle fájltípust támogatnak, a Azure Data Factory a Spark-natív parketta formátum használatát javasolja az optimális olvasási és írási időpontokhoz.
 
-Minden átalakításnál beállíthatja azt a particionálási sémát, amelyet az adatelőállítót használni kíván az optimalizálás lapon. Célszerű először a fájl alapú mosogatókat tesztelni az alapértelmezett particionálás és optimalizálás megtartása mellett. Ha kihagyja a particionálást az "aktuális particionálás" értékre a fájl célhelyén, a Spark lehetővé teszi a számítási feladatok megfelelő alapértelmezett particionálását. Az alapértelmezett particionálás 128 MB/s partíciót használ.
+Ha az adatforgalom egyenletes eloszlású, az **aktuális particionálás** a fájlok írására szolgáló leggyorsabb particionálási lehetőség lesz.
 
-* Kisebb fájlok esetében előfordulhat, hogy a kevesebb partíció kiválasztásával időnként jobb és gyorsabb lehet a kis méretű fájlok particionálása, mint a Spark megkérdezése.
-* Ha nem rendelkezik elegendő információval a forrásadatok közül, válassza a *ciklikus multiplexelés* particionálás lehetőséget, és állítsa be a partíciók számát.
-* Ha az adatai olyan oszlopokkal rendelkeznek, amelyek megfelelő kivonatoló kulcsok lehetnek, válassza a *kivonatoló particionálás*lehetőséget.
+#### <a name="file-name-options"></a>Fájlnév beállításai
 
-* Az 74 oszlopokat tartalmazó 421Mb-fájlból és egy származtatott oszlop-átalakításból álló file Source (forrás), amely körülbelül 2 percet vesz igénybe a memória optimalizált 80-Core hibakeresés Azure IRs használatával.
+A fájlok írásakor olyan elnevezési beállítások közül választhat, amelyek hatással vannak a teljesítményre.
 
-Ha az adatelőnézet és a folyamat hibakeresése során hibakeresést végez, a fájl alapú forrás adatkészletek korlátja és mintavételezési mérete csak a visszaadott sorok számára vonatkozik, nem pedig a sorok olvasására. Ez hatással lehet a hibakeresési végrehajtás teljesítményére, és valószínűleg a folyamat meghibásodását okozza.
-* A hibakeresési fürtök alapértelmezésben kisméretű egycsomópontos fürtök, ezért ajánlott kis méretű fájlokat használni a hibakereséshez. Nyissa meg a hibakeresési beállításokat, és mutasson az adatai egy kis részhalmazára egy ideiglenes fájl használatával.
+![Fogadó beállításai](media/data-flow/file-sink-settings.png "fogadó beállításai")
 
-    ![Hibakeresési beállítások](media/data-flow/debugsettings3.png "Hibakeresési beállítások")
+Az alapértelmezett beállítás kiválasztásával a leggyorsabb **értéket** fogja írni. Az egyes partíciók a Spark alapértelmezett nevével rendelkező fájlnak felelnek meg. Ez akkor hasznos, ha csak az adatok mappájából olvas.
 
-### <a name="file-naming-options"></a>Fájl elnevezési beállításai
+Az elnevezési **minta** beállításával az egyes partíciós fájlok egy több felhasználóbarát névre lesznek átnevezve. Ez a művelet az írás után történik, és valamivel lassabb, mint az alapértelmezett érték. A partíciók segítségével manuálisan nevezheti el az egyes partíciókat.
 
-Az átalakított adatforgalomnak a blob vagy ADLS-fájlok tárolására való írásának leggyakoribb módja. A fogadóban ki kell választania egy adatkészletet, amely egy tárolóra vagy mappára mutat, nem egy elnevezett fájl. Mivel a leképezési adatfolyam a Spark használatával hajtja végre a végrehajtást, a kimenet több fájlra van felosztva a particionálási séma alapján.
+Ha egy oszlop megfelel az adatkimenetnek, akkor az **oszlopokban szereplő adatként**is kiválaszthatja az adatokat. Ez átrendezi az adatszerkezetet, és hatással lehet a teljesítményre, ha az oszlopok nem egyenletesen oszlanak el.
 
-Egy közös particionálási séma a _kimenet egyetlen fájlba_való kiválasztására szolgál, amely az összes kimeneti rész fájlját egyesíti egyetlen fájlba a fogadóban. Ehhez a művelethez a kimenetnek egyetlen fürtcsomópont egyetlen partícióján kell lennie. Ha sok nagyméretű forrásfájlt egyetlen kimeneti fájlba egyesít, elfogyhat a fürt csomópontjának erőforrásai.
+Az **egyetlen fájlba történő kimenet** egyetlen partícióba egyesíti az összes adatokat. Ez hosszú írási időt eredményez, különösen a nagyméretű adatkészletek esetében. A Azure Data Factory csapat kifejezetten azt ajánlja, hogy **ne** válassza ezt a lehetőséget, kivéve, ha erre nincs kifejezett üzleti ok.
 
-A számítási csomópont erőforrásainak kimerítése érdekében tartsa meg az alapértelmezett, optimalizált sémát az adatfolyamban, és adjon hozzá egy másolási tevékenységet a folyamatában, amely egyesíti az összes részét a kimeneti mappából egy új egyetlen fájlba. Ez a technika elkülöníti a fájlok egyesítésének műveletét, és ugyanazt az eredményt éri el, mint a _kimenet beállítása egyetlen fájlba_.
+### <a name="cosmosdb-sinks"></a>CosmosDB mosogatók
 
-### <a name="looping-through-file-lists"></a>Áthurkolás a fájlok listájáról
+A CosmosDB való íráskor az átviteli sebesség és a köteg méretének módosítása az adatáramlás végrehajtása során javíthatja a teljesítményt. Ezek a módosítások csak az adatfolyam-tevékenységek futtatásakor lépnek érvénybe, és a következtetést követően visszatérnek az eredeti gyűjtemény beállításaihoz. 
 
-Ha a forrás-átalakítás több fájlban is megismétli a több fájlra való átirányítást, akkor a leképezési folyamat jobban végrehajtódik Javasoljuk, hogy használjon helyettesítő karaktereket vagy fájlneveket a forrás-átalakításban. Az adatfolyam-folyamat gyorsabban fog történni, mivel lehetővé teszi a hurok a Spark-fürtön belüli megkötését. További információ: [helyettesítő karakter a forrás-átalakításban](connector-azure-data-lake-storage.md#mapping-data-flow-properties).
+**Köteg mérete:** Kiszámítja az adatainak durva sorszámát, és győződjön meg arról, hogy a sor mérete * batch mérete kisebb, mint 2 000 000. Ha igen, növelje a köteg méretét, hogy jobb teljesítményt kapjon
 
-Ha például az 2019-es számú adatfájlok listáját szeretné feldolgozni a Blob Storage egyik mappájában, az alábbi helyettesítő karakter használható a forrás-átalakításban.
+**Átviteli sebesség:** Itt állíthatja be a nagyobb átviteli sebesség beállítást, hogy a dokumentumok gyorsabban CosmosDB. Ne feledje, hogy a magasabb RU-költségek magas átviteli sebességen alapulnak.
 
-```DateFiles/*_201907*.txt```
+**Írási átviteli sebesség költségvetése:** Használjon olyan értéket, amely kisebb, mint a percenkénti teljes RUs. Ha nagy számú Spark-partícióval rendelkező adatfolyamot tartalmaz, a költségvetés átviteli sebességének beállítása nagyobb egyensúlyt tesz lehetővé a partíciók között.
 
-A helyettesítő karakterek használatával a folyamat csak egy adatfolyam-tevékenységet fog tartalmazni. Ez jobb teljesítményt nyújt, mint a blob-tárolón végzett keresés, amely az összes egyező fájlon megismétli a ForEach-t egy folyamaton belüli végrehajtási adatáramlási tevékenységgel.
 
-Az egyes párhuzamos üzemmódokhoz tartozó folyamat több fürtöt fog elkészíteni a minden végrehajtott adatfolyam-tevékenységhez. Ez nagy számú párhuzamos végrehajtást eredményezhet az Azure-szolgáltatás szabályozásához. Azonban a folyamaton belüli végrehajtási adatfolyamatok használata az egyes szekvenciális készletekhez a folyamatban a szabályozás és az erőforrás-kimerülés elkerülését eredményezi. Ez Data Factory kényszeríti az egyes fájlok egymást követő adatfolyamként történő végrehajtását.
+## <a name="optimizing-transformations"></a>Átalakítások optimalizálása
 
-Azt javasoljuk, hogy ha mindegyiket egy adatfolyamattal együtt használja egymás után, akkor a Azure Integration Runtime élettartam beállítását kell használnia. Ennek az az oka, hogy minden fájl a teljes 4 perces fürt indítási idejét veszi fel az iteráción belül.
+### <a name="optimizing-joins-exists-and-lookups"></a>Illesztések, létező és keresési műveletek optimalizálása
 
-### <a name="optimizing-for-cosmosdb"></a>Optimalizálás a CosmosDB
+#### <a name="broadcasting"></a>Szórásos
 
-Az átviteli sebesség és a Batch tulajdonságainak beállítása a CosmosDB-tárolók esetében csak az adott adatfolyamnak egy folyamat adatfolyam-tevékenységből való végrehajtásakor lép érvénybe. Az eredeti gyűjtemény beállításait a CosmosDB az adatfolyam-végrehajtás után fogja tiszteletben venni.
+Az illesztések, a keresések és a meglévő átalakítások esetében, ha az egyik vagy mindkét adatfolyam elég kicsi ahhoz, hogy illeszkedjenek a munkavégző csomópont memóriához, a **szórás**engedélyezésével optimalizálhatja a teljesítményt. A szórás akkor történik meg, amikor kisméretű adatkereteket küld a fürt összes csomópontjára. Ez lehetővé teszi, hogy a Spark-motor a nagyméretű adatfolyamban lévő adatok újrakeverése nélkül hajtson végre egy illesztést. Alapértelmezés szerint a Spark-motor automatikusan eldönti, hogy a csatlakoztatás egyik oldalát sugározza-e a rendszer. Ha ismeri a bejövő adatait, és biztos lehet benne, hogy az egyik stream jelentősen kisebb lesz, mint a másik, válassza a **rögzített** szórás lehetőséget. A rögzített műsorszórási kényszeríti a Sparkot a kiválasztott adatfolyam szórására. 
 
-* Köteg mérete: kiszámítja az adatainak durva sorszámát, és győződjön meg arról, hogy a rowSize * batch mérete kisebb, mint 2 000 000. Ha igen, növelje a köteg méretét, hogy jobb teljesítményt kapjon
-* Átviteli sebesség: állítsa be a nagyobb átviteli sebesség beállítását, hogy a dokumentumok gyorsabban CosmosDB. Ne feledje, hogy a magasabb szintű RU-költségek nagy adatátviteli beállításokon alapulnak.
-*   Írási átviteli sebesség költségvetése: olyan értéket használjon, amely kisebb, mint a percenkénti összes RUs. Ha nagy számú Spark-partícióval rendelkező adatfolyamot tartalmaz, a költségvetés átviteli sebességének beállítása nagyobb egyensúlyt tesz lehetővé a partíciók között.
+Ha a sugárzott adat mérete túl nagy a Spark-csomóponthoz, előfordulhat, hogy kevés a memória. A memóriabeli hibák elkerülése érdekében használja a **memóriára optimalizált** fürtöket. Ha az adatfolyam-végrehajtás során szórási időtúllépéseket tapasztal, kikapcsolhatja a szórásos optimalizálást. Ez azonban lassabban fogja végrehajtani az adatfolyamatokat.
 
-## <a name="join-and-lookup-performance"></a>Csatlakozás és keresési teljesítmény
+![Összekapcsolási átalakítás optimalizálása](media/data-flow/joinoptimize.png "Csatlakozás optimalizálása")
 
-Az adatfolyamok teljesítményének kezelése nagyon gyakori művelet, amelyet az adatátalakítások életciklusa során fog elvégezni. Az ADF-ben az adatfolyamok nem igénylik, hogy az összekapcsolások előtt rendezze az adatokat, mivel ezek a műveletek a Sparkban található kivonatoló illesztések. Azonban a jobb teljesítmény kihasználható a "szórás" illesztési optimalizálással, amely az illesztésekre, a meglévő és a keresési átalakításokra vonatkozik.
+#### <a name="cross-joins"></a>Több illesztés
 
-Ezzel a lépéssel elkerülhető, hogy az illesztési kapcsolat mindkét oldalának tartalmát lenyomva a Spark-csomópontra kerül. Ez jól működik a hivatkozási keresésekhez használt kisebb táblák esetében is. A csomópont memóriájában esetleg nem illeszkedő nagyobb táblák nem jó jelöltek a szórásos optimalizáláshoz.
+Ha literális értékeket használ a csatlakoztatási feladatokban, vagy több egyezést tartalmaz egy illesztés mindkét oldalán, a Spark az illesztést kereszt-csatlakozásként futtatja. A Cross JOIN egy teljes Descartes-szorzat, amely ezután kiszűri az illesztett értékeket. Ez lényegesen lassabb, mint a többi illesztési típus. A teljesítményre gyakorolt hatás elkerülése érdekében győződjön meg arról, hogy az illesztési feltételek mindkét oldalán az oszlopra hivatkozik.
 
-A sok illesztési művelettel rendelkező adatforgalomhoz ajánlott konfiguráció az optimalizálás "automatikus" értékre állítása a "szórás" beállításnál, és a ***memória optimalizált*** Azure Integration Runtime konfigurációjának használata. Ha a memóriában hibák léptek fel, vagy az adatfolyam-végrehajtás során a szórási időtúllépések is fennállnak, kikapcsolhatja a szórásos optimalizálást. Ez azonban lassabban fogja végrehajtani az adatfolyamatokat. Ha szeretné, a pushdown csak a csatlakozás bal vagy jobb oldalán, vagy mindkettőn keresztül utasíthatja el az adatfolyamot.
+#### <a name="sorting-before-joins"></a>Rendezés az illesztések előtt
 
-![Szórási beállítások](media/data-flow/newbroad.png "Szórási beállítások")
+Az egyesítési illesztéstől eltérően az olyan eszközökhöz, mint a SSIS, az illesztési átalakítás nem kötelező egyesítő illesztési művelet. Az illesztési kulcsok nem igénylik a rendezést az átalakítás előtt. Az Azure Data Factory csapat nem javasolja a rendezési átalakítások használatát a leképezési adatfolyamatokban.
 
-Egy másik illesztési optimalizálás az összekapcsolások összekapcsolása oly módon, hogy elkerülje a Spark tendenciáját a több illesztés megvalósításában. Ha például belefoglalja az illesztési feltételekben szereplő literál értékeket, a Spark azt láthatja, hogy először egy teljes Descartes-szorzatot kell végrehajtania, majd ki kell szűrnie az illesztett értékeket. Ha azonban gondoskodni szeretne arról, hogy az összekapcsolási feltétel mindkét oldalán legyen oszlopos érték, elkerülheti a Spark által okozott Descartes-szorzatot, és javíthatja az illesztések és az adatfolyamatok teljesítményét.
+### <a name="repartitioning-skewed-data"></a>Ferde adatpartíciók újraparticionálása
 
-## <a name="next-steps"></a>Következő lépések
+Bizonyos átalakítások, például összekapcsolások és összesítések átrendezik az adatpartíciókat, és alkalmanként elferdítik az adatokat. A ferde adatforgalom azt jelenti, hogy az adatforgalom nem egyenletesen oszlik meg a partíciók között. A nagy mértékben elferdített adatműveletek lassabb, alsóbb rétegbeli átalakításokhoz és írási műveletekhez vezethetnek. Az adatáramlási folyamat bármely pontján megtekintheti az adatait, ha a figyelés képernyő átalakítás elemére kattint.
+
+![Döntés és csúcsosságát](media/data-flow/skewness-kurtosis.png "Döntés és csúcsosságát")
+
+A figyelési kijelző megmutatja, hogyan oszlanak el az adatok az egyes partíciók között két metrika, döntés és csúcsosságát mellett. A **torzítás** azt méri, hogy az adatmennyiség mennyire aszimmetrikus, pozitív, nulla, negatív vagy nem definiált értékkel. A negatív ferdeség azt jelenti, hogy a bal oldali farok hosszabb a jobb oldalon. A **csúcsosságát** azt méri, hogy az adatmennyiség nagy vagy világos-e. A magas csúcsosságát értékek nem kívánatosak. A ferdeség ideális tartománya-3 és 3 közötti, a csúcsosságát-tartomány pedig kevesebb, mint 10. Ezeket a számokat egyszerűen értelmezheti a particionálási diagramon, és megtekintheti, hogy az 1 sáv nagyobb-e, mint a többi.
+
+Ha az adatai nem egyenletesen particionálva lettek egy átalakítás után, az [optimalizálás lapot](#optimize-tab) használhatja az újraparticionáláshoz. Az adatmennyiség újrakeverése időt vesz igénybe, és előfordulhat, hogy nem javítja az adatfolyamok teljesítményét.
+
+> [!TIP]
+> Ha újraparticionálja az adatokat, de olyan alsóbb rétegbeli átalakításokkal rendelkezik, amelyek átrendezik az adatokat, használja az összekapcsolási kulcsként használt oszlop kivonatoló particionálását.
+
+## <a name="next-steps"></a>További lépések
 
 Tekintse meg a teljesítménnyel kapcsolatos egyéb adatfolyam-cikkeket:
 
-- [Adatfolyam optimalizálása lap](concepts-data-flow-overview.md#optimize)
 - [Adatfolyam-tevékenység](control-flow-execute-data-flow-activity.md)
 - [Adatfolyamok teljesítményének figyelése](concepts-data-flow-monitoring.md)

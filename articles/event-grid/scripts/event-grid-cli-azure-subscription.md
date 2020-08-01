@@ -4,12 +4,12 @@ description: Ez a cikk egy minta Azure CLI-szkriptet tartalmaz, amely bemutatja,
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 07/08/2020
-ms.openlocfilehash: 04d69d440dc971908b1fe2931721c50e671cd7d9
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: a1e8da9d6fc03117ac145d540eaac4c71f4bc95f
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171397"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460915"
 ---
 # <a name="subscribe-to-events-for-an-azure-subscription-with-azure-cli"></a>Feliratkozás egy Azure-előfizetés eseményeire az Azure CLI-vel
 
@@ -41,4 +41,4 @@ A szkript a következő parancsot használja az esemény-előfizetés létrehoz�
 ## <a name="next-steps"></a>További lépések
 
 * Az előfizetések lekérdezéséről lásd: [Event Grid-előfizetések lekérdezése](../query-event-subscriptions.md).
-* Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](https://docs.microsoft.com/cli/azure).
+* Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](/cli/azure).

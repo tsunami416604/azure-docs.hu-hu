@@ -4,12 +4,12 @@ description: Ez a cikk egy minta Azure CLI-parancsfájlt tartalmaz, amely bemuta
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 07/08/2020
-ms.openlocfilehash: 951008a2bf3919f69429ca15382334a9618b912f
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 0e6b4e1ff556af3140c52da041900fb7695b4b6d
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171312"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460881"
 ---
 # <a name="create-event-grid-custom-topic-with-azure-cli"></a>Egyéni Event Grid-témakör létrehozása az Azure CLI-vel
 
@@ -29,10 +29,10 @@ A szkript a következő parancsot használja az egyéni témakör létrehozásá
 
 | Parancs | Jegyzetek |
 |---|---|
-| [az eventgrid topic create](https://docs.microsoft.com/cli/azure/eventgrid/topic#az-eventgrid-topic-create) | Egyéni Event Grid-témakör létrehozása. |
+| [az eventgrid topic create](/cli/azure/eventgrid/topic#az-eventgrid-topic-create) | Egyéni Event Grid-témakör létrehozása. |
 
 
 ## <a name="next-steps"></a>További lépések
 
 * Az előfizetések lekérdezéséről lásd: [Event Grid-előfizetések lekérdezése](../query-event-subscriptions.md).
-* Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](https://docs.microsoft.com/cli/azure).
+* Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](/cli/azure).

@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 06/03/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 70a4d6f01271c5026463ac0dc946fb1b2991de09
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 2de46f050d17049848024d70f43bd23621b43b13
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323825"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461034"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Java SDK for SQL API: kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
@@ -256,19 +256,11 @@ Ez az eredeti Azure Cosmos DB Sync Java SDK v2 az SQL API-hoz, amely támogatja 
 * GA SDK
 
 ## <a name="release-and-retirement-dates"></a>Kiadási és nyugdíjazási dátumok
-A Microsoft legalább **12 hónappal** korábban értesítést küld az SDK kivonásáról, hogy zökkenőmentes legyen az áttérés egy újabb/támogatott verzióra.
 
-Az új funkciók és funkciók és optimalizálás csak a jelenlegi SDK-hoz adódik hozzá, ezért azt javasoljuk, hogy a lehető leghamarabb frissítsen a legújabb SDK-verzióra.
-
-A szolgáltatás elutasítja a kivont SDK-val Cosmos DBre irányuló kéréseket.
+A Microsoft legalább **12 hónappal** korábban értesítést küld az SDK kivonásáról, hogy zökkenőmentes legyen az áttérés egy újabb/támogatott verzióra. Az új funkciók és funkciók és optimalizálás csak a jelenlegi SDK-hoz adódik hozzá, ezért azt javasoljuk, hogy a lehető leghamarabb frissítsen a legújabb SDK-verzióra.
 
 > [!WARNING]
-> A Javához készült SQL SDK összes verziójának **1. x** verziója **2020. május 30-** án megszűnik.
-> 
->
-
-> [!WARNING]
-> A Javához készült SQL SDK összes verziója, a **1.0.0** verzió előtt **, 2016. február 29-** én megszűnt.
+> A Javához készült SQL SDK összes verziójának **1. x** verziója **2020. május 30-** án megszűnik. A Javához készült SQL SDK összes verziója, a **1.0.0** verzió előtt **, 2016. február 29-** én megszűnt.
 > 
 > 
 

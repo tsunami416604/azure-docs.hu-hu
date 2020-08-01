@@ -2,13 +2,13 @@
 title: Azure Service Bus hozzáférés-vezérlés közös hozzáférési aláírásokkal
 description: A Service Bus hozzáférés-vezérlésének áttekintése a közös hozzáférési aláírások használatával – áttekintés, a SAS-engedélyezéssel kapcsolatos részletek Azure Service Bus.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: e0d8abcd5693ac20c79a1357eb066e3ae8dcdfe8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/30/2020
+ms.openlocfilehash: b75f1ec3a1aac36124287523140c24d468329aaa
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85340970"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460694"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>Service Bus hozzáférés-vezérlés közös hozzáférési aláírásokkal
 
@@ -19,7 +19,7 @@ Az SAS az engedélyezési szabályokon alapuló Service Bushoz fér hozzá. Ezek
 > [!NOTE]
 > Azure Service Bus támogatja a Service Bus névterek és az entitások hozzáférésének engedélyezését Azure Active Directory (Azure AD) használatával. Az Azure AD által visszaadott OAuth 2,0 tokent használó felhasználók vagy alkalmazások engedélyezése kiváló biztonságot és egyszerű használatot biztosít a közös hozzáférésű aláírások (SAS) számára. Az Azure AD-ben nincs szükség a jogkivonatok tárolására a kódban, és kockázatos biztonsági réseket.
 >
-> A Microsoft azt javasolja, hogy ha lehetséges, az Azure AD-t használja a Azure Service Bus alkalmazásaihoz. További információért tekintse át a következő cikkeket:
+> A Microsoft azt javasolja, hogy ha lehetséges, az Azure AD-t használja a Azure Service Bus alkalmazásaihoz. További információkért tekintse át a következő cikkeket:
 > - [Azure Active Directory használatával hitelesítheti és engedélyezheti az alkalmazást Azure Service Bus entitások eléréséhez](authenticate-application.md).
 > - [Felügyelt identitás hitelesítése Azure Active Directory használatával Azure Service Bus erőforrások eléréséhez](service-bus-managed-service-identity.md)
 
@@ -89,6 +89,9 @@ Az erőforrás URI-ja annak a Service Bus-erőforrásnak a teljes URI azonosít�
 Az aláíráshoz használt megosztott hozzáférés-engedélyezési szabályt az URI által megadott entitáson vagy annak egyik hierarchikus szülője szerint kell konfigurálni. Például vagy az `http://contoso.servicebus.windows.net/contosoTopics/T1` `http://contoso.servicebus.windows.net` előző példában.
 
 Az SAS-token érvényes minden olyan erőforráshoz, amelyet a `<resourceURI>` -ben használt `signature-string` .
+
+> [!NOTE]
+> Az SAS-token különböző programozási nyelveken való generálására példákat az [sas-jogkivonat létrehozása](/rest/api/eventhub/generate-sas-token)című témakörben talál. 
 
 ## <a name="regenerating-keys"></a>Kulcsok újragenerálása
 
@@ -177,7 +180,7 @@ Ha SAS-tokent ad a küldőnek vagy az ügyfélnek, nem rendelkezik közvetlenül
 
 ## <a name="use-the-shared-access-signature-at-amqp-level"></a>A közös hozzáférésű aláírás használata (AMQP szinten)
 
-Az előző szakaszban megtudhatta, hogyan használhatja az SAS-tokent egy HTTP POST-kérelemmel az adatoknak a Service Bus való küldéséhez. Amint tudja, hozzáférhet a Service Bushoz a Advanced Message Queueing Protocol (AMQP) használatával, amely a teljesítmény szempontjából előnyben részesített protokoll, és számos forgatókönyv esetén használható. Az SAS-token AMQP-mel való használatának ismertetését a 1,0-es, a 2013-es és az Azure-ban is támogatott, az Azure által jelenleg használt [AMQP-jogcím-alapú biztonsági verzióban](https://www.oasis-open.org/committees/download.php/50506/amqp-cbs-v1%200-wd02%202013-08-12.doc) találja.
+Az előző szakaszban megtudhatta, hogyan használhatja az SAS-tokent egy HTTP POST-kérelemmel az adatoknak a Service Bus való küldéséhez. Amint tudja, hozzáférhet a Service Bushoz a Advanced Message Queueing Protocol (AMQP) használatával, amely a teljesítmény szempontjából előnyben részesített protokoll, és számos forgatókönyv esetén használható. Az SAS-token AMQP-mel való használatának ismertetését a 1,0-as, a 2013-es, de az Azure által támogatott [AMQP-jogcím-alapú biztonsági verzióban](https://www.oasis-open.org/committees/download.php/50506/amqp-cbs-v1%200-wd02%202013-08-12.doc) találja.
 
 Mielőtt megkezdené az adatküldést a Service Busba, a közzétevőnek az SAS-jogkivonatot egy **$CBS** nevű, jól DEFINIÁLt AMQP-csomópontra kell küldenie egy AMQP (a szolgáltatás által az összes sas-token beszerzéséhez és ellenőrzéséhez használt "speciális" üzenetsorként jelenik meg). A közzétevőnek meg kell adnia a **ReplyTo** MEZŐT a AMQP üzenetben; Ez az a csomópont, amelyben a szolgáltatás a jogkivonatok érvényesítésének eredményeképpen válaszol a közzétevőnek (egyszerű kérelem/válasz minta a közzétevő és a szolgáltatás között). Ez a válasz-csomópont "menet közben" jön létre, amely a "távoli csomópont dinamikus létrehozására" szól a AMQP 1,0 specifikációban leírtak szerint. Miután ellenőrizte, hogy az SAS-jogkivonat érvényes-e, a közzétevő mehet előre, és megkezdheti az adatküldést a szolgáltatásnak.
 
@@ -259,7 +262,7 @@ A következő táblázat a Service Bus erőforrásokon végzett különféle mű
 | Privát szabályzatok enumerálása |Kezelés |Bármely névtér címe |
 | Névtér figyelésének megkezdése |Figyelés |Bármely névtér címe |
 | Üzenetek küldése egy figyelőnek egy névtérben |Küldés |Bármely névtér címe |
-| **Várólista** | | |
+| **Üzenetsor** | | |
 | Üzenetsor létrehozása |Kezelés |Bármely névtér címe |
 | Üzenetsor törlése |Kezelés |Bármely érvényes várólista-címe |
 | Várólisták enumerálása |Kezelés |/$Resources/Queues |

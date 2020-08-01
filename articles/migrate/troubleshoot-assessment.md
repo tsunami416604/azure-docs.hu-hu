@@ -7,12 +7,12 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/02/2020
-ms.openlocfilehash: b47c6c7d2137737021766f239fdb6ab1c64bd12f
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: f9598ad508e3760bf1bad04f8694838465e4961f
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422861"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460983"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>Értékelés/függőségek vizualizációjának hibaelhárítása
 
@@ -66,6 +66,9 @@ VMware és Hyper-V rendszerű virtuális gépek esetén a kiszolgáló értékel
 
 Ezt a rést a VMware virtuális gépeken az [alkalmazások felderítésének](./how-to-discover-applications.md) engedélyezésével lehet megoldani. A kiszolgáló értékelése a virtuális gépről a megadott vendég hitelesítő adatok használatával észlelt operációs rendszert használja. Ez az operációsrendszer-adat a Windows és Linux rendszerű virtuális gépek esetén a megfelelő operációsrendszer-információkat azonosítja.
 
+## <a name="operating-system-version-not-available"></a>Az operációs rendszer verziója nem érhető el
+
+Fizikai kiszolgálók esetében az operációs rendszer alverziójának információinak elérhetőnek kell lenniük. Ha nem érhető el, forduljon a Microsoft ügyfélszolgálatahoz. A VMware rendszerű gépek esetében a kiszolgáló értékelése a virtuális géphez vCenter Serverban megadott operációsrendszer-információkat használja. A vCenter Server azonban nem adja meg az operációs rendszerek alverzióját. Az alverzió felderítéséhez be kell állítania az alkalmazás- [felderítést](./how-to-discover-applications.md). A Hyper-V virtuális gépek esetében az operációs rendszer alverziójának felderítése nem támogatott. 
 
 ## <a name="azure-skus-bigger-than-on-premises-in-an-azure-vm-assessment"></a>Azure SKU-ban nagyobb, mint a helyszíni Azure-beli virtuális gépek felmérése
 
@@ -212,6 +215,6 @@ Gyűjtsön hálózati forgalmi naplókat a következőképpen:
 - Hyper-V virtuális gépek esetén az operációs rendszer adatait a Hyper-V gazdagépről gyűjti a rendszer.
 - Fizikai kiszolgálók esetében a rendszer beolvassa a kiszolgálót a kiszolgálóról.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Értékelés [létrehozása](how-to-create-assessment.md) vagy [testreszabása](how-to-modify-assessment.md) .

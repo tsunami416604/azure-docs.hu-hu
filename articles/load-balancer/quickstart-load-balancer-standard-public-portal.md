@@ -15,14 +15,14 @@ ms.workload: infrastructure-services
 ms.date: 07/17/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: f9d736098e42bf5ca07eca0cb952275c5e39c2a9
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 1864ce5a3c1b5b0b2e0cfe757e66fca2074b764c
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87125190"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475805"
 ---
-# <a name="quickstart-create-a-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Gyors útmutató: terheléselosztó létrehozása a virtuális gépek terheléselosztásához a Azure Portal használatával
+# <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Gyors útmutató: nyilvános terheléselosztó létrehozása a virtuális gépek terheléselosztásához a Azure Portal használatával
 
 A Azure Load Balancer használatának első lépései a Azure Portal használatával a nyilvános Load Balancer és a három virtuális gép létrehozásához.
 
@@ -36,7 +36,7 @@ Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.az
 
 ---
 
-# <a name="option-1-default-create-a-load-balancer-standard-sku"></a>[1. lehetőség (alapértelmezett): Load Balancer létrehozása (standard SKU)](#tab/option-1-create-load-balancer-standard)
+# <a name="option-1-default-create-a-public-load-balancer-standard-sku"></a>[1. lehetőség (alapértelmezett): nyilvános Load Balancer létrehozása (standard SKU)](#tab/option-1-create-load-balancer-standard)
 
 >[!NOTE]
 >A standard SKU Load Balancer használata éles számítási feladatokhoz ajánlott.  További információ az SKU-ról: **[Azure Load Balancer SKU](skus.md)**-ban.
@@ -76,7 +76,7 @@ Ebben a szakaszban a következőket konfigurálja:
 
 * Egy háttérbeli címkészlet Load Balancer-beállításai.
 * Egy állapot-mintavétel.
-* Terheléselosztó-szabály és automatikus Kimenő szabály.
+* Egy terheléselosztó-szabály.
 
 ### <a name="create-a-backend-pool"></a>Háttérkészlet létrehozása
 
@@ -183,7 +183,7 @@ Ezek a virtuális gépek hozzáadódnak a korábban létrehozott terheléseloszt
     |-----------------------|----------------------------------|
     | **Projekt részletei** |  |
     | Előfizetés | Válassza ki az Azure-előfizetését |
-    | Resource Group (Erőforráscsoport) | **Myresourcegrouplb erőforráscsoportban** kiválasztása |
+    | Erőforráscsoport | **Myresourcegrouplb erőforráscsoportban** kiválasztása |
     | **Példány részletei** |  |
     | Virtuális gép neve | **MyVM1** megadása |
     | Régió | **Nyugat-Európa** kiválasztása |
@@ -225,7 +225,7 @@ Ezek a virtuális gépek hozzáadódnak a korábban létrehozott terheléseloszt
     | **Figyelés** |  |
     | Rendszerindítási diagnosztika | Kijelölés **kikapcsolva** |
    
-7. Válassza az **Áttekintés + létrehozás** lehetőséget. 
+7. Válassza a **Felülvizsgálat és létrehozás** lehetőséget. 
   
 8. Tekintse át a beállításokat, majd kattintson a **Létrehozás**gombra.
 
@@ -279,9 +279,9 @@ A kimenő kapcsolatokról a [Kimenő kapcsolatok az Azure-ban](load-balancer-out
 
 7. Válassza a **Hozzáadás** elemet.
 
-8. Válassza a **Mentés** lehetőséget.
+8. Kattintson a **Mentés** gombra.
 
-# <a name="option-2-create-a-load-balancer-basic-sku"></a>[2. lehetőség: terheléselosztó létrehozása (alapszintű SKU)](#tab/option-1-create-load-balancer-basic)
+# <a name="option-2-create-a-public-load-balancer-basic-sku"></a>[2. lehetőség: nyilvános terheléselosztó létrehozása (alapszintű SKU)](#tab/option-1-create-load-balancer-basic)
 
 >[!NOTE]
 >A standard SKU Load Balancer használata éles számítási feladatokhoz ajánlott.  További információ az SKU-ról: **[Azure Load Balancer SKU](skus.md)**-ban.
@@ -436,7 +436,7 @@ Ezek a virtuális gépek hozzáadódnak a korábban létrehozott terheléseloszt
     |-----------------------|----------------------------------|
     | **Projekt részletei** |  |
     | Előfizetés | Válassza ki az Azure-előfizetését |
-    | Resource Group (Erőforráscsoport) | **Myresourcegrouplb erőforráscsoportban** kiválasztása |
+    | Erőforráscsoport | **Myresourcegrouplb erőforráscsoportban** kiválasztása |
     | **Példány részletei** |  |
     | Virtuális gép neve | **MyVM1** megadása |
     | Régió | **Nyugat-Európa** kiválasztása |
@@ -468,12 +468,13 @@ Ezek a virtuális gépek hozzáadódnak a korábban létrehozott terheléseloszt
 5. Válassza a **kezelés** lapot, vagy válassza a **következő**  >  **kezelés**lehetőséget.
 
 6. A **kezelés** lapon válassza ki vagy írja be a következőket:
+    
     | Beállítás | Érték |
-    |-|-|
+    |---|---|
     | **Figyelés** | |
     | Rendszerindítási diagnosztika | Kijelölés **kikapcsolva** |
 
-7. Válassza az **Áttekintés + létrehozás** lehetőséget. 
+7. Válassza a **Felülvizsgálat és létrehozás** lehetőséget. 
   
 8. Tekintse át a beállításokat, majd kattintson a **Létrehozás**gombra.
 
@@ -484,6 +485,24 @@ Ezek a virtuális gépek hozzáadódnak a korábban létrehozott terheléseloszt
     | Name |  **myVM2** |**myVM3**|
     | Rendelkezésre állási csoport| **MyAvailabilitySet** kiválasztása | **MyAvailabilitySet** kiválasztása|
     | Hálózati biztonsági csoport | Meglévő **myNSG** kiválasztása| Meglévő **myNSG** kiválasztása|
+
+### <a name="add-virtual-machines-to-the-backend-pool"></a>Virtuális gépek hozzáadása a háttérbeli készlethez
+
+Az előző lépésekben létrehozott virtuális gépeket hozzá kell adni a **myLoadBalancer**háttér-készletéhez.
+
+1. Válassza a **minden szolgáltatás** lehetőséget a bal oldali menüben, válassza a **minden erőforrás**lehetőséget, majd az erőforrások listából válassza a **myLoadBalancer** lehetőséget.
+
+2. A **Beállítások**területen válassza a **háttér-készletek**, majd a **myBackendPool**lehetőséget.
+
+3. Válassza ki a **hozzárendelt** **virtuális gépeket** a következőhöz:.
+
+4. A **Virtual Machines (virtuális gépek** ) szakaszban válassza a **+ Hozzáadás**lehetőséget.
+
+5. Válassza ki a **myVM1**, a **MyVM2**és a **myVM3**melletti mezőket.
+
+6. Válassza a **Hozzáadás** elemet.
+
+7. Kattintson a **Mentés** gombra.
 
 ---
 
@@ -530,7 +549,7 @@ Ezek a virtuális gépek hozzáadódnak a korábban létrehozott terheléseloszt
 
 Ha meg szeretné tekinteni, hogy a terheléselosztó mindhárom virtuális gépen osztja el a forgalmat, testreszabhatja az egyes virtuális gépek IIS-webkiszolgálójának alapértelmezett oldalát, majd kényszerítheti a webböngésző frissítését az ügyfélgépről.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs rá szükség, törölje az erőforráscsoportot, a terheléselosztó és az összes kapcsolódó erőforrást. Ehhez válassza ki az erőforrásokat tartalmazó erőforráscsoportot, majd válassza a **Törlés**lehetőséget a **myresourcegrouplb erőforráscsoportban** .
 

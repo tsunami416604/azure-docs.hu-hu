@@ -3,12 +3,12 @@ title: Események kézbesítésének hitelesítése az eseménykezelők számár
 description: Ez a cikk bemutatja, hogyan hitelesíthető a kézbesítés az eseménykezelők számára a Azure Event Gridban.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: d48930ac9cfdd1ecd3e7d6c64067d5389323f8bc
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: abe16c9598c8c10caa832150aafac997dd7f1624
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119939"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460643"
 ---
 # <a name="authenticate-event-delivery-to-event-handlers-azure-event-grid"></a>Események kézbesítésének hitelesítése az eseménykezelők számára (Azure Event Grid)
 Ez a cikk tájékoztatást nyújt az események az eseménykezelők számára történő hitelesítéséről. Azt is bemutatja, hogyan védheti meg az Event Grid események fogadására használt webhook-végpontokat Azure Active Directory (Azure AD) vagy közös titok használatával.
@@ -35,7 +35,7 @@ Az Azure AD segítségével biztonságossá teheti a webhook-végpontot, amely a
 ### <a name="using-client-secret-as-a-query-parameter"></a>Az ügyfél titkos kulcsa lekérdezési paraméterként
 A webhook-végpontot úgy is biztonságossá teheti, ha lekérdezési paramétereket ad hozzá a webhook cél URL-címéhez, amely az esemény-előfizetés létrehozása részeként van megadva. Állítsa be az egyik lekérdezési paramétert, hogy az ügyfél titka legyen, például egy [hozzáférési jogkivonat](https://en.wikipedia.org/wiki/Access_token) vagy egy közös titok. Event Grid szolgáltatás tartalmazza az összes lekérdezési paramétert minden esemény kézbesítési kérelmében a webhookban. A webhook szolgáltatás lekérheti és érvényesítheti a titkos kulcsot. Ha az ügyfél titkos kulcsát frissíti, a rendszer az esemény-előfizetést is frissítenie kell. Ha el szeretné kerülni a kézbesítési hibákat a titkos rotáció során, akkor a webhook a régi és az új titkos kulcsot is elfogadja korlátozott időtartamra, mielőtt frissíti az esemény-előfizetést az új titokkal. 
 
-Mivel a lekérdezési paraméterek tartalmazhatják az ügyfél titkos kulcsait, a rendszer extra gondossággal kezeli őket. A rendszer titkosított formában tárolja őket, és nem érhető el a szolgáltatási operátorok számára. Nincsenek naplózva a szolgáltatási naplók/Nyomkövetések részeként. Az esemény-előfizetés tulajdonságainak beolvasása során a rendszer alapértelmezés szerint nem adja vissza a cél lekérdezési paramétereket. Például: [--include-Full-Endpoint-URL](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-show) paramétert kell használni az Azure [CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest)-ben.
+Mivel a lekérdezési paraméterek tartalmazhatják az ügyfél titkos kulcsait, a rendszer extra gondossággal kezeli őket. A rendszer titkosított formában tárolja őket, és nem érhető el a szolgáltatási operátorok számára. Nincsenek naplózva a szolgáltatási naplók/Nyomkövetések részeként. Az esemény-előfizetés tulajdonságainak beolvasása során a rendszer alapértelmezés szerint nem adja vissza a cél lekérdezési paramétereket. Például: [--include-Full-Endpoint-URL](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-show) paramétert kell használni az Azure [CLI](/cli/azure?view=azure-cli-latest)-ben.
 
 További információ az események webhookok általi kézbesítéséről: [webhook-esemény kézbesítése](webhook-event-delivery.md)
 
@@ -43,5 +43,5 @@ További információ az események webhookok általi kézbesítéséről: [webh
 A Azure Event Grid csak a **https** webhook-végpontokat támogatja. 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Tekintse meg a [közzétételi ügyfelek hitelesítése](security-authenticate-publishing-clients.md) című témakört, amelyből megtudhatja, hogyan hitelesítheti az ügyfeleket a témakörök vagy tartományok számára 

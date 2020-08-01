@@ -4,12 +4,12 @@ description: Ebből a cikkből megtudhatja, hogyan állíthatja helyre a fájlok
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.custom: references_regions
-ms.openlocfilehash: a594b9636dcb4e584fd10a17bca6c48c2d1fb960
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 2488bbded1b4d55f3c4cf21c63e9fcb90e9bfb4f
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86514084"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475056"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Fájlok helyreállítása az Azure-beli virtuális gépek biztonsági másolatából
 
@@ -132,28 +132,96 @@ A partíciók online állapotba helyezéséhez futtassa a következő szakaszban
 
 #### <a name="for-lvm-partitions"></a>LVM-partíciók esetén
 
-A mennyiségi csoportok neveinek listázása fizikai kötet alatt:
+A szkript futtatása után az LVM-partíciók a szkript kimenetében megadott fizikai kötet (ek)/Disk vannak csatlakoztatva. A folyamat
+
+1. A mennyiségi csoportok neveinek egyedi listájának beolvasása a fizikai kötetekből vagy lemezekről
+2. Ezután sorolja fel a kötetek logikai köteteit.
+3. Ezután csatlakoztassa a logikai köteteket a kívánt elérési úthoz.
+
+##### <a name="listing-volume-group-names-from-physical-volumes"></a>Mennyiségi csoportok neveinek listázása fizikai kötetekről
+
+A kötetek csoportjai neveinek listázása:
+
+```bash
+pvs -o +vguuid
+```
+
+Ez a parancs felsorolja az összes fizikai kötetet (beleértve a parancsfájl futtatása előtt találhatókat is), a hozzájuk tartozó csoportok nevét és a kötet csoport egyedi felhasználói azonosítóit (UUID). Alább látható a parancs mintájának kimenete.
+
+```bash
+PV         VG        Fmt  Attr PSize   PFree    VG UUID
+
+  /dev/sda4  rootvg    lvm2 a--  138.71g  113.71g EtBn0y-RlXA-pK8g-de2S-mq9K-9syx-B29OL6
+
+  /dev/sdc   APPvg_new lvm2 a--  <75.00g   <7.50g njdUWm-6ytR-8oAm-8eN1-jiss-eQ3p-HRIhq5
+
+  /dev/sde   APPvg_new lvm2 a--  <75.00g   <7.50g njdUWm-6ytR-8oAm-8eN1-jiss-eQ3p-HRIhq5
+
+  /dev/sdf   datavg_db lvm2 a--   <1.50t <396.50g dhWL1i-lcZS-KPLI-o7qP-AN2n-y2f8-A1fWqN
+
+  /dev/sdd   datavg_db lvm2 a--   <1.50t <396.50g dhWL1i-lcZS-KPLI-o7qP-AN2n-y2f8-A1fWqN
+```
+
+Az 1. oszlop (PV) megjeleníti a fizikai kötetet, az azt követő oszlopok a megfelelő kötet csoport nevét, formátumát, attribútumait, méretét, szabad területét és a kötet csoport egyedi AZONOSÍTÓját jelenítik meg. A parancs kimenete az összes fizikai kötetet megjeleníti. Tekintse át a parancsfájl kimenetét, és azonosítsa a biztonsági mentéshez kapcsolódó köteteket. A fenti példában a szkript kimenete/dev/SDF és/dev/SDD. Így a datavg_db kötet csoport a parancsfájlhoz tartozik, és a Appvg_new kötet csoport a géphez tartozik. Az utolsó elképzelés az, hogy egy egyedi mennyiségi csoport nevének 1 egyedi AZONOSÍTÓval kell rendelkeznie.
+
+###### <a name="duplicate-volume-groups"></a>Duplikált kötetek csoportjai
+
+Vannak olyan forgatókönyvek, ahol a kötetek nevei a szkript futtatása után 2 UUID-t tartalmazhatnak. Ez azt jelenti, hogy a kötet azon neve, amelyben a parancsfájlt futtatja, és a biztonsági másolatban szereplő virtuális gépen ugyanazok vannak. Ezt követően át kell neveznie a virtuális gépek biztonsági másolatának kötetei csoportot. Vessen egy pillantást az alábbi példára.
+
+```bash
+PV         VG        Fmt  Attr PSize   PFree    VG UUID
+
+  /dev/sda4  rootvg    lvm2 a--  138.71g  113.71g EtBn0y-RlXA-pK8g-de2S-mq9K-9syx-B29OL6
+
+  /dev/sdc   APPvg_new lvm2 a--  <75.00g   <7.50g njdUWm-6ytR-8oAm-8eN1-jiss-eQ3p-HRIhq5
+
+  /dev/sde   APPvg_new lvm2 a--  <75.00g   <7.50g njdUWm-6ytR-8oAm-8eN1-jiss-eQ3p-HRIhq5
+
+  /dev/sdg   APPvg_new lvm2 a--  <75.00g  508.00m lCAisz-wTeJ-eqdj-S4HY-108f-b8Xh-607IuC
+
+  /dev/sdh   APPvg_new lvm2 a--  <75.00g  508.00m lCAisz-wTeJ-eqdj-S4HY-108f-b8Xh-607IuC
+
+  /dev/sdm2  rootvg    lvm2 a--  194.57g  127.57g efohjX-KUGB-ETaH-4JKB-MieG-EGOc-XcfLCt
+```
+
+A szkript kimenete a/dev/SDG, a/dev/SDH, a/dev/sdm2 és a csatolt módon jelenik meg. Így a megfelelő VG-nevek Appvg_new és rootvg. De ugyanezek a nevek is szerepelnek a gép VG listájában. Ellenőrizzük, hogy 1 a VG neve 2 UUID-val rendelkezik-e.
+
+Most átnevezni kell a VG-neveket a parancsfájl-alapú kötetek számára, azaz:/dev/SDG,/dev/SDH,/dev/sdm2. A kötet csoport átnevezéséhez használja a következő parancsot.
+
+```bash
+vgimportclone -n rootvg_new /dev/sdm2
+vgimportclone -n APPVg_2 /dev/sdg /dev/sdh
+```
+
+Most már minden, egyedi azonosítóval rendelkező VG-név szerepel.
+
+###### <a name="active-volume-groups"></a>Aktív kötetek csoportjai
+
+Győződjön meg arról, hogy a parancsfájl köteteinek megfelelő kötetek aktívak. Az alábbi parancs az aktív mennyiségi csoportok megjelenítésére szolgál. Győződjön meg arról, hogy a parancsfájl kapcsolódó kötetei szerepelnek-e a listában.
+
+```bash
+vgdisplay -a
+```  
+
+Ellenkező esetben aktiválja a kötet csoportot az alábbi parancs használatával.
 
 ```bash
 #!/bin/bash
-pvs <volume name as shown above in the script output>
+vgchange –a y  <volume-group-name>
 ```
 
-Az összes logikai kötet, név és elérési út listázása egy kötet csoportban:
+##### <a name="listing-logical-volumes-within-volume-groups"></a>A mennyiségi csoportokban található logikai kötetek listázása
+
+Miután beolvasta a parancsfájlhoz kapcsolódó VGs egyedi, aktív listáját, az ezekben a kötetekben található logikai kötetek az alábbi paranccsal szerepelhetnek.
 
 ```bash
 #!/bin/bash
-lvdisplay <volume-group-name from the pvs commands results>
+lvdisplay <volume-group-name>
 ```
 
-A ```lvdisplay``` parancs azt is megjeleníti, hogy a kötet csoportok aktívak-e. Ha a kötet csoport inaktívként van megjelölve, a csatlakoztatáshoz újra kell aktiválni. Ha a mennyiségi csoport inaktívként jelenik meg, a következő parancs használatával aktiválja.
+Ez a parancs az egyes logikai kötetek elérési útját jeleníti meg "LV Path" néven.
 
-```bash
-#!/bin/bash
-vgchange –a y  <volume-group-name from the pvs commands results>
-```
-
-Ha a kötet csoport neve aktív, futtassa a ```lvdisplay``` parancsot még egyszer az összes releváns attribútum megjelenítéséhez.
+##### <a name="mounting-logical-volumes"></a>Logikai kötetek csatlakoztatása
 
 A logikai kötetek csatlakoztatása a választott útvonalhoz:
 
@@ -161,6 +229,9 @@ A logikai kötetek csatlakoztatása a választott útvonalhoz:
 #!/bin/bash
 mount <LV path from the lvdisplay cmd results> </mountpath>
 ```
+
+> [!WARNING]
+> Ne használja a "Mount-a" kulcsszót. Ezzel a paranccsal az "/etc/fstab"-ben leírt összes eszköz csatlakoztatható. Ez azt jelentheti, hogy duplikált eszközök csatlakoztatása is lehetséges. Az adatelemek átirányíthatók a parancsfájl által létrehozott eszközökre, amelyek nem őrzik meg az adatmegőrzést, ezért adatvesztést okozhatnak.
 
 #### <a name="for-raid-arrays"></a>RAID-tömbök esetén
 
@@ -326,7 +397,7 @@ A szülő/biztonsági mentés alatt lévő virtuális gépen található összes
 
 A parancsfájl csak olvasási hozzáférést biztosít egy helyreállítási ponthoz, és csak 12 órára érvényes. Ha korábban el szeretné távolítani a hozzáférést, jelentkezzen be az Azure Portalra, a PowerShellbe vagy a CLI-be, és válassza le az adott helyreállítási ponthoz a **leválasztott lemezeket** . A parancsfájl azonnal érvénytelenítve lesz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A fájlok visszaállítása során felmerülő problémákért tekintse meg a [hibaelhárítási](#troubleshooting) szakaszt.
 - Ismerje meg, hogyan [állíthatja vissza a fájlokat a PowerShell](./backup-azure-vms-automation.md#restore-files-from-an-azure-vm-backup) használatával

@@ -11,13 +11,13 @@ ms.author: sihhu
 author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 06/29/2020
-ms.openlocfilehash: a220a7279cbb5ba75c8aa803cb4bd709442a52fe
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 07/22/2020
+ms.openlocfilehash: 5f58698de289efc0b74550260c2229f2a08d798d
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326392"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461374"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Azure Machine Learning adatkészletek létrehozása
 
@@ -32,6 +32,8 @@ Azure Machine Learning adatkészletek esetében a következőket teheti:
 * Zökkenőmentesen férhet hozzá az adatmodell-képzéshez a kapcsolati karakterláncok vagy az adatelérési utak miatt
 
 * Az adatmegosztás és együttműködés más felhasználókkal.
+
+[További információ az adatkészletek betanításáról](how-to-train-with-datasets.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -50,27 +52,23 @@ Az adatkészletek létrehozásához és működéséhez a következőkre lesz sz
 
 Adatkészlet létrehozásakor tekintse át a számítási feldolgozási teljesítményt és az adatok méretét a memóriában. A tárolóban tárolt adatai mérete nem egyezik meg a dataframe lévő adatmérettel. Például a CSV-fájlokban lévő adat akár 10x-re is kiterjeszthető egy dataframe, így egy 1 GB-os CSV-fájl 10 GB-nyi lehet egy dataframe. 
 
-A fő tényező, hogy mekkora az adatkészlet memóriában lévő mérete, például dataframe. Javasoljuk, hogy a számítási méret és a feldolgozási teljesítmény a RAM méretének 2x-re legyen. Tehát ha a dataframe 10 GB méretű, a számítási célt 20 + GB RAM-mal szeretné biztosítani, hogy a dataframe megfelelően illeszkedjen a memóriába, és feldolgozza azokat. Ha tömöríti az adatait, tovább bővíthető. a tömörített parketta-formátumban tárolt 20 GB-os viszonylag ritka adat a memóriában is kiterjeszthető ~ 800 GB-ra. Mivel a Parquet-fájlok oszlopos formátumban tárolják az adattárolást, ha csak az oszlopok felét kell megadnia, akkor a memóriában csak a ~ 400 GB-ot kell betölteni.
+Ha tömöríti az adatait, tovább bővíthető. a tömörített parketta-formátumban tárolt 20 GB-os viszonylag ritka adat a memóriában is kiterjeszthető ~ 800 GB-ra. Mivel a Parquet-fájlok oszlopos formátumban tárolják az adattárolást, ha csak az oszlopok felét kell megadnia, akkor a memóriában csak a ~ 400 GB-ot kell betölteni.
  
 Ha a Pandat használja, nincs ok arra, hogy több mint 1 vCPU, mivel ez minden, amit használni fog. A Modin és a Dask/Ray használatával egyszerűen integrálással számos vCPU egyetlen Azure Machine Learning számítási példányon/csomóponton keresztül, és szükség esetén nagy méretű fürtre is kibővíthető, ha egyszerűen `import pandas as pd` változik `import modin.pandas as pd` . 
  
-Ha nem tud nagy mennyiségű virtuális gépet beolvasni az adatokhoz, két lehetőség közül választhat: például a Spark-vagy a Dask-keretrendszer használatával végezheti el a feldolgozást a "memóriából", azaz a dataframe a partíció és a feldolgozás során a RAM-partícióba tölti be, és a végső eredményt a végén gyűjti. Ha túl lassú, a Spark vagy a Dask lehetővé teszi a méretezést egy olyan fürtre, amely továbbra is interaktív módon használható. 
+[További információ az adatfeldolgozás optimalizálásáról Azure Machine Learning](concept-optimize-data-processing.md)
 
 ## <a name="dataset-types"></a>Adathalmaz-típusok
 
 Két adatkészlet-típus létezik, attól függően, hogy a felhasználók hogyan használják őket a képzésben:
 
-* A [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) táblázatos formátumban jeleníti meg az adatokat a megadott fájl vagy fájlok listájának elemzésével. Ez lehetővé teszi, hogy a rendszer egy Panda vagy Spark DataFrame is megvalósuljon az információ. Létrehozhat egy `TabularDataset` objektumot. csv,. TSV,. Parque,. JSON fájlokból és SQL-lekérdezések eredményeiből. A teljes listát lásd: [TabularDatasetFactory osztály](https://aka.ms/tabulardataset-api-reference).
-
 * A [FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py) osztály egy vagy több fájlt hivatkozik az adattárolókban vagy a nyilvános URL-címeken. Ezzel a módszerrel letöltheti vagy csatlakoztathatja a fájlokat a számítási feladatokhoz FileDataset objektumként. A fájlok bármilyen formátumúak lehetnek, ami lehetővé teszi a gépi tanulási forgatókönyvek szélesebb körének használatát, beleértve a mély tanulást is. 
 
-## <a name="create-datasets"></a>Adatkészletek létrehozása
+* A [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) táblázatos formátumban jeleníti meg az adatokat a megadott fájl vagy fájlok listájának elemzésével. Ez lehetővé teszi, hogy a rendszer egy Panda vagy Spark DataFrame is megvalósuljon az információ. Létrehozhat egy `TabularDataset` objektumot. csv,. TSV,. Parque,. JSON fájlokból és SQL-lekérdezések eredményeiből. A teljes listát lásd: [TabularDatasetFactory osztály](https://aka.ms/tabulardataset-api-reference).
 
-Az adathalmazok létrehozásával az adatforrások helyére mutató hivatkozásokat és a metaadatok másolatait is létrehozza. Mivel az adatok a meglévő helyükön maradnak, nincsenek további tárolási költségek. Mindkét `TabularDataset` és `FileDataset` adatkészletet a Python SDK vagy a Azure Machine learning Studio használatával is létrehozhatja a következő címen: https://ml.azure.com .
+## <a name="create-datasets-via-the-sdk"></a>Adatkészletek létrehozása az SDK-n keresztül
 
-Ahhoz, hogy az adatok elérhetők legyenek Azure Machine Learning számára, az adatkészleteket az [Azure](how-to-access-data.md) -adattárolók vagy nyilvános webes URL-címek elérési útjaiból kell létrehozni. 
-
-### <a name="use-the-sdk"></a>Az SDK használata
+Az adathalmazok létrehozásával az adatforrások helyére mutató hivatkozásokat és a metaadatok másolatait is létrehozza. Mivel az adatok a meglévő helyükön maradnak, nincsenek további tárolási költségek. Ahhoz, hogy az adatok elérhetők legyenek Azure Machine Learning számára, az adatkészleteket az [Azure](how-to-access-data.md) -adattárolók vagy nyilvános webes URL-címek elérési útjaiból kell létrehozni. 
 
 Adatkészletek létrehozása Azure- [adattárból](how-to-access-data.md) a Python SDK használatával:
 
@@ -80,6 +78,21 @@ Adatkészletek létrehozása Azure- [adattárból](how-to-access-data.md) a Pyth
 
 > [!Note]
 > Több adattárból is létrehozhat adatkészletet több adattárolóban. Az adatkészletek létrehozásához használt fájlok vagy adatméretek száma nem korlátozott. Az egyes adatelérési útvonalak esetében azonban a rendszer néhány kérelmet küld a tárolási szolgáltatásnak, hogy meggyőződjön róla, hogy egy fájlra vagy mappára mutat. Ez a terhelés csökkentheti a teljesítményt vagy a hibát. Egy 1000-fájlon belüli, egy mappára hivatkozó adatkészlet egy adatútvonalra hivatkozik. Javasoljuk, hogy az optimális teljesítmény érdekében az adattárolók kevesebb mint 100 útvonalára hivatkozó adatkészletet hozzon létre.
+
+#### <a name="create-a-filedataset"></a>FileDataset létrehozása
+
+A [`from_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?view=azure-ml-py#from-files-path--validate-true-) osztály metódusának használatával `FileDatasetFactory` bármilyen formátumban betöltheti a fájlokat, és nem regisztrált FileDataset hozhat létre. Ha a tárterület virtuális hálózat vagy tűzfal mögött van, állítsa a paramétert a `validate=False` `from_files()` metódusban. Ezzel megkerüli a kezdeti ellenőrzési lépést, és gondoskodik arról, hogy az adatkészletet ezekből a biztonságos fájlokból lehessen létrehozni.
+
+```Python
+# create a FileDataset pointing to files in 'animals' folder and its subfolders recursively
+datastore_paths = [(datastore, 'animals')]
+animal_ds = Dataset.File.from_files(path=datastore_paths)
+
+# create a FileDataset from image and label files behind public web urls
+web_paths = ['https://azureopendatastorage.blob.core.windows.net/mnist/train-images-idx3-ubyte.gz',
+             'https://azureopendatastorage.blob.core.windows.net/mnist/train-labels-idx1-ubyte.gz']
+mnist_ds = Dataset.File.from_files(path=web_paths)
+```
 
 #### <a name="create-a-tabulardataset"></a>TabularDataset létrehozása
 
@@ -123,10 +136,10 @@ titanic_ds = Dataset.Tabular.from_delimited_files(path=web_path, set_column_type
 titanic_ds.take(3).to_pandas_dataframe()
 ```
 
-|Index|PassengerId|Túlélte|Pclass|Név|szex|Kor|SibSp|Parch|Ticket|Legnagyobb légitársasága|Kabin|Megkezdte
+|Index|PassengerId|Túlélte|Pclass|Name|szex|Kor|SibSp|Parch|Ticket|Legnagyobb légitársasága|Kabin|Megkezdte
 -|-----------|--------|------|----|---|---|-----|-----|------|----|-----|--------|
 0|1|Hamis|3|Braund, Mr. Owen Harris|male|22,0|1|0|A/5 21171|7,2500||S
-1|2|Igaz|1|Cumings, Mrs. John Bradley (Florence Briggs th...|female|38,0|1|0|PC 17599|71,2833|C85|C#
+1|2|Igaz|1|Cumings, Mrs. John Bradley (Florence Briggs th...|female|38,0|1|0|PC 17599|71,2833|C85|C
 2|3|Igaz|3|Heikkinen, Miss. Laina 's|female|26,0|0|0|STON/O2. 3101282|7,9250||S
 
 Ha adatkészletet szeretne létrehozni egy memóriából származó pandák dataframe, írja az adatokat egy helyi fájlba, például egy CSV-fájlba, és hozza létre az adatkészletet a fájlból. A következő kód mutatja be ezt a munkafolyamatot.
@@ -185,24 +198,22 @@ data_slice = dataset.time_after(datetime(2019, 1, 1))
 data_slice = dataset.time_between(datetime(2019, 1, 1), datetime(2019, 2, 1))
 data_slice = dataset.time_recent(timedelta(weeks=1, days=1))
 ```
+### <a name="register-datasets"></a>Adatkészletek regisztrálása
 
-#### <a name="create-a-filedataset"></a>FileDataset létrehozása
-
-A [`from_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?view=azure-ml-py#from-files-path--validate-true-) osztály metódusának használatával `FileDatasetFactory` bármilyen formátumban betöltheti a fájlokat, és nem regisztrált FileDataset hozhat létre. Ha a tárterület virtuális hálózat vagy tűzfal mögött van, állítsa a paramétert a `validate=False` `from_files()` metódusban. Ezzel megkerüli a kezdeti ellenőrzési lépést, és gondoskodik arról, hogy az adatkészletet ezekből a biztonságos fájlokból lehessen létrehozni.
+A létrehozási folyamat befejezéséhez regisztrálja az adatkészleteket egy munkaterületen. Az [`register()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.abstract_dataset.abstractdataset?view=azure-ml-py#register-workspace--name--description-none--tags-none--create-new-version-false-) adatkészletek munkaterülethez való regisztrálásához használja a metódust, hogy megossza őket másokkal, és újra felhasználja őket a munkaterületen lévő kísérletek között:
 
 ```Python
-# create a FileDataset pointing to files in 'animals' folder and its subfolders recursively
-datastore_paths = [(datastore, 'animals')]
-animal_ds = Dataset.File.from_files(path=datastore_paths)
-
-# create a FileDataset from image and label files behind public web urls
-web_paths = ['https://azureopendatastorage.blob.core.windows.net/mnist/train-images-idx3-ubyte.gz',
-             'https://azureopendatastorage.blob.core.windows.net/mnist/train-labels-idx1-ubyte.gz']
-mnist_ds = Dataset.File.from_files(path=web_paths)
+titanic_ds = titanic_ds.register(workspace=workspace,
+                                 name='titanic_ds',
+                                 description='titanic training data')
 ```
 
-#### <a name="on-the-web"></a>A weben 
-Az alábbi lépések és animációk bemutatják, hogyan hozhat létre adatkészletet a Azure Machine Learning Studióban https://ml.azure.com .
+## <a name="create-datasets-in-the-studio"></a>Adatkészletek létrehozása a Studióban
+
+Az alábbi lépések és animációk bemutatják, hogyan hozhat létre adatkészletet [Azure Machine learning Studióban](https://ml.azure.com).
+
+> [!Note]
+> A Azure Machine Learning Studióval létrehozott adatkészletek automatikusan regisztrálva lesznek a munkaterületen.
 
 ![Adatkészlet létrehozása a felhasználói felületen](./media/how-to-create-register-datasets/create-dataset-ui.gif)
 
@@ -216,19 +227,6 @@ Adatkészlet létrehozása a Studióban:
 1. Válassza a **tovább** lehetőséget a **beállítások és az előnézet** és a **séma** űrlapok feltöltéséhez; ezeket a fájltípusok alapján intelligens módon töltik fel, és az űrlapokon való létrehozás előtt további beállításokkal konfigurálhatja az adatkészletet. 
 1. Kattintson a **tovább** gombra a **részletek megerősítése** űrlap áttekintéséhez. Válassza ki a beállításokat, és hozzon létre egy opcionális adatprofilt az adatkészlethez. További információ az [adatprofilkészítésről](how-to-use-automated-ml-for-ml-models.md#profile). 
 1. Válassza a **Létrehozás** lehetőséget az adatkészlet létrehozásának befejezéséhez.
-
-## <a name="register-datasets"></a>Adatkészletek regisztrálása
-
-A létrehozási folyamat befejezéséhez regisztrálja az adatkészleteket egy munkaterületen. Az [`register()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.abstract_dataset.abstractdataset?view=azure-ml-py#register-workspace--name--description-none--tags-none--create-new-version-false-) adatkészletek munkaterülethez való regisztrálásához használja a metódust, hogy megossza őket másokkal, és újra felhasználja őket a munkaterületen lévő kísérletek között:
-
-```Python
-titanic_ds = titanic_ds.register(workspace=workspace,
-                                 name='titanic_ds',
-                                 description='titanic training data')
-```
-
-> [!Note]
-> A Azure Machine Learning Studióval létrehozott adatkészletek automatikusan regisztrálva lesznek a munkaterületen.
 
 ## <a name="create-datasets-with-azure-open-datasets"></a>Adatkészletek létrehozása az Azure Open-adatkészletekkel
 

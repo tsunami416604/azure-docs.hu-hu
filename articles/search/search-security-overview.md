@@ -7,19 +7,19 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/03/2020
-ms.openlocfilehash: 55ee6e99cdf6d77ea1e78799e016d4c276e85fcd
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.date: 07/30/2020
+ms.openlocfilehash: 9fe9a431d7bbc3b0d3b4b95d9883ed8b5a1f4704
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423864"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475430"
 ---
 # <a name="security-in-azure-cognitive-search---overview"></a>Biztonság az Azure Cognitive Searchban – áttekintés
 
 Ez a cikk az Azure Cognitive Search legfontosabb biztonsági funkcióit ismerteti, amelyek a tartalom és a műveletek védelmére használhatók. 
 
-+ A tárolási rétegben a többhelyes titkosítás a platform szintjén van megadva, de a Cognitive Search "kettős titkosítást" is biztosít azon ügyfelek számára, akik a felhasználók és a Microsoft által felügyelt kulcsok kettős védelmét szeretnék.
++ A tárolási rétegben a többhelyes titkosítás a platform szintjén van megadva, de a Cognitive Search az ügyfél által felügyelt kulcsokat is kínál a Azure Key Vault egy további titkosítási réteghez.
 
 + A bejövő biztonság a keresési szolgáltatási végpontot a biztonsági szintek növekvő szintjén védi: a kérés API-kulcsaitól, a tűzfal bejövő szabályaitól a szolgáltatás teljes körű védelmét biztosító privát végpontok számára a nyilvános internetről.
 
@@ -107,7 +107,7 @@ Az index és az egyéb objektumok elérésének módja a kérelemben szereplő A
 
 Ha részletes, felhasználónkénti vezérlést igényel a keresési eredmények között, biztonsági szűrőket készíthet a lekérdezésekhez, és visszaküldheti az adott biztonsági identitáshoz társított dokumentumokat. Az előre definiált szerepkörök és szerepkör-hozzárendelések helyett az identitás-alapú hozzáférés-vezérlés olyan *szűrőként* van megvalósítva, amely identitások alapján metszi a dokumentumok és tartalmak keresési eredményeit. Az alábbi táblázat két módszert ismertet a jogosulatlan tartalom keresési eredményeinek kivágására.
 
-| A módszer | Description |
+| Módszer | Leírás |
 |----------|-------------|
 |[Biztonsági körülvágás identitás-szűrők alapján](search-security-trimming-for-azure-search.md)  | Dokumentálja a felhasználói identitás hozzáférés-vezérlésének megvalósításához szükséges alapszintű munkafolyamatot. Ismerteti a biztonsági azonosítók indexbe való hozzáadását, majd a tiltott tartalom eredményének kivágására szolgáló mező szűrését ismerteti. |
 |[Biztonsági kivágás Azure Active Directory identitások alapján](search-security-trimming-for-azure-search-with-aad.md)  | Ez a cikk az előző cikkben található, amely a Azure Active Directory (HRE) identitások beolvasásának lépéseit ismerteti az Azure Cloud platform egyik [ingyenes szolgáltatásával](https://azure.microsoft.com/free/) . |
@@ -125,7 +125,11 @@ Ezzel szemben a szolgáltatásban üzemeltetett tartalommal kapcsolatos rendszer
 
 Az Azure Cognitive Search a nyilvános felhő és a Azure Government esetében több globális, regionális és iparági szabványnak megfelelő előírásoknak is megfelelt. A teljes listához töltse le a [ **Microsoft Azure megfelelőségi ajánlatokat** ](https://azure.microsoft.com/resources/microsoft-azure-compliance-offerings/) a hivatalos naplózási jelentések oldaláról.
 
-## <a name="see-also"></a>Lásd még
+A megfelelőség érdekében a [Azure Policy](../governance/policy/overview.md) segítségével megvalósíthatja az [Azure biztonsági teljesítményteszt](../security/benchmarks/introduction.md)magas biztonsággal kapcsolatos ajánlott eljárásait. Az Azure Security benchmark olyan biztonsági javaslatok gyűjteménye, amelyek a szolgáltatásokra és az adatmennyiségre vonatkozó fenyegetések enyhítése érdekében a biztonsági ellenőrzésekben foglaltak szerint vannak leképezve. Jelenleg 11 biztonsági vezérlő van, beleértve a [hálózati biztonságot](../security/benchmarks/security-control-network-security.md), a [naplózást és a figyelést](../security/benchmarks/security-control-logging-monitoring.md), és az [Adatvédelem](../security/benchmarks/security-control-data-protection.md) csak néhányat említsünk.
+
+A Azure Policy az Azure-ba épített képesség, amely lehetővé teszi több szabvány megfelelőségének kezelését, beleértve az Azure biztonsági teljesítménytesztet is. A jól ismert referenciaértékek esetében a Azure Policy beépített definíciókat biztosít, így könnyebben hozhat létre házirendeket. Az Azure Cognitive Search esetében jelenleg egy beépített definíció található a diagnosztikai naplózáshoz, ami azt jelenti, hogy hozzárendelhet egy olyan házirendet, amely azonosítja és javítja a naplózási és figyelési biztonsági vezérlővel nem kompatibilis keresési szolgáltatásokat. További információ: [Azure Policy Azure Cognitive Search szabályozási megfelelőségi szabályozása](security-controls-policy.md).
+
+## <a name="see-also"></a>További információ
 
 + [Azure-biztonság – Alapismeretek](../security/fundamentals/index.yml)
 + [Azure-biztonság](https://azure.microsoft.com/overview/security)

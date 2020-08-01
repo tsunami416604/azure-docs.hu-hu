@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e8486241d4de0025603b22b591f4a8f62901bd7f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1875c9147f62619d8961096adb6a0f3986496b41
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85203656"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87459441"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>REST-technikai profil definiálása egy Azure Active Directory B2C egyéni házirendben
 
@@ -114,16 +114,16 @@ A technikai profil a jogcímeket is visszaadja, amelyeket az identitás-szolgál
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| ServiceUrl | Yes | Az REST API végpont URL-címe |
-| AuthenticationType | Yes | A REST-alapú jogcím-szolgáltató által végrehajtott hitelesítés típusa. Lehetséges értékek: `None` ,,, `Basic` `Bearer` vagy `ClientCertificate` . Az `None` érték azt jelzi, hogy a REST API nem anonim. Az `Basic` érték azt jelzi, hogy a REST API a http alapszintű hitelesítéssel védett. Csak ellenőrzött felhasználók férhetnek hozzá az API-hoz, beleértve a Azure AD B2C is. A `ClientCertificate` (javasolt) érték azt jelzi, hogy a REST API ügyféltanúsítvány-alapú hitelesítés használatával korlátozza a hozzáférést. Csak a megfelelő tanúsítvánnyal rendelkező szolgáltatások férhetnek hozzá az API-hoz (például Azure AD B2C). Az `Bearer` érték azt jelzi, hogy a REST API az ügyfél OAuth2 tulajdonosi jogkivonatát használva korlátozza a hozzáférést. |
-| AllowInsecureAuthInProduction| No| Azt jelzi, hogy a beállítható `AuthenticationType` `none` -e éles környezetben ( `DeploymentMode` a [TrustFrameworkPolicy](trustframeworkpolicy.md) beállítása `Production` , vagy nincs megadva). Lehetséges értékek: true vagy FALSE (alapértelmezett). |
-| SendClaimsIn | No | Megadja, hogy a rendszer hogyan küldje el a bemeneti jogcímeket a REST-jogcím-szolgáltatónak. Lehetséges értékek: `Body` (alapértelmezett), `Form` , `Header` , vagy `QueryString` . Az `Body` érték a kérelem törzsében a JSON formátumban elküldett bemeneti jogcím. Az `Form` érték az a bemeneti jogcím, amelyet a rendszer a kérés törzsében küld el egy "&" tagolt kulcs értékének formátumában. Az `Header` érték a kérelem fejlécében elküldhető bemeneti jogcím. Az `QueryString` érték a kérelem lekérdezési karakterláncában elküldhető bemeneti jogcím. Az egyesek által meghívott HTTP-műveletek a következők:<br /><ul><li>`Body`: POST</li><li>`Form`: POST</li><li>`Header`: GET</li><li>`QueryString`: GET</li></ul> |
-| ClaimsFormat | No | Jelenleg nincs használatban, figyelmen kívül hagyható. |
-| ClaimUsedForRequestPayload| No | Egy olyan karakterlánc-jogcím neve, amely a REST API küldendő adattartalmat tartalmazza. |
-| DebugMode | No | A technikai profilt hibakeresési módban futtatja. Lehetséges értékek: `true` , vagy `false` (alapértelmezett). Hibakeresési módban a REST API további információkat adhat vissza. Lásd a [visszatérési hibaüzenet](#returning-validation-error-message) szakaszt. |
-| IncludeClaimResolvingInClaimsHandling  | No | A bemeneti és a kimeneti jogcímek esetén megadja, hogy a [jogcímek feloldása](claim-resolver-overview.md) szerepel-e a technikai profilban. Lehetséges értékek: `true` , vagy `false`   (alapértelmezett). Ha a technikai profilban a jogcím-feloldót szeretné használni, állítsa be a következőt: `true` . |
-| ResolveJsonPathsInJsonTokens  | No | Azt jelzi, hogy a technikai profil feloldja-e a JSON-útvonalakat. Lehetséges értékek: `true` , vagy `false` (alapértelmezett). A metaadatok használatával beolvashatja az adatokat egy beágyazott JSON-elemből. A [OutputClaim](technicalprofiles.md#outputclaims)állítsa be a `PartnerClaimType` elemet a kimenetként használni kívánt JSON-útvonal elemre. Például: `firstName.localized` , vagy `data.0.to.0.email` .|
-| UseClaimAsBearerToken| No| A tulajdonosi jogkivonatot tartalmazó jogcím neve.|
+| ServiceUrl | Igen | Az REST API végpont URL-címe |
+| AuthenticationType | Igen | A REST-alapú jogcím-szolgáltató által végrehajtott hitelesítés típusa. Lehetséges értékek: `None` ,,, `Basic` `Bearer` vagy `ClientCertificate` . Az `None` érték azt jelzi, hogy a REST API névtelen. Az `Basic` érték azt jelzi, hogy a REST API a http alapszintű hitelesítéssel védett. Csak ellenőrzött felhasználók férhetnek hozzá az API-hoz, beleértve a Azure AD B2C is. A `ClientCertificate` (javasolt) érték azt jelzi, hogy a REST API ügyféltanúsítvány-alapú hitelesítés használatával korlátozza a hozzáférést. Csak a megfelelő tanúsítvánnyal rendelkező szolgáltatások férhetnek hozzá az API-hoz (például Azure AD B2C). Az `Bearer` érték azt jelzi, hogy a REST API az ügyfél OAuth2 tulajdonosi jogkivonatát használva korlátozza a hozzáférést. |
+| AllowInsecureAuthInProduction| Nem| Azt jelzi, hogy a beállítható `AuthenticationType` `none` -e éles környezetben ( `DeploymentMode` a [TrustFrameworkPolicy](trustframeworkpolicy.md) beállítása `Production` , vagy nincs megadva). Lehetséges értékek: true vagy FALSE (alapértelmezett). |
+| SendClaimsIn | Nem | Megadja, hogy a rendszer hogyan küldje el a bemeneti jogcímeket a REST-jogcím-szolgáltatónak. Lehetséges értékek: `Body` (alapértelmezett), `Form` , `Header` , vagy `QueryString` . Az `Body` érték a kérelem törzsében a JSON formátumban elküldett bemeneti jogcím. Az `Form` érték az a bemeneti jogcím, amelyet a rendszer a kérés törzsében küld el egy "&" tagolt kulcs értékének formátumában. Az `Header` érték a kérelem fejlécében elküldhető bemeneti jogcím. Az `QueryString` érték a kérelem lekérdezési karakterláncában elküldhető bemeneti jogcím. Az egyesek által meghívott HTTP-műveletek a következők:<br /><ul><li>`Body`: POST</li><li>`Form`: POST</li><li>`Header`: GET</li><li>`QueryString`: GET</li></ul> |
+| ClaimsFormat | Nem | Jelenleg nincs használatban, figyelmen kívül hagyható. |
+| ClaimUsedForRequestPayload| Nem | Egy olyan karakterlánc-jogcím neve, amely a REST API küldendő adattartalmat tartalmazza. |
+| DebugMode | Nem | A technikai profilt hibakeresési módban futtatja. Lehetséges értékek: `true` , vagy `false` (alapértelmezett). Hibakeresési módban a REST API további információkat adhat vissza. Lásd a [visszatérési hibaüzenet](#returning-validation-error-message) szakaszt. |
+| IncludeClaimResolvingInClaimsHandling  | Nem | A bemeneti és a kimeneti jogcímek esetén megadja, hogy a [jogcímek feloldása](claim-resolver-overview.md) szerepel-e a technikai profilban. Lehetséges értékek: `true` , vagy `false`   (alapértelmezett). Ha a technikai profilban a jogcím-feloldót szeretné használni, állítsa be a következőt: `true` . |
+| ResolveJsonPathsInJsonTokens  | Nem | Azt jelzi, hogy a technikai profil feloldja-e a JSON-útvonalakat. Lehetséges értékek: `true` , vagy `false` (alapértelmezett). A metaadatok használatával beolvashatja az adatokat egy beágyazott JSON-elemből. A [OutputClaim](technicalprofiles.md#outputclaims)állítsa be a `PartnerClaimType` elemet a kimenetként használni kívánt JSON-útvonal elemre. Például: `firstName.localized` , vagy `data.0.to.0.email` .|
+| UseClaimAsBearerToken| Nem| A tulajdonosi jogkivonatot tartalmazó jogcím neve.|
 
 ## <a name="error-handling"></a>Hibakezelés
 
@@ -131,10 +131,10 @@ A következő metaadatokat használhatja a REST API meghibásodásakor megjelen�
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| DefaultUserMessageIfRequestFailed | No | Alapértelmezett egyéni hibaüzenet minden REST API kivételhez.|
-| UserMessageIfCircuitOpen | No | Hibaüzenet jelenik meg, ha a REST API nem érhető el. Ha nincs megadva, a rendszer a DefaultUserMessageIfRequestFailed adja vissza. |
-| UserMessageIfDnsResolutionFailed | No | A DNS-feloldási kivételre vonatkozó hibaüzenet. Ha nincs megadva, a rendszer a DefaultUserMessageIfRequestFailed adja vissza. | 
-| UserMessageIfRequestTimeout | No | Hibaüzenet, ha a kapcsolódás időtúllépés miatt megszakadt. Ha nincs megadva, a rendszer a DefaultUserMessageIfRequestFailed adja vissza. | 
+| DefaultUserMessageIfRequestFailed | Nem | Alapértelmezett egyéni hibaüzenet minden REST API kivételhez.|
+| UserMessageIfCircuitOpen | Nem | Hibaüzenet jelenik meg, ha a REST API nem érhető el. Ha nincs megadva, a rendszer a DefaultUserMessageIfRequestFailed adja vissza. |
+| UserMessageIfDnsResolutionFailed | Nem | A DNS-feloldási kivételre vonatkozó hibaüzenet. Ha nincs megadva, a rendszer a DefaultUserMessageIfRequestFailed adja vissza. | 
+| UserMessageIfRequestTimeout | Nem | Hibaüzenet, ha a kapcsolódás időtúllépés miatt megszakadt. Ha nincs megadva, a rendszer a DefaultUserMessageIfRequestFailed adja vissza. | 
 
 ## <a name="cryptographic-keys"></a>Titkosítási kulcsok
 
@@ -156,8 +156,8 @@ Ha a hitelesítés típusa értékre van állítva `Basic` , a **CryptographicKe
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| BasicAuthenticationUsername | Yes | A hitelesítéshez használt Felhasználónév. |
-| BasicAuthenticationPassword | Yes | A hitelesítéshez használt jelszó. |
+| BasicAuthenticationUsername | Igen | A hitelesítéshez használt Felhasználónév. |
+| BasicAuthenticationPassword | Igen | A hitelesítéshez használt jelszó. |
 
 Az alábbi példa egy egyszerű hitelesítéssel rendelkező technikai profilt mutat be:
 
@@ -181,7 +181,7 @@ Ha a hitelesítés típusa értékre van állítva `ClientCertificate` , a **Cry
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| ClientCertificate | Yes | A hitelesítéshez használandó X509-tanúsítvány (RSA-kulcs). |
+| ClientCertificate | Igen | A hitelesítéshez használandó X509-tanúsítvány (RSA-kulcs). |
 
 ```xml
 <TechnicalProfile Id="REST-API-SignUp">
@@ -202,7 +202,7 @@ Ha a hitelesítés típusa értékre van állítva `Bearer` , a **CryptographicK
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| BearerAuthenticationToken | No | A OAuth 2,0 tulajdonosi jogkivonata. |
+| BearerAuthenticationToken | Nem | A OAuth 2,0 tulajdonosi jogkivonata. |
 
 ```xml
 <TechnicalProfile Id="REST-API-SignUp">
@@ -237,13 +237,13 @@ Előfordulhat, hogy a REST API hibaüzenetet kell visszaadnia, például "a felh
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| version | Yes | Az REST API verziója. Például: 1.0.1 |
-| status | Yes | 409-nek kell lennie |
-| code | No | A REST-végpont szolgáltatójának hibakódja, amely akkor jelenik meg, ha az `DebugMode` engedélyezve van. |
-| Kérelemazonosító | No | A REST végpont-szolgáltatótól származó kérelem azonosítója, amely akkor jelenik meg, ha az `DebugMode` engedélyezve van. |
-| userMessage | Yes | Egy hibaüzenet jelenik meg, amely megjelenik a felhasználó számára. |
-| developerMessage | No | A probléma részletes leírása és a kijavítása, amely akkor jelenik meg, ha `DebugMode` az engedélyezve van. |
-| moreInfo | No | Olyan URI, amely további információra mutat, amely akkor jelenik meg, ha `DebugMode` az engedélyezve van. |
+| version | Igen | Az REST API verziója. Például: 1.0.1 |
+| status | Igen | 409-nek kell lennie |
+| code | Nem | A REST-végpont szolgáltatójának hibakódja, amely akkor jelenik meg, ha az `DebugMode` engedélyezve van. |
+| Kérelemazonosító | Nem | A REST végpont-szolgáltatótól származó kérelem azonosítója, amely akkor jelenik meg, ha az `DebugMode` engedélyezve van. |
+| userMessage | Igen | Egy hibaüzenet jelenik meg, amely megjelenik a felhasználó számára. |
+| developerMessage | Nem | A probléma részletes leírása és a kijavítása, amely akkor jelenik meg, ha `DebugMode` az engedélyezve van. |
+| moreInfo | Nem | Olyan URI, amely további információra mutat, amely akkor jelenik meg, ha `DebugMode` az engedélyezve van. |
 
 
 Az alábbi példa egy C# osztályt mutat be, amely egy hibaüzenetet ad vissza:

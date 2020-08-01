@@ -2,20 +2,30 @@
 title: Az Azure Data Lake Analytics áttekintése
 description: A Data Lake Analytics lehetővé teszi, hogy a felhőbeli adatokból kinyert információkat vállalkozása hasznára fordíthassa, bármennyi adatról legyen is szó.
 services: data-lake-analytics
+author: saveenr
+ms.author: saveenr
+ms.reviewer: jasonwhowell
 ms.assetid: 1e1d443a-48a2-47fb-bc00-bf88274222de
 ms.service: data-lake-analytics
 ms.topic: overview
 ms.date: 06/23/2017
-ms.openlocfilehash: 01a38829056d8f96ddc1029fc4df5ec79414e8bb
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: b86b569b1b14b943cdc6dcc805a7b7a208d03447
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321005"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475119"
 ---
 # <a name="what-is-azure-data-lake-analytics"></a>Mi az az Azure Data Lake Analytics?
 
 Az Azure Data Lake Analytics egy igény szerinti elemzési feladatokat végző szolgáltatás, amely leegyszerűsíti a big data-elemzéseket. Az üzembe helyezés, a konfigurálás és a hardver beállítása helyett lekérdezéseket írhat az adatátalakítás és az értékes információk kinyerése érdekében. Az elemző szolgáltatás bármekkora munkát képes elvégezni, csak be kell állítania, hogy mekkora teljesítményre van szüksége. Költséghatékony megoldás, hiszen csak az elvégzett munkáért kell fizetni. 
+
+## <a name="azure-data-lake-analytics-recent-update-information"></a>Azure Data Lake Analytics legújabb frissítési információi
+
+A Azure Data Lake Analytics szolgáltatás egy aperiodic-alapon frissül bizonyos célra. Továbbra is biztosítjuk a szolgáltatás támogatását az összetevő-frissítéssel, az összetevő bétaverziójának előzetes verziójával és így tovább. 
+
+- A legutóbbi frissítés általános információit a [Data Lake Analytics újdonságai](data-lake-analytics-whats-new.md)című témakörben találja.
+- Az egyes frissítések részleteiért tekintse meg a [Azure Data Lake Analytics kibocsátási megjegyzését](https://github.com/Azure/AzureDataLake/tree/master/docs/Release_Notes).
 
 ## <a name="dynamic-scaling"></a>Dinamikus méretezés
   
@@ -41,8 +51,10 @@ A Data Lake Analytics egy költséghatékony megoldás big data-számítási fel
   
 A Azure Data Lake Storage Data Lake Analytics a legmagasabb teljesítmény-, átviteli sebesség-és párhuzamos, valamint az Azure Storage-Blobok, Azure SQL Database, Azure szinapszis Analytics (korábban Azure SQL Data Warehouse) használatával működik.
 
+
 ## <a name="next-steps"></a>További lépések
 
+* A [Azure Data Lake Analytics újdonságait](data-lake-analytics-whats-new.md) az Azure Data Lake Analytics legújabb frissítésében tekintheti meg?
 * Ismerkedés a Data Lake Analytics [Azure Portal](data-lake-analytics-get-started-portal.md)  |  [Azure PowerShell](data-lake-analytics-get-started-powershell.md)  |  [CLI](data-lake-analytics-get-started-cli.md) használatával
 * Azure Data Lake Analytics kezelése az [Azure Portal](data-lake-analytics-manage-use-portal.md)  |  [Azure PowerShell](data-lake-analytics-manage-use-powershell.md)  |  [CLI](data-lake-analytics-manage-use-cli.md)  |  [Azure .net SDK](data-lake-analytics-manage-use-dotnet-sdk.md) -val  |  [Node.js](data-lake-analytics-manage-use-nodejs.md)
 * [A költségek szabályozása és pénz megtakarítása a Data Lake Analytics használatával](https://1drv.ms/f/s!AvdZLquGMt47h213Hg3rhl-Tym1c)

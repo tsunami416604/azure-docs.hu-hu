@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/06/2019
-ms.openlocfilehash: 4a763a3bb4d46ba03808423d4d1283381c1174a3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 02ec26c80a8a64f88a30ded2067a377c292d621d
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81605397"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475600"
 ---
 # <a name="mapping-data-flow-debug-mode"></a>Adatfolyam-hibakeresési mód leképezése
 
@@ -25,7 +25,7 @@ Azure Data Factory a leképezési adatfolyam hibakeresési módja lehetővé tes
 
 ![Hibakeresési csúszka](media/data-flow/debugbutton.png "Hibakeresési csúszka")
 
-A csúszka bekapcsolását követően meg kell adnia, hogy melyik Integration Runtime-konfigurációt kívánja használni. Ha a AutoResolveIntegrationRuntime van kiválasztva, akkor a rendszer egy, a 60 perces élettartammal rendelkező, nyolc maggal rendelkező fürtöt hoz létre. Az adatfolyam-integrációs modulokkal kapcsolatos további információkért lásd: [adatáramlási teljesítmény](concepts-data-flow-performance.md#increasing-compute-size-in-azure-integration-runtime).
+A csúszka bekapcsolását követően meg kell adnia, hogy melyik Integration Runtime-konfigurációt kívánja használni. Ha a AutoResolveIntegrationRuntime van kiválasztva, akkor a rendszer egy, a 60 perces élettartammal rendelkező, nyolc maggal rendelkező fürtöt hoz létre. Az adatfolyam-integrációs modulokkal kapcsolatos további információkért lásd: [adatáramlási teljesítmény](concepts-data-flow-performance.md#ir).
 
 ![IR-kijelölés hibakeresése](media/data-flow/debugbutton2.png "IR-kijelölés hibakeresése")
 

@@ -3,12 +3,12 @@ title: Webalkalmazás-elemzés beállítása az ASP.NET-hez az Azure Application
 description: Konfigurálhatja a helyszíni vagy az Azure-ban üzemeltetett ASP.NET-webhely teljesítmény-, rendelkezésre állási és felhasználói viselkedési elemzési eszközeit.
 ms.topic: conceptual
 ms.date: 05/08/2019
-ms.openlocfilehash: 4e51fb43a9e088c991af2132b6a5d2257da8d78a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: acfba63cba520631831888a1480929be3b1897f0
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324216"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475532"
 ---
 # <a name="set-up-application-insights-for-your-aspnet-website"></a>Az Application Insights beállítása az ASP.NET-webhelyhez
 
@@ -112,7 +112,10 @@ Az alkalmazás telemetriáját fogadó Azure-erőforrást egy *kialakítási kul
 
 
 ## <a name="upgrade-to-future-sdk-versions"></a>Frissítés a jövőbeli SDK-verziókra
-Ha frissíteni szeretne egy [új SDK-kiadásra](https://github.com/Microsoft/ApplicationInsights-dotnet-server/releases), nyissa meg a **NuGet-csomagkezelőt**, és szűréssel keresse meg a telepített csomagokat. Válassza a **Microsoft. ApplicationInsights. Web**lehetőséget, és válassza a **frissítés**lehetőséget.
+
+* [Kibocsátási megjegyzések](./release-notes.md)
+
+Az SDK új verziójára való frissítéshez nyissa meg a **NuGet csomagkezelő eszközt**, és szűrje a telepített csomagokat. Válassza a **Microsoft. ApplicationInsights. Web**lehetőséget, és válassza a **frissítés**lehetőséget.
 
 Ha az ApplicationInsights.config fájlt testreszabta, mentse el egy példányát a frissítés előtt. Ezután egyesítse a módosításait az új verzióval.
 

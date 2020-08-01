@@ -1,18 +1,18 @@
 ---
 title: Az Azure IoT Model repository koncepcióinak megismerése | Microsoft Docs
 description: Megoldás fejlesztőként vagy informatikai szakemberként megismerheti az Azure IoT Model repository alapvető fogalmait.
-author: JimacoMS3
-ms.author: v-jambra
+author: prashmo
+ms.author: prashmo
 ms.date: 07/24/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 53ae5bf15c303f26d48550734f46e69ef1fcdd75
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 7d736721e2676a42da90aead3144f8016329f730
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87352313"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475498"
 ---
 # <a name="azure-iot-model-repository"></a>Azure IoT-modell adattár
 
@@ -42,7 +42,7 @@ Ha a REST API használatával programozottan szeretné megtekinteni a nyilvános
 
 ```csharp
 var httpClient = new HttpClient();
-httpClient.BaseAddress = new Uri("<url>");
+httpClient.BaseAddress = new Uri("https://repo.azureiotrepository.com");
 
 var modelId = "dtmi:com:mxchip:model;1";
 var response = await httpClient.GetAsync($"/models/{modelId}?api-version=2020-05-01-preview").ConfigureAwait(false);

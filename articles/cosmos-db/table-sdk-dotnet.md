@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 08/17/2018
-ms.openlocfilehash: 419c3f21c8606bb16112fd18cfe141655fd7b868
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f735668e1519a6a12082537dabfe17be3e96ffdd
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84168148"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460005"
 ---
 # <a name="azure-cosmos-db-table-net-api-download-and-release-notes"></a>Azure Cosmos DB table .NET API: letöltési és kibocsátási megjegyzések
 
@@ -82,10 +82,7 @@ A Microsoft legalább **12 hónappal** korábban értesítést küld az SDK kivo
 
 A `Microsoft.Azure.CosmosDB.Table` függvénytár jelenleg csak a .net-keretrendszerhez érhető el, és karbantartási üzemmódban van, és hamarosan elavulttá válik. Új funkciók és funkciók és optimalizálások csak a .NET Standard Library [Microsoft. Azure. Cosmos. table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table)számára vehetők fel, ezért azt javasoljuk, hogy frissítsen a [Microsoft. Azure. Cosmos. table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table)verzióra.
 
-A [WindowsAzure. Storage-PremiumTable](https://www.nuget.org/packages/WindowsAzure.Storage-PremiumTable/0.1.0-preview) előzetes verziója elavult. A WindowsAzure. Storage-PremiumTable SDK 2018 november 15-én megszűnik, amikor a kivont SDK-ra irányuló kérések nem lesznek engedélyezve. 
-
-A szolgáltatás elutasítja a kivont SDK használatával Azure Cosmos DB kérelmeket.
-<br/>
+A [WindowsAzure. Storage-PremiumTable](https://www.nuget.org/packages/WindowsAzure.Storage-PremiumTable/0.1.0-preview) előzetes verziója elavult. A WindowsAzure. Storage-PremiumTable SDK 2018 november 15-én megszűnik, amikor a kivont SDK-ra irányuló kérések nem lesznek engedélyezve.
 
 | Verzió | Kiadás dátuma | Kivonás dátuma |
 | --- | --- | --- |
@@ -122,6 +119,6 @@ a Microsoft. Azure. CosmosDB. table NuGet-csomag használatának megkísérlése
 
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 Ha többet szeretne megtudni a Azure Cosmos DB Table APIról, tekintse meg a [Azure Cosmos DB Table API bemutatása](table-introduction.md)című témakört. 

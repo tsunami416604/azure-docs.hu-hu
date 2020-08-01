@@ -7,12 +7,12 @@ ms.date: 07/10/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: b06edb83e85ef6d56cf8bf8f91551fe99535eba1
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 126673391b49f884a51521d462060c425a314667
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87352278"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475668"
 ---
 # <a name="iot-plug-and-play-conventions"></a>Az IoT Plug and Playhez kapcsolódó konvenciók
 
@@ -25,11 +25,11 @@ Ismerteti azokat a telemetria, tulajdonságokat és parancsokat, amelyeket egy I
 
 További információ: [IoT Plug and Play-összetevők a modellekben](concepts-components.md).
 
-## <a name="model-discovery"></a>Modellfelderítés
+## <a name="identify-the-model"></a>A modell azonosítása
 
 Ha be szeretné jelenteni az általa megvalósított modellt, egy IoT Plug and Play eszköz tartalmazza a modell AZONOSÍTÓját a MQTT-kapcsolati csomagban a `model-id` mezőhöz való hozzáadásával `USERNAME` .
 
-Az eszköz által megvalósított modell felderítéséhez a szolgáltatás a következő helyről szerezheti be a modell AZONOSÍTÓját:
+Az eszköz által megvalósított modell azonosításához a szolgáltatás a következő helyről szerezheti be a modell AZONOSÍTÓját:
 
 - Az eszköz Twin `modelId` mezője
 - A digitális dupla `$metadata.$model` mező.
@@ -257,7 +257,7 @@ Az összetevő-illesztőfelületek nem a parancs nevét használják előtag né
 
 Egy eszközön több összetevő-illesztőfelület is a következő formátumú parancsokat használja: `componentName*commandName` .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy megismerte a IoT Plug and Play konvenciókat, néhány további erőforrást is talál:
 

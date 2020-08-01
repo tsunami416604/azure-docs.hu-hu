@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/28/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: 1abde88b653ae0f0ef3651b161e806047e143078
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 82b10525fe4d8b9db88300b61ae2da6630030dfd
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87418780"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461187"
 ---
 # <a name="configure-saml-based-single-sign-on"></a>SAML-alapú egyszeri bejelentkezés konfigurálása
 
@@ -25,7 +25,7 @@ Az alkalmazások felügyeletének rövid útmutató [sorozatában](view-applicat
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Ha az Azure AD-t identitás-szolgáltatóként használja, és az egyszeri bejelentkezés (SSO) beállítása egyszerű vagy összetett lehet a használt alkalmazástól függően. Néhány alkalmazás csak néhány művelettel állítható be. Másoknak részletes konfigurációra van szükségük. A gyors üzembe helyezéshez járjon végig az alkalmazás-felügyeleti útmutató [sorozatán](view-applications-portal.md) . Ha a hozzáadott alkalmazás egyszerű, akkor valószínűleg nem kell elolvasnia ezt a cikket. Ha a hozzáadott alkalmazáshoz egyéni konfiguráció szükséges az SAML-alapú egyszeri bejelentkezéshez, akkor ez a cikk Önnek szól.
+Az Azure AD használata az identitás-szolgáltatóként (identitásszolgáltató) és az egyszeri bejelentkezés (SSO) beállítása a használt alkalmazástól függően egyszerű vagy összetett lehet. Néhány alkalmazás csak néhány művelettel állítható be. Másoknak részletes konfigurációra van szükségük. A gyors üzembe helyezéshez járjon végig az alkalmazás-felügyeleti útmutató [sorozatán](view-applications-portal.md) . Ha a hozzáadott alkalmazás egyszerű, akkor valószínűleg nem kell elolvasnia ezt a cikket. Ha a hozzáadott alkalmazáshoz egyéni konfiguráció szükséges az SAML-alapú egyszeri bejelentkezéshez, akkor ez a cikk Önnek szól.
 
 A gyors üzembe helyezési [sorozatban](view-applications-portal.md)van egy cikk, amely az egyszeri bejelentkezés konfigurálását ismerteti. Itt megismerheti, hogyan érheti el az alkalmazás SAML-konfigurációs lapját. Az SAML-konfiguráció oldal öt szakaszt tartalmaz. Ezeket a szakaszokat részletesen ismertetjük ebben a cikkben.
 
@@ -44,7 +44,7 @@ Az alkalmazás gyártójától kell beolvasnia az értékeket. Manuálisan is me
 > [!TIP]
 > Számos alkalmazás már előre konfigurálva van az Azure AD-vel való együttműködésre. Ezek az alkalmazások az alkalmazások katalógusában jelennek meg, amelyekkel megkereshet egy alkalmazást az Azure AD-bérlőhöz való hozzáadásakor. A gyors üzembe helyezési [sorozat](view-applications-portal.md) végigvezeti a folyamaton. A katalógusban található alkalmazásokhoz részletes, lépésről lépésre, útmutatást kell beállítani. A lépések eléréséhez kattintson az alkalmazás SAML-konfiguráció lapján található hivatkozásra, amelyet a rövid útmutatóban leírtak szerint, vagy a [SaaS app Configuration oktatóanyagokban](../saas-apps/tutorial-list.md)böngészhet az összes alkalmazás-konfigurációs oktatóanyag listájában.
 
-| Alapszintű SAML konfigurációs beállítás | SP által kezdeményezve | Identitásszolgáltató által kezdeményezve | Description |
+| Alapszintű SAML konfigurációs beállítás | SP által kezdeményezve | Identitásszolgáltató által kezdeményezve | Leírás |
 |:--|:--|:--|:--|
 | **Azonosító (entitásazonosító)** | Néhány alkalmazáshoz szükséges | Néhány alkalmazáshoz szükséges | Egyedileg azonosítja az alkalmazást. Az Azure AD elküldi az azonosítót az alkalmazásnak az SAML-jogkivonat célközönségi paramétereként. Az alkalmazásnak el kell érvényesíteni. Ez az érték az alkalmazás által megadott SAML-metaadatok entitásazonosítójaként is megjelenik. Adjon meg egy URL-címet, amely a következő mintát használja: "https:// <subdomain> . contoso.com". *Ez az érték az alkalmazás által elküldhető **AuthnRequest** (SAML-kérelem) **kiállító** elemeként is megkereshető* . |
 | **Válasz URL-címe** | Kötelező | Kötelező | Megadja, hogy az alkalmazás hová várja az SAML-jogkivonatot. A válasz URL-címet más néven a tényfeldolgozó szolgáltatás (Assertion Consumer Service, ACS) URL-címének hívják. A további válasz URL-címek mezővel több válasz URL-címet is megadhat. Előfordulhat például, hogy több altartományhoz is szüksége van további válasz URL-címekre. Vagy tesztelési célból egyszerre több válasz URL-címet (helyi gazdagépet és nyilvános URL-címeket) is megadhat. |
@@ -129,7 +129,7 @@ Ha hibaüzenet jelenik meg, hajtsa végre a következő lépéseket:
 További információ: [SAML-alapú egyszeri bejelentkezés hibakeresése Azure Active Directory-alkalmazásokban](../azuread-dev/howto-v1-debug-saml-sso-issues.md).
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Gyorsindítás sorozat az alkalmazás-kezelésben](view-applications-portal.md)
 - [Felhasználók vagy csoportok társítása az alkalmazáshoz](methods-for-assigning-users-and-groups.md)

@@ -3,12 +3,12 @@ title: A Azure Event Grid egyéni témaköreinek vész-helyreállítási követk
 description: Ez az oktatóanyag végigvezeti az eseményvezérelt architektúra beállításának lépésein, ha a Event Grid szolgáltatás nem Kifogástalan állapotba kerül egy régióban.
 ms.topic: tutorial
 ms.date: 07/07/2020
-ms.openlocfilehash: da796a9ac4d03f7ad6999b8fa4530fddfb60cbfe
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: dc893973fe1f6367cd9b95de2014d92c045056f4
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420260"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461680"
 ---
 # <a name="build-your-own-disaster-recovery-for-custom-topics-in-event-grid"></a>Hozzon létre saját vész-helyreállítást a Event Grid egyéni témaköreihez
 A vész-helyreállítási funkció az alkalmazások jelentős elvesztése miatti helyreállításra összpontosít. Ebből az oktatóanyagból megtudhatja, hogyan állíthatja be az eseményvezérelt architektúrát, ha a Event Grid szolgáltatás nem Kifogástalan állapotba kerül egy adott régióban.
@@ -203,8 +203,8 @@ A mintát többféleképpen is kiterjesztheti igényei alapján. Nagy mennyiség
 
 Hasonlóképpen érdemes lehet megvalósítani a feladat-visszavétel logikáját az adott igények alapján. Ha a legközelebbi adatközpontba való közzététel kritikus fontosságú a késés csökkentése érdekében, rendszeres időközönként lekérdezheti egy olyan témakör Health API-ját, amely feladatátvételt végez. Ha ismét Kifogástalan állapotba kerül, biztos lehet benne, hogy a szorosabb adatközpontba történő feladat-visszavétel biztonságos.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ismerje meg, hogyan [fogadhat eseményeket egy http-végponton](./receive-events.md)
 - Ismerje meg, hogyan [irányíthatja az eseményeket hibrid kapcsolatok](./custom-event-to-hybrid-connection.md)
-- Tudnivalók a vész [-helyreállításról Azure DNS és Traffic Manager használatával](https://docs.microsoft.com/azure/networking/disaster-recovery-dns-traffic-manager)
+- Tudnivalók a vész [-helyreállításról Azure DNS és Traffic Manager használatával](../networking/disaster-recovery-dns-traffic-manager.md)

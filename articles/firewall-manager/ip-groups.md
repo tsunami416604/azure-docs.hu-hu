@@ -5,14 +5,14 @@ services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: conceptual
-ms.date: 06/30/2020
+ms.date: 07/30/2020
 ms.author: victorh
-ms.openlocfilehash: 20372d9584becf18c65e13c81b99403ce88d27e4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5192ecb31c71364bdf1301b13da0b0742625d44f
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85568726"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460133"
 ---
 # <a name="ip-groups-in-azure-firewall-policy"></a>Azure Firewall házirendben szereplő IP-csoportok
 
@@ -27,7 +27,7 @@ Egy IP-csoport rendelkezhet egyetlen IP-címmel, több IP-címmel vagy egy vagy 
 
 Az IP-csoportok újra felhasználhatók Azure Firewall DNAT, hálózati és alkalmazási szabályokban több tűzfalon az Azure-ban. A csoportok nevének egyedinek kell lennie. Az IP-csoportokat a Azure Portalban, az Azure CLI-ben vagy a REST API is konfigurálhatja. Az első lépésekhez egy minta sablont biztosítunk.
 
-## <a name="sample-format"></a>Minta formátuma
+## <a name="sample-format"></a>Minták formátuma
 
 Az alábbi IPv4-címformátum példák érvényesek az IP-csoportokban való használatra:
 
@@ -66,43 +66,7 @@ Mostantól kiválaszthatja az **IP-csoport** lehetőséget az IP-cím (ek) **for
 
 ## <a name="ip-address-limits"></a>IP-címek korlátai
 
-50 IP-csoport vagy kevesebb esetében legfeljebb 5000 egyedi IP-cím adható meg. 51 és 100 közötti IP-csoportok esetében minden egyes tűzfal-példány esetében 500 egyedi IP-cím adható meg.
-
-### <a name="examples"></a>Példák
-
-#### <a name="example-1-supported"></a>1. példa: támogatott
-
-|IP-csoportok  |IP-címek  |Jelölés  |Szabály  |
-|---------|---------|---------|---------|
-|IPGroup1 |4096     |10.0.0.0/20  |Rule1|
-|IPGroup2     |3|196.0.0.0 - 196.0.0.2|Rule1|
-|IPGroup3     |1|1.2.3.4|Rule1|
-|     |**Összesen 4100**|         |         |
-|     |         |         |         |
-
-#### <a name="example-2-supported"></a>2. példa: támogatott
-
-|IP-csoportok  |IP-címek  |Jelölés  |Szabály  |
-|---------|---------|---------|---------|
-|IPGroup1 |4096     |10.0.0.0/20  |Rule1|
-|IPGroup2     |4096|11.0.0.0/20|Rule1|
-|     |**Összesen 8192**|         |         |
-
-#### <a name="example-3-not-supported"></a>3. példa: nem támogatott
-
-|IP-csoportok  |IP-címek  |Jelölés  |Szabály  |
-|---------|---------|---------|---------|
-|IPGroup1 |8192     |10.0.0.0/20, 11.0.0.0/20  |Rule1|
-|     |**Összesen 8192**|||
-
-#### <a name="example-4-supported"></a>4. példa: támogatott
-
-|IP-csoportok  |IP-címek  |Jelölés  |Szabály  |
-|---------|---------|---------|---------|
-|IPGroup1 |4096     |10.0.0.0/20  |Rule1|
-|IPGroup2     |4096|11.0.0.0/20|Rule2|
-|     |**Összesen 8192**|         |         |
-
+Tűzfalon legfeljebb 100 IP-csoport lehet, maximális 5000 egyedi IP-cím vagy IP-előtag minden IP-csoportonként.
 
 ## <a name="related-azure-powershell-cmdlets"></a>Kapcsolódó Azure PowerShell-parancsmagok
 

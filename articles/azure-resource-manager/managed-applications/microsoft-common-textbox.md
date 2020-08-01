@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: 547b3ed84c8e4406b65ee8cf51c0db10b6878793
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c89bc434d9d67144a95b5c2f23e7664078fe7825
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87063841"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87474308"
 ---
 # <a name="microsoftcommontextbox-ui-element"></a>Microsoft. Common. szövegdoboz felhasználói felületének eleme
 
@@ -29,6 +29,7 @@ Formázatlan szöveg szerkesztésére szolgáló vezérlőelem.
     "label": "Name",
     "defaultValue": "contoso123",
     "toolTip": "Use only allowed characters",
+    "placeholder": "",
     "constraints": {
         "required": true,
         "validations": [
@@ -60,6 +61,7 @@ Formázatlan szöveg szerkesztésére szolgáló vezérlőelem.
 - A `isValid` tulajdonság olyan kifejezést tartalmaz, amely igaz vagy hamis értéket ad vissza. A kifejezésen belül meg kell határoznia azt a feltételt, amely meghatározza, hogy a szövegmező érvényes-e.
 - A `message` tulajdonság egy karakterlánc, amely akkor jeleníthető meg, ha a szövegmező értéke sikertelen az ellenőrzés során.
 - Ha a értéke `regex` `required` false ( **hamis**), megadható az érték. Ebben az esetben nincs szükség értékre a szövegmező sikeres ellenőrzéséhez. Ha meg van adva, meg kell egyeznie a reguláris kifejezési mintával.
+- A `placeholder` tulajdonság egy olyan súgószöveg, amely eltűnik, amikor a felhasználó megkezdi a szerkesztést. Ha a `placeholder` és `defaultValue` mindkettő is meg van adva, a `defaultValue` veszi elsőbbséget, és megjelenik.
 
 ## <a name="example"></a>Példa
 

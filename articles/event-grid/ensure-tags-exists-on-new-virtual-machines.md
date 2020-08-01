@@ -9,16 +9,16 @@ ms.topic: tutorial
 ms.workload: infrastructure-services
 ms.date: 07/07/2020
 ms.author: eamono
-ms.openlocfilehash: 79f3d83417a99d40ea0d4bd101a89300bc85a393
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 3b9b49a4d38566891f442a3d2d7eac9bf1d36465
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86114516"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87462003"
 ---
 # <a name="tutorial-integrate-azure-automation-with-event-grid-and-microsoft-teams"></a>Oktatóanyag: Azure Automation integrálása a Event Grid és a Microsoft Teams szolgáltatással
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Event Grid-runbookminta importálása.
@@ -27,13 +27,13 @@ Az oktatóanyag a következőket ismerteti:
 > * Event Grid-előfizetés létrehozása.
 > * A runbookot aktiváló virtuális gép létrehozása.
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 [!INCLUDE [requires-azurerm](../../includes/requires-azurerm.md)]
 
-Az oktatóanyag elvégzéséhez egy [Azure Automation-fiók](../automation/automation-offering-get-started.md) szükséges a runbook tárolásához, amelyet az Azure Event Grid-előfizetésből fogunk aktiválni.
+Az oktatóanyag elvégzéséhez egy [Azure Automation-fiók](../automation/index.yml) szükséges a runbook tárolásához, amelyet az Azure Event Grid-előfizetésből fogunk aktiválni.
 
 * Az `AzureRM.Tags` modult be kell tölteni az Automation-fiókba. A modulok az Azure Automationbe való importálásával kapcsolatban lásd [a modulok az Azure Automationbe való importálását](../automation/automation-update-azure-modules.md) bemutató cikket.
 
@@ -123,9 +123,9 @@ Az oktatóanyag elvégzéséhez egy [Azure Automation-fiók](../automation/autom
 
     ![Microsoft Teams-értesítés](media/ensure-tags-exists-on-new-virtual-machines/teams-vm-message.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban az Event Grid és az Automation közötti integrációt állította be. Megismerte, hogyan végezheti el az alábbi műveleteket:
+Ebben az oktatóanyagban az Event Grid és az Automation közötti integrációt állította be. Megtanulta végrehajtani az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Event Grid-runbookminta importálása.

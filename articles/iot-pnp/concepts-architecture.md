@@ -9,14 +9,14 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: f2d9407d9c7172839027e2650486695244f67889
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: f656de0bb2e5244e137ae21a6d7af88f3430b12c
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87352217"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475685"
 ---
-# <a name="iot-plug-and-play-preview-architecture"></a>IoT Plug and Play előzetes verzió architektúrája
+# <a name="iot-plug-and-play-preview-architecture"></a>Az IoT Plug and Play előzetes verziójának architektúrája
 
 A IoT Plug and Play előzetes verziója lehetővé teszi a megoldás-építők számára, hogy manuális konfiguráció nélkül integrálják az intelligens eszközöket a megoldásaikkal. A IoT Plug and Play egy olyan eszköz _modellje_ , amely leírja az eszköz képességeit egy IoT Plug and Play-kompatibilis alkalmazás számára. Ez a modell illesztőfelület-készletként van strukturálva, amely az alábbiakat határozza meg:
 
@@ -30,7 +30,7 @@ Az alábbi ábrán egy IoT Plug and Play megoldás fő elemei láthatók:
 
 :::image type="content" source="media/concepts-architecture/pnp-architecture.png" alt-text="IoT Plug and Play architektúra":::
 
-## <a name="model-repository"></a>Modell tárháza
+## <a name="model-repository"></a>Modelladattár
 
 A [Model adattár](./concepts-model-repository.md) a modell-és illesztőfelület-definíciók tárolója. A modelleket és a csatolókat a [digitális Twins Definition Language (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl)használatával határozhatja meg.
 
@@ -79,5 +79,5 @@ A háttérrendszer-megoldás az illesztőfelület-definíciók adatait a követk
 Most, hogy áttekinti a IoT Plug and Play megoldás architektúráját, a következő lépésekkel többet is megtudhat a következőkről:
 
 - [A modell tárháza](./concepts-model-repository.md)
-- [Modell felderítési folyamata](./concepts-model-discovery.md)
+- [Digitális kettős modell integrációja](./concepts-model-discovery.md)
 - [Fejlesztés a IoT Plug and Play](./concepts-developer-guide.md)

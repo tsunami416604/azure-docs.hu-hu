@@ -3,19 +3,19 @@ title: Webhook-esemény kézbesítése
 description: Ez a cikk a webhookok használatakor a webhook-esemény kézbesítését és a végpontok érvényesítését ismerteti.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: b616c82092ad896da82d0f98f37e3c45f3ba1014
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: e9a52d0cb3e4e880d91e1b748d97ef3041298930
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118953"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461238"
 ---
 # <a name="webhook-event-delivery"></a>Webhook-esemény kézbesítése
 A webhookok egyike a Azure Event Grid események fogadásának számos módja. Ha egy új esemény elkészült, Event Grid a szolgáltatás HTTP-kérelmet küld a konfigurált végpontnak a kérelem törzsében lévő eseménnyel.
 
 A webhookokat támogató számos más szolgáltatáshoz hasonlóan a Event Grid megköveteli, hogy igazolja a webhook-végpont tulajdonosát, mielőtt megkezdi az események továbbítását a végpontnak. Ez a követelmény megakadályozza, hogy egy rosszindulatú felhasználó elárasztsa a végpontot az eseményekkel. Ha az alább felsorolt három Azure-szolgáltatás bármelyikét használja, az Azure-infrastruktúra automatikusan kezeli ezt az ellenőrzést:
 
-- Azure Logic Apps [Event Grid-összekötővel](https://docs.microsoft.com/connectors/azureeventgrid/)
+- Azure Logic Apps [Event Grid-összekötővel](/connectors/azureeventgrid/)
 - Azure Automation [webhookon](../event-grid/ensure-tags-exists-on-new-virtual-machines.md) keresztül
 - Azure Functions [Event Grid triggerrel](../azure-functions/functions-bindings-event-grid.md)
 
@@ -81,9 +81,9 @@ Vagy manuálisan is érvényesítheti az előfizetést egy GET kérelem küldés
 Az előfizetés-ellenőrzési kézfogás kezelésére példát a [C#-minta](https://github.com/Azure-Samples/event-grid-dotnet-publish-consume-events/blob/master/EventGridConsumer/EventGridConsumer/Function1.cs)című témakörben talál.
 
 ## <a name="endpoint-validation-with-cloudevents-v10"></a>Végpont ellenőrzése a CloudEvents 1.0-s verziójában
-Ha már ismeri a Event Gridt, érdemes lehet Event Grid végpont-ellenőrzési kézfogását a visszaélések megelőzésére. A CloudEvents 1.0-s verziójában a HTTP-beállítások módszer használatával valósítja meg a saját [visszaélés elleni védelem szemantikai](webhook-event-delivery.md) beállításait. További információk [itt](https://github.com/cloudevents/spec/blob/v1.0/http-webhook.md#4-abuse-protection). Ha a kimenethez a CloudEvents sémát használja, a Event Grid a Event Grid érvényesítési esemény mechanizmusa helyett az CloudEvents 1.0-s verziójának védelme szolgáltatást használja.
+Ha már ismeri a Event Gridt, érdemes lehet Event Grid végpont-ellenőrzési kézfogását a visszaélések megelőzésére. A CloudEvents 1.0-s verziójában a HTTP-beállítások módszer használatával valósítja meg a saját [visszaélés elleni védelem szemantikai](webhook-event-delivery.md) beállításait. [Itt](https://github.com/cloudevents/spec/blob/v1.0/http-webhook.md#4-abuse-protection)olvashat bővebben. Ha a kimenethez a CloudEvents sémát használja, a Event Grid a Event Grid érvényesítési esemény mechanizmusa helyett az CloudEvents 1.0-s verziójának védelme szolgáltatást használja.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A következő cikkből megtudhatja, hogyan lehet elhárítani az esemény-előfizetés érvényességét: 
 
 [Az esemény-előfizetés érvényességi hibáinak megoldása](troubleshoot-subscription-validation.md)

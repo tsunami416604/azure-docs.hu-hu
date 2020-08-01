@@ -3,16 +3,16 @@ title: Biztonságos webhook-kézbesítés az Azure AD-vel Azure Event Grid
 description: Ismerteti, hogyan lehet eseményeket kézbesíteni a Azure Active Directory által védett HTTPS-végpontoknak Azure Event Grid használatával
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: b0503d7da9e191e9d6764076392ead8faa5109a1
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 90d06f203bc93177101a87a7a774d816b11b16f6
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119123"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460711"
 ---
-# <a name="publish-events-to-azure-active-directory-protected-endpoints"></a>Események közzététele Azure Active Directory védett végpontok számára
+# <a name="publish-events-to-azure-active-directory-protected-endpoints"></a>Események közzététele az Azure Active Directory által védett végpontokon
 
-Ez a cikk azt ismerteti, hogyan használhatja a Azure Active Directory az esemény-előfizetés és a webhook-végpont közötti kapcsolat biztonságossá tételéhez. Az Azure AD-alkalmazások és-szolgáltatások áttekintését lásd: [Microsoft Identity platform (v 2.0) – áttekintés](https://docs.microsoft.com/azure/active-directory/develop/v2-overview).
+Ez a cikk azt ismerteti, hogyan használhatja a Azure Active Directory az esemény-előfizetés és a webhook-végpont közötti kapcsolat biztonságossá tételéhez. Az Azure AD-alkalmazások és-szolgáltatások áttekintését lásd: [Microsoft Identity platform (v 2.0) – áttekintés](../active-directory/develop/v2-overview.md).
 
 Ez a cikk a bemutató Azure Portal használja, de a funkció a CLI, a PowerShell vagy az SDK-k használatával is engedélyezhető.
 
@@ -28,7 +28,7 @@ Először hozzon létre egy Azure AD-alkalmazást a védett végpont számára. 
 Az alábbi PowerShell-szkripttel hozzon létre egy szerepkört és egy szolgáltatásnevet az Azure AD-alkalmazásban. Az Azure AD-alkalmazásban szüksége lesz a bérlői AZONOSÍTÓra és az objektum-AZONOSÍTÓra:
 
    > [!NOTE]
-   > A szkript végrehajtásához az [Azure ad alkalmazás-rendszergazda szerepkör](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#available-roles) tagjának kell lennie.
+   > A szkript végrehajtásához az [Azure ad alkalmazás-rendszergazda szerepkör](../active-directory/users-groups-roles/directory-assign-admin-roles.md#available-roles) tagjának kell lennie.
     
 1. Módosítsa a PowerShell-parancsfájl $myTenantIdét az Azure AD-bérlő AZONOSÍTÓjának használatára.
 1. A PowerShell-parancsfájl $myAzureADApplicationObjectId módosítása az Azure AD-alkalmazás objektumazonosítójának használatára
@@ -119,7 +119,7 @@ A további szolgáltatások lapon jelölje be a "HRE-hitelesítés használata" 
 
     ![Biztonságos webhook művelet](./media/secure-webhook-delivery/aad-configuration.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információ az események kézbesítésének figyeléséről: [Event Grid üzenet kézbesítésének figyelése](monitor-event-delivery.md).
 * További információ a hitelesítési kulcsról: [Event Grid biztonság és hitelesítés](security-authentication.md).

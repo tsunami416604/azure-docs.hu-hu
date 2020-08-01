@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: c3933e9165160c16a9e533bf8bf95f1533dff1cc
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 006825b5040db482262f79497b9fd810ed3b790c
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386690"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460626"
 ---
 # <a name="deploy-azure-file-sync"></a>Az Azure File Sync üzembe helyezése
 A Azure File Sync segítségével központilag kezelheti a szervezete fájlmegosztást Azure Filesban, miközben megőrizheti a helyszíni fájlkiszolgáló rugalmasságát, teljesítményét és kompatibilitását. Az Azure File Sync a Windows Servert az Azure-fájlmegosztás gyors gyorsítótárává alakítja át. A Windows Serveren elérhető bármely protokollt használhatja a fájlok helyi eléréséhez (pl.: SMB, NFS vagy FTPS). Tetszőleges számú gyorsítótárral rendelkezhet a világ minden tájáról.
@@ -20,11 +20,22 @@ A Azure File Sync segítségével központilag kezelheti a szervezete fájlmegos
 Javasoljuk, hogy olvassa el a [Azure Files központi telepítésének megtervezését](storage-files-planning.md) és a [Azure file Sync központi telepítés megtervezését](storage-sync-files-planning.md) , mielőtt elvégezte a jelen cikkben ismertetett lépéseket.
 
 ## <a name="prerequisites"></a>Előfeltételek
-* Egy Azure-fájlmegosztás abban a régióban, amelyet telepíteni kíván Azure File Sync. További információt a következő témakörben talál:
+
+# <a name="portal"></a>[Portál](#tab/azure-portal)
+
+1. Egy Azure-fájlmegosztás abban a régióban, amelyet telepíteni kíván Azure File Sync. További információt a következő témakörben talál:
     - A [régió rendelkezésre állása](storage-sync-files-planning.md#azure-file-sync-region-availability) Azure file Sync számára.
     - [Hozzon létre egy fájlmegosztást](storage-how-to-create-file-share.md) a fájlmegosztás létrehozásának lépésenkénti leírásához.
-* A Windows Server vagy a Windows Server-fürt legalább egy támogatott példánya Azure File Sync-vel való szinkronizálásra. A Windows Server támogatott verzióival és az ajánlott Rendszererőforrásokkal kapcsolatos további információkért lásd a [Windows-fájlkiszolgáló szempontjait](storage-sync-files-planning.md#windows-file-server-considerations).
-* Az az PowerShell-modul a PowerShell 5,1 vagy a PowerShell 6 + használatával is használható. Használhatja az az PowerShell-modult a Azure File Synchoz bármely támogatott rendszeren, beleértve a nem Windows rendszerű rendszereket is, azonban a kiszolgáló regisztrációs parancsmagját mindig futtatni kell a regisztrálni kívánt Windows Server-példányon (ezt közvetlenül vagy a PowerShell-távelérésen keresztül teheti meg). Windows Server 2012 R2 rendszeren ellenőrizheti, hogy legalább a PowerShell 5,1-et futtatja-e. \* a **$PSVersionTable** objektum **PSVersion** tulajdonságának értékét tekinti meg:
+1. A Windows Server vagy a Windows Server-fürt legalább egy támogatott példánya Azure File Sync-vel való szinkronizálásra. A Windows Server támogatott verzióival és az ajánlott Rendszererőforrásokkal kapcsolatos további információkért lásd a [Windows-fájlkiszolgáló szempontjait](storage-sync-files-planning.md#windows-file-server-considerations).
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+1. Egy Azure-fájlmegosztás abban a régióban, amelyet telepíteni kíván Azure File Sync. További információt a következő témakörben talál:
+    - A [régió rendelkezésre állása](storage-sync-files-planning.md#azure-file-sync-region-availability) Azure file Sync számára.
+    - [Hozzon létre egy fájlmegosztást](storage-how-to-create-file-share.md) a fájlmegosztás létrehozásának lépésenkénti leírásához.
+1. A Windows Server vagy a Windows Server-fürt legalább egy támogatott példánya Azure File Sync-vel való szinkronizálásra. A Windows Server támogatott verzióival és az ajánlott Rendszererőforrásokkal kapcsolatos további információkért lásd a [Windows-fájlkiszolgáló szempontjait](storage-sync-files-planning.md#windows-file-server-considerations).
+
+1. Az az PowerShell-modul a PowerShell 5,1 vagy a PowerShell 6 + használatával is használható. Használhatja az az PowerShell-modult a Azure File Synchoz bármely támogatott rendszeren, beleértve a nem Windows rendszerű rendszereket is, azonban a kiszolgáló regisztrációs parancsmagját mindig futtatni kell a regisztrálni kívánt Windows Server-példányon (ezt közvetlenül vagy a PowerShell-távelérésen keresztül teheti meg). Windows Server 2012 R2 rendszeren ellenőrizheti, hogy legalább a PowerShell 5,1-et futtatja-e. \* a **$PSVersionTable** objektum **PSVersion** tulajdonságának értékét tekinti meg:
 
     ```powershell
     $PSVersionTable.PSVersion
@@ -37,7 +48,7 @@ Javasoljuk, hogy olvassa el a [Azure Files központi telepítésének megtervez�
     > [!Important]  
     > Ha azt tervezi, hogy a kiszolgáló regisztrációjának felhasználói felületét használja, és nem közvetlenül a PowerShellből regisztrálja, akkor a PowerShell 5,1-et kell használnia.
 
-* Ha a PowerShell 5,1 használatát választotta, győződjön meg arról, hogy legalább .NET 4.7.2 van telepítve. További információ a [.NET-keretrendszer verzióiról és függőségeiről](https://docs.microsoft.com/dotnet/framework/migration-guide/versions-and-dependencies) a rendszeren.
+1. Ha a PowerShell 5,1 használatát választotta, győződjön meg arról, hogy legalább .NET 4.7.2 van telepítve. További információ a [.NET-keretrendszer verzióiról és függőségeiről](https://docs.microsoft.com/dotnet/framework/migration-guide/versions-and-dependencies) a rendszeren.
 
     > [!Important]  
     > Ha a .NET 4.7.2 + rendszert a Windows Server Core verzióra telepíti, a és a jelzőket kell telepítenie, `quiet` `norestart` vagy a telepítés sikertelen lesz. Ha például a .NET 4,8-et telepíti, a parancs a következőhöz hasonlóan fog kinézni:
@@ -45,10 +56,51 @@ Javasoljuk, hogy olvassa el a [Azure Files központi telepítésének megtervez�
     > Start-Process -FilePath "ndp48-x86-x64-allos-enu.exe" -ArgumentList "/q /norestart" -Wait
     > ```
 
-* Az az PowerShell-modul, amely a következő utasításokat követve telepíthető: [Azure PowerShell telepítése és konfigurálása](https://docs.microsoft.com/powershell/azure/install-Az-ps).
+1. Az az PowerShell-modul, amely a következő utasításokat követve telepíthető: [Azure PowerShell telepítése és konfigurálása](https://docs.microsoft.com/powershell/azure/install-Az-ps).
      
     > [!Note]  
     > Az az. StorageSync modul mostantól automatikusan települ az az PowerShell modul telepítésekor.
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+1. Egy Azure-fájlmegosztás abban a régióban, amelyet telepíteni kíván Azure File Sync. További információt a következő témakörben talál:
+    - A [régió rendelkezésre állása](storage-sync-files-planning.md#azure-file-sync-region-availability) Azure file Sync számára.
+    - [Hozzon létre egy fájlmegosztást](storage-how-to-create-file-share.md) a fájlmegosztás létrehozásának lépésenkénti leírásához.
+1. A Windows Server vagy a Windows Server-fürt legalább egy támogatott példánya Azure File Sync-vel való szinkronizálásra. A Windows Server támogatott verzióival és az ajánlott Rendszererőforrásokkal kapcsolatos további információkért lásd a [Windows-fájlkiszolgáló szempontjait](storage-sync-files-planning.md#windows-file-server-considerations).
+
+1. [Az Azure CLI összetevő telepítése](/cli/azure/install-azure-cli)
+
+   Ha szeretné, az oktatóanyag lépéseinek elvégzéséhez Azure Cloud Shell is használhatja.  A Azure Cloud Shell egy interaktív rendszerhéj-környezet, amelyet a böngészőben használhat.  Cloud Shell elindítása a következő módszerek egyikével:
+
+   - Kattintson a **Kipróbálás** elemre egy kódblokk jobb felső sarkában. **Próbálja** meg megnyitni Azure Cloud shell, de nem másolja automatikusan a kódot Cloud shellre.
+
+   - Nyissa meg Cloud Shell[https://shell.azure.com](https://shell.azure.com)
+
+   - A [Azure Portal](https://portal.azure.com) jobb felső sarkában lévő menüsorban kattintson a **Cloud Shell** gombra
+
+1. Bejelentkezés lehetőséget.
+
+   Jelentkezzen be az az [login](/cli/azure/reference-index#az-login) paranccsal, ha a parancssori felület helyi telepítését használja.
+
+   ```azurecli
+   az login
+   ```
+
+    A hitelesítési folyamat befejezéséhez kövesse a terminálban megjelenő lépéseket.
+
+1. Telepítse az az [filesync](/cli/azure/ext/storagesync/storagesync) Azure CLI bővítményt.
+
+   ```azurecli
+   az extension add --name storagesync
+   ```
+
+   A **storagesync** -bővítmény hivatkozásának telepítése után a következő figyelmeztetés jelenik meg.
+
+   ```output
+   The installed extension 'storagesync' is experimental and not covered by customer support. Please use with discretion.
+   ```
+
+---
 
 ## <a name="prepare-windows-server-to-use-with-azure-file-sync"></a>A Windows Server előkészítése az Azure File Sync használatára
 Az **Internet Explorer fokozott biztonsági beállításainak**letiltásával minden olyan kiszolgáló esetében, amelyet Azure file Synchoz kíván használni, beleértve a feladatátvevő fürt minden egyes kiszolgálói csomópontját is. Erre csak a kiszolgáló kezdeti regisztrációja esetén van szükség. A kiszolgáló regisztrációja után újra engedélyezheti.
@@ -87,6 +139,10 @@ if ($installType -ne "Server Core") {
     Stop-Process -Name iexplore -ErrorAction SilentlyContinue
 }
 ``` 
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Kövesse a Azure Portal vagy a PowerShell utasításait.
 
 ---
 
@@ -155,6 +211,10 @@ $storageSyncName = "<my_storage_sync_service>"
 $storageSync = New-AzStorageSyncService -ResourceGroupName $resourceGroup -Name $storageSyncName -Location $region
 ```
 
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Kövesse a Azure Portal vagy a PowerShell utasításait.
+
 ---
 
 ## <a name="install-the-azure-file-sync-agent"></a>Az Azure File Sync-ügynök telepítése
@@ -207,6 +267,9 @@ Start-Process -FilePath "StorageSyncAgent.msi" -ArgumentList "/quiet" -Wait
 # You may remove the temp folder containing the MSI and the EXE installer
 Remove-Item -Path ".\StorageSyncAgent.msi" -Recurse -Force
 ```
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Kövesse a Azure Portal vagy a PowerShell utasításait.
 
 ---
 
@@ -242,6 +305,9 @@ Miután kiválasztotta a megfelelő adatokat, válassza a **regisztráció** leh
 ```powershell
 $registeredServer = Register-AzStorageSyncServer -ParentObject $storageSync
 ```
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Kövesse a Azure Portal vagy a PowerShell utasításait.
 
 ---
 
@@ -312,6 +378,27 @@ New-AzStorageSyncCloudEndpoint `
     -AzureFileShareName $fileShare.Name
 ```
 
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Hozzon létre egy új szinkronizálási csoportot az az [storagesync Sync-Group](/cli/azure/ext/storagesync/storagesync/sync-group#ext-storagesync-az-storagesync-sync-group-create) paranccsal.  Ha az összes CLI-parancshoz alapértelmezett erőforráscsoportot szeretne használni, használja [az az configure](/cli/azure/reference-index#az-configure)parancsot.
+
+```azurecli
+az storagesync sync-group create --resource-group myResourceGroupName \
+                                 --name myNewSyncGroupName \
+                                 --storage-sync-service myStorageSyncServiceName \
+```
+
+Hozzon létre egy új Felhőbeli végpontot az az [storagesync Sync-Group Cloud-Endpoint](/cli/azure/ext/storagesync/storagesync/sync-group/cloud-endpoint#ext-storagesync-az-storagesync-sync-group-cloud-endpoint-create) paranccsal.
+
+```azurecli
+az storagesync sync-group cloud-endpoint create --resource-group myResourceGroup \
+                                                --storage-sync-service myStorageSyncServiceName \
+                                                --sync-group-name mySyncGroupName \
+                                                --name myNewCloudEndpointName \
+                                                --storage-account mystorageaccountname \
+                                                --azure-file-share-name azure-file-share-name
+```
+
 ---
 
 ## <a name="create-a-server-endpoint"></a>Kiszolgálói végpont létrehozása
@@ -363,6 +450,34 @@ if ($cloudTieringDesired) {
         -ServerResourceId $registeredServer.ResourceId `
         -ServerLocalPath $serverEndpointPath 
 }
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Hozzon létre egy új kiszolgálói végpontot az az [storagesync Sync-Group Server-Endpoint](/cli/azure/ext/storagesync/storagesync/sync-group/server-endpoint#ext-storagesync-az-storagesync-sync-group-server-endpoint-create) paranccsal.
+
+```azurecli
+# Create a new sync group server endpoint 
+az storagesync sync-group server-endpoint create --resource-group myResourceGroupName \
+                                                 --name myNewServerEndpointName
+                                                 --registered-server-id 91beed22-7e9e-4bda-9313-fec96cf286e0
+                                                 --server-local-path d:\myPath
+                                                 --storage-sync-service myStorageSyncServiceNAme
+                                                 --sync-group-name mySyncGroupName
+
+# Create a new sync group server endpoint with additional optional parameters
+az storagesync sync-group server-endpoint create --resource-group myResourceGroupName \
+                                                 --name myNewServerEndpointName \
+                                                 --registered-server-id 91beed22-7e9e-4bda-9313-fec96cf286e0 \
+                                                 --server-local-path d:\myPath \
+                                                 --storage-sync-service myStorageSyncServiceName \
+                                                 --sync-group-name mySyncGroupName \
+                                                 --cloud-tiering on \
+                                                 --offline-data-transfer on \
+                                                 --offline-data-transfer-share-name myfilesharename \
+                                                 --tier-files-older-than-days 15 \
+                                                 --volume-free-space-percent 85 \
+
 ```
 
 ---
@@ -469,7 +584,7 @@ DFS-R központi telepítésének áttelepítése Azure File Syncre:
 
 További információ: [Azure file Sync együttműködés elosztott fájlrendszer (DFS)](storage-sync-files-planning.md#distributed-file-system-dfs)szolgáltatással.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [Azure File Sync kiszolgáló-végpont hozzáadása vagy eltávolítása](storage-sync-files-server-endpoint.md)
 - [Kiszolgáló regisztrálása vagy törlése Azure File Sync](storage-sync-files-server-registration.md)
 - [Az Azure File Sync monitorozása](storage-sync-files-monitoring.md)
