@@ -7,12 +7,13 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 02/27/2020
-ms.openlocfilehash: 6ba5e433839d1f27c9522749fd7a8831c7243aae
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 44951fc19f36bb6652caf79ded96484bcc4b38f1
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78201884"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503140"
 ---
 # <a name="tutorial-create-an-apache-kafka-rest-proxy-enabled-cluster-in-hdinsight-using-azure-cli"></a>Oktatóanyag: Apache Kafka REST proxyval rendelkező fürt létrehozása a HDInsight-ben az Azure CLI használatával
 
@@ -34,7 +35,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
 
 * Egy Azure AD-beli biztonsági csoport, amely tagja a regisztrált alkalmazásnak. Ezzel a biztonsági csoporttal szabályozhatja, hogy mely alkalmazások használhatják a REST-proxyt. Az Azure AD-csoportok létrehozásával kapcsolatos további információkért lásd: [alapszintű csoport létrehozása és Tagok hozzáadása Azure Active Directory használatával](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
 
-* Azure CLI-vel. Győződjön meg arról, hogy legalább a 2.0.79 verziója van telepítve. Lásd: [Az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli).
+* Azure CLI. Győződjön meg arról, hogy legalább a 2.0.79 verziója van telepítve. Lásd: [Az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 ## <a name="create-an-apache-kafka-cluster"></a>Apache Kafka-fürt létrehozása
 
@@ -52,13 +53,13 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
     |Változó | Leírás |
     |---|---|
     |resourceGroupName|Cserélje le a RESOURCEGROUPNAME nevet az új erőforráscsoport nevére.|
-    |location|Cserélje le a helyet egy olyan régióra, amelyben a fürt létre lesz hozva. Az érvényes helyszínek listáját a `az account list-locations` következő paranccsal használhatja:|
+    |location|Cserélje le a helyet egy olyan régióra, amelyben a fürt létre lesz hozva. Az érvényes helyszínek listáját a következő paranccsal használhatja: `az account list-locations`|
     |clusterName|Cserélje le a CLUSTERNAME-t az új fürthöz tartozó globálisan egyedi névre.|
     |storageAccount|Cserélje le a STORAGEACCOUNTNAME nevet az új Storage-fiók nevére.|
     |httpPassword|Cserélje le a jelszót a fürt bejelentkezési azonosítójának jelszavára, **rendszergazdaként**.|
     |sshPassword|Cserélje le a jelszót jelszóval a Secure Shell username, **sshuser**.|
-    |securityGroupName|Cserélje le a SECURITYGROUPNAME-t az ügyfél HRE biztonsági csoportjának nevére a Kafka Rest proxyhoz. A változó a ( `--kafka-client-group-name` `az-hdinsight-create`z) paraméteréhez lesz átadva.|
-    |securityGroupID|Cserélje le a SECURITYGROUPID-t az ügyfél HRE biztonsági csoportjának azonosítója a Kafka Rest proxyhoz. A változó a ( `--kafka-client-group-id` `az-hdinsight-create`z) paraméteréhez lesz átadva.|
+    |securityGroupName|Cserélje le a SECURITYGROUPNAME-t az ügyfél HRE biztonsági csoportjának nevére a Kafka Rest proxyhoz. A változó a `--kafka-client-group-name` (z) paraméteréhez lesz átadva `az-hdinsight-create` .|
+    |securityGroupID|Cserélje le a SECURITYGROUPID-t az ügyfél HRE biztonsági csoportjának azonosítója a Kafka Rest proxyhoz. A változó a `--kafka-client-group-id` (z) paraméteréhez lesz átadva `az-hdinsight-create` .|
     |storageContainer|Ehhez az oktatóanyaghoz a fürt által használt Storage-tárolót kell hagyni. Ez a változó a fürt nevével lesz beállítva.|
     |workernodeCount|A fürtben lévő munkavégző csomópontok száma, ez az oktatóanyag a következő marad:. A magas rendelkezésre állás biztosítása érdekében a Kafka legalább 3 munkavégző csomópontot igényel|
     |clusterType|Az oktatóanyaghoz tartozó HDInsight-fürt típusa.|
@@ -142,9 +143,9 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
         |--Version|A HDInsight-fürt verziószámának legalább 4,0-nek kell lennie. Az értéket a **$clusterVersion**változó adja át.|
         |--összetevő-verzió|A Kafka verziójának legalább 2,1-nek kell lennie. Az értéket a **$componentVersion**változó adja át.|
     
-        Ha a fürtöt Rest proxy nélkül szeretné `--kafka-management-node-size`létrehozni, távolítsa el, `--kafka-client-group-id`és `--kafka-client-group-name` a `az hdinsight create` parancsból.
+        Ha a fürtöt REST proxy nélkül szeretné létrehozni, távolítsa el `--kafka-management-node-size` , `--kafka-client-group-id` és a `--kafka-client-group-name` `az hdinsight create` parancsból.
 
-    1. Ha rendelkezik meglévő virtuális hálózattal, adja hozzá a paramétereket `--vnet-name` és `--subnet`az értékeket.
+    1. Ha rendelkezik meglévő virtuális hálózattal, adja hozzá a paramétereket `--vnet-name` és az `--subnet` értékeket.
 
     Adja meg a következő parancsot a fürt létrehozásához:
 

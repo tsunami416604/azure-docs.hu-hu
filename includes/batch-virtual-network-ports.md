@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.date: 06/16/2020
 ms.author: jenhayes
 ms.custom: include file
-ms.openlocfilehash: 1b21141a4b3f9ae92cdcf1d5a93a457012cb136a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3e4bca058f554f60dfa5c237633d1fecf06dfea7
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85506599"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87507484"
 ---
 ### <a name="general-requirements"></a>Általános követelmények
 
@@ -89,7 +89,7 @@ Csak akkor konfigurálja a bejövő forgalmat a 3389-es porton (Windows) vagy a 
 
 `/subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.ClassicNetwork /virtualNetworks/{network}/subnets/{subnet}`
 
-**Engedélyek** – A `Microsoft Azure Batch` szolgáltatásnévnek rendelkeznie kell a `Classic Virtual Machine Contributor` szerepköralapú hozzáférés-vezérlési (RBAC) szerepkörrel az adott virtuális hálózaton.
+**Engedélyek** – az `Microsoft Azure Batch` egyszerű szolgáltatásnak rendelkeznie kell az `Classic Virtual Machine Contributor` Azure-szerepkörrel a megadott VNet.
 
 #### <a name="network-security-groups"></a>Network security groups (Hálózati biztonsági csoportok)
 

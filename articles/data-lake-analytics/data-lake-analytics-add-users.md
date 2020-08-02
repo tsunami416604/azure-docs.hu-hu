@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.assetid: db35f16e-1565-4873-a851-bd987accdc58
 ms.topic: how-to
 ms.date: 05/24/2018
-ms.openlocfilehash: 09f866d7ed72e82770a7f3a0fe5da24bb864851f
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 7f9af576640e6d269ff5a44d7b0e2a529c20c505
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87126074"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502936"
 ---
 # <a name="adding-a-user-in-the-azure-portal"></a>Felhasználó hozzáadása az Azure Portalon
 
@@ -33,7 +33,7 @@ Szükség szerint "R-X" vagy "RWX" megadása a bemeneti adatokat és a kimeneti 
 1.  Keresse meg Azure Data Lake Storage Gen1-fiókját.
 2.  Kattintson a **Felhasználók** elemre.
 3. Kattintson a **Hozzáadás** parancsra.
-4.  Válasszon ki egy Azure RBAC-szerepkört a csoport hozzárendeléséhez.
+4.  Válasszon ki egy Azure-szerepkört a csoport hozzárendeléséhez.
 5.  Hozzárendelés az olvasó szerepkörhöz. Ez a szerepkör a ADLSGen1-ben tárolt adatkereséshez és kezeléshez szükséges minimális engedélyekkel rendelkezik. Rendeljen hozzá ehhez a szerepkörhöz, ha a csoport nem az Azure-szolgáltatások kezelésére szolgál.
 6.  Írja be a csoport nevét.
 7.  Kattintson az **OK** gombra.
@@ -54,4 +54,3 @@ Az a minta parancs, amellyel felhasználói hozzáférést biztosíthat a felada
 * [Az Azure Data Lake Analytics áttekintése](data-lake-analytics-overview.md)
 * [A Data Lake Analytics használatának első lépései a Azure Portal](data-lake-analytics-get-started-portal.md)
 * [Azure Data Lake Analytics kezelése Azure PowerShell használatával](data-lake-analytics-manage-use-powershell.md)
-

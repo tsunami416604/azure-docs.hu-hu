@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 721f9c623255b964e38da1c0f4b7bbf72d0c721d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6867d24d84f6dfb51b2ca7b86ec882102b96552b
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075622"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87504415"
 ---
-# <a name="windows-virtual-desktop-faq"></a>Windows rendszerű virtuális asztali GYIK
+# <a name="windows-virtual-desktop-faq"></a>Windows Virtual Desktop – gyakori kérdések
 
 Ez a cikk a gyakori kérdésekre adott válaszokat és a Windows rendszerű virtuális asztalok ajánlott eljárásait ismerteti.
 
@@ -46,7 +46,7 @@ Ha korlátozni szeretné, hogy a rendszergazda csak a felhasználói munkamenete
 
 ## <a name="does-windows-virtual-desktop-support-split-azure-active-directory-models"></a>Támogatja a Windows Virtual Desktop a Split Azure Active Directory modelleket?
 
-Ha egy felhasználó egy alkalmazás csoportjához van rendelve, a szolgáltatás egy egyszerű Azure szerepköralapú hozzáférés-vezérlési (RBAC) szerepkör-hozzárendelést végez. Ennek eredményeképpen a felhasználó Azure Active Directory (AD) és az alkalmazás csoportjának Azure AD-nek ugyanazon a helyen kell lennie. Az összes szolgáltatási objektumnak, például a gazdagép-készleteknek, az alkalmazás-csoportoknak és a munkaterületeknek is ugyanabban az Azure AD-ben kell lennie, mint a felhasználónak.
+Amikor egy felhasználó hozzá van rendelve egy alkalmazás-csoporthoz, a szolgáltatás egyszerű Azure-szerepkör-hozzárendelést végez. Ennek eredményeképpen a felhasználó Azure Active Directory (AD) és az alkalmazás csoportjának Azure AD-nek ugyanazon a helyen kell lennie. Az összes szolgáltatási objektumnak, például a gazdagép-készleteknek, az alkalmazás-csoportoknak és a munkaterületeknek is ugyanabban az Azure AD-ben kell lennie, mint a felhasználónak.
 
 A virtuális gépeket egy másik Azure AD-ben is létrehozhatja, ha a Active Directoryt a felhasználó Azure AD-vel szinkronizálja ugyanazon a virtuális hálózaton (VNET).
 

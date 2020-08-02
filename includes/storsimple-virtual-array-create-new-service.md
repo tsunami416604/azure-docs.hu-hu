@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: storage
 author: alkohli
 ms.service: storage
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/15/2018
 ms.author: alkohli
 ms.custom: include file
-ms.openlocfilehash: 4ba5c8b69776b39d8a6640744b0c24600f3a0d5b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b7bdeeedaac65f67a3224e824c19e8cad794682b
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67179306"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87507223"
 ---
 #### <a name="to-create-a-new-service"></a>Új szolgáltatás létrehozása
 
@@ -29,7 +29,7 @@ ms.locfileid: "67179306"
 
     2.  A legördülő listából válasszon egy **előfizetést**. Az előfizetés az Ön számlázási fiókjához lesz társítva. Ez a mező nem jelenik meg abban az esetben, ha csak egy előfizetéssel rendelkezik.
 
-    3.  Az **erőforráscsoport**területen válasszon ki egy meglévőt, vagy hozzon létre egy új csoportot. További információk: [Azure-erőforráscsoportok](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-infrastructure-resource-groups-guidelines/).
+    3.  Az **erőforráscsoport**területen válasszon ki egy meglévőt, vagy hozzon létre egy új csoportot. További információk: [Azure-erőforráscsoportok](/azure/azure-resource-manager/management/manage-resource-groups-portal).
 
     4.  Adjon meg egy **helyet** a szolgáltatáshoz. Az [Azure-régiókról](https://azure.microsoft.com/regions/#services) további információt talál arról, hogy mely szolgáltatások érhetők el az adott régióban. Általánosságban válassza ki a földrajzi régióhoz legközelebb eső **helyet** , ahová az eszközt telepíteni szeretné. Ezenkívül az alábbiakat is érdemes figyelembe vennie:
 

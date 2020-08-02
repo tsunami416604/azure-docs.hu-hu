@@ -1,18 +1,19 @@
 ---
 title: Azure Storage-kód minták | Microsoft Docs
-description: Mintakód és alkalmazások megtekintése, letöltése és futtatása az Azure Storage-ban. A Blobok, várólisták, táblák és fájlok használatának első lépései a .NET, a Java, a Python, a Node. js, az Azure CLI és a C++ Storage ügyféloldali kódtárak használatával.
+description: Mintakód és alkalmazások megtekintése, letöltése és futtatása az Azure Storage-ban. A .NET, a Java, a Python, az Node.js, az Azure CLI és a C++ Storage ügyféloldali kódtárak használatával megismerheti a Blobok, várólisták, táblák és fájlok első lépések mintáit.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 09/06/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: 900fb5120b1674397c248fd7d090660c7a813705
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: edf30d628a73c879ce81f68bda7cd2d7daa6cde3
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594185"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503650"
 ---
 # <a name="azure-storage-samples"></a>Azure Storage-minták
 
@@ -42,9 +43,9 @@ A Python-minták megismeréséhez töltse le a [Python Storage ügyféloldali k�
 
 ## <a name="nodejs-samples"></a>Node.js-példák
 
-A Node. js-minták megismeréséhez töltse le a [Node. js Storage ügyféloldali függvénytárát](https://github.com/Azure/azure-storage-node).
+A Node.js minták megismeréséhez töltse le a [Node.js Storage ügyféloldali kódtárat](https://github.com/Azure/azure-storage-node).
 
-* [Azure Storage-minták JavaScript/Node. js használatával](storage-samples-javascript.md)
+* [Azure Storage-minták JavaScript/Node.jshasználatával](storage-samples-javascript.md)
 
 ## <a name="c-samples"></a>C++ minták
 
@@ -64,12 +65,12 @@ Az Azure CLI-minták megismeréséhez először [telepítse az Azure CLI](/cli/a
 
 ## <a name="api-reference-and-source-code"></a>API-referenciák és-forráskód
 
-| Nyelv | API-hivatkozás | Forráskód |
+| Nyelv | API-referencia | Forráskód |
 |----------|---------------|-------------|
 | .NET | [.NET ügyféloldali kódtár – dokumentáció](https://docs.microsoft.com/dotnet/api/overview/azure/storage) | [A .NET Storage ügyféloldali kódtár forráskódja](https://github.com/Azure/azure-storage-net) |
 | Java | [Java ügyféloldali kódtár – dokumentáció](https://docs.microsoft.com/java/api/overview/azure/storage) | [A Java Storage ügyféloldali kódtár forráskódja](https://github.com/azure/azure-storage-java) |
 | Python | [Python ügyféloldali kódtár – dokumentáció](https://azure-storage.readthedocs.io/) | [Forráskód a Python Storage ügyféloldali kódtár számára](https://github.com/Azure/azure-storage-python) |
-| Node.js | [Node. js ügyféloldali kódtár – dokumentáció](https://azure.github.io/azure-storage-node) | [Forráskód a Node. js tárolási ügyféloldali kódtár számára](https://github.com/Azure/azure-storage-node) |
+| Node.js | [Node.js ügyféloldali kódtár referenciája](https://azure.github.io/azure-storage-node) | [A Node.js Storage ügyféloldali kódtár forráskódja](https://github.com/Azure/azure-storage-node) |
 | C++ | [C++ ügyféloldali kódtár – dokumentáció](https://azure.github.io/azure-storage-cpp/) | [Forráskód a C++ Storage ügyféloldali kódtár számára](https://github.com/Azure/azure-storage-cpp)|
 | Azure CLI | [Azure CLI-függvénytár – dokumentáció](/cli/azure/storage) | [Forráskód az Azure CLI Storage ügyféloldali kódtára számára](https://github.com/Azure-Samples/azure-cli-samples/tree/master/storage)
 

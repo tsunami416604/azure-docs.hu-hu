@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 9e871b7959c11d7fbae650abf8394811b9088ed1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c6c0e86bc372790cda2de4ff4c1274f414a01ab0
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87020560"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503208"
 ---
 # <a name="temporary-tables-in-synapse-sql"></a>Ideiglenes táblák a szinapszis SQL-ben
 
@@ -23,7 +23,7 @@ Ez a cikk alapvető útmutatást tartalmaz az ideiglenes táblák használatáho
 
 Az SQL-készlet és az igény szerinti SQL-(előzetes verzió) erőforrások is használhatják az ideiglenes táblákat. Az SQL on-demand korlátozásait a cikk végén tárgyaljuk. 
 
-## <a name="what-are-temporary-tables"></a>Mik azok az ideiglenes táblák?
+## <a name="temporary-tables"></a>Ideiglenes táblák
 
 Az ideiglenes táblák hasznosak az adatfeldolgozás során, különösen az átalakítás során, ahol a közbenső eredmények átmenetiek. A szinapszis SQL esetében ideiglenes táblák találhatók a munkamenet szintjén.  Csak abban a munkamenetben láthatók, amelyben létrehozták őket. Ilyenkor a rendszer automatikusan elveti őket, amikor a munkamenet kijelentkezik. 
 
@@ -98,7 +98,7 @@ GROUP BY
 > 
 > 
 
-### <a name="dropping-temporary-tables"></a>Ideiglenes táblák eldobása
+### <a name="drop-temporary-tables"></a>Ideiglenes táblák eldobása
 Új munkamenet létrehozásakor nem létezhet ideiglenes tábla.  Ha azonban ugyanazt a tárolt eljárást hívja meg, amely egy ideiglenest hoz létre ugyanazzal a névvel, akkor győződjön meg arról, hogy az `CREATE TABLE` utasítások sikeresek, és egy egyszerű, előfeltétel-ellenőrzéssel ellenőrizze az alábbiakat `DROP` : 
 
 ```sql
@@ -116,7 +116,7 @@ A tárolt eljárások fejlesztése során gyakran előfordul, hogy az eljáráso
 DROP TABLE #stats_ddl
 ```
 
-### <a name="modularizing-code"></a>Modularizing-kód
+### <a name="modularize-code"></a>Modularize-kód
 Az ideiglenes táblák bárhol használhatók egy felhasználói munkamenetben. Ezt a képességet azután kihasználhatja, hogy modularize az alkalmazás kódját.  A következő tárolt eljárással lehet bemutatni a DDL-et az adatbázis összes statisztikájának a statisztikai név alapján történő frissítéséhez:
 
 ```sql

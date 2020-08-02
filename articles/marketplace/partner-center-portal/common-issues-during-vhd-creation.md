@@ -7,12 +7,12 @@ ms.topic: guide
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 04/09/2020
-ms.openlocfilehash: d717d93b616e8acd296c89322b7277cda5ade3a3
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 273e6560cd4a9efeac6704ca5d44772248c26050
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323995"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87504313"
 ---
 # <a name="common-issues-during-vhd-creation"></a>Gyakori problémák a VHD létrehozása során
 
@@ -34,8 +34,8 @@ Nem. A virtuális gép létrehozása után a felhasználók (beleértve a tulajd
 
 Ezek a cikkek a Windows-és a Linux-alapú virtuális gépekhez készült RDS-visszaállításokat ismertetik:
 
-* [A távoli asztali szolgáltatás, illetve a hozzá tartozó bejelentkezési jelszó visszaállítása Windows rendszerű virtuális gépen](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-reset-rdp/)
-* [Linux rendszerű virtuális gép jelszavának vagy SSH-kulcsának alaphelyzetbe állítása, az SSH-konfiguráció javítása és a lemez konzisztenciájának vizsgálata a VMAccess-bővítmény használatával](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-classic-reset-access/)
+* [A távoli asztali szolgáltatás, illetve a hozzá tartozó bejelentkezési jelszó visszaállítása Windows rendszerű virtuális gépen](/azure/virtual-machines/troubleshooting/reset-rdp)
+* [Linux rendszerű virtuális gép jelszavának vagy SSH-kulcsának alaphelyzetbe állítása, az SSH-konfiguráció javítása és a lemez konzisztenciájának vizsgálata a VMAccess-bővítmény használatával](/azure/virtual-machines/extensions/vmaccess)
 
 ## <a name="how-do-i-generate-new-ssh-certificates"></a>Hogyan új SSH-tanúsítványokat készíteni?
 
@@ -59,7 +59,7 @@ Igen, ha az Azure-ban üzemelteti. Az Azure minden újonnan létrehozott virtuá
 
 ## <a name="in-a-vm-how-do-i-manage-the-custom-script-extension-in-the-startup-task"></a>Egy virtuális gépen Hogyan kezelhetem az egyéni szkriptek bővítményét az indítási feladatban?
 
-További információ az egyéni szkriptek bővítmény használatáról a Azure PowerShell modullal, Azure Resource Manager sablonokkal és a Windows rendszerekkel kapcsolatos hibaelhárítási lépésekkel kapcsolatban: [egyéni parancsfájl-bővítmény a Windowshoz](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-extensions-customscript/).
+További információ az egyéni szkriptek bővítmény használatáról a Azure PowerShell modullal, Azure Resource Manager sablonokkal és a Windows rendszerekkel kapcsolatos hibaelhárítási lépésekkel kapcsolatban: [egyéni parancsfájl-bővítmény a Windowshoz](/azure/virtual-machines/extensions/custom-script-windows).
 
 ## <a name="are-32-bit-applications-or-services-supported-in-azure-marketplace"></a>Támogatottak-e a 32 bites alkalmazások vagy szolgáltatások az Azure Marketplace-en?
 

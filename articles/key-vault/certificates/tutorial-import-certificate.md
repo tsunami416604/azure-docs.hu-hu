@@ -8,15 +8,15 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: certificates
 ms.topic: tutorial
-ms.custom: mvc
+ms.custom: mvc, devx-track-azurecli
 ms.date: 04/16/2020
 ms.author: sebansal
-ms.openlocfilehash: abf7e864398d48742e0cbf99a9a7b7dae56b9c5d
-ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
+ms.openlocfilehash: ebf687716c8898acffb5e081fbf2f6217fe0f943
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85100919"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503123"
 ---
 # <a name="tutorial-import-a-certificate-in-azure-key-vault"></a>Oktatóanyag: tanúsítvány importálása Azure Key Vault
 
@@ -33,7 +33,7 @@ Ez az oktatóanyag a következőket mutatja be:
 
 Mielőtt elkezdené, olvassa el [Key Vault alapvető fogalmakat](../general/basic-concepts.md). 
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -90,7 +90,7 @@ Miután megkapta az üzenetet, hogy a tanúsítvány importálása sikeresen meg
 
 ## <a name="import-a-certificate-using-azure-cli"></a>Tanúsítvány importálása az Azure CLI-vel
 
-Tanúsítvány importálása egy megadott kulcstartóba. Ha egy meglévő érvényes tanúsítványt szeretne importálni, amely titkos kulcsot tartalmaz, a Azure Key Vaultba, az importálandó fájl lehet PFX vagy PEM formátumú. Ha a tanúsítvány PEM formátumú, a PEM-fájlnak tartalmaznia kell a kulcsot, valamint a x509 tanúsítványokat. Ehhez a művelethez tanúsítványokra/importálási engedélyre van szükség.
+Tanúsítvány importálása egy megadott kulcstartóba. Ha egy meglévő érvényes tanúsítványt szeretne importálni, amely titkos kulcsot tartalmaz, a Azure Key Vaultba, az importálandó fájl lehet PFX vagy PEM formátumú. Ha a tanúsítvány PEM formátumú, a PEM-fájlnak tartalmaznia kell a kulcsot, valamint a x509 tanúsítványokat. Ehhez a művelethez a tanúsítványokra/importálásra vonatkozó engedély szükséges.
 
 ```azurecli
 az keyvault certificate import --file
@@ -138,7 +138,7 @@ Import-AzureKeyVaultCertificate
 További információ a [paraméterekről](https://docs.microsoft.com/powershell/module/azurerm.keyvault/import-azurekeyvaultcertificate?view=azurermps-6.13.0).
 
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Erre a rövid útmutatóra egyéb Key Vault-útmutatók és oktatóanyagok is épülnek. Ha azt tervezi, hogy az ezt követő rövid útmutatókkal és oktatóanyagokkal dolgozik tovább, ne törölje ezeket az erőforrásokat.
 Ha már nincs rá szükség, törölje az erőforráscsoportot. Ezzel törli a kulcstartót és a kapcsolódó erőforrásokat is. Az erőforráscsoport törlése a Portalon keresztül:
