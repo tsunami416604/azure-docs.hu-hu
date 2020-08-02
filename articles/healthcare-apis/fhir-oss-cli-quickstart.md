@@ -8,18 +8,19 @@ ms.subservice: fhir
 ms.topic: quickstart
 ms.date: 02/07/2019
 ms.author: mihansen
-ms.openlocfilehash: f8047ebeb8e47f609db79e3ac1235b5cd65a4fd4
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: dc65bedc8b008d9628d09ef3e4bfc7cc6ea12e95
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "84820227"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495250"
 ---
 # <a name="quickstart-deploy-open-source-fhir-server-using-azure-cli"></a>Gyors útmutató: nyílt forráskódú FHIR-kiszolgáló üzembe helyezése az Azure CLI-vel
 
 Ebből a rövid útmutatóból megtudhatja, hogyan helyezhet üzembe egy nyílt forráskódú FHIR &reg; -kiszolgálót az Azure-ban az Azure CLI használatával.
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -44,14 +45,14 @@ az group deployment create -g $servicename --template-uri https://raw.githubuser
 
 Szerezzen be egy képesség-utasítást a FHIR-kiszolgálóról a következővel:
 
-```console
+```azurecli-interactive
 metadataurl="https://${servicename}.azurewebsites.net/metadata"
 curl --url $metadataurl
 ```
 
 Egy percet vesz igénybe, hogy a kiszolgáló első alkalommal válaszoljon.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha nem folytatja az alkalmazás használatát, törölje az erőforráscsoportot az alábbi lépésekkel:
 

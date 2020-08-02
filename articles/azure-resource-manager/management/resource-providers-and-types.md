@@ -3,12 +3,13 @@ title: Erőforrás-szolgáltatók és-erőforrástípusok
 description: A Resource Managert, a sémákat és az elérhető API-verziókat támogató erőforrás-szolgáltatókat, valamint az erőforrásokat tároló régiókat ismerteti.
 ms.topic: conceptual
 ms.date: 08/29/2019
-ms.openlocfilehash: 82b8251006a1a2d4edd198eca843489d3720f8d6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 581b653c6d4769f7777b0ca56f136d25443c1ae4
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84702771"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500010"
 ---
 # <a name="azure-resource-providers-and-types"></a>Azure-beli erőforrás-szolgáltatók és -típusok
 

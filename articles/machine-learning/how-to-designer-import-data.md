@@ -10,12 +10,12 @@ ms.author: peterlu
 ms.date: 01/16/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 92568ceb9c7f0a428189647f259a3f84278eb612
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: d977c8e13ce75eb276c8fdb11e9dd40e40a923ad
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327004"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495371"
 ---
 # <a name="import-data-into-azure-machine-learning-designer-preview"></a>Az adatimportálás Azure Machine Learning designerbe (előzetes verzió)
 
@@ -32,7 +32,7 @@ Azt javasoljuk, hogy [adatkészletek](concept-data.md#datasets) használatával 
 
 ### <a name="register-a-dataset"></a>Adatkészlet regisztrálása
 
-A meglévő adatkészleteket [programozott módon az SDK-val,](how-to-create-register-datasets.md#use-the-sdk) vagy [vizuálisan Azure Machine learning Studióban](how-to-create-register-datasets.md#use-the-ui)is.
+A meglévő adatkészleteket [programozott módon az SDK-val,](how-to-create-register-datasets.md#datasets-sdk) vagy [vizuálisan Azure Machine learning Studióban](how-to-create-register-datasets.md#datasets-ui)is.
 
 Bármely tervező modul kimenetét adatkészletként is regisztrálhatja.
 
@@ -59,7 +59,7 @@ Habár azt javasoljuk, hogy adatkészletek használatával importálja az adatok
 Az adatok importálása modul használatával kapcsolatos részletes információkért lásd az [adatok importálása – hivatkozás lapot](algorithm-module-reference/import-data.md).
 
 > [!NOTE]
-> Ha az adatkészlet túl sok oszlopot tartalmaz, a következő hibaüzenet jelenhet meg: "az érvényesítés a méret korlátozása miatt meghiúsult". Ennek elkerüléséhez [regisztrálja az adatkészletet az adatkészletek kezelőfelületén](how-to-create-register-datasets.md#use-the-ui).
+> Ha az adatkészlet túl sok oszlopot tartalmaz, a következő hibaüzenet jelenhet meg: "az érvényesítés a méret korlátozása miatt meghiúsult". Ennek elkerüléséhez [regisztrálja az adatkészletet az adatkészletek kezelőfelületén](how-to-create-register-datasets.md#datasets-ui).
 
 ## <a name="supported-sources"></a>Támogatott források
 

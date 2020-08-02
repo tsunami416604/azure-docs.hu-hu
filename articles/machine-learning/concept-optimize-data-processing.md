@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: nibaccam
 ms.topic: conceptual
 ms.date: 06/26/2020
-ms.openlocfilehash: f95c4256f4a0a3fdf410efecf9c22d578d1963a2
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 6bb85ada5ab1cd443d47ed85024b45d98354e97f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/31/2020
-ms.locfileid: "87461799"
+ms.locfileid: "87500963"
 ---
 # <a name="optimize-data-processing-with-azure-machine-learning"></a>Az adatfeldolgozás optimalizálása Azure Machine Learning
 
@@ -64,7 +64,6 @@ Ha az előző javaslatok nem elégek, és nem tud beolvasni egy olyan virtuális
 * Használjon hasonló keretrendszert `Spark` , vagy `Dask` dolgozza fel az adatmennyiséget a memóriából. Ebben a beállításban a dataframe a partíció és a feldolgozás alatt lévő RAM-partícióba töltődik be, és a végeredmény a végén gyűlik össze.  
 
 * Elosztott keretrendszer használatával bővítheti a fürtöket. Ebben a beállításban az adatfeldolgozási terhelések felosztása és feldolgozása több, párhuzamosan működő processzoron történik, az utolsó eredmény pedig a végén gyűlik össze.
-
 
 ### <a name="recommended-distributed-frameworks"></a>Ajánlott elosztott keretrendszerek
 

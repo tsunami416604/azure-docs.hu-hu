@@ -9,12 +9,13 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 02/19/2020
 ms.author: lcozzens
-ms.openlocfilehash: 1a4edabe666a554ccd01d110f0f71226221dfc67
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: e3407a1da469bf4f31e5d54d83ee837bddbafffc
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77523648"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87494757"
 ---
 # <a name="work-with-key-values-in-an-azure-app-configuration-store"></a>A Key-Values használata egy Azure-alkalmazás konfigurációs tárolójában
 
@@ -81,7 +82,7 @@ az appconfig kv list --name $appConfigName
 
 Ez a táblázat a minta parancsfájlban használt parancsokat sorolja fel. 
 
-| Parancs | Megjegyzések |
+| Parancs | Jegyzetek |
 |---|---|
 | [az appconfig kV set](/cli/azure/appconfig/kv#az-appconfig-kv-set) | Kulcs-érték párok létrehozása vagy frissítése. |
 | [az appconfig kV List](/cli/azure/appconfig/kv#az-appconfig-kv-list) | Egy alkalmazás-konfigurációs tárolóban található kulcs-érték párok listázása. |

@@ -9,19 +9,19 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: e5db52d1e28a7db5594b3b2a16bc145d0a50e2e3
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: 6dc0bb08e3d824c1d3fea155d1b3d4c52e1af4a6
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84765080"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499840"
 ---
 # <a name="manage-access-to-workspaces-data-and-pipelines"></a>Munkaterületekhez, adatbázisokhoz és folyamatokhoz való hozzáférés kezelése
 
 Megtudhatja, hogyan kezelheti az Azure szinapszis Analytics-munkaterületen (előzetes verzió) lévő munkaterületekhez, adatszolgáltatásokhoz és folyamatokhoz való hozzáférés-vezérlést.
 
 > [!NOTE]
-> A GA esetében a RBAC-t a szinapszis-specifikus Azure RBAC-szerepkörök bevezetésével fejlesztjük
+> A GA esetében a RBAC a szinapszis-specifikus Azure-szerepkörök bevezetésével fejleszthető
 
 ## <a name="access-control-for-workspace"></a>Munkaterület Access Control
 
@@ -47,7 +47,7 @@ Az éles környezetben történő üzembe helyezéshez az Azure szinapszis munka
 
 A munkaterület kiépítés után ki kell választania egy [Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction) fiókot és egy tárolót a munkaterülethez tartozó fájlrendszerhez.
 
-1. A [Azure Portal](https://portal.azure.com) megnyitása
+1. Nyissa meg az [Azure Portalt](https://portal.azure.com)
 2. Navigáljon a Azure Data Lake Storage Gen2 fiókhoz
 3. Navigáljon az Azure szinapszis munkaterülethez kiválasztott tárolóhoz (fájlrendszerhez)
 4. Kattintson **Access Control (iam)**

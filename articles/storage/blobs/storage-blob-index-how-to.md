@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
 ms.reviewer: hux
-ms.openlocfilehash: d4ea5889cbecbbb8609f90eed83ec9bd6b0032f9
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 57366011c93065803162164c03c7878e1610af9f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448229"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500385"
 ---
 # <a name="utilize-blob-index-tags-preview-to-manage-and-find-data-on-azure-blob-storage"></a>Az Azure Blob Storage-ban lévő blob-indexek (előzetes verzió) használatával kezelheti és keresheti meg az adatkeresést
 
@@ -32,11 +32,9 @@ További információ a blob indexről: az [Azure Blob Storage adatainak kezelé
 # <a name="net"></a>[.NET](#tab/net)
 Mivel a blob index nyilvános előzetes verzióban érhető el, a .NET Storage-csomag megjelenik az előzetes verziójú NuGet-hírcsatornában. Ennek a könyvtárnak a változása a mai és a hivatalos beváltási időpontra változhat. 
 
-1. A Visual Studióban adja hozzá a `https://azuresdkartifacts.blob.core.windows.net/azure-sdk-for-net/index.json` NuGet-csomag forrásaihoz tartozó URL-címet. 
+1. Állítsa be a Visual Studio-projektet, és ismerkedjen meg az Azure Blob Storage .NET-hez készült ügyféloldali kódtáraval. További információ: [.net](storage-quickstart-blobs-dotnet.md) gyors útmutató
 
-   További információ: [Package sources](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-visual-studio#package-sources).
-
-2. A NuGet csomagkezelő eszközben keresse meg az **Azure. Storage. Blobs** csomagot, és telepítse a **12.5.0-dev. 20200422.2** verziót a projektbe. A parancsot futtathatja is```Install-Package Azure.Storage.Blobs -Version 12.5.0-dev.20200422.2```
+2. A NuGet csomagkezelő eszközben keresse meg az **Azure. Storage. Blobs** csomagot, és telepítse a **12.5.0-preview. 6** vagy újabb verzióját a projekthez. A parancsot futtathatja is```Install-Package Azure.Storage.Blobs -Version 12.5.0-preview.6```
 
    További információt a [csomagok keresése és telepítése](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-visual-studio#find-and-install-a-package)című témakörben talál.
 

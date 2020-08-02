@@ -4,12 +4,12 @@ ms.service: site-recovery
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: raynew
-ms.openlocfilehash: fd1a7f133c5719873133554fc2292e94e6fe26a4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c7826b09ef063d572a98fb344f6862cc8310aa86
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75980328"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495972"
 ---
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com)  >  **Recovery Servicesba**.
 2. Kattintson **az erőforrás létrehozása**  >  **monitoring és felügyelet**  >  **biztonsági mentés és site Recovery**lehetőségre.
@@ -17,6 +17,6 @@ ms.locfileid: "75980328"
 4. [Hozzon létre egy erőforráscsoportot](../articles/azure-resource-manager/templates/deploy-portal.md), vagy válasszon ki egy meglévőt. Válassza ki a kívánt Azure-régiót. 
 5. Ha gyorsan el szeretné érni a tárolót az irányítópultról, kattintson a **rögzítés az irányítópulton**  >  **Létrehozás**gombra.
 
-   ![Új tároló](./media/site-recovery-create-vault/new-vault-settings.png)
+   ![Képernyőkép a Rescovery Services-tároló létrehozási lehetőségeiről.](./media/site-recovery-create-vault/new-vault-settings.png)
 
    Az új tároló megjelenik az **irányítópult**  >  **minden erőforrás**és a fő **Recovery Services** -tárolók lapon.

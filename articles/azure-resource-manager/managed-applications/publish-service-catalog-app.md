@@ -3,15 +3,15 @@ title: A Service Catalog felügyelt alkalmazás közzététele
 description: Bemutatja, hogyan hozható létre egy, a szervezete tagjainak szánt Azure-beli felügyelt alkalmazás.
 author: tfitzmac
 ms.topic: quickstart
-ms.custom: subject-armqs
+ms.custom: subject-armqs, devx-track-azurecli
 ms.date: 04/14/2020
 ms.author: tomfitz
-ms.openlocfilehash: d0a3e2a435be679a2a35941dfa24978ae77291b0
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: f6a3a16fe7fd6b0036b36520262e85a9066a4e63
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86249036"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497854"
 ---
 # <a name="quickstart-create-and-publish-a-managed-application-definition"></a>Rövid útmutató: Felügyelt alkalmazás definíciójának létrehozása és közzététele
 
@@ -195,7 +195,7 @@ az storage blob upload \
 
 ### <a name="create-an-azure-active-directory-user-group-or-application"></a>Azure Active Directory felhasználói csoport vagy -alkalmazás létrehozása
 
-A következő lépés egy felhasználói csoport, felhasználó vagy alkalmazás kiválasztása az ügyfél erőforrásainak kezeléséhez. Ez az identitás engedélyeket kap a felügyelt erőforráscsoporthoz a kijelölt szerepkörnek megfelelően. A szerepkör bármely beépített szerepköralapú hozzáférés-vezérlési (RBAC) szerepkör lehet, például Tulajdonos vagy Közreműködő. Új Azure Active Directory felhasználói csoport létrehozásához tekintse meg [az Azure Active Directoryban csoportok létrehozását és tagok hozzáadását ismertető](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md) cikket.
+A következő lépés egy felhasználói csoport, felhasználó vagy alkalmazás kiválasztása az ügyfél erőforrásainak kezeléséhez. Ez az identitás engedélyeket kap a felügyelt erőforráscsoporthoz a kijelölt szerepkörnek megfelelően. A szerepkör bármely olyan Azure beépített szerepkör lehet, mint a tulajdonos vagy a közreműködő. Új Azure Active Directory felhasználói csoport létrehozásához tekintse meg [az Azure Active Directoryban csoportok létrehozását és tagok hozzáadását ismertető](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md) cikket.
 
 Az erőforrások felügyeletéhez szüksége lesz a felhasználói csoport objektumazonosítójára. 
 
@@ -311,7 +311,7 @@ Másolja a Storage-fiók erőforrás-AZONOSÍTÓját. A definíció telepítése
 
 Mielőtt a felügyelt alkalmazás definíciója üzembe helyezhető a Storage-fiókjában, közreműködői engedélyeket kell adnia a **készülék erőforrás-szolgáltatói** szerepkörének, hogy a definiált fájlokat a Storage-fiók tárolójában lehessen írni.
 
-1. A [Azure Portal](https://portal.azure.com)navigáljon a Storage-fiókjához.
+1. Az [Azure Portalon](https://portal.azure.com) lépjen a tárfiókra.
 1. Válassza a **hozzáférés-vezérlés (iam)** lehetőséget a Storage-fiók hozzáférés-vezérlési beállításainak megjelenítéséhez. Válassza ki a **szerepkör-hozzárendelések** lapot a szerepkör-hozzárendelések listájának megtekintéséhez.
 1. A **szerepkör-hozzárendelés hozzáadása** ablakban válassza ki a **közreműködő** szerepkört. 
 1. A **hozzáférés kiosztása** mezőben válassza az **Azure ad-felhasználó,-csoport vagy egyszerű szolgáltatásnév**elemet.
@@ -403,7 +403,7 @@ Megtekintheti, hogy az alkalmazás-definíciós fájlok a megadott Storage-fiók
 
 Ön hozzáfér a felügyelt alkalmazás definíciójához, azonban gondoskodnia kell róla, hogy a vállalat más felhasználói is hozzáférjenek. Engedélyezzen számukra legalább Olvasó szerepkört a definícióhoz. Előfordulhat, hogy ezt a hozzáférési szintet már megörökölték az előfizetéstől vagy az erőforráscsoporttól. A definíció elérésének ellenőrzésével, valamint további felhasználók és csoportok hozzáadásával kapcsolatban lásd: [Az Azure-előfizetések erőforrásaihoz való hozzáférés kezelése szerepköralapú hozzáférés-vezérléssel](../../role-based-access-control/role-assignments-portal.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Sikeresen közzétette a felügyelt alkalmazás definícióját. Most megismerheti, hogyan helyezheti üzembe a definíció egyik példányát.
 

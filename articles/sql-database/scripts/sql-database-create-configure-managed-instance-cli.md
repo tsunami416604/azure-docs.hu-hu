@@ -4,19 +4,19 @@ description: Azure CLI-példa parancsfájl egy felügyelt példány létrehozás
 services: sql-database
 ms.service: sql-database
 ms.subservice: operations
-ms.custom: ''
+ms.custom: devx-track-azurecli
 ms.devlang: azurecli
 ms.topic: sample
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/25/2019
-ms.openlocfilehash: 9d0058fd90590b10a0d5745bce1875db9ad35745
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 54e1aa993f177a4d3bc255287ae8c2fb14cf65af
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518894"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497273"
 ---
 # <a name="use-cli-to-create-an-azure-sql-managed-instance"></a>Azure SQL felügyelt példány létrehozása a CLI használatával
 
@@ -56,7 +56,7 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 | [az Network Route-Table](/cli/azure/network/route-table) | Hálózati útválasztási táblázat parancsai. |
 | [az SQL mi](/cli/azure/sql/mi) | SQL felügyelt példányok parancsai. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](/cli/azure).
 

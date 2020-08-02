@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: 4da024eb4eb3747b8e0d6b291ca5b00df12aaeab
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 08a65ff8d276cd27c9f8fa07393600bc24e7b17f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87367520"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500300"
 ---
 # <a name="azure-app-configuration-best-practices"></a>Az Azure app Configuration ajánlott eljárásai
 
@@ -86,6 +86,10 @@ Az alkalmazások konfigurálására irányuló túlzott kérelmek szabályozást
 ## <a name="importing-configuration-data-into-app-configuration"></a>Konfigurációs adatbázis importálása az alkalmazás-konfigurációba
 
 Az alkalmazás konfigurációja lehetőséget biztosít a konfigurációs beállítások tömeges [importálására](https://aka.ms/azconfig-importexport1) az aktuális konfigurációs fájlokból a Azure Portal vagy a parancssori felület használatával. Ugyanezeket a beállításokat használhatja az alkalmazások konfigurációjában lévő értékek exportálására is, például a kapcsolódó tárolók között. Ha egy folyamatos szinkronizálást szeretne beállítani a GitHub-adattárral, a [GitHub-művelettel](https://aka.ms/azconfig-gha2) is használhatja, hogy továbbra is használhassa a meglévő verziókövetés gyakorlatait, miközben az alkalmazások konfigurációjának előnyeit is kihasználhatja.
+
+## <a name="multi-region-deployment-in-app-configuration"></a>Többrégiós üzembe helyezés az alkalmazás konfigurációjában
+
+Az alkalmazás konfigurációja regionális szolgáltatás. Régiónként eltérő konfigurációval rendelkező alkalmazások esetén a konfigurációk egyetlen példányban való tárolása egyetlen meghibásodási pontot is létrehozhat. Egy alkalmazás-konfigurációs példányok régiónként több régióban való üzembe helyezése jobb megoldás lehet. Segíthet a regionális katasztrófa-helyreállításban, a teljesítményben és a biztonsági silóban. A régió szerinti konfigurálás Emellett javítja a késést, és elválasztott szabályozási kvótákat használ, mivel a szabályozás egy példányon alapul. A vész-helyreállítási enyhítés alkalmazásához [több konfigurációs tárolót](./concept-disaster-recovery.md)is használhat. 
 
 ## <a name="next-steps"></a>További lépések
 

@@ -4,12 +4,13 @@ description: Ez a cikk egy minta Azure CLI-parancsfájlt tartalmaz, amely bemuta
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 07/08/2020
-ms.openlocfilehash: 0e6b4e1ff556af3140c52da041900fb7695b4b6d
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: d61dac0e76fc7b7006fa36f1cb96965ccee3d863
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/31/2020
-ms.locfileid: "87460881"
+ms.locfileid: "87494128"
 ---
 # <a name="create-event-grid-custom-topic-with-azure-cli"></a>Egyéni Event Grid-témakör létrehozása az Azure CLI-vel
 

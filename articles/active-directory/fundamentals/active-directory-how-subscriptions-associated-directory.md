@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18, contperfq4
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 347232d452b5d309da7cdb7c8fe34f0e41abde00
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 86223c35118c9c54be49fa830a264a0059ef3937
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87025338"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87494434"
 ---
 # <a name="associate-or-add-an-azure-subscription-to-your-azure-active-directory-tenant"></a>Azure-előfizetés társítása vagy hozzáadása az Azure Active Directory-bérlőhöz
 
@@ -95,6 +95,6 @@ Miután hozzárendelt egy előfizetést egy másik címtárhoz, előfordulhat, h
 
 - Új Azure AD-bérlő létrehozásához tekintse meg a rövid útmutató [: új bérlő létrehozása a Azure Active Directory-ben](active-directory-access-create-new-tenant.md)című témakört.
 
-- Ha többet szeretne megtudni a Microsoft Azure az erőforrás-hozzáférés szabályozásáról, tekintse meg a [klasszikus előfizetés-rendszergazdai szerepköröket, az Azure RBAC-szerepköröket és az Azure ad rendszergazdai szerepköreit](../../role-based-access-control/rbac-and-directory-admin-roles.md).
+- Ha többet szeretne megtudni a Microsoft Azure az erőforrás-hozzáférés szabályozásáról, tekintse meg a [klasszikus előfizetés-rendszergazdai szerepköröket, az Azure-szerepköröket és az Azure ad rendszergazdai szerepköreit](../../role-based-access-control/rbac-and-directory-admin-roles.md).
 
 - Ha többet szeretne megtudni a szerepkörök Azure AD-ben való hozzárendeléséről, tekintse meg a [rendszergazdai és nem rendszergazdai szerepkörök társítása a Azure Active Directoryhoz a felhasználók számára](active-directory-users-assign-role-azure-portal.md)című témakört.

@@ -3,12 +3,13 @@ title: Azure CLI-példaszkript – Alkalmazás hozzáadása a Batch szolgáltat�
 description: Ez a minta azt mutatja be, hogyan adhat hozzá egy alkalmazást Azure Batch készlettel vagy feladattal való használatra.
 ms.topic: sample
 ms.date: 01/29/2018
-ms.openlocfilehash: 305b6473b4fa149c378e01229b4ad3eea2dbaef4
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: fa4f273949e59c66292f5742501be9c2ad6a9fa4
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964090"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87494451"
 ---
 # <a name="cli-example-add-an-application-to-an-azure-batch-account"></a>Parancssori felületi példa: Alkalmazás hozzáadása egy Azure Batch-fiókhoz
 
@@ -35,7 +36,7 @@ az group delete --name myResourceGroup
 A szkript a következő parancsokat használja.
 A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
-| Parancs | Megjegyzések |
+| Parancs | Jegyzetek |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
 | [az storage account create](/cli/azure/storage/account#az-storage-account-create) | Létrehoz egy tárfiókot. |

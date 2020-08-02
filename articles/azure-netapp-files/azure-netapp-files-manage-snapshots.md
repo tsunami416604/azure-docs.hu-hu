@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: b-juche
-ms.openlocfilehash: caa73b5a86c5c245aefd18de9b60ec49616b3b84
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 7d583172fe4021a2709a4d58b5488e9bc3898919
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281548"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497596"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>Pillanatképek kezelése az Azure NetApp Filesszal
 
@@ -47,8 +47,22 @@ Igény szerint kötet-pillanatképeket is létrehozhat.
 
 A pillanatkép-szabályzatok használatával automatikusan elvégezheti a kötetek pillanatképeit. Szükség szerint módosíthatja a pillanatkép-szabályzatot, vagy törölheti a már nem szükséges pillanatkép-szabályzatot is.  
 
-> [!IMPORTANT] 
-> A pillanatkép-házirend funkciójának használatához az engedélyezési módszer szükséges. E-mail küldése az anffeedback@microsoft.com előfizetés-azonosítóval a szolgáltatás igényléséhez.
+### <a name="register-the-feature"></a>A szolgáltatás regisztrálása
+
+1. A **Pillanatkép-házirend** szolgáltatás jelenleg előzetes verzióban érhető el. Ha első alkalommal használja ezt a funkciót, regisztrálja a szolgáltatást a használata előtt: 
+
+    ```azurepowershell-interactive
+    Register-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFSnapshotPolicy
+    ```
+
+2. A szolgáltatás regisztrálási állapotának ellenõrzése: 
+
+    > [!NOTE]
+    > A **RegistrationState** a `Registering` Módosítás előtt több percig is eltarthat `Registered` . A folytatás előtt várjon, amíg az állapot **regisztrálva** lesz.
+
+    ```azurepowershell-interactive
+    Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFSnapshotPolicy
+    ```
 
 ### <a name="create-a-snapshot-policy"></a>Pillanatkép-szabályzat létrehozása 
 
@@ -148,7 +162,7 @@ Jelenleg csak egy új kötetre állíthatja vissza a pillanatképet.
     Az új kötet ugyanazt a protokollt használja, mint amelyet a pillanatkép használ.   
     Az új kötet, amelybe a pillanatkép vissza lett állítva, megjelenik a kötetek panelen.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Az Azure NetApp Files tárhely-hierarchiájának ismertetése](azure-netapp-files-understand-storage-hierarchy.md)
 * [Az Azure NetApp Files erőforráskorlátai](azure-netapp-files-resource-limits.md)

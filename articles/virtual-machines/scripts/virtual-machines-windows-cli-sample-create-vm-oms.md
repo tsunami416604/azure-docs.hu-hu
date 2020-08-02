@@ -14,13 +14,13 @@ ms.tgt_pltfrm: vm-Windows
 ms.workload: infrastructure
 ms.date: 02/23/2017
 ms.author: rclaus
-ms.custom: mvc,seodec18
-ms.openlocfilehash: b28e139ecbfee0ba3a9e092827d0b57ff145a842
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: mvc,seodec18, devx-track-azurecli
+ms.openlocfilehash: b057511525c178e6d16d547f43de61928e7094ca
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86526928"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497919"
 ---
 # <a name="monitor-a-vm-with-azure-monitor-logs"></a>Virtuális gép monitorozása Azure Monitor-naplókkal
 
@@ -53,7 +53,7 @@ A szkript a következő parancsokat használja egy erőforráscsoport, egy virtu
 | [azure vm extension set](/cli/azure/vm/extension) | Futtat egy virtuálisgép-bővítményt egy virtuális gépen. |
 | [az group delete](/cli/azure/vm/extension) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](/cli/azure).
 

@@ -6,12 +6,13 @@ ms.author: ambhatna
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 06/08/2020
-ms.openlocfilehash: d8ea8a03a0ce6f5819bb603c9d0ad7b4d65d5c32
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: a186c6e176cde20474cdf4772b8724ad3f356a3e
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118120"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87493618"
 ---
 # <a name="auto-grow-storage-in-azure-database-for-postgresql-server-using-powershell"></a>Tároló automatikus növekedése Azure Database for PostgreSQL-kiszolgálón a PowerShell használatával
 
@@ -50,7 +51,7 @@ $Password = Read-Host -Prompt 'Please enter your password' -AsSecureString
 New-AzPostgreSqlServer -Name mydemoserver -ResourceGroupName myresourcegroup -Sku GP_Gen5_2 -StorageAutogrow Enabled -Location westus -AdministratorUsername myadmin -AdministratorLoginPassword $Password
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Olvasási replikák létrehozása és kezelése a Azure Database for PostgreSQL a PowerShell használatával](howto-read-replicas-powershell.md).

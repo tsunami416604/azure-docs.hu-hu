@@ -7,12 +7,13 @@ ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 06/19/2019
-ms.openlocfilehash: e95987621a7f821e8e63b36dbb719baaed7823c0
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: e0d19720df6f3bea8d65c24076709e84c585c638
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86117967"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87493499"
 ---
 # <a name="customize-server-configuration-parameters-for-azure-database-for-postgresql---single-server-using-azure-cli"></a>Kiszolgáló konfigurációs paramétereinek testreszabása Azure Database for PostgreSQL – egyetlen kiszolgáló az Azure CLI-vel
 Az Azure PostgreSQL-kiszolgálóhoz tartozó konfigurációs paramétereket a parancssori felületen (Azure CLI) listázhatja, megjelenítheti és frissítheti. A motor-konfigurációk egy részhalmaza a kiszolgáló szintjén érhető el, és módosítható. 
@@ -49,6 +50,6 @@ az postgres server configuration set --name log_min_messages --resource-group my
 ```
 Ez a parancs alaphelyzetbe állítja a ** \_ min. percben megadott \_ üzenetek** konfigurációját az alapértelmezett érték **figyelmeztetéssel**. A kiszolgáló-konfigurációval és a megengedett értékekkel kapcsolatos további információkért lásd a PostgreSQL-dokumentáció a [kiszolgálók konfigurációjában](https://www.postgresql.org/docs/9.6/static/runtime-config.html)című témakört.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [További információ a kiszolgálók újraindításáról](howto-restart-server-cli.md)
 - A kiszolgálók naplófájljainak konfigurálásához és eléréséhez lásd: [kiszolgálói naplók Azure Database for PostgreSQL](concepts-server-logs.md)

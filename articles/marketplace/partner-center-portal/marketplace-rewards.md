@@ -8,12 +8,12 @@ ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 2ae8e170e3f31090b6babfee23e4505f5b736655
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 25a164fc8709d7c9f6249336ece34bd8a5378f23
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319949"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496015"
 ---
 # <a name="marketplace-rewards"></a>Marketplace Rewards
 
@@ -21,7 +21,7 @@ A Piactéri jutalmak támogatják a növekedés adott fázisát, kezdve a tudato
 
 A program létrehoz egy pozitív visszajelzési ciklust: a növekedés minden szakaszának előnyei a következő szakaszra mutatnak, ami lehetővé teszi, hogy a Microsoft ügyfeleinek, a Microsoft és a Microsoft csatornáján keresztül növelje vállalatát, és a kereskedelmi piactért platformként hasznosítsa.
 
-Az Ön által kínált előnyök a következők alapján különböztethetők meg, hogy az ajánlat [lista, próbaverzió vagy Transact](../determine-your-listing-type.md#choose-a-publishing-option).
+Az Ön által kínált előnyök a következők alapján különböztethetők meg, hogy az ajánlat [lista, próbaverzió vagy Transact](../determine-your-listing-type.md#choose-a-call-to-action).
 
 A jutalmak csapatának egy tagja fogja felvenni Önnel a kapcsolatot, ha az ajánlata életbe lép, a jogosultsága alapján.
 

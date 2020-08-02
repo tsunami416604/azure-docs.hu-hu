@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: c0426872c29fa126514f22a5f4fb57f19903c967
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 43942c20a353ff69383f3e721679e4c95ab9d230
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87021664"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495943"
 ---
 # <a name="set-up-ip-addressing-to-connect-to-a-secondary-on-premises-site-after-failover"></a>IP-címzés beállítása másodlagos helyszíni helyhez való kapcsolódáshoz a feladatátvétel után
 
@@ -63,11 +63,11 @@ Az alábbi ábrák a feladatátvétel előtt és után ábrázolják az alháló
 
 **Feladatátvétel előtt**
 
-![Feladatátvétel előtt](./media/hyper-v-vmm-networking/network-design2.png)
+![Az alhálózatokat bemutató diagram a feladatátvétel előtt.](./media/hyper-v-vmm-networking/network-design2.png)
 
 **Feladatátvétel után**
 
-![Feladatátvétel után](./media/hyper-v-vmm-networking/network-design3.png)
+![A feladatátvételt követő alhálózatokat bemutató diagram.](./media/hyper-v-vmm-networking/network-design3.png)
 
 A feladatátvételt követően a Site Recovery IP-címet foglal le a virtuális gép minden hálózati adapteréhez. A cím a megfelelő hálózat statikus IP-címkészlet alapján van lefoglalva minden virtuálisgép-példányhoz.
 
@@ -118,11 +118,11 @@ Ebben a példában különböző IP-címek találhatók az elsődleges és máso
 
 **Feladatátvétel előtt**
 
-![Eltérő IP-cím – feladatátvétel előtt](./media/hyper-v-vmm-networking/network-design10.png)
+![A feladatátvétel előtt különböző IP-címeket bemutató diagram.](./media/hyper-v-vmm-networking/network-design10.png)
 
 **Feladatátvétel után**
 
-![Eltérő IP-cím – feladatátvétel után](./media/hyper-v-vmm-networking/network-design11.png)
+![A feladatátvételt követő különböző IP-címeket bemutató diagram.](./media/hyper-v-vmm-networking/network-design11.png)
 
 
 ## <a name="next-steps"></a>További lépések

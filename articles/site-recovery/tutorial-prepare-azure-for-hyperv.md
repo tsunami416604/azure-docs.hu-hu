@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/14/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 3be81d104e32946e2bfd7dc76052dad464f95623
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 4e28a46b8d231b3f228a95ea06b7b9cada50de54
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86130973"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498990"
 ---
 # <a name="prepare-azure-resources-for-hyper-v-disaster-recovery"></a>Azure-erőforrások előkészítése a Hyper-V vész-helyreállításhoz
 
@@ -63,9 +63,9 @@ A replikált gépek rendszerképeit egy Azure-tároló tartalmazza. Az Azure-bel
 9. A **hely**mezőben válassza ki a Storage-fiók földrajzi helyét. Ehhez az oktatóanyaghoz használja a **Nyugat-Európát**.
 10. Kattintson a **Létrehozás** gombra a tárfiók létrehozásához.
 
-   ![Tárfiók létrehozása](media/tutorial-prepare-azure/create-storageacct.png)
+   ![Képernyőkép a Storage-fiók létrehozásának lehetőségeiről.](media/tutorial-prepare-azure/create-storageacct.png)
 
-## <a name="create-a-recovery-services-vault"></a>Recovery Services-tároló létrehozása
+## <a name="create-a-recovery-services-vault"></a>Helyreállítási tár létrehozása
 
 1. A Azure Portal válassza az **+ erőforrás létrehozása**lehetőséget, majd keresse meg Recovery Services az Azure Marketplace-en.
 2. Válassza a **Backup és site Recovery (OMS)** lehetőséget. Ezután a **biztonsági mentés és site Recovery** lapon válassza a **Létrehozás**lehetőséget.
@@ -74,7 +74,7 @@ A replikált gépek rendszerképeit egy Azure-tároló tartalmazza. Az Azure-bel
 3. A **hely**mezőben válassza ki azt a régiót, ahol a tárolót el szeretné helyezni. Ehhez az oktatóanyaghoz használja a **Nyugat-Európát**.
 4. Ha gyorsan el szeretné érni a tárolót az irányítópultról, válassza a **rögzítés az irányítópulton**  >  **Létrehozás**lehetőséget.
 
-![Új tároló létrehozása](./media/tutorial-prepare-azure/new-vault-settings.png)
+![A Recovery Services-tár létrehozása lap képernyőképe.](./media/tutorial-prepare-azure/new-vault-settings.png)
 
 Az új tároló megjelenik az **irányítópult**  >  **minden erőforrás**és a fő **Recovery Services** -tárolók lapon.
 
@@ -91,7 +91,7 @@ Amikor a feladatátvétel után Azure-beli virtuális gépek jönnek létre a t�
 7. Hagyja meg az alapszintű DDoS-védelem alapértelmezett beállításait, és ne legyenek szolgáltatási végpontok a hálózaton.
 8. Válassza a **Létrehozás** lehetőséget.
 
-![Virtuális hálózat létrehozása](media/tutorial-prepare-azure/create-network.png)
+![Képernyőkép a virtuális hálózati beállítások létrehozásáról.](media/tutorial-prepare-azure/create-network.png)
 
 A virtuális hálózat néhány másodperc alatt létrejön. Miután létrejött, megjelenik a Azure Portal irányítópulton.
 

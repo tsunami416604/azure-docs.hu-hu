@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 312723818c4cef82ad6c96b013d7ec81ede276cc
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: ed517f2f6e04f60ec1c9c808f2fdf03203fb891b
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86130909"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498973"
 ---
 # <a name="prepare-azure-for-on-premises-disaster-recovery-to-azure"></a>Az Azure előkészítése helyszíni vész-helyreállításra az Azure-ba
 
@@ -60,9 +60,9 @@ A feladatok végrehajtásához az Ön fiókjának rendelkeznie kell a Virtuális
 4. Az **erőforráscsoport**területen válasszon ki egy meglévő erőforráscsoportot, vagy hozzon létre egy újat. Ebben az oktatóanyagban a **contosoRG**-ot használjuk.
 5. A tár **neve**mezőben adjon meg egy rövid nevet a tároló azonosításához. Ehhez az oktatóanyag-sorozathoz a **ContosoVMVault** nevet használjuk.
 6. A **régió**területen válassza ki azt a régiót, amelyben a tárolót el szeretné helyezni. a **Nyugat-Európa** beállítást használjuk.
-7. Válassza az **Áttekintés + létrehozás** lehetőséget.
+7. Válassza a **Felülvizsgálat és létrehozás** lehetőséget.
 
-   ![Új tároló létrehozása](./media/tutorial-prepare-azure/new-vault-settings.png)
+   ![A Recovery Services-tár létrehozása lap képernyőképe.](./media/tutorial-prepare-azure/new-vault-settings.png)
 
    Az új tároló ekkor megjelenik az **irányítópult**  >  **minden erőforrás**és a fő **Recovery Services** -tárolók lapon.
 
@@ -81,7 +81,7 @@ A helyszíni gépek replikálódnak az Azure Managed Disks szolgáltatásba. Fel
 9. Elhagyjuk az alapszintű DDoS-védelem alapértelmezett lehetőségeit, a szolgáltatási végpontok nélkül vagy a tűzfalat a hálózaton.
 9. Válassza a **Létrehozás** lehetőséget.
 
-   ![Virtuális hálózat létrehozása](media/tutorial-prepare-azure/create-network.png)
+   ![Képernyőkép a virtuális hálózati beállítások létrehozásáról.](media/tutorial-prepare-azure/create-network.png)
 
 A virtuális hálózat néhány másodperc alatt létrejön. Miután létrejött, megjelenik a Azure Portal irányítópulton.
 

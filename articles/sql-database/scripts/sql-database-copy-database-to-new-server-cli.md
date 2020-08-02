@@ -4,19 +4,19 @@ description: Példa az Azure CLI-szkriptre egy adatbázis Azure SQL Database egy
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
-ms.custom: ''
+ms.custom: devx-track-azurecli
 ms.devlang: azurecli
 ms.topic: sample
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: 3f180f075a32ac193ed003b58a99483ea3210cc7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e22d28215c06de96d31faec71f4fb595bb74a4a6
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86528898"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495267"
 ---
 # <a name="use-cli-to-copy-a-database-in-azure-sql-database-to-a-new-server"></a>Adatbázis másolása Azure SQL Database új kiszolgálóra a CLI használatával
 
@@ -57,7 +57,7 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 |---|---|
 | [az SQL db Copy](/cli/azure/sql/db#az-sql-db-copy) | Másolatot készít egy adatbázisról, amely az aktuális időpontban készített pillanatképet használja. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](/cli/azure).
 

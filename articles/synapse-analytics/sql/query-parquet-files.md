@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: dd1e387727b0a80781b1103ddfb40afcbce8fce8
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 8083edaf647f52a07d55dddf21fe5751340783be
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386622"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496236"
 ---
 # <a name="query-parquet-files-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>A Parquet-fájlok lekérdezése az SQL on-demand (előzetes verzió) használatával az Azure szinapszis Analyticsben
 
@@ -24,7 +24,7 @@ Ebből a cikkből megtudhatja, hogyan írhat egy lekérdezést az SQL on-demand 
 
 `OPENROWSET`a függvény lehetővé teszi a parketta-fájl tartalmának olvasását a fájl URL-címének megadásával.
 
-### <a name="reading-parquet-file"></a>A Parquet-fájl olvasása
+### <a name="read-parquet-file"></a>Parketta-fájl olvasása
 
 A fájl tartalmának megtekintésére a legegyszerűbb módszer, ha a `PARQUET` fájl URL-címét megadja a `OPENROWSET` függvénynek, és megadja a parkettát `FORMAT` . Ha a fájl nyilvánosan elérhető, vagy ha az Azure AD-identitása hozzáfér ehhez a fájlhoz, akkor az alábbi példában látható módon láthatja a fájl tartalmát:
 
@@ -37,7 +37,7 @@ from openrowset(
 
 Győződjön meg arról, hogy hozzáfér a fájlhoz. Ha a fájlt SAS-kulccsal vagy egyéni Azure-identitással védi, a [kiszolgáló szintű hitelesítő adatokat kell beállítania az SQL-bejelentkezéshez](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential).
 
-### <a name="using-data-source"></a>Adatforrás használata
+### <a name="data-source-usage"></a>Adatforrás használata
 
 Az előző példa a fájl teljes elérési útját használja. Alternatív megoldásként létrehozhat egy külső adatforrást is, amely a tároló gyökérkönyvtárára mutat, és ezt az adatforrást és a fájl relatív elérési útját használja a következő `OPENROWSET` függvényben:
 
@@ -193,6 +193,6 @@ A Parquet-fájlok minden oszlop típusának leírását tartalmazzák. A követk
 |[Összetett típus](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#lists) |LISTÁJÁT |varchar (max), JSON-ba szerializálva |
 |[Összetett típus](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#maps)|Térkép|varchar (max), JSON-ba szerializálva |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A következő cikkből megtudhatja, hogyan lehet [lekérdezni a parketta beágyazott típusait](query-parquet-nested-types.md).

@@ -7,12 +7,13 @@ ms.author: jzim
 ms.date: 11/04/2019
 ms.topic: conceptual
 ms.service: container-service
-ms.openlocfilehash: e7396ce9fbed46688d59b582f246e5454d063fb3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 64b71c135126ebb540d5ccf72f829f83c74ed0b3
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79477034"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495318"
 ---
 # <a name="set-up-your-azure-red-hat-openshift-dev-environment"></a>Az Azure Red Hat OpenShift fejlesztői környezetének beállítása
 
@@ -26,7 +27,7 @@ Microsoft Azure Red Hat OpenShift-alkalmazások létrehozásához és futtatás�
 
 Az alábbi utasítások végigvezetik az összes előfeltételen.
 
-## <a name="install-the-azure-cli"></a>Telepítse az Azure CLI-t
+## <a name="install-the-azure-cli"></a>Az Azure CLI összetevő telepítése
 
 Az Azure Red Hat OpenShift az Azure CLI 2.0.65 vagy újabb verzióját igényli. Ha már telepítette az Azure CLI-t, megtekintheti, hogy melyik verziót futtatja:
 

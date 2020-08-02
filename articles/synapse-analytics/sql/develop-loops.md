@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: ec15f87bdbf381b71faa7cefd986dd5e55e17a19
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 9db7f2016de01edbedfa9e7d7254561fea957d2a
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964991"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495301"
 ---
 # <a name="use-t-sql-loops-in-synapse-sql"></a>T-SQL-hurkok használata a szinapszis SQL-ben
 Ez a cikk a T-SQL-hurkok használatával, a kurzorok cseréjével és az SQL-készlettel kapcsolatos kapcsolódó megoldások fejlesztésével kapcsolatos alapvető tippeket tartalmaz a szinapszis SQL-ben.
@@ -26,7 +26,7 @@ A szinapszis SQL a [while](https://docs.microsoft.com/sql/t-sql/language-element
 
 Az SQL-készletben található hurkok hasznosak az SQL-kódban definiált kurzorok cseréjéhez. Szerencsére az SQL Code-ban írt összes kurzor a gyors továbbítás, csak olvasható fajta. Tehát a [WHILE] hurkok nagyszerű alternatíva a kurzorok cseréjéhez.
 
-## <a name="replacing-cursors-in-sql-pool"></a>Kurzorok cseréje az SQL-készletben
+## <a name="replace-cursors-in-sql-pool"></a>Kurzorok cseréje az SQL-készletben
 
 A bekövetkezett merülés előtt a következő kérdést kell figyelembe venni: "lehetséges, hogy ez a kurzor a beállított műveletek használatára lett átírva?" Sok esetben a válasz igen, és gyakran a legjobb megoldás. A készleten alapuló művelet gyakran gyorsabb, mint egy iterációs, soron belüli módszer.
 

@@ -5,12 +5,13 @@ author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: f95efbaedc2718c968062c47427ab7765756bde7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 4042ed29b143ab160883ca46ecb1cc17d2e0c761
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80408554"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497154"
 ---
 # <a name="tutorial-use-exported-template-from-the-azure-portal"></a>Oktatóanyag: az exportált sablon használata a Azure Portal
 
@@ -35,23 +36,23 @@ Ez a sablon jól működik a Storage-fiókok telepítéséhez, de érdemes lehet
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Válassza az **Erőforrás létrehozása** lehetőséget.
 1. A **Keresés a piactéren**mezőbe írja be **app Service csomagot**, majd válassza a **app Service tervet**.  Ne válassza ki a **app Service csomagot (klasszikus)**
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 1. Adja meg a következőt:
 
     - **Előfizetés**: válassza ki az Azure-előfizetését.
     - **Erőforráscsoport**: válassza az **új létrehozása** lehetőséget, majd adjon meg egy nevet. Adjon meg egy másik erőforráscsoport-nevet, mint amelyet a jelen oktatóanyag-sorozatban használt.
     - **Név**: adja meg az App Service-csomag nevét.
     - **Operációs rendszer**: válassza a **Linux**lehetőséget.
-    - **Régió**: válasszon ki egy Azure-helyet. Például az **USA középső**régiója.
+    - **Régió**: válasszon ki egy Azure-helyet. Például: **USA középső régiója**.
     - **Árképzési szint**: a költségek megtakarításához módosítsa a SKU-t az **alapszintű B1** -re (fejlesztés/tesztelés).
 
     ![Resource Manager-sablon exportálása sablon portál](./media/template-tutorial-export-template/resource-manager-template-export.png)
 1. Válassza **a felülvizsgálat és létrehozás**lehetőséget.
-1. Kattintson a **Létrehozás** gombra. Az erőforrás létrehozása néhány percet vesz igénybe.
+1. Válassza a **Létrehozás** lehetőséget. Az erőforrás létrehozása néhány percet vesz igénybe.
 
 ## <a name="export-template"></a>Sablon exportálása
 
-1. Válassza **az Ugrás erőforráshoz**lehetőséget.
+1. Válassza az **Erőforrás megnyitása** lehetőséget.
 
     ![Erőforrás megnyitása](./media/template-tutorial-export-template/resource-manager-template-export-go-to-resource.png)
 
@@ -97,7 +98,7 @@ New-AzResourceGroupDeployment `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Az üzembe helyezési parancs futtatásához az Azure CLI [legújabb verziójára](/cli/azure/install-azure-cli) van szükség.
+Az üzembe helyezési parancs futtatásához az [Azure CLI](/cli/azure/install-azure-cli) legújabb verziójára van szükség.
 
 ```azurecli
 az deployment group create \

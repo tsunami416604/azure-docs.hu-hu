@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 2dc96f587a9e5db9d9810a4d1ab7d32c4ff49f7d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: df4d1b98eac782641fb36c614d2df9508c6131ad
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289866"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498667"
 ---
 # <a name="delegated-access-in-windows-virtual-desktop"></a>Delegált hozzáférés a Windows Virtual Desktopon
 
@@ -40,7 +40,7 @@ A Windows virtuális asztal delegált hozzáférése a következő értékeket t
 
 Mielőtt elkezdené, kövesse a [PowerShell-modul beállítása](powershell-module.md) a Windows rendszerű virtuális asztali PowerShell-modul beállítására vonatkozó útmutatást, ha még nem tette meg.
 
-A Windows virtuális asztal Azure szerepköralapú hozzáférés-vezérlést (RBAC) használ az alkalmazások felhasználói vagy felhasználói csoportok számára való közzétételekor. Az asztali virtualizálási felhasználói szerepkör hozzá van rendelve a felhasználóhoz vagy a felhasználói csoporthoz, és a hatókör az alkalmazás csoportja. Ez a szerepkör a felhasználó számára speciális adatelérést biztosít az alkalmazás csoportjának.  
+A Windows virtuális asztal Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC) használ az alkalmazások felhasználói vagy felhasználói csoportok számára való közzétételekor. Az asztali virtualizálási felhasználói szerepkör hozzá van rendelve a felhasználóhoz vagy a felhasználói csoporthoz, és a hatókör az alkalmazás csoportja. Ez a szerepkör a felhasználó számára speciális adatelérést biztosít az alkalmazás csoportjának.  
 
 A következő parancsmag futtatásával Azure Active Directory felhasználókat adhat hozzá egy alkalmazás-csoporthoz:
 

@@ -5,12 +5,13 @@ author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 4b82e02ecc009e587b89d1fd151fd13f75a4bcf8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 90d5c2688d20b62a4a5fda78eb67ed01777bc28c
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80408510"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496882"
 ---
 # <a name="tutorial-use-azure-quickstart-templates"></a>Oktatóanyag: az Azure Gyorsindítás sablonjainak használata
 
@@ -36,7 +37,7 @@ Ez a sablon a Storage-fiókok és az App Service-csomagok üzembe helyezésére 
 1. A **Search (keresés**) mezőbe írja be a **linuxos webalkalmazás üzembe helyezése**kifejezést.
 1. Válassza ki a címet egy **alapszintű linuxos webalkalmazás üzembe helyezésével**. Ha nem találja meg a problémát, a [közvetlen hivatkozás](https://azure.microsoft.com/resources/templates/101-webapp-basic-linux/)látható.
 1. Válassza **a Tallózás lehetőséget a githubon**.
-1. Válassza ki a **azuredeploy. JSON**fájlt.
+1. Válassza **aazuredeploy.js**lehetőséget.
 1. Tekintse át a sablont. Különösen keresse meg az `Microsoft.Web/sites` erőforrást.
 
     ![Resource Manager-sablon – gyors üzembe helyezési webhely](./media/template-tutorial-quickstart-template/resource-manager-template-quickstart-template-web-site.png)
@@ -49,7 +50,7 @@ A gyors üzembe helyezési sablon egyesítése a meglévő sablonnal:
 
 A webalkalmazás nevének egyedinek kell lennie az Azure-ban. Ha meg szeretné akadályozni, hogy a rendszer duplikálja a neveket, a **webAppPortalName** változót a " **webAppPortalName": "[concat (parameters (" webAppName "),"-WebApp "]]** és **" webAppPortalName ":" [concat (parameters (' webAppName '), uniqueString (resourceGroup (). id)] "** értékre frissíti.
 
-Adjon hozzá egy vesszőt a `Microsoft.Web/serverfarms` definíció végén, hogy elkülönítse az erőforrás- `Microsoft.Web/sites` definíciót a definícióból.
+Adjon hozzá egy vesszőt a definíció végén, `Microsoft.Web/serverfarms` hogy elkülönítse az erőforrás-definíciót a `Microsoft.Web/sites` definícióból.
 
 Ebben az új erőforrásban néhány fontos szempontot figyelembe kell venni.
 
@@ -77,7 +78,7 @@ New-AzResourceGroupDeployment `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Az üzembe helyezési parancs futtatásához az Azure CLI [legújabb verziójára](/cli/azure/install-azure-cli) van szükség.
+Az üzembe helyezési parancs futtatásához az [Azure CLI](/cli/azure/install-azure-cli) legújabb verziójára van szükség.
 
 ```azurecli
 az deployment group create \

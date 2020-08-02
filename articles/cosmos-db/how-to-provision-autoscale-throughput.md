@@ -5,13 +5,13 @@ author: deborahc
 ms.author: dech
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 07/29/2020
-ms.openlocfilehash: e8dadbad309a146500db342f55bee9339fde6172
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.date: 07/30/2020
+ms.openlocfilehash: dba0fccaa3eb79ad297ce80462efea5b69a4a009
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87430984"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497052"
 ---
 # <a name="provision-autoscale-throughput-on-database-or-container-in-azure-cosmos-db"></a>Az adatméretezési sebesség kiépítése a Azure Cosmos DB adatbázisán vagy tárolóján
 
@@ -29,7 +29,7 @@ Ez a cikk azt ismerteti, hogyan lehet kiépíteni az adatátviteli sebességet e
 
    :::image type="content" source="./media/how-to-provision-autoscale-throughput/create-new-autoscale-container.png" alt-text="Tároló létrehozása és az autoscale kiépített átviteli sebességének konfigurálása":::
 
-1. Válassza az **OK** lehetőséget.
+1. Kattintson az **OK** gombra.
 
 Ha a megosztott átviteli sebességű adatbázison szeretné kiépíteni az autoskálázást, válassza az **adatbázis átviteli sebességének kiépítése** lehetőséget új adatbázis létrehozásakor. 
 
@@ -244,11 +244,11 @@ container.replaceThroughput(ThroughputProperties.createAutoscaledThroughput(newA
 
 ## <a name="cassandra-api"></a>Cassandra API
 
-A Cassandra API-fiókok Azure Cosmos DB a [CQL parancsok](manage-scale-cassandra.md#use-autoscale), az [Azure CLI](cli-samples.md)vagy a [Azure Resource Manager sablonok](resource-manager-samples.md)használatával kiépíthető az autoskálázáshoz.
+A Cassandra API-fiókok Azure Cosmos DB a [CQL parancsok](manage-scale-cassandra.md#use-autoscale), az [Azure CLI](cli-samples.md), a [Azure PowerShell](powershell-samples.md) vagy a [Azure Resource Manager sablonok](resource-manager-samples.md)használatával kiépíthető az autoskálázáshoz.
 
 ## <a name="azure-cosmos-db-api-for-mongodb"></a>MongoDB-hez készült Azure Cosmos DB API
 
-Azure Cosmos DB MongoDB API-hoz az [MongoDB-bővítmény parancsai](mongodb-custom-commands.md), az [Azure CLI](cli-samples.md)vagy a [Azure Resource Manager sablonok](resource-manager-samples.md)használatával lehet kiépíteni az autoskálázást.
+Azure Cosmos DB MongoDB API-hoz az [MongoDB-bővítmény parancsai](mongodb-custom-commands.md), az [Azure CLI](cli-samples.md), a [Azure PowerShell](powershell-samples.md) vagy a [Azure Resource Manager sablonok](resource-manager-samples.md)használatával lehet kiépíteni az autoskálázást.
 
 ## <a name="azure-resource-manager"></a>Azure Resource Manager
 
@@ -258,7 +258,11 @@ Azure Resource Manager-sablonokkal az összes Azure Cosmos DB API-ra kiépíthet
 
 Az Azure CLI használatával az összes Azure Cosmos DB API-ra kiépíthető az adatátviteli sebesség az adatbázison vagy a tároló szintű erőforrásokon. A példákat lásd: [Azure CLI-minták Azure Cosmos DBhoz](cli-samples.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="azure-powershell"></a>Azure PowerShell
+
+A Azure PowerShell használatával az összes Azure Cosmos DB API-ra kiépíthető az adatátviteli sebesség az adatbázison vagy a tároló szintű erőforrásokon. A mintáknál tekintse meg [a Azure Cosmos DB Azure PowerShell mintáit](powershell-samples.md).
+
+## <a name="next-steps"></a>További lépések
 
 * Ismerje meg, hogy milyen [előnyökkel jár a kiépített átviteli sebesség az autoskálázással](provision-throughput-autoscale.md#benefits-of-autoscale).
 * Megtudhatja, hogyan [választhat a manuális és az automatikus skálázási sebesség közül](how-to-choose-offer.md).

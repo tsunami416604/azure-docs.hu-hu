@@ -5,12 +5,13 @@ author: mumian
 ms.date: 03/31/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: de7ec961672db2f3120e00f1a42b33f71e7ab092
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: b1454106c4498f4519972633df8a871585d254f1
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80437834"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497545"
 ---
 # <a name="tutorial-add-parameters-to-your-arm-template"></a>Oktatóanyag: paraméterek hozzáadása az ARM-sablonhoz
 
@@ -56,7 +57,7 @@ New-AzResourceGroupDeployment `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Az üzembe helyezési parancs futtatásához az Azure CLI [legújabb verziójára](/cli/azure/install-azure-cli) van szükség.
+Az üzembe helyezési parancs futtatásához az [Azure CLI](/cli/azure/install-azure-cli) legújabb verziójára van szükség.
 
 ```azurecli
 az deployment group create \
@@ -72,7 +73,7 @@ az deployment group create \
 
 Az előző szakaszban a korábban létrehozott nevű Storage-fiókot telepítette. Előfordulhat, hogy kíváncsi, hogy az erőforrás milyen hatással van az újratelepítésre.
 
-Ha az erőforrás már létezik, és a tulajdonságok között nem észlelhető változás, a rendszer nem végez műveletet. Ha az erőforrás már létezik, és a tulajdonság módosult, az erőforrás frissül. Ha az erőforrás nem létezik, akkor létrejön.
+Ha az erőforrás már létezik, és a tulajdonságokban nem észlelhető változás, a rendszer nem végez további műveleteket. Ha az erőforrás már létezik, és egy tulajdonság módosult, az erőforrás frissül. Ha az erőforrás nem létezik, akkor a rendszer létrehozza.
 
 A frissítések kezelési módja azt jelenti, hogy a sablon tartalmazhatja az Azure-megoldáshoz szükséges összes erőforrást. Biztonságosan újra üzembe helyezheti a sablont, és biztos lehet benne, hogy az erőforrások módosulnak, vagy csak szükség esetén jönnek létre. Ha például hozzáadta a fájlokat a Storage-fiókjához, akkor a fájlok elvesztése nélkül újra üzembe helyezheti a Storage-fiókot.
 

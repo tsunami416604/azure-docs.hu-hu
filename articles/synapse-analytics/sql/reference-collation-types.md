@@ -8,12 +8,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: c36df4745e276471e35addf4774470dbaaa9e150
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1099c4e4dd69a8dc8caee96ec5dda633ce8b9d12
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080709"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496202"
 ---
 # <a name="database-collation-support-for-synapse-sql"></a>Adatbázis-rendezési támogatás a szinapszis SQL-hez
 
@@ -23,7 +23,7 @@ Az adatbázis alapértelmezett rendezését az új SQL Pool-adatbázis létrehoz
 
 Megadhatja az alapértelmezett szinapszis SQL on-demand adatbázis-rendezést a létrehozáskor az adatbázis létrehozása utasítás használatával.
 
-## <a name="changing-collation"></a>Rendezés módosítása
+## <a name="change-collation"></a>Rendezés módosítása
 Az SQL Pool-adatbázis alapértelmezett rendezésének módosításához egyszerűen frissítse a rendezési mezőt a létesítési élményben. Ha például meg szeretné változtatni az alapértelmezett rendezést a kis-és nagybetűk megkülönböztetésére, egyszerűen nevezze át a rendezést SQL_Latin1_General_CP1_CI_ASról SQL_Latin1_General_CP1_CS_ASra. 
 
 Az SQL on-demand adatbázis alapértelmezett rendezésének módosításához használhatja az ALTER DATABASE utasítást.
@@ -104,7 +104,7 @@ Emellett az SQL-készlet nem támogatja a következő rendezési típusokat:
 *    SQL_EBCDIC277_2_CP1_CS_AS
 *    UTF-8
 
-## <a name="checking-the-current-collation"></a>Az aktuális rendezés ellenőrzése
+## <a name="check-the-current-collation"></a>Az aktuális rendezés keresése
 Az adatbázis aktuális rendezésének ellenőrzését a következő T-SQL-kódrészlet futtatásával végezheti el:
 ```sql
 SELECT DATABASEPROPERTYEX(DB_NAME(), 'Collation') AS Collation;

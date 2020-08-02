@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: spark
 ms.date: 03/31/2020
-ms.openlocfilehash: 7c6278d24e52159424c3e346b2382c93f4ab8160
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c043941543088d9bdbfd535f372e2335e1ba55a5
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075796"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500351"
 ---
 # <a name="automatically-scale-azure-synapse-analytics-apache-spark-pools"></a>Az Azure szinapszis Analytics Apache Spark-készletek automatikus méretezése
 
@@ -67,9 +67,9 @@ A csomópontok kezdeti száma lesz a minimum. Ez az érték határozza meg a pé
 
 A skálázási művelet befejezéséhez 1 – 5 percet is igénybe vehet.
 
-### <a name="preparation-for-scaling-down"></a>Felkészülés a méretezésre
+### <a name="prepare-for-scaling-down"></a>Felkészülés a méretezésre
 
-A folyamat leskálázása során az automatikus skálázás leszerelési állapotba helyezi a csomópontokat, így az adott csomóponton nem indíthatók el új végrehajtók.
+A példány skálázási folyamata során az automatikus skálázás leszerelési állapotba helyezi a csomópontokat, így a csomóponton nem indíthatók el új végrehajtók.
 
 A futó feladatok továbbra is futnak és befejeződik. A függőben lévő feladatok várhatóan a megszokott módon lesznek ütemezve kevesebb elérhető csomóponttal.
 

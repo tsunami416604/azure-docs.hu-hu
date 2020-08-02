@@ -7,12 +7,13 @@ ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 05/06/2019
-ms.openlocfilehash: 1dd20d94737df3e799876323d2aeb555dcb9a381
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 1a2b7ceea74091931c92d28f8fa47b9046b545fc
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82146807"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496576"
 ---
 # <a name="quickstart-use-an-azure-cli-command-az-postgres-up-preview-to-create-an-azure-database-for-postgresql---single-server"></a>Gyors útmutató: Azure CLI-parancs használata az postgres up (előzetes verzió), Azure Database for PostgreSQL-egyetlen kiszolgáló létrehozása
 
@@ -61,9 +62,9 @@ server-name | Rendszer által generált | Egy egyedi név, amely az Azure Databa
 resource-group | Rendszer által generált | Egy új Azure-erőforráscsoport.
 sku-name | GP_Gen5_2 | A termékváltozat neve. A {tarifacsomag}\_{számítási generáció}\_{virtuális magok} mintát követi rövidített módon. Az alapértelmezett érték egy általános célú Gen5-kiszolgáló 2 virtuális mag. A szintekkel kapcsolatos további információkért tekintse meg a [díjszabási](https://azure.microsoft.com/pricing/details/postgresql/) oldalunkat.
 backup-retention | 7 | A biztonsági másolat megőrzésének ideje. A mértékegysége a nap.
-geo-redundant-backup | Letiltva | Azt adja meg, hogy a georedundáns biztonsági mentést engedélyezni kell-e ehhez a kiszolgálóhoz.
+geo-redundant-backup | Disabled (Letiltva) | Azt adja meg, hogy a georedundáns biztonsági mentést engedélyezni kell-e ehhez a kiszolgálóhoz.
 location | westus2 | A kiszolgáló Azure-helye.
-ssl-enforcement | Letiltva | Azt határozza meg, hogy engedélyezve van-e a TLS/SSL, vagy sem ehhez a kiszolgálóhoz.
+ssl-enforcement | Disabled (Letiltva) | Azt határozza meg, hogy engedélyezve van-e a TLS/SSL, vagy sem ehhez a kiszolgálóhoz.
 storage-size | 5120 | A kiszolgáló tárkapacitása (megabájtban megadva).
 version | 10 | A PostgreSQL főverziója.
 admin-user | Rendszer által generált | A rendszergazda felhasználóneve.
@@ -74,7 +75,7 @@ admin-password | Rendszer által generált | A rendszergazda felhasználó jelsz
 
 A kiszolgáló létrehozása után a következő beállításokkal rendelkezik:
 
-- Létrejön egy "devbox" nevű tűzfalszabály. Az Azure CLI megpróbálja felderíteni annak a gépnek az IP- `az postgres up` címét, amelyről a parancsot futtatja, és az IP-cím engedélyezési listáit.
+- Létrejön egy "devbox" nevű tűzfalszabály. Az Azure CLI megpróbálja felderíteni annak a gépnek az IP-címét, `az postgres up` amelyről a parancsot futtatja, és az IP-cím engedélyezési listáit.
 - "Az Azure-szolgáltatásokhoz való hozzáférés engedélyezése" beállítás be értékre van állítva. Ezzel a beállítással konfigurálható a kiszolgáló tűzfala, hogy fogadja az összes Azure-erőforrás kapcsolatait, beleértve az előfizetésben nem szereplő erőforrásokat is.
 - A rendszer létrehoz egy "sampledb" nevű üres adatbázist.
 - Létrejön egy "root" nevű új felhasználó, amely jogosultsággal rendelkezik a "sampledb" létrehozásához.
