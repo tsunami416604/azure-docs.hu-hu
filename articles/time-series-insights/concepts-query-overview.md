@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: a4b969ecbc92df45021b4a9ec711960171d77d4e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: abc1f1de45fe846f9f50a6a7aa3dae2ed837b52b
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86495295"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87486794"
 ---
 # <a name="querying-data-from-azure-time-series-insights-gen2"></a>Adatok lekérdezése Azure Time Series Insights Gen2
 
@@ -37,7 +37,7 @@ A következő alapvető API-k támogatottak.
 
 ## <a name="environment-apis"></a>Környezeti API-k
 
-* [Környezetek beolvasása API](https://docs.microsoft.com/rest/api/time-series-insights/management/environments/get): azon környezetek listáját adja vissza, amelyekhez a hívó jogosult az elérésére.
+* [Környezetek beolvasása API](/rest/api/time-series-insights/management(gen1/gen2)/accesspolicies/listbyenvironment): azon környezetek listáját adja vissza, amelyekhez a hívó jogosult az elérésére.
 * [Környezetek rendelkezésre állási API-k beolvasása](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/getavailability): az események számának eloszlását adja vissza az esemény időbélyegén `$ts` . Ez az API segít meghatározni, hogy van-e olyan esemény a környezetben, amely az események számát időintervallumra bontva adja vissza, ha vannak ilyenek.
 * [Event Schema API beolvasása](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/geteventschema): egy adott keresési span esemény-séma metaadatainak beolvasása. Ez az API segít beolvasni a sémában elérhető összes metaadatot és tulajdonságot a megadott keresési tartományhoz.
 
@@ -69,7 +69,7 @@ Ezek az API-k a többrétegű tárolási megoldásban mindkét áruházban (mele
 
   A válaszban visszaadott időbélyegek a bal oldali intervallumok, nem pedig az intervallumban szereplő események. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ az [idősorozat-modellben](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-tsm)definiálható különböző változókról.
 - További információ az adatok lekérdezéséről a [Azure Time Series Insights Gen2 Explorerben](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-explorer).

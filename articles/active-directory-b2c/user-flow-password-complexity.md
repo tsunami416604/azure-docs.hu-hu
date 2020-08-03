@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 02/11/2019
+ms.date: 07/30/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ce4574870ad8c0bfd945e49f129b82177b3138a1
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: 9c7f0ead3a2f93d7f390106b8e7471d58b709023
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87115710"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87481563"
 ---
 # <a name="configure-complexity-requirements-for-passwords-in-azure-active-directory-b2c"></a>A Azure Active Directory B2Cban található jelszavak bonyolultsági követelményeinek konfigurálása
 
@@ -41,13 +41,13 @@ Ha egyéni házirendeket használ, akkor (a[jelszó bonyolultságát egyéni sza
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Válassza ki a **címtár + előfizetés** ikont a portál eszköztárán, majd válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
 3. A Azure Portal keresse meg és válassza a **Azure ad B2C**lehetőséget.
-4. Válassza a **felhasználói folyamatok (szabályzatok)** lehetőséget.
+4. Válassza a **felhasználói folyamatok**lehetőséget.
 2. Válasszon ki egy felhasználói folyamatot, majd kattintson a **Tulajdonságok**elemre.
 3. A **jelszó bonyolultsága**területen módosítsa a felhasználói folyamat jelszavának bonyolultságát **egyszerű**, **erős**vagy **Egyéni**értékre.
 
 ### <a name="comparison-chart"></a>Összehasonlító diagram
 
-| Összetettség | Description |
+| Összetettség | Leírás |
 | --- | --- |
 | Egyszerű | Egy legalább 8 – 64 karakterből álló jelszó. |
 | Erős | Egy legalább 8 – 64 karakterből álló jelszó. Ehhez 3 kisbetűs, nagybetűs, szám vagy szimbólum közül 3. |

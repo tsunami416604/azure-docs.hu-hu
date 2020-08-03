@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 111453b30a0c2fd7c0b2a2077b31b2cf16ebda06
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: d981bad30bf57fde64d1f6e903039dda5007e526
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87445672"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87483909"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Archiválja a Azure Active Directory újdonságait?
 
@@ -3407,7 +3407,7 @@ A Azure AD Privileged Identity Management (PIM) Azure szerepköralapú hozzáfé
 
 * Csak elég felügyeletet használjon.
 * Az erőforrás-szerepkörök aktiválásához jóváhagyás szükséges.
-* Ütemezzen egy olyan szerepkör jövőbeli aktiválását, amely az Azure AD és az Azure RBAC szerepköreinek jóváhagyását igényli.
+* Ütemezzen egy olyan szerepkör jövőbeli aktiválását, amely az Azure AD és az Azure szerepköreinek jóváhagyását igényli.
 
 További információ: [Privileged Identity Management for Azure Resources (előzetes verzió)](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/azure-pim-resource-rbac).
 

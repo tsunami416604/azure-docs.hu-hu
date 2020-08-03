@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 310527d8e98e474faa43f19406f037e1a3835756
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 62a2ffeea1d15a16c4ec4aa6a2b88c8e34763064
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86040265"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87480407"
 ---
 # <a name="resource-forest-concepts-and-features-for-azure-active-directory-domain-services"></a>Az erőforrás-erdőhöz kapcsolódó fogalmak és szolgáltatások Azure Active Directory Domain Services
 
@@ -23,10 +23,7 @@ A Azure Active Directory Domain Services (Azure AD DS) bejelentkezési élményt
 
 Bár a biztonságos és további biztonsági előnyöket biztosít, egyes szervezetek nem tudják szinkronizálni ezeket a felhasználói jelszavakat az Azure AD-be vagy az Azure AD DSba. Előfordulhat, hogy a szervezetben lévő felhasználók nem ismerik a jelszavukat, mert csak az intelligens kártyás hitelesítést használják. Ezek a korlátozások megakadályozzák, hogy egyes szervezetek az Azure AD DS használatával felemelik és áthelyezhetik a helyi klasszikus alkalmazásokat az Azure-ba.
 
-Ezen igények és korlátozások kezelése érdekében létrehozhat egy erőforrás-erdőt használó felügyelt tartományt. Ez a fogalmi cikk a biztonságos hitelesítési módszer biztosításához szükséges erdőket ismerteti, valamint azt, hogy miként bíznak más erőforrásokban. Az Azure AD DS erőforrás-erdők jelenleg előzetes verzióban érhetők el.
-
-> [!IMPORTANT]
-> Az Azure AD DS erőforrás-erdők jelenleg nem támogatják az Azure HDInsight vagy a Azure Files. Az alapértelmezett Azure AD DS felhasználói erdők mindkét további szolgáltatást támogatják.
+Ezen igények és korlátozások kezelése érdekében létrehozhat egy erőforrás-erdőt használó felügyelt tartományt. Ez a fogalmi cikk a biztonságos hitelesítési módszer biztosításához szükséges erdőket ismerteti, valamint azt, hogy miként bíznak más erőforrásokban.
 
 ## <a name="what-are-forests"></a>Mik azok az erdők?
 
@@ -36,7 +33,7 @@ Az Azure AD DS felügyelt tartományokban az erdő csak egy tartományt tartalma
 
 Alapértelmezés szerint a felügyelt tartomány *felhasználói* erdőként jön létre. Ez a típusú erdő az Azure AD összes objektumát szinkronizálja, beleértve a helyszíni AD DS környezetben létrehozott felhasználói fiókokat is. A felhasználói fiókok közvetlenül hitelesíthetők a felügyelt tartományon, például bejelentkezhetnek egy tartományhoz csatlakoztatott virtuális gépre. A felhasználói erdő akkor működik, ha a jelszó-kivonatok szinkronizálhatók, és a felhasználók nem használnak exkluzív bejelentkezési módszereket, például az intelligens kártyás hitelesítést.
 
-Felügyelt tartományi *erőforrás* -erdőben a felhasználók egy egyirányú erdőszintű *megbízhatósági kapcsolaton* keresztül hitelesíthetők a helyszíni AD DS. Ezzel a módszerrel a felhasználói objektumok és jelszavak kivonatai nem szinkronizálhatók a felügyelt tartományba. A felhasználói objektumok és a hitelesítő adatok csak a helyszíni AD DSban találhatók. Ez a megközelítés lehetővé teszi, hogy a vállalatok az Azure-ban olyan erőforrásokat és alkalmazás-platformokat működtessenek, amelyek a klasszikus hitelesítéstől (például LDAPs, Kerberos vagy NTLM) függenek, de a hitelesítési problémák és a problémák el Az Azure AD DS erőforrás-erdők jelenleg előzetes verzióban érhetők el.
+Felügyelt tartományi *erőforrás* -erdőben a felhasználók egy egyirányú erdőszintű *megbízhatósági kapcsolaton* keresztül hitelesíthetők a helyszíni AD DS. Ezzel a módszerrel a felhasználói objektumok és jelszavak kivonatai nem szinkronizálhatók a felügyelt tartományba. A felhasználói objektumok és a hitelesítő adatok csak a helyszíni AD DSban találhatók. Ez a megközelítés lehetővé teszi, hogy a vállalatok az Azure-ban olyan erőforrásokat és alkalmazás-platformokat működtessenek, amelyek a klasszikus hitelesítéstől (például LDAPs, Kerberos vagy NTLM) függenek, de a hitelesítési problémák és a problémák el
 
 Az erőforrás-erdők azt is lehetővé teszik, hogy egyszerre több összetevőt lehessen feloldani az alkalmazások számára. Számos örökölt helyszíni alkalmazás többrétegű, gyakran webkiszolgálót, előtér-adatbázist és sok adatbázissal kapcsolatos összetevőt használ. Ezek a szintek megnehezítik a teljes alkalmazás a felhőbe való átváltását egy lépésben. A Resource Forests használatával a felhőbe felemelhető az alkalmazás fokozatos megközelítése, amely megkönnyíti az alkalmazások áthelyezését az Azure-ba.
 
@@ -116,7 +113,7 @@ A megbízhatósági kapcsolatok biztosítják ezt a mechanizmust a megbízó tar
 
 További információ a megbízhatóságokról: [hogyan működnek az erdőszintű megbízhatósági kapcsolatok az Azure ad DSban?][concepts-trust]
 
-A felügyelt tartomány erőforrás-erdővel való létrehozásának első lépéseiért tekintse meg [Az Azure AD DS felügyelt tartomány létrehozása és konfigurálása][tutorial-create-advanced]című témakört. Ezután [létrehozhat egy kimenő erdőszintű megbízhatósági kapcsolatot a helyszíni tartományba (előzetes verzió)][create-forest-trust].
+A felügyelt tartomány erőforrás-erdővel való létrehozásának első lépéseiért tekintse meg [Az Azure AD DS felügyelt tartomány létrehozása és konfigurálása][tutorial-create-advanced]című témakört. Ezután [létrehozhat egy kimenő erdőszintű megbízhatósági kapcsolatot a helyszíni tartományba][create-forest-trust].
 
 <!-- LINKS - INTERNAL -->
 [concepts-trust]: concepts-forest-trust.md

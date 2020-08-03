@@ -7,22 +7,22 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 11/30/2018
+ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 465643d21d3059cd41948ff682d7464b00f749c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0c9edaf3356ea4c1a521a89f2ec60a4b6ba1a5ef
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85384005"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87481495"
 ---
 # <a name="set-up-self-service-password-reset-for-your-customers"></a>Önkiszolgáló jelszó-visszaállítás beállítása ügyfelei számára
 
 Az önkiszolgáló jelszó-visszaállítási szolgáltatással a helyi fiókokra regisztrált ügyfelei saját jelszavukat is visszaállíthatják. Ez jelentősen csökkenti a támogatási munkatársak terhelését, különösen akkor, ha az alkalmazásnak több millió ügyfele van használatban rendszeresen. Jelenleg ellenőrzött e-mail-cím használata az egyetlen támogatott helyreállítási módszer.
 
 > [!NOTE]
-> Ez a cikk a v1 **bejelentkezési** felhasználói folyamat környezetében használt önkiszolgáló jelszó-visszaállításra vonatkozik, amely a **helyi fiók bejelentkezési** használja az identitás-szolgáltatóként. Ha teljes mértékben testre szabható jelszó-visszaállítási felhasználói folyamatokra van szüksége az alkalmazásból, tekintse meg [ezt a cikket](user-flow-overview.md).
+> Ez a cikk a normál **bejelentkezési** felhasználói folyamat kontextusában használt önkiszolgáló jelszó-visszaállításra vonatkozik, amely a **helyi fiók bejelentkezési** használja az identitás-szolgáltatóként. Ha teljes mértékben testre szabható jelszó-visszaállítási felhasználói folyamatokra van szüksége az alkalmazásból, tekintse meg [ezt a cikket](user-flow-overview.md).
 >
 >
 

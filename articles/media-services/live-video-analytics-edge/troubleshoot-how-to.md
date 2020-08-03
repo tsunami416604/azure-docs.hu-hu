@@ -5,12 +5,12 @@ author: IngridAtMicrosoft
 ms.topic: how-to
 ms.author: inhenkel
 ms.date: 05/24/2020
-ms.openlocfilehash: ca41a403f789fd529ac65c21799d3d3e7f3becf6
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: bbd3cb88b017209adff58a646e274caf31ab425f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285458"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87486442"
 ---
 # <a name="troubleshoot-live-video-analytics-on-iot-edge"></a>Élő videó-elemzések hibáinak megoldása IoT Edge
 
@@ -234,7 +234,7 @@ A HTTP-bővítményt használó élő videó-elemzés kiterjesztheti az adathord
 
     ![Képernyőkép, amely megjeleníti a modulok futó állapotát az Azure IoT Hubban.](./media/troubleshoot-how-to/iot-hub.png)
 
-* Ellenőrizze, hogy a megfelelő URL-végpontra küld-e eseményeket. A külső AI-tároló egy URL-címet és egy portot tesz elérhetővé, és visszaadja a POST kérések adatait. Ez az URL-cím `endpoint: url` a http-bővítmény processzorának tulajdonsága. Ahogy a [topológia URL-címe](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/httpExtension/topology.json)is látható, a végpont az URL-cím paraméterre van beállítva. Győződjön meg arról, hogy a [paraméter](http://yolov3/score) vagy az átadott érték alapértelmezett értéke pontos. Teszteléssel ellenőrizheti, hogy működik-e az ügyfél URL-címe (cURL) használatával.  
+* Ellenőrizze, hogy a megfelelő URL-végpontra küld-e eseményeket. A külső AI-tároló egy URL-címet és egy portot tesz elérhetővé, és visszaadja a POST kérések adatait. Ez az URL-cím `endpoint: url` a http-bővítmény processzorának tulajdonsága. Ahogy a [topológia URL-címe](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/httpExtension/topology.json)is látható, a végpont az URL-cím paraméterre van beállítva. Győződjön meg arról, hogy a paraméter vagy az átadott érték alapértelmezett értéke pontos. Teszteléssel ellenőrizheti, hogy működik-e az ügyfél URL-címe (cURL) használatával.  
 
     Példaként itt látható egy olyan Yolo v3-tároló, amely a helyi gépen fut a 172.17.0.3 IP-címével. Az IP-cím megkereséséhez használja a Docker-vizsgálat lehetőséget.
 
@@ -312,7 +312,7 @@ Ha a hibakeresési naplók létrehozásához IoT Edge modul Live Video Analytics
 
 1. Válassza a **Frissítés** lehetőséget.
 1. Válassza a **felülvizsgálat + létrehozás**lehetőséget. Egy sikeres érvényesítési üzenet a zöld szalagcím alatt lesz közzétéve.
-1. Válassza a **Létrehozás** lehetőséget.
+1. Kattintson a **Létrehozás** gombra.
 1. Frissítse a **modul Identity Twin** értékét, hogy az DebugLogsDirectory paraméterre mutasson, amely arra a könyvtárra mutat, amelyben a naplók gyűjtése történik:
 
     a. A **modulok** táblázatban válassza a **lvaEdge**lehetőséget.  
@@ -324,7 +324,7 @@ Ha a hibakeresési naplók létrehozásához IoT Edge modul Live Video Analytics
     > Ez a parancs a peremhálózati eszköz és a tároló közötti naplók mappáját köti össze. Ha a naplókat egy másik helyen szeretné összegyűjteni, használja a következő parancsot, és cserélje le **$DEBUG _LOG_LOCATION_ON_EDGE_DEVICE** a használni kívánt helyre:  
     > `"DebugLogsDirectory": "/var/$DEBUG_LOG_LOCATION_ON_EDGE_DEVICE"`  
 
-    d. Válassza a **Mentés** lehetőséget.
+    d. Kattintson a **Mentés** gombra.
 
 1. Reprodukálja a problémát.
 1. Kapcsolódjon a virtuális géphez a portál **IoT hub** oldaláról.

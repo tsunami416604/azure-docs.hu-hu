@@ -11,18 +11,18 @@ ms.date: 04/15/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 6321fa484c883e196279ddf33661e78397bc3855
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: acfb2af7d482f9c0a51596818b1302584277defb
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85963886"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87486816"
 ---
 # <a name="best-practices-for-loading-data-for-data-warehousing"></a>Ajánlott adatbetöltési eljárások adatraktározáshoz
 
 Javaslatok és teljesítmény-optimalizálás az adat betöltéséhez
 
-## <a name="preparing-data-in-azure-storage"></a>Adatok előkészítése az Azure Storage-ban
+## <a name="prepare-data-in-azure-storage"></a>Az Azure Storage-ban való adatelőkészítés
 
 A késés minimalizálása érdekében helyezze egymás mellé a tárolási réteget és az adattárházat.
 
@@ -34,13 +34,13 @@ Minden fájlformátum eltérő teljesítményjellemzővel rendelkezik. A leggyor
 
 A nagy tömörített fájlokat ossza fel kisebb tömörített fájlokra.
 
-## <a name="running-loads-with-enough-compute"></a>Betöltések futtatása elegendő számítási teljesítménnyel
+## <a name="run-loads-with-enough-compute"></a>A terhelések futtatása elegendő számítási feladatokkal
 
 A leggyorsabb betöltési sebesség érdekében egyszerre egy betöltési feladatot futtasson. Ha ez nem lehetséges, egyszerre a lehető legkevesebb betöltést futtassa. Ha nagy betöltési feladatot vár, érdemes megfontolnia az SQL-készlet méretezését a terhelés előtt.
 
 A betöltések megfelelő számítási erőforrásokkal való futtatásához hozzon létre betöltések futtatására kijelölt felhasználókat. Rendelje hozzá az egyes betöltési felhasználókat egy adott erőforrás-osztályhoz vagy munkaterhelési csoporthoz. Betöltés futtatásához jelentkezzen be az egyik betöltési felhasználóként, majd futtassa a betöltést. A betöltés a felhasználó erőforrásosztályával fut.  Ez a módszer egyszerűbb, mint a felhasználó erőforrásosztályának módosításával próbálkozni, hogy az megfeleljen az aktuális erőforrásosztály-igénynek.
 
-### <a name="example-of-creating-a-loading-user"></a>Példa egy betöltést végző felhasználó létrehozására
+### <a name="create-a-loading-user"></a>Betöltési felhasználó létrehozása
 
 Ez a példa létrehoz egy betöltést végző felhasználót a staticrc20 erőforrásosztályhoz. Ennek első lépése a **főkiszolgálóhoz való csatlakozás** és egy bejelentkezés létrehozása.
 
@@ -62,7 +62,7 @@ Ha a Staticrc20 erőforrásosztályhoz erőforrás-osztályaihoz erőforrásokka
 
 A betöltéseket inkább statikus, mint dinamikus erőforrásosztályokkal futtassa. A statikus erőforrás-osztályok használata ugyanazokat az erőforrásokat garantálja, függetlenül az [adattárház-egységektől](resource-consumption-models.md). Ha dinamikus erőforrásosztályt használ, az erőforrások a szolgáltatásszinttől függően változhatnak. Dinamikus osztályok esetében egy alacsonyabb szolgáltatási szint azt jelenti, hogy feltehetően nagyobb erőforrásosztályt kell használnia a betöltést végző felhasználóhoz.
 
-## <a name="allowing-multiple-users-to-load"></a>Betöltés engedélyezése több felhasználó számára
+## <a name="allow-multiple-users-to-load"></a>Több felhasználó betöltésének engedélyezése
 
 Gyakran van szükség több olyan felhasználóra, akik adatokat töltenek egy adattárházba. A [(Transact-SQL) CREATE TABLE](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) betöltéséhez az ADATBÁZISnak vezérlési engedélyekkel kell rendelkeznie.  A CONTROL engedély az összes séma vezérlését biztosítja. Előfordulhat, hogy nem szeretné, hogy minden betöltést végző felhasználó vezérelési jogot kapjon az összes sémához. Az engedélyek korlátozására használja a DENY CONTROL utasítást.
 
@@ -75,13 +75,13 @@ Vegyünk például két adatbázissémát: schema_A az A részleghez, és schema
 
 A User_A és user_B mostantól ki vannak zárva a másik részleg sémájában.
 
-## <a name="loading-to-a-staging-table"></a>Betöltés előkészítési táblába
+## <a name="load-to-a-staging-table"></a>Betöltés előkészítési táblába
 
 Az adattárház táblájába való adatáthelyezés leggyorsabb betöltési sebességének eléréséhez töltse be az adatokat egy előkészítési táblába.  Határozza meg az előkészítési táblát halomként, és használjon ciklikus időszeletelést a terjesztési beállításhoz.
 
 Vegye figyelembe, hogy a betöltés általában két lépésből álló folyamat, amely során először az előkészítési táblába tölti be, majd beszúrja az adatokat egy éles adattárháztáblába. Ha az éles tábla kivonatoló terjesztést használ, a betöltés és a beszúrás teljes ideje gyorsabb lehet, ha meghatároz egy előkészítési táblát a kivonatoló terjesztéssel. Az előkészítési táblába való betöltés több időt vesz igénybe, de a sorok az éles táblába való beszúrásának második lépése nem jár a disztribúciók közötti adatmozgatással.
 
-## <a name="loading-to-a-columnstore-index"></a>Betöltés oszlopcentrikus indexbe
+## <a name="load-to-a-columnstore-index"></a>Betöltés egy oszlopcentrikus indexbe
 
 Az oszlopcentrikus indexek sok memóriát igényelnek az adatok jó minőségű sorcsoportokba való tömörítéséhez. A legjobb tömörítési és indexelési hatékonyság érdekében az oszlopcentrikus indexnek a maximális 1 048 576 sort kell tömörítenie az egyes sorcsoportokba. Ha korlátozott a rendelkezésre álló memória mennyisége, előfordulhat, hogy az oszlopcentrikus index nem éri el a maximális tömörítési sebességet. Ez hatással van a lekérdezés teljesítményére. A témakör részletes bemutatása: [Oszloptár memóriájának optimalizálása](data-load-columnstore-compression.md).
 
@@ -92,19 +92,19 @@ Az oszlopcentrikus indexek sok memóriát igényelnek az adatok jó minőségű 
 
 Ahogy korábban említettük, a "Base" betöltéssel a legmagasabb átviteli sebesség lesz elérhető a szinapszis SQL-készlettel. Ha a SQLBulkCopy API-t (vagy BCP-t) nem lehet betöltésre használni, érdemes megfontolnia a köteg méretének növelését a jobb teljesítmény érdekében – a jó ökölszabály a 100 000 – 1 000-es sorok közötti batch-méret.
 
-## <a name="handling-loading-failures"></a>Betöltési hibák kezelése
+## <a name="manage-loading-failures"></a>Betöltési hibák kezelése
 
 Egy külső táblát használó betöltés meghiúsulhat a következő hibával: *„A lekérdezés megszakadt – a rendszer elérte a felső visszautasítási küszöbértéket külső forrásból való beolvasás során”*. Ez az üzenet azt jelzi, hogy a külső adatok szabálytalan rekordokat tartalmaznak. Az adatrekord akkor számít „szabálytalannak”, ha az oszlopok adattípusai és száma nem felel meg a külső tábla definícióinak, vagy ha az adatok nem felelnek meg a megadott külső fájlformátumnak.
 
 A szabálytalan rekordok kijavításához győződjön meg arról, hogy a külső tábla- és fájlformátum-definíciók helyesek, és hogy a külső adatok megfelelnek ezeknek a definícióknak. Amennyiben a külső adatrekordok egy részhalmaza szabálytalan, dönthet úgy, hogy nem tart igényt ezekre a rekordokra a lekérdezéseihez. Ehhez használja a CREATE EXTERNAL TABLE visszautasítási lehetőségeit.
 
-## <a name="inserting-data-into-a-production-table"></a>Adatok beszúrása az éles táblába
+## <a name="insert-data-into-a-production-table"></a>Adatbeszúrás éles táblába
 
 A kis táblák [INSERT utasítással](/sql/t-sql/statements/insert-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) végzett egyszeri feltöltése vagy akár egy keresés rendszeres újratöltése is megfelelő lehet, ha egy, a következőhöz hasonló utasítást használ: `INSERT INTO MyLookup VALUES (1, 'Type 1')`.  Az egyszeres beszúrásoknál azonban hatékonyabb egy kötegelt betöltés végrehajtása.
 
 Ha több ezer egyszeres beszúrást hajt végre egy nap, kötegelje a beszúrásokat, hogy kötegelve tölthesse be őket.  Fejlesszen folyamatokat, amelyek az egyszeres beszúrásokat egy fájlhoz fűzik, majd hozzon létre egy másik folyamatot, amely időszakosan betölti a fájlt.
 
-## <a name="creating-statistics-after-the-load"></a>Statisztika létrehozása a betöltés után
+## <a name="create-statistics-after-the-load"></a>Statisztika létrehozása a betöltés után
 
 A lekérdezési teljesítmény javításához fontos létrehozni statisztikákat a táblák összes oszlopához az első betöltés után, illetve az adatok minden lényeges módosítását követően.  Ezt manuálisan is megteheti, vagy engedélyezheti az [automatikus létrehozási statisztikát](../sql-data-warehouse/sql-data-warehouse-tables-statistics.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
 

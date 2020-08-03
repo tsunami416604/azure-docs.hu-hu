@@ -7,20 +7,24 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 05bcbf8df695ba308a6eaff5e7401f0a6d638747
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 3e7ee90d75a2ff2b3552992c19f11cc86b6109ca
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337602"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87486654"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Az Azure Digital Twins Twin gráf lekérdezése
 
 Ez a cikk példákat és részletesebb információkat tartalmaz az [Azure Digital Twins Query Store nyelvének](concepts-query-language.md) használatáról a [Twin gráf](concepts-twins-graph.md) adatainak lekérdezéséhez. A Graph-lekérdezéseket az Azure Digital Twins [**lekérdezési API**](how-to-use-apis-sdks.md)-k használatával futtathatja.
 
+[!INCLUDE [digital-twins-query-operations.md](../../includes/digital-twins-query-operations.md)]
+
+A cikk további része példákat tartalmaz a műveletek használatára.
+
 ## <a name="query-syntax"></a>Lekérdezési szintaxis
 
-Íme néhány példa a lekérdezés nyelvi felépítését bemutató példákra, és végrehajthatja a lehetséges lekérdezési műveleteket.
+Ez a szakasz olyan példákat tartalmaz, amelyek a lekérdezési nyelvi struktúrát illusztrálják, és végrehajtják a lehetséges lekérdezési műveleteket.
 
 [Digitális ikrek](concepts-twins-graph.md) beolvasása tulajdonságok alapján (beleértve az azonosítót és a metaadatokat):
 ```sql
@@ -31,16 +35,55 @@ AND T.$dtId in ['123', '456']
 AND T.Temperature = 70
 ```
 
-Digitális ikrek beszerzése [modell](concepts-models.md) szerint
-```sql
-SELECT  * 
-FROM DigitalTwins T  
-WHERE IS_OF_MODEL(T , 'dtmi:com:contoso:Space;3')
-AND T.roomSize > 50
-```
-
 > [!TIP]
 > A Digital Twin AZONOSÍTÓját a rendszer a metaadatok mező használatával kérdezi le `$dtId` .
+
+Azt is megteheti, hogy a *címke* tulajdonságai alapján a [Címkék hozzáadása a digitális ikrekhez](how-to-use-tags.md)című témakörben leírtak szerint:
+```sql
+select * from digitaltwins where is_defined(tags.red) 
+```
+
+### <a name="select-top-items"></a>Legfelső elemek kijelölése
+
+A lekérdezésben több "Top" elemet is kijelölhet a `Select TOP` záradék használatával.
+
+```sql
+SELECT TOP (5)
+FROM DIGITALTWINS
+WHERE property = 42
+```
+
+### <a name="query-by-model"></a>Lekérdezés modell szerint
+
+Az `IS_OF_MODEL` operátor használható a Twin [modell](concepts-models.md)alapján történő szűrésre. Támogatja az öröklést, és számos túlterhelési lehetőséggel rendelkezik.
+
+A legegyszerűbb használata `IS_OF_MODEL` csak a (z `twinTypeName` ) paramétert veszi igénybe: `IS_OF_MODEL(twinTypeName)` .
+Az alábbi példa egy olyan lekérdezési példát mutat be, amely a paraméter értékét továbbítja:
+
+```sql
+SELECT * FROM DIGITALTWINS WHERE IS_OF_MODEL('dtmi:sample:thing;1')
+```
+
+Ha egynél több (például a használatban lévő) értéknél szeretne keresni egy dupla gyűjteményt `JOIN` , adja hozzá a következő `twinCollection` paramétert: `IS_OF_MODEL(twinCollection, twinTypeName)` .
+Az alábbi példa egy olyan lekérdezési példát mutat be, amely a paraméter értékét adja meg:
+
+```sql
+SELECT * FROM DIGITALTWINS DT WHERE IS_OF_MODEL(DT, 'dtmi:sample:thing;1')
+```
+
+A pontos egyezéshez adja hozzá a következő `exact` paramétert: `IS_OF_MODEL(twinTypeName, exact)` .
+Az alábbi példa egy olyan lekérdezési példát mutat be, amely a paraméter értékét adja meg:
+
+```sql
+SELECT * FROM DIGITALTWINS WHERE IS_OF_MODEL('dtmi:sample:thing;1', exact)
+```
+
+Mindhárom argumentumot együtt is át lehet adni: `IS_OF_MODEL(twinCollection, twinTypeName, exact)` .
+Íme egy lekérdezési példa, amely mindhárom paraméter értékét megadja:
+
+```sql
+SELECT ROOM FROM DIGITALTWINS DT WHERE IS_OF_MODEL(DT, 'dtmi:sample:thing;1', exact)
+```
 
 ### <a name="query-based-on-relationships"></a>Lekérdezés kapcsolatok alapján
 

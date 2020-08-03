@@ -1,5 +1,6 @@
 ---
 title: Felhasználói folyamatok Azure Active Directory B2Cban | Microsoft Docs
+titleSuffix: Azure AD B2C
 description: További információ a Azure Active Directory B2C bővíthető házirend-keretrendszeréről és a különböző felhasználói folyamatok létrehozásáról.
 services: active-directory-b2c
 author: msmimart
@@ -7,24 +8,20 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/30/2018
+ms.date: 07/30/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1dc0e297ca16bf2605993e36942de9d31c331680
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: 7a7736602fafb740d1d76fa09fd26da25e4ff9f5
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87115858"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87481597"
 ---
 # <a name="user-flows-in-azure-active-directory-b2c"></a>Felhasználói folyamatok Azure Active Directory B2C
 
-A Azure Active Directory B2C (Azure AD B2C) bővíthető házirend-keretrendszere a szolgáltatás alapvető erőssége. A szabályzatok teljes mértékben leírják a személyazonossággal kapcsolatos tapasztalatokat, például a regisztrálást, a bejelentkezést vagy a profil szerkesztését. A leggyakoribb identitási feladatok beállításához a Azure AD B2C-portál a **felhasználói folyamatok**nevű előre definiált, konfigurálható szabályzatokat tartalmazza.
-
-## <a name="what-are-user-flows"></a>Mik azok a felhasználói folyamatok?
-
-A felhasználói folyamat lehetővé teszi az alkalmazások viselkedésének vezérlését a következő beállítások konfigurálásával:
+Az alkalmazások leggyakoribb identitási feladatainak beállításához a Azure AD B2C-portál a **felhasználói folyamatok**nevű előre definiált, konfigurálható szabályzatokat tartalmazza. A felhasználói folyamattal meghatározhatja, hogy a felhasználók hogyan használják az alkalmazást, amikor olyan műveleteket végeznek, mint például a bejelentkezés, a regisztráció, a profil szerkesztése vagy a jelszó alaphelyzetbe állítása. A felhasználói folyamatok esetében a következő képességeket szabályozhatja:
 
 - Bejelentkezéshez használt fióktípus, például Facebook-vagy helyi fiókokhoz hasonló közösségi fiókok
 - A fogyasztótól begyűjtött attribútumok, például Utónév, irányítószám és a cipő mérete
@@ -62,13 +59,21 @@ client_id=2d4d11a2-f814-46a7-890a-274a72a7309e      // Your registered Applicati
 
 ## <a name="user-flow-versions"></a>Felhasználói folyamatok verziói
 
-A Azure Portalban a [felhasználói folyamatok új verziói](user-flow-versions.md) folyamatosan bővülnek. A Azure AD B2C használatának megkezdése után a tesztelt felhasználói folyamatok használata javasolt. Új felhasználói folyamat létrehozásakor ki kell választania a kívánt felhasználói folyamatot az **ajánlott** lapon.
+Azure AD B2C több típusú felhasználói folyamatot tartalmaz:
 
-A következő felhasználói folyamatok jelenleg ajánlottak:
-
-- **Regisztráció és bejelentkezés** – kezeli a regisztrációs és a bejelentkezési élményeket egyetlen konfigurációval. A felhasználók a környezettől függően a megfelelő útvonalat vezetik le. Javasoljuk, hogy ezt a felhasználói folyamatot egy **regisztrációs** felhasználói folyamaton vagy egy **bejelentkezési** felhasználói folyamaton keresztül használja.
+- **Regisztráció és bejelentkezés** – kezeli a regisztrációs és a bejelentkezési élményeket egyetlen konfigurációval. A felhasználók a környezettől függően a megfelelő útvonalat vezetik le. Emellett külön **regisztrációs** vagy **bejelentkezési** felhasználói folyamatokat is tartalmaz. A kombinált regisztráció és a bejelentkezési felhasználói folyamat azonban általában ajánlott.
 - **Profil szerkesztése** – lehetővé teszi a felhasználók számára a profil adatainak szerkesztését.
 - **Jelszó alaphelyzetbe állítása** – beállíthatja, hogy a felhasználók hogyan állíthatják alaphelyzetbe a jelszavukat.
+
+A legtöbb felhasználói folyamat esetében a **javasolt** verzió és a **standard** verzió is szerepel. Részletekért lásd: [felhasználói folyamatok verziói](user-flow-versions.md).
+
+> [!IMPORTANT]
+> Ha korábban már használta a felhasználói folyamatokat Azure AD B2C előtt, megfigyelheti, hogy módosítottuk a felhasználói folyamatok verzióinak hivatkozását. Korábban a v1 (termelésre kész), valamint a V 1.1 és v2 (előzetes verzió) verzióját is felajánlottuk. Most összevontuk a felhasználói folyamatokat két verzióra:
+>
+>- Az **ajánlott** felhasználói folyamatok a felhasználói folyamatok új előzetes verzióit jelentik. Alaposan tesztelték és egyesítik az örökölt **v2** és a **v 1.1** verzió összes funkcióját. Az új javasolt felhasználói folyamatok továbbra is megmaradnak és frissülnek. Ha áthelyezi ezeket az új ajánlott felhasználói folyamatokat, hozzáférhet a kiadott új funkciókhoz.
+>- A korábban **v1**-ként ismert **általános** felhasználói folyamatok általánosan elérhetők, a termelésre kész felhasználói folyamatok. Ha a felhasználói folyamatok kritikus fontosságúak, és a nagymértékben stabil verzióktól függenek, továbbra is használhatja a normál felhasználói folyamatokat, és felismerheti, hogy ezek a verziók nem lesznek karbantartva és frissítve.
+>
+>Az összes korábbi előzetes verziójú felhasználói folyamat (V 1.1 és v2) a 2021-es **augusztus 1-től**az elavult elérési úton van. Ahol csak lehetséges, javasoljuk, hogy a lehető leghamarabb [váltson az új **javasolt** felhasználói folyamatokra](user-flow-versions.md#how-to-switch-to-a-new-recommended-user-flow) , így mindig kihasználhatja a legújabb funkciókat és frissítéseket.
 
 ## <a name="linking-user-flows"></a>Felhasználói folyamatok összekapcsolása
 

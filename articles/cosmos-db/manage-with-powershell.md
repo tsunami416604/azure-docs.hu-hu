@@ -7,19 +7,19 @@ ms.topic: how-to
 ms.date: 05/13/2020
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: 1e43cc48a6c4684326a152adedabcd00a44657a6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d17d7e03c1a0fff642edbac912e596ecb030706d
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85390839"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87486476"
 ---
 # <a name="manage-azure-cosmos-db-sql-api-resources-using-powershell"></a>Azure Cosmos DB SQL API-erőforrások kezelése a PowerShell használatával
 
 Az alábbi útmutatóban megismerheti, hogyan szkriptelheti és automatizálhatja az Azure Cosmos DB-erőforrások (például a fiókok, az adatbázisok, a tárolók és az átviteli sebesség) felügyeletét a PowerShell használatával.
 
 > [!NOTE]
-> A cikkben szereplő minták az [az. CosmosDB](https://docs.microsoft.com/powershell/module/az.cosmosdb) felügyeleti parancsmagokat használják. A legújabb változásokért tekintse meg az az [. CosmosDB](https://docs.microsoft.com/powershell/module/az.cosmosdb) API-referenciát ismertető oldalt.
+> A cikkben szereplő minták az [az. CosmosDB](/powershell/module/az.cosmosdb) felügyeleti parancsmagokat használják. A legújabb változásokért tekintse meg az az [. CosmosDB](/powershell/module/az.cosmosdb) API-referenciát ismertető oldalt.
 
 A Azure Cosmos DB platformfüggetlen felügyeletéhez használhatja a `Az` és a `Az.CosmosDB` parancsmagot a [platformfüggetlen PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-powershell)-lel, valamint az [Azure CLI](manage-with-cli.md)-vel, a [Rest APIval][rp-rest-api]vagy a [Azure Portalsal](create-sql-api-dotnet.md#create-account).
 
@@ -347,7 +347,7 @@ Get-AzResourceLock `
 
 A következő szakaszban bemutatjuk, hogyan kezelheti a Azure Cosmos DB-adatbázist, beleértve a következőket:
 
-* [Azure Cosmos DB-adatbázis létrehozása](#create-db)
+* [Létrehoz egy Azure Cosmos DB-adatbázist](#create-db)
 * [Megosztott átviteli sebességgel rendelkező Azure Cosmos DB-adatbázis létrehozása](#create-db-ru)
 * [Azure Cosmos DB adatbázis átviteli sebességének beolvasása](#get-db-ru)
 * [Egy fiók összes Azure Cosmos DB adatbázisának listázása](#list-db)
@@ -356,7 +356,7 @@ A következő szakaszban bemutatjuk, hogyan kezelheti a Azure Cosmos DB-adatbáz
 * [Erőforrás-zárolás létrehozása Azure Cosmos DB adatbázison a törlés megakadályozása érdekében](#create-db-lock)
 * [Erőforrás-zárolás eltávolítása egy Azure Cosmos DB adatbázison](#remove-db-lock)
 
-### <a name="create-an-azure-cosmos-db-database"></a><a id="create-db"></a>Azure Cosmos DB-adatbázis létrehozása
+### <a name="create-an-azure-cosmos-db-database"></a><a id="create-db"></a>Létrehoz egy Azure Cosmos DB-adatbázist
 
 ```azurepowershell-interactive
 $resourceGroupName = "myResourceGroup"
@@ -475,6 +475,7 @@ Remove-AzResourceLock `
 Az alábbi részben bemutatjuk, hogyan kezelheti a Azure Cosmos DB tárolót, beleértve a következőket:
 
 * [Azure Cosmos DB tároló létrehozása](#create-container)
+* [Azure Cosmos DB tároló létrehozása az autoscale paranccsal](#create-container-autoscale)
 * [Azure Cosmos DB tároló létrehozása nagyméretű partíciós kulccsal](#create-container-big-pk)
 * [Azure Cosmos DB tároló átviteli sebességének beolvasása](#get-container-ru)
 * [Azure Cosmos DB-tároló létrehozása egyéni indexeléssel](#create-container-custom-index)
@@ -496,6 +497,7 @@ $accountName = "mycosmosaccount"
 $databaseName = "myDatabase"
 $containerName = "myContainer"
 $partitionKeyPath = "/myPartitionKey"
+$throughput = 400 #minimum = 400
 
 New-AzCosmosDBSqlContainer `
     -ResourceGroupName $resourceGroupName `
@@ -503,7 +505,29 @@ New-AzCosmosDBSqlContainer `
     -DatabaseName $databaseName `
     -Name $containerName `
     -PartitionKeyKind Hash `
-    -PartitionKeyPath $partitionKeyPath
+    -PartitionKeyPath $partitionKeyPath `
+    -Throughput $throughput
+```
+
+### <a name="create-an-azure-cosmos-db-container-with-autoscale"></a><a id="create-container-autoscale"></a>Azure Cosmos DB tároló létrehozása az autoscale paranccsal
+
+```azurepowershell-interactive
+# Create an Azure Cosmos DB container with default indexes and autoscale throughput at 4000 RU
+$resourceGroupName = "myResourceGroup"
+$accountName = "mycosmosaccount"
+$databaseName = "myDatabase"
+$containerName = "myContainer"
+$partitionKeyPath = "/myPartitionKey"
+$autoscaleMaxThroughput = 4000 #minimum = 4000
+
+New-AzCosmosDBSqlContainer `
+    -ResourceGroupName $resourceGroupName `
+    -AccountName $accountName `
+    -DatabaseName $databaseName `
+    -Name $containerName `
+    -PartitionKeyKind Hash `
+    -PartitionKeyPath $partitionKeyPath `
+    -AutoscaleMaxThroughput $autoscaleMaxThroughput
 ```
 
 ### <a name="create-an-azure-cosmos-db-container-with-a-large-partition-key-size"></a><a id="create-container-big-pk"></a>Azure Cosmos DB tároló létrehozása nagyméretű partíciós kulcs méretével

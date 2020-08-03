@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: damendo
-ms.openlocfilehash: 84e9dab149cfed265833336577d718e57bd9bc2d
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: fa1ed25e8c9a80dda2bf0e4625d28a3befaa49c9
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86165328"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87479846"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Traffic Analytics gyakori kérdések
 
@@ -36,7 +36,7 @@ Traffic Analytics a következő előfeltételek szükségesek:
 
 A Traffic Analytics engedélyezéséhez a fióknak a következők valamelyikét kell teljesítenie:
 
-- A fióknak a következő szerepköralapú hozzáférés-vezérlési (RBAC) szerepkörök valamelyikével kell rendelkeznie az előfizetés hatókörében: tulajdonos, közreműködő, olvasó vagy hálózati közreműködő.
+- A fiókjának a következő Azure-szerepkörök valamelyikével kell rendelkeznie az előfizetés hatókörében: tulajdonos, közreműködő, olvasó vagy hálózati közreműködő.
 - Ha a fiókja nincs hozzárendelve az egyik korábban felsorolt szerepkörhöz, hozzá kell rendelni egy egyéni szerepkörhöz, amelyhez az előfizetési szinten a következő műveletek vannak hozzárendelve.
             
     - Microsoft. Network/applicationGateways/READ
@@ -401,4 +401,3 @@ A virtuális alhálózatok topológiája lap két fő szakaszt tartalmaz:
 - A topológia nézet más kiemelt csomópontjaira való áthelyezéshez használja a kulcsot a `Shift+Right arrow` továbbítási mozgáshoz. 
 - A Kiemelt csomópontokon a fókusz áthelyezése a csomópont **információs eszköz mezőjébe** . Alapértelmezés szerint a fókusz a **tájékoztatási eszköz mező** **További részletek** gombjára lép. A **Box** nézeten belüli további áthelyezéshez használja a `Right arrow` és `Left arrow` a billentyűket a továbbításhoz és a visszafelé való mozgáshoz. A gomb megnyomásakor a `Enter` fókusz gombra kell kattintania a **tájékoztatási eszköz mezőben**.
 - Az ilyen csomópontok kiválasztásakor a kulcs megnyomásával megtekintheti az összes kapcsolatát, egyet pedig eggyel `Shift+Left arrow` . A fókusz a kapcsolatok **információs eszköz mezőjére** lép. A fókuszt bármikor visszahelyezheti a csomópontra az újbóli megnyomásával `Shift+Right arrow` .    
-

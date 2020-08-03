@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.author: alkohli
-ms.openlocfilehash: 3ec5889d952e2836f1d112e38b8248f667cab586
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 7b74c40ab504c08f5a19a1382c303530116c0fdf
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86200405"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87483829"
 ---
 # <a name="azure-data-box-security-and-data-protection"></a>Az Azure Data Box biztonsági és adatvédelmi szolgáltatásai
 
@@ -68,7 +68,7 @@ A Data Box szolgáltatás biztonságát az alábbi funkciók biztosítják.
 
 - A Data Box szolgáltatáshoz való hozzáféréshez a cégnek olyan Azure-előfizetéssel kell rendelkeznie, amely tartalmazza a Data Boxot. Az előfizetés szabályozza, hogy az Azure Portal mely szolgáltatásai érhetők el.
 - A Data Box szolgáltatás az Azure-ban üzemel, így az Azure biztonsági funkciói védik. A Microsoft Azure által biztosított biztonsági funkciókról a [Microsoft Azure biztonsági és adatkezelési központban](https://www.microsoft.com/TrustCenter/Security/default.aspx) talál további információt.
-- A Data Box rendeléshez való hozzáférés a szerepköralapú Access Control (RBAC) szerepkörök használatával vezérelhető. További információ: Data Box- [sorrend hozzáférés-vezérlésének beállítása](data-box-logs.md#set-up-access-control-on-the-order)
+- Az Data Box rendeléshez való hozzáférés az Azure-szerepkörök használatával szabályozható. További információ: Data Box- [sorrend hozzáférés-vezérlésének beállítása](data-box-logs.md#set-up-access-control-on-the-order)
 - A Data Box szolgáltatás tárolja a zárolásfeloldási jelszót, amellyel az eszköz zárolása a szolgáltatásban feloldható.
 - A Data Box szolgáltatás tárolja a megrendelések adatait és állapotát a szolgáltatásban. A megrendelés törlésekor ezek az információk is törlődnek.
 
@@ -84,7 +84,7 @@ Az Azure Data Box a szolgáltatás alábbi főbb példányaiban gyűjt és jelen
   - Telefonszám
   - E-mail
   - Utca, házszám
-  - City
+  - Település
   - Irányítószám
   - Állapot
   - Ország/tartomány/régió

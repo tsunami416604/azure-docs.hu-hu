@@ -7,32 +7,35 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 07/14/2020
-ms.openlocfilehash: ef243d5b151f95a00e22ac7636a46b93090ccce3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 07/31/2020
+ms.openlocfilehash: 339926fbd3c96f6f6c279d29676950b9915b4256
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87006534"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87484159"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Az Azure HDInsight kibocsátási megjegyzései
 
 Ez a cikk az Azure HDInsight **legújabb** kiadási frissítéseivel kapcsolatos információkat tartalmaz. A korábbi kiadásokkal kapcsolatos információkért lásd: [HDInsight kibocsátási megjegyzések archívuma](hdinsight-release-notes-archive.md).
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Az Azure HDInsight az egyik legnépszerűbb szolgáltatás a nagyvállalati ügyfelek körében az Azure-beli nyílt forráskódú elemzésekhez.
 
-## <a name="release-date-07132020"></a>Kiadás dátuma: 07/13/2020
+## <a name="release-date-07302020"></a>Kiadás dátuma: 07/30/2020
 
 Ez a kiadás a 3,6-es és a 4,0-es HDInsight is érvényes. A HDInsight-kiadás több napon keresztül elérhetővé válik minden régióban. A kiadás dátuma itt jelzi az első régió kiadásának dátumát. Ha nem látja az alábbi módosításokat, várja meg, amíg a kiadás több napon belül élő marad a régióban.
 
 ## <a name="new-features"></a>Új funkciók
-### <a name="support-for-customer-lockbox-for-microsoft-azure"></a>A Microsoft Azure Ügyfélszéf támogatása
-Az Azure HDInsight mostantól támogatja az Azure Ügyfélszéf. Felületet biztosít az ügyfelek számára az ügyféladatok hozzáférési kéréseinek áttekintéséhez és jóváhagyásához vagy elutasításához. Akkor használatos, amikor a Microsoft mérnöknek egy támogatási kérelem során hozzá kell férnie az ügyféladatok eléréséhez. További információ: [Ügyfélszéf Microsoft Azurehoz](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-preview).
-
-### <a name="service-endpoint-policies-for-storage"></a>Szolgáltatás-végponti házirendek tárolóhoz
-Az ügyfelek mostantól a HDInsight-fürt alhálózatán is használhatnak szolgáltatási végponti házirendeket (SEP). További információ az [Azure-szolgáltatás végpont-házirendjéről](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoint-policies-overview).
+### <a name="support-for-sparkcruise"></a>A SparkCruise támogatása
+A SparkCruise egy automatikus számítási rendszer a Spark számára. Kijelöli az általános alkifejezéseket, amelyeket a korábbi lekérdezési munkaterhelés alapján kell megvalósulni. A SparkCruise ezeket az alkifejezéseket a lekérdezés feldolgozásának részeként, a számítások újrafelhasználását pedig automatikusan alkalmazza a háttérben. A Spark-kód módosítása nélkül is élvezheti a SparkCruise.
+ 
+### <a name="support-hive-view-for-hdinsight-40"></a>A HDInsight 4,0-es verziójának támogatási struktúra-nézete
+Az Apache Ambari kaptár nézet segítségével a webböngésző használatával hozhat létre, optimalizálhat és futtathat kaptár-lekérdezéseket. A kaptár nézet natív módon támogatott a HDInsight 4,0-fürtök esetében, ettől a kiadástól kezdve. A meglévő fürtökre nem vonatkozik. El kell dobnia, majd újra létre kell hoznia a fürtöt a beépített kaptár nézet beszerzéséhez.
+ 
+### <a name="support-tez-view-for-hdinsight-40"></a>A HDInsight 4,0 TEZ-nézetének támogatása
+Az Apache TEZ View segítségével nyomon követheti és hibakeresést végezhet a kaptár TEZ-feladata végrehajtásában. A TEZ nézet natív módon támogatott a HDInsight 4,0-es verziójától kezdve. A meglévő fürtökre nem vonatkozik. El kell dobnia, majd újra létre kell hoznia a fürtöt a beépített TEZ nézet beszerzéséhez.
 
 ## <a name="deprecation"></a>Elavulás
 ### <a name="deprecation-of-spark-21-and-22-in-hdinsight-36-spark-cluster"></a>A Spark 2.1 és 2.2 elavulása a HDInsight 3.6 Kafka-fürtjein
@@ -45,21 +48,22 @@ Július 1 2020-től kezdődően az ügyfelek nem hozhatnak létre új Spark-für
 Július 1 2020-től kezdődően az ügyfelek nem tudnak új Kafka-fürtöket létrehozni a HDInsight 4,0-on futó Kafka 1,1-mel. A meglévő fürtök a Microsoft támogatásának hiányában lesznek futtatva. Fontolja meg, hogy a HDInsight 4.0-ban átvált a Kafka 2.1-re 2020. június 30-ig, a rendszerhasználat/támogatás esetleges megszakításának elkerülése érdekében.
 
 ## <a name="behavior-changes"></a>Viselkedési változások
-Nincsenek viselkedési változások, amelyekre figyelnie kell.
+### <a name="ambari-stack-version-change"></a>Ambari-verem verziójának módosítása
+Ebből a kiadásból a Ambari verziója 2. x. x. x és 4,1 között változik. A Ambari-verziót a Ambari felhasználói felületéről >.
 
 ## <a name="upcoming-changes"></a>Közelgő változások
-A következő módosítások a közelgő kiadásokban fognak történni. 
-
-### <a name="ability-to-select-different-zookeeper-sku-for-spark-hadoop-and-ml-services"></a>Különböző Zookeeper SKU kiválasztásának lehetősége Spark, Hadoop és ML szolgáltatásokhoz
-A HDInsight jelenleg nem támogatja a Spark, a Hadoop és a ML szolgáltatások Zookeeperének módosítását. A2_v2/a2 SKU-t használ a Zookeeper-csomópontokhoz, és az ügyfelek számára nem számítunk fel díjat. A következő kiadásban az ügyfelek igény szerint módosíthatják a Spark, a Hadoop és a ML szolgáltatások Zookeeper SKU-át. A A2_v2/a2 eltérő SKU-val rendelkező Zookeeper-csomópontokat a rendszer felszámítja. Az alapértelmezett SKU továbbra is A2_V2/a2 és díjmentes.
+Nincs szükség a közelgő változtatásokra, amelyekre figyelnie kell.
 
 ## <a name="bug-fixes"></a>Hibajavítások
 A HDInsight továbbra is a fürt megbízhatóságának és teljesítményének növelését teszi elérhetővé. 
-### <a name="fixed-hive-warehouse-connector-issue"></a>Hiba történt a méhkas-tárház-összekötő kijavításakor
-Hiba történt a kaptár-összekötő az előző kiadásban való használhatósága során. A probléma kijavítva. 
 
-### <a name="fixed-zeppelin-notebook-truncates-leading-zeros-issue"></a>Rögzített Zeppelin-jegyzetfüzet levágja a vezető nulla problémát
-A Zeppelin helytelenül csonkítja a tábla kimenetének kezdő nulláit karakterlánc formátumra. Ebben a kiadásban kijavítottuk ezt a problémát.
+Az alábbi JIRAs a struktúra számára:
+* [STRUKTÚRA – 23619](https://issues.apache.org/jira/browse/HIVE-23619)
+* [STRUKTÚRA – 21223](https://issues.apache.org/jira/browse/HIVE-21223)
+* [STRUKTÚRA – 22599](https://issues.apache.org/jira/browse/HIVE-22599)
+* [STRUKTÚRA – 22121](https://issues.apache.org/jira/browse/HIVE-22121)
+* [STRUKTÚRA – 22136](https://issues.apache.org/jira/browse/HIVE-22136)
+* [STRUKTÚRA – 18786](https://issues.apache.org/jira/browse/HIVE-18786)
 
 ## <a name="component-version-change"></a>Összetevő verziójának módosítása
 Ehhez a kiadáshoz nem módosult az összetevő verziószáma. A HDInsight 4,0 és a HDInsight 3,6 aktuális összetevő-verzióit ebben a [dokumentumban](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions)találja.

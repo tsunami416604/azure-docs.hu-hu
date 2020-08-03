@@ -7,21 +7,21 @@ ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 4ee970f7e4a1228d40a284372300ed9e95c00b7e
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 2e7658e965931dd78a6db0e2c9fee36edffff98b
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/31/2020
-ms.locfileid: "87460388"
+ms.locfileid: "87479812"
 ---
 # <a name="payout-summary-overview"></a>Fizetési összegzés áttekintése
 
 A [kifizetési összefoglaló](./payout-summary.md) a Microsoft által szerzett pénz részleteit jeleníti meg. Azt is megtudhatja, hogy mikor kapja meg a befizetéseket és mennyit fizet.
 
-Ha az Azure Marketplace-en értékesít ajánlatokat, akkor a sikeres kifizetésekről is tájékozódhat a kifizetési összefoglalóban. Az Azure Marketplace-fizetéssel kapcsolatos további információkért lásd: [Azure Marketplace részvételi szabályzatok](https://docs.microsoft.com/legal/marketplace/participation-policy) és [Microsoft Azure Marketplace kiadói szerződés](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3ypvt).
+Ha az Azure Marketplace-en értékesít ajánlatokat, akkor a sikeres kifizetésekről is tájékozódhat a kifizetési összefoglalóban. Az Azure Marketplace-fizetéssel kapcsolatos további információkért lásd: [Azure Marketplace részvételi szabályzatok](https://docs.microsoft.com/legal/marketplace/participation-policy) és [Microsoft Azure Marketplace kiadói szerződés](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4xqkx).
 
 > [!NOTE]
-> Ahhoz, hogy jogosult legyen a kifizetésre, a bevételnek el kell érnie a $50-es [fizetési küszöbértéket](./payment-thresholds-methods-timeframes.md) . A fizetési küszöbértékre vonatkozó részletekért tekintse meg a [Microsoft Azure Marketplace kiadói szerződést](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3ypvt).
+> Ahhoz, hogy jogosult legyen a kifizetésre, a bevételnek el kell érnie a $50-es [fizetési küszöbértéket](./payment-thresholds-methods-timeframes.md) . A fizetési küszöbértékre vonatkozó részletekért tekintse meg a [Microsoft Azure Marketplace kiadói szerződést](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4xqkx).
 
 A kifizetés részleteinek megtekintéséhez jelentkezzen be a [partner Centerbe](https://partner.microsoft.com/dashboard/home) , és válassza a képernyő jobb felső sarkában található kifizetési ikont:
 

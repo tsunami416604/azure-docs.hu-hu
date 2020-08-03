@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c31053f62f768cc534e07a8ac8d692176cf52b1e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8acdf714f459ae604ccd7788b021aee3ee037935
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83757619"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87482583"
 ---
 # <a name="overview-of-tokens-in-azure-active-directory-b2c"></a>A Azure Active Directory B2C jogkivonatok áttekintése
 
@@ -50,7 +50,7 @@ Az azonosító jogkivonatokban lévő jogcímeket nem adja vissza a rendszer ado
 
 A következő táblázat felsorolja azokat a jogcímeket, amelyeket az azonosító jogkivonatok és a Azure AD B2C által kiállított hozzáférési jogkivonatok várhatnak.
 
-| Name | Jogcím | Példaérték | Description |
+| Name | Jogcím | Példaérték | Leírás |
 | ---- | ----- | ------------- | ----------- |
 | Célközönség | `aud` | `90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` | Azonosítja a jogkivonat kívánt címzettjét. Azure AD B2C esetében a célközönség az alkalmazás azonosítója. Az alkalmazásnak érvényesíteni kell ezt az értéket, és el kell utasítania a tokent, ha az nem egyezik. A célközönség szinonimája az erőforrásnak. |
 | Kiállító | `iss` |`https://<tenant-name>.b2clogin.com/775527ff-9a37-4307-8b3d-cc311f58d925/v2.0/` | Azonosítja a tokent létrehozó és visszaküldő biztonságijogkivonat-szolgáltatást (STS). Emellett azt a könyvtárat is azonosítja, amelyben a felhasználó hitelesítése megtörtént. Az alkalmazásnak ellenőriznie kell a kiállítói jogcímet, hogy ellenőrizze, a jogkivonat a megfelelő végpontból származik-e. |
@@ -62,7 +62,7 @@ A következő táblázat felsorolja azokat a jogcímeket, amelyeket az azonosít
 | Hozzáférési jogkivonat kivonata | `at_hash` | `SGCPtt01wxwfgnYZy2VJtQ` | Egy hozzáférési jogkivonat kivonata csak akkor szerepel egy azonosító jogkivonatban, ha a tokent egy OAuth 2,0 hozzáférési jogkivonattal együtt állították ki. A hozzáférési jogkivonat kivonata használható a hozzáférési token hitelességének ellenőrzéséhez. Az érvényesítés végrehajtásával kapcsolatos további információkért lásd az [OpenID Connect specifikációját](https://openid.net/specs/openid-connect-core-1_0.html) .  |
 | Egyszeri | `nonce` | `12345` | Egy alkalom a jogkivonat-újrajátszás elleni támadások enyhítésére szolgáló stratégia. Az alkalmazás a lekérdezési paraméter használatával megadhat egy egyszeres engedélyt egy engedélyezési kérelemben `nonce` . A kérelemben megadott értéket a rendszer nem módosítja `nonce` csak azonosító jogkivonat jogcímen. Ez a jogcím lehetővé teszi az alkalmazás számára, hogy ellenőrizze az értéket a kérelemben megadott értékkel. Az alkalmazásnak el kell végeznie ezt az ellenőrzést az azonosító jogkivonat érvényesítési folyamata során. |
 | Tárgy | `sub` | `884408e1-2918-4cz0-b12d-3aa027d7563b` | Az a rendszerbiztonsági tag, amelyről a jogkivonat adatokat érvényesít, például egy alkalmazás felhasználóját. Ez az érték nem módosítható, és nem rendelhető hozzá újra, és nem használható újra. Az engedélyezési ellenőrzések biztonságos elvégzésére használható, például ha a jogkivonat egy erőforrás elérésére szolgál. Alapértelmezés szerint a tulajdonos jogcímet a rendszer a címtárban lévő felhasználó objektumazonosító alapján tölti fel. |
-| Hitelesítési környezet osztályának referenciája | `acr` | Nem értelmezhető | Csak régebbi házirendekkel használható. |
+| Hitelesítési környezet osztályának referenciája | `acr` | Nem alkalmazható | Csak régebbi házirendekkel használható. |
 | Megbízhatósági keretrendszer szabályzata | `tfp` | `b2c_1_signupsignin1` | Az azonosító jogkivonat beszerzéséhez használt szabályzat neve. |
 | Hitelesítési idő | `auth_time` | `1438535543` | Az az idő, amikor a felhasználó legutóbb megadta a hitelesítő adatokat. A hitelesítés nem jelent különbséget a friss bejelentkezés, az egyszeri bejelentkezési (SSO) munkamenet vagy egy másik bejelentkezési típus között. Az az `auth_time` utolsó alkalommal, amikor az alkalmazás (vagy felhasználó) hitelesítési kísérletet kezdeményezett Azure ad B2C. A hitelesítéshez használt metódus nincs megkülönböztetve. |
 | Hatókör | `scp` | `Read`| Az erőforráshoz hozzáférési jogkivonat számára megadott engedélyek. Több megadott engedély is szóközzel elválasztva. |
@@ -97,11 +97,11 @@ A [jogkivonatok kompatibilitásának kezeléséhez](configure-tokens.md)a követ
 
 ## <a name="pass-through"></a>Továbbítás
 
-A felhasználói utazás megkezdésekor Azure AD B2C hozzáférési jogkivonatot kap egy identitás-szolgáltatótól. Azure AD B2C a token használatával kéri le a felhasználó adatait. [Engedélyezheti a jogcímeket a felhasználói folyamatokban](idp-pass-through-user-flow.md) , vagy [megadhat egy jogcímet az egyéni szabályzatban](idp-pass-through-custom.md) , hogy átadja a jogkivonatot a Azure ad B2Cban regisztrált alkalmazásoknak. Az alkalmazásnak [v2 felhasználói folyamattal](user-flow-versions.md) kell rendelkeznie ahhoz, hogy kihasználhassa a jogkivonatot jogcímként.
+A felhasználói utazás megkezdésekor Azure AD B2C hozzáférési jogkivonatot kap egy identitás-szolgáltatótól. Azure AD B2C a token használatával kéri le a felhasználó adatait. [Engedélyezheti a jogcímeket a felhasználói folyamatokban](idp-pass-through-user-flow.md) , vagy [megadhat egy jogcímet az egyéni szabályzatban](idp-pass-through-custom.md) , hogy átadja a jogkivonatot a Azure ad B2Cban regisztrált alkalmazásoknak. Az alkalmazásnak [ajánlott felhasználói folyamatot](user-flow-versions.md) kell használnia ahhoz, hogy kihasználhassa a jogkivonatot jogcímként.
 
 Azure AD B2C jelenleg csak az OAuth 2,0 Identity Providers hozzáférési jogkivonatának továbbítását támogatja, beleértve a Facebookot és a Google-t is. Az összes többi Identity Provider esetében a rendszer üresen adja vissza a jogcímet.
 
-## <a name="validation"></a>Ellenőrzés
+## <a name="validation"></a>Érvényesítés
 
 A jogkivonatok érvényesítéséhez az alkalmazásnak ellenőriznie kell a jogkivonat aláírását és jogcímeit is. Számos nyílt forráskódú kódtár elérhető a JWTs érvényesítéséhez, az Ön által választott nyelvtől függően. Javasoljuk, hogy a saját érvényesítési logikájának megvalósítása helyett ezeket a lehetőségeket vizsgálja meg.
 

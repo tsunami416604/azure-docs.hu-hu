@@ -9,14 +9,14 @@ ms.subservice: sql
 ms.date: 04/19/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: d7f990b059346c4c782ca923e663997317c4df16
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3c33e2152fc120d406886d89adda26603126a8ba
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87046883"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87483552"
 ---
-# <a name="accessing-external-storage-in-synapse-sql-on-demand"></a>Külső tároló elérése a szinapszis SQL-ben (igény szerint)
+# <a name="access-external-storage-in-synapse-sql-on-demand"></a>Külső tárterület elérése a szinapszis SQL-ben (igény szerint)
 
 Ez a dokumentum azt ismerteti, hogyan olvasható be a felhasználó az Azure Storage-ban tárolt fájlokból származó adatokból a szinapszis SQL-ben (igény szerint). A felhasználók a következő beállításokkal férhetnek hozzá a tárolóhoz:
 
@@ -59,7 +59,7 @@ Ha nincs olyan kiszolgálói szintű HITELESÍTő adat, amely megfelel az URL-c�
 > [!NOTE]
 > A OPENROWSET ezen verziója az alapértelmezett hitelesítéssel történő gyors és egyszerű adatelemzéshez készült. A megszemélyesítés vagy a felügyelt identitás kihasználása érdekében használja a következő szakaszban ismertetett adatforrással rendelkező OPENROWSET.
 
-### <a name="querying-data-sources-using-openrowset"></a>Adatforrások lekérdezése az OPENROWSET használatával
+### <a name="query-data-sources-using-openrowset"></a>Adatforrások lekérdezése az OPENROWSET használatával
 
 A OPENROWSET lehetővé teszi a felhasználó számára, hogy lekérdezze a külső adatforráson elhelyezett fájlokat:
 
@@ -91,7 +91,7 @@ A hívónak a következő engedélyek egyikével kell rendelkeznie a OPENROWSET 
   - `ADMINISTER DATABASE BULK OPERATIONS`lehetővé teszi, hogy az adatbázis hatókörű felhasználója OPENROWSET-függvényt hajtson végre.
 - HIVATKOZik az adatbázis HATÓKÖRön belüli HITELESÍTő ADATAIra a külső adatforrásban hivatkozott hitelesítő adathoz.
 
-#### <a name="accessing-anonymous-data-sources"></a>Névtelen adatforrások elérése
+#### <a name="access-anonymous-data-sources"></a>Névtelen adatforrások elérése
 
 A felhasználó létrehozhat külső adatforrást olyan HITELESÍTő adatok nélkül, amely a nyilvános elérésű tárolóra hivatkozik, vagy az Azure AD átadó hitelesítést használja:
 
@@ -132,7 +132,7 @@ CREATE EXTERNAL DATA SOURCE AzureDataLakeStore
 
 Az adatbázis-HATÓKÖRrel rendelkező hitelesítő adatok a hivatkozott adatforráson lévő fájlok elérését határozzák meg.
 
-### <a name="reading-external-files-with-external-table"></a>Külső fájlok olvasása külső TÁBLÁZATtal
+### <a name="read-external-files-with-external-table"></a>Külső fájlok beolvasása külső TÁBLÁZATtal
 
 A külső tábla lehetővé teszi az adatok olvasását az adatforráson keresztül hivatkozott fájlokból a szabványos SQL SELECT utasítás használatával:
 

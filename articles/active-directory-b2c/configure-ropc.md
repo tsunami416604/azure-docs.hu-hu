@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 05/12/2020
+ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4f44e9853182a8fcb222b8f895796cf5efc67def
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3dbafac99ebc1b7472bf884647ad5e8657f0de0b
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85389598"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87482855"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>Az erőforrás-tulajdonos jelszava hitelesítő adatainak konfigurálása Azure AD B2C
 
@@ -30,20 +30,21 @@ Az erőforrás-tulajdonosi jelszó hitelesítő adatai (ROPC) a OAuth standard h
 
 1. Jelentkezzen be az Azure Portalra az Azure AD B2C-bérlő globális rendszergazdájaként.
 2. A Azure AD B2C bérlőre való váltáshoz válassza a B2C könyvtárat a portál jobb felső sarkában.
-3. Kattintson a **felhasználói folyamatok**elemre, majd válassza az **új felhasználói folyamat**elemet.
-4. Kattintson az **összes** fülre, és válassza a **Bejelentkezés a ROPC használatával**lehetőséget.
-5. Adja meg a felhasználói folyamat nevét, például *ROPC_Auth*.
-6. Az **alkalmazás jogcímei**területen kattintson a **továbbiak megjelenítése**lehetőségre.
-7. Válassza ki az alkalmazáshoz szükséges jogcímeket, például a megjelenítendő nevet, az e-mail-címet és az identitás-szolgáltatót.
-8. Kattintson az **OK**, majd a **Létrehozás** gombra.
-9. Kattintson a **felhasználói folyamat futtatása**elemre.
+3. Válassza a **felhasználói folyamatok**lehetőséget, és válassza az **új felhasználói folyamat**lehetőséget.
+4. Válassza **a bejelentkezés erőforrás-tulajdonos jelszava hitelesítő adataival (ROPC)** lehetőséget.
+5. A **verzió**területen győződjön meg arról, hogy az **előnézet** lehetőség van kiválasztva, majd válassza a **Létrehozás**lehetőséget.
+7. Adja meg a felhasználói folyamat nevét, például *ROPC_Auth*.
+8. Az **alkalmazás jogcímei**területen kattintson a **továbbiak megjelenítése**lehetőségre.
+9. Válassza ki az alkalmazáshoz szükséges jogcímeket, például a megjelenítendő nevet, az e-mail-címet és az identitás-szolgáltatót.
+10. Kattintson az **OK**, majd a **Létrehozás** gombra.
+11. Kattintson a **felhasználói folyamat futtatása**elemre.
 
    Ekkor megjelenik egy végpont, például a következő példa:
 
    `https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/B2C_1_ROPC_Auth/v2.0/.well-known/openid-configuration`
 
 
-## <a name="register-an-application"></a>Alkalmazás regisztrálása
+## <a name="register-an-application"></a>Egy alkalmazás regisztrálása
 
 [!INCLUDE [active-directory-b2c-appreg-ropc](../../includes/active-directory-b2c-appreg-ropc.md)]
 
@@ -58,7 +59,7 @@ Egy API-hívás létrehozásához használja kedvenc API-fejlesztési alkalmazá
 
 | Kulcs | Érték |
 | --- | ----- |
-| felhasználónév | leadiocl@outlook.com |
+| username | leadiocl@outlook.com |
 | jelszó | Passxword1 |
 | grant_type | jelszó |
 | scope | OpenID \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> offline_access |
@@ -131,7 +132,3 @@ A sikeres válasz a következő példához hasonlít:
 A Azure AD B2C implementációja megfelel a OAuth 2,0 szabványoknak a nyilvános ügyfél erőforrás-tulajdonos jelszavának hitelesítő adataihoz, és kompatibilisnek kell lennie a legtöbb ügyféloldali SDK-val. Az Androidhoz készült iOS-es és AppAuth-alapú AppAuth esetében alaposan teszteltük ezt a folyamatot, éles környezetben. A legfrissebb információkért tekintse meg a [OAuth 2,0-hez készült natív app SDK-t és az OpenID connectet a modern ajánlott eljárások megvalósításához](https://appauth.io/).
 
 Töltse le a GitHubról, [az Android](https://aka.ms/aadb2cappauthropc) és [az iOS](https://aka.ms/aadb2ciosappauthropc)rendszerhez készült Azure ad B2C használatára konfigurált munkamintákat.
-
-
-
-

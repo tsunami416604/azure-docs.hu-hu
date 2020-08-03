@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/10/2020
+ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1ea11008155899e09bf461e56a8bb4981d37238d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0e8802d612f2497cc58c90856e9a5a5572a142f1
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85385416"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87482838"
 ---
 # <a name="secure-an-azure-api-management-api-with-azure-ad-b2c"></a>Azure API Management API biztonságossá tétele Azure AD B2C
 
@@ -60,7 +60,7 @@ Az alkalmazások Azure AD B2C-bérlőben való regisztrálásához használhatja
 Ezután szerezze be a jól ismert konfigurációs URL-címet az egyik Azure AD B2C felhasználói folyamathoz. Szüksége lesz az Azure API Management támogatni kívánt jogkivonat-kiállítói végpont URI-ra is.
 
 1. Tallózással keresse meg Azure AD B2C-bérlőjét a [Azure Portalban](https://portal.azure.com).
-1. A **házirendek**területen válassza a **felhasználói folyamatok (házirendek)** lehetőséget.
+1. A **házirendek**területen válassza a **felhasználói folyamatok**elemet.
 1. Válasszon ki egy meglévő szabályzatot, például *B2C_1_signupsignin1*, majd válassza a **felhasználói folyamat futtatása**lehetőséget.
 1. Jegyezze fel az URL-címet a lap tetején található **felhasználói folyamat futtatása** fejléc alatt látható hiperhivatkozásban. Ez az URL-cím az OpenID Connect jól ismert felderítési végpontja a felhasználói folyamat számára, és a következő szakaszban azt használja, amikor konfigurálja a bejövő házirendet az Azure API Managementban.
 
@@ -126,7 +126,7 @@ Az API meghívásához a Azure AD B2C által kiállított hozzáférési jogkivo
 Először Azure AD B2C által kiállított jogkivonatra van szüksége, amelyet a `Authorization` Poster fejlécében kell használni. A regisztrálási/bejelentkezési felhasználói folyamat **Futtatás most** funkciójának használatával beszerezhet egyet, amelyet az előfeltételek egyikének kell létrehoznia.
 
 1. Tallózással keresse meg Azure AD B2C-bérlőjét a [Azure Portalban](https://portal.azure.com).
-1. A **házirendek**területen válassza a **felhasználói folyamatok (házirendek)** lehetőséget.
+1. A **házirendek**területen válassza a **felhasználói folyamatok**elemet.
 1. Válasszon ki egy meglévő regisztrációs vagy bejelentkezési felhasználói folyamatot, például *B2C_1_signupsignin1*.
 1. **Alkalmazás**esetében válassza a *webapp1*lehetőséget.
 1. A **Válasz URL-címéhez**válassza a lehetőséget `https://jwt.ms` .

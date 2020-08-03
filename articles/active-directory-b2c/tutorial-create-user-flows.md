@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/01/2019
+ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: cc6673615c85b34975d6743da6da88ca841bcf35
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b13decc142328525376ca8b3a93c74b95c90dae6
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87005361"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87481881"
 ---
 # <a name="tutorial-create-user-flows-in-azure-active-directory-b2c"></a>Oktatóanyag: felhasználói folyamatok létrehozása Azure Active Directory B2C
 
@@ -30,7 +30,10 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 Ez az oktatóanyag bemutatja, hogyan hozhat létre néhány javasolt felhasználói folyamatot a Azure Portal használatával. Ha további információt szeretne arról, hogyan állíthatja be az erőforrás-tulajdonosi jelszó hitelesítő adatait (ROPC) az alkalmazásban, tekintse meg [az erőforrás-tulajdonosi jelszó hitelesítő adatainak konfigurálása Azure ad B2Cban](configure-ropc.md)című témakört.
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+
+> [!IMPORTANT]
+> Módosítottuk a felhasználói flow-verziókra való hivatkozás módját. Korábban a v1 (termelésre kész), valamint a V 1.1 és v2 (előzetes verzió) verzióját is felajánlottuk. Most összevontuk a felhasználói folyamatokat a **javasolt** (következő generációs előzetes verzió) és **standard** (általánosan elérhető) verziókra. Az összes, 1.1-es és v2-es korábbi előzetes verziójú felhasználói folyamat a 2021-es **augusztus 1-től**az elavult elérési úton van. Részletekért lásd: [a felhasználói folyamatok verziói Azure ad B2Cban](user-flow-versions.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -50,15 +53,16 @@ A regisztrációs és bejelentkezési felhasználói folyamat egyetlen konfigur�
 
     ![Felhasználói folyamatok lap a portálon új felhasználói folyamat gomb kiemelve](./media/tutorial-create-user-flows/signup-signin-user-flow.png)
 
-1. Az **ajánlott** lapon válassza a **regisztráció és bejelentkezés** felhasználói folyamat elemet.
+1. A **felhasználói folyamat létrehozása** lapon válassza a **regisztráció és bejelentkezés** felhasználói folyamat elemet.
 
-    ![Válassza ki a felhasználói folyamat lapot, és jelölje ki a regisztrációs és bejelentkezési folyamat elemet](./media/tutorial-create-user-flows/signup-signin-type.png)
+    ![Válassza ki a felhasználói folyamat lapot, és jelölje ki a regisztrációs és bejelentkezési folyamat elemet](./media/tutorial-create-user-flows/select-user-flow-type.png)
+
+1. **A verzió kiválasztása**területen válassza az **ajánlott**lehetőséget, majd válassza a **Létrehozás**lehetőséget. ([További](user-flow-versions.md) információ a felhasználói folyamatok verzióiról.)
+
+    ![Felhasználói folyamat létrehozása lap Azure Portal a tulajdonságok kiemelve](./media/tutorial-create-user-flows/select-version.png)
 
 1. Adja meg a felhasználói folyamat **nevét** . Például: *signupsignin1*.
 1. Az **Identity Providers**esetében válassza az **e-mail regisztráció**lehetőséget.
-
-    ![Felhasználói folyamat létrehozása lap Azure Portal a tulajdonságok kiemelve](./media/tutorial-create-user-flows/signup-signin-properties.png)
-
 1. **Felhasználói attribútumok és jogcímek**esetében válassza ki azokat a jogcímeket és attribútumokat, amelyeket szeretne összegyűjteni, és a felhasználótól a regisztráció során elküldeni. Válassza például a **továbbiak megjelenítése**lehetőséget, majd az **ország/régió**, a **megjelenítendő név**és az **Irányítószám**elemnél válassza az attribútumok és jogcímek lehetőséget. Kattintson az **OK** gombra.
 
     ![Attribútumok és jogcímek kiválasztása lap három jogcímek kiválasztásával](./media/tutorial-create-user-flows/signup-signin-attributes.png)
@@ -83,11 +87,12 @@ A regisztrációs és bejelentkezési felhasználói folyamat egyetlen konfigur�
 Ha engedélyezni szeretné a felhasználók számára a profil szerkesztését az alkalmazásban, használja a felhasználói folyamatokat szerkesztő profilt.
 
 1. A Azure AD B2C bérlő áttekintése lap menüjében válassza a **felhasználói folyamatok**lehetőséget, majd válassza az **új felhasználói folyamat**elemet.
-1. Válassza ki a **profilt szerkesztő** felhasználói folyamatot az **ajánlott** lapon.
+1. A **felhasználói folyamat létrehozása** lapon válassza ki a **profilt szerkesztő** felhasználói folyamatot. 
+1. **A verzió kiválasztása**területen válassza az **ajánlott**lehetőséget, majd válassza a **Létrehozás**lehetőséget.
 1. Adja meg a felhasználói folyamat **nevét** . Például: *profileediting1*.
 1. Az **Identity Providers**esetében válassza a **helyi fiók bejelentkezési**lehetőséget.
-1. **Felhasználói attribútumok**esetében válassza ki azokat az attribútumokat, amelyeket szeretné, hogy az ügyfél szerkeszteni tudja a profiljában. Válassza például a **továbbiak megjelenítése**lehetőséget, majd válassza ki a **megjelenítendő név** és a **beosztás**attribútumait és jogcímeit. Kattintson az **OK** gombra.
-1. A felhasználói folyamat hozzáadásához kattintson a **Létrehozás** gombra. Az *B2C_1* előtagját a rendszer automatikusan hozzáfűzi a névhez.
+2. **Felhasználói attribútumok**esetében válassza ki azokat az attribútumokat, amelyeket szeretné, hogy az ügyfél szerkeszteni tudja a profiljában. Válassza például a **továbbiak megjelenítése**lehetőséget, majd válassza ki a **megjelenítendő név** és a **beosztás**attribútumait és jogcímeit. Kattintson az **OK** gombra.
+3. A felhasználói folyamat hozzáadásához kattintson a **Létrehozás** gombra. Az *B2C_1* előtagját a rendszer automatikusan hozzáfűzi a névhez.
 
 ### <a name="test-the-user-flow"></a>A felhasználói folyamat tesztelése
 
@@ -101,12 +106,13 @@ Ha engedélyezni szeretné a felhasználók számára a profil szerkesztését a
 Ha engedélyezni szeretné, hogy az alkalmazás felhasználói visszaállítsa a jelszavukat, jelszó-visszaállítási felhasználói folyamatot kell használnia.
 
 1. A Azure AD B2C bérlő áttekintő menüjében válassza a **felhasználói folyamatok**lehetőséget, majd válassza az **új felhasználói folyamat**elemet.
-1. Válassza a **jelszó alaphelyzetbe állítása** felhasználói folyamat lehetőséget az **ajánlott** lapon.
+1. A **felhasználói folyamat létrehozása** lapon válassza a **jelszó alaphelyzetbe állítása** lehetőséget. 
+1. **A verzió kiválasztása**területen válassza az **ajánlott**lehetőséget, majd válassza a **Létrehozás**lehetőséget.
 1. Adja meg a felhasználói folyamat **nevét** . Például: *passwordreset1*.
 1. Az **Identity Providers**esetében engedélyezze a **jelszó alaphelyzetbe állítását e-mail-cím használatával**.
-1. Az alkalmazás jogcímei területen kattintson a **továbbiak megjelenítése** lehetőségre, és válassza ki azokat a jogcímeket, amelyeket vissza szeretne állítani az alkalmazásnak visszaküldött engedélyezési jogkivonatokban. Válassza például a **Felhasználó objektumazonosítója** lehetőséget.
-1. Kattintson az **OK** gombra.
-1. A felhasználói folyamat hozzáadásához kattintson a **Létrehozás** gombra. Az *B2C_1* előtagját a rendszer automatikusan hozzáfűzi a névhez.
+2. Az alkalmazás jogcímei területen kattintson a **továbbiak megjelenítése** lehetőségre, és válassza ki azokat a jogcímeket, amelyeket vissza szeretne állítani az alkalmazásnak visszaküldött engedélyezési jogkivonatokban. Válassza például a **Felhasználó objektumazonosítója** lehetőséget.
+3. Kattintson az **OK** gombra.
+4. A felhasználói folyamat hozzáadásához kattintson a **Létrehozás** gombra. Az *B2C_1* előtagját a rendszer automatikusan hozzáfűzi a névhez.
 
 ### <a name="test-the-user-flow"></a>A felhasználói folyamat tesztelése
 

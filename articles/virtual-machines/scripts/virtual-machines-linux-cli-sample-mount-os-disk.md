@@ -14,13 +14,13 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/27/2017
 ms.author: cynthn
-ms.custom: mvc
-ms.openlocfilehash: 0e5cabdf9c69ead9a2d7f497aceec183cf0be900
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 735b16ad054edfea7cf0ad2e1e5b9c76b664e6c3
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86509664"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87479630"
 ---
 # <a name="troubleshoot-a-vms-operating-system-disk"></a>Egy virtuális gép operációsrendszer-lemezének hibaelhárítása
 
@@ -46,7 +46,7 @@ A szkript a következő parancsokat használja egy erőforráscsoport, egy virtu
 | [az vm disk attach](/cli/azure/vm/disk) | Csatlakoztat egy lemezt egy virtuális géphez. |
 | [az vm list-ip-addresses](/cli/azure/vm) | Visszaadja egy virtuális gép IP-címeit. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](/cli/azure).
 

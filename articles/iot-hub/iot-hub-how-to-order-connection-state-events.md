@@ -7,12 +7,13 @@ author: ash2017
 ms.topic: conceptual
 ms.date: 04/11/2019
 ms.author: asrastog
-ms.openlocfilehash: 8d84db9f9c36dc2818c78c5091b1ebe29c35f865
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: af8bd9a0420c90df4dea16fa8ebacbf4ea6494db
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83726196"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87488128"
 ---
 # <a name="order-device-connection-events-from-azure-iot-hub-using-azure-cosmos-db"></a>Eszközkapcsolati események megrendelése az Azure IoT Hubról az Azure Cosmos DB használatával
 
@@ -154,7 +155,7 @@ Először hozzon létre egy logikai alkalmazást, és adjon hozzá egy Event Gri
 
 4. A Logic app Designerben görgessen jobbra, amíg meg nem jelenik a gyakori eseményindítók. A **sablonok**területen válassza az **üres logikai alkalmazás** lehetőséget, hogy teljesen felépítse a logikai alkalmazást.
 
-### <a name="select-a-trigger"></a>Trigger kiválasztása
+### <a name="select-a-trigger"></a>Eseményindító kiválasztása
 
 A trigger a logikai alkalmazást elindító konkrét esemény. Ebben az oktatóanyagban a munkafolyamatot aktiváló trigger HTTP-kapcsolaton keresztül fogad egy kérést.
 
@@ -278,7 +279,7 @@ Ebben a szakaszban konfiguráljuk az IoT-központot, hogy közzétegye a beköve
 
    ![Esemény-előfizetési űrlapminta](./media/iot-hub-how-to-order-connection-state-events/subscription-form.png)
 
-   Kattintson a **Létrehozás** gombra az esemény-előfizetés mentéséhez.
+   Az eseményfeliratkozás mentéséhez válassza a **Létrehozás** lehetőséget.
 
 ## <a name="observe-events"></a>Események megfigyelése
 
@@ -286,13 +287,13 @@ Most, hogy beállította az esemény-előfizetést, tesztelje egy eszköz csatla
 
 ### <a name="register-a-device-in-iot-hub"></a>Eszköz regisztrálása a IoT Hubban
 
-1. Az IoT-központban válassza az **IoT-eszközök** lehetőséget.
+1. Válassza az IoT hub IoT- **eszközök**elemét.
 
 2. A panel tetején kattintson a **+ Hozzáadás gombra** .
 
-3. Az **Eszközazonosító** mezőben adja meg a `Demo-Device-1` azonosítót.
+3. Az **Eszközazonosító** mezőbe írja be a következőt: `Demo-Device-1`.
 
-4. Kattintson a **Mentés** gombra.
+4. Válassza a **Mentés** lehetőséget.
 
 5. Több eszközt is hozzáadhat különböző eszközök azonosítói között.
 
@@ -336,7 +337,7 @@ A végrehajtott tárolt eljárás eredményeit a Cosmos DB dokumentumban tekinth
 
 A [Azure Portal](https://portal.azure.com)használata helyett a IoT hub lépéseket az Azure CLI használatával hajthatja végre. Részletekért lásd: Azure CLI-lapok az [esemény-előfizetések létrehozásához](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription) és [egy IoT-eszköz létrehozásához](/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-create).
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ebben az oktatóanyagban olyan erőforrásokat használtunk, amelyek költségekkel terhelik az Azure-előfizetését. Ha befejezte az oktatóanyag kipróbálását és az eredmények tesztelését, tiltsa le vagy törölje azokat az erőforrásokat, amelyeket nem szeretne megőrizni.
 
