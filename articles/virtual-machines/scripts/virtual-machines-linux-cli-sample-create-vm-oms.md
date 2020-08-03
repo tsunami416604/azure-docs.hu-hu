@@ -14,13 +14,13 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/27/2017
 ms.author: cynthn
-ms.custom: mvc
-ms.openlocfilehash: 90b8e4273b44b46372f85f05ee48072a5e387a21
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 25ea86fe1f9e479ad12cfd27ca54ffb01a9eee6b
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86501449"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503616"
 ---
 # <a name="monitor-a-vm-with-azure-monitor"></a>Virtuális gép figyelése Azure Monitor
 
@@ -53,7 +53,7 @@ A szkript a következő parancsokat használja egy erőforráscsoport, egy virtu
 | [azure vm extension set](/cli/azure/vm/extension) | Futtat egy virtuálisgép-bővítményt egy virtuális gépen. Ebben az esetben a Azure Monitor ügynök bővítmény használatával telepítheti a Log Analytics-ügynököt, és regisztrálhatja a virtuális gépet egy Log Analytics munkaterületen. |
 | [az group delete](/cli/azure/vm/extension) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](/cli/azure).
 

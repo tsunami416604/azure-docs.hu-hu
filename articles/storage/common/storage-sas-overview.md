@@ -10,12 +10,12 @@ ms.date: 07/17/2020
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: common
-ms.openlocfilehash: 108dd37370290a68d620a61f84b4553ed59792ab
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 185992284e353c3e58104bc46296c1741fbca7d9
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077874"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502171"
 ---
 # <a name="grant-limited-access-to-azure-storage-resources-using-shared-access-signatures-sas"></a>Korlátozott hozzáférés biztosítása az Azure Storage-erőforrásokhoz közös hozzáférésű aláírások (SAS) használatával
 
@@ -58,7 +58,7 @@ Az SAS-t kétféleképpen lehet aláírni:
 
 - Azure Active Directory (Azure AD) hitelesítő adatok használatával létrehozott *felhasználói delegálási kulccsal* . Felhasználói delegálási SAS van aláírva a felhasználói delegálási kulccsal.
 
-    A felhasználói delegálási kulcs beszerzéséhez és az SAS létrehozásához egy Azure AD rendszerbiztonsági tag hozzá kell rendelni egy szerepköralapú hozzáférés-vezérlési (RBAC) szerepkört, amely tartalmazza a **Microsoft. Storage/storageAccounts/blobServices/generateUserDelegationKey** műveletet. A felhasználói delegálási kulcs beszerzéséhez szükséges engedélyekkel rendelkező RBAC-szerepkörökkel kapcsolatos részletes információkért lásd: [felhasználói delegálási sas létrehozása (REST API)](/rest/api/storageservices/create-user-delegation-sas).
+    A felhasználói delegálási kulcs beszerzéséhez és az SAS létrehozásához egy Azure AD rendszerbiztonsági tag számára olyan Azure-szerepkört kell hozzárendelni, amely tartalmazza a **Microsoft. Storage/storageAccounts/blobServices/generateUserDelegationKey** műveletet. A felhasználói delegálási kulcs beszerzéséhez szükséges engedélyekkel rendelkező Azure-szerepkörökkel kapcsolatos részletes információkért lásd: [felhasználói delegálási sas létrehozása (REST API)](/rest/api/storageservices/create-user-delegation-sas).
 
 - A Storage-fiók kulcsaként. A Service SAS és a fiók SAS is a Storage-fiók kulcsával van aláírva. A fiók kulccsal aláírt SAS létrehozásához az alkalmazásnak hozzá kell férnie a fiók kulcsához.
 

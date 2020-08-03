@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9cb1ddceff30b247caf3ecd9ee3bc21d5addb519
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2b11f11ac8a0d4f3a0623c2903dfc9355e875d14
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089447"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501933"
 ---
 # <a name="grant-permissions-to-workspace-managed-identity-preview"></a>Engedélyek megadása a munkaterület által felügyelt identitásnak (előzetes verzió)
 
@@ -22,7 +22,7 @@ Ez a cikk bemutatja, hogyan adhat engedélyeket a felügyelt identitásnak az Az
 >[!NOTE]
 >Ezt a munkaterület felügyelt identitását felügyelt identitásnak nevezzük a dokumentum többi részén.
 
-## <a name="grant-the-managed-identity--permissions-to-the-sql-pool"></a>A felügyelt identitás engedélyeinek megadása az SQL-készlethez
+## <a name="grant-managed-identity-permissions-to-the-sql-pool"></a>Felügyelt identitás engedélyeinek megadása az SQL-készlethez
 
 A felügyelt identitás engedélyeket biztosít az SQL-készletekhez a munkaterületen. A megadott engedélyekkel az SQL-készlettel kapcsolatos tevékenységeket végző folyamatokat hangolhatja össze. Amikor Azure Portal használatával hoz létre Azure szinapszis-munkaterületet, megadhatja a felügyelt identitás-VEZÉRLÉSi engedélyeket az SQL-készleteken.
 

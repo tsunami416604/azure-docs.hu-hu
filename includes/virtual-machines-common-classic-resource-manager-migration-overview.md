@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: virtual-machines
 author: tanmaygore
 ms.service: virtual-machines
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/06/2020
 ms.author: tagore
 ms.custom: include file
-ms.openlocfilehash: 4e07334e859f2c1401547cc3f88988830b71c5e1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b874cefc2521089da02b90b9241be93e80836d6e
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77192865"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87507451"
 ---
 Ez a cikk azt ismerteti, hogyan telepíthet át szolgáltatásként (IaaS) elérhető erőforrásokat a Klasszikusból a Resource Manager-alapú üzemi modellekre, és hogyan csatlakozhat az előfizetésben található két üzemi modellből származó erőforrásokhoz a virtuális hálózatok közötti átjárók használatával. További információ: [Azure Resource Manager funkciók és előnyök](../articles/azure-resource-manager/management/overview.md). 
 
@@ -22,10 +22,10 @@ A Resource Manager lehetővé teszi összetett alkalmazások sablonokon kereszt�
 
 A klasszikus üzemi modellből majdnem minden funkció támogatott a számítási, hálózati és tárolási Azure Resource Manager alatt. A Azure Resource Manager új képességeinek kihasználásához áttelepítheti a meglévő központi telepítéseket a klasszikus üzemi modellből.
 
-## <a name="supported-resources-for-migration"></a>Az áttelepítéshez támogatott források
-A klasszikus IaaS-erőforrások az áttelepítés során támogatottak
+## <a name="supported-resources--configurations-for-migration"></a>Támogatott erőforrások & konfigurációk áttelepítéshez
 
-* Virtuális gépek
+### <a name="supported-resources-for-migration"></a>Az áttelepítéshez támogatott források
+* Virtual Machines
 * Rendelkezésre állási csoportok
 * Storage-fiókok
 * Virtuális hálózatok
@@ -34,6 +34,13 @@ A klasszikus IaaS-erőforrások az áttelepítés során támogatottak
 * Network Security Groups (Hálózati biztonsági csoportok)
 * Útvonaltáblák
 * Fenntartott IP-címek
+
+## <a name="supported-configurations-for-migration"></a>Az áttelepítéshez támogatott konfigurációk
+A klasszikus IaaS-erőforrások az áttelepítés során támogatottak
+
+| Szolgáltatás | Konfiguráció |
+| --- | --- |
+| Azure AD Domain Services | [Azure AD tartományi szolgáltatásokat tartalmazó virtuális hálózatok](https://docs.microsoft.com/azure/active-directory-domain-services/migrate-from-classic-vnet) |
 
 ## <a name="supported-scopes-of-migration"></a>Áttelepítési támogatott hatókörök
 A számítási, hálózati és tárolási erőforrások áttelepítésének négy különböző módja van:
@@ -100,7 +107,7 @@ Bizonyos funkciók és konfigurációk jelenleg nem támogatottak; a következő
 ### <a name="unsupported-features"></a>Nem támogatott funkciók
 A következő funkciók jelenleg nem támogatottak. Szükség esetén eltávolíthatja ezeket a beállításokat, áttelepítheti a virtuális gépeket, majd újból engedélyezheti a beállításokat a Resource Manager-alapú üzemi modellben.
 
-| Erőforrás-szolgáltató | Szolgáltatás | Ajánlás |
+| Erőforrás-szolgáltató | Funkció | Ajánlás |
 | --- | --- | --- |
 | Compute | Nem társított virtuálisgép-lemezek. | A rendszer áttelepíti a virtuális merevlemezek mögötti blobokat, amikor a rendszer áttelepíti a Storage-fiókot |
 | Compute | Virtuálisgép-lemezképek. | A rendszer áttelepíti a virtuális merevlemezek mögötti blobokat, amikor a rendszer áttelepíti a Storage-fiókot |
@@ -129,5 +136,4 @@ A következő konfigurációk jelenleg nem támogatottak.
 | Azure App Service |App Service környezeteket tartalmazó virtuális hálózatok |Ez jelenleg nem támogatott. |
 | Azure HDInsight |HDInsight szolgáltatásokat tartalmazó virtuális hálózatok |Ez jelenleg nem támogatott. |
 | Microsoft Dynamics Lifecycle Services |A Dynamics Lifecycle Services által felügyelt virtuális gépeket tartalmazó virtuális hálózatok |Ez jelenleg nem támogatott. |
-| Azure AD Domain Services |Azure AD tartományi szolgáltatásokat tartalmazó virtuális hálózatok |Ez jelenleg nem támogatott. |
 | Azure API Management |Azure API Management üzemelő példányokat tartalmazó virtuális hálózatok |Ez jelenleg nem támogatott. A IaaS-VNET áttelepítéséhez módosítsa az API Management üzemelő példány VNET, amely nem leállási művelet. |

@@ -7,18 +7,18 @@ ms.topic: conceptual
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 04/24/2020
-ms.openlocfilehash: dc690e29129f5be68456e6a9dc075ba72f11b121
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: a013dd875fc5a97e5e2e619553cdeb8c6d729298
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318232"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502630"
 ---
 # <a name="payout-summaries"></a>Fizetési összegzések
 
 A kifizetési összefoglaló a Microsoft által szerzett pénz részleteit jeleníti meg. Azt is megtudhatja, hogy mikor kapja meg a befizetéseket és mennyit fizet.
 
-Ha termékeket értékesít az Azure Marketplace-en, a nyeremények összefoglalójában a sikeres kifizetésekről is tájékozódhat. Részletekért lásd: [Microsoft Azure Marketplace részvételi szabályzatok](https://docs.microsoft.com/legal/marketplace/participation-policy) és a [Microsoft Azure Marketplace kiadói szerződés](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3ypvt).
+Ha termékeket értékesít az Azure Marketplace-en, a nyeremények összefoglalójában a sikeres kifizetésekről is tájékozódhat. Részletekért lásd: [Microsoft Azure Marketplace részvételi szabályzatok](https://docs.microsoft.com/legal/marketplace/participation-policy) és a [Microsoft Azure Marketplace kiadói szerződés](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4xqkx).
 
 > [!NOTE]
 > Ahhoz, hogy jogosult legyen a kifizetésre, a bevételnek el kell érnie a $50-es [fizetési küszöbértéket](payment-thresholds-methods-timeframes.md) . A fizetési küszöbértékre vonatkozó részletekért tekintse meg ezt a lapot, és tekintse át az alkalmazás fejlesztői szerződését.
@@ -43,7 +43,7 @@ A lapon lévő összes tranzakciós adatexportáláshoz használja az **adatexpo
 
 ## <a name="payments-page"></a>Fizetési oldal
 
-Az ezen a lapon található összegek az összes, a programban részt vevő programot képviselik. Szűrheti a résztvevő azonosító, program, fizetési azonosító és kereset típusa alapján. Az összegek az USA dollárban vannak megadva. A fizetős érték a fizetés pénznemben is megjelenik.
+Az ezen a lapon található összegek az összes, a programban részt vevő programot képviselik. Résztvevő-azonosító, program, fizetési azonosító és a bevétel típusa alapján is szűrhet. Az összegek amerikai dollárban vannak feltüntetve. A kifizetett érték szintén a fizetési pénznemben jelenik meg.
 
 | Terület                   | Leírás                                                                                |
 |------------------------|---------------------------------------------------------------------------------------------|

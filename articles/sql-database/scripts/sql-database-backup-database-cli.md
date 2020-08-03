@@ -3,19 +3,19 @@ title: 'Azure CLI: adatbázis biztonsági mentése Azure SQL Database'
 description: Azure CLI-példa parancsfájl egy Azure SQL-adatbázis Azure Storage-tárolóba való biztonsági mentéséhez
 services: sql-database
 ms.service: sql-database
-ms.custom: ''
+ms.custom: devx-track-azurecli
 ms.devlang: azurecli
 ms.topic: sample
 author: mashamsft
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 03/27/2019
-ms.openlocfilehash: 605b2690f85ea8c800e6485b0eb998b795ea9d10
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 33ac44f4910c858dd4d5cfc9d4288ce4970f7f4c
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84022709"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501984"
 ---
 # <a name="use-cli-to-backup-an-azure-sql-single-database-to-an-azure-storage-container"></a>Azure SQL önálló adatbázis biztonsági mentése a CLI használatával Azure Storage-tárolóba
 
@@ -51,7 +51,7 @@ az group delete --name $resource
 
 A szkript a következő parancsokat használja. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
-| Parancs | Megjegyzések |
+| Parancs | Jegyzetek |
 |---|---|
 | [az sql server](/cli/azure/sql/server) | Kiszolgálói parancsok. |
 | [az SQL db](/cli/azure/sql/db) | Adatbázis-parancsok. |

@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
-ms.date: 04/30/2020
-ms.openlocfilehash: 84e9593884f40fce8affce628b7817c528b3c31d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/31/2020
+ms.openlocfilehash: 42a4d1288c7daeb4579e481f0258666d8e2cdbce
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84343285"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502987"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>Önálló adatbázis-erőforrások méretezése Azure SQL Database
 
@@ -50,11 +50,12 @@ A szolgáltatási réteg vagy a számítási méret módosítása főleg a köve
 
 A szolgáltatási réteg módosításának becsült késése, az önálló adatbázis vagy a rugalmas készlet számítási méretének skálázása, a rugalmas készleten belüli vagy kívüli adatbázis áthelyezése, illetve a rugalmas készletek közötti adatbázis áthelyezése a következőképpen történik:
 
-|Szolgáltatásszint|Alapszintű önálló adatbázis,</br>Standard (S0-S1)|Alapszintű rugalmas készlet,</br>Standard (S2-S12), </br>Nagy kapacitású </br>Önálló adatbázis vagy rugalmas készlet általános célú|Prémium vagy üzletileg kritikus önálló adatbázis vagy rugalmas készlet|
-|:---|:---|:---|:---|
-|**Alapszintű önálló adatbázis, </br> Standard (S0-S1)**|&bull;&nbsp;Állandó időbeli késés a felhasznált területtől függetlenül</br>&bull;&nbsp;Általában kevesebb, mint 5 perc|&bull;Az &nbsp; Adatmásolás miatt használt adatbázis-területtel arányos késés</br>&bull;&nbsp;Általában kevesebb, mint 1 perc/GB felhasznált lemezterület|&bull;Az &nbsp; Adatmásolás miatt használt adatbázis-területtel arányos késés</br>&bull;&nbsp;Általában kevesebb, mint 1 perc/GB felhasznált lemezterület|
-|**Alapszintű rugalmas készlet, </br> Standard (S2-S12), </br> nagy kapacitású, </br> általános célú önálló adatbázis vagy rugalmas készlet**|&bull;Az &nbsp; Adatmásolás miatt használt adatbázis-területtel arányos késés</br>&bull;&nbsp;Általában kevesebb, mint 1 perc/GB felhasznált lemezterület|&bull;&nbsp;Állandó időbeli késés a felhasznált területtől függetlenül</br>&bull;&nbsp;Általában kevesebb, mint 5 perc|&bull;Az &nbsp; Adatmásolás miatt használt adatbázis-területtel arányos késés</br>&bull;&nbsp;Általában kevesebb, mint 1 perc/GB felhasznált lemezterület|
-|**Prémium vagy üzletileg kritikus önálló adatbázis vagy rugalmas készlet**|&bull;Az &nbsp; Adatmásolás miatt használt adatbázis-területtel arányos késés</br>&bull;&nbsp;Általában kevesebb, mint 1 perc/GB felhasznált lemezterület|&bull;Az &nbsp; Adatmásolás miatt használt adatbázis-területtel arányos késés</br>&bull;&nbsp;Általában kevesebb, mint 1 perc/GB felhasznált lemezterület|&bull;Az &nbsp; Adatmásolás miatt használt adatbázis-területtel arányos késés</br>&bull;&nbsp;Általában kevesebb, mint 1 perc/GB felhasznált lemezterület|
+|Szolgáltatási szint|Alapszintű önálló adatbázis,</br>Standard (S0-S1)|Alapszintű rugalmas készlet,</br>Standard (S2-S12), </br>Önálló adatbázis vagy rugalmas készlet általános célú|Prémium vagy üzletileg kritikus önálló adatbázis vagy rugalmas készlet|Rugalmas skálázás
+|:---|:---|:---|:---|:---|
+|**Alapszintű önálló adatbázis, </br> Standard (S0-S1)**|&bull;&nbsp;Állandó időbeli késés a felhasznált területtől függetlenül</br>&bull;&nbsp;Általában kevesebb, mint 5 perc|&bull;Az &nbsp; Adatmásolás miatt használt adatbázis-területtel arányos késés</br>&bull;&nbsp;Általában kevesebb, mint 1 perc/GB felhasznált lemezterület|&bull;Az &nbsp; Adatmásolás miatt használt adatbázis-területtel arányos késés</br>&bull;&nbsp;Általában kevesebb, mint 1 perc/GB felhasznált lemezterület|&bull;Az &nbsp; Adatmásolás miatt használt adatbázis-területtel arányos késés</br>&bull;&nbsp;Általában kevesebb, mint 1 perc/GB felhasznált lemezterület|
+|**Alapszintű rugalmas készlet, </br> Standard (S2-S12), </br> általános célú önálló adatbázis vagy rugalmas készlet**|&bull;Az &nbsp; Adatmásolás miatt használt adatbázis-területtel arányos késés</br>&bull;&nbsp;Általában kevesebb, mint 1 perc/GB felhasznált lemezterület|&bull;&nbsp;Állandó időbeli késés a felhasznált területtől függetlenül</br>&bull;&nbsp;Általában kevesebb, mint 5 perc|&bull;Az &nbsp; Adatmásolás miatt használt adatbázis-területtel arányos késés</br>&bull;&nbsp;Általában kevesebb, mint 1 perc/GB felhasznált lemezterület|&bull;Az &nbsp; Adatmásolás miatt használt adatbázis-területtel arányos késés</br>&bull;&nbsp;Általában kevesebb, mint 1 perc/GB felhasznált lemezterület|
+|**Prémium vagy üzletileg kritikus önálló adatbázis vagy rugalmas készlet**|&bull;Az &nbsp; Adatmásolás miatt használt adatbázis-területtel arányos késés</br>&bull;&nbsp;Általában kevesebb, mint 1 perc/GB felhasznált lemezterület|&bull;Az &nbsp; Adatmásolás miatt használt adatbázis-területtel arányos késés</br>&bull;&nbsp;Általában kevesebb, mint 1 perc/GB felhasznált lemezterület|&bull;Az &nbsp; Adatmásolás miatt használt adatbázis-területtel arányos késés</br>&bull;&nbsp;Általában kevesebb, mint 1 perc/GB felhasznált lemezterület|&bull;Az &nbsp; Adatmásolás miatt használt adatbázis-területtel arányos késés</br>&bull;&nbsp;Általában kevesebb, mint 1 perc/GB felhasznált lemezterület|
+|**Rugalmas skálázás**|N.A.|N.A.|N.A.|&bull;&nbsp;Állandó időbeli késés a felhasznált területtől függetlenül</br>&bull;&nbsp;Általában kevesebb, mint 2 perc|
 
 > [!NOTE]
 > Emellett a standard (S2-S12) és a általános célú-adatbázisok esetében a rugalmas készletből vagy a rugalmas készletekből származó adatbázisok áthelyezésének késése az adatbázis méretétől függ, ha az adatbázis a prémium szintű fájlmegosztás ([PFS](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)) tárolót használja.
@@ -77,7 +78,7 @@ WHERE s.type_desc IN ('ROWS', 'LOG');
 
 A szolgáltatási szintek változási vagy számítási átméretezési művelete megszakítható.
 
-### <a name="the-azure-portal"></a>Az Azure Portal
+### <a name="the-azure-portal"></a>Azure Portal
 
 Az adatbázis-Áttekintés panelen navigáljon az **értesítésekhez** , és kattintson a csempére, amely egy folyamatban lévő műveletet jelez:
 

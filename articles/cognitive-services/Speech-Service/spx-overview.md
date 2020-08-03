@@ -10,14 +10,15 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: trbye
-ms.openlocfilehash: 3fb0b71cbb82b3b9acad1d1ce093baa86c700a51
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: ab019250e03feb9a776d628c06e792b884252260
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800343"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501814"
 ---
-# <a name="what-is-the-speech-cli"></a>Mi a Speech CLI?
+# <a name="what-is-the-speech-cli"></a>Mi az a Speech parancssori felület?
 
 A Speech CLI egy parancssori eszköz, amellyel a beszédfelismerési szolgáltatás bármilyen kód írása nélkül használható. A beszédfelismerési parancssori felület minimális beállítást igényel, és a beszédfelismerési szolgáltatás legfontosabb funkcióinak kipróbálásával azonnal megtekintheti, hogy a használati esetek teljesíthetők-e. Néhány percen belül futtathat olyan egyszerű tesztelési munkafolyamatokat, mint a Batch Speech-Recognition egy fájlból, vagy szöveges – beszéd típusú sztringek egy fájlból származó karakterláncok gyűjteményében. Az egyszerű munkafolyamatokon túl a Speech CLI éles használatra kész, és akár több folyamat futtatására is alkalmas automatizált `.bat` vagy rendszerhéj-parancsfájlok használatával.
 
@@ -45,7 +46,7 @@ A Speech SDK használata:
 
 A Speech CLI használatának megkezdéséhez tekintse meg az alapvető tudnivalókat ismertető [cikket](spx-basics.md). Ebből a cikkből megtudhatja, hogyan futtathat néhány alapszintű parancsot az SPX-vel, és hogyan jeleníti meg valamivel fejlettebb parancsokat a Batch-műveletek futtatásához a beszédfelismerés és a szöveg közötti kommunikációhoz. Az alapismeretek című cikk elolvasása után elegendő az SPX-szintaxis megismerése az egyéni parancsok írásának megkezdéséhez, illetve az egyszerű beszédfelismerési műveletek automatizálásához.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Beszédfelismerési parancssori felület alapjai](spx-basics.md)
 - Ha a használati eset összetettebb, [a SPEECH SDK beszerzése](speech-sdk.md)

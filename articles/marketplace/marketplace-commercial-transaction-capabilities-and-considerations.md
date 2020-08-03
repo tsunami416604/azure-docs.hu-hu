@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: 33c3cf4b9da33b15d7a7d1c14b0c3fb892b60121
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e2ce35158e8f9a3a2ad9da2b3d67a3f35d5a8c80
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87317807"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503565"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>Kereskedelmi Piactéri Transact-képességek
 
 ## <a name="transactions-by-publishing-option"></a>Tranzakciók közzétételi lehetőség szerint
 
-A kiadó vagy a Microsoft felelős a kereskedelmi piactéren található ajánlatokhoz tartozó szoftverlicenc-tranzakciók kezeléséért. Az ajánlathoz választott közzétételi lehetőség határozza meg, hogy ki kezeli a tranzakciót. Lásd: [közzétételi lehetőség meghatározása](./determine-your-listing-type.md#choose-a-publishing-option) a rendelkezésre álláshoz és az egyes közzétételi lehetőségek magyarázatához.
+A kiadó vagy a Microsoft felelős a kereskedelmi piactéren található ajánlatokhoz tartozó szoftverlicenc-tranzakciók kezeléséért. Az ajánlathoz választott közzétételi lehetőség határozza meg, hogy ki kezeli a tranzakciót. Lásd: [közzétételi lehetőség meghatározása](./determine-your-listing-type.md#choose-a-call-to-action) a rendelkezésre álláshoz és az egyes közzétételi lehetőségek magyarázatához.
 
 ### <a name="list-trial-and-byol-publishing-options"></a>Listázási, próbaverziós és BYOL közzétételi lehetőségek
 
@@ -136,7 +136,7 @@ Ebben az esetben a Microsoft $100,00-es számlákat küld a szoftverlicenc szám
 |A Microsoft a licencelési díj 80%-ában fizet <br> \*A Microsoft a licencelési díj 90%-át fizet minden minősített SaaS-alkalmazáshoz   |   $80,00/hó <br> \*$90,00/hó    |
 |A Microsoft a licencelési díj 20%-át megtartja <br> \*A Microsoft minden minősített SaaS-alkalmazás esetében megőrzi a licencek költségeit.  |  $20,00/hó <br> \*$10,00     |
 
-A kereskedelmi piactéren közzétett egyes ajánlatok esetében a Microsoft a piactér szolgáltatási díját 20%-kal csökkenti (a Microsoft kiadói szerződésben leírtak szerint) 10%-ra. Az ajánlat (ok) minősítéséhez az ajánlat (oka) t a Microsoft Azure IP közös értékesítésű incetivized kell megjelölni. A jogosultságot minden naptári hónap végét megelőzően legalább öt (5) munkanapon belül teljesíteni kell, hogy megkapják a Marketplace szolgáltatási díját a hónapban. A Piactéri szolgáltatási díj a kereskedelmi Piactéren keresztül elérhető Azure IP-incentivized SaaS-, virtuális gépek, felügyelt alkalmazások és minden más, szakképzett IaaS-ajánlat esetében érvényes.
+A kereskedelmi piactéren közzétett egyes ajánlatok esetében a Microsoft a piactér szolgáltatási díját 20%-kal csökkenti (a Microsoft kiadói szerződésben leírtak szerint) 10%-ra. Az ajánlat (ok) minősítéséhez az ajánlat (oka) t a Microsoft Azure IP közös értékesítésű incentivized kell megjelölni. A jogosultságot minden naptári hónap végét megelőzően legalább öt (5) munkanapon belül teljesíteni kell, hogy megkapják a Marketplace szolgáltatási díját a hónapban. A Piactéri szolgáltatási díj a kereskedelmi Piactéren keresztül elérhető Azure IP-incentivized SaaS-, virtuális gépek, felügyelt alkalmazások és minden más, szakképzett IaaS-ajánlat esetében érvényes.
 
 ### <a name="customer-invoicing-payment-billing-and-collections"></a>Ügyfél-számlázás, fizetés, Számlázás és gyűjtemények
 
@@ -163,7 +163,7 @@ Az ügyfelek általában a Nagyvállalati Szerződés vagy egy hitelkártya-alap
 
 #### <a name="billing-questions-and-support"></a>Számlázási kérdések és támogatás
 
-További információ és jogi szabályzatok: [közzétevői szerződés](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3ypvt) (a partner Centerben érhető el).
+További információ és jogi szabályzatok: [közzétevői szerződés](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4xqkx) (a partner Centerben érhető el).
 
 A számlázási kérdésekkel kapcsolatos segítségért forduljon a [kereskedelmi piactér közzétevője támogatási szolgálatához](https://aka.ms/marketplacepublishersupport).
 

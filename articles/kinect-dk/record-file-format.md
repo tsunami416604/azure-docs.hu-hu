@@ -7,17 +7,16 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: reference
 keywords: Kinect, Azure, szenzor, SDK, mélység, RGB, rekord, lejátszás, Matroska, MKV
-ms.openlocfilehash: d0f7653afe3cc92e059b2615ebef18312faa716b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3a78ed158c78df1c9a6eadcc0bfb2e40b22750bd
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85277296"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501780"
 ---
 # <a name="use-azure-kinect-sensor-sdk-to-record-file-format"></a>Fájl formátumának rögzítése az Azure Kinect Sensor SDK használatával
 
-Az érzékelővel kapcsolatos adatok rögzítéséhez a Matroska (. mkv) tároló formátumát használja a rendszer, amely lehetővé teszi több sáv tárolását.
-számos kodeket használhat. A rögzítési fájl számokat tartalmaz a színek, a mélységek, az IR-képek és a IMU tárolásához.
+Az érzékelővel kapcsolatos adatok rögzítéséhez a rendszer a Matroska (. mkv) tároló formátumát használja, amely lehetővé teszi, hogy több zeneszámot is tároljon számos kodek használatával. A rögzítési fájl számokat tartalmaz a színek, a mélységek, az IR-képek és a IMU tárolásához.
 
 Az. mkv-tároló formátumának alsó szintű részletei a [Matroska webhelyen](https://www.matroska.org/index.html)találhatók.
 

@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 0f88b994104ed8a2d80fb3b16f125f8a087cbe3c
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 2b106a28514179d9be43b3c56ea8030eaf7ba13f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85958378"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87494995"
 ---
 # <a name="use-stored-procedures-in-sql-pool"></a>Tárolt eljárások használata az SQL-készletben
 
@@ -27,7 +27,7 @@ Az SQL-készlet számos olyan T-SQL-funkciót támogat, amelyek a SQL Serverben 
 
 Az SQL-készlet méretezésének és teljesítményének fenntartása érdekében azonban vannak olyan funkciók és funkciók is, amelyek viselkedési különbségekkel és másokkal nem támogatottak.
 
-## <a name="introducing-stored-procedures"></a>Tárolt eljárások bevezetése
+## <a name="stored-procedures-in-sql-pool"></a>Tárolt eljárások az SQL-készletben
 
 A tárolt eljárások nagyszerű lehetőséget biztosítanak az SQL-kód beágyazására; az adatraktárban tárolt adataihoz való közelsége. A tárolt eljárások segítségével a fejlesztők felügyelhető egységekre ágyazva modularize a megoldásaikat. a kód nagyobb újrahasználhatóságának elősegítése. Az egyes tárolt eljárások is elfogadják a paramétereket, hogy azok még rugalmasabbak legyenek.
 

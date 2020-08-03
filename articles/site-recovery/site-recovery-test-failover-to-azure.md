@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 26c734b7a2e9f5592ee6d51dfee4650a3998ab1a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4233df62de48dd7a7253c488b0cd69c38cd8d445
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84699056"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503497"
 ---
 # <a name="run-a-test-failover-disaster-recovery-drill-to-azure"></a>Feladatátvételi teszt futtatása (vész-helyreállítási részletezés) az Azure-ba 
 
@@ -25,7 +25,7 @@ Futtasson feladatátvételi tesztet a replikálási és vész-helyreállítási 
 ## <a name="run-a-test-failover"></a>Feladatátvételi teszt futtatása
 Ez az eljárás azt ismerteti, hogyan futtathat feladatátvételi tesztet helyreállítási tervhez. Ha egyetlen virtuális géphez szeretne feladatátvételi tesztet futtatni, kövesse az [itt](tutorial-dr-drill-azure.md#run-a-test-failover-for-a-single-vm) ismertetett lépéseket.
 
-![Feladatátvételi teszt](./media/site-recovery-test-failover-to-azure/TestFailover.png)
+![Képernyőkép a Azure Portal feladatátvételi teszt oldaláról.](./media/site-recovery-test-failover-to-azure/TestFailover.png)
 
 
 1. A Azure Portal site Recovery kattintson a **helyreállítási tervek**  >  *recoveryplan_name*  >  **feladatátvételi teszt**elemre.
@@ -48,7 +48,7 @@ Ez az eljárás azt ismerteti, hogyan futtathat feladatátvételi tesztet helyre
 8. A **jegyzetek**területen jegyezze fel és mentse a feladatátvételi teszttel kapcsolatos megfigyeléseket.
 
 
-![Feladatátvételi teszt](./media/site-recovery-test-failover-to-azure/TestFailoverJob.png)
+![Képernyőfelvétel a feladatátvételi teszttel kapcsolatos feladatok lapról.](./media/site-recovery-test-failover-to-azure/TestFailoverJob.png)
 
 A feladatátvételi teszt bekövetkeztekor a következő történik:
 

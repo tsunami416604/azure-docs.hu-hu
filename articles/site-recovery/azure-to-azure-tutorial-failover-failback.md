@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/05/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 9bc0d25e19ad3412e62eb3386b0faf3ae5d2a444
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8d38aa513b0829c2626fcd4a92c40faabff1f83e
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68782595"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502392"
 ---
 # <a name="fail-over-and-reprotect-azure-vms-between-regions"></a>Azure-beli virtuális gépek feladatátvétele és újbóli ellátása régiók között
 
@@ -38,7 +38,7 @@ Ez az oktatóanyag azt ismerteti, hogyan lehet átadni egy Azure-beli virtuális
 
 1. A **Replikált elemek** területen válassza ki azt a virtuális gépet, amelyen feladatátvételt szeretne végezni > **Feladatátvétel**
 
-   ![Feladatátvétel](./media/azure-to-azure-tutorial-failover-failback/failover.png)
+   ![A virtuális gép feladatátvételi beállításait bemutató képernyőkép.](./media/azure-to-azure-tutorial-failover-failback/failover.png)
 
 2. A **Feladatátvétel** területen válassza ki azt a **Helyreállítási pontot**, amelyre a feladatátvételt végezni szeretné. Az alábbi lehetőségek egyikét használhatja:
 
@@ -58,16 +58,16 @@ Ez az oktatóanyag azt ismerteti, hogyan lehet átadni egy Azure-beli virtuális
 > [!NOTE]
 > Ha feladatátvételt végez egy olyan virtuális gépen, amelyhez a virtuális gép replikálásának engedélyezése után ad hozzá egy lemezt, a replikációs pontok megjelenítik a helyreállításhoz elérhető lemezeket. Ha például egy virtuális gép egyetlen lemezzel rendelkezik, és egy újat ad hozzá, a lemez hozzáadása előtt létrehozott replikációs pontok azt mutatják, hogy a replikációs pont "2 lemezből álló 1".
 
-![Feladatátvétel egy hozzáadott lemezzel](./media/azure-to-azure-tutorial-failover-failback/failover-added.png)
+![A feladatátvételt egy hozzáadott lemezzel ábrázoló képernyőkép.](./media/azure-to-azure-tutorial-failover-failback/failover-added.png)
 
 ## <a name="reprotect-the-secondary-vm"></a>A másodlagos virtuális gép ismételt védelme
 
 A virtuális gép feladatátvétele után ismét meg kell védenie azt, hogy az visszareplikálódjon az elsődleges régióba.
 
 1. Győződjön meg arról, hogy a virtuális gép a **Feladatátvétel véglegesítve** állapotban van, és ellenőrizze, hogy az elsődleges régió elérhető-e, és létre tud-e hozni új erőforrásokat az elsődleges régióban, valamint el tudja-e érni azokat.
-2. A tárolóban**replikált elemek**területen kattintson a jobb gombbal arra a virtuális gépre, amelyen a feladatátvétel történt, majd **válassza az** **ismételt védelem**lehetőséget. > 
+2. A **tárolóban**  >  **replikált elemek**területen kattintson a jobb gombbal arra a virtuális gépre, amelyen a feladatátvétel történt, majd válassza az **ismételt védelem**lehetőséget.
 
-   ![Kattintson a jobb gombbal az ismételt védelemhez](./media/azure-to-azure-tutorial-failover-failback/reprotect.png)
+   ![Képernyőkép a virtuális gép újbóli védelmének beállításáról.](./media/azure-to-azure-tutorial-failover-failback/reprotect.png)
 
 2. Ellenőrizze, hogy a védelem iránya (másodlagos – elsődleges régió) már ki van-e választva.
 3. Tekintse át az **Erőforráscsoport, a Hálózat, a Tárolás és a Rendelkezésre állási csoportok** adatait. Az újként megjelölt erőforrások az ismételt védelem művelet részeként jönnek létre.

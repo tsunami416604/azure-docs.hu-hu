@@ -1,19 +1,19 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 05/13/2020
+ms.date: 07/31/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 1d14ee849c89e6c3807636d0a728157abd9de97a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fc2393cfe87e2639ce40e66e6053d4d430518719
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83650657"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87515327"
 ---
 ## <a name="1-download-the-file"></a>1. Töltse le a fájlt
 
@@ -31,7 +31,7 @@ Csomagolja ki a tömörített fájlt. A fájl a következő mappákat tartalmazz
 
 * AzureVPN
 * Általános
-* OpenVPN (ha engedélyezte az OpenVPN-és Azure AD-hitelesítési beállításokat az átjárón). VPN Gateway esetén tekintse meg [a bérlő létrehozása](../articles/vpn-gateway/openvpn-azure-ad-tenant.md)című témakört. Virtuális WAN esetén lásd: [bérlői VWAN létrehozása](../articles/virtual-wan/openvpn-azure-ad-tenant.md).
+* OpenVPN (ha engedélyezte az OpenVPN-t az **Azure-tanúsítvánnyal** vagy **RADIUS-hitelesítési** beállításokkal az átjárón). VPN Gateway esetén tekintse meg [a bérlő létrehozása](../articles/vpn-gateway/openvpn-azure-ad-tenant.md)című témakört. Virtuális WAN esetén lásd: [bérlői VWAN létrehozása](../articles/virtual-wan/openvpn-azure-ad-tenant.md).
 
 ## <a name="3-retrieve-information"></a>3. adatok lekérése
 

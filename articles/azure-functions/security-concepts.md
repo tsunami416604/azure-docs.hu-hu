@@ -3,12 +3,12 @@ title: Azure Functions biztonságossá tétele
 description: Ismerje meg, hogyan teheti meg az Azure-ban futó funkció kódját az általános támadásokkal szemben.
 ms.date: 4/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: bdb012c3f379b1e0314364f79ccc4aa49eba4bd3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e0c5036681aace103ea69d1e9cc73e96dc30821f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079689"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502681"
 ---
 # <a name="securing-azure-functions"></a>Azure Functions biztonságossá tétele
 
@@ -26,7 +26,7 @@ Ez a szakasz a Function alkalmazás lehető legbiztonságosabb konfigurálását
 
 A Security Center a portálon integrálható a Function alkalmazással. A szolgáltatás ingyenes, gyors értékelést nyújt a konfigurációval kapcsolatos lehetséges biztonsági rések biztonságáról. A dedikált csomagban futtatott functions-alkalmazások felár ellenében a Security Center valós idejű biztonsági funkcióit is használhatják. További információ: [a Azure app Service webalkalmazások és API-k elleni védelem](../security-center/security-center-app-services.md). 
 
-### <a name="log-and-monitor"></a>Napló és figyelő
+### <a name="log-and-monitor"></a>Naplózás és monitorozás
 
 Az egyik a támadások észlelése tevékenység-figyelési tevékenység és a naplózási elemzés. A függvények integrálva vannak a Application Insights a Function alkalmazás napló-, teljesítmény-és hibajelentési adatainak gyűjtésére. Application Insights automatikusan észleli a teljesítménnyel kapcsolatos rendellenességeket, és hatékony elemzési eszközöket tartalmaz, amelyek segítenek a problémák diagnosztizálásában és a függvények használatának megismerésében. További információért lásd: [Azure functions figyelése](functions-monitoring.md).
 
@@ -58,7 +58,7 @@ A rendszerkulcsok hatókörét a bővítmény határozza meg, de általában a t
 
 A következő táblázat a különböző típusú hozzáférési kulcsok használatát hasonlítja össze:
 
-| Műveletek                                        | Hatókör                    | Érvényes kulcsok         |
+| Művelet                                        | Hatókör                    | Érvényes kulcsok         |
 |-----------------------------------------------|--------------------------|--------------------|
 | Függvény végrehajtása                            | Adott függvény        | Függvény           |
 | Függvény végrehajtása                            | Bármely függvény             | Függvény vagy gazdagép   |
@@ -83,7 +83,7 @@ Mint bármely alkalmazás vagy szolgáltatás esetében, a cél a lehető legala
 
 #### <a name="user-management-permissions"></a>Felhasználói kezelési engedélyek
 
-A functions támogatja a beépített [Azure szerepköralapú hozzáférés-vezérlést (RBAC)](../role-based-access-control/overview.md). A függvények által támogatott RBAC-szerepkörök a [közreműködő](../role-based-access-control/built-in-roles.md#contributor), a [tulajdonos](../role-based-access-control/built-in-roles.md#owner)és az [olvasó](../role-based-access-control/built-in-roles.md#owner). 
+A functions támogatja a beépített [Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC)](../role-based-access-control/overview.md). A függvények által támogatott Azure-szerepkörök a [közreműködő](../role-based-access-control/built-in-roles.md#contributor), a [tulajdonos](../role-based-access-control/built-in-roles.md#owner)és az [olvasó](../role-based-access-control/built-in-roles.md#owner). 
 
 Az engedélyek a Function app szintjén érvényesek. A közreműködő szerepkörnek a legtöbb alkalmazás-szintű feladat végrehajtásához kell tartoznia. Csak a tulajdonosi szerepkör törölheti a Function alkalmazást. 
 
@@ -207,4 +207,3 @@ Az átjáró-szolgáltatások, például az [azure Application Gateway](../appli
 
 + [Azure Functions Azure biztonsági alapterve](security-baseline.md)
 + [Azure Functions diagnosztika](functions-diagnostics.md)
-        

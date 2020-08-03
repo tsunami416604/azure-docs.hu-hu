@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: afa8375805ebc5d52ac716126adca86850147166
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 5ce98c785700301bba92926d7d5a243b614eca7f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134085"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87504228"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Vészhelyreállítás beállítása a helyszíni Hyper-V virtuális gépekhez az Azure-ba
 
@@ -51,14 +51,14 @@ Ez az oktatóanyag egy sorozat harmadik része. Feltételezi, hogy már végreha
 6. A-ben a **System Center VMM használatával felügyelheti a Hyper-V-gazdagépeket?** válassza a **nem**lehetőséget.
 7. Kattintson az **OK** gombra.
 
-    ![Replikációs cél](./media/hyper-v-azure-tutorial/replication-goal.png)
+    ![Képernyőkép a védelmi cél lehetőségeiről az infrastruktúra előkészítése során.](./media/hyper-v-azure-tutorial/replication-goal.png)
 
 ## <a name="confirm-deployment-planning"></a>Az üzembe helyezés megtervezésének megerősítése
 
 1. Ha nagyméretű központi telepítést tervez, a **központi telepítés tervezése**során töltse le a Hyper-V Deployment Planner a lapon található hivatkozásra kattintva. [További](hyper-v-deployment-planner-overview.md) információ a Hyper-V üzembe helyezésének megtervezéséről.
 2. Ebben az oktatóanyagban nincs szükségünk a Deployment Plannerra. A-ben **befejezte az üzembe helyezés megtervezését?** területen válassza a **később**lehetőséget, majd kattintson **az OK gombra**.
 
-    ![Az üzembe helyezés megtervezése](./media/hyper-v-azure-tutorial/deployment-planning.png)
+    ![Képernyőkép az üzembe helyezési tervezési lehetőségekről az infrastruktúra előkészítése során.](./media/hyper-v-azure-tutorial/deployment-planning.png)
 
 ## <a name="set-up-the-source-environment"></a>A forráskörnyezet beállítása
 
@@ -68,17 +68,17 @@ A forrás-környezet beállításához létre kell hoznia egy Hyper-V helyet, é
 2. A **forrás előkészítése**területen válassza a **+ Hyper-V-hely**lehetőséget.
 3. A **Hyper-V-hely létrehozása**lapon adja meg a hely nevét. **ContosoHyperVSite**használunk.
 
-    ![Hyper-V-hely](./media/hyper-v-azure-tutorial/hyperv-site.png)
+    ![Képernyőkép a Hyper-V-hely kiválasztásáról az infrastruktúra előkészítése során.](./media/hyper-v-azure-tutorial/hyperv-site.png)
 
 4. A hely létrehozása után a **forrás előkészítése**  >  **1. lépés: válassza a Hyper-V hely lehetőséget**, majd válassza ki a létrehozott helyet.
 5. Válassza a **+ Hyper-V kiszolgáló**lehetőséget.
 
-    ![Hyper-V-kiszolgáló](./media/hyper-v-azure-tutorial/hyperv-server.png)
+    ![Képernyőkép a Hyper-V-kiszolgáló kiválasztásáról az infrastruktúra előkészítése során.](./media/hyper-v-azure-tutorial/hyperv-server.png)
 
 6. Töltse le a Microsoft Azure Site Recovery Provider telepítőjét.
 7. Töltse le a tároló regisztrációs kulcsát. A szolgáltató telepítéséhez erre a kulcsra van szükség. A kulcs a generálásától számított öt napig érvényes.
 
-    ![Szolgáltató és regisztrációs kulcs letöltése](./media/hyper-v-azure-tutorial/download.png)
+    ![Képernyőkép a szolgáltató és a regisztrációs kulcs letöltéséhez szükséges lehetőségekről.](./media/hyper-v-azure-tutorial/download.png)
     
 
 ### <a name="install-the-provider"></a>Szolgáltató telepítése

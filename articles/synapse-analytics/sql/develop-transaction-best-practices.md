@@ -10,14 +10,14 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: ef87d5da2c2d56a4fdc3873410bb5a6e5c711d01
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0156cfb0720e78b87abc36f0811db69bc8435894
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075710"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503191"
 ---
-# <a name="optimizing-transactions-in-sql-pool"></a>Tranzakciók optimalizálása az SQL-készletben
+# <a name="optimize-transactions-in-sql-pool"></a>Tranzakciók optimalizálása az SQL-készletben
 
 Megtudhatja, hogyan optimalizálhatja a tranzakciós kód teljesítményét az SQL-készletben, miközben minimalizálja a hosszú visszaállítások kockázatát.
 
@@ -82,7 +82,7 @@ CTAS és Beszúrás... Válassza a tömeges betöltési műveletek lehetőséget
 
 A fürtözött indexekkel rendelkező, nem üres táblába való betöltés általában a teljesen naplózott és a minimálisan naplózott sorok keverékét is tartalmazhatja. A fürtözött indexek lapok kiegyensúlyozott fastruktúrája (b-Tree). Ha a megírt lap már tartalmaz egy másik tranzakció sorait, akkor ezek az írások teljesen be lesznek jelentkezve. Ha azonban az oldal üres, akkor az adott oldalra való írás a legkevesebb naplóba kerül.
 
-## <a name="optimizing-deletes"></a>A törlések optimalizálása
+## <a name="optimize-deletes"></a>Törlések optimalizálása
 
 A DELETE egy teljesen naplózott művelet.  Ha egy táblán vagy partíción nagy mennyiségű adattal kell törölnie, gyakran több értelme van `SELECT` a megőrizni kívánt információknak, ami minimálisan naplózott műveletként futtatható.  Az adatválasztáshoz hozzon létre egy új táblát a [CTAS](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)használatával.  A létrehozást követően az [Átnevezés](/sql/t-sql/statements/rename-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) használatával cserélje ki a régi táblát az újonnan létrehozott táblázatra.
 
@@ -114,7 +114,7 @@ RENAME OBJECT [dbo].[FactInternetSales]   TO [FactInternetSales_old];
 RENAME OBJECT [dbo].[FactInternetSales_d] TO [FactInternetSales];
 ```
 
-## <a name="optimizing-updates"></a>Frissítések optimalizálása
+## <a name="optimize-updates"></a>Frissítések optimalizálása
 
 A frissítés egy teljesen naplózott művelet.  Ha nagy számú sort kell frissítenie egy táblában vagy partícióban, gyakran sokkal hatékonyabb lehet a minimálisan naplózott műveletek, például a [CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) használata.
 
@@ -179,7 +179,7 @@ DROP TABLE [dbo].[FactInternetSales_old]
 > [!NOTE]
 > A nagyméretű táblák újbóli létrehozása hasznos lehet az SQL Pool munkaterhelés-kezelési funkcióinak használatával. További információ: erőforrás- [osztályok a számítási feladatok kezeléséhez](../sql-data-warehouse/resource-classes-for-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
 
-## <a name="optimizing-with-partition-switching"></a>Optimalizálás a partíciós váltással
+## <a name="optimize-with-partition-switching"></a>Optimalizálás partíciós váltással
 
 Ha a [táblázatos partíción](../sql-data-warehouse/sql-data-warehouse-tables-partition.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)belül nagy léptékű módosításokkal szembesül, akkor a partíciók váltási mintája logikus. Ha az adatmódosítás jelentős, és több partíciót is átnyúlik, akkor a partíciók megismétlése ugyanazt az eredményt éri el.
 

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/27/2020
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: c62cb9b64c42446c1f4ba8f6eb496fc792ff59a1
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 8d672c1113f265f9fbbabc7caed8df071f548f2a
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281276"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503820"
 ---
 # <a name="migrate-servers-running-windows-server-2008-to-azure"></a>Windows Server 2008 rendszert futtató kiszolgálók migrálása az Azure-ba
 
@@ -104,7 +104,7 @@ Az Azure-előfizetés és a helyszíni VMware-/fizikai környezet előkészíté
 5. Válassza ki a kívánt Azure-régiót. A támogatott régiók kereséséhez tekintse meg a földrajzi elérhetőség [Azure site Recovery díjszabását](https://azure.microsoft.com/pricing/details/site-recovery/).
 6. Ha gyors hozzáférést szeretne a tárolóhoz az irányítópultról, kattintson a **Rögzítés az irányítópulton**, majd a **Létrehozás** gombra.
 
-   ![Új tároló](media/migrate-tutorial-windows-server-2008/migrate-windows-server-2008-vault.png)
+   ![Képernyőfelvétel: új tár-létrehozási beállítások.](media/migrate-tutorial-windows-server-2008/migrate-windows-server-2008-vault.png)
 
 Az új tároló megjelenik az **Irányítópult****Minden erőforrás** részében, illetve a központi **Recovery Services-tárolók** oldalon.
 
@@ -136,15 +136,15 @@ A szabályzat automatikusan társítva lesz a konfigurációs kiszolgálóval.
 > [!WARNING]
 > Győződjön meg arról, hogy a replikációs szabályzat Alkalmazáskonzisztens pillanatkép gyakorisága beállításánál a **KI** érték szerepel. A Windows Server 2008 rendszert futtató kiszolgálók replikálása esetében csak az összeomlás-konzisztens helyreállítási pontok támogatottak. Az alkalmazás-konzisztens Pillanatképek gyakoriságának bármilyen más értékének megadása hamis riasztásokat eredményez azáltal, hogy az alkalmazás-konzisztens helyreállítási pontok hiánya miatt a kiszolgáló replikációs állapotát kritikus állapotba állítja.
 
-   ![Replikációs házirend létrehozása](media/migrate-tutorial-windows-server-2008/create-policy.png)
+   ![A replikációs házirend létrehozási lehetőségeit bemutató képernyőkép.](media/migrate-tutorial-windows-server-2008/create-policy.png)
 
 ### <a name="enable-replication"></a>A replikáció engedélyezése
 
 [Engedélyezze a replikációt](physical-azure-disaster-recovery.md#enable-replication) a migrálásra váró Windows Server 2008 SP2-/Windows Server 2008 R2 SP1-kiszolgáló számára.
    
-   ![Fizikai kiszolgáló hozzáadása](media/migrate-tutorial-windows-server-2008/Add-physical-server.png)
+   ![A fizikai gépek hozzáadására szolgáló lehetőségeket bemutató képernyőkép.](media/migrate-tutorial-windows-server-2008/Add-physical-server.png)
 
-   ![A replikáció engedélyezése](media/migrate-tutorial-windows-server-2008/Enable-replication.png)
+   ![A replikálást engedélyező beállításokat bemutató képernyőkép.](media/migrate-tutorial-windows-server-2008/Enable-replication.png)
 
 ### <a name="run-a-test-migration"></a>Migrálási teszt futtatása
 
@@ -152,7 +152,7 @@ Ha a kezdeti replikálás befejeződött, és a kiszolgáló állapota **Védett
 
 A [rest failover](tutorial-dr-drill-azure.md) parancs Azure-ban történő futtatásával győződjön meg arról, hogy minden a vártnak megfelelően működik-e.
 
-   ![Feladatátvétel tesztelése](media/migrate-tutorial-windows-server-2008/testfailover.png)
+   ![A feladatátvételi teszt paranccsal ábrázoló képernyőkép.](media/migrate-tutorial-windows-server-2008/testfailover.png)
 
 
 ### <a name="migrate-to-azure"></a>Áttelepítés az Azure-ba
@@ -168,7 +168,7 @@ Futtasson egy feladatátvételt a migrálni kívánt gépen.
     - Befejezi az áttelepítési folyamatot, leállítja a kiszolgáló replikálását, és leállítja a kiszolgálás Site Recovery számlázását.
     - Ezzel a lépéssel megtisztítja a replikációs adatvédelmet. Nem törli az áttelepített virtuális gépeket.
 
-   ![Az áttelepítés befejezése](media/migrate-tutorial-windows-server-2008/complete-migration.png)
+   ![Képernyőkép a teljes áttelepítési parancsról.](media/migrate-tutorial-windows-server-2008/complete-migration.png)
 
 
 > [!WARNING]

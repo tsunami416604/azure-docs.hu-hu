@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 6/9/2020
 ms.author: baanders
-ms.openlocfilehash: 3035bd71a91f7cad6fb951d74081b77d8445a81f
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 64b3bf87df7d0b10f8a69e8303010f64b3e68f79
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87133838"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87507241"
 ---
 ### <a name="functional-limits"></a>Működési korlátok
 
@@ -18,18 +18,20 @@ Az alábbi táblázat felsorolja az Azure Digital Twins működési korlátait a
 
 | Terület | Képesség | Alapértelmezett korlát | Módosítható? |
 | --- | --- | --- | --- |
-| Azure-erőforrás | Azure digitális Twins-példányok száma egy adott régióban, előfizetés szerint | 10 | Yes |
-| Digitális Twins | Az ikrek száma egy Azure-beli digitális Twins-példányban | 200,000 | Yes |
-| Útválasztás | Végpontok száma egyetlen Azure Digital Twins-példányhoz | 6 | No |
-| Útválasztás | Egyetlen Azure Digital Twins-példány útvonalai száma | 6 | Yes |
-| Modellek | Egyetlen Azure Digital Twins-példányon belüli modellek száma | 10,000 | Yes |
-| Modellek | Egyetlen API-hívásban feltölthethető modellek száma | 250 | No |
-| Modellek | Egyetlen oldalon visszaadott elemek száma | 100 | No |
-| Lekérdezés | Egyetlen oldalon visszaadott elemek száma | 100 | No |
+| Azure-erőforrás | Azure digitális Twins-példányok száma egy adott régióban, előfizetés szerint | 10 | Igen |
+| Digital Twins | Az ikrek száma egy Azure-beli digitális Twins-példányban | 200,000 | Igen |
+| Digital Twins | Egyetlen Twin típusú bejövő kapcsolatok száma | 5000 | Nem |
+| Digital Twins | Egyetlen Twin kimenő kapcsolatainak száma | 5000 | Nem |
+| Útválasztás | Végpontok száma egyetlen Azure Digital Twins-példányhoz | 6 | Nem |
+| Útválasztás | Egyetlen Azure Digital Twins-példány útvonalai száma | 6 | Igen |
+| Modellek | Egyetlen Azure Digital Twins-példányon belüli modellek száma | 10,000 | Igen |
+| Modellek | Egyetlen API-hívásban feltölthethető modellek száma | 250 | Nem |
+| Modellek | Egyetlen oldalon visszaadott elemek száma | 100 | Nem |
+| Lekérdezés | Egyetlen oldalon visszaadott elemek száma | 100 | Nem |
 | Lekérdezés | Kifejezések száma `AND`  /  `OR` egy lekérdezésben | 50 | Igen |
 | Lekérdezés | Egy `IN`  /  `NOT IN` záradékban található tömb elemeinek száma | 50 | Igen |
 | Lekérdezés | A lekérdezésben szereplő karakterek száma | 8,000 | Igen |
-| Lekérdezés | `JOINS`Lekérdezésben szereplő szám | 1 | Yes |
+| Lekérdezés | `JOINS`Lekérdezésben szereplő szám | 1 | Igen |
 
 ### <a name="rate-limits"></a>Sebességkorlátok
 
@@ -37,11 +39,11 @@ Ez a táblázat a különböző API-k díjszabását tükrözi.
 
 | API | Képesség | Alapértelmezett korlát | Módosítható? |
 | --- | --- | --- | --- |
-| Modellek API | Kérelmek másodpercenkénti száma | 100 | Yes |
-| Digitális Twins API | Kérelmek másodpercenkénti száma | 1,000 | Yes |
-| Lekérdezési API | Kérelmek másodpercenkénti száma | 500 | Yes |
-| Lekérdezési API | Lekérdezési egység másodpercenként | 4,000 | Yes |
-| Event Routes API | Kérelmek másodpercenkénti száma | 100 | Yes |
+| Modellek API | Kérelmek másodpercenkénti száma | 100 | Igen |
+| Digitális Twins API | Kérelmek másodpercenkénti száma | 1,000 | Igen |
+| Lekérdezési API | Kérelmek másodpercenkénti száma | 500 | Igen |
+| Lekérdezési API | Lekérdezési egység másodpercenként | 4,000 | Igen |
+| Event Routes API | Kérelmek másodpercenkénti száma | 100 | Igen |
 
 ### <a name="other-limits"></a>Egyéb korlátok
 

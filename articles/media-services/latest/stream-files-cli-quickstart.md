@@ -10,15 +10,15 @@ keywords: azure media services, stream
 ms.service: media-services
 ms.workload: media
 ms.topic: tutorial
-ms.custom: ''
+ms.custom: devx-track-azurecli
 ms.date: 08/19/2019
 ms.author: juliako
-ms.openlocfilehash: 91259e10966173cb701b867f5b3ed362112beef3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5a90e1fdc50a6e2b1544a06f587362bf43b80369
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80382783"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87504449"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---azure-cli"></a>Oktatóanyag: távoli fájl kódolása URL-cím alapján és a videó továbbítása az Azure CLI-vel
 
@@ -38,17 +38,17 @@ Az Azure-beli médiatartalmak titkosítása, kódolása, elemzése, kezelése é
 
 A Media Services-fióknak és az összes társított Storage-fióknak ugyanabban az Azure-előfizetésben kell lennie. Javasoljuk, hogy a késés és az adatforgalom költségeinek korlátozásához olyan tárolási fiókokat használjon, amelyek a Media Services-fiókkal azonos helyen vannak.
 
-### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 ```azurecli-interactive
 az group create -n amsResourceGroup -l westus2
 ```
 
-### <a name="create-an-azure-storage-account"></a>Azure Storage-fiók létrehozása
+### <a name="create-an-azure-storage-account"></a>Azure-tárfiók létrehozása
 
 Ebben a példában egy általános célú v2 standard LRS-fiókot hozunk létre.
 
-Ha a Storage-fiókokkal szeretne kísérletezni, `--sku Standard_LRS`használja a következőt:. Ha éles üzemben lévő SKU-t vesz fel, `--sku Standard_RAGRS`érdemes lehet használni, amely földrajzi replikációt biztosít az üzletmenet folytonossága érdekében. További információ: Storage- [fiókok](/cli/azure/storage/account).
+Ha a Storage-fiókokkal szeretne kísérletezni, használja a következőt: `--sku Standard_LRS` . Ha éles üzemben lévő SKU-t vesz fel, érdemes lehet használni `--sku Standard_RAGRS` , amely földrajzi replikációt biztosít az üzletmenet folytonossága érdekében. További információ: Storage- [fiókok](/cli/azure/storage/account).
 
 ```azurecli-interactive
 az storage account create -n amsstorageaccount --kind StorageV2 --sku Standard_LRS -l westus2 -g amsResourceGroup
@@ -187,12 +187,12 @@ A következőhöz hasonló választ kaphat:
 
 Amikor feladatokat küld a videók feldolgozásához, meg kell tudnia Media Services hol található a bemeneti videó. Az egyik lehetőség egy HTTPS URL-cím megadása a feladathoz tartozó bemenetként, ahogy az ebben a példában is látható.
 
-A futtatásakor `az ams job start`beállíthat egy címkét a feladatok kimenetén. Ezután a címkével azonosíthatja, hogy a kimeneti objektum milyen.
+A futtatásakor beállíthat `az ams job start` egy címkét a feladatok kimenetén. Ezután a címkével azonosíthatja, hogy a kimeneti objektum milyen.
 
 - Ha a címkéhez értéket rendel, állítsa a "--output-assets" kifejezést "assetname = label" értékre.
 - Ha nem rendel értéket a címkéhez, állítsa a "--output-assets" értéket a "assetname =" értékre.
 
-  Figyelje meg, hogy hozzáadjuk a "= `output-assets`" kifejezést a következőhöz:.
+  Figyelje meg, hogy hozzáadjuk a "=" kifejezést a következőhöz: `output-assets` .
 
 ```azurecli-interactive
 az ams job start --name testJob001 --transform-name testEncodingTransform --base-uri 'https://nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/' --files 'Ignite-short.mp4' --output-assets testOutputAssetName= -a amsaccount -g amsResourceGroup
@@ -308,7 +308,7 @@ A következőhöz hasonló választ kaphat:
 }
 ```
 
-Másolja a HTTP Live Streaming (HLS) elérési útját. Ebben az esetben ez a következő `/e01b2be1-5ea4-42ca-ae5d-7fe704a5962f/ignite.ism/manifest(format=m3u8-aapl)`:.
+Másolja a HTTP Live Streaming (HLS) elérési útját. Ebben az esetben ez a következő: `/e01b2be1-5ea4-42ca-ae5d-7fe704a5962f/ignite.ism/manifest(format=m3u8-aapl)` .
 
 ## <a name="build-the-url"></a>Az URL-cím összeállítása
 
@@ -318,13 +318,13 @@ Másolja a HTTP Live Streaming (HLS) elérési útját. Ebben az esetben ez a k�
 az ams streaming-endpoint list -a amsaccount -g amsResourceGroup -n default
 ```
 
-Másolja az `hostName` értéket. Ebben az esetben ez a következő `amsaccount-usw22.streaming.media.azure.net`:.
+Másolja az `hostName` értéket. Ebben az esetben ez a következő: `amsaccount-usw22.streaming.media.azure.net` .
 
 ### <a name="assemble-the-url"></a>Az URL-cím összeállítása
 
-"https://" + &lt;állomásnév értéke&gt; + &lt;HLS útvonal értéke&gt;
+"https://" + &lt; állomásnév értéke &gt;  +  &lt; HLS útvonal értéke&gt;
 
-Például:
+Bemutatunk egy példát:
 
 `https://amsaccount-usw22.streaming.media.azure.net/7f19e783-927b-4e0a-a1c0-8a140c49856c/ignite.ism/manifest(format=m3u8-aapl)`
 
@@ -333,7 +333,7 @@ Például:
 > [!NOTE]
 > Ha egy kiszolgáló HTTPS-helyen található, mindenképpen indítsa el az URL-címet a "https" előtaggal.
 
-1. Nyisson meg egy webböngészőt, [https://aka.ms/azuremediaplayer/](https://aka.ms/azuremediaplayer/)és lépjen a következőre:.
+1. Nyisson meg egy webböngészőt, és lépjen a következőre: [https://aka.ms/azuremediaplayer/](https://aka.ms/azuremediaplayer/) .
 2. Az **URL-cím** mezőbe illessze be az előző szakaszban létrehozott URL-címet. Az URL-címet HLS, Dash vagy Smooth formátumban is beillesztheti. A Azure Media Player automatikusan egy megfelelő adatfolyam-protokollt használ a lejátszáshoz az eszközön.
 3. Válassza a **lejátszó frissítése**lehetőséget.
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: ef8c4754afc921eaeb68a84fbd8147f336a4940c
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 2cd42d8d4ba1ecabc1b87942536e2ef9a9017b22
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87370274"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501950"
 ---
 # <a name="azure-security-baseline-for-synapse-analytics"></a>Az Azure biztonsági alapterve a szinapszis Analyticshez
 
@@ -584,7 +584,7 @@ Emellett beállíthat egy dinamikus adatmaszkolási (DDM-) szabályzatot is a Az
 
 ### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: szerepköralapú hozzáférés-vezérlés használata az erőforrásokhoz való hozzáférés szabályozásához
 
-**Útmutató**: az Azure szerepköralapú hozzáférés-vezérlés (RBAC) használatával kezelheti az Azure SQL-adatbázisokhoz való hozzáférést a szinapszis SQL-készletében.
+**Útmutató**: az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával kezelheti az Azure SQL-adatbázisokhoz való hozzáférést a szinapszis SQL-készletében.
 
 Az engedélyezést a felhasználói fiók adatbázis-szerepköri tagsága és az objektum szintű engedélyek vezérlik. Ajánlott eljárásként csak a minimálisan szükséges engedélyeket adja meg a felhasználóknak.
 
@@ -1014,7 +1014,7 @@ A nem számítási Azure-erőforrásokra feltöltött tartalmak előzetes vizsg�
 
 **Útmutató**: a szinapszis SQL-készlet pillanatképeit a rendszer a nap folyamán automatikusan elvégzi a hét napig elérhető visszaállítási pontok létrehozásakor. Ez a megőrzési időszak nem módosítható. Az SQL-készlet támogatja a 8 órás helyreállítási időkorlátot (RPO). Az adattárházat az elsődleges régióban állíthatja vissza az elmúlt hét napban készített Pillanatképek közül. Vegye figyelembe, hogy szükség esetén manuálisan is aktiválhatja a pillanatképeket.
 
-* [Biztonsági mentés és visszaállítás az Azure szinapszis SQL-készletben](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/backup-and-restore)
+* [Biztonsági mentés és visszaállítás az Azure szinapszis SQL-készletben](/azure/synapse-analytics/sql-data-warehouse/backup-and-restore)
 
 **Azure Security Center figyelés**: nem alkalmazható
 

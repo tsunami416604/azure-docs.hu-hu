@@ -11,12 +11,13 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: 8c5114f4b44c200b7853e68e58118a2323274a24
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 49a0e48977393aeab7ff93b79e28acc55a87b51a
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286257"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87504619"
 ---
 # <a name="how-to-install-and-configure-mongodb-on-a-linux-vm"></a>A MongoDB telepítése és konfigurálása Linux rendszerű virtuális gépen
 
@@ -207,7 +208,7 @@ az group deployment show \
     --output tsv
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ezekben a példákban helyileg csatlakozik a MongoDB-példányhoz a virtuális gépről. Ha másik virtuális gépről vagy hálózatról szeretne csatlakozni a MongoDB-példányhoz, győződjön meg arról, hogy a megfelelő [hálózati biztonsági csoportra vonatkozó szabályok jönnek létre](nsg-quickstart.md).
 
 Ezek a példák a központi MongoDB környezetet telepítik fejlesztési célokra. Alkalmazza a környezetéhez szükséges biztonsági konfigurációs beállításokat. További információt a [MongoDB biztonsági dokumentációjában](https://docs.mongodb.com/manual/security/)talál.

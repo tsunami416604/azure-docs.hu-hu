@@ -7,12 +7,13 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.topic: quickstart
 ms.date: 06/09/2020
-ms.openlocfilehash: 1281f5c3355a09659f2f45c4cf944271936f50d8
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 73e1067a7d2d1ff9cc9e2086070c9cb9bf7a000a
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84636354"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87504245"
 ---
 # <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>Gyors útmutató: Azure NetApp Files beállítása és NFS-kötet létrehozása 
 
@@ -25,7 +26,7 @@ Ebben a rövid útmutatóban a következő elemeket fogja beállítani:
 - Egy kapacitás-készlet
 - Egy NFS-kötet a Azure NetApp Files
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="before-you-begin"></a>Előkészületek 
 
@@ -82,7 +83,7 @@ Ennek a cikknek a használatához a Azure PowerShell modul az a Version 2.6.0 va
 
 3. Az új NetApp-fiók ablakban adja meg a következő információkat: 
    1. Adja meg a **myaccount1** nevét. 
-   2. Válassza ki az előfizetését.
+   2. Válassza ki előfizetését.
    3. Válassza az **új létrehozása** lehetőséget az új erőforráscsoport létrehozásához. Adja meg az erőforráscsoport-név **myRG1** . Kattintson az **OK** gombra. 
    4. Válassza ki a fiókja helyét.  
 
@@ -252,7 +253,7 @@ Ennek a cikknek a használatához a Azure PowerShell modul az a Version 2.6.0 va
       
   ![Az NFS protokoll megadása a gyors üzembe helyezéshez](../media/azure-netapp-files/azure-netapp-files-quickstart-protocol-nfs.png)
 
-5. Kattintson az **Áttekintés + létrehozás** elemre.
+5. Kattintson a **Felülvizsgálat + létrehozás** elemre.
 
     ![Áttekintés és létrehozás ablak](../media/azure-netapp-files/azure-netapp-files-review-and-create-window.png)  
 
@@ -354,7 +355,7 @@ Ennek a cikknek a használatához a Azure PowerShell modul az a Version 2.6.0 va
 
 ---
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
@@ -408,7 +409,7 @@ Ha elkészült, és ha szeretné, törölheti az erőforráscsoportot. Egy erőf
     ```
 ---
 
-## <a name="next-steps"></a>Következő lépések  
+## <a name="next-steps"></a>További lépések  
 
 > [!div class="nextstepaction"]
 > [Kötetek kezelése Azure NetApp Files használatával](azure-netapp-files-manage-volumes.md)  

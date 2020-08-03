@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: raynew
-ms.openlocfilehash: 047b689b10d03cf92e5cc744aa707b3f70fe77bd
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 766d0a763f7d69ec58851116e18510235f39b364
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86529029"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495063"
 ---
 # <a name="monitor-site-recovery-with-azure-monitor-logs"></a>A Site Recovery monitorozása az Azure Monitor naplóival
 
@@ -36,7 +36,7 @@ A következőkre lesz szüksége:
 
 - Legalább egy gép védve van egy Recovery Services-tárolóban.
 - Log Analytics munkaterület Site Recovery naplók tárolására. [További](../azure-monitor/learn/quick-create-workspace.md) információ a munkaterület beállításáról.
-- Alapvető ismeretek a naplók írásához, futtatásához és elemzéséhez Log Analyticsban. [További információ](../azure-monitor/log-query/get-started-portal.md).
+- Alapvető ismeretek a naplók írásához, futtatásához és elemzéséhez Log Analyticsban. [További információk](../azure-monitor/log-query/get-started-portal.md).
 
 Javasoljuk, hogy a Kezdés előtt tekintse át az [általános monitorozási kérdéseket](monitoring-common-questions.md) .
 
@@ -44,14 +44,14 @@ Javasoljuk, hogy a Kezdés előtt tekintse át az [általános monitorozási ké
 
 1. A tárolóban kattintson a **diagnosztikai beállítások**  >  **Hozzáadás diagnosztikai beállítás**elemre.
 
-    ![Erőforrás-naplózás kiválasztása](./media/monitoring-log-analytics/add-diagnostic.png)
+    ![Képernyőkép a diagnosztikai beállítások hozzáadása lehetőségről.](./media/monitoring-log-analytics/add-diagnostic.png)
 
 2. A **diagnosztikai beállítások**területen adjon meg egy nevet, és jelölje be a **Küldés log Analyticsre**jelölőnégyzetet.
 3. Válassza ki a Azure Monitor naplók előfizetését és a Log Analytics munkaterületet.
 4. Válassza a **Azure Diagnostics** lehetőséget a váltásban.
 5. A naplók listából válassza ki az összes naplót a **AzureSiteRecovery**előtaggal. Ezután kattintson az **OK** gombra.
 
-    ![Munkaterület kiválasztása](./media/monitoring-log-analytics/select-workspace.png)
+    ![Képernyőfelvétel a diagnosztikai beállítások képernyőről.](./media/monitoring-log-analytics/select-workspace.png)
 
 A Site Recovery naplók megkezdik a hírcsatornát a kiválasztott munkaterületen lévő táblába (**AzureDiagnostics**).
 
@@ -125,7 +125,7 @@ rpoInSeconds_d <= 1800, "15-30Min", ">30Min") 
 | render barchart 
 ```
 
-![RPO lekérdezése](./media/monitoring-log-analytics/example1.png)
+![Képernyőfelvétel: Site Recoverysal replikált Azure-beli virtuális gépek oszlopdiagram.](./media/monitoring-log-analytics/example1.png)
 
 ### <a name="query-site-recovery-jobs"></a>Site Recovery feladatok lekérdezése
 
@@ -190,7 +190,7 @@ AzureDiagnostics  
 | project TimeGenerated, name_s , RPO_in_seconds = rpoInSeconds_d   
 | render timechart 
 ```
-![Számítógép RPO lekérdezése](./media/monitoring-log-analytics/example2.png)
+![Képernyőkép a trend graphról egy adott Azure-beli virtuális gép RPO nyomon követéséhez.](./media/monitoring-log-analytics/example2.png)
 
 ### <a name="query-data-change-rate-churn-and-upload-rate-for-an-azure-vm"></a>Azure-beli virtuális gép adatváltozási arányának és feltöltési sebességének lekérdezése
 
@@ -207,7 +207,7 @@ Category contains "Upload", "UploadRate", "none") 
 | project TimeGenerated , InstanceWithType , Churn_MBps = todouble(Value_s)/1048576   
 | render timechart  
 ```
-![Adatváltozások lekérdezése](./media/monitoring-log-analytics/example3.png)
+![képernyőkép egy adott Azure-beli virtuális géphez tartozó trend graphról.](./media/monitoring-log-analytics/example3.png)
 
 ### <a name="query-data-change-rate-churn-and-upload-rate-for-a-vmware-or-physical-machine"></a>Egy VMware-vagy fizikai gép lekérdezési adatváltozási sebessége és feltöltési aránya
 
@@ -359,6 +359,6 @@ AzureDiagnostics  
 
 A riasztáshoz állítsa 1 **értékre a küszöbértéket** , az utolsó **nap során pedig** az 1440 percet.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [További információ a](site-recovery-monitor-and-troubleshoot.md) beépített site Recovery figyelésről.

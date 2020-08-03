@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/15/2020
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: 7aad1eb10018445150fb5cf3ac01b97480da674b
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: c043cfb6cf437ab55cc4a48ced716798738adbef
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86226388"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87507464"
 ---
 Ha problémát észlel a megosztott rendszerkép-katalógusokon, rendszerkép-definíciókon vagy rendszerképverziókon végzett műveletek végrehajtásakor, futtassa újból a sikertelen parancsot hibakeresési módban. A hibakeresési módot a parancssori felület `--debug` és a PowerShell-lel rendelkező kapcsoló átadásával aktiválja `-Debug` . A hiba megtalálása után kövesse ezt a dokumentumot a hibák elhárításához.
 
@@ -76,7 +76,7 @@ Lehetséges okok:
 
 *A virtuális gépet vagy virtuálisgép-méretezési készletet próbáló felhasználónak nincs olvasási hozzáférése a rendszerkép verziójához.*
 
-Lépjen kapcsolatba az előfizetés tulajdonosával, és kérje meg őket, hogy adjon olvasási hozzáférést a képverzióhoz vagy a szülő erőforrásokhoz (például a megosztott képkatalógus vagy a rendszerkép definíciója) a [szerepköralapú Access Control](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles) (RBAC) használatával. 
+Lépjen kapcsolatba az előfizetés tulajdonosával, és kérje meg őket, hogy olvasási hozzáférést biztosítanak a rendszerkép vagy a szülő erőforrásaihoz (például a megosztott képkatalógushoz vagy a rendszerkép-definícióhoz) az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)használatával. 
 
 *A rendszerkép verziója nem található.*
 
@@ -97,6 +97,3 @@ A **--Expand ReplicationStatus** jelzővel ellenőrizze, hogy befejeződött-e a
 ## <a name="azure-limits-and-quotas"></a>Az Azure-ra vonatkozó korlátok és kvóták 
 
 Az [Azure korlátai és kvótái](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits) az összes megosztott képkatalógusra, a képdefinícióra és a rendszerkép verzió-erőforrásaira érvényesek. Győződjön meg arról, hogy az előfizetések korlátain belül van. 
-
-
-

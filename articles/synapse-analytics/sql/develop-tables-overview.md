@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: f1eec76d92edc97f7e4058d3afe813f0bb2aae47
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9cb1b4d33a538b48ca1519d66f6602d902033c3e
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81431877"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87494825"
 ---
 # <a name="design-tables-using-synapse-sql"></a>Táblázatok kialakítása a szinapszis SQL használatával
 
@@ -45,7 +45,7 @@ A következő táblázat felsorolja az SQL-készlethez és az SQL-igényhez kapc
 | [Statisztika](#statistics)                                    | Igen                | Igen                     |
 | [Elsődleges kulcs és egyedi kulcs](#primary-key-and-unique-key)    | Igen                | Nem                      |
 | [Táblázatok létrehozásához szükséges parancsok](#commands-for-creating-tables) | Igen                | Nem                      |
-| [Forrásadatok igazítása az adatraktárhoz](#aligning-source-data-with-the-data-warehouse) | Igen                | Nem                      |
+| [Forrásadatok igazítása az adatraktárhoz](#align-source-data-with-the-data-warehouse) | Igen                | Nem                      |
 | [Nem támogatott táblázat-funkciók](#unsupported-table-features)    | Igen                | Nem                      |
 | [Táblázat mérete – lekérdezések](#table-size-queries)                    | Igen                | Nem                      |
 
@@ -75,7 +75,7 @@ Az SQL-készletben lévő táblák szervezetének megjelenítéséhez használha
 
 | Wideworldimportersdw adattárházat táblázat  | Tábla típusa | SQL-készlet |
 |:-----|:-----|:------|:-----|
-| Város | Dimenzió | WWI. DimCity |
+| Település | Dimenzió | WWI. DimCity |
 | Rendelés | Fact | WWI. FactOrder |
 
 ## <a name="table-persistence"></a>Tábla megőrzése
@@ -214,7 +214,7 @@ Táblát új üres táblaként is létrehozhat. Létrehozhat és fel is tölthet
 | [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) | Egy új táblát tölt ki egy SELECT utasítás eredményeivel. A táblázat oszlopai és adattípusai a SELECT utasítás eredményein alapulnak. Az adatok importálásához ez az utasítás külső táblából is kiválasztható. |
 | [KÜLSŐ TÁBLA LÉTREHOZÁSA KIJELÖLÉSKÉNT](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) | Új külső tábla létrehozása egy SELECT utasítás eredményének külső helyre való exportálásával.  A hely vagy az Azure Blob Storage vagy a Azure Data Lake Storage. |
 
-## <a name="aligning-source-data-with-the-data-warehouse"></a>Forrásadatok igazítása az adatraktárhoz
+## <a name="align-source-data-with-the-data-warehouse"></a>Forrásadatok igazítása az adatraktárhoz
 
 Az adatraktár táblái az adatok másik adatforrásból való betöltésével vannak feltöltve. A sikeres betöltés eléréséhez a forrásadatok oszlopainak számát és adattípusait az adattárházban lévő táblázat definíciójának megfelelően kell összehangolni.
 

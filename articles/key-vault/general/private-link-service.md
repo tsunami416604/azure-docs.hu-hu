@@ -7,12 +7,13 @@ ms.date: 03/08/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: quickstart
-ms.openlocfilehash: 95a999f38104e0bb3cfd6a510bd8f9e3d5440562
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 70a0620369792c1aaf2c11867fd468f42d6bb9ef
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86521088"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87494689"
 ---
 # <a name="integrate-key-vault-with-azure-private-link"></a>A Key Vault és az Azure Private Link integrálása
 
@@ -157,7 +158,7 @@ Négy kiépítési állapot létezik:
 
 | Szolgáltatás-nyújtási művelet | A szolgáltatás fogyasztói magánhálózati végpontjának állapota | Leírás |
 |--|--|--|
-| Egyik sem | Függőben | A kapcsolat manuálisan lett létrehozva, és jóváhagyásra vár a Private link erőforrás-tulajdonostól. |
+| None | Függőben | A kapcsolat manuálisan lett létrehozva, és jóváhagyásra vár a Private link erőforrás-tulajdonostól. |
 | Jóváhagyás | Approved | A kapcsolódás automatikusan vagy manuálisan lett jóváhagyva, és készen áll a használatra. |
 | Elutasítás | Elutasítva | A magánhálózati kapcsolat erőforrásának tulajdonosa elutasította a kapcsolatot. |
 | Eltávolítás | Leválasztott | A kapcsolatot a privát kapcsolat erőforrás-tulajdonosa eltávolította, a magánhálózati végpont informatív lesz, és törölni kell a tisztításhoz. |
@@ -233,6 +234,38 @@ Address:  10.1.0.5 (private IP address)
 Aliases:  <your-key-vault-name>.vault.azure.net
           <your-key-vault-name>.privatelink.vaultcore.azure.net
 ```
+
+## <a name="troubleshooting-guide"></a>Hibaelhárítási útmutató
+
+* Győződjön meg arról, hogy a magánhálózati végpont jóváhagyott állapotban van. 
+    1. Ezt a Azure Portalban tekintheti meg és javíthatja. Nyissa meg a Key Vault erőforrást, és kattintson a hálózatkezelés lehetőségre. 
+    2. Ezután válassza a Private Endpoint Connections fület. 
+    3. Győződjön meg arról, hogy a kapcsolatok állapota jóváhagyva, a kiépítési állapot pedig sikeres. 
+    4. Navigáljon a privát végpont erőforráshoz, és tekintse át ugyanezeket a tulajdonságokat, és ellenőrizze, hogy a virtuális hálózat megegyezik-e az Ön által használttal.
+
+* Ellenőrizze, hogy van-e saját DNS zóna erőforrása. 
+    1. Rendelkeznie kell egy saját DNS zóna-erőforrással a pontos névvel: privatelink.vaultcore.azure.net. 
+    2. Ha szeretné megtudni, hogyan állíthatja be ezt a műveletet, tekintse meg a következő hivatkozást. [saját DNS zónák](https://docs.microsoft.com/azure/dns/private-dns-privatednszone)
+    
+* Győződjön meg arról, hogy a saját DNS zóna nincs a Virtual Networkhoz kapcsolva. Ez lehet a probléma, ha továbbra is a visszaadott nyilvános IP-címet kapja. 
+    1. Ha a privát zóna DNS-je nincs a virtuális hálózathoz kapcsolva, a virtuális hálózatból származó DNS-lekérdezés a kulcstartó nyilvános IP-címét fogja visszaadni. 
+    2. Navigáljon a Azure Portal saját DNS zóna erőforrásához, és kattintson a virtuális hálózati kapcsolatok lehetőségre. 
+    4. A Key Vault hívásait végrehajtó virtuális hálózatnak szerepelnie kell a listáján. 
+    5. Ha nincs ott, vegye fel. 
+    6. A részletes lépésekért tekintse meg a következő dokumentum [hivatkozását Virtual Network saját DNS zónához](https://docs.microsoft.com/azure/dns/private-dns-getstarted-portal#link-the-virtual-network)
+
+* Győződjön meg arról, hogy a saját DNS zónában nem hiányzik egy rekord a kulcstartóhoz. 
+    1. Navigáljon a saját DNS zóna lapra. 
+    2. Kattintson az Áttekintés elemre, és ellenőrizze, hogy van-e olyan rekord a kulcstartó egyszerű nevével (azaz: fabrikam). Ne határozzon meg utótagot.
+    3. Győződjön meg róla, hogy ellenőrzi a helyesírást, vagy hozza létre vagy javítsa ki a rekordot. 3600 (1 óra) ÉLETTARTAMot is használhat. 
+    4. Győződjön meg arról, hogy a helyes magánhálózati IP-címet adta meg. 
+    
+* Győződjön meg arról, hogy az a rekord megfelelő IP-címmel rendelkezik. 
+    1. Az IP-cím megadásához nyissa meg a privát végponti erőforrást Azure Portal 
+    2. Navigáljon a Microsoft. Network/privateEndpoints erőforráshoz a Azure Portalban (nem a Key Vault erőforrásban)
+    3. Az Áttekintés oldalon keresse meg a hálózati adaptert, majd kattintson a hivatkozásra. 
+    4. A hivatkozás megjeleníti a hálózati adapter erőforrásának áttekintését, amely tartalmazza a tulajdonság magánhálózati IP-címét. 
+    5. Ellenőrizze, hogy az a rekordban megadott helyes IP-cím-e.
 
 ## <a name="limitations-and-design-considerations"></a>Korlátozások és kialakítási szempontok
 

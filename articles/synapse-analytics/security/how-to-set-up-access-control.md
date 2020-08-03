@@ -9,12 +9,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
-ms.openlocfilehash: e66af8e55f7b60347d9577c64b7183c6ef8b44f4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6b1fe78ac00b57d7627a64970e84ae8b717ae5c3
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089311"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501916"
 ---
 # <a name="secure-your-synapse-workspace-preview"></a>A szinapszis munkaterület biztonságossá tétele (előzetes verzió)
 
@@ -36,7 +36,7 @@ A szinapszis-munkaterület (előzetes verzió) biztonságossá tételéhez köve
 
 Ez a dokumentum szabványos neveket használ az utasítások egyszerűsítéséhez. Cserélje le azokat bármely tetszőleges névvel.
 
-|Beállítás | Példaérték | Description |
+|Beállítás | Példaérték | Leírás |
 | :------ | :-------------- | :---------- |
 | **Szinapszis-munkaterület** | WS1 |  A szinapszis munkaterület neve. |
 | **ADLSGEN2-fiók** | STG1 | A munkaterülethez használni kívánt ADLS-fiók. |
@@ -82,7 +82,7 @@ A Azure Portal hozzon létre egy szinapszis-munkaterületet:
   - **WS1- \_ SparkAdmins** kiosztása az szinapszis Spark-rendszergazdáknak
   - **WS1- \_ SQLAdmins** kiosztása a szinapszis SQL-rendszergazdáknak
 
-## <a name="step-4-configuring-data-lake-storage-gen2-for-use-by-synapse-workspace"></a>4. lépés: a Data Lake Storage Gen2 konfigurálása a szinapszis munkaterület általi használatra
+## <a name="step-4-configure-data-lake-storage-gen2-for-use-by-synapse-workspace"></a>4. lépés: a Data Lake Storage Gen2 konfigurálása a szinapszis munkaterület általi használatra
 
 A szinapszis munkaterületnek hozzá kell férnie a STG1 és a CNT1, hogy képes legyen a folyamatok futtatására és rendszerfeladatok végrehajtására.
 
@@ -100,7 +100,7 @@ A szinapszis munkaterületnek hozzá kell férnie a STG1 és a CNT1, hogy képes
 - A **Beállítások**területen kattintson az **SQL Active Directory-rendszergazda** lehetőségre.
 - Kattintson a **rendszergazda beállítása** elemre, és válassza a WS1 \_ SQLAdmins
 
-## <a name="step-6-maintaining-access-control"></a>6. lépés: hozzáférés-vezérlés fenntartása
+## <a name="step-6-maintain-access-control"></a>6. lépés: hozzáférés-vezérlés fenntartása
 
 A konfigurálás befejeződött.
 
@@ -140,7 +140,7 @@ A munkaterület mostantól teljesen konfigurálva van és biztonságos.
 
 A szinapszis Studio a felhasználói szerepkörök alapján eltérően fog működni. Előfordulhat, hogy egyes elemek el lesznek rejtve vagy le vannak tiltva, ha a felhasználó nincs olyan szerepkörhöz rendelve, amely megfelelő hozzáférést biztosít. A következő táblázat összefoglalja a szinapszis Studióra gyakorolt hatást.
 
-| Feladat | Munkaterület-rendszergazdák | Spark-rendszergazdák | SQL-rendszergazdák |
+| Tevékenység | Munkaterület-rendszergazdák | Spark-rendszergazdák | SQL-rendszergazdák |
 | --- | --- | --- | --- |
 | A szinapszis Studio megnyitása | IGEN | IGEN | IGEN |
 | Kezdőlap hub megtekintése | IGEN | IGEN | IGEN |

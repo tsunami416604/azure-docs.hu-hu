@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 07/31/2020
 ms.author: cshoe
-ms.openlocfilehash: d035ef4bc90410cbf0899c038047dd5e6a001f10
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 3e38fae84f63f4867befbc3695242dc62dc8dbe8
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/31/2020
-ms.locfileid: "87462330"
+ms.locfileid: "87502647"
 ---
 # <a name="shifting-from-expressjs-to-azure-functions"></a>Váltás Express.jsról Azure Functionsra
 
@@ -24,7 +24,7 @@ A kód kiszolgáló nélküli architektúrára való áttelepítésekor a Expres
 
 - **Alapértelmezett útvonal**: alapértelmezés szerint Azure functions végpontok elérhetők az `api` útvonalon. Az útválasztási szabályok a [ `routePrefix` _host.js_ fájlon](./functions-bindings-http-webhook-output.md#hostjson-settings)keresztül konfigurálhatók.
 
-- **Konfigurálás és konvenciók**: a functions-alkalmazás a fájl _function.js_ használja a http-műveletek definiálásához, a biztonsági házirendek definiálásához, valamint a függvény [bemenetének és kimenetének](./functions-triggers-bindings.md)konfigurálásához. Alapértelmezés szerint a fájlnevet tartalmazó mappa neve határozza meg a végpont nevét, de a nevet a fájl [function.js](./functions-bindings-http-webhook-trigger.md#customize-the-http-endpoint) útvonal tulajdonságán keresztül módosíthatja.
+- **Konfigurálás és konvenciók**: a functions-alkalmazás a fájl _function.js_ használja a http-műveletek definiálásához, a biztonsági házirendek definiálásához, valamint a függvény [bemenetének és kimenetének](./functions-triggers-bindings.md)konfigurálásához. Alapértelmezés szerint a fájlnevet tartalmazó mappa neve határozza meg a végpont nevét, de a nevet a `route` fájl [function.js](./functions-bindings-http-webhook-trigger.md#customize-the-http-endpoint) tulajdonságán keresztül is módosíthatja.
 
 > [!TIP]
 > Ismerkedjen meg az interaktív oktatóanyag [-újraNode.jsával, és az Azure functions segítségével a kiszolgáló nélküli API-kkal expressz API-](https://docs.microsoft.com/learn/modules/shift-nodejs-express-apis-serverless/)kat.

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/14/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: f73d20c19e8fc26c553490772f5374e8a88a77b2
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 432c92bcfa8a2e0df26adf1516f5bdc9ee73d267
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289306"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502375"
 ---
 # <a name="fail-back-an-azure-vm-between-azure-regions"></a>Azure-beli virtuális gép feladatátvétele Azure-régiók között
 
@@ -42,7 +42,7 @@ A virtuális gépek újravédése után szükség szerint visszatérhet az első
 
 1. A tárolóban válassza a **replikált elemek**lehetőséget, majd válassza ki az ÚJRAVÉDETT virtuális gépet.
 
-    ![Feladat-visszavétel elsődlegesre](./media/site-recovery-azure-to-azure-failback/azure-to-azure-failback.png)
+    ![A Azure Portal elsődleges adatfeladat-visszavételét bemutató képernyőkép.](./media/site-recovery-azure-to-azure-failback/azure-to-azure-failback.png)
 
 2. A **replikált elemek**területen válassza ki a virtuális gépet, majd válassza a **feladatátvétel**lehetőséget.
 3. A **feladatátvétel**területen válasszon ki egy helyreállítási pontot a feladatátvételhez:
@@ -55,7 +55,7 @@ A virtuális gépek újravédése után szükség szerint visszatérhet az első
 7. A feladatátvétel ellenőrzése után válassza **a feladatátvétel véglegesítés**lehetőséget. A véglegesítési művelet törli az összes rendelkezésre álló helyreállítási pontot. A helyreállítási pont módosítása lehetőség már nem érhető el.
 8. A virtuális gépnek a feladatátvételt és a feladatátvételt vissza kell mutatnia.
 
-    ![Virtuális gép elsődleges és másodlagos régiókban](./media/site-recovery-azure-to-azure-failback/azure-to-azure-failback-vm-view.png)
+    ![A virtuális gép elsődleges és másodlagos régiókban való megjelenítését bemutató képernyőkép.](./media/site-recovery-azure-to-azure-failback/azure-to-azure-failback-vm-view.png)
 
 > [!NOTE]
 > A felügyelt lemezeket használó gépek esetében, valamint a Site Recovery bővítmény 9.28. x. x verziójának futtatása a 40-es [kumulatív frissítéssel](https://support.microsoft.com/help/4521530/update-rollup-40-for-azure-site-recovery) site Recovery a másodlagos vész-helyreállítási régióban lévő gépek tisztítása, a feladat-visszavétel befejezése és a virtuális gépek ismételt védelme után. A másodlagos régióban nem szükséges manuálisan törölni a virtuális gépeket és a hálózati adaptereket. Vegye figyelembe, hogy a nem felügyelt lemezekkel rendelkező virtuális gépek nem törlődnek. Ha a feladatátvételt követően teljesen letiltja a replikálást, Site Recovery a virtuális gépek és hálózati adapterek mellett a vész-helyreállítási régióban lévő lemezeket is törli.

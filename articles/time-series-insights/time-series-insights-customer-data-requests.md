@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: time-series-insights
 services: time-series-insights
 ms.custom: seodec18
-ms.openlocfilehash: 3578710bf066e7745215d8efacafd2cf6c005eac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 30b3832dfe3e1c4564d1d89b5c318421e48f554f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81640494"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501695"
 ---
 # <a name="summary-of-customer-data-request-features"></a>Az ügyféladat-kérési funkciók összegzése
 
@@ -36,7 +36,7 @@ A bérlői rendszergazdák a Azure Portal használatával törölhetik az ügyf�
 
 A portálon keresztüli ügyféladatok törlése előtt azonban el kell távolítania a felhasználó hozzáférési házirendjeit a Time Series Insights-környezetből a Azure Portalon belül. További információért olvassa el az [adathozzáférés engedélyezése Time Series Insights környezethez Azure Portal használatával](time-series-insights-data-access.md)című témakört.
 
-A REST API használatával is elvégezheti a hozzáférési szabályzatok törlési műveleteit. További információért olvassa el a [hozzáférési szabályzatok – törlés](https://docs.microsoft.com/rest/api/time-series-insights/management/accesspolicies/delete)című témakört.
+A REST API használatával is elvégezheti a hozzáférési szabályzatok törlési műveleteit. További információért olvassa el a [hozzáférési szabályzatok – törlés](/rest/api/time-series-insights/management(gen1/gen2)/accesspolicies/delete)című témakört.
 
 Time Series Insights integrálva van a Azure Portal szabályzat paneljével. A Time Series Insights és a szabályzat panel is lehetővé teszi a szolgáltatáson belül tárolt felhasználói adatnézetek megtekintését, exportálását és törlését. A Azure Portal házirend paneljén végrehajtott törlési műveletek a felhasználói adatTime Series Insightson belüli törlését eredményezik. Ha például egy felhasználó mentett személyes lekérdezést tartalmaz, a lekérdezés véglegesen törlődik a Time Series Insights Explorerben. Ha a felhasználó rendelkezik mentett megosztott lekérdezéssel, a lekérdezés továbbra is fennáll, de a rendszer véglegesen törli a felhasználói adatokat. A következő Megjegyzés a feladatok végrehajtásával kapcsolatos utasításokat tartalmazza.
 
@@ -48,7 +48,7 @@ Az adatok törléséhez hasonlóan a bérlői rendszergazdák megtekinthetik és
 
 Bérlői rendszergazdaként megtekintheti az adatelérési házirendeket a Azure Portal Time Series Insights környezetében. További információért olvassa el az [adathozzáférés engedélyezése Time Series Insights környezethez Azure Portal használatával](time-series-insights-data-access.md)című témakört.
 
-A hozzáférési házirendekben az exportálási műveleteket is elvégezheti a megadott REST APIban a "környezetek listázása" művelet használatával. További információkért olvassa el a [hozzáférési szabályzatok – lista a környezet alapján](https://docs.microsoft.com/rest/api/time-series-insights/management/accesspolicies/listbyenvironment)című témakört.
+A hozzáférési házirendekben az exportálási műveleteket is elvégezheti a megadott REST APIban a "környezetek listázása" művelet használatával. További információkért olvassa el a [hozzáférési szabályzatok – lista a környezet alapján](/rest/api/time-series-insights/management(gen1/gen2)/accesspolicies/listbyenvironment)című témakört.
 
 ## <a name="to-delete-data-stored-within-time-series-insights"></a>Time Series Insights belül tárolt adattörlés
 

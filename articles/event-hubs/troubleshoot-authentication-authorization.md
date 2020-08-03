@@ -3,18 +3,18 @@ title: Hitelesítési és engedélyezési problémák elhárítása – Azure Ev
 description: Ez a cikk tájékoztatást nyújt az Azure Event Hubs-vel kapcsolatos hitelesítési és engedélyezési hibák elhárításáról.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 1c053f60c877cdd26655948c37ab81a5e4d61cf0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6fca0c29c20e2bfe0c3ec64e3068b61bd5147bdb
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85322421"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502103"
 ---
 # <a name="troubleshoot-authentication-and-authorization-issues---azure-event-hubs"></a>Hitelesítési és engedélyezési problémák elhárítása – Azure Event Hubs
 A [kapcsolódási problémák elhárítása](troubleshooting-guide.md) című cikk tippekkel szolgál az Azure Event Hubs kapcsolódási problémáinak elhárításához. Ez a cikk tippeket és javaslatokat tartalmaz az Azure Event Hubs-vel kapcsolatos hitelesítési és engedélyezési problémák elhárításához. 
 
 ## <a name="if-you-are-using-azure-active-directory"></a>Ha Azure Active Directory használ
-Ha Azure Active Directoryt (Azure AD) használ az Azure Event Hubs hitelesítésére és engedélyezésére, győződjön meg arról, hogy az Event hub-hoz hozzáférő identitás tagja a megfelelő **szerepköralapú hozzáférés-vezérlési (RBAC) szerepkörnek** a megfelelő **erőforrás-hatókörben** (fogyasztói csoport, Event hub, névtér, erőforráscsoport vagy előfizetés).
+Ha Azure Active Directory (Azure AD) szolgáltatást használ az Azure Event Hubs hitelesítéséhez és engedélyezéséhez, ellenőrizze, hogy az Event hub-hoz hozzáférő identitás tagja-e **a megfelelő** **erőforrás-hatókörnek** (fogyasztói csoport, Event hub, névtér, erőforráscsoport vagy előfizetés).
 
 ### <a name="rbac-roles"></a>RBAC szerepkörei
 - Az [Azure Event Hubs adattulajdonos](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-owner) Event Hubs erőforrásokhoz való teljes hozzáféréshez.
@@ -28,7 +28,7 @@ Ha Azure Active Directoryt (Azure AD) használ az Azure Event Hubs hitelesítés
 - **Erőforráscsoport**: a szerepkör-hozzárendelés az erőforráscsoport összes Event Hubs erőforrására vonatkozik.
 - **Előfizetés**: a szerepkör-hozzárendelés az előfizetés összes erőforrás-csoportjának összes Event Hubs erőforrására vonatkozik.
 
-További információért tekintse át a következő cikkeket:
+További információkért tekintse át a következő cikkeket:
 
 - [Alkalmazás hitelesítése Azure Active Directory használatával Event Hubs erőforrások eléréséhez](authenticate-application.md)
 - [Hozzáférés engedélyezése Event Hubs erőforrásokhoz a Azure Active Directory használatával](authorize-access-azure-active-directory.md)
@@ -41,7 +41,7 @@ Ha [sas](authenticate-shared-access-signature.md)-t használ, kövesse az alább
 - Ellenőrizze, hogy a kulcs lejárt-e. Javasoljuk, hogy a lejárata előtt is újítsa meg a SAS-t. Ha az ügyfél és a Event Hubs szolgáltatási csomópontok között óra van elferdítve, előfordulhat, hogy a hitelesítési jogkivonat lejár, mielőtt az ügyfél felismeri. Az aktuális implementációs fiókok órája akár 5 percet is igénybe vehet, azaz a token 5 perccel a lejárata előtt megújítja az ügyfelet. Ezért ha az óra ferde értéke 5 percnél nagyobb, akkor az ügyfél megfigyelheti az időszakos hitelesítési hibákat.
 - Ha a **sas kezdési ideje** **most**értékre van állítva, akkor az első néhány perc időszakos meghibásodása miatt időnként eldöntheti, hogy az aktuális idő a különböző gépeken milyen eltéréseket mutat. Állítsa be a kezdési időpontot legalább 15 percre a múltban, vagy ne állítsa be egyáltalán. Ugyanez általában a lejárati időre is vonatkozik. 
 
-További információért tekintse át a következő cikkeket: 
+További információkért tekintse át a következő cikkeket: 
 
 - [Hitelesítés közös hozzáférésű aláírások (SAS) használatával](authenticate-shared-access-signature.md). 
 - [A Event Hubs-erőforrásokhoz való hozzáférés engedélyezése közös hozzáférési aláírások használatával](authorize-access-shared-access-signature.md)

@@ -9,16 +9,17 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: pdecarlo
-ms.openlocfilehash: 050631731a04e4c2ea89d8c7792ec093d6ab316e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: e70b22b3edaae96e00306d5d0a93d229e11aac41
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85800562"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87494077"
 ---
 # <a name="run-azure-iot-edge-on-ubuntu-virtual-machines"></a>Azure IoT Edge futtatása Ubuntu-Virtual Machines
 
-Az Azure IoT Edge futtatókörnyezet az eszköz IoT Edge eszközre való bekapcsolása. A futtatókörnyezet az eszközökön kisméretű, málna PI-ként vagy ipari kiszolgálóként is telepíthető. Ha egy eszköz konfigurálva van a IoT Edge futtatókörnyezettel, megkezdheti az üzleti logika telepítését a felhőből.
+Az Azure IoT Edge futtatókörnyezet az eszköz IoT Edge eszközre való bekapcsolása. A futtatókörnyezet az eszközökön kisméretű, málna PI-ként vagy ipari kiszolgálóként is telepíthető. Miután konfigurált egy eszközt az IoT Edge-futtatókörnyezettel, üzembe helyezhet rajta üzleti logikát a felhőből.
 
 Ha többet szeretne megtudni arról, hogyan működik a IoT Edge futtatókörnyezet és milyen összetevőket tartalmaz, tekintse meg [a Azure IoT Edge futtatókörnyezet és az architektúrájának megismerése](iot-edge-runtime.md)című témakört.
 
@@ -34,12 +35,12 @@ Az [üzembe helyezés az Azure-ban gomb](../azure-resource-manager/templates/dep
 
 1. A iotedge-VM-Deploy Azure Resource Manager sablonnal üzembe helyezünk egy Azure IoT Edge engedélyezett linuxos virtuális gépet.  A kezdéshez kattintson az alábbi gombra:
 
-    [![Üzembe helyezés az Azure-ban gomb a iotedge-VM-Deploy](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure%2Fiotedge-vm-deploy%2Fmaster%2FedgeDeploy.json)
+    [![Az iotedge-vm-deploy sablon Üzembe helyezés az Azure-ban gombja](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure%2Fiotedge-vm-deploy%2Fmaster%2FedgeDeploy.json)
 
 1. Az újonnan elindított ablakban töltse ki a rendelkezésre álló űrlapmezők mezőket:
 
     > [!div class="mx-imgBorder"]
-    > [![Képernyőfelvétel a iotedge-VM-Deploy sablonról](./media/how-to-install-iot-edge-ubuntuvm/iotedge-vm-deploy.png)](./media/how-to-install-iot-edge-ubuntuvm/iotedge-vm-deploy.png)
+    > [![Az iotedge-vm-deploy sablon képernyőképe](./media/how-to-install-iot-edge-ubuntuvm/iotedge-vm-deploy.png)](./media/how-to-install-iot-edge-ubuntuvm/iotedge-vm-deploy.png)
 
     **Előfizetés**: a virtuális gép üzembe helyezéséhez szükséges aktív Azure-előfizetés.
 
@@ -63,9 +64,9 @@ Az [üzembe helyezés az Azure-ban gomb](../azure-resource-manager/templates/dep
 
     Ha az összes mezőt kitöltötte, jelölje be az oldal alján található jelölőnégyzetet a feltételek elfogadásához, majd válassza a **vásárlás** lehetőséget a telepítés megkezdéséhez.
 
-1. Ellenőrizze, hogy a központi telepítés sikeresen befejeződött-e.  Telepíteni kell egy virtuálisgép-erőforrást a kiválasztott erőforráscsoporthoz.  Jegyezze fel a gép nevét, amelynek formátuma a következő: `vm-0000000000000` . Jegyezze fel a társított **DNS-nevet**is, amelynek a formátuma `<dnsLabelPrefix>` . `<location>` cloudapp.azure.com.
+1. Ellenőrizze, hogy az üzembe helyezés sikeresen befejeződött-e.  A kiválasztott erőforráscsoportban meg kellett történnie egy virtuális gép erőforrás üzembe helyezésnek.  Jegyezze fel a gép nevét, amelynek formátuma a következő: `vm-0000000000000` . Jegyezze fel a hozzá tartozó **DNS-név** értékét is. Ennek formátuma: `<dnsLabelPrefix>`.`<location>`.cloudapp.azure.com.
 
-    A **DNS-név** az újonnan telepített virtuális gép **Áttekintés** részéből szerezhető be a Azure Portalon belül.
+    A **DNS-név** az újonnan üzembe helyezett virtuális gép **Áttekintés** szakaszában állapítható meg az Azure Portalon.
 
     > [!div class="mx-imgBorder"]
     > [![A iotedge virtuális gép DNS-nevét bemutató képernyőkép](./media/how-to-install-iot-edge-ubuntuvm/iotedge-vm-dns-name.png)](./media/how-to-install-iot-edge-ubuntuvm/iotedge-vm-dns-name.png)
@@ -138,7 +139,7 @@ Az [üzembe helyezés az Azure-ban gomb](../azure-resource-manager/templates/dep
     --parameters adminPasswordOrKey="$(< ~/.ssh/iotedge-vm-key.pub)"
     ```
 
-1. Ellenőrizze, hogy a központi telepítés sikeresen befejeződött-e.  Telepíteni kell egy virtuálisgép-erőforrást a kiválasztott erőforráscsoporthoz.  Jegyezze fel a gép nevét, amelynek formátuma a következő: `vm-0000000000000` . Jegyezze fel a társított **DNS-nevet**is, amelynek a formátuma `<dnsLabelPrefix>` . `<location>` cloudapp.azure.com.
+1. Ellenőrizze, hogy az üzembe helyezés sikeresen befejeződött-e.  A kiválasztott erőforráscsoportban meg kellett történnie egy virtuális gép erőforrás üzembe helyezésnek.  Jegyezze fel a gép nevét, amelynek formátuma a következő: `vm-0000000000000` . Jegyezze fel a hozzá tartozó **DNS-név** értékét is. Ennek formátuma: `<dnsLabelPrefix>`.`<location>`.cloudapp.azure.com.
 
     A **DNS-név** az előző lépés JSON-formátumú kimenetéről szerezhető be a **kimenetek** szakaszban a **nyilvános SSH** -bejegyzés részeként.  Ennek a bejegyzésnek az értéke az újonnan üzembe helyezett gépre való SSH-ba is használható.
 
