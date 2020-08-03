@@ -67,7 +67,9 @@
     - name: Helyreállítható törlés
       items:
         - name: Azure Key Vault – helyreállítható törlés
-          href: overview-soft-delete.md
+          href: soft-delete-overview.md
+        - name: A helyreállítható törlés alapértelmezés szerint be van kapcsolva
+          href: soft-delete-change.md
     - name: 'Hitelesítés, kérelmek és válaszok'
       href: authentication-requests-and-responses.md
     - name: Az Azure Key Vaultra vonatkozó szabályozási irányelvek

@@ -7,12 +7,13 @@ ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 6/11/2020
-ms.openlocfilehash: a5aed10927a808d0002f765d493709e0e49483ff
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 11af10b6ce42a7ed3633a814396da3ac6d836aa0
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86104809"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87493805"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-mariadb-using-the-azure-cli"></a>Kiszolgálói paraméterek konfigurálása Azure Database for MariaDB az Azure CLI használatával
 Az Azure CLI, az Azure parancssori segédprogram használatával listázhatja, megjelenítheti és frissítheti az Azure Database for MariaDB-kiszolgáló konfigurációs paramétereit. A motor konfigurációjának egy részhalmaza a kiszolgáló szintjén érhető el, és módosítható.
@@ -105,6 +106,6 @@ SET time_zone = 'US/Pacific';
 
 A [dátum-és Időfüggvényekhez](https://mariadb.com/kb/en/library/date-time-functions/)tekintse meg a MariaDB dokumentációját.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Kiszolgáló paramétereinek konfigurálása Azure Portal](howto-server-parameters.md)
