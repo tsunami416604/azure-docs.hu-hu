@@ -112,6 +112,8 @@
           href: cognitive-search-incremental-indexing-conceptual.md
     - name: Biztonság
       items:
+        - name: Biztonsági áttekintés
+          href: search-security-overview.md
         - name: Az Azure Policy biztonsági vezérlői
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
@@ -329,8 +331,6 @@
           href: search-api-migration.md
     - name: Biztonság
       items:
-        - name: Áttekintés
-          href: search-security-overview.md
         - name: Adattitkosítás
           items:
             - name: Felhasználó által kezelt kulcsok

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/30/2020
-ms.openlocfilehash: 9fe9a431d7bbc3b0d3b4b95d9883ed8b5a1f4704
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: b5e408eeac024f63eb8e7ce47039dc4c0a6aa5b5
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475430"
+ms.locfileid: "87501491"
 ---
 # <a name="security-in-azure-cognitive-search---overview"></a>Biztonság az Azure Cognitive Searchban – áttekintés
 
@@ -127,7 +127,9 @@ Az Azure Cognitive Search a nyilvános felhő és a Azure Government esetében t
 
 A megfelelőség érdekében a [Azure Policy](../governance/policy/overview.md) segítségével megvalósíthatja az [Azure biztonsági teljesítményteszt](../security/benchmarks/introduction.md)magas biztonsággal kapcsolatos ajánlott eljárásait. Az Azure Security benchmark olyan biztonsági javaslatok gyűjteménye, amelyek a szolgáltatásokra és az adatmennyiségre vonatkozó fenyegetések enyhítése érdekében a biztonsági ellenőrzésekben foglaltak szerint vannak leképezve. Jelenleg 11 biztonsági vezérlő van, beleértve a [hálózati biztonságot](../security/benchmarks/security-control-network-security.md), a [naplózást és a figyelést](../security/benchmarks/security-control-logging-monitoring.md), és az [Adatvédelem](../security/benchmarks/security-control-data-protection.md) csak néhányat említsünk.
 
-A Azure Policy az Azure-ba épített képesség, amely lehetővé teszi több szabvány megfelelőségének kezelését, beleértve az Azure biztonsági teljesítménytesztet is. A jól ismert referenciaértékek esetében a Azure Policy beépített definíciókat biztosít, így könnyebben hozhat létre házirendeket. Az Azure Cognitive Search esetében jelenleg egy beépített definíció található a diagnosztikai naplózáshoz, ami azt jelenti, hogy hozzárendelhet egy olyan házirendet, amely azonosítja és javítja a naplózási és figyelési biztonsági vezérlővel nem kompatibilis keresési szolgáltatásokat. További információ: [Azure Policy Azure Cognitive Search szabályozási megfelelőségi szabályozása](security-controls-policy.md).
+A Azure Policy az Azure-ba épített képesség, amely lehetővé teszi több szabvány megfelelőségének kezelését, beleértve az Azure biztonsági teljesítménytesztet is. A jól ismert referenciaértékek esetében Azure Policy olyan beépített definíciókat biztosít, amelyek mindkét feltételt, valamint a nem megfelelőséggel kapcsolatos, végrehajtható választ biztosítanak. 
+
+Az Azure Cognitive Search esetében jelenleg egy beépített definíció van. Diagnosztikai naplózásra szolgál. A beépített használatával olyan házirendet rendelhet hozzá, amely azonosítja a diagnosztikai naplózásból hiányzó keresési szolgáltatásokat, majd bekapcsolja azt. További információ: [Azure Policy Azure Cognitive Search szabályozási megfelelőségi szabályozása](security-controls-policy.md).
 
 ## <a name="see-also"></a>További információ
 

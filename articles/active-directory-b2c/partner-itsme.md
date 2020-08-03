@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/08/2020
+ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 85dd58398021ef61e425eb58797e818b233c491b
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: ba7875caa6a1db7638bfeafcfea1efa7b2462152
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170122"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489515"
 ---
 # <a name="configure-itsme-openid-connect-oidc-with-azure-active-directory-b2c"></a>Az itsme OpenID Connect (OIDC) konfigurálása Azure Active Directory B2C
 
@@ -96,7 +96,7 @@ Please clarify step 1 in the description below - we don't have steps in this tut
    |vezetéknév; | family_name |
    |E-mail | e-mail|
 
-5. Válassza a **Mentés** lehetőséget.
+5. Kattintson a **Mentés** gombra.
 
 ### <a name="configure-a-user-flow"></a>Felhasználói folyamat konfigurálása
 
@@ -104,13 +104,13 @@ Please clarify step 1 in the description below - we don't have steps in this tut
 
 2. Válassza az **új felhasználói folyamat**elemet.
 
-3. Válassza **a regisztráció lehetőséget, és jelentkezzen be**.
+3. Válassza a **regisztráció és bejelentkezés**lehetőséget, válassza ki a kívánt verziót, majd kattintson a **Létrehozás**gombra.
 
 4. Adjon meg egy **nevet**.
 
 5. Az **Identity Providers** szakaszban válassza a **itsme**lehetőséget.
 
-6. Válassza a **Létrehozás** lehetőséget.
+6. Kattintson a **Létrehozás** gombra.
 
 7. Nyissa meg az újonnan létrehozott felhasználói folyamatot a felhasználói folyamat nevének kiválasztásával.
 
@@ -119,7 +119,7 @@ Please clarify step 1 in the description below - we don't have steps in this tut
    * A **hozzáférés & azonosító jogkivonat élettartama (perc)** és **5**közötti értékre vált.
    * Módosítsa a **frissítési jogkivonat csúszó ablakának élettartamát** **lejárat nélkül**.
 
-### <a name="register-an-application"></a>Alkalmazás regisztrálása
+### <a name="register-an-application"></a>Egy alkalmazás regisztrálása
 
 1. A B2C-bérlő **kezelés**területén válassza **Alkalmazásregisztrációk**  >  **új regisztráció**lehetőséget.
 
@@ -131,7 +131,7 @@ Please clarify step 1 in the description below - we don't have steps in this tut
 
    a. Tesztelési célból válassza a **hitelesítés**lehetőséget, majd az **implicit engedélyezés**területen jelölje be a **hozzáférési jogkivonatok** és **azonosító tokenek** jelölőnégyzetet.  
 
-   b. Válassza a **Mentés** lehetőséget.
+   b. Kattintson a **Mentés** gombra.
 
 ## <a name="test-the-user-flow"></a>A felhasználói folyamat tesztelése
 

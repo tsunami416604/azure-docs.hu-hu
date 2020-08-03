@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: seoapr2020
+ms.custom: seoapr2020, devx-track-azurecli
 ms.date: 05/13/2020
-ms.openlocfilehash: e523d468ae53e220cbda1c9748965110e82d48a0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 531bbf40df4636ae62203d639deeeb9468c7bfe0
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081083"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498191"
 ---
 # <a name="use-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>Azure Monitor-naplók használata HDInsight-fürtök monitorozásához
 
@@ -59,7 +59,7 @@ Ebben a szakaszban egy meglévő HDInsight-Hadoop-fürtöt konfigurál egy Azure
 
 1. A **munkaterület kiválasztása** legördülő listából válasszon ki egy meglévő log Analytics munkaterületet.
 
-1. Válassza a **Mentés** lehetőséget.  A beállítás mentése néhány percet vesz igénybe.
+1. Kattintson a **Mentés** gombra.  A beállítás mentése néhány percet vesz igénybe.
 
     ![HDInsight-fürtök figyelésének engedélyezése](./media/hdinsight-hadoop-oms-log-analytics-tutorial/azure-portal-monitoring.png "HDInsight-fürtök figyelésének engedélyezése")
 

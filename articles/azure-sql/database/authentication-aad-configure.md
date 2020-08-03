@@ -12,12 +12,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 ms.date: 07/27/2020
-ms.openlocfilehash: 00efa3ea6fcd299dcdc51b3002d6b0459edf2ec4
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: f98e540a6764869f1d37edfbb0f00bf8d1cc2198
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281157"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499177"
 ---
 # <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>Azure AD-hitelesítés konfigurálása és kezelése az Azure SQL-sel
 
@@ -360,7 +360,7 @@ Mivel az SQL felügyelt példánya támogatja az Azure AD-kiszolgálói rendszer
 Azonban a Azure Active Directory hitelesítés használata a SQL Database és az Azure szinapszis használatához az Azure AD-identitáson alapuló, tárolt adatbázis-felhasználókat kell használnia. Egy tárolt adatbázis-felhasználó nem rendelkezik bejelentkezéssel a főadatbázisban, és az adatbázishoz társított Azure AD-beli identitáshoz társítja az adatokat. Az Azure AD-identitás lehet egyéni felhasználói fiók vagy csoport is. További információ a tárolt adatbázis-felhasználókról: [tárolt adatbázis-felhasználók – az adatbázis hordozhatóvé tétele](https://msdn.microsoft.com/library/ff929188.aspx).
 
 > [!NOTE]
-> Az adatbázis felhasználói (a rendszergazdák kivételével) nem hozhatók létre a Azure Portal használatával. A RBAC szerepkörök nem lesznek propagálva az adatbázisba SQL Database, az SQL felügyelt példányában vagy az Azure Szinapszisban. Az Azure RBAC szerepkörei az Azure-erőforrások felügyeletére szolgálnak, és nem vonatkoznak az adatbázis engedélyeire. A **SQL Server közreműködő** szerepkör például nem biztosít hozzáférést az adatbázishoz SQL Database, az SQL felügyelt példányában vagy az Azure szinapszisban való kapcsolódáshoz. A hozzáférési engedélyt közvetlenül az adatbázisban kell megadni a Transact-SQL-utasítások használatával.
+> Az adatbázis felhasználói (a rendszergazdák kivételével) nem hozhatók létre a Azure Portal használatával. Az Azure-szerepkörök nem lesznek propagálva az adatbázisba SQL Database, az SQL felügyelt példányában vagy az Azure Szinapszisban. Az Azure-szerepkörök az Azure-erőforrások kezeléséhez használatosak, és nem vonatkoznak az adatbázis engedélyeire. A **SQL Server közreműködő** szerepkör például nem biztosít hozzáférést az adatbázishoz SQL Database, az SQL felügyelt példányában vagy az Azure szinapszisban való kapcsolódáshoz. A hozzáférési engedélyt közvetlenül az adatbázisban kell megadni a Transact-SQL-utasítások használatával.
 
 > [!WARNING]
 > `:` `&` A T-SQL és a utasításokban szereplő felhasználónevek `CREATE LOGIN` nem támogatják a speciális karaktereket, például a kettőspontot vagy a jeleket `CREATE USER` .
@@ -544,4 +544,3 @@ Az Azure AD-hitelesítéssel kapcsolatos hibaelhárítással kapcsolatban az al�
 [11]: ./media/authentication-aad-configure/active-directory-integrated.png
 [12]: ./media/authentication-aad-configure/12connect-using-pw-auth2.png
 [13]: ./media/authentication-aad-configure/13connect-to-db2.png
-

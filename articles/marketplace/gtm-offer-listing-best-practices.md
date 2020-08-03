@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 07/06/2020
-ms.openlocfilehash: 8adffcc6c7ae4af2e33587f75c83430473180203
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 388fb7e36a823d7f6e9ee1d58220d3a1008d8cec
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118392"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498045"
 ---
 # <a name="offer-listing-best-practices"></a>Ajánlatlistákra vonatkozó ajánlott eljárások
 
@@ -31,7 +31,7 @@ Az ebben a szakaszban található táblázatok a Piactéri ajánlatok létrehoz�
 
 A különböző kirakatok kategóriái és ágazatai a különböző típusú ajánlatokra is érvényesek lesznek.
 
-| Kirakat | Kategóriák <br>kirakat szerint | Kategóriák <br>kirakat szerint | Ágazatok <br> AppSource |
+| Kirakat | Kategóriák <br>kirakat szerint | Kategóriák <br>kirakat szerint | Iparágak <br> AppSource |
 | :------------------- |:----------------:|:------:|:-------------:|
 | **Ajánlat típusa**   |  **Azure Marketplace**  | **AppSource**  |
 | Azure-alkalmazás | X | |
@@ -56,89 +56,7 @@ Válassza ki az ajánlathoz legjobban illeszkedő kategóriákat és alkategóri
 * Legfeljebb két (2) kategória, beleértve az elsődleges és a másodlagos kategóriát is (opcionális).
 * Akár két (2) alkategória az egyes elsődleges és/vagy másodlagos kategóriákhoz. Ha nincs kiválasztva alkategória, akkor az ajánlat csak a kiválasztott kategóriában lesz felderíthető.
 
-| [**Azure Marketplace**](https://azuremarketplace.microsoft.com/marketplace/apps) (informatikai szakemberek és fejlesztők)  | [**AppSource**](https://appsource.microsoft.com/marketplace/apps) (üzleti felhasználók)|
-| :------------------- |:----------------|
-|**Elemzés** | **Elemzés** |
-| &nbsp;&nbsp;Adatelemzések | &nbsp;&nbsp;Fejlett Analitika  |
-| &nbsp;&nbsp;Adatelemzés |  &nbsp;&nbsp;Vizualizáció & jelentéskészítés |
-| &nbsp;&nbsp;Big-adatmennyiség | **AI + Machine Learning**  |
-| &nbsp;&nbsp;Prediktív elemzés | &nbsp;&nbsp;AI vállalatoknak |
-| &nbsp;&nbsp;Valós idejű/adatfolyam-elemzés | &nbsp;&nbsp;Bot-alkalmazások |
-| **AI + Machine Learning** | **Együttműködés** |
-| &nbsp;&nbsp;Bot Service | &nbsp;&nbsp;Kapcsolatfelvétel & személyekkel |
-| &nbsp;&nbsp;Cognitive Services | &nbsp;&nbsp;Értekezletek kezelése |
-| &nbsp;&nbsp;ML szolgáltatás | &nbsp;&nbsp;Hely kialakításának & kezelése |
-| &nbsp;&nbsp;Automatikus ML | &nbsp;&nbsp;Feladat & projektmenedzsment |
-| &nbsp;&nbsp;Üzleti/Robotos folyamatok automatizálása | &nbsp;&nbsp;Hang & videokonferencia |
-| &nbsp;&nbsp;Adatfelirat | **Megfelelőség & jogi** |
-| &nbsp;&nbsp;Adatelőkészítés | &nbsp;&nbsp;Adózási & naplózása |
-| &nbsp;&nbsp;Tudás bányászata | &nbsp;&nbsp;Jogi |
-| &nbsp;&nbsp;ML-műveletek | &nbsp;&nbsp;Adatok, irányítási & adatvédelem |
-| **Blokklánc**  | &nbsp;&nbsp;Állapot & biztonság |
-| &nbsp;&nbsp;Alkalmazás-gyorsítók | **Customer Service**  |
-| &nbsp;&nbsp;Egycsomópontos Főkönyv | &nbsp;&nbsp;Kapcsolattartási központ |
-| &nbsp;&nbsp;Több csomópontos Főkönyv | &nbsp;&nbsp;Szembenézés a Face szolgáltatással |
-| &nbsp;&nbsp;Eszközök | &nbsp;&nbsp;Office & Employee Service |
-| **Számítás**  | &nbsp;&nbsp;Knowledge & – ügyvitel |
-| &nbsp;&nbsp;Alkalmazás-infrastruktúra | &nbsp;&nbsp;Közösségi média & Omnichannel engagement |
-| &nbsp;&nbsp;Operációs rendszerek | **Pénzügy** |
-| &nbsp;&nbsp;Gyorsítótár | &nbsp;&nbsp;Számviteli |
-| **Containers**  | &nbsp;&nbsp;Eszközkezelés |
-| &nbsp;&nbsp;Ismerkedés a tárolókkal | &nbsp;&nbsp;Elemzés, konszolidáció & jelentéskészítés |
-| &nbsp;&nbsp;Tároló alkalmazások | &nbsp;&nbsp;Kredit & gyűjtemények |
-| &nbsp;&nbsp;Tároló lemezképei | &nbsp;&nbsp;Megfelelőség & kockázatkezelés |
-| **Adatbázisok**  | **Térinformatikai** |
-| &nbsp;&nbsp;NoSQL-adatbázisok | &nbsp;&nbsp;Térképek |
-| &nbsp;&nbsp;Rokon adatbázisok | &nbsp;&nbsp;Hírek & Időjárás |
-| &nbsp;&nbsp;Főkönyv/Blockchain-adatbázisok | **Human Resources** |
-| &nbsp;&nbsp;Adattavak | &nbsp;&nbsp;Tehetség megszerzése |
-| &nbsp;&nbsp;Adattárház | &nbsp;&nbsp;Tehetségek kezelése |
-| **Fejlesztői eszközök**  | &nbsp;&nbsp;HR-műveletek |
-| &nbsp;&nbsp;Eszközök | &nbsp;&nbsp;A munkaerő megtervezése & Analitika |
-| &nbsp;&nbsp;Parancsfájlok | **IT & felügyeleti eszközök** |
-| &nbsp;&nbsp;Fejlesztői szolgáltatás | &nbsp;&nbsp;Felügyeleti megoldások |
-| **DevOps**  | &nbsp;&nbsp;Business Applications |
-| **Integráció**  | **Eszközök internetes hálózata** |
-| &nbsp;&nbsp;Üzenetkezelési | &nbsp;&nbsp;Asset Management & műveletek |
-| **IT & felügyeleti eszközök**  | &nbsp;&nbsp;Csatlakoztatott termékek |
-| &nbsp;&nbsp;Felügyeleti megoldások | &nbsp;&nbsp;Intelligens ellátási lánc |
-| &nbsp;&nbsp;Business Applications | &nbsp;&nbsp;Prediktív karbantartás |
-| **Identitás**  | &nbsp;&nbsp;Távoli figyelés |
-| &nbsp;&nbsp;Hozzáférés-kezelés | &nbsp;&nbsp;Biztonsági & biztonság |
-| **Eszközök internetes hálózata**  | &nbsp;&nbsp;Intelligens infrastruktúra-& erőforrások |
-| &nbsp;&nbsp;IoT-kapcsolat | &nbsp;&nbsp;Járművek & mobilitás |
-| &nbsp;&nbsp;IoT Core-szolgáltatások | **Marketing** |
-| &nbsp;&nbsp;IoT Edge modulok | &nbsp;&nbsp;Hirdetmény |
-| &nbsp;&nbsp;IoT-megoldások | &nbsp;&nbsp;Analytics |
-| &nbsp;&nbsp;Adatelemzési & vizualizáció | &nbsp;&nbsp;Kampány-felügyeleti & Automation |
-| **Média**  | &nbsp;&nbsp;E-mail marketing |
-| &nbsp;&nbsp;Media Services | &nbsp;&nbsp;Események & erőforrás-kezelés |
-| &nbsp;&nbsp;Content Protection | &nbsp;&nbsp;Kutatási & elemzése |
-| &nbsp;&nbsp;Igény szerinti streaming élő & | &nbsp;&nbsp;Közösségi média |
-| **& diagnosztika figyelése**  | **Műveleti & ellátási lánc** |
-| **Migrálás**  | &nbsp;&nbsp;Eszköz & üzemi felügyelet |
-| &nbsp;&nbsp;Adatáttelepítés | &nbsp;&nbsp;Kereslet-előrejelzés |
-| **Mixed Reality**  | &nbsp;&nbsp;Information Management & kapcsolat |
-| **Hálózat**  | &nbsp;&nbsp;& jelentéskészítés tervezése, beszerzése |
-| &nbsp;&nbsp;Berendezések kezelői | &nbsp;&nbsp;Minőségi & szolgáltatások kezelése |
-| &nbsp;&nbsp;Connectivity | &nbsp;&nbsp;Értékesítési & rendelés kezelése |
-| &nbsp;&nbsp;Tűzfalak | &nbsp;&nbsp;Szállítás & Warehouse Management |
-| &nbsp;&nbsp;Terheléselosztó | **Termelékenység** |
-| **Biztonság**  | &nbsp;&nbsp;Tartalom létrehozása & kezelése |
-| &nbsp;&nbsp;Identitás & hozzáférés-kezelés | &nbsp;&nbsp;Dokumentumkezelés |
-| &nbsp;&nbsp;Veszélyforrások elleni védelem | &nbsp;&nbsp;E-mailek kezelése |
-| &nbsp;&nbsp;Information Protection | &nbsp;&nbsp;Nyelvi & fordítás |
-| **Storage**  | &nbsp;&nbsp;Keresési & referenciája |
-| &nbsp;&nbsp;Biztonsági mentés & helyreállítás | &nbsp;&nbsp;Gamification |
-| &nbsp;&nbsp;Vállalati hibrid tárolás | **Sales** |
-| &nbsp;&nbsp;Fájlmegosztás | &nbsp;&nbsp;Telesales |
-| &nbsp;&nbsp;Adatéletciklus-kezelés | &nbsp;&nbsp;Konfigurálás, Ár, árajánlat (CPQ) |
-| **Web**  | &nbsp;&nbsp;Szerződések kezelése |
-| &nbsp;&nbsp;Blogok & CMSs | &nbsp;&nbsp;CRM |
-| &nbsp;&nbsp;Kezdő Web Apps | &nbsp;&nbsp;E-kereskedelmi |
-| &nbsp;&nbsp;E-kereskedelmi | &nbsp;&nbsp;Üzleti adatelemzés  |
-| &nbsp;&nbsp;Webalkalmazás-keretrendszerek | &nbsp;&nbsp;Értékesítés engedélyezése  |
-| &nbsp;&nbsp;Web Apps |  |
+[!INCLUDE [categories and subcategories](./includes/categories.md)]
 
 **Fontos: SaaS-ajánlatok és Microsoft 365-bővítmények**
 
@@ -160,14 +78,14 @@ Tekintse meg az [útmutató ajánlat típusát](https://docs.microsoft.com/azure
 2. A privát csomagokkal rendelkező ajánlatok közzé lesznek téve a Azure Portal
 
 
-### <a name="industries"></a>Ágazatok
+### <a name="industries"></a>Iparágak
 
 Az iparági kiválasztás csak az Azure Marketplace-en közzétett AppSource és tanácsadási szolgáltatásokban közzétett ajánlatokra vonatkozik.  Válassza az iparágak és/vagy a vertikálisak lehetőséget, ha az ajánlata az iparágra jellemző igények kielégítésével foglalkozik, és az ajánlat leírásában az iparágra jellemző képességeket hívja meg. Kiválaszthat legfeljebb két (2) iparágat és két (2) vertikális elemet.
 
 >[!Note]
 >Az Azure Marketplace-en elérhető tanácsadási szolgáltatásokhoz nem tartoznak iparági vertikális szolgáltatások.
 
-| **Ágazatok** |  **Vertikumok** |
+| **Iparágak** |  **Vertikumok** |
 | :------------------- | :----------------|
 | **Mezőgazdaság** | |
 | **Architektúra & építése** | |
@@ -175,7 +93,7 @@ Az iparági kiválasztás csak az Azure Marketplace-en közzétett AppSource és
 | **Disztribúció** | Nagykereskedelem <br> Parcella & csomag szállítása |  
 | **Education** | Felsőoktatás <br> Elsődleges & másodlagos edu/K-12 <br> Könyvtárak & múzeumok |
 | **Pénzügyi szolgáltatások** | Banki & tőkepiacok <br> Biztosítási | 
-| **Government** |  Védelmi & intelligencia <br> Polgári kormányzat <br> Közbiztonság & igazságszolgáltatás |
+| **Államigazgatás** |  Védelmi & intelligencia <br> Polgári kormányzat <br> Közbiztonság & igazságszolgáltatás |
 | **Egészségügy** | Állapot költségviselő <br> Állapot szolgáltatója <br> Gyógyszerek | 
 | **Vendéglátás & utazás** | Utazási & szállítás <br> Hotelek & szabadidő <br> Éttermek & Food Services | 
 | **Gyártási & erőforrások** | Kémiai & Agrokémiai <br> Diszkrét gyártás <br> Energia | 
@@ -217,7 +135,7 @@ A következő példában szereplő URL-cím az előző lekérdezési paramétere
 
 Ha hozzáadja a paramétereket a AppSource URL-címhez, a [partner Center](https://partner.microsoft.com/dashboard/commercial-marketplace/)elemzési irányítópultján ellenőrizheti a kampány hatékonyságát.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a [kereskedelmi piactér előnyeiről](./gtm-your-marketplace-benefits.md).
 

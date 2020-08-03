@@ -4,14 +4,14 @@ description: Ismerje meg az olyan SQL-operátorokat, mint az egyenlőség, az ö
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/19/2020
+ms.date: 07/29/2020
 ms.author: tisande
-ms.openlocfilehash: 8ef41edb687a5df39243880c897d12e83c008ec9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dd1652781d7eae8beb400c52137a8f16891e2b2a
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80063574"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498837"
 ---
 # <a name="operators-in-azure-cosmos-db"></a>A Azure Cosmos DB operátorai
 
@@ -35,6 +35,14 @@ Az összehasonlító operátorok, például a,,, `>` `>=` `!=` `<` , és `<=` , 
 
 Ha a skaláris kifejezés eredménye `Undefined` , az elem nem szerepel az eredményben, mert `Undefined` nem egyenlő `true` .
 
+Például a következő lekérdezés összehasonlítása egy szám és egy karakterlánc értékkel `Undefined` . Ezért a szűrő nem tartalmaz eredményt.
+
+```sql
+SELECT *
+FROM c
+WHERE 7 = 'a'
+```
+
 ## <a name="logical-and-or-and-not-operators"></a>Logikai (és, vagy nem) operátorok
 
 Logikai operátorok logikai értékeken működnek. Az alábbi táblázatok a logikai igazság táblázatait mutatják be a következő operátorok esetében:
@@ -43,21 +51,21 @@ Logikai operátorok logikai értékeken működnek. Az alábbi táblázatok a lo
 
 `true`A feltételek bármelyikének beolvasása `true` .
 
-|  | **Igaz** | **Hamis** | **Nem definiált** |
+|  | **True** | **False** | **Nem definiált** |
 | --- | --- | --- | --- |
-| **Igaz** |True (Igaz) |True (Igaz) |True (Igaz) |
-| **Hamis** |True (Igaz) |False (Hamis) |Nem definiált |
-| **Nem definiált** |True (Igaz) |Nem definiált |Nem definiált |
+| **True** |Igaz |Igaz |Igaz |
+| **False** |Igaz |Hamis |Nem definiált |
+| **Nem definiált** |Igaz |Nem definiált |Nem definiált |
 
 **ÉS operátor**
 
 Azt adja vissza `true` , hogy mindkét kifejezés hol van `true` .
 
-|  | **Igaz** | **Hamis** | **Nem definiált** |
+|  | **True** | **False** | **Nem definiált** |
 | --- | --- | --- | --- |
-| **Igaz** |True (Igaz) |False (Hamis) |Nem definiált |
-| **Hamis** |False (Hamis) |False (Hamis) |False (Hamis) |
-| **Nem definiált** |Nem definiált |False (Hamis) |Nem definiált |
+| **True** |Igaz |Hamis |Nem definiált |
+| **False** |Hamis |Hamis |Hamis |
+| **Nem definiált** |Nem definiált |Hamis |Nem definiált |
 
 **NEM operátor**
 
@@ -65,8 +73,8 @@ Bármely logikai kifejezés értékének megfordítása.
 
 |  | **NEM** |
 | --- | --- |
-| **Igaz** |False (Hamis) |
-| **Hamis** |True (Igaz) |
+| **True** |Hamis |
+| **False** |Igaz |
 | **Nem definiált** |Nem definiált |
 
 **Operátori prioritás**

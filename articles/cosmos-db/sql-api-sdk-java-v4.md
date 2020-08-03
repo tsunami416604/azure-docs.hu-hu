@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 05/20/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 45da3ec95167cbb4fa087435e0e88f85c0eb6463
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 51582fd9aba8721b28f6fb18daec4d0009d0ac15
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/31/2020
-ms.locfileid: "87461051"
+ms.locfileid: "87500657"
 ---
 # <a name="azure-cosmos-db-java-sdk-v4-for-core-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Java SDK v4 for Core (SQL) API: kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
@@ -63,7 +63,30 @@ Az Azure Cosmos DB Java SDK v4 for Core (SQL) egy aszinkron API-t és egy "Sync"
 
 ## <a name="release-history"></a>Kiadási előzmények
 
+### <a name="440-beta1-unreleased"></a>4.4.0-Beta. 1 (nem kiadott)
+
+### <a name="430-2020-07-29"></a>4.3.0 (2020-07-29)
+#### <a name="new-features"></a>Új funkciók
+* Frissítette a reaktor-Core függvénytár verzióját `3.3.8.RELEASE` . 
+* Frissített reaktor – a többplatformos függvénytár verziója `0.9.10.RELEASE` . 
+* Frissítette a többverziós kódtár verzióját a következőre: `4.1.51.Final` . 
+* Új túlterhelés API-k lettek hozzáadva `upsertItem` a szolgáltatáshoz `partitionKey` . 
+* Az Open telemetria nyomkövetési támogatás hozzáadva. 
+#### <a name="key-bug-fixes"></a>Kulcs hibajavításai
+* Kijavítva a hiba, ahol a SSLException a kérelmeknek az ÁTJÁRÓ módban történő megszakítása esetén kikerül.
+* Rögzített erőforrás-szabályozási újrapróbálkozási szabályzat a tárolt eljárások végrehajtásához.
+* Kijavítva a hiba, hogy az SDK a naplózási szintű HIBAKERESÉSi módban leáll. 
+* Rögzített időszakos tüskék a késésben közvetlen módban. 
+* A magas ügyfél-inicializálási idő kijavítva. 
+* Kijavítva a http-proxy hibája az ügyfél közvetlen és átjáró módban való testreszabásakor. 
+* A felhasználók rögzített lehetséges NPE null beállításokat ad át. 
+* TimeUnit hozzáadva a `requestLatency` diagnosztikai karakterlánchoz.
+* Az ismétlődő URI-karakterlánc el lett távolítva a diagnosztikai karakterláncból. 
+* Rögzített diagnosztikai karakterlánc a megfelelő JSON-formátumban a pont műveleteihez.
+* Kijavítva a probléma az `.single()` operátorral, ami miatt a reaktor lánca nem talált kivétel esetén felmerül. 
+
 ### <a name="420-2020-07-14"></a>4.2.0 (2020-07-14)
+#### <a name="new-features"></a>Új funkciók
 * Parancsfájl-naplózás engedélyezve API-t adott hozzá `CosmosStoredProcedureRequestOptions` .
 * Az `DirectConnectionConfig` alapértelmezett érték `idleEndpointTimeout` az 1h és `connectTimeout` az alapértelmezett érték 5 mp.
 #### <a name="key-bug-fixes"></a>Kulcs hibajavításai

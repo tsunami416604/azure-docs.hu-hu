@@ -4,12 +4,13 @@ description: Ha először használja a Language Understanding (LUIS), nem kell l
 services: cognitive-services
 ms.topic: how-to
 ms.date: 07/07/2020
-ms.openlocfilehash: dfe5c416adeb4ff850dfe8f28ae4c61c8bb0844f
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 6bd8cc807a393d6c8027f5990b9897d93f2b78d2
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86144630"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496899"
 ---
 # <a name="create-luis-resources"></a>LUIS-erőforrások létrehozása
 
@@ -24,7 +25,7 @@ A szerzői és lekérdezési előrejelzési futtatókörnyezet erőforrásai hit
 
 A LUIS három típusú Azure-erőforrást és egy nem Azure-erőforrást is lehetővé tesz:
 
-|Kulcs|Rendeltetés|Kognitív szolgáltatás`kind`|Kognitív szolgáltatás`type`|
+|Kulcs|Cél|Kognitív szolgáltatás`kind`|Kognitív szolgáltatás`type`|
 |--|--|--|--|
 |Szerzői kulcs|A szerzői műveletek, a képzés, a közzététel és a tesztelés segítségével hozzáférhetnek az alkalmazáshoz, és kezelhetik azokat. Hozzon létre egy LUIS authoring-kulcsot, ha a LUIS-alkalmazásokat programozott módon szeretné létrehozni.<br><br>A kulcs célja, `LUIS.Authoring` hogy lehetővé tegye a következőket:<br>* programozott módon felügyelheti Language Understanding alkalmazásokat és modelleket, beleértve a képzést és a közzétételt<br> * a szerzői erőforrásra vonatkozó engedélyek vezérlése [a közreműködő szerepkörhöz](#contributions-from-other-authors)rendelt személyek hozzárendelésével.|`LUIS.Authoring`|`Cognitive Services`|
 |Lekérdezés-előrejelzési kulcs| Lekérdezés-előrejelzési végponti kérelmek. Hozzon létre egy LUIS-előrejelzési kulcsot, mielőtt az ügyfélalkalmazás a kezdő erőforrás által biztosított 1 000-kérelmeknél újabb előrejelzéseket kér. |`LUIS`|`Cognitive Services`|
@@ -58,7 +59,7 @@ A közzétételi régiók eltérnek a szerzői régióktól. Győződjön meg ar
 
 A használati korlátok a díjszabási szinten alapulnak.
 
-Ha túllépi a tranzakció-másodpercenkénti (TPS-) kvótát, HTTP 429-es hibaüzenetet kap. Ha túllépi a havi tranzakciós (TPS) kvótát, HTTP 403-es hibaüzenetet kap.
+Ha túllépett a másodpercenkénti tranzakciók (TPS) kvótáján, HTTP 429-es hibaüzenetet kap. Ha túllépett a havi tranzakciók (TPM) kvótáján, HTTP 403-as hibaüzenetet kap.
 
 
 ### <a name="reset-authoring-key"></a>Szerzői kulcs alaphelyzetbe állítása
@@ -102,7 +103,7 @@ Az alkalmazáshoz való hozzáférést a [Luis](luis-reference-regions.md#luis-w
 
 A tulajdonos és az összes közreműködő hozzáfér az alkalmazás létrehozásához.
 
-|A szerzői hozzáférés magában foglalja a|Megjegyzések|
+|A szerzői hozzáférés magában foglalja a|Jegyzetek|
 |--|--|
 |Végponti kulcsok hozzáadása vagy eltávolítása||
 |Verzió exportálása||
@@ -206,7 +207,7 @@ Létrehozhat egy authoring-erőforrást egyetlen alkalmazáshoz vagy a LUIS öss
 
 1. Jelentkezzen be a [Luis portálra](https://www.luis.ai).
 1. A felső navigációs sávon kattintson a jobb szélre, válassza ki a felhasználói fiókját, majd válassza a **Beállítások**lehetőséget.
-1. A **felhasználói beállítások** lapon válassza a **szerzői erőforrás hozzáadása** lehetőséget, majd válasszon ki egy meglévő authoring-erőforrást. Válassza a **Mentés** lehetőséget.
+1. A **felhasználói beállítások** lapon válassza a **szerzői erőforrás hozzáadása** lehetőséget, majd válasszon ki egy meglévő authoring-erőforrást. Kattintson a **Mentés** gombra.
 
 ## <a name="assign-a-resource-to-an-app"></a>Erőforrás kiosztása egy alkalmazáshoz
 

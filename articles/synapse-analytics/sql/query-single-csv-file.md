@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 1d033a904087bf8ff32721372209820a64090502
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 63755616bb524226d3c40d32b9695f4b787860d9
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87383885"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489707"
 ---
 # <a name="query-csv-files"></a>CSV-fájlok lekérdezése
 
@@ -31,7 +31,7 @@ Az alábbiakban az összes fenti változatot tárgyaljuk.
 
 `OPENROWSET`a függvény lehetővé teszi a CSV-fájl tartalmának olvasását a fájl URL-címének megadásával.
 
-### <a name="reading-csv-file"></a>CSV-fájl olvasása
+### <a name="read-a-csv-file"></a>CSV-fájl olvasása
 
 A fájl tartalmának megtekintésére a legegyszerűbb módszer, `CSV` Ha a fájl URL-címét megadja a `OPENROWSET` függvénynek, a CSV-t és a 2,0-et adja meg `FORMAT` `PARSER_VERSION` . Ha a fájl nyilvánosan elérhető, vagy ha az Azure AD-identitása hozzáfér ehhez a fájlhoz, akkor az alábbi példában látható módon láthatja a fájl tartalmát:
 
@@ -46,7 +46,7 @@ from openrowset(
 
 Ezzel a beállítással lehet `firstrow` kihagyni a CSV-fájl első olyan sorát, amely ebben az esetben a fejlécet jelöli. Győződjön meg arról, hogy el tudja érni ezt a fájlt. Ha a fájlt SAS-kulccsal vagy egyéni identitással védi, a [kiszolgáló szintű hitelesítő adatokat kell beállítania az SQL-bejelentkezéshez](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential).
 
-### <a name="using-data-source"></a>Adatforrás használata
+### <a name="data-source-usage"></a>Adatforrás használata
 
 Az előző példa a fájl teljes elérési útját használja. Alternatív megoldásként létrehozhat egy külső adatforrást is, amelynek a helye a tároló gyökérkönyvtárára mutat:
 
@@ -214,7 +214,7 @@ WHERE
 > [!NOTE]
 > A lekérdezés ugyanezeket az eredményeket adja vissza, ha kihagyta a FIELDQUOTE paramétert, mivel a FIELDQUOTE alapértelmezett értéke dupla idézőjel.
 
-## <a name="escaping-characters"></a>Escape-karakterek
+## <a name="escape-characters"></a>Escape-karakterek
 
 A következő lekérdezés azt mutatja be, hogyan lehet beolvasni egy fejlécet tartalmazó fájlt egy Unix-stílusú új sorral, vesszővel tagolt oszlopokkal, valamint egy Escape-karaktert, amely az értékeken belüli elválasztó (vessző) mezőkhöz használható. Figyelje meg a fájl különböző helyét a többi példához képest.
 
@@ -246,7 +246,7 @@ WHERE
 > [!NOTE]
 > Ez a lekérdezés meghiúsul, ha a ESCAPECHAR nincs megadva, mert a "Slov, enia" vessző nem az ország/régió neve részeként lesz kezelve. A "Slov, enia" két oszlopként lesz kezelve. Ezért az adott sornak több oszlopa is lehet, mint a többi sor, és egy oszlop a WITH záradékban megadott értékkel.
 
-### <a name="escaping-quoting-characters"></a>Escape-karakterek beidézése
+### <a name="escape-quoting-characters"></a>Escape-idézetek karakterei
 
 A következő lekérdezés azt mutatja be, hogyan lehet beolvasni egy fejlécet tartalmazó fájlt egy Unix-stílusú új sorral, vesszővel tagolt oszlopokkal és egy megszökött idézőjeles karakterrel az értékeken belül. Figyelje meg a fájl különböző helyét a többi példához képest.
 
@@ -306,7 +306,7 @@ WHERE
     AND year = 2017
 ```
 
-## <a name="returning-subset-of-columns"></a>Oszlopok visszaadott részhalmaza
+## <a name="return-a-subset-of-columns"></a>Oszlopok részhalmazának visszaadása
 
 Eddig a CSV-fájl sémáját a és az összes oszlop listázásával adtuk meg. A lekérdezésben ténylegesen szükséges oszlopokat csak sorszám alapján adhatja meg a szükséges oszlopokhoz. Emellett az oszlopok nem érdeklik.
 
@@ -333,7 +333,7 @@ WITH (
 ) AS [r]
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A következő cikkek a következőkre mutatnak:
 

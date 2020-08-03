@@ -11,12 +11,12 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 07/22/2020
 ms.custom: how-to, seodec18, tracking-python
-ms.openlocfilehash: ca7feacf5d631b4e85a0b3f4e7a039bbb79abe45
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: f30f2b45944281ed74da2026eb14e8938260b259
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/31/2020
-ms.locfileid: "87460201"
+ms.locfileid: "87496100"
 ---
 # <a name="connect-to-azure-storage-services"></a>Kapcsolódás az Azure Storage-szolgáltatásokhoz
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -32,7 +32,7 @@ Ha szeretné megismerni, hogy az adattárolók hogyan illeszkednek Azure Machine
 ## <a name="prerequisites"></a>Előfeltételek
 
 A következők szükségesek:
-- Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot, mielőtt hozzákezd. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree).
+- Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy ingyenes fiókot a virtuális gép létrehozásának megkezdése előtt. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree).
 
 - Egy [támogatott tárolási típusú](#matrix)Azure Storage-fiók.
 
@@ -92,11 +92,11 @@ Ha az adattároló-fiók egy **virtuális hálózaton**található, további kon
 
 ### <a name="access-validation"></a>Hozzáférés ellenőrzése
 
-**A kezdeti adattároló létrehozása és regisztrálása során**Azure Machine learning automatikusan ellenőrzi, hogy a mögöttes tárolási szolgáltatás létezik-e, és a felhasználó által megadott rendszerbiztonsági tag (Felhasználónév, szolgáltatásnév vagy sas-jogkivonat) hozzáfér-e a megadott tárolóhoz.
+**A kezdeti adattár létrehozása és regisztrálása során**Azure Machine learning automatikusan ellenőrzi, hogy a mögöttes tárolási szolgáltatás létezik-e, és hogy a felhasználó által megadott rendszerbiztonsági tag (Felhasználónév, szolgáltatásnév vagy sas-jogkivonat) hozzáfér-e a megadott tárolóhoz.
 
 Az **adattár létrehozása után**ezt az ellenőrzést csak olyan metódusok hajtják végre, amelyek hozzáférést igényelnek a mögöttes tárolóhoz, **nem** minden alkalommal, amikor az adattár-objektumokat lekérik. Például az ellenőrzés akkor történik meg, ha le szeretné tölteni a fájlokat az adattárból. Ha azonban csak módosítani szeretné az alapértelmezett adattárat, akkor az érvényesítés nem történik meg.
 
-A mögöttes tárolási szolgáltatáshoz való hozzáférésének hitelesítéséhez megadhatja a fiók kulcsát, a közös hozzáférésű aláírások (SAS) tokenjét vagy egyszerű szolgáltatásnevet a `register_azure_*()` létrehozni kívánt adattár-típus megfelelő metódusában. A [tárolási típus mátrixa](#matrix) felsorolja az egyes adattár-típusoknak megfelelő támogatott hitelesítési típusokat.
+A mögöttes tárolási szolgáltatáshoz való hozzáférésének hitelesítéséhez megadhatja a fiók kulcsát, a közös hozzáférési aláírások (SAS) jogkivonatait vagy a szolgáltatásnevet a `register_azure_*()` létrehozni kívánt adattár-típus megfelelő metódusában. A [tárolási típus mátrixa](#matrix) felsorolja az egyes adattár-típusoknak megfelelő támogatott hitelesítési típusokat.
 
 Megtalálhatja a fiók kulcsát, az SAS-tokent és az egyszerű szolgáltatásnév adatait a [Azure Portal](https://portal.azure.com).
 
@@ -113,7 +113,7 @@ Megtalálhatja a fiók kulcsát, az SAS-tokent és az egyszerű szolgáltatásn�
 
 ### <a name="permissions"></a>Engedélyek
 
-Az Azure Blob Container esetében és Azure Data Lake 2. generációs tárolóban ellenőrizze, hogy a hitelesítő adatai rendelkeznek-e **Storage blob-Adatolvasóval** . További információ a [Storage blob-Adatolvasóról](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader). 
+Az Azure Blob Container és Azure Data Lake 2. generációs tárolók esetében ellenőrizze, hogy a hitelesítési hitelesítő adatai rendelkeznek-e **Storage blob-Adatolvasóval** . További információ a [Storage blob-Adatolvasóról](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader). 
 
 <a name="python"></a>
 
@@ -202,7 +202,9 @@ adlsgen2_datastore = Datastore.register_azure_data_lake_gen2(workspace=ws,
 
 <a name="studio"></a>
 
+
 ## <a name="create-datastores-in-the-studio"></a>Adattárolók létrehozása a Studióban 
+
 
 Hozzon létre egy új adattárt néhány lépésben a Azure Machine Learning Studióval.
 
@@ -212,14 +214,13 @@ Hozzon létre egy új adattárt néhány lépésben a Azure Machine Learning Stu
 1. Jelentkezzen be [Azure Machine learning studióba](https://ml.azure.com/).
 1. A **kezelés** **alatt kattintson a** bal oldali ablaktábla adattárolók elemére.
 1. Válassza az **+ új adattár**lehetőséget.
-1. Töltse ki az űrlapot egy új adattárhoz. Az űrlap intelligens módon frissül saját maga, az Azure Storage-típus és a hitelesítési típus választása alapján. Az űrlap kitöltéséhez szükséges hitelesítő adatok megkereséséhez tekintse meg a [tárolási hozzáférés és engedélyek című szakaszt](#access-validation) .
+1. Töltse ki az űrlapot egy új adattárhoz. Az űrlap intelligens módon frissül saját maga, az Azure Storage-típus és a hitelesítési típus választása alapján. Az űrlap feltöltéséhez szükséges hitelesítő adatok megkereséséhez tekintse meg a [tárolási hozzáférés és engedélyek című szakaszt](#access-validation) .
 
 Az alábbi példa bemutatja, hogyan néz ki az űrlap az **Azure Blob-adattár**létrehozásakor: 
     
 ![Űrlap új adattárhoz](media/how-to-access-data/new-datastore-form.png)
 
 <a name="train"></a>
-
 ## <a name="use-data-in-your-datastores"></a>Adattárolók használata
 
 Az adattár létrehozása után [hozzon létre egy Azure Machine learning adatkészletet](how-to-create-register-datasets.md) az adataival való interakcióhoz. Az adatkészletek a gépi tanulási feladatokhoz, például a képzéshez egy lustán kiértékelt adatforrásba csomagolják az adatokat. Emellett lehetővé teszik az Azure Storage-szolgáltatásokból, például az Azure Blob Storage-ból és a ADLS-ből származó bármilyen formátumú fájlok [letöltését vagy csatlakoztatását](how-to-train-with-datasets.md#mount-vs-download) . A táblázatos adatokat egy Panda vagy Spark DataFrame is betöltheti.

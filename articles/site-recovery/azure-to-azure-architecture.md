@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 3/13/2020
 ms.author: raynew
-ms.openlocfilehash: e5daf318088cb71b6a1819db71e3c597a9fa94db
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 3cd64de05c44729f1aa714849e12fc8f69998334
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421450"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498616"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Az Azure-ból Azure-ba történő vészhelyreállítás architektúrája
 
@@ -34,7 +34,7 @@ Az Azure-beli virtuális gépek vész-helyreállításában részt vevő összet
 **Gyorsítótáras Storage-fiók** | A forrásoldali hálózatban szüksége lesz egy gyorsítótárbeli Storage-fiókra. A replikáció során a virtuális gépek módosításait a rendszer a gyorsítótárban tárolja, mielőtt elküldi őket a célként megadott tárhelyre.  A gyorsítótár-tárolási fiókoknak standard szintűnek kell lenniük.<br/><br/> A gyorsítótár használatával minimális hatással lehet a virtuális gépeken futó éles alkalmazásokra.<br/><br/> [További](azure-to-azure-support-matrix.md#cache-storage) információ a gyorsítótár tárolási követelményeiről. 
 **Cél erőforrásai** | A cél erőforrásait a rendszer a replikáció során, valamint feladatátvétel esetén használja. A Site Recovery alapértelmezés szerint beállíthatja a célként megadott erőforrást, vagy létrehozhat/testreszabhatja őket.<br/><br/> Győződjön meg arról, hogy a célként megadott régióban virtuális gépeket hozhat létre, és hogy az előfizetése elegendő erőforrással rendelkezik a megcélzott régióban szükséges virtuálisgép-méretek támogatásához. 
 
-![Forrás-és cél replikáció](./media/concepts-azure-to-azure-architecture/enable-replication-step-1-v2.png)
+![A forrás-és a cél replikálását bemutató ábra.](./media/concepts-azure-to-azure-architecture/enable-replication-step-1-v2.png)
 
 ## <a name="target-resources"></a>Cél erőforrásai
 
@@ -116,7 +116,7 @@ Az Azure-beli virtuális gépek replikálásának engedélyezésekor a következ
 4. Site Recovery feldolgozza a gyorsítótárban lévő adatokat, és elküldi azt a cél Storage-fiókba vagy a replikált felügyelt lemezekre.
 5. Az adatfeldolgozást követően az összeomlás-konzisztens helyreállítási pontok öt percenként jönnek létre. Az alkalmazással konzisztens helyreállítási pontok a replikációs házirendben megadott beállításnak megfelelően jönnek létre.
 
-![Replikációs folyamat engedélyezése, 2. lépés](./media/concepts-azure-to-azure-architecture/enable-replication-step-2-v2.png)
+![A replikációs folyamatot bemutató diagram, 2. lépés.](./media/concepts-azure-to-azure-architecture/enable-replication-step-2-v2.png)
 
 **Replikációs folyamat**
 
@@ -130,7 +130,7 @@ Ha a virtuális gépek kimenő hozzáférése URL-címekkel van vezérelve, enge
 
 | **Név**                  | **Kereskedelmi**                               | **Államigazgatás**                                 | **Leírás** |
 | ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
-| Tárolás                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`               | Lehetővé teszi az adatok írását a virtuális gépről a forrásrégió gyorsítótárjának tárfiókjába. |
+| Storage                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`               | Lehetővé teszi az adatok írását a virtuális gépről a forrásrégió gyorsítótárjának tárfiókjába. |
 | Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | Hitelesítést és engedélyezést biztosít a Site Recovery szolgáltatás URL-címeihez. |
 | Replikáció               | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`     | Lehetővé teszi a virtuális gép és a Site Recovery szolgáltatás közötti kommunikációt. |
 | Service Bus               | `*.servicebus.windows.net`                 | `*.servicebus.usgovcloudapi.net`             | Lehetővé teszi a virtuális gép számára a Site Recovery monitorozási és diagnosztikai adatainak írását. |
@@ -191,8 +191,8 @@ Ha engedélyezte a több virtuális gépre kiterjedő konzisztenciát, a replik�
 
 Feladatátvétel kezdeményezése esetén a virtuális gépek a célként megadott erőforráscsoporthoz, a célként megadott alhálózatra, valamint a cél rendelkezésre állási csoportba kerülnek. Feladatátvétel során bármelyik helyreállítási pontot használhatja.
 
-![Feladatátvételi folyamat](./media/concepts-azure-to-azure-architecture/failover-v2.png)
+![A feladatátvételi folyamatot bemutató diagram a forrás-és a célként megadott környezetekben.](./media/concepts-azure-to-azure-architecture/failover-v2.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Gyorsan replikálhat](azure-to-azure-quickstart.md) egy Azure-beli virtuális gépet egy másodlagos régióba.

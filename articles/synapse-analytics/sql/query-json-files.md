@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 8b95f6b6eca0f1464a7d09d2810aa66836d76f8f
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 04b2d7842222426010b76a1a7ed4c72ee74e3d87
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386639"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489724"
 ---
 # <a name="query-json-files-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>JSON-fájlok lekérdezése az SQL on-demand (előzetes verzió) használatával az Azure szinapszis Analyticsben
 
@@ -22,7 +22,7 @@ Ebből a cikkből megtudhatja, hogyan írhat egy lekérdezést az SQL on-demand 
 - Szabványos JSON-fájlok, amelyek több JSON-dokumentumot is tárolnak JSON-tömbként.
 - Sor-tagolt JSON-fájlok, ahol a JSON-dokumentumok a New-line karakterrel vannak elválasztva. Az ilyen típusú fájlok általános bővítményei:, `jsonl` `ldjson` és `ndjson` .
 
-## <a name="reading-json-documents"></a>JSON-dokumentumok olvasása
+## <a name="read-json-documents"></a>JSON-dokumentumok olvasása
 
 A JSON-fájl tartalmának megtekintésének legegyszerűbb módja a fájl URL-címének `OPENROWSET` megadásához, a CSV megadása `FORMAT` , valamint `0x0b` a és a értékének beállítása `fieldterminator` `fieldquote` . Ha el kell olvasnia a sorokra tagolt JSON-fájlokat, akkor ez elég. Ha klasszikus JSON-fájllal rendelkezik, meg kell adnia a értékeit `0x0b` `rowterminator` . `OPENROWSET`a függvény a JSON-t elemzi, és az összes dokumentumot a következő formátumban fogja visszaadni:
 
@@ -60,7 +60,7 @@ from openrowset(
 
 Ez a lekérdezés minden JSON-dokumentumot az eredményhalmaz külön soraként ad vissza. Győződjön meg arról, hogy el tudja érni ezt a fájlt. Ha a fájlt SAS-kulccsal vagy egyéni identitással védi, akkor az [SQL-bejelentkezéshez a kiszolgálói szintű hitelesítő adatokat](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential)kell beállítania. 
 
-### <a name="using-data-source"></a>Adatforrás használata
+### <a name="data-source-usage"></a>Adatforrás használata
 
 Az előző példa a fájl teljes elérési útját használja. Alternatív megoldásként létrehozhat egy külső adatforrást is, amely a tároló gyökérkönyvtárára mutat, és ezt az adatforrást és a fájl relatív elérési útját használja a következő `OPENROWSET` függvényben:
 
@@ -167,7 +167,7 @@ where country = 'Serbia'
 order by country, date_rep desc;
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A sorozat következő cikkei a következőket szemléltetik:
 

@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 35e75037b4bf759fe90d608be0682004d3d3f23c
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: fc306dbca3191f04a85f2c5cc88d41336c13e09c
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85480439"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496389"
 ---
 # <a name="sql-on-demand-preview-in-azure-synapse-analytics"></a>SQL on-demand (előzetes verzió) az Azure szinapszis Analytics szolgáltatásban 
 
@@ -31,7 +31,7 @@ Az SQL on-demand kiszolgáló nélküli, ezért nincs szükség a telepítéshez
 
 Ha az adatfolyamatban az Azure Szinapszishoz Apache Sparkt használ, az adatok előkészítése, tisztítása vagy dúsítása érdekében [lekérdezheti](develop-storage-files-spark-tables.md) a folyamat során létrehozott külső Spark-táblákat közvetlenül az SQL igény szerint. Használja a [privát hivatkozást](../security/how-to-connect-to-workspace-with-private-links.md) , hogy az SQL igény szerinti végpontját a [felügyelt munkaterület VNet](../security/synapse-workspace-managed-vnet.md)hozza.  
 
-## <a name="who-is-sql-on-demand-for"></a>Igény szerinti SQL-szolgáltatás
+## <a name="sql-on-demand-benefits"></a>Igény szerinti SQL-előnyök
 
 Ha meg kell vizsgálnia az adattárban lévő adatok elemzését, vagy a meglévő Adatátalakítási folyamat optimalizálását, igénybe veheti az SQL igény szerinti használatát. A következő esetekben alkalmas:
 
@@ -46,7 +46,7 @@ A különböző szakmai szerepkörök az SQL igény szerint részesülhetnek:
 - Az adatelemzők megtekinthetik az adatszakértők vagy adatmérnökök által létrehozott, ismerős T-SQL nyelvet vagy a kedvenc eszközeiket használó, az igénybe vehető SQL-eszközökhöz kapcsolódó [külső táblákat](develop-storage-files-spark-tables.md) .
 - A BI-szakemberek gyorsan [hozhatnak létre Power bi jelentéseket a Lake és a](tutorial-connect-power-bi-desktop.md) Spark tábláiban.
 
-## <a name="what-do-i-need-to-do-to-start-using-it"></a>Mit kell tennem a használat megkezdéséhez?
+## <a name="how-to-start-using-sql-on-demand"></a>Az SQL igény szerinti használatának megkezdése
 
 Az igény szerinti SQL-végpont minden Azure-beli szinapszis-munkaterületen elérhető. Létrehozhat egy munkaterületet, és azonnal megkezdheti az adatlekérdezést az Ön által jól ismert eszközök használatával.
 
@@ -54,7 +54,7 @@ Az igény szerinti SQL-végpont minden Azure-beli szinapszis-munkaterületen el�
 
 Az SQL on-demand lehetővé teszi a meglévő SQL ad-hoc lekérdezési és üzleti intelligenciát használó eszközök használatát a (z) adatközpontba. Ahogy a jól ismert T-SQL-szintaxist nyújt, a TDS-kapcsolati SQL-ajánlatokat kiépítő bármely eszköz [csatlakozhat és lekérdezheti a SZINAPSZIS SQL igény szerinti elérését](connect-overview.md) . A Azure Data Studiohoz csatlakozhat, és alkalmi lekérdezéseket futtathat, vagy csatlakozhat a Power BIhoz, és percek alatt megszerezheti a betekintést.
 
-## <a name="is-full-t-sql-supported"></a>A teljes T-SQL támogatott?
+## <a name="t-sql-support"></a>T-SQL-támogatás
 
 Az SQL on-demand a T-SQL lekérdezési felületét kínálja, amely némileg kibővített/bővíthető bizonyos aspektusokban, hogy a részben strukturált és strukturálatlan adatmennyiségek lekérdezéséhez igazodjon. Emellett a T-SQL nyelv néhány aspektusa nem támogatott az SQL igény szerinti kialakítása miatt, például a DML funkció jelenleg nem támogatott.
 

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 06/17/2020
 ms.topic: conceptual
 ms.custom: how-to, has-adal-ref, devx-track-javascript
-ms.openlocfilehash: 867babcf7160ce6e589197be0a3186e5a2156238
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 4061d7a3d21b8c2db2bf161c422994cb2742b0b4
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423575"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489877"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Azure Machine Learning erőforrások és munkafolyamatok hitelesítésének beállítása
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -67,7 +67,7 @@ A dokumentációban és a mintákban a legtöbb példa interaktív hitelesítés
 
 ## <a name="service-principal-authentication"></a>Egyszerű szolgáltatásnév hitelesítése
 
-Az egyszerű szolgáltatásnév (SP) hitelesítéséhez először létre kell hoznia az SP-t, és hozzáférést kell biztosítania a munkaterülethez. Ahogy azt korábban említettük, az Azure szerepköralapú hozzáférés-vezérlés (RBAC) használatával szabályozható a hozzáférés, ezért azt is el kell döntenie, hogy milyen hozzáférést biztosít az SP-nek.
+Az egyszerű szolgáltatásnév (SP) hitelesítéséhez először létre kell hoznia az SP-t, és hozzáférést kell biztosítania a munkaterülethez. Ahogy azt korábban említettük, az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával szabályozható a hozzáférés, ezért azt is el kell döntenie, hogy milyen hozzáférést biztosít az SP számára.
 
 > [!IMPORTANT]
 > Egyszerű szolgáltatásnév használata esetén adja meg a által használt __feladathoz szükséges minimális hozzáférést__ . Előfordulhat például, hogy nem ad meg egy egyszerű szolgáltatás tulajdonosának vagy közreműködői hozzáférését, ha az az összes használatban van a webes telepítés hozzáférési jogkivonatának beolvasásához.
@@ -378,7 +378,7 @@ print(token)
 >
 > Továbbá minél nagyobb a távolság a fürt régiója és a munkaterület régiója között, annál hosszabb ideig tart a token beolvasása.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A [titkok használata a képzésben](how-to-use-secrets-in-runs.md).
 * [Rendszerkép-besorolási modell betanítása és üzembe helyezése](tutorial-train-models-with-aml.md).

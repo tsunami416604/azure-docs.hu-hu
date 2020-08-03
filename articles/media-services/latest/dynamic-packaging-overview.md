@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 06/11/2020
+ms.date: 07/31/2020
 ms.author: juliako
-ms.openlocfilehash: f019ebd59b2d0b9d6bae8a5dc4904f1bcae0e6c1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 032a3c719610d658ec32492033a04a610117643d
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090110"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489775"
 ---
 # <a name="dynamic-packaging-in-media-services-v3"></a>Dinamikus csomagolás a Media Services v3-ban
 
@@ -33,6 +33,8 @@ Media Services a streaming- [végpont](streaming-endpoint-concept.md) (forrás) 
 ## <a name="to-prepare-your-source-files-for-delivery"></a>A forrásfájlok előkészítése a kézbesítéshez
 
 A dinamikus csomagolás kihasználása érdekében a közbenső (forrás) fájlt több bitrátás MP4-(ISO Base Media 14496-12) fájlba kell [kódolnia](encoding-concept.md) . Media Services dinamikus csomagoláshoz szükséges, kódolt MP4-és folyamatos átviteli konfigurációs fájlokkal rendelkező [eszközre](assets-concept.md) van szükség. Ebből az MP4-fájlokból a dinamikus csomagolás használatával továbbíthatja a videókat az alább ismertetett Streaming Media-protokollok segítségével.
+
+Azure Media Services a dinamikus csomagolás csak az MP4-tároló formátumában támogatja a videó-és hangfájlokat. A hangfájlokat MP4-tárolóba kell kódolni, valamint alternatív kodekek, például a Dolby használata esetén.  
 
 > [!TIP]
 > Az MP4 és a streaming konfigurációs fájlok beszerzésének egyik módja, ha a [köztes fájlt a Media Services használatával kódolja](#encode-to-adaptive-bitrate-mp4s). 
@@ -87,7 +89,7 @@ A következő ábra az igény szerinti folyamatos átvitelt mutatja be dinamikus
 
 ![Az igény szerinti folyamatos átvitelre szolgáló munkafolyamat ábrája dinamikus csomagolással](./media/dynamic-packaging-overview/media-services-dynamic-packaging.svg)
 
-A letöltési útvonal a fenti képen látható, hogy az MP4-fájlok közvetlenül a *streaming végponton* (forrás) keresztül tölthetők le (az adatfolyam-keresőben a letölthető [adatfolyam-szabályzatot](streaming-policy-concept.md) kell megadnia).<br/>A dinamikus csomagoló nem módosítja a fájlt. 
+A letöltési útvonal a fenti képen látható, hogy az MP4-fájlok közvetlenül a *streaming végponton* (forrás) keresztül tölthetők le (az adatfolyam-keresőben a letölthető [adatfolyam-szabályzatot](streaming-policy-concept.md) kell megadnia).<br/>A dinamikus csomagoló nem módosítja a fájlt. Igény szerint az Azure Blob Storage API-kkal közvetlenül is elérheti az MP4-t, ha szeretné megkerülni az *adatfolyam-végpont* (forrás) funkcióit. 
 
 ### <a name="encode-to-adaptive-bitrate-mp4s"></a>Kódolás adaptív sávszélességű MP4
 
@@ -123,17 +125,17 @@ További információ a Media Services v3 élő közvetítéséről: [élő köz
 
 ## <a name="video-codecs-supported-by-dynamic-packaging"></a>Dinamikus csomagolás által támogatott videó-kodekek
 
-A dinamikus csomagolás támogatja a [h. 264](https://en.m.wikipedia.org/wiki/H.264/MPEG-4_AVC) (MPEG-4 AVC vagy AVC1) és a [h. 265](https://en.m.wikipedia.org/wiki/High_Efficiency_Video_Coding) (HEVC, hev1 vagy hvc1) kódolású videókat tartalmazó MP4-fájlokat.
+A dinamikus csomagolás támogatja az MP4-tároló fájlformátumában lévő videofájlokat, és a [h. 264](https://en.m.wikipedia.org/wiki/H.264/MPEG-4_AVC) (MPEG-4 AVC vagy AVC1) és [h. 265](https://en.m.wikipedia.org/wiki/High_Efficiency_Video_Coding) (HEVC, hev1 vagy hvc1) kódolású videókat tartalmaz.
 
 > [!NOTE]
 > Akár 4K-ig terjedő, akár 60-es képkockákból álló és a frame sebességű, *dinamikus csomagolással*tesztelt felbontások is megoldhatók. A [prémium szintű kódoló](../previous/media-services-encode-asset.md#media-encoder-premium-workflow) támogatja a H. 265 kódolást az örökölt v2 API-kon keresztül.
 
 ## <a name="audio-codecs-supported-by-dynamic-packaging"></a>Dinamikus csomagolás által támogatott hangkodekek
 
-A dinamikus csomagolás támogatja a következő protokollokkal kódolt hanganyagot:
+A dinamikus csomagolás a következő kodekek egyikében is támogatja a kódolt hangadatfolyamot tartalmazó MP4 file Container formátumban tárolt hangfájlokat:
 
-* [AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding) (AAC-LC, it-AAC v1 vagy it-AAC v2)
-* [Dolby Digital Plus](https://en.wikipedia.org/wiki/Dolby_Digital_Plus) (bővített AC-3 vagy E-AC3)
+* [AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding) (AAC-LC, it-AAC v1 vagy it-AAC v2). 
+* [Dolby Digital Plus](https://en.wikipedia.org/wiki/Dolby_Digital_Plus) (bővített AC-3 vagy E-AC3).  A kódolt hangot MP4-tároló formátumban kell tárolni, hogy dinamikus csomagolással működjön.
 * Dolby Atmos
 
    A folyamatos átviteli Dolby Atmos-tartalom olyan szabványok esetében támogatott, mint például az MPEG-DASH protokoll a Common Streaming Format (CSF) vagy a Common Media Application Format (CMAF) darabolt MP4-vel, valamint a (z) HTTP Live Streaming (HLS) és a CMAF használatával.
@@ -146,6 +148,10 @@ A dinamikus csomagolás támogatja a következő protokollokkal kódolt hanganya
     * DTS-HD veszteségmentes (nincs mag) (DTSL)
 
 A dinamikus csomagolás több hangsávot is támogat a DASH vagy a HLS (4-es vagy újabb verzió) esetében, így több, több kodekkel és nyelvtel rendelkező hangsávot tartalmazó adatfolyam-továbbítási eszköz is használható.
+
+A fenti hangkodekek esetében a kódolt hangot az MP4-tároló formátumában kell tárolni, hogy a dinamikus csomagolás működjön. A szolgáltatás nem támogatja a nyers elemes adatfolyam-fájlformátumokat a blob Storage-ban (például a következők nem támogatottak:. DTS,. AC3.) 
+
+A hangcsomagoláshoz csak a. mp4 kiterjesztésű fájlok támogatottak. 
 
 ### <a name="limitations"></a>Korlátozások
 

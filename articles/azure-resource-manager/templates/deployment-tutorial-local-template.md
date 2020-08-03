@@ -4,12 +4,13 @@ description: Megtudhatja, hogyan helyezhet üzembe egy Azure Resource Manager sa
 ms.date: 05/20/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 3112c3940f9d2668f4825de3c2e57a63af009d92
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: ef52d20b20446e3b8f3b761949bf255b99d358cc
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118902"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499585"
 ---
 # <a name="tutorial-deploy-a-local-azure-resource-manager-template"></a>Oktatóanyag: helyi Azure Resource Manager sablon üzembe helyezése
 
@@ -25,7 +26,7 @@ Kezdjük azzal, hogy megbizonyosodjon arról, hogy rendelkezik a sablonok üzemb
 
 A sablon üzembe helyezéséhez Azure PowerShell vagy Azure CLI szükséges. A telepítési utasításokért lásd:
 
-- [Az Azure PowerShell telepítése](/powershell/azure/install-az-ps)
+- [Azure PowerShell telepítése](/powershell/azure/install-az-ps)
 - [Az Azure CLI telepítése Windows rendszeren](/cli/azure/install-azure-cli-windows)
 - [Az Azure CLI telepítése Linux rendszeren](/cli/azure/install-azure-cli-linux)
 
@@ -151,7 +152,7 @@ Ha többet szeretne megtudni a sablon Azure CLI használatával történő telep
 
 ---
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Az erőforráscsoport törlésével törölje az üzembe helyezett erőforrásokat.
 
@@ -160,7 +161,7 @@ Az erőforráscsoport törlésével törölje az üzembe helyezett erőforrások
 3. Válassza ki az erőforráscsoport nevét.
 4. Válassza az **erőforráscsoport törlése** lehetőséget a felső menüben.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Megtanulta, hogyan helyezhet üzembe egy helyi sablont. A következő oktatóanyagban elkülöníti a sablont egy fő sablonba és egy csatolt sablonba, és megtudhatja, hogyan tárolhatja és biztonságossá teheti a csatolt sablont.
 

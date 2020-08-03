@@ -6,13 +6,13 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 07/09/2020
-ms.openlocfilehash: aabb42dc8d86e500875819cbfc169bcc86733219
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 07/30/2020
+ms.openlocfilehash: e492a5f0afdfc2087e5719df65221d08db0a2e77
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87102063"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499551"
 ---
 # <a name="quickstart-create-and-manage-logic-apps-using-the-azure-cli"></a>Gyors útmutató: logikai alkalmazások létrehozása és kezelése az Azure CLI használatával
 
@@ -221,7 +221,7 @@ Az eredményeket a következő [választható paraméterek](/cli/azure/ext/logic
 | --------- | ----- | ----------- |
 | Erőforráscsoport neve | `--resource-group -g` | Azon erőforráscsoport neve, amelynek alapján szűrni kívánja az eredményeket. |
 | Elemek száma | `--top` | Az eredményekben szereplő elemek száma. |
-| Szűrő | `--filter` | A listában használt szűrő típusa. Szűrheti az állapot ( `State` ), a trigger ( `Trigger` ) és a hivatkozott erőforrás () azonosítóját `ReferencedResourceId` . |
+| Szűrés | `--filter` | A listában használt szűrő típusa. Szűrheti az állapot ( `State` ), a trigger ( `Trigger` ) és a hivatkozott erőforrás () azonosítóját `ReferencedResourceId` . |
 
 ```azurecli
 
@@ -271,3 +271,11 @@ A parancsokkal a következő opcionális globális Azure CLI-paramétereket hasz
 | Hibakeresés | `--debug` | Megjeleníti az összes hibakeresési naplót. |
 | Súgó üzenet | `--help -h` | Súgó megjelenítése párbeszédpanel. |
 | Lekérdezés | `--query` | JMESPath lekérdezési karakterlánc beállítása a JSON-kimenethez. |
+
+## <a name="next-steps"></a>További lépések
+
+Az Azure CLI-vel kapcsolatos további információkért tekintse meg az [Azure CLI dokumentációját](/cli/azure/?view=azure-cli-latest).
+
+Az alapszintű logikai alkalmazások parancssori felülettel történő létrehozásával kapcsolatos példát a [minta parancsfájl és a munkafolyamat definíciója](sample-logic-apps-cli-script.md)tartalmazza.
+
+További Logic Apps CLI-szkripteket a [Microsoft Code Samples böngészőben](/samples/browse/?products=azure-logic-apps)talál.

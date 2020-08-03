@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 60f2a1992750950b50995fcf36513e44e377004d
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: fb56c4da77ddeb87ebc3724a3b138994e4da98e7
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386605"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489690"
 ---
 # <a name="query-nested-types-in-parquet-and-json-files-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>Beágyazott típusok lekérdezése a parketta és a JSON-fájlokban az SQL on-demand (előzetes verzió) használatával az Azure szinapszis Analyticsben
 
@@ -203,7 +203,7 @@ FROM
 
 A struktúra `MapOfPersons` oszlopként lesz visszaadva, `VARCHAR` és JSON-sztringként van formázva.
 
-## <a name="projecting-values-from-repeated-columns"></a>Értékek kivetítése ismétlődő oszlopokból
+## <a name="project-values-from-repeated-columns"></a>Projekt értékei ismétlődő oszlopokból
 
 Ha egyes oszlopokban skaláris értékek (például) tömbje van `[1,2,3]` , egyszerűen kibonthatja őket, és a fő sorral csatlakoztathatja őket a következő parancsfájl használatával:
 
@@ -219,6 +219,6 @@ FROM
     CROSS APPLY OPENJSON (SimpleArray) WITH (Element int '$') as array_values
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A következő cikk bemutatja, hogyan lehet [lekérdezni a JSON-fájlokat](query-json-files.md).

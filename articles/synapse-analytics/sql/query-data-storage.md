@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 7ef7a771442dba5c7f82196a13b77cb28b0d1ed8
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 93e6b373aa125facb3a3eddecc926438c919b335
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386656"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489741"
 ---
 # <a name="query-storage-files-using-sql-on-demand-preview-resources-within-synapse-sql"></a>Storage-fájlok lekérdezése az SQL on-demand (előzetes verzió) erőforrásain belül a szinapszis SQL-ben
 
@@ -90,7 +90,7 @@ WITH (
 ```
 
 Minden oszlop esetében meg kell adnia az oszlopnév nevet és a Type in `WITH` záradékot.
-Minták esetében tekintse meg a [CSV-fájlok olvasása az összes oszlop megadása nélkül](query-single-csv-file.md#returning-subset-of-columns)című témakört.
+Minták esetében tekintse meg a [CSV-fájlok olvasása az összes oszlop megadása nélkül](query-single-csv-file.md#return-a-subset-of-columns)című témakört.
 
 ## <a name="schema-inference"></a>Séma-következtetés
 
@@ -248,7 +248,7 @@ A demo-adat a következő adatkészleteket tartalmazza:
 - Parketta-fájlok beágyazott oszlopokkal
 - Könyvek JSON formátumban
 
-| Mappa elérési útja                                                  | Description                                                  |
+| Mappa elérési útja                                                  | Leírás                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | CSV                                                        | CSV formátumú adatszülő mappa                         |
 | /csv/population/<br />/csv/population-unix/<br />/csv/population-unix-hdr/<br />/csv/population-unix-hdr-escape<br />/csv/population-unix-hdr-quoted | Különböző CSV formátumú adatfájlokkal rendelkező mappák. |
@@ -260,7 +260,7 @@ A demo-adat a következő adatkészleteket tartalmazza:
 | /json/books/                                                 | Könyvekből származó JSON-fájlok                                   |
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A különböző fájltípusok lekérdezésével, valamint a nézetek létrehozásával és használatával kapcsolatos további információkért tekintse meg a következő cikkeket:
 

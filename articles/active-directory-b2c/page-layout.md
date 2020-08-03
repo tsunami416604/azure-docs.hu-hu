@@ -8,21 +8,29 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/26/2020
+ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3d0cb06f84fdd96d099e05f55ba62c37cb1192c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4548b50e4168f260cb401c40dd4e61192cea1015
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78183975"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489537"
 ---
 # <a name="page-layout-versions"></a>Oldalelrendezési verziók
 
 A lapelrendezés-csomagok rendszeres időközönként frissülnek, hogy tartalmazzanak javításokat és javításokat a lapok elemeiben. A következő változási napló meghatározza az egyes verziókban bevezetett módosításokat.
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
+
+## <a name="210"></a>2.1.0
+
+- Önérvényesített lap ( `selfasserted` )
+  - Honosítási és kisegítő lehetőségek javításai.
+- Egyesített SSP-lap ( `unifiedssp` )
+  - Több regisztrációs hivatkozás támogatása.
+  - A felhasználói bevitel érvényesítésének támogatása a szabályzatban meghatározott predikátum-szabályoknak megfelelően.
 
 ## <a name="200"></a>2.0.0
 
@@ -40,6 +48,8 @@ A lapelrendezés-csomagok rendszeres időközönként frissülnek, hogy tartalma
   - A Chrome fordításának támogatása
 - Egyesített és önérvényesített lapok
   - A Felhasználónév/e-mail és jelszó mezők mostantól a `form` HTML-elemmel lehetővé teszik az Edge és az Internet Explorer (IE) számára az adatok megfelelő mentését.
+- Saját maga által érvényesített oldal
+  - Egy konfigurálható felhasználói bemeneti ellenőrzési késleltetés lett hozzáadva a továbbfejlesztett felhasználói élményhez.
 
 ## <a name="110"></a>1.1.0
 

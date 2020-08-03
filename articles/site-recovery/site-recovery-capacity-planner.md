@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: a622179d1e83b41e906a9d276377f5c9474264b9
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: a5764e44db31755110ac99a3e8e8e0984cdf9604
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86129968"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87490574"
 ---
 # <a name="plan-capacity-for-hyper-v-vm-disaster-recovery"></a>A Hyper-V virtuális gép vész-helyreállítási kapacitásának megtervezése 
 
@@ -47,7 +47,7 @@ Az eszközt két módban is futtathatja:
 
 2. A **Planner típusának kiválasztása** listában válassza a **gyors Planner**elemet.
 
-   ![Bevezetés](./media/site-recovery-capacity-planner/getting-started.png)
+   ![Képernyőkép a tervező típusának kiválasztása lehetőségről, a gyors Planner kiválasztásával.](./media/site-recovery-capacity-planner/getting-started.png)
 
 3. A **Capacity Planner** munkalapon adja meg a szükséges adatokat. Töltse ki az összes piros színnel jelölt mezőt a következő képernyőképen:
 
@@ -61,7 +61,7 @@ Az eszközt két módban is futtathatja:
 
    e. Azon **órák száma, amelyekben a virtuális gépek kezdeti replikálása szükséges** , és a **virtuális gépek száma kezdeti replikálási kötegben**, a kezdeti replikációs követelmények kiszámításához használt beállítások megadása. Site Recovery telepítésekor a rendszer feltölti a teljes kezdeti adatkészletet.
 
-   ![Bevitelek](./media/site-recovery-capacity-planner/inputs.png)
+   ![Képernyőkép a Capacity Planner munkalapról, amely a szükséges bemeneti adatokat mutatja.](./media/site-recovery-capacity-planner/inputs.png)
 
 4. A forrás-környezet értékeinek megadása után a megjelenített kimenet a következőket tartalmazza:
 
@@ -77,7 +77,7 @@ Az eszközt két módban is futtathatja:
    * **További szükséges folyamat-kiszolgálók száma**: azt mutatja, hogy szükség van-e további folyamat-kiszolgálókra a konfigurációs kiszolgálón futó folyamaton kívül alapértelmezés szerint.
    * **100%-os további tárterület a forráson**: azt mutatja, hogy szükséges-e további tárterület a forrás helyén.
 
-      ![Kimenet](./media/site-recovery-capacity-planner/output.png)
+      ![Képernyőkép a megjelenített kimenetről a megadott bemenet alapján.](./media/site-recovery-capacity-planner/output.png)
 
 ## <a name="run-the-detailed-planner"></a>A részletes Planner futtatása
 
@@ -85,7 +85,7 @@ Az eszközt két módban is futtathatja:
 
 2. A **tervező típusának kiválasztása**mezőben válassza a **részletes Planner** elemet a listából.
 
-   ![Útmutató az első lépésekhez](./media/site-recovery-capacity-planner/getting-started-2.png)
+   ![Képernyőkép a tervező típusának kiválasztása beállításról, a részletes Planner kiválasztásával.](./media/site-recovery-capacity-planner/getting-started-2.png)
 
 3. A **munkaterhelés-minősítés** munkalapon adja meg a szükséges adatokat. Ki kell töltenie az összes megjelölt mezőt.
 
@@ -105,7 +105,7 @@ Az eszközt két módban is futtathatja:
 
    h. Az **Azure-beli virtuális gép méretének leképezése**mezőben adja meg a leképezni kívánt Azure-beli virtuális gép méretét. Ha ezt manuálisan nem szeretné elvégezni, válassza a **számítási IaaS virtuális gépek**lehetőséget. Ha a manuális beállítást adja meg, majd kiválasztja a **számítási IaaS virtuális gépek**lehetőséget, előfordulhat, hogy a manuális beállítás felül van írva. A számítási folyamat automatikusan azonosítja az Azure-beli virtuális gépek méretének legmegfelelőbb egyezését.
 
-   ![Munkaterhelés-minősítési munkalap](./media/site-recovery-capacity-planner/workload-qualification.png)
+   ![Képernyőkép a munkaterhelés-minősítési munkalapról, amely a szükséges bemeneti adatokat jeleníti meg.](./media/site-recovery-capacity-planner/workload-qualification.png)
 
 4. Ha a **számítási IaaS virtuális gépek**lehetőséget választja, a következőkre van szüksége:
 
@@ -117,12 +117,12 @@ Az eszközt két módban is futtathatja:
 
 Az AA – AE oszlopok kimenete és az egyes virtuális gépek adatainak megadása.
 
-![Kimeneti oszlopok AA – AE](./media/site-recovery-capacity-planner/workload-qualification-2.png)
+![Képernyőfelvétel: AA kimeneti oszlopok az AK-ba.](./media/site-recovery-capacity-planner/workload-qualification-2.png)
 
 ### <a name="example"></a>Példa
 Ha például hat virtuális gép esetében a táblázatban látható értékek szerepelnek, az eszköz kiszámítja és hozzárendeli a legjobb Azure-beli virtuális gép egyeztetését és az Azure Storage követelményeit.
 
-![Munkaterhelés-minősítési hozzárendelések](./media/site-recovery-capacity-planner/workload-qualification-3.png)
+![A munkaterhelés-minősítési hozzárendeléseket bemutató képernyőkép.](./media/site-recovery-capacity-planner/workload-qualification-3.png)
 
 * A példában a kimenetben vegye figyelembe a következőket:
 
@@ -144,7 +144,7 @@ Az összes adat megadása után válassza **az adatok elküldése a Planner eszk
 
 2. Ha módosításokat szeretne végezni, módosítania kell a **munkaterhelés-minősítési** munkalapot. Ezután válassza **az adatküldés a Planner eszközre** lehetőséget.
 
-   ![Capacity Planner](./media/site-recovery-capacity-planner/capacity-planner.png)
+   ![A módosított bemeneteket és az eredményül kapott kimeneteket ábrázoló képernyőkép a Capacity Planner munkalapon.](./media/site-recovery-capacity-planner/capacity-planner.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Megtudhatja, hogyan futtathatja](./hyper-v-deployment-planner-overview.md) a kapacitás-tervezési eszközt.

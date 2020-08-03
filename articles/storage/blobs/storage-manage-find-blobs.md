@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: hux
-ms.openlocfilehash: 637bdb02cd9fc5296c74633bbfa381e62673a4bf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5b41609ec2b7cc9880fb22a76b9e3b40c315bc3c
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85355658"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499874"
 ---
 # <a name="manage-and-find-data-on-azure-blob-storage-with-blob-index-preview"></a>Azure Blob Storage-beli adatkezelés és-keresés a blob-Indextel (előzetes verzió)
 
@@ -63,7 +63,7 @@ A blobon több címkét is alkalmazhat, hogy az adatai jobban meglegyenek.
 > "Priority" = "01" 
 >
 
-A meglévő index címke attribútumainak módosításához először le kell kérnie a meglévő címke attribútumait, módosítania kell a címke attribútumait, és cserélnie kell a SetBlobTags művelettel. Ha az összes index címkét el szeretné távolítani a blobból, hívja meg a SetBlobTags műveletet, és ne adja meg a címke attribútumait. Mivel a blob-index címkéi a blob-adattartalomhoz tartozó alerőforrások, a SetBlobTags nem módosítja a mögöttes tartalmakat, és nem módosítja a blob utolsó módosításának idejét vagy ETag (Entity címke). A jelenlegi alapblobok és a korábbi verziók indexelési címkéi is létrehozhatók vagy módosíthatók. a pillanatképek vagy a törölt Blobok címkéi azonban nem módosíthatók. 
+A meglévő index címke attribútumainak módosításához először le kell kérnie a meglévő címke attribútumait, módosítania kell a címke attribútumait, és cserélnie kell a SetBlobTags művelettel. Ha az összes index címkét el szeretné távolítani a blobból, hívja meg a SetBlobTags műveletet, és ne adja meg a címke attribútumait. Mivel a blob-index címkéi a blob-adattartalomhoz tartozó alerőforrások, a SetBlobTags nem módosítja a mögöttes tartalmakat, és nem módosítja a blob utolsó módosításának idejét vagy eTag (Entity címke). A jelenlegi alapblobok és a korábbi verziók indexelési címkéi is létrehozhatók vagy módosíthatók. a pillanatképek vagy a törölt Blobok címkéi azonban nem módosíthatók. 
 
 A következő korlátozások vonatkoznak a blob index címkékre:
 - Minden blob legfeljebb 10 blob-index címkével rendelkezhet
@@ -100,10 +100,10 @@ Az alábbi táblázatban a FindBlobsByTags összes érvényes operátora láthat
 |  Operátor  |  Leírás  | Példa |
 |------------|---------------|---------|
 |     =      |     Egyenlő     | "Status" = "folyamatban" | 
-|     >      |  Nagyobb, mint |  "Date" > "2018-06-18" |
+|     >      |  Nagyobb |  "Date" > "2018-06-18" |
 |     >=     |  Nagyobb vagy egyenlő mint | "Prioritás" >= "5" | 
-|     <      |  Kisebb, mint    | "Age" < "32" |
-|     <=     |  Kisebb vagy egyenlő mint  | "Cég" <= "contoso" |
+|     <      |  Kisebb    | "Age" < "32" |
+|     <=     |  Kisebb vagy egyenlő  | "Cég" <= "contoso" |
 |    AND     |  Logikai és  | "Rang" >= "010" és "Rank" < "100" |
 | @container |  Hatókör egy adott tárolóra   | @container= "videofiles" és "status" = "kész" |
 
@@ -125,10 +125,10 @@ Az alábbi táblázatban a feltételes műveletek összes érvényes operátora 
 |------------|---------------|---------|
 |     =      |     Egyenlő     | "Status" = "folyamatban" |
 |     <>     |   Nem egyenlő   | "Állapot"  <>  "kész"  | 
-|     >      |  Nagyobb, mint |  "Date" > "2018-06-18" |
+|     >      |  Nagyobb |  "Date" > "2018-06-18" |
 |     >=     |  Nagyobb vagy egyenlő mint | "Prioritás" >= "5" | 
-|     <      |  Kisebb, mint    | "Age" < "32" |
-|     <=     |  Kisebb vagy egyenlő mint  | "Cég" <= "contoso" |
+|     <      |  Kisebb    | "Age" < "32" |
+|     <=     |  Kisebb vagy egyenlő  | "Cég" <= "contoso" |
 |    AND     |  Logikai és  | "Rang" >= "010" és "Rank" < "100" |
 |     VAGY     |  Logikai vagy   | "Status" = "kész" vagy "priority" >= "05" |
 
@@ -228,7 +228,7 @@ A következő engedélyek engedélyezhetők a Container Service SAS-ben a blob-c
 
 |  Engedély  |  URI-szimbólum  | Engedélyezett műveletek |
 |--------------|--------------|--------------------|
-| Címkék indexelése     |      nő       | Blobok keresése blob-indextel címkékkel | 
+| Címkék indexelése     |      f       | Blobok keresése blob-indextel címkékkel | 
 
 ## <a name="choosing-between-metadata-and-blob-index-tags"></a>A metaadatok és a blob-index címkék közötti választás 
 A blob-index címkéi és metaadatai egyaránt lehetővé teszik a felhasználó által definiált kulcs/érték tulajdonságok tetszőleges számú tárolását egy blob-erőforrás mellett. Mindkettő lekérhető és beállítható közvetlenül a blob tartalmának visszaküldése vagy módosítása nélkül. A metaadatok és az indexelési címkék egyaránt használhatók.
@@ -293,6 +293,7 @@ Ez a szakasz a blob index aktuális nyilvános előzetes verziójának ismert pr
 -   A fiók feladatátvétele jelenleg nem támogatott. Előfordulhat, hogy a blob-index nem frissül megfelelően a feladatátvétel után.
 -   Az életciklus-kezelés jelenleg csak az esélyegyenlőségi ellenőrzéseket támogatja a blob-index egyeztetésével.
 -   A CopyBlob nem másol blob-index címkéket a forrás blobból az új cél blobba. A másolási művelet során megadhatja a cél blobra alkalmazni kívánt címkéket. 
+- A CopyBlob (aszinkron másolás) egy másik Storage-fiókból, a célként megadott blobon alkalmazott címkék használatával jelenleg a blob indexelő motorja nem adja vissza a blobot és annak címkéit a szűrő készletében. A CopyBlob URL-címről (szinkronizálási másolat) a közbenső időpontban ajánlott használni.
 -   A címkék megmaradnak a pillanatképek létrehozásán; a pillanatképek előléptetése azonban jelenleg nem támogatott, és egy üres kódelemet eredményezhet.
 
 ## <a name="faq"></a>GYIK
@@ -308,5 +309,7 @@ Nem, Azure Resource Manager címkék segítenek megszervezni a vezérlési sík 
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse meg a blob-index felhasználásának példáját. Lásd: [blob-index felhasználása az adatkezeléshez és az adatkereséshez](storage-blob-index-how-to.md)
+A blob index kihasználása például a [blob index használata az adatkezeléshez és az adatkereséshez](storage-blob-index-how-to.md)című témakörben olvasható.
+
+Ismerje meg az [életciklus-kezelést](storage-lifecycle-management-concepts.md) , és állítson be egy szabályt a blob-index egyezésével.
 

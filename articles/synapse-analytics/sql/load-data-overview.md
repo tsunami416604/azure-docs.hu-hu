@@ -10,14 +10,14 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: ca1f535c7f2d949e1f71a06ba9efab2818ee0201
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 31e1eb952bb37f5864e296811ba6e61bb0e58320
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87046775"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87490285"
 ---
-# <a name="designing-a-polybase-data-loading-strategy-for-azure-synapse-sql-pool"></a>Alapszintű betöltési stratégia tervezése az Azure szinapszis SQL-készlethez
+# <a name="design-a-polybase-data-loading-strategy-for-azure-synapse-sql-pool"></a>Alapszintű betöltési stratégia kialakítása az Azure szinapszis SQL-készlethez
 
 A hagyományos SMP-adattárházak kinyerési, átalakítási és betöltési (ETL) folyamatot használnak az adatok betöltéséhez. Az Azure SQL Pool egy nagymértékben párhuzamos feldolgozási (MPP) architektúra, amely kihasználja a számítási és tárolási erőforrások méretezhetőségét és rugalmasságát. A kinyerési, betöltési és átalakítási (ELT) folyamat használatával kihasználhatja az MPP előnyeit, és kiszűrheti az adatoknak a betöltés előtt való átalakításához szükséges erőforrásokat.
 
@@ -25,7 +25,7 @@ Míg az SQL-készlet számos betöltési módszert támogat, többek között a 
 
 > [!VIDEO https://www.youtube.com/embed/l9-wP7OdhDk]
 
-## <a name="what-is-elt"></a>Mi az a ELT?
+## <a name="extract-load-and-transform-elt"></a>Kinyerési, betöltési és átalakítási (ELT)
 
 A kinyerési, betöltési és átalakítási (ELT) folyamat során a rendszer kinyeri az adatforrásrendszer adatait, betölti azokat egy adattárházba, majd átalakítja azokat.
 

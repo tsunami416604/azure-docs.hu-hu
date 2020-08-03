@@ -3,12 +3,13 @@ title: Az Azure Service Fabric Mesh alkalmazás titkainak kezelése
 description: Az alkalmazási titkokat felügyelheti, így biztonságosan hozhat létre és helyezhet üzembe egy Service Fabric Mesh-alkalmazást.
 ms.date: 4/2/2019
 ms.topic: conceptual
-ms.openlocfilehash: d7946092a0bebe374404870fcd711ad33cc98b11
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 379560b73c38558fe0b712ed5e036c7a3736b600
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75461932"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500708"
 ---
 # <a name="manage-service-fabric-mesh-application-secrets"></a>Service Fabric Mesh-alkalmazás titkainak kezelése
 Service Fabric Mesh a titkokat Azure-erőforrásokként támogatja. A Service Fabric Mesh titkos kulcsa lehet bármilyen bizalmas szöveges információ, például a tárolási kapcsolatok sztringje, jelszava vagy más olyan érték, amelyet biztonságosan kell tárolni és továbbítani. Ez a cikk bemutatja, hogyan helyezheti üzembe és kezelheti a titkokat a Service Fabric Biztonságos tár szolgáltatás használatával.

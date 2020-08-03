@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/10/2019
-ms.openlocfilehash: b9ca2dc9d907e65b2679c08d8d2b6482f02ba53d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 630364a95c4ee427b71aa5e8b763b4447a41c962
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327888"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489452"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>Naplóadatok és munkaterületek elérésének felügyelete az Azure Monitorban
 
@@ -20,7 +20,7 @@ A Azure Monitor Log Analytics munkaterületen tárolja a [naplózási](data-plat
 Ez a cikk a naplókhoz való hozzáférés kezelését és az azokat tartalmazó munkaterületek felügyeletét ismerteti, beleértve a következőkhöz való hozzáférés biztosítását: 
 
 * Munkaterület-engedélyek használatával.
-* Azok a felhasználók, akiknek hozzáférésre van szükségük az adott erőforrásokból származó adatok naplózásához az Azure szerepköralapú hozzáférés-vezérlés (RBAC) használatával – más néven [erőforrás-környezet](design-logs-deployment.md#access-mode)
+* Azok a felhasználók, akiknek hozzáférésre van szükségük az adott erőforrásokból származó adatok naplózásához az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával – más néven [erőforrás-környezet](design-logs-deployment.md#access-mode)
 * Azok a felhasználók, akiknek hozzáférésre van szükségük a munkaterületen lévő adott tábla adataihoz az Azure RBAC használatával.
 
 A RBAC és a hozzáférési stratégiák körébe tartozó naplók megismeréséhez olvassa el a [Azure monitor naplók üzembe helyezésének tervezése](design-logs-deployment.md) című témakört.
@@ -313,4 +313,3 @@ Előfordulhat, hogy az egyéni naplók olyan forrásokból származnak, amelyek 
 * Az adatközpontban vagy más felhőalapú környezetben található számítógépek adatainak összegyűjtéséhez tekintse meg [log Analytics ügynök áttekintését](./log-analytics-agent.md) .
 
 * Lásd: adatok [gyűjtése az Azure Virtual Machines](../learn/quick-collect-azurevm.md) szolgáltatásról az Azure-beli virtuális gépekről történő adatgyűjtés konfigurálásához.
-

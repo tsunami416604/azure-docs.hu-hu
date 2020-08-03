@@ -15,19 +15,16 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 28af2a51119cd8328f9fa29000ead1622ae5f5e4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bb4b9b3b93053756896dc60c61cdb15c7e521f5d
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763550"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497239"
 ---
 # <a name="how-to-configure-federated-single-sign-on-for-a-non-gallery-application"></a>Összevont egyszeri bejelentkezés konfigurálása nem katalógusos alkalmazásokhoz
 
-Ha az egyszeri bejelentkezést egy nem katalógusbeli alkalmazáshoz szeretné beállítani *kód írása nélkül*, előfizetéssel vagy prémium szintű Azure ad kell rendelkeznie, és az alkalmazásnak támogatnia kell az SAML 2,0-et. Az Azure AD-verziókkal kapcsolatos további információkért látogasson el az [Azure ad díjszabására](https://azure.microsoft.com/pricing/details/active-directory/).
-
-## <a name="overview-of-steps-required"></a>A szükséges lépések áttekintése
-Az alábbiakban áttekintheti azokat a lépéseket, amelyek szükségesek az összevont egyszeri bejelentkezés SAML 2,0-hez való konfigurálásához egy nem katalógusbeli (például egyéni) alkalmazáshoz.
+Ez a cikk részletes áttekintést nyújt az összevont egyszeri bejelentkezés SAML 2,0-hez való konfigurálásához szükséges lépésekről a nem katalógusos (például egyéni) alkalmazások esetében.
 
 -   Az alkalmazás metaadatainak értékének konfigurálása az Azure AD-ben (bejelentkezési URL-cím, azonosító, válasz URL-cím)
 

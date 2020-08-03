@@ -6,12 +6,13 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
 ms.date: 6/10/2020
-ms.openlocfilehash: f6d24ba0d31020b82669947189da180348f2a46b
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: e99d378b49596ac208f7235a4d1d8b2b1c8c5310
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86107988"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498786"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-powershell"></a>Olvasási replikák létrehozása és kezelése a Azure Database for MySQL a PowerShell használatával
 
@@ -106,7 +107,7 @@ A főkiszolgálók törléséhez futtathatja a `Remove-AzMySqlServer` parancsmag
 Remove-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Azure Database for MySQL kiszolgáló újraindítása a PowerShell-lel](howto-restart-server-powershell.md)

@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 556871b55de60ee592622f9f93c7b7123ba2ed32
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c26951d5ab7552dc6c63288ce92cdb8134bd58ed
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84731970"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498225"
 ---
 # <a name="delegate-administration-in-azure-active-directory"></a>Felügyelet delegálása Azure Active Directory
 
@@ -38,7 +38,7 @@ A szervezet növekedésével nehéz lehet nyomon követni, hogy mely felhasznál
 
 Az Azure AD-portálon [megtekintheti bármely szerepkör összes tagját](directory-manage-roles-portal.md), amely segítségével gyorsan megtekintheti a központi telepítést, és delegálhatja az engedélyeket.
 
-Ha az Azure AD-ben való rendszergazdai hozzáférés helyett az Azure-erőforrásokhoz való hozzáférés delegálását érdekli, tekintse meg [a szerepköralapú hozzáférés-vezérlés (RBAC) szerepkör hozzárendelését](../../role-based-access-control/role-assignments-portal.md)ismertető témakört.
+Ha az Azure AD-ben való rendszergazdai hozzáférés helyett az Azure-erőforrásokhoz való hozzáférés delegálását érdekli, tekintse meg [Az Azure-szerepkör hozzárendelését](../../role-based-access-control/role-assignments-portal.md)ismertető témakört.
 
 ## <a name="delegation-planning"></a>Delegálás tervezése
 

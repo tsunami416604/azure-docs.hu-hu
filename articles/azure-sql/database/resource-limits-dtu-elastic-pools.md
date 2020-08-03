@@ -11,12 +11,12 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: carlrab
 ms.date: 07/28/2020
-ms.openlocfilehash: 0fd875b2c02f5d61663339ac523fd6733732ad01
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 0dd15fe5d68a521293f279978c668bc88599115e
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420991"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498293"
 ---
 # <a name="resources-limits-for-elastic-pools-using-the-dtu-purchasing-model"></a>A rugalmas készletek DTU beszerzési modell használatával történő korlátozása
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -40,7 +40,7 @@ Azure SQL Database rugalmas készletek esetében az alábbi táblázatok az egye
 
 A rugalmas készletekben található különálló adatbázisok erőforrás-korlátai általában ugyanazok, mint a készleteken kívüli önálló adatbázisok esetében a DTU és a szolgáltatási réteg alapján. Például az S2-adatbázisok maximális egyidejű feldolgozói 120 feldolgozók. Így a standard szintű készletben lévő adatbázisok maximálisan egyidejű feldolgozói is 120 feldolgozók, ha a készletben lévő adatbázis Max DTU 50 DTU (amely az S2-vel egyenértékű).
  
-A rugalmas készlethez megadott erőforrások meghaladják a rugalmas készleten kívüli, azonos számú DTU rendelkező önálló adatbázisok számára biztosított erőforrásokat. Ez azt jelenti, hogy egy rugalmas készlet eDTU-kihasználtsága kevesebb, mint a készletben lévő adatbázisok DTU-kihasználtságának összesítése, a számítási feladatok mintája alapján. Például egy olyan szélsőséges esetben, ha egy rugalmas készletben csak egy adatbázis van, ahol az adatbázis DTU kihasználtsága 100%, a készlet eDTU kihasználtsága bizonyos számítási feladatok esetében 50% lehet. Ez akkor is előfordulhat, ha az adatbázishoz nincs beállítva explicit maximális DTU. Ebben az esetben a készletezett adatbázis DTU-fogyasztása ugyanúgy van korlátozva, mint egy önálló adatbázis DTU való felhasználása.
+Az azonos számú DTU esetében a rugalmas készlethez megadott erőforrások túllépik a rugalmas készleten kívüli önálló adatbázisokhoz biztosított erőforrásokat is. Ez azt jelenti, hogy egy rugalmas készlet eDTU-kihasználtsága kevesebb, mint a készletben lévő adatbázisok DTU-kihasználtságának összesítése, a számítási feladatok mintája alapján. Például egy olyan szélsőséges esetben, ha egy rugalmas készletben csak egy adatbázis van, ahol az adatbázis DTU kihasználtsága 100%, a készlet eDTU kihasználtsága bizonyos számítási feladatok esetében 50% lehet. Ez akkor is előfordulhat, ha az adatbázis max. DTU a maximális támogatott értéknél marad a megadott készlet mérete alapján.
 
 > [!NOTE]
 > A tárolási erőforrások maximális száma az alábbi táblázatokban nem tartalmazza a tempdb és a log Storage-t.
@@ -55,8 +55,8 @@ A rugalmas készlethez megadott erőforrások meghaladják a rugalmas készleten
 | Adatbázisok maximális száma <sup>1</sup> . készletben | 100 | 200 | 500 | 500 | 500 | 500 | 500 | 500 |
 | Egyidejű feldolgozók (kérelmek) maximális száma a <sup>2</sup> . készletben | 100 | 200 | 400 | 600 | 800 | 1600 | 2400 | 3200 |
 | Egyidejű munkamenetek maximális száma/készlet <sup>2</sup> | 30000 | 30000 | 30000 | 30000 |30000 | 30000 | 30000 | 30000 |
-| Edtu minimális száma adatbázis szerint | 0, 5 | 0, 5 | 0, 5 | 0, 5 | 0, 5 | 0, 5 | 0, 5 | 0, 5 |
-| Edtu maximális választéka adatbázison | 5 | 5 | 5 | 5 | 5 | 5 | 5 | 5 |
+| DTU minimális száma | 0, 5 | 0, 5 | 0, 5 | 0, 5 | 0, 5 | 0, 5 | 0, 5 | 0, 5 |
+| DTU maximális száma | 5 | 5 | 5 | 5 | 5 | 5 | 5 | 5 |
 | Maximális tárterület adatbázisonként (GB) | 2 | 2 | 2 | 2 | 2 | 2 | 2 | 2 |
 ||||||||
 
@@ -74,8 +74,8 @@ A rugalmas készlethez megadott erőforrások meghaladják a rugalmas készleten
 | Adatbázisok maximális száma ( <sup>2</sup> . készlet) | 100 | 200 | 500 | 500 | 500 | 500 |
 | Egyidejű feldolgozók (kérelmek) maximális száma a <sup>3</sup> . készletben | 100 | 200 | 400 | 600 | 800 | 1600 |
 | Egyidejű munkamenetek maximális száma ( <sup>3</sup> ) | 30000 | 30000 | 30000 | 30000 | 30000 | 30000 |
-| Edtu minimális száma adatbázis szerint | 0, 10, 20, 50 | 0, 10, 20, 50, 100 | 0, 10, 20, 50, 100, 200 | 0, 10, 20, 50, 100, 200, 300 | 0, 10, 20, 50, 100, 200, 300, 400 | 0, 10, 20, 50, 100, 200, 300, 400, 800 |
-| Edtu maximális választéka adatbázison | 10, 20, 50 | 10, 20, 50, 100 | 10, 20, 50, 100, 200 | 10, 20, 50, 100, 200, 300 | 10, 20, 50, 100, 200, 300, 400 | 10, 20, 50, 100, 200, 300, 400, 800 |
+| DTU minimális száma | 0, 10, 20, 50 | 0, 10, 20, 50, 100 | 0, 10, 20, 50, 100, 200 | 0, 10, 20, 50, 100, 200, 300 | 0, 10, 20, 50, 100, 200, 300, 400 | 0, 10, 20, 50, 100, 200, 300, 400, 800 |
+| DTU maximális száma | 10, 20, 50 | 10, 20, 50, 100 | 10, 20, 50, 100, 200 | 10, 20, 50, 100, 200, 300 | 10, 20, 50, 100, 200, 300, 400 | 10, 20, 50, 100, 200, 300, 400, 800 |
 | Maximális tárterület adatbázisonként (GB) | 500 | 750 | 1024 | 1024 | 1024 | 1024 |
 ||||||||
 
@@ -95,8 +95,8 @@ A rugalmas készlethez megadott erőforrások meghaladják a rugalmas készleten
 | Adatbázisok maximális száma ( <sup>2</sup> . készlet) | 500 | 500 | 500 | 500 | 500 |
 | Egyidejű feldolgozók (kérelmek) maximális száma a <sup>3</sup> . készletben | 2400 | 3200 | 4000 | 5000 | 6000 |
 | Egyidejű munkamenetek maximális száma ( <sup>3</sup> ) | 30000 | 30000 | 30000 | 30000 | 30000 |
-| Edtu minimális száma adatbázis szerint | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1200 | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600 | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600, 2000 | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600, 2000, 2500 | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600, 2000, 2500, 3000 |
-| Edtu maximális választéka adatbázison | 10, 20, 50, 100, 200, 300, 400, 800, 1200 | 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600 | 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600, 2000 | 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600, 2000, 2500 | 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600, 2000, 2500, 3000 |
+| DTU minimális száma | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1200 | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600 | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600, 2000 | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600, 2000, 2500 | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600, 2000, 2500, 3000 |
+| DTU maximális száma | 10, 20, 50, 100, 200, 300, 400, 800, 1200 | 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600 | 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600, 2000 | 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600, 2000, 2500 | 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600, 2000, 2500, 3000 |
 | Maximális tárterület adatbázisonként (GB) | 1024 | 1024 | 1024 | 1024 | 1024 |
 |||||||
 
@@ -137,8 +137,8 @@ A rugalmas készlethez megadott erőforrások meghaladják a rugalmas készleten
 | Adatbázisok maximális száma ( <sup>2</sup> . készlet) | 100 | 100 | 100 | 100 | 100 |
 | Egyidejű feldolgozók (kérelmek) maximális száma a <sup>3</sup> . készletben | 3200 | 4000 | 4800 | 5600 | 6400 |
 | Egyidejű munkamenetek maximális száma ( <sup>3</sup> ) | 30000 | 30000 | 30000 | 30000 | 30000 |
-| Edtu minimális száma adatbázis szerint | 0, 25, 50, 75, 125, 250, 500, 1000, 1750 | 0, 25, 50, 75, 125, 250, 500, 1000, 1750 | 0, 25, 50, 75, 125, 250, 500, 1000, 1750 | 0, 25, 50, 75, 125, 250, 500, 1000, 1750 | 0, 25, 50, 75, 125, 250, 500, 1000, 1750, 4000 |
-| Edtu maximális választéka adatbázison | 25, 50, 75, 125, 250, 500, 1000, 1750 | 25, 50, 75, 125, 250, 500, 1000, 1750 | 25, 50, 75, 125, 250, 500, 1000, 1750 | 25, 50, 75, 125, 250, 500, 1000, 1750 | 25, 50, 75, 125, 250, 500, 1000, 1750, 4000 |
+| DTU minimális száma | 0, 25, 50, 75, 125, 250, 500, 1000, 1750 | 0, 25, 50, 75, 125, 250, 500, 1000, 1750 | 0, 25, 50, 75, 125, 250, 500, 1000, 1750 | 0, 25, 50, 75, 125, 250, 500, 1000, 1750 | 0, 25, 50, 75, 125, 250, 500, 1000, 1750, 4000 |
+| DTU maximális száma | 25, 50, 75, 125, 250, 500, 1000, 1750 | 25, 50, 75, 125, 250, 500, 1000, 1750 | 25, 50, 75, 125, 250, 500, 1000, 1750 | 25, 50, 75, 125, 250, 500, 1000, 1750 | 25, 50, 75, 125, 250, 500, 1000, 1750, 4000 |
 | Maximális tárterület adatbázisonként (GB) | 1024 | 1024 | 1024 | 1024 | 1024 |
 |||||||
 
@@ -167,7 +167,7 @@ A következő táblázat a készletezett adatbázisok tulajdonságait ismerteti.
 | Tárterület maximális száma adatbázison |A felhasználó által a készletben lévő adatbázis számára beállított maximális adatbázis-méret. A készletezett adatbázisok azonban megosztják a lefoglalt készlet tárterületét. Még akkor is, ha az *adatbázis* teljes tárterülete úgy van beállítva, hogy nagyobb legyen, mint a *készlet*teljes rendelkezésre álló tárolóhelye, az összes adatbázis által ténylegesen felhasznált terület teljes mérete nem haladhatja meg a rendelkezésre álló készlet korlátját. Az adatbázisok maximális mérete az adatfájlok maximális méretére vonatkozik, de nem tartalmazza a naplófájlok által használt területet. |
 |||
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Egyetlen adatbázis virtuális mag erőforrás-korlátaival kapcsolatban lásd: [önálló adatbázisok erőforrás-korlátai a virtuális mag beszerzési modell használatával](resource-limits-vcore-single-databases.md)
 * Egyetlen adatbázis DTU erőforrás-korlátaival kapcsolatban lásd: [önálló adatbázisok erőforrás-korlátai a DTU beszerzési modell használatával](resource-limits-dtu-single-databases.md)

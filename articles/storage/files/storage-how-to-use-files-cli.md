@@ -7,17 +7,18 @@ ms.topic: quickstart
 ms.date: 10/26/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 95d7abca27ec9db46a72140bc8a61b2841c63fcb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 0d9d0bad982a12e3b96bdbe4f680f2501b33ec67
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77598595"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495775"
 ---
 # <a name="quickstart-create-and-manage-azure-file-shares-using-azure-cli"></a>Rövid útmutató: Azure-fájlmegosztások létrehozása és felügyelete az Azure CLI-vel
 Ez az útmutató az [Azure-fájlmegosztások](storage-files-introduction.md) Azure CLI-vel történő használatának alapvető lépéseit mutatja be. Az Azure-fájlmegosztások nem különböznek más fájlmegosztásoktól, a tárolásuk azonban a felhőben történik, és az Azure platform nyújt számukra támogatást. Az Azure-fájlmegosztások támogatják az iparági szabvány SMB protokollt, és lehetővé teszik a több gép, alkalmazás és példány közötti fájlmegosztást. 
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -25,7 +26,7 @@ Ha az Azure CLI helyi telepítését és használatát választja, akkor a jelen
 
 Az Azure CLI-parancsok alapértelmezés szerint JavaScript Object Notation- (JSON-) választ adnak vissza. A JSON az üzenetek REST API-kba való küldésének és onnan történő fogadásának szabványos módja. A JSON-válaszok használatának megkönnyítése érdekében a jelen cikk néhány példája a *query* paramétert használja az Azure CLI-parancsokon. Ez a paraméter a [JMESPath lekérdezési nyelvet](http://jmespath.org/) használja a JSON elemzéséhez. Az Azure CLI-parancsok eredményeinek JMESPath lekérdezési nyelvvel való használatáról a [JMESPath oktatóanyagában](http://jmespath.org/tutorial.html) talál további információt.
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 Az erőforráscsoport olyan logikai tároló, amelyben a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Ha még nem rendelkezik Azure-erőforráscsoporttal, létrehozhat egyet az [az group create](/cli/azure/group) paranccsal. 
 
 A következő példában létrehozunk egy *myResourceGroup* nevű ERŐFORRÁSCSOPORTOT az *USA 2. nyugati* régiójában:
@@ -119,7 +120,7 @@ az storage directory create \
 ```
 
 ### <a name="upload-a-file"></a>Fájl feltöltése
-Ha szeretné bemutatni, hogyan tölthet fel egy [`az storage file upload`](/cli/azure/storage/file) fájlt a paranccsal, először hozzon létre egy fájlt, amelyet fel szeretne tölteni a Cloud Shell-meghajtón. A következő példában létrehozzuk, majd feltöltjük a fájlt:
+Ha szeretné bemutatni, hogyan tölthet fel egy fájlt a [`az storage file upload`](/cli/azure/storage/file) paranccsal, először hozzon létre egy fájlt, amelyet fel szeretne tölteni a Cloud Shell-meghajtón. A következő példában létrehozzuk, majd feltöltjük a fájlt:
 
 ```azurecli-interactive
 cd ~/clouddrive/
@@ -135,7 +136,7 @@ az storage file upload \
 
 Ha helyileg futtatja az Azure CLI-t, cserélje le a `~/clouddrive` elérési utat a gép egy meglévő elérési útjára.
 
-A fájl feltöltése után a [`az storage file list`](/cli/azure/storage/file) parancs használatával győződjön meg arról, hogy a fájl fel lett töltve az Azure-fájlmegosztásba:
+A fájl feltöltése után a parancs használatával győződjön meg [`az storage file list`](/cli/azure/storage/file) arról, hogy a fájl fel lett töltve az Azure-fájlmegosztásba:
 
 ```azurecli-interactive
 az storage file list \
@@ -202,7 +203,7 @@ az storage file list \
     --output table
 ```
 
-Habár a `az storage file copy start` parancs kényelmes az Azure-fájlmegosztás, a Migrálás és a nagyobb adatátvitelek között, a MacOS és `rsync` a Linux és `robocopy` a Windows rendszereken is ajánlott. `rsync`és `robocopy` az SMB használatával hajtsa végre az adatáthelyezést a legtöbbet a legtöbbet kihasználó API helyett.
+Habár a `az storage file copy start` parancs kényelmes az Azure-fájlmegosztás, a Migrálás és a nagyobb adatátvitelek között, a `rsync` MacOS és a Linux és `robocopy` a Windows rendszereken is ajánlott. `rsync`és az `robocopy` SMB használatával hajtsa végre az adatáthelyezést a legtöbbet a legtöbbet kihasználó API helyett.
 
 ## <a name="create-and-manage-share-snapshots"></a>Megosztási pillanatképek létrehozása és felügyelete
 Az Azure-fájlmegosztással végezhető egyik további hasznos feladat a megosztási pillanatképek létrehozása. A pillanatképek megőrzik az Azure-fájlmegosztások adott időpontban látható másolatát. A megosztási pillanatképek hasonlók néhány, esetleg már ismert operációsrendszer-technológiához:
@@ -211,7 +212,7 @@ Az Azure-fájlmegosztással végezhető egyik további hasznos feladat a megoszt
 - [Apple fájlrendszer (APFS)](https://developer.apple.com/library/content/documentation/FileManagement/Conceptual/APFS_Guide/Features/Features.html) Pillanatképek MacOS rendszerhez.
 - [Kötet árnyékmásolata szolgáltatás (VSS)](https://docs.microsoft.com/windows/desktop/VSS/volume-shadow-copy-service-portal) Windows fájlrendszerekhez (például NTFS és ReFS).
  
-A megosztási pillanatképet a [`az storage share snapshot`](/cli/azure/storage/share) parancs használatával hozhatja létre:
+A megosztási pillanatképet a parancs használatával hozhatja létre [`az storage share snapshot`](/cli/azure/storage/share) :
 
 ```azurecli-interactive
 snapshot=$(az storage share snapshot \
@@ -275,7 +276,7 @@ az storage file copy start \
 ```
 
 ### <a name="delete-a-share-snapshot"></a>Megosztási pillanatkép törlése
-A megosztási pillanatképet a [`az storage share delete`](/cli/azure/storage/share) parancs használatával törölheti. Használja a `--snapshot` paraméterre mutató `$SNAPSHOT` hivatkozást tartalmazó változót:
+A megosztási pillanatképet a parancs használatával törölheti [`az storage share delete`](/cli/azure/storage/share) . Használja a `--snapshot` paraméterre mutató `$SNAPSHOT` hivatkozást tartalmazó változót:
 
 ```azurecli-interactive
 az storage share delete \

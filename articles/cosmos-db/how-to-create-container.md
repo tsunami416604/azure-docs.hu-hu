@@ -6,12 +6,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 07/29/2020
 ms.author: mjbrown
-ms.openlocfilehash: 761789b36e85b16f0b4482cef12645e673c73be7
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 6e62e307b6c5f5de939505eae8850f0117782a69
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87429703"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498361"
 ---
 # <a name="create-an-azure-cosmos-container"></a>Azure Cosmos-tároló létrehozása
 
@@ -34,7 +35,7 @@ Ez a cikk bemutatja, hogyan hozhat létre egy Azure Cosmos-tárolót (gyűjtemé
    * Adja meg a tároló AZONOSÍTÓját.
    * Adjon meg egy partíciós kulcsot.
    * Adja meg a kiépíteni kívánt átviteli sebességet (például 1000 RUs).
-   * Válassza az **OK** lehetőséget.
+   * Kattintson az **OK** gombra.
 
     :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-sql.png" alt-text="Képernyőkép a Adatkezelő panelről, új tároló kiemelve":::
 
@@ -50,7 +51,7 @@ Ez a cikk bemutatja, hogyan hozhat létre egy Azure Cosmos-tárolót (gyűjtemé
    * Adja meg a tároló AZONOSÍTÓját.
    * Adja meg a szegmens kulcsát.
    * Adja meg a kiépíteni kívánt átviteli sebességet (például 1000 RUs).
-   * Válassza az **OK** lehetőséget.
+   * Kattintson az **OK** gombra.
 
     :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-mongodb.png" alt-text="Képernyőkép a MongoDB Azure Cosmos DB API-ról, tároló hozzáadása párbeszédpanel":::
 
@@ -66,7 +67,7 @@ Ez a cikk bemutatja, hogyan hozhat létre egy Azure Cosmos-tárolót (gyűjtemé
    * Adja meg egy tábla nevét.
    * Adja meg a tulajdonságokat, és adjon meg egy elsődleges kulcsot.
    * Adja meg a kiépíteni kívánt átviteli sebességet (például 1000 RUs).
-   * Válassza az **OK** lehetőséget.
+   * Kattintson az **OK** gombra.
 
     :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-cassandra.png" alt-text="Képernyőkép a Cassandra APIről, tábla hozzáadása párbeszédpanel":::
 
@@ -86,7 +87,7 @@ Ez a cikk bemutatja, hogyan hozhat létre egy Azure Cosmos-tárolót (gyűjtemé
    * Válassza a **Korlátlan** tárolási kapacitás lehetőséget.
    * Adja meg a csúcspontok partíciós kulcsát.
    * Adja meg a kiépíteni kívánt átviteli sebességet (például 1000 RUs).
-   * Válassza az **OK** lehetőséget.
+   * Kattintson az **OK** gombra.
 
     :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-gremlin.png" alt-text="Képernyőkép a Gremlin API-ról, gráf hozzáadása párbeszédpanel":::
 
@@ -100,7 +101,7 @@ Ez a cikk bemutatja, hogyan hozhat létre egy Azure Cosmos-tárolót (gyűjtemé
 
    * Adja meg a tábla AZONOSÍTÓját.
    * Adja meg a kiépíteni kívánt átviteli sebességet (például 1000 RUs).
-   * Válassza az **OK** lehetőséget.
+   * Kattintson az **OK** gombra.
 
     :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-table.png" alt-text="Képernyőkép a Table APIről, tábla hozzáadása párbeszédpanel":::
 
@@ -119,17 +120,17 @@ Az összes Azure Cosmos DB API-val kapcsolatos összes Azure CLI-minta listájá
 * [Gremlin gráf létrehozása az Azure CLI-vel](./scripts/cli/gremlin/create.md)
 * [Table API tábla létrehozása az Azure CLI-vel](./scripts/cli/table/create.md)
 
-## <a name="create-a-container-using-powershella-idps-mongodba-idps-gremlin"></a>Tároló létrehozása a PowerShell használatával<a id="ps-sql"></a><a id="ps-mongodb"><a id="ps-cassandra"></a><a id="ps-gremlin"><a id="ps-table"></a>
+## <a name="create-a-container-using-powershell"></a>Tároló létrehozása a PowerShell használatával
 
 Az alábbi hivatkozások bemutatják, hogyan hozhat létre Azure Cosmos DB tároló-erőforrásokat a PowerShell használatával.
 
-Az összes Azure Cosmos DB API-val kapcsolatos PowerShell-minta listázásához tekintse meg az [SQL API](powershell-samples-sql.md), a [Cassandra API](powershell-samples-cassandra.md), a [MONGODB API](powershell-samples-mongodb.md), a [Gremlin API](powershell-samples-gremlin.md)és a [Table API](powershell-samples-table.md)
+Az összes Azure Cosmos DB API-val kapcsolatos PowerShell-minta listázásához lásd: [PowerShell-minták](powershell-samples.md)
 
 * [Tároló létrehozása a PowerShell-lel](manage-with-powershell.md#create-container)
-* [Azure Cosmos DB gyűjtemény létrehozása a MongoDB API-hoz a PowerShell-lel](./scripts/powershell/mongodb/ps-mongodb-create.md)
-* [Cassandra-tábla létrehozása a PowerShell-lel](./scripts/powershell/cassandra/ps-cassandra-create.md)
-* [Gremlin gráf létrehozása a PowerShell-lel](./scripts/powershell/gremlin/ps-gremlin-create.md)
-* [Table API tábla létrehozása a PowerShell-lel](./scripts/powershell/table/ps-table-create.md)
+* [Azure Cosmos DB gyűjtemény létrehozása a MongoDB API-hoz a PowerShell-lel](./scripts/powershell/mongodb/create.md)
+* [Cassandra-tábla létrehozása a PowerShell-lel](./scripts/powershell/cassandra/create.md)
+* [Gremlin gráf létrehozása a PowerShell-lel](./scripts/powershell/gremlin/create.md)
+* [Table API tábla létrehozása a PowerShell-lel](./scripts/powershell/table/create.md)
 
 ## <a name="create-a-container-using-net-sdk"></a>Tároló létrehozása .NET SDK használatával
 
@@ -169,7 +170,7 @@ session.Execute(CREATE TABLE myKeySpace.myTable(
     lastName text) WITH cosmosdb_provisioned_throughput=1000);
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Particionálás az Azure Cosmos DB-ben](partitioning-overview.md)
 * [Az Azure Cosmos DB kérelemegységei](request-units.md)

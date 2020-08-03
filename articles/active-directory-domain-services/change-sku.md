@@ -10,16 +10,16 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 51f277827ac0865eaede141e5817962b04d2bd49
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: a9954b0ddd446c4e39d85ab6d3e37402176236d6
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86221439"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489639"
 ---
 # <a name="change-the-sku-for-an-existing-azure-active-directory-domain-services-managed-domain"></a>Meglévő Azure Active Directory Domain Services felügyelt tartomány SKU-jának módosítása
 
-Azure Active Directory Domain Services (Azure AD DS) esetében a rendelkezésre álló teljesítmény és szolgáltatások az SKU típusán alapulnak. A szolgáltatásbeli különbségek közé tartozik a biztonsági mentés gyakorisága vagy az egyirányú kimenő erdő megbízhatósági kapcsolatainak maximális száma (jelenleg előzetes verzióban érhető el).
+Azure Active Directory Domain Services (Azure AD DS) esetében a rendelkezésre álló teljesítmény és szolgáltatások az SKU típusán alapulnak. A szolgáltatásbeli különbségek közé tartozik a biztonsági mentés gyakorisága vagy az egyirányú kimenő erdő megbízhatósági kapcsolatainak maximális száma.
 
 A felügyelt tartomány létrehozásakor ki kell választania egy SKU-t, és az üzleti igényeknek megfelelően át lehet váltani a SKU-ra a felügyelt tartomány telepítése után. Az üzleti követelmények változásai több gyakori biztonsági mentésre vagy további erdőszintű megbízhatósági kapcsolatok létrehozására is igénybe vehetnek. A különböző SKU-i korlátokkal és díjszabással kapcsolatos további információkért lásd az [azure AD DS SKU-fogalmakat][concepts-sku] és az [Azure AD DS díjszabási][pricing] oldalát.
 
@@ -38,7 +38,7 @@ A cikk elvégzéséhez a következő erőforrásokra és jogosultságokra van sz
 
 ## <a name="sku-change-limitations"></a>SKU-változások korlátai
 
-A felügyelt tartomány üzembe helyezése után akár feljebb, akár lejjebb is módosíthatja a SKU-t. Ha azonban egy erőforrás-erdőt (jelenleg előzetes verzióban) használ, és egyirányú kimenő erdőszintű megbízhatósági kapcsolatot hozott létre az Azure AD DS egy helyszíni AD DS-környezetbe, bizonyos korlátozások vonatkoznak az SKU-módosítási műveletre. A *prémium* és a *vállalati* SKU korlátozza a létrehozható megbízhatósági kapcsolatok számát. Nem válthat olyan SKU-ra, amelynek a maximális korlátja alacsonyabb, mint a jelenleg konfigurálva.
+A felügyelt tartomány üzembe helyezése után akár feljebb, akár lejjebb is módosíthatja a SKU-t. Ha azonban erőforrás-erdőt használ, és egyirányú kimenő erdőszintű megbízhatósági kapcsolatot hozott létre az Azure AD DS egy helyszíni AD DS környezetbe, az SKU-változási művelet bizonyos korlátozásokat tartalmaz. A *prémium* és a *vállalati* SKU korlátozza a létrehozható megbízhatósági kapcsolatok számát. Nem válthat olyan SKU-ra, amelynek a maximális korlátja alacsonyabb, mint a jelenleg konfigurálva.
 
 Például:
 
@@ -66,7 +66,7 @@ Az SKU típusának módosításához egy-két percet is igénybe vehet.
 
 ## <a name="next-steps"></a>További lépések
 
-Ha rendelkezik erőforrás-erdővel, és további megbízhatósági kapcsolatokat szeretne létrehozni az SKU módosítása után, tekintse [meg a kimenő erdő megbízhatóságának létrehozása helyszíni tartományhoz az Azure AD DS (előzetes verzió)][create-trust]című témakört.
+Ha rendelkezik erőforrás-erdővel, és további megbízhatósági kapcsolatokat szeretne létrehozni az SKU módosítása után, tekintse [meg a kimenő erdő megbízhatóságának létrehozása helyszíni tartományhoz az Azure AD DS-ban][create-trust]című témakört.
 
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md

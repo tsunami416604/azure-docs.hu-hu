@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 6dfa162de02174ac4a1a8251457249bd5ea4d766
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: af387b063a3c07d8b6b6c544814565e2a5ebdd46
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87416332"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495726"
 ---
 # <a name="hyper-v-to-azure-disaster-recovery-architecture"></a>Hyper-V-ről Azure-ba történő vészhelyreállítás architektúrája
 
@@ -36,7 +36,7 @@ A következő táblázat és ábra áttekintést nyújt az Azure-ba irányuló H
 
 **Hyper-V – Azure architektúra (VMM nélkül)**
 
-![Architektúra](./media/hyper-v-azure-architecture/arch-onprem-azure-hypervsite.png)
+![A helyszíni Hyper-V-helyet az Azure architektúrára VMM nélkül bemutató ábra.](./media/hyper-v-azure-architecture/arch-onprem-azure-hypervsite.png)
 
 
 ## <a name="architectural-components---hyper-v-with-vmm"></a>Architektúra-összetevők – Hyper-V és VMM
@@ -53,7 +53,7 @@ A következő táblázat és ábra áttekintést nyújt az Azure-ba irányuló H
 
 **Hyper-V – Azure architektúra (VMM)**
 
-![Összetevők](./media/hyper-v-azure-architecture/arch-onprem-onprem-azure-vmm.png)
+![A helyszíni Hyper-V-helyet bemutató diagram az Azure-architektúrához a VMM használatával.](./media/hyper-v-azure-architecture/arch-onprem-onprem-azure-vmm.png)
 
 ## <a name="set-up-outbound-network-connectivity"></a>Kimenő hálózati kapcsolat beállítása
 
@@ -68,7 +68,7 @@ Ha URL-alapú tűzfal-proxyt használ a kimenő kapcsolatok vezérléséhez, eng
 
 | **Név**                  | **Kereskedelmi**                               | **Államigazgatás**                                 | **Leírás** |
 | ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
-| Tárolás                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`              | Lehetővé teszi az adatok írását a virtuális gépről a forrásrégió gyorsítótárjának tárfiókjába. |
+| Storage                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`              | Lehetővé teszi az adatok írását a virtuális gépről a forrásrégió gyorsítótárjának tárfiókjába. |
 | Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | Hitelesítést és engedélyezést biztosít a Site Recovery szolgáltatás URL-címeihez. |
 | Replikáció               | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`   | Lehetővé teszi a virtuális gép és a Site Recovery szolgáltatás közötti kommunikációt. |
 | Service Bus               | `*.servicebus.windows.net`                 | `*.servicebus.usgovcloudapi.net`             | Lehetővé teszi a virtuális gép számára a Site Recovery monitorozási és diagnosztikai adatainak írását. |
@@ -76,7 +76,7 @@ Ha URL-alapú tűzfal-proxyt használ a kimenő kapcsolatok vezérléséhez, eng
 
 ## <a name="replication-process"></a>Replikációs folyamat
 
-![Hyper-V – Azure replikálás](./media/hyper-v-azure-architecture/arch-hyperv-azure-workflow.png)
+![A Hyper-V és az Azure közötti replikálás folyamatát bemutató ábra](./media/hyper-v-azure-architecture/arch-hyperv-azure-workflow.png)
 
 **Replikálási és helyreállítási folyamat**
 
@@ -86,7 +86,7 @@ Ha URL-alapú tűzfal-proxyt használ a kimenő kapcsolatok vezérléséhez, eng
 1. Miután engedélyezte a védelmet egy Hyper-V-alapú virtuális gép esetében az Azure Portalon vagy a helyszíni környezetben, elindul a **Védelem engedélyezése** feladat.
 2. A feladat ellenőrzi, hogy a gép megfelel-e az előfeltételeknek, mielőtt meghívja a [CreateReplicationRelationship](/windows/win32/hyperv_v2/createreplicationrelationship-msvm-replicationservice) metódust, amely az Ön által megadott beállításoknak megfelelően beállítja a replikációt.
 3. A feladat elindítja a kezdeti replikációt a [StartReplication](/windows/win32/hyperv_v2/startreplication-msvm-replicationservice) metódus meghívásával egy teljes körű virtuálisgép-replikáció elindítása céljából, majd a virtuális gépek virtuális lemezeit továbbítja az Azure-ba.
-4. A feladatot a **feladatok** lapon követheti nyomon.      ![Feladatok listája ](media/hyper-v-azure-architecture/image1.png) ![ Védelem lefúrásának engedélyezése](media/hyper-v-azure-architecture/image2.png)
+4. A feladatot a **feladatok** lapon követheti nyomon.      ![Képernyőfelvétel a feladatok lap feladatok listájáról. ](media/hyper-v-azure-architecture/image1.png) ![A védelem engedélyezése képernyő képernyőképe további részletekkel.](media/hyper-v-azure-architecture/image2.png)
 
 
 ### <a name="initial-data-replication"></a>Kezdeti adatreplikálás
@@ -123,7 +123,7 @@ Ha URL-alapú tűzfal-proxyt használ a kimenő kapcsolatok vezérléséhez, eng
 2. Az újraszinkronizálás befejezését követően folytatódik a normál változásreplikálás.
 3. Ha nem szeretné megvárni az alapértelmezett újraszinkronizálást a munkaidőn kívül, manuálisan is szinkronizálhatja a virtuális gépet. Ha például áramkimaradás történik. Ehhez a Azure Portal válassza ki a virtuális gépet > **Újraszinkronizálás**lehetőséget.
 
-    ![Manuális újraszinkronizálás](./media/hyper-v-azure-architecture/image4-site.png)
+    ![Az újraszinkronizálási lehetőséget ábrázoló képernyőkép.](./media/hyper-v-azure-architecture/image4-site.png)
 
 
 ### <a name="retry-process"></a>Újrapróbálkozási folyamat
@@ -157,7 +157,7 @@ Miután a helyszíni infrastruktúra újra működik, visszatérhet. A feladat-v
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 
 [Ez az oktatóanyag](tutorial-prepare-azure.md) ismerteti a Hyper-V és az Azure közötti replikáció megkezdését.

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5b247b64d563bc2b12c5bffff6a460d77cb96207
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f6bd09a24202b599c1f008e7b046ea5f93ff0323
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84485601"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489792"
 ---
 # <a name="enable-and-use-azure-multi-factor-authentication-with-legacy-applications-using-app-passwords"></a>Az Azure Multi-Factor Authentication engedélyezése és használata az alkalmazás jelszavait használó örökölt alkalmazásokkal
 
@@ -88,6 +88,12 @@ Alapértelmezés szerint a felhasználók nem hozhatnak létre alkalmazás-jelsz
 5. A **szolgáltatás beállításai** lapon jelölje be a **felhasználók számára az alkalmazás jelszavának engedélyezése lehetőséget a nem böngésző alkalmazásokba való bejelentkezéshez** .
 
     ![Képernyőkép a Azure Portalról, amely a többtényezős hitelesítés szolgáltatás beállításait mutatja be az alkalmazás jelszavainak felhasználójának engedélyezéséhez](media/concept-authentication-methods/app-password-authentication-method.png)
+    
+> [!NOTE]
+>
+> Ha letiltja a felhasználók számára az alkalmazás jelszavának létrehozását, a meglévő alkalmazás jelszavai továbbra is működni tudnak. A felhasználók azonban nem kezelhetik vagy törölhetik a meglévő alkalmazások jelszavát, ha letiltja ezt a lehetőséget.
+>
+> Ha letiltja az alkalmazás jelszavának létrehozását, azt is javasoljuk, hogy [hozzon létre egy feltételes hozzáférési szabályzatot, amely letiltja a régi hitelesítés használatát](../conditional-access/block-legacy-authentication.md). Ez a megközelítés megakadályozza, hogy a meglévő alkalmazások jelszavai működőképesek legyenek, és kényszerítse a modern hitelesítési módszerek használatát.
 
 ## <a name="create-an-app-password"></a>Alkalmazás jelszavának létrehozása
 

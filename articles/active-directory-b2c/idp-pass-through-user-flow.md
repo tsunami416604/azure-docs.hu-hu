@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 08/17/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0446dd9e316e145cf93c503ab9634d4eedbc299b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5b834dda926b7da1241a325e1453143eccafaf30
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85387830"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87488771"
 ---
 # <a name="pass-an-access-token-through-a-user-flow-to-your-application-in-azure-active-directory-b2c"></a>Hozzáférési token átadása egy felhasználói folyamaton keresztül az alkalmazáshoz Azure Active Directory B2C
 
@@ -26,7 +26,7 @@ Azure AD B2C jelenleg csak az [OAuth 2,0](authorization-code-flow.md) Identity P
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Az alkalmazásnak [v2 felhasználói folyamatot](user-flow-versions.md)kell használnia.
+* Az alkalmazásnak [ajánlott felhasználói folyamatot](user-flow-versions.md)kell használnia.
 * A felhasználói folyamat OAuth 2,0-es identitás-szolgáltatóval van konfigurálva.
 
 ## <a name="enable-the-claim"></a>Jogcím engedélyezése

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/07/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: bb4c689da38606561c657a3e4d85fd9e391267bf
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8b28507c072f338342dc1a936cb1ab5f3910eea1
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87056742"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498106"
 ---
 # <a name="use-azure-rbac-for-kubernetes-authorization-preview"></a>Azure RBAC használata Kubernetes-engedélyezéshez (előzetes verzió)
 
@@ -254,7 +254,7 @@ aks-nodepool1-93451573-vmss000002   Ready    agent   3h6m   v1.15.11
 ```
 
 
-## <a name="clean-up"></a>A feleslegessé vált elemek eltávolítása
+## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
 
 ### <a name="clean-role-assignment"></a>Szerepkör-hozzárendelés törlése
 
@@ -283,7 +283,7 @@ az group delete -n MyResourceGroup
 
 - További információ az AK-hitelesítésről, az engedélyezésről és a RBAC [itt](concepts-identity.md)olvasható.
 - További információk az Azure RBAC-ről [itt](../role-based-access-control/overview.md)olvashat.
-- További információ a Kubernetes-engedélyezéshez használható egyéni Azure RBAC-szerepkörök részletes meghatározásához használható összes műveletről [itt](../role-based-access-control/resource-provider-operations.md#microsoftcontainerservice)olvashat.
+- További információ a Kubernetes engedélyezéséhez használható egyéni Azure-szerepkörök részletes meghatározásával kapcsolatos összes műveletről [itt](../role-based-access-control/resource-provider-operations.md#microsoftcontainerservice)olvashat bővebben.
 
 
 <!-- LINKS - Internal -->

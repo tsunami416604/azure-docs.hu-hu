@@ -16,12 +16,12 @@ ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2a7709cf0522727257025b2dddc495b20fe8448
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0be99a673fe3d062e114f375891f3c821c118d76
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763754"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499500"
 ---
 # <a name="unexpected-error-when-performing-consent-to-an-application"></a>Váratlan hiba történt az alkalmazáshoz való beleegyezett művelet végrehajtásakor
 
@@ -38,6 +38,8 @@ Bizonyos feltételeknek igaznak kell lennie ahhoz, hogy egy felhasználó beleeg
 Ez a hiba akkor fordul elő, ha egy olyan felhasználó, aki nem vállalati rendszergazda, olyan alkalmazást próbál meg használni, amely csak a rendszergazda által biztosított engedélyeket kér. Ezt a hibát feloldható egy rendszergazda, aki a szervezet nevében hozzáférést biztosít az alkalmazáshoz.
 
 Ez a hiba akkor is előfordulhat, ha a felhasználók nem tudnak beleegyezést adni egy alkalmazásba, mert a Microsoft észleli, hogy az engedélyek iránti kérelem kockázatos. Ebben az esetben a rendszer naplózási eseményt is naplóz a "ApplicationManagement" kategóriába, a "beleegyezés az alkalmazásba" és a "kockázatos alkalmazás észlelése" állapot miatt.
+
+Egy másik forgatókönyv, amelyben ez a hiba akkor fordulhat elő, ha a felhasználó-hozzárendelés szükséges az alkalmazáshoz, de nem adtak meg rendszergazdai jogosultságot. Ebben az esetben a rendszergazdának először meg kell adnia a rendszergazdai engedélyt.   
 
 ## <a name="policy-prevents-granting-permissions-error"></a>A szabályzat megakadályozza az engedélyek megadását
 * **AADSTS90093:** A tenantDisplayName rendszergazdája &lt; olyan &gt; szabályzatot állított be, amely megakadályozza az &lt; alkalmazás nevének megadását &gt; a kért engedélyek alapján. Forduljon a &lt; tenantDisplayName rendszergazdájához &gt; , aki az Ön nevében engedélyeket adhat az alkalmazásnak.

@@ -4,14 +4,14 @@ description: A Azure Cosmos DB SQL-kulcsszavainak megismerése.
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/10/2020
+ms.date: 07/29/2020
 ms.author: tisande
-ms.openlocfilehash: 069548b9b69ef6f7f6bde85ede830d97f3d312db
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f00e757f9b51da850c49924f6ae49bf00c9c53d1
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81261567"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496681"
 ---
 # <a name="keywords-in-azure-cosmos-db"></a>Azure Cosmos DB kulcsszavai
 
@@ -35,9 +35,6 @@ A `BETWEEN` kulcsszót a záradékban is használhatja `SELECT` , ahogy az aláb
 ```
 
 Az SQL API-ban – az ANSI SQL-től eltérően – különböző típusú lekérdezéseket adhat meg a vegyes típusok tulajdonságainál. Előfordulhat például, hogy az `grade` `5` egyes elemekhez és a másokhoz hasonló sztringek száma `grade4` . Ezekben az esetekben, ahogy a JavaScriptben, a két különböző típus összehasonlítása eredményezi `Undefined` , így az elem kimarad.
-
-> [!TIP]
-> A lekérdezések gyorsabb végrehajtásához hozzon létre egy olyan indexelési házirendet, amely a tartomány indexelési típusát használja a záradék szűrői által használt numerikus tulajdonságok vagy elérési utak alapján `BETWEEN` .
 
 ## <a name="distinct"></a>DISTINCT
 
@@ -76,7 +73,7 @@ Az eredmény a következő:
 ]
 ```
 
-A DISTINCT a segédlekérdezés egy allekérdezésen belüli kivetítésében is használható:
+`DISTINCT`egy allekérdezésen belüli kivetítésben is használható:
 
 ```sql
 SELECT f.id, ARRAY(SELECT DISTINCT VALUE c.givenName FROM c IN f.children) as ChildNames

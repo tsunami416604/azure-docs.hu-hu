@@ -7,25 +7,26 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: sample
 ms.date: 09/23/2019
-ms.openlocfilehash: cbbb38c645e56b2e7b8c70b437b1e5158b09a50b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: d0d621728ac1956b2c036c9a45202c5d75ee9153
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78207098"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499568"
 ---
 # <a name="azure-hdinsight-azure-cli-samples"></a>Azure HDInsight: Azure CLI-minták
 
 > [!div class="op_single_selector"]
-> [.Net-példák](hdinsight-sdk-dotnet-samples.md)
-> [Python](hdinsight-sdk-python-samples.md)
-> -példák[Java-példák](hdinsight-sdk-java-samples.md)
+> [.Net-példák](hdinsight-sdk-dotnet-samples.md) 
+>  [Python-példák](hdinsight-sdk-python-samples.md) 
+>  [Java-példák](hdinsight-sdk-java-samples.md)
 
 Ez a cikk a gyakori feladatokhoz nyújt példákat. Mindegyik példához frissítse a változókat a megfelelő értékekkel, majd hajtsa végre a parancsot.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure CLI-vel. Lásd: [Az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli) lépések.
+* Azure CLI. Lásd: [Az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli) lépések.
 
 * Nem kötelező: bash. A cikkben szereplő példák a bash rendszerhéjt használják a Windows 10 rendszeren. A telepítési lépésekért lásd: [Windows-alrendszer Linux-telepítési útmutató Windows 10](https://docs.microsoft.com/windows/wsl/install-win10) rendszerhez.  A példák bizonyos kis módosításokkal egy Windows-parancssorból fognak működni.
 

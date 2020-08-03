@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: d60eeb279f9faa469c98d3d0578d0e4c1cdf0bd2
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: e2e13d00e48c83ff56cc21f23f513d17f545b4e4
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283452"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496049"
 ---
 # <a name="control-storage-account-access-for-sql-on-demand-preview"></a>A Storage-fiók hozzáférésének vezérlése az SQL igény szerinti használatához (előzetes verzió)
 
@@ -129,7 +129,7 @@ A kiszolgáló szintű HITELESÍTő adatok nevének meg kell egyeznie a Storage-
 | -------------------------- | ------ | --------------------------------------------------- |
 | Azure Blob Storage         | https  | <storage_account>. blob.core.windows.net             |
 | 1. generációs Azure Data Lake Storage | https  | <storage_account>. azuredatalakestore.net/webhdfs/v1 |
-| 2. generációs Azure Data Lake Storage | https  | <storage_account>. dfs.core.windows.net              |
+| 2\. generációs Azure Data Lake Storage | https  | <storage_account>. dfs.core.windows.net              |
 
 A kiszolgáló-hatókörű hitelesítő adatok lehetővé teszik az Azure Storage elérését a következő hitelesítési típusok használatával:
 
@@ -219,7 +219,7 @@ WITH (    LOCATION   = 'https://<storage_account>.dfs.core.windows.net/<containe
 
 ## <a name="examples"></a>Példák
 
-**Nyilvánosan elérhető adatforrás elérése**
+### <a name="access-a-publicly-available-data-source"></a>**Nyilvánosan elérhető adatforrás elérése**
 
 A következő szkripttel hozhat létre olyan táblázatot, amely hozzáfér a nyilvánosan elérhető adatforráshoz.
 
@@ -248,7 +248,7 @@ SELECT TOP 10 * FROM OPENROWSET(BULK 'parquet/user-data/*.parquet',
 GO
 ```
 
-**Adatforrások elérése a hitelesítő adatok használatával**
+### <a name="access-a-data-source-using-credentials"></a>**Adatforrás elérése hitelesítő adatok használatával**
 
 Módosítsa a következő parancsfájlt egy olyan külső tábla létrehozásához, amely az Azure Storage-t az SAS-token, a felhasználó Azure AD-identitása vagy a munkaterület felügyelt identitása használatával éri el.
 

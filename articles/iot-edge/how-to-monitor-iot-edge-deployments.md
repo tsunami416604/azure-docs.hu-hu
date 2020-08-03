@@ -8,13 +8,14 @@ ms.date: 04/21/2020
 ms.topic: conceptual
 ms.reviewer: veyalla
 ms.service: iot-edge
+ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: 4ca22c39fcd7b488f527326e4fdeaa56b0485cb9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bc01c283fd4e2b6e3494c18c1908152aecee2c5f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84220293"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489112"
 ---
 # <a name="monitor-iot-edge-deployments"></a>Üzemelő IoT Edge-példányok monitorozása
 
@@ -42,7 +43,7 @@ A központi telepítés részleteinek megtekintéséhez és az azt futtató eszk
 1. Válassza a **IoT Edge központi telepítések** fület.
 1. Vizsgálja meg a központi telepítés listáját.Az egyes központi telepítések esetében az alábbi adatokat tekintheti meg:
 
-    | Oszlop | Description |
+    | Oszlop | Leírás |
     | --- | --- |
     | ID | A központi telepítés neve. |
     | Típus | A központi telepítés típusa, vagy a **telepítés** vagy a **rétegzett telepítés**. |

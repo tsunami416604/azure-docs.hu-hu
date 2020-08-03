@@ -9,18 +9,18 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 91e251c8274ad85fcb0b3a65a3bdbcc660ceba00
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c3bd04d037f7852bd7d9ea51719abf27f09093b0
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85101016"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495675"
 ---
-# <a name="assigning-variables-with-synapse-sql"></a>Változók kiosztása a szinapszis SQL-sel
+# <a name="assign-variables-with-synapse-sql"></a>Változók társítása a szinapszis SQL-sel
 
 Ebben a cikkben tippeket talál a T-SQL-változók a szinapszis SQL-sel való hozzárendeléséhez.
 
-## <a name="setting-variables-with-declare"></a>Változók beállítása a DECLARE értékkel
+## <a name="set-variables-with-declare"></a>Változók beállítása a DECLARE értékkel
 
 A szinapszis SQL-változók az `DECLARE` utasítás vagy az utasítás használatával vannak beállítva `SET` . A DEKLARÁLt változók inicializálása az egyik legrugalmasabb módszer egy változó értékének megadására a szinapszis SQL-ben.
 
@@ -45,7 +45,7 @@ DECLARE @p1 int = 0
 ;
 ```
 
-## <a name="setting-values-with-set"></a>Értékek beállítása a SET értékkel
+## <a name="set-values-with-set"></a>Értékek beállítása a SET értékkel
 
 A SET egy általános módszer egyetlen változó beállítására.
 

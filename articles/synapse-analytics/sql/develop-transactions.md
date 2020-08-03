@@ -10,14 +10,14 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: d87da234e675059ba2c170f4322d0ba53965dc89
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c5d23770aab0bde745152d918adfe83209819899
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075690"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500759"
 ---
-# <a name="using-transactions-in-sql-pool"></a>Tranzakciók használata az SQL-készletben
+# <a name="use-transactions-in-sql-pool"></a>Tranzakciók használata az SQL-készletben
 
 Tippek a tranzakciók megvalósításához az SQL-készletben (adattárházban) a megoldások fejlesztéséhez.
 
@@ -183,7 +183,7 @@ Az összes módosult, hogy a tranzakció visszagörgetése még azelőtt törté
 
 Azt is érdemes megjegyezni, hogy az SQL-készlet nem implementálja és nem támogatja a ERROR_LINE () függvényt. Ha rendelkezik a kóddal, akkor azt el kell távolítania, hogy az megfeleljen az SQL-készletnek. Az egyenértékű funkciók megvalósítása helyett használja a kódban a lekérdezési címkéket. További részletekért tekintse meg a [címkét](develop-label.md) ismertető cikket.
 
-## <a name="using-throw-and-raiserror"></a>A THROW és a RAISERROR használata
+## <a name="use-of-throw-and-raiserror"></a>A THROW és a RAISERROR használata
 
 Az SQL-készletben a kivételek növelésének modern implementációja, de a RAISERROR is támogatott. Van néhány eltérés, amely azonban érdemes odafigyelni.
 

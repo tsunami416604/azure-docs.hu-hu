@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/08/2020
+ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: bc0bcd4a978912dccc9f08802acbf2ec1151b3a1
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: a0d5b369e1c143b3df4157329bcf7d3a3f7142d7
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170105"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489469"
 ---
 # <a name="integrating-trusona-with-azure-active-directory-b2c"></a>A Trusona integrálása Azure Active Directory B2C
 
@@ -91,7 +91,7 @@ Ebben az esetben a Trusona identitás-szolgáltatóként viselkedik a Azure AD B
 
 3. Válassza az **identitás-szolgáltatók**elemet.
 
-4. Válassza a **Hozzáadás** elemet.
+4. Válassza a **Hozzáadás** lehetőséget.
 
 ### <a name="configure-an-identity-provider"></a>Identitás-szolgáltató konfigurálása  
 
@@ -107,7 +107,7 @@ Ebben az esetben a Trusona identitás-szolgáltatóként viselkedik a Azure AD B
    | Válasz típusa | Id_token |
    | Válasz mód  | Form_post |
 
-3. Válassza az **OK** lehetőséget.  
+3. Kattintson az **OK** gombra.  
 
 4. Válassza ki **az identitás-szolgáltató jogcímeinek leképezése**elemet.  
 
@@ -125,25 +125,26 @@ Ebben az esetben a Trusona identitás-szolgáltatóként viselkedik a Azure AD B
 
 ### <a name="create-a-user-flow-policy"></a>Felhasználói folyamat szabályzatának létrehozása
 
-1. A Trusona-t most már a B2C-szolgáltatók listáján szereplő **új OpenID Connect-identitás-szolgáltatóként** kell látni.
+A Trusona-t most már a B2C-szolgáltatók listáján szereplő **új OpenID Connect-identitás-szolgáltatóként** kell látni.
 
-2. Válassza a **felhasználói folyamatok (szabályzatok)** lehetőséget a bal oldali navigációs panelen.
+1. A Azure AD B2C-bérlő **házirend**területén válassza a **felhasználói folyamatok**elemet.
 
-3. Válassza **Add**  >  az**új felhasználói folyamat**hozzáadása  >  **regisztráció lehetőséget, és jelentkezzen**be.
+1. Válassza az **új felhasználói folyamat**elemet.
 
-### <a name="configure-the-policy"></a>A házirend konfigurálása
+1. Válassza a **regisztráció és bejelentkezés**lehetőséget, válassza ki a kívánt verziót, majd kattintson a **Létrehozás**gombra.
 
-1. Nevezze el a szabályzatot.
+1. Adja meg a szabályzat **nevét** .
 
-2. Válassza ki az újonnan létrehozott **Trusona-identitás-szolgáltatót**.
+1. Az **identitás-szolgáltatók** szakaszban válassza ki az újonnan létrehozott **Trusona-identitás-szolgáltatót**.
 
-3. Mivel a Trusona természeténél fogva többtényezős, érdemes letiltani a többtényezős hitelesítést.
+   > [!NOTE]
+   > Mivel a Trusona természeténél fogva többtényezős, érdemes letiltani a többtényezős hitelesítést.
 
-4. Válassza a **Létrehozás** lehetőséget.
+1. Kattintson a **Létrehozás** gombra.
 
-5. A **felhasználói attribútumok és jogcímek**területen válassza a **továbbiak megjelenítése**lehetőséget. Az űrlapon válasszon ki legalább egy olyan attribútumot, amelyet a korábbi szakaszban a személyazonosság-szolgáltató beállítása során adott meg.
+1. A **felhasználói attribútumok és jogcímek**területen válassza a **továbbiak megjelenítése**lehetőséget. Az űrlapon válasszon ki legalább egy olyan attribútumot, amelyet a korábbi szakaszban a személyazonosság-szolgáltató beállítása során adott meg.
 
-6. Válassza az **OK** lehetőséget.  
+1. Kattintson az **OK** gombra.  
 
 ### <a name="test-the-policy"></a>A szabályzat tesztelése
 

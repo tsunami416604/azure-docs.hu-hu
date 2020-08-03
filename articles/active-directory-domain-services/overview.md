@@ -10,18 +10,20 @@ ms.workload: identity
 ms.topic: overview
 ms.date: 06/08/2020
 ms.author: iainfou
-ms.openlocfilehash: 472ff9de069e7d95cb1753a6b05830649806d2fc
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 6efd33b9f8825b5b5699b6106dadafec851ed454
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84734554"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87488550"
 ---
 # <a name="what-is-azure-active-directory-domain-services"></a>Mi az Azure Active Directory Domain Services?
 
 Azure Active Directory Domain Services (Azure AD DS) olyan felügyelt tartományi szolgáltatásokat biztosít, mint például a tartományhoz való csatlakozás, a csoportházirend, a Lightweight Directory Access Protocol (LDAP) és a Kerberos/NTLM hitelesítés. Ezeket a tartományi szolgáltatásokat a tartományvezérlők (DCs) Felhőbeli üzembe helyezése, kezelése és javítása nélkül kell használni.
 
-A felügyelt tartomány a DNS-névtér és a hozzá tartozó könyvtár. A felügyelt tartomány integrálható a meglévő Azure AD-Bérlővel, ami lehetővé teszi a felhasználók számára a meglévő hitelesítő adatokkal való bejelentkezést. Meglévő csoportokat és felhasználói fiókokat is használhat az erőforrásokhoz való hozzáférés biztosítására, amely a helyszíni erőforrások zökkenőmentesebb átemelését teszi lehetővé az Azure-ban.
+Azure AD DS felügyelt tartomány létrehozásakor egyedi névteret határozhat meg. Ez a névtér a tartománynevet, például a *aaddscontoso.com*és két tartományvezérlőt (DCS) helyezi üzembe a kiválasztott Azure-régióban. A tartományvezérlők ezt a központi telepítését replikakészlet néven nevezzük. A felügyelt tartomány integrálható a meglévő Azure AD-Bérlővel, ami lehetővé teszi a felhasználók számára a meglévő hitelesítő adatokkal való bejelentkezést. Meglévő csoportokat és felhasználói fiókokat is használhat az erőforrásokhoz való hozzáférés biztosítására, amely a helyszíni erőforrások zökkenőmentesebb átemelését teszi lehetővé az Azure-ban.
+
+A felügyelt tartományokat kiterjesztheti úgy, hogy az Azure AD-bérlőn belüli több replikát is hozzon létre. A kópiakészlet bármely olyan Azure-régióban használható, amely támogatja az Azure AD DS-t. A különböző Azure-régiókban található további replikák földrajzi vész-helyreállítást biztosítanak az örökölt alkalmazásokhoz, ha egy Azure-régió offline állapotba kerül. A kópiakészlet jelenleg előzetes verzióban érhető el. További információ: [a replika-készletek fogalmai és funkciói a felügyelt tartományokhoz][concepts-replica-sets].
 
 Az Azure AD DS integrálható a meglévő Azure AD-Bérlővel. Ez az integráció lehetővé teszi a felhasználók számára, hogy a meglévő hitelesítő adataik használatával bejelentkezzenek a felügyelt tartományhoz csatlakozó szolgáltatásba és alkalmazásokba. Meglévő csoportokat és felhasználói fiókokat is használhat az erőforrásokhoz való hozzáférés biztosításához. Ezek a funkciók zökkenőmentesebb átállást biztosítanak a helyszíni erőforrások számára az Azure-hoz.
 
@@ -150,3 +152,4 @@ Első lépésként [hozzon létre egy felügyelt tartományt a Azure Portal hasz
 [forest-trusts]: concepts-resource-forest.md
 [administration-concepts]: administration-concepts.md
 [synchronization]: synchronization.md
+[concepts-replica-sets]: concepts-replica-sets.md

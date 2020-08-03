@@ -3,12 +3,13 @@ title: Személyre szabott erőforrás létrehozása
 description: A szolgáltatás konfigurációja magában foglalja, hogy a szolgáltatás hogyan kezeli a jutalmakat, milyen gyakran vizsgálja a szolgáltatás, milyen gyakran történik a modell újratanítása és mennyi az adattárolás.
 ms.topic: how-to
 ms.date: 03/26/2020
-ms.openlocfilehash: 8b56516b5555ca971d7ab1db3caf5b76f252729b
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 2ebd5496eb45ed007f47cd34761800f8b54e5a5a
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344373"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501252"
 ---
 # <a name="create-a-personalizer-resource"></a>Személyre szabott erőforrás létrehozása
 
@@ -17,11 +18,11 @@ A személyre szabott erőforrás ugyanaz, mint a személyre szabott tanulási hu
 Ha azt szeretné, hogy a személyre szabott tartalom legyen kiválasztva egy weblap több tartalmi területéhez, használjon egy másik tanulási ciklust.
 
 
-## <a name="create-a-resource-in-the-azure-portal"></a>Erőforrás létrehozása a Azure Portalban
+## <a name="create-a-resource-in-the-azure-portal"></a>Erőforrás létrehozása az Azure Portalon
 
 Hozzon létre egy személyre szabott erőforrást minden visszajelzési hurokhoz.
 
-1. Jelentkezzen be az [Azure portálra](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer). Az előző hivatkozás a személyre szabási szolgáltatás **Létrehozás** lapjára lép.
+1. Jelentkezzen be [Azure Portalba](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer). Az előző hivatkozás a személyre szabási szolgáltatás **Létrehozás** lapjára lép.
 1. Adja meg a szolgáltatás nevét, válassza ki az előfizetést, a helyet, az árképzési szintet és az erőforráscsoportot.
 
     > [!div class="mx-imgBorder"]
@@ -76,6 +77,6 @@ Hozzon létre egy személyre szabott erőforrást minden visszajelzési hurokhoz
 
     A Rank és a jutalom API-k használatához mind az erőforrás-végpontot, mind a kulcsot kell használnia.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Konfigurálás](how-to-settings.md) Személyre szabott tanulási hurok

@@ -6,12 +6,12 @@ author: lachie83
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: laevenso
-ms.openlocfilehash: 7349504b5a1ed5a67f3b34be2c4ff5dda29afbf3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 08835bda959fb4fe261e86e4d519ab85bd2a4625
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87025302"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495148"
 ---
 # <a name="http-application-routing"></a>HTTP-alkalmazások útválasztása
 
@@ -20,7 +20,7 @@ A HTTP-alkalmazás útválasztási megoldásával egyszerűen elérheti az Azure
 Ha a bővítmény engedélyezve van, létrehoz egy DNS-zónát az előfizetésben. További információ a DNS-díjakról: [DNS-díjszabás][dns-pricing].
 
 > [!CAUTION]
-> A HTTP-alkalmazás útválasztási bővítménye lehetővé teszi, hogy gyorsan hozzon létre egy bejövő vezérlőt, és hozzáférjen az alkalmazásaihoz. Ez a bővítmény éles használatra nem ajánlott. A több replikát és TLS-támogatást tartalmazó, éles környezetbe való beléptetésre alkalmas központi telepítések esetén lásd: HTTPS bejövő forgalomra vonatkozó [vezérlő létrehozása](./ingress-tls.md).
+> A HTTP-alkalmazás útválasztási bővítménye lehetővé teszi, hogy gyorsan hozzon létre egy bejövő vezérlőt, és hozzáférjen az alkalmazásaihoz. Ez a bővítmény jelenleg nem éles környezetben való használatra készült, és nem ajánlott éles használatra. A több replikát és TLS-támogatást tartalmazó, éles környezetbe való beléptetésre alkalmas központi telepítések esetén lásd: HTTPS bejövő forgalomra vonatkozó [vezérlő létrehozása](./ingress-tls.md).
 
 ## <a name="http-routing-solution-overview"></a>HTTP-útválasztási megoldás áttekintése
 
@@ -257,7 +257,7 @@ I0426 21:51:58.042932       9 controller.go:179] ingress backend successfully re
 167.220.24.46 - [167.220.24.46] - - [26/Apr/2018:21:53:20 +0000] "GET / HTTP/1.1" 200 234 "" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0)" 197 0.001 [default-aks-helloworld-80] 10.244.0.13:8080 234 0.004 200
 ```
 
-## <a name="clean-up"></a>A feleslegessé vált elemek eltávolítása
+## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
 
 Távolítsa el a cikkben létrehozott társított Kubernetes-objektumokat a következő használatával: `kubectl delete` .
 

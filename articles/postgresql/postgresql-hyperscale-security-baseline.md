@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: dd6d3ef6f610dcbdc511297e459cc5856bebe033
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5f6fca572524d1b0254c777d0820d8781c9f7be8
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87030045"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496627"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-postgresql---hyperscale"></a>Azure biztonsági alapkonfiguráció a Azure Database for PostgreSQL-nagy kapacitású
 
@@ -484,7 +484,7 @@ A Microsoft által felügyelt mögöttes platform esetében a Microsoft az össz
 
 ### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: szerepköralapú hozzáférés-vezérlés használata az erőforrásokhoz való hozzáférés szabályozásához
 
-**Útmutató**: az Azure szerepköralapú hozzáférés-vezérlés (RBAC) használata a nagy kapacitású (Citus) vezérlési síkja elérésének vezérléséhez (például Azure Portal). A RBAC nem befolyásolja a felhasználói engedélyeket az adatbázison belül.
+**Útmutató**: az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használata a nagy kapacitású (Citus) vezérlő síkja elérésének vezérléséhez (például Azure Portal). A RBAC nem befolyásolja a felhasználói engedélyeket az adatbázison belül.
 
 Ha az adatbázis szintjén szeretné módosítani a felhasználói jogosultságokat, használja a standard PostgreSQL-parancsokat egy olyan eszköz használatával, mint például a PgAdmin vagy a psql.
 
