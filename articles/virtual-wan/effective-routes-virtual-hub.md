@@ -7,19 +7,19 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 06/29/2020
 ms.author: cherylmc
-ms.openlocfilehash: 20cdc55b474034480392f9dfb05b20ad25df6939
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: a7e42ddeb4abacd8707dda4cd558933b0d7a34f4
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86037766"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513706"
 ---
 # <a name="view-virtual-hub-effective-routes"></a>Virtuális központ érvényes útvonalainak megtekintése
 
 A Azure Portalban megtekintheti a virtuális WAN-központ összes útvonalát. Ez a cikk végigvezeti a hatályos útvonalak megtekintésének lépésein. További információ a virtuális központ útválasztásáról: [Tudnivalók a virtuális központ útválasztásáról](about-virtual-hub-routing.md).
 
 > [!NOTE]
-> A Azure Portal ezen funkciók némelyike továbbra is kivezethető, és nem érhető el, amíg a hét augusztus 3. 
+> A Azure Portal ezen funkciók némelyike továbbra is kivezethető, és nem érhető el, amíg a hét augusztus 17-i. 
 >
 
 ## <a name="select-connections-or-route-tables"></a><a name="routing"></a>Kapcsolatok vagy útválasztási táblák kiválasztása
@@ -46,13 +46,13 @@ Az oldal kimenete a következő mezőket jeleníti meg:
 * **Forrás: az**útválasztási forrás erőforrás-azonosítója.
 * **Elérési út**: a BGP attribútum as (autonóm rendszer) elérési útja felsorolja az összes olyan számot, amelyet át kell adni ahhoz, hogy elérje azt a helyet, ahol az elérési utat csatolták, a meghirdetve.
 
-### <a name="example"></a><a name="example"></a>Például
+### <a name="example"></a><a name="example"></a>Példa
 
 A következő példában szereplő értékek azt jelzik, hogy a virtuális hub-kapcsolatok vagy az útválasztási táblázat megtanulta a 10.2.0.0/24 (ág-előtag) útvonalát. Megtanulta az útvonalat a **VPN következő ugrásának típusa** VPN_S2S_Gateway a **következő ugrás** VPN Gateway erőforrás-azonosítóval. Az **útvonal kezdőpontja** a kezdeményező VPN-átjáró/útválasztási tábla/kapcsolat erőforrás-azonosítójára mutat. Az **elérési** út a ág as elérési útját jelöli.
 
 A táblázat alján található görgetősáv használatával megtekintheti az "AS Path" kifejezést.
 
-| **Előtag** |  **Következő ugrási típus** | **Következő ugrás** |  **Útvonal forrása** |**Elérési út** |
+| **Előtag** |  **A következő ugrás típusa** | **Következő ugrás** |  **Útvonal forrása** |**Elérési út** |
 | ---        | ---                | ---          | ---               | ---         |
 | 10.2.0.0/24| VPN_S2S_Gateway |10.1.0.6, 10.1.0.7|/Subscriptions/ `<sub id>` /ResourceGroups/ `<resource group name>` /providers/Microsoft.Network/vpnGateways/vpngw| 20000|
 

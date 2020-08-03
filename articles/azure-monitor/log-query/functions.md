@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 05/18/2018
-ms.openlocfilehash: 5fb9e48a6d6a0b95b61478a7877e9b46dd8963e9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/31/2020
+ms.openlocfilehash: 155f27b9f04db74955640aad8f582fdf05539368
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83649394"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87511938"
 ---
 # <a name="using-functions-in-azure-monitor-log-queries"></a>Függvények használata Azure Monitor log-lekérdezésekben
 
@@ -21,9 +21,9 @@ Ha egy másik lekérdezéssel rendelkező naplózási lekérdezést szeretne has
 
 A **Save (Mentés** ) gombra kattintva hozzon létre egy Azure Portal log Analyticstel rendelkező függvényt, majd adja meg az adatokat a következő táblázatban.
 
-| Beállítás | Description |
+| Beállítás | Leírás |
 |:---|:---|
-| Name           | A lekérdezés megjelenített neve a **query Explorerben**. |
+| Név           | A lekérdezés megjelenített neve a **query Explorerben**. |
 | Mentés másként        | Függvény |
 | Függvény aliasa | A függvény más lekérdezésekben való használatának rövid neve. A nem tartalmazhat szóközt, és egyedinek kell lennie. |
 | Kategória       | A **lekérdezési Explorerben**mentett lekérdezések és függvények rendszerezésének kategóriája. |
@@ -33,6 +33,9 @@ A **Save (Mentés** ) gombra kattintva hozzon létre egy Azure Portal log Analyt
 
 ## <a name="use-a-function"></a>Függvény használata
 Használjon függvényt egy másik lekérdezésben szereplő aliassal együtt. Más táblákhoz hasonlóan is használható.
+
+## <a name="function-parameters"></a>Függvény paraméterei 
+Paramétereket adhat hozzá egy függvényhez, így bizonyos változók értékeit megadhatja a híváskor. Egy Resource Manager-sablon használatával az egyetlen lehetőség, hogy a függvényt a paraméterekkel együtt hozza létre. Példaként tekintse meg a [Resource Manager-sablonok mintáit a Azure monitor napló lekérdezéséhez](../samples/resource-manager-log-queries.md#parameterized-function) .
 
 ## <a name="example"></a>Példa
 A következő minta lekérdezés az elmúlt nap során jelentett összes hiányzó biztonsági frissítést visszaadja. Mentse ezt a lekérdezést függvényként az alias _security_updates_last_day_. 

@@ -1,6 +1,6 @@
 ---
 title: SDK-k és CLI-eszközök Azure NetApp Files | Microsoft Docs
-description: Felsorolja a Azure NetApp Files által támogatott SDK-kat és parancssori (CLI-) eszközöket.
+description: 'Ismerje meg a Azure NetApp Files támogatott SDK-kat és azok közzétett helyét a GitHubon, valamint a támogatott parancssori eszközöket: Azure CLI és PowerShell.'
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: b-juche
-ms.openlocfilehash: b0cb29d6db339a64a1d9b753acbfd2334364853a
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 54c85fb778d1794f9aeba2eba5ed459292636e35
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045467"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513621"
 ---
 # <a name="azure-netapp-files-sdks-and-cli-tools"></a>Azure NetApp Files SDK-k és CLI-eszközök
 

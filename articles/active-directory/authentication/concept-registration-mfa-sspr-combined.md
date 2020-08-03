@@ -11,16 +11,19 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8ceb375eb9da853b4c89ffe278d3483f6a4fa72
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a3a06f01507ad5715d1e8a3f828ab008e1e8ce65
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87050962"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87512975"
 ---
 # <a name="combined-security-information-registration-for-azure-active-directory-overview"></a>Összevont biztonsági információk regisztrálása Azure Active Directory – áttekintés
 
 A kombinált regisztráció előtt a felhasználók az Azure Multi-Factor Authentication és az önkiszolgáló jelszó-visszaállítás (SSPR) hitelesítési módszereit külön-külön regisztrálták. Az emberek zavarosak voltak, hogy hasonló módszerek voltak használatban Multi-Factor Authentication és SSPR, de mindkét szolgáltatáshoz regisztrálniuk kellett őket. A kombinált regisztráció révén a felhasználók egyszer regisztrálhatnak, és a Multi-Factor Authentication és a SSPR előnyeit is igénybe vehetik.
+
+> [!NOTE]
+> Az Azure AD-bérlők augusztus 2020 15-én kezdődően automatikusan engedélyezve lesznek a kombinált regisztrációhoz.
 
 Ez a cikk a kombinált biztonsági regisztrációt ismerteti. A kombinált biztonsági regisztráció megkezdéséhez tekintse meg a következő cikket:
 
@@ -50,15 +53,15 @@ A kombinált regisztráció a következő hitelesítési módszereket és művel
 
 | Metódus | Regisztráció | Módosítás | Törlés |
 | --- | --- | --- | --- |
-| Microsoft Authenticator | Igen (legfeljebb 5) | No | Yes |
-| Egyéb hitelesítő alkalmazás | Igen (legfeljebb 5) | No | Yes |
-| Hardver jogkivonata | Nem | Nem | Yes |
+| Microsoft Authenticator | Igen (legfeljebb 5) | Nem | Igen |
+| Egyéb hitelesítő alkalmazás | Igen (legfeljebb 5) | Nem | Igen |
+| Hardver jogkivonata | Nem | Nem | Igen |
 | Telefon | Igen | Igen | Igen |
 | Másik telefon | Igen | Igen | Igen |
 | Munkahelyi telefon | Nem | Nem | Nem |
 | E-mail | Igen | Igen | Igen |
-| Biztonsági kérdések | Yes | No | Yes |
-| Alkalmazásjelszavak. | Yes | No | Yes |
+| Biztonsági kérdések | Igen | Nem | Igen |
+| Alkalmazásjelszavak. | Igen | Nem | Igen |
 | FIDO2 biztonsági kulcsok<br />*Felügyelt mód csak a [biztonsági adatok](https://mysignins.microsoft.com/security-info) lapról*| Igen | Igen | Igen |
 
 > [!NOTE]

@@ -17,7 +17,7 @@ ms.locfileid: "67179235"
 ---
 ### <a name="delete-azure-resources"></a>Azure-erőforrások törlése 
 
-Az Azure-erőforrások és -erőforráscsoportok törlése nem vonható vissza. Figyeljen, nehogy véletlenül rossz erőforráscsoportot vagy erőforrásokat töröljön. Ha az IoT Hub-központot egy megtartani kívánt erőforrásokat tartalmazó meglévő erőforráscsoportban hozta létre, az erőforráscsoport törlése helyett csak magát az IoT Hub-erőforrást törölje.
+Az Azure-erőforrások és -erőforráscsoportok törlése visszafordíthatatlan. Figyeljen, nehogy véletlenül rossz erőforráscsoportot vagy erőforrásokat töröljön. Ha az IoT Hub-központot egy megtartani kívánt erőforrásokat tartalmazó meglévő erőforráscsoportban hozta létre, az erőforráscsoport törlése helyett csak magát az IoT Hub-erőforrást törölje.
 
 Az erőforrások törlése:
 

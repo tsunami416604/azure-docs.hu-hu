@@ -1,17 +1,17 @@
 ---
 title: Adatkészletek hozzáadása egy meglévő Azure-adatmegosztáshoz
 description: Megtudhatja, hogyan adhat hozzá adatkészleteket egy meglévő adatmegosztáshoz az Azure-adatmegosztásban, és hogyan oszthat meg ugyanazzal a címzettekkel.
-author: joannapea
-ms.author: joanpo
+author: jifems
+ms.author: jife
 ms.service: data-share
 ms.topic: how-to
-ms.date: 07/10/2019
-ms.openlocfilehash: c4aee1eb268c124586388eacf8c908c20d799bc9
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/30/2020
+ms.openlocfilehash: 540cdc2948cbcd97bf7c8872f3aace2862280434
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110895"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513489"
 ---
 # <a name="how-to-add-datasets-to-an-existing-share-in-azure-data-share"></a>Adatkészletek hozzáadása meglévő megosztáshoz az Azure-beli adatmegosztásban
 
@@ -31,5 +31,5 @@ A jobb oldali panelen válassza ki a hozzáadni kívánt adatkészlet típusát,
 
 Ha az **adatkészletek hozzáadása**gombra kattint, a rendszer hozzáadja az adatkészleteket a megosztáshoz. Megjegyzés: a felhasználóknak el kell indítaniuk a pillanatképet ahhoz, hogy megjelenjenek az új adatkészletek. Ha vannak beállított pillanatkép-beállítások, a felhasználók a következő ütemezett pillanatkép befejeződése után láthatják az új adatkészleteket. A pillanatkép-beállítások konfigurálása nélkül a felhasználónak manuálisan kell elindítania az adatok teljes vagy növekményes másolatát a frissítések fogadásához. A pillanatképekkel kapcsolatos további információkért lásd: [Pillanatképek](terminology.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információ a [címzettek meglévő adatmegosztáshoz való hozzáadásáról](how-to-add-recipients.md).

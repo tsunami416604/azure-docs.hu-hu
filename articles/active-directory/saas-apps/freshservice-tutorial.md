@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/11/2019
+ms.date: 07/29/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e08ef72dca09f873ad1cfcc91e132063b88406b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: fd85b66894afbd239954f5f32b8297757caddc44
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74227534"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513261"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-freshservice"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Freshservice
 
@@ -45,6 +44,7 @@ Első lépésként a következő elemeket kell megadnia:
 Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
 
 * A Freshservice támogatja az **SP** által KEZDEMÉNYEZett SSO-t
+* A Freshservice konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-freshservice-from-the-gallery"></a>Freshservice hozzáadása a gyűjteményből
 
@@ -93,20 +93,6 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 
-1. A Freshservice az SHA-256 ujjlenyomatot igényli az SSO működésének beolvasásához. Az SHA-256 ujjlenyomat beszerzéséhez hajtsa végre a következő lépéseket:
-
-    ![Ujjlenyomat](./media/freshservice-tutorial/ic790821.png "Ujjlenyomat")
-
-    1. Nyissa meg a [hivatkozást](https://www.samltool.com/fingerprint.php) egy másik böngészőben.
-
-    1. Nyissa meg a letöltött tanúsítvány (Base64) fájlt a Jegyzettömbben, és illessze be a tartalmat az **X. 509 tanúsítvány** szövegmezőbe.
-
-    1. Az algoritmus esetében válassza a **sha256** lehetőséget a legördülő listából.
-
-    1. Kattintson az **ujjlenyomat kiszámítása**elemre.
-
-    1. A másolás ikonra kattintva másolja a generált **ujjlenyomatot** , és mentse a számítógépére.
-
 1. A Azure Portal **Freshservice beállítása** szakaszban másolja ki a **Azure portal**megfelelő URL-címeket a követelmény alapján.
 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
@@ -119,9 +105,9 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás**gombra.
+   1. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -143,41 +129,38 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 ## <a name="configure-freshservice-sso"></a>Freshservice SSO konfigurálása
 
-1. A Freshservice belüli konfiguráció automatizálásához telepítenie kell az **alkalmazások biztonságos bejelentkezési böngésző bővítményét** **a bővítmény telepítése**lehetőségre kattintva.
+1. Nyisson meg egy új böngészőablakot, és jelentkezzen be a Freshservice vállalati webhelyre rendszergazdaként.
 
-    ![Saját alkalmazások bővítmény](common/install-myappssecure-extension.png)
+1. A bal oldali menüben kattintson a **rendszergazda** elemre, és válassza az **ügyfélszolgálati biztonság** lehetőséget az **általános beállítások**területen.
 
-2. Miután hozzáadta a bővítményt a böngészőhöz, kattintson a **telepítés Freshservice** gombra a Freshservice alkalmazáshoz. Itt adja meg a rendszergazdai hitelesítő adatokat a Freshservice való bejelentkezéshez. A böngésző bővítménye automatikusan konfigurálja az alkalmazást, és automatizálja az 3-6-es lépést.
+    ![Felügyelet](./media/freshservice-tutorial/configure-1.png "Rendszergazda")
 
-    ![Telepítési konfiguráció](common/setup-sso.png)
+1. A **Biztonság**területen kattintson az **ugrás a Freshworks 360 biztonságra**elemre.
 
-3. Ha manuálisan szeretné beállítani a Freshservice, nyisson meg egy új böngészőablakot, és jelentkezzen be a Freshservice vállalati webhelyére rendszergazdaként, és hajtsa végre a következő lépéseket:
+    ![Biztonság](./media/freshservice-tutorial/configure-2.png "Biztonság")
 
-4. A felső menüben kattintson a **rendszergazda**elemre.
+1. A **Biztonság** szakaszban hajtsa végre a következő lépéseket:
 
-    ![Felügyelet](./media/freshservice-tutorial/ic790814.png "Rendszergazda")
+    ![Egyszeri bejelentkezés](./media/freshservice-tutorial/configure-3.png "Egyszeri bejelentkezés")
+  
+    a. Az **egyszeri bejelentkezéshez**válassza **a be**lehetőséget.
 
-5. A **Customer Portalon**kattintson a **Biztonság**elemre.
+    b. A **login metódusban**válassza az **SAML egyszeri bejelentkezés**lehetőséget.
 
-    ![Biztonság](./media/freshservice-tutorial/ic790815.png "Biztonság")
+    c. Az identitásszolgáltató szövegmezőben **megadott entitás-azonosítóban** illessze be az **entitás-azonosító** értékét, amelyet a Azure Portal másolt.
 
-6. A **Biztonság** szakaszban hajtsa végre a következő lépéseket:
+    d. Az **SAML SSO URL** szövegmezőbe illessze be a **bejelentkezési URL** értékét, amelyet a Azure Portal másolt.
 
-    ![Egyszeri bejelentkezés](./media/freshservice-tutorial/ic790816.png "Egyszeri bejelentkezés")
+    e. Az **aláírási beállítások**területen jelölje be a **csak az aláírt érvényesítések** lehetőséget a legördülő listából.
 
-    a. **Egyszeri bejelentkezés**váltása.
+    f. A **kijelentkezési URL** szövegmezőben illessze be a **kijelentkezési URL-** értéket, amelyet a Azure Portal másolt.
 
-    b. Válassza ki az **SAML SSO**elemet.
+    : A **biztonsági tanúsítvány** szövegmezőbe illessze be a korábban beszerzett **tanúsítvány (Base64)** értékét.
+  
+    h. Kattintson a **Mentés** gombra.
 
-    c. Az **SAML bejelentkezési URL** szövegmezőbe illessze be a **bejelentkezési URL-címet**, amelyet a Azure Portalból másolt.
 
-    d. A **kijelentkezési URL** szövegmezőbe illessze be a **KIJELENTKEZÉSI URL-cím**értékét, amelyet a Azure Portalból másolt.
-
-    e. A **biztonsági tanúsítvány ujjlenyomata** szövegmezőbe illessze be a korábban létrehozott **ujjlenyomat** -értéket.
-
-    f. Kattintson a **Mentés** gombra
-
-### <a name="create-freshservice-test-user"></a>Freshservice-tesztelési felhasználó létrehozása
+## <a name="create-freshservice-test-user"></a>Freshservice-tesztelési felhasználó létrehozása
 
 Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a FreshService, a FreshService kell kiépíteni őket. FreshService esetén a kiépítés manuális feladat.
 
@@ -185,32 +168,25 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a Fr
 
 1. Jelentkezzen be a **FreshService** vállalati webhelyre rendszergazdaként.
 
-2. A felső menüben kattintson a **rendszergazda**elemre.
-
-    ![Felügyelet](./media/freshservice-tutorial/ic790814.png "Rendszergazda")
+2. A bal oldali menüben kattintson a **rendszergazda**elemre.
 
 3. A **felhasználói kezelés** szakaszban kattintson a **kérelmezők**elemre.
 
-    ![Kérelmezők](./media/freshservice-tutorial/ic790818.png "Kérelmezők")
+    ![Kérelmezők](./media/freshservice-tutorial/create-user-1.png "Kérelmezők")
 
 4. Kattintson az **új kérelmező**elemre.
 
-    ![Új kérők](./media/freshservice-tutorial/ic790819.png "Új kérők")
+    ![Új kérők](./media/freshservice-tutorial/create-user-2.png "Új kérők")
 
-5. Az **új kérelmező** szakaszban hajtsa végre a következő lépéseket:
-
-    ![Új kérelmező](./media/freshservice-tutorial/ic790820.png "Új kérelmező")  
-
-    a. Adja meg egy érvényes Azure Active Directory- **fiók vezetéknevét és** **e-mail-** attribútumait, amelyet szeretne a kapcsolódó szövegmezőbe beépíteni.
-
-    b. Kattintson a **Save** (Mentés) gombra.
+5. Az **új kérelmező** szakaszban adja meg a kötelező mezőket, majd kattintson a **Save (Mentés**) gombra.
+    ![Új kérelmező](./media/freshservice-tutorial/create-user-3.png "Új kérelmező")  
 
     > [!NOTE]
     > A Azure Active Directory fiók tulajdonosa egy e-mailt kap, amely tartalmazza a fiók megerősítését, mielőtt az aktívvá válna.
     >  
 
-> [!NOTE]
-> Az Azure AD felhasználói fiókjainak kiépítéséhez bármilyen más, a FreshService által biztosított FreshService felhasználói fiók létrehozására szolgáló eszközt vagy API-t használhat.
+    > [!NOTE]
+    > Az Azure AD felhasználói fiókjainak kiépítéséhez bármilyen más, a FreshService által biztosított FreshService felhasználói fiók létrehozására szolgáló eszközt vagy API-t használhat.
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 
@@ -218,7 +194,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszt
 
 Ha a hozzáférési panelen a Freshservice csempére kattint, automatikusan be kell jelentkeznie arra a Freshservice, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 - [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 06/11/2020
-ms.openlocfilehash: 166909f1e048ac54184ef5eee2ecee3bfedcdb02
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 0707d578f90f70318c2a01f324b50092d9962965
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284132"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513842"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>Az Azure Logic Apps összekötői
 
@@ -153,11 +153,48 @@ A Logic Apps ezeket a népszerű szabványos összekötőket biztosítja a felad
 
 Íme néhány általánosan használt standard összekötő, amelyet Logic Apps biztosít a helyszíni rendszerekben tárolt adatok és erőforrások eléréséhez. A helyszíni rendszerhez való kapcsolódás előtt először [le kell töltenie, telepítenie és be kell állítania egy helyszíni adatátjárót][gateway-doc]. Ez az átjáró biztonságos kommunikációs csatornát biztosít anélkül, hogy be kellene állítania a szükséges hálózati infrastruktúrát.
 
-|___|___|___|___|___|
-|---|---|---|---|---|
-| [![API-ikon ][biztalk-server-icon]<br> **BizTalk** <br> **Server**][biztalk-server-doc] | [![API-ikon ][file-system-icon]<br> **fájlrendszere <br> **][file-system-doc] | [![API-ikon ][ibm-db2-icon]<br> **IBM DB2**][ibm-db2-doc] | [![API-ikon ][ibm-informix-icon]<br> **IBM** <br> **Informix**][ibm-informix-doc] | [![API-ikon ][mysql-icon]<br> **MySQL**][mysql-doc] |
-| [![API-ikon ][oracle-db-icon]<br> **Oracle db**][oracle-db-doc] | [![API-ikon ][postgre-sql-icon]<br> **PostgreSQL**][postgre-sql-doc] | [![API-ikon ][sharepoint-server-icon]<br> **SharePoint- <br> kiszolgáló**][sharepoint-server-doc] | [![API-ikon ][sql-server-icon]<br> **SQL <br> Server**][sql-server-doc] | [![API-ikon ][teradata-icon]<br> **Teradata**][teradata-doc] |
-||||||
+:::row:::
+    :::column:::
+        [![API-ikon ][biztalk-server-icon]<br> **BizTalk** <br> **Server**][biztalk-server-doc]
+    :::column-end:::
+    :::column:::
+        [![API-ikon ][file-system-icon]<br> **fájlrendszere <br> **][file-system-doc]
+    :::column-end:::
+    :::column:::
+        [![API-ikon ][ibm-db2-icon]<br> **IBM DB2**][ibm-db2-doc]
+    :::column-end:::
+    :::column:::
+        [![API-ikon ][ibm-informix-icon]<br> **IBM** <br> **Informix**][ibm-informix-doc]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        [![API-ikon ][mysql-icon]<br> **MySQL**][mysql-doc]
+    :::column-end:::
+    :::column:::
+        [![API-ikon ][oracle-db-icon]<br> **Oracle db**][oracle-db-doc]
+    :::column-end:::
+    :::column:::
+        [![API-ikon ][postgre-sql-icon]<br> **PostgreSQL**][postgre-sql-doc]
+    :::column-end:::
+    :::column:::
+        [![API-ikon ][sharepoint-server-icon]<br> **SharePoint- <br> kiszolgáló**][sharepoint-server-doc]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        [![API-ikon ][sql-server-icon]<br> **SQL <br> Server**][sql-server-doc]
+    :::column-end:::
+    :::column:::
+        [![API-ikon ][teradata-icon]<br> **Teradata**][teradata-doc]
+    :::column-end:::
+    :::column:::
+        
+    :::column-end:::
+    :::column:::
+        
+    :::column-end:::
+:::row-end:::
 
 <a name="integration-account-connectors"></a>
 
@@ -165,12 +202,48 @@ A Logic Apps ezeket a népszerű szabványos összekötőket biztosítja a felad
 
 A Logic Apps szabványos összekötőket biztosít a vállalatközi (B2B) megoldások létrehozásához és az Azure-beli Enterprise Integration Pack (EIP) keresztül elérhető [integrációs fiók](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)kifizetéséhez. Ezzel a fiókkal B2B-összetevőket hozhat létre és tárolhat, például kereskedelmi partnereket, szerződéseket, térképeket, sémákat, tanúsítványokat stb. Ezeknek az összetevőknek a használatához társítsa a logikai alkalmazásokat az integrációs fiókjával. Ha jelenleg BizTalk Server használ, előfordulhat, hogy ezek az összekötők már ismerősnek tűnnek.
 
-|___|___|___|___|
-|---|---|---|---|
-| [![API-ikon ][as2-icon]<br> **AS2- <br> dekódolás**][as2-doc] | [![API-ikon ][as2-icon]<br> **AS2- <br> kódolás**][as2-doc] | [![API-ikon ][edifact-icon]<br> **EDIFACT <br> dekódolása**][edifact-decode-doc] | [![API-ikon ][edifact-icon]<br> **EDIFACT <br> kódolása**][edifact-encode-doc] |
-| [![API-ikon – ][flat-file-decode-icon]<br> **lapos fájl <br> dekódolása**][flat-file-decode-doc] | [![API-ikon – ][flat-file-encode-icon]<br> **lapos fájl <br> kódolása**][flat-file-encode-doc] | [![API-ikon ][integration-account-icon]<br> **integrációs <br> fiókja**][integration-account-doc] | [![API-ikon ][liquid-icon]<br> **folyékony** <br> **átalakítások**][json-liquid-transform-doc] |
-| [![API-ikon ][x12-icon]<br> **X12 <br> dekódolása**][x12-decode-doc] | [![API-ikon ][x12-icon]<br> **X12 <br> kódolása**][x12-encode-doc] | [![API ][xml-transform-icon]<br> **-ikon XML-** <br> **átalakítások**][xml-transform-doc] | [![API ][xml-validate-icon]<br> **-ikon XML- <br> ellenőrzése**][xml-validate-doc] |
-|||||
+:::row:::
+    :::column:::
+        [![API-ikon ][as2-icon]<br> **AS2- <br> dekódolás**][as2-doc]
+    :::column-end:::
+    :::column:::
+        [![API-ikon ][as2-icon]<br> **AS2- <br> kódolás**][as2-doc]
+    :::column-end:::
+    :::column:::
+        [![API-ikon ][edifact-icon]<br> **EDIFACT <br> dekódolása**][edifact-decode-doc]
+    :::column-end:::
+    :::column:::
+        [![API-ikon ][edifact-icon]<br> **EDIFACT <br> kódolása**][edifact-encode-doc]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        [![API-ikon – ][flat-file-decode-icon]<br> **lapos fájl <br> dekódolása**][flat-file-decode-doc]
+    :::column-end:::
+    :::column:::
+        [![API-ikon – ][flat-file-encode-icon]<br> **lapos fájl <br> kódolása**][flat-file-encode-doc]
+    :::column-end:::
+    :::column:::
+        [![API-ikon ][integration-account-icon]<br> **integrációs <br> fiókja**][integration-account-doc]
+    :::column-end:::
+    :::column:::
+        [![API-ikon ][liquid-icon]<br> **folyékony** <br> **átalakítások**][json-liquid-transform-doc]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        [![API-ikon ][x12-icon]<br> **X12 <br> dekódolása**][x12-decode-doc]
+    :::column-end:::
+    :::column:::
+        [![API-ikon ][x12-icon]<br> **X12 <br> kódolása**][x12-encode-doc]
+    :::column-end:::
+    :::column:::
+        [![API ][xml-transform-icon]<br> **-ikon XML-** <br> **átalakítások**][xml-transform-doc]
+    :::column-end:::
+    :::column:::
+        [![API ][xml-validate-icon]<br> **-ikon XML- <br> ellenőrzése**][xml-validate-doc]
+    :::column-end:::
+:::row-end:::
 
 <a name="enterprise-connectors"></a>
 
@@ -178,10 +251,20 @@ A Logic Apps szabványos összekötőket biztosít a vállalatközi (B2B) megold
 
 A Logic Apps a nagyvállalati rendszerekhez (például SAP és IBM MQ) való hozzáféréshez biztosít ilyen vállalati összekötőket:
 
-|___|___|___|
-|---|---|---|
-| [![API-ikon ][ibm-3270-icon]<br> **IBM 3270**][ibm-3270-doc] | [![API-ikon ][ibm-mq-icon]<br> **IBM MQ**][ibm-mq-doc] | [![API-ikon ][sap-icon]<br> **SAP**][sap-connector-doc] |
-|||
+:::row:::
+    :::column:::
+        [![API-ikon ][ibm-3270-icon]<br> **IBM 3270**][ibm-3270-doc]
+    :::column-end:::
+    :::column:::
+        [![API-ikon ][ibm-mq-icon]<br> **IBM MQ**][ibm-mq-doc]
+    :::column-end:::
+    :::column:::
+        [![API-ikon ][sap-icon]<br> **SAP**][sap-connector-doc]
+    :::column-end:::
+    :::column:::
+        
+    :::column-end:::
+:::row-end:::
 
 <a name="ise-connectors"></a>
 
@@ -189,14 +272,90 @@ A Logic Apps a nagyvállalati rendszerekhez (például SAP és IBM MQ) való hoz
 
 A dedikált [integrációs szolgáltatási környezetben (ISE)](#integration-service-environment)létrehozott és futtatott Logic apps esetében a Logic app Designer azonosítja a beépített eseményindítókat és műveleteket, **amelyek az ISE** -ben futnak az alapcímke használatával. Az ISE-ben futó felügyelt összekötők az **ISE** címkét jelenítik meg, míg a globális, több-bérlős Logic apps szolgáltatásban futó összekötők nem jelenítik meg a címkét. Ez a lista a jelenleg ISE-verziókkal rendelkező összekötőket jeleníti meg:
 
-|___|___|___|___|___|
-|---|---|---|---|---|
-| [![API-ikon ][as2-icon]<br> **AS2**][as2-doc] | [![API-ikon ][azure-automation-icon]<br> **Azure <br> Automation**][azure-automation-doc] | [![API-ikon ][azure-blob-storage-icon]<br> **Azure Blob <br> Storage**][azure-blob-storage-doc] | [![API-ikon ][azure-cosmos-db-icon]<br> **Azure Cosmos <br> db**][azure-cosmos-db-doc] | [![API-ikon ][azure-event-hubs-icon]<br> **Azure Event <br> hubok**][azure-event-hubs-doc] |
-| [![API-ikon ][azure-event-grid-icon]<br> **Azure Event <br> Grid**][azure-event-grid-doc] | [![API-ikon ][azure-file-storage-icon]<br> **Azure file <br> Storage**][azure-file-storage-doc] | [![API-ikon az ][azure-key-vault-icon]<br> **Azure Key <br> vaultban**][azure-key-vault-doc] | [![API-ikon ][azure-monitor-logs-icon]<br> **Azure monitor <br> naplók**][azure-monitor-logs-doc] | [![API-ikon ][azure-service-bus-icon]<br> **Azure Service <br> Bus**][azure-service-bus-doc] |
-| [![API-ikon ][azure-sql-data-warehouse-icon]<br> **Az Azure SQL- <br> adattárházban**][azure-sql-data-warehouse-doc] | [![API-ikon ][azure-table-storage-icon]<br> **Azure Table <br> Storage**][azure-table-storage-doc] | [![API-ikon ][azure-queues-icon]<br> **Azure- <br> várólisták**][azure-queues-doc] | [![API-ikon ][edifact-icon]<br> **EDIFACT**][edifact-doc] | [![API-ikon ][file-system-icon]<br> **fájlrendszere <br> **][file-system-doc] |
-| [![API-ikon ][ftp-icon]<br> **FTP**][ftp-doc] | [![API-ikon ][ibm-3270-icon]<br> **IBM 3270**][ibm-3270-doc] | [![API-ikon ][ibm-db2-icon]<br> **IBM DB2**][ibm-db2-doc] | [![API-ikon ][ibm-mq-icon]<br> **IBM MQ**][ibm-mq-doc] | [![API-ikon ][sap-icon]<br> **SAP**][sap-connector-doc] |
-| [![API ][sftp-ssh-icon]<br> **-ikon SFTP – SSH**][sftp-ssh-doc] | [![API-ikon ][smtp-icon]<br> **SMTP**][smtp-doc] | [![API-ikon ][sql-server-icon]<br> **SQL <br> Server**][sql-server-doc] | [![API-ikon ][x12-icon]<br> **X12**][x12-doc] |
-||||||
+:::row:::
+    :::column:::
+        [![API-ikon ][as2-icon]<br> **AS2**][as2-doc]
+    :::column-end:::
+    :::column:::
+        [![API-ikon ][azure-automation-icon]<br> **Azure <br> Automation**][azure-automation-doc]
+    :::column-end:::
+    :::column:::
+        [![API-ikon ][azure-blob-storage-icon]<br> **Azure Blob <br> Storage**][azure-blob-storage-doc]
+    :::column-end:::
+    :::column:::
+        [![API-ikon ][azure-cosmos-db-icon]<br> **Azure Cosmos <br> db**][azure-cosmos-db-doc]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        [![API-ikon ][azure-event-hubs-icon]<br> **Azure Event <br> hubok**][azure-event-hubs-doc]
+    :::column-end:::
+    :::column:::
+        [![API-ikon ][azure-event-grid-icon]<br> **Azure Event <br> Grid**][azure-event-grid-doc]
+    :::column-end:::
+    :::column:::
+        [![API-ikon ][azure-file-storage-icon]<br> **Azure file <br> Storage**][azure-file-storage-doc]
+    :::column-end:::
+    :::column:::
+        [![API-ikon az ][azure-key-vault-icon]<br> **Azure Key <br> vaultban**][azure-key-vault-doc]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        [![API-ikon ][azure-monitor-logs-icon]<br> **Azure monitor <br> naplók**][azure-monitor-logs-doc]
+    :::column-end:::
+    :::column:::
+        [![API-ikon ][azure-service-bus-icon]<br> **Azure Service <br> Bus**][azure-service-bus-doc]
+    :::column-end:::
+    :::column:::
+        [![API-ikon ][azure-sql-data-warehouse-icon]<br> **Az Azure SQL- <br> adattárházban**][azure-sql-data-warehouse-doc]
+    :::column-end:::
+    :::column:::
+        [![API-ikon ][azure-table-storage-icon]<br> **Azure Table <br> Storage**][azure-table-storage-doc]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        [![API-ikon ][azure-queues-icon]<br> **Azure- <br> várólisták**][azure-queues-doc]
+    :::column-end:::
+    :::column:::
+        [![API-ikon ][edifact-icon]<br> **EDIFACT**][edifact-doc]
+    :::column-end:::
+    :::column:::
+        [![API-ikon ][file-system-icon]<br> **fájlrendszere <br> **][file-system-doc]
+    :::column-end:::
+    :::column:::
+        [![API-ikon ][ftp-icon]<br> **FTP**][ftp-doc]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        [![API-ikon ][ibm-3270-icon]<br> **IBM 3270**][ibm-3270-doc]
+    :::column-end:::
+    :::column:::
+        [![API-ikon ][ibm-db2-icon]<br> **IBM DB2**][ibm-db2-doc]
+    :::column-end:::
+    :::column:::
+        [![API-ikon ][ibm-mq-icon]<br> **IBM MQ**][ibm-mq-doc]
+    :::column-end:::
+    :::column:::
+        [![API-ikon ][sap-icon]<br> **SAP**][sap-connector-doc]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        [![API ][sftp-ssh-icon]<br> **-ikon SFTP – SSH**][sftp-ssh-doc]
+    :::column-end:::
+    :::column:::
+        [![API-ikon ][smtp-icon]<br> **SMTP**][smtp-doc]
+    :::column-end:::
+    :::column:::
+        [![API-ikon ][sql-server-icon]<br> **SQL <br> Server**][sql-server-doc]
+    :::column-end:::
+    :::column:::
+        [![API-ikon ][x12-icon]<br> **X12**][x12-doc]
+    :::column-end:::
+:::row-end:::
 
 További információt az alábbi témakörökben talál:
 

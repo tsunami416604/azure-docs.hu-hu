@@ -2,16 +2,16 @@
 title: Támogatott adattárak az Azure-adatmegosztásban
 description: Ismerje meg az Azure-adatmegosztás használatát támogató adattárakat.
 ms.service: data-share
-author: joannapea
-ms.author: joanpo
+author: jifems
+ms.author: jife
 ms.topic: conceptual
-ms.date: 10/30/2019
-ms.openlocfilehash: 8263e2b2d3d8d029cd28f6c8ea6c556fb9fe23be
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/30/2020
+ms.openlocfilehash: 967b2dceab1f1702120cd3121ccd64b4e7286bc6
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86108294"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87511904"
 ---
 # <a name="supported-data-stores-in-azure-data-share"></a>Támogatott adattárak az Azure-adatmegosztásban
 
@@ -66,6 +66,6 @@ A megosztott adatbázisok eléréséhez az adatfogyasztónak saját Azure Adatke
 
 Az Azure Adatkezelő kétféle adatfeldolgozási módot támogat: a Batch és a streaming. A megosztott adatbázis batch szolgáltatásból kapott adatok néhány másodperc és néhány perc között az adatfogyasztó oldalon is megjelennek. A streamingtől kapott adatok akár 24 órát is igénybe vehetnek, hogy megjelenjenek az adatfeldolgozó oldalon. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az adatmegosztás megkezdésének megismeréséhez folytassa az [adatgyűjtés megosztása](share-your-data.md) című oktatóanyagot.

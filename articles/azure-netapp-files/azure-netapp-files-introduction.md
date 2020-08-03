@@ -1,6 +1,6 @@
 ---
 title: Mi az Azure NetApp Files | Microsoft Docs
-description: A cikk áttekintést nyújt az Azure NetApp Files szolgáltatásról és a kulcsfontosságú feladatokról.
+description: Ismerkedjen meg Azure NetApp Files, nagyvállalati szintű, nagy teljesítményű, mért file Storage szolgáltatással, amely bármilyen munkaterhelés-típust támogat, és magas rendelkezésre állású.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 03/28/2018
 ms.author: b-juche
-ms.openlocfilehash: 33a90f876f5ce35b52bb2d5625fa9d91a0a33dee
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4ad556a6c720cb4eaac9a0c9cdf5c4346e2aa857
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "65522995"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87512941"
 ---
 # <a name="what-is-azure-netapp-files"></a>Mi az az Azure NetApp Files?
 

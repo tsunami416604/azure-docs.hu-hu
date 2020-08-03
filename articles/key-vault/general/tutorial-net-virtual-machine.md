@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/20/2020
 ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: e77701e17ef1b47aa6b8e3b8f2d10e93bf5e054e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ead0c13a1fce0b5d56c9dd875c594a2269e2c78c
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87101512"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513111"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-virtual-machine-in-net"></a>Oktatóanyag: Azure Key Vault használata virtuális géppel a .NET-ben
 
@@ -56,21 +56,15 @@ Ha az Azure CLI használatával szeretne bejelentkezni az Azure-ba, írja be a k
 az login
 ```
 
-### <a name="create-a-resource-group-and-key-vault"></a>Erőforráscsoport és kulcstartó létrehozása
+## <a name="create-a-resource-group-and-key-vault"></a>Erőforráscsoport és kulcstartó létrehozása
 
 [!INCLUDE [Create a resource group and key vault](../../../includes/key-vault-rg-kv-creation.md)]
 
-### <a name="populate-your-key-vault-with-a-secret"></a>A Key Vault feltöltése titkos kulccsal
+## <a name="populate-your-key-vault-with-a-secret"></a>A Key Vault feltöltése titkos kulccsal
 
-Most adjon hozzá egy titkos kulcsot a kulcstartóhoz az az Key [Vault Secret set](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-set) paranccsal. Ha a **keresési kifejezésként**nevű kulcstartóban szeretne titkos kulcsot létrehozni, írja be a következő parancsot:
+[!INCLUDE [Create a secret](../../../includes/key-vault-create-secret.md)]
 
-```azurecli
-az keyvault secret set --vault-name "<your-unique-key-vault-name>" --name "mySecret" --value "MySecret"
-```
-
-Ez a titok a **keresési kifejezésként**értéket tárolja.
-
-### <a name="create-a-virtual-machine"></a>Virtuális gép létrehozása
+## <a name="create-a-virtual-machine"></a>Virtuális gép létrehozása
 Hozzon létre egy Windows vagy Linux rendszerű virtuális gépet az alábbi módszerek egyikével:
 
 | Windows | Linux |
@@ -79,7 +73,7 @@ Hozzon létre egy Windows vagy Linux rendszerű virtuális gépet az alábbi mó
 | [PowerShell](../../virtual-machines/windows/quick-create-powershell.md) | [PowerShell](../../virtual-machines/linux/quick-create-powershell.md) |
 | [Azure Portal](../../virtual-machines/windows/quick-create-portal.md) | [Azure Portal](../../virtual-machines/linux/quick-create-portal.md) |
 
-### <a name="assign-an-identity-to-the-vm"></a>Identitás kiosztása a virtuális géphez
+## <a name="assign-an-identity-to-the-vm"></a>Identitás kiosztása a virtuális géphez
 Hozzon létre egy rendszerhez rendelt identitást a virtuális géphez az az [VM Identity assign](/cli/azure/vm/identity?view=azure-cli-latest#az-vm-identity-assign) paranccsal:
 
 ```azurecli
@@ -95,16 +89,16 @@ Jegyezze fel a rendszer által hozzárendelt identitást, amely a következő k�
 }
 ```
 
-### <a name="assign-permissions-to-the-vm-identity"></a>Engedélyek kiosztása a virtuális gép identitásához
+## <a name="assign-permissions-to-the-vm-identity"></a>Engedélyek kiosztása a virtuális gép identitásához
 Rendelje hozzá a korábban létrehozott identitási engedélyeket a kulcstartóhoz az az Key [Vault set-Policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) paranccsal:
 
 ```azurecli
 az keyvault set-policy --name '<your-unique-key-vault-name>' --object-id <VMSystemAssignedIdentity> --secret-permissions get list
 ```
 
-### <a name="sign-in-to-the-virtual-machine"></a>Bejelentkezés a virtuális gépre
+## <a name="sign-in-to-the-virtual-machine"></a>Bejelentkezés a virtuális gépre
 
-A virtuális gépre való bejelentkezéshez kövesse a [Kapcsolódás, majd jelentkezzen be egy Windows rendszert futtató Azure-beli virtuális gépre](../../virtual-machines/windows/connect-logon.md) , és jelentkezzen be [egy Linux rendszerű Azure](../../virtual-machines/linux/login-using-aad.md)-beli virtuális gépre.
+A virtuális gépre való bejelentkezéshez kövesse a [Kapcsolódás és bejelentkezés Azure-beli Windows rendszerű virtuális gépekre](../../virtual-machines/windows/connect-logon.md) című témakör utasításait, vagy [kapcsolódjon be, és jelentkezzen be egy Azure-beli linuxos virtuális gépre](../../virtual-machines/linux/login-using-aad.md).
 
 ## <a name="set-up-the-console-app"></a>A konzol alkalmazásának beállítása
 
@@ -203,7 +197,7 @@ Adja hozzá ezeket a sorokat, és frissítse az URI-t, hogy az tükrözze a `vau
     }
 ```
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs rájuk szükség, törölje a virtuális gépet és a kulcstartót.
 

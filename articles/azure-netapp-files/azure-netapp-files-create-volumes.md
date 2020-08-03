@@ -1,6 +1,6 @@
 ---
 title: NFS-kötet létrehozása a Azure NetApp Fileshoz | Microsoft Docs
-description: Ismerteti, hogyan lehet NFS-kötetet létrehozni a Azure NetApp Fileshoz.
+description: Ebből a cikkből megtudhatja, hogyan hozhat létre NFS-köteteket Azure NetApp Files. Ismerje meg a szempontokat, például a használni kívánt verziót és az ajánlott eljárásokat.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: b-juche
-ms.openlocfilehash: 7f14ac279f14feb3f83490ab96965d4355bed125
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 2e1e6ad6625586e882551521111057a2a20f0fff
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87169454"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513043"
 ---
 # <a name="create-an-nfs-volume-for-azure-netapp-files"></a>NFS-kötet létrehozása az Azure NetApp Files számára
 

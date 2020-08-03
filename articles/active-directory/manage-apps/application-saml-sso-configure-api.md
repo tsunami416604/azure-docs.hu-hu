@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: kenwith
 ms.reviewer: luleon
-ms.openlocfilehash: 5b5de26afceb1127b42c937f1cb1005a660881d4
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: bae5770baf8cfad7e5f28d5cc0499949912c1146
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87273422"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513128"
 ---
 # <a name="automate-saml-based-sso-app-configuration-with-microsoft-graph-api"></a>SAML-alapú SSO-alkalmazások konfigurációjának automatizálása Microsoft Graph API-val
 
@@ -113,6 +113,11 @@ Az utolsó lépésben az alkalmazáshoz beolvasott sablon AZONOSÍTÓjának hasz
 
 > [!NOTE] 
 > A applicationTemplate API használatával nem katalógusbeli [alkalmazásokat](add-non-gallery-app.md)hozhat létre. ApplicationTemplateId használata `8adf8e6e-67b2-4cf2-a259-e3dc5476c621` .
+
+> [!NOTE]
+> Hagyjon némi időt az alkalmazás üzembe helyezéséhez az Azure AD-bérlőben. Nem azonnali. Az egyik stratégia, hogy a lekérdezés sikeres végrehajtása előtt egy GET lekérdezést hajtson végre az alkalmazás-/szolgáltatásnév objektumon 5-10 másodpercenként.
+
+
 #### <a name="request"></a>Kérés
 
 <!-- {
@@ -194,6 +199,8 @@ Az előző hívás válaszával lekérheti és mentheti az alkalmazás-objektum 
 
 Ebben a példában `saml` a [servicePrincipal erőforrástípus](https://docs.microsoft.com/graph/api/resources/serviceprincipal?view=graph-rest-1.0)egyszeri bejelentkezési módba állítja be a szolgáltatást. A konfigurálható egyéb SAML SSO-tulajdonságok a következők: `notificationEmailAddresses` , `loginUrl` és`samlSingleSignOnSettings.relayState`
 
+Mielőtt a lekérdezés működni fog, meg kell adnia a hozzáférést a Graph Explorer **engedélyek módosítása** lapján. Győződjön meg arról is, hogy a korábban beszerzett **servicePrincipal** -azonosítót használja.
+
 #### <a name="request"></a>Kérés
 
 <!-- {
@@ -224,6 +231,8 @@ HTTP/1.1 204
 ### <a name="set-basic-saml-urls-such-as-identifier-reply-url-sign-on-url"></a>Alapszintű SAML URL-címek (például azonosító, válasz URL-cím, bejelentkezési URL-cím) beállítása
 
 Az AWS azonosító és válasz URL-címeinek beállítása az Application objektumban.
+
+Győződjön meg arról, hogy a korábban beszerzett **alkalmazás** -azonosítót használja.
 
 #### <a name="request"></a>Kérés
 
@@ -341,6 +350,9 @@ Az alapszintű jogcímek mellett konfigurálja a következő jogcímeket az Azur
 
 További információ: [a jogkivonatban kibocsátott jogcímek testreszabása](https://docs.microsoft.com/azure/active-directory/develop/active-directory-claims-mapping).
 
+> [!NOTE]
+> A jogcím-hozzárendelési házirend egyes kulcsai megkülönböztetik a kis-és nagybetűket (például "version"). Ha hibaüzenet jelenik meg, például "a tulajdonság értéke érvénytelen", akkor ez a kis-és nagybetűket megkülönböztető probléma lehet.
+
 #### <a name="request"></a>Kérés
 
 <!-- {
@@ -451,7 +463,7 @@ A [applicationTemplate](https://docs.microsoft.com/graph/api/resources/applicati
 
 ### <a name="create-a-custom-signing-certificate"></a>Egyéni aláíró tanúsítvány létrehozása
 
-A teszteléshez az alábbi PowerShell-paranccsal kérhet le önaláírt tanúsítványt. A vállalat legjobb biztonsági gyakorlatával létrehozhat egy aláíró tanúsítványt az éles környezethez.
+A teszteléshez az alábbi PowerShell-paranccsal kérhet le önaláírt tanúsítványt. Ezután manuálisan kell módosítania és lekérnie a szükséges értékeket más eszközök használatával. A vállalat legjobb biztonsági gyakorlatával létrehozhat egy aláíró tanúsítványt az éles környezethez.
 
 ```powershell
 Param(
@@ -478,6 +490,99 @@ Export-PfxCertificate -cert $path -FilePath $pfxFile -Password $pwdSecure
 Export-Certificate -cert $path -FilePath $cerFile
 ```
 
+Másik lehetőségként a következő C# konzolos alkalmazás is felhasználható a szükséges értékek beszerzésének megismerésére. Vegye figyelembe, hogy ez a kód **csak tanulásra és referenciára** szolgál, és nem használható éles környezetben.
+
+```csharp
+using System;
+using System.Security.Cryptography;
+using System.Security.Cryptography.X509Certificates;
+using System.Text;
+
+
+/* CONSOLE APP - PROOF OF CONCEPT CODE ONLY!!
+ * This code uses a self signed certificate and should not be used 
+ * in production. This code is for reference and learning ONLY.
+ */
+namespace Self_signed_cert
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Generate a guid to use as a password and then create the cert.
+            string password = Guid.NewGuid().ToString();
+            var selfsignedCert = buildSelfSignedServerCertificate(password);
+
+            // Print values so we can copy paste into the JSON fields.
+            // Print out the private key in base64 format.
+            Console.WriteLine("Private Key: {0}{1}", Convert.ToBase64String(selfsignedCert.Export(X509ContentType.Pfx, password)), Environment.NewLine);
+
+            // Print out the start date in ISO 8601 format.
+            DateTime startDate = DateTime.Parse(selfsignedCert.GetEffectiveDateString()).ToUniversalTime();
+            Console.WriteLine("For All startDateTime: " + startDate.ToString("o"));
+
+            // Print out the end date in ISO 8601 format.
+            DateTime endDate = DateTime.Parse(selfsignedCert.GetExpirationDateString()).ToUniversalTime();
+            Console.WriteLine("For All endDateTime: " + endDate.ToString("o"));
+
+            // Print the GUID used for keyId
+            string signAndPasswordGuid = Guid.NewGuid().ToString();
+            string verifyGuid = Guid.NewGuid().ToString();
+            Console.WriteLine("GUID to use for keyId for keyCredentials->Usage == Sign and passwordCredentials: " + signAndPasswordGuid);
+            Console.WriteLine("GUID to use for keyId for keyCredentials->Usage == Verify: " + verifyGuid);
+
+            // Print out the password.
+            Console.WriteLine("Password is: {0}", password);
+
+            // Print out a displayName to use as an example.
+            Console.WriteLine("displayName to use: CN=Example");
+            Console.WriteLine();
+
+            // Print out the public key.
+            Console.WriteLine("Public Key: {0}{1}", Convert.ToBase64String(selfsignedCert.Export(X509ContentType.Cert)), Environment.NewLine);
+            Console.WriteLine();
+
+            // Generate the customKeyIdentifier using hash of thumbprint.
+            Console.WriteLine("You can generate the customKeyIdentifier by getting the SHA256 hash of the certs thumprint.\nThe certs thumbprint is: {0}{1}", selfsignedCert.Thumbprint, Environment.NewLine);
+            Console.WriteLine("The hash of the thumbprint that we will use for customeKeyIdentifier is:");
+            string keyIdentifier = GetSha256FromThumbprint(selfsignedCert.Thumbprint);
+            Console.WriteLine(keyIdentifier);
+        }
+
+        // Generate a self-signed certificate.
+        private static X509Certificate2 buildSelfSignedServerCertificate(string password)
+        {
+            const string CertificateName = @"Microsoft Azure Federated SSO Certificate TEST";
+            DateTime certificateStartDate = DateTime.UtcNow;
+            DateTime certificateEndDate = certificateStartDate.AddYears(2).ToUniversalTime();
+
+            X500DistinguishedName distinguishedName = new X500DistinguishedName($"CN={CertificateName}");
+
+            using (RSA rsa = RSA.Create(2048))
+            {
+                var request = new CertificateRequest(distinguishedName, rsa, HashAlgorithmName.SHA256, RSASignaturePadding.Pkcs1);
+
+                request.CertificateExtensions.Add(
+                    new X509KeyUsageExtension(X509KeyUsageFlags.DataEncipherment | X509KeyUsageFlags.KeyEncipherment | X509KeyUsageFlags.DigitalSignature, false));
+
+                var certificate = request.CreateSelfSigned(new DateTimeOffset(certificateStartDate), new DateTimeOffset(certificateEndDate));
+                certificate.FriendlyName = CertificateName;
+
+                return new X509Certificate2(certificate.Export(X509ContentType.Pfx, password), password, X509KeyStorageFlags.Exportable);
+            }
+        }
+
+        // Generate hash from thumbprint.
+        public static string GetSha256FromThumbprint(string thumbprint)
+        {
+            var message = Encoding.ASCII.GetBytes(thumbprint);
+            SHA256Managed hashString = new SHA256Managed();
+            return Convert.ToBase64String(hashString.ComputeHash(message));
+        }
+    }
+}
+```
+
 ### <a name="add-a-custom-signing-key"></a>Egyéni aláíró kulcs hozzáadása
 
 Adja hozzá a következő információkat az egyszerű szolgáltatáshoz:
@@ -488,18 +593,7 @@ Adja hozzá a következő információkat az egyszerű szolgáltatáshoz:
 
 Bontsa ki a titkosítatlan titkos kulcsot a PFX-fájlból. Ha többet szeretne megtudni a tulajdonságokról, olvassa el a [következőt: a hitelesítő adatok erőforrástípus](https://docs.microsoft.com/graph/api/resources/keycredential?view=graph-rest-1.0).
 
-Győződjön meg arról, hogy a "Sign" kifejezéshez használt keyId-azonosító megegyezik a passwordCredential keyId.
-
-A-t a `customkeyIdentifier` tanúsítvány ujjlenyomatának lekérésével hozhatja meg.
-
-```csharp
-  public string GetSha256FromThumbprint(string thumbprint)
-  {
-      var message = Encoding.ASCII.GetBytes(thumbprint);
-      SHA256Managed hashString = new SHA256Managed();
-      return Convert.ToBase64String(hashString.ComputeHash(message));
-  }
-```
+Győződjön meg arról, hogy a "Sign" kifejezéshez használt keyId-azonosító megegyezik a passwordCredential keyId. A-t a `customkeyIdentifier` tanúsítvány ujjlenyomatának lekérésével hozhatja meg. Lásd a fenti C#-hivatkozási kódot.
 
 #### <a name="request"></a>Kérés
 
@@ -522,7 +616,7 @@ Content-type: servicePrincipals/json
             "endDateTime": "2021-04-22T22:10:13Z",
             "keyId": "4c266507-3e74-4b91-aeba-18a25b450f6e",
             "startDateTime": "2020-04-22T21:50:13Z",
-            "type": "AsymmetricX509Cert",
+            "type": "X509CertAndPassword",
             "usage": "Sign",
             "key":"MIIKIAIBAz.....HBgUrDgMCERE20nuTptI9MEFCh2Ih2jaaLZBZGeZBRFVNXeZmAAgIH0A==",
             "displayName": "CN=awsAPI"
@@ -596,7 +690,7 @@ HTTP/1.1 204
 
 Rendelje hozzá a következő felhasználót az egyszerű szolgáltatáshoz, és rendelje hozzá a AWS_Role1. 
 
-| Név  | ID  |
+| Name  | ID  |
 |---------|---------|
 | Felhasználói azonosító (principalId) | 6cad4079-4e79-4a3f-9efb-ea30a14bdb26 |
 | Típus (principalType) | Felhasználó |

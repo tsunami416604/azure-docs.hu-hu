@@ -1,6 +1,6 @@
 ---
 title: Alhálózat delegálása Azure NetApp Filesra | Microsoft Docs
-description: Leírja, hogyan delegálhat egy alhálózatot Azure NetApp Filesra.
+description: Megtudhatja, hogyan delegálhat egy alhálózatot Azure NetApp Filesra. Kötet létrehozásakor a delegált alhálózatot kell megadnia.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 07/28/2020
 ms.author: b-juche
-ms.openlocfilehash: 14c97fdea57fa50faf8b73275ec406ea36fbf552
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 9bb3e93b99ce8d5a61501d417a71e5e38753f5ff
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420396"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513026"
 ---
 # <a name="delegate-a-subnet-to-azure-netapp-files"></a>Alhálózat delegálása az Azure NetApp Fileshoz 
 
@@ -48,7 +48,7 @@ Az alhálózatot Azure NetApp Filesre kell delegálni.   Kötet létrehozásakor
     
 Létrehozhat és delegálhat egy alhálózatot is, amikor [kötetet hoz létre a Azure NetApp Fileshoz](azure-netapp-files-create-volumes.md). 
 
-## <a name="next-steps"></a>Következő lépések  
+## <a name="next-steps"></a>További lépések  
 * [Kötet létrehozása az Azure NetApp Files számára](azure-netapp-files-create-volumes.md)
 * [Ismerje meg az Azure-szolgáltatások virtuális hálózati integrációját](https://docs.microsoft.com/azure/virtual-network/virtual-network-for-azure-services)
 
