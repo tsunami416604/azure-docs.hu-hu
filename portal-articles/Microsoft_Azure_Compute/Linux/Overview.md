@@ -8,12 +8,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 04/27/2017
 ms.author: sewatson
-ms.openlocfilehash: ff439083ca9c648ceec95b89b041bb5b60785c91
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: bf465cb6d391188b4110cca6d72deba6932af0a6
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77603009"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282398"
 ---
 # <a name="linux-virtual-machines-documentation"></a>Linux rendszerű virtuális gépek dokumentációja
 
@@ -23,9 +23,10 @@ Az Azure Linux virtuális gépek igény szerinti, nagy léptékben méretezhető
 
 Megtudhatja, hogyan lehet egy Ubuntut futtató virtuális gépet üzembe helyezni egy NGINX-webkiszolgálón belül:
 
-- [Azure Portal](/azure/virtual-machines/virtual-machines-linux-quick-create-portal?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [Azure PowerShell](/azure/virtual-machines/virtual-machines-linux-quick-create-powershell?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [Azure CLI](/azure/virtual-machines/virtual-machines-linux-quick-create-cli?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [Azure CLI](../../articles/virtual-machines/linux/quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [Azure Portal](../../articles//virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [Azure PowerShell](../../articles//virtual-machines/quick-create-powershell.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+
 
 ## <a name="step-by-step-tutorials"></a>Részletes útmutatók
 

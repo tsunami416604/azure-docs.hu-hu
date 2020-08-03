@@ -4,6 +4,8 @@
   items:
     - name: Mi a Data Lake Analytics?
       href: data-lake-analytics-overview.md
+    - name: A Data Lake Analytics újdonságai
+      href: data-lake-analytics-whats-new.md
 - name: Bevezetés
   items:
     - name: Azure Portal
@@ -25,6 +27,9 @@
   items:
     - name: Biztonság
       items:
+        - name: Az Azure Policy biztonsági vezérlői
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
         - name: Biztonsági alapkonfiguráció az Azure biztonsági teljesítményteszthez
           href: security-baseline.md
 - name: Útmutató

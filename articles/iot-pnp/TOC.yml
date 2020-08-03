@@ -51,7 +51,7 @@
       href: concepts-digital-twin.md
     - name: Modelladattár
       href: concepts-model-repository.md
-    - name: Modellfelderítés
+    - name: Modellek használata megoldásokban
       href: concepts-model-discovery.md
     - name: Modellelemző
       href: concepts-model-parser.md

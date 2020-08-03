@@ -3,23 +3,23 @@ title: Oktatóanyag – Azure-költségvetések létrehozása és kezelése
 description: Ez az oktatóanyag segít megtervezni és elszámolni a felhasznált Azure-szolgáltatások költségeit.
 author: bandersmsft
 ms.author: banders
-ms.date: 05/27/2020
+ms.date: 07/15/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 384be4599abadaada31cfc5b4993fff6705ec71d
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 3572cbb3f8c4a4f20c0141ac1fae5f0aa6fbd216
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84559328"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87044990"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Oktatóanyag: Azure-költségvetések létrehozása és kezelése
 
 A Cost Management költségvetései segítenek a tervezésben, és elősegítik a vállalaton belüli elszámolhatóságot. A költségvetések segítségével elszámolhat az egy adott időszak alatt használt vagy előfizetett Azure-szolgáltatásokkal. Segítséget nyújtanak mások tájékoztatásához a kiadásaikról a költségek proaktív módon történő kezelése, és a kiadások adott időszakban való alakulásának monitorozása érdekében. A létrehozott költségvetési küszöbértékek túllépése esetén a rendszer csak értesítéseket aktivál. A túllépés egyik erőforrásra sincs hatással, és a felhasználást sem állítja le a rendszer. A költségek elemzése során a költségvetésekkel összehasonlíthatja és nyomon követheti a kiadásokat.
 
-A költségek és a használati adatok jellemzően 12–16 órán belül érhetők el, a költségvetések kiértékelése pedig négy óránként történik. Az e-mail-értesítések általában 12–16 órán belül megérkeznek.
+A költségek és a használati adatok jellemzően 12–14 órán belül érhetők el, a költségvetések kiértékelése pedig 20 óránként történik. Ha elér egy költségvetési küszöbértéket, az e-mail-értesítések általában az értékelést követő egy órán belül megérkeznek.
 
 A költségvetések egy adott időszak (hónap, negyedév vagy év) lejártával automatikusan alaphelyzetbe állnak ugyanazzal a költségvetési összeggel, ha jövőbeni lejárati dátumot választ. Mivel a költségvetések ugyanazzal az összeggel állnak alaphelyzetbe, külön költségvetést kell létrehoznia, ha a jövőbeli időszakokban a költségvetés aktuális összegei változnak.
 
@@ -101,11 +101,13 @@ A költségvetésben eddig kiválasztott mezők alapján egy grafikon jelenik me
 
 ![Példa költségvetés létrehozására havi költségadatokkal ](./media/tutorial-acm-create-budgets/monthly-budget01.png)
 
-A költségvetés összegének konfigurálása után válassza a **Következő** lehetőséget a költségvetési riasztások konfigurálásához. A költségvetésekhez meg kell adnia legalább egy költségküszöbértéket (a költségvetés %-ában) és egy hozzá tartozó e-mail-címet. Igény szerint akár öt küszöbértéket és öt e-mail-címet is megadhat egyetlen költségvetéshez. Ha elér egy költségvetési küszöbértéket, az e-mail-értesítések általában 20 órán belül megérkeznek.
+A költségvetés összegének konfigurálása után válassza a **Következő** lehetőséget a költségvetési riasztások konfigurálásához. A költségvetésekhez meg kell adnia legalább egy költségküszöbértéket (a költségvetés %-ában) és egy hozzá tartozó e-mail-címet. Igény szerint akár öt küszöbértéket és öt e-mail-címet is megadhat egyetlen költségvetéshez. Ha elér egy költségvetési küszöbértéket, az e-mail-értesítések általában az értékelést követő egy órán belül megérkeznek.
 
 Ha e-maileket szeretne kapni, vegye fel az azure-noreply@microsoft.com címet a jóváhagyott küldők listájára, hogy az e-mailek ne kerüljenek a levélszemét mappájába. Az értesítésekkel kapcsolatban a [költségriasztások használatát](../../cost-management/cost-mgt-alerts-monitor-usage-spending.md) ismertető cikkben tekinthet meg további információt.
 
 Az alábbi példában a rendszer egy e-mail-riasztást hoz létre a költségvetés 90%-ának az elérésekor. Ha a Budgets API-val hoz létre költségvetést, szerepköröket is rendelhet adott személyekhez, hogy riasztásokat kaphassanak. A szerepkörök személyekhez rendelése nem támogatott az Azure Portalon. További információ a Budgets API-ról: [Budgets API](/rest/api/consumption/budgets).
+
+A riasztási korlátok a megadott költségvetési küszöbérték 0,01 és 1000% közötti tartományát támogatják.
 
 ![Példa a riasztási feltételekkel](./media/tutorial-acm-create-budgets/monthly-budget-alert.png)
 

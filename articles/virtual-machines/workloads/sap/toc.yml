@@ -237,21 +237,41 @@
       href: ../../../site-recovery/site-recovery-workload.md#protect-sap
     - name: Azure-beli közelségi elhelyezési csoportok az optimális hálózati késés érdekében SAP-alkalmazások használatával
       href: sap-proximity-placement-scenarios.md
-- name: AAD SAP-identitásintegráció és egyszeri bejelentkezés
+- name: Az Azure AD integrálása SAP-alkalmazásokkal
   items:
-    - name: Integráció az SAP-felhővel
-      href: ../../../active-directory/saas-apps/sap-customer-cloud-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
-    - name: AAD-integráció az SAP-felhőplatform identitáshitelesítésével
+    - name: Felhasználók átadása az SAP SuccessFactorsból az Active Directoryba
+      href: ../../../active-directory/saas-apps/sap-successfactors-inbound-provisioning-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+    - name: Felhasználók átadása az SAP SuccessFactorsból az Azure AD-be
+      href: ../../../active-directory/saas-apps/sap-successfactors-inbound-provisioning-cloud-only-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+    - name: Felhasználók visszaírása az Azure AD-ből az SAP SuccessFactorsba
+      href: ../../../active-directory/saas-apps/sap-successfactors-writeback-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+    - name: Felhasználók átadása az SAP Cloud Platform Identity Authentication szolgáltatásnak
+      href: ../../../active-directory/saas-apps/sap-cloud-platform-identity-authentication-provisioning-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+    - name: SSO konfigurálása az SAP Cloud Platform Identity Authentication szolgáltatással
       href: ../../../active-directory/saas-apps/sap-hana-cloud-platform-identity-authentication-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
-    - name: Egyszeri bejelentkezés beállítása az SAP-felhőplatformmal
+    - name: SSO konfigurálása az SAP SuccessFactorsszal
+      href: ../../../active-directory/saas-apps/successfactors-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+    - name: SSO konfigurálása az SAP Analytics Clouddal
+      href: ../../../active-directory/saas-apps/sapboc-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+    - name: SSO konfigurálása az SAP Fiorival
+      href: ../../../active-directory/saas-apps/sap-fiori-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+    - name: SSO konfigurálása az SAP Qualtricsszal
+      href: ../../../active-directory/saas-apps/qualtrics-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+    - name: SSO konfigurálása az SAP Aribával
+      href: ../../../active-directory/saas-apps/ariba-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+    - name: SSO konfigurálása az SAP Concur Travel and Expense-szel
+      href: ../../../active-directory/saas-apps/concur-travel-and-expense-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+    - name: SSO konfigurálása az SAP Cloud Platformmal
       href: ../../../active-directory/saas-apps/sap-hana-cloud-platform-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
-    - name: AAD-integráció az SAP NetWeaverrel
+    - name: SSO konfigurálása az SAP NetWeaverrel
       href: ../../../active-directory/saas-apps/sap-netweaver-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
-    - name: AAD-integráció az SAP Business ByDesignnal
+    - name: SSO konfigurálása az SAP Business ByDesignnal
       href: ../../../active-directory/saas-apps/sapbusinessbydesign-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
-    - name: AAD-integráció az SAP HANA DBMS-sel
+    - name: SSO konfigurálása az SAP Hanával
       href: ../../../active-directory/saas-apps/saphana-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
-    - name: SAML egyszeri bejelentkezés az SAP Fiori-kezdőpanelen az Azure AD-val
+    - name: SSO konfigurálása az SAP Cloud for Customerrel
+      href: ../../../active-directory/saas-apps/sap-customer-cloud-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+    - name: SSO konfigurálása az SAP Fiori kezdőpaneljével
       href: 'https://blogs.sap.com/2017/02/20/your-s4hana-environment-part-7-fiori-launchpad-saml-single-sing-on-with-azure-ad'
 - name: Azure-szolgáltatások integrálása az SAP-be
   items:

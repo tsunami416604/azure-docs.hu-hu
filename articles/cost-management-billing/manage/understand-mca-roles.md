@@ -3,19 +3,19 @@ title: A Microsoft-ügyfélszerződéshez tartozó számlázási szerepkörök �
 description: Megismerheti a Microsoft-ügyfélszerződéshez tartozó számlázási szerepköröket az Azure-beli számlázási fiókok esetében.
 author: amberbhargava
 ms.service: cost-management-billing
-ms.topic: conceptual
-ms.date: 02/13/2020
+ms.topic: how-to
+ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: 76aa21aea647e5096ba47fb691622ea5146d9901
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 84cb68c4cae962fd985a02a72cc85c6b2cf1aa1d
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207219"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286580"
 ---
 # <a name="understand-microsoft-customer-agreement-administrative-roles-in-azure"></a>A Microsoft-ügyfélszerződéshez tartozó felügyeleti szerepkörök ismertetése az Azure-ban
 
-A Microsoft-ügyfélszerződéshez tartozó számlázási fiók kezeléséhez az alábbi szakaszokban ismertetett szerepköröket használhatja. Az Azure beépített szerepkörei mellett ezekkel a szerepkörökkel szabályozhatja az erőforrásokhoz történő hozzáférést. További információkért lásd az [Azure-erőforrások beépített szerepköreit](../../role-based-access-control/built-in-roles.md).
+A Microsoft-ügyfélszerződéshez tartozó számlázási fiók kezeléséhez az alábbi szakaszokban ismertetett szerepköröket használhatja. Az Azure beépített szerepkörei mellett ezekkel a szerepkörökkel szabályozhatja az erőforrásokhoz történő hozzáférést. További információ: [Beépített Azure-szerepkörök](../../role-based-access-control/built-in-roles.md).
 
 Ez a cikk a Microsoft-ügyfélszerződéshez tartozó számlázási fiókokra vonatkozik. Ellenőrizze, hogy rendelkezik-e hozzáféréssel a Microsoft-ügyfélszerződéshez.
 

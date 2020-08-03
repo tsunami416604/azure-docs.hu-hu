@@ -5,14 +5,14 @@ author: bandersmsft
 ms.reviewer: adwise
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 07/06/2020
+ms.date: 07/13/2020
 ms.author: banders
-ms.openlocfilehash: b8693ea09ccbb6f0a3f8dfe0846a9b1b256872b6
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 2cd786304180369fee39c7b362f27a44728f3ad8
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045144"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87124340"
 ---
 # <a name="managing-azure-enterprise-roles"></a>Az Azure Enterprise szerepköreinek kezelése
 
@@ -32,7 +32,7 @@ A regisztráció kiépítése során megadott első regisztrációs rendszergazd
 
 Ha például a kezdeti hitelesítési típus vegyesre van állítva, akkor az EA Microsoft-fiókként lesz hozzáadva, és a számlázási kapcsolattartó csak olvasási EA-rendszergazdai jogosultságokkal fog rendelkezni. Ha az EA-rendszergazda nem hagyja jóvá egy meglévő számlázási kapcsolattartó Microsoft-fiókkal történő hitelesítését, az EA-rendszergazda törölheti a szóban forgó felhasználót, és megkérheti az ügyfelet, hogy újból adja hozzá a felhasználót csak olvasási jogosultsággal rendelkező rendszergazdaként, munkahelyi vagy iskolai fiókkal, amely csak a regisztráció szintjén van megadva az EA Portalon.
 
-Ezek a szerepkörök kifejezetten az Azure Nagyvállalati Szerződések kezelésére szolgálnak, és kiegészítik az Azure beépített szerepköreit, amelyek az erőforrásokhoz való hozzáférést szabályozzák. További információkért lásd az [Azure-erőforrások beépített szerepköreit](../../role-based-access-control/built-in-roles.md).
+Ezek a szerepkörök kifejezetten az Azure Nagyvállalati Szerződések kezelésére szolgálnak, és kiegészítik az Azure beépített szerepköreit, amelyek az erőforrásokhoz való hozzáférést szabályozzák. További információ: [Beépített Azure-szerepkörök](../../role-based-access-control/built-in-roles.md).
 
 A következő szakaszok az egyes szerepkörök korlátait és képességeit mutatják be.
 
@@ -121,4 +121,4 @@ A vállalati rendszergazdai szerepkört és a díjtétel-megtekintési szabályz
 
 - [Az Azure-beli számlázási információkhoz való hozzáférés kezelése](manage-billing-access.md)
 - [Hozzáférés kezelése az RBAC és az Azure Portal használatával](../../role-based-access-control/role-assignments-portal.md)
-- [Beépített szerepkörök Azure-erőforrásokhoz](../../role-based-access-control/built-in-roles.md)
+- [Beépített Azure-szerepkörök](../../role-based-access-control/built-in-roles.md)

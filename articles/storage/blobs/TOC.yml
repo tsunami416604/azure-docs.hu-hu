@@ -262,7 +262,7 @@
           items:
             - name: Tárfiók figyelése
               href: ../common/monitor-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Migrálás klasszikus metrikákról
+            - name: Váltás klasszikus metrikákról
               href: ../common/storage-metrics-migration.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Figyelés (klasszikus)
               items:
@@ -685,7 +685,7 @@
           items:
             - name: Tárfiók figyelése
               href: ../common/monitor-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Migrálás klasszikus metrikákról
+            - name: Váltás klasszikus metrikákról
               href: ../common/storage-metrics-migration.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Figyelés (klasszikus)
               items:

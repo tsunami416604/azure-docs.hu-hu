@@ -403,6 +403,13 @@
           href: ps-template.md
         - name: Kapcsolódás virtuális géphez
           href: connect-logon.md
+        - name: Kapcsolódás Linux rendszerű virtuális gépekhez
+          displayName: ssh keygen ssk-key putty
+          items:
+            - name: A portálon
+              href: ../ssh-keys-portal.md
+            - name: Windows rendszeren
+              href: ../linux/ssh-from-windows.md
         - name: Azure Hybrid Benefit-licenc használata
           href: hybrid-use-benefit-licensing.md
         - name: "Többvállalatos üzemeltetési jogosultságok használata Windows\_10-hez"

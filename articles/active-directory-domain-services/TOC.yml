@@ -9,7 +9,7 @@
 - name: Oktatóanyagok
   expanded: true
   items:
-    - name: Alapszintű felügyelt tartomány létrehozása
+    - name: Felügyelt tartomány létrehozása
       href: tutorial-create-instance.md
     - name: A virtuális hálózat konfigurálása alkalmazásokhoz
       href: tutorial-configure-networking.md
@@ -21,9 +21,11 @@
       href: tutorial-configure-ldaps.md
     - name: Jelszókivonat szinkronizálásának konfigurálása
       href: tutorial-configure-password-hash-sync.md
-    - name: Speciális felügyelt tartomány létrehozása
+    - name: Replikakészlet létrehozása (előzetes verzió)
+      href: tutorial-create-replica-set.md
+    - name: Testre szabott felügyelt tartomány létrehozása
       href: tutorial-create-instance-advanced.md
-    - name: Erdőszintű megbízhatóság létrehozása (előzetes verzió)
+    - name: Erdőszintű megbízhatóság létrehozása
       href: tutorial-create-forest-trust.md
 - name: Példák
   items:
@@ -33,12 +35,16 @@
       href: template-create-instance.md
     - name: Hatókörön belüli szinkronizálás konfigurálása az Azure AD PowerShell használatával
       href: powershell-scoped-synchronization.md
+    - name: Erőforráserdő és megbízhatóság létrehozása az Azure PowerShell használatával
+      href: create-resource-forest-powershell.md
 - name: Alapelvek
   items:
     - name: Az adminisztráció alapjai
       href: administration-concepts.md
     - name: Gyakori üzembehelyezési forgatókönyvek
       href: scenarios.md
+    - name: Replikakészletek (előzetes verzió)
+      href: concepts-replica-sets.md
     - name: Erdők és megbízhatóságok
       items:
         - name: Erőforráserdők

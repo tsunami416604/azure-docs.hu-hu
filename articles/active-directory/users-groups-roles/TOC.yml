@@ -175,6 +175,22 @@
               href: roles-custom-available-permissions.md
             - name: Alkalmazás rendszergazdai engedélyeinek delegálása
               href: roles-delegate-app-roles.md
+        - name: Csoportok használata szerepkör-hozzárendelések kezeléséhez
+          items:
+            - name: Csoportalapú szerepkör-hozzárendelés előnézete
+              href: roles-groups-concept.md
+            - name: Szerepkörhöz hozzárendelhető csoport létrehozása
+              href: roles-groups-create-eligible.md
+            - name: Szerepkörök hozzárendelése csoportokhoz
+              href: roles-groups-assign-role.md
+            - name: Szerepkör-hozzárendelések eltávolítása csoportokból
+              href: roles-groups-remove-assignment.md
+            - name: Csoportok szerepkör-hozzárendeléseinek megtekintése
+              href: roles-groups-view-assignments.md
+            - name: Csoportok jogosulttá tétele szerepkörökre a PIM-ben
+              href: roles-groups-pim-eligible.md
+            - name: Gyakori kérdések és hibaelhárítás
+              href: roles-groups-faq-troubleshooting.md
         - name: Legkisebb jogosultságú szerepkörök feladatonként
           href: roles-delegate-by-task.md
         - name: Microsoft 365-szerepkörök
@@ -189,11 +205,11 @@
           items:
             - name: Felügyeleti egységek áttekintése
               href: directory-administrative-units.md
-            - name: AU-k hozzáadása és kezelése
+            - name: Felügyeleti egységek létrehozása és felügyelete
               href: roles-admin-units-manage.md
-            - name: Felhasználók hozzáadása és kezelése AU-kban
+            - name: Felhasználók hozzáadása és kezelése felügyeleti egységekben
               href: roles-admin-units-add-manage-users.md
-            - name: Csoportok hozzáadása és kezelése AU-kban
+            - name: Csoportok hozzáadása és kezelése felügyeleti egységekben
               href: roles-admin-units-add-manage-groups.md
             - name: Szerepkör hozzárendelése AU-hatókörrel
               href: roles-admin-units-assign-roles.md

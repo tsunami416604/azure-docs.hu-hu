@@ -6,14 +6,14 @@ ms.author: banders
 tags: azure-resource-manager
 ms.service: cost-management-billing
 ms.topic: quickstart
-ms.date: 06/10/2020
+ms.date: 07/28/2020
 ms.custom: subject-armqs
-ms.openlocfilehash: 5bff8e6057475701a2e78835fb5a950dcb8c8fcb
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 984f2d82e21344dd7e3bb8b7267e289832343e1b
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86252436"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87385779"
 ---
 # <a name="quickstart-create-a-budget-with-an-arm-template"></a>Gyorsútmutató: Költségvetés létrehozása ARM-sablonnal
 
@@ -29,13 +29,31 @@ Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonoka
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
-Az ARM-sablon csak Azure-előfizetéseket támogat a Nagyvállalati Szerződések (EA) esetében. A sablon nem támogat más előfizetés-típusokat.
-
-A költségvetések létrehozásához és kezeléséhez közreműködői jogosultsággal kell rendelkeznie. Létrehozhat külön költségvetéseket EA-előfizetésekhez és -erőforráscsoportokhoz. Nagyvállalati szerződéssel rendelkező számlázási fiókokhoz azonban nem hozhat létre költségvetéseket. Az Azure EA-előfizetések esetében a költségvetések megtekintéséhez olvasási jogosultsággal kell rendelkeznie.
-
-A költségvetés létrehozása után legalább olvasási jogosultsággal kell rendelkeznie az Azure-fiókjához a költségvetések megtekintéséhez.
-
 Új előfizetés esetén nem hozhat létre azonnal költségvetést, és a Cost Management további szolgáltatásait sem használhatja azonnal. Akár 48 órára is szükség lehet, hogy a Cost Management összes szolgáltatását használhassa.
+
+A költségvetések az Azure-fiókok és -hatókörök következő típusai esetén támogatottak:
+
+- Azure szerepköralapú hozzáférés-vezérlési hatókörök
+    - Felügyeleti csoportok
+    - Előfizetés
+- A Nagyvállalati Szerződés hatókörei
+    - Számlázási fiók
+    - Részleg
+    - Regisztrációs fiók
+- Egyedi szerződések
+    - Számlázási fiók
+- A Microsoft-ügyfélszerződés hatókörei
+    - Számlázási fiók
+    - Számlázási profil
+    - Számlázási szakasz
+    - Ügyfél
+- AWS-hatókörök
+    - Külső fiók
+    - Külső előfizetés
+
+A költségvetés megtekintéséhez legalább olvasási jogosultsággal kell rendelkeznie az Azure-fiókjához.
+
+Az Azure EA-előfizetések esetében a költségvetések megtekintéséhez olvasási jogosultsággal kell rendelkeznie. A költségvetések létrehozásához és kezeléséhez közreműködői jogosultsággal kell rendelkeznie.
 
 Az alábbi Azure-engedélyek, vagy -hatókörök, támogatottak az egyes előfizetésekben a költségvetések felhasználó vagy csoport általi létrehozásához. További információ a hatókörökről: [A hatókörök ismertetése és használata](understand-work-scopes.md).
 
@@ -49,7 +67,7 @@ További információ a Cost Management adataihoz való hozzáférés hozzárend
 
 Az ebben a gyorsútmutatóban használt sablon az [Azure-gyorssablonok](https://azure.microsoft.com/resources/templates/create-budget) közül származik.
 
-:::code language="json" source="~/quickstart-templates/create-budget/azuredeploy.json" range="1-146" highlight="110-139":::
+:::code language="json" source="~/quickstart-templates/create-budget/azuredeploy.json" :::
 
 A sablonban egyetlen Azure-erőforrás van definiálva:
 
@@ -63,27 +81,29 @@ A sablonban egyetlen Azure-erőforrás van definiálva:
 
 2. Válassza ki vagy adja meg a következő értékeket.
 
-   [![Resource Manager-sablon, költségvetés létrehozása, portál üzembe helyezése](./media/quick-create-budget-template/create-budget-using-template-portal.png)](./media/quick-create-budget-template/create-budget-using-template-portal.png#lightbox)
-
+   :::image type="content" source="./media/quick-create-budget-template/create-budget-using-template-portal.png" alt-text="Resource Manager-sablon, költségvetés létrehozása, portál üzembe helyezése]" lightbox="./media/quick-create-budget-template/create-budget-using-template-portal.png" :::
+   
     * **Előfizetés**: válasszon ki egy Azure-előfizetést.
-    * **Erőforráscsoport**: válassza az **Új létrehozása** lehetőséget, és adjon meg egy egyedi nevet az erőforráscsoport számára, majd kattintson az **OK** gombra, vagy válasszon egy meglévő erőforráscsoportot.
-    * **Hely**: válasszon ki egy helyet. Például: **USA középső régiója**.
+    * **Erőforráscsoport**: ha szükséges, jelöljön ki egy meglévő erőforráscsoportot, vagy **hozzon létre egy újat**.
+    * **Régió**: válasszon ki egy Azure-régiót. Például: **USA középső régiója**.
     * **Költségvetés neve**: adja meg a költségvetés nevét. Egyedinek kell lennie az erőforráscsoporton belül. Csak alfanumerikus, aláhúzásjel és kötőjel karakterek engedélyezettek.
-    * **Összeg**: adja meg a költségek vagy a használat költségvetéssel nyomon követendő teljes összegét.
-    * **Költségvetési kategória**: válassza ki a költségvetés kategóriáját, illetve azt, hogy a költségvetéses nyomon követése **Költség** vagy **Használat** alapján történjen.
+    * **Összeg**: adja meg a költségek költségvetéssel nyomon követendő teljes összegét.
     * **Időfelbontási szint**: adja meg a költségvetés időtartamát. Az engedélyezett értékek: Havi, Negyedéves és Éves. Az időfelbontási szint végén a költségvetés visszaáll az alaphelyzetre.
     * **Kezdő dátum**: adja meg a kezdő dátumot a hónap első napjával, ÉÉÉÉ-HH-NN formátumban. A jövőbeli kezdő dátumoknak a mai dátumhoz képest három hónapon belül kell lenniük. Az időfelbontási szint időtartammal megadhat múltbeli kezdő dátumot is.
-    * **Záró dátum**: adja meg a költségvetés záró dátumát ÉÉÉÉ-HH-NN formátumban. Ha nincs megadva, az alapértelmezett érték a kezdő dátumhoz képest 10 évvel későbbre van állítva.
-    * **Operátor**: válasszon egy összehasonlító operátort. A lehetséges értékek: EqualTo, GreaterThan vagy GreaterThanOrEqualTo.
-    * **Küszöbérték**: adja meg az értesítési küszöbértéket. A rendszer értesítést küld, ha a költség meghaladja a küszöbértéket. Ez mindig egy százalékos érték, 0 és 1000 között.
-    * **Kapcsolattartási e-mail-címek**: adja meg azon e-mail-címek listáját, ahová a rendszer költségvetési értesítést küld, ha túllépi a küszöbértéket. A várt formátum: `["user1@domain.com","user2@domain.com"]`.
+    * **Záró dátum**: adja meg a költségvetés záró dátumát ÉÉÉÉ-HH-NN formátumban. 
+    * **Első küszöbérték**: adja meg az első értesítés küszöbértékét. A rendszer értesítést küld, ha a költség meghaladja a küszöbértéket. Ez mindig egy százalékos érték, 0 és 1000 között.
+    * **Második küszöbérték**: adja meg a második értesítés küszöbértékét. A rendszer értesítést küld, ha a költség meghaladja a küszöbértéket. Ez mindig egy százalékos érték, 0 és 1000 között.
     * **Kapcsolattartási szerepkörök**: adja meg azon kapcsolattartási szerepkörök listáját, ahová a rendszer költségvetési értesítést küld, ha túllépi a küszöbértéket. Az alapértelmezett értékek: Tulajdonos, Közreműködő és Olvasó. A várt formátum: `["Owner","Contributor","Reader"]`.
+    * **Kapcsolattartási e-mail-címek**: adja meg azon e-mail-címek listáját, ahová a rendszer költségvetési értesítést küld, ha túllépi a küszöbértéket. A várt formátum: `["user1@domain.com","user2@domain.com"]`.
     * **Kapcsolattartási csoportok**: adja meg azon műveletcsoportok erőforrás-azonosítójának listáját (teljes erőforrás-URI-ként), amelyeknek a rendszer költségvetési értesítést küld, ha túllépi a küszöbértéket. Sztringtömböt fogad el. A várt formátum: `["action group resource ID1","action group resource ID2"]`. Ha nem szeretne műveletcsoportokat használni, adja meg a következőt: `[]`.
-    * **Erőforrások szűrő**: adja meg az erőforrások szűrőinek listáját. A várt formátum: `["Resource Filter Name1","Resource Filter Name2"]`. Ha nem szeretne szűrőt alkalmazni, adja meg a következőt: `[]`. Ha megad egy erőforrásszűrőt, akkor meg kell adnia a **mérőszámszűrők** értékeit is.
-    * **Mérőszámok szűrő**: adja meg a mérőszámok szűrőinek listáját, ami kötelező a **Használat** költségvetési kategóriához tartozó költségvetések esetében. A várt formátum: `["Meter Filter Name1","Meter Filter Name2"]`. Ha nem adott meg **erőforrásszűrőt**, adja meg a következőt: `[]`.
-    * **Elfogadom a fenti használati feltételeket**: Válassza ezt.
+    * **Erőforráscsoport szűrőértékei**: adja meg a szűrendő erőforráscsoport-nevek listáját. A várt formátum: `["Resource Group Name1","Resource Group Name2"]`. Ha nem szeretne szűrőt alkalmazni, adja meg a következőt: `[]`. 
+    * **Mérési kategória szűrőértékei**: adja meg az Azure-szolgáltatás mérési kategóriáinak listáját. A várt formátum: `["Meter Category1","Meter Category2"]`. Ha nem szeretne szűrőt alkalmazni, adja meg a következőt: `[]`.
+   
+3. Az Azure-előfizetés típusától függően hajtsa végre az alábbi műveletek egyikét:
+   - Válassza az **Áttekintés + létrehozás** lehetőséget.
+   - Tekintse át a használati feltételeket, és válassza az **Elfogadom a fenti feltételeket és kikötéseket**, majd a **Vásárlás** lehetőséget.
 
-3. Válassza a **Beszerzés** lehetőséget. A költségvetés sikeres üzembe helyezése után megjelenik egy értesítés:
+4. Ha az **Felülvizsgálat + létrehozás** lehetőséget választotta, a sablon érvényesítve lesz. Kattintson a **Létrehozás** gombra.  
 
    ![Resource Manager-sablon, költségvetés, portál üzembe helyezésével kapcsolatos értesítés](./media/quick-create-budget-template/resource-manager-template-portal-deployment-notification.png)
 

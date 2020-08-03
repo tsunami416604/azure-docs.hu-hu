@@ -452,6 +452,8 @@
       displayName: security
     - name: Felhasználói folyamatok verziói
       href: user-flow-versions.md
+    - name: Felhasználói folyamatok örökölt verziói
+      href: user-flow-versions-legacy.md
 - name: További források
   items:
     - name: Azure-ütemterv

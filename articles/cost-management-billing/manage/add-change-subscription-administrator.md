@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 309016821eb13ef6332ba248a11593fec8da9f75
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 6d16e663626a1b19271b7d37b39202a0a9b605b9
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267562"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87126125"
 ---
 # <a name="add-or-change-azure-subscription-administrators"></a>Azure-előfizetés-adminisztrátorok hozzáadása vagy módosítása
 
@@ -22,7 +22,7 @@ Az Azure-erőforrások hozzáférésének kezeléséhez megfelelő rendszergazda
 
 Ez a cikk azt ismerteti, hogyan adhatja hozzá az adminisztrátori szerepkört egy felhasználóhoz, illetve módosíthatja azt később az RBAC használatával az előfizetés hatókörében.
 
-A Microsoft azt javasolja, hogy az erőforrásokhoz való hozzáférést az RBAC segítségével szabályozza. Azonban, ha továbbra is a klasszikus üzembehelyezési modellt használja, és klasszikus erőforrásokat felügyel az [Azure szolgáltatásfelügyeleti PowerShell-moduljával](https://docs.microsoft.com/powershell/module/servicemanagement/azure), egy klasszikus adminisztrátorra lesz szüksége.
+A Microsoft azt javasolja, hogy az erőforrásokhoz való hozzáférést az RBAC segítségével szabályozza. Azonban, ha továbbra is a klasszikus üzembehelyezési modellt használja, és klasszikus erőforrásokat felügyel az [Azure szolgáltatásfelügyeleti PowerShell-moduljával](/powershell/module/servicemanagement/azure.service), egy klasszikus adminisztrátorra lesz szüksége.
 
 > [!TIP]
 > Amennyiben kizárólag az Azure Portalon keresztül végzi a klasszikus erőforrások felügyeletét, nem szükséges klasszikus adminisztrátort használni.
@@ -69,7 +69,7 @@ Ha nem biztos benne, hogy az adott előfizetésnek ki a fiókadminisztrátora, a
 
 ## <a name="next-steps"></a>További lépések
 
-* [Mi az a szerepköralapú hozzáférés-vezérlés (RBAC)?](../../role-based-access-control/overview.md)
+* [Mi az az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)?](../../role-based-access-control/overview.md)
 * [A különböző Azure-beli szerepkörök ismertetése](../../role-based-access-control/rbac-and-directory-admin-roles.md)
 * [Azure-előfizetés társítása vagy hozzáadása az Azure Active Directory-bérlőhöz](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
 * [Adminisztrátori szerepkörök engedélyei az Azure Active Directoryban](../../active-directory/users-groups-roles/directory-assign-admin-roles.md)

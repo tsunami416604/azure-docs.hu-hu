@@ -12,12 +12,12 @@ metadata:
   author: j-martens
   ms.author: jmartens
   ms.date: 07/30/2020
-  ms.openlocfilehash: 066f82bf214a9a5a2a364bc9dc021a1baa31feac
-  ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+  ms.openlocfilehash: 40a8fc105dd297ec4bc70ecc0a27b9fa295d3fe1
+  ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 07/30/2020
-  ms.locfileid: "87433076"
+  ms.lasthandoff: 07/31/2020
+  ms.locfileid: "87474512"
 landingContent:
 - title: Ismerkedés a gépi tanulással
   linkLists:
@@ -25,12 +25,18 @@ landingContent:
     links:
     - text: Python-jegyzetfüzetek
       url: tutorial-1st-experiment-sdk-setup.md
-    - text: A tervező (áthúzás)
-      url: tutorial-designer-automobile-price-train-score.md
     - text: AutoML (kódírás nélkül/minimális kódírás)
       url: tutorial-first-experiment-automated-ml.md
+    - text: Tervező (áthúzás)
+      url: tutorial-designer-automobile-price-train-score.md
     - text: RStudio
       url: tutorial-1st-r-experiment.md
+- title: Gépi tanulási modell áthelyezése az Azure rendszerébe
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Helyi modell üzembe helyezése a felhőben
+      url: how-to-deploy-existing-model.md
 - title: AutoML vagy áthúzás használata a Studióban
   linkLists:
   - linkListType: overview
@@ -45,50 +51,10 @@ landingContent:
     links:
     - text: 'AutoML: besorolási modell összeállítása'
       url: tutorial-first-experiment-automated-ml.md
-    - text: 'AutoML: betanítási és üzembehelyezési ML-modellek'
-      url: how-to-use-automated-ml-for-ml-models.md
     - text: 'A tervező: autóárak előrejelzése'
       url: tutorial-designer-automobile-price-train-score.md
-    - text: Képcímkéző projekt létrehozása
+    - text: Képek címkézése besoroláshoz
       url: tutorial-labeling.md
-- title: Modell áthelyezése az Azure rendszerébe
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: Helyi modell üzembe helyezése a felhőben
-      url: how-to-deploy-existing-model.md
-- title: Betanítás a Python SDK-val
-  linkLists:
-  - linkListType: tutorial
-    links:
-    - text: Az első gépi tanulási kísérlet létrehozása
-      url: tutorial-1st-experiment-sdk-setup.md
-    - text: Képek besorolása
-      url: tutorial-train-models-with-aml.md
-    - text: Taxiutak árának előrejelzése az AutoML használatával
-      url: tutorial-auto-train-models.md
-    - text: Azure ML-folyamatok létrehozása
-      url: tutorial-pipeline-batch-scoring-classification.md
-  - linkListType: how-to-guide
-    links:
-    - text: A környezet kialakítása
-      url: how-to-configure-environment.md
-    - text: Modellek értelmezése és ismertetése
-      url: how-to-machine-learning-interpretability.md
-    - text: Mélytanulási eszközök és gépi tanulás
-      url: concept-deep-learning-vs-machine-learning.md
-    - text: Scikit-learn-modell betanítása és regisztrálása
-      url: how-to-train-scikit-learn.md
-    - text: TensorFlow-modell betanítása és regisztrálása
-      url: how-to-train-tensorflow.md
-    - text: PyTorch-modell betanítása és regisztrálása
-      url: how-to-train-pytorch.md
-    - text: Keras-modell betanítása és regisztrálása
-      url: how-to-train-keras.md
-    - text: Megerősítő tanulás
-      url: how-to-use-reinforcement-learning.md
-    - text: Mik azok a gépi tanulási folyamatok?
-      url: concept-ml-pipelines.md
 - title: 'MLOps: Modellek üzembe helyezése és kezelése'
   linkLists:
   - linkListType: how-to-guide
@@ -101,6 +67,34 @@ landingContent:
       url: how-to-consume-web-service.md
     - text: Kötegelt előrejelzés
       url: how-to-use-parallel-run-step.md
+    - text: MLOps-példák adattára
+      url: https://github.com/microsoft/MLOps
+- title: Betanítás a Python SDK-val
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Az első gépi tanulási kísérlet létrehozása
+      url: tutorial-1st-experiment-sdk-setup.md
+    - text: Taxiutak árának előrejelzése az AutoML használatával
+      url: tutorial-auto-train-models.md
+    - text: Azure ML-folyamatok létrehozása
+      url: tutorial-pipeline-batch-scoring-classification.md
+    - text: Képek besorolása
+      url: tutorial-train-models-with-aml.md
+  - linkListType: how-to-guide
+    links:
+    - text: A környezet kialakítása
+      url: how-to-configure-environment.md
+    - text: Scikit-learn-modellek betanítása
+      url: how-to-train-scikit-learn.md
+    - text: TensorFlow-modellek betanítása
+      url: how-to-train-tensorflow.md
+    - text: PyTorch-modellek betanítása
+      url: how-to-train-pytorch.md
+    - text: Keras-modellek betanítása
+      url: how-to-train-keras.md
+    - text: Mik azok a gépi tanulási folyamatok?
+      url: concept-ml-pipelines.md
 - title: Alapvető referenciadokumentumok
   linkLists:
   - linkListType: reference
@@ -109,8 +103,6 @@ landingContent:
       url: https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py
     - text: Tervezőalgoritmusok és modulok
       url: algorithm-module-reference/module-reference.md
-    - text: MLOps-példák adattára
-      url: https://github.com/microsoft/MLOps
     - text: REST API
       url: https://docs.microsoft.com/rest/api/azureml/
     - text: Machine learning CLI

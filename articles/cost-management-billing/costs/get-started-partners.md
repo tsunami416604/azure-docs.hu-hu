@@ -3,17 +3,17 @@ title: Ismerkedés a partnerek számára készült Azure Cost Management szolgá
 description: Ez a cikk bemutatja, hogyan használják a partnerek az Azure Cost Management funkcióit, és hogyan teszik lehetővé a Cost Managementhez való hozzáférést az ügyfeleik számára.
 author: bandersmsft
 ms.author: banders
-ms.date: 07/01/2020
+ms.date: 07/28/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: 0b0b5eb8ec41eccf99c23b671cef42a9c1bc8859
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 25a64dd4d06c24b0f7e1f8433a1abf5f67fa6eba
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85849863"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372144"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>Ismerkedés a partnerek számára készült Azure Cost Management szolgáltatással
 
@@ -123,9 +123,9 @@ A szabályzattól függetlenül a globális rendszergazdák és a szolgáltató 
 
 ### <a name="enable-the-policy-to-view-azure-usage-charges"></a>Engedélyezze a szabályzatot az Azure használati díjainak megtekintéséhez
 
-A partnerek a következő információkat használják, hogy engedélyezzék az Azure használati díjainak megtekintését lehetővé tevő szabályzatot az ügyfeleik számára.
+A szabályzat megtekintéséhez és frissítéséhez a **rendszergazdai ügynök** csoport tagjának kell lennie. Az alábbi információk használatával engedélyezheti az Azure-használat költségeinek megtekintését lehetővé tévő szabályzatot az ügyfelek számára.
 
-Jelentkezzen be a partnerbérlőbe az Azure Portalon, és válassza a **Költségkezelés + számlázás** lehetőséget. Válassza ki a megfelelő Microsoft Partnerszerződéshez tartozó számlázási fiókot, majd válassza az **Ügyfelek** elemet. Az ügyfelek listája a számlázási fiókhoz van társítva.
+Jelentkezzen be a partnerbérlőbe az Azure Portalon, és válassza a **Költségkezelés + számlázás** lehetőséget. Válassza ki a megfelelő számlázási hatókört a Számlázási hatókör területen, majd válassza az **Ügyfelek** lehetőséget. Az ügyfelek listája a számlázási fiókhoz van társítva.
 
 Az ügyfelek listájában válassza ki azt az ügyfelet, akinek engedélyezni szeretné a költségek megtekintését.
 

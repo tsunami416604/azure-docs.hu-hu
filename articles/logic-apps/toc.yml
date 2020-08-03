@@ -28,6 +28,8 @@
       href: tutorial-process-email-attachments-workflow.md
 - name: Példák
   items:
+    - name: Logikai alkalmazás létrehozása – mintaszkript
+      href: sample-logic-apps-cli-script.md
     - name: Azure-kódminták
       href: /samples/browse/?products=azure-logic-apps
     - name: Resource Manager-gyorssablonok

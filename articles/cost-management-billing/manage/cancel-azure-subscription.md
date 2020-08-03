@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: banders
-ms.openlocfilehash: 2d8b529683f4d07bc47010711d65ca40536823fb
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 8b0ba7b597921d82883f2c7ba505ebb10eee1876
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996565"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87039760"
 ---
 # <a name="cancel-your-azure-subscription"></a>Az Azure-előfizetés lemondása
 
@@ -25,7 +25,7 @@ Bár nem kötelező, a Microsoft *javasolja*, hogy végezze el az alábbi művel
 * Állítsa le a szolgáltatásokat. Lépjen a [felügyeleti portál erőforrások oldalára](https://ms.portal.azure.com/?flight=1#blade/HubsExtension/Resources/resourceType/Microsoft.Resources%2Fresources), és **állítsa le** az összes aktuálisan futó virtuális gépet, alkalmazást, és egyéb szolgáltatást.
 * Fontolja meg adatai migrálását. Lásd [az erőforrások új erőforráscsoportba vagy előfizetésbe való áthelyezését](../../azure-resource-manager/management/move-resource-group-and-subscription.md) ismertető témakört.
 * Törölje az összes erőforrást és erőforráscsoportot.
-* Ha bármilyen egyéni szerepkörrel rendelkezik, amely erre az előfizetésre hivatkozik az `AssignableScopes` alatt, akkor az előfizetés eltávolításához frissítenie kell az egyéni szerepköröket. Ha az előfizetés lemondása után próbál frissíteni egy egyéni szerepkört, lehetséges, hogy hibaüzenetet kap. További információkért tekintse meg az [Egyéni szerepkörökkel felmerülő problémák hibaelhárítása](../../role-based-access-control/troubleshooting.md#problems-with-custom-roles) és az [Egyéni szerepkörök Azure-erőforrásokhoz](../../role-based-access-control/custom-roles.md) cikkeket.
+* Ha bármilyen egyéni szerepkörrel rendelkezik, amely erre az előfizetésre hivatkozik az `AssignableScopes` alatt, akkor az előfizetés eltávolításához frissítenie kell az egyéni szerepköröket. Ha az előfizetés lemondása után próbál frissíteni egy egyéni szerepkört, lehetséges, hogy hibaüzenetet kap. További információkért tekintse meg az [Egyéni szerepkörökkel felmerülő problémák hibaelhárítása](../../role-based-access-control/troubleshooting.md#problems-with-custom-roles) és az [Egyéni Azure-szerepkörök](../../role-based-access-control/custom-roles.md) cikkeket.
 
 Ha egy fizetett Azure-támogatási csomagot mond le, az előfizetési időszak hátralévő ideje továbbra is ki lesz számlázva. További információkért tekintse meg az [Azure támogatási csomagokat](https://azure.microsoft.com/support/plans/).
 

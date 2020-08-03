@@ -4,15 +4,15 @@ description: Ismerje meg a fontosabb szempontokat, amelyek segíthetnek az Azure
 author: bandersmsft
 ms.reviewer: yashar
 ms.service: cost-management-billing
-ms.topic: conceptual
-ms.date: 05/04/2020
+ms.topic: how-to
+ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: 609ca56419ed14f3cf4e449e9b906a75a4ff20ab
-ms.sourcegitcommit: 374d1533ea2f2d9d3f8b6e6a8e65c6a5cd4aea47
+ms.openlocfilehash: 68bcf725a6043b8ab19717845fa8005de2f88e35
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85807781"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287637"
 ---
 # <a name="buy-a-reservation"></a>Foglalás vásárlása
 
@@ -34,9 +34,12 @@ A foglalásokhoz egy előfizetést vagy erőforráscsoportokat állíthat be hat
 
 Az igényeitől függően három lehetősége van a foglalás hatókörének beállítására:
 
-- **Egyetlen erőforráscsoport hatókör** – A foglalási kedvezményt csak a kiválasztott erőforráscsoportban található egyező erőforrásokra alkalmazza.
+- **Egy erőforráscsoportra vonatkozó hatókör** – A foglalási kedvezményt csak a kiválasztott erőforráscsoportban található egyező erőforrásokra alkalmazza.
 - **Egy előfizetésre vonatkozó hatókör** – A foglalási kedvezményt a kiválasztott előfizetésben található egyező erőforrásokra alkalmazza.
-- **Megosztott hatókör** – A foglalási kedvezményt a számlázási környezet jogosult előfizetéseiben található egyező erőforrásokra alkalmazza. A Nagyvállalati Szerződéssel rendelkező ügyfelek esetében a számlázási környezet a regisztráció. A Microsoft-ügyfélszerződés ügyfelei esetében a számlázási profil a számlázási hatókör. A használatalapú díjas, egyéni előfizetések esetében a számlázási hatókör a fiókadminisztrátor által létrehozott, jogosult előfizetéseket foglalja magában.
+- **Megosztott hatókör** – A foglalási kedvezményt a számlázási környezet jogosult előfizetéseiben található, egyező erőforrásokra alkalmazza.
+    - A Nagyvállalati Szerződéssel rendelkező ügyfelek esetében a számlázási környezet a regisztráció. A foglalás megosztott hatóköre több Active Directory-bérlőt tartalmazna egy regisztrációban.
+    - Microsoft Ügyfélszerződéses ügyfelek esetében a számlázási környezet a számlázási profil.
+    - A használatalapú díjas, egyéni előfizetések esetében a számlázási hatókör a fiókadminisztrátor által létrehozott, jogosult előfizetéseket foglalja magában.
 
 A foglalási kedvezmények a használatra történő alkalmazása során az Azure a következő sorrendben dolgozza fel a foglalást:
 

@@ -3,26 +3,25 @@ title: Az Azure Reservations önkiszolgáló csere- és visszatérítési szolg�
 description: Ismerje meg, hogyan cserélheti be vagy térítheti vissza az Azure Reservations foglalásait.
 author: yashesvi
 ms.service: cost-management-billing
-ms.topic: conceptual
-ms.date: 07/01/2020
+ms.topic: how-to
+ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: 4a25bb13bfa5b2e4f13ddf437bcd9577f9602aed
-ms.sourcegitcommit: 374d1533ea2f2d9d3f8b6e6a8e65c6a5cd4aea47
+ms.openlocfilehash: 3f41f26e6934e156ab38340a74e2c070b26cefb4
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85807689"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287648"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Az Azure Reservations önkiszolgáló csere- és visszatérítési szolgáltatásai
 
-Az Azure Reservations biztosítja a rugalmasságot a változó igények kielégítéséhez. A foglalásokat le tudja cserélni azonos típusú foglalásokra, azaz egy virtuális gép foglalása kicserélhető bármilyen méretű vagy régiójú virtuális gép foglalásának megvásárlására. Hasonlóképpen, egy SQL PaaS Database-foglalás is kicserélhető bármilyen típusú vagy régiójú SQL PaaS Database-foglalás megvásárlására. A foglalásokért visszatérítést is kérhet, de a visszamondott foglalási kötelezettségvállalások teljes összege nem haladhatja meg az 50 000 USD összeget az elmúlt 12 hónapra vonatkozóan. Az Azure Databricks fenntartott kapacitás, az Azure VMware Solution by CloudSimple-foglalás, az Azure Red Hat Open Shift-foglalás, a Red Hat-csomagok és a SUSE Linux-csomagok nem jogosultak visszatérítésre.
+Az Azure Reservations biztosítja a rugalmasságot a változó igények kielégítéséhez. A foglalásokat le tudja cserélni azonos típusú foglalásokra. Például egy virtuális gép foglalása kicserélhető bármilyen méretű vagy régiójú virtuális gép foglalásának megvásárlására. Hasonlóképpen, egy SQL PaaS Database-foglalás is kicserélhető másik típusú vagy régiójú SQL PaaS Database-foglalás megvásárlására. A foglalásokért visszatérítést is kérhet, de a visszamondott foglalási kötelezettségvállalások teljes összege a számlázási hatókörben (például Nagyvállalati Szerződés, Microsoft-ügyfélszerződés és Microsoft-partnerszerződés) nem haladhatja meg az 50 000 USD összeget az elmúlt 12 hónapra vonatkozóan. Az Azure Databricks fenntartott kapacitás, az Azure VMware Solution by CloudSimple-foglalás, az Azure Red Hat Open Shift-foglalás, a Red Hat-csomagok és a SUSE Linux-csomagok nem jogosultak visszatérítésre.
 
 Az önkiszolgáló csere- és lemondási lehetőség nem érhető el az Egyesült Államok kormányának nagyvállalati szerződésével rendelkező ügyfelei számára. Az Egyesült Államok kormányának (US Government) egyéb előfizetési típusai támogatottak, például a használatalapú fizetés és a Felhőszolgáltató (CSP).
 
-Meglévő foglalások cseréjéhez vagy visszatérítéséhez tulajdonosi hozzáféréssel kell rendelkeznie a foglalási rendeléshez. Elvégezhető [a foglalást kezelő felhasználók hozzáadása vagy módosítása](https://docs.microsoft.com/azure/cost-management-billing/reservations/manage-reserved-vm-instance#add-or-change-users-who-can-manage-a-reservation).
-
 > [!NOTE]
-> A Microsoft jelenleg nem számol fel korai felmondási díjat a foglalásokhoz kapcsolódó visszatérítések után. Előfordulhat, hogy a visszatérítések a jövőben díjkötelesek lesznek. Jelenleg még nem határoztuk meg a díj bevezetésének dátumát.
+> - **Meglévő foglalások cseréjéhez vagy visszatérítéséhez tulajdonosi hozzáféréssel kell rendelkeznie a foglalási rendeléshez**. Elvégezhető [a foglalást kezelő felhasználók hozzáadása vagy módosítása](https://docs.microsoft.com/azure/cost-management-billing/reservations/manage-reserved-vm-instance#add-or-change-users-who-can-manage-a-reservation).
+> - A Microsoft jelenleg nem számol fel korai felmondási díjat a foglalásokhoz kapcsolódó visszatérítések után. Előfordulhat, hogy a visszatérítések a jövőben díjkötelesek lesznek. Jelenleg még nem határoztuk meg a díj bevezetésének dátumát.
 
 ## <a name="how-to-exchange-or-refund-an-existing-reservation"></a>Meglévő foglalások cseréje vagy visszatérítése
 
@@ -76,7 +75,8 @@ Az Azure-ban a következő szabályzatok érvényesek a lemondásokra, cserékre
 **Visszatérítési szabályzatok**
 
 - Jelenleg nem számítunk fel korai felmondási díjat, de lehetséges, hogy a jövőbeli lemondásokért 12%-os korai felmondási díj lesz felszámítva.
-- A lemondott kötelezettségvállalás teljes összege nem haladhatja meg az 50 000 USD-t az elmúlt 12 hónapra vonatkozóan. Példa: egy hároméves, havi 100 USD összegű, a 18. hónapban visszatérítendő foglalás esetén a lemondott kötelezettségvállalás értéke 1800 USD. A visszatérítés után az új visszatérítési korlát 48 200 USD lesz. Ezen visszatérítéstől számított 365 nap múlva a 48 200 USD korlátot megnöveljük 1800 USD-vel, így az új keret 50 000 USD lesz. Minden más foglaláslemondás ugyanezt a keretet csökkenti, és ugyanez a feltöltési logika érvényesül.
+- Egy számlázási profil vagy egy regisztráció esetében a lemondott kötelezettségvállalás teljes összege nem haladhatja meg az 50 000 USD-t az elmúlt 12 hónapra vonatkozóan. Például egy hároméves, havi 100 USD összegű, a 18. hónapban visszatérítendő foglalás esetén a lemondott kötelezettségvállalás értéke 1800 USD. A visszatérítés után az új visszatérítési korlát 48 200 USD lesz. Ezen visszatérítéstől számított 365 nap múlva a 48 200 USD korlátot megnöveljük 1800 USD-vel, így az új keret 50 000 USD lesz. A számlázási profilhoz vagy az EA-regisztrációhoz tartozó minden más foglaláslemondás ugyanezt a keretet csökkenti, és ugyanez a feltöltési logika érvényesül.
+- Az Azure nem dolgozza fel azokat a visszatérítéseket, amelyek egy számlázási profil vagy EA-regisztráció esetében meghaladják az 50 000 USD-t az elmúlt 12 hónapra vonatkozóan.
 - A visszatérítést a rendszer a vételár vagy a foglalás jelenlegi ára közül az alacsonyabb összeg alapján számítja ki.
 - A visszatérítéseket csak a foglalásrendelések tulajdonosai dolgozhatják fel. További tudnivalók: [A foglalást kezelő felhasználók hozzáadása vagy módosítása](manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation).
 

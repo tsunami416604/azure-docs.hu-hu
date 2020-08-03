@@ -40,12 +40,14 @@
       items:
         - name: Az Azure Digital Twins CLI használata
           href: how-to-use-cli.md
-        - name: Példány és hitelesítés beállítása (szkriptelt)
-          href: how-to-set-up-instance-scripted.md
-        - name: Példány és hitelesítés beállítása (parancssori felület)
-          href: how-to-set-up-instance-cli.md
-        - name: Példány és hitelesítés beállítása (portál)
-          href: how-to-set-up-instance-portal.md
+        - name: Példány és hitelesítés beállítása
+          items:
+            - name: Szkriptes verzió
+              href: how-to-set-up-instance-scripted.md
+            - name: Parancssori felület verziója
+              href: how-to-set-up-instance-cli.md
+            - name: Portálverzió
+              href: how-to-set-up-instance-portal.md
         - name: Alkalmazáshitelesítési kód írása
           href: how-to-authenticate-client.md
     - name: Tervezési modellek

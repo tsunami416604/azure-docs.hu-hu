@@ -42,6 +42,8 @@
       href: vpn-gateway-about-point-to-site-routing.md
     - name: Tudnivalók a rendelkezésre állási zónák zónaredundáns átjáróiról
       href: about-zone-redundant-vnet-gateways.md
+    - name: Beépített biztonsági vezérlők
+      href: vpn-gateway-security-controls.md
     - name: Háttérkapcsolat együttműködési lehetőségei
       items:
         - name: Előtag- és tesztbeállítások
@@ -52,8 +54,6 @@
           href: ../networking/connectivty-interoperability-control-plane.md?toc=%2fazure%2fvpn-gateway%2ftoc.json
         - name: Adatsík elemzése
           href: ../networking/connectivty-interoperability-data-plane.md?toc=%2fazure%2fvpn-gateway%2ftoc.json
-    - name: Beépített biztonsági vezérlők
-      href: vpn-gateway-security-controls.md
 - name: Útmutatók
   items:
     - name: VPN-átjáró létrehozása és kezelése
@@ -160,8 +160,8 @@
               href: vpn-gateway-howto-openvpn.md
             - name: Az OpenVPN-ügyfelek konfigurálása
               href: vpn-gateway-howto-openvpn-clients.md
-        - name: Áttérés az OpenVPN-protokollra vagy az IKEv2-re az SSTP-ről
-          href: ikev2-openvpn-from-sstp.md
+            - name: Áttérés az OpenVPN-protokollra vagy az IKEv2-re az SSTP-ről
+              href: ikev2-openvpn-from-sstp.md
         - name: Váltás nyilvános hitelesítésszolgáltatói átjárótanúsítványra a P2S-kapcsolatok esetében
           href: vpn-gateway-point-to-site-gateway-public-ca.md
         - name: AlwaysOn VPN-eszközalagút konfigurálása
@@ -170,12 +170,6 @@
           href: vpn-gateway-howto-always-on-user-tunnel.md
         - name: Egyéni útvonalak hirdetése P2S-ügyfelek számára
           href: vpn-gateway-p2s-advertise-custom-routes.md
-    - name: Zónaredundáns átjáró létrehozása
-      href: create-zone-redundant-vnet-gateway.md
-    - name: IPsec/IKE kapcsolati házirendjeinek konfigurálása
-      href: vpn-gateway-ipsecikepolicy-rm-powershell.md
-    - name: Aktív–aktív kapcsolatok konfigurálása
-      href: vpn-gateway-activeactive-rm-powershell.md
     - name: 'Útválasztás, BGP és virtuális hálózatok közötti társviszony'
       items:
         - name: BGP konfigurálása egy VPN-átjáró számára
@@ -218,6 +212,18 @@
           href: vpn-gateway-howto-setup-alerts-virtual-network-gateway-log.md
     - name: Csomagrögzítés konfigurálása
       href: packet-capture.md
+    - name: Zónaredundáns átjárók
+      items:
+        - name: Zónaredundáns átjáró létrehozása
+          href: create-zone-redundant-vnet-gateway.md
+    - name: IPsec/IKE kapcsolati házirendjeinek konfigurálása
+      items:
+        - name: PowerShell
+          href: vpn-gateway-ipsecikepolicy-rm-powershell.md
+    - name: Aktív–aktív kapcsolatok konfigurálása
+      items:
+        - name: PowerShell
+          href: vpn-gateway-activeactive-rm-powershell.md
     - name: Hibaelhárítás
       href: vpn-gateway-troubleshoot.md
       items:
