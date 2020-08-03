@@ -8,12 +8,13 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/04/2020
 ms.author: aahi
-ms.openlocfilehash: df24e04373b60172236c462eb4461e59ba9d1415
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 953648f5cf83d5ffd22683ba0ce02335a637f18a
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85806114"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407224"
 ---
 Ezzel a rövid útmutatóval elvégezheti az első képkeresést az Bing Image Search ügyféloldali kódtár használatával, amely az API burkolója, és ugyanazokat a szolgáltatásokat tartalmazza. Ez az egyszerű JavaScript-alkalmazás elküld egy képkeresési lekérdezést, elemzi a JSON-választ, és megjeleníti az első visszaadott kép URL-címét.
 

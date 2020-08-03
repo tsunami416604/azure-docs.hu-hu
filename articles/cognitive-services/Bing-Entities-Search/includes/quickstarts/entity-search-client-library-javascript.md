@@ -8,12 +8,13 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/06/2020
 ms.author: aahi
-ms.openlocfilehash: ac2f83c824014e16cfbe9ab18483b914ed8b077d
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: devx-track-javascript
+ms.openlocfilehash: f5a3b48fd6be48d468b66009a77de100962be10d
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79136766"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87405066"
 ---
 Ezzel a rövid útmutatóval megkezdheti az entitások keresését a JavaScript Bing Entity Search ügyféloldali függvénytárával. Habár a Bing Entity Search REST API kompatibilis a legtöbb programozási nyelvvel, az ügyféloldali kódtár egyszerű módszert kínál a szolgáltatás integrálására az alkalmazásokba. A minta forráskódja a [githubon](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/entitySearch.js)található.
 
@@ -21,12 +22,12 @@ Ezzel a rövid útmutatóval megkezdheti az entitások keresését a JavaScript 
 
 * A [Node.js](https://nodejs.org/en/download/) legújabb verziója.
 
-* A [Node. js-hez készült BING Entity Search SDK](https://www.npmjs.com/package/@azure/cognitiveservices-entitysearch)
+* A [Node.jsBING Entity Search SDK](https://www.npmjs.com/package/@azure/cognitiveservices-entitysearch)
 
 Az Bing Entity Search SDK telepítése:
 
-1. Futtatás `npm install ms-rest-azure` a fejlesztési környezetben.
-2. Futtatás `npm install @azure/cognitiveservices-entitysearch` a fejlesztési környezetben.
+1. Futtatás a `npm install ms-rest-azure` fejlesztési környezetben.
+2. Futtatás a `npm install @azure/cognitiveservices-entitysearch` fejlesztési környezetben.
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](~/includes/cognitive-services-bing-entity-search-signup-requirements.md)]
 
@@ -40,7 +41,7 @@ Az Bing Entity Search SDK telepítése:
     const EntitySearchAPIClient = require('@azure/cognitiveservices-entitysearch');
     ```
 
-2. Hozzon létre egy `CognitiveServicesCredentials` példányt az előfizetési kulcs használatával. Ezután hozza létre a keresési ügyfél egy példányát.
+2. Hozzon létre egy példányt az `CognitiveServicesCredentials` előfizetési kulcs használatával. Ezután hozza létre a keresési ügyfél egy példányát.
 
     ```javascript
     let credentials = new CognitiveServicesCredentials('YOUR-ACCESS-KEY');
@@ -49,7 +50,7 @@ Az Bing Entity Search SDK telepítése:
 
 ## <a name="send-a-request-and-receive-a-response"></a>Kérelem küldése és válasz fogadása
 
-1. Entitások keresési kérelmének küldése `entitiesOperations.search()`a szolgáltatással. A válasz fogadása után nyomtassa ki `queryContext`a, a visszaadott eredmények számát és az első eredmény leírását.
+1. Entitások keresési kérelmének küldése a szolgáltatással `entitiesOperations.search()` . A válasz fogadása után nyomtassa ki a `queryContext` , a visszaadott eredmények számát és az első eredmény leírását.
 
     ```javascript
     entitySearchApiClient.entitiesOperations.search('seahawks').then((result) => {

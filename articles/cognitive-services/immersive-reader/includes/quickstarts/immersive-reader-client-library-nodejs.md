@@ -1,5 +1,5 @@
 ---
-title: Az olvasó Node. js ügyféloldali kódtár gyors üzembe helyezése
+title: Lebilincselő olvasó Node.js ügyféloldali kódtár gyors üzembe helyezése
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban létrehozhat egy webalkalmazást a semmiből, és hozzáadhatja a magával ragadó olvasó API funkcióját.
 services: cognitive-services
@@ -9,12 +9,13 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/20/2020
 ms.author: pasta
-ms.openlocfilehash: 2092ccbedd95ee13ac4ad929f052afd1d85729ec
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.custom: devx-track-javascript
+ms.openlocfilehash: d0d5c77fde24b705dbfa7ac44b0d32f0967d1526
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84268720"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87425232"
 ---
 A teljes [olvasó](https://www.onenote.com/learningtools) egy olyan, integráltan kialakított eszköz, amely bevált technikákat valósít meg az olvasási szövegértés javítására.
 
@@ -25,12 +26,12 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 ## <a name="prerequisites"></a>Előfeltételek
 
 * A Azure Active Directory hitelesítéshez konfigurált, magával ragadó olvasó erőforrás. A beállításhoz kövesse az [alábbi utasításokat](../../how-to-create-immersive-reader.md) . A környezeti tulajdonságok konfigurálásakor itt létrehozott értékek némelyikére szüksége lesz. Mentse a munkamenet kimenetét szövegfájlba későbbi használatra.
-* [Node. js](https://nodejs.org/) és [fonal](https://yarnpkg.com)
+* [Node.js](https://nodejs.org/) és [fonal](https://yarnpkg.com)
 * IDE, például a [Visual Studio Code](https://code.visualstudio.com/)
 
-## <a name="create-a-nodejs-web-app-with-express"></a>Node. js-alapú Webalkalmazás létrehozása az Express-szel
+## <a name="create-a-nodejs-web-app-with-express"></a>Node.js Webalkalmazás létrehozása Expressből
 
-Hozzon létre egy Node. js-webalkalmazást az `express-generator` eszközzel.
+Hozzon létre egy Node.js webalkalmazást az `express-generator` eszközzel.
 
 ```bash
 npm install express-generator -g
@@ -62,7 +63,7 @@ SUBDOMAIN={YOUR_SUBDOMAIN}
 
 Ügyeljen arra, hogy ne véglegesítse ezt a fájlt a verziókövetés során, mert olyan titkos kulcsokat tartalmaz, amelyeket nem kell nyilvánosságra hozni.
 
-Ezután nyissa meg az _app. js_ fájlt, és adja hozzá a következőt a fájl elejéhez. Ezzel betölti a. env fájlban definiált tulajdonságokat környezeti változókként a csomópontba.
+Ezután nyissa meg _app.js_ , és adja hozzá a következőt a fájl elejéhez. Ezzel betölti a. env fájlban definiált tulajdonságokat környezeti változókként a csomópontba.
 
 ```javascript
 require('dotenv').config();
@@ -235,7 +236,7 @@ script(type="text/javascript").
 
 Figyelje meg, hogy az összes szöveg **lang** attribútummal rendelkezik, amely a szöveg nyelveit írja le. Ez az attribútum segíti a magával ragadó olvasót a megfelelő nyelvi és nyelvtani funkciók biztosításában.
 
-## <a name="build-and-run-the-app"></a>Az alkalmazás létrehozása és futtatása
+## <a name="build-and-run-the-app"></a>Készítsen buildet és futtassa az alkalmazást
 
 A webalkalmazás most már készen áll. Indítsa el az alkalmazást a futtatásával:
 

@@ -8,20 +8,20 @@ manager: guillasi
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 06/10/2020
-ms.custom: devx-track-java
+ms.custom: devx-track-java, devx-track-javascript
 ms.author: dylankil
-ms.openlocfilehash: 014babfe20916d0adc623d0b080d9b72d5580f6f
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 5ea35d6da2e76d5eacc76829c9da93f82a842271
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87374636"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87425048"
 ---
 A teljes [olvasó](https://www.onenote.com/learningtools) egy olyan, integráltan kialakított eszköz, amely bevált technikákat valósít meg az olvasási szövegértés javítására.
 
 Ebben a rövid útmutatóban egy Android-alkalmazást hozhat létre a semmiből, és integrálhatja a magával ragadó olvasót. Ennek a rövid útmutatónak a teljes működő mintája elérhető [a githubon](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-java-android).
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

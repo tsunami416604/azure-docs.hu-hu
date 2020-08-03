@@ -1,5 +1,5 @@
 ---
-title: REST-hívás a Node. js-ben
+title: Szándék beszerzése a REST-hívással Node.js
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: diberry
@@ -8,12 +8,13 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 06/03/2020
 ms.author: diberry
-ms.openlocfilehash: 05142c1d98906a591fae41658c5c7b9d36cdb8c4
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 0c8217ba2c8c6c7681e649f4e519ef14ced6f596
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84418033"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87405269"
 ---
 [Dokumentáció](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5890b47c39e2bb052c5b9c08)  |  [Minta](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/LUIS/node-predict-with-rest/predict.js)
 
@@ -26,9 +27,9 @@ ms.locfileid: "84418033"
 
 [!INCLUDE [Create pizza app](get-started-get-intent-create-pizza-app.md)]
 
-## <a name="create-the-nodejs-project"></a>A Node. js-projekt létrehozása
+## <a name="create-the-nodejs-project"></a>A Node.js projekt létrehozása
 
-1. Hozzon létre egy új mappát a Node. js-projekt tárolásához, például: `node-predict-with-rest` .
+1. Hozzon létre egy új mappát a Node.js-projekt tárolásához, például: `node-predict-with-rest` .
 
 1. Nyisson meg egy új parancssort, navigáljon a létrehozott mappához, és hajtsa végre a következő parancsot:
 
@@ -48,7 +49,7 @@ ms.locfileid: "84418033"
 
 ## <a name="get-intent-programmatically"></a>Szándék lekérése programozott módon
 
-A Node. js segítségével lekérdezheti az [előrejelzési végpontot](https://aka.ms/luis-apim-v3-prediction) , és lekérheti az előrejelzés eredményét.
+A Node.js használatával kérdezheti le az [előrejelzési végpontot](https://aka.ms/luis-apim-v3-prediction) , és lekérheti az előrejelzés eredményét.
 
 1. Másolja a következő kódrészletet egy nevű fájlba `predict.js` :
 
@@ -56,7 +57,7 @@ A Node. js segítségével lekérdezheti az [előrejelzési végpontot](https://
 
 1. Cserélje le az értékeket a `YOUR-` saját értékeivel kezdődő értékekre.
 
-    |Információ|Szerep|
+    |Információ|Cél|
     |--|--|
     |`YOUR-APP-ID`|Az alkalmazás azonosítója. A LUIS-portálon, az alkalmazás Alkalmazásbeállítások lapján található.
     |`YOUR-PREDICTION-KEY`|Az 32 karakteres előrejelzési kulcs. A LUIS-portálon, az alkalmazás Azure-erőforrások lapján található.
@@ -234,7 +235,7 @@ A Node. js segítségével lekérdezheti az [előrejelzési végpontot](https://
 
 Ha elkészült a rövid útmutatóval, törölje a Project mappát a fájlrendszerből.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Hosszúságú kimondott szöveg és-betanítás hozzáadása](../get-started-get-model-rest-apis.md)

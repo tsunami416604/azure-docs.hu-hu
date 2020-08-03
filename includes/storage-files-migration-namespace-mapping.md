@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 2/20/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: e0d963d6491574bf630061749ba4d3538549fa34
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 16b9342f0374377349f338db7ce5c8389c77ea18
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85570169"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87424987"
 ---
 Ebben a lépésben azt értékeli, hogy hány Azure-fájlmegosztás szükséges. Egyetlen Windows Server-példány (vagy fürt) akár 30 Azure-fájlmegosztás szinkronizálására is képes.
 
@@ -68,7 +68,7 @@ Ebben az esetben lehetséges, hogy a mappák egy halmaza képes logikailag szink
 
 :::row:::
     :::column:::
-        [![](media/storage-files-migration-namespace-mapping/namespace-mapping.png "An example of a mapping table. Download the file below to experience and use the content of this image.")](media/storage-files-migration-namespace-mapping/namespace-mapping-expanded.png#lightbox)
+        [![Példa egy leképezési táblára. Az alábbi fájl letöltésével megtapasztalhatja és használhatja a rendszerkép tartalmát.](media/storage-files-migration-namespace-mapping/namespace-mapping.png)](media/storage-files-migration-namespace-mapping/namespace-mapping-expanded.png#lightbox)
     :::column-end:::
     :::column:::
         Az előző fogalmak kombinációjának segítségével meghatározhatja, hogy hány Azure-fájlmegosztás szükséges, és hogy a meglévő adatai mely részeit fogják megállapítani az Azure-fájlmegosztás végén.

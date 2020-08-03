@@ -2,17 +2,17 @@
 title: fájl belefoglalása
 description: fájl belefoglalása
 services: cosmos-db
-author: MarkMcGeeAtAquent
+author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: include
-ms.date: 10/07/2019
-ms.author: mimig
+ms.date: 07/23/2020
+ms.author: sngun
 ms.custom: include file
-ms.openlocfilehash: be3637870edc4900059f02392536194a910e9e41
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 014d53b3f8ef8f5009ee5de03b8697a07e1317fd
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "72818619"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171937"
 ---
-Táblázatokat az Azure Table Storage vagy az Azure Cosmos DB segítségével használhat. Ha többet szeretne megtudni a szolgáltatások közötti különbségekről, tekintse meg a [Table offers](../articles/cosmos-db/table-introduction.md#table-offerings)című témakört. Az Ön által kiválasztott szolgáltatás használatához hozzon létre egy fiókot.
+Az Azure Table Storage vagy a Azure Cosmos DB használatával is dolgozhat táblázatokkal. Ha többet szeretne megtudni a két szolgáltatás táblázatos kínálata közötti különbségekről, tekintse meg a [Table offers](../articles/cosmos-db/table-introduction.md#table-offerings) című cikket. Az Ön által kiválasztott szolgáltatás használatához hozzon létre egy fiókot. A következő részekben bemutatjuk, hogyan hozható létre az Azure Table Storage és a Azure Cosmos DB fiók is, de csak az egyiket használhatja. 

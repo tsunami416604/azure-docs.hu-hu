@@ -9,18 +9,19 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 06/10/2020
 ms.author: dylankil
-ms.openlocfilehash: 7db367222d96d7bc9dae48242992ee76a89c849d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 0b4016d696231fd500f6b5e9b487fc4e0f984693
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86544128"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87425227"
 ---
 A teljes [olvasó](https://www.onenote.com/learningtools) egy olyan, integráltan kialakított eszköz, amely bevált technikákat valósít meg az olvasási szövegértés javítására.
 
 Ebben a rövid útmutatóban egy Android-alkalmazást hozhat létre a semmiből, és integrálhatja a magával ragadó olvasót. Ennek a rövid útmutatónak a teljes működő mintája elérhető [a githubon](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-kotlin).
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -610,6 +611,6 @@ A Android Studio használatával futtathatja az alkalmazást egy eszköz-emulát
 
 ![Modern olvasó](../../media/android/kotlin/android-studio-device-emulator.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Fedezze fel az [olvasói SDK](https://github.com/microsoft/immersive-reader-sdk) -t és a [magára ejtő olvasó SDK-referenciát](../../reference.md).

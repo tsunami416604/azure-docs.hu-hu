@@ -5,19 +5,15 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 5/25/2020
 ms.author: baanders
-ms.openlocfilehash: a456709fffd8b4bc0f1c7eb25281980daea2edb6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 29c386b7e12c24e712ee24e887b8e25609ffaeeb
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537419"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87124559"
 ---
 ### <a name="prepare-an-azure-digital-twins-instance"></a>Azure digitális Twins-példány előkészítése
 
-Az oktatóanyag elvégzéséhez szüksége lesz egy **Azure Digital Twins-példányra** a programhoz. 
+Az oktatóanyag elvégzéséhez szüksége lesz egy **Azure Digital Twins-példányra** a programhoz. Ha már rendelkezik egy Azure Digital Twins-példánnyal az előző munkahelyről, használhatja ezt a példányt, és ugorjon a következő szakaszra.
 
-Ha már rendelkezik egy Azure Digital Twins-példánnyal az előző munkahelyről, használhatja ezt a példányt, és ugorjon a következő szakaszra.
-
-Ellenkező esetben kövesse az alábbi lépéseket a példány beállításához:
-1. **Hozzon létre egy példányt** a útmutató [*: Azure Digital Twins-példány létrehozása*](../articles/digital-twins/how-to-set-up-instance.md)című témakör utasításai alapján. 
-2. **Állítson be egy Azure Active Directory alkalmazás-regisztrációt a példányhoz** az *alkalmazás-regisztráció létrehozása* című rész, [*útmutató: ügyfélalkalmazás hitelesítése*](../articles/digital-twins/how-to-authenticate-client.md#create-an-app-registration).
+Ha nem, **állítson be egy példányt és hitelesítést** a útmutatóban található útmutató [*: példány és hitelesítés beállítása*](../articles/digital-twins/how-to-set-up-instance-scripted.md)című témakörben leírtak alapján. Az utasítások azt is tartalmazzák, hogy az egyes lépéseket sikeresen elvégezte-e, és készen állnak az új példány használatára való áttérésre.

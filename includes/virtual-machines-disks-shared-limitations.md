@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/14/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: d2cf7dbcd97c8f740447607eaf443bc3ea4a6733
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f6175a797b14077cafacaca1f2fd48f36e945d9e
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86500596"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87425152"
 ---
 A megosztott lemezek engedélyezése csak a lemezek egy részhalmaza számára lehetséges. Jelenleg csak az ultra-lemezek és a prémium szintű SSD-k engedélyezhetik a megosztott lemezeket. Minden olyan felügyelt lemez, amelyen engedélyezve vannak a megosztott lemezek, a következő korlátozások vonatkoznak a lemez típusa szerint rendezve:
 
@@ -25,6 +25,8 @@ Az ultra-lemezek megosztásakor a következő korlátozások vonatkoznak rájuk:
 
 - Jelenleg csak Azure Resource Manager vagy SDK-támogatással rendelkezik. 
 - Csak alaplemezek használhatók a Windows Server feladatátvevő fürt egyes verzióiban, részletekért lásd: a [feladatátvételi fürtszolgáltatás hardverkövetelmények és tárolási lehetőségei](https://docs.microsoft.com/windows-server/failover-clustering/clustering-requirements).
+
+A megosztott Ultra-lemezek az összes olyan régióban elérhetők, amelyek alapértelmezés szerint támogatják az ultra-lemezeket, és nem igénylik a használatra való regisztrációt.
 
 ### <a name="premium-ssds"></a>Prémium SSD-k
 
@@ -38,4 +40,4 @@ Az ultra-lemezek megosztásakor a következő korlátozások vonatkoznak rájuk:
 - Csak alaplemezek használhatók a Windows Server feladatátvevő fürt egyes verzióiban, részletekért lásd: a [feladatátvételi fürtszolgáltatás hardverkövetelmények és tárolási lehetőségei](https://docs.microsoft.com/windows-server/failover-clustering/clustering-requirements).
 - Azure Backup és Azure Site Recovery támogatás még nem érhető el.
 
-Ha érdekli a megosztott lemezek kipróbálása, akkor [regisztráljon a hozzáférésre](https://aka.ms/AzureSharedDiskGASignUp).
+Ha érdeklik a közös prémium szintű SSD-k kipróbálása, [regisztráljon a hozzáférésre](https://aka.ms/AzureSharedDiskGASignUp).

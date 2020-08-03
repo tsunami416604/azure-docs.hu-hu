@@ -8,12 +8,13 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/12/2020
 ms.author: aahi
-ms.openlocfilehash: 858e6b9e0e40ab988a4cdf04b31580c1ca28d40a
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: devx-track-javascript
+ms.openlocfilehash: cc96233ea6e2d02f3c3a2036466e3934aa234f5b
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79503894"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407973"
 ---
 Ezzel a rövid útmutatóval megkezdheti a hírek keresését a JavaScripthez készült Bing News Search ügyféloldali kódtár használatával. Habár a Bing News Search REST API kompatibilis a legtöbb programozási nyelvvel, az ügyféloldali kódtár egyszerű módszert kínál a szolgáltatás integrálására az alkalmazásokba. A minta forráskódja a [githubon](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/newsSearch.js)található.
 
@@ -22,8 +23,8 @@ Ezzel a rövid útmutatóval megkezdheti a hírek keresését a JavaScripthez k�
 * [Node.js](https://nodejs.org/en/)
 
 Console-alkalmazás beállítása a Bing News Search ügyféloldali kódtár használatával:
-1. Futtatás `npm install ms-rest-azure` a fejlesztési környezetben.
-2. Futtatás `npm install azure-cognitiveservices-newssearch` a fejlesztési környezetben.
+1. Futtatás a `npm install ms-rest-azure` fejlesztési környezetben.
+2. Futtatás a `npm install azure-cognitiveservices-newssearch` fejlesztési környezetben.
 
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](~/includes/cognitive-services-bing-news-search-signup-requirements.md)]

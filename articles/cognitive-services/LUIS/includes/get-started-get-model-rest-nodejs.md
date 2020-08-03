@@ -1,5 +1,5 @@
 ---
-title: 'Modell lekérése REST-hívással C-ben #'
+title: Modell lekérése REST-hívással Node.js
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: diberry
@@ -8,12 +8,13 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 06/03/2020
 ms.author: diberry
-ms.openlocfilehash: a1a72d9be339ed1ee0a1c525ee426047b1768f2f
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
+ms.custom: devx-track-javascript
+ms.openlocfilehash: d2dd43366068c8b0d5f280a4c5c22ac774824f59
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84416388"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407258"
 ---
 [Dokumentáció](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5890b47c39e2bb052c5b9c45)  |  [Minta](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/LUIS/node-model-with-rest/model.js)
 
@@ -26,9 +27,9 @@ ms.locfileid: "84416388"
 
 [!INCLUDE [Quickstart explanation of example utterance JSON file](get-started-get-model-json-example-utterances.md)]
 
-## <a name="create-the-nodejs-project"></a>A Node. js-projekt létrehozása
+## <a name="create-the-nodejs-project"></a>A Node.js projekt létrehozása
 
-1. Hozzon létre egy új mappát a Node. js-projekt tárolásához, például: `node-model-with-rest` .
+1. Hozzon létre egy új mappát a Node.js-projekt tárolásához, például: `node-model-with-rest` .
 
 1. Nyisson meg egy új parancssort, navigáljon a létrehozott mappához, és hajtsa végre a következő parancsot:
 
@@ -54,7 +55,7 @@ ms.locfileid: "84416388"
 
 1. Cserélje le az értékeket a `YOUR-` saját értékeivel kezdődő értékekre.
 
-    |Információ|Szerep|
+    |Információ|Cél|
     |--|--|
     |`YOUR-APP-ID`| A LUIS-alkalmazás azonosítója. |
     |`YOUR-AUTHORING-KEY`|Az 32 karakteres szerzői kulcs.|
@@ -158,7 +159,7 @@ ms.locfileid: "84416388"
 
 Ha elkészült a rövid útmutatóval, törölje a Project mappát a fájlrendszerből.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Ajánlott eljárások az alkalmazásokhoz](../luis-concept-best-practices.md)

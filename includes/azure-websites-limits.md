@@ -4,14 +4,14 @@ ms.service: app-service
 ms.topic: include
 ms.date: 03/04/2020
 ms.author: jroth
-ms.openlocfilehash: 469138da19248bc7872028508f3080de5fae4a52
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1811590dcf9077a503f89a900f661c52aa442c96
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85838696"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87425115"
 ---
-| Erőforrás | Ingyenes | Megosztott | Alapszintű | Standard | Prémium (v2) | Elkülönített </th> |
+| Erőforrás | Ingyenes | Megosztott | Alapszintű | Standard | Prémium (v2) | Izolált </th> |
 | --- | --- | --- | --- | --- | --- | --- |
 | [Web-, mobil-vagy API-alkalmazások](https://azure.microsoft.com/services/app-service/) [Azure app Service](../articles/app-service/overview-hosting-plans.md)<sup>1</sup> . csomag |10 |100 |Korlátlan<sup>2</sup> |Korlátlan<sup>2</sup> |Korlátlan<sup>2</sup> |Korlátlan<sup>2</sup>|
 | [App Service terv](../articles/app-service/overview-hosting-plans.md) |10 régiónként |10/erőforráscsoport |100/erőforráscsoport |100/erőforráscsoport |100/erőforráscsoport |100/erőforráscsoport|
@@ -28,8 +28,9 @@ ms.locfileid: "85838696"
 | Egyidejű [hibakereső kapcsolatok](../articles/app-service/troubleshoot-dotnet-visual-studio.md) alkalmazása |1 |1 |1 |5 |5 |5 |
 | Tanúsítványok App Service<sup>9</sup> /előfizetés| Nem támogatott | Nem támogatott |10 |10 |10 |10 |
 | Egyéni tartományok/alkalmazás</a> |0 (csak azurewebsites.net altartomány)|500 |500 |500 |500 |500 |
-| Egyéni tartomány [SSL-támogatása](../articles/app-service/configure-ssl-certificate.md) |Nem támogatott, a (*. azurewebsites.net) helyettesítő tanúsítványa alapértelmezés szerint elérhető|Nem támogatott, a (*. azurewebsites.net) helyettesítő tanúsítványa alapértelmezés szerint elérhető|Korlátlan SNI SSL kapcsolatok |Korlátlan számú SNI SSL és 1 IP SSL kapcsolat található |Korlátlan számú SNI SSL és 1 IP SSL kapcsolat található | Korlátlan számú SNI SSL és 1 IP SSL kapcsolat található|
-| Hibrid kapcsolatok/csomag | | | 5 | 25 | 200 | 200 |
+| Egyéni tartomány [SSL-támogatása](../articles/app-service/configure-ssl-certificate.md) |Nem támogatott, a. azurewebsites.net helyettesítő tanúsítványa \* alapértelmezés szerint elérhető.|Nem támogatott, a. azurewebsites.net helyettesítő tanúsítványa \* alapértelmezés szerint elérhető.|Korlátlan SNI SSL kapcsolatok |Korlátlan számú SNI SSL és 1 IP SSL kapcsolat található |Korlátlan számú SNI SSL és 1 IP SSL kapcsolat található | Korlátlan számú SNI SSL és 1 IP SSL kapcsolat található|
+| Hibrid kapcsolatok | | | 5/csomag | 25/csomag | 200/alkalmazás | 200/alkalmazás |
+| [Virtuális hálózat integrációja](../articles/app-service/web-sites-integrate-with-vnet.md) | | |   |  X |  X  |  X  |
 | Integrált Load Balancer | |X |X |X |X |X<sup>10</sup> |
 | [Always on](../articles/app-service/configure-common.md) | | |X |X |X |X |
 | [Ütemezett biztonsági mentések](../articles/app-service/manage-backup.md) | | | | Ütemezett biztonsági mentések 2 óránként, legfeljebb 12 biztonsági mentés naponta (manuális + ütemezett) | Ütemezett biztonsági mentések óránként, legfeljebb 50 biztonsági mentéssel (manuális + ütemezett) | Ütemezett biztonsági mentések óránként, legfeljebb 50 biztonsági mentéssel (manuális + ütemezett) |
@@ -37,7 +38,12 @@ ms.locfileid: "85838696"
 | [Webjobs](../articles/app-service/webjobs-create.md)<sup>11</sup> |X |X |X |X |X |X |
 | [Végpont-monitorozás](../articles/app-service/web-sites-monitor.md) | | |X |X |X |X |
 | [Átmeneti tárolóhelyek](../articles/app-service/deploy-staging-slots.md) /alkalmazás| | | |5 |20 |20 |
-| SLA | |  |99.95%|99.95%|99.95%|99.95%|  
+| [Tesztelés éles környezetben](../articles/app-service/deploy-staging-slots.md#route-traffic)| | | |X |X |X |
+| [Diagnosztikai naplók](../articles/app-service/troubleshoot-diagnostic-logs.md) | X | X | X | X | X | X |
+| Kudu | X | X | X | X | X | X |
+| [Hitelesítés és engedélyezés](../articles/app-service/overview-authentication-authorization.md) | X | X | X | X | X | X |
+| [App Service felügyelt tanúsítványok (nyilvános előzetes verzió)](https://azure.microsoft.com/updates/secure-your-custom-domains-at-no-cost-with-app-service-managed-certificates-preview/)<sup>12</sup> | |  | X | X | X | X |
+| SLA | |  |99,95%|99,95%|99,95%|99,95%|  
 
 <sup>1</sup> Az alkalmazások és a tárolási kvóták App Service csomaggal rendelkeznek, hacsak másként nincs jelezve.  
 <sup>2</sup> Az ezeken a gépeken üzemeltethető alkalmazások tényleges száma az alkalmazások tevékenységéből, a gépi példányok méretétől és a megfelelő erőforrás-felhasználástól függ.  
@@ -49,4 +55,6 @@ ms.locfileid: "85838696"
 <sup>8</sup> A maximális IP-kapcsolatok a példányok száma, és a példány méretétől függ: 1 920/B1/S1/P1V2 példány, 3 968/B2/S2/P2V2-példány, 8 064/B3/S3/P3V2 példány.  
 <sup>9</sup> Az előfizetések App Service-tanúsítvány kvóta-korlátja egy támogatási kérelem alapján növelhető, amely legfeljebb 200 lehet.  
 <sup>10</sup> A izolált App Service SKU-k belsőleg terheléselosztást (ILB) is használhatnak a Azure Load Balancer, így nincs nyilvános kapcsolat az internetről. Ennek eredményeképpen a ILB elkülönített App Service egyes funkcióit olyan gépekről kell használni, amelyek közvetlen hozzáféréssel rendelkeznek a ILB hálózati végponthoz.  
-<sup>11</sup> Az egyéni végrehajtható fájlokat és/vagy parancsfájlokat igény szerint, ütemezés szerint, vagy a App Service-példányon belüli háttérbeli feladatként futtathatja. A folyamatos webjobs-végrehajtáshoz mindig be kell jelentkezni. Nincs előre meghatározott korlát a App Service-példányban futtatható webjobs-feladatok számánál. Az alkalmazás kódjának működéséhez szükséges gyakorlati korlátozások is megváltoznak.  
+<sup>11</sup> Az egyéni végrehajtható fájlokat és/vagy parancsfájlokat igény szerint, ütemezés szerint, vagy a App Service-példányon belüli háttérbeli feladatként futtathatja. A folyamatos webjobs-végrehajtáshoz mindig be kell jelentkezni. Nincs előre meghatározott korlát a App Service-példányban futtatható webjobs-feladatok számánál. Az alkalmazás kódjának működéséhez szükséges gyakorlati korlátozások is megváltoznak.
+
+<sup>12</sup> A meztelen tartományok nem támogatottak. Csak a standard tanúsítványok kiállítása (helyettesítő tanúsítványok nem érhetők el). Csak egy ingyenes tanúsítványra korlátozódik egyéni tartományon.

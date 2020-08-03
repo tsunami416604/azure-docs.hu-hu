@@ -8,13 +8,14 @@ ms.topic: include
 ms.date: 07/22/2020
 ms.author: baanders
 ms.custom: include file
-ms.openlocfilehash: aa0c7181866eb134ee803e1880cc6c2731042fac
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8565f26e96cc848a8e40ee448bd8a8811c6d6fc5
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87096893"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407533"
 ---
 > [!div class="op_single_selector"]
 > * [Parancsfájlalapú](../articles/digital-twins/how-to-set-up-instance-scripted.md)
-> * [Kézi](../articles/digital-twins/how-to-set-up-instance-manual.md)
+> * [Parancssori felület](../articles/digital-twins/how-to-set-up-instance-cli.md)
+> * [Portál](../articles/digital-twins/how-to-set-up-instance-portal.md)

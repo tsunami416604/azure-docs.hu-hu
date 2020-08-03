@@ -3,12 +3,13 @@ author: areddish
 ms.author: areddish
 ms.service: cognitive-services
 ms.date: 04/14/2020
-ms.openlocfilehash: a96e78ed15eaa4d97cafb7ffc9d5d6979ab869b5
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.custom: devx-track-javascript
+ms.openlocfilehash: f1a89b311a524e6ef0d8e1fc8145f7e13d10bb6b
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965919"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406035"
 ---
 Ez a cikk bemutatja, hogyan kezdheti el az első lépéseket a Custom Vision SDK és a Node.js használatával a rendszerkép-besorolási modell létrehozásához. A létrehozást követően címkéket adhat hozzá, képeket tölthet fel, betaníthatja a projektet, beolvashatja a projekt közzétett előrejelzési végpontjának URL-címét, és a végpont használatával programozott módon tesztelheti a lemezképeket. Ez a példa sablonként használható a saját Node.js alkalmazás létrehozásához. Ha az osztályozási modell létrehozásának és használatának folyamatán kód használata _nélkül_ szeretne végighaladni, tekintse meg a [böngészőalapú módszer útmutatóját](../../getting-started-build-a-classifier.md).
 
@@ -140,7 +141,7 @@ A képek előrejelzési végpontra való küldéséhez és az előrejelzés lek�
 })()
 ```
 
-## <a name="run-the-application"></a>Alkalmazás futtatása
+## <a name="run-the-application"></a>Az alkalmazás futtatása
 
 *sample.js*futtatása.
 

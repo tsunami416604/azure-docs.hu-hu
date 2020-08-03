@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: data-factory
 author: linda33wj
 ms.service: data-factory
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/08/2020
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: 995339f91be37b71d73b409f3eaeafb3dd1777ab
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bfb42e0ba81eef145932db072c8a80a2f8e00932
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84754663"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87425182"
 ---
 Azure Data Factory egy több-bérlős szolgáltatás, amely a következő alapértelmezett korlátokkal rendelkezik, hogy az ügyfél-előfizetések védve legyenek egymás munkaterhelésével szemben. Ha a korlátot az előfizetése maximumán szeretné növelni, forduljon az ügyfélszolgálathoz.
 
@@ -22,7 +22,7 @@ Azure Data Factory egy több-bérlős szolgáltatás, amely a következő alapé
 | Erőforrás | Alapértelmezett korlát | Felső korlát |
 | -------- | ------------- | ------------- |
 | Azure-előfizetéshez tartozó adatfeldolgozók | 800 | [Forduljon az ügyfélszolgálathoz](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
-| Egy adat-előállítón belüli entitások (például folyamatok, adathalmazok, eseményindítók, társított szolgáltatások és integrációs modulok) teljes száma | 5000 | [Forduljon az ügyfélszolgálathoz](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
+| Egy adat-előállítón belüli entitások (például folyamatok, adathalmazok, eseményindítók, társított szolgáltatások, magánhálózati végpontok és integrációs modulok) teljes száma | 5000 | [Forduljon az ügyfélszolgálathoz](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Azure-SSIS integrációs modulokhoz tartozó összes CPU-mag egy előfizetésben | 256 | [Forduljon az ügyfélszolgálathoz](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | A gyárban található összes folyamat között megosztott, egyidejű adatfeldolgozási folyamat | 10,000  | [Forduljon az ügyfélszolgálathoz](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Egyidejű külső tevékenység-előfizetések száma [Azure Integration Runtime régiónként](../articles/data-factory/concepts-integration-runtime.md#integration-runtime-location)<br><small>A külső tevékenységek kezelése az integrációs modulon történik, de a társított szolgáltatásokon, például a Databricks, a tárolt eljáráson, a Hdinsight, a weben és másokon végezhető el.</small> | 3000 | [Forduljon az ügyfélszolgálathoz](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |

@@ -9,18 +9,19 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/20/2020
 ms.author: pasta
-ms.openlocfilehash: a5bd7b3e6262fa21865f04a6b65d1a75faafefa4
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 68009797e48ab15c1c8df983b3413d7b7dac54b0
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86038359"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87425219"
 ---
 A teljes [olvasó](https://www.onenote.com/learningtools) egy olyan, integráltan kialakított eszköz, amely bevált technikákat valósít meg az olvasási szövegértés javítására.
 
 Ebben a rövid útmutatóban létrehozhat egy webalkalmazást a semmiből, és integrálhatja a magával ragadó olvasót az olvasói ügyféloldali kódtár használatával. Ebben a [rövid útmutatóban](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-csharp)egy teljes körű működő minta érhető el.
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -289,7 +290,7 @@ A _Views\Home\Index.cshtml_alján adja hozzá a következő kódot:
 }
 ```
 
-## <a name="build-and-run-the-app"></a>Az alkalmazás létrehozása és futtatása
+## <a name="build-and-run-the-app"></a>Készítsen buildet és futtassa az alkalmazást
 
 A menüsávban válassza a **hibakeresés > a hibakeresés elindítása**lehetőséget, vagy nyomja le az **F5** billentyűt az alkalmazás elindításához.
 

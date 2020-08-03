@@ -8,14 +8,15 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: 0380dc8d2ff34cf9eecaad063a305491a357ca29
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 0a505e5fb11e776a90c8e198b2568e2ac0bd1854
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78924864"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406374"
 ---
-Az Bing Web Search ügyféloldali kódtár megkönnyíti a Bing Web Search integrálását a Node. js-alkalmazásba. Ebben a rövid útmutatóban elsajátíthatja az ügyfél-példányosítás, a kérésküldés és a válaszmegjelenítés módját.
+Az Bing Web Search ügyféloldali kódtár megkönnyíti a Bing Web Search integrálását a Node.js alkalmazásba. Ebben a rövid útmutatóban elsajátíthatja az ügyfél-példányosítás, a kérésküldés és a válaszmegjelenítés módját.
 
 Szeretné most rögtön megtekinteni a kódot? A [javascripthez készült Bing Search ügyféloldali kódtárak](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/tree/master/Samples) mintái a githubon érhetők el.
 
@@ -104,6 +105,6 @@ Ha végzett ezzel a projekttel, ne felejtse el eltávolítani az előfizetői az
 > [!div class="nextstepaction"]
 > [Cognitive Services Node.js SDK-minták](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 * [Azure Node SDK-referencia](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-websearch/)

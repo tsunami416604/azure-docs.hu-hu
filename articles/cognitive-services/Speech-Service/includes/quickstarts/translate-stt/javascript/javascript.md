@@ -4,12 +4,13 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/03/2020
 ms.author: trbye
-ms.openlocfilehash: b6829f52cb8aaac6f243d3a4a1fa7f6bc1b150d7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-javascript
+ms.openlocfilehash: a0eb507237044a1a28b75532ff1f782c1ad88dbb
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86544728"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407718"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -73,6 +74,6 @@ Az alkalmazás elindításához kattintson duplán az index.html fájlra, vagy n
 
 Az alkalmazás elindításához nyissa meg a kedvenc webböngészőjét, és mutasson arra a nyilvános URL-címre, amelyen a mappát üzemelteti, adja meg a [régióját](../../../../regions.md), és aktiválja a szövegbeviteli beszéd szövegének átírását. Ha konfigurálva van, az beszerez egy jogkivonatot a jogkivonatforrásból.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [!INCLUDE [footer](./footer.md)]

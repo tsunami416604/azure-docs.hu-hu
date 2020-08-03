@@ -49,7 +49,7 @@ Kövesse az alábbi lépéseket az Azure-adatbázis PostgreSQL-kiszolgálóhoz l
    > Azure PostgreSQL-kiszolgáló az 5432-es porton keresztül kommunikál. Ha vállalati hálózaton belülről próbál csatlakozni, elképzelhető, hogy a hálózati tűzfal nem engedélyezi a kimenő forgalmat az 5432-es porton keresztül. Ha igen, nem tud csatlakozni a nagy kapacitású-fürthöz (Citus), kivéve, ha az informatikai részleg megnyitja a 5432-es portot.
    >
 
-9. Kattintson a **felülvizsgálat + létrehozás** , majd a **Létrehozás** elemre a kiszolgáló kiépítéséhez. Az üzembe helyezés eltarthat néhány percig.
+9. Kattintson a **felülvizsgálat + létrehozás** , majd a **Létrehozás** elemre a kiszolgáló kiépítéséhez. A kiépítés eltarthat néhány percig.
 10. A rendszer átirányítja a lapot az üzemelő példány figyelésére. Ha a telepítés állapotának változása **folyamatban van** az üzemelő **példányról, kattintson**a lap bal oldalán található **outputs (kimenet** ) elemre.
 11. A outputs (kimenetek) lapon egy, a mellette található gomb is szerepel, amely az értéket a vágólapra másolja. Jegyezze fel ezt az információt későbbi használatra.
 
@@ -63,7 +63,7 @@ A Azure Database for PostgreSQL-kiszolgáló létrehozásakor létrejön egy **c
    psql "host=hostname.postgres.database.azure.com port=5432 dbname=citus user=citus password={your_password} sslmode=require"
    ```
 
-   Másolja a karakterláncot. A korábban kiválasztott rendszergazdai jelszóval kell lecserélnie a (z) {Your\_Password} kifejezést. A rendszer nem tárolja az egyszerű szöveges jelszót, ezért nem jelenítheti meg a kapcsolatok karakterláncában.
+   Másolja a karakterláncot. A korábban kiválasztott rendszergazdai jelszóval kell lecserélnie a (z) {Your \_ Password} kifejezést. A rendszer nem tárolja az egyszerű szöveges jelszót, ezért nem jelenítheti meg a kapcsolatok karakterláncában.
 
 2. Nyisson meg egy terminál-ablakot a helyi számítógépen.
 
