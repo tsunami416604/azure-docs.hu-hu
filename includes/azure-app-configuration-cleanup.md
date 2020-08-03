@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: azure-app-configuration
 author: lisaguthrie
 ms.service: azure-app-configuration

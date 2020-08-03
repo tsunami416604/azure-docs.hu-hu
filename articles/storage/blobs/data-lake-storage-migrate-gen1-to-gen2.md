@@ -8,12 +8,12 @@ ms.date: 03/11/2020
 ms.service: storage
 ms.reviewer: rukmani-msft
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 6c50ceae36c784b8b869977f14351ab5858fc7c0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2cfe5f763b3dedd68c5180f5a0a3c7a3f4ea3e93
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84466017"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496423"
 ---
 # <a name="migrate-azure-data-lake-storage-from-gen1-to-gen2"></a>Azure Data Lake Storage migrálása a Gen1-ből a Gen2-be
 
@@ -81,7 +81,7 @@ Adatok, munkaterhelések és alkalmazások migrálása a kívánt mintázat hasz
    
 6. Keressen olyan URI-referenciákat, amelyek tartalmazzák a karakterláncot a `adl://` Databricks, vagy a Apache HIVE HQL-fájlokat, illetve a számítási feladatok részeként használt bármely más fájlt. Cserélje le ezeket a hivatkozásokat az új [Gen2 formázott URI azonosítóra](data-lake-storage-introduction-abfs-uri.md) . Például: a Gen1 URI: `adl://mydatalakestore.azuredatalakestore.net/mydirectory/myfile` lehet `abfss://myfilesystem@mydatalakestore.dfs.core.windows.net/mydirectory/myfile` . 
 
-7. Konfigurálja a fiókja biztonságát úgy, hogy [szerepköralapú hozzáférés-vezérlési (RBAC) szerepköröket](../common/storage-auth-aad-rbac-portal.md), [fájl-és mappa szintű biztonságot](data-lake-storage-access-control.md), valamint [Azure Storage-tűzfalakat és virtuális hálózatokat](../common/storage-network-security.md)tartalmazzon.
+7. Konfigurálja a fiókja biztonságát úgy, hogy az tartalmazza az [Azure-szerepköröket](../common/storage-auth-aad-rbac-portal.md), a [fájl-és a mappa szintű biztonságot](data-lake-storage-access-control.md), valamint az [Azure Storage-tűzfalakat és a virtuális hálózatokat](../common/storage-network-security.md).
 
 ### <a name="step-4-cutover-from-gen1-to-gen2"></a>4. lépés: a Gen1 és a Gen2 közötti átváltás
 
@@ -207,4 +207,3 @@ Ez a legegyszerűbb minta.
 - Ismerje meg a Storage-fiók biztonsági beállításainak különböző részeit. Lásd: az [Azure Storage biztonsági útmutatója](../common/storage-security-guide.md).
 - Optimalizálja a Data Lake Store teljesítményét. Lásd: [Azure Data Lake Storage Gen2 optimalizálása a teljesítményhez](data-lake-storage-performance-tuning-guidance.md)
 - Tekintse át a Data Lake Store kezelésével kapcsolatos ajánlott eljárásokat. Lásd: [ajánlott eljárások Azure Data Lake Storage Gen2 használatához](data-lake-storage-best-practices.md)
-

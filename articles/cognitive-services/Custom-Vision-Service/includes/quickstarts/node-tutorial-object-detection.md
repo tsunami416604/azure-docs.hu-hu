@@ -3,18 +3,19 @@ author: areddish
 ms.author: areddish
 ms.service: cognitive-services
 ms.date: 04/14/2020
-ms.openlocfilehash: cc4cd4b099a37ef103e2da79b8c15269008e7423
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 0cb31f5470519e33b76c6cad83d7b47972f21381
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83837871"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407309"
 ---
-Ez a cikk bemutatja, hogyan kezdheti el az első lépéseket a Node. js-hez készült Custom Vision SDK-val egy objektum-észlelési modell létrehozásához. A létrehozást követően címkézett régiókat adhat hozzá, képeket tölthet fel, betaníthatja a projektet, beolvashatja a projekt közzétett előrejelzési végpontjának URL-címét, és a végpont használatával programozott módon tesztelheti a lemezképeket. Ez a példa sablonként használható a saját Node. js-alkalmazás létrehozásához.
+Ebből a cikkből megtudhatja, hogyan kezdheti el az Custom Vision SDK-t a Node.js használatával egy objektum-észlelési modell létrehozásához. A létrehozást követően címkézett régiókat adhat hozzá, képeket tölthet fel, betaníthatja a projektet, beolvashatja a projekt közzétett előrejelzési végpontjának URL-címét, és a végpont használatával programozott módon tesztelheti a lemezképeket. Ez a példa sablonként használható a saját Node.js alkalmazás létrehozásához.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- A [Node. js 8](https://www.nodejs.org/en/download/) vagy újabb verziója telepítve van.
+- [Node.js 8](https://www.nodejs.org/en/download/) vagy újabb verzió van telepítve.
 - a [NPM](https://www.npmjs.com/) telepítve van.
 - [!INCLUDE [create-resources](../../includes/create-resources.md)]
 
@@ -25,7 +26,7 @@ Ez a cikk bemutatja, hogyan kezdheti el az első lépéseket a Node. js-hez kés
 
 ## <a name="install-the-custom-vision-sdk"></a>A Custom Vision SDK telepítése
 
-A (z) Node. js-hez készült Custom Vision Service SDK-k a projektben való telepítéséhez futtassa a következő parancsokat:
+Ha az Custom Vision Service SDK-kat szeretné telepíteni a projekt Node.jsához, futtassa a következő parancsokat:
 
 ```shell
 npm install @azure/cognitiveservices-customvision-training
@@ -34,7 +35,7 @@ npm install @azure/cognitiveservices-customvision-prediction
 
 ## <a name="add-the-code"></a>A kód hozzáadása
 
-Hozzon létre egy *sample. js* nevű új fájlt a kívánt Project-címtárban.
+Hozzon létre egy *sample.js* nevű új fájlt a kívánt Project-címtárban.
 
 ### <a name="create-the-custom-vision-service-project"></a>A Custom Vision Service-projekt létrehozása
 
@@ -79,7 +80,7 @@ async function asyncForEach (array, callback) {
 
 ### <a name="create-tags-in-the-project"></a>Címkék létrehozása a projektben
 
-Ha besorolási címkéket szeretne létrehozni a projekthez, adja hozzá a következő kódot a *sample. js*végéhez:
+Ha besorolási címkéket szeretne létrehozni a projekthez, adja hozzá a következő kódot a *sample.js*végéhez:
 
 ```javascript
     const forkTag = await trainer.createTag(sampleProject.id, "Fork");
@@ -214,9 +215,9 @@ A képek előrejelzési végpontra való küldéséhez és az előrejelzés lek�
 })()
 ```
 
-## <a name="run-the-application"></a>Alkalmazás futtatása
+## <a name="run-the-application"></a>Az alkalmazás futtatása
 
-Futtassa a *sample. js fájlt*.
+*sample.js*futtatása.
 
 ```shell
 node sample.js

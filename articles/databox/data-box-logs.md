@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 07/10/2020
 ms.author: alkohli
-ms.openlocfilehash: b65d9579686cdf53f1cac35ba47bc5850b45c8e2
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 50dbbe3a6a1af1e73cdf1ee7f5bd3a63cf2f6a50
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86204295"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498803"
 ---
 # <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy-import-order"></a>A Azure Data Box nyomon követése és eseménynaplózása, valamint Azure Data Box Heavy importálási sorrend
 
@@ -35,7 +35,7 @@ Ez a cikk részletesen ismerteti a Data Box vagy Data Box Heavy importálási so
 
 ## <a name="set-up-access-control-on-the-order"></a>Hozzáférés-vezérlés beállítása a rendeléshez
 
-Megadhatja, hogy ki férhet hozzá a rendeléshez a rendelés első létrehozásakor. Szerepköralapú Access Control-(RBAC-) szerepkörök beállítása különböző hatókörökön a Data Box-rendeléshez való hozzáférés szabályozása érdekében. Egy RBAC-szerepkör határozza meg a hozzáférés típusát – írható és olvasható, írásvédett, írás és olvasás a műveletek egy részhalmazára.
+Megadhatja, hogy ki férhet hozzá a rendeléshez a rendelés első létrehozásakor. Állítsa be az Azure-szerepköröket különböző hatókörökön a Data Boxi sorrend elérésének szabályozásához. Az Azure-szerepkörök határozzák meg a hozzáférés típusát – írható és olvasható, írásvédett, írás és olvasás a műveletek egy részhalmazára.
 
 A Azure Data Box szolgáltatáshoz definiálható két szerepkör a következő:
 
@@ -295,7 +295,7 @@ A a `copylog` régi és az új blob vagy fájl nevét és elérési útját adja
 
 Miután az adatok törlődnek a Data Box lemezekről a NIST SP 800-88 1. verziójának útmutatása szerint, a felügyeleti naplók lánca elérhető. Ezek a naplók tartalmazzák a naplókat és a megrendelési előzményeket. A rendszer a naplókat is másolja az AJ-vagy manifest-fájlokba.
 
-### <a name="audit-logs"></a>Auditnaplók
+### <a name="audit-logs"></a>Naplók
 
 A naplók az Azure-adatközponton kívüli Data Box vagy Data Box Heavy megosztásának bekapcsolásával és elérésével kapcsolatos információkat tartalmaznak. Ezek a naplók a következő helyeken találhatók:`storage-account/azuredatabox-chainofcustodylogs`
 

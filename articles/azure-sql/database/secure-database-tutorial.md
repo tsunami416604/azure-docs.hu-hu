@@ -10,12 +10,12 @@ ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 09/03/2019
 ms.custom: seoapril2019 sqldbrb=1
-ms.openlocfilehash: 73ffe7fe6336d9547ebbbf4c894bd1b9398e0900
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 12c3a35e12e3f432345ea788893d0d0ae6e6433f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092932"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496916"
 ---
 # <a name="tutorial-secure-a-database-in-azure-sql-database"></a>Oktatóanyag: adatbázis biztonságossá tétele Azure SQL Databaseban
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -82,7 +82,7 @@ Kiszolgáló szintű tűzfalszabály beállítása:
 
 1. Az **Áttekintés** lapon válassza a **kiszolgáló tűzfalának beállítása**lehetőséget. Ekkor megnyílik a kiszolgáló **tűzfalbeállítások** lapja.
 
-   1. Válassza az **ügyfél IP-** címének hozzáadása lehetőséget az eszköztáron az aktuális IP-cím új tűzfalszabályként való hozzáadásához. A szabály az 1433-as portot egyetlen IP-cím vagy IP-címtartomány számára nyithatja meg. Válassza a **Mentés** lehetőséget.
+   1. Válassza az **ügyfél IP-** címének hozzáadása lehetőséget az eszköztáron az aktuális IP-cím új tűzfalszabályként való hozzáadásához. A szabály az 1433-as portot egyetlen IP-cím vagy IP-címtartomány számára nyithatja meg. Kattintson a **Mentés** gombra.
 
       ![kiszolgálótűzfal-szabály beállítása](./media/secure-database-tutorial/server-firewall-rule2.png)
 
@@ -190,7 +190,7 @@ SQL-hitelesítéssel rendelkező felhasználó hozzáadása:
 Azure Active Directory hitelesítéshez az adatbázis-felhasználók létrehozása szükséges. Egy tárolt adatbázis-felhasználó egy, az adatbázishoz társított Azure AD-címtárban található identitáshoz van társítva, és nincs bejelentkezés a *Master* adatbázisban. Az Azure AD-identitás lehet egyéni felhasználó vagy csoport is. További információ: a [tárolt adatbázis-felhasználók, az adatbázis hordozható,](/sql/relational-databases/security/contained-database-users-making-your-database-portable) valamint az Azure ad-vel történő hitelesítéssel kapcsolatos [Azure ad-oktatóanyag](authentication-aad-configure.md) áttekintése.
 
 > [!NOTE]
-> Az adatbázis-felhasználók (a rendszergazdák kivételével) nem hozhatók létre a Azure Portal használatával. Az Azure RBAC-szerepkörök nem terjednek ki az SQL-kiszolgálókra,-adatbázisokra vagy-adattárházra. Ezeket csak az Azure-erőforrások kezelésére használják, és nem vonatkoznak az adatbázis engedélyeire.
+> Az adatbázis-felhasználók (a rendszergazdák kivételével) nem hozhatók létre a Azure Portal használatával. Az Azure-szerepkörök nem terjednek ki az SQL-kiszolgálókra,-adatbázisokra vagy-adatraktárokra. Ezeket csak az Azure-erőforrások kezelésére használják, és nem vonatkoznak az adatbázis engedélyeire.
 >
 > A *SQL Server közreműködő* szerepkör például nem biztosít hozzáférést az adatbázishoz vagy az adattárházhoz való kapcsolódáshoz. Ezt az engedélyt T-SQL-utasítások használatával kell megadni az adatbázisban.
 
@@ -292,7 +292,7 @@ A naplózás engedélyezése:
 
        - **Event hub**, amely lehetővé teszi, hogy az események más alkalmazásokban való használatra legyenek átirányítva
 
-   1. Válassza a **Mentés** lehetőséget.
+   1. Kattintson a **Mentés** gombra.
 
       ![Naplózási beállítások](./media/secure-database-tutorial/audit-settings.png)
 
@@ -317,7 +317,7 @@ Az adatmaszkolás engedélyezése:
 
     ![Maszk beállításai](./media/secure-database-tutorial/mask-settings.png)
 
-1. Válassza a **Mentés** lehetőséget. A kiválasztott információk mostantól az adatvédelem során maszkoltak.
+1. Kattintson a **Mentés** gombra. A kiválasztott információk mostantól az adatvédelem során maszkoltak.
 
     ![Példa maszkra](./media/secure-database-tutorial/mask-query.png)
 
@@ -331,7 +331,7 @@ A titkosítás engedélyezése vagy ellenőrzése:
 
 1. A **Biztonság** szakaszban válassza az **transzparens adattitkosítás**lehetőséget.
 
-1. Ha szükséges, állítsa be az **adattitkosítást** **a**következőre:. Válassza a **Mentés** lehetőséget.
+1. Ha szükséges, állítsa be az **adattitkosítást** **a**következőre:. Kattintson a **Mentés** gombra.
 
     ![Transzparens adattitkosítás](./media/secure-database-tutorial/encryption-settings.png)
 

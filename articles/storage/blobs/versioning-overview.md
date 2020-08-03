@@ -9,12 +9,13 @@ ms.topic: conceptual
 ms.date: 05/05/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: fd620e253e661f986f67a440272937026cb4ff7f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 2085f0e8a148e27914b517f25e48894009592dd2
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86528400"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498599"
 ---
 # <a name="blob-versioning-preview"></a>BLOB verziószámozása (előzetes verzió)
 
@@ -196,7 +197,7 @@ A következő táblázat a blob-verziók törléséhez szükséges engedélyeket
 A blob verziószámozása a következő régiókban érhető el előzetes verzióban:
 
 - USA 2. keleti régiója
-- Central US
+- USA középső régiója
 - Észak-Európa
 - West Europe
 - Közép-Franciaország
@@ -317,7 +318,7 @@ A 4. forgatókönyvben az alap blob teljesen frissítve lett, és az eredeti blo
 
 ![Azure Storage-erőforrások](./media/versioning-overview/versions-billing-scenario-4.png)
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 - [Blob verziószámozásának engedélyezése](versioning-enable.md)
 - [BLOB pillanatképének létrehozása](/rest/api/storageservices/creating-a-snapshot-of-a-blob)

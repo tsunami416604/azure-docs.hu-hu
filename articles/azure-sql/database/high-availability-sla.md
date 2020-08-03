@@ -12,12 +12,12 @@ author: sashan
 ms.author: sashan
 ms.reviewer: carlrab, sashan
 ms.date: 04/02/2020
-ms.openlocfilehash: cc0c4b6bc7dd340f17ac500c5d319a83370a2f2b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d3abd6411197c9e7994e9ae642b07e72a0a24735
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87033038"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496287"
 ---
 # <a name="high-availability-for-azure-sql-database-and-sql-managed-instance"></a>Magas rendelkezésre állás Azure SQL Database és SQL felügyelt példányhoz
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -95,14 +95,21 @@ A [gyorsított adatbázis-helyreállítás (ADR)](../accelerated-database-recove
 
 ## <a name="testing-application-fault-resiliency"></a>Az alkalmazás hibatűrési rugalmasságának tesztelése
 
-A magas rendelkezésre állás a SQL Database és az SQL felügyelt példány platformjának alapvető része, amely transzparens módon működik az adatbázis-alkalmazás számára. Azonban Felismertük, hogy tesztelni szeretné, hogy a tervezett vagy nem tervezett események során kezdeményezett automatikus feladatátvételi műveletek hatással lennének-e az alkalmazásra, mielőtt üzembe helyezné az éles környezetben. Meghívhat egy speciális API-t egy adatbázis vagy egy rugalmas készlet újraindításához, amely a feladatátvételt is elindítja. Egy zóna redundáns adatbázis vagy rugalmas készlet esetén az API-hívás eredményeképpen az ügyfélkapcsolatok átirányítása egy olyan rendelkezésre állási zónában lévő új elsődlegesre, amely eltér a régi elsődleges hely rendelkezésre állási zónájától. Így azt is megvizsgálhatja, hogy a feladatátvétel hogyan befolyásolja a meglévő adatbázis-munkameneteket, azt is ellenőrizheti, hogy a hálózati késés változása miatt a végpontok közötti teljesítményt módosítja-e. Mivel az újraindítási művelet zavaró, és nagy számú közülük a platformot, az egyes adatbázisok vagy rugalmas készletek esetében 30 percenként csak egy feladatátvételi hívás engedélyezett.
+A magas rendelkezésre állás a SQL Database és az SQL felügyelt példány platformjának alapvető része, amely transzparens módon működik az adatbázis-alkalmazás számára. Azonban Felismertük, hogy tesztelni szeretné, hogy a tervezett vagy nem tervezett események során kezdeményezett automatikus feladatátvételi műveletek hatással lennének-e az alkalmazásra, mielőtt üzembe helyezné az éles környezetben. A feladatátvételt manuálisan is aktiválhatja, ha egy speciális API meghívásával újraindít egy adatbázist vagy egy rugalmas készletet. Egy zóna redundáns adatbázis vagy rugalmas készlet esetén az API-hívás eredményeképpen az ügyfélkapcsolatok átirányítása egy olyan rendelkezésre állási zónában lévő új elsődlegesre, amely eltér a régi elsődleges hely rendelkezésre állási zónájától. Így azt is megvizsgálhatja, hogy a feladatátvétel hogyan befolyásolja a meglévő adatbázis-munkameneteket, azt is ellenőrizheti, hogy a hálózati késés változása miatt a végpontok közötti teljesítményt módosítja-e. Mivel az újraindítási művelet zavaró, és nagy számú közülük a platformot, az egyes adatbázisok vagy rugalmas készletek esetében 30 percenként csak egy feladatátvételi hívás engedélyezett.
 
-A feladatátvételt REST API vagy PowerShell használatával lehet kezdeményezni. REST API esetében lásd: [adatbázis-feladatátvételi](https://docs.microsoft.com/rest/api/sql/databases(failover)/failover) és [rugalmas készlet feladatátvétele](https://docs.microsoft.com/rest/api/sql/elasticpools(failover)/failover). A PowerShell esetében tekintse meg a következőt: [meghívás-AzSqlDatabaseFailover](https://docs.microsoft.com/powershell/module/az.sql/invoke-azsqldatabasefailover) és [meghívása – AzSqlElasticPoolFailover](https://docs.microsoft.com/powershell/module/az.sql/invoke-azsqlelasticpoolfailover). Az REST API-hívások az Azure CLI-ből is elindíthatók az [az Rest](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-rest) paranccsal.
+A feladatátvétel a PowerShell, a REST API vagy az Azure CLI használatával indítható el:
+
+|Központi telepítés típusa|PowerShell|REST API| Azure CLI|
+|:---|:---|:---|:---|
+|Adatbázis|[Meghívás – AzSqlDatabaseFailover](https://docs.microsoft.com/powershell/module/az.sql/invoke-azsqldatabasefailover)|[Adatbázis-feladatátvétel](/rest/api/sql/databases(failover)/failover/)|[az Rest](https://docs.microsoft.com/cli/azure/reference-index#az-rest)|
+|Rugalmas készlet|[Meghívás – AzSqlElasticPoolFailover](https://docs.microsoft.com/powershell/module/az.sql/invoke-azsqlelasticpoolfailover)|[Rugalmas készlet feladatátvétele](/rest/api/sql/elasticpools(failover)/failover/)|[az Rest](https://docs.microsoft.com/cli/azure/reference-index#az-rest)|
+|Felügyelt példány|[Meghívás – AzSqlInstanceFailover](/powershell/module/az.sql/Invoke-AzSqlInstanceFailover/)|[Felügyelt példányok – feladatátvétel](/powershell/module/az.sql/Invoke-AzSqlInstanceFailover/)|[az SQL mi feladatátvétel](/cli/azure/sql/mi/#az-sql-mi-failover)|
+
 
 > [!IMPORTANT]
-> A feladatátvételi parancs jelenleg nem érhető el a nagy kapacitású szolgáltatási szintjében és a felügyelt példányok esetében.
+> A feladatátvételi parancs jelenleg nem érhető el a nagy kapacitású szolgáltatási szinten.
 
-## <a name="conclusion"></a>Összegzés
+## <a name="conclusion"></a>Tanulság
 
 A Azure SQL Database és az Azure SQL felügyelt példánya beépített, magas rendelkezésre állású megoldást kínál, amely szorosan integrálva van az Azure platformmal. Service Fabrictól függ a hibák észlelése és helyreállítása, az Azure Blob Storage az adatvédelem érdekében, valamint a Availability Zones a nagyobb hibatűrés érdekében (ahogy azt korábban említettük, nem alkalmazható az Azure SQL felügyelt példánya esetében). Emellett a SQL Database és az SQL felügyelt példánya is kihasználja az Always On rendelkezésre állási csoport technológiáját a SQL Server példányból a replikáláshoz és a feladatátvételhez. Ezeknek a technológiáknak a kombinációja lehetővé teszi, hogy az alkalmazások teljes mértékben felismerje a vegyes tárolási modell előnyeit, és támogassa a legigényesebb SLA-kat.
 

@@ -7,12 +7,13 @@ ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 10/25/2019
-ms.openlocfilehash: 7df870d76fa62d341821cfc2d7d30b4a7694ad82
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 49acce96012df0a45bc1833ae0397a3d989142ef
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119769"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500640"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-postgresql---single-server-using-the-azure-cli"></a>Kiszolgáló biztonsági mentése és visszaállítása Azure Database for PostgreSQL – egyetlen kiszolgálón az Azure CLI használatával
 
@@ -122,7 +123,7 @@ A visszaállítási folyamat befejeződése után keresse meg az új kiszolgál�
 
 A visszaállítás során létrehozott új kiszolgáló nem rendelkezik az eredeti kiszolgálón található tűzfalszabályokkal vagy VNet-szolgáltatásvégpontokkal. Ezeket a szabályokat külön kell beállítani ehhez az új kiszolgálóhoz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - További információ a szolgáltatás [biztonsági mentéséről](concepts-backup.md)
 - A [replikák](concepts-read-replicas.md) megismerése
 - További információ az [üzletmenet-folytonossági](concepts-business-continuity.md) lehetőségekről

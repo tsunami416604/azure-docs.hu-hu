@@ -4,12 +4,13 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 649af0d3b1503a5607717c4ccbadd8f1d822be32
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 1f2159f3f4c88c7ddafab63a7780f4dbf41ca130
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83586869"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87405423"
 ---
 [!INCLUDE [Prerequisites](prerequisites-nodejs.md)]
 
@@ -175,7 +176,7 @@ A mintát csonkoltuk, hogy az eredményeknek csak egy részletét mutassa:
 }
 ```
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha nem változtatható módon adta meg az előfizetői azonosítót a programban, a rövid útmutató befejezése után mindenképpen távolítsa el az előfizetői azonosítót.
 
@@ -184,4 +185,4 @@ Ha nem változtatható módon adta meg az előfizetői azonosítót a programban
 Tekintse meg az API-referenciát, amely mindent megtudhat a fordítóval.
 
 > [!div class="nextstepaction"]
-> [API-referenciák](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)
+> [API-leírások](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

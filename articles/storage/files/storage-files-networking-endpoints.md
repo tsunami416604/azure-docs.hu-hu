@@ -7,12 +7,13 @@ ms.topic: how-to
 ms.date: 3/19/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 0859b034cf0caa60039fbf9eb4dd9be54448a940
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: cef1aab42eea84c737d5c0173bd4d0e0aa509fe4
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85510319"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497766"
 ---
 # <a name="configuring-azure-files-network-endpoints"></a>Azure Files hálózati végpontok konfigurálása
 Azure Files két fő típusú végpontot biztosít az Azure-fájlmegosztás eléréséhez: 
@@ -155,5 +156,5 @@ Ha a Storage-fiókot adott virtuális hálózatokra korlátozza, a megadott virt
 
 ## <a name="see-also"></a>További információ
 - [Azure Files hálózati megfontolások](storage-files-networking-overview.md)
-- [A Azure Files DNS-továbbításának konfigurálása](storage-files-networking-dns.md)
+- [DNS-továbbítás konfigurálása az Azure Fileshoz](storage-files-networking-dns.md)
 - [S2S VPN konfigurálása Azure Fileshoz](storage-files-configure-s2s-vpn.md)

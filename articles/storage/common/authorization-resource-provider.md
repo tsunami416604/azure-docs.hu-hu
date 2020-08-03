@@ -9,12 +9,12 @@ ms.date: 12/12/2019
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: d2e84cf06019c592a726564768f9b332ab5ed610
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 5b171c5ff5bc848a0005fad5a2e0b6c0ca548724
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372297"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496073"
 ---
 # <a name="use-the-azure-storage-resource-provider-to-access-management-resources"></a>Az Azure Storage erőforrás-szolgáltató használata a kezelési erőforrások eléréséhez
 
@@ -36,7 +36,7 @@ Minden Azure-előfizetéshez tartozik egy társított Azure Active Directory, am
 
 Ha RBAC-szerepkört rendel egy rendszerbiztonsági tag számára, akkor azt a hatókört is jelzi, amelyen a szerepkör által biztosított engedélyek érvényben vannak. Felügyeleti műveletekhez hozzárendelhet egy szerepkört az előfizetés, az erőforráscsoport vagy a Storage-fiók szintjén. RBAC-szerepkört hozzárendelhet egy rendszerbiztonsági tag számára a [Azure Portal](https://portal.azure.com/), az [Azure CLI-eszközök](../../cli-install-nodejs.md), a [PowerShell](/powershell/azure/)vagy az [Azure Storage erőforrás-szolgáltató REST API](/rest/api/storagerp)használatával.
 
-További információ: [Mi az az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)?](../../role-based-access-control/overview.md) és a [klasszikus előfizetés-rendszergazdai szerepkörök, az Azure RBAC szerepkörei és az Azure ad rendszergazdai szerepkörei](../../role-based-access-control/rbac-and-directory-admin-roles.md).
+További információ: [Mi az az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)?](../../role-based-access-control/overview.md) és a [klasszikus előfizetés-rendszergazdai szerepköröket, az Azure-szerepköröket és az Azure ad-rendszergazdai szerepköröket](../../role-based-access-control/rbac-and-directory-admin-roles.md).
 
 ### <a name="built-in-roles-for-management-operations"></a>Beépített szerepkörök felügyeleti műveletekhez
 
@@ -77,5 +77,5 @@ További információ az Azure-beli üzembe helyezési modellekről: [Resource M
 ## <a name="next-steps"></a>További lépések
 
 - [Az Azure Resource Manager áttekintése](/azure/azure-resource-manager/resource-group-overview)
-- [Mi az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)?](../../role-based-access-control/overview.md)
+- [Mi az az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)?](../../role-based-access-control/overview.md)
 - [Az Azure Storage erőforrás-szolgáltató skálázhatósági céljai](scalability-targets-resource-provider.md)

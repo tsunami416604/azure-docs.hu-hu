@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 02/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 47f412dae6b467518fb1b51518716625c1395717
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 98cad9a359a9a2807b1f1f3f2daba45759471718
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87035825"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495658"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>SAP-munkaterhelések az Azure-ban: tervezési és üzembe helyezési ellenőrzőlista
 
@@ -174,7 +174,7 @@ Javasoljuk, hogy a kísérleti üzembe helyezés során egy teljes HADR-megoldá
    3. Tesztelje a biztonsági mentési/visszaállítási sorozatot és az időzítést, és végezze el a szükséges javítási műveleteket. Győződjön meg arról, hogy a biztonsági mentési idők elegendőek. A visszaállítási és az idő-visszaállítási tevékenységeket is tesztelni kell. Győződjön meg arról, hogy a visszaállítási időpontok a RTO SLA-n belül vannak, ahol a RTO adatbázis vagy virtuális gép visszaállítási folyamatán alapul.
    4. Több régióra kiterjedő DR funkció és architektúra tesztelése.
 1. Biztonsági ellenőrzések.
-   1. Tesztelje az Azure szerepköralapú hozzáférés-vezérlési (RBAC-) architektúrájának érvényességét. A cél az, hogy elkülönítse és korlátozza a különböző csapatok hozzáférését és engedélyeit. Az SAP-csapat tagjai például telepíthetnek virtuális gépeket, és az Azure Storage-ból lemezeket rendelhetnek egy adott Azure virtuális hálózatban. Az SAP-alapú csapat azonban nem hozhat létre saját virtuális hálózatokat, és nem módosíthatja a meglévő virtuális hálózatok beállításait. A hálózati csapat tagjai nem telepíthetnek virtuális gépeket olyan virtuális hálózatokra, amelyekben az SAP-alkalmazás és az adatbázis-kezelő virtuális gépek futnak. A csapat tagjai nem változtathatják meg a virtuális gépek attribútumait, vagy akár virtuális gépeket vagy lemezeket is törölhetnek.  
+   1. Tesztelje az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) architektúrájának érvényességét. A cél az, hogy elkülönítse és korlátozza a különböző csapatok hozzáférését és engedélyeit. Az SAP-csapat tagjai például telepíthetnek virtuális gépeket, és az Azure Storage-ból lemezeket rendelhetnek egy adott Azure virtuális hálózatban. Az SAP-alapú csapat azonban nem hozhat létre saját virtuális hálózatokat, és nem módosíthatja a meglévő virtuális hálózatok beállításait. A hálózati csapat tagjai nem telepíthetnek virtuális gépeket olyan virtuális hálózatokra, amelyekben az SAP-alkalmazás és az adatbázis-kezelő virtuális gépek futnak. A csapat tagjai nem változtathatják meg a virtuális gépek attribútumait, vagy akár virtuális gépeket vagy lemezeket is törölhetnek.  
    1.  Ellenőrizze, hogy a [hálózati biztonsági csoport és az ASC](../../../virtual-network/security-overview.md) -szabályok a várt módon működnek-e, és védi a védett erőforrásokat.
    1.  Győződjön meg arról, hogy az összes titkosítani kívánt erőforrás titkosítva van. Megadhatja és implementálhatja a tanúsítványok biztonsági mentésére, tárolására és elérésére szolgáló folyamatokat, és visszaállíthatja a titkosított entitásokat.
    1.  Az operációsrendszer-lemezek [Azure Disk Encryption](../../../security/fundamentals/azure-disk-encryption-vms-vmss.md) használata, ha lehetséges, az operációs rendszer által támogatott nézetből.

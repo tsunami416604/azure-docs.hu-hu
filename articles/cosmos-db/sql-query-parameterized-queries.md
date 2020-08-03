@@ -4,18 +4,18 @@ description: Ismerje meg, hogy az SQL-paraméterek lekérdezései Hogyan biztos�
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/30/2019
+ms.date: 07/29/2020
 ms.author: tisande
-ms.openlocfilehash: e15a8236723c1efd80f27f2d253e9bbc44af4b0b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f66bc89ef56dd0c2291903d531a4637210abd8df
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74870819"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496984"
 ---
 # <a name="parameterized-queries-in-azure-cosmos-db"></a>Paraméteres lekérdezések a Azure Cosmos DBban
 
-Cosmos DB támogatja a ismerős @ jelöléssel kifejezett paramétereket tartalmazó lekérdezéseket. A paraméteres SQL lehetővé teszi a felhasználói adatbevitel robusztus kezelését és megmenekülését, és megakadályozza az adatok véletlen kisugárzását az SQL-injektáláson keresztül.
+Azure Cosmos DB támogatja a ismerős @ jelöléssel kifejezett paramétereket tartalmazó lekérdezéseket. A paraméteres SQL lehetővé teszi a felhasználói adatbevitel robusztus kezelését és megmenekülését, és megakadályozza az adatok véletlen kisugárzását az SQL-injektáláson keresztül.
 
 ## <a name="examples"></a>Példák
 
@@ -27,7 +27,7 @@ Cosmos DB támogatja a ismerős @ jelöléssel kifejezett paramétereket tartalm
     WHERE f.lastName = @lastName AND f.address.state = @addressState
 ```
 
-Ezt a kérést elküldheti Cosmos DB paraméteres JSON-lekérdezésként, például az alábbiak szerint:
+Ezt a kérést elküldheti Azure Cosmos DB paraméteres JSON-lekérdezésként, például az alábbiak szerint:
 
 ```sql
     {
@@ -39,7 +39,7 @@ Ezt a kérést elküldheti Cosmos DB paraméteres JSON-lekérdezésként, péld�
     }
 ```
 
-A következő példa a felső argumentumot egy paraméteres lekérdezéssel állítja be: 
+A következő példa a felső argumentumot egy paraméteres lekérdezéssel állítja be:
 
 ```sql
     {
@@ -50,8 +50,14 @@ A következő példa a felső argumentumot egy paraméteres lekérdezéssel áll
     }
 ```
 
-A paraméter értéke lehet bármilyen érvényes JSON: karakterlánc, szám, logikai érték, null, páros vagy beágyazott JSON. Mivel Cosmos DB séma nélküli, a paraméterek nem ellenőrizhetők semmilyen típuson.
+A paraméter értéke lehet bármilyen érvényes JSON: karakterlánc, szám, logikai érték, null, páros vagy beágyazott JSON. Mivel Azure Cosmos DB séma nélküli, a paraméterek nem ellenőrizhetők semmilyen típuson.
 
+Az alábbiakban példákat talál a paraméteres lekérdezésekre az egyes Azure Cosmos DB SDK-ban:
+
+- [.NET SDK](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/Queries/Program.cs#L195)
+- [Java](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/queries/sync/QueriesQuickstart.java#L392-L421)
+- [Node.js](https://github.com/Azure/azure-cosmos-js/blob/master/samples/ItemManagement.ts#L58-L79)
+- [Python](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/document_management.py#L66-L78)
 
 ## <a name="next-steps"></a>További lépések
 

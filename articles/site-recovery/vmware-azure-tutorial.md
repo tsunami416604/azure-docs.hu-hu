@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 317cc5222b3444ae2ed242df694d317503c72a87
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 9831305f3889f977a270630b40fa0d78ec1085bd
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290655"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501201"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms"></a>Az Azure-ba irányuló vészhelyreállítás beállítása helyszíni VMware virtuális gépekhez
 
@@ -41,7 +41,7 @@ Fejezze be az előző oktatóanyagokat:
 3. Ebben az oktatóanyagban bemutatjuk, hogyan replikálhat egyetlen virtuális gépet. Több VMware virtuális gép üzembe helyezésekor a [Deployment Planner eszközt](https://aka.ms/asr-deployment-planner)kell használnia. [További információ](site-recovery-deployment-planner.md) az eszközről.
 4. Ez az oktatóanyag számos lehetőséget használ, amelyeket érdemes másképpen végrehajtani:
     - Az oktatóanyag egy PETESEJT-sablont használ a konfigurációs kiszolgáló VMware virtuális gép létrehozásához. Ha ezt valamilyen okból nem tudja elvégezni, a konfigurációs kiszolgáló manuális beállításához kövesse az [alábbi utasításokat](physical-manage-configuration-server.md) .
-    - Ebben az oktatóanyagban Site Recovery automatikusan letölti és telepíti a MySQL-t a konfigurációs kiszolgálóra. Ha szeretné, manuálisan is beállíthatja. [További információ](vmware-azure-deploy-configuration-server.md#configure-settings).
+    - Ebben az oktatóanyagban Site Recovery automatikusan letölti és telepíti a MySQL-t a konfigurációs kiszolgálóra. Ha szeretné, manuálisan is beállíthatja. [További információk](vmware-azure-deploy-configuration-server.md#configure-settings).
 
 
 
@@ -87,7 +87,7 @@ Ezen összetevők mindegyike a *konfigurációs kiszolgálóként*ismert helysz�
 1. Jelentkezzen be a VMware vCenter-kiszolgálóra vagy a vSphere ESXi-gazdagépre a VMware vSphere-ügyféllel.
 2. A **fájl** menüben válassza a **OVF-sablon telepítése** lehetőséget a **OVF-sablon központi telepítése varázsló**elindításához.
 
-     ![OVF-sablon](./media/vmware-azure-tutorial/vcenter-wizard.png)
+     ![Képernyőkép a OVF-sablon telepítése parancsról a VMWare vSphere-ügyfélen.](./media/vmware-azure-tutorial/vcenter-wizard.png)
 
 3. A **Select source** (Forrás kiválasztása) területen adja meg a letöltött OVF helyét.
 4. A **Review details** (Részletek áttekintése) területen válassza a **Next** (Tovább) gombot.
@@ -153,7 +153,7 @@ Válassza ki és ellenőrizze a célerőforrásokat.
 1. Válassza az **infrastruktúra előkészítése**  >  **cél**lehetőséget. Válassza ki a használni kívánt Azure-előfizetést. Resource Manager-modellt használunk.
 2. Site Recovery ellenőrzi, hogy rendelkezik-e legalább egy virtuális hálózattal. Ezeknek már léteznie kell, amikor a jelen oktatóanyag-sorozat [első oktatóanyagában](tutorial-prepare-azure.md) beállítja az Azure-összetevőket.
 
-   ![Cél lap](./media/vmware-azure-tutorial/storage-network.png)
+   ![Képernyőfelvétel: az infrastruktúra előkészítése > cél beállításai.](./media/vmware-azure-tutorial/storage-network.png)
 
 ## <a name="create-a-replication-policy"></a>Replikációs házirend létrehozása
 
@@ -165,7 +165,7 @@ Válassza ki és ellenőrizze a célerőforrásokat.
 6. A **Helyreállítási pont megőrzése** beállításnál azt adhatja meg, hogy milyen hosszú legyen az egyes helyreállítási pontok adatmegőrzési időtartama. A jelen oktatóanyagban 72 órát adunk meg. A replikált virtuális gépek ezen a megőrzési időtartamon belül bármikor helyreállíthatók.
 7. Az **Alkalmazáskonzisztens pillanatkép gyakorisága** beállításban adhatja meg, hogy milyen gyakran hozzon létre a rendszer alkalmazáskonzisztens pillanatképeket. Az alapértelmezett 60 percet használjuk. A szabályzat létrehozásához válassza az **OK** gombot.
 
-   ![Replikációs házirend létrehozása](./media/vmware-azure-tutorial/replication-policy.png)
+   ![Képernyőkép a replikációs házirend létrehozása lehetőségről.](./media/vmware-azure-tutorial/replication-policy.png)
 
 - A szabályzat automatikusan társítva lesz a konfigurációs kiszolgálóval.
 - Alapértelmezés szerint a rendszer a feladat-visszavételhez is automatikusan létrehoz egy megfelelő szabályzatot. Ha például a replikációs szabályzat a **rep-policy**, a feladat-visszavételi szabályzat a **rep-policy-failback** lesz. Ezt a szabályzatot nem használja a rendszer, amíg nem indít el egy feladat-visszavételt az Azure-ból.

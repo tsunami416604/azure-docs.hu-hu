@@ -2,14 +2,14 @@
 title: Kiszolgáló nélküli tárolók az Azure-ban
 description: A Azure Container Instances szolgáltatás az elkülönített tárolók Azure-ban való futtatásának leggyorsabb és legegyszerűbb módját kínálja anélkül, hogy virtuális gépeket kellene kezelnie, és nem kell magasabb szintű Orchestrator alkalmaznia.
 ms.topic: overview
-ms.date: 04/25/2019
+ms.date: 07/28/2020
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 572557860f5d715d6c708acb640acc24e1dd4a35
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 2871aabe4d81cfb1441e9c74c8fa24e4e906d3b9
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87424154"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498684"
 ---
 # <a name="what-is-azure-container-instances"></a>Mi az az Azure Container Instances?
 
@@ -20,6 +20,11 @@ Az Azure Container Instances ideális megoldás minden olyan forgatókönyv eset
 ## <a name="fast-startup-times"></a>Rövid indítási idők
 
 A tárolók jelentős előnyöket nyújtanak a virtuális gépekkel (VM-ekkel) szemben az indítás terén. Az Azure Container Instanceszel másodpercek alatt elindíthat egy tárolót az Azure-ban anélkül, hogy virtuális gépeket kellene kiépítenie és kezelnie.
+
+Linux-vagy Windows-tárolói rendszerképeket hozhat a Docker hub, egy privát [Azure Container Registry](../container-registry/index.yml)vagy más felhőalapú Docker-beállításjegyzékből. Azure Container Instances gyorsítótárba helyezi az egyes általános operációsrendszer-lemezképeket, így gyorsíthatja az egyéni alkalmazások lemezképének üzembe helyezését.
+
+> [!NOTE]
+> Jelenleg nem telepíthet lemezképet helyszíni beállításjegyzékből Azure Container Instancesba.
 
 ## <a name="container-access"></a>Tároló-hozzáférés
 
@@ -70,7 +75,7 @@ Az Azure Container Instances támogatja az olyan [több tárolóból álló csop
 
 Azure Container Instances lehetővé teszi [a Container instances üzembe helyezését egy Azure-beli virtuális hálózatban](container-instances-vnet.md). A virtuális hálózatban lévő alhálózatba való üzembe helyezéskor a tároló példányai biztonságosan kommunikálhatnak a virtuális hálózatban lévő más erőforrásokkal, beleértve a helyszíni ( [VPN-átjárón](../vpn-gateway/vpn-gateway-about-vpngateways.md) vagy [ExpressRoute](../expressroute/expressroute-introduction.md)) keresztül elérhető erőforrásokat is.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Próbáljon üzembe helyezni egy tárolót az Azure-ban egyetlen parancs használatával a rövid útmutatónk alapján:
 

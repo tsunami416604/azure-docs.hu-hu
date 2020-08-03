@@ -3,12 +3,13 @@ title: Fájlmegosztás csatlakoztatása egy Python-függvény alkalmazásához �
 description: Hozzon létre egy kiszolgáló nélküli Python-függvény alkalmazást, és csatlakoztassa egy meglévő fájlmegosztást az Azure CLI használatával.
 ms.topic: sample
 ms.date: 03/01/2020
-ms.openlocfilehash: 3d66f84d124b36f1be335c3a2204f21690510ee8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 63ab9ba3219dc600187e73bbf124d62d3f51317a
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79086459"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498208"
 ---
 # <a name="mount-a-file-share-to-a-python-function-app-using-azure-cli"></a>Fájlmegosztás csatlakoztatása egy Python-függvény alkalmazásához az Azure CLI használatával
 
@@ -35,7 +36,7 @@ Ez a szkript létrehoz egy Azure Function-alkalmazást a használati [terv](../f
 
 A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik. Ez a szkript a következő parancsokat használja:
 
-| Parancs | Megjegyzések |
+| Parancs | Jegyzetek |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
 | [az storage account create](/cli/azure/storage/account#az-storage-account-create) | Létrehoz egy Azure Storage-fiókot. |

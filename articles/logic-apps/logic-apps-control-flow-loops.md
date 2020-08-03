@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/05/2019
-ms.openlocfilehash: 0ffcda4a33c43866c3b580a60c87c1ffca59bbc4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8a72dff055f2733a07b6da705b66da939ad29bae
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87066350"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495607"
 ---
 # <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>Munkafolyamatok tevékenységeit ismétlő vagy tömböket feldolgozó hurkok létrehozása az Azure Logic Appsben
 
@@ -24,7 +24,7 @@ Ha meg szeretné ismételni a műveleteket, amíg egy feltétel nem teljesül, v
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés. Ha még nincs előfizetése, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/). 
+* Azure-fiók és -előfizetés. Ha még nincs előfizetése, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/). 
 
 * Alapvető ismeretek a [logikai alkalmazások létrehozásáról](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
@@ -32,11 +32,11 @@ Ha meg szeretné ismételni a műveleteket, amíg egy feltétel nem teljesül, v
 
 ## <a name="foreach-loop"></a>"Foreach" hurok
 
-A "foreach hurok" megismétli egy vagy több műveletet minden tömb elemnél, és csak tömbökön működik. A "foreach" ciklusban lévő iterációk párhuzamosan futnak. Egy [szekvenciális "foreach" hurok](#sequential-foreach-loop)beállításával azonban egyszerre is futtathat iterációkat. 
+A "foreach hurok" megismétli egy vagy több műveletet minden tömb elemnél, és csak tömbökön működik. Az "foreach" hurkok használatakor a következő szempontokat érdemes figyelembe venni:
 
-Az "foreach" hurkok használatakor a következő szempontokat érdemes figyelembe venni:
+* Alapértelmezés szerint a "foreach" ciklusban lévő iterációk egyszerre, vagy párhuzamosan futnak. Ez a viselkedés eltér a [Power automatizálás **minden** olyan hurokra vonatkozik](/power-automate/apply-to-each) , ahol az ismétlések egyszerre futnak, vagy egymás után. Azonban [szekvenciális "foreach"](#sequential-foreach-loop)ismétléseket is beállíthat. Ha például szüneteltetni szeretné a következő iterációt egy "foreach" hurokban a [késleltetési művelettel](../connectors/connectors-native-delay.md), a ciklust úgy kell beállítania, hogy szekvenciálisan fusson.
 
-* Beágyazott hurkok esetén az ismétlések mindig szekvenciálisan futnak, nem párhuzamosan. Ha párhuzamosan szeretné futtatni a műveleteket egy beágyazott hurok elemein, hozzon létre és [hívjon egy alárendelt logikai alkalmazást](../logic-apps/logic-apps-http-endpoint.md).
+  Az alapértelmezett viselkedés alóli kivétel a beágyazott hurkok, amelyekben az ismétlések mindig egymás után futnak, nem párhuzamosan. Ha párhuzamosan szeretné futtatni a műveleteket egy beágyazott hurok elemein, hozzon létre és [hívjon egy alárendelt logikai alkalmazást](../logic-apps/logic-apps-http-endpoint.md).
 
 * Ha az egyes hurok-iterációk esetében kiszámítható eredményt szeretne kapni a változók műveleteitől, futtassa ezeket a hurkokat egymás után. Ha például egy párhuzamosan futó hurok véget ér, a növekmény, a csökkentés és a Hozzáfűzés változó művelet előre jelezhető eredményeket ad vissza. Ugyanakkor a párhuzamosan futó hurokban az egyes ismétlések során ezek a műveletek kiszámíthatatlan eredményeket adhatnak vissza. 
 
@@ -247,7 +247,7 @@ Ez a példa minden nap 8:00-kor kezdődik, így a logikai alkalmazás egy válto
 
 A "ig" ciklusban az alapértelmezett korlátok a végrehajtás leállítása, ha bármelyik feltétel teljesül:
 
-| Tulajdonság | Alapértelmezett érték | Description | 
+| Tulajdonság | Alapértelmezett érték | Leírás | 
 | -------- | ------------- | ----------- | 
 | **Száma** | 60 | A hurok bezárása előtt futó hurkok maximális száma. Az alapértelmezett érték 60 ciklus. | 
 | **Időtúllépés** | PT1H | A huroknak a hurokból való kilépése előtti futtatásának legnagyobb ideje. Az alapértelmezett érték egy óra, és ISO 8601 formátumban van megadva. <p>Az időtúllépési érték kiértékelése minden hurok ciklusakor megtörténik. Ha a hurok bármelyik művelete hosszabb időt vesz igénybe, mint az időkorlát, az aktuális ciklus nem áll le. A következő ciklus azonban nem indul el, mert a korlátozási feltétel nem teljesül. | 

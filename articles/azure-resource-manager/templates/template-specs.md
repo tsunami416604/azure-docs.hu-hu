@@ -2,28 +2,34 @@
 title: A sablon specifikációinak áttekintése
 description: Leírja, hogyan lehet létrehozni a sablon specifikációit, és megoszthatja őket a szervezet más felhasználóival.
 ms.topic: conceptual
-ms.date: 07/20/2020
+ms.date: 07/31/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 47dcf44b35ad5c0b77dd0b88d683071a7f2f4ecb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 829aaa41bc60b3dcbf78ef6083457fff3b794914
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87096677"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497800"
 ---
 # <a name="azure-resource-manager-template-specs-preview"></a>Azure Resource Manager sablon specifikációi (előzetes verzió)
 
-A sablon specifikációja egy új erőforrástípus, amellyel egy Azure Resource Manager sablon (ARM-sablon) tárolható az Azure-ban a későbbi üzembe helyezéshez. Ez az erőforrástípus lehetővé teszi, hogy megossza az ARM-sablonokat a szervezet más felhasználóival. A többi Azure-erőforráshoz hasonlóan a szerepköralapú hozzáférés-vezérlés (RBAC) használatával is megoszthatja a sablon specifikációját. a felhasználóknak csak olvasási hozzáférésre van szükségük a sablon specifikációhoz a sablon üzembe helyezéséhez, így a sablon megosztható anélkül, hogy mások is módosíthassák.
+A sablon specifikációja egy új erőforrástípus, amellyel egy Azure Resource Manager sablon (ARM-sablon) tárolható az Azure-ban a későbbi üzembe helyezéshez. Ez az erőforrástípus lehetővé teszi, hogy megossza az ARM-sablonokat a szervezet más felhasználóival. A többi Azure-erőforráshoz hasonlóan a szerepköralapú hozzáférés-vezérlés (RBAC) használatával is megoszthatja a sablon specifikációját.
 
 A **Microsoft. Resources/templateSpecs** a sablonhoz tartozó specifikációk új erőforrástípus. Egy fő sablonból és tetszőleges számú csatolt sablonból áll. Az Azure biztonságosan tárolja a sablonhoz tartozó specifikációkat az erőforráscsoportok között. A sablon specifikációi támogatják a [verziószámozást](#versioning).
 
 A sablon specifikációjának üzembe helyezéséhez szabványos Azure-eszközöket (például PowerShell, Azure CLI, Azure Portal, REST és más támogatott SDK-kat és ügyfeleket) kell használnia. Ugyanazokat a parancsokat használja, és ugyanazokat a paramétereket adja át a sablonhoz.
 
-A sablon specifikációinak használatának előnye, hogy a munkahelyen lévő csapatoknak nem kell újból létrehozniuk vagy átmásolnia a sablonokat a gyakori forgatókönyvekhez. Kanonikus sablonokat hozhat létre, és megoszthatja őket. A sablonban szerepeltetni kívánt sablonokat a szervezet rendszergazdáinak ellenőriznie kell a szervezet követelményeinek és útmutatásának követése érdekében.
-
 > [!NOTE]
 > A sablonra vonatkozó specifikációk jelenleg előzetes verzióban érhetők el. A használatához regisztrálnia kell [a várakozási listára](https://aka.ms/templateSpecOnboarding).
+
+## <a name="why-use-template-specs"></a>Miért érdemes használni a sablon specifikációit?
+
+Ha jelenleg a sablonok egy GitHub-tárházban vagy egy Storage-fiókban vannak, a sablonok megosztásának és használatának megkísérlése során több kihívást is jelent. Ahhoz, hogy egy felhasználó telepíteni tudja, a sablonnak helyinek kell lennie, vagy a sablon URL-címének nyilvánosan elérhetőnek kell lennie. Ennek a korlátozásnak a megszerzéséhez megoszthatja a sablon példányait azokkal a felhasználókkal, akiknek telepíteniük kell, vagy meg kell nyitnia a hozzáférést a tárházhoz vagy a Storage-fiókhoz. Ha a felhasználók egy sablon helyi példányait futtatják, akkor ezek a másolatok végül az eredeti sablontól eltérőek lehetnek. Ha a tárház vagy a Storage-fiók nyilvánosan elérhetővé válik, lehetővé teheti, hogy a nem kívánt felhasználók hozzáférjenek a sablonhoz.
+
+A sablon specifikációinak használatának előnye, hogy kanonikus sablonokat hozhat létre, és megoszthatja őket a szervezet munkacsoportjaival. A sablon specifikációi biztonságosak, mert elérhetők Azure Resource Manager számára a központi telepítéshez, de RBAC engedély nélkül nem hozzáférhetők a felhasználók számára. A felhasználóknak csak olvasási hozzáférésre van szükségük a sablon specifikációhoz a sablon üzembe helyezéséhez, így a sablon megosztható anélkül, hogy mások is módosíthassák.
+
+A sablonban szerepeltetni kívánt sablonokat a szervezet rendszergazdáinak ellenőriznie kell a szervezet követelményeinek és útmutatásának követése érdekében.
 
 ## <a name="create-template-spec"></a>Sablon létrehozása – spec
 

@@ -3,12 +3,13 @@ title: Event hub létrehozása az engedélyezve rögzítéssel – Azure Event H
 description: Azure Event Hubs-névtér létrehozása egy eseményközponttal és a Rögzítés funkció engedélyezése az Azure Resource Manager sablonjának használatával
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 7308d951cf48d8123df050bdf58772ec914aac3e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 7d8c8913cfe674c04f90fe02b88fc9739b2404aa
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087594"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499466"
 ---
 # <a name="create-a-namespace-with-event-hub-and-enable-capture-using-a-template"></a>Névtér létrehozása egy eseményközponttal és a Rögzítés funkció engedélyezése sablon használatával
 
@@ -419,7 +420,7 @@ Az Event Hubs Rögzítés funkcióját az [Azure Portal](https://portal.azure.co
 Az alábbi webhelyeken további információt talál az Event Hubsról:
 
 * [Event Hubs áttekintése](./event-hubs-about.md)
-* [Event hub létrehozása](event-hubs-create.md)
+* [Eseményközpont létrehozása](event-hubs-create.md)
 * [Event Hubs – gyakori kérdések](event-hubs-faq.md)
 
 [Authoring Azure Resource Manager templates]: ../azure-resource-manager/templates/template-syntax.md

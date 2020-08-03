@@ -4,12 +4,13 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/03/2020
 ms.author: trbye
-ms.openlocfilehash: 4e3b87055246c3060ab9a35e6a112782275633ae
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.custom: devx-track-javascript
+ms.openlocfilehash: f41edf3d2d11f9fd881d86d207ce7f9abe2156de
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86035919"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87405218"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -74,6 +75,6 @@ Az alkalmazás elindításához kattintson duplán az index.html fájlra, vagy n
 Az alkalmazás elindításához nyissa meg a kedvenc webböngészőjét, és mutasson arra a nyilvános URL-címre, amelyen a mappát üzemelteti, adja meg a [régióját](../../../../regions.md), és aktiválja a bemeneti szöveg szintézisét. Ha konfigurálva van, az beszerez egy jogkivonatot a jogkivonatforrásból.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [!INCLUDE [Speech synthesis basics](../../text-to-speech-next-steps.md)]

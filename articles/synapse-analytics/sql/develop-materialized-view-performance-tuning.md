@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: a3b012d86444ca2bb9b84af37aa17424221457d1
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: d476bef6faa19defad1d2e1ef1a90f7e5d83def5
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85955063"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495692"
 ---
 # <a name="performance-tuning-with-materialized-views"></a>Teljesítmény-finomhangolás tényleges táblán alapuló nézetekkel
 
@@ -40,7 +40,7 @@ A szabványos nézetre vonatkozó követelmények többsége továbbra is érvé
 |Extra tárterület                   | Nem                                           | Igen
 |Syntax                          | NÉZET LÉTREHOZÁSA                                  | A KIVÁLASZTÁSNAK MEGFELELŐEN HOZZON LÉTRE EGY ANYAGBELI NÉZETET
 
-## <a name="benefits-of-using-materialized-views"></a>A lényeges nézetek használatának előnyei
+## <a name="benefits-of-materialized-views"></a>A lényeges nézetek előnyei
 
 A megfelelően megtervezett, jelentős nézet a következő előnyöket biztosítja:
 
@@ -58,7 +58,7 @@ Az egyéb adattárház-szolgáltatókhoz képest az SQL-készletben megvalósít
 - Széleskörű összesítő függvények támogatása. Lásd: [anyagelszámolású nézet létrehozása Select (Transact-SQL) néven](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
 - A lekérdezés-specifikus, jelentős megjelenítésre vonatkozó javaslat támogatása.  Lásd: [Magyarázat (Transact-SQL)](/sql/t-sql/queries/explain-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
 
-## <a name="common-scenarios"></a>Gyakori helyzetek  
+## <a name="common-scenarios"></a>Gyakori forgatókönyvek  
 
 A rendszer általában az alábbi helyzetekben használja az anyagilag látható nézeteket:
 

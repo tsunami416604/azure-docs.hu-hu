@@ -1,14 +1,14 @@
 ---
 title: A FedRAMP High Blueprint minta üzembe helyezése
 description: A FedRAMP magas tervrajzi mintájának üzembe helyezése, beleértve a tervrajz-összetevő paraméterének részleteit.
-ms.date: 01/31/2020
+ms.date: 07/31/2020
 ms.topic: sample
-ms.openlocfilehash: c4b2915222bc2d1772a2772c719d5d6cc4b59657
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: c444d943f1fc72e33cb34a36bd0fa6d97ddf87ef
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044804"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495879"
 ---
 # <a name="deploy-the-fedramp-high-blueprint-sample"></a>A FedRAMP High Blueprint minta üzembe helyezése
 
@@ -19,7 +19,7 @@ Az Azure-tervezetek nagy FedRAMP való üzembe helyezéséhez a következő lép
 > - A minta másolatának megjelölése **közzétettként**
 > - A terv másolatának kiosztása meglévő előfizetéshez
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free).
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="create-blueprint-from-sample"></a>Terv létrehozása mintából
 
@@ -91,7 +91,7 @@ Miután a tervezet mintájának **közzététele**sikeresen megtörtént, hozzá
 
 A következő táblázat a tervrajz-összetevő paramétereinek listáját tartalmazza:
 
-|Összetevő neve|Összetevő típusa|Paraméter neve|Description|
+|Összetevő neve|Összetevő típusa|Paraméter neve|Leírás|
 |-|-|-|-|
 |\[Előzetes verzió \] : a FedRAMP magas szintű vezérlése és adott virtuálisgép-bővítmények üzembe helyezése a naplózási követelmények támogatásához|Szabályzat-hozzárendelés|Log Analytics munkaterület-azonosító, amelyhez a virtuális gépeket konfigurálni kell|Ez a Log Analytics munkaterület azonosítója (GUID), amelyhez a virtuális gépeket konfigurálni kell.|
 |\[Előzetes verzió \] : a FedRAMP magas szintű vezérlése és adott virtuálisgép-bővítmények üzembe helyezése a naplózási követelmények támogatásához|Szabályzat-hozzárendelés|Azon erőforrástípusok listája, amelyeknek engedélyezve kell lennie a diagnosztikai naplóknak|A naplózni kívánt erőforrástípusok listája, ha a diagnosztikai napló beállítása nincs engedélyezve. Elfogadható értékek találhatók [Azure monitor diagnosztikai naplók sémái](../../../../azure-monitor/platform/resource-logs-schema.md#service-specific-schemas)között.|

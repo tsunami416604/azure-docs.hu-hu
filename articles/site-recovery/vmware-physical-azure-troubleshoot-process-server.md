@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 09/09/2019
 ms.author: raynew
-ms.openlocfilehash: 7679148e195bd67ab5da58636552a684c25c31b0
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 4816b597d66aea3bbe7f834004f924b5108de939
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86131982"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499755"
 ---
 # <a name="troubleshoot-the-process-server"></a>A folyamat kiszolgálójának hibáinak megoldása
 
@@ -91,7 +91,7 @@ Ha a Process Server nem rendelkezik szívveréssel (hibakód: 806), tegye a köv
 
  A kezdeti és a folyamatos replikálási hibákat gyakran a forrásoldali gépek és a Process Server, illetve a Process Server és az Azure közötti csatlakozási problémák okozzák. Ezek a lépések az alábbi ábrán vannak összefoglalva, amelyet a lépések végrehajtásához szükséges eljárások követnek.
 
-![A kapcsolat és a replikáció hibáinak megoldása](./media/vmware-physical-azure-troubleshoot-process-server/troubleshoot-connectivity-replication.png)
+![A kapcsolat és a replikálás hibaelhárításához szükséges lépéseket bemutató folyamatábra.](./media/vmware-physical-azure-troubleshoot-process-server/troubleshoot-connectivity-replication.png)
 
 
 ## <a name="step-4-verify-time-sync-on-source-machine"></a>4. lépés: a forrásoldali gépen futó idő szinkronizálásának ellenőrzése
@@ -113,7 +113,7 @@ Győződjön meg arról, hogy a replikált gépen nem található víruskereső 
 3. Ellenőrizze, hogy a sikeres-e a kapcsolatok.
 
 
-**Kapcsolódás** | **Részletek** | **Művelet**
+**Kapcsolatok** | **Részletek** | **Művelet**
 --- | --- | ---
 **Sikeres** | A Telnet egy üres képernyőt jelenít meg, és a Process Server elérhető. | Nincs szükség további műveletre.
 **Sikertelen** | Nem lehet kapcsolatot létesíteni | Győződjön meg arról, hogy a (z) 9443 bejövő port engedélyezett a Process Serveren. Ha például egy peremhálózati hálózat vagy egy szűrt alhálózat van. A kapcsolat ismételt ellenőrzése.
@@ -170,7 +170,7 @@ Győződjön meg arról, hogy a Process Server aktívan küldi az Azure-ba irán
   2. Válassza a **teljesítmény** fület > **Open erőforrás-figyelő**.
   3. A **erőforrás-figyelő** lapon válassza a **hálózat** lapot. A **hálózati tevékenységgel rendelkező folyamatok**területen győződjön meg arról, hogy a cbengine.exe aktívan küld-e nagy mennyiségű adat.
 
-       ![Kötetek a hálózati tevékenységgel rendelkező folyamatokban](./media/vmware-physical-azure-troubleshoot-process-server/cbengine.png)
+       ![Képernyőfelvétel: nagy mennyiségű kötet a hálózati tevékenységgel rendelkező folyamatokban.](./media/vmware-physical-azure-troubleshoot-process-server/cbengine.png)
 
   Ha cbengine.exe nem küld nagy mennyiségű adatokat, hajtsa végre az alábbi részekben ismertetett lépéseket.
 
@@ -179,7 +179,7 @@ Győződjön meg arról, hogy a Process Server aktívan küldi az Azure-ba irán
 1. A erőforrás-figyelő területen válassza a **cbengine.exe**lehetőséget.
 2. A **TCP-kapcsolatok**területen ellenőrizze, hogy van-e kapcsolat a Process Server és az Azure Storage között.
 
-  ![Kapcsolat cbengine.exe és az Azure Blob Storage URL-címe között](./media/vmware-physical-azure-troubleshoot-process-server/rmonitor.png)
+  ![A cbengine.exe és az Azure Blob Storage URL-címéhez való kapcsolódást bemutató képernyőkép.](./media/vmware-physical-azure-troubleshoot-process-server/rmonitor.png)
 
 ### <a name="check-services"></a>Szolgáltatások keresése
 
@@ -244,7 +244,7 @@ Győződjön meg arról, hogy az IP-cím alapú tűzfal blokkolja-e a hozzáfér
 Növelje meg a folyamat-kiszolgáló és az Azure közötti sávszélességet, és győződjön meg arról, hogy a probléma továbbra is fennáll.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha további segítségre van szüksége, tegye fel kérdéseit a [Microsoft Q&a Azure site Recovery kérdését](/answers/topics/azure-site-recovery.html). 
 

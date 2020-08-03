@@ -3,12 +3,13 @@ title: Privát végpontok konfigurálása Azure Event Grid témakörökhöz vagy
 description: Ez a cikk ismerteti, hogyan konfigurálhat privát végpontokat Azure Event Grid témakörökhöz vagy tartományhoz.
 ms.topic: how-to
 ms.date: 07/07/2020
-ms.openlocfilehash: ace3f7f59e4f26388652d7bda1a5ee28800a414b
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 7796c4160cbf40a241db901e31cc91edc361b00d
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86115335"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495284"
 ---
 # <a name="configure-private-endpoints-for-azure-event-grid-topics-or-domains"></a>Privát végpontok konfigurálása Azure Event Grid témakörökhöz vagy tartományokhoz
 A [privát végpontok](../private-link/private-endpoint-overview.md) lehetővé teszik, hogy közvetlenül a virtuális hálózatról küldje el az eseményeket egy [privát kapcsolaton](../private-link/private-link-overview.md) keresztül, anélkül, hogy a nyilvános interneten kellene haladnia. A privát végpont egy IP-címet használ a témakörhöz vagy tartományhoz tartozó VNet. További elméleti információkat a [hálózati biztonság](network-security.md)című témakörben talál.
@@ -43,7 +44,7 @@ Ebből a szakaszból megtudhatja, hogyan hozhat létre saját végpontot egy té
 
             ![Magánhálózati végpont – Erőforrás lap](./media/configure-private-endpoints/resource-page.png)
     2. Ha a **Kapcsolódás erőforráshoz erőforrás-azonosító vagy alias használatával**lehetőséget választja, kövesse az alábbi lépéseket:
-        1. Adja meg az erőforrás AZONOSÍTÓját. Példa: `/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>`.  
+        1. Adja meg az erőforrás AZONOSÍTÓját. Például: `/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>`.  
         2. Az **erőforrás**mezőbe írja be a következőt: **témakör** vagy **tartomány**. 
         3. választható Adja meg a kérelem üzenetét. 
         4. Válassza a **Tovább: konfigurációs >** gombot az oldal alján. 
@@ -479,6 +480,6 @@ Invoke-RestMethod -Method 'Get'
 
 Az API-n keresztüli elutasítása után is jóváhagyhatja a kapcsolatokat. Ha Azure Portal használ, nem hagyhat jóvá egy elutasított végpontot. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Az IP-tűzfalbeállítások konfigurálásával kapcsolatos további tudnivalókért lásd: [IP-tűzfal konfigurálása Azure Event Grid témakörökhöz vagy tartományokhoz](configure-firewall.md).
 * A hálózati kapcsolattal kapcsolatos problémák elhárításáról lásd: [hálózati kapcsolattal kapcsolatos problémák elhárítása](troubleshoot-network-connectivity.md)

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 4e10843eab8ac2ccbda3d6876f51c88a598d7139
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 36f3c4192f43e323df2aaf9397364dfd1b4da731
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371685"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501372"
 ---
 # <a name="azure-security-baseline-for-azure-storage"></a>Azure-beli biztonsági alapkonfiguráció Azure Storage-hoz
 
@@ -292,7 +292,7 @@ Emellett engedélyezze a komplex veszélyforrások elleni védelmet az Azure Sto
 
 ### <a name="32-change-default-passwords-where-applicable"></a>3,2: az alapértelmezett jelszavak módosítása, ha alkalmazható
 
-**Útmutató**: az Azure Storage-fiókok és a Azure Active Directory az alapértelmezett vagy az üres jelszavak fogalmával rendelkeznek. Az Azure Storage egy hozzáférés-vezérlési modellt valósít meg, amely támogatja az Azure szerepköralapú hozzáférés-vezérlést (RBAC), valamint a megosztott kulcsokat és a közös hozzáférésű aláírásokat (SAS). A megosztott kulcs és az SAS hitelesítés jellemzője, hogy a hívó nem társít identitást, ezért nem hajtható végre a rendszerbiztonsági tag engedély-alapú engedélyezése. 
+**Útmutató**: az Azure Storage-fiókok és a Azure Active Directory az alapértelmezett vagy az üres jelszavak fogalmával rendelkeznek. Az Azure Storage egy hozzáférés-vezérlési modellt valósít meg, amely támogatja az Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC), valamint a megosztott kulcsokat és a közös hozzáférésű aláírásokat (SAS). A megosztott kulcs és az SAS hitelesítés jellemzője, hogy a hívó nem társít identitást, ezért nem hajtható végre a rendszerbiztonsági tag engedély-alapú engedélyezése. 
 
 - [Az Azure Storage-beli adathozzáférés engedélyezése](https://docs.microsoft.com/azure/storage/common/storage-auth)
 

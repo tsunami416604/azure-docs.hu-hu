@@ -4,16 +4,17 @@ description: Útmutató csatolt sablon üzembe helyezéséhez
 ms.date: 03/13/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 177a994450b6ffe5489a8c95c3b484521fd9b77b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 63383f810b6f5643bad9feb86360745cd2f9b000
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80672919"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501133"
 ---
 # <a name="tutorial-deploy-a-linked-template"></a>Oktatóanyag: csatolt sablon üzembe helyezése
 
-Az [előző oktatóanyagokban](./deployment-tutorial-local-template.md)megtanulta, hogyan helyezhet üzembe egy helyi számítógépen tárolt sablont. Összetett megoldások üzembe helyezéséhez megszakíthat egy sablont számos sablonba, és egy fő sablon segítségével telepítheti ezeket a sablonokat. Ebből az oktatóanyagból megtudhatja, hogyan helyezhet üzembe egy olyan fő sablont, amely egy csatolt sablonra mutató hivatkozást tartalmaz. A fő sablon üzembe helyezése után elindítja a csatolt sablon központi telepítését. Azt is megtudhatja, hogyan tárolhat és biztonságossá teheti a csatolt sablont SAS-token használatával. A művelet végrehajtása körülbelül **12 percet** vesz igénybe.
+Az [előző oktatóanyagokban](./deployment-tutorial-local-template.md)megtanulta, hogyan helyezhet üzembe egy helyi számítógépen tárolt sablont. Összetett megoldások üzembe helyezéséhez megszakíthat egy sablont számos sablonba, és egy fő sablon segítségével telepítheti ezeket a sablonokat. Ebből az oktatóanyagból megtudhatja, hogyan helyezhet üzembe egy olyan fő sablont, amely egy csatolt sablonra mutató hivatkozást tartalmaz. A fősablon üzembe helyezés után elindítja a csatolt sablon üzembe helyezését. Azt is megtudhatja, hogyan tárolhat és biztonságossá teheti a csatolt sablont SAS-token használatával. A művelet végrehajtása körülbelül **12 percet** vesz igénybe.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -35,7 +36,7 @@ A fő sablon a következő sablon.  A Kiemelt **Microsoft. Resources/Deployments
 
 :::code language="json" source="~/resourcemanager-templates/get-started-deployment/linked-template/azuredeploy.json" highlight="27-32,40-58":::
 
-Mentse a fő sablon egy példányát a helyi számítógépre a. JSON kiterjesztéssel, például: azuredeploy. JSON. Nem kell mentenie a csatolt sablon másolatát.  A csatolt sablon a GitHub-adattárból egy Storage-fiókba lesz átmásolva.
+Mentse a fő sablon egy példányát a helyi számítógépre a. JSON kiterjesztéssel, például azuredeploy.jsbe. Nem kell mentenie a csatolt sablon másolatát.  A csatolt sablon a GitHub-adattárból egy Storage-fiókba lesz átmásolva.
 
 ## <a name="store-the-linked-template"></a>A csatolt sablon tárolása
 

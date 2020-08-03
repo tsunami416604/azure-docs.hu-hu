@@ -9,14 +9,14 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: 0fce972b6b0ceb426ab4b08ab26e664d068af16f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3a2ba65fcef2b6481835cb45243449870361c062
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089277"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498922"
 ---
-# <a name="what-is-apache-spark-in-azure-synapse-analytics"></a>Az Azure szinapszis Analytics Apache Spark
+# <a name="apache-spark-in-azure-synapse-analytics"></a>Apache Spark az Azure szinapszis Analyticsben
 
 A Apache Spark egy párhuzamos feldolgozási keretrendszer, amely támogatja a memóriabeli feldolgozást a Big-adatanalitikai alkalmazások teljesítményének növelése érdekében. Az Azure szinapszis Analytics Apache Spark a Microsoft egyike a Felhőbeli Apache Spark megvalósításának. Az Azure szinapszis megkönnyíti a Spark-készlet (előzetes verzió) létrehozását és konfigurálását az Azure-ban. Az Azure Szinapszisban található Spark-készletek kompatibilisek az Azure Storage szolgáltatással és Azure Data Lake 2. generációs tárolóval. Az Azure Spark-készletek használatával feldolgozhatja az Azure-ban tárolt adatait.
 
@@ -41,7 +41,7 @@ Az Azure Szinapszisban a Spark-készletek teljes körűen felügyelt Spark szolg
 | A 2. generációs Azure Data Lake Storage támogatása| Az Azure Szinapszisban található Spark-készletek a 2. generációs és a BLOB Storage-t is Azure Data Lake Storage használhatják. További információ a Data Lake Storageről: [Azure Data Lake Storage áttekintése](../../data-lake-store/data-lake-store-overview.md). |
 | Integráció külső integrált fejlesztői környezetekkel (IDE) | Az Azure szinapszis egy IDE beépülő modult biztosít a [JetBrains "INTELLIJ ötletéhez](https://www.jetbrains.com/idea/) , amely hasznos lehet alkalmazások létrehozására és beküldésére egy Spark-készletbe. |
 | Előre betöltött Anaconda-könyvtárak |Az Azure Szinapszisban a Spark-készletek előre telepített anaconda-kódtárakkal jönnek. Az [Anaconda](https://docs.continuum.io/anaconda/) közel 200 könyvtárat biztosít például a Machine Learning szolgáltatáshoz, az adatok elemzéséhez vagy a megjelenítéshez. |
-| Skálázhatóság | Az Azure szinapszis-készletekben lévő Apache Sparkek lehetővé teszik az automatikus méretezést, így a készletek méretezése szükség szerint a csomópontok hozzáadásával vagy eltávolításával végezhető el. Emellett a Spark-készletek leállíthatók adatvesztés nélkül, mivel az összes tárolt adatmennyiség az Azure Storage-ban vagy a Data Lake Storageban van tárolva. |
+| Méretezhetőség | Az Azure szinapszis-készletekben lévő Apache Sparkek lehetővé teszik az automatikus méretezést, így a készletek méretezése szükség szerint a csomópontok hozzáadásával vagy eltávolításával végezhető el. Emellett a Spark-készletek leállíthatók adatvesztés nélkül, mivel az összes tárolt adatmennyiség az Azure Storage-ban vagy a Data Lake Storageban van tárolva. |
 
 Az Azure Szinapszisban található Spark-készletek a következő összetevőket tartalmazzák, amelyek alapértelmezés szerint a készletekben elérhetők.
 

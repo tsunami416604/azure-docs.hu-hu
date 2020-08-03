@@ -14,7 +14,7 @@ ms.locfileid: "87336896"
 ---
 ## <a name="prepare-an-iot-hub"></a>IoT hub előkészítése
 
-A cikk lépéseinek elvégzéséhez szüksége lesz egy Azure IoT hub-ra az Azure-előfizetésben. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+A cikk lépéseinek elvégzéséhez szüksége lesz egy Azure IoT hub-ra az Azure-előfizetésben. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 Ha helyileg használja az Azure CLI-t, először jelentkezzen be az Azure-előfizetésbe a használatával `az login` . Ha ezeket a parancsokat a Azure Cloud Shell futtatja, a rendszer automatikusan bejelentkezett.
 

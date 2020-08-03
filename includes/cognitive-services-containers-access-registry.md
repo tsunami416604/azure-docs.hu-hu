@@ -15,13 +15,13 @@ ms.locfileid: "67704173"
 
 A Cognitive Services tárolók számára több módon is végezheti a hitelesítést a tárolók beállításjegyzékében, de a parancssorban ajánlott módszer a [Docker CLI](https://docs.docker.com/engine/reference/commandline/cli/)használata.
 
-Használja az [ `docker login` parancsot](https://docs.docker.com/engine/reference/commandline/login/)az alábbi példában `containerpreview.azurecr.io`látható módon a Cognitive Services tárolók magánhálózati tárolójának beállításjegyzékében. Cserélje * \<le\> a username* nevet és * \<a jelszót\> * az Azure Cognitive Services csapata által kapott hitelesítő adatokban megadott jelszóra.
+Használja az [ `docker login` parancsot](https://docs.docker.com/engine/reference/commandline/login/)az alábbi példában látható módon a `containerpreview.azurecr.io` Cognitive Services tárolók magánhálózati tárolójának beállításjegyzékében. Cserélje le a * \< username \> * nevet és a * \< jelszót \> * az Azure Cognitive Services csapata által kapott hitelesítő adatokban megadott jelszóra.
 
 ```
 docker login containerpreview.azurecr.io -u <username> -p <password>
 ```
 
-Ha a hitelesítő adatait szövegfájlban védi, a következő példában látható módon összefűzheti a szövegfájl tartalmát a parancs használatával `cat` a `docker login` parancshoz. Cserélje * \<le\> a passwordFile* a jelszót és * \<a felhasználónevet\> * tartalmazó szövegfájl elérési útjára és nevére a hitelesítő adataiban megadott felhasználónévvel.
+Ha a hitelesítő adatait szövegfájlban védi, a következő példában látható módon összefűzheti a szövegfájl tartalmát a parancs használatával a `cat` `docker login` parancshoz. Cserélje le a * \< passwordFile \> * a jelszót és a * \< felhasználónevet \> * tartalmazó szövegfájl elérési útjára és nevére a hitelesítő adataiban megadott felhasználónévvel.
 
 ```
 cat <passwordFile> | docker login containerpreview.azurecr.io -u <username> --password-stdin

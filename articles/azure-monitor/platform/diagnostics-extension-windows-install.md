@@ -7,12 +7,13 @@ ms.subservice: diagnostic-extension
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: bwren
-ms.openlocfilehash: a3e9a14edf9235baff2955c9f8419dc78e45755c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 4e38e9ee301d080110e8019e3fe407e7d5cdc026
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87007979"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499194"
 ---
 # <a name="install-and-configure-windows-azure-diagnostics-extension-wad"></a>A Windows Azure Diagnostics bővítmény (WAD) telepítése és konfigurálása
 Az [Azure Diagnostics bővítmény](diagnostics-extension-overview.md) olyan Azure monitor ügynöke, amely a vendég operációs rendszerből és az Azure-beli virtuális gépek és egyéb számítási erőforrások munkaterhelésével kapcsolatos figyelési adatokat gyűjt. Ez a cikk részletesen ismerteti a Windows diagnosztikai bővítmény telepítését és konfigurálását, valamint az adatok tárolásának és az Azure Storage-fiókban tárolt információk leírásának ismertetését.
@@ -191,13 +192,13 @@ Lásd még: a [PowerShell használata a Azure Diagnostics Windows rendszerű vir
 A következő táblázat felsorolja a diagnosztikai bővítményből összegyűjtött különböző típusú adatokat, valamint azt, hogy táblázatként vagy blobként vannak tárolva. A táblákban tárolt adattárolók a nyilvános konfiguráció [StorageType beállításától](diagnostics-extension-schema-windows.md#publicconfig-element) függően a blobokban is tárolhatók.
 
 
-| Adatok | Tárolási típus | Description |
+| Adatok | Tárolási típus | Leírás |
 |:---|:---|:---|
-| WADDiagnosticInfrastructureLogsTable | Táblázat | A diagnosztikai figyelő és a konfiguráció módosításai. |
-| WADDirectoriesTable | Táblázat | A diagnosztikai figyelő által figyelt címtárak.  Ez magában foglalja az IIS-naplókat, az IIS sikertelen kérelmek naplóit és az egyéni címtárakat.  A blob naplófájljának helye a tároló mezőben van megadva, és a blob neve a RelativePath mezőben található.  A AbsolutePath mező a fájl helyét és nevét jelzi, ahogy az Azure-beli virtuális gépen létezett. |
-| WadLogsTable | Táblázat | A nyomkövetési figyelő használatával kódban írt naplók. |
-| WADPerformanceCountersTable | Táblázat | Teljesítményszámlálók. |
-| WADWindowsEventLogsTable | Táblázat | Windows-eseménynaplók. |
+| WADDiagnosticInfrastructureLogsTable | Tábla | A diagnosztikai figyelő és a konfiguráció módosításai. |
+| WADDirectoriesTable | Tábla | A diagnosztikai figyelő által figyelt címtárak.  Ez magában foglalja az IIS-naplókat, az IIS sikertelen kérelmek naplóit és az egyéni címtárakat.  A blob naplófájljának helye a tároló mezőben van megadva, és a blob neve a RelativePath mezőben található.  A AbsolutePath mező a fájl helyét és nevét jelzi, ahogy az Azure-beli virtuális gépen létezett. |
+| WadLogsTable | Tábla | A nyomkövetési figyelő használatával kódban írt naplók. |
+| WADPerformanceCountersTable | Tábla | Teljesítményszámlálók. |
+| WADWindowsEventLogsTable | Tábla | Windows-eseménynaplók. |
 | wad-IIS-failedreqlogfiles | Blob | Az IIS sikertelen kérelmek naplóiból származó információkat tartalmaz. |
 | wad-IIS-LogFiles | Blob | AZ IIS-naplókkal kapcsolatos információkat tartalmaz. |
 | Egyéni | Blob | Egyéni tároló, amely a diagnosztikai figyelő által figyelt könyvtárak konfigurálásán alapul.  A blob-tároló neve a WADDirectoriesTable-ben lesz meghatározva. |

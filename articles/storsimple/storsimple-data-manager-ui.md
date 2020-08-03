@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: 85be49ad88ac62d90235c3da6b89b0da6a11487c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 00748cfa60882e49336c3a0ac3ecfdec389021ac
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78933752"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496440"
 ---
 # <a name="manage-the-storsimple-data-manager-service-in-azure-portal"></a>A StorSimple Data Manager szolgáltatás kezelése Azure Portal
 
@@ -42,7 +42,7 @@ StorSimple Data Manager szolgáltatás létrehozásához hajtsa végre az alább
 
    2. Válasszon egy **előfizetést** a legördülő listából. Az előfizetés az Ön számlázási fiókjához lesz társítva. Ez a mező automatikusan ki van töltve (és nem választható), ha csak egy előfizetéssel rendelkezik.
 
-   3. Válasszon ki egy meglévő erőforráscsoportot, vagy hozzon létre egy új csoportot. További információk: [Azure-erőforráscsoportok](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-infrastructure-resource-groups-guidelines/).
+   3. Válasszon ki egy meglévő erőforráscsoportot, vagy hozzon létre egy új csoportot. További információk: [Azure-erőforráscsoportok](/azure/azure-resource-manager/management/manage-resource-groups-portal).
 
    4. Adja meg a Storage-fiókokat és a StorSimple Data Manager szolgáltatást tároló szolgáltatás **helyét** . A StorSimple Eszközkezelő szolgáltatásra, Data Manager szolgáltatásra és a társított Storage-fiókra a támogatott régiókban kell lennie.
     
@@ -54,7 +54,7 @@ StorSimple Data Manager szolgáltatás létrehozásához hajtsa végre az alább
 
 A szolgáltatás létrehozása eltarthat néhány percig. Ekkor megjelenik egy értesítés a szolgáltatás sikeres létrehozása után, és megjelenik az új szolgáltatás.
 
-### <a name="create-a-data-transformation-job-definition"></a>Adatátalakítási feladatok definíciójának létrehozása
+### <a name="create-a-data-transformation-job-definition"></a>Adatátalakítási feladat definíciójának létrehozása
 
 Egy StorSimple Data Manager szolgáltatáson belül létre kell hoznia egy Adatátalakítási feladatsort. A feladatdefiníció adja meg azokat a StorSimple adatokat, amelyeket a Storage-fiók natív formátumban való áthelyezése érdekli. A feladatdefiníció létrehozása után a feladatot újra futtathatja a különböző futtatókörnyezet-beállításokkal.
 

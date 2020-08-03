@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: b94725d4d3eb9fd6f13a39d00486b4ab085b9ef9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4471994f7e691466449125a74cf3f7d46607be01
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80473935"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495131"
 ---
 # <a name="performance-and-scalability-checklist-for-blob-storage"></a>A blob Storage teljesítmény-és méretezhetőségi ellenőrzőlistája
 
@@ -32,9 +32,9 @@ Ez a cikk bevált eljárásokat szervez a teljesítményre vonatkozóan a blob S
 | &nbsp; |Méretezhetőségi célok |[Egyszerre több ügyfél fér hozzá egyetlen blobhoz?](#multiple-clients-accessing-a-single-blob-concurrently) |
 | &nbsp; |Méretezhetőségi célok |[Az alkalmazása a méretezhetőségi célokon belül marad egyetlen blob esetében?](#bandwidth-and-operations-per-blob) |
 | &nbsp; |Particionálás |[Az elnevezési konvenció úgy lett kialakítva, hogy jobb terheléselosztást lehessen kialakítani?](#partitioning) |
-| &nbsp; |Hálózatkezelés |[A szükséges teljesítmény elérése érdekében az ügyféloldali eszközök megfelelően nagy sávszélességgel és kis késéssel rendelkeznek?](#throughput) |
-| &nbsp; |Hálózatkezelés |[Az ügyféloldali eszközök magas színvonalú hálózati kapcsolattal rendelkeznek?](#link-quality) |
-| &nbsp; |Hálózatkezelés |[Az ügyfélalkalmazás ugyanabban a régióban található, mint a Storage-fiók?](#location) |
+| &nbsp; |Hálózat |[A szükséges teljesítmény elérése érdekében az ügyféloldali eszközök megfelelően nagy sávszélességgel és kis késéssel rendelkeznek?](#throughput) |
+| &nbsp; |Hálózat |[Az ügyféloldali eszközök magas színvonalú hálózati kapcsolattal rendelkeznek?](#link-quality) |
+| &nbsp; |Hálózat |[Az ügyfélalkalmazás ugyanabban a régióban található, mint a Storage-fiók?](#location) |
 | &nbsp; |Közvetlen ügyfél-hozzáférés |[Közös hozzáférésű aláírásokat (SAS) és több eredetű erőforrás-megosztást (CORS) használ az Azure Storage-hoz való közvetlen hozzáférés engedélyezéséhez?](#sas-and-cors) |
 | &nbsp; |Gyorsítótárazás |[Az alkalmazás gyorsítótárazza a gyakran használt és ritkán módosított adatait?](#reading-data) |
 | &nbsp; |Gyorsítótárazás |[Az alkalmazás batch-frissítése az ügyfélen végzett gyorsítótárazással történik, majd feltölti őket nagyobb készletekbe?](#uploading-data-in-batches) |
@@ -65,7 +65,7 @@ További információ a Queue szolgáltatás skálázhatósági céljairól: az 
 Ha egy adott előfizetés/régió kombináció számára engedélyezett tárolási fiókok maximális számát keresi, értékelje ki a forgatókönyvet, és állapítsa meg, hogy az alábbi feltételek bármelyike teljesül-e:
 
 - A Storage-fiókok segítségével tárolja a nem felügyelt lemezeket, és hozzáadja ezeket a lemezeket a virtuális gépekhez? Ebben az esetben a Microsoft a felügyelt lemezek használatát javasolja. A felügyelt lemezek méretezése automatikusan történik, és nincs szükség egyéni Storage-fiókok létrehozására és felügyeletére. További információ: [Bevezetés az Azure Managed Disks](../../virtual-machines/windows/managed-disks-overview.md) szolgáltatásba
-- Felhasználónként használ egy Storage-fiókot az adatelkülönítés érdekében? Ebben a forgatókönyvben a Microsoft azt javasolja, hogy minden ügyfélhez BLOB-tárolót használjon, a teljes Storage-fiók helyett. Az Azure Storage mostantól lehetővé teszi szerepköralapú hozzáférés-vezérlési (RBAC) szerepkörök hozzárendelését egy tároló alapján. További információkért lásd: [hozzáférés biztosítása az Azure blobhoz és a üzenetsor-adatokhoz a Azure Portal RBAC](../common/storage-auth-aad-rbac-portal.md).
+- Felhasználónként használ egy Storage-fiókot az adatelkülönítés érdekében? Ebben a forgatókönyvben a Microsoft azt javasolja, hogy minden ügyfélhez BLOB-tárolót használjon, a teljes Storage-fiók helyett. Az Azure Storage mostantól lehetővé teszi, hogy az Azure-szerepköröket tároló alapján rendeljen hozzá. További információkért lásd: [hozzáférés biztosítása az Azure blobhoz és a üzenetsor-adatokhoz a Azure Portal RBAC](../common/storage-auth-aad-rbac-portal.md).
 - Több Storage-fiókot használ a szilánkok számára a bejövő forgalom, a kimenő I/O-műveletek másodpercenkénti (IOPS) vagy kapacitásának növelésére? Ebben a forgatókönyvben a Microsoft azt javasolja, hogy a Storage-fiókok megnövekedett korlátainak kihasználásával csökkentse a munkaterhelés számára szükséges tárolási fiókok számát, ha lehetséges. Vegye fel a kapcsolatot az [Azure támogatási szolgálatával](https://azure.microsoft.com/support/options/) , és kérjen nagyobb korlátokat a Storage-fiókjához. További információ: [nagyobb méretű, magasabb szintű Storage-fiókok bejelentése](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/).
 
 ### <a name="capacity-and-transaction-targets"></a>Kapacitás-és tranzakciós célok
@@ -115,7 +115,7 @@ Az ilyen műveletek gyakoriságának csökkentéséhez kövesse az ajánlott elj
   
 - Az Azure Storage-ban használt particionálási sémával kapcsolatos további információkért lásd [: Azure Storage: magas rendelkezésre állású felhőalapú tárolási szolgáltatás erős konzisztencia](https://sigops.org/sosp/sosp11/current/2011-Cascais/printable/11-calder.pdf)használatával.
 
-## <a name="networking"></a>Hálózatkezelés
+## <a name="networking"></a>Hálózat
 
 Az alkalmazás fizikai hálózati korlátai jelentős hatással lehetnek a teljesítményre. A következő szakaszok ismertetik néhány korlátozást a felhasználók számára.  
 
@@ -123,7 +123,7 @@ Az alkalmazás fizikai hálózati korlátai jelentős hatással lehetnek a telje
 
 A sávszélesség és a hálózati kapcsolat minősége fontos szerepet játszik az alkalmazás teljesítményében, az alábbi szakaszokban leírtak szerint.
 
-#### <a name="throughput"></a>Teljesítmény
+#### <a name="throughput"></a>Átviteli sebesség
 
 A sávszélesség miatt a probléma gyakran az ügyfél képességei. A nagyobb méretű Azure-példányok nagyobb kapacitású hálózati adapterekkel rendelkeznek, ezért érdemes nagyobb méretű virtuális gépeket használni, ha egy gépről nagyobb hálózati korlátokra van szüksége. Ha egy helyszíni alkalmazásból fér hozzá az Azure Storage-hoz, ugyanez a szabály vonatkozik rá: Ismerje meg az ügyféleszközök hálózati képességeit és a hálózati kapcsolatot az Azure Storage-beli helyhez, vagy javítsa azokat igény szerint, vagy tervezze meg az alkalmazását a képességein belül.
 
@@ -155,7 +155,7 @@ Az SAS és a CORS is segíthet elkerülni a webalkalmazás szükségtelen terhel
 
 A gyorsítótárazás fontos szerepet játszik a teljesítményben. Az alábbi fejezetek a gyorsítótárazási ajánlott eljárásokat tárgyalják.
 
-### <a name="reading-data"></a>Az adatolvasás
+### <a name="reading-data"></a>Adatok beolvasása
 
 Általánosságban elmondható, hogy az adatolvasás egyszer érdemes kétszer beolvasni. Vegyünk például egy olyan webalkalmazás példáját, amely egy 50 MiB-blobot adott vissza az Azure Storage-ból, hogy tartalmat szolgáltasson a felhasználó számára. Ideális esetben az alkalmazás helyi gyorsítótárba helyezi a blobot a lemezre, majd lekéri a gyorsítótárazott verziót a későbbi felhasználói kérésekhez.
 

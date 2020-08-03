@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: 2a534bd0cb89e837ff2315cb3fb9cfe70ad01f5f
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: ab1cba455f93abe4d603f417f8d0a00dda0e315e
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86078986"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497647"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Az Azure Data Lake Storage Gen2 használata Azure HDInsight-fürtökkel
 
@@ -60,7 +60,7 @@ Hozzon létre egy Azure Data Lake Storage Gen2 Storage-fiókot.
     1. Adja meg a Data Lake Storage Gen2-fiók nevét.
     1. Kattintson a **speciális** fülre.
     1. Kattintson a **Data Lake Storage Gen2**alatt található **hierarchikus névtér** melletti **engedélyezve** lehetőségre.
-    1. Kattintson az **Áttekintés + létrehozás** elemre.
+    1. Kattintson a **Felülvizsgálat + létrehozás** elemre.
     1. Kattintson a **Létrehozás** gombra
 
 További információ a Storage-fiók létrehozása során felmerülő egyéb lehetőségekről: gyors útmutató [: Azure Data Lake Storage Gen2 Storage-fiók létrehozása](../storage/blobs/data-lake-storage-quickstart-create-account.md).
@@ -100,7 +100,7 @@ Rendelje hozzá a felügyelt identitást a Storage- **blob adattulajdonosi** sze
 
 [Letöltheti a minta sablonfájl fájlját](https://github.com/Azure-Samples/hdinsight-data-lake-storage-gen2-templates/blob/master/hdinsight-adls-gen2-template.json) , és [letöltheti a minta paramétereinek fájlját](https://github.com/Azure-Samples/hdinsight-data-lake-storage-gen2-templates/blob/master/parameters.json). A sablon és az Azure CLI-kódrészlet használata előtt cserélje le a következő helyőrzőket a megfelelő értékekre:
 
-| Helyőrző | Description |
+| Helyőrző | Leírás |
 |---|---|
 | `<SUBSCRIPTION_ID>` | Az Azure-előfizetés azonosítója |
 | `<RESOURCEGROUPNAME>` | Az az erőforráscsoport, amelyben létre szeretné hozni az új fürtöt és a Storage-fiókot. |
@@ -159,7 +159,7 @@ Data Lake Storage Gen2 egy hozzáférés-vezérlési modellt használ, amely tá
 
 A RBAC szerepkör-hozzárendeléseket használ az Azure-erőforrásokhoz tartozó felhasználókhoz, csoportokhoz és egyszerű szolgáltatásokhoz tartozó engedélyek hatékony alkalmazására. Ezek az Azure-erőforrások jellemzően legfelső szintű erőforrásokra (például Azure Storage-fiókokra) vannak korlátozva. Az Azure Storage esetében és a Data Lake Storage Gen2 is, ez a mechanizmus a fájlrendszer erőforrására lett kiterjesztve.
 
- További információ a RBAC-mel rendelkező fájlokra vonatkozó engedélyekről: [Azure szerepköralapú hozzáférés-vezérlés (RBAC)](../storage/blobs/data-lake-storage-access-control.md#azure-role-based-access-control-rbac).
+ További információ a RBAC-mel rendelkező fájlokra vonatkozó engedélyekről: [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../storage/blobs/data-lake-storage-access-control.md#azure-role-based-access-control-rbac).
 
 Az ACL-ekkel rendelkező fájlengedélyek részletes ismertetését lásd: [hozzáférés-vezérlési listák a fájlokon és könyvtárakon](../storage/blobs/data-lake-storage-access-control.md#access-control-lists-on-files-and-directories).
 

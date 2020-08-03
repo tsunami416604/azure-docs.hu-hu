@@ -5,12 +5,13 @@ author: mumian
 ms.date: 06/10/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 1e286a3b59279ed9658a373210f1425ece05eff4
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 140eb73cdf6d5bb701c08b0dd8d5f85b6f137df6
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86102091"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497477"
 ---
 # <a name="tutorial-create-and-deploy-your-first-arm-template"></a>Oktatóanyag: az első ARM-sablon létrehozása és üzembe helyezése
 
@@ -20,7 +21,7 @@ Ez az oktatóanyag egy sorozat első része. Ahogy halad a sorozaton, módosítj
 
 Ha szeretné megismerni a sablonok használatának előnyeit, és azt, hogy miért érdemes a sablonokkal automatizálni az üzembe helyezést, olvassa el a [Azure Resource Manager-sablonok](overview.md)című témakört.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="get-tools"></a>Eszközök beolvasása
 
@@ -34,7 +35,7 @@ A sablonok JSON-fájlok. Sablonok létrehozásához jó JSON-szerkesztőre van s
 
 A sablon telepítéséhez Azure PowerShell vagy Azure CLI is szükséges. Ha az Azure CLI-t használja, a legújabb verziót kell használnia. A telepítési utasításokért lásd:
 
-- [Az Azure PowerShell telepítése](/powershell/azure/install-az-ps)
+- [Azure PowerShell telepítése](/powershell/azure/install-az-ps)
 - [Az Azure CLI telepítése Windows rendszeren](/cli/azure/install-azure-cli-windows)
 - [Az Azure CLI telepítése Linux rendszeren](/cli/azure/install-azure-cli-linux)
 - [Az Azure CLI telepítése macOS rendszeren](/cli/azure/install-azure-cli-macos)
@@ -138,7 +139,7 @@ az group create \
 
 ## <a name="deploy-template"></a>Sablon üzembe helyezése
 
-A sablon üzembe helyezéséhez használja az Azure CLI-t vagy a Azure PowerShell. Használja az Ön által létrehozott erőforráscsoportot. Adjon nevet a központi telepítésnek, hogy könnyen azonosítható legyen az üzembe helyezési előzményekben. A kényelem érdekében hozzon létre egy olyan változót is, amely a sablonfájl elérési útját tárolja. Ez a változó megkönnyíti az üzembe helyezési parancsok futtatását, mert minden egyes telepítésekor nem kell újraírnia az elérési utat.
+A sablon üzembe helyezéséhez használja az Azure CLI-t vagy a Azure PowerShell. Használja az Ön által létrehozott erőforráscsoportot. Adjon nevet a központi telepítésnek, hogy könnyen azonosítható legyen az üzembe helyezési előzményekben. A kényelem érdekében hozzon létre egy olyan változót is, amely a sablonfájl elérési útját tárolja. Ez a változó megkönnyíti az üzembe helyezési parancsok futtatását, mert nem kell újra megadnia az elérési utat minden egyes üzembe helyezéskor.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -152,7 +153,7 @@ New-AzResourceGroupDeployment `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Az üzembe helyezési parancs futtatásához az Azure CLI [legújabb verziójára](/cli/azure/install-azure-cli) van szükség.
+Az üzembe helyezési parancs futtatásához az [Azure CLI](/cli/azure/install-azure-cli) legújabb verziójára van szükség.
 
 ```azurecli
 templateFile="{provide-the-path-to-the-template-file}"
@@ -201,7 +202,7 @@ A központi telepítés ellenőrzéséhez tekintse meg az erőforráscsoportot a
 
    ![Központi telepítés összegzésének megtekintése](./media/template-tutorial-create-first-template/view-deployment-summary.png)
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha továbblép a következő oktatóanyagra, nem kell törölnie az erőforráscsoportot.
 
@@ -212,7 +213,7 @@ Ha most leáll, érdemes törölni az erőforráscsoportot.
 3. Válassza ki az erőforráscsoport nevét.
 4. Válassza az **erőforráscsoport törlése** lehetőséget a felső menüben.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Létrehozott egy egyszerű sablont az Azure-ba való üzembe helyezéshez. A következő oktatóanyagban hozzá kell adnia egy Storage-fiókot a sablonhoz, és telepítenie kell azt az erőforráscsoporthoz.
 

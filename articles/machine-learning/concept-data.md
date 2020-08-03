@@ -11,12 +11,12 @@ author: nibaccam
 ms.author: nibaccam
 ms.date: 04/24/2020
 ms.custom: tracking-python
-ms.openlocfilehash: 15cf4aa6adda26991e76ec8a5e7378766fe2a21f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6234e9efe4f6dd122a22ee834ef9c35269eea95f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84552647"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500980"
 ---
 # <a name="secure-data-access-in-azure-machine-learning"></a>Adatelérés védelme Azure Machine Learning
 
@@ -50,7 +50,7 @@ Az alábbi ábra a javasolt munkafolyamat vizuális bemutatását mutatja be.
 
 ![Adatkoncepció – diagram](./media/concept-data/data-concept-diagram.svg)
 
-## <a name="datastores"></a>Lemezét
+## <a name="datastores"></a>Adattárak
 
 Azure Machine Learning adattárolók biztonságosan megőrzik a kapcsolódási adatokat az Azure Storage-ban, így nem kell azt a parancsfájlokba beírni. [Regisztráljon, és hozzon létre egy](how-to-access-data.md) adattárolót, amellyel könnyedén csatlakozhat a Storage-fiókjához, és elérheti a mögöttes Azure Storage szolgáltatásban tárolt adatokat. 
 
@@ -67,14 +67,17 @@ Az Azure-ban támogatott felhőalapú tárolási szolgáltatások, amelyek adatt
 
 ## <a name="datasets"></a>Adathalmazok
 
-Azure Machine Learning adatkészletek olyan hivatkozások, amelyek a tárolási szolgáltatásban lévő adatokra mutatnak. Nem tartoznak az adataihoz, ezért nem merül fel extra tárolási költségek. Ha a tárolóban lévő adatokkal szeretne kommunikálni, [hozzon létre egy adatkészletet](how-to-create-register-datasets.md) , amely az adatokat a gépi tanulási feladatokhoz tartozó, fogyóeszközök szerinti objektummá csomagolja. Regisztrálja az adatkészletet a munkaterületen, hogy az adatfeldolgozási bonyolultság nélkül ossza meg és használja fel a különböző kísérletek között.
+Azure Machine Learning adatkészletek olyan hivatkozások, amelyek a tárolási szolgáltatásban lévő adatokra mutatnak. Nem tartoznak az adatok másolatai, így nem merülnek fel extra tárolási költségek, és az eredeti adatforrások integritása nem veszélyeztetett.
+
+ Ha a tárolóban lévő adatokkal szeretne kommunikálni, [hozzon létre egy adatkészletet](how-to-create-register-datasets.md) , amely az adatokat a gépi tanulási feladatokhoz tartozó, fogyóeszközök szerinti objektummá csomagolja. Regisztrálja az adatkészletet a munkaterületen, hogy az adatfeldolgozási bonyolultság nélkül ossza meg és használja fel a különböző kísérletek között.
 
 Az adatkészletek helyi fájlokból, nyilvános URL-címekből, [Azure Open-adatkészletből](https://azure.microsoft.com/services/open-datasets/)vagy Azure Storage-szolgáltatásokból hozhatók létre adattárolók használatával. Ha adatkészletet szeretne létrehozni egy memóriából származó pandák dataframe, írja be az adatokat egy helyi fájlba, például egy parkettával, és hozza létre az adatkészletet a fájlból.  
 
 Két típusú adatkészletet támogatunk: 
-+ A [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) táblázatos formátumban jeleníti meg az adatokat a megadott fájl vagy fájlok listájának elemzésével. A TabularDataset egy Panda vagy Spark DataFrame is betöltheti további manipuláció és tisztítás céljából. A TabularDatasets létrehozásához használható adatformátumok teljes listáját a [TabularDatasetFactory osztályban](https://aka.ms/tabulardataset-api-reference)tekintheti meg.
 
-+ A [FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py) egy vagy több fájlt hivatkozik az adattárolókban vagy a nyilvános URL-címeken. A FileDatasets által hivatkozott fájlokat a számítási célra is [letöltheti vagy csatlakoztathatja](how-to-train-with-datasets.md#mount-files-to-remote-compute-targets) .
++ A [FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py) egy vagy több fájlt hivatkozik az adattárolókban vagy a nyilvános URL-címeken. Ha az adatok már ki vannak takarítva, és használatra készen állnak a betanítási kísérletekben, [letöltheti vagy csatlakoztathatja](how-to-train-with-datasets.md#mount-files-to-remote-compute-targets) a FileDatasets által hivatkozott fájlokat a számítási célra.
+
++ A [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) táblázatos formátumban jeleníti meg az adatokat a megadott fájl vagy fájlok listájának elemzésével. A TabularDataset egy Panda vagy Spark DataFrame is betöltheti további manipuláció és tisztítás céljából. A TabularDatasets létrehozásához használható adatformátumok teljes listáját a [TabularDatasetFactory osztályban](https://aka.ms/tabulardataset-api-reference)tekintheti meg.
 
 Az adatkészletek további funkciói a következő dokumentációban találhatók:
 

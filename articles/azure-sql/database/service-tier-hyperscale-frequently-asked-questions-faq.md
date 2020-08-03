@@ -11,12 +11,12 @@ author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: ''
 ms.date: 03/03/2020
-ms.openlocfilehash: 983bf848b3be2501b70ba1c0396207e514b7b8d6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 359de25d2bdb57ad5c6386586f987942acc120ef
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87024017"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500146"
 ---
 # <a name="azure-sql-database-hyperscale-faq"></a>Azure SQL Database nagy kapacitású – gyakori kérdések
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -45,12 +45,12 @@ A virtuális mag-alapú szolgáltatási rétegek a következő táblázatban le�
 | **A következőkre alkalmas** |Mind|A költségvetés-orientált kiegyensúlyozott számítási és tárolási lehetőségeket kínál.|A legtöbb üzleti számítási feladat. A tárterület automatikus skálázása 100 TB-ig, gyors vertikális és horizontális számítási skálázás, gyors adatbázis-visszaállítás.|OLTP alkalmazások nagy tranzakciós sebességgel és alacsony IO-késéssel. Maximális rugalmasságot biztosít a hibák és a gyors feladatátvételek esetében, több szinkronban frissített replika használatával.|
 |  **Erőforrás típusa** ||SQL Database/SQL felügyelt példány | Önálló adatbázis | SQL Database/SQL felügyelt példány |
 | **Számítási méret**|SQL Database * | 1 – 80 virtuális mag | 1 – 80 virtuális mag * | 1 – 80 virtuális mag |
-| **Számítási méret**|SQL Managed Instance | 8, 16, 24, 32, 40, 64, 80 virtuális mag | n.a. | 8, 16, 24, 32, 40, 64, 80 virtuális mag |
-| **Tárolás típusa** | Mind |Prémium szintű távoli tárterület (/példány) | A leválasztott tárterület helyi SSD-gyorsítótárral (/példány) | Villámgyors helyi SSD-tároló (példány) |
+| **Számítási méret**|Felügyelt SQL-példány | 8, 16, 24, 32, 40, 64, 80 virtuális mag | N/A | 8, 16, 24, 32, 40, 64, 80 virtuális mag |
+| **Tárolási típus** | Mind |Prémium szintű távoli tárterület (/példány) | A leválasztott tárterület helyi SSD-gyorsítótárral (/példány) | Villámgyors helyi SSD-tároló (példány) |
 | **Tárterület mérete** | SQL Database *| 5 GB – 4 TB | Akár 100 TB | 5 GB – 4 TB |
-| **Tárterület mérete** | SQL Managed Instance  | 32 GB – 8 TB | n.a. | 32 GB – 4 TB |
+| **Tárterület mérete** | Felügyelt SQL-példány  | 32 GB – 8 TB | N/A | 32 GB – 4 TB |
 | **IOPS** | Önálló adatbázis | 500 IOPS/virtuális mag 7000 maximális IOPS | A nagy kapacitású egy többrétegű architektúra, több szinten történő gyorsítótárazással. A hatékony IOPS a munkaterheléstől függ. | 5000 IOPS 200 000 maximális IOPS|
-| **IOPS** | SQL Managed Instance | Fájlmérettől függ | n.a. | 1375 IOPS/virtuális mag |
+| **IOPS** | Felügyelt SQL-példány | Fájlmérettől függ | N/A | 1375 IOPS/virtuális mag |
 |**Rendelkezésre állás**|Mind|1 replika, nincs olvasási felskálázás, nincs helyi gyorsítótár | Több replika, legfeljebb 4 olvasási felskálázás, részleges helyi gyorsítótár | 3 replika, 1 olvasási felskálázás, zóna – redundáns HA, teljes helyi tárterület |
 |**Biztonsági másolatok**|Mind|RA-GRS, 7-35 napos megőrzés (alapértelmezés szerint 7 nap)| RA-GRS, 7 napos megőrzés, állandó időpontok közötti helyreállítási idő (PITR) | RA-GRS, 7-35 napos megőrzés (alapértelmezés szerint 7 nap) |
 
@@ -331,7 +331,7 @@ A legtöbb teljesítménnyel kapcsolatos probléma esetén, különösen a táro
 
 ### <a name="how-long-would-it-take-to-scale-up-and-down-a-compute-replica"></a>Mennyi időt vesz igénybe a számítási replika vertikális fel-és leskálázása
 
-A számítások felfelé vagy lefelé történő skálázása 5-10 percet vesz igénybe az adatok méretétől függetlenül.
+A számítások felfelé vagy lefelé skálázása általában akár 2 percet is igénybe vehet, az adatok méretétől függetlenül.
 
 ### <a name="is-my-database-offline-while-the-scaling-updown-operation-is-in-progress"></a>Az adatbázis offline állapotban van, amíg folyamatban van a méretezés felfelé/lefelé művelete.
 

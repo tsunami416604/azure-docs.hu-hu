@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 1c5ce50a3736d6e96620e25cf084c5c66c456a5f
-ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
+ms.openlocfilehash: bde1ff4003ba69a4c5449996f4e18d646e6ecff6
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85375111"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498344"
 ---
 # <a name="azure-security-baseline-for-cognitive-services"></a>Cognitive Services Azure biztonsági alapterve
 
@@ -28,7 +28,7 @@ További információ: az [Azure biztonsági alaptervek áttekintése](https://d
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1,1: Azure-erőforrások biztosítása virtuális hálózatokon belül
 
-**Útmutató**: az Azure Cognitive Services többrétegű biztonsági modellt biztosít. Ez a modell lehetővé teszi a Cognitive Services-fiókok védelmét a hálózatok egy adott részhalmaza számára. A hálózati szabályok konfigurálásakor csak a megadott hálózatokon adatokat kérő alkalmazások férhetnek hozzá a fiókhoz. A kérelmek szűrésével korlátozhatja az erőforrásokhoz való hozzáférést, így csak a megadott IP-címekről, IP-tartományokból vagy az Azure Virtual Networks-alhálózatok listájáról származó kérelmeket lehet korlátozni.
+**Útmutató**: az Azure Cognitive Services többrétegű biztonsági modellt biztosít. Ez a modell lehetővé teszi a Cognitive Services-fiókok védelmét a hálózatok egy adott részhalmaza számára. A hálózati szabályok konfigurálásakor csak azok az alkalmazások férhetnek hozzá a fiókhoz, amelyek a megadott hálózatokon keresztül kérik le az adatokat. A kérelmek szűrésével korlátozhatja az erőforrásokhoz való hozzáférést, így csak a megadott IP-címekről, IP-tartományokból vagy az Azure Virtual Networks-alhálózatok listájáról származó kérelmeket lehet korlátozni.
 
 A virtuális hálózat és a szolgáltatás végpontjának támogatása Cognitive Services a régiók egy meghatározott készletére korlátozódik.
 
@@ -73,7 +73,7 @@ Azt is vegye figyelembe, hogy a Cognitive Services tárolók Microsoft-kiszolgá
 **Útmutató**: Ha a virtuális gépeket az Azure Cognitive Services tárolóval megegyező virtuális hálózatban telepítik, akkor a kapcsolódó hálózati erőforrásokhoz a Azure Policy használatával definiálja és implementálja a szabványos biztonsági konfigurációkat. Használjon Azure Policy aliasokat a "Microsoft. CognitiveServices" és a "Microsoft. Network" névterekben egyéni szabályzatok létrehozásához az Azure cache Redis-példányok hálózati konfigurációjának naplózásához vagy érvénybe léptetéséhez. Olyan beépített szabályzat-definíciókat is használhat, mint például a következők:
 - DDoS Protection a standardot engedélyezni kell
 
-Az Azure-tervrajzok segítségével a nagyméretű Azure-környezeteket is leegyszerűsítheti, ha az adott terv definíciójában a Azure Resource Manager-sablonok, az Azure szerepköralapú hozzáférés-vezérlés (RBAC) és a házirendek is elérhetők. Egyszerűen alkalmazhatja a tervrajzot új előfizetésekre és környezetekre, és részletesen beállíthatja a vezérlést és a felügyeletet a verziószámozással.
+Az Azure-tervezetek segítségével leegyszerűsítheti a nagy léptékű Azure-környezetek kiépítését a főbb környezeti összetevők, például a Azure Resource Manager sablonok, az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) és a házirendek alapján, egyetlen terv definíciójában. Egyszerűen alkalmazhatja a tervrajzot új előfizetésekre és környezetekre, és részletesen beállíthatja a vezérlést és a felügyeletet a verziószámozással.
 
 Ha Cognitive Servicest használ egy tárolón belül, a tároló üzembe helyezését kibővítheti egy olyan előtér-webalkalmazási tűzfallal, amely kártékony forgalmat szűr, és támogatja a végpontok közötti TLS-titkosítást, így a tároló végpontja magán és biztonságos marad.
 
@@ -1088,7 +1088,7 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 **Felelősség**: megosztott
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Lásd az [Azure biztonsági teljesítménytesztét](https://docs.microsoft.com/azure/security/benchmarks/overview)
 - További információ az [Azure biztonsági alaptervekről](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)

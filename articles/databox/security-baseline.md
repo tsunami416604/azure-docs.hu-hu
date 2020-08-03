@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: d1de40944b4ab15268cda576f477c08fc179f1df
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a13a8b2eef9fa1bd9c7281ac6b7c7dba40105428
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85255973"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497324"
 ---
 # <a name="azure-security-baseline-for-azure-data-box"></a>Azure Data Box Azure biztonsági alapterve
 
@@ -216,7 +216,7 @@ További információ: az [Azure biztonsági alaptervek áttekintése](https://d
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: a felügyeleti fiókok leltárának karbantartása
 
-**Útmutató**: a Azure Data boxhoz rendszergazdai hozzáféréssel rendelkező felhasználói fiókok leltárának fenntartása. A szerepköralapú hozzáférés-vezérlés (RBAC) konfigurálásához használhatja a Azure Portal az identitás és hozzáférés-vezérlés (IAM) panelt az előfizetéshez. A szerepköröket a rendszer a felhasználókra, csoportokra, egyszerű szolgáltatásokra és felügyelt identitásokra alkalmazza Active Directoryban. a rendelés első létrehozásakor beállíthatja, hogy ki férhet hozzá a rendeléshez. Szerepköralapú Access Control-(RBAC-) szerepkörök beállítása különböző hatókörökön a Data Box-rendeléshez való hozzáférés szabályozása érdekében. Egy RBAC-szerepkör határozza meg a hozzáférés típusát – írható és olvasható, írásvédett, írás és olvasás a műveletek egy részhalmazára.
+**Útmutató**: a Azure Data boxhoz rendszergazdai hozzáféréssel rendelkező felhasználói fiókok leltárának fenntartása. A szerepköralapú hozzáférés-vezérlés (RBAC) konfigurálásához használhatja a Azure Portal az identitás és hozzáférés-vezérlés (IAM) panelt az előfizetéshez. A szerepköröket a rendszer a felhasználókra, csoportokra, egyszerű szolgáltatásokra és felügyelt identitásokra alkalmazza Active Directoryban. a rendelés első létrehozásakor beállíthatja, hogy ki férhet hozzá a rendeléshez. Állítsa be az Azure-szerepköröket különböző hatókörökön a Data Boxi sorrend elérésének szabályozásához. Az Azure-szerepkörök határozzák meg a hozzáférés típusát – írható és olvasható, írásvédett, írás és olvasás a műveletek egy részhalmazára.
 
 * [Egyéni szerepkörök ismertetése](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)
 
@@ -833,7 +833,7 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 * [Biztonsági riasztások az Azure Security Centerben](https://docs.microsoft.com/azure/security-center/security-center-alerts-overview)
 
-* [Címkék használata az Azure-erőforrások rendszerezéséhez](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Címkék használata az erőforrások rendszerezéséhez](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
 
 **Azure Security Center figyelés**: igen
 

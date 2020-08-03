@@ -4,24 +4,24 @@ description: A Azure Portal, a PowerShell vagy az Azure CLI használatával vegy
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
-ms.custom: sqldbrb=1
+ms.custom: sqldbrb=1, devx-track-azurecli
 ms.devlang: ''
 ms.topic: conceptual
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 06/19/2019
-ms.openlocfilehash: ad4ef93b34639abffaf15c806fd86d550e03f0bc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4caad36d21d3facb97dc358fdfee61e89c420213
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87045260"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496338"
 ---
 # <a name="tutorial-add-an-azure-sql-database-to-an-autofailover-group"></a>Oktatóanyag: Azure SQL Database hozzáadása egy autofeladatátvételi csoporthoz
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-A [feladatátvételi csoport](auto-failover-group-overview.md) egy deklaratív absztrakt réteg, amely lehetővé teszi több földrajzilag replikált adatbázis csoportosítását. Megtudhatja, hogyan konfigurálhat feladatátvételi csoportot egy Azure SQL Databasehoz, és hogyan tesztelheti a feladatátvételt a Azure Portal, a PowerShell vagy az Azure CLI használatával.  Az oktatóanyag segítségével megtanulhatja a következőket:
+A [feladatátvételi csoport](auto-failover-group-overview.md) egy deklaratív absztrakt réteg, amely lehetővé teszi több földrajzilag replikált adatbázis csoportosítását. Megtudhatja, hogyan konfigurálhat feladatátvételi csoportot egy Azure SQL Databasehoz, és hogyan tesztelheti a feladatátvételt a Azure Portal, a PowerShell vagy az Azure CLI használatával.  Ebből az oktatóanyagból az alábbiakat sajátíthatja el:
 
 > [!div class="checklist"]
 >
@@ -327,7 +327,7 @@ Az oktatóanyag ezen része a következő Azure CLI-parancsmagokat használja:
 
 ---
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Törölje az erőforrásokat az erőforráscsoport törlésével.
 

@@ -3,12 +3,12 @@ title: Az Azure Service Bus-üzenetkezelés áttekintése | Microsoft Docs
 description: Ez a cikk átfogó áttekintést nyújt a Azure Service Busről, amely egy teljes körűen felügyelt Enterprise Integration Message Broker.
 ms.topic: overview
 ms.date: 06/23/2020
-ms.openlocfilehash: 5adcdf10898a7b0ee2d551a3a24b9f80195d645f
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 478dd0debb5117e76cf8d0ab6599dcf363c12ab3
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87449121"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501474"
 ---
 # <a name="what-is-azure-service-bus"></a>Mi az Azure Service Bus?
 
@@ -92,7 +92,7 @@ Egy hiba miatt előfordulhat, hogy az ügyfél kétségbe vonja a küldési műv
 ### <a name="security-protocols"></a>Biztonsági protokollok
 <a name="sas-rbac-and-managed-identities-for-azure-resources"></a>
 
-Service Bus támogatja a biztonsági protokollok, például a [közös hozzáférésű aláírások](service-bus-sas.md) (SAS), az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](authenticate-application.md) (RBAC) és [Az Azure-erőforrások felügyelt identitásait](service-bus-managed-service-identity.md).
+Service Bus támogatja a biztonsági protokollokat, például a [közös hozzáférésű aláírásokat](service-bus-sas.md) (SAS), az [Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC)](authenticate-application.md) és [Az Azure-erőforrások felügyelt identitásait](service-bus-managed-service-identity.md).
 
 ### <a name="geo-disaster-recovery"></a>Geo-vészhelyreállítás
 

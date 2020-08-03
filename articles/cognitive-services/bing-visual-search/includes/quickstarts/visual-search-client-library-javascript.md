@@ -8,16 +8,17 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/26/2020
 ms.author: aahi
-ms.openlocfilehash: 404529bf269f899603b92c6c23b0d95cd2749ee5
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 3a6c89c3932adb4f9465172ca64b9356db1f624a
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80550022"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407003"
 ---
 Ezzel a rövid útmutatóval megkezdheti a rendszerképek elemzését a Bing Visual Search szolgáltatásból a JavaScript ügyféloldali kódtár használatával. Habár a Bing Visual Search REST API kompatibilis a legtöbb programozási nyelvvel, az ügyféloldali kódtár egyszerű módszert kínál a szolgáltatás integrálására az alkalmazásokba. A minta forráskódja a [githubon](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/visualSearch.js)található. 
 
-[A dokumentációs](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-visualsearch/?view=azure-node-latest) | [könyvtár forráskód](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-visualsearch) | [-csomagjához (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-visualsearch) | tartozó[minták](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/)
+[Dokumentáció](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-visualsearch/?view=azure-node-latest)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-visualsearch)  |  [Csomag (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-visualsearch)  |  [Példák](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/)
 
 ## <a name="prerequisites"></a>Előfeltételek
 * [Node.js](https://www.nodejs.org/)
@@ -55,7 +56,7 @@ Ezzel a rövid útmutatóval megkezdheti a rendszerképek elemzését a Bing Vis
 
 ## <a name="search-for-images"></a>Képek keresése
 
-1. A `fs.createReadStream()` használatával beolvashatja a képfájlt, és változókat hozhat létre a keresési kérelemhez és az eredményekhez. Ezután használja az ügyfelet a képek kereséséhez.
+1. A használatával `fs.createReadStream()` beolvashatja a képfájlt, és változókat hozhat létre a keresési kérelemhez és az eredményekhez. Ezután használja az ügyfelet a képek kereséséhez.
 
     ```javascript
     let fileStream = fs.createReadStream(filePath);

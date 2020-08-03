@@ -10,12 +10,12 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.workload: big-data
 ms.date: 09/14/2018
-ms.openlocfilehash: 09b4f36a5c97b6bcc0a8d11d2fb1ee0893fae80a
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 3517938ae0e08af62a6fcf0d3d0a43a5eaee48dd
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87130137"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496117"
 ---
 # <a name="how-to-set-up-a-cicd-pipeline-for-azure-data-lake-analytics"></a>CI/CD-folyamat beállítása Azure Data Lake Analyticshoz  
 
@@ -35,7 +35,7 @@ Egy U-SQL-projekt a Microsoft Build Engine (MSBuild) szolgáltatással építhet
 
 Mielőtt felépítési feladatot állít be egy U-SQL-projekthez, ellenőrizze, hogy rendelkezik-e a U-SQL projekt legújabb verziójával. Nyissa meg a U-SQL projektfájlt a szerkesztőben, és ellenőrizze, hogy vannak-e ezek az importálási elemek:
 
-```   
+```xml
 <!-- check for SDK Build target in current path then in USQLSDKPath-->
 <Import Project="UsqlSDKBuild.targets" Condition="Exists('UsqlSDKBuild.targets')" />
 <Import Project="$(USQLSDKPath)\UsqlSDKBuild.targets" Condition="!Exists('UsqlSDKBuild.targets') And '$(USQLSDKPath)' != '' And Exists('$(USQLSDKPath)\UsqlSDKBuild.targets')" />
@@ -66,14 +66,14 @@ A u-SQL-projektben található u-SQL-parancsfájlok lekérdezési utasításokka
 További információ az [U-SQL Database-projektről](data-lake-analytics-data-lake-tools-develop-usql-database.md).
 
 >[!NOTE]
->A DROP utasítás baleset-törlési problémát okozhat. A DROP utasítás engedélyezéséhez explicit módon meg kell adnia az MSBuild argumentumokat. A **AllowDropStatement** lehetővé teszi a nem adathoz kapcsolódó drop műveletet, például a drop Assembly és a drop Table Valued függvényt. A **AllowDataDropStatement** lehetővé teszi az adatművelettel kapcsolatos drop műveletet, például a drop Table és a drop Schema. A AllowDataDropStatement használata előtt engedélyeznie kell a AllowDropStatement.
+> A DROP utasítás véletlen törlést eredményezhet. A DROP utasítás engedélyezéséhez explicit módon meg kell adnia az MSBuild argumentumokat. A **AllowDropStatement** lehetővé teszi a nem adathoz kapcsolódó drop műveletet, például a drop Assembly és a drop Table Valued függvényt. A **AllowDataDropStatement** lehetővé teszi az adatművelettel kapcsolatos drop műveletet, például a drop Table és a drop Schema. A AllowDataDropStatement használata előtt engedélyeznie kell a AllowDropStatement.
 >
 
 ### <a name="build-a-u-sql-project-with-the-msbuild-command-line"></a>U-SQL-projekt létrehozása az MSBuild parancssorral
 
 Először telepítse át a projektet, és szerezze be a NuGet csomagot. Ezután hívja meg a szabványos MSBuild parancssort a következő további argumentumokkal az U-SQL-projekt létrehozásához: 
 
-``` 
+```console
 msbuild USQLBuild.usqlproj /p:USQLSDKPath=packages\Microsoft.Azure.DataLake.USQL.SDK.1.3.180615\build\runtime;USQLTargetType=SyntaxCheck;DataRoot=datarootfolder;/p:EnableDeployment=true
 ``` 
 
@@ -100,7 +100,7 @@ A parancssoron kívül a Visual Studio Build vagy az MSBuild feladat használat�
 
     ![CI/CD MSBuild változók definiálása U-SQL-projekthez](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-msbuild-variables.png) 
 
-    ```
+    ```console
     /p:USQLSDKPath=$(Build.SourcesDirectory)/packages/Microsoft.Azure.DataLake.USQL.SDK.1.3.180615/build/runtime /p:USQLTargetType=SyntaxCheck /p:DataRoot=$(Build.SourcesDirectory) /p:EnableDeployment=true
     ```
 
@@ -109,9 +109,7 @@ A parancssoron kívül a Visual Studio Build vagy az MSBuild feladat használat�
 A Build futtatása után a U-SQL-projektben található összes parancsfájl a nevű zip-fájlba lett létrehozva és kimenetben `USQLProjectName.usqlpack` . A projektben lévő mappastruktúrát a tömörített Build kimenete tárolja.
 
 > [!NOTE]
->
-> Az egyes U-SQL-szkriptekhez tartozó fájlok mögöttes utasításként lesznek egyesítve a szkript Build kimenete.
->
+> Az egyes U-SQL-szkriptek programkódját a rendszer beágyazott utasításként egyesíti a szkript Build kimenetében.
 
 ## <a name="test-u-sql-scripts"></a>U-SQL-szkriptek tesztelése
 
@@ -229,6 +227,10 @@ Function Main()
 
 Main
 ```
+
+>[!NOTE]
+> A parancsok: `Submit-AzDataLakeAnalyticsJob` és `Wait-AzDataLakeAnalyticsJob` mind Azure PowerShell parancsmagok a Azure Data Lake Analytics számára a Azure Resource Manager-keretrendszerben. Azure PowerShell telepített munkaállomást fog neeed. További parancsokat és példákat a parancsok [listáját ismertető témakörben](https://docs.microsoft.com/powershell/module/Az.DataLakeAnalytics/?view=azps-4.3.0) talál.
+>
 
 ### <a name="deploy-u-sql-jobs-through-azure-data-factory"></a>U-SQL-feladatok központi telepítése Azure Data Factory
 

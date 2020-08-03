@@ -4,13 +4,13 @@ description: Kiszolgáló nélküli Python-Function-alkalmazás létrehozása az
 ms.assetid: 0e221db6-ee2d-4e16-9bf6-a456cd05b6e7
 ms.topic: sample
 ms.date: 11/23/2019
-ms.custom: tracking-python
-ms.openlocfilehash: 3bcefe59bfec5f3d76ecbc04a5b46a9285fc381b
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.custom: tracking-python, devx-track-azurecli
+ms.openlocfilehash: c0c94c8682cdd3c5509bca1e223e28b3bef94a28
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561201"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498257"
 ---
 # <a name="create-a-serverless-python-function-app-using-azure-cli"></a>Kiszolgáló nélküli Python-Function-alkalmazás létrehozása az Azure CLI használatával
 
@@ -37,13 +37,13 @@ Ez a szkript létrehoz egy Azure Function-alkalmazást a használati [terv](../f
 
 A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik. Ez a szkript a következő parancsokat használja:
 
-| Parancs | Megjegyzések |
+| Parancs | Jegyzetek |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
 | [az storage account create](/cli/azure/storage/account#az-storage-account-create) | Létrehoz egy Azure Storage-fiókot. |
 | [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | Létrehoz egy függvényalkalmazást. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](/cli/azure).
 

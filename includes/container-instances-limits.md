@@ -2,21 +2,24 @@
 author: dlepow
 ms.service: container-instances
 ms.topic: include
-ms.date: 02/13/2019
+ms.date: 07/22/2020
 ms.author: danlep
-ms.openlocfilehash: 33a82a55b03cde79d2d80826041ee6d43565476a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6878180ffedfaa53f25d2bdc6db72dcd7dd8b38b
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80334820"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87384827"
 ---
 | Erőforrás | Korlát |
 | --- | :--- |
-| Standard SKU Container groups régiónként/ [előfizetés](../articles/billing-buy-sign-up-azure-subscription.md) | 100<sup>1</sup> |
-| Dedikált SKU Container Group régiónként/ [előfizetés](../articles/billing-buy-sign-up-azure-subscription.md) | 0<sup>1</sup> |
+| Standard SKU Container groups régiónként/előfizetés | 100<sup>1</sup> |
+| Dedikált SKU Container Group régiónként/előfizetés | 0<sup>1</sup> |
 | Tárolók száma tárolócsoportonként | 60 |
 | Kötetek száma tárolócsoportonként | 20 |
+| Standard SKU magok (CPU)/régió/előfizetés | 10<sup>1, 2</sup> | 
+| Standard SKU magok (processzorok) K80 GPU-ra régiónként/előfizetés | 18<sup>1, 2</sup> |
+| Standard SKU magok (processzorok) P100 vagy V100 GPU-ra régiónként, előfizetések szerint | 0<sup>1, 2</sup> |
 | Portok száma IP-címenként | 5 |
 | Tároló-példány naplójának mérete – futó példány | 4 MB |
 | Tároló-példány naplójának mérete – leállított példány | 16 KB vagy 1 000 sor |
@@ -26,7 +29,8 @@ ms.locfileid: "80334820"
 | 5 percenként törölt tárolók száma | 100<sup>1</sup> |
 
 
-<sup>1</sup> A határérték-növekedés igényléséhez hozzon létre egy [Azure-support Request][azure-support].<br />
+<sup>1</sup> A határérték-növekedés igényléséhez hozzon létre egy [Azure-support Request][azure-support]. Az ingyenes előfizetések, például az [ingyenes Azure-fiók](https://azure.microsoft.com/offers/ms-azr-0044p/) és [Az Azure diákoknak](https://azure.microsoft.com/offers/ms-azr-0170p/) nem jogosultak a limit vagy a kvóta növelésére. Ha ingyenes előfizetéssel rendelkezik [, az utólagos](../articles/cost-management-billing/manage/upgrade-azure-subscription.md) elszámolású előfizetésre válthat.<br />
+<sup>2</sup> Az [utólagos elszámolású előfizetés alapértelmezett](https://azure.microsoft.com/offers/ms-azr-0003p/) korlátja. Más kategóriájú típusok esetén a korlát eltérő lehet.<br/>
 
 <!-- LINKS - External -->
 [azure-support]: https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest

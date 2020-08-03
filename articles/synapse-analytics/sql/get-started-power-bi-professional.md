@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: f5699624300d262630c9582131d00f33f5ce5be9
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 497c6f669699f1e1ce879c0c7da2593256b97448
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85212887"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501099"
 ---
 # <a name="connect-to-synapse-sql-with-power-bi-professional"></a>Kapcsolódás a szinapszis SQL-hez Power BI Professional használatával
 
@@ -23,7 +23,7 @@ ms.locfileid: "85212887"
 > - [Azure Data Studio](get-started-azure-data-studio.md)
 > - [Power BI](get-started-power-bi-professional.md)
 > - [Visual Studio](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
-> - [Sqlcmd](../sql/get-started-connect-sqlcmd.md)
+> - [sqlcmd](../sql/get-started-connect-sqlcmd.md)
 > - [SSMS](get-started-ssms.md)
 
 Ebben az oktatóanyagban áttekintjük a Power BI Desktop és az SQL on-demand (előzetes verzió) összekapcsolásának lépéseit.
@@ -35,7 +35,7 @@ A lekérdezések kibocsátására szolgáló eszköz:
 - Tetszőleges SQL-ügyfél:
 
   - Azure Data Studio
-  - SQL Server Management Studio
+  - Az SQL Server Management Studio
 
 - Power BI asztali telepítés
 
@@ -90,7 +90,7 @@ SECRET = '';
 GO
 ```
 
-## <a name="creating-power-bi-desktop-report"></a>Power BI asztali jelentés létrehozása
+## <a name="create-a-power-bi-desktop-report"></a>Power BI asztali jelentés létrehozása
 
 Nyissa meg a Power BI asztali alkalmazást, és válassza az **adatlekérdezés** lehetőséget.
 

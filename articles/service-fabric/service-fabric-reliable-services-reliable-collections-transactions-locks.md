@@ -4,12 +4,12 @@ description: Az Azure Service Fabric megbízható State Manager és megbízható
 ms.topic: conceptual
 ms.date: 5/1/2017
 ms.custom: sfrev
-ms.openlocfilehash: c7d0970918b0fc60f1208b5997d696a57e5bc698
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: d1094462ebabcea1fbead3d5b30fdfb8dda6463a
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86245109"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500282"
 ---
 # <a name="transactions-and-lock-modes-in-azure-service-fabric-reliable-collections"></a>Tranzakciók és zárolási módok az Azure-ban Service Fabric megbízható gyűjtemények
 
@@ -68,7 +68,7 @@ A frissítési zárolás egy aszimmetrikus zárolás, amely megakadályozza a ho
 
 A zárolási kompatibilitási mátrix a következő táblázatban található:
 
-| Kérelem \ megadott | Nincs | Megosztott | Frissítés | Kizárólagos |
+| Kérelem \ megadott | None | Megosztott | Frissítés | Kizárólagos |
 | --- |:--- |:--- |:--- |:--- |
 | Megosztott |Nincs ütközés |Nincs ütközés |Ütközés |Ütközés |
 | Frissítés |Nincs ütközés |Nincs ütközés |Ütközés |Ütközés |
@@ -79,7 +79,7 @@ Például két tranzakció (T1 és T2) megkísérli olvasni és frissíteni a K1
 Lehetséges, hogy holtpontra válnak, mivel mindkettő a megosztott zárolással végződik.
 Ebben az esetben az egyik vagy mindkét művelet időtúllépést eredményez. Ebben a forgatókönyvben egy frissítési zár megakadályozhatja az ilyen holtpontot.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [A Reliable Collections használata](service-fabric-work-with-reliable-collections.md)
 * [Értesítések Reliable Services](service-fabric-reliable-services-notifications.md)
