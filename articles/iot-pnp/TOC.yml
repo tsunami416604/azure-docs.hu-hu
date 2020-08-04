@@ -37,6 +37,8 @@
       href: tutorial-multiple-components-node.md
     - name: Több összetevőből álló eszköz csatlakoztatása (Python)
       href: tutorial-multiple-components-python.md
+    - name: MQTT használata eszközök csatlakoztatására
+      href: tutorial-use-mqtt.md
 - name: Alapelvek
   items:
     - name: Architektúra

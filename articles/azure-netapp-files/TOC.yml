@@ -55,22 +55,30 @@
       href: azure-netapp-files-set-up-capacity-pool.md
     - name: Alhálózat delegálása az Azure NetApp Fileshoz
       href: azure-netapp-files-delegate-subnet.md
-    - name: SMB-kötet létrehozása az Azure NetApp Files számára
+    - name: NFS-kötet létrehozása és kezelése
+      items:
+        - name: NFS-kötet létrehozása
+          href: azure-netapp-files-create-volumes.md
+        - name: Az NFSv 4.1 alapértelmezett tartományának konfigurálása
+          href: azure-netapp-files-configure-nfsv41-domain.md
+        - name: Az NFSv 4.1 Kerberos-titkosításának konfigurálása
+          href: configure-kerberos-encryption.md
+        - name: NFS-ügyfél konfigurálása az Azure NetApp Fileshoz
+          href: configure-nfs-clients.md
+        - name: Exportálási szabályzat konfigurálása NFS-kötethez
+          href: azure-netapp-files-configure-export-policy.md
+    - name: SMB-kötet létrehozása
       href: azure-netapp-files-create-volumes-smb.md
-    - name: NFS-kötet létrehozása az Azure NetApp Files számára
-      href: azure-netapp-files-create-volumes.md
-    - name: A NFSv 4.1 alapértelmezett tartományának konfigurálása a Azure NetApp Fileshoz
-      href: azure-netapp-files-configure-nfsv41-domain.md
-    - name: Exportálási szabályzat konfigurálása NFS-kötethez
-      href: azure-netapp-files-configure-export-policy.md
-    - name: Kötetek kezelése
-      href: azure-netapp-files-manage-volumes.md
+    - name: Kettős protokollú kötet létrehozása
+      href: create-volumes-dual-protocol.md
     - name: Kötet Windows vagy Linux rendszerű virtuális gépekhez való csatlakoztatása és leválasztása
       href: azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md
     - name: Pillanatképek kezelése
       href: azure-netapp-files-manage-snapshots.md
     - name: A kapacitáskészlet vagy kötet átméretezése
       href: azure-netapp-files-resize-capacity-pools-or-volumes.md
+    - name: Kötetek szolgáltatásszintjének dinamikus módosítása
+      href: dynamic-change-volume-service-level.md
     - name: Fejlesztés
       items:
         - name: REST API

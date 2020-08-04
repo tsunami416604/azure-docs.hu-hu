@@ -45,7 +45,7 @@
           href: pim-resource-roles-activate-your-roles.md
     - name: Az Azure AD-szerepkörök kezelése
       items:
-        - name: Funkciófrissítés
+        - name: A funkciók áttekintése
           href: azure-ad-roles-features.md
         - name: PowerShell Azure AD-szerepkörökhöz
           href: powershell-for-azure-ad-roles.md
@@ -87,6 +87,22 @@
           href: azure-pim-resource-rbac.md
         - name: Egyéni szerepkörök használata
           href: pim-resource-roles-custom-role-policy.md
+    - name: Emelt szintű hozzáférési csoportok kezelése (előzetes verzió)
+      items:
+        - name: Emelt szintű hozzáférés áttekintése
+          href: groups-features.md
+        - name: Csoportok felderítése
+          href: groups-discover-groups.md
+        - name: Tag vagy tulajdonos hozzárendelése
+          href: groups-assign-member-owner.md
+        - name: Kérések jóváhagyása
+          href: groups-approval-workflow.md
+        - name: Hozzárendelések meghosszabbítása vagy megújítása
+          href: groups-renew-extend.md
+        - name: Szerepkör-beállítások konfigurálása
+          href: groups-role-settings.md
+        - name: Naplózási előzmények megtekintése
+          href: groups-audit.md
     - name: A PIM hibaelhárítása
       href: pim-troubleshoot.md
     - name: Hozzáférési felülvizsgálatok

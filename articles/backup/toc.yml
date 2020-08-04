@@ -123,6 +123,8 @@
               href: backup-azure-vms-encryption.md
             - name: Linux rendszerű Azure-beli virtuális gépek alkalmazáskonzisztens biztonsági mentésének konfigurálása
               href: backup-azure-linux-app-consistent.md
+            - name: Szelektív lemezes biztonsági mentés
+              href: selective-disk-backup-restore.md
         - name: Visszaállítás
           items:
             - name: Azure-beli virtuális gépek visszaállítása

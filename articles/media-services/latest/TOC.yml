@@ -171,10 +171,10 @@
           href: media-services-metrics-diagnostic-logs.md
         - name: Diagnosztikai naplók sémái
           href: media-services-diagnostic-logs-schema.md
-    - name: Lejátszóügyfelek
+    - name: Azure Media Player
       items:
-        - name: Azure Media Player
-          href: use-azure-media-player.md
+        - name: Az Azure Media Player áttekintése
+          href: 'https://docs.microsoft.com/en-us/azure/media-services/azure-media-player/azure-media-player-overview'
     - name: Fejlesztés v3 API-kkal
       items:
         - name: Áttekintés
@@ -285,7 +285,11 @@
           items:
             - name: .NET-tel
               displayName: 'encode, encoding, custom, transform'
-              href: customize-encoder-presets-how-to.md
+              items:
+                - name: Kódoló előzetes beállításainak testreszabása
+                  href: customize-encoder-presets-how-to.md
+                - name: Átfedési átalakítás létrehozása
+                  href: how-to-create-overlay.md
             - name: Parancssori felülettel
               displayName: 'encode, encoding, custom, transform'
               href: custom-preset-cli-howto.md
@@ -355,6 +359,14 @@
           href: download-results-howto.md
         - name: Leíró hang jelzése
           href: signal-descriptive-audio-howto.md
+    - name: Médialejátszók használata
+      items:
+        - name: Az Azure Media Player teljes telepítése
+          href: 'https://docs.microsoft.com/azure/media-services/azure-media-player/azure-media-player-full-setup'
+        - name: A Video.js lejátszó használata
+          href: how-to-video-js-player.md
+        - name: A Shaka videólejátszó használata
+          href: how-to-shaka-player.md
 - name: Referencia
   items:
     - name: OpenAPI-specifikáció (Swagger)
