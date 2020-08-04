@@ -1,32 +1,28 @@
 ---
-title: Az Azure Storage költségeinek megtervezése és kezelése
-description: Megtudhatja, hogyan tervezheti meg és kezelheti az Azure Storage szolgáltatás költségeit a Azure Portalban található Cost Analysis használatával.
+title: Az Azure Blob Storage költségeinek megtervezése és kezelése
+description: Megtudhatja, hogyan tervezheti meg és kezelheti az Azure Blob Storage költségeit a Azure Portalban található Cost Analysis használatával.
 services: storage
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/04/2020
+ms.date: 08/03/2020
 ms.author: normesta
 ms.subservice: common
 ms.custom: subject-cost-optimization
-ms.openlocfilehash: aa0b789b31f50c8b1ccf5450700874a02ad4664c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 90aa2b9504008783649662019179a5998d534746
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78304523"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543095"
 ---
-# <a name="plan-and-manage-costs-for-azure-storage"></a>Az Azure Storage költségeinek megtervezése és kezelése
+# <a name="plan-and-manage-costs-for-azure-blob-storage"></a>Az Azure Blob Storage költségeinek megtervezése és kezelése
 
-Ez a cikk bemutatja, hogyan tervezheti meg és kezelheti az Azure Storage költségeit. Első lépésként az Azure díjszabási kalkulátor segítségével tervezze meg a tárolási költségeket, mielőtt erőforrásokat hozna létre. Az Azure Storage-erőforrások használatának megkezdése után a Cost Management szolgáltatással állíthatja be a költségvetéseket, és figyelheti a költségeket. Áttekintheti az előre jelzett költségeket, és figyelheti a kiadási trendeket, hogy azonosítsa azokat a területeket, ahol érdemes lehet eljárni.
+Ez a cikk segítséget nyújt az Azure Blob Storage költségeinek megtervezéséhez és kezeléséhez. Először is becsülje meg a költségeket az Azure díjszabási kalkulátor használatával. A Storage-fiók létrehozása után optimalizálja a fiókot, így csak azért kell fizetnie, amire szüksége van. A Cost Management-funkciók használatával megadhatja a költségvetéseket és figyelheti a költségeket. Áttekintheti az előre jelzett költségeket, és figyelemmel kísérheti a kiadási trendeket, hogy azonosítsa azokat a területeket, ahol érdemes lehet eljárni.
 
-Ne feledje, hogy az Azure Storage szolgáltatás költségei csak a havi költségek egy részét jelentik az Azure-számlán. Bár ez a cikk bemutatja, hogyan tervezheti meg és kezelheti az Azure Storage-t, az Azure-előfizetéshez használt összes Azure-szolgáltatás és erőforrás díja, beleértve a külső szolgáltatásokat is. Miután megismerte az Azure Storage költségeinek kezelését, hasonló módszerekkel kezelheti az előfizetésben használt összes Azure-szolgáltatás költségeit.
+Ne feledje, hogy az Azure Storage szolgáltatás költségei csak a havi költségek egy részét jelentik az Azure-számlán. Bár ez a cikk azt ismerteti, hogyan lehet megbecsülni és kezelni az Azure Storage költségeit, az Azure-előfizetéshez használt összes Azure-szolgáltatás és erőforrás díja, beleértve a külső szolgáltatásokat is. Miután megismerte az Azure Storage költségeinek kezelését, hasonló módszerekkel kezelheti az előfizetésben használt összes Azure-szolgáltatás költségeit.
 
-## <a name="prerequisites"></a>Előfeltételek
-
-A költségelemzés különböző Azure-fióktípusokat támogat. A támogatott fióktípusok teljes listáját lásd: [A Cost Management adatainak értelmezése](../../cost-management-billing/costs/understand-cost-mgt-data.md). A költségadatok megtekintéséhez legalább olvasási jogosultsággal kell rendelkeznie az Azure-fiókjához. További információért az Azure Cost Management adataihoz való hozzáférés hozzárendeléséről: [Adatokhoz való hozzáférés hozzárendelése](../../cost-management-billing/costs/assign-access-acm-data.md).
-
-## <a name="estimate-costs-before-creating-an-azure-storage-account"></a>Az Azure Storage-fiók létrehozása előtti költségek becslése
+## <a name="estimate-costs"></a>A költségek megbecslése
 
 Az [Azure díjszabási számológépével](https://azure.microsoft.com/pricing/calculator/) megbecsülheti a költségeket az Azure Storage-fiókba való adatátvitel előtt.
 
@@ -44,7 +40,37 @@ Az [Azure díjszabási számológépével](https://azure.microsoft.com/pricing/c
 
 4. Módosítsa a hátralévő beállításokat, hogy azok hatással legyenek a becsült értékekre.
 
-## <a name="use-budgets-and-cost-alerts"></a>Költségvetések és költségriasztások használata
+## <a name="optimize-costs"></a>Költségek optimalizálása
+
+Ezeket a lehetőségeket érdemes használni a költségek csökkentése érdekében. 
+
+- Tárterület-kapacitás foglalása
+
+- Adatszervezés hozzáférési rétegekbe
+
+- Adatátviteli rétegek közötti automatikus áthelyezés
+
+Ez a szakasz részletesebben ismerteti az egyes lehetőségeket. 
+
+#### <a name="reserve-storage-capacity"></a>Tárterület-kapacitás foglalása
+
+Az Azure Storage szolgáltatás számára fenntartott kapacitással pénzt takaríthat meg a blob-adattárolási költségekkel kapcsolatban. Az Azure Storage szolgáltatás számára fenntartott kapacitás kedvezményt biztosít a blokkos blobok és a standard szintű Storage-fiókok Azure Data Lake Storage Gen2 adatai számára, ha egy vagy három évre szóló foglalást végez. A foglalás rögzített tárolási kapacitást biztosít a foglalás feltételeihez. Az Azure Storage szolgáltatás számára fenntartott kapacitás jelentős mértékben csökkentheti a blokk-blobok és Azure Data Lake Storage Gen2-adatmennyiségek kapacitásának költségeit. 
+
+További információ: a [blob Storage költségeinek optimalizálása a fenntartott kapacitással](https://docs.microsoft.com/azure/storage/blobs/storage-blob-reserved-capacity).
+
+#### <a name="organize-data-into-access-tiers"></a>Adatszervezés hozzáférési rétegekbe
+
+A költségek csökkentése érdekében a blob-adatmennyiséget a legköltséghatékonyabb hozzáférési rétegekbe helyezheti el. Három olyan csomag közül választhat, amelyek az adatfelhasználással kapcsolatos költségek optimalizálására szolgálnak. Például a *gyors* elérési szint nagyobb tárolási kapacitással jár, de alacsonyabb a hozzáférési díj. Ezért ha gyakran szeretné elérni az adatokhoz való hozzáférést, a gyors elérésű szint lehet a leghatékonyabb megoldás. Ha ritkábban szeretné elérni az adatokhoz való hozzáférést, a *hideg* vagy az *archiválási* szint a legalkalmasabb lehet, mert az adatokhoz való hozzáférés költségeit csökkenti az adattárolás költségeinek csökkentése érdekében.    
+
+További információ [: Azure Blob Storage: gyakori, ritka elérésű és archív hozzáférési szintek](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers?tabs=azure-portal).
+
+#### <a name="automatically-move-data-between-access-tiers"></a>Adatátviteli rétegek közötti automatikus áthelyezés
+
+Az életciklus-kezelési házirendek segítségével rendszeres időközönként helyezheti át az adatszinteket a legtöbb pénz megtakarítása érdekében. Ezek a szabályzatok az Ön által megadott szabályok használatával helyezhetik át az adataikat. Létrehozhat például egy olyan szabályt, amely blobokat helyez át az archív szintre, ha a blobot 90 napon belül nem módosították. Az adatelérési szintet beállító szabályzatok létrehozásával megtervezheti az igényeinek leginkább megfelelő tárolási lehetőségeket.
+
+További információ: [Az Azure Blob Storage életciklusának kezelése](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal)
+
+## <a name="create-budgets"></a>Költségvetések létrehozása
 
 A költségek kezeléséhez [költségvetéseket](../../cost-management-billing/costs/tutorial-acm-create-budgets.md) és riasztásokat hozhat létre, amelyek automatikusan figyelmeztetik az érdekelt feleket a rendellenes kiadásokról és a túlköltekezési kockázatokról. A riasztások a költségvetés és a költségek küszöbértékei alapján működnek. Az Azure-előfizetésekhez és-erőforráscsoportokhöz költségvetést és riasztásokat hoznak létre, így azok a teljes költségű figyelési stratégia részeként hasznosak. Előfordulhat azonban, hogy az egyes Azure-szolgáltatásokhoz hasonló költségekkel járnak, mint például az Azure Storage költségei, mert a költségek magasabb szinten való nyomon követésére szolgálnak.
 
@@ -54,9 +80,12 @@ Amikor Azure-erőforrásokat használ az Azure Storage-ban, költségek merülne
 
 A Cost Analysis használatakor különböző időintervallumok esetén megtekintheti az Azure Storage-költségeket gráfokban és táblázatokban. Néhány példa: nap, aktuális és előző hónap, év. A költségeket a költségvetések és az előre jelzett költségek között is megtekintheti. Ha a hosszabb nézetekre vált, az idő múlásával azonosíthatja a kiadási trendeket, és megtekintheti, hogy hol történt a túltöltés. Ha költségvetéseket hozott létre, azt is megteheti, hogy a megadottak hol vannak túllépve.
 
+>[!NOTE]
+> A költségelemzés különböző Azure-fióktípusokat támogat. A támogatott fióktípusok teljes listáját lásd: [A Cost Management adatainak értelmezése](../../cost-management-billing/costs/understand-cost-mgt-data.md). A költségadatok megtekintéséhez legalább olvasási jogosultsággal kell rendelkeznie az Azure-fiókjához. További információért az Azure Cost Management adataihoz való hozzáférés hozzárendeléséről: [Adatokhoz való hozzáférés hozzárendelése](../../cost-management-billing/costs/assign-access-acm-data.md).
+
 Az Azure Storage költségeinek megtekintése a Cost Analysis szolgáltatásban:
 
-1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 2. Nyissa meg a **Cost Management + számlázás** ablakot, válassza ki a menüből a **Cost Management** elemet, majd válassza a **Cost Analysis**lehetőséget. Ezután módosíthatja egy adott előfizetés hatókörét a **hatókör** legördülő menüből.
 
@@ -68,7 +97,7 @@ Az Azure Storage költségeinek megtekintése a Cost Analysis szolgáltatásban:
 
    ![Tárolási költségek figyelése a Cost Analysis ablaktáblával](./media/storage-plan-manage-costs/cost-analysis-pane-storage.png)
 
-Az előző példában a szolgáltatás aktuális díja látható. Az Azure-régiók (helyszínek) és az erőforráscsoport költségei is megjelennek.  
+Az előző példában a szolgáltatás aktuális díja látható. Az Azure-régiók (helyszínek) és az erőforráscsoport költségei is megjelennek. További szűrőket is hozzáadhat (például egy szűrőt az adott Storage-fiókok költségeinek megjelenítéséhez).
 
 ## <a name="next-steps"></a>További lépések
 

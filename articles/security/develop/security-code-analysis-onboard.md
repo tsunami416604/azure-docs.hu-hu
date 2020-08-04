@@ -1,6 +1,6 @@
 ---
 title: Microsoft biztonsági kód elemzése – bevezetési útmutató
-description: Ez a cikk a Microsoft biztonsági kód elemzése bővítmény telepítését ismerteti.
+description: Ismerje meg, hogyan telepítheti és telepítheti a Microsoft biztonsági kód elemzése bővítményt. Lásd az előfeltételek című témakört, és tekintse meg a további erőforrásokat.
 author: sukhans
 manager: sukhans
 ms.author: terrylan
@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: fd0057c5f5e365d6c91ae221a7add813855bb1ec
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 5366da1048e7c6d9612ad8b6b1f1694068bb35fb
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323587"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543027"
 ---
 # <a name="onboarding-and-installing"></a>Előkészítés és telepítés
 
@@ -78,7 +78,7 @@ A bővítmény telepítése után a biztonságos fejlesztési felépítési fela
    - Új folyamat: válassza az **új** lehetőséget, majd az új folyamat létrehozásához kövesse a részletes lépéseket.
    - Folyamat szerkesztése: válasszon ki egy meglévő folyamatot, majd válassza a **Szerkesztés** lehetőséget a folyamat szerkesztésének megkezdéséhez.
 1. Válassza ki **+** , majd lépjen a **feladatok hozzáadása** ablaktáblára.
-1. A listából vagy a keresőmező használatával keresse meg a felvenni kívánt felépítési feladatot. Válassza a **Hozzáadás** elemet.
+1. A listából vagy a keresőmező használatával keresse meg a felvenni kívánt felépítési feladatot. Válassza a **Hozzáadás** lehetőséget.
 1. Határozza meg a feladathoz szükséges paramétereket.
 1. Új Build várólistára helyezése.
    >[!NOTE]

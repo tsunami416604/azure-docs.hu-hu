@@ -1,6 +1,6 @@
 ---
 title: Az Azure Database biztonsági ellenőrzőlistája | Microsoft Docs
-description: Ez a cikk az Azure Database biztonságára vonatkozó ellenőrzőlista-készletet tartalmaz.
+description: Az Azure Database biztonsági ellenőrzőlistájának használatával megtekintheti a fontos felhő-számítástechnikai biztonsági problémákat.
 services: security
 documentationcenter: na
 author: unifycloud
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: fc79d7204ba360696b8d9411cd56efd09d1678dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ad8f15f7d1cf69824bfb9298d7ccf097e4893ea8
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84021840"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542976"
 ---
 # <a name="azure-database-security-checklist"></a>Az Azure Database biztonsági ellenőrzőlistája
 
@@ -37,14 +37,14 @@ Ezek a következők:
 -    Az SQL Database naplózási funkciója
 -    SQL Database fenyegetések észlelése
 
-## <a name="introduction"></a>Introduction (Bevezetés)
+## <a name="introduction"></a>Bevezetés
 A felhő-számítástechnika olyan új biztonsági paradigmokat igényel, amelyek számos alkalmazás-felhasználó, adatbázis-rendszergazda és programozó számára ismeretlenek. Ennek eredményeképpen néhány szervezet vonakodik az adatkezeléshez szükséges felhőalapú infrastruktúra megvalósításában, az észlelt biztonsági kockázatok miatt. A probléma nagy része azonban a Microsoft Azureba beépített biztonsági funkciók jobb megismerésével és Microsoft Azure SQL Databaseával is enyhíthető.
 
 ## <a name="checklist"></a>Ellenőrzőlista
 Javasoljuk, hogy az ellenőrzőlista áttekintése előtt olvassa el az [Azure-adatbázis biztonsági eljárásairól](database-best-practices.md) szóló cikket. Az ajánlott eljárások megismerése után a lehető legtöbbet hozhatja ki ebből az ellenőrzőlistából. Ezt a feladatlistát követve meggyőződhet arról, hogy az Azure Database biztonságával kapcsolatos fontos problémák merültek fel.
 
 
-|Ellenőrzőlista kategóriája| Description|
+|Ellenőrzőlista kategóriája| Leírás|
 | ------------ | -------- |
 |**Az adatvédelem**||
 | <br> Titkosítás a mozgásban/átvitelben| <ul><li>[Transport Layer Security](https://docs.microsoft.com/windows-server/security/tls/transport-layer-security-protocol)az adattitkosításhoz, amikor az adatátvitelt a hálózatokra helyezi.</li><li>Az adatbázishoz biztonságos kommunikáció szükséges az ügyfelektől a (z) [TDS (táblázatos adatfolyam)](https://msdn.microsoft.com/library/dd357628.aspx) protokollon keresztül a TLS protokoll (Transport Layer Security) alapján.</li></ul> |
@@ -56,7 +56,7 @@ Javasoljuk, hogy az ellenőrzőlista áttekintése előtt olvassa el az [Azure-a
 | <br>& észlelésének nyomon követése| <ul><li>A [naplózás](../../sql-database/sql-database-auditing.md) nyomon követi az adatbázis eseményeit, és az [Azure Storage-fiókban](../../storage/common/storage-create-storage-account.md)lévő naplóba/tevékenység naplóba írja azokat.</li><li>Az Azure-adatbázis állapotának nyomon követése [Azure monitor tevékenységi naplók](../../azure-monitor/platform/platform-logs-overview.md)használatával.</li><li>A [veszélyforrások észlelése](../../azure-sql/database/threat-detection-configure.md) rendellenes adatbázis-tevékenységeket észlel, ami az adatbázis potenciális biztonsági fenyegetéseket jelez. </li></ul> |
 |<br>Azure Security Center| <ul><li>[Adatfigyelés](../../security-center/security-center-enable-auditing-on-sql-databases.md) A Azure Security Center központi biztonsági monitorozási megoldásként használható az SQL és más Azure-szolgáltatások számára.</li></ul>|        
 
-## <a name="conclusion"></a>Összegzés
+## <a name="conclusion"></a>Tanulság
 Az Azure Database egy robusztus adatbázis-platform, amely a számos szervezeti és szabályozási megfelelőségi követelménynek megfelelő biztonsági funkciók széles skáláját tartalmazza. Az adatvédelmet az adataihoz való fizikai hozzáférés szabályozásával, valamint a fájl-, oszlop-vagy sorcsoport szintjén a transzparens adattitkosítás, a sejtek szintjének titkosításával vagy a sorok szintjének biztonságával könnyedén védetté teheti. A Always Encrypted a titkosított adatok elleni műveleteket is lehetővé teszi, leegyszerűsítve az alkalmazások frissítéseinek folyamatát. A SQL Database tevékenység naplózási naplóihoz való hozzáférés pedig a szükséges információkat nyújtja, így megtudhatja, hogyan és mikor férhet hozzá az adatokhoz.
 
 ## <a name="next-steps"></a>További lépések

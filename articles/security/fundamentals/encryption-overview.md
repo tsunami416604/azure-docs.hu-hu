@@ -1,6 +1,6 @@
 ---
 title: Az Azure-titkosítás áttekintése | Microsoft Docs
-description: Az Azure különböző titkosítási lehetőségeinek megismerése
+description: Az Azure titkosítási lehetőségeinek megismerése. Tekintse meg a inaktív adatok titkosításával, a repülés titkosításával és a Azure Key Vaultsal való kulcskezelő szolgáltatással foglalkozó témakört.
 services: security
 author: msmbaldwin
 ms.assetid: ''
@@ -9,12 +9,12 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 14808016b627bc593d90ff88fc9bddf2449f6ee5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5189270a7b9de9ff5a222ad76ce46254ae5d2ee3
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083956"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542959"
 ---
 # <a name="azure-encryption-overview"></a>Az Azure-titkosítás áttekintése
 
@@ -113,7 +113,7 @@ Az Azure számos mechanizmust kínál az adatok magánjellegű tárolásához, a
 
 ### <a name="data-link-layer-encryption-in-azure"></a>Adatkapcsolati réteg titkosítása az Azure-ban
 
-Amikor az Azure-ügyfelek forgalmának továbbítása az adatközpontok között történik – a Microsoft által nem szabályozott fizikai határok (vagy a Microsoft nevében) – egy adatkapcsolati rétegbeli titkosítási módszer, amely az [IEEE 802.1 AE Mac biztonsági szabványokat](https://1.ieee802.org/security/802-1ae/) (más néven MACsec) használja az alapul szolgáló hálózati hardveren.  A csomagokat a rendszer a küldés előtt titkosítja és visszafejti az eszközökön, megelőzve a fizikai "ember-középen" vagy a figyelési/wiretapping támadásokat.  Mivel ez a technológia önmagában is a hálózati hardverhez van integrálva, a hálózati hardverek esetében a sebesség nélküli titkosítás biztosítja a kapcsolati késleltetés növelését.  Ez a MACsec-titkosítás alapértelmezés szerint a régión vagy régión belüli összes Azure-forgalomra vonatkozik, és az ügyfelek részéről nincs szükség beavatkozásra. 
+Amikor az Azure-ügyfelek forgalmának továbbítása az adatközpontok között történik – a Microsoft által nem szabályozott fizikai határok (vagy a Microsoft nevében) – egy adatkapcsolati rétegbeli titkosítási módszer, amely az [IEEE 802.1 AE Mac biztonsági szabványokat](https://1.ieee802.org/security/802-1ae/) (más néven MACsec) használja az alapul szolgáló hálózati hardveren. A csomagokat a rendszer a küldés előtt titkosítja és visszafejti az eszközökön, megelőzve a fizikai "ember-középen" vagy a figyelési/wiretapping támadásokat. Mivel ez a technológia önmagában is a hálózati hardverhez van integrálva, a hálózati hardverek esetében a sebesség nélküli titkosítás biztosítja a kapcsolati késleltetés növelését. Ez a MACsec-titkosítás alapértelmezés szerint a régión vagy régión belüli összes Azure-forgalomra vonatkozik, és az ügyfelek részéről nincs szükség beavatkozásra. 
 
 ### <a name="tls-encryption-in-azure"></a>TLS-titkosítás az Azure-ban
 

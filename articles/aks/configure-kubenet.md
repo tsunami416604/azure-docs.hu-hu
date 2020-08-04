@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 06/02/2020
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: c5369d63c0937605cc288e3a90466e723e69d163
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 037e07a1d8a6a3b4016d00f1b5a68bffc9caf335
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86255438"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543367"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Kubenet hálózatkezelés használata saját IP-címtartományok az Azure Kubernetes szolgáltatásban (ak)
 
@@ -20,7 +20,7 @@ Az [Azure Container Network Interface (CNI)][cni-networking]használatával mind
 
 Ebből a cikkből megtudhatja, hogyan használhatja a *kubenet* hálózatkezelést virtuális hálózati alhálózat létrehozására és használatára egy AK-fürthöz. A hálózati beállításokkal és a szempontokkal kapcsolatos további információkért lásd: [hálózati fogalmak a Kubernetes és az AK][aks-network-concepts]-hoz.
 
-## <a name="prerequisites"></a>Előfeltételek
+## <a name="prerequisites"></a>Előfeltétel
 
 * Az AK-fürthöz tartozó virtuális hálózatnak engedélyeznie kell a kimenő internetkapcsolatot.
 * Ne hozzon létre egynél több AK-fürtöt ugyanabban az alhálózatban.
@@ -47,6 +47,17 @@ A *kubenet*csak a csomópontok kapnak IP-címet a virtuális hálózat alhálóz
 Az Azure legfeljebb 400 útvonalat támogat egy UDR, így nem rendelkezhet 400 csomópontnál nagyobb AK-fürttel. Az AK-beli [virtuális csomópontok][virtual-nodes] és az Azure-hálózati házirendek nem támogatottak a *kubenet*.  A kubenet által támogatott, a [tarka hálózati házirendeket][calico-network-policies]is használhatja.
 
 Az *Azure CNI*minden Pod IP-címet kap az IP-alhálózatban, és közvetlenül tud kommunikálni más hüvelyekkel és szolgáltatásokkal. A fürtök mérete lehet a megadott IP-címtartomány. Az IP-címtartományt azonban előre meg kell tervezni, és az összes IP-címet az AK-csomópontok használják az általa támogatott hüvelyek maximális száma alapján. Az *Azure CNI*támogatja a speciális hálózati szolgáltatásokat és forgatókönyveket, például a [virtuális csomópontokat][virtual-nodes] vagy a hálózati házirendeket (akár az Azure-t, akár a tarkat is).
+
+### <a name="limitations--considerations-for-kubenet"></a>Korlátozások & megfontolások a kubenet
+
+* További ugrásra van szükség a kubenet kialakításában, amely kisebb késést biztosít a pod-kommunikációhoz.
+* A kubenet használatához útválasztási táblák és felhasználó által definiált útvonalak szükségesek, ami bonyolultságot biztosít a műveletekhez.
+* A közvetlen Pod-címzés nem támogatott a kubenet-kialakítás miatti kubenet.
+* Az Azure CNI-fürtökkel ellentétben több kubenet-fürt nem tud alhálózatot megosztani.
+* **A kubenet-ben nem támogatott szolgáltatások a** következők:
+   * Az [Azure hálózati házirendjei](use-network-policies.md#create-an-aks-cluster-and-enable-network-policy), de a kubenet támogatottak a tarka hálózati házirendek
+   * [Windows-csomópontos készletek](windows-node-limitations.md)
+   * [Virtuális csomópontok bővítmény](virtual-nodes-portal.md#known-limitations)
 
 ### <a name="ip-address-availability-and-exhaustion"></a>IP-cím rendelkezésre állása és kimerülése
 
@@ -233,7 +244,7 @@ az network vnet subnet list --resource-group
 az aks create -g MyResourceGroup -n MyManagedCluster --vnet-subnet-id MySubnetID
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A meglévő virtuális hálózati alhálózatba üzembe helyezett AK-fürttel mostantól a fürtöt normál módon is használhatja. Ismerkedjen meg az alkalmazások létrehozásával az [Azure dev Spaces használatával][dev-spaces], hogyan [helyezhet üzembe meglévő alkalmazásokat a Helm használatával][use-helm], vagy [új alkalmazásokat hozhat létre a Helm használatával][develop-helm].
 

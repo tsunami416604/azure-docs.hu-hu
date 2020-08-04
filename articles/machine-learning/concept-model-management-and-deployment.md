@@ -11,12 +11,12 @@ author: jpe316
 ms.author: jordane
 ms.date: 03/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: 12d86f9415f7f5b813d2dce8eb3ad4bb63dec30c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d1d14fa9730e3ddd47378a45ff7a1442bdee69ac
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82929757"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543384"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps: a modell kezelése, üzembe helyezése és figyelése Azure Machine Learning
 
@@ -74,7 +74,7 @@ További információkért lásd a [modellek üzembe helyezése](how-to-deploy-a
 ### <a name="profile-models"></a>Profil modelljei
 
 A Azure Machine Learning segítségével megismerheti a szolgáltatás CPU-és memória-követelményeit, amelyeket a rendszer a modell telepítésekor hoz létre. A profilkészítés a modellt futtató szolgáltatást teszteli, és olyan információkat ad vissza, mint például a CPU-használat, a memóriahasználat és a válasz késése. Emellett egy CPU-és memória-javaslatot is biztosít az erőforrás-használat alapján.
-További információért lásd a [modellek üzembe helyezése](how-to-deploy-and-where.md#profilemodel)című szakaszt.
+További információért lásd a [modellek üzembe helyezése](how-to-deploy-profile-model.md)című szakaszt.
 
 ### <a name="package-and-debug-models"></a>Csomagok és hibakeresési modellek
 
@@ -94,16 +94,16 @@ A Azure Machine Learningrel való ONNX kapcsolatos további információkért te
 
 A betanított gépi tanulási modellek a felhőben vagy helyileg webszolgáltatásként vannak üzembe helyezve. A modelleket Azure IoT Edge-eszközökre is üzembe helyezheti. A központi telepítések CPU-, GPU-vagy mező-programozható Gate-tömböket (FPGA) használnak a következtetésekhez. Power BI modelleket is használhat.
 
-Ha webszolgáltatásként vagy IoT Edge eszközként használ modellt, a következő elemeket kell megadnia:
+Ha webszolgáltatásként vagy IoT Edge-eszközként használ egy modellt, akkor meg kell adnia a következő elemeket:
 
 * A szolgáltatásnak/eszköznek beküldött adatértékek kiértékeléséhez használt modell (ek).
-* Egy bejegyzési parancsfájl. Ez a szkript fogadja a kérelmeket, a modell (ek) et használja az adatpontszámok kiértékelésére és a válasz visszaküldésére.
+* Egy bejegyzésparancsfájl. Ez a szkript fogadja a kérelmeket, a modell (ek) et használja az adatpontszámok kiértékelésére és a válasz visszaküldésére.
 * Egy Azure Machine Learning környezet, amely leírja a modell (ek) és a bejegyzési parancsfájl által igényelt pip-és Conda-függőségeket.
 * A modell (ek) és a bejegyzési parancsfájl által igényelt további eszközök, például szöveg, adatok stb.
 
-Megadhatja a cél telepítési platform konfigurációját is. Például a virtuálisgép-család típusa, a rendelkezésre álló memória és a magok száma az Azure Kubernetes szolgáltatásban való üzembe helyezéskor.
+Meg kell adnia az üzembe helyezés célplatformjának konfigurációját is. Például a virtuálisgép-család típusa, a rendelkezésre álló memória és a magok száma az Azure Kubernetes szolgáltatásban való üzembe helyezéskor.
 
-A rendszerkép létrehozásakor a Azure Machine Learning által igényelt összetevőket is hozzáadja a rendszer. Például a webszolgáltatás futtatásához és a IoT Edgehoz való interakcióhoz szükséges eszközök.
+A rendszerkép létrehozását követően a rendszer hozzáadja az Azure Machine Learning által igényelt összetevőket is. Ilyenek például a webszolgáltatás futtatásához és az IoT Edge-dzsel való interakciókhoz szükséges eszközök.
 
 #### <a name="batch-scoring"></a>Batch-pontozás
 A Batch pontozása ML-folyamatok esetében támogatott. További információ: batch- [előrejelzések Big Data](how-to-use-parallel-run-step.md).

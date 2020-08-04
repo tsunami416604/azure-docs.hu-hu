@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/08/2020
-ms.openlocfilehash: ea6aec9ffcaf01c0db5b297d40783ce4690a8f0a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ea5f2d5838c926fa8ee7b92278b0854264346a7b
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84045304"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543758"
 ---
 # <a name="import-or-export-an-azure-sql-database-without-allowing-azure-services-to-access-the-server"></a>Azure SQL Database importálása vagy exportálása az Azure-szolgáltatások a kiszolgálóhoz való hozzáférésének engedélyezése nélkül
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -34,9 +34,7 @@ Hozzon létre egy Azure-beli virtuális gépet az **üzembe helyezés az Azure-*
 Ez a sablon lehetővé teszi egy egyszerű Windowsos virtuális gép üzembe helyezését néhány különböző lehetőséggel a Windows-verzióhoz a legújabb javított verzió használatával. Ez egy a2 méretű virtuális gépet helyez üzembe az erőforráscsoport helyén, és a virtuális gép teljes tartománynevét adja vissza.
 <br><br>
 
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-vm-simple-windows%2Fazuredeploy.json" target="_blank">
-    <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png"/>
-</a>
+[![Az "üzembe helyezés az Azure-ban" feliratú gombot ábrázoló kép.](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-vm-simple-windows%2Fazuredeploy.json)
 
 További információkért lásd: [Windows rendszerű virtuális gép nagyon egyszerű üzembe helyezése](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows).
 
@@ -54,7 +52,7 @@ A következő lépések bemutatják, hogyan csatlakozhat a virtuális géphez t�
 
    ![RDP-űrlap](./media/database-import-export-azure-services-off/rdp.png)  
 
-3. Válassza az **RDP-fájl letöltése**lehetőséget.
+3. Válassza az **RDP-fájl letöltése** lehetőséget.
 
    > [!NOTE]
    > Az SSH használatával is csatlakozhat a virtuális géphez.

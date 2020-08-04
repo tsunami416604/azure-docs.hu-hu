@@ -1,6 +1,6 @@
 ---
 title: Azure-beli üzemi hálózat
-description: Ez a cikk az Azure éles hálózatának általános leírását tartalmazza.
+description: Ismerje meg az Azure éles hálózatát. A hálózattal létesített kapcsolat létrehozásához tekintse meg a biztonsági hozzáférési módszereket és a védelmi mechanizmusokat.
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
-ms.openlocfilehash: 7c0748e4ff1531649274834cb1e602c228f102e8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 724c2ee2d74ca9cab11280e92faac71c2cb2218e
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "68726692"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543809"
 ---
 # <a name="the-azure-production-network"></a>Az Azure éles hálózata
 Az Azure éles hálózat felhasználói a saját Azure-alkalmazásaikat és az üzemi hálózatot kezelő belső Azure-támogatási személyzetet is magukban foglalják. Ez a cikk az Azure üzemi hálózattal létesített kapcsolatok létrehozásához szükséges biztonsági hozzáférési módszereket és védelmi mechanizmusokat ismerteti.
@@ -78,7 +78,7 @@ Az Azure-képességekbe beépített további biztonsági funkciók a következő
    - A tűzfalak csak a belső csomópontok kiválasztása esetén érhetők el. A csomagokat csak a forrás IP-címeinek enumerált listájából fogadják el, amelyek mindegyike az Azure-hálózatban található. Előfordulhat például, hogy a vállalati hálózat támadása ezekre a címekre irányuló kéréseket tartalmaz, de a támadások le lesznek tiltva, kivéve, ha a csomag címének egyike volt az Azure-hálózaton belüli enumerálási listán.
      - A peremhálózati hozzáférési útválasztó blokkolja a kimenő csomagokat, amelyek az Azure-hálózaton belüli címekre vannak konfigurálva a beállított statikus útvonalak miatt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ha többet szeretne megtudni arról, hogy a Microsoft Hogyan védi az Azure-infrastruktúrát, olvassa el a következő témakört:
 
 - [Azure-létesítmények,-telephelyek és fizikai biztonság](physical-security.md)

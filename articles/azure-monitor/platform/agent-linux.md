@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 01/21/2020
-ms.openlocfilehash: accd7c3ad82853c1f2af0b632326b2798f85b36b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 965d5dd558d0da7a758db77330c9129ea0e8247c
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073650"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543860"
 ---
 # <a name="connect-linux-computers-to-azure-monitor"></a>Linux rendszerű számítógépek összekapcsolásának Azure Monitor
 
@@ -163,7 +163,8 @@ Jelenleg a következők támogatottak:
 - FIPs
 
 A következők tervezettek, de még nem támogatottak:
-- CIS – SELINUX
+- VIR
+- SELINUX
 
 Más korlátozási és testreszabási módszerek nem támogatottak és nem tervezettek a OMS-ügynök számára.  
 

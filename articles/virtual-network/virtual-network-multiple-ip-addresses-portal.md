@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/30/2016
 ms.author: allensu
-ms.openlocfilehash: 9cec3e3ad4934ce368baa44984d252dc981d5d81
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 135504ad4956836614bfc0f2cb107e610de17c0c
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87088206"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543486"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-portal"></a>Több IP-cím hozzárendelését a virtuális gépekhez a Azure Portal használatával
 
@@ -48,7 +48,7 @@ A következő lépések végrehajtásával adhat hozzá privát és nyilvános I
 
 5. A kiválasztott hálózati adapterhez megjelenő ablaktáblán kattintson az **IP-konfigurációk**elemre. Kattintson a **Hozzáadás**gombra, hajtsa végre az alábbi szakaszokban ismertetett lépéseket a hozzáadni kívánt IP-cím alapján, majd kattintson **az OK**gombra. 
 
-### <a name="add-a-private-ip-address"></a>**Magánhálózati IP-cím hozzáadása**
+### <a name="add-a-private-ip-address"></a>Magánhálózati IP-cím hozzáadása
 
 Új magánhálózati IP-cím hozzáadásához hajtsa végre a következő lépéseket:
 

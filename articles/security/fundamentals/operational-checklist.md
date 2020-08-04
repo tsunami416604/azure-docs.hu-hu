@@ -1,6 +1,6 @@
 ---
 title: Az Azure Operational Security ellenőrzőlista | Microsoft Docs
-description: Ez a cikk az Azure működési biztonságára vonatkozó ellenőrzőlista-készletet tartalmaz.
+description: Tekintse át ezt a feladatlistát, hogy segítse a vállalatot az Azure működési biztonsági megfontolások alapján.
 services: security
 documentationcenter: na
 author: unifycloud
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: c7c44018bb1a010298738d3e46b7b9e7b6c04292
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 656459c4a29a73732b8825e735719731a0979a0e
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448307"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542925"
 ---
 # <a name="azure-operational-security-checklist"></a>Azure Operational Security ellenőrzőlista
 Az alkalmazások Azure-ban való üzembe helyezése gyors, egyszerű és költséghatékony. A felhőalapú alkalmazás éles környezetben való üzembe helyezése előtt olyan ellenőrzőlista szükséges, amely segítséget nyújt az alkalmazás kiértékelésében a szükséges alapvető és ajánlott működési biztonsági műveletek listájával.

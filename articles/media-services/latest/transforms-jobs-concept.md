@@ -12,12 +12,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 08/19/2019
 ms.author: juliako
-ms.openlocfilehash: 3e01d5c8d57752c11b2890c1d109b58a223d260f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d45d802456345eab857f571d2d52793c8be691eb
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091929"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543061"
 ---
 # <a name="transforms-and-jobs-in-media-services"></a>Átalakítások és feladatok Media Services
 
@@ -74,7 +74,7 @@ A következő ábrán az **átalakító** objektum és az általa hivatkozott ob
 
 Válassza ki a képet a teljes méret megtekintéséhez.  
 
-<a href="./media/api-diagrams/transform-large.png" target="_blank"><img src="./media/api-diagrams/transform-small.png"></a>
+[![Az átalakító objektumot és az általa hivatkozott objektumokat ábrázoló diagram, beleértve az objektumok közötti osztály-származtató kapcsolatokat.](./media/api-diagrams/transform-small.png)](./media/api-diagrams/transform-large.png#lightbox)
 
 ## <a name="jobs"></a>Feladatok
 
@@ -102,7 +102,7 @@ A következő ábrán a **feladatütemezés** és az általa hivatkozott objektu
 
 Kattintson a képre a teljes méretű megjelenítéshez.  
 
-<a href="./media/api-diagrams/job-large.png" target="_blank"><img src="./media/api-diagrams/job-small.png"></a>
+[![A feladattípust és az általa hivatkozott objektumokat bemutató diagram, beleértve az objektumok közötti osztály-származtató kapcsolatokat.](./media/api-diagrams/job-small.png)](./media/api-diagrams/job-large.png#lightbox)
 
 ## <a name="configure-media-reserved-units"></a>Media szolgáltatás számára fenntartott egységek konfigurálása
 
@@ -114,7 +114,7 @@ Részletekért lásd: [a médiafájlok feldolgozásának skálázása a CLI-vel]
 
 Tekintse meg a [Azure Media Services közösségi](media-services-community.md) cikket, amely különböző módokon jelenítheti meg a kérdéseket, visszajelzéseket küldhet, és frissítéseket kaphat a Media Servicesról.
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 * [Hibakódok](/rest/api/media/jobs/get#joberrorcode)
 * [Media Services entitások szűrése, rendezése és lapozása](entities-overview.md)

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/11/2019
 ms.author: rogara
 ms.custom: include file
-ms.openlocfilehash: e1cc3bac56e659b9a020880a26fd3d539f987503
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 55e5290630185466ea0801b06ece71069fc94d89
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86544718"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87545327"
 ---
 ## <a name="2-assign-access-permissions-to-an-identity"></a>2 hozzáférési engedélyek kiosztása identitáshoz
 
@@ -28,7 +28,7 @@ Három Azure-beli beépített szerepkört vezettünk be a felhasználók számá
 > [!IMPORTANT]
 > Egy fájlmegosztás teljes körű felügyeleti ellenőrzése, beleértve a fájl tulajdonjogának átvételének lehetőségét, a Storage-fiók kulcsát kell használnia. Az Azure AD hitelesítő adatai nem támogatják a felügyeleti felügyeletet.
 
-A Azure Portal, a PowerShell vagy az Azure CLI használatával hozzárendelheti a beépített szerepköröket egy felhasználó Azure AD-identitásához a megosztási szintű engedélyek megadásához. Vegye figyelembe, hogy a megosztási szint RBAC szerepkör-hozzárendelésének végrehajtása hosszabb időt is igénybe vehet. 
+A Azure Portal, a PowerShell vagy az Azure CLI használatával hozzárendelheti a beépített szerepköröket egy felhasználó Azure AD-identitásához a megosztási szintű engedélyek megadásához. Vegye figyelembe, hogy a megosztási szint Azure-szerepkör-hozzárendelése hosszabb időt is igénybe vehet. 
 
 > [!NOTE]
 > Ne felejtse el [szinkronizálni AD DS hitelesítő adatait az Azure ad-be](../articles/active-directory/hybrid/how-to-connect-install-roadmap.md) , ha a helyszíni AD DS használatát tervezi a hitelesítéshez. Az AD DSról az Azure AD-re való jelszó-kivonatolási szinkronizálás nem kötelező. A megosztási szint engedély a helyszíni AD DS szinkronizált Azure AD-identitáshoz lesz biztosítva.
@@ -36,7 +36,7 @@ A Azure Portal, a PowerShell vagy az Azure CLI használatával hozzárendelheti 
 Az általános javaslat a megosztási szint engedély használata a magas szintű hozzáférés-kezeléshez a felhasználók és identitások egy csoportját képviselő AD-csoportra vonatkozóan, majd az NTFS-engedélyek kihasználása a címtár/fájl szintjén a részletes hozzáférés-vezérléshez. 
 
 #### <a name="azure-portal"></a>Azure Portal
-Ha RBAC-szerepkört szeretne hozzárendelni egy Azure AD-identitáshoz a [Azure Portal](https://portal.azure.com)használatával, kövesse az alábbi lépéseket:
+Ha Azure-szerepkört szeretne hozzárendelni egy Azure AD-identitáshoz a [Azure Portal](https://portal.azure.com)használatával, kövesse az alábbi lépéseket:
 
 1. A Azure Portal keresse meg a fájlmegosztást, vagy [hozzon létre egy fájlmegosztást](../articles/storage/files/storage-how-to-create-file-share.md).
 2. Válassza a **Access Control (iam)** lehetőséget.
@@ -46,7 +46,7 @@ Ha RBAC-szerepkört szeretne hozzárendelni egy Azure AD-identitáshoz a [Azure 
 
 #### <a name="powershell"></a>PowerShell
 
-A következő PowerShell-minta bemutatja, hogyan rendelhet hozzá egy RBAC-szerepkört egy Azure AD-identitáshoz a bejelentkezési név alapján. A RBAC-szerepkörök PowerShell-lel való hozzárendelésével kapcsolatos további információkért lásd: [a hozzáférés kezelése a RBAC és a Azure PowerShell használatával](../articles/role-based-access-control/role-assignments-powershell.md).
+A következő PowerShell-minta bemutatja, hogyan rendelhet hozzá Azure-szerepköröket egy Azure AD-identitáshoz a bejelentkezési név alapján. Az Azure-szerepkörök PowerShell-lel való hozzárendelésével kapcsolatos további információkért lásd: [a hozzáférés kezelése a RBAC és a Azure PowerShell használatával](../articles/role-based-access-control/role-assignments-powershell.md).
 
 A következő minta parancsfájl futtatása előtt ne felejtse el helyettesíteni a helyőrző értékeket, beleértve a zárójeleket is a saját értékeivel.
 
@@ -61,7 +61,7 @@ New-AzRoleAssignment -SignInName <user-principal-name> -RoleDefinitionName $File
 
 #### <a name="cli"></a>parancssori felület
   
-A következő CLI 2,0-parancs bemutatja, hogyan rendelhet hozzá egy RBAC-szerepkört egy Azure AD-identitáshoz a bejelentkezési név alapján. A RBAC szerepköreinek Azure CLI-vel való hozzárendelésével kapcsolatos további információkért lásd: [a hozzáférés kezelése a RBAC és az Azure CLI használatával](../articles/role-based-access-control/role-assignments-cli.md). 
+A következő CLI 2,0-parancs bemutatja, hogyan rendelhet hozzá Azure-szerepköröket egy Azure AD-identitáshoz a bejelentkezési név alapján. Az Azure-szerepkörök Azure CLI-vel való hozzárendelésével kapcsolatos további információkért lásd: a [hozzáférés kezelése a RBAC és az Azure CLI használatával](../articles/role-based-access-control/role-assignments-cli.md). 
 
 A következő minta parancsfájl futtatása előtt ne felejtse el helyettesíteni a helyőrző értékeket, beleértve a zárójeleket is a saját értékeivel.
 
@@ -130,7 +130,7 @@ Ha többet szeretne megtudni arról, hogyan használható a icacls az NTFS-enged
 
 ## <a name="4-mount-a-file-share-from-a-domain-joined-vm"></a>4 fájlmegosztás csatlakoztatása tartományhoz csatlakoztatott virtuális gépről
 
-A következő folyamat ellenőrzi, hogy a fájlmegosztás és a hozzáférési engedélyek megfelelően lettek-e beállítva, és hogy elérhető-e egy Azure-fájlmegosztás egy tartományhoz csatlakoztatott virtuális gépről. Vegye figyelembe, hogy a megosztási szint RBAC szerepkör-hozzárendelésének végrehajtása hosszabb időt is igénybe vehet. 
+A következő folyamat ellenőrzi, hogy a fájlmegosztás és a hozzáférési engedélyek megfelelően lettek-e beállítva, és hogy elérhető-e egy Azure-fájlmegosztás egy tartományhoz csatlakoztatott virtuális gépről. Vegye figyelembe, hogy a megosztási szint Azure-szerepkör-hozzárendelése hosszabb időt is igénybe vehet. 
 
 Jelentkezzen be a virtuális gépre azzal az Azure AD-identitással, amelyhez engedélyeket adott meg, ahogy az az alábbi képen is látható. Ha engedélyezte a helyszíni AD DS hitelesítést a Azure Fileshoz, használja a AD DS hitelesítő adatait. Azure AD DS-hitelesítéshez jelentkezzen be az Azure AD hitelesítő adataival.
 

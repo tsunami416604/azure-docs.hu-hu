@@ -1,6 +1,6 @@
 ---
 title: A Microsoft biztonsági kód elemzésének dokumentációja – áttekintés
-description: Ez a cikk áttekintést nyújt a Microsoft biztonsági kód elemzése bővítményről
+description: További információ a Microsoft biztonsági kód elemzése bővítményről. Ezzel a bővítménnyel hozzáadhat biztonsági kód-elemzéseket az Azure DevOps CI/ID-folyamatokhoz.
 author: sukhans
 manager: sukhans
 ms.author: terrylan
@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: e42ea5c6863e769f6d2664b3bcd48d15f00b6b5e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3d9caabe3dfde34964f662dbf01316b2cbb0bcab
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85361319"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543010"
 ---
 # <a name="about-microsoft-security-code-analysis"></a>Tudnivalók a Microsoft biztonsági kódok elemzéséről
 

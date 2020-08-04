@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 11/07/2018
-ms.openlocfilehash: fd4b94f6a99241ffddd7ae359059c3a4a918934a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 52dfc285deaa84792e37d0f012abd7702d856113
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84042126"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87544081"
 ---
 # <a name="deploy-and-explore-a-standalone-single-tenant-application-that-uses-azure-sql-database"></a>A Azure SQL Databaset használó önálló egybérlős alkalmazás üzembe helyezése és megismerése
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -43,13 +43,17 @@ A rendszer további oktatóanyagokat is felszabadít. Lehetővé teszik, hogy az
 
 Telepítse az alkalmazást a három megadott bérlőhöz:
 
-1. Kattintson a kék **üzembe helyezés az Azure** -ban gombra, hogy megnyissa a központi telepítési sablont a [Azure Portal](https://portal.azure.com). Minden sablonhoz két paraméter érték szükséges; egy új erőforráscsoport neve, valamint egy olyan Felhasználónév, amely megkülönbözteti a központi telepítést az alkalmazás más központi telepítései között. A következő lépés az értékek beállításának részleteit tartalmazza.<br><br>
-    <a href="https://aka.ms/deploywingtipsa-contoso" target="_blank"><img style="vertical-align:middle" src="media/saas-standaloneapp-get-started-deploy/deploy.png"/></a>&nbsp; **Contoso Concert Hall**
-<br><br>
-    <a href="https://aka.ms/deploywingtipsa-dogwood" target="_blank"><img style="vertical-align:middle" src="media/saas-standaloneapp-get-started-deploy/deploy.png"/></a>&nbsp; **Somfai Dojo**
-<br><br>
-    <a href="https://aka.ms/deploywingtipsa-fabrikam" target="_blank"><img style="vertical-align:middle" src="media/saas-standaloneapp-get-started-deploy/deploy.png"/></a>&nbsp; **Fabrikam Jazz Club**
+1. Kattintson a kék **üzembe helyezés az Azure** -ban gombra, hogy megnyissa a központi telepítési sablont a [Azure Portal](https://portal.azure.com). Minden sablonhoz két paraméter érték szükséges; egy új erőforráscsoport neve, valamint egy olyan Felhasználónév, amely megkülönbözteti a központi telepítést az alkalmazás más központi telepítései között. A következő lépés az értékek beállításának részleteit tartalmazza.
 
+   **Contoso Concert Hall**   
+   [![Az "üzembe helyezés az Azure-ban" feliratú gombot ábrázoló kép.](media/saas-standaloneapp-get-started-deploy/deploy.png)](https://aka.ms/deploywingtipsa-contoso)
+
+   **Somfai Dojo**   
+   [![Az "üzembe helyezés az Azure-ban" feliratú gombot ábrázoló kép.](media/saas-standaloneapp-get-started-deploy/deploy.png)](https://aka.ms/deploywingtipsa-dogwood)
+
+   **Fabrikam Jazz Club**   
+   [![Az "üzembe helyezés az Azure-ban" feliratú gombot ábrázoló kép.](media/saas-standaloneapp-get-started-deploy/deploy.png)](https://aka.ms/deploywingtipsa-fabrikam)
+ 
 2. Adja meg az egyes központi telepítések kötelező paramétereinek értékét.
 
     > [!IMPORTANT]
@@ -62,7 +66,7 @@ Telepítse az alkalmazást a három megadott bérlőhöz:
     * **Felhasználó** számára – egy rövid felhasználói értéket ajánlunk, például a monogramját és egy számjegyét: például *AF1*.
 
 
-3. **Az alkalmazás üzembe helyezése**.
+3. **Telepítse az alkalmazást**.
 
     * Kattintson ide a feltételek és kikötések elfogadásához.
     * Kattintson a **Purchase** (Vásárlás) gombra.

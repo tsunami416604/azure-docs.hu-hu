@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 08/28/2019
 ms.author: tiag
-ms.openlocfilehash: 5353bad3ff631fd7baa5d9892d38449ba622ea46
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 5a2fd7fcfdae8559bfb39bffff7c73c7082a86aa
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284676"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543282"
 ---
 # <a name="linux-vm-boots-to-grub-rescue"></a>A Linux rendszerű virtuális gép a grub Rescue-t indítja
 
@@ -35,7 +35,7 @@ A kapott hibától függően kövesse az alábbi kockázatcsökkentő lépéseke
 * Ha a rendszer **ismeretlen**hibát észlel, akkor ez a hiba a rendszerindító partíció fájlrendszerének sérülése vagy helytelen kernel-konfiguráció miatt eredményezhet.
 
    * Fájlrendszerrel kapcsolatos problémák esetén hajtsa végre a következő cikkben ismertetett lépéseket [: Linux Recovery: nem lehet SSH-t Linux virtuális géphez a fájlrendszer hibái miatt (fsck, inode)](/archive/blogs/linuxonazure/linux-recovery-cannot-ssh-to-linux-vm-due-to-file-system-errors-fsck-inodes).
-   * Kernel-problémák esetén kövesse a [Linux helyreállítás: a kernel problémákkal kapcsolatos nem rendszerindítási problémák manuális kijavítása](http://linuxonazure.azurewebsites.net/linux-recovery-fixing-non-boot-issues-related-to-kernel-problems-using-chroot/), illetve a Linux-helyreállítás című cikk lépéseit [: a nem rendszerindítási problémák kijavítása kernel-problémákról a kromát használatával](http://linuxonazure.azurewebsites.net/linux-recovery-fixing-non-boot-issues-related-to-kernel-problems-using-chroot/).
+   * Kernel-problémák esetén kövesse az [Azure-beli linuxos virtuális gépek helyreállításához a kernelhez kapcsolódó rendszerindítási problémák vagy a](https://support.microsoft.com/help/4091524/how-recover-azure-linux-vm-from-kernel-related-boot-related-issues)Linux-helyreállítás című cikk lépéseit [: a rendszerindítási problémák elhárítása kernel-problémákról a kromát használatával](http://linuxonazure.azurewebsites.net/linux-recovery-fixing-non-boot-issues-related-to-kernel-problems-using-chroot/).
    
 ### <a name="error---file-not-found"></a>Hiba – a fájl nem található
 

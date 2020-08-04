@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
-ms.openlocfilehash: 0e538299dfc9c9406b519d888d1a92c5c643bb03
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: eea64520dd5440467c911b6de42d8c8c31fc1bde
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421739"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543452"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>A Azure Cloud Shell korlátozásának hibaelhárítása &
 
@@ -151,7 +151,8 @@ Azure Cloud Shell komolyan veszi a személyes adatait, a Azure Cloud Shell szolg
 ### <a name="export"></a>Exportálás
 A felhasználói beállítások **exportálásához** Cloud shell, például az előnyben részesített rendszerhéj, a betűméret és a betűkészlet típusát, futtassa a következő parancsokat.
 
-1. [![](https://shell.azure.com/images/launchcloudshell.png "Launch Azure Cloud Shell")](https://shell.azure.com)
+1. [![A rendszerindító Azure Cloud Shellt jelző gombot ábrázoló kép.](https://shell.azure.com/images/launchcloudshell.png)](https://shell.azure.com)
+
 2. Futtassa a következő parancsokat a bash vagy a PowerShellben:
 
 Bash
@@ -174,7 +175,8 @@ A felhasználói beállítások **törléséhez** Cloud shell, például az elő
 >[!Note]
 > Ha törli a felhasználói beállításokat, a tényleges Azure Files megosztás nem lesz törölve. A művelet végrehajtásához lépjen a Azure Files.
 
-1. [![](https://shell.azure.com/images/launchcloudshell.png "Launch Azure Cloud Shell")](https://shell.azure.com)
+1. [![A rendszerindító Azure Cloud Shellt jelző gombot ábrázoló kép.](https://shell.azure.com/images/launchcloudshell.png)](https://shell.azure.com)
+
 2. Futtassa a következő parancsokat a bash vagy a PowerShellben:
 
 Bash

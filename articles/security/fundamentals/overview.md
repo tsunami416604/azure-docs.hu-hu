@@ -1,6 +1,6 @@
 ---
 title: Az Azure Security bemutatása | Microsoft Docs
-description: Ismerkedjen meg az Azure biztonságával, szolgáltatásával és működésével.
+description: Ismerkedjen meg az Azure biztonságával, annak különböző szolgáltatásaival, és hogyan működik együtt az Áttekintés elolvasásával.
 services: security
 documentationcenter: na
 author: UnifyCloud
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2019
 ms.author: TomSh
-ms.openlocfilehash: 9c107789fe4a88b3cd73a2f290871016b95cae19
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 7f78b5d0baff149fc687d2b4bb71d70186315def
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371396"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543826"
 ---
 # <a name="introduction-to-azure-security"></a>Bevezetés az Azure biztonsági megoldásaiba
 ## <a name="overview"></a>Áttekintés
@@ -142,12 +142,12 @@ Az Application Diagnostics felületén a következő módokon csoportosíthatók
 A szakasz további információkat tartalmaz az Azure Storage biztonságának főbb funkcióiról, valamint az ezekkel a képességekkel kapcsolatos összegző információkkal kapcsolatban.
 
 ### <a name="role-based-access-control-rbac"></a>Szerepköralapú hozzáférés-vezérlés (RBAC)
-A Storage-fiókja a szerepköralapú Access Control (RBAC) segítségével biztosítható. Az adathozzáférésre vonatkozó biztonsági szabályzatokat kényszerítő szervezetek számára elengedhetetlen a hozzáférés korlátozása a [szükséges ismeret](https://en.wikipedia.org/wiki/Need_to_know) és a [legalacsonyabb jogosultsági szintű](https://en.wikipedia.org/wiki/Principle_of_least_privilege) biztonsági elvek alapján. Ezek a hozzáférési jogosultságok úgy érhetők el, hogy a megfelelő RBAC-szerepkört rendeli hozzá egy bizonyos hatókörhöz tartozó csoportokhoz és alkalmazásokhoz. A jogosultságok felhasználókhoz való hozzárendeléséhez használhatja az [Azure beépített szerepköreit](../../role-based-access-control/built-in-roles.md), például a Storage-fiók közreműködőjét. A Storage-fiókok [Azure Resource Manager](../../storage/blobs/security-recommendations.md) modell használatával történő elérését szerepköralapú Access Control (RBAC) segítségével lehet vezérelni.
+A Storage-fiókja a szerepköralapú Access Control (RBAC) segítségével biztosítható. Az adathozzáférésre vonatkozó biztonsági szabályzatokat kényszerítő szervezetek számára elengedhetetlen a hozzáférés korlátozása a [szükséges ismeret](https://en.wikipedia.org/wiki/Need_to_know) és a [legalacsonyabb jogosultsági szintű](https://en.wikipedia.org/wiki/Principle_of_least_privilege) biztonsági elvek alapján. Ezek a hozzáférési jogosultságok akkor érhetők el, ha a megfelelő Azure-szerepkört hozzárendeli a csoportokhoz és alkalmazásokhoz egy bizonyos hatókörben. A jogosultságok felhasználókhoz való hozzárendeléséhez használhatja az [Azure beépített szerepköreit](../../role-based-access-control/built-in-roles.md), például a Storage-fiók közreműködőjét. A Storage-fiókok [Azure Resource Manager](../../storage/blobs/security-recommendations.md) modell használatával történő elérését szerepköralapú Access Control (RBAC) segítségével lehet vezérelni.
 
 ### <a name="shared-access-signature"></a>Közös hozzáférési aláírás
 A [közös hozzáférésű jogosultságkód (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md) delegált hozzáférést biztosít a tárfiókon lévő erőforrásokhoz. Az SAS azt jelenti, hogy a megadott időszakra és meghatározott engedélyekkel engedélyezheti az ügyfél számára a Storage-fiókban lévő objektumokra vonatkozó korlátozott engedélyeket. Ezeket a korlátozott engedélyeket a fiók hozzáférési kulcsainak megosztása nélkül is megadhatja.
 
-### <a name="encryption-in-transit"></a>Titkosítás az átvitel során
+### <a name="encryption-in-transit"></a>Titkosítás átvitel közben
 Az átvitel közbeni titkosítás egy olyan mechanizmus, amely az adatok védelmét a hálózatokon keresztül továbbítja. Az Azure Storage használatával az alábbiakkal védheti meg az adatvédelmet:
 -   [Átviteli szintű titkosítás](../../storage/blobs/security-recommendations.md), például https, ha az Azure Storage-ba vagy az-ba helyezi át az adatátvitelt.
 

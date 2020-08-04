@@ -1,6 +1,6 @@
 ---
 title: Azure-infrastruktúra biztonsága | Microsoft Docs
-description: A cikk azt ismerteti, hogyan működik a Microsoft az Azure-adatközpontok védelmére.
+description: Ismerje meg, hogyan gondoskodik a Microsoft az Azure-adatközpontok védelméről. Az adatközpontokat a Microsoft Operations munkatársai felügyelik, figyelik és felügyelik.
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2019
 ms.author: terrylan
-ms.openlocfilehash: 10aecff797effb5abebea16a18dd4e02f40de326
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2a9e61ec850d20ab9b630036cd265fbb7f3801ae
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "72595410"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543928"
 ---
 # <a name="azure-infrastructure-security"></a>Azure-infrastruktúra biztonsága
 A Microsoft Azure a Microsoft által felügyelt és üzemeltetett adatközpontokban fut. Ezek a földrajzilag elosztott adatközpontok megfelelnek a legfontosabb iparági szabványoknak, például az ISO/IEC 27001:2013 és a NIST SP 800-53 számára a biztonság és a megbízhatóság érdekében. Az adatközpontokat a Microsoft Operations munkatársai felügyelik, figyelik és felügyelik. Az operatív munkatársaknak több éve van tapasztalata a világ legnagyobb online szolgáltatásokának 24 x 7 folytonossággal való megvalósításában.

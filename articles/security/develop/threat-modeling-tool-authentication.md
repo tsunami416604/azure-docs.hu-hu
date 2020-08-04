@@ -1,6 +1,6 @@
 ---
 title: Hitelesítés – Microsoft Threat Modeling Tool – Azure | Microsoft Docs
-description: a Threat Modeling Toolban elérhető fenyegetések enyhítése
+description: Ismerje meg a Threat Modeling Tool hitelesítésének mérséklését. Tekintse meg a kockázatcsökkentő információkat és a kód megjelenítése példákat.
 services: security
 documentationcenter: na
 author: jegeib
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.custom: has-adal-ref, devx-track-javascript
-ms.openlocfilehash: 6e29388595a53923e4899b319b94c87bae5cf941
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 11158749f3cae222c0948286e7365b1629cebbf2
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87424205"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543979"
 ---
 # <a name="security-frame-authentication--mitigations"></a>Biztonsági keret: hitelesítés | Enyhítését
 
@@ -48,8 +48,8 @@ ms.locfileid: "87424205"
 | **Összetevő**               | Webalkalmazás |
 | **SDL-fázis**               | Build |
 | **Alkalmazható technológiák** | Általános |
-| **Attribútumok**              | N.A.  |
-| **Hivatkozások**              | N.A.  |
+| **Attribútumok**              | N/A  |
+| **Hivatkozások**              | N/A  |
 | Részletek | <p>A hitelesítés az a folyamat, amelyben az entitás igazolja az identitását, jellemzően hitelesítő adatokkal, például felhasználónévvel és jelszóval. Több hitelesítési protokoll is rendelkezésre áll, amelyek megtekinthetők. Némelyikük alább látható:</p><ul><li>Ügyféltanúsítványok</li><li>Windows-alapú</li><li>Űrlapok alapján</li><li>Összevonás – ADFS</li><li>Összevonás – Azure AD</li><li>Összevonási-identitás kiszolgálója</li></ul><p>Érdemes lehet szabványos hitelesítési mechanizmust használni a forrás folyamat azonosítására.</p>|
 
 ## <a name="applications-must-handle-failed-authentication-scenarios-securely"></a><a id="handle-failed-authn"></a>Az alkalmazásoknak biztonságosan kell kezelniük a sikertelen hitelesítési forgatókönyveket
@@ -59,8 +59,8 @@ ms.locfileid: "87424205"
 | **Összetevő**               | Webalkalmazás |
 | **SDL-fázis**               | Build |
 | **Alkalmazható technológiák** | Általános |
-| **Attribútumok**              | N.A.  |
-| **Hivatkozások**              | N.A.  |
+| **Attribútumok**              | N/A  |
+| **Hivatkozások**              | N/A  |
 | Részletek | <p>A felhasználókat explicit módon hitelesítő alkalmazásoknak biztonságosan kell kezelniük a sikertelen hitelesítési forgatókönyveket. A hitelesítési mechanizmusnak a következőket kell tennie:</p><ul><li>Jogosultsággal rendelkező erőforrásokhoz való hozzáférés megtagadása, ha a hitelesítés meghiúsul</li><li>Általános hibaüzenet megjelenítése a sikertelen hitelesítés után, és a hozzáférés megtagadva</li></ul><p>Tesztelés:</p><ul><li>A rendszerjogosultságú erőforrások védelme sikertelen bejelentkezések után</li><li>Általános hibaüzenet jelenik meg a sikertelen hitelesítés és a hozzáférés-megtagadási esemény (ek) esetén</li><li>A fiókok túl sok sikertelen kísérlet után le vannak tiltva</li><ul>|
 
 ## <a name="enable-step-up-or-adaptive-authentication"></a><a id="step-up-adaptive-authn"></a>Lépésenkénti vagy adaptív hitelesítés engedélyezése
@@ -70,8 +70,8 @@ ms.locfileid: "87424205"
 | **Összetevő**               | Webalkalmazás |
 | **SDL-fázis**               | Build |
 | **Alkalmazható technológiák** | Általános |
-| **Attribútumok**              | N.A.  |
-| **Hivatkozások**              | N.A.  |
+| **Attribútumok**              | N/A  |
+| **Hivatkozások**              | N/A  |
 | Részletek | <p>Ellenőrizze, hogy az alkalmazás rendelkezik-e további engedélyekkel (például a Step up vagy az adaptív hitelesítéssel, többtényezős hitelesítéssel, például az egyszeri jelszavas küldéssel SMS-ben, e-mailben stb.), illetve az ismételt hitelesítés megadásával. Ez a szabály arra is vonatkozik, hogy a fiók vagy a művelet kritikus fontosságú módosításokat hajtson végre.</p><p>Ez azt is jelenti, hogy a hitelesítés hozzáigazítását olyan módon kell megvalósítani, hogy az alkalmazás helyesen kényszerítse ki a kontextus-érzékeny hitelesítést, hogy ne engedélyezze a jogosulatlan kezelést például a paraméterek módosításával</p>|
 
 ## <a name="ensure-that-administrative-interfaces-are-appropriately-locked-down"></a><a id="admin-interface-lockdown"></a>Győződjön meg arról, hogy a felügyeleti felületek megfelelően vannak zárolva
@@ -81,8 +81,8 @@ ms.locfileid: "87424205"
 | **Összetevő**               | Webalkalmazás |
 | **SDL-fázis**               | Build |
 | **Alkalmazható technológiák** | Általános |
-| **Attribútumok**              | N.A.  |
-| **Hivatkozások**              | N.A.  |
+| **Attribútumok**              | N/A  |
+| **Hivatkozások**              | N/A  |
 | Részletek | Az első megoldás az, hogy csak egy adott forrás IP-címről biztosít hozzáférést a felügyeleti felülethez. Ha ez a megoldás nem lenne lehetséges, mint a felügyeleti felületen való bejelentkezéshez szükséges lépésenkénti vagy adaptív hitelesítés kikényszerítés. |
 
 ## <a name="implement-forgot-password-functionalities-securely"></a><a id="forgot-pword-fxn"></a>Elfelejtett jelszó funkcióinak biztonságos implementálása
@@ -92,8 +92,8 @@ ms.locfileid: "87424205"
 | **Összetevő**               | Webalkalmazás |
 | **SDL-fázis**               | Build |
 | **Alkalmazható technológiák** | Általános |
-| **Attribútumok**              | N.A.  |
-| **Hivatkozások**              | N.A.  |
+| **Attribútumok**              | N/A  |
+| **Hivatkozások**              | N/A  |
 | Részletek | <p>Először is meg kell győződnie arról, hogy az elfelejtett jelszó és az egyéb helyreállítási útvonalak egy hivatkozást küldenek, beleértve egy időkorlátos aktiválási jogkivonatot is, nem pedig magát a jelszót. A további hitelesítés a Soft-tokenek (például SMS-token, natív mobil alkalmazások stb.) alapján is megkövetelhető, még a hivatkozás elküldése előtt is. Másodszor, ne zárja be a felhasználói fiókot, amíg az új jelszó beszerzésének folyamata folyamatban van.</p><p>Ez szolgáltatásmegtagadást idézhet elő, amikor egy támadó úgy dönt, hogy szándékosan zárolja a felhasználókat egy automatizált támadással. Harmadszor, ha az új jelszó kérésének beállítása folyamatban van, a megjelenített üzenetnek általánosítva kell lennie a Felhasználónév enumerálásának megelőzése érdekében. Negyedszer, mindig letiltja a régi jelszavak használatát és erős jelszóházirend megvalósítását.</p> |
 
 ## <a name="ensure-that-password-and-account-policy-are-implemented"></a><a id="pword-account-policy"></a>Győződjön meg arról, hogy a jelszó és a fiók házirendje implementálva van
@@ -103,8 +103,8 @@ ms.locfileid: "87424205"
 | **Összetevő**               | Webalkalmazás |
 | **SDL-fázis**               | Build |
 | **Alkalmazható technológiák** | Általános |
-| **Attribútumok**              | N.A.  |
-| **Hivatkozások**              | N.A.  |
+| **Attribútumok**              | N/A  |
+| **Hivatkozások**              | N/A  |
 | Részletek | <p>A szervezeti házirendnek és az ajánlott eljárásoknak megfelelően a jelszó-és a fiók házirendjét kell megvalósítani.</p><p>A találgatásos támadásokkal és a szótáron alapuló találgatásokkal szembeni védelem érdekében: erős jelszóházirend szükséges ahhoz, hogy a felhasználók összetett jelszót hozzanak létre (például 12 karakter hosszúságú, alfanumerikus és speciális karaktereket).</p><p>A fiókzárolási házirendeket a következő módon lehet megvalósítani:</p><ul><li>**Puha zárolás:** Ez jó lehetőség lehet a felhasználók elleni védelemre a találgatásos támadásokkal szemben. Ha például a felhasználó háromszor helytelen jelszót ad meg, akkor az alkalmazás egy percig zárolhatja a fiókot, hogy lelassítsa a jelszó kikényszerítésének folyamatát, hogy a támadók a folytatáshoz kevésbé nyereségesek legyenek. Ha a fenti példában a nehezen kizáró ellenintézkedéseket kívánja megvalósítani, a fiókok végleges kikapcsolásával "DoS-t" érhet el. Azt is megteheti, hogy az alkalmazás létrehoz egy egyszeri jelszavas (egyszer használatos) jelszót, és sávon kívüli (e-mailben, SMS-ben stb.) küldi el a felhasználónak. Egy másik megközelítés lehet a CAPTCHA implementálása a sikertelen kísérletek küszöbértékének elérésekor.</li><li>**Rögzített zárolás:** Ezt a zárolási típust akkor kell alkalmazni, amikor az alkalmazást támadó felhasználót azonosít, és a fiókját tartósan kizárja, amíg a válasz csapatnak nem volt ideje a kriminalisztikai munkára. A folyamat után dönthet úgy, hogy a felhasználó visszaadja a fiókját, vagy további jogi műveleteket hajt végre rajtuk. Ez a fajta megközelítés megakadályozza, hogy a támadó továbbra is behatoljon az alkalmazásba és az infrastruktúrába.</li></ul><p>Az alapértelmezett és kiszámítható fiókok elleni támadások elleni védelem érdekében ellenőrizze, hogy az összes kulcs és jelszó áthelyezhető-e, és hogy a telepítés után a rendszer létrehozza vagy lecseréli-e azokat.</p><p>Ha az alkalmazásnak automatikusan kell létrehoznia a jelszavakat, ügyeljen arra, hogy a generált jelszavak véletlenszerűek legyenek, és magas entrópia legyen.</p>|
 
 ## <a name="implement-controls-to-prevent-username-enumeration"></a><a id="controls-username-enum"></a>Vezérlőelemek implementálása a Felhasználónév enumerálásának megakadályozása érdekében
@@ -114,8 +114,8 @@ ms.locfileid: "87424205"
 | **Összetevő**               | Webalkalmazás |
 | **SDL-fázis**               | Build |
 | **Alkalmazható technológiák** | Általános |
-| **Attribútumok**              | N.A.  |
-| **Hivatkozások**              | N.A.  |
+| **Attribútumok**              | N/A  |
+| **Hivatkozások**              | N/A  |
 | **Lépések** | Az összes hibaüzenetet általánosítani kell a Felhasználónév enumerálásának megelőzése érdekében. Időnként előfordulhat, hogy nem kerülheti el az adatok szivárgását olyan funkciókkal, mint a regisztrációs oldal. Itt kell használnia a rate-limiting metódusokat, például a CAPTCHA-t, hogy megakadályozza a támadók automatizált támadását. |
 
 ## <a name="when-possible-use-windows-authentication-for-connecting-to-sql-server"></a><a id="win-authn-sql"></a>Ha lehetséges, a Windows-hitelesítés használatával csatlakozzon SQL Server
@@ -147,7 +147,7 @@ ms.locfileid: "87424205"
 | **Összetevő**               | Adatbázis |
 | **SDL-fázis**               | Build |
 | **Alkalmazható technológiák** | Általános |
-| **Attribútumok**              | N.A.  |
+| **Attribútumok**              | N/A  |
 | **Hivatkozások**              | [SQL Server jelszóházirend](https://technet.microsoft.com/library/ms161959(v=sql.110).aspx) |
 | **Lépések** | SQL Server hitelesítés használatakor a rendszer olyan SQL Server hozza létre a bejelentkezéseket, amelyek nem Windows felhasználói fiókokon alapulnak. A felhasználónevet és a jelszót is létrehozhatja a SQL Server használatával, és SQL Server tárolja. SQL Server használhatja a Windows-jelszóházirend mechanizmusait. A Windowsban a SQL Serverban használt jelszavakkal megegyező összetettségi és elévülési szabályzatokat alkalmazhat. |
 
@@ -169,7 +169,7 @@ ms.locfileid: "87424205"
 | **Összetevő**               | Azure Event Hub |
 | **SDL-fázis**               | Build |
 | **Alkalmazható technológiák** | Általános |
-| **Attribútumok**              | N.A.  |
+| **Attribútumok**              | N/A  |
 | **Hivatkozások**              | [Event Hubs hitelesítési és biztonsági modell áttekintése](https://azure.microsoft.com/documentation/articles/event-hubs-authentication-and-security-model-overview/) |
 | **Lépések** | <p>A Event Hubs biztonsági modell a közös hozzáférésű aláírási (SAS-) tokenek és az esemény-közzétevők kombinációján alapul. A közzétevő neve a jogkivonatot fogadó DeviceID. Ez segít a megfelelő eszközökhöz generált jogkivonatok hozzárendelésében.</p><p>Minden üzenet a szolgáltatás oldalán található kezdeményezővel van megjelölve, amely lehetővé teszi a hasznos adatokkal való adatgyűjtési kísérletek észlelését. Az eszközök hitelesítése esetén az eszközönkénti SaS-tokent egy egyedi közzétevőre kell állítani.</p>|
 
@@ -178,9 +178,9 @@ ms.locfileid: "87424205"
 | Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Azure-beli megbízhatósági kapcsolat határa |
-| **SDL-fázis**               | Telepítés |
+| **SDL-fázis**               | Üzembe helyezés |
 | **Alkalmazható technológiák** | Általános |
-| **Attribútumok**              | N.A.  |
+| **Attribútumok**              | N/A  |
 | **Hivatkozások**              | [Mi az az Azure Multi-Factor Authentication?](https://azure.microsoft.com/documentation/articles/multi-factor-authentication/) |
 | **Lépések** | <p>A többtényezős hitelesítés (MFA) olyan hitelesítési módszer, amely egynél több ellenőrzési módszert igényel, és kritikus második biztonsági réteget vesz fel a felhasználói bejelentkezésekhez és tranzakciókra. Úgy működik, hogy az alábbi ellenőrzési módszerek közül kettőt vagy többet igényel:</p><ul><li>Amit ismer (általában jelszó)</li><li>Valami, ami rendelkezik (olyan megbízható eszköz, amely nem könnyen duplikált, például telefon)</li><li>Egy dolog (biometria)</li><ul>|
 
@@ -189,7 +189,7 @@ ms.locfileid: "87424205"
 | Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Service Fabric megbízhatósági kapcsolat határa |
-| **SDL-fázis**               | Telepítés |
+| **SDL-fázis**               | Üzembe helyezés |
 | **Alkalmazható technológiák** | Általános |
 | **Attribútumok**              | Környezet – Azure  |
 | **Hivatkozások**              | [Service Fabric fürt biztonsági forgatókönyvei](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security) |
@@ -200,7 +200,7 @@ ms.locfileid: "87424205"
 | Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Service Fabric megbízhatósági kapcsolat határa |
-| **SDL-fázis**               | Telepítés |
+| **SDL-fázis**               | Üzembe helyezés |
 | **Alkalmazható technológiák** | Általános |
 | **Attribútumok**              | Környezet – Azure, környezet – önálló |
 | **Hivatkozások**              | Az [ügyfél és a csomópont közötti biztonság Service Fabric](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/#_client-to-node-certificate-security), [Kapcsolódás biztonságos fürthöz ügyféltanúsítvány használatával](https://azure.microsoft.com/documentation/articles/service-fabric-connect-to-secure-cluster/) |
@@ -211,7 +211,7 @@ ms.locfileid: "87424205"
 | Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Service Fabric megbízhatósági kapcsolat határa |
-| **SDL-fázis**               | Telepítés |
+| **SDL-fázis**               | Üzembe helyezés |
 | **Alkalmazható technológiák** | Általános |
 | **Attribútumok**              | Környezet – Azure |
 | **Hivatkozások**              | [Fürtök biztonsági forgatókönyvei – biztonsági javaslatok](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/#security-recommendations) |
@@ -222,7 +222,7 @@ ms.locfileid: "87424205"
 | Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Service Fabric megbízhatósági kapcsolat határa |
-| **SDL-fázis**               | Telepítés |
+| **SDL-fázis**               | Üzembe helyezés |
 | **Alkalmazható technológiák** | Általános |
 | **Attribútumok**              | Környezet – Azure |
 | **Hivatkozások**              | [X. 509 tanúsítványok és Service Fabric](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/#x509-certificates-and-service-fabric) |
@@ -235,7 +235,7 @@ ms.locfileid: "87424205"
 | **Összetevő**               | Identity Server |
 | **SDL-fázis**               | Build |
 | **Alkalmazható technológiák** | Általános |
-| **Attribútumok**              | N.A.  |
+| **Attribútumok**              | N/A  |
 | **Hivatkozások**              | [IdentityServer3 – a nagy kép](https://identityserver.github.io/Documentation/docsv2/overview/bigPicture.html) |
 | **Lépések** | <p>Az alábbi jellemző interakciókat támogatja az Identity Server:</p><ul><li>Böngészőkkel kommunikáló webalkalmazások</li><li>A webalkalmazások webes API-kkal kommunikálnak (esetenként a felhasználók nevében)</li><li>A böngészőalapú alkalmazások kommunikálnak a webes API-kkal</li><li>A natív alkalmazások a webes API-kkal kommunikálnak</li><li>A kiszolgáló-alapú alkalmazások kommunikálnak a webes API-kkal</li><li>A webes API-k webes API-kkal kommunikálnak (esetenként a felhasználók nevében)</li></ul>|
 
@@ -244,9 +244,9 @@ ms.locfileid: "87424205"
 | Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Identity Server |
-| **SDL-fázis**               | Telepítés |
+| **SDL-fázis**               | Üzembe helyezés |
 | **Alkalmazható technológiák** | Általános |
-| **Attribútumok**              | N.A.  |
+| **Attribútumok**              | N/A  |
 | **Hivatkozások**              | [Identity Server-telepítés – gyorsítótárazás](https://identityserver.github.io/Documentation/docsv2/advanced/deployment.html) |
 | **Lépések** | <p>A IdentityServer egy egyszerű beépített memóriabeli gyorsítótárral rendelkezik. Habár ez jó megoldás a kis méretű natív alkalmazások esetében, a közepes szintű és a háttérbeli alkalmazások esetében nem méretezhető a következő okok miatt:</p><ul><li>Ezeket az alkalmazásokat számos felhasználó egyszerre éri el. Az azonos tárolóban lévő összes hozzáférési jogkivonat mentése elszigetelési problémákat okoz, és kihívásokat jelent, ha a skálán működik: sok felhasználó, akik a legtöbb tokent használják, mint az alkalmazás által a nevükben elérhető erőforrások, nagy mennyiségű és nagyon költséges keresési műveletet jelenthetnek.</li><li>Ezek az alkalmazások jellemzően elosztott topológiákban vannak telepítve, ahol több csomópontnak ugyanahhoz a gyorsítótárhoz kell hozzáférnie.</li><li>A gyorsítótárazott tokeneknek meg kell túlélni a folyamat újrahasznosítását és inaktiválását</li><li>A fenti okok miatt a webalkalmazások megvalósítása során ajánlott felülbírálni az alapértelmezett Identity Server jogkivonat-gyorsítótárát egy skálázható alternatíva, például az Azure cache for Redis</li></ul>|
 
@@ -255,10 +255,10 @@ ms.locfileid: "87424205"
 | Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Számítógép-megbízhatósági kapcsolat határa |
-| **SDL-fázis**               | Telepítés |
+| **SDL-fázis**               | Üzembe helyezés |
 | **Alkalmazható technológiák** | Általános |
-| **Attribútumok**              | N.A.  |
-| **Hivatkozások**              | N.A.  |
+| **Attribútumok**              | N/A  |
+| **Hivatkozások**              | N/A  |
 | **Lépések** | Győződjön meg arról, hogy a telepített alkalmazás bináris fájljai digitálisan vannak aláírva, hogy a bináris fájlok integritása ellenőrizhető legyen|
 
 ## <a name="enable-authentication-when-connecting-to-msmq-queues-in-wcf"></a><a id="msmq-queues"></a>Hitelesítés engedélyezése az MSMQ-várólistákhoz való csatlakozáskor a WCF-ben
@@ -268,7 +268,7 @@ ms.locfileid: "87424205"
 | **Összetevő**               | WCF |
 | **SDL-fázis**               | Build |
 | **Alkalmazható technológiák** | Általános, NET-keretrendszer 3 |
-| **Attribútumok**              | N.A. |
+| **Attribútumok**              | N/A |
 | **Hivatkozások**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx) |
 | **Lépések** | A program nem tudja engedélyezni a hitelesítést az MSMQ-várólistákhoz való csatlakozáskor, a támadók névtelenül küldhetnek üzeneteket a várólistába feldolgozásra. Ha a hitelesítés nem használható olyan MSMQ-várólistához való csatlakozáshoz, amelyet egy másik programba való üzenet kézbesítésére használ, a támadó rosszindulatú üzenetet küldhet.|
 
@@ -340,7 +340,7 @@ Az `<netMsmqBinding/>` alábbi WCF konfigurációs fájl eleme arra utasítja a 
 | **Összetevő**               | Webes API |
 | **SDL-fázis**               | Build |
 | **Alkalmazható technológiák** | Általános |
-| **Attribútumok**              | N.A.  |
+| **Attribútumok**              | N/A  |
 | **Hivatkozások**              | [Hitelesítés és engedélyezés a ASP.net web API-ban](https://www.asp.net/web-api/overview/security/authentication-and-authorization-in-aspnet-web-api), [külső hitelesítési szolgáltatások a ASP.net web API-val (C#)](https://www.asp.net/web-api/overview/security/external-authentication-services) |
 | **Lépések** | <p>A hitelesítés az a folyamat, amelyben az entitás igazolja az identitását, jellemzően hitelesítő adatokkal, például felhasználónévvel és jelszóval. Több hitelesítési protokoll is rendelkezésre áll, amelyek megtekinthetők. Némelyikük alább látható:</p><ul><li>Ügyféltanúsítványok</li><li>Windows-alapú</li><li>Űrlapok alapján</li><li>Összevonás – ADFS</li><li>Összevonás – Azure AD</li><li>Összevonási-identitás kiszolgálója</li></ul><p>A hivatkozások szakaszban található hivatkozások alacsony szintű részleteket biztosítanak arról, hogy az egyes hitelesítési sémák hogyan valósíthatók meg a webes API-k biztonságossá tételéhez.</p>|
 
@@ -351,7 +351,7 @@ Az `<netMsmqBinding/>` alábbi WCF konfigurációs fájl eleme arra utasítja a 
 | **Összetevő**               | Azure AD |
 | **SDL-fázis**               | Build |
 | **Alkalmazható technológiák** | Általános |
-| **Attribútumok**              | N.A.  |
+| **Attribútumok**              | N/A  |
 | **Hivatkozások**              | [Hitelesítési forgatókönyvek az Azure ad-hez](https://azure.microsoft.com/documentation/articles/active-directory-authentication-scenarios/), [Azure Active Directory mintakód](https://azure.microsoft.com/documentation/articles/active-directory-code-samples/), [Azure Active Directory fejlesztői útmutató](https://azure.microsoft.com/documentation/articles/active-directory-developers-guide/) |
 | **Lépések** | <p>Azure Active Directory (Azure AD) leegyszerűsíti a fejlesztők hitelesítését szolgáltatásként, az iparági szabványnak megfelelő protokollok, például a OAuth 2,0 és az OpenID Connect támogatásával. Az alábbi öt elsődleges alkalmazási forgatókönyv az Azure AD által támogatott:</p><ul><li>Webböngésző webes alkalmazásba: A felhasználónak be kell jelentkeznie egy Azure AD által védett webalkalmazásba</li><li>Egyoldalas alkalmazás (SPA): A felhasználónak be kell jelentkeznie egy egyoldalas alkalmazásba, amelyet az Azure AD biztosít</li><li>Natív alkalmazás webes API-hoz: egy telefonon, táblaszámítógépen vagy számítógépen futó natív alkalmazásnak hitelesítenie kell egy felhasználót az Azure AD által védett webes API erőforrásainak lekéréséhez.</li><li>Webalkalmazás webes API-hoz: egy webalkalmazásnak az Azure AD által védett webes API-val kell lekérnie az erőforrásokat</li><li>Daemon vagy Server Application to web API: egy olyan démon alkalmazás vagy kiszolgálóalkalmazás, amely nem rendelkezik webes felhasználói felülettel, az Azure AD által védett webes API-k erőforrásainak lekérése szükséges.</li></ul><p>Az alacsony szintű megvalósítás részleteiért tekintse meg a hivatkozások szakaszban található hivatkozásokat</p>|
 
@@ -362,7 +362,7 @@ Az `<netMsmqBinding/>` alábbi WCF konfigurációs fájl eleme arra utasítja a 
 | **Összetevő**               | Azure AD |
 | **SDL-fázis**               | Build |
 | **Alkalmazható technológiák** | Általános |
-| **Attribútumok**              | N.A.  |
+| **Attribútumok**              | N/A  |
 | **Hivatkozások**              | [Modern hitelesítés Azure Active Directory webalkalmazásokhoz](https://blogs.msdn.microsoft.com/microsoft_press/2016/01/04/new-book-modern-authentication-with-azure-active-directory-for-web-applications/), [Redis használata ADAL jogkivonat-gyorsítótárként](https://blogs.msdn.microsoft.com/mrochon/2016/09/19/using-redis-as-adal-token-cache/)  |
 | **Lépések** | <p>A ADAL (Active Directory-hitelesítési tár) által használt alapértelmezett gyorsítótár a memóriabeli gyorsítótár, amely egy statikus tárolóra támaszkodik, amely elérhető a teljes folyamatra. Habár ez a natív alkalmazások esetében is működik, a közepes szintű és háttérbeli alkalmazások esetében nem méretezhető a következő okok miatt:</p><ul><li>Ezeket az alkalmazásokat számos felhasználó egyszerre éri el. Az azonos tárolóban lévő összes hozzáférési jogkivonat mentése elszigetelési problémákat okoz, és kihívásokat jelent, ha a skálán működik: sok felhasználó, akik a legtöbb tokent használják, mint az alkalmazás által a nevükben elérhető erőforrások, nagy mennyiségű és nagyon költséges keresési műveletet jelenthetnek.</li><li>Ezek az alkalmazások jellemzően elosztott topológiákban vannak telepítve, ahol több csomópontnak ugyanahhoz a gyorsítótárhoz kell hozzáférnie.</li><li>A gyorsítótárazott tokeneknek meg kell túlélni a folyamat újrahasznosítását és inaktiválását</li></ul><p>A fenti okok miatt a webalkalmazások megvalósítása során ajánlott felülbírálni az alapértelmezett ADAL-jogkivonat gyorsítótárát egy skálázható alternatív megoldással, például az Azure cache for Redis szolgáltatással.</p>|
 
@@ -373,7 +373,7 @@ Az `<netMsmqBinding/>` alábbi WCF konfigurációs fájl eleme arra utasítja a 
 | **Összetevő**               | Azure AD |
 | **SDL-fázis**               | Build |
 | **Alkalmazható technológiák** | Általános |
-| **Attribútumok**              | N.A.  |
+| **Attribútumok**              | N/A  |
 | **Hivatkozások**              | [Modern hitelesítés Azure Active Directory webalkalmazásokhoz](https://blogs.msdn.microsoft.com/microsoft_press/2016/01/04/new-book-modern-authentication-with-azure-active-directory-for-web-applications/) |
 | **Lépések** | <p>A TokenReplayCache tulajdonság lehetővé teszi a fejlesztők számára a jogkivonat-Visszajátszási gyorsítótár meghatározását, amely egy olyan tároló, amely a jogkivonatok mentésére használható annak ellenőrzése céljából, hogy a jogkivonat nem használható többször.</p><p>Ez egy közös támadáson alapuló mérték, a "jogkivonat-Visszajátszási támadás": a bejelentkezéskor küldött tokent elfogó támadó megpróbálhatja elküldeni az alkalmazásba ("Replay") egy új munkamenet létrehozásához. Például a sikeres felhasználói hitelesítés után a OIDC-engedélyezési folyamat során a függő entitás "/signin-oidc" végpontjának kérése "id_token", "code" és "State" paraméterekkel történik.</p><p>A függő entitás érvényesíti ezt a kérést, és új munkamenetet hoz létre. Ha egy támadó rögzíti ezt a kérést, és visszajátssza, akkor sikeres munkamenetet hozhat létre, és meghamisíthatja a felhasználót. Az Egypéldányos kapcsolat megléte az OpenID Connectben korlátozható, de nem teljes mértékben kizárja azokat a körülményeket, amelyekben a támadás sikeresen elvégezhető. Az alkalmazások megvédése érdekében a fejlesztők a ITokenReplayCache megvalósítását és a TokenReplayCache-példányok hozzárendelését is lehetővé teszik.</p>|
 
@@ -434,7 +434,7 @@ Vegye figyelembe, hogy a konfiguráció hatékonyságának teszteléséhez jelen
 | **Összetevő**               | Azure AD |
 | **SDL-fázis**               | Build |
 | **Alkalmazható technológiák** | Általános |
-| **Attribútumok**              | N.A.  |
+| **Attribútumok**              | N/A  |
 | **Hivatkozások**              | [ADAL](https://azure.microsoft.com/documentation/articles/active-directory-authentication-libraries/) |
 | **Lépések** | <p>Az Azure AD Authentication Library (ADAL) lehetővé teszi az ügyfélalkalmazások fejlesztői számára, hogy egyszerűen hitelesítsék a felhasználókat a felhőben vagy a helyszíni Active Directoryban (AD), majd hozzáférési jogkivonatokat kapjanak az API-hívások biztonságossá tételéhez.</p><p>A ADAL számos funkcióval rendelkezik, amelyek megkönnyítik a hitelesítést a fejlesztők számára, például az aszinkron támogatást, a hozzáférési jogkivonatokat tároló konfigurálható jogkivonat-gyorsítótárat és a tokenek frissítési jogkivonatait, az automatikus jogkivonat-frissítést, ha a hozzáférési jogkivonat lejár, és a frissítési jogkivonat elérhető, és így tovább.</p><p>A ADAL a legtöbb összetettségtel segíti a fejlesztőket az alkalmazás üzleti logikájának, valamint az erőforrások egyszerű biztonsága nélkül. Külön könyvtárak érhetők el a .NET, a JavaScript (Client és Node.js), a Python, az iOS, az Android és a Java rendszerekhez.</p>|
 
@@ -445,8 +445,8 @@ Vegye figyelembe, hogy a konfiguráció hatékonyságának teszteléséhez jelen
 | **Összetevő**               | IoT-mező átjárója |
 | **SDL-fázis**               | Build |
 | **Alkalmazható technológiák** | Általános |
-| **Attribútumok**              | N.A.  |
-| **Hivatkozások**              | N.A.  |
+| **Attribútumok**              | N/A  |
+| **Hivatkozások**              | N/A  |
 | **Lépések** | Győződjön meg arról, hogy minden eszközt a Field Gateway hitelesít, mielőtt az adatokat befogadja tőlük, és még a Felhőbeli átjáróval való felsőbb szintű kommunikáció megkönnyítése előtt. Győződjön meg arról is, hogy az eszközök eszközönkénti hitelesítő adatokkal kapcsolódnak, hogy az egyes eszközök egyedi azonosításra alkalmasak legyenek.|
 
 ## <a name="ensure-that-devices-connecting-to-cloud-gateway-are-authenticated"></a><a id="authn-devices-cloud"></a>Győződjön meg arról, hogy a felhőalapú átjáróhoz csatlakozó eszközök hitelesítése megtörtént
@@ -578,6 +578,6 @@ await deviceClient.SendEventAsync(message);
 | **Összetevő**               | Azure Storage |
 | **SDL-fázis**               | Build |
 | **Alkalmazható technológiák** | Általános |
-| **Attribútumok**              | N.A. |
+| **Attribútumok**              | N/A |
 | **Hivatkozások**              | [Közös hozzáférésű aláírások, 1. rész: az SAS-modell, a](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/) [közös hozzáférési aláírások ismertetése, 2. rész: sas létrehozása és használata blob Storage](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-2/)-mel, a [fiókban lévő objektumokhoz való hozzáférés delegálása közös hozzáférési aláírások és tárolt hozzáférési szabályzatok használatával](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_how-to-delegate-access-to-objects-in-your-account-using-shared-access-signatures-and-stored-access-policies) |
 | **Lépések** | <p>A közös hozzáférésű aláírások (SAS) használatával a Storage-fiókban lévő objektumok számára korlátozott hozzáférést biztosíthat a többi ügyfélnek, anélkül, hogy a fiók elérési kulcsát kellene kitennie. Az SAS egy URI, amely magában foglalja a lekérdezési paramétereit a tárolási erőforrásokhoz való hitelesített hozzáféréshez szükséges összes információval. A tároló erőforrásainak SAS-vel való eléréséhez az ügyfélnek csak az SAS-t kell átadnia a megfelelő konstruktorba vagy metódusba.</p><p>Ha olyan ügyfél számára kíván hozzáférést biztosítani a Storage-fiók erőforrásaihoz, amely nem megbízható a fiók kulcsával, akkor használhat SAS-t. A Storage-fiók kulcsa egy elsődleges és egy másodlagos kulcsot is tartalmaz, amelyek mindegyike rendszergazdai hozzáférést biztosít a fiókjához és a benne lévő összes erőforráshoz. A fiók kulcsainak bármelyike megnyithatja a fiókját a kártékony vagy gondatlan használat lehetőségével. A közös hozzáférésű aláírások biztonságos alternatívát biztosítanak, amely lehetővé teszi más ügyfelek számára, hogy a megadott engedélyek alapján a Storage-fiókban tárolt adatait olvassák, írják és töröljék, és a fiók kulcsa nélkül legyenek szükségesek.</p><p>Ha van olyan logikai készlete, amely minden alkalommal hasonló, a tárolt hozzáférési szabályzat (SAP) használatával jobb ötlet. Mivel a tárolt hozzáférési házirendből származtatott SAS-t használva azonnal visszavonhatja az SAS-t, az ajánlott eljárás, hogy mindig a tárolt hozzáférési szabályzatokat használja, ha lehetséges.</p>|

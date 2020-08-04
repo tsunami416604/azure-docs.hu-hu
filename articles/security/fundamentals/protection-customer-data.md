@@ -1,6 +1,6 @@
 ---
 title: Az ügyféladatok védelme az Azure-ban
-description: Ez a cikk azt ismerteti, hogyan védi az Azure az ügyféladatokat.
+description: Ismerje meg, hogyan védi az Azure az ügyféladatokat az adatelkülönítés, az adatredundancia és az adatmegsemmisítés révén.
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/10/2020
 ms.author: terrylan
-ms.openlocfilehash: 4f3b4b5e26c8feab44a01d3714c194eee0fc98e9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 14589e4efe22d89468b069bf6ff7e3d9babcc714
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076289"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543792"
 ---
 # <a name="azure-customer-data-protection"></a>Azure Customer-adatvédelem   
 A Microsoft működési és támogatási személyzete alapértelmezés szerint nem férhet hozzá az ügyféladatok eléréséhez. Ha a támogatási esethez kapcsolódó adatokhoz fér hozzá, a rendszer csak egy igény szerinti (JIT) modellt kap, melyet a rendszer a megfelelőségi és adatvédelmi szabályzatok alapján auditált és ellenőrzött házirendeket használ.  A hozzáférés-vezérlésre vonatkozó követelményeket a következő Azure biztonsági szabályzat határozza meg:

@@ -3,17 +3,17 @@ title: Azure rendszerkép-készítő sablon létrehozása (előzetes verzió)
 description: Megtudhatja, hogyan hozhat létre sablont az Azure rendszerkép-készítővel való használatra.
 author: danielsollondon
 ms.author: danis
-ms.date: 07/09/2020
+ms.date: 08/03/2020
 ms.topic: conceptual
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: cynthn
-ms.openlocfilehash: fe4ddeaadedc14e7e3d92a8b185920bf18bd142b
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 132e547fe2512676e4d8082744489f4719dcc0bf
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283299"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543605"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Előzetes verzió: Azure rendszerkép-készítő sablon létrehozása 
 
@@ -104,7 +104,7 @@ Ha nem ad meg VNET-tulajdonságokat, akkor a rendszerkép-szerkesztő létrehozz
         }
     }
 ```
-## <a name="tags"></a>Címkék
+## <a name="tags"></a>Címkéket
 
 Ezek a generált rendszerképhez megadható kulcs/érték párok.
 
@@ -142,12 +142,13 @@ A szolgáltatás telepítésével kapcsolatos további információkért lásd: 
 
 ## <a name="properties-source"></a>Tulajdonságok: forrás
 
-A `source` szakasz a rendszerkép-szerkesztő által használt forrás-rendszerképről tartalmaz információkat.
+Az Image Builder jelenleg csak az 1. generációs lemezképeket és virtuális gépeket támogatja, a `source` szakasz a rendszerkép-szerkesztő által használt HyperV tartalmaz információkat.
 
 Az API-nak szüksége van egy "forrás típusa" elemre, amely meghatározza a rendszerkép-Build forrását, jelenleg három típus létezik:
 - PlatformImage – jelezte, hogy a forrás rendszerkép egy Piactéri rendszerkép.
 - ManagedImage – ez a megoldás akkor használható, ha egy normál felügyelt rendszerképből indul.
 - SharedImageVersion – ez akkor használatos, ha a rendszerkép verzióját megosztott képtárban használja forrásként.
+
 
 > [!NOTE]
 > Meglévő egyéni Windows-rendszerképek használatakor a Sysprep-parancsot akár 8 alkalommal is futtathatja egyetlen Windows-lemezképen, további információt a [Sysprep](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep) dokumentációjában talál.
@@ -191,7 +192,10 @@ Megadhatja a terv adatait is, például:
 ```
 ### <a name="managedimage-source"></a>ManagedImage forrása
 
-A forrás rendszerképét egy általánosított virtuális merevlemez vagy virtuális gép meglévő felügyelt rendszerképeként állítja be. A forrásként felügyelt rendszerképnek támogatott operációs rendszernek kell lennie, és az Azure rendszerkép-készítő sablonnal azonos régióban kell lennie. 
+A forrás rendszerképét egy általánosított virtuális merevlemez vagy virtuális gép meglévő felügyelt rendszerképeként állítja be.
+
+> [!NOTE]
+> A forrásként felügyelt rendszerképnek támogatott operációs rendszernek kell lennie, és a rendszerképnek azonos régióval kell rendelkeznie, mint az Azure rendszerkép-készítő sablonja. 
 
 ```json
         "source": { 
@@ -204,7 +208,11 @@ Az `imageId` értéknek a felügyelt rendszerkép ResourceId kell lennie. `az im
 
 
 ### <a name="sharedimageversion-source"></a>SharedImageVersion forrása
-Beállítja a forrás rendszerképet egy meglévő rendszerkép-verzióra egy megosztott rendszerkép-gyűjteményben. A rendszerkép verziószámának támogatott operációs rendszernek kell lennie, és a rendszerképet az Azure rendszerkép-készítő sablonnal azonos régióba kell replikálni. 
+Beállítja a forrás rendszerképet egy meglévő rendszerkép-verzióra egy megosztott rendszerkép-gyűjteményben.
+
+> [!NOTE]
+> A forrásként felügyelt rendszerképnek támogatott operációs rendszernek kell lennie, és a rendszerképnek azonos régióval kell rendelkeznie, mint az Azure rendszerkép-készítő sablonja, ha nem, akkor replikálja a rendszerkép verzióját a rendszerkép-készítő sablon régiójába.
+
 
 ```json
         "source": { 
