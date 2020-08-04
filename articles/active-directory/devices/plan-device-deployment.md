@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa83e295460cc847647e83c7e4e8a9d7ee91f6f4
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 9e3b0b8ab4a432254835e43bff4893aaee81b04e
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86165770"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87541872"
 ---
 # <a name="plan-your-azure-active-directory-device-deployment"></a>A Azure Active Directory eszköz üzembe helyezésének megtervezése
 
@@ -227,10 +227,6 @@ Miután regisztrálta vagy csatlakoztatta az eszközeit az Azure AD-hez, az eszk
 * [Az eszközbeállítások konfigurálása](device-management-azure-portal.md#configure-device-settings)
 * A Windows-eszközök felügyeletéhez helyi rendszergazdának kell lennie. Az [Azure ad frissíti ezt a tagságot az Azure ad-hez csatlakoztatott eszközökhöz](assign-local-admin.md), automatikusan hozzáadja az Eszközkezelő szerepkört az összes csatlakoztatott eszközhöz.
 
-* [Eszközök megkeresése](device-management-azure-portal.md#locate-devices)
-
-* [Eszközállapot-kezelési feladatok végrehajtása](device-management-azure-portal.md#device-identity-management-tasks)
-
 Győződjön meg arról, hogy az [elavult eszközök felügyeletével](manage-stale-devices.md)megőrzi a környezetet, és koncentrálja az erőforrásokat az aktuális eszközök kezelésére.
 
 * [Az eszközhöz kapcsolódó naplók áttekintése](device-management-azure-portal.md#audit-logs)
@@ -241,7 +237,7 @@ A rendszergazdák további Eszközkezelő eszközökkel biztosíthatják a regis
 
 A támogatott és nem támogatott platformok áttekintése integrált eszközökhöz:
 
-| Eszközkezelés eszközei| Az Azure AD-ban regisztrálva| Azure AD-csatlakozás| Hibrid Azure AD-csatlakozás|
+| Eszközfelügyeleti eszközök| Az Azure AD-ban regisztrálva| Azure AD-csatlakozás| Hibrid Azure AD-csatlakozás|
 | - | - | - | - |
 | [Mobileszköz-felügyelet (MDM)](https://docs.microsoft.com/windows/client-management/mdm/azure-active-directory-integration-with-mdm) <br>Példa: Microsoft Intune| ![Ellenőrizze](./media/plan-device-deployment/check.png)| ![Ellenőrizze](./media/plan-device-deployment/check.png)| ![Ellenőrizze](./media/plan-device-deployment/check.png)|  |
 | [Közös felügyelet Microsoft Intune és Microsoft végponttal Configuration Manager](https://docs.microsoft.com/mem/configmgr/comanage/overview) <br>(Windows 10 és újabb)| | ![Ellenőrizze](./media/plan-device-deployment/check.png)| ![Ellenőrizze](./media/plan-device-deployment/check.png)|  |

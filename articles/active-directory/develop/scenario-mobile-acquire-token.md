@@ -13,12 +13,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 2be074c457eaadd1fb6467cbcfdd45a2e7745613
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 499b7348c645f4792332769ac598ffcea07ea102
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82098900"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87541906"
 ---
 # <a name="get-a-token-for-a-mobile-app-that-calls-web-apis"></a>A webes API-kat meghívó mobil alkalmazások jogkivonatának beolvasása
 
@@ -221,7 +221,7 @@ A következő szakaszokban a MSAL.NET választható paramétereinek ismertetése
 
 A `WithPrompt()` paraméter a felhasználóval való interaktivitást vezérli egy kérdés megadásával.
 
-<img src="https://user-images.githubusercontent.com/13203188/53438042-3fb85700-39ff-11e9-9a9e-1ff9874197b3.png" width="25%" />
+![A prompt struktúrában található mezőket ábrázoló kép. Ezek az állandó értékek vezérlik a felhasználót a WithPrompt () paraméter által megjelenített kérdés típusának meghatározásával.](https://user-images.githubusercontent.com/13203188/53438042-3fb85700-39ff-11e9-9a9e-1ff9874197b3.png)
 
 Az osztály a következő konstansokat határozza meg:
 

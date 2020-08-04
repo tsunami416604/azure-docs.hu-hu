@@ -12,12 +12,12 @@ author: sashan
 ms.author: sashan
 ms.reviewer: carlrab, sashan
 ms.date: 04/02/2020
-ms.openlocfilehash: d3abd6411197c9e7994e9ae642b07e72a0a24735
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: ab3d0a4b33bd2e424141adc9f6b8739380c2947b
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496287"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542008"
 ---
 # <a name="high-availability-for-azure-sql-database-and-sql-managed-instance"></a>Magas rendelkezésre állás Azure SQL Database és SQL felügyelt példányhoz
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -95,19 +95,18 @@ A [gyorsított adatbázis-helyreállítás (ADR)](../accelerated-database-recove
 
 ## <a name="testing-application-fault-resiliency"></a>Az alkalmazás hibatűrési rugalmasságának tesztelése
 
-A magas rendelkezésre állás a SQL Database és az SQL felügyelt példány platformjának alapvető része, amely transzparens módon működik az adatbázis-alkalmazás számára. Azonban Felismertük, hogy tesztelni szeretné, hogy a tervezett vagy nem tervezett események során kezdeményezett automatikus feladatátvételi műveletek hatással lennének-e az alkalmazásra, mielőtt üzembe helyezné az éles környezetben. A feladatátvételt manuálisan is aktiválhatja, ha egy speciális API meghívásával újraindít egy adatbázist vagy egy rugalmas készletet. Egy zóna redundáns adatbázis vagy rugalmas készlet esetén az API-hívás eredményeképpen az ügyfélkapcsolatok átirányítása egy olyan rendelkezésre állási zónában lévő új elsődlegesre, amely eltér a régi elsődleges hely rendelkezésre állási zónájától. Így azt is megvizsgálhatja, hogy a feladatátvétel hogyan befolyásolja a meglévő adatbázis-munkameneteket, azt is ellenőrizheti, hogy a hálózati késés változása miatt a végpontok közötti teljesítményt módosítja-e. Mivel az újraindítási művelet zavaró, és nagy számú közülük a platformot, az egyes adatbázisok vagy rugalmas készletek esetében 30 percenként csak egy feladatátvételi hívás engedélyezett.
+A magas rendelkezésre állás a SQL Database és az SQL felügyelt példány platformjának alapvető része, amely transzparens módon működik az adatbázis-alkalmazás számára. Azonban Felismertük, hogy tesztelni szeretné, hogy a tervezett vagy nem tervezett események során kezdeményezett automatikus feladatátvételi műveletek hatással lennének-e az alkalmazásra, mielőtt üzembe helyezné az éles környezetben. A feladatátvételt manuálisan is aktiválhatja, ha egy speciális API meghívásával újraindít egy adatbázist, egy rugalmas készletet vagy egy felügyelt példányt. Egy zóna redundáns adatbázis vagy rugalmas készlet esetén az API-hívás eredményeképpen az ügyfélkapcsolatok átirányítása egy olyan rendelkezésre állási zónában lévő új elsődlegesre, amely eltér a régi elsődleges hely rendelkezésre állási zónájától. Így azt is megvizsgálhatja, hogy a feladatátvétel hogyan befolyásolja a meglévő adatbázis-munkameneteket, azt is ellenőrizheti, hogy a hálózati késés változása miatt a végpontok közötti teljesítményt módosítja-e. Mivel az újraindítási művelet zavaró, és nagy számú közülük a platform kihangsúlyozása, az egyes adatbázisok, rugalmas készletek vagy felügyelt példányok esetében minden 30 percenként csak egy feladatátvételi hívás engedélyezett.
 
 A feladatátvétel a PowerShell, a REST API vagy az Azure CLI használatával indítható el:
 
 |Központi telepítés típusa|PowerShell|REST API| Azure CLI|
 |:---|:---|:---|:---|
-|Adatbázis|[Meghívás – AzSqlDatabaseFailover](https://docs.microsoft.com/powershell/module/az.sql/invoke-azsqldatabasefailover)|[Adatbázis-feladatátvétel](/rest/api/sql/databases(failover)/failover/)|[az Rest](https://docs.microsoft.com/cli/azure/reference-index#az-rest)|
-|Rugalmas készlet|[Meghívás – AzSqlElasticPoolFailover](https://docs.microsoft.com/powershell/module/az.sql/invoke-azsqlelasticpoolfailover)|[Rugalmas készlet feladatátvétele](/rest/api/sql/elasticpools(failover)/failover/)|[az Rest](https://docs.microsoft.com/cli/azure/reference-index#az-rest)|
+|Adatbázis|[Meghívás – AzSqlDatabaseFailover](https://docs.microsoft.com/powershell/module/az.sql/invoke-azsqldatabasefailover)|[Adatbázis-feladatátvétel](/rest/api/sql/databases(failover)/failover/)|[az az Rest](https://docs.microsoft.com/cli/azure/reference-index#az-rest) felhasználható az Azure CLI REST API hívásának meghívására|
+|Rugalmas készlet|[Meghívás – AzSqlElasticPoolFailover](https://docs.microsoft.com/powershell/module/az.sql/invoke-azsqlelasticpoolfailover)|[Rugalmas készlet feladatátvétele](/rest/api/sql/elasticpools(failover)/failover/)|[az az Rest](https://docs.microsoft.com/cli/azure/reference-index#az-rest) felhasználható az Azure CLI REST API hívásának meghívására|
 |Felügyelt példány|[Meghívás – AzSqlInstanceFailover](/powershell/module/az.sql/Invoke-AzSqlInstanceFailover/)|[Felügyelt példányok – feladatátvétel](/powershell/module/az.sql/Invoke-AzSqlInstanceFailover/)|[az SQL mi feladatátvétel](/cli/azure/sql/mi/#az-sql-mi-failover)|
 
-
 > [!IMPORTANT]
-> A feladatátvételi parancs jelenleg nem érhető el a nagy kapacitású szolgáltatási szinten.
+> A feladatátvételi parancs nem érhető el a nagy kapacitású-adatbázisok olvasható másodlagos replikáinak esetében.
 
 ## <a name="conclusion"></a>Tanulság
 

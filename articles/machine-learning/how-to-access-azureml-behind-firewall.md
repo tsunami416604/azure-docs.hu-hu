@@ -11,16 +11,19 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/17/2020
 ms.custom: how-to, tracking-python
-ms.openlocfilehash: 63e2ba93ecdc1131be6bd291fe436b42a2a2d19c
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 27b625dfa31b366d95922e1dd0bad7fda6e86ed4
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87407030"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87540070"
 ---
-# <a name="use-workspace-behind-azure-firewall-for-azure-machine-learning"></a>Azure Firewall mögötti munkaterület használata Azure Machine Learning
+# <a name="use-workspace-behind-a-firewall-for-azure-machine-learning"></a>Munkaterület használata tűzfal mögött Azure Machine Learning
 
 Ebből a cikkből megtudhatja, hogyan konfigurálhatja a Azure Firewallt Azure Machine Learning-munkaterülettel való használatra.
+
+> [!IMPORTANT]
+> Míg a dokumentumban található információk a Azure Firewall használatára épülnek, a többi tűzfallal is használható. Ha kérdése van a tűzfalon keresztüli kommunikáció engedélyezésével kapcsolatban, tekintse meg az Ön által használt tűzfal dokumentációját.
 
 A Azure Firewall a Azure Machine Learning-munkaterülethez és a nyilvános internethez való hozzáférés szabályozására használható. Ha nincs megfelelően konfigurálva, a tűzfal problémákat okozhat a munkaterület használatával. A Azure Machine Learning munkaterület számos különböző állomásnevet használ, amelyek a jelen cikkben olvashatók.
 
@@ -53,6 +56,7 @@ Az ebben a szakaszban található gazdagépek a Microsoft tulajdonában vannak, 
 | **vault.azure.net** | Azure Key Vault |
 | **azurecr.io** | Azure Container Registry |
 | **mcr.microsoft.com** | Microsoft Container Registry az alapszintű Docker-rendszerképekhez |
+| **your-acr-server-name.azurecr.io** | Csak akkor szükséges, ha a Azure Container Registry a virtuális hálózat mögött van. Ebben a konfigurációban a Microsoft-környezetből a saját előfizetésében található ACR-példányhoz privát hivatkozás jön létre. Használja az ACR-kiszolgáló nevét az Azure Machine Learning munkaterülethez. |
 
 ## <a name="python-hosts"></a>Python-gazdagépek
 
@@ -75,7 +79,7 @@ A jelen szakaszban található gazdagépek az R-csomagok telepítéséhez haszn�
 | ---- | ---- |
 | **cloud.r-project.org** | A CRAN-csomagok telepítésekor használatos. |
 
-Következő lépések
+További lépések
 
 * [[Azure Firewall üzembe helyezése és konfigurálása](../firewall/tutorial-firewall-deploy-portal.md)]
 * [Egy Azure-Virtual Networkon belül biztonságossá teheti az Azure ML-kísérletezést és a feladatok következtetéseit](how-to-enable-virtual-network.md)

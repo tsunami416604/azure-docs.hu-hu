@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: a329ec32e241d88a56fc7031904777888ac194ae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7bc39e409d0ac10e41fae58c5e5216f386427e30
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85356406"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87541736"
 ---
 # <a name="troubleshoot-azure-ad-connectivity"></a>Az Azure AD-kapcsolat hibáinak megoldása
 Ez a cikk azt ismerteti, hogyan működik a Azure AD Connect és az Azure AD közötti kapcsolat, és hogyan lehet elhárítani a kapcsolódási problémákat. Ezeket a problémákat legvalószínűbben a proxykiszolgáló fogja látni a környezetben.
@@ -32,7 +32,7 @@ A Azure AD Connect a modern hitelesítést használja (a ADAL könyvtár haszná
 
 Ebben a cikkben bemutatjuk, hogyan kapcsolódhat a fabrikam az Azure AD-hez a proxyján keresztül. A proxykiszolgáló neve fabrikamproxy, és az 8080-es portot használja.
 
-Először is meg kell győződnie arról, hogy a [**machine.config**](how-to-connect-install-prerequisites.md#connectivity) megfelelően van konfigurálva.
+Először is győződjön meg arról, hogy a [**machine.config**](how-to-connect-install-prerequisites.md#connectivity) megfelelően van konfigurálva, és **Microsoft Azure ad a szinkronizálási szolgáltatást** egyszer újraindították a machine.config fájl frissítése után.
 ![machineconfig](./media/tshoot-connect-connectivity/machineconfig.png)
 
 > [!NOTE]
@@ -44,7 +44,7 @@ A proxykiszolgáló számára is meg kell nyitni a szükséges URL-címeket. A h
 
 Ezen URL-címek közül az alábbi táblázat az Azure AD-hez való kapcsolódáshoz szükséges abszolút minimális érték. A lista nem tartalmaz olyan választható szolgáltatásokat, mint a jelszó-visszaírási vagy a Azure AD Connect Health. Itt dokumentáljuk a kezdeti konfiguráció hibaelhárításának segítségét.
 
-| URL-cím | Port | Description |
+| URL-cím | Port | Leírás |
 | --- | --- | --- |
 | mscrl.microsoft.com |HTTP/80 |CRL-listák letöltésére használatos. |
 | \*. verisign.com |HTTP/80 |CRL-listák letöltésére használatos. |

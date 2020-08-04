@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 06/17/2020
 ms.topic: conceptual
 ms.custom: how-to, tracking-python
-ms.openlocfilehash: 47bf14a8da8357e0114ef3c5d6cf96185306dd16
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 3ffc3883fb4a0d0b725239711bc0163f50998713
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325865"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87541050"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>Modell üzembe helyezése egyéni Docker-alapú rendszerkép használatával
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -42,14 +42,14 @@ Ez a dokumentum két részre oszlik:
 * Egyéni alaprendszerkép létrehozása: információt nyújt a rendszergazdáknak és a DevOps az egyéni rendszerkép létrehozásával és a hitelesítés konfigurálásával Azure Container Registry az Azure CLI és a Machine Learning parancssori felület használatával.
 * Modell üzembe helyezése egyéni alapképpel: az adatszakértők és a DevOps/ML-mérnökök számára biztosítanak egyéni rendszerképeket, amikor a Python SDK-ból vagy a ML CLI-ből helyez üzembe egy betanított modellt.
 
-## <a name="prerequisites"></a>Előfeltételek
+## <a name="prerequisites"></a>Előfeltétel
 
 * Egy Azure Machine Learning munkacsoport. További információt a [Munkaterület létrehozása](how-to-manage-workspace.md) című cikkben talál.
 * A [Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py). 
 * Az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)-vel.
 * A [Azure Machine learning CLI-bővítménye](reference-azure-machine-learning-cli.md).
 * Az interneten elérhető [Azure Container Registry](/azure/container-registry) vagy más Docker-beállításjegyzék.
-* A jelen dokumentum lépései azt feltételezik, hogy a modell üzembe helyezésének részeként már ismeri a __következtetési konfigurációs__ objektum létrehozását és használatát. További információ: a telepítésének előkészítése című rész, [ahol a üzembe helyezés és az útmutató](how-to-deploy-and-where.md#prepare-to-deploy).
+* A jelen dokumentum lépései azt feltételezik, hogy a modell üzembe helyezésének részeként már ismeri a __következtetési konfigurációs__ objektum létrehozását és használatát. További információ: [hol kell telepíteni, és hogyan](how-to-deploy-and-where.md).
 
 ## <a name="create-a-custom-base-image"></a>Egyéni alaprendszerkép létrehozása
 

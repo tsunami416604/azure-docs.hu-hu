@@ -7,12 +7,12 @@ ms.topic: article
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 07/29/2020
-ms.openlocfilehash: 3c5c86f89882654e44f924ce0a19d4d71713144d
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 2bc129fc37347bd108ad62409490c5ce31b7728f
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87431664"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87538931"
 ---
 # <a name="get-shared-access-signature-uri-for-your-vm-image"></a>A virtuálisgép-rendszerkép közös hozzáférésű aláírási URI-azonosítójának beolvasása
 
@@ -31,10 +31,10 @@ Ha SAS URI-ket hoz létre a virtuális merevlemezekhez, kövesse az alábbi köv
 
 A SAS-cím (URL) létrehozásához két gyakori eszköz használható:
 
-* **Microsoft Storage Explorer** – a Azure Portal elérhető grafikus eszköz.
+* **Microsoft Azure Storage Explorer** – a Azure Portal elérhető grafikus eszköz.
 * **Microsoft Azure CLI** – ajánlott nem Windows operációs rendszerekhez, valamint automatizált vagy folyamatos integrációs környezetekhez.
 
-### <a name="use-microsoft-storage-explorer"></a>A Microsoft Storage Explorer használata
+### <a name="use-microsoft-azure-storage-explorer"></a>Microsoft Azure Storage Explorer használata
 
 1. Nyissa meg a Storage-fiókját a Azure Portal.
 2. Nyissa meg a **Storage Explorer** (előzetes verzió) eszközt a bal oldali Explorer ablaktáblán.

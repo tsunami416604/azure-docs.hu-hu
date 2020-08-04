@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 05/20/2020
 ms.author: anfeldma
 ms.custom: tracking-python
-ms.openlocfilehash: 6bd880806a4b067139c1f22a0e4d4e6df5c88451
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: d68fc7b01e6204cb9ad00ea60e413c73856d758e
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86247064"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542446"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Python SDK for SQL API: kibocsátási megjegyzések és erőforrások
 
@@ -301,10 +301,8 @@ A B1-es verzió a 4.0.0 első előzetes verziója, amely a Python nyelvi ajánlo
 
 A Microsoft legalább **12 hónappal** korábban értesítést küld az SDK kivonásáról, hogy zökkenőmentes legyen az áttérés egy újabb/támogatott verzióra. Az új funkciók és funkciók és optimalizálás csak a jelenlegi SDK-hoz adódik hozzá, ezért azt javasoljuk, hogy a lehető leghamarabb frissítsen a legújabb SDK-verzióra.
 
-A szolgáltatás elutasítja a kivont SDK-val Azure Cosmos DBre irányuló kéréseket.
-
 > [!WARNING]
-> Az SQL API- **hoz készült PYTHON** SDK minden verziójának a **2016. február 29-** én kivonult. Emellett az SQL API-hoz készült Python SDK összes verziójának 1. x és 2. x verziója a **2020-es augusztus 30-** án megszűnik.
+> A 2022. augusztus 31-ig a Azure Cosmos DB többé nem javít hibajavításokat, új funkciókat adhat hozzá, és támogatást biztosít az SQL API-hoz készült Azure Cosmos DB Python SDK 1. x vagy 2. x verziójához. Ha nem szeretné, hogy a rendszer ne frissítse az SDK 1. x és 2. x verziójában küldött kérelmeket, továbbra is a Azure Cosmos DB szolgáltatás fogja kiszolgálni.
 
 | Verzió | Kiadás dátuma | Kivonás dátuma |
 | --- | --- | --- |
@@ -342,6 +340,6 @@ A szolgáltatás elutasítja a kivont SDK-val Azure Cosmos DBre irányuló kér�
 
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a Cosmos DBről: [Microsoft Azure Cosmos db](https://azure.microsoft.com/services/cosmos-db/) szolgáltatás lapja. 

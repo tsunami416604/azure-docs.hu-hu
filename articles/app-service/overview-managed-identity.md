@@ -7,12 +7,12 @@ ms.date: 05/27/2020
 ms.author: mahender
 ms.reviewer: yevbronsh
 ms.custom: tracking-python
-ms.openlocfilehash: e97671e9722051674e3760f11e784ab3291283c7
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: f3ec80b5d71bbdbf0f1b89606859dcc734d037e5
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87415040"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542212"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Felügyelt identitások használata App Service és Azure Functions
 
@@ -314,6 +314,9 @@ Létezik egy egyszerű REST-protokoll a jogkivonat beszerzéséhez App Service �
 
 ### <a name="using-the-rest-protocol"></a>A REST protokoll használata
 
+> [!NOTE]
+> A protokoll egy régebbi verziója, amely a "2017-09-01" API-verziót használja, a `secret` fejléc helyett a `X-IDENTITY-HEADER` (z), és csak a `clientid` felhasználó által hozzárendelt tulajdonságot fogadta el. A művelet időbélyeg formátumban is visszaadott `expires_on` . A MSI_ENDPOINT a IDENTITY_ENDPOINT aliasként használható, és a MSI_SECRET a IDENTITY_HEADER aliasként is használhatók. A protokoll ezen verzióját jelenleg a Linux-használat üzemeltetési csomagjaihoz kell megadni.
+
 A felügyelt identitású alkalmazások esetében két környezeti változó van definiálva:
 
 - IDENTITY_ENDPOINT – a helyi jogkivonat-szolgáltatás URL-címe.
@@ -321,10 +324,10 @@ A felügyelt identitású alkalmazások esetében két környezeti változó van
 
 A **IDENTITY_ENDPOINT** egy helyi URL-cím, amelyből az alkalmazás jogkivonatokat igényelhet. Egy erőforráshoz tartozó jogkivonat lekéréséhez hajtson végre egy HTTP GET kérelmet erre a végpontra, beleértve a következő paramétereket:
 
-> | Paraméter neve    | In     | Description                                                                                                                                                                                                                                                                                                                                |
+> | Paraméter neve    | In     | Leírás                                                                                                                                                                                                                                                                                                                                |
 > |-------------------|--------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 > | erőforrás          | Lekérdezés  | Annak az erőforrásnak az Azure AD erőforrás-URI azonosítója, amelynek a jogkivonatát meg kell szerezni. Ez lehet az egyik olyan [Azure-szolgáltatás, amely támogatja az Azure ad-hitelesítést](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) vagy bármilyen más erőforrás-URI-t.    |
-> | api-verzió       | Lekérdezés  | A használni kívánt jogkivonat-API verziója. Használja az "2019-08-01" vagy az újabb verziót.                                                                                                                                                                                                                                                                 |
+> | api-verzió       | Lekérdezés  | A használni kívánt jogkivonat-API verziója. Használja a "2019-08-01" vagy az újabb verziót (kivéve, ha Linux-használatot használ, amely jelenleg csak a "2017-09-01"-ot kínálja) – lásd a fenti megjegyzést.                                                                                                                                                                                                                                                                 |
 > | X-IDENTITY-HEADER | Fejléc | A IDENTITY_HEADER környezeti változó értéke. Ez a fejléc a kiszolgálóoldali kérelmek hamisításának (SSRF) elleni támadásának enyhítésére szolgál.                                                                                                                                                                                                    |
 > | client_id         | Lekérdezés  | Választható A használni kívánt felhasználó által hozzárendelt identitás ügyfél-azonosítója. Nem használható olyan kérelemben, amely a következőt tartalmazza:, `principal_id` `mi_res_id` vagy `object_id` . Ha az összes azonosító paraméter ( `client_id` , `principal_id` ,, `object_id` és) ki `mi_res_id` van hagyva, a rendszer hozzárendelt identitást használja.                                             |
 > | principal_id      | Lekérdezés  | Választható A használni kívánt felhasználó által hozzárendelt identitás résztvevő-azonosítója. `object_id`egy olyan alias, amely felhasználható helyette. Nem használható olyan kérelemben, amely client_id, mi_res_id vagy object_idt tartalmaz. Ha az összes azonosító paraméter ( `client_id` , `principal_id` ,, `object_id` és) ki `mi_res_id` van hagyva, a rendszer hozzárendelt identitást használja. |
@@ -335,7 +338,7 @@ A **IDENTITY_ENDPOINT** egy helyi URL-cím, amelyből az alkalmazás jogkivonato
 
 A sikeres 200 OK válasz egy JSON-törzset tartalmaz, amely a következő tulajdonságokkal rendelkezik:
 
-> | Tulajdonság neve | Description                                                                                                                                                                                                                                        |
+> | Tulajdonság neve | Leírás                                                                                                                                                                                                                                        |
 > |---------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 > | access_token  | A kért hozzáférési jogkivonat. A hívó webszolgáltatás ezt a tokent használhatja a fogadó webszolgáltatáshoz való hitelesítéshez.                                                                                                                               |
 > | client_id     | A használt identitás ügyfél-azonosítója.                                                                                                                                                                                                       |
@@ -345,9 +348,6 @@ A sikeres 200 OK válasz egy JSON-törzset tartalmaz, amely a következő tulajd
 > | token_type    | Megadja a jogkivonat típusának értékét. Az Azure AD által támogatott egyetlen típus a FBearer. A tulajdonosi jogkivonatokkal kapcsolatos további információkért tekintse meg [a OAuth 2,0 engedélyezési keretrendszert: tulajdonosi jogkivonat használata (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt). |
 
 Ez a válasz ugyanaz, mint az [Azure ad szolgáltatás – szolgáltatás hozzáférési jogkivonat-kérelemre adott válasz](../active-directory/develop/v1-oauth2-client-creds-grant-flow.md#service-to-service-access-token-response).
-
-> [!NOTE]
-> A protokoll egy régebbi verziója, amely a "2017-09-01" API-verziót használja, a `secret` fejléc helyett a `X-IDENTITY-HEADER` (z), és csak a `clientid` felhasználó által hozzárendelt tulajdonságot fogadta el. A művelet időbélyeg formátumban is visszaadott `expires_on` . A MSI_ENDPOINT a IDENTITY_ENDPOINT aliasként használható, és a MSI_SECRET a IDENTITY_HEADER aliasként is használhatók.
 
 ### <a name="rest-protocol-examples"></a>REST protokoll – példák
 
@@ -520,7 +520,7 @@ Update-AzFunctionApp -Name $functionAppName -ResourceGroupName $resourceGroupNam
 > [!NOTE]
 > Van olyan Alkalmazásbeállítás is, amely beállítható, WEBSITE_DISABLE_MSI, amely egyszerűen letiltja a helyi jogkivonat-szolgáltatást. Azonban elhagyja az identitást, és az eszközök továbbra is a felügyelt identitást "be" vagy "engedélyezve" állapotba helyezik. Ennek eredményeképpen a beállítás használata nem ajánlott.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Biztonságos hozzáférés SQL Database felügyelt identitás használatával](app-service-web-tutorial-connect-msi.md)

@@ -10,12 +10,12 @@ ms.author: larryfr
 author: larryfr
 ms.reviewer: larryfr
 ms.date: 06/11/2020
-ms.openlocfilehash: c8b25e1d3ef2d2b780d88fbf2ba6c6568b4a804d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 59671a0520d665d594356a2e6aee46116a8de5d3
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84744958"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87541770"
 ---
 # <a name="deploy-a-model-for-use-with-cognitive-search"></a>Modell üzembe helyezése a Cognitive Searchcsel történő használatra
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -41,7 +41,7 @@ Az Azure Cognitive Search-hoz való használatra szolgáló modell telepítések
 * A bejegyzési parancsfájlnak a JSON-adatokat is el kell fogadnia bemenetként, és a JSON-t kimenetként kell előállítania
 
 
-## <a name="prerequisites"></a>Előfeltételek
+## <a name="prerequisites"></a>Előfeltétel
 
 * Egy Azure Machine Learning-munkaterület. További információ: [Azure Machine learning munkaterület létrehozása](how-to-manage-workspace.md).
 
@@ -127,7 +127,7 @@ További információ a Azure Machine Learning-vel való használatáról: [üze
 A bejegyzési parancsfájl fogadja a webszolgáltatásnak küldött adatok fogadását, átadja a modellnek, és visszaadja a pontozás eredményét. A következő szkript betölti a modellt indításkor, majd a modell használatával szerzi be az adattípust. Ezt a fájlt néha nevezik `score.py` .
 
 > [!TIP]
-> A bejegyzési parancsfájl a modellre jellemző. A szkriptnek például tudnia kell, hogy milyen keretrendszert kell használni a modellhez, az adatformátumokhoz stb.
+> A bejegyzés parancsfájlja egyedi a modellnél. A szkriptnek például tudnia kell, hogy milyen keretrendszert kell használni a modellhez, az adatformátumokhoz stb.
 
 > [!IMPORTANT]
 > Ha az Azure Cognitive Servicesról tervezi az üzembe helyezett modell használatát, akkor a `inference_schema` csomag használatával engedélyeznie kell a séma létrehozását a központi telepítéshez. Ez a csomag olyan dekorációkat biztosít, amelyekkel meghatározható a webszolgáltatáshoz tartozó bemeneti és kimeneti adatformátum, amely a modell használatával következtetéseket hajt végre.
@@ -216,7 +216,7 @@ További információ a környezetekről: [környezetek létrehozása és kezel�
 A telepítési konfiguráció határozza meg a webszolgáltatás futtatásához használt Azure Kubernetes szolgáltatás üzemeltetési környezetét.
 
 > [!TIP]
-> Ha nem biztos abban, hogy az üzemelő példány memória-, CPU-vagy GPU-szükséglete nem megfelelő, a profilkészítés használatával megismerheti ezeket. További információt a [modell üzembe helyezésének módját és helyét](how-to-deploy-and-where.md#prepare-to-deploy)ismertető témakörben talál.
+> Ha nem biztos abban, hogy az üzemelő példány memória-, CPU-vagy GPU-szükséglete nem megfelelő, a profilkészítés használatával megismerheti ezeket. További információt a [modell üzembe helyezésének módját és helyét](how-to-deploy-and-where.md)ismertető témakörben talál.
 
 ```python
 from azureml.core.model import Model

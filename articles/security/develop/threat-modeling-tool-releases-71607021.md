@@ -1,19 +1,19 @@
 ---
 title: Microsoft Threat Modeling Tool kiadás 7/2/2019
 titleSuffix: Azure
-description: A veszélyforrások modellezése eszköz kibocsátási megjegyzéseit dokumentálja
+description: Olvassa el a veszélyforrások modellezése eszköz 7/2/2019-es frissítésére vonatkozó kibocsátási megjegyzéseket. A megjegyzések közé tartozik a kisegítő lehetőségek fejlesztése és hibajavítások.
 author: jegeib
 ms.author: jegeib
 ms.service: security
 ms.subservice: security-develop
 ms.topic: article
 ms.date: 07/02/2019
-ms.openlocfilehash: d4a97a10b8055af4401dbe163723b1fb38a5d12f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0e62f6950f90d7f15aa231783e292ec8eee0b4c4
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78269673"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87539118"
 ---
 # <a name="threat-modeling-tool-update-release-71607021---722019"></a>Threat Modeling Tool Update kiadás 7.1.60702.1-7/2/2019
 
@@ -31,7 +31,7 @@ A nyílt forráskódú közösség hozzájárult az orvostechnikai eszközök mo
 
 ![Modell-ellenőrzési lehetőség](./media/threat-modeling-tool-releases-71607021/tmt-template-selection.png)
 
-## <a name="system-requirements"></a>System requirements (Rendszerkövetelmények)
+## <a name="system-requirements"></a>Rendszerkövetelmények
 
 - Támogatott operációs rendszerek
   - [Microsoft Windows 10 évfordulós frissítés](https://blogs.windows.com/windowsexperience/2016/08/02/how-to-get-the-windows-10-anniversary-update/#HTkoK5Zdv0g2F2Zq.97) vagy újabb

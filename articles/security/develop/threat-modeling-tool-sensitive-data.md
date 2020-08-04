@@ -1,6 +1,6 @@
 ---
 title: Bizalmas adatok – Microsoft Threat Modeling Tool – Azure | Microsoft Docs
-description: a Threat Modeling Toolban elérhető fenyegetések enyhítése
+description: Ismerje meg a bizalmas adatok enyhítését a Threat Modeling Toolban. Tekintse meg a kockázatcsökkentő információkat és a kód megjelenítése példákat.
 services: security
 documentationcenter: na
 author: jegeib
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 72d223e0a2052c8e33c12ad5c540f5f32f540a4d
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 8f8b18d36453ac65300a5dd19fa7e07b1449bc28
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420583"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87538948"
 ---
 # <a name="security-frame-sensitive-data--mitigations"></a>Biztonsági keret: bizalmas adatok | Enyhítését 
 | Termék/szolgáltatás | Cikk |
@@ -43,10 +43,10 @@ ms.locfileid: "87420583"
 | Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Számítógép-megbízhatósági kapcsolat határa | 
-| **SDL-fázis**               | Telepítés |  
+| **SDL-fázis**               | Üzembe helyezés |  
 | **Alkalmazható technológiák** | Általános |
-| **Attribútumok**              | N.A.  |
-| **Hivatkozások**              | N.A.  |
+| **Attribútumok**              | N/A  |
+| **Hivatkozások**              | N/A  |
 | **Lépések** | Győződjön meg arról, hogy a bináris fájlok el vannak hajtva, ha olyan bizalmas információkat tartalmaznak, mint például a kereskedelmi titkok, a bizalmas üzleti logika, amely nem fordítható vissza. Ez a szerelvények fordított mérnöki leállítása. Ehhez hasonló eszközök `CryptoObfuscator` használhatók erre a célra. |
 
 ## <a name="consider-using-encrypted-file-system-efs-is-used-to-protect-confidential-user-specific-data"></a><a id="efs-user"></a>Érdemes titkosított fájlrendszert (EFS) használni a bizalmas felhasználói adatok védelméhez
@@ -56,8 +56,8 @@ ms.locfileid: "87420583"
 | **Összetevő**               | Számítógép-megbízhatósági kapcsolat határa | 
 | **SDL-fázis**               | Build |  
 | **Alkalmazható technológiák** | Általános |
-| **Attribútumok**              | N.A.  |
-| **Hivatkozások**              | N.A.  |
+| **Attribútumok**              | N/A  |
+| **Hivatkozások**              | N/A  |
 | **Lépések** | Érdemes lehet titkosított fájlrendszert (EFS) használni a bizalmas, felhasználó-specifikus adatok védelmére az ellenfelektől a számítógéphez való fizikai hozzáféréssel. |
 
 ## <a name="ensure-that-sensitive-data-stored-by-the-application-on-the-file-system-is-encrypted"></a><a id="filesystem"></a>Győződjön meg arról, hogy az alkalmazás által a fájlrendszerben tárolt bizalmas adatok titkosítva vannak
@@ -65,10 +65,10 @@ ms.locfileid: "87420583"
 | Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Számítógép-megbízhatósági kapcsolat határa | 
-| **SDL-fázis**               | Telepítés |  
+| **SDL-fázis**               | Üzembe helyezés |  
 | **Alkalmazható technológiák** | Általános |
-| **Attribútumok**              | N.A.  |
-| **Hivatkozások**              | N.A.  |
+| **Attribútumok**              | N/A  |
+| **Hivatkozások**              | N/A  |
 | **Lépések** | Győződjön meg arról, hogy az alkalmazás által a fájlrendszerben tárolt bizalmas adatok titkosítva vannak (például DPAPI használatával), ha az EFS nem kényszeríthető ki. |
 
 ## <a name="ensure-that-sensitive-content-is-not-cached-on-the-browser"></a><a id="cache-browser"></a>Ügyeljen arra, hogy a bizalmas tartalom ne legyen gyorsítótárazva a böngészőben
@@ -78,8 +78,8 @@ ms.locfileid: "87420583"
 | **Összetevő**               | Webalkalmazás | 
 | **SDL-fázis**               | Build |  
 | **Alkalmazható technológiák** | Általános, Web Forms, MVC5, MVC6 |
-| **Attribútumok**              | N.A.  |
-| **Hivatkozások**              | N.A.  |
+| **Attribútumok**              | N/A  |
+| **Hivatkozások**              | N/A  |
 | **Lépések** | A böngészők gyorsítótárazás és előzmények céljából tárolhatnak adatokat. Ezeket a gyorsítótárazott fájlokat egy mappában tárolja a rendszer, például az ideiglenes Internet Files mappát az Internet Explorer esetében. Ha ezeket az oldalakat újra megnevezik, a böngésző megjeleníti azokat a gyorsítótárból. Ha bizalmas adatok jelennek meg a felhasználó számára (például a címük, a bankkártya adatai, a társadalombiztosítási szám vagy a Felhasználónév), akkor ezeket az információkat a böngésző gyorsítótárában tárolhatja, ezért a böngésző gyorsítótárának vizsgálatával vagy a böngésző "vissza" gombjának megnyomásával kérhető le. A gyorsítótár-vezérlési válasz fejlécének beállítása az összes oldal "No-Store" értékére. |
 
 ### <a name="example"></a>Példa
@@ -131,7 +131,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | **Összetevő**               | Webalkalmazás | 
 | **SDL-fázis**               | Build |  
 | **Alkalmazható technológiák** | Általános |
-| **Attribútumok**              | N.A.  |
+| **Attribútumok**              | N/A  |
 | **Hivatkozások**              | [Útmutató: a ASP.NET 2,0 konfigurációs fejezeteinek titkosítása a DPAPI használatával](https://msdn.microsoft.com/library/ff647398.aspx), [védett konfigurációs szolgáltató megadásával](https://msdn.microsoft.com/library/68ze1hb2.aspx), [Azure Key Vault használatával az alkalmazások titkos adatainak védelméhez](https://azure.microsoft.com/documentation/articles/guidance-multitenant-identity-keyvault/) |
 | **Lépések** | A konfigurációs fájlok, például a Web.config, a appsettings.js, a bizalmas adatok tárolására gyakran használják, beleértve a felhasználóneveket, a jelszavakat, az adatbázis-kapcsolódási karakterláncokat és a titkosítási kulcsokat. Ha nem védik ezeket az információkat, az alkalmazás sebezhetővé válik a támadók és a rosszindulatú felhasználók számára bizalmas információk, például a fiókok felhasználónevei és jelszavaik, az adatbázisok nevei és a kiszolgálók nevei alapján. A központi telepítési típus (Azure/helyszíni) alapján Titkosítsa a konfigurációs fájlok bizalmas részeit a DPAPI vagy olyan szolgáltatásokkal, mint például a Azure Key Vault. |
 
@@ -142,7 +142,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | **Összetevő**               | Webalkalmazás | 
 | **SDL-fázis**               | Build |  
 | **Alkalmazható technológiák** | Általános |
-| **Attribútumok**              | N.A.  |
+| **Attribútumok**              | N/A  |
 | **Hivatkozások**              | [MSDN: automatikus kiegészítési attribútum](https://msdn.microsoft.com/library/ms533486(VS.85).aspx), automatikus [kiegészítés használatával HTML-ben](https://msdn.microsoft.com/library/ms533032.aspx), [HTML-tisztítási biztonsági rés](https://technet.microsoft.com/security/bulletin/MS10-071), [automatikus kiegészítés., újra?!](https://blog.mindedsecurity.com/2011/10/autocompleteagain.html) |
 | **Lépések** | Az automatikus kiegészítés attribútum azt adja meg, hogy az űrlapon be vagy ki kell-e kapcsolni az automatikus kiegészítést. Ha az automatikus kiegészítés be van kapcsolva, a böngésző automatikusan befejezi az értékeket a felhasználó által korábban megadott értékek alapján. Ha például egy új név és jelszó van megadva egy űrlapon, és az űrlap el van küldve, a böngésző megkérdezi, hogy a jelszót menteni kell-e. Ezután amikor megjelenik az űrlap, a rendszer automatikusan kitölti a nevet és a jelszót, és a név megadásakor megtörténik. A helyi hozzáféréssel rendelkező támadók megszerezhetik a titkosítatlan szöveges jelszót a böngésző gyorsítótárából. Alapértelmezés szerint az automatikus kiegészítés engedélyezve van, és explicit módon le kell tiltani. |
 
@@ -161,8 +161,8 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | **Összetevő**               | Webalkalmazás | 
 | **SDL-fázis**               | Build |  
 | **Alkalmazható technológiák** | Általános |
-| **Attribútumok**              | N.A.  |
-| **Hivatkozások**              | N.A.  |
+| **Attribútumok**              | N/A  |
+| **Hivatkozások**              | N/A  |
 | **Lépések** | A képernyőn megjelenő bizalmas adatokat, például a jelszavakat, a hitelkártya-számokat, a Taj-t stb.. Ezzel megakadályozható, hogy jogosulatlan személyek hozzáférjenek az adatokhoz (pl.: a váll-szörfözés jelszavai, a támogatási személyzetnek a felhasználók megtekintő számú tagja). Győződjön meg arról, hogy ezek az adatelemek nem láthatók egyszerű szövegben, és megfelelően vannak maszkban. Ezt úgy kell figyelni, hogy bemenetként fogadja őket (például:. bemeneti típus = "password"), valamint a képernyőn visszamutatva (például csak a hitelkártyaszám utolsó 4 számjegyét jeleníti meg). |
 
 ## <a name="implement-dynamic-data-masking-to-limit-sensitive-data-exposure-non-privileged-users"></a><a id="dynamic-users"></a>Dinamikus adatmaszkolás megvalósítása a bizalmas adatokkal nem rendelkező felhasználók korlátozása érdekében
@@ -183,7 +183,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | **Összetevő**               | Adatbázis | 
 | **SDL-fázis**               | Build |  
 | **Alkalmazható technológiák** | Általános |
-| **Attribútumok**              | N.A.  |
+| **Attribútumok**              | N/A  |
 | **Hivatkozások**              | [Jelszó-kivonatolás .NET titkosítási API-k használatával](https://docs.asp.net/en/latest/security/data-protection/consumer-apis/password-hashing.html) |
 | **Lépések** | A jelszavakat nem szabad egyéni felhasználói tároló adatbázisaiban tárolni. A jelszó-kivonatokat a Salt Values értékkel kell tárolni. Győződjön meg arról, hogy a felhasználóhoz tartozó só mindig egyedi, és a Jelszó tárolása előtt alkalmazza a b-crypt, az s-Crypt vagy a PBKDF2, valamint az 150 000 hurkok minimális munkatényező-iterációs számát, hogy kizárja a találgatások kikényszerítésének lehetőségét.| 
 
@@ -205,7 +205,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | **Összetevő**               | Adatbázis | 
 | **SDL-fázis**               | Build |  
 | **Alkalmazható technológiák** | Általános |
-| **Attribútumok**              | N.A.  |
+| **Attribútumok**              | N/A  |
 | **Hivatkozások**              | [A SQL Server transzparens adattitkosítás ismertetése (TDE)](https://technet.microsoft.com/library/bb934049(v=sql.105).aspx) |
 | **Lépések** | Az SQL Server transzparens adattitkosítás (TDE) funkciója segíti a bizalmas adatok titkosítását egy adatbázisban, és védi az adatok tanúsítvánnyal való titkosításához használt kulcsokat. Ezzel megakadályozhatja, hogy a kulcsok ne használják az adatok használatát. A TDE megvédi az adatok "nyugalmi állapotban", azaz az adatok és a naplófájlok tartalmát. Lehetővé teszi a különböző iparágakban bevezetett törvények, rendeletek és irányelvek betartását. |
 
@@ -228,7 +228,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | **SDL-fázis**               | Build |  
 | **Alkalmazható technológiák** | MVC 5, MVC 6 |
 | **Attribútumok**              | Identitás-szolgáltató – ADFS, identitás-szolgáltató – Azure AD |
-| **Hivatkozások**              | N.A.  |
+| **Hivatkozások**              | N/A  |
 | **Lépések** | <p>Bizonyos implementációkban a webes API-hitelesítéshez kapcsolódó bizalmas összetevők a böngésző helyi tárolójában tárolódnak. Ilyenek például az Azure AD-hitelesítési összetevők, például a adal. idtoken, a adal. alkalom. idtoken, a adal. Access. token. Key, a adal. token. Keys, a adal. State. login, a adal. Session. State, a adal. lejárat. Key stb.</p><p>Ezek az összetevők még a kijelentkezés vagy a böngésző bezárása után is elérhetők. Ha egy támadó hozzáfér ezekhez az összetevőkhöz, azt újra használhatja a védett erőforrások (API-k) eléréséhez. Győződjön meg arról, hogy a webes API-hoz kapcsolódó összes bizalmas összetevő nem a böngésző tárolójában van tárolva. Azokban az esetekben, amikor az ügyféloldali tárolók nem elkerülhetők (például egyoldalas alkalmazások (SPA), amelyek az implicit OpenIdConnect/OAuth-folyamatokat használják, a hozzáférési jogkivonatokat helyileg kell tárolni), a nem rendelkezik adatmegőrzési lehetőségekkel. például inkább a SessionStorage LocalStorage.</p>| 
 
 ### <a name="example"></a>Példa
@@ -251,8 +251,8 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 | **Összetevő**               | Azure Document DB | 
 | **SDL-fázis**               | Build |  
 | **Alkalmazható technológiák** | Általános |
-| **Attribútumok**              | N.A.  |
-| **Hivatkozások**              | N.A.  |
+| **Attribútumok**              | N/A  |
+| **Hivatkozások**              | N/A  |
 | **Lépések** | A bizalmas adatok titkosítása az alkalmazás szintjén a Document DB-ben való tárolás előtt, vagy bármilyen bizalmas adat tárolása más tárolási megoldásokban, például az Azure Storage vagy az Azure SQL szolgáltatásban| 
 
 ## <a name="use-azure-disk-encryption-to-encrypt-disks-used-by-virtual-machines"></a><a id="disk-vm"></a>A Virtual Machines által használt lemezek titkosítása Azure Disk Encryption használatával
@@ -260,9 +260,9 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 | Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Azure IaaS VM-megbízhatósági kapcsolat határa | 
-| **SDL-fázis**               | Telepítés |  
+| **SDL-fázis**               | Üzembe helyezés |  
 | **Alkalmazható technológiák** | Általános |
-| **Attribútumok**              | N.A.  |
+| **Attribútumok**              | N/A  |
 | **Hivatkozások**              | [A virtuális gépek által használt lemezek titkosítása Azure Disk Encryption használatával](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_using-azure-disk-encryption-to-encrypt-disks-used-by-your-virtual-machines) |
 | **Lépések** | <p>A Azure Disk Encryption egy új szolgáltatás, amely jelenleg előzetes verzióban érhető el. Ez a funkció lehetővé teszi a IaaS virtuális gépek által használt operációsrendszer-lemezek és adatlemezek titkosítását. A Windows rendszerben a meghajtók titkosítása az iparági szabványnak megfelelő BitLocker titkosítási technológiával történik. A Linux rendszerben a lemezek titkosítása a DM-Crypt technológiával történik. Ez integrálva van Azure Key Vault, hogy lehetővé tegye a lemezes titkosítási kulcsok szabályozását és kezelését. A Azure Disk Encryption megoldás a következő három ügyfél-titkosítási forgatókönyvet támogatja:</p><ul><li>Engedélyezze a titkosítást az ügyfél által titkosított VHD-fájlokból létrehozott új IaaS virtuális gépeken, illetve az ügyfél által biztosított titkosítási kulcsokban, amelyeket a Azure Key Vault tárol.</li><li>Engedélyezze a titkosítást az Azure piactéren létrehozott új IaaS virtuális gépeken.</li><li>Engedélyezze a titkosítást az Azure-ban már futó meglévő IaaS virtuális gépeken.</li></ul>| 
 
@@ -284,8 +284,8 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 | **Összetevő**               | Dynamics CRM | 
 | **SDL-fázis**               | Build |  
 | **Alkalmazható technológiák** | Általános |
-| **Attribútumok**              | N.A.  |
-| **Hivatkozások**              | N.A.  |
+| **Attribútumok**              | N/A  |
+| **Hivatkozások**              | N/A  |
 | **Lépések** | Biztonsági modellezés végrehajtása, és szükség esetén üzleti egységek/csapatok használata |
 
 ## <a name="minimize-access-to-share-feature-on-critical-entities"></a><a id="entities"></a>A megosztási funkciók elérésének csökkentése a kritikus entitásokon
@@ -293,10 +293,10 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 | Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Dynamics CRM | 
-| **SDL-fázis**               | Telepítés |  
+| **SDL-fázis**               | Üzembe helyezés |  
 | **Alkalmazható technológiák** | Általános |
-| **Attribútumok**              | N.A.  |
-| **Hivatkozások**              | N.A.  |
+| **Attribútumok**              | N/A  |
+| **Hivatkozások**              | N/A  |
 | **Lépések** | A megosztási funkciók elérésének csökkentése a kritikus entitásokon |
 
 ## <a name="train-users-on-the-risks-associated-with-the-dynamics-crm-share-feature-and-good-security-practices"></a><a id="good-practices"></a>A felhasználók betanítása a Dynamics CRM-megosztási szolgáltatáshoz kapcsolódó kockázatokkal és a jó biztonsági gyakorlattal
@@ -304,10 +304,10 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 | Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Dynamics CRM | 
-| **SDL-fázis**               | Telepítés |  
+| **SDL-fázis**               | Üzembe helyezés |  
 | **Alkalmazható technológiák** | Általános |
-| **Attribútumok**              | N.A.  |
-| **Hivatkozások**              | N.A.  |
+| **Attribútumok**              | N/A  |
+| **Hivatkozások**              | N/A  |
 | **Lépések** | A felhasználók betanítása a Dynamics CRM-megosztási szolgáltatáshoz kapcsolódó kockázatokkal és a jó biztonsági gyakorlattal |
 
 ## <a name="include-a-development-standards-rule-proscribing-showing-config-details-in-exception-management"></a><a id="exception-mgmt"></a>Fejlesztési szabványok szabályának betiltására, amely a konfiguráció részleteit mutatja a kivételek kezelése során
@@ -315,10 +315,10 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 | Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Dynamics CRM | 
-| **SDL-fázis**               | Telepítés |  
+| **SDL-fázis**               | Üzembe helyezés |  
 | **Alkalmazható technológiák** | Általános |
-| **Attribútumok**              | N.A.  |
-| **Hivatkozások**              | N.A.  |
+| **Attribútumok**              | N/A  |
+| **Hivatkozások**              | N/A  |
 | **Lépések** | Vegyen fel egy fejlesztési szabványokra vonatkozó szabályt, amely a betiltására a fejlesztésen kívül a konfiguráció részleteit jeleníti meg. Ezt tesztelheti a Code Reviews vagy az időszakos ellenőrzés részeként.|
 
 ## <a name="use-azure-storage-service-encryption-sse-for-data-at-rest-preview"></a><a id="sse-preview"></a>Az Azure Storage Service Encryption (SSE) használata a REST-adatokhoz (előzetes verzió)
@@ -339,7 +339,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 | **Összetevő**               | Azure Storage | 
 | **SDL-fázis**               | Build |  
 | **Alkalmazható technológiák** | Általános |
-| **Attribútumok**              | N.A.  |
+| **Attribútumok**              | N/A  |
 | **Hivatkozások**              | [Ügyféloldali titkosítás és Azure Key Vault a Microsoft Azure Storagehoz](https://azure.microsoft.com/documentation/articles/storage-client-side-encryption/), [oktatóanyag: Blobok titkosítása és visszafejtése Microsoft Azure Storage Azure Key Vault használatával](https://azure.microsoft.com/documentation/articles/storage-encrypt-decrypt-blobs-key-vault/), [biztonságos adattárolás az Azure Blob Storage Azure encryption Extensions bővítménnyel](https://blogs.msdn.microsoft.com/partnercatalystteam/2015/06/17/storing-data-securely-in-azure-blob-storage-with-azure-encryption-extensions/) |
 | **Lépések** | <p>Az Azure Storage ügyféloldali kódtára a .NET Nuget csomag támogatja az ügyfeleken belüli adattitkosítást az Azure Storage-ba való feltöltés előtt, és az adatvisszafejtést az ügyfélre való letöltés során. A kódtár emellett támogatja az Azure Key Vault rendszerrel való integrálást a tárfiókkulcs-kezelés biztosítása érdekében. Íme egy rövid leírás arról, hogyan működik az ügyféloldali titkosítás:</p><ul><li>Az Azure Storage ügyféloldali SDK létrehoz egy Content encryption Key (CEK) kulcsot, amely egy egyszer használatos szimmetrikus kulcs</li><li>A vásárlói adatai titkosítva vannak ezzel a CEK</li><li>Ezután a CEK (titkosított) a kulcs titkosítási kulcs (KEK) használatával burkolta. A KEK-et egy kulcs-azonosító azonosítja, és lehet egy aszimmetrikus kulcspár vagy egy szimmetrikus kulcs, és kezelhető helyileg, vagy Azure Key Vault tárolható. Maga a Storage-ügyfél soha nem fér hozzá a KEK-hez. Csak a Key Vault által biztosított kulcs-körbefuttatási algoritmust hívja meg. Az ügyfelek dönthetnek úgy, hogy egyéni szolgáltatókat használnak a kulcsok becsomagolásához/kicsomagolásához, ha szeretnék</li><li>Ezt követően a rendszer feltölti a titkosított fájlokat az Azure Storage szolgáltatásba. Az alacsony szintű megvalósítás részleteiért olvassa el a hivatkozások szakaszban található hivatkozásokat.</li></ul>|
 
@@ -350,7 +350,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 | **Összetevő**               | Mobil ügyfél | 
 | **SDL-fázis**               | Build |  
 | **Alkalmazható technológiák** | Általános, Xamarin  |
-| **Attribútumok**              | N.A.  |
+| **Attribútumok**              | N/A  |
 | **Hivatkozások**              | [Az eszközök beállításainak és funkcióinak kezelése Microsoft Intune szabályzatokkal és](https://docs.microsoft.com/mem/intune/configuration/) [kulcstartóval](https://components.xamarin.com/view/square.valet) |
 | **Lépések** | <p>Ha az alkalmazás bizalmas adatokat ír, például a felhasználó személyes adatait (e-mail cím, telefonszám, Utónév, vezetéknév, beállítások stb.) -a mobil fájlrendszerén, a helyi fájlrendszerbe való írás előtt titkosítva kell lennie. Ha az alkalmazás vállalati alkalmazás, akkor vizsgálja meg az alkalmazás közzétételének lehetőségét a Windows Intune használatával.</p>|
 
@@ -400,7 +400,7 @@ Ha az alkalmazás nem vállalati alkalmazás, akkor használja a platform által
 | **Összetevő**               | Mobil ügyfél | 
 | **SDL-fázis**               | Build |  
 | **Alkalmazható technológiák** | Általános |
-| **Attribútumok**              | N.A.  |
+| **Attribútumok**              | N/A  |
 | **Hivatkozások**              | [Titkosítási titkosítás a .net-hez](https://www.ssware.com/cryptoobfuscator/obfuscator-net.htm) |
 | **Lépések** | A létrehozott bináris fájlokat (az apk-ben lévő szerelvényeket) a szerelvények fordított mérnöki leállítása érdekében el kell készíteni. Ehhez hasonló eszközök `CryptoObfuscator` használhatók erre a célra. |
 
@@ -411,7 +411,7 @@ Ha az alkalmazás nem vállalati alkalmazás, akkor használja a platform által
 | **Összetevő**               | WCF | 
 | **SDL-fázis**               | Build |  
 | **Alkalmazható technológiák** | .NET-keretrendszer 3 |
-| **Attribútumok**              | N.A.  |
+| **Attribútumok**              | N/A  |
 | **Hivatkozások**              | [Megerősítsék](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_weak_token) |
 | **Lépések** | A titkosítatlan csatornán keresztüli egyszerű szöveges jelszóval rendelkező UsernameToken használatával a jelszó a SOAP-üzeneteket Szippantó támadók számára is elérhető. A UsernameToken használó szolgáltatók elfogadják az egyszerű szöveges formátumban elküldhető jelszavakat. Az egyszerű szöveges jelszavak titkosítatlan csatornán keresztüli küldése lehetővé teszi a hitelesítő adatokat a SOAP-üzenetet Szippantó támadók számára. | 
 

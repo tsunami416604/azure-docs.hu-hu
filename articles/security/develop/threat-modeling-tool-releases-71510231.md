@@ -1,19 +1,19 @@
 ---
 title: Microsoft Threat Modeling Tool kiadás 11/1/2018
 titleSuffix: Azure
-description: A veszélyforrások modellezése eszköz kibocsátási megjegyzéseit dokumentálja
+description: Olvassa el a veszélyforrások modellezése eszköz 11/1/2018-es frissítésére vonatkozó kibocsátási megjegyzéseket. Ez a kiadás nem tartalmaz új funkciókat és javításokat.
 author: jegeib
 ms.author: jegeib
 ms.service: security
 ms.subservice: security-develop
 ms.topic: article
 ms.date: 01/15/2019
-ms.openlocfilehash: 3d6057c729b2f3f9d7157e91656db1912422f168
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e48e14c13ef2ff171145022f4eafa6e0f80a9b22
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78269752"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87539016"
 ---
 # <a name="threat-modeling-tool-update-release-71510231---1112018"></a>A fenyegetésmodellezési eszköz frissített kiadása: 7.1.51023.1 - 11.1.2018
 
@@ -25,9 +25,9 @@ Amint azt a [kiadási megjegyzésekben](threat-modeling-tool-releases-71509112.m
 
 ## <a name="feature-changes"></a>Szolgáltatások módosításai
 
-- None
+- Nincsenek
 
-## <a name="system-requirements"></a>System requirements (Rendszerkövetelmények)
+## <a name="system-requirements"></a>Rendszerkövetelmények
 
 - Támogatott operációs rendszerek
   - Microsoft Windows 10

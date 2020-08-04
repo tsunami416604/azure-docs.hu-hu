@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/12/2020
-ms.openlocfilehash: 6ad6ca72f0861324a10e93a1eadbdc11c6104574
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 9ee0fbd69c0004306b67cbff0aca3b257d905eeb
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320969"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87541124"
 ---
 # <a name="deploy-a-model-to-azure-container-instances"></a>Modell üzembe helyezése Azure Container Instances
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -33,7 +33,7 @@ Az ACI-ra vonatkozó kvóta-és területi elérhetőséggel kapcsolatos informá
 >
 > Azure Machine Learning- [központi telepítés helyi jegyzetfüzetre című témakört](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/deploy-to-local) is használhatja.
 
-## <a name="prerequisites"></a>Előfeltételek
+## <a name="prerequisites"></a>Előfeltétel
 
 - Egy Azure Machine Learning-munkaterület. További információ: [Azure Machine learning munkaterület létrehozása](how-to-manage-workspace.md).
 
@@ -96,14 +96,12 @@ Lásd: [modellek üzembe helyezése a vs Code](tutorial-train-deploy-image-class
 > [!IMPORTANT]
 > A teszteléshez nem kell ACI-tárolót létrehoznia. Az ACI-tárolók szükség szerint jönnek létre.
 
-## <a name="update-the-web-service"></a>Webszolgáltatás frissítése
-
-[!INCLUDE [aml-update-web-service](../../includes/machine-learning-update-web-service.md)]
 
 ## <a name="next-steps"></a>További lépések
 
 * [Modell üzembe helyezése egyéni Docker-rendszerkép használatával](how-to-deploy-custom-docker-image.md)
 * [Üzembe helyezés hibaelhárítása](how-to-troubleshoot-deployment.md)
+* [Webszolgáltatás frissítése](how-to-deploy-update-web-service.md)
 * [Webszolgáltatás biztonságossá tétele a TLS használatával Azure Machine Learning](how-to-secure-web-service.md)
 * [Webszolgáltatásként üzembe helyezett ML-modell felhasználása](how-to-consume-web-service.md)
 * [A Azure Machine Learning modellek monitorozása a Application Insights](how-to-enable-app-insights.md)

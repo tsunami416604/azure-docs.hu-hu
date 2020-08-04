@@ -7,16 +7,16 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: Kinect, Azure, beolvasás, érzékelő, kamera, SDK, mélység, RGB, képek, szín, rögzítés, felbontás, puffer
-ms.openlocfilehash: 84e678993f94c17bf58fb134234afaee4139aad5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fed5c7340d287d9103ba35f0fd3d80c0fff6e3ec
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85277267"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87538914"
 ---
 # <a name="retrieve-azure-kinect-image-data"></a>Azure-beli Kinect-képadatok beolvasása
 
-Ez az oldal részletesen ismerteti, hogyan lehet lemezképeket beolvasni az Azure Kinect-ből. A cikk bemutatja, hogyan rögzítheti és érheti el az eszköz színét és mélységét képező kamerákat. A lemezképek eléréséhez először meg kell nyitnia és konfigurálnia kell az eszközt, majd rögzíthet képeket.
+Ez az oldal részletesen ismerteti, hogyan lehet lemezképeket beolvasni az Azure Kinect-ből. A cikk bemutatja, hogyan rögzítheti és érheti el az eszköz színét és mélységét koordináló képeket. A lemezképek eléréséhez először meg kell nyitnia és konfigurálnia kell az eszközt, majd rögzíthet képeket.
 A rendszerkép konfigurálása és rögzítése előtt meg kell [keresnie és meg kell nyitnia az eszközt](find-then-open-device.md).
 
 Az [SDK streaming példáját](https://github.com/microsoft/Azure-Kinect-Sensor-SDK/tree/develop/examples/streaming) is megtekintheti, amely bemutatja, hogyan használható a jelen cikkben szereplő függvények használata.

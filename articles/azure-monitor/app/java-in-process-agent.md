@@ -3,12 +3,12 @@ title: Java-alkalmazások figyelése bármilyen környezetben – Azure Monitor 
 description: Alkalmazások teljesítményének figyelése bármilyen környezetben futó Java-alkalmazásokhoz az alkalmazás kialakítása nélkül. Elosztott nyomkövetési és alkalmazás-hozzárendelés.
 ms.topic: conceptual
 ms.date: 03/29/2020
-ms.openlocfilehash: 3ca6e7050b1c7649298d2417f9f7f66ef8898816
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f35d661761f1bea4dbd6b691fb0667c6dad3e72e
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87014337"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87541855"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights---public-preview"></a>A Java Code unapplication monitoring Azure monitor Application Insights – nyilvános előzetes verzió
 
@@ -20,7 +20,7 @@ Az Application Insights Java SDK-nak az alkalmazáshoz való hozzáadása már n
 
 Továbbra is küldhet egyéni telemetria az alkalmazásból. Az 3,0-ügynök nyomon követheti és korrelálhatja azt az összes automatikusan összegyűjtött telemetria együtt.
 
-## <a name="quickstart"></a>Gyorsútmutató
+## <a name="quickstart"></a>Első lépések
 
 **1. Töltse le az ügynököt**
 
@@ -126,7 +126,22 @@ A 3.0-s célunk, hogy az egyéni telemetria standard API-k használatával küld
 
 Támogatjuk a mikrométert, a OpenTelemetry API-t és a népszerű naplózási keretrendszereket. Application Insights a Java 3,0 automatikusan rögzíti a telemetria, és az összes automatikusan összegyűjtött telemetria együtt összekapcsolja azokat.
 
-Ezért jelenleg nem tervezzük Application Insights 3,0-es SDK kiadását.
+### <a name="supported-custom-telemetry"></a>Támogatott egyéni telemetria
+
+Az alábbi táblázat a jelenleg támogatott egyéni telemetria-típusokat jeleníti meg, amelyeket a Java 3,0-ügynök kiegészítéseként engedélyezhet. Az összegzéshez az egyéni metrikákat a Mikrométerek támogatják, az egyéni kivételek és a nyomkövetési funkciók a naplózási keretrendszereken keresztül engedélyezhetők, és az egyéni telemetria bármilyen típusa támogatott a [Application Insights Java 2. x SDK](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent#sending-custom-telemetry-using-application-insights-java-sdk-2x)-n keresztül. 
+
+
+|                 | Mikrométer | Log4j, logback, JUL | 2. x SDK |
+|-----------------|------------|---------------------|---------|
+| Egyéni események   |            |                     |  Igen    |
+| Egyéni metrikák  |  Igen       |                     |  Igen    |
+| Függőségek    |            |                     |  Igen    |
+| Kivételek      |            |  Igen                |  Igen    |   
+| Lapmegtekintések      |            |                     |  Igen    |
+| Kérelmek        |            |                     |  Igen    |
+| Hívásláncok          |            |  Igen                |  Igen    |
+
+Jelenleg nem tervezzük Application Insights 3,0-es SDK kiadását.
 
 Application Insights Java 3,0 már figyeli a Application Insights Java SDK 2. x verzióban eljuttatott telemetria. Ez a funkció fontos részét képezi a meglévő 2. x-felhasználók frissítési történetének, és az egyéni telemetria-támogatás fontos hiányosságot tölt be, amíg a OpenTelemetry API nem a GA.
 

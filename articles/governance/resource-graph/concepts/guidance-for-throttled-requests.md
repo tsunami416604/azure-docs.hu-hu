@@ -1,14 +1,14 @@
 ---
 title: Útmutatás szabályozott kérésekhez
 description: Megtudhatja, hogyan csoportosíthat, lépcsőzetesen, oldalszámozást és lekérdezéseket végezhet párhuzamosan, hogy elkerülje az Azure Resource Graph által szabályozott kérelmeket.
-ms.date: 05/20/2020
+ms.date: 08/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: dbcd438f1eda4edd30deef41542beeae6d746dc2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 343d0c02e300431b63b908199931c20a50b85dd2
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83682064"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87541838"
 ---
 # <a name="guidance-for-throttled-requests-in-azure-resource-graph"></a>Útmutató a szabályozott kérelmekhez az Azure Resource Graph-ban
 
@@ -29,6 +29,8 @@ Az Azure Resource Graph minden lekérdezési válaszban két szabályozási fejl
 
 - `x-ms-user-quota-remaining`(int): a felhasználó fennmaradó erőforrás-kvótája. Ez az érték leképezi a lekérdezések darabszámát.
 - `x-ms-user-quota-resets-after`(óó: PP: mm): az időtartam, amíg a felhasználó kvótájának felhasználását vissza nem állítja.
+
+Ha egy rendszerbiztonsági tag több mint 5000 előfizetéshez fér hozzá a bérlői vagy a felügyeleti csoport [lekérdezési hatókörén](./query-language.md#query-scope)belül, a válasz az első 5000-előfizetésre korlátozódik, és a `x-ms-tenant-subscription-limit-hit` fejlécet adja vissza `true` .
 
 Ha szeretné bemutatni, hogyan működnek a fejlécek, nézzük meg egy lekérdezési választ, amely a és a fejlécét és értékeit is tartalmazta `x-ms-user-quota-remaining: 10` `x-ms-user-quota-resets-after: 00:00:03` .
 
@@ -185,7 +187,7 @@ async Task ExecuteQueries(IEnumerable<string> queries)
 }
 ```
 
-## <a name="pagination"></a>Tördelés
+## <a name="pagination"></a>Oldalra tördelés
 
 Mivel az Azure Resource Graph egyetlen lekérdezési válaszban legfeljebb 1000 bejegyzést ad vissza, lehetséges, hogy a lekérdezéseket [oldalszámozással](./work-with-data.md#paging-results) kell megadnia, hogy megkapja a teljes adatkészletet. Egyes Azure Resource Graph-ügyfelek azonban eltérő módon kezelik a tördelést.
 

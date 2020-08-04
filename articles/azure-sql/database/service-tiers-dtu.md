@@ -4,19 +4,19 @@ description: Ismerje meg a DTU-alapú vásárlási modellben a számítási és 
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
-ms.custom: ''
+ms.custom: references_regions
 ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 11/26/2019
-ms.openlocfilehash: b7354a921950daec5cc429fa07318213c8924264
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: fbf753436a259993f6869372ae3ba7272f2a181a
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87382695"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87541702"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>A DTU-alapú vásárlási modell szolgáltatásszintjei
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -42,7 +42,7 @@ A szolgáltatási szint kiválasztása elsősorban az üzletmenet folytonossága
 |**CPU**|Alacsony|Alacsony, közepes és magas|Közepes, magas|
 |**IO-átviteli sebesség (hozzávetőleges)** |1-5 IOPS/DTU| 1-5 IOPS/DTU | 25 IOPS/DTU|
 |**IO-késés (hozzávetőleges)**|5 MS (olvasás), 10 MS (írás)|5 MS (olvasás), 10 MS (írás)|2 MS (olvasás/írás)|
-|**Oszlopcentrikus indexelése** |N.A.|S3 és újabb verziók|Támogatott|
+|**Oszlopcentrikus indexelése** |N/A|S3 és újabb verziók|Támogatott|
 |**Memóriabeli OLTP**|N.A.|N.A.|Támogatott|
 
 > [!IMPORTANT]
@@ -77,7 +77,7 @@ A számítási méretek az önálló adatbázisok és a rugalmas adatbázis-tran
 | **Adatbázisok maximális száma készlet szerint** | 500  | 500 | 100 |
 
 > [!IMPORTANT]
-> A prémium szinten több mint 1 TB tárterület érhető el az összes régióban, kivéve a következőket: Kelet-Kína, Észak-Kína, Közép-Németország, Németország északkeleti régiója, az USA nyugati középső régiója, US DoD régiók és az USA kormányzati központja. Ezekben a régiókban a prémium szintű Storage Max 1 TB-ra van korlátozva.  További információ: [P11-P15 current korlátozások](single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb).  
+> A prémium szinten több mint 1 TB tárterület jelenleg minden régióban elérhető, kivéve a következőket: Kelet-Kína, Észak-Kína, Közép-Németország és Németország északkeleti régiója. Ezekben a régiókban a prémium szintű Storage Max 1 TB-ra van korlátozva.  További információ: [P11-P15 current korlátozások](single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb).  
 > [!IMPORTANT]
 > Bizonyos körülmények között előfordulhat, hogy az adatbázist fel kell zsugorodnia a fel nem használt területek visszaigényléséhez. További információ: [a tárterület kezelése Azure SQL Databaseban](file-space-manage.md).
 
@@ -174,7 +174,7 @@ A teljesítményteszt fő mérőszámai az átviteli sebesség és a válaszidő
 | Standard |Percenkénti tranzakciók |90 százalék 1,0 másodpercnél |
 | Alapszintű |Tranzakció/óra |80th percentilis 2,0 másodpercnél |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Az önálló adatbázisok esetében elérhető számítási méretekről és a tárolási méretekről az önálló [adatbázisok SQL Database DTU-alapú erőforrás-korlátozásai](resource-limits-dtu-single-databases.md#single-database-storage-sizes-and-compute-sizes)című témakörben olvashat bővebben.
 - Az adott számítási méretek és a rugalmas készletekhez rendelkezésre álló tárolási méretek részleteiért lásd: [SQL Database DTU-alapú erőforrás-korlátok](resource-limits-dtu-elastic-pools.md#elastic-pool-storage-sizes-and-compute-sizes).

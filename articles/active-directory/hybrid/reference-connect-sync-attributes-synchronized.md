@@ -16,12 +16,12 @@ ms.date: 04/15/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ab51030ad39e1360cabc7d63390af7c1654d2891
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d1754456873e464e4bd624f47c5ea98e4fb88827
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82082118"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542229"
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Azure AD Connect szinkronizálási szolgáltatás: Az Azure Active Directoryval szinkronizált attribútumok
 Ez a témakör a Azure AD Connect Sync által szinkronizált attribútumokat sorolja fel.  
@@ -165,7 +165,7 @@ Ebben az esetben Kezdje a témakörben található attribútumok listájával, �
 | targetAddress |X |X | | |
 | telephoneAssistant |X |X | | |
 | telephoneNumber |X |X | | |
-| thumbnailphoto |X |X | | |
+| thumbnailphoto |X |X | |csak egyszer szinkronizálva az Azure AD-ből az Exchange Online-ba, amely után az Exchange Online az attribútumhoz tartozó szolgáltatói forrás lesz, és a későbbi módosítások nem szinkronizálhatók a helyszíni rendszerből. További információ: ([kb](https://support.microsoft.com/help/3062745/user-photos-aren-t-synced-from-the-on-premises-environment-to-exchange)).|
 | cím |X |X | | |
 | unauthOrig |X |X |X | |
 | usageLocation |X | | |mechanikai tulajdonság. A felhasználó országa/régiója. Licenc-hozzárendeléshez használatos. |
@@ -247,7 +247,7 @@ Ebben az esetben Kezdje a témakörben található attribútumok listájával, �
 | targetAddress |X |X | | |
 | telephoneAssistant |X |X | | |
 | telephoneNumber |X |X | | |
-| thumbnailphoto |X |X | | |
+| thumbnailphoto |X |X | |csak egyszer szinkronizálva az Azure AD-ből az Exchange Online-ba, amely után az Exchange Online az attribútumhoz tartozó szolgáltatói forrás lesz, és a későbbi módosítások nem szinkronizálhatók a helyszíni rendszerből. További információ: ([kb](https://support.microsoft.com/help/3062745/user-photos-aren-t-synced-from-the-on-premises-environment-to-exchange)).|
 | cím |X |X | | |
 | unauthOrig |X |X |X | |
 | url |X |X | | |
@@ -298,7 +298,7 @@ Ebben az esetben Kezdje a témakörben található attribútumok listájával, �
 | st |X |X | | |
 | streetAddress |X |X | | |
 | telephoneNumber |X |X | | |
-| thumbnailphoto |X |X | | |
+| thumbnailphoto |X |X | |csak egyszer szinkronizálva az Azure AD-ből az Exchange Online-ba, amely után az Exchange Online az attribútumhoz tartozó szolgáltatói forrás lesz, és a későbbi módosítások nem szinkronizálhatók a helyszíni rendszerből. További információ: ([kb](https://support.microsoft.com/help/3062745/user-photos-aren-t-synced-from-the-on-premises-environment-to-exchange)).|
 | cím |X |X | | |
 | usageLocation |X | | |mechanikai tulajdonság. A felhasználó országa/régiója. Licenc-hozzárendeléshez használatos. |
 | userPrincipalName |X | | |Az UPN a felhasználó bejelentkezési azonosítója. A legtöbb esetben ugyanaz, mint a [mail] érték. |
@@ -466,7 +466,7 @@ Az eszközök objektumai a Active Directoryban jönnek létre. Ezek az objektumo
 | msDS-IsManaged |X | |
 | msDS-RegisteredOwner |X | |
 
-## <a name="notes"></a>Megjegyzések
+## <a name="notes"></a>Jegyzetek
 * Alternatív azonosító használata esetén a userPrincipalName helyszíni attribútuma szinkronizálva lesz az Azure AD attribútum onPremisesUserPrincipalName. A másodlagos azonosító attribútum, például a levelezés, szinkronizálva van az Azure AD-attribútum userPrincipalName.
 * A fenti listában az objektumtípus **felhasználója** az **InetOrgPerson**objektumra is érvényes.
 

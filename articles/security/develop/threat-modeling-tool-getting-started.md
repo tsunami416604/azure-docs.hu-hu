@@ -1,6 +1,6 @@
 ---
 title: Első lépések – Microsoft Threat Modeling Tool – Azure | Microsoft Docs
-description: Ez egy mélyebb áttekintés a Threat Modeling Tool működés közbeni kiemeléséről.
+description: Megtudhatja, hogyan kezdheti el a Threat Modeling Tool használatát. Hozzon létre egy diagramot, azonosítsa a fenyegetéseket, enyhítse a fenyegetéseket, és ellenőrizze az egyes csökkentéseket.
 services: security
 documentationcenter: na
 author: jegeib
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: jegeib
-ms.openlocfilehash: 1454826095bcced9b20935405c0befd5a1ed1ddd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3b8467a5983ae9d8928d14987bcee9d2aef094aa
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "68728308"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87539900"
 ---
 # <a name="getting-started-with-the-threat-modeling-tool"></a>A Threat Modeling Tool első lépései
 

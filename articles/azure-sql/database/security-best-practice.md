@@ -1,7 +1,7 @@
 ---
 title: Forgatókönyv a közös biztonsági követelmények kezeléséhez
 titleSuffix: Azure SQL Database & Azure SQL Managed Instance
-description: Ez a cikk a Azure SQL Database és az Azure SQL felügyelt példányának általános biztonsági követelményeit és ajánlott eljárásait ismerteti
+description: Ez a cikk a Azure SQL Database és az Azure SQL felügyelt példányának általános biztonsági követelményeit és ajánlott eljárásait ismerteti.
 ms.service: sql-db-mi
 ms.subservice: security
 ms.custom: sqldbrb=2
@@ -10,12 +10,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 02/20/2020
 ms.reviewer: ''
-ms.openlocfilehash: 6a3a52c90187920be13628a6d2fa44159e1109d7
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 6630b924decacc5ff59611c657e1d7e38b1813a7
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371787"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87541719"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database-and-azure-sql-managed-instance"></a>A közös biztonsági követelmények kezelése a Azure SQL Database és az Azure SQL felügyelt példányával
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -255,7 +255,7 @@ A következő ajánlott eljárások nem kötelezőek, de a biztonsági stratégi
 - Egyéni szerepköröket hozhat létre és használhat pontosan a szükséges engedélyekkel. A gyakorlatban használt tipikus szerepkörök:
   - Biztonsági telepítés
   - Rendszergazda
-  - Fejlesztői
+  - Fejlesztő
   - Támogatási munkatársak
   - Auditor
   - Automatizált folyamatok
@@ -291,7 +291,7 @@ A feladatok elkülönítése – más néven a vámok elkülönítése – azt a
 - Azonosítsa a rendszerhez hozzáférő felhasználók (és automatizált folyamatok) átfogó hierarchiáját.
 
 - Hozzon létre szerepköröket a szükséges felhasználói csoportoknak megfelelően, és rendeljen engedélyeket a szerepkörökhöz.
-  - A Azure Portal vagy a PowerShell-Automation segítségével történő felügyeleti szintű feladatokhoz RBAC-szerepköröket használjon. Keressen egy beépített szerepkört, amely megfelel a követelménynek, vagy hozzon létre egy egyéni Azure-szerepkört az elérhető engedélyek használatával.
+  - A Azure Portal vagy PowerShell-Automation használatával történő felügyeleti szintű feladatokhoz Azure-szerepköröket használjon. Keressen egy beépített szerepkört, amely megfelel a követelménynek, vagy hozzon létre egy egyéni Azure-szerepkört az elérhető engedélyek használatával.
   - Kiszolgálói szerepköröket hozhat létre a felügyelt példányok kiszolgáló szintű feladatai számára (új bejelentkezések és adatbázisok létrehozása).
   - Adatbázis-szintű feladatokhoz tartozó adatbázis-szerepkörök létrehozása.
 
@@ -318,7 +318,7 @@ A feladatok elkülönítése – más néven a vámok elkülönítése – azt a
 
 - Felhasználó által definiált szerepkörök létrehozása és használata, ha a beépített szerepkörök túl sok engedélyt vagy nem megfelelő engedélyeket biztosítanak.
 
-- A szerepkör-hozzárendelések ideiglenesen is megvalósíthatók, más néven a feladatok dinamikus elkülönítése (DSD), vagy a T-SQL SQL Agent-feladatok lépésein belül, vagy az Azure PIM használata a RBAC-szerepkörökhöz.
+- A szerepkör-hozzárendelések ideiglenesen is megvalósíthatók, más néven a feladatok dinamikus elkülönítése (DSD), vagy a T-SQL SQL Agent-feladatok lépésein belül, vagy az Azure PIM Azure-szerepkörök használatával.
 
 - Győződjön meg arról, hogy a Adattervezők nincs hozzáférése a titkosítási kulcsokhoz vagy a kulcstárolóhoz, és hogy a kulcsokhoz hozzáféréssel rendelkező biztonsági rendszergazdák nem férnek hozzá az adatbázishoz. Az [Extensible Key Management (EKM)](https://docs.microsoft.com/sql/relational-databases/security/encryption/extensible-key-management-ekm) használata megkönnyíti ezt az elkülönítést. A [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) használható a EKM megvalósításához.
 

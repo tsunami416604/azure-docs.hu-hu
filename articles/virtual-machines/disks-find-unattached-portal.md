@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 06/01/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 3a5e2c368fd956abb98b2b4c9ccd1060677f3e06
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6632d65fa07788e35b24c2f957e713f824f6b091
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87085758"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542738"
 ---
 # <a name="find-and-delete-unattached-azure-managed-and-unmanaged-disks---azure-portal"></a>Nem csatlakoztatott Azure felügyelt és nem felügyelt lemezek keresése és törlése – Azure Portal
 
@@ -27,7 +27,7 @@ Ha nem csatlakoztatott felügyelt lemezekkel rendelkezik, és már nincs szüks�
 
     A **lemezek** panelen megjelenik az összes lemez listája. **-** A **tulajdonos** oszlopban a "" értékkel rendelkező lemezek nem csatolt lemezek.
 
-    [![](media/disks-find-unattached-portal/managed-disk-unattached-owner.png "Screenshot of the managed disks blade, if a disk has - in the Owner column, it is an unattached disk")](media/disks-find-unattached-portal/managed-disk-owner-unattached.png#lightbox)
+    [![Képernyőfelvétel a Managed Disks (felügyelt lemezek) panelről, ha egy lemez a tulajdonos oszlopban van, akkor az egy nem csatlakoztatott lemez.](media/disks-find-unattached-portal/managed-disk-unattached-owner.png)](media/disks-find-unattached-portal/managed-disk-owner-unattached.png#lightbox)
 
 1. Válassza ki a törölni kívánt nem csatolt lemezt, amely megnyitja a lemez paneljét.
 1. A lemez paneljén ellenőrizheti, hogy a lemez állapota nincs-e csatlakoztatva, majd válassza a **Törlés**lehetőséget.

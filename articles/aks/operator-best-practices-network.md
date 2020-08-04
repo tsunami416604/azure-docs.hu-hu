@@ -5,12 +5,12 @@ description: A virtuális hálózati erőforrásokhoz és az Azure Kubernetes sz
 services: container-service
 ms.topic: conceptual
 ms.date: 12/10/2018
-ms.openlocfilehash: 560a832821f5e5ff2fbbc2d66252945951d69511
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fc839fd69e3b574c47aa7bb712583dfc0b9c711d
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82208057"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542704"
 ---
 # <a name="best-practices-for-network-connectivity-and-security-in-azure-kubernetes-service-aks"></a>Hálózati kapcsolatra és biztonságra vonatkozó ajánlott eljárások az Azure Kubernetes Service-ben (AKS)
 
@@ -37,7 +37,9 @@ A Container Network Interface (CNI) egy olyan szállító-semleges protokoll, am
 
 ![Diagram, amely két csomópontot mutat be egyetlen Azure-VNet csatlakozó hidakkal](media/operator-best-practices-network/advanced-networking-diagram.png)
 
-A legtöbb éles környezetben az Azure CNI hálózatkezelést kell használnia. Ez a hálózati modell lehetővé teszi az erőforrások felügyeletének és kezelésének elkülönítését. Biztonsági szempontból gyakran más csapatoknak is szüksége lehet az erőforrások felügyeletére és védelmére. Az Azure CNI hálózatkezelés lehetővé teszi a meglévő Azure-erőforrásokhoz, helyszíni erőforrásokhoz és egyéb szolgáltatásokhoz való kapcsolódást közvetlenül az egyes Pod-eszközökhöz rendelt IP-címeken keresztül.
+Éles üzembe helyezés esetén a kubenet és az Azure CNI is érvényes beállítások.
+
+Az Azure CNI hálózatkezelésének jelentős előnye, hogy a hálózati modell lehetővé teszi az erőforrások felügyeletének és kezelésének elkülönítését. Biztonsági szempontból gyakran más csapatoknak is szüksége lehet az erőforrások felügyeletére és védelmére. Az Azure CNI hálózatkezelés lehetővé teszi a meglévő Azure-erőforrásokhoz, helyszíni erőforrásokhoz és egyéb szolgáltatásokhoz való kapcsolódást közvetlenül az egyes Pod-eszközökhöz rendelt IP-címeken keresztül.
 
 Ha Azure CNI hálózatkezelést használ, a virtuális hálózati erőforrás egy különálló erőforráscsoport az AK-fürthöz. Engedélyek delegálása az AK egyszerű szolgáltatásnév számára az erőforrások eléréséhez és kezeléséhez. Az AK-fürt által használt egyszerű szolgáltatásnak legalább [hálózati közreműködői](../role-based-access-control/built-in-roles.md#network-contributor) engedélyekkel kell rendelkeznie a virtuális hálózaton belüli alhálózaton. Ha [Egyéni szerepkört](../role-based-access-control/custom-roles.md) szeretne definiálni a beépített hálózati közreműködő szerepkör használata helyett, a következő engedélyek szükségesek:
   * `Microsoft.Network/virtualNetworks/subnets/join/action`

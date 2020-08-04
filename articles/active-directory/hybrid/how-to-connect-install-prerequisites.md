@@ -16,12 +16,12 @@ ms.date: 06/25/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b33b3e406e21f5bc2a4128fdd7dc9930fa3e0c32
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 83a05636f8e673e08bfd390aa10069da0abd561d
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87447014"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542059"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Az Azure AD Connect előfeltételei
 Ez a cikk a Azure Active Directory (Azure AD) csatlakozási előfeltételeit és hardverkövetelmények leírását ismerteti.
@@ -125,6 +125,7 @@ Javasoljuk, hogy a biztonsági támadási felületet az IT-környezet ezen kriti
         </system.net>
     ```
 
+* Ha a proxy konfigurációját egy meglévő telepítő hajtja végre, akkor a **Microsoft Azure ad szinkronizálási szolgáltatást** egyszer újra kell indítani ahhoz, hogy a Azure ad Connect beolvassák a proxy konfigurációját, és frissíteniük kell a behviour. 
 * Ha Azure AD Connect webes kérést küld az Azure AD-nak a címtár-szinkronizálás részeként, az Azure AD akár 5 percet is igénybe vehet. Gyakori, hogy a proxykiszolgálók a kapcsolat tétlen időtúllépési konfigurációját. Győződjön meg arról, hogy a konfiguráció legalább 6 percre van beállítva.
 
 További információ: MSDN az [alapértelmezett proxy elemről](https://msdn.microsoft.com/library/kd3cf2ex.aspx).

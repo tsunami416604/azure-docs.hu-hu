@@ -3,17 +3,17 @@ title: OPERÁCIÓSRENDSZER-lemezek titkosítása az ügyfél által felügyelt k
 description: Megtudhatja, hogyan titkosíthatja az operációs rendszer (OS) lemezeit az ügyfél által felügyelt kulcsokkal Azure DevTest Labsban.
 ms.topic: article
 ms.date: 07/28/2020
-ms.openlocfilehash: 153d27061814969964c9340cd85cad92bfdbc7d2
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: b9eb401521f6bd81efe3238dc05d07e4554c4f62
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87462340"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542419"
 ---
 # <a name="encrypt-operating-system-os-disks-using-customer-managed-keys-in-azure-devtest-labs"></a>Operációs rendszer (OS) lemezek titkosítása az ügyfél által felügyelt kulcsok használatával Azure DevTest Labs
 A kiszolgálóoldali titkosítás (SSE) védi az adatait, és segít a szervezeti biztonsági és megfelelőségi kötelezettségek teljesítésében. Az SSE alapértelmezés szerint automatikusan titkosítja a felügyelt lemezeken tárolt adatait az Azure-ban (az operációs rendszer és az adatlemezek), amikor a felhőben megmarad. További információ az Azure-beli [lemezek titkosításáról](../virtual-machines/windows/disk-encryption.md) . 
 
-A DevTest Labs szolgáltatásban a labor részeként létrehozott operációsrendszer-lemezek és adatlemezek a platform által felügyelt kulcsok használatával lesznek titkosítva. A labor tulajdonosaként azonban úgy is dönthet, hogy a saját kulcsait használva titkosítja a tesztkörnyezet virtuális gépe operációsrendszer-lemezeit. Ha úgy dönt, hogy a titkosítást a saját kulcsaival kezeli, megadhatja az **ügyfél által felügyelt kulcsot** , amelyet a rendszer a Lab operációsrendszer-lemezeken tárolt adattitkosításhoz használ. Az ügyfél által felügyelt kulcsokkal és az egyéb felügyelt lemezes titkosítási típusokkal kapcsolatos további információkért lásd: [ügyfél által felügyelt kulcsok](../virtual-machines/windows/disk-encryption.md#customer-managed-keys). Lásd még: [korlátozások az ügyfél által felügyelt kulcsok használatával](/virtual-machines/windows/disks-enable-customer-managed-keys-portal.md#restrictions).
+A DevTest Labs szolgáltatásban a labor részeként létrehozott operációsrendszer-lemezek és adatlemezek a platform által felügyelt kulcsok használatával lesznek titkosítva. A labor tulajdonosaként azonban úgy is dönthet, hogy a saját kulcsait használva titkosítja a tesztkörnyezet virtuális gépe operációsrendszer-lemezeit. Ha úgy dönt, hogy a titkosítást a saját kulcsaival kezeli, megadhatja az **ügyfél által felügyelt kulcsot** , amelyet a rendszer a Lab operációsrendszer-lemezeken tárolt adattitkosításhoz használ. Az ügyfél által felügyelt kulcsokkal és az egyéb felügyelt lemezes titkosítási típusokkal kapcsolatos további információkért lásd: [ügyfél által felügyelt kulcsok](../virtual-machines/windows/disk-encryption.md#customer-managed-keys). Lásd még: [korlátozások az ügyfél által felügyelt kulcsok használatával](../virtual-machines/windows/disks-enable-customer-managed-keys-portal.md#restrictions).
 
 
 > [!NOTE]
@@ -25,21 +25,41 @@ A következő szakasz bemutatja, hogyan állíthatja be a labor tulajdonosa a ti
 
 ## <a name="pre-requisites"></a>Előfeltételek
 
-- A lemez titkosítási készletének ugyanabban a régióban és előfizetésben kell lennie, mint a labornak. 
-- Győződjön meg arról, hogy (Lab tulajdonos) rendelkezik **-e legalább olvasó szintű hozzáféréssel** ahhoz a lemezes titkosítási készlethez, amelyet a labor operációsrendszer-lemezek titkosításához fog használni. Ha nem rendelkezik lemezes titkosítási készlettel, akkor az alábbi cikk alapján [állítson be egy Key Vault és egy lemezes titkosítási készletet](../virtual-machines/windows/disks-enable-customer-managed-keys-portal.md#set-up-your-azure-key-vault). 
-- Ahhoz, hogy a labor kezelni tudja az összes Lab operációsrendszer-lemez titkosítását, a labor tulajdonosának explicit módon meg kell adnia a labor rendszerhez rendelt identitását a lemez titkosítási készletéhez. A labor tulajdonosa a következő lépések végrehajtásával teheti meg:
-    1. Győződjön meg arról, hogy tagja a [felhasználói hozzáférés rendszergazdai szerepkörének](/role-based-access-control/built-in-roles.md#user-access-administrator) az Azure-előfizetési szinten, így kezelheti az Azure-erőforrásokhoz való felhasználói hozzáférést. 
+1. Ha nem rendelkezik lemezes titkosítási készlettel, akkor az alábbi cikk alapján [állítson be egy Key Vault és egy lemezes titkosítási készletet](../virtual-machines/windows/disks-enable-customer-managed-keys-portal.md#set-up-your-azure-key-vault). Jegyezze fel a következő követelményeket a lemez titkosítási készletéhez: 
+
+    - A lemez titkosítási készletének ugyanabban a **régióban és előfizetésben kell lennie, mint a labornak**. 
+    - Győződjön meg arról, hogy (Lab tulajdonos) rendelkezik **-e legalább olvasó szintű hozzáféréssel** ahhoz a lemezes titkosítási készlethez, amelyet a labor operációsrendszer-lemezek titkosításához fog használni.  
+2. Ahhoz, hogy a labor kezelni tudja az összes Lab operációsrendszer-lemez titkosítását, a labor tulajdonosának explicit módon meg kell adnia a labor **rendszerhez rendelt identitását** a lemez titkosítási készletéhez. A labor tulajdonosa a következő lépések végrehajtásával teheti meg:
+
+    > [!IMPORTANT]
+    > Ezeket a lépéseket a 8/1/2020-es vagy azután létrehozott laborok esetében kell végrehajtania. Az adott dátum előtt létrehozott laborokhoz nem szükséges művelet.
+
+    1. Győződjön meg arról, hogy tagja a [felhasználói hozzáférés rendszergazdai szerepkörének](../role-based-access-control/built-in-roles.md#user-access-administrator) az Azure-előfizetési szinten, így kezelheti az Azure-erőforrásokhoz való felhasználói hozzáférést. 
     1. A **lemez titkosítási készlete** lapon a bal oldali menüben válassza a **hozzáférés-vezérlés (iam)** lehetőséget. 
     1. Válassza a **+ Hozzáadás** lehetőséget az eszköztáron, majd válassza **a szerepkör-hozzárendelés hozzáadása**lehetőséget.  
 
         :::image type="content" source="./media/encrypt-disks-customer-managed-keys/add-role-management-menu.png" alt-text="Szerepkör-kezelés hozzáadása – menü":::
-    1. Válassza ki az **olvasó** szerepkört vagy egy olyan szerepkört, amely nagyobb hozzáférést tesz lehetővé. 
+    1. A **szerepkör-hozzárendelés hozzáadása** lapon válassza ki az **olvasó** szerepkört vagy egy olyan szerepkört, amely nagyobb hozzáférést tesz lehetővé. 
     1. Írja be annak a labornak a nevét, amelyhez a rendszer a lemez titkosítási készletét használni fogja, majd válassza ki a labor nevét (a laborhoz a rendszerszintű identitást) a legördülő listából. 
     
         :::image type="content" source="./media/encrypt-disks-customer-managed-keys/select-lab.png" alt-text="A tesztkörnyezet rendszerfelügyelt identitásának kiválasztása":::        
     1. Válassza az eszköztár **Save** (Mentés) elemét. 
 
         :::image type="content" source="./media/encrypt-disks-customer-managed-keys/save-role-assignment.png" alt-text="Szerepkör-hozzárendelés mentése":::
+3. Adja hozzá a labor **rendszerhez rendelt identitását** a **virtuális gép közreműködői** szerepkörhöz az **előfizetés**  ->  **-hozzáférés-vezérlés (iam)** lapon. A lépések hasonlóak az előző lépések lépéseihez. 
+
+    > [!IMPORTANT]
+    > Ezeket a lépéseket a 8/1/2020-es vagy azután létrehozott laborok esetében kell végrehajtania. Az adott dátum előtt létrehozott laborokhoz nem szükséges művelet.
+
+    1. Navigáljon a Azure Portal **előfizetés** lapjára. 
+    1. Válassza a **Hozzáférés-vezérlés (IAM)** lehetőséget. 
+    1. Válassza a **+ Hozzáadás** lehetőséget az eszköztáron, majd kattintson **a szerepkör-hozzárendelés hozzáadása**lehetőségre. 
+    
+        :::image type="content" source="./media/encrypt-disks-customer-managed-keys/subscription-access-control-page.png" alt-text="Előfizetés – > hozzáférés-vezérlés (IAM) lap":::
+    1. A **szerepkör-hozzárendelés hozzáadása** lapon válassza a **virtuális gép közreműködője** lehetőséget a szerepkörhöz.
+    1. Írja be a labor nevét, majd a legördülő listából válassza ki a labor **nevét** (a tesztkörnyezet rendszerhez rendelt identitása). 
+    1. Válassza az eszköztár **Save** (Mentés) elemét. 
+
 ## <a name="encrypt-lab-os-disks-with-a-customer-managed-key"></a>A Lab operációsrendszer-lemezek titkosítása ügyfél által felügyelt kulccsal 
 
 1. A Azure Portalban a labor kezdőlapján válassza a **konfiguráció és házirendek** elemet a bal oldali menüben. 

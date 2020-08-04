@@ -13,12 +13,12 @@ ms.author: ryanwi
 ms.reviewer: jeedes
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 163087461dbbcfd036b348f69362f0ad0010e791
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7654de8bf26c3eaa3c93c8efcf99577fe88e6f24
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85383852"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87540342"
 ---
 # <a name="how-to-get-appsource-certified-for-azure-active-directory"></a>A Azure Active Directory minősítésének beszerzése a AppSource
 
@@ -58,14 +58,13 @@ Az egybérlős alkalmazások lehetővé teszik a *kapcsolatfelvételt* , de ha e
 Az ügyfél által vezetett próbaverzió az a tapasztalat, amellyel a AppSource azt javasolja, hogy egyetlen kattintással hozzáférhessen az alkalmazáshoz. Az alábbi példa bemutatja, hogyan néz ki ez a felület:
 
 <table >
-<tr>
-    <td valign="top" width="33%">1.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step1.png" width="85%" alt-text="Shows Free trial for customer-led trial experience"/><ul><li>A felhasználó megkeresi az alkalmazást a AppSource webhelyen</li><li>Az "ingyenes próbaverzió" lehetőség kiválasztása</li></ul></td>
-    <td valign="top" width="33%">2.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step2.png" width="85%" alt-text="Shows how user is redirected to a URL in your web site"/><ul><li>A AppSource átirányítja a felhasználót a webhelyén lévő URL-címre</li><li>A webhely automatikusan elindítja az <i>egyszeri bejelentkezés</i> folyamatát (az oldal betöltésekor)</li></ul></td>
-    <td valign="top" width="33%">3.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step3.png" width="85%" alt-text="Shows the Microsoft sign-in page"/><ul><li>A rendszer átirányítja a felhasználót a Microsoft bejelentkezési oldalára</li><li>A felhasználó hitelesítő adatokat biztosít a bejelentkezéshez</li></ul></td>
+<tr>    <td valign="top" width="33%">1.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step1.png" width="85%" alt="Shows Free trial for customer-led trial experience."/><ul><li>A felhasználó megkeresi az alkalmazást a AppSource webhelyen</li><li>Az "ingyenes próbaverzió" lehetőség kiválasztása</li></ul></td>
+    <td valign="top" width="33%">2.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step2.png" width="85%" alt="Shows how user is redirected to a URL in your web site."/><ul><li>A AppSource átirányítja a felhasználót a webhelyén lévő URL-címre</li><li>A webhely automatikusan elindítja az <i>egyszeri bejelentkezés</i> folyamatát (az oldal betöltésekor)</li></ul></td>
+    <td valign="top" width="33%">3.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step3.png" width="85%" alt="Shows the Microsoft sign-in page."/><ul><li>A rendszer átirányítja a felhasználót a Microsoft bejelentkezési oldalára</li><li>A felhasználó hitelesítő adatokat biztosít a bejelentkezéshez</li></ul></td>
 </tr>
 <tr>
-    <td valign="top" width="33%">4.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step4.png" width="85%" alt-text="Example: Consent page for an application"/><ul><li>A felhasználó beleegyezik az alkalmazásba</li></ul></td>
-    <td valign="top" width="33%">5.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step5.png" width="85%" alt-text="Shows the experience the user sees when redirected back to your site"/><ul><li>A bejelentkezés befejeződik, és a rendszer visszairányítja a felhasználót a webhelyre</li><li>A felhasználó elindítja az ingyenes próbaverziót</li></ul></td>
+    <td valign="top" width="33%">4.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step4.png" width="85%" alt="Example: Consent page for an application."/><ul><li>A felhasználó beleegyezik az alkalmazásba</li></ul></td>
+    <td valign="top" width="33%">5.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step5.png" width="85%" alt="Shows the experience the user sees when redirected back to your site."/><ul><li>A bejelentkezés befejeződik, és a rendszer visszairányítja a felhasználót a webhelyre</li><li>A felhasználó elindítja az ingyenes próbaverziót</li></ul></td>
     <td></td>
 </tr>
 </table>
@@ -76,20 +75,20 @@ A partneri próbaidőszakot akkor használhatja, ha egy manuális vagy hosszú t
 
 <table valign="top">
 <tr>
-    <td valign="top" width="33%">1.<br/><img src="media/active-directory-devhowto-appsource-certified/partner-led-trial-step1.png" width="85%" alt-text="Shows Contact me for partner-led trial experience"/><ul><li>A felhasználó megkeresi az alkalmazást a AppSource webhelyen</li><li>A kapcsolatfelvételi lehetőség kiválasztása</li></ul></td>
-    <td valign="top" width="33%">2.<br/><img src="media/active-directory-devhowto-appsource-certified/partner-led-trial-step2.png" width="85%" alt-text="Shows an example form with contact info"/><ul><li>Űrlap kitöltése kapcsolattartási adatokkal</li></ul></td>
+    <td valign="top" width="33%">1.<br/><img src="media/active-directory-devhowto-appsource-certified/partner-led-trial-step1.png" width="85%" alt="Shows Contact me for partner-led trial experience"/><ul><li>A felhasználó megkeresi az alkalmazást a AppSource webhelyen</li><li>A kapcsolatfelvételi lehetőség kiválasztása</li></ul></td>
+    <td valign="top" width="33%">2.<br/><img src="media/active-directory-devhowto-appsource-certified/partner-led-trial-step2.png" width="85%" alt="Shows an example form with contact info"/><ul><li>Űrlap kitöltése kapcsolattartási adatokkal</li></ul></td>
      <td valign="top" width="33%">3.<br/><br/>
         <table bgcolor="#f7f7f7">
         <tr>
-            <td><img src="media/active-directory-devhowto-appsource-certified/usercontact.png" width="55%" alt-text="Shows placeholder for user information"/></td>
+            <td><img src="media/active-directory-devhowto-appsource-certified/usercontact.png" width="55%" alt="Shows placeholder for user information"/></td>
             <td>Felhasználói adatokat kap</td>
         </tr>
         <tr>
-            <td><img src="media/active-directory-devhowto-appsource-certified/setupenv.png" width="55%" alt-text="Shows placeholder for setup environment info"/></td>
+            <td><img src="media/active-directory-devhowto-appsource-certified/setupenv.png" width="55%" alt="Shows placeholder for setup environment info"/></td>
             <td>A környezet beállítása</td>
         </tr>
         <tr>
-            <td><img src="media/active-directory-devhowto-appsource-certified/contactcustomer.png" width="55%" alt-text="Shows placeholder for trial info"/></td>
+            <td><img src="media/active-directory-devhowto-appsource-certified/contactcustomer.png" width="55%" alt="Shows placeholder for trial info"/></td>
             <td>Forduljon a felhasználóhoz a próbaverziós adatokkal</td>
         </tr>
         </table><br/><br/>
@@ -97,10 +96,9 @@ A partneri próbaidőszakot akkor használhatja, ha egy manuális vagy hosszú t
     </td>
 </tr>
 <tr>
-    <td valign="top" width="33%">4.<br/><img src="media/active-directory-devhowto-appsource-certified/partner-led-trial-step3.png" width="85%" alt-text="Shows the application sign-in screen"/><ul><li>A felhasználó hozzáfér az alkalmazáshoz, és elvégzi az egyszeri bejelentkezés folyamatát.</li></ul></td>
-    <td valign="top" width="33%">5.<br/><img src="media/active-directory-devhowto-appsource-certified/partner-led-trial-step4.png" width="85%" alt-text="Shows an example consent page for an application"/><ul><li>A felhasználó beleegyezik az alkalmazásba</li></ul></td>
-    <td valign="top" width="33%">6.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step5.png" width="85%" alt-text="Shows the experience the user sees when redirected back to your site"/><ul><li>A bejelentkezés befejeződik, és a rendszer visszairányítja a felhasználót a webhelyre</li><li>A felhasználó elindítja az ingyenes próbaverziót</li></ul></td>
-   
+    <td valign="top" width="33%">4.<br/><img src="media/active-directory-devhowto-appsource-certified/partner-led-trial-step3.png" width="85%" alt="Shows the application sign-in screen"/><ul><li>A felhasználó hozzáfér az alkalmazáshoz, és elvégzi az egyszeri bejelentkezés folyamatát.</li></ul></td>
+    <td valign="top" width="33%">5.<br/><img src="media/active-directory-devhowto-appsource-certified/partner-led-trial-step4.png" width="85%" alt="Shows an example consent page for an application"/><ul><li>A felhasználó beleegyezik az alkalmazásba</li></ul></td>
+    <td valign="top" width="33%">6.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step5.png" width="85%" alt="Shows the experience the user sees when redirected back to your site"/><ul><li>A bejelentkezés befejeződik, és a rendszer visszairányítja a felhasználót a webhelyre</li><li>A felhasználó elindítja az ingyenes próbaverziót</li></ul></td>  
 </tr>
 </table>
 

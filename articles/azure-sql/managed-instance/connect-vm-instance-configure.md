@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, srbozovi, bonova
 ms.date: 02/18/2019
-ms.openlocfilehash: 76c4e2c5052e70c4c6cb8ff631151a5e6fc544e5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e3dc2990e810096310617e468a533a65626008ff
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84706358"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542653"
 ---
 # <a name="quickstart-configure-an-azure-vm-to-connect-to-azure-sql-managed-instance"></a>Gyors útmutató: Azure-beli virtuális gép konfigurálása a felügyelt Azure SQL-példányhoz való kapcsolódáshoz
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -27,7 +27,7 @@ Ez a rövid útmutató bemutatja, hogyan konfigurálhat egy Azure-beli virtuáli
 
 A pont – hely kapcsolat használatával történő kapcsolódást bemutató rövid útmutatóban tekintse meg a [pont – hely kapcsolat konfigurálása](point-to-site-p2s-configure.md)című témakört.
 
-## <a name="prerequisites"></a>Előfeltételek
+## <a name="prerequisites"></a>Előfeltétel
 
 Ez a rövid útmutató a [felügyelt példány létrehozása](instance-create-quickstart.md) kiindulási pontként létrehozott erőforrásokat használja.
 
@@ -51,12 +51,12 @@ A következő lépések új alhálózatot hoznak létre az SQL felügyelt péld�
 
    | Beállítás| Ajánlott érték | Leírás |
    | ---------------- | ----------------- | ----------- |
-   | **Name (Név)** | Bármely érvényes név|Az érvényes nevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](/azure/architecture/best-practices/resource-naming) ismertető cikket.|
+   | **Név** | Bármely érvényes név|Az érvényes nevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](/azure/architecture/best-practices/resource-naming) ismertető cikket.|
    | **Címtartomány (CIDR-blokk)** | Érvényes tartomány | Az alapértelmezett érték jó ehhez a rövid útmutatóhoz.|
-   | **Hálózati biztonsági csoport** | None | Az alapértelmezett érték jó ehhez a rövid útmutatóhoz.|
-   | **Útválasztási táblázat** | None | Az alapértelmezett érték jó ehhez a rövid útmutatóhoz.|
+   | **Hálózati biztonsági csoport** | Nincsenek | Az alapértelmezett érték jó ehhez a rövid útmutatóhoz.|
+   | **Útvonaltábla** | Nincsenek | Az alapértelmezett érték jó ehhez a rövid útmutatóhoz.|
    | **Szolgáltatásvégpontok** | 0 kijelölve | Az alapértelmezett érték jó ehhez a rövid útmutatóhoz.|
-   | **Alhálózat delegálása** | None | Az alapértelmezett érték jó ehhez a rövid útmutatóhoz.|
+   | **Alhálózat delegálása** | Nincsenek | Az alapértelmezett érték jó ehhez a rövid útmutatóhoz.|
 
    ![Új SQL felügyelt példány alhálózata ügyfél virtuális géphez](./media/connect-vm-instance-configure/new-subnet.png)
 
@@ -74,7 +74,7 @@ Az ügyfél virtuális gépnek az összes szükséges eszközzel való létrehoz
 
 1. Győződjön meg arról, hogy be van jelentkezve a Azure Portal egy másik böngésző lapon. Ezután válassza a következő gombot egy ügyfél virtuális gép létrehozásához és a SQL Server Management Studio telepítéséhez:
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjovanpop-msft%2Fazure-quickstart-templates%2Fsql-win-vm-w-tools%2F201-vm-win-vnet-sql-tools%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
+   [![Az "üzembe helyezés az Azure-ban" feliratú gombot ábrázoló kép.](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjovanpop-msft%2Fazure-quickstart-templates%2Fsql-win-vm-w-tools%2F201-vm-win-vnet-sql-tools%2Fazuredeploy.json)
 
 2. Töltse ki az űrlapot az alábbi táblázatban szereplő információk alapján:
 
@@ -118,7 +118,7 @@ A következő lépések bemutatják, hogyan csatlakozhat az újonnan létrehozot
 
    ![RDP-űrlap](./media/connect-vm-instance-configure/rdp.png)  
 
-3. Válassza az **RDP-fájl letöltése**lehetőséget.
+3. Válassza az **RDP-fájl letöltése** lehetőséget.
 
    > [!NOTE]
    > Az SSH használatával is csatlakozhat a virtuális géphez.

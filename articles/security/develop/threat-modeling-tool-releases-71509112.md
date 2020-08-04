@@ -1,19 +1,19 @@
 ---
 title: Microsoft Threat Modeling Tool kiadás 9/12/2018
 titleSuffix: Azure
-description: A veszélyforrások modellezése eszköz kibocsátási megjegyzéseit dokumentálja
+description: Olvassa el a 9/12/2018-on közzétett Microsoft Threat Modeling Tool kibocsátási megjegyzéseit. A megjegyzések közé tartoznak a funkciók változásai és a hibajavítások.
 author: jegeib
 ms.author: jegeib
 ms.service: security
 ms.subservice: security-develop
 ms.topic: article
 ms.date: 01/15/2019
-ms.openlocfilehash: a921310f14f0d48922165a46d750366e170ee374
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 780ddc614feef492dafa54862abbea9552496274
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78269912"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87539815"
 ---
 # <a name="threat-modeling-tool-ga-release-71509112---9122018"></a>Threat Modeling Tool GA kiadás 7.1.50911.2-9/12/2018
 
@@ -79,7 +79,7 @@ Igen, lehet! Az [Azure stencil-készlet a githubon érhető el](https://github.c
 
 ![Azure stencil-frissítések 2016-ügyfélen](./media/threat-modeling-tool-releases-71509112/tmt_azure_stencils-300x212.png)
 
-## <a name="system-requirements"></a>System requirements (Rendszerkövetelmények)
+## <a name="system-requirements"></a>Rendszerkövetelmények
 
 - Támogatott operációs rendszerek
   - Microsoft Windows 10

@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan hozhat létre és kezelhet több Node-készlete
 services: container-service
 ms.topic: article
 ms.date: 04/08/2020
-ms.openlocfilehash: 400e595d51f08428b01337e63f6c6e8ba5836794
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: d007ec18a982d5327aa2ea0871bbe88f64786fce
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87133095"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542025"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Egy fürthöz több csomópontkészlet létrehozása és felügyelete az Azure Kubernetes Service (AKS) szolgáltatásban
 
@@ -489,6 +489,8 @@ A *gpunodepool*csomópontjain csak azok a hüvelyek ütemezhetők, amelyeken ez 
 
 ## <a name="specify-a-taint-label-or-tag-for-a-node-pool"></a>Válassza ki a csomópont-készlethez tartozó Taint, címkét vagy címkét
 
+### <a name="setting-nodepool-taints"></a>Nodepool-tainok beállítása
+
 A csomópontok létrehozásakor megadhatja az adott csomópont-készlethez tartozó adatterületeket, címkéket vagy címkéket. Ha egy Taint, címkét vagy címkét ad hozzá, az adott csomóponton belüli összes csomópont a megromlást, címkét vagy címkét is megkapja.
 
 Ha a csomópontot szennyező elemekkel szeretné létrehozni, használja [az az AK nodepool Add][az-aks-nodepool-add]. Adja meg a *taintnp* nevet, és a `--node-taints` paraméter használatával adja meg az *SKU = GPU:* a Taint a szennyező számára.
@@ -532,6 +534,8 @@ $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 
 A szennyező adatok láthatók a Kubernetes a csomópontok ütemezési szabályainak kezelésére.
 
+### <a name="setting-nodepool-labels"></a>Nodepool-címkék beállítása
+
 A csomópont-készlet létrehozása során címkéket is hozzáadhat egy csomópont-készlethez. A csomópont-készleten beállított címkéket a rendszer hozzáadja a csomópont-készlet minden egyes csomópontjára. Ezek a [címkék láthatók a Kubernetes][kubernetes-labels] a csomópontok ütemezési szabályainak kezelésére.
 
 Ha címkével rendelkező csomópont-készletet szeretne létrehozni, használja [az az AK nodepool Add][az-aks-nodepool-add]. Adja meg a *labelnp* nevet, és a `--labels` paraméter használatával adja meg a *dept = it* és a *costcenter = 9999* címkét.
@@ -574,7 +578,13 @@ $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 ]
 ```
 
+### <a name="setting-nodepool-azure-tags"></a>Nodepool Azure-címkék beállítása
+
 Egy Azure-címkét alkalmazhat a Node-készletekre az AK-fürtben. A csomópont-készletre alkalmazott címkéket a rendszer a csomóponton belüli összes csomópontra alkalmazza, és a frissítésekkel megőrzi őket. A címkéket a rendszer a csomópont-készlethez hozzáadott új csomópontokra is alkalmazza a kibővíthető műveletek során. A címkék hozzáadásával olyan feladatok segíthetnek, mint például a szabályzatok nyomon követése vagy a költségbecslés.
+
+Az Azure-címkék olyan kulcsokkal rendelkeznek, amelyek kis-és nagybetűket nem érintenek a műveletekhez, például ha egy címke beolvasása a kulcs alapján történik. Ebben az esetben a megadott kulccsal rendelkező címkét a rendszer a burkolattól függetlenül frissíti vagy lekéri. A címke értékei megkülönböztetik a kis-és nagybetűket.
+
+Az AK-ban, ha több címke azonos kulcsokkal van beállítva, de eltérő a burkolat, a használt címke az első betűrendben szerepel. Például a `{"Key1": "val1", "kEy1": "val2", "key1": "val3"}` `Key1` és a beállítás eredménye `val1` .
 
 Hozzon létre egy csomópont-készletet az az [AK nodepool Add][az-aks-nodepool-add]paranccsal. Adja meg a *tagnodepool* nevet, és a `--tag` paraméter használatával adja meg a *dept = it* és a *costcenter = 9999* címkét.
 
@@ -786,7 +796,7 @@ A csomópontok nyilvános IP-címeit többféleképpen is megtalálhatja:
 az vmss list-instance-public-ips -g MC_MyResourceGroup2_MyManagedCluster_eastus -n YourVirtualMachineScaleSetName
 ```
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ebben a cikkben létrehozta a GPU-alapú csomópontokat tartalmazó AK-fürtöt. A szükségtelen díjak csökkentése érdekében érdemes törölni a *gpunodepool*vagy a teljes Kabai fürtöt.
 

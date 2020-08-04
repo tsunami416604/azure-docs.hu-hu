@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 15a623068c46109b95ce9a9300348d29f95610a3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8d71f6e71a7cd6033e570742a23016df0c25dd27
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85254310"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542246"
 ---
 # <a name="deploy-and-explore-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-azure-sql-database"></a>Olyan több-bérlős SaaS-alkalmazás üzembe helyezése és feltárása, amely az adatbázis-bérlői mintát használja Azure SQL Database
 
@@ -38,7 +38,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 A [kapcsolódó oktatóanyagok sorozata](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials) számos SaaS-kialakítási és-felügyeleti mintát kínál. Az oktatóanyagok a kezdeti üzemelő példányon túlmutatnak. Az oktatóanyagok használatakor megvizsgálhatja a megadott parancsfájlokat, hogy megtudja, hogyan valósulnak meg a különböző SaaS-minták. A szkriptek bemutatják, hogyan egyszerűsíthető a SQL Database szolgáltatásai az SaaS-alkalmazások fejlesztéséhez.
 
-## <a name="prerequisites"></a>Előfeltételek
+## <a name="prerequisites"></a>Előfeltétel
 
 Az oktatóanyag elvégzéséhez győződjön meg arról, hogy a Azure PowerShell telepítve van. További információért lásd [az Azure PowerShell használatának első lépéseit](https://docs.microsoft.com/powershell/azure/get-started-azureps).
 
@@ -57,7 +57,7 @@ Válassza ki a neveket, majd írja le őket.
 
 1. A Wingtip tickets SaaS adatbázis-bérlői telepítési sablon megnyitásához a Azure Portal válassza az **üzembe helyezés az Azure**-ban lehetőséget.
 
-   <a href="https://aka.ms/deploywingtipdpt" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
+   [![Az "üzembe helyezés az Azure-ban" feliratú gombot ábrázoló kép.](https://azuredeploy.net/deploybutton.png)](https://aka.ms/deploywingtipdpt)
 
 1. Adja meg a szükséges paraméterek értékét a sablonban.
 
@@ -68,7 +68,7 @@ Válassza ki a neveket, majd írja le őket.
     - **Hely**: válasszon ki egy helyet a legördülő listából.
     - **Felhasználó**: használja a korábban kiválasztott Felhasználónév értéket.
 
-1. Az alkalmazás üzembe helyezése.
+1. Telepítse az alkalmazást.
 
     a. Válassza ki, hogy elfogadja a használati feltételeket.
 
@@ -104,7 +104,7 @@ A parancsfájlok futtatása előtt frissítse az erőforráscsoportot és a felh
 
 Ezek az értékek szinte minden parancsfájlban hivatkoznak rá.
 
-## <a name="run-the-application"></a>Alkalmazás futtatása
+## <a name="run-the-application"></a>Az alkalmazás futtatása
 
 Az alkalmazás az eseményeket üzemeltető helyszíneket mutatja be. A helyszín típusok közé tartoznak a koncert termek, a jazz klubok és a sport klubok. Wingtip-jegyek esetén a helyszínek bérlőként vannak regisztrálva. A bérlők egyszerű lehetőséget biztosítanak az események listázására és a jegyek értékesítésére az ügyfeleknek. Minden helyszín egy személyre szabott webhelyet kap az események listázásához és jegyek eladásához.
 
@@ -128,7 +128,7 @@ A Wingtip alkalmazás az [*Azure Traffic Manager*](../../traffic-manager/traffi
 
     Az előző formátum részeit a következő táblázat ismerteti.
 
-    | URL-cím része        | Description       |
+    | URL-cím része        | Leírás       |
     | :-------------- | :---------------- |
     | events. Wingtip – DPT | A Wingtip alkalmazás eseményeinek részei.<br /><br /> *– a DPT* megkülönbözteti a Wingtip-jegyek *adatbázis-bérlői* implementációját más megvalósításokból. Ilyenek például az *egyetlen* alkalmazás-bérlő (*-sa*) vagy több- *bérlős adatbázis* (*-MT*) implementációk. |
     | . * &lt; felhasználó &gt; * | a példában szereplő *AF1* . |

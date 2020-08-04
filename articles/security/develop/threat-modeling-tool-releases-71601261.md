@@ -1,19 +1,19 @@
 ---
 title: Microsoft Threat Modeling Tool kiadás 1/29/2019
 titleSuffix: Azure
-description: A veszélyforrások modellezése eszköz kibocsátási megjegyzéseit dokumentálja
+description: Olvassa el a 1/29/2019-on közzétett Microsoft Threat Modeling Tool kibocsátási megjegyzéseit. A megjegyzések közé tartoznak a funkciók változásai és az ismert problémák.
 author: jegeib
 ms.author: jegeib
 ms.service: security
 ms.subservice: security-develop
 ms.topic: article
 ms.date: 01/25/2019
-ms.openlocfilehash: 7d0be8d7243331264c10a407e3d78370ea798928
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 17147d412bd888cdd3cd270829ad6d6103867b34
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78269777"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87539050"
 ---
 # <a name="threat-modeling-tool-update-release-71601261---1292019"></a>A fenyegetésmodellezési eszköz frissített kiadása: 7.1.60126.1 – 1/29/2019
 
@@ -36,7 +36,7 @@ A modell-ellenőrzés be-és kikapcsolásának lehetősége a file->Settings->Op
 
 ![Modell-ellenőrzési lehetőség](./media/threat-modeling-tool-releases-71601261/tmt_model_validation_option.png)
 
-## <a name="system-requirements"></a>System requirements (Rendszerkövetelmények)
+## <a name="system-requirements"></a>Rendszerkövetelmények
 
 - Támogatott operációs rendszerek
   - [Microsoft Windows 10 évfordulós frissítés](https://blogs.windows.com/windowsexperience/2016/08/02/how-to-get-the-windows-10-anniversary-update/#HTkoK5Zdv0g2F2Zq.97) vagy újabb

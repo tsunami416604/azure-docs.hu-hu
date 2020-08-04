@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 01ec7f8210df9e41b2620e639eddbc98d4bcb73d
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 4eaf0ab6cc412b7f5a02f898682e90fdde9de3a1
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448682"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542361"
 ---
 # <a name="linkedin-account-connections-data-sharing-and-consent"></a>A LinkedIn-fiókok kapcsolatainak megosztása és beleegyezett hozzáférése
 
@@ -41,7 +41,7 @@ A szervezet beállításának kezeléséhez Azure Active Directory rendszergazd�
 1. Az integráció engedélyezéséhez vagy letiltásához kövesse az [Azure ad-szervezetének LinkedIn Integration-integrációjának](linkedin-integration.md)lépéseit.
 2. Amikor bejelenti a LinkedIn-integrációt a szervezetében, a felhasználókat a [Microsoft-alkalmazások és-szolgáltatások LinkedIn-adataival](https://support.office.com/article/about-linkedin-information-and-features-in-microsoft-apps-and-services-dc81cc70-4d64-4755-9f1c-b9536e34d381)kapcsolatos gyakori kérdések között találhatja meg. A cikk tájékoztatást nyújt arról, hogy hol jelennek meg a LinkedIn-információk, az [adatok megosztása és az adatvédelem](https://support.microsoft.com/office/your-data-ae9c08a7-4d06-45b5-a065-320a97bc1400), valamint a [fiókok összekapcsolásának módja](https://support.microsoft.com/office/connect-your-linkedin-and-work-or-school-accounts-c7c245f2-fa56-4c9b-ba20-3fceb23c5772) .
 
-Be kell jelentenie a LinkedIn-integrációt a felhasználók számára a LinkedIn-integrációval kapcsolatos adatmegosztással és adatvédelemmel kapcsolatos összes adat biztosításához. Ahhoz, hogy a licenceket használó felhasználók csatlakozni tudjanak a fiókokhoz a 
+Be kell jelentenie a LinkedIn-integrációt a felhasználók számára a [LinkedIn-integrációval kapcsolatos adatmegosztással és adatvédelemmel](https://support.microsoft.com/office/your-data-ae9c08a7-4d06-45b5-a065-320a97bc1400)kapcsolatos összes információ biztosításához. 
 
 ## <a name="user-consent-for-data-access-in-microsoft-and-linkedin"></a>A Microsoft és a LinkedIn adatelérési szolgáltatásának felhasználói beleegyezett
 

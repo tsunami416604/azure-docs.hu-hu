@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/14/2020
-ms.openlocfilehash: b7a05f33c199ab46508fa2b9bc0ef576f888ef27
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e7c0a4cd6e44994c4b002fcc2e5fde441cf22283
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537714"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87541651"
 ---
 # <a name="azure-data-factory-unpivot-transformation"></a>Azure Data Factory unpivot átalakítás
 
@@ -46,7 +46,7 @@ Választható Megadhat egy elnevezési mintát egy előtaggal, egy középtel é
 
 Ha például a "Sales" (értékesítés) kifejezést a "régió" értékre szeretné kimutatni, egyszerűen csak új oszlop értékeket adhat meg az egyes értékesítési értékektől. Például: "25", "50", "1000",... Ha azonban a "Sales" előtag értékét állítja be, akkor az "értékesítés" érték az értékekre lesz feloldva.
 
-<img src="media/data-flow/unpivot3.png" width="400">
+![Az a kép, amely a PO, a szállító és a gyümölcs oszlopokat mutatja a unipivot átalakítás előtt és után, a Fruit (gyümölcs) oszlop használatával, unipivot kulcsként.](media/data-flow/unpivot3.png)
 
 Ha úgy állítja be az oszlop elrendezését a "NORMAL" értékre, hogy az összes elforgatott oszlopot összesítse. Ha az oszlopok elrendezése az "oldalirányú" értékre van állítva, akkor az oszlop és az érték között váltakozik.
 
@@ -54,6 +54,6 @@ Ha úgy állítja be az oszlop elrendezését a "NORMAL" értékre, hogy az öss
 
 A végleges, nem felváltott adateredményhalmaz azt mutatja, hogy az oszlopok összesítései mostantól külön sorba vannak bontva.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Sorok oszlopokra való kimutatásához használja a [pivot transzformációt](data-flow-pivot.md) .

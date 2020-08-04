@@ -1,7 +1,7 @@
 ---
 title: Microsoft Threat Modeling Tool kibocsátási megjegyzések
 titleSuffix: Azure
-description: A veszélyforrások modellezése eszköz kibocsátási megjegyzéseit dokumentálja
+description: Olvassa el a Microsoft Threat Modeling Tool összes frissítésének kibocsátási megjegyzéseit. Tekintse meg a letöltési hivatkozást és a rendszerkövetelményeket.
 services: security
 documentationcenter: na
 author: jegeib
@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2019
 ms.author: jegeib
-ms.openlocfilehash: eea853ec5829eda3f7496439979adae7bb20c639
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0db0a68b622b9f4596820918d66860d3ea286981
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80125085"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87539067"
 ---
 # <a name="threat-modeling-tool-releases"></a>Threat Modeling Tool kiadások
 

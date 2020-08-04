@@ -1,6 +1,6 @@
 ---
 title: Azure komplex veszélyforrások észlelése | Microsoft Docs
-description: Ismerkedjen meg a Azure AD Identity Protection és képességeivel.
+description: Ismerje meg az Azure beépített komplex veszélyforrás-észlelési funkcióit, például a Azure AD Identity Protection szolgáltatást.
 services: security
 documentationcenter: na
 author: UnifyCloud
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 93b63450d65f55e96897f91a5c0c9fae1b0b47f8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 1522d143f2837a57481a4d678911e7a3c44d084d
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86503285"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87541022"
 ---
 # <a name="azure-advanced-threat-detection"></a>Azure fejlett fenyegetésészlelés
 
@@ -344,9 +344,9 @@ A Cloud App Security eszközeivel könnyebb az informatikai árnyék-infrastrukt
 | -------- | ----------- |
 | Felderítés | Felfedheti az informatikai árnyék-infrastruktúrát a Cloud App Security használatával. A felhőalapú környezet alkalmazásainak, tevékenységeinek, felhasználóinak, adatainak és fájljainak felderítésével nagyobb láthatóságot érhet el. Felderítheti a felhőhöz csatlakoztatott harmadik féltől származó alkalmazásokat.|
 |Vizsgálat | Megvizsgálhatja a felhőalkalmazásait felhőalapú nyomkereső eszközökkel, és részletesen megismerheti a hálózatban lévő kockázatos alkalmazásokat, meghatározott felhasználókat és fájlokat. Mintákat kereshet a felhőből gyűjtött adatokban. Jelentéseket hozhat létre a felhő figyelésére. |
-| Szabályozás | Szabályzatokkal és riasztásokkal teljes mértékben átveheti az irányítást a hálózati felhőforgalom felett, és mérsékelheti a kockázatokat. A Cloud App Securityvel biztonságos, engedélyezett felhőalkalmazás-alternatívákra telepítheti át a felhasználóit. |
+| Vezérlés | Szabályzatokkal és riasztásokkal teljes mértékben átveheti az irányítást a hálózati felhőforgalom felett, és mérsékelheti a kockázatokat. A Cloud App Securityvel biztonságos, engedélyezett felhőalkalmazás-alternatívákra telepítheti át a felhasználóit. |
 | Védelem | A Cloud App Security használatával szankcionálhatja vagy tilthatja le az alkalmazásokat, kényszerítheti az adatvesztés megelőzését, szabályozhatja az engedélyeket és a megosztást, valamint egyéni jelentéseket és riasztásokat hozhat elő. |
-| Szabályozás | Szabályzatokkal és riasztásokkal teljes mértékben átveheti az irányítást a hálózati felhőforgalom felett, és mérsékelheti a kockázatokat. A Cloud App Securityvel biztonságos, engedélyezett felhőalkalmazás-alternatívákra telepítheti át a felhasználóit. |
+| Vezérlés | Szabályzatokkal és riasztásokkal teljes mértékben átveheti az irányítást a hálózati felhőforgalom felett, és mérsékelheti a kockázatokat. A Cloud App Securityvel biztonságos, engedélyezett felhőalkalmazás-alternatívákra telepítheti át a felhasználóit. |
 
 
 ![Cloud App Security diagram](./media/threat-detection/azure-threat-detection-fig14.png)
@@ -365,7 +365,7 @@ Az ezekből a forrásokból származó adatok összegyűjtésekor Cloud App Secu
 
 ## <a name="third-party-advanced-threat-detection-capabilities-through-the-azure-marketplace"></a>Harmadik féltől származó komplex veszélyforrások észlelési képességei az Azure Marketplace-en keresztül
 
-### <a name="web-application-firewall"></a>Webalkalmazási tűzfal
+### <a name="web-application-firewall"></a>Web Application Firewall (Webalkalmazási tűzfal)
 
 A webalkalmazási tűzfal ellenőrzi a bejövő webes forgalmat, és blokkolja az SQL-injektálásokat, a helyek közötti parancsfájlkezelést, a kártevők feltöltését, az alkalmazások DDoS-támadásait, valamint a webalkalmazásokra irányuló más támadásokat. Emellett megvizsgálja a háttér-webkiszolgálók válaszait az adatveszteség-megelőzési (DLP) szolgáltatáshoz. Az integrált hozzáférés-vezérlési motor lehetővé teszi, hogy a rendszergazdák részletes hozzáférés-vezérlési házirendeket hozzanak létre a hitelesítéshez, engedélyezéshez és nyilvántartáshoz (AAA), amely erős hitelesítést és felhasználói vezérlést biztosít a szervezeteknek
 
@@ -381,7 +381,7 @@ A webalkalmazási tűzfal a következő előnyöket biztosítja:
 
 Példa az Azure Marketplace-en elérhető webalkalmazási tűzfalakra: [BARRACUDA WAF, brokát Virtual Web Application Firewall (vWAF), inperverz SecureSphere és a ThreatSTOP IP-tűzfal](https://azuremarketplace.microsoft.com/marketplace/apps/barracudanetworks.waf).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Válaszadás a mai fenyegetésekre](../../security-center/security-center-alerts-overview.md#respond-threats): segít azonosítani az Azure-erőforrásokat megcélzó aktív fenyegetéseket, és biztosítja a gyors reagáláshoz szükséges megállapításokat.
 

@@ -4,19 +4,19 @@ description: Ez a lap a Azure SQL Database önálló adatbázisaihoz tartozó á
 services: sql-database
 ms.service: sql-database
 ms.subservice: single-database
-ms.custom: references_regions
+ms.custom: references_regions, seo-lt-2019, sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/20/2019
-ms.openlocfilehash: fa8901f2a219b0693cee17bc4d0ab78da615c415
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: fa15a5f95c2163309ecfd9cc0130d1860eb3b634
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325100"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542687"
 ---
 # <a name="resource-limits-for-single-databases-using-the-dtu-purchasing-model---azure-sql-database"></a>Önálló adatbázisok erőforrás-korlátai a DTU beszerzési modell használatával – Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -39,7 +39,7 @@ A következő táblázatok az egyes szolgáltatási rétegekben és számítási
 | DTU-k maximális száma | 5 |
 | Belefoglalt tárterület (GB) | 2 |
 | Maximális tárterület (GB) | 2 |
-| Memóriában tárolt OLTP-k maximális tárterülete (GB) |n.a. |
+| Memóriában tárolt OLTP-k maximális tárterülete (GB) |N/A |
 | Egyidejű feldolgozók maximális száma (kérelem) | 30 |
 | Egyidejű munkamenetek maximális száma | 300 |
 |||
@@ -57,7 +57,7 @@ A következő táblázatok az egyes szolgáltatási rétegekben és számítási
 | DTU-k maximális száma | 10 | 20 | 50 | 100 |
 | Foglalt tárterület (GB) <sup>1</sup> | 250 | 250 | 250 | 250 |
 | Maximális tárterület (GB) | 250 | 250 | 250 | 1024 |
-| Memóriában tárolt OLTP-k maximális tárterülete (GB) | n.a. | n.a. | n.a. | n.a. |
+| Memóriában tárolt OLTP-k maximális tárterülete (GB) | N.A. | N.A. | N.A. | N.A. |
 | Egyidejű feldolgozók maximális száma (kérelem)| 60 | 90 | 120 | 200 |
 | Egyidejű munkamenetek maximális száma |600 | 900 | 1200 | 2400 |
 ||||||
@@ -77,7 +77,7 @@ A következő táblázatok az egyes szolgáltatási rétegekben és számítási
 | DTU-k maximális száma | 200 | 400 | 800 | 1600 | 3000 |
 | Foglalt tárterület (GB) <sup>1</sup> | 250 | 250 | 250 | 250 | 250 |
 | Maximális tárterület (GB) | 1024 | 1024 | 1024 | 1024 | 1024 |
-| Memóriában tárolt OLTP-k maximális tárterülete (GB) | n.a. | n.a. | n.a. | n.a. |n.a. |
+| Memóriában tárolt OLTP-k maximális tárterülete (GB) | N.A. | N.A. | N.A. | N.A. |N.A. |
 | Egyidejű feldolgozók maximális száma (kérelem)| 400 | 800 | 1600 | 3200 |6000 |
 | Egyidejű munkamenetek maximális száma |4800 | 9600 | 19200 | 30000 |30000 |
 |||||||
@@ -101,7 +101,7 @@ A következő táblázatok az egyes szolgáltatási rétegekben és számítási
 <sup>2</sup> 1024 GB-ig 4096 GB-ig, 256 GB-os növekményekben.
 
 > [!IMPORTANT]
-> A prémium szinten több mint 1 TB tárterület érhető el az összes régióban, kivéve a következőket: Kelet-Kína, Észak-Kína, Közép-Németország, Németország északkeleti régiója, az USA nyugati középső régiója, US DoD régiók és az USA kormányzati központja. Ezekben a régiókban a prémium szintű Storage Max 1 TB-ra van korlátozva.  További információ: [P11-P15 current korlátozások](single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb).
+> A prémium szinten több mint 1 TB tárterület jelenleg minden régióban elérhető, kivéve a következőket: Kelet-Kína, Észak-Kína, Közép-Németország és Németország északkeleti régiója. Ezekben a régiókban a prémium szintű Storage Max 1 TB-ra van korlátozva.  További információ: [P11-P15 current korlátozások](single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb).
 > [!NOTE]
 > A `tempdb` korlátokat lásd: [tempdb korlátok](https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database?view=sql-server-2017#tempdb-database-in-sql-database).
 

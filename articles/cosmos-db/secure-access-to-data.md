@@ -6,12 +6,12 @@ ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/21/2020
-ms.openlocfilehash: 9c851a172fcfe89e6e7aa31c298a5b3d7931a528
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 3a9039470c32b89d398dd41e3df99e91c70d913c
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86023584"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542636"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>Biztonságos hozzáférés az adatokhoz az Azure Cosmos DB-ben
 
@@ -19,7 +19,7 @@ Ez a cikk áttekintést nyújt a [Microsoft Azure Cosmos DBban](https://azure.mi
 
 Azure Cosmos DB kétféle kulcsot használ a felhasználók hitelesítéséhez és az adataihoz és erőforrásaihoz való hozzáférés biztosításához. 
 
-|Kulcs típusa|Erőforrások|
+|Kulcs típusa|További források|
 |---|---|
 |[Főkulcsok](#master-keys) |Felügyeleti erőforrásokhoz használatos: adatbázis-fiókok, adatbázisok, felhasználók és engedélyek|
 |[Erőforrás-tokenek](#resource-tokens)|Alkalmazás-erőforrásokhoz használatos: tárolók, dokumentumok, mellékletek, tárolt eljárások, eseményindítók és UDF|
@@ -57,7 +57,7 @@ A főkulcs elforgatásának folyamata egyszerű.
 
 ### <a name="code-sample-to-use-a-master-key"></a>Mintakód a főkulcs használatához
 
-Az alábbi mintakód azt szemlélteti, hogyan használható egy Cosmos DB-fiók végpontja és főkulcsa egy DocumentClient létrehozásához és egy adatbázis létrehozásához.
+Az alábbi mintakód azt szemlélteti, hogyan használható egy Cosmos DB-fiók végpontja és főkulcsa egy DocumentClient létrehozásához és egy adatbázis létrehozásához:
 
 ```csharp
 //Read the Azure Cosmos DB endpointUrl and authorization keys from config.
@@ -69,6 +69,10 @@ private static readonly string authorizationKey = ConfigurationManager.AppSettin
 
 CosmosClient client = new CosmosClient(endpointUrl, authorizationKey);
 ```
+
+Az alábbi mintakód azt szemlélteti, hogyan használható a Azure Cosmos DB fiók végpontja és főkulcsa egy objektum létrehozásához `CosmosClient` :
+
+:::code language="python" source="~/cosmosdb-python-sdk/sdk/cosmos/azure-cosmos/samples/access_cosmos_with_resource_token.py" id="configureConnectivity":::
 
 ## <a name="resource-tokens"></a>Erőforrás-tokenek<a id="resource-tokens"></a>
 
@@ -163,7 +167,7 @@ Ha Azure Cosmos DB fiók-olvasóhoz szeretne hozzáférni a felhasználói fiók
 4. A **hozzáférés kiosztása mezőben**válassza az **Azure ad-felhasználó,-csoport vagy-alkalmazás**lehetőséget.
 5. Válassza ki a címtárban azt a felhasználót, csoportot vagy alkalmazást, amelyhez hozzáférést szeretne biztosítani.  A címtárban a megjelenítendő név, e-mail-cím vagy objektumazonosító alapján kereshet.
     A kiválasztott felhasználó, csoport vagy alkalmazás megjelenik a kijelölt tagok listájában.
-6. Kattintson a **Save** (Mentés) gombra.
+6. Kattintson a **Mentés** gombra.
 
 Az entitás mostantól képes olvasni Azure Cosmos DB erőforrásait.
 

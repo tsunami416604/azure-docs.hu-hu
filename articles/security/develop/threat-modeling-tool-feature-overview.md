@@ -1,18 +1,18 @@
 ---
 title: A Microsoft Threat Modeling Tool funkcióinak áttekintése – Azure
-description: További információ a Threat Modeling Tool elérhető funkcióiról
+description: Ismerje meg a Threat Modeling Toolban elérhető összes funkciót, például az elemzési nézetet és a jelentéseket.
 author: jegeib
 ms.author: jegeib
 ms.service: security
 ms.subservice: security-develop
 ms.topic: article
 ms.date: 08/17/2017
-ms.openlocfilehash: 88eea0eb2bceb0f6322381a94d4339cbdfa662c0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e405ea35dcaa33ac7c8227385e4aaff86d9244cb
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75552117"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87540002"
 ---
 # <a name="threat-modeling-tool-feature-overview"></a>A Threat Modeling Tool funkcióinak áttekintése
 
@@ -43,7 +43,7 @@ A felhasználói élmény hasonló más Microsoft-termékekhez. Tekintsük át a
 | --------------------------------------- | ------------ |
 | **Fájl** | <ul><li>Fájlok megnyitása, mentése és lezárása</li><li>Jelentkezzen be, és jelentkezzen ki a OneDrive-fiókok közül.</li><li>Hivatkozások megosztása (megtekintés és szerkesztés).</li><li>A fájl adatainak megtekintése.</li><li>Új sablon alkalmazása meglévő modellekre.</li></ul> |
 | **Szerkesztés** | Visszavonhatja és megismételheti a műveleteket, valamint a másolás, beillesztés és törlés műveletet. |
-| **Nézet** | <ul><li>Váltás az **elemzési** és a **tervezési** nézetek között.</li><li>Nyissa meg a bezárt Windows (például a rajzsablonok, az elemek tulajdonságai és az üzenetek) elemet.</li><li>Az elrendezés alaphelyzetbe állítása az alapértelmezett beállításokra.</li></ul> |
+| **Megtekintés** | <ul><li>Váltás az **elemzési** és a **tervezési** nézetek között.</li><li>Nyissa meg a bezárt Windows (például a rajzsablonok, az elemek tulajdonságai és az üzenetek) elemet.</li><li>Az elrendezés alaphelyzetbe állítása az alapértelmezett beállításokra.</li></ul> |
 | **Ábra** | Diagramokat adhat hozzá és törölhet, valamint diagramokat helyezhet át lapokon. |
 | **Jelentések** | HTML-jelentések létrehozása másokkal való megosztáshoz. |
 | **Súgó** | Útmutatást talál az eszköz használatának megkönnyítéséhez. |
@@ -75,7 +75,7 @@ A vászon az elemek húzásának helye. A modellek kiépítésének leggyorsabb 
 
 ![Elem tulajdonságai](./media/threat-modeling-tool-feature-overview/canvasdrop2.png)
 
-### <a name="stencils"></a>Rajzsablonokhoz
+### <a name="stencils"></a>Rajzsablonok
 
 A kiválasztott sablon alapján megkeresheti az összes használható rajzsablont. Ha nem találja a megfelelő elemeket, használjon másik sablont. Vagy módosíthatja az igényeinek megfelelő sablont is. Általában a következő kategóriákhoz hasonló kategóriákat talál:
 
@@ -100,7 +100,7 @@ Az elem tulajdonságai a kiválasztott elemektől függően változnak. A megbí
 
 | Elem tulajdonsága                               | Részletek      |
 | --------------------------------------- | ------------ |
-| **Name (Név)** | Hasznos lehet a folyamatok, a tárolók, a reaktorok és a folyamatok elnevezéséhez, hogy azok könnyen felismerhetők legyenek. |
+| **Név** | Hasznos lehet a folyamatok, a tárolók, a reaktorok és a folyamatok elnevezéséhez, hogy azok könnyen felismerhetők legyenek. |
 | **Hatókörön kívül** | Ha be van jelölve, a rendszer kiveszi az elemet a fenyegetést generáló mátrixból (nem ajánlott). |
 | **Hatókörön kívüli ok** | Indoklási mező, amely lehetővé teszi a felhasználóknak, hogy a hatókör kiválasztásának miért van kiválasztva. |
 
@@ -174,7 +174,7 @@ A diagram összeállítását követően válassza ki az **elemzési** szimbólu
 
 Amikor kijelöl egy fenyegetést, három különböző függvényt használhat:
 
-| Szolgáltatás                               | Információ      |
+| Funkció                               | Információ      |
 | --------------------------------------- | ------------ |
 | **Olvasási kijelző** | <p>A fenyegetés olvasottként van megjelölve, így nyomon követheti az áttekintett elemeket.</p><p>![Olvasási/olvasatlan kijelző](./media/threat-modeling-tool-feature-overview/readmode.png)</p> |
 | **Interakciós fókusz** | <p>A fenyegetéshez tartozó diagramon lévő interakció ki van emelve.</p><p>![Interakciós fókusz](./media/threat-modeling-tool-feature-overview/interactionfocus.png)</p> |

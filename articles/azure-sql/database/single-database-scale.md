@@ -4,19 +4,19 @@ description: Ez a cikk azt ismerteti, hogyan méretezhetők a számítási és t
 services: sql-database
 ms.service: sql-database
 ms.subservice: performance
-ms.custom: sqldbrb=1
+ms.custom: sqldbrb=1, references_regions
 ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 07/31/2020
-ms.openlocfilehash: 42a4d1288c7daeb4579e481f0258666d8e2cdbce
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 39869e74fcb3e8f3deae1273721093f3f85e8d78
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502987"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87541685"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>Önálló adatbázis-erőforrások méretezése Azure SQL Database
 
@@ -145,7 +145,7 @@ A replikált másodlagos adatbázis adatbázis-méretének módosításához mó
 
 ## <a name="p11-and-p15-constraints-when-max-size-greater-than-1-tb"></a>P11 és P15 megkötések, ha a maximális méret nagyobb, mint 1 TB
 
-A prémium szinten több mint 1 TB tárterület érhető el az összes régióban, kivéve a következőket: Kelet-Kína, Észak-Kína, Közép-Németország, Németország északkeleti régiója, az USA nyugati középső régiója, US DoD régiók és az USA kormányzati központja. Ezekben a régiókban a prémium szintű Storage Max 1 TB-ra van korlátozva. Az alábbi szempontok és korlátozások az 1 TB-nál nagyobb maximális mérettel rendelkező P11 és P15 adatbázisokra vonatkoznak:
+A prémium szinten több mint 1 TB tárterület jelenleg minden régióban elérhető, kivéve a következőket: Kelet-Kína, Észak-Kína, Közép-Németország és Németország északkeleti régiója. Ezekben a régiókban a prémium szintű Storage Max 1 TB-ra van korlátozva. Az alábbi szempontok és korlátozások az 1 TB-nál nagyobb maximális mérettel rendelkező P11 és P15 adatbázisokra vonatkoznak:
 
 - Ha egy P11 vagy P15-adatbázis maximális mérete 1 TB-nál nagyobb értékre lett beállítva, akkor csak visszaállítható vagy átmásolható egy P11 vagy P15-adatbázisba.  Ezt követően az adatbázis átméretezhető egy másik számítási méretre, amennyiben az átméretezési művelet idején lefoglalt terület mennyisége nem haladja meg az új számítási méret maximális korlátját.
 - Aktív földrajzi replikálási forgatókönyvek esetén:

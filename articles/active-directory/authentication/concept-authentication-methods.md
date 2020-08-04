@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 4c224f40996625ead4592a3bf50e02f0877c76db
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 05283c02c2e5f95e22beb6fbeaad7a99e42ee6aa
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87051319"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87540835"
 ---
 # <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Milyen hitelesítési és ellenőrzési módszerek érhetők el az Azure Active Directoryban?
 
@@ -35,16 +35,16 @@ Az alábbi táblázat ismerteti, hogy milyen metódusok érhetők el az elsődle
 
 | Metódus | Elsődleges hitelesítés | Másodlagos hitelesítés |
 | --- | --- | --- |
-| [Jelszó](#password) | Yes | |
+| [Jelszó](#password) | Igen | |
 | [A Microsoft Authenticator alkalmazás](#microsoft-authenticator-app) | Igen (előzetes verzió) | MFA és SSPR |
-| [FIDO2 biztonsági kulcsok (előzetes verzió)](#fido2-security-keys) | Yes | Csak MFA |
-| [Az eskü szoftver jogkivonatai](#oath-software-tokens) | No | MFA |
-| [A hardver-tokenek ESKÜje (előzetes verzió)](#oath-hardware-tokens-preview) | Yes | MFA |
+| [FIDO2 biztonsági kulcsok (előzetes verzió)](#fido2-security-keys) | Igen | Csak MFA |
+| [Az eskü szoftver jogkivonatai](#oath-software-tokens) | Nem | MFA |
+| [A hardver-tokenek ESKÜje (előzetes verzió)](#oath-hardware-tokens-preview) | Igen | MFA |
 | [SMS](#phone-options) | Igen (előzetes verzió) | MFA és SSPR |
-| [Hanghívás](#phone-options) | No | MFA és SSPR |
-| [Biztonsági kérdések](#security-questions) | No | Csak SSPR |
-| [E-mail-cím](#email-address) | No | Csak SSPR |
-| [Alkalmazásjelszavak](#app-passwords). | No | MFA csak bizonyos esetekben |
+| [Hanghívás](#phone-options) | Nem | MFA és SSPR |
+| [Biztonsági kérdések](#security-questions) | Nem | Csak SSPR |
+| [E-mail-cím](#email-address) | Nem | Csak SSPR |
+| [Alkalmazásjelszavak](#app-passwords). | Nem | MFA csak bizonyos esetekben |
 
 Ez a cikk az Azure AD-ben elérhető különböző hitelesítési és ellenőrzési módszereket, valamint az adott korlátozásokat és korlátozásokat ismerteti.
 
@@ -74,7 +74,7 @@ A hitelesítő alkalmazás segít megakadályozni a fiókok jogosulatlan eléré
 ![A bejelentkezési folyamat elvégzésére szolgáló, a hitelesítő alkalmazás értesítésére szolgáló webböngészőt kérő példa képernyőképe](media/tutorial-enable-azure-mfa/azure-multi-factor-authentication-browser-prompt.png)
 
 > [!NOTE]
-> Ha a szervezete Kínában dolgozik vagy Kínába utazik, az Android-eszközökön a *Mobile App metóduson keresztül küldött értesítés* nem működik ebben az országban vagy régióban. Az alternatív hitelesítési módszereket elérhetővé kell tenni az adott felhasználók számára.
+> Ha a szervezete Kínában dolgozik vagy Kínába utazik, az Android-eszközökön a *Mobile App Method használatával történő értesítés* nem működik abban az országban vagy régióban, mint a Google Play-szolgáltatások (beleértve a leküldéses értesítéseket) a régióban. Az iOS-értesítés azonban működik. Android-eszközök esetén az adott felhasználók számára elérhetővé kell tenni alternatív hitelesítési módszereket.
 
 ### <a name="verification-code-from-mobile-app"></a>Ellenőrző kód a Mobile appből
 

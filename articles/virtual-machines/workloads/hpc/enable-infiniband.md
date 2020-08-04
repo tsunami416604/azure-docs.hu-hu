@@ -1,6 +1,6 @@
 ---
-title: InifinBand engedélyezése SR-IOV-Azure Virtual Machines | Microsoft Docs
-description: Ismerje meg, hogyan engedélyezheti a InfiniBand az SR-IOV használatával.
+title: InifinBand engedélyezése HPC virtuális gépeken – Azure Virtual Machines | Microsoft Docs
+description: Ismerje meg, hogyan engedélyezheti a InfiniBand az Azure HPC virtuális gépeken.
 services: virtual-machines
 documentationcenter: ''
 author: vermagit
@@ -10,60 +10,68 @@ tags: azure-resource-manager
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: article
-ms.date: 10/17/2019
+ms.date: 08/01/2020
 ms.author: amverma
-ms.openlocfilehash: de61403b62f80bea7872d5ab3561567ae2109590
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.reviewer: cynthn
+ms.openlocfilehash: 88f1c120ac4578e077e1c51f59bcaf53b1de2083
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86500068"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87538897"
 ---
-# <a name="enable-infiniband-with-sr-iov"></a>InfiniBand engedélyezése SR-IOV
+# <a name="enable-infiniband"></a>Infiniband engedélyezése
 
-Az Azure NC, ND és H-sorozatú virtuális gépeket egy dedikált InfiniBand-hálózat támogatja. Minden RDMA-kompatibilis méret képes a hálózat Intel MPI-vel történő kihasználására. Egyes virtuálisgép-sorozatok kiterjesztett támogatást biztosítanak az összes MPI-implementációhoz és RDMA-műveletekhez az SR-IOV-n keresztül. A RDMA-kompatibilis virtuális gépek a GPU-ra [optimalizált](../../sizes-gpu.md) és [nagy teljesítményű számítási (HPC)](../../sizes-hpc.md) virtuális gépeket tartalmaznak.
+A [RDMA képes](../../sizes-hpc.md#rdma-capable-instances) [H-sorozatú](../../sizes-hpc.md) és [N sorozatú](../../sizes-gpu.md) virtuális gépek kommunikációja az alacsony késésű és a nagy sávszélességű InfiniBand-hálózaton keresztül történik. Az RDMA képesség kritikus fontosságú a elosztott csomópontok és az AI-munkaterhelések méretezhetőségének és teljesítményének növelése érdekében. Az InfiniBand enabled H-sorozatú és N sorozatú virtuális gépek egy nem blokkoló FAT-fában vannak csatlakoztatva, amely alacsony átmérőjű kialakítást biztosít az optimalizált és konzisztens RDMA teljesítményhez.
 
-## <a name="choose-your-installation-path"></a>Telepítési útvonal kiválasztása
+A InfiniBand a képes virtuálisgép-méretekhez többféleképpen is engedélyezhető.
 
-Első lépésként a legegyszerűbb lehetőség, ha a InfiniBand előre konfigurált platform-rendszerképet használ, ahol elérhető:
+## <a name="vm-images-with-infiniband-drivers"></a>VM-rendszerképek InfiniBand-illesztőprogramokkal
+Tekintse meg a virtuálisgép- [rendszerképeket](configure.md#vm-images) a piactéren támogatott virtuálisgép-rendszerképek listájáért, amely a InfiniBand-illesztőprogramokkal (SR-IOV vagy nem SR-IOV virtuális gépekhez) előre betöltve, vagy a megfelelő illesztőprogramok használatával konfigurálható.
+Az SR-IOV-kompatibilis RDMA-kompatibilis [virtuális gépek](../../sizes-hpc.md#rdma-capable-instances)esetében a [CentOS-HPC 7,6-es vagy újabb](https://techcommunity.microsoft.com/t5/Azure-Compute/CentOS-HPC-VM-Image-for-SR-IOV-enabled-Azure-HPC-VMs/ba-p/665557) verziójú virtuálisgép-lemezképek a legkönnyebben megkezdhetik a piactéren.
+Az Ubuntu VM-lemezképek a megfelelő illesztőprogramokkal konfigurálhatók az SR-IOV és a nem SR-IOV engedélyezve lévő virtuális gépekhez az [itt leírt utasítások](https://techcommunity.microsoft.com/t5/azure-compute/configuring-infiniband-for-ubuntu-hpc-and-gpu-vms/ba-p/1221351)alapján.
 
-- **HPC IaaS virtuális gépek** – a IaaS virtuális gépek HPC-hez való használatának megkezdéséhez a legegyszerűbb megoldás a [CentOS-HPC 7,6 VM operációsrendszer-rendszerkép](https://techcommunity.microsoft.com/t5/Azure-Compute/CentOS-HPC-VM-Image-for-SR-IOV-enabled-Azure-HPC-VMs/ba-p/665557)használata, amely már konfigurálva van a InfiniBand. Mivel ez a rendszerkép már konfigurálva van a InfiniBand-mel, nem kell manuálisan konfigurálnia. A kompatibilis Windows-verziókkal kapcsolatban lásd: [Windows RDMA-kompatibilis példányok](../../sizes-hpc.md#rdma-capable-instances).
+## <a name="infiniband-driver-vm-extensions"></a>InfiniBand-illesztőprogram virtuálisgép-bővítményei
+Linux rendszeren a InfiniBandDriverLinux virtuálisgép- [bővítmény](../../extensions/hpc-compute-infiniband-linux.md) használható a Mellanox OFED-illesztőprogramok telepítésére és a InfiniBand engedélyezésére az SR-IOV enabled H-és N-sorozatú virtuális gépeken.
 
-- **GPU IaaS-alapú virtuális gépek** – a rendszer jelenleg nem konfigurálja a platform lemezképeit a GPU-ra optimalizált virtuális gépekhez, kivéve a [CentOS-HPC 7,6 VM operációsrendszer-lemezképet](https://techcommunity.microsoft.com/t5/Azure-Compute/CentOS-HPC-VM-Image-for-SR-IOV-enabled-Azure-HPC-VMs/ba-p/665557). Ha egyéni rendszerképet szeretne konfigurálni a InfiniBand, olvassa el a [Mellanox-OFED manuális telepítése](#manually-install-mellanox-ofed)című témakört.
+Windows rendszeren a InfiniBandDriverWindows virtuálisgép- [bővítmény](../../extensions/hpc-compute-infiniband-windows.md) telepíti a Windows Network Direct-illesztőprogramokat (nem SR-IOV virtuális gépeken) vagy a Mellanox OFED-ILLESZTŐPROGRAMOKAT (SR-IOV virtuális gépeken) a RDMA-kapcsolathoz. Az A8-as és A9-es példányok bizonyos telepítései esetében a HpcVmDrivers-bővítmény automatikusan hozzáadódik. Vegye figyelembe, hogy a HpcVmDrivers VM-bővítmény elavult; nem lesz frissítve.
 
-Ha egyéni virtuálisgép-rendszerképet vagy [GPU](../../sizes-gpu.md) -t használó virtuális gépet használ, konfigurálja a InfiniBand a InfiniBandDriverLinux vagy a InfiniBandDriverWindows virtuálisgép-bővítménynek az üzembe helyezéshez való hozzáadásával. Megtudhatja, hogyan használhatja ezeket a virtuálisgép-bővítményeket [Linux](../../sizes-hpc.md#rdma-capable-instances) és [Windows rendszereken](../../sizes-hpc.md#rdma-capable-instances).
+A virtuálisgép-bővítmény virtuális géphez való hozzáadásához [Azure PowerShell](/powershell/azure/) parancsmagokat használhat. További információ: [virtuálisgép-bővítmények és-szolgáltatások](../../extensions/overview.md). A [klasszikus üzemi modellben](/previous-versions/azure/virtual-machines/windows/classic/agents-and-extensions-classic)üzembe helyezett virtuális gépek bővítményei is használhatók.
 
-## <a name="manually-install-mellanox-ofed"></a>Mellanox-OFED manuális telepítése
+## <a name="manual-installation"></a>Manuális telepítés
+A [Mellanox OpenFabrics-illesztőprogramok (OFED)](https://www.mellanox.com/products/InfiniBand-VPI-Software) manuálisan telepíthetők az [SR-IOV enabled](../../sizes-hpc.md#rdma-capable-instances) [H-sorozatú](../../sizes-hpc.md) és [N sorozatú](../../sizes-gpu.md) virtuális gépekre.
 
-A InfiniBand az SR-IOV használatával történő manuális konfigurálásához kövesse az alábbi lépéseket. A fenti lépésekben szereplő példa a RHEL/CentOS szintaxisát mutatja be, de a lépések általánosak, és használhatók bármilyen kompatibilis operációs rendszerhez, például Ubuntu (16,04, 18,04 19,04) és SLES (12 SP4 és 15). A beérkezett fájlok illesztőprogramjai is működnek, de a Mellanox OpenFabrics-illesztőprogramok további funkciókat biztosítanak.
-
-A Mellanox-illesztőprogram támogatott terjesztésével kapcsolatos további információkért tekintse meg a legújabb [Mellanox OpenFabrics-illesztőprogramokat](https://www.mellanox.com/page/products_dyn?product_family=26). További információ a Mellanox OpenFabrics-illesztőprogramról: [Mellanox felhasználói útmutató](https://docs.mellanox.com/category/mlnxofedib).
-
-Tekintse meg a következő példát a InfiniBand konfigurálásához Linux rendszeren:
+### <a name="linux"></a>Linux
+A [Linux rendszerhez készült OFED-illesztőprogramok](https://www.mellanox.com/products/infiniband-drivers/linux/mlnx_ofed) az alábbi példával telepíthetők. Bár ez a példa a RHEL/CentOS-re mutat, de a lépések általánosak, és bármilyen kompatibilis Linux operációs rendszerhez használhatók, például Ubuntu (16,04, 18,04 19,04, 20,04) és SLES (12 SP4 és 15). A beérkezett fájlok illesztőprogramjai is működnek, de a Mellanox OFED-illesztőprogramok további funkciókat biztosítanak.
 
 ```bash
-# Modify the variable to desired Mellanox OFED version
-MOFED_VERSION=#4.7-1.0.0.1
-# Modify the variable to desired OS
-MOFED_OS=#rhel7.6
-pushd /tmp
-curl -fSsL https://www.mellanox.com/downloads/ofed/MLNX_OFED-${MOFED_VERSION}/MLNX_OFED_LINUX-${MOFED_VERSION}-${MOFED_OS}-x86_64.tgz | tar -zxpf -
-cd MLNX_OFED_LINUX-*
-sudo ./mlnxofedinstall
-popd
+MLNX_OFED_DOWNLOAD_URL=http://content.mellanox.com/ofed/MLNX_OFED-5.0-2.1.8.0/MLNX_OFED_LINUX-5.0-2.1.8.0-rhel7.7-x86_64.tgz
+# Optinally verify checksum
+tar zxvf MLNX_OFED_LINUX-5.0-2.1.8.0-rhel7.7-x86_64.tgz
+
+KERNEL=( $(rpm -q kernel | sed 's/kernel\-//g') )
+KERNEL=${KERNEL[-1]}
+# Uncomment the lines below if you are running this on a VM
+#RELEASE=( $(cat /etc/centos-release | awk '{print $4}') )
+#yum -y install http://olcentgbl.trafficmanager.net/centos/${RELEASE}/updates/x86_64/kernel-devel-${KERNEL}.rpm
+yum install -y kernel-devel-${KERNEL}
+./MLNX_OFED_LINUX-5.0-2.1.8.0-rhel7.7-x86_64/mlnxofedinstall --kernel $KERNEL --kernel-sources /usr/src/kernels/${KERNEL} --add-kernel-support --skip-repo
 ```
 
-Windows rendszeren töltse le és telepítse a [Windows-illesztőprogramok MELLANOX OFED](https://www.mellanox.com/page/products_dyn?product_family=32&menu_section=34).
+### <a name="windows"></a>Windows
+Windows rendszeren töltse le és telepítse a [Windows-illesztőprogramok MELLANOX OFED](https://www.mellanox.com/products/adapter-software/ethernet/windows/winof-2).
 
-## <a name="enable-ip-over-infiniband"></a>IP-InfiniBand engedélyezése
-
-A következő parancsokkal engedélyezheti az IP-címek InfiniBand való használatát.
+## <a name="enable-ip-over-infiniband-ib"></a>IP-InfiniBand (IB) engedélyezése
+Ha MPI-feladatok futtatását tervezi, általában nincs szükség IPoIB. Az MPI-könyvtár az IB-kommunikációhoz tartozó műveletek felületet fogja használni (kivéve, ha explicit módon használja az MPI-könyvtár TCP/IP-csatornáját). Ha azonban olyan alkalmazással rendelkezik, amely a TCP/IP protokollt használja a kommunikációhoz, és az IB-t szeretné futtatni, a IPoIB-t az IB felületen keresztül használhatja. A következő parancsokkal (RHEL/CentOS) engedélyezheti az IP-címek InfiniBand való használatát.
 
 ```bash
 sudo sed -i -e 's/# OS.EnableRDMA=y/OS.EnableRDMA=y/g' /etc/waagent.conf
 sudo systemctl restart waagent
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-További információ az Azure-beli [HPC](/azure/architecture/topics/high-performance-computing/) -ről.
+- További információ a különböző [támogatott MPI-könyvtárak](setup-mpi.md) telepítéséről és az optimális konfigurációról a virtuális gépeken.
+- Tekintse át a [HB-sorozat áttekintését](hb-series-overview.md) és a [HC-sorozat áttekintését](hc-series-overview.md) , amelyből megismerheti a számítási feladatok optimális konfigurálását a teljesítmény és a méretezhetőség érdekében.
+- Olvassa el a legújabb bejelentéseket és néhány HPC-példát, valamint az eredményeket az [Azure számítási technikai Közösség blogjában](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).
+- A HPC-munkaterhelések futtatásának magasabb szintű építészeti áttekintését lásd: [nagy teljesítményű számítástechnika (HPC) az Azure](/azure/architecture/topics/high-performance-computing/)-ban.

@@ -3,12 +3,12 @@ title: Fürtcsomópontok frissítése az Azure Managed Disks használatára
 description: A következőképpen frissíthet egy meglévő Service Fabric-fürtöt az Azure Managed Disks használatára a fürt minimális vagy leállása nélkül.
 ms.topic: how-to
 ms.date: 4/07/2020
-ms.openlocfilehash: cff0f99412f189f38f1b14d15c7285166a048c87
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 10863626945483e21aa264e2b05e94a6f08a22f6
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86255897"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542855"
 ---
 # <a name="upgrade-cluster-nodes-to-use-azure-managed-disks"></a>Fürtcsomópontok frissítése az Azure Managed Disks használatára
 
@@ -165,7 +165,7 @@ Az alábbi, az eredeti fürt központi telepítési sablonjának szakasz – sza
 
 #### <a name="parameters"></a>Paraméterek
 
-Paraméterek hozzáadása az új méretezési csoport példányának nevéhez, darabszámához és méretéhez. Vegye figyelembe, hogy az `vmNodeType1Name` új méretezési csoport egyedi, míg a darabszám és a méret érték megegyezik az eredeti méretezési csoporttal.
+Adjon hozzá egy paramétert az új méretezési csoport példányának nevéhez. Vegye figyelembe, hogy az `vmNodeType1Name` új méretezési csoport egyedi, míg a darabszám és a méret érték megegyezik az eredeti méretezési csoporttal.
 
 **Sablonfájl**
 
@@ -174,18 +174,7 @@ Paraméterek hozzáadása az új méretezési csoport példányának nevéhez, d
     "type": "string",
     "defaultValue": "NTvm2",
     "maxLength": 9
-},
-"nt1InstanceCount": {
-    "type": "int",
-    "defaultValue": 5,
-    "metadata": {
-        "description": "Instance count for node type"
-    }
-},
-"vmNodeType1Size": {
-    "type": "string",
-    "defaultValue": "Standard_D2_v2"
-},
+}
 ```
 
 **Parameters fájl**
@@ -193,12 +182,6 @@ Paraméterek hozzáadása az új méretezési csoport példányának nevéhez, d
 ```json
 "vmNodeType1Name": {
     "value": "NTvm2"
-},
-"nt1InstanceCount": {
-    "value": 5
-},
-"vmNodeType1Size": {
-    "value": "Standard_D2_v2"
 }
 ```
 
@@ -216,13 +199,13 @@ A központi telepítési sablon `variables` szakaszban adja meg az új méretez�
 
 A központi telepítési sablon *erőforrásai* szakaszban adja hozzá az új virtuálisgép-méretezési készletet, szem előtt tartva ezeket a dolgokat:
 
-* Az új méretezési csoport ugyanarra a csomópont-típusra hivatkozik, mint az eredeti:
+* Az új méretezési csoport az új csomópont-típusra hivatkozik:
 
     ```json
-    "nodeTypeRef": "[parameters('vmNodeType0Name')]",
+    "nodeTypeRef": "[parameters('vmNodeType1Name')]",
     ```
 
-* Az új méretezési csoport ugyanarra a terheléselosztó háttérbeli címére és alhálózatra hivatkozik (de egy másik terheléselosztó bejövő NAT-készletet használ):
+* Az új méretezési csoport ugyanarra a terheléselosztó háttérbeli címére és alhálózatára hivatkozik, mint az eredeti, de egy másik terheléselosztó bejövő NAT-készletet használ:
 
    ```json
     "loadBalancerBackendAddressPools": [
@@ -253,6 +236,33 @@ A központi telepítési sablon *erőforrásai* szakaszban adja hozzá az új vi
         "storageAccountType": "[parameters('storageAccountType')]"
     }
     ```
+
+Ezután adjon hozzá egy bejegyzést a `nodeTypes` *Microsoft. ServiceFabric/Clusters* erőforrás listájához. Használja ugyanazokat az értékeket, mint az eredeti Node Type bejegyzés, kivéve a esetében `name` , amely az új csomópont típusra (*vmNodeType1Name*) hivatkozik.
+
+```json
+"nodeTypes": [
+    {
+        "name": "[parameters('vmNodeType0Name')]",
+        ...
+    },
+    {
+        "name": "[parameters('vmNodeType1Name')]",
+        "applicationPorts": {
+            "endPort": "[parameters('nt0applicationEndPort')]",
+            "startPort": "[parameters('nt0applicationStartPort')]"
+        },
+        "clientConnectionEndpointPort": "[parameters('nt0fabricTcpGatewayPort')]",
+        "durabilityLevel": "Silver",
+        "ephemeralPorts": {
+            "endPort": "[parameters('nt0ephemeralEndPort')]",
+            "startPort": "[parameters('nt0ephemeralStartPort')]"
+        },
+        "httpGatewayEndpointPort": "[parameters('nt0fabricHttpGatewayPort')]",
+        "isPrimary": true,
+        "vmInstanceCount": "[parameters('nt0InstanceCount')]"
+    }
+],
+```
 
 Miután végrehajtotta a sablon és a paraméterek fájljaiban történt összes változást, folytassa a következő szakasszal a Key Vault referenciáinak beolvasásához és a frissítések fürtön való telepítéséhez.
 
@@ -356,7 +366,7 @@ foreach($name in $nodeNames){
 
 ![Service Fabric Explorer a hibás állapotú csomópontok eltávolításakor](./media/upgrade-managed-disks/service-fabric-explorer-healthy-cluster.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az útmutatóban megtanulta, hogyan frissíthet egy Service Fabric-fürt virtuálisgép-méretezési csoportjait a felügyelt lemezek használatára, miközben elkerüli a szolgáltatás leállását a folyamat során. A kapcsolódó témakörökkel kapcsolatos további információkért tekintse meg az alábbi forrásokat.
 

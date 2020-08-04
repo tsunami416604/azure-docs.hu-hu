@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: na
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 47a2f8b69c8ef75be4f9190933969ed20404b5da
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f5f6e44aa89c1e2815d70bb4ba2ae5f5680252ac
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253001"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87541889"
 ---
 # <a name="enable-enterprise-state-roaming-in-azure-active-directory"></a>A vállalati állapothordozás engedélyezése az Azure Active Directoryban
 
@@ -31,7 +31,7 @@ A Enterprise State Roaming engedélyezésekor a szervezet automatikusan ingyenes
 ## <a name="to-enable-enterprise-state-roaming"></a>A Enterprise State Roaming engedélyezése
 
 1. Jelentkezzen be az [Azure ad felügyeleti központba](https://aad.portal.azure.com/).
-1. Válassza ki **Azure Active Directory** &gt; **eszközök** &gt; **Enterprise State roaming**.
+1. Válassza ki **Azure Active Directory**  >  **eszközök**  >  **Enterprise State roaming**.
 1. Válassza ki **, hogy a felhasználók szinkronizálják a beállításokat és az alkalmazásadatok az eszközök között**. További információ: [az eszközbeállítások konfigurálása](/azure/active-directory/device-management-azure-portal).
   
    ![a felhasználók által címkézett eszközbeállítások képe szinkronizálhatja a beállításokat és az alkalmazásadatok az eszközök között](./media/enterprise-state-roaming-enable/device-settings.png)
@@ -56,7 +56,7 @@ Az ország/régió érték az Azure AD-címtár létrehozási folyamatának rés
 Az alábbi lépéseket követve megtekintheti a felhasználónkénti eszköz szinkronizálási állapotáról szóló jelentést.
 
 1. Jelentkezzen be az [Azure ad felügyeleti központba](https://aad.portal.azure.com/).
-1. Válassza **Azure Active Directory** &gt; **Users** &gt; **minden felhasználó**lehetőséget.
+1. Válassza **Azure Active Directory**  >  **Users**  >  **minden felhasználó**lehetőséget.
 1. Válassza ki a felhasználót, majd válassza az **eszközök**lehetőséget.
 1. A **Megjelenítés**területen válassza ki a **beállítások és alkalmazásadatok szinkronizálása** a szinkronizálási állapot megjelenítéséhez eszközt.
   
@@ -78,7 +78,7 @@ Az explicit törlés akkor történik meg, amikor egy Azure-rendszergazda törö
 * **Címtár törlése**: egy teljes címtár törlése az Azure ad-ben azonnali művelet. A címtárhoz társított összes beállítási adattal 90 és 180 nap után törlődnek. 
 * **Kérelem törlése**esetén: Ha az Azure ad-rendszergazda manuálisan szeretné törölni egy adott felhasználó adatvagyra vonatkozó beállításait, a rendszergazda az [Azure-támogatással](https://azure.microsoft.com/support/)jegyet tud beküldeni. 
 
-### <a name="stale-data-deletion"></a>Elavult adattörlés
+### <a name="stale-data-deletion"></a>Elavult adatok törlése
 
 Az egy évig nem elért adatok ("a megőrzési időszak") elavultnak minősülnek, és törölhetők a Microsoft Cloud-ból. A megőrzési időtartam változhat, de nem lesz kevesebb, mint 90 nap. Az elavult adatmennyiség lehet a Windows/Alkalmazásbeállítások vagy a felhasználó összes beállítása. Például:
 
@@ -86,7 +86,7 @@ Az egy évig nem elért adatok ("a megőrzési időszak") elavultnak minősülne
 * Ha a felhasználó minden eszközén kikapcsolta a beállítások szinkronizálását, akkor a rendszer nem fér hozzá a beállításokhoz, és az adott felhasználóhoz tartozó összes beállítási információ elavult lesz, és a megőrzési időszak után törölhető. 
 * Ha az Azure AD-címtár rendszergazdája kikapcsolja Enterprise State Roaming a teljes címtárban, akkor az abban a könyvtárban lévő összes felhasználó leállítja a beállítások szinkronizálását, és az összes felhasználóra vonatkozó összes beállítás elavult lesz, és a megőrzési időszak után törölve lehet. 
 
-### <a name="deleted-data-recovery"></a>Az Adathelyreállítás törölve
+### <a name="deleted-data-recovery"></a>Törölt adatok visszaállítása
 
 Az adatmegőrzési szabályzat nem konfigurálható. Az adattörlést követően nem lehet helyreállítani az adatvesztést. A beállítások adatait azonban csak a Microsoft-felhőből, nem pedig a végfelhasználói eszközről törli a rendszer. Ha bármelyik eszköz később újracsatlakozik a Enterprise State Roaming szolgáltatáshoz, a beállítások újra szinkronizálhatók és tárolódnak a Microsoft Cloud-ban.
 
