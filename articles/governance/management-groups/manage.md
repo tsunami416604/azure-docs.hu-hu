@@ -3,16 +3,16 @@ title: A felügyeleti csoportok használata – Azure-szabályozás
 description: Útmutató a felügyeleti csoport hierarchiájának megtekintéséhez, karbantartásához, frissítéséhez és törléséhez.
 ms.date: 04/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: b60adbdf404f40739d6bcab7a0a3ceaf24c0b59f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c5a0269935daedb3be478cc27d5ecaf87f3c97f7
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84259405"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87535008"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Erőforrások kezelése felügyeleti csoportokkal
 
-Ha a vállalatnak sok előfizetése van, jól jöhet egy módszer, hogy hatékonyan kezelje az előfizetésekhez való hozzáférést, a szabályzatokat és a megfelelőséget. Az Azure Management Groups előfizetések fölötti hatókörszintet biztosít. Az előfizetéseket „felügyeleti csoportok” nevű tárolókba rendezheti, és az irányítási feltételeket alkalmazhatja a felügyeleti csoportokra. A felügyeleti csoporton belüli összes előfizetés automatikusan örökli a felügyeleti csoportra alkalmazott feltételeket.
+Ha a vállalatnak sok előfizetése van, jól jöhet egy módszer, hogy hatékonyan kezelje az előfizetésekhez való hozzáférést, a szabályzatokat és a megfelelőséget. Az Azure-beli felügyeleti csoportok hatóköre az előfizetések fölötti szint. Az előfizetéseket „felügyeleti csoportok” nevű tárolókba rendezheti, és az irányítási feltételeket alkalmazhatja a felügyeleti csoportokra. A felügyeleti csoporton belüli összes előfizetés automatikusan örökli a felügyeleti csoportra alkalmazott feltételeket.
 
 A felügyeleti csoportok nagy léptékű, nagyvállalati szintű felügyeletet tesznek lehetővé, függetlenül az előfizetése típusától. További információ a felügyeleti csoportokról: [erőforrások rendszerezése az Azure felügyeleti csoportjaival](./overview.md).
 
@@ -69,7 +69,7 @@ Felügyeleti csoport törléséhez a következő követelményeknek kell teljes�
 
    - Ha egy előfizetést vagy felügyeleti csoportot másik felügyeleti csoportba szeretne helyezni, tekintse meg [a felügyeleti csoportok és előfizetések áthelyezése a hierarchiában](#moving-management-groups-and-subscriptions)című témakört.
 
-1. Írási engedéllyel kell rendelkeznie a felügyeleti csoportra ("tulajdonos", "közreműködő" vagy "felügyeleti csoport közreműködője"). Ha szeretné megtekinteni, hogy milyen engedélyekkel rendelkezik, válassza ki a felügyeleti csoportot, majd válassza a **iam**lehetőséget. További információ a RBAC-szerepkörökről:  
+1. Írási engedéllyel kell rendelkeznie a felügyeleti csoportra ("tulajdonos", "közreműködő" vagy "felügyeleti csoport közreműködője"). Ha szeretné megtekinteni, hogy milyen engedélyekkel rendelkezik, válassza ki a felügyeleti csoportot, majd válassza a **iam**lehetőséget. További információ az Azure-szerepkörökről:  
    [Hozzáférés és engedélyek kezelése a RBAC-](../../role-based-access-control/overview.md)mel.
 
 ### <a name="delete-in-the-portal"></a>Törlés a portálon
@@ -113,7 +113,7 @@ az account management-group delete --name 'Contoso'
 
 ## <a name="view-management-groups"></a>Felügyeleti csoportok megtekintése
 
-Bármely olyan felügyeleti csoportot megtekintheti, amelyhez közvetlen vagy örökölt RBAC szerepkör tartozik.  
+Bármely olyan felügyeleti csoportot megtekintheti, amelyhez közvetlen vagy örökölt Azure-szerepkör tartozik.  
 
 ### <a name="view-in-the-portal"></a>Megtekintés a portálon
 
@@ -215,7 +215,7 @@ Ha az áthelyezés műveletet végzi, a következőkre lesz szüksége:
 
 Ha az előfizetés tulajdonosi szerepköre az aktuális felügyeleti csoporttól örökölt, az áthelyezési célok korlátozottak. Az előfizetést csak egy másik felügyeleti csoportba helyezheti át, ahol a tulajdonosi szerepköre van. Nem helyezhető át olyan felügyeleti csoportba, ahol Ön közreműködő, mert elveszti az előfizetés tulajdonjogát. Ha közvetlenül az előfizetés tulajdonosi szerepköréhez van hozzárendelve (nem a felügyeleti csoporttól örökölt), akkor áthelyezheti azt bármely olyan felügyeleti csoportba, ahol Ön közreműködő.
 
-Ha szeretné megtekinteni, hogy milyen engedélyekkel rendelkezik a Azure Portalban, válassza ki a felügyeleti csoportot, majd válassza a **iam**lehetőséget. További információ a RBAC-szerepkörökről: [hozzáférés és engedélyek kezelése a RBAC](../../role-based-access-control/overview.md)-mel.
+Ha szeretné megtekinteni, hogy milyen engedélyekkel rendelkezik a Azure Portalban, válassza ki a felügyeleti csoportot, majd válassza a **iam**lehetőséget. Ha többet szeretne megtudni az Azure-szerepkörökről, tekintse meg a [hozzáférés és engedélyek kezelése a RBAC](../../role-based-access-control/overview.md)című témakört.
 
 ## <a name="move-subscriptions"></a>Előfizetések áthelyezése 
 

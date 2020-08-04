@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/11/2017
 ms.author: alkohli
-ms.openlocfilehash: 58332be22600620e7a3ff1f455f96fe0d786d846
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 04993d36689c917db05a1b5f2132b107c7c9b412
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500044"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87535110"
 ---
 # <a name="role-based-access-control-for-storsimple"></a>Szerepköralapú Access Control a StorSimple
 
@@ -29,7 +29,7 @@ Ez a cikk a 3,0-es vagy újabb verzióját futtató StorSimple 8000 sorozatú es
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="rbac-roles-for-storsimple"></a>A StorSimple RBAC szerepkörei
+## <a name="azure-roles-for-storsimple"></a>Azure-szerepkörök a StorSimple
 
 A RBAC a szerepkörök alapján rendelhetők hozzá. A szerepkörök bizonyos jogosultsági szinteket biztosítanak a környezetben elérhető erőforrások alapján. A StorSimple-felhasználók két típusú szerepkört választhatnak: beépített vagy egyéni.
 
@@ -58,7 +58,7 @@ Az alábbi példában a beépített szerepkör- **olvasóval** kezdjük, amellye
     Get-AzRoleDefinition -Name "Reader" | ConvertTo-Json | Out-File C:\ssrbaccustom.json
     ```
 
-4. Nyissa meg a JSON-fájlt a Visual Studióban. Láthatja, hogy egy tipikus RBAC-szerepkör három fő szakaszból, **műveletből**, nem **tapintatokból**és **AssignableScopes**áll.
+4. Nyissa meg a JSON-fájlt a Visual Studióban. Láthatja, hogy egy tipikus Azure-szerepkör három fő szakaszból, **műveletből**, nem **tapintatokból**és **AssignableScopes**áll.
 
     A **művelet** szakaszban megjelenik a szerepkörre vonatkozó összes engedélyezett művelet. Minden művelet hozzá van rendelve egy erőforrás-szolgáltatóhoz. StorSimple-infrastruktúra rendszergazdája használja az erőforrás- `Microsoft.StorSimple` szolgáltatót.
 
@@ -68,9 +68,9 @@ Az alábbi példában a beépített szerepkör- **olvasóval** kezdjük, amellye
 
     Az összes elérhető PowerShell-parancsmagot is megtekintheti az erőforrás-szolgáltatók kezeléséhez.
 
-    A **tapintatok** szakaszban az adott RBAC-szerepkörre vonatkozó összes korlátozott művelet szerepel a felsorolásban. Ebben a példában egyetlen művelet sincs korlátozva.
+    A **tapintatok** szakaszban az adott Azure-szerepkörre vonatkozó összes korlátozott művelet szerepel a felsorolásban. Ebben a példában egyetlen művelet sincs korlátozva.
     
-    A **AssignableScopes**alatt az előfizetési azonosítók szerepelnek a felsorolásban. Győződjön meg arról, hogy a RBAC szerepkör tartalmazza a explicit előfizetés-azonosítót, ahol a használatban van. Ha nincs megadva a megfelelő előfizetés-azonosító, nem importálhatja a szerepkört az előfizetésében.
+    A **AssignableScopes**alatt az előfizetési azonosítók szerepelnek a felsorolásban. Győződjön meg arról, hogy az Azure-szerepkör tartalmazza a explicit előfizetés-azonosítót, ahol a használatban van. Ha nincs megadva a megfelelő előfizetés-azonosító, nem importálhatja a szerepkört az előfizetésében.
 
     Szerkessze a fájlt, és vegye figyelembe az előző szempontokat.
 
@@ -109,7 +109,7 @@ Az alábbi példában a beépített szerepkör- **olvasóval** kezdjük, amellye
 
 A szerepkörnek ekkor a **hozzáférés-vezérlés** panelen kell megjelennie a szerepkörök listájában.
 
-![RBAC-szerepkörök megtekintése](./media/storsimple-8000-role-based-access-control/rbac-role-types.png)
+![Azure-szerepkörök megtekintése](./media/storsimple-8000-role-based-access-control/rbac-role-types.png)
 
 További információért lépjen az [Egyéni szerepkörök](../role-based-access-control/custom-roles.md)elemre.
 
@@ -167,7 +167,7 @@ A hozzáférés a szerepkör-hozzárendelés hatókörébe tartozó erőforrásb
 
 1. Nyissa meg a **hozzáférés-vezérlés (iam)** lehetőséget. Kattintson a **+ Hozzáadás** elemre a hozzáférés-vezérlés panelen.
 
-    ![Hozzáférés hozzáadása a RBAC szerepkörhöz](./media/storsimple-8000-role-based-access-control/rbac-add-role.png)
+    ![Hozzáférés hozzáadása az Azure-szerepkörhöz](./media/storsimple-8000-role-based-access-control/rbac-add-role.png)
 
 2. Válassza ki a hozzárendelni kívánt szerepkört, ebben az esetben ez a **StorSimple-infrastruktúra rendszergazdája**.
 
@@ -175,7 +175,7 @@ A hozzáférés a szerepkör-hozzárendelés hatókörébe tartozó erőforrásb
 
 4. A hozzárendelés létrehozásához válassza a **Mentés** lehetőséget.
 
-    ![Engedélyek hozzáadása a RBAC szerepkörhöz](./media/storsimple-8000-role-based-access-control/rbac-create-role-infra-admin.png)
+    ![Engedélyek hozzáadása az Azure-szerepkörhöz](./media/storsimple-8000-role-based-access-control/rbac-create-role-infra-admin.png)
 
 A **felhasználói értesítések hozzáadásával** nyomon követheti a folyamat előrehaladását. A felhasználó sikeres hozzáadása után a rendszer frissíti a hozzáférés-vezérlésben lévő felhasználók listáját.
 

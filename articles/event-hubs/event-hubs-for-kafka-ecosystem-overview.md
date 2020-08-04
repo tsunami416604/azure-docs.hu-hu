@@ -3,12 +3,12 @@ title: Az Event hub használata Apache Kafka alkalmazásból – Azure Event Hub
 description: Ez a cikk az Azure Event Hubs Apache Kafka támogatásáról nyújt információt.
 ms.topic: article
 ms.date: 07/20/2020
-ms.openlocfilehash: 94e0993c192cb735d6a4f0f3f7ec484c830902e9
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: ab29c9c4270514e95752ab2bbd085ffe1b0a2fb0
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501593"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534872"
 ---
 # <a name="use-azure-event-hubs-from-apache-kafka-applications"></a>Az Azure Event Hubs használata Apache Kafka alkalmazásokból
 A Event Hubs egy Kafka-végpontot biztosít, amelyet a meglévő Kafka-alapú alkalmazásai használhatnak a saját Kafka-fürt futtatására. Event Hubs támogatja a [1,0-es és újabb verziójú Apache Kafka protokollt](https://kafka.apache.org/documentation/), és együttműködik a meglévő Kafka-alkalmazásokkal, beleértve a MirrorMaker is.  
@@ -46,7 +46,7 @@ Az Azure Event Hubs több lehetőséget kínál a biztonságos erőforrásokhoz 
 - Közös hozzáférésű jogosultságkód (SAS)
 
 #### <a name="oauth"></a>OAuth
-A Event Hubs a Azure Active Directory (Azure AD) szolgáltatással integrálódik, amely egy **OAuth** 2,0-kompatibilis központi engedélyezési kiszolgálót biztosít. Az Azure AD-vel szerepköralapú hozzáférés-vezérlés (RBAC) segítségével részletesen megadhatja az ügyfelek identitásait. Ezt a funkciót a Kafka-ügyfelekkel a mechanizmus protokoll-és **OAUTHBEARER** **SASL_SSL** megadásával veheti igénybe. További információk a RBAC szerepköreiről és szintjeiről: hozzáférés [engedélyezése az Azure ad-vel](authorize-access-azure-active-directory.md).
+A Event Hubs a Azure Active Directory (Azure AD) szolgáltatással integrálódik, amely egy **OAuth** 2,0-kompatibilis központi engedélyezési kiszolgálót biztosít. Az Azure AD-vel szerepköralapú hozzáférés-vezérlés (RBAC) segítségével részletesen megadhatja az ügyfelek identitásait. Ezt a funkciót a Kafka-ügyfelekkel a mechanizmus protokoll-és **OAUTHBEARER** **SASL_SSL** megadásával veheti igénybe. Az Azure-szerepkörökkel és a hozzáférés-kezelés szintjeivel kapcsolatos részletekért lásd: [hozzáférés engedélyezése az Azure ad-vel](authorize-access-azure-active-directory.md).
 
 ```xml
 bootstrap.servers=NAMESPACENAME.servicebus.windows.net:9093
