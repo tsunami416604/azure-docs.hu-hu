@@ -4,12 +4,12 @@ description: Ebből a cikkből megismerheti az Azure-beli virtuális gépek Azur
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 68f85b3d5da811f78ba398093db5a65ee5c49ab1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: bf09c4e56c3881987e14d27d5f2166c68e311ab3
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538768"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533495"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Gyakori kérdések – Azure-beli virtuális gépek biztonsági mentése
 
@@ -99,11 +99,7 @@ Ha módosítja a virtuális gép vagy a virtuálisgép-erőforráscsoport eseté
 
 ### <a name="can-i-back-up-or-restore-selective-disks-attached-to-a-vm"></a>Készíthetek biztonsági mentést vagy visszaállítani a virtuális géphez csatolt szelektív lemezeket?
 
-A Azure Backup mostantól támogatja a szelektív lemezek biztonsági mentését és visszaállítását az Azure-beli virtuális gép biztonsági mentési megoldásával.
-
-Napjainkban a Azure Backup támogatja a virtuális gép összes lemezének (operációs rendszerének és adattípusának) biztonsági mentését egy virtuális gépen, a virtuális gépek biztonsági mentési megoldásával együtt. A lemezek kizárása funkcióval lehetősége van arra, hogy egy vagy több számítógépről készítsen biztonsági másolatot a virtuális gépek számos adatlemezéről. Ez hatékony és költséghatékony megoldást kínál a biztonsági mentési és visszaállítási igények kielégítésére. Mindegyik helyreállítási pont a biztonsági mentési műveletben található lemezek adatait tartalmazza, így a visszaállítási művelet során a megadott helyreállítási pontról visszaállított lemezek egy részhalmaza is elérhető. Ez a pillanatképből és a tárolóból történő visszaállításra vonatkozik.
-
-Az előzetes verzióra való feliratkozáshoz írjon nekünk a következőt:AskAzureBackupTeam@microsoft.com
+A Azure Backup mostantól támogatja a szelektív lemezek biztonsági mentését és visszaállítását az Azure-beli virtuális gép biztonsági mentési megoldásával. További információ: [szelektív lemezek biztonsági mentése és visszaállítása Azure-beli virtuális gépekhez](selective-disk-backup-restore.md).
 
 ## <a name="restore"></a>Visszaállítás
 

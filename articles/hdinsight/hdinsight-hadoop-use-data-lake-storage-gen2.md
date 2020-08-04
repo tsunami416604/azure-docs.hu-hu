@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: ab1cba455f93abe4d603f417f8d0a00dda0e315e
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 2992324a1080b75a98264958f56ea28e93b54651
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497647"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534583"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Az Azure Data Lake Storage Gen2 használata Azure HDInsight-fürtökkel
 
@@ -79,7 +79,7 @@ Rendelje hozzá a felügyelt identitást a Storage- **blob adattulajdonosi** sze
 1. Új szerepkör hozzáadásához kattintson a **+ szerepkör-hozzárendelés hozzáadása** gombra.
 1. A **szerepkör-hozzárendelés hozzáadása** ablakban válassza ki a **Storage blob-adat tulajdonosi** szerepkörét. Ezután válassza ki azt az előfizetést, amelynek a felügyelt identitás-és Storage-fiókja van. Ezután a Keresés gombra kattintva keresse meg a korábban létrehozott, felhasználó által hozzárendelt felügyelt identitást. Végül válassza ki a felügyelt identitást, és a rendszer a **kijelölt tagok**területen jelenik meg.
 
-    ![A RBAC-szerepkör hozzárendelését bemutató képernyőkép](./media/hdinsight-hadoop-use-data-lake-storage-gen2/add-rbac-role3-window.png)
+    ![Az Azure-szerepkörök hozzárendelését bemutató képernyőkép](./media/hdinsight-hadoop-use-data-lake-storage-gen2/add-rbac-role3-window.png)
 
 1. Kattintson a **Mentés** gombra. A kiválasztott felhasználó által hozzárendelt identitás mostantól a kiválasztott szerepkör alatt szerepel.
 1. A kezdeti beállítás befejezése után létrehozhat egy fürtöt a portálon keresztül. A fürtnek ugyanabban az Azure-régióban kell lennie, mint a Storage-fióknak. A fürt létrehozási menüjének **tárterület** lapján válassza a következő beállításokat:

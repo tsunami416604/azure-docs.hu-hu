@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/08/2020
+ms.date: 07/27/2020
 ms.author: b-juche
-ms.openlocfilehash: f9552b82dc79e1edafb13fead5a07df3ecf1be3b
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: 7c792ee9c56a044942bb2249a57f2615c72badee
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87512958"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533138"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Gyakori kérdések a Azure NetApp Files
 
@@ -97,11 +97,15 @@ A MB/s IOPS a következő képlet használatával alakíthatja át:
 
 ### <a name="how-do-i-change-the-service-level-of-a-volume"></a>Hogyan módosítja egy kötet szolgáltatási szintjét?
 
-A kötetek szolgáltatási szintjének módosítása jelenleg nem támogatott.
+Megváltoztathatja egy meglévő kötet szolgáltatási szintjét úgy, hogy áthelyezi a kötetet egy másik, a kötethez használni kívánt [szolgáltatási szintre](azure-netapp-files-service-levels.md) . Lásd: [kötetek szolgáltatási szintjének dinamikus módosítása](dynamic-change-volume-service-level.md). 
 
 ### <a name="how-do-i-monitor-azure-netapp-files-performance"></a>Hogyan monitor Azure NetApp Files teljesítmény?
 
 A Azure NetApp Files a kötetek teljesítményének mérőszámait biztosítja. Azure Monitor a Azure NetApp Files használati metrikáinak figyelésére is használható.  A Azure NetApp Files teljesítmény-metrikáinak listáját a [Azure NetApp Files mérőszámai](azure-netapp-files-metrics.md) részben tekintheti meg.
+
+### <a name="whats-the-performance-impact-of-kerberos-on-nfsv41"></a>Mi a Kerberos teljesítményére gyakorolt hatás a NFSv 4.1 rendszeren?
+
+Lásd: a [Kerberos teljesítményére gyakorolt hatás a nfsv 4.1](configure-kerberos-encryption.md#kerberos_performance) -ben a nfsv 4.1 biztonsági lehetőségeivel, a tesztelt teljesítmény-vektorokkal és a várható teljesítmény hatásával kapcsolatban. 
 
 ## <a name="nfs-faqs"></a>NFS – gyakori kérdések
 
@@ -164,6 +168,15 @@ Yes, by default, Azure NetApp Files supports both AES-128 and AES-256 encryption
 
 Yes, Azure NetApp Files supports LDAP signing by default. This functionality enables secure LDAP lookups between the Azure NetApp Files service and the user-specified [Active Directory Domain Services domain controllers](https://docs.microsoft.com/windows/win32/ad/active-directory-domain-services). For more information, see [ADV190023 | Microsoft Guidance for Enabling LDAP Channel Binding and LDAP Signing](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV190023).
 --> 
+
+## <a name="dual-protocol-faqs"></a>Dual-Protocol – gyakori kérdések
+
+### <a name="i-tried-to-use-the-root-and-local-users-to-access-a-dual-protocol-volume-with-the-ntfs-security-style-on-a-unix-system-why-did-i-encounter-a-permission-denied-error"></a>Megpróbáltam a "root" és a local Users használatával hozzáférni egy kettős protokollú kötethez az NTFS biztonsági stílussal egy UNIX rendszeren. Miért történt "engedély megtagadva" hibaüzenet?   
+
+A kettős protokollú kötetek az NFS-és az SMB-protokollokat is támogatják.  Amikor megpróbál hozzáférni a csatlakoztatott kötethez a UNIX rendszerű rendszeren, a rendszer megkísérli leképezni a Windows-felhasználóhoz használt UNIX-felhasználót. Ha nem található leképezés, az "engedély megtagadva" hibaüzenet jelenik meg.  Ez a helyzet akkor is érvényes, ha a "root" felhasználót használja a hozzáféréshez.    
+
+Az "engedély megtagadva" probléma elkerüléséhez győződjön meg arról, hogy a Windows Active Directory tartalmazza `pcuser` a csatlakoztatási pont elérését. Ha az `pcuser` "engedély megtagadva" problémával találkozik, várjon 24 órát a gyorsítótár-bejegyzés törlésére a hozzáférés ismételt megkísérlése előtt.
+
 
 ## <a name="capacity-management-faqs"></a>A kapacitások kezelésével kapcsolatos gyakori kérdések
 

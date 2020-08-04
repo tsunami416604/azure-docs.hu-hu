@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 04/29/2020
-ms.openlocfilehash: b628ca7f676c3eab80e11da124f4d6aa7ebd52a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ab4eaf5ad40b5ef8bee68ef0e56ab8f53db8a8a2
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708790"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533835"
 ---
 # <a name="manage-azure-sql-managed-instance-long-term-backup-retention-powershell"></a>Az Azure SQL felügyelt példányainak hosszú távú biztonsági mentési megőrzése (PowerShell) kezelése
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -28,7 +28,7 @@ Az Azure SQL felügyelt példányain a [biztonsági mentés hosszú távú megő
 
 A következő részben bemutatjuk, hogyan használható a PowerShell a biztonsági másolatok hosszú távú megőrzésének konfigurálására, a biztonsági mentések megtekintésére az Azure SQL Storage szolgáltatásban, valamint az Azure SQL Storage biztonsági másolatából való visszaállítás.
 
-## <a name="rbac-roles-to-manage-long-term-retention"></a>RBAC-szerepkörök a hosszú távú adatmegőrzés kezeléséhez
+## <a name="azure-roles-to-manage-long-term-retention"></a>Azure-szerepkörök a hosszú távú adatmegőrzés kezeléséhez
 
 A **Get-AzSqlInstanceDatabaseLongTermRetentionBackup** és a **Restore-AzSqlInstanceDatabase**esetében a következő szerepkörök egyikének kell lennie:
 

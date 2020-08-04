@@ -3,12 +3,12 @@ title: Az Azure Blueprints áttekintése
 description: Ismerje meg, hogyan hozhat létre, határozhat meg és helyezhet üzembe összetevőket az Azure-környezetben az Azure BluePrints szolgáltatásban.
 ms.date: 05/06/2020
 ms.topic: overview
-ms.openlocfilehash: 3a7cece81027bd8ac79250f2f2cd08da637b5f0b
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: a8cec34bb5bdd52b22063a4109153c7f455aaa65
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970926"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87530397"
 ---
 # <a name="what-is-azure-blueprints"></a>Mi az az Azure Blueprints?
 
@@ -27,19 +27,19 @@ Az Azure Blueprints szolgáltatást a globális terjesztésű [Azure Cosmos DB](
 
 A szolgáltatás úgy van megtervezve, hogy segítsen a _környezet beállításában_. Ez a beállítás gyakran erőforráscsoport, szabályzatok, szerepkör-hozzárendelések és ARM-sablonok központi telepítéseit tartalmazza. A terv egy olyan csomag, amely egyesíti az egyes _összetevők típusait_ , és lehetővé teszi a csomag összeállítását és verzióját, beleértve a CI/CD-folyamatokat. Végül minden csomag egy előfizetéshez van rendelve egyetlen műveletben, amely felügyelhető és nyomon követhető.
 
-Szinte minden, amit az Azure-tervezetekben szeretne felvenni az üzembe helyezéshez, ARM-sablonnal is elvégezhető. Az ARM-sablon azonban olyan dokumentum, amely nem létezik natív módon az Azure-ban – mindegyiket helyileg vagy a verziókövetés tárolja. A sablonok felhasználhatók egy vagy több Azure-erőforrás üzembe helyezéséhez, azonban az erőforrások üzembe helyezése után a sablonnal való aktív kapcsolat elveszik.
+Szinte minden, amit az Azure-tervezetekben szeretne felvenni az üzembe helyezéshez, ARM-sablonnal is elvégezhető. Az ARM-sablon azonban olyan dokumentum, amely nem létezik natív módon az Azure-ban – mindegyiket helyileg vagy a verziókövetés tárolja. A sablonok felhasználhatók egy vagy több Azure-erőforrás üzembe helyezéséhez, az erőforrások üzembe helyezése után azonban a sablonnal létesített aktív kapcsolat megszűnik.
 
-Az Azure-tervezetek esetében a terv meghatározása (mit _kell_ telepíteni) és a terv-hozzárendelés (mi _volt_ az üzembe helyezett) közötti kapcsolat megmarad. Ez a kapcsolat lehetővé teszi az üzembe helyezett összetevők hatékonyabb nyomon követését és naplózását. Az Azure-tervrajzok egyszerre több előfizetést is frissíthetnek, amelyekre ugyanezen terv vonatkozik.
+Az Azure-tervezetek esetében a terv meghatározása (mit _kell_ telepíteni) és a terv-hozzárendelés (mi _volt_ az üzembe helyezett) közötti kapcsolat megmarad. E kapcsolatnak köszönhetően hatékonyabban követhetők nyomon és naplózhatók az üzembe helyezett összetevők. Az Azure-tervrajzok egyszerre több előfizetést is frissíthetnek, amelyekre ugyanezen terv vonatkozik.
 
 Nem kell választania egy ARM-sablon és egy terv között. Minden tervezet nulla vagy több ARM _-sablonból_állhat. Ez a támogatás azt jelenti, hogy az ARM-sablonok könyvtárainak fejlesztésére és karbantartására tett korábbi erőfeszítések az Azure-tervezetekben újrafelhasználhatók.
 
-## <a name="how-its-different-from-azure-policy"></a>Miben különbözik ez az Azure Policytól?
+## <a name="how-its-different-from-azure-policy"></a>Eltérések az Azure Policyhez képest
 
-A tervek olyan csomagok vagy tárolók, amelyekben az Azure-felhőszolgáltatások, a biztonság és a kialakítás megvalósításával kapcsolatos fókuszspecifikus szabványok, minták és követelmények állíthatók össze, amelyek újrafelhasználhatók a konzisztencia és a megfelelőség fenntartása érdekében.
+A tervek olyan csomagok vagy tárolók, amelyekben az Azure-felhőszolgáltatások megvalósításával kapcsolatos olyan fókuszspecifikus szabványok, minták és követelmények állíthatók össze, amelyek később újból felhasználhatók a konzisztencia és a megfelelőség fenntartása érdekében.
 
-A [szabályzatok](../policy/overview.md) olyan alapértelmezett engedélyezési / explicit megtagadási rendszerek, amelyek az erőforrások tulajdonságaira összpontosítanak az üzembe helyezés során és a meglévő erőforrások esetében. Segítik a felhőalapú rendszerek irányítását azáltal, hogy ellenőrzik az egy előfizetésen belüli erőforrásoknak a követelményeknek és szabványoknak való megfelelését.
+A [szabályzatok](../policy/overview.md) olyan alapértelmezett engedélyezési / explicit megtagadási rendszerek, amelyek az erőforrások tulajdonságaira összpontosítanak az üzembe helyezés során és a meglévő erőforrások esetében. Segítik a felhőszabályozást oly módon, hogy ellenőrzik, hogy az egy előfizetésen belüli erőforrások megfelelnek-e a követelményeknek és a szabványoknak.
 
-Ha a tervekbe belefoglal egy szabályzatot, lehetővé teszi a megfelelő minta vagy kialakítás létrehozását a terv hozzárendelésekor. A szabályzat belefoglalásával azt is biztosíthatja, hogy a környezeten csak jóváhagyott vagy várt módosításokat lehessen végrehajtani, így folyamatosan megfeleljen a terv által kijelölt rendeltetési célnak.
+A tervbe foglalt szabályzatokkal a terv hozzárendelése során megfelelő mintát vagy kialakítást hozhat létre. A szabályzat belefoglalásával arról is gondoskodhat, hogy a környezetben csak jóváhagyott vagy várt módosításokat lehessen végrehajtani, így folyamatosan biztosíthatja a terv céljának való megfelelőséget.
 
 A szabályzatok a tervrajzok definíciójában szereplő _számos összetevő_ egyike lehet. A tervek a szabályzatokhoz és kezdeményezésekhez paraméterek használatát is támogatják.
 
@@ -103,7 +103,7 @@ Tervek hozzárendeléséhez vagy a hozzárendelés megszüntetéséhez a fiókna
 
 A következő beépített szerepkörök érhetők el:
 
-|RBAC szerepkör | Leírás |
+|Azure-szerepkör | Leírás |
 |-|-|
 |[Tulajdonos](../../role-based-access-control/built-in-roles.md#owner) | A többi engedélyen kívül minden Azure Blueprint kapcsolódó engedélyt tartalmaz. |
 |[Közreműködő](../../role-based-access-control/built-in-roles.md#contributor) | Más engedélyek mellett létrehozhat és törölhet tervrajz-definíciókat, de nem rendelkezik terv-hozzárendelési engedélyekkel. |

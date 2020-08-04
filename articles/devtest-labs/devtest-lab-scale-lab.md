@@ -3,12 +3,12 @@ title: Kvóták és korlátok méretezése a laborban Azure DevTest Labsban | Mi
 description: Ez a cikk bemutatja, hogyan méretezheti a labort Azure DevTest Labsban. Megtekintheti a használati kvótákat és korlátozásokat, és megnövelheti a kérést.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: dacc699a6f4e7663d0f314acfc2212bd69d46d18
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 2166eaab073e2abc24ca24494ae13eb876db1fcf
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287313"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533954"
 ---
 # <a name="scale-quotas-and-limits-in-devtest-labs"></a>Kvóták és korlátozások méretezése a DevTest Labs szolgáltatásban
 A DevTest Labs szolgáltatásban végzett munka során észreveheti, hogy egyes Azure-erőforrások esetében bizonyos alapértelmezett korlátozások vannak érvényben, ami hatással lehet a DevTest Labs szolgáltatásra. Ezeket a korlátokat **kvótáknak**nevezzük.
@@ -20,7 +20,7 @@ Minden Azure-erőforrást használhat, amíg el nem éri a kvótáját. Minden e
 
 Például minden előfizetéshez tartozik egy 20 maggal alapértelmezett kvóta. Így ha a laborban virtuális gépeket hoz létre négy maggal, akkor csak öt virtuális gépet hozhat létre.
 
-Az [Azure-előfizetések és-szolgáltatások korlátai](../azure-resource-manager/management/azure-subscription-service-limits.md) az Azure-erőforrások leggyakoribb kvótáit sorolja fel. A laborban leggyakrabban használt erőforrások, amelyek esetében kvóták merülhetnek fel, a virtuálisgép-magok, a nyilvános IP-címek, a hálózati adapterek, a felügyelt lemezek, a RBAC szerepkör-hozzárendelések és a ExpressRoute-áramkörök is.
+Az [Azure-előfizetések és-szolgáltatások korlátai](../azure-resource-manager/management/azure-subscription-service-limits.md) az Azure-erőforrások leggyakoribb kvótáit sorolja fel. A laborban leggyakrabban használt erőforrások, amelyek esetében kvóták merülhetnek fel, a virtuálisgép-magok, a nyilvános IP-címek, a hálózati adapterek, a felügyelt lemezek, az Azure szerepkör-hozzárendelések és a ExpressRoute-áramkörök is.
 
 ## <a name="view-your-usage-and-quotas"></a>A használat és a kvóták megtekintése
 Ezek a lépések bemutatják, hogyan tekintheti meg az előfizetéshez tartozó aktuális kvótákat adott Azure-erőforrásokhoz, és megtekintheti az egyes felhasznált kvóták százalékos arányát.

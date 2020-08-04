@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 07/08/2020
 ms.author: v-erkel
-ms.openlocfilehash: 6923bb31e53493dd01f41cb0b0449f2093bc7e91
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7ad910823c4dd2430aeae085dd8e510fcd42c80f
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092473"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87532594"
 ---
 # <a name="add-storage-targets"></a>Céltárak hozzáadása
 
@@ -118,7 +118,7 @@ A Storage-fiók tulajdonosának explicit módon hozzá kell adnia a roles [Stora
 
 Ezt előre elvégezheti, vagy egy hivatkozásra kattintva megadhatja a blob Storage-tárolót tartalmazó oldalon. Ne feledje, hogy akár öt percet is igénybe vehet, hogy a szerepkör-beállítások továbbítsák az Azure-környezetet, ezért néhány percet várnia kell, miután hozzáadta a szerepköröket a tárolási cél létrehozása előtt.
 
-A RBAC szerepkörök hozzáadásának lépései:
+Az Azure-szerepkörök hozzáadásának lépései:
 
 1. Nyissa meg a Storage-fiókhoz tartozó **hozzáférés-vezérlés (iam)** lapot. (A **tároló hozzáadása** lapon lévő hivatkozás automatikusan megnyitja ezt a lapot a kiválasztott fiókhoz.)
 
@@ -220,9 +220,9 @@ Ez a táblázat a használati modell eltéréseit foglalja össze:
 
 | Használati modell                   | Gyorsítótárazási mód | Háttér-ellenőrzés | Maximális írási késleltetés |
 |-------------------------------|--------------|-----------------------|--------------------------|
-| Súlyos, ritka írások olvasása | Olvasás         | Soha                 | Nincs                     |
+| Súlyos, ritka írások olvasása | Olvasás         | Soha                 | None                     |
 | 15%-nál nagyobb írások       | Olvasás/írás   | Soha                 | 1 óra                   |
-| Az ügyfelek megkerülik a gyorsítótárat      | Olvasás         | 30 másodperc            | Nincs                     |
+| Az ügyfelek megkerülik a gyorsítótárat      | Olvasás         | 30 másodperc            | None                     |
 
 ### <a name="create-an-nfs-storage-target"></a>NFS-tárolási cél létrehozása
 

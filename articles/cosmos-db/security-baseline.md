@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: edcecefab6243645c47af0ec1b8dd4b26fe22bb7
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 3431ad88a27da9d83b75ed3661d6129f157b9b1f
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501116"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87531506"
 ---
 # <a name="azure-security-baseline-for-cosmos-db"></a>Cosmos DB Azure biztonsági alapterve
 
@@ -286,7 +286,7 @@ Naplózási riasztások létrehozása, megtekintése és kezelése Azure Monitor
 
 **Útmutató**: a Azure Portal identitás-és hozzáférés-vezérlés (iam) paneljén konfigurálhatja a szerepköralapú hozzáférés-vezérlést (RBAC), és megtarthatja a leltárt Azure Cosmos db erőforrásokon. A szerepköröket a rendszer a felhasználókra, csoportokra, egyszerű szolgáltatásokra és felügyelt identitásokra alkalmazza Active Directoryban. A felhasználók és csoportok számára beépített szerepköröket vagy egyéni szerepköröket is használhat.
 
-A Azure Cosmos DB beépített RBAC biztosít a gyakori felügyeleti forgatókönyvekhez Azure Cosmos DBban. A Azure Active Directory (AD) profillal rendelkező személy hozzárendelheti ezeket a RBAC-szerepköröket a felhasználókhoz, csoportokhoz, egyszerű szolgáltatásokhoz vagy felügyelt identitásokhoz, így biztosíthatja vagy megtagadhatja a hozzáférést az erőforrásokhoz és műveletekhez Azure Cosmos DB erőforrásokon.
+A Azure Cosmos DB beépített RBAC biztosít a gyakori felügyeleti forgatókönyvekhez Azure Cosmos DBban. A Azure Active Directory (AD) profillal rendelkező személy ezeket az Azure-szerepköröket hozzárendelheti a felhasználókhoz, csoportokhoz, egyszerű szolgáltatásokhoz vagy felügyelt identitásokhoz, így biztosíthatja vagy megtagadhatja a hozzáférést az erőforrásokhoz és műveletekhez Azure Cosmos DB erőforrásokon.
 
 Az Azure AD PowerShell-modullal is elvégezheti az alkalmi lekérdezéseket a felügyeleti csoportok tagjait futtató fiókok felderítéséhez. 
 
@@ -528,7 +528,7 @@ Az ügyfelek adatvédelem az Azure-ban:https://docs.microsoft.com/azure/security
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: az erőforrásokhoz való hozzáférés szabályozása az Azure RBAC
 
-**Útmutató**: a Azure Cosmos db beépített szerepköralapú hozzáférés-vezérlést (RBAC) biztosít a Azure Cosmos db gyakori felügyeleti eseteihez. A Azure Active Directory profillal rendelkező személy a RBAC-szerepköröket hozzárendelheti a felhasználókhoz, csoportokhoz, egyszerű szolgáltatásokhoz vagy felügyelt identitásokhoz, így biztosíthatja vagy megtagadhatja a hozzáférést az erőforrásokhoz és műveletekhez Azure Cosmos DB erőforrásokon. A szerepkör-hozzárendelések hatóköre csak a csak vezérlőre vonatkozik, amely hozzáférést biztosít az Azure Cosmos-fiókok,-adatbázisok,-tárolók és-ajánlatok (átviteli sebesség) számára.
+**Útmutató**: a Azure Cosmos db beépített szerepköralapú hozzáférés-vezérlést (RBAC) biztosít a Azure Cosmos db gyakori felügyeleti eseteihez. A Azure Active Directory profillal rendelkező személy a felhasználókhoz, csoportokhoz, egyszerű szolgáltatásokhoz vagy felügyelt identitásokhoz rendelheti hozzá ezeket az Azure-szerepköröket az erőforrásokhoz és műveletekhez való hozzáférés engedélyezéséhez vagy megtagadásához Azure Cosmos DB erőforrásokon. A szerepkör-hozzárendelések hatóköre csak a csak vezérlőre vonatkozik, amely hozzáférést biztosít az Azure Cosmos-fiókok,-adatbázisok,-tárolók és-ajánlatok (átviteli sebesség) számára.
 
 A RBAC megvalósítása a Azure Cosmos DBban:https://docs.microsoft.com/azure/cosmos-db/role-based-access-control
 

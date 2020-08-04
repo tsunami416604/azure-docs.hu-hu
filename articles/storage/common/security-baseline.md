@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 36f3c4192f43e323df2aaf9397364dfd1b4da731
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: a9c3264a9a9d6ae27eee6da4338fa6fd401da461
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501372"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534056"
 ---
 # <a name="azure-security-baseline-for-azure-storage"></a>Azure-beli biztonsági alapkonfiguráció Azure Storage-hoz
 
@@ -536,7 +536,7 @@ Emellett a virtuális hálózati szolgáltatás végpont-házirendjeivel is szű
 
 **Útmutató**: a Azure Active Directory (Azure ad) a szerepköralapú hozzáférés-vezérlés (RBAC) segítségével engedélyezi a hozzáférési jogokat a biztonságos erőforrásokhoz. Az Azure Storage egy beépített Azure-beli szerepkört határoz meg, amely magában foglalja a blob-vagy üzenetsor-adateléréshez használt engedélyek közös készleteit. 
 
-- [RBAC-szerepkörök társítása az Azure Storage-fiókhoz](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal#assign-rbac-roles-using-the-azure-portal)
+- [Azure-szerepkörök kiosztása Azure Storage-fiókhoz](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal#assign-azure-roles-using-the-azure-portal)
 
 - [Az Azure Storage erőforrás-szolgáltató használata a kezelési erőforrások eléréséhez](https://docs.microsoft.com/azure/storage/common/authorization-resource-provider)
 

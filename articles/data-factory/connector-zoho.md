@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 08/03/2020
 ms.author: jingwang
-ms.openlocfilehash: 50d893ef42c7b870d5fbf2be1feed798d46c86a7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 78e7fc6b2a4c9804fbba60aa9946cc612b494461
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81409973"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87531285"
 ---
 # <a name="copy-data-from-zoho-using-azure-data-factory-preview"></a>Adatok másolása a Zoho használatával Azure Data Factory (előzetes verzió)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -36,6 +36,8 @@ Ez a Zoho-összekötő a következő tevékenységek esetében támogatott:
 
 Az adatok a Zoho-ból bármely támogatott fogadó adattárba másolhatók. A másolási tevékenység által a forrásként/mosogatóként támogatott adattárak listáját a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) táblázatban tekintheti meg.
 
+Ez az összekötő támogatja a Xero hozzáférési token hitelesítését és a OAuth 2,0 hitelesítést.
+
 A Azure Data Factory egy beépített illesztőprogramot biztosít a kapcsolat engedélyezéséhez, ezért nem kell manuálisan telepítenie az adott összekötőt használó illesztőprogramokat.
 
 ## <a name="getting-started"></a>Első lépések
@@ -51,13 +53,19 @@ A Zoho társított szolgáltatás a következő tulajdonságokat támogatja:
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
 | típus | A Type tulajdonságot a következőre kell beállítani: **Zoho** | Igen |
+| connectionProperties | A Zoho szolgáltatáshoz való kapcsolódás módját meghatározó tulajdonságok csoportja. | Igen |
+| ***Alatt `connectionProperties` :*** | | |
 | endpoint | A Zoho-kiszolgáló () végpontja `crm.zoho.com/crm/private` . | Igen |
+| authenticationType | Az engedélyezett értékek: `OAuth_2.0` és `Access Token` . | Igen |
+| ügyfél-azonosító | A Zoho-alkalmazáshoz társított ügyfél-azonosító. | Igen a OAuth 2,0-hitelesítéshez | 
+| clientSecrect | A Zoho-alkalmazáshoz társított clientsecret. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Igen a OAuth 2,0-hitelesítéshez | 
+| refreshToken | A OAuth 2,0 frissítési token társítva van a Zoho-alkalmazáshoz, amely a hozzáférési token lejárati idejének frissítésére szolgál. A frissítési jogkivonat soha nem jár le. A frissítési token beszerzéséhez a access_typet kell kérnie `offline` , további információt [ebből a cikkből](https://www.zoho.com/crm/developer/docs/api/auth-request.html). <br>Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md).| Igen a OAuth 2,0-hitelesítéshez |
 | accessToken | A Zoho-hitelesítés hozzáférési jogkivonata. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Igen |
 | useEncryptedEndpoints | Meghatározza, hogy az adatforrás-végpontok HTTPS protokollal legyenek titkosítva. Az alapértelmezett érték az igaz.  | Nem |
 | useHostVerification | Megadja, hogy szükséges-e az állomásnév a kiszolgáló tanúsítványában, hogy egyezzen a kiszolgáló állomásneve a TLS-kapcsolaton keresztüli csatlakozáskor. Az alapértelmezett érték az igaz.  | Nem |
 | usePeerVerification | Megadja, hogy a rendszer ellenőrizze-e a kiszolgáló identitását TLS-kapcsolaton keresztül. Az alapértelmezett érték az igaz.  | Nem |
 
-**Példa:**
+**Példa: OAuth 2,0 hitelesítés**
 
 ```json
 {
@@ -65,11 +73,50 @@ A Zoho társított szolgáltatás a következő tulajdonságokat támogatja:
     "properties": {
         "type": "Zoho",
         "typeProperties": {
-            "endpoint" : "crm.zoho.com/crm/private",
-            "accessToken": {
-                 "type": "SecureString",
-                 "value": "<accessToken>"
-            }
+            "connectionProperties": { 
+                "authenticationType":"OAuth_2.0", 
+                "endpoint": "crm.zoho.com/crm/private", 
+                "clientId": "<client ID>", 
+                "clientSecrect": {
+                    "type": "SecureString",
+                    "value": "<client secret>"
+                },
+                "accessToken": {
+                    "type": "SecureString",
+                    "value": "<access token>"
+                }, 
+                "refreshToken": {
+                    "type": "SecureString",
+                    "value": "<refresh token>"
+                }, 
+                "useEncryptedEndpoints": true,
+                "useHostVerification": true, 
+                "usePeerVerification": true
+            }
+        }
+    }
+}
+```
+
+**Példa: hozzáférési jogkivonat hitelesítése**
+
+```json
+{
+    "name": "ZohoLinkedService",
+    "properties": {
+        "type": "Zoho",
+        "typeProperties": {
+            "connectionProperties": { 
+                "authenticationType":"Access Token", 
+                "endpoint": "crm.zoho.com/crm/private", 
+                "accessToken": {
+                    "type": "SecureString",
+                    "value": "<access token>"
+                }, 
+                "useEncryptedEndpoints": true, 
+                "useHostVerification": true, 
+                "usePeerVerification": true
+            }
         }
     }
 }
@@ -114,9 +161,9 @@ Az adatok Zoho-ból való másolásához állítsa a forrás típusát a másol�
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
 | típus | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **ZohoSource** | Igen |
-| lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Példa: `"SELECT * FROM Accounts"`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
+| lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Például: `"SELECT * FROM Accounts"`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
 
-**Példa:**
+**Például**
 
 ```json
 "activities":[

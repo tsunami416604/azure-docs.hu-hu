@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 06/17/2020
 ms.custom: azure-synapse
-ms.openlocfilehash: 4f6a64cf30ecc684e05675d366ff5c9fc6642126
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 6ba0a599bcb0b058ce4902882df9459b177fb6b5
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372161"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87530399"
 ---
 # <a name="write-audit-to-a-storage-account-behind-vnet-and-firewall"></a>Naplózás írása a VNet és a tűzfal mögötti Storage-fiókba
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -42,7 +42,7 @@ Ahhoz, hogy a naplózás egy VNet vagy tűzfal mögötti Storage-fiókba írjon,
 > * Általános célú v2-es Storage-fiók. Ha rendelkezik általános célú v1-vagy blob Storage-fiókkal, [frissítsen egy általános célú v2 Storage-fiókra](../../storage/common/storage-account-upgrade.md). További információ: Storage- [fiókok típusai](../../storage/common/storage-account-overview.md#types-of-storage-accounts).
 > * A Storage-fióknak ugyanazon az előfizetésen kell lennie, és ugyanazon a helyen kell lennie, mint a [logikai SQL Servernek](logical-servers.md).
 > * Az Azure Storage-fiókhoz szükséges `Allow trusted Microsoft services to access this storage account` . Állítsa be ezt a Storage **-fiók tűzfalakon és virtuális hálózatokon**.
-> * Rendelkeznie kell `Microsoft.Authorization/roleAssignments/write` engedéllyel a kiválasztott Storage-fiókhoz. További információ: [Azure beépített szerepkörök](../../role-based-access-control/built-in-roles.md).
+> * Rendelkeznie kell `Microsoft.Authorization/roleAssignments/write` engedéllyel a kiválasztott Storage-fiókhoz. További információ: [Beépített Azure-szerepkörök](../../role-based-access-control/built-in-roles.md).
 
 ## <a name="configure-in-azure-portal"></a>Konfigurálás az Azure Portalon
 
@@ -77,7 +77,7 @@ Az ebben a szakaszban szereplő parancsfájloknak a futtatása előtt frissíten
 |:-----|:-----|
 |`<subscriptionId>`| Azure-előfizetés azonosítója|
 |`<resource group>`| Erőforráscsoport|
-|`<logical SQL server>`| Kiszolgálónév|
+|`<logical SQL server>`| A kiszolgáló neve|
 |`<administrator login>`| Rendszergazdai fiók |
 |`<complex password>`| A rendszergazdai fiókhoz tartozó összetett jelszó|
 
@@ -117,7 +117,7 @@ Az SQL audit beállítása az események VNet vagy tűzfal mögötti Storage-fi�
    }
    ```
 
-2. Nyissa meg az [Azure Portalt](https://portal.azure.com). Nyissa meg a tárfiókot. Keresse meg **Access Control (iam)**, majd kattintson a **szerepkör-hozzárendelés hozzáadása**lehetőségre. Rendeljen hozzá **Storage blob-adatközreműködői** RBAC szerepkört a Azure Active Directory (Azure ad) szolgáltatásban regisztrált adatbázist futtató kiszolgálóhoz az előző lépésben leírtak szerint.
+2. Nyissa meg az [Azure Portalt](https://portal.azure.com). Nyissa meg a tárfiókot. Keresse meg **Access Control (iam)**, majd kattintson a **szerepkör-hozzárendelés hozzáadása**lehetőségre. Rendeljen hozzá **Storage blob-adatközreműködő** Azure-szerepkört a Azure Active Directory (Azure ad) szolgáltatásban regisztrált adatbázist futtató kiszolgálóhoz az előző lépésben leírtak szerint.
 
    > [!NOTE]
    > Ezt a lépést csak a tulajdonosi jogosultsággal rendelkező tagok hajthatják végre. A különböző Azure-beli beépített szerepkörökhöz tekintse meg az [Azure beépített szerepköreit](../../role-based-access-control/built-in-roles.md).

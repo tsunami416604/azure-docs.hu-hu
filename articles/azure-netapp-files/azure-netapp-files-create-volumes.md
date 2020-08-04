@@ -12,24 +12,24 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 07/24/2020
+ms.date: 07/27/2020
 ms.author: b-juche
-ms.openlocfilehash: 2e1e6ad6625586e882551521111057a2a20f0fff
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: f176e8fceb4d3e2e07398e6cb878180c8fe2321b
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87513043"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533155"
 ---
 # <a name="create-an-nfs-volume-for-azure-netapp-files"></a>NFS-kötet létrehozása az Azure NetApp Files számára
 
-Azure NetApp Files támogatja az NFS-t (NFSv3 és NFSv 4.1) és a SMBv3-köteteket. A kötet kapacitásfogyasztása beleszámít a készlet kiosztott kapacitásába. Ebből a cikkből megtudhatja, hogyan hozhat létre NFS-köteteket. Ha SMB-kötetet szeretne létrehozni, tekintse [meg az SMB-kötet létrehozása Azure NetApp Fileshoz](azure-netapp-files-create-volumes-smb.md)című témakört. 
+Azure NetApp Files támogatja a kötetek NFS használatával történő létrehozását (NFSv3 és NFSv 4.1), a SMBv3 vagy a kettős protokollt (NFSv3 és SMB). A kötet kapacitásfogyasztása beleszámít a készlet kiosztott kapacitásába. Ebből a cikkből megtudhatja, hogyan hozhat létre NFS-köteteket. 
 
 ## <a name="before-you-begin"></a>Előkészületek 
-A cikk előfeltételeinek részeként korábban már be kellett állítania egy kapacitáskészletet.   
-[Kapacitási készlet beállítása](azure-netapp-files-set-up-capacity-pool.md)   
-Az alhálózatot delegálni kell Azure NetApp Files.  
-[Alhálózat delegálása az Azure NetApp Fileshoz](azure-netapp-files-delegate-subnet.md)
+* A cikk előfeltételeinek részeként korábban már be kellett állítania egy kapacitáskészletet.  
+    Lásd: [Kapacitási készlet beállítása](azure-netapp-files-set-up-capacity-pool.md).   
+* Az alhálózatot delegálni kell Azure NetApp Files.  
+    Lásd: [alhálózat delegálása Azure NetApp Filesra](azure-netapp-files-delegate-subnet.md).
 
 ## <a name="considerations"></a>Megfontolandó szempontok 
 
@@ -52,14 +52,11 @@ Az alhálózatot delegálni kell Azure NetApp Files.
 
 ## <a name="create-an-nfs-volume"></a>NFS-kötet létrehozása
 
-1.  Kattintson a **kötetek** panelre a kapacitási készletek panelen. 
+1.  Kattintson a **kötetek** panelre a kapacitási készletek panelen. Kattintson a **+ Kötet létrehozása** lehetőségre egy kötet létrehozásához. 
 
-    ![A kötetek navigálása](../media/azure-netapp-files/azure-netapp-files-navigate-to-volumes.png)
+    ![A kötetek navigálása](../media/azure-netapp-files/azure-netapp-files-navigate-to-volumes.png) 
 
-2.  Kattintson a **+ Kötet létrehozása** lehetőségre egy kötet létrehozásához.  
-    Megjelenik a kötet létrehozása ablak.
-
-3.  A kötet létrehozása ablakban kattintson a **Létrehozás** gombra, és adja meg a következő mezők adatait:   
+2.  A kötet létrehozása ablakban kattintson a **Létrehozás**gombra, és adja meg a következő mezők adatait az alapok lapon:   
     * **Kötet neve**      
         Adja meg a létrehozni kívánt kötet nevét.   
 
@@ -92,11 +89,11 @@ Az alhálózatot delegálni kell Azure NetApp Files.
 
     * Ha meglévő pillanatkép-szabályzatot szeretne alkalmazni a kötetre, kattintson a **speciális szakasz megjelenítése** lehetőségre a kibontásához, majd a legördülő menüben válassza ki a pillanatkép-szabályzatot. 
 
-        A pillanatkép-szabályzat létrehozásával kapcsolatos információkért lásd: [Pillanatképek kezelése](azure-netapp-files-manage-snapshots.md).
+        A pillanatkép-házirendek létrehozásával kapcsolatos információkért lásd: [Pillanatkép-házirendek kezelése](azure-netapp-files-manage-snapshots.md#manage-snapshot-policies).
 
         ![Speciális kijelölés megjelenítése](../media/azure-netapp-files/volume-create-advanced-selection.png)
 
-4. Kattintson a **protokoll**elemre, majd hajtsa végre a következő műveleteket:  
+3. Kattintson a **protokoll**elemre, majd hajtsa végre a következő műveleteket:  
     * Válassza az **NFS** lehetőséget a kötethez tartozó protokoll típusaként.   
     * Itt adhatja meg a **fájl elérési útját** , amelyet az új kötet exportálási útvonalának létrehozásához fog használni. A rendszer az exportálási útvonal használatával csatlakoztatja és éri el a kötetet.
 
@@ -105,11 +102,16 @@ Az alhálózatot delegálni kell Azure NetApp Files.
         A fájl elérési útjának egyedinek kell lennie az egyes előfizetésekben és az egyes régiókban. 
 
     * Válassza ki a kötet NFS-verzióját (**NFSv3** vagy **nfsv 4.1**).  
+
+    * Ha a NFSv 4.1-et használja, jelezze, hogy engedélyezni szeretné-e a kötet **Kerberos** -titkosítását.  
+
+        További konfigurációk szükségesek, ha a NFSv 4.1-et használó Kerberost használ. Kövesse az [nfsv 4.1 Kerberos-titkosítás konfigurálása](configure-kerberos-encryption.md)című témakör utasításait.
+
     * Szükség esetén [az NFS-kötet exportálási házirendjét is konfigurálhatja](azure-netapp-files-configure-export-policy.md).
 
     ![NFS-protokoll meghatározása](../media/azure-netapp-files/azure-netapp-files-protocol-nfs.png)
 
-5. A kötet részleteinek áttekintéséhez kattintson a **felülvizsgálat + létrehozás** elemre.  Ezután kattintson a **Létrehozás** gombra az NFS-kötet létrehozásához.
+4. A kötet részleteinek áttekintéséhez kattintson a **felülvizsgálat + létrehozás** elemre.  Ezután kattintson a **Létrehozás** gombra a kötet létrehozásához.
 
     A létrehozott kötet megjelenik a kötetek lapon. 
  
@@ -119,6 +121,7 @@ Az alhálózatot delegálni kell Azure NetApp Files.
 ## <a name="next-steps"></a>További lépések  
 
 * [Az NFSv 4.1 alapértelmezett tartományának konfigurálása az Azure NetApp Fileshoz](azure-netapp-files-configure-nfsv41-domain.md)
+* [A NFSv 4.1 Kerberos-titkosítás konfigurálása](configure-kerberos-encryption.md)
 * [Kötet Windows vagy Linux rendszerű virtuális gépekhez való csatlakoztatása és leválasztása](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
 * [Exportálási szabályzat konfigurálása NFS-kötethez](azure-netapp-files-configure-export-policy.md)
 * [Az Azure NetApp Files erőforráskorlátai](azure-netapp-files-resource-limits.md)

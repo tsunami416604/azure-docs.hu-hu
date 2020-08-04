@@ -5,18 +5,18 @@ author: sideeksh
 manager: rochakm
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: 52c7a4bfeddf808e5a714c7ad4ab164d65868940
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 7bc8427a51a9931ca82155232569767f12a8e266
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86201200"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534022"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>Gyakori kérdések: Azure – Azure vész-helyreállítás
 
 Ez a cikk az Azure-beli virtuális gépek vész-helyreállításával kapcsolatos gyakori kérdéseket válaszolja meg egy másik Azure-régióba [Azure site Recovery](site-recovery-overview.md)használatakor.
 
-## <a name="general"></a>Általános
+## <a name="general"></a>Általános kérdések
 
 ### <a name="how-is-site-recovery-priced"></a>Hogyan Site Recovery díjszabása?
 
@@ -70,6 +70,10 @@ Igen, az Azure-beli virtuális gépeket egy másik előfizetésre is replikálha
 ### <a name="can-i-replicate-zone-pinned-azure-vms-to-another-region"></a>Replikálható a zóna-rögzített Azure-beli virtuális gépek egy másik régióba?
 
 Igen, a [zóna által rögzített virtuális gépeket replikálhatja](https://azure.microsoft.com/blog/disaster-recovery-of-zone-pinned-azure-virtual-machines-to-another-region) egy másik régióba.
+
+### <a name="can-i-replicate-vms-in-a-region-that-has-zones-from-non-zone-to-zonal-configuration"></a>Replikálhatók a virtuális gépek olyan régióban, amely nem zónából származó zónákat tartalmaz a zónák közötti konfigurációhoz?
+
+Nem, ez jelenleg nem támogatott. Megkerülő megoldásként replikálhatja a virtuális gépet az ASR használatával egy másik régióban található zóna-konfigurációra, majd tiltsa le a replikációt. Ezután engedélyezze újra a replikációt az adott régióról az eredeti régióba, és válasszon egy replikációs konfigurációt a feladatátvételhez.
 
 ### <a name="can-i-exclude-disks"></a>Ki lehet zárni a lemezeket?
 

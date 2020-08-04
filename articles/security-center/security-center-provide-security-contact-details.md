@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/11/2020
 ms.author: memildin
-ms.openlocfilehash: 661d3845365778f7ef23cdd05b81b98c3bf84259
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5a2410a5ccaa10867e94b3a2ec10228a006fbe20
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519285"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534634"
 ---
 # <a name="set-up-email-notifications-for-security-alerts"></a>E-mail-értesítések beállítása biztonsági riasztásokhoz 
 
 Annak biztosítása érdekében, hogy a szervezetben a megfelelő személyek értesüljenek a biztonsági riasztásokról a környezetben, adja meg az e-mail-címüket az **e-mail értesítések** beállításai lapon.
 
-Az értesítések beállításakor beállíthatja, hogy az e-mailek az adott személyeknek vagy egy adott RBAC-szerepkörrel rendelkező felhasználóknak legyenek elküldve egy előfizetéshez. 
+Az értesítések beállításakor beállíthatja, hogy az e-mailek az adott személyeknek vagy egy adott Azure-szerepkörrel rendelkező felhasználóknak legyenek elküldve egy előfizetéshez. 
 
 A riasztások fáradtságának elkerülése érdekében Security Center korlátozza a kimenő levelek mennyiségét. Az egyes előfizetésekhez Security Center a következőt küldi el:
 
@@ -41,7 +41,7 @@ A riasztások fáradtságának elkerülése érdekében Security Center korláto
 
 ## <a name="set-up-email-notifications-for-alerts"></a>Értesítő e-mail-értesítések beállítása<a name="email"></a>
 
-E-mailes értesítéseket küldhet magánszemélyeknek vagy adott RBAC-szerepkörökkel rendelkező felhasználóknak.
+E-mailes értesítéseket küldhet magánszemélyeknek vagy az adott Azure-szerepkörökkel rendelkező felhasználóknak is.
 
 1. A Security Center **díjszabása & beállítások** területen válassza a megfelelő előfizetést, majd válassza az **e-mail értesítések**lehetőséget.
 
@@ -53,7 +53,7 @@ E-mailes értesítéseket küldhet magánszemélyeknek vagy adott RBAC-szerepkö
 1. A biztonsági kapcsolattartási adatok előfizetésre való alkalmazásához válassza a **Mentés**lehetőséget.
 
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 A biztonsági riasztásokkal kapcsolatos további tudnivalókért tekintse meg a következőket:
 
 * [Biztonsági riasztások – útmutató](alerts-reference.md) a Azure Security Center veszélyforrások elleni védelmi moduljában esetlegesen megjelenő biztonsági riasztások megismeréséhez

@@ -10,12 +10,12 @@ ms.date: 04/14/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 9d4097e847417f56c9881a3e18237e97dfee465e
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: dcd1280dbe3a00a6a7cbdaaf59aa05326dfa8375
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501406"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534175"
 ---
 # <a name="use-the-azure-portal-to-access-blob-or-queue-data"></a>A blob-vagy üzenetsor-információ elérésének Azure Portal használata
 
@@ -29,7 +29,7 @@ Attól függően, hogy hogyan kívánja engedélyezni a blob-vagy üzenetsor-inf
 
 ### <a name="use-the-account-access-key"></a>A fiók elérési kulcsának használata
 
-A blob-és üzenetsor-információk eléréséhez a fiók elérési kulcsához hozzá kell rendelnie egy RBAC-szerepkört, amely magában foglalja a **Microsoft. Storage/storageAccounts/listkeys műveletének beolvasása/Action**RBAC műveletet. Ez a RBAC-szerepkör beépített vagy egyéni szerepkör lehet. A **Microsoft. Storage/storageAccounts/listkeys műveletének beolvasása/műveletet** támogató beépített szerepkörök a következők:
+A blob-és üzenetsor-információk eléréséhez a fiók elérési kulcsához hozzá kell rendelnie egy Azure-szerepkört, amely tartalmazza a **Microsoft. Storage/storageAccounts/listkeys műveletének beolvasása/művelet**RBAC műveletet. Ez az Azure-szerepkör beépített vagy egyéni szerepkör lehet. A **Microsoft. Storage/storageAccounts/listkeys műveletének beolvasása/műveletet** támogató beépített szerepkörök a következők:
 
 - A Azure Resource Manager [tulajdonosi](../../role-based-access-control/built-in-roles.md#owner) szerepkör
 - A Azure Resource Manager [közreműködő](../../role-based-access-control/built-in-roles.md#contributor) szerepkör
@@ -47,7 +47,7 @@ Ha az Azure AD-fiókkal szeretné elérni a Azure Portal blob-vagy üzenetsor-ad
 - A Azure Resource Manager [olvasó](../../role-based-access-control/built-in-roles.md#reader) szerepkört legalább a Storage-fiók szintjére vagy magasabbra kell rendelni. Az **olvasó** szerepkör biztosítja a legtöbb korlátozott engedélyt, de egy másik Azure Resource Manager szerepkör is elfogadható, amely hozzáférést biztosít a Storage-fiókok felügyeleti erőforrásaihoz.
 - Olyan beépített vagy egyéni szerepkört rendelt hozzá, amely hozzáférést biztosít a blob-vagy üzenetsor-adathoz.
 
-Az **olvasó** szerepkör-hozzárendelés vagy egy másik Azure Resource Manager szerepkör-hozzárendelés szükséges ahhoz, hogy a felhasználó megtekinthesse és navigáljon a tárolási fiókok felügyeleti erőforrásaihoz a Azure Portal. A blob-vagy üzenetsor-adatelérést biztosító RBAC-szerepkörök nem biztosítanak hozzáférést a Storage-fiókok felügyeleti erőforrásaihoz. A blob-vagy üzenetsor-információk a portálon való eléréséhez a felhasználónak engedélyre van szüksége a Storage-fiók erőforrásainak böngészéséhez. További információ erről a követelményről: [az olvasó szerepkör kiosztása a portálhoz való hozzáféréshez](../common/storage-auth-aad-rbac-portal.md#assign-the-reader-role-for-portal-access).
+Az **olvasó** szerepkör-hozzárendelés vagy egy másik Azure Resource Manager szerepkör-hozzárendelés szükséges ahhoz, hogy a felhasználó megtekinthesse és navigáljon a tárolási fiókok felügyeleti erőforrásaihoz a Azure Portal. A blob vagy üzenetsor adataihoz hozzáférést biztosító Azure-szerepkörök nem biztosítanak hozzáférést a Storage-fiókok felügyeleti erőforrásaihoz. A blob-vagy üzenetsor-információk a portálon való eléréséhez a felhasználónak engedélyre van szüksége a Storage-fiók erőforrásainak böngészéséhez. További információ erről a követelményről: [az olvasó szerepkör kiosztása a portálhoz való hozzáféréshez](../common/storage-auth-aad-rbac-portal.md#assign-the-reader-role-for-portal-access).
 
 A blob vagy üzenetsor adataihoz való hozzáférést támogató beépített szerepkörök a következők:
 
@@ -82,7 +82,7 @@ Ha a fiók-hozzáférési kulccsal végzi a hitelesítést, a hitelesítési mó
 
 ![Jelenleg a Container-adatok elérése a fiók kulcsával](media/storage-access-blobs-queues-portal/auth-method-access-key.png)
 
-Ha az Azure AD-fiók használatára szeretne váltani, kattintson a képre Kiemelt hivatkozásra. Ha rendelkezik a megfelelő engedélyekkel az Ön által hozzárendelt RBAC-szerepkörökön keresztül, folytathatja a folytatást. Ha azonban nem rendelkezik a megfelelő engedélyekkel, a következőhöz hasonló hibaüzenet jelenik meg:
+Ha az Azure AD-fiók használatára szeretne váltani, kattintson a képre Kiemelt hivatkozásra. Ha rendelkezik a megfelelő engedélyekkel az Ön által hozzárendelt Azure-szerepkörökön keresztül, folytathatja a folytatást. Ha azonban nem rendelkezik a megfelelő engedélyekkel, a következőhöz hasonló hibaüzenet jelenik meg:
 
 ![Hiba jelenik meg, ha az Azure AD-fiók nem támogatja a hozzáférést](media/storage-access-blobs-queues-portal/auth-error-azure-ad.png)
 

@@ -3,16 +3,16 @@ title: Azure Relay – áttelepítés közös hozzáférésű aláírás engedé
 description: Útmutató Azure Relay alkalmazások áttelepítéséhez Azure Active Directory Access Control Service használatával a közös hozzáférési aláírás engedélyezéséhez.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 300a7eb5bb69db878b208be8c1e2b404717a6265
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3b793173270b0ddf25f0e971dbb2fed97cb10a55
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85314305"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87532866"
 ---
 # <a name="azure-relay---migrate-from-azure-active-directory-access-control-service-to-shared-access-signature-authorization"></a>Azure Relay – Migrálás Azure Active Directory Access Control Serviceról a közös hozzáférésű aláírás engedélyezésére
 
-Azure Relay az alkalmazások történelmileg két különböző engedélyezési modellt használtak: a továbbítási szolgáltatás által közvetlenül biztosított [közös hozzáférésű aláírási (SAS)](../service-bus-messaging/service-bus-sas.md) jogkivonat-modellt, valamint egy összevont modellt, amelyben az engedélyezési szabályok kezelése a [Azure Active Directory](/azure/active-directory/) Access Control Service (ACS) belül történik, és az ACS-től kapott tokenek továbbítása a kívánt funkciókhoz való hozzáférés engedélyezéséhez.
+Azure Relay az alkalmazások történelmileg két különböző engedélyezési modellt használtak: a továbbítási szolgáltatás által közvetlenül biztosított [közös hozzáférésű aláírási (SAS)](../service-bus-messaging/service-bus-sas.md) jogkivonat-modellt, valamint egy összevont modellt, amelyben az engedélyezési szabályok kezelése a [Azure Active Directory](../active-directory/index.yml) Access Control Service (ACS) belül történik, és az ACS-től kapott tokenek továbbítása a kívánt funkciókhoz való hozzáférés engedélyezéséhez.
 
 Az ACS engedélyezési modelljét az [sas-hitelesítés](../service-bus-messaging/service-bus-authentication-and-authorization.md) az előnyben részesített modellként váltotta fel, és az összes dokumentáció, útmutató és minta kizárólag az SAS-t használja. Emellett már nem lehet az ACS-vel párosított új továbbítási névtereket létrehozni.
 
@@ -56,5 +56,3 @@ A Azure Relay hitelesítéssel kapcsolatos további tudnivalókért tekintse meg
 
 * [Hitelesítés és engedélyezés Azure Relay](relay-authentication-and-authorization.md)
 * [Service Bus hitelesítés közös hozzáférési aláírásokkal](../service-bus-messaging/service-bus-sas.md)
-
-

@@ -10,12 +10,12 @@ ms.date: 05/01/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 0a1083c1889fbd83a1b8bd119a71013b738d7f74
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: fa4a649115f8e89c27f435888b682b7de36e9894
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499534"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533920"
 ---
 # <a name="create-an-image-version-from-a-vm-in-azure-using-the-azure-cli"></a>Rendszerkép-verzió létrehozása az Azure-beli virtuális gépről az Azure CLI használatával
 
@@ -100,7 +100,7 @@ az sig image-version create \
 > [!NOTE]
 > Meg kell várnia, amíg a rendszerkép verziója teljesen elkészült és replikálva lett ahhoz, hogy ugyanazt a felügyelt képet használhassa egy másik rendszerkép-verzió létrehozásához.
 >
-> A rendszerképet a prémium tárolóban is tárolhatja egy hozzáadási `--storage-account-type  premium_lrs` vagy a [zóna redundáns tárterületével](../storage/common/storage-redundancy.md) , `--storage-account-type  standard_zrs` Ha létrehozza a rendszerkép verzióját.
+> A rendszerképet a Premium Storage-ban is tárolhatja `--storage-account-type  premium_lrs` , ha a rendszerkép verziójának létrehozásakor hozzáadja vagy zónába helyezi a [redundáns tárolást](../storage/common/storage-redundancy.md) `--storage-account-type  standard_zrs` .
 >
 
 ## <a name="next-steps"></a>További lépések

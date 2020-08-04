@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: b-juche
-ms.openlocfilehash: 24a5e342c66d8154f4635acc957084d243fbd75e
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: ba66716abe80a1b12bc64b739f498a0a01d54fe3
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87513077"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533172"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>SMB-kötet létrehozása az Azure NetApp Files számára
 
-Azure NetApp Files támogatja az NFS-és SMBv3-köteteket. A kötet kapacitásfogyasztása beleszámít a készlet kiosztott kapacitásába. Ez a cikk bemutatja, hogyan hozhat létre SMBv3-köteteket. Ha NFS-kötetet szeretne létrehozni, tekintse [meg az NFS-kötet létrehozása Azure NetApp Fileshoz](azure-netapp-files-create-volumes.md)című témakört. 
+Azure NetApp Files támogatja a kötetek NFS használatával történő létrehozását (NFSv3 és NFSv 4.1), a SMBv3 vagy a kettős protokollt (NFSv3 és SMB). A kötet kapacitásfogyasztása beleszámít a készlet kiosztott kapacitásába. Ez a cikk bemutatja, hogyan hozhat létre SMBv3-köteteket.
 
 ## <a name="before-you-begin"></a>Előkészületek 
 A cikk előfeltételeinek részeként korábban már be kellett állítania egy kapacitáskészletet.   
@@ -45,7 +45,7 @@ Az alhálózatot delegálni kell Azure NetApp Files.
     |    AD Web Services    |    9389      |    TCP           |
     |    DNS                |    53        |    TCP           |
     |    DNS                |    53        |    UDP           |
-    |    ICMPv4             |    N.A.       |    Visszhangos válasz    |
+    |    ICMPv4             |    N/A       |    Visszhangos válasz    |
     |    Kerberos           |    464       |    TCP           |
     |    Kerberos           |    464       |    UDP           |
     |    Kerberos           |    88        |    TCP           |
@@ -197,7 +197,7 @@ Ez a beállítás a **NetApp-fiókhoz**tartozó **Active Directory-kapcsolatokba
 2. Kattintson a **+ Kötet létrehozása** lehetőségre egy kötet létrehozásához.  
     Megjelenik a kötet létrehozása ablak.
 
-3. A kötet létrehozása ablakban kattintson a **Létrehozás** gombra, és adja meg a következő mezők adatait:   
+3. A kötet létrehozása ablakban kattintson a **Létrehozás** gombra, és adja meg a következő mezők adatait az alapok lapon:   
     * **Kötet neve**      
         Adja meg a létrehozni kívánt kötet nevét.   
 
@@ -230,7 +230,7 @@ Ez a beállítás a **NetApp-fiókhoz**tartozó **Active Directory-kapcsolatokba
 
     * Ha meglévő pillanatkép-szabályzatot szeretne alkalmazni a kötetre, kattintson a **speciális szakasz megjelenítése** lehetőségre a kibontásához, majd a legördülő menüben válassza ki a pillanatkép-szabályzatot. 
 
-        A pillanatkép-szabályzat létrehozásával kapcsolatos információkért lásd: [Pillanatképek kezelése](azure-netapp-files-manage-snapshots.md).
+        A pillanatkép-házirendek létrehozásával kapcsolatos információkért lásd: [Pillanatkép-házirendek kezelése](azure-netapp-files-manage-snapshots.md#manage-snapshot-policies).
 
         ![Speciális kijelölés megjelenítése](../media/azure-netapp-files/volume-create-advanced-selection.png)
 

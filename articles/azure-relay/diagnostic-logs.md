@@ -3,12 +3,12 @@ title: Diagnosztikai naplók a Hibrid kapcsolatokhoz
 description: Ez a cikk a Azure Relay számára elérhető összes tevékenység-és diagnosztikai napló áttekintését tartalmazza.
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: f79e4aa21fcb9e592f431e252981dc0e7c02817f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 980f2f7a737d3f2460c17a84c472cbf56f5eb90f
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85314902"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533002"
 ---
 # <a name="enable-diagnostics-logs-for-azure-relay-hybrid-connections"></a>Diagnosztikai naplók engedélyezése Azure Relay Hibrid kapcsolatok
 A Azure Relay Hibrid kapcsolatok használatának megkezdése után érdemes figyelni, hogy a figyelők és a küldők hogyan és mikor legyenek megnyitva és lezárva, valamint hogyan történik a Hibrid kapcsolatok létrehozása és az üzenetek küldése. Ez a cikk áttekintést nyújt a Azure Relay szolgáltatás által biztosított tevékenység-és diagnosztikai naplókról. 
@@ -46,13 +46,13 @@ A diagnosztikai naplók engedélyezéséhez hajtsa végre a következő lépése
         ![Diagnosztikai beállítások](./media/diagnostic-logs/sample-diagnostic-settings.png)
 1. A beállítások mentéséhez kattintson a **Save (Mentés** ) gombra az eszköztáron.
 
-Az új beállítások körülbelül 10 percen belül lépnek érvénybe. A naplók a konfigurált archiválási célpontban, a **diagnosztikai naplók** panelen jelennek meg. A diagnosztikai beállítások konfigurálásával kapcsolatos további információkért tekintse meg az [Azure Diagnostics-naplók áttekintését](../azure-monitor/platform/diagnostic-logs-overview.md).
+Az új beállítások körülbelül 10 percen belül lépnek érvénybe. A naplók a konfigurált archiválási célpontban, a **diagnosztikai naplók** panelen jelennek meg. A diagnosztikai beállítások konfigurálásával kapcsolatos további információkért tekintse meg az [Azure Diagnostics-naplók áttekintését](../azure-monitor/platform/platform-logs-overview.md).
 
 
 ## <a name="schema-for-hybrid-connections-events"></a>Séma hibrid kapcsolati eseményekhez
 A hibrid kapcsolatok eseménynaplójának JSON-karakterláncai közé tartoznak az alábbi táblázatban felsorolt elemek:
 
-| Name | Description |
+| Név | Leírás |
 | ------- | ------- |
 | ResourceId | Erőforrás-azonosító Azure Resource Manager |
 | Tevékenységazonosító | A megadott művelet azonosítására szolgáló belső azonosító. A "TrackingId" néven is ismert |
@@ -80,7 +80,7 @@ Itt látható egy hibrid kapcsolati esemény JSON formátumban.
 
 ## <a name="events-and-operations-captured-in-diagnostic-logs"></a>A diagnosztikai naplókban rögzített események és műveletek
 
-| Művelet | Description | 
+| Művelet | Leírás | 
 | --------- | ----------- | 
 | AuthorizationFailed | Az engedélyezés sikertelen.|
 | InvalidSasToken | Érvénytelen SAS-jogkivonat. | 

@@ -10,12 +10,12 @@ ms.date: 12/18/2019
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: d5e8f5e3939ade4e5344ef586a62b6a19082e34e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e499b27124ed5723fb19fecbe4091f17364aea5a
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84809041"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533988"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-net"></a>Felhasználói delegálási SAS létrehozása tárolóhoz vagy blobhoz .NET-tel
 
@@ -25,9 +25,9 @@ Ez a cikk bemutatja, hogyan használhatók a Azure Active Directory-(Azure AD-) 
 
 [!INCLUDE [storage-auth-user-delegation-include](../../../includes/storage-auth-user-delegation-include.md)]
 
-## <a name="assign-rbac-roles-for-access-to-data"></a>RBAC-szerepkörök kiosztása az adathoz való hozzáféréshez
+## <a name="assign-azure-roles-for-access-to-data"></a>Azure-szerepkörök kiosztása az adathoz való hozzáféréshez
 
-Amikor egy Azure AD rendszerbiztonsági tag megpróbál hozzáférni a blob-adatforráshoz, a rendszerbiztonsági tag engedélyekkel kell rendelkeznie az erőforráshoz. Azt jelzi, hogy a rendszerbiztonsági tag felügyelt identitás-e az Azure-ban vagy egy olyan Azure AD-felhasználói fiók, amely kódot futtat a fejlesztési környezetben, a rendszerbiztonsági tag számára olyan RBAC-szerepkört kell hozzárendelni, amely hozzáférést biztosít az Azure Storage-beli blob- Az engedélyek **RBAC-n** keresztüli hozzárendelésével kapcsolatos információkért tekintse meg az [Azure-blobok és-várólisták hozzáférésének engedélyezése a Azure Active Directory használatával](../common/storage-auth-aad.md#assign-rbac-roles-for-access-rights)című témakör című szakaszát.
+Amikor egy Azure AD rendszerbiztonsági tag megpróbál hozzáférni a blob-adatforráshoz, a rendszerbiztonsági tag engedélyekkel kell rendelkeznie az erőforráshoz. Azt jelzi, hogy a rendszerbiztonsági tag felügyelt identitás-e az Azure-ban vagy egy olyan Azure AD-felhasználói fiókban, amely kódot futtat a fejlesztési környezetben, a rendszerbiztonsági tag számára olyan Azure-szerepkört kell hozzárendelni, amely hozzáférést biztosít az Azure Storage-beli blob Az engedélyek RBAC-n keresztüli hozzárendelésével kapcsolatos információkért tekintse meg **Az Azure** [-blobok és-várólisták hozzáférésének engedélyezése az Azure-beli blobokhoz és-várólistákhoz Azure Active Directory használatával](../common/storage-auth-aad.md#assign-azure-roles-for-access-rights)című szakaszt.
 
 [!INCLUDE [storage-install-packages-blob-and-identity-include](../../../includes/storage-install-packages-blob-and-identity-include.md)]
 
@@ -235,7 +235,7 @@ private static async Task ReadBlobWithSasAsync(Uri sasUri)
 
 [!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 - [Korlátozott hozzáférés biztosítása az Azure Storage-erőforrásokhoz közös hozzáférésű aláírások (SAS) használatával](../common/storage-sas-overview.md)
 - [Felhasználói delegálási kulcs műveletének beolvasása](/rest/api/storageservices/get-user-delegation-key)

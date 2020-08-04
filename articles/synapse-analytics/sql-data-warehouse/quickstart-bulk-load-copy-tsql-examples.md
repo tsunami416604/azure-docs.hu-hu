@@ -9,12 +9,12 @@ ms.subservice: sql-dw
 ms.date: 07/10/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 1e44b58335bf90dbc0e97b58de7f878bc94c91c7
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 05dd1f1d429b59c4d621b63c6b78a1fc00e8d4dd
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371957"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87528463"
 ---
 # <a name="securely-load-data-using-synapse-sql"></a>Adattárolás biztonságos betöltése a szinapszis SQL használatával
 
@@ -70,9 +70,9 @@ A felügyelt identitás hitelesítésére akkor van szükség, ha a Storage-fió
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-1. Azure PowerShell telepítése az [útmutató](/powershell/azure/install-az-ps?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)segítségével.
-2. Ha rendelkezik általános célú v1-vagy blob Storage-fiókkal, először az [útmutató](../../storage/common/storage-account-upgrade.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)használatával kell frissítenie az általános célú v2-re.
-3. Engedélyeznie kell, **hogy a megbízható Microsoft-szolgáltatások hozzáférjenek ehhez a Storage-fiókhoz** az Azure Storage **-fiók tűzfala és a virtuális hálózatok** beállítások menüjében. További információért tekintse meg ezt az [útmutatót](../../storage/common/storage-network-security.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#exceptions) .
+1. Telepítse az Azure PowerShellt a kapcsolódó [útmutató](/powershell/azure/install-az-ps?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) alapján.
+2. Ha általános célú v1 vagy Blob Storage-fiókja van, először frissítenie kell az általános célú v2 fiókra az [itt található útmutatások](../../storage/common/storage-account-upgrade.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) szerint.
+3. Engedélyeznie kell, **hogy a megbízható Microsoft-szolgáltatások hozzáférjenek ehhez a Storage-fiókhoz** az Azure Storage **-fiók tűzfala és a virtuális hálózatok** beállítások menüjében. További információt ebben az [útmutatóban](../../storage/common/storage-network-security.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#exceptions) talál.
 #### <a name="steps"></a>Lépések
 
 1. A PowerShellben **regisztrálja az SQL servert** Azure Active Directory (HRE) használatával:
@@ -88,13 +88,13 @@ A felügyelt identitás hitelesítésére akkor van szükség, ha a Storage-fió
    > [!NOTE]
    > Ha rendelkezik általános célú v1-vagy blob Storage-fiókkal, először a **v2-re kell frissítenie** az [útmutató](../../storage/common/storage-account-upgrade.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)segítségével.
 
-3. A Storage-fiók területen navigáljon a **Access Control (iam)** elemre, és válassza a **szerepkör-hozzárendelés hozzáadása**elemet. Rendeljen hozzá **Storage blob-Adattulajdonost, közreműködőt vagy olvasó** RBAC-szerepkört az SQL Serverhez.
+3. A Storage-fiók területen navigáljon a **Access Control (iam)** elemre, és válassza a **szerepkör-hozzárendelés hozzáadása**elemet. Rendeljen **Storage blob-Adattulajdonost, közreműködőt vagy olvasó** Azure-szerepkört az SQL Serverhez.
 
    > [!NOTE]
    > Ezt a lépést csak a tulajdonosi jogosultsággal rendelkező tagok hajthatják végre. A különböző Azure-beli beépített szerepkörökhöz tekintse meg ezt az [útmutatót](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
    
     > [!IMPORTANT]
-    > Határozza meg a **Storage** **blob** -Adattulajdonost, közreműködőt vagy olvasó RBAC szerepkört. Ezek a szerepkörök eltérnek a tulajdonos, közreműködő és olvasó Azure beépített szerepköreitől. 
+    > A **Storage** **blob** -adattulajdonos, közreműködő vagy olvasó Azure-szerepkör meghatározása. Ezek a szerepkörök eltérnek a tulajdonos, közreműködő és olvasó Azure beépített szerepköreitől. 
 
     ![RBAC engedélyek megadása a betöltéshez](./media/quickstart-bulk-load-copy-tsql-examples/rbac-load-permissions.png)
 
@@ -112,10 +112,10 @@ A felügyelt identitás hitelesítésére akkor van szükség, ha a Storage-fió
 ## <a name="d-azure-active-directory-authentication-aad"></a>D. Azure Active Directory hitelesítés (HRE)
 #### <a name="steps"></a>Lépések
 
-1. A Storage-fiók területen navigáljon a **Access Control (iam)** elemre, és válassza a **szerepkör-hozzárendelés hozzáadása**elemet. Rendeljen hozzá **Storage blob-Adattulajdonost, közreműködőt vagy olvasó** RBAC-szerepkört a HRE-felhasználóhoz. 
+1. A Storage-fiók területen navigáljon a **Access Control (iam)** elemre, és válassza a **szerepkör-hozzárendelés hozzáadása**elemet. Rendeljen **Storage blob-Adattulajdonost, közreműködőt vagy olvasó** Azure-szerepkört a HRE-felhasználóhoz. 
 
     > [!IMPORTANT]
-    > Határozza meg a **Storage** **blob** -Adattulajdonost, közreműködőt vagy olvasó RBAC szerepkört. Ezek a szerepkörök eltérnek a tulajdonos, közreműködő és olvasó Azure beépített szerepköreitől.
+    > A **Storage** **blob** -adattulajdonos, közreműködő vagy olvasó Azure-szerepkör meghatározása. Ezek a szerepkörök eltérnek a tulajdonos, közreműködő és olvasó Azure beépített szerepköreitől.
 
     ![RBAC engedélyek megadása a betöltéshez](./media/quickstart-bulk-load-copy-tsql-examples/rbac-load-permissions.png)
 

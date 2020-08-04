@@ -4,12 +4,12 @@ description: A Hyperledger Fabric Consortium Network üzembe helyezése és konf
 ms.date: 07/27/2020
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: fe06af9364ceb1d97588cac88335cb39c45f0e0f
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 4bc55090234a4ab33125ba43b8416de1eadb702f
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286053"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533427"
 ---
 # <a name="hyperledger-fabric-consortium-on-azure-kubernetes-service-aks"></a>Hyperledger Fabric Consortium az Azure Kubernetes Service-ben (ak)
 
@@ -26,7 +26,7 @@ A cikk elolvasása után:
 
 A megoldási sablon használata előtt hasonlítsa össze a forgatókönyvet az elérhető Azure Blockchain-beállítások gyakori felhasználási eseteivel.
 
-Beállítás | Szolgáltatási modell | Gyakori használati eset
+Lehetőség | Szolgáltatási modell | Gyakori használati eset
 -------|---------------|-----------------
 Megoldássablonok | IaaS | A megoldási sablonok Azure Resource Manager sablonok, amelyekkel teljes körűen konfigurált blockchain-topológiát lehet kiépíteni. A Sablonok Microsoft Azure számítási, hálózatkezelési és tárolási szolgáltatásokat telepítenek és konfigurálnak egy adott blockchain hálózati típushoz. A megoldási sablonokat szolgáltatói szerződés nélkül biztosítjuk. Támogatásért használja a [Microsoft Q&a kérdéses lapot](/answers/topics/azure-blockchain-workbench.html) .
 [Azure Blockchain Service](../service/overview.md) | PaaS | Az Azure Blockchain szolgáltatás előzetes verziója leegyszerűsíti a konzorciumi Blockchain hálózatok képződését, kezelését és irányítását. Használja az Azure Blockchain szolgáltatást a Pásti, a konzorciumok felügyeletére, vagy a szerződés és a tranzakció adatvédelmet igénylő megoldásokhoz.
@@ -305,12 +305,12 @@ A társ-szervezeti ügyféltől adja ki a parancsot, hogy a megadott csatornán 
   - Állítsa `<anchorPeersList>` "peer1" értékre, ha csak peer1-csomópontot kíván beállítani.
   - Állítsa `<anchorPeersList>` "peer1" "peer3" értékre, ha a peer1 és a peer3 csomópontot is be szeretné állítani a horgony társként.
 
-### <a name="chaincode-management-commands"></a>Chaincode-kezelési parancsok
+## <a name="chaincode-management-commands"></a>Chaincode-kezelési parancsok
 
 >[!NOTE]
 > A chaincode művelet megkezdése előtt győződjön meg arról, hogy az ügyfélalkalmazás kezdeti beállítása megtörtént.  
 
-**Az alábbi chaincode-specifikus környezeti változók beállítása**
+### <a name="set-the-below-chaincode-specific-environment-variables"></a>Az alábbi chaincode-specifikus környezeti változók beállítása
 
 ```bash
 # peer organization name where chaincode operation is to be performed
@@ -329,14 +329,6 @@ CC_PATH=<chaincodePath>
 # Channel on which chaincode is to be instantiated/invoked/queried  
 CHANNEL_NAME=<channelName>  
 ```
-
-Az alábbi chaincode műveletek végezhetők el:  
-
-- [A chaincode telepítése](#install-chaincode)  
-- [Chaincode példányának példányai](#instantiate-chaincode)  
-- [Chaincode meghívása](#invoke-chaincode)
-- [Chaincode lekérdezése](#query-chaincode)
-
 
 ### <a name="install-chaincode"></a>A chaincode telepítése  
 
@@ -358,13 +350,13 @@ Kövesse az alábbi lépéseket:
 A társ ügyfélalkalmazás alkalmazásban futtassa az alábbi parancsot a chaincode a csatornán való létrehozásához.  
 
 ```bash
-./azhlf chaincode instantiate -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -p $CC_PATH -v $CC_VERSION -l $CC_LANG -c $CHANNEL_NAME -f <instantiateFunc> --args <instantiateFuncArgs>  
+./azhlf chaincode instantiate -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -v $CC_VERSION -c $CHANNEL_NAME -f <instantiateFunc> --args <instantiateFuncArgs>  
 ```
+
 A (z) és a (z) és a (z) és a (z) argumentumának átadása az `<instantiateFunc>` `<instantiateFuncArgs>` Például chaincode_example02. go chaincode-ben a chaincode a következőre van állítva: "a" " `<instantiateFunc>` `init` `<instantiateFuncArgs>` 2000" "b" "1000".
 
 > [!NOTE]
 > Hajtsa végre a parancsot egyszer a csatornán lévő bármelyik társ-szervezettől. Miután sikeresen elküldte a tranzakciót a megrendelő számára, a megrendelő elosztja ezt a tranzakciót a csatorna összes társ-szervezete számára. Ezért a chaincode a csatorna összes társ-csomópontján lévő összes társ-csomóponton példányba kerül.  
-
 
 ### <a name="invoke-chaincode"></a>Chaincode meghívása  
 

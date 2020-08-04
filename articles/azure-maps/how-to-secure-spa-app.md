@@ -10,12 +10,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 5b7f26a03c117620be7c16abaf689763e370e5ba
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 0aa688d6e56629ca376844ce2d0669197b1bb2b7
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285696"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87531345"
 ---
 # <a name="how-to-secure-a-single-page-application-with-non-interactive-sign-in"></a>Egyoldalas alkalmazások biztonságossá tétele nem interaktív bejelentkezéssel
 
@@ -102,7 +102,7 @@ Hozzon létre egy biztonságos webszolgáltatási alkalmazást, amely felelős a
 
 ## <a name="grant-role-based-access"></a>Szerepkör-alapú hozzáférés engedélyezése
 
-*Szerepköralapú hozzáférés-vezérlést* (RBAC) biztosít a rendszerhez rendelt identitás hozzárendelésével egy vagy több Azure-szerepkör-definícióhoz. Azure Maps számára elérhető RBAC-szerepkör-definíciók megtekintéséhez lépjen a **hozzáférés-vezérlés (iam)** elemre. Válassza ki a **szerepkörök**elemet, majd keressen rá a *Azure Maps*kezdetű szerepkörökre.
+*Szerepköralapú hozzáférés-vezérlést* (RBAC) biztosít a rendszerhez rendelt identitás hozzárendelésével egy vagy több Azure-szerepkör-definícióhoz. Az Azure Maps számára elérhető Azure-szerepkör-definíciók megtekintéséhez lépjen a **hozzáférés-vezérlés (iam)** elemre. Válassza ki a **szerepkörök**elemet, majd keressen rá a *Azure Maps*kezdetű szerepkörökre.
 
 1. Nyissa meg **Azure Maps-fiókját**. Válassza a **hozzáférés-vezérlés (iam)**  >  **szerepkör-hozzárendelés**elemet.
 

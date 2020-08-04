@@ -4,12 +4,12 @@ description: Összefoglalja a Azure Backup szolgáltatás támogatási beállít
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.custom: references_regions
-ms.openlocfilehash: f84be4082eb6bc845459b6d88cb3157b2330f23d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d75e7053bfff14fbcb6deeae48c48f09e3e9ac0d
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091011"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87531880"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure Backup támogatási mátrixa
 
@@ -44,7 +44,7 @@ A következő táblázat a Recovery Services-tárolók szolgáltatásait ismerte
 
 A következő mi támogatott, ha biztonsági mentést szeretne készíteni a helyszíni gépekről:
 
-**Gép** | **A biztonsági mentés** | **Hely** | **Funkciók**
+**Gép** | **A biztonsági mentés** | **Hely** | **Szolgáltatások**
 --- | --- | --- | ---
 **Windows rendszerű gép közvetlen biztonsági mentése a MARS-ügynökkel** | Fájlok, mappák, rendszerállapot | Biztonsági mentés Recovery Services-tárolóba. | Napi három alkalommal történő biztonsági mentés<br/><br/> Nincs alkalmazás-kompatibilis biztonsági másolat<br/><br/> Fájl, mappa, kötet visszaállítása
 **A Linux-gép közvetlen biztonsági mentése a MARS-ügynökkel** | A biztonsági mentés nem támogatott
@@ -64,7 +64,7 @@ A következő mi támogatott, ha biztonsági mentést szeretne készíteni a hel
 
 Ha az Azure-beli virtuális gépek biztonsági mentését kívánja végezni, a következők támogatottak:
 
-**Gép** | **A biztonsági mentés** | **Hely** | **Funkciók**
+**Gép** | **A biztonsági mentés** | **Hely** | **Szolgáltatások**
 --- | --- | --- | ---
 **Azure virtuális gépek biztonsági mentése virtuálisgép-bővítmény használatával** | Teljes virtuális gép | Biztonsági mentés a tárba. | A bővítmény akkor lett telepítve, ha engedélyezi a virtuális gép biztonsági mentését.<br/><br/> Naponta egyszer készít biztonsági mentést.<br/><br/> App-Aware Backup a Windows rendszerű virtuális gépekhez; fájl-konzisztens biztonsági mentés Linux rendszerű virtuális gépekhez. A Linux rendszerű gépekhez egyéni parancsfájlok használatával is konfigurálhatja az alkalmazások konzisztenciáját.<br/><br/> Virtuális gép vagy lemez visszaállítása.<br/><br/> Nem lehet biztonsági mentést készíteni egy Azure-beli virtuális gépről egy helyszíni helyre.
 **Azure virtuális gépek biztonsági mentése a MARS-ügynök használatával** | Fájlok, mappák, rendszerállapot | Biztonsági mentés a tárba. | Naponta három alkalommal készíthet biztonsági másolatot.<br/><br/> Ha a teljes virtuális gép helyett adott fájlokról vagy mappákról szeretne biztonsági másolatot készíteni, a MARS-ügynök a virtuálisgép-bővítmény mellett is futhat.
@@ -106,10 +106,7 @@ A Azure Backup támogatja a titkosítást az átvitel közbeni és a nyugalmi ad
 ### <a name="data-security"></a>Adatbiztonság
 
 - A biztonsági mentési adatforgalom titkosított formában tárolódik a Recovery Services-tárolóban.
-- Csak Ön rendelkezik a jelszóval az adatzárolás feloldásához. A Microsoft nem tudja visszafejteni a biztonsági mentési adatforrásokat.
-
-    > [!WARNING]
-    > A tároló beállítása után csak Ön férhet hozzá a titkosítási kulcshoz. A Microsoft soha nem tart fenn másolatot, és nem fér hozzá a kulcshoz. Ha a kulcs rossz helyre került, a Microsoft nem tudja helyreállítani a biztonsági mentési adatokat.
+- Ha az adatok biztonsági mentést végeznek a helyszíni kiszolgálókról a MARS-ügynökkel, az adatok titkosítva lesznek a jelszóval, és csak azután, hogy a rendszer letölti a Azure Backup, és visszafejti azt Azure Backup.
 - Az Azure-beli virtuális gépek biztonsági mentésekor be kell állítania a titkosítást a virtuális gépen *belül* .
 - Az Azure Backup támogatja az Azure Disk Encryption szolgáltatást, amely a BitLockert használja Windows rendszerű virtuális gépeken és a **dm-crypt**-et Linux rendszerű virtuális gépeken.
 - A háttérben Azure Backup az [Azure Storage Service Encryptiont](../storage/common/storage-service-encryption.md)használja, amely megvédi az inaktív adatok védelmét.
@@ -130,7 +127,7 @@ A Backup a következő táblázatban összefoglalt biztonsági mentési forgalom
 
 **Gép** | **Tömörítés a MABS/DPM (TCP)** | **Tömörítés a tárolóba (HTTPS)**
 --- | --- | ---
-**Helyszíni Windows rendszerű gépek közvetlen biztonsági mentése** | NA | ![Yes][green]
+**Helyszíni Windows rendszerű gépek közvetlen biztonsági mentése** | NA | ![Igen][green]
 **Azure-beli virtuális gépek biztonsági mentése virtuálisgép-bővítmény használatával** | NA | NA
 **Biztonsági mentés helyszíni/Azure-alapú gépeken a MABS/DPM használatával** | ![Igen][green] | ![Igen][green]
 
@@ -153,9 +150,9 @@ Azure Backup hozzáadta a régiók közötti visszaállítási szolgáltatást a
 | Biztonságimásolat-kezelés típusa | Támogatott                                                    | Támogatott régiók |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
 | Azure VM               | Igen.   Támogatott a 4 TB-nál kisebb lemezzel rendelkező titkosított virtuális gépek és virtuális gépek esetében | Minden Azure-beli nyilvános régió.  |
-| MARS-ügynök/helyszíni | No                                                           | n.a.               |
-| SQL/SAP HANA          | No                                                           | n.a.               |
-| AFS                    | No                                                           | n.a.               |
+| MARS-ügynök/helyszíni | Nem                                                           | N/A               |
+| SQL/SAP HANA          | Nem                                                           | N/A               |
+| AFS                    | Nem                                                           | N/A               |
 
 ## <a name="next-steps"></a>További lépések
 

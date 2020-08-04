@@ -12,12 +12,12 @@ ms.date: 7/27/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: bd641b57cfdd7f9481e17a90dbbd81d5e43f8ad2
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 9bd34831beea4ce20f7abffb2eaac70e08decfd5
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87311109"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87529225"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Microsoft Identity platform és a OAuth 2,0 ügyfél-hitelesítő adatok folyamata
 
@@ -53,7 +53,7 @@ Gyakori használati eset az, ha egy ACL-t használ a webalkalmazásokhoz vagy we
 Az ilyen típusú hitelesítés olyan démonok és szolgáltatásfiókok esetében fordul elő, amelyek a személyes Microsoft-fiókkal rendelkező fogyasztói felhasználók tulajdonában lévő adatforgalomhoz szükségesek. A szervezetek által birtokolt adattárolók esetében javasoljuk, hogy az alkalmazás engedélyein keresztül szerezze be a szükséges engedélyeket.
 
 > [!NOTE]
-> Az ACL-alapú engedélyezési minta engedélyezéséhez az Azure AD-nek nincs szüksége arra, hogy az alkalmazások jogosultak legyenek jogkivonatok beszerzésére egy másik alkalmazáshoz – így a csak az alkalmazáshoz tartozó jogkivonatok jogcímek nélkül is kiállíthatók `rules` . Az API-k számára elérhetővé tenni kívánt alkalmazásoknak engedélyeket kell alkalmazniuk a jogkivonatok fogadásához.
+> Az ACL-alapú engedélyezési minta engedélyezéséhez az Azure AD-nek nincs szüksége arra, hogy az alkalmazások jogosultak legyenek jogkivonatok beszerzésére egy másik alkalmazáshoz – így a csak az alkalmazáshoz tartozó jogkivonatok jogcímek nélkül is kiállíthatók `roles` . Az API-k számára elérhetővé tenni kívánt alkalmazásoknak engedélyeket kell alkalmazniuk a jogkivonatok fogadásához.
 
 ### <a name="application-permissions"></a>Alkalmazás engedélyei
 

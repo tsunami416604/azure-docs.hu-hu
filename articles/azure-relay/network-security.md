@@ -3,12 +3,12 @@ title: Azure Relay hálózati biztonsága
 description: Ez a cikk azt ismerteti, hogyan konfigurálható a hozzáférés a privát végpontokról
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: a1ade21df39890b7f1c31a81fca1fffafe2acaa0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bf49eff29385b5b72639420416df87b9187845e8
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85322168"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87532985"
 ---
 # <a name="network-security-for-azure-relay"></a>Azure Relay hálózati biztonsága 
 Ez a cikk azt ismerteti, hogyan használhatók a következő biztonsági szolgáltatások a Azure Relay használatával: 
@@ -23,7 +23,7 @@ Ez a cikk azt ismerteti, hogyan használhatók a következő biztonsági szolgá
 ## <a name="ip-firewall"></a>IP-tűzfal 
 Alapértelmezés szerint a továbbítási névterek elérhetők az internetről, feltéve, hogy a kérelem érvényes hitelesítést és engedélyezést tartalmaz. Az IP-tűzfallal továbbra is korlátozhatja, hogy csak IPv4-címek vagy IPv4-címtartományok legyenek a [CIDR (osztály nélküli tartományok közötti útválasztás)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) jelöléssel.
 
-Ez a funkció olyan helyzetekben hasznos, amikor a Azure Relay csak bizonyos jól ismert helyekről lehet elérhető. A tűzfalszabályok lehetővé teszik a szabályok konfigurálását az adott IPv4-címekből származó forgalom fogadásához. Ha például az [Azure Express Route](/azure/expressroute/expressroute-faqs#supported-services)használatával használ továbbítót, létrehozhat egy **tűzfalszabályet** , amely lehetővé teszi, hogy csak a helyszíni infrastruktúra IP-címeiről érkező forgalmat engedélyezze. 
+Ez a funkció olyan helyzetekben hasznos, amikor a Azure Relay csak bizonyos jól ismert helyekről lehet elérhető. A tűzfalszabályok lehetővé teszik a szabályok konfigurálását az adott IPv4-címekből származó forgalom fogadásához. Ha például az [Azure Express Route](../expressroute/expressroute-faqs.md#supported-services)használatával használ továbbítót, létrehozhat egy **tűzfalszabályet** , amely lehetővé teszi, hogy csak a helyszíni infrastruktúra IP-címeiről érkező forgalmat engedélyezze. 
 
 Az IP-tűzfalszabályok a továbbítási névtér szintjén lesznek alkalmazva. Ezért a szabályok az ügyfelek összes kapcsolatára érvényesek bármely támogatott protokoll használatával. A továbbítási névtérben lévő engedélyezett IP-szabálynak nem megfelelő IP-címről érkező kapcsolódási kísérleteket a rendszer nem engedélyezettként fogadja el. A válasz nem említi az IP-szabályt. Az IP-szűrési szabályok sorrendben lesznek alkalmazva, és az IP-címnek megfelelő első szabály határozza meg az elfogadás vagy az elutasítás műveletet.
 

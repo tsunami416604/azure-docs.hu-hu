@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/23/2020
+ms.date: 08/02/2020
 ms.author: tamram
 ms.reviewer: fryu
-ms.openlocfilehash: e30c4142232a2d695204f5c8f612eb44791c847c
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: f46a7927c149009eaf5baddbad2758732d4da758
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87133163"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534274"
 ---
 # <a name="prevent-anonymous-public-read-access-to-containers-and-blobs"></a>Tárolók és Blobok névtelen nyilvános olvasási hozzáférésének tiltása
 
@@ -24,7 +24,7 @@ Alapértelmezés szerint a blob-adataihoz való nyilvános hozzáférés mindig 
 
 Ha letiltja a nyilvános Blobok hozzáférését a Storage-fiókhoz, az Azure Storage elutasítja az adott fiókhoz tartozó névtelen kérelmeket. Miután a nyilvános hozzáférés nem engedélyezett egy fiók esetében, a fiókban lévő tárolók nem konfigurálhatók a nyilvános hozzáféréshez. A nyilvános hozzáférésre már konfigurált tárolók már nem fogadják el a névtelen kérelmeket. További információ: [Névtelen nyilvános olvasási hozzáférés beállítása tárolók és Blobok](anonymous-read-access-configure.md)számára.
 
-Ez a cikk bemutatja, hogyan elemezheti a névtelen kérelmeket egy Storage-fiókkal, és hogyan akadályozhatja meg a névtelen hozzáférést a teljes Storage-fiókhoz vagy egy adott tárolóhoz.
+Ez a cikk azt ismerteti, hogyan lehet a Storage-fiókok nyilvános hozzáférésének folyamatos kezeléséhez a DRAG (észlelés – szervizelés – naplózási irányítás) keretrendszert használni.
 
 ## <a name="detect-anonymous-requests-from-client-applications"></a>Ügyfélalkalmazások névtelen kérelmének észlelése
 
@@ -157,6 +157,126 @@ $ctx = $storageAccount.Context
 
 New-AzStorageContainer -Name $containerName -Permission Blob -Context $ctx
 ```
+
+### <a name="check-the-public-access-setting-for-multiple-accounts"></a>Több fiók nyilvános hozzáférésének beállítása
+
+Ha szeretné, hogy az optimális teljesítmény érdekében a Storage-fiókok egy csoportján belül ellenőrizzék a nyilvános hozzáférési beállításokat, használhatja az Azure Resource Graph Explorert a Azure Portal. Ha többet szeretne megtudni az Erőforrásgrafikon Explorer használatáról, tekintse meg a gyors útmutató [: az első Resource Graph-lekérdezés futtatása az Azure Resource Graph Explorerben](/azure/governance/resource-graph/first-query-portal).
+
+A következő lekérdezés futtatása az Erőforrásgrafikon Explorerben a Storage-fiókok listáját adja vissza, és megjeleníti az egyes fiókok nyilvános hozzáférési beállításait:
+
+```kusto
+resources
+| where type =~ 'Microsoft.Storage/storageAccounts'
+| extend allowBlobPublicAccess = parse_json(properties).allowBlobPublicAccess
+| project subscriptionId, resourceGroup, name, allowBlobPublicAccess
+```
+
+## <a name="use-azure-policy-to-audit-for-compliance"></a>A megfelelőség naplózása Azure Policy használata
+
+Ha nagy számú Storage-fiókkal rendelkezik, érdemes lehet naplózást végeznie, hogy ellenőrizze, hogy a fiókok konfigurálva vannak-e a nyilvános hozzáférés megakadályozására. A Storage-fiókok megfelelőségének naplózásához használja a Azure Policy. A Azure Policy egy olyan szolgáltatás, amellyel olyan szabályzatokat hozhat létre, rendelhet hozzá és kezelhet, amelyek szabályokat alkalmaznak az Azure-erőforrásokra. Azure Policy segít megőrizni ezeket az erőforrásokat a vállalati szabványoknak és a szolgáltatói szerződéseknek. További információ: [Azure Policy áttekintése](../../governance/policy/overview.md).
+
+### <a name="create-a-policy-with-an-audit-effect"></a>Naplózási hatású házirend létrehozása
+
+A Azure Policy olyan hatásokat támogat, amelyek meghatározzák, hogy mi történik, ha egy házirend-szabályt kiértékelnek egy erőforrással szemben. A naplózási effektus figyelmeztetést hoz létre, ha egy erőforrás nem felel meg az előírásoknak, de nem állítja le a kérést. A hatásokkal kapcsolatos további információkért lásd: [Azure Policy effektusok ismertetése](../../governance/policy/concepts/effects.md).
+
+Az alábbi lépéseket követve hozhat létre egy olyan házirendet, amely a Azure Portalhoz tartozó Storage-fiók nyilvános hozzáférési beállításához tartozó naplózási hatással van:
+
+1. A Azure Portal navigáljon a Azure Policy szolgáltatáshoz.
+1. A **szerzői műveletek** szakaszban válassza a **definíciók**lehetőséget.
+1. Új házirend-definíció létrehozásához válassza a **házirend-definíció hozzáadása** lehetőséget.
+1. A **definíció helye** mezőnél válassza a **továbbiak** lehetőséget, hogy megadja a naplózási házirend erőforrásának helyét.
+1. Adja meg a szabályzat nevét. Igény szerint megadhat egy leírást és egy kategóriát is.
+1. A **házirend-szabály**területen adja hozzá a következő házirend-definíciót a **' policyrule osztály** szakaszhoz.
+
+    ```json
+    {
+      "if": {
+        "allOf": [
+          {
+            "field": "type",
+            "equals": "Microsoft.Storage/storageAccounts"
+          },
+          {
+            "not": {
+              "field":"Microsoft.Storage/storageAccounts/allowBlobPublicAccess",
+              "equals": "false"
+            }
+          }
+        ]
+      },
+      "then": {
+        "effect": "audit"
+      }
+    }
+    ```
+
+1. Mentse a szabályzatot.
+
+### <a name="assign-the-policy"></a>A szabályzat hozzárendelése
+
+Ezután rendelje hozzá a szabályzatot egy erőforráshoz. A szabályzat hatóköre megfelel az adott erőforrásnak és az alatta lévő erőforrásoknak. További információ a szabályzat-hozzárendelésről: [Azure Policy hozzárendelési struktúra](../../governance/policy/concepts/assignment-structure.md).
+
+A szabályzatnak a Azure Portal való hozzárendeléséhez kövesse az alábbi lépéseket:
+
+1. A Azure Portal navigáljon a Azure Policy szolgáltatáshoz.
+1. A **szerzői műveletek** szakaszban válassza a **hozzárendelések**lehetőséget.
+1. Új szabályzat-hozzárendelés létrehozásához válassza a **házirend hozzárendelése** lehetőséget.
+1. A **hatókör** mezőben válassza ki a szabályzat-hozzárendelés hatókörét.
+1. A **házirend-definíció** mezőben válassza a **továbbiak** gombot, majd válassza ki az előző szakaszban meghatározott házirendet a listából.
+1. Adja meg a szabályzat-hozzárendelés nevét. A leírás megadása nem kötelező.
+1. Hagyja *engedélyezve*a **házirend-kényszerítési** beállítást. Ez a beállítás nincs hatással a naplózási házirendre.
+1. Válassza a **felülvizsgálat + létrehozás** lehetőséget a hozzárendelés létrehozásához.
+
+### <a name="view-compliance-report"></a>Megfelelőségi jelentés megtekintése
+
+A szabályzat hozzárendelése után megtekintheti a megfelelőségi jelentést. A naplózási házirend megfelelőségi jelentése olyan információkat biztosít, amelyekkel a tárolási fiókok nem felelnek meg a szabályzatnak. További információ: házirend- [megfelelőségi adatok beolvasása](../../governance/policy/how-to/get-compliance-data.md).
+
+Több percet is igénybe vehet, amíg a megfelelőségi jelentés elérhetővé válik a szabályzat-hozzárendelés létrehozása után.
+
+Ha meg szeretné tekinteni a megfelelőségi jelentést a Azure Portalban, kövesse az alábbi lépéseket:
+
+1. A Azure Portal navigáljon a Azure Policy szolgáltatáshoz.
+1. Válassza a **megfelelőség**lehetőséget.
+1. Szűrje az eredményeket az előző lépésben létrehozott szabályzat-hozzárendelés nevére. A jelentés azt jeleníti meg, hogy hány erőforrás felel meg a szabályzatnak.
+1. További részletekért tekintse meg a jelentés részletezését, beleértve a nem megfelelő tárolási fiókok listáját.
+
+    :::image type="content" source="media/anonymous-read-access-prevent/compliance-report-policy-portal.png" alt-text="A blob Public Access naplózási szabályzatának megfelelőségi jelentését bemutató képernyőkép":::
+
+## <a name="use-azure-policy-to-enforce-authorized-access"></a>A jogosult hozzáférés kikényszeríthető Azure Policy használata
+
+Azure Policy támogatja a felhő irányítását, mivel biztosítja, hogy az Azure-erőforrások megfeleljenek a követelményeknek és a szabványoknak. Annak biztosítása érdekében, hogy a szervezeten belüli Storage-fiókok csak a jogosult kérelmeket engedélyezzék, létrehozhat egy olyan házirendet, amely megakadályozza egy olyan új Storage-fiók létrehozását, amely lehetővé teszi a névtelen kérések használatát. Ez a szabályzat azt is megakadályozza, hogy az összes konfigurációs módosítás egy meglévő fiókon legyen, ha az adott fiókhoz tartozó nyilvános hozzáférési beállítás nem felel meg a házirendnek.
+
+A kényszerítési házirend a megtagadási effektus használatával megakadályozza, hogy egy olyan kérést hozzon létre vagy módosítson, amely lehetővé teszi a nyilvános hozzáférést a Storage-fiók számára. A hatásokkal kapcsolatos további információkért lásd: [Azure Policy effektusok ismertetése](../../governance/policy/concepts/effects.md).
+
+Ha olyan házirendet szeretne létrehozni, amely megtagadási hatással van egy olyan nyilvános hozzáférési beállításra, amely engedélyezi a névtelen kérelmeket, kövesse az [Azure Policy használata a megfelelőség naplózására](#use-azure-policy-to-audit-for-compliance)című részben leírt lépéseket, de adja meg a következő JSON-t a szabályzat-definíció **' policyrule osztály** szakaszában:
+
+```json
+{
+  "if": {
+    "allOf": [
+      {
+        "field": "type",
+        "equals": "Microsoft.Storage/storageAccounts"
+      },
+      {
+        "not": {
+          "field":"Microsoft.Storage/storageAccounts/allowBlobPublicAccess",
+          "equals": "false"
+        }
+      }
+    ]
+  },
+  "then": {
+    "effect": "deny"
+  }
+}
+```
+
+Miután létrehozta a szabályzatot a megtagadási hatállyal, és hozzárendeli egy hatókörhöz, a felhasználók nem hozhatnak létre olyan Storage-fiókot, amely lehetővé teszi a nyilvános hozzáférést. A felhasználó nem végezhet olyan konfigurációs módosításokat egy meglévő Storage-fiókon, amely jelenleg lehetővé teszi a nyilvános hozzáférést. Hiba történt a kísérlet során. A fiók létrehozásának vagy konfigurálásának folytatásához a Storage-fiókhoz tartozó nyilvános hozzáférési beállítást **false** értékre kell állítani.
+
+Az alábbi képen látható az a hiba, amely akkor fordul elő, ha olyan Storage-fiókot próbál létrehozni, amely lehetővé teszi a nyilvános hozzáférést (az új fiók alapértelmezése), ha egy megtagadási hatással rendelkező szabályzat megköveteli, hogy a nyilvános hozzáférés ne legyen engedélyezve.
+
+:::image type="content" source="media/anonymous-read-access-prevent/deny-policy-error.png" alt-text="A házirend megsértése esetén a Storage-fiók létrehozásakor előforduló hibát ábrázoló képernyőkép":::
 
 ## <a name="next-steps"></a>További lépések
 

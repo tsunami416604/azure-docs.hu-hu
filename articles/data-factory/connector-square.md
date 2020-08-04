@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/01/2019
-ms.openlocfilehash: ac968271685c66c8fab8d7723d994a446f49e85f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/03/2020
+ms.openlocfilehash: 2bfe9115f38c79618924379837dda8014ee31ed5
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81410316"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87529364"
 ---
 # <a name="copy-data-from-square-using-azure-data-factory-preview"></a>Adatok másolása a térről a Azure Data Factory használatával (előzetes verzió)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -33,7 +33,6 @@ Ez a négyzet-összekötő a következő tevékenységek esetében támogatott:
 
 - [Másolási tevékenység](copy-activity-overview.md) [támogatott forrás/fogadó mátrixtal](copy-activity-overview.md)
 - [Keresési tevékenység](control-flow-lookup-activity.md)
-
 
 Az adatok a Square-ből bármilyen támogatott fogadó adattárba másolhatók. A másolási tevékenység által a forrásként/mosogatóként támogatott adattárak listáját a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) táblázatban tekintheti meg.
 
@@ -52,15 +51,25 @@ A Square társított szolgáltatás a következő tulajdonságokat támogatja:
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
 | típus | A Type tulajdonságot a következőre kell beállítani: **Square** | Igen |
+| connectionProperties | A Square-hez való kapcsolódás módját meghatározó tulajdonságok csoportja. | Igen |
+| ***Alatt `connectionProperties` :*** | | |
 | gazda | A négyzet-példány URL-címe (pl. mystore.mysquare.com)  | Igen |
 | ügyfél-azonosító | A Square-alkalmazáshoz társított ügyfél-azonosító.  | Igen |
 | clientSecret | A Square-alkalmazáshoz társított ügyfél-titok. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Igen |
-| redirectUri | A négyzetes alkalmazás irányítópultján hozzárendelt átirányítási URL-cím. (azaz http: \/ /localhost: 2500)  | Igen |
+| accessToken | A négyzetből beszerzett hozzáférési jogkivonat. Korlátozott hozzáférést biztosít egy négyzetes fiókhoz, ha hitelesített felhasználót kér az explicit engedélyekhez. A OAuth hozzáférési tokenek a kiállítottak után 30 nappal lejárnak, de a frissítési tokenek nem járnak le. A hozzáférési jogkivonatok frissítési token használatával frissíthetők.<br>Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md).  | Igen |
+| refreshToken | A négyzetből beszerzett frissítési jogkivonat. Új hozzáférési jogkivonatok beszerzésére szolgál, ha az aktuális lejárat lejár.<br>Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Nem |
 | useEncryptedEndpoints | Meghatározza, hogy az adatforrás-végpontok HTTPS protokollal legyenek titkosítva. Az alapértelmezett érték az igaz.  | Nem |
 | useHostVerification | Megadja, hogy szükséges-e az állomásnév a kiszolgáló tanúsítványában, hogy egyezzen a kiszolgáló állomásneve a TLS-kapcsolaton keresztüli csatlakozáskor. Az alapértelmezett érték az igaz.  | Nem |
 | usePeerVerification | Megadja, hogy a rendszer ellenőrizze-e a kiszolgáló identitását TLS-kapcsolaton keresztül. Az alapértelmezett érték az igaz.  | Nem |
 
-**Példa:**
+A Square két típusú hozzáférési tokent támogat: a **személyes** és a **OAuth**.
+
+- A személyes hozzáférési jogkivonatok korlátlan számú kapcsolódási API-hozzáférést kapnak a saját Square-fiók erőforrásaihoz.
+- A OAuth hozzáférési jogkivonatok a hitelesített és hatókörű csatlakozási API-hozzáférés bármely négyzetes fiókhoz való elérésére szolgálnak. Akkor használja őket, ha az alkalmazás a fiók tulajdonosai nevében más négyzetes fiókok erőforrásaihoz fér hozzá. A OAuth hozzáférési jogkivonatok is használhatók a saját Square-fiók erőforrásainak eléréséhez.
+
+Data Factory a személyes hozzáférési jogkivonaton keresztüli hitelesítés csak a szükséges `accessToken` , a OAuth-n keresztüli hitelesítéshez `accessToken` pedig szükséges `refreshToken` . Megtudhatja, hogyan kérheti [le a](https://developer.squareup.com/docs/build-basics/access-tokens)hozzáférési tokent innen.
+
+**Például**
 
 ```json
 {
@@ -68,13 +77,25 @@ A Square társított szolgáltatás a következő tulajdonságokat támogatja:
     "properties": {
         "type": "Square",
         "typeProperties": {
-            "host" : "mystore.mysquare.com",
-            "clientId" : "<clientId>",
-            "clientSecret": {
-                 "type": "SecureString",
-                 "value": "<clientSecret>"
-            },
-            "redirectUri" : "http://localhost:2500"
+            "connectionProperties": {
+                "host": "<e.g. mystore.mysquare.com>", 
+                "clientId": "<client ID>", 
+                "clientSecrect": {
+                    "type": "SecureString",
+                    "value": "<clientSecret>"
+                }, 
+                "accessToken": {
+                    "type": "SecureString",
+                    "value": "<access token>"
+                }, 
+                "refreshToken": {
+                    "type": "SecureString",
+                    "value": "<refresh token>"
+                }, 
+                "useEncryptedEndpoints": true, 
+                "useHostVerification": true, 
+                "usePeerVerification": true 
+            }
         }
     }
 }
@@ -119,9 +140,9 @@ Az adatok négyzetből való másolásához állítsa a forrás típusát a más
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
 | típus | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **SquareSource** | Igen |
-| lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Példa: `"SELECT * FROM Business"`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
+| lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Például: `"SELECT * FROM Business"`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
 
-**Példa:**
+**Például**
 
 ```json
 "activities":[

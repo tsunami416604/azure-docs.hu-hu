@@ -17,7 +17,7 @@ ms.locfileid: "80550001"
 ---
 Ezzel a rövid útmutatóval megkezdheti a rendszerképek elemzését a Bing Visual Search szolgáltatásból a Python ügyféloldali kódtár használatával. Habár a Bing Visual Search REST API kompatibilis a legtöbb programozási nyelvvel, az ügyféloldali kódtár egyszerű módszert kínál a szolgáltatás integrálására az alkalmazásokba. A minta forráskódja megtalálható a [githubon](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/visual_search_samples.py) 
 
-[A dokumentációs](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/visualsearch?view=azure-python) | [könyvtár forráskód](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-search-visualsearch) | [-csomagjához (PyPi)](https://pypi.org/project/azure-cognitiveservices-search-visualsearch/) | tartozó[minták](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/)
+[Dokumentáció](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/visualsearch?view=azure-python)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-search-visualsearch)  |  [Csomag (PyPi)](https://pypi.org/project/azure-cognitiveservices-search-visualsearch/)  |  [Példák](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -65,7 +65,7 @@ Ezzel a rövid útmutatóval megkezdheti a rendszerképek elemzését a Bing Vis
 
 ## <a name="send-the-search-request"></a>A keresési kérelem elküldése
 
-1. A képfájl megnyitásával, szerializálásával `VisualSearchRequest()`és a (z `knowledge_request` `visual_search()`) paramétereként adja át.
+1. A képfájl megnyitásával, szerializálásával `VisualSearchRequest()` és a `knowledge_request` (z) paramétereként adja át `visual_search()` .
 
     ```python
     with open(image_path, "rb") as image_fd:

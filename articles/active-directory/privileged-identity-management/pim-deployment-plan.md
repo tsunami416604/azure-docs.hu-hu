@@ -14,12 +14,12 @@ ms.date: 04/28/2020
 ms.author: curtand
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ac3f9adbb3b83345fe14df39014c6119e97ba7f9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c6597c268a2a017280d00f73366562de61b4781e
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84886107"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87529789"
 ---
 # <a name="deploy-azure-ad-privileged-identity-management-pim"></a>Azure AD Privileged Identity Management (PIM) üzembe helyezése
 
@@ -59,7 +59,7 @@ További információ: [a Privileged Identity Management használatára vonatkoz
 
 ### <a name="key-terminology"></a>Kulcsfontosságú terminológia
 
-| Kifejezés vagy fogalom | Description |
+| Kifejezés vagy fogalom | Leírás |
 | --- | --- |
 | támogatható | Szerepkör-hozzárendelés, amely megköveteli, hogy a felhasználó egy vagy több műveletet hajtson végre a szerepkör használatához. Ha egy felhasználó jogosult a szerepkörre, az azt jelenti, hogy aktiválhatja a szerepkört, amikor kiemelt feladatokat kell elvégeznie. A hozzáférés nem különbözik a jogosult szerepkör-hozzárendeléssel rendelkező valakinek. Az egyetlen különbség, hogy néhány embernek nincs szüksége arra, hogy minden alkalommal hozzáférjen. |
 | aktiválás | Egy vagy több művelet végrehajtásának folyamata olyan szerepkör használatára, amelyhez a felhasználó jogosult. A műveletek tartalmazhatják a többtényezős hitelesítés (MFA) ellenőrzését, üzleti indoklást biztosítanak, vagy a kijelölt jóváhagyók jóváhagyását kérik. |
@@ -100,7 +100,7 @@ A következő szakasz segítségével azonosíthatja a projektben érintett öss
 
 #### <a name="stakeholders-privileged-identity-management-for-azure-ad-roles"></a>Érintett felek: Privileged Identity Management Azure AD-szerepkörökhöz
 
-| Name | Szerepkör | Műveletek |
+| Name | Szerepkör | Művelet |
 | --- | --- | --- |
 | Név és e-mail | **Identity Architect vagy Azure globális rendszergazda**<br/>Az Identity Management csapatának képviselője, amely meghatározza, hogy a változás hogyan igazodik a szervezet alapvető Identity Management-infrastruktúrához. | SO/R/I |
 | Név és e-mail | **Szolgáltatás tulajdonosa/soros kezelő**<br/>Egy szolgáltatás vagy szolgáltatási csoport informatikai tulajdonosai. Ezek kulcsfontosságúak a döntések meghozatalában és a munkatársaik Privileged Identity Managementának elősegítésében. | SO/R/I |
@@ -110,12 +110,12 @@ A következő szakasz segítségével azonosíthatja a projektben érintett öss
 
 #### <a name="stakeholders-privileged-identity-management-for-azure-resource-roles"></a>Érintett felek: Privileged Identity Management az Azure-erőforrás szerepköreihez
 
-| Name | Szerepkör | Műveletek |
+| Name | Szerepkör | Művelet |
 | --- | --- | --- |
 | Név és e-mail | **Előfizetés/erőforrás tulajdonosa**<br/>Az egyes előfizetések vagy erőforrások tulajdonosának a Privileged Identity Management központilag telepíteni kívánó képviselője | SO/R/I |
 | Név és e-mail | **Biztonsági tulajdonos**<br/>A biztonsági csapat képviselője, amely kijelentkezhet, hogy a terv megfelel a szervezete biztonsági követelményeinek. | SO/R |
 | Név és e-mail | **INFORMATIKAI támogatás kezelője/ügyfélszolgálata**<br/>Az informatikai támogatási szervezet egyik képviselője, aki a változás támogatását nyújtja a helpdesk szemszögéből. | R/I |
-| A kísérleti felhasználók neve és e-mail-címe | **RBAC szerepkör-felhasználók**<br/>Azon felhasználók csoportja, amelyeken a Privileged Identity Management implementálva van. Tudnia kell, hogyan aktiválja a szerepköröket Privileged Identity Management megvalósítása után. | I |
+| A kísérleti felhasználók neve és e-mail-címe | **Azure-szerepkör felhasználói**<br/>Azon felhasználók csoportja, amelyeken a Privileged Identity Management implementálva van. Tudnia kell, hogyan aktiválja a szerepköröket Privileged Identity Management megvalósítása után. | I |
 
 ### <a name="enable-privileged-identity-management"></a>Privileged Identity Management engedélyezése
 
@@ -257,7 +257,7 @@ A Privileged Identity Management-megoldás implementálása előtt érdemes a sz
 
 Az alábbi táblázat az egyes beállításokat ismerteti.
 
-| Beállítás | Description |
+| Beállítás | Leírás |
 | --- | --- |
 | Szerepkör | Annak a szerepkörnek a neve, amelynek a beállításait definiálja. |
 | MFA megkövetelése | Azt határozza meg, hogy a jogosult felhasználónak az MFA-t kell-e elvégeznie a szerepkör aktiválása előtt.<br/><br/> : heavy_check_mark: a **Microsoft azt javasolja** , hogy minden rendszergazdai szerepkör esetében érvényesítse az MFA-t, különösen akkor, ha a szerepkörök vendég felhasználókkal rendelkeznek. |

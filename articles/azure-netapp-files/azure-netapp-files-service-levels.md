@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: b-juche
-ms.openlocfilehash: 0398cc6a5336141f51dde26ed7cf4cce8c2c0bb4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 639f1e09fdb5603965209e5b5ee6c224ad238b76
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75832583"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533121"
 ---
 # <a name="service-levels-for-azure-netapp-files"></a>Az Azure NetApp Files szolgáltatásszintjei
 A szolgáltatási szint a kapacitási készlet egyik attribútuma. A szolgáltatási szinteket a rendszer a kötethez hozzárendelt kvóta alapján határozza meg, és megkülönbözteti a kapacitások megengedett maximális átviteli sebességét.
@@ -56,7 +56,8 @@ A fenti 2. példában egy olyan kötetet, amely egy, a prémium szintű Storage-
 
 ## <a name="next-steps"></a>További lépések
 
-- A különböző szolgáltatási szintek árának [Azure NetApp Files díjszabási oldalán](https://azure.microsoft.com/pricing/details/storage/netapp/) talál.
-- A kapacitás felhasználásának számítási kapacitásának kiszámításához tekintse meg [Azure NetApp Files a Cost modelljét](azure-netapp-files-cost-model.md) 
+- [Azure NetApp Files díjszabási oldala](https://azure.microsoft.com/pricing/details/storage/netapp/)
+- [Az Azure NetApp Files költségmodellje](azure-netapp-files-cost-model.md) 
 - [Kapacitáskészlet beállítása](azure-netapp-files-set-up-capacity-pool.md)
 - [Azure NetApp Files szolgáltatói szerződés (SLA)](https://azure.microsoft.com/support/legal/sla/netapp/)
+- [Kötetek szolgáltatásszintjének dinamikus módosítása](dynamic-change-volume-service-level.md) 

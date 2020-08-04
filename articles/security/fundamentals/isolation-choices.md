@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: TomSh
-ms.openlocfilehash: 3195c27351ba6110c784ddd8a10ea9ddfb0d903a
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 42582c9474647c4c203bd0cafae0be664398ba41
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87447356"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533903"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Elkülönítés az Azure nyilvános felhőben
 
@@ -78,7 +78,7 @@ Az Azure RBAC három alapvető szerepkörrel rendelkezik, amelyek minden erőfor
 
 ![Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](./media/isolation-choices/azure-isolation-fig3.png)
 
-Az Azure további RBAC szerepkörei lehetővé teszik bizonyos Azure-erőforrások kezelését. Például a Virtuális gépek közreműködője szerepkör virtuális gépek létrehozását és kezelését teszi lehetővé. Nem biztosít számukra hozzáférést az Azure Virtual Network vagy az alhálózathoz, amelyhez a virtuális gép csatlakozik.
+Az Azure további Azure-szerepkörei lehetővé teszik bizonyos Azure-erőforrások kezelését. Például a Virtuális gépek közreműködője szerepkör virtuális gépek létrehozását és kezelését teszi lehetővé. Nem biztosít számukra hozzáférést az Azure Virtual Network vagy az alhálózathoz, amelyhez a virtuális gép csatlakozik.
 
 A [RBAC beépített szerepkörei](../../role-based-access-control/built-in-roles.md) az Azure-ban elérhető szerepköröket sorolja fel. Meghatározza azokat a műveleteket és hatókört, amelyeket az egyes beépített szerepkörök a felhasználók számára biztosítanak. Ha a saját szerepköröket is meg szeretné határozni még több szabályozáshoz, tekintse meg az [Egyéni szerepkörök létrehozása az Azure RBAC](../../role-based-access-control/custom-roles.md)című témakört.
 

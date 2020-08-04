@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 066118622f19d7efac71ddd66ac1abe058008b55
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: cc39f8250ddc1b2fb1baaf073969f6aab5b1372c
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87126771"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87531371"
 ---
 # <a name="secure-a-daemon-application"></a>Daemon-alkalmazás biztonságossá tétele
 
@@ -109,7 +109,7 @@ A nem Azure-beli környezetekben felügyelt identitások nem érhetők el. Ezér
 
 ### <a name="grant-role-based-access-for-the-daemon-application-to-azure-maps"></a>Szerepköralapú hozzáférés biztosítása a démon alkalmazás számára a Azure Maps
 
-*Szerepköralapú hozzáférés-vezérlést* (RBAC) biztosít a létrehozott felügyelt identitás vagy az egyszerű szolgáltatásnév hozzárendelésével egy vagy több Azure Maps hozzáférés-vezérlési szerepkör-definícióhoz. Azure Maps számára elérhető RBAC-szerepkör-definíciók megtekintéséhez lépjen a **hozzáférés-vezérlés (iam)** elemre. Válassza ki a **szerepkörök**elemet, majd keressen rá a *Azure Maps*kezdetű szerepkörökre. Ezek a Azure Maps szerepkörök azok a szerepkörök, amelyekhez hozzáférést biztosíthat.
+*Szerepköralapú hozzáférés-vezérlést* (RBAC) biztosít a létrehozott felügyelt identitás vagy az egyszerű szolgáltatásnév hozzárendelésével egy vagy több Azure Maps hozzáférés-vezérlési szerepkör-definícióhoz. Az Azure Maps számára elérhető Azure-szerepkör-definíciók megtekintéséhez lépjen a **hozzáférés-vezérlés (iam)** elemre. Válassza ki a **szerepkörök**elemet, majd keressen rá a *Azure Maps*kezdetű szerepkörökre. Ezek a Azure Maps szerepkörök azok a szerepkörök, amelyekhez hozzáférést biztosíthat.
 
 > [!div class="mx-imgBorder"]
 > ![Elérhető szerepkörök megtekintése](./media/how-to-manage-authentication/how-to-view-avail-roles.png)

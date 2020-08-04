@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 10/05/2019
 ms.author: rohink
-ms.openlocfilehash: 4de585a965cfefa6399b0c0929a8f732d0712617
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0945f89e3c18ab20ece0b493a49ec9f7f31e4e13
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76939422"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87529194"
 ---
 # <a name="azure-private-dns-faq"></a>Azure Private DNS – gyakori kérdések
 
@@ -38,7 +38,7 @@ Igen. A privát DNS-zónák több ezer virtuális hálózattal is összekapcsolh
 
 ## <a name="can-a-virtual-network-that-belongs-to-a-different-subscription-be-linked-to-a-private-zone"></a>Egy másik előfizetéshez tartozó virtuális hálózat egy privát zónához van csatolva?
 
-Igen. Írási művelet engedéllyel kell rendelkeznie a virtuális hálózatokon és a magánhálózati DNS-zónában. Az írási engedély több RBAC-szerepkör számára is megadható. Például a klasszikus hálózati közreműködő RBAC szerepkör írási engedéllyel rendelkezik a virtuális hálózatokhoz, és saját DNS zónák közreműködői szerepkör írási engedéllyel rendelkezik a magánhálózati DNS-zónákhoz. A RBAC szerepköreivel kapcsolatos további információkért lásd: [szerepköralapú hozzáférés-vezérlés](../role-based-access-control/overview.md).
+Igen. Írási művelet engedéllyel kell rendelkeznie a virtuális hálózatokon és a magánhálózati DNS-zónában. Az írási engedély több Azure-szerepkör számára is megadható. Például a klasszikus hálózati közreműködő Azure-szerepkör rendelkezik írási engedéllyel a virtuális hálózatokhoz, és a saját DNS zónák közreműködői szerepkör írási engedéllyel rendelkezik a magánhálózati DNS-zónákhoz. Az Azure-szerepkörökkel kapcsolatos további információkért lásd: [szerepköralapú hozzáférés-vezérlés](../role-based-access-control/overview.md).
 
 ## <a name="will-the-automatically-registered-virtual-machine-dns-records-in-a-private-zone-be-automatically-deleted-when-you-delete-the-virtual-machine"></a>A rendszer automatikusan törli a virtuális gép DNS-rekordjait egy privát zónában a virtuális gép törlésekor?
 

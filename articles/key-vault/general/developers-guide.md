@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 4c28299758150f56e3f47156382d8a6245a0cf52
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: c1a5d302f63f57a142d014c8ef66d02405e119ea
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386214"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87531166"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Az Azure Key Vault fejlesztői útmutatója
 
@@ -38,16 +38,37 @@ Az Azure-erőforrások felügyelt identitásával kapcsolatos további informác
 
 A Key vaultban található kulcsok, titkok vagy tanúsítványok használata előtt a Key vaultot a CLI, a PowerShell, a Resource Manager-sablonok vagy a REST használatával hozhatja létre és kezelheti a következő cikkekben leírtak szerint:
 
-- [Kulcstartók létrehozása és kezelése a CLI-vel](../secrets/quick-create-cli.md)
-- [Kulcstartók létrehozása és kezelése a PowerShell-lel](../secrets/quick-create-powershell.md)
-- [Kulcstartók létrehozása és kezelése a Azure Portal](../secrets/quick-create-portal.md)
-- [Kulcstartók létrehozása és kezelése a Pythonban](../secrets/quick-create-python.md)
-- [Key Vaultok létrehozása és kezelése Javával](../secrets/quick-create-java.md)
-- [Kulcstartók létrehozása és kezelése Node.js](../secrets/quick-create-node.md)
-- [Kulcstartók létrehozása és kezelése .NET-tel (v4 SDK)](../secrets/quick-create-net.md)
-- [Kulcstartó létrehozása és titkos kód hozzáadása Azure Resource Manager sablon használatával](../secrets/quick-create-template.md)
-- [Kulcstartók létrehozása és kezelése a REST-tel](/rest/api/keyvault/)
+- [Kulcstartók létrehozása és kezelése a CLI-vel](quick-create-cli.md)
+- [Kulcstartók létrehozása és kezelése a PowerShell-lel](quick-create-powershell.md)
+- [Kulcstartók létrehozása és kezelése a Azure Portal](quick-create-portal.md)
+- [Kulcstartók létrehozása és kezelése a REST-tel](/rest/api/keyvault/vaults/createorupdate)
 
+### <a name="set-and-retrieve-secrets"></a>Titkok beállítása és beolvasása
+
+- [Titkos kód beállítása és beolvasása a CLI-vel](../secrets/quick-create-cli.md)
+- [Titkos kód beállítása és beolvasása a PowerShell-lel](../secrets/quick-create-powershell.md)
+- [Titkos kód beállítása és beolvasása a Azure Portal](../secrets/quick-create-portal.md)
+- [Secrets műveletek a REST-tel](/rest/api/keyvault/#secret-operations)
+- [Titok beállítása és beolvasása Python-val](../secrets/quick-create-python.md)
+- [Titkos kód beállítása és beolvasása Javával](../secrets/quick-create-java.md)
+- [Titok beállítása és beolvasása Node.js](../secrets/quick-create-node.md)
+- [Titkos kód beállítása és beolvasása .NET-tel (v4 SDK)](../secrets/quick-create-net.md)
+- [Kulcstartó létrehozása és titkos kód hozzáadása Azure Resource Manager sablon használatával](../secrets/quick-create-template.md)
+
+### <a name="set-and-retrieve-keys"></a>Kulcsok beállítása és lekérése
+
+- [Kulcs beállítása és lekérése a parancssori felületről](../keys/quick-create-cli.md)
+- [Kulcs beállítása és lekérése a PowerShell-lel](../keys/quick-create-powershell.md)
+- [Kulcs beállítása és lekérése a Azure Portal](../keys/quick-create-portal.md)
+- [A kulcsok működése REST-tel](/rest/api/keyvault/#key-operations)
+- [Kulcs beállítása és lekérése a Pythonban](../secrets/quick-create-python.md)
+
+### <a name="set-and-retrieve-certificates"></a>Tanúsítványok beállítása és lekérése
+- [Tanúsítvány beállítása és lekérése parancssori felülettel](../certificates/quick-create-cli.md)
+- [Tanúsítvány beállítása és lekérése a PowerShell-lel](../certificates/quick-create-powershell.md)
+- [Tanúsítvány beállítása és lekérése a Azure Portal](../certificates/quick-create-portal.md)
+- [A kulcsok működése REST-tel](/rest/api/keyvault/#certificate-operations)
+- [Tanúsítvány beállítása és lekérése Python-val](../certificates/quick-create-python.md)
 
 ## <a name="coding-with-key-vault"></a>Kódolás Key Vault
 
@@ -64,8 +85,6 @@ Az összes Key Vault erőforrás a REST-felületen keresztül érhető el; táro
 #### <a name="net"></a>.NET
 
 [A Key Vault .NET API-referenciája](/dotnet/api/overview/azure/key-vault?view=azure-dotnet).
-
-A .NET SDK 2. x verziójával kapcsolatos további információkért tekintse meg a [kibocsátási megjegyzéseket](dotnet2api-release-notes.md).
 
 #### <a name="java"></a>Java
 
@@ -94,7 +113,6 @@ Node.js a Key Vault Management API és a Key Vault Object API különállóak. A
 A Key Vault alkalmazással való használatának teljes példáit a következő témakörben tekintheti meg:
 
 - [Azure Key Vault kód mintái](https://azure.microsoft.com/resources/samples/?service=key-vault) – a Azure Key Vaulthoz tartozó példák. 
-- [Azure Key Vault használata webalkalmazásból](../secrets/quick-create-net.md) – oktatóanyag, amelyből megtudhatja, hogyan használhatók a Azure Key Vault egy webalkalmazásból az Azure-ban. 
 
 ## <a name="how-tos"></a>Használati útmutatók
 
@@ -124,7 +142,6 @@ Ezek a cikkek olyan egyéb forgatókönyvekkel és szolgáltatásokkal kapcsolat
 
 - [Key Vault-törlési viselkedés](soft-delete-overview.md)) egy olyan funkciót ismertet, amely lehetővé teszi a törölt objektumok helyreállítását, függetlenül attól, hogy a törlés véletlen vagy szándékos volt-e.
 - [Key Vault az ügyfelek szabályozása](overview-throttling.md) a szabályozás alapvető fogalmait, és az alkalmazás megközelítését kínálja.
-- [Key Vault Storage-fiók kulcsainak áttekintése](../secrets/overview-storage-keys.md)) ismerteti a Key Vault integrációs Azure Storage-fiókok kulcsait.
 - [Key Vault biztonsági világok](overview-security-worlds.md) ismertetik a régiók és a biztonsági területek közötti kapcsolatokat.
 
 ## <a name="social"></a>Közösségi

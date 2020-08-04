@@ -4,12 +4,12 @@ description: Összefoglalja az Azure-beli virtuális gépek vész-helyreállít�
 ms.topic: article
 ms.date: 07/14/2020
 ms.author: raynew
-ms.openlocfilehash: 49e005d67702013b77d688d346860a217a13c561
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: d4beec60a2cd705884ee79296c9afab2afc08c2e
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87460116"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534498"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Támogatási mátrix az Azure-beli virtuális gépek Azure-régiók közötti vész-helyreállításához
 
@@ -136,7 +136,7 @@ Oracle Linux | 6,4, 6,5, 6,6, 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5,
 
 **Kiadás** | **Mobilitási szolgáltatás verziója** | **Kernel verziója** |
 --- | --- | --- |
-Debian 7 | 9,31, 9,32, [9,33](https://support.microsoft.com/help/4564347/), [9,34](https://support.microsoft.com/help/4570609) | 3.2.0-4-amd64 – 3.2.0-6-amd64, 3.16.0 -0. BPO. 4 – amd64 |
+Debian 7 | 9,31, 9,32, [9,33](https://support.microsoft.com/help/4564347/), [9,34](https://support.microsoft.com/help/4570609), [9,35](https://support.microsoft.com/help/4573888/) | 3.2.0-4-amd64 – 3.2.0-6-amd64, 3.16.0 -0. BPO. 4 – amd64 |
 |||
 Debian 8 | [9,35](https://support.microsoft.com/help/4573888/) | 3.16.0-4-amd64 – 3.16.0-11-amd64, 4.9.0 -0. BPO. 4-amd64 – 4.9.0 -0. BPO. 11 – amd64 |
 Debian 8 | 9,31, 9,32, [9,33](https://support.microsoft.com/help/4564347/), [9,34](https://support.microsoft.com/help/4570609) | 3.16.0-4-amd64 – 3.16.0-10-amd64, 4.9.0 -0. BPO. 4-amd64 – 4.9.0 -0. BPO. 11 – amd64 |
@@ -202,7 +202,7 @@ Ez a táblázat az Azure VM operációsrendszer-lemez, az adatlemez és az ideig
 **Összetevő** | **Támogatás** | **Részletek**
 --- | --- | ---
 OPERÁCIÓSRENDSZER-lemez maximális mérete | 2048 GB | [További](../virtual-machines/windows/managed-disks-overview.md) információ a VM-lemezekről.
-Ideiglenes lemez | Nem támogatott | Az ideiglenes lemez mindig ki van zárva a replikációból.<br/><br/> Ne tároljon állandó adatmennyiséget az ideiglenes lemezen. [További információ](../virtual-machines/windows/managed-disks-overview.md).
+Ideiglenes lemez | Nem támogatott | Az ideiglenes lemez mindig ki van zárva a replikációból.<br/><br/> Ne tároljon állandó adatmennyiséget az ideiglenes lemezen. [További információk](../virtual-machines/windows/managed-disks-overview.md).
 Adatlemez maximális mérete | 8192 GB felügyelt lemezekhez<br></br>4095 GB a nem felügyelt lemezekhez|
 Adatlemez minimális mérete | Nem felügyelt lemezekre vonatkozó korlátozás. 2 GB a felügyelt lemezekhez |
 Adatlemez maximális száma | Akár 64-ig, egy adott Azure-beli virtuálisgép-méret támogatásával összhangban | [További](../virtual-machines/windows/sizes.md) információ a virtuális gépek méreteiről.
@@ -279,7 +279,7 @@ Hitelesített proxy | Nem támogatott | Ha a virtuális gép hitelesített proxy
 Helyszíni VPN-helyek közötti kapcsolat<br/><br/>(ExpressRoute vagy anélkül)| Támogatott | Győződjön meg arról, hogy a UDR és a NSG úgy vannak konfigurálva, hogy a Site Recovery forgalom ne legyen átirányítva a helyszíni környezetbe. [További információ](./azure-to-azure-about-networking.md)
 VNET – VNET-kapcsolatok    | Támogatott | [További információ](./azure-to-azure-about-networking.md)
 Virtuális hálózati szolgáltatásvégpontok | Támogatott | Ha korlátozza a virtuális hálózati hozzáférést a Storage-fiókokhoz, győződjön meg arról, hogy a megbízható Microsoft-szolgáltatások hozzáférése engedélyezett a Storage-fiókhoz.
-Gyorsított hálózatkezelés | Támogatott | A gyorsított hálózatkezelést engedélyezni kell a forrásoldali virtuális gépen. [További információ](azure-vm-disaster-recovery-with-accelerated-networking.md).
+Gyorsított hálózatkezelés | Támogatott | A gyorsított hálózatkezelést engedélyezni kell a forrásoldali virtuális gépen. [További információk](azure-vm-disaster-recovery-with-accelerated-networking.md).
 Palo Alto hálózati berendezés | Nem támogatott | A harmadik féltől származó készülékekkel gyakran a virtuális gépen belüli szolgáltató korlátozza a korlátozásokat. Azure Site Recovery szüksége van az ügynökre, a bővítményekre és a kimenő kapcsolatokra. A készülék azonban nem teszi lehetővé, hogy a kimenő tevékenységek a virtuális gépen belül legyenek konfigurálva.
 IPv6  | Nem támogatott | Az IPv4 és az IPv6 protokollt is tartalmazó vegyes konfigurációk nem támogatottak. A Site Recovery művelet előtt szabadítson fel az IPv6-tartomány alhálózatát.
 Site Recovery szolgáltatáshoz való privát hivatkozás | Támogatott | [További információ](azure-to-azure-how-to-enable-replication-private-endpoints.md)

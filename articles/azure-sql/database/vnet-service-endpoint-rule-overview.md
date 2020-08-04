@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: c1ac3c1e312704f8a0afa751d0efc6d0cef897f9
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 65ec92aeca44a514467a642de1dab06f06c220e9
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371770"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533852"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-servers-in-azure-sql-database"></a>Virtuális hálózati szolgáltatási végpontok és szabályok használata a Azure SQL Database-kiszolgálókon
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -104,7 +104,7 @@ When searching for blogs about ASM, you probably need to use this old and now-fo
 
 ## <a name="impact-of-using-vnet-service-endpoints-with-azure-storage"></a>Az VNet szolgáltatásbeli végpontok használatának következményei az Azure Storage-ban
 
-Az Azure Storage ugyanazt a funkciót implementálta, amely lehetővé teszi az Azure Storage-fiókhoz való csatlakozás korlátozását. Ha úgy dönt, hogy ezt a funkciót egy Azure SQL Database által használt Azure Storage-fiókkal használja, akkor a problémákkal is futhat. A következő lista a Azure SQL Database és Azure SQL Data Warehouse azon szolgáltatásainak listáját és megvitatását tartalmazza, amelyekre hatással van.
+Az Azure Storage ugyanazt a funkciót implementálta, amellyel korlátozhatja az Azure Storage-fiók kapcsolatait. Ha egy olyan Azure Storage-fiókkal próbálja használni ezt a funkciót, amelyet az Azure SQL Database használ, problémákba ütközhet. A következő lista a Azure SQL Database és Azure SQL Data Warehouse azon szolgáltatásainak listáját és megvitatását tartalmazza, amelyekre hatással van.
 
 ### <a name="azure-synapse-polybase"></a>Azure szinapszis-alapanyag
 
@@ -112,9 +112,9 @@ A rendszer általában az Azure-beli Storage-fiókokból származó adatok Azure
 
 #### <a name="prerequisites"></a>Előfeltételek
 
-- Azure PowerShell telepítése az [útmutató](https://docs.microsoft.com/powershell/azure/install-az-ps)segítségével.
-- Ha rendelkezik általános célú v1-vagy blob Storage-fiókkal, először az [útmutató](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)használatával kell frissítenie az általános célú v2-re.
-- Engedélyeznie kell, **hogy a megbízható Microsoft-szolgáltatások hozzáférjenek ehhez a Storage-fiókhoz** az Azure Storage **-fiók tűzfala és a virtuális hálózatok** beállítások menüjében. További információért tekintse meg ezt az [útmutatót](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) .
+- Telepítse az Azure PowerShellt a kapcsolódó [útmutató](https://docs.microsoft.com/powershell/azure/install-az-ps) alapján.
+- Ha általános célú v1 vagy Blob Storage-fiókja van, először frissítenie kell az általános célú v2 fiókra az [itt található útmutatások](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade) szerint.
+- Engedélyeznie kell, **hogy a megbízható Microsoft-szolgáltatások hozzáférjenek ehhez a Storage-fiókhoz** az Azure Storage **-fiók tűzfala és a virtuális hálózatok** beállítások menüjében. További információt ebben az [útmutatóban](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) talál.
 
 > [!IMPORTANT]
 > Az Azure SQL Database továbbra is támogatja a PowerShell Azure Resource Manager modult, de a jövőbeli fejlesztés az az. SQL-modulhoz készült. A AzureRM modul továbbra is megkapja a hibajavításokat, amíg legalább december 2020-ra nem kerül sor.  Az az modul és a AzureRm modulok parancsainak argumentumai lényegében azonosak. A kompatibilitással kapcsolatos további információkért lásd: [az új Azure PowerShell bemutatása az Module](/powershell/azure/new-azureps-module-az).
@@ -136,7 +136,7 @@ A rendszer általában az Azure-beli Storage-fiókokból származó adatok Azure
    > - Ha rendelkezik általános célú v1-vagy blob Storage-fiókkal, először a **v2-re kell frissítenie** az [útmutató](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)segítségével.
    > - Azure Data Lake Storage Gen2 kapcsolatos ismert problémák esetén tekintse meg ezt az [útmutatót](https://docs.microsoft.com/azure/storage/data-lake-storage/known-issues).
 
-1. A Storage-fiók területen navigáljon a **Access Control (iam)** elemre, és válassza a **szerepkör-hozzárendelés hozzáadása**elemet. Rendeljen hozzá **Storage blob-adatközreműködői** RBAC szerepkört az Azure szinapszis Analytics szolgáltatást futtató kiszolgálóhoz, amelyet a Azure Active Directory (HRE)-ben regisztrált a #1 lépésben.
+1. A Storage-fiók területen navigáljon a **Access Control (iam)** elemre, és válassza a **szerepkör-hozzárendelés hozzáadása**elemet. Rendelje hozzá a **Storage blob-adatközreműködő** Azure-szerepkört az Azure szinapszis Analytics szolgáltatást futtató kiszolgálóhoz, amelyet a következő #1 lépésben regisztrált: Azure Active Directory (HRE).
 
    > [!NOTE]
    > Ezt a lépést csak a Storage-fiók tulajdonosi jogosultsággal rendelkező tagjai hajthatják végre. A különböző Azure-beli beépített szerepkörökhöz tekintse meg ezt az [útmutatót](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).

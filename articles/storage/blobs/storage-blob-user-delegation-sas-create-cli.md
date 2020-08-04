@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: blobs
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e3ba428c0e3564f724f02652fc77c6ce84947bd6
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: ddfa12bd758ffc362c51e10f63800665109d54a6
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87494570"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534073"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-the-azure-cli"></a>Felhasználói delegálási SAS létrehozása tárolóhoz vagy blobhoz az Azure CLI-vel
 
@@ -40,7 +40,7 @@ Jelentkezzen be az Azure CLI-be az Azure AD-beli hitelesítő adataival. Tovább
 
 Ha Azure PowerShellból szeretne felhasználói delegálási SAS-t létrehozni, az Azure CLI-be való bejelentkezéshez használt Azure AD-fióknak olyan szerepkört kell hozzárendelni, amely tartalmazza a **Microsoft. Storage/storageAccounts/blobServices/generateUserDelegationKey** műveletet. Ez az engedély lehetővé teszi, hogy az Azure AD-fiók a *felhasználói delegálási kulcsot*kérje. A felhasználói delegálási kulcs a felhasználói delegálási SAS aláírására szolgál. A **Microsoft. Storage/storageAccounts/blobServices/generateUserDelegationKey** műveletet biztosító szerepkört a Storage-fiók, az erőforráscsoport vagy az előfizetés szintjén kell hozzárendelni.
 
-Ha nem rendelkezik megfelelő engedélyekkel ahhoz, hogy RBAC-szerepköröket rendeljen hozzá egy Azure AD-rendszerbiztonsági tag számára, előfordulhat, hogy a fiók tulajdonosának vagy a rendszergazdának kell megkérnie a szükséges engedélyek hozzárendelését.
+Ha nem rendelkezik megfelelő engedélyekkel az Azure-szerepkörök Azure AD-rendszerbiztonsági tag számára való hozzárendeléséhez, akkor előfordulhat, hogy a fiók tulajdonosának vagy a rendszergazdának kell megkérnie a szükséges engedélyek hozzárendelését.
 
 A következő példa a **Storage blob-adatközreműködői** szerepkört rendeli hozzá, amely magában foglalja a **Microsoft. Storage/storageAccounts/blobServices/generateUserDelegationKey** műveletet. A szerepkör hatóköre a Storage-fiók szintjén van.
 

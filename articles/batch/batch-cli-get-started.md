@@ -4,12 +4,12 @@ description: Gyors bevezetést olvashat Azure Batch szolgáltatás erőforrásai
 ms.topic: how-to
 ms.date: 07/24/2018
 ms.custom: H1Hack27Feb2017, devx-track-azurecli
-ms.openlocfilehash: ea3f91615a488a1013ac4821ce7ba14b2006c14a
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 048dbad89893354ae78c03fc522f8ebeeb6a80f4
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87494944"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87531677"
 ---
 # <a name="manage-batch-resources-with-azure-cli"></a>Batch-erőforrássok kezelése az Azure CLI-vel
 
@@ -79,7 +79,7 @@ A Batch-fiók hitelesítését két módon is elvégezheti:
     
     Amikor az interaktív bejelentkezés segítségével lép be az Azure-ba, ahogyan azt az előző részben is említettük, a hitelesítő adatait a rendszer a gyorsítótárba helyezi, így az Azure CLI ugyanezeket a hitelesítő adatokat használva be tud jelentkezni Batch-fiókjába is. Ha szolgáltatásnév használatával jelentkezik be az Azure-ba, a rendszer a szolgáltatásnév hitelesítő adatait használva fog bejelentkezni Batch-fiókjába.
 
-    Az Azure AD előnye a szerepköralapú hozzáférés-vezérlés (RBAC) használatában rejlik. Szerepköralapú hozzáférés-vezérlés használatával a felhasználók hozzáférése a kiosztott szerepkörtől függ, nem pedig attól, hogy rendelkeznek-e a fiókhoz tartozó hitelesítőkulccsal. Így ahelyett, hogy hozzáférési kulcsokat kellene kezelnie, elég ha a szerepköröket kezeli, a hozzáférést és a hitelesítést pedig az Azure AD-ra bízhatja.  
+    Az Azure AD előnye a szerepköralapú hozzáférés-vezérlés (RBAC) használatában rejlik. Szerepköralapú hozzáférés-vezérlés használatával a felhasználók hozzáférése a kiosztott szerepkörtől függ, nem pedig attól, hogy rendelkeznek-e a fiókhoz tartozó hitelesítőkulccsal. A fiókok kulcsainak kezelése helyett kezelheti az Azure-szerepköröket, és engedélyezheti az Azure AD kezeli a hozzáférést és a hitelesítést.  
 
      Ahhoz, hogy az Azure AD használatával jelentkezzen be Batch-fiókjába, használja a [az batch account login](/cli/azure/batch/account#az-batch-account-login) parancsot: 
 

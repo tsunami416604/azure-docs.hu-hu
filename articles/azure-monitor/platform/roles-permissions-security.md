@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: 8e56c4da0eec3338de7863a2ee158e804cf406c0
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 7d92cbc25411f5cc2d528ccf6ecec4539494d380
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325559"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533274"
 ---
 # <a name="roles-permissions-and-security-in-azure-monitor"></a>Szerepkörök, engedélyek és biztonság a Azure Monitorban
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Számos csapatnak szigorúan szabályoznia kell a figyelési és a beállítási funkciókhoz való hozzáférést. Ha például vannak olyan csapattagok, akik kizárólag a figyelés (támogatási mérnökök, DevOps mérnökök) esetében működnek, vagy ha felügyelt szolgáltatót használ, érdemes hozzáférést biztosítani számukra, hogy csak a figyelési adatmennyiséget használják, miközben korlátozza az erőforrások létrehozását, módosítását és törlését. Ez a cikk bemutatja, hogyan alkalmazhat gyorsan egy beépített figyelési RBAC szerepkört egy Azure-beli felhasználóra, vagy létrehozhat egy saját egyéni szerepkört egy korlátozott figyelési engedélyekkel rendelkező felhasználó számára. Ezután a Azure Monitor kapcsolódó erőforrásaival kapcsolatos biztonsági szempontokat tárgyalja, valamint arról, hogyan korlátozhatja a hozzáférését a bennük található adathoz.
+Számos csapatnak szigorúan szabályoznia kell a figyelési és a beállítási funkciókhoz való hozzáférést. Ha például vannak olyan csapattagok, akik kizárólag a figyelés (támogatási mérnökök, DevOps mérnökök) esetében működnek, vagy ha felügyelt szolgáltatót használ, érdemes hozzáférést biztosítani számukra, hogy csak a figyelési adatmennyiséget használják, miközben korlátozza az erőforrások létrehozását, módosítását és törlését. Ez a cikk bemutatja, hogyan alkalmazhat gyorsan egy beépített monitorozási Azure-szerepkört egy Azure-beli felhasználóra, vagy létrehozhat egy saját egyéni szerepkört egy korlátozott figyelési engedélyekkel rendelkező felhasználó számára. Ezután a Azure Monitor kapcsolódó erőforrásaival kapcsolatos biztonsági szempontokat tárgyalja, valamint arról, hogyan korlátozhatja a hozzáférését a bennük található adathoz.
 
 ## <a name="built-in-monitoring-roles"></a>Beépített monitorozási szerepkörök
 A Azure Monitor beépített szerepkörei úgy vannak kialakítva, hogy segítsenek korlátozni az előfizetésben lévő erőforrásokhoz való hozzáférést, miközben továbbra is lehetővé teszik az infrastruktúra figyelését a szükséges információk beszerzéséhez és konfigurálásához. Azure Monitor két beépített szerepkört biztosít: egy figyelési olvasót és egy figyelő közreműködőt.

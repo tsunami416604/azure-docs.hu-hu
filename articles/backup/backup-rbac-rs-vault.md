@@ -4,12 +4,12 @@ description: Szerepköralapú Access Control segítségével kezelheti a biztons
 ms.reviewer: utraghuv
 ms.topic: conceptual
 ms.date: 06/24/2019
-ms.openlocfilehash: 4c5a0a43efe7bda5fdc4b60d13b97f61565809bd
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 408e25b865c6d244118e505121492ccf22d19b64
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87445307"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533461"
 ---
 # <a name="use-role-based-access-control-to-manage-azure-backup-recovery-points"></a>Szerepköralapú Access Control használata Azure Backup helyreállítási pontok kezeléséhez
 
@@ -28,9 +28,9 @@ Ha a saját szerepköröket is meg szeretné határozni még több szabályozás
 
 ## <a name="mapping-backup-built-in-roles-to-backup-management-actions"></a>Beépített szerepkörök biztonsági mentésének leképezése biztonsági mentési felügyeleti műveletekre
 
-Az alábbi táblázat a művelet végrehajtásához szükséges biztonságimásolat-kezelési műveleteket és a hozzá tartozó minimális RBAC szerepkört rögzíti.
+Az alábbi táblázat a művelet végrehajtásához szükséges biztonságimásolat-kezelési műveleteket és a hozzá tartozó minimális Azure-szerepkört rögzíti.
 
-| Kezelési művelet | Minimálisan szükséges RBAC-szerepkör | Hatókör szükséges |
+| Kezelési művelet | Minimálisan szükséges Azure-szerepkör | Hatókör szükséges |
 | --- | --- | --- |
 | Helyreállítási tár létrehozása | Biztonsági mentési közreműködő | A tárolót tartalmazó erőforráscsoport |
 | Azure-beli virtuális gépek biztonsági mentésének engedélyezése | Biztonságimásolat-felelős | A tárolót tartalmazó erőforráscsoport |

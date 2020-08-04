@@ -17,7 +17,7 @@ ms.locfileid: "80550008"
 ---
 Ezzel a rövid útmutatóval megkezdheti a képelemzések beszerzését a Bing Visual Search szolgáltatásból a C# ügyféloldali kódtár használatával. Habár a Bing Visual Search REST API kompatibilis a legtöbb programozási nyelvvel, az ügyféloldali kódtár egyszerű módszert kínál a szolgáltatás integrálására az alkalmazásokba. A minta forráskódja a [githubon](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingVisualSearch)található.
 
-[A dokumentációs](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingvisualsearch?view=azure-dotnet) | [könyvtár forráskód](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Search.BingVisualSearch) | [-csomagjához (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.VisualSearch/) | tartozó[minták](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/)
+[Dokumentáció](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingvisualsearch?view=azure-dotnet)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Search.BingVisualSearch)  |  [Csomag (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.VisualSearch/)  |  [Példák](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -51,7 +51,7 @@ Ezzel a rövid útmutatóval megkezdheti a képelemzések beszerzését a Bing V
     
 ## <a name="send-a-search-request"></a>Keresési kérelem küldése 
 
-1. `FileStream` Hozza létre a lemezképeket (ebben az esetben `TestImages/image.jpg`). Ezután használja az ügyfelet egy keresési kérelem küldéséhez `client.Images.VisualSearchMethodAsync()`a használatával. 
+1. Hozza létre a `FileStream` lemezképeket (ebben az esetben `TestImages/image.jpg` ). Ezután használja az ügyfelet egy keresési kérelem küldéséhez a használatával `client.Images.VisualSearchMethodAsync()` . 
     
     ```csharp
      System.IO.FileStream stream = new FileStream(Path.Combine("TestImages", "image.jpg"), FileMode.Open);

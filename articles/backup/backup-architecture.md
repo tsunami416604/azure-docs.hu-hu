@@ -3,12 +3,12 @@ title: Az architektúra áttekintése
 description: Áttekintést nyújt a Azure Backup szolgáltatás által használt architektúráról, összetevőkről és folyamatokról.
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.openlocfilehash: eab820c2a045c8602bfdbf77b5e2dba4cb2318af
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 45e5634188b675198e0fc4c07a8a43964217f91a
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86514305"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87532492"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Architektúra és összetevők Azure Backup
 
@@ -44,8 +44,8 @@ Recovery Services-tárolók a következő funkciókkal rendelkeznek:
 - Megfigyelheti a tárolóban lévő biztonsági másolati elemeket, beleértve az Azure-beli virtuális gépeket és a helyszíni gépeket is.
 - A tár hozzáférését az Azure [szerepköralapú hozzáférés-vezérléssel (RBAC)](../role-based-access-control/role-assignments-portal.md)kezelheti.
 - Megadhatja, hogyan replikálja a rendszer a tárolóban lévő adattárakat:
-  - **Helyileg redundáns tárolás (LRS)**: az adatközpontok meghibásodása elleni védelem érdekében a LRS-t használhatja. A LRS replikálja az adatmennyiséget egy tárolási méretezési egységbe. [További információ](../storage/common/storage-redundancy.md).
-  - **Geo-redundáns tárolás (GRS)**: az egész régióra kiterjedő kimaradások elleni védelemhez használhatja a GRS. A GRS egy másodlagos régióba replikálja az adatait. [További információ](../storage/common/storage-redundancy.md).
+  - **Helyileg redundáns tárolás (LRS)**: az adatközpontok meghibásodása elleni védelem érdekében a LRS-t használhatja. A LRS replikálja az adatmennyiséget egy tárolási méretezési egységbe. [További információk](../storage/common/storage-redundancy.md).
+  - **Geo-redundáns tárolás (GRS)**: az egész régióra kiterjedő kimaradások elleni védelemhez használhatja a GRS. A GRS egy másodlagos régióba replikálja az adatait. [További információk](../storage/common/storage-redundancy.md).
   - Recovery Services tárolók alapértelmezés szerint a GRS használják.
 
 ## <a name="backup-agents"></a>Biztonsági mentési ügynökök
@@ -120,16 +120,15 @@ Deduplikált lemezek biztonsági mentése | | | ![Részlegesen][yellow]<br/><br/
 - Tároló létrehozásakor a rendszer létrehoz egy "DefaultPolicy", és az erőforrások biztonsági mentésére is használható.
 - A biztonsági mentési szabályzat megőrzési időszakában bekövetkezett változások visszamenőlegesen lesznek alkalmazva az összes korábbi helyreállítási pontra az újakon kívül.
 
-### <a name="additional-reference"></a>További hivatkozás 
+### <a name="additional-reference"></a>További hivatkozás
 
--   Azure-beli VM-gép: szabályzat [létrehozása](./backup-azure-vms-first-look-arm.md#back-up-from-azure-vm-settings) és [módosítása](./backup-azure-manage-vms.md#manage-backup-policy-for-a-vm) 
--   Adatbázis SQL Server az Azure-beli VM-gépen: szabályzat [létrehozása](./backup-sql-server-database-azure-vms.md#create-a-backup-policy) és [módosítása](./manage-monitor-sql-database-backup.md#modify-policy) ? 
--   Azure file share: szabályzat [létrehozása](./backup-afs.md#discover-file-shares-and-configure-backup) és [módosítása](./manage-afs-backup.md#modify-policy) ? 
--   SAP HANA: szabályzat [létrehozása](./backup-azure-sap-hana-database.md#create-a-backup-policy) és [módosítása](./sap-hana-db-manage.md#change-policy) 
--   MARS: szabályzat [létrehozása](./backup-windows-with-mars-agent.md#create-a-backup-policy) és [módosítása](./backup-azure-manage-mars.md#modify-a-backup-policy) 
--   [Vannak korlátozások a biztonsági mentés ütemezésére a számítási feladatok típusa alapján?](./backup-azure-backup-faq.md#are-there-limits-on-backup-scheduling)
-- [Mi történik a meglévő helyreállítási pontokkal, ha módosítom az adatmegőrzési szabályt?](./backup-azure-backup-faq.md#what-happens-when-i-change-my-backup-policy)
-
+- Azure-beli VM-gép: szabályzat [létrehozása](./backup-azure-vms-first-look-arm.md#back-up-from-azure-vm-settings) és [módosítása](./backup-azure-manage-vms.md#manage-backup-policy-for-a-vm) .
+- Adatbázis SQL Server az Azure-beli VM-gépen: szabályzat [létrehozása](./backup-sql-server-database-azure-vms.md#create-a-backup-policy) és [módosítása](./manage-monitor-sql-database-backup.md#modify-policy) .
+- Azure file share: szabályzat [létrehozása](./backup-afs.md) és [módosítása](./manage-afs-backup.md#modify-policy) .
+- SAP HANA: szabályzat [létrehozása](./backup-azure-sap-hana-database.md#create-a-backup-policy) és [módosítása](./sap-hana-db-manage.md#change-policy) .
+- MARS: szabályzat [létrehozása](./backup-windows-with-mars-agent.md#create-a-backup-policy) és [módosítása](./backup-azure-manage-mars.md#modify-a-backup-policy) .
+- [Vannak korlátozások a biztonsági mentés ütemezésére a számítási feladatok típusa alapján?](./backup-azure-backup-faq.md#are-there-limits-on-backup-scheduling)
+- [Mi történik a meglévő helyreállítási pontokkal, ha módosítom az adatmegőrzési szabályzatot?](./backup-azure-backup-faq.md#what-happens-when-i-change-my-backup-policy)
 
 ## <a name="architecture-built-in-azure-vm-backup"></a>Architektúra: beépített Azure-beli virtuális gépek biztonsági mentése
 
@@ -222,7 +221,7 @@ Ha felügyelt lemezekkel állítja vissza a virtuális gépeket, visszaállítha
 - A visszaállítási folyamat során az Azure kezeli a felügyelt lemezeket. Ha a Storage-fiók lehetőséget használja, akkor a visszaállítási folyamat során létrehozott Storage-fiókot kell kezelnie.
 - Ha egy titkosított felügyelt virtuális gépet állít vissza, akkor a visszaállítási folyamat megkezdése előtt győződjön meg arról, hogy a virtuális gép kulcsainak és titkos kulcsai léteznek a kulcstartóban.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Tekintse át a támogatási mátrixot, [ahol megismerheti a biztonsági mentési forgatókönyvek támogatott funkcióit és korlátozásait](backup-support-matrix.md).
 - Állítsa be a biztonsági mentést az alábbi forgatókönyvek egyikére:

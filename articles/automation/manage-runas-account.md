@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 06/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: a3f48c9f15d12fbfc41ac8baf589f8579f259377
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: c2d6e026f87211260a2cf45c0623806cc024b44e
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421484"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87530666"
 ---
 # <a name="manage-an-azure-automation-run-as-account"></a>Azure Automation futtató fiók kezelése
 
@@ -61,12 +61,12 @@ Ez a szakasz a normál futtató fiókok és a klasszikus futtató fiókok enged�
 
 Futtató fiók létrehozásához vagy frissítéséhez konkrét jogosultságokkal és engedélyekkel kell rendelkeznie. Azure Active Directory és egy előfizetéshez tartozó egyik alkalmazás rendszergazdája elvégezheti az összes feladatot. Az alábbi táblázat a feladatok elkülönítését mutatja be, a megfelelő parancsmagot és engedélyeket, valamint a szükséges engedélyek listáját:
 
-|Feladat|Parancsmag  |Minimális engedélyek  |Az engedélyek beállítása|
+|Tevékenység|Parancsmag  |Minimális engedélyek  |Az engedélyek beállítása|
 |---|---------|---------|---|
 |Azure AD-alkalmazás létrehozása|[Új – AzADApplication](/powershell/module/az.resources/new-azadapplication)     | Alkalmazás fejlesztői szerepköre<sup>1</sup>        |[Azure AD](../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)</br>Az Azure AD > alkalmazásbeli regisztrációjának kezdőlapja > |
 |Adjon hozzá egy hitelesítő adatot az alkalmazáshoz.|[Új – AzADAppCredential](/powershell/module/az.resources/new-azadappcredential)     | Alkalmazás-rendszergazda vagy globális rendszergazda<sup>1</sup>         |[Azure AD](../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)</br>Az Azure AD > alkalmazásbeli regisztrációjának kezdőlapja >|
 |Azure AD-szolgáltatásnév létrehozása és beszerzése|[Új – AzADServicePrincipal](/powershell/module/az.resources/new-azadserviceprincipal)</br>[Get-AzADServicePrincipal](/powershell/module/az.resources/get-azadserviceprincipal)     | Alkalmazás-rendszergazda vagy globális rendszergazda<sup>1</sup>        |[Azure AD](../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)</br>Az Azure AD > alkalmazásbeli regisztrációjának kezdőlapja >|
-|A RBAC szerepkör kiosztása vagy beolvasása a megadott rendszerbiztonsági tag számára|[New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment)</br>[Get-AzRoleAssignment](/powershell/module/Az.Resources/Get-AzRoleAssignment)      | Felhasználói hozzáférés a rendszergazdához vagy a tulajdonoshoz, vagy a következő engedélyekkel rendelkezik:</br></br><code>Microsoft.Authorization/Operations/read</br>Microsoft.Authorization/permissions/read</br>Microsoft.Authorization/roleDefinitions/read</br>Microsoft.Authorization/roleAssignments/write</br>Microsoft.Authorization/roleAssignments/read</br>Microsoft.Authorization/roleAssignments/delete</code></br></br> | [Előfizetés](../role-based-access-control/role-assignments-portal.md)</br>Home >-előfizetések > \<subscription name\> -Access Control (iam)|
+|Az Azure-szerepkör kiosztása vagy beszerzése a megadott rendszerbiztonsági tag számára|[New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment)</br>[Get-AzRoleAssignment](/powershell/module/Az.Resources/Get-AzRoleAssignment)      | Felhasználói hozzáférés a rendszergazdához vagy a tulajdonoshoz, vagy a következő engedélyekkel rendelkezik:</br></br><code>Microsoft.Authorization/Operations/read</br>Microsoft.Authorization/permissions/read</br>Microsoft.Authorization/roleDefinitions/read</br>Microsoft.Authorization/roleAssignments/write</br>Microsoft.Authorization/roleAssignments/read</br>Microsoft.Authorization/roleAssignments/delete</code></br></br> | [Előfizetés](../role-based-access-control/role-assignments-portal.md)</br>Home >-előfizetések > \<subscription name\> -Access Control (iam)|
 |Automation-tanúsítvány létrehozása vagy eltávolítása|[Új – AzAutomationCertificate](/powershell/module/Az.Automation/New-AzAutomationCertificate)</br>[Remove-AzAutomationCertificate](/powershell/module/az.automation/remove-azautomationcertificate)     | Közreműködő az erőforráscsoporthoz         |Automation-fiók erőforráscsoport|
 |Automation-kapcsolatok létrehozása vagy eltávolítása|[Új – AzAutomationConnection](/powershell/module/az.automation/new-azautomationconnection)</br>[Remove-AzAutomationConnection](/powershell/module/az.automation/remove-azautomationconnection)|Közreműködő az erőforráscsoporthoz |Automation-fiók erőforráscsoport|
 
@@ -209,7 +209,7 @@ The Run As account is incomplete. Either one of these was deleted or not created
 
 A futtató fiókkal kapcsolatos hasonló problémákat gyorsan elháríthatja a fiók törlésével és ismételt létrehozásával.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Alkalmazás-objektumok és egyszerű szolgáltatások objektumai](../active-directory/develop/app-objects-and-service-principals.md).
 * [Az Azure Cloud Services tanúsítványok áttekintése](../cloud-services/cloud-services-certs-create.md).

@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 07/15/2020
-ms.openlocfilehash: 8d7171bafb292b0520b8873bad0ce8f55ab4040d
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.date: 08/03/2020
+ms.openlocfilehash: caa132475df6481db7228a1ef7e18026b12cf38f
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87171500"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534328"
 ---
 # <a name="copy-and-transform-data-in-azure-synapse-analytics-formerly-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Adatmásolás és átalakítás az Azure szinapszis Analyticsben (korábban Azure SQL Data Warehouse) a használatával Azure Data Factory
 
@@ -376,7 +376,7 @@ Az adatAzure SQL Data Warehouseba való másoláshoz állítsa a fogadó típust
 | writeBatchSize    | A **kötegekben**az SQL-táblába beillesztett sorok száma.<br/><br/>Az engedélyezett érték **egész szám** (sorok száma). Alapértelmezés szerint a Data Factory dinamikusan meghatározza a megfelelő batch-méretet a sor mérete alapján. | Nem.<br/>Tömeges Beszúrás használatakor alkalmazandó.     |
 | writeBatchTimeout | Várakozási idő a kötegelt beszúrási művelet befejezéséhez az időtúllépés előtt.<br/><br/>Az engedélyezett érték a **TimeSpan**. Például: "00:30:00" (30 perc). | Nem.<br/>Tömeges Beszúrás használatakor alkalmazandó.        |
 | preCopyScript     | Adja meg a másolási tevékenység futtatásához szükséges SQL-lekérdezést, mielőtt az egyes futtatások Azure SQL Data Warehousebe írna. Ezzel a tulajdonsággal törölheti az előre feltöltött adatkészleteket. | Nem                                            |
-| tableOption | Meghatározza, hogy a [rendszer automatikusan létrehozza](copy-activity-overview.md#auto-create-sink-tables) -e a fogadó táblát, ha az nem létezik a forrásoldali séma alapján. Az automatikus tábla létrehozása nem támogatott, ha a szakaszos másolás a másolási tevékenységben van konfigurálva. Az engedélyezett értékek a következők: `none` (alapértelmezett), `autoCreate` . |Nem |
+| tableOption | Meghatározza, hogy a [rendszer automatikusan létrehozza](copy-activity-overview.md#auto-create-sink-tables) -e a fogadó táblát, ha az nem létezik a forrásoldali séma alapján. Az engedélyezett értékek a következők: `none` (alapértelmezett), `autoCreate` . |Nem |
 | disableMetricsCollection | A Data Factory olyan mérőszámokat gyűjt, mint például a SQL Data Warehouse DWU a másolási teljesítmény optimalizálása és a javaslatok tekintetében. Ha ezt a viselkedést érinti, a `true` kikapcsolásához válassza a következőt:. | Nem (alapértelmezett érték `false` ) |
 
 #### <a name="sql-data-warehouse-sink-example"></a>SQL Data Warehouse fogadó példa

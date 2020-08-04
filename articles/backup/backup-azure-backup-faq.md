@@ -3,12 +3,12 @@ title: Gyakori kérdésekre adott válaszok
 description: 'Gyakori kérdésekre adott válaszok a következő témakörökben: az Azure Backup szolgáltatásai, mint például a Recovery Services-tárolók, a biztonsági mentés lehetséges elemei, működése, titkosítás és korlátozások. '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: 6d05c06b1d27cd9d1bc396bddad49fcc89ba3ec3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4273d93e36dd8d956246811dd3f1d71d96ddcb68
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091079"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87532458"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup – Gyakori kérdések
 
@@ -214,7 +214,7 @@ A Microsoft soha nem fejt vissza adatokat.
 
 ### <a name="what-is-the-minimum-length-of-the-encryption-key-used-to-encrypt-backup-data"></a>Mekkora a biztonsági mentési adatmennyiség titkosításához használt titkosítási kulcs minimális hossza?
 
-Az Azure Backup-ügynök használatakor a titkosítási kulcsnak legalább 16 karakterből kell állnia. Az Azure-beli virtuális gépek esetében nincs korlátozva az Azure KeyVault által használt kulcsok hossza.
+A Microsoft Azure Recovery Services-(MARS-) ügynök által használt titkosítási kulcs olyan jelszóból származik, amelynek legalább 16 karakter hosszúnak kell lennie. Az Azure-beli virtuális gépek esetében az Azure kulcstartó által használt kulcsok hossza nincs korlátozva.
 
 ### <a name="what-happens-if-i-misplace-the-encryption-key-can-i-recover-the-data-can-microsoft-recover-the-data"></a>Mi történik, ha elveszítem a titkosítási kulcsot? Helyre tudom állítani az adatokat? A Microsoft helyre tudja állítani az adatokat?
 

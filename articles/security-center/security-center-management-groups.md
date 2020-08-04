@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/19/2018
 ms.author: memildin
-ms.openlocfilehash: 2ef2cc86b3e12149977fa819a7e54ee9a1c0d7ac
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 43a6c10c8c73e8fb5189b6f085a6969c0d776593
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423983"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534906"
 ---
 # <a name="gain-tenant-wide-visibility-for-azure-security-center"></a>A Azure Security Center teljes bérlőre kiterjedő láthatóságának megszerzése
 Ez a cikk bemutatja, hogyan kezelheti a szervezete biztonsági állapotát a Azure Active Directory bérlőhöz kapcsolódó összes Azure-előfizetésre vonatkozó biztonsági szabályzatok alkalmazásával.
@@ -49,7 +49,7 @@ Az előfizetéseket felügyeleti csoportokba rendezheti, és az irányítási sz
     - A megjelenítendő név mező a Azure Portal belül megjelenő név. A felügyeleti csoport létrehozásakor egy külön megjelenítendő név nem választható mező, és bármikor módosítható.  
 
       ![Létrehozás](./media/security-center-management-groups/create_context_menu.png)  
-5.  Válassza a **Mentés** lehetőséget
+5.  Kattintson a **Mentés** gombra
 
 ### <a name="view-management-groups-in-the-azure-portal"></a>Felügyeleti csoportok megtekintése a Azure Portal
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
@@ -60,10 +60,10 @@ Az előfizetéseket felügyeleti csoportokba rendezheti, és az irányítási sz
 
 ## <a name="grant-tenant-level-visibility-and-the-ability-to-assign-policies"></a>A bérlői szintű láthatóság és a házirendek hozzárendelési képességének biztosítása
 
-Ha szeretné megtekinteni az Azure AD-bérlőben regisztrált összes előfizetés biztonsági állapotát, a legfelső szintű felügyeleti csoportban hozzá kell rendelnie egy megfelelő olvasási engedéllyel rendelkező RBAC-szerepkört.
+Ha szeretné megtekinteni az Azure AD-bérlőben regisztrált összes előfizetés biztonsági állapotát, szükséges, hogy a legfelső szintű felügyeleti csoportban hozzá legyen rendelve egy megfelelő olvasási engedéllyel rendelkező Azure-szerepkör.
 
 ### <a name="elevate-access-for-a-global-administrator-in-azure-active-directory"></a>Globális rendszergazda hozzáférésének megemelése Azure Active Directory
-Egy Azure Active Directory bérlői rendszergazdának nincs közvetlen hozzáférése az Azure-előfizetésekhez. Címtár-rendszergazdaként azonban joguk van arra, hogy egy hozzáféréssel rendelkező szerepkörhöz emeljenek. Az Azure AD-bérlői rendszergazdának a felügyeleti csoport szintjén kell megadnia magát a felhasználói hozzáférési rendszergazdának, hogy RBAC szerepköröket rendeljen hozzá. PowerShell-utasítások és további információk: a [globális rendszergazda hozzáférésének Megemelése Azure Active Directoryban](../role-based-access-control/elevate-access-global-admin.md). 
+Egy Azure Active Directory bérlői rendszergazdának nincs közvetlen hozzáférése az Azure-előfizetésekhez. Címtár-rendszergazdaként azonban joguk van arra, hogy egy hozzáféréssel rendelkező szerepkörhöz emeljenek. Az Azure AD-bérlői rendszergazdának a felügyeleti csoport szintjén kell megadnia magát a felhasználói hozzáférési rendszergazdának, hogy hozzá lehessen rendelni az Azure-szerepköröket. PowerShell-utasítások és további információk: a [globális rendszergazda hozzáférésének Megemelése Azure Active Directoryban](../role-based-access-control/elevate-access-global-admin.md). 
 
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) vagy a [Azure Active Directory felügyeleti központba](https://aad.portal.azure.com).
@@ -87,11 +87,11 @@ Egy Azure Active Directory bérlői rendszergazdának nincs közvetlen hozzáfé
 5. Hajtsa végre a emelt szintű hozzáféréshez szükséges feladatokat. Ha elkészült, állítsa vissza a kapcsolót a **nem**értékre.
 
 
-### <a name="assign-rbac-roles-to-users"></a>RBAC-szerepkörök kiosztása a felhasználók számára
-Az összes előfizetés láthatósága érdekében a bérlői rendszergazdáknak hozzá kell rendelniük a megfelelő RBAC-szerepkört minden olyan felhasználóhoz, aki a legfelső szintű felügyeleti csoport szintjén kívánja biztosítani a bérlői szintű láthatóságot. A hozzárendelni kívánt szerepkörök vagy **biztonsági rendszergazda** vagy biztonsági **olvasó**. Általában a biztonsági rendszergazdai szerepkör szükséges ahhoz, hogy a legfelső szintű házirendeket alkalmazzuk, míg a biztonsági olvasó elegendő lesz a bérlői szintű láthatóság biztosításához. A szerepkörök által biztosított engedélyekkel kapcsolatos további információkért tekintse meg a [biztonsági rendszergazda beépített szerepkörének leírását](../role-based-access-control/built-in-roles.md#security-admin) vagy a [biztonsági olvasó beépített szerepkörének leírását](../role-based-access-control/built-in-roles.md#security-reader).
+### <a name="assign-azure-roles-to-users"></a>Azure-szerepkörök kiosztása a felhasználók számára
+Az összes előfizetés láthatósága érdekében a bérlői rendszergazdáknak hozzá kell rendelniük a megfelelő Azure-szerepkört azokhoz a felhasználókhoz, akik a legfelső szintű felügyeleti csoport szintjén kívánják biztosítani a bérlői szintű láthatóságot. A hozzárendelni kívánt szerepkörök vagy **biztonsági rendszergazda** vagy biztonsági **olvasó**. Általában a biztonsági rendszergazdai szerepkör szükséges ahhoz, hogy a legfelső szintű házirendeket alkalmazzuk, míg a biztonsági olvasó elegendő lesz a bérlői szintű láthatóság biztosításához. A szerepkörök által biztosított engedélyekkel kapcsolatos további információkért tekintse meg a [biztonsági rendszergazda beépített szerepkörének leírását](../role-based-access-control/built-in-roles.md#security-admin) vagy a [biztonsági olvasó beépített szerepkörének leírását](../role-based-access-control/built-in-roles.md#security-reader).
 
 
-#### <a name="assign-rbac-roles-to-users-through-the-azure-portal"></a>RBAC szerepköröket rendelhet a felhasználókhoz a Azure Portalon keresztül: 
+#### <a name="assign-azure-roles-to-users-through-the-azure-portal"></a>Azure-szerepköröket rendelhet a felhasználókhoz a Azure Portalon keresztül: 
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). 
 1. A felügyeleti csoportok megtekintéséhez válassza a **minden szolgáltatás** lehetőséget az Azure főmenüjében, majd válassza a **Management groups**lehetőséget.
@@ -108,7 +108,7 @@ Az összes előfizetés láthatósága érdekében a bérlői rendszergazdáknak
    ![Biztonsági olvasó szerepkör hozzáadása képernyőkép](./media/security-center-management-groups/asc-security-reader.png)
 
 
-#### <a name="assign-rbac-roles-to-users-with-powershell"></a>RBAC-szerepkörök társítása a felhasználókhoz a PowerShell használatával: 
+#### <a name="assign-azure-roles-to-users-with-powershell"></a>Azure-szerepkörök társítása a felhasználókhoz a PowerShell használatával: 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -155,7 +155,7 @@ Ha emelt szintű hozzáférést, nyissa meg vagy frissítse Azure Security Cente
     ![Előfizetés-lefedettségi lista képernyőképe](./media/security-center-management-groups/security-center-coverage.png)
 
 ### <a name="remove-elevated-access"></a>Emelt szintű hozzáférés eltávolítása 
-Miután hozzárendelte a RBAC szerepköröket a felhasználókhoz, a bérlői rendszergazdának el kell távolítania magát a felhasználói hozzáférés rendszergazdai szerepkörből.
+Miután hozzárendelte az Azure-szerepköröket a felhasználókhoz, a bérlői rendszergazdának el kell távolítania magát a felhasználói hozzáférés rendszergazdai szerepkörből.
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) vagy a [Azure Active Directory felügyeleti központba](https://aad.portal.azure.com).
 
@@ -183,9 +183,9 @@ Előfizetéseket adhat hozzá a létrehozott felügyeleti csoporthoz. Ezek a lé
 4. Ismételje meg az 1 – 3. lépést, amíg hozzá nem adta az összes előfizetést a hatókörben.
 
    > [!NOTE]
-   > A felügyeleti csoportok előfizetéseket és alárendelt felügyeleti csoportokat is tartalmazhatnak. Amikor RBAC-szerepkört rendel a fölérendelt felügyeleti csoporthoz, a gyermek-felügyeleti csoport előfizetései öröklik a hozzáférést. A szülő felügyeleti csoportban beállított házirendeket a gyermekek is öröklik. 
+   > A felügyeleti csoportok előfizetéseket és alárendelt felügyeleti csoportokat is tartalmazhatnak. Amikor egy felhasználóhoz egy Azure-szerepkört rendel a fölérendelt felügyeleti csoporthoz, a gyermek-felügyeleti csoport előfizetései öröklik a hozzáférést. A szülő felügyeleti csoportban beállított házirendeket a gyermekek is öröklik. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebből a cikkből megtudhatta, hogyan szerezhet Azure Security Center bérlői szintű láthatóságot. A Security Centerrel kapcsolatos további információkért olvassa el a következő cikkeket:
 
 > [!div class="nextstepaction"]

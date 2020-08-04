@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sashan
 ms.reviewer: carlrab
 ms.date: 07/29/2020
-ms.openlocfilehash: 968fe5a0f4999c25486189384186c23d1fcd5509
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 4189ea5fd0b2b52b5bf1e0614e4b43b9411df31d
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87430247"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87530374"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-a-database-in-azure-sql-database"></a>Adatbázis tranzakciós szempontból konzisztens másolatának másolása Azure SQL Database
 
@@ -133,7 +133,7 @@ Figyelje a másolási folyamatot a [sys. Databases](https://docs.microsoft.com/s
 > [!IMPORTANT]
 > Ha olyan másolatot kell létrehoznia, amely lényegesen kisebb szolgáltatási céllal rendelkezik, mint a forrás, akkor előfordulhat, hogy a céladatbázis nem rendelkezik elegendő erőforrással a kiindulási folyamat befejezéséhez, és a másolási Opera meghibásodását okozhatja. Ebben a forgatókönyvben egy geo-visszaállítási kérelem használatával hozzon létre egy másolatot egy másik kiszolgálón és/vagy egy másik régióban. További információ: [Azure SQL Database helyreállítása az adatbázis biztonsági mentései segítségével](recovery-using-backups.md#geo-restore) .
 
-## <a name="rbac-roles-to-manage-database-copy"></a>RBAC szerepkörök az adatbázis-másolat kezeléséhez
+## <a name="azure-roles-to-manage-database-copy"></a>Az adatbázis-másolat kezelésére szolgáló Azure-szerepkörök
 
 Adatbázis-másolat létrehozásához a következő szerepköröket kell megadnia
 
@@ -155,7 +155,7 @@ Az adatbázis-másolat Azure Portal használatával történő kezeléséhez a k
 
    Microsoft. Resources/Subscriptions/Resources/Read Microsoft. Resources/Subscriptions/Resources/Write Microsoft. Resources/központi telepítések/olvasás Microsoft. erőforrások/központi telepítések/írás Microsoft. erőforrások/üzembe helyezés/operationstatuses/olvasás
 
-Ha szeretné megtekinteni a központi telepítések alatt lévő műveleteket a portálon található erőforráscsoporthoz, több erőforrás-szolgáltató műveletei, beleértve az SQL-műveleteket, szüksége lesz ezekre a további RBAC szerepkörökre:
+Ha szeretné megtekinteni a központi telepítések alatt lévő műveleteket a portálon található erőforráscsoporthoz, több erőforrás-szolgáltató műveletei, beleértve az SQL-műveleteket, szüksége lesz ezekre a további Azure-szerepkörökre:
 
    Microsoft. Resources/Subscriptions/resourcegroups/Deployments/Operations/Read Microsoft. Resources/előfizetések/resourcegroups/üzembe helyezés/operationstatuses/olvasás
 
@@ -187,7 +187,7 @@ A következő hibák fordulhatnak elő az adatbázisok Azure SQL Databaseban tö
 | 40570 |16 |Az adatbázis másolása belső hiba miatt nem sikerült. Dobja el a céladatbázis-adatbázist, és próbálkozzon újra később. |
 | 40571 |16 |Az adatbázis másolása belső hiba miatt nem sikerült. Dobja el a céladatbázis-adatbázist, és próbálkozzon újra később. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információ a bejelentkezésekről: a [bejelentkezések kezelése](logins-create-manage.md) és [a Azure SQL Database biztonság kezelése a vész-helyreállítás után](active-geo-replication-security-configure.md).
 * Az adatbázisok exportálásával kapcsolatban tekintse meg [az adatbázis exportálása BACPAC](database-export.md)című témakört.

@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/12/2020
-ms.openlocfilehash: 9544d0298a7aa62d5fd935e8670d02e470ac15e5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3874d3b2b0938b6fd0f763b42ef15f8250b42f1d
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84987565"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87529619"
 ---
 # <a name="copy-data-from-sap-cloud-for-customer-c4c-using-azure-data-factory"></a>Adatok másolása az SAP Cloud for Customer (C4C) szolgáltatásból Azure Data Factory használatával
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -25,7 +25,7 @@ ms.locfileid: "84987565"
 Ez a cikk azt ismerteti, hogyan használható a másolási tevékenység a Azure Data Factoryban az adatok az SAP-felhőbe való másolásához az ügyfél számára (C4C). A másolási [tevékenység áttekintő](copy-activity-overview.md) cikkében található, amely a másolási tevékenység általános áttekintését jeleníti meg.
 
 >[!TIP]
->Az ADF SAP-adatintegrációs forgatókönyvre vonatkozó általános támogatásának megismeréséhez tekintse meg az [SAP-Adatintegráció Azure Data Factory tanulmány használatával](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf) részletes bevezetést, comparsion és útmutatást.
+>Az ADF SAP-adatintegrációs forgatókönyvre vonatkozó általános támogatásának megismeréséhez tekintse meg az [SAP-Adatintegráció Azure Data Factory tanulmány használatával](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf) című témakört, amely részletesen ismerteti az egyes SAP-összekötőket, a comparsion és
 
 ## <a name="supported-capabilities"></a>Támogatott képességek
 
@@ -50,16 +50,16 @@ Az SAP Cloud for Customer társított szolgáltatáshoz a következő tulajdons�
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A Type tulajdonságot a következőre kell beállítani: **SapCloudForCustomer**. | Yes |
-| url | Az SAP-C4C OData szolgáltatásának URL-címe. | Yes |
-| felhasználónév | Adja meg az SAP-C4C való kapcsolódáshoz használandó felhasználónevet. | Yes |
-| jelszó | Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Yes |
+| típus | A Type tulajdonságot a következőre kell beállítani: **SapCloudForCustomer**. | Igen |
+| url | Az SAP-C4C OData szolgáltatásának URL-címe. | Igen |
+| username | Adja meg az SAP-C4C való kapcsolódáshoz használandó felhasználónevet. | Igen |
+| jelszó | Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Igen |
 | Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . Ha nincs megadva, az alapértelmezett Azure Integration Runtime használja. | Nem, forrás, igen, fogadó |
 
 >[!IMPORTANT]
 >Az SAP felhőbe való adatmásoláshoz az ügyfél számára explicit módon [hozzon létre egy Azure IR](create-azure-integration-runtime.md#create-azure-ir) az SAP-felhő közelében az ügyfél számára, és társítsa a társított szolgáltatáshoz a következő példában látható módon:
 
-**Példa:**
+**Például**
 
 ```json
 {
@@ -90,10 +90,10 @@ Ha az SAP-felhőből szeretne adatokat másolni az ügyfél számára, állítsa
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **SapCloudForCustomerResource** |Yes |
-| path | Az SAP C4C OData entitás elérési útjának megadása. |Yes |
+| típus | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **SapCloudForCustomerResource** |Igen |
+| path | Az SAP C4C OData entitás elérési útjának megadása. |Igen |
 
-**Példa:**
+**Például**
 
 ```json
 {
@@ -122,13 +122,13 @@ Az SAP felhőből az ügyfélnek történő adatmásoláshoz állítsa a forrás
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A Type tulajdonságot a következőre kell beállítani: **SapCloudForCustomerSource**  | Yes |
-| lekérdezés | Az adatolvasáshoz válassza az egyéni OData-lekérdezést. | No |
-| httpRequestTimeout | A válasz kéréséhez szükséges HTTP-kérelem időkorlátja (a **TimeSpan** érték). Ez az érték a válasz lekérésének időtúllépése, nem pedig a válaszüzenetek olvasásának időtúllépése. Ha nincs megadva, az alapértelmezett érték **00:30:00** (30 perc). | No |
+| típus | A Type tulajdonságot a következőre kell beállítani: **SapCloudForCustomerSource**  | Igen |
+| lekérdezés | Az adatolvasáshoz válassza az egyéni OData-lekérdezést. | Nem |
+| httpRequestTimeout | A válasz kéréséhez szükséges HTTP-kérelem időkorlátja (a **TimeSpan** érték). Ez az érték a válasz lekérésének időtúllépése, nem pedig a válaszüzenetek olvasásának időtúllépése. Ha nincs megadva, az alapértelmezett érték **00:30:00** (30 perc). | Nem |
 
 Példa lekérdezésre egy adott napra vonatkozó adat lekéréséhez:`"query": "$filter=CreatedOn ge datetimeoffset'2017-07-31T10:02:06.4202620Z' and CreatedOn le datetimeoffset'2017-08-01T10:02:06.4202620Z'"`
 
-**Példa:**
+**Például**
 
 ```json
 "activities":[
@@ -166,11 +166,11 @@ Ha az ügyfél számára szeretne Adatmásolást készíteni az SAP-felhőbe, a 
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A Type tulajdonságot a következőre kell beállítani: **SapCloudForCustomerSink**  | Yes |
+| típus | A Type tulajdonságot a következőre kell beállítani: **SapCloudForCustomerSink**  | Igen |
 | writeBehavior | A művelet írási viselkedése. Lehet "Insert", "Update". | Nem. Alapértelmezett "Beszúrás". |
 | writeBatchSize | Az írási művelet kötegének mérete. A legjobb teljesítmény eléréséhez használt köteg mérete eltérő lehet a különböző táblák vagy kiszolgálók esetében. | Nem. Alapértelmezett 10. |
 
-**Példa:**
+**Például**
 
 ```json
 "activities":[
@@ -220,7 +220,7 @@ Az SAP-felhőből az ügyfélnek történő adatmásoláskor a következő leké
 | EDM. byte | Bájt [] |
 | EDM. DateTime | DateTime |
 | EDM. decimális | Decimal |
-| Edm.Double | Double |
+| Edm.Double | Dupla |
 | EDM. Single | Egyszeres |
 | EDM. GUID | Guid |
 | EDM. Int16 | Int16 |

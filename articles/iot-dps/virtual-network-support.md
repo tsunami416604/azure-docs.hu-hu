@@ -7,12 +7,12 @@ ms.service: iot-dps
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.author: wesmc
-ms.openlocfilehash: 97168c95893ffdea99180c997265f259176ed07f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 8912ef907641367bda89d7c0e98f9da811c6e577
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531540"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534600"
 ---
 # <a name="azure-iot-hub-device-provisioning-service-dps-support-for-virtual-networks"></a>Azure IoT Hub Device Provisioning Service (DPS) virtuális hálózatok támogatása
 
@@ -22,7 +22,7 @@ A legtöbb forgatókönyvben, ahol a DPS konfigurálva van egy VNET, a IoT Hub u
 
 
 
-## <a name="introduction"></a>Bevezetés
+## <a name="introduction"></a>Introduction (Bevezetés)
 
 Alapértelmezés szerint a DPS-gazdagépek egy nyilvánosan elérhető IP-címmel rendelkező nyilvános végponthoz rendelnek leképezést az interneten keresztül. Ez a nyilvános végpont minden ügyfél számára látható. A nyilvános végponthoz való hozzáférést a IoT-eszközök széles körű hálózatokon, illetve helyszíni hálózatokon is megpróbálkozhat.
 
@@ -59,7 +59,7 @@ Privát végpontok használata esetén vegye figyelembe a következő jelenlegi 
 
 * A privát végpontok nem fognak működni a DPS-vel, ha a DPS-erőforrás és a társított központ különböző felhőkben található. Például [Azure Government és globális Azure](../azure-government/documentation-government-welcome.md).
 
-* Jelenleg a DPS- [Azure functions rendelkező egyéni foglalási szabályzatok](how-to-use-custom-allocation-policies.md) nem FOGNAK működni VNET és magánhálózati végpontokon. 
+* Jelenleg a DPS- [Azure functions rendelkező egyéni foglalási szabályzatok](how-to-use-custom-allocation-policies.md) nem fognak működni, ha az Azure-függvényt VNET és privát végpontokra zárolják. 
 
 * Az aktuális DPS VNET-támogatás csak a DPS-ba irányuló adatforgalom esetén támogatott. Az adatforgalom, amely a DPS és a IoT Hub közötti forgalom, egy belső, szolgáltatások közötti mechanizmust használ, nem pedig dedikált VNET. A teljes VNET-alapú kimenő forgalom támogatása a DPS és a IoT Hub között jelenleg nem érhető el.
 
@@ -150,7 +150,7 @@ A díjszabással kapcsolatos információkért lásd: az [Azure Private link dí
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az alábbi hivatkozásokat követve további információkat tudhat meg a DPS biztonsági funkcióiról:
 

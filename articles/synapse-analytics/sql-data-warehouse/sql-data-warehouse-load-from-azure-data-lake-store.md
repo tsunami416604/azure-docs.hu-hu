@@ -11,12 +11,12 @@ ms.date: 06/07/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: fcebf66dba2fc13457ca359b81565fc5870032c9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c634b4f7ac3aa1fe83e6ab3f863e998b8d25232c
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213295"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533937"
 ---
 # <a name="load-data-from-azure-data-lake-storage-for-synapse-sql"></a>Adatok betöltése a Azure Data Lake Storageról a szinapszis SQL-hez
 
@@ -30,7 +30,7 @@ Ez az útmutató ismerteti, hogyan tölthetők be az adatok a Azure Data Lake St
 > * Hozza létre a cél táblát az adatok Azure Data Lake Storageból való betöltéséhez.
 > * Hozza létre a MÁSOLÁSi utasítást az adatok adattárházba való betöltéséhez.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -39,7 +39,7 @@ Az oktatóanyag megkezdése előtt töltse le és telepítse az [SQL Server Mana
 Az oktatóanyag futtatásához a következőkre lesz szüksége:
 
 * Egy SQL-készlet. Lásd: [SQL-készlet létrehozása és a lekérdezési információk](create-data-warehouse-portal.md).
-* Egy Data Lake Storage-fiók. Lásd: [Azure Data Lake Storage első lépései](../../data-lake-store/data-lake-store-get-started-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). Ehhez a Storage-fiókhoz konfigurálnia kell vagy meg kell adnia a következő hitelesítő adatok egyikét a betöltéshez: A Storage-fiók kulcsa, a közös hozzáférésű aláírás (SAS) kulcsa, az Azure Directory alkalmazás felhasználója vagy egy olyan HRE-felhasználó, amely rendelkezik a megfelelő RBAC szerepkörrel a Storage-fiókhoz.
+* Egy Data Lake Storage-fiók. Lásd: [Azure Data Lake Storage első lépései](../../data-lake-store/data-lake-store-get-started-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). Ehhez a Storage-fiókhoz konfigurálnia kell vagy meg kell adnia a következő hitelesítő adatok egyikét a betöltéshez: A Storage-fiók kulcsa, a közös hozzáférésű aláírás (SAS) kulcsa, az Azure Directory alkalmazás felhasználója vagy egy olyan HRE-felhasználó, amely rendelkezik a megfelelő Azure-szerepkörrel a Storage-fiókhoz.
 
 ## <a name="create-the-target-table"></a>A céltábla létrehozása
 
@@ -124,7 +124,7 @@ Az alábbi példa jó kiindulási pont a statisztikák létrehozásához. Egyosz
 
 ## <a name="achievement-unlocked"></a>A megvalósítás feloldva!
 
-Sikeresen betöltötte az adatait az adattárházba. Remek munka!
+Sikeresen betöltötte az adatait az adattárházba. Szép munka!
 
 ## <a name="next-steps"></a>További lépések
 Az adatraktár-megoldás az Azure szinapszis Analytics használatával történő fejlesztésének első lépése az adatgyűjtés. Tekintse meg fejlesztési erőforrásait.

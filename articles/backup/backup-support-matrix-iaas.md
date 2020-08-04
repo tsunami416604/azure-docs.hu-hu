@@ -4,12 +4,12 @@ description: Összefoglalja az Azure-beli virtuális gépek Azure Backup szolgá
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.custom: references_regions
-ms.openlocfilehash: d00f6ee8c10144a7c9fd65101dd21ccb7deeb0a6
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 3be5bdffd999907234fff64f8f88459d9c9b18b6
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289494"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87531863"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure-beli virtuális gépek biztonsági mentésének támogatási mátrixa
 
@@ -32,13 +32,6 @@ Azure-beli virtuális gépek közvetlen biztonsági mentése (csak Windows)  | B
 Azure-beli virtuális gép biztonsági mentése a Backup Serverbe  | Fájlok/mappák/kötetek biztonsági mentése; rendszerállapot/operációs rendszer nélküli fájlok; alkalmazásadatok a System Center DPM vagy a Microsoft Azure Backup kiszolgálóra (MABS).<br/><br/> A DPM/MABS ezután biztonsági mentést készít a Backup-tárolóba. | Telepítse a DPM/MABS védelmi ügynököt a virtuális gépre. A MARS-ügynök telepítve van a DPM/MABS.| Fájlok/mappák/kötetek visszaállítása; rendszerállapot/operációs rendszer nélküli fájlok; alkalmazásadatok.
 
 További információ a biztonsági mentésről [a Backup Server használatával](backup-architecture.md#architecture-back-up-to-dpmmabs) és a [támogatási követelményekkel](backup-support-matrix-mabs-dpm.md)kapcsolatban.
-
->[!NOTE]
-> **A Azure Backup mostantól támogatja a szelektív lemezek biztonsági mentését és visszaállítását az Azure-beli virtuális gép biztonsági mentési megoldásával.**
->
->Napjainkban a Azure Backup támogatja a virtuális gép összes lemezének (operációs rendszerének és adattípusának) biztonsági mentését egy virtuális gépen, a virtuális gépek biztonsági mentési megoldásával együtt. A lemezek kizárása funkcióval lehetősége van arra, hogy a virtuális gép számos adatlemezéről egy vagy több biztonsági másolatot készítsen. Ez hatékony és költséghatékony megoldást kínál a biztonsági mentési és visszaállítási igények kielégítésére. Mindegyik helyreállítási pont a biztonsági mentési műveletben található lemezek adatait tartalmazza, így a visszaállítási művelet során a megadott helyreállítási pontról visszaállított lemezek egy részhalmaza is elérhető. Ez a pillanatképből és a tárolóból történő visszaállításra vonatkozik.
->
->Az előzetes verzióra való feliratkozáshoz írjon nekünk a következőt:AskAzureBackupTeam@microsoft.com
 
 ## <a name="supported-backup-actions"></a>Támogatott biztonsági mentési műveletek
 
@@ -201,7 +194,7 @@ Az Azure-ba irányuló hálózati forgalom:
 - A kiszolgálókról a Recovery Services-tárolóra irányuló biztonsági mentési forgalom titkosítása Advanced Encryption Standard 256 használatával történik.
 - Biztonsági mentési adat küldése biztonságos HTTPS-kapcsolaton keresztül történik.
 - A biztonsági mentési adatforgalom titkosított formában tárolódik a Recovery Services-tárolóban.
-- Csak Ön rendelkezik a jelszóval az adatzárolás feloldásához. A Microsoft nem tudja visszafejteni a biztonsági mentési adatforrásokat.
+- Csak a titkosítási kulccsal lehet feloldani ezeket az adatfájlokat. A Microsoft nem tudja visszafejteni a biztonsági mentési adatforrásokat.
 
   > [!WARNING]
   > A tároló beállítása után csak Ön férhet hozzá a titkosítási kulcshoz. A Microsoft soha nem tart fenn másolatot, és nem fér hozzá a kulcshoz. Ha a kulcs rossz helyre került, a Microsoft nem tudja helyreállítani a biztonsági mentési adatokat.

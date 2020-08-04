@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 04/09/2020
-ms.openlocfilehash: d96b2b1f8465132549c59ac5555adf99e7758a3b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/03/2020
+ms.openlocfilehash: a6eaa5519607d5d5e9a49851e1c55f9b60b554ea
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81415222"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87529721"
 ---
 # <a name="copy-data-from-an-sap-table-by-using-azure-data-factory"></a>Adatok másolása SAP-táblából Azure Data Factory használatával
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -24,7 +24,7 @@ ms.locfileid: "81415222"
 Ez a cikk azt ismerteti, hogyan használható a másolási tevékenység a Azure Data Factoryban az adatok SAP-táblából való másolásához. További információ: [másolási tevékenység áttekintése](copy-activity-overview.md).
 
 >[!TIP]
->Az ADF SAP-adatintegrációs forgatókönyvre vonatkozó általános támogatásának megismeréséhez tekintse meg az [SAP-Adatintegráció Azure Data Factory tanulmány használatával](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf) részletes bevezetést, comparsion és útmutatást.
+>Az ADF SAP-adatintegrációs forgatókönyvre vonatkozó általános támogatásának megismeréséhez tekintse meg az [SAP-Adatintegráció Azure Data Factory tanulmány használatával](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf) című témakört, amely részletesen ismerteti az egyes SAP-összekötőket, a comparsion és
 
 ## <a name="supported-capabilities"></a>Támogatott képességek
 
@@ -47,6 +47,7 @@ Az SAP Table Connector különösen a következőket támogatja:
 - Adatok másolása egy SAP átlátszó táblából, egy készletezett táblából, egy fürtözött táblából és egy nézetből.
 - Adatok másolása egyszerű hitelesítéssel vagy biztonságos hálózati kommunikáció (SNC) használatával, ha a SNC konfigurálva van.
 - Csatlakozás SAP-alkalmazáskiszolgáló vagy SAP-üzenetkezelő kiszolgálóhoz.
+- Adatok beolvasása alapértelmezett vagy egyéni RFC-n keresztül.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -63,7 +64,7 @@ Az SAP Table Connector használatához a következőket kell tennie:
   - A Remote Function Call (RFC) célhelyek használatának engedélyezése.
   - A S_SDSAUTH engedélyezési objektum végrehajtási tevékenységének engedélyei.
 
-## <a name="get-started"></a>Első lépések
+## <a name="get-started"></a>Bevezetés
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -217,14 +218,15 @@ Az adatok SAP-táblából történő másolásához a következő tulajdonságok
 | :------------------------------- | :----------------------------------------------------------- | :------- |
 | `type`                             | A tulajdonságot a következőre kell `type` beállítani: `SapTableSource` .         | Igen      |
 | `rowCount`                         | A beolvasandó sorok száma.                              | Nem       |
-| `rfcTableFields`                   | Az SAP-táblából Másolandó mezők (oszlopok). Például: `column0, column1`. | Nem       |
-| `rfcTableOptions`                  | Az SAP-tábla sorainak szűrésére szolgáló beállítások. Például: `COLUMN0 EQ 'SOMEVALUE'`. Tekintse meg a jelen cikk későbbi, a SAP-lekérdezés operátora című táblázatot is. | Nem       |
-| `customRfcReadTableFunctionModule` | Egyéni RFC-függvény modul, amely az adatok SAP-táblából való beolvasására használható.<br>Egyéni RFC-függvények modullal meghatározhatja az adatok lekérésének módját az SAP-rendszerből, és visszaküldheti őket a Data Factorynak. Az egyéni függvény moduljának olyan felülettel kell rendelkeznie (importálás, exportálás, táblák), amely hasonló a ( `/SAPDS/RFC_READ_TABLE2` Data Factory) által használt alapértelmezett interfészhez. | Nem       |
+| `rfcTableFields`                 | Az SAP-táblából Másolandó mezők (oszlopok). Például: `column0, column1`. | Nem       |
+| `rfcTableOptions`                | Az SAP-tábla sorainak szűrésére szolgáló beállítások. Például: `COLUMN0 EQ 'SOMEVALUE'`. Tekintse meg a jelen cikk későbbi, a SAP-lekérdezés operátora című táblázatot is. | Nem       |
+| `customRfcReadTableFunctionModule` | Egyéni RFC-függvény modul, amely az adatok SAP-táblából való beolvasására használható.<br>Egyéni RFC-függvények modullal meghatározhatja az adatok lekérésének módját az SAP-rendszerből, és visszaküldheti őket a Data Factorynak. Az egyéni függvény moduljának olyan felülettel kell rendelkeznie (importálás, exportálás, táblák), amely hasonló a ( `/SAPDS/RFC_READ_TABLE2` Data Factory) által használt alapértelmezett interfészhez.<br>Data Factory | Nem       |
 | `partitionOption`                  | Az SAP-táblázatból beolvasott partíciós mechanizmus. A támogatott lehetőségek a következők: <ul><li>`None`</li><li>`PartitionOnInt`(normál egész szám vagy egész érték nulla kitöltéssel a bal oldalon, például `0000012345` )</li><li>`PartitionOnCalendarYear`(4 számjegy a következő formátumban: "éééé")</li><li>`PartitionOnCalendarMonth`(6 számjegy a következő formátumban: "YYYYMM")</li><li>`PartitionOnCalendarDate`(8 számjegy a következő formátumban: "ÉÉÉÉHHNN")</li></ul> | Nem       |
 | `partitionColumnName`              | Az adatparticionáláshoz használt oszlop neve.                | Nem       |
 | `partitionUpperBound`              | A-ben megadott oszlop maximális értéke a `partitionColumnName` particionálás folytatásához lesz használva. | Nem       |
 | `partitionLowerBound`              | A-ben megadott oszlop minimális értéke a `partitionColumnName` particionálás folytatásához lesz használva. (Megjegyzés: `partitionLowerBound` nem lehet "0", ha a partíció lehetőség `PartitionOnInt` ) | Nem       |
 | `maxPartitionsNumber`              | Az a partíciók maximális száma, amelybe az adatmennyiséget fel kell osztani.     | Nem       |
+| `sapDataColumnDelimiter` | Az a karakter, amelyet a rendszer elválasztóként használ az SAP RFC számára a kimeneti adatokat felosztva. | Nem |
 
 >[!TIP]
 >Ha az SAP-táblázat nagy mennyiségű adattal rendelkezik (például több milliárd sor), akkor `partitionOption` `partitionSetting` a és az az adatait kisebb partíciókra kell bontani. Ebben az esetben az adatok egy partíció alapján kerülnek beolvasásra, és az egyes adatpartíciók egyetlen RFC-hívással kérhetők le az SAP-kiszolgálóról.<br/>
@@ -239,10 +241,10 @@ A alkalmazásban `rfcTableOptions` a következő általános SAP-lekérdezési o
 | :------- | :------- |
 | `EQ` | Egyenlő |
 | `NE` | Nem egyenlő |
-| `LT` | Kisebb, mint |
+| `LT` | Kisebb |
 | `LE` | Kisebb vagy egyenlő |
-| `GT` | Nagyobb, mint |
-| `GE` | Nagyobb vagy egyenlő |
+| `GT` | Nagyobb |
+| `GE` | Nagyobb vagy egyenlő, mint |
 | `IN` | A következőképpen:`TABCLASS IN ('TRANSP', 'INTTAB')` |
 | `LIKE` | A következőképpen:`LIKE 'Emma%'` |
 

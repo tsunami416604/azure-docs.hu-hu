@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: sstein, carlrab
 ms.date: 09/26/2019
-ms.openlocfilehash: e4b4b6f21d158a758c2ff77db6660bbb44696d90
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: b2d43e970012209acb6ed7fbbaafbb1719617280
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086687"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533869"
 ---
 # <a name="quickstart-create-a-managed-instance-of-sql-managed-instance"></a>Gyors útmutató: felügyelt SQL-példány felügyelt példányának létrehozása
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -37,7 +37,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 1. Válassza az **Azure SQL** lehetőséget a Azure Portal bal oldali menüjében. Ha az **Azure SQL** nem szerepel a listában, válassza a **minden szolgáltatás**lehetőséget, majd írja be az **Azure SQL** kifejezést a keresőmezőbe.
 1. Válassza a **+ Hozzáadás** lehetőséget az **SQL-telepítés kiválasztása** lap megnyitásához. Az Azure SQL felügyelt példányával kapcsolatos további információkat az **SQL felügyelt példányok** csempén látható **Részletek megjelenítése** lehetőség választásával tekintheti meg.
-1. Válassza a **Létrehozás** lehetőséget.
+1. Kattintson a **Létrehozás** gombra.
 
    ![Felügyelt példány létrehozása](./media/instance-create-quickstart/create-managed-instance.png)
 
@@ -98,7 +98,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
    | **Használat feladatátvételi másodlagosként** | Válassza az **Igen** lehetőséget. | Ezzel a beállítással engedélyezheti a felügyelt példány másodlagos feladatátvételi csoportként való használatát.|
    | **Elsődleges SQL felügyelt példánya** (ha a **másodlagos feladatátvételi** beállítás értéke **Igen**) | Válasszon egy meglévő elsődleges felügyelt példányt, amely ugyanabban a DNS-zónában lesz csatlakoztatva, mint a létrehozandó felügyelt példány. | Ez a lépés lehetővé teszi a feladatátvételi csoport létrehozás utáni konfigurációját. További információ: [oktatóanyag: felügyelt példány hozzáadása feladatátvételi csoporthoz](failover-group-add-instance-tutorial.md).|
 
-## <a name="review--create"></a>Felülvizsgálat + létrehozás
+## <a name="review--create"></a>Ellenőrzés és létrehozás
 
 1. A felügyelt példány létrehozása előtt válassza a **felülvizsgálat + létrehozás** fület a lehetőségek áttekintéséhez.
 
@@ -124,7 +124,9 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 > 3. Válassza ki az SQL felügyelt példány központi telepítési műveletét folyamatban.
 
 > [!IMPORTANT]
-> A felügyelt példányok létrehozási állapotának lekéréséhez **olvasási engedéllyel** kell rendelkeznie az erőforráscsoporthoz. Ha nem rendelkezik ezzel az engedéllyel vagy visszavonással, miközben a felügyelt példány létrehozása folyamatban van, ez azt eredményezheti, hogy az SQL felügyelt példánya nem látható az erőforráscsoport-telepítések listájában.
+> - Az SQL felügyelt példány létrehozása egy hosszú ideig futó művelet, amely bizonyos körülményektől függően eltarthat néhány órát. Tekintse meg a [kezelési műveletek időtartamát](management-operations-overview.md#management-operations-duration) a tipikus létrehozási időpontokhoz.
+> - A felügyelt SQL-példányok létrehozásának megkezdése késleltethető olyan esetekben, amikor más befolyásoló műveletek is léteznek, például az azonos alhálózaton lévő más felügyelt példányok esetében a hosszan futó visszaállítási vagy méretezési műveletek. További információ: a [felügyeleti műveletek hatása](management-operations-overview.md#management-operations-cross-impact).
+> - A felügyelt példányok létrehozási állapotának lekéréséhez **olvasási engedéllyel** kell rendelkeznie az erőforráscsoporthoz. Ha nem rendelkezik ezzel az engedéllyel vagy visszavonással, miközben a felügyelt példány létrehozása folyamatban van, ez azt eredményezheti, hogy az SQL felügyelt példánya nem látható az erőforráscsoport-telepítések listájában.
 >
 
 ## <a name="view-resources-created"></a>Létrehozott erőforrások megtekintése
@@ -173,7 +175,7 @@ A felügyelt SQL-példányhoz való kapcsolódáshoz kövesse az alábbi lépés
 
    A másolt érték egy teljes tartománynevet (FQDN) jelöl, amely az SQL felügyelt példányhoz való kapcsolódáshoz használható. A következőhöz hasonló példa: *your_host_name. a1b2c3d4e5f6. database. Windows. net*.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a felügyelt SQL-példányokhoz való kapcsolódásról:
 - Az alkalmazások csatlakozási lehetőségeinek áttekintését lásd: [alkalmazások csatlakoztatása SQL felügyelt példányhoz](connect-application-instance.md).

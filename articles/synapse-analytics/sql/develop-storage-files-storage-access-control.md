@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: e2e13d00e48c83ff56cc21f23f513d17f545b4e4
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: b7005954b14a9263ec074c836180853a99812dd5
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496049"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534770"
 ---
 # <a name="control-storage-account-access-for-sql-on-demand-preview"></a>A Storage-fiók hozzáférésének vezérlése az SQL igény szerinti használatához (előzetes verzió)
 
@@ -89,7 +89,7 @@ Az engedélyezési és az Azure Storage-típusok következő kombinációit hasz
 
 
 > [!IMPORTANT]
-> A tűzfallal védett tárterület elérésekor csak a felügyelt identitás használható. Engedélyeznie kell a [megbízható Microsoft-szolgáltatásokat... ](../../storage/common/storage-network-security.md#trusted-microsoft-services) [RBAC-szerepkör](../../storage/common/storage-auth-aad.md#assign-rbac-roles-for-access-rights) beállítása és explicit módon történő hozzárendelése az adott erőforrás-példányhoz tartozó [rendszerhez rendelt felügyelt identitáshoz](../../active-directory/managed-identities-azure-resources/overview.md) . Ebben az esetben a példányhoz való hozzáférés hatóköre megfelel a felügyelt identitáshoz rendelt RBAC szerepkörnek.
+> A tűzfallal védett tárterület elérésekor csak a felügyelt identitás használható. Engedélyeznie kell a [megbízható Microsoft-szolgáltatásokat... ](../../storage/common/storage-network-security.md#trusted-microsoft-services)az adott erőforrás [-példány rendszerhez rendelt felügyelt identitásának](../../active-directory/managed-identities-azure-resources/overview.md) beállítása és explicit módon történő [hozzárendelése](../../storage/common/storage-auth-aad.md#assign-azure-roles-for-access-rights) . Ebben az esetben a példányhoz való hozzáférés hatóköre megfelel a felügyelt identitáshoz rendelt Azure-szerepkörnek.
 >
 
 ## <a name="credentials"></a>Hitelesítő adatok
@@ -129,7 +129,7 @@ A kiszolgáló szintű HITELESÍTő adatok nevének meg kell egyeznie a Storage-
 | -------------------------- | ------ | --------------------------------------------------- |
 | Azure Blob Storage         | https  | <storage_account>. blob.core.windows.net             |
 | 1. generációs Azure Data Lake Storage | https  | <storage_account>. azuredatalakestore.net/webhdfs/v1 |
-| 2\. generációs Azure Data Lake Storage | https  | <storage_account>. dfs.core.windows.net              |
+| 2. generációs Azure Data Lake Storage | https  | <storage_account>. dfs.core.windows.net              |
 
 A kiszolgáló-hatókörű hitelesítő adatok lehetővé teszik az Azure Storage elérését a következő hitelesítési típusok használatával:
 

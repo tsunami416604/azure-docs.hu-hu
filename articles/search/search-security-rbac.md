@@ -1,5 +1,5 @@
 ---
-title: RBAC-szerepkörök beállítása az Azure rendszergazdai hozzáféréshez
+title: Azure-szerepkörök beállítása az Azure rendszergazdai hozzáféréshez
 titleSuffix: Azure Cognitive Search
 description: Szerepköralapú felügyeleti vezérlés (RBAC) az Azure Cognitive Search Management felügyeleti feladatainak vezérlésére és delegálására szolgáló Azure Portal.
 manager: nitinme
@@ -8,14 +8,14 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/03/2020
-ms.openlocfilehash: 402fae5622219b14cfdab921ebe1a78ad5dd111e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d1b2576eb42cbe25919eb77fc30e2720ed812ca4
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84462838"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534430"
 ---
-# <a name="set-rbac-roles-for-administrative-access-to-azure-cognitive-search"></a>RBAC-szerepkörök beállítása az Azure Cognitive Searchhoz való rendszergazdai hozzáféréshez
+# <a name="set-azure-roles-for-administrative-access-to-azure-cognitive-search"></a>Azure-szerepkörök beállítása az Azure-beli rendszergazdai hozzáféréshez Cognitive Search
 
 Az Azure [globális szerepköralapú engedélyezési modellt](../role-based-access-control/role-assignments-portal.md) biztosít a portálon vagy a Resource Manager API-kon keresztül felügyelt összes szolgáltatáshoz. A tulajdonos, közreműködő és olvasó szerepkörök határozzák meg az egyes szerepkörökhöz rendelt Active Directory felhasználók, csoportok és rendszerbiztonsági tag *szolgáltatások felügyeletének* szintjét. 
 
@@ -29,7 +29,7 @@ Az Azure Cognitive Search esetében a szerepkörök a következő felügyeleti f
 | Szerepkör | Tevékenység |
 | --- | --- |
 | Tulajdonos |Hozza létre vagy törölje a szolgáltatást vagy a szolgáltatás bármely objektumát, beleértve az API-kulcsokat, az indexeket, az indexelő, az indexelő adatforrásokat és az indexelő-ütemterveket.<p>A szolgáltatás állapotának megtekintése, beleértve a darabszámot és a tárterület méretét.<p>Szerepkör-tagság hozzáadása vagy törlése (csak a tulajdonosok kezelhetik a szerepkör-tagságot).<p>Az előfizetés-rendszergazdák és a szolgáltatás tulajdonosai automatikus tagsággal rendelkeznek a tulajdonosi szerepkörben. |
-| Közreműködő |Azonos szintű hozzáférés tulajdonosként, mínusz a RBAC szerepkör-kezelés. A közreműködők például létrehozhatnak vagy törölhetnek objektumokat, vagy megtekinthetik és újragenerálják az [API-kulcsokat](search-security-api-keys.md), de nem módosíthatják a szerepkör-tagságokat. |
+| Közreműködő |Azonos szintű hozzáférés tulajdonosként, mínusz az Azure szerepkör-kezelés. A közreműködők például létrehozhatnak vagy törölhetnek objektumokat, vagy megtekinthetik és újragenerálják az [API-kulcsokat](search-security-api-keys.md), de nem módosíthatják a szerepkör-tagságokat. |
 | [Search Service közreműködő beépített szerepköre](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#search-service-contributor) | A közreműködő szerepkörrel egyenértékű. |
 | Olvasó |A szolgáltatás Essentials és metrikáinak megtekintése. Ennek a szerepkörnek a tagjai nem tekinthetik meg az indexet, az indexelő, az adatforrás vagy a kulcs információit.  |
 
@@ -50,7 +50,7 @@ Az alábbi táblázat összefoglalja az Azure Cognitive Searchban engedélyezett
 | Rendszergazdai kulcsok kezelése | Rendszergazdai kulcs, RBAC tulajdonos vagy közreműködő az erőforráson |
 | Lekérdezési kulcsok kezelése |  Rendszergazdai kulcs, RBAC tulajdonos vagy közreműködő az erőforráson  |
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 + [Kezelés a PowerShell-lel](search-manage-powershell.md) 
 + [Teljesítmény és optimalizálás az Azure Cognitive Search](search-performance-optimization.md)

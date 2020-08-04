@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/12/2020
-ms.openlocfilehash: efb61a3360ee2514fa6fd61e125ebc345474c62f
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 930c7e7881a00cd0cb1f4abc6b219c0fbdeebac5
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224621"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533410"
 ---
 # <a name="copy-data-from-sap-business-warehouse-via-open-hub-using-azure-data-factory"></a>Adatok másolása az SAP Business Warehouse-ból az Open hub használatával Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -25,7 +25,7 @@ ms.locfileid: "86224621"
 Ez a cikk azt ismerteti, hogyan használható a másolási tevékenység a Azure Data Factoryban az adatok egy SAP Business Warehouse-ból (BW) az Open hub-on keresztül történő másolásához. A másolási [tevékenység áttekintő](copy-activity-overview.md) cikkében található, amely a másolási tevékenység általános áttekintését jeleníti meg.
 
 >[!TIP]
->Az ADF SAP-adatintegrációs forgatókönyvre vonatkozó általános támogatásának megismeréséhez tekintse meg az [SAP-Adatintegráció Azure Data Factory tanulmány használatával](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf) részletes bevezetést, comparsion és útmutatást.
+>Az ADF SAP-adatintegrációs forgatókönyvre vonatkozó általános támogatásának megismeréséhez tekintse meg az [SAP-Adatintegráció Azure Data Factory tanulmány használatával](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf) című témakört, amely részletesen ismerteti az egyes SAP-összekötőket, a comparsion és
 
 ## <a name="supported-capabilities"></a>Támogatott képességek
 
@@ -42,6 +42,7 @@ Az SAP Business Warehouse nyitott hub-összekötője a következőt támogatja:
 - Adatok másolása az Open hub Destination helyi táblán keresztül, amely alatt a DSO, a InfoCube, a multibiztosító, a DataSource stb. lehet.
 - Adatok másolása egyszerű hitelesítés használatával.
 - Csatlakozás SAP-alkalmazáskiszolgáló vagy SAP-üzenetkezelő kiszolgálóhoz.
+- Adatok beolvasása az RFC-n keresztül.
 
 ## <a name="sap-bw-open-hub-integration"></a>SAP BW nyitott hub-integráció 
 

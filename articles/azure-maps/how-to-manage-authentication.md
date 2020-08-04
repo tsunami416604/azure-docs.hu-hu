@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 69dda537beda1d1bec4f019e1d5cadd16bdd5b39
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 870ecb8bda9f07c9270724002d381a4f58bc4d13
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87126856"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87531728"
 ---
 # <a name="manage-authentication-in-azure-maps"></a>Hitelesítés kezelése Azure Maps
 
@@ -45,7 +45,7 @@ Az alábbi táblázat a Azure Maps gyakori hitelesítési és engedélyezési fo
 
 | Forgatókönyv                                                                                    | Hitelesítés | Engedélyezés | Fejlesztési tevékenység | Működési tevékenység |
 | ------------------------------------------------------------------------------------------- | -------------- | ------------- | ------------------ | ------------------ |
-| [Megbízható démon/nem interaktív ügyfélalkalmazás](./how-to-secure-daemon-app.md)        | Megosztott kulcsos     | n.a.           | Közepes             | Magas               |
+| [Megbízható démon/nem interaktív ügyfélalkalmazás](./how-to-secure-daemon-app.md)        | Megosztott kulcsos     | N/A           | Közepes             | Magas               |
 | [Megbízható démon/nem interaktív ügyfélalkalmazás](./how-to-secure-daemon-app.md)        | Azure AD       | Magas          | Alacsony                | Közepes             |
 | [Web Single Page-alkalmazás interaktív egyszeri bejelentkezéssel](./how-to-secure-spa-users.md) | Azure AD       | Magas          | Közepes             | Közepes             |
 | [Web Single Page-alkalmazás nem interaktív bejelentkezéssel](./how-to-secure-spa-app.md)      | Azure AD       | Magas          | Közepes             | Közepes             |
@@ -56,7 +56,7 @@ A táblázatban található hivatkozások részletes konfigurációs informáci�
 
 ## <a name="view-role-definitions"></a>Szerepkör-definíciók megtekintése
 
-A Azure Maps számára elérhető RBAC-szerepkörök megtekintéséhez lépjen a hozzáférés- **vezérlés (iam)** elemre. Válassza ki a **szerepkörök**elemet, majd keressen rá a *Azure Maps*kezdetű szerepkörökre. Ezek a Azure Maps szerepkörök azok a szerepkörök, amelyekhez hozzáférést biztosíthat.
+A Azure Maps számára elérhető Azure-szerepkörök megtekintéséhez lépjen a hozzáférés- **vezérlés (iam)** elemre. Válassza ki a **szerepkörök**elemet, majd keressen rá a *Azure Maps*kezdetű szerepkörökre. Ezek a Azure Maps szerepkörök azok a szerepkörök, amelyekhez hozzáférést biztosíthat.
 
 > [!div class="mx-imgBorder"]
 > ![Elérhető szerepkörök megtekintése](./media/how-to-manage-authentication/how-to-view-avail-roles.png)

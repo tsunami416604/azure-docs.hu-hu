@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/04/2019
-ms.openlocfilehash: 2f8406038be10ba3bdc207bf447fecb86a376fe8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 86d4f82b70a6b6b3ceed262cf96fa291e26dd53c
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81418065"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534379"
 ---
 # <a name="copy-data-from-sap-business-warehouse-using-azure-data-factory"></a>Adatok másolása az SAP Business Warehouse-ból Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -28,7 +28,7 @@ ms.locfileid: "81418065"
 Ez a cikk azt ismerteti, hogyan használható a másolási tevékenység a Azure Data Factoryban az adatok egy SAP Business Warehouse-ból (BW) történő másolásához. A másolási [tevékenység áttekintő](copy-activity-overview.md) cikkében található, amely a másolási tevékenység általános áttekintését jeleníti meg.
 
 >[!TIP]
->Az ADF SAP-adatintegrációs forgatókönyvre vonatkozó általános támogatásának megismeréséhez tekintse meg az [SAP-Adatintegráció Azure Data Factory tanulmány használatával](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf) részletes bevezetést, comparsion és útmutatást.
+>Az ADF SAP-adatintegrációs forgatókönyvre vonatkozó általános támogatásának megismeréséhez tekintse meg az [SAP-Adatintegráció Azure Data Factory tanulmány használatával](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf) című témakört, amely részletesen ismerteti az egyes SAP-összekötőket, a comparsion és
 
 ## <a name="supported-capabilities"></a>Támogatott képességek
 
@@ -77,7 +77,7 @@ Az SAP Business Warehouse (BW) társított szolgáltatása a következő tulajdo
 | jelszó | A felhasználó jelszava. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Igen |
 | Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . A saját üzemeltetésű Integration Runtime az [Előfeltételek](#prerequisites)szakaszban említettek szerint kell megadni. |Igen |
 
-**Példa:**
+**Például**
 
 ```json
 {
@@ -108,7 +108,7 @@ Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdon
 
 Az adatok SAP BWból való másolásához állítsa az adatkészlet Type (típus) tulajdonságát **SapBwCube**értékre. A RelationalTable típusú SAP BW adatkészlet esetében nem támogatottak a típus-specifikus tulajdonságok.
 
-**Példa:**
+**Például**
 
 ```json
 {
@@ -140,7 +140,7 @@ Az adatok SAP BWból történő másolásához a másolási tevékenység **forr
 | típus | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **SapBwSource** | Igen |
 | lekérdezés | Megadja az MDX-lekérdezést, amely beolvassa az SAP BW-példány adatait. | Igen |
 
-**Példa:**
+**Például**
 
 ```json
 "activities":[
@@ -186,7 +186,7 @@ Az adatok SAP BWból való másolása során a rendszer a következő leképezé
 | CURR | Decimal |
 | CUKY | Sztring |
 | DECEMBER | Decimal |
-| FLTP | Double |
+| FLTP | Dupla |
 | INT1 | Bájt |
 | INT2 | Int16 |
 | INT4 | Int |

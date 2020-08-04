@@ -1,15 +1,15 @@
 ---
-title: Amazon Web Services-beli (AWS) virtuális gépek felderítése, felmérése és migrálása az Azure-ba
+title: Amazon Web Services (AWS) EC2-alapú virtuális gépek felderítése, felmérése és migrálása az Azure-ba
 description: Ez a cikk az AWS virtuális gépek Azure-ba történő áttelepítését ismerteti Azure Migrateokkal.
 ms.topic: tutorial
 ms.date: 06/16/2020
 ms.custom: MVC
-ms.openlocfilehash: 5d697c2146144ca7f4b9a8739b6863ba31845f4e
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 61a7bee52179ac525b42ad696d118f4f753f6931
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86165430"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534829"
 ---
 # <a name="discover-assess-and-migrate-amazon-web-services-aws-vms-to-azure"></a>Amazon Web Services-beli (AWS) virtuális gépek felderítése, felmérése és migrálása az Azure-ba
 
@@ -31,7 +31,7 @@ Az oktatóanyag során a következőket fogja elsajátítani:
 > * Futtasson egy teszt-áttelepítést, és győződjön meg róla, hogy minden a várt módon működik-e.
 > * Futtasson teljes áttelepítést az Azure-ba.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/), mielőtt hozzákezd.
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="discover-and-assess-aws-vms"></a>AWS virtuális gépek felderítése és értékelése  
 
@@ -60,7 +60,7 @@ Tekintse át a [Windows](prepare-for-migration.md#windows-machines) -és [Linux]
 
 Készítse elő az Azure-t a Azure Migrate: Server áttelepítési eszközzel történő áttelepítéshez.
 
-**Feladat** | **Részletek**
+**Tevékenység** | **Részletek**
 --- | ---
 **Azure Migrate projekt létrehozása** | Az Azure-fióknak közreműködői vagy tulajdonosi engedélyekkel kell rendelkeznie a projekt létrehozásához.
 **Azure-fiók engedélyeinek ellenőrzése** | Az Azure-fióknak rendelkeznie kell a virtuális gép létrehozásához szükséges engedélyekkel, és írnia kell egy Azure-beli felügyelt lemezre.
@@ -130,8 +130,8 @@ Készítse elő a berendezés központi telepítését a következőképpen:
 
     ![Azure Migrate projekt létrehozása](./media/tutorial-migrate-physical-virtual-machines/migrate-project.png)
 
-8. Az **értékelési eszköz kiválasztása**lapon válassza **a kiértékelési eszköz hozzáadásának mellőzése most**  >  **tovább**lehetőséget.
-9. Az **áttelepítési eszköz kiválasztása**lapon válassza a **Azure Migrate: kiszolgáló áttelepítése**  >  **tovább**lehetőséget.
+8. Az **Értékelési eszköz kiválasztása** területen válassza **Az értékelési eszköz hozzáadásának mellőzése egyelőre** > **Tovább** lehetőséget.
+9. A **Migrálási eszköz kiválasztása** területen válassza az **Azure Migrate: Kiszolgáló migrálása** > **Tovább** lehetőséget.
 10. Az **Áttekintés + eszközök hozzáadása** területen ellenőrizze a beállításokat, majd kattintson az **Eszközök hozzáadása** lehetőségre.
 11. Az eszköz hozzáadása után megjelenik a Azure Migrate Project > **Servers**  >  **áttelepítési eszközök**területen.
 
@@ -162,7 +162,7 @@ Az áttelepítés első lépése a replikációs berendezés beállítása. Az A
 9. Futtassa a replikációs berendezés telepítési fájlját a következő eljárásban leírtak szerint.  
     9.1. Az **Előkészületek** területen válassza **A konfigurációs kiszolgáló és a folyamatkiszolgáló telepítése** lehetőséget, majd válassza a **Tovább** lehetőséget.   
     9,2 **harmadik féltől származó**szoftverlicenc esetében válassza **az Elfogadom a harmadik féltől származó licencszerződést**lehetőséget, majd kattintson a **tovább**gombra.   
-    9,3 a **regisztráció**lapon válassza a **Tallózás**lehetőséget, majd nyissa meg a tároló regisztrációs kulcsát tartalmazó fájlt. Kattintson a **Tovább** gombra.  
+    9,3 a **regisztráció**lapon válassza a **Tallózás**lehetőséget, majd nyissa meg a tároló regisztrációs kulcsát tartalmazó fájlt. Válassza a **Tovább** lehetőséget.  
     9,4 az **Internetbeállítások**területen válassza a **Csatlakozás Azure site Recovery proxykiszolgáló nélkül**lehetőséget, majd kattintson a **tovább**gombra.  
     9,5 az **Előfeltételek ellenőrzése** lap több elemre vonatkozó ellenőrzéseket futtat. Ha befejeződött, válassza a **Tovább** lehetőséget.  
     9,6 a **MySQL-konfigurációban**adjon meg egy jelszót a MySQL-adatbázishoz, majd kattintson a **tovább**gombra.  
@@ -172,7 +172,7 @@ Az áttelepítés első lépése a replikációs berendezés beállítása. Az A
     9,10 az **Összefoglalás**területen válassza a **telepítés**lehetőséget.   
     9,11 a **telepítési** folyamat adatai a telepítési folyamattal kapcsolatos információkat jelenítenek meg. Ha befejeződött, válassza a **Befejezés** lehetőséget. Egy ablakban megjelenik egy újraindítással kapcsolatos üzenet. Kattintson az **OK** gombra.   
     9,12 következő lépésként egy ablak egy üzenetet jelenít meg a konfigurációs kiszolgáló hozzáférési jelszavával kapcsolatban. Másolja a jelszót a vágólapra, és mentse a jelszót egy ideiglenes szövegfájlba a forrásként szolgáló virtuális gépeken. Ezt a jelszót később kell megadnia a mobilitási szolgáltatás telepítési folyamata során.
-10. A telepítés befejezése után a berendezés konfigurálása varázsló automatikusan elindul (a varázslót manuálisan is elindíthatja a berendezés asztalán létrehozott cspsconfigtool-parancsikon használatával). A varázsló fiókok kezelése lapján adhatja meg a mobilitási szolgáltatás leküldéses telepítéséhez szükséges fiók adatait. Ebben az oktatóanyagban manuálisan telepítjük a mobilitási szolgáltatást a forrásként szolgáló virtuális gépekre a replikáláshoz, ezért ebben a lépésben hozzon létre egy dummy-fiókot, és folytassa a következővel:.
+10. A telepítés befejezése után a berendezés konfigurálása varázsló automatikusan elindul (a varázslót manuálisan is elindíthatja a berendezés asztalán létrehozott cspsconfigtool-parancsikon használatával). A varázsló fiókok kezelése lapján adhatja meg a mobilitási szolgáltatás leküldéses telepítéséhez szükséges fiók adatait. Ebben az oktatóanyagban manuálisan telepítjük a mobilitási szolgáltatást a forrásként szolgáló virtuális gépekre a replikáláshoz, ezért ebben a lépésben hozzon létre egy dummy-fiókot, és folytassa a következővel:. A következő adatok megadásával hozhatja létre a "vendég" nevet a "username" névvel, a felhasználónévvel és a jelszóval a fiók jelszavaként. Ezt a dummy-fiókot fogja használni a replikálás engedélyezése szakaszban. 
 11. Miután a készülék újraindult a telepítés után, a **számítógépek felderítése**lapon válassza ki az új készüléket a **konfigurációs kiszolgáló kiválasztása**területen, majd kattintson a **regisztráció véglegesítése**lehetőségre. A regisztráció véglegesítése a replikációs berendezés előkészítésének néhány utolsó feladatát hajtja végre.
 
     ![Regisztráció véglegesítése](./media/tutorial-migrate-physical-virtual-machines/finalize-registration.png)
@@ -240,25 +240,24 @@ A mobilitási szolgáltatás ügynökét telepíteni kell az áttelepítendő, a
 
 2. A **replikálás**során > a **forrásoldali beállítások**  >  **a gépek virtualizálva?**, válassza a **nem virtualizált/egyéb**lehetőséget.
 3. A helyszíni **készülék**területen válassza ki a beállított Azure Migrate berendezés nevét.
-4. A **Process Server**lapon válassza ki a replikációs berendezés nevét.
-6. A **vendég hitelesítő adataiban**meg kell adnia a mobilitási szolgáltatás manuális telepítéséhez használt dummy-fiókot (a leküldéses telepítés nem támogatott). Ezután kattintson a **Tovább gombra: Virtual Machines**.
-
+4. A **Process Server**lapon válassza ki a replikációs berendezés nevét. 
+5. A **vendég hitelesítő adatai**területen válassza ki a [replikálási telepítő telepítése](#download-the-replication-appliance-installer) során korábban létrehozott dummy-fiókot a mobilitási szolgáltatás manuális telepítéséhez (a leküldéses telepítés nem támogatott). Ezután kattintson a **Tovább gombra: Virtual Machines**.   
+ 
     ![Virtuális gépek replikálása](./media/tutorial-migrate-physical-virtual-machines/source-settings.png)
-
-7. **Virtual Machines**az **áttelepítési beállítások importálása az értékelésből?** beállításnál hagyja meg az alapértelmezett **nem beállítást, az áttelepítési beállításokat manuálisan kell megadnia**.
-8. Tekintse át az áttelepíteni kívánt virtuális gépeket. Ezután kattintson a **Tovább: cél beállítások**elemre.
+6. **Virtual Machines**az **áttelepítési beállítások importálása az értékelésből?** beállításnál hagyja meg az alapértelmezett **nem beállítást, az áttelepítési beállításokat manuálisan kell megadnia**.
+7. Tekintse át az áttelepíteni kívánt virtuális gépeket. Ezután kattintson a **Tovább: cél beállítások**elemre.
 
     ![Virtuális gépek kiválasztása](./media/tutorial-migrate-physical-virtual-machines/select-vms.png)
 
-9. A **Célbeállítások** között válassza ki az előfizetést és a célrégiót, ahova migrálni szeretne, majd adja meg az erőforráscsoportot, amelyben az Azure-beli virtuális gépek megtalálhatóak lesznek a migrálást követően.
-10. A **Virtuális hálózat** területen válassza ki az Azure-beli virtuális hálózatot/alhálózatot, amelyhez az Azure-beli virtuális gépek a migrálást követően csatlakoznak majd.
-11. Az **Azure Hybrid Benefit** területen:
+8. A **Célbeállítások** között válassza ki az előfizetést és a célrégiót, ahova migrálni szeretne, majd adja meg az erőforráscsoportot, amelyben az Azure-beli virtuális gépek megtalálhatóak lesznek a migrálást követően.
+9. A **Virtuális hálózat** területen válassza ki az Azure-beli virtuális hálózatot/alhálózatot, amelyhez az Azure-beli virtuális gépek a migrálást követően csatlakoznak majd.
+10. Az **Azure Hybrid Benefit** területen:
     - Válassza a **Nem** lehetőséget, ha nem szeretné alkalmazni az Azure Hybrid Benefit szolgáltatást. Ezután kattintson a **Tovább** gombra.
     - Válassza az **Igen** lehetőséget, ha aktív frissítési garanciával vagy Windows Server-előfizetéssel rendelkező gépei vannak, és alkalmazni szeretné az előnyöket a migrált gépekre. Ezután kattintson a **Tovább** gombra.
 
     ![Cél beállításai](./media/tutorial-migrate-physical-virtual-machines/target-settings.png)
 
-12. A **Számítás** területen ellenőrizze a virtuális gép nevét, méretét, az operációs rendszer lemeztípusát és a rendelkezésreállási csoportot. A virtuális gépeknek meg kell felelniük az [Azure-követelményeknek](migrate-support-matrix-physical-migration.md#azure-vm-requirements).
+11. A **Számítás** területen ellenőrizze a virtuális gép nevét, méretét, az operációs rendszer lemeztípusát és a rendelkezésreállási csoportot. A virtuális gépeknek meg kell felelniük az [Azure-követelményeknek](migrate-support-matrix-physical-migration.md#azure-vm-requirements).
 
     - Virtuálisgép- **méret**: alapértelmezés szerint a Azure Migrate kiszolgáló áttelepítése az Azure-előfizetéshez legközelebbi egyezés alapján kiválasztja a méretet. Alternatív megoldásként az **Azure-beli virtuális gép mérete** területen manuálisan is kiválaszthatja a méretet.
     - **Operációsrendszer-lemez**: a virtuális gép operációsrendszer-(rendszerindító) lemezének megadása. Az operációsrendszer-lemez az a lemez, amelyen az operációs rendszer rendszerbetöltője és telepítője található. 
@@ -266,13 +265,13 @@ A mobilitási szolgáltatás ügynökét telepíteni kell az áttelepítendő, a
 
     ![Számítási beállítások](./media/tutorial-migrate-physical-virtual-machines/compute-settings.png)
 
-13. A **lemezek**területen adja meg, hogy a virtuálisgép-lemezeket replikálni kell-e az Azure-ba, majd válassza ki a lemez típusát (standard SSD/HDD vagy prémium szintű felügyelt lemez) az Azure-ban. Ezután kattintson a **Tovább** gombra.
+12. A **lemezek**területen adja meg, hogy a virtuálisgép-lemezeket replikálni kell-e az Azure-ba, majd válassza ki a lemez típusát (standard SSD/HDD vagy prémium szintű felügyelt lemez) az Azure-ban. Ezután kattintson a **Tovább** gombra.
     - Kizárhat lemezeket a replikációból.
     - Ha kizárja a lemezeket, azok nem lesznek jelen az Azure-beli virtuális gépen a migrációt követően. 
 
     ![Lemez beállításai](./media/tutorial-migrate-physical-virtual-machines/disks.png)
 
-14. Az **Áttekintés és a replikáció megkezdése** területen tekintse át a beállításokat, majd kattintson a **Replikálás** gombra a kiszolgálók kezdeti replikálásának elindításához.
+13. Az **Áttekintés és a replikáció megkezdése** területen tekintse át a beállításokat, majd kattintson a **Replikálás** gombra a kiszolgálók kezdeti replikálásának elindításához.
 
 > [!NOTE]
 > A replikálási beállításokat a replikáció elindítása előtt bármikor frissítheti, **kezelheti**a  >  **replikáló gépeket**. A replikáció kezdete után a beállítások már nem módosíthatók.

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: mbaldwin
 Customer intent: As a key vault administrator, I want to learn the options available to secure my vaults
-ms.openlocfilehash: 8d6dd38c3d1802c3b5bec82edbda4f9d344fa28b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3170b51b8e580a625b2dbb4d83229c59bafa900e
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090518"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534804"
 ---
 # <a name="azure-key-vault-security"></a>Az Azure Key Vault biztonsága
 
@@ -46,11 +46,11 @@ A mindkét síkon történő hitelesítéshez használt egyetlen mechanizmus mod
 
 ### <a name="managing-administrative-access-to-key-vault"></a>A Key Vault rendszergazdai hozzáférésének kezelése
 
-Amikor létrehoz egy kulcstartót egy erőforráscsoporthoz, az Azure AD használatával kezelheti a hozzáférést. A felhasználók vagy csoportok számára engedélyezheti az erőforráscsoport kulcstárolóinak kezelését. A megfelelő RBAC-szerepkörök hozzárendelésével megadhatja a hozzáférést egy adott hatóköri szinten. Ahhoz, hogy hozzáférést biztosítson egy felhasználónak a kulcstartók kezeléséhez, egy előre meghatározott `key vault Contributor` szerepkört kell hozzárendelni a felhasználóhoz egy adott hatókörben. A következő hatókörökhöz rendelhet hozzá RBAC-szerepköröket:
+Amikor létrehoz egy kulcstartót egy erőforráscsoporthoz, az Azure AD használatával kezelheti a hozzáférést. A felhasználók vagy csoportok számára engedélyezheti az erőforráscsoport kulcstárolóinak kezelését. A megfelelő Azure-szerepkörök hozzárendelésével megadhatja a hozzáférést egy adott hatóköri szinten. Ahhoz, hogy hozzáférést biztosítson egy felhasználónak a kulcstartók kezeléséhez, egy előre meghatározott `key vault Contributor` szerepkört kell hozzárendelni a felhasználóhoz egy adott hatókörben. Az Azure-szerepkörökhöz a következő hatóköröket lehet hozzárendelni:
 
-- **Előfizetés**: az előfizetés szintjén hozzárendelt RBAC-szerepkör az adott előfizetésen belüli összes erőforráscsoport és erőforrás esetében érvényes.
-- **Erőforráscsoport**: az erőforráscsoport szintjén HOZZÁRENDELt RBAC-szerepkör az adott erőforráscsoport összes erőforrására vonatkozik.
-- **Adott**erőforrás: egy adott erőforráshoz hozzárendelt RBAC-szerepkör az adott erőforrásra vonatkozik. Ebben az esetben az erőforrás egy adott kulcstartó.
+- **Előfizetés**: az előfizetés szintjén hozzárendelt Azure-szerepkörök az adott előfizetésen belüli összes erőforráscsoport és erőforrásra érvényesek.
+- **Erőforráscsoport**: az erőforráscsoport szintjén hozzárendelt Azure-szerepkör az adott erőforráscsoport összes erőforrására vonatkozik.
+- **Adott**erőforrás: egy adott erőforráshoz hozzárendelt Azure-szerepkör az adott erőforrásra vonatkozik. Ebben az esetben az erőforrás egy adott kulcstartó.
 
 Számos előre definiált szerepkör létezik. Ha egy előre meghatározott szerepkör nem felel meg az igényeinek, megadhatja saját szerepkörét. További információt a [RBAC: beépített szerepkörök](../../role-based-access-control/built-in-roles.md)című témakörben talál.
 

@@ -3,12 +3,12 @@ title: Felhasználói engedélyek megadása meghatározott labor-házirendekhez 
 description: Megtudhatja, hogyan adhat felhasználói engedélyeket a DevTest Labs adott labor-házirendjeihez az egyes felhasználói igények alapján
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: cfacba2a7cdba20bd5a05c9ca5898194c31c2e68
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 1a0f46ed64bf360ceb990f1e91cb65ace76b5a9a
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85855784"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534549"
 ---
 # <a name="grant-user-permissions-to-specific-lab-policies"></a>Felhasználói engedélyek megadása adott tesztkörnyezet-házirendekhez
 ## <a name="overview"></a>Áttekintés
@@ -17,7 +17,7 @@ Ez a cikk bemutatja, hogyan lehet a PowerShell használatával engedélyeket adn
 ## <a name="policies-as-resources"></a>Szabályzatok erőforrásként
 Az [Azure szerepköralapú Access Control](../role-based-access-control/role-assignments-portal.md) cikkében leírtaknak megfelelően a RBAC lehetővé teszi az erőforrások részletes hozzáférés-kezelését az Azure-hoz. A RBAC segítségével elkülönítheti a feladatokat a DevOps-csapaton belül, és csak a felhasználók számára biztosíthatja a feladatok elvégzéséhez szükséges hozzáférést.
 
-A DevTest Labs szolgáltatásban a szabályzat olyan erőforrástípus, amely engedélyezi a **Microsoft. segédösszetevője/Labs/policySets/policies/** RBAC műveletet. Az egyes tesztkörnyezet-házirendek a házirend-erőforrástípus egyik erőforrása, amely hatókörként is hozzárendelhető egy RBAC-szerepkörhöz.
+A DevTest Labs szolgáltatásban a szabályzat olyan erőforrástípus, amely engedélyezi a **Microsoft. segédösszetevője/Labs/policySets/policies/** RBAC műveletet. Az egyes tesztkörnyezet-házirendek a házirend-erőforrástípus egyik erőforrása, amely hatókörként is hozzárendelhető egy Azure-szerepkörhöz.
 
 Például ahhoz, hogy a felhasználók olvasási/írási engedélyt adjanak az engedélyezett virtuálisgép- **méretek** házirendjéhez, létre kell hoznia egy egyéni szerepkört, amely együttműködik a **Microsoft. segédösszetevője/Labs/policySets/** policys/Action szolgáltatással, majd hozzárendeli a megfelelő felhasználókat az egyéni szerepkörhöz a **Microsoft. segédösszetevője/Labs/policySets/policies/AllowedVmSizesInLab**hatókörében.
 

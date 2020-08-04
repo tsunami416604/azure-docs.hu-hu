@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/24/2020
+ms.date: 07/29/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: eaa00716e8f86552a077fb527993f619fc9756b5
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: e7bb996b3d42e2db2b4fa65d050ec1cb6a935bc6
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87275789"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533376"
 ---
 # <a name="enforce-a-minimum-required-version-of-transport-layer-security-tls-for-requests-to-a-storage-account"></a>Transport Layer Security (TLS) minimálisan szükséges verziójának kikényszerítés a Storage-fiókra irányuló kérelmekhez
 
@@ -116,12 +116,20 @@ $accountName = "<storage-account>"
 $location = "<location>"
 
 # Create a storage account with MinimumTlsVersion set to TLS 1.1.
-New-AzStorageAccount -ResourceGroupName $rgName -AccountName $accountName -Location $location -SkuName Standard_GRS -MinimumTlsVersion TLS1_1
+New-AzStorageAccount -ResourceGroupName $rgName \
+    -AccountName $accountName \
+    -Location $location \
+    -SkuName Standard_GRS \
+    -MinimumTlsVersion TLS1_1
+
 # Read the MinimumTlsVersion property.
 (Get-AzStorageAccount -ResourceGroupName $rgName -Name $accountName).MinimumTlsVersion
 
 # Update the MinimumTlsVersion version for the storage account to TLS 1.2.
-Set-AzStorageAccount -ResourceGroupName $rgName -AccountName $accountName -MinimumTlsVersion TLS1_2
+Set-AzStorageAccount -ResourceGroupName $rgName \
+    -AccountName $accountName \
+    -MinimumTlsVersion TLS1_2
+
 # Read the MinimumTlsVersion property.
 (Get-AzStorageAccount -ResourceGroupName $rgName -Name $accountName).MinimumTlsVersion
 ```
@@ -140,11 +148,10 @@ az storage account create \
     --location <location> \
     --min-tls-version TLS1_1
 
-az resource show \
+az storage account show \
     --name <storage-account> \
     --resource-group <resource-group> \
-    --resource-type Microsoft.Storage/storageAccounts \
-    --query properties.minimumTlsVersion \
+    --query minimumTlsVersion \
     --output tsv
 
 az storage account update \
@@ -152,11 +159,10 @@ az storage account update \
     --resource-group <resource-group> \
     --min-tls-version TLS1_2
 
-az resource show \
+az storage account show \
     --name <storage-account> \
     --resource-group <resource-group> \
-    --resource-type Microsoft.Storage/storageAccounts \
-    --query properties.minimumTlsVersion \
+    --query minimumTlsVersion \
     --output tsv
 ```
 
@@ -166,7 +172,7 @@ Egy sablonhoz tartozó Storage-fiók minimális TLS-verziójának konfigurálás
 
 1. A Azure Portal válassza az **erőforrás létrehozása**lehetőséget.
 1. A **Keresés a piactéren**mezőbe írja be a **sablon központi telepítése**kifejezést, majd nyomja le az **ENTER**billentyűt.
-1. Válassza a **template Deployment (üzembe helyezés egyéni sablonok használatával)**, majd a létrehozás lehetőséget, majd **a szerkesztőben válassza a saját sablon** **létrehozása**lehetőséget.
+1. Válassza **template Deployment (üzembe helyezés egyéni sablonok használatával) (előzetes verzió)**, válassza a **Létrehozás**lehetőséget, majd **a szerkesztőben válassza a saját sablon**létrehozása lehetőséget.
 1. A sablon szerkesztőjében illessze be a következő JSON-t egy új fiók létrehozásához, és állítsa be a TLS 1,2-es minimális verzióját. Ne felejtse el lecserélni a helyőrzőket a saját értékeire a szögletes zárójelben.
 
     ```json
@@ -175,7 +181,7 @@ Egy sablonhoz tartozó Storage-fiók minimális TLS-verziójának konfigurálás
         "contentVersion": "1.0.0.0",
         "parameters": {},
         "variables": {
-            "storageAccountName": "[concat(uniqueString(subscription().subscriptionId), 'storage')]"
+            "storageAccountName": "[concat(uniqueString(subscription().subscriptionId), 'tls')]"
         },
         "resources": [
             {
@@ -187,6 +193,10 @@ Egy sablonhoz tartozó Storage-fiók minimális TLS-verziójának konfigurálás
                 "minimumTlsVersion": "TLS1_2"
             },
             "dependsOn": [],
+            "sku": {
+              "name": "Standard_GRS"
+            },
+            "kind": "StorageV2",
             "tags": {}
             }
         ]
@@ -215,8 +225,6 @@ resources
 | extend minimumTlsVersion = parse_json(properties).minimumTlsVersion
 | project subscriptionId, resourceGroup, name, minimumTlsVersion
 ```
-
----
 
 ### <a name="test-the-minimum-tls-version-from-a-client"></a>A TLS minimális verziójának tesztelése egy ügyfélről
 

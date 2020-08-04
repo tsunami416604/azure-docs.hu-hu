@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: 00c9482eab74003f6a667d52440d4cb6dd21fcfc
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 8a5374bf15798fd7e53f0d93e69f2f40a2d57b94
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287367"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533818"
 ---
 # <a name="failover-cluster-instances-with-sql-server-on-azure-virtual-machines"></a>Feladatátvevő fürt példányai SQL Server az Azure-ban Virtual Machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -98,7 +98,7 @@ A [közvetlen tárolóhelyek](/windows-server/storage/storage-spaces/storage-spa
 - A folyamatban lévő lemezes replikáció miatt magas hálózati sávszélesség szükséges a nagy teljesítmény eléréséhez. 
 - Nagyobb méretű virtuálisgép-méretet igényel, és a tároláshoz dupla díjat kell fizetnie, mivel az egyes virtuális gépekhez tárterület van csatolva. 
 
-Első lépésként tekintse meg [a SQL Server feladatátvevő fürt példányát a közvetlen tárolóhelyek](failover-cluster-instance-azure-shared-disks-manually-configure.md)használatával. 
+Első lépésként tekintse meg [a SQL Server feladatátvevő fürt példányát a közvetlen tárolóhelyek](failover-cluster-instance-storage-spaces-direct-manually-configure.md)használatával. 
 
 ### <a name="premium-file-share"></a>Prémium fájlmegosztás
 
@@ -166,7 +166,7 @@ Az Azure Virtual Machines-on az MSDTC nem támogatott a Windows Server 2016-es v
 
 Tekintse át a [fürt konfigurációjának ajánlott eljárásait](hadr-cluster-best-practices.md), majd [készítse elő a SQL Server VMt a következőre:](failover-cluster-instance-prepare-vm.md). 
 
-További információkért lásd: 
+További információ: 
 
 - [Windows-fürtök technológiái](/windows-server/failover-clustering/failover-clustering-overview)   
 - [SQL Server feladatátvevő fürt példányai](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)

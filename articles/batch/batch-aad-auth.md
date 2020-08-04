@@ -4,12 +4,12 @@ description: A Batch támogatja az Azure AD-t a Batch szolgáltatásban történ
 ms.topic: how-to
 ms.date: 01/28/2020
 ms.custom: has-adal-ref
-ms.openlocfilehash: 7daf26d7c52e07be999bb93edd6fe694f79d1be2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 19042b4bb0998d104792d7511ab2972299b4f58d
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87032459"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533512"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Batch szolgáltatási megoldások hitelesítése Active Directory
 
@@ -130,9 +130,9 @@ Az egyszerű szolgáltatással történő hitelesítéshez hozzá kell rendelnie
 1. A **szerepkör** legördülő listából válassza ki az alkalmazás *közreműködő* vagy *olvasó* szerepkörét. További információ ezekről a szerepkörökről: [a Azure Portal szerepköralapú Access Control első lépései](../role-based-access-control/overview.md).
 1. A **Select (kiválasztás** ) mezőben adja meg az alkalmazás nevét. Válassza ki az alkalmazást a listából, majd válassza a **Mentés**lehetőséget.
 
-Az alkalmazásnak ekkor meg kell jelennie a hozzáférés-vezérlési beállításaiban egy hozzárendelt RBAC-szerepkörrel.
+Az alkalmazásnak ekkor meg kell jelennie a hozzáférés-vezérlési beállításaiban egy hozzárendelt Azure-szerepkörrel.
 
-![RBAC-szerepkör társítása az alkalmazáshoz](./media/batch-aad-auth/app-rbac-role.png)
+![Azure-szerepkör kiosztása az alkalmazáshoz](./media/batch-aad-auth/app-rbac-role.png)
 
 ### <a name="assign-a-custom-role"></a>Egyéni szerepkör hozzárendelése
 

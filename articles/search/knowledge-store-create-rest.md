@@ -7,13 +7,13 @@ manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 06/30/2020
-ms.openlocfilehash: f496413cf1a5175cee65bce46a2f7f6260d5451d
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.date: 08/02/2020
+ms.openlocfilehash: 51422be944d514de398d4bfa424679e2f6d531b6
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85565229"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534753"
 ---
 # <a name="create-a-knowledge-store-using-rest-and-postman"></a>Knowledge Store létrehozása REST és Poster használatával
 
@@ -23,7 +23,7 @@ Ebben a cikkben a REST API felület használatával végezheti el, indexelheti �
 
 Miután létrehozta a tudásbázist, megtudhatja, hogyan érheti el a [Storage Explorer](knowledge-store-view-storage-explorer.md) vagy [Power bi](knowledge-store-connect-power-bi.md)használatával a Knowledge Store-t.
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 > [!TIP]
 > Ehhez a cikkhez a [Poster Desktop alkalmazást](https://www.getpostman.com/) ajánljuk. A cikk [forráskódja](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/knowledge-store) tartalmaz egy Poster-gyűjteményt, amely tartalmazza az összes kérelmet. 

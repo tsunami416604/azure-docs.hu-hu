@@ -10,12 +10,12 @@ ms.date: 12/18/2019
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: 99d8ab3b7edc2d32e580ec8de9132fef3ea3503a
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 97eb3f4cbb4ac76823ebe43126db6b5c2a10010b
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87424341"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533971"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-powershell"></a>Felhasználói delegálási SAS létrehozása tárolóhoz vagy blobhoz a PowerShell használatával
 
@@ -78,7 +78,7 @@ A PowerShell-lel való bejelentkezéssel kapcsolatos további információkért 
 
 Ha Azure PowerShellból szeretne felhasználói delegálási SAS-t létrehozni, a PowerShellbe való bejelentkezéshez használt Azure AD-fióknak olyan szerepkört kell hozzárendelni, amely tartalmazza a **Microsoft. Storage/storageAccounts/blobServices/generateUserDelegationKey** műveletet. Ez az engedély lehetővé teszi, hogy az Azure AD-fiók a *felhasználói delegálási kulcsot*kérje. A felhasználói delegálási kulcs a felhasználói delegálási SAS aláírására szolgál. A **Microsoft. Storage/storageAccounts/blobServices/generateUserDelegationKey** műveletet biztosító szerepkört a Storage-fiók, az erőforráscsoport vagy az előfizetés szintjén kell hozzárendelni. A felhasználói delegálási SAS létrehozásához szükséges engedélyekkel kapcsolatos további információkért tekintse meg a RBAC **engedélyek kiosztása a RBAC** című szakaszt a [felhasználói delegálási sas létrehozása](/rest/api/storageservices/create-user-delegation-sas)című témakörben.
 
-Ha nem rendelkezik megfelelő engedélyekkel ahhoz, hogy RBAC-szerepköröket rendeljen hozzá egy Azure AD-rendszerbiztonsági tag számára, előfordulhat, hogy a fiók tulajdonosának vagy a rendszergazdának kell megkérnie a szükséges engedélyek hozzárendelését.
+Ha nem rendelkezik megfelelő engedélyekkel az Azure-szerepkörök Azure AD-rendszerbiztonsági tag számára való hozzárendeléséhez, akkor előfordulhat, hogy a fiók tulajdonosának vagy a rendszergazdának kell megkérnie a szükséges engedélyek hozzárendelését.
 
 A következő példa a **Storage blob-adatközreműködői** szerepkört rendeli hozzá, amely magában foglalja a **Microsoft. Storage/storageAccounts/blobServices/generateUserDelegationKey** műveletet. A szerepkör hatóköre a Storage-fiók szintjén van.
 
@@ -164,7 +164,7 @@ Revoke-AzStorageAccountUserDelegationKeys -ResourceGroupName <resource-group> `
 > [!IMPORTANT]
 > A felhasználói delegálási kulcsot és az Azure-szerepkörök hozzárendeléseit is gyorsítótárazza az Azure Storage, így a visszavonás folyamata és a meglévő felhasználói delegálási SAS érvénytelenné válik.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Felhasználói delegálási SAS létrehozása (REST API)](/rest/api/storageservices/create-user-delegation-sas)
 - [Felhasználói delegálási kulcs műveletének beolvasása](/rest/api/storageservices/get-user-delegation-key)

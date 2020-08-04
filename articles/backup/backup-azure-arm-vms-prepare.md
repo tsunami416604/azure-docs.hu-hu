@@ -3,12 +3,12 @@ title: Azure-beli virtuális gépek biztonsági mentése egy Recovery Services-t
 description: Ismerteti, hogyan lehet biztonsági másolatot készíteni az Azure-beli virtuális gépekről egy Recovery Services-tárolóban a Azure Backup használatával
 ms.topic: conceptual
 ms.date: 07/28/2020
-ms.openlocfilehash: b9d57449e56fb50bfbfddb627a1d6bb379710da4
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.openlocfilehash: 91fca2eef21a817c0f78b826e507901d94156dcd
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87439719"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533597"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Azure-beli virtuális gépek biztonsági mentése egy Recovery Services-tárolóban
 
@@ -51,7 +51,8 @@ Módosítsa a tárolási replikálás típusát a következőképpen:
 1. Az új tárolóban válassza a **Tulajdonságok** lehetőséget a **Beállítások** szakaszban.
 2. A **Tulajdonságok**alatt a **biztonsági mentés konfigurálása**területen válassza a **frissítés**lehetőséget.
 3. Válassza ki a tárolási replikálás típusát, majd kattintson a **Mentés**gombra.
-s ![ az új tároló tárolási konfigurációjának beállítása](./media/backup-azure-arm-vms-prepare/full-blade.png)
+
+      ![Az új tároló tárolási konfigurációjának beállítása](./media/backup-azure-arm-vms-prepare/full-blade.png)
 
 > [!NOTE]
    > A tárolási replikálási típus nem módosítható a tároló beállítása és a biztonsági mentési elemek létrehozása után. Ha ezt szeretné tenni, újra létre kell hoznia a tárolót.
@@ -167,14 +168,7 @@ Azure Backup biztonsági mentést készít az Azure-beli virtuális gépekről a
 **Windows** | 1. [töltse le és telepítse](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) az ügynök MSI-fájlját.<br/><br/> 2. telepítsen rendszergazdai engedélyekkel a gépen.<br/><br/> 3. Ellenőrizze a telepítést. A virtuális gép *C:\WindowsAzure\Packages* kattintson a jobb gombbal **WaAppAgent.exe**  >  **Tulajdonságok**elemre. A **részletek** lapon a **termék verziószámának** 2.6.1198.718 vagy magasabbnak kell lennie.<br/><br/> Ha frissíti az ügynököt, győződjön meg arról, hogy nem fut biztonsági mentési művelet, majd [telepítse újra az ügynököt](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409).
 **Linux** | A telepítést egy RPM vagy egy DEB-csomag használatával telepítheti a terjesztési csomag adattárában. Ez az Azure Linux-ügynök telepítésének és frissítésének előnyben részesített módszere. Az összes [támogatott terjesztési szolgáltató](../virtual-machines/linux/endorsed-distros.md) integrálja az Azure Linux-ügynök csomagját a lemezképbe és a tárházba. Az ügynök elérhető a [githubon](https://github.com/Azure/WALinuxAgent), de nem javasoljuk, hogy innen telepítsen.<br/><br/> Ha frissíti az ügynököt, győződjön meg arról, hogy nem fut biztonsági mentési művelet, és frissítse a bináris fájlokat.
 
->[!NOTE]
-> **A Azure Backup mostantól támogatja a szelektív lemezek biztonsági mentését és visszaállítását az Azure-beli virtuális gép biztonsági mentési megoldásával.**
->
->Napjainkban a Azure Backup támogatja a virtuális gép összes lemezének (operációs rendszerének és adattípusának) biztonsági mentését egy virtuális gépen, a virtuális gépek biztonsági mentési megoldásával együtt. A lemezek kizárása funkcióval lehetősége van arra, hogy a virtuális gép számos adatlemezéről egy vagy több biztonsági másolatot készítsen. Ez hatékony és költséghatékony megoldást kínál a biztonsági mentési és visszaállítási igények kielégítésére. Mindegyik helyreállítási pont a biztonsági mentési műveletben található lemezek adatait tartalmazza, így a visszaállítási művelet során a megadott helyreállítási pontról visszaállított lemezek egy részhalmaza is elérhető. Ez a pillanatképből és a tárolóból történő visszaállításra vonatkozik.
->
->Az előzetes verzióra való feliratkozáshoz írjon nekünk a következőt:AskAzureBackupTeam@microsoft.com
-
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Az [Azure VM-ügynökökkel](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md) vagy az [Azure-beli virtuális gépek biztonsági mentésével](backup-azure-vms-troubleshoot.md)kapcsolatos problémák elhárítása.
 * [Visszaállítás](backup-azure-arm-restore-vms.md) Azure-beli virtuális gépek.

@@ -10,17 +10,17 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 11/21/2019
-ms.openlocfilehash: 8a6f21d6b02d555456bb70a16b353e5cdbd52fd4
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 680f8394ad1d10a564033ae5a2b9f59063589f73
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84708518"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87532526"
 ---
 # <a name="tutorial-configure-transactional-replication-between-azure-sql-managed-instance-and-sql-server"></a>Oktatóanyag: tranzakciós replikáció konfigurálása az Azure SQL felügyelt példánya és SQL Server között
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 >
@@ -78,7 +78,7 @@ A felügyelt példányok létrehozásával kapcsolatos további információkér
 
 Hozzon létre egy SQL Server virtuális gépet a [Azure Portal](https://portal.azure.com)használatával. A SQL Server virtuális gépnek a következő tulajdonságokkal kell rendelkeznie:
 
-- név:`sql-vm-sub`
+- Név: `sql-vm-sub`
 - Rendszerkép: SQL Server 2016 vagy újabb
 - Erőforráscsoport: ugyanaz, mint a felügyelt példány
 - Virtuális hálózat:`sql-vm-sub-vnet`
@@ -142,7 +142,7 @@ A privát DNS-zónák lehetővé teszik a DNS-útválasztást a felügyelt péld
 
 ### <a name="create-a-private-dns-zone"></a>Privát DNS-zóna létrehozása
 
-1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Az új Azure-erőforrás létrehozásához válassza **az erőforrás létrehozása** lehetőséget.
 1. Keressen rá az `private dns zone` Azure Marketplace-en.
 1. Válassza ki a Microsoft által közzétett **saját DNS zóna** erőforrást, majd válassza a **Létrehozás** lehetőséget a DNS-zóna létrehozásához.
@@ -247,6 +247,10 @@ Miután létrejött a kapcsolat, és van egy mintaadatbázis, a felügyelt péld
 1. Nyisson meg egy **új lekérdezési** ablakot, és futtassa a következő Transact-SQL-kódot a terjesztés konfigurálásához a terjesztő felügyelt példányán:
 
    ```sql
+   EXEC sp_adddistributor @distributor = 'sql-mi-distributor.b6bf57.database.windows.net', @password = '<distributor_admin_password>'
+   
+   EXEC sp_adddistributiondb @database = N'distribution'
+   
    EXEC sp_adddistpublisher @publisher = 'sql-mi-publisher.b6bf57.database.windows.net', -- primary publisher
         @distribution_db = N'distribution',
         @security_mode = 0,
@@ -341,7 +345,7 @@ Use ReplTutorial
 INSERT INTO ReplTest (ID, c1) VALUES (15, 'pub')
 ```
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 1. Navigáljon az erőforráscsoporthoz a [Azure Portal](https://portal.azure.com).
 1. Válassza ki a felügyelt példány (oka) t, majd válassza a **Törlés**lehetőséget. Írja be `yes` a szövegmezőbe, és erősítse meg, hogy törölni kívánja az erőforrást, majd válassza a **Törlés**lehetőséget. Ez a folyamat hosszabb időt is igénybe vehet a háttérben, és amíg el nem végzi a műveletet, nem fogja tudni törölni a *virtuális fürtöt* vagy bármely más függő erőforrást. Figyelje meg a törlést a **tevékenység** lapon a felügyelt példány törlésének megerősítéséhez.
@@ -357,7 +361,7 @@ INSERT INTO ReplTest (ID, c1) VALUES (15, 'pub')
 
 Az ügynököt Windows-bejelentkezéssel konfigurálták, és egy SQL Server bejelentkezést kell használnia helyette. A **közzétételi tulajdonságok** **ügynök biztonsági** lapján módosíthatja a bejelentkezési hitelesítő adatokat egy SQL Server bejelentkezési azonosítóra.
 
-### <a name="failed-to-connect-to-azure-storage"></a>Nem sikerült csatlakozni az Azure Storage-hoz
+### <a name="failed-to-connect-to-azure-storage"></a>Sikertelen csatlakozás az Azure Storage-hoz
 
 `Connecting to Azure Files Storage '\\replstorage.file.core.windows.net\replshare' Failed to connect to Azure Storage '' with OS error: 53.`
 

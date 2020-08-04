@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.assetid: a0e045f1-73d6-427f-868d-7b55c10f811b
 ms.topic: how-to
 ms.date: 12/05/2016
-ms.openlocfilehash: 7761da75c16e2f89ae145bad3b04cc179f415751
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: cbce903bc7463cd917d48e341614afbe18536262
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87127536"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87531210"
 ---
 # <a name="manage-azure-data-lake-analytics-using-the-azure-portal"></a>Az Azure Data Lake Analytics kezelése az Azure Portal használatával
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -58,7 +58,7 @@ A Data Lake Analytics a következő adatforrásokat támogatja:
 
 A Adatkezelő használatával böngészheti az adatforrásokat, és alapszintű fájlkezelési műveleteket hajthat végre. 
 
-### <a name="add-a-data-source"></a>Adatforrások felvétele
+### <a name="add-a-data-source"></a>Adatforrás hozzáadása
 
 1. A Azure Portal lépjen a Data Lake Analytics-fiókra.
 2. Kattintson **az adatforrások**elemre.
@@ -95,7 +95,7 @@ A **felhasználó hozzáadása varázslóval** egyszerűen kiépítheti az új D
 
 A többi Azure-szolgáltatáshoz hasonlóan a szerepköralapú Access Control (RBAC) segítségével szabályozhatja, hogy a felhasználók hogyan használják a szolgáltatást.
 
-A standard szintű RBAC-szerepkörök a következő képességekkel rendelkeznek:
+A standard Azure-szerepkörök a következő képességekkel rendelkeznek:
 * **Tulajdonos**: feladatokat küldhet be, figyelheti a feladatokat, megszakíthatja a feladatokat bármely felhasználótól, és konfigurálhatja a fiókot.
 * **Közreműködő**: feladatokat küldhet be, figyelheti a feladatokat, megszakíthatja a feladatokat bármely felhasználótól, és konfigurálhatja a fiókot.
 * **Olvasó**: nyomon követheti a feladatokat.

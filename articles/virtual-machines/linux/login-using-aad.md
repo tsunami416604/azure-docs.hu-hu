@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 08/29/2019
 ms.author: sandeo
-ms.openlocfilehash: fe9d4e5a981f9d626bb6086659593e1c3ce06469
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 96fb914b5dafe5eb818f2b491bbe2d856763bd02
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291129"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534736"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>Előzetes verzió: bejelentkezés az Azure-beli linuxos virtuális gépre Azure Active Directory hitelesítéssel
 
@@ -113,7 +113,7 @@ A *sikeres* *provisioningState* akkor jelenik meg, ha a bővítmény telepítés
 
 ## <a name="configure-role-assignments-for-the-vm"></a>Szerepkör-hozzárendelések konfigurálása a virtuális géphez
 
-Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) házirend határozza meg, hogy ki jelentkezhet be a virtuális gépre. Két RBAC-szerepkört használ a virtuális gép bejelentkezésének engedélyezéséhez:
+Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) házirend határozza meg, hogy ki jelentkezhet be a virtuális gépre. A VM-bejelentkezés engedélyezéséhez két Azure-szerepkör használható:
 
 - **Virtuális gép rendszergazdai bejelentkezése**: az ehhez a szerepkörhöz hozzárendelt felhasználók bejelentkezhetnek egy Azure-beli virtuális gépre a Windows rendszergazdai vagy a Linux root felhasználói jogosultságokkal.
 - **Virtuális gép felhasználói bejelentkezése**: az ehhez a szerepkörhöz hozzárendelt felhasználók rendszeres felhasználói jogosultságokkal jelentkezhetnek be egy Azure-beli virtuális gépre.
@@ -181,9 +181,9 @@ Ezzel a sorral:
 
 ## <a name="troubleshoot-sign-in-issues"></a>Bejelentkezési problémák elhárítása
 
-Az Azure AD-beli hitelesítő adatokkal való SSH-val való próbálkozáskor előforduló gyakori hibákhoz nem tartoznak RBAC-szerepkörök, és a rendszer ismételten kéri a bejelentkezést. Ezeket a problémákat a következő fejezetek segítségével orvosolhatja.
+Az Azure AD-beli hitelesítő adatokkal való SSH-val való próbálkozáskor előforduló gyakori hibák közé tartozik az Azure-szerepkörök hozzárendelése sem, és a rendszer ismételten kéri a bejelentkezést. Ezeket a problémákat a következő fejezetek segítségével orvosolhatja.
 
-### <a name="access-denied-rbac-role-not-assigned"></a>Hozzáférés megtagadva: a RBAC szerepkör nincs hozzárendelve
+### <a name="access-denied-azure-role-not-assigned"></a>Hozzáférés megtagadva: az Azure-szerepkör nincs hozzárendelve
 
 Ha a következő hibaüzenet jelenik meg az SSH-parancssorban, ellenőrizze, hogy konfigurálta-e a *virtuális gép rendszergazdai felhasználónevét* vagy a *virtuális gép felhasználói bejelentkezési* szerepkörét biztosító RBAC házirendeket a virtuális géphez:
 

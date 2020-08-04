@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b3dcb3a74e9341981af7e6eddb4be7454aaf429b
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 2fcd1c3a9fd3e4be22e4057eb2cfc9a71d09d558
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87419784"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87529109"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Bejelentkezés az Azure-beli Windows rendszerű virtuális gépre Azure Active Directory hitelesítéssel (előzetes verzió)
 
@@ -144,7 +144,7 @@ Ekkor megjelenik a (z) `provisioningState` `Succeeded` , ha a bővítmény telep
 
 ## <a name="configure-role-assignments-for-the-vm"></a>Szerepkör-hozzárendelések konfigurálása a virtuális géphez
 
-Most, hogy létrehozta a virtuális gépet, konfigurálnia kell az Azure RBAC-szabályzatot annak meghatározásához, hogy ki tud bejelentkezni a virtuális gépre. Két RBAC-szerepkört használ a virtuális gép bejelentkezésének engedélyezéséhez:
+Most, hogy létrehozta a virtuális gépet, konfigurálnia kell az Azure RBAC-szabályzatot annak meghatározásához, hogy ki tud bejelentkezni a virtuális gépre. A VM-bejelentkezés engedélyezéséhez két Azure-szerepkör használható:
 
 - **Virtuális gép rendszergazdai bejelentkezése**: az ehhez a szerepkörhöz hozzárendelt felhasználók rendszergazdai jogosultságokkal jelentkezhetnek be egy Azure-beli virtuális gépre.
 - **Virtuális gép felhasználói bejelentkezése**: az ehhez a szerepkörhöz hozzárendelt felhasználók rendszeres felhasználói jogosultságokkal jelentkezhetnek be egy Azure-beli virtuális gépre.
@@ -208,7 +208,7 @@ A feltételes hozzáférési szabályzatok, például a többtényezős hiteles�
 ## <a name="log-in-using-azure-ad-credentials-to-a-windows-vm"></a>Bejelentkezés Azure AD-beli hitelesítő adatokkal egy Windows rendszerű virtuális gépen
 
 > [!IMPORTANT]
-> Az Azure AD-hez csatlakoztatott virtuális gépekkel létesített távoli kapcsolódás csak olyan Windows 10 rendszerű számítógépeken engedélyezett, amelyeken az Azure AD regisztrálva van (a minimálisan szükséges Build 20H1), vagy az Azure AD-hez csatlakoztatott vagy a hibrid Azure AD-hez **ugyanahhoz** a címtárhoz csatlakozik. Emellett az Azure AD-beli hitelesítő adatok használatával történő RDP-hez a felhasználónak a két RBAC szerepkör egyikéhez kell tartoznia, a virtuális gép rendszergazdai felhasználónevét vagy a virtuális gép felhasználói bejelentkezési adatait. Ha Azure AD-regisztrált Windows 10 rendszerű számítógépet használ, meg kell adnia a hitelesítő adatokat a AzureAD\UPN formátumban (például AzureAD\john@contoso.com ). Jelenleg az Azure Bastion nem használható Azure Active Directory hitelesítéssel az AADLoginForWindows bővítménnyel való bejelentkezéshez. csak a közvetlen RDP használata támogatott.
+> Az Azure AD-hez csatlakoztatott virtuális gépekkel létesített távoli kapcsolódás csak olyan Windows 10 rendszerű számítógépeken engedélyezett, amelyeken az Azure AD regisztrálva van (a minimálisan szükséges Build 20H1), vagy az Azure AD-hez csatlakoztatott vagy a hibrid Azure AD-hez **ugyanahhoz** a címtárhoz csatlakozik. Emellett az Azure AD-beli hitelesítő adatok használatával történő RDP-hez a felhasználónak a két Azure-szerepkör, a virtuális gép rendszergazdai bejelentkezése vagy a virtuális gép felhasználói bejelentkezési adatai közé kell tartoznia. Ha Azure AD-regisztrált Windows 10 rendszerű számítógépet használ, meg kell adnia a hitelesítő adatokat a AzureAD\UPN formátumban (például AzureAD\john@contoso.com ). Jelenleg az Azure Bastion nem használható Azure Active Directory hitelesítéssel az AADLoginForWindows bővítménnyel való bejelentkezéshez. csak a közvetlen RDP használata támogatott.
 
 Bejelentkezés a Windows Server 2019 rendszerű virtuális gépre az Azure AD használatával: 
 
@@ -315,13 +315,13 @@ A nyilvános előzetes verzióban a AADLoginForWindows-bővítmény csak Windows
 
 ### <a name="troubleshoot-sign-in-issues"></a>Bejelentkezési problémák elhárítása
 
-Az Azure AD-beli hitelesítő adatokkal való RDP-vel való kísérlet során előforduló gyakori hibák közé tartozik a RBAC-szerepkörök hozzárendelése, jogosulatlan ügyfél vagy 2FA bejelentkezési módszer. Az alábbi információk segítségével javítsa ki ezeket a problémákat.
+Az Azure AD-beli hitelesítő adatokkal való RDP-vel való kísérlet során előforduló gyakori hibák közé tartoznak a hozzárendelt Azure-szerepkörök, a jogosulatlan ügyfelek vagy a 2FA bejelentkezési módszere. Az alábbi információk segítségével javítsa ki ezeket a problémákat.
 
 Az eszköz és az egyszeri bejelentkezés állapota a futtatásával tekinthető meg `dsregcmd /status` . A cél az eszköz állapotának megjelenítése `AzureAdJoined : YES` és `SSO State` megjelenítése `AzureAdPrt : YES` .
 
 Emellett az Azure AD-fiókokat használó RDP-bejelentkezés az eseménynaplóban, a AAD\Operational-eseménynaplóban is rögzítve van.
 
-#### <a name="rbac-role-not-assigned"></a>A RBAC szerepkör nincs hozzárendelve
+#### <a name="azure-role-not-assigned"></a>Az Azure-szerepkör nincs hozzárendelve
 
 Ha a következő hibaüzenet jelenik meg, amikor távoli asztali kapcsolattal kezdeményezi a virtuális gépet: 
 
@@ -365,6 +365,6 @@ Ha még nem telepítette a vállalati Windows Hello szolgáltatást, és ha ez n
 
 Ossza meg visszajelzését erről az előzetes verziójú szolgáltatásról, vagy jelentse a problémát az [Azure ad visszajelzési fórumának](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032)használatával.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a Azure Active Directoryről: [Mi az Azure Active Directory](/azure/active-directory/fundamentals/active-directory-whatis)

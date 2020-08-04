@@ -11,7 +11,7 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 05/22/2020
 ms.locfileid: "83806510"
 ---
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Folytassa a beszédfelismerési parancssori felület egyéb funkcióinak megismeréséhez szükséges alapvető tudnivalókat.
 

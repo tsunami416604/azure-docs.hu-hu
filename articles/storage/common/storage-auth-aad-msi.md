@@ -10,12 +10,12 @@ ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 28563dc1e8acf4e521d75a7f4f8986d92d2a8348
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 17d19d0b87812ec1f38b43c1b26dbd5c19b4efc8
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497936"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534209"
 ---
 # <a name="authorize-access-to-blob-and-queue-data-with-managed-identities-for-azure-resources"></a>Hozzáférés engedélyezése a blob-és üzenetsor-szolgáltatásokhoz az Azure-erőforrások felügyelt identitásával
 
@@ -30,7 +30,7 @@ Ahhoz, hogy az Azure-erőforrásokhoz felügyelt identitások használatával en
 - [Azure Portalra](https://docs.microsoft.com/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm)
 - [Azure PowerShell](../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)
 - [Azure CLI](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md)
-- [Azure Resource Manager-sablon](../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
+- [Azure Resource Manager sablon](../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
 - [Azure Resource Manager ügyféloldali kódtárak](../../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md)
 
 A felügyelt identitásokkal kapcsolatos további információkért lásd: [felügyelt identitások az Azure-erőforrásokhoz](../../active-directory/managed-identities-azure-resources/overview.md).
@@ -47,7 +47,7 @@ A .NET-hez készült Azure Identity ügyféloldali kódtáraval kapcsolatos tov�
 
 ### <a name="assign-azure-roles-for-access-to-data"></a>Azure-szerepkörök kiosztása az adathoz való hozzáféréshez
 
-Ha egy Azure AD rendszerbiztonsági tag megpróbál hozzáférni a blob-vagy üzenetsor-adatszolgáltatáshoz, akkor a rendszerbiztonsági tag engedélyekkel kell rendelkeznie az erőforráshoz. Azt jelzi, hogy a rendszerbiztonsági tag felügyelt identitás-e az Azure-ban vagy egy olyan Azure AD-felhasználói fiókban, amely kódot futtat a fejlesztési környezetben, a rendszerbiztonsági tag számára olyan RBAC-szerepkört kell hozzárendelni, amely hozzáférést biztosít a blob-vagy üzenetsor-adatokhoz Az engedélyek **RBAC-n** keresztüli hozzárendelésével kapcsolatos információkért tekintse meg az [Azure-blobok és-várólisták hozzáférésének engedélyezése a Azure Active Directory használatával](../common/storage-auth-aad.md#assign-rbac-roles-for-access-rights)című témakör című szakaszát.
+Ha egy Azure AD rendszerbiztonsági tag megpróbál hozzáférni a blob-vagy üzenetsor-adatszolgáltatáshoz, akkor a rendszerbiztonsági tag engedélyekkel kell rendelkeznie az erőforráshoz. Azt jelzi, hogy a rendszerbiztonsági tag felügyelt identitás-e az Azure-ban vagy egy olyan Azure AD-felhasználói fiókban, amely kódot futtat a fejlesztési környezetben, a rendszerbiztonsági tag számára olyan Azure-szerepkört kell hozzárendelni, amely hozzáférést biztosít az Azure Storage-beli blob vagy üzenetsor Az engedélyek RBAC-n keresztüli hozzárendelésével kapcsolatos információkért tekintse meg **Az Azure** [-blobok és-várólisták hozzáférésének engedélyezése az Azure-beli blobokhoz és-várólistákhoz Azure Active Directory használatával](../common/storage-auth-aad.md#assign-azure-roles-for-access-rights)című szakaszt.
 
 ### <a name="authenticate-the-user-in-the-development-environment"></a>A felhasználó hitelesítése a fejlesztői környezetben
 
@@ -61,7 +61,7 @@ Ha a fejlesztési környezet nem támogatja az egyszeri bejelentkezést vagy a b
 
 #### <a name="create-the-service-principal"></a>A szolgáltatásnév létrehozása
 
-Ha egy egyszerű szolgáltatásnevet szeretne létrehozni az Azure CLI-vel, és hozzárendel egy RBAC-szerepkört, hívja meg az az [ad SP Create-for-RBAC](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) parancsot. Adjon meg egy Azure Storage-adathozzáférési szerepkört az új egyszerű szolgáltatáshoz való hozzárendeléshez. Továbbá adja meg a szerepkör-hozzárendelés hatókörét. Az Azure Storage beépített szerepköreivel kapcsolatos további információkért lásd: az [Azure beépített szerepkörei](../../role-based-access-control/built-in-roles.md).
+Az Azure CLI-vel és az Azure-szerepkörök hozzárendelésével kapcsolatos egyszerű szolgáltatás létrehozásához hívja az az [ad SP Create-for-RBAC](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) parancsot. Adjon meg egy Azure Storage-adathozzáférési szerepkört az új egyszerű szolgáltatáshoz való hozzárendeléshez. Továbbá adja meg a szerepkör-hozzárendelés hatókörét. Az Azure Storage beépített szerepköreivel kapcsolatos további információkért lásd: az [Azure beépített szerepkörei](../../role-based-access-control/built-in-roles.md).
 
 Ha nem rendelkezik megfelelő engedélyekkel ahhoz, hogy szerepkört rendeljen a szolgáltatáshoz, előfordulhat, hogy meg kell kérnie a fiók tulajdonosát vagy a rendszergazdát, hogy elvégezze a szerepkör-hozzárendelést.
 

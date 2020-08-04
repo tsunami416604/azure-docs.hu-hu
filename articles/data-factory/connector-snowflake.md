@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 07/09/2020
-ms.openlocfilehash: 43839e19eb252c9fa7ab46605fd247f3a798d223
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.date: 07/30/2020
+ms.openlocfilehash: 48248b07b64278d5c8d4f297bf83df813aa486fe
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86220303"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87529500"
 ---
 # <a name="copy-data-from-and-to-snowflake-by-using-azure-data-factory"></a>Adatok másolása a-ből és a hópehely-ből a Azure Data Factory használatával
 
@@ -49,7 +49,7 @@ A hópehely-társított szolgáltatások esetében a következő tulajdonságok 
 | Tulajdonság         | Leírás                                                  | Kötelező |
 | :--------------- | :----------------------------------------------------------- | :------- |
 | típus             | A Type tulajdonságot a **hópehely**értékre kell beállítani.              | Igen      |
-| connectionString | Konfigurálja a [teljes fiók nevét](https://docs.snowflake.net/manuals/user-guide/connecting.html#your-snowflake-account-name) (beleértve a régiót és a felhőalapú platformot azonosító további szegmenseket is), a felhasználónevet, a jelszót, az adatbázist és a tárházat. A hópehely-példányhoz való kapcsolódáshoz válassza a JDBC kapcsolati karakterláncot. A jelszót Azure Key Vault is elvégezheti. További részletekért tekintse meg a táblázat alatti példákat, valamint a [Azure Key Vault cikkben tárolt hitelesítő adatokat](store-credentials-in-key-vault.md) .| Igen      |
+| connectionString | Megadja a hópehely-példányhoz való kapcsolódáshoz szükséges adatokat. Megadhatja, hogy a jelszó vagy a teljes kapcsolódási karakterlánc legyen Azure Key Vaultban. További részletekért tekintse meg a táblázat alatti példákat, valamint a [Azure Key Vault cikkben tárolt hitelesítő adatokat](store-credentials-in-key-vault.md) .<br><br>Néhány tipikus beállítás:<br>- **Fiók neve:** A hópehely-fiók [teljes fiókjának neve](https://docs.snowflake.net/manuals/user-guide/connecting.html#your-snowflake-account-name) (beleértve a régiót és a felhőalapú platformot azonosító további szegmenseket), például: xy12345. East-US-2. Azure.<br/>- **Felhasználónév:** A felhasználó bejelentkezési neve a kapcsolatban.<br>- **Jelszó:** A felhasználó jelszava.<br>- **Adatbázis:** Az alapértelmezett adatbázis, amelyet a csatlakozás után használ. Olyan meglévő adatbázisnak kell lennie, amelyhez a megadott szerepkör jogosultságokkal rendelkezik.<br>- **Raktár:** A virtuális raktár, amelyet a csatlakozás után használ. Egy meglévő raktárnak kell lennie, amelyhez a megadott szerepkör jogosultságokkal rendelkezik.<br>- **Szerepkör:** A hópehely-munkamenetben használni kívánt alapértelmezett hozzáférés-vezérlési szerepkör. A megadott szerepkörnek olyan meglévő szerepkörnek kell lennie, amely már hozzá van rendelve a megadott felhasználóhoz. Az alapértelmezett szerepkör nyilvános. | Igen      |
 | Connectvia tulajdonsággal       | Az adattárhoz való kapcsolódáshoz használt [integrációs](concepts-integration-runtime.md) modul. Használhatja az Azure Integration Runtime vagy egy saját üzemeltetésű integrációs modult (ha az adattár egy magánhálózaton található). Ha nincs megadva, az alapértelmezett Azure Integration Runtime-t használja. | Nem       |
 
 **Például**
@@ -60,7 +60,7 @@ A hópehely-társított szolgáltatások esetében a következő tulajdonságok 
     "properties": {
         "type": "Snowflake",
         "typeProperties": {
-            "connectionString": "jdbc:snowflake://<accountname>.snowflakecomputing.com/?user=<username>&password=<password>&db=<database>&warehouse=<warehouse>"
+            "connectionString": "jdbc:snowflake://<accountname>.snowflakecomputing.com/?user=<username>&password=<password>&db=<database>&warehouse=<warehouse>&role=<myRole>"
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
@@ -78,7 +78,7 @@ A hópehely-társított szolgáltatások esetében a következő tulajdonságok 
     "properties": {
         "type": "Snowflake",
         "typeProperties": {
-            "connectionString": "jdbc:snowflake://<accountname>.snowflakecomputing.com/?user=<username>&db=<database>&warehouse=<warehouse>",
+            "connectionString": "jdbc:snowflake://<accountname>.snowflakecomputing.com/?user=<username>&db=<database>&warehouse=<warehouse>&role=<myRole>",
             "password": {
                 "type": "AzureKeyVaultSecret",
                 "store": { 
@@ -105,7 +105,7 @@ A hópehely-adatkészlet a következő tulajdonságokat támogatja.
 | Tulajdonság  | Leírás                                                  | Kötelező                    |
 | :-------- | :----------------------------------------------------------- | :-------------------------- |
 | típus      | Az adatkészlet Type tulajdonságát **SnowflakeTable**értékre kell állítani. | Igen                         |
-| séma | A séma neve. |Nem, forrás, igen, fogadó  |
+| schema | A séma neve. |Nem, forrás, igen, fogadó  |
 | table | A tábla vagy nézet neve. |Nem, forrás, igen, fogadó  |
 
 **Például**

@@ -8,12 +8,12 @@ ms.workload: storage
 ms.topic: quickstart
 ms.date: 06/09/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 73e1067a7d2d1ff9cc9e2086070c9cb9bf7a000a
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 6c2ef52669a0bc5cd29bdcebf920beb1f409e65d
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87504245"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533104"
 ---
 # <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>Gyors útmutató: Azure NetApp Files beállítása és NFS-kötet létrehozása 
 
@@ -412,4 +412,6 @@ Ha elkészült, és ha szeretné, törölheti az erőforráscsoportot. Egy erőf
 ## <a name="next-steps"></a>További lépések  
 
 > [!div class="nextstepaction"]
-> [Kötetek kezelése Azure NetApp Files használatával](azure-netapp-files-manage-volumes.md)  
+> [Azure NetApp Files tárolási hierarchiája](azure-netapp-files-understand-storage-hierarchy.md)   
+> [Azure NetApp Files szolgáltatási szintjei](azure-netapp-files-service-levels.md)   
+> [NFS-kötet létrehozása](azure-netapp-files-create-volumes.md)   

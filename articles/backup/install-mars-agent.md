@@ -3,12 +3,12 @@ title: A Microsoft Azure Recovery Services-(MARS-) ügynök telepítése
 description: Ismerje meg, hogyan telepítheti a Microsoft Azure Recovery Services-(MARS-) ügynököt a Windows rendszerű gépek biztonsági mentésére.
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: b9842f6b07621301a0a8a32f5eb7fae5ece153bc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 715153d445acbc372f8305ca39f5276bf8a39773
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079366"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533478"
 ---
 # <a name="install-the-azure-backup-mars-agent"></a>A Azure Backup MARS-ügynök telepítése
 
@@ -131,7 +131,7 @@ Ha már telepítette az ügynököt valamelyik gépen, győződjön meg arról, 
 
     ![A tároló hitelesítő adatainak letöltése](./media/backup-try-azure-backup-in-10-mins/download-vault-credentials.png)
 
-1. Válassza a **Mentés** lehetőséget. A rendszer letölti a fájlt a letöltések mappájába. A tár hitelesítő adatait tartalmazó fájl nem nyitható meg.
+1. Kattintson a **Mentés** gombra. A rendszer letölti a fájlt a letöltések mappájába. A tár hitelesítő adatait tartalmazó fájl nem nyitható meg.
 
 ## <a name="install-and-register-the-agent"></a>Az ügynök telepítése és regisztrálása
 
@@ -155,12 +155,12 @@ Ha már telepítette az ügynököt valamelyik gépen, győződjön meg arról, 
 
     ![Tár hitelesítő adatainak hozzáadása a kiszolgáló regisztrálása varázsló használatával](./media/backup-configure-vault/register1.png)
 
-1. A **titkosítási beállítások** lapon a számítógép biztonsági másolatainak titkosításához és visszafejtéséhez használt jelszót kell megadnia.
+1. A **titkosítási beállítások** lapon a számítógép biztonsági másolatainak titkosításához és visszafejtéséhez használt jelszót kell megadnia. Az engedélyezett hozzáférési kódok karakterekről további információt [itt talál](backup-azure-file-folder-backup-faq.md#what-characters-are-allowed-for-the-passphrase) .
 
     * Mentse a jelszót egy biztonságos helyen. Szüksége lesz rá a biztonsági másolat visszaállításához.
     * Ha elveszíti vagy elfelejti a jelszót, a Microsoft nem tud segítséget nyújtani a biztonsági mentési adatok helyreállításához.
 
-1. Válassza a **Befejezés** gombot. Az ügynök már telepítve van, és a számítógép regisztrálva van a tárolóban. Készen áll a biztonsági mentés konfigurálására és ütemezésére.
+1. Válassza a **Befejezés** lehetőséget. Az ügynök már telepítve van, és a számítógép regisztrálva van a tárolóban. Készen áll a biztonsági mentés konfigurálására és ütemezésére.
 
 ## <a name="next-steps"></a>További lépések
 

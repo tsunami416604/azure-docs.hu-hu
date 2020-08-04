@@ -3,12 +3,12 @@ title: Congigure IP-tűzfal Azure Relay névtérhez
 description: Ez a cikk azt ismerteti, hogyan használhatók a tűzfalszabályok az adott IP-címekről Azure Relay névterekhez való csatlakozás engedélyezéséhez.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: f5fca44c56982e368b762a0b9b3418f1175f7de0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8cd788475ebe54c0316b8c37bd00aa186123fbf1
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85314844"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533053"
 ---
 # <a name="configure-ip-firewall-for-an-azure-relay-namespace"></a>IP-tűzfal konfigurálása Azure Relay névtérhez
 Alapértelmezés szerint a továbbítási névterek elérhetők az internetről, feltéve, hogy a kérelem érvényes hitelesítést és engedélyezést tartalmaz. Az IP-tűzfallal továbbra is korlátozhatja, hogy csak IPv4-címek vagy IPv4-címtartományok legyenek a [CIDR (osztály nélküli tartományok közötti útválasztás)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) jelöléssel.
@@ -52,7 +52,7 @@ A sablon egy paramétert vesz igénybe: **ipMask**, amely egyetlen IPv4-cím vag
 > ```json
 > "defaultAction": "Allow"
 > ```
-> erre:
+> a következőre:
 > ```json
 > "defaultAction": "Deny"
 > ```
@@ -129,4 +129,4 @@ A hálózati biztonsággal kapcsolatos egyéb funkciókkal kapcsolatos további 
 
 <!-- Links -->
 
-[express-route]:  /azure/expressroute/expressroute-faqs#supported-services
+[express-route]:  ../expressroute/expressroute-faqs.md#supported-services

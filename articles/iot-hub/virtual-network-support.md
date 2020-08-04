@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.author: jlian
-ms.openlocfilehash: f15f0c3f6b442419d3d2e3a253d15465e130eae2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7776345ee4e02baa2d2a6ae7bc08389aa94bd09b
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090603"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534481"
 ---
 # <a name="iot-hub-support-for-virtual-networks-with-private-link-and-managed-identity"></a>IoT Hub a magánhálózati és felügyelt identitású virtuális hálózatok támogatása
 
@@ -174,7 +174,7 @@ A IoT Hub az üzeneteket az ügyfél által birtokolt Storage-fiókba irányíth
 
 1. A Azure Portal nyissa meg a Storage-fiók **hozzáférés-vezérlés (iam)** lapját, és kattintson a **Hozzáadás** lehetőségre a **szerepkör-hozzárendelés hozzáadása** szakaszban.
 
-2. Válassza a **Storage blob-adatközreműködői** ([*nem* közreműködő vagy a Storage-fiók közreműködői](../storage/common/storage-auth-aad-rbac-portal.md#rbac-roles-for-blobs-and-queues)) lehetőséget **szerepkörként**, **Azure ad-felhasználóként, csoportként vagy egyszerű szolgáltatásnévként** **, és válassza ki a IoT hub** erőforrás nevét a legördülő listából. Kattintson a **Mentés** gombra.
+2. Válassza a **Storage blob-adatközreműködői** ([*nem* közreműködő vagy a Storage-fiók közreműködői](../storage/common/storage-auth-aad-rbac-portal.md#azure-roles-for-blobs-and-queues)) lehetőséget **szerepkörként**, **Azure ad-felhasználóként, csoportként vagy egyszerű szolgáltatásnévként** **, és válassza ki a IoT hub** erőforrás nevét a legördülő listából. Kattintson a **Mentés** gombra.
 
 3. Navigáljon a Storage-fiók **tűzfalak és virtuális hálózatok** lapjára, és engedélyezze a **hozzáférés engedélyezése a kiválasztott hálózatokból** lehetőséget. A **kivételek** listájában jelölje be a **megbízható Microsoft-szolgáltatások elérésének engedélyezése a Storage-fiók**számára jelölőnégyzetet. Kattintson a **Mentés** gombra.
 
@@ -228,7 +228,7 @@ IoT Hub fájlfeltöltés funkciója lehetővé teszi, hogy az eszközök fájlok
 
 1. A Azure Portal nyissa meg a Storage-fiók **hozzáférés-vezérlés (iam)** lapját, és kattintson a **Hozzáadás** lehetőségre a **szerepkör-hozzárendelés hozzáadása** szakaszban.
 
-2. Válassza a **Storage blob-adatközreműködői** ([*nem* közreműködő vagy a Storage-fiók közreműködői](../storage/common/storage-auth-aad-rbac-portal.md#rbac-roles-for-blobs-and-queues)) lehetőséget **szerepkörként**, **Azure ad-felhasználóként, csoportként vagy egyszerű szolgáltatásnévként** **, és válassza ki a IoT hub** erőforrás nevét a legördülő listából. Kattintson a **Mentés** gombra.
+2. Válassza a **Storage blob-adatközreműködői** ([*nem* közreműködő vagy a Storage-fiók közreműködői](../storage/common/storage-auth-aad-rbac-portal.md#azure-roles-for-blobs-and-queues)) lehetőséget **szerepkörként**, **Azure ad-felhasználóként, csoportként vagy egyszerű szolgáltatásnévként** **, és válassza ki a IoT hub** erőforrás nevét a legördülő listából. Kattintson a **Mentés** gombra.
 
 3. Navigáljon a Storage-fiók **tűzfalak és virtuális hálózatok** lapjára, és engedélyezze a **hozzáférés engedélyezése a kiválasztott hálózatokból** lehetőséget. A **kivételek** listájában jelölje be a **megbízható Microsoft-szolgáltatások elérésének engedélyezése a Storage-fiók**számára jelölőnégyzetet. Kattintson a **Mentés** gombra.
 
@@ -246,7 +246,7 @@ Ehhez a funkcióhoz IoT Hub kapcsolat szükséges a Storage-fiókhoz. Ha tűzfal
 
 1. A Azure Portal nyissa meg a Storage-fiók **hozzáférés-vezérlés (iam)** lapját, és kattintson a **Hozzáadás** lehetőségre a **szerepkör-hozzárendelés hozzáadása** szakaszban.
 
-2. Válassza a **Storage blob-adatközreműködői** ([*nem* közreműködő vagy a Storage-fiók közreműködői](../storage/common/storage-auth-aad-rbac-portal.md#rbac-roles-for-blobs-and-queues)) lehetőséget **szerepkörként**, **Azure ad-felhasználóként, csoportként vagy egyszerű szolgáltatásnévként** **, és válassza ki a IoT hub** erőforrás nevét a legördülő listából. Kattintson a **Mentés** gombra.
+2. Válassza a **Storage blob-adatközreműködői** ([*nem* közreműködő vagy a Storage-fiók közreműködői](../storage/common/storage-auth-aad-rbac-portal.md#azure-roles-for-blobs-and-queues)) lehetőséget **szerepkörként**, **Azure ad-felhasználóként, csoportként vagy egyszerű szolgáltatásnévként** **, és válassza ki a IoT hub** erőforrás nevét a legördülő listából. Kattintson a **Mentés** gombra.
 
 3. Navigáljon a Storage-fiók **tűzfalak és virtuális hálózatok** lapjára, és engedélyezze a **hozzáférés engedélyezése a kiválasztott hálózatokból** lehetőséget. A **kivételek** listájában jelölje be a **megbízható Microsoft-szolgáltatások elérésének engedélyezése a Storage-fiók**számára jelölőnégyzetet. Kattintson a **Mentés** gombra.
 

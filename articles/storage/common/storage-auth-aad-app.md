@@ -10,12 +10,12 @@ ms.date: 06/22/2020
 ms.author: tamram
 ms.subservice: common
 ms.custom: has-adal-ref
-ms.openlocfilehash: 949347d07fe120c6900f49499e78595b540718a7
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 57d1cda2e74cfe4ae3948e55124123d05682591b
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87368999"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534226"
 ---
 # <a name="acquire-a-token-from-azure-ad-for-authorizing-requests-from-a-client-application"></a>Jogkivonat beszerzése az Azure AD-ből az ügyfélalkalmazástól érkező kérések engedélyezéséhez
 
@@ -27,7 +27,7 @@ A OAuth 2,0 kód engedélyezési folyamatának áttekintését lásd: [hozzáfé
 
 ## <a name="assign-a-role-to-an-azure-ad-security-principal"></a>Szerepkör kiosztása egy Azure AD rendszerbiztonsági tag számára
 
-Egy rendszerbiztonsági tag Azure Storage-alkalmazásból történő hitelesítéséhez először konfigurálja a szerepkör alapú hozzáférés-vezérlés (RBAC) beállításait az adott rendszerbiztonsági tag számára. Az Azure Storage az Azure beépített szerepköreit határozza meg, amelyek magukban foglalják a tárolók és a várólisták engedélyeit. Ha a RBAC szerepkör hozzá van rendelve egy rendszerbiztonsági tag számára, a rendszerbiztonsági tag hozzáférést kap az adott erőforráshoz. További információ: a [hozzáférési jogosultságok kezelése az Azure Blob és a üzenetsor adatai számára a RBAC használatával](storage-auth-aad-rbac.md).
+Egy rendszerbiztonsági tag Azure Storage-alkalmazásból történő hitelesítéséhez először konfigurálja a szerepkör alapú hozzáférés-vezérlés (RBAC) beállításait az adott rendszerbiztonsági tag számára. Az Azure Storage az Azure beépített szerepköreit határozza meg, amelyek magukban foglalják a tárolók és a várólisták engedélyeit. Ha az Azure-szerepkör egy rendszerbiztonsági tag számára van rendelve, a rendszerbiztonsági tag hozzáférést kap az adott erőforráshoz. További információ: a [hozzáférési jogosultságok kezelése az Azure Blob és a üzenetsor adatai számára a RBAC használatával](storage-auth-aad-rbac.md).
 
 ## <a name="register-your-application-with-an-azure-ad-tenant"></a>Alkalmazás regisztrálása Azure AD-Bérlővel
 
@@ -115,7 +115,7 @@ A kód futtatásához hozzon létre egy Storage-fiókot a Azure Active Directory
 Ezután explicit módon rendelje hozzá a **Storage blob-adatközreműködői** szerepkört ahhoz a felhasználói fiókhoz, amelyen a kódot futtatni fogja. Ennek a szerepkörnek a Azure Portal való hozzárendelésével kapcsolatos útmutatásért lásd: [hozzáférés biztosítása az Azure blobhoz és az üzenetsor-kezelés a RBAC a Azure Portal](storage-auth-aad-rbac-portal.md).
 
 > [!NOTE]
-> Azure Storage-fiók létrehozásakor nem rendel automatikusan engedélyeket az Azure AD-n keresztüli adateléréshez. Explicit módon hozzá kell rendelnie egy RBAC-szerepkört az Azure Storage-hoz. Az előfizetés, az erőforráscsoport, a Storage-fiók, a tároló vagy a várólista szintjén rendelhető hozzá.
+> Azure Storage-fiók létrehozásakor nem rendel automatikusan engedélyeket az Azure AD-n keresztüli adateléréshez. Explicit módon hozzá kell rendelnie egy Azure-szerepkört az Azure Storage-hoz. Az előfizetés, az erőforráscsoport, a Storage-fiók, a tároló vagy a várólista szintjén rendelhető hozzá.
 
 ### <a name="create-a-web-application-that-authorizes-access-to-blob-storage-with-azure-ad"></a>Webalkalmazás létrehozása, amely engedélyezi a blob Storage-hoz való hozzáférést az Azure AD-vel
 

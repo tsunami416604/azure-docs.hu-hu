@@ -7,13 +7,13 @@ ms.author: b-juche
 ms.service: azure-netapp-files
 ms.workload: storage
 ms.topic: how-to
-ms.date: 07/24/2020
-ms.openlocfilehash: 6d990b94210383ba4b30569693f4471f43306ed2
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.date: 07/27/2020
+ms.openlocfilehash: 4a20a223932f82c80ad5831ef3a02bad803e26e6
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87169823"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533204"
 ---
 # <a name="configure-export-policy-for-an-nfs-volume"></a>Exportálási szabályzat konfigurálása NFS-kötethez
 
@@ -43,14 +43,18 @@ Legfeljebb öt exportálási szabályzatot hozhat létre.
         * Olvasás és írás
         * Csak olvasási engedély
 
+    * **Írásvédett** és írási **/olvasási**  
+        Ha a NFSv 4.1 használatával Kerberos-titkosítást használ, kövesse az [nfsv 4.1 Kerberos-titkosítás konfigurálása](configure-kerberos-encryption.md)című témakör utasításait.  A Kerberos teljesítményére gyakorolt hatásért lásd: a [Kerberos teljesítményére gyakorolt hatás a nfsv 4.1 rendszeren](configure-kerberos-encryption.md#kerberos_performance). 
+
+        ![Kerberos biztonsági beállítások](../media/azure-netapp-files/kerberos-security-options.png) 
+
     * **Gyökérszintű hozzáférés**  
         Annak megadása, hogy a `root` fiók hozzáférhet-e a kötethez.  Alapértelmezés szerint a gyökérszintű hozzáférés be van **kapcsolva**, és a `root` fiók hozzáfér a kötethez.
 
-        ![Exportálási szabályzat](../media/azure-netapp-files/azure-netapp-files-export-policy.png) 
+![Exportálási szabályzat](../media/azure-netapp-files/azure-netapp-files-export-policy.png) 
 
 
 
 ## <a name="next-steps"></a>További lépések 
-* [Kötetek kezelése](azure-netapp-files-manage-volumes.md)
 * [Kötet virtuális gépekhez való csatlakoztatása és leválasztása](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
 * [Pillanatképek kezelése](azure-netapp-files-manage-snapshots.md)

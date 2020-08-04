@@ -17,7 +17,7 @@ Az Azure gazdagépek Azure Cloud Shell, amely egy interaktív rendszerhéj-körn
 
 Azure Cloud Shell elindítása:
 
-| Beállítás | Példa/hivatkozás |
+| Lehetőség | Példa/hivatkozás |
 |-----------------------------------------------|---|
 | Kattintson a **Kipróbálás** elemre egy kódblokk jobb felső sarkában. A **kipróbálás** lehetőség kiválasztásával a kód nem másolja automatikusan Cloud Shellba. | ![Példa a Azure Cloud Shell kipróbálására](./media/cloud-shell-try-it/hdi-azure-cli-try-it.png) |
 | [https://shell.azure.com](https://shell.azure.com)Nyissa meg a gombot, vagy kattintson a **Cloud Shell elindítása** gombra a Cloud Shell megnyitásához a böngészőben. | [![Cloud Shell elindítása új ablakban](media/cloud-shell-try-it/hdi-launch-cloud-shell.png)](https://shell.azure.com) |

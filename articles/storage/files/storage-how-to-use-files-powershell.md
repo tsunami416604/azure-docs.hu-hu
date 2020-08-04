@@ -7,23 +7,23 @@ ms.topic: quickstart
 ms.date: 10/26/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: c0008ab89f4599e2ada51b5637a9665a249bc1c4
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.openlocfilehash: 360af0406a816a02540881962ed8794d69ce3bbb
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85340827"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87531812"
 ---
 # <a name="quickstart-create-and-manage-an-azure-file-share-with-azure-powershell"></a>Rövid útmutató: Azure-fájlmegosztások létrehozása és felügyelete az Azure PowerShell-lel 
 Ez az útmutató az [Azure-fájlmegosztások](storage-files-introduction.md) PowerShell-lel való használatának alapvető lépéseit mutatja be. Az Azure-fájlmegosztások nem különböznek más fájlmegosztásoktól, a tárolásuk azonban a felhőben történik, és az Azure platform nyújt számukra támogatást. Az Azure-fájlmegosztások támogatják az iparági szabvány SMB protokollt, és lehetővé teszik a több gép, alkalmazás és példány közötti fájlmegosztást. 
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 Ha helyileg szeretné telepíteni és használni a PowerShellt, az útmutatóhoz az Azure PowerShell-modul az 0,7-es vagy újabb verziójára lesz szükség. A jelenleg futtatott Azure PowerShell-modul verziójának kiderítéséhez futtassa a következő parancsot: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-Az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor a `Login-AzAccount` parancsot is futtatnia kell az Azure-fiókba való bejelentkezéshez.
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 Az erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Ha még nem rendelkezik Azure-erőforráscsoport használatával, létrehozhat egy újat a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) parancsmaggal. 
 
 A következő példában létrehozunk egy *myResourceGroup* nevű ERŐFORRÁSCSOPORTOT az USA 2. nyugati régiójában:
@@ -88,7 +88,7 @@ Az Azure-fájlmegosztást a legtöbb esetben az SMB protokollon keresztül fogja
 - Ki szeretné használni a kiszolgáló nélküli erőforrások, például az [Azure Functions](../../azure-functions/functions-overview.md) előnyeit. 
 - Olyan értéknövelt szolgáltatást hoz létre, amely számos Azure-fájlmegosztás esetében fog működni, például biztonsági mentési vagy víruskereső-vizsgálatok végrehajtásakor.
 
-Az alábbi példák bemutatják, hogyan kezelheti az Azure-fájlmegosztást a fájl REST protokollal a Azure PowerShell modul használatával. A `-Context` paraméter a Storage-fiók kulcsának beolvasására szolgál a megadott műveletek a fájlmegosztás alapján történő végrehajtásához. A Storage-fiók kulcsainak lekéréséhez a RBAC szerepkörrel kell rendelkeznie a `Owner` Storage-fiókban.
+Az alábbi példák bemutatják, hogyan kezelheti az Azure-fájlmegosztást a fájl REST protokollal a Azure PowerShell modul használatával. A `-Context` paraméter a Storage-fiók kulcsának beolvasására szolgál a megadott műveletek a fájlmegosztás alapján történő végrehajtásához. A Storage-fiók kulcsainak lekéréséhez a Storage-fiókban rendelkeznie kell Azure-szerepkörrel `Owner` .
 
 #### <a name="create-directory"></a>Könyvtár létrehozása
 Ha a *myDirectory* nevű új könyvtárat szeretné létrehozni az Azure-fájlmegosztás gyökerében, használja a [New-AzStorageDirectory](/powershell/module/az.storage/New-AzStorageDirectory) parancsmagot.

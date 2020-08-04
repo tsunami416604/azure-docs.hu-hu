@@ -3,12 +3,12 @@ title: Az Azure Relay .NET Standard API-k áttekintése | Microsoft Docs
 description: Ez a cikk az Azure Relay Hibrid kapcsolatok .NET Standard API áttekintését tartalmazza.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 578d0fd2bbf8b9bb897a79e88399dee3711f5990
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1d5aeed2ea76f47608ef03103b11fa236ec0362e
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85316840"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87532900"
 ---
 # <a name="azure-relay-hybrid-connections-net-standard-api-overview"></a>Azure Relay Hibrid kapcsolatok .NET Standard API – áttekintés
 
@@ -82,7 +82,7 @@ var hybridConnectionStream = await client.CreateConnectionAsync();
 
 ### <a name="receiving-data"></a>Adatfogadás
 
-A [HybridConnectionStream][HCStream] osztály kétirányú kommunikációt tesz lehetővé. A legtöbb esetben folyamatosan megkapja az adatfolyamot. Ha szöveget olvas be a streamből, érdemes lehet egy [StreamReader](https://msdn.microsoft.com/library/system.io.streamreader(v=vs.110).aspx) objektumot használni, amely lehetővé teszi az adatok egyszerűbb elemzését. Például szövegként is beolvashatja az adatolvasást, nem pedig a következőt: `byte[]` .
+A [HybridConnectionStream][HCStream] osztály kétirányú kommunikációt tesz lehetővé. A legtöbb esetben folyamatosan megkapja az adatfolyamot. Ha szöveget olvas be a streamből, érdemes lehet egy [StreamReader](/dotnet/api/system.io.streamreader?view=netcore-3.1) objektumot használni, amely lehetővé teszi az adatok egyszerűbb elemzését. Például szövegként is beolvashatja az adatolvasást, nem pedig a következőt: `byte[]` .
 
 A következő kód beolvassa az adatfolyam egyes sorait, amíg le nem kéri a megszakítást:
 
@@ -109,14 +109,14 @@ while (!cancellationToken.IsCancellationRequested)
 
 ### <a name="sending-data"></a>Adatok küldése
 
-Miután létrejött a kapcsolatok, küldhet egy üzenetet a továbbítási végpontnak. Mivel a kapcsolatok objektum örökli a [streamet](https://msdn.microsoft.com/library/system.io.stream(v=vs.110).aspx), az adatait küldje el `byte[]` . Az alábbi példa bemutatja, hogyan teheti meg ezt:
+Miután létrejött a kapcsolatok, küldhet egy üzenetet a továbbítási végpontnak. Mivel a kapcsolatok objektum örökli a [streamet](/dotnet/api/system.io.stream?view=netcore-3.1), az adatait küldje el `byte[]` . Az alábbi példa bemutatja, hogyan teheti meg ezt:
 
 ```csharp
 var data = Encoding.UTF8.GetBytes("hello");
 await clientConnection.WriteAsync(data, 0, data.Length);
 ```
 
-Ha azonban közvetlenül szeretne szöveget küldeni, anélkül, hogy minden alkalommal kódolnia kellene a sztringet, akkor az `hybridConnectionStream` objektumot [StreamWriter](https://msdn.microsoft.com/library/system.io.streamwriter(v=vs.110).aspx) objektummal is becsomagolhatja.
+Ha azonban közvetlenül szeretne szöveget küldeni, anélkül, hogy minden alkalommal kódolnia kellene a sztringet, akkor az `hybridConnectionStream` objektumot [StreamWriter](/dotnet/api/system.io.streamwriter?view=netcore-3.1) objektummal is becsomagolhatja.
 
 ```csharp
 // The StreamWriter object only needs to be created once
@@ -129,7 +129,7 @@ await textWriter.WriteLineAsync("hello");
 Ha többet szeretne megtudni a Azure Relayről, tekintse meg a következő hivatkozásokat:
 
 * [Microsoft. Azure. Relay – dokumentáció](/dotnet/api/microsoft.azure.relay)
-* [Mi az az Azure Relay?](relay-what-is-it.md)
+* [Mi az Azure Relay?](relay-what-is-it.md)
 * [Elérhető Relay API-k](relay-api-overview.md)
 
 [RelayConnectionStringBuilder]: /dotnet/api/microsoft.azure.relay.relayconnectionstringbuilder

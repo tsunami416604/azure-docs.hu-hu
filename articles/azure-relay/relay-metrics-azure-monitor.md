@@ -4,17 +4,17 @@ description: Ez a cikk azt ismerteti, hogyan használható a Azure Monitor az Az
 services: service-bus-relay
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 42de5205be9a611957a6e340b5eaa55c5b7f52c0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5fcc0f820983da388d808cadf8ce64a555e8ef0a
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87004562"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87532883"
 ---
 # <a name="azure-relay-metrics-in-azure-monitor"></a>Azure Monitor Azure Relay metrikák 
 Azure Relay mérőszámok az Azure-előfizetésében lévő erőforrások állapotát adják meg. A metrikai adatok gazdag készletével felmérhető a továbbítási erőforrások általános állapota, nem csak a névtér szintjén, hanem az entitás szintjén is. Ezek a statisztikák fontosak lehetnek, mivel segítenek a Azure Relay állapotának figyelésében. A metrikák az Azure-támogatáshoz való kapcsolódás nélkül is segíthetnek a hibák elhárításában.
 
-A Azure Monitor egységes felhasználói felületet biztosít a különböző Azure-szolgáltatások figyelésére. További információkért lásd: [Microsoft Azure figyelése](../monitoring-and-diagnostics/monitoring-overview.md) és a [Azure monitor metrikáinak beolvasása](https://github.com/Azure-Samples/monitor-dotnet-metrics-api) a githubon .net-minta használatával.
+A Azure Monitor egységes felhasználói felületet biztosít a különböző Azure-szolgáltatások figyelésére. További információkért lásd: [Microsoft Azure figyelése](../azure-monitor/overview.md) és a [Azure monitor metrikáinak beolvasása](https://github.com/Azure-Samples/monitor-dotnet-metrics-api) a githubon .net-minta használatával.
 
 > [!IMPORTANT]
 > Ez a cikk csak a Azure Relay Hibrid kapcsolatok szolgáltatására vonatkozik, nem a WCF Relay. 
@@ -48,7 +48,7 @@ Minden metrikai érték Azure Monitor percenként lesz elküldve. Az idő részl
 
 ## <a name="connection-metrics"></a>Kapcsolatok metrikái
 
-| Metrika neve | Description |
+| Metrika neve | Leírás |
 | ------------------- | ----------------- |
 | Figyelőkapcsolatokra – sikeres  | Egy adott időszakban Azure Relay sikeres figyelő-kapcsolatok száma. <br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: EntityName|
 |Figyelőkapcsolatokra – vonatkozó ügyfélhibái |A figyelő kapcsolatainak száma a megadott időszakban.<br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: EntityName|
@@ -65,7 +65,7 @@ Minden metrikai érték Azure Monitor percenként lesz elküldve. Az idő részl
 
 ## <a name="memory-usage-metrics"></a>Memóriahasználat mérőszámai
 
-| Metrika neve | Description |
+| Metrika neve | Leírás |
 | ------------------- | ----------------- |
 |BytesTransferred |A megadott időszakon át továbbított bájtok száma.<br/><br/> Egység: bájtok <br/> Összesítés típusa: összesen <br/> Dimenzió: EntityName|
 
@@ -73,16 +73,12 @@ Minden metrikai érték Azure Monitor percenként lesz elküldve. Az idő részl
 
 A Azure Relay a Azure Monitor metrikáinak következő dimenzióit támogatja. Nem kötelező dimenziókat hozzáadni a metrikához. Ha nem ad hozzá dimenziókat, a metrikák a névtér szintjén vannak megadva. 
 
-|Dimenzió neve|Description|
+|Dimenzió neve|Leírás|
 | ------------------- | ----------------- |
 |EntityName| Azure Relay támogatja az üzenetküldési entitásokat a névtérben.|
 
 ## <a name="next-steps"></a>További lépések
 
-Lásd az [Azure monitoring áttekintése](../monitoring-and-diagnostics/monitoring-overview.md)című témakört.
+Lásd az [Azure monitoring áttekintése](../azure-monitor/overview.md)című témakört.
 
 [1]: ./media/relay-metrics-azure-monitor/relay-monitor1.png
-
-
-
-

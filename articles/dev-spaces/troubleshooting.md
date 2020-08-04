@@ -5,12 +5,12 @@ ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: Az Azure dev Spaces engedélyezése és használata során felmerülő gyakori problémák elhárítása és megoldása
 keywords: 'Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s '
-ms.openlocfilehash: 7b97bab7182e382801a57bcf7dd6f325e665438b
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: cd242dc56e4a3215954fbe6703f47e29bd417ea8
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232491"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534396"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Az Azure dev Spaces hibaelhárítása
 
@@ -498,9 +498,9 @@ A vezérlő újratelepítése után telepítse újra a hüvelyeket.
 
 ### <a name="incorrect-rbac-permissions-for-calling-dev-spaces-controller-and-apis"></a>Helytelen RBAC engedélyek a dev Spaces-vezérlő és API-k hívásához
 
-Az Azure dev Spaces-vezérlőhöz hozzáférő felhasználónak hozzáféréssel kell rendelkeznie az AK-fürt rendszergazdai *kubeconfig* olvasásához. Ez az engedély például a [beépített Azure Kubernetes szolgáltatás-fürt rendszergazdai szerepkörében](../aks/control-kubeconfig-access.md#available-cluster-roles-permissions)érhető el. Az Azure dev Spaces-vezérlőhöz hozzáférő felhasználónak a vezérlő *közreműködői* vagy *tulajdonosi* RBAC szerepkörével is rendelkeznie kell. A felhasználó egy AK-fürtre vonatkozó engedélyeinek frissítéséről [itt talál](../aks/control-kubeconfig-access.md#assign-role-permissions-to-a-user-or-group)további információt.
+Az Azure dev Spaces-vezérlőhöz hozzáférő felhasználónak hozzáféréssel kell rendelkeznie az AK-fürt rendszergazdai *kubeconfig* olvasásához. Ez az engedély például a [beépített Azure Kubernetes szolgáltatás-fürt rendszergazdai szerepkörében](../aks/control-kubeconfig-access.md#available-cluster-roles-permissions)érhető el. Az Azure dev Spaces-vezérlőhöz hozzáférő felhasználónak a vezérlő *közreműködői* vagy *tulajdonosi* Azure-szerepkörével is rendelkeznie kell. A felhasználó egy AK-fürtre vonatkozó engedélyeinek frissítéséről [itt talál](../aks/control-kubeconfig-access.md#assign-role-permissions-to-a-user-or-group)további információt.
 
-A felhasználó RBAC szerepkörének frissítése a vezérlőhöz:
+A felhasználó Azure-szerepkörének frissítése a vezérlőhöz:
 
 1. Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 1. Navigáljon a vezérlőt tartalmazó erőforráscsoporthoz, amely általában ugyanaz, mint az AK-fürt.

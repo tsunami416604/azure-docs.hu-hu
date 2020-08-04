@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 07/28/2020
 ms.author: delhan
-ms.openlocfilehash: 61a281e5fa9e8d360b9b6e52cda9c54db49d93d0
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: b57a57f05853b9f8c291dc2ac352db7b1e679260
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406741"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534855"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Az Azure Storage Explorer hibaelhárítási útmutatója
 
@@ -48,7 +48,7 @@ Legalább egy olyan szerepkört hozzá kell rendelnie, amely hozzáférést bizt
 
 Az Azure Storage két hozzáférési réteggel rendelkezik: a felügyelethez és _az_ _adatkezeléshez_ . Az előfizetések és a Storage-fiókok a felügyeleti rétegen keresztül érhetők el. A tárolók, a blobok és az egyéb adatforrások az adatrétegen keresztül érhetők el. Ha például szeretné lekérni a Storage-fiókjainak listáját az Azure-ból, küldjön egy kérelmet a felügyeleti végpontnak. Ha egy fiókban szeretné megtekinteni a blob-tárolók listáját, egy kérést küld a megfelelő szolgáltatási végpontnak.
 
-A RBAC szerepkörei engedélyeket biztosíthatnak a felügyelethez vagy az adatréteghez való hozzáféréshez. Az olvasó szerepkör például csak olvasási hozzáférést biztosít a felügyeleti réteg erőforrásaihoz.
+Az Azure-szerepkörök engedélyeket biztosíthatnak a felügyelethez vagy az adatréteghez való hozzáféréshez. Az olvasó szerepkör például csak olvasási hozzáférést biztosít a felügyeleti réteg erőforrásaihoz.
 
 Szigorúan véve az olvasó szerepkör nem biztosít adatrétegbeli engedélyeket, és nem szükséges az adatréteghez való hozzáféréshez.
 
@@ -405,7 +405,7 @@ Ha a Azure Portal **Megnyitás a Explorerben** gomb nem működik, győződjön 
 * Google Chrome
 * Microsoft Internet Explorer
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha egyik megoldás sem működik, [Nyisson meg egy problémát a githubon](https://github.com/Microsoft/AzureStorageExplorer/issues). Ezt úgy is megteheti, hogy kijelöli a **jelentéssel kapcsolatos problémát a GitHub** gombra a bal alsó sarokban.
 

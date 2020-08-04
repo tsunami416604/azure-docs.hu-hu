@@ -5,14 +5,14 @@ description: Ismerje meg a fürt operátorának ajánlott eljárásait a speciá
 services: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.openlocfilehash: 5b003c9f0c3b47779bd7da92fb64c57830911fae
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: b8077a772d6fdc4b911fabdfa893a15dcd7615db
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86077847"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87530061"
 ---
-# <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Ajánlott eljárások az Azure Kubernetes Service (ak) speciális ütemező funkcióiról
+# <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Ajánlott eljárások a Scheduler speciális funkcióihoz az Azure Kubernetes Service (AKS) szolgáltatásban
 
 A fürtök Azure Kubernetes szolgáltatásban (ak) való kezelése során gyakran kell elkülönítenie a csapatokat és a munkaterheléseket. A Kubernetes Scheduler olyan speciális funkciókat biztosít, amelyekkel szabályozható, hogy mely hüvelyek ütemezhetők bizonyos csomópontokon, illetve hogyan lehet a több-Pod alkalmazásokat a fürtön belül elosztani. 
 
@@ -71,8 +71,6 @@ A hüvely üzembe helyezésekor, például a használatával a `kubectl apply -f
 
 Ha a szennyező adatait alkalmazza, együttműködik az alkalmazás-fejlesztővel és a tulajdonosokkal, hogy meghatározza a szükséges megtartásokat az üzemelő példányokban.
 
-További információ a szennyező adatokról és a toleranciaekről: a [romlottságok és a tolerálás alkalmazása][k8s-taints-tolerations].
-
 További információ arról, hogyan használható több Node-készlet az AK-ban: [több csomópontos készlet létrehozása és kezelése a fürthöz az AK-ban][use-multiple-node-pools].
 
 ### <a name="behavior-of-taints-and-tolerations-in-aks"></a>A megfertőzés és a tolerancia viselkedése az AK-ban
@@ -80,6 +78,7 @@ További információ arról, hogyan használható több Node-készlet az AK-ban
 Ha AK-ban frissít egy csomópont-készletet, a szennyező elem és a tolerálás egy meghatározott mintát követ, amelyet az új csomópontokra alkalmaz:
 
 - **Virtuálisgép-méretezési csoportokat használó alapértelmezett fürtök**
+  - A nodepool az AK API-ból [fertőzheti][taint-node-pool] meg, hogy az újonnan kibővített csomópontok megkapják a csomópontok megadott API-ját.
   - Tegyük fel, hogy van egy két csomópontos *csomópont1* és *Csomópont2*. Frissíti a csomópont-készletet.
   - Két további csomópont jön létre, *csomópont3* és *csomópont4*, és a rendszer átadja a megfertőzt állapotokat.
   - A rendszer törli az eredeti *csomópont1* és *Csomópont2* .
@@ -198,3 +197,4 @@ Ez a cikk a speciális Kubernetes Scheduler-funkciókra összpontosít. Az AK-be
 [aks-best-practices-cluster-isolation]: operator-best-practices-cluster-isolation.md
 [aks-best-practices-identity]: operator-best-practices-identity.md
 [use-multiple-node-pools]: use-multiple-node-pools.md
+[taint-node-pool]: use-multiple-node-pools.md#specify-a-taint-label-or-tag-for-a-node-pool

@@ -3,12 +3,12 @@ title: Erőforrások rendszerezése felügyeleti csoportokkal – Azure-irányí
 description: Megismerheti a felügyeleti csoportokat és azok használatának módját, valamint a hozzájuk tartozó engedélyek működését.
 ms.date: 07/06/2020
 ms.topic: overview
-ms.openlocfilehash: 7c6d5d752886f47da1321289696feb4261abe7e5
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 787658cebcb8345edd616bcdde485883ea43e8dc
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87447108"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87529347"
 ---
 # <a name="what-are-azure-management-groups"></a>Mik azok az Azure felügyeleti csoportok?
 
@@ -38,7 +38,7 @@ A felügyeleti csoportok használatának másik esete, amikor egyszerre több el
 
 ## <a name="root-management-group-for-each-directory"></a>Az egyes címtárak gyökérszintű felügyeleti csoportja
 
-Minden címtárhoz tartozik egy legfelső szintű, vagy más néven gyökérszintű felügyeleti csoport. Ez a gyökérszintű felügyeleti csoport úgy épül be a hierarchiába, hogy minden felügyeleti csoport és előfizetés fölött legyen. Ez a gyökérszintű felügyeleti csoport lehetővé teszi, hogy a globális házirendek és az Azure-szerepkör-hozzárendelések a címtár szintjén legyenek alkalmazhatók. Az [Azure AD globális rendszergazdájának először emelnie kell a jogosultsági szintjét](../../role-based-access-control/elevate-access-global-admin.md), hogy a Felhasználói hozzáférés adminisztrátora szerepkörrel rendelkezzen a gyökérszintű csoport esetében. A jogosultsági szint emelését követően a rendszergazda bármilyen RBAC-szerepkört hozzárendelhet a címtár felhasználóihoz vagy csoportjaihoz a hierarchia kezelése érdekében. Rendszergazdaként hozzárendelheti saját fiókját a gyökérszintű felügyeleti csoport tulajdonosaként.
+Minden címtárhoz tartozik egy legfelső szintű, vagy más néven gyökérszintű felügyeleti csoport. Ez a gyökérszintű felügyeleti csoport úgy épül be a hierarchiába, hogy minden felügyeleti csoport és előfizetés fölött legyen. Ez a gyökérszintű felügyeleti csoport lehetővé teszi, hogy a globális házirendek és az Azure-szerepkör-hozzárendelések a címtár szintjén legyenek alkalmazhatók. Az [Azure AD globális rendszergazdájának először emelnie kell a jogosultsági szintjét](../../role-based-access-control/elevate-access-global-admin.md), hogy a Felhasználói hozzáférés adminisztrátora szerepkörrel rendelkezzen a gyökérszintű csoport esetében. A hozzáférés megemelése után a rendszergazda bármely Azure-szerepkört hozzárendelhet más címtár-felhasználókhoz vagy-csoportokhoz a hierarchia kezeléséhez. Rendszergazdaként hozzárendelheti saját fiókját a gyökérszintű felügyeleti csoport tulajdonosaként.
 
 ### <a name="important-facts-about-the-root-management-group"></a>A gyökérszintű felügyeleti csoport fontosabb jellemzői
 
@@ -50,7 +50,7 @@ Minden címtárhoz tartozik egy legfelső szintű, vagy más néven gyökérszin
   - Az újonnan létrehozott előfizetések alapértelmezés szerint a gyökérszintű felügyeleti csoporthoz tartoznak.
 - A gyökérszintű felügyeleti csoport az összes Azure-ügyfél számára látható, de nem mindegyikük rendelkezik hozzáféréssel a kezeléséhez.
   - Bárki, aki hozzáféréssel rendelkezik egy adott előfizetéshez, láthatja, hogy az hol helyezkedik el a hierarchiában.  
-  - Senki nem kap alapértelmezés szerint hozzáférést a gyökérszintű felügyeleti csoporthoz. Kizárólag az Azure AD globális rendszergazdái emelhetik meg jogosultsági szintjüket, hogy hozzáférést kapjanak. Miután hozzáférnek a legfelső szintű felügyeleti csoporthoz, a globális rendszergazdák bármilyen RBAC szerepkört rendelhetnek más felhasználókhoz a felügyelethez  
+  - Senki nem kap alapértelmezés szerint hozzáférést a gyökérszintű felügyeleti csoporthoz. Kizárólag az Azure AD globális rendszergazdái emelhetik meg jogosultsági szintjüket, hogy hozzáférést kapjanak. Miután hozzáférnek a legfelső szintű felügyeleti csoporthoz, a globális rendszergazdák bármilyen Azure-szerepkört hozzárendelhet más felhasználóknak a felügyelethez  
     Ez.
 - Az SDK-ban a gyökérszintű felügyeleti csoport vagy a "bérlői gyökér" felügyeleti csoportként működik.
 
@@ -83,11 +83,11 @@ Ha kérdése van a visszatöltési folyamatot illetően, lépjen kapcsolatba vel
 ## <a name="management-group-access"></a>Hozzáférés a felügyeleti csoportokhoz
 
 Az Azure felügyeleti csoportok támogatják az [Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC)](../../role-based-access-control/overview.md) minden erőforrás-hozzáféréshez és szerepkör-definícióhoz.
-Ezeket az engedélyeket a hierarchiában található összes gyermek erőforrás örökli. Bármely RBAC-szerepkör hozzárendelhető egy olyan felügyeleti csoporthoz, amely örökölni fogja a hierarchiát az erőforrásokhoz. A virtuálisgép-közreműködői RBAC-szerepkör például hozzárendelhető a felügyeleti csoporthoz. Ez a szerepkör nem végez műveletet a felügyeleti csoporton, de a csoport alá tartozó összes virtuális gép örökli.
+Ezeket az engedélyeket a hierarchiában található összes gyermek erőforrás örökli. Bármely Azure-szerepkör hozzárendelhető egy felügyeleti csoporthoz, amely örökölni fogja a hierarchiát az erőforrásokhoz. Az Azure-szerepkör virtuálisgép-közreműködője például hozzárendelhető egy felügyeleti csoporthoz. Ez a szerepkör nem végez műveletet a felügyeleti csoporton, de a csoport alá tartozó összes virtuális gép örökli.
 
 Az alábbi ábrán a felügyeleti csoportokkal kapcsolatos szerepkörök és támogatott műveletek listája látható.
 
-| RBAC-szerepkör neve             | Létrehozás | Átnevezés | Áthelyezése\*\* | Törlés | Hozzáférés hozzárendelése | Szabályzat hozzárendelése | Olvasás  |
+| Azure-szerepkör neve             | Létrehozás | Átnevezés | Áthelyezése\*\* | Törlés | Hozzáférés hozzárendelése | Szabályzat hozzárendelése | Olvasás  |
 |:-------------------------- |:------:|:------:|:--------:|:------:|:-------------:| :------------:|:-----:|
 |Tulajdonos                       | X      | X      | X        | X      | X             | X             | X     |
 |Közreműködő                 | X      | X      | X        | X      |               |               | X     |

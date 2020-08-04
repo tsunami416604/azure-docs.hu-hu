@@ -4,12 +4,12 @@ description: Ebből a cikkből megtudhatja, hogyan állíthatja helyre a fájlok
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.custom: references_regions
-ms.openlocfilehash: 2488bbded1b4d55f3c4cf21c63e9fcb90e9bfb4f
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: e12669609b21d23b775af27f95528c4b42e95e81
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475056"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533543"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Fájlok helyreállítása az Azure-beli virtuális gépek biztonsági másolatából
 
@@ -24,13 +24,13 @@ Azure Backup lehetővé teszi az Azure-beli [virtuális gépek (VM-EK) és lemez
 
 A fájlok vagy mappák helyreállítási pontról történő visszaállításához nyissa meg a virtuális gépet, és válassza ki a kívánt helyreállítási pontot.
 
-1. Jelentkezzen be a [Azure Portalba](https://portal.Azure.com) , és a bal oldali ablaktáblán kattintson a **virtuális gépek**elemre. A virtuális gépek listájából válassza ki a virtuális gépet a virtuális gép irányítópultjának megnyitásához.
+1. Jelentkezzen be a [Azure Portalba](https://portal.Azure.com) , és a bal oldali ablaktáblán válassza a **virtuális gépek**lehetőséget. A virtuális gépek listájából válassza ki a virtuális gépet a virtuális gép irányítópultjának megnyitásához.
 
-2. A virtuális gép menüjében kattintson a **biztonsági mentés** elemre a biztonsági mentés irányítópultjának megnyitásához.
+2. A virtuális gép menüjében válassza a **biztonsági** mentés lehetőséget a biztonsági mentés irányítópultjának megnyitásához.
 
     ![Recovery Services tároló biztonsági másolati elemeinek megnyitása](./media/backup-azure-restore-files-from-vm/open-vault-for-vm.png)
 
-3. A biztonsági mentés irányítópult menüjében kattintson a **fájl-helyreállítás**elemre.
+3. A biztonsági mentés irányítópult menüjében válassza a **fájl-helyreállítás**lehetőséget.
 
     ![Fájl helyreállítása gomb](./media/backup-azure-restore-files-from-vm/vm-backup-menu-file-recovery-button.png)
 
@@ -40,7 +40,7 @@ A fájlok vagy mappák helyreállítási pontról történő visszaállításáh
 
 4. A **helyreállítási pont kiválasztása** legördülő menüben válassza ki a kívánt fájlokat birtokló helyreállítási pontot. Alapértelmezés szerint a legújabb helyreállítási pont már ki van választva.
 
-5. A fájlok helyreállítási pontról történő másolásához használt szoftver letöltéséhez kattintson a **végrehajtható fájl letöltése** (Windows Azure-beli virtuális gépek esetén) vagy a **parancsfájl letöltése** (Linux Azure-beli virtuális gépek esetén a Python-szkript létrehozása) elemre.
+5. A fájlok helyreállítási pontról történő másolásához használt szoftver letöltéséhez válassza a **végrehajtható fájl letöltése** (Windows Azure-beli virtuális gépek esetén) vagy a **parancsfájl letöltése** (Linux Azure-beli virtuális gépekhez, a Python-szkriptek létrehozása) lehetőséget.
 
     ![Generált jelszó](./media/backup-azure-restore-files-from-vm/download-executable.png)
 
@@ -50,7 +50,7 @@ A fájlok vagy mappák helyreállítási pontról történő visszaállításáh
 
     Ha a végrehajtható fájlt vagy a parancsfájlt rendszergazdaként szeretné futtatni, akkor azt javasoljuk, hogy mentse a letöltött fájlt a számítógépre.
 
-6. A végrehajtható fájl vagy a szkript jelszavas védelemmel van ellátva, és jelszót igényel. A **Fájl-helyreállítási** menüben kattintson a Másolás gombra a jelszó memóriába való betöltéséhez.
+6. A végrehajtható fájl vagy a szkript jelszavas védelemmel van ellátva, és jelszót igényel. A **Fájl-helyreállítási** menüben a Másolás gombra kattintva töltse be a jelszót a memóriába.
 
     ![Generált jelszó](./media/backup-azure-restore-files-from-vm/generated-pswd.png)
 
@@ -78,7 +78,7 @@ A Linux rendszerben a helyreállítási pont kötetei ahhoz a mappához vannak c
 
 ## <a name="closing-the-connection"></a>A kapcsolatok bezárása
 
-A fájlok azonosítása és a helyi tárolóhelyre való másolása után távolítsa el (vagy válassza le) a további meghajtókat. A meghajtók leválasztásához a Azure Portal **Fájl-helyreállítási** menüjében kattintson a **lemezek leválasztása**elemre.
+A fájlok azonosítása és a helyi tárolóhelyre való másolása után távolítsa el (vagy válassza le) a további meghajtókat. A meghajtók leválasztásához a Azure Portal **Fájl-helyreállítási** menüjében válassza a **lemezek**leválasztása lehetőséget.
 
 ![Lemezek leválasztása](./media/backup-azure-restore-files-from-vm/unmount-disks3.png)
 
@@ -146,7 +146,7 @@ A kötetek csoportjai neveinek listázása:
 pvs -o +vguuid
 ```
 
-Ez a parancs felsorolja az összes fizikai kötetet (beleértve a parancsfájl futtatása előtt találhatókat is), a hozzájuk tartozó csoportok nevét és a kötet csoport egyedi felhasználói azonosítóit (UUID). Alább látható a parancs mintájának kimenete.
+Ez a parancs felsorolja az összes fizikai kötetet (beleértve a parancsfájl futtatása előtt is), a hozzájuk tartozó kötetek csoportjának nevét és a kötet csoport egyedi felhasználói azonosítóit (UUID). Alább látható a parancs mintájának kimenete.
 
 ```bash
 PV         VG        Fmt  Attr PSize   PFree    VG UUID
@@ -162,11 +162,11 @@ PV         VG        Fmt  Attr PSize   PFree    VG UUID
   /dev/sdd   datavg_db lvm2 a--   <1.50t <396.50g dhWL1i-lcZS-KPLI-o7qP-AN2n-y2f8-A1fWqN
 ```
 
-Az 1. oszlop (PV) megjeleníti a fizikai kötetet, az azt követő oszlopok a megfelelő kötet csoport nevét, formátumát, attribútumait, méretét, szabad területét és a kötet csoport egyedi AZONOSÍTÓját jelenítik meg. A parancs kimenete az összes fizikai kötetet megjeleníti. Tekintse át a parancsfájl kimenetét, és azonosítsa a biztonsági mentéshez kapcsolódó köteteket. A fenti példában a szkript kimenete/dev/SDF és/dev/SDD. Így a datavg_db kötet csoport a parancsfájlhoz tartozik, és a Appvg_new kötet csoport a géphez tartozik. Az utolsó elképzelés az, hogy egy egyedi mennyiségi csoport nevének 1 egyedi AZONOSÍTÓval kell rendelkeznie.
+Az első oszlop (PV) megjeleníti a fizikai kötetet, az azt követő oszlopok a megfelelő kötet csoport nevét, formátumát, attribútumait, méretét, szabad területét és a kötet egyedi AZONOSÍTÓját jelenítik meg. A parancs kimenete az összes fizikai kötetet megjeleníti. Tekintse át a parancsfájl kimenetét, és azonosítsa a biztonsági mentéshez kapcsolódó köteteket. A fenti példában a szkript kimenete/dev/SDF és/dev/SDD. Így a *datavg_db* kötet csoport a parancsfájlhoz tartozik, és a *Appvg_new* kötet csoport a géphez tartozik. Az utolsó ötlet az, hogy egy egyedi kötet csoport nevének egy egyedi AZONOSÍTÓval kell rendelkeznie.
 
 ###### <a name="duplicate-volume-groups"></a>Duplikált kötetek csoportjai
 
-Vannak olyan forgatókönyvek, ahol a kötetek nevei a szkript futtatása után 2 UUID-t tartalmazhatnak. Ez azt jelenti, hogy a kötet azon neve, amelyben a parancsfájlt futtatja, és a biztonsági másolatban szereplő virtuális gépen ugyanazok vannak. Ezt követően át kell neveznie a virtuális gépek biztonsági másolatának kötetei csoportot. Vessen egy pillantást az alábbi példára.
+Vannak olyan forgatókönyvek, ahol a kötetek nevei a szkript futtatása után 2 UUID-t tartalmazhatnak. Ez azt jelenti, hogy a kötet azon neve, amelyben a parancsfájlt futtatják, és a biztonsági másolatban szereplő virtuális gépen ugyanazok vannak. Ezt követően át kell neveznie a virtuális gépek biztonsági másolatának kötetei csoportot. Vessen egy pillantást az alábbi példára.
 
 ```bash
 PV         VG        Fmt  Attr PSize   PFree    VG UUID
@@ -184,9 +184,9 @@ PV         VG        Fmt  Attr PSize   PFree    VG UUID
   /dev/sdm2  rootvg    lvm2 a--  194.57g  127.57g efohjX-KUGB-ETaH-4JKB-MieG-EGOc-XcfLCt
 ```
 
-A szkript kimenete a/dev/SDG, a/dev/SDH, a/dev/sdm2 és a csatolt módon jelenik meg. Így a megfelelő VG-nevek Appvg_new és rootvg. De ugyanezek a nevek is szerepelnek a gép VG listájában. Ellenőrizzük, hogy 1 a VG neve 2 UUID-val rendelkezik-e.
+A szkript kimenete a/dev/SDG, a/dev/SDH, a/dev/sdm2 és a csatolt módon jelenik meg. Így a megfelelő VG-nevek Appvg_new és rootvg. De ugyanezek a nevek is szerepelnek a gép VG listájában. Ellenőrizheti, hogy egy VG-név két UUID-val rendelkezik-e.
 
-Most átnevezni kell a VG-neveket a parancsfájl-alapú kötetek számára, azaz:/dev/SDG,/dev/SDH,/dev/sdm2. A kötet csoport átnevezéséhez használja a következő parancsot.
+Most át kell neveznie a parancsfájl-alapú kötetek VG-nevét, például:/dev/SDG,/dev/SDH,/dev/sdm2. A kötet csoport átnevezéséhez használja a következő parancsot.
 
 ```bash
 vgimportclone -n rootvg_new /dev/sdm2
@@ -343,7 +343,7 @@ Mivel a fájl-helyreállítási folyamat az összes lemezt csatlakoztatja a bizt
     - Node. Conn [0]. Timeo. noop_out_timeout = 5 – Node. Conn [0]. Timeo. noop_out_timeout = 30
 - A fenti módosítás után futtassa újra a parancsfájlt. Ezekkel a változásokkal nagyon valószínű, hogy a fájl helyreállítása sikeres lesz.
 - Minden alkalommal, amikor a felhasználó letölt egy parancsfájlt, Azure Backup kezdeményezi a letöltéshez a helyreállítási pont előkészítésének folyamatát. A nagyméretű lemezek esetében ez a folyamat jelentős időt vesz igénybe. Ha egymást követő kérések fordultak elő, a cél-előkészítés egy letöltés spirálba kerül. Ezért javasoljuk, hogy töltsön le egy parancsfájlt a portálról, a PowerShellből vagy a CLI-ből, várjon 20-30 percet (egy heurisztikus), majd futtassa. Ez idő alatt a cél várhatóan készen áll a parancsfájlból való kapcsolódásra.
-- A fájl helyreállítása után lépjen vissza a portálra, és kattintson a **lemezek leválasztása** lehetőségre a helyreállítási pontokhoz, ahol nem tudta csatlakoztatni a köteteket. Ez a lépés lényegében törli a meglévő folyamatokat/munkameneteket, és növeli a helyreállítás esélyét.
+- A fájlok helyreállítása után lépjen vissza a portálra, és válassza a **lemezek leválasztása** lehetőséget a helyreállítási pontokhoz, ahol nem tudta csatlakoztatni a köteteket. Ez a lépés lényegében törli a meglévő folyamatokat/munkameneteket, és növeli a helyreállítás esélyét.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
@@ -357,7 +357,7 @@ Ha problémák merülnek fel a virtuális gépek fájljainak helyreállítása k
 | Azon a gépen, amelyen az exe fut: az új kötetek nem vannak leválasztva a Leválasztás gombra kattintás után | A gépen lévő iSCSI-kezdeményező nem válaszol, és nem frissíti a megcélzott kapcsolatát, és megtartja a gyorsítótárat. |  A **Leválasztás**gombra kattintva várjon néhány percet. Ha az új kötetek nem vannak leválasztva, böngésszen végig az összes köteten. Az összes kötet böngészésével a kezdeményező frissíti a kapcsolódást, és a kötet le van választva, és a lemez nem érhető el.|
 | Exe-kimenet: a parancsfájl sikeresen fut, de az "új kötetek csatolva" nem jelenik meg a parancsfájl kimenetén. |    Ez egy átmeneti hiba    | A kötetek már csatolva lesznek. Nyissa meg a Explorert a tallózáshoz. Ha ugyanazt a gépet használja a parancsfájlok futtatásához, érdemes megfontolni a gép újraindítását, és a listát a következő exe-futtatásokban kell megjeleníteni. |
 | Linux-specifikus: nem lehet megtekinteni a kívánt köteteket | Előfordulhat, hogy a parancsfájlt futtató gép operációs rendszere nem ismeri fel a védett virtuális gép mögöttes fájlrendszerét | Győződjön meg arról, hogy a helyreállítási pont összeomlás-konzisztens vagy fájl-konzisztens. Ha a fájl konzisztens, futtassa a parancsfájlt egy másik gépen, amelynek operációs rendszere felismeri a védett virtuális gép fájlrendszerét. |
-| Windows-specifikus: nem lehet megtekinteni a kívánt köteteket | Lehet, hogy a lemezek csatlakoztatva lettek, de a kötetek nincsenek konfigurálva | A Lemezkezelés képernyőn azonosítsa a helyreállítási ponthoz kapcsolódó további lemezeket. Ha a lemezek bármelyike offline állapotban van, próbálja meg online állapotba helyezni, ha a jobb gombbal a lemezre kattint, és az **online**lehetőségre kattint.|
+| Windows-specifikus: nem lehet megtekinteni a kívánt köteteket | Lehet, hogy a lemezek csatlakoztatva lettek, de a kötetek nincsenek konfigurálva | A Lemezkezelés képernyőn azonosítsa a helyreállítási ponthoz kapcsolódó további lemezeket. Ha a lemezek bármelyike offline állapotban van, próbálja meg online állapotba helyezni, majd kattintson a jobb gombbal a lemezre, és válassza az **online**lehetőséget.|
 
 ## <a name="security"></a>Biztonság
 
@@ -383,7 +383,7 @@ A generált parancsfájl a Azure Backup szolgáltatáshoz tartozó hivatalos Mic
 
 Csak egy rendszergazda futtathatja a szkriptet, és emelt szintű módban kell futnia. A parancsfájl csak előre létrehozott lépéseket hajt végre, és nem fogadja el a külső forrásból érkező adatokat.
 
-A parancsfájl futtatásához jelszó szükséges, amely csak a Azure Portal vagy a PowerShell/CLI parancsfájl generálásának időpontjában jelenik meg a felhatalmazott felhasználó számára. Ezzel biztosíthatja, hogy a parancsfájlt letöltő jogosult felhasználó a parancsfájl futtatásához is felelős legyen.
+A parancsfájl futtatásához jelszó szükséges, amely csak a Azure Portal vagy a PowerShell/CLI parancsfájl generálásának időpontjában jelenik meg a felhatalmazott felhasználó számára. Ezzel biztosíthatja, hogy a parancsfájlt futtató jogosult felhasználó a parancsfájl futtatásához is felelős legyen.
 
 #### <a name="browse-files-and-folders"></a>Fájlok és mappák tallózása
 

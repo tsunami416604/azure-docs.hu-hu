@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: yegu
 ms.custom: mvc, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 3cd8b18358128c8566c0cde668c084a22dd261d0
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 16a912b2530d567a11a81fc10e9e09eee572e7e6
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320697"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87528828"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-java"></a>Gyors útmutató: az Azure cache használata a Redis Javával
 
@@ -30,12 +30,24 @@ Ebben a rövid útmutatóban beépíti az Azure cache-t a Redis egy Java-alkalma
 
 [!INCLUDE [redis-cache-access-keys](../../includes/redis-cache-access-keys.md)]
 
-Adjon hozzá környezeti változókat a **GAZDAGÉP NEVE** és **Elsődleges** hozzáférési kulcs megadásához. A kód ezen változóit fogja használni ahelyett, hogy közvetlenül a kódban tárolná a bizalmas információkat.
+## <a name="setting-up-the-working-environment"></a>A munkahelyi környezet beállítása 
+
+Az operációs rendszertől függően adja hozzá a környezeti változókat az **állomásnévhez** és az **elsődleges elérési kulcshoz**. Nyisson meg egy parancssort vagy egy terminál-ablakot, és állítsa be a következő értékeket:
 
 ```CMD 
-set REDISCACHEHOSTNAME=contosoCache.redis.cache.windows.net
-set REDISCACHEKEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+set REDISCACHEHOSTNAME=<YOUR_HOST_NAME>.redis.cache.windows.net
+set REDISCACHEKEY=<YOUR_PRIMARY_ACCESS_KEY>
 ```
+
+```bash
+export REDISCACHEHOSTNAME=<YOUR_HOST_NAME>.redis.cache.windows.net
+export REDISCACHEKEY=<YOUR_PRIMARY_ACCESS_KEY>
+```
+
+Cserélje le a helyőrzőket a következő értékekre:
+
+- `<YOUR_HOST_NAME>`: A DNS-állomásnév, amely az Azure-portál Redis-erőforrásának *Tulajdonságok* részéből származik.
+- `<YOUR_PRIMARY_ACCESS_KEY>`: Az Azure Portal Redis-erőforrásához tartozó Azure cache *hozzáférési kulcsok* szakaszának elsődleges hozzáférési kulcsa.
 
 ## <a name="create-a-new-java-app"></a>Új Java-alkalmazás létrehozása
 

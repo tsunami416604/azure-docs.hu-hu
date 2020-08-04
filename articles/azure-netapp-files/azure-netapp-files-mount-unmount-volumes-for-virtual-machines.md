@@ -7,12 +7,12 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.topic: how-to
 ms.date: 07/06/2020
-ms.openlocfilehash: 4bfd90be2a469c5ab94172769729095069f53cd7
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 4ad3800748330d5c3a6a32c6c0824bc72a05d0ef
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045654"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533087"
 ---
 # <a name="mount-or-unmount-a-volume-for-windows-or-linux-virtual-machines"></a>Kötet Windows vagy Linux rendszerű virtuális gépekhez való csatlakoztatása és leválasztása 
 
@@ -43,9 +43,12 @@ Szükség szerint csatlakoztathat vagy leválaszthat Windows-vagy Linux-alapú v
     a. Először csatlakoztassa a kötetet egy UNIX vagy Linux rendszerű virtuális gépre.  
     b. Futtasson egy `chmod 777` vagy `chmod 775` parancsot a köteten.  
     c. Csatlakoztassa a kötetet a Windows rendszer NFS-ügyfelén keresztül.
+    
+5. Ha NFS Kerberos-kötetet szeretne csatlakoztatni, további részletekért tekintse meg a [nfsv 4.1 Kerberos-titkosítás konfigurálása](configure-kerberos-encryption.md) című témakört. 
 
 ## <a name="next-steps"></a>További lépések
 
 * [Az NFSv 4.1 alapértelmezett tartományának konfigurálása az Azure NetApp Fileshoz](azure-netapp-files-configure-nfsv41-domain.md)
 * [NFS – gyakori kérdések](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-faqs#nfs-faqs)
 * [Hálózati fájlrendszer – áttekintés](https://docs.microsoft.com/windows-server/storage/nfs/nfs-overview)
+* [NFS Kerberos-kötet csatlakoztatása](configure-kerberos-encryption.md#kerberos_mount)

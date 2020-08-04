@@ -3,12 +3,12 @@ title: Összetett lekérdezési példák
 description: Az Azure Resource Graph használatával speciális lekérdezéseket futtathat, beleértve az oszlopok használatát, a használt címkék felsorolását és az erőforrások reguláris kifejezésekkel való egyeztetését.
 ms.date: 07/14/2020
 ms.topic: sample
-ms.openlocfilehash: 38013be583c74e968160cb7ec3a4dd32ede213b0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3277d904ebf955c9f924e60dbf6df12eac138a15
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087492"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534787"
 ---
 # <a name="advanced-resource-graph-query-samples"></a>Speciális Resource Graph lekérdezési minták
 
@@ -30,7 +30,7 @@ A következő speciális lekérdezéseken vezetjük végig:
 - [Két lekérdezés eredményeinek egyetlen eredménybe való egyesítése](#unionresults)
 - [Bérlői és előfizetési nevek belefoglalása a DisplayName paraméterrel](#displaynames)
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free).
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="language-support"></a>Nyelvi támogatás
 
@@ -322,7 +322,7 @@ Search-AzGraph -Query "Resources | where type =~ 'microsoft.sql/servers/database
 
 ## <a name="list-virtual-machines-with-their-network-interface-and-public-ip"></a><a name="join-vmpip"></a>A hálózati adapterrel és a nyilvános IP-címmel rendelkező virtuális gépek listázása
 
-A lekérdezés két **leftouter** `join` parancsot használ a virtuális gépek, a hozzájuk kapcsolódó hálózati adapterek és az ezekhez a hálózati adapterekhez kapcsolódó nyilvános IP-címek egyesítéséhez.
+Ez a lekérdezés két **leftouter** `join` parancsot használ a Resource Manager-alapú üzemi modellel létrehozott virtuális gépek és a hozzájuk kapcsolódó hálózati adapterek, valamint az ezekhez a hálózati adapterekhez kapcsolódó nyilvános IP-címek összekapcsolásához.
 
 ```kusto
 Resources

@@ -6,12 +6,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 07/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: c7051cca9029283b150eea0519aa7432d6a9c937
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 21742d2db6a7fde69568e5fd1e5eda98542faa47
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420481"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87528668"
 ---
 # <a name="manage-role-permissions-and-security"></a>Szerepköri engedélyek és biztonság kezelése
 
@@ -19,7 +19,7 @@ A Szerepköralapú hozzáférés-vezérlés (RBAC) hozzáférés-vezérlést biz
 
 ## <a name="roles-in-automation-accounts"></a>Az Automation-fiókok szerepkörei
 
-Az Azure Automationben a hozzáférés biztosításához a megfelelő RBAC-szerepkörök rendelhetők az Automation-fiók tartományában lévő felhasználókhoz, csoportokhoz és alkalmazásokhoz. Alább láthatók az Automation-fiók által támogatott beépített szerepkörök:
+Azure Automation a hozzáférést a megfelelő Azure-szerepkörnek a felhasználók, csoportok és alkalmazások számára az Automation-fiók hatókörében való hozzárendelésével lehet megadni. Alább láthatók az Automation-fiók által támogatott beépített szerepkörök:
 
 | **Szerepkör** | **Leírás** |
 |:--- |:--- |
@@ -319,7 +319,7 @@ Eltávolíthat egy olyan felhasználó hozzáférési engedélyét, aki nem keze
 
 Az Automation-fiókokhoz a következő [Azure PowerShell parancsmagok](../role-based-access-control/role-assignments-powershell.md)használatával is konfigurálhat szerepköralapú hozzáférést:
 
-A [Get-AzRoleDefinition](/powershell/module/Az.Resources/Get-AzRoleDefinition?view=azps-3.7.0) felsorolja a Azure Active Directoryban elérhető összes RBAC-szerepkört. Ezt a parancsmagot használhatja a `Name` paraméterrel az adott szerepkör által végrehajtható összes művelet listázásához.
+A [Get-AzRoleDefinition](/powershell/module/Az.Resources/Get-AzRoleDefinition?view=azps-3.7.0) felsorolja a Azure Active Directoryban elérhető összes Azure-szerepkört. Ezt a parancsmagot használhatja a `Name` paraméterrel az adott szerepkör által végrehajtható összes művelet listázásához.
 
 ```azurepowershell-interactive
 Get-AzRoleDefinition -Name 'Automation Operator'
@@ -431,7 +431,7 @@ Ha a Runbook hatókörében az Automation-operátori szerepkörhöz hozzárendel
 
 ![Csak az indításhoz van hozzáférése](media/automation-role-based-access-control/automation-only-start.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További PowerShell-RBAC a következő témakörben talál: [RBAC kezelése a Azure PowerShell](../role-based-access-control/role-assignments-powershell.md)használatával.
 * A runbookok típusaival kapcsolatos részletekért lásd: [Azure Automation runbook-típusok](automation-runbook-types.md).

@@ -1,5 +1,5 @@
 ---
-title: A Azure Portal használata RBAC-szerepkör hozzárendeléséhez adathozzáféréshez
+title: Azure-szerepkör kiosztása az adateléréshez a Azure Portal használatával
 titleSuffix: Azure Storage
 description: Megtudhatja, hogyan rendelhet hozzá engedélyeket egy Azure Active Directory rendszerbiztonsági tag számára az Azure Portal segítségével szerepköralapú hozzáférés-vezérléssel (RBAC). Az Azure Storage támogatja az Azure AD-n keresztül történő hitelesítéshez használható beépített és egyéni Azure-szerepköröket.
 services: storage
@@ -10,22 +10,22 @@ ms.date: 07/16/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 28cb140293d449876cc05e3e5f9e59a04b8396e0
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 7b68744ec93c5c6ee006992285dc62698aff1476
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423710"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534158"
 ---
-# <a name="use-the-azure-portal-to-assign-an-rbac-role-for-access-to-blob-and-queue-data"></a>Az Azure Portal használata a blob- és üzenetsoradatok elérésére szolgáló RBAC-szerepkör hozzárendeléséhez
+# <a name="use-the-azure-portal-to-assign-an-azure-role-for-access-to-blob-and-queue-data"></a>A Azure Portal használata Azure-szerepkörök hozzárendeléséhez a blob-és üzenetsor-adat eléréséhez
 
 Azure Active Directory (Azure AD) a [szerepköralapú hozzáférés-vezérlés (RBAC)](../../role-based-access-control/overview.md)segítségével engedélyezi a hozzáférési jogokat a biztonságos erőforrásokhoz. Az Azure Storage egy beépített Azure-beli szerepkört határoz meg, amely magában foglalja a blob-vagy üzenetsor-adateléréshez használt engedélyek közös készleteit.
 
-Ha egy Azure AD-rendszerbiztonsági tag egy RBAC-szerepkört rendel hozzá, az Azure hozzáférést biztosít ezen rendszerbiztonsági tag erőforrásaihoz. A hozzáférés hatóköre az előfizetés, az erőforráscsoport, a Storage-fiók vagy egy adott tároló vagy várólista szintjére is kiterjed. Az Azure AD rendszerbiztonsági tag lehet egy felhasználó, egy csoport, egy egyszerű alkalmazás vagy egy [felügyelt identitás az Azure-erőforrásokhoz](../../active-directory/managed-identities-azure-resources/overview.md).
+Ha az Azure-szerepköröket egy Azure AD-rendszerbiztonsági tag számára rendeli hozzá, az Azure hozzáférést biztosít az adott rendszerbiztonsági tag erőforrásaihoz. A hozzáférés hatóköre az előfizetés, az erőforráscsoport, a Storage-fiók vagy egy adott tároló vagy várólista szintjére is kiterjed. Az Azure AD rendszerbiztonsági tag lehet egy felhasználó, egy csoport, egy egyszerű alkalmazás vagy egy [felügyelt identitás az Azure-erőforrásokhoz](../../active-directory/managed-identities-azure-resources/overview.md).
 
-Ez a cikk azt ismerteti, hogyan lehet a Azure Portal használatával hozzárendelni a RBAC-szerepköröket. A Azure Portal egyszerű felületet biztosít a RBAC-szerepkörök hozzárendeléséhez és a tárolási erőforrásokhoz való hozzáférés kezeléséhez. Az Azure parancssori eszközei vagy az Azure Storage Management API-k segítségével RBAC-szerepköröket is hozzárendelhet a blob-és üzenetsor-erőforrásokhoz. További információ a tárolási erőforrások RBAC szerepköreiről: az [Azure-blobok és-várólisták hozzáférésének hitelesítése Azure Active Directory használatával](storage-auth-aad.md).
+Ez a cikk a Azure Portal Azure-szerepkörök hozzárendelésére való használatát ismerteti. A Azure Portal egy egyszerű felületet biztosít az Azure-szerepkörök hozzárendeléséhez és a tárolási erőforrásokhoz való hozzáférés kezeléséhez. Az Azure parancssori eszközei vagy az Azure Storage Management API-k használatával Azure-szerepköröket is hozzárendelhet a blob-és üzenetsor-erőforrásokhoz. További információ a tárolási erőforrások Azure-szerepköreiről: az [Azure-blobok és-várólisták hozzáférésének hitelesítése Azure Active Directory használatával](storage-auth-aad.md).
 
-## <a name="rbac-roles-for-blobs-and-queues"></a>Blobok és várólisták RBAC szerepkörei
+## <a name="azure-roles-for-blobs-and-queues"></a>Blobok és várólisták Azure-szerepkörei
 
 [!INCLUDE [storage-auth-rbac-roles-include](../../../includes/storage-auth-rbac-roles-include.md)]
 
@@ -33,18 +33,18 @@ Ez a cikk azt ismerteti, hogyan lehet a Azure Portal használatával hozzárende
 
 [!INCLUDE [storage-auth-resource-scope-include](../../../includes/storage-auth-resource-scope-include.md)]
 
-## <a name="assign-rbac-roles-using-the-azure-portal"></a>RBAC szerepkörök kiosztása a Azure Portal használatával
+## <a name="assign-azure-roles-using-the-azure-portal"></a>Azure-szerepkörök kiosztása a Azure Portal használatával
 
 Miután meghatározta a szerepkör-hozzárendelés megfelelő hatókörét, navigáljon az adott erőforráshoz a Azure Portal. Jelenítse meg az erőforrás **Access Control (iam)** beállításait, és kövesse az alábbi utasításokat a szerepkör-hozzárendelések kezeléséhez:
 
-1. Rendelje hozzá a megfelelő Azure Storage RBAC-szerepkört, hogy hozzáférést biztosítson egy Azure AD rendszerbiztonsági tag számára.
+1. Rendelje hozzá a megfelelő Azure Storage Azure-szerepkört ahhoz, hogy hozzáférést biztosítson egy Azure AD rendszerbiztonsági tag számára.
 
 1. Rendelje hozzá a Azure Resource Manager- [olvasó](../../role-based-access-control/built-in-roles.md#reader) szerepkört azokhoz a felhasználókhoz, akiknek Azure Portal az Azure ad-beli hitelesítő adataik használatával hozzá kell férniük a tárolók vagy várólistákhoz 
 
 Az alábbi szakaszok részletesebben ismertetik ezeket a lépéseket.
 
 > [!NOTE]
-> Az Azure Storage-fiók tulajdonosaként nincs automatikusan hozzárendelve az adathozzáféréshez szükséges engedélyek. Explicit módon hozzá kell rendelnie egy RBAC-szerepkört az Azure Storage-hoz. Az előfizetés, az erőforráscsoport, a Storage-fiók vagy egy tároló vagy várólista szintjén rendelhető hozzá.
+> Az Azure Storage-fiók tulajdonosaként nincs automatikusan hozzárendelve az adathozzáféréshez szükséges engedélyek. Explicit módon hozzá kell rendelnie egy Azure-szerepkört az Azure Storage-hoz. Az előfizetés, az erőforráscsoport, a Storage-fiók vagy egy tároló vagy várólista szintjén rendelhető hozzá.
 >
 > Nem rendelhet hozzá hatókörhöz tartozó szerepkört egy tárolóhoz vagy várólistához, ha a Storage-fiókhoz engedélyezve van egy hierarchikus névtér.
 
@@ -64,7 +64,7 @@ Az itt bemutatott eljárás egy tárolóra vonatkozó hatókört rendel hozzá, 
 1. Új szerepkör hozzáadásához kattintson a **szerepkör-hozzárendelés hozzáadása** gombra.
 1. A **szerepkör-hozzárendelés hozzáadása** ablakban válassza ki a hozzárendelni kívánt Azure Storage-szerepkört. Ezután keresse meg a rendszerbiztonsági tag, amelyhez hozzá szeretné rendelni a szerepkört.
 
-    ![A RBAC-szerepkör hozzárendelését bemutató képernyőkép](media/storage-auth-aad-rbac-portal/add-rbac-role.png)
+    ![Az Azure-szerepkörök hozzárendelését bemutató képernyőkép](media/storage-auth-aad-rbac-portal/add-rbac-role.png)
 
 1. Kattintson a **Mentés** gombra. Az az identitás, akihez a szerepkört hozzárendelte, megjelenik az adott szerepkör alatt. Az alábbi képen például látható, hogy a felhasználó hozzáadta a *minta-tároló*nevű tárolóban lévő adatok olvasási engedélyét.
 
@@ -79,7 +79,7 @@ Ha például a **Storage blob-adatközreműködői** szerepkört egy **minta-tá
 
 Ha azonban Mária szeretné megtekinteni a blobot a Azure Portalban, akkor a **Storage blob-adatközreműködői** szerepkör önmagában nem biztosít megfelelő engedélyeket a portálon a blobhoz való átjáráshoz a megtekintéshez. További Azure AD-engedélyek szükségesek a portálon való böngészéshez és az ott látható egyéb erőforrások megtekintéséhez.
 
-Ha a felhasználóknak el kell tudniuk érni a blobokat a Azure Portalban, majd egy további RBAC-szerepkört, az [olvasó](../../role-based-access-control/built-in-roles.md#reader) szerepkört kell hozzárendelni a felhasználóknak a Storage-fiók vagy a fenti szint szintjén. Az **olvasó** szerepkör egy Azure Resource Manager szerepkör, amely lehetővé teszi a felhasználóknak a Storage-fiók erőforrásainak megtekintését, de nem módosíthatják azokat. Nem biztosít olvasási engedélyeket az Azure Storage-beli adattároláshoz, de csak a fiókok felügyeleti erőforrásaihoz.
+Ha a felhasználóknak el kell tudniuk érni a blobokat a Azure Portalban, majd hozzájuk rendelni egy további Azure-szerepkört, az [olvasó](../../role-based-access-control/built-in-roles.md#reader) szerepkört a felhasználókhoz a Storage-fiók vagy a fenti szint szintjén. Az **olvasó** szerepkör egy Azure Resource Manager szerepkör, amely lehetővé teszi a felhasználóknak a Storage-fiók erőforrásainak megtekintését, de nem módosíthatják azokat. Nem biztosít olvasási engedélyeket az Azure Storage-beli adattároláshoz, de csak a fiókok felügyeleti erőforrásaihoz.
 
 Kövesse az alábbi lépéseket az **olvasó** szerepkör hozzárendeléséhez, hogy egy felhasználó hozzáférhessen a blobokhoz a Azure Portal. Ebben a példában a hozzárendelés a Storage-fiókra terjed ki:
 
@@ -95,9 +95,9 @@ Az **olvasó** szerepkör kiosztása csak olyan felhasználók számára szüks�
 > [!IMPORTANT]
 > A Azure Portal Storage Explorer előzetes verziója nem támogatja az Azure AD-beli hitelesítő adatok használatát a blob-vagy üzenetsor-adatok megtekintésére és módosítására. Storage Explorer a Azure Portal mindig a fiók kulcsait használja az adateléréshez. A Azure Portal Storage Explorer használatához olyan szerepkört kell hozzárendelni, amely tartalmazza a **Microsoft. Storage/storageAccounts/listkeys műveletének beolvasása/műveletet**.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- További információ a tárolási erőforrások RBAC szerepköreiről: az [Azure-blobok és-várólisták hozzáférésének hitelesítése Azure Active Directory használatával](storage-auth-aad.md). 
+- További információ a tárolási erőforrások Azure-szerepköreiről: az [Azure-blobok és-várólisták hozzáférésének hitelesítése Azure Active Directory használatával](storage-auth-aad.md). 
 - További információ a RBAC: [Mi az az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)?](../../role-based-access-control/overview.md).
 - Az Azure-beli szerepkör-hozzárendelések Azure PowerShell, az Azure CLI vagy a REST API használatával történő hozzárendeléséről és kezeléséről a következő cikkekben talál további információt:
     - [Szerepköralapú hozzáférés-vezérlés (RBAC) kezelése Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md)

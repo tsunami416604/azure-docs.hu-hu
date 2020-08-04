@@ -3,12 +3,12 @@ title: Hitelesítési és engedélyezési problémák elhárítása – Azure Ev
 description: Ez a cikk tájékoztatást nyújt az Azure Event Hubs-vel kapcsolatos hitelesítési és engedélyezési hibák elhárításáról.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 6fca0c29c20e2bfe0c3ec64e3068b61bd5147bdb
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: bed415c6180953b5a5728032a50d51618c084343
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502103"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533886"
 ---
 # <a name="troubleshoot-authentication-and-authorization-issues---azure-event-hubs"></a>Hitelesítési és engedélyezési problémák elhárítása – Azure Event Hubs
 A [kapcsolódási problémák elhárítása](troubleshooting-guide.md) című cikk tippekkel szolgál az Azure Event Hubs kapcsolódási problémáinak elhárításához. Ez a cikk tippeket és javaslatokat tartalmaz az Azure Event Hubs-vel kapcsolatos hitelesítési és engedélyezési problémák elhárításához. 
@@ -16,13 +16,13 @@ A [kapcsolódási problémák elhárítása](troubleshooting-guide.md) című ci
 ## <a name="if-you-are-using-azure-active-directory"></a>Ha Azure Active Directory használ
 Ha Azure Active Directory (Azure AD) szolgáltatást használ az Azure Event Hubs hitelesítéséhez és engedélyezéséhez, ellenőrizze, hogy az Event hub-hoz hozzáférő identitás tagja-e **a megfelelő** **erőforrás-hatókörnek** (fogyasztói csoport, Event hub, névtér, erőforráscsoport vagy előfizetés).
 
-### <a name="rbac-roles"></a>RBAC szerepkörei
+### <a name="azure-roles"></a>Azure-szerepkörök
 - Az [Azure Event Hubs adattulajdonos](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-owner) Event Hubs erőforrásokhoz való teljes hozzáféréshez.
 - Az [Azure Event Hubs adatfeladót](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-receiver) a küldési hozzáféréshez.
 - [Azure Event Hubs adatfogadó](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-sender) a fogadási hozzáféréshez.
 
 ### <a name="resource-scopes"></a>Erőforrás-hatókörök
-- **Fogyasztói csoport**: ezen a hatókörön a szerepkör-hozzárendelés csak erre az entitásra vonatkozik. A Azure Portal jelenleg nem támogatja az RBAC-szerepkör hozzárendelését egy rendszerbiztonsági tag számára ezen a szinten. 
+- **Fogyasztói csoport**: ezen a hatókörön a szerepkör-hozzárendelés csak erre az entitásra vonatkozik. A Azure Portal jelenleg nem támogatja az Azure-szerepkörök egy rendszerbiztonsági tag számára való hozzárendelését ezen a szinten. 
 - **Event hub**: a szerepkör-hozzárendelés az Event hub-entitásra és az alatta lévő fogyasztói csoportra vonatkozik.
 - **Névtér**: a szerepkör-hozzárendelés a névtér és a hozzá társított fogyasztói csoport teljes topológiáját Event Hubs.
 - **Erőforráscsoport**: a szerepkör-hozzárendelés az erőforráscsoport összes Event Hubs erőforrására vonatkozik.
