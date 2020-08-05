@@ -25,15 +25,15 @@ Az első lépések előtt ügyeljen a következőre:
 Első lépésként győződjön meg arról, hogy a projekt meg van nyitva a Visual Studióban.
 
 1. Indítsa el a Visual Studio 2019-es kiadását.
-2. Töltse be a projektet, `Program.cs`és nyissa meg.
+2. Töltse be a projektet, és nyissa meg `Program.cs` .
 
-## <a name="add-a-reference-to-newtonsoftjson"></a>Hivatkozás hozzáadása a Newtonsoft. JSON fájlhoz
+## <a name="add-a-reference-to-newtonsoftjson"></a>Newtonsoft.Jsre mutató hivatkozás hozzáadása
 
 1. A Megoldáskezelő kattintson a jobb gombbal a **HelloWorld** projektre, majd válassza a **NuGet-csomagok kezelése** lehetőséget a NuGet csomagkezelő megjelenítéséhez.
-1. A jobb felső sarokban keresse meg a **csomag forrása** legördülő listát, és ellenőrizze, hogy be van- **`nuget.org`** e jelölve.
+1. A jobb felső sarokban keresse meg a **csomag forrása** legördülő listát, és ellenőrizze, hogy be van-e **`nuget.org`** jelölve.
 1. A bal felső sarokban válassza a **Tallózás**lehetőséget.
-1. A keresőmezőbe írja be a *newtonsoft. JSON* kifejezést, és válassza az **ENTER billentyűt**.
-1. A keresési eredmények közül válassza ki a [**Newtonsoft. JSON**](https://www.nuget.org/packages/Newtonsoft.Json) csomagot, majd válassza a **telepítés** lehetőséget a legújabb stabil verzió telepítéséhez.
+1. A keresőmezőbe írja be a következőt: *newtonsoft.js* be, majd válassza az **ENTER billentyűt**.
+1. A keresési eredmények közül válassza ki a [**Newtonsoft.Jsa**](https://www.nuget.org/packages/Newtonsoft.Json) csomagban, majd válassza a **telepítés** lehetőséget a legújabb stabil verzió telepítéséhez.
 1. A telepítés elindításához fogadja el az összes szerződést és licencet.
    A csomag telepítése után a rendszer megerősítő üzenetet jelenít meg a **Package Manager konzol** ablakban.
 
@@ -84,7 +84,7 @@ class Program
 Mivel a REST API JSON formátumban fogadja a kérelmeket, és a JSON eredményeit is visszaküldi, csak karakterláncok használatával kezelhetjük őket, de ez nem ajánlott.
 Annak érdekében, hogy a kérések és válaszok könnyebben kezelhetők legyenek, deklaráljuk néhány osztályt a JSON szerializálásához/deszerializálásához.
 
-Ezt követően a deklarációkat a következő után `TranscribeAsync`helyezheti el.
+Ezt követően a deklarációkat a következő után helyezheti el `TranscribeAsync` .
 
 ```csharp
 public class ModelIdentity
@@ -187,7 +187,7 @@ public class TranscriptionDefinition
 
 ## <a name="create-and-configure-an-http-client"></a>Http-ügyfél létrehozása és konfigurálása
 Első lépésként egy olyan http-ügyfélre van szükségünk, amely megfelelő alap URL-címmel és hitelesítési készlettel rendelkezik.
-Szúrja be ezt `TranscribeAsync`a kódot a alkalmazásba.
+Szúrja be ezt a kódot a alkalmazásba `TranscribeAsync` .
 
 ```csharp
 var client = new HttpClient
@@ -202,7 +202,7 @@ var client = new HttpClient
 ```
 
 ## <a name="generate-a-transcription-request"></a>Átírási kérelem létrehozása
-Ezután létrehozjuk az átírási kérelmet. Adja hozzá ezt a `TranscribeAsync`kódot a következőhöz:.
+Ezután létrehozjuk az átírási kérelmet. Adja hozzá ezt a kódot a következőhöz: `TranscribeAsync` .
 
 ```csharp
 var transcriptionDefinition =
@@ -551,10 +551,10 @@ namespace BatchClient
 
 Most már készen áll az alkalmazás felépítésére és a beszédfelismerési szolgáltatás használatával történő tesztelésre.
 
-1. **Fordítsa le a kódot** – a Visual Studio menüsávján válassza a **Build** > **megoldás**létrehozása lehetőséget.
-2. **Indítsa** el az alkalmazást – a menüsávban **válassza** > a hibakeresés**indítása** vagy az **F5**billentyűt.
+1. **Fordítsa le a kódot** – a Visual Studio menüsávján válassza a **Build**  >  **megoldás**létrehozása lehetőséget.
+2. **Indítsa** el az alkalmazást – a menüsávban **válassza a hibakeresés**  >  **indítása** vagy az **F5**billentyűt.
 3. **Felismerés elindítása** – felszólítja, hogy beszéljen egy angol nyelvű kifejezéssel. A rendszer elküldje a beszédet a beszédfelismerési szolgáltatásnak, amelyet szövegként leír, és a konzolon jeleníti meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [!INCLUDE [footer](./footer.md)]

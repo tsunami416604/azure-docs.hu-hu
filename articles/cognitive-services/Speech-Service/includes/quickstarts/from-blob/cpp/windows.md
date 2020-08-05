@@ -25,7 +25,7 @@ Az első lépések előtt ügyeljen a következőre:
 Első lépésként győződjön meg arról, hogy a projekt meg van nyitva a Visual Studióban.
 
 1. Indítsa el a Visual Studio 2019-es kiadását.
-2. Töltse be a projektet, `helloworld.cpp`és nyissa meg.
+2. Töltse be a projektet, és nyissa meg `helloworld.cpp` .
 
 ## <a name="add-a-references"></a>Hivatkozások hozzáadása
 
@@ -53,7 +53,7 @@ Vegyünk fel egy olyan kódot, amely csontvázként működik a projekthez.
 Mivel a REST API JSON formátumban fogadja a kérelmeket, és a JSON eredményeit is visszaküldi, csak karakterláncok használatával kezelhetjük őket, de ez nem ajánlott.
 Annak érdekében, hogy a kérések és válaszok könnyebben kezelhetők legyenek, deklaráljuk néhány osztályt a JSON szerializálásához/deszerializálásához, valamint néhány olyan módszerhez, amely segítséget nyújt a nlohmann/JSON használatához.
 
-Mielőtt megkezdené `recognizeSpeech` a deklarációját, tegye a következőt:.
+Mielőtt megkezdené a deklarációját, tegye a következőt: `recognizeSpeech` .
 [!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/from-blob/helloworld.cpp?range=33-185)]
 
 ## <a name="create-and-configure-an-http-client"></a>Http-ügyfél létrehozása és konfigurálása
@@ -97,6 +97,6 @@ Ezen a ponton a kódnak így kell kinéznie: (adtunk hozzá néhány megjegyzés
 
 Most már készen áll az alkalmazás felépítésére és a beszédfelismerési szolgáltatás használatával történő tesztelésre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [!INCLUDE [footer](./footer.md)]

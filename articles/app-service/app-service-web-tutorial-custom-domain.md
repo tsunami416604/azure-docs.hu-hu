@@ -7,12 +7,12 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 04/27/2020
 ms.custom: mvc, seodec18
-ms.openlocfilehash: a594a754f33ae60d151215deb5a5ed57f87126c3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 96a947a20a17c4dc08851824a392143ce162f186
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87050646"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543561"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>Oktatóanyag: meglévő egyéni DNS-név leképezése Azure App Service
 
@@ -95,7 +95,12 @@ Amikor megjelenik a következő értesítés, a skálázási művelet befejeződ
 
 ## <a name="get-domain-verification-id"></a>Tartomány-ellenőrzési azonosító lekérése
 
-Ha egyéni tartományt szeretne felvenni az alkalmazásba, ellenőriznie kell a tartomány tulajdonjogát úgy, hogy egy ellenőrző azonosítót ad hozzá TXT-rekordként a tartományi szolgáltatóhoz. Az alkalmazás lap bal oldali navigációs sávján kattintson az **Egyéni tartományok** elemre a **Beállítások**területen. Az egyéni tartomány-ellenőrzési azonosító értékének másolása innen. Erre az ellenőrző AZONOSÍTÓra szüksége lesz a következő lépéshez.
+Ha egyéni tartományt szeretne felvenni az alkalmazásba, ellenőriznie kell a tartomány tulajdonjogát úgy, hogy egy ellenőrző azonosítót ad hozzá TXT-rekordként a tartományi szolgáltatóhoz. Az alkalmazás lap bal oldali navigációs sávján kattintson az **Egyéni tartományok**elemre. Másolja az **egyéni tartomány-ellenőrzési azonosítót** az **Egyéni tartományok** lapon a következő lépéshez.
+
+![Egyéni tartomány ellenőrző AZONOSÍTÓjának beolvasása](./media/app-service-web-tutorial-custom-domain/get-custom-domain-verification-id.png)
+
+> [!WARNING]
+> A tartomány-ellenőrzési azonosítók az egyéni tartományhoz való hozzáadásával megakadályozható a DNS-bejegyzések kihelyezése és az altartományon belüli átvételek elkerülése. A gyakori, nagy súlyosságú fenyegetésekkel kapcsolatos további információkért lásd: [altartomány átvétele](../security/fundamentals/subdomain-takeover.md).
 
 ## <a name="map-your-domain"></a>Saját tartomány leképezése
 

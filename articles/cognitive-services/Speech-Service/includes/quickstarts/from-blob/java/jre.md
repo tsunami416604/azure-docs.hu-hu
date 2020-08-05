@@ -26,12 +26,12 @@ Az első lépések előtt ügyeljen a következőre:
 Első lépésként győződjön meg arról, hogy a projekt az Eclipse-ben nyitva van.
 
 1. Az Eclipse indítása
-2. Töltse be a projektet, `Main.java`és nyissa meg.
+2. Töltse be a projektet, és nyissa meg `Main.java` .
 
 ## <a name="add-a-reference-to-gson"></a>Gson mutató hivatkozás hozzáadása
 Ebben a rövid útmutatóban egy külső JSON-szerializáló/deszerializáló fogunk használni. A Java általunk választott [Gson](https://github.com/google/gson).
 
-Nyissa meg a Pom. xml fájlt, és adja hozzá a következő hivatkozást.
+Nyissa meg a pom.xml, és adja hozzá a következő hivatkozást.
 
 [!code-xml[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-blob/pom.xml?range=19-25)]
 
@@ -48,12 +48,12 @@ Vegyünk fel egy olyan kódot, amely csontvázként működik a projekthez.
 Mivel a REST API JSON formátumban fogadja a kérelmeket, és a JSON eredményeit is visszaküldi, csak karakterláncok használatával kezelhetjük őket, de ez nem ajánlott.
 Annak érdekében, hogy a kérések és válaszok könnyebben kezelhetők legyenek, deklaráljuk néhány osztályt a JSON szerializálásához/deszerializálásához.
 
-Mielőtt megkezdené `Main`a deklarációját, tegye a következőt:.
+Mielőtt megkezdené a deklarációját, tegye a következőt: `Main` .
 [!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-blob/src/quickstart/Main.java?range=15-93)]
 
 ## <a name="create-and-configure-an-http-client"></a>Http-ügyfél létrehozása és konfigurálása
 Első lépésként egy olyan http-ügyfélre van szükségünk, amely megfelelő alap URL-címmel és hitelesítési készlettel rendelkezik.
-A kód beszúrása a `Main` következőbe:[!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-blob/src/quickstart/Main.java?range=106-113)]
+A kód beszúrása a következőbe: `Main`[!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-blob/src/quickstart/Main.java?range=106-113)]
 
 ## <a name="generate-a-transcription-request"></a>Átírási kérelem létrehozása
 Ezután létrehozjuk az átírási kérelmet. Kód hozzáadása a `Main` következőhöz[!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-blob/src/quickstart/Main.java?range=115-116)]
@@ -83,6 +83,6 @@ Ezen a ponton a kódnak így kell kinéznie: (adtunk hozzá néhány megjegyzés
 
 Most már készen áll az alkalmazás felépítésére és a beszédfelismerési szolgáltatás használatával történő tesztelésre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [!INCLUDE [footer](./footer.md)]

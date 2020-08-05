@@ -1,5 +1,5 @@
 ---
-title: Az Anomáliadetektor rövid útmutatóinak következő lépései
+title: Következő lépések az anomáliák Kiderítő lépéseihez
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -9,26 +9,26 @@ ms.topic: include
 ms.date: 11/19/2019
 ms.author: aahi
 ms.openlocfilehash: eb00d680e6312bb7f380e27d2fa6bb6fe34fa616
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74483037"
 ---
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha azt szeretné, hogy tisztítsák meg, és távolítsa el a Cognitive Services-előfizetés, törölheti az erőforrás vagy erőforráscsoport. Az erőforráscsoport törlése az erőforráscsoporthoz társított egyéb erőforrásokat is törli.
+Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforrást vagy az erőforráscsoportot. Az erőforráscsoport törlésével az erőforráscsoporthoz társított egyéb erőforrások is törlődnek.
 
 * [Portál](../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Fogalmak:
 
 * [Mi az az Anomaly Detector API?](../overview.md)
-* [Anomáliadetektálási módszerek](../how-to/identify-anomalies.md)
-* [Ajánlott eljárások az Anomáliadetektor API használatakor.](../concepts/anomaly-detection-best-practices.md) 
+* [Anomáliák észlelési módszerei](../how-to/identify-anomalies.md)
+* [Ajánlott eljárások az anomália-detektor API használatakor.](../concepts/anomaly-detection-best-practices.md) 
 
 Oktatóanyagok:
 

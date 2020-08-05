@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: d5004dc48fe3052d6632573da67f4069eb6fac1c
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 74ffb54b13783b4945376e1717777fa1da39ab44
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85208178"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543316"
 ---
 # <a name="cheat-sheet-for-azure-synapse-analytics-formerly-sql-dw"></a>Cheat Sheet for Azure szinapszis Analytics (korábban SQL DW)
 
@@ -39,7 +39,7 @@ A művelettípusok előzetes ismerete segít optimalizálni a táblák kialakít
 
 Először töltse be az adatait [Azure Data Lake Storageba](../../data-factory/connector-azure-data-lake-store.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) vagy az Azure Blob Storageba. Ezt követően használja a következőt, hogy betöltse az adatait az átmeneti táblákba. Használja a következő konfigurációt:
 
-| Kialakítás | Ajánlás |
+| Tervezés | Ajánlás |
 |:--- |:--- |
 | Disztribúció | Ciklikus időszeletelés |
 | Indexelés | Halommemória |
@@ -52,7 +52,7 @@ Itt további információkat tudhat meg az [adatok migrálásáról](https://blo
 
 A tábla tulajdonságaitól függően a következő stratégiákat használja:
 
-| Típus | Kiválóan alkalmas a következőhöz:| Ügyeljen a következő esetekben:|
+| Típus | Kiválóan alkalmas...| Ügyeljen a következő esetekben:|
 |:--- |:--- |:--- |
 | Replikált | * Kis dimenziós táblák egy csillag-sémában, kevesebb, mint 2 GB tárhellyel a tömörítés után (~ 5x tömörítés) |* Sok írási tranzakció van a táblában (például INSERT, upsert, DELETE, Update)<br></br>* Az adatraktár-egységek (DWU-EK) kiépítési gyakoriságának módosítása<br></br>* Csak 2-3 oszlopot használ, de a tábla sok oszlopot tartalmaz<br></br>* Egy replikált tábla indexelése |
 | Ciklikus időszeletelés (alapértelmezett) | * Ideiglenes/előkészítési tábla<br></br> * Nincs nyilvánvaló csatlakozású kulcs vagy jó jelölt oszlop |* Az adatáthelyezés miatt lassú a teljesítmény |
@@ -65,7 +65,7 @@ A tábla tulajdonságaitól függően a következő stratégiákat használja:
 * Ne terjesszen varchar formátumra.
 * A gyakori csatlakozási műveletekkel rendelkező ténytáblákhoz közös kivonatkulccsal rendelkező dimenziótáblákhoz kivonatterjesztés használható.
 * A *[sys.dm_pdw_nodes_db_partition_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-partition-stats-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)* segítségével elemezheti az adatokban lévő eltéréseket.
-* A *[sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)* segítségével elemezheti a lekérdezések mögötti adatmozgásokat, monitorozhatja az időszórásokat és módosíthatja a műveletek sorrendjét. Ez a terjesztési stratégia áttekintéséhez hasznos.
+* A *[sys. dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)* használatával elemezheti a lekérdezések mögötti mozgásokat, figyelheti a szórási időt, és megtekintheti a shuffle-műveleteket. Ez az elosztási stratégia áttekintéséhez hasznos.
 
 További tudnivalók a [replikált táblákról](design-guidance-for-replicated-tables.md) és az [elosztott táblákról](sql-data-warehouse-tables-distribute.md).
 
@@ -73,7 +73,7 @@ További tudnivalók a [replikált táblákról](design-guidance-for-replicated-
 
 Az indexelés a táblák gyors olvasásához hasznos. Egyedi technológiákat alkalmazhat az igényei szerint:
 
-| Típus | Kiválóan alkalmas a következőhöz: | Ügyeljen a következő esetekben:|
+| Típus | Kiválóan alkalmas... | Ügyeljen a következő esetekben:|
 |:--- |:--- |:--- |
 | Halommemória | * Átmeneti/ideiglenes tábla<br></br>* Kisméretű táblák kis keresésekkel |* A keresés megkeresi a teljes táblázatot |
 | Fürtözött index | * Táblák legfeljebb 100 000 000 sorral<br></br>* Nagyméretű táblák (több mint 100 000 000 sor), amelyekben csak 1-2 oszlop használatos |* Replikált táblán használatos<br></br>* Összetett lekérdezések több JOIN és Group By Operations használatával<br></br>* Frissíti az indexelt oszlopokat: a memóriába kerül |
@@ -131,9 +131,7 @@ Az Azure szinapszis egyik fő funkciója a [számítási erőforrások kezelése
 
 Az Azure Functions használatával mostantól bármikor használhatja az automatikus skálázást:
 
-<a href="https://ms.portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoft%2Fsql-data-warehouse-samples%2Fmaster%2Farm-templates%2FsqlDwTimerScaler%2Fazuredeploy.json" target="_blank">
-<img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png"/>
-</a>
+[![Az "üzembe helyezés az Azure-ban" feliratú gombot ábrázoló kép.](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://ms.portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoft%2Fsql-data-warehouse-samples%2Fmaster%2Farm-templates%2FsqlDwTimerScaler%2Fazuredeploy.json)
 
 ## <a name="optimize-your-architecture-for-performance"></a>Teljesítményre optimalizálhatja az architektúrát
 
@@ -143,6 +141,4 @@ Ismerje meg az [Azure szinapszis előnyeit kihasználó tipikus architektúráka
 
 Az SQL-készletből az SQL-adatbázisból a küllőket egyetlen kattintással telepítheti:
 
-<a href="https://ms.portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoft%2Fsql-data-warehouse-samples%2Fmaster%2Farm-templates%2FsqlDwSpokeDbTemplate%2Fazuredeploy.json" target="_blank">
-<img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png"/>
-</a>
+[![Az "üzembe helyezés az Azure-ban" feliratú gombot ábrázoló kép.](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://ms.portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoft%2Fsql-data-warehouse-samples%2Fmaster%2Farm-templates%2FsqlDwSpokeDbTemplate%2Fazuredeploy.json)

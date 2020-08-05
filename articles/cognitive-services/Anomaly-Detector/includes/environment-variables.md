@@ -23,7 +23,7 @@ ms.locfileid: "85980215"
 Ha a kulcsot és a végpontot a létrehozott erőforrás alapján hozza létre, hozzon létre két környezeti változót a hitelesítéshez:
 
 * `ANOMALY_DETECTOR_KEY`– A kérések hitelesítéséhez szükséges erőforrás-kulcs.
-* `ANOMALY_DETECTOR_ENDPOINT`– Az erőforrás-végpont API-kérelmek küldéséhez. A következőképpen fog kinézni: 
+* `ANOMALY_DETECTOR_ENDPOINT`– Az erőforrás-végpont API-kérelmek küldéséhez. Ez így fog kinézni: 
   * `https://<your-custom-subdomain>.api.cognitive.microsoft.com` 
 
 Használja az operációs rendszerének utasításait.

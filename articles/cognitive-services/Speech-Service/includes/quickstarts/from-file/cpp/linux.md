@@ -29,14 +29,14 @@ Az első lépések előtt ügyeljen a következőre:
 
 1. Ebben az új fájlban cserélje le a `YourSubscriptionKey` sztringet a Speech Service előfizetői azonosítójára.
 
-1. Cserélje le a `YourServiceRegion` karakterláncot az előfizetéséhez [tartozó régió](https://aka.ms/speech/sdkregion) - `westus` **azonosítóra** (például az ingyenes próbaverziós előfizetésre).
+1. Cserélje le a karakterláncot `YourServiceRegion` az előfizetéséhez tartozó [régió](https://aka.ms/speech/sdkregion) - **azonosítóra** (például `westus` az ingyenes próbaverziós előfizetésre).
 
-1. Cserélje le a `whatstheweatherlike.wav` karakterláncot a saját fájlnevére.
+1. Cserélje le a karakterláncot a `whatstheweatherlike.wav` saját fájlnevére.
 
 > [!NOTE]
 > A Speech SDK alapértelmezés szerint az en-us nyelv használatával ismeri fel a nyelvet, a forrás nyelvének kiválasztásával kapcsolatos információkért lásd: nyelv [megadása a beszédhez szöveghez](../../../../how-to-specify-source-language.md) .
 
-## <a name="build-the-app"></a>Alkalmazás készítése
+## <a name="build-the-app"></a>Az alkalmazás létrehozása
 
 > [!NOTE]
 > Ügyeljen arra, hogy a lenti parancsokat _egyetlen parancssorként_ írja be. Ennek a legegyszerűbb módja, ha az egyes parancsok mellett található **Másolás** gombbal kimásolja a parancsot, majd beilleszti a felületi parancssorba.
@@ -94,6 +94,6 @@ Az első lépések előtt ügyeljen a következőre:
    We recognized: What's the weather like?
    ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [!INCLUDE [Speech recognition basics](../../speech-to-text-next-steps.md)]

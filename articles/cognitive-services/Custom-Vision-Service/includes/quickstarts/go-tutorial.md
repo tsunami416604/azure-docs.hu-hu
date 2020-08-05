@@ -25,7 +25,7 @@ Az Custom Vision Service SDK for go telepítéséhez futtassa a következő para
 go get -u github.com/Azure/azure-sdk-for-go/...
 ```
 
-vagy ha a- `dep`t használja, a tárházon belül futtassa a következőket:
+vagy ha `dep` a-t használja, a tárházon belül futtassa a következőket:
 ```shell
 dep ensure -add github.com/Azure/azure-sdk-for-go
 ```
@@ -188,7 +188,7 @@ Ezután ellenőrizheti, hogy a tesztkép (az **<base_image_url>/Images/Test/** m
 
 [!INCLUDE [clean-ic-project](../../includes/clean-ic-project.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte, hogyan végezhető el az objektum-észlelési folyamat minden lépése a kódban. Ez a minta egyetlen betanítási iterációt hajt végre, de gyakran több alkalommal kell betanítania és tesztelni a modellt, hogy pontosabb legyen.
 

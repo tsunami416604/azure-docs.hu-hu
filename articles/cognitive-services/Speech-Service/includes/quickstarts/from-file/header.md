@@ -18,8 +18,8 @@ ms.locfileid: "81400545"
 ---
 Ebben a rövid útmutatóban a [SPEECH SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) használatával ismeri fel a hangfájlok beszédét. Néhány előfeltétel kielégítése után a beszédek felismerése csak néhány lépést vesz igénybe:
 > [!div class="checklist"]
-> * Hozzon `SpeechConfig` létre egy objektumot az előfizetési kulcs és a régió alapján.
-> * Hozzon `AudioConfig` létre egy objektumot, amely megadja a t. WAV-fájlnév.
-> * Hozzon `SpeechRecognizer` létre egy objektumot `SpeechConfig` a `AudioConfig` fenti és objektumok használatával.
+> * Hozzon létre egy `SpeechConfig` objektumot az előfizetési kulcs és a régió alapján.
+> * Hozzon létre egy `AudioConfig` objektumot, amely megadja a t. WAV-fájlnév.
+> * Hozzon létre egy `SpeechRecognizer` objektumot `SpeechConfig` a `AudioConfig` fenti és objektumok használatával.
 > * Az `SpeechRecognizer` objektum használatával egyetlen lemondás esetén indíthatja el az elismerési folyamatot.
-> * Vizsgálja meg `SpeechRecognitionResult` a visszaadott értéket.
+> * Vizsgálja meg a `SpeechRecognitionResult` visszaadott értéket.

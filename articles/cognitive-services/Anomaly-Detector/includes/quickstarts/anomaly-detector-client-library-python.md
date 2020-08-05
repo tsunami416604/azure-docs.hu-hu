@@ -108,7 +108,7 @@ A rendellenesség-Kiderítő API meghívásával megállapíthatja, hogy a legut
 
 [!code-python[Batch anomaly detection sample](~/samples-anomaly-detector/quickstarts/sdk/python-sdk-sample.py?name=latestPointDetection)]
 
-## <a name="run-the-application"></a>Alkalmazás futtatása
+## <a name="run-the-application"></a>Az alkalmazás futtatása
 
 Futtassa az alkalmazást a `python` paranccsal és a fájl nevével.
  

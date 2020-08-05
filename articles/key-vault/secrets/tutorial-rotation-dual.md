@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 06/22/2020
 ms.author: jalichwa
-ms.openlocfilehash: ba9ff0ead1131b091aa1a5ece2ecf94d2319a968
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 0d2ee8fbcb71d8703702f2c72e0bf629563667b9
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85800697"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542195"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-with-two-sets-of-authentication-credentials"></a>A titkos kulcs rotációjának automatizálása két hitelesítési hitelesítő adattal rendelkező erőforrásokhoz
 
@@ -41,15 +41,14 @@ A fenti megoldásban Azure Key Vault tárolja a Storage-fiók egyedi hozzáfér�
 * Két Azure Storage-fiók
 
 Ha nem rendelkezik meglévő Key Vault-és Storage-fiókkal, akkor az alábbi telepítési hivatkozás használható:
-<br><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-StorageAccountKey-PowerShell%2Fmaster%2Farm-templates%2FInitial-Setup%2Fazuredeploy.json" target="_blank">
-    <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png"/>
-</a>
+
+[![Az "üzembe helyezés az Azure-ban" feliratú gombot ábrázoló kép.](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-StorageAccountKey-PowerShell%2Fmaster%2Farm-templates%2FInitial-Setup%2Fazuredeploy.json)
 
 1. Az **erőforráscsoport**területen válassza az **új létrehozása**lehetőséget. Nevezze el a csoport **akvrotation** , és kattintson **az OK**gombra.
 1. Válassza a **felülvizsgálat + létrehozás**lehetőséget.
 1. Kattintson a **Létrehozás** elemre.
 
-    ![Erőforráscsoport létrehozása](../media/secrets/rotation-dual/dual-rotation-1.png)
+    ![Hozzon létre egy erőforráscsoportot](../media/secrets/rotation-dual/dual-rotation-1.png)
 
 Most már rendelkezik egy kulcstartóval és két Storage-fiókkal. A telepítőt az Azure CLI-ben ellenőrizheti a következő parancs futtatásával:
 
@@ -79,10 +78,9 @@ A Function app rotációs funkciója megköveteli ezeket az összetevőket és k
 - Storage-fiók kulcsának rotációs funkciója az Event triggerrel és a http-eseményindítóval (igény szerinti rotáció)
 - EventGrid esemény-előfizetés a **SecretNearExpiry** eseményhez
 
-1. Válassza ki az Azure-sablon központi telepítési hivatkozását:
-<br><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-StorageAccountKey-PowerShell%2Fmaster%2Farm-templates%2FFunction%2Fazuredeploy.json" target="_blank">
-    <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png"/>
-</a>
+1. Válassza ki az Azure-sablon központi telepítési hivatkozását: 
+
+   [![Az "üzembe helyezés az Azure-ban" feliratú gombot ábrázoló kép.](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-StorageAccountKey-PowerShell%2Fmaster%2Farm-templates%2FInitial-Setup%2Fazuredeploy.json)
 
 1. Az **erőforráscsoport** listában válassza a **akvrotation**lehetőséget.
 1. A **Storage-fiók neve**mezőbe írja be a Storage-fiók nevét a forgatni kívánt elérési kulcsokkal.
@@ -154,10 +152,9 @@ A meglévő függvények elforgatásához további Storage-fiókok kulcsainak ho
 - A Storage-fiók kulcs-kezelője szolgáltatás szerepkörének hozzárendelésével elérheti az alkalmazást a Storage-fiók hozzáférési kulcsainak eléréséhez
 - EventGrid esemény-előfizetés a **SecretNearExpiry** eseményhez
 
-1. Válassza ki az Azure-sablon központi telepítési hivatkozását:
-<br><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-StorageAccountKey-PowerShell%2Fmaster%2Farm-templates%2FAdd-Event-Subscription%2Fazuredeploy.json" target="_blank">
-    <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png"/>
-</a>
+1. Válassza ki az Azure-sablon központi telepítési hivatkozását: 
+
+   [![Az "üzembe helyezés az Azure-ban" feliratú gombot ábrázoló kép.](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-StorageAccountKey-PowerShell%2Fmaster%2Farm-templates%2FAdd-Event-Subscription%2Fazuredeploy.json)
 
 1. Az **erőforráscsoport** listában válassza a **akvrotation**lehetőséget.
 1. A **Storage-fiók neve**mezőbe írja be a Storage-fiók nevét a forgatni kívánt elérési kulcsokkal.
@@ -203,7 +200,7 @@ az storage account keys list -n akvrotationstorage
 
 ## <a name="available-key-vault-dual-credential-rotation-functions"></a>Elérhető Key Vault kettős hitelesítő adatok elforgatási funkciói
 
-- [Tárfiók](https://github.com/jlichwa/KeyVault-Rotation-StorageAccountKey-PowerShell)
+- [Storage-fiók](https://github.com/jlichwa/KeyVault-Rotation-StorageAccountKey-PowerShell)
 - [Redis Cache](https://github.com/jlichwa/KeyVault-Rotation-RedisCacheKey-PowerShell)
 
 ## <a name="learn-more"></a>További információ

@@ -28,15 +28,15 @@ Kövesse az alábbi lépéseket a telepítéshez:
 
 1. Nyissa meg a következőt: https://editor.swagger.io.
 1. Kattintson a **fájl**, majd az **URL importálása**elemre.
-1. Adja meg a felvágási URL-címet, beleértve a Speech `https://<your-region>.cris.ai/docs/v2.0/swagger`Service-előfizetés régióját:.
+1. Adja meg a felvágási URL-címet, beleértve a Speech Service-előfizetés régióját: `https://<your-region>.cris.ai/docs/v2.0/swagger` .
 1. Kattintson az **ügyfél előállítása** és a **Python**elemre.
 1. Mentse az ügyféloldali kódtárat.
-1. Bontsa ki a letöltött Python-Client-Generated. zip fájlt a fájlrendszerben.
-1. Telepítse a kinyert Python-Client modult a Python-környezetben `pip install path/to/package/python-client`a pip használatával:.
-1. A telepített csomag neve `swagger_client`. A paranccsal megtekintheti, hogy a telepítés a `python -c "import swagger_client"`parancs használatával működött-e.
+1. Bontsa ki a letöltött python-client-generated.zip valahol a fájlrendszerben.
+1. Telepítse a kinyert Python-Client modult a Python-környezetben a pip használatával: `pip install path/to/package/python-client` .
+1. A telepített csomag neve `swagger_client` . A paranccsal megtekintheti, hogy a telepítés a parancs használatával működött-e `python -c "import swagger_client"` .
 
 > [!NOTE]
-> A [hencegő autogeneráció ismert hibája](https://github.com/swagger-api/swagger-codegen/issues/7541)miatt előfordulhat, hogy a `swagger_client` csomag importálásakor hibák léptek fel.
+> A [hencegő autogeneráció ismert hibája](https://github.com/swagger-api/swagger-codegen/issues/7541)miatt előfordulhat, hogy a csomag importálásakor hibák léptek fel `swagger_client` .
 > Ezeket úgy lehet megjavítani, ha törli a sort a tartalommal.
 > ```py
 > from swagger_client.models.model import Model  # noqa: F401,E501
@@ -45,7 +45,7 @@ Kövesse az alábbi lépéseket a telepítéshez:
 > ```py
 > from swagger_client.models.inner_error import InnerError  # noqa: F401,E501
 > ```
-> a fájlból `swagger_client/models/inner_error.py` a telepített csomagon belül. A hibaüzenetből megtudhatja, hol találhatók ezek a fájlok a telepítéshez.
+> a fájlból a `swagger_client/models/inner_error.py` telepített csomagon belül. A hibaüzenetből megtudhatja, hol találhatók ezek a fájlok a telepítéshez.
 
 ## <a name="install-other-dependencies"></a>Egyéb függőségek telepítése
 
@@ -65,7 +65,7 @@ Vegyünk fel egy olyan kódot, amely csontvázként működik a projekthez.
 
 ## <a name="create-and-configure-an-http-client"></a>Http-ügyfél létrehozása és konfigurálása
 Első lépésként egy olyan http-ügyfélre van szükségünk, amely megfelelő alap URL-címmel és hitelesítési készlettel rendelkezik.
-A kód beszúrása a `transcribe` következőbe:[!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/from-blob/python-client/main.py?range=37-45)]
+A kód beszúrása a következőbe: `transcribe`[!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/from-blob/python-client/main.py?range=37-45)]
 
 ## <a name="generate-a-transcription-request"></a>Átírási kérelem létrehozása
 Ezután létrehozjuk az átírási kérelmet. Kód hozzáadása a `transcribe` következőhöz[!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/from-blob/python-client/main.py?range=52-54)]
@@ -95,6 +95,6 @@ Ezen a ponton a kódnak így kell kinéznie: (adtunk hozzá néhány megjegyzés
 
 Most már készen áll az alkalmazás felépítésére és a beszédfelismerési szolgáltatás használatával történő tesztelésre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [!INCLUDE [footer](./footer.md)]

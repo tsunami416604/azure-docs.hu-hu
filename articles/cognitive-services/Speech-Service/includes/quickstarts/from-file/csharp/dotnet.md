@@ -26,9 +26,9 @@ Az első lépések előtt ügyeljen a következőre:
 Első lépésként győződjön meg arról, hogy a projekt meg van nyitva a Visual Studióban.
 
 1. Indítsa el a Visual Studio 2019-es kiadását.
-2. Töltse be a projektet, `Program.cs`és nyissa meg.
+2. Töltse be a projektet, és nyissa meg `Program.cs` .
 3. Töltse le a <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/csharp/sharedcontent/console/whatstheweatherlike.wav" download="whatstheweatherlike" target="_blank">whatstheweatherlike. <span class="docon docon-download x-hidden-focus"></span> WAV</a> fájlját, és adja hozzá a projekthez.
-    - Mentse a `Program.cs` fájl mellé a *whatstheweatherlike. wav* fájlt.
+    - Mentse a fájl mellé a *whatstheweatherlike. wav* fájlt `Program.cs` .
     - A **megoldáskezelő** kattintson a jobb gombbal a projektre, majd válassza a **> meglévő elem hozzáadása**lehetőséget.
     - Válassza ki a *whatstheweatherlike. wav* fájlt, majd kattintson a **Hozzáadás** gombra.
     - Kattintson a jobb gombbal az újonnan hozzáadott fájlra, majd válassza a **Tulajdonságok**lehetőséget.
@@ -36,7 +36,7 @@ Első lépésként győződjön meg arról, hogy a projekt meg van nyitva a Visu
 
 ## <a name="start-with-some-boilerplate-code"></a>Kezdés néhány szabványos kóddal
 
-Vegyünk fel egy olyan kódot, amely csontvázként működik a projekthez. Jegyezze fel, hogy létrehozta a nevű `RecognizeSpeechAsync()`aszinkron metódust.
+Vegyünk fel egy olyan kódot, amely csontvázként működik a projekthez. Jegyezze fel, hogy létrehozta a nevű aszinkron metódust `RecognizeSpeechAsync()` .
 
 ```csharp
 using System;
@@ -62,10 +62,10 @@ namespace HelloWorld
 
 ## <a name="create-a-speech-configuration"></a>Beszédfelismerési konfiguráció létrehozása
 
-Az `SpeechRecognizer` objektumok inicializálásához létre kell hoznia egy olyan konfigurációt, amely az előfizetési kulcsot és az előfizetési régiót használja. Szúrja be ezt a `RecognizeSpeechAsync()` kódot a metódusba.
+Az objektumok inicializálásához `SpeechRecognizer` létre kell hoznia egy olyan konfigurációt, amely az előfizetési kulcsot és az előfizetési régiót használja. Szúrja be ezt a kódot a `RecognizeSpeechAsync()` metódusba.
 
 > [!NOTE]
-> Ez a példa a `FromSubscription()` metódust használja a `SpeechConfig`létrehozásához. Az elérhető módszerek teljes listáját lásd: [SpeechConfig osztály](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet).
+> Ez a példa a metódust használja a létrehozásához `FromSubscription()` `SpeechConfig` . Az elérhető módszerek teljes listáját lásd: [SpeechConfig osztály](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet).
 > A Speech SDK alapértelmezés szerint az en-us nyelv használatával ismeri fel a nyelvet, a forrás nyelvének kiválasztásával kapcsolatos információkért lásd: nyelv [megadása a beszédhez szöveghez](../../../../how-to-specify-source-language.md) .
 
 ```csharp
@@ -75,7 +75,7 @@ var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRe
 
 ## <a name="create-an-audio-configuration"></a>Hang konfigurációjának létrehozása
 
-Most létre kell hoznia egy `AudioConfig` objektumot, amely a hangfájlra mutat. Ez az objektum egy using utasításon belül jön létre a nem felügyelt erőforrások megfelelő kiadásának biztosítása érdekében. Szúrja be ezt a `RecognizeSpeechAsync()` kódot a metódusba közvetlenül a beszédfelismerési konfiguráció alatt.
+Most létre kell hoznia egy `AudioConfig` objektumot, amely a hangfájlra mutat. Ez az objektum egy using utasításon belül jön létre a nem felügyelt erőforrások megfelelő kiadásának biztosítása érdekében. Szúrja be ezt a kódot a `RecognizeSpeechAsync()` metódusba közvetlenül a beszédfelismerési konfiguráció alatt.
 
 ```csharp
 using (var audioInput = AudioConfig.FromWavFileInput("whatstheweatherlike.wav"))
@@ -85,7 +85,7 @@ using (var audioInput = AudioConfig.FromWavFileInput("whatstheweatherlike.wav"))
 
 ## <a name="initialize-a-speechrecognizer"></a>SpeechRecognizer inicializálása
 
-Most hozzuk létre az `SpeechRecognizer` objektumot a `SpeechConfig` korábban létrehozott és `AudioConfig` objektumok használatával. Ez az objektum egy using utasítás belsejében is létrejön a nem felügyelt erőforrások megfelelő kiadásának biztosítása érdekében. Szúrja be ezt a `RecognizeSpeechAsync()` kódot a metódusba a using utasításban, amely ```AudioConfig``` az objektumot betakarja.
+Most hozzuk létre az `SpeechRecognizer` objektumot a `SpeechConfig` `AudioConfig` korábban létrehozott és objektumok használatával. Ez az objektum egy using utasítás belsejében is létrejön a nem felügyelt erőforrások megfelelő kiadásának biztosítása érdekében. Szúrja be ezt a kódot a `RecognizeSpeechAsync()` metódusba a using utasításban, amely az objektumot betakarja ```AudioConfig``` .
 
 ```csharp
 using (var recognizer = new SpeechRecognizer(config, audioInput))
@@ -108,7 +108,7 @@ var result = await recognizer.RecognizeOnceAsync();
 
 Ha a beszédfelismerési szolgáltatás visszaadja a felismerés eredményét, érdemes megtennie a dolgot. Megtartjuk az egyszerűséget, és kinyomtathatjuk az eredményt a konzolon.
 
-Az alábbi `RecognizeOnceAsync()`using utasításban adja hozzá a következő kódot:
+Az alábbi using utasításban `RecognizeOnceAsync()` adja hozzá a következő kódot:
 
 ```csharp
 switch (result.Reason)
@@ -197,8 +197,8 @@ namespace HelloWorld
 
 Most már készen áll az alkalmazás felépítésére és a beszédfelismerési szolgáltatás használatával történő tesztelésre.
 
-1. A kód fordítása: a *Visual Studio*menüsávján válassza a **Build** > **Build megoldás**elemet.
-2. Indítsa el > az alkalmazást: a menüsávban **válassza a hibakeresés****indítása** vagy az **F5**billentyűt.
+1. A kód fordítása: a *Visual Studio*menüsávján válassza a **Build**  >  **Build megoldás**elemet.
+2. Indítsa el az alkalmazást: a menüsávban **válassza a hibakeresés**  >  **indítása** vagy az **F5**billentyűt.
 3. Felismerés elindítása: a rendszer elküldje a hangfájlt a beszédfelismerési szolgáltatásnak, amelyet szövegként leír, és a konzolon jeleníti meg.
 
    ```console
@@ -206,6 +206,6 @@ Most már készen áll az alkalmazás felépítésére és a beszédfelismerési
    We recognized: What's the weather like?
    ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [!INCLUDE [Speech recognition basics](../../speech-to-text-next-steps.md)]

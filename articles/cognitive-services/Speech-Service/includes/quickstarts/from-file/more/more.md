@@ -20,7 +20,7 @@ Ha erre a lapra kattintott, valószínűleg nem jelenik meg egy rövid útmutat�
 | C# | [MIC][1-mic]-ből [a blobból][1-blob] | [.NET-keretrendszer][dotnet], [.net Core][netcore], [UWP][uwp], [Unity][unity], [Xamarin][xamarin] |
 | C++ | [MIC][2-mic]-ből [a blobból][2-blob] | [Windows][cpp-windows], [Linux][cpp-linux], [MacOS][cpp-mac] |
 | Java | [MIC][3-mic]-ből [a blobból][3-blob] | [Android][java-android], [JRE][java-jre] |
-| JavaScript | [Böngésző a MIC-ből][js-browser], [a Node. js fájlból][js-node] | [Windows, Linux, macOS][js-code] |
+| JavaScript | [Böngésző a MIC-ből][js-browser], [Node.js fájlból][js-node] | [Windows, Linux, macOS][js-code] |
 | Objective-C | [iOS a MIC][obj-iOS-qck]-ből, [MacOS-ből MIC-ből][obj-macOS-qck] | [iOS][obj-iOS], [MacOS][obj-macOS] |
 | Python | [MIC][4-mic]-ből [a blobból][4-blob] | [Windows, Linux, macOS][python] |
 | Swift | [iOS a MIC][swift-iOS-qck]-ből, [MacOS-ből MIC-ből][swift-macOS-qck] | [iOS][swift-iOS], [MacOS][swift-macOS] |
