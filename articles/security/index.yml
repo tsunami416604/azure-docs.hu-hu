@@ -4,7 +4,7 @@ summary: A biztonság minden szempontból az Azure integrált része. Az Azure a
 brand: azure
 metadata:
   title: Az Azure biztonsági dokumentációja
-  description: A biztonság minden szempontból az Azure integrált része. Az Azure a globális biztonsági intelligenciából, az ügyfelek által használható kifinomult vezérlőkből és a biztonság szempontjából megerősített infrastruktúrákból származó egyedi biztonsági előnyöket kínál. Ez a hatékony kombináció védelmet biztosít az alkalmazások és az adatok számára, támogatja a megfelelőség felé tett lépéseket, és költséghatékony biztonsági megoldást biztosít a különböző méretű vállalatok számára.
+  description: Megismerheti az Azure biztonsági megoldásait. Információkat talál a biztonság alapjairól, ajánlott eljárásokról és mintákról, valamint az Azure Security Centerről.
   services: security
   ms.service: security
   ms.subservice: na
@@ -14,12 +14,12 @@ metadata:
   ms.author: terrylan
   manager: rkarlin
   ms.date: 08/29/2019
-  ms.openlocfilehash: b3c5fb0dd15c1211132e627b507aa20a043f09ba
-  ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+  ms.openlocfilehash: de2b3baae0ab999c0e3eb8ed76194632e7b066e6
+  ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 04/10/2020
-  ms.locfileid: "81115367"
+  ms.lasthandoff: 08/03/2020
+  ms.locfileid: "87540852"
 highlightedContent:
   items:
   - title: Bevezetés az Azure biztonsági megoldásaiba

@@ -91,7 +91,7 @@
       items:
         - name: Emelt szintű hozzáférés áttekintése
           href: groups-features.md
-        - name: Csoportok felderítése
+        - name: Csoportok felügyelet alá helyezése
           href: groups-discover-groups.md
         - name: Tag vagy tulajdonos hozzárendelése
           href: groups-assign-member-owner.md

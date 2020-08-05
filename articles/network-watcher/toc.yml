@@ -51,6 +51,12 @@
   items:
     - name: A Network Watcher konfigurálása
       href: network-watcher-create.md
+    - name: Kapcsolatfigyelő létrehozása (előzetes verzió)
+      items:
+        - name: Az Azure Portal használata
+          href: connection-monitor-preview-create-using-portal.md
+        - name: Az ARMClient használata
+          href: connection-monitor-preview-create-using-arm-client.md
     - name: A virtuális gép hálózati problémáinak diagnosztizálása
       items:
         - name: Virtuálisgép-bővítmény telepítése

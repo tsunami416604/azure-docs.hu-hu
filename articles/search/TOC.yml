@@ -335,6 +335,8 @@
           items:
             - name: Felhasználó által kezelt kulcsok
               href: search-security-manage-encryption-keys.md
+            - name: Fontos adatok lekérése
+              href: search-security-get-encryption-keys.md
         - name: Bejövő biztonság
           items:
             - name: API-hozzáférési kulcsok

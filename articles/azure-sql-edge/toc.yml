@@ -8,6 +8,8 @@
       href: features.md
     - name: Kibocsátási megjegyzések
       href: release-notes.md
+    - name: Használati és diagnosztikai adatok gyűjtése
+      href: usage-and-diagnostics-data-configuration.md
 - name: Rövid útmutatók
   expanded: true
   items:

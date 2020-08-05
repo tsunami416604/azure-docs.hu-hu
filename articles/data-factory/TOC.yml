@@ -726,6 +726,8 @@
           href: pricing-concepts.md
     - name: Hibaelhárítási útmutatók
       items:
+        - name: Data Factory UX
+          href: data-factory-ux-troubleshoot-guide.md
         - name: Tevékenységek
           href: data-factory-troubleshoot-guide.md
         - name: Összekötők

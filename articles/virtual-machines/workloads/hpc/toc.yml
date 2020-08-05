@@ -2,16 +2,16 @@
   items:
     - name: Áttekintés
       items:
-        - name: HPC H-sorozatú virtuális gépekhez
+        - name: HPC H- és N-sorozatú virtuális gépekhez
           href: overview.md
     - name: Konfiguráció
       items:
-        - name: Optimalizálás Linuxra
+        - name: Virtuális gépek konfigurálása és optimalizálása
           href: configure.md
         - name: Infiniband engedélyezése
           href: enable-infiniband.md
-    - name: MPI beállítása
-      href: setup-mpi.md
+        - name: MPI beállítása
+          href: setup-mpi.md
     - name: Alkalmazások méretezése
       href: compiling-scaling-applications.md
     - name: Virtual machines (Virtuális gépek)
@@ -28,5 +28,5 @@
               href: hc-series-overview.md
             - name: Teljesítmény
               href: hc-series-performance.md
-        - name: A HB és a HC sorozatú virtuális gépek ismert problémái
+        - name: A H- és N-sorozatú virtuális gépek ismert problémái
           href: hb-hc-known-issues.md
